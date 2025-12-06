@@ -7,12 +7,14 @@ export class WebSocketManager {
   private ws: WebSocket | null = null;
   private playerId: string;
   private name: string;
+  private character: string;
   private onMessageCallback?: (msg: WebSocketMessage) => void;
   private messageQueue: Array<{ type: string; data: Record<string, unknown> }> = [];
 
-  constructor(playerId: string, name: string) {
+  constructor(playerId: string, name: string, character: string) {
     this.playerId = playerId;
     this.name = name;
+    this.character = character;
   }
 
   setOnMessage(callback: (msg: WebSocketMessage) => void) {
@@ -28,6 +30,7 @@ export class WebSocketManager {
         spaceId: "default-space",
         token: "dummy-token-" + this.playerId,
         name: this.name,
+        sprite: this.character,
       });
       // Then send queued messages
       while (this.messageQueue.length > 0) {

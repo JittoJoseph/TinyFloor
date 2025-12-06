@@ -41,20 +41,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name }) => {
           scene.cleanup();
         }
 
-        // Fix for audio context closure issues
-        game.current.sound.removeAll();
-
-        // Only attempt to close AudioContext if using WebAudio (not HTML5 Audio fallback)
-        const soundManager = game.current.sound;
-        if (soundManager instanceof Phaser.Sound.WebAudioSoundManager) {
-          const ctx = soundManager.context;
-          if (ctx && ctx.state !== "closed") {
-            ctx.close().catch(() => {
-              // Ignore errors if context is already closing/closed
-            });
-          }
-        }
-
         game.current.destroy(true);
         game.current = null;
       }

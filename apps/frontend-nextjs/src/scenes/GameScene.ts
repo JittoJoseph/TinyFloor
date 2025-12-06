@@ -44,7 +44,7 @@ class GameScene extends Phaser.Scene {
 
     this.animationManager.create();
 
-    this.wsManager = new WebSocketManager(this.playerId, this.name);
+    this.wsManager = new WebSocketManager(this.playerId, this.name, this.character);
     this.playerManager = new PlayerManager(this, this.animationManager);
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
@@ -59,7 +59,6 @@ class GameScene extends Phaser.Scene {
     this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager);
 
     this.sceneReady = true;
-    this.messageHandler.setSceneReady(true);
 
     this.callManager = new CallManager(this, this.wsManager, this.playerId);
 
@@ -68,6 +67,7 @@ class GameScene extends Phaser.Scene {
     this.mapManager.setupColliders(this.player);
 
     this.messageHandler = new MessageHandler(this, this.wsManager, this.playerManager, this.proximityManager, this.callManager, this.animationManager, this.playerId, this.player);
+    this.messageHandler.setSceneReady(true);
     this.wsManager.setOnMessage((msg: WebSocketMessage) => {
       this.messageHandler.handleMessage(msg);
     });

@@ -66,35 +66,45 @@ export class ProximityManager {
 
   private createProximityCard(id: string, container: Phaser.GameObjects.Container) {
     const card = this.scene.add.container(container.x, container.y - 40);
-    const bg = this.scene.add.rectangle(0, 0, 120, 40, 0xffffff);
-    bg.setStrokeStyle(2, 0x000000);
+    const bg = this.scene.add.rectangle(0, 0, 160, 50, 0xffffff, 0.95);
+    bg.setStrokeStyle(2, 0x333333);
     card.add(bg);
 
-    const videoBtn = this.scene.add.text(-40, 0, "Video", {
+    const videoBtn = this.scene.add.text(-60, 0, "Video", {
       fontSize: "12px",
-      color: "#000",
+      color: "#0066cc",
+      fontStyle: "bold"
     });
     videoBtn.setInteractive();
     videoBtn.on("pointerdown", () => this.initiateCall(id, "video"));
+    videoBtn.on("pointerover", () => videoBtn.setColor("#004499"));
+    videoBtn.on("pointerout", () => videoBtn.setColor("#0066cc"));
     card.add(videoBtn);
 
-    const audioBtn = this.scene.add.text(0, 0, "Audio", {
+    const audioBtn = this.scene.add.text(-10, 0, "Audio", {
       fontSize: "12px",
-      color: "#000",
+      color: "#0066cc",
+      fontStyle: "bold"
     });
     audioBtn.setInteractive();
     audioBtn.on("pointerdown", () => this.initiateCall(id, "audio"));
+    audioBtn.on("pointerover", () => audioBtn.setColor("#004499"));
+    audioBtn.on("pointerout", () => audioBtn.setColor("#0066cc"));
     card.add(audioBtn);
 
     const chatBtn = this.scene.add.text(40, 0, "Chat", {
       fontSize: "12px",
-      color: "#000",
+      color: "#0066cc",
+      fontStyle: "bold"
     });
     chatBtn.setInteractive();
     chatBtn.on("pointerdown", () => this.initiateChat());
+    chatBtn.on("pointerover", () => chatBtn.setColor("#004499"));
+    chatBtn.on("pointerout", () => chatBtn.setColor("#0066cc"));
     card.add(chatBtn);
 
     this.proximityCards.set(id, card);
+    card.setDepth(30000);
   }
 
   private updateProximityCard(id: string, container: Phaser.GameObjects.Container) {

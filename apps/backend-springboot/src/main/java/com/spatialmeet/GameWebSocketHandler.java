@@ -80,7 +80,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         Player player = new Player(playerId, playerName != null ? playerName : "User", spawnX, spawnY);
         
         // Assign sprite
-        if (sprite != null && java.util.Arrays.asList(AVAILABLE_SPRITES).contains(sprite)) {
+        if (sprite != null) {
             player.setSprite(sprite);
         } else {
             player.setSprite(AVAILABLE_SPRITES[random.nextInt(AVAILABLE_SPRITES.length)]);

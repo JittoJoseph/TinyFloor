@@ -23,6 +23,28 @@ export class PlayerManager {
     this.animationManager = animationManager;
   }
 
+  createLocalPlayer(id: string, name: string, x: number, y: number): Phaser.Physics.Arcade.Sprite {
+    const player = this.scene.physics.add.sprite(x, y, "Adam_idle");
+    player.setScale(1.5);
+    
+    const animKey = this.animationManager.getAnimationKey('Adam', 'idle', 'down');
+    player.play(animKey);
+
+    const label = this.scene.add.text(player.x, player.y - 20, name, {
+      fontSize: "12px",
+      color: "#000",
+      backgroundColor: "#ffffff80",
+      fontStyle: "bold",
+      stroke: "#ffffff",
+      strokeThickness: 2
+    });
+    label.setOrigin(0.5);
+    label.setDepth(25000); // Above OverPlayer_Layer
+    this.playerLabels.set(id, label);
+
+    return player;
+  }
+
   addPlayer(id: string, name: string, x: number, y: number, spriteKey: string = 'Adam') {
     if (this.players.has(id)) return;
 
@@ -44,11 +66,15 @@ export class PlayerManager {
     const label = this.scene.add.text(0, -25, name, {
       fontSize: "12px",
       color: "#000",
-      backgroundColor: "#ffffff80"
+      backgroundColor: "#ffffff80",
+      fontStyle: "bold",
+      stroke: "#ffffff",
+      strokeThickness: 2
     });
     label.setOrigin(0.5);
     container.add(label);
     this.playerLabels.set(id, label);
+    label.setDepth(25000); // Above OverPlayer_Layer
     container.setDepth(10000);
 
     this.playerStates.set(id, {

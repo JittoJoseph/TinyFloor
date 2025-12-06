@@ -24,22 +24,13 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    // Load Tiled map and tilesets
     this.load.tilemapTiledJSON("office", "/tilesets/office-map.tmj");
-    this.load.image(
-      "RoomBuilder",
-      "/tilesets/textures/Room_Builder_Office_32x32.png"
-    );
-    this.load.image(
-      "ModernOffice",
-      "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png"
-    );
+    this.load.image("RoomBuilder", "/tilesets/textures/Room_Builder_Office_32x32.png");
+    this.load.image("ModernOffice", "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png");
 
-    // Initialize AnimationManager
     this.animationManager = new AnimationManager(this);
     this.animationManager.preload();
 
-    // Add load error handling
     this.load.on("loaderror", (file: unknown) => {
       console.error("Failed to load file:", file);
     });
@@ -47,34 +38,24 @@ class GameScene extends Phaser.Scene {
 
   create() {
     this.camera = this.cameras.main;
-    this.camera.setZoom(1);
 
-    // Create animations
     this.animationManager.create();
 
-    // Initialize managers
     this.wsManager = new WebSocketManager(this.playerId, this.name);
     this.playerManager = new PlayerManager(this, this.animationManager);
-    // ProximityManager will be initialized after player creation
 
-    // Connect WebSocket
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
     const wsUrl = `${protocol}//${host}:8080/ws`;
     this.wsManager.connect(wsUrl);
 
-    // Set message handler
     this.wsManager.setOnMessage((msg: WebSocketMessage) => {
       this.handleMessage(msg);
     });
 
-    // Create Tiled map
     const map = this.make.tilemap({ key: "office" });
     const rb = map.addTilesetImage("Room_Builder_Office_32x32", "RoomBuilder");
-    const mo = map.addTilesetImage(
-      "Modern_Office_Black_Shadow_32x32",
-      "ModernOffice"
-    );
+    const mo = map.addTilesetImage("Modern_Office_Black_Shadow_32x32", "ModernOffice");
 
     if (!rb || !mo) {
       throw new Error("Tilesets not found");
@@ -85,18 +66,14 @@ class GameScene extends Phaser.Scene {
     map.createLayer("DesksBack", [rb, mo], 0, 0)!.setDepth(20);
     map.createLayer("DeskItems_Back", [rb, mo], 0, 0)!.setDepth(25);
 
-    // Create current player immediately
     this.createCurrentPlayer();
 
-    // Initialize remaining managers
     this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager);
 
     this.sceneReady = true;
 
-    // Initialize CallManager
     this.callManager = new CallManager(this, this.wsManager, this.playerId);
 
-    // Initialize ProximityManager after player is created
     this.proximityManager = new ProximityManager(this, this.wsManager, this.playerManager, this.callManager, this.player, this.playerId);
 
     // Build colliders from object layer
@@ -158,15 +135,9 @@ class GameScene extends Phaser.Scene {
   }
 
   private createCurrentPlayer() {
-    // Use 'Adam' as default until server assigns one
-    this.player = this.physics.add.sprite(
-      5 * 32 + 16,
-      5 * 32 + 16,
-      "Adam_idle"
-    );
-    this.player.setScale(1.5); // Match other players' visual scale
+    this.player = this.physics.add.sprite(5 * 32 + 16, 5 * 32 + 16, "Adam_idle");
+    this.player.setScale(1.5);
     
-    // Play initial idle animation
     const animKey = this.animationManager.getAnimationKey('Adam', 'idle', 'down');
     this.player.play(animKey);
 
@@ -221,11 +192,8 @@ class GameScene extends Phaser.Scene {
     this.player.setPosition(spawnX, spawnY);
     
     if (sprite) {
-      // Check if sprite is one of the new ones, otherwise default to Adam
       const validSprites = ['Adam', 'Alex', 'Amelia', 'Bob'];
       const spriteName = validSprites.includes(sprite) ? sprite : 'Adam';
-      
-      // Store sprite name on player object for reference
       this.player.setData('spriteName', spriteName);
       this.player.play(this.animationManager.getAnimationKey(spriteName, 'idle', 'down'));
     }

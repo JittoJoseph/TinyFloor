@@ -75,7 +75,13 @@ export default function Home() {
   };
 
   if (gameState) {
-    return <PhaserGame name={gameState.name} roomId={gameState.roomId} character={gameState.character} />;
+    return (
+      <PhaserGame
+        name={gameState.name}
+        roomId={gameState.roomId}
+        character={gameState.character}
+      />
+    );
   }
 
   return (
@@ -83,7 +89,9 @@ export default function Home() {
       <div className="max-w-4xl w-full bg-white rounded-2xl shadow-2xl p-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">SpatialMeet</h1>
-          <p className="text-gray-600">Connect and collaborate in virtual office spaces</p>
+          <p className="text-gray-600">
+            Connect and collaborate in virtual office spaces
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -91,10 +99,15 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">Available Rooms</h2>
             <div className="space-y-3 max-h-96 overflow-y-auto">
               {rooms.map((room) => (
-                <div key={room.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div
+                  key={room.id}
+                  className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
+                >
                   <div>
                     <h3 className="font-medium">{room.name}</h3>
-                    <p className="text-sm text-gray-500">{room.users.length} users</p>
+                    <p className="text-sm text-gray-500">
+                      {room.users.length} users
+                    </p>
                   </div>
                   <button
                     onClick={() => setShowJoinModal(room.id)}
@@ -105,7 +118,9 @@ export default function Home() {
                 </div>
               ))}
               {rooms.length === 0 && (
-                <p className="text-gray-500 text-center py-8">No rooms available. Create one!</p>
+                <p className="text-gray-500 text-center py-8">
+                  No rooms available. Create one!
+                </p>
               )}
             </div>
           </div>

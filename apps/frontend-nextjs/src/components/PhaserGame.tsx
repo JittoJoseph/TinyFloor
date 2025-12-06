@@ -18,8 +18,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
     if (gameRef.current && !game.current) {
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        width: 1760,
-        height: 800,
+        width: window.innerWidth,
+        height: window.innerHeight,
         parent: gameRef.current,
         scene: new GameScene(name, roomId, character),
         backgroundColor: "#f0f0f0",
@@ -28,8 +28,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
           arcade: {
             debug: false,
             gravity: { x: 0, y: 0 },
-            width: 1760,
-            height: 800,
+            width: window.innerWidth,
+            height: window.innerHeight,
           },
         },
       };

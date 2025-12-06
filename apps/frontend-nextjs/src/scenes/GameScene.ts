@@ -78,6 +78,10 @@ class GameScene extends Phaser.Scene {
 
     // Set physics world bounds
     this.physics.world.setBounds(0, 0, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
+
+    // Set camera zoom and deadzone for better view
+    this.camera.setZoom(1.2);
+    this.camera.setDeadzone(200, 150);
   }
 
   update() {

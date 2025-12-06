@@ -6,9 +6,11 @@ import GameScene from "../scenes/GameScene";
 
 interface PhaserGameProps {
   name: string;
+  roomId: string;
+  character: string;
 }
 
-const PhaserGame: React.FC<PhaserGameProps> = ({ name }) => {
+const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
 
@@ -19,7 +21,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name }) => {
         width: 1760,
         height: 800,
         parent: gameRef.current,
-        scene: new GameScene(name),
+        scene: new GameScene(name, roomId, character),
         backgroundColor: "#f0f0f0",
         physics: {
           default: "arcade",

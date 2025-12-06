@@ -23,11 +23,11 @@ export class PlayerManager {
     this.animationManager = animationManager;
   }
 
-  createLocalPlayer(id: string, name: string, x: number, y: number): Phaser.Physics.Arcade.Sprite {
-    const player = this.scene.physics.add.sprite(x, y, "Adam_idle");
+  createLocalPlayer(id: string, name: string, x: number, y: number, character: string): Phaser.Physics.Arcade.Sprite {
+    const player = this.scene.physics.add.sprite(x, y, `${character}_idle`);
     player.setScale(1.5);
     
-    const animKey = this.animationManager.getAnimationKey('Adam', 'idle', 'down');
+    const animKey = this.animationManager.getAnimationKey(character, 'idle', 'down');
     player.play(animKey);
 
     const label = this.scene.add.text(player.x, player.y - 20, name, {

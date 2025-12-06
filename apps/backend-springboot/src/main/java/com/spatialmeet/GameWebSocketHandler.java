@@ -19,14 +19,23 @@ import java.util.stream.Collectors;
 public class GameWebSocketHandler extends TextWebSocketHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final Map<String, Player> players = new ConcurrentHashMap<>();
-    private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
+    private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
+    private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
+    private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
     private static final String[] AVAILABLE_SPRITES = {"Adam", "Alex", "Amelia", "Bob"};
     private final java.util.Random random = new java.util.Random();
+    private String getRoomIdFromSession(WebSocketSession session) {
+        String path = session.getUri().getPath();
+        String[] parts = path.split("/");
+        return parts[parts.length - 1]; // /ws/{roomId}
+    }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        // Sessions are managed in handleJoin when player joins
+        String roomId = getRoomIdFromSession(session);
+        sessionToRoom.put(session.getId(), roomId);
+        roomPlayers.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>());
+        roomSessions.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>());
     }
 
     @Override
@@ -55,31 +64,33 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     }
 
     private void handleJoin(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
         Map<String, Object> data = (Map<String, Object>) msg.getData();
-        String spaceId = (String) data.get("spaceId");
-        String token = (String) data.get("token");
         String playerName = (String) data.get("name");
+        String sprite = (String) data.get("sprite");
         
-        // For now, we only support one space, so ignore spaceId
-        // TODO: Add proper space/room management
-        
-        // Generate a unique player ID (in a real app, validate token and get user ID)
+        // Generate a unique player ID
         String playerId = "player_" + System.currentTimeMillis() + "_" + (int)(Math.random() * 1000);
         
-        // Create player at spawn position (pixel coordinates)
-        int spawnX = 160; // 5 * 32 + 16 (center of tile)
-        int spawnY = 160; // 5 * 32 + 16 (center of tile)
+        // Create player at spawn position
+        int spawnX = 160;
+        int spawnY = 160;
         Player player = new Player(playerId, playerName != null ? playerName : "User", spawnX, spawnY);
         
-        // Assign random sprite
-        String sprite = AVAILABLE_SPRITES[random.nextInt(AVAILABLE_SPRITES.length)];
-        player.setSprite(sprite);
+        // Assign sprite
+        if (sprite != null && java.util.Arrays.asList(AVAILABLE_SPRITES).contains(sprite)) {
+            player.setSprite(sprite);
+        } else {
+            player.setSprite(AVAILABLE_SPRITES[random.nextInt(AVAILABLE_SPRITES.length)]);
+        }
 
-        players.put(playerId, player);
-        sessions.put(playerId, session);
+        roomPlayers.get(roomId).put(playerId, player);
+        roomSessions.get(roomId).put(playerId, session);
         
         // Send space-joined response with spawn position and existing users
-        List<Map<String, Object>> existingUsers = players.values().stream()
+        List<Map<String, Object>> existingUsers = roomPlayers.get(roomId).values().stream()
             .filter(p -> !p.getId().equals(playerId))
             .map(p -> {
                 Map<String, Object> userData = new HashMap<>();
@@ -101,7 +112,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         Message response = new Message("space-joined", responseData);
         session.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
         
-        // Broadcast user-join to other players
+        // Broadcast user-join to other players in the room
         Map<String, Object> joinData = new HashMap<>();
         joinData.put("id", playerId);
         joinData.put("name", player.getName());
@@ -109,32 +120,27 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         joinData.put("x", spawnX);
         joinData.put("y", spawnY);
         
-        Message joined = new Message("user-join", joinData);
-        broadcast(joined, session);
+        Message joinMessage = new Message("user-join", joinData);
+        broadcastToRoom(roomId, joinMessage, playerId);
     }
 
     private void handleMove(WebSocketSession session, Message msg) throws IOException {
-        // Find player by session
-        String playerId = null;
-        for (Map.Entry<String, WebSocketSession> entry : sessions.entrySet()) {
-            if (entry.getValue().equals(session)) {
-                playerId = entry.getKey();
-                break;
-            }
-        }
-        
+        String playerId = getPlayerIdFromSession(session);
         if (playerId == null) return;
+
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
         
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         int targetX = ((Number) data.get("x")).intValue();
         int targetY = ((Number) data.get("y")).intValue();
         String direction = (String) data.get("direction");
         
-        Player player = players.get(playerId);
+        Player player = roomPlayers.get(roomId).get(playerId);
         if (player == null) return;
         
         // Validate movement (pixel-based bounds and collision check)
-        boolean isValidMove = validateMovement(targetX, targetY, playerId);
+        boolean isValidMove = validateMovement(targetX, targetY, playerId, roomId);
         
         if (isValidMove) {
             // Update player position (store as pixels)
@@ -150,7 +156,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             movementData.put("direction", direction);
             
             Message movement = new Message("movement", movementData);
-            broadcast(movement, null);
+            broadcastToRoom(roomId, movement, null);
         } else {
             // Send movement rejection with corrected position
             Map<String, Object> rejectionData = new HashMap<>();
@@ -162,7 +168,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         }
     }
     
-    private boolean validateMovement(int x, int y, String playerId) {
+    private boolean validateMovement(int x, int y, String playerId, String roomId) {
         // Basic bounds check (1760x800 pixel area, with 16px padding for player radius)
         if (x < 16 || x >= 1760 - 16 || y < 16 || y >= 800 - 16) {
             return false;
@@ -175,7 +181,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         }
         
         // Check for collision with other players (32px radius around each player)
-        for (Player other : players.values()) {
+        for (Player other : roomPlayers.get(roomId).values()) {
             if (!other.getId().equals(playerId)) {
                 int dx = x - other.getTileX();
                 int dy = y - other.getTileY();
@@ -190,16 +196,19 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     }
 
     private void handleRequestCall(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         String from = (String) data.get("from");
         String to = (String) data.get("to");
         String callType = (String) data.get("callType");
 
-        Player fromPlayer = players.get(from);
-        if (fromPlayer != null && players.containsKey(to)) {
+        Player fromPlayer = roomPlayers.get(roomId).get(from);
+        if (fromPlayer != null && roomPlayers.get(roomId).containsKey(to)) {
             // Relay incoming_call to target
             Message incoming = new Message("incoming_call", Map.of("from", from, "fromName", fromPlayer.getName(), "callType", callType));
-            WebSocketSession toSession = sessions.get(to);
+            WebSocketSession toSession = roomSessions.get(roomId).get(to);
             if (toSession != null) {
                 toSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(incoming)));
             }
@@ -207,6 +216,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     }
 
     private void handleCallResponse(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         String from = (String) data.get("from");
         String to = (String) data.get("to");
@@ -214,13 +226,16 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
         // Relay to caller
         Message response = new Message("call_response", Map.of("from", from, "to", to, "accepted", accepted));
-        WebSocketSession fromSession = sessions.get(from);
+        WebSocketSession fromSession = roomSessions.get(roomId).get(from);
         if (fromSession != null) {
             fromSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
         }
     }
 
     private void handleWebRTCSignal(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         String from = (String) data.get("from");
         String to = (String) data.get("to");
@@ -228,13 +243,16 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
         // Relay signal
         Message signal = new Message("webrtc_signal", Map.of("from", from, "to", to, "data", signalData));
-        WebSocketSession toSession = sessions.get(to);
+        WebSocketSession toSession = roomSessions.get(roomId).get(to);
         if (toSession != null) {
             toSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(signal)));
         }
     }
 
     private void handleCallEnded(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         String from = (String) data.get("from");
         String to = (String) data.get("to");
@@ -242,48 +260,51 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
         // Relay to both
         Message ended = new Message("call_ended", Map.of("from", from, "to", to, "reason", reason));
-        broadcast(ended, null);
+        broadcastToRoom(roomId, ended, null);
     }
 
-    private void broadcast(Message msg, WebSocketSession exclude) throws IOException {
-        String json = objectMapper.writeValueAsString(msg);
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) throws Exception {
+        String playerId = getPlayerIdFromSession(session);
         
-        // Clean up closed sessions first
-        sessions.entrySet().removeIf(entry -> !entry.getValue().isOpen());
-        
-        for (WebSocketSession s : sessions.values()) {
-            if (exclude == null || !s.equals(exclude)) {
-                try {
-                    s.sendMessage(new TextMessage(json));
-                } catch (Exception e) {
-                    // Session might have been closed during iteration
-                    System.err.println("Failed to send message to session: " + e.getMessage());
+        if (playerId != null) {
+            String roomId = sessionToRoom.get(session.getId());
+            if (roomId != null) {
+                roomPlayers.get(roomId).remove(playerId);
+                roomSessions.get(roomId).remove(playerId);
+                
+                // Broadcast user-left to remaining players in room
+                Map<String, Object> leftData = new HashMap<>();
+                leftData.put("id", playerId);
+                
+                Message left = new Message("user-left", leftData);
+                broadcastToRoom(roomId, left, null);
+            }
+        }
+        sessionToRoom.remove(session.getId());
+    }
+
+    private void broadcastToRoom(String roomId, Message message, String excludePlayerId) throws IOException {
+        Map<String, WebSocketSession> roomSess = roomSessions.get(roomId);
+        if (roomSess != null) {
+            for (Map.Entry<String, WebSocketSession> entry : roomSess.entrySet()) {
+                if (!entry.getKey().equals(excludePlayerId)) {
+                    entry.getValue().sendMessage(new TextMessage(objectMapper.writeValueAsString(message)));
                 }
             }
         }
     }
 
-    @Override
-    public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) throws Exception {
-        // Find player by session
-        String playerId = null;
-        for (Map.Entry<String, WebSocketSession> entry : sessions.entrySet()) {
-            if (entry.getValue().equals(session)) {
-                playerId = entry.getKey();
-                break;
+    private String getPlayerIdFromSession(WebSocketSession session) {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId != null) {
+            Map<String, WebSocketSession> roomSess = roomSessions.get(roomId);
+            for (Map.Entry<String, WebSocketSession> entry : roomSess.entrySet()) {
+                if (entry.getValue().equals(session)) {
+                    return entry.getKey();
+                }
             }
         }
-        
-        if (playerId != null) {
-            players.remove(playerId);
-            sessions.remove(playerId);
-            
-            // Broadcast user-left to remaining players
-            Map<String, Object> leftData = new HashMap<>();
-            leftData.put("id", playerId);
-            
-            Message left = new Message("user-left", leftData);
-            broadcast(left, null);
-        }
+        return null;
     }
 }

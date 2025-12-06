@@ -22,7 +22,7 @@ class GameScene extends Phaser.Scene {
   private camera!: Phaser.Cameras.Scene2D.Camera;
   private sceneReady: boolean = false;
 
-  constructor(private name: string) {
+  constructor(private name: string, private roomId: string, private character: string) {
     super({ key: "GameScene" });
     this.playerId = Phaser.Utils.String.UUID();
   }
@@ -49,12 +49,12 @@ class GameScene extends Phaser.Scene {
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
-    const wsUrl = `${protocol}//${host}:8080/ws`;
+    const wsUrl = `${protocol}//${host}:8080/ws/${this.roomId}`;
     this.wsManager.connect(wsUrl);
 
     this.mapManager.create();
 
-    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, 5 * 32 + 16, 5 * 32 + 16);
+    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, 5 * 32 + 16, 5 * 32 + 16, this.character);
 
     this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager);
 

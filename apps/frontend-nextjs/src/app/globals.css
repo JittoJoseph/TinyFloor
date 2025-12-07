@@ -1,15 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+  --font-pixel: var(--font-pixel);
+  --font-body: var(--font-body);
+
+  --color-game-bg: #b0b5bd;
+  --color-game-grid: #9ca1a9;
+  --color-game-dark: #2d3748;
+  --color-ui-white: #ffffff;
+  --color-ui-border: #1f2937;
+  --color-brand-primary: #818cf8;
+  --color-brand-secondary: #fb7185;
+  --color-brand-accent: #34d399;
+
+  --shadow-retro: 4px 4px 0px 0px #1f2937;
+  --shadow-retro-sm: 2px 2px 0px 0px #1f2937;
+  --shadow-retro-lg: 6px 6px 0px 0px #1f2937;
+  --shadow-retro-hover: 2px 2px 0px 0px #1f2937;
+
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-bounce-slight: bounceSlight 2s infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  @keyframes bounceSlight {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +44,34 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-game-bg);
+  background-image: 
+    linear-gradient(var(--color-game-grid) 2px, transparent 2px), 
+    linear-gradient(90deg, var(--color-game-grid) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: center top;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-game-bg);
+  border-left: 2px solid var(--color-ui-border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-secondary);
+  border: 2px solid var(--color-ui-border);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f43f5e;
+}
+
+.pixel-antialiased {
+  image-rendering: pixelated;
 }

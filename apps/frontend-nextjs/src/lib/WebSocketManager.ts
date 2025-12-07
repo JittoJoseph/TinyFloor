@@ -10,6 +10,7 @@ export class WebSocketManager {
   private character: string;
   private onMessageCallback?: (msg: WebSocketMessage) => void;
   private messageQueue: Array<{ type: string; data: Record<string, unknown> }> = [];
+  private shouldReconnect = true;
 
   constructor(playerId: string, name: string, character: string) {
     this.playerId = playerId;
@@ -22,6 +23,7 @@ export class WebSocketManager {
   }
 
   connect(url: string) {
+    this.shouldReconnect = true;
     this.ws = new WebSocket(url);
     this.ws.onopen = () => {
       console.log("WebSocket connected successfully");
@@ -39,8 +41,8 @@ export class WebSocketManager {
       }
     };
     this.ws.onmessage = (event) => {
-      const msg = JSON.parse(event.data);
-      if (this.onMessageCallback) {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN && this.onMessageCallback) {
+        const msg = JSON.parse(event.data);
         this.onMessageCallback(msg);
       }
     };
@@ -51,9 +53,11 @@ export class WebSocketManager {
     this.ws.onclose = (event) => {
       console.log("WebSocket closed:", event.code, event.reason, "Clean:", event.wasClean);
       // Basic reconnection logic
-      setTimeout(() => {
-        this.connect(url);
-      }, 3000);
+      if (this.shouldReconnect) {
+        setTimeout(() => {
+          this.connect(url);
+        }, 3000);
+      }
     };
   }
 
@@ -66,8 +70,10 @@ export class WebSocketManager {
   }
 
   disconnect() {
+    this.shouldReconnect = false;
     if (this.ws) {
       this.ws.close();
+      this.ws = null;
     }
   }
 }

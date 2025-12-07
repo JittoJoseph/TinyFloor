@@ -75,17 +75,21 @@ export class MessageHandler {
   }
 
   private handleSpaceJoined(data: Record<string, unknown>) {
+    if (!this.player) return; // Guard against destroyed player
+
     const spawnX = data.spawnX as number;
     const spawnY = data.spawnY as number;
     const sprite = data.sprite as string;
     const existingUsers = data.existingUsers as Array<{id: string; name: string; x: number; y: number; sprite: string}>;
-    this.player.setPosition(spawnX, spawnY);
-    
-    if (sprite) {
-      const validSprites = ['Adam', 'Alex', 'Amelia', 'Bob'];
-      const spriteName = validSprites.includes(sprite) ? sprite : 'Adam';
-      this.player.setData('spriteName', spriteName);
-      this.player.play(this.animationManager.getAnimationKey(spriteName, 'idle', 'down'));
+    if (this.player) {
+      this.player.setPosition(spawnX, spawnY);
+      
+      if (sprite) {
+        const validSprites = ['Adam', 'Alex', 'Amelia', 'Bob'];
+        const spriteName = validSprites.includes(sprite) ? sprite : 'Adam';
+        this.player.setData('spriteName', spriteName);
+        this.player.play(this.animationManager.getAnimationKey(spriteName, 'idle', 'down'));
+      }
     }
 
     existingUsers.forEach((user) => {

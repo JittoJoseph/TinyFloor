@@ -24,6 +24,16 @@ public class RoomController {
         return ResponseEntity.ok(rooms);
     }
 
+    @GetMapping("/{roomId}")
+    public ResponseEntity<Room> getRoom(@PathVariable String roomId) {
+        Room room = roomService.getRoom(roomId);
+        if (room != null) {
+            return ResponseEntity.ok(room);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Room> createRoom(@RequestBody Map<String, String> payload) {
         String name = payload.get("name");

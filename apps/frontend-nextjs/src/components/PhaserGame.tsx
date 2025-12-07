@@ -47,7 +47,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
         game.current = null;
       }
     };
-  }, [name]);
+  }, [name, roomId, character]);
 
   return <div ref={gameRef} />;
 };

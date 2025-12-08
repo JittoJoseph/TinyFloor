@@ -49,7 +49,8 @@ class GameScene extends Phaser.Scene {
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
-    const wsUrl = `${protocol}//${host}:8080/ws/${this.roomId}`;
+    const defaultWsUrl = `${protocol}//${host}:8080`;
+    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || defaultWsUrl}/ws/${this.roomId}`;
     this.wsManager.connect(wsUrl);
 
     this.mapManager.create();

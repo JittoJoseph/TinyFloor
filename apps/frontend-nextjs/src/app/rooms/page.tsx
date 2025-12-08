@@ -22,7 +22,9 @@ export default function RoomsPage() {
 
   const fetchRooms = async () => {
     try {
-      const response = await fetch("/api/rooms");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms`
+      );
       const data = await response.json();
       setRooms(data);
     } catch (error) {

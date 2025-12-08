@@ -34,7 +34,7 @@ export default function RoomPage() {
       router.replace(`/join?roomId=${roomId}`);
     } else {
       // Fetch room details
-      fetch(`/api/rooms/${roomId}`)
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms/${roomId}`)
         .then((res) => {
           if (res.ok) return res.json();
           throw new Error("Room not found");

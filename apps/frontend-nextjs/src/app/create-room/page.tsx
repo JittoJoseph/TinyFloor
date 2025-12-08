@@ -16,11 +16,14 @@ export default function CreateRoomPage() {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/rooms", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name }),
+        }
+      );
       const room = await response.json();
       router.push(`/join?roomId=${room.id}`);
     } catch (error) {

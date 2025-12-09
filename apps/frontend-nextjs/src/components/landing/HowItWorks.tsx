@@ -15,7 +15,6 @@ const steps = [
     text: "Click a link to enter your team office directly in the browser.",
     color: "bg-indigo-100",
     iconColor: "text-indigo-600",
-    accent: "bg-indigo-500",
   },
   {
     id: 2,
@@ -24,7 +23,6 @@ const steps = [
     text: "Customize your pixel avatar. Be a human, robot, or cat.",
     color: "bg-amber-100",
     iconColor: "text-amber-600",
-    accent: "bg-amber-500",
   },
   {
     id: 3,
@@ -33,7 +31,6 @@ const steps = [
     text: "Walk close to anyone to hear them. Walk away to disconnect.",
     color: "bg-green-100",
     iconColor: "text-green-600",
-    accent: "bg-green-500",
   },
 ];
 
@@ -65,7 +62,7 @@ export const HowItWorks: React.FC = () => {
                 <div className="relative bg-white border-2 border-ui-border rounded-2xl p-4 md:p-6 hover:-translate-y-1 transition-all h-full flex flex-row md:flex-col items-center gap-4 md:gap-0">
                   {/* Step Number Badge */}
                   <div
-                    className={`absolute -top-2 -left-2 md:-top-3 md:-left-3 w-8 h-8 md:w-10 md:h-10 ${step.accent} text-white font-pixel text-lg md:text-xl flex items-center justify-center rounded-lg border-2 border-ui-border shadow-retro-sm z-10`}
+                    className={`absolute -top-2 -left-2 md:-top-3 md:-left-3 w-8 h-8 md:w-10 md:h-10 bg-brand-secondary text-white font-pixel text-lg md:text-xl flex items-center justify-center rounded-lg border-2 border-ui-border shadow-retro-sm z-10`}
                   >
                     {step.id}
                   </div>

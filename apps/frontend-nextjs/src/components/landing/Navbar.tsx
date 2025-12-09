@@ -12,14 +12,17 @@ export const Navbar: React.FC = () => {
       <div className="max-w-4xl mx-auto pointer-events-auto">
         <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro flex justify-between items-center px-4 py-3 md:px-6 md:py-3">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <div className="w-8 h-8 bg-brand-primary rounded-lg border-2 border-ui-border flex items-center justify-center">
               <Gamepad2 className="text-white w-5 h-5" />
             </div>
             <span className="font-pixel text-2xl tracking-wide text-gray-800 mt-1">
               SpatialMeet
             </span>
-          </div>
+          </button>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">

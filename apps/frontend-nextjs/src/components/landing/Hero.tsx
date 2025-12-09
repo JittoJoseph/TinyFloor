@@ -42,9 +42,9 @@ export const Hero: React.FC = () => {
           {/* Mock Browser Bar */}
           <div className="bg-gray-800 rounded-t-xl p-2 flex items-center gap-2 mb-2">
             <div className="flex gap-1.5 ml-2">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              <div className="w-3 h-3 rounded-full bg-red-400 cursor-pointer"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-400 cursor-pointer"></div>
+              <div className="w-3 h-3 rounded-full bg-green-400 cursor-pointer"></div>
             </div>
             <div className="flex-1 bg-gray-900 h-6 rounded mx-4 flex items-center px-3">
               <span className="text-gray-500 font-pixel text-xs">
@@ -56,27 +56,6 @@ export const Hero: React.FC = () => {
           {/* Map Viewport */}
           <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-game-bg rounded-lg overflow-hidden border border-gray-700">
             <PixelMapDemo />
-
-            {/* Overlay UI: Mute Button */}
-            <div className="absolute bottom-4 left-4 flex gap-2">
-              <div className="w-10 h-10 bg-gray-900/80 backdrop-blur rounded-full border border-gray-600 flex items-center justify-center text-white hover:scale-110 transition-transform cursor-pointer">
-                <span className="text-xs">🎙️</span>
-              </div>
-              <div className="w-10 h-10 bg-gray-900/80 backdrop-blur rounded-full border border-gray-600 flex items-center justify-center text-white hover:scale-110 transition-transform cursor-pointer">
-                <span className="text-xs">📹</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Decoration Elements floating around */}
-        <div className="absolute -right-4 -bottom-8 w-24 h-24 hidden md:block animate-bounce-slight">
-          {/* Simple CSS Plant */}
-          <div className="relative w-full h-full">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-10 bg-amber-700 rounded-lg border-2 border-ui-border"></div>
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-4 h-16 bg-green-700"></div>
-            <div className="absolute bottom-12 left-1/4 w-12 h-12 bg-green-500 rounded-full border-2 border-green-800"></div>
-            <div className="absolute bottom-16 right-1/4 w-10 h-10 bg-green-500 rounded-full border-2 border-green-800"></div>
           </div>
         </div>
       </div>

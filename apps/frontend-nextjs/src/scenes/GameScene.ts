@@ -7,6 +7,7 @@ import { AnimationManager, Direction } from '../lib/AnimationManager';
 import { MovementManager } from '../lib/MovementManager';
 import { MapManager } from '../lib/MapManager';
 import { MessageHandler } from '../lib/MessageHandler';
+import { VirtualJoystickManager } from '../lib/VirtualJoystickManager';
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -18,6 +19,7 @@ class GameScene extends Phaser.Scene {
   private movementManager!: MovementManager;
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
+  private virtualJoystickManager?: VirtualJoystickManager;
   private playerId: string;
   private camera!: Phaser.Cameras.Scene2D.Camera;
   private sceneReady: boolean = false;
@@ -57,7 +59,8 @@ class GameScene extends Phaser.Scene {
 
     this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, 5 * 32 + 16, 5 * 32 + 16, this.character);
 
-    this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager);
+    const isMobile = !this.sys.game.device.os.desktop;
+    this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager, isMobile);
 
     this.sceneReady = true;
 
@@ -83,6 +86,10 @@ class GameScene extends Phaser.Scene {
     // Set camera zoom and deadzone for better view
     this.camera.setZoom(1.2);
     this.camera.setDeadzone(200, 150);
+
+    if (isMobile) {
+      this.virtualJoystickManager = new VirtualJoystickManager(this);
+    }
   }
 
   update() {
@@ -92,6 +99,14 @@ class GameScene extends Phaser.Scene {
     const label = this.playerManager.getPlayerLabels().get(this.playerId);
     if (label) {
       label.setPosition(this.player.x, this.player.y - 20);
+    }
+
+    // Handle joystick input for mobile
+    if (this.virtualJoystickManager) {
+      const velocity = this.virtualJoystickManager.getVelocity();
+      this.movementManager.setJoystickVelocity(velocity.x, velocity.y);
+    } else {
+      this.movementManager.setJoystickVelocity(0, 0);
     }
 
     // Handle movement
@@ -117,6 +132,9 @@ class GameScene extends Phaser.Scene {
     this.playerManager.destroy();
     this.proximityManager.destroy();
     this.callManager.cleanup();
+    if (this.virtualJoystickManager) {
+      this.virtualJoystickManager.destroy();
+    }
   }
 }
 

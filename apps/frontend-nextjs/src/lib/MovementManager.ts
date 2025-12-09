@@ -11,31 +11,37 @@ export class MovementManager {
   private currentDirection: Direction = 'down';
   private playerId: string;
   private wsManager: WebSocketManager;
+  private isMobile: boolean;
+  private joystickVelocity = { x: 0, y: 0 };
 
   constructor(
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     animationManager: AnimationManager,
     playerId: string,
-    wsManager: WebSocketManager
+    wsManager: WebSocketManager,
+    isMobile: boolean = false
   ) {
     this.scene = scene;
     this.player = player;
     this.animationManager = animationManager;
     this.playerId = playerId;
     this.wsManager = wsManager;
+    this.isMobile = isMobile;
 
     this.setupInput();
   }
 
   private setupInput() {
-    this.cursors = this.scene.input.keyboard!.createCursorKeys();
-    this.wasdKeys = this.scene.input.keyboard!.addKeys({
-      W: Phaser.Input.Keyboard.KeyCodes.W,
-      S: Phaser.Input.Keyboard.KeyCodes.S,
-      A: Phaser.Input.Keyboard.KeyCodes.A,
-      D: Phaser.Input.Keyboard.KeyCodes.D,
-    }) as Record<string, Phaser.Input.Keyboard.Key>;
+    if (!this.isMobile) {
+      this.cursors = this.scene.input.keyboard!.createCursorKeys();
+      this.wasdKeys = this.scene.input.keyboard!.addKeys({
+        W: Phaser.Input.Keyboard.KeyCodes.W,
+        S: Phaser.Input.Keyboard.KeyCodes.S,
+        A: Phaser.Input.Keyboard.KeyCodes.A,
+        D: Phaser.Input.Keyboard.KeyCodes.D,
+      }) as Record<string, Phaser.Input.Keyboard.Key>;
+    }
   }
 
   update(): { moved: boolean; direction: Direction } {
@@ -47,11 +53,16 @@ export class MovementManager {
     let velocityX = 0;
     let velocityY = 0;
 
-    if (this.wasdKeys.A.isDown) velocityX = -1;
-    else if (this.wasdKeys.D.isDown) velocityX = 1;
+    if (this.isMobile) {
+      velocityX = this.joystickVelocity.x;
+      velocityY = this.joystickVelocity.y;
+    } else {
+      if (this.wasdKeys.A.isDown) velocityX = -1;
+      else if (this.wasdKeys.D.isDown) velocityX = 1;
 
-    if (this.wasdKeys.W.isDown) velocityY = -1;
-    else if (this.wasdKeys.S.isDown) velocityY = 1;
+      if (this.wasdKeys.W.isDown) velocityY = -1;
+      else if (this.wasdKeys.S.isDown) velocityY = 1;
+    }
 
     let moved = false;
     if (velocityX !== 0 || velocityY !== 0) {
@@ -103,11 +114,8 @@ export class MovementManager {
     }
   }
 
-  getCurrentDirection(): Direction {
-    return this.currentDirection;
-  }
-
-  setDirection(direction: Direction) {
-    this.currentDirection = direction;
+  setJoystickVelocity(vx: number, vy: number) {
+    this.joystickVelocity.x = vx;
+    this.joystickVelocity.y = vy;
   }
 }

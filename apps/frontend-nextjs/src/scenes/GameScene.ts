@@ -8,6 +8,7 @@ import { MovementManager } from '../lib/MovementManager';
 import { MapManager } from '../lib/MapManager';
 import { MessageHandler } from '../lib/MessageHandler';
 import { VirtualJoystickManager } from '../lib/VirtualJoystickManager';
+import { tileToPixel } from '../lib/types';
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -37,10 +38,6 @@ class GameScene extends Phaser.Scene {
 
     this.animationManager = new AnimationManager(this);
     this.animationManager.preload();
-
-    this.load.on("loaderror", (file: unknown) => {
-      console.error("Failed to load file:", file);
-    });
   }
 
   create() {
@@ -49,10 +46,12 @@ class GameScene extends Phaser.Scene {
     this.animationManager.create();
 
     this.wsManager = new WebSocketManager(this.playerId, this.name, this.character);
-    this.playerManager = new PlayerManager(this, this.animationManager);
+    this.playerManager = new PlayerManager(this, this.animationManager, this.playerId);
 
     this.mapManager.create();
-    const spawnPos = this.mapManager.getRandomSpawnPosition();
+    const spawnTilePos = this.mapManager.getRandomSpawnPosition();
+    // Convert tile spawn to pixel position for local player creation
+    const spawnPixel = tileToPixel(spawnTilePos.tileX, spawnTilePos.tileY);
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
@@ -68,9 +67,11 @@ class GameScene extends Phaser.Scene {
     }
 
     const wsUrl = `${wsBaseUrl}/ws/${this.roomId}`;
-    this.wsManager.connect(wsUrl, spawnPos);
+    // Pass TILE coordinates to WebSocket
+    this.wsManager.connect(wsUrl, spawnTilePos);
 
-    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawnPos.x, spawnPos.y, this.character);
+    // Create local player at PIXEL position (center of spawn tile)
+    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawnPixel.x, spawnPixel.y, this.character);
 
     const isMobile = !this.sys.game.device.os.desktop;
     this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager, isMobile);
@@ -83,8 +84,13 @@ class GameScene extends Phaser.Scene {
 
     this.mapManager.setupColliders(this.player);
     
-    // Add collision between local player and remote players
-    this.physics.add.collider(this.player, this.playerManager.getRemotePlayersGroup());
+    // Set up collision checking for movement
+    this.movementManager.setCollisionChecker((x: number, y: number) => {
+      return this.mapManager.checkCollisionAt(x, y);
+    });
+    
+    // Local player uses tween-based movement, so no physics collision between players
+    // Remote players still use physics for collision detection
 
     this.messageHandler = new MessageHandler(this, this.wsManager, this.playerManager, this.proximityManager, this.callManager, this.animationManager, this.playerId, this.player);
     this.messageHandler.setSceneReady(true);
@@ -125,11 +131,11 @@ class GameScene extends Phaser.Scene {
     window.addEventListener("initiateCall", this.handleInitiateCall);
   }
 
-  update() {
+  update(time: number, delta: number) {
     if (!this.player) return;
 
-    // Update player name tag
-    this.playerManager.updateLocalPlayerPosition(this.playerId, this.player.x, this.player.y);
+    // Update player name tag to follow smooth movement
+    this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
 
     // Handle joystick input for mobile
     if (this.virtualJoystickManager) {
@@ -139,12 +145,8 @@ class GameScene extends Phaser.Scene {
       this.movementManager.setJoystickVelocity(0, 0);
     }
 
-    // Handle movement
-    const { moved } = this.movementManager.update();
-
-    if (moved && this.wsManager) {
-      this.movementManager.sendMovement();
-    }
+    // Handle movement (throttled network sync is now internal)
+    this.movementManager.update(delta);
 
     // Update proximity
     if (this.proximityManager) {

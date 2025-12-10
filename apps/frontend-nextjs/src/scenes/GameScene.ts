@@ -23,10 +23,12 @@ class GameScene extends Phaser.Scene {
   private playerId: string;
   private camera!: Phaser.Cameras.Scene2D.Camera;
   private sceneReady: boolean = false;
+  private handleSendChatMessage?: EventListener;
+  private handleInitiateCall?: EventListener;
 
-  constructor(private name: string, private roomId: string, private character: string) {
+  constructor(private name: string, private roomId: string, private character: string, userId?: string | null) {
     super({ key: "GameScene" });
-    this.playerId = Phaser.Utils.String.UUID();
+    this.playerId = userId || Phaser.Utils.String.UUID();
   }
 
   preload() {
@@ -49,15 +51,26 @@ class GameScene extends Phaser.Scene {
     this.wsManager = new WebSocketManager(this.playerId, this.name, this.character);
     this.playerManager = new PlayerManager(this, this.animationManager);
 
+    this.mapManager.create();
+    const spawnPos = this.mapManager.getRandomSpawnPosition();
+
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
     const defaultWsUrl = `${protocol}//${host}:8080`;
-    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || defaultWsUrl}/ws/${this.roomId}`;
-    this.wsManager.connect(wsUrl);
+    
+    // Use env var if available, otherwise fallback to default
+    let wsBaseUrl = process.env.NEXT_PUBLIC_WS_URL;
 
-    this.mapManager.create();
+    // If no env var, or if env var is localhost but we are NOT on localhost (e.g. network testing),
+    // construct URL from window location
+    if (!wsBaseUrl || (wsBaseUrl.includes('localhost') && host !== 'localhost' && host !== '127.0.0.1')) {
+      wsBaseUrl = `${protocol}//${host}:8080`;
+    }
 
-    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, 5 * 32 + 16, 5 * 32 + 16, this.character);
+    const wsUrl = `${wsBaseUrl}/ws/${this.roomId}`;
+    this.wsManager.connect(wsUrl, spawnPos);
+
+    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawnPos.x, spawnPos.y, this.character);
 
     const isMobile = !this.sys.game.device.os.desktop;
     this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager, isMobile);
@@ -69,6 +82,9 @@ class GameScene extends Phaser.Scene {
     this.proximityManager = new ProximityManager(this, this.wsManager, this.playerManager, this.callManager, this.player, this.playerId);
 
     this.mapManager.setupColliders(this.player);
+    
+    // Add collision between local player and remote players
+    this.physics.add.collider(this.player, this.playerManager.getRemotePlayersGroup());
 
     this.messageHandler = new MessageHandler(this, this.wsManager, this.playerManager, this.proximityManager, this.callManager, this.animationManager, this.playerId, this.player);
     this.messageHandler.setSceneReady(true);
@@ -90,16 +106,30 @@ class GameScene extends Phaser.Scene {
     if (isMobile) {
       this.virtualJoystickManager = new VirtualJoystickManager(this);
     }
+
+    // Listen for chat messages from React
+    this.handleSendChatMessage = ((event: CustomEvent) => {
+      if (this.wsManager) {
+        this.wsManager.send("chat", event.detail);
+      }
+    }) as EventListener;
+    window.addEventListener("sendChatMessage", this.handleSendChatMessage);
+
+    // Listen for call initiation from React
+    this.handleInitiateCall = ((event: CustomEvent) => {
+      const { playerId, type } = event.detail;
+      if (this.proximityManager) {
+        this.proximityManager.initiateCall(playerId, type);
+      }
+    }) as EventListener;
+    window.addEventListener("initiateCall", this.handleInitiateCall);
   }
 
   update() {
     if (!this.player) return;
 
-    // Update player label
-    const label = this.playerManager.getPlayerLabels().get(this.playerId);
-    if (label) {
-      label.setPosition(this.player.x, this.player.y - 20);
-    }
+    // Update player name tag
+    this.playerManager.updateLocalPlayerPosition(this.playerId, this.player.x, this.player.y);
 
     // Handle joystick input for mobile
     if (this.virtualJoystickManager) {
@@ -128,6 +158,12 @@ class GameScene extends Phaser.Scene {
   }
 
   public cleanup() {
+    if (this.handleSendChatMessage) {
+      window.removeEventListener("sendChatMessage", this.handleSendChatMessage);
+    }
+    if (this.handleInitiateCall) {
+      window.removeEventListener("initiateCall", this.handleInitiateCall);
+    }
     this.wsManager.disconnect();
     this.playerManager.destroy();
     this.proximityManager.destroy();

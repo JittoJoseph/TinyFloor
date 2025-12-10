@@ -289,10 +289,8 @@ export class CallManager {
     
     if (accepted) {
       // Call was accepted, wait for WebRTC offer from the other peer
-      console.log('Call accepted by', from);
     } else {
       // Call was declined
-      console.log('Call declined by', from);
       this.cleanupCall(from);
     }
   }
@@ -357,7 +355,6 @@ export class CallManager {
 
   handleCallEnded(data: Record<string, unknown>) {
     const { from } = data as { from: string };
-    console.log('Received call_ended from:', from);
     this.cleanupCall(from);
   }
 

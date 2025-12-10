@@ -2,7 +2,7 @@ import * as Phaser from 'phaser';
 
 export type CharacterName = 'Adam' | 'Alex' | 'Amelia' | 'Bob';
 export type AnimationState = 'idle' | 'run';
-export type Direction = 'right' | 'up' | 'left' | 'down';
+export type Direction = 'right' | 'up' | 'left' | 'down' | 'up-right' | 'up-left' | 'down-right' | 'down-left';
 
 export class AnimationManager {
   private scene: Phaser.Scene;
@@ -73,6 +73,27 @@ export class AnimationManager {
   }
 
   getAnimationKey(char: string, state: AnimationState, direction: Direction): string {
-    return `${char}_${state}_${direction}`;
+    // Map diagonal directions to cardinal directions for animation
+    const animDirection = this.getAnimationDirection(direction);
+    return `${char}_${state}_${animDirection}`;
+  }
+
+  private getAnimationDirection(direction: Direction): 'right' | 'up' | 'left' | 'down' {
+    switch (direction) {
+      case 'up-right':
+      case 'right':
+        return 'right';
+      case 'up-left':
+      case 'up':
+        return 'up';
+      case 'down-left':
+      case 'left':
+        return 'left';
+      case 'down-right':
+      case 'down':
+        return 'down';
+      default:
+        return 'down';
+    }
   }
 }

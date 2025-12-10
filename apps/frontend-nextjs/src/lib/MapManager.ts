@@ -1,4 +1,5 @@
 import * as Phaser from 'phaser';
+import { TILE_SIZE, tileToPixel } from './types';
 
 export class MapManager {
   private scene: Phaser.Scene;
@@ -72,8 +73,8 @@ export class MapManager {
     // Add physics to player
     if (player) {
       const playerBody = player.body as Phaser.Physics.Arcade.Body;
-      player.setScale(2);
-      playerBody.setSize(10, 8).setOffset(3, 24);
+      // Don't override scale - it's set in PlayerManager
+      playerBody.setSize(10, 8).setOffset(3, 56); // Adjusted for feet origin (64px sprite height)
       playerBody.setCollideWorldBounds(true);
       this.scene.physics.add.collider(player, this.solids);
     }
@@ -84,32 +85,49 @@ export class MapManager {
     }
   }
 
-  getRandomSpawnPosition(): { x: number; y: number } {
-    const width = this.map.widthInPixels;
-    const height = this.map.heightInPixels;
-    const padding = 64; // Don't spawn too close to edge
+  // Returns spawn position in TILE coordinates
+  getRandomSpawnPosition(): { tileX: number; tileY: number } {
+    const widthTiles = Math.floor(this.map.widthInPixels / TILE_SIZE);
+    const heightTiles = Math.floor(this.map.heightInPixels / TILE_SIZE);
+    const paddingTiles = 2; // Don't spawn too close to edge (2 tiles)
 
     for (let i = 0; i < 50; i++) {
-      const x = Phaser.Math.Between(padding, width - padding);
-      const y = Phaser.Math.Between(padding, height - padding);
+      const tileX = Phaser.Math.Between(paddingTiles, widthTiles - paddingTiles);
+      const tileY = Phaser.Math.Between(paddingTiles, heightTiles - paddingTiles);
       
-      // Check collision with solids
+      // Check collision with solids at pixel center
+      const pixelPos = tileToPixel(tileX, tileY);
+      const pixelX = pixelPos.x;
+      const pixelY = pixelPos.y;
+      
       let collides = false;
       this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
         const body = child.body as Phaser.Physics.Arcade.StaticBody;
-        if (body.hitTest(x, y)) {
+        if (body.hitTest(pixelX, pixelY)) {
           collides = true;
         }
         return null;
       });
 
       if (!collides) {
-        return { x, y };
+        return { tileX, tileY };
       }
     }
     
-    // Fallback
-    return { x: 160, y: 160 };
+    // Fallback to tile (5, 5)
+    return { tileX: 5, tileY: 5 };
+  }
+
+  checkCollisionAt(pixelX: number, pixelY: number): boolean {
+    let collides = false;
+    this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
+      const body = child.body as Phaser.Physics.Arcade.StaticBody;
+      if (body.hitTest(pixelX, pixelY)) {
+        collides = true;
+      }
+      return null;
+    });
+    return collides;
   }
 
   getMapWidth(): number {

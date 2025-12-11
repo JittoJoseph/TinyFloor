@@ -3,6 +3,7 @@ package com.spatialmeet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spatialmeet.model.Message;
 import com.spatialmeet.model.Player;
+import com.spatialmeet.service.RoomService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -19,11 +20,17 @@ import java.util.stream.Collectors;
 public class GameWebSocketHandler extends TextWebSocketHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final RoomService roomService;
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
     private static final String[] AVAILABLE_SPRITES = {"Adam", "Alex", "Amelia", "Bob"};
     private final java.util.Random random = new java.util.Random();
+
+    public GameWebSocketHandler(RoomService roomService) {
+        this.roomService = roomService;
+    }
+
     private String getRoomIdFromSession(WebSocketSession session) {
         String path = session.getUri().getPath();
         String[] parts = path.split("/");
@@ -60,7 +67,18 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             case "call_ended":
                 handleCallEnded(session, msg);
                 break;
+            case "chat":
+                handleChat(session, msg);
+                break;
         }
+    }
+
+    private void handleChat(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+        
+        // Broadcast chat message to all players in the room
+        broadcastToRoom(roomId, msg, null);
     }
 
     private void handleJoin(WebSocketSession session, Message msg) throws IOException {
@@ -70,13 +88,16 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         Map<String, Object> data = (Map<String, Object>) msg.getData();
         String playerName = (String) data.get("name");
         String sprite = (String) data.get("sprite");
+        Integer clientSpawnX = data.containsKey("x") ? (Integer) data.get("x") : null;
+        Integer clientSpawnY = data.containsKey("y") ? (Integer) data.get("y") : null;
+        String userId = (String) data.get("userId");
         
         // Generate a unique player ID
-        String playerId = "player_" + System.currentTimeMillis() + "_" + (int)(Math.random() * 1000);
+        String playerId = userId != null ? userId : "player_" + System.currentTimeMillis() + "_" + (int)(Math.random() * 1000);
         
         // Create player at spawn position
-        int spawnX = 160;
-        int spawnY = 160;
+        int spawnX = clientSpawnX != null ? clientSpawnX : 160;
+        int spawnY = clientSpawnY != null ? clientSpawnY : 160;
         Player player = new Player(playerId, playerName != null ? playerName : "User", spawnX, spawnY);
         
         // Assign sprite
@@ -272,6 +293,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             if (roomId != null) {
                 roomPlayers.get(roomId).remove(playerId);
                 roomSessions.get(roomId).remove(playerId);
+                
+                // Update room service to decrease player count
+                roomService.leaveRoom(roomId, playerId);
                 
                 // Broadcast user-left to remaining players in room
                 Map<String, Object> leftData = new HashMap<>();

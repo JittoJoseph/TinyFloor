@@ -8,9 +8,15 @@ interface PhaserGameProps {
   name: string;
   roomId: string;
   character: string;
+  userId?: string | null;
 }
 
-const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
+const PhaserGame: React.FC<PhaserGameProps> = ({
+  name,
+  roomId,
+  character,
+  userId,
+}) => {
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
 
@@ -21,7 +27,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
         width: window.innerWidth,
         height: window.innerHeight,
         parent: gameRef.current,
-        scene: new GameScene(name, roomId, character),
+        scene: new GameScene(name, roomId, character, userId),
         backgroundColor: "#f0f0f0",
         physics: {
           default: "arcade",
@@ -43,11 +49,23 @@ const PhaserGame: React.FC<PhaserGameProps> = ({ name, roomId, character }) => {
           scene.cleanup();
         }
 
-        game.current.destroy(true);
+        // Prevent audio errors on destroy
+        if (game.current.sound) {
+          game.current.sound.pauseOnBlur = false;
+          game.current.sound.removeAll();
+          game.current.sound.stopAll();
+        }
+
+        try {
+          game.current.destroy(true);
+        } catch (error) {
+          console.error("Error destroying game instance:", error);
+        }
+
         game.current = null;
       }
     };
-  }, [name, roomId, character]);
+  }, [name, roomId, character, userId]);
 
   return <div ref={gameRef} />;
 };

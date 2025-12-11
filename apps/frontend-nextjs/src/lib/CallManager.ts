@@ -1,61 +1,159 @@
 import * as Phaser from 'phaser';
 import { WebSocketManager } from './WebSocketManager';
 
+interface ICEServer {
+  urls: string | string[];
+  username?: string;
+  credential?: string;
+}
+
+interface CallState {
+  peerId: string;
+  peerName: string;
+  callType: 'audio' | 'video';
+  status: 'connecting' | 'connected' | 'reconnecting';
+  startTime: number;
+}
+
 export class CallManager {
   private scene: Phaser.Scene;
   private wsManager: WebSocketManager;
   private playerId: string;
-  private activeCalls: Map<string, string> = new Map(); // id -> callType
-  private incomingCallModal: Phaser.GameObjects.Container | null = null;
+  private activeCalls: Map<string, CallState> = new Map();
   private currentIncomingCall: {
     from: string;
     fromName: string;
-    callType: string;
+    callType: 'audio' | 'video';
   } | null = null;
   private peerConnections: Map<string, RTCPeerConnection> = new Map();
   private localStream: MediaStream | null = null;
+  private remoteStreams: Map<string, MediaStream> = new Map();
+  private micEnabled: boolean = true;
+  private videoEnabled: boolean = true;
+
+  // ICE servers for better connectivity
+  private iceServers: ICEServer[] = [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' },
+    { urls: 'stun:stun2.l.google.com:19302' },
+    // Add TURN servers for production - these would come from env vars
+    // { urls: 'turn:turn.example.com:3478', username: 'user', credential: 'pass' }
+  ];
 
   constructor(scene: Phaser.Scene, wsManager: WebSocketManager, playerId: string) {
     this.scene = scene;
     this.wsManager = wsManager;
     this.playerId = playerId;
+    this.setupEventListeners();
   }
 
-  initiateCall(toId: string, callType: string) {
-    if (this.wsManager) {
-      this.wsManager.send("request_call", { from: this.playerId, to: toId, callType });
+  private setupEventListeners() {
+    // Listen for control bar events
+    window.addEventListener('micToggle', ((e: CustomEvent) => {
+      this.toggleMicrophone(e.detail.enabled);
+    }) as EventListener);
+
+    window.addEventListener('videoToggle', ((e: CustomEvent) => {
+      this.toggleVideo(e.detail.enabled);
+    }) as EventListener);
+
+    window.addEventListener('leaveCall', (() => {
+      this.endAllCalls();
+    }) as EventListener);
+
+    window.addEventListener('acceptCall', (() => {
+      this.acceptCall();
+    }) as EventListener);
+
+    window.addEventListener('declineCall', (() => {
+      this.declineCall();
+    }) as EventListener);
+  }
+
+  async initiateCall(toId: string, callType: 'audio' | 'video') {
+    try {
+      // Request media permissions first
+      this.localStream = await this.getLocalStream(callType);
+      
+      if (this.wsManager) {
+        this.wsManager.send("request_call", { 
+          from: this.playerId, 
+          to: toId, 
+          callType 
+        });
+      }
+
+      // Notify UI that call is starting
+      window.dispatchEvent(new CustomEvent('callStarted'));
+      
+    } catch (error) {
+      console.error('Failed to initiate call:', error);
+      window.dispatchEvent(new CustomEvent('callError', { detail: { error: 'Failed to access media devices' } }));
     }
   }
 
+  private async getLocalStream(callType: 'audio' | 'video'): Promise<MediaStream> {
+    // If we already have a stream with the right tracks, reuse it
+    if (this.localStream) {
+      const hasVideo = this.localStream.getVideoTracks().length > 0;
+      if (callType === 'audio' || (callType === 'video' && hasVideo)) {
+        // Ensure tracks match current state
+        this.localStream.getAudioTracks().forEach(track => track.enabled = this.micEnabled);
+        if (callType === 'video') {
+          this.localStream.getVideoTracks().forEach(track => track.enabled = this.videoEnabled);
+        }
+        return this.localStream;
+      }
+      // Need to upgrade to video
+      this.localStream.getTracks().forEach(track => track.stop());
+    }
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      throw new Error("Media devices not supported. If you are on a local network, you must enable 'Insecure origins treated as secure' in chrome://flags.");
+    }
+
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+      },
+      video: callType === 'video' ? {
+        width: { ideal: 640 },
+        height: { ideal: 480 },
+        facingMode: 'user',
+      } : false,
+    });
+
+    // Apply current mute/video state
+    stream.getAudioTracks().forEach(track => track.enabled = this.micEnabled);
+    if (callType === 'video') {
+      stream.getVideoTracks().forEach(track => track.enabled = this.videoEnabled);
+    }
+
+    return stream;
+  }
+
   initiateChat() {
-    // TODO: Implement chat
+    // Dispatch event to open chat panel
+    window.dispatchEvent(new CustomEvent('openChat'));
   }
 
   handleIncomingCall(data: Record<string, unknown>) {
-    const { from, fromName, callType } = data as { from: string; fromName: string; callType: string };
+    const { from, fromName, callType } = data as { 
+      from: string; 
+      fromName: string; 
+      callType: 'audio' | 'video';
+    };
     this.currentIncomingCall = { from, fromName, callType };
 
-    this.incomingCallModal = this.scene.add.container(640, 320);
-    const bg = this.scene.add.rectangle(0, 0, 300, 150, 0xffffff);
-    bg.setStrokeStyle(2, 0x000000);
-    this.incomingCallModal.add(bg);
+    // Dispatch event for React UI
+    window.dispatchEvent(new CustomEvent('incomingCall', { 
+      detail: { from, fromName, callType } 
+    }));
 
-    const title = this.scene.add.text(0, -50, `${fromName} is calling (${callType})`, { fontSize: "16px", color: "#000" });
-    title.setOrigin(0.5);
-    this.incomingCallModal.add(title);
-
-    const acceptBtn = this.scene.add.text(-50, 20, "Accept", { fontSize: "14px", color: "#00ff00" });
-    acceptBtn.setInteractive();
-    acceptBtn.on("pointerdown", () => this.acceptCall());
-    this.incomingCallModal.add(acceptBtn);
-
-    const declineBtn = this.scene.add.text(50, 20, "Decline", { fontSize: "14px", color: "#ff0000" });
-    declineBtn.setInteractive();
-    declineBtn.on("pointerdown", () => this.declineCall());
-    this.incomingCallModal.add(declineBtn);
-
-    // Auto decline after 20s
-    this.scene.time.delayedCall(20000, () => {
+    // Auto decline after 30 seconds
+    this.scene.time.delayedCall(30000, () => {
       if (this.currentIncomingCall) {
         this.declineCall();
       }
@@ -63,50 +161,109 @@ export class CallManager {
   }
 
   private async acceptCall() {
-    if (this.currentIncomingCall) {
-      const { from, callType } = this.currentIncomingCall;
-      try {
-        this.localStream = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: callType === "video",
+    if (!this.currentIncomingCall) return;
+
+    const { from, fromName, callType } = this.currentIncomingCall;
+    
+    try {
+      this.localStream = await this.getLocalStream(callType);
+      
+      const pc = this.createPeerConnection(from);
+      this.peerConnections.set(from, pc);
+
+      // Add local tracks
+      this.localStream.getTracks().forEach(track => {
+        pc.addTrack(track, this.localStream!);
+      });
+
+      // Create and send offer
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      
+      if (this.wsManager) {
+        this.wsManager.send("webrtc_signal", {
+          from: this.playerId,
+          to: from,
+          data: { type: 'offer', sdp: offer.sdp },
         });
-        const pc = new RTCPeerConnection({
-          iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+
+        this.wsManager.send("call_response", { 
+          from, 
+          to: this.playerId, 
+          accepted: true 
         });
-        this.peerConnections.set(from, pc);
-
-        this.localStream.getTracks().forEach((track) => pc.addTrack(track, this.localStream!));
-
-        pc.onicecandidate = (event) => {
-          if (event.candidate && this.wsManager) {
-            this.wsManager.send("webrtc_signal", {
-              from: this.playerId,
-              to: from,
-              data: { type: "candidate", candidate: event.candidate },
-            });
-          }
-        };
-
-        pc.ontrack = (_event) => {
-          // TODO: Handle remote stream
-        };
-
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-        if (this.wsManager) {
-          this.wsManager.send("webrtc_signal", { from: this.playerId, to: from, data: offer });
-        }
-
-        if (this.wsManager) {
-          this.wsManager.send("call_response", { from, to: this.playerId, accepted: true });
-        }
-        this.hideIncomingCallModal();
-        this.activeCalls.set(from, callType);
-      } catch (error) {
-        console.error("Error accepting call:", error);
-        this.declineCall();
       }
+
+      this.hideIncomingCallModal();
+      
+      this.activeCalls.set(from, {
+        peerId: from,
+        peerName: fromName,
+        callType,
+        status: 'connecting',
+        startTime: Date.now(),
+      });
+
+      window.dispatchEvent(new CustomEvent('callStarted'));
+      
+    } catch (error) {
+      console.error("Error accepting call:", error);
+      window.dispatchEvent(new CustomEvent('callError', { detail: { error: 'Failed to accept call' } }));
+      this.declineCall();
     }
+  }
+
+  private createPeerConnection(peerId: string): RTCPeerConnection {
+    const pc = new RTCPeerConnection({
+      iceServers: this.iceServers,
+      iceCandidatePoolSize: 10,
+    });
+
+    pc.onicecandidate = (event) => {
+      if (event.candidate && this.wsManager) {
+        this.wsManager.send("webrtc_signal", {
+          from: this.playerId,
+          to: peerId,
+          data: { type: 'candidate', candidate: event.candidate.toJSON() },
+        });
+      }
+    };
+
+    pc.oniceconnectionstatechange = () => {
+      const callState = this.activeCalls.get(peerId);
+      if (callState) {
+        switch (pc.iceConnectionState) {
+          case 'connected':
+          case 'completed':
+            callState.status = 'connected';
+            break;
+          case 'disconnected':
+            callState.status = 'reconnecting';
+            break;
+          case 'failed':
+          case 'closed':
+            this.endCall(peerId, 'connection_lost');
+            break;
+        }
+      }
+    };
+
+    pc.ontrack = (event) => {
+      const stream = event.streams[0];
+      if (stream) {
+        this.remoteStreams.set(peerId, stream);
+        this.createVideoElement(peerId, stream);
+      }
+    };
+
+    return pc;
+  }
+
+  private createVideoElement(peerId: string, stream: MediaStream) {
+    // Dispatch event for React UI
+    window.dispatchEvent(new CustomEvent('remoteStreamAdded', { 
+      detail: { peerId, stream } 
+    }));
   }
 
   private declineCall() {
@@ -123,54 +280,163 @@ export class CallManager {
   }
 
   private hideIncomingCallModal() {
-    if (this.incomingCallModal) {
-      this.incomingCallModal.destroy();
-      this.incomingCallModal = null;
-    }
     this.currentIncomingCall = null;
+    window.dispatchEvent(new CustomEvent('incomingCallEnded'));
   }
 
   handleCallResponse(data: Record<string, unknown>) {
-    const { accepted } = data as { accepted: boolean };
+    const { from, accepted } = data as { from: string; accepted: boolean };
+    
     if (accepted) {
-      // Similar to acceptCall but for caller
-      // Implementation needed
+      // Call was accepted, wait for WebRTC offer from the other peer
+      console.log('Call accepted by', from);
+    } else {
+      // Call was declined
+      console.log('Call declined by', from);
+      this.cleanupCall(from);
     }
   }
 
-  handleWebRTCSignal(_data: Record<string, unknown>) {
-    // Implementation
+  async handleWebRTCSignal(data: Record<string, unknown>) {
+    const { from, data: signalData } = data as { 
+      from: string; 
+      data: { type: string; sdp?: string; candidate?: RTCIceCandidateInit };
+    };
+
+    try {
+      if (signalData.type === 'offer') {
+        // Received an offer, create answer
+        let pc = this.peerConnections.get(from);
+        if (!pc) {
+          pc = this.createPeerConnection(from);
+          this.peerConnections.set(from, pc);
+          
+          // Add local tracks if we have them
+          if (this.localStream) {
+            this.localStream.getTracks().forEach(track => {
+              pc!.addTrack(track, this.localStream!);
+            });
+          }
+        }
+
+        await pc.setRemoteDescription(new RTCSessionDescription({
+          type: 'offer',
+          sdp: signalData.sdp,
+        }));
+
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+
+        if (this.wsManager) {
+          this.wsManager.send("webrtc_signal", {
+            from: this.playerId,
+            to: from,
+            data: { type: 'answer', sdp: answer.sdp },
+          });
+        }
+
+      } else if (signalData.type === 'answer') {
+        const pc = this.peerConnections.get(from);
+        if (pc) {
+          await pc.setRemoteDescription(new RTCSessionDescription({
+            type: 'answer',
+            sdp: signalData.sdp,
+          }));
+        }
+
+      } else if (signalData.type === 'candidate' && signalData.candidate) {
+        const pc = this.peerConnections.get(from);
+        if (pc) {
+          await pc.addIceCandidate(new RTCIceCandidate(signalData.candidate));
+        }
+      }
+    } catch (error) {
+      console.error('Error handling WebRTC signal:', error);
+    }
   }
 
-  handleCallEnded(_data: Record<string, unknown>) {
-    // Implementation
+  handleCallEnded(data: Record<string, unknown>) {
+    const { from } = data as { from: string };
+    console.log('Received call_ended from:', from);
+    this.cleanupCall(from);
+  }
+
+  private cleanupCall(peerId: string) {
+    const pc = this.peerConnections.get(peerId);
+    if (pc) {
+      pc.close();
+      this.peerConnections.delete(peerId);
+    }
+
+    this.activeCalls.delete(peerId);
+    this.remoteStreams.delete(peerId);
+
+    // Dispatch event for React UI
+    window.dispatchEvent(new CustomEvent('remoteStreamRemoved', { detail: { peerId } }));
+
+    // If no more calls, stop local stream and notify UI
+    if (this.activeCalls.size === 0) {
+      if (this.localStream) {
+        this.localStream.getTracks().forEach(track => track.stop());
+        this.localStream = null;
+      }
+      window.dispatchEvent(new CustomEvent('callEnded'));
+    }
   }
 
   endCall(toId: string, reason: string) {
     if (this.wsManager) {
-      this.wsManager.send("call_ended", { from: this.playerId, to: toId, reason });
+      this.wsManager.send("call_ended", { 
+        from: this.playerId, 
+        to: toId, 
+        reason 
+      });
     }
-    this.activeCalls.delete(toId);
+    this.cleanupCall(toId);
+  }
 
-    const pc = this.peerConnections.get(toId);
-    if (pc) {
-      pc.close();
-      this.peerConnections.delete(toId);
-    }
+  private endAllCalls() {
+    const callIds = Array.from(this.activeCalls.keys());
+    callIds.forEach(id => this.endCall(id, 'user_hangup'));
+  }
 
-    if (this.activeCalls.size === 0 && this.localStream) {
-      this.localStream.getTracks().forEach((track) => track.stop());
-      this.localStream = null;
+  toggleMicrophone(enabled: boolean) {
+    this.micEnabled = enabled;
+    if (this.localStream) {
+      this.localStream.getAudioTracks().forEach(track => {
+        track.enabled = enabled;
+      });
     }
   }
 
-  cleanup() {
-    this.peerConnections.forEach((pc) => pc.close());
-    this.peerConnections.clear();
+  toggleVideo(enabled: boolean) {
+    this.videoEnabled = enabled;
     if (this.localStream) {
-      this.localStream.getTracks().forEach((track) => track.stop());
+      this.localStream.getVideoTracks().forEach(track => {
+        track.enabled = enabled;
+      });
+    }
+  }
+
+  isInCall(): boolean {
+    return this.activeCalls.size > 0;
+  }
+
+  getActiveCalls(): CallState[] {
+    return Array.from(this.activeCalls.values());
+  }
+
+  cleanup() {
+    this.endAllCalls();
+    this.peerConnections.forEach(pc => pc.close());
+    this.peerConnections.clear();
+    
+    if (this.localStream) {
+      this.localStream.getTracks().forEach(track => track.stop());
       this.localStream = null;
     }
+    
     this.activeCalls.clear();
+    this.remoteStreams.clear();
   }
 }

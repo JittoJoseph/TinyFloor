@@ -1,11 +1,17 @@
 package com.spatialmeet.model;
 
 public class Player {
+    // Tile-based movement constants
+    public static final int TILE_SIZE = 32;
+    public static final int MAP_WIDTH_TILES = 55;   // 1760 / 32
+    public static final int MAP_HEIGHT_TILES = 25;  // 800 / 32
+    
     private String id;
     private String name;
     private String sprite;
-    private int tileX;
-    private int tileY;
+    private int tileX;  // Tile coordinate (not pixels)
+    private int tileY;  // Tile coordinate (not pixels)
+    private String direction = "down";
     private long lastSeen;
     private String inCallWith;
 
@@ -18,6 +24,13 @@ public class Player {
         this.tileX = tileX;
         this.tileY = tileY;
         this.lastSeen = System.currentTimeMillis();
+    }
+    
+    public int getPixelX() { return tileX * TILE_SIZE + TILE_SIZE / 2; }
+    public int getPixelY() { return tileY * TILE_SIZE + TILE_SIZE / 2; }
+    
+    public static boolean isValidTile(int tx, int ty) {
+        return tx >= 1 && tx < MAP_WIDTH_TILES - 1 && ty >= 1 && ty < MAP_HEIGHT_TILES - 1;
     }
 
     // Getters and setters
@@ -35,6 +48,9 @@ public class Player {
 
     public int getTileY() { return tileY; }
     public void setTileY(int tileY) { this.tileY = tileY; }
+
+    public String getDirection() { return direction; }
+    public void setDirection(String direction) { this.direction = direction; }
 
     public long getLastSeen() { return lastSeen; }
     public void setLastSeen(long lastSeen) { this.lastSeen = lastSeen; }

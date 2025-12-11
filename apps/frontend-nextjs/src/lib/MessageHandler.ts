@@ -4,6 +4,7 @@ import { PlayerManager } from './PlayerManager';
 import { ProximityManager } from './ProximityManager';
 import { CallManager } from './CallManager';
 import { AnimationManager, Direction } from './AnimationManager';
+import { tileToPixel, TILE_SIZE } from './types';
 
 export class MessageHandler {
   private scene: Phaser.Scene;
@@ -53,6 +54,9 @@ export class MessageHandler {
       case "movement":
         this.handleMovement(msg.data);
         break;
+      case "movements_batch":
+        this.handleMovementsBatch(msg.data);
+        break;
       case "user-left":
         this.handleUserLeft(msg.data);
         break;
@@ -84,12 +88,16 @@ export class MessageHandler {
   private handleSpaceJoined(data: Record<string, unknown>) {
     if (!this.player) return; // Guard against destroyed player
 
-    const spawnX = data.spawnX as number;
-    const spawnY = data.spawnY as number;
+    // Server now sends tile coordinates
+    const spawnTileX = data.tileX as number;
+    const spawnTileY = data.tileY as number;
     const sprite = data.sprite as string;
-    const existingUsers = data.existingUsers as Array<{id: string; name: string; x: number; y: number; sprite: string}>;
+    const existingUsers = data.existingUsers as Array<{id: string; name: string; tileX: number; tileY: number; sprite: string}>;
+    
     if (this.player) {
-      this.player.setPosition(spawnX, spawnY);
+      // Convert tile to pixel position
+      const spawnPos = tileToPixel(spawnTileX, spawnTileY);
+      this.player.setPosition(spawnPos.x, spawnPos.y);
       
       if (sprite) {
         const validSprites = ['Adam', 'Alex', 'Amelia', 'Bob'];
@@ -99,21 +107,53 @@ export class MessageHandler {
       }
     }
 
+    // Add existing players (using tile coordinates)
     existingUsers.forEach((user) => {
-      this.playerManager.addPlayer(user.id, user.name, user.x, user.y, user.sprite);
+      this.playerManager.addPlayer(user.id, user.name, user.tileX, user.tileY, user.sprite);
     });
     this.dispatchPlayerList();
   }
 
   private handleMovementRejected(data: Record<string, unknown>) {
-    // This might need to be handled in MovementManager or GameScene
-    // For now, leave as is
+    // Server sends tile coordinates for correction
+    const tileX = data.tileX as number;
+    const tileY = data.tileY as number;
+    
+    if (this.player) {
+      // Convert tile to pixel and smoothly correct position
+      const targetPos = tileToPixel(tileX, tileY);
+      this.scene.tweens.add({
+        targets: this.player,
+        x: targetPos.x,
+        y: targetPos.y,
+        duration: 150,
+        ease: 'Power2',
+      });
+    }
   }
 
   private handleMovement(data: Record<string, unknown>) {
-    const { id, x, y, direction } = data as { id: string; x: number; y: number; direction: string };
+    // Single movement update (tile-based)
+    const { id, tileX, tileY, direction } = data as { id: string; tileX: number; tileY: number; direction: string };
     if (id !== this.playerId) {
-      this.playerManager.updatePlayerPosition(id, x, y, direction as Direction);
+      this.playerManager.updatePlayerPosition(id, tileX, tileY, direction as Direction);
+    }
+  }
+
+  private handleMovementsBatch(data: Record<string, unknown>) {
+    // Batched movement updates (tile-based)
+    const movements = data.movements as Array<{ id: string; tileX: number; tileY: number; direction: string }>;
+    if (!movements) return;
+    
+    for (const movement of movements) {
+      if (movement.id !== this.playerId) {
+        this.playerManager.updatePlayerPosition(
+          movement.id, 
+          movement.tileX, 
+          movement.tileY, 
+          movement.direction as Direction
+        );
+      }
     }
   }
 
@@ -126,8 +166,9 @@ export class MessageHandler {
   }
 
   private handleUserJoin(data: Record<string, unknown>) {
-    const { id, name, x, y, sprite } = data as { id: string; name: string; x: number; y: number; sprite: string };
-    this.playerManager.addPlayer(id, name, x, y, sprite);
+    // User join now uses tile coordinates
+    const { id, name, tileX, tileY, sprite } = data as { id: string; name: string; tileX: number; tileY: number; sprite: string };
+    this.playerManager.addPlayer(id, name, tileX, tileY, sprite);
     this.dispatchPlayerList();
   }
 

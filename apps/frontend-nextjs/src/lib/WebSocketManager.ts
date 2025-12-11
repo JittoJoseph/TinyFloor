@@ -22,7 +22,7 @@ export class WebSocketManager {
     this.onMessageCallback = callback;
   }
 
-  connect(url: string) {
+  connect(url: string, spawnPos?: { x: number; y: number }) {
     this.shouldReconnect = true;
     this.ws = new WebSocket(url);
     this.ws.onopen = () => {
@@ -33,6 +33,9 @@ export class WebSocketManager {
         token: "dummy-token-" + this.playerId,
         name: this.name,
         sprite: this.character,
+        x: spawnPos?.x,
+        y: spawnPos?.y,
+        userId: this.playerId,
       });
       // Then send queued messages
       while (this.messageQueue.length > 0) {

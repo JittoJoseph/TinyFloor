@@ -71,7 +71,14 @@ export class MessageHandler {
       case "call_ended":
         this.callManager.handleCallEnded(msg.data);
         break;
+      case "chat":
+        this.handleChat(msg.data);
+        break;
     }
+  }
+
+  private handleChat(data: Record<string, unknown>) {
+    window.dispatchEvent(new CustomEvent("chatMessage", { detail: data }));
   }
 
   private handleSpaceJoined(data: Record<string, unknown>) {
@@ -95,6 +102,7 @@ export class MessageHandler {
     existingUsers.forEach((user) => {
       this.playerManager.addPlayer(user.id, user.name, user.x, user.y, user.sprite);
     });
+    this.dispatchPlayerList();
   }
 
   private handleMovementRejected(data: Record<string, unknown>) {
@@ -114,10 +122,17 @@ export class MessageHandler {
     this.playerManager.removePlayer(id);
     this.proximityManager.destroyProximityCard(id);
     this.callManager.endCall(id, "user_left");
+    this.dispatchPlayerList();
   }
 
   private handleUserJoin(data: Record<string, unknown>) {
     const { id, name, x, y, sprite } = data as { id: string; name: string; x: number; y: number; sprite: string };
     this.playerManager.addPlayer(id, name, x, y, sprite);
+    this.dispatchPlayerList();
+  }
+
+  private dispatchPlayerList() {
+    const players = this.playerManager.getPlayerList();
+    window.dispatchEvent(new CustomEvent("playerListUpdated", { detail: players }));
   }
 }

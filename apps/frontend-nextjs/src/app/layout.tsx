@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { VT323, Nunito } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ToastProvider } from "@/components/ui/Toast";
 
 const vt323 = VT323({
   variable: "--font-pixel",
@@ -28,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${vt323.variable} ${nunito.variable} antialiased`}>
-        {children}
+        <AuthProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

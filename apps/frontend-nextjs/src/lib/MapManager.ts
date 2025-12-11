@@ -36,9 +36,11 @@ export class MapManager {
 
     // Create over player layer
     this.map.createLayer("OverPlayer_Layer", [rb, mo], 0, 0)!.setDepth(20000);
+    
+    this.createColliders();
   }
 
-  setupColliders(player: Phaser.Physics.Arcade.Sprite) {
+  private createColliders() {
     // Build colliders from object layer
     const collLayer = this.map.getObjectLayer("Colliders");
     this.solids = this.scene.physics.add.staticGroup();
@@ -64,7 +66,9 @@ export class MapManager {
         this.solids.add(rect);
       });
     }
+  }
 
+  setupColliders(player: Phaser.Physics.Arcade.Sprite) {
     // Add physics to player
     if (player) {
       const playerBody = player.body as Phaser.Physics.Arcade.Body;
@@ -78,6 +82,34 @@ export class MapManager {
     if (player) {
       player.setDepth(10000);
     }
+  }
+
+  getRandomSpawnPosition(): { x: number; y: number } {
+    const width = this.map.widthInPixels;
+    const height = this.map.heightInPixels;
+    const padding = 64; // Don't spawn too close to edge
+
+    for (let i = 0; i < 50; i++) {
+      const x = Phaser.Math.Between(padding, width - padding);
+      const y = Phaser.Math.Between(padding, height - padding);
+      
+      // Check collision with solids
+      let collides = false;
+      this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
+        const body = child.body as Phaser.Physics.Arcade.StaticBody;
+        if (body.hitTest(x, y)) {
+          collides = true;
+        }
+        return null;
+      });
+
+      if (!collides) {
+        return { x, y };
+      }
+    }
+    
+    // Fallback
+    return { x: 160, y: 160 };
   }
 
   getMapWidth(): number {

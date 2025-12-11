@@ -1,2 +1,30 @@
 server:
   port: ${PORT:8080}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      database: spatialmeet
+
+  # Disable default security password generation
+  security:
+    user:
+      name: admin
+      password: ${ADMIN_PASSWORD:admin123}
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-here-make-it-long-enough-for-hs256}
+  expiration: 86400000 # 24 hours in milliseconds
+
+# Room Configuration
+room:
+  max-players: 20
+  max-public-rooms: 50
+  inactive-timeout: 604800000 # 7 days in milliseconds
+  cleanup-interval: 3600000 # 1 hour in milliseconds
+
+# CORS Configuration
+cors:
+  allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:3001,http://10.161.254.53:3000}

@@ -10,9 +10,10 @@ export class ProximityManager {
   private callManager: CallManager;
   private currentPlayer: Phaser.Physics.Arcade.Sprite;
   private playerId: string;
-  private proximityCards: Map<string, Phaser.GameObjects.Container> = new Map();
-  private R_PROXIMITY = 2 * 32; // 2 tiles
+  private nearbyPlayers: Set<string> = new Set();
+  private R_PROXIMITY = 2.5 * 32; // 2.5 tiles
   private activeCalls: Set<string> = new Set();
+  private playerNames: Map<string, string> = new Map();
 
   constructor(scene: Phaser.Scene, wsManager: WebSocketManager, playerManager: PlayerManager, callManager: CallManager, currentPlayer: Phaser.Physics.Arcade.Sprite, playerId: string) {
     this.scene = scene;
@@ -23,8 +24,14 @@ export class ProximityManager {
     this.playerId = playerId;
   }
 
+  setPlayerName(playerId: string, name: string) {
+    this.playerNames.set(playerId, name);
+  }
+
   update() {
-    if (!this.currentPlayer) return; // Guard against undefined player
+    if (!this.currentPlayer) return;
+
+    const nearbyData: Array<{ id: string; name: string; x: number; y: number }> = [];
 
     this.playerManager.getPlayers().forEach((container, id) => {
       const distance = Phaser.Math.Distance.Between(
@@ -35,17 +42,33 @@ export class ProximityManager {
       );
 
       if (distance <= this.R_PROXIMITY) {
-        if (!this.proximityCards.has(id)) {
-          this.createProximityCard(id, container);
-        } else {
-          this.updateProximityCard(id, container);
-        }
-      } else {
-        if (this.proximityCards.has(id)) {
-          this.destroyProximityCard(id);
-        }
+        // Get screen coordinates for the player
+        // We need to convert world coordinates to screen coordinates
+        const camera = this.scene.cameras.main;
+        
+        // Calculate relative position to camera
+        const relativeX = container.x - camera.scrollX;
+        const relativeY = container.y - camera.scrollY;
+        
+        // Apply zoom
+        const screenX = relativeX * camera.zoom;
+        const screenY = relativeY * camera.zoom;
+
+        // Get player name
+        const playerLabel = this.playerManager.getPlayerLabels().get(id);
+        const playerName = this.playerNames.get(id) || playerLabel?.text || 'Player';
+
+        nearbyData.push({
+            id,
+            name: playerName,
+            x: screenX,
+            y: screenY
+        });
       }
     });
+
+    // Dispatch event with nearby players data
+    window.dispatchEvent(new CustomEvent('proximityUpdate', { detail: nearbyData }));
 
     // Check for auto-end calls
     this.activeCalls.forEach((id) => {
@@ -57,91 +80,32 @@ export class ProximityManager {
           container.x,
           container.y
         );
-        if (distance > this.R_PROXIMITY + 32) { // R_DISCONNECT
+        if (distance > this.R_PROXIMITY + 64) { // R_DISCONNECT - further distance
           this.endCall(id, "distance");
         }
       }
     });
   }
 
-  private createProximityCard(id: string, container: Phaser.GameObjects.Container) {
-    const card = this.scene.add.container(container.x, container.y - 40);
-    const bg = this.scene.add.rectangle(0, 0, 160, 50, 0xffffff, 0.95);
-    bg.setStrokeStyle(2, 0x333333);
-    card.add(bg);
-
-    const videoBtn = this.scene.add.text(-60, 0, "Video", {
-      fontSize: "12px",
-      color: "#0066cc",
-      fontStyle: "bold"
-    });
-    videoBtn.setInteractive();
-    videoBtn.on("pointerdown", () => this.initiateCall(id, "video"));
-    videoBtn.on("pointerover", () => videoBtn.setColor("#004499"));
-    videoBtn.on("pointerout", () => videoBtn.setColor("#0066cc"));
-    card.add(videoBtn);
-
-    const audioBtn = this.scene.add.text(-10, 0, "Audio", {
-      fontSize: "12px",
-      color: "#0066cc",
-      fontStyle: "bold"
-    });
-    audioBtn.setInteractive();
-    audioBtn.on("pointerdown", () => this.initiateCall(id, "audio"));
-    audioBtn.on("pointerover", () => audioBtn.setColor("#004499"));
-    audioBtn.on("pointerout", () => audioBtn.setColor("#0066cc"));
-    card.add(audioBtn);
-
-    const chatBtn = this.scene.add.text(40, 0, "Chat", {
-      fontSize: "12px",
-      color: "#0066cc",
-      fontStyle: "bold"
-    });
-    chatBtn.setInteractive();
-    chatBtn.on("pointerdown", () => this.initiateChat());
-    chatBtn.on("pointerover", () => chatBtn.setColor("#004499"));
-    chatBtn.on("pointerout", () => chatBtn.setColor("#0066cc"));
-    card.add(chatBtn);
-
-    this.proximityCards.set(id, card);
-    card.setDepth(30000);
+  initiateCall(toId: string, callType: 'audio' | 'video') {
+    this.callManager.initiateCall(toId, callType);
+    this.activeCalls.add(toId);
   }
 
-  private updateProximityCard(id: string, container: Phaser.GameObjects.Container) {
-    const card = this.proximityCards.get(id);
-    if (card) {
-      card.setPosition(container.x, container.y - 40);
-    }
+  initiateChat() {
+    window.dispatchEvent(new Event('openChat'));
+  }
+
+  endCall(peerId: string, reason: string) {
+    this.callManager.endCall(peerId, reason);
+    this.activeCalls.delete(peerId);
   }
 
   destroyProximityCard(id: string) {
-    const card = this.proximityCards.get(id);
-    if (card) {
-      card.destroy();
-      this.proximityCards.delete(id);
-    }
-  }
-
-  private initiateCall(toId: string, callType: string) {
-    this.callManager.initiateCall(toId, callType);
-  }
-
-  private initiateChat() {
-    // TODO: Implement chat
-  }
-
-  private endCall(toId: string, reason: string) {
-    this.wsManager.send("call_ended", { from: this.playerId, to: toId, reason });
-    this.activeCalls.delete(toId);
-    // Clean up peer connection if needed
-  }
-
-  addActiveCall(id: string) {
-    this.activeCalls.add(id);
+    // No-op for compatibility
   }
 
   destroy() {
-    this.proximityCards.forEach(card => card.destroy());
-    this.proximityCards.clear();
+    // Cleanup
   }
 }

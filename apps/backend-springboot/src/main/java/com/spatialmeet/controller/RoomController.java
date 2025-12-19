@@ -105,14 +105,20 @@ public class RoomController {
         String password = payload.get("password");
         String guestName = payload.get("name");
         
+        System.out.println("Join room request: roomId=" + roomId + ", password=" + (password != null ? "provided" : "null") + ", guestName=" + guestName + ", user=" + (user != null ? user.getId() : "null"));
+        
         // Get the room first to check if it exists and has password
         Room room = roomService.getRoom(roomId);
         if (room == null) {
+            System.out.println("Room not found: " + roomId);
             return ResponseEntity.notFound().build();
         }
         
+        System.out.println("Room found: " + room.getName() + ", status=" + room.getStatus() + ", players=" + room.getPlayerCount() + "/" + room.getMaxPlayers() + ", hasPassword=" + room.hasPassword());
+        
         // Check if room is full
         if (room.isFull()) {
+            System.out.println("Room is full");
             return ResponseEntity.badRequest().body(Map.of(
                 "success", false,
                 "message", "Room is full"
@@ -127,6 +133,7 @@ public class RoomController {
         if (room.hasPassword()) {
             success = roomService.joinRoomWithPassword(roomId, userId, password);
             if (!success) {
+                System.out.println("Invalid password for room: " + roomId);
                 return ResponseEntity.badRequest().body(Map.of(
                     "success", false,
                     "message", "Invalid password"
@@ -135,6 +142,8 @@ public class RoomController {
         } else {
             success = roomService.joinRoom(roomId, userId);
         }
+        
+        System.out.println("Join result: success=" + success + ", userId=" + userId);
         
         if (success) {
             // Add room to user's joined rooms

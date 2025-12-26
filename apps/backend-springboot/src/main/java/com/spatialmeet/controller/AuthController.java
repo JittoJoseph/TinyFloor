@@ -19,7 +19,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody AuthRequest request) {
+        System.out.println("Register request: email=" + request.getEmail() + ", username=" + request.getUsername());
         AuthResponse response = authService.register(request);
+        System.out.println("Register response: success=" + (response.getMessage() == null) + ", message=" + response.getMessage());
         if (response.getMessage() != null) {
             return ResponseEntity.badRequest().body(response);
         }

@@ -1,12 +1,14 @@
 package com.spatialmeet.model;
 
+import java.util.Map;
+
 public class Message {
     private String type;
-    private Object data;
+    private Map<String, Object> data;
 
     public Message() {}
 
-    public Message(String type, Object data) {
+    public Message(String type, Map<String, Object> data) {
         this.type = type;
         this.data = data;
     }
@@ -14,6 +16,6 @@ public class Message {
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
 
-    public Object getData() { return data; }
-    public void setData(Object data) { this.data = data; }
+    public Map<String, Object> getData() { return data; }
+    public void setData(Map<String, Object> data) { this.data = data; }
 }

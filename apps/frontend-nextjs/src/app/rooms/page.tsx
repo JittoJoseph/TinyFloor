@@ -197,78 +197,85 @@ export default function RoomsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rooms.map((room) => (
-              <div
-                key={room.id}
-                className="group bg-white border-4 border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer relative overflow-hidden flex flex-col gap-4"
-                onClick={() => router.push(`/join?roomId=${room.id}`)}
-              >
-                {/* Decorative background circle */}
-                <div className="absolute -right-8 -top-8 w-32 h-32 bg-indigo-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {rooms.map((room) => {
+              const isFull = room.playerCount >= (room.maxPlayers || 20);
+              return (
+                <div
+                  key={room.id}
+                  className={`group bg-white border-4 border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col gap-4 ${
+                    isFull ? "cursor-not-allowed opacity-60" : "cursor-pointer"
+                  }`}
+                  onClick={() =>
+                    !isFull && router.push(`/join?roomId=${room.id}`)
+                  }
+                >
+                  {/* Decorative background circle */}
+                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-indigo-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Header with Icon and Status */}
-                <div className="flex justify-between items-start relative z-10">
-                  <div className="w-16 h-16 bg-indigo-100 rounded-2xl border-4 border-indigo-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-inner">
-                    <span className="font-pixel text-3xl text-indigo-600">
-                      {room.name.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
+                  {/* Header with Icon and Status */}
+                  <div className="flex justify-between items-start relative z-10">
+                    <div className="w-16 h-16 bg-indigo-100 rounded-2xl border-4 border-indigo-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-inner">
+                      <span className="font-pixel text-3xl text-indigo-600">
+                        {room.name.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
 
-                  <div className="flex gap-2">
-                    {room.hasPassword && (
+                    <div className="flex gap-2">
+                      {room.hasPassword && (
+                        <div
+                          className="p-2 bg-amber-100 text-amber-700 rounded-xl border border-amber-200"
+                          title="Password Protected"
+                        >
+                          <Lock className="w-4 h-4" />
+                        </div>
+                      )}
                       <div
-                        className="p-2 bg-amber-100 text-amber-700 rounded-xl border border-amber-200"
-                        title="Password Protected"
-                      >
-                        <Lock className="w-4 h-4" />
-                      </div>
-                    )}
-                    <div
-                      className={`px-3 py-1.5 text-xs font-bold rounded-full flex items-center gap-1.5 border ${
-                        room.playerCount > 0
-                          ? "bg-green-100 text-green-700 border-green-200"
-                          : "bg-gray-100 text-gray-600 border-gray-200"
-                      }`}
-                    >
-                      <div
-                        className={`w-2 h-2 rounded-full ${
+                        className={`px-3 py-1.5 text-xs font-bold rounded-full flex items-center gap-1.5 border ${
                           room.playerCount > 0
-                            ? "bg-green-500 animate-pulse"
-                            : "bg-gray-400"
+                            ? "bg-green-100 text-green-700 border-green-200"
+                            : "bg-gray-100 text-gray-600 border-gray-200"
                         }`}
-                      ></div>
-                      {room.playerCount > 0 ? "LIVE" : "IDLE"}
+                      >
+                        <div
+                          className={`w-2 h-2 rounded-full ${
+                            room.playerCount > 0
+                              ? "bg-green-500 animate-pulse"
+                              : "bg-gray-400"
+                          }`}
+                        ></div>
+                        {room.playerCount > 0 ? "LIVE" : "IDLE"}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Room Info */}
-                <div className="relative z-10">
-                  <h3 className="font-pixel text-2xl text-gray-900 leading-tight group-hover:text-indigo-600 transition-colors truncate mb-1">
-                    {room.name}
-                  </h3>
-                  {room.lastActivityAt && (
-                    <p className="text-gray-400 text-xs font-medium">
-                      Active {getTimeAgo(room.lastActivityAt)}
-                    </p>
-                  )}
-                </div>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-gray-50 relative z-10">
-                  <div className="flex items-center gap-2 text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg">
-                    <Users className="w-4 h-4" />
-                    <span className="text-sm font-bold">
-                      {room.playerCount}/{room.maxPlayers || 20}
-                    </span>
+                  {/* Room Info */}
+                  <div className="relative z-10">
+                    <h3 className="font-pixel text-2xl text-gray-900 leading-tight group-hover:text-indigo-600 transition-colors truncate mb-1">
+                      {room.name}
+                    </h3>
+                    {room.lastActivityAt && (
+                      <p className="text-gray-400 text-xs font-medium">
+                        Active {getTimeAgo(room.lastActivityAt)}
+                      </p>
+                    )}
                   </div>
 
-                  <span className="text-sm font-bold text-indigo-500 bg-indigo-50 px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    Join Room →
-                  </span>
+                  {/* Footer */}
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-gray-50 relative z-10">
+                    <div className="flex items-center gap-2 text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg">
+                      <Users className="w-4 h-4" />
+                      <span className="text-sm font-bold">
+                        {room.playerCount}/{room.maxPlayers || 20}
+                      </span>
+                    </div>
+
+                    <span className="text-sm font-bold text-indigo-500 bg-indigo-50 px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                      {isFull ? "Room Full" : "Join Room →"}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

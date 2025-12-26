@@ -88,6 +88,13 @@ function JoinContent() {
     setError("");
 
     try {
+      // Check if room is full
+      if (roomInfo.playerCount >= roomInfo.maxPlayers) {
+        setError("Room is full");
+        setJoining(false);
+        return;
+      }
+
       // If room requires password, validate first
       if (roomInfo.hasPassword && !password) {
         setError("Password is required for this room");

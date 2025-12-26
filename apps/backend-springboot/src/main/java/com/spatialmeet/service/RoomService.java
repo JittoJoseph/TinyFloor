@@ -35,6 +35,9 @@ public class RoomService {
     @Value("${room.max-public-rooms:50}")
     private int maxPublicRooms;
     
+    @Value("${room.cache-max-size:100}")
+    private int maxCacheSize;
+    
     @Value("${room.inactive-timeout:604800000}")
     private long inactiveTimeout;
 

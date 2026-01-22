@@ -1,7 +1,7 @@
-import * as Phaser from 'phaser';
-import { AnimationManager, Direction } from './AnimationManager';
-import { WebSocketManager } from './WebSocketManager';
-import { TILE_SIZE, pixelToTile, isValidTile } from './types';
+import * as Phaser from "phaser";
+import { AnimationManager, Direction } from "./AnimationManager";
+import { WebSocketManager } from "./WebSocketManager";
+import { TILE_SIZE, pixelToTile, isValidTile } from "./types";
 
 const MOVEMENT_SPEED = 120; // pixels per second
 const POSITION_UPDATE_INTERVAL = 100; // ms
@@ -11,7 +11,7 @@ export class MovementManager {
   private player: Phaser.Physics.Arcade.Sprite;
   private wasdKeys!: Record<string, Phaser.Input.Keyboard.Key>;
   private animationManager: AnimationManager;
-  private currentDirection: Direction = 'down';
+  private currentDirection: Direction = "down";
   private playerId: string;
   private wsManager: WebSocketManager;
   private isMobile: boolean;
@@ -26,7 +26,7 @@ export class MovementManager {
     animationManager: AnimationManager,
     playerId: string,
     wsManager: WebSocketManager,
-    isMobile: boolean = false
+    isMobile: boolean = false,
   ) {
     this.scene = scene;
     this.player = player;
@@ -55,18 +55,26 @@ export class MovementManager {
     let newDirection: Direction = this.currentDirection;
 
     if (this.isMobile) {
-      // Mobile joystick movement
-      if (Math.abs(this.joystickVelocity.x) > 0.1 || Math.abs(this.joystickVelocity.y) > 0.1) {
-        const velocity = new Phaser.Math.Vector2(this.joystickVelocity.x, this.joystickVelocity.y);
+      if (
+        Math.abs(this.joystickVelocity.x) > 0.1 ||
+        Math.abs(this.joystickVelocity.y) > 0.1
+      ) {
+        const velocity = new Phaser.Math.Vector2(
+          this.joystickVelocity.x,
+          this.joystickVelocity.y,
+        );
         velocity.normalize();
-        velocity.scale(MOVEMENT_SPEED * delta / 1000);
+        velocity.scale((MOVEMENT_SPEED * delta) / 1000);
 
         const newX = this.player.x + velocity.x;
         const newY = this.player.y + velocity.y;
 
         if (this.isValidPosition(newX, newY)) {
           this.player.setPosition(newX, newY);
-          newDirection = this.getDirectionFromVelocity(this.joystickVelocity.x, this.joystickVelocity.y);
+          newDirection = this.getDirectionFromVector(
+            this.joystickVelocity.x,
+            this.joystickVelocity.y,
+          );
           this.isMoving = true;
           moved = true;
         }
@@ -74,21 +82,22 @@ export class MovementManager {
         this.isMoving = false;
       }
     } else {
-      // Desktop keyboard movement
       const moveVector = this.getKeyboardMovementVector();
 
       if (moveVector.x !== 0 || moveVector.y !== 0) {
-        // Normalize diagonal movement
         const velocity = new Phaser.Math.Vector2(moveVector.x, moveVector.y);
         velocity.normalize();
-        velocity.scale(MOVEMENT_SPEED * delta / 1000);
+        velocity.scale((MOVEMENT_SPEED * delta) / 1000);
 
         const newX = this.player.x + velocity.x;
         const newY = this.player.y + velocity.y;
 
         if (this.isValidPosition(newX, newY)) {
           this.player.setPosition(newX, newY);
-          newDirection = this.getDirectionFromVector(moveVector.x, moveVector.y);
+          newDirection = this.getDirectionFromVector(
+            moveVector.x,
+            moveVector.y,
+          );
           this.isMoving = true;
           moved = true;
         }
@@ -97,10 +106,8 @@ export class MovementManager {
       }
     }
 
-    // Update animation
     this.updateAnimation(newDirection);
 
-    // Send position updates periodically
     if (moved && now - this.lastPositionUpdate > POSITION_UPDATE_INTERVAL) {
       this.sendCurrentPosition();
       this.lastPositionUpdate = now;
@@ -123,13 +130,11 @@ export class MovementManager {
   }
 
   private isValidPosition(pixelX: number, pixelY: number): boolean {
-    // Check tile boundaries
     const tile = pixelToTile(pixelX, pixelY);
     if (!isValidTile(tile.tileX, tile.tileY)) {
       return false;
     }
 
-    // Check collision with solids
     if (this.collisionChecker) {
       return !this.collisionChecker(pixelX, pixelY);
     }
@@ -138,25 +143,25 @@ export class MovementManager {
   }
 
   private getDirectionFromVector(x: number, y: number): Direction {
-    if (x > 0 && y < 0) return 'up-right';
-    if (x < 0 && y < 0) return 'up-left';
-    if (x > 0 && y > 0) return 'down-right';
-    if (x < 0 && y > 0) return 'down-left';
-    if (x > 0) return 'right';
-    if (x < 0) return 'left';
-    if (y < 0) return 'up';
-    if (y > 0) return 'down';
+    if (x > 0 && y < 0) return "up-right";
+    if (x < 0 && y < 0) return "up-left";
+    if (x > 0 && y > 0) return "down-right";
+    if (x < 0 && y > 0) return "down-left";
+    if (x > 0) return "right";
+    if (x < 0) return "left";
+    if (y < 0) return "up";
+    if (y > 0) return "down";
     return this.currentDirection;
   }
 
-  private getDirectionFromVelocity(vx: number, vy: number): Direction {
-    return this.getDirectionFromVector(vx, vy);
-  }
-
   private updateAnimation(direction: Direction) {
-    const spriteName = this.player.getData('spriteName') || 'Adam';
-    const state = this.isMoving ? 'run' : 'idle';
-    const animKey = this.animationManager.getAnimationKey(spriteName, state, direction);
+    const spriteName = this.player.getData("spriteName") || "Adam";
+    const state = this.isMoving ? "run" : "idle";
+    const animKey = this.animationManager.getAnimationKey(
+      spriteName,
+      state,
+      direction,
+    );
     this.player.play(animKey, true);
   }
 

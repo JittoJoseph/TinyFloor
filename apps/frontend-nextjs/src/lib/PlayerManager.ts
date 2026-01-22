@@ -108,7 +108,6 @@ export class PlayerManager {
     const container = this.scene.add.container(x, y);
     container.setDepth(25000);
 
-    // Calculate text width
     const tempText = this.scene.add.text(0, 0, name, {
       fontSize: "13px",
       fontFamily: "VT323, monospace",
@@ -122,7 +121,6 @@ export class PlayerManager {
     const bgHeight = 16;
     const cornerRadius = 8;
 
-    // Background with rounded corners
     const background = this.scene.add.graphics();
     background.fillStyle(this.COLORS.background, this.COLORS.backgroundAlpha);
     background.fillRoundedRect(
@@ -133,7 +131,6 @@ export class PlayerManager {
       cornerRadius,
     );
 
-    // Subtle border
     background.lineStyle(1, this.COLORS.border, 0.5);
     background.strokeRoundedRect(
       -bgWidth / 2,
@@ -144,7 +141,6 @@ export class PlayerManager {
     );
     container.add(background);
 
-    // Status dot
     const statusDot = this.scene.add.graphics();
     const dotX = -bgWidth / 2 + padding.x + dotRadius;
     statusDot.fillStyle(this.COLORS.statusAvailable, 1);
@@ -161,7 +157,6 @@ export class PlayerManager {
     nameText.setOrigin(0, 0.5);
     container.add(nameText);
 
-    // Add subtle floating animation for local player
     if (isLocal) {
       this.scene.tweens.add({
         targets: container,
@@ -176,7 +171,6 @@ export class PlayerManager {
     return { container, background, nameText, statusDot, width: bgWidth };
   }
 
-  // Add a remote player at tile coordinates
   addPlayer(
     id: string,
     name: string,
@@ -187,7 +181,6 @@ export class PlayerManager {
   ) {
     if (this.players.has(id)) return;
 
-    // Convert tile to pixel position (center of tile)
     const pixelPos = tileToPixel(tileX, tileY);
     const x = pixelPos.x;
     const y = pixelPos.y;
@@ -197,7 +190,7 @@ export class PlayerManager {
 
     const container = this.scene.add.container(x, y);
     const sprite = this.scene.add.sprite(0, 0, `${safeSpriteKey}_idle`);
-    sprite.setOrigin(0.5, 1.0); // Origin at feet (bottom center)
+    sprite.setOrigin(0.5, 1.0);
     sprite.setData("spriteName", safeSpriteKey);
     sprite.setScale(2.0);
 
@@ -211,7 +204,6 @@ export class PlayerManager {
     container.add(sprite);
     this.players.set(id, container);
 
-    // Create cute name tag for remote player
     const nameTag = this.createNameTag(id, name, 0, -55, false);
     container.add(nameTag.container);
     nameTag.container.setPosition(0, -55);
@@ -220,16 +212,14 @@ export class PlayerManager {
 
     container.setDepth(10000);
 
-    // Enable physics for collision
     this.scene.physics.world.enable(container);
     const body = container.body as Phaser.Physics.Arcade.Body;
-    body.setSize(24, 24); // Slightly smaller than tile size for better movement
-    body.setOffset(-12, -24); // Position body relative to feet (adjusted for 2.0 scale)
-    body.setImmovable(true); // Remote players shouldn't be pushed by local player
+    body.setSize(24, 24);
+    body.setOffset(-12, -24);
+    body.setImmovable(true);
 
     this.remotePlayersGroup.add(container);
 
-    // Force update collision
     if (this.scene.physics.world) {
       this.scene.physics.add.collider(
         this.scene.children.getByName(
@@ -250,7 +240,6 @@ export class PlayerManager {
       status,
     });
 
-    // Set initial status display
     this.updatePlayerStatus(id, status);
   }
 
@@ -258,17 +247,13 @@ export class PlayerManager {
     return this.remotePlayersGroup;
   }
 
-  // Update local player position from tile coordinates (for consistency)
   updateLocalPlayerPosition(tileX: number, tileY: number) {
     if (!this.localPlayer) return;
 
-    // Convert tile to pixel position
     const pixelPos = tileToPixel(tileX, tileY);
 
-    // Update local player position
     this.localPlayer.setPosition(pixelPos.x, pixelPos.y);
 
-    // Update name tag
     this.updateLocalPlayerNameTag(pixelPos.x, pixelPos.y);
   }
 
@@ -318,7 +303,6 @@ export class PlayerManager {
     }
   }
 
-  // Update remote player position from tile coordinates
   updatePlayerPosition(
     id: string,
     tileX: number,
@@ -331,17 +315,15 @@ export class PlayerManager {
     const container = this.players.get(id);
     if (!container) return;
 
-    // Convert tile to pixel position (center of tile)
     const pixelPos = tileToPixel(tileX, tileY);
 
-    // Update state with new target
     state.tileX = tileX;
     state.tileY = tileY;
     state.targetX = pixelPos.x;
     state.targetY = pixelPos.y;
     state.direction = direction;
     state.lastUpdateTime = this.scene.time.now;
-    state.isMoving = true; // Will be set to false when we reach the target
+    state.isMoving = true;
   }
 
   update() {
@@ -356,18 +338,14 @@ export class PlayerManager {
       const dy = state.targetY - container.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Handle different cases
       if (distance > SNAP_THRESHOLD) {
-        // Too far behind - snap to position (lag spike recovery)
         container.setPosition(state.targetX, state.targetY);
         state.isMoving = false;
       } else if (distance > IDLE_THRESHOLD) {
-        // Smooth interpolation toward tile center
         container.x += dx * INTERPOLATION_SPEED;
         container.y += dy * INTERPOLATION_SPEED;
         state.isMoving = true;
       } else {
-        // Close enough to tile center - snap and mark as idle
         container.setPosition(state.targetX, state.targetY);
         state.isMoving = false;
       }

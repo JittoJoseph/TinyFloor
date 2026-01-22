@@ -90,9 +90,8 @@ export class MessageHandler {
   }
 
   private handleSpaceJoined(data: Record<string, unknown>) {
-    if (!this.player) return; // Guard against destroyed player
+    if (!this.player) return;
 
-    // Server now sends tile coordinates
     const spawnTileX = data.tileX as number;
     const spawnTileY = data.tileY as number;
     const sprite = data.sprite as string;
@@ -105,22 +104,18 @@ export class MessageHandler {
       status?: PlayerStatus;
     }>;
 
-    if (this.player) {
-      // Convert tile to pixel position
-      const spawnPos = tileToPixel(spawnTileX, spawnTileY);
-      this.player.setPosition(spawnPos.x, spawnPos.y);
+    const spawnPos = tileToPixel(spawnTileX, spawnTileY);
+    this.player.setPosition(spawnPos.x, spawnPos.y);
 
-      if (sprite) {
-        const validSprites = ["Adam", "Alex", "Amelia", "Bob"];
-        const spriteName = validSprites.includes(sprite) ? sprite : "Adam";
-        this.player.setData("spriteName", spriteName);
-        this.player.play(
-          this.animationManager.getAnimationKey(spriteName, "idle", "down"),
-        );
-      }
+    if (sprite) {
+      const validSprites = ["Adam", "Alex", "Amelia", "Bob"];
+      const spriteName = validSprites.includes(sprite) ? sprite : "Adam";
+      this.player.setData("spriteName", spriteName);
+      this.player.play(
+        this.animationManager.getAnimationKey(spriteName, "idle", "down"),
+      );
     }
 
-    // Add existing players (using tile coordinates)
     existingUsers.forEach((user) => {
       this.playerManager.addPlayer(
         user.id,
@@ -135,12 +130,10 @@ export class MessageHandler {
   }
 
   private handleMovementRejected(data: Record<string, unknown>) {
-    // Server sends tile coordinates for correction
     const tileX = data.tileX as number;
     const tileY = data.tileY as number;
 
     if (this.player) {
-      // Convert tile to pixel and smoothly correct position
       const targetPos = tileToPixel(tileX, tileY);
       this.scene.tweens.add({
         targets: this.player,
@@ -153,7 +146,6 @@ export class MessageHandler {
   }
 
   private handleMovement(data: Record<string, unknown>) {
-    // Single movement update (tile-based)
     const { id, tileX, tileY, direction } = data as {
       id: string;
       tileX: number;
@@ -171,7 +163,6 @@ export class MessageHandler {
   }
 
   private handleMovementsBatch(data: Record<string, unknown>) {
-    // Batched movement updates (tile-based)
     const movements = data.movements as Array<{
       id: string;
       tileX: number;
@@ -201,7 +192,6 @@ export class MessageHandler {
   }
 
   private handleUserJoin(data: Record<string, unknown>) {
-    // User join now uses tile coordinates
     const { id, name, tileX, tileY, sprite, status } = data as {
       id: string;
       name: string;
@@ -225,7 +215,6 @@ export class MessageHandler {
     const { id, status } = data as { id: string; status: PlayerStatus };
     this.playerManager.updatePlayerStatus(id, status);
 
-    // Dispatch event for UI components (e.g., participant list)
     window.dispatchEvent(
       new CustomEvent("playerStatusChanged", {
         detail: { id, status },

@@ -20,69 +20,41 @@ export default function CallOverlay() {
   const [remoteStreams, setRemoteStreams] = useState<RemoteStream[]>([]);
 
   useEffect(() => {
-    const handleIncomingCall = (e: CustomEvent) => {
-      setIncomingCall(e.detail);
-    };
-
-    const handleIncomingCallEnded = () => {
-      setIncomingCall(null);
-    };
-
+    const handleIncomingCall = (e: CustomEvent) => setIncomingCall(e.detail);
+    const handleIncomingCallEnded = () => setIncomingCall(null);
     const handleRemoteStreamAdded = (e: CustomEvent) => {
-      setRemoteStreams((prev) => {
-        // Check if already exists
-        if (prev.find((s) => s.peerId === e.detail.peerId)) return prev;
-        return [...prev, e.detail];
-      });
+      setRemoteStreams((prev) =>
+        prev.find((s) => s.peerId === e.detail.peerId)
+          ? prev
+          : [...prev, e.detail],
+      );
     };
-
     const handleRemoteStreamRemoved = (e: CustomEvent) => {
       setRemoteStreams((prev) =>
         prev.filter((s) => s.peerId !== e.detail.peerId),
       );
     };
-
     const handleCallEnded = () => {
       setRemoteStreams([]);
       setIncomingCall(null);
     };
 
-    window.addEventListener(
-      "incomingCall",
-      handleIncomingCall as EventListener,
-    );
-    window.addEventListener(
-      "incomingCallEnded",
-      handleIncomingCallEnded as EventListener,
-    );
-    window.addEventListener(
-      "remoteStreamAdded",
-      handleRemoteStreamAdded as EventListener,
-    );
-    window.addEventListener(
-      "remoteStreamRemoved",
-      handleRemoteStreamRemoved as EventListener,
-    );
-    window.addEventListener("callEnded", handleCallEnded as EventListener);
+    const events = [
+      { name: "incomingCall", handler: handleIncomingCall },
+      { name: "incomingCallEnded", handler: handleIncomingCallEnded },
+      { name: "remoteStreamAdded", handler: handleRemoteStreamAdded },
+      { name: "remoteStreamRemoved", handler: handleRemoteStreamRemoved },
+      { name: "callEnded", handler: handleCallEnded },
+    ];
+
+    events.forEach(({ name, handler }) => {
+      window.addEventListener(name, handler as EventListener);
+    });
 
     return () => {
-      window.removeEventListener(
-        "incomingCall",
-        handleIncomingCall as EventListener,
-      );
-      window.removeEventListener(
-        "incomingCallEnded",
-        handleIncomingCallEnded as EventListener,
-      );
-      window.removeEventListener(
-        "remoteStreamAdded",
-        handleRemoteStreamAdded as EventListener,
-      );
-      window.removeEventListener(
-        "remoteStreamRemoved",
-        handleRemoteStreamRemoved as EventListener,
-      );
-      window.removeEventListener("callEnded", handleCallEnded as EventListener);
+      events.forEach(({ name, handler }) => {
+        window.removeEventListener(name, handler as EventListener);
+      });
     };
   }, []);
 
@@ -156,7 +128,6 @@ function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
     if (videoRef.current && streamData.stream) {
       videoRef.current.srcObject = streamData.stream;
 
-      // Check for video tracks periodically
       const checkVideoTracks = () => {
         const videoTracks = streamData.stream.getVideoTracks();
         const hasActiveVideo = videoTracks.some(
@@ -165,15 +136,10 @@ function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
         setHasVideo(hasActiveVideo);
       };
 
-      // Initial check
       checkVideoTracks();
-
-      // Check periodically for video state changes
       const intervalId = setInterval(checkVideoTracks, 500);
 
-      return () => {
-        clearInterval(intervalId);
-      };
+      return () => clearInterval(intervalId);
     }
   }, [streamData.stream]);
 
@@ -187,7 +153,6 @@ function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
           className="w-full h-full object-cover"
         />
       ) : (
-        // Blank avatar when video is off
         <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
             <span className="text-white font-pixel text-2xl">

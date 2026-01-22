@@ -30,15 +30,10 @@ export class CallManager {
   private remoteStreams: Map<string, MediaStream> = new Map();
   private micEnabled: boolean = true;
   private videoEnabled: boolean = true;
+  private peerNames: Map<string, string> = new Map(); // Store peer names for video elements
 
-  // ICE servers for better connectivity
-  private iceServers: ICEServer[] = [
-    { urls: "stun:stun.l.google.com:19302" },
-    { urls: "stun:stun1.l.google.com:19302" },
-    { urls: "stun:stun2.l.google.com:19302" },
-    // Add TURN servers for production - these would come from env vars
-    // { urls: 'turn:turn.example.com:3478', username: 'user', credential: 'pass' }
-  ];
+  // ICE servers for WebRTC connectivity
+  private iceServers: ICEServer[] = [{ urls: "stun:stun.l.google.com:19302" }];
 
   constructor(
     scene: Phaser.Scene,
@@ -74,10 +69,17 @@ export class CallManager {
     }) as EventListener);
   }
 
-  async initiateCall(toId: string, callType: "audio" | "video") {
+  async initiateCall(
+    toId: string,
+    callType: "audio" | "video",
+    peerName?: string,
+  ) {
     try {
       // Request media permissions first
       this.localStream = await this.getLocalStream(callType);
+
+      // Store peer name
+      this.peerNames.set(toId, peerName || "Unknown User");
 
       if (this.wsManager) {
         this.wsManager.send("request_call", {
@@ -105,7 +107,10 @@ export class CallManager {
     // If we already have a stream with the right tracks, reuse it
     if (this.localStream) {
       const hasVideo = this.localStream.getVideoTracks().length > 0;
-      if (callType === "audio" || (callType === "video" && hasVideo)) {
+      if (
+        (callType === "audio" && !hasVideo) ||
+        (callType === "video" && hasVideo)
+      ) {
         // Ensure tracks match current state
         this.localStream
           .getAudioTracks()
@@ -117,7 +122,7 @@ export class CallManager {
         }
         return this.localStream;
       }
-      // Need to upgrade to video
+      // Need to upgrade to video or downgrade to audio - stop existing stream
       this.localStream.getTracks().forEach((track) => track.stop());
     }
 
@@ -136,8 +141,8 @@ export class CallManager {
       video:
         callType === "video"
           ? {
-              width: { ideal: 640 },
-              height: { ideal: 480 },
+              width: { ideal: 320 },
+              height: { ideal: 240 },
               facingMode: "user",
             }
           : false,
@@ -228,6 +233,9 @@ export class CallManager {
         startTime: Date.now(),
       });
 
+      // Also store in peerNames for video elements
+      this.peerNames.set(from, fromName);
+
       window.dispatchEvent(new CustomEvent("callStarted"));
     } catch (error) {
       console.error("Error accepting call:", error);
@@ -243,7 +251,6 @@ export class CallManager {
   private createPeerConnection(peerId: string): RTCPeerConnection {
     const pc = new RTCPeerConnection({
       iceServers: this.iceServers,
-      iceCandidatePoolSize: 10,
     });
 
     pc.onicecandidate = (event) => {
@@ -287,10 +294,13 @@ export class CallManager {
   }
 
   private createVideoElement(peerId: string, stream: MediaStream) {
+    // Get peer name from stored names
+    const peerName = this.peerNames.get(peerId) || "Unknown User";
+
     // Dispatch event for React UI
     window.dispatchEvent(
       new CustomEvent("remoteStreamAdded", {
-        detail: { peerId, stream },
+        detail: { peerId, stream, peerName },
       }),
     );
   }
@@ -475,16 +485,10 @@ export class CallManager {
           });
         }
       } else {
-        // Disable video tracks
+        // Disable video tracks (don't stop them permanently)
         this.localStream.getVideoTracks().forEach((track) => {
           track.enabled = false;
-          // Stop the track to turn off camera light
-          track.stop();
         });
-        // Remove stopped tracks from stream
-        const audioTracks = this.localStream.getAudioTracks();
-        const newStream = new MediaStream(audioTracks);
-        this.localStream = newStream;
       }
     } else if (enabled) {
       // Initialize video even without an active call
@@ -501,8 +505,8 @@ export class CallManager {
 
       const videoStream = await navigator.mediaDevices.getUserMedia({
         video: {
-          width: { ideal: 640 },
-          height: { ideal: 480 },
+          width: { ideal: 320 },
+          height: { ideal: 240 },
           facingMode: "user",
         },
       });
@@ -569,8 +573,8 @@ export class CallManager {
         if (this.videoEnabled) {
           const videoStream = await navigator.mediaDevices.getUserMedia({
             video: {
-              width: { ideal: 640 },
-              height: { ideal: 480 },
+              width: { ideal: 320 },
+              height: { ideal: 240 },
               facingMode: "user",
             },
           });

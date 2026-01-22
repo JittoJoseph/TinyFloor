@@ -12,6 +12,7 @@ interface IncomingCall {
 interface RemoteStream {
   peerId: string;
   stream: MediaStream;
+  peerName: string;
 }
 
 export default function CallOverlay() {
@@ -37,7 +38,7 @@ export default function CallOverlay() {
 
     const handleRemoteStreamRemoved = (e: CustomEvent) => {
       setRemoteStreams((prev) =>
-        prev.filter((s) => s.peerId !== e.detail.peerId)
+        prev.filter((s) => s.peerId !== e.detail.peerId),
       );
     };
 
@@ -48,38 +49,38 @@ export default function CallOverlay() {
 
     window.addEventListener(
       "incomingCall",
-      handleIncomingCall as EventListener
+      handleIncomingCall as EventListener,
     );
     window.addEventListener(
       "incomingCallEnded",
-      handleIncomingCallEnded as EventListener
+      handleIncomingCallEnded as EventListener,
     );
     window.addEventListener(
       "remoteStreamAdded",
-      handleRemoteStreamAdded as EventListener
+      handleRemoteStreamAdded as EventListener,
     );
     window.addEventListener(
       "remoteStreamRemoved",
-      handleRemoteStreamRemoved as EventListener
+      handleRemoteStreamRemoved as EventListener,
     );
     window.addEventListener("callEnded", handleCallEnded as EventListener);
 
     return () => {
       window.removeEventListener(
         "incomingCall",
-        handleIncomingCall as EventListener
+        handleIncomingCall as EventListener,
       );
       window.removeEventListener(
         "incomingCallEnded",
-        handleIncomingCallEnded as EventListener
+        handleIncomingCallEnded as EventListener,
       );
       window.removeEventListener(
         "remoteStreamAdded",
-        handleRemoteStreamAdded as EventListener
+        handleRemoteStreamAdded as EventListener,
       );
       window.removeEventListener(
         "remoteStreamRemoved",
-        handleRemoteStreamRemoved as EventListener
+        handleRemoteStreamRemoved as EventListener,
       );
       window.removeEventListener("callEnded", handleCallEnded as EventListener);
     };
@@ -149,23 +150,54 @@ export default function CallOverlay() {
 
 function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasVideo, setHasVideo] = useState(true);
 
   useEffect(() => {
     if (videoRef.current && streamData.stream) {
       videoRef.current.srcObject = streamData.stream;
+
+      // Check for video tracks periodically
+      const checkVideoTracks = () => {
+        const videoTracks = streamData.stream.getVideoTracks();
+        const hasActiveVideo = videoTracks.some(
+          (track) => track.enabled && track.readyState === "live",
+        );
+        setHasVideo(hasActiveVideo);
+      };
+
+      // Initial check
+      checkVideoTracks();
+
+      // Check periodically for video state changes
+      const intervalId = setInterval(checkVideoTracks, 500);
+
+      return () => {
+        clearInterval(intervalId);
+      };
     }
   }, [streamData.stream]);
 
   return (
     <div className="pointer-events-auto w-64 h-48 bg-gray-900 rounded-xl overflow-hidden shadow-retro border-2 border-gray-800 relative group">
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        className="w-full h-full object-cover"
-      />
+      {hasVideo ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        // Blank avatar when video is off
+        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+          <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+            <span className="text-white font-pixel text-2xl">
+              {streamData.peerName.charAt(0).toUpperCase()}
+            </span>
+          </div>
+        </div>
+      )}
       <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center py-1 font-pixel text-sm">
-        Remote User
+        {streamData.peerName}
       </div>
     </div>
   );

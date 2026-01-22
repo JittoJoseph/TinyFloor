@@ -43,6 +43,15 @@ export class ProximityManager {
     this.callManager = callManager;
     this.currentPlayer = currentPlayer;
     this.playerId = playerId;
+
+    // Listen for call ending events to clear active calls
+    window.addEventListener("remoteStreamRemoved", ((e: CustomEvent) => {
+      this.activeCalls.delete(e.detail.peerId);
+    }) as EventListener);
+
+    window.addEventListener("callEnded", (() => {
+      this.activeCalls.clear();
+    }) as EventListener);
   }
 
   setPlayerName(playerId: string, name: string) {
@@ -98,8 +107,7 @@ export class ProximityManager {
           const screenY = relativeY * camera.zoom;
 
           const playerLabel = this.playerManager.getPlayerLabels().get(id);
-          const playerName =
-            this.playerNames.get(id) || playerLabel?.text || "Player";
+          const playerName = playerLabel?.text || "Player";
 
           nearbyData.push({ id, name: playerName, x: screenX, y: screenY });
         }
@@ -186,7 +194,9 @@ export class ProximityManager {
   }
 
   initiateCall(toId: string, callType: "audio" | "video") {
-    this.callManager.initiateCall(toId, callType);
+    const playerLabel = this.playerManager.getPlayerLabels().get(toId);
+    const peerName = playerLabel?.text || "Unknown User";
+    this.callManager.initiateCall(toId, callType, peerName);
     this.activeCalls.add(toId);
   }
 

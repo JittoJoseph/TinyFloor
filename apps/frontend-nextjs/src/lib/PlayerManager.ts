@@ -110,7 +110,7 @@ export class PlayerManager {
 
     // Calculate text width
     const tempText = this.scene.add.text(0, 0, name, {
-      fontSize: "11px",
+      fontSize: "13px",
       fontFamily: "VT323, monospace",
     });
     const textWidth = tempText.width;
@@ -151,12 +151,11 @@ export class PlayerManager {
     statusDot.fillCircle(dotX, 0, dotRadius);
     container.add(statusDot);
 
-    // Name text with pixel font
     const nameText = this.scene.add.text(dotX + dotRadius + 6, 0, name, {
-      fontSize: "11px",
+      fontSize: "13px",
       fontFamily: "VT323, monospace",
       color: "#ffffff",
-      stroke: "#000000",
+      resolution: 2,
       strokeThickness: 0,
     });
     nameText.setOrigin(0, 0.5);

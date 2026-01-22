@@ -28,3 +28,13 @@ room:
 # CORS Configuration
 cors:
   allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:3001,http://10.161.254.53:3000,http://192.168.1.5:3000/}
+
+# Logging Configuration
+logging:
+  level:
+    # Reduce MongoDB driver verbosity
+    org.mongodb.driver: WARN
+    # Keep Spring Boot INFO level for important startup info
+    org.springframework: WARN
+    # Reduce Tomcat native library warnings
+    org.apache.tomcat: WARN

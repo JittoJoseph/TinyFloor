@@ -189,7 +189,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             }
         } catch (Exception e) {
             // Log error and close session if necessary
-            System.err.println("Error handling message: " + e.getMessage());
+            logger.error("Error handling message: {}", e.getMessage());
             // Optionally send error message
             try {
                 Map<String, Object> errorData = new HashMap<>();
@@ -266,6 +266,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             session.close();
             return;
         }
+        
         logger.info("Player {} joined room {}", playerId, roomId);
         
         List<Map<String, Object>> existingUsers = roomPlayers.get(roomId).values().stream()

@@ -13,6 +13,8 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
+import { StatusSelector } from "./StatusSelector";
+import type { PlayerStatus } from "@/lib/types";
 
 interface ControlBarProps {
   onMicToggle?: (enabled: boolean) => void;
@@ -21,8 +23,10 @@ interface ControlBarProps {
   onChatClick?: () => void;
   onParticipantsClick?: () => void;
   onLeaveCall?: () => void;
+  onStatusChange?: (status: PlayerStatus) => void;
   isInCall?: boolean;
   participantCount?: number;
+  currentStatus?: PlayerStatus;
 }
 
 export default function ControlBar({
@@ -32,12 +36,31 @@ export default function ControlBar({
   onChatClick,
   onParticipantsClick,
   onLeaveCall,
+  onStatusChange,
   isInCall = false,
   participantCount = 0,
+  currentStatus = "available",
 }: ControlBarProps) {
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(true);
   const [speakerEnabled, setSpeakerEnabled] = useState(true);
+  const [status, setStatus] = useState<PlayerStatus>(currentStatus);
+
+  // Sync status with prop changes
+  useEffect(() => {
+    setStatus(currentStatus);
+  }, [currentStatus]);
+
+  // Auto-set status to in_call when in a call
+  useEffect(() => {
+    if (isInCall && status !== "in_call") {
+      setStatus("in_call");
+      onStatusChange?.("in_call");
+    } else if (!isInCall && status === "in_call") {
+      setStatus("available");
+      onStatusChange?.("available");
+    }
+  }, [isInCall, status, onStatusChange]);
 
   const toggleMic = useCallback(() => {
     const newState = !micEnabled;
@@ -56,9 +79,27 @@ export default function ControlBar({
     // TODO: Implement speaker mute for remote audio
   }, [speakerEnabled]);
 
+  const handleStatusChange = useCallback(
+    (newStatus: PlayerStatus) => {
+      setStatus(newStatus);
+      onStatusChange?.(newStatus);
+    },
+    [onStatusChange],
+  );
+
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
       <div className="bg-white/95 backdrop-blur-sm border-2 border-gray-800 rounded-2xl shadow-retro px-4 py-3 flex items-center gap-2">
+        {/* Status Selector */}
+        <StatusSelector
+          currentStatus={status}
+          onStatusChange={handleStatusChange}
+          compact
+        />
+
+        {/* Divider */}
+        <div className="w-px h-8 bg-gray-300 mx-1" />
+
         {/* Microphone Toggle */}
         <button
           onClick={toggleMic}

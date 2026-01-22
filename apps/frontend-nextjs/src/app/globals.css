@@ -22,12 +22,22 @@
   --animate-bounce-slight: bounceSlight 2s infinite;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
   }
   @keyframes bounceSlight {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
   }
 }
 
@@ -46,8 +56,8 @@
 body {
   font-family: var(--font-body);
   background-color: var(--color-game-bg);
-  background-image: 
-    linear-gradient(var(--color-game-grid) 2px, transparent 2px), 
+  background-image:
+    linear-gradient(var(--color-game-grid) 2px, transparent 2px),
     linear-gradient(90deg, var(--color-game-grid) 2px, transparent 2px);
   background-size: 40px 40px;
   background-position: center top;
@@ -74,4 +84,11 @@ body {
 
 .pixel-antialiased {
   image-rendering: pixelated;
+}
+
+/* Pixel art canvas rendering */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }

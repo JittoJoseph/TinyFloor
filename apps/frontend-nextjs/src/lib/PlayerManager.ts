@@ -407,6 +407,11 @@ export class PlayerManager {
     return list;
   }
 
+  getPlayerStatus(id: string): PlayerStatus | undefined {
+    const state = this.playerStates.get(id);
+    return state?.status;
+  }
+
   destroy() {
     this.players.forEach((container) => container.destroy());
     this.players.clear();

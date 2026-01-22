@@ -8,6 +8,7 @@ interface NearbyPlayer {
   name: string;
   x: number;
   y: number;
+  status: string;
 }
 
 // Memoized player card component to prevent unnecessary re-renders
@@ -26,6 +27,36 @@ const PlayerCard = memo(function PlayerCard({
   onCall: (id: string, type: "audio" | "video") => void;
   onChat: () => void;
 }) {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "available":
+        return "bg-green-500";
+      case "busy":
+        return "bg-red-500";
+      case "away":
+        return "bg-yellow-500";
+      case "in_call":
+        return "bg-blue-500";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "available":
+        return "Available";
+      case "busy":
+        return "Busy";
+      case "away":
+        return "Away";
+      case "in_call":
+        return "In Call";
+      default:
+        return "Unknown";
+    }
+  };
+
   return (
     <div
       className="absolute transform -translate-x-1/2 pointer-events-auto"
@@ -46,9 +77,11 @@ const PlayerCard = memo(function PlayerCard({
               {player.name}
             </div>
             <div className="flex items-center gap-1">
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <span className="text-xs text-green-600 font-medium">
-                Available
+              <div
+                className={`w-2 h-2 rounded-full ${getStatusColor(player.status)}`}
+              ></div>
+              <span className="text-xs text-gray-600 font-medium">
+                {getStatusText(player.status)}
               </span>
             </div>
           </div>
@@ -101,17 +134,36 @@ export default function ProximityOverlay() {
       setNearbyPlayers(event.detail);
     };
 
+    const handlePlayerStatusChanged = (
+      event: CustomEvent<{ id: string; status: string }>,
+    ) => {
+      const { id, status } = event.detail;
+      setNearbyPlayers((prev) =>
+        prev.map((player) =>
+          player.id === id ? { ...player, status } : player,
+        ),
+      );
+    };
+
     window.addEventListener("resize", handleResize);
     window.addEventListener(
       "proximityUpdate",
-      handleProximityUpdate as EventListener
+      handleProximityUpdate as EventListener,
+    );
+    window.addEventListener(
+      "playerStatusChanged",
+      handlePlayerStatusChanged as EventListener,
     );
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener(
         "proximityUpdate",
-        handleProximityUpdate as EventListener
+        handleProximityUpdate as EventListener,
+      );
+      window.removeEventListener(
+        "playerStatusChanged",
+        handlePlayerStatusChanged as EventListener,
       );
     };
   }, []);
@@ -119,10 +171,10 @@ export default function ProximityOverlay() {
   const handleCall = useCallback(
     (playerId: string, type: "audio" | "video") => {
       window.dispatchEvent(
-        new CustomEvent("initiateCall", { detail: { playerId, type } })
+        new CustomEvent("initiateCall", { detail: { playerId, type } }),
       );
     },
-    []
+    [],
   );
 
   const handleChat = useCallback(() => {

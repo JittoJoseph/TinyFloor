@@ -32,6 +32,7 @@ cors:
 # Logging Configuration
 logging:
   level:
+    root: WARN
     # Reduce MongoDB driver verbosity
     org.mongodb.driver: WARN
     # Keep Spring Boot INFO level for important startup info

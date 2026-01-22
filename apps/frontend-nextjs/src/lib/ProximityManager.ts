@@ -20,6 +20,7 @@ export class ProximityManager {
     name: string;
     x: number;
     y: number;
+    status: string;
   }> = [];
   private proximityStartTimes = new Map<string, number>();
 
@@ -61,6 +62,7 @@ export class ProximityManager {
       name: string;
       x: number;
       y: number;
+      status: string;
     }> = [];
     const camera = this.scene.cameras.main;
     const playerX = this.currentPlayer.x;
@@ -86,7 +88,15 @@ export class ProximityManager {
 
           const playerLabel = this.playerManager.getPlayerLabels().get(id);
           const playerName = playerLabel?.text || "Player";
-          nearbyData.push({ id, name: playerName, x: screenX, y: screenY });
+          const playerStatus =
+            this.playerManager.getPlayerStatus(id) || "available";
+          nearbyData.push({
+            id,
+            name: playerName,
+            x: screenX,
+            y: screenY,
+            status: playerStatus,
+          });
         }
       } else {
         this.proximityStartTimes.delete(id);
@@ -108,6 +118,7 @@ export class ProximityManager {
       name: string;
       x: number;
       y: number;
+      status: string;
     }> = [];
 
     for (const data of this.cachedNearbyData) {

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { User, LogOut, Settings, Home, ChevronDown } from "lucide-react";
+import { User, LogOut, LayoutDashboard, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 
@@ -72,32 +72,14 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
             {/* Menu items */}
             <div className="p-2">
               {!isGuest && (
-                <>
-                  <Link
-                    href="/profile"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <User className="w-4 h-4" />
-                    <span className="font-medium">Profile</span>
-                  </Link>
-                  <Link
-                    href="/my-rooms"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <Home className="w-4 h-4" />
-                    <span className="font-medium">My Rooms</span>
-                  </Link>
-                  <Link
-                    href="/settings"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <Settings className="w-4 h-4" />
-                    <span className="font-medium">Settings</span>
-                  </Link>
-                </>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
+                >
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span className="font-medium">Dashboard</span>
+                </Link>
               )}
 
               <button

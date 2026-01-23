@@ -75,6 +75,16 @@ public class RoomController {
         return ResponseEntity.ok(rooms);
     }
 
+    @GetMapping("/joined")
+    public ResponseEntity<List<RoomResponse>> getJoinedRooms(@AuthenticationPrincipal User user) {
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        List<String> joinedRoomIds = user.getJoinedRooms();
+        List<RoomResponse> rooms = roomService.getRoomsByIds(joinedRoomIds);
+        return ResponseEntity.ok(rooms);
+    }
+
     @PostMapping
     public ResponseEntity<RoomResponse> createRoom(
             @Valid @RequestBody CreateRoomRequest request,

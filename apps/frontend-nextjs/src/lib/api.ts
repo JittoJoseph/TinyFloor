@@ -185,9 +185,36 @@ class ApiClient {
   }
 
   async getMyRooms(): Promise<
-    { id: string; name: string; playerCount: number; isPublic: boolean }[]
+    {
+      id: string;
+      name: string;
+      playerCount: number;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+      shareCode?: string;
+    }[]
   > {
     return this.fetch("/api/rooms/my-rooms");
+  }
+
+  async getJoinedRooms(): Promise<
+    {
+      id: string;
+      name: string;
+      playerCount: number;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+    }[]
+  > {
+    return this.fetch("/api/rooms/joined");
   }
 
   async createRoom(data: {

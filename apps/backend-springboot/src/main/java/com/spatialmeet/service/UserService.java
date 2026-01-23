@@ -1,5 +1,6 @@
 package com.spatialmeet.service;
 
+import com.spatialmeet.dto.DashboardSummary;
 import com.spatialmeet.dto.UserResponse;
 import com.spatialmeet.model.AvatarPreferences;
 import com.spatialmeet.model.User;
@@ -9,8 +10,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -119,6 +124,90 @@ public class UserService {
         List<User> oldGuests = userRepository.findByIsGuestTrueAndLastActiveAtBefore(threshold);
         for (User guest : oldGuests) {
             userRepository.delete(guest);
+        }
+    }
+
+    public DashboardSummary getDashboardSummary(User user) {
+        // Get counts
+        int createdRoomsCount = user.getCreatedRooms() != null ? user.getCreatedRooms().size() : 0;
+        int joinedRoomsCount = user.getJoinedRooms() != null ? user.getJoinedRooms().size() : 0;
+
+        // Get recent collaborators - resolve user details
+        List<DashboardSummary.CollaboratorInfo> collaborators = new ArrayList<>();
+        
+        if (user.getRecentCollaborators() != null && !user.getRecentCollaborators().isEmpty()) {
+            // Get collaborator user IDs (already sorted by lastSeenAt in User model)
+            List<String> collaboratorIds = user.getRecentCollaborators().stream()
+                    .map(User.RecentCollaborator::getUserId)
+                    .limit(10) // Limit to 10 for dashboard
+                    .collect(Collectors.toList());
+            
+            // Batch fetch collaborator details
+            List<User> collaboratorUsers = userRepository.findAllById(collaboratorIds);
+            
+            // Create a map for quick lookup
+            var userMap = collaboratorUsers.stream()
+                    .collect(Collectors.toMap(User::getId, u -> u));
+            
+            // Build collaborator info in order, preserving the sort order
+            for (String collabId : collaboratorIds) {
+                User collabUser = userMap.get(collabId);
+                if (collabUser != null) {
+                    String characterName = collabUser.getAvatarPreferences() != null 
+                            ? collabUser.getAvatarPreferences().getCharacterName() 
+                            : "Adam";
+                    collaborators.add(new DashboardSummary.CollaboratorInfo(
+                            collabUser.getId(),
+                            collabUser.getDisplayName(),
+                            characterName
+                    ));
+                }
+            }
+        }
+
+        return new DashboardSummary(
+            user.getDisplayName(),
+            user.getUsername(),
+            user.getAvatarPreferences(),
+            createdRoomsCount,
+            joinedRoomsCount,
+            collaborators
+        );
+    }
+
+    /**
+     * Update collaborators for a user when they meet other users in a room.
+     * Called when a user joins a room with other participants.
+     */
+    public void updateCollaborators(String userId, List<String> otherUserIds, String roomId) {
+        if (otherUserIds == null || otherUserIds.isEmpty()) return;
+        
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isEmpty()) return;
+        
+        User user = userOpt.get();
+        for (String otherUserId : otherUserIds) {
+            if (!otherUserId.equals(userId)) {
+                user.addCollaborator(otherUserId, roomId);
+            }
+        }
+        userRepository.save(user);
+    }
+
+    /**
+     * Bidirectionally update collaborators for all users in a room.
+     * Call this when a new user joins a room.
+     */
+    public void recordRoomCollaboration(String newUserId, List<String> existingUserIds, String roomId) {
+        if (existingUserIds == null || existingUserIds.isEmpty()) return;
+        
+        // Update the new user's collaborators with existing users
+        updateCollaborators(newUserId, existingUserIds, roomId);
+        
+        // Update each existing user's collaborators with the new user
+        List<String> newUserList = List.of(newUserId);
+        for (String existingUserId : existingUserIds) {
+            updateCollaborators(existingUserId, newUserList, roomId);
         }
     }
 }

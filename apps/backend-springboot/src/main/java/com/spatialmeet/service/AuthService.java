@@ -121,4 +121,8 @@ public class AuthService {
     public String getUserIdFromToken(String token) {
         return jwtUtils.getUserIdFromToken(token);
     }
+
+    public User getUserById(String userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
 }

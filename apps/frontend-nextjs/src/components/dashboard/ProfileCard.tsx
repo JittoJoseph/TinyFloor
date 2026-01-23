@@ -97,12 +97,12 @@ export function ProfileCard({
             <div className="relative shrink-0">
               <div className="relative group">
                 <div className="absolute inset-0 bg-ui-border rounded-2xl translate-x-2 translate-y-2" />
-                <div className="relative w-24 h-28 bg-gradient-to-b from-gray-50 to-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
+                <div className="relative w-28 h-36 bg-gradient-to-b from-gray-50 to-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
                   <CharacterPreview
                     characterId={
                       user.avatarPreferences?.characterName || "Adam"
                     }
-                    size="sm"
+                    size="lg"
                   />
                 </div>
                 <button

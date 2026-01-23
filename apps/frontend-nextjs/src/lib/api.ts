@@ -99,9 +99,38 @@ class ApiClient {
     }
   }
 
+  /**
+   * Combined session validation and user fetch - reduces 2 API calls to 1.
+   * Returns { valid: boolean, user: User | null }
+   */
+  async getSession(): Promise<{ valid: boolean; user: User | null }> {
+    try {
+      return await this.fetch<{ valid: boolean; user: User | null }>(
+        "/api/auth/session",
+      );
+    } catch {
+      return { valid: false, user: null };
+    }
+  }
+
   // User endpoints
   async getCurrentUser(): Promise<User> {
     return this.fetch<User>("/api/users/me");
+  }
+
+  async getDashboardSummary(): Promise<{
+    displayName: string;
+    username: string;
+    avatarPreferences: { characterName?: string } | null;
+    createdRoomsCount: number;
+    joinedRoomsCount: number;
+    recentCollaborators: {
+      id: string;
+      displayName: string;
+      characterName: string;
+    }[];
+  }> {
+    return this.fetch("/api/users/me/summary");
   }
 
   async updateProfile(

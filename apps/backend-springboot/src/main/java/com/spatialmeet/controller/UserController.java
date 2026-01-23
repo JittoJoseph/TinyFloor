@@ -1,6 +1,7 @@
 package com.spatialmeet.controller;
 
 import com.spatialmeet.dto.UserResponse;
+import com.spatialmeet.dto.DashboardSummary;
 import com.spatialmeet.model.AvatarPreferences;
 import com.spatialmeet.model.User;
 import com.spatialmeet.model.UserStatus;
@@ -26,6 +27,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.ok(new UserResponse(user));
+    }
+
+    @GetMapping("/me/summary")
+    public ResponseEntity<DashboardSummary> getDashboardSummary(@AuthenticationPrincipal User user) {
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(userService.getDashboardSummary(user));
     }
 
     @PutMapping("/me")

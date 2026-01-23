@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spatialmeet.model.Message;
 import com.spatialmeet.model.Player;
 import com.spatialmeet.service.RoomService;
+import com.spatialmeet.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RoomService roomService;
+    private final UserService userService;
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
@@ -57,8 +59,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private static final long CLEANUP_INTERVAL_MS = 300000; // Clean up every 5 minutes
     private static final long INACTIVE_TIMEOUT_MS = 300000; // 5 minutes timeout
 
-    public GameWebSocketHandler(RoomService roomService) {
+    public GameWebSocketHandler(RoomService roomService, UserService userService) {
         this.roomService = roomService;
+        this.userService = userService;
         startMovementBroadcaster();
         startCleanupTask();
     }
@@ -265,6 +268,22 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("join-failed", Map.of("reason", "Room is full or invalid")))));
             session.close();
             return;
+        }
+        
+        // Track collaborators - record that this user met the existing users in this room
+        List<String> existingUserIds = roomPlayers.get(roomId).values().stream()
+            .filter(p -> !p.getId().equals(playerId))
+            .map(Player::getId)
+            .collect(Collectors.toList());
+        
+        if (!existingUserIds.isEmpty() && userId != null && !userId.startsWith("player_")) {
+            // Only track for authenticated users (not anonymous players)
+            try {
+                userService.recordRoomCollaboration(userId, existingUserIds, roomId);
+            } catch (Exception e) {
+                // Don't fail the join if collaborator tracking fails
+                logger.warn("Failed to record room collaboration: {}", e.getMessage());
+            }
         }
         
         logger.info("Player {} joined room {}", playerId, roomId);

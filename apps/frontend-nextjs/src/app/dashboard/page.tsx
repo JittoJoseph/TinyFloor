@@ -12,7 +12,9 @@ import {
   RoomSection,
   QuickActions,
   ActivityFeed,
+  RecentCollaborators,
   type Room,
+  type Collaborator,
 } from "@/components/dashboard";
 
 export default function DashboardPage() {
@@ -28,6 +30,7 @@ export default function DashboardPage() {
 
   const [createdRooms, setCreatedRooms] = useState<Room[]>([]);
   const [joinedRooms, setJoinedRooms] = useState<Room[]>([]);
+  const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
   const [loadingRooms, setLoadingRooms] = useState(true);
   const [copiedRoomId, setCopiedRoomId] = useState<string | null>(null);
   const [deletingRoomId, setDeletingRoomId] = useState<string | null>(null);
@@ -56,6 +59,14 @@ export default function DashboardPage() {
         setJoinedRooms(joined.filter((r) => !createdIds.has(r.id)));
       } catch {
         setJoinedRooms([]);
+      }
+
+      // Fetch dashboard summary for collaborators
+      try {
+        const summary = await apiClient.getDashboardSummary();
+        setCollaborators(summary.recentCollaborators || []);
+      } catch {
+        setCollaborators([]);
       }
     } catch (error) {
       console.error("Failed to fetch rooms:", error);
@@ -176,9 +187,13 @@ export default function DashboardPage() {
             />
           </div>
 
-          {/* Quick Actions - Fixed width on xl */}
-          <div className="xl:w-64 shrink-0">
+          {/* Right Column: Quick Actions + Recent People */}
+          <div className="xl:w-64 shrink-0 flex flex-col gap-4">
             <QuickActions onLogout={handleLogout} isGuest={user.isGuest} />
+            <RecentCollaborators
+              collaborators={collaborators}
+              isLoading={loadingRooms}
+            />
           </div>
         </div>
 

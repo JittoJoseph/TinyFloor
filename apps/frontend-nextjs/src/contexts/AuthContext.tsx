@@ -20,11 +20,11 @@ interface AuthContextType {
     username: string,
     password: string,
     email?: string,
-    displayName?: string
+    displayName?: string,
   ) => Promise<AuthResponse>;
   loginAsGuest: (
     displayName: string,
-    character: string
+    character: string,
   ) => Promise<AuthResponse>;
   logout: () => Promise<void>;
   updateUser: (user: Partial<User>) => void;
@@ -44,10 +44,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const isValid = await apiClient.validateToken();
-      if (isValid) {
-        const userData = await apiClient.getCurrentUser();
-        setUser(userData);
+      // Single API call instead of validateToken + getCurrentUser
+      const session = await apiClient.getSession();
+      if (session.valid && session.user) {
+        setUser(session.user);
       } else {
         apiClient.setToken(null);
       }
@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (
     username: string,
-    password: string
+    password: string,
   ): Promise<AuthResponse> => {
     const response = await apiClient.login({ username, password });
     if (response.token && !response.message) {
@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     username: string,
     password: string,
     email?: string,
-    displayName?: string
+    displayName?: string,
   ): Promise<AuthResponse> => {
     const response = await apiClient.register({
       username,
@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const loginAsGuest = async (
     displayName: string,
-    character: string
+    character: string,
   ): Promise<AuthResponse> => {
     const response = await apiClient.createGuestSession(displayName, character);
     if (response.token) {

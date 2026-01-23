@@ -46,11 +46,6 @@ export interface User {
 
 export interface AvatarPreferences {
   characterName: string;
-  skinTone?: string;
-  hairStyle?: string;
-  hairColor?: string;
-  outfit?: string;
-  accessories?: string;
 }
 
 export type UserStatus = "ONLINE" | "AWAY" | "BUSY" | "IN_CALL" | "OFFLINE";

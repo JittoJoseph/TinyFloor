@@ -150,9 +150,7 @@ class ApiClient {
     return this.fetch(`/api/rooms/search?query=${encodeURIComponent(query)}`);
   }
 
-  async getRoom(
-    roomId: string,
-  ): Promise<{
+  async getRoom(roomId: string): Promise<{
     id: string;
     name: string;
     users: string[];
@@ -169,9 +167,7 @@ class ApiClient {
     return this.fetch(`/api/rooms/${roomId}`);
   }
 
-  async getRoomByShareCode(
-    shareCode: string,
-  ): Promise<{
+  async getRoomByShareCode(shareCode: string): Promise<{
     id: string;
     name: string;
     users: string[];

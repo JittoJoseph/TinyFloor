@@ -28,15 +28,6 @@ public class UserController {
         return ResponseEntity.ok(new UserResponse(user));
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable String userId) {
-        UserResponse userResponse = userService.getUserProfile(userId);
-        if (userResponse == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(userResponse);
-    }
-
     @PutMapping("/me")
     public ResponseEntity<UserResponse> updateProfile(
             @AuthenticationPrincipal User user,
@@ -58,16 +49,5 @@ public class UserController {
         }
         UserResponse response = userService.updateAvatar(user.getId(), avatarPreferences);
         return ResponseEntity.ok(response);
-    }
-
-    @PutMapping("/me/status")
-    public ResponseEntity<Void> updateStatus(
-            @AuthenticationPrincipal User user,
-            @RequestParam UserStatus status) {
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        userService.updateStatus(user.getId(), status);
-        return ResponseEntity.ok().build();
     }
 }

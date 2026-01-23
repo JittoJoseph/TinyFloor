@@ -90,17 +90,6 @@ public class RoomController {
         return ResponseEntity.ok(room);
     }
 
-    // Legacy endpoint for backwards compatibility
-    @PostMapping("/simple")
-    public ResponseEntity<Room> createRoomSimple(@RequestBody Map<String, String> payload) {
-        String name = payload.get("name");
-        if (name == null || name.trim().isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        Room room = roomService.createRoom(name);
-        return ResponseEntity.ok(room);
-    }
-
     @PostMapping("/{roomId}/join")
     public ResponseEntity<Map<String, Object>> joinRoom(
             @PathVariable String roomId,

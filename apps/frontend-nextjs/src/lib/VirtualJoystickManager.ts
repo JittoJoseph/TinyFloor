@@ -1,4 +1,4 @@
-import * as Phaser from 'phaser';
+import * as Phaser from "phaser";
 
 export class VirtualJoystickManager {
   private scene: Phaser.Scene;
@@ -20,7 +20,6 @@ export class VirtualJoystickManager {
     const thumbRadius = 30;
     const maxDistance = 40;
 
-    // Create joystick base
     this.joystickBase = this.scene.add.graphics();
     this.joystickBase.fillStyle(0x000000, 0.3);
     this.joystickBase.fillCircle(baseX, baseY, baseRadius);
@@ -28,7 +27,6 @@ export class VirtualJoystickManager {
     this.joystickBase.setDepth(100000);
     this.scene.children.bringToTop(this.joystickBase);
 
-    // Create joystick thumb
     this.joystickThumb = this.scene.add.graphics();
     this.joystickThumb.fillStyle(0xffffff, 0.8);
     this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
@@ -36,23 +34,24 @@ export class VirtualJoystickManager {
     this.joystickThumb.setDepth(100001);
     this.scene.children.bringToTop(this.joystickThumb);
 
-    // Make base interactive
-    this.joystickBase.setInteractive(new Phaser.Geom.Circle(baseX, baseY, baseRadius), Phaser.Geom.Circle.Contains);
+    this.joystickBase.setInteractive(
+      new Phaser.Geom.Circle(baseX, baseY, baseRadius),
+      Phaser.Geom.Circle.Contains,
+    );
 
-    this.joystickBase.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+    this.joystickBase.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
       this.joystickActive = true;
       this.joystickPointer = pointer;
       this.updateJoystick(pointer, baseX, baseY, maxDistance, thumbRadius);
     });
 
-    // Listen on scene input for move to allow dragging outside the base
-    this.scene.input.on('pointermove', (pointer: Phaser.Input.Pointer) => {
+    this.scene.input.on("pointermove", (pointer: Phaser.Input.Pointer) => {
       if (this.joystickActive && pointer === this.joystickPointer) {
         this.updateJoystick(pointer, baseX, baseY, maxDistance, thumbRadius);
       }
     });
 
-    this.scene.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
+    this.scene.input.on("pointerup", (pointer: Phaser.Input.Pointer) => {
       if (this.joystickActive && pointer === this.joystickPointer) {
         this.joystickActive = false;
         this.joystickPointer = undefined;
@@ -61,7 +60,13 @@ export class VirtualJoystickManager {
     });
   }
 
-  private updateJoystick(pointer: Phaser.Input.Pointer, baseX: number, baseY: number, maxDistance: number, thumbRadius: number) {
+  private updateJoystick(
+    pointer: Phaser.Input.Pointer,
+    baseX: number,
+    baseY: number,
+    maxDistance: number,
+    thumbRadius: number,
+  ) {
     const dx = pointer.x - baseX;
     const dy = pointer.y - baseY;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -74,25 +79,32 @@ export class VirtualJoystickManager {
     this.joystickThumb.fillStyle(0xffffff, 0.8);
     this.joystickThumb.fillCircle(thumbX, thumbY, thumbRadius);
 
-    // Snap to 8 directions like keyboard
     if (clampedDistance > 0) {
-      const angleDeg = angle * 180 / Math.PI;
+      const angleDeg = (angle * 180) / Math.PI;
       if (angleDeg >= -22.5 && angleDeg < 22.5) {
-        this.velocity.x = 1; this.velocity.y = 0; // right
+        this.velocity.x = 1;
+        this.velocity.y = 0;
       } else if (angleDeg >= 22.5 && angleDeg < 67.5) {
-        this.velocity.x = 0.707; this.velocity.y = 0.707; // down-right
+        this.velocity.x = 0.707;
+        this.velocity.y = 0.707;
       } else if (angleDeg >= 67.5 && angleDeg < 112.5) {
-        this.velocity.x = 0; this.velocity.y = 1; // down
+        this.velocity.x = 0;
+        this.velocity.y = 1;
       } else if (angleDeg >= 112.5 && angleDeg < 157.5) {
-        this.velocity.x = -0.707; this.velocity.y = 0.707; // down-left
+        this.velocity.x = -0.707;
+        this.velocity.y = 0.707;
       } else if (angleDeg >= 157.5 || angleDeg < -157.5) {
-        this.velocity.x = -1; this.velocity.y = 0; // left
+        this.velocity.x = -1;
+        this.velocity.y = 0;
       } else if (angleDeg >= -157.5 && angleDeg < -112.5) {
-        this.velocity.x = -0.707; this.velocity.y = -0.707; // up-left
+        this.velocity.x = -0.707;
+        this.velocity.y = -0.707;
       } else if (angleDeg >= -112.5 && angleDeg < -67.5) {
-        this.velocity.x = 0; this.velocity.y = -1; // up
+        this.velocity.x = 0;
+        this.velocity.y = -1;
       } else if (angleDeg >= -67.5 && angleDeg < -22.5) {
-        this.velocity.x = 0.707; this.velocity.y = -0.707; // up-right
+        this.velocity.x = 0.707;
+        this.velocity.y = -0.707;
       }
     } else {
       this.velocity.x = 0;
@@ -105,7 +117,6 @@ export class VirtualJoystickManager {
     this.joystickThumb.fillStyle(0xffffff, 0.8);
     this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
 
-    // Reset velocity
     this.velocity.x = 0;
     this.velocity.y = 0;
   }

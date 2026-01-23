@@ -4,12 +4,16 @@ import com.spatialmeet.dto.AuthRequest;
 import com.spatialmeet.dto.AuthResponse;
 import com.spatialmeet.service.AuthService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     private final AuthService authService;
 
@@ -19,9 +23,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody AuthRequest request) {
-        System.out.println("Register request: email=" + request.getEmail() + ", username=" + request.getUsername());
+        logger.info("Register request: email={}, username={}", request.getEmail(), request.getUsername());
         AuthResponse response = authService.register(request);
-        System.out.println("Register response: success=" + (response.getMessage() == null) + ", message=" + response.getMessage());
+        logger.info("Register response: success={}, message={}", response.getMessage() == null, response.getMessage());
         if (response.getMessage() != null) {
             return ResponseEntity.badRequest().body(response);
         }

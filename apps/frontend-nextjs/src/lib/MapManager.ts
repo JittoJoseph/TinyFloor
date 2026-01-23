@@ -1,5 +1,5 @@
-import * as Phaser from 'phaser';
-import { TILE_SIZE, tileToPixel } from './types';
+import * as Phaser from "phaser";
+import { TILE_SIZE, tileToPixel } from "./types";
 
 export class MapManager {
   private scene: Phaser.Scene;
@@ -12,43 +12,54 @@ export class MapManager {
 
   preload() {
     this.scene.load.tilemapTiledJSON("office", "/tilesets/office-map.tmj");
-    this.scene.load.image("RoomBuilder", "/tilesets/textures/Room_Builder_Office_32x32.png");
-    this.scene.load.image("ModernOffice", "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png");
+    this.scene.load.image(
+      "RoomBuilder",
+      "/tilesets/textures/Room_Builder_Office_32x32.png",
+    );
+    this.scene.load.image(
+      "ModernOffice",
+      "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
+    );
   }
 
   create() {
     this.map = this.scene.make.tilemap({ key: "office" });
-    const rb = this.map.addTilesetImage("Room_Builder_Office_32x32", "RoomBuilder");
-    const mo = this.map.addTilesetImage("Modern_Office_Black_Shadow_32x32", "ModernOffice");
+    const rb = this.map.addTilesetImage(
+      "Room_Builder_Office_32x32",
+      "RoomBuilder",
+    );
+    const mo = this.map.addTilesetImage(
+      "Modern_Office_Black_Shadow_32x32",
+      "ModernOffice",
+    );
 
-    if (!rb || !mo) {
-      throw new Error("Tilesets not found");
-    }
+    if (!rb || !mo) throw new Error("Tilesets not found");
 
-    this.map.createLayer("Ground", [rb, mo], 0, 0)!.setDepth(0);
-    this.map.createLayer("Walls", [rb, mo], 0, 0)!.setDepth(10);
-    this.map.createLayer("DesksBack", [rb, mo], 0, 0)!.setDepth(20);
-    this.map.createLayer("DeskItems_Back", [rb, mo], 0, 0)!.setDepth(25);
-
-    // Create front layers
+    const tilesets = [rb, mo];
+    this.map.createLayer("Ground", tilesets, 0, 0)!.setDepth(0);
+    this.map.createLayer("Walls", tilesets, 0, 0)!.setDepth(10);
+    this.map.createLayer("DesksBack", tilesets, 0, 0)!.setDepth(20);
+    this.map.createLayer("DeskItems_Back", tilesets, 0, 0)!.setDepth(25);
     this.map.createLayer("Dividers", [mo], 0, 0)!.setDepth(1000);
     this.map.createLayer("DesksFront", [mo], 0, 0)!.setDepth(1010);
     this.map.createLayer("DeskItems_Front", [mo], 0, 0)!.setDepth(1020);
+    this.map.createLayer("OverPlayer_Layer", tilesets, 0, 0)!.setDepth(20000);
 
-    // Create over player layer
-    this.map.createLayer("OverPlayer_Layer", [rb, mo], 0, 0)!.setDepth(20000);
-    
     this.createColliders();
   }
 
   private createColliders() {
-    // Build colliders from object layer
     const collLayer = this.map.getObjectLayer("Colliders");
     this.solids = this.scene.physics.add.staticGroup();
 
-    if (collLayer && collLayer.objects) {
+    if (collLayer?.objects) {
       collLayer.objects.forEach((obj: unknown) => {
-        const o = obj as { x: number; y: number; width?: number; height?: number };
+        const o = obj as {
+          x: number;
+          y: number;
+          width?: number;
+          height?: number;
+        };
         const cx = o.x + (o.width || 0) / 2;
         const cy = o.y + (o.height || 0) / 2;
 
@@ -58,7 +69,7 @@ export class MapManager {
           o.width || 1,
           o.height || 1,
           0x000000,
-          0
+          0,
         );
         this.scene.physics.add.existing(rect, true);
         const body = rect.body as Phaser.Physics.Arcade.StaticBody;
@@ -92,14 +103,20 @@ export class MapManager {
     const paddingTiles = 2; // Don't spawn too close to edge (2 tiles)
 
     for (let i = 0; i < 50; i++) {
-      const tileX = Phaser.Math.Between(paddingTiles, widthTiles - paddingTiles);
-      const tileY = Phaser.Math.Between(paddingTiles, heightTiles - paddingTiles);
-      
+      const tileX = Phaser.Math.Between(
+        paddingTiles,
+        widthTiles - paddingTiles,
+      );
+      const tileY = Phaser.Math.Between(
+        paddingTiles,
+        heightTiles - paddingTiles,
+      );
+
       // Check collision with solids at pixel center
       const pixelPos = tileToPixel(tileX, tileY);
       const pixelX = pixelPos.x;
       const pixelY = pixelPos.y;
-      
+
       let collides = false;
       this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
         const body = child.body as Phaser.Physics.Arcade.StaticBody;
@@ -113,7 +130,7 @@ export class MapManager {
         return { tileX, tileY };
       }
     }
-    
+
     // Fallback to tile (5, 5)
     return { tileX: 5, tileY: 5 };
   }

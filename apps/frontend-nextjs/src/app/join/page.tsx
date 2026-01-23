@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, User, Lock, Users, AlertCircle } from "lucide-react";
-import { CharacterSelector } from "@/components/CharacterSelector";
+import { AnimatedCharacterSelector } from "@/components/AnimatedCharacterSelector";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/components/ui/Toast";
 import { apiClient } from "@/lib/api";
@@ -106,7 +106,7 @@ function JoinContent() {
       const result = await apiClient.joinRoom(
         roomInfo.id,
         password || undefined,
-        name
+        name,
       );
 
       if (!result.success) {
@@ -120,8 +120,8 @@ function JoinContent() {
       // Redirect to the room page with params
       router.push(
         `/room/${roomInfo.id}?name=${encodeURIComponent(
-          name
-        )}&character=${character}&userId=${result.userId}`
+          name,
+        )}&character=${character}&userId=${result.userId}`,
       );
     } catch (err) {
       console.error("Failed to join room:", err);
@@ -231,7 +231,7 @@ function JoinContent() {
           <label className="block font-pixel text-xl text-gray-700 mb-3">
             Choose Character
           </label>
-          <CharacterSelector
+          <AnimatedCharacterSelector
             selectedCharacter={character}
             onSelect={setCharacter}
             variant="grid"

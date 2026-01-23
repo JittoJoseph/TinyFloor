@@ -1,17 +1,21 @@
-// API types matching the backend DTOs
-
 export const TILE_SIZE = 32;
 export const MAP_WIDTH_TILES = 55;
 export const MAP_HEIGHT_TILES = 25;
 
-export function pixelToTile(pixelX: number, pixelY: number): { tileX: number; tileY: number } {
+export function pixelToTile(
+  pixelX: number,
+  pixelY: number,
+): { tileX: number; tileY: number } {
   return {
     tileX: Math.floor(pixelX / TILE_SIZE),
     tileY: Math.floor(pixelY / TILE_SIZE),
   };
 }
 
-export function tileToPixel(tileX: number, tileY: number): { x: number; y: number } {
+export function tileToPixel(
+  tileX: number,
+  tileY: number,
+): { x: number; y: number } {
   return {
     x: tileX * TILE_SIZE + TILE_SIZE / 2,
     y: tileY * TILE_SIZE + TILE_SIZE / 2,
@@ -19,8 +23,12 @@ export function tileToPixel(tileX: number, tileY: number): { x: number; y: numbe
 }
 
 export function isValidTile(tileX: number, tileY: number): boolean {
-  return tileX >= 1 && tileX < MAP_WIDTH_TILES - 1 && 
-         tileY >= 1 && tileY < MAP_HEIGHT_TILES - 1;
+  return (
+    tileX >= 1 &&
+    tileX < MAP_WIDTH_TILES - 1 &&
+    tileY >= 1 &&
+    tileY < MAP_HEIGHT_TILES - 1
+  );
 }
 
 export interface User {
@@ -33,19 +41,18 @@ export interface User {
   joinedRooms: string[];
   isGuest: boolean;
   createdAt: string;
-  status: UserStatus;
+  status: Status;
 }
 
 export interface AvatarPreferences {
   characterName: string;
-  skinTone?: string;
-  hairStyle?: string;
-  hairColor?: string;
-  outfit?: string;
-  accessories?: string;
 }
 
-export type UserStatus = 'ONLINE' | 'AWAY' | 'BUSY' | 'IN_CALL' | 'OFFLINE';
+export type Status = "available" | "busy" | "away" | "in_call" | "offline";
+
+export type UserStatus = Status;
+
+export type PlayerStatus = Status;
 
 export interface AuthResponse {
   token: string;
@@ -54,7 +61,7 @@ export interface AuthResponse {
   displayName: string;
   email?: string;
   isGuest: boolean;
-  status: UserStatus;
+  status: Status;
   message?: string;
 }
 
@@ -70,29 +77,16 @@ export interface Room {
   lastActivityAt: string;
   status: RoomStatus;
   shareCode?: string;
-  settings?: RoomSettings;
   users?: string[];
 }
 
-export type RoomStatus = 'ACTIVE' | 'INACTIVE' | 'ARCHIVED' | 'DELETED';
-
-export interface RoomSettings {
-  allowGuests: boolean;
-  requireApproval: boolean;
-  enableVideo: boolean;
-  enableAudio: boolean;
-  enableChat: boolean;
-  welcomeMessage?: string;
-  mapTheme: string;
-  proximityRadius: number;
-}
+export type RoomStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED" | "DELETED";
 
 export interface CreateRoomRequest {
   name: string;
   isPublic?: boolean;
   password?: string;
   maxPlayers?: number;
-  settings?: RoomSettings;
 }
 
 export interface LoginRequest {

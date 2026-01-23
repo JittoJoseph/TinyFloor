@@ -1,6 +1,7 @@
 package com.spatialmeet.security;
 
 import com.spatialmeet.model.User;
+import com.spatialmeet.model.UserStatus;
 import com.spatialmeet.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -42,13 +43,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 if (userOpt.isPresent()) {
                     User user = userOpt.get();
-                    String role = user.isGuest() ? "ROLE_GUEST" : "ROLE_USER";
-                    
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                            user, null, Collections.singletonList(new SimpleGrantedAuthority(role)));
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    // Check if user is active (not logged out)
+                    if (user.getStatus() != UserStatus.OFFLINE) {
+                        String role = user.isGuest() ? "ROLE_GUEST" : "ROLE_USER";
+                        
+                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                                user, null, Collections.singletonList(new SimpleGrantedAuthority(role)));
+                        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                    }
                 }
             }
         } catch (Exception e) {

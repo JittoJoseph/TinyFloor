@@ -1,117 +1,171 @@
-import * as Phaser from 'phaser';
-import { WebSocketManager } from './WebSocketManager';
-import { PlayerManager } from './PlayerManager';
-import { CallManager } from './CallManager';
+import * as Phaser from "phaser";
+import { WebSocketManager } from "./WebSocketManager";
+import { PlayerManager } from "./PlayerManager";
+import { CallManager } from "./CallManager";
 
-// Optimization: Only check proximity every N milliseconds
-const PROXIMITY_CHECK_INTERVAL = 100; // 10 times per second instead of 60
+const PROXIMITY_CHECK_INTERVAL = 1000;
+const PROXIMITY_DWELL_TIME = 1000;
 
 export class ProximityManager {
   private scene: Phaser.Scene;
-  private wsManager: WebSocketManager;
   private playerManager: PlayerManager;
   private callManager: CallManager;
   private currentPlayer: Phaser.Physics.Arcade.Sprite;
   private playerId: string;
-  private nearbyPlayers: Set<string> = new Set();
-  private R_PROXIMITY = 2.5 * 32; // 2.5 tiles
-  private activeCalls: Set<string> = new Set();
-  private playerNames: Map<string, string> = new Map();
-  
-  // Throttling
+  private R_PROXIMITY = 2.5 * 32;
+  private activeCalls = new Set<string>();
   private lastCheckTime = 0;
-  private cachedNearbyData: Array<{ id: string; name: string; x: number; y: number }> = [];
+  private cachedNearbyData: Array<{
+    id: string;
+    name: string;
+    x: number;
+    y: number;
+    status: string;
+  }> = [];
+  private proximityStartTimes = new Map<string, number>();
 
-  constructor(scene: Phaser.Scene, wsManager: WebSocketManager, playerManager: PlayerManager, callManager: CallManager, currentPlayer: Phaser.Physics.Arcade.Sprite, playerId: string) {
+  constructor(
+    scene: Phaser.Scene,
+    wsManager: WebSocketManager,
+    playerManager: PlayerManager,
+    callManager: CallManager,
+    currentPlayer: Phaser.Physics.Arcade.Sprite,
+    playerId: string,
+  ) {
     this.scene = scene;
-    this.wsManager = wsManager;
     this.playerManager = playerManager;
     this.callManager = callManager;
     this.currentPlayer = currentPlayer;
     this.playerId = playerId;
-  }
 
-  setPlayerName(playerId: string, name: string) {
-    this.playerNames.set(playerId, name);
+    window.addEventListener("remoteStreamRemoved", ((e: CustomEvent) => {
+      this.activeCalls.delete(e.detail.peerId);
+    }) as EventListener);
+
+    window.addEventListener("callEnded", (() => {
+      this.activeCalls.clear();
+    }) as EventListener);
   }
 
   update() {
     if (!this.currentPlayer) return;
 
     const now = performance.now();
-    
-    // Throttle proximity checks
     if (now - this.lastCheckTime < PROXIMITY_CHECK_INTERVAL) {
-      // Use cached data for UI updates
-      if (this.cachedNearbyData.length > 0) {
-        this.updateScreenPositions();
-      }
+      if (this.cachedNearbyData.length > 0) this.updateScreenPositions();
       return;
     }
-    
+
     this.lastCheckTime = now;
-    const nearbyData: Array<{ id: string; name: string; x: number; y: number }> = [];
+    const nearbyData: Array<{
+      id: string;
+      name: string;
+      x: number;
+      y: number;
+      status: string;
+    }> = [];
     const camera = this.scene.cameras.main;
     const playerX = this.currentPlayer.x;
     const playerY = this.currentPlayer.y;
-    const proximitySquared = this.R_PROXIMITY * this.R_PROXIMITY; // Avoid sqrt
+    const proximitySquared = this.R_PROXIMITY * this.R_PROXIMITY;
 
     this.playerManager.getPlayers().forEach((container, id) => {
-      // Use squared distance to avoid expensive sqrt
       const dx = playerX - container.x;
       const dy = playerY - container.y;
       const distanceSquared = dx * dx + dy * dy;
 
       if (distanceSquared <= proximitySquared) {
-        // Calculate screen coordinates
-        const relativeX = container.x - camera.scrollX;
-        const relativeY = container.y - camera.scrollY;
-        const screenX = relativeX * camera.zoom;
-        const screenY = relativeY * camera.zoom;
+        if (!this.proximityStartTimes.has(id)) {
+          this.proximityStartTimes.set(id, now);
+        }
 
-        const playerLabel = this.playerManager.getPlayerLabels().get(id);
-        const playerName = this.playerNames.get(id) || playerLabel?.text || 'Player';
+        const timeInProximity = now - (this.proximityStartTimes.get(id) || 0);
+        if (timeInProximity >= PROXIMITY_DWELL_TIME) {
+          const relativeX = container.x - camera.scrollX;
+          const relativeY = container.y - camera.scrollY;
+          const screenX = relativeX * camera.zoom;
+          const screenY = relativeY * camera.zoom;
 
-        nearbyData.push({ id, name: playerName, x: screenX, y: screenY });
+          const playerLabel = this.playerManager.getPlayerLabels().get(id);
+          const playerName = playerLabel?.text || "Player";
+          const playerStatus =
+            this.playerManager.getPlayerStatus(id) || "available";
+          nearbyData.push({
+            id,
+            name: playerName,
+            x: screenX,
+            y: screenY,
+            status: playerStatus,
+          });
+        }
+      } else {
+        this.proximityStartTimes.delete(id);
       }
     });
 
     this.cachedNearbyData = nearbyData;
-    window.dispatchEvent(new CustomEvent('proximityUpdate', { detail: nearbyData }));
-
-    // Check for auto-end calls (less frequently)
+    window.dispatchEvent(
+      new CustomEvent("proximityUpdate", { detail: nearbyData }),
+    );
     this.checkCallDistances();
   }
-  
+
   private updateScreenPositions() {
     const camera = this.scene.cameras.main;
-    
-    // Update screen positions for cached nearby players
+    const now = performance.now();
+    const updatedNearbyData: Array<{
+      id: string;
+      name: string;
+      x: number;
+      y: number;
+      status: string;
+    }> = [];
+
     for (const data of this.cachedNearbyData) {
       const container = this.playerManager.getPlayers().get(data.id);
       if (container) {
-        const relativeX = container.x - camera.scrollX;
-        const relativeY = container.y - camera.scrollY;
-        data.x = relativeX * camera.zoom;
-        data.y = relativeY * camera.zoom;
+        const playerX = this.currentPlayer.x;
+        const playerY = this.currentPlayer.y;
+        const dx = playerX - container.x;
+        const dy = playerY - container.y;
+        const distanceSquared = dx * dx + dy * dy;
+        const proximitySquared = this.R_PROXIMITY * this.R_PROXIMITY;
+
+        if (distanceSquared <= proximitySquared) {
+          const timeInProximity =
+            now - (this.proximityStartTimes.get(data.id) || 0);
+          if (timeInProximity >= PROXIMITY_DWELL_TIME) {
+            const relativeX = container.x - camera.scrollX;
+            const relativeY = container.y - camera.scrollY;
+            data.x = relativeX * camera.zoom;
+            data.y = relativeY * camera.zoom;
+            updatedNearbyData.push(data);
+          }
+        } else {
+          this.proximityStartTimes.delete(data.id);
+        }
       }
     }
-    
-    window.dispatchEvent(new CustomEvent('proximityUpdate', { detail: this.cachedNearbyData }));
+
+    this.cachedNearbyData = updatedNearbyData;
+    window.dispatchEvent(
+      new CustomEvent("proximityUpdate", { detail: this.cachedNearbyData }),
+    );
   }
-  
+
   private checkCallDistances() {
-    const disconnectDistanceSquared = (this.R_PROXIMITY + 64) * (this.R_PROXIMITY + 64);
+    const disconnectDistanceSquared =
+      (this.R_PROXIMITY + 64) * (this.R_PROXIMITY + 64);
     const playerX = this.currentPlayer.x;
     const playerY = this.currentPlayer.y;
-    
+
     this.activeCalls.forEach((id) => {
       const container = this.playerManager.getPlayers().get(id);
       if (container) {
         const dx = playerX - container.x;
         const dy = playerY - container.y;
         const distanceSquared = dx * dx + dy * dy;
-        
+
         if (distanceSquared > disconnectDistanceSquared) {
           this.endCall(id, "distance");
         }
@@ -119,13 +173,15 @@ export class ProximityManager {
     });
   }
 
-  initiateCall(toId: string, callType: 'audio' | 'video') {
-    this.callManager.initiateCall(toId, callType);
+  initiateCall(toId: string, callType: "audio" | "video") {
+    const playerLabel = this.playerManager.getPlayerLabels().get(toId);
+    const peerName = playerLabel?.text || "Unknown User";
+    this.callManager.initiateCall(toId, callType, peerName);
     this.activeCalls.add(toId);
   }
 
   initiateChat() {
-    window.dispatchEvent(new Event('openChat'));
+    window.dispatchEvent(new Event("openChat"));
   }
 
   endCall(peerId: string, reason: string) {
@@ -138,6 +194,6 @@ export class ProximityManager {
   }
 
   destroy() {
-    // Cleanup
+    this.proximityStartTimes.clear();
   }
 }

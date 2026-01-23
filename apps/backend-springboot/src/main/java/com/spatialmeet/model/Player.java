@@ -14,6 +14,7 @@ public class Player {
     private String direction = "down";
     private long lastSeen;
     private String inCallWith;
+    private String status = "available"; // available, busy, away, in_call
 
     // Constructors, getters, setters
     public Player() {}
@@ -57,4 +58,7 @@ public class Player {
 
     public String getInCallWith() { return inCallWith; }
     public void setInCallWith(String inCallWith) { this.inCallWith = inCallWith; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

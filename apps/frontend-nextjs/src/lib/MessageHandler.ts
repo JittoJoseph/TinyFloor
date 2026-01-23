@@ -1,10 +1,11 @@
-import * as Phaser from 'phaser';
-import { WebSocketManager, WebSocketMessage } from './WebSocketManager';
-import { PlayerManager } from './PlayerManager';
-import { ProximityManager } from './ProximityManager';
-import { CallManager } from './CallManager';
-import { AnimationManager, Direction } from './AnimationManager';
-import { tileToPixel, TILE_SIZE } from './types';
+import * as Phaser from "phaser";
+import { WebSocketManager, WebSocketMessage } from "./WebSocketManager";
+import { PlayerManager } from "./PlayerManager";
+import { ProximityManager } from "./ProximityManager";
+import { CallManager } from "./CallManager";
+import { AnimationManager, Direction } from "./AnimationManager";
+import { tileToPixel, TILE_SIZE } from "./types";
+import type { PlayerStatus } from "./types";
 
 export class MessageHandler {
   private scene: Phaser.Scene;
@@ -25,7 +26,7 @@ export class MessageHandler {
     callManager: CallManager,
     animationManager: AnimationManager,
     playerId: string,
-    player: Phaser.Physics.Arcade.Sprite
+    player: Phaser.Physics.Arcade.Sprite,
   ) {
     this.scene = scene;
     this.wsManager = wsManager;
@@ -78,6 +79,9 @@ export class MessageHandler {
       case "chat":
         this.handleChat(msg.data);
         break;
+      case "status_changed":
+        this.handleStatusChanged(msg.data);
+        break;
     }
   }
 
@@ -86,72 +90,94 @@ export class MessageHandler {
   }
 
   private handleSpaceJoined(data: Record<string, unknown>) {
-    if (!this.player) return; // Guard against destroyed player
+    if (!this.player) return;
 
-    // Server now sends tile coordinates
     const spawnTileX = data.tileX as number;
     const spawnTileY = data.tileY as number;
     const sprite = data.sprite as string;
-    const existingUsers = data.existingUsers as Array<{id: string; name: string; tileX: number; tileY: number; sprite: string}>;
-    
-    if (this.player) {
-      // Convert tile to pixel position
-      const spawnPos = tileToPixel(spawnTileX, spawnTileY);
-      this.player.setPosition(spawnPos.x, spawnPos.y);
-      
-      if (sprite) {
-        const validSprites = ['Adam', 'Alex', 'Amelia', 'Bob'];
-        const spriteName = validSprites.includes(sprite) ? sprite : 'Adam';
-        this.player.setData('spriteName', spriteName);
-        this.player.play(this.animationManager.getAnimationKey(spriteName, 'idle', 'down'));
-      }
+    const existingUsers = data.existingUsers as Array<{
+      id: string;
+      name: string;
+      tileX: number;
+      tileY: number;
+      sprite: string;
+      status?: PlayerStatus;
+    }>;
+
+    const spawnPos = tileToPixel(spawnTileX, spawnTileY);
+    this.player.setPosition(spawnPos.x, spawnPos.y);
+
+    if (sprite) {
+      const validSprites = ["Adam", "Alex", "Amelia", "Bob"];
+      const spriteName = validSprites.includes(sprite) ? sprite : "Adam";
+      this.player.setData("spriteName", spriteName);
+      this.player.play(
+        this.animationManager.getAnimationKey(spriteName, "idle", "down"),
+      );
     }
 
-    // Add existing players (using tile coordinates)
     existingUsers.forEach((user) => {
-      this.playerManager.addPlayer(user.id, user.name, user.tileX, user.tileY, user.sprite);
+      this.playerManager.addPlayer(
+        user.id,
+        user.name,
+        user.tileX,
+        user.tileY,
+        user.sprite,
+        user.status || "available",
+      );
     });
     this.dispatchPlayerList();
   }
 
   private handleMovementRejected(data: Record<string, unknown>) {
-    // Server sends tile coordinates for correction
     const tileX = data.tileX as number;
     const tileY = data.tileY as number;
-    
+
     if (this.player) {
-      // Convert tile to pixel and smoothly correct position
       const targetPos = tileToPixel(tileX, tileY);
       this.scene.tweens.add({
         targets: this.player,
         x: targetPos.x,
         y: targetPos.y,
         duration: 150,
-        ease: 'Power2',
+        ease: "Power2",
       });
     }
   }
 
   private handleMovement(data: Record<string, unknown>) {
-    // Single movement update (tile-based)
-    const { id, tileX, tileY, direction } = data as { id: string; tileX: number; tileY: number; direction: string };
+    const { id, tileX, tileY, direction } = data as {
+      id: string;
+      tileX: number;
+      tileY: number;
+      direction: string;
+    };
     if (id !== this.playerId) {
-      this.playerManager.updatePlayerPosition(id, tileX, tileY, direction as Direction);
+      this.playerManager.updatePlayerPosition(
+        id,
+        tileX,
+        tileY,
+        direction as Direction,
+      );
     }
   }
 
   private handleMovementsBatch(data: Record<string, unknown>) {
-    // Batched movement updates (tile-based)
-    const movements = data.movements as Array<{ id: string; tileX: number; tileY: number; direction: string }>;
+    const movements = data.movements as Array<{
+      id: string;
+      tileX: number;
+      tileY: number;
+      direction: string;
+    }>;
     if (!movements) return;
-    
+
     for (const movement of movements) {
       if (movement.id !== this.playerId) {
         this.playerManager.updatePlayerPosition(
-          movement.id, 
-          movement.tileX, 
-          movement.tileY, 
-          movement.direction as Direction
+          movement.id,
+          movement.tileX,
+          movement.tileY,
+          movement.direction as Direction,
         );
       }
     }
@@ -166,14 +192,40 @@ export class MessageHandler {
   }
 
   private handleUserJoin(data: Record<string, unknown>) {
-    // User join now uses tile coordinates
-    const { id, name, tileX, tileY, sprite } = data as { id: string; name: string; tileX: number; tileY: number; sprite: string };
-    this.playerManager.addPlayer(id, name, tileX, tileY, sprite);
+    const { id, name, tileX, tileY, sprite, status } = data as {
+      id: string;
+      name: string;
+      tileX: number;
+      tileY: number;
+      sprite: string;
+      status?: PlayerStatus;
+    };
+    this.playerManager.addPlayer(
+      id,
+      name,
+      tileX,
+      tileY,
+      sprite,
+      status || "available",
+    );
     this.dispatchPlayerList();
+  }
+
+  private handleStatusChanged(data: Record<string, unknown>) {
+    const { id, status } = data as { id: string; status: PlayerStatus };
+    this.playerManager.updatePlayerStatus(id, status);
+
+    window.dispatchEvent(
+      new CustomEvent("playerStatusChanged", {
+        detail: { id, status },
+      }),
+    );
   }
 
   private dispatchPlayerList() {
     const players = this.playerManager.getPlayerList();
-    window.dispatchEvent(new CustomEvent("playerListUpdated", { detail: players }));
+    window.dispatchEvent(
+      new CustomEvent("playerListUpdated", { detail: players }),
+    );
   }
 }

@@ -179,6 +179,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "chat":
                     handleChat(session, msg);
                     break;
+                case "status_change":
+                    handleStatusChange(session, msg);
+                    break;
                 case "ping":
                     // Heartbeat - update last seen
                     updateLastSeen(session);
@@ -186,7 +189,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             }
         } catch (Exception e) {
             // Log error and close session if necessary
-            System.err.println("Error handling message: " + e.getMessage());
+            logger.error("Error handling message: {}", e.getMessage());
             // Optionally send error message
             try {
                 Map<String, Object> errorData = new HashMap<>();
@@ -202,6 +205,35 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         
         // Broadcast chat message to all players in the room
         broadcastToRoom(roomId, msg, null);
+    }
+
+    private void handleStatusChange(WebSocketSession session, Message msg) throws IOException {
+        String playerId = getPlayerIdFromSession(session);
+        if (playerId == null) return;
+
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+
+        Map<String, Object> data = msg.getData();
+        String newStatus = (String) data.get("status");
+        
+        // Validate status
+        if (newStatus == null || (!newStatus.equals("available") && !newStatus.equals("busy") && 
+            !newStatus.equals("away") && !newStatus.equals("in_call"))) {
+            return;
+        }
+
+        Player player = roomPlayers.get(roomId).get(playerId);
+        if (player == null) return;
+
+        player.setStatus(newStatus);
+        player.setLastSeen(System.currentTimeMillis());
+
+        // Broadcast status change to all clients in the room
+        Map<String, Object> statusData = new HashMap<>();
+        statusData.put("id", playerId);
+        statusData.put("status", newStatus);
+        broadcastToRoom(roomId, new Message("status_changed", statusData), null);
     }
 
     private void handleJoin(WebSocketSession session, Message msg) throws IOException {
@@ -234,6 +266,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             session.close();
             return;
         }
+        
         logger.info("Player {} joined room {}", playerId, roomId);
         
         List<Map<String, Object>> existingUsers = roomPlayers.get(roomId).values().stream()
@@ -245,6 +278,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 user.put("sprite", p.getSprite());
                 user.put("tileX", p.getTileX());
                 user.put("tileY", p.getTileY());
+                user.put("status", p.getStatus());
                 return user;
             })
             .collect(Collectors.toList());
@@ -258,13 +292,13 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         
         session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("space-joined", responseData))));
         
-        Map<String, Object> joinData = Map.of(
-            "id", playerId,
-            "name", player.getName(),
-            "sprite", player.getSprite(),
-            "tileX", spawnTileX,
-            "tileY", spawnTileY
-        );
+        Map<String, Object> joinData = new HashMap<>();
+        joinData.put("id", playerId);
+        joinData.put("name", player.getName());
+        joinData.put("sprite", player.getSprite());
+        joinData.put("tileX", spawnTileX);
+        joinData.put("tileY", spawnTileY);
+        joinData.put("status", player.getStatus());
         
         broadcastToRoom(roomId, new Message("user-join", joinData), playerId);
     }

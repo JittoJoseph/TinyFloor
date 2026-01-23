@@ -7,6 +7,8 @@ import com.spatialmeet.model.User;
 import com.spatialmeet.service.RoomService;
 import com.spatialmeet.service.UserService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
+
+    private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
     private final RoomService roomService;
     private final UserService userService;
@@ -105,20 +109,22 @@ public class RoomController {
         String password = payload.get("password");
         String guestName = payload.get("name");
         
-        System.out.println("Join room request: roomId=" + roomId + ", password=" + (password != null ? "provided" : "null") + ", guestName=" + guestName + ", user=" + (user != null ? user.getId() : "null"));
+        logger.info("Join room request: roomId={}, password={}, guestName={}, user={}", 
+            roomId, password != null ? "provided" : "null", guestName, user != null ? user.getId() : "null");
         
         // Get the room first to check if it exists and has password
         Room room = roomService.getRoom(roomId);
         if (room == null) {
-            System.out.println("Room not found: " + roomId);
+            logger.warn("Room not found: {}", roomId);
             return ResponseEntity.notFound().build();
         }
         
-        System.out.println("Room found: " + room.getName() + ", status=" + room.getStatus() + ", players=" + room.getPlayerCount() + "/" + room.getMaxPlayers() + ", hasPassword=" + room.hasPassword());
+        logger.info("Room found: {}, status={}, players={}/{}, hasPassword={}", 
+            room.getName(), room.getStatus(), room.getPlayerCount(), room.getMaxPlayers(), room.hasPassword());
         
         // Check if room is full
         if (room.isFull()) {
-            System.out.println("Room is full");
+            logger.warn("Room is full: {}", roomId);
             return ResponseEntity.badRequest().body(Map.of(
                 "success", false,
                 "message", "Room is full"
@@ -133,7 +139,7 @@ public class RoomController {
         if (room.hasPassword()) {
             success = roomService.joinRoomWithPassword(roomId, userId, password);
             if (!success) {
-                System.out.println("Invalid password for room: " + roomId);
+                logger.warn("Invalid password for room: {}", roomId);
                 return ResponseEntity.badRequest().body(Map.of(
                     "success", false,
                     "message", "Invalid password"
@@ -143,7 +149,7 @@ public class RoomController {
             success = roomService.joinRoom(roomId, userId);
         }
         
-        System.out.println("Join result: success=" + success + ", userId=" + userId);
+        logger.info("Join result: success={}, userId={}", success, userId);
         
         if (success) {
             // Add room to user's joined rooms

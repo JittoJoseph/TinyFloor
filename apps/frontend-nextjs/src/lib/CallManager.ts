@@ -1,5 +1,5 @@
-import * as Phaser from 'phaser';
-import { WebSocketManager } from './WebSocketManager';
+import * as Phaser from "phaser";
+import { WebSocketManager } from "./WebSocketManager";
 
 interface ICEServer {
   urls: string | string[];
@@ -10,8 +10,8 @@ interface ICEServer {
 interface CallState {
   peerId: string;
   peerName: string;
-  callType: 'audio' | 'video';
-  status: 'connecting' | 'connected' | 'reconnecting';
+  callType: "audio" | "video";
+  status: "connecting" | "connected" | "reconnecting";
   startTime: number;
 }
 
@@ -19,28 +19,25 @@ export class CallManager {
   private scene: Phaser.Scene;
   private wsManager: WebSocketManager;
   private playerId: string;
-  private activeCalls: Map<string, CallState> = new Map();
+  private activeCalls = new Map<string, CallState>();
   private currentIncomingCall: {
     from: string;
     fromName: string;
-    callType: 'audio' | 'video';
+    callType: "audio" | "video";
   } | null = null;
-  private peerConnections: Map<string, RTCPeerConnection> = new Map();
+  private peerConnections = new Map<string, RTCPeerConnection>();
   private localStream: MediaStream | null = null;
-  private remoteStreams: Map<string, MediaStream> = new Map();
-  private micEnabled: boolean = true;
-  private videoEnabled: boolean = true;
+  private remoteStreams = new Map<string, MediaStream>();
+  private micEnabled = true;
+  private videoEnabled = true;
+  private peerNames = new Map<string, string>();
+  private iceServers: ICEServer[] = [{ urls: "stun:stun.l.google.com:19302" }];
 
-  // ICE servers for better connectivity
-  private iceServers: ICEServer[] = [
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
-    { urls: 'stun:stun2.l.google.com:19302' },
-    // Add TURN servers for production - these would come from env vars
-    // { urls: 'turn:turn.example.com:3478', username: 'user', credential: 'pass' }
-  ];
-
-  constructor(scene: Phaser.Scene, wsManager: WebSocketManager, playerId: string) {
+  constructor(
+    scene: Phaser.Scene,
+    wsManager: WebSocketManager,
+    playerId: string,
+  ) {
     this.scene = scene;
     this.wsManager = wsManager;
     this.playerId = playerId;
@@ -48,115 +45,124 @@ export class CallManager {
   }
 
   private setupEventListeners() {
-    // Listen for control bar events
-    window.addEventListener('micToggle', ((e: CustomEvent) => {
+    window.addEventListener("micToggle", ((e: CustomEvent) => {
       this.toggleMicrophone(e.detail.enabled);
     }) as EventListener);
 
-    window.addEventListener('videoToggle', ((e: CustomEvent) => {
+    window.addEventListener("videoToggle", ((e: CustomEvent) => {
       this.toggleVideo(e.detail.enabled);
     }) as EventListener);
 
-    window.addEventListener('leaveCall', (() => {
+    window.addEventListener("leaveCall", (() => {
       this.endAllCalls();
     }) as EventListener);
 
-    window.addEventListener('acceptCall', (() => {
+    window.addEventListener("acceptCall", (() => {
       this.acceptCall();
     }) as EventListener);
 
-    window.addEventListener('declineCall', (() => {
+    window.addEventListener("declineCall", (() => {
       this.declineCall();
     }) as EventListener);
   }
 
-  async initiateCall(toId: string, callType: 'audio' | 'video') {
+  async initiateCall(
+    toId: string,
+    callType: "audio" | "video",
+    peerName?: string,
+  ) {
     try {
-      // Request media permissions first
       this.localStream = await this.getLocalStream(callType);
-      
-      if (this.wsManager) {
-        this.wsManager.send("request_call", { 
-          from: this.playerId, 
-          to: toId, 
-          callType 
-        });
-      }
+      this.peerNames.set(toId, peerName || "Unknown User");
 
-      // Notify UI that call is starting
-      window.dispatchEvent(new CustomEvent('callStarted'));
-      
+      this.wsManager.send("request_call", {
+        from: this.playerId,
+        to: toId,
+        callType,
+      });
+
+      window.dispatchEvent(new CustomEvent("callStarted"));
     } catch (error) {
-      console.error('Failed to initiate call:', error);
-      window.dispatchEvent(new CustomEvent('callError', { detail: { error: 'Failed to access media devices' } }));
+      console.error("Failed to initiate call:", error);
+      window.dispatchEvent(
+        new CustomEvent("callError", {
+          detail: { error: "Failed to access media devices" },
+        }),
+      );
     }
   }
 
-  private async getLocalStream(callType: 'audio' | 'video'): Promise<MediaStream> {
-    // If we already have a stream with the right tracks, reuse it
+  private async getLocalStream(
+    callType: "audio" | "video",
+  ): Promise<MediaStream> {
     if (this.localStream) {
       const hasVideo = this.localStream.getVideoTracks().length > 0;
-      if (callType === 'audio' || (callType === 'video' && hasVideo)) {
-        // Ensure tracks match current state
-        this.localStream.getAudioTracks().forEach(track => track.enabled = this.micEnabled);
-        if (callType === 'video') {
-          this.localStream.getVideoTracks().forEach(track => track.enabled = this.videoEnabled);
-        }
+      if (
+        (callType === "audio" && !hasVideo) ||
+        (callType === "video" && hasVideo)
+      ) {
+        this.updateTrackStates(callType);
         return this.localStream;
       }
-      // Need to upgrade to video
-      this.localStream.getTracks().forEach(track => track.stop());
+      this.localStream.getTracks().forEach((track) => track.stop());
     }
 
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      throw new Error("Media devices not supported. If you are on a local network, you must enable 'Insecure origins treated as secure' in chrome://flags.");
+    if (!navigator.mediaDevices?.getUserMedia) {
+      throw new Error("Media devices not supported");
     }
 
-    const stream = await navigator.mediaDevices.getUserMedia({
+    const constraints = {
       audio: {
         echoCancellation: true,
         noiseSuppression: true,
         autoGainControl: true,
       },
-      video: callType === 'video' ? {
-        width: { ideal: 640 },
-        height: { ideal: 480 },
-        facingMode: 'user',
-      } : false,
-    });
+      video:
+        callType === "video"
+          ? {
+              width: { ideal: 320 },
+              height: { ideal: 240 },
+              facingMode: "user",
+            }
+          : false,
+    };
 
-    // Apply current mute/video state
-    stream.getAudioTracks().forEach(track => track.enabled = this.micEnabled);
-    if (callType === 'video') {
-      stream.getVideoTracks().forEach(track => track.enabled = this.videoEnabled);
-    }
-
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    this.updateTrackStates(callType);
     return stream;
+  }
+
+  private updateTrackStates(callType: "audio" | "video") {
+    if (!this.localStream) return;
+    this.localStream
+      .getAudioTracks()
+      .forEach((track) => (track.enabled = this.micEnabled));
+    if (callType === "video") {
+      this.localStream
+        .getVideoTracks()
+        .forEach((track) => (track.enabled = this.videoEnabled));
+    }
   }
 
   initiateChat() {
     // Dispatch event to open chat panel
-    window.dispatchEvent(new CustomEvent('openChat'));
+    window.dispatchEvent(new CustomEvent("openChat"));
   }
 
   handleIncomingCall(data: Record<string, unknown>) {
-    const { from, fromName, callType } = data as { 
-      from: string; 
-      fromName: string; 
-      callType: 'audio' | 'video';
+    const { from, fromName, callType } = data as {
+      from: string;
+      fromName: string;
+      callType: "audio" | "video";
     };
     this.currentIncomingCall = { from, fromName, callType };
 
-    // Dispatch event for React UI
-    window.dispatchEvent(new CustomEvent('incomingCall', { 
-      detail: { from, fromName, callType } 
-    }));
+    window.dispatchEvent(
+      new CustomEvent("incomingCall", { detail: { from, fromName, callType } }),
+    );
 
-    // Auto decline after 30 seconds
     this.scene.time.delayedCall(30000, () => {
-      if (this.currentIncomingCall) {
-        this.declineCall();
-      }
+      if (this.currentIncomingCall) this.declineCall();
     });
   }
 
@@ -164,67 +170,63 @@ export class CallManager {
     if (!this.currentIncomingCall) return;
 
     const { from, fromName, callType } = this.currentIncomingCall;
-    
+
     try {
       this.localStream = await this.getLocalStream(callType);
-      
       const pc = this.createPeerConnection(from);
       this.peerConnections.set(from, pc);
 
-      // Add local tracks
-      this.localStream.getTracks().forEach(track => {
-        pc.addTrack(track, this.localStream!);
-      });
+      this.localStream
+        .getTracks()
+        .forEach((track) => pc.addTrack(track, this.localStream!));
 
-      // Create and send offer
       const offer = await pc.createOffer();
       await pc.setLocalDescription(offer);
-      
-      if (this.wsManager) {
-        this.wsManager.send("webrtc_signal", {
-          from: this.playerId,
-          to: from,
-          data: { type: 'offer', sdp: offer.sdp },
-        });
 
-        this.wsManager.send("call_response", { 
-          from, 
-          to: this.playerId, 
-          accepted: true 
-        });
-      }
+      this.wsManager.send("webrtc_signal", {
+        from: this.playerId,
+        to: from,
+        data: { type: "offer", sdp: offer.sdp },
+      });
+
+      this.wsManager.send("call_response", {
+        from,
+        to: this.playerId,
+        accepted: true,
+      });
 
       this.hideIncomingCallModal();
-      
+
       this.activeCalls.set(from, {
         peerId: from,
         peerName: fromName,
         callType,
-        status: 'connecting',
+        status: "connecting",
         startTime: Date.now(),
       });
 
-      window.dispatchEvent(new CustomEvent('callStarted'));
-      
+      this.peerNames.set(from, fromName);
+      window.dispatchEvent(new CustomEvent("callStarted"));
     } catch (error) {
       console.error("Error accepting call:", error);
-      window.dispatchEvent(new CustomEvent('callError', { detail: { error: 'Failed to accept call' } }));
+      window.dispatchEvent(
+        new CustomEvent("callError", {
+          detail: { error: "Failed to accept call" },
+        }),
+      );
       this.declineCall();
     }
   }
 
   private createPeerConnection(peerId: string): RTCPeerConnection {
-    const pc = new RTCPeerConnection({
-      iceServers: this.iceServers,
-      iceCandidatePoolSize: 10,
-    });
+    const pc = new RTCPeerConnection({ iceServers: this.iceServers });
 
     pc.onicecandidate = (event) => {
-      if (event.candidate && this.wsManager) {
+      if (event.candidate) {
         this.wsManager.send("webrtc_signal", {
           from: this.playerId,
           to: peerId,
-          data: { type: 'candidate', candidate: event.candidate.toJSON() },
+          data: { type: "candidate", candidate: event.candidate.toJSON() },
         });
       }
     };
@@ -233,16 +235,16 @@ export class CallManager {
       const callState = this.activeCalls.get(peerId);
       if (callState) {
         switch (pc.iceConnectionState) {
-          case 'connected':
-          case 'completed':
-            callState.status = 'connected';
+          case "connected":
+          case "completed":
+            callState.status = "connected";
             break;
-          case 'disconnected':
-            callState.status = 'reconnecting';
+          case "disconnected":
+            callState.status = "reconnecting";
             break;
-          case 'failed':
-          case 'closed':
-            this.endCall(peerId, 'connection_lost');
+          case "failed":
+          case "closed":
+            this.endCall(peerId, "connection_lost");
             break;
         }
       }
@@ -260,96 +262,78 @@ export class CallManager {
   }
 
   private createVideoElement(peerId: string, stream: MediaStream) {
-    // Dispatch event for React UI
-    window.dispatchEvent(new CustomEvent('remoteStreamAdded', { 
-      detail: { peerId, stream } 
-    }));
+    const peerName = this.peerNames.get(peerId) || "Unknown User";
+    window.dispatchEvent(
+      new CustomEvent("remoteStreamAdded", {
+        detail: { peerId, stream, peerName },
+      }),
+    );
   }
 
   private declineCall() {
     if (this.currentIncomingCall) {
-      if (this.wsManager) {
-        this.wsManager.send("call_response", {
-          from: this.currentIncomingCall.from,
-          to: this.playerId,
-          accepted: false,
-        });
-      }
+      this.wsManager.send("call_response", {
+        from: this.currentIncomingCall.from,
+        to: this.playerId,
+        accepted: false,
+      });
       this.hideIncomingCallModal();
     }
   }
 
   private hideIncomingCallModal() {
     this.currentIncomingCall = null;
-    window.dispatchEvent(new CustomEvent('incomingCallEnded'));
+    window.dispatchEvent(new CustomEvent("incomingCallEnded"));
   }
 
   handleCallResponse(data: Record<string, unknown>) {
     const { from, accepted } = data as { from: string; accepted: boolean };
-    
-    if (accepted) {
-      // Call was accepted, wait for WebRTC offer from the other peer
-    } else {
-      // Call was declined
-      this.cleanupCall(from);
-    }
+    if (!accepted) this.cleanupCall(from);
   }
 
   async handleWebRTCSignal(data: Record<string, unknown>) {
-    const { from, data: signalData } = data as { 
-      from: string; 
+    const { from, data: signalData } = data as {
+      from: string;
       data: { type: string; sdp?: string; candidate?: RTCIceCandidateInit };
     };
 
     try {
-      if (signalData.type === 'offer') {
-        // Received an offer, create answer
+      if (signalData.type === "offer") {
         let pc = this.peerConnections.get(from);
         if (!pc) {
           pc = this.createPeerConnection(from);
           this.peerConnections.set(from, pc);
-          
-          // Add local tracks if we have them
           if (this.localStream) {
-            this.localStream.getTracks().forEach(track => {
-              pc!.addTrack(track, this.localStream!);
-            });
+            this.localStream
+              .getTracks()
+              .forEach((track) => pc!.addTrack(track, this.localStream!));
           }
         }
 
-        await pc.setRemoteDescription(new RTCSessionDescription({
-          type: 'offer',
-          sdp: signalData.sdp,
-        }));
-
+        await pc.setRemoteDescription(
+          new RTCSessionDescription({ type: "offer", sdp: signalData.sdp }),
+        );
         const answer = await pc.createAnswer();
         await pc.setLocalDescription(answer);
 
-        if (this.wsManager) {
-          this.wsManager.send("webrtc_signal", {
-            from: this.playerId,
-            to: from,
-            data: { type: 'answer', sdp: answer.sdp },
-          });
-        }
-
-      } else if (signalData.type === 'answer') {
+        this.wsManager.send("webrtc_signal", {
+          from: this.playerId,
+          to: from,
+          data: { type: "answer", sdp: answer.sdp },
+        });
+      } else if (signalData.type === "answer") {
         const pc = this.peerConnections.get(from);
-        if (pc) {
-          await pc.setRemoteDescription(new RTCSessionDescription({
-            type: 'answer',
-            sdp: signalData.sdp,
-          }));
-        }
-
-      } else if (signalData.type === 'candidate' && signalData.candidate) {
+        if (pc)
+          await pc.setRemoteDescription(
+            new RTCSessionDescription({ type: "answer", sdp: signalData.sdp }),
+          );
+      } else if (signalData.type === "candidate" && signalData.candidate) {
         const pc = this.peerConnections.get(from);
-        if (pc) {
+        if (pc)
           await pc.addIceCandidate(new RTCIceCandidate(signalData.candidate));
-        }
       }
     } catch (error) {
-      console.error('Error handling WebRTC signal:', error);
+      console.error("Error handling WebRTC signal:", error);
     }
   }
 
@@ -367,26 +351,25 @@ export class CallManager {
 
     this.activeCalls.delete(peerId);
     this.remoteStreams.delete(peerId);
+    window.dispatchEvent(
+      new CustomEvent("remoteStreamRemoved", { detail: { peerId } }),
+    );
 
-    // Dispatch event for React UI
-    window.dispatchEvent(new CustomEvent('remoteStreamRemoved', { detail: { peerId } }));
-
-    // If no more calls, stop local stream and notify UI
     if (this.activeCalls.size === 0) {
       if (this.localStream) {
-        this.localStream.getTracks().forEach(track => track.stop());
+        this.localStream.getTracks().forEach((track) => track.stop());
         this.localStream = null;
       }
-      window.dispatchEvent(new CustomEvent('callEnded'));
+      window.dispatchEvent(new CustomEvent("callEnded"));
     }
   }
 
   endCall(toId: string, reason: string) {
     if (this.wsManager) {
-      this.wsManager.send("call_ended", { 
-        from: this.playerId, 
-        to: toId, 
-        reason 
+      this.wsManager.send("call_ended", {
+        from: this.playerId,
+        to: toId,
+        reason,
       });
     }
     this.cleanupCall(toId);
@@ -394,27 +377,103 @@ export class CallManager {
 
   private endAllCalls() {
     const callIds = Array.from(this.activeCalls.keys());
-    callIds.forEach(id => this.endCall(id, 'user_hangup'));
+    callIds.forEach((id) => this.endCall(id, "user_hangup"));
   }
 
   toggleMicrophone(enabled: boolean) {
     this.micEnabled = enabled;
     if (this.localStream) {
-      this.localStream.getAudioTracks().forEach(track => {
+      this.localStream.getAudioTracks().forEach((track) => {
         track.enabled = enabled;
+        if (!enabled) track.stop();
       });
+    } else if (enabled) {
+      this.initializeAudioTracks();
     }
   }
 
   toggleVideo(enabled: boolean) {
     this.videoEnabled = enabled;
     if (this.localStream) {
-      this.localStream.getVideoTracks().forEach(track => {
-        track.enabled = enabled;
-      });
+      this.localStream
+        .getVideoTracks()
+        .forEach((track) => (track.enabled = enabled));
+    } else if (enabled) {
+      this.initializeVideoTracks();
     }
   }
 
+  private async initializeTracks(type: "audio" | "video") {
+    try {
+      if (!navigator.mediaDevices?.getUserMedia) return;
+
+      const constraints =
+        type === "audio"
+          ? {
+              audio: {
+                echoCancellation: true,
+                noiseSuppression: true,
+                autoGainControl: true,
+              },
+            }
+          : {
+              video: {
+                width: { ideal: 320 },
+                height: { ideal: 240 },
+                facingMode: "user",
+              },
+            };
+
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+
+      if (this.localStream) {
+        stream
+          .getTracks()
+          .forEach((track) => this.localStream!.addTrack(track));
+      } else {
+        this.localStream = stream;
+        // Add the other type if enabled
+        const otherType = type === "audio" ? "video" : "audio";
+        if (
+          (type === "audio" && this.videoEnabled) ||
+          (type === "video" && this.micEnabled)
+        ) {
+          const otherStream = await navigator.mediaDevices.getUserMedia(
+            otherType === "audio"
+              ? {
+                  audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    autoGainControl: true,
+                  },
+                }
+              : {
+                  video: {
+                    width: { ideal: 320 },
+                    height: { ideal: 240 },
+                    facingMode: "user",
+                  },
+                },
+          );
+          otherStream
+            .getTracks()
+            .forEach((track) => this.localStream!.addTrack(track));
+        }
+      }
+
+      this.updateTrackStates(type === "video" ? "video" : "audio");
+    } catch (error) {
+      console.error(`Failed to initialize ${type} tracks:`, error);
+    }
+  }
+
+  private async initializeVideoTracks() {
+    await this.initializeTracks("video");
+  }
+
+  private async initializeAudioTracks() {
+    await this.initializeTracks("audio");
+  }
   isInCall(): boolean {
     return this.activeCalls.size > 0;
   }
@@ -425,14 +484,14 @@ export class CallManager {
 
   cleanup() {
     this.endAllCalls();
-    this.peerConnections.forEach(pc => pc.close());
+    this.peerConnections.forEach((pc) => pc.close());
     this.peerConnections.clear();
-    
+
     if (this.localStream) {
-      this.localStream.getTracks().forEach(track => track.stop());
+      this.localStream.getTracks().forEach((track) => track.stop());
       this.localStream = null;
     }
-    
+
     this.activeCalls.clear();
     this.remoteStreams.clear();
   }

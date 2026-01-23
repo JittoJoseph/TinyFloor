@@ -1,14 +1,14 @@
-import * as Phaser from 'phaser';
-import { WebSocketManager, WebSocketMessage } from '../lib/WebSocketManager';
-import { PlayerManager } from '../lib/PlayerManager';
-import { ProximityManager } from '../lib/ProximityManager';
-import { CallManager } from '../lib/CallManager';
-import { AnimationManager, Direction } from '../lib/AnimationManager';
-import { MovementManager } from '../lib/MovementManager';
-import { MapManager } from '../lib/MapManager';
-import { MessageHandler } from '../lib/MessageHandler';
-import { VirtualJoystickManager } from '../lib/VirtualJoystickManager';
-import { tileToPixel } from '../lib/types';
+import * as Phaser from "phaser";
+import { WebSocketManager, WebSocketMessage } from "../lib/WebSocketManager";
+import { PlayerManager } from "../lib/PlayerManager";
+import { ProximityManager } from "../lib/ProximityManager";
+import { CallManager } from "../lib/CallManager";
+import { AnimationManager, Direction } from "../lib/AnimationManager";
+import { MovementManager } from "../lib/MovementManager";
+import { MapManager } from "../lib/MapManager";
+import { MessageHandler } from "../lib/MessageHandler";
+import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
+import { tileToPixel } from "../lib/types";
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -26,8 +26,14 @@ class GameScene extends Phaser.Scene {
   private sceneReady: boolean = false;
   private handleSendChatMessage?: EventListener;
   private handleInitiateCall?: EventListener;
+  private handleStatusChange?: EventListener;
 
-  constructor(private name: string, private roomId: string, private character: string, userId?: string | null) {
+  constructor(
+    private name: string,
+    private roomId: string,
+    private character: string,
+    userId?: string | null,
+  ) {
     super({ key: "GameScene" });
     this.playerId = userId || Phaser.Utils.String.UUID();
   }
@@ -45,8 +51,16 @@ class GameScene extends Phaser.Scene {
 
     this.animationManager.create();
 
-    this.wsManager = new WebSocketManager(this.playerId, this.name, this.character);
-    this.playerManager = new PlayerManager(this, this.animationManager, this.playerId);
+    this.wsManager = new WebSocketManager(
+      this.playerId,
+      this.name,
+      this.character,
+    );
+    this.playerManager = new PlayerManager(
+      this,
+      this.animationManager,
+      this.playerId,
+    );
 
     this.mapManager.create();
     const spawnTilePos = this.mapManager.getRandomSpawnPosition();
@@ -56,13 +70,18 @@ class GameScene extends Phaser.Scene {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
     const defaultWsUrl = `${protocol}//${host}:8080`;
-    
+
     // Use env var if available, otherwise fallback to default
     let wsBaseUrl = process.env.NEXT_PUBLIC_WS_URL;
 
     // If no env var, or if env var is localhost but we are NOT on localhost (e.g. network testing),
     // construct URL from window location
-    if (!wsBaseUrl || (wsBaseUrl.includes('localhost') && host !== 'localhost' && host !== '127.0.0.1')) {
+    if (
+      !wsBaseUrl ||
+      (wsBaseUrl.includes("localhost") &&
+        host !== "localhost" &&
+        host !== "127.0.0.1")
+    ) {
       wsBaseUrl = `${protocol}//${host}:8080`;
     }
 
@@ -71,39 +90,78 @@ class GameScene extends Phaser.Scene {
     this.wsManager.connect(wsUrl, spawnTilePos);
 
     // Create local player at PIXEL position (center of spawn tile)
-    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawnPixel.x, spawnPixel.y, this.character);
+    this.player = this.playerManager.createLocalPlayer(
+      this.playerId,
+      this.name,
+      spawnPixel.x,
+      spawnPixel.y,
+      this.character,
+    );
 
     const isMobile = !this.sys.game.device.os.desktop;
-    this.movementManager = new MovementManager(this, this.player, this.animationManager, this.playerId, this.wsManager, isMobile);
+    this.movementManager = new MovementManager(
+      this,
+      this.player,
+      this.animationManager,
+      this.playerId,
+      this.wsManager,
+      isMobile,
+    );
 
     this.sceneReady = true;
 
     this.callManager = new CallManager(this, this.wsManager, this.playerId);
 
-    this.proximityManager = new ProximityManager(this, this.wsManager, this.playerManager, this.callManager, this.player, this.playerId);
+    this.proximityManager = new ProximityManager(
+      this,
+      this.wsManager,
+      this.playerManager,
+      this.callManager,
+      this.player,
+      this.playerId,
+    );
 
     this.mapManager.setupColliders(this.player);
-    
+
     // Set up collision checking for movement
     this.movementManager.setCollisionChecker((x: number, y: number) => {
       return this.mapManager.checkCollisionAt(x, y);
     });
-    
+
     // Local player uses tween-based movement, so no physics collision between players
     // Remote players still use physics for collision detection
 
-    this.messageHandler = new MessageHandler(this, this.wsManager, this.playerManager, this.proximityManager, this.callManager, this.animationManager, this.playerId, this.player);
+    this.messageHandler = new MessageHandler(
+      this,
+      this.wsManager,
+      this.playerManager,
+      this.proximityManager,
+      this.callManager,
+      this.animationManager,
+      this.playerId,
+      this.player,
+    );
     this.messageHandler.setSceneReady(true);
     this.wsManager.setOnMessage((msg: WebSocketMessage) => {
       this.messageHandler.handleMessage(msg);
     });
 
     // Set camera bounds
-    this.cameras.main.setBounds(0, 0, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
+    this.cameras.main.setBounds(
+      0,
+      0,
+      this.mapManager.getMapWidth(),
+      this.mapManager.getMapHeight(),
+    );
     this.cameras.main.startFollow(this.player);
 
     // Set physics world bounds
-    this.physics.world.setBounds(0, 0, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
+    this.physics.world.setBounds(
+      0,
+      0,
+      this.mapManager.getMapWidth(),
+      this.mapManager.getMapHeight(),
+    );
 
     // Set camera zoom and deadzone for better view
     this.camera.setZoom(1.2);
@@ -129,6 +187,19 @@ class GameScene extends Phaser.Scene {
       }
     }) as EventListener;
     window.addEventListener("initiateCall", this.handleInitiateCall);
+
+    // Listen for status changes from React
+    this.handleStatusChange = ((event: CustomEvent) => {
+      const { status } = event.detail;
+      if (this.wsManager) {
+        this.wsManager.send("status_change", { status });
+        // Update local player's status display
+        if (this.playerManager) {
+          this.playerManager.updatePlayerStatus(this.playerId, status);
+        }
+      }
+    }) as EventListener;
+    window.addEventListener("statusChange", this.handleStatusChange);
   }
 
   update(time: number, delta: number) {
@@ -165,6 +236,9 @@ class GameScene extends Phaser.Scene {
     }
     if (this.handleInitiateCall) {
       window.removeEventListener("initiateCall", this.handleInitiateCall);
+    }
+    if (this.handleStatusChange) {
+      window.removeEventListener("statusChange", this.handleStatusChange);
     }
     this.wsManager.disconnect();
     this.playerManager.destroy();

@@ -10,6 +10,7 @@ import SettingsModal from "@/components/SettingsModal";
 import ChatPanel from "@/components/ChatPanel";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
+import type { PlayerStatus } from "@/lib/types";
 
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
   ssr: false,
@@ -47,8 +48,9 @@ export default function RoomPage() {
   const [showSettings, setShowSettings] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
   const [participants, setParticipants] = useState<
-    Array<{ id: string; name: string }>
+    Array<{ id: string; name: string; status?: PlayerStatus }>
   >([]);
 
   // Fetch room details
@@ -83,7 +85,7 @@ export default function RoomPage() {
 
   const handleVideoToggle = useCallback((enabled: boolean) => {
     window.dispatchEvent(
-      new CustomEvent("videoToggle", { detail: { enabled } })
+      new CustomEvent("videoToggle", { detail: { enabled } }),
     );
   }, []);
 
@@ -104,6 +106,15 @@ export default function RoomPage() {
     setIsInCall(false);
   }, []);
 
+  // Handle status change
+  const handleStatusChange = useCallback((status: PlayerStatus) => {
+    setCurrentStatus(status);
+    // Dispatch event to WebSocket manager
+    window.dispatchEvent(
+      new CustomEvent("statusChange", { detail: { status } }),
+    );
+  }, []);
+
   // Listen for call state changes and chat events
   useEffect(() => {
     const handleCallStarted = () => setIsInCall(true);
@@ -121,7 +132,7 @@ export default function RoomPage() {
     window.addEventListener("openChat", handleOpenChat);
     window.addEventListener(
       "playerListUpdated",
-      handlePlayerListUpdated as EventListener
+      handlePlayerListUpdated as EventListener,
     );
 
     return () => {
@@ -130,7 +141,7 @@ export default function RoomPage() {
       window.removeEventListener("openChat", handleOpenChat);
       window.removeEventListener(
         "playerListUpdated",
-        handlePlayerListUpdated as EventListener
+        handlePlayerListUpdated as EventListener,
       );
     };
   }, []);
@@ -255,8 +266,10 @@ export default function RoomPage() {
         onChatClick={handleChatClick}
         onParticipantsClick={handleParticipantsClick}
         onLeaveCall={handleLeaveCall}
+        onStatusChange={handleStatusChange}
         isInCall={isInCall}
         participantCount={roomData?.activeUsers || 0}
+        currentStatus={currentStatus}
       />
 
       {/* Settings Modal */}

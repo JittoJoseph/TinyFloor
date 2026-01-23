@@ -1,9 +1,9 @@
 package com.spatialmeet.model;
 
 public enum UserStatus {
-    ONLINE,
-    AWAY,
+    AVAILABLE,
     BUSY,
+    AWAY,
     IN_CALL,
     OFFLINE
 }

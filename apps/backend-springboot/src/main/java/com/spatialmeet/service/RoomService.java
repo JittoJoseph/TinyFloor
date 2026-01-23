@@ -3,7 +3,6 @@ package com.spatialmeet.service;
 import com.spatialmeet.dto.CreateRoomRequest;
 import com.spatialmeet.dto.RoomResponse;
 import com.spatialmeet.model.Room;
-import com.spatialmeet.model.RoomSettings;
 import com.spatialmeet.model.RoomStatus;
 import com.spatialmeet.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,21 +60,6 @@ public class RoomService {
             room.setShareCode(generateShareCode());
         }
         
-        // Set room settings
-        if (request.getSettings() != null) {
-            RoomSettings settings = new RoomSettings();
-            settings.setAllowGuests(request.getSettings().isAllowGuests());
-            settings.setRequireApproval(request.getSettings().isRequireApproval());
-            settings.setEnableVideo(request.getSettings().isEnableVideo());
-            settings.setEnableAudio(request.getSettings().isEnableAudio());
-            settings.setEnableChat(request.getSettings().isEnableChat());
-            settings.setWelcomeMessage(request.getSettings().getWelcomeMessage());
-            settings.setMapTheme(request.getSettings().getMapTheme());
-            room.setSettings(settings);
-        } else {
-            room.setSettings(new RoomSettings());
-        }
-        
         Room savedRoom = roomRepository.save(room);
         activeRoomsCache.put(savedRoom.getId(), savedRoom);
         
@@ -85,7 +69,6 @@ public class RoomService {
     public Room createRoom(String name) {
         String id = UUID.randomUUID().toString();
         Room room = new Room(id, name);
-        room.setSettings(new RoomSettings());
         Room savedRoom = roomRepository.save(room);
         activeRoomsCache.put(savedRoom.getId(), savedRoom);
         return savedRoom;

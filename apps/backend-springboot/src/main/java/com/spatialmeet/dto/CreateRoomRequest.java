@@ -19,8 +19,6 @@ public class CreateRoomRequest {
     @Min(value = 2, message = "Max players must be at least 2")
     @Max(value = 50, message = "Max players cannot exceed 50")
     private int maxPlayers = 20;
-    
-    private RoomSettingsDto settings;
 
     // Getters and Setters
     public String getName() { return name; }
@@ -34,7 +32,4 @@ public class CreateRoomRequest {
 
     public int getMaxPlayers() { return maxPlayers; }
     public void setMaxPlayers(int maxPlayers) { this.maxPlayers = maxPlayers; }
-
-    public RoomSettingsDto getSettings() { return settings; }
-    public void setSettings(RoomSettingsDto settings) { this.settings = settings; }
 }

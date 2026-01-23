@@ -30,8 +30,6 @@ public class Room {
     
     private List<String> users = new ArrayList<>();
     
-    private RoomSettings settings;
-    
     private RoomStatus status = RoomStatus.ACTIVE;
     
     private String shareCode;
@@ -80,9 +78,6 @@ public class Room {
 
     public List<String> getUsers() { return users; }
     public void setUsers(List<String> users) { this.users = users; }
-
-    public RoomSettings getSettings() { return settings; }
-    public void setSettings(RoomSettings settings) { this.settings = settings; }
 
     public RoomStatus getStatus() { return status; }
     public void setStatus(RoomStatus status) { this.status = status; }

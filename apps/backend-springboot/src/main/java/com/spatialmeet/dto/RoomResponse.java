@@ -17,7 +17,6 @@ public class RoomResponse {
     private Instant lastActivityAt;
     private RoomStatus status;
     private String shareCode;
-    private RoomSettingsDto settings;
 
     // Constructors
     public RoomResponse() {}
@@ -34,15 +33,6 @@ public class RoomResponse {
         this.lastActivityAt = room.getLastActivityAt();
         this.status = room.getStatus();
         this.shareCode = room.getShareCode();
-        
-        if (room.getSettings() != null) {
-            this.settings = new RoomSettingsDto();
-            this.settings.setAllowGuests(room.getSettings().isAllowGuests());
-            this.settings.setEnableVideo(room.getSettings().isEnableVideo());
-            this.settings.setEnableAudio(room.getSettings().isEnableAudio());
-            this.settings.setEnableChat(room.getSettings().isEnableChat());
-            this.settings.setMapTheme(room.getSettings().getMapTheme());
-        }
     }
 
     // Getters and Setters
@@ -78,7 +68,4 @@ public class RoomResponse {
 
     public String getShareCode() { return shareCode; }
     public void setShareCode(String shareCode) { this.shareCode = shareCode; }
-
-    public RoomSettingsDto getSettings() { return settings; }
-    public void setSettings(RoomSettingsDto settings) { this.settings = settings; }
 }

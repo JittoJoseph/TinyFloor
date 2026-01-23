@@ -51,10 +51,10 @@ export class PlayerManager {
   // Map status string to color key
   private statusColorMap: Record<string, number> = {
     available: 0x34d399,
-    online: 0x34d399,
     away: 0xfbbf24,
     busy: 0xf87171,
     in_call: 0xa78bfa,
+    offline: 0x9ca3af,
   };
 
   constructor(
@@ -265,14 +265,14 @@ export class PlayerManager {
     }
   }
 
-  updatePlayerStatus(id: string, status: PlayerStatus | "online") {
+  updatePlayerStatus(id: string, status: PlayerStatus) {
     const nameTag = this.nameTags.get(id);
     if (!nameTag) return;
 
     // Update state if exists
     const state = this.playerStates.get(id);
-    if (state && status !== "online") {
-      state.status = status as PlayerStatus;
+    if (state) {
+      state.status = status;
     }
 
     const statusColor =

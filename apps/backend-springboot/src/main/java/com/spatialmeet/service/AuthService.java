@@ -48,7 +48,7 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setDisplayName(request.getDisplayName() != null ? request.getDisplayName() : request.getUsername());
         user.setGuest(false);
-        user.setStatus(UserStatus.ONLINE);
+        user.setStatus(UserStatus.AVAILABLE);
         user.setAvatarPreferences(new AvatarPreferences("Adam"));
 
         User savedUser = userRepository.save(user);
@@ -77,7 +77,7 @@ public class AuthService {
         }
 
         // Update status
-        user.setStatus(UserStatus.ONLINE);
+        user.setStatus(UserStatus.AVAILABLE);
         userRepository.save(user);
 
         // Generate JWT token
@@ -94,7 +94,7 @@ public class AuthService {
         guest.setUsername(guestId);
         guest.setDisplayName(displayName != null ? displayName : "Guest");
         guest.setGuest(true);
-        guest.setStatus(UserStatus.ONLINE);
+        guest.setStatus(UserStatus.AVAILABLE);
         guest.setAvatarPreferences(new AvatarPreferences(character != null ? character : "Adam"));
 
         User savedGuest = userRepository.save(guest);

@@ -41,17 +41,18 @@ export interface User {
   joinedRooms: string[];
   isGuest: boolean;
   createdAt: string;
-  status: UserStatus;
+  status: Status;
 }
 
 export interface AvatarPreferences {
   characterName: string;
 }
 
-export type UserStatus = "ONLINE" | "AWAY" | "BUSY" | "IN_CALL" | "OFFLINE";
+export type Status = "available" | "busy" | "away" | "in_call" | "offline";
 
-// Player status for in-room presence (lowercase, matches WebSocket messages)
-export type PlayerStatus = "available" | "busy" | "away" | "in_call";
+export type UserStatus = Status;
+
+export type PlayerStatus = Status;
 
 export interface AuthResponse {
   token: string;
@@ -60,7 +61,7 @@ export interface AuthResponse {
   displayName: string;
   email?: string;
   isGuest: boolean;
-  status: UserStatus;
+  status: Status;
   message?: string;
 }
 
@@ -76,29 +77,16 @@ export interface Room {
   lastActivityAt: string;
   status: RoomStatus;
   shareCode?: string;
-  settings?: RoomSettings;
   users?: string[];
 }
 
 export type RoomStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED" | "DELETED";
-
-export interface RoomSettings {
-  allowGuests: boolean;
-  requireApproval: boolean;
-  enableVideo: boolean;
-  enableAudio: boolean;
-  enableChat: boolean;
-  welcomeMessage?: string;
-  mapTheme: string;
-  proximityRadius: number;
-}
 
 export interface CreateRoomRequest {
   name: string;
   isPublic?: boolean;
   password?: string;
   maxPlayers?: number;
-  settings?: RoomSettings;
 }
 
 export interface LoginRequest {

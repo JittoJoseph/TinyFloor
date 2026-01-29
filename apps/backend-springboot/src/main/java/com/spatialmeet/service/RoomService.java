@@ -119,6 +119,17 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
+    public List<RoomResponse> getRoomsByIds(List<String> roomIds) {
+        if (roomIds == null || roomIds.isEmpty()) {
+            return List.of();
+        }
+        return roomRepository.findAllById(roomIds)
+                .stream()
+                .filter(room -> room.getStatus() != RoomStatus.DELETED)
+                .map(RoomResponse::new)
+                .collect(Collectors.toList());
+    }
+
     public Map<String, Room> getAllRooms() {
         // For backwards compatibility - return active rooms from cache
         return activeRoomsCache;

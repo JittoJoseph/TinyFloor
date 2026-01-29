@@ -75,6 +75,16 @@ public class RoomController {
         return ResponseEntity.ok(rooms);
     }
 
+    @GetMapping("/joined")
+    public ResponseEntity<List<RoomResponse>> getJoinedRooms(@AuthenticationPrincipal User user) {
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        List<String> joinedRoomIds = user.getJoinedRooms();
+        List<RoomResponse> rooms = roomService.getRoomsByIds(joinedRoomIds);
+        return ResponseEntity.ok(rooms);
+    }
+
     @PostMapping
     public ResponseEntity<RoomResponse> createRoom(
             @Valid @RequestBody CreateRoomRequest request,
@@ -87,17 +97,6 @@ public class RoomController {
             userService.addCreatedRoom(user.getId(), room.getId());
         }
         
-        return ResponseEntity.ok(room);
-    }
-
-    // Legacy endpoint for backwards compatibility
-    @PostMapping("/simple")
-    public ResponseEntity<Room> createRoomSimple(@RequestBody Map<String, String> payload) {
-        String name = payload.get("name");
-        if (name == null || name.trim().isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        Room room = roomService.createRoom(name);
         return ResponseEntity.ok(room);
     }
 

@@ -25,11 +25,11 @@ interface AudioDevice {
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [activeTab, setActiveTab] = useState<"audio" | "video" | "general">(
-    "audio"
+    "audio",
   );
   const [audioInputDevices, setAudioInputDevices] = useState<AudioDevice[]>([]);
   const [audioOutputDevices, setAudioOutputDevices] = useState<AudioDevice[]>(
-    []
+    [],
   );
   const [videoDevices, setVideoDevices] = useState<AudioDevice[]>([]);
   const [selectedAudioInput, setSelectedAudioInput] = useState<string>("");
@@ -38,7 +38,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [masterVolume, setMasterVolume] = useState(80);
   const [micVolume, setMicVolume] = useState(100);
   const [videoQuality, setVideoQuality] = useState<"low" | "medium" | "high">(
-    "medium"
+    "medium",
   );
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
   const [showFPS, setShowFPS] = useState(false);
@@ -53,7 +53,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         // Check if mediaDevices is supported (requires HTTPS or localhost)
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
           console.warn(
-            "Media devices not supported in this context (likely non-secure HTTP)"
+            "Media devices not supported in this context (likely non-secure HTTP)",
           );
           return;
         }
@@ -69,7 +69,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             .map((d) => ({
               deviceId: d.deviceId,
               label: d.label || `Microphone ${d.deviceId.slice(0, 8)}`,
-            }))
+            })),
         );
 
         setAudioOutputDevices(
@@ -78,7 +78,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             .map((d) => ({
               deviceId: d.deviceId,
               label: d.label || `Speaker ${d.deviceId.slice(0, 8)}`,
-            }))
+            })),
         );
 
         setVideoDevices(
@@ -87,7 +87,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             .map((d) => ({
               deviceId: d.deviceId,
               label: d.label || `Camera ${d.deviceId.slice(0, 8)}`,
-            }))
+            })),
         );
       } catch (error) {
         console.error("Failed to enumerate devices:", error);
@@ -137,7 +137,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
     // Dispatch event for other components to react
     window.dispatchEvent(
-      new CustomEvent("settingsChanged", { detail: settings })
+      new CustomEvent("settingsChanged", { detail: settings }),
     );
 
     onClose();

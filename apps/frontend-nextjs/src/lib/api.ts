@@ -99,9 +99,38 @@ class ApiClient {
     }
   }
 
+  /**
+   * Combined session validation and user fetch - reduces 2 API calls to 1.
+   * Returns { valid: boolean, user: User | null }
+   */
+  async getSession(): Promise<{ valid: boolean; user: User | null }> {
+    try {
+      return await this.fetch<{ valid: boolean; user: User | null }>(
+        "/api/auth/session",
+      );
+    } catch {
+      return { valid: false, user: null };
+    }
+  }
+
   // User endpoints
   async getCurrentUser(): Promise<User> {
     return this.fetch<User>("/api/users/me");
+  }
+
+  async getDashboardSummary(): Promise<{
+    displayName: string;
+    username: string;
+    avatarPreferences: { characterName?: string } | null;
+    createdRoomsCount: number;
+    joinedRoomsCount: number;
+    recentCollaborators: {
+      id: string;
+      displayName: string;
+      characterName: string;
+    }[];
+  }> {
+    return this.fetch("/api/users/me/summary");
   }
 
   async updateProfile(
@@ -150,9 +179,7 @@ class ApiClient {
     return this.fetch(`/api/rooms/search?query=${encodeURIComponent(query)}`);
   }
 
-  async getRoom(
-    roomId: string,
-  ): Promise<{
+  async getRoom(roomId: string): Promise<{
     id: string;
     name: string;
     users: string[];
@@ -169,9 +196,7 @@ class ApiClient {
     return this.fetch(`/api/rooms/${roomId}`);
   }
 
-  async getRoomByShareCode(
-    shareCode: string,
-  ): Promise<{
+  async getRoomByShareCode(shareCode: string): Promise<{
     id: string;
     name: string;
     users: string[];
@@ -189,9 +214,36 @@ class ApiClient {
   }
 
   async getMyRooms(): Promise<
-    { id: string; name: string; playerCount: number; isPublic: boolean }[]
+    {
+      id: string;
+      name: string;
+      playerCount: number;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+      shareCode?: string;
+    }[]
   > {
     return this.fetch("/api/rooms/my-rooms");
+  }
+
+  async getJoinedRooms(): Promise<
+    {
+      id: string;
+      name: string;
+      playerCount: number;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+    }[]
+  > {
+    return this.fetch("/api/rooms/joined");
   }
 
   async createRoom(data: {

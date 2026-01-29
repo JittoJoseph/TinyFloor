@@ -34,15 +34,28 @@ function JoinContent() {
   const [joining, setJoining] = useState(false);
   const [error, setError] = useState("");
 
-  // Pre-fill name from user profile
+  // Pre-fill name and character from user profile or localStorage
   useEffect(() => {
     if (user?.displayName && !name) {
       setName(user.displayName);
+    } else if (!isAuthenticated && !name) {
+      // For non-authenticated users, check localStorage
+      const savedName = localStorage.getItem("guestDisplayName");
+      if (savedName) {
+        setName(savedName);
+      }
     }
-    if (user?.avatarPreferences?.characterName) {
+
+    if (user?.avatarPreferences?.characterName && character === "Adam") {
       setCharacter(user.avatarPreferences.characterName);
+    } else if (!isAuthenticated && character === "Adam") {
+      // For non-authenticated users, check localStorage
+      const savedCharacter = localStorage.getItem("guestCharacter");
+      if (savedCharacter) {
+        setCharacter(savedCharacter);
+      }
     }
-  }, [user, name]);
+  }, [user, name, isAuthenticated]); // Removed 'character' from dependencies
 
   // Fetch room info
   useEffect(() => {
@@ -113,6 +126,21 @@ function JoinContent() {
         setError(result.message || "Failed to join room");
         setJoining(false);
         return;
+      }
+
+      // Save user preferences
+      if (isAuthenticated && !user?.isGuest) {
+        try {
+          // Update registered user's profile
+          await apiClient.updateProfile(name, { characterName: character });
+        } catch (err) {
+          console.warn("Failed to update user profile:", err);
+          // Continue anyway - don't block joining
+        }
+      } else {
+        // Save guest preferences to localStorage
+        localStorage.setItem("guestDisplayName", name);
+        localStorage.setItem("guestCharacter", character);
       }
 
       showToast("Joining room...", "success");

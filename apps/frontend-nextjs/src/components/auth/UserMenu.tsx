@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { User, LogOut, Settings, Home, ChevronDown } from "lucide-react";
+import {
+  User,
+  LogOut,
+  LayoutDashboard,
+  ChevronDown,
+  Globe,
+  Users,
+} from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 
@@ -24,6 +31,9 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
       </button>
     );
   }
+
+  const createdRoomsCount = user?.createdRooms?.length || 0;
+  const joinedRoomsCount = user?.joinedRooms?.length || 0;
 
   return (
     <div className="relative">
@@ -58,46 +68,52 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
             className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 top-full mt-2 w-56 bg-ui-white rounded-xl border-2 border-ui-border shadow-retro-lg z-50 overflow-hidden">
-            {/* User info */}
+          <div className="absolute right-0 top-full mt-2 w-64 bg-ui-white rounded-xl border-2 border-ui-border shadow-retro-lg z-50 overflow-hidden">
+            {/* User info with stats */}
             <div className="p-4 border-b border-gray-100">
               <p className="font-pixel text-lg text-gray-900 truncate">
                 {user?.displayName}
               </p>
-              <p className="text-sm text-gray-500 truncate">
+              <p className="text-sm text-gray-500 truncate mb-2">
                 @{user?.username}
               </p>
+              {/* Mini Stats */}
+              {!isGuest && (
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-1 px-2 py-1 bg-indigo-50 rounded text-xs">
+                    <Globe className="w-3 h-3 text-indigo-500" />
+                    <span className="font-medium text-indigo-700">
+                      {createdRoomsCount}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 px-2 py-1 bg-purple-50 rounded text-xs">
+                    <Users className="w-3 h-3 text-purple-500" />
+                    <span className="font-medium text-purple-700">
+                      {joinedRoomsCount}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Menu items */}
             <div className="p-2">
               {!isGuest && (
-                <>
-                  <Link
-                    href="/profile"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <User className="w-4 h-4" />
-                    <span className="font-medium">Profile</span>
-                  </Link>
-                  <Link
-                    href="/my-rooms"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <Home className="w-4 h-4" />
-                    <span className="font-medium">My Rooms</span>
-                  </Link>
-                  <Link
-                    href="/settings"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors"
-                  >
-                    <Settings className="w-4 h-4" />
-                    <span className="font-medium">Settings</span>
-                  </Link>
-                </>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-indigo-50 text-gray-700 hover:text-indigo-700 transition-colors group"
+                >
+                  <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-200 transition-colors">
+                    <LayoutDashboard className="w-4 h-4 text-indigo-600" />
+                  </div>
+                  <div>
+                    <span className="font-medium block">Dashboard</span>
+                    <span className="text-xs text-gray-400">
+                      Manage rooms & profile
+                    </span>
+                  </div>
+                </Link>
               )}
 
               <button
@@ -105,9 +121,11 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   logout();
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 text-red-600 transition-colors w-full"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-red-50 text-gray-700 hover:text-red-600 transition-colors w-full group"
               >
-                <LogOut className="w-4 h-4" />
+                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                  <LogOut className="w-4 h-4 text-red-500" />
+                </div>
                 <span className="font-medium">Sign Out</span>
               </button>
             </div>

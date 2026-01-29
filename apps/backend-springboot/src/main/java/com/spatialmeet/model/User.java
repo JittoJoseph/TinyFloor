@@ -29,6 +29,8 @@ public class User {
     
     private List<String> joinedRooms = new ArrayList<>();
     
+    private List<RecentCollaborator> recentCollaborators = new ArrayList<>();
+    
     private boolean isGuest = false;
     
     private Instant createdAt;
@@ -96,5 +98,69 @@ public class User {
         if (!joinedRooms.contains(roomId)) {
             joinedRooms.add(roomId);
         }
+    }
+
+    public List<RecentCollaborator> getRecentCollaborators() { return recentCollaborators; }
+    public void setRecentCollaborators(List<RecentCollaborator> recentCollaborators) { 
+        this.recentCollaborators = recentCollaborators; 
+    }
+
+    /**
+     * Add or update a collaborator. Keeps max 20 recent collaborators.
+     */
+    public void addCollaborator(String collaboratorId, String roomId) {
+        if (collaboratorId.equals(this.id)) return; // Don't add self
+        
+        // Check if collaborator already exists
+        RecentCollaborator existing = recentCollaborators.stream()
+                .filter(c -> c.getUserId().equals(collaboratorId))
+                .findFirst()
+                .orElse(null);
+        
+        if (existing != null) {
+            existing.setLastSeenAt(Instant.now());
+            existing.setLastRoomId(roomId);
+            existing.incrementMeetCount();
+        } else {
+            recentCollaborators.add(new RecentCollaborator(collaboratorId, roomId));
+        }
+        
+        // Sort by lastSeenAt descending and keep only top 20
+        recentCollaborators.sort((a, b) -> b.getLastSeenAt().compareTo(a.getLastSeenAt()));
+        if (recentCollaborators.size() > 20) {
+            recentCollaborators = new ArrayList<>(recentCollaborators.subList(0, 20));
+        }
+    }
+
+    /**
+     * Embedded document for tracking recent collaborators
+     */
+    public static class RecentCollaborator {
+        private String userId;
+        private String lastRoomId;
+        private Instant lastSeenAt;
+        private int meetCount;
+
+        public RecentCollaborator() {}
+
+        public RecentCollaborator(String userId, String roomId) {
+            this.userId = userId;
+            this.lastRoomId = roomId;
+            this.lastSeenAt = Instant.now();
+            this.meetCount = 1;
+        }
+
+        public String getUserId() { return userId; }
+        public void setUserId(String userId) { this.userId = userId; }
+
+        public String getLastRoomId() { return lastRoomId; }
+        public void setLastRoomId(String lastRoomId) { this.lastRoomId = lastRoomId; }
+
+        public Instant getLastSeenAt() { return lastSeenAt; }
+        public void setLastSeenAt(Instant lastSeenAt) { this.lastSeenAt = lastSeenAt; }
+
+        public int getMeetCount() { return meetCount; }
+        public void setMeetCount(int meetCount) { this.meetCount = meetCount; }
+        public void incrementMeetCount() { this.meetCount++; }
     }
 }

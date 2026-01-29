@@ -67,4 +67,31 @@ public class AuthController {
         }
         return ResponseEntity.ok(false);
     }
+
+    /**
+     * Combined validate and get session - reduces 2 API calls to 1.
+     * Returns user data if token is valid, null otherwise.
+     */
+    @GetMapping("/session")
+    public ResponseEntity<?> getSession(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.ok(new SessionResponse(false, null));
+        }
+        
+        String token = authHeader.substring(7);
+        if (!authService.validateToken(token)) {
+            return ResponseEntity.ok(new SessionResponse(false, null));
+        }
+        
+        String userId = authService.getUserIdFromToken(token);
+        var user = authService.getUserById(userId);
+        if (user == null) {
+            return ResponseEntity.ok(new SessionResponse(false, null));
+        }
+        
+        return ResponseEntity.ok(new SessionResponse(true, user));
+    }
+    
+    // Inner class for session response
+    public record SessionResponse(boolean valid, Object user) {}
 }

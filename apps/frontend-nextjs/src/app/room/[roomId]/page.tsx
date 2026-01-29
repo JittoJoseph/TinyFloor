@@ -10,6 +10,8 @@ import SettingsModal from "@/components/SettingsModal";
 import ChatPanel from "@/components/ChatPanel";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
+import { useAuth } from "@/contexts/AuthContext";
+import { apiClient } from "@/lib/api";
 import type { PlayerStatus } from "@/lib/types";
 
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
@@ -35,6 +37,7 @@ export default function RoomPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { user, updateUser } = useAuth();
 
   const roomId = params.roomId as string;
   const name = searchParams.get("name");

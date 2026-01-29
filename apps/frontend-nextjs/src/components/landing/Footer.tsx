@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
@@ -10,28 +11,34 @@ export const Footer: React.FC = () => {
           {/* Brand & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-1">
             <div className="font-pixel text-xl text-gray-800">SpatialMeet</div>
-            <p className="text-xs text-gray-500 font-medium">
-              © 2025 SpatialMeet Labs.
-            </p>
+            <Link
+              href={"https://www.jittojoseph.xyz"}
+              className="text-xs text-gray-500 font-medium"
+            >
+              © 2025 Jitto Joseph.
+            </Link>
           </div>
 
           {/* Links */}
           <div className="flex gap-6 text-sm text-gray-600 font-medium">
-            <a
+            <Link
               href="https://github.com/JittoJoseph"
               className="hover:text-indigo-600 transition-colors"
             >
               GitHub
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/jittojoseph17/"
               className="hover:text-indigo-600 transition-colors"
             >
               Linkedin
-            </a>
-            <a href="/" className="hover:text-indigo-600 transition-colors">
-              Privacy
-            </a>
+            </Link>
+            <Link
+              href="https://www.jittojoseph.xyz"
+              className="hover:text-indigo-600 transition-colors"
+            >
+              Portfolio
+            </Link>
           </div>
 
           {/* Tagline */}

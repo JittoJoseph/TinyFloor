@@ -135,7 +135,7 @@ export function ProfileCard({
             <div className="relative shrink-0">
               <div className="relative group">
                 <div className="absolute inset-0 bg-ui-border rounded-2xl translate-x-1.5 translate-y-1.5" />
-                <div className="relative w-24 h-32 bg-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
+                <div className="relative w-24 h-32 bg-white rounded-2xl border-2 border-ui-border flex items-center justify-center pb-5">
                   <CharacterPreview
                     characterId={
                       user.avatarPreferences?.characterName || "Adam"

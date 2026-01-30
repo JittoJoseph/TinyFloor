@@ -77,7 +77,7 @@ export function RecentCollaborators({
           const hasValidId = Boolean(person.id);
           const linkHref = hasValidId ? `/dashboard?user=${person.id}` : "#";
           const content = (
-            <div className="w-11 h-14 bg-white rounded-xl border-2 border-ui-border flex items-center justify-center overflow-hidden hover:border-blue-300 hover:shadow-sm transition-all hover:-translate-y-0.5">
+            <div className="w-11 h-14 bg-white rounded-xl border-2 border-ui-border flex items-center justify-center overflow-hidden hover:border-blue-300 hover:shadow-sm transition-all hover:-translate-y-0.5 pb-4">
               <CharacterPreview
                 characterId={person.characterName || "Adam"}
                 size="sm"

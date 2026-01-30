@@ -35,16 +35,20 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
       (a, b) =>
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
     )
-    .slice(0, 5);
+    .slice(0, 4);
 
   const getActivityIcon = (type: ActivityItem["type"]) => {
     switch (type) {
       case "room_created":
-        return { Icon: Globe, color: "text-indigo-500", bg: "bg-indigo-50" };
+        return { Icon: Globe, color: "text-blue-600", bg: "bg-blue-50" };
       case "room_joined":
-        return { Icon: UserPlus, color: "text-purple-500", bg: "bg-purple-50" };
+        return {
+          Icon: UserPlus,
+          color: "text-emerald-600",
+          bg: "bg-emerald-50",
+        };
       case "room_visited":
-        return { Icon: LogIn, color: "text-green-500", bg: "bg-green-50" };
+        return { Icon: LogIn, color: "text-amber-600", bg: "bg-amber-50" };
     }
   };
 
@@ -76,26 +80,37 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
 
   if (activities.length === 0) {
     return (
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm">
+      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <Clock className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">Activity</h3>
+          <h3 className="font-pixel text-sm text-gray-900">
+            Recent Activities
+          </h3>
         </div>
-        <p className="text-center py-4 text-gray-400 text-xs">
-          No activity yet
-        </p>
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-center py-8 text-gray-400 text-xs">
+            No activity yet
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm">
-      <div className="flex items-center gap-2 mb-3">
-        <Clock className="w-4 h-4 text-gray-400" />
-        <h3 className="font-pixel text-sm text-gray-900">Activity</h3>
+    <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+      <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center gap-2">
+          <Clock className="w-4 h-4 text-gray-400" />
+          <h3 className="font-pixel text-sm text-gray-900">
+            Recent Activities
+          </h3>
+        </div>
+        <span className="text-xs text-gray-400 font-medium">
+          {activities.length}
+        </span>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 overflow-y-auto flex-1 min-h-[200px] pr-1 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-300">
         {activities.map((activity) => {
           const { Icon, color, bg } = getActivityIcon(activity.type);
           return (

@@ -115,7 +115,7 @@ export function RoomSection({
               <span
                 className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTab === "joined"
-                    ? "bg-purple-100 text-purple-700"
+                    ? "bg-gray-200 text-gray-700"
                     : "bg-gray-200 text-gray-600"
                 }`}
               >

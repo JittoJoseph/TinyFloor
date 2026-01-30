@@ -13,6 +13,7 @@ import {
   QuickActions,
   ActivityFeed,
   RecentCollaborators,
+  StatsCard,
   type Room,
   type Collaborator,
 } from "@/components/dashboard";
@@ -154,30 +155,44 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header Row */}
-        <div className="flex items-center gap-3">
-          <Link
-            href="/rooms"
-            className="p-2 bg-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all shrink-0"
-          >
-            <ArrowLeft className="w-5 h-5 text-gray-700" />
-          </Link>
-          <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
-              Dashboard
-            </h1>
-            <p className="text-gray-500 text-sm hidden sm:block">
-              Manage your profile & rooms
-            </p>
+    <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-gray-50/50">
+      {/* Centered Container - max-w-4xl for compact feel */}
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between gap-3 mb-6">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/rooms"
+              className="p-2 bg-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all shrink-0"
+            >
+              <ArrowLeft className="w-5 h-5 text-gray-700" />
+            </Link>
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
+                Dashboard
+              </h1>
+              <p className="text-gray-500 text-sm hidden sm:block">
+                Manage your profile & rooms
+              </p>
+            </div>
+          </div>
+          {/* Quick stat badges */}
+          <div className="hidden sm:flex items-center gap-2">
+            {createdRooms.filter((r) => r.playerCount > 0).length > 0 && (
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 rounded-lg border border-emerald-100">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-emerald-700">
+                  {createdRooms.filter((r) => r.playerCount > 0).length} active
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Top Section: Profile + Quick Actions */}
-        <div className="flex flex-col xl:flex-row gap-4">
-          {/* Profile Card - Flexible width */}
-          <div className="flex-1">
+        {/* Masonry Grid - Using CSS Grid for better packing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-min">
+          {/* Profile Card - Spans 2 columns on large screens */}
+          <div className="md:col-span-2 lg:col-span-2">
             <ProfileCard
               user={user}
               createdRoomsCount={createdRooms.length}
@@ -187,9 +202,34 @@ export default function DashboardPage() {
             />
           </div>
 
-          {/* Right Column: Quick Actions + Recent People */}
-          <div className="xl:w-64 shrink-0 flex flex-col gap-4">
+          {/* Stats Card - Single column */}
+          <div className="md:col-span-1">
+            <StatsCard
+              totalRooms={createdRooms.length + joinedRooms.length}
+              activeRooms={
+                [...createdRooms, ...joinedRooms].filter(
+                  (r) => r.playerCount > 0,
+                ).length
+              }
+              totalCollaborators={collaborators.length}
+            />
+          </div>
+
+          {/* Quick Actions */}
+          <div className="md:col-span-1">
             <QuickActions onLogout={handleLogout} isGuest={user.isGuest} />
+          </div>
+
+          {/* Activity Feed */}
+          <div className="md:col-span-1">
+            <ActivityFeed
+              createdRooms={createdRooms}
+              joinedRooms={joinedRooms}
+            />
+          </div>
+
+          {/* Recent Collaborators */}
+          <div className="md:col-span-1">
             <RecentCollaborators
               collaborators={collaborators}
               isLoading={loadingRooms}
@@ -197,28 +237,17 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Bottom Section: Rooms + Activity */}
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
-          {/* Rooms Section - Main content */}
-          <div className="xl:col-span-3">
-            <RoomSection
-              createdRooms={createdRooms}
-              joinedRooms={joinedRooms}
-              isLoading={loadingRooms}
-              onCopyLink={handleCopyLink}
-              onDeleteRoom={handleDeleteRoom}
-              copiedRoomId={copiedRoomId}
-              deletingRoomId={deletingRoomId}
-            />
-          </div>
-
-          {/* Activity Feed - Sidebar */}
-          <div className="xl:col-span-1">
-            <ActivityFeed
-              createdRooms={createdRooms}
-              joinedRooms={joinedRooms}
-            />
-          </div>
+        {/* Rooms Section - Full Width Below Masonry */}
+        <div className="mt-4">
+          <RoomSection
+            createdRooms={createdRooms}
+            joinedRooms={joinedRooms}
+            isLoading={loadingRooms}
+            onCopyLink={handleCopyLink}
+            onDeleteRoom={handleDeleteRoom}
+            copiedRoomId={copiedRoomId}
+            deletingRoomId={deletingRoomId}
+          />
         </div>
       </div>
     </div>

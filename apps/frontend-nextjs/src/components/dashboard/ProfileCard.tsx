@@ -96,8 +96,8 @@ export function ProfileCard({
             {/* Character */}
             <div className="relative shrink-0">
               <div className="relative group">
-                <div className="absolute inset-0 bg-ui-border rounded-2xl translate-x-2 translate-y-2" />
-                <div className="relative w-28 h-36 bg-gradient-to-b from-gray-50 to-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
+                <div className="absolute inset-0 bg-ui-border rounded-2xl translate-x-1.5 translate-y-1.5" />
+                <div className="relative w-24 h-32 bg-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
                   <CharacterPreview
                     characterId={
                       user.avatarPreferences?.characterName || "Adam"
@@ -177,24 +177,24 @@ export function ProfileCard({
               <p className="text-gray-400 text-sm mt-0.5">@{user.username}</p>
 
               {/* Stats */}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-3">
-                <div className="flex items-center gap-1 px-2.5 py-1 bg-indigo-50 rounded-lg">
-                  <Globe className="w-3.5 h-3.5 text-indigo-500" />
-                  <span className="font-pixel text-xs text-indigo-700">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-3">
+                <div className="flex items-center gap-1 px-2 py-1 bg-blue-50 rounded-md border border-blue-100">
+                  <Globe className="w-3 h-3 text-blue-600" />
+                  <span className="font-pixel text-xs text-blue-700">
                     {createdRoomsCount}
                   </span>
-                  <span className="text-indigo-500 text-[10px]">created</span>
+                  <span className="text-blue-500 text-[10px]">created</span>
                 </div>
-                <div className="flex items-center gap-1 px-2.5 py-1 bg-purple-50 rounded-lg">
-                  <Users className="w-3.5 h-3.5 text-purple-500" />
-                  <span className="font-pixel text-xs text-purple-700">
+                <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 rounded-md border border-emerald-100">
+                  <Users className="w-3 h-3 text-emerald-600" />
+                  <span className="font-pixel text-xs text-emerald-700">
                     {joinedRoomsCount}
                   </span>
-                  <span className="text-purple-500 text-[10px]">joined</span>
+                  <span className="text-emerald-500 text-[10px]">joined</span>
                 </div>
-                <div className="flex items-center gap-1 px-2.5 py-1 bg-gray-100 rounded-lg">
-                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                  <span className="text-gray-500 text-[10px]">
+                <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 rounded-md border border-amber-100">
+                  <Calendar className="w-3 h-3 text-amber-600" />
+                  <span className="text-amber-600 text-[10px]">
                     {formatDate(user.createdAt)}
                   </span>
                 </div>
@@ -221,8 +221,8 @@ export function ProfileCard({
             </button>
 
             <div className="text-center mb-6">
-              <div className="w-14 h-14 bg-purple-100 rounded-2xl border-2 border-purple-200 flex items-center justify-center mx-auto mb-3">
-                <Sparkles className="w-7 h-7 text-purple-600" />
+              <div className="w-14 h-14 bg-gray-100 rounded-2xl border-2 border-gray-200 flex items-center justify-center mx-auto mb-3">
+                <Sparkles className="w-7 h-7 text-gray-600" />
               </div>
               <h3 className="font-pixel text-2xl text-gray-900">
                 Choose Character

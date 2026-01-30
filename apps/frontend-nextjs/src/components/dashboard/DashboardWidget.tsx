@@ -33,7 +33,7 @@ export function DashboardWidget({
         className="group flex items-center gap-3 p-3 bg-ui-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all"
       >
         {/* Mini Character */}
-        <div className="w-10 h-12 bg-gradient-to-b from-gray-50 to-white rounded-lg border border-ui-border flex items-center justify-center overflow-hidden shrink-0">
+        <div className="w-10 h-12 bg-white rounded-lg border border-ui-border flex items-center justify-center overflow-hidden shrink-0">
           <CharacterPreview
             characterId={characterId}
             size="sm"
@@ -73,7 +73,7 @@ export function DashboardWidget({
       {/* Header */}
       <div className="p-4 border-b border-gray-100">
         <div className="flex items-center gap-3">
-          <div className="w-14 h-16 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-ui-border flex items-center justify-center overflow-hidden">
+          <div className="w-14 h-16 bg-white rounded-xl border-2 border-ui-border flex items-center justify-center overflow-hidden">
             <CharacterPreview
               characterId={characterId}
               size="sm"
@@ -92,19 +92,19 @@ export function DashboardWidget({
 
       {/* Stats */}
       <div className="p-3 flex gap-2">
-        <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-indigo-50 rounded-lg">
-          <Globe className="w-4 h-4 text-indigo-500" />
-          <span className="font-pixel text-sm text-indigo-700">
+        <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
+          <Globe className="w-4 h-4 text-gray-500" />
+          <span className="font-pixel text-sm text-gray-700">
             {stats.createdRooms}
           </span>
-          <span className="text-xs text-indigo-500">created</span>
+          <span className="text-xs text-gray-400">created</span>
         </div>
-        <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-lg">
-          <Users className="w-4 h-4 text-purple-500" />
-          <span className="font-pixel text-sm text-purple-700">
+        <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
+          <Users className="w-4 h-4 text-gray-500" />
+          <span className="font-pixel text-sm text-gray-700">
             {stats.joinedRooms}
           </span>
-          <span className="text-xs text-purple-500">joined</span>
+          <span className="text-xs text-gray-400">joined</span>
         </div>
       </div>
     </Link>

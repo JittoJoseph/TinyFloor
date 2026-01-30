@@ -5,11 +5,9 @@ import {
   Users,
   Lock,
   Clock,
-  Trash2,
   ExternalLink,
   Copy,
   Check,
-  Loader2,
   Crown,
 } from "lucide-react";
 
@@ -32,9 +30,7 @@ interface RoomCardProps {
   room: Room;
   isOwned?: boolean;
   onCopy: () => void;
-  onDelete?: () => void;
   isCopied: boolean;
-  isDeleting?: boolean;
 }
 
 function getTimeAgo(dateString: string): string {
@@ -88,14 +84,7 @@ const statusConfig: Record<
   },
 };
 
-export function RoomCard({
-  room,
-  isOwned,
-  onCopy,
-  onDelete,
-  isCopied,
-  isDeleting,
-}: RoomCardProps) {
+export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
   const status = getRoomStatus(room);
   const config = statusConfig[status];
 
@@ -160,20 +149,6 @@ export function RoomCard({
               <Copy className="w-4 h-4" />
             )}
           </button>
-          {isOwned && onDelete && (
-            <button
-              onClick={onDelete}
-              disabled={isDeleting}
-              className="p-2.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors disabled:opacity-50"
-              title="Delete room"
-            >
-              {isDeleting ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : (
-                <Trash2 className="w-4 h-4" />
-              )}
-            </button>
-          )}
         </div>
       </div>
     </div>
@@ -185,9 +160,7 @@ export function RoomCardCompact({
   room,
   isOwned,
   onCopy,
-  onDelete,
   isCopied,
-  isDeleting,
 }: RoomCardProps) {
   const status = getRoomStatus(room);
   const config = statusConfig[status];
@@ -233,20 +206,6 @@ export function RoomCardCompact({
             <Copy className="w-4 h-4" />
           )}
         </button>
-        {isOwned && onDelete && (
-          <button
-            onClick={onDelete}
-            disabled={isDeleting}
-            className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition-colors disabled:opacity-50"
-            title="Delete"
-          >
-            {isDeleting ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Trash2 className="w-4 h-4" />
-            )}
-          </button>
-        )}
       </div>
     </div>
   );

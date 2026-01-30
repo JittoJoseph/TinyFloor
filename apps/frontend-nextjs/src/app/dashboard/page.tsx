@@ -52,7 +52,6 @@ function DashboardContent() {
   const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
   const [loadingRooms, setLoadingRooms] = useState(true);
   const [copiedRoomId, setCopiedRoomId] = useState<string | null>(null);
-  const [deletingRoomId, setDeletingRoomId] = useState<string | null>(null);
 
   // For viewing other users
   const [publicProfile, setPublicProfile] = useState<PublicProfile | null>(
@@ -174,22 +173,6 @@ function DashboardContent() {
       setCopiedRoomId(room.id);
       showToast("Link copied!", "success");
       setTimeout(() => setCopiedRoomId(null), 2000);
-    }
-  };
-
-  const handleDeleteRoom = async (roomId: string) => {
-    if (!confirm("Are you sure you want to delete this room?")) return;
-
-    setDeletingRoomId(roomId);
-    try {
-      await apiClient.deleteRoom(roomId);
-      setCreatedRooms((prev) => prev.filter((r) => r.id !== roomId));
-      showToast("Room deleted", "success");
-    } catch (error) {
-      console.error("Failed to delete room:", error);
-      showToast("Failed to delete room", "error");
-    } finally {
-      setDeletingRoomId(null);
     }
   };
 
@@ -398,9 +381,7 @@ function DashboardContent() {
             joinedRooms={joinedRooms}
             isLoading={loadingRooms}
             onCopyLink={handleCopyLink}
-            onDeleteRoom={handleDeleteRoom}
             copiedRoomId={copiedRoomId}
-            deletingRoomId={deletingRoomId}
           />
         </div>
       </div>

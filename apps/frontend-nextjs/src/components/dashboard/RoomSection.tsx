@@ -23,9 +23,7 @@ interface RoomSectionProps {
   joinedRooms: Room[];
   isLoading: boolean;
   onCopyLink: (room: Room) => void;
-  onDeleteRoom: (roomId: string) => void;
   copiedRoomId: string | null;
-  deletingRoomId: string | null;
 }
 
 export function RoomSection({
@@ -33,9 +31,7 @@ export function RoomSection({
   joinedRooms,
   isLoading,
   onCopyLink,
-  onDeleteRoom,
   copiedRoomId,
-  deletingRoomId,
 }: RoomSectionProps) {
   const [activeTab, setActiveTab] = useState<TabType>("created");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
@@ -222,13 +218,7 @@ export function RoomSection({
               room={room}
               isOwned={activeTab === "created"}
               onCopy={() => onCopyLink(room)}
-              onDelete={
-                activeTab === "created"
-                  ? () => onDeleteRoom(room.id)
-                  : undefined
-              }
               isCopied={copiedRoomId === room.id}
-              isDeleting={deletingRoomId === room.id}
             />
           ))}
         </div>
@@ -240,13 +230,7 @@ export function RoomSection({
               room={room}
               isOwned={activeTab === "created"}
               onCopy={() => onCopyLink(room)}
-              onDelete={
-                activeTab === "created"
-                  ? () => onDeleteRoom(room.id)
-                  : undefined
-              }
               isCopied={copiedRoomId === room.id}
-              isDeleting={deletingRoomId === room.id}
             />
           ))}
         </div>

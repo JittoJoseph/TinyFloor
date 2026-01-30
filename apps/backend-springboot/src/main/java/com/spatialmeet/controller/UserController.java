@@ -2,6 +2,7 @@ package com.spatialmeet.controller;
 
 import com.spatialmeet.dto.UserResponse;
 import com.spatialmeet.dto.DashboardSummary;
+import com.spatialmeet.dto.PublicProfile;
 import com.spatialmeet.model.AvatarPreferences;
 import com.spatialmeet.model.User;
 import com.spatialmeet.model.UserStatus;
@@ -58,5 +59,15 @@ public class UserController {
         }
         UserResponse response = userService.updateAvatar(user.getId(), avatarPreferences);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/profile/{userId}")
+    public ResponseEntity<PublicProfile> getPublicProfile(@PathVariable String userId) {
+        try {
+            PublicProfile profile = userService.getPublicProfileById(userId);
+            return ResponseEntity.ok(profile);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

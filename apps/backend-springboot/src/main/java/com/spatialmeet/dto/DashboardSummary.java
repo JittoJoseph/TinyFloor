@@ -45,19 +45,24 @@ public class DashboardSummary {
     // Nested class for collaborator info
     public static class CollaboratorInfo {
         private String id;
+        private String username;
         private String displayName;
         private String characterName;
 
         public CollaboratorInfo() {}
 
-        public CollaboratorInfo(String id, String displayName, String characterName) {
+        public CollaboratorInfo(String id, String username, String displayName, String characterName) {
             this.id = id;
+            this.username = username;
             this.displayName = displayName;
             this.characterName = characterName;
         }
 
         public String getId() { return id; }
         public void setId(String id) { this.id = id; }
+
+        public String getUsername() { return username; }
+        public void setUsername(String username) { this.username = username; }
 
         public String getDisplayName() { return displayName; }
         public void setDisplayName(String displayName) { this.displayName = displayName; }

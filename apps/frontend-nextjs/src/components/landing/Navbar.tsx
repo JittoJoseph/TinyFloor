@@ -39,10 +39,10 @@ export const Navbar: React.FC = () => {
               How it Works
             </a>
             <Link
-              href="/join"
+              href="/dashboard"
               className="bg-brand-secondary hover:bg-rose-500 text-white font-pixel text-lg px-4 py-1.5 rounded-lg border-2 border-ui-border shadow-retro-sm active:translate-y-0.5 active:shadow-none transition-all"
             >
-              Login
+              Dashboard
             </Link>
           </div>
 

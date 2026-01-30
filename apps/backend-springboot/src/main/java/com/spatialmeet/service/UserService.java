@@ -1,6 +1,7 @@
 package com.spatialmeet.service;
 
 import com.spatialmeet.dto.DashboardSummary;
+import com.spatialmeet.dto.PublicProfile;
 import com.spatialmeet.dto.UserResponse;
 import com.spatialmeet.model.AvatarPreferences;
 import com.spatialmeet.model.User;
@@ -158,6 +159,7 @@ public class UserService {
                             : "Adam";
                     collaborators.add(new DashboardSummary.CollaboratorInfo(
                             collabUser.getId(),
+                            collabUser.getUsername(),
                             collabUser.getDisplayName(),
                             characterName
                     ));
@@ -210,4 +212,63 @@ public class UserService {
             updateCollaborators(existingUserId, newUserList, roomId);
         }
     }
+
+    /**
+     * Get a public-facing profile for any user by user ID.
+     * This is accessible to all users, including guests.
+     */
+    public PublicProfile getPublicProfileById(String userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Get counts
+        int createdRoomsCount = user.getCreatedRooms() != null ? user.getCreatedRooms().size() : 0;
+        int joinedRoomsCount = user.getJoinedRooms() != null ? user.getJoinedRooms().size() : 0;
+
+        // Get recent collaborators
+        List<PublicProfile.CollaboratorInfo> collaborators = new ArrayList<>();
+        if (user.getRecentCollaborators() != null && !user.getRecentCollaborators().isEmpty()) {
+            List<String> collaboratorIds = user.getRecentCollaborators().stream()
+                    .map(User.RecentCollaborator::getUserId)
+                    .limit(10)
+                    .collect(Collectors.toList());
+            
+            List<User> collaboratorUsers = userRepository.findAllById(collaboratorIds);
+            var userMap = collaboratorUsers.stream()
+                    .collect(Collectors.toMap(User::getId, u -> u));
+            
+            for (String collabId : collaboratorIds) {
+                User collabUser = userMap.get(collabId);
+                if (collabUser != null) {
+                    String characterName = collabUser.getAvatarPreferences() != null 
+                            ? collabUser.getAvatarPreferences().getCharacterName() 
+                            : "Adam";
+                    collaborators.add(new PublicProfile.CollaboratorInfo(
+                            collabUser.getId(),
+                            collabUser.getUsername(),
+                            collabUser.getDisplayName(),
+                            characterName
+                    ));
+                }
+            }
+        }
+
+        // For now, return empty list for public rooms
+        // You could implement logic to show only public/non-private rooms
+        List<PublicProfile.PublicRoomInfo> publicRooms = new ArrayList<>();
+
+        return new PublicProfile(
+            user.getId(),
+            user.getUsername(),
+            user.getDisplayName(),
+            user.isGuest(),
+            user.getAvatarPreferences(),
+            user.getCreatedAt().toString(),
+            createdRoomsCount,
+            joinedRoomsCount,
+            collaborators,
+            publicRooms
+        );
+    }
 }
+

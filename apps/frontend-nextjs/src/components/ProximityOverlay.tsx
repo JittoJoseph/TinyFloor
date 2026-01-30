@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef, memo } from "react";
-import { Video, Mic, MessageSquare } from "lucide-react";
+import { Video, Mic, MessageSquare, BadgeCheck, User } from "lucide-react";
 
 interface NearbyPlayer {
   id: string;
   name: string;
+  username?: string;
+  isGuest?: boolean;
   x: number;
   y: number;
   status: string;
@@ -19,6 +21,7 @@ const PlayerCard = memo(function PlayerCard({
   isBelow,
   onCall,
   onChat,
+  onViewProfile,
 }: {
   player: NearbyPlayer;
   x: number;
@@ -26,6 +29,7 @@ const PlayerCard = memo(function PlayerCard({
   isBelow: boolean;
   onCall: (id: string, type: "audio" | "video") => void;
   onChat: () => void;
+  onViewProfile: (userId: string) => void;
 }) {
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -72,22 +76,41 @@ const PlayerCard = memo(function PlayerCard({
           <div className="w-8 h-8 rounded-full bg-indigo-100 border-2 border-indigo-500 flex items-center justify-center text-indigo-700 font-bold font-pixel">
             {player.name.charAt(0).toUpperCase()}
           </div>
-          <div>
-            <div className="font-bold text-gray-800 text-sm leading-tight">
-              {player.name}
-            </div>
+          <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1">
+              <div className="font-bold text-gray-800 text-sm leading-tight truncate">
+                {player.name}
+              </div>
+              {!player.isGuest && (
+                <BadgeCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              )}
+            </div>
+            <div className="flex items-center gap-1.5">
               <div
                 className={`w-2 h-2 rounded-full ${getStatusColor(player.status)}`}
               ></div>
               <span className="text-xs text-gray-600 font-medium">
                 {getStatusText(player.status)}
               </span>
+              {player.isGuest && (
+                <span className="text-[9px] px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold">
+                  GUEST
+                </span>
+              )}
             </div>
           </div>
         </div>
 
         <div className="flex justify-between gap-2 relative z-10">
+          {player.id && (
+            <button
+              onClick={() => onViewProfile(player.id)}
+              className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
+              title="View Profile"
+            >
+              <User size={16} />
+            </button>
+          )}
           <button
             onClick={() => onCall(player.id, "video")}
             className="flex-1 bg-blue-500 hover:bg-blue-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
@@ -181,6 +204,10 @@ export default function ProximityOverlay() {
     window.dispatchEvent(new Event("openChat"));
   }, []);
 
+  const handleViewProfile = useCallback((userId: string) => {
+    window.open(`/dashboard?user=${userId}`, "_blank", "noopener,noreferrer");
+  }, []);
+
   // Helper to calculate safe position
   const getSafePosition = useCallback((x: number, y: number) => {
     const CARD_WIDTH = 192;
@@ -219,6 +246,7 @@ export default function ProximityOverlay() {
             isBelow={isBelow}
             onCall={handleCall}
             onChat={handleChat}
+            onViewProfile={handleViewProfile}
           />
         );
       })}

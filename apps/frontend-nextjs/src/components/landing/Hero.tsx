@@ -26,9 +26,12 @@ export const Hero: React.FC = () => {
             >
               Try It <ArrowRight className="w-5 h-5" />
             </Link>
-            <button className="bg-white hover:bg-gray-50 text-gray-800 font-pixel text-xl px-8 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all cursor-pointer">
-              Watch Video
-            </button>
+            <Link
+              href="/dashboard"
+              className="bg-white hover:bg-gray-50 text-gray-800 font-pixel text-xl px-8 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all cursor-pointer"
+            >
+              Dashboard
+            </Link>
           </div>
 
           {/* Speech Bubble Tail */}
@@ -48,7 +51,7 @@ export const Hero: React.FC = () => {
             </div>
             <div className="flex-1 bg-gray-900 h-6 rounded mx-4 flex items-center px-3">
               <span className="text-gray-500 font-pixel text-xs">
-                spatialmeet.com/office/lobby
+                spatialmeet-app.vercel.app/office/lobby
               </span>
             </div>
           </div>

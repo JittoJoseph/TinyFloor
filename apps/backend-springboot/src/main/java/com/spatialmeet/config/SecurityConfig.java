@@ -52,6 +52,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/rooms").permitAll() // Allow guests to create rooms
                 .requestMatchers("/api/rooms/join/**").permitAll()
                 .requestMatchers("/api/rooms/share/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/users/profile/**").permitAll() // Allow public profile viewing
                 // Protected endpoints
                 .requestMatchers("/api/users/**").authenticated()
                 .requestMatchers(HttpMethod.PUT, "/api/rooms/**").authenticated()

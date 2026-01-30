@@ -153,6 +153,10 @@ class ApiClient {
     });
   }
 
+  async getPublicProfile(userId: string): Promise<any> {
+    return this.fetch(`/api/users/profile/${encodeURIComponent(userId)}`);
+  }
+
   // Room endpoints
   async getRooms(
     page = 0,

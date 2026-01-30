@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Users } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
 import { useToast } from "@/components/ui/Toast";
@@ -14,12 +14,27 @@ import {
   ActivityFeed,
   RecentCollaborators,
   StatsCard,
+  CharacterPreview,
   type Room,
   type Collaborator,
 } from "@/components/dashboard";
 
-export default function DashboardPage() {
+interface PublicProfile {
+  id: string;
+  username: string;
+  displayName: string;
+  isGuest: boolean;
+  avatarPreferences?: { characterName?: string };
+  createdAt: string;
+  createdRoomsCount: number;
+  joinedRoomsCount: number;
+  recentCollaborators: Collaborator[];
+  publicRooms: any[];
+}
+
+function DashboardContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     user,
     isAuthenticated,
@@ -29,6 +44,9 @@ export default function DashboardPage() {
   } = useAuth();
   const { showToast } = useToast();
 
+  const targetUserId = searchParams.get("user");
+  const isViewingOther = targetUserId && targetUserId !== user?.id;
+
   const [createdRooms, setCreatedRooms] = useState<Room[]>([]);
   const [joinedRooms, setJoinedRooms] = useState<Room[]>([]);
   const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
@@ -36,16 +54,55 @@ export default function DashboardPage() {
   const [copiedRoomId, setCopiedRoomId] = useState<string | null>(null);
   const [deletingRoomId, setDeletingRoomId] = useState<string | null>(null);
 
-  // Redirect if not authenticated
+  // For viewing other users
+  const [publicProfile, setPublicProfile] = useState<PublicProfile | null>(
+    null,
+  );
+  const [profileError, setProfileError] = useState<string | null>(null);
+
+  // Redirect to auth if viewing own dashboard without auth
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push("/rooms");
+    if (!authLoading && !isAuthenticated && !isViewingOther) {
+      router.push("/auth?redirect=/dashboard");
     }
-  }, [authLoading, isAuthenticated, router]);
+  }, [authLoading, isAuthenticated, isViewingOther, router]);
+
+  // Add user parameter to URL when viewing own dashboard
+  useEffect(() => {
+    if (!authLoading && isAuthenticated && user && !isViewingOther) {
+      const currentUrl = new URL(window.location.href);
+      if (!currentUrl.searchParams.get("user")) {
+        router.replace(`/dashboard?user=${user.id}`, { scroll: false });
+      }
+    }
+  }, [authLoading, isAuthenticated, user, isViewingOther, router]);
+
+  // Fetch public profile if viewing another user
+  useEffect(() => {
+    async function fetchPublicProfile() {
+      if (!targetUserId) return;
+
+      setLoadingRooms(true);
+      try {
+        const profile = await apiClient.getPublicProfile(targetUserId);
+        setPublicProfile(profile);
+        setCollaborators(profile.recentCollaborators || []);
+        setProfileError(null);
+      } catch (error: any) {
+        setProfileError(error.message || "User not found");
+      } finally {
+        setLoadingRooms(false);
+      }
+    }
+
+    if (isViewingOther) {
+      fetchPublicProfile();
+    }
+  }, [targetUserId, isViewingOther]);
 
   // Fetch rooms with error handling
   const fetchRooms = useCallback(async () => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated || isViewingOther) return;
 
     setLoadingRooms(true);
     try {
@@ -56,6 +113,7 @@ export default function DashboardPage() {
       // Try to fetch joined rooms, but don't fail if it errors
       try {
         const joined = await apiClient.getJoinedRooms();
+        // Filter out duplicates more efficiently
         const createdIds = new Set(created.map((r) => r.id));
         setJoinedRooms(joined.filter((r) => !createdIds.has(r.id)));
       } catch {
@@ -74,7 +132,7 @@ export default function DashboardPage() {
     } finally {
       setLoadingRooms(false);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, isViewingOther]);
 
   useEffect(() => {
     fetchRooms();
@@ -111,10 +169,12 @@ export default function DashboardPage() {
     const link = room.shareCode
       ? `${window.location.origin}/join?code=${room.shareCode}`
       : `${window.location.origin}/join?roomId=${room.id}`;
-    navigator.clipboard.writeText(link);
-    setCopiedRoomId(room.id);
-    showToast("Link copied!", "success");
-    setTimeout(() => setCopiedRoomId(null), 2000);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(link);
+      setCopiedRoomId(room.id);
+      showToast("Link copied!", "success");
+      setTimeout(() => setCopiedRoomId(null), 2000);
+    }
   };
 
   const handleDeleteRoom = async (roomId: string) => {
@@ -139,12 +199,106 @@ export default function DashboardPage() {
   };
 
   // Loading state
-  if (authLoading) {
+  if (authLoading || loadingRooms) {
     return (
       <div className="min-h-screen w-full flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="font-pixel text-xl text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If viewing another user's profile
+  if (isViewingOther) {
+    if (profileError) {
+      return (
+        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gray-50/50">
+          <div className="text-center max-w-md">
+            <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro-lg p-8">
+              <div className="w-20 h-20 bg-red-50 rounded-2xl border-2 border-red-200 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-10 h-10 text-red-400" />
+              </div>
+              <h2 className="font-pixel text-2xl text-gray-900 mb-2">
+                User Not Found
+              </h2>
+              <p className="text-gray-600 mb-6">{profileError}</p>
+              <Link
+                href="/rooms"
+                className="inline-block bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all"
+              >
+                Back to Rooms
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (!publicProfile) {
+      return null;
+    }
+
+    // Render public profile view
+    return (
+      <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-gray-50/50">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6">
+            <Link
+              href="/rooms"
+              className="p-2 bg-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all shrink-0"
+            >
+              <ArrowLeft className="w-5 h-5 text-gray-700" />
+            </Link>
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
+                {publicProfile.displayName}
+              </h1>
+              <p className="text-gray-500 text-sm">@{publicProfile.username}</p>
+            </div>
+          </div>
+
+          {/* Masonry Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-min">
+            {/* Profile Card - Using same component as own profile but read-only */}
+            <div className="md:col-span-2 lg:col-span-2">
+              <ProfileCard
+                user={{
+                  id: publicProfile.id,
+                  username: publicProfile.username,
+                  displayName: publicProfile.displayName,
+                  isGuest: publicProfile.isGuest,
+                  avatarPreferences: publicProfile.avatarPreferences,
+                  createdAt: publicProfile.createdAt,
+                }}
+                createdRoomsCount={publicProfile.createdRoomsCount}
+                joinedRoomsCount={publicProfile.joinedRoomsCount}
+                readOnly={true}
+              />
+            </div>
+
+            {/* Stats Card */}
+            <div className="md:col-span-1">
+              <StatsCard
+                totalRooms={
+                  publicProfile.createdRoomsCount +
+                  publicProfile.joinedRoomsCount
+                }
+                activeRooms={0}
+                totalCollaborators={publicProfile.recentCollaborators.length}
+              />
+            </div>
+
+            {/* Recent Collaborators */}
+            <div className="md:col-span-1">
+              <RecentCollaborators
+                collaborators={publicProfile.recentCollaborators}
+                isLoading={false}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -251,5 +405,22 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen w-full flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="font-pixel text-xl text-gray-600">Loading...</p>
+          </div>
+        </div>
+      }
+    >
+      <DashboardContent />
+    </Suspense>
   );
 }

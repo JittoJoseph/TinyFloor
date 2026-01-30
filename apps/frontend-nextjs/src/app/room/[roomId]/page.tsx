@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -53,7 +53,13 @@ export default function RoomPage() {
   const [copied, setCopied] = useState(false);
   const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
   const [participants, setParticipants] = useState<
-    Array<{ id: string; name: string; status?: PlayerStatus }>
+    Array<{
+      id: string;
+      name: string;
+      username?: string;
+      isGuest?: boolean;
+      status?: PlayerStatus;
+    }>
   >([]);
 
   // Fetch room details
@@ -75,9 +81,11 @@ export default function RoomPage() {
   // Copy invite link
   const copyInviteLink = useCallback(() => {
     const link = `${window.location.origin}/join?roomId=${roomId}`;
-    navigator.clipboard.writeText(link);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   }, [roomId]);
 
   // Control bar handlers
@@ -125,9 +133,25 @@ export default function RoomPage() {
     const handleOpenChat = () => setShowChat(true);
     const handlePlayerListUpdated = (e: CustomEvent) => {
       // Filter out current user from participants list to avoid duplication
-      const allParticipants = e.detail as Array<{ id: string; name: string }>;
+      const allParticipants = e.detail as Array<{
+        id: string;
+        name: string;
+        username?: string;
+        isGuest?: boolean;
+      }>;
       const otherParticipants = allParticipants.filter((p) => p.name !== name);
-      setParticipants(otherParticipants);
+      // If username is not provided, extract it from name (format: "displayName (username)")
+      const processedParticipants = otherParticipants.map((p) => {
+        if (p.username) return p;
+        // Try to extract username from name if it's in format "DisplayName (username)"
+        const match = p.name.match(/\(([^)]+)\)$/);
+        return {
+          ...p,
+          username: match ? match[1] : p.name.toLowerCase().replace(/\s+/g, ""),
+          isGuest: p.isGuest ?? false,
+        };
+      });
+      setParticipants(processedParticipants);
     };
 
     window.addEventListener("callStarted", handleCallStarted);
@@ -225,18 +249,48 @@ export default function RoomPage() {
               </div>
             </div>
             {participants.map((p) => (
-              <div
+              <button
                 key={p.id}
-                className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+                onClick={() => {
+                  if (p.id) {
+                    window.open(
+                      `/dashboard?user=${p.id}`,
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
+                  }
+                }}
+                disabled={!p.id}
+                className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer w-full text-left disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 font-pixel text-sm">
                   {p.name.charAt(0).toUpperCase()}
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-900">{p.name}</p>
-                  <p className="text-xs text-green-500">Online</p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1">
+                    <p className="text-sm font-medium text-gray-900 truncate">
+                      {p.name}
+                    </p>
+                    {!p.isGuest && (
+                      <svg
+                        className="w-3.5 h-3.5 text-blue-500 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs text-green-500">Online</p>
+                    {p.isGuest && (
+                      <span className="text-[9px] px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold">
+                        GUEST
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </button>
             ))}
             {participants.length === 0 && (
               <p className="text-xs text-gray-500 text-center py-2">

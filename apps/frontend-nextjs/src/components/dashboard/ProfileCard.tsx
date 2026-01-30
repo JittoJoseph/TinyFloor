@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Edit3,
   Check,
@@ -9,6 +9,8 @@ import {
   Globe,
   Users,
   Calendar,
+  Share2,
+  Link as LinkIcon,
   Sparkles,
 } from "lucide-react";
 import { CharacterPreview } from "./CharacterPreview";
@@ -33,8 +35,9 @@ interface ProfileCardProps {
   user: User;
   createdRoomsCount: number;
   joinedRoomsCount: number;
-  onUpdateDisplayName: (name: string) => Promise<void>;
-  onUpdateCharacter: (characterId: string) => Promise<void>;
+  onUpdateDisplayName?: (name: string) => Promise<void>;
+  onUpdateCharacter?: (characterId: string) => Promise<void>;
+  readOnly?: boolean;
 }
 
 export function ProfileCard({
@@ -43,6 +46,7 @@ export function ProfileCard({
   joinedRoomsCount,
   onUpdateDisplayName,
   onUpdateCharacter,
+  readOnly = false,
 }: ProfileCardProps) {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingCharacter, setIsEditingCharacter] = useState(false);
@@ -51,6 +55,13 @@ export function ProfileCard({
     user.avatarPreferences?.characterName || "Adam",
   );
   const [isSaving, setIsSaving] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const profileUrl = useMemo(
+    () =>
+      `${typeof window !== "undefined" ? window.location.origin : ""}/dashboard?user=${user.id}`,
+    [user.id],
+  );
 
   const currentCharacter =
     CHARACTERS.find(
@@ -58,7 +69,7 @@ export function ProfileCard({
     ) || CHARACTERS[0];
 
   const handleSaveDisplayName = async () => {
-    if (!editDisplayName.trim()) return;
+    if (!editDisplayName.trim() || !onUpdateDisplayName) return;
 
     setIsSaving(true);
     try {
@@ -70,6 +81,8 @@ export function ProfileCard({
   };
 
   const handleSaveCharacter = async () => {
+    if (!onUpdateCharacter) return;
+
     setIsSaving(true);
     try {
       await onUpdateCharacter(editCharacter);
@@ -85,6 +98,31 @@ export function ProfileCard({
       month: "short",
       year: "numeric",
     });
+  };
+
+  const handleCopyProfileLink = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(profileUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const handleShareProfile = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${user.displayName}'s Profile`,
+          text: `Check out ${user.displayName}'s profile on SpatialMeet`,
+          url: profileUrl,
+        });
+      } catch (err) {
+        // User cancelled or share failed
+        handleCopyProfileLink();
+      }
+    } else {
+      handleCopyProfileLink();
+    }
   };
 
   return (
@@ -105,13 +143,15 @@ export function ProfileCard({
                     size="lg"
                   />
                 </div>
-                <button
-                  onClick={() => setIsEditingCharacter(true)}
-                  className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-lg border-2 border-ui-border shadow-sm hover:bg-gray-50 transition-all"
-                  title="Change character"
-                >
-                  <Edit3 className="w-3.5 h-3.5 text-gray-600" />
-                </button>
+                {!readOnly && (
+                  <button
+                    onClick={() => setIsEditingCharacter(true)}
+                    className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-lg border-2 border-ui-border shadow-sm hover:bg-gray-50 transition-all"
+                    title="Change character"
+                  >
+                    <Edit3 className="w-3.5 h-3.5 text-gray-600" />
+                  </button>
+                )}
               </div>
               <p className="text-center mt-2 font-pixel text-xs text-gray-500">
                 {currentCharacter.name}
@@ -158,7 +198,7 @@ export function ProfileCard({
                   <h2 className="text-xl sm:text-2xl font-pixel text-gray-900 truncate">
                     {user.displayName}
                   </h2>
-                  {!user.isGuest && (
+                  {!readOnly && !user.isGuest && (
                     <button
                       onClick={() => setIsEditingName(true)}
                       className="p-1 hover:bg-gray-100 text-gray-400 hover:text-gray-600 rounded-lg transition-colors shrink-0"
@@ -171,6 +211,26 @@ export function ProfileCard({
                       GUEST
                     </span>
                   )}
+                  <div className="flex items-center gap-1 ml-auto">
+                    <button
+                      onClick={handleCopyProfileLink}
+                      className="p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
+                      title="Copy profile link"
+                    >
+                      {copied ? (
+                        <Check className="w-4 h-4 text-green-600" />
+                      ) : (
+                        <LinkIcon className="w-4 h-4" />
+                      )}
+                    </button>
+                    <button
+                      onClick={handleShareProfile}
+                      className="p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
+                      title="Share profile"
+                    >
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               )}
 

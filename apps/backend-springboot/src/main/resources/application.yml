@@ -27,7 +27,7 @@ room:
 
 # CORS Configuration
 cors:
-  allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:3001,http://10.161.254.53:3000,http://192.168.1.5:3000/}
+  allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:3001,https://spatialmeet-app.vercel.app}
 
 # Logging Configuration
 logging:

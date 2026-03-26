@@ -1,103 +1,42 @@
 # SpatialMeet
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-spatialmeet--app.vercel.app-007acc)](https://spatialmeet-app.vercel.app/)
+
+[![Backend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=backend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
+[![Frontend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=frontend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
+[![Health Check](https://img.shields.io/website?url=https://spatialmeet-app.vercel.app&label=health)](https://spatialmeet-app.vercel.app)
+
 A lightweight, top-down 2D virtual office experience for real-time presence and communication.
 
-## Project Structure
+## Overview
 
-This is a monorepo containing:
-
-- `/apps/frontend-nextjs`: Next.js frontend with Phaser for 2D rendering
-- `/apps/backend-springboot`: Spring Boot backend for WebSocket handling
-- `/docs`: Project documentation
-
-## Environment Variables
-
-### Backend (.env)
-
-Create a `.env` file in `apps/backend-springboot/` based on `.env.example`:
-
-```bash
-# Server Configuration
-PORT=8080
-
-# Database Configuration
-MONGODB_URI=mongodb://localhost:27017/spatialmeet
-
-# Security Configuration
-JWT_SECRET=your-256-bit-secret-key-here-make-it-long-enough-for-hs256
-ADMIN_PASSWORD=admin123
-
-# CORS Configuration
-CORS_ORIGINS=http://localhost:3000,http://localhost:3001
-```
-
-### Frontend (.env.local)
-
-Create a `.env.local` file in `apps/frontend-nextjs/` based on `.env.example`:
-
-```bash
-# Backend API Configuration
-NEXT_PUBLIC_BACKEND_URL=http://localhost:8080
-
-# WebSocket Configuration
-NEXT_PUBLIC_WS_URL=ws://localhost:8080
-
-# Application Configuration
-NEXT_PUBLIC_APP_NAME=SpatialMeet
-NEXT_PUBLIC_APP_VERSION=1.0.0
-
-# Feature Flags
-NEXT_PUBLIC_ENABLE_DEBUG=false
-NEXT_PUBLIC_ENABLE_ANALYTICS=false
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- Java 17+
-- Maven 3.6+
-- MongoDB (local or cloud instance)
-
-### Setup
-
-1. Clone the repository
-2. **Configure environment variables:**
-   - Backend: `cd apps/backend-springboot && ./setup-env.ps1` (Windows) or `./setup-env.sh` (Linux/Mac)
-   - Frontend: `cd apps/frontend-nextjs && ./setup-env.ps1` (Windows) or `./setup-env.sh` (Linux/Mac)
-3. Install frontend dependencies: `cd apps/frontend-nextjs && npm install`
-4. Run the backend: `cd apps/backend-springboot && mvn spring-boot:run`
-5. Run the frontend: `cd apps/frontend-nextjs && npm run dev`
-
-## Deployment
-
-### Frontend (Vercel)
-
-1. Connect your GitHub repo to Vercel
-2. Set environment variables:
-   - `NEXT_PUBLIC_BACKEND_URL`: Your Railway backend URL (e.g., `https://your-app.railway.app`)
-   - `NEXT_PUBLIC_WS_URL`: Your Railway WebSocket URL (e.g., `wss://your-app.railway.app`)
-   - `NEXT_PUBLIC_APP_NAME`: Your app name
-   - `NEXT_PUBLIC_APP_VERSION`: Your app version
-3. Deploy
-
-### Backend (Railway)
-
-1. Connect your GitHub repo to Railway
-2. Set the root directory to `apps/backend-springboot`
-3. Railway will auto-detect Java and deploy
-4. Set environment variables:
-   - `PORT`: (Railway sets this automatically)
-   - `MONGODB_URI`: Your MongoDB connection string
-   - `JWT_SECRET`: A secure random string (256-bit)
-   - `ADMIN_PASSWORD`: Admin password for basic auth
-   - `CORS_ORIGINS`: Comma-separated list of allowed origins
-5. Update CORS in `RoomController.java` to allow your Vercel domain
+SpatialMeet creates immersive virtual office environments where team members can interact naturally through proximity-based communication. Walk around pixel-art office spaces, engage in real-time conversations when near colleagues, and collaborate in shared digital rooms with persistent user profiles and customizable avatars.
 
 ## Features
 
-- Real-time multiplayer presence
-- Voice chat proximity system
-- Pixel art aesthetic
-- Room-based collaboration spaces
+- **Real-time Multiplayer Presence**: See colleagues moving around shared office maps in real-time with smooth animations
+- **Proximity-Based Communication**: Voice, video, and text chat automatically activate when users are nearby, with automatic call termination when moving apart
+- **Multiple Rooms**: Create public or private rooms with customizable settings, passwords, and media permissions
+- **Avatar Customization**: Choose from various character appearances, outfits, and accessories for personalized presence
+- **User Authentication**: Secure login system with persistent user profiles stored in MongoDB
+- **Pixel Art Aesthetic**: Nostalgic 2D graphics inspired by classic office environments with tile-based movement
+- **Cross-Platform Support**: Works on desktop and mobile browsers with WebRTC support for peer-to-peer communication
+
+## Project Structure
+
+This monorepo contains:
+
+- `apps/frontend-nextjs/`: Next.js frontend with Phaser.js for 2D game rendering, real-time interactions, and WebRTC handling
+- `apps/backend-springboot/`: Spring Boot backend handling WebSocket connections, user authentication, room management, and MongoDB persistence
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, Phaser.js, Tailwind CSS
+- **Backend**: Spring Boot, Java, WebSocket, MongoDB
+- **Real-time Communication**: WebRTC for peer-to-peer audio/video, WebSocket for signaling and game state
+- **Database**: MongoDB for user profiles, room metadata, and persistent data
+- **Deployment**: Vercel (frontend), Railway (backend)
+
+## Getting Started
+
+SpatialMeet requires Node.js 18+, Java 17+, Maven 3.6+, and MongoDB. The application consists of a Next.js frontend and Spring Boot backend that communicate via WebSocket and REST APIs for real-time multiplayer functionality.

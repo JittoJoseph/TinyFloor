@@ -153,7 +153,7 @@ class ApiClient {
     });
   }
 
-  async getPublicProfile(userId: string): Promise<any> {
+  async getPublicProfile(userId: string): Promise<unknown> {
     return this.fetch(`/api/users/profile/${encodeURIComponent(userId)}`);
   }
 
@@ -167,9 +167,11 @@ class ApiClient {
       name: string;
       users: string[];
       playerCount: number;
+      maxPlayers: number;
       isPublic: boolean;
       hasPassword: boolean;
       status: string;
+      lastActivityAt?: string;
     }[]
   > {
     return this.fetch(`/api/rooms?page=${page}&size=${size}`);
@@ -178,7 +180,17 @@ class ApiClient {
   async searchRooms(
     query: string,
   ): Promise<
-    { id: string; name: string; users: string[]; playerCount: number }[]
+    {
+      id: string;
+      name: string;
+      users: string[];
+      playerCount: number;
+      maxPlayers: number;
+      isPublic: boolean;
+      hasPassword: boolean;
+      status: string;
+      lastActivityAt?: string;
+    }[]
   > {
     return this.fetch(`/api/rooms/search?query=${encodeURIComponent(query)}`);
   }

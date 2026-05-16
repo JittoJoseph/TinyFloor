@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,9 @@ import java.util.stream.Collectors;
 public class RoomService {
     public static final String PUBLIC_ROOM_ID = "public-room";
     private static final String PUBLIC_ROOM_NAME = "System Lobby";
-    private static final List<RoomStatus> LISTABLE_PUBLIC_STATUSES = List.of(RoomStatus.ACTIVE, RoomStatus.INACTIVE);
+    private static final int MIN_VISIBLE_PUBLIC_ROOMS = 6;
+    private static final List<RoomStatus> LISTABLE_PUBLIC_STATUSES =
+            List.of(RoomStatus.ACTIVE, RoomStatus.INACTIVE, RoomStatus.ARCHIVED);
 
     private final RoomRepository roomRepository;
     private final PasswordEncoder passwordEncoder;
@@ -101,6 +104,28 @@ public class RoomService {
 
         if (orderedRooms.stream().noneMatch(this::isLobbyRoom)) {
             orderedRooms.add(0, lobby);
+        }
+
+        if (page == 0) {
+            List<Room> onlineRooms = orderedRooms.stream()
+                    .filter(this::isOnlineRoom)
+                    .collect(Collectors.toList());
+            List<Room> fallbackRooms = orderedRooms.stream()
+                    .filter(room -> !isOnlineRoom(room))
+                    .collect(Collectors.toList());
+
+            int targetCount = Math.max(MIN_VISIBLE_PUBLIC_ROOMS, onlineRooms.size());
+            List<Room> showcaseRooms = new ArrayList<>(onlineRooms);
+            for (Room room : fallbackRooms) {
+                if (showcaseRooms.size() >= targetCount) {
+                    break;
+                }
+                showcaseRooms.add(room);
+            }
+
+            return showcaseRooms.stream()
+                    .map(RoomResponse::new)
+                    .collect(Collectors.toList());
         }
 
         int fromIndex = page * size;
@@ -349,6 +374,10 @@ public class RoomService {
 
     private boolean isLobbyRoom(Room room) {
         return PUBLIC_ROOM_ID.equals(room.getId());
+    }
+
+    private boolean isOnlineRoom(Room room) {
+        return isLobbyRoom(room) || room.getStatus() == RoomStatus.ACTIVE;
     }
 
     private Comparator<Room> publicRoomComparator() {

@@ -27,7 +27,7 @@ public interface RoomRepository extends MongoRepository<Room, String> {
     List<Room> findByLastActivityAtBeforeAndStatus(Instant threshold, RoomStatus status);
     
     // Search rooms by name
-    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'isPublic': true, 'status': { $in: ['ACTIVE', 'INACTIVE'] } }")
+    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'isPublic': true, 'status': { $in: ['ACTIVE', 'INACTIVE', 'ARCHIVED'] } }")
     List<Room> searchByName(String namePattern);
     
     // Count active public rooms

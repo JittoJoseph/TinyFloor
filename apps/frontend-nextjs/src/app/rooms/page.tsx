@@ -11,6 +11,8 @@ import {
   Search,
   Lock,
   RefreshCw,
+  Crown,
+  ChevronRight,
 } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { UserMenu } from "@/components/auth/UserMenu";
@@ -28,6 +30,34 @@ interface Room {
   lastActivityAt?: string;
 }
 
+type Presence = "ONLINE" | "IDLE" | "OFFLINE";
+
+const SYSTEM_LOBBY_ID = "public-room";
+
+const normalizeRooms = (data: Room[]) =>
+  data.map((room) => ({
+    ...room,
+    playerCount: room.playerCount || room.users?.length || 0,
+    maxPlayers: room.maxPlayers || 20,
+  }));
+
+const getPresence = (room: Room): Presence => {
+  if (room.id === SYSTEM_LOBBY_ID) return "ONLINE";
+  if (room.status === "ACTIVE") return "ONLINE";
+  if (room.status === "INACTIVE") return "IDLE";
+  return "OFFLINE";
+};
+
+const getPresenceClasses = (presence: Presence) => {
+  if (presence === "ONLINE") {
+    return "bg-emerald-50 text-emerald-700 border-emerald-200";
+  }
+  if (presence === "IDLE") {
+    return "bg-amber-50 text-amber-700 border-amber-200";
+  }
+  return "bg-slate-100 text-slate-600 border-slate-200";
+};
+
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,13 +73,7 @@ export default function RoomsPage() {
     setLoading(true);
     try {
       const data = await apiClient.getRooms();
-      const normalizedRooms = data.map((room) => ({
-        ...room,
-        playerCount: room.playerCount || room.users?.length || 0,
-        maxPlayers: 20,
-      }));
-
-      setRooms(normalizedRooms);
+      setRooms(normalizeRooms(data));
     } catch (error) {
       console.error("Failed to fetch rooms:", error);
     } finally {
@@ -66,16 +90,7 @@ export default function RoomsPage() {
     setLoading(true);
     try {
       const data = await apiClient.searchRooms(searchQuery);
-      setRooms(
-        data.map((room) => ({
-          ...room,
-          playerCount: room.playerCount || room.users?.length || 0,
-          maxPlayers: 20,
-          isPublic: true,
-          hasPassword: false,
-          status: "ACTIVE",
-        }))
-      );
+      setRooms(normalizeRooms(data));
     } catch (error) {
       console.error("Failed to search rooms:", error);
     } finally {
@@ -101,7 +116,6 @@ export default function RoomsPage() {
   return (
     <div className="min-h-screen w-full p-4 md:p-8 font-sans">
       <div className="max-w-5xl mx-auto space-y-8">
-        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-ui-white border-2 border-ui-border rounded-2xl p-6 shadow-retro">
           <div className="flex items-center gap-4">
             <Link
@@ -132,7 +146,6 @@ export default function RoomsPage() {
           </div>
         </div>
 
-        {/* Search Bar */}
         <div className="flex gap-3">
           <div className="flex-1 relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -157,14 +170,11 @@ export default function RoomsPage() {
             title="Refresh"
           >
             <RefreshCw
-              className={`w-5 h-5 text-gray-600 ${
-                loading ? "animate-spin" : ""
-              }`}
+              className={`w-5 h-5 text-gray-600 ${loading ? "animate-spin" : ""}`}
             />
           </button>
         </div>
 
-        {/* Room List */}
         {loading ? (
           <div className="text-center py-20">
             <div className="inline-block w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin"></div>
@@ -178,7 +188,7 @@ export default function RoomsPage() {
               <Gamepad2 className="w-8 h-8 text-gray-400" />
             </div>
             <h3 className="font-pixel text-2xl text-gray-800 mb-2">
-              {searchQuery ? "No rooms found" : "No active rooms"}
+              {searchQuery ? "No rooms found" : "No rooms available"}
             </h3>
             <p className="text-gray-500 mb-6">
               {searchQuery
@@ -195,29 +205,42 @@ export default function RoomsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rooms.map((room) => {
+              const isSystemLobby = room.id === SYSTEM_LOBBY_ID;
               const isFull = room.playerCount >= (room.maxPlayers || 20);
+              const presence = getPresence(room);
+
               return (
                 <div
                   key={room.id}
-                  className={`group bg-white border-4 border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col gap-4 ${
-                    isFull ? "cursor-not-allowed opacity-60" : "cursor-pointer"
-                  }`}
+                  className={`group rounded-2xl border-2 p-6 min-h-[250px] flex flex-col transition-all duration-200 ${
+                    isSystemLobby
+                      ? "bg-ui-white border-brand-primary/25 shadow-retro-sm"
+                      : "bg-ui-white border-gray-200 shadow-retro-sm"
+                  } ${isFull ? "cursor-not-allowed opacity-70" : "cursor-pointer hover:-translate-y-1 hover:shadow-retro"}`}
                   onClick={() =>
                     !isFull && router.push(`/join?roomId=${room.id}`)
                   }
                 >
-                  {/* Decorative background circle */}
-                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-indigo-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  {/* Header with Icon and Status */}
-                  <div className="flex justify-between items-start relative z-10">
-                    <div className="w-16 h-16 bg-indigo-100 rounded-2xl border-4 border-indigo-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-inner">
-                      <span className="font-pixel text-3xl text-indigo-600">
-                        {room.name.charAt(0).toUpperCase()}
-                      </span>
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-12 h-12 rounded-xl border-2 border-gray-200 flex items-center justify-center ${
+                          isSystemLobby
+                            ? "bg-blue-50 text-brand-primary"
+                            : "bg-indigo-50 text-blue-700"
+                        }`}
+                      >
+                        {isSystemLobby ? (
+                          <Crown className="w-5 h-5" />
+                        ) : (
+                          <span className="font-pixel text-xl">
+                            {room.name.charAt(0).toUpperCase()}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2">
                       {room.hasPassword && (
                         <div
                           className="p-2 bg-amber-100 text-amber-700 rounded-xl border border-amber-200"
@@ -227,47 +250,52 @@ export default function RoomsPage() {
                         </div>
                       )}
                       <div
-                        className={`px-3 py-1.5 text-xs font-bold rounded-full flex items-center gap-1.5 border ${
-                          room.playerCount > 0
-                            ? "bg-green-100 text-green-700 border-green-200"
-                            : "bg-gray-100 text-gray-600 border-gray-200"
-                        }`}
+                        className={`px-3 py-1.5 text-xs font-bold rounded-full border flex items-center gap-1.5 ${getPresenceClasses(
+                          presence,
+                        )}`}
                       >
-                        <div
+                        <span
                           className={`w-2 h-2 rounded-full ${
-                            room.playerCount > 0
-                              ? "bg-green-500 animate-pulse"
-                              : "bg-gray-400"
+                            presence === "ONLINE"
+                              ? "bg-emerald-500 animate-pulse"
+                              : presence === "IDLE"
+                                ? "bg-amber-500"
+                                : "bg-slate-400"
                           }`}
-                        ></div>
-                        {room.playerCount > 0 ? "LIVE" : "IDLE"}
+                        />
+                        {presence}
                       </div>
                     </div>
                   </div>
 
-                  {/* Room Info */}
-                  <div className="relative z-10">
-                    <h3 className="font-pixel text-2xl text-gray-900 leading-tight group-hover:text-indigo-600 transition-colors truncate mb-1">
+                  <div className="mt-4">
+                    <h3 className="font-pixel text-2xl text-gray-900 leading-tight truncate">
                       {room.name}
                     </h3>
                     {room.lastActivityAt && (
-                      <p className="text-gray-400 text-xs font-medium">
-                        Active {getTimeAgo(room.lastActivityAt)}
+                      <p className="text-gray-500 text-sm font-medium mt-1">
+                        Last active {getTimeAgo(room.lastActivityAt)}
                       </p>
                     )}
                   </div>
 
-                  {/* Footer */}
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-gray-50 relative z-10">
-                    <div className="flex items-center gap-2 text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg">
+                  <div className="mt-auto pt-5 border-t border-gray-200 flex items-center justify-between">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-600">
                       <Users className="w-4 h-4" />
-                      <span className="text-sm font-bold">
+                      <span className="text-sm font-semibold">
                         {room.playerCount}/{room.maxPlayers || 20}
                       </span>
                     </div>
 
-                    <span className="text-sm font-bold text-indigo-500 bg-indigo-50 px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                      {isFull ? "Room Full" : "Join Room →"}
+                    <span
+                      className={`inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-lg transition-all ${
+                        isFull
+                          ? "text-gray-500 bg-gray-100"
+                          : "text-brand-primary bg-brand-primary/10 group-hover:bg-brand-primary/20"
+                      }`}
+                    >
+                      {isFull ? "Room Full" : "Join"}
+                      {!isFull && <ChevronRight className="w-4 h-4" />}
                     </span>
                   </div>
                 </div>
@@ -277,7 +305,6 @@ export default function RoomsPage() {
         )}
       </div>
 
-      {/* Auth Modal */}
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}

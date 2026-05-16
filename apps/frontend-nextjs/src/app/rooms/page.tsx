@@ -10,12 +10,10 @@ import {
   ArrowLeft,
   Search,
   Lock,
-  Globe,
   RefreshCw,
 } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { UserMenu } from "@/components/auth/UserMenu";
-import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
 
 interface Room {
@@ -36,7 +34,6 @@ export default function RoomsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     fetchRooms();
@@ -46,13 +43,13 @@ export default function RoomsPage() {
     setLoading(true);
     try {
       const data = await apiClient.getRooms();
-      setRooms(
-        data.map((room) => ({
-          ...room,
-          playerCount: room.playerCount || room.users?.length || 0,
-          maxPlayers: 20,
-        }))
-      );
+      const normalizedRooms = data.map((room) => ({
+        ...room,
+        playerCount: room.playerCount || room.users?.length || 0,
+        maxPlayers: 20,
+      }));
+
+      setRooms(normalizedRooms);
     } catch (error) {
       console.error("Failed to fetch rooms:", error);
     } finally {

@@ -2,8 +2,6 @@ package com.spatialmeet.repository;
 
 import com.spatialmeet.model.Room;
 import com.spatialmeet.model.RoomStatus;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,10 +13,9 @@ import java.util.Optional;
 @Repository
 public interface RoomRepository extends MongoRepository<Room, String> {
     
-    // Find public active rooms
     List<Room> findByIsPublicTrueAndStatusOrderByLastActivityAtDesc(RoomStatus status);
     
-    Page<Room> findByIsPublicTrueAndStatusOrderByLastActivityAtDesc(RoomStatus status, Pageable pageable);
+    List<Room> findByIsPublicTrueAndStatusInOrderByLastActivityAtDesc(List<RoomStatus> statuses);
     
     // Find rooms by owner
     List<Room> findByOwnerId(String ownerId);
@@ -30,7 +27,7 @@ public interface RoomRepository extends MongoRepository<Room, String> {
     List<Room> findByLastActivityAtBeforeAndStatus(Instant threshold, RoomStatus status);
     
     // Search rooms by name
-    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'isPublic': true, 'status': 'ACTIVE' }")
+    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'isPublic': true, 'status': { $in: ['ACTIVE', 'INACTIVE'] } }")
     List<Room> searchByName(String namePattern);
     
     // Count active public rooms

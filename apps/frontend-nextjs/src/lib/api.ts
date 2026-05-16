@@ -153,7 +153,23 @@ class ApiClient {
     });
   }
 
-  async getPublicProfile(userId: string): Promise<unknown> {
+  async getPublicProfile(userId: string): Promise<{
+    id: string;
+    username: string;
+    displayName: string;
+    isGuest: boolean;
+    avatarPreferences?: { characterName?: string };
+    createdAt: string;
+    createdRoomsCount: number;
+    joinedRoomsCount: number;
+    recentCollaborators: {
+      id: string;
+      username: string;
+      displayName: string;
+      characterName: string;
+    }[];
+    publicRooms: unknown[];
+  }> {
     return this.fetch(`/api/users/profile/${encodeURIComponent(userId)}`);
   }
 

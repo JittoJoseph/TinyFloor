@@ -255,6 +255,7 @@ public class RoomService {
             return false;
         }
 
+        room.setPublic(false);
         room.setStatus(RoomStatus.DELETED);
         roomRepository.save(room);
         activeRoomsCache.remove(roomId);
@@ -274,7 +275,7 @@ public class RoomService {
             if (isLobbyRoom(room)) {
                 continue;
             }
-            room.setStatus(RoomStatus.DELETED);
+            room.setStatus(RoomStatus.ARCHIVED);
             roomRepository.save(room);
             activeRoomsCache.remove(room.getId());
         }

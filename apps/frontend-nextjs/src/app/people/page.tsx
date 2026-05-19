@@ -95,21 +95,24 @@ export default function PeoplePage() {
           </div>
 
           <div className="mt-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="w-full lg:w-auto">
-              <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-2xl p-2 w-full lg:w-auto">
+            <div className="w-full lg:max-w-2xl">
+              <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-2xl p-2 w-full">
                 <Link
                   href="/rooms"
-                  className="px-6 py-3 rounded-xl font-pixel text-base sm:text-lg text-gray-500 hover:text-gray-700 text-center"
+                  className="px-8 py-4 rounded-xl font-pixel text-base sm:text-lg md:text-xl text-gray-500 hover:text-gray-700 text-center"
                 >
                   Rooms
                 </Link>
                 <Link
                   href="/people"
-                  className="px-6 py-3 rounded-xl font-pixel text-base sm:text-lg bg-white text-gray-900 shadow-sm text-center"
+                  className="px-8 py-4 rounded-xl font-pixel text-base sm:text-lg md:text-xl bg-white text-gray-900 shadow-sm text-center"
                 >
                   People
                 </Link>
               </div>
+              <p className="mt-2 text-xs sm:text-sm text-gray-400 text-center lg:text-left">
+                Explore both tabs to discover spaces and people.
+              </p>
             </div>
             <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
               <Users className="w-4 h-4 text-gray-400" />
@@ -119,16 +122,23 @@ export default function PeoplePage() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-col sm:flex-row gap-3">
-            <div className="flex-1 relative">
+          <div className="mt-4">
+            <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search people by name..."
-                className="w-full pl-12 pr-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none transition-colors font-medium"
+                className="w-full pl-12 pr-14 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none transition-colors font-medium"
               />
+              <button
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 border border-gray-200 transition-colors"
+                title="Search"
+                type="button"
+              >
+                <Search className="w-4 h-4 text-gray-600" />
+              </button>
             </div>
           </div>
         </div>

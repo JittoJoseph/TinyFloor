@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/rooms/join/**").permitAll()
                 .requestMatchers("/api/rooms/share/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/users/profile/**").permitAll() // Allow public profile viewing
+                .requestMatchers(HttpMethod.GET, "/api/users/public").permitAll()
                 // Protected endpoints
                 .requestMatchers("/api/users/**").authenticated()
                 .requestMatchers(HttpMethod.PUT, "/api/rooms/**").authenticated()

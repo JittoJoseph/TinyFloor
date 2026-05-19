@@ -5,13 +5,15 @@ import com.spatialmeet.dto.RoomResponse;
 import com.spatialmeet.model.Room;
 import com.spatialmeet.model.RoomStatus;
 import com.spatialmeet.repository.RoomRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,6 @@ import java.util.stream.Collectors;
 public class RoomService {
     public static final String PUBLIC_ROOM_ID = "public-room";
     private static final String PUBLIC_ROOM_NAME = "System Lobby";
-    private static final int MIN_VISIBLE_PUBLIC_ROOMS = 6;
     private static final List<RoomStatus> LISTABLE_PUBLIC_STATUSES =
             List.of(RoomStatus.ACTIVE, RoomStatus.INACTIVE, RoomStatus.ARCHIVED);
 
@@ -95,47 +96,13 @@ public class RoomService {
             return List.of();
         }
 
-        Room lobby = ensurePublicLobbyExists();
-        List<Room> orderedRooms = roomRepository
-                .findByIsPublicTrueAndStatusInOrderByLastActivityAtDesc(LISTABLE_PUBLIC_STATUSES)
-                .stream()
-                .sorted(publicRoomComparator())
-                .collect(Collectors.toList());
+        ensurePublicLobbyExists();
+        Page<Room> roomsPage = roomRepository.findByIsPublicTrueAndStatusIn(
+                LISTABLE_PUBLIC_STATUSES,
+                PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "lastActivityAt"))
+        );
 
-        if (orderedRooms.stream().noneMatch(this::isLobbyRoom)) {
-            orderedRooms.add(0, lobby);
-        }
-
-        if (page == 0) {
-            List<Room> onlineRooms = orderedRooms.stream()
-                    .filter(this::isOnlineRoom)
-                    .collect(Collectors.toList());
-            List<Room> fallbackRooms = orderedRooms.stream()
-                    .filter(room -> !isOnlineRoom(room))
-                    .collect(Collectors.toList());
-
-            int targetCount = Math.max(MIN_VISIBLE_PUBLIC_ROOMS, onlineRooms.size());
-            List<Room> showcaseRooms = new ArrayList<>(onlineRooms);
-            for (Room room : fallbackRooms) {
-                if (showcaseRooms.size() >= targetCount) {
-                    break;
-                }
-                showcaseRooms.add(room);
-            }
-
-            return showcaseRooms.stream()
-                    .map(RoomResponse::new)
-                    .collect(Collectors.toList());
-        }
-
-        int fromIndex = page * size;
-        if (fromIndex >= orderedRooms.size()) {
-            return List.of();
-        }
-
-        int toIndex = Math.min(fromIndex + size, orderedRooms.size());
-        return orderedRooms.subList(fromIndex, toIndex)
-                .stream()
+        return roomsPage.getContent().stream()
                 .map(RoomResponse::new)
                 .collect(Collectors.toList());
     }
@@ -375,10 +342,6 @@ public class RoomService {
 
     private boolean isLobbyRoom(Room room) {
         return PUBLIC_ROOM_ID.equals(room.getId());
-    }
-
-    private boolean isOnlineRoom(Room room) {
-        return isLobbyRoom(room) || room.getStatus() == RoomStatus.ACTIVE;
     }
 
     private Comparator<Room> publicRoomComparator() {

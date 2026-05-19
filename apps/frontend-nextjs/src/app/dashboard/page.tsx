@@ -14,7 +14,6 @@ import {
   ActivityFeed,
   RecentCollaborators,
   StatsCard,
-  CharacterPreview,
   type Room,
   type Collaborator,
 } from "@/components/dashboard";
@@ -29,7 +28,9 @@ interface PublicProfile {
   createdRoomsCount: number;
   joinedRoomsCount: number;
   recentCollaborators: Collaborator[];
-  publicRooms: any[];
+  createdRooms: Room[];
+  joinedRooms: Room[];
+  publicRooms: unknown[];
 }
 
 function DashboardContent() {
@@ -45,7 +46,7 @@ function DashboardContent() {
   const { showToast } = useToast();
 
   const targetUserId = searchParams.get("user");
-  const isViewingOther = targetUserId && targetUserId !== user?.id;
+  const isViewingOther = !!targetUserId && targetUserId !== user?.id;
 
   const [createdRooms, setCreatedRooms] = useState<Room[]>([]);
   const [joinedRooms, setJoinedRooms] = useState<Room[]>([]);
@@ -76,19 +77,37 @@ function DashboardContent() {
     }
   }, [authLoading, isAuthenticated, user, isViewingOther, router]);
 
+  useEffect(() => {
+    if (!isViewingOther) {
+      setPublicProfile(null);
+      setProfileError(null);
+    }
+  }, [isViewingOther]);
+
   // Fetch public profile if viewing another user
   useEffect(() => {
     async function fetchPublicProfile() {
       if (!targetUserId) return;
 
       setLoadingRooms(true);
+      setPublicProfile(null);
+      setCreatedRooms([]);
+      setJoinedRooms([]);
+      setCollaborators([]);
       try {
         const profile = await apiClient.getPublicProfile(targetUserId);
         setPublicProfile(profile);
+        const created = profile.createdRooms || [];
+        const joined = profile.joinedRooms || [];
+        const createdIds = new Set(created.map((room) => room.id));
+        setCreatedRooms(created);
+        setJoinedRooms(joined.filter((room) => !createdIds.has(room.id)));
         setCollaborators(profile.recentCollaborators || []);
         setProfileError(null);
-      } catch (error: any) {
-        setProfileError(error.message || "User not found");
+      } catch (error: unknown) {
+        const message =
+          error instanceof Error ? error.message : "User not found";
+        setProfileError(message);
       } finally {
         setLoadingRooms(false);
       }
@@ -193,103 +212,38 @@ function DashboardContent() {
     );
   }
 
-  // If viewing another user's profile
-  if (isViewingOther) {
-    if (profileError) {
-      return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gray-50/50">
-          <div className="text-center max-w-md">
-            <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro-lg p-8">
-              <div className="w-20 h-20 bg-red-50 rounded-2xl border-2 border-red-200 flex items-center justify-center mx-auto mb-4">
-                <Users className="w-10 h-10 text-red-400" />
-              </div>
-              <h2 className="font-pixel text-2xl text-gray-900 mb-2">
-                User Not Found
-              </h2>
-              <p className="text-gray-600 mb-6">{profileError}</p>
-              <Link
-                href="/rooms"
-                className="inline-block bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all"
-              >
-                Back to Rooms
-              </Link>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    if (!publicProfile) {
-      return null;
-    }
-
-    // Render public profile view
+  if (profileError) {
     return (
-      <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-gray-50/50">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="flex items-center gap-3 mb-6">
+      <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gray-50/50">
+        <div className="text-center max-w-md">
+          <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro-lg p-8">
+            <div className="w-20 h-20 bg-red-50 rounded-2xl border-2 border-red-200 flex items-center justify-center mx-auto mb-4">
+              <Users className="w-10 h-10 text-red-400" />
+            </div>
+            <h2 className="font-pixel text-2xl text-gray-900 mb-2">
+              User Not Found
+            </h2>
+            <p className="text-gray-600 mb-6">{profileError}</p>
             <Link
               href="/rooms"
-              className="p-2 bg-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all shrink-0"
+              className="inline-block bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-700" />
+              Back to Rooms
             </Link>
-            <div className="min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
-                {publicProfile.displayName}
-              </h1>
-              <p className="text-gray-500 text-sm">@{publicProfile.username}</p>
-            </div>
-          </div>
-
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-min">
-            {/* Profile Card - Using same component as own profile but read-only */}
-            <div className="md:col-span-2 lg:col-span-2">
-              <ProfileCard
-                user={{
-                  id: publicProfile.id,
-                  username: publicProfile.username,
-                  displayName: publicProfile.displayName,
-                  isGuest: publicProfile.isGuest,
-                  avatarPreferences: publicProfile.avatarPreferences,
-                  createdAt: publicProfile.createdAt,
-                }}
-                createdRoomsCount={publicProfile.createdRoomsCount}
-                joinedRoomsCount={publicProfile.joinedRoomsCount}
-                readOnly={true}
-              />
-            </div>
-
-            {/* Stats Card */}
-            <div className="md:col-span-1">
-              <StatsCard
-                totalRooms={
-                  publicProfile.createdRoomsCount +
-                  publicProfile.joinedRoomsCount
-                }
-                activeRooms={0}
-                totalCollaborators={publicProfile.recentCollaborators.length}
-              />
-            </div>
-
-            {/* Recent Collaborators */}
-            <div className="md:col-span-1">
-              <RecentCollaborators
-                collaborators={publicProfile.recentCollaborators}
-                isLoading={false}
-              />
-            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  if (!isAuthenticated || !user) {
+  const profileUser = isViewingOther ? publicProfile : user;
+  if (!profileUser) {
     return null;
   }
+
+  const activeRoomCount = [...createdRooms, ...joinedRooms].filter(
+    (room) => room.playerCount > 0,
+  ).length;
 
   return (
     <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-gray-50/50">
@@ -306,20 +260,26 @@ function DashboardContent() {
             </Link>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
-                Dashboard
+                {isViewingOther ? profileUser.displayName : "Dashboard"}
               </h1>
-              <p className="text-gray-500 text-sm hidden sm:block">
-                Manage your profile & rooms
-              </p>
+              {isViewingOther ? (
+                <p className="text-gray-500 text-sm">
+                  @{profileUser.username}
+                </p>
+              ) : (
+                <p className="text-gray-500 text-sm hidden sm:block">
+                  Manage your profile & rooms
+                </p>
+              )}
             </div>
           </div>
           {/* Quick stat badges */}
           <div className="hidden sm:flex items-center gap-2">
-            {createdRooms.filter((r) => r.playerCount > 0).length > 0 && (
+            {activeRoomCount > 0 && (
               <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 rounded-lg border border-emerald-100">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                 <span className="text-xs font-medium text-emerald-700">
-                  {createdRooms.filter((r) => r.playerCount > 0).length} active
+                  {activeRoomCount} active
                 </span>
               </div>
             )}
@@ -331,11 +291,14 @@ function DashboardContent() {
           {/* Profile Card - Spans 2 columns on large screens */}
           <div className="md:col-span-2 lg:col-span-2">
             <ProfileCard
-              user={user}
+              user={profileUser}
               createdRoomsCount={createdRooms.length}
               joinedRoomsCount={joinedRooms.length}
-              onUpdateDisplayName={handleUpdateDisplayName}
-              onUpdateCharacter={handleUpdateCharacter}
+              onUpdateDisplayName={
+                isViewingOther ? undefined : handleUpdateDisplayName
+              }
+              onUpdateCharacter={isViewingOther ? undefined : handleUpdateCharacter}
+              readOnly={isViewingOther}
             />
           </div>
 
@@ -343,18 +306,18 @@ function DashboardContent() {
           <div className="md:col-span-1">
             <StatsCard
               totalRooms={createdRooms.length + joinedRooms.length}
-              activeRooms={
-                [...createdRooms, ...joinedRooms].filter(
-                  (r) => r.playerCount > 0,
-                ).length
-              }
+              activeRooms={activeRoomCount}
               totalCollaborators={collaborators.length}
             />
           </div>
 
           {/* Quick Actions */}
           <div className="md:col-span-1">
-            <QuickActions onLogout={handleLogout} isGuest={user.isGuest} />
+            <QuickActions
+              onLogout={isAuthenticated ? handleLogout : undefined}
+              isGuest={user?.isGuest}
+              isAuthenticated={isAuthenticated}
+            />
           </div>
 
           {/* Activity Feed */}

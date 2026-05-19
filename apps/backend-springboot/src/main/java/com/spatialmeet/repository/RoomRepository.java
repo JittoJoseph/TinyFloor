@@ -2,6 +2,8 @@ package com.spatialmeet.repository;
 
 import com.spatialmeet.model.Room;
 import com.spatialmeet.model.RoomStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,8 +16,10 @@ import java.util.Optional;
 public interface RoomRepository extends MongoRepository<Room, String> {
     
     List<Room> findByIsPublicTrueAndStatusOrderByLastActivityAtDesc(RoomStatus status);
-    
+
     List<Room> findByIsPublicTrueAndStatusInOrderByLastActivityAtDesc(List<RoomStatus> statuses);
+
+    Page<Room> findByIsPublicTrueAndStatusIn(List<RoomStatus> statuses, Pageable pageable);
     
     // Find rooms by owner
     List<Room> findByOwnerId(String ownerId);

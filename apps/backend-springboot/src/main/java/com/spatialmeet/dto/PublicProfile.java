@@ -13,6 +13,8 @@ public class PublicProfile {
     private int createdRoomsCount;
     private int joinedRoomsCount;
     private List<CollaboratorInfo> recentCollaborators;
+    private List<RoomResponse> createdRooms;
+    private List<RoomResponse> joinedRooms;
     private List<PublicRoomInfo> publicRooms;
 
     public PublicProfile() {}
@@ -21,6 +23,8 @@ public class PublicProfile {
                          AvatarPreferences avatarPreferences, String createdAt,
                          int createdRoomsCount, int joinedRoomsCount,
                          List<CollaboratorInfo> recentCollaborators,
+                         List<RoomResponse> createdRooms,
+                         List<RoomResponse> joinedRooms,
                          List<PublicRoomInfo> publicRooms) {
         this.id = id;
         this.username = username;
@@ -31,6 +35,8 @@ public class PublicProfile {
         this.createdRoomsCount = createdRoomsCount;
         this.joinedRoomsCount = joinedRoomsCount;
         this.recentCollaborators = recentCollaborators;
+        this.createdRooms = createdRooms;
+        this.joinedRooms = joinedRooms;
         this.publicRooms = publicRooms;
     }
 
@@ -61,6 +67,12 @@ public class PublicProfile {
 
     public List<CollaboratorInfo> getRecentCollaborators() { return recentCollaborators; }
     public void setRecentCollaborators(List<CollaboratorInfo> recentCollaborators) { this.recentCollaborators = recentCollaborators; }
+
+    public List<RoomResponse> getCreatedRooms() { return createdRooms; }
+    public void setCreatedRooms(List<RoomResponse> createdRooms) { this.createdRooms = createdRooms; }
+
+    public List<RoomResponse> getJoinedRooms() { return joinedRooms; }
+    public void setJoinedRooms(List<RoomResponse> joinedRooms) { this.joinedRooms = joinedRooms; }
 
     public List<PublicRoomInfo> getPublicRooms() { return publicRooms; }
     public void setPublicRooms(List<PublicRoomInfo> publicRooms) { this.publicRooms = publicRooms; }

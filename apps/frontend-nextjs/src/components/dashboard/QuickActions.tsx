@@ -6,9 +6,16 @@ import { Plus, Search, LogOut, Shield, Sparkles } from "lucide-react";
 interface QuickActionsProps {
   onLogout?: () => void;
   isGuest?: boolean;
+  isAuthenticated?: boolean;
 }
 
-export function QuickActions({ onLogout, isGuest }: QuickActionsProps) {
+export function QuickActions({
+  onLogout,
+  isGuest,
+  isAuthenticated,
+}: QuickActionsProps) {
+  const showCreateAccount = !isAuthenticated || isGuest;
+
   return (
     <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center gap-2 mb-3">
@@ -44,9 +51,9 @@ export function QuickActions({ onLogout, isGuest }: QuickActionsProps) {
         <div className="h-px bg-gray-100 my-1" />
 
         {/* Account Action */}
-        {isGuest ? (
+        {showCreateAccount ? (
           <Link
-            href="/rooms"
+            href="/auth?redirect=/dashboard"
             className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-amber-50 border border-gray-100 hover:border-amber-100 transition-colors"
           >
             <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-amber-50 border border-amber-200 shrink-0">

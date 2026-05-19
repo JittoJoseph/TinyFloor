@@ -65,6 +65,14 @@ export interface AuthResponse {
   message?: string;
 }
 
+export interface PublicUser {
+  id: string;
+  username: string;
+  displayName: string;
+  characterName: string;
+  isGuest: boolean;
+}
+
 export interface Room {
   id: string;
   name: string;

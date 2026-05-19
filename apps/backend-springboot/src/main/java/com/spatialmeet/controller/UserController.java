@@ -3,6 +3,7 @@ package com.spatialmeet.controller;
 import com.spatialmeet.dto.UserResponse;
 import com.spatialmeet.dto.DashboardSummary;
 import com.spatialmeet.dto.PublicProfile;
+import com.spatialmeet.dto.PublicUserSummary;
 import com.spatialmeet.model.AvatarPreferences;
 import com.spatialmeet.model.User;
 import com.spatialmeet.model.UserStatus;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -69,5 +72,12 @@ public class UserController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/public")
+    public ResponseEntity<List<PublicUserSummary>> getPublicUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "60") int size) {
+        return ResponseEntity.ok(userService.getPublicUsers(page, size));
     }
 }

@@ -61,29 +61,48 @@ const getPresenceClasses = (presence: Presence) => {
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
   const router = useRouter();
+  const pageSize = 6;
 
   useEffect(() => {
-    fetchRooms();
+    fetchRooms(0, false);
   }, []);
 
-  const fetchRooms = async () => {
-    setLoading(true);
+  const fetchRooms = async (pageToLoad = 0, append = false) => {
+    if (append) {
+      setLoadingMore(true);
+    } else {
+      setLoading(true);
+    }
     try {
-      const data = await apiClient.getRooms();
-      setRooms(normalizeRooms(data));
+      const data = await apiClient.getRooms(pageToLoad, pageSize);
+      const normalized = normalizeRooms(data);
+      setRooms((prev) => (append ? [...prev, ...normalized] : normalized));
+      setPage(pageToLoad);
+      setHasMore(normalized.length === pageSize);
+      if (!append) {
+        setIsSearching(false);
+      }
     } catch (error) {
       console.error("Failed to fetch rooms:", error);
     } finally {
-      setLoading(false);
+      if (append) {
+        setLoadingMore(false);
+      } else {
+        setLoading(false);
+      }
     }
   };
 
   const handleSearch = async () => {
     if (!searchQuery.trim()) {
-      fetchRooms();
+      fetchRooms(0, false);
       return;
     }
 
@@ -91,11 +110,20 @@ export default function RoomsPage() {
     try {
       const data = await apiClient.searchRooms(searchQuery);
       setRooms(normalizeRooms(data));
+      setIsSearching(true);
+      setHasMore(false);
+      setPage(0);
     } catch (error) {
       console.error("Failed to search rooms:", error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleShowMore = async () => {
+    if (loadingMore || loading || !hasMore) return;
+    const nextPage = page + 1;
+    await fetchRooms(nextPage, true);
   };
 
   const getTimeAgo = (dateString?: string) => {
@@ -115,64 +143,93 @@ export default function RoomsPage() {
 
   return (
     <div className="min-h-screen w-full p-4 md:p-8 font-sans">
-      <div className="max-w-5xl mx-auto space-y-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-ui-white border-2 border-ui-border rounded-2xl p-6 shadow-retro">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors border-2 border-transparent hover:border-ui-border"
-            >
-              <ArrowLeft className="w-6 h-6 text-gray-700" />
-            </Link>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-pixel text-gray-900 leading-none">
-                Virtual Offices
-              </h1>
-              <p className="text-gray-500 font-medium mt-1">
-                Join a space to start collaborating
-              </p>
+      <div className="max-w-5xl mx-auto space-y-6">
+        <div className="bg-gradient-to-br from-white via-white to-indigo-50/60 border-2 border-ui-border rounded-3xl p-6 shadow-retro">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <Link
+                href="/"
+                className="p-2 bg-white/80 hover:bg-white rounded-xl transition-colors border-2 border-ui-border shadow-retro-sm"
+              >
+                <ArrowLeft className="w-6 h-6 text-gray-700" />
+              </Link>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-3xl md:text-4xl font-pixel text-gray-900 leading-none">
+                    Community Directory
+                  </h1>
+                </div>
+                <p className="text-gray-500 font-medium mt-1">
+                  Browse rooms or meet the people inside
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 w-full lg:w-auto">
+              <UserMenu onLoginClick={() => setShowAuthModal(true)} />
+              <Link
+                href="/create-room"
+                className="bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg md:text-xl px-4 md:px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all flex items-center gap-2"
+              >
+                <Plus className="w-5 h-5" />
+                <span className="hidden sm:inline">Create Room</span>
+              </Link>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <UserMenu onLoginClick={() => setShowAuthModal(true)} />
-            <Link
-              href="/create-room"
-              className="bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg md:text-xl px-4 md:px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all flex items-center gap-2"
-            >
-              <Plus className="w-5 h-5" />
-              <span className="hidden sm:inline">Create Room</span>
-            </Link>
+          <div className="mt-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="w-full lg:w-auto">
+              <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-2xl p-2 w-full lg:w-auto">
+                <Link
+                  href="/rooms"
+                  className="px-6 py-3 rounded-xl font-pixel text-base sm:text-lg bg-white text-gray-900 shadow-sm text-center"
+                >
+                  Rooms
+                </Link>
+                <Link
+                  href="/people"
+                  className="px-6 py-3 rounded-xl font-pixel text-base sm:text-lg text-gray-500 hover:text-gray-700 text-center"
+                >
+                  People
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
+              <Users className="w-4 h-4 text-gray-400" />
+              <span>
+                {loading ? "Updating..." : `${rooms.length} rooms live`}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex gap-3">
-          <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder="Search rooms by name..."
-              className="w-full pl-12 pr-4 py-3 bg-ui-white border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none transition-colors font-medium"
-            />
+          <div className="mt-4 flex flex-col sm:flex-row gap-3">
+            <div className="flex-1 relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                placeholder="Search rooms by name..."
+                className="w-full pl-12 pr-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none transition-colors font-medium"
+              />
+            </div>
+            <button
+              onClick={handleSearch}
+              className="px-4 py-3 bg-white border-2 border-gray-200 rounded-xl hover:border-brand-primary transition-colors"
+            >
+              <Search className="w-5 h-5 text-gray-600" />
+            </button>
+            <button
+              onClick={() => fetchRooms(0, false)}
+              className="px-4 py-3 bg-white border-2 border-gray-200 rounded-xl hover:border-brand-primary transition-colors"
+              title="Refresh"
+            >
+              <RefreshCw
+                className={`w-5 h-5 text-gray-600 ${loading ? "animate-spin" : ""}`}
+              />
+            </button>
           </div>
-          <button
-            onClick={handleSearch}
-            className="px-4 py-3 bg-ui-white border-2 border-gray-200 rounded-xl hover:border-brand-primary transition-colors"
-          >
-            <Search className="w-5 h-5 text-gray-600" />
-          </button>
-          <button
-            onClick={fetchRooms}
-            className="px-4 py-3 bg-ui-white border-2 border-gray-200 rounded-xl hover:border-brand-primary transition-colors"
-            title="Refresh"
-          >
-            <RefreshCw
-              className={`w-5 h-5 text-gray-600 ${loading ? "animate-spin" : ""}`}
-            />
-          </button>
         </div>
 
         {loading ? (
@@ -203,8 +260,9 @@ export default function RoomsPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rooms.map((room) => {
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {rooms.map((room) => {
               const isSystemLobby = room.id === SYSTEM_LOBBY_ID;
               const isFull = room.playerCount >= (room.maxPlayers || 20);
               const presence = getPresence(room);
@@ -301,6 +359,18 @@ export default function RoomsPage() {
                 </div>
               );
             })}
+            </div>
+            {!isSearching && hasMore && (
+              <div className="flex justify-center">
+                <button
+                  onClick={handleShowMore}
+                  disabled={loadingMore}
+                  className="px-6 py-3 bg-ui-white border-2 border-ui-border rounded-xl shadow-retro-sm hover:-translate-y-0.5 hover:shadow-retro transition-all font-pixel text-lg text-gray-800 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {loadingMore ? "Loading more..." : "Show more"}
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -2,29 +2,42 @@ package com.spatialmeet.service;
 
 import com.spatialmeet.dto.DashboardSummary;
 import com.spatialmeet.dto.PublicProfile;
+import com.spatialmeet.dto.PublicUserSummary;
+import com.spatialmeet.dto.RoomResponse;
 import com.spatialmeet.dto.UserResponse;
 import com.spatialmeet.model.AvatarPreferences;
+import com.spatialmeet.model.Room;
+import com.spatialmeet.model.RoomStatus;
 import com.spatialmeet.model.User;
 import com.spatialmeet.model.UserStatus;
+import com.spatialmeet.repository.RoomRepository;
 import com.spatialmeet.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService {
     
     private final UserRepository userRepository;
+    private final RoomRepository roomRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoomRepository roomRepository) {
         this.userRepository = userRepository;
+        this.roomRepository = roomRepository;
     }
 
     public Optional<User> findById(String id) {
@@ -49,12 +62,6 @@ public class UserService {
 
     public User save(User user) {
         return userRepository.save(user);
-    }
-
-    public UserResponse getUserProfile(String userId) {
-        return userRepository.findById(userId)
-                .map(UserResponse::new)
-                .orElse(null);
     }
 
     public UserResponse updateProfile(String userId, String displayName, AvatarPreferences avatarPreferences) {
@@ -134,38 +141,16 @@ public class UserService {
         int joinedRoomsCount = user.getJoinedRooms() != null ? user.getJoinedRooms().size() : 0;
 
         // Get recent collaborators - resolve user details
-        List<DashboardSummary.CollaboratorInfo> collaborators = new ArrayList<>();
-        
-        if (user.getRecentCollaborators() != null && !user.getRecentCollaborators().isEmpty()) {
-            // Get collaborator user IDs (already sorted by lastSeenAt in User model)
-            List<String> collaboratorIds = user.getRecentCollaborators().stream()
-                    .map(User.RecentCollaborator::getUserId)
-                    .limit(10) // Limit to 10 for dashboard
-                    .collect(Collectors.toList());
-            
-            // Batch fetch collaborator details
-            List<User> collaboratorUsers = userRepository.findAllById(collaboratorIds);
-            
-            // Create a map for quick lookup
-            var userMap = collaboratorUsers.stream()
-                    .collect(Collectors.toMap(User::getId, u -> u));
-            
-            // Build collaborator info in order, preserving the sort order
-            for (String collabId : collaboratorIds) {
-                User collabUser = userMap.get(collabId);
-                if (collabUser != null) {
-                    String characterName = collabUser.getAvatarPreferences() != null 
-                            ? collabUser.getAvatarPreferences().getCharacterName() 
-                            : "Adam";
-                    collaborators.add(new DashboardSummary.CollaboratorInfo(
-                            collabUser.getId(),
-                            collabUser.getUsername(),
-                            collabUser.getDisplayName(),
-                            characterName
-                    ));
-                }
-            }
-        }
+        List<User> recentCollaborators = getRecentCollaboratorUsers(user, 10);
+        List<DashboardSummary.CollaboratorInfo> collaborators = recentCollaborators
+                .stream()
+                .map(collabUser -> new DashboardSummary.CollaboratorInfo(
+                        collabUser.getId(),
+                        collabUser.getUsername(),
+                        collabUser.getDisplayName(),
+                        resolveCharacterName(collabUser)
+                ))
+                .collect(Collectors.toList());
 
         return new DashboardSummary(
             user.getDisplayName(),
@@ -226,35 +211,41 @@ public class UserService {
         int joinedRoomsCount = user.getJoinedRooms() != null ? user.getJoinedRooms().size() : 0;
 
         // Get recent collaborators
-        List<PublicProfile.CollaboratorInfo> collaborators = new ArrayList<>();
-        if (user.getRecentCollaborators() != null && !user.getRecentCollaborators().isEmpty()) {
-            List<String> collaboratorIds = user.getRecentCollaborators().stream()
-                    .map(User.RecentCollaborator::getUserId)
-                    .limit(10)
-                    .collect(Collectors.toList());
-            
-            List<User> collaboratorUsers = userRepository.findAllById(collaboratorIds);
-            var userMap = collaboratorUsers.stream()
-                    .collect(Collectors.toMap(User::getId, u -> u));
-            
-            for (String collabId : collaboratorIds) {
-                User collabUser = userMap.get(collabId);
-                if (collabUser != null) {
-                    String characterName = collabUser.getAvatarPreferences() != null 
-                            ? collabUser.getAvatarPreferences().getCharacterName() 
-                            : "Adam";
-                    collaborators.add(new PublicProfile.CollaboratorInfo(
-                            collabUser.getId(),
-                            collabUser.getUsername(),
-                            collabUser.getDisplayName(),
-                            characterName
-                    ));
-                }
-            }
-        }
+        List<User> recentCollaborators = getRecentCollaboratorUsers(user, 10);
+        List<PublicProfile.CollaboratorInfo> collaborators = recentCollaborators
+                .stream()
+                .map(collabUser -> new PublicProfile.CollaboratorInfo(
+                        collabUser.getId(),
+                        collabUser.getUsername(),
+                        collabUser.getDisplayName(),
+                        resolveCharacterName(collabUser)
+                ))
+                .collect(Collectors.toList());
 
-        // For now, return empty list for public rooms
-        // You could implement logic to show only public/non-private rooms
+        List<String> createdRoomIds = user.getCreatedRooms() != null ? user.getCreatedRooms() : List.of();
+        List<String> joinedRoomIds = user.getJoinedRooms() != null ? user.getJoinedRooms() : List.of();
+
+        Set<String> allRoomIds = new LinkedHashSet<>();
+        allRoomIds.addAll(createdRoomIds);
+        allRoomIds.addAll(joinedRoomIds);
+
+        Map<String, RoomResponse> roomMap = roomRepository.findAllById(allRoomIds)
+                .stream()
+                .filter(room -> room.getStatus() != RoomStatus.DELETED)
+                .collect(Collectors.toMap(Room::getId, RoomResponse::new));
+
+        List<RoomResponse> createdRooms = createdRoomIds
+                .stream()
+                .map(roomMap::get)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        List<RoomResponse> joinedRooms = joinedRoomIds
+                .stream()
+                .map(roomMap::get)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
         List<PublicProfile.PublicRoomInfo> publicRooms = new ArrayList<>();
 
         return new PublicProfile(
@@ -267,8 +258,69 @@ public class UserService {
             createdRoomsCount,
             joinedRoomsCount,
             collaborators,
+            createdRooms,
+            joinedRooms,
             publicRooms
         );
+    }
+
+    public List<PublicUserSummary> getPublicUsers(int page, int size) {
+        int safePage = Math.max(page, 0);
+        int safeSize = Math.min(Math.max(size, 1), 100);
+
+        Page<User> users = userRepository.findAll(
+                PageRequest.of(
+                        safePage,
+                        safeSize,
+                        Sort.by(Sort.Order.desc("lastActiveAt"), Sort.Order.desc("createdAt"))
+                )
+        );
+
+        return users.getContent()
+                .stream()
+                .map(user -> new PublicUserSummary(
+                        user.getId(),
+                        user.getUsername(),
+                        user.getDisplayName(),
+                        resolveCharacterName(user),
+                        user.isGuest()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    private List<User> getRecentCollaboratorUsers(User user, int limit) {
+        if (user.getRecentCollaborators() == null || user.getRecentCollaborators().isEmpty()) {
+            return List.of();
+        }
+
+        List<String> collaboratorIds = user.getRecentCollaborators().stream()
+                .map(User.RecentCollaborator::getUserId)
+                .limit(limit)
+                .collect(Collectors.toList());
+
+        return resolveUsersInOrder(collaboratorIds);
+    }
+
+    private List<User> resolveUsersInOrder(Collection<String> userIds) {
+        if (userIds == null || userIds.isEmpty()) {
+            return List.of();
+        }
+
+        List<User> users = userRepository.findAllById(userIds);
+        Map<String, User> userMap = users.stream()
+                .collect(Collectors.toMap(User::getId, user -> user));
+
+        return userIds.stream()
+                .map(userMap::get)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
+
+    private String resolveCharacterName(User user) {
+        if (user.getAvatarPreferences() != null && user.getAvatarPreferences().getCharacterName() != null) {
+            return user.getAvatarPreferences().getCharacterName();
+        }
+        return "Adam";
     }
 }
 

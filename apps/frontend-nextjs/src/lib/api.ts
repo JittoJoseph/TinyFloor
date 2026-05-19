@@ -1,4 +1,4 @@
-import { AuthResponse, User, LoginRequest, RegisterRequest } from "./types";
+import { AuthResponse, User, LoginRequest, RegisterRequest, PublicUser } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
 
@@ -168,9 +168,39 @@ class ApiClient {
       displayName: string;
       characterName: string;
     }[];
+    createdRooms: {
+      id: string;
+      name: string;
+      ownerId?: string;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      playerCount: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+      shareCode?: string;
+    }[];
+    joinedRooms: {
+      id: string;
+      name: string;
+      ownerId?: string;
+      isPublic: boolean;
+      hasPassword: boolean;
+      maxPlayers: number;
+      playerCount: number;
+      createdAt: string;
+      lastActivityAt: string;
+      status: string;
+      shareCode?: string;
+    }[];
     publicRooms: unknown[];
   }> {
     return this.fetch(`/api/users/profile/${encodeURIComponent(userId)}`);
+  }
+
+  async getPublicUsers(page = 0, size = 60): Promise<PublicUser[]> {
+    return this.fetch(`/api/users/public?page=${page}&size=${size}`);
   }
 
   // Room endpoints

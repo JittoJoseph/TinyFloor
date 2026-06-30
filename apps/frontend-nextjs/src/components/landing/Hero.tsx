@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { PixelMapDemo } from "./PixelMapDemo";
+import { HeroOfficeScene } from "./HeroOfficeScene";
 import Link from "next/link";
 
 export const Hero: React.FC = () => {
@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
 
           {/* Map Viewport */}
           <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-game-bg rounded-lg overflow-hidden border border-gray-700">
-            <PixelMapDemo />
+            <HeroOfficeScene />
           </div>
         </div>
       </div>

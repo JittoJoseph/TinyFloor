@@ -29,8 +29,8 @@
   animation: idleForward 0.6s steps(6) infinite;
 }
 
-.avatarAdam {
-  background-image: url("/characters/Adam_idle_anim_16x16.png");
+.avatarAlex {
+  background-image: url("/characters/Alex_idle_anim_16x16.png");
 }
 
 .avatarBob {

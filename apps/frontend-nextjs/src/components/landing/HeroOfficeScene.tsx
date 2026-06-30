@@ -10,8 +10,8 @@ export const HeroOfficeScene: React.FC = () => {
         <div className={styles.officeBackground} />
 
         <div
-          className={`${styles.avatar} ${styles.avatarAdam}`}
-          style={{ left: "30%", top: "70%" }}
+          className={`${styles.avatar} ${styles.avatarAlex}`}
+          style={{ left: "30%", top: "75%" }}
         />
 
         <div

@@ -55,8 +55,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Map Viewport */}
-          <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-game-bg rounded-lg overflow-hidden border border-gray-700">
+          <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-lg overflow-hidden border border-gray-700">
             <HeroOfficeScene />
           </div>
         </div>

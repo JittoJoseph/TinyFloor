@@ -1,85 +1,39 @@
-"use client";
-
-import React, { useState } from "react";
-import { Menu, X, Gamepad2 } from "lucide-react";
+import React from "react";
 import Link from "next/link";
 
 export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-4 pointer-events-none">
-      <div className="max-w-4xl mx-auto pointer-events-auto">
-        <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro flex justify-between items-center px-4 py-3 md:px-6 md:py-3">
-          {/* Logo */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            <div className="w-8 h-8 bg-brand-primary rounded-lg border-2 border-ui-border flex items-center justify-center">
-              <Gamepad2 className="text-white w-5 h-5" />
-            </div>
-            <span className="font-pixel text-2xl tracking-wide text-gray-800 mt-1">
-              SpatialMeet
-            </span>
-          </button>
+    <nav className="absolute top-0 left-0 right-0 z-50">
+      <div className="max-w-[1400px] mx-auto px-6 py-8 md:py-10 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer group">
+          <span className="font-body font-bold text-xl tracking-tight text-[var(--color-braun-text)]">
+            SpatialMeet
+          </span>
+        </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
+          <div className="hidden md:flex items-center bg-[rgba(0,0,0,0.03)] rounded-full p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(0,0,0,0.02)]">
             <a
               href="#features"
-              className="font-pixel text-lg hover:text-brand-primary hover:underline decoration-2 underline-offset-4"
+              className="px-5 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300"
             >
-              Features
+              Specs
             </a>
             <a
               href="#how-it-works"
-              className="font-pixel text-lg hover:text-brand-primary hover:underline decoration-2 underline-offset-4"
+              className="px-5 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300"
             >
-              How it Works
+              Manual
             </a>
-            <Link
-              href="/dashboard"
-              className="bg-brand-secondary hover:bg-rose-500 text-white font-pixel text-lg px-4 py-1.5 rounded-lg border-2 border-ui-border shadow-retro-sm active:translate-y-0.5 active:shadow-none transition-all"
-            >
-              Dashboard
-            </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-ui-border hover:bg-gray-100 rounded-lg transition-colors"
+          <Link
+            href="/dashboard"
+            className="flex items-center justify-center transition-all duration-300 px-4 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] bg-[rgba(0,0,0,0.03)] border border-[rgba(0,0,0,0.05)] md:px-6 md:py-2 md:bg-[var(--color-braun-text)] md:text-[var(--color-braun-bg)] md:border-transparent md:shadow-md md:hover:shadow-lg"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            Dashboard
+          </Link>
         </div>
-
-        {/* Mobile Dropdown */}
-        {isOpen && (
-          <div className="mt-3 bg-ui-white border-2 border-ui-border rounded-xl shadow-retro p-4 flex flex-col gap-4 md:hidden pointer-events-auto animate-float">
-            <a
-              href="#features"
-              onClick={() => setIsOpen(false)}
-              className="font-pixel text-xl p-2 hover:bg-gray-100 rounded"
-            >
-              Features
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={() => setIsOpen(false)}
-              className="font-pixel text-xl p-2 hover:bg-gray-100 rounded"
-            >
-              How it Works
-            </a>
-            <Link
-              href="/rooms"
-              className="w-full bg-brand-primary text-white font-pixel text-xl py-3 rounded-lg border-2 border-ui-border shadow-retro-sm text-center"
-            >
-              Launch App
-            </Link>
-          </div>
-        )}
       </div>
     </nav>
   );

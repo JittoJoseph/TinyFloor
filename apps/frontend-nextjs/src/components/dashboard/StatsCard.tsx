@@ -16,10 +16,10 @@ export function StatsCard({
   const hasNoActivity = totalRooms === 0 && totalCollaborators === 0;
 
   return (
-    <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+    <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center gap-2 mb-3">
         <TrendingUp className="w-4 h-4 text-gray-400" />
-        <h3 className="font-pixel text-sm text-gray-900">Stats</h3>
+        <h3 className="text-sm text-gray-900">Stats</h3>
       </div>
 
       {hasNoActivity ? (
@@ -38,7 +38,7 @@ export function StatsCard({
             <div className="w-6 h-6 rounded-lg bg-white border border-blue-200 flex items-center justify-center mx-auto mb-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
             </div>
-            <div className="font-pixel text-lg text-blue-700">{totalRooms}</div>
+            <div className="text-lg text-blue-700">{totalRooms}</div>
             <div className="text-[9px] text-blue-500 font-medium uppercase tracking-wide">
               Rooms
             </div>
@@ -49,9 +49,7 @@ export function StatsCard({
             <div className="w-6 h-6 rounded-lg bg-white border border-emerald-200 flex items-center justify-center mx-auto mb-1.5">
               <Zap className="w-3.5 h-3.5 text-emerald-600" />
             </div>
-            <div className="font-pixel text-lg text-emerald-700">
-              {activeRooms}
-            </div>
+            <div className="text-lg text-emerald-700">{activeRooms}</div>
             <div className="text-[9px] text-emerald-500 font-medium uppercase tracking-wide">
               Active
             </div>
@@ -62,9 +60,7 @@ export function StatsCard({
             <div className="w-6 h-6 rounded-lg bg-white border border-amber-200 flex items-center justify-center mx-auto mb-1.5">
               <Users className="w-3.5 h-3.5 text-amber-600" />
             </div>
-            <div className="font-pixel text-lg text-amber-700">
-              {totalCollaborators}
-            </div>
+            <div className="text-lg text-amber-700">{totalCollaborators}</div>
             <div className="text-[9px] text-amber-500 font-medium uppercase tracking-wide">
               People
             </div>

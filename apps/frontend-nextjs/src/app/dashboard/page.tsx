@@ -205,8 +205,8 @@ function DashboardContent() {
     return (
       <div className="min-h-screen w-full flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="font-pixel text-xl text-gray-600">Loading...</p>
+          <div className="w-12 h-12 border-4 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-xl text-gray-600">Loading...</p>
         </div>
       </div>
     );
@@ -214,19 +214,17 @@ function DashboardContent() {
 
   if (profileError) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gray-50/50">
+      <div className="min-h-screen w-full flex items-center justify-center p-4 bg-[var(--color-braun-bg)]">
         <div className="text-center max-w-md">
-          <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro-lg p-8">
+          <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-retro-lg p-8">
             <div className="w-20 h-20 bg-red-50 rounded-2xl border-2 border-red-200 flex items-center justify-center mx-auto mb-4">
               <Users className="w-10 h-10 text-red-400" />
             </div>
-            <h2 className="font-pixel text-2xl text-gray-900 mb-2">
-              User Not Found
-            </h2>
+            <h2 className="text-2xl text-gray-900 mb-2">User Not Found</h2>
             <p className="text-gray-600 mb-6">{profileError}</p>
             <Link
               href="/rooms"
-              className="inline-block bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all"
+              className="cursor-pointer inline-block bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white text-lg px-6 py-3 rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm hover:-translate-y-1 hover:shadow-md active:translate-y-0 transition-all"
             >
               Back to Rooms
             </Link>
@@ -246,7 +244,7 @@ function DashboardContent() {
   ).length;
 
   return (
-    <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-gray-50/50">
+    <div className="min-h-screen w-full p-4 md:p-6 lg:p-8 font-sans bg-[var(--color-braun-bg)]">
       {/* Centered Container - max-w-4xl for compact feel */}
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -254,18 +252,16 @@ function DashboardContent() {
           <div className="flex items-center gap-3">
             <Link
               href="/rooms"
-              className="p-2 bg-white hover:bg-gray-50 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 transition-all shrink-0"
+              className="cursor-pointer p-2 bg-white hover:bg-gray-50 rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm hover:-translate-y-0.5 transition-all shrink-0"
             >
               <ArrowLeft className="w-5 h-5 text-gray-700" />
             </Link>
             <div className="min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-pixel text-gray-900">
+              <h1 className="text-2xl sm:text-3xl text-gray-900">
                 {isViewingOther ? profileUser.displayName : "Dashboard"}
               </h1>
               {isViewingOther ? (
-                <p className="text-gray-500 text-sm">
-                  @{profileUser.username}
-                </p>
+                <p className="text-gray-500 text-sm">@{profileUser.username}</p>
               ) : (
                 <p className="text-gray-500 text-sm hidden sm:block">
                   Manage your profile & rooms
@@ -297,7 +293,9 @@ function DashboardContent() {
               onUpdateDisplayName={
                 isViewingOther ? undefined : handleUpdateDisplayName
               }
-              onUpdateCharacter={isViewingOther ? undefined : handleUpdateCharacter}
+              onUpdateCharacter={
+                isViewingOther ? undefined : handleUpdateCharacter
+              }
               readOnly={isViewingOther}
             />
           </div>
@@ -358,8 +356,8 @@ export default function DashboardPage() {
       fallback={
         <div className="min-h-screen w-full flex items-center justify-center">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-            <p className="font-pixel text-xl text-gray-600">Loading...</p>
+            <div className="w-12 h-12 border-4 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-xl text-gray-600">Loading...</p>
           </div>
         </div>
       }

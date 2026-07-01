@@ -24,10 +24,10 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
     return (
       <button
         onClick={onLoginClick}
-        className="flex items-center gap-2 bg-ui-white hover:bg-gray-50 text-gray-800 font-pixel text-lg px-4 py-2 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 hover:shadow-retro transition-all"
+        className="cursor-pointer h-10 px-5 flex items-center gap-2 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all"
       >
-        <User className="w-4 h-4" />
-        Sign In
+        <User className="w-3.5 h-3.5" />
+        <span className="hidden sm:inline">Sign In</span>
       </button>
     );
   }
@@ -39,23 +39,23 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-ui-white hover:bg-gray-50 text-gray-800 font-pixel text-lg px-4 py-2 rounded-xl border-2 border-ui-border shadow-retro-sm hover:-translate-y-0.5 hover:shadow-retro transition-all"
+        className="h-10 px-4 flex items-center gap-2.5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm hover:shadow-md transition-all"
       >
-        <div className="w-8 h-8 bg-brand-primary/10 rounded-lg border border-brand-primary/20 flex items-center justify-center">
-          <span className="text-brand-primary font-bold">
-            {user?.displayName?.charAt(0).toUpperCase() || "G"}
+        <div className="w-6 h-6 bg-[rgba(0,0,0,0.04)] rounded-full border border-[rgba(0,0,0,0.05)] flex items-center justify-center">
+          <span className="text-[10px] text-[var(--color-braun-text)] font-bold uppercase">
+            {user?.displayName?.charAt(0) || "G"}
           </span>
         </div>
-        <span className="hidden sm:inline max-w-24 truncate">
+        <span className="hidden sm:inline max-w-24 truncate text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
           {user?.displayName || "Guest"}
         </span>
         {isGuest && (
-          <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full border border-yellow-200">
+          <span className="text-[9px] font-bold uppercase tracking-widest bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-70 px-2 py-0.5 rounded-full">
             Guest
           </span>
         )}
         <ChevronDown
-          className={`w-4 h-4 transition-transform ${
+          className={`w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-50 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -68,27 +68,27 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
             className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 top-full mt-2 w-64 bg-ui-white rounded-xl border-2 border-ui-border shadow-retro-lg z-50 overflow-hidden">
+          <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg z-50 overflow-hidden font-body">
             {/* User info with stats */}
-            <div className="p-4 border-b border-gray-100">
-              <p className="font-pixel text-lg text-gray-900 truncate">
+            <div className="p-5 border-b border-[rgba(0,0,0,0.04)]">
+              <p className="text-base font-medium text-[var(--color-braun-text)] tracking-tight truncate">
                 {user?.displayName}
               </p>
-              <p className="text-sm text-gray-500 truncate mb-2">
+              <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate mb-3">
                 @{user?.username}
               </p>
               {/* Mini Stats */}
               {!isGuest && (
                 <div className="flex gap-2">
-                  <div className="flex items-center gap-1 px-2 py-1 bg-indigo-50 rounded text-xs">
-                    <Globe className="w-3 h-3 text-indigo-500" />
-                    <span className="font-medium text-indigo-700">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#f8f8f6] border border-[rgba(0,0,0,0.04)] rounded-full text-[10px] uppercase tracking-widest font-bold">
+                    <Globe className="w-3 h-3 text-[var(--color-braun-orange)]" />
+                    <span className="text-[var(--color-braun-text)]">
                       {createdRoomsCount}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 px-2 py-1 bg-purple-50 rounded text-xs">
-                    <Users className="w-3 h-3 text-purple-500" />
-                    <span className="font-medium text-purple-700">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#f8f8f6] border border-[rgba(0,0,0,0.04)] rounded-full text-[10px] uppercase tracking-widest font-bold">
+                    <Users className="w-3 h-3 text-[var(--color-braun-text)] opacity-60" />
+                    <span className="text-[var(--color-braun-text)]">
                       {joinedRoomsCount}
                     </span>
                   </div>
@@ -102,15 +102,17 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                 <Link
                   href="/dashboard"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-indigo-50 text-gray-700 hover:text-indigo-700 transition-colors group"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(0,0,0,0.02)] transition-colors group"
                 >
-                  <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-200 transition-colors">
-                    <LayoutDashboard className="w-4 h-4 text-indigo-600" />
+                  <div className="w-8 h-8 bg-white border border-[rgba(0,0,0,0.05)] rounded-full flex items-center justify-center shadow-sm">
+                    <LayoutDashboard className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:opacity-100" />
                   </div>
                   <div>
-                    <span className="font-medium block">Dashboard</span>
-                    <span className="text-xs text-gray-400">
-                      Manage rooms & profile
+                    <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
+                      Dashboard
+                    </span>
+                    <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">
+                      Manage profile
                     </span>
                   </div>
                 </Link>
@@ -121,12 +123,14 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   logout();
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-red-50 text-gray-700 hover:text-red-600 transition-colors w-full group"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(255,78,0,0.04)] transition-colors w-full group"
               >
-                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center group-hover:bg-red-100 transition-colors">
-                  <LogOut className="w-4 h-4 text-red-500" />
+                <div className="w-8 h-8 bg-white border border-[rgba(0,0,0,0.05)] rounded-full flex items-center justify-center shadow-sm group-hover:border-[rgba(255,78,0,0.2)]">
+                  <LogOut className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:text-[var(--color-braun-orange)] group-hover:opacity-100" />
                 </div>
-                <span className="font-medium">Sign Out</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] group-hover:text-[var(--color-braun-orange)]">
+                  Sign Out
+                </span>
               </button>
             </div>
           </div>

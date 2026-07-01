@@ -11,7 +11,7 @@ export const CTA: React.FC = () => {
           </h2>
           <Link
             href="/rooms"
-            className="inline-flex items-center justify-center h-14 px-10 bg-[var(--color-braun-orange)] text-white rounded-full font-body font-bold uppercase tracking-[0.15em] text-xs hover:bg-[#3d3d3d] transition-all duration-300 shadow-md hover:shadow-lg"
+            className="cursor-pointer inline-flex items-center justify-center h-14 px-10 bg-[var(--color-braun-orange)] text-white rounded-full font-body font-bold uppercase tracking-[0.15em] text-xs hover:bg-[#3d3d3d] transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Get Started
           </Link>

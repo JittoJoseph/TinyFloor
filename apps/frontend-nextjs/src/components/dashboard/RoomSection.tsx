@@ -74,7 +74,7 @@ export function RoomSection({
   return (
     <section className="space-y-4">
       {/* Section Header with Tabs */}
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm">
+      <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm">
         {/* Tabs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex bg-gray-100 rounded-xl p-1">
@@ -91,7 +91,7 @@ export function RoomSection({
               <span
                 className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTab === "created"
-                    ? "bg-indigo-100 text-indigo-700"
+                    ? "bg-[var(--color-braun-text)]/10 text-[var(--color-braun-text)]"
                     : "bg-gray-200 text-gray-600"
                 }`}
               >
@@ -148,7 +148,7 @@ export function RoomSection({
             </div>
             <Link
               href="/create-room"
-              className="flex items-center gap-1.5 bg-brand-primary hover:bg-indigo-600 text-white font-medium text-sm px-4 py-2 rounded-xl transition-colors"
+              className="cursor-pointer flex items-center gap-1.5 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white font-medium text-sm px-4 py-2 rounded-xl transition-colors"
             >
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">New Room</span>
@@ -166,7 +166,7 @@ export function RoomSection({
               placeholder="Search rooms..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none text-sm transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none text-sm transition-colors"
             />
           </div>
 
@@ -199,7 +199,7 @@ export function RoomSection({
 
       {/* Rooms Content */}
       {isLoading ? (
-        <div className="bg-white border-2 border-ui-border rounded-2xl p-12 text-center shadow-retro-sm">
+        <div className="bg-white border border-[rgba(0,0,0,0.06)] rounded-2xl p-12 text-center shadow-retro-sm">
           <Loader2 className="w-8 h-8 text-indigo-500 animate-spin mx-auto mb-3" />
           <p className="text-gray-500">Loading rooms...</p>
         </div>
@@ -254,13 +254,11 @@ function EmptyState({
   // No results from search/filter
   if (hasRooms && (searchQuery || filterStatus !== "all")) {
     return (
-      <div className="bg-white border-2 border-ui-border border-dashed rounded-2xl p-12 text-center">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-gray-200">
+      <div className="bg-white border border-[rgba(0,0,0,0.06)] border-dashed rounded-2xl p-12 text-center">
+        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border border-[rgba(0,0,0,0.06)]">
           <Search className="w-8 h-8 text-gray-400" />
         </div>
-        <h3 className="font-pixel text-xl text-gray-800 mb-2">
-          No matches found
-        </h3>
+        <h3 className="text-xl text-gray-800 mb-2">No matches found</h3>
         <p className="text-gray-500">
           Try adjusting your search or filter criteria
         </p>
@@ -271,17 +269,17 @@ function EmptyState({
   // No rooms at all
   if (type === "created") {
     return (
-      <div className="bg-white border-2 border-ui-border border-dashed rounded-2xl p-12 text-center">
-        <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-indigo-100">
+      <div className="bg-white border border-[rgba(0,0,0,0.06)] border-dashed rounded-2xl p-12 text-center">
+        <div className="w-16 h-16 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[var(--color-braun-text)]/20">
           <Globe className="w-8 h-8 text-indigo-400" />
         </div>
-        <h3 className="font-pixel text-xl text-gray-800 mb-2">No rooms yet</h3>
+        <h3 className="text-xl text-gray-800 mb-2">No rooms yet</h3>
         <p className="text-gray-500 mb-4">
           Create your first virtual office space
         </p>
         <Link
           href="/create-room"
-          className="inline-flex items-center gap-2 bg-brand-primary hover:bg-indigo-600 text-white font-medium px-5 py-2.5 rounded-xl transition-colors"
+          className="cursor-pointer inline-flex items-center gap-2 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white font-medium px-5 py-2.5 rounded-xl transition-colors"
         >
           <Plus className="w-4 h-4" />
           Create a room
@@ -291,15 +289,15 @@ function EmptyState({
   }
 
   return (
-    <div className="bg-white border-2 border-ui-border border-dashed rounded-2xl p-12 text-center">
+    <div className="bg-white border border-[rgba(0,0,0,0.06)] border-dashed rounded-2xl p-12 text-center">
       <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-purple-100">
         <Users className="w-8 h-8 text-purple-400" />
       </div>
-      <h3 className="font-pixel text-xl text-gray-800 mb-2">No joined rooms</h3>
+      <h3 className="text-xl text-gray-800 mb-2">No joined rooms</h3>
       <p className="text-gray-500 mb-4">Join a room to see it here</p>
       <Link
         href="/rooms"
-        className="inline-flex items-center gap-2 text-brand-primary font-bold hover:underline"
+        className="cursor-pointer inline-flex items-center gap-2 text-[var(--color-braun-text)] font-bold hover:underline"
       >
         Browse public rooms
       </Link>

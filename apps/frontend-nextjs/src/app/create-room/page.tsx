@@ -74,54 +74,54 @@ export default function CreateRoomPage() {
   // Success state for private rooms
   if (createdRoom && !isPublic) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans">
-        <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro relative">
-          <div className="text-center mb-8">
-            <div className="w-20 h-20 bg-green-100 rounded-2xl border-2 border-green-200 flex items-center justify-center mx-auto mb-4">
-              <Check className="w-10 h-10 text-green-600" />
+      <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
+        <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
+          <div className="text-center mb-10">
+            <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
+              <Check className="w-6 h-6 text-green-600" />
             </div>
-            <h1 className="text-3xl font-pixel text-gray-900 mb-2">
-              Room Created!
+            <h1 className="text-3xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
+              Space Created
             </h1>
-            <p className="text-gray-500">
-              Your private room is ready. Share this link with your team:
+            <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
+              Your private space is ready. Share this link with your team:
             </p>
           </div>
 
           {/* Share Link */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 p-3 bg-gray-50 border-2 border-gray-200 rounded-xl">
+          <div className="mb-8">
+            <div className="flex items-center gap-2 p-1 bg-[#fbfbf9] border border-[rgba(0,0,0,0.04)] rounded-2xl">
               <input
                 type="text"
                 readOnly
                 value={`${
                   typeof window !== "undefined" ? window.location.origin : ""
                 }/join?code=${createdRoom.shareCode}`}
-                className="flex-1 bg-transparent text-sm font-mono text-gray-600 outline-none truncate"
+                className="flex-1 bg-transparent px-4 py-3 text-sm font-medium text-[var(--color-braun-text)] opacity-80 outline-none truncate"
               />
               <button
                 onClick={copyShareLink}
-                className={`p-2 rounded-lg transition-colors ${
+                className={`cursor-pointer p-3 rounded-xl transition-colors border border-[rgba(0,0,0,0.04)] ${
                   copied
-                    ? "bg-green-100 text-green-600"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-white text-green-600 shadow-sm"
+                    : "bg-white text-[var(--color-braun-text)] opacity-60 hover:opacity-100 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
                 }`}
               >
                 {copied ? (
-                  <Check className="w-5 h-5" />
+                  <Check className="w-4 h-4" />
                 ) : (
-                  <Copy className="w-5 h-5" />
+                  <Copy className="w-4 h-4" />
                 )}
               </button>
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <button
               onClick={goToRoom}
-              className="w-full py-4 bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-xl rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all"
+              className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors"
             >
-              Enter Room
+              Enter Space
             </button>
             <button
               onClick={() => {
@@ -129,51 +129,50 @@ export default function CreateRoomPage() {
                 setName("");
                 setPassword("");
               }}
-              className="w-full py-3 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-xl border-2 border-gray-200 transition-colors"
+              className="w-full h-14 bg-[#fbfbf9] hover:bg-white text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-all"
             >
-              Create Another Room
+              Create Another Space
             </button>
           </div>
-
-          {/* Speech bubble tail */}
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-ui-white border-r-2 border-b-2 border-ui-border rotate-45" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans">
-      <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro relative">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
+      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
         <Link
           href="/rooms"
-          className="absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="cursor-pointer absolute top-6 left-6 w-10 h-10 flex items-center justify-center hover:bg-[#fbfbf9] border border-transparent hover:border-[rgba(0,0,0,0.04)] rounded-full transition-colors"
         >
-          <ArrowLeft className="w-5 h-5 text-gray-500" />
+          <ArrowLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-50" />
         </Link>
 
-        <div className="text-center mb-8 mt-4">
-          <div className="w-16 h-16 bg-brand-secondary/10 rounded-2xl border-2 border-brand-secondary/20 flex items-center justify-center mx-auto mb-4 rotate-3">
-            <Sparkles className="w-8 h-8 text-brand-secondary" />
+        <div className="text-center mb-10 mt-2">
+          <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+            <Sparkles className="w-6 h-6 text-[var(--color-braun-orange)]" />
           </div>
-          <h1 className="text-3xl font-pixel text-gray-900 mb-2">
+          <h1 className="text-3xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
             Create a Space
           </h1>
-          <p className="text-gray-500">Set up your virtual office</p>
+          <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
+            Set up your virtual office
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Room Name */}
           <div>
-            <label className="block font-pixel text-xl text-gray-700 mb-2">
-              Room Name
+            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
+              Space Name
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Engineering Team..."
-              className="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-brand-primary outline-none transition-all font-medium text-lg placeholder:text-gray-400"
+              className="w-full h-14 px-5 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               maxLength={50}
               autoFocus
             />
@@ -181,101 +180,82 @@ export default function CreateRoomPage() {
 
           {/* Visibility Toggle */}
           <div>
-            <label className="block font-pixel text-xl text-gray-700 mb-3">
+            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
               Visibility
             </label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 p-1 bg-[#fbfbf9] border border-[rgba(0,0,0,0.04)] rounded-2xl">
               <button
                 type="button"
                 onClick={() => setIsPublic(true)}
-                className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${
+                className={`py-4 rounded-xl transition-all flex flex-col items-center gap-1.5 ${
                   isPublic
-                    ? "border-brand-primary bg-brand-primary/5 shadow-retro-sm"
-                    : "border-gray-200 hover:border-gray-300"
+                    ? "bg-white text-[var(--color-braun-text)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.04)]"
+                    : "bg-transparent text-[var(--color-braun-text)] opacity-50 hover:opacity-100 border border-transparent"
                 }`}
               >
-                <Globe
-                  className={`w-6 h-6 ${
-                    isPublic ? "text-brand-primary" : "text-gray-400"
-                  }`}
-                />
-                <span
-                  className={`font-bold text-sm ${
-                    isPublic ? "text-brand-primary" : "text-gray-600"
-                  }`}
-                >
+                <Globe className="w-5 h-5 mb-1" />
+                <span className="font-bold text-xs uppercase tracking-widest">
                   Public
                 </span>
-                <span className="text-xs text-gray-500">Listed & open</span>
               </button>
               <button
                 type="button"
                 onClick={() => setIsPublic(false)}
-                className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${
+                className={`py-4 rounded-xl transition-all flex flex-col items-center gap-1.5 ${
                   !isPublic
-                    ? "border-brand-primary bg-brand-primary/5 shadow-retro-sm"
-                    : "border-gray-200 hover:border-gray-300"
+                    ? "bg-white text-[var(--color-braun-text)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.04)]"
+                    : "bg-transparent text-[var(--color-braun-text)] opacity-50 hover:opacity-100 border border-transparent"
                 }`}
               >
-                <Lock
-                  className={`w-6 h-6 ${
-                    !isPublic ? "text-brand-primary" : "text-gray-400"
-                  }`}
-                />
-                <span
-                  className={`font-bold text-sm ${
-                    !isPublic ? "text-brand-primary" : "text-gray-600"
-                  }`}
-                >
+                <Lock className="w-5 h-5 mb-1" />
+                <span className="font-bold text-xs uppercase tracking-widest">
                   Private
                 </span>
-                <span className="text-xs text-gray-500">Invite only</span>
               </button>
             </div>
           </div>
 
           {/* Password (optional) */}
           <div>
-            <label className="block font-pixel text-xl text-gray-700 mb-2">
-              Password{" "}
-              <span className="text-gray-400 text-sm font-body">
+            <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
+              Password
+              <span className="opacity-50 tracking-normal capitalize font-normal text-[10px]">
                 (optional)
               </span>
             </label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Leave empty for no password"
-                className="w-full pl-12 pr-12 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-brand-primary outline-none transition-all font-medium"
+                className="w-full pl-12 pr-12 h-14 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-100 transition-opacity"
               >
                 {showPassword ? (
-                  <EyeOff className="w-5 h-5" />
+                  <EyeOff className="w-4 h-4" />
                 ) : (
-                  <Eye className="w-5 h-5" />
+                  <Eye className="w-4 h-4" />
                 )}
               </button>
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={!name.trim() || isSubmitting}
-            className="w-full py-4 bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-xl rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
-          >
-            {isSubmitting ? "Creating..." : "Create Room"}
-          </button>
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={!name.trim() || isSubmitting}
+              className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors disabled:opacity-50 disabled:hover:bg-[var(--color-braun-text)]"
+            >
+              {isSubmitting ? "Creating..." : "Create Space"}
+            </button>
+          </div>
         </form>
-
-        {/* Speech bubble tail */}
-        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-ui-white border-r-2 border-b-2 border-ui-border rotate-45" />
       </div>
     </div>
   );

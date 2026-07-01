@@ -164,13 +164,13 @@ export const AnimatedCharacterSelector: React.FC<
         <div className="flex items-center gap-4">
           <button
             onClick={handlePrev}
-            className="p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
+            className="cursor-pointer w-10 h-10 flex items-center justify-center bg-white rounded-full border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] hover:shadow-sm transition-all"
             aria-label="Previous character"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
+            <ChevronLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-60" />
           </button>
 
-          <div className="w-36 h-36 bg-gradient-to-b from-indigo-50 to-white rounded-2xl border-2 border-brand-primary shadow-retro flex flex-col items-center relative overflow-hidden">
+          <div className="w-36 h-36 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] flex flex-col items-center relative overflow-hidden">
             {/* Animated Character */}
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
               <CharacterSprite
@@ -181,27 +181,27 @@ export const AnimatedCharacterSelector: React.FC<
             </div>
 
             {/* Character Name */}
-            <div className="pb-3">
-              <span className="font-pixel text-lg text-gray-900 bg-white/90 px-3 py-1 rounded-lg border border-gray-200">
+            <div className="pb-4 mt-auto z-10">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-braun-text)] bg-white px-3 py-1.5 rounded-full shadow-sm border border-[rgba(0,0,0,0.04)]">
                 {CHARACTERS[currentIndex].name}
               </span>
             </div>
 
             {/* Decorative floor shadow */}
-            <div className="absolute bottom-14 w-10 h-1.5 bg-gray-200/50 rounded-full blur-sm" />
+            <div className="absolute bottom-14 w-12 h-2 bg-black/5 rounded-[100%] blur-[2px]" />
           </div>
 
           <button
             onClick={handleNext}
-            className="p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
+            className="cursor-pointer w-10 h-10 flex items-center justify-center bg-white rounded-full border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] hover:shadow-sm transition-all"
             aria-label="Next character"
           >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
+            <ChevronRight className="w-5 h-5 text-[var(--color-braun-text)] opacity-60" />
           </button>
         </div>
 
         {/* Dots indicator */}
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2.5 mt-6">
           {CHARACTERS.map((char, index) => (
             <button
               key={char.id}
@@ -209,10 +209,10 @@ export const AnimatedCharacterSelector: React.FC<
                 setCurrentIndex(index);
                 onSelect(char.id);
               }}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
+              className={`w-1.5 h-1.5 rounded-full transition-all ${
                 index === currentIndex
-                  ? "bg-brand-primary scale-125"
-                  : "bg-gray-300 hover:bg-gray-400"
+                  ? "bg-[var(--color-braun-text)] scale-150"
+                  : "bg-[var(--color-braun-text)] opacity-20 hover:opacity-40"
               }`}
               aria-label={`Select ${char.name}`}
             />
@@ -220,8 +220,8 @@ export const AnimatedCharacterSelector: React.FC<
         </div>
 
         {/* Keyboard hint */}
-        <p className="text-xs text-gray-400 mt-2">
-          Use ← → arrow keys to browse
+        <p className="text-[10px] uppercase tracking-widest text-[var(--color-braun-text)] opacity-40 mt-4 font-bold">
+          Use ← → arrow keys
         </p>
       </div>
     );
@@ -237,24 +237,19 @@ export const AnimatedCharacterSelector: React.FC<
           <button
             key={char.id}
             onClick={() => onSelect(char.id)}
-            className={`p-3 rounded-xl border-2 transition-all relative group ${
+            className={`p-3 rounded-2xl transition-all relative group cursor-pointer ${
               isSelected
-                ? "border-brand-primary bg-gradient-to-b from-brand-primary/10 to-brand-primary/5 shadow-retro-sm -translate-y-1"
-                : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                ? "bg-[#f2f2fb] border border-[rgba(0,0,0,0.2)] shadow-sm -translate-y-0.5"
+                : "bg-transparent border border-transparent hover:border-[rgba(0,0,0,0.06)] hover:bg-[#fbfbf9]"
             }`}
           >
-            {/* Selection check */}
-            {isSelected && (
-              <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-brand-primary rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
-                <Check className="w-3 h-3 text-white" />
-              </div>
-            )}
-
             {/* Character sprite container */}
             <div
-              className={`aspect-square rounded-lg mb-2 overflow-hidden relative flex items-center justify-center ${
-                isSelected ? "bg-indigo-50" : "bg-gray-50"
-              } border border-gray-100`}
+              className={`aspect-square rounded-xl mb-2 relative flex items-center justify-center ${
+                isSelected
+                  ? "bg-[#fbfbf9] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]"
+                  : "bg-transparent"
+              } border border-[rgba(0,0,0,0.02)]`}
             >
               <div className="transform group-hover:scale-110 transition-transform">
                 <CharacterSprite
@@ -265,13 +260,15 @@ export const AnimatedCharacterSelector: React.FC<
               </div>
 
               {/* Subtle shadow under character */}
-              <div className="absolute bottom-2 w-8 h-1 bg-gray-200/60 rounded-full blur-sm" />
+              <div className="absolute bottom-2 w-6 h-1.5 bg-black/5 rounded-[100%] blur-[1px]" />
             </div>
 
             {/* Character name */}
             <span
-              className={`text-xs font-bold block text-center ${
-                isSelected ? "text-brand-primary" : "text-gray-500"
+              className={`text-[10px] font-bold uppercase tracking-widest block text-center mt-3 ${
+                isSelected
+                  ? "text-[var(--color-braun-text)]"
+                  : "text-[var(--color-braun-text)] opacity-40 group-hover:opacity-60"
               }`}
             >
               {char.name}

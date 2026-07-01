@@ -160,58 +160,62 @@ function JoinContent() {
 
   if (loading) {
     return (
-      <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro text-center">
-        <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <p className="font-pixel text-xl text-gray-600">Loading room...</p>
+      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
+        <div className="w-8 h-8 border-[3px] border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-6" />
+        <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-50">
+          Loading space...
+        </p>
       </div>
     );
   }
 
   if (error && !roomInfo) {
     return (
-      <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro text-center">
-        <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <AlertCircle className="w-8 h-8 text-red-500" />
+      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
+        <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[rgba(0,0,0,0.04)]">
+          <AlertCircle className="w-6 h-6 text-red-500" />
         </div>
-        <p className="text-red-500 font-pixel text-xl mb-4">{error}</p>
+        <p className="text-[var(--color-braun-text)] text-sm mb-6">{error}</p>
         <Link
           href="/rooms"
-          className="text-brand-primary hover:underline font-bold"
+          className="cursor-pointer inline-block text-[var(--color-braun-text)] hover:text-[var(--color-braun-orange)] font-bold uppercase tracking-widest text-xs transition-colors"
         >
-          Go back to rooms
+          Go back to directory
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro relative">
+    <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
       <Link
         href="/rooms"
-        className="absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        className="cursor-pointer absolute top-6 left-6 w-10 h-10 flex items-center justify-center hover:bg-[#fbfbf9] border border-transparent hover:border-[rgba(0,0,0,0.04)] rounded-full transition-colors"
       >
-        <ArrowLeft className="w-5 h-5 text-gray-500" />
+        <ArrowLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-50" />
       </Link>
 
-      <div className="text-center mb-6 mt-4">
-        <div className="w-16 h-16 bg-indigo-100 rounded-2xl border-2 border-indigo-200 flex items-center justify-center mx-auto mb-4">
-          <User className="w-8 h-8 text-indigo-600" />
+      <div className="text-center mb-10 mt-2">
+        <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+          <User className="w-6 h-6 text-[var(--color-braun-orange)]" />
         </div>
-        <h1 className="text-3xl font-pixel text-gray-900 mb-2">Join Room</h1>
+        <h1 className="text-3xl font-light tracking-tight text-[var(--color-braun-text)] mb-2">
+          Join Space
+        </h1>
 
         {/* Room info */}
         {roomInfo && (
-          <div className="flex items-center justify-center gap-3 text-gray-500 text-sm">
-            <span className="font-medium">{roomInfo.name}</span>
-            <span className="text-gray-300">•</span>
-            <span className="flex items-center gap-1">
-              <Users className="w-4 h-4" />
+          <div className="flex items-center justify-center gap-3 text-[var(--color-braun-text)] opacity-50 text-[10px] font-bold uppercase tracking-widest">
+            <span>{roomInfo.name}</span>
+            <span className="w-1 h-1 rounded-full bg-[rgba(0,0,0,0.2)]" />
+            <span className="flex items-center gap-1.5">
+              <Users className="w-3.5 h-3.5" />
               {roomInfo.playerCount}/{roomInfo.maxPlayers}
             </span>
             {roomInfo.hasPassword && (
               <>
-                <span className="text-gray-300">•</span>
-                <Lock className="w-4 h-4 text-amber-500" />
+                <span className="w-1 h-1 rounded-full bg-[rgba(0,0,0,0.2)]" />
+                <Lock className="w-3 h-3 text-[var(--color-braun-text)]" />
               </>
             )}
           </div>
@@ -221,7 +225,7 @@ function JoinContent() {
       <div className="space-y-6">
         {/* Display Name */}
         <div>
-          <label className="block font-pixel text-xl text-gray-700 mb-2">
+          <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
             Display Name
           </label>
           <input
@@ -229,7 +233,7 @@ function JoinContent() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
-            className="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-brand-primary outline-none transition-all font-medium text-lg"
+            className="w-full h-14 px-5 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
             maxLength={30}
             autoFocus={!isAuthenticated}
           />
@@ -238,17 +242,17 @@ function JoinContent() {
         {/* Password (if required) */}
         {roomInfo?.hasPassword && (
           <div>
-            <label className="block font-pixel text-xl text-gray-700 mb-2">
-              Room Password
+            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
+              Space Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-brand-primary outline-none transition-all font-medium"
+                className="w-full pl-12 pr-4 h-14 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
             </div>
           </div>
@@ -256,7 +260,7 @@ function JoinContent() {
 
         {/* Character Selection */}
         <div>
-          <label className="block font-pixel text-xl text-gray-700 mb-3">
+          <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
             Choose Character
           </label>
           <AnimatedCharacterSelector
@@ -268,34 +272,33 @@ function JoinContent() {
 
         {/* Error message */}
         {error && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-xl text-sm font-medium border border-red-200 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+          <div className="bg-[#fbfbf9] text-[var(--color-braun-text)] p-4 rounded-xl text-xs font-medium border border-[rgba(0,0,0,0.06)] flex items-center gap-3">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
             {error}
           </div>
         )}
 
-        <button
-          onClick={handleJoin}
-          disabled={!name.trim() || joining}
-          className="w-full py-4 bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-xl rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
-        >
-          {joining ? "Joining..." : "Enter Room"}
-        </button>
+        <div className="pt-2">
+          <button
+            onClick={handleJoin}
+            disabled={!name.trim() || joining}
+            className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors disabled:opacity-50 disabled:hover:bg-[var(--color-braun-text)]"
+          >
+            {joining ? "Joining..." : "Enter Space"}
+          </button>
+        </div>
       </div>
-
-      {/* Speech bubble tail */}
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-ui-white border-r-2 border-b-2 border-ui-border rotate-45" />
     </div>
   );
 }
 
 export default function JoinPage() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
       <Suspense
         fallback={
-          <div className="max-w-md w-full bg-ui-white p-8 rounded-3xl border-2 border-ui-border shadow-retro text-center">
-            <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
+            <div className="w-8 h-8 border-[3px] border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mx-auto" />
           </div>
         }
       >

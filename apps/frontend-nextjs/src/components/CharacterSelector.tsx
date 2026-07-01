@@ -34,7 +34,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
   variant = "grid",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(
-    CHARACTERS.findIndex((c) => c.id === selectedCharacter) || 0
+    CHARACTERS.findIndex((c) => c.id === selectedCharacter) || 0,
   );
   const canvasRefs = useRef<Map<string, HTMLCanvasElement>>(new Map());
 
@@ -100,7 +100,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
         <div className="flex items-center gap-4">
           <button
             onClick={handlePrev}
-            className="p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
+            className="cursor-pointer p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
           >
             <ChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
@@ -123,7 +123,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 
           <button
             onClick={handleNext}
-            className="p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
+            className="cursor-pointer p-3 bg-white rounded-xl border-2 border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition-all shadow-retro-sm active:translate-y-0.5 active:shadow-none"
           >
             <ChevronRight className="w-6 h-6 text-gray-600" />
           </button>

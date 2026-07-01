@@ -20,21 +20,21 @@ export const Footer: React.FC = () => {
           <Link
             href="https://github.com/JittoJoseph"
             target="_blank"
-            className="font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
+            className="cursor-pointer font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
           >
             GitHub
           </Link>
           <Link
             href="https://www.linkedin.com/in/jittojoseph17/"
             target="_blank"
-            className="font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
+            className="cursor-pointer font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
           >
             LinkedIn
           </Link>
           <Link
             href="https://www.jittojoseph.xyz"
             target="_blank"
-            className="font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
+            className="cursor-pointer font-body text-sm font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all"
           >
             Portfolio
           </Link>

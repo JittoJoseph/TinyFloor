@@ -72,20 +72,20 @@ export default function CallOverlay() {
     <>
       {/* Incoming Call Modal */}
       {incomingCall && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-80 border-4 border-gray-800 animate-bounce-slight">
-            <div className="text-center mb-6">
-              <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-[#fbfbf9] rounded-[2rem] shadow-xl p-8 w-80 border border-[rgba(0,0,0,0.06)] animate-bounce-slight">
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center mx-auto mb-5 animate-pulse text-[var(--color-braun-text)]">
                 {incomingCall.callType === "video" ? (
-                  <Video className="w-10 h-10 text-indigo-600" />
+                  <Video className="w-8 h-8" />
                 ) : (
-                  <Phone className="w-10 h-10 text-indigo-600" />
+                  <Phone className="w-8 h-8" />
                 )}
               </div>
-              <h3 className="font-pixel text-2xl text-gray-900 mb-1">
+              <h3 className="font-bold tracking-wide text-2xl text-[var(--color-braun-text)] mb-2">
                 {incomingCall.fromName}
               </h3>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 font-medium text-sm tracking-wide">
                 Incoming {incomingCall.callType} call...
               </p>
             </div>
@@ -93,16 +93,16 @@ export default function CallOverlay() {
             <div className="flex gap-4">
               <button
                 onClick={declineCall}
-                className="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-pixel text-lg flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-retro"
+                className="cursor-pointer flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 border border-[rgba(0,0,0,0.06)] shadow-sm"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
                 Decline
               </button>
               <button
                 onClick={acceptCall}
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-pixel text-lg flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-retro"
+                className="cursor-pointer flex-1 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm"
               >
-                <Check className="w-5 h-5" />
+                <Check className="w-4 h-4" />
                 Accept
               </button>
             </div>
@@ -144,7 +144,7 @@ function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
   }, [streamData.stream]);
 
   return (
-    <div className="pointer-events-auto w-64 h-48 bg-gray-900 rounded-xl overflow-hidden shadow-retro border-2 border-gray-800 relative group">
+    <div className="pointer-events-auto w-64 h-48 bg-[#fbfbf9] rounded-2xl overflow-hidden shadow-md border border-[rgba(0,0,0,0.06)] relative group">
       {hasVideo ? (
         <video
           ref={videoRef}
@@ -153,15 +153,13 @@ function VideoPlayer({ streamData }: { streamData: RemoteStream }) {
           className="w-full h-full object-cover"
         />
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-          <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-            <span className="text-white font-pixel text-2xl">
-              {streamData.peerName.charAt(0).toUpperCase()}
-            </span>
+        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+          <div className="w-16 h-16 bg-white shadow-sm border border-[rgba(0,0,0,0.06)] rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-2xl">
+            <span>{streamData.peerName.charAt(0).toUpperCase()}</span>
           </div>
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center py-1 font-pixel text-sm">
+      <div className="absolute bottom-2 left-2 right-2 bg-white/90 backdrop-blur-sm text-[var(--color-braun-text)] text-center py-1.5 rounded-lg border border-[rgba(0,0,0,0.06)] shadow-sm font-bold tracking-wider text-[10px] uppercase">
         {streamData.peerName}
       </div>
     </div>

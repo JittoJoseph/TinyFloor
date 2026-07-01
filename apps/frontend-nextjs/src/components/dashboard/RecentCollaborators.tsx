@@ -23,10 +23,10 @@ export function RecentCollaborators({
 }: RecentCollaboratorsProps) {
   if (isLoading) {
     return (
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm">
+      <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm">
         <div className="flex items-center gap-2 mb-3">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">Recent People</h3>
         </div>
         <div className="flex gap-2 animate-pulse">
           {[1, 2, 3, 4].map((i) => (
@@ -42,10 +42,10 @@ export function RecentCollaborators({
 
   if (collaborators.length === 0) {
     return (
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+      <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">Recent People</h3>
         </div>
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center py-6">
@@ -60,11 +60,11 @@ export function RecentCollaborators({
   }
 
   return (
-    <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+    <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">Recent People</h3>
         </div>
         <span className="px-2 py-0.5 bg-gray-100 rounded-full text-[10px] font-bold text-gray-600">
           {collaborators.length}
@@ -77,7 +77,7 @@ export function RecentCollaborators({
           const hasValidId = Boolean(person.id);
           const linkHref = hasValidId ? `/dashboard?user=${person.id}` : "#";
           const content = (
-            <div className="w-11 h-14 bg-white rounded-xl border-2 border-ui-border flex items-center justify-center overflow-hidden hover:border-blue-300 hover:shadow-sm transition-all hover:-translate-y-0.5 pb-4">
+            <div className="w-11 h-14 bg-white rounded-xl border border-[rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden hover:border-blue-300 hover:shadow-sm transition-all hover:-translate-y-0.5 pb-4">
               <CharacterPreview
                 characterId={person.characterName || "Adam"}
                 size="sm"

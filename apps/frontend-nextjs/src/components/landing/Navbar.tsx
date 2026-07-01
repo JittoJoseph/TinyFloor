@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
 
           <Link
             href="/dashboard"
-            className="flex items-center justify-center transition-all duration-300 px-4 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] bg-[rgba(0,0,0,0.03)] border border-[rgba(0,0,0,0.05)] md:px-6 md:py-2 md:bg-[var(--color-braun-text)] md:text-[var(--color-braun-bg)] md:border-transparent md:shadow-md md:hover:shadow-lg"
+            className="cursor-pointer flex items-center justify-center transition-all duration-300 px-4 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] bg-[rgba(0,0,0,0.03)] border border-[rgba(0,0,0,0.05)] md:px-6 md:py-2 md:bg-[var(--color-braun-text)] md:text-[var(--color-braun-bg)] md:border-transparent md:shadow-md md:hover:shadow-lg"
           >
             Dashboard
           </Link>

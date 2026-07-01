@@ -71,29 +71,29 @@ const PlayerCard = memo(function PlayerCard({
         willChange: "left, top", // Hint for GPU acceleration
       }}
     >
-      <div className="bg-white rounded-xl shadow-lg border-2 border-gray-800 p-3 w-48 relative">
-        <div className="flex items-center gap-3 mb-2 relative z-10">
-          <div className="w-8 h-8 rounded-full bg-indigo-100 border-2 border-indigo-500 flex items-center justify-center text-indigo-700 font-bold font-pixel">
+      <div className="bg-[#fbfbf9] rounded-[2rem] shadow-sm border border-[rgba(0,0,0,0.06)] p-4 w-52 relative">
+        <div className="flex items-center gap-3 mb-3 relative z-10">
+          <div className="w-9 h-9 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm">
             {player.name.charAt(0).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1">
-              <div className="font-bold text-gray-800 text-sm leading-tight truncate">
+              <div className="font-bold text-[var(--color-braun-text)] text-sm leading-tight truncate tracking-wide">
                 {player.name}
               </div>
               {!player.isGuest && (
                 <BadgeCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
               )}
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 mt-0.5">
               <div
                 className={`w-2 h-2 rounded-full ${getStatusColor(player.status)}`}
               ></div>
-              <span className="text-xs text-gray-600 font-medium">
+              <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                 {getStatusText(player.status)}
               </span>
               {player.isGuest && (
-                <span className="text-[9px] px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold">
+                <span className="text-[9px] px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded-full font-bold">
                   GUEST
                 </span>
               )}
@@ -105,32 +105,32 @@ const PlayerCard = memo(function PlayerCard({
           {player.id && (
             <button
               onClick={() => onViewProfile(player.id)}
-              className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
+              className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
               title="View Profile"
             >
-              <User size={16} />
+              <User size={14} />
             </button>
           )}
           <button
             onClick={() => onCall(player.id, "video")}
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
+            className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
             title="Video Call"
           >
-            <Video size={16} />
+            <Video size={14} />
           </button>
           <button
             onClick={() => onCall(player.id, "audio")}
-            className="flex-1 bg-green-500 hover:bg-green-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
+            className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
             title="Audio Call"
           >
-            <Mic size={16} />
+            <Mic size={14} />
           </button>
           <button
             onClick={onChat}
-            className="flex-1 bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-colors flex items-center justify-center"
+            className="cursor-pointer flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
             title="Chat"
           >
-            <MessageSquare size={16} />
+            <MessageSquare size={14} />
           </button>
         </div>
       </div>

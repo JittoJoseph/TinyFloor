@@ -80,12 +80,10 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
 
   if (activities.length === 0) {
     return (
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+      <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <Clock className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">
-            Recent Activities
-          </h3>
+          <h3 className="text-sm text-gray-900">Recent Activities</h3>
         </div>
         <div className="flex-1 flex items-center justify-center">
           <p className="text-center py-8 text-gray-400 text-xs">
@@ -97,13 +95,11 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
   }
 
   return (
-    <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
+    <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center justify-between gap-2 mb-3">
         <div className="flex items-center gap-2">
           <Clock className="w-4 h-4 text-gray-400" />
-          <h3 className="font-pixel text-sm text-gray-900">
-            Recent Activities
-          </h3>
+          <h3 className="text-sm text-gray-900">Recent Activities</h3>
         </div>
         <span className="text-xs text-gray-400 font-medium">
           {activities.length}

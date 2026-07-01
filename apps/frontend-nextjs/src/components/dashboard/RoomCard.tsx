@@ -91,18 +91,16 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
   return (
     <div className="group relative">
       {/* Background Card Effect */}
-      <div className="absolute inset-0 bg-ui-border rounded-xl translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
+      <div className="absolute inset-0 bg-[#e8e8e3] rounded-xl translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
 
       {/* Main Card */}
-      <div className="relative bg-white border-2 border-ui-border rounded-xl p-5 hover:-translate-y-0.5 transition-transform">
+      <div className="relative bg-white border border-[rgba(0,0,0,0.06)] rounded-xl p-5 hover:-translate-y-0.5 transition-transform">
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               {isOwned && <Crown className="w-4 h-4 text-amber-500 shrink-0" />}
-              <h4 className="font-pixel text-lg text-gray-900 truncate">
-                {room.name}
-              </h4>
+              <h4 className="text-lg text-gray-900 truncate">{room.name}</h4>
               {room.hasPassword && (
                 <Lock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
               )}
@@ -133,14 +131,14 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
         <div className="flex items-center gap-2">
           <Link
             href={`/join?roomId=${room.id}`}
-            className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 bg-brand-primary hover:bg-indigo-600 text-white font-medium text-sm rounded-xl transition-colors"
+            className="cursor-pointer flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-all hover:-translate-y-0.5"
           >
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="w-3.5 h-3.5" />
             Join
           </Link>
           <button
             onClick={onCopy}
-            className="p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors"
+            className="cursor-pointer p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors"
             title="Copy invite link"
           >
             {isCopied ? (
@@ -166,7 +164,7 @@ export function RoomCardCompact({
   const config = statusConfig[status];
 
   return (
-    <div className="flex items-center gap-4 p-4 bg-white border-2 border-ui-border rounded-xl hover:border-brand-primary/30 transition-colors">
+    <div className="flex items-center gap-4 p-4 bg-white border border-[rgba(0,0,0,0.06)] rounded-xl hover:border-[var(--color-braun-text)]/30 transition-colors">
       {/* Status Indicator */}
       <div className={`w-3 h-3 rounded-full ${config.dotClass} shrink-0`} />
 
@@ -191,13 +189,13 @@ export function RoomCardCompact({
       <div className="flex items-center gap-1.5 shrink-0">
         <Link
           href={`/join?roomId=${room.id}`}
-          className="px-3 py-1.5 bg-brand-primary hover:bg-indigo-600 text-white text-sm font-medium rounded-lg transition-colors"
+          className="cursor-pointer px-3 py-1.5 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] shadow-sm text-[var(--color-braun-text)] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all hover:-translate-y-0.5"
         >
           Join
         </Link>
         <button
           onClick={onCopy}
-          className="p-1.5 hover:bg-gray-100 text-gray-500 rounded-lg transition-colors"
+          className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-500 rounded-lg transition-colors"
           title="Copy link"
         >
           {isCopied ? (

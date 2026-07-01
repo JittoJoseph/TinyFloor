@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
 
             <Link
               href="/room/public-room"
-              className="flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] transition-colors border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-xl"
+              className="cursor-pointer flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] transition-colors border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-xl"
             >
               <span className="font-body text-[11px] md:text-xs font-medium text-[var(--color-braun-text)] opacity-50 tracking-wide truncate">
                 spatialmeet-app.vercel.app/room/public-room

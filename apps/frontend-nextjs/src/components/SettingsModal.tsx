@@ -171,7 +171,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           <h2 className="font-pixel text-2xl text-gray-900">Settings</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -411,13 +411,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         <div className="flex justify-end gap-3 px-6 py-4 border-t-2 border-gray-200 bg-gray-50">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800 font-pixel text-sm"
+            className="cursor-pointer px-4 py-2 text-gray-600 hover:text-gray-800 font-pixel text-sm"
           >
             Cancel
           </button>
           <button
             onClick={saveSettings}
-            className="px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl border-2 border-indigo-600 shadow-retro hover:-translate-y-1 active:translate-y-0 transition-all font-pixel text-sm"
+            className="cursor-pointer px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl border-2 border-indigo-600 shadow-retro hover:-translate-y-1 active:translate-y-0 transition-all font-pixel text-sm"
           >
             Save Settings
           </button>

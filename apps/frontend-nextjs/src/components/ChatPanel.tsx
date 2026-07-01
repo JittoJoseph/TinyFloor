@@ -106,7 +106,7 @@ export default function ChatPanel({
 
     // Send via WebSocket
     window.dispatchEvent(
-      new CustomEvent("sendChatMessage", { detail: message })
+      new CustomEvent("sendChatMessage", { detail: message }),
     );
 
     setInputValue("");
@@ -126,11 +126,11 @@ export default function ChatPanel({
 
       setMessages((prev) => [...prev, message]);
       window.dispatchEvent(
-        new CustomEvent("sendChatMessage", { detail: message })
+        new CustomEvent("sendChatMessage", { detail: message }),
       );
       setShowEmojis(false);
     },
-    [playerId, playerName]
+    [playerId, playerName],
   );
 
   const handleKeyDown = useCallback(
@@ -140,7 +140,7 @@ export default function ChatPanel({
         sendMessage();
       }
     },
-    [sendMessage]
+    [sendMessage],
   );
 
   const formatTime = (date: Date) => {
@@ -183,7 +183,7 @@ export default function ChatPanel({
           </button>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/50 rounded-lg transition-colors"
+            className="cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
           >
             <X className="w-4 h-4 text-gray-600" />
           </button>
@@ -224,8 +224,8 @@ export default function ChatPanel({
                     msg.type === "emoji"
                       ? "text-3xl bg-transparent"
                       : msg.senderId === playerId
-                      ? "bg-indigo-500 text-white rounded-br-sm"
-                      : "bg-gray-100 text-gray-900 rounded-bl-sm"
+                        ? "bg-indigo-500 text-white rounded-br-sm"
+                        : "bg-gray-100 text-gray-900 rounded-bl-sm"
                   }`}
                 >
                   {msg.content}

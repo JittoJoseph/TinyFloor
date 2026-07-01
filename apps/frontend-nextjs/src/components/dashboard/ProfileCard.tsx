@@ -128,14 +128,14 @@ export function ProfileCard({
   return (
     <>
       {/* Profile Card - Horizontal Layout */}
-      <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro overflow-hidden h-full">
+      <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-retro overflow-hidden h-full">
         <div className="p-5 sm:p-6">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
             {/* Character */}
             <div className="relative shrink-0">
               <div className="relative group">
-                <div className="absolute inset-0 bg-ui-border rounded-2xl translate-x-1.5 translate-y-1.5" />
-                <div className="relative w-24 h-32 bg-white rounded-2xl border-2 border-ui-border flex items-center justify-center pb-5">
+                <div className="absolute inset-0 bg-[#e8e8e3] rounded-2xl translate-x-1.5 translate-y-1.5" />
+                <div className="relative w-24 h-32 bg-white rounded-2xl border border-[rgba(0,0,0,0.06)] flex items-center justify-center pb-5">
                   <CharacterPreview
                     characterId={
                       user.avatarPreferences?.characterName || "Adam"
@@ -146,14 +146,14 @@ export function ProfileCard({
                 {!readOnly && (
                   <button
                     onClick={() => setIsEditingCharacter(true)}
-                    className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-lg border-2 border-ui-border shadow-sm hover:bg-gray-50 transition-all"
+                    className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-lg border border-[rgba(0,0,0,0.06)] shadow-sm hover:bg-gray-50 transition-all"
                     title="Change character"
                   >
                     <Edit3 className="w-3.5 h-3.5 text-gray-600" />
                   </button>
                 )}
               </div>
-              <p className="text-center mt-2 font-pixel text-xs text-gray-500">
+              <p className="text-center mt-2 text-xs text-gray-500">
                 {currentCharacter.name}
               </p>
             </div>
@@ -167,7 +167,7 @@ export function ProfileCard({
                     type="text"
                     value={editDisplayName}
                     onChange={(e) => setEditDisplayName(e.target.value)}
-                    className="flex-1 px-3 py-2 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none font-medium transition-colors min-w-0"
+                    className="flex-1 px-3 py-2 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none font-medium transition-colors min-w-0"
                     placeholder="Display name"
                     maxLength={30}
                     autoFocus
@@ -175,7 +175,7 @@ export function ProfileCard({
                   <button
                     onClick={handleSaveDisplayName}
                     disabled={isSaving || !editDisplayName.trim()}
-                    className="p-2 bg-green-100 hover:bg-green-200 text-green-700 rounded-xl transition-colors disabled:opacity-50 shrink-0"
+                    className="cursor-pointer p-2 bg-green-100 hover:bg-green-200 text-green-700 rounded-xl transition-colors disabled:opacity-50 shrink-0"
                   >
                     {isSaving ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -195,7 +195,7 @@ export function ProfileCard({
                 </div>
               ) : (
                 <div className="flex items-center justify-center sm:justify-start gap-2">
-                  <h2 className="text-xl sm:text-2xl font-pixel text-gray-900 truncate">
+                  <h2 className="text-xl sm:text-2xl text-gray-900 truncate">
                     {user.displayName}
                   </h2>
                   {!readOnly && !user.isGuest && (
@@ -214,18 +214,18 @@ export function ProfileCard({
                   <div className="flex items-center gap-1 ml-auto">
                     <button
                       onClick={handleCopyProfileLink}
-                      className="p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
+                      className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
                       title="Copy profile link"
                     >
                       {copied ? (
                         <Check className="w-4 h-4 text-green-600" />
                       ) : (
-                        <LinkIcon className="w-4 h-4" />
+                        <LinkIcon className="cursor-pointer w-4 h-4" />
                       )}
                     </button>
                     <button
                       onClick={handleShareProfile}
-                      className="p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
+                      className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
                       title="Share profile"
                     >
                       <Share2 className="w-4 h-4" />
@@ -240,14 +240,14 @@ export function ProfileCard({
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-3">
                 <div className="flex items-center gap-1 px-2 py-1 bg-blue-50 rounded-md border border-blue-100">
                   <Globe className="w-3 h-3 text-blue-600" />
-                  <span className="font-pixel text-xs text-blue-700">
+                  <span className="text-xs text-blue-700">
                     {createdRoomsCount}
                   </span>
                   <span className="text-blue-500 text-[10px]">created</span>
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 rounded-md border border-emerald-100">
                   <Users className="w-3 h-3 text-emerald-600" />
-                  <span className="font-pixel text-xs text-emerald-700">
+                  <span className="text-xs text-emerald-700">
                     {joinedRoomsCount}
                   </span>
                   <span className="text-emerald-500 text-[10px]">joined</span>
@@ -267,7 +267,7 @@ export function ProfileCard({
       {/* Character Selection Modal */}
       {isEditingCharacter && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-ui-white border-2 border-ui-border rounded-2xl shadow-retro-lg max-w-md w-full p-6 relative">
+          <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-retro-lg max-w-md w-full p-6 relative">
             <button
               onClick={() => {
                 setEditCharacter(
@@ -281,12 +281,10 @@ export function ProfileCard({
             </button>
 
             <div className="text-center mb-6">
-              <div className="w-14 h-14 bg-gray-100 rounded-2xl border-2 border-gray-200 flex items-center justify-center mx-auto mb-3">
+              <div className="w-14 h-14 bg-gray-100 rounded-2xl border border-[rgba(0,0,0,0.06)] flex items-center justify-center mx-auto mb-3">
                 <Sparkles className="w-7 h-7 text-gray-600" />
               </div>
-              <h3 className="font-pixel text-2xl text-gray-900">
-                Choose Character
-              </h3>
+              <h3 className="text-2xl text-gray-900">Choose Character</h3>
               <p className="text-gray-500 text-sm mt-1">Select your avatar</p>
             </div>
 
@@ -304,14 +302,14 @@ export function ProfileCard({
                   );
                   setIsEditingCharacter(false);
                 }}
-                className="flex-1 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-pixel rounded-xl border-2 border-gray-200 transition-colors"
+                className="flex-1 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl border border-[rgba(0,0,0,0.06)] transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveCharacter}
                 disabled={isSaving}
-                className="flex-1 px-4 py-3 bg-brand-primary hover:bg-indigo-600 text-white font-pixel rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-0.5 transition-all disabled:opacity-50"
+                className="cursor-pointer flex-1 px-4 py-3 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm hover:-translate-y-0.5 transition-all disabled:opacity-50"
               >
                 {isSaving ? (
                   <Loader2 className="w-5 h-5 animate-spin mx-auto" />

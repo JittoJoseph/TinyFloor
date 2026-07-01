@@ -4,82 +4,55 @@
   --font-pixel: var(--font-pixel);
   --font-body: var(--font-body);
 
-  --color-game-bg: #b0b5bd;
-  --color-game-grid: #9ca1a9;
-  --color-game-dark: #2d3748;
-  --color-ui-white: #ffffff;
-  --color-ui-border: #1f2937;
-  --color-brand-primary: #818cf8;
-  --color-brand-secondary: #fb7185;
-  --color-brand-accent: #34d399;
+  /* Dieter Rams Braun Palette */
+  --color-braun-bg: #e8e8e3; /* Warm off-white hardware body */
+  --color-braun-panel: #dcdcd6; /* Slightly darker recessed panel */
+  --color-braun-text: #2c2c2c; /* Soft dark gray, not pure black */
+  --color-braun-orange: #ff4e00; /* Signature Braun accent */
+  --color-braun-green: #006a4e; /* Signature Braun secondary accent */
+  --color-braun-bezel: #1a1a1a; /* Dark gray for the "television" bezel */
 
-  --shadow-retro: 4px 4px 0px 0px #1f2937;
-  --shadow-retro-sm: 2px 2px 0px 0px #1f2937;
-  --shadow-retro-lg: 6px 6px 0px 0px #1f2937;
-  --shadow-retro-hover: 2px 2px 0px 0px #1f2937;
-
-  --animate-float: float 3s ease-in-out infinite;
-  --animate-bounce-slight: bounceSlight 2s infinite;
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-  @keyframes bounceSlight {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-3px);
-    }
-  }
+  /* Physical Button Shadows */
+  /* Replicating injection molded plastic and physical bevels */
+  --shadow-braun-raised:
+    -2px -2px 6px rgba(255, 255, 255, 0.7), 2px 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-braun-pressed:
+    inset 2px 2px 6px rgba(0, 0, 0, 0.15),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.7);
+  --shadow-braun-bezel:
+    inset 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #e8e8e3;
+  --foreground: #2c2c2c;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-game-bg);
-  background-image:
-    linear-gradient(var(--color-game-grid) 2px, transparent 2px),
-    linear-gradient(90deg, var(--color-game-grid) 2px, transparent 2px);
-  background-size: 40px 40px;
-  background-position: center top;
-  color: #1f2937;
+  background-color: var(--background);
+  color: var(--foreground);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Scrollbar styles */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-game-bg);
-  border-left: 2px solid var(--color-ui-border);
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-secondary);
-  border: 2px solid var(--color-ui-border);
-  border-radius: 6px;
+  background: #c0c0b8;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f43f5e;
+  background: #a0a098;
+}
+::-webkit-scrollbar-corner {
+  background: var(--background);
 }
 
 .pixel-antialiased {

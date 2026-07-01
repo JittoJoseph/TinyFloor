@@ -5,6 +5,7 @@ import com.spatialmeet.model.Message;
 import com.spatialmeet.model.Player;
 import com.spatialmeet.service.RoomService;
 import com.spatialmeet.service.UserService;
+import com.spatialmeet.service.DiscordWebhookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RoomService roomService;
     private final UserService userService;
+    private final DiscordWebhookService discordWebhookService;
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
@@ -59,9 +61,10 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private static final long CLEANUP_INTERVAL_MS = 300000; // Clean up every 5 minutes
     private static final long INACTIVE_TIMEOUT_MS = 300000; // 5 minutes timeout
 
-    public GameWebSocketHandler(RoomService roomService, UserService userService) {
+    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService) {
         this.roomService = roomService;
         this.userService = userService;
+        this.discordWebhookService = discordWebhookService;
         startMovementBroadcaster();
         startCleanupTask();
     }
@@ -285,6 +288,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 logger.warn("Failed to record room collaboration: {}", e.getMessage());
             }
         }
+        
+        // Notify via Discord Webhook
+        discordWebhookService.sendJoinNotification(player.getName(), player.getSprite(), roomId);
         
         logger.info("Player {} joined room {}", playerId, roomId);
         

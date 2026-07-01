@@ -29,6 +29,10 @@ room:
 cors:
   allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:3001,https://spatialmeet-app.vercel.app}
 
+# Discord Configuration
+discord:
+  webhook-url: ${DISCORD_WEBHOOK_URL:}
+
 # Logging Configuration
 logging:
   level:

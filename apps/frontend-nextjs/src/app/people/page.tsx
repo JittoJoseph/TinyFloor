@@ -59,170 +59,166 @@ export default function PeoplePage() {
   );
 
   return (
-    <div className="min-h-screen w-full p-4 md:p-8 font-sans">
-      <div className="max-w-5xl mx-auto space-y-6">
-        <div className="bg-gradient-to-br from-white via-white to-indigo-50/60 border-2 border-ui-border rounded-3xl p-6 shadow-retro">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <Link
-                href="/"
-                className="p-2 bg-white/80 hover:bg-white rounded-xl transition-colors border-2 border-ui-border shadow-retro-sm"
-              >
-                <ArrowLeft className="w-6 h-6 text-gray-700" />
-              </Link>
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-3xl md:text-4xl font-pixel text-gray-900 leading-none">
-                    Community Directory
-                  </h1>
-                </div>
-                <p className="text-gray-500 font-medium mt-1">
-                  Meet the builders shaping SpatialMeet
-                </p>
-              </div>
-            </div>
+    <div className="min-h-screen w-full pt-8 md:pt-20 pb-12 px-4 md:px-8 font-body relative">
+      <div className="max-w-5xl mx-auto space-y-8">
+        {/* Minimal Header */}
+        <div className="flex flex-col gap-4 md:gap-8">
+          {/* Top Navigation Bar */}
+          <div className="flex items-center justify-between gap-4">
+            <Link
+              href="/"
+              className="cursor-pointer flex items-center justify-center h-10 px-4 sm:px-5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all gap-2"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 opacity-70" />
+              <span className="hidden sm:inline">Back</span>
+            </Link>
 
-            <div className="flex items-center gap-3 w-full lg:w-auto">
+            <div className="flex items-center gap-3 sm:gap-4">
               <UserMenu onLoginClick={() => setShowAuthModal(true)} />
               <Link
                 href="/create-room"
-                className="bg-brand-primary hover:bg-indigo-600 text-white font-pixel text-lg md:text-xl px-4 md:px-6 py-3 rounded-xl border-2 border-ui-border shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all flex items-center gap-2"
+                className="cursor-pointer flex items-center justify-center gap-2 h-10 px-5 sm:px-6 bg-[var(--color-braun-orange)] text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#3d3d3d] transition-colors shadow-sm hover:shadow-md"
               >
-                <Plus className="w-5 h-5" />
+                <Plus className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Start a Room</span>
               </Link>
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="w-full lg:max-w-2xl">
-              <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-2xl p-2 w-full">
-                <Link
-                  href="/rooms"
-                  className="px-8 py-4 rounded-xl font-pixel text-base sm:text-lg md:text-xl text-gray-500 hover:text-gray-700 text-center"
-                >
-                  Rooms
-                </Link>
-                <Link
-                  href="/people"
-                  className="px-8 py-4 rounded-xl font-pixel text-base sm:text-lg md:text-xl bg-white text-gray-900 shadow-sm text-center"
-                >
-                  People
-                </Link>
-              </div>
-              <p className="mt-2 text-xs sm:text-sm text-gray-400 text-center lg:text-left">
-                Explore both tabs to discover spaces and people.
-              </p>
+          {/* Page Title */}
+          <div>
+            <h1 className="text-3xl md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
+              Community <span className="font-medium">Directory</span>
+            </h1>
+            <p className="text-[var(--color-braun-text)] opacity-50 text-sm md:text-base">
+              Meet the builders shaping SpatialMeet
+            </p>
+          </div>
+        </div>
+
+        {/* Filters and Search Strip */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-[rgba(0,0,0,0.06)]">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            {/* Minimal Segmented Control */}
+            <div className="flex w-full md:inline-flex md:w-auto items-center bg-[#e0e0da] p-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(0,0,0,0.06)]">
+              <Link
+                href="/rooms"
+                className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-100 transition-all"
+              >
+                Rooms
+              </Link>
+              <Link
+                href="/people"
+                className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium bg-white text-[var(--color-braun-text)] shadow-sm transition-all"
+              >
+                People
+              </Link>
             </div>
-            <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
-              <Users className="w-4 h-4 text-gray-400" />
+
+            <div className="flex items-center gap-2 text-xs font-medium text-[var(--color-braun-text)] opacity-40 uppercase tracking-widest">
+              <Users className="w-3.5 h-3.5" />
               <span>
                 {loading ? "Gathering people..." : `${people.length} people`}
               </span>
             </div>
           </div>
 
-          <div className="mt-4">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search people by name..."
-                className="w-full pl-12 pr-14 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-brand-primary outline-none transition-colors font-medium"
-              />
-              <button
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 border border-gray-200 transition-colors"
-                title="Search"
-                type="button"
-              >
-                <Search className="w-4 h-4 text-gray-600" />
-              </button>
-            </div>
+          <div className="w-full md:w-72 relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search people..."
+              className="w-full pl-10 pr-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
+            />
           </div>
         </div>
 
         {yourCard && (
           <Link
             href={`/dashboard?user=${yourCard.id}`}
-            className="block bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-ui-border rounded-2xl p-5 shadow-retro-sm hover:-translate-y-0.5 transition-all"
+            className="cursor-pointer block w-full"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-20 bg-white rounded-2xl border-2 border-ui-border flex items-center justify-center">
-                  <CharacterPreview
-                    characterId={yourCard.characterName}
-                    size="sm"
-                    showShadow={false}
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="font-pixel text-xl text-gray-900">
-                      {yourCard.displayName}
-                    </h2>
-                    <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-full">
-                      You
-                    </span>
+            <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 h-full bg-[var(--color-braun-orange)]"></div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-5">
+                  <div className="w-16 h-20 bg-white border border-[rgba(0,0,0,0.05)] rounded-2xl flex items-center justify-center">
+                    <CharacterPreview
+                      characterId={yourCard.characterName}
+                      size="sm"
+                      showShadow={false}
+                    />
                   </div>
-                  <p className="text-sm text-gray-500">@{yourCard.username}</p>
+                  <div>
+                    <div className="flex items-center gap-3 mb-1">
+                      <h2 className="text-xl font-medium text-[var(--color-braun-text)] tracking-tight">
+                        {yourCard.displayName}
+                      </h2>
+                      <span className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-[rgba(255,78,0,0.08)] text-[var(--color-braun-orange)] rounded-full border border-[rgba(255,78,0,0.1)]">
+                        You
+                      </span>
+                    </div>
+                    <p className="text-sm text-[var(--color-braun-text)] opacity-50">
+                      @{yourCard.username}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="sm:ml-auto flex items-center gap-2 text-xs text-gray-500">
-                <Sparkles className="w-4 h-4 text-indigo-400" />
-                <span>Your profile card</span>
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-[var(--color-braun-text)] opacity-40 group-hover:opacity-70 transition-opacity">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Your Profile</span>
+                </div>
               </div>
             </div>
           </Link>
         )}
 
         {loading ? (
-          <div className="text-center py-20">
-            <div className="inline-block w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin"></div>
-            <p className="mt-4 font-pixel text-xl text-gray-600">
-              Loading people...
+          <div className="text-center py-32 flex flex-col items-center">
+            <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-sm text-[var(--color-braun-text)] opacity-50 tracking-widest uppercase font-medium">
+              Loading people
             </p>
           </div>
         ) : visiblePeople.length === 0 ? (
-          <div className="bg-ui-white/80 backdrop-blur border-2 border-ui-border border-dashed rounded-2xl p-12 text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-ui-border">
-              <Users className="w-8 h-8 text-gray-400" />
-            </div>
-            <h3 className="font-pixel text-2xl text-gray-800 mb-2">
-              No people found
+          <div className="w-full py-24 flex flex-col items-center text-center bg-white border border-[rgba(0,0,0,0.05)] rounded-3xl shadow-sm">
+            <Users
+              className="w-8 h-8 text-[var(--color-braun-text)] opacity-20 mb-4"
+              strokeWidth={1.5}
+            />
+            <h3 className="text-xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
+              No people found.
             </h3>
-            <p className="text-gray-500">
+            <p className="text-sm text-[var(--color-braun-text)] opacity-50 mb-6 max-w-sm">
               Try a different search or check back soon.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {visiblePeople.map((person) => (
               <Link
                 key={person.id}
                 href={`/dashboard?user=${person.id}`}
-                className="group"
+                className="cursor-pointer group"
               >
-                <div className="bg-ui-white border-2 border-ui-border rounded-2xl p-4 shadow-retro-sm hover:-translate-y-0.5 hover:shadow-retro transition-all h-full">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-16 bg-gray-50 rounded-2xl border-2 border-gray-200 flex items-center justify-center">
-                      <CharacterPreview
-                        characterId={person.characterName || "Adam"}
-                        size="sm"
-                        showShadow={false}
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="font-pixel text-lg text-gray-900 truncate">
-                        {person.displayName}
-                      </p>
-                      <p className="text-xs text-gray-500 truncate">
-                        @{person.username}
-                      </p>
-                    </div>
+                <div className="bg-white border border-[rgba(0,0,0,0.05)] rounded-3xl p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 h-full flex items-center gap-4">
+                  <div className="w-14 h-16 bg-[#f8f8f6] border border-[rgba(0,0,0,0.04)] rounded-2xl flex items-center justify-center shrink-0">
+                    <CharacterPreview
+                      characterId={person.characterName || "Adam"}
+                      size="sm"
+                      showShadow={false}
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1 flex flex-col">
+                    <p className="text-base font-medium text-[var(--color-braun-text)] tracking-tight truncate mb-0.5">
+                      {person.displayName}
+                    </p>
+                    <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate">
+                      @{person.username}
+                    </p>
                     {person.isGuest && (
-                      <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-amber-100 text-amber-700 border border-amber-200 rounded-full">
+                      <span className="self-start mt-2 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-70 rounded-full">
                         Guest
                       </span>
                     )}

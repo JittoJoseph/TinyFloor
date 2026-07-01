@@ -88,123 +88,128 @@ export default function ControlBar({
   );
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
-      <div className="bg-white/95 backdrop-blur-sm border-2 border-gray-800 rounded-2xl shadow-retro px-4 py-3 flex items-center gap-2">
+    <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-max">
+      <div className="bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-[2rem] shadow-sm px-2 md:px-4 py-1.5 md:py-2 flex items-center justify-start md:justify-center gap-1 md:gap-2 mx-auto">
         {/* Status Selector */}
-        <StatusSelector
-          currentStatus={status}
-          onStatusChange={handleStatusChange}
-          compact
-        />
+        <div className="shrink-0">
+          <StatusSelector
+            currentStatus={status}
+            onStatusChange={handleStatusChange}
+            compact
+          />
+        </div>
 
         {/* Divider */}
-        <div className="w-px h-8 bg-gray-300 mx-1" />
+        <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
 
-        {/* Microphone Toggle */}
-        <button
-          onClick={toggleMic}
-          className={`relative p-3 rounded-xl border-2 transition-all hover:-translate-y-1 active:translate-y-0 ${
-            micEnabled
-              ? "bg-indigo-100 border-indigo-300 text-indigo-600 hover:bg-indigo-200"
-              : "bg-red-100 border-red-300 text-red-600 hover:bg-red-200"
-          }`}
-          title={micEnabled ? "Mute microphone" : "Unmute microphone"}
-        >
-          {micEnabled ? (
-            <Mic className="w-5 h-5" />
-          ) : (
-            <MicOff className="w-5 h-5" />
+        {/* Scrollable Actions Container */}
+        <div className="flex items-center gap-1 md:gap-2 overflow-x-auto scrollbar-hide no-scrollbar">
+          {/* Microphone Toggle */}
+          <button
+            onClick={toggleMic}
+            className={`cursor-pointer relative p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+              micEnabled
+                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
+                : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
+            }`}
+            title={micEnabled ? "Mute microphone" : "Unmute microphone"}
+          >
+            {micEnabled ? (
+              <Mic className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            ) : (
+              <MicOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            )}
+            {!micEnabled && (
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-2 md:h-2 bg-[#ff4e00] rounded-full animate-pulse border-2 border-white" />
+            )}
+          </button>
+
+          {/* Video Toggle */}
+          <button
+            onClick={toggleVideo}
+            className={`cursor-pointer relative p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+              videoEnabled
+                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
+                : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
+            }`}
+            title={videoEnabled ? "Turn off camera" : "Turn on camera"}
+          >
+            {videoEnabled ? (
+              <Video className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            ) : (
+              <VideoOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            )}
+            {!videoEnabled && (
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-2 md:h-2 bg-[#ff4e00] rounded-full animate-pulse border-2 border-white" />
+            )}
+          </button>
+
+          {/* Speaker Toggle */}
+          <button
+            onClick={toggleSpeaker}
+            className={`cursor-pointer p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+              speakerEnabled
+                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
+                : "bg-gray-100 border-[rgba(0,0,0,0.06)] text-gray-400 hover:bg-gray-200"
+            }`}
+            title={speakerEnabled ? "Mute speaker" : "Unmute speaker"}
+          >
+            {speakerEnabled ? (
+              <Volume2 className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            ) : (
+              <VolumeX className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            )}
+          </button>
+
+          {/* Divider */}
+          <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
+
+          {/* Chat Button */}
+          <button
+            onClick={onChatClick}
+            className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            title="Open chat"
+          >
+            <MessageSquare className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+          </button>
+
+          {/* Participants Button */}
+          <button
+            onClick={onParticipantsClick}
+            className="cursor-pointer relative p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            title="View participants"
+          >
+            <Users className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            {participantCount > 0 && (
+              <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] bg-[var(--color-braun-text)] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 border-2 border-white shadow-sm">
+                {participantCount}
+              </span>
+            )}
+          </button>
+
+          {/* Settings Button */}
+          <button
+            onClick={onSettingsClick}
+            className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            title="Settings"
+          >
+            <Settings className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+          </button>
+
+          {/* Leave Call Button - Only show when in a call */}
+          {isInCall && (
+            <>
+              <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
+              <button
+                onClick={onLeaveCall}
+                className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0"
+                title="Leave call"
+              >
+                <PhoneOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              </button>
+            </>
           )}
-          {!micEnabled && (
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-          )}
-        </button>
-
-        {/* Video Toggle */}
-        <button
-          onClick={toggleVideo}
-          className={`relative p-3 rounded-xl border-2 transition-all hover:-translate-y-1 active:translate-y-0 ${
-            videoEnabled
-              ? "bg-indigo-100 border-indigo-300 text-indigo-600 hover:bg-indigo-200"
-              : "bg-red-100 border-red-300 text-red-600 hover:bg-red-200"
-          }`}
-          title={videoEnabled ? "Turn off camera" : "Turn on camera"}
-        >
-          {videoEnabled ? (
-            <Video className="w-5 h-5" />
-          ) : (
-            <VideoOff className="w-5 h-5" />
-          )}
-          {!videoEnabled && (
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-          )}
-        </button>
-
-        {/* Speaker Toggle */}
-        <button
-          onClick={toggleSpeaker}
-          className={`p-3 rounded-xl border-2 transition-all hover:-translate-y-1 active:translate-y-0 ${
-            speakerEnabled
-              ? "bg-emerald-100 border-emerald-300 text-emerald-600 hover:bg-emerald-200"
-              : "bg-gray-100 border-gray-300 text-gray-600 hover:bg-gray-200"
-          }`}
-          title={speakerEnabled ? "Mute speaker" : "Unmute speaker"}
-        >
-          {speakerEnabled ? (
-            <Volume2 className="w-5 h-5" />
-          ) : (
-            <VolumeX className="w-5 h-5" />
-          )}
-        </button>
-
-        {/* Divider */}
-        <div className="w-px h-8 bg-gray-300 mx-1" />
-
-        {/* Chat Button */}
-        <button
-          onClick={onChatClick}
-          className="p-3 rounded-xl border-2 bg-amber-100 border-amber-300 text-amber-600 hover:bg-amber-200 transition-all hover:-translate-y-1 active:translate-y-0"
-          title="Open chat"
-        >
-          <MessageSquare className="w-5 h-5" />
-        </button>
-
-        {/* Participants Button */}
-        <button
-          onClick={onParticipantsClick}
-          className="relative p-3 rounded-xl border-2 bg-purple-100 border-purple-300 text-purple-600 hover:bg-purple-200 transition-all hover:-translate-y-1 active:translate-y-0"
-          title="View participants"
-        >
-          <Users className="w-5 h-5" />
-          {participantCount > 0 && (
-            <span className="absolute -top-2 -right-2 min-w-[20px] h-5 bg-purple-500 text-white text-xs font-pixel rounded-full flex items-center justify-center px-1">
-              {participantCount}
-            </span>
-          )}
-        </button>
-
-        {/* Settings Button */}
-        <button
-          onClick={onSettingsClick}
-          className="p-3 rounded-xl border-2 bg-gray-100 border-gray-300 text-gray-600 hover:bg-gray-200 transition-all hover:-translate-y-1 active:translate-y-0"
-          title="Settings"
-        >
-          <Settings className="w-5 h-5" />
-        </button>
-
-        {/* Leave Call Button - Only show when in a call */}
-        {isInCall && (
-          <>
-            <div className="w-px h-8 bg-gray-300 mx-1" />
-            <button
-              onClick={onLeaveCall}
-              className="p-3 rounded-xl border-2 bg-red-500 border-red-600 text-white hover:bg-red-600 transition-all hover:-translate-y-1 active:translate-y-0 shadow-md"
-              title="Leave call"
-            >
-              <PhoneOff className="w-5 h-5" />
-            </button>
-          </>
-        )}
+        </div>
       </div>
     </div>
   );

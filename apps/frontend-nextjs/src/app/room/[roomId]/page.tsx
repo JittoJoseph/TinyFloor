@@ -17,10 +17,10 @@ import type { PlayerStatus } from "@/lib/types";
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
   ssr: false,
   loading: () => (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white font-pixel text-2xl">
-      <div className="text-center">
-        <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        Loading virtual office...
+    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] font-sans text-sm font-bold tracking-widest uppercase">
+      <div className="text-center flex flex-col items-center gap-6">
+        <div className="w-10 h-10 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin"></div>
+        Connecting...
       </div>
     </div>
   ),
@@ -176,43 +176,41 @@ export default function RoomPage() {
   if (!mounted || !name || !character) return null;
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gray-900">
+    <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
       {/* Header Overlay */}
-      <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-start z-10 pointer-events-none">
+      <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none">
         {/* Room Info */}
-        <div className="bg-white/95 backdrop-blur-sm border-2 border-gray-800 px-4 py-2 rounded-xl shadow-retro pointer-events-auto flex items-center gap-3">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <div>
-            <h1 className="font-pixel text-xl text-gray-900 leading-none">
+        <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-sm pointer-events-auto flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+          <div className="flex flex-col">
+            <h1 className="font-bold text-sm text-[var(--color-braun-text)] tracking-wide">
               {roomData?.name || `Room: ${roomId}`}
             </h1>
-            <p className="text-xs text-gray-500 font-mono flex items-center gap-2">
-              Connected as {name}
-              {roomData?.activeUsers !== undefined && (
-                <span className="inline-flex items-center gap-1 bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">
-                  <Users className="w-3 h-3" />
-                  {roomData.activeUsers}
-                </span>
-              )}
-            </p>
+            {roomData?.activeUsers !== undefined && (
+              <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1.5 mt-0.5">
+                <Users className="w-3 h-3" />
+                {roomData.activeUsers}{" "}
+                {roomData.activeUsers === 1 ? "person" : "people"}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Right side buttons */}
-        <div className="flex items-center gap-2 pointer-events-auto">
+        <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto self-end sm:self-auto">
           {/* Copy Invite Link */}
           <button
             onClick={copyInviteLink}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-xl border-2 border-gray-800 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all font-pixel text-sm flex items-center gap-2"
+            className="cursor-pointer bg-white hover:bg-gray-50 text-[var(--color-braun-text)] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[rgba(0,0,0,0.06)] shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4" />
+                <Check className="w-3.5 h-3.5 text-emerald-500" />
                 Copied!
               </>
             ) : (
               <>
-                <Copy className="w-4 h-4" />
+                <Copy className="w-3.5 h-3.5" />
                 Invite
               </>
             )}
@@ -221,9 +219,9 @@ export default function RoomPage() {
           {/* Leave Room */}
           <Link
             href="/rooms"
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl border-2 border-gray-800 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover active:translate-y-0 transition-all font-pixel text-sm flex items-center gap-2"
+            className="cursor-pointer bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-3.5 h-3.5" />
             Leave
           </Link>
         </div>
@@ -231,14 +229,14 @@ export default function RoomPage() {
 
       {/* Participants Panel */}
       {showParticipants && (
-        <div className="absolute top-20 right-4 z-20 bg-white/95 backdrop-blur-sm border-2 border-gray-800 rounded-xl shadow-retro p-4 w-64">
-          <h3 className="font-pixel text-lg text-gray-900 mb-3 flex items-center gap-2">
-            <Users className="w-5 h-5 text-purple-500" />
+        <div className="absolute top-24 right-6 z-20 bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-md p-5 w-72">
+          <h3 className="font-bold text-sm text-[var(--color-braun-text)] mb-4 flex items-center gap-2 tracking-widest uppercase">
+            <Users className="w-4 h-4" />
             Participants
           </h3>
           <div className="space-y-2">
-            <div className="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg border border-indigo-200">
-              <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-pixel text-sm">
+            <div className="flex items-center gap-3 p-3 bg-gray-50/80 rounded-xl border border-[rgba(0,0,0,0.06)]">
+              <div className="w-9 h-9 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm">
                 {name?.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -261,9 +259,9 @@ export default function RoomPage() {
                   }
                 }}
                 disabled={!p.id}
-                className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer w-full text-left disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex items-center gap-3 p-3 hover:bg-white rounded-xl border border-transparent hover:border-[rgba(0,0,0,0.06)] hover:shadow-sm transition-all cursor-pointer w-full text-left disabled:cursor-not-allowed disabled:opacity-50 group"
               >
-                <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 font-pixel text-sm">
+                <div className="w-9 h-9 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm group-hover:bg-white group-hover:border group-hover:border-[rgba(0,0,0,0.06)] transition-all">
                   {p.name.charAt(0).toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">

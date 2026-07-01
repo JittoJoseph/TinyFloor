@@ -14,22 +14,28 @@ export class VirtualJoystickManager {
   }
 
   private setupVirtualJoystick() {
-    const baseX = 120;
-    const baseY = this.scene.cameras.main.height - 150;
-    const baseRadius = 70;
-    const thumbRadius = 30;
-    const maxDistance = 40;
+    const isMobile = this.scene.cameras.main.width < 640;
+    const baseX = isMobile ? 90 : 120;
+    // Position higher on mobile to avoid overlapping with the bottom control bar
+    const baseY = this.scene.cameras.main.height - (isMobile ? 200 : 150);
+    const baseRadius = isMobile ? 60 : 70;
+    const thumbRadius = isMobile ? 25 : 30;
+    const maxDistance = isMobile ? 35 : 40;
 
     this.joystickBase = this.scene.add.graphics();
-    this.joystickBase.fillStyle(0x000000, 0.3);
+    this.joystickBase.lineStyle(3, 0xffffff, 0.3);
+    this.joystickBase.fillStyle(0x000000, 0.25);
     this.joystickBase.fillCircle(baseX, baseY, baseRadius);
+    this.joystickBase.strokeCircle(baseX, baseY, baseRadius);
     this.joystickBase.setScrollFactor(0);
     this.joystickBase.setDepth(100000);
     this.scene.children.bringToTop(this.joystickBase);
 
     this.joystickThumb = this.scene.add.graphics();
-    this.joystickThumb.fillStyle(0xffffff, 0.8);
+    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
+    this.joystickThumb.fillStyle(0xffffff, 0.95);
     this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
+    this.joystickThumb.strokeCircle(baseX, baseY, thumbRadius);
     this.joystickThumb.setScrollFactor(0);
     this.joystickThumb.setDepth(100001);
     this.scene.children.bringToTop(this.joystickThumb);
@@ -76,8 +82,10 @@ export class VirtualJoystickManager {
     const thumbY = baseY + Math.sin(angle) * clampedDistance;
 
     this.joystickThumb.clear();
-    this.joystickThumb.fillStyle(0xffffff, 0.8);
+    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
+    this.joystickThumb.fillStyle(0xffffff, 0.95);
     this.joystickThumb.fillCircle(thumbX, thumbY, thumbRadius);
+    this.joystickThumb.strokeCircle(thumbX, thumbY, thumbRadius);
 
     if (clampedDistance > 0) {
       const angleDeg = (angle * 180) / Math.PI;
@@ -114,8 +122,10 @@ export class VirtualJoystickManager {
 
   private resetJoystick(baseX: number, baseY: number, thumbRadius: number) {
     this.joystickThumb.clear();
-    this.joystickThumb.fillStyle(0xffffff, 0.8);
+    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
+    this.joystickThumb.fillStyle(0xffffff, 0.95);
     this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
+    this.joystickThumb.strokeCircle(baseX, baseY, thumbRadius);
 
     this.velocity.x = 0;
     this.velocity.y = 0;

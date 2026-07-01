@@ -39,11 +39,10 @@ public class DiscordWebhookService {
         }
 
         try {
-            String time = ZonedDateTime.now(ZoneId.of("UTC"))
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'UTC'"));
+            String time = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"))
+                    .format(DateTimeFormatter.ofPattern("h.mm a 'IST'"));
 
-            String content = String.format("**New User Joined!** \uD83D\uDE80\n" +
-                            "**Name:** %s\n" +
+            String content = String.format("**Name:** %s\n" +
                             "**Character:** %s\n" +
                             "**Room:** `%s`\n" +
                             "**Time:** %s",

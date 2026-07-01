@@ -290,7 +290,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         }
         
         // Notify via Discord Webhook
-        discordWebhookService.sendJoinNotification(player.getName(), player.getSprite(), roomId);
+        com.spatialmeet.model.Room room = roomService.getRoom(roomId);
+        String roomName = (room != null) ? room.getName() : roomId;
+        discordWebhookService.sendJoinNotification(player.getName(), player.getSprite(), roomName);
         
         logger.info("Player {} joined room {}", playerId, roomId);
         

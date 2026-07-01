@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import { Video, Zap, Map, Smile } from "lucide-react";
 
 const featureList = [
@@ -6,73 +8,125 @@ const featureList = [
     icon: Video,
     title: "Proximity Video",
     desc: "Walk up to anyone to instantly start a video or voice call.",
-    color: "bg-blue-100",
-    border: "border-blue-200",
-    iconColor: "text-blue-600",
   },
   {
     icon: Map,
     title: "Retro Office",
     desc: "Hang out and collaborate in a cozy, cute 16-bit virtual workspace.",
-    color: "bg-amber-100",
-    border: "border-amber-200",
-    iconColor: "text-amber-700",
   },
   {
     icon: Smile,
     title: "Custom Avatars",
     desc: "Express yourself with one of our many custom pixel-art characters.",
-    color: "bg-purple-100",
-    border: "border-purple-200",
-    iconColor: "text-purple-600",
   },
   {
     icon: Zap,
     title: "Real-Time Sync",
     desc: "Experience seamless movement and interactions across the map.",
-    color: "bg-red-100",
-    border: "border-red-200",
-    iconColor: "text-red-600",
   },
 ];
 
+const FeatureCard = ({ feature }: { feature: (typeof featureList)[0] }) => {
+  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -20% 0px",
+        threshold: 0,
+      },
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, []);
+
+  return (
+    <div ref={cardRef} className="flex flex-col gap-5 md:gap-6">
+      <div
+        className={`w-full h-40 md:h-64 rounded-3xl flex items-center justify-center border transition-all duration-700 ease-out relative overflow-hidden ${
+          isInView
+            ? "bg-[#f4f4f0] border-[rgba(0,0,0,0.1)] shadow-[0_20px_50px_rgba(0,0,0,0.05),inset_0_2px_10px_rgba(255,255,255,1)] scale-100"
+            : "bg-[#e8e8e3] border-[rgba(0,0,0,0.06)] shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] scale-[0.98]"
+        }`}
+      >
+        <div
+          className={`relative transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+            isInView
+              ? "scale-110 opacity-100 translate-y-0"
+              : "scale-75 opacity-20 translate-y-4"
+          }`}
+        >
+          <feature.icon
+            className={`w-14 h-14 md:w-20 md:h-20 transition-colors duration-1000 ${
+              isInView
+                ? "text-[var(--color-braun-orange)]"
+                : "text-[rgba(0,0,0,0.2)]"
+            }`}
+            strokeWidth={1.2}
+          />
+        </div>
+      </div>
+
+      <div
+        className={`pl-4 md:pl-6 transition-all duration-700 ${
+          isInView
+            ? "border-[var(--color-braun-text)]"
+            : "border-[rgba(0,0,0,0.1)]"
+        }`}
+      >
+        <h3
+          className={`font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] mb-1 md:mb-3 tracking-tight leading-snug transition-opacity duration-700 ${
+            isInView ? "opacity-100" : "opacity-60"
+          }`}
+        >
+          {feature.title}
+        </h3>
+        <p
+          className={`font-body text-sm md:text-base text-[var(--color-braun-text)] leading-relaxed max-w-sm transition-opacity duration-700 ${
+            isInView ? "opacity-70" : "opacity-40"
+          }`}
+        >
+          {feature.desc}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="py-8">
-      <div className="flex flex-col gap-6">
-        <div className="text-center mb-4">
-          <h2 className="font-pixel text-4xl text-gray-800 bg-white inline-block px-4 py-2 rounded-lg border-2 border-ui-border shadow-retro-sm">
-            Everything you need
-          </h2>
+    <section
+      id="features"
+      className="py-12 md:py-20 px-4 md:px-8 max-w-6xl mx-auto w-full relative"
+    >
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+        <div className="md:w-5/12 flex-shrink-0 relative">
+          <div className="sticky top-20 md:top-1/2 md:-translate-y-1/2 z-10 bg-[var(--color-braun-bg)]/90 backdrop-blur-sm md:backdrop-blur-none py-4 md:py-0 -mx-4 px-4 md:mx-0 md:px-0 transition-transform duration-300">
+            <h2 className="font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] leading-[1.1] tracking-tight mb-4 md:mb-6">
+              Everything <br className="hidden md:block" />
+              <span className="font-medium">you need.</span>
+            </h2>
+            <p className="font-body text-base md:text-lg text-[var(--color-braun-text)] opacity-50 max-w-xs leading-relaxed">
+              All the tools necessary to bring your team together and
+              collaborate effortlessly.
+            </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="md:w-7/12 flex flex-col gap-16 md:gap-32 mt-4 md:mt-0">
           {featureList.map((f, i) => (
-            <div key={i} className="group relative">
-              <div className="absolute inset-0 bg-ui-border rounded-xl translate-x-2 translate-y-2 transition-transform group-hover:translate-x-3 group-hover:translate-y-3"></div>
-
-              <div className="relative bg-white border-2 border-ui-border rounded-xl p-6 flex flex-col md:flex-row gap-4 items-start md:items-center hover:-translate-y-1 transition-transform cursor-default h-full">
-                <div
-                  className={`w-14 h-14 rounded-lg border-2 border-ui-border flex items-center justify-center shrink-0 shadow-sm ${f.color}`}
-                >
-                  <f.icon className={`w-7 h-7 ${f.iconColor}`} />
-                </div>
-
-                <div>
-                  <h3 className="font-pixel text-2xl text-gray-900 mb-1">
-                    {f.title}
-                  </h3>
-                  <p className="font-body text-gray-600 leading-snug">
-                    {f.desc}
-                  </p>
-                </div>
-
-                <div className="absolute top-2 right-2 flex gap-1">
-                  <div className="w-1.5 h-1.5 bg-ui-border rounded-full opacity-20"></div>
-                  <div className="w-1.5 h-1.5 bg-ui-border rounded-full opacity-20"></div>
-                </div>
-              </div>
-            </div>
+            <FeatureCard key={i} feature={f} />
           ))}
         </div>
       </div>

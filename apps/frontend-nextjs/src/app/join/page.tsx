@@ -143,8 +143,6 @@ function JoinContent() {
         localStorage.setItem("guestCharacter", character);
       }
 
-      showToast("Joining room...", "success");
-
       // Redirect to the room page with params
       router.push(
         `/room/${roomInfo.id}?name=${encodeURIComponent(

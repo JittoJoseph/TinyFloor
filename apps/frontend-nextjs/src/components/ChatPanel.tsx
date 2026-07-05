@@ -100,7 +100,7 @@ export default function ChatPanel({
 
   // Close on click outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
         isOpenRef.current &&
         panelRef.current &&
@@ -110,7 +110,13 @@ export default function ChatPanel({
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, {
+      passive: true,
+    });
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [onClose]);
 
   // Scroll to bottom when new messages arrive (only when open)

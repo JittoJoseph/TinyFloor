@@ -48,7 +48,6 @@ export default function RoomPage() {
   const [mounted, setMounted] = useState(false);
   const [roomData, setRoomData] = useState<RoomData | null>(null);
   const [isInCall, setIsInCall] = useState(false);
-  const [showParticipants, setShowParticipants] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [unreadChatCount, setUnreadChatCount] = useState(0);
@@ -108,10 +107,6 @@ export default function RoomPage() {
 
   const handleChatClick = useCallback(() => {
     setShowChat((prev) => !prev);
-  }, []);
-
-  const handleParticipantsClick = useCallback(() => {
-    setShowParticipants((prev) => !prev);
   }, []);
 
   const handleLeaveCall = useCallback(() => {
@@ -198,7 +193,6 @@ export default function RoomPage() {
           </div>
         </div>
 
-        {/* Right side buttons */}
         <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto self-end sm:self-auto">
           {/* Copy Invite Link */}
           <button
@@ -229,78 +223,6 @@ export default function RoomPage() {
         </div>
       </div>
 
-      {/* Participants Panel */}
-      {showParticipants && (
-        <div className="absolute top-24 right-6 z-20 bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-md p-5 w-72">
-          <h3 className="font-bold text-sm text-[var(--color-braun-text)] mb-4 flex items-center gap-2 tracking-widest uppercase">
-            <Users className="w-4 h-4" />
-            Participants
-          </h3>
-          <div className="space-y-2">
-            <div className="flex items-center gap-3 p-3 bg-gray-50/80 rounded-xl border border-[rgba(0,0,0,0.06)]">
-              <div className="w-9 h-9 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm">
-                {name?.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-900">
-                  {name} (You)
-                </p>
-                <p className="text-xs text-green-500">Online</p>
-              </div>
-            </div>
-            {participants.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => {
-                  if (p.id) {
-                    window.open(
-                      `/dashboard?user=${p.id}`,
-                      "_blank",
-                      "noopener,noreferrer",
-                    );
-                  }
-                }}
-                disabled={!p.id}
-                className="flex items-center gap-3 p-3 hover:bg-white rounded-xl border border-transparent hover:border-[rgba(0,0,0,0.06)] hover:shadow-sm transition-all cursor-pointer w-full text-left disabled:cursor-not-allowed disabled:opacity-50 group"
-              >
-                <div className="w-9 h-9 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm group-hover:bg-white group-hover:border group-hover:border-[rgba(0,0,0,0.06)] transition-all">
-                  {p.name.charAt(0).toUpperCase()}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1">
-                    <p className="text-sm font-medium text-gray-900 truncate">
-                      {p.name}
-                    </p>
-                    {!p.isGuest && (
-                      <svg
-                        className="w-3.5 h-3.5 text-blue-500 shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <p className="text-xs text-green-500">Online</p>
-                    {p.isGuest && (
-                      <span className="text-[9px] px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold">
-                        GUEST
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </button>
-            ))}
-            {participants.length === 0 && (
-              <p className="text-xs text-gray-500 text-center py-2">
-                No other participants yet
-              </p>
-            )}
-          </div>
-        </div>
-      )}
-
       {/* Game Canvas */}
       <PhaserGame
         name={name}
@@ -321,11 +243,9 @@ export default function RoomPage() {
         onVideoToggle={handleVideoToggle}
         onSettingsClick={handleSettingsClick}
         onChatClick={handleChatClick}
-        onParticipantsClick={handleParticipantsClick}
         onLeaveCall={handleLeaveCall}
         onStatusChange={handleStatusChange}
         isInCall={isInCall}
-        participantCount={roomData?.activeUsers || 0}
         currentStatus={currentStatus}
         unreadChatCount={unreadChatCount}
       />

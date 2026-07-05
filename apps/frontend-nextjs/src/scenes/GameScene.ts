@@ -24,9 +24,13 @@ class GameScene extends Phaser.Scene {
   private playerId: string;
   private camera!: Phaser.Cameras.Scene2D.Camera;
   private sceneReady: boolean = false;
-  private handleSendChatMessage?: EventListener;
-  private handleInitiateCall?: EventListener;
-  private handleStatusChange?: EventListener;
+
+  // Named event handlers for proper cleanup
+  private handleSendChatMessage!: EventListener;
+  private handleInitiateCall!: EventListener;
+  private handleStatusChange!: EventListener;
+  private handleChatFocused!: EventListener;
+  private handleChatBlurred!: EventListener;
 
   constructor(
     private name: string,
@@ -48,7 +52,6 @@ class GameScene extends Phaser.Scene {
 
   create() {
     this.camera = this.cameras.main;
-
     this.animationManager.create();
 
     this.wsManager = new WebSocketManager(
@@ -64,18 +67,12 @@ class GameScene extends Phaser.Scene {
 
     this.mapManager.create();
     const spawnTilePos = this.mapManager.getRandomSpawnPosition();
-    // Convert tile spawn to pixel position for local player creation
     const spawnPixel = tileToPixel(spawnTilePos.tileX, spawnTilePos.tileY);
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const host = window.location.hostname;
-    const defaultWsUrl = `${protocol}//${host}:8080`;
-
-    // Use env var if available, otherwise fallback to default
     let wsBaseUrl = process.env.NEXT_PUBLIC_WS_URL;
 
-    // If no env var, or if env var is localhost but we are NOT on localhost (e.g. network testing),
-    // construct URL from window location
     if (
       !wsBaseUrl ||
       (wsBaseUrl.includes("localhost") &&
@@ -85,11 +82,8 @@ class GameScene extends Phaser.Scene {
       wsBaseUrl = `${protocol}//${host}:8080`;
     }
 
-    const wsUrl = `${wsBaseUrl}/ws/${this.roomId}`;
-    // Pass TILE coordinates to WebSocket
-    this.wsManager.connect(wsUrl, spawnTilePos);
+    this.wsManager.connect(`${wsBaseUrl}/ws/${this.roomId}`, spawnTilePos);
 
-    // Create local player at PIXEL position (center of spawn tile)
     this.player = this.playerManager.createLocalPlayer(
       this.playerId,
       this.name,
@@ -122,14 +116,9 @@ class GameScene extends Phaser.Scene {
     );
 
     this.mapManager.setupColliders(this.player);
-
-    // Set up collision checking for movement
     this.movementManager.setCollisionChecker((x: number, y: number) => {
       return this.mapManager.checkCollisionAt(x, y);
     });
-
-    // Local player uses tween-based movement, so no physics collision between players
-    // Remote players still use physics for collision detection
 
     this.messageHandler = new MessageHandler(
       this,
@@ -146,7 +135,6 @@ class GameScene extends Phaser.Scene {
       this.messageHandler.handleMessage(msg);
     });
 
-    // Set camera bounds
     this.cameras.main.setBounds(
       0,
       0,
@@ -155,7 +143,6 @@ class GameScene extends Phaser.Scene {
     );
     this.cameras.main.startFollow(this.player);
 
-    // Set physics world bounds
     this.physics.world.setBounds(
       0,
       0,
@@ -163,7 +150,6 @@ class GameScene extends Phaser.Scene {
       this.mapManager.getMapHeight(),
     );
 
-    // Set camera zoom and deadzone for better view
     this.camera.setZoom(1.2);
     this.camera.setDeadzone(200, 150);
 
@@ -171,44 +157,36 @@ class GameScene extends Phaser.Scene {
       this.virtualJoystickManager = new VirtualJoystickManager(this);
     }
 
-    // Listen for chat messages from React
     this.handleSendChatMessage = ((event: CustomEvent) => {
-      if (this.wsManager) {
-        this.wsManager.send("chat", event.detail);
-      }
+      this.wsManager.send("chat", event.detail);
     }) as EventListener;
-    window.addEventListener("sendChatMessage", this.handleSendChatMessage);
 
-    // Listen for call initiation from React
     this.handleInitiateCall = ((event: CustomEvent) => {
       const { playerId, type } = event.detail;
-      if (this.proximityManager) {
-        this.proximityManager.initiateCall(playerId, type);
-      }
+      this.proximityManager.initiateCall(playerId, type);
     }) as EventListener;
-    window.addEventListener("initiateCall", this.handleInitiateCall);
 
-    // Listen for status changes from React
     this.handleStatusChange = ((event: CustomEvent) => {
       const { status } = event.detail;
-      if (this.wsManager) {
-        this.wsManager.send("status_change", { status });
-        // Update local player's status display
-        if (this.playerManager) {
-          this.playerManager.updatePlayerStatus(this.playerId, status);
-        }
-      }
+      this.wsManager.send("status_change", { status });
+      this.playerManager.updatePlayerStatus(this.playerId, status);
     }) as EventListener;
+
+    this.handleChatFocused = () => this.movementManager.disableInput();
+    this.handleChatBlurred = () => this.movementManager.enableInput();
+
+    window.addEventListener("sendChatMessage", this.handleSendChatMessage);
+    window.addEventListener("initiateCall", this.handleInitiateCall);
     window.addEventListener("statusChange", this.handleStatusChange);
+    window.addEventListener("chatFocused", this.handleChatFocused);
+    window.addEventListener("chatBlurred", this.handleChatBlurred);
   }
 
-  update(time: number, delta: number) {
+  update(_time: number, delta: number) {
     if (!this.player) return;
 
-    // Update player name tag to follow smooth movement
     this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
 
-    // Handle joystick input for mobile
     if (this.virtualJoystickManager) {
       const velocity = this.virtualJoystickManager.getVelocity();
       this.movementManager.setJoystickVelocity(velocity.x, velocity.y);
@@ -216,37 +194,23 @@ class GameScene extends Phaser.Scene {
       this.movementManager.setJoystickVelocity(0, 0);
     }
 
-    // Handle movement (throttled network sync is now internal)
     this.movementManager.update(delta);
-
-    // Update proximity
-    if (this.proximityManager) {
-      this.proximityManager.update();
-    }
-
-    // Update remote player positions and animations
-    if (this.playerManager) {
-      this.playerManager.update();
-    }
+    this.proximityManager.update();
+    this.playerManager.update();
   }
 
   public cleanup() {
-    if (this.handleSendChatMessage) {
-      window.removeEventListener("sendChatMessage", this.handleSendChatMessage);
-    }
-    if (this.handleInitiateCall) {
-      window.removeEventListener("initiateCall", this.handleInitiateCall);
-    }
-    if (this.handleStatusChange) {
-      window.removeEventListener("statusChange", this.handleStatusChange);
-    }
+    window.removeEventListener("sendChatMessage", this.handleSendChatMessage);
+    window.removeEventListener("initiateCall", this.handleInitiateCall);
+    window.removeEventListener("statusChange", this.handleStatusChange);
+    window.removeEventListener("chatFocused", this.handleChatFocused);
+    window.removeEventListener("chatBlurred", this.handleChatBlurred);
+
     this.wsManager.disconnect();
     this.playerManager.destroy();
     this.proximityManager.destroy();
     this.callManager.cleanup();
-    if (this.virtualJoystickManager) {
-      this.virtualJoystickManager.destroy();
-    }
+    this.virtualJoystickManager?.destroy();
   }
 }
 

@@ -343,6 +343,7 @@ export default function RoomPage() {
         userId={localPlayerId}
         userName={name}
         onUnreadChange={setUnreadChatCount}
+        participantCount={participants.length + 1}
       />
     </div>
   );

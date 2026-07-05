@@ -42,7 +42,8 @@ export default function RoomPage() {
   const roomId = params.roomId as string;
   const name = searchParams.get("name");
   const character = searchParams.get("character");
-  const userId = searchParams.get("userId");
+  const urlUserId = searchParams.get("userId");
+  const [localPlayerId] = useState(() => urlUserId || crypto.randomUUID());
 
   const [mounted, setMounted] = useState(false);
   const [roomData, setRoomData] = useState<RoomData | null>(null);
@@ -50,6 +51,7 @@ export default function RoomPage() {
   const [showParticipants, setShowParticipants] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [unreadChatCount, setUnreadChatCount] = useState(0);
   const [copied, setCopied] = useState(false);
   const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
   const [participants, setParticipants] = useState<
@@ -304,7 +306,7 @@ export default function RoomPage() {
         name={name}
         roomId={roomId}
         character={character}
-        userId={userId}
+        userId={localPlayerId}
       />
 
       {/* Proximity Overlay */}
@@ -325,6 +327,7 @@ export default function RoomPage() {
         isInCall={isInCall}
         participantCount={roomData?.activeUsers || 0}
         currentStatus={currentStatus}
+        unreadChatCount={unreadChatCount}
       />
 
       {/* Settings Modal */}
@@ -337,8 +340,9 @@ export default function RoomPage() {
       <ChatPanel
         isOpen={showChat}
         onClose={() => setShowChat(false)}
-        playerId={roomId}
-        playerName={name}
+        userId={localPlayerId}
+        userName={name}
+        onUnreadChange={setUnreadChatCount}
       />
     </div>
   );

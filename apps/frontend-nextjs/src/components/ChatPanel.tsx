@@ -1,15 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import {
-  X,
-  Send,
-  Smile,
-  Paperclip,
-  Maximize2,
-  Minimize2,
-  MessageCircle,
-} from "lucide-react";
+import { X, Send, MessageSquare } from "lucide-react";
 
 interface ChatMessage {
   id: string;
@@ -17,30 +9,56 @@ interface ChatMessage {
   senderName: string;
   content: string;
   timestamp: Date;
-  type: "text" | "emoji" | "system";
+  type: "text" | "system";
 }
 
 interface ChatPanelProps {
   isOpen: boolean;
   onClose: () => void;
-  playerId: string;
-  playerName: string;
+  userId: string;
+  userName: string;
+  onUnreadChange?: (count: number) => void;
 }
-
-const EMOJI_QUICK_PICKS = ["👋", "👍", "😊", "🎉", "💡", "🤔", "✅", "❤️"];
 
 export default function ChatPanel({
   isOpen,
   onClose,
-  playerId,
-  playerName,
+  userId,
+  userName,
+  onUnreadChange,
 }: ChatPanelProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [showEmojis, setShowEmojis] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Reset unread count when opened
+  useEffect(() => {
+    if (isOpen) {
+      setUnreadCount(0);
+      onUnreadChange?.(0);
+      // Small timeout to let it render before focusing
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }, [isOpen, onUnreadChange]);
+
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        panelRef.current &&
+        !panelRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, onClose]);
 
   // Auto-scroll to bottom
   const scrollToBottom = useCallback(() => {
@@ -51,34 +69,33 @@ export default function ChatPanel({
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // Focus input when opening
-  useEffect(() => {
-    if (isOpen) {
-      inputRef.current?.focus();
-    }
-  }, [isOpen]);
-
   // Listen for incoming chat messages
   useEffect(() => {
     const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
       setMessages((prev) => {
-        // Prevent duplicates
-        if (prev.some((msg) => msg.id === event.detail.id)) {
-          return prev;
-        }
+        if (prev.some((msg) => msg.id === event.detail.id)) return prev;
         return [...prev, event.detail];
       });
+
+      // Update unread count if not open
+      if (!isOpen) {
+        setUnreadCount((prev) => {
+          const newCount = prev + 1;
+          onUnreadChange?.(newCount);
+          return newCount;
+        });
+      }
     }) as EventListener;
 
     window.addEventListener("chatMessage", handleChatMessage);
 
-    // Add welcome message
+    // Initial welcome message (won't trigger unread because it's local)
     setMessages([
       {
         id: "welcome",
         senderId: "system",
         senderName: "System",
-        content: "Welcome to the room chat! Say hi to your colleagues",
+        content: "Welcome to the room chat. Messages are visible to everyone here.",
         timestamp: new Date(),
         type: "system",
       },
@@ -87,51 +104,27 @@ export default function ChatPanel({
     return () => {
       window.removeEventListener("chatMessage", handleChatMessage);
     };
-  }, []);
+  }, [isOpen, onUnreadChange]);
 
   const sendMessage = useCallback(() => {
     if (!inputValue.trim()) return;
 
     const message: ChatMessage = {
-      id: `${Date.now()}-${playerId}`,
-      senderId: playerId,
-      senderName: playerName,
+      id: `${Date.now()}-${userId}`,
+      senderId: userId,
+      senderName: userName,
       content: inputValue.trim(),
       timestamp: new Date(),
       type: "text",
     };
 
-    // Add to local messages
     setMessages((prev) => [...prev, message]);
-
-    // Send via WebSocket
-    window.dispatchEvent(
-      new CustomEvent("sendChatMessage", { detail: message }),
-    );
-
+    window.dispatchEvent(new CustomEvent("sendChatMessage", { detail: message }));
     setInputValue("");
-    setShowEmojis(false);
-  }, [inputValue, playerId, playerName]);
-
-  const sendEmoji = useCallback(
-    (emoji: string) => {
-      const message: ChatMessage = {
-        id: `${Date.now()}-${playerId}`,
-        senderId: playerId,
-        senderName: playerName,
-        content: emoji,
-        timestamp: new Date(),
-        type: "emoji",
-      };
-
-      setMessages((prev) => [...prev, message]);
-      window.dispatchEvent(
-        new CustomEvent("sendChatMessage", { detail: message }),
-      );
-      setShowEmojis(false);
-    },
-    [playerId, playerName],
-  );
+    
+    // Focus back to input after sending
+    inputRef.current?.focus();
+  }, [inputValue, userId, userName]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -150,90 +143,68 @@ export default function ChatPanel({
     });
   };
 
+  // Dispatch events to disable WASD
+  const handleFocus = () => window.dispatchEvent(new CustomEvent("chatFocused"));
+  const handleBlur = () => window.dispatchEvent(new CustomEvent("chatBlurred"));
+
   if (!isOpen) return null;
 
   return (
     <div
-      className={`fixed z-50 bg-white/95 backdrop-blur-sm border-2 border-gray-800 rounded-2xl shadow-retro flex flex-col transition-all duration-200 ${
-        isExpanded ? "inset-4" : "bottom-24 right-4 w-80 h-96"
-      }`}
+      ref={panelRef}
+      className="fixed bottom-24 right-4 md:right-8 w-full max-w-[340px] h-[450px] z-50 bg-[#fbfbf9]/95 backdrop-blur-md border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg flex flex-col font-body transition-all overflow-hidden"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b-2 border-gray-200 bg-indigo-50 rounded-t-xl">
-        <h3 className="font-pixel text-lg text-gray-900 flex items-center gap-2">
-          <MessageCircle className="w-5 h-5 text-blue-500" />
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)] bg-white/50">
+        <h3 className="font-semibold text-[var(--color-braun-text)] flex items-center gap-2">
+          <MessageSquare className="w-4 h-4 opacity-70" />
           Room Chat
-          {messages.length > 1 && (
-            <span className="text-xs font-mono text-gray-500 bg-white px-2 py-0.5 rounded-full">
-              {messages.length - 1}
-            </span>
-          )}
         </h3>
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 hover:bg-white/50 rounded-lg transition-colors"
-            title={isExpanded ? "Minimize" : "Expand"}
-          >
-            {isExpanded ? (
-              <Minimize2 className="w-4 h-4 text-gray-600" />
-            ) : (
-              <Maximize2 className="w-4 h-4 text-gray-600" />
-            )}
-          </button>
-          <button
-            onClick={onClose}
-            className="cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
-          >
-            <X className="w-4 h-4 text-gray-600" />
-          </button>
-        </div>
+        <button
+          onClick={onClose}
+          className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
+        >
+          <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-70" />
+        </button>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-3 space-y-3">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
           <div
             key={msg.id}
             className={`flex ${
-              msg.senderId === playerId ? "justify-end" : "justify-start"
+              msg.senderId === userId ? "justify-end" : "justify-start"
             }`}
           >
             {msg.type === "system" ? (
-              <div className="text-center text-xs text-gray-500 bg-gray-100 px-3 py-2 rounded-lg mx-auto">
+              <div className="text-center text-xs text-[var(--color-braun-text)] opacity-50 bg-[rgba(0,0,0,0.03)] px-3 py-1.5 rounded-full mx-auto">
                 {msg.content}
               </div>
             ) : (
               <div
-                className={`max-w-[75%] ${
-                  msg.senderId === playerId ? "order-1" : ""
+                className={`max-w-[85%] ${
+                  msg.senderId === userId ? "order-1" : ""
                 }`}
               >
-                {msg.senderId !== playerId && (
-                  <div className="flex items-center gap-1 mb-1 ml-1">
-                    <div className="w-4 h-4 rounded-full bg-indigo-100 flex items-center justify-center text-[10px] font-bold text-indigo-600 border border-indigo-200">
-                      {msg.senderName.charAt(0).toUpperCase()}
-                    </div>
-                    <p className="text-xs text-gray-500 font-medium">
-                      {msg.senderName}
-                    </p>
-                  </div>
+                {msg.senderId !== userId && (
+                  <p className="text-[11px] text-[var(--color-braun-text)] opacity-60 font-medium ml-1 mb-1">
+                    {msg.senderName}
+                  </p>
                 )}
                 <div
-                  className={`px-3 py-2 rounded-2xl ${
-                    msg.type === "emoji"
-                      ? "text-3xl bg-transparent"
-                      : msg.senderId === playerId
-                        ? "bg-indigo-500 text-white rounded-br-sm"
-                        : "bg-gray-100 text-gray-900 rounded-bl-sm"
+                  className={`px-3.5 py-2.5 rounded-2xl text-sm shadow-sm ${
+                    msg.senderId === userId
+                      ? "bg-[var(--color-braun-orange)] text-white rounded-br-sm"
+                      : "bg-white text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.04)] rounded-bl-sm"
                   }`}
                 >
                   {msg.content}
                 </div>
                 <p
-                  className={`text-[10px] text-gray-400 mt-1 ${
-                    msg.senderId === playerId ? "text-right mr-1" : "ml-1"
-                  }`}
+                  className={`text-[10px] opacity-40 mt-1 ${
+                    msg.senderId === userId ? "text-right mr-1" : "ml-1"
+                  } text-[var(--color-braun-text)]`}
                 >
                   {formatTime(msg.timestamp)}
                 </p>
@@ -244,56 +215,30 @@ export default function ChatPanel({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Emoji Quick Picks */}
-      {showEmojis && (
-        <div className="px-3 py-2 border-t border-gray-200 bg-gray-50">
-          <div className="flex gap-2 flex-wrap">
-            {EMOJI_QUICK_PICKS.map((emoji) => (
-              <button
-                key={emoji}
-                onClick={() => sendEmoji(emoji)}
-                className="text-2xl hover:scale-125 transition-transform p-1"
-              >
-                {emoji}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Input */}
-      <div className="p-3 border-t-2 border-gray-200">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowEmojis(!showEmojis)}
-            className={`p-2 rounded-lg transition-colors ${
-              showEmojis
-                ? "bg-indigo-100 text-indigo-600"
-                : "hover:bg-gray-100 text-gray-500"
-            }`}
-            title="Emojis"
-          >
-            <Smile className="w-5 h-5" />
-          </button>
+      <div className="p-3 bg-white/50 border-t border-[rgba(0,0,0,0.04)]">
+        <div className="flex items-center gap-2 bg-white rounded-full border border-[rgba(0,0,0,0.06)] pr-1.5 pl-4 py-1.5 focus-within:border-[rgba(0,0,0,0.15)] transition-colors shadow-sm">
           <input
             ref={inputRef}
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             placeholder="Type a message..."
-            className="flex-1 px-3 py-2 bg-gray-100 rounded-xl border-2 border-transparent focus:border-indigo-300 focus:bg-white outline-none text-sm"
+            className="flex-1 bg-transparent border-none outline-none text-sm text-[var(--color-braun-text)] placeholder:opacity-40"
           />
           <button
             onClick={sendMessage}
             disabled={!inputValue.trim()}
-            className={`p-2 rounded-xl transition-all ${
+            className={`cursor-pointer p-2 rounded-full transition-all flex items-center justify-center ${
               inputValue.trim()
-                ? "bg-indigo-500 hover:bg-indigo-600 text-white hover:-translate-y-0.5"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                ? "bg-[var(--color-braun-text)] text-white hover:bg-[#3d3d3d]"
+                : "bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-30"
             }`}
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-4 h-4 ml-0.5" />
           </button>
         </div>
       </div>

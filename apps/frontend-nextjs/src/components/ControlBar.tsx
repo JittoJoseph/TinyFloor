@@ -27,6 +27,7 @@ interface ControlBarProps {
   isInCall?: boolean;
   participantCount?: number;
   currentStatus?: PlayerStatus;
+  unreadChatCount?: number;
 }
 
 export default function ControlBar({
@@ -40,6 +41,7 @@ export default function ControlBar({
   isInCall = false,
   participantCount = 0,
   currentStatus = "available",
+  unreadChatCount = 0,
 }: ControlBarProps) {
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(true);
@@ -167,10 +169,15 @@ export default function ControlBar({
           {/* Chat Button */}
           <button
             onClick={onChatClick}
-            className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            className="cursor-pointer relative p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
             title="Open chat"
           >
             <MessageSquare className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            {unreadChatCount > 0 && (
+              <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] bg-[var(--color-braun-orange)] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 border-2 border-white shadow-sm">
+                {unreadChatCount > 99 ? '99+' : unreadChatCount}
+              </span>
+            )}
           </button>
 
           {/* Participants Button */}

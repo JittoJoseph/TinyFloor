@@ -29,13 +29,27 @@ export default function ChatPanel({
   onUnreadChange,
   participantCount = 1,
 }: ChatPanelProps) {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      id: "welcome",
+      senderId: "system",
+      senderName: "System",
+      content:
+        "Welcome to the room chat. Messages are visible to everyone here.",
+      timestamp: new Date(),
+      type: "system",
+    },
+  ]);
   const [inputValue, setInputValue] = useState("");
   const [unreadCount, setUnreadCount] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  // Ref so the message listener always reads the latest isOpen without being in deps
+  const isOpenRef = useRef(isOpen);
+  isOpenRef.current = isOpen;
 
+  // Reset unread and focus input when opened; unlock movement when closed
   useEffect(() => {
     if (isOpen) {
       setUnreadCount(0);
@@ -46,10 +60,49 @@ export default function ChatPanel({
     }
   }, [isOpen, onUnreadChange]);
 
+  // Propagate unread count to parent outside the render cycle
+  useEffect(() => {
+    if (!isOpen) onUnreadChange?.(unreadCount);
+  }, [unreadCount, isOpen, onUnreadChange]);
+
+  // Message listener — runs once on mount, never resets message history
+  useEffect(() => {
+    const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
+      setMessages((prev) => {
+        if (prev.some((msg) => msg.id === event.detail.id)) return prev;
+        return [...prev, event.detail];
+      });
+      if (!isOpenRef.current) setUnreadCount((prev) => prev + 1);
+    }) as EventListener;
+
+    window.addEventListener("chatMessage", handleChatMessage);
+    return () => window.removeEventListener("chatMessage", handleChatMessage);
+  }, []);
+
+  // Introduce players to chat 10 seconds after mounting
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent("chatMessage", {
+          detail: {
+            id: `intro-${Date.now()}`,
+            senderId: "system-intro",
+            senderName: "System",
+            content: "You can chat with everyone in this room here.",
+            timestamp: new Date(),
+            type: "text",
+          } satisfies ChatMessage,
+        }),
+      );
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Close on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        isOpen &&
+        isOpenRef.current &&
         panelRef.current &&
         !panelRef.current.contains(event.target as Node)
       ) {
@@ -58,62 +111,12 @@ export default function ChatPanel({
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
-  const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
+  // Scroll to bottom when new messages arrive (only when open)
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, scrollToBottom]);
-
-  // Propagate unread count to parent outside the render cycle
-  useEffect(() => {
-    if (!isOpen) onUnreadChange?.(unreadCount);
-  }, [unreadCount, isOpen, onUnreadChange]);
-
-  useEffect(() => {
-    const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
-      setMessages((prev) => {
-        if (prev.some((msg) => msg.id === event.detail.id)) return prev;
-        return [...prev, event.detail];
-      });
-      if (!isOpen) setUnreadCount((prev) => prev + 1);
-    }) as EventListener;
-
-    window.addEventListener("chatMessage", handleChatMessage);
-
-    setMessages([
-      {
-        id: "welcome",
-        senderId: "system",
-        senderName: "System",
-        content:
-          "Welcome to the room chat. Messages are visible to everyone here.",
-        timestamp: new Date(),
-        type: "system",
-      },
-    ]);
-
-    return () => window.removeEventListener("chatMessage", handleChatMessage);
-  }, [isOpen, onUnreadChange]);
-
-  // Introduce players to chat 10 seconds after mounting
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const message: ChatMessage = {
-        id: `intro-${Date.now()}`,
-        senderId: "system-intro",
-        senderName: "System",
-        content: "You can chat with everyone in this room here.",
-        timestamp: new Date(),
-        type: "text",
-      };
-      window.dispatchEvent(new CustomEvent("chatMessage", { detail: message }));
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (isOpen) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isOpen]);
 
   const sendMessage = useCallback(() => {
     if (!inputValue.trim()) return;
@@ -153,12 +156,14 @@ export default function ChatPanel({
     window.dispatchEvent(new CustomEvent("chatFocused"));
   const handleBlur = () => window.dispatchEvent(new CustomEvent("chatBlurred"));
 
-  if (!isOpen) return null;
-
   return (
     <div
       ref={panelRef}
-      className="fixed bottom-24 right-4 md:right-8 w-full max-w-[340px] h-[450px] z-50 bg-[#fbfbf9]/95 backdrop-blur-md border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg flex flex-col font-body transition-all overflow-hidden"
+      className={`fixed bottom-24 right-4 md:right-8 w-full max-w-[340px] h-[450px] z-50 bg-[#fbfbf9]/95 backdrop-blur-md border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg flex flex-col font-body overflow-hidden transition-all duration-200 ${
+        isOpen
+          ? "opacity-100 pointer-events-auto translate-y-0"
+          : "opacity-0 pointer-events-none translate-y-2"
+      }`}
     >
       <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)] bg-white/50">
         <h3 className="font-semibold text-[var(--color-braun-text)] flex items-center gap-2">

@@ -80,4 +80,40 @@ public class DiscordWebhookService {
             logger.error("Failed to prepare Discord webhook payload", e);
         }
     }
+
+    public void sendChatMessage(String username, String content) {
+        if (webhookUrl == null || webhookUrl.isBlank()) {
+            return;
+        }
+
+        try {
+            String formattedMessage = String.format("%s: %s", username, content);
+
+            Map<String, Object> payload = new HashMap<>();
+            payload.put("content", formattedMessage);
+
+            String jsonPayload = objectMapper.writeValueAsString(payload);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(webhookUrl))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                    .build();
+
+            httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenAccept(response -> {
+                        if (response.statusCode() >= 400) {
+                            logger.error("Failed to send Discord chat webhook. Status: {}, Body: {}", 
+                                    response.statusCode(), response.body());
+                        }
+                    })
+                    .exceptionally(e -> {
+                        logger.error("Error sending Discord chat webhook", e);
+                        return null;
+                    });
+
+        } catch (Exception e) {
+            logger.error("Failed to prepare Discord chat webhook payload", e);
+        }
+    }
 }

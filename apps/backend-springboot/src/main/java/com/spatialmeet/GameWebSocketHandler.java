@@ -36,6 +36,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
+    private final Map<String, String> sessionToPlayer = new ConcurrentHashMap<>();
     private static final String[] AVAILABLE_SPRITES = {"Adam", "Alex", "Amelia", "Bob"};
     private final java.util.Random random = new java.util.Random();
     
@@ -58,8 +59,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final ScheduledExecutorService movementBroadcaster = Executors.newSingleThreadScheduledExecutor();
     private final ScheduledExecutorService cleanupExecutor = Executors.newSingleThreadScheduledExecutor();
     private static final long BROADCAST_INTERVAL_MS = 50; // Batch broadcasts every 50ms
-    private static final long CLEANUP_INTERVAL_MS = 300000; // Clean up every 5 minutes
-    private static final long INACTIVE_TIMEOUT_MS = 300000; // 5 minutes timeout
+    private static final long CLEANUP_INTERVAL_MS = 30000; // Clean up every 30 seconds
+    private static final long INACTIVE_TIMEOUT_MS = 90000; // 90 seconds timeout
 
     public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService) {
         this.roomService = roomService;
@@ -86,7 +87,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 Player player = entry.getValue();
                 if (now - player.getLastSeen() > INACTIVE_TIMEOUT_MS) {
                     String playerId = entry.getKey();
-                    roomSessions.get(roomId).remove(playerId);
+                    WebSocketSession session = roomSessions.get(roomId).remove(playerId);
+                    if (session != null) {
+                        sessionToPlayer.remove(session.getId());
+                        sessionToRoom.remove(session.getId());
+                    }
                     roomService.leaveRoom(roomId, playerId);
                     // Broadcast leave message
                     try {
@@ -191,6 +196,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "ping":
                     // Heartbeat - update last seen
                     updateLastSeen(session);
+                    session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("pong", Map.of()))));
                     break;
             }
         } catch (Exception e) {
@@ -211,6 +217,20 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         
         // Broadcast chat message to all players in the room
         broadcastToRoom(roomId, msg, null);
+        
+        // Forward to Discord
+        try {
+            Map<String, Object> data = msg.getData();
+            if (data != null) {
+                String senderName = (String) data.get("senderName");
+                String content = (String) data.get("content");
+                if (senderName != null && content != null) {
+                    discordWebhookService.sendChatMessage(senderName, content);
+                }
+            }
+        } catch (Exception e) {
+            logger.warn("Failed to forward chat to Discord: {}", e.getMessage());
+        }
     }
 
     private void handleStatusChange(WebSocketSession session, Message msg) throws IOException {
@@ -263,6 +283,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
         roomPlayers.get(roomId).put(playerId, player);
         roomSessions.get(roomId).put(playerId, session);
+        sessionToPlayer.put(session.getId(), playerId);
         
         // Update room in database/cache
         boolean joined = roomService.joinRoom(roomId, playerId);
@@ -424,7 +445,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) throws Exception {
-        String playerId = getPlayerIdFromSession(session);
+        String playerId = sessionToPlayer.get(session.getId());
         
         if (playerId != null) {
             String roomId = sessionToRoom.get(session.getId());
@@ -439,6 +460,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             }
         }
         sessionToRoom.remove(session.getId());
+        sessionToPlayer.remove(session.getId());
     }
 
     private void broadcastToRoom(String roomId, Message message, String excludePlayerId) throws IOException {
@@ -473,14 +495,6 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     }
 
     private String getPlayerIdFromSession(WebSocketSession session) {
-        String roomId = sessionToRoom.get(session.getId());
-        if (roomId != null) {
-            return roomSessions.get(roomId).entrySet().stream()
-                .filter(e -> e.getValue().equals(session))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
-        }
-        return null;
+        return sessionToPlayer.get(session.getId());
     }
 }

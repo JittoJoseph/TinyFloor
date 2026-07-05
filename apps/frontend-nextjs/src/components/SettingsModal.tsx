@@ -1,153 +1,92 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import {
-  X,
-  Volume2,
-  Mic,
-  Video,
-  Monitor,
-  Sun,
-  Moon,
-  Gamepad2,
-  User,
-} from "lucide-react";
+import { X, Mic, Video, Volume2 } from "lucide-react";
 
 interface SettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-interface AudioDevice {
+interface MediaDevice {
   deviceId: string;
   label: string;
 }
 
+type Tab = "audio" | "video";
+
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
-  const [activeTab, setActiveTab] = useState<"audio" | "video" | "general">(
-    "audio",
-  );
-  const [audioInputDevices, setAudioInputDevices] = useState<AudioDevice[]>([]);
-  const [audioOutputDevices, setAudioOutputDevices] = useState<AudioDevice[]>(
+  const [activeTab, setActiveTab] = useState<Tab>("audio");
+  const [audioInputDevices, setAudioInputDevices] = useState<MediaDevice[]>([]);
+  const [audioOutputDevices, setAudioOutputDevices] = useState<MediaDevice[]>(
     [],
   );
-  const [videoDevices, setVideoDevices] = useState<AudioDevice[]>([]);
-  const [selectedAudioInput, setSelectedAudioInput] = useState<string>("");
-  const [selectedAudioOutput, setSelectedAudioOutput] = useState<string>("");
-  const [selectedVideoInput, setSelectedVideoInput] = useState<string>("");
+  const [videoDevices, setVideoDevices] = useState<MediaDevice[]>([]);
+  const [selectedAudioInput, setSelectedAudioInput] = useState("");
+  const [selectedAudioOutput, setSelectedAudioOutput] = useState("");
+  const [selectedVideoInput, setSelectedVideoInput] = useState("");
   const [masterVolume, setMasterVolume] = useState(80);
   const [micVolume, setMicVolume] = useState(100);
   const [videoQuality, setVideoQuality] = useState<"low" | "medium" | "high">(
     "medium",
   );
-  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
-  const [showFPS, setShowFPS] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
-  // Load devices on mount
   useEffect(() => {
     if (!isOpen) return;
-
     const loadDevices = async () => {
       try {
-        // Check if mediaDevices is supported (requires HTTPS or localhost)
-        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-          console.warn(
-            "Media devices not supported in this context (likely non-secure HTTP)",
-          );
-          return;
-        }
-
-        // Request permission to access devices
+        if (!navigator.mediaDevices?.getUserMedia) return;
         await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-
         const devices = await navigator.mediaDevices.enumerateDevices();
-
-        setAudioInputDevices(
+        const map = (kind: string, fallback: string): MediaDevice[] =>
           devices
-            .filter((d) => d.kind === "audioinput")
+            .filter((d) => d.kind === kind)
             .map((d) => ({
               deviceId: d.deviceId,
-              label: d.label || `Microphone ${d.deviceId.slice(0, 8)}`,
-            })),
-        );
-
-        setAudioOutputDevices(
-          devices
-            .filter((d) => d.kind === "audiooutput")
-            .map((d) => ({
-              deviceId: d.deviceId,
-              label: d.label || `Speaker ${d.deviceId.slice(0, 8)}`,
-            })),
-        );
-
-        setVideoDevices(
-          devices
-            .filter((d) => d.kind === "videoinput")
-            .map((d) => ({
-              deviceId: d.deviceId,
-              label: d.label || `Camera ${d.deviceId.slice(0, 8)}`,
-            })),
-        );
-      } catch (error) {
-        console.error("Failed to enumerate devices:", error);
+              label: d.label || `${fallback} ${d.deviceId.slice(0, 6)}`,
+            }));
+        setAudioInputDevices(map("audioinput", "Microphone"));
+        setAudioOutputDevices(map("audiooutput", "Speaker"));
+        setVideoDevices(map("videoinput", "Camera"));
+      } catch {
+        // Permission denied or no devices — silently ignore
       }
     };
-
     loadDevices();
   }, [isOpen]);
 
-  // Load saved settings
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const saved = localStorage.getItem("spatialMeetSettings");
-    if (saved) {
-      try {
-        const settings = JSON.parse(saved);
-        setMasterVolume(settings.masterVolume ?? 80);
-        setMicVolume(settings.micVolume ?? 100);
-        setVideoQuality(settings.videoQuality ?? "medium");
-        setTheme(settings.theme ?? "system");
-        setShowFPS(settings.showFPS ?? false);
-        setReducedMotion(settings.reducedMotion ?? false);
-        setSelectedAudioInput(settings.audioInput ?? "");
-        setSelectedAudioOutput(settings.audioOutput ?? "");
-        setSelectedVideoInput(settings.videoInput ?? "");
-      } catch {
-        // Ignore parse errors
-      }
-    }
+    const saved = localStorage.getItem("spacialMeetSettings");
+    if (!saved) return;
+    try {
+      const s = JSON.parse(saved);
+      if (s.masterVolume != null) setMasterVolume(s.masterVolume);
+      if (s.micVolume != null) setMicVolume(s.micVolume);
+      if (s.videoQuality) setVideoQuality(s.videoQuality);
+      if (s.audioInput) setSelectedAudioInput(s.audioInput);
+      if (s.audioOutput) setSelectedAudioOutput(s.audioOutput);
+      if (s.videoInput) setSelectedVideoInput(s.videoInput);
+    } catch {}
   }, []);
 
-  // Save settings
   const saveSettings = useCallback(() => {
     const settings = {
       masterVolume,
       micVolume,
       videoQuality,
-      theme,
-      showFPS,
-      reducedMotion,
       audioInput: selectedAudioInput,
       audioOutput: selectedAudioOutput,
       videoInput: selectedVideoInput,
     };
-    localStorage.setItem("spatialMeetSettings", JSON.stringify(settings));
-
-    // Dispatch event for other components to react
+    localStorage.setItem("spacialMeetSettings", JSON.stringify(settings));
     window.dispatchEvent(
       new CustomEvent("settingsChanged", { detail: settings }),
     );
-
     onClose();
   }, [
     masterVolume,
     micVolume,
     videoQuality,
-    theme,
-    showFPS,
-    reducedMotion,
     selectedAudioInput,
     selectedAudioOutput,
     selectedVideoInput,
@@ -156,273 +95,212 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   if (!isOpen) return null;
 
+  const tabs: { id: Tab; icon: typeof Mic; label: string }[] = [
+    { id: "audio", icon: Mic, label: "Audio" },
+    { id: "video", icon: Video, label: "Video" },
+  ];
+
+  const videoQualityMeta = {
+    low: "360p — best for slow connections",
+    medium: "480p — balanced quality and speed",
+    high: "720p — best quality, requires fast internet",
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="relative bg-white border-2 border-gray-800 rounded-2xl shadow-retro max-w-lg w-full max-h-[80vh] overflow-hidden">
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b-2 border-gray-200">
-          <h2 className="font-pixel text-2xl text-gray-900">Settings</h2>
+      <div className="relative bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg w-full max-w-md overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+          <h2 className="font-semibold text-[var(--color-braun-text)] text-base tracking-wide">
+            Settings
+          </h2>
           <button
             onClick={onClose}
-            className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
           </button>
         </div>
 
-        {/* Tabs */}
-        <div className="flex border-b-2 border-gray-200">
-          {[
-            { id: "audio", icon: Volume2, label: "Audio" },
-            { id: "video", icon: Video, label: "Video" },
-            { id: "general", icon: Monitor, label: "General" },
-          ].map((tab) => (
+        <div className="flex px-6 pt-4 gap-1">
+          {tabs.map(({ id, icon: Icon, label }) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 font-pixel text-sm transition-colors ${
-                activeTab === tab.id
-                  ? "text-indigo-600 border-b-2 border-indigo-500 -mb-[2px] bg-indigo-50"
-                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+              key={id}
+              onClick={() => setActiveTab(id)}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                activeTab === id
+                  ? "bg-[var(--color-braun-text)] text-white"
+                  : "text-[var(--color-braun-text)] opacity-50 hover:opacity-80 hover:bg-[rgba(0,0,0,0.04)]"
               }`}
             >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
+              <Icon className="w-3.5 h-3.5" />
+              {label}
             </button>
           ))}
         </div>
 
-        {/* Content */}
-        <div className="p-6 overflow-y-auto max-h-[50vh]">
+        <div className="px-6 py-5 space-y-5 max-h-[60vh] overflow-y-auto">
           {activeTab === "audio" && (
-            <div className="space-y-6">
-              {/* Microphone */}
-              <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
-                  <Mic className="w-4 h-4" />
-                  Microphone
-                </label>
-                <select
+            <>
+              <SettingRow label="Microphone" icon={Mic}>
+                <DeviceSelect
                   value={selectedAudioInput}
-                  onChange={(e) => setSelectedAudioInput(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none"
-                >
-                  <option value="">Default</option>
-                  {audioInputDevices.map((d) => (
-                    <option key={d.deviceId} value={d.deviceId}>
-                      {d.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Mic Volume */}
-              <div>
-                <label className="flex items-center justify-between text-sm font-medium text-gray-700 mb-2">
-                  <span>Microphone Volume</span>
-                  <span className="font-pixel text-indigo-600">
-                    {micVolume}%
-                  </span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={micVolume}
-                  onChange={(e) => setMicVolume(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                  onChange={setSelectedAudioInput}
+                  devices={audioInputDevices}
                 />
-              </div>
+              </SettingRow>
 
-              {/* Speaker */}
-              <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
-                  <Volume2 className="w-4 h-4" />
-                  Speaker
-                </label>
-                <select
+              <SettingRow label="Microphone volume" value={`${micVolume}%`}>
+                <VolumeSlider value={micVolume} onChange={setMicVolume} />
+              </SettingRow>
+
+              <SettingRow label="Speaker" icon={Volume2}>
+                <DeviceSelect
                   value={selectedAudioOutput}
-                  onChange={(e) => setSelectedAudioOutput(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none"
-                >
-                  <option value="">Default</option>
-                  {audioOutputDevices.map((d) => (
-                    <option key={d.deviceId} value={d.deviceId}>
-                      {d.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Master Volume */}
-              <div>
-                <label className="flex items-center justify-between text-sm font-medium text-gray-700 mb-2">
-                  <span>Master Volume</span>
-                  <span className="font-pixel text-indigo-600">
-                    {masterVolume}%
-                  </span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={masterVolume}
-                  onChange={(e) => setMasterVolume(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                  onChange={setSelectedAudioOutput}
+                  devices={audioOutputDevices}
                 />
-              </div>
-            </div>
+              </SettingRow>
+
+              <SettingRow label="Speaker volume" value={`${masterVolume}%`}>
+                <VolumeSlider value={masterVolume} onChange={setMasterVolume} />
+              </SettingRow>
+            </>
           )}
 
           {activeTab === "video" && (
-            <div className="space-y-6">
-              {/* Camera */}
-              <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
-                  <Video className="w-4 h-4" />
-                  Camera
-                </label>
-                <select
+            <>
+              <SettingRow label="Camera" icon={Video}>
+                <DeviceSelect
                   value={selectedVideoInput}
-                  onChange={(e) => setSelectedVideoInput(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none"
-                >
-                  <option value="">Default</option>
-                  {videoDevices.map((d) => (
-                    <option key={d.deviceId} value={d.deviceId}>
-                      {d.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  onChange={setSelectedVideoInput}
+                  devices={videoDevices}
+                />
+              </SettingRow>
 
-              {/* Video Quality */}
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-3 block">
-                  Video Quality
-                </label>
+                <p className="text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest mb-3">
+                  Video quality
+                </p>
                 <div className="grid grid-cols-3 gap-2">
-                  {(["low", "medium", "high"] as const).map((quality) => (
+                  {(["low", "medium", "high"] as const).map((q) => (
                     <button
-                      key={quality}
-                      onClick={() => setVideoQuality(quality)}
-                      className={`p-3 rounded-xl border-2 font-pixel text-sm capitalize transition-all ${
-                        videoQuality === quality
-                          ? "border-indigo-500 bg-indigo-50 text-indigo-600"
-                          : "border-gray-200 hover:border-gray-300"
+                      key={q}
+                      onClick={() => setVideoQuality(q)}
+                      className={`py-2.5 rounded-xl border text-sm font-medium capitalize transition-all cursor-pointer ${
+                        videoQuality === q
+                          ? "border-[var(--color-braun-text)] bg-[var(--color-braun-text)] text-white"
+                          : "border-[rgba(0,0,0,0.08)] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:border-[rgba(0,0,0,0.2)]"
                       }`}
                     >
-                      {quality}
+                      {q}
                     </button>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  {videoQuality === "low" && "360p - Best for slow connections"}
-                  {videoQuality === "medium" &&
-                    "480p - Balanced quality and speed"}
-                  {videoQuality === "high" &&
-                    "720p - Best quality, requires fast internet"}
+                <p className="text-xs text-[var(--color-braun-text)] opacity-40 mt-2">
+                  {videoQualityMeta[videoQuality]}
                 </p>
               </div>
-            </div>
-          )}
-
-          {activeTab === "general" && (
-            <div className="space-y-6">
-              {/* Theme */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-3 block">
-                  Theme
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { id: "light", icon: Sun, label: "Light" },
-                    { id: "dark", icon: Moon, label: "Dark" },
-                    { id: "system", icon: Monitor, label: "System" },
-                  ].map((t) => (
-                    <button
-                      key={t.id}
-                      onClick={() => setTheme(t.id as typeof theme)}
-                      className={`p-3 rounded-xl border-2 font-pixel text-sm flex flex-col items-center gap-1 transition-all ${
-                        theme === t.id
-                          ? "border-indigo-500 bg-indigo-50 text-indigo-600"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      <t.icon className="w-5 h-5" />
-                      {t.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Toggles */}
-              <div className="space-y-4">
-                <label className="flex items-center justify-between">
-                  <span className="flex items-center gap-2 text-sm font-medium text-gray-700">
-                    <Gamepad2 className="w-4 h-4" />
-                    Show FPS Counter
-                  </span>
-                  <button
-                    onClick={() => setShowFPS(!showFPS)}
-                    className={`relative w-12 h-6 rounded-full transition-colors ${
-                      showFPS ? "bg-indigo-500" : "bg-gray-300"
-                    }`}
-                  >
-                    <span
-                      className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${
-                        showFPS ? "translate-x-6" : ""
-                      }`}
-                    />
-                  </button>
-                </label>
-
-                <label className="flex items-center justify-between">
-                  <span className="flex items-center gap-2 text-sm font-medium text-gray-700">
-                    <User className="w-4 h-4" />
-                    Reduced Motion
-                  </span>
-                  <button
-                    onClick={() => setReducedMotion(!reducedMotion)}
-                    className={`relative w-12 h-6 rounded-full transition-colors ${
-                      reducedMotion ? "bg-indigo-500" : "bg-gray-300"
-                    }`}
-                  >
-                    <span
-                      className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${
-                        reducedMotion ? "translate-x-6" : ""
-                      }`}
-                    />
-                  </button>
-                </label>
-              </div>
-            </div>
+            </>
           )}
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end gap-3 px-6 py-4 border-t-2 border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[rgba(0,0,0,0.04)] bg-white/40">
           <button
             onClick={onClose}
-            className="cursor-pointer px-4 py-2 text-gray-600 hover:text-gray-800 font-pixel text-sm"
+            className="cursor-pointer px-4 py-2 text-sm text-[var(--color-braun-text)] opacity-50 hover:opacity-80 transition-opacity"
           >
             Cancel
           </button>
           <button
             onClick={saveSettings}
-            className="cursor-pointer px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl border-2 border-indigo-600 shadow-retro hover:-translate-y-1 active:translate-y-0 transition-all font-pixel text-sm"
+            className="cursor-pointer px-5 py-2 bg-[var(--color-braun-text)] hover:bg-[#2a2a2a] text-white rounded-full text-sm font-medium transition-all"
           >
-            Save Settings
+            Save
           </button>
         </div>
       </div>
     </div>
+  );
+}
+
+function SettingRow({
+  label,
+  icon: Icon,
+  value,
+  children,
+}: {
+  label: string;
+  icon?: React.ComponentType<{ className?: string }>;
+  value?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        <label className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest">
+          {Icon && <Icon className="w-3.5 h-3.5" />}
+          {label}
+        </label>
+        {value && (
+          <span className="text-xs font-semibold text-[var(--color-braun-text)]">
+            {value}
+          </span>
+        )}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function DeviceSelect({
+  value,
+  onChange,
+  devices,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  devices: MediaDevice[];
+}) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] outline-none focus:border-[rgba(0,0,0,0.2)] transition-colors cursor-pointer"
+    >
+      <option value="">Default</option>
+      {devices.map((d) => (
+        <option key={d.deviceId} value={d.deviceId}>
+          {d.label}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+function VolumeSlider({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value={value}
+      onChange={(e) => onChange(Number(e.target.value))}
+      className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+      style={{
+        background: `linear-gradient(to right, var(--color-braun-text) ${value}%, rgba(0,0,0,0.1) ${value}%)`,
+      }}
+    />
   );
 }

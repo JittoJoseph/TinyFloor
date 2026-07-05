@@ -19,6 +19,7 @@ export class MovementManager {
   private isMoving = false;
   private lastPositionUpdate = 0;
   private collisionChecker?: (x: number, y: number) => boolean;
+  private inputEnabled: boolean = true;
 
   constructor(
     scene: Phaser.Scene,
@@ -40,12 +41,15 @@ export class MovementManager {
 
   private setupInput() {
     if (!this.isMobile) {
-      this.wasdKeys = this.scene.input.keyboard!.addKeys({
-        W: Phaser.Input.Keyboard.KeyCodes.W,
-        S: Phaser.Input.Keyboard.KeyCodes.S,
-        A: Phaser.Input.Keyboard.KeyCodes.A,
-        D: Phaser.Input.Keyboard.KeyCodes.D,
-      }) as Record<string, Phaser.Input.Keyboard.Key>;
+      this.wasdKeys = this.scene.input.keyboard!.addKeys(
+        {
+          W: Phaser.Input.Keyboard.KeyCodes.W,
+          S: Phaser.Input.Keyboard.KeyCodes.S,
+          A: Phaser.Input.Keyboard.KeyCodes.A,
+          D: Phaser.Input.Keyboard.KeyCodes.D,
+        },
+        false,
+      ) as Record<string, Phaser.Input.Keyboard.Key>;
     }
   }
 
@@ -53,6 +57,12 @@ export class MovementManager {
     const now = this.scene.time.now;
     let moved = false;
     let newDirection: Direction = this.currentDirection;
+
+    if (!this.inputEnabled) {
+      this.isMoving = false;
+      this.updateAnimation(this.currentDirection);
+      return { moved: false, direction: this.currentDirection };
+    }
 
     if (this.isMobile) {
       if (
@@ -181,6 +191,14 @@ export class MovementManager {
   setJoystickVelocity(vx: number, vy: number) {
     this.joystickVelocity.x = vx;
     this.joystickVelocity.y = vy;
+  }
+
+  disableInput() {
+    this.inputEnabled = false;
+  }
+
+  enableInput() {
+    this.inputEnabled = true;
   }
 
   getCurrentTile(): { x: number; y: number } {

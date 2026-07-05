@@ -83,25 +83,12 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private void cleanupInactivePlayers() {
         long now = System.currentTimeMillis();
         roomPlayers.forEach((roomId, players) -> {
-            players.entrySet().removeIf(entry -> {
-                Player player = entry.getValue();
+            players.forEach((playerId, player) -> {
                 if (now - player.getLastSeen() > INACTIVE_TIMEOUT_MS) {
-                    String playerId = entry.getKey();
-                    WebSocketSession session = roomSessions.get(roomId).remove(playerId);
-                    if (session != null) {
-                        sessionToPlayer.remove(session.getId());
-                        sessionToRoom.remove(session.getId());
-                    }
-                    roomService.leaveRoom(roomId, playerId);
-                    // Broadcast leave message
-                    try {
-                        broadcastToRoom(roomId, new Message("user-left", Map.of("id", playerId)), null);
-                    } catch (IOException ignored) {}
-                    return true;
+                    WebSocketSession session = roomSessions.getOrDefault(roomId, Collections.emptyMap()).get(playerId);
+                    removePlayerAndBroadcast(roomId, playerId, session);
                 }
-                return false;
             });
-            // Remove empty room maps to free memory
             if (players.isEmpty()) {
                 roomPlayers.remove(roomId);
                 roomSessions.remove(roomId);
@@ -168,46 +155,23 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         try {
             Message msg = objectMapper.readValue(message.getPayload(), Message.class);
+            updateLastSeen(session);
+            
             switch (msg.getType()) {
-                case "join":
-                    handleJoin(session, msg);
-                    break;
-                case "move":
-                    handleMove(session, msg);
-                    break;
-                case "request_call":
-                    handleRequestCall(session, msg);
-                    break;
-                case "call_response":
-                    handleCallResponse(session, msg);
-                    break;
-                case "webrtc_signal":
-                    handleWebRTCSignal(session, msg);
-                    break;
-                case "call_ended":
-                    handleCallEnded(session, msg);
-                    break;
-                case "chat":
-                    handleChat(session, msg);
-                    break;
-                case "status_change":
-                    handleStatusChange(session, msg);
-                    break;
+                case "join": handleJoin(session, msg); break;
+                case "move": handleMove(session, msg); break;
+                case "request_call": handleRequestCall(session, msg); break;
+                case "call_response": handleCallResponse(session, msg); break;
+                case "webrtc_signal": handleWebRTCSignal(session, msg); break;
+                case "call_ended": handleCallEnded(session, msg); break;
+                case "chat": handleChat(session, msg); break;
+                case "status_change": handleStatusChange(session, msg); break;
                 case "ping":
-                    // Heartbeat - update last seen
-                    updateLastSeen(session);
                     session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("pong", Map.of()))));
                     break;
             }
         } catch (Exception e) {
-            // Log error and close session if necessary
             logger.error("Error handling message: {}", e.getMessage());
-            // Optionally send error message
-            try {
-                Map<String, Object> errorData = new HashMap<>();
-                errorData.put("message", "Invalid message");
-                session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("error", errorData))));
-            } catch (IOException ignored) {}
         }
     }
 
@@ -253,9 +217,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         if (player == null) return;
 
         player.setStatus(newStatus);
-        player.setLastSeen(System.currentTimeMillis());
 
-        // Broadcast status change to all clients in the room
         Map<String, Object> statusData = new HashMap<>();
         statusData.put("id", playerId);
         statusData.put("status", newStatus);
@@ -285,10 +247,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         roomSessions.get(roomId).put(playerId, session);
         sessionToPlayer.put(session.getId(), playerId);
         
-        // Update room in database/cache
         boolean joined = roomService.joinRoom(roomId, playerId);
         if (!joined) {
-            // Room is full or invalid, send error and close
             session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("join-failed", Map.of("reason", "Room is full or invalid")))));
             session.close();
             return;
@@ -370,7 +330,6 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             player.setTileX(targetTileX);
             player.setTileY(targetTileY);
             player.setDirection(direction);
-            player.setLastSeen(System.currentTimeMillis());
             pendingMovements.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>()).put(playerId, new Movement(playerId, targetTileX, targetTileY, direction));
         } else {
             Map<String, Object> rejectionData = Map.of("tileX", player.getTileX(), "tileY", player.getTileY());
@@ -446,21 +405,34 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) throws Exception {
         String playerId = sessionToPlayer.get(session.getId());
+        String roomId = sessionToRoom.get(session.getId());
         
-        if (playerId != null) {
-            String roomId = sessionToRoom.get(session.getId());
-            if (roomId != null) {
-                roomPlayers.get(roomId).remove(playerId);
-                roomSessions.get(roomId).remove(playerId);
-                roomService.leaveRoom(roomId, playerId);
-                
-                Message left = new Message("user-left", Map.of("id", playerId));
-                broadcastToRoom(roomId, left, null);
-                logger.info("Player {} left room {}", playerId, roomId);
-            }
+        if (playerId != null && roomId != null) {
+            removePlayerAndBroadcast(roomId, playerId, session);
+        } else {
+            sessionToRoom.remove(session.getId());
+            sessionToPlayer.remove(session.getId());
         }
-        sessionToRoom.remove(session.getId());
-        sessionToPlayer.remove(session.getId());
+    }
+
+    private void removePlayerAndBroadcast(String roomId, String playerId, WebSocketSession session) {
+        if (session != null) {
+            sessionToPlayer.remove(session.getId());
+            sessionToRoom.remove(session.getId());
+        }
+        
+        Map<String, Player> players = roomPlayers.get(roomId);
+        if (players != null) players.remove(playerId);
+        
+        Map<String, WebSocketSession> sessions = roomSessions.get(roomId);
+        if (sessions != null) sessions.remove(playerId);
+        
+        roomService.leaveRoom(roomId, playerId);
+        
+        try {
+            broadcastToRoom(roomId, new Message("user-left", Map.of("id", playerId)), null);
+            logger.info("Player {} left room {}", playerId, roomId);
+        } catch (IOException ignored) {}
     }
 
     private void broadcastToRoom(String roomId, Message message, String excludePlayerId) throws IOException {

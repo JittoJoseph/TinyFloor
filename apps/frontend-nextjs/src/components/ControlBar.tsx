@@ -90,8 +90,8 @@ export default function ControlBar({
   );
 
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-max">
-      <div className="bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-[2rem] shadow-sm px-2 md:px-4 py-1.5 md:py-2 flex items-center justify-start md:justify-center gap-1 md:gap-2 mx-auto">
+    <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-max overflow-visible">
+      <div className="bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-[2rem] shadow-sm px-2 md:px-4 py-2 flex items-center justify-start md:justify-center gap-1 md:gap-2 mx-auto overflow-visible">
         {/* Status Selector */}
         <div className="shrink-0">
           <StatusSelector
@@ -101,15 +101,12 @@ export default function ControlBar({
           />
         </div>
 
-        {/* Divider */}
         <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
 
-        {/* Scrollable Actions Container */}
-        <div className="flex items-center gap-1 md:gap-2 overflow-x-auto scrollbar-hide no-scrollbar">
-          {/* Microphone Toggle */}
+        <div className="flex items-center gap-1 md:gap-2">
           <button
             onClick={toggleMic}
-            className={`cursor-pointer relative p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+            className={`cursor-pointer relative p-2 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
               micEnabled
                 ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
                 : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
@@ -117,19 +114,18 @@ export default function ControlBar({
             title={micEnabled ? "Mute microphone" : "Unmute microphone"}
           >
             {micEnabled ? (
-              <Mic className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <Mic className="w-[18px] h-[18px]" />
             ) : (
-              <MicOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <MicOff className="w-[18px] h-[18px]" />
             )}
             {!micEnabled && (
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-2 md:h-2 bg-[#ff4e00] rounded-full animate-pulse border-2 border-white" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
             )}
           </button>
 
-          {/* Video Toggle */}
           <button
             onClick={toggleVideo}
-            className={`cursor-pointer relative p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+            className={`cursor-pointer relative p-2 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
               videoEnabled
                 ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
                 : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
@@ -137,19 +133,18 @@ export default function ControlBar({
             title={videoEnabled ? "Turn off camera" : "Turn on camera"}
           >
             {videoEnabled ? (
-              <Video className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <Video className="w-[18px] h-[18px]" />
             ) : (
-              <VideoOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <VideoOff className="w-[18px] h-[18px]" />
             )}
             {!videoEnabled && (
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-2 md:h-2 bg-[#ff4e00] rounded-full animate-pulse border-2 border-white" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
             )}
           </button>
 
-          {/* Speaker Toggle */}
           <button
             onClick={toggleSpeaker}
-            className={`cursor-pointer p-2.5 md:p-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+            className={`cursor-pointer p-2 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
               speakerEnabled
                 ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
                 : "bg-gray-100 border-[rgba(0,0,0,0.06)] text-gray-400 hover:bg-gray-200"
@@ -157,62 +152,57 @@ export default function ControlBar({
             title={speakerEnabled ? "Mute speaker" : "Unmute speaker"}
           >
             {speakerEnabled ? (
-              <Volume2 className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <Volume2 className="w-[18px] h-[18px]" />
             ) : (
-              <VolumeX className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+              <VolumeX className="w-[18px] h-[18px]" />
             )}
           </button>
 
-          {/* Divider */}
           <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
 
-          {/* Chat Button */}
           <button
             onClick={onChatClick}
-            className="cursor-pointer relative p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            className="cursor-pointer relative p-2 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
             title="Open chat"
           >
-            <MessageSquare className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            <MessageSquare className="w-[18px] h-[18px]" />
             {unreadChatCount > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] bg-[var(--color-braun-orange)] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 border-2 border-white shadow-sm">
-                {unreadChatCount > 99 ? '99+' : unreadChatCount}
+              <span className="absolute -top-1.5 -right-1.5 min-w-[17px] h-[17px] bg-[#ff4e00] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 shadow border-[1.5px] border-white">
+                {unreadChatCount > 9 ? "9+" : unreadChatCount}
               </span>
             )}
           </button>
 
-          {/* Participants Button */}
           <button
             onClick={onParticipantsClick}
-            className="cursor-pointer relative p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            className="cursor-pointer relative p-2 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
             title="View participants"
           >
-            <Users className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            <Users className="w-[18px] h-[18px]" />
             {participantCount > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] bg-[var(--color-braun-text)] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 border-2 border-white shadow-sm">
+              <span className="absolute -top-1.5 -right-1.5 min-w-[17px] h-[17px] bg-[var(--color-braun-text)] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 shadow border-[1.5px] border-white">
                 {participantCount}
               </span>
             )}
           </button>
 
-          {/* Settings Button */}
           <button
             onClick={onSettingsClick}
-            className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            className="cursor-pointer p-2 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
             title="Settings"
           >
-            <Settings className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+            <Settings className="w-[18px] h-[18px]" />
           </button>
 
-          {/* Leave Call Button - Only show when in a call */}
           {isInCall && (
             <>
               <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 md:mx-1" />
               <button
                 onClick={onLeaveCall}
-                className="cursor-pointer p-2.5 md:p-3 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0"
+                className="cursor-pointer p-2 md:p-2.5 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0 my-1"
                 title="Leave call"
               >
-                <PhoneOff className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+                <PhoneOff className="w-[18px] h-[18px]" />
               </button>
             </>
           )}

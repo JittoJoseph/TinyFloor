@@ -18,6 +18,7 @@ interface ChatPanelProps {
   userId: string;
   userName: string;
   onUnreadChange?: (count: number) => void;
+  participantCount?: number;
 }
 
 export default function ChatPanel({
@@ -26,6 +27,7 @@ export default function ChatPanel({
   userId,
   userName,
   onUnreadChange,
+  participantCount = 1,
 }: ChatPanelProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -34,17 +36,16 @@ export default function ChatPanel({
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Reset unread count when opened
   useEffect(() => {
     if (isOpen) {
       setUnreadCount(0);
       onUnreadChange?.(0);
-      // Small timeout to let it render before focusing
       setTimeout(() => inputRef.current?.focus(), 50);
+    } else {
+      window.dispatchEvent(new CustomEvent("chatBlurred"));
     }
   }, [isOpen, onUnreadChange]);
 
-  // Click outside to close
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -55,12 +56,10 @@ export default function ChatPanel({
         onClose();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, onClose]);
 
-  // Auto-scroll to bottom
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -69,46 +68,55 @@ export default function ChatPanel({
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // Listen for incoming chat messages
+  // Propagate unread count to parent outside the render cycle
+  useEffect(() => {
+    if (!isOpen) onUnreadChange?.(unreadCount);
+  }, [unreadCount, isOpen, onUnreadChange]);
+
   useEffect(() => {
     const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
       setMessages((prev) => {
         if (prev.some((msg) => msg.id === event.detail.id)) return prev;
         return [...prev, event.detail];
       });
-
-      // Update unread count if not open
-      if (!isOpen) {
-        setUnreadCount((prev) => {
-          const newCount = prev + 1;
-          onUnreadChange?.(newCount);
-          return newCount;
-        });
-      }
+      if (!isOpen) setUnreadCount((prev) => prev + 1);
     }) as EventListener;
 
     window.addEventListener("chatMessage", handleChatMessage);
 
-    // Initial welcome message (won't trigger unread because it's local)
     setMessages([
       {
         id: "welcome",
         senderId: "system",
         senderName: "System",
-        content: "Welcome to the room chat. Messages are visible to everyone here.",
+        content:
+          "Welcome to the room chat. Messages are visible to everyone here.",
         timestamp: new Date(),
         type: "system",
       },
     ]);
 
-    return () => {
-      window.removeEventListener("chatMessage", handleChatMessage);
-    };
+    return () => window.removeEventListener("chatMessage", handleChatMessage);
   }, [isOpen, onUnreadChange]);
+
+  // Introduce players to chat 10 seconds after mounting
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const message: ChatMessage = {
+        id: `intro-${Date.now()}`,
+        senderId: "system-intro",
+        senderName: "System",
+        content: "You can chat with everyone in this room here.",
+        timestamp: new Date(),
+        type: "text",
+      };
+      window.dispatchEvent(new CustomEvent("chatMessage", { detail: message }));
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const sendMessage = useCallback(() => {
     if (!inputValue.trim()) return;
-
     const message: ChatMessage = {
       id: `${Date.now()}-${userId}`,
       senderId: userId,
@@ -117,12 +125,11 @@ export default function ChatPanel({
       timestamp: new Date(),
       type: "text",
     };
-
     setMessages((prev) => [...prev, message]);
-    window.dispatchEvent(new CustomEvent("sendChatMessage", { detail: message }));
+    window.dispatchEvent(
+      new CustomEvent("sendChatMessage", { detail: message }),
+    );
     setInputValue("");
-    
-    // Focus back to input after sending
     inputRef.current?.focus();
   }, [inputValue, userId, userName]);
 
@@ -136,15 +143,14 @@ export default function ChatPanel({
     [sendMessage],
   );
 
-  const formatTime = (date: Date) => {
-    return new Date(date).toLocaleTimeString([], {
+  const formatTime = (date: Date) =>
+    new Date(date).toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
 
-  // Dispatch events to disable WASD
-  const handleFocus = () => window.dispatchEvent(new CustomEvent("chatFocused"));
+  const handleFocus = () =>
+    window.dispatchEvent(new CustomEvent("chatFocused"));
   const handleBlur = () => window.dispatchEvent(new CustomEvent("chatBlurred"));
 
   if (!isOpen) return null;
@@ -154,7 +160,6 @@ export default function ChatPanel({
       ref={panelRef}
       className="fixed bottom-24 right-4 md:right-8 w-full max-w-[340px] h-[450px] z-50 bg-[#fbfbf9]/95 backdrop-blur-md border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg flex flex-col font-body transition-all overflow-hidden"
     >
-      {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)] bg-white/50">
         <h3 className="font-semibold text-[var(--color-braun-text)] flex items-center gap-2">
           <MessageSquare className="w-4 h-4 opacity-70" />
@@ -168,14 +173,11 @@ export default function ChatPanel({
         </button>
       </div>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex ${
-              msg.senderId === userId ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${msg.senderId === userId ? "justify-end" : "justify-start"}`}
           >
             {msg.type === "system" ? (
               <div className="text-center text-xs text-[var(--color-braun-text)] opacity-50 bg-[rgba(0,0,0,0.03)] px-3 py-1.5 rounded-full mx-auto">
@@ -183,11 +185,9 @@ export default function ChatPanel({
               </div>
             ) : (
               <div
-                className={`max-w-[85%] ${
-                  msg.senderId === userId ? "order-1" : ""
-                }`}
+                className={`max-w-[85%] ${msg.senderId === userId ? "order-1" : ""}`}
               >
-                {msg.senderId !== userId && (
+                {msg.senderId !== userId && participantCount > 2 && (
                   <p className="text-[11px] text-[var(--color-braun-text)] opacity-60 font-medium ml-1 mb-1">
                     {msg.senderName}
                   </p>
@@ -215,7 +215,6 @@ export default function ChatPanel({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input */}
       <div className="p-3 bg-white/50 border-t border-[rgba(0,0,0,0.04)]">
         <div className="flex items-center gap-2 bg-white rounded-full border border-[rgba(0,0,0,0.06)] pr-1.5 pl-4 py-1.5 focus-within:border-[rgba(0,0,0,0.15)] transition-colors shadow-sm">
           <input

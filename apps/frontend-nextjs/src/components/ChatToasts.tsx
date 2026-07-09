@@ -58,7 +58,7 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`pointer-events-auto bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm pr-4 pl-1.5 py-1.5 transition-all duration-300 cursor-pointer hover:-translate-x-1 hover:shadow-md flex items-center gap-2 max-w-[200px] sm:max-w-xs ${
+          className={`pointer-events-auto bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm pr-4 pl-1.5 py-1.5 md:pr-5 md:pl-2 md:py-2 transition-all duration-300 cursor-pointer hover:-translate-x-1 hover:shadow-md flex items-center gap-2 md:gap-3 max-w-[200px] sm:max-w-xs md:max-w-sm ${
             toast.visible
               ? "opacity-100 translate-x-0"
               : "opacity-0 translate-x-4"
@@ -69,19 +69,20 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
             onOpenChat();
           }}
         >
-          <div className="w-6 h-6 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[10px] shrink-0">
+          <div className="w-6 h-6 md:w-8 md:h-8 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[10px] md:text-xs shrink-0">
             {toast.senderName.charAt(0).toUpperCase()}
           </div>
-          <div className="flex-1 min-w-0 flex items-center gap-1.5 overflow-hidden">
-            <span className="font-bold text-[11px] text-[var(--color-braun-text)] shrink-0 truncate max-w-[80px]">
+          <div className="flex-1 min-w-0 flex items-center gap-1.5 md:gap-2 overflow-hidden">
+            <span className="font-bold text-[11px] md:text-sm text-[var(--color-braun-text)] shrink-0 truncate max-w-[80px] md:max-w-[120px]">
               {toast.senderName}
             </span>
-            <span className="text-[11px] text-gray-500 truncate">
+            <span className="text-[11px] md:text-sm text-gray-500 truncate">
               {toast.content}
             </span>
           </div>
         </div>
       ))}
     </div>
+
   );
 }

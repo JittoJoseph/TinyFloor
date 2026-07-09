@@ -3,6 +3,7 @@ import { VT323, Nunito } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ToastProvider } from "@/components/ui/Toast";
+import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 
 const vt323 = VT323({
   variable: "--font-pixel",
@@ -65,6 +66,7 @@ export default function RootLayout({
         <AuthProvider>
           <ToastProvider>{children}</ToastProvider>
         </AuthProvider>
+        <ClarityAnalytics />
       </body>
     </html>
   );

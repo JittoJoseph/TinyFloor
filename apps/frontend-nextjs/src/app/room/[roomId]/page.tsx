@@ -8,6 +8,7 @@ import { LogOut, Users, Copy, Check } from "lucide-react";
 import ControlBar from "@/components/ControlBar";
 import SettingsModal from "@/components/SettingsModal";
 import ChatPanel from "@/components/ChatPanel";
+import { ChatToasts } from "@/components/ChatToasts";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import { useAuth } from "@/contexts/AuthContext";
@@ -264,6 +265,12 @@ export default function RoomPage() {
         userName={name}
         onUnreadChange={setUnreadChatCount}
         participantCount={participants.length + 1}
+      />
+
+      {/* Chat Toasts for unread messages */}
+      <ChatToasts 
+        isChatOpen={showChat} 
+        onOpenChat={() => setShowChat(true)} 
       />
     </div>
   );

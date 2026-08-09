@@ -81,7 +81,7 @@ export class WebSocketManager {
       console.error("WebSocket error:", error);
     };
 
-    this.ws.onclose = (event) => {
+    this.ws.onclose = () => {
       this.stopHeartbeat();
 
       if (this.shouldReconnect) {

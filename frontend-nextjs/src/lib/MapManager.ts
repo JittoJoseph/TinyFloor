@@ -1,10 +1,12 @@
 import * as Phaser from "phaser";
-import { TILE_SIZE, tileToPixel } from "./types";
+import { NavGrid, Rect } from "./Navigation";
 
 export class MapManager {
   private scene: Phaser.Scene;
   private map!: Phaser.Tilemaps.Tilemap;
   private solids!: Phaser.Physics.Arcade.StaticGroup;
+  private solidRects: Rect[] = [];
+  private nav!: NavGrid;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -46,105 +48,68 @@ export class MapManager {
     this.map.createLayer("OverPlayer_Layer", tilesets, 0, 0)!.setDepth(20000);
 
     this.createColliders();
+    this.nav = new NavGrid(this.solidRects);
   }
 
   private createColliders() {
-    const collLayer = this.map.getObjectLayer("Colliders");
     this.solids = this.scene.physics.add.staticGroup();
+    const objects = this.map.getObjectLayer("Colliders")?.objects ?? [];
 
-    if (collLayer?.objects) {
-      collLayer.objects.forEach((obj: unknown) => {
-        const o = obj as {
-          x: number;
-          y: number;
-          width?: number;
-          height?: number;
-        };
-        const cx = o.x + (o.width || 0) / 2;
-        const cy = o.y + (o.height || 0) / 2;
+    objects.forEach((obj) => {
+      const width = obj.width || 1;
+      const height = obj.height || 1;
+      const x = obj.x ?? 0;
+      const y = obj.y ?? 0;
 
-        const rect = this.scene.add.rectangle(
-          cx,
-          cy,
-          o.width || 1,
-          o.height || 1,
-          0x000000,
-          0,
-        );
-        this.scene.physics.add.existing(rect, true);
-        const body = rect.body as Phaser.Physics.Arcade.StaticBody;
-        body.setSize(o.width, o.height);
-        body.setOffset(0, 0);
-        this.solids.add(rect);
-      });
-    }
+      this.solidRects.push({ x, y, width, height });
+
+      const rect = this.scene.add.rectangle(
+        x + width / 2,
+        y + height / 2,
+        width,
+        height,
+        0x000000,
+        0,
+      );
+      this.scene.physics.add.existing(rect, true);
+      const body = rect.body as Phaser.Physics.Arcade.StaticBody;
+      body.setSize(width, height);
+      body.setOffset(0, 0);
+      this.solids.add(rect);
+    });
   }
 
   setupColliders(player: Phaser.Physics.Arcade.Sprite) {
-    // Add physics to player
-    if (player) {
-      const playerBody = player.body as Phaser.Physics.Arcade.Body;
-      // Don't override scale - it's set in PlayerManager
-      playerBody.setSize(10, 8).setOffset(3, 56); // Adjusted for feet origin (64px sprite height)
-      playerBody.setCollideWorldBounds(true);
-      this.scene.physics.add.collider(player, this.solids);
-    }
-
-    // Set player depth
-    if (player) {
-      player.setDepth(10000);
-    }
+    const body = player.body as Phaser.Physics.Arcade.Body;
+    body.setSize(10, 8).setOffset(3, 56);
+    body.setCollideWorldBounds(true);
+    this.scene.physics.add.collider(player, this.solids);
+    player.setDepth(10000);
   }
 
-  // Returns spawn position in TILE coordinates
-  getRandomSpawnPosition(): { tileX: number; tileY: number } {
-    const widthTiles = Math.floor(this.map.widthInPixels / TILE_SIZE);
-    const heightTiles = Math.floor(this.map.heightInPixels / TILE_SIZE);
-    const paddingTiles = 2; // Don't spawn too close to edge (2 tiles)
+  getNavGrid(): NavGrid {
+    return this.nav;
+  }
 
-    for (let i = 0; i < 50; i++) {
-      const tileX = Phaser.Math.Between(
-        paddingTiles,
-        widthTiles - paddingTiles,
-      );
-      const tileY = Phaser.Math.Between(
-        paddingTiles,
-        heightTiles - paddingTiles,
-      );
-
-      // Check collision with solids at pixel center
-      const pixelPos = tileToPixel(tileX, tileY);
-      const pixelX = pixelPos.x;
-      const pixelY = pixelPos.y;
-
-      let collides = false;
-      this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
-        const body = child.body as Phaser.Physics.Arcade.StaticBody;
-        if (body.hitTest(pixelX, pixelY)) {
-          collides = true;
-        }
-        return null;
-      });
-
-      if (!collides) {
-        return { tileX, tileY };
+  getRandomSpawnTile(): { tileX: number; tileY: number } {
+    const candidates: Array<{ tileX: number; tileY: number }> = [];
+    for (let tileY = 2; tileY < this.map.height - 2; tileY++) {
+      for (let tileX = 2; tileX < this.map.width - 2; tileX++) {
+        if (this.nav.isWalkable(tileX, tileY)) candidates.push({ tileX, tileY });
       }
     }
-
-    // Fallback to tile (5, 5)
-    return { tileX: 5, tileY: 5 };
+    if (!candidates.length) return { tileX: 5, tileY: 5 };
+    return candidates[Phaser.Math.Between(0, candidates.length - 1)];
   }
 
   checkCollisionAt(pixelX: number, pixelY: number): boolean {
-    let collides = false;
-    this.solids.children.iterate((child: Phaser.GameObjects.GameObject) => {
-      const body = child.body as Phaser.Physics.Arcade.StaticBody;
-      if (body.hitTest(pixelX, pixelY)) {
-        collides = true;
-      }
-      return null;
-    });
-    return collides;
+    return this.solidRects.some(
+      (r) =>
+        pixelX >= r.x &&
+        pixelX <= r.x + r.width &&
+        pixelY >= r.y &&
+        pixelY <= r.y + r.height,
+    );
   }
 
   getMapWidth(): number {

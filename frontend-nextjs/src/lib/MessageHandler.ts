@@ -1,68 +1,81 @@
 import * as Phaser from "phaser";
-import { WebSocketManager, WebSocketMessage } from "./WebSocketManager";
+import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
-import { ProximityManager } from "./ProximityManager";
 import { CallManager } from "./CallManager";
 import { AnimationManager, Direction } from "./AnimationManager";
-import { tileToPixel, TILE_SIZE } from "./types";
+import { tileToPixel } from "./types";
 import type { PlayerStatus } from "./types";
+
+interface MovementData {
+  id: string;
+  tileX: number;
+  tileY: number;
+  direction: string;
+}
+
+interface UserData {
+  id: string;
+  name: string;
+  tileX: number;
+  tileY: number;
+  sprite: string;
+  status?: PlayerStatus;
+}
+
+const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
 
 export class MessageHandler {
   private scene: Phaser.Scene;
-  private wsManager: WebSocketManager;
   private playerManager: PlayerManager;
-  private proximityManager: ProximityManager;
   private callManager: CallManager;
   private animationManager: AnimationManager;
   private playerId: string;
-  private sceneReady: boolean = false;
-  private player!: Phaser.Physics.Arcade.Sprite;
+  private player: Phaser.Physics.Arcade.Sprite;
 
   constructor(
     scene: Phaser.Scene,
-    wsManager: WebSocketManager,
     playerManager: PlayerManager,
-    proximityManager: ProximityManager,
     callManager: CallManager,
     animationManager: AnimationManager,
     playerId: string,
     player: Phaser.Physics.Arcade.Sprite,
   ) {
     this.scene = scene;
-    this.wsManager = wsManager;
     this.playerManager = playerManager;
-    this.proximityManager = proximityManager;
     this.callManager = callManager;
     this.animationManager = animationManager;
     this.playerId = playerId;
     this.player = player;
   }
 
-  setSceneReady(ready: boolean) {
-    this.sceneReady = ready;
-  }
-
   handleMessage(msg: WebSocketMessage) {
-    if (!this.sceneReady) return;
-
     switch (msg.type) {
       case "space-joined":
         this.handleSpaceJoined(msg.data);
         break;
       case "movement-rejected":
-        this.handleMovementRejected(msg.data);
+        this.snapLocalPlayer(msg.data as unknown as MovementData);
         break;
       case "movement":
-        this.handleMovement(msg.data);
+        this.applyMovement(msg.data as unknown as MovementData);
         break;
       case "movements_batch":
-        this.handleMovementsBatch(msg.data);
+        (msg.data.movements as MovementData[] | undefined)?.forEach((m) =>
+          this.applyMovement(m),
+        );
+        break;
+      case "walk_to": {
+        const { id, tileX, tileY } = msg.data as unknown as MovementData;
+        if (id !== this.playerId) {
+          this.playerManager.walkPlayerTo(id, tileX, tileY);
+        }
+        break;
+      }
+      case "user-join":
+        this.handleUserJoin(msg.data as unknown as UserData);
         break;
       case "user-left":
-        this.handleUserLeft(msg.data);
-        break;
-      case "user-join":
-        this.handleUserJoin(msg.data);
+        this.handleUserLeft(msg.data.id as string);
         break;
       case "incoming_call":
         this.callManager.handleIncomingCall(msg.data);
@@ -77,155 +90,94 @@ export class MessageHandler {
         this.callManager.handleCallEnded(msg.data);
         break;
       case "chat":
-        this.handleChat(msg.data);
+        window.dispatchEvent(
+          new CustomEvent("chatMessage", { detail: msg.data }),
+        );
         break;
       case "status_changed":
-        this.handleStatusChanged(msg.data);
+        this.handleStatusChanged(msg.data as unknown as {
+          id: string;
+          status: PlayerStatus;
+        });
         break;
     }
   }
 
-  private handleChat(data: Record<string, unknown>) {
-    window.dispatchEvent(new CustomEvent("chatMessage", { detail: data }));
+  private applyMovement(movement: MovementData) {
+    if (movement.id === this.playerId) return;
+    this.playerManager.updatePlayerPosition(
+      movement.id,
+      movement.tileX,
+      movement.tileY,
+      movement.direction as Direction,
+    );
+  }
+
+  private snapLocalPlayer({ tileX, tileY }: MovementData) {
+    const target = tileToPixel(tileX, tileY);
+    this.scene.tweens.add({
+      targets: this.player,
+      x: target.x,
+      y: target.y,
+      duration: 150,
+      ease: "Power2",
+    });
   }
 
   private handleSpaceJoined(data: Record<string, unknown>) {
-    if (!this.player) return;
+    const spawn = tileToPixel(data.tileX as number, data.tileY as number);
+    this.player.setPosition(spawn.x, spawn.y);
 
-    const spawnTileX = data.tileX as number;
-    const spawnTileY = data.tileY as number;
     const sprite = data.sprite as string;
-    const existingUsers = data.existingUsers as Array<{
-      id: string;
-      name: string;
-      tileX: number;
-      tileY: number;
-      sprite: string;
-      status?: PlayerStatus;
-    }>;
-
-    const spawnPos = tileToPixel(spawnTileX, spawnTileY);
-    this.player.setPosition(spawnPos.x, spawnPos.y);
-
     if (sprite) {
-      const validSprites = ["Adam", "Alex", "Amelia", "Bob"];
-      const spriteName = validSprites.includes(sprite) ? sprite : "Adam";
+      const spriteName = VALID_SPRITES.includes(sprite) ? sprite : "Adam";
       this.player.setData("spriteName", spriteName);
       this.player.play(
         this.animationManager.getAnimationKey(spriteName, "idle", "down"),
       );
     }
 
-    existingUsers.forEach((user) => {
-      this.playerManager.addPlayer(
-        user.id,
-        user.name,
-        user.tileX,
-        user.tileY,
-        user.sprite,
-        user.status || "available",
-      );
-    });
+    (data.existingUsers as UserData[]).forEach((user) =>
+      this.handleUserJoin(user),
+    );
+  }
+
+  private handleUserJoin(user: UserData) {
+    this.playerManager.addPlayer(
+      user.id,
+      user.name,
+      user.tileX,
+      user.tileY,
+      user.sprite,
+      user.status || "available",
+    );
     this.dispatchPlayerList();
   }
 
-  private handleMovementRejected(data: Record<string, unknown>) {
-    const tileX = data.tileX as number;
-    const tileY = data.tileY as number;
-
-    if (this.player) {
-      const targetPos = tileToPixel(tileX, tileY);
-      this.scene.tweens.add({
-        targets: this.player,
-        x: targetPos.x,
-        y: targetPos.y,
-        duration: 150,
-        ease: "Power2",
-      });
-    }
-  }
-
-  private handleMovement(data: Record<string, unknown>) {
-    const { id, tileX, tileY, direction } = data as {
-      id: string;
-      tileX: number;
-      tileY: number;
-      direction: string;
-    };
-    if (id !== this.playerId) {
-      this.playerManager.updatePlayerPosition(
-        id,
-        tileX,
-        tileY,
-        direction as Direction,
-      );
-    }
-  }
-
-  private handleMovementsBatch(data: Record<string, unknown>) {
-    const movements = data.movements as Array<{
-      id: string;
-      tileX: number;
-      tileY: number;
-      direction: string;
-    }>;
-    if (!movements) return;
-
-    for (const movement of movements) {
-      if (movement.id !== this.playerId) {
-        this.playerManager.updatePlayerPosition(
-          movement.id,
-          movement.tileX,
-          movement.tileY,
-          movement.direction as Direction,
-        );
-      }
-    }
-  }
-
-  private handleUserLeft(data: Record<string, unknown>) {
-    const { id } = data as { id: string };
+  private handleUserLeft(id: string) {
     this.playerManager.removePlayer(id);
-    this.proximityManager.destroyProximityCard(id);
     this.callManager.endCall(id, "user_left");
     this.dispatchPlayerList();
   }
 
-  private handleUserJoin(data: Record<string, unknown>) {
-    const { id, name, tileX, tileY, sprite, status } = data as {
-      id: string;
-      name: string;
-      tileX: number;
-      tileY: number;
-      sprite: string;
-      status?: PlayerStatus;
-    };
-    this.playerManager.addPlayer(
-      id,
-      name,
-      tileX,
-      tileY,
-      sprite,
-      status || "available",
-    );
-    this.dispatchPlayerList();
-  }
-
-  private handleStatusChanged(data: Record<string, unknown>) {
-    const { id, status } = data as { id: string; status: PlayerStatus };
+  private handleStatusChanged({
+    id,
+    status,
+  }: {
+    id: string;
+    status: PlayerStatus;
+  }) {
     this.playerManager.updatePlayerStatus(id, status);
-
     window.dispatchEvent(
-      new CustomEvent("playerStatusChanged", {
-        detail: { id, status },
-      }),
+      new CustomEvent("playerStatusChanged", { detail: { id, status } }),
     );
   }
 
   private dispatchPlayerList() {
-    const players = this.playerManager.getPlayerList();
     window.dispatchEvent(
-      new CustomEvent("playerListUpdated", { detail: players }),
+      new CustomEvent("playerListUpdated", {
+        detail: this.playerManager.getPlayerList(),
+      }),
     );
   }
 }

@@ -3,7 +3,7 @@ import { WebSocketManager, WebSocketMessage } from "../lib/WebSocketManager";
 import { PlayerManager } from "../lib/PlayerManager";
 import { ProximityManager } from "../lib/ProximityManager";
 import { CallManager } from "../lib/CallManager";
-import { AnimationManager, Direction } from "../lib/AnimationManager";
+import { AnimationManager } from "../lib/AnimationManager";
 import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { MessageHandler } from "../lib/MessageHandler";
@@ -22,15 +22,7 @@ class GameScene extends Phaser.Scene {
   private messageHandler!: MessageHandler;
   private virtualJoystickManager?: VirtualJoystickManager;
   private playerId: string;
-  private camera!: Phaser.Cameras.Scene2D.Camera;
-  private sceneReady: boolean = false;
-
-  // Named event handlers for proper cleanup
-  private handleSendChatMessage!: EventListener;
-  private handleInitiateCall!: EventListener;
-  private handleStatusChange!: EventListener;
-  private handleChatFocused!: EventListener;
-  private handleChatBlurred!: EventListener;
+  private windowListeners: Array<[string, EventListener]> = [];
 
   constructor(
     private name: string,
@@ -51,165 +43,135 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.camera = this.cameras.main;
     this.animationManager.create();
+    this.mapManager.create();
+
+    const nav = this.mapManager.getNavGrid();
+    const spawnTile = this.mapManager.getRandomSpawnTile();
+    const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
     this.wsManager = new WebSocketManager(
       this.playerId,
       this.name,
       this.character,
     );
+    this.wsManager.connect(`${this.getWsBaseUrl()}/ws/${this.roomId}`, spawnTile);
+
     this.playerManager = new PlayerManager(
       this,
       this.animationManager,
+      nav,
       this.playerId,
     );
-
-    this.mapManager.create();
-    const spawnTilePos = this.mapManager.getRandomSpawnPosition();
-    const spawnPixel = tileToPixel(spawnTilePos.tileX, spawnTilePos.tileY);
-
-    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const host = window.location.hostname;
-    let wsBaseUrl = process.env.NEXT_PUBLIC_WS_URL;
-
-    if (
-      !wsBaseUrl ||
-      (wsBaseUrl.includes("localhost") &&
-        host !== "localhost" &&
-        host !== "127.0.0.1")
-    ) {
-      wsBaseUrl = `${protocol}//${host}:8080`;
-    }
-
-    this.wsManager.connect(`${wsBaseUrl}/ws/${this.roomId}`, spawnTilePos);
-
     this.player = this.playerManager.createLocalPlayer(
       this.playerId,
       this.name,
-      spawnPixel.x,
-      spawnPixel.y,
+      spawn.x,
+      spawn.y,
       this.character,
     );
+    this.mapManager.setupColliders(this.player);
 
-    const isMobile = !this.sys.game.device.os.desktop;
+    if (!this.sys.game.device.os.desktop) {
+      this.virtualJoystickManager = new VirtualJoystickManager(this);
+    }
+
     this.movementManager = new MovementManager(
       this,
       this.player,
       this.animationManager,
-      this.playerId,
       this.wsManager,
-      isMobile,
+      nav,
+      (x, y) => this.mapManager.checkCollisionAt(x, y),
+      this.virtualJoystickManager,
     );
 
-    this.sceneReady = true;
-
     this.callManager = new CallManager(this, this.wsManager, this.playerId);
-
     this.proximityManager = new ProximityManager(
       this,
-      this.wsManager,
       this.playerManager,
       this.callManager,
       this.player,
-      this.playerId,
     );
-
-    this.mapManager.setupColliders(this.player);
-    this.movementManager.setCollisionChecker((x: number, y: number) => {
-      return this.mapManager.checkCollisionAt(x, y);
-    });
 
     this.messageHandler = new MessageHandler(
       this,
-      this.wsManager,
       this.playerManager,
-      this.proximityManager,
       this.callManager,
       this.animationManager,
       this.playerId,
       this.player,
     );
-    this.messageHandler.setSceneReady(true);
-    this.wsManager.setOnMessage((msg: WebSocketMessage) => {
-      this.messageHandler.handleMessage(msg);
-    });
-
-    this.cameras.main.setBounds(
-      0,
-      0,
-      this.mapManager.getMapWidth(),
-      this.mapManager.getMapHeight(),
+    this.wsManager.setOnMessage((msg: WebSocketMessage) =>
+      this.messageHandler.handleMessage(msg),
     );
+
+    const mapWidth = this.mapManager.getMapWidth();
+    const mapHeight = this.mapManager.getMapHeight();
+    this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
+    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setZoom(1.2);
+    this.cameras.main.setDeadzone(200, 150);
 
-    this.physics.world.setBounds(
-      0,
-      0,
-      this.mapManager.getMapWidth(),
-      this.mapManager.getMapHeight(),
+    this.listen("sendChatMessage", (event: CustomEvent) =>
+      this.wsManager.send("chat", event.detail),
     );
+    this.listen("initiateCall", (event: CustomEvent) =>
+      this.proximityManager.initiateCall(
+        event.detail.playerId,
+        event.detail.type,
+      ),
+    );
+    this.listen("statusChange", (event: CustomEvent) => {
+      this.wsManager.send("status_change", { status: event.detail.status });
+      this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
+    });
+    this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
+    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
+  }
 
-    this.camera.setZoom(1.2);
-    this.camera.setDeadzone(200, 150);
+  private getWsBaseUrl(): string {
+    const host = window.location.hostname;
+    const configured = process.env.NEXT_PUBLIC_WS_URL;
+    const isStaleLocalhost =
+      configured?.includes("localhost") &&
+      host !== "localhost" &&
+      host !== "127.0.0.1";
 
-    if (isMobile) {
-      this.virtualJoystickManager = new VirtualJoystickManager(this);
+    if (!configured || isStaleLocalhost) {
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      return `${protocol}//${host}:8080`;
     }
+    return configured;
+  }
 
-    this.handleSendChatMessage = ((event: CustomEvent) => {
-      this.wsManager.send("chat", event.detail);
-    }) as EventListener;
-
-    this.handleInitiateCall = ((event: CustomEvent) => {
-      const { playerId, type } = event.detail;
-      this.proximityManager.initiateCall(playerId, type);
-    }) as EventListener;
-
-    this.handleStatusChange = ((event: CustomEvent) => {
-      const { status } = event.detail;
-      this.wsManager.send("status_change", { status });
-      this.playerManager.updatePlayerStatus(this.playerId, status);
-    }) as EventListener;
-
-    this.handleChatFocused = () => this.movementManager.disableInput();
-    this.handleChatBlurred = () => this.movementManager.enableInput();
-
-    window.addEventListener("sendChatMessage", this.handleSendChatMessage);
-    window.addEventListener("initiateCall", this.handleInitiateCall);
-    window.addEventListener("statusChange", this.handleStatusChange);
-    window.addEventListener("chatFocused", this.handleChatFocused);
-    window.addEventListener("chatBlurred", this.handleChatBlurred);
+  private listen(type: string, handler: (event: CustomEvent) => void) {
+    const listener = handler as EventListener;
+    this.windowListeners.push([type, listener]);
+    window.addEventListener(type, listener);
   }
 
   update(_time: number, delta: number) {
     if (!this.player) return;
 
-    this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
-
-    if (this.virtualJoystickManager) {
-      const velocity = this.virtualJoystickManager.getVelocity();
-      this.movementManager.setJoystickVelocity(velocity.x, velocity.y);
-    } else {
-      this.movementManager.setJoystickVelocity(0, 0);
-    }
-
     this.movementManager.update(delta);
+    this.playerManager.update(delta);
+    this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
     this.proximityManager.update();
-    this.playerManager.update();
   }
 
   public cleanup() {
-    window.removeEventListener("sendChatMessage", this.handleSendChatMessage);
-    window.removeEventListener("initiateCall", this.handleInitiateCall);
-    window.removeEventListener("statusChange", this.handleStatusChange);
-    window.removeEventListener("chatFocused", this.handleChatFocused);
-    window.removeEventListener("chatBlurred", this.handleChatBlurred);
+    this.windowListeners.forEach(([type, listener]) =>
+      window.removeEventListener(type, listener),
+    );
+    this.windowListeners.length = 0;
 
-    this.wsManager.disconnect();
-    this.playerManager.destroy();
-    this.proximityManager.destroy();
-    this.callManager.cleanup();
+    this.movementManager?.destroy();
+    this.wsManager?.disconnect();
+    this.playerManager?.destroy();
+    this.proximityManager?.destroy();
+    this.callManager?.cleanup();
     this.virtualJoystickManager?.destroy();
   }
 }

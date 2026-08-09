@@ -1,142 +1,98 @@
 import * as Phaser from "phaser";
 
+const OCTANT = Math.PI / 4;
+
+const round = (value: number) => Math.round(value * 1000) / 1000;
+
 export class VirtualJoystickManager {
   private scene: Phaser.Scene;
-  private joystickBase!: Phaser.GameObjects.Graphics;
-  private joystickThumb!: Phaser.GameObjects.Graphics;
-  private joystickPointer?: Phaser.Input.Pointer;
-  private joystickActive: boolean = false;
+  private base!: Phaser.GameObjects.Graphics;
+  private thumb!: Phaser.GameObjects.Graphics;
+  private pointer?: Phaser.Input.Pointer;
   private velocity = { x: 0, y: 0 };
+  private baseX: number;
+  private baseY: number;
+  private thumbRadius: number;
+  private maxDistance: number;
+  private onPointerMove: (pointer: Phaser.Input.Pointer) => void;
+  private onPointerUp: (pointer: Phaser.Input.Pointer) => void;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
-    this.setupVirtualJoystick();
-  }
 
-  private setupVirtualJoystick() {
-    const isMobile = this.scene.cameras.main.width < 640;
-    const baseX = isMobile ? 90 : 120;
-    // Position higher on mobile to avoid overlapping with the bottom control bar
-    const baseY = this.scene.cameras.main.height - (isMobile ? 200 : 150);
-    const baseRadius = isMobile ? 60 : 70;
-    const thumbRadius = isMobile ? 25 : 30;
-    const maxDistance = isMobile ? 35 : 40;
+    const compact = scene.cameras.main.width < 640;
+    this.baseX = compact ? 90 : 120;
+    this.baseY = scene.cameras.main.height - (compact ? 200 : 150);
+    this.thumbRadius = compact ? 25 : 30;
+    this.maxDistance = compact ? 35 : 40;
+    const baseRadius = compact ? 60 : 70;
 
-    this.joystickBase = this.scene.add.graphics();
-    this.joystickBase.lineStyle(3, 0xffffff, 0.3);
-    this.joystickBase.fillStyle(0x000000, 0.25);
-    this.joystickBase.fillCircle(baseX, baseY, baseRadius);
-    this.joystickBase.strokeCircle(baseX, baseY, baseRadius);
-    this.joystickBase.setScrollFactor(0);
-    this.joystickBase.setDepth(100000);
-    this.scene.children.bringToTop(this.joystickBase);
-
-    this.joystickThumb = this.scene.add.graphics();
-    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
-    this.joystickThumb.fillStyle(0xffffff, 0.95);
-    this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
-    this.joystickThumb.strokeCircle(baseX, baseY, thumbRadius);
-    this.joystickThumb.setScrollFactor(0);
-    this.joystickThumb.setDepth(100001);
-    this.scene.children.bringToTop(this.joystickThumb);
-
-    this.joystickBase.setInteractive(
-      new Phaser.Geom.Circle(baseX, baseY, baseRadius),
+    this.base = scene.add.graphics();
+    this.base.lineStyle(3, 0xffffff, 0.3);
+    this.base.fillStyle(0x000000, 0.25);
+    this.base.fillCircle(this.baseX, this.baseY, baseRadius);
+    this.base.strokeCircle(this.baseX, this.baseY, baseRadius);
+    this.base.setScrollFactor(0).setDepth(100000);
+    this.base.setInteractive(
+      new Phaser.Geom.Circle(this.baseX, this.baseY, baseRadius),
       Phaser.Geom.Circle.Contains,
     );
 
-    this.joystickBase.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-      this.joystickActive = true;
-      this.joystickPointer = pointer;
-      this.updateJoystick(pointer, baseX, baseY, maxDistance, thumbRadius);
-    });
+    this.thumb = scene.add.graphics();
+    this.thumb.setScrollFactor(0).setDepth(100001);
+    this.drawThumb(this.baseX, this.baseY);
 
-    this.scene.input.on("pointermove", (pointer: Phaser.Input.Pointer) => {
-      if (this.joystickActive && pointer === this.joystickPointer) {
-        this.updateJoystick(pointer, baseX, baseY, maxDistance, thumbRadius);
-      }
-    });
-
-    this.scene.input.on("pointerup", (pointer: Phaser.Input.Pointer) => {
-      if (this.joystickActive && pointer === this.joystickPointer) {
-        this.joystickActive = false;
-        this.joystickPointer = undefined;
-        this.resetJoystick(baseX, baseY, thumbRadius);
-      }
-    });
-  }
-
-  private updateJoystick(
-    pointer: Phaser.Input.Pointer,
-    baseX: number,
-    baseY: number,
-    maxDistance: number,
-    thumbRadius: number,
-  ) {
-    const dx = pointer.x - baseX;
-    const dy = pointer.y - baseY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const clampedDistance = Math.min(distance, maxDistance);
-    const angle = Math.atan2(dy, dx);
-    const thumbX = baseX + Math.cos(angle) * clampedDistance;
-    const thumbY = baseY + Math.sin(angle) * clampedDistance;
-
-    this.joystickThumb.clear();
-    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
-    this.joystickThumb.fillStyle(0xffffff, 0.95);
-    this.joystickThumb.fillCircle(thumbX, thumbY, thumbRadius);
-    this.joystickThumb.strokeCircle(thumbX, thumbY, thumbRadius);
-
-    if (clampedDistance > 0) {
-      const angleDeg = (angle * 180) / Math.PI;
-      if (angleDeg >= -22.5 && angleDeg < 22.5) {
-        this.velocity.x = 1;
-        this.velocity.y = 0;
-      } else if (angleDeg >= 22.5 && angleDeg < 67.5) {
-        this.velocity.x = 0.707;
-        this.velocity.y = 0.707;
-      } else if (angleDeg >= 67.5 && angleDeg < 112.5) {
-        this.velocity.x = 0;
-        this.velocity.y = 1;
-      } else if (angleDeg >= 112.5 && angleDeg < 157.5) {
-        this.velocity.x = -0.707;
-        this.velocity.y = 0.707;
-      } else if (angleDeg >= 157.5 || angleDeg < -157.5) {
-        this.velocity.x = -1;
-        this.velocity.y = 0;
-      } else if (angleDeg >= -157.5 && angleDeg < -112.5) {
-        this.velocity.x = -0.707;
-        this.velocity.y = -0.707;
-      } else if (angleDeg >= -112.5 && angleDeg < -67.5) {
-        this.velocity.x = 0;
-        this.velocity.y = -1;
-      } else if (angleDeg >= -67.5 && angleDeg < -22.5) {
-        this.velocity.x = 0.707;
-        this.velocity.y = -0.707;
-      }
-    } else {
+    this.onPointerMove = (pointer) => {
+      if (pointer === this.pointer) this.moveThumb(pointer);
+    };
+    this.onPointerUp = (pointer) => {
+      if (pointer !== this.pointer) return;
+      this.pointer = undefined;
       this.velocity.x = 0;
       this.velocity.y = 0;
-    }
+      this.drawThumb(this.baseX, this.baseY);
+    };
+
+    this.base.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+      this.pointer = pointer;
+      this.moveThumb(pointer);
+    });
+    scene.input.on("pointermove", this.onPointerMove);
+    scene.input.on("pointerup", this.onPointerUp);
   }
 
-  private resetJoystick(baseX: number, baseY: number, thumbRadius: number) {
-    this.joystickThumb.clear();
-    this.joystickThumb.lineStyle(2, 0x000000, 0.2);
-    this.joystickThumb.fillStyle(0xffffff, 0.95);
-    this.joystickThumb.fillCircle(baseX, baseY, thumbRadius);
-    this.joystickThumb.strokeCircle(baseX, baseY, thumbRadius);
+  private moveThumb(pointer: Phaser.Input.Pointer) {
+    const dx = pointer.x - this.baseX;
+    const dy = pointer.y - this.baseY;
+    const distance = Math.min(Math.hypot(dx, dy), this.maxDistance);
+    const angle = Math.atan2(dy, dx);
 
-    this.velocity.x = 0;
-    this.velocity.y = 0;
+    this.drawThumb(
+      this.baseX + Math.cos(angle) * distance,
+      this.baseY + Math.sin(angle) * distance,
+    );
+
+    const snapped = Math.round(angle / OCTANT) * OCTANT;
+    this.velocity.x = distance > 0 ? round(Math.cos(snapped)) : 0;
+    this.velocity.y = distance > 0 ? round(Math.sin(snapped)) : 0;
+  }
+
+  private drawThumb(x: number, y: number) {
+    this.thumb.clear();
+    this.thumb.lineStyle(2, 0x000000, 0.2);
+    this.thumb.fillStyle(0xffffff, 0.95);
+    this.thumb.fillCircle(x, y, this.thumbRadius);
+    this.thumb.strokeCircle(x, y, this.thumbRadius);
   }
 
   getVelocity() {
-    return { ...this.velocity };
+    return this.velocity;
   }
 
   destroy() {
-    this.joystickBase.destroy();
-    this.joystickThumb.destroy();
+    this.scene.input.off("pointermove", this.onPointerMove);
+    this.scene.input.off("pointerup", this.onPointerUp);
+    this.base.destroy();
+    this.thumb.destroy();
   }
 }

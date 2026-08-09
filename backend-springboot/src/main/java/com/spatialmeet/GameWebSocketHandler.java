@@ -160,6 +160,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             switch (msg.getType()) {
                 case "join": handleJoin(session, msg); break;
                 case "move": handleMove(session, msg); break;
+                case "walk_to": handleWalkTo(session, msg); break;
                 case "request_call": handleRequestCall(session, msg); break;
                 case "call_response": handleCallResponse(session, msg); break;
                 case "webrtc_signal": handleWebRTCSignal(session, msg); break;
@@ -312,29 +313,66 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     }
 
     private void handleMove(WebSocketSession session, Message msg) throws IOException {
-        String playerId = getPlayerIdFromSession(session);
-        if (playerId == null) return;
+        Player player = resolvePlayer(session);
+        if (player == null) return;
 
         String roomId = sessionToRoom.get(session.getId());
-        if (roomId == null) return;
-        
         Map<String, Object> data = msg.getData();
         int targetTileX = ((Number) data.get("tileX")).intValue();
         int targetTileY = ((Number) data.get("tileY")).intValue();
         String direction = (String) data.get("direction");
-        
-        Player player = roomPlayers.get(roomId).get(playerId);
-        if (player == null) return;
-        
-        if (Player.isValidTile(targetTileX, targetTileY)) {
-            player.setTileX(targetTileX);
-            player.setTileY(targetTileY);
-            player.setDirection(direction);
-            pendingMovements.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>()).put(playerId, new Movement(playerId, targetTileX, targetTileY, direction));
-        } else {
-            Map<String, Object> rejectionData = Map.of("tileX", player.getTileX(), "tileY", player.getTileY());
-            session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("movement-rejected", rejectionData))));
+
+        if (!Player.isValidTile(targetTileX, targetTileY)) {
+            rejectMove(session, player);
+            return;
         }
+
+        player.setTileX(targetTileX);
+        player.setTileY(targetTileY);
+        player.setDirection(direction);
+        pendingMovements.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>())
+            .put(player.getId(), new Movement(player.getId(), targetTileX, targetTileY, direction));
+    }
+
+    private void handleWalkTo(WebSocketSession session, Message msg) throws IOException {
+        Player player = resolvePlayer(session);
+        if (player == null) return;
+
+        String roomId = sessionToRoom.get(session.getId());
+        Map<String, Object> data = msg.getData();
+        int targetTileX = ((Number) data.get("tileX")).intValue();
+        int targetTileY = ((Number) data.get("tileY")).intValue();
+
+        if (!Player.isValidTile(targetTileX, targetTileY)) {
+            rejectMove(session, player);
+            return;
+        }
+
+        player.setTileX(targetTileX);
+        player.setTileY(targetTileY);
+
+        Map<String, Movement> pending = pendingMovements.get(roomId);
+        if (pending != null) pending.remove(player.getId());
+
+        Map<String, Object> walkData = new HashMap<>();
+        walkData.put("id", player.getId());
+        walkData.put("tileX", targetTileX);
+        walkData.put("tileY", targetTileY);
+        broadcastToRoom(roomId, new Message("walk_to", walkData), player.getId());
+    }
+
+    private Player resolvePlayer(WebSocketSession session) {
+        String playerId = getPlayerIdFromSession(session);
+        String roomId = sessionToRoom.get(session.getId());
+        if (playerId == null || roomId == null) return null;
+
+        Map<String, Player> players = roomPlayers.get(roomId);
+        return players != null ? players.get(playerId) : null;
+    }
+
+    private void rejectMove(WebSocketSession session, Player player) throws IOException {
+        Map<String, Object> rejectionData = Map.of("tileX", player.getTileX(), "tileY", player.getTileY());
+        session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("movement-rejected", rejectionData))));
     }
 
     private void handleRequestCall(WebSocketSession session, Message msg) throws IOException {

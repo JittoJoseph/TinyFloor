@@ -12,6 +12,17 @@ export type Direction =
   | "down-right"
   | "down-left";
 
+export function directionFromVector(
+  x: number,
+  y: number,
+  fallback: Direction = "down",
+): Direction {
+  const vertical = Math.abs(y) > 0.001 ? (y < 0 ? "up" : "down") : "";
+  const horizontal = Math.abs(x) > 0.001 ? (x < 0 ? "left" : "right") : "";
+  if (vertical && horizontal) return `${vertical}-${horizontal}` as Direction;
+  return (vertical || horizontal || fallback) as Direction;
+}
+
 export class AnimationManager {
   private scene: Phaser.Scene;
   private static readonly CHARACTERS: CharacterName[] = [
@@ -81,9 +92,7 @@ export class AnimationManager {
     state: AnimationState,
     direction: Direction,
   ): string {
-    // Map diagonal directions to cardinal directions for animation
-    const animDirection = this.getAnimationDirection(direction);
-    return `${char}_${state}_${animDirection}`;
+    return `${char}_${state}_${this.getAnimationDirection(direction)}`;
   }
 
   private getAnimationDirection(

@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ToastProvider } from "@/components/ui/Toast";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const vt323 = VT323({
   variable: "--font-pixel",
@@ -66,6 +67,7 @@ export default function RootLayout({
         <AuthProvider>
           <ToastProvider>{children}</ToastProvider>
         </AuthProvider>
+        <GoogleAnalytics />
         <ClarityAnalytics />
       </body>
     </html>

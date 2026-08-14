@@ -35,9 +35,17 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     if (!isOpen) return;
     const loadDevices = async () => {
       try {
-        if (!navigator.mediaDevices?.getUserMedia) return;
-        await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-        const devices = await navigator.mediaDevices.enumerateDevices();
+        if (!navigator.mediaDevices?.enumerateDevices) return;
+        let devices = await navigator.mediaDevices.enumerateDevices();
+
+        if (devices.every((d) => !d.label)) {
+          const probe = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true,
+          });
+          devices = await navigator.mediaDevices.enumerateDevices();
+          probe.getTracks().forEach((track) => track.stop());
+        }
         const map = (kind: string, fallback: string): MediaDevice[] =>
           devices
             .filter((d) => d.kind === kind)

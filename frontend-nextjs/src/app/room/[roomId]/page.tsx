@@ -48,7 +48,6 @@ export default function RoomPage() {
 
   const [mounted, setMounted] = useState(false);
   const [roomData, setRoomData] = useState<RoomData | null>(null);
-  const [isInCall, setIsInCall] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [unreadChatCount, setUnreadChatCount] = useState(0);
@@ -90,29 +89,12 @@ export default function RoomPage() {
     }
   }, [roomId]);
 
-  // Control bar handlers
-  const handleMicToggle = useCallback((enabled: boolean) => {
-    // Will be connected to CallManager via custom events
-    window.dispatchEvent(new CustomEvent("micToggle", { detail: { enabled } }));
-  }, []);
-
-  const handleVideoToggle = useCallback((enabled: boolean) => {
-    window.dispatchEvent(
-      new CustomEvent("videoToggle", { detail: { enabled } }),
-    );
-  }, []);
-
   const handleSettingsClick = useCallback(() => {
     setShowSettings(true);
   }, []);
 
   const handleChatClick = useCallback(() => {
     setShowChat((prev) => !prev);
-  }, []);
-
-  const handleLeaveCall = useCallback(() => {
-    window.dispatchEvent(new CustomEvent("leaveCall"));
-    setIsInCall(false);
   }, []);
 
   // Handle status change
@@ -124,10 +106,7 @@ export default function RoomPage() {
     );
   }, []);
 
-  // Listen for call state changes and chat events
   useEffect(() => {
-    const handleCallStarted = () => setIsInCall(true);
-    const handleCallEnded = () => setIsInCall(false);
     const handleOpenChat = () => setShowChat(true);
     const handlePlayerListUpdated = (e: CustomEvent) => {
       // Filter out current user from participants list to avoid duplication
@@ -152,8 +131,6 @@ export default function RoomPage() {
       setParticipants(processedParticipants);
     };
 
-    window.addEventListener("callStarted", handleCallStarted);
-    window.addEventListener("callEnded", handleCallEnded);
     window.addEventListener("openChat", handleOpenChat);
     window.addEventListener(
       "playerListUpdated",
@@ -161,8 +138,6 @@ export default function RoomPage() {
     );
 
     return () => {
-      window.removeEventListener("callStarted", handleCallStarted);
-      window.removeEventListener("callEnded", handleCallEnded);
       window.removeEventListener("openChat", handleOpenChat);
       window.removeEventListener(
         "playerListUpdated",
@@ -240,13 +215,9 @@ export default function RoomPage() {
 
       {/* Bottom Control Bar */}
       <ControlBar
-        onMicToggle={handleMicToggle}
-        onVideoToggle={handleVideoToggle}
         onSettingsClick={handleSettingsClick}
         onChatClick={handleChatClick}
-        onLeaveCall={handleLeaveCall}
         onStatusChange={handleStatusChange}
-        isInCall={isInCall}
         currentStatus={currentStatus}
         unreadChatCount={unreadChatCount}
       />

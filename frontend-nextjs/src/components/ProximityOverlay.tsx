@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef, memo } from "react";
 import { Video, Mic, MessageSquare, BadgeCheck, User } from "lucide-react";
+import { callManager } from "@/lib/CallManager";
 
 interface NearbyPlayer {
   id: string;
@@ -27,7 +28,7 @@ const PlayerCard = memo(function PlayerCard({
   x: number;
   y: number;
   isBelow: boolean;
-  onCall: (id: string, type: "audio" | "video") => void;
+  onCall: (id: string, name: string, video: boolean) => void;
   onChat: () => void;
   onViewProfile: (userId: string) => void;
 }) {
@@ -112,14 +113,14 @@ const PlayerCard = memo(function PlayerCard({
             </button>
           )}
           <button
-            onClick={() => onCall(player.id, "video")}
+            onClick={() => onCall(player.id, player.name, true)}
             className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
             title="Video Call"
           >
             <Video size={14} />
           </button>
           <button
-            onClick={() => onCall(player.id, "audio")}
+            onClick={() => onCall(player.id, player.name, false)}
             className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
             title="Audio Call"
           >
@@ -192,10 +193,8 @@ export default function ProximityOverlay() {
   }, []);
 
   const handleCall = useCallback(
-    (playerId: string, type: "audio" | "video") => {
-      window.dispatchEvent(
-        new CustomEvent("initiateCall", { detail: { playerId, type } }),
-      );
+    (playerId: string, name: string, video: boolean) => {
+      callManager.invite(playerId, name, video);
     },
     [],
   );

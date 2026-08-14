@@ -13,42 +13,33 @@ import {
   VolumeX,
 } from "lucide-react";
 import { StatusSelector } from "./StatusSelector";
+import { callManager } from "@/lib/CallManager";
+import { useCall } from "@/lib/useCall";
 import type { PlayerStatus } from "@/lib/types";
 
 interface ControlBarProps {
-  onMicToggle?: (enabled: boolean) => void;
-  onVideoToggle?: (enabled: boolean) => void;
   onSettingsClick?: () => void;
   onChatClick?: () => void;
-  onLeaveCall?: () => void;
   onStatusChange?: (status: PlayerStatus) => void;
-  isInCall?: boolean;
   currentStatus?: PlayerStatus;
   unreadChatCount?: number;
 }
 
 export default function ControlBar({
-  onMicToggle,
-  onVideoToggle,
   onSettingsClick,
   onChatClick,
-  onLeaveCall,
   onStatusChange,
-  isInCall = false,
   currentStatus = "available",
   unreadChatCount = 0,
 }: ControlBarProps) {
-  const [micEnabled, setMicEnabled] = useState(true);
-  const [videoEnabled, setVideoEnabled] = useState(true);
-  const [speakerEnabled, setSpeakerEnabled] = useState(true);
+  const { peers, micEnabled, cameraEnabled, speakerEnabled } = useCall();
+  const isInCall = peers.length > 0;
   const [status, setStatus] = useState<PlayerStatus>(currentStatus);
 
-  // Sync status with prop changes
   useEffect(() => {
     setStatus(currentStatus);
   }, [currentStatus]);
 
-  // Auto-set status to in_call when in a call
   useEffect(() => {
     if (isInCall && status !== "in_call") {
       setStatus("in_call");
@@ -59,21 +50,20 @@ export default function ControlBar({
     }
   }, [isInCall, status, onStatusChange]);
 
-  const toggleMic = useCallback(() => {
-    const newState = !micEnabled;
-    setMicEnabled(newState);
-    onMicToggle?.(newState);
-  }, [micEnabled, onMicToggle]);
+  const toggleMic = useCallback(
+    () => callManager.setMic(!micEnabled),
+    [micEnabled],
+  );
 
-  const toggleVideo = useCallback(() => {
-    const newState = !videoEnabled;
-    setVideoEnabled(newState);
-    onVideoToggle?.(newState);
-  }, [videoEnabled, onVideoToggle]);
+  const toggleVideo = useCallback(
+    () => callManager.setCamera(!cameraEnabled),
+    [cameraEnabled],
+  );
 
-  const toggleSpeaker = useCallback(() => {
-    setSpeakerEnabled(!speakerEnabled);
-  }, [speakerEnabled]);
+  const toggleSpeaker = useCallback(
+    () => callManager.setSpeaker(!speakerEnabled),
+    [speakerEnabled],
+  );
 
   const handleStatusChange = useCallback(
     (newStatus: PlayerStatus) => {
@@ -119,18 +109,18 @@ export default function ControlBar({
           <button
             onClick={toggleVideo}
             className={`cursor-pointer relative p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
-              videoEnabled
+              cameraEnabled
                 ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
                 : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
             }`}
-            title={videoEnabled ? "Turn off camera" : "Turn on camera"}
+            title={cameraEnabled ? "Turn off camera" : "Turn on camera"}
           >
-            {videoEnabled ? (
+            {cameraEnabled ? (
               <Video className="w-[18px] h-[18px]" />
             ) : (
               <VideoOff className="w-[18px] h-[18px]" />
             )}
-            {!videoEnabled && (
+            {!cameraEnabled && (
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
             )}
           </button>
@@ -178,7 +168,7 @@ export default function ControlBar({
             <>
               <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1" />
               <button
-                onClick={onLeaveCall}
+                onClick={() => callManager.hangUp()}
                 className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0 my-1"
                 title="Leave call"
               >

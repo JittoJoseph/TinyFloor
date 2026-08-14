@@ -2,7 +2,7 @@ import * as Phaser from "phaser";
 import { WebSocketManager, WebSocketMessage } from "../lib/WebSocketManager";
 import { PlayerManager } from "../lib/PlayerManager";
 import { ProximityManager } from "../lib/ProximityManager";
-import { CallManager } from "../lib/CallManager";
+import { callManager } from "../lib/CallManager";
 import { AnimationManager } from "../lib/AnimationManager";
 import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
@@ -15,7 +15,6 @@ class GameScene extends Phaser.Scene {
   private wsManager!: WebSocketManager;
   private playerManager!: PlayerManager;
   private proximityManager!: ProximityManager;
-  private callManager!: CallManager;
   private animationManager!: AnimationManager;
   private movementManager!: MovementManager;
   private mapManager!: MapManager;
@@ -86,18 +85,16 @@ class GameScene extends Phaser.Scene {
       this.virtualJoystickManager,
     );
 
-    this.callManager = new CallManager(this, this.wsManager, this.playerId);
+    callManager.attach(this.wsManager, this.playerId);
     this.proximityManager = new ProximityManager(
       this,
       this.playerManager,
-      this.callManager,
       this.player,
     );
 
     this.messageHandler = new MessageHandler(
       this,
       this.playerManager,
-      this.callManager,
       this.animationManager,
       this.playerId,
       this.player,
@@ -116,12 +113,6 @@ class GameScene extends Phaser.Scene {
 
     this.listen("sendChatMessage", (event: CustomEvent) =>
       this.wsManager.send("chat", event.detail),
-    );
-    this.listen("initiateCall", (event: CustomEvent) =>
-      this.proximityManager.initiateCall(
-        event.detail.playerId,
-        event.detail.type,
-      ),
     );
     this.listen("statusChange", (event: CustomEvent) => {
       this.wsManager.send("status_change", { status: event.detail.status });
@@ -171,7 +162,7 @@ class GameScene extends Phaser.Scene {
     this.wsManager?.disconnect();
     this.playerManager?.destroy();
     this.proximityManager?.destroy();
-    this.callManager?.cleanup();
+    callManager.detach();
     this.virtualJoystickManager?.destroy();
   }
 }

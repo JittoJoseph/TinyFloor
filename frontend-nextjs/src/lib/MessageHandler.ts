@@ -1,7 +1,7 @@
 import * as Phaser from "phaser";
 import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
-import { CallManager } from "./CallManager";
+import { callManager } from "./CallManager";
 import { AnimationManager, Direction } from "./AnimationManager";
 import { tileToPixel } from "./types";
 import type { PlayerStatus } from "./types";
@@ -27,7 +27,6 @@ const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
 export class MessageHandler {
   private scene: Phaser.Scene;
   private playerManager: PlayerManager;
-  private callManager: CallManager;
   private animationManager: AnimationManager;
   private playerId: string;
   private player: Phaser.Physics.Arcade.Sprite;
@@ -35,14 +34,12 @@ export class MessageHandler {
   constructor(
     scene: Phaser.Scene,
     playerManager: PlayerManager,
-    callManager: CallManager,
     animationManager: AnimationManager,
     playerId: string,
     player: Phaser.Physics.Arcade.Sprite,
   ) {
     this.scene = scene;
     this.playerManager = playerManager;
-    this.callManager = callManager;
     this.animationManager = animationManager;
     this.playerId = playerId;
     this.player = player;
@@ -77,17 +74,12 @@ export class MessageHandler {
       case "user-left":
         this.handleUserLeft(msg.data.id as string);
         break;
-      case "incoming_call":
-        this.callManager.handleIncomingCall(msg.data);
-        break;
-      case "call_response":
-        this.callManager.handleCallResponse(msg.data);
-        break;
-      case "webrtc_signal":
-        this.callManager.handleWebRTCSignal(msg.data);
-        break;
-      case "call_ended":
-        this.callManager.handleCallEnded(msg.data);
+      case "call_invite":
+      case "call_accept":
+      case "call_decline":
+      case "call_signal":
+      case "call_end":
+        callManager.handleMessage(msg.type, msg.data);
         break;
       case "chat":
         window.dispatchEvent(
@@ -156,7 +148,7 @@ export class MessageHandler {
 
   private handleUserLeft(id: string) {
     this.playerManager.removePlayer(id);
-    this.callManager.endCall(id, "user_left");
+    callManager.dropPeer(id);
     this.dispatchPlayerList();
   }
 

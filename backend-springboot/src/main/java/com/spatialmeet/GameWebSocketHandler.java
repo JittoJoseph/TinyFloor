@@ -161,10 +161,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "join": handleJoin(session, msg); break;
                 case "move": handleMove(session, msg); break;
                 case "walk_to": handleWalkTo(session, msg); break;
-                case "request_call": handleRequestCall(session, msg); break;
-                case "call_response": handleCallResponse(session, msg); break;
-                case "webrtc_signal": handleWebRTCSignal(session, msg); break;
-                case "call_ended": handleCallEnded(session, msg); break;
+                case "call_invite":
+                case "call_accept":
+                case "call_decline":
+                case "call_signal":
+                case "call_end": relayToPeer(session, msg); break;
                 case "chat": handleChat(session, msg); break;
                 case "status_change": handleStatusChange(session, msg); break;
                 case "ping":
@@ -375,69 +376,34 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("movement-rejected", rejectionData))));
     }
 
-    private void handleRequestCall(WebSocketSession session, Message msg) throws IOException {
+    private void relayToPeer(WebSocketSession session, Message msg) throws IOException {
+        Player sender = resolvePlayer(session);
+        if (sender == null) return;
+
         String roomId = sessionToRoom.get(session.getId());
-        if (roomId == null) return;
+        Object target = msg.getData().get("to");
+        if (!(target instanceof String peerId)) return;
 
-        Map<String, Object> data = msg.getData();
-        String from = (String) data.get("from");
-        String to = (String) data.get("to");
-        String callType = (String) data.get("callType");
+        WebSocketSession peerSession = roomSessions.getOrDefault(roomId, Collections.emptyMap()).get(peerId);
 
-        Player fromPlayer = roomPlayers.get(roomId).get(from);
-        if (fromPlayer != null && roomPlayers.get(roomId).containsKey(to)) {
-            Message incoming = new Message("incoming_call", Map.of("from", from, "fromName", fromPlayer.getName(), "callType", callType));
-            WebSocketSession toSession = roomSessions.get(roomId).get(to);
-            if (toSession != null) {
-                toSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(incoming)));
+        if (peerSession == null || !peerSession.isOpen()) {
+            if (!"call_end".equals(msg.getType())) {
+                sendTo(session, new Message("call_end", Map.of("from", peerId)));
             }
+            return;
         }
+
+        Map<String, Object> payload = new HashMap<>(msg.getData());
+        payload.remove("to");
+        payload.put("from", sender.getId());
+        payload.put("fromName", sender.getName());
+        sendTo(peerSession, new Message(msg.getType(), payload));
     }
 
-    private void handleCallResponse(WebSocketSession session, Message msg) throws IOException {
-        String roomId = sessionToRoom.get(session.getId());
-        if (roomId == null) return;
-
-        Map<String, Object> data = msg.getData();
-        String from = (String) data.get("from");
-        String to = (String) data.get("to");
-        boolean accepted = (Boolean) data.get("accepted");
-
-        Message response = new Message("call_response", Map.of("from", from, "to", to, "accepted", accepted));
-        WebSocketSession fromSession = roomSessions.get(roomId).get(from);
-        if (fromSession != null) {
-            fromSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
+    private void sendTo(WebSocketSession session, Message message) throws IOException {
+        if (session.isOpen()) {
+            session.sendMessage(new TextMessage(objectMapper.writeValueAsString(message)));
         }
-    }
-
-    private void handleWebRTCSignal(WebSocketSession session, Message msg) throws IOException {
-        String roomId = sessionToRoom.get(session.getId());
-        if (roomId == null) return;
-
-        Map<String, Object> data = msg.getData();
-        String from = (String) data.get("from");
-        String to = (String) data.get("to");
-        Object signalData = data.get("data");
-
-        Message signal = new Message("webrtc_signal", Map.of("from", from, "to", to, "data", signalData));
-        WebSocketSession toSession = roomSessions.get(roomId).get(to);
-        if (toSession != null) {
-            toSession.sendMessage(new TextMessage(objectMapper.writeValueAsString(signal)));
-        }
-    }
-
-    private void handleCallEnded(WebSocketSession session, Message msg) throws IOException {
-        String roomId = sessionToRoom.get(session.getId());
-        if (roomId == null) return;
-
-        Map<String, Object> data = msg.getData();
-        String from = (String) data.get("from");
-        String to = (String) data.get("to");
-        String reason = (String) data.get("reason");
-
-        // Relay to both
-        Message ended = new Message("call_ended", Map.of("from", from, "to", to, "reason", reason));
-        broadcastToRoom(roomId, ended, null);
     }
 
     @Override

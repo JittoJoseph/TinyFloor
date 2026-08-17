@@ -79,7 +79,7 @@ export default function CallOverlay() {
 
       {expanded && peer && (
         <div
-          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-40 bg-[var(--color-braun-text)]/25 backdrop-blur-md"
           onClick={() => setZoomed(false)}
         />
       )}
@@ -89,15 +89,15 @@ export default function CallOverlay() {
           onClick={() => !expanded && setZoomed(true)}
           className={
             expanded
-              ? "fixed z-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(880px,92vw)] aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black"
-              : "fixed z-40 bottom-24 right-4 w-64 aspect-video rounded-2xl overflow-hidden shadow-md border border-[rgba(0,0,0,0.06)] bg-black cursor-pointer group transition-transform hover:-translate-y-0.5"
+              ? "fixed z-[45] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(860px,92vw)] aspect-video rounded-3xl overflow-hidden shadow-2xl border border-[rgba(0,0,0,0.06)] bg-[#fbfbf9]"
+              : "fixed z-40 bottom-24 right-4 w-64 aspect-video rounded-2xl overflow-hidden shadow-md border border-[rgba(0,0,0,0.06)] bg-[#fbfbf9] cursor-pointer group transition-transform hover:-translate-y-0.5"
           }
         >
           <Stream stream={peer.stream} muted={!speakerEnabled} initial={peer.name} />
 
           {!peer.connected && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
+              <div className="w-6 h-6 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
             </div>
           )}
 
@@ -106,7 +106,7 @@ export default function CallOverlay() {
               e.stopPropagation();
               setZoomed(!expanded);
             }}
-            className={`cursor-pointer absolute top-3 right-3 p-2 rounded-full bg-black/40 text-white backdrop-blur-sm transition-opacity ${
+            className={`cursor-pointer absolute top-3 right-3 p-2 rounded-full bg-white/85 text-[var(--color-braun-text)] shadow-sm backdrop-blur-sm transition-opacity ${
               expanded ? "opacity-70 hover:opacity-100" : "opacity-0 group-hover:opacity-100"
             }`}
             title={expanded ? "Minimize" : "Expand"}
@@ -119,7 +119,7 @@ export default function CallOverlay() {
           </button>
 
           {expanded && (
-            <div className="absolute bottom-4 right-4 w-1/4 aspect-video rounded-xl overflow-hidden border border-white/20 shadow-lg bg-black">
+            <div className="absolute bottom-4 right-4 w-1/4 aspect-video rounded-xl overflow-hidden border border-white/40 shadow-lg bg-[#fbfbf9]">
               {selfView}
             </div>
           )}
@@ -200,8 +200,8 @@ function Stream({
         }`}
       />
       {!hasVideo && (
-        <div className="absolute inset-0 bg-[#1f2937] flex items-center justify-center">
-          <div className="w-1/4 max-w-[72px] aspect-square bg-white/10 border border-white/15 rounded-full flex items-center justify-center text-white font-bold text-[min(4vw,28px)]">
+        <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
+          <div className="w-1/4 max-w-[72px] aspect-square bg-[var(--color-braun-text)]/5 border border-[rgba(0,0,0,0.06)] rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[min(4vw,28px)]">
             {initial.charAt(0).toUpperCase()}
           </div>
         </div>

@@ -7,6 +7,6 @@ export function useCall(): CallSnapshot {
   return useSyncExternalStore(
     callManager.subscribe,
     callManager.getSnapshot,
-    callManager.getSnapshot,
+    callManager.getServerSnapshot,
   );
 }

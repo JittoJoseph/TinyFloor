@@ -158,7 +158,7 @@ export default function ControlBar({
 
           <button
             onClick={onSettingsClick}
-            className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
+            className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 hidden md:block"
             title="Settings"
           >
             <Settings className="w-[18px] h-[18px]" />

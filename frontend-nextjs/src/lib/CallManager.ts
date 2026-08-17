@@ -62,6 +62,25 @@ function deviceId(id?: string) {
   return id ? { exact: id } : undefined;
 }
 
+const PREFS_KEY = "spacialMeetCallPrefs";
+
+function loadPreferences() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (!raw) return { mic: true, camera: true };
+    const parsed = JSON.parse(raw);
+    return { mic: parsed.mic !== false, camera: parsed.camera !== false };
+  } catch {
+    return { mic: true, camera: true };
+  }
+}
+
+function savePreferences(mic: boolean, camera: boolean) {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ mic, camera }));
+  } catch {}
+}
+
 const EMPTY: CallSnapshot = {
   incoming: null,
   outgoing: null,
@@ -73,6 +92,8 @@ const EMPTY: CallSnapshot = {
   error: null,
 };
 
+const PREFS = loadPreferences();
+
 class CallManager {
   private ws: WebSocketManager | null = null;
   private selfId = "";
@@ -80,13 +101,17 @@ class CallManager {
   private local: MediaStream | null = null;
   private incoming: { id: string; name: string; video: boolean } | null = null;
   private outgoing: { id: string; name: string; video: boolean } | null = null;
-  private micEnabled = true;
-  private cameraEnabled = true;
+  private micEnabled = PREFS.mic;
+  private cameraEnabled = PREFS.camera;
   private speakerEnabled = true;
   private error: string | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
-  private snap: CallSnapshot = EMPTY;
+  private snap: CallSnapshot = {
+    ...EMPTY,
+    micEnabled: PREFS.mic,
+    cameraEnabled: PREFS.camera,
+  };
 
   attach(ws: WebSocketManager, selfId: string) {
     this.ws = ws;
@@ -108,6 +133,8 @@ class CallManager {
   };
 
   getSnapshot = () => this.snap;
+
+  getServerSnapshot = () => EMPTY;
 
   isPeer(id: string) {
     return this.peers.has(id);
@@ -208,16 +235,14 @@ class CallManager {
   setMic(enabled: boolean) {
     this.micEnabled = enabled;
     this.local?.getAudioTracks().forEach((track) => (track.enabled = enabled));
+    savePreferences(enabled, this.cameraEnabled);
     this.emit();
   }
 
   async setCamera(enabled: boolean) {
-    if (!this.local) return;
-
-    if (enabled) {
-      if (!this.local.getVideoTracks().length && !(await this.addCamera()))
-        return this.emit();
-    } else {
+    if (enabled && this.local && !this.local.getVideoTracks().length) {
+      if (!(await this.addCamera())) return this.emit();
+    } else if (!enabled && this.local) {
       this.local.getVideoTracks().forEach((track) => {
         this.local!.removeTrack(track);
         track.stop();
@@ -226,6 +251,7 @@ class CallManager {
     }
 
     this.cameraEnabled = enabled;
+    savePreferences(this.micEnabled, enabled);
     this.emit();
   }
 
@@ -395,7 +421,8 @@ class CallManager {
   }
 
   private async openMedia(video: boolean): Promise<boolean> {
-    if (this.local) return video ? this.addCamera() : true;
+    const wantsCamera = video && this.cameraEnabled;
+    if (this.local) return wantsCamera ? this.addCamera() : true;
 
     if (!navigator.mediaDevices?.getUserMedia) {
       this.error = "This browser cannot access media devices";
@@ -406,10 +433,11 @@ class CallManager {
       const devices = savedDevices();
       this.local = await navigator.mediaDevices.getUserMedia({
         audio: { ...AUDIO_CONSTRAINTS, deviceId: deviceId(devices.audio) },
-        video: video && videoConstraints(devices.video),
+        video: wantsCamera && videoConstraints(devices.video),
       });
-      this.micEnabled = true;
-      this.cameraEnabled = video;
+      this.local
+        .getAudioTracks()
+        .forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
     } catch {
@@ -443,8 +471,6 @@ class CallManager {
   private releaseMedia() {
     this.local?.getTracks().forEach((track) => track.stop());
     this.local = null;
-    this.micEnabled = true;
-    this.cameraEnabled = true;
   }
 
   private ring(onTimeout: () => void) {

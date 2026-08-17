@@ -229,19 +229,22 @@ export class PlayerManager {
     const container = this.players.get(id);
     if (!state || !container) return;
 
-    if (!state.streaming) state.path.length = 0;
     state.streaming = true;
 
     const point = tileToPixel(tileX, tileY);
-    const from = state.path[state.path.length - 1] ?? container;
-    const gap = Phaser.Math.Distance.Between(from.x, from.y, point.x, point.y);
+    const gap = Phaser.Math.Distance.Between(
+      container.x,
+      container.y,
+      point.x,
+      point.y,
+    );
 
     if (gap > SNAP_THRESHOLD) {
       state.path.length = 0;
       state.direction = direction;
       container.setPosition(point.x, point.y);
-    } else if (gap > 1) {
-      state.path.push(point);
+    } else {
+      state.path = [point];
     }
   }
 
@@ -264,8 +267,18 @@ export class PlayerManager {
       if (!container) return;
 
       if (state.path.length) {
+        const target = state.path[0];
         const catchup = state.streaming
-          ? Math.min(1 + 0.3 * (state.path.length - 1), MAX_CATCHUP)
+          ? Phaser.Math.Clamp(
+              Phaser.Math.Distance.Between(
+                container.x,
+                container.y,
+                target.x,
+                target.y,
+              ) / TILE_SIZE,
+              1,
+              MAX_CATCHUP,
+            )
           : 1;
         const pos = { x: container.x, y: container.y };
         advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);

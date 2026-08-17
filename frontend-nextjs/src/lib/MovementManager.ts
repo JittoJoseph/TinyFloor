@@ -9,8 +9,6 @@ import { VirtualJoystickManager } from "./VirtualJoystickManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { pixelToTile, isValidTile, MOVEMENT_SPEED } from "./types";
 
-const POSITION_UPDATE_INTERVAL = 100;
-
 export class MovementManager {
   private scene: Phaser.Scene;
   private player: Phaser.Physics.Arcade.Sprite;
@@ -22,7 +20,7 @@ export class MovementManager {
   private keys?: Record<string, Phaser.Input.Keyboard.Key>;
   private path: Vec[] = [];
   private currentDirection: Direction = "down";
-  private lastSentAt = 0;
+  private lastSentTile = "";
   private needsFinalSend = false;
   private inputEnabled = true;
 
@@ -161,18 +159,19 @@ export class MovementManager {
   }
 
   private syncManualMovement(manualMoved: boolean) {
-    const now = this.scene.time.now;
+    const tile = pixelToTile(this.player.x, this.player.y);
+    const key = `${tile.tileX},${tile.tileY}`;
+
     if (manualMoved) {
       this.needsFinalSend = true;
-      if (now - this.lastSentAt < POSITION_UPDATE_INTERVAL) return;
-      this.lastSentAt = now;
+      if (key === this.lastSentTile) return;
     } else if (this.needsFinalSend && !this.path.length) {
       this.needsFinalSend = false;
     } else {
       return;
     }
 
-    const tile = pixelToTile(this.player.x, this.player.y);
+    this.lastSentTile = key;
     this.wsManager.send("move", {
       tileX: tile.tileX,
       tileY: tile.tileY,

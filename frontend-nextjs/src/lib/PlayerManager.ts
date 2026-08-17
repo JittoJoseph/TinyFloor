@@ -9,10 +9,10 @@ import { TILE_SIZE, MOVEMENT_SPEED, tileToPixel } from "./types";
 import type { PlayerStatus } from "./types";
 
 interface RemotePlayerState {
-  target: Vec;
   path: Vec[];
   direction: Direction;
   isMoving: boolean;
+  streaming: boolean;
   status: PlayerStatus;
 }
 
@@ -23,9 +23,8 @@ interface NameTag {
   width: number;
 }
 
-const INTERPOLATION_SPEED = 0.12;
 const SNAP_THRESHOLD = TILE_SIZE * 6;
-const IDLE_THRESHOLD = 3;
+const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
 
@@ -175,10 +174,10 @@ export class PlayerManager {
     }
 
     this.playerStates.set(id, {
-      target: { x: pos.x, y: pos.y },
       path: [],
       direction: "down",
       isMoving: false,
+      streaming: false,
       status,
     });
 
@@ -227,12 +226,23 @@ export class PlayerManager {
     direction: Direction,
   ) {
     const state = this.playerStates.get(id);
-    if (!state) return;
+    const container = this.players.get(id);
+    if (!state || !container) return;
 
-    state.target = tileToPixel(tileX, tileY);
-    state.path.length = 0;
-    state.direction = direction;
-    state.isMoving = true;
+    if (!state.streaming) state.path.length = 0;
+    state.streaming = true;
+
+    const point = tileToPixel(tileX, tileY);
+    const from = state.path[state.path.length - 1] ?? container;
+    const gap = Phaser.Math.Distance.Between(from.x, from.y, point.x, point.y);
+
+    if (gap > SNAP_THRESHOLD) {
+      state.path.length = 0;
+      state.direction = direction;
+      container.setPosition(point.x, point.y);
+    } else if (gap > 1) {
+      state.path.push(point);
+    }
   }
 
   walkPlayerTo(id: string, tileX: number, tileY: number) {
@@ -240,39 +250,32 @@ export class PlayerManager {
     const container = this.players.get(id);
     if (!state || !container) return;
 
-    state.target = tileToPixel(tileX, tileY);
+    state.streaming = false;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
-    state.isMoving = true;
+    if (!state.path.length) {
+      const point = tileToPixel(tileX, tileY);
+      container.setPosition(point.x, point.y);
+    }
   }
 
   update(delta: number) {
-    const step = (MOVEMENT_SPEED * delta) / 1000;
-
     this.playerStates.forEach((state, id) => {
       const container = this.players.get(id);
       if (!container) return;
 
       if (state.path.length) {
+        const catchup = state.streaming
+          ? Math.min(1 + 0.3 * (state.path.length - 1), MAX_CATCHUP)
+          : 1;
         const pos = { x: container.x, y: container.y };
-        advanceAlongPath(pos, state.path, step);
+        advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
         const dx = pos.x - container.x;
         const dy = pos.y - container.y;
         container.setPosition(pos.x, pos.y);
         state.direction = directionFromVector(dx, dy, state.direction);
         state.isMoving = state.path.length > 0 || dx !== 0 || dy !== 0;
       } else {
-        const dx = state.target.x - container.x;
-        const dy = state.target.y - container.y;
-        const distance = Math.hypot(dx, dy);
-
-        if (distance > IDLE_THRESHOLD && distance <= SNAP_THRESHOLD) {
-          container.x += dx * INTERPOLATION_SPEED;
-          container.y += dy * INTERPOLATION_SPEED;
-          state.isMoving = true;
-        } else {
-          container.setPosition(state.target.x, state.target.y);
-          state.isMoving = false;
-        }
+        state.isMoving = false;
       }
 
       const sprite = container.list[0] as Phaser.GameObjects.Sprite;

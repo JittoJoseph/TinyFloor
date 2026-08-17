@@ -231,7 +231,7 @@ export default function ProximityOverlay() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-40">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
       {nearbyPlayers.map((player) => {
         const { x, y } = getSafePosition(player.x, player.y);
         const isBelow = y > player.y;

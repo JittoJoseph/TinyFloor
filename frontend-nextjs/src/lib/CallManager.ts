@@ -33,6 +33,7 @@ interface PeerEntry {
   makingOffer: boolean;
   ignoreOffer: boolean;
   connected: boolean;
+  pendingCandidates: RTCIceCandidateInit[];
   videoSender?: RTCRtpSender;
 }
 
@@ -129,17 +130,12 @@ class CallManager {
     this.clearRing();
     stopSound("ring");
     this.incoming = null;
-    this.emit();
 
-    if (!(await this.openMedia(call.video))) {
-      this.send("call_decline", { to: call.id, reason: "media_error" });
-      this.emit();
-      return;
-    }
-
+    const peer = this.createPeer(call.id, call.name);
     this.send("call_accept", { to: call.id });
-    this.createPeer(call.id, call.name);
     this.emit();
+
+    await this.startMedia(peer, call.video);
   }
 
   decline() {
@@ -263,13 +259,21 @@ class CallManager {
     stopSound("ring");
     this.outgoing = null;
 
-    if (!(await this.openMedia(call.video))) {
-      this.send("call_end", { to: id });
-      this.emit();
+    const peer = this.createPeer(id, call.name);
+    this.emit();
+
+    await this.startMedia(peer, call.video);
+  }
+
+  private async startMedia(peer: PeerEntry, video: boolean) {
+    if (!(await this.openMedia(video))) {
+      this.hangUp(peer.id);
       return;
     }
-
-    this.createPeer(id, call.name);
+    this.local?.getTracks().forEach((track) => {
+      const sender = peer.pc.addTrack(track, this.local!);
+      if (track.kind === "video") peer.videoSender = sender;
+    });
     this.emit();
   }
 
@@ -280,8 +284,9 @@ class CallManager {
     this.emit();
   }
 
-  private createPeer(id: string, name: string) {
-    if (this.peers.has(id)) return;
+  private createPeer(id: string, name: string): PeerEntry {
+    const existing = this.peers.get(id);
+    if (existing) return existing;
 
     const pc = new RTCPeerConnection({ iceServers: ICE_SERVERS });
     const peer: PeerEntry = {
@@ -293,6 +298,7 @@ class CallManager {
       makingOffer: false,
       ignoreOffer: false,
       connected: false,
+      pendingCandidates: [],
     };
     this.peers.set(id, peer);
 
@@ -318,12 +324,10 @@ class CallManager {
       }
     };
 
-    pc.ontrack = ({ track }) => {
-      peer.stream.addTrack(track);
-      track.onended = () => {
-        peer.stream.removeTrack(track);
-        this.emit();
-      };
+    pc.ontrack = ({ track, streams }) => {
+      if (streams[0]) peer.stream = streams[0];
+      else peer.stream.addTrack(track);
+      track.onended = () => this.emit();
       this.emit();
     };
 
@@ -335,10 +339,7 @@ class CallManager {
       this.emit();
     };
 
-    this.local?.getTracks().forEach((track) => {
-      const sender = pc.addTrack(track, this.local!);
-      if (track.kind === "video") peer.videoSender = sender;
-    });
+    return peer;
   }
 
   private async onSignal(from: string, signal: Signal) {
@@ -356,6 +357,10 @@ class CallManager {
         if (peer.ignoreOffer) return;
 
         await pc.setRemoteDescription(signal.sdp);
+        peer.pendingCandidates
+          .splice(0)
+          .forEach((candidate) => pc.addIceCandidate(candidate).catch(() => {}));
+
         if (signal.sdp.type === "offer") {
           await pc.setLocalDescription();
           this.send("call_signal", {
@@ -364,11 +369,8 @@ class CallManager {
           });
         }
       } else if (signal.candidate) {
-        try {
-          await pc.addIceCandidate(signal.candidate);
-        } catch (err) {
-          if (!peer.ignoreOffer) throw err;
-        }
+        if (!pc.remoteDescription) peer.pendingCandidates.push(signal.candidate);
+        else await pc.addIceCandidate(signal.candidate).catch(() => {});
       }
     } catch (err) {
       console.error("Signal handling failed:", err);

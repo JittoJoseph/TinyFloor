@@ -1,4 +1,5 @@
 import { WebSocketManager } from "./WebSocketManager";
+import { playSound, loopSound, stopSound } from "./sounds";
 
 export interface CallPeer {
   id: string;
@@ -93,6 +94,7 @@ class CallManager {
 
   detach() {
     this.hangUp();
+    stopSound("ring");
     this.ws = null;
     this.selfId = "";
   }
@@ -115,6 +117,7 @@ class CallManager {
     this.error = null;
     this.outgoing = { id, name, video };
     this.send("call_invite", { to: id, video });
+    loopSound("ring");
     this.ring(() => this.cancel());
     this.emit();
   }
@@ -124,6 +127,7 @@ class CallManager {
     if (!call) return;
 
     this.clearRing();
+    stopSound("ring");
     this.incoming = null;
     this.emit();
 
@@ -141,6 +145,7 @@ class CallManager {
   decline() {
     if (!this.incoming) return;
     this.clearRing();
+    stopSound("ring");
     this.send("call_decline", { to: this.incoming.id, reason: "declined" });
     this.incoming = null;
     this.emit();
@@ -149,6 +154,7 @@ class CallManager {
   cancel() {
     if (!this.outgoing) return;
     this.clearRing();
+    stopSound("ring");
     this.send("call_end", { to: this.outgoing.id });
     this.outgoing = null;
     this.emit();
@@ -232,6 +238,11 @@ class CallManager {
     this.emit();
   }
 
+  clearError() {
+    this.error = null;
+    this.emit();
+  }
+
   private onInvite(id: string, name: string, video: boolean) {
     if (this.peers.size || this.incoming || this.outgoing) {
       this.send("call_decline", { to: id, reason: "busy" });
@@ -240,6 +251,7 @@ class CallManager {
     this.error = null;
     this.incoming = { id, name: name || "Someone", video };
     this.ring(() => this.decline());
+    loopSound("ring");
     this.emit();
   }
 
@@ -248,6 +260,7 @@ class CallManager {
     if (!call || call.id !== id) return;
 
     this.clearRing();
+    stopSound("ring");
     this.outgoing = null;
 
     if (!(await this.openMedia(call.video))) {
@@ -262,6 +275,7 @@ class CallManager {
 
   private cancelOutgoing() {
     this.clearRing();
+    stopSound("ring");
     this.outgoing = null;
     this.emit();
   }
@@ -314,7 +328,9 @@ class CallManager {
     };
 
     pc.onconnectionstatechange = () => {
-      peer.connected = pc.connectionState === "connected";
+      const connected = pc.connectionState === "connected";
+      if (connected && !peer.connected) playSound("connect");
+      peer.connected = connected;
       if (pc.connectionState === "failed") pc.restartIce();
       this.emit();
     };
@@ -371,6 +387,7 @@ class CallManager {
     peer.pc.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
+    playSound("end");
 
     if (!this.peers.size) this.releaseMedia();
   }

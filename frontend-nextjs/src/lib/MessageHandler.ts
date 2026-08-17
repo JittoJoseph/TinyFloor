@@ -3,6 +3,7 @@ import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
 import { callManager } from "./CallManager";
 import { AnimationManager, Direction } from "./AnimationManager";
+import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
 import type { PlayerStatus } from "./types";
 
@@ -70,6 +71,7 @@ export class MessageHandler {
       }
       case "user-join":
         this.handleUserJoin(msg.data as unknown as UserData);
+        playSound("join");
         break;
       case "user-left":
         this.handleUserLeft(msg.data.id as string);
@@ -82,6 +84,7 @@ export class MessageHandler {
         callManager.handleMessage(msg.type, msg.data);
         break;
       case "chat":
+        if (msg.data.senderId !== this.playerId) playSound("message");
         window.dispatchEvent(
           new CustomEvent("chatMessage", { detail: msg.data }),
         );

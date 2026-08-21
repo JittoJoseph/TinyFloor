@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MessageSquare } from "lucide-react";
 
 interface ChatMessage {
   id: string;
@@ -23,6 +22,8 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
   );
 
   useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
     const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
       // Don't show toast if chat is open, or if it's the system intro message
       if (isChatOpen || event.detail.senderId === "system-intro") return;
@@ -35,20 +36,25 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
       setToasts((prev) => [...prev, newMsg]);
 
       // Auto-remove after 4 seconds
-      setTimeout(() => {
-        setToasts((prev) =>
-          prev.map((t) => (t.id === newMsg.id ? { ...t, visible: false } : t)),
-        );
-
-        // Clean up array after animation
+      timers.push(
         setTimeout(() => {
-          setToasts((prev) => prev.filter((t) => t.id !== newMsg.id));
-        }, 300);
-      }, 4000);
+          setToasts((prev) =>
+            prev.map((t) => (t.id === newMsg.id ? { ...t, visible: false } : t)),
+          );
+          timers.push(
+            setTimeout(() => {
+              setToasts((prev) => prev.filter((t) => t.id !== newMsg.id));
+            }, 300),
+          );
+        }, 4000),
+      );
     }) as EventListener;
 
     window.addEventListener("chatMessage", handleChatMessage);
-    return () => window.removeEventListener("chatMessage", handleChatMessage);
+    return () => {
+      window.removeEventListener("chatMessage", handleChatMessage);
+      timers.forEach(clearTimeout);
+    };
   }, [isChatOpen]);
 
   if (toasts.length === 0) return null;

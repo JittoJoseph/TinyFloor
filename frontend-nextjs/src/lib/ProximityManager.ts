@@ -6,6 +6,7 @@ import { TILE_SIZE } from "./types";
 const PROXIMITY_RADIUS = 2.5 * TILE_SIZE;
 const DISCONNECT_RADIUS = PROXIMITY_RADIUS + 64;
 const DWELL_TIME = 1000;
+const BODY_OFFSET = 82;
 
 interface NearbyPlayer {
   id: string;
@@ -13,6 +14,7 @@ interface NearbyPlayer {
   x: number;
   y: number;
   status: string;
+  guest: boolean;
 }
 
 export class ProximityManager {
@@ -20,6 +22,7 @@ export class ProximityManager {
   private playerManager: PlayerManager;
   private currentPlayer: Phaser.Physics.Arcade.Sprite;
   private proximityStartTimes = new Map<string, number>();
+  private lastSignature = "";
 
   constructor(
     scene: Phaser.Scene,
@@ -37,6 +40,7 @@ export class ProximityManager {
     const now = performance.now();
     const camera = this.scene.cameras.main;
     const nearby: NearbyPlayer[] = [];
+    let signature = "";
 
     this.playerManager.getPlayers().forEach((container, id) => {
       const distance = Phaser.Math.Distance.Between(
@@ -58,14 +62,24 @@ export class ProximityManager {
       this.proximityStartTimes.set(id, since);
       if (now - since < DWELL_TIME) return;
 
+      const view = camera.worldView;
+      const x = Math.round((container.x - view.x) * camera.zoom);
+      const y = Math.round((container.y - BODY_OFFSET - view.y) * camera.zoom);
+      const status = this.playerManager.getPlayerStatus(id) || "available";
+
       nearby.push({
         id,
         name: this.playerManager.getPlayerName(id) || "Player",
-        x: (container.x - camera.scrollX) * camera.zoom,
-        y: (container.y - camera.scrollY) * camera.zoom,
-        status: this.playerManager.getPlayerStatus(id) || "available",
+        x,
+        y,
+        status,
+        guest: this.playerManager.isGuest(id),
       });
+      signature += id + x + "," + y + status + "|";
     });
+
+    if (signature === this.lastSignature) return;
+    this.lastSignature = signature;
 
     window.dispatchEvent(
       new CustomEvent("proximityUpdate", { detail: nearby }),
@@ -74,5 +88,6 @@ export class ProximityManager {
 
   destroy() {
     this.proximityStartTimes.clear();
+    this.lastSignature = "";
   }
 }

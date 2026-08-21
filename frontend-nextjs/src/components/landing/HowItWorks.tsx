@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { MousePointerClick, UserCircle, MessageCircle } from "lucide-react";
 
 const steps = [

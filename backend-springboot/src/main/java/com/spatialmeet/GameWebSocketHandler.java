@@ -30,7 +30,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GameWebSocketHandler.class);
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
     private final RoomService roomService;
     private final UserService userService;
     private final DiscordWebhookService discordWebhookService;
@@ -45,18 +45,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     // Movement batching optimization
     private final Map<String, Map<String, Movement>> pendingMovements = new ConcurrentHashMap<>();
     
-    private static class Movement {
-        String id;
-        int tileX, tileY;
-        String direction;
-        
-        Movement(String id, int tileX, int tileY, String direction) {
-            this.id = id;
-            this.tileX = tileX;
-            this.tileY = tileY;
-            this.direction = direction;
-        }
-    }
+    private record Movement(String id, int tileX, int tileY) {}
     
     private final ScheduledExecutorService movementBroadcaster = Executors.newSingleThreadScheduledExecutor();
     private final ScheduledExecutorService cleanupExecutor = Executors.newSingleThreadScheduledExecutor();
@@ -64,7 +53,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private static final long CLEANUP_INTERVAL_MS = 30000; // Clean up every 30 seconds
     private static final long INACTIVE_TIMEOUT_MS = 90000; // 90 seconds timeout
 
-    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService, GeoLocationService geoLocationService) {
+    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService, GeoLocationService geoLocationService, ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
         this.roomService = roomService;
         this.userService = userService;
         this.discordWebhookService = discordWebhookService;
@@ -108,14 +98,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             if (sessions == null || sessions.isEmpty()) return;
             
             List<Map<String, Object>> movementList = movements.values().stream()
-                .map(m -> {
-                    Map<String, Object> move = new HashMap<>();
-                    move.put("id", m.id);
-                    move.put("tileX", m.tileX);
-                    move.put("tileY", m.tileY);
-                    move.put("direction", m.direction);
-                    return move;
-                })
+                .map(m -> Map.<String, Object>of("id", m.id(), "tileX", m.tileX(), "tileY", m.tileY()))
                 .collect(Collectors.toList());
             
             if (movementList.isEmpty()) return;
@@ -229,6 +212,15 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         broadcastToRoom(roomId, new Message("status_changed", statusData), null);
     }
 
+    private boolean isGuestPlayer(String userId) {
+        if (userId == null || userId.startsWith("player_")) return true;
+        try {
+            return userService.findById(userId).map(com.spatialmeet.model.User::isGuest).orElse(true);
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
     private void handleJoin(WebSocketSession session, Message msg) throws IOException {
         String roomId = sessionToRoom.get(session.getId());
         if (roomId == null) return;
@@ -247,6 +239,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         
         Player player = new Player(playerId, playerName != null ? playerName : "User", spawnTileX, spawnTileY);
         player.setSprite(sprite != null ? sprite : AVAILABLE_SPRITES[random.nextInt(AVAILABLE_SPRITES.length)]);
+        player.setGuest(isGuestPlayer(userId));
 
         roomPlayers.get(roomId).put(playerId, player);
         roomSessions.get(roomId).put(playerId, session);
@@ -294,6 +287,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 user.put("tileX", p.getTileX());
                 user.put("tileY", p.getTileY());
                 user.put("status", p.getStatus());
+                user.put("guest", p.isGuest());
                 return user;
             })
             .collect(Collectors.toList());
@@ -314,6 +308,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         joinData.put("tileX", spawnTileX);
         joinData.put("tileY", spawnTileY);
         joinData.put("status", player.getStatus());
+        joinData.put("guest", player.isGuest());
         
         broadcastToRoom(roomId, new Message("user-join", joinData), playerId);
     }
@@ -326,7 +321,6 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         Map<String, Object> data = msg.getData();
         int targetTileX = ((Number) data.get("tileX")).intValue();
         int targetTileY = ((Number) data.get("tileY")).intValue();
-        String direction = (String) data.get("direction");
 
         if (!Player.isValidTile(targetTileX, targetTileY)) {
             rejectMove(session, player);
@@ -335,9 +329,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
 
         player.setTileX(targetTileX);
         player.setTileY(targetTileY);
-        player.setDirection(direction);
         pendingMovements.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>())
-            .put(player.getId(), new Movement(player.getId(), targetTileX, targetTileY, direction));
+            .put(player.getId(), new Movement(player.getId(), targetTileX, targetTileY));
     }
 
     private void handleWalkTo(WebSocketSession session, Message msg) throws IOException {

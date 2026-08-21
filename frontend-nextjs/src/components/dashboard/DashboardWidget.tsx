@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { LayoutDashboard, Globe, Users, ChevronRight } from "lucide-react";
+import { Globe, Users, ChevronRight } from "lucide-react";
 import { CharacterPreview } from "./CharacterPreview";
 
 interface DashboardWidgetProps {

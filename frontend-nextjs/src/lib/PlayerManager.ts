@@ -14,6 +14,9 @@ interface RemotePlayerState {
   isMoving: boolean;
   streaming: boolean;
   status: PlayerStatus;
+  guest: boolean;
+  lastDirection?: Direction;
+  lastMoving?: boolean;
 }
 
 interface NameTag {
@@ -45,6 +48,7 @@ export class PlayerManager {
   private nameTags: Map<string, NameTag> = new Map();
   private playerStates: Map<string, RemotePlayerState> = new Map();
   private localPlayer?: Phaser.Physics.Arcade.Sprite;
+  private scratch: Vec = { x: 0, y: 0 };
 
   constructor(
     scene: Phaser.Scene,
@@ -139,6 +143,7 @@ export class PlayerManager {
     tileY: number,
     spriteKey: string = "Adam",
     status: PlayerStatus = "available",
+    guest: boolean = true,
   ) {
     if (this.players.has(id)) return;
 
@@ -179,6 +184,7 @@ export class PlayerManager {
       isMoving: false,
       streaming: false,
       status,
+      guest,
     });
 
     this.updatePlayerStatus(id, status);
@@ -219,12 +225,7 @@ export class PlayerManager {
     }
   }
 
-  updatePlayerPosition(
-    id: string,
-    tileX: number,
-    tileY: number,
-    direction: Direction,
-  ) {
+  updatePlayerPosition(id: string, tileX: number, tileY: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container) return;
@@ -241,7 +242,6 @@ export class PlayerManager {
 
     if (gap > SNAP_THRESHOLD) {
       state.path.length = 0;
-      state.direction = direction;
       container.setPosition(point.x, point.y);
     } else {
       state.path = [point];
@@ -280,7 +280,9 @@ export class PlayerManager {
               MAX_CATCHUP,
             )
           : 1;
-        const pos = { x: container.x, y: container.y };
+        const pos = this.scratch;
+        pos.x = container.x;
+        pos.y = container.y;
         advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
         const dx = pos.x - container.x;
         const dy = pos.y - container.y;
@@ -290,6 +292,15 @@ export class PlayerManager {
       } else {
         state.isMoving = false;
       }
+
+      if (
+        state.isMoving === state.lastMoving &&
+        state.direction === state.lastDirection
+      ) {
+        return;
+      }
+      state.lastMoving = state.isMoving;
+      state.lastDirection = state.direction;
 
       const sprite = container.list[0] as Phaser.GameObjects.Sprite;
       sprite.play(
@@ -326,6 +337,10 @@ export class PlayerManager {
 
   getPlayerStatus(id: string): PlayerStatus | undefined {
     return this.playerStates.get(id)?.status;
+  }
+
+  isGuest(id: string): boolean {
+    return this.playerStates.get(id)?.guest !== false;
   }
 
   getPlayerList(): Array<{ id: string; name: string }> {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -11,8 +11,6 @@ import ChatPanel from "@/components/ChatPanel";
 import { ChatToasts } from "@/components/ChatToasts";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
-import { useAuth } from "@/contexts/AuthContext";
-import { apiClient } from "@/lib/api";
 import type { PlayerStatus } from "@/lib/types";
 
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
@@ -38,7 +36,6 @@ export default function RoomPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { user, updateUser } = useAuth();
 
   const roomId = params.roomId as string;
   const name = searchParams.get("name");

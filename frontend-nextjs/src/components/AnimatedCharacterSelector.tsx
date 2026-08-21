@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface Character {
   id: string;
@@ -23,13 +23,7 @@ const FRAME_COUNT = 6;
 const FRAME_RATE = 10; // frames per second
 const SCALE = 2.3; // Scale up for visibility (slightly larger)
 
-// Global animation frame counter for synchronized animations
-let globalFrameCounter = 0;
-let globalAnimationTime = 0;
-
-setInterval(() => {
-  globalFrameCounter = (globalFrameCounter + 1) % FRAME_COUNT;
-}, 1000 / FRAME_RATE);
+const FRAME_MS = 1000 / FRAME_RATE;
 
 interface AnimatedCharacterSelectorProps {
   selectedCharacter: string;
@@ -40,13 +34,9 @@ interface AnimatedCharacterSelectorProps {
 // Individual character sprite animator
 const CharacterSprite: React.FC<{
   characterId: string;
-  isSelected: boolean;
   size?: "small" | "large";
-}> = ({ characterId, isSelected, size = "small" }) => {
+}> = ({ characterId, size = "small" }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const animationRef = useRef<number | undefined>(undefined);
-  const lastFrameTimeRef = useRef(0);
 
   const canvasSize =
     size === "large"
@@ -61,51 +51,43 @@ const CharacterSprite: React.FC<{
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Disable image smoothing for pixel art
     ctx.imageSmoothingEnabled = false;
 
-    // Load sprite sheet
     const img = new Image();
     img.src = `/characters/${characterId}_idle_anim_16x16.png`;
-    imageRef.current = img;
 
-    img.onload = () => {
-      // Start animation loop
-      const animate = (timestamp: number) => {
-        if (!ctx || !imageRef.current) return;
+    let frameRequest = 0;
+    let cancelled = false;
+    let lastFrame = -1;
 
-        // Use global frame counter for synchronized animation
-        const frameIndex = 18 + globalFrameCounter; // Down animation starts at frame 18
+    const draw = () => {
+      if (cancelled) return;
 
-        // Clear and draw
+      const frame = Math.floor(performance.now() / FRAME_MS) % FRAME_COUNT;
+      if (frame !== lastFrame && img.complete && img.naturalWidth > 0) {
+        lastFrame = frame;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Calculate source position
-        const sx = (frameIndex % 24) * SPRITE_WIDTH;
-        const sy = 0;
-
         ctx.drawImage(
-          imageRef.current,
-          sx,
-          sy,
+          img,
+          ((18 + frame) % 24) * SPRITE_WIDTH,
+          0,
           SPRITE_WIDTH,
           SPRITE_HEIGHT,
           0,
-          -8, // Negative offset to crop top and show more of bottom
+          -8,
           SPRITE_WIDTH * scale,
           SPRITE_HEIGHT * scale,
         );
+      }
 
-        animationRef.current = requestAnimationFrame(animate);
-      };
-
-      animationRef.current = requestAnimationFrame(animate);
+      frameRequest = requestAnimationFrame(draw);
     };
 
+    frameRequest = requestAnimationFrame(draw);
+
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      cancelled = true;
+      cancelAnimationFrame(frameRequest);
     };
   }, [characterId, scale]);
 
@@ -175,7 +157,6 @@ export const AnimatedCharacterSelector: React.FC<
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
               <CharacterSprite
                 characterId={CHARACTERS[currentIndex].id}
-                isSelected={true}
                 size="large"
               />
             </div>
@@ -254,7 +235,6 @@ export const AnimatedCharacterSelector: React.FC<
               <div className="transform group-hover:scale-110 transition-transform">
                 <CharacterSprite
                   characterId={char.id}
-                  isSelected={isSelected}
                   size="small"
                 />
               </div>

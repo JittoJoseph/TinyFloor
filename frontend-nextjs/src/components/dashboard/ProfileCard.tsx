@@ -116,7 +116,7 @@ export function ProfileCard({
           text: `Check out ${user.displayName}'s profile on SpatialMeet`,
           url: profileUrl,
         });
-      } catch (err) {
+      } catch {
         // User cancelled or share failed
         handleCopyProfileLink();
       }

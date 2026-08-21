@@ -2,7 +2,7 @@ import * as Phaser from "phaser";
 import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
 import { callManager } from "./CallManager";
-import { AnimationManager, Direction } from "./AnimationManager";
+import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
 import type { PlayerStatus } from "./types";
@@ -11,7 +11,6 @@ interface MovementData {
   id: string;
   tileX: number;
   tileY: number;
-  direction: string;
 }
 
 interface UserData {
@@ -21,6 +20,7 @@ interface UserData {
   tileY: number;
   sprite: string;
   status?: PlayerStatus;
+  guest?: boolean;
 }
 
 const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
@@ -104,7 +104,6 @@ export class MessageHandler {
       movement.id,
       movement.tileX,
       movement.tileY,
-      movement.direction as Direction,
     );
   }
 
@@ -132,12 +131,16 @@ export class MessageHandler {
       );
     }
 
-    (data.existingUsers as UserData[]).forEach((user) =>
-      this.handleUserJoin(user),
-    );
+    (data.existingUsers as UserData[]).forEach((user) => this.addUser(user));
+    this.dispatchPlayerList();
   }
 
   private handleUserJoin(user: UserData) {
+    this.addUser(user);
+    this.dispatchPlayerList();
+  }
+
+  private addUser(user: UserData) {
     this.playerManager.addPlayer(
       user.id,
       user.name,
@@ -145,8 +148,8 @@ export class MessageHandler {
       user.tileY,
       user.sprite,
       user.status || "available",
+      user.guest !== false,
     );
-    this.dispatchPlayerList();
   }
 
   private handleUserLeft(id: string) {

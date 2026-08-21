@@ -1,10 +1,10 @@
 # SpatialMeet
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-spatialmeet--app.vercel.app-007acc)](https://spatialmeet-app.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-spatialmeet.jittojoseph.xyz-007acc)](https://spatialmeet.jittojoseph.xyz/)
 
 [![Backend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=backend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
 [![Frontend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=frontend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
-[![Health Check](https://img.shields.io/website?url=https://spatialmeet-app.vercel.app&label=health)](https://spatialmeet-app.vercel.app)
+[![Health Check](https://img.shields.io/website?url=https://spatialmeet.jittojoseph.xyz&label=health)](https://spatialmeet.jittojoseph.xyz)
 
 A lightweight, top-down 2D virtual office experience for real-time presence and communication.
 

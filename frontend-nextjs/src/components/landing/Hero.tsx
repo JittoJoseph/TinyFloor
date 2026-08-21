@@ -1,6 +1,7 @@
 import React from "react";
 import { HeroOfficeScene } from "./HeroOfficeScene";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const Hero: React.FC = () => {
   return (
@@ -40,7 +41,7 @@ export const Hero: React.FC = () => {
               className="cursor-pointer flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] transition-colors border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-xl"
             >
               <span className="font-body text-[11px] md:text-xs font-medium text-[var(--color-braun-text)] opacity-50 tracking-wide truncate">
-                spatialmeet-app.vercel.app/room/public-room
+                {SITE_URL.replace("https://", "")}/room/public-room
               </span>
             </Link>
 

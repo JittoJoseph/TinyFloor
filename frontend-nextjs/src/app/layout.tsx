@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import { VT323, Nunito } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -19,7 +20,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://spatialmeet-app.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "SpatialMeet - Your Cozy Virtual Office",
     template: "%s | SpatialMeet",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SpatialMeet - Your Cozy Virtual Office",
     description: "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    url: "https://spatialmeet-app.vercel.app",
+    url: SITE_URL,
     siteName: "SpatialMeet",
     images: [
       {

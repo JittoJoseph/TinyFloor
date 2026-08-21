@@ -1,4 +1,5 @@
 import React from "react";
+import { SITE_URL } from "@/lib/site";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
@@ -20,8 +21,8 @@ export default function LandingPage() {
     },
     description:
       "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    url: "https://spatialmeet-app.vercel.app",
-    image: "https://spatialmeet-app.vercel.app/office.png",
+    url: SITE_URL,
+    image: `${SITE_URL}/office.png`,
   };
 
   return (

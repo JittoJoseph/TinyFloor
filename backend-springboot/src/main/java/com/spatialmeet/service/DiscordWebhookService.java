@@ -33,7 +33,7 @@ public class DiscordWebhookService {
         this.objectMapper = objectMapper;
     }
 
-    public void sendJoinNotification(String playerName, String characterName, String roomId) {
+    public void sendJoinNotification(String playerName, String characterName, String roomId, String region) {
         if (webhookUrl == null || webhookUrl.isBlank()) {
             return;
         }
@@ -45,8 +45,10 @@ public class DiscordWebhookService {
             String content = String.format("**Name:** %s\n" +
                             "**Character:** %s\n" +
                             "**Room:** `%s`\n" +
+                            "**Region:** %s\n" +
                             "**Time:** %s",
-                    playerName, characterName, roomId, time);
+                    playerName, characterName, roomId,
+                    region == null || region.isBlank() ? "Unknown" : region, time);
 
             Map<String, Object> embed = new HashMap<>();
             embed.put("title", "User Joined Room");

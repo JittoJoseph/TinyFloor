@@ -6,6 +6,7 @@ import com.spatialmeet.model.Player;
 import com.spatialmeet.service.RoomService;
 import com.spatialmeet.service.UserService;
 import com.spatialmeet.service.DiscordWebhookService;
+import com.spatialmeet.service.GeoLocationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final RoomService roomService;
     private final UserService userService;
     private final DiscordWebhookService discordWebhookService;
+    private final GeoLocationService geoLocationService;
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
@@ -62,10 +64,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private static final long CLEANUP_INTERVAL_MS = 30000; // Clean up every 30 seconds
     private static final long INACTIVE_TIMEOUT_MS = 90000; // 90 seconds timeout
 
-    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService) {
+    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService, GeoLocationService geoLocationService) {
         this.roomService = roomService;
         this.userService = userService;
         this.discordWebhookService = discordWebhookService;
+        this.geoLocationService = geoLocationService;
         startMovementBroadcaster();
         startCleanupTask();
     }
@@ -275,7 +278,9 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         // Notify via Discord Webhook
         com.spatialmeet.model.Room room = roomService.getRoom(roomId);
         String roomName = (room != null) ? room.getName() : roomId;
-        discordWebhookService.sendJoinNotification(player.getName(), player.getSprite(), roomName);
+        geoLocationService.resolve(session.getHandshakeHeaders(), session.getRemoteAddress())
+            .thenAccept(region -> discordWebhookService.sendJoinNotification(
+                player.getName(), player.getSprite(), roomName, region));
         
         logger.info("Player {} joined room {}", playerId, roomId);
         

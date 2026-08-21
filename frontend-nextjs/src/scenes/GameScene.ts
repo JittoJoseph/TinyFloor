@@ -10,6 +10,8 @@ import { MessageHandler } from "../lib/MessageHandler";
 import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
 import { tileToPixel } from "../lib/types";
 
+const CAMERA_LERP = 0.08;
+
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
   private wsManager!: WebSocketManager;
@@ -107,9 +109,9 @@ class GameScene extends Phaser.Scene {
     const mapHeight = this.mapManager.getMapHeight();
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.startFollow(this.player);
+    this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
     this.cameras.main.setZoom(1.2);
-    this.cameras.main.setDeadzone(200, 150);
+    this.cameras.main.setDeadzone(120, 90);
 
     this.listen("sendChatMessage", (event: CustomEvent) =>
       this.wsManager.send("chat", event.detail),

@@ -1,139 +1,88 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef, memo } from "react";
-import { Video, Mic, MessageSquare, BadgeCheck, User } from "lucide-react";
+import { useEffect, useState, useCallback, memo } from "react";
+import { Video, Mic, MessageSquare, User } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 
 interface NearbyPlayer {
   id: string;
   name: string;
-  username?: string;
-  isGuest?: boolean;
   x: number;
   y: number;
   status: string;
+  guest: boolean;
 }
 
-// Memoized player card component to prevent unnecessary re-renders
+const GAP = 22;
+const PADDING = 12;
+const STATUS_COLORS: Record<string, string> = {
+  available: "bg-green-500",
+  busy: "bg-red-500",
+  away: "bg-yellow-500",
+  in_call: "bg-blue-500",
+};
+
 const PlayerCard = memo(function PlayerCard({
   player,
-  x,
-  y,
-  isBelow,
+  flip,
   onCall,
   onChat,
   onViewProfile,
 }: {
   player: NearbyPlayer;
-  x: number;
-  y: number;
-  isBelow: boolean;
+  flip: boolean;
   onCall: (id: string, name: string, video: boolean) => void;
   onChat: () => void;
   onViewProfile: (userId: string) => void;
 }) {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "available":
-        return "bg-green-500";
-      case "busy":
-        return "bg-red-500";
-      case "away":
-        return "bg-yellow-500";
-      case "in_call":
-        return "bg-blue-500";
-      default:
-        return "bg-gray-500";
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case "available":
-        return "Available";
-      case "busy":
-        return "Busy";
-      case "away":
-        return "Away";
-      case "in_call":
-        return "In Call";
-      default:
-        return "Unknown";
-    }
-  };
+  const actionClass =
+    "cursor-pointer w-7 h-7 rounded-full bg-white border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all flex items-center justify-center shrink-0";
 
   return (
     <div
-      className="absolute transform -translate-x-1/2 pointer-events-auto"
+      className="absolute pointer-events-auto"
       style={{
-        left: x,
-        top: y,
-        transform: `translate(-50%, ${isBelow ? "0%" : "-100%"})`,
-        willChange: "left, top", // Hint for GPU acceleration
+        left: flip ? player.x - GAP : player.x + GAP,
+        top: player.y,
+        transform: `translate(${flip ? "-100%" : "0"}, -50%)`,
       }}
     >
-      <div className="bg-[#fbfbf9] rounded-[2rem] shadow-sm border border-[rgba(0,0,0,0.06)] p-4 w-52 relative">
-        <div className="flex items-center gap-3 mb-3 relative z-10">
-          <div className="w-9 h-9 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm">
-            {player.name.charAt(0).toUpperCase()}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1">
-              <div className="font-bold text-[var(--color-braun-text)] text-sm leading-tight truncate tracking-wide">
-                {player.name}
-              </div>
-              {!player.isGuest && (
-                <BadgeCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-              )}
-            </div>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <div
-                className={`w-2 h-2 rounded-full ${getStatusColor(player.status)}`}
-              ></div>
-              <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-                {getStatusText(player.status)}
-              </span>
-              {player.isGuest && (
-                <span className="text-[9px] px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded-full font-bold">
-                  GUEST
-                </span>
-              )}
-            </div>
-          </div>
+      <div className="flex items-center gap-1.5 bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-full shadow-md p-1.5">
+        <div className="relative w-7 h-7 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] font-bold text-xs shrink-0">
+          {player.name.charAt(0).toUpperCase()}
+          <span
+            className={`absolute bottom-0 right-0 w-2 h-2 rounded-full border-[1.5px] border-[#fbfbf9] ${
+              STATUS_COLORS[player.status] || "bg-gray-400"
+            }`}
+          />
         </div>
 
-        <div className="flex justify-between gap-2 relative z-10">
-          {player.id && (
-            <button
-              onClick={() => onViewProfile(player.id)}
-              className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
-              title="View Profile"
-            >
-              <User size={14} />
-            </button>
-          )}
+        <button
+          onClick={() => onCall(player.id, player.name, true)}
+          className={actionClass}
+          title="Video call"
+        >
+          <Video size={13} />
+        </button>
+        <button
+          onClick={() => onCall(player.id, player.name, false)}
+          className={actionClass}
+          title="Audio call"
+        >
+          <Mic size={13} />
+        </button>
+        <button onClick={onChat} className={actionClass} title="Room chat">
+          <MessageSquare size={13} />
+        </button>
+        {!player.guest && (
           <button
-            onClick={() => onCall(player.id, player.name, true)}
-            className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
-            title="Video Call"
+            onClick={() => onViewProfile(player.id)}
+            className={actionClass}
+            title="View profile"
           >
-            <Video size={14} />
+            <User size={13} />
           </button>
-          <button
-            onClick={() => onCall(player.id, player.name, false)}
-            className="flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
-            title="Audio Call"
-          >
-            <Mic size={14} />
-          </button>
-          <button
-            onClick={onChat}
-            className="cursor-pointer flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] shadow-sm p-2 rounded-full transition-all flex items-center justify-center hover:-translate-y-0.5"
-            title="Chat"
-          >
-            <MessageSquare size={14} />
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -141,18 +90,11 @@ const PlayerCard = memo(function PlayerCard({
 
 export default function ProximityOverlay() {
   const [nearbyPlayers, setNearbyPlayers] = useState<NearbyPlayer[]>([]);
-  const windowSizeRef = useRef({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      windowSizeRef.current = {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    };
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    handleResize();
 
     const handleProximityUpdate = (event: CustomEvent<NearbyPlayer[]>) => {
       setNearbyPlayers(event.detail);
@@ -207,48 +149,22 @@ export default function ProximityOverlay() {
     window.open(`/dashboard?user=${userId}`, "_blank", "noopener,noreferrer");
   }, []);
 
-  // Helper to calculate safe position
-  const getSafePosition = useCallback((x: number, y: number) => {
-    const CARD_WIDTH = 192;
-    const CARD_HEIGHT = 120;
-    const PADDING = 16;
-    const { width, height } = windowSizeRef.current;
-
-    let safeX = x;
-    let safeY = y - 70;
-
-    if (safeX + CARD_WIDTH / 2 > width - PADDING) {
-      safeX = width - CARD_WIDTH / 2 - PADDING;
-    }
-    if (safeX - CARD_WIDTH / 2 < PADDING) {
-      safeX = CARD_WIDTH / 2 + PADDING;
-    }
-    if (safeY - CARD_HEIGHT < PADDING) {
-      safeY = y + 40;
-    }
-
-    return { x: safeX, y: safeY };
-  }, []);
-
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
-      {nearbyPlayers.map((player) => {
-        const { x, y } = getSafePosition(player.x, player.y);
-        const isBelow = y > player.y;
-
-        return (
-          <PlayerCard
-            key={player.id}
-            player={player}
-            x={x}
-            y={y}
-            isBelow={isBelow}
-            onCall={handleCall}
-            onChat={handleChat}
-            onViewProfile={handleViewProfile}
-          />
-        );
-      })}
+      {nearbyPlayers.map((player) => (
+        <PlayerCard
+          key={player.id}
+          player={player}
+          flip={
+            viewportWidth > 0 &&
+            player.x + GAP + (player.guest ? 148 : 182) >
+              viewportWidth - PADDING
+          }
+          onCall={handleCall}
+          onChat={handleChat}
+          onViewProfile={handleViewProfile}
+        />
+      ))}
     </div>
   );
 }

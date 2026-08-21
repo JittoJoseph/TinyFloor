@@ -172,11 +172,7 @@ export class MovementManager {
     }
 
     this.lastSentTile = key;
-    this.wsManager.send("move", {
-      tileX: tile.tileX,
-      tileY: tile.tileY,
-      direction: this.currentDirection,
-    });
+    this.wsManager.send("move", { tileX: tile.tileX, tileY: tile.tileY });
   }
 
   setInputEnabled(enabled: boolean) {

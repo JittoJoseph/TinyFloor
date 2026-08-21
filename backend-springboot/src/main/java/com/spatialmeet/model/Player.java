@@ -11,10 +11,10 @@ public class Player {
     private String sprite;
     private int tileX;  // Tile coordinate (not pixels)
     private int tileY;  // Tile coordinate (not pixels)
-    private String direction = "down";
     private long lastSeen;
     private String inCallWith;
     private String status = "available"; // available, busy, away, in_call
+    private boolean guest = true;
 
     // Constructors, getters, setters
     public Player() {}
@@ -50,14 +50,14 @@ public class Player {
     public int getTileY() { return tileY; }
     public void setTileY(int tileY) { this.tileY = tileY; }
 
-    public String getDirection() { return direction; }
-    public void setDirection(String direction) { this.direction = direction; }
-
     public long getLastSeen() { return lastSeen; }
     public void setLastSeen(long lastSeen) { this.lastSeen = lastSeen; }
 
     public String getInCallWith() { return inCallWith; }
     public void setInCallWith(String inCallWith) { this.inCallWith = inCallWith; }
+
+    public boolean isGuest() { return guest; }
+    public void setGuest(boolean guest) { this.guest = guest; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }

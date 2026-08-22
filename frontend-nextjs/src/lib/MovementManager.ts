@@ -23,6 +23,7 @@ export class MovementManager {
   private lastSentTile = "";
   private needsFinalSend = false;
   private inputEnabled = true;
+  private movingBefore = false;
 
   constructor(
     scene: Phaser.Scene,
@@ -67,6 +68,7 @@ export class MovementManager {
       const len = Math.hypot(dx, dy);
       manualMoved = this.moveBy((dx / len) * step, (dy / len) * step);
       moving = manualMoved;
+      if (manualMoved && !this.movingBefore) this.signalMove("manual");
     } else if (this.path.length) {
       const pos = { x: this.player.x, y: this.player.y };
       advanceAlongPath(pos, this.path, step);
@@ -80,6 +82,7 @@ export class MovementManager {
       this.currentDirection = directionFromVector(dx, dy, this.currentDirection);
     }
 
+    this.movingBefore = manualMoved;
     this.playAnimation(moving);
     this.syncManualMovement(manualMoved);
   }
@@ -126,11 +129,18 @@ export class MovementManager {
     if (!path.length) return;
 
     this.path = path;
+    this.signalMove("click");
     this.pulseTile(path[path.length - 1]);
     this.wsManager.send("walk_to", {
       tileX: goal.tileX,
       tileY: goal.tileY,
     });
+  }
+
+  private signalMove(method: "manual" | "click") {
+    window.dispatchEvent(
+      new CustomEvent("playerMoved", { detail: { method } }),
+    );
   }
 
   private pulseTile({ x, y }: Vec) {

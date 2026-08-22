@@ -1,10 +1,8 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
-import { callManager } from "./CallManager";
 import { TILE_SIZE } from "./types";
 
 const PROXIMITY_RADIUS = 2.5 * TILE_SIZE;
-const DISCONNECT_RADIUS = PROXIMITY_RADIUS + 64;
 const DWELL_TIME = 1000;
 const BODY_OFFSET = 82;
 
@@ -52,9 +50,6 @@ export class ProximityManager {
 
       if (distance > PROXIMITY_RADIUS) {
         this.proximityStartTimes.delete(id);
-        if (distance > DISCONNECT_RADIUS && callManager.isPeer(id)) {
-          callManager.hangUp(id);
-        }
         return;
       }
 

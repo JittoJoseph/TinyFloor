@@ -8,6 +8,8 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { MessageHandler } from "../lib/MessageHandler";
 import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
+import { TutorialGuide } from "../lib/TutorialGuide";
+import { tutorialDone, setTouchInput } from "../lib/tutorial";
 import { tileToPixel } from "../lib/types";
 
 const CAMERA_LERP = 0.08;
@@ -22,6 +24,7 @@ class GameScene extends Phaser.Scene {
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
   private virtualJoystickManager?: VirtualJoystickManager;
+  private tutorialGuide?: TutorialGuide;
   private playerId: string;
   private windowListeners: Array<[string, EventListener]> = [];
 
@@ -73,7 +76,9 @@ class GameScene extends Phaser.Scene {
     );
     this.mapManager.setupColliders(this.player);
 
-    if (!this.sys.game.device.os.desktop) {
+    const touchInput = !this.sys.game.device.os.desktop;
+    setTouchInput(touchInput);
+    if (touchInput) {
       this.virtualJoystickManager = new VirtualJoystickManager(this);
     }
 
@@ -120,6 +125,15 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send("status_change", { status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
     });
+    if (!tutorialDone()) {
+      this.tutorialGuide = new TutorialGuide(
+        this,
+        this.playerManager,
+        nav,
+        this.player,
+      );
+    }
+
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
     this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
   }
@@ -166,6 +180,7 @@ class GameScene extends Phaser.Scene {
     this.proximityManager?.destroy();
     callManager.detach();
     this.virtualJoystickManager?.destroy();
+    this.tutorialGuide?.destroy();
   }
 }
 

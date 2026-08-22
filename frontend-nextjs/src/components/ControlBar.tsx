@@ -15,6 +15,7 @@ import {
 import { StatusSelector } from "./StatusSelector";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
+import { ROOM_CONTROL_EVENT } from "@/lib/tutorial";
 import type { PlayerStatus } from "@/lib/types";
 
 interface ControlBarProps {
@@ -50,20 +51,29 @@ export default function ControlBar({
     }
   }, [isInCall, status, onStatusChange]);
 
-  const toggleMic = useCallback(
-    () => callManager.setMic(!micEnabled),
-    [micEnabled],
-  );
+  const signalControlUse = useCallback(() => {
+    window.dispatchEvent(new Event(ROOM_CONTROL_EVENT));
+  }, []);
 
-  const toggleVideo = useCallback(
-    () => callManager.setCamera(!cameraEnabled),
-    [cameraEnabled],
-  );
+  const toggleMic = useCallback(() => {
+    signalControlUse();
+    callManager.setMic(!micEnabled);
+  }, [micEnabled, signalControlUse]);
 
-  const toggleSpeaker = useCallback(
-    () => callManager.setSpeaker(!speakerEnabled),
-    [speakerEnabled],
-  );
+  const toggleVideo = useCallback(() => {
+    signalControlUse();
+    callManager.setCamera(!cameraEnabled);
+  }, [cameraEnabled, signalControlUse]);
+
+  const toggleSpeaker = useCallback(() => {
+    signalControlUse();
+    callManager.setSpeaker(!speakerEnabled);
+  }, [speakerEnabled, signalControlUse]);
+
+  const handleChatClick = useCallback(() => {
+    signalControlUse();
+    onChatClick?.();
+  }, [onChatClick, signalControlUse]);
 
   const handleStatusChange = useCallback(
     (newStatus: PlayerStatus) => {
@@ -144,7 +154,7 @@ export default function ControlBar({
           <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1 hidden md:block" />
 
           <button
-            onClick={onChatClick}
+            onClick={handleChatClick}
             className="cursor-pointer relative p-2.5 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
             title="Open chat"
           >

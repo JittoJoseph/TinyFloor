@@ -211,7 +211,7 @@ export default function RoomPage() {
       {/* Call Overlay */}
       <CallOverlay />
 
-      <RoomTutorial />
+      <RoomTutorial name={name} character={character} roomId={roomId} />
 
       {/* Bottom Control Bar */}
       <ControlBar

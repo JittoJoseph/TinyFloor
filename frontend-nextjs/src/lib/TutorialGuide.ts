@@ -1,7 +1,12 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
 import { NavGrid } from "./Navigation";
-import { GUIDE_ID, GUIDE_NAME, TUTORIAL_FINISHED_EVENT } from "./tutorial";
+import {
+  GUIDE_ID,
+  GUIDE_NAME,
+  GUIDE_SPRITE,
+  TUTORIAL_FINISHED_EVENT,
+} from "./tutorial";
 import { callManager } from "./CallManager";
 import { TILE_SIZE, pixelToTile } from "./types";
 
@@ -48,7 +53,7 @@ export class TutorialGuide {
       GUIDE_NAME,
       spawn.x,
       spawn.y,
-      "Amelia",
+      GUIDE_SPRITE,
       "offline",
       true,
     );

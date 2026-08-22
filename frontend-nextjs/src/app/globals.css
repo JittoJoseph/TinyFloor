@@ -65,3 +65,110 @@ body {
   image-rendering: crisp-edges;
   -ms-interpolation-mode: nearest-neighbor;
 }
+
+@keyframes tutorial-walk {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  76% {
+    transform: translateX(var(--walk-distance, 150px));
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--walk-distance, 150px));
+    opacity: 0;
+  }
+}
+
+@keyframes tutorial-click-ripple {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.85;
+  }
+  14%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes tutorial-click-walk {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  6%,
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  72%,
+  88% {
+    transform: translateX(var(--walk-distance, 150px));
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--walk-distance, 150px));
+    opacity: 0;
+  }
+}
+
+@keyframes tutorial-click-press {
+  0%,
+  10%,
+  100% {
+    transform: scale(1);
+  }
+  4% {
+    transform: scale(0.76);
+  }
+}
+
+@keyframes tutorial-bar-in {
+  0%,
+  44% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  52%,
+  92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes tutorial-tap-ripple {
+  0%,
+  60% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  64% {
+    opacity: 0.8;
+  }
+  82%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes tutorial-tap-press {
+  0%,
+  58%,
+  70%,
+  100% {
+    transform: scale(1);
+  }
+  63% {
+    transform: scale(0.76);
+  }
+}

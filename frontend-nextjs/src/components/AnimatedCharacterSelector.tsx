@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CharacterSprite } from "./CharacterSprite";
 
 export interface Character {
   id: string;
@@ -16,91 +17,11 @@ const CHARACTERS: Character[] = [
   { id: "Bob", name: "Bob", spriteKey: "Bob" },
 ];
 
-// Sprite constants (matching AnimationManager)
-const SPRITE_WIDTH = 16;
-const SPRITE_HEIGHT = 32;
-const FRAME_COUNT = 6;
-const FRAME_RATE = 10; // frames per second
-const SCALE = 2.3; // Scale up for visibility (slightly larger)
-
-const FRAME_MS = 1000 / FRAME_RATE;
-
 interface AnimatedCharacterSelectorProps {
   selectedCharacter: string;
   onSelect: (character: string) => void;
   variant?: "grid" | "carousel";
 }
-
-// Individual character sprite animator
-const CharacterSprite: React.FC<{
-  characterId: string;
-  size?: "small" | "large";
-}> = ({ characterId, size = "small" }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const canvasSize =
-    size === "large"
-      ? { w: SPRITE_WIDTH * SCALE * 1.0, h: SPRITE_HEIGHT * SCALE * 1.0 }
-      : { w: SPRITE_WIDTH * SCALE, h: SPRITE_HEIGHT * SCALE };
-  const scale = size === "large" ? SCALE * 1.0 : SCALE;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    ctx.imageSmoothingEnabled = false;
-
-    const img = new Image();
-    img.src = `/characters/${characterId}_idle_anim_16x16.png`;
-
-    let frameRequest = 0;
-    let cancelled = false;
-    let lastFrame = -1;
-
-    const draw = () => {
-      if (cancelled) return;
-
-      const frame = Math.floor(performance.now() / FRAME_MS) % FRAME_COUNT;
-      if (frame !== lastFrame && img.complete && img.naturalWidth > 0) {
-        lastFrame = frame;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(
-          img,
-          ((18 + frame) % 24) * SPRITE_WIDTH,
-          0,
-          SPRITE_WIDTH,
-          SPRITE_HEIGHT,
-          0,
-          -8,
-          SPRITE_WIDTH * scale,
-          SPRITE_HEIGHT * scale,
-        );
-      }
-
-      frameRequest = requestAnimationFrame(draw);
-    };
-
-    frameRequest = requestAnimationFrame(draw);
-
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(frameRequest);
-    };
-  }, [characterId, scale]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      width={canvasSize.w}
-      height={canvasSize.h}
-      className="pixel-art"
-      style={{ imageRendering: "pixelated" }}
-    />
-  );
-};
 
 export const AnimatedCharacterSelector: React.FC<
   AnimatedCharacterSelectorProps
@@ -155,10 +76,7 @@ export const AnimatedCharacterSelector: React.FC<
           <div className="w-36 h-36 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] flex flex-col items-center relative overflow-hidden">
             {/* Animated Character */}
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-              <CharacterSprite
-                characterId={CHARACTERS[currentIndex].id}
-                size="large"
-              />
+              <CharacterSprite character={CHARACTERS[currentIndex].id} scale={2.3} />
             </div>
 
             {/* Character Name */}
@@ -233,10 +151,7 @@ export const AnimatedCharacterSelector: React.FC<
               } border border-[rgba(0,0,0,0.02)]`}
             >
               <div className="transform group-hover:scale-110 transition-transform">
-                <CharacterSprite
-                  characterId={char.id}
-                  size="small"
-                />
+                <CharacterSprite character={char.id} />
               </div>
 
               {/* Subtle shadow under character */}

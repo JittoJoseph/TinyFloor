@@ -11,6 +11,7 @@ import ChatPanel from "@/components/ChatPanel";
 import { ChatToasts } from "@/components/ChatToasts";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
+import RoomTutorial from "@/components/RoomTutorial";
 import type { PlayerStatus } from "@/lib/types";
 
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
@@ -209,6 +210,8 @@ export default function RoomPage() {
 
       {/* Call Overlay */}
       <CallOverlay />
+
+      <RoomTutorial name={name} character={character} roomId={roomId} />
 
       {/* Bottom Control Bar */}
       <ControlBar

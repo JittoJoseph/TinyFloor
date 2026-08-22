@@ -1,5 +1,6 @@
 import { WebSocketManager } from "./WebSocketManager";
 import { playSound, loopSound, stopSound } from "./sounds";
+import { GUIDE_ID, GUIDE_NAME } from "./tutorial";
 
 export interface CallPeer {
   id: string;
@@ -27,7 +28,7 @@ interface Signal {
 interface PeerEntry {
   id: string;
   name: string;
-  pc: RTCPeerConnection;
+  pc?: RTCPeerConnection;
   stream: MediaStream;
   polite: boolean;
   makingOffer: boolean;
@@ -41,6 +42,7 @@ const ICE_SERVERS = [
   { urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"] },
 ];
 const RING_TIMEOUT = 30000;
+const GUIDE_ANSWER_DELAY = 1600;
 const AUDIO_CONSTRAINTS = {
   echoCancellation: true,
   noiseSuppression: true,
@@ -141,12 +143,41 @@ class CallManager {
   }
 
   invite(id: string, name: string, video: boolean) {
-    if (!this.ws || this.peers.size || this.incoming || this.outgoing) return;
+    if (this.peers.size || this.incoming || this.outgoing) return;
+    if (id !== GUIDE_ID && !this.ws) return;
+
     this.error = null;
     this.outgoing = { id, name, video };
-    this.send("call_invite", { to: id, video });
     loopSound("ring");
-    this.ring(() => this.cancel());
+
+    if (id === GUIDE_ID) {
+      this.ring(() => this.answerAsGuide(video), GUIDE_ANSWER_DELAY);
+    } else {
+      this.send("call_invite", { to: id, video });
+      this.ring(() => this.cancel());
+    }
+    this.emit();
+  }
+
+  private async answerAsGuide(video: boolean) {
+    if (this.outgoing?.id !== GUIDE_ID) return;
+
+    stopSound("ring");
+    this.outgoing = null;
+    this.peers.set(GUIDE_ID, {
+      id: GUIDE_ID,
+      name: GUIDE_NAME,
+      stream: new MediaStream(),
+      polite: true,
+      makingOffer: false,
+      ignoreOffer: false,
+      connected: true,
+      pendingCandidates: [],
+    });
+    playSound("connect");
+    this.emit();
+
+    await this.openMedia(video);
     this.emit();
   }
 
@@ -178,7 +209,9 @@ class CallManager {
     if (!this.outgoing) return;
     this.clearRing();
     stopSound("ring");
-    this.send("call_end", { to: this.outgoing.id });
+    if (this.outgoing.id !== GUIDE_ID) {
+      this.send("call_end", { to: this.outgoing.id });
+    }
     this.outgoing = null;
     this.emit();
   }
@@ -186,7 +219,7 @@ class CallManager {
   hangUp(id?: string) {
     const targets = id ? [id] : [...this.peers.keys()];
     targets.forEach((peerId) => {
-      this.send("call_end", { to: peerId });
+      if (peerId !== GUIDE_ID) this.send("call_end", { to: peerId });
       this.closePeer(peerId);
     });
     if (!id) {
@@ -297,8 +330,8 @@ class CallManager {
       return;
     }
     this.local?.getTracks().forEach((track) => {
-      const sender = peer.pc.addTrack(track, this.local!);
-      if (track.kind === "video") peer.videoSender = sender;
+      const sender = peer.pc?.addTrack(track, this.local!);
+      if (track.kind === "video" && sender) peer.videoSender = sender;
     });
     this.emit();
   }
@@ -370,7 +403,7 @@ class CallManager {
 
   private async onSignal(from: string, signal: Signal) {
     const peer = this.peers.get(from);
-    if (!peer || !signal) return;
+    if (!peer?.pc || !signal) return;
     const { pc } = peer;
 
     try {
@@ -407,12 +440,14 @@ class CallManager {
     const peer = this.peers.get(id);
     if (!peer) return;
 
-    peer.pc.onicecandidate = null;
-    peer.pc.onnegotiationneeded = null;
-    peer.pc.ontrack = null;
-    peer.pc.onconnectionstatechange = null;
-    peer.pc.getSenders().forEach((sender) => sender.replaceTrack(null));
-    peer.pc.close();
+    if (peer.pc) {
+      peer.pc.onicecandidate = null;
+      peer.pc.onnegotiationneeded = null;
+      peer.pc.ontrack = null;
+      peer.pc.onconnectionstatechange = null;
+      peer.pc.getSenders().forEach((sender) => sender.replaceTrack(null));
+      peer.pc.close();
+    }
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
     playSound("end");
@@ -458,7 +493,7 @@ class CallManager {
       this.local.addTrack(track);
       this.peers.forEach((peer) => {
         if (peer.videoSender) peer.videoSender.replaceTrack(track);
-        else peer.videoSender = peer.pc.addTrack(track, this.local!);
+        else if (peer.pc) peer.videoSender = peer.pc.addTrack(track, this.local!);
       });
       this.error = null;
       return true;
@@ -473,9 +508,9 @@ class CallManager {
     this.local = null;
   }
 
-  private ring(onTimeout: () => void) {
+  private ring(onTimeout: () => void, delay: number = RING_TIMEOUT) {
     this.clearRing();
-    this.ringTimer = setTimeout(onTimeout, RING_TIMEOUT);
+    this.ringTimer = setTimeout(onTimeout, delay);
   }
 
   private clearRing() {

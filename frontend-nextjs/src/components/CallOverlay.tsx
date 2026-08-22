@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Phone, Video, X, Check, Maximize2, Minimize2 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
+import { GUIDE_ID } from "@/lib/tutorial";
 
 export default function CallOverlay() {
   const {
@@ -94,6 +95,12 @@ export default function CallOverlay() {
           }
         >
           <Stream stream={peer.stream} muted={!speakerEnabled} initial={peer.name} />
+
+          {peer.id === GUIDE_ID && (
+            <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-sm text-[var(--color-braun-text)] rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest shadow-sm">
+              Tutorial call
+            </span>
+          )}
 
           {!peer.connected && (
             <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">

@@ -6,6 +6,7 @@ import {
 } from "./AnimationManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { TILE_SIZE, MOVEMENT_SPEED, tileToPixel } from "./types";
+import { GUIDE_ID } from "./tutorial";
 import type { PlayerStatus } from "./types";
 
 interface RemotePlayerState {
@@ -344,7 +345,9 @@ export class PlayerManager {
   }
 
   getPlayerList(): Array<{ id: string; name: string }> {
-    return [...this.nameTags].map(([id, tag]) => ({ id, name: tag.nameText.text }));
+    return [...this.nameTags]
+      .filter(([id]) => id !== GUIDE_ID)
+      .map(([id, tag]) => ({ id, name: tag.nameText.text }));
   }
 
   destroy() {

@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
+import { TILE_SIZE } from "./types";
 
 export class MapManager {
   private scene: Phaser.Scene;
@@ -91,13 +92,25 @@ export class MapManager {
     return this.nav;
   }
 
-  getRandomSpawnTile(): { tileX: number; tileY: number } {
-    const candidates: Array<{ tileX: number; tileY: number }> = [];
+  getRandomSpawnTile(keepCentered = false): { tileX: number; tileY: number } {
+    const camera = this.scene.cameras.main;
+    const halfView = camera.height / camera.zoom / 2;
+    const lowest = this.map.heightInPixels - halfView;
+
+    const preferred: Array<{ tileX: number; tileY: number }> = [];
+    const fallback: Array<{ tileX: number; tileY: number }> = [];
+
     for (let tileY = 2; tileY < this.map.height - 2; tileY++) {
+      const worldY = tileY * TILE_SIZE + TILE_SIZE / 2;
+      const centered = worldY >= halfView && worldY <= lowest;
       for (let tileX = 2; tileX < this.map.width - 2; tileX++) {
-        if (this.nav.isWalkable(tileX, tileY)) candidates.push({ tileX, tileY });
+        if (!this.nav.isWalkable(tileX, tileY)) continue;
+        if (!keepCentered || centered) preferred.push({ tileX, tileY });
+        else fallback.push({ tileX, tileY });
       }
     }
+
+    const candidates = preferred.length ? preferred : fallback;
     if (!candidates.length) return { tileX: 5, tileY: 5 };
     return candidates[Phaser.Math.Between(0, candidates.length - 1)];
   }

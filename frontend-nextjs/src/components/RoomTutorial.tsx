@@ -5,17 +5,12 @@ import {
   Footprints,
   MousePointerClick,
   Users,
-  Video,
-  MessageSquare,
-  Mic,
-  Volume2,
   ChevronRight,
   Link2,
   Check,
   Copy,
 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
-import { playSound } from "@/lib/sounds";
 import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
 import {
@@ -23,14 +18,12 @@ import {
   GUIDE_NAME,
   GUIDE_SPRITE,
   INPUT_MODE_EVENT,
-  ROOM_CONTROL_EVENT,
   completeTutorial,
   isTouchInput,
   tutorialDone,
 } from "@/lib/tutorial";
 
 const WALK_DISTANCE = 150;
-const CONTROLS_STEP = 3;
 const SPRITE_HEADROOM_ROWS = 9;
 const SPRITE_ROWS = 32;
 
@@ -57,11 +50,6 @@ const STEPS = [
   {
     icon: Users,
     text: "Step close to someone to call or chat",
-  },
-  {
-    icon: MessageSquare,
-    text: "Your mic, camera, speaker and chat live here",
-    aboveControls: true,
   },
   {
     icon: Link2,
@@ -165,7 +153,6 @@ export default function RoomTutorial({
   const [step, setStep] = useState(initialStep);
   const [touch, setTouch] = useState(isTouchInput);
   const [copied, setCopied] = useState(false);
-  const greeted = useRef(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => () => clearTimeout(copyTimer.current), []);
@@ -204,9 +191,6 @@ export default function RoomTutorial({
       if (step === 0 && method === "manual") advance();
       if (step === 1 && method === "click") advance();
     };
-    const onControlUsed = () => {
-      if (step === CONTROLS_STEP) advance();
-    };
     const onInputMode = () => setTouch(isTouchInput());
 
     const checkCall = () => {
@@ -216,36 +200,14 @@ export default function RoomTutorial({
     queueMicrotask(checkCall);
 
     window.addEventListener("playerMoved", onMoved);
-    window.addEventListener("openChat", onControlUsed);
-    window.addEventListener(ROOM_CONTROL_EVENT, onControlUsed);
     window.addEventListener(INPUT_MODE_EVENT, onInputMode);
 
     return () => {
       window.removeEventListener("playerMoved", onMoved);
-      window.removeEventListener("openChat", onControlUsed);
-      window.removeEventListener(ROOM_CONTROL_EVENT, onControlUsed);
       window.removeEventListener(INPUT_MODE_EVENT, onInputMode);
       unsubscribe();
     };
   }, [step, advance]);
-
-  useEffect(() => {
-    if (step !== CONTROLS_STEP || greeted.current) return;
-    greeted.current = true;
-    playSound("message");
-    window.dispatchEvent(
-      new CustomEvent("chatMessage", {
-        detail: {
-          id: `guide-${Date.now()}`,
-          senderId: GUIDE_ID,
-          senderName: GUIDE_NAME,
-          content: "This is the room chat. Everyone in the room sees it.",
-          timestamp: new Date(),
-          type: "text",
-        },
-      }),
-    );
-  }, [step]);
 
   if (step < 0) return null;
 
@@ -359,19 +321,6 @@ export default function RoomTutorial({
         </div>
       </>
     );
-  } else if (step === CONTROLS_STEP) {
-    demo = (
-      <div className="absolute inset-0 flex items-center justify-center gap-2">
-        {[Mic, Video, Volume2, MessageSquare].map((StripIcon, index) => (
-          <span
-            key={index}
-            className="w-9 h-9 rounded-full bg-white border border-[rgba(0,0,0,0.06)] shadow-sm flex items-center justify-center text-[var(--color-braun-text)]"
-          >
-            <StripIcon className="w-4 h-4" />
-          </span>
-        ))}
-      </div>
-    );
   } else {
     demo = (
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-4">
@@ -400,14 +349,8 @@ export default function RoomTutorial({
   }
 
   return (
-    <div
-      className={
-        current.aboveControls
-          ? "fixed z-[46] bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 w-[300px] max-w-[calc(100vw-24px)]"
-          : "fixed z-[46] right-3 md:right-4 top-1/2 -translate-y-1/2 w-[300px] max-w-[calc(100vw-24px)]"
-      }
-    >
-      <div className="bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-lg p-3.5">
+    <div className="fixed inset-0 z-[46] pointer-events-none flex items-start justify-center p-3 md:items-center md:justify-end md:p-4">
+      <div className="pointer-events-auto w-[300px] max-w-full bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-lg p-3.5">
         <div className="relative h-[128px] rounded-xl bg-[var(--color-braun-text)]/[0.04] overflow-hidden">
           {demo}
         </div>

@@ -13,6 +13,8 @@ import { tutorialDone, setTouchInput } from "../lib/tutorial";
 import { tileToPixel } from "../lib/types";
 
 const CAMERA_LERP = 0.08;
+const CAMERA_ZOOM = 1.2;
+const NARROW_WIDTH = 768;
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -51,7 +53,14 @@ class GameScene extends Phaser.Scene {
     this.mapManager.create();
 
     const nav = this.mapManager.getNavGrid();
-    const spawnTile = this.mapManager.getRandomSpawnTile();
+    const mapWidth = this.mapManager.getMapWidth();
+    const mapHeight = this.mapManager.getMapHeight();
+    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+    this.cameras.main.setZoom(CAMERA_ZOOM);
+
+    const keepCentered =
+      !tutorialDone() && this.cameras.main.width < NARROW_WIDTH;
+    const spawnTile = this.mapManager.getRandomSpawnTile(keepCentered);
     const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
     this.wsManager = new WebSocketManager(
@@ -110,12 +119,8 @@ class GameScene extends Phaser.Scene {
       this.messageHandler.handleMessage(msg),
     );
 
-    const mapWidth = this.mapManager.getMapWidth();
-    const mapHeight = this.mapManager.getMapHeight();
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
-    this.cameras.main.setZoom(1.2);
     this.cameras.main.setDeadzone(120, 90);
 
     this.listen("sendChatMessage", (event: CustomEvent) =>

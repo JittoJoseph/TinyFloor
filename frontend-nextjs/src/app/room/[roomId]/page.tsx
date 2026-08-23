@@ -13,6 +13,7 @@ import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import RoomTutorial from "@/components/RoomTutorial";
 import type { PlayerStatus } from "@/lib/types";
+import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
 const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
   ssr: false,
@@ -51,6 +52,7 @@ export default function RoomPage() {
   const [unreadChatCount, setUnreadChatCount] = useState(0);
   const [copied, setCopied] = useState(false);
   const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
+  const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
   const [participants, setParticipants] = useState<
     Array<{
       id: string;
@@ -129,6 +131,9 @@ export default function RoomPage() {
       setParticipants(processedParticipants);
     };
 
+    const handleTutorialFinished = () => setTutorialActive(false);
+
+    window.addEventListener(TUTORIAL_FINISHED_EVENT, handleTutorialFinished);
     window.addEventListener("openChat", handleOpenChat);
     window.addEventListener(
       "playerListUpdated",
@@ -136,6 +141,10 @@ export default function RoomPage() {
     );
 
     return () => {
+      window.removeEventListener(
+        TUTORIAL_FINISHED_EVENT,
+        handleTutorialFinished,
+      );
       window.removeEventListener("openChat", handleOpenChat);
       window.removeEventListener(
         "playerListUpdated",
@@ -149,7 +158,11 @@ export default function RoomPage() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
       {/* Header Overlay */}
-      <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none">
+      <div
+        className={`absolute top-0 left-0 right-0 p-4 sm:p-6 ${
+          tutorialActive ? "hidden md:flex" : "flex"
+        } flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none`}
+      >
         {/* Room Info */}
         <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-sm pointer-events-auto flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
@@ -214,13 +227,15 @@ export default function RoomPage() {
       <RoomTutorial name={name} character={character} roomId={roomId} />
 
       {/* Bottom Control Bar */}
-      <ControlBar
-        onSettingsClick={handleSettingsClick}
-        onChatClick={handleChatClick}
-        onStatusChange={handleStatusChange}
-        currentStatus={currentStatus}
-        unreadChatCount={unreadChatCount}
-      />
+      <div className={tutorialActive ? "hidden md:block" : undefined}>
+        <ControlBar
+          onSettingsClick={handleSettingsClick}
+          onChatClick={handleChatClick}
+          onStatusChange={handleStatusChange}
+          currentStatus={currentStatus}
+          unreadChatCount={unreadChatCount}
+        />
+      </div>
 
       {/* Settings Modal */}
       <SettingsModal

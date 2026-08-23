@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -16,6 +16,7 @@ import {
 import { AuthModal } from "@/components/auth/AuthModal";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { apiClient } from "@/lib/api";
+import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
 
 interface Room {
   id: string;
@@ -53,9 +54,10 @@ export default function RoomsPage() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
+  const pageRef = useRef(0);
+  const loadingRef = useRef(false);
   const router = useRouter();
   const pageSize = 6;
 
@@ -71,7 +73,7 @@ export default function RoomsPage() {
       const data = await apiClient.getRooms(pageToLoad, pageSize);
       const normalized = normalizeRooms(data);
       setRooms((prev) => (append ? [...prev, ...normalized] : normalized));
-      setPage(pageToLoad);
+      pageRef.current = pageToLoad;
       setHasMore(normalized.length === pageSize);
       if (!append) setIsSearching(false);
     } catch (error) {
@@ -94,7 +96,7 @@ export default function RoomsPage() {
       setRooms(normalizeRooms(data));
       setIsSearching(true);
       setHasMore(false);
-      setPage(0);
+      pageRef.current = 0;
     } catch (error) {
       console.error("Failed to search rooms:", error);
     } finally {
@@ -102,10 +104,18 @@ export default function RoomsPage() {
     }
   };
 
-  const handleShowMore = async () => {
-    if (loadingMore || loading || !hasMore) return;
-    await fetchRooms(page + 1, true);
-  };
+  const loadMore = useCallback(() => {
+    if (loadingRef.current || loading || !hasMore || isSearching) return;
+    loadingRef.current = true;
+    fetchRooms(pageRef.current + 1, true).finally(() => {
+      loadingRef.current = false;
+    });
+  }, [loading, hasMore, isSearching]);
+
+  const sentinelRef = useInfiniteScroll(
+    !isSearching && hasMore && !loading,
+    loadMore,
+  );
 
   const getTimeAgo = (dateString?: string) => {
     if (!dateString) return "";
@@ -333,14 +343,13 @@ export default function RoomsPage() {
             </div>
 
             {!isSearching && hasMore && (
-              <div className="flex justify-center pt-2">
-                <button
-                  onClick={handleShowMore}
-                  disabled={loadingMore}
-                  className="h-10 px-6 flex items-center justify-center bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:bg-[#fbfbf9] shadow-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  {loadingMore ? "Loading..." : "Show More"}
-                </button>
+              <div
+                ref={sentinelRef}
+                className="flex justify-center items-center h-12"
+              >
+                {loadingMore && (
+                  <div className="w-5 h-5 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin opacity-40" />
+                )}
               </div>
             )}
           </div>

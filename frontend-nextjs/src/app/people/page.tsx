@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Plus, Search, Sparkles, Users } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
@@ -8,21 +8,28 @@ import { UserMenu } from "@/components/auth/UserMenu";
 import { CharacterPreview } from "@/components/dashboard";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
+import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
 import type { PublicUser } from "@/lib/types";
+
+const PAGE_SIZE = 24;
 
 export default function PeoplePage() {
   const { user, isAuthenticated } = useAuth();
   const [people, setPeople] = useState<PublicUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const pageRef = useRef(0);
+  const loadingRef = useRef(false);
 
   useEffect(() => {
-    const fetchPeople = async () => {
-      setLoading(true);
+    const fetchFirstPage = async () => {
       try {
-        const data = await apiClient.getPublicUsers();
+        const data = await apiClient.getPublicUsers(0, PAGE_SIZE);
         setPeople(data);
+        setHasMore(data.length === PAGE_SIZE);
       } catch (error) {
         console.error("Failed to fetch people:", error);
       } finally {
@@ -30,8 +37,28 @@ export default function PeoplePage() {
       }
     };
 
-    fetchPeople();
+    fetchFirstPage();
   }, []);
+
+  const loadMore = useCallback(async () => {
+    if (loadingRef.current || loading || !hasMore) return;
+    loadingRef.current = true;
+    setLoadingMore(true);
+    try {
+      const next = pageRef.current + 1;
+      const data = await apiClient.getPublicUsers(next, PAGE_SIZE);
+      pageRef.current = next;
+      setPeople((prev) => [...prev, ...data]);
+      setHasMore(data.length === PAGE_SIZE);
+    } catch (error) {
+      console.error("Failed to fetch more people:", error);
+    } finally {
+      loadingRef.current = false;
+      setLoadingMore(false);
+    }
+  }, [loading, hasMore]);
+
+  const sentinelRef = useInfiniteScroll(hasMore && !loading, loadMore);
 
   const filteredPeople = useMemo(() => {
     if (!searchQuery.trim()) return people;
@@ -226,6 +253,14 @@ export default function PeoplePage() {
                 </div>
               </Link>
             ))}
+          </div>
+        )}
+
+        {hasMore && !loading && !searchQuery.trim() && (
+          <div ref={sentinelRef} className="flex justify-center items-center h-12">
+            {loadingMore && (
+              <div className="w-5 h-5 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin opacity-40" />
+            )}
           </div>
         )}
       </div>

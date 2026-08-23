@@ -4,7 +4,6 @@ export const GUIDE_SPRITE = "Amelia";
 export const TUTORIAL_KEY = "spacialMeetTutorialDone";
 export const TUTORIAL_FINISHED_EVENT = "tutorialFinished";
 export const INPUT_MODE_EVENT = "inputModeChanged";
-export const ROOM_CONTROL_EVENT = "roomControlUsed";
 
 let touchInput =
   typeof window !== "undefined" &&

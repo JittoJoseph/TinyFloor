@@ -21,17 +21,29 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default: "SpatialMeet - Your Cozy Virtual Office",
     template: "%s | SpatialMeet",
   },
   description:
     "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-  keywords: ["virtual office", "remote work", "spatial chat", "online collaboration", "virtual workspace", "metaverse office", "proximity chat"],
+  keywords: [
+    "virtual office",
+    "remote work",
+    "spatial chat",
+    "online collaboration",
+    "virtual workspace",
+    "metaverse office",
+    "proximity chat",
+  ],
   authors: [{ name: "SpatialMeet Team" }],
   openGraph: {
     title: "SpatialMeet - Your Cozy Virtual Office",
-    description: "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
+    description:
+      "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
     url: SITE_URL,
     siteName: "SpatialMeet",
     images: [
@@ -48,7 +60,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SpatialMeet - Your Cozy Virtual Office",
-    description: "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
+    description:
+      "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
     images: ["/office.png"],
   },
   robots: {

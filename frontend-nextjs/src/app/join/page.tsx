@@ -3,10 +3,14 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, User, Lock, Users, AlertCircle } from "lucide-react";
-import { AnimatedCharacterSelector } from "@/components/AnimatedCharacterSelector";
-import { useAuth } from "@/contexts/AuthContext";
-import { useToast } from "@/components/ui/Toast";
+import { AlertCircle, ArrowRight, Lock, Users } from "lucide-react";
+import {
+  EntryShell,
+  primaryButtonClass,
+} from "@/components/entry/EntryShell";
+import { EntryPreview } from "@/components/entry/EntryPreview";
+import { IdentityFields, ErrorNote } from "@/components/entry/IdentityFields";
+import { useIdentity, roomHref } from "@/components/entry/useIdentity";
 import { apiClient } from "@/lib/api";
 
 interface RoomInfo {
@@ -23,285 +27,220 @@ function JoinContent() {
   const roomId = searchParams.get("roomId");
   const shareCode = searchParams.get("code");
   const router = useRouter();
-  const { user, isAuthenticated } = useAuth();
-  const { showToast } = useToast();
+  const identity = useIdentity();
 
-  const [name, setName] = useState("");
-  const [character, setCharacter] = useState("Adam");
   const [password, setPassword] = useState("");
-  const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
+  const [room, setRoom] = useState<RoomInfo | null>(null);
   const [loading, setLoading] = useState(true);
-  const [joining, setJoining] = useState(false);
+  const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
-  // Pre-fill name and character from user profile or localStorage
   useEffect(() => {
-    if (user?.displayName && !name) {
-      setName(user.displayName);
-    } else if (!isAuthenticated && !name) {
-      // For non-authenticated users, check localStorage
-      const savedName = localStorage.getItem("guestDisplayName");
-      if (savedName) {
-        setName(savedName);
-      }
-    }
+    let cancelled = false;
 
-    if (user?.avatarPreferences?.characterName && character === "Adam") {
-      setCharacter(user.avatarPreferences.characterName);
-    } else if (!isAuthenticated && character === "Adam") {
-      // For non-authenticated users, check localStorage
-      const savedCharacter = localStorage.getItem("guestCharacter");
-      if (savedCharacter) {
-        setCharacter(savedCharacter);
-      }
-    }
-  }, [user, name, isAuthenticated]); // Removed 'character' from dependencies
-
-  // Fetch room info
-  useEffect(() => {
-    const fetchRoom = async () => {
+    const load = async () => {
       setLoading(true);
       setError("");
 
       try {
-        let room;
-        if (shareCode) {
-          room = await apiClient.getRoomByShareCode(shareCode);
-        } else if (roomId) {
-          room = await apiClient.getRoom(roomId);
-        } else {
-          setError("No room specified");
-          setLoading(false);
-          return;
-        }
+        if (!shareCode && !roomId) throw new Error("No room specified");
 
-        setRoomInfo({
-          id: room.id,
-          name: room.name,
-          playerCount: room.playerCount || 0,
-          maxPlayers: room.maxPlayers || 20,
-          hasPassword: room.hasPassword || false,
-          isPublic: room.isPublic ?? true,
+        const found = shareCode
+          ? await apiClient.getRoomByShareCode(shareCode)
+          : await apiClient.getRoom(roomId as string);
+
+        if (cancelled) return;
+        setRoom({
+          id: found.id,
+          name: found.name,
+          playerCount: found.playerCount || 0,
+          maxPlayers: found.maxPlayers || 20,
+          hasPassword: found.hasPassword || false,
+          isPublic: found.isPublic ?? true,
         });
-      } catch (err) {
-        console.error("Failed to fetch room:", err);
-        setError("Room not found or no longer available");
+      } catch {
+        if (!cancelled) setError("This room is not available any more.");
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
-    fetchRoom();
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [roomId, shareCode]);
 
-  const handleJoin = async () => {
-    if (!name.trim() || !roomInfo) return;
+  const walkIn = async () => {
+    if (!room || !identity.name.trim() || busy) return;
 
-    setJoining(true);
+    setBusy(true);
     setError("");
 
     try {
-      // Check if room is full
-      if (roomInfo.playerCount >= roomInfo.maxPlayers) {
-        setError("Room is full");
-        setJoining(false);
+      if (room.playerCount >= room.maxPlayers) {
+        setError("This room is full right now");
+        setBusy(false);
         return;
       }
 
-      // If room requires password, validate first
-      if (roomInfo.hasPassword && !password) {
-        setError("Password is required for this room");
-        setJoining(false);
+      if (room.hasPassword && !password) {
+        setError("This room needs a password");
+        setBusy(false);
         return;
       }
 
-      // Try to join via API
       const result = await apiClient.joinRoom(
-        roomInfo.id,
+        room.id,
         password || undefined,
-        name,
+        identity.name,
       );
 
       if (!result.success) {
-        setError(result.message || "Failed to join room");
-        setJoining(false);
+        setError(result.message || "Could not join this room");
+        setBusy(false);
         return;
       }
 
-      // Save user preferences
-      if (isAuthenticated && !user?.isGuest) {
-        try {
-          // Update registered user's profile
-          await apiClient.updateProfile(name, { characterName: character });
-        } catch (err) {
-          console.warn("Failed to update user profile:", err);
-          // Continue anyway - don't block joining
-        }
-      } else {
-        // Save guest preferences to localStorage
-        localStorage.setItem("guestDisplayName", name);
-        localStorage.setItem("guestCharacter", character);
-      }
-
-      // Redirect to the room page with params
+      await identity.remember();
       router.push(
-        `/room/${roomInfo.id}?name=${encodeURIComponent(
-          name,
-        )}&character=${character}&userId=${result.userId}`,
+        roomHref(room.id, identity.name, identity.character, result.userId),
       );
-    } catch (err) {
-      console.error("Failed to join room:", err);
-      setError(err instanceof Error ? err.message : "Failed to join room");
-      setJoining(false);
+    } catch {
+      setError("Could not join this room");
+      setBusy(false);
     }
   };
 
   if (loading) {
     return (
-      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
-        <div className="w-8 h-8 border-[3px] border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-6" />
-        <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-50">
-          Loading space...
-        </p>
-      </div>
+      <EntryShell preview={<EntryPreview occupants={[]} />}>
+        <div className="space-y-4">
+          <div className="h-3 w-20 rounded-full bg-black/5 animate-pulse" />
+          <div className="h-7 w-2/3 rounded-lg bg-black/5 animate-pulse" />
+          <div className="h-13 w-full rounded-xl bg-black/5 animate-pulse" />
+          <div className="h-24 w-full rounded-xl bg-black/5 animate-pulse" />
+        </div>
+      </EntryShell>
     );
   }
 
-  if (error && !roomInfo) {
+  if (!room) {
     return (
-      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
-        <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[rgba(0,0,0,0.04)]">
-          <AlertCircle className="w-6 h-6 text-red-500" />
+      <EntryShell preview={<EntryPreview occupants={[]} />}>
+        <div className="entry-rise">
+          <span className="inline-flex w-11 h-11 rounded-xl bg-red-50 items-center justify-center mb-5">
+            <AlertCircle className="w-5 h-5 text-red-500" />
+          </span>
+          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
+            That door does not open.
+          </h1>
+          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">
+            {error}
+          </p>
+          <Link href="/rooms" className={primaryButtonClass}>
+            Browse rooms
+          </Link>
         </div>
-        <p className="text-[var(--color-braun-text)] text-sm mb-6">{error}</p>
-        <Link
-          href="/rooms"
-          className="cursor-pointer inline-block text-[var(--color-braun-text)] hover:text-[var(--color-braun-orange)] font-bold uppercase tracking-widest text-xs transition-colors"
-        >
-          Go back to directory
-        </Link>
-      </div>
+      </EntryShell>
     );
   }
+
+  const full = room.playerCount >= room.maxPlayers;
 
   return (
-    <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
-      <Link
-        href="/rooms"
-        className="cursor-pointer absolute top-6 left-6 w-10 h-10 flex items-center justify-center hover:bg-[#fbfbf9] border border-transparent hover:border-[rgba(0,0,0,0.04)] rounded-full transition-colors"
-      >
-        <ArrowLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-50" />
-      </Link>
-
-      <div className="text-center mb-10 mt-2">
-        <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-          <User className="w-6 h-6 text-[var(--color-braun-orange)]" />
-        </div>
-        <h1 className="text-3xl font-light tracking-tight text-[var(--color-braun-text)] mb-2">
-          Join Space
+    <EntryShell
+      preview={
+        <EntryPreview
+          occupants={[
+            {
+              character: identity.character,
+              left: "50%",
+              top: "80%",
+              name: identity.name.trim() || "You",
+              width: 44,
+              running: identity.arriving,
+            },
+          ]}
+          caption={
+            <>
+              <Users className="w-3 h-3 opacity-60" />
+              {room.playerCount === 0
+                ? "You will be first in"
+                : `${room.playerCount} already inside`}
+            </>
+          }
+        />
+      }
+    >
+      <div className="entry-rise">
+        <h1 className="flex items-start gap-2 font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-5 break-words">
+          {!room.isPublic && (
+            <Lock className="w-4 h-4 mt-2 shrink-0 opacity-40" />
+          )}
+          {room.name}
         </h1>
 
-        {/* Room info */}
-        {roomInfo && (
-          <div className="flex items-center justify-center gap-3 text-[var(--color-braun-text)] opacity-50 text-[10px] font-bold uppercase tracking-widest">
-            <span>{roomInfo.name}</span>
-            <span className="w-1 h-1 rounded-full bg-[rgba(0,0,0,0.2)]" />
-            <span className="flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5" />
-              {roomInfo.playerCount}/{roomInfo.maxPlayers}
-            </span>
-            {roomInfo.hasPassword && (
-              <>
-                <span className="w-1 h-1 rounded-full bg-[rgba(0,0,0,0.2)]" />
-                <Lock className="w-3 h-3 text-[var(--color-braun-text)]" />
-              </>
-            )}
-          </div>
-        )}
-      </div>
-
-      <div className="space-y-6">
-        {/* Display Name */}
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-            Display Name
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-            className="w-full h-14 px-5 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
-            maxLength={30}
-            autoFocus={!isAuthenticated}
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            walkIn();
+          }}
+        >
+          <IdentityFields
+            name={identity.name}
+            onName={identity.setName}
+            character={identity.character}
+            onCharacter={identity.pickCharacter}
+            password={password}
+            onPassword={setPassword}
+            needsPassword={room.hasPassword}
+            autoFocus
           />
-        </div>
 
-        {/* Password (if required) */}
-        {roomInfo?.hasPassword && (
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-              Space Password
-            </label>
-            <div className="relative">
-              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                className="w-full pl-12 pr-4 h-14 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
-              />
+          {error && (
+            <div className="mt-5">
+              <ErrorNote>{error}</ErrorNote>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Character Selection */}
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-            Choose Character
-          </label>
-          <AnimatedCharacterSelector
-            selectedCharacter={character}
-            onSelect={setCharacter}
-            variant="grid"
-          />
-        </div>
-
-        {/* Error message */}
-        {error && (
-          <div className="bg-[#fbfbf9] text-[var(--color-braun-text)] p-4 rounded-xl text-xs font-medium border border-[rgba(0,0,0,0.06)] flex items-center gap-3">
-            <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
-            {error}
-          </div>
-        )}
-
-        <div className="pt-2">
           <button
-            onClick={handleJoin}
-            disabled={!name.trim() || joining}
-            className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors disabled:opacity-50 disabled:hover:bg-[var(--color-braun-text)]"
+            type="submit"
+            disabled={!identity.name.trim() || busy || full}
+            className={`${primaryButtonClass} mt-5`}
           >
-            {joining ? "Joining..." : "Enter Space"}
+            {busy ? "Opening the door" : full ? "Room is full" : "Walk in"}
+            {!busy && !full && <ArrowRight className="w-4 h-4" />}
           </button>
-        </div>
+        </form>
+
+        {!identity.isAuthenticated && (
+          <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 text-center mt-5">
+            Joining as a guest.{" "}
+            <Link
+              href="/auth"
+              className="underline underline-offset-2 hover:opacity-100"
+            >
+              Sign in
+            </Link>{" "}
+            to keep your name and character.
+          </p>
+        )}
       </div>
-    </div>
+    </EntryShell>
   );
 }
 
 export default function JoinPage() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
-      <Suspense
-        fallback={
-          <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm text-center">
-            <div className="w-8 h-8 border-[3px] border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mx-auto" />
-          </div>
-        }
-      >
-        <JoinContent />
-      </Suspense>
-    </div>
+    <Suspense
+      fallback={
+        <div className="min-h-screen w-full bg-[var(--color-braun-bg)] flex items-center justify-center">
+          <div className="w-7 h-7 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin opacity-30" />
+        </div>
+      }
+    >
+      <JoinContent />
+    </Suspense>
   );
 }

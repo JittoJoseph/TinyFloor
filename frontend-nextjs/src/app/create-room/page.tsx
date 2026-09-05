@@ -2,261 +2,298 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { ArrowRight, Check, ChevronDown, Link2, Lock } from "lucide-react";
 import {
-  ArrowLeft,
-  Sparkles,
-  Lock,
-  Globe,
-  Eye,
-  EyeOff,
-  Copy,
-  Check,
-} from "lucide-react";
+  EntryShell,
+  Field,
+  inputClass,
+  primaryButtonClass,
+} from "@/components/entry/EntryShell";
+import { EntryPreview } from "@/components/entry/EntryPreview";
+import { IdentityFields, ErrorNote } from "@/components/entry/IdentityFields";
+import { useIdentity, roomHref } from "@/components/entry/useIdentity";
 import { apiClient } from "@/lib/api";
-import { useToast } from "@/components/ui/Toast";
+import { SITE_URL } from "@/lib/site";
+
+interface CreatedRoom {
+  id: string;
+  name: string;
+  shareCode?: string;
+}
 
 export default function CreateRoomPage() {
-  const [name, setName] = useState("");
+  const router = useRouter();
+  const identity = useIdentity();
+
+  const [roomName, setRoomName] = useState("");
+  const [advanced, setAdvanced] = useState(false);
   const [isPublic, setIsPublic] = useState(true);
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [createdRoom, setCreatedRoom] = useState<{
-    id: string;
-    shareCode?: string;
-  } | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [created, setCreated] = useState<CreatedRoom | null>(null);
   const [copied, setCopied] = useState(false);
-  const router = useRouter();
-  const { showToast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim()) return;
+  const inviteLink = created
+    ? created.shareCode
+      ? `${SITE_URL}/join?code=${created.shareCode}`
+      : `${SITE_URL}/join?roomId=${created.id}`
+    : "";
 
-    setIsSubmitting(true);
+  const createRoom = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!roomName.trim() || busy) return;
+
+    setBusy(true);
+    setError("");
+
     try {
       const room = await apiClient.createRoom({
-        name: name.trim(),
+        name: roomName.trim(),
         isPublic,
-        password: password || undefined,
+        password: password.trim() || undefined,
       });
+      setCreated({ id: room.id, name: room.name, shareCode: room.shareCode });
+    } catch {
+      setError("Could not create the room. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
 
-      if (!isPublic && room.shareCode) {
-        setCreatedRoom(room);
-        showToast("Room created successfully!", "success");
-      } else {
-        router.push(`/join?roomId=${room.id}`);
+  const walkIn = async () => {
+    if (!created || !identity.name.trim() || busy) return;
+
+    setBusy(true);
+    setError("");
+
+    try {
+      const result = await apiClient.joinRoom(
+        created.id,
+        password.trim() || undefined,
+        identity.name,
+      );
+
+      if (!result.success) {
+        setError(result.message || "Could not open the room");
+        setBusy(false);
+        return;
       }
-    } catch (error) {
-      console.error("Failed to create room:", error);
-      showToast("Failed to create room. Please try again.", "error");
-      setIsSubmitting(false);
+
+      await identity.remember();
+      router.push(
+        roomHref(created.id, identity.name, identity.character, result.userId),
+      );
+    } catch {
+      setError("Could not open the room");
+      setBusy(false);
     }
   };
 
-  const copyShareLink = () => {
-    if (createdRoom?.shareCode) {
-      const shareUrl = `${window.location.origin}/join?code=${createdRoom.shareCode}`;
-      navigator.clipboard.writeText(shareUrl);
+  const copyInvite = async () => {
+    try {
+      await navigator.clipboard.writeText(inviteLink);
       setCopied(true);
-      showToast("Share link copied to clipboard!", "success");
       setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setError("Copying is blocked here. Select the link instead.");
     }
   };
 
-  const goToRoom = () => {
-    if (createdRoom) {
-      router.push(`/join?roomId=${createdRoom.id}`);
-    }
-  };
+  const preview = created ? (
+    <EntryPreview
+      occupants={[
+        {
+          character: identity.character,
+          left: "50%",
+          top: "80%",
+          name: identity.name.trim() || "You",
+          width: 44,
+          running: identity.arriving,
+        },
+      ]}
+      caption={created.name}
+    />
+  ) : (
+    <EntryPreview
+      occupants={[
+        { character: "Alex", left: "40%", top: "80%", width: 38 },
+        {
+          character: "Bob",
+          left: "62%",
+          top: "80%",
+          direction: "left",
+          width: 38,
+        },
+      ]}
+      caption={roomName.trim() || "Your new room"}
+    />
+  );
 
-  // Success state for private rooms
-  if (createdRoom && !isPublic) {
+  if (created) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
-        <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
-          <div className="text-center mb-10">
-            <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
-              <Check className="w-6 h-6 text-green-600" />
-            </div>
-            <h1 className="text-3xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              Space Created
-            </h1>
-            <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
-              Your private space is ready. Share this link with your team:
-            </p>
-          </div>
+      <EntryShell preview={preview}>
+        <div className="entry-rise">
+          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-5">
+            Now, who are you?
+          </h1>
 
-          {/* Share Link */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 p-1 bg-[#fbfbf9] border border-[rgba(0,0,0,0.04)] rounded-2xl">
-              <input
-                type="text"
-                readOnly
-                value={`${
-                  typeof window !== "undefined" ? window.location.origin : ""
-                }/join?code=${createdRoom.shareCode}`}
-                className="flex-1 bg-transparent px-4 py-3 text-sm font-medium text-[var(--color-braun-text)] opacity-80 outline-none truncate"
-              />
-              <button
-                onClick={copyShareLink}
-                className={`cursor-pointer p-3 rounded-xl transition-colors border border-[rgba(0,0,0,0.04)] ${
-                  copied
-                    ? "bg-white text-green-600 shadow-sm"
-                    : "bg-white text-[var(--color-braun-text)] opacity-60 hover:opacity-100 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
-                }`}
-              >
-                {copied ? (
-                  <Check className="w-4 h-4" />
-                ) : (
-                  <Copy className="w-4 h-4" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-4">
+          <div className="flex items-center gap-2 rounded-xl border border-black/10 bg-[#fbfbf9] p-1.5 mb-5">
+            <span className="flex-1 min-w-0 px-2.5 py-1.5 font-body text-[12px] text-[var(--color-braun-text)] opacity-60 truncate">
+              {inviteLink}
+            </span>
             <button
-              onClick={goToRoom}
-              className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors"
+              type="button"
+              onClick={copyInvite}
+              className="cursor-pointer shrink-0 inline-flex items-center gap-2 rounded-lg bg-white border border-black/10 px-3 py-2 font-body text-[12px] font-semibold text-[var(--color-braun-text)] shadow-sm hover:bg-[#f7f7f4] transition-colors duration-[120ms]"
             >
-              Enter Space
-            </button>
-            <button
-              onClick={() => {
-                setCreatedRoom(null);
-                setName("");
-                setPassword("");
-              }}
-              className="w-full h-14 bg-[#fbfbf9] hover:bg-white text-[var(--color-braun-text)] border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-all"
-            >
-              Create Another Space
+              <span className="relative inline-flex w-4 h-4 items-center justify-center">
+                <Link2
+                  className={`absolute w-4 h-4 transition-all duration-200 ease-out motion-reduce:transition-none ${
+                    copied
+                      ? "scale-50 opacity-0 blur-[2px]"
+                      : "scale-100 opacity-100 blur-0"
+                  }`}
+                />
+                <Check
+                  className={`absolute w-4 h-4 text-emerald-600 transition-all duration-200 ease-out motion-reduce:transition-none ${
+                    copied
+                      ? "scale-100 opacity-100 blur-0"
+                      : "scale-50 opacity-0 blur-[2px]"
+                  }`}
+                />
+              </span>
+              {copied ? "Copied" : "Copy"}
             </button>
           </div>
+
+          <IdentityFields
+            name={identity.name}
+            onName={identity.setName}
+            character={identity.character}
+            onCharacter={identity.pickCharacter}
+          />
+
+          {error && (
+            <div className="mt-5">
+              <ErrorNote>{error}</ErrorNote>
+            </div>
+          )}
+
+          <button
+            type="button"
+            onClick={walkIn}
+            disabled={!identity.name.trim() || busy}
+            className={`${primaryButtonClass} mt-5`}
+          >
+            {busy ? "Opening the door" : "Walk in"}
+            {!busy && <ArrowRight className="w-4 h-4" />}
+          </button>
         </div>
-      </div>
+      </EntryShell>
     );
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 font-sans bg-[var(--color-braun-bg)]">
-      <div className="max-w-md w-full bg-white p-10 rounded-[2rem] border border-[rgba(0,0,0,0.06)] shadow-sm relative">
-        <Link
-          href="/rooms"
-          className="cursor-pointer absolute top-6 left-6 w-10 h-10 flex items-center justify-center hover:bg-[#fbfbf9] border border-transparent hover:border-[rgba(0,0,0,0.04)] rounded-full transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-50" />
-        </Link>
+    <EntryShell preview={preview}>
+      <div className="entry-rise">
+        <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-5">
+          Open a room.
+        </h1>
 
-        <div className="text-center mb-10 mt-2">
-          <div className="w-16 h-16 bg-[#fbfbf9] rounded-2xl border border-[rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-            <Sparkles className="w-6 h-6 text-[var(--color-braun-orange)]" />
-          </div>
-          <h1 className="text-3xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-            Create a Space
-          </h1>
-          <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
-            Set up your virtual office
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Room Name */}
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-              Space Name
-            </label>
+        <form onSubmit={createRoom}>
+          <Field label="Room name" htmlFor="room-name">
             <input
+              id="room-name"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Engineering Team..."
-              className="w-full h-14 px-5 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+              value={roomName}
+              onChange={(event) => setRoomName(event.target.value)}
+              placeholder="Design team, Studio, Friday hangout"
+              className={inputClass}
               maxLength={50}
               autoFocus
             />
-          </div>
+          </Field>
 
-          {/* Visibility Toggle */}
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-              Visibility
-            </label>
-            <div className="grid grid-cols-2 gap-3 p-1 bg-[#fbfbf9] border border-[rgba(0,0,0,0.04)] rounded-2xl">
-              <button
-                type="button"
-                onClick={() => setIsPublic(true)}
-                className={`py-4 rounded-xl transition-all flex flex-col items-center gap-1.5 ${
-                  isPublic
-                    ? "bg-white text-[var(--color-braun-text)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.04)]"
-                    : "bg-transparent text-[var(--color-braun-text)] opacity-50 hover:opacity-100 border border-transparent"
-                }`}
-              >
-                <Globe className="w-5 h-5 mb-1" />
-                <span className="font-bold text-xs uppercase tracking-widest">
-                  Public
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsPublic(false)}
-                className={`py-4 rounded-xl transition-all flex flex-col items-center gap-1.5 ${
-                  !isPublic
-                    ? "bg-white text-[var(--color-braun-text)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.04)]"
-                    : "bg-transparent text-[var(--color-braun-text)] opacity-50 hover:opacity-100 border border-transparent"
-                }`}
-              >
-                <Lock className="w-5 h-5 mb-1" />
-                <span className="font-bold text-xs uppercase tracking-widest">
-                  Private
-                </span>
-              </button>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => setAdvanced(!advanced)}
+            aria-expanded={advanced}
+            aria-controls="advanced-options"
+            className="cursor-pointer mt-3.5 inline-flex items-center gap-1.5 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-90 transition-opacity duration-200"
+          >
+            Advanced
+            <ChevronDown
+              aria-hidden="true"
+              className={`w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                advanced ? "rotate-180" : ""
+              }`}
+            />
+          </button>
 
-          {/* Password (optional) */}
-          <div>
-            <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70 mb-3">
-              Password
-              <span className="opacity-50 tracking-normal capitalize font-normal text-[10px]">
-                (optional)
-              </span>
-            </label>
-            <div className="relative">
-              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Leave empty for no password"
-                className="w-full pl-12 pr-12 h-14 bg-white border border-[rgba(0,0,0,0.08)] rounded-2xl focus:border-[var(--color-braun-text)] outline-none transition-colors text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-100 transition-opacity"
-              >
-                {showPassword ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={!name.trim() || isSubmitting}
-              className="cursor-pointer w-full h-14 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-colors disabled:opacity-50 disabled:hover:bg-[var(--color-braun-text)]"
+          {advanced && (
+            <div
+              id="advanced-options"
+              className="entry-rise mt-3.5 rounded-xl border border-black/8 bg-[#fbfbf9] p-3.5 space-y-3.5"
             >
-              {isSubmitting ? "Creating..." : "Create Space"}
-            </button>
-          </div>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={!isPublic}
+                  aria-label="Keep it private"
+                  onClick={() => setIsPublic(!isPublic)}
+                  className={`cursor-pointer relative w-11 h-6 rounded-full shrink-0 transition-colors duration-200 ${
+                    !isPublic ? "bg-[var(--color-braun-text)]" : "bg-black/15"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                      !isPublic ? "translate-x-5" : "translate-x-0"
+                    }`}
+                  />
+                </button>
+                <span className="min-w-0">
+                  <span className="block font-body text-[14px] font-semibold text-[var(--color-braun-text)]">
+                    Keep it private
+                  </span>
+                  <span className="block font-body text-[12px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
+                    Hidden from the directory. Only your link opens it.
+                  </span>
+                </span>
+              </div>
+
+              <div className="relative">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-35" />
+                <input
+                  type="text"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Add a password (optional)"
+                  aria-label="Room password"
+                  className={`${inputClass} bg-white pl-11`}
+                  maxLength={40}
+                />
+              </div>
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-5">
+              <ErrorNote>{error}</ErrorNote>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={!roomName.trim() || busy}
+            className={`${primaryButtonClass} mt-5`}
+          >
+            {busy ? "Setting it up" : "Create the room"}
+            {!busy && <ArrowRight className="w-4 h-4" />}
+          </button>
         </form>
       </div>
-    </div>
+    </EntryShell>
   );
 }

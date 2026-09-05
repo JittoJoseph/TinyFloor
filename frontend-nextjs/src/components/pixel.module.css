@@ -1,0 +1,72 @@
+.sprite {
+  position: absolute;
+  width: var(--sprite-w, 34px);
+  aspect-ratio: 1 / 2;
+  background-size: 2400% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  transform: translate(-50%, -100%);
+  animation-duration: 0.6s;
+  animation-timing-function: steps(6);
+  animation-iteration-count: infinite;
+}
+
+.running {
+  animation-duration: 0.5s;
+}
+
+.down {
+  animation-name: cycleDown;
+}
+.up {
+  animation-name: cycleUp;
+}
+.left {
+  animation-name: cycleLeft;
+}
+.right {
+  animation-name: cycleRight;
+}
+
+@keyframes cycleRight {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 26.086957%;
+  }
+}
+
+@keyframes cycleUp {
+  from {
+    background-position-x: 26.086957%;
+  }
+  to {
+    background-position-x: 52.173913%;
+  }
+}
+
+@keyframes cycleLeft {
+  from {
+    background-position-x: 52.173913%;
+  }
+  to {
+    background-position-x: 78.26087%;
+  }
+}
+
+@keyframes cycleDown {
+  from {
+    background-position-x: 78.26087%;
+  }
+  to {
+    background-position-x: 104.347826%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprite {
+    animation: none;
+    background-position-x: 78.26087%;
+  }
+}

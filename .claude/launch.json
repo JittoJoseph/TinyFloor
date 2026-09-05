@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "spatialmeet-web", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "frontend-nextjs", "run", "dev"], "port": 3000 }
+  ]
+}

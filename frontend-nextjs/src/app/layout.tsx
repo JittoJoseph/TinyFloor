@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   title: {
-    default: "SpatialMeet - Your Cozy Virtual Office",
+    default: "SpatialMeet - A Virtual Office You Can Walk Around",
     template: "%s | SpatialMeet",
   },
   description:
-    "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
+    "SpatialMeet is a free virtual office in your browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
   keywords: [
     "virtual office",
     "remote work",
@@ -38,20 +38,24 @@ export const metadata: Metadata = {
     "virtual workspace",
     "metaverse office",
     "proximity chat",
+    "proximity video chat",
+    "virtual coworking space",
+    "browser video calls",
   ],
-  authors: [{ name: "SpatialMeet Team" }],
+  authors: [{ name: "Jitto Joseph" }],
+  creator: "Jitto Joseph",
   openGraph: {
-    title: "SpatialMeet - Your Cozy Virtual Office",
+    title: "SpatialMeet - A Virtual Office You Can Walk Around",
     description:
-      "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
+      "SpatialMeet is a free virtual office in your browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     url: SITE_URL,
     siteName: "SpatialMeet",
     images: [
       {
         url: "/office.png",
         width: 1200,
-        height: 630,
-        alt: "SpatialMeet Virtual Office",
+        height: 800,
+        alt: "A SpatialMeet room: a 16-bit office floor with desks and teammates",
       },
     ],
     locale: "en_US",
@@ -59,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SpatialMeet - Your Cozy Virtual Office",
+    title: "SpatialMeet - A Virtual Office You Can Walk Around",
     description:
-      "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
+      "SpatialMeet is a free virtual office in your browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     images: ["/office.png"],
   },
   robots: {

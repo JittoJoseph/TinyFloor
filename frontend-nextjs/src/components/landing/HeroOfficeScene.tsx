@@ -1,24 +1,15 @@
-"use client";
-
 import React from "react";
-import styles from "./HeroOfficeScene.module.css";
+import { OfficeScene } from "@/components/OfficeScene";
 
-export const HeroOfficeScene: React.FC = () => {
-  return (
-    <div className="w-full h-full relative overflow-hidden select-none cursor-default bg-[#1f2937] rounded-xl">
-      <div className={styles.sceneContainer}>
-        <div className={styles.officeBackground} />
+const size = "clamp(28px, 4.5%, 42px)";
 
-        <div
-          className={`${styles.avatar} ${styles.avatarAlex}`}
-          style={{ left: "30%", top: "75%" }}
-        />
-
-        <div
-          className={`${styles.avatar} ${styles.avatarBob}`}
-          style={{ left: "75%", top: "30%" }}
-        />
-      </div>
-    </div>
-  );
-};
+export const HeroOfficeScene: React.FC = () => (
+  <OfficeScene
+    className="w-full h-full rounded-xl select-none"
+    focus="center center"
+    occupants={[
+      { character: "Alex", left: "30%", top: "75%", width: size },
+      { character: "Bob", left: "75%", top: "30%", width: size },
+    ]}
+  />
+);

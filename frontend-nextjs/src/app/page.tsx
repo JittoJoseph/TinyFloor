@@ -2,44 +2,66 @@ import React from "react";
 import { SITE_URL } from "@/lib/site";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Features } from "@/components/landing/Features";
-import { HowItWorks } from "@/components/landing/HowItWorks";
+import { RoomMoments } from "@/components/landing/RoomMoments";
+import { FAQ } from "@/components/landing/FAQ";
+import { faqs } from "@/components/landing/faqs";
 import { CTA } from "@/components/landing/CTA";
 import { Footer } from "@/components/landing/Footer";
 
-export default function LandingPage() {
-  const jsonLd = {
+const description =
+  "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.";
+
+const jsonLd = [
+  {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "SpatialMeet",
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Any",
+    operatingSystem: "Web browser",
+    url: SITE_URL,
+    image: `${SITE_URL}/office.png`,
+    description,
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
     },
-    description:
-      "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    url: SITE_URL,
-    image: `${SITE_URL}/office.png`,
-  };
+    featureList: [
+      "Proximity video and voice calls",
+      "Walkable 2D office map",
+      "Pixel-art avatars",
+      "Real-time presence and status",
+      "Room chat",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  },
+];
 
+export default function LandingPage() {
   return (
     <div className="min-h-screen w-full relative">
+      <link rel="preload" as="image" href="/office.png" fetchPriority="high" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
 
-      <main className="container mx-auto px-4 pb-12 pt-24 md:pt-32 flex flex-col gap-12 md:gap-16 max-w-5xl">
+      <main className="pt-24 md:pt-32">
         <Hero />
-        <HowItWorks />
-        <Features />
+        <RoomMoments />
+        <FAQ />
+        <CTA />
       </main>
 
-      <CTA />
       <Footer />
     </div>
   );

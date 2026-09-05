@@ -109,9 +109,9 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   ];
 
   const videoQualityMeta = {
-    low: "360p — best for slow connections",
-    medium: "480p — balanced quality and speed",
-    high: "720p — best quality, requires fast internet",
+    low: "360p, best for slow connections",
+    medium: "480p, balanced quality and speed",
+    high: "720p, best quality but needs fast internet",
   };
 
   return (

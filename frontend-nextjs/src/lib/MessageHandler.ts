@@ -2,6 +2,8 @@ import * as Phaser from "phaser";
 import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
 import { callManager } from "./CallManager";
+import { whiteboard } from "./WhiteboardManager";
+import { jukebox } from "./JukeboxManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
@@ -48,6 +50,14 @@ export class MessageHandler {
 
   handleMessage(msg: WebSocketMessage) {
     switch (msg.type) {
+      case "music_state":
+        jukebox.handleMessage(msg.type, msg.data);
+        break;
+      case "board_state":
+      case "board_draw":
+      case "board_clear":
+        whiteboard.handleMessage(msg.type, msg.data);
+        break;
       case "space-joined":
         this.handleSpaceJoined(msg.data);
         break;

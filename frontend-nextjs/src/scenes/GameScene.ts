@@ -9,6 +9,10 @@ import { MapManager } from "../lib/MapManager";
 import { MessageHandler } from "../lib/MessageHandler";
 import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
 import { TutorialGuide } from "../lib/TutorialGuide";
+import { WhiteboardObject } from "../lib/WhiteboardObject";
+import { whiteboard } from "../lib/WhiteboardManager";
+import { JukeboxObject } from "../lib/JukeboxObject";
+import { jukebox } from "../lib/JukeboxManager";
 import { tutorialDone, setTouchInput } from "../lib/tutorial";
 import { tileToPixel } from "../lib/types";
 
@@ -27,6 +31,8 @@ class GameScene extends Phaser.Scene {
   private messageHandler!: MessageHandler;
   private virtualJoystickManager?: VirtualJoystickManager;
   private tutorialGuide?: TutorialGuide;
+  private whiteboardObject?: WhiteboardObject;
+  private jukeboxObject?: JukeboxObject;
   private playerId: string;
   private windowListeners: Array<[string, EventListener]> = [];
 
@@ -102,6 +108,10 @@ class GameScene extends Phaser.Scene {
     );
 
     callManager.attach(this.wsManager, this.playerId);
+    whiteboard.attach(this.wsManager);
+    this.whiteboardObject = new WhiteboardObject(this, this.player);
+    jukebox.attach(this.wsManager);
+    this.jukeboxObject = new JukeboxObject(this, this.player);
     this.proximityManager = new ProximityManager(
       this,
       this.playerManager,
@@ -164,13 +174,15 @@ class GameScene extends Phaser.Scene {
     window.addEventListener(type, listener);
   }
 
-  update(_time: number, delta: number) {
+  update(time: number, delta: number) {
     if (!this.player) return;
 
     this.movementManager.update(delta);
     this.playerManager.update(delta);
     this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
     this.proximityManager.update();
+    this.whiteboardObject?.update();
+    this.jukeboxObject?.update(time, delta);
   }
 
   public cleanup() {
@@ -184,6 +196,10 @@ class GameScene extends Phaser.Scene {
     this.playerManager?.destroy();
     this.proximityManager?.destroy();
     callManager.detach();
+    whiteboard.detach();
+    this.whiteboardObject?.destroy();
+    jukebox.detach();
+    this.jukeboxObject?.destroy();
     this.virtualJoystickManager?.destroy();
     this.tutorialGuide?.destroy();
   }

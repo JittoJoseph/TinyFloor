@@ -11,6 +11,8 @@ import ChatPanel from "@/components/ChatPanel";
 import { ChatToasts } from "@/components/ChatToasts";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
+import WhiteboardOverlay from "@/components/WhiteboardOverlay";
+import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
 import type { PlayerStatus } from "@/lib/types";
 import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
@@ -222,6 +224,8 @@ export default function RoomPage() {
 
       {/* Call Overlay */}
       <CallOverlay />
+      <WhiteboardOverlay />
+      <JukeboxPanel />
 
       <RoomTutorial name={name} character={character} roomId={roomId} />
 

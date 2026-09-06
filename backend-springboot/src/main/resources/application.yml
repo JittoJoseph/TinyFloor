@@ -21,7 +21,6 @@ jwt:
 # Room Configuration
 room:
   max-players: 20
-  max-public-rooms: 50
   inactive-timeout: 604800000 # 7 days in milliseconds
   cleanup-interval: 3600000 # 1 hour in milliseconds
 

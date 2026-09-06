@@ -18,8 +18,6 @@ public class Room {
     
     private String ownerId;
     
-    private boolean isPublic = true;
-    
     private String passwordHash;
     
     private int maxPlayers = 20;
@@ -61,8 +59,6 @@ public class Room {
     public String getOwnerId() { return ownerId; }
     public void setOwnerId(String ownerId) { this.ownerId = ownerId; }
 
-    public boolean isPublic() { return isPublic; }
-    public void setPublic(boolean isPublic) { this.isPublic = isPublic; }
 
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }

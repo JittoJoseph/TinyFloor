@@ -9,7 +9,6 @@ public class RoomResponse {
     private String id;
     private String name;
     private String ownerId;
-    private boolean isPublic;
     private boolean hasPassword;
     private int maxPlayers;
     private int playerCount;
@@ -25,7 +24,6 @@ public class RoomResponse {
         this.id = room.getId();
         this.name = room.getName();
         this.ownerId = room.getOwnerId();
-        this.isPublic = room.isPublic();
         this.hasPassword = room.hasPassword();
         this.maxPlayers = room.getMaxPlayers();
         this.playerCount = room.getPlayerCount();
@@ -44,9 +42,6 @@ public class RoomResponse {
 
     public String getOwnerId() { return ownerId; }
     public void setOwnerId(String ownerId) { this.ownerId = ownerId; }
-
-    public boolean isPublic() { return isPublic; }
-    public void setPublic(boolean isPublic) { this.isPublic = isPublic; }
 
     public boolean isHasPassword() { return hasPassword; }
     public void setHasPassword(boolean hasPassword) { this.hasPassword = hasPassword; }

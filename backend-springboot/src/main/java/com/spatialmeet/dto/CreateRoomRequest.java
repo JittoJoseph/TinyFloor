@@ -11,8 +11,6 @@ public class CreateRoomRequest {
     @Size(min = 1, max = 50, message = "Room name must be between 1 and 50 characters")
     private String name;
     
-    private boolean isPublic = true;
-    
     @Size(min = 4, max = 50, message = "Password must be between 4 and 50 characters")
     private String password;
     
@@ -23,9 +21,6 @@ public class CreateRoomRequest {
     // Getters and Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-
-    public boolean isPublic() { return isPublic; }
-    public void setPublic(boolean isPublic) { this.isPublic = isPublic; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }

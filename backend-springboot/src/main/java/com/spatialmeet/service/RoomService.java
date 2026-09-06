@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class RoomService {
     public static final String PUBLIC_ROOM_ID = "public-room";
     private static final String PUBLIC_ROOM_NAME = "System Lobby";
-    private static final List<RoomStatus> LISTABLE_PUBLIC_STATUSES =
+    private static final List<RoomStatus> LISTABLE_STATUSES =
             List.of(RoomStatus.ACTIVE, RoomStatus.INACTIVE, RoomStatus.ARCHIVED);
 
     private final RoomRepository roomRepository;
@@ -37,9 +37,6 @@ public class RoomService {
 
     @Value("${room.max-players:20}")
     private int defaultMaxPlayers;
-
-    @Value("${room.max-public-rooms:50}")
-    private int maxPublicRooms;
 
     @Value("${room.cache-max-size:100}")
     private int maxCacheSize;
@@ -54,15 +51,8 @@ public class RoomService {
 
     public RoomResponse createRoom(CreateRoomRequest request, String ownerId) {
         Room room = new Room(UUID.randomUUID().toString(), request.getName(), ownerId);
-        room.setPublic(request.isPublic());
         room.setMaxPlayers(request.getMaxPlayers() > 0 ? request.getMaxPlayers() : defaultMaxPlayers);
         applyPassword(room, request.getPassword());
-
-        if (room.isPublic()) {
-            room.setShareCode(null);
-        } else {
-            room.setShareCode(generateShareCode());
-        }
 
         Room savedRoom = roomRepository.save(room);
         activeRoomsCache.put(savedRoom.getId(), savedRoom);
@@ -91,14 +81,14 @@ public class RoomService {
         return null;
     }
 
-    public List<RoomResponse> getPublicRooms(int page, int size) {
+    public List<RoomResponse> listRooms(int page, int size) {
         if (size <= 0 || page < 0) {
             return List.of();
         }
 
-        ensurePublicLobbyExists();
-        Page<Room> roomsPage = roomRepository.findByIsPublicTrueAndStatusIn(
-                LISTABLE_PUBLIC_STATUSES,
+        ensureLobbyExists();
+        Page<Room> roomsPage = roomRepository.findByStatusIn(
+                LISTABLE_STATUSES,
                 PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "lastActivityAt"))
         );
 
@@ -110,7 +100,7 @@ public class RoomService {
     public List<RoomResponse> searchRooms(String query) {
         return roomRepository.searchByName(query)
                 .stream()
-                .sorted(publicRoomComparator())
+                .sorted(roomComparator())
                 .map(RoomResponse::new)
                 .collect(Collectors.toList());
     }
@@ -197,13 +187,7 @@ public class RoomService {
         if (isLobbyRoom(room)) {
             applyLobbyInvariants(room);
         } else {
-            room.setPublic(request.isPublic());
             applyPassword(room, request.getPassword());
-            if (room.isPublic()) {
-                room.setShareCode(null);
-            } else if (room.getShareCode() == null || room.getShareCode().isBlank()) {
-                room.setShareCode(generateShareCode());
-            }
         }
 
         room.updateActivity();
@@ -222,15 +206,10 @@ public class RoomService {
             return false;
         }
 
-        room.setPublic(false);
         room.setStatus(RoomStatus.DELETED);
         roomRepository.save(room);
         activeRoomsCache.remove(roomId);
         return true;
-    }
-
-    private String generateShareCode() {
-        return UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
     @Scheduled(fixedRateString = "${room.cleanup-interval:3600000}")
@@ -252,10 +231,10 @@ public class RoomService {
         activeRoomsCache.clear();
         resetPersistedPresence();
 
-        Room lobby = ensurePublicLobbyExists();
+        Room lobby = ensureLobbyExists();
         activeRoomsCache.put(lobby.getId(), lobby);
 
-        List<Room> activeRooms = roomRepository.findByIsPublicTrueAndStatusOrderByLastActivityAtDesc(RoomStatus.ACTIVE);
+        List<Room> activeRooms = roomRepository.findByStatusOrderByLastActivityAtDesc(RoomStatus.ACTIVE);
         for (Room room : activeRooms) {
             activeRoomsCache.put(room.getId(), room);
         }
@@ -287,7 +266,7 @@ public class RoomService {
         }
     }
 
-    private Room ensurePublicLobbyExists() {
+    private Room ensureLobbyExists() {
         Room lobby = roomRepository.findById(PUBLIC_ROOM_ID)
                 .orElseGet(() -> new Room(PUBLIC_ROOM_ID, PUBLIC_ROOM_NAME, null));
 
@@ -306,10 +285,6 @@ public class RoomService {
         }
         if (room.getOwnerId() != null) {
             room.setOwnerId(null);
-            changed = true;
-        }
-        if (!room.isPublic()) {
-            room.setPublic(true);
             changed = true;
         }
         if (room.getPasswordHash() != null) {
@@ -344,7 +319,7 @@ public class RoomService {
         return PUBLIC_ROOM_ID.equals(room.getId());
     }
 
-    private Comparator<Room> publicRoomComparator() {
+    private Comparator<Room> roomComparator() {
         return Comparator
                 .comparing((Room room) -> !isLobbyRoom(room))
                 .thenComparing(Room::getLastActivityAt, Comparator.nullsLast(Comparator.reverseOrder()));

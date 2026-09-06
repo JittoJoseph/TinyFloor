@@ -31,7 +31,6 @@ interface RoomData {
   name: string;
   activeUsers?: number;
   maxPlayers?: number;
-  shareCode?: string;
 }
 
 export default function RoomPage() {

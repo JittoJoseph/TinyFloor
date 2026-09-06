@@ -184,9 +184,7 @@ function DashboardContent() {
   };
 
   const handleCopyLink = (room: Room) => {
-    const link = room.shareCode
-      ? `${window.location.origin}/join?code=${room.shareCode}`
-      : `${window.location.origin}/join?roomId=${room.id}`;
+    const link = `${window.location.origin}/join?roomId=${room.id}`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(link);
       setCopiedRoomId(room.id);

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check, ChevronDown, Link2, Lock } from "lucide-react";
+import { ArrowRight, ChevronDown, Lock } from "lucide-react";
 import {
   EntryShell,
   Field,
@@ -18,7 +18,6 @@ import { SITE_URL } from "@/lib/site";
 interface CreatedRoom {
   id: string;
   name: string;
-  shareCode?: string;
 }
 
 export default function CreateRoomPage() {
@@ -27,18 +26,10 @@ export default function CreateRoomPage() {
 
   const [roomName, setRoomName] = useState("");
   const [advanced, setAdvanced] = useState(false);
-  const [isPublic, setIsPublic] = useState(true);
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [created, setCreated] = useState<CreatedRoom | null>(null);
-  const [copied, setCopied] = useState(false);
-
-  const inviteLink = created
-    ? created.shareCode
-      ? `${SITE_URL}/join?code=${created.shareCode}`
-      : `${SITE_URL}/join?roomId=${created.id}`
-    : "";
 
   const createRoom = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -50,10 +41,9 @@ export default function CreateRoomPage() {
     try {
       const room = await apiClient.createRoom({
         name: roomName.trim(),
-        isPublic,
         password: password.trim() || undefined,
       });
-      setCreated({ id: room.id, name: room.name, shareCode: room.shareCode });
+      setCreated({ id: room.id, name: room.name });
     } catch {
       setError("Could not create the room. Please try again.");
     } finally {
@@ -90,82 +80,29 @@ export default function CreateRoomPage() {
     }
   };
 
-  const copyInvite = async () => {
-    try {
-      await navigator.clipboard.writeText(inviteLink);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setError("Copying is blocked here. Select the link instead.");
-    }
-  };
-
-  const preview = created ? (
-    <EntryPreview
-      occupants={[
-        {
-          character: identity.character,
-          left: "50%",
-          top: "80%",
-          name: identity.name.trim() || "You",
-          width: 44,
-          running: identity.arriving,
-        },
-      ]}
-      caption={created.name}
-    />
-  ) : (
-    <EntryPreview
-      occupants={[
-        { character: "Alex", left: "40%", top: "80%", width: 38 },
-        {
-          character: "Bob",
-          left: "62%",
-          top: "80%",
-          direction: "left",
-          width: 38,
-        },
-      ]}
-      caption={roomName.trim() || "Your new room"}
-    />
-  );
-
   if (created) {
     return (
-      <EntryShell preview={preview}>
+      <EntryShell
+        preview={
+          <EntryPreview
+            inviteLink={`${SITE_URL}/join?roomId=${created.id}`}
+            occupants={[
+              {
+                character: identity.character,
+                left: "50%",
+                top: "79%",
+                name: identity.name.trim() || "You",
+                width: 44,
+                running: identity.arriving,
+              },
+            ]}
+          />
+        }
+      >
         <div className="entry-rise">
-          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-5">
-            Now, who are you?
+          <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-5 break-words">
+            {created.name}
           </h1>
-
-          <div className="flex items-center gap-2 rounded-xl border border-black/10 bg-[#fbfbf9] p-1.5 mb-5">
-            <span className="flex-1 min-w-0 px-2.5 py-1.5 font-body text-[12px] text-[var(--color-braun-text)] opacity-60 truncate">
-              {inviteLink}
-            </span>
-            <button
-              type="button"
-              onClick={copyInvite}
-              className="cursor-pointer shrink-0 inline-flex items-center gap-2 rounded-lg bg-white border border-black/10 px-3 py-2 font-body text-[12px] font-semibold text-[var(--color-braun-text)] shadow-sm hover:bg-[#f7f7f4] transition-colors duration-[120ms]"
-            >
-              <span className="relative inline-flex w-4 h-4 items-center justify-center">
-                <Link2
-                  className={`absolute w-4 h-4 transition-all duration-200 ease-out motion-reduce:transition-none ${
-                    copied
-                      ? "scale-50 opacity-0 blur-[2px]"
-                      : "scale-100 opacity-100 blur-0"
-                  }`}
-                />
-                <Check
-                  className={`absolute w-4 h-4 text-emerald-600 transition-all duration-200 ease-out motion-reduce:transition-none ${
-                    copied
-                      ? "scale-100 opacity-100 blur-0"
-                      : "scale-50 opacity-0 blur-[2px]"
-                  }`}
-                />
-              </span>
-              {copied ? "Copied" : "Copy"}
-            </button>
-          </div>
 
           <IdentityFields
             name={identity.name}
@@ -175,7 +112,7 @@ export default function CreateRoomPage() {
           />
 
           {error && (
-            <div className="mt-5">
+            <div className="mt-4">
               <ErrorNote>{error}</ErrorNote>
             </div>
           )}
@@ -195,7 +132,22 @@ export default function CreateRoomPage() {
   }
 
   return (
-    <EntryShell preview={preview}>
+    <EntryShell
+      preview={
+        <EntryPreview
+          occupants={[
+            { character: "Alex", left: "40%", top: "79%", width: 38 },
+            {
+              character: "Bob",
+              left: "62%",
+              top: "79%",
+              direction: "left",
+              width: 38,
+            },
+          ]}
+        />
+      }
+    >
       <div className="entry-rise">
         <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-5">
           Open a room.
@@ -232,37 +184,7 @@ export default function CreateRoomPage() {
           </button>
 
           {advanced && (
-            <div
-              id="advanced-options"
-              className="entry-rise mt-3.5 rounded-xl border border-black/8 bg-[#fbfbf9] p-3.5 space-y-3.5"
-            >
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  role="switch"
-                  aria-checked={!isPublic}
-                  aria-label="Keep it private"
-                  onClick={() => setIsPublic(!isPublic)}
-                  className={`cursor-pointer relative w-11 h-6 rounded-full shrink-0 transition-colors duration-200 ${
-                    !isPublic ? "bg-[var(--color-braun-text)]" : "bg-black/15"
-                  }`}
-                >
-                  <span
-                    className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-                      !isPublic ? "translate-x-5" : "translate-x-0"
-                    }`}
-                  />
-                </button>
-                <span className="min-w-0">
-                  <span className="block font-body text-[14px] font-semibold text-[var(--color-braun-text)]">
-                    Keep it private
-                  </span>
-                  <span className="block font-body text-[12px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
-                    Hidden from the directory. Only your link opens it.
-                  </span>
-                </span>
-              </div>
-
+            <div id="advanced-options" className="entry-rise mt-3.5">
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-35" />
                 <input
@@ -271,15 +193,19 @@ export default function CreateRoomPage() {
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder="Add a password (optional)"
                   aria-label="Room password"
-                  className={`${inputClass} bg-white pl-11`}
+                  className={`${inputClass} pl-11`}
                   maxLength={40}
                 />
               </div>
+              <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 mt-2 px-1">
+                Every room is listed in the directory. A password keeps the door
+                shut to anyone without it.
+              </p>
             </div>
           )}
 
           {error && (
-            <div className="mt-5">
+            <div className="mt-4">
               <ErrorNote>{error}</ErrorNote>
             </div>
           )}

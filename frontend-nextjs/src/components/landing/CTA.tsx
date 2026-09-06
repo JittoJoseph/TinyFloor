@@ -13,7 +13,7 @@ const crowd = [
 ];
 
 const tileClass =
-  "group relative flex flex-col h-full overflow-hidden rounded-[1.5rem] border border-black/10 bg-[#f2efe6] p-6 md:p-8 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,0,0,0.4)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "group relative flex flex-col h-full overflow-hidden rounded-[1.5rem] border border-black/10 bg-[#f2efe6] p-6 md:p-8 transition-[background-color,border-color,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:border-black/15 hover:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.35)] motion-reduce:transition-none";
 
 export const CTA: React.FC = () => {
   return (
@@ -42,7 +42,7 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   Walk into the public office
                 </span>
-                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
+                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
                 The room that is always on. Pick a character, walk around, and
@@ -66,7 +66,7 @@ export const CTA: React.FC = () => {
             </Link>
           </Reveal>
 
-          <Reveal delay={90} className="h-full">
+          <Reveal className="h-full">
             <Link href="/create-room" className={tileClass}>
               <span className="flex items-center gap-3 mb-4">
                 <span className="w-10 h-10 rounded-xl bg-[var(--color-braun-text)] text-[#f2efe6] flex items-center justify-center shrink-0">
@@ -75,11 +75,11 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   Open a room for your team
                 </span>
-                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
+                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
-                Name it, add a password if you want one, then send
-                one link. It stays open for as long as you want.
+                Name it, add a password if you want one, then send one link. It
+                stays open for as long as you want.
               </span>
               <span className="mt-auto flex items-center gap-2 rounded-xl border border-black/10 bg-white p-2">
                 <span className="flex-1 min-w-0 rounded-lg bg-[#f0f0eb] px-3 py-2.5 font-body text-[11px] md:text-xs text-[var(--color-braun-text)] opacity-50 truncate">

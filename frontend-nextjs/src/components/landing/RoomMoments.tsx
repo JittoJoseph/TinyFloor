@@ -10,49 +10,54 @@ import {
   Hand,
   Radio,
   Coffee,
-  Lock,
   Link2,
   Sparkles,
+  Lock,
   Users,
+  CalendarOff,
+  Footprints,
 } from "lucide-react";
-import { OfficeScene } from "@/components/OfficeScene";
+import { OfficeScene, Occupant } from "@/components/OfficeScene";
 import { Reveal } from "./Reveal";
 
 const chipBase =
   "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[13px] md:text-sm font-medium";
 
 const frameTone = {
-  light: "bg-white border-black/10",
+  light: "bg-[#f2efe6] border-black/10",
   glass: "bg-white/95 border-white/60",
   dark: "bg-white/10 border-white/15",
 };
 
 const Frame: React.FC<{
   tone: keyof typeof frameTone;
+  className?: string;
   children: React.ReactNode;
-}> = ({ tone, children }) => (
+}> = ({ tone, className = "", children }) => (
   <div
-    className={`rounded-2xl border p-2 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.45)] ${frameTone[tone]}`}
+    className={`rounded-2xl border p-2 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.45)] ${frameTone[tone]} ${className}`}
   >
     {children}
   </div>
 );
 
+const callChip =
+  "cursor-pointer w-7 h-7 rounded-full flex items-center justify-center transition-transform duration-200 ease-out hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+
 const EnterMockup = () => (
   <Frame tone="light">
     <OfficeScene
       className="aspect-[4/3] rounded-xl"
-      focus="44% 78%"
-      zoom="auto 500px"
+      focus="44% 90%"
+      zoom="auto 150%"
       occupants={[
         {
           character: "Alex",
           left: "44%",
-          top: "82%",
-          direction: "right",
-          running: true,
+          top: "68%",
           name: "You",
           width: 36,
+          stroll: { distance: 150, duration: 7900, pattern: "b" },
         },
       ]}
     />
@@ -63,13 +68,13 @@ const CallMockup = () => (
   <Frame tone="glass">
     <OfficeScene
       className="aspect-[4/3] rounded-xl"
-      focus="52% 78%"
-      zoom="auto 540px"
+      focus="52% 88%"
+      zoom="auto 160%"
       occupants={[
         {
           character: "Alex",
           left: "38%",
-          top: "80%",
+          top: "68%",
           direction: "right",
           name: "You",
           width: 36,
@@ -77,25 +82,31 @@ const CallMockup = () => (
         {
           character: "Bob",
           left: "62%",
-          top: "80%",
+          top: "68%",
           direction: "left",
           name: "Emma",
           width: 36,
         },
       ]}
     >
-      <div className="absolute left-[62%] top-[80%]">
-        <div className="absolute bottom-[106px] left-0 -translate-x-1/2 flex items-center gap-1.5 p-1.5 rounded-full bg-[#fbfbf9]/95 border border-black/5 shadow-md">
+      <div className="absolute left-[62%] top-[68%]">
+        <div className="absolute bottom-[96px] left-0 -translate-x-1/2 flex items-center gap-1.5 p-1.5 rounded-full bg-[#fbfbf9]/95 border border-black/5 shadow-md">
           <span className="w-7 h-7 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center font-body font-bold text-xs text-[var(--color-braun-text)]">
             E
           </span>
-          <span className="w-7 h-7 rounded-full bg-[var(--color-braun-orange)] flex items-center justify-center text-white shadow-sm">
+          <span
+            className={`${callChip} bg-[var(--color-braun-orange)] text-white shadow-sm`}
+          >
             <Video className="w-[13px] h-[13px]" />
           </span>
-          <span className="w-7 h-7 rounded-full bg-white border border-black/5 flex items-center justify-center text-[var(--color-braun-text)]">
+          <span
+            className={`${callChip} bg-white border border-black/5 text-[var(--color-braun-text)]`}
+          >
             <Mic className="w-[13px] h-[13px]" />
           </span>
-          <span className="w-7 h-7 rounded-full bg-white border border-black/5 flex items-center justify-center text-[var(--color-braun-text)]">
+          <span
+            className={`${callChip} bg-white border border-black/5 text-[var(--color-braun-text)]`}
+          >
             <MessageSquare className="w-[13px] h-[13px]" />
           </span>
         </div>
@@ -108,33 +119,31 @@ const PresenceMockup = () => (
   <Frame tone="dark">
     <OfficeScene
       className="aspect-[4/3] rounded-xl"
-      focus="46% 74%"
-      zoom="auto 460px"
+      focus="46% 86%"
+      zoom="auto 140%"
       occupants={[
-        { character: "Alex", left: "22%", top: "56%", name: "You", width: 32 },
         {
           character: "Bob",
-          left: "64%",
-          top: "50%",
-          direction: "left",
+          left: "66%",
+          top: "14%",
           name: "Emma",
           status: "in_call",
-          width: 32,
+          width: 30,
         },
+        { character: "Alex", left: "22%", top: "47%", name: "You", width: 32 },
         {
           character: "Amelia",
           left: "80%",
-          top: "80%",
-          direction: "down",
+          top: "71%",
           name: "Grace",
           status: "busy",
           width: 32,
         },
         {
           character: "Adam",
-          left: "40%",
-          top: "92%",
-          direction: "up",
+          left: "38%",
+          top: "81%",
+          direction: "left",
           name: "Jack",
           status: "away",
           width: 32,
@@ -144,48 +153,123 @@ const PresenceMockup = () => (
   </Frame>
 );
 
+const directory = [
+  {
+    name: "Design team",
+    here: "5 here",
+    focus: "40% 55%",
+    locked: false,
+    live: true,
+  },
+  {
+    name: "Founders",
+    here: "2 here",
+    focus: "70% 40%",
+    locked: true,
+    live: true,
+  },
+  {
+    name: "Weekend jam",
+    here: "Empty",
+    focus: "24% 78%",
+    locked: false,
+    live: false,
+  },
+];
+
 const RoomsMockup = () => (
-  <div className="flex flex-col gap-3">
-    <div className="rounded-2xl bg-[#fbfbf9] border border-black/10 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.5)] p-3.5 flex items-center gap-3">
-      <OfficeScene className="w-14 h-14 rounded-xl shrink-0" focus="40% 55%" />
-      <span className="min-w-0 flex-1">
-        <span className="block font-body font-semibold text-sm text-[var(--color-braun-text)] truncate">
-          Design team
-        </span>
-        <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
-          <Users className="w-3 h-3" />5 here
-          <span className="w-1 h-1 rounded-full bg-current opacity-40" />
-          Open
-        </span>
+  <div className="rounded-2xl overflow-hidden bg-[#fbfbf9] border border-black/10 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.5)]">
+    <div className="flex items-baseline justify-between px-4 py-3 border-b border-black/8">
+      <span className="font-body text-sm font-semibold text-[var(--color-braun-text)]">
+        Rooms
       </span>
-      <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+      <span className="font-body text-[11px] text-[var(--color-braun-text)] opacity-45">
+        Always on
+      </span>
     </div>
 
-    <div className="rounded-2xl bg-[#fbfbf9] border border-black/10 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.5)] p-3.5 flex items-center gap-3">
-      <OfficeScene className="w-14 h-14 rounded-xl shrink-0" focus="70% 40%" />
-      <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-1.5 font-body font-semibold text-sm text-[var(--color-braun-text)]">
-          <Lock className="w-3 h-3 opacity-50" />
-          Founders
+    {directory.map((room) => (
+      <div
+        key={room.name}
+        className="flex items-center gap-3 px-4 py-3 border-b border-black/8 last:border-b-0"
+      >
+        <OfficeScene
+          className="w-11 h-11 rounded-lg shrink-0"
+          focus={room.focus}
+          zoom="auto 200px"
+        />
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-1.5 font-body font-semibold text-[13px] text-[var(--color-braun-text)]">
+            <span className="truncate">{room.name}</span>
+            {room.locked && <Lock className="w-3 h-3 shrink-0 opacity-45" />}
+          </span>
+          <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
+            <Users className="w-3 h-3" />
+            {room.here}
+          </span>
         </span>
-        <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
-          <Users className="w-3 h-3" />2 here
-          <span className="w-1 h-1 rounded-full bg-current opacity-40" />
-          Password
-        </span>
-      </span>
-      <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-    </div>
-
-    <div className="rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center gap-2">
-      <span className="flex-1 min-w-0 rounded-xl bg-black/20 px-3 py-2 font-body text-[11px] text-white/70 truncate">
-        Invite link copied
-      </span>
-      <span className="w-9 h-9 rounded-xl bg-white text-[var(--color-braun-text)] flex items-center justify-center shrink-0 shadow-sm">
-        <Link2 className="w-4 h-4" />
-      </span>
-    </div>
+        <span
+          className={`w-2 h-2 rounded-full shrink-0 ${
+            room.live ? "bg-emerald-500" : "bg-black/15"
+          }`}
+        />
+      </div>
+    ))}
   </div>
+);
+
+const floorLanes: Occupant[] = [
+  {
+    character: "Bob",
+    name: "Emma",
+    left: "22%",
+    top: "30%",
+    width: 30,
+    stroll: { distance: 170, duration: 7400, pattern: "a" },
+  },
+  {
+    character: "Amelia",
+    name: "Grace",
+    left: "68%",
+    top: "30%",
+    width: 30,
+    stroll: { distance: 120, duration: 9100, delay: -2600, pattern: "c" },
+  },
+  {
+    character: "Alex",
+    name: "Jack",
+    left: "40%",
+    top: "62%",
+    width: 32,
+    stroll: { distance: 210, duration: 10300, delay: -4100, pattern: "b" },
+  },
+  {
+    character: "Adam",
+    name: "Noah",
+    left: "74%",
+    top: "62%",
+    width: 32,
+    stroll: { distance: 90, duration: 6700, delay: -1500, pattern: "a" },
+  },
+  {
+    character: "Bob",
+    name: "Ivy",
+    left: "56%",
+    top: "88%",
+    width: 34,
+    stroll: { distance: 160, duration: 8600, delay: -5200, pattern: "c" },
+  },
+];
+
+const FloorMockup = () => (
+  <Frame tone="glass">
+    <OfficeScene
+      className="aspect-square md:aspect-[4/3] rounded-xl"
+      focus="50% 50%"
+      zoom="auto 150%"
+      occupants={floorLanes}
+    />
+  </Frame>
 );
 
 const moments = [
@@ -198,9 +282,8 @@ const moments = [
       { icon: UserPlus, label: "Guests welcome" },
       { icon: Globe, label: "Any browser" },
     ],
-    surface:
-      "bg-[#f2efe6] text-[var(--color-braun-text)] border border-black/10",
-    chip: "bg-black/[0.05] text-[var(--color-braun-text)]",
+    surface: "bg-white text-[var(--color-braun-text)] border border-black/10",
+    chip: "bg-[#f2efe6] text-[var(--color-braun-text)]",
     muted: "opacity-70",
     mockup: <EnterMockup />,
   },
@@ -246,7 +329,36 @@ const moments = [
     muted: "opacity-75",
     mockup: <RoomsMockup />,
   },
+  {
+    id: "floor",
+    title: "An office, not a meeting.",
+    body: "Nobody sends an invite. People drop in, work near each other, and wander over when something comes up.",
+    chips: [
+      { icon: CalendarOff, label: "No invites" },
+      { icon: Footprints, label: "Wander over" },
+      { icon: Users, label: "The whole floor" },
+    ],
+    chip: "bg-white/18 text-white",
+    muted: "opacity-85",
+    surface: "bg-[#2f4ad0] text-white border border-white/10",
+    wide: true,
+    mockup: <FloorMockup />,
+  },
 ];
+
+const STACK_STEP = 24;
+const STACK_TOP = "max(5.5rem, (100vh - 36rem) / 2)";
+const STACK_CARD = "34rem";
+const STACK_PACE = "6rem";
+const STACK_HOLD = "24vh";
+
+function stackFrame(index: number, count: number): React.CSSProperties {
+  const trailing = (count - 1 - index) * STACK_STEP;
+  return {
+    ["--stack-top" as string]: `calc(${STACK_TOP} + ${index * STACK_STEP}px)`,
+    ["--stack-height" as string]: `calc(${STACK_CARD} + ${STACK_PACE} + ${trailing}px)`,
+  };
+}
 
 export const RoomMoments: React.FC = () => (
   <section
@@ -271,53 +383,56 @@ export const RoomMoments: React.FC = () => (
       {moments.map((moment, index) => (
         <div
           key={moment.id}
-          className="md:sticky md:min-h-screen"
-          style={{
-            top: `calc(max(5.5rem, (100vh - 36rem) / 2) + ${index * 24}px)`,
-          }}
+          className="md:sticky md:top-[var(--stack-top)] md:min-h-[var(--stack-height)]"
+          style={stackFrame(index, moments.length)}
         >
           <article
-            className={`relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-14 md:min-h-[34rem] shadow-[0_30px_70px_-32px_rgba(0,0,0,0.5)] grid gap-8 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16 ${moment.surface}`}
+            className={`relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-14 min-h-[26rem] md:min-h-[34rem] shadow-[0_30px_70px_-32px_rgba(0,0,0,0.5)] ${
+              moment.wide
+                ? "grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-center md:gap-10 lg:gap-14"
+                : "grid gap-8 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16"
+            } ${moment.surface}`}
           >
-            <div className={index % 2 === 1 ? "md:order-2" : ""}>
-              <h3 className="font-body text-[1.6rem] sm:text-3xl md:text-[2.4rem] font-medium tracking-tight leading-[1.1] mb-4 max-w-md">
+            <div
+              className={index % 2 === 1 && !moment.wide ? "md:order-2" : ""}
+            >
+              <h3 className="font-body text-[1.6rem] sm:text-3xl md:text-[2.4rem] font-medium tracking-tight leading-[1.1] max-w-md">
                 {moment.title}
               </h3>
 
-              <p
-                className={`font-body text-base md:text-lg leading-relaxed max-w-md ${moment.muted}`}
-              >
-                {moment.body}
-              </p>
+              {moment.body && (
+                <p
+                  className={`font-body text-base md:text-lg leading-relaxed max-w-md mt-4 ${moment.muted}`}
+                >
+                  {moment.body}
+                </p>
+              )}
 
-              <ul className="flex flex-wrap gap-2 mt-7">
-                {moment.chips.map((chip, chipIndex) => (
-                  <Reveal
-                    key={chip.label}
-                    as="li"
-                    y={10}
-                    delay={120 + chipIndex * 90}
-                  >
-                    <span className={`${chipBase} ${moment.chip}`}>
-                      <chip.icon aria-hidden="true" className="w-4 h-4" />
-                      {chip.label}
-                    </span>
-                  </Reveal>
-                ))}
-              </ul>
+              {moment.chips && (
+                <ul className="flex flex-wrap gap-2 mt-7">
+                  {moment.chips.map((chip) => (
+                    <Reveal key={chip.label} as="li" y={10}>
+                      <span className={`${chipBase} ${moment.chip}`}>
+                        <chip.icon aria-hidden="true" className="w-4 h-4" />
+                        {chip.label}
+                      </span>
+                    </Reveal>
+                  ))}
+                </ul>
+              )}
             </div>
 
-            <Reveal
-              y={20}
-              delay={80}
-              className={index % 2 === 1 ? "md:order-1" : ""}
-            >
+            <Reveal y={20} className={index % 2 === 1 ? "md:order-1" : ""}>
               {moment.mockup}
             </Reveal>
           </article>
         </div>
       ))}
-      <div aria-hidden="true" className="hidden md:block h-[75vh]" />
+      <div
+        aria-hidden="true"
+        className="hidden md:block"
+        style={{ height: STACK_HOLD }}
+      />
     </div>
   </section>
 );

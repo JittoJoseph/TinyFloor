@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Create a Room',
   description:
-    'Open a virtual office room on SpatialMeet. Name it, keep it public or lock it with a password, then share one link with your team.',
+    'Open a virtual office room on SpatialMeet. Name it, add a password if you want one, then share one link with your team.',
 };
 
 export default function CreateRoomLayout({

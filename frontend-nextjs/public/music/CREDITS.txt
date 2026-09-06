@@ -1,0 +1,8 @@
+Room jukebox tracks
+===================
+All three are CC0 (Creative Commons Zero / public domain). No attribution is
+required; credit is given here because the authors asked nicely.
+
+heavenly-loop.ogg     Heavenly Loop         by isaiah658  https://opengameart.org/content/heavenly-loop
+ambient-relaxing.ogg  Ambient Relaxing Loop by isaiah658  https://opengameart.org/content/ambient-relaxing-loop
+slow-stride.ogg       Slow Stride Loop      by isaiah658  https://opengameart.org/content/slow-stride

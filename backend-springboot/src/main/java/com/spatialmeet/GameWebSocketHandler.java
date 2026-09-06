@@ -7,6 +7,7 @@ import com.spatialmeet.service.RoomService;
 import com.spatialmeet.service.UserService;
 import com.spatialmeet.service.DiscordWebhookService;
 import com.spatialmeet.service.GeoLocationService;
+import com.spatialmeet.service.WhiteboardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +37,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final UserService userService;
     private final DiscordWebhookService discordWebhookService;
     private final GeoLocationService geoLocationService;
+    private final WhiteboardService whiteboardService;
     private final Map<String, Map<String, Player>> roomPlayers = new ConcurrentHashMap<>();
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
@@ -44,6 +47,20 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     
     // Movement batching optimization
     private final Map<String, Map<String, Movement>> pendingMovements = new ConcurrentHashMap<>();
+
+    /** What the room's jukebox is playing, so a late arrival hears the same bar. */
+    private final Map<String, MusicState> roomMusic = new ConcurrentHashMap<>();
+
+    private static class MusicState {
+        int track = 0;
+        boolean playing = false;
+        long startedAt = System.currentTimeMillis();
+        double offset = 0;
+
+        Map<String, Object> payload() {
+            return Map.of("track", track, "playing", playing, "startedAt", startedAt, "offset", offset);
+        }
+    }
     
     private record Movement(String id, int tileX, int tileY) {}
     
@@ -53,12 +70,13 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private static final long CLEANUP_INTERVAL_MS = 30000; // Clean up every 30 seconds
     private static final long INACTIVE_TIMEOUT_MS = 90000; // 90 seconds timeout
 
-    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService, GeoLocationService geoLocationService, ObjectMapper objectMapper) {
+    public GameWebSocketHandler(RoomService roomService, UserService userService, DiscordWebhookService discordWebhookService, GeoLocationService geoLocationService, WhiteboardService whiteboardService, ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
         this.roomService = roomService;
         this.userService = userService;
         this.discordWebhookService = discordWebhookService;
         this.geoLocationService = geoLocationService;
+        this.whiteboardService = whiteboardService;
         startMovementBroadcaster();
         startCleanupTask();
     }
@@ -153,6 +171,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "call_signal":
                 case "call_end": relayToPeer(session, msg); break;
                 case "chat": handleChat(session, msg); break;
+                case "board_sync": handleBoardSync(session); break;
+                case "board_draw": handleBoardDraw(session, msg); break;
+                case "board_clear": handleBoardClear(session); break;
+                case "music_sync": handleMusicSync(session); break;
+                case "music_set": handleMusicSet(session, msg); break;
                 case "status_change": handleStatusChange(session, msg); break;
                 case "ping":
                     session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("pong", Map.of()))));
@@ -372,6 +395,75 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private void rejectMove(WebSocketSession session, Player player) throws IOException {
         Map<String, Object> rejectionData = Map.of("tileX", player.getTileX(), "tileY", player.getTileY());
         session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("movement-rejected", rejectionData))));
+    }
+
+    private void handleBoardSync(WebSocketSession session) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+        sendTo(session, new Message("board_state", Map.of("strokes", whiteboardService.strokesFor(roomId))));
+    }
+
+    private void handleBoardDraw(WebSocketSession session, Message msg) throws IOException {
+        Player sender = resolvePlayer(session);
+        String roomId = sessionToRoom.get(session.getId());
+        if (sender == null || roomId == null) return;
+
+        Map<String, Object> data = msg.getData();
+        if (!(data.get("id") instanceof String strokeId)) return;
+        if (!(data.get("points") instanceof List<?> raw) || raw.isEmpty()) return;
+
+        List<Double> points = new ArrayList<>(raw.size());
+        for (Object value : raw) {
+            if (value instanceof Number number) points.add(number.doubleValue());
+        }
+        if (points.size() < 2 || points.size() % 2 != 0) return;
+
+        String color = data.get("color") instanceof String c ? c : "#2c2c2c";
+        double size = data.get("size") instanceof Number n ? n.doubleValue() : 3;
+        boolean erase = Boolean.TRUE.equals(data.get("erase"));
+
+        whiteboardService.append(roomId, strokeId, color, size, erase, points);
+
+        broadcastToRoom(roomId, new Message("board_draw", Map.of(
+                "id", strokeId,
+                "color", color,
+                "size", size,
+                "erase", erase,
+                "points", points,
+                "by", sender.getId()
+        )), sender.getId());
+    }
+
+    private void handleBoardClear(WebSocketSession session) throws IOException {
+        Player sender = resolvePlayer(session);
+        String roomId = sessionToRoom.get(session.getId());
+        if (sender == null || roomId == null) return;
+
+        whiteboardService.clear(roomId);
+        broadcastToRoom(roomId, new Message("board_clear", Map.of("by", sender.getId())), null);
+    }
+
+    private void handleMusicSync(WebSocketSession session) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null) return;
+        sendTo(session, new Message("music_state", roomMusic.computeIfAbsent(roomId, id -> new MusicState()).payload()));
+    }
+
+    private void handleMusicSet(WebSocketSession session, Message msg) throws IOException {
+        String roomId = sessionToRoom.get(session.getId());
+        if (roomId == null || resolvePlayer(session) == null) return;
+
+        MusicState state = roomMusic.computeIfAbsent(roomId, id -> new MusicState());
+        Map<String, Object> data = msg.getData();
+
+        synchronized (state) {
+            if (data.get("track") instanceof Number track) state.track = Math.max(0, track.intValue());
+            if (data.get("playing") instanceof Boolean playing) state.playing = playing;
+            state.offset = data.get("offset") instanceof Number offset ? Math.max(0, offset.doubleValue()) : 0;
+            state.startedAt = System.currentTimeMillis();
+        }
+
+        broadcastToRoom(roomId, new Message("music_state", state.payload()), null);
     }
 
     private void relayToPeer(WebSocketSession session, Message msg) throws IOException {

@@ -172,7 +172,6 @@ class ApiClient {
       id: string;
       name: string;
       ownerId?: string;
-      isPublic: boolean;
       hasPassword: boolean;
       maxPlayers: number;
       playerCount: number;
@@ -185,7 +184,6 @@ class ApiClient {
       id: string;
       name: string;
       ownerId?: string;
-      isPublic: boolean;
       hasPassword: boolean;
       maxPlayers: number;
       playerCount: number;
@@ -214,7 +212,6 @@ class ApiClient {
       users: string[];
       playerCount: number;
       maxPlayers: number;
-      isPublic: boolean;
       hasPassword: boolean;
       status: string;
       lastActivityAt?: string;
@@ -232,7 +229,6 @@ class ApiClient {
       users: string[];
       playerCount: number;
       maxPlayers: number;
-      isPublic: boolean;
       hasPassword: boolean;
       status: string;
       lastActivityAt?: string;
@@ -247,7 +243,6 @@ class ApiClient {
     users: string[];
     playerCount: number;
     maxPlayers: number;
-    isPublic: boolean;
     hasPassword: boolean;
     settings?: {
       enableVideo: boolean;
@@ -264,7 +259,6 @@ class ApiClient {
     users: string[];
     playerCount: number;
     maxPlayers: number;
-    isPublic: boolean;
     hasPassword: boolean;
     settings?: {
       enableVideo: boolean;
@@ -280,7 +274,6 @@ class ApiClient {
       id: string;
       name: string;
       playerCount: number;
-      isPublic: boolean;
       hasPassword: boolean;
       maxPlayers: number;
       createdAt: string;
@@ -297,7 +290,6 @@ class ApiClient {
       id: string;
       name: string;
       playerCount: number;
-      isPublic: boolean;
       hasPassword: boolean;
       maxPlayers: number;
       createdAt: string;
@@ -310,10 +302,9 @@ class ApiClient {
 
   async createRoom(data: {
     name: string;
-    isPublic?: boolean;
     password?: string;
     maxPlayers?: number;
-  }): Promise<{ id: string; name: string; shareCode?: string }> {
+  }): Promise<{ id: string; name: string }> {
     return this.fetch("/api/rooms", {
       method: "POST",
       body: JSON.stringify(data),
@@ -347,7 +338,6 @@ class ApiClient {
     roomId: string,
     data: {
       name: string;
-      isPublic?: boolean;
       password?: string;
       maxPlayers?: number;
     },

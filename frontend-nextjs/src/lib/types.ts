@@ -78,14 +78,12 @@ export interface Room {
   id: string;
   name: string;
   ownerId?: string;
-  isPublic: boolean;
   hasPassword: boolean;
   maxPlayers: number;
   playerCount: number;
   createdAt: string;
   lastActivityAt: string;
   status: RoomStatus;
-  shareCode?: string;
   users?: string[];
 }
 
@@ -93,7 +91,6 @@ export type RoomStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED" | "DELETED";
 
 export interface CreateRoomRequest {
   name: string;
-  isPublic?: boolean;
   password?: string;
   maxPlayers?: number;
 }

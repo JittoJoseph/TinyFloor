@@ -155,7 +155,7 @@ const RoomsMockup = () => (
         <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
           <Users className="w-3 h-3" />5 here
           <span className="w-1 h-1 rounded-full bg-current opacity-40" />
-          Public
+          Open
         </span>
       </span>
       <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
@@ -171,7 +171,7 @@ const RoomsMockup = () => (
         <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
           <Users className="w-3 h-3" />2 here
           <span className="w-1 h-1 rounded-full bg-current opacity-40" />
-          Private
+          Password
         </span>
       </span>
       <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
@@ -235,9 +235,9 @@ const moments = [
   {
     id: "rooms",
     title: "The room is still there tomorrow.",
-    body: "Rooms do not end when a meeting does. Keep one open for your team, make it public or lock it behind a password, and send the link once.",
+    body: "Rooms do not end when a meeting does. Keep one open for your team, put a password on it if you need to, and send the link once.",
     chips: [
-      { icon: Globe, label: "Public or private" },
+      { icon: Globe, label: "Listed for everyone" },
       { icon: Link2, label: "Share by link" },
       { icon: Sparkles, label: "Free" },
     ],

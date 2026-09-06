@@ -36,7 +36,7 @@ public class RoomController {
     public ResponseEntity<List<RoomResponse>> getRooms(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
-        List<RoomResponse> rooms = roomService.getPublicRooms(page, size);
+        List<RoomResponse> rooms = roomService.listRooms(page, size);
         return ResponseEntity.ok(rooms);
     }
 

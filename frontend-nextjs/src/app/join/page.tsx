@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { AlertCircle, ArrowRight, Lock, Users } from "lucide-react";
+import { AlertCircle, ArrowRight } from "lucide-react";
 import {
   EntryShell,
   primaryButtonClass,
@@ -12,6 +12,7 @@ import { EntryPreview } from "@/components/entry/EntryPreview";
 import { IdentityFields, ErrorNote } from "@/components/entry/IdentityFields";
 import { useIdentity, roomHref } from "@/components/entry/useIdentity";
 import { apiClient } from "@/lib/api";
+import { SITE_URL } from "@/lib/site";
 
 interface RoomInfo {
   id: string;
@@ -19,7 +20,6 @@ interface RoomInfo {
   playerCount: number;
   maxPlayers: number;
   hasPassword: boolean;
-  isPublic: boolean;
 }
 
 function JoinContent() {
@@ -56,7 +56,6 @@ function JoinContent() {
           playerCount: found.playerCount || 0,
           maxPlayers: found.maxPlayers || 20,
           hasPassword: found.hasPassword || false,
-          isPublic: found.isPublic ?? true,
         });
       } catch {
         if (!cancelled) setError("This room is not available any more.");
@@ -152,32 +151,22 @@ function JoinContent() {
     <EntryShell
       preview={
         <EntryPreview
+          inviteLink={`${SITE_URL}/join?roomId=${room.id}`}
           occupants={[
             {
               character: identity.character,
               left: "50%",
-              top: "80%",
+              top: "79%",
               name: identity.name.trim() || "You",
               width: 44,
               running: identity.arriving,
             },
           ]}
-          caption={
-            <>
-              <Users className="w-3 h-3 opacity-60" />
-              {room.playerCount === 0
-                ? "You will be first in"
-                : `${room.playerCount} already inside`}
-            </>
-          }
         />
       }
     >
       <div className="entry-rise">
-        <h1 className="flex items-start gap-2 font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-5 break-words">
-          {!room.isPublic && (
-            <Lock className="w-4 h-4 mt-2 shrink-0 opacity-40" />
-          )}
+        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-5 break-words">
           {room.name}
         </h1>
 
@@ -199,7 +188,7 @@ function JoinContent() {
           />
 
           {error && (
-            <div className="mt-5">
+            <div className="mt-4">
               <ErrorNote>{error}</ErrorNote>
             </div>
           )}

@@ -33,6 +33,7 @@ export const OfficeScene: React.FC<{
       backgroundSize: zoom,
       backgroundPosition: focus,
       imageRendering: "pixelated",
+      containerType: "size",
     }}
   >
     {occupants.map((person, index) => (

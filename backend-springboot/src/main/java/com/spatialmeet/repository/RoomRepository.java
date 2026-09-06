@@ -15,11 +15,9 @@ import java.util.Optional;
 @Repository
 public interface RoomRepository extends MongoRepository<Room, String> {
     
-    List<Room> findByIsPublicTrueAndStatusOrderByLastActivityAtDesc(RoomStatus status);
+    List<Room> findByStatusOrderByLastActivityAtDesc(RoomStatus status);
 
-    List<Room> findByIsPublicTrueAndStatusInOrderByLastActivityAtDesc(List<RoomStatus> statuses);
-
-    Page<Room> findByIsPublicTrueAndStatusIn(List<RoomStatus> statuses, Pageable pageable);
+    Page<Room> findByStatusIn(List<RoomStatus> statuses, Pageable pageable);
     
     // Find rooms by owner
     List<Room> findByOwnerId(String ownerId);
@@ -31,15 +29,8 @@ public interface RoomRepository extends MongoRepository<Room, String> {
     List<Room> findByLastActivityAtBeforeAndStatus(Instant threshold, RoomStatus status);
     
     // Search rooms by name
-    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'isPublic': true, 'status': { $in: ['ACTIVE', 'INACTIVE', 'ARCHIVED'] } }")
+    @Query("{ 'name': { $regex: ?0, $options: 'i' }, 'status': { $in: ['ACTIVE', 'INACTIVE', 'ARCHIVED'] } }")
     List<Room> searchByName(String namePattern);
-    
-    // Count active public rooms
-    long countByIsPublicTrueAndStatus(RoomStatus status);
-    
-    // Find rooms with players
-    @Query("{ 'users.0': { $exists: true }, 'isPublic': true, 'status': 'ACTIVE' }")
-    List<Room> findActiveRoomsWithPlayers();
     
     // Check if room exists and is accessible
     boolean existsByIdAndStatus(String id, RoomStatus status);

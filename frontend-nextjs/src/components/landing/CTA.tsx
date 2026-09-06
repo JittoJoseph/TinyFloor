@@ -78,7 +78,7 @@ export const CTA: React.FC = () => {
                 <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
-                Name it, keep it public or lock it with a password, then send
+                Name it, add a password if you want one, then send
                 one link. It stays open for as long as you want.
               </span>
               <span className="mt-auto flex items-center gap-2 rounded-xl border border-black/10 bg-white p-2">

@@ -24,7 +24,6 @@ interface Room {
   users?: string[];
   playerCount: number;
   maxPlayers?: number;
-  isPublic: boolean;
   hasPassword: boolean;
   status: string;
   lastActivityAt?: string;

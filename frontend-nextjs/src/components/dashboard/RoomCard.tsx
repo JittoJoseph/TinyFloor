@@ -16,12 +16,10 @@ export interface Room {
   name: string;
   playerCount: number;
   maxPlayers: number;
-  isPublic: boolean;
   hasPassword: boolean;
   createdAt: string;
   lastActivityAt: string;
   status: string;
-  shareCode?: string;
 }
 
 type RoomStatus = "active" | "idle" | "offline";

@@ -1,7 +1,7 @@
 export const TILE_SIZE = 32;
 export const MOVEMENT_SPEED = 120;
-export const MAP_WIDTH_TILES = 55;
-export const MAP_HEIGHT_TILES = 25;
+export const MAP_WIDTH_TILES = 48;
+export const MAP_HEIGHT_TILES = 32;
 
 export function pixelToTile(
   pixelX: number,

@@ -12,6 +12,22 @@ export type Direction =
   | "down-right"
   | "down-left";
 
+export type CardinalDirection = "right" | "up" | "left" | "down";
+
+/**
+ * Frame layout of the generated character atlases: 24 idle, 24 run, then one
+ * seated pose per direction. Every frame is 32x32 so a single spritesheet and a
+ * single origin cover standing and sitting alike.
+ */
+const IDLE_BASE = 0;
+const RUN_BASE = 24;
+const SIT_BASE = 48;
+const PER_DIRECTION = 6;
+const DIRECTION_ORDER: CardinalDirection[] = ["right", "up", "left", "down"];
+const SIT_ORDER: CardinalDirection[] = ["down", "left", "right", "up"];
+
+export const FRAME_SIZE = 32;
+
 export function directionFromVector(
   x: number,
   y: number,
@@ -21,6 +37,20 @@ export function directionFromVector(
   const horizontal = Math.abs(x) > 0.001 ? (x < 0 ? "left" : "right") : "";
   if (vertical && horizontal) return `${vertical}-${horizontal}` as Direction;
   return (vertical || horizontal || fallback) as Direction;
+}
+
+export function toCardinal(direction: Direction): CardinalDirection {
+  const mapping: Record<Direction, CardinalDirection> = {
+    right: "right",
+    "up-right": "right",
+    up: "up",
+    "up-left": "up",
+    left: "left",
+    "down-left": "left",
+    down: "down",
+    "down-right": "down",
+  };
+  return mapping[direction] ?? "down";
 }
 
 export class AnimationManager {
@@ -39,47 +69,28 @@ export class AnimationManager {
 
   preload() {
     AnimationManager.CHARACTERS.forEach((char) => {
-      this.scene.load.spritesheet(
-        `${char}_idle`,
-        `/characters/${char}_idle_anim_16x16.png`,
-        {
-          frameWidth: 16,
-          frameHeight: 32,
-        },
-      );
-      this.scene.load.spritesheet(
-        `${char}_run`,
-        `/characters/${char}_run_16x16.png`,
-        {
-          frameWidth: 16,
-          frameHeight: 32,
-        },
-      );
+      this.scene.load.spritesheet(char, `/characters/${char}.png`, {
+        frameWidth: FRAME_SIZE,
+        frameHeight: FRAME_SIZE,
+      });
     });
   }
 
   create() {
     AnimationManager.CHARACTERS.forEach((char) => {
-      this.createAnimSet(char, "idle");
-      this.createAnimSet(char, "run");
+      this.createAnimSet(char, "idle", IDLE_BASE);
+      this.createAnimSet(char, "run", RUN_BASE);
     });
   }
 
-  private createAnimSet(char: CharacterName, state: AnimationState) {
-    const keyBase = `${char}_${state}`;
-    const directions = [
-      { name: "right", start: 0 },
-      { name: "up", start: 6 },
-      { name: "left", start: 12 },
-      { name: "down", start: 18 },
-    ];
-
-    directions.forEach(({ name, start }) => {
+  private createAnimSet(char: CharacterName, state: AnimationState, base: number) {
+    DIRECTION_ORDER.forEach((name, index) => {
+      const start = base + index * PER_DIRECTION;
       this.scene.anims.create({
-        key: `${keyBase}_${name}`,
-        frames: this.scene.anims.generateFrameNumbers(keyBase, {
+        key: `${char}_${state}_${name}`,
+        frames: this.scene.anims.generateFrameNumbers(char, {
           start,
-          end: start + 5,
+          end: start + PER_DIRECTION - 1,
         }),
         frameRate: AnimationManager.FRAME_RATE,
         repeat: -1,
@@ -92,22 +103,11 @@ export class AnimationManager {
     state: AnimationState,
     direction: Direction,
   ): string {
-    return `${char}_${state}_${this.getAnimationDirection(direction)}`;
+    return `${char}_${state}_${toCardinal(direction)}`;
   }
 
-  private getAnimationDirection(
-    direction: Direction,
-  ): "right" | "up" | "left" | "down" {
-    const mapping: Record<string, "right" | "up" | "left" | "down"> = {
-      right: "right",
-      "up-right": "right",
-      up: "up",
-      "up-left": "up",
-      left: "left",
-      "down-left": "left",
-      down: "down",
-      "down-right": "down",
-    };
-    return mapping[direction] || "down";
+  /** Sitting is a single pose, so it is a frame index rather than an animation. */
+  getSitFrame(direction: CardinalDirection): number {
+    return SIT_BASE + SIT_ORDER.indexOf(direction);
   }
 }

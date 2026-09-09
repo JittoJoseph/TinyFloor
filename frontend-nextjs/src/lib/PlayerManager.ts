@@ -5,6 +5,7 @@ import {
   directionFromVector,
 } from "./AnimationManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
+import { depthForY } from "./MapManager";
 import { TILE_SIZE, MOVEMENT_SPEED, tileToPixel } from "./types";
 import { GUIDE_ID } from "./tutorial";
 import type { PlayerStatus } from "./types";
@@ -30,6 +31,7 @@ interface NameTag {
 const SNAP_THRESHOLD = TILE_SIZE * 6;
 const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
+const TAG_DEPTH = 100000;
 const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
 
 const STATUS_COLORS: Record<string, number> = {
@@ -70,7 +72,7 @@ export class PlayerManager {
     y: number,
     character: string,
   ): Phaser.Physics.Arcade.Sprite {
-    const player = this.scene.physics.add.sprite(x, y, `${character}_idle`);
+    const player = this.scene.physics.add.sprite(x, y, character);
     player.setName("localPlayer");
     player.setScale(2.0);
     player.setOrigin(0.5, 1.0);
@@ -91,7 +93,7 @@ export class PlayerManager {
     isLocal: boolean,
   ): NameTag {
     const container = this.scene.add.container(x, y);
-    container.setDepth(25000);
+    container.setDepth(TAG_DEPTH);
 
     const font = { fontSize: "13px", fontFamily: "VT323, monospace" };
     const measure = this.scene.add.text(0, 0, name, font);
@@ -154,7 +156,7 @@ export class PlayerManager {
       : "Adam";
 
     const container = this.scene.add.container(pos.x, pos.y);
-    const sprite = this.scene.add.sprite(0, 0, `${safeSpriteKey}_idle`);
+    const sprite = this.scene.add.sprite(0, 0, safeSpriteKey);
     sprite.setOrigin(0.5, 1.0);
     sprite.setScale(2.0);
     sprite.setData("spriteName", safeSpriteKey);
@@ -162,7 +164,7 @@ export class PlayerManager {
       this.animationManager.getAnimationKey(safeSpriteKey, "idle", "down"),
     );
     container.add(sprite);
-    container.setDepth(10000);
+    container.setDepth(depthForY(pos.y));
 
     const nameTag = this.createNameTag(name, 0, TAG_OFFSET_Y, false);
     container.add(nameTag.container);
@@ -288,6 +290,7 @@ export class PlayerManager {
         const dx = pos.x - container.x;
         const dy = pos.y - container.y;
         container.setPosition(pos.x, pos.y);
+        container.setDepth(depthForY(pos.y));
         state.direction = directionFromVector(dx, dy, state.direction);
         state.isMoving = state.path.length > 0 || dx !== 0 || dy !== 0;
       } else {

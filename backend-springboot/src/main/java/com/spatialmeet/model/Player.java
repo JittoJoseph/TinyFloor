@@ -3,8 +3,8 @@ package com.spatialmeet.model;
 public class Player {
     // Tile-based movement constants
     public static final int TILE_SIZE = 32;
-    public static final int MAP_WIDTH_TILES = 55;   // 1760 / 32
-    public static final int MAP_HEIGHT_TILES = 25;  // 800 / 32
+    public static final int MAP_WIDTH_TILES = 48;   // 1536 / 32
+    public static final int MAP_HEIGHT_TILES = 32;  // 1024 / 32
     
     private String id;
     private String name;

@@ -40,6 +40,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         },
       };
       game.current = new Phaser.Game(config);
+      if (process.env.NODE_ENV === "development") {
+        (window as unknown as Record<string, unknown>).__game = game.current;
+      }
     }
 
     return () => {

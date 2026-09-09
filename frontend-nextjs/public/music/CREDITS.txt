@@ -1,8 +1,16 @@
 Room jukebox tracks
 ===================
-All three are CC0 (Creative Commons Zero / public domain). No attribution is
-required; credit is given here because the authors asked nicely.
+
+Public domain (CC0). No attribution required; credited here anyway.
 
 heavenly-loop.ogg     Heavenly Loop         by isaiah658  https://opengameart.org/content/heavenly-loop
 ambient-relaxing.ogg  Ambient Relaxing Loop by isaiah658  https://opengameart.org/content/ambient-relaxing-loop
 slow-stride.ogg       Slow Stride Loop      by isaiah658  https://opengameart.org/content/slow-stride
+
+Attribution required (CC BY 4.0). The credit below has to stay visible
+wherever the track is used.
+
+monkeys-spinning-monkeys.ogg
+    "Monkeys Spinning Monkeys" Kevin MacLeod (incompetech.com)
+    Licensed under Creative Commons: By Attribution 4.0
+    http://creativecommons.org/licenses/by/4.0/

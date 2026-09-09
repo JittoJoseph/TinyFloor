@@ -5,7 +5,8 @@ import { ProximityManager } from "../lib/ProximityManager";
 import { callManager } from "../lib/CallManager";
 import { AnimationManager } from "../lib/AnimationManager";
 import { MovementManager } from "../lib/MovementManager";
-import { MapManager } from "../lib/MapManager";
+import { MapManager, depthForY } from "../lib/MapManager";
+import { SeatManager } from "../lib/SeatManager";
 import { MessageHandler } from "../lib/MessageHandler";
 import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
 import { TutorialGuide } from "../lib/TutorialGuide";
@@ -33,6 +34,7 @@ class GameScene extends Phaser.Scene {
   private tutorialGuide?: TutorialGuide;
   private whiteboardObject?: WhiteboardObject;
   private jukeboxObject?: JukeboxObject;
+  private seatManager?: SeatManager;
   private playerId: string;
   private windowListeners: Array<[string, EventListener]> = [];
 
@@ -107,11 +109,41 @@ class GameScene extends Phaser.Scene {
       this.virtualJoystickManager,
     );
 
+    this.seatManager = new SeatManager(
+      this,
+      this.player,
+      this.animationManager,
+      this.mapManager.getChairs(),
+    );
+    const approach = (x: number, y: number) =>
+      void this.movementManager.approach(x, y);
+    this.seatManager.attach(
+      this.wsManager,
+      (seated) => this.movementManager.setFrozen(seated),
+      approach,
+    );
+
     callManager.attach(this.wsManager, this.playerId);
     whiteboard.attach(this.wsManager);
-    this.whiteboardObject = new WhiteboardObject(this, this.player);
+    const board = this.mapManager.getAnchors("Whiteboard")[0];
+    if (board) {
+      this.whiteboardObject = new WhiteboardObject(
+        this,
+        this.player,
+        { x: board.x, y: board.y + 10, width: board.width, height: 52 },
+        approach,
+      );
+    }
     jukebox.attach(this.wsManager);
-    this.jukeboxObject = new JukeboxObject(this, this.player);
+    const speaker = this.mapManager.getAnchors("Speaker")[0];
+    if (speaker) {
+      this.jukeboxObject = new JukeboxObject(
+        this,
+        this.player,
+        { x: speaker.x, y: speaker.y },
+        approach,
+      );
+    }
     this.proximityManager = new ProximityManager(
       this,
       this.playerManager,
@@ -178,6 +210,10 @@ class GameScene extends Phaser.Scene {
     if (!this.player) return;
 
     this.movementManager.update(delta);
+    if (!this.seatManager?.isSeated()) {
+      this.player.setDepth(depthForY(this.player.y));
+    }
+    this.seatManager?.update();
     this.playerManager.update(delta);
     this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
     this.proximityManager.update();
@@ -200,6 +236,7 @@ class GameScene extends Phaser.Scene {
     this.whiteboardObject?.destroy();
     jukebox.detach();
     this.jukeboxObject?.destroy();
+    this.seatManager?.destroy();
     this.virtualJoystickManager?.destroy();
     this.tutorialGuide?.destroy();
   }

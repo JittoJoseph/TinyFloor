@@ -44,3 +44,10 @@ coverage/
 # Build outputs
 dist/
 build/
+# Reference material, not part of the build
+/example
+/external
+
+# Python caches
+__pycache__/
+*.pyc

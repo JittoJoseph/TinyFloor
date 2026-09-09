@@ -2,12 +2,44 @@ import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
 import { TILE_SIZE } from "./types";
 
+export interface MapAnchor {
+  name: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface ChairSpec {
+  x: number;
+  y: number;
+  direction: "up" | "down" | "left" | "right";
+}
+
+interface TilesetRef {
+  key: string;
+  firstgid: number;
+  lastgid: number;
+}
+
+/**
+ * Objects are drawn at a depth equal to their base y, so whether a desk covers
+ * you or you cover it falls out of where you are standing rather than out of
+ * which layer it happens to live on.
+ */
+export function depthForY(y: number): number {
+  return y;
+}
+
 export class MapManager {
   private scene: Phaser.Scene;
   private map!: Phaser.Tilemaps.Tilemap;
   private solids!: Phaser.Physics.Arcade.StaticGroup;
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
+  private tilesetRefs: TilesetRef[] = [];
+  private chairSpecs: ChairSpec[] = [];
+  private anchors: Record<string, MapAnchor[]> = {};
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -23,6 +55,20 @@ export class MapManager {
       "ModernOffice",
       "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
     );
+    this.scene.load.spritesheet(
+      "RoomBuilderTiles",
+      "/tilesets/textures/Room_Builder_Office_32x32.png",
+      { frameWidth: TILE_SIZE, frameHeight: TILE_SIZE },
+    );
+    this.scene.load.spritesheet(
+      "ModernOfficeTiles",
+      "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
+      { frameWidth: TILE_SIZE, frameHeight: TILE_SIZE },
+    );
+    this.scene.load.spritesheet("chairs", "/tilesets/items/chair.png", {
+      frameWidth: TILE_SIZE,
+      frameHeight: TILE_SIZE * 2,
+    });
   }
 
   create() {
@@ -35,21 +81,91 @@ export class MapManager {
       "Modern_Office_Black_Shadow_32x32",
       "ModernOffice",
     );
-
     if (!rb || !mo) throw new Error("Tilesets not found");
 
-    const tilesets = [rb, mo];
-    this.map.createLayer("Ground", tilesets, 0, 0)!.setDepth(0);
-    this.map.createLayer("Walls", tilesets, 0, 0)!.setDepth(10);
-    this.map.createLayer("DesksBack", tilesets, 0, 0)!.setDepth(20);
-    this.map.createLayer("DeskItems_Back", tilesets, 0, 0)!.setDepth(25);
-    this.map.createLayer("Dividers", [mo], 0, 0)!.setDepth(1000);
-    this.map.createLayer("DesksFront", [mo], 0, 0)!.setDepth(1010);
-    this.map.createLayer("DeskItems_Front", [mo], 0, 0)!.setDepth(1020);
-    this.map.createLayer("OverPlayer_Layer", tilesets, 0, 0)!.setDepth(20000);
+    this.tilesetRefs = [
+      { key: "RoomBuilderTiles", firstgid: rb.firstgid, lastgid: rb.firstgid + rb.total - 1 },
+      { key: "ModernOfficeTiles", firstgid: mo.firstgid, lastgid: mo.firstgid + mo.total - 1 },
+      { key: "chairs", firstgid: 1073, lastgid: 1073 + 22 },
+    ];
 
+    this.map.createLayer("Ground", [rb, mo], 0, 0)!.setDepth(0);
+    this.map.createLayer("Walls", [rb, mo], 0, 0)!.setDepth(1);
+
+    this.createFurniture();
+    this.readChairs();
+    this.readAnchors();
     this.createColliders();
     this.nav = new NavGrid(this.solidRects);
+  }
+
+  private resolve(gid: number): { key: string; frame: number } | null {
+    const id = gid & 0x1fffffff;
+    for (const ref of this.tilesetRefs) {
+      if (id >= ref.firstgid && id <= ref.lastgid) {
+        return { key: ref.key, frame: id - ref.firstgid };
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Tiled anchors tile objects on their bottom edge, which is also where we want
+   * their depth measured from.
+   */
+  private createFurniture() {
+    const objects = this.map.getObjectLayer("Furniture")?.objects ?? [];
+    objects.forEach((obj) => {
+      if (!obj.gid) return;
+      const tile = this.resolve(obj.gid);
+      if (!tile) return;
+      const x = obj.x ?? 0;
+      const y = obj.y ?? 0;
+      this.scene.add
+        .image(x, y, tile.key, tile.frame)
+        .setOrigin(0, 1)
+        .setDepth(depthForY(y));
+    });
+  }
+
+  private readChairs() {
+    const objects = this.map.getObjectLayer("Chair")?.objects ?? [];
+    objects.forEach((obj) => {
+      if (!obj.gid) return;
+      const tile = this.resolve(obj.gid);
+      if (!tile) return;
+      const x = obj.x ?? 0;
+      const y = obj.y ?? 0;
+      const direction =
+        (obj.properties as Array<{ name: string; value: string }> | undefined)?.find(
+          (p) => p.name === "direction",
+        )?.value ?? "down";
+      // a chair the far side of a desk shares that desk row's depth, so nudge it
+      // behind or the seat draws on top of the desk it is tucked under
+      this.scene.add
+        .image(x, y, tile.key, tile.frame)
+        .setOrigin(0, 1)
+        .setDepth(depthForY(y) + (direction === "down" ? -1 : 0));
+      this.chairSpecs.push({
+        x: x + TILE_SIZE / 2,
+        y: y - TILE_SIZE / 2,
+        direction: direction as ChairSpec["direction"],
+      });
+    });
+  }
+
+  private readAnchors() {
+    ["Computer", "Whiteboard", "Speaker", "Zones"].forEach((layer) => {
+      this.anchors[layer] = (
+        this.map.getObjectLayer(layer)?.objects ?? []
+      ).map((obj) => ({
+        name: obj.name || "",
+        x: obj.x ?? 0,
+        y: obj.y ?? 0,
+        width: obj.width || TILE_SIZE,
+        height: obj.height || TILE_SIZE,
+      }));
+    });
   }
 
   private createColliders() {
@@ -80,12 +196,29 @@ export class MapManager {
     });
   }
 
+  /**
+   * The local player is moved by hand against `checkCollisionAt`, so the arcade
+   * body is here only for overlap tests. Letting arcade move it as well makes
+   * the two fight and snaps the sprite back mid walk.
+   */
   setupColliders(player: Phaser.Physics.Arcade.Sprite) {
     const body = player.body as Phaser.Physics.Arcade.Body;
-    body.setSize(10, 8).setOffset(3, 56);
-    body.setCollideWorldBounds(true);
-    this.scene.physics.add.collider(player, this.solids);
-    player.setDepth(10000);
+    body.setSize(14, 10);
+    body.setOffset(9, 21);
+    body.setCollideWorldBounds(false);
+    body.moves = false;
+  }
+
+  getChairs(): ChairSpec[] {
+    return this.chairSpecs;
+  }
+
+  getAnchors(layer: string): MapAnchor[] {
+    return this.anchors[layer] ?? [];
+  }
+
+  getZone(name: string): MapAnchor | undefined {
+    return this.anchors.Zones?.find((z) => z.name === name);
   }
 
   getNavGrid(): NavGrid {
@@ -111,7 +244,7 @@ export class MapManager {
     }
 
     const candidates = preferred.length ? preferred : fallback;
-    if (!candidates.length) return { tileX: 5, tileY: 5 };
+    if (!candidates.length) return { tileX: 22, tileY: 4 };
     return candidates[Phaser.Math.Between(0, candidates.length - 1)];
   }
 

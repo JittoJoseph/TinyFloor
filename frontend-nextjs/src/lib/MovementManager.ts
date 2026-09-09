@@ -9,6 +9,8 @@ import { VirtualJoystickManager } from "./VirtualJoystickManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { pixelToTile, isValidTile, MOVEMENT_SPEED } from "./types";
 
+const APPROACH_RANGE = 3;
+
 export class MovementManager {
   private scene: Phaser.Scene;
   private player: Phaser.Physics.Arcade.Sprite;
@@ -23,6 +25,7 @@ export class MovementManager {
   private lastSentTile = "";
   private needsFinalSend = false;
   private inputEnabled = true;
+  private frozen = false;
   private movingBefore = false;
 
   constructor(
@@ -56,6 +59,7 @@ export class MovementManager {
   }
 
   update(delta: number) {
+    if (this.frozen) return;
     const step = (MOVEMENT_SPEED * delta) / 1000;
     const input = this.inputEnabled ? this.readInput() : { x: 0, y: 0 };
     let manualMoved = false;
@@ -117,7 +121,8 @@ export class MovementManager {
     pointer: Phaser.Input.Pointer,
     over: Phaser.GameObjects.GameObject[],
   ) {
-    if (!this.inputEnabled || over.length || pointer.button !== 0) return;
+    if (this.frozen || !this.inputEnabled || over.length || pointer.button !== 0)
+      return;
 
     const goal = pixelToTile(pointer.worldX, pointer.worldY);
     const path = this.nav.buildPath(
@@ -185,8 +190,50 @@ export class MovementManager {
     this.wsManager.send("move", { tileX: tile.tileX, tileY: tile.tileY });
   }
 
+  /**
+   * Walks to the closest walkable tile beside a world point, so clicking a chair
+   * or the board from across the room takes you there instead of doing nothing.
+   */
+  approach(worldX: number, worldY: number): boolean {
+    if (this.frozen || !this.inputEnabled) return false;
+    const goal = pixelToTile(worldX, worldY);
+    const candidates: Array<{ tileX: number; tileY: number; away: number }> = [];
+    for (let dy = -APPROACH_RANGE; dy <= APPROACH_RANGE; dy++) {
+      for (let dx = -APPROACH_RANGE; dx <= APPROACH_RANGE; dx++) {
+        const tileX = goal.tileX + dx;
+        const tileY = goal.tileY + dy;
+        if (!isValidTile(tileX, tileY)) continue;
+        if (!this.nav.isWalkable(tileX, tileY)) continue;
+        candidates.push({ tileX, tileY, away: dx * dx + dy * dy });
+      }
+    }
+    candidates.sort((a, b) => a.away - b.away);
+    for (const candidate of candidates) {
+      const path = this.nav.buildPath(
+        this.player.x,
+        this.player.y,
+        candidate.tileX,
+        candidate.tileY,
+      );
+      if (path.length) {
+        this.path = path;
+        return true;
+      }
+    }
+    return false;
+  }
+
   setInputEnabled(enabled: boolean) {
     this.inputEnabled = enabled;
+  }
+
+  /** Sitting holds the pose, so movement and the idle animation both stop. */
+  setFrozen(frozen: boolean) {
+    this.frozen = frozen;
+    if (frozen) {
+      this.path.length = 0;
+      (this.player.body as Phaser.Physics.Arcade.Body).setVelocity(0, 0);
+    }
   }
 
   destroy() {

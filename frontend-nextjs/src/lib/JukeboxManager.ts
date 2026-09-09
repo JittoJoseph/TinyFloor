@@ -4,13 +4,25 @@ import { WebSocketManager } from "./WebSocketManager";
 
 export interface Track {
   title: string;
+  short: string;
   src: string;
+  credit?: string;
 }
 
 export const TRACKS: Track[] = [
-  { title: "Heavenly Loop", src: "/music/heavenly-loop.ogg" },
-  { title: "Ambient Relaxing", src: "/music/ambient-relaxing.ogg" },
-  { title: "Slow Stride", src: "/music/slow-stride.ogg" },
+  { title: "Heavenly Loop", short: "Heavenly", src: "/music/heavenly-loop.ogg" },
+  {
+    title: "Ambient Relaxing",
+    short: "Ambient",
+    src: "/music/ambient-relaxing.ogg",
+  },
+  { title: "Slow Stride", short: "Stride", src: "/music/slow-stride.ogg" },
+  {
+    title: "Monkeys Spinning Monkeys",
+    short: "Monkeys",
+    src: "/music/monkeys-spinning-monkeys.ogg",
+    credit: "Kevin MacLeod, incompetech.com, CC BY 4.0",
+  },
 ];
 
 export interface JukeboxSnapshot {
@@ -19,6 +31,7 @@ export interface JukeboxSnapshot {
   blocked: boolean;
   track: number;
   title: string;
+  credit?: string;
   near: boolean;
 }
 
@@ -32,6 +45,7 @@ const EMPTY: JukeboxSnapshot = {
   blocked: false,
   track: 0,
   title: TRACKS[0].title,
+  credit: TRACKS[0].credit,
   near: false,
 };
 
@@ -190,6 +204,7 @@ class JukeboxManager {
       blocked: this.blocked,
       track: this.track,
       title: TRACKS[this.track]?.title ?? "",
+      credit: TRACKS[this.track]?.credit,
       near: this.near,
     };
     this.listeners.forEach((listener) => listener());

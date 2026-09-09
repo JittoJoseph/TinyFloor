@@ -1,10 +1,7 @@
 import * as Phaser from "phaser";
 import { jukebox } from "./JukeboxManager";
 
-/** Stands on the open floor below the north wall, beside the desks. */
-const BOX = { x: 1150, y: 108, width: 30, height: 46 };
 const REACH = 210;
-const DEPTH = 9000;
 
 /** Pulled from the office tileset so it sits in the same palette as the desks. */
 const OUTLINE = 0x3a3a50;
@@ -36,21 +33,30 @@ export class JukeboxObject {
   private hovered = false;
   private playing = false;
   private meterAt = 0;
+  private box: { x: number; y: number; width: number; height: number };
+  private onApproach?: (x: number, y: number) => void;
 
-  constructor(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Sprite) {
+  constructor(
+    scene: Phaser.Scene,
+    player: Phaser.Physics.Arcade.Sprite,
+    at: { x: number; y: number },
+    onApproach?: (x: number, y: number) => void,
+  ) {
     this.scene = scene;
     this.player = player;
+    this.box = { x: at.x, y: at.y - 46, width: 30, height: 46 };
+    this.onApproach = onApproach;
 
-    this.cabinet = scene.add.graphics().setDepth(DEPTH);
-    this.meter = scene.add.graphics().setDepth(DEPTH + 1);
+    this.cabinet = scene.add.graphics().setDepth(this.depth());
+    this.meter = scene.add.graphics().setDepth(this.depth() + 0.1);
     this.prompt = this.createPrompt();
 
     this.hitArea = scene.add
       .zone(
-        BOX.x + BOX.width / 2,
-        BOX.y + BOX.height / 2,
-        BOX.width + 12,
-        BOX.height + 12,
+        this.box.x + this.box.width / 2,
+        this.box.y + this.box.height / 2,
+        this.box.width + 12,
+        this.box.height + 12,
       )
       .setOrigin(0.5)
       .setInteractive();
@@ -59,6 +65,11 @@ export class JukeboxObject {
     this.hitArea.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
       pointer.event.stopPropagation();
       if (this.inReach) jukebox.setOpen(!jukebox.getSnapshot().open);
+      else
+        this.onApproach?.(
+          this.box.x + this.box.width / 2,
+          this.box.y + this.box.height + 24,
+        );
     });
 
     this.draw();
@@ -69,6 +80,10 @@ export class JukeboxObject {
       this.draw();
       this.drawMeter();
     });
+  }
+
+  private depth() {
+    return this.box.y + this.box.height;
   }
 
   private createPrompt() {
@@ -87,17 +102,17 @@ export class JukeboxObject {
     background.fillRoundedRect(-width / 2, -11, width, 22, 11);
 
     const container = this.scene.add.container(
-      BOX.x + BOX.width / 2,
-      BOX.y + BOX.height + 20,
+      this.box.x + this.box.width / 2,
+      this.box.y + this.box.height + 20,
       [background, label],
     );
-    container.setDepth(DEPTH + 2).setAlpha(0).setVisible(false);
+    container.setDepth(this.depth() + 0.2).setAlpha(0).setVisible(false);
     return container;
   }
 
   /** Flat shapes with a 1px outline, the way the tileset draws its furniture. */
   private draw() {
-    const { x, y, width, height } = BOX;
+    const { x, y, width, height } = this.box;
     const g = this.cabinet;
     const bodyH = height - 7;
     g.clear();
@@ -157,8 +172,8 @@ export class JukeboxObject {
     g.clear();
     if (!this.playing) return;
 
-    const base = BOX.y - 4;
-    const cx = BOX.x + BOX.width / 2;
+    const base = this.box.y - 4;
+    const cx = this.box.x + this.box.width / 2;
     const phase = this.meterAt;
     g.fillStyle(ACCENT, 0.95);
     for (let i = 0; i < 3; i++) {
@@ -171,8 +186,8 @@ export class JukeboxObject {
     const distance = Phaser.Math.Distance.Between(
       this.player.x,
       this.player.y,
-      BOX.x + BOX.width / 2,
-      BOX.y + BOX.height,
+      this.box.x + this.box.width / 2,
+      this.box.y + this.box.height,
     );
     const reachable = distance < REACH;
     jukebox.setProximity(distance, reachable);
@@ -191,7 +206,7 @@ export class JukeboxObject {
     this.scene.tweens.add({
       targets: this.prompt,
       alpha: reachable ? 1 : 0,
-      y: BOX.y + BOX.height + (reachable ? 14 : 20),
+      y: this.box.y + this.box.height + (reachable ? 14 : 20),
       duration: 220,
       ease: "Cubic.easeOut",
       onComplete: () => {

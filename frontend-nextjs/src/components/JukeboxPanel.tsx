@@ -44,6 +44,11 @@ export default function JukeboxPanel() {
             ? "Playing for everyone in the room"
             : "Paused for everyone in the room"}
         </p>
+        {state.credit ? (
+          <p className="font-body text-[11px] text-[var(--color-braun-text)] opacity-35 mt-1 truncate">
+            {state.credit}
+          </p>
+        ) : null}
 
         <div className="flex items-center justify-center gap-3 mt-4">
           <button
@@ -78,21 +83,21 @@ export default function JukeboxPanel() {
           </button>
         </div>
 
-        <div className="flex gap-1.5 mt-4">
+        <div className="grid grid-cols-2 gap-1.5 mt-4">
           {TRACKS.map((entry, index) => (
             <button
               key={entry.src}
               type="button"
-              aria-label={`Play ${entry.title}`}
+              aria-label={`Play ${entry.short}`}
               aria-current={index === state.track}
               onClick={() => jukebox.select(index)}
-              className={`cursor-pointer flex-1 h-9 rounded-lg px-2 font-body text-[11px] font-medium truncate transition-colors duration-[120ms] ${
+              className={`cursor-pointer h-9 rounded-lg px-2 font-body text-[11px] font-medium truncate transition-colors duration-[120ms] ${
                 index === state.track
                   ? "bg-[var(--color-braun-text)] text-[var(--color-braun-bg)]"
                   : "bg-black/[0.04] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:bg-black/[0.07]"
               }`}
             >
-              {entry.title}
+              {entry.short}
             </button>
           ))}
         </div>

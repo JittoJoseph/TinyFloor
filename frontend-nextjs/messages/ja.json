@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet - 歩き回れるバーチャルオフィス",
+    "description": "SpatialMeet はブラウザで使える無料のバーチャルオフィスです。チームと一緒にピクセルアートのフロアを歩き回り、誰かの隣に立つだけでビデオ通話が始まります。",
+    "ogAlt": "SpatialMeet のルーム：デスクとチームメンバーがいる16ビットのオフィスフロア",
+    "keywords": "バーチャルオフィス、リモートワーク、空間チャット、オンラインコラボレーション、仮想ワークスペース、メタバースオフィス、近接チャット、近接ビデオチャット、バーチャルコワーキング、ブラウザでビデオ通話",
+    "createRoomTitle": "ルームを作成",
+    "createRoomDescription": "SpatialMeet でバーチャルオフィスのルームを開きましょう。名前を付け、必要ならパスワードを設定して、チームにリンクを1つ共有するだけです。",
+    "joinTitle": "ルームに参加",
+    "roomsTitle": "ルームを探す",
+    "roomsDescription": "アクティブなバーチャルルームを見て、SpatialMeet の公開ワークスペースに参加しましょう。",
+    "peopleTitle": "メンバー",
+    "peopleDescription": "SpatialMeet のルームに集まる人たちに会いましょう。",
+    "authTitle": "ログイン",
+    "authDescription": "SpatialMeet にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
+    "dashboardTitle": "ダッシュボード",
+    "roomTitle": "アクティブなルーム",
+    "notFoundTitle": "ページが見つかりません"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "close": "閉じる",
+    "guest": "ゲスト",
+    "you": "あなた"
+  },
+  "languageSwitcher": {
+    "label": "言語",
+    "select": "言語を選択",
+    "searchPlaceholder": "言語を検索…",
+    "noResults": "言語が見つかりません"
+  },
+  "nav": {
+    "main": "メイン",
+    "questions": "よくある質問",
+    "tour": "ツアー",
+    "dashboard": "ダッシュボード"
+  },
+  "hero": {
+    "title": "いちばん<em>居心地のいい</em><br></br>バーチャルオフィス。",
+    "subtitle": "ゲームのような見た目のバーチャルオフィス。歩き回って同僚と話し、もう一度チームを感じましょう。",
+    "cta": "試してみる",
+    "caption": "SpatialMeet のルーム：デスクが並ぶ16ビットのオフィスフロアに、チームメンバーが2人立っています。"
+  },
+  "landing": {
+    "description": "ゲームのような見た目のバーチャルオフィス。チームと一緒にピクセルアートのフロアを歩き回り、誰かの隣に立つだけでビデオ通話が始まります。",
+    "features": [
+      "近づくと始まるビデオ・音声通話",
+      "歩き回れる2Dオフィスマップ",
+      "ピクセルアートのアバター",
+      "リアルタイムの在席状況とステータス",
+      "ルームチャット"
+    ]
+  },
+  "moments": {
+    "title": "<em>歩き回れる</em>オフィス。",
+    "subtitle": "SpatialMeet は、通話では代わりにならなかったオフィスの良さを残します。誰がいるかがわかり、そのまま話しに行けること。",
+    "roomsLabel": "ルーム",
+    "alwaysOn": "いつでもオープン",
+    "directory": {
+      "design": { "name": "デザインチーム", "here": "5人在席" },
+      "founders": { "name": "創業メンバー", "here": "2人在席" },
+      "jam": { "name": "週末ジャム", "here": "空き" }
+    },
+    "enter": {
+      "title": "リンクを開けば、もう中にいます。",
+      "body": "誰かがルームのリンクを共有します。キャラクターを選んで名前を入力すれば、みんなと同じフロアに立っています。",
+      "chip1": "ダウンロード不要",
+      "chip2": "ゲスト歓迎",
+      "chip3": "どのブラウザでも"
+    },
+    "call": {
+      "title": "近づくだけで会話が始まります。",
+      "body": "チームメンバーに近づくと、頭上に通話バーが表示されます。ワンタップでビデオか音声がブラウザ同士で直接つながります。",
+      "chip1": "ビデオまたは音声",
+      "chip2": "ピアツーピア",
+      "chip3": "ワンタップ"
+    },
+    "presence": {
+      "title": "誰が近くにいるかわかります。",
+      "body": "全員に名札とステータスがあります。話しかける前に、誰の手が空いていて、誰が集中していて、誰が通話中かを確認できます。",
+      "chip1": "ライブ名札",
+      "chip2": "離席中・取り込み中",
+      "chip3": "ルームチャット"
+    },
+    "rooms": {
+      "title": "ルームは明日もそこにあります。",
+      "body": "ミーティングが終わってもルームは消えません。チーム用に開けたままにし、必要ならパスワードを付けて、リンクを一度送るだけです。",
+      "chip1": "全員に公開",
+      "chip2": "リンクで共有",
+      "chip3": "無料"
+    },
+    "floor": {
+      "title": "ミーティングではなく、オフィス。",
+      "body": "誰も招待を送りません。ふらっと立ち寄り、近くで作業し、何かあれば歩いて話しに行きます。",
+      "chip1": "招待なし",
+      "chip2": "歩いて話しに行く",
+      "chip3": "フロア全体"
+    }
+  },
+  "faq": {
+    "title": "<em>入る前に。</em>",
+    "items": [
+      {
+        "q": "SpatialMeet とは何ですか？",
+        "a": "SpatialMeet は歩き回れるバーチャルオフィスです。チームは共有の2Dフロア上にピクセルアートのキャラクターとして表示され、ミーティングのリンクをクリックするのではなく、誰かの隣に立つとビデオ通話や音声通話が始まります。"
+      },
+      {
+        "q": "何かインストールする必要はありますか？",
+        "a": "いいえ。SpatialMeet はパソコンでもスマートフォンでもブラウザで動作します。ルームのリンクを開けば、もうオフィスの中です。"
+      },
+      {
+        "q": "SpatialMeet は無料ですか？",
+        "a": "はい。ルームの作成、歩き回ること、チャット、通話はすべて無料です。"
+      },
+      {
+        "q": "ルームに参加するのにアカウントは必要ですか？",
+        "a": "いいえ。名前だけでゲストとして誰でも参加できます。ログインすると、保存されたプロフィール、ずっと使えるキャラクター、ルームの一覧が加わるだけです。"
+      },
+      {
+        "q": "ビデオ通話はどのように動作しますか？",
+        "a": "通話は WebRTC によるピアツーピアで行われ、音声と映像はブラウザ間で直接やり取りされます。一度つながると、誰かが通話を切るかルームを出るまで接続は続きます。離れて歩いても切れません。"
+      },
+      {
+        "q": "ルームにいる間、カメラはずっとオンですか？",
+        "a": "いいえ。カメラとマイクは通話中にだけ使われ、通話が終わるとすぐに解放されます。"
+      },
+      {
+        "q": "スマートフォンでも使えますか？",
+        "a": "はい。タッチ端末では画面上のジョイスティックで移動でき、通話ボタンも小さな画面に合わせて表示されます。"
+      },
+      {
+        "q": "普通のビデオ通話と何が違いますか？",
+        "a": "普通の通話では、ミーティングが終わるまで全員がひとつのグリッドに並びます。SpatialMeet のルームは一日中開いているので、誰がいるかを見ながら会話を行き来し、近づいた相手と話せます。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "あなたのルームは<em>もう開いています。</em>",
+    "publicTitle": "公開オフィスに入る",
+    "publicBody": "いつでも開いているルームです。キャラクターを選んで歩き回り、そこにいる人にあいさつしましょう。",
+    "createTitle": "チームのためにルームを開く",
+    "createBody": "名前を付け、必要ならパスワードを設定して、リンクを1つ送るだけ。好きなだけ開いたままにできます。",
+    "sampleName": "デザインチーム",
+    "create": "作成"
+  },
+  "footer": {
+    "tagline": "歩き回れるバーチャルオフィス。無料、ブラウザで。",
+    "product": "プロダクト",
+    "learn": "詳しく知る",
+    "elsewhere": "その他のリンク",
+    "rooms": "ルーム",
+    "people": "メンバー",
+    "createRoom": "ルームを作成",
+    "dashboard": "ダッシュボード",
+    "tour": "ルームのツアー",
+    "twoWays": "2つの入り方",
+    "questions": "よくある質問",
+    "rights": "© {year} Jitto Joseph. 無断転載を禁じます。"
+  },
+  "auth": {
+    "welcomeBack": "おかえりなさい",
+    "joinUs": "はじめましょう",
+    "signInSubtitle": "アカウントにログイン",
+    "registerSubtitle": "ワークスペースのアカウントを作成",
+    "username": "ユーザー名",
+    "emailOptional": "メールアドレス（任意）",
+    "displayNameOptional": "表示名（任意）",
+    "password": "パスワード",
+    "showPassword": "パスワードを表示",
+    "hidePassword": "パスワードを隠す",
+    "signIn": "ログイン",
+    "signUp": "新規登録",
+    "createAccount": "アカウントを作成",
+    "noAccount": "アカウントをお持ちでないですか？",
+    "haveAccount": "すでにアカウントをお持ちですか？",
+    "continueGuest": "ゲストとして続ける →",
+    "error": "エラーが発生しました"
+  },
+  "entry": {
+    "allRooms": "すべてのルーム",
+    "yourName": "あなたの名前",
+    "namePlaceholder": "何と呼ばれたいですか？",
+    "roomPassword": "ルームのパスワード",
+    "passwordPlaceholder": "パスワードを入力",
+    "character": "キャラクター",
+    "copyInvite": "招待リンクをコピー",
+    "inviteCopied": "招待リンクをコピーしました",
+    "openingDoor": "ドアを開けています",
+    "walkIn": "入室する"
+  },
+  "createRoom": {
+    "title": "ルームを開きましょう。",
+    "roomName": "ルーム名",
+    "roomNamePlaceholder": "デザインチーム、スタジオ、金曜の雑談",
+    "advanced": "詳細設定",
+    "passwordPlaceholder": "パスワードを追加（任意）",
+    "passwordLabel": "ルームのパスワード",
+    "passwordHint": "すべてのルームはディレクトリに表示されます。パスワードを設定すると、知らない人はドアを開けられません。",
+    "submit": "ルームを作成",
+    "submitting": "準備中",
+    "createError": "ルームを作成できませんでした。もう一度お試しください。",
+    "openError": "ルームを開けませんでした"
+  },
+  "join": {
+    "unavailableTitle": "このドアは開きません。",
+    "unavailable": "このルームは利用できなくなりました。",
+    "browse": "ルームを探す",
+    "full": "このルームは現在満員です",
+    "needsPassword": "このルームにはパスワードが必要です",
+    "error": "このルームに参加できませんでした",
+    "roomFull": "満員",
+    "guestNote": "ゲストとして参加しています。名前とキャラクターを残すには<link>ログイン</link>してください。"
+  },
+  "directory": {
+    "title": "コミュニティ<em>ディレクトリ</em>",
+    "roomsSubtitle": "ルームを探すか、中にいる人に会いましょう",
+    "peopleSubtitle": "SpatialMeet をつくる人たちに会いましょう",
+    "rooms": "ルーム",
+    "people": "メンバー",
+    "createRoom": "ルームを作成",
+    "startRoom": "ルームを始める",
+    "updating": "更新中...",
+    "roomsLive": "{count, plural, other {# ルームがライブ}}",
+    "searchRooms": "ルームを検索...",
+    "search": "検索",
+    "loadingSpaces": "スペースを読み込み中",
+    "noRoomsFound": "ルームが見つかりません。",
+    "noRoomsAvailable": "利用できるルームはありません。",
+    "noRoomsFoundBody": "検索に一致するルームが見つかりませんでした。キーワードを変えてみてください。",
+    "noRoomsAvailableBody": "まだ静かです。最初のワークスペースを始めましょう！",
+    "createARoom": "ルームを作成",
+    "presence": {
+      "ONLINE": "オンライン",
+      "IDLE": "アイドル",
+      "OFFLINE": "オフライン"
+    },
+    "lastActive": "{time}にアクティブ",
+    "justNow": "たった今",
+    "full": "満員",
+    "enter": "入室",
+    "gatheringPeople": "メンバーを集めています...",
+    "peopleCount": "{count, plural, other {# 人}}",
+    "searchPeople": "メンバーを検索...",
+    "yourProfile": "あなたのプロフィール",
+    "loadingPeople": "メンバーを読み込み中",
+    "noPeople": "メンバーが見つかりません。",
+    "noPeopleBody": "別のキーワードで検索するか、また後で見てください。"
+  },
+  "userMenu": {
+    "signIn": "ログイン",
+    "dashboard": "ダッシュボード",
+    "manageProfile": "プロフィールを管理",
+    "signOut": "ログアウト"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "subtitle": "プロフィールとルームを管理",
+    "activeCount": "{count} 件アクティブ",
+    "userNotFound": "ユーザーが見つかりません",
+    "userNotFoundTitle": "ユーザーが見つかりません",
+    "backToRooms": "ルーム一覧に戻る",
+    "nameUpdated": "表示名を更新しました！",
+    "profileFailed": "プロフィールを更新できませんでした",
+    "characterUpdated": "キャラクターを更新しました！",
+    "characterFailed": "キャラクターを更新できませんでした",
+    "linkCopied": "リンクをコピーしました！",
+    "profile": {
+      "changeCharacter": "キャラクターを変更",
+      "editName": "表示名を編集",
+      "saveName": "表示名を保存",
+      "displayName": "表示名",
+      "guestBadge": "ゲスト",
+      "copyLink": "プロフィールのリンクをコピー",
+      "share": "プロフィールを共有",
+      "shareTitle": "{name} さんのプロフィール",
+      "shareText": "SpatialMeet で {name} さんのプロフィールを見てみよう",
+      "created": "作成",
+      "joined": "参加",
+      "unknown": "不明",
+      "chooseCharacter": "キャラクターを選ぶ",
+      "selectAvatar": "アバターを選択してください"
+    },
+    "stats": {
+      "title": "統計",
+      "empty": "最初のルームを作りましょう！",
+      "rooms": "ルーム",
+      "active": "アクティブ",
+      "people": "メンバー"
+    },
+    "quickActions": {
+      "title": "クイックアクション",
+      "createRoom": "ルームを作成",
+      "browseRooms": "ルームを探す",
+      "createAccount": "アカウントを作成",
+      "signOut": "ログアウト"
+    },
+    "activity": {
+      "title": "最近のアクティビティ",
+      "empty": "まだアクティビティはありません",
+      "room_created": "作成",
+      "room_joined": "参加",
+      "room_visited": "訪問"
+    },
+    "collaborators": {
+      "title": "最近会った人",
+      "empty": "ルームに参加して人と出会いましょう"
+    },
+    "rooms": {
+      "mine": "マイルーム",
+      "joined": "参加中",
+      "gridView": "グリッド表示",
+      "listView": "リスト表示",
+      "newRoom": "新しいルーム",
+      "search": "ルームを検索...",
+      "filter": {
+        "all": "すべて",
+        "active": "アクティブ",
+        "idle": "アイドル",
+        "offline": "オフライン"
+      },
+      "loading": "ルームを読み込み中...",
+      "noMatches": "一致するものがありません",
+      "noMatchesBody": "検索条件やフィルターを変えてみてください",
+      "noRooms": "まだルームがありません",
+      "noRoomsBody": "最初のバーチャルオフィスを作りましょう",
+      "createRoom": "ルームを作成",
+      "noJoined": "参加したルームはありません",
+      "noJoinedBody": "ルームに参加するとここに表示されます",
+      "browsePublic": "公開ルームを探す"
+    },
+    "roomCard": {
+      "status": {
+        "active": "アクティブ",
+        "idle": "アイドル",
+        "offline": "オフライン"
+      },
+      "join": "参加",
+      "copyInvite": "招待リンクをコピー",
+      "copyLink": "リンクをコピー",
+      "players": "{count}/{max} 人",
+      "unknown": "不明"
+    },
+    "widget": {
+      "view": "ダッシュボードを見る",
+      "created": "作成",
+      "joined": "参加"
+    }
+  },
+  "room": {
+    "connecting": "接続中...",
+    "fallbackName": "ルーム: {id}",
+    "people": "{count, plural, other {# 人}}",
+    "copied": "コピーしました！",
+    "invite": "招待",
+    "leave": "退出"
+  },
+  "call": {
+    "incomingVideo": "ビデオ通話の着信...",
+    "incomingAudio": "音声通話の着信...",
+    "decline": "拒否",
+    "accept": "応答",
+    "tutorial": "チュートリアル通話",
+    "minimize": "最小化",
+    "expand": "拡大",
+    "calling": "発信中...",
+    "cancel": "通話をキャンセル",
+    "errors": {
+      "connection": "接続に失敗しました",
+      "unsupported": "このブラウザではメディアデバイスにアクセスできません",
+      "media": "カメラまたはマイクを使用できません",
+      "camera": "カメラを使用できません"
+    }
+  },
+  "controls": {
+    "status": "ステータス: {status}",
+    "muteMic": "マイクをミュート",
+    "unmuteMic": "マイクのミュートを解除",
+    "cameraOff": "カメラをオフ",
+    "cameraOn": "カメラをオン",
+    "muteSpeaker": "スピーカーをミュート",
+    "unmuteSpeaker": "スピーカーのミュートを解除",
+    "openChat": "チャットを開く",
+    "settings": "設定",
+    "leaveCall": "通話から退出"
+  },
+  "status": {
+    "available": { "label": "対応可能", "description": "話しかけてOK" },
+    "busy": { "label": "取り込み中", "description": "話しかけないでください" },
+    "away": { "label": "離席中", "description": "すぐ戻ります" }
+  },
+  "chat": {
+    "title": "ルームチャット",
+    "system": "システム",
+    "welcome": "ルームチャットへようこそ。メッセージはここにいる全員に表示されます。",
+    "intro": "ここでルームの全員とチャットできます。",
+    "placeholder": "メッセージを入力...",
+    "close": "チャットを閉じる",
+    "send": "メッセージを送信"
+  },
+  "proximity": {
+    "videoCall": "ビデオ通話",
+    "audioCall": "音声通話",
+    "roomChat": "ルームチャット",
+    "viewProfile": "プロフィールを見る"
+  },
+  "jukebox": {
+    "title": "ルームのスピーカー",
+    "close": "スピーカーの操作を閉じる",
+    "tapToPlay": "再生をタップして聴く",
+    "playing": "ルームの全員に再生中",
+    "paused": "ルームの全員に一時停止中",
+    "previous": "前の曲",
+    "next": "次の曲",
+    "play": "再生",
+    "pause": "一時停止",
+    "playTrack": "{track} を再生"
+  },
+  "whiteboard": {
+    "title": "ホワイトボード",
+    "penColor": "ペンの色 {color}",
+    "penSize": "ペンの太さ {size}",
+    "eraser": "消しゴム",
+    "clear": "ボードをクリア",
+    "close": "ホワイトボードを閉じる",
+    "hint": "ルームの全員が同じボードに描きます。Esc キーで離れます。"
+  },
+  "settings": {
+    "title": "設定",
+    "close": "設定を閉じる",
+    "audio": "オーディオ",
+    "video": "ビデオ",
+    "microphone": "マイク",
+    "micVolume": "マイクの音量",
+    "speaker": "スピーカー",
+    "speakerVolume": "スピーカーの音量",
+    "camera": "カメラ",
+    "videoQuality": "ビデオ画質",
+    "quality": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "qualityHint": {
+      "low": "360p、回線が遅い場合に最適",
+      "medium": "480p、画質と速度のバランス",
+      "high": "720p、最高画質ですが高速な回線が必要です"
+    },
+    "default": "デフォルト",
+    "cancel": "キャンセル",
+    "save": "保存"
+  },
+  "tutorial": {
+    "walk": "W A S D キーで歩き回りましょう",
+    "walkTouch": "ジョイスティックをドラッグして歩きます",
+    "click": "または、どこかをクリックするとそこまで歩きます",
+    "clickTouch": "または、どこかをタップするとそこまで歩きます",
+    "approach": "誰かに近づくと通話やチャットができます",
+    "invite": "このリンクで誰かを招待するか、これで準備完了です",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "linkHint": "リンクを知っている人は誰でもこのルームに入れます",
+    "done": "完了",
+    "skip": "スキップ",
+    "next": "次へ"
+  },
+  "scene": {
+    "guide": "ガイド",
+    "sit": "E キーで座る",
+    "stand": "E キーで立つ",
+    "music": "クリックで音楽",
+    "draw": "クリックで描く"
+  },
+  "characters": {
+    "previous": "前のキャラクター",
+    "next": "次のキャラクター",
+    "select": "{name} を選択",
+    "keyHint": "← → キーを使います"
+  },
+  "toast": {
+    "dismiss": "閉じる"
+  },
+  "notFound": {
+    "title": "このルームは地図にありません。",
+    "body": "お探しのページは存在しないか、移動しました。",
+    "home": "ロビーに戻る",
+    "rooms": "ルームを探す"
+  }
+}

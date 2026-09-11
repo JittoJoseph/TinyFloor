@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet - 可以四处走动的虚拟办公室",
+    "description": "SpatialMeet 是浏览器里的免费虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
+    "ogAlt": "SpatialMeet 房间：摆满办公桌和同事的 16 位像素办公楼层",
+    "keywords": "虚拟办公室，远程办公，空间聊天，在线协作，虚拟工作空间，元宇宙办公室，近距离聊天，近距离视频聊天，虚拟共享办公，浏览器视频通话",
+    "createRoomTitle": "创建房间",
+    "createRoomDescription": "在 SpatialMeet 上开一个虚拟办公室房间。取个名字，需要的话加上密码，然后把一个链接分享给团队。",
+    "joinTitle": "加入房间",
+    "roomsTitle": "浏览房间",
+    "roomsDescription": "浏览活跃的虚拟房间，加入 SpatialMeet 上的公共工作空间。",
+    "peopleTitle": "成员",
+    "peopleDescription": "认识常在 SpatialMeet 房间里出没的人。",
+    "authTitle": "登录",
+    "authDescription": "登录 SpatialMeet，保留你的名字、角色和房间列表。",
+    "dashboardTitle": "控制台",
+    "roomTitle": "当前房间",
+    "notFoundTitle": "页面未找到"
+  },
+  "common": {
+    "loading": "加载中...",
+    "back": "返回",
+    "cancel": "取消",
+    "save": "保存",
+    "close": "关闭",
+    "guest": "访客",
+    "you": "你"
+  },
+  "languageSwitcher": {
+    "label": "语言",
+    "select": "选择语言",
+    "searchPlaceholder": "搜索语言…",
+    "noResults": "未找到语言"
+  },
+  "nav": {
+    "main": "主导航",
+    "questions": "常见问题",
+    "tour": "导览",
+    "dashboard": "控制台"
+  },
+  "hero": {
+    "title": "最<em>温馨</em>的<br></br>虚拟办公室。",
+    "subtitle": "看起来像游戏的虚拟办公室。四处走走，和同事聊聊，重新找回团队的感觉。",
+    "cta": "立即体验",
+    "caption": "SpatialMeet 房间：摆着办公桌的 16 位像素办公楼层上站着两位同事。"
+  },
+  "landing": {
+    "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
+    "features": [
+      "靠近即可开始视频和语音通话",
+      "可以走动的 2D 办公地图",
+      "像素风头像",
+      "实时在线状态",
+      "房间聊天"
+    ]
+  },
+  "moments": {
+    "title": "一间<em>可以四处走动</em>的办公室。",
+    "subtitle": "SpatialMeet 保留了通话从未取代的办公室日常：知道谁在，随时可以走过去。",
+    "roomsLabel": "房间",
+    "alwaysOn": "全天开放",
+    "directory": {
+      "design": { "name": "设计团队", "here": "5 人在线" },
+      "founders": { "name": "创始人", "here": "2 人在线" },
+      "jam": { "name": "周末 Jam", "here": "空闲" }
+    },
+    "enter": {
+      "title": "打开链接，你就进来了。",
+      "body": "有人分享了房间链接。选个角色，输入名字，你就和大家站在同一层楼了。",
+      "chip1": "无需下载",
+      "chip2": "欢迎访客",
+      "chip3": "任意浏览器"
+    },
+    "call": {
+      "title": "走过去就能聊。",
+      "body": "靠近一位同事，对方头顶就会出现通话栏。轻点一下即可在浏览器之间直接开启视频或语音。",
+      "chip1": "视频或语音",
+      "chip2": "点对点",
+      "chip3": "轻点一下"
+    },
+    "presence": {
+      "title": "谁在附近一目了然。",
+      "body": "每个人都有名牌和状态。走过去之前，就能看到谁有空、谁在专心工作、谁已经在通话中。",
+      "chip1": "实时名牌",
+      "chip2": "离开和忙碌",
+      "chip3": "房间聊天"
+    },
+    "rooms": {
+      "title": "房间明天还在。",
+      "body": "会议结束，房间不会消失。为团队留一个房间，需要时加上密码，链接只需发一次。",
+      "chip1": "所有人可见",
+      "chip2": "通过链接分享",
+      "chip3": "免费"
+    },
+    "floor": {
+      "title": "是办公室，不是会议。",
+      "body": "没有人发会议邀请。大家随时进来，挨着工作，有事就走过去。",
+      "chip1": "无需邀请",
+      "chip2": "直接走过去",
+      "chip3": "整层楼"
+    }
+  },
+  "faq": {
+    "title": "<em>进门之前。</em>",
+    "items": [
+      {
+        "q": "SpatialMeet 是什么？",
+        "a": "SpatialMeet 是一个可以四处走动的虚拟办公室。你的团队以像素风角色出现在共享的 2D 楼层上，只要站到某人身边就会开始视频或语音通话，而不是点击会议链接。"
+      },
+      {
+        "q": "需要安装什么吗？",
+        "a": "不需要。SpatialMeet 在电脑和手机的浏览器中运行。打开房间链接，你就在办公室里了。"
+      },
+      {
+        "q": "SpatialMeet 免费吗？",
+        "a": "免费。创建房间、四处走动、聊天和通话都不收费。"
+      },
+      {
+        "q": "加入房间需要账号吗？",
+        "a": "不需要。任何人只要填个名字就能以访客身份加入。登录只会额外保存你的资料、固定角色和房间列表。"
+      },
+      {
+        "q": "视频通话是怎么工作的？",
+        "a": "通话通过 WebRTC 点对点进行，音频和视频直接在浏览器之间传输。一旦接通，通话会一直保持，直到有人挂断或离开房间。走开也不会断线。"
+      },
+      {
+        "q": "我在房间里时摄像头会一直开着吗？",
+        "a": "不会。摄像头和麦克风只在通话时开启，通话结束立刻释放。"
+      },
+      {
+        "q": "可以在手机上使用 SpatialMeet 吗？",
+        "a": "可以。在触屏设备上用屏幕摇杆移动，通话按钮也会适配小屏幕。"
+      },
+      {
+        "q": "它和普通视频通话有什么不同？",
+        "a": "普通通话会把所有人放进同一个网格，直到会议结束。SpatialMeet 房间全天开放，你能看到谁在，在不同对话间切换，并和你走近的人交谈。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "你的房间<em>已经开好了。</em>",
+    "publicTitle": "走进公共办公室",
+    "publicBody": "永远开放的房间。选个角色，四处转转，和在场的人打个招呼。",
+    "createTitle": "为团队开一个房间",
+    "createBody": "取个名字，需要的话加上密码，然后发送一个链接。想开多久就开多久。",
+    "sampleName": "设计团队",
+    "create": "创建"
+  },
+  "footer": {
+    "tagline": "一间可以四处走动的虚拟办公室。免费，在浏览器中使用。",
+    "product": "产品",
+    "learn": "了解",
+    "elsewhere": "其他",
+    "rooms": "房间",
+    "people": "成员",
+    "createRoom": "创建房间",
+    "dashboard": "控制台",
+    "tour": "房间导览",
+    "twoWays": "两种进入方式",
+    "questions": "常见问题",
+    "rights": "© {year} Jitto Joseph。保留所有权利。"
+  },
+  "auth": {
+    "welcomeBack": "欢迎回来",
+    "joinUs": "加入我们",
+    "signInSubtitle": "登录你的账号",
+    "registerSubtitle": "创建你的工作空间账号",
+    "username": "用户名",
+    "emailOptional": "邮箱（可选）",
+    "displayNameOptional": "显示名称（可选）",
+    "password": "密码",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码",
+    "signIn": "登录",
+    "signUp": "注册",
+    "createAccount": "创建账号",
+    "noAccount": "还没有账号？",
+    "haveAccount": "已经有账号了？",
+    "continueGuest": "以访客身份继续 →",
+    "error": "发生错误"
+  },
+  "entry": {
+    "allRooms": "所有房间",
+    "yourName": "你的名字",
+    "namePlaceholder": "大家该怎么称呼你？",
+    "roomPassword": "房间密码",
+    "passwordPlaceholder": "输入密码",
+    "character": "角色",
+    "copyInvite": "复制邀请链接",
+    "inviteCopied": "邀请链接已复制",
+    "openingDoor": "正在开门",
+    "walkIn": "进入"
+  },
+  "createRoom": {
+    "title": "开一个房间。",
+    "roomName": "房间名称",
+    "roomNamePlaceholder": "设计团队、工作室、周五闲聊",
+    "advanced": "高级",
+    "passwordPlaceholder": "添加密码（可选）",
+    "passwordLabel": "房间密码",
+    "passwordHint": "所有房间都会显示在目录中。设置密码后，没有密码的人无法进入。",
+    "submit": "创建房间",
+    "submitting": "正在准备",
+    "createError": "无法创建房间，请重试。",
+    "openError": "无法打开房间"
+  },
+  "join": {
+    "unavailableTitle": "这扇门打不开。",
+    "unavailable": "这个房间已不可用。",
+    "browse": "浏览房间",
+    "full": "房间当前已满",
+    "needsPassword": "这个房间需要密码",
+    "error": "无法加入这个房间",
+    "roomFull": "房间已满",
+    "guestNote": "你正以访客身份加入。<link>登录</link>即可保留名字和角色。"
+  },
+  "directory": {
+    "title": "社区<em>目录</em>",
+    "roomsSubtitle": "浏览房间，或认识里面的人",
+    "peopleSubtitle": "认识正在打造 SpatialMeet 的人",
+    "rooms": "房间",
+    "people": "成员",
+    "createRoom": "创建房间",
+    "startRoom": "开一个房间",
+    "updating": "更新中...",
+    "roomsLive": "{count, plural, other {# 个房间在线}}",
+    "searchRooms": "搜索房间...",
+    "search": "搜索",
+    "loadingSpaces": "正在加载空间",
+    "noRoomsFound": "未找到房间。",
+    "noRoomsAvailable": "暂无可用房间。",
+    "noRoomsFoundBody": "没有找到符合搜索条件的房间，试试调整关键词。",
+    "noRoomsAvailableBody": "这里很安静。来开第一个工作空间吧！",
+    "createARoom": "创建房间",
+    "presence": {
+      "ONLINE": "在线",
+      "IDLE": "空闲",
+      "OFFLINE": "离线"
+    },
+    "lastActive": "{time}活跃",
+    "justNow": "刚刚",
+    "full": "已满",
+    "enter": "进入",
+    "gatheringPeople": "正在召集成员...",
+    "peopleCount": "{count, plural, other {# 人}}",
+    "searchPeople": "搜索成员...",
+    "yourProfile": "你的资料",
+    "loadingPeople": "正在加载成员",
+    "noPeople": "未找到成员。",
+    "noPeopleBody": "换个关键词试试，或稍后再来。"
+  },
+  "userMenu": {
+    "signIn": "登录",
+    "dashboard": "控制台",
+    "manageProfile": "管理资料",
+    "signOut": "退出登录"
+  },
+  "dashboard": {
+    "title": "控制台",
+    "subtitle": "管理你的资料和房间",
+    "activeCount": "{count} 个活跃",
+    "userNotFound": "未找到用户",
+    "userNotFoundTitle": "未找到用户",
+    "backToRooms": "返回房间列表",
+    "nameUpdated": "显示名称已更新！",
+    "profileFailed": "资料更新失败",
+    "characterUpdated": "角色已更新！",
+    "characterFailed": "角色更新失败",
+    "linkCopied": "链接已复制！",
+    "profile": {
+      "changeCharacter": "更换角色",
+      "editName": "编辑显示名称",
+      "saveName": "保存显示名称",
+      "displayName": "显示名称",
+      "guestBadge": "访客",
+      "copyLink": "复制资料链接",
+      "share": "分享资料",
+      "shareTitle": "{name} 的资料",
+      "shareText": "来 SpatialMeet 看看 {name} 的资料",
+      "created": "已创建",
+      "joined": "已加入",
+      "unknown": "未知",
+      "chooseCharacter": "选择角色",
+      "selectAvatar": "选择你的头像"
+    },
+    "stats": {
+      "title": "统计",
+      "empty": "创建你的第一个房间吧！",
+      "rooms": "房间",
+      "active": "活跃",
+      "people": "成员"
+    },
+    "quickActions": {
+      "title": "快捷操作",
+      "createRoom": "创建房间",
+      "browseRooms": "浏览房间",
+      "createAccount": "创建账号",
+      "signOut": "退出登录"
+    },
+    "activity": {
+      "title": "最近活动",
+      "empty": "暂无活动",
+      "room_created": "创建了",
+      "room_joined": "加入了",
+      "room_visited": "访问了"
+    },
+    "collaborators": {
+      "title": "最近见过的人",
+      "empty": "加入房间认识更多人"
+    },
+    "rooms": {
+      "mine": "我的房间",
+      "joined": "已加入",
+      "gridView": "网格视图",
+      "listView": "列表视图",
+      "newRoom": "新建房间",
+      "search": "搜索房间...",
+      "filter": {
+        "all": "全部",
+        "active": "活跃",
+        "idle": "空闲",
+        "offline": "离线"
+      },
+      "loading": "正在加载房间...",
+      "noMatches": "没有匹配结果",
+      "noMatchesBody": "试试调整搜索或筛选条件",
+      "noRooms": "还没有房间",
+      "noRoomsBody": "创建你的第一个虚拟办公空间",
+      "createRoom": "创建房间",
+      "noJoined": "还没有加入过房间",
+      "noJoinedBody": "加入房间后会显示在这里",
+      "browsePublic": "浏览公共房间"
+    },
+    "roomCard": {
+      "status": {
+        "active": "活跃",
+        "idle": "空闲",
+        "offline": "离线"
+      },
+      "join": "加入",
+      "copyInvite": "复制邀请链接",
+      "copyLink": "复制链接",
+      "players": "{count}/{max} 人",
+      "unknown": "未知"
+    },
+    "widget": {
+      "view": "查看控制台",
+      "created": "已创建",
+      "joined": "已加入"
+    }
+  },
+  "room": {
+    "connecting": "连接中...",
+    "fallbackName": "房间：{id}",
+    "people": "{count, plural, other {# 人}}",
+    "copied": "已复制！",
+    "invite": "邀请",
+    "leave": "离开"
+  },
+  "call": {
+    "incomingVideo": "视频来电...",
+    "incomingAudio": "语音来电...",
+    "decline": "拒绝",
+    "accept": "接听",
+    "tutorial": "教程通话",
+    "minimize": "缩小",
+    "expand": "放大",
+    "calling": "呼叫中...",
+    "cancel": "取消通话",
+    "errors": {
+      "connection": "连接失败",
+      "unsupported": "此浏览器无法访问媒体设备",
+      "media": "摄像头或麦克风不可用",
+      "camera": "摄像头不可用"
+    }
+  },
+  "controls": {
+    "status": "状态：{status}",
+    "muteMic": "关闭麦克风",
+    "unmuteMic": "打开麦克风",
+    "cameraOff": "关闭摄像头",
+    "cameraOn": "打开摄像头",
+    "muteSpeaker": "关闭扬声器",
+    "unmuteSpeaker": "打开扬声器",
+    "openChat": "打开聊天",
+    "settings": "设置",
+    "leaveCall": "退出通话"
+  },
+  "status": {
+    "available": { "label": "有空", "description": "随时可以聊" },
+    "busy": { "label": "忙碌", "description": "请勿打扰" },
+    "away": { "label": "离开", "description": "马上回来" }
+  },
+  "chat": {
+    "title": "房间聊天",
+    "system": "系统",
+    "welcome": "欢迎来到房间聊天。这里的所有人都能看到消息。",
+    "intro": "你可以在这里和房间里的所有人聊天。",
+    "placeholder": "输入消息...",
+    "close": "关闭聊天",
+    "send": "发送消息"
+  },
+  "proximity": {
+    "videoCall": "视频通话",
+    "audioCall": "语音通话",
+    "roomChat": "房间聊天",
+    "viewProfile": "查看资料"
+  },
+  "jukebox": {
+    "title": "房间音箱",
+    "close": "关闭音箱控制",
+    "tapToPlay": "点击播放即可收听",
+    "playing": "正在为房间里的所有人播放",
+    "paused": "已为房间里的所有人暂停",
+    "previous": "上一首",
+    "next": "下一首",
+    "play": "播放",
+    "pause": "暂停",
+    "playTrack": "播放 {track}"
+  },
+  "whiteboard": {
+    "title": "白板",
+    "penColor": "画笔颜色 {color}",
+    "penSize": "画笔粗细 {size}",
+    "eraser": "橡皮擦",
+    "clear": "清空白板",
+    "close": "关闭白板",
+    "hint": "房间里的所有人都在同一块白板上画画。按 Esc 离开。"
+  },
+  "settings": {
+    "title": "设置",
+    "close": "关闭设置",
+    "audio": "音频",
+    "video": "视频",
+    "microphone": "麦克风",
+    "micVolume": "麦克风音量",
+    "speaker": "扬声器",
+    "speakerVolume": "扬声器音量",
+    "camera": "摄像头",
+    "videoQuality": "视频画质",
+    "quality": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "qualityHint": {
+      "low": "360p，适合网速较慢时使用",
+      "medium": "480p，兼顾画质与速度",
+      "high": "720p，画质最佳，但需要高速网络"
+    },
+    "default": "默认",
+    "cancel": "取消",
+    "save": "保存"
+  },
+  "tutorial": {
+    "walk": "用 W A S D 四处走动",
+    "walkTouch": "拖动摇杆来行走",
+    "click": "或者点击任意位置直接走过去",
+    "clickTouch": "或者轻点任意位置直接走过去",
+    "approach": "靠近某人即可通话或聊天",
+    "invite": "用这个链接邀请别人，或者你已经准备好了",
+    "copy": "复制",
+    "copied": "已复制",
+    "linkHint": "拿到链接的人都会进入这个房间",
+    "done": "完成",
+    "skip": "跳过",
+    "next": "下一步"
+  },
+  "scene": {
+    "guide": "向导",
+    "sit": "按 E 坐下",
+    "stand": "按 E 起身",
+    "music": "点击播放音乐",
+    "draw": "点击开始画画"
+  },
+  "characters": {
+    "previous": "上一个角色",
+    "next": "下一个角色",
+    "select": "选择 {name}",
+    "keyHint": "使用 ← → 方向键"
+  },
+  "toast": {
+    "dismiss": "关闭"
+  },
+  "notFound": {
+    "title": "这个房间不在地图上。",
+    "body": "你要找的页面不存在或已被移动。",
+    "home": "返回大厅",
+    "rooms": "浏览房间"
+  }
+}

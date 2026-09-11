@@ -14,7 +14,7 @@ import { EntryPreview } from "@/components/entry/EntryPreview";
 import { IdentityFields, ErrorNote } from "@/components/entry/IdentityFields";
 import { useIdentity, roomHref } from "@/components/entry/useIdentity";
 import { apiClient } from "@/lib/api";
-import { SITE_URL } from "@/lib/site";
+import { joinPath, shareUrl } from "@/lib/links";
 
 interface CreatedRoom {
   id: string;
@@ -89,7 +89,7 @@ export default function CreateRoomPage() {
       <EntryShell
         preview={
           <EntryPreview
-            inviteLink={`${SITE_URL}/join?roomId=${created.id}`}
+            inviteLink={shareUrl(joinPath(created.id))}
             occupants={[
               {
                 character: identity.character,
@@ -196,7 +196,7 @@ export default function CreateRoomPage() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder={t("passwordPlaceholder")}
-                  aria-label={t("passwordLabel")}
+                  aria-label={te("roomPassword")}
                   className={`${inputClass} ps-11`}
                   maxLength={40}
                 />

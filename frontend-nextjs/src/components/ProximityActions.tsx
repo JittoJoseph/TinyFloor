@@ -1,10 +1,10 @@
 "use client";
 
 import { memo } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Video, Mic, MessageSquare, User } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
-import { getPathname } from "@/lib/i18n/navigation";
+import { profilePath } from "@/lib/links";
 
 export interface NearbyPlayer {
   id: string;
@@ -51,7 +51,7 @@ export const ProximityActions = memo(function ProximityActions({
   touch?: boolean;
 }) {
   const t = useTranslations("proximity");
-  const locale = useLocale();
+  const tChat = useTranslations("chat");
   const size = touch ? SIZES.touch : SIZES.pointer;
   const actionClass = `cursor-pointer ${size.chip} rounded-full bg-white border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all flex items-center justify-center shrink-0`;
 
@@ -89,22 +89,15 @@ export const ProximityActions = memo(function ProximityActions({
       <button
         onClick={() => window.dispatchEvent(new Event("openChat"))}
         className={actionClass}
-        title={t("roomChat")}
-        aria-label={t("roomChat")}
+        title={tChat("title")}
+        aria-label={tChat("title")}
       >
         <MessageSquare className={size.icon} />
       </button>
       {!player.guest && (
         <button
           onClick={() =>
-            window.open(
-              getPathname({
-                href: { pathname: "/dashboard", query: { user: player.id } },
-                locale,
-              }),
-              "_blank",
-              "noopener,noreferrer",
-            )
+            window.open(profilePath(player.id), "_blank", "noopener,noreferrer")
           }
           className={actionClass}
           title={t("viewProfile")}

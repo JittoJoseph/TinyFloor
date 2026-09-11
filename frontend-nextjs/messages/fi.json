@@ -24,7 +24,18 @@
     "save": "Tallenna",
     "close": "Sulje",
     "guest": "Vieras",
-    "you": "Sinä"
+    "you": "Sinä",
+    "justNow": "juuri nyt",
+    "unknown": "Tuntematon",
+    "rooms": "Huoneet",
+    "people": "Ihmiset",
+    "peopleCount": "{count, plural, one {# henkilö} other {# henkilöä}}",
+    "createRoom": "Luo huone",
+    "browseRooms": "Selaa huoneita",
+    "searchRooms": "Hae huoneita...",
+    "dashboard": "Hallintapaneeli",
+    "questions": "Kysymykset",
+    "signOut": "Kirjaudu ulos"
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -34,9 +45,7 @@
   },
   "nav": {
     "main": "Päävalikko",
-    "questions": "Kysymykset",
-    "tour": "Esittely",
-    "dashboard": "Hallintapaneeli"
+    "tour": "Esittely"
   },
   "hero": {
     "title": "<em>Kodikkain</em> <br></br>virtuaalitoimisto.",
@@ -57,12 +66,20 @@
   "moments": {
     "title": "Toimisto, jossa voit <em>kävellä.</em>",
     "subtitle": "SpatialMeet säilyttää sen osan toimistosta, jota puhelut eivät koskaan korvanneet: tiedät, kuka on paikalla, ja voit kävellä hänen luokseen.",
-    "roomsLabel": "Huoneet",
     "alwaysOn": "Aina auki",
     "directory": {
-      "design": { "name": "Designtiimi", "here": "5 paikalla" },
-      "founders": { "name": "Perustajat", "here": "2 paikalla" },
-      "jam": { "name": "Viikonloppujamit", "here": "Tyhjä" }
+      "design": {
+        "name": "Designtiimi",
+        "here": "5 paikalla"
+      },
+      "founders": {
+        "name": "Perustajat",
+        "here": "2 paikalla"
+      },
+      "jam": {
+        "name": "Viikonloppujamit",
+        "here": "Tyhjä"
+      }
     },
     "enter": {
       "title": "Avaa linkki, ja olet sisällä.",
@@ -151,13 +168,8 @@
     "product": "Tuote",
     "learn": "Lue lisää",
     "elsewhere": "Muualla",
-    "rooms": "Huoneet",
-    "people": "Ihmiset",
-    "createRoom": "Luo huone",
-    "dashboard": "Hallintapaneeli",
     "tour": "Huoneen esittely",
     "twoWays": "Kaksi tietä sisään",
-    "questions": "Kysymykset",
     "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään."
   },
   "auth": {
@@ -197,7 +209,6 @@
     "roomNamePlaceholder": "Designtiimi, Studio, Perjantaihengailu",
     "advanced": "Lisäasetukset",
     "passwordPlaceholder": "Lisää salasana (valinnainen)",
-    "passwordLabel": "Huoneen salasana",
     "passwordHint": "Jokainen huone näkyy hakemistossa. Salasana pitää oven kiinni niiltä, joilla sitä ei ole.",
     "submit": "Luo huone",
     "submitting": "Valmistellaan",
@@ -207,7 +218,6 @@
   "join": {
     "unavailableTitle": "Tämä ovi ei aukea.",
     "unavailable": "Tämä huone ei ole enää saatavilla.",
-    "browse": "Selaa huoneita",
     "full": "Huone on juuri nyt täynnä",
     "needsPassword": "Huone vaatii salasanan",
     "error": "Huoneeseen liittyminen epäonnistui",
@@ -218,31 +228,23 @@
     "title": "Yhteisön <em>hakemisto</em>",
     "roomsSubtitle": "Selaa huoneita tai tapaa niissä olevia ihmisiä",
     "peopleSubtitle": "Tutustu SpatialMeetin tekijöihin",
-    "rooms": "Huoneet",
-    "people": "Ihmiset",
-    "createRoom": "Luo huone",
-    "startRoom": "Aloita huone",
     "updating": "Päivitetään...",
     "roomsLive": "{count, plural, one {# huone livenä} other {# huonetta livenä}}",
-    "searchRooms": "Hae huoneita...",
     "search": "Hae",
     "loadingSpaces": "Ladataan tiloja",
     "noRoomsFound": "Huoneita ei löytynyt.",
     "noRoomsAvailable": "Huoneita ei ole saatavilla.",
     "noRoomsFoundBody": "Hakuasi vastaavia huoneita ei löytynyt. Kokeile muokata hakua.",
     "noRoomsAvailableBody": "Täällä on hiljaista. Aloita ensimmäisenä uusi työtila!",
-    "createARoom": "Luo huone",
     "presence": {
       "ONLINE": "Paikalla",
       "IDLE": "Hiljainen",
       "OFFLINE": "Offline"
     },
     "lastActive": "Aktiivinen {time}",
-    "justNow": "juuri nyt",
     "full": "Täynnä",
     "enter": "Astu sisään",
     "gatheringPeople": "Kootaan ihmisiä...",
-    "peopleCount": "{count, plural, one {# henkilö} other {# henkilöä}}",
     "searchPeople": "Hae ihmisiä...",
     "yourProfile": "Profiilisi",
     "loadingPeople": "Ladataan ihmisiä",
@@ -250,17 +252,12 @@
     "noPeopleBody": "Kokeile toista hakua tai palaa pian."
   },
   "userMenu": {
-    "signIn": "Kirjaudu sisään",
-    "dashboard": "Hallintapaneeli",
-    "manageProfile": "Hallitse profiilia",
-    "signOut": "Kirjaudu ulos"
+    "manageProfile": "Hallitse profiilia"
   },
   "dashboard": {
-    "title": "Hallintapaneeli",
     "subtitle": "Hallitse profiiliasi ja huoneitasi",
     "activeCount": "{count} aktiivista",
     "userNotFound": "Käyttäjää ei löytynyt",
-    "userNotFoundTitle": "Käyttäjää ei löytynyt",
     "backToRooms": "Takaisin huoneisiin",
     "nameUpdated": "Näyttönimi päivitetty!",
     "profileFailed": "Profiilin päivitys epäonnistui",
@@ -279,23 +276,16 @@
       "shareText": "Katso käyttäjän {name} profiili SpatialMeetissä",
       "created": "luotu",
       "joined": "liitytty",
-      "unknown": "Tuntematon",
       "chooseCharacter": "Valitse hahmo",
       "selectAvatar": "Valitse avatarisi"
     },
     "stats": {
       "title": "Tilastot",
       "empty": "Luo ensimmäinen huoneesi!",
-      "rooms": "Huoneet",
-      "active": "Aktiiviset",
-      "people": "Ihmiset"
+      "active": "Aktiiviset"
     },
     "quickActions": {
-      "title": "Pikatoiminnot",
-      "createRoom": "Luo huone",
-      "browseRooms": "Selaa huoneita",
-      "createAccount": "Luo tili",
-      "signOut": "Kirjaudu ulos"
+      "title": "Pikatoiminnot"
     },
     "activity": {
       "title": "Viimeaikainen toiminta",
@@ -314,7 +304,6 @@
       "gridView": "Ruudukkonäkymä",
       "listView": "Luettelonäkymä",
       "newRoom": "Uusi huone",
-      "search": "Hae huoneita...",
       "filter": {
         "all": "Kaikki",
         "active": "Aktiiviset",
@@ -326,7 +315,6 @@
       "noMatchesBody": "Kokeile muokata hakua tai suodattimia",
       "noRooms": "Ei vielä huoneita",
       "noRoomsBody": "Luo ensimmäinen virtuaalitoimistosi",
-      "createRoom": "Luo huone",
       "noJoined": "Ei liitytyjä huoneita",
       "noJoinedBody": "Liity huoneeseen, niin se näkyy täällä",
       "browsePublic": "Selaa julkisia huoneita"
@@ -338,21 +326,13 @@
         "offline": "Offline"
       },
       "join": "Liity",
-      "copyInvite": "Kopioi kutsulinkki",
       "copyLink": "Kopioi linkki",
-      "players": "{count}/{max} pelaajaa",
-      "unknown": "Tuntematon"
-    },
-    "widget": {
-      "view": "Näytä hallintapaneeli",
-      "created": "luotu",
-      "joined": "liitytty"
+      "players": "{count}/{max} pelaajaa"
     }
   },
   "room": {
     "connecting": "Yhdistetään...",
     "fallbackName": "Huone: {id}",
-    "people": "{count, plural, one {# henkilö} other {# henkilöä}}",
     "copied": "Kopioitu!",
     "invite": "Kutsu",
     "leave": "Poistu"
@@ -387,9 +367,18 @@
     "leaveCall": "Poistu puhelusta"
   },
   "status": {
-    "available": { "label": "Tavoitettavissa", "description": "Valmis juttelemaan" },
-    "busy": { "label": "Varattu", "description": "Älä häiritse" },
-    "away": { "label": "Poissa", "description": "Palaan pian" }
+    "available": {
+      "label": "Tavoitettavissa",
+      "description": "Valmis juttelemaan"
+    },
+    "busy": {
+      "label": "Varattu",
+      "description": "Älä häiritse"
+    },
+    "away": {
+      "label": "Poissa",
+      "description": "Palaan pian"
+    }
   },
   "chat": {
     "title": "Huonechat",
@@ -403,7 +392,6 @@
   "proximity": {
     "videoCall": "Videopuhelu",
     "audioCall": "Äänipuhelu",
-    "roomChat": "Huonechat",
     "viewProfile": "Näytä profiili"
   },
   "jukebox": {
@@ -448,9 +436,7 @@
       "medium": "480p, tasapaino laadun ja nopeuden välillä",
       "high": "720p, paras laatu mutta vaatii nopean yhteyden"
     },
-    "default": "Oletus",
-    "cancel": "Peruuta",
-    "save": "Tallenna"
+    "default": "Oletus"
   },
   "tutorial": {
     "walk": "Kävele näppäimillä W A S D",
@@ -485,7 +471,6 @@
   "notFound": {
     "title": "Tätä huonetta ei ole kartalla.",
     "body": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
-    "home": "Takaisin aulaan",
-    "rooms": "Selaa huoneita"
+    "home": "Takaisin aulaan"
   }
 }

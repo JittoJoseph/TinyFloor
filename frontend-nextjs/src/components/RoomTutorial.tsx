@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, type Messages } from "next-intl";
 import {
   Footprints,
   MousePointerClick,
@@ -10,10 +10,12 @@ import {
   Link2,
   Check,
   Copy,
+  type LucideIcon,
 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
+import { joinPath, shareUrl } from "@/lib/links";
 import {
   GUIDE_ID,
   GUIDE_SPRITE,
@@ -27,8 +29,13 @@ const WALK_DISTANCE = 150;
 const SPRITE_HEADROOM_ROWS = 9;
 const SPRITE_ROWS = 32;
 
-// `text` and `touchText` are keys under `tutorial` in the messages.
-const STEPS = [
+type TutorialKey = keyof Messages["tutorial"];
+
+const STEPS: Array<{
+  icon: LucideIcon;
+  text: TutorialKey;
+  touchText?: TutorialKey;
+}> = [
   {
     icon: Footprints,
     text: "walk",
@@ -153,9 +160,7 @@ export default function RoomTutorial({
 
   const copyInvite = useCallback(() => {
     if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(
-      `${window.location.origin}/join?roomId=${roomId}`,
-    );
+    navigator.clipboard.writeText(shareUrl(joinPath(roomId)));
     setCopied(true);
     clearTimeout(copyTimer.current);
     copyTimer.current = setTimeout(() => setCopied(false), 2000);
@@ -333,7 +338,7 @@ export default function RoomTutorial({
         >
           <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
           <span className="flex-1 truncate text-[10px] font-medium text-[var(--color-braun-text)]/70">
-            /join?roomId={roomId}
+            {joinPath(roomId)}
           </span>
           <button
             onClick={copyInvite}

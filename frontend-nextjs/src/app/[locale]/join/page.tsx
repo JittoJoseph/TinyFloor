@@ -13,7 +13,7 @@ import { EntryPreview } from "@/components/entry/EntryPreview";
 import { IdentityFields, ErrorNote } from "@/components/entry/IdentityFields";
 import { useIdentity, roomHref } from "@/components/entry/useIdentity";
 import { apiClient } from "@/lib/api";
-import { SITE_URL } from "@/lib/site";
+import { joinPath, shareUrl } from "@/lib/links";
 
 interface RoomInfo {
   id: string;
@@ -62,7 +62,7 @@ function JoinContent() {
           hasPassword: found.hasPassword || false,
         });
       } catch {
-        if (!cancelled) setError(t("unavailable"));
+        // shown as the "unavailable" state below
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -72,7 +72,7 @@ function JoinContent() {
     return () => {
       cancelled = true;
     };
-  }, [roomId, shareCode, t]);
+  }, [roomId, shareCode]);
 
   const walkIn = async () => {
     if (!room || !identity.name.trim() || busy) return;
@@ -139,10 +139,10 @@ function JoinContent() {
             {t("unavailableTitle")}
           </h1>
           <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">
-            {error}
+            {t("unavailable")}
           </p>
           <Link href="/rooms" className={primaryButtonClass}>
-            {t("browse")}
+            {tc("browseRooms")}
           </Link>
         </div>
       </EntryShell>
@@ -155,7 +155,7 @@ function JoinContent() {
     <EntryShell
       preview={
         <EntryPreview
-          inviteLink={`${SITE_URL}/join?roomId=${room.id}`}
+          inviteLink={shareUrl(joinPath(room.id))}
           occupants={[
             {
               character: identity.character,

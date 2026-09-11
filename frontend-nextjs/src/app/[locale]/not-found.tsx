@@ -5,6 +5,7 @@ import { primaryButtonClass } from "@/components/entry/EntryShell";
 
 export default async function LocaleNotFound() {
   const t = await getTranslations("notFound");
+  const tc = await getTranslations("common");
 
   return (
     <main className="min-h-screen w-full bg-[var(--color-braun-bg)] flex items-center justify-center px-4 py-10">
@@ -29,7 +30,7 @@ export default async function LocaleNotFound() {
             href="/rooms"
             className="cursor-pointer block text-center mt-3 py-2 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-55 hover:opacity-100 transition-opacity duration-200"
           >
-            {t("rooms")}
+            {tc("browseRooms")}
           </Link>
         </div>
       </div>

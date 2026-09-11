@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import {
   Edit3,
@@ -19,6 +19,7 @@ import {
   AnimatedCharacterSelector,
   CHARACTERS,
 } from "@/components/AnimatedCharacterSelector";
+import { profilePath, shareUrl } from "@/lib/links";
 
 interface User {
   id: string;
@@ -61,11 +62,7 @@ export function ProfileCard({
   const [isSaving, setIsSaving] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const profileUrl = useMemo(
-    () =>
-      `${typeof window !== "undefined" ? window.location.origin : ""}/dashboard?user=${user.id}`,
-    [user.id],
-  );
+  const profileUrl = shareUrl(profilePath(user.id));
 
   const currentCharacter =
     CHARACTERS.find(
@@ -97,7 +94,7 @@ export function ProfileCard({
   };
 
   const formatDate = (dateString: string) => {
-    if (!dateString) return t("unknown");
+    if (!dateString) return tc("unknown");
     return format.dateTime(new Date(dateString), {
       month: "short",
       year: "numeric",

@@ -1,8 +1,8 @@
 import React from "react";
-import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SITE_URL } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
+import { localizedMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n/routing";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { RoomMoments } from "@/components/landing/RoomMoments";
@@ -12,21 +12,16 @@ import { Footer } from "@/components/landing/Footer";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return pageMetadata({
-    path: "/",
-    locale,
-    description: t("description"),
-    socialTitle: t("title"),
-  });
-}
+export const generateMetadata = localizedMetadata({
+  path: "/",
+  description: "description",
+  socialTitle: "title",
+});
 
 export default async function LandingPage({ params }: Props) {
   const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale as Locale);
+  const t = await getTranslations();
   const faqs = t.raw("faq.items") as Array<{ q: string; a: string }>;
 
   const jsonLd = [

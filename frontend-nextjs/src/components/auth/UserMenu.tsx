@@ -20,6 +20,7 @@ interface UserMenuProps {
 export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
   const t = useTranslations("userMenu");
   const tc = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const { user, isAuthenticated, isGuest, logout } = useAuth();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -30,7 +31,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
         className="cursor-pointer h-10 px-5 flex items-center gap-2 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all"
       >
         <User className="w-3.5 h-3.5" />
-        <span className="hidden sm:inline">{t("signIn")}</span>
+        <span className="hidden sm:inline">{tAuth("signIn")}</span>
       </button>
     );
   }
@@ -112,7 +113,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   </div>
                   <div>
                     <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
-                      {t("dashboard")}
+                      {tc("dashboard")}
                     </span>
                     <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">
                       {t("manageProfile")}
@@ -132,7 +133,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   <LogOut className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:text-[var(--color-braun-orange)] group-hover:opacity-100" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] group-hover:text-[var(--color-braun-orange)]">
-                  {t("signOut")}
+                  {tc("signOut")}
                 </span>
               </button>
             </div>

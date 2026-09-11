@@ -24,7 +24,18 @@
     "save": "Salva",
     "close": "Chiudi",
     "guest": "Ospite",
-    "you": "Tu"
+    "you": "Tu",
+    "justNow": "proprio ora",
+    "unknown": "Sconosciuto",
+    "rooms": "Stanze",
+    "people": "Persone",
+    "peopleCount": "{count, plural, one {# persona} other {# persone}}",
+    "createRoom": "Crea una stanza",
+    "browseRooms": "Sfoglia le stanze",
+    "searchRooms": "Cerca stanze...",
+    "dashboard": "Dashboard",
+    "questions": "Domande",
+    "signOut": "Esci"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -34,9 +45,7 @@
   },
   "nav": {
     "main": "Principale",
-    "questions": "Domande",
-    "tour": "Tour",
-    "dashboard": "Dashboard"
+    "tour": "Tour"
   },
   "hero": {
     "title": "L’ufficio virtuale <br></br>più <em>accogliente</em>.",
@@ -57,12 +66,20 @@
   "moments": {
     "title": "Un ufficio in cui puoi <em>camminare.</em>",
     "subtitle": "SpatialMeet conserva la parte dell’ufficio che le chiamate non hanno mai sostituito: sapere chi c’è e poterlo raggiungere.",
-    "roomsLabel": "Stanze",
     "alwaysOn": "Sempre aperte",
     "directory": {
-      "design": { "name": "Team design", "here": "5 presenti" },
-      "founders": { "name": "Fondatori", "here": "2 presenti" },
-      "jam": { "name": "Jam del weekend", "here": "Vuota" }
+      "design": {
+        "name": "Team design",
+        "here": "5 presenti"
+      },
+      "founders": {
+        "name": "Fondatori",
+        "here": "2 presenti"
+      },
+      "jam": {
+        "name": "Jam del weekend",
+        "here": "Vuota"
+      }
     },
     "enter": {
       "title": "Apri un link e sei dentro.",
@@ -151,13 +168,8 @@
     "product": "Prodotto",
     "learn": "Scopri",
     "elsewhere": "Altrove",
-    "rooms": "Stanze",
-    "people": "Persone",
-    "createRoom": "Crea una stanza",
-    "dashboard": "Dashboard",
     "tour": "Fai il tour della stanza",
     "twoWays": "Due modi per entrare",
-    "questions": "Domande",
     "rights": "© {year} Jitto Joseph. Tutti i diritti riservati."
   },
   "auth": {
@@ -197,7 +209,6 @@
     "roomNamePlaceholder": "Team design, Studio, Aperitivo del venerdì",
     "advanced": "Avanzate",
     "passwordPlaceholder": "Aggiungi una password (facoltativa)",
-    "passwordLabel": "Password della stanza",
     "passwordHint": "Ogni stanza è elencata nella directory. Una password tiene la porta chiusa a chi non ce l’ha.",
     "submit": "Crea la stanza",
     "submitting": "Preparazione in corso",
@@ -207,7 +218,6 @@
   "join": {
     "unavailableTitle": "Questa porta non si apre.",
     "unavailable": "Questa stanza non è più disponibile.",
-    "browse": "Sfoglia le stanze",
     "full": "Questa stanza è piena al momento",
     "needsPassword": "Questa stanza richiede una password",
     "error": "Impossibile entrare in questa stanza",
@@ -218,31 +228,23 @@
     "title": "Directory della <em>community</em>",
     "roomsSubtitle": "Sfoglia le stanze o conosci le persone al loro interno",
     "peopleSubtitle": "Scopri chi dà forma a SpatialMeet",
-    "rooms": "Stanze",
-    "people": "Persone",
-    "createRoom": "Crea stanza",
-    "startRoom": "Avvia una stanza",
     "updating": "Aggiornamento...",
     "roomsLive": "{count, plural, one {# stanza attiva} other {# stanze attive}}",
-    "searchRooms": "Cerca stanze...",
     "search": "Cerca",
     "loadingSpaces": "Caricamento degli spazi",
     "noRoomsFound": "Nessuna stanza trovata.",
     "noRoomsAvailable": "Nessuna stanza disponibile.",
     "noRoomsFoundBody": "Non abbiamo trovato stanze corrispondenti alla ricerca. Prova a modificarla.",
     "noRoomsAvailableBody": "Qui è tutto tranquillo. Sii il primo ad avviare un nuovo spazio di lavoro!",
-    "createARoom": "Crea una stanza",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Inattiva",
       "OFFLINE": "Offline"
     },
     "lastActive": "Attiva {time}",
-    "justNow": "proprio ora",
     "full": "Piena",
     "enter": "Entra",
     "gatheringPeople": "Raccolta delle persone...",
-    "peopleCount": "{count, plural, one {# persona} other {# persone}}",
     "searchPeople": "Cerca persone...",
     "yourProfile": "Il tuo profilo",
     "loadingPeople": "Caricamento delle persone",
@@ -250,17 +252,12 @@
     "noPeopleBody": "Prova un’altra ricerca o torna presto."
   },
   "userMenu": {
-    "signIn": "Accedi",
-    "dashboard": "Dashboard",
-    "manageProfile": "Gestisci profilo",
-    "signOut": "Esci"
+    "manageProfile": "Gestisci profilo"
   },
   "dashboard": {
-    "title": "Dashboard",
     "subtitle": "Gestisci il tuo profilo e le tue stanze",
     "activeCount": "{count} attive",
     "userNotFound": "Utente non trovato",
-    "userNotFoundTitle": "Utente non trovato",
     "backToRooms": "Torna alle stanze",
     "nameUpdated": "Nome visualizzato aggiornato!",
     "profileFailed": "Aggiornamento del profilo non riuscito",
@@ -279,23 +276,16 @@
       "shareText": "Guarda il profilo di {name} su SpatialMeet",
       "created": "create",
       "joined": "frequentate",
-      "unknown": "Sconosciuto",
       "chooseCharacter": "Scegli personaggio",
       "selectAvatar": "Seleziona il tuo avatar"
     },
     "stats": {
       "title": "Statistiche",
       "empty": "Crea la tua prima stanza!",
-      "rooms": "Stanze",
-      "active": "Attive",
-      "people": "Persone"
+      "active": "Attive"
     },
     "quickActions": {
-      "title": "Azioni rapide",
-      "createRoom": "Crea stanza",
-      "browseRooms": "Sfoglia stanze",
-      "createAccount": "Crea account",
-      "signOut": "Esci"
+      "title": "Azioni rapide"
     },
     "activity": {
       "title": "Attività recenti",
@@ -314,7 +304,6 @@
       "gridView": "Vista a griglia",
       "listView": "Vista a elenco",
       "newRoom": "Nuova stanza",
-      "search": "Cerca stanze...",
       "filter": {
         "all": "Tutte",
         "active": "Attive",
@@ -326,7 +315,6 @@
       "noMatchesBody": "Prova a modificare la ricerca o i filtri",
       "noRooms": "Ancora nessuna stanza",
       "noRoomsBody": "Crea il tuo primo ufficio virtuale",
-      "createRoom": "Crea una stanza",
       "noJoined": "Nessuna stanza frequentata",
       "noJoinedBody": "Entra in una stanza per vederla qui",
       "browsePublic": "Sfoglia le stanze pubbliche"
@@ -338,21 +326,13 @@
         "offline": "Offline"
       },
       "join": "Entra",
-      "copyInvite": "Copia link di invito",
       "copyLink": "Copia link",
-      "players": "{count}/{max} giocatori",
-      "unknown": "Sconosciuto"
-    },
-    "widget": {
-      "view": "Vai alla dashboard",
-      "created": "create",
-      "joined": "frequentate"
+      "players": "{count}/{max} giocatori"
     }
   },
   "room": {
     "connecting": "Connessione...",
     "fallbackName": "Stanza: {id}",
-    "people": "{count, plural, one {# persona} other {# persone}}",
     "copied": "Copiato!",
     "invite": "Invita",
     "leave": "Esci"
@@ -387,9 +367,18 @@
     "leaveCall": "Abbandona chiamata"
   },
   "status": {
-    "available": { "label": "Disponibile", "description": "Pronto a chiacchierare" },
-    "busy": { "label": "Occupato", "description": "Non disturbare" },
-    "away": { "label": "Assente", "description": "Torno subito" }
+    "available": {
+      "label": "Disponibile",
+      "description": "Pronto a chiacchierare"
+    },
+    "busy": {
+      "label": "Occupato",
+      "description": "Non disturbare"
+    },
+    "away": {
+      "label": "Assente",
+      "description": "Torno subito"
+    }
   },
   "chat": {
     "title": "Chat della stanza",
@@ -403,7 +392,6 @@
   "proximity": {
     "videoCall": "Videochiamata",
     "audioCall": "Chiamata vocale",
-    "roomChat": "Chat della stanza",
     "viewProfile": "Vedi profilo"
   },
   "jukebox": {
@@ -448,9 +436,7 @@
       "medium": "480p, equilibrio tra qualità e velocità",
       "high": "720p, qualità migliore ma serve internet veloce"
     },
-    "default": "Predefinito",
-    "cancel": "Annulla",
-    "save": "Salva"
+    "default": "Predefinito"
   },
   "tutorial": {
     "walk": "Muoviti con W A S D",
@@ -485,7 +471,6 @@
   "notFound": {
     "title": "Questa stanza non è sulla mappa.",
     "body": "La pagina che cerchi non esiste o è stata spostata.",
-    "home": "Torna alla hall",
-    "rooms": "Sfoglia le stanze"
+    "home": "Torna alla hall"
   }
 }

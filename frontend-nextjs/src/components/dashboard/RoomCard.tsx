@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormatter, useNow, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Users,
   Lock,
@@ -11,6 +11,8 @@ import {
   Crown,
 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
+import { useTimeAgo } from "@/lib/i18n/useTimeAgo";
+import { joinPath } from "@/lib/links";
 
 export interface Room {
   id: string;
@@ -30,25 +32,6 @@ interface RoomCardProps {
   isOwned?: boolean;
   onCopy: () => void;
   isCopied: boolean;
-}
-
-const WEEK = 7 * 24 * 60 * 60 * 1000;
-
-function useTimeAgo() {
-  const t = useTranslations("dashboard.roomCard");
-  const tDirectory = useTranslations("directory");
-  const format = useFormatter();
-  const now = useNow({ updateInterval: 60000 });
-
-  return (dateString: string): string => {
-    if (!dateString) return t("unknown");
-    const date = new Date(dateString);
-    const diffMs = now.getTime() - date.getTime();
-
-    if (diffMs < 60000) return tDirectory("justNow");
-    if (diffMs < WEEK) return format.relativeTime(date, now);
-    return format.dateTime(date);
-  };
 }
 
 function getRoomStatus(room: Room): RoomStatus {
@@ -85,7 +68,8 @@ const statusConfig: Record<
 
 export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
   const t = useTranslations("dashboard.roomCard");
-  const timeAgo = useTimeAgo();
+  const te = useTranslations("entry");
+  const timeAgo = useTimeAgo({ dateAfterWeek: true });
   const status = getRoomStatus(room);
   const config = statusConfig[status];
 
@@ -131,7 +115,7 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
         {/* Actions */}
         <div className="flex items-center gap-2">
           <Link
-            href={`/join?roomId=${room.id}`}
+            href={joinPath(room.id)}
             className="cursor-pointer flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-all hover:-translate-y-0.5"
           >
             <ExternalLink className="w-3.5 h-3.5" />
@@ -140,8 +124,8 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
           <button
             onClick={onCopy}
             className="cursor-pointer p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors"
-            title={t("copyInvite")}
-            aria-label={t("copyInvite")}
+            title={te("copyInvite")}
+            aria-label={te("copyInvite")}
           >
             {isCopied ? (
               <Check className="w-4 h-4 text-green-600" />
@@ -163,7 +147,7 @@ export function RoomCardCompact({
   isCopied,
 }: RoomCardProps) {
   const t = useTranslations("dashboard.roomCard");
-  const timeAgo = useTimeAgo();
+  const timeAgo = useTimeAgo({ dateAfterWeek: true });
   const status = getRoomStatus(room);
   const config = statusConfig[status];
 
@@ -192,7 +176,7 @@ export function RoomCardCompact({
       {/* Actions */}
       <div className="flex items-center gap-1.5 shrink-0">
         <Link
-          href={`/join?roomId=${room.id}`}
+          href={joinPath(room.id)}
           className="cursor-pointer px-3 py-1.5 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] shadow-sm text-[var(--color-braun-text)] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all hover:-translate-y-0.5"
         >
           {t("join")}

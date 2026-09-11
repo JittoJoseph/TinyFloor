@@ -24,7 +24,18 @@
     "save": "Save",
     "close": "Close",
     "guest": "Guest",
-    "you": "You"
+    "you": "You",
+    "justNow": "just now",
+    "unknown": "Unknown",
+    "rooms": "Rooms",
+    "people": "People",
+    "peopleCount": "{count, plural, one {# person} other {# people}}",
+    "createRoom": "Create a room",
+    "browseRooms": "Browse rooms",
+    "searchRooms": "Search rooms...",
+    "dashboard": "Dashboard",
+    "questions": "Questions",
+    "signOut": "Sign Out"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -34,9 +45,7 @@
   },
   "nav": {
     "main": "Main",
-    "questions": "Questions",
-    "tour": "Tour",
-    "dashboard": "Dashboard"
+    "tour": "Tour"
   },
   "hero": {
     "title": "The <em>coziest</em> <br></br>virtual office.",
@@ -57,12 +66,20 @@
   "moments": {
     "title": "An office you can <em>walk around in.</em>",
     "subtitle": "SpatialMeet keeps the part of an office that calls never replaced: knowing who is there, and being able to walk over.",
-    "roomsLabel": "Rooms",
     "alwaysOn": "Always on",
     "directory": {
-      "design": { "name": "Design team", "here": "5 here" },
-      "founders": { "name": "Founders", "here": "2 here" },
-      "jam": { "name": "Weekend jam", "here": "Empty" }
+      "design": {
+        "name": "Design team",
+        "here": "5 here"
+      },
+      "founders": {
+        "name": "Founders",
+        "here": "2 here"
+      },
+      "jam": {
+        "name": "Weekend jam",
+        "here": "Empty"
+      }
     },
     "enter": {
       "title": "Open a link and you are inside.",
@@ -151,13 +168,8 @@
     "product": "Product",
     "learn": "Learn",
     "elsewhere": "Elsewhere",
-    "rooms": "Rooms",
-    "people": "People",
-    "createRoom": "Create a room",
-    "dashboard": "Dashboard",
     "tour": "Tour the room",
     "twoWays": "Two ways in",
-    "questions": "Questions",
     "rights": "© {year} Jitto Joseph. All rights reserved."
   },
   "auth": {
@@ -197,7 +209,6 @@
     "roomNamePlaceholder": "Design team, Studio, Friday hangout",
     "advanced": "Advanced",
     "passwordPlaceholder": "Add a password (optional)",
-    "passwordLabel": "Room password",
     "passwordHint": "Every room is listed in the directory. A password keeps the door shut to anyone without it.",
     "submit": "Create the room",
     "submitting": "Setting it up",
@@ -207,7 +218,6 @@
   "join": {
     "unavailableTitle": "That door does not open.",
     "unavailable": "This room is not available any more.",
-    "browse": "Browse rooms",
     "full": "This room is full right now",
     "needsPassword": "This room needs a password",
     "error": "Could not join this room",
@@ -218,31 +228,23 @@
     "title": "Community <em>Directory</em>",
     "roomsSubtitle": "Browse rooms or meet the people inside",
     "peopleSubtitle": "Meet the builders shaping SpatialMeet",
-    "rooms": "Rooms",
-    "people": "People",
-    "createRoom": "Create Room",
-    "startRoom": "Start a Room",
     "updating": "Updating...",
     "roomsLive": "{count, plural, one {# room live} other {# rooms live}}",
-    "searchRooms": "Search rooms...",
     "search": "Search",
     "loadingSpaces": "Loading spaces",
     "noRoomsFound": "No rooms found.",
     "noRoomsAvailable": "No rooms available.",
     "noRoomsFoundBody": "We couldn't find any rooms matching your search. Try adjusting your query.",
     "noRoomsAvailableBody": "It's quiet here. Be the first to start a new workspace!",
-    "createARoom": "Create a room",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Idle",
       "OFFLINE": "Offline"
     },
     "lastActive": "Active {time}",
-    "justNow": "just now",
     "full": "Full",
     "enter": "Enter",
     "gatheringPeople": "Gathering people...",
-    "peopleCount": "{count, plural, one {# person} other {# people}}",
     "searchPeople": "Search people...",
     "yourProfile": "Your Profile",
     "loadingPeople": "Loading people",
@@ -250,17 +252,12 @@
     "noPeopleBody": "Try a different search or check back soon."
   },
   "userMenu": {
-    "signIn": "Sign In",
-    "dashboard": "Dashboard",
-    "manageProfile": "Manage profile",
-    "signOut": "Sign Out"
+    "manageProfile": "Manage profile"
   },
   "dashboard": {
-    "title": "Dashboard",
     "subtitle": "Manage your profile & rooms",
     "activeCount": "{count} active",
     "userNotFound": "User not found",
-    "userNotFoundTitle": "User Not Found",
     "backToRooms": "Back to Rooms",
     "nameUpdated": "Display name updated!",
     "profileFailed": "Failed to update profile",
@@ -279,23 +276,16 @@
       "shareText": "Check out {name}'s profile on SpatialMeet",
       "created": "created",
       "joined": "joined",
-      "unknown": "Unknown",
       "chooseCharacter": "Choose Character",
       "selectAvatar": "Select your avatar"
     },
     "stats": {
       "title": "Stats",
       "empty": "Create your first room!",
-      "rooms": "Rooms",
-      "active": "Active",
-      "people": "People"
+      "active": "Active"
     },
     "quickActions": {
-      "title": "Quick Actions",
-      "createRoom": "Create Room",
-      "browseRooms": "Browse Rooms",
-      "createAccount": "Create Account",
-      "signOut": "Sign Out"
+      "title": "Quick Actions"
     },
     "activity": {
       "title": "Recent Activities",
@@ -314,7 +304,6 @@
       "gridView": "Grid view",
       "listView": "List view",
       "newRoom": "New Room",
-      "search": "Search rooms...",
       "filter": {
         "all": "All",
         "active": "Active",
@@ -326,7 +315,6 @@
       "noMatchesBody": "Try adjusting your search or filter criteria",
       "noRooms": "No rooms yet",
       "noRoomsBody": "Create your first virtual office space",
-      "createRoom": "Create a room",
       "noJoined": "No joined rooms",
       "noJoinedBody": "Join a room to see it here",
       "browsePublic": "Browse public rooms"
@@ -338,21 +326,13 @@
         "offline": "Offline"
       },
       "join": "Join",
-      "copyInvite": "Copy invite link",
       "copyLink": "Copy link",
-      "players": "{count}/{max} players",
-      "unknown": "Unknown"
-    },
-    "widget": {
-      "view": "View Dashboard",
-      "created": "created",
-      "joined": "joined"
+      "players": "{count}/{max} players"
     }
   },
   "room": {
     "connecting": "Connecting...",
     "fallbackName": "Room: {id}",
-    "people": "{count, plural, one {# person} other {# people}}",
     "copied": "Copied!",
     "invite": "Invite",
     "leave": "Leave"
@@ -387,9 +367,18 @@
     "leaveCall": "Leave call"
   },
   "status": {
-    "available": { "label": "Available", "description": "Ready to chat" },
-    "busy": { "label": "Busy", "description": "Do not disturb" },
-    "away": { "label": "Away", "description": "Be right back" }
+    "available": {
+      "label": "Available",
+      "description": "Ready to chat"
+    },
+    "busy": {
+      "label": "Busy",
+      "description": "Do not disturb"
+    },
+    "away": {
+      "label": "Away",
+      "description": "Be right back"
+    }
   },
   "chat": {
     "title": "Room Chat",
@@ -403,7 +392,6 @@
   "proximity": {
     "videoCall": "Video call",
     "audioCall": "Audio call",
-    "roomChat": "Room chat",
     "viewProfile": "View profile"
   },
   "jukebox": {
@@ -448,9 +436,7 @@
       "medium": "480p, balanced quality and speed",
       "high": "720p, best quality but needs fast internet"
     },
-    "default": "Default",
-    "cancel": "Cancel",
-    "save": "Save"
+    "default": "Default"
   },
   "tutorial": {
     "walk": "Walk around with W A S D",
@@ -485,7 +471,6 @@
   "notFound": {
     "title": "This room is not on the map.",
     "body": "The page you were looking for does not exist or has moved.",
-    "home": "Back to the lobby",
-    "rooms": "Browse rooms"
+    "home": "Back to the lobby"
   }
 }

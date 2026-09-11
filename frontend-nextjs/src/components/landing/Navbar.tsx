@@ -5,6 +5,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export const Navbar: React.FC = () => {
   const t = useTranslations("nav");
+  const tc = useTranslations("common");
 
   return (
     <nav aria-label={t("main")} className="absolute top-0 left-0 right-0 z-50">
@@ -21,7 +22,7 @@ export const Navbar: React.FC = () => {
               href="#faq"
               className="px-5 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300"
             >
-              {t("questions")}
+              {tc("questions")}
             </a>
             <a
               href="#how-it-works"
@@ -37,7 +38,7 @@ export const Navbar: React.FC = () => {
             href="/dashboard"
             className="cursor-pointer flex items-center justify-center transition-all duration-300 px-4 py-1.5 rounded-full text-[13px] font-medium text-[var(--color-braun-text)] bg-[rgba(0,0,0,0.03)] border border-[rgba(0,0,0,0.05)] md:px-6 md:py-2 md:bg-[var(--color-braun-text)] md:text-[var(--color-braun-bg)] md:border-transparent md:shadow-md md:hover:shadow-lg"
           >
-            {t("dashboard")}
+            {tc("dashboard")}
           </Link>
         </div>
       </div>

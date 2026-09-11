@@ -24,7 +24,18 @@
     "save": "저장",
     "close": "닫기",
     "guest": "게스트",
-    "you": "나"
+    "you": "나",
+    "justNow": "방금",
+    "unknown": "알 수 없음",
+    "rooms": "방",
+    "people": "사람들",
+    "peopleCount": "{count, plural, other {#명}}",
+    "createRoom": "방 만들기",
+    "browseRooms": "방 둘러보기",
+    "searchRooms": "방 검색...",
+    "dashboard": "대시보드",
+    "questions": "자주 묻는 질문",
+    "signOut": "로그아웃"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -34,9 +45,7 @@
   },
   "nav": {
     "main": "메인",
-    "questions": "자주 묻는 질문",
-    "tour": "둘러보기",
-    "dashboard": "대시보드"
+    "tour": "둘러보기"
   },
   "hero": {
     "title": "가장 <em>아늑한</em> <br></br>가상 오피스.",
@@ -57,12 +66,20 @@
   "moments": {
     "title": "<em>걸어 다닐 수 있는</em> 오피스.",
     "subtitle": "SpatialMeet는 통화가 대신하지 못한 오피스의 장점을 지켜요. 누가 있는지 알고, 바로 걸어가 말을 걸 수 있다는 것.",
-    "roomsLabel": "방",
     "alwaysOn": "항상 열려 있음",
     "directory": {
-      "design": { "name": "디자인 팀", "here": "5명 있음" },
-      "founders": { "name": "창업자", "here": "2명 있음" },
-      "jam": { "name": "주말 잼", "here": "비어 있음" }
+      "design": {
+        "name": "디자인 팀",
+        "here": "5명 있음"
+      },
+      "founders": {
+        "name": "창업자",
+        "here": "2명 있음"
+      },
+      "jam": {
+        "name": "주말 잼",
+        "here": "비어 있음"
+      }
     },
     "enter": {
       "title": "링크를 열면 바로 입장이에요.",
@@ -151,13 +168,8 @@
     "product": "제품",
     "learn": "알아보기",
     "elsewhere": "다른 곳에서",
-    "rooms": "방",
-    "people": "사람들",
-    "createRoom": "방 만들기",
-    "dashboard": "대시보드",
     "tour": "방 둘러보기",
     "twoWays": "두 가지 입장 방법",
-    "questions": "자주 묻는 질문",
     "rights": "© {year} Jitto Joseph. 모든 권리 보유."
   },
   "auth": {
@@ -197,7 +209,6 @@
     "roomNamePlaceholder": "디자인 팀, 스튜디오, 금요일 모임",
     "advanced": "고급",
     "passwordPlaceholder": "비밀번호 추가 (선택)",
-    "passwordLabel": "방 비밀번호",
     "passwordHint": "모든 방은 디렉터리에 표시돼요. 비밀번호를 설정하면 비밀번호가 없는 사람은 들어올 수 없어요.",
     "submit": "방 만들기",
     "submitting": "준비하는 중",
@@ -207,7 +218,6 @@
   "join": {
     "unavailableTitle": "이 문은 열리지 않아요.",
     "unavailable": "이 방은 더 이상 사용할 수 없어요.",
-    "browse": "방 둘러보기",
     "full": "지금은 방이 가득 찼어요",
     "needsPassword": "이 방은 비밀번호가 필요해요",
     "error": "이 방에 참여하지 못했어요",
@@ -218,31 +228,23 @@
     "title": "커뮤니티 <em>디렉터리</em>",
     "roomsSubtitle": "방을 둘러보거나 안에 있는 사람들을 만나 보세요",
     "peopleSubtitle": "SpatialMeet를 만들어 가는 사람들을 만나 보세요",
-    "rooms": "방",
-    "people": "사람들",
-    "createRoom": "방 만들기",
-    "startRoom": "방 시작하기",
     "updating": "업데이트 중...",
     "roomsLive": "{count, plural, other {방 #개 운영 중}}",
-    "searchRooms": "방 검색...",
     "search": "검색",
     "loadingSpaces": "공간 불러오는 중",
     "noRoomsFound": "방을 찾을 수 없어요.",
     "noRoomsAvailable": "사용할 수 있는 방이 없어요.",
     "noRoomsFoundBody": "검색과 일치하는 방을 찾지 못했어요. 검색어를 바꿔 보세요.",
     "noRoomsAvailableBody": "아직 조용하네요. 첫 번째 업무 공간을 시작해 보세요!",
-    "createARoom": "방 만들기",
     "presence": {
       "ONLINE": "온라인",
       "IDLE": "유휴",
       "OFFLINE": "오프라인"
     },
     "lastActive": "{time} 활동",
-    "justNow": "방금",
     "full": "가득 참",
     "enter": "입장",
     "gatheringPeople": "사람들을 모으는 중...",
-    "peopleCount": "{count, plural, other {#명}}",
     "searchPeople": "사람 검색...",
     "yourProfile": "내 프로필",
     "loadingPeople": "사람들 불러오는 중",
@@ -250,17 +252,12 @@
     "noPeopleBody": "다른 검색어로 찾아보거나 나중에 다시 확인해 주세요."
   },
   "userMenu": {
-    "signIn": "로그인",
-    "dashboard": "대시보드",
-    "manageProfile": "프로필 관리",
-    "signOut": "로그아웃"
+    "manageProfile": "프로필 관리"
   },
   "dashboard": {
-    "title": "대시보드",
     "subtitle": "프로필과 방을 관리하세요",
     "activeCount": "{count}개 활성",
     "userNotFound": "사용자를 찾을 수 없어요",
-    "userNotFoundTitle": "사용자를 찾을 수 없어요",
     "backToRooms": "방 목록으로 돌아가기",
     "nameUpdated": "표시 이름을 업데이트했어요!",
     "profileFailed": "프로필을 업데이트하지 못했어요",
@@ -279,23 +276,16 @@
       "shareText": "SpatialMeet에서 {name}님의 프로필을 확인해 보세요",
       "created": "생성",
       "joined": "참여",
-      "unknown": "알 수 없음",
       "chooseCharacter": "캐릭터 선택",
       "selectAvatar": "아바타를 선택하세요"
     },
     "stats": {
       "title": "통계",
       "empty": "첫 번째 방을 만들어 보세요!",
-      "rooms": "방",
-      "active": "활성",
-      "people": "사람들"
+      "active": "활성"
     },
     "quickActions": {
-      "title": "빠른 작업",
-      "createRoom": "방 만들기",
-      "browseRooms": "방 둘러보기",
-      "createAccount": "계정 만들기",
-      "signOut": "로그아웃"
+      "title": "빠른 작업"
     },
     "activity": {
       "title": "최근 활동",
@@ -314,7 +304,6 @@
       "gridView": "그리드 보기",
       "listView": "목록 보기",
       "newRoom": "새 방",
-      "search": "방 검색...",
       "filter": {
         "all": "전체",
         "active": "활성",
@@ -326,7 +315,6 @@
       "noMatchesBody": "검색어나 필터를 바꿔 보세요",
       "noRooms": "아직 방이 없어요",
       "noRoomsBody": "첫 번째 가상 오피스를 만들어 보세요",
-      "createRoom": "방 만들기",
       "noJoined": "참여한 방이 없어요",
       "noJoinedBody": "방에 참여하면 여기에 표시돼요",
       "browsePublic": "공개 방 둘러보기"
@@ -338,21 +326,13 @@
         "offline": "오프라인"
       },
       "join": "참여",
-      "copyInvite": "초대 링크 복사",
       "copyLink": "링크 복사",
-      "players": "{count}/{max}명",
-      "unknown": "알 수 없음"
-    },
-    "widget": {
-      "view": "대시보드 보기",
-      "created": "생성",
-      "joined": "참여"
+      "players": "{count}/{max}명"
     }
   },
   "room": {
     "connecting": "연결 중...",
     "fallbackName": "방: {id}",
-    "people": "{count, plural, other {#명}}",
     "copied": "복사했어요!",
     "invite": "초대",
     "leave": "나가기"
@@ -387,9 +367,18 @@
     "leaveCall": "통화 나가기"
   },
   "status": {
-    "available": { "label": "대화 가능", "description": "이야기할 준비 완료" },
-    "busy": { "label": "바쁨", "description": "방해 금지" },
-    "away": { "label": "자리 비움", "description": "곧 돌아올게요" }
+    "available": {
+      "label": "대화 가능",
+      "description": "이야기할 준비 완료"
+    },
+    "busy": {
+      "label": "바쁨",
+      "description": "방해 금지"
+    },
+    "away": {
+      "label": "자리 비움",
+      "description": "곧 돌아올게요"
+    }
   },
   "chat": {
     "title": "방 채팅",
@@ -403,7 +392,6 @@
   "proximity": {
     "videoCall": "영상 통화",
     "audioCall": "음성 통화",
-    "roomChat": "방 채팅",
     "viewProfile": "프로필 보기"
   },
   "jukebox": {
@@ -448,9 +436,7 @@
       "medium": "480p, 화질과 속도의 균형",
       "high": "720p, 최고 화질이지만 빠른 인터넷이 필요해요"
     },
-    "default": "기본값",
-    "cancel": "취소",
-    "save": "저장"
+    "default": "기본값"
   },
   "tutorial": {
     "walk": "W A S D 키로 돌아다니세요",
@@ -485,7 +471,6 @@
   "notFound": {
     "title": "이 방은 지도에 없어요.",
     "body": "찾으시는 페이지가 없거나 이동했어요.",
-    "home": "로비로 돌아가기",
-    "rooms": "방 둘러보기"
+    "home": "로비로 돌아가기"
   }
 }

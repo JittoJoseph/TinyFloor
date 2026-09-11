@@ -35,6 +35,7 @@ export function RoomSection({
   copiedRoomId,
 }: RoomSectionProps) {
   const t = useTranslations("dashboard.rooms");
+  const tc = useTranslations("common");
   const [activeTab, setActiveTab] = useState<TabType>("created");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filterStatus, setFilterStatus] = useState<FilterStatus>("all");
@@ -167,7 +168,7 @@ export function RoomSection({
             <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder={t("search")}
+              placeholder={tc("searchRooms")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full ps-10 pe-4 py-2.5 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none text-sm transition-colors"
@@ -256,6 +257,7 @@ function EmptyState({
   filterStatus: FilterStatus;
 }) {
   const t = useTranslations("dashboard.rooms");
+  const tc = useTranslations("common");
 
   // No results from search/filter
   if (hasRooms && (searchQuery || filterStatus !== "all")) {
@@ -284,7 +286,7 @@ function EmptyState({
           className="cursor-pointer inline-flex items-center gap-2 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white font-medium px-5 py-2.5 rounded-xl transition-colors"
         >
           <Plus className="w-4 h-4" />
-          {t("createRoom")}
+          {tc("createRoom")}
         </Link>
       </div>
     );

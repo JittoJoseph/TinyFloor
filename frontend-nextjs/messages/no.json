@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet – Et virtuelt kontor du kan gå rundt i",
+    "description": "SpatialMeet er et gratis virtuelt kontor i nettleseren. Gå rundt i en pikselkunst-etasje med teamet ditt og start en videosamtale bare ved å stille deg ved siden av noen.",
+    "ogAlt": "Et SpatialMeet-rom: en 16-biters kontoretasje med skrivebord og kolleger",
+    "keywords": "virtuelt kontor, fjernarbeid, romlig chat, samarbeid på nett, virtuell arbeidsplass, metaverse-kontor, nærhetschat, nærhetsvideochat, virtuelt kontorfellesskap, videosamtaler i nettleseren",
+    "createRoomTitle": "Opprett et rom",
+    "createRoomDescription": "Åpne et virtuelt kontorrom på SpatialMeet. Gi det et navn, legg til et passord hvis du vil, og del én lenke med teamet ditt.",
+    "joinTitle": "Bli med i rommet",
+    "roomsTitle": "Utforsk rom",
+    "roomsDescription": "Bla gjennom aktive virtuelle rom og bli med i offentlige arbeidsområder på SpatialMeet.",
+    "peopleTitle": "Personer",
+    "peopleDescription": "Møt folkene som er innom SpatialMeet-rommene.",
+    "authTitle": "Logg inn",
+    "authDescription": "Logg inn på SpatialMeet for å beholde navnet ditt, figuren din og en liste over rommene dine.",
+    "dashboardTitle": "Oversikt",
+    "roomTitle": "Aktivt rom",
+    "notFoundTitle": "Fant ikke siden"
+  },
+  "common": {
+    "loading": "Laster inn...",
+    "back": "Tilbake",
+    "cancel": "Avbryt",
+    "save": "Lagre",
+    "close": "Lukk",
+    "guest": "Gjest",
+    "you": "Deg"
+  },
+  "languageSwitcher": {
+    "label": "Språk",
+    "select": "Velg språk",
+    "searchPlaceholder": "Søk etter språk…",
+    "noResults": "Fant ingen språk"
+  },
+  "nav": {
+    "main": "Hovedmeny",
+    "questions": "Spørsmål",
+    "tour": "Omvisning",
+    "dashboard": "Oversikt"
+  },
+  "hero": {
+    "title": "Det <em>koseligste</em> <br></br>virtuelle kontoret.",
+    "subtitle": "Et virtuelt kontor som ser ut som et spill. Gå rundt, prat med kollegene og føl dere som et team igjen.",
+    "cta": "Prøv det",
+    "caption": "Et SpatialMeet-rom: en 16-biters kontoretasje med skrivebord og to kolleger."
+  },
+  "landing": {
+    "description": "Et virtuelt kontor som ser ut som et spill. Gå rundt i en pikselkunst-etasje med teamet ditt og start en videosamtale bare ved å stille deg ved siden av noen.",
+    "features": [
+      "Video- og taleanrop på nært hold",
+      "2D-kontorkart du kan gå rundt i",
+      "Avatarer i pikselkunst",
+      "Tilstedeværelse og status i sanntid",
+      "Romchat"
+    ]
+  },
+  "moments": {
+    "title": "Et kontor du kan <em>gå rundt i.</em>",
+    "subtitle": "SpatialMeet beholder den delen av kontoret som samtaler aldri erstattet: å vite hvem som er der, og kunne gå bort til dem.",
+    "roomsLabel": "Rom",
+    "alwaysOn": "Alltid åpent",
+    "directory": {
+      "design": { "name": "Designteamet", "here": "5 her" },
+      "founders": { "name": "Gründerne", "here": "2 her" },
+      "jam": { "name": "Helgejam", "here": "Tomt" }
+    },
+    "enter": {
+      "title": "Åpne en lenke, så er du inne.",
+      "body": "Noen deler en romlenke. Velg en figur, skriv et navn, og så står du i etasjen med alle de andre.",
+      "chip1": "Ingen nedlasting",
+      "chip2": "Gjester velkommen",
+      "chip3": "Alle nettlesere"
+    },
+    "call": {
+      "title": "Gå bort for å prate.",
+      "body": "Kom nær en kollega, så dukker samtalelinjen opp over dem. Ett trykk starter video eller tale, direkte mellom nettleserne.",
+      "chip1": "Video eller tale",
+      "chip2": "Peer-to-peer",
+      "chip3": "Ett trykk"
+    },
+    "presence": {
+      "title": "Du ser hvem som er i nærheten.",
+      "body": "Alle har navneskilt og status. Se hvem som er ledig, hvem som er konsentrert, og hvem som allerede er i en samtale før du går bort.",
+      "chip1": "Navneskilt live",
+      "chip2": "Borte og opptatt",
+      "chip3": "Romchat"
+    },
+    "rooms": {
+      "title": "Rommet er der fortsatt i morgen.",
+      "body": "Rom slutter ikke når et møte gjør det. Hold ett åpent for teamet ditt, sett passord på hvis du trenger det, og send lenken én gang.",
+      "chip1": "Synlig for alle",
+      "chip2": "Del med lenke",
+      "chip3": "Gratis"
+    },
+    "floor": {
+      "title": "Et kontor, ikke et møte.",
+      "body": "Ingen sender invitasjoner. Folk stikker innom, jobber nær hverandre og går bort når noe dukker opp.",
+      "chip1": "Ingen invitasjoner",
+      "chip2": "Gå bort",
+      "chip3": "Hele etasjen"
+    }
+  },
+  "faq": {
+    "title": "Før du <em>går inn.</em>",
+    "items": [
+      {
+        "q": "Hva er SpatialMeet?",
+        "a": "SpatialMeet er et virtuelt kontor du går rundt i. Teamet ditt vises som pikselfigurer i en felles 2D-etasje, og en video- eller talesamtale starter når du stiller deg ved siden av noen, ikke når du klikker på en møtelenke."
+      },
+      {
+        "q": "Må jeg installere noe?",
+        "a": "Nei. SpatialMeet kjører i nettleseren på datamaskin og mobil. Åpne en romlenke, så er du inne på kontoret."
+      },
+      {
+        "q": "Er SpatialMeet gratis?",
+        "a": "Ja. Det er gratis å opprette rom, gå rundt, chatte og ringe."
+      },
+      {
+        "q": "Trenger jeg en konto for å bli med i et rom?",
+        "a": "Nei. Alle kan bli med som gjest med bare et navn. Å logge inn gir bare en lagret profil, en figur du beholder og en liste over rommene dine."
+      },
+      {
+        "q": "Hvordan fungerer videosamtalene?",
+        "a": "Samtaler går peer-to-peer via WebRTC, så lyd og video går direkte mellom nettleserne. Når en samtale er koblet til, forblir den tilkoblet til noen legger på eller forlater rommet. Å gå bort bryter den ikke."
+      },
+      {
+        "q": "Er kameraet mitt på hele tiden mens jeg er i et rom?",
+        "a": "Nei. Kamera og mikrofon åpnes bare for en samtale og frigjøres så snart den er over."
+      },
+      {
+        "q": "Kan jeg bruke SpatialMeet på mobilen?",
+        "a": "Ja. På berøringsskjermer beveger du deg med en styrespak på skjermen, og samtalekontrollene tilpasser seg den mindre skjermen."
+      },
+      {
+        "q": "Hva er forskjellen fra en vanlig videosamtale?",
+        "a": "En vanlig samtale setter alle i et rutenett til møtet er slutt. Et SpatialMeet-rom står åpent hele dagen, så du ser hvem som er der, kan gli mellom samtaler og prate med dem du går bort til."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Rommet ditt er <em>allerede åpent.</em>",
+    "publicTitle": "Gå inn på det offentlige kontoret",
+    "publicBody": "Rommet som alltid er åpent. Velg en figur, gå rundt og si hei til dem som er der.",
+    "createTitle": "Åpne et rom for teamet ditt",
+    "createBody": "Gi det et navn, legg til et passord hvis du vil, og send én lenke. Det står åpent så lenge du vil.",
+    "sampleName": "Designteamet",
+    "create": "Opprett"
+  },
+  "footer": {
+    "tagline": "Et virtuelt kontor du går rundt i. Gratis, i nettleseren.",
+    "product": "Produkt",
+    "learn": "Lær mer",
+    "elsewhere": "Andre steder",
+    "rooms": "Rom",
+    "people": "Personer",
+    "createRoom": "Opprett et rom",
+    "dashboard": "Oversikt",
+    "tour": "Omvisning i rommet",
+    "twoWays": "To veier inn",
+    "questions": "Spørsmål",
+    "rights": "© {year} Jitto Joseph. Med enerett."
+  },
+  "auth": {
+    "welcomeBack": "Velkommen tilbake",
+    "joinUs": "Bli med",
+    "signInSubtitle": "Logg inn på kontoen din",
+    "registerSubtitle": "Opprett arbeidsområdekontoen din",
+    "username": "Brukernavn",
+    "emailOptional": "E-post (valgfritt)",
+    "displayNameOptional": "Visningsnavn (valgfritt)",
+    "password": "Passord",
+    "showPassword": "Vis passord",
+    "hidePassword": "Skjul passord",
+    "signIn": "Logg inn",
+    "signUp": "Registrer deg",
+    "createAccount": "Opprett konto",
+    "noAccount": "Har du ikke konto?",
+    "haveAccount": "Har du allerede en konto?",
+    "continueGuest": "Fortsett som gjest →",
+    "error": "Det oppstod en feil"
+  },
+  "entry": {
+    "allRooms": "Alle rom",
+    "yourName": "Navnet ditt",
+    "namePlaceholder": "Hva skal folk kalle deg?",
+    "roomPassword": "Rompassord",
+    "passwordPlaceholder": "Skriv inn passordet",
+    "character": "Figur",
+    "copyInvite": "Kopier invitasjonslenke",
+    "inviteCopied": "Invitasjonslenke kopiert",
+    "openingDoor": "Åpner døren",
+    "walkIn": "Gå inn"
+  },
+  "createRoom": {
+    "title": "Åpne et rom.",
+    "roomName": "Romnavn",
+    "roomNamePlaceholder": "Designteamet, Studio, Fredagspils",
+    "advanced": "Avansert",
+    "passwordPlaceholder": "Legg til passord (valgfritt)",
+    "passwordLabel": "Rompassord",
+    "passwordHint": "Alle rom vises i katalogen. Et passord holder døren lukket for alle som ikke har det.",
+    "submit": "Opprett rommet",
+    "submitting": "Gjør klar",
+    "createError": "Kunne ikke opprette rommet. Prøv igjen.",
+    "openError": "Kunne ikke åpne rommet"
+  },
+  "join": {
+    "unavailableTitle": "Den døren åpner seg ikke.",
+    "unavailable": "Dette rommet er ikke lenger tilgjengelig.",
+    "browse": "Bla gjennom rom",
+    "full": "Rommet er fullt akkurat nå",
+    "needsPassword": "Rommet krever passord",
+    "error": "Kunne ikke bli med i rommet",
+    "roomFull": "Rommet er fullt",
+    "guestNote": "Du blir med som gjest. <link>Logg inn</link> for å beholde navnet og figuren din."
+  },
+  "directory": {
+    "title": "Fellesskapets <em>katalog</em>",
+    "roomsSubtitle": "Bla gjennom rom eller møt folkene der inne",
+    "peopleSubtitle": "Møt dem som former SpatialMeet",
+    "rooms": "Rom",
+    "people": "Personer",
+    "createRoom": "Opprett rom",
+    "startRoom": "Start et rom",
+    "updating": "Oppdaterer...",
+    "roomsLive": "{count, plural, one {# rom live} other {# rom live}}",
+    "searchRooms": "Søk etter rom...",
+    "search": "Søk",
+    "loadingSpaces": "Laster inn rom",
+    "noRoomsFound": "Fant ingen rom.",
+    "noRoomsAvailable": "Ingen tilgjengelige rom.",
+    "noRoomsFoundBody": "Vi fant ingen rom som passer søket ditt. Prøv å justere det.",
+    "noRoomsAvailableBody": "Det er stille her. Bli den første som starter et nytt arbeidsområde!",
+    "createARoom": "Opprett et rom",
+    "presence": {
+      "ONLINE": "Pålogget",
+      "IDLE": "Inaktivt",
+      "OFFLINE": "Frakoblet"
+    },
+    "lastActive": "Aktivt {time}",
+    "justNow": "akkurat nå",
+    "full": "Fullt",
+    "enter": "Gå inn",
+    "gatheringPeople": "Samler personer...",
+    "peopleCount": "{count, plural, one {# person} other {# personer}}",
+    "searchPeople": "Søk etter personer...",
+    "yourProfile": "Profilen din",
+    "loadingPeople": "Laster inn personer",
+    "noPeople": "Fant ingen personer.",
+    "noPeopleBody": "Prøv et annet søk eller kom innom igjen snart."
+  },
+  "userMenu": {
+    "signIn": "Logg inn",
+    "dashboard": "Oversikt",
+    "manageProfile": "Administrer profil",
+    "signOut": "Logg ut"
+  },
+  "dashboard": {
+    "title": "Oversikt",
+    "subtitle": "Administrer profilen og rommene dine",
+    "activeCount": "{count} aktive",
+    "userNotFound": "Fant ikke brukeren",
+    "userNotFoundTitle": "Fant ikke brukeren",
+    "backToRooms": "Tilbake til rommene",
+    "nameUpdated": "Visningsnavnet er oppdatert!",
+    "profileFailed": "Kunne ikke oppdatere profilen",
+    "characterUpdated": "Figuren er oppdatert!",
+    "characterFailed": "Kunne ikke oppdatere figuren",
+    "linkCopied": "Lenken er kopiert!",
+    "profile": {
+      "changeCharacter": "Bytt figur",
+      "editName": "Rediger visningsnavn",
+      "saveName": "Lagre visningsnavn",
+      "displayName": "Visningsnavn",
+      "guestBadge": "GJEST",
+      "copyLink": "Kopier profillenke",
+      "share": "Del profil",
+      "shareTitle": "Profilen til {name}",
+      "shareText": "Sjekk ut profilen til {name} på SpatialMeet",
+      "created": "opprettet",
+      "joined": "deltatt",
+      "unknown": "Ukjent",
+      "chooseCharacter": "Velg figur",
+      "selectAvatar": "Velg avataren din"
+    },
+    "stats": {
+      "title": "Statistikk",
+      "empty": "Opprett ditt første rom!",
+      "rooms": "Rom",
+      "active": "Aktive",
+      "people": "Personer"
+    },
+    "quickActions": {
+      "title": "Hurtighandlinger",
+      "createRoom": "Opprett rom",
+      "browseRooms": "Bla gjennom rom",
+      "createAccount": "Opprett konto",
+      "signOut": "Logg ut"
+    },
+    "activity": {
+      "title": "Nylig aktivitet",
+      "empty": "Ingen aktivitet ennå",
+      "room_created": "Opprettet",
+      "room_joined": "Ble med",
+      "room_visited": "Besøkt"
+    },
+    "collaborators": {
+      "title": "Nylige personer",
+      "empty": "Bli med i rom for å møte folk"
+    },
+    "rooms": {
+      "mine": "Mine rom",
+      "joined": "Deltatt",
+      "gridView": "Rutenettvisning",
+      "listView": "Listevisning",
+      "newRoom": "Nytt rom",
+      "search": "Søk etter rom...",
+      "filter": {
+        "all": "Alle",
+        "active": "Aktive",
+        "idle": "Inaktive",
+        "offline": "Frakoblet"
+      },
+      "loading": "Laster inn rom...",
+      "noMatches": "Ingen treff",
+      "noMatchesBody": "Prøv å justere søket eller filtrene",
+      "noRooms": "Ingen rom ennå",
+      "noRoomsBody": "Opprett ditt første virtuelle kontor",
+      "createRoom": "Opprett et rom",
+      "noJoined": "Ingen rom du har blitt med i",
+      "noJoinedBody": "Bli med i et rom for å se det her",
+      "browsePublic": "Bla gjennom offentlige rom"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Aktivt",
+        "idle": "Inaktivt",
+        "offline": "Frakoblet"
+      },
+      "join": "Bli med",
+      "copyInvite": "Kopier invitasjonslenke",
+      "copyLink": "Kopier lenke",
+      "players": "{count}/{max} spillere",
+      "unknown": "Ukjent"
+    },
+    "widget": {
+      "view": "Se oversikt",
+      "created": "opprettet",
+      "joined": "deltatt"
+    }
+  },
+  "room": {
+    "connecting": "Kobler til...",
+    "fallbackName": "Rom: {id}",
+    "people": "{count, plural, one {# person} other {# personer}}",
+    "copied": "Kopiert!",
+    "invite": "Inviter",
+    "leave": "Forlat"
+  },
+  "call": {
+    "incomingVideo": "Innkommende videosamtale...",
+    "incomingAudio": "Innkommende taleanrop...",
+    "decline": "Avslå",
+    "accept": "Godta",
+    "tutorial": "Opplæringssamtale",
+    "minimize": "Minimer",
+    "expand": "Utvid",
+    "calling": "Ringer...",
+    "cancel": "Avbryt samtale",
+    "errors": {
+      "connection": "Tilkoblingen mislyktes",
+      "unsupported": "Denne nettleseren har ikke tilgang til medieenheter",
+      "media": "Kamera eller mikrofon er ikke tilgjengelig",
+      "camera": "Kameraet er ikke tilgjengelig"
+    }
+  },
+  "controls": {
+    "status": "Status: {status}",
+    "muteMic": "Slå av mikrofonen",
+    "unmuteMic": "Slå på mikrofonen",
+    "cameraOff": "Slå av kameraet",
+    "cameraOn": "Slå på kameraet",
+    "muteSpeaker": "Slå av høyttaleren",
+    "unmuteSpeaker": "Slå på høyttaleren",
+    "openChat": "Åpne chat",
+    "settings": "Innstillinger",
+    "leaveCall": "Forlat samtalen"
+  },
+  "status": {
+    "available": { "label": "Tilgjengelig", "description": "Klar for en prat" },
+    "busy": { "label": "Opptatt", "description": "Ikke stør" },
+    "away": { "label": "Borte", "description": "Straks tilbake" }
+  },
+  "chat": {
+    "title": "Romchat",
+    "system": "System",
+    "welcome": "Velkommen til romchatten. Meldinger er synlige for alle her.",
+    "intro": "Her kan du chatte med alle i rommet.",
+    "placeholder": "Skriv en melding...",
+    "close": "Lukk chat",
+    "send": "Send melding"
+  },
+  "proximity": {
+    "videoCall": "Videosamtale",
+    "audioCall": "Taleanrop",
+    "roomChat": "Romchat",
+    "viewProfile": "Se profil"
+  },
+  "jukebox": {
+    "title": "Romhøyttaler",
+    "close": "Lukk høyttalerkontrollene",
+    "tapToPlay": "Trykk på spill av for å høre",
+    "playing": "Spilles for alle i rommet",
+    "paused": "Satt på pause for alle i rommet",
+    "previous": "Forrige spor",
+    "next": "Neste spor",
+    "play": "Spill av",
+    "pause": "Pause",
+    "playTrack": "Spill av {track}"
+  },
+  "whiteboard": {
+    "title": "Tavle",
+    "penColor": "Pennfarge {color}",
+    "penSize": "Pennstørrelse {size}",
+    "eraser": "Viskelær",
+    "clear": "Tøm tavlen",
+    "close": "Lukk tavlen",
+    "hint": "Alle i rommet tegner på samme tavle. Trykk på Esc for å gå bort."
+  },
+  "settings": {
+    "title": "Innstillinger",
+    "close": "Lukk innstillinger",
+    "audio": "Lyd",
+    "video": "Video",
+    "microphone": "Mikrofon",
+    "micVolume": "Mikrofonvolum",
+    "speaker": "Høyttaler",
+    "speakerVolume": "Høyttalervolum",
+    "camera": "Kamera",
+    "videoQuality": "Videokvalitet",
+    "quality": {
+      "low": "Lav",
+      "medium": "Middels",
+      "high": "Høy"
+    },
+    "qualityHint": {
+      "low": "360p, best for trege tilkoblinger",
+      "medium": "480p, balanse mellom kvalitet og hastighet",
+      "high": "720p, best kvalitet, men krever raskt internett"
+    },
+    "default": "Standard",
+    "cancel": "Avbryt",
+    "save": "Lagre"
+  },
+  "tutorial": {
+    "walk": "Gå rundt med W A S D",
+    "walkTouch": "Dra i styrespaken for å gå",
+    "click": "Eller klikk hvor som helst for å gå rett dit",
+    "clickTouch": "Eller trykk hvor som helst for å gå rett dit",
+    "approach": "Gå nær noen for å ringe eller chatte",
+    "invite": "Inviter noen med denne lenken, eller så er du klar",
+    "copy": "Kopier",
+    "copied": "Kopiert",
+    "linkHint": "Alle med lenken havner i dette rommet",
+    "done": "Ferdig",
+    "skip": "Hopp over",
+    "next": "Neste"
+  },
+  "scene": {
+    "guide": "Guide",
+    "sit": "Trykk E for å sette deg",
+    "stand": "Trykk E for å reise deg",
+    "music": "Klikk for musikk",
+    "draw": "Klikk for å tegne"
+  },
+  "characters": {
+    "previous": "Forrige figur",
+    "next": "Neste figur",
+    "select": "Velg {name}",
+    "keyHint": "Bruk piltastene ← →"
+  },
+  "toast": {
+    "dismiss": "Lukk"
+  },
+  "notFound": {
+    "title": "Dette rommet finnes ikke på kartet.",
+    "body": "Siden du leter etter finnes ikke eller er flyttet.",
+    "home": "Tilbake til lobbyen",
+    "rooms": "Bla gjennom rom"
+  }
+}

@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet - Een virtueel kantoor waar je rondloopt",
+    "description": "SpatialMeet is een gratis virtueel kantoor in je browser. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
+    "ogAlt": "Een SpatialMeet-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
+    "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, metaverse-kantoor, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
+    "createRoomTitle": "Ruimte aanmaken",
+    "createRoomDescription": "Open een virtuele kantoorruimte op SpatialMeet. Geef hem een naam, voeg desgewenst een wachtwoord toe en deel één link met je team.",
+    "joinTitle": "Ruimte binnengaan",
+    "roomsTitle": "Ruimtes verkennen",
+    "roomsDescription": "Bekijk actieve virtuele ruimtes en ga openbare werkplekken binnen op SpatialMeet.",
+    "peopleTitle": "Mensen",
+    "peopleDescription": "Maak kennis met de mensen die rondhangen in SpatialMeet-ruimtes.",
+    "authTitle": "Inloggen",
+    "authDescription": "Log in bij SpatialMeet om je naam, je personage en een lijst van je ruimtes te bewaren.",
+    "dashboardTitle": "Dashboard",
+    "roomTitle": "Actieve ruimte",
+    "notFoundTitle": "Pagina niet gevonden"
+  },
+  "common": {
+    "loading": "Laden...",
+    "back": "Terug",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "close": "Sluiten",
+    "guest": "Gast",
+    "you": "Jij"
+  },
+  "languageSwitcher": {
+    "label": "Taal",
+    "select": "Taal kiezen",
+    "searchPlaceholder": "Taal zoeken…",
+    "noResults": "Geen talen gevonden"
+  },
+  "nav": {
+    "main": "Hoofdmenu",
+    "questions": "Vragen",
+    "tour": "Rondleiding",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
+    "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
+    "cta": "Probeer het",
+    "caption": "Een SpatialMeet-ruimte: een 16-bit kantoorverdieping met bureaus en twee teamgenoten."
+  },
+  "landing": {
+    "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
+    "features": [
+      "Video- en spraakgesprekken op nabijheid",
+      "Begaanbare 2D-kantoorkaart",
+      "Pixel-art avatars",
+      "Aanwezigheid en status in realtime",
+      "Ruimtechat"
+    ]
+  },
+  "moments": {
+    "title": "Een kantoor waar je <em>kunt rondlopen.</em>",
+    "subtitle": "SpatialMeet behoudt het deel van een kantoor dat gesprekken nooit hebben vervangen: weten wie er is, en even naar iemand toe kunnen lopen.",
+    "roomsLabel": "Ruimtes",
+    "alwaysOn": "Altijd open",
+    "directory": {
+      "design": { "name": "Designteam", "here": "5 aanwezig" },
+      "founders": { "name": "Oprichters", "here": "2 aanwezig" },
+      "jam": { "name": "Weekendjam", "here": "Leeg" }
+    },
+    "enter": {
+      "title": "Open een link en je bent binnen.",
+      "body": "Iemand deelt een link naar een ruimte. Kies een personage, typ een naam en je staat op de verdieping met alle anderen.",
+      "chip1": "Geen download",
+      "chip2": "Gasten welkom",
+      "chip3": "Elke browser"
+    },
+    "call": {
+      "title": "Loop erheen om te praten.",
+      "body": "Kom dicht bij een teamgenoot en de belbalk verschijnt boven diegene. Eén tik start video of spraak, rechtstreeks tussen browsers.",
+      "chip1": "Video of spraak",
+      "chip2": "Peer-to-peer",
+      "chip3": "Eén tik"
+    },
+    "presence": {
+      "title": "Je ziet wie er rondloopt.",
+      "body": "Iedereen heeft een naambordje en een status. Zie wie er vrij is, wie geconcentreerd werkt en wie al in gesprek is voordat je erheen loopt.",
+      "chip1": "Live naambordjes",
+      "chip2": "Afwezig en bezet",
+      "chip3": "Ruimtechat"
+    },
+    "rooms": {
+      "title": "Morgen is de ruimte er nog.",
+      "body": "Ruimtes stoppen niet als een vergadering stopt. Houd er één open voor je team, zet er zo nodig een wachtwoord op en stuur de link één keer.",
+      "chip1": "Zichtbaar voor iedereen",
+      "chip2": "Delen via link",
+      "chip3": "Gratis"
+    },
+    "floor": {
+      "title": "Een kantoor, geen vergadering.",
+      "body": "Niemand stuurt een uitnodiging. Mensen komen langs, werken bij elkaar in de buurt en lopen naar elkaar toe als er iets is.",
+      "chip1": "Geen uitnodigingen",
+      "chip2": "Loop even langs",
+      "chip3": "De hele verdieping"
+    }
+  },
+  "faq": {
+    "title": "Voordat je <em>binnenloopt.</em>",
+    "items": [
+      {
+        "q": "Wat is SpatialMeet?",
+        "a": "SpatialMeet is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
+      },
+      {
+        "q": "Moet ik iets installeren?",
+        "a": "Nee. SpatialMeet werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+      },
+      {
+        "q": "Is SpatialMeet gratis?",
+        "a": "Ja. Ruimtes aanmaken, rondlopen, chatten en bellen is gratis."
+      },
+      {
+        "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
+        "a": "Nee. Iedereen kan als gast meedoen met alleen een naam. Inloggen voegt alleen een opgeslagen profiel toe, een personage dat je houdt en een lijst van je ruimtes."
+      },
+      {
+        "q": "Hoe werken de videogesprekken?",
+        "a": "Gesprekken lopen peer-to-peer via WebRTC, dus audio en video gaan rechtstreeks tussen browsers. Zodra een gesprek verbonden is, blijft het verbonden tot iemand ophangt of de ruimte verlaat. Weglopen verbreekt het niet."
+      },
+      {
+        "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
+        "a": "Nee. Camera en microfoon worden alleen voor een gesprek geopend en vrijgegeven zodra het afgelopen is."
+      },
+      {
+        "q": "Kan ik SpatialMeet op mijn telefoon gebruiken?",
+        "a": "Ja. Op touchapparaten beweeg je met een joystick op het scherm en passen de belknoppen zich aan het kleinere scherm aan."
+      },
+      {
+        "q": "Wat is het verschil met een gewoon videogesprek?",
+        "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een SpatialMeet-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Je ruimte is <em>al open.</em>",
+    "publicTitle": "Loop het openbare kantoor binnen",
+    "publicBody": "De ruimte die altijd open is. Kies een personage, loop rond en zeg hallo tegen wie er is.",
+    "createTitle": "Open een ruimte voor je team",
+    "createBody": "Geef hem een naam, voeg desgewenst een wachtwoord toe en stuur één link. Hij blijft open zolang je wilt.",
+    "sampleName": "Designteam",
+    "create": "Aanmaken"
+  },
+  "footer": {
+    "tagline": "Een virtueel kantoor waar je rondloopt. Gratis, in de browser.",
+    "product": "Product",
+    "learn": "Ontdekken",
+    "elsewhere": "Elders",
+    "rooms": "Ruimtes",
+    "people": "Mensen",
+    "createRoom": "Ruimte aanmaken",
+    "dashboard": "Dashboard",
+    "tour": "Rondleiding door de ruimte",
+    "twoWays": "Twee manieren om binnen te komen",
+    "questions": "Vragen",
+    "rights": "© {year} Jitto Joseph. Alle rechten voorbehouden."
+  },
+  "auth": {
+    "welcomeBack": "Welkom terug",
+    "joinUs": "Doe mee",
+    "signInSubtitle": "Log in op je account",
+    "registerSubtitle": "Maak je werkplekaccount aan",
+    "username": "Gebruikersnaam",
+    "emailOptional": "E-mail (optioneel)",
+    "displayNameOptional": "Weergavenaam (optioneel)",
+    "password": "Wachtwoord",
+    "showPassword": "Wachtwoord tonen",
+    "hidePassword": "Wachtwoord verbergen",
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
+    "createAccount": "Account aanmaken",
+    "noAccount": "Nog geen account?",
+    "haveAccount": "Heb je al een account?",
+    "continueGuest": "Doorgaan als gast →",
+    "error": "Er is een fout opgetreden"
+  },
+  "entry": {
+    "allRooms": "Alle ruimtes",
+    "yourName": "Je naam",
+    "namePlaceholder": "Hoe moeten mensen je noemen?",
+    "roomPassword": "Wachtwoord van de ruimte",
+    "passwordPlaceholder": "Voer het wachtwoord in",
+    "character": "Personage",
+    "copyInvite": "Uitnodigingslink kopiëren",
+    "inviteCopied": "Uitnodigingslink gekopieerd",
+    "openingDoor": "De deur gaat open",
+    "walkIn": "Naar binnen"
+  },
+  "createRoom": {
+    "title": "Open een ruimte.",
+    "roomName": "Naam van de ruimte",
+    "roomNamePlaceholder": "Designteam, Studio, Vrijdagborrel",
+    "advanced": "Geavanceerd",
+    "passwordPlaceholder": "Wachtwoord toevoegen (optioneel)",
+    "passwordLabel": "Wachtwoord van de ruimte",
+    "passwordHint": "Elke ruimte staat in de gids. Een wachtwoord houdt de deur dicht voor iedereen die het niet heeft.",
+    "submit": "Ruimte aanmaken",
+    "submitting": "Bezig met inrichten",
+    "createError": "Kan de ruimte niet aanmaken. Probeer het opnieuw.",
+    "openError": "Kan de ruimte niet openen"
+  },
+  "join": {
+    "unavailableTitle": "Die deur gaat niet open.",
+    "unavailable": "Deze ruimte is niet meer beschikbaar.",
+    "browse": "Ruimtes bekijken",
+    "full": "Deze ruimte is nu vol",
+    "needsPassword": "Deze ruimte heeft een wachtwoord nodig",
+    "error": "Kan niet deelnemen aan deze ruimte",
+    "roomFull": "Ruimte is vol",
+    "guestNote": "Je doet mee als gast. <link>Log in</link> om je naam en personage te bewaren."
+  },
+  "directory": {
+    "title": "Community-<em>gids</em>",
+    "roomsSubtitle": "Bekijk ruimtes of ontmoet de mensen erin",
+    "peopleSubtitle": "Maak kennis met de makers die SpatialMeet vormgeven",
+    "rooms": "Ruimtes",
+    "people": "Mensen",
+    "createRoom": "Ruimte aanmaken",
+    "startRoom": "Start een ruimte",
+    "updating": "Bijwerken...",
+    "roomsLive": "{count, plural, one {# ruimte live} other {# ruimtes live}}",
+    "searchRooms": "Ruimtes zoeken...",
+    "search": "Zoeken",
+    "loadingSpaces": "Ruimtes laden",
+    "noRoomsFound": "Geen ruimtes gevonden.",
+    "noRoomsAvailable": "Geen ruimtes beschikbaar.",
+    "noRoomsFoundBody": "We konden geen ruimtes vinden die bij je zoekopdracht passen. Probeer je zoekopdracht aan te passen.",
+    "noRoomsAvailableBody": "Het is hier stil. Wees de eerste die een nieuwe werkplek start!",
+    "createARoom": "Ruimte aanmaken",
+    "presence": {
+      "ONLINE": "Online",
+      "IDLE": "Inactief",
+      "OFFLINE": "Offline"
+    },
+    "lastActive": "Actief {time}",
+    "justNow": "zojuist",
+    "full": "Vol",
+    "enter": "Binnengaan",
+    "gatheringPeople": "Mensen verzamelen...",
+    "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
+    "searchPeople": "Mensen zoeken...",
+    "yourProfile": "Je profiel",
+    "loadingPeople": "Mensen laden",
+    "noPeople": "Geen mensen gevonden.",
+    "noPeopleBody": "Probeer een andere zoekopdracht of kom snel terug."
+  },
+  "userMenu": {
+    "signIn": "Inloggen",
+    "dashboard": "Dashboard",
+    "manageProfile": "Profiel beheren",
+    "signOut": "Uitloggen"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Beheer je profiel en ruimtes",
+    "activeCount": "{count} actief",
+    "userNotFound": "Gebruiker niet gevonden",
+    "userNotFoundTitle": "Gebruiker niet gevonden",
+    "backToRooms": "Terug naar ruimtes",
+    "nameUpdated": "Weergavenaam bijgewerkt!",
+    "profileFailed": "Profiel bijwerken mislukt",
+    "characterUpdated": "Personage bijgewerkt!",
+    "characterFailed": "Personage bijwerken mislukt",
+    "linkCopied": "Link gekopieerd!",
+    "profile": {
+      "changeCharacter": "Personage wijzigen",
+      "editName": "Weergavenaam bewerken",
+      "saveName": "Weergavenaam opslaan",
+      "displayName": "Weergavenaam",
+      "guestBadge": "GAST",
+      "copyLink": "Profiellink kopiëren",
+      "share": "Profiel delen",
+      "shareTitle": "Profiel van {name}",
+      "shareText": "Bekijk het profiel van {name} op SpatialMeet",
+      "created": "aangemaakt",
+      "joined": "bijgewoond",
+      "unknown": "Onbekend",
+      "chooseCharacter": "Kies personage",
+      "selectAvatar": "Selecteer je avatar"
+    },
+    "stats": {
+      "title": "Statistieken",
+      "empty": "Maak je eerste ruimte aan!",
+      "rooms": "Ruimtes",
+      "active": "Actief",
+      "people": "Mensen"
+    },
+    "quickActions": {
+      "title": "Snelle acties",
+      "createRoom": "Ruimte aanmaken",
+      "browseRooms": "Ruimtes bekijken",
+      "createAccount": "Account aanmaken",
+      "signOut": "Uitloggen"
+    },
+    "activity": {
+      "title": "Recente activiteit",
+      "empty": "Nog geen activiteit",
+      "room_created": "Aangemaakt",
+      "room_joined": "Deelgenomen",
+      "room_visited": "Bezocht"
+    },
+    "collaborators": {
+      "title": "Recente mensen",
+      "empty": "Ga ruimtes binnen om mensen te ontmoeten"
+    },
+    "rooms": {
+      "mine": "Mijn ruimtes",
+      "joined": "Deelgenomen",
+      "gridView": "Rasterweergave",
+      "listView": "Lijstweergave",
+      "newRoom": "Nieuwe ruimte",
+      "search": "Ruimtes zoeken...",
+      "filter": {
+        "all": "Alle",
+        "active": "Actief",
+        "idle": "Inactief",
+        "offline": "Offline"
+      },
+      "loading": "Ruimtes laden...",
+      "noMatches": "Geen resultaten",
+      "noMatchesBody": "Pas je zoekopdracht of filters aan",
+      "noRooms": "Nog geen ruimtes",
+      "noRoomsBody": "Maak je eerste virtuele kantoorruimte",
+      "createRoom": "Ruimte aanmaken",
+      "noJoined": "Nog geen ruimtes bijgewoond",
+      "noJoinedBody": "Ga een ruimte binnen om hem hier te zien",
+      "browsePublic": "Openbare ruimtes bekijken"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Actief",
+        "idle": "Inactief",
+        "offline": "Offline"
+      },
+      "join": "Deelnemen",
+      "copyInvite": "Uitnodigingslink kopiëren",
+      "copyLink": "Link kopiëren",
+      "players": "{count}/{max} spelers",
+      "unknown": "Onbekend"
+    },
+    "widget": {
+      "view": "Dashboard bekijken",
+      "created": "aangemaakt",
+      "joined": "bijgewoond"
+    }
+  },
+  "room": {
+    "connecting": "Verbinden...",
+    "fallbackName": "Ruimte: {id}",
+    "people": "{count, plural, one {# persoon} other {# mensen}}",
+    "copied": "Gekopieerd!",
+    "invite": "Uitnodigen",
+    "leave": "Verlaten"
+  },
+  "call": {
+    "incomingVideo": "Inkomend videogesprek...",
+    "incomingAudio": "Inkomend spraakgesprek...",
+    "decline": "Weigeren",
+    "accept": "Accepteren",
+    "tutorial": "Tutorialgesprek",
+    "minimize": "Minimaliseren",
+    "expand": "Vergroten",
+    "calling": "Bellen...",
+    "cancel": "Gesprek annuleren",
+    "errors": {
+      "connection": "Verbinding mislukt",
+      "unsupported": "Deze browser heeft geen toegang tot mediaapparaten",
+      "media": "Camera of microfoon niet beschikbaar",
+      "camera": "Camera niet beschikbaar"
+    }
+  },
+  "controls": {
+    "status": "Status: {status}",
+    "muteMic": "Microfoon dempen",
+    "unmuteMic": "Microfoon aanzetten",
+    "cameraOff": "Camera uitzetten",
+    "cameraOn": "Camera aanzetten",
+    "muteSpeaker": "Luidspreker dempen",
+    "unmuteSpeaker": "Luidspreker aanzetten",
+    "openChat": "Chat openen",
+    "settings": "Instellingen",
+    "leaveCall": "Gesprek verlaten"
+  },
+  "status": {
+    "available": { "label": "Beschikbaar", "description": "Klaar om te kletsen" },
+    "busy": { "label": "Bezet", "description": "Niet storen" },
+    "away": { "label": "Afwezig", "description": "Zo terug" }
+  },
+  "chat": {
+    "title": "Ruimtechat",
+    "system": "Systeem",
+    "welcome": "Welkom in de ruimtechat. Berichten zijn zichtbaar voor iedereen hier.",
+    "intro": "Hier kun je chatten met iedereen in deze ruimte.",
+    "placeholder": "Typ een bericht...",
+    "close": "Chat sluiten",
+    "send": "Bericht versturen"
+  },
+  "proximity": {
+    "videoCall": "Videogesprek",
+    "audioCall": "Spraakgesprek",
+    "roomChat": "Ruimtechat",
+    "viewProfile": "Profiel bekijken"
+  },
+  "jukebox": {
+    "title": "Ruimtespeaker",
+    "close": "Speakerbediening sluiten",
+    "tapToPlay": "Tik op afspelen om het te horen",
+    "playing": "Speelt voor iedereen in de ruimte",
+    "paused": "Gepauzeerd voor iedereen in de ruimte",
+    "previous": "Vorig nummer",
+    "next": "Volgend nummer",
+    "play": "Afspelen",
+    "pause": "Pauzeren",
+    "playTrack": "{track} afspelen"
+  },
+  "whiteboard": {
+    "title": "Whiteboard",
+    "penColor": "Penkleur {color}",
+    "penSize": "Pengrootte {size}",
+    "eraser": "Gum",
+    "clear": "Bord wissen",
+    "close": "Whiteboard sluiten",
+    "hint": "Iedereen in de ruimte tekent op hetzelfde bord. Druk op Esc om weg te stappen."
+  },
+  "settings": {
+    "title": "Instellingen",
+    "close": "Instellingen sluiten",
+    "audio": "Audio",
+    "video": "Video",
+    "microphone": "Microfoon",
+    "micVolume": "Microfoonvolume",
+    "speaker": "Luidspreker",
+    "speakerVolume": "Luidsprekervolume",
+    "camera": "Camera",
+    "videoQuality": "Videokwaliteit",
+    "quality": {
+      "low": "Laag",
+      "medium": "Gemiddeld",
+      "high": "Hoog"
+    },
+    "qualityHint": {
+      "low": "360p, het best voor trage verbindingen",
+      "medium": "480p, balans tussen kwaliteit en snelheid",
+      "high": "720p, beste kwaliteit maar vereist snel internet"
+    },
+    "default": "Standaard",
+    "cancel": "Annuleren",
+    "save": "Opslaan"
+  },
+  "tutorial": {
+    "walk": "Loop rond met W A S D",
+    "walkTouch": "Sleep de joystick om te lopen",
+    "click": "Of klik ergens om er direct naartoe te lopen",
+    "clickTouch": "Of tik ergens om er direct naartoe te lopen",
+    "approach": "Ga dicht bij iemand staan om te bellen of te chatten",
+    "invite": "Nodig iemand uit met deze link, of je bent klaar",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "linkHint": "Iedereen met de link komt in deze ruimte",
+    "done": "Klaar",
+    "skip": "Overslaan",
+    "next": "Volgende"
+  },
+  "scene": {
+    "guide": "Gids",
+    "sit": "Druk op E om te zitten",
+    "stand": "Druk op E om op te staan",
+    "music": "Klik voor muziek",
+    "draw": "Klik om te tekenen"
+  },
+  "characters": {
+    "previous": "Vorig personage",
+    "next": "Volgend personage",
+    "select": "{name} selecteren",
+    "keyHint": "Gebruik de pijltjestoetsen ← →"
+  },
+  "toast": {
+    "dismiss": "Sluiten"
+  },
+  "notFound": {
+    "title": "Deze ruimte staat niet op de kaart.",
+    "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "home": "Terug naar de lobby",
+    "rooms": "Ruimtes bekijken"
+  }
+}

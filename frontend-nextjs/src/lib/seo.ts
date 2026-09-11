@@ -56,6 +56,8 @@ interface PageMetadataInput {
   locale: string;
   /** Keep the page out of search indexes. */
   noindex?: boolean;
+  /** OG/Twitter title for pages without a `title` (the home page). */
+  socialTitle?: string;
 }
 
 /**
@@ -69,9 +71,10 @@ export function pageMetadata({
   path,
   locale,
   noindex = false,
+  socialTitle,
 }: PageMetadataInput): Metadata {
   const canonical = localePath(locale, path);
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : undefined;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : socialTitle;
 
   return {
     ...(title ? { title } : {}),

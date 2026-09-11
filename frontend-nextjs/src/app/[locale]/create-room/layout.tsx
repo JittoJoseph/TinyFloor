@@ -1,10 +1,21 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Create a Room',
-  description:
-    'Open a virtual office room on SpatialMeet. Name it, add a password if you want one, then share one link with your team.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+  return pageMetadata({
+    title: t('createRoomTitle'),
+    description: t('createRoomDescription'),
+    path: '/create-room',
+    locale,
+  });
+}
 
 export default function CreateRoomLayout({
   children,

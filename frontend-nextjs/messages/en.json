@@ -57,7 +57,7 @@
   "moments": {
     "title": "An office you can <em>walk around in.</em>",
     "subtitle": "SpatialMeet keeps the part of an office that calls never replaced: knowing who is there, and being able to walk over.",
-    "rooms": "Rooms",
+    "roomsLabel": "Rooms",
     "alwaysOn": "Always on",
     "directory": {
       "design": { "name": "Design team", "here": "5 here" },
@@ -85,7 +85,7 @@
       "chip2": "Away and busy",
       "chip3": "Room chat"
     },
-    "roomsMoment": {
+    "rooms": {
       "title": "The room is still there tomorrow.",
       "body": "Rooms do not end when a meeting does. Keep one open for your team, put a password on it if you need to, and send the link once.",
       "chip1": "Listed for everyone",

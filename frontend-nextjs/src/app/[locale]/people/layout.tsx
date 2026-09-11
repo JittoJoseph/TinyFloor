@@ -10,14 +10,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'metadata' });
   return pageMetadata({
-    title: t('roomsTitle'),
-    description: t('roomsDescription'),
-    path: '/rooms',
+    title: t('peopleTitle'),
+    description: t('peopleDescription'),
+    path: '/people',
     locale,
   });
 }
 
-export default function RoomsLayout({
+export default function PeopleLayout({
   children,
 }: {
   children: React.ReactNode;

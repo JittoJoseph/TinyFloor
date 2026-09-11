@@ -1,51 +1,64 @@
 import React from "react";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { RoomMoments } from "@/components/landing/RoomMoments";
 import { FAQ } from "@/components/landing/FAQ";
-import { faqs } from "@/components/landing/faqs";
 import { CTA } from "@/components/landing/CTA";
 import { Footer } from "@/components/landing/Footer";
 
-const description =
-  "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.";
+type Props = { params: Promise<{ locale: string }> };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "SpatialMeet",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web browser",
-    url: SITE_URL,
-    image: `${SITE_URL}/office.png`,
-    description,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return pageMetadata({
+    path: "/",
+    locale,
+    description: t("description"),
+    socialTitle: t("title"),
+  });
+}
+
+export default async function LandingPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale });
+  const faqs = t.raw("faq.items") as Array<{ q: string; a: string }>;
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "SpatialMeet",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web browser",
+      url: SITE_URL,
+      image: `${SITE_URL}/office.png`,
+      inLanguage: locale,
+      description: t("landing.description"),
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      featureList: t.raw("landing.features") as string[],
     },
-    featureList: [
-      "Proximity video and voice calls",
-      "Walkable 2D office map",
-      "Pixel-art avatars",
-      "Real-time presence and status",
-      "Room chat",
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
-    })),
-  },
-];
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      inLanguage: locale,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  ];
 
-export default function LandingPage() {
   return (
     <div className="min-h-screen w-full relative">
       <link rel="preload" as="image" href="/office.png" fetchPriority="high" />

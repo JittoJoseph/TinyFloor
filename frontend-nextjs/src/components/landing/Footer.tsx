@@ -1,18 +1,7 @@
 import React from "react";
-import Link from "next/link";
-
-const product = [
-  { label: "Rooms", href: "/rooms" },
-  { label: "People", href: "/people" },
-  { label: "Create a room", href: "/create-room" },
-  { label: "Dashboard", href: "/dashboard" },
-];
-
-const learn = [
-  { label: "Tour the room", href: "/#how-it-works" },
-  { label: "Two ways in", href: "/#start" },
-  { label: "Questions", href: "/#faq" },
-];
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/i18n/navigation";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const elsewhere = [
   { label: "GitHub", href: "https://github.com/JittoJoseph" },
@@ -20,16 +9,35 @@ const elsewhere = [
   { label: "Portfolio", href: "https://www.jittojoseph.xyz" },
 ];
 
-const columns = [
-  { title: "Product", links: product, external: false },
-  { title: "Learn", links: learn, external: false },
-  { title: "Elsewhere", links: elsewhere, external: true },
-];
-
 const linkClass =
   "cursor-pointer font-body text-sm text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:text-[var(--color-braun-orange)] transition-all";
 
+const headingClass =
+  "font-body text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-35 mb-4";
+
 export const Footer: React.FC = () => {
+  const t = useTranslations("footer");
+
+  const columns = [
+    {
+      title: t("product"),
+      links: [
+        { label: t("rooms"), href: "/rooms" },
+        { label: t("people"), href: "/people" },
+        { label: t("createRoom"), href: "/create-room" },
+        { label: t("dashboard"), href: "/dashboard" },
+      ],
+    },
+    {
+      title: t("learn"),
+      links: [
+        { label: t("tour"), href: "/#how-it-works" },
+        { label: t("twoWays"), href: "/#start" },
+        { label: t("questions"), href: "/#faq" },
+      ],
+    },
+  ];
+
   return (
     <footer className="w-full bg-[var(--color-braun-bg)] border-t border-black/10 py-12 md:py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
@@ -39,25 +47,17 @@ export const Footer: React.FC = () => {
               SpatialMeet
             </div>
             <p className="font-body text-sm text-[var(--color-braun-text)] opacity-50 mt-3 max-w-xs leading-relaxed">
-              A virtual office you walk around in. Free, in the browser.
+              {t("tagline")}
             </p>
           </div>
 
           {columns.map((column) => (
             <nav key={column.title} aria-label={column.title}>
-              <h2 className="font-body text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-35 mb-4">
-                {column.title}
-              </h2>
+              <h2 className={headingClass}>{column.title}</h2>
               <ul className="flex flex-col gap-2.5">
                 {column.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={linkClass}
-                      {...(column.external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>
                       {link.label}
                     </Link>
                   </li>
@@ -65,10 +65,31 @@ export const Footer: React.FC = () => {
               </ul>
             </nav>
           ))}
+
+          <nav aria-label={t("elsewhere")}>
+            <h2 className={headingClass}>{t("elsewhere")}</h2>
+            <ul className="flex flex-col gap-2.5">
+              {elsewhere.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        <div className="font-body text-xs text-[var(--color-braun-text)] opacity-40 mt-12 pt-6 border-t border-black/10">
-          © {new Date().getFullYear()} Jitto Joseph. All rights reserved.
+        <div className="mt-12 pt-6 border-t border-black/10 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4">
+          <span className="font-body text-xs text-[var(--color-braun-text)] opacity-40">
+            {t("rights", { year: new Date().getFullYear() })}
+          </span>
+          <LanguageSwitcher />
         </div>
       </div>
     </footer>

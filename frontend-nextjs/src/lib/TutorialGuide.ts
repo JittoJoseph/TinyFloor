@@ -1,13 +1,9 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
 import { NavGrid } from "./Navigation";
-import {
-  GUIDE_ID,
-  GUIDE_NAME,
-  GUIDE_SPRITE,
-  TUTORIAL_FINISHED_EVENT,
-} from "./tutorial";
+import { GUIDE_ID, GUIDE_SPRITE, TUTORIAL_FINISHED_EVENT } from "./tutorial";
 import { callManager } from "./CallManager";
+import { sceneText } from "./sceneText";
 import { TILE_SIZE, pixelToTile } from "./types";
 
 const FOLLOW_INTERVAL = 1200;
@@ -50,7 +46,7 @@ export class TutorialGuide {
     const spawn = this.tileNearPlayer();
     playerManager.addPlayer(
       GUIDE_ID,
-      GUIDE_NAME,
+      sceneText().guide,
       spawn.x,
       spawn.y,
       GUIDE_SPRITE,

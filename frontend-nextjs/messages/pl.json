@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet – Wirtualne biuro, po którym można chodzić",
+    "description": "SpatialMeet to darmowe wirtualne biuro w przeglądarce. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
+    "ogAlt": "Pokój SpatialMeet: 16-bitowe piętro biura z biurkami i członkami zespołu",
+    "keywords": "wirtualne biuro, praca na odległość, czat przestrzenny, współpraca online, wirtualna przestrzeń do pracy, biuro w metaverse, czat zbliżeniowy, wideoczat zbliżeniowy, wirtualny coworking, rozmowy wideo w przeglądarce",
+    "createRoomTitle": "Utwórz pokój",
+    "createRoomDescription": "Otwórz wirtualny pokój biurowy w SpatialMeet. Nadaj mu nazwę, dodaj hasło, jeśli chcesz, i udostępnij zespołowi jeden link.",
+    "joinTitle": "Dołącz do pokoju",
+    "roomsTitle": "Przeglądaj pokoje",
+    "roomsDescription": "Przeglądaj aktywne wirtualne pokoje i dołączaj do publicznych przestrzeni roboczych w SpatialMeet.",
+    "peopleTitle": "Ludzie",
+    "peopleDescription": "Poznaj osoby, które spędzają czas w pokojach SpatialMeet.",
+    "authTitle": "Zaloguj się",
+    "authDescription": "Zaloguj się do SpatialMeet, aby zachować swoje imię, postać i listę pokoi.",
+    "dashboardTitle": "Panel",
+    "roomTitle": "Aktywny pokój",
+    "notFoundTitle": "Nie znaleziono strony"
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "back": "Wstecz",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "close": "Zamknij",
+    "guest": "Gość",
+    "you": "Ty"
+  },
+  "languageSwitcher": {
+    "label": "Język",
+    "select": "Wybierz język",
+    "searchPlaceholder": "Szukaj języka…",
+    "noResults": "Nie znaleziono języków"
+  },
+  "nav": {
+    "main": "Główne",
+    "questions": "Pytania",
+    "tour": "Wycieczka",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "title": "<em>Najprzytulniejsze</em> <br></br>wirtualne biuro.",
+    "subtitle": "Wirtualne biuro, które wygląda jak gra. Chodź po nim, rozmawiaj ze współpracownikami i znów poczuj się jak zespół.",
+    "cta": "Wypróbuj",
+    "caption": "Pokój SpatialMeet: 16-bitowe piętro biura z biurkami i dwoma członkami zespołu."
+  },
+  "landing": {
+    "description": "Wirtualne biuro, które wygląda jak gra. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
+    "features": [
+      "Rozmowy wideo i głosowe na bliską odległość",
+      "Mapa biura 2D, po której można chodzić",
+      "Awatary w stylu pixel art",
+      "Obecność i status w czasie rzeczywistym",
+      "Czat pokoju"
+    ]
+  },
+  "moments": {
+    "title": "Biuro, po którym <em>można chodzić.</em>",
+    "subtitle": "SpatialMeet zachowuje tę część biura, której rozmowy nigdy nie zastąpiły: wiesz, kto jest na miejscu, i możesz do niego podejść.",
+    "roomsLabel": "Pokoje",
+    "alwaysOn": "Zawsze otwarte",
+    "directory": {
+      "design": { "name": "Zespół designu", "here": "5 osób" },
+      "founders": { "name": "Założyciele", "here": "2 osoby" },
+      "jam": { "name": "Weekendowy jam", "here": "Pusty" }
+    },
+    "enter": {
+      "title": "Otwórz link i już jesteś w środku.",
+      "body": "Ktoś udostępnia link do pokoju. Wybierz postać, wpisz imię i już stoisz na piętrze razem z innymi.",
+      "chip1": "Bez pobierania",
+      "chip2": "Goście mile widziani",
+      "chip3": "Każda przeglądarka"
+    },
+    "call": {
+      "title": "Podejdź, żeby porozmawiać.",
+      "body": "Zbliż się do kogoś z zespołu, a nad tą osobą pojawi się pasek połączenia. Jedno dotknięcie uruchamia wideo lub głos, bezpośrednio między przeglądarkami.",
+      "chip1": "Wideo lub głos",
+      "chip2": "Peer-to-peer",
+      "chip3": "Jedno dotknięcie"
+    },
+    "presence": {
+      "title": "Widzisz, kto jest w pobliżu.",
+      "body": "Każdy ma plakietkę z imieniem i status. Zobacz, kto jest wolny, kto skupiony, a kto już rozmawia, zanim podejdziesz.",
+      "chip1": "Plakietki na żywo",
+      "chip2": "Nieobecny i zajęty",
+      "chip3": "Czat pokoju"
+    },
+    "rooms": {
+      "title": "Pokój będzie tu jutro.",
+      "body": "Pokoje nie znikają, gdy kończy się spotkanie. Zostaw jeden otwarty dla zespołu, w razie potrzeby dodaj hasło i wyślij link tylko raz.",
+      "chip1": "Widoczny dla wszystkich",
+      "chip2": "Udostępnianie linkiem",
+      "chip3": "Za darmo"
+    },
+    "floor": {
+      "title": "Biuro, nie spotkanie.",
+      "body": "Nikt nie wysyła zaproszeń. Ludzie wpadają, pracują obok siebie i podchodzą, gdy coś się pojawi.",
+      "chip1": "Bez zaproszeń",
+      "chip2": "Po prostu podejdź",
+      "chip3": "Całe piętro"
+    }
+  },
+  "faq": {
+    "title": "Zanim <em>wejdziesz.</em>",
+    "items": [
+      {
+        "q": "Czym jest SpatialMeet?",
+        "a": "SpatialMeet to wirtualne biuro, po którym chodzisz. Twój zespół pojawia się jako postacie w stylu pixel art na wspólnym piętrze 2D, a rozmowa wideo lub głosowa zaczyna się, gdy staniesz obok kogoś, a nie gdy klikniesz link do spotkania."
+      },
+      {
+        "q": "Czy muszę coś instalować?",
+        "a": "Nie. SpatialMeet działa w przeglądarce na komputerze i telefonie. Otwórz link do pokoju i już jesteś w biurze."
+      },
+      {
+        "q": "Czy SpatialMeet jest darmowy?",
+        "a": "Tak. Tworzenie pokoi, chodzenie, czatowanie i rozmowy są bezpłatne."
+      },
+      {
+        "q": "Czy potrzebuję konta, żeby dołączyć do pokoju?",
+        "a": "Nie. Każdy może dołączyć jako gość, podając tylko imię. Logowanie daje jedynie zapisany profil, postać, którą zachowujesz, i listę Twoich pokoi."
+      },
+      {
+        "q": "Jak działają rozmowy wideo?",
+        "a": "Rozmowy działają w trybie peer-to-peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami. Po nawiązaniu połączenie trwa, dopóki ktoś się nie rozłączy lub nie opuści pokoju. Odejście go nie przerywa."
+      },
+      {
+        "q": "Czy moja kamera jest włączona przez cały czas w pokoju?",
+        "a": "Nie. Kamera i mikrofon są włączane tylko na czas rozmowy i zwalniane, gdy tylko się skończy."
+      },
+      {
+        "q": "Czy mogę używać SpatialMeet na telefonie?",
+        "a": "Tak. Na urządzeniach dotykowych poruszasz się za pomocą joysticka na ekranie, a przyciski rozmowy dopasowują się do mniejszego ekranu."
+      },
+      {
+        "q": "Czym to się różni od zwykłej rozmowy wideo?",
+        "a": "Zwykła rozmowa umieszcza wszystkich w siatce do końca spotkania. Pokój SpatialMeet jest otwarty cały dzień, więc widzisz, kto jest obok, przechodzisz między rozmowami i rozmawiasz z osobami, do których podejdziesz."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Twój pokój jest <em>już otwarty.</em>",
+    "publicTitle": "Wejdź do publicznego biura",
+    "publicBody": "Pokój, który jest zawsze otwarty. Wybierz postać, pospaceruj i przywitaj się z tymi, którzy tam są.",
+    "createTitle": "Otwórz pokój dla zespołu",
+    "createBody": "Nadaj mu nazwę, dodaj hasło, jeśli chcesz, i wyślij jeden link. Pozostanie otwarty tak długo, jak zechcesz.",
+    "sampleName": "Zespół designu",
+    "create": "Utwórz"
+  },
+  "footer": {
+    "tagline": "Wirtualne biuro, po którym się chodzi. Za darmo, w przeglądarce.",
+    "product": "Produkt",
+    "learn": "Dowiedz się więcej",
+    "elsewhere": "Gdzie indziej",
+    "rooms": "Pokoje",
+    "people": "Ludzie",
+    "createRoom": "Utwórz pokój",
+    "dashboard": "Panel",
+    "tour": "Zwiedź pokój",
+    "twoWays": "Dwie drogi do środka",
+    "questions": "Pytania",
+    "rights": "© {year} Jitto Joseph. Wszelkie prawa zastrzeżone."
+  },
+  "auth": {
+    "welcomeBack": "Witaj ponownie",
+    "joinUs": "Dołącz do nas",
+    "signInSubtitle": "Zaloguj się na swoje konto",
+    "registerSubtitle": "Utwórz konto do pracy",
+    "username": "Nazwa użytkownika",
+    "emailOptional": "E-mail (opcjonalnie)",
+    "displayNameOptional": "Nazwa wyświetlana (opcjonalnie)",
+    "password": "Hasło",
+    "showPassword": "Pokaż hasło",
+    "hidePassword": "Ukryj hasło",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "createAccount": "Utwórz konto",
+    "noAccount": "Nie masz konta?",
+    "haveAccount": "Masz już konto?",
+    "continueGuest": "Kontynuuj jako gość →",
+    "error": "Wystąpił błąd"
+  },
+  "entry": {
+    "allRooms": "Wszystkie pokoje",
+    "yourName": "Twoje imię",
+    "namePlaceholder": "Jak mają się do Ciebie zwracać?",
+    "roomPassword": "Hasło pokoju",
+    "passwordPlaceholder": "Wpisz hasło",
+    "character": "Postać",
+    "copyInvite": "Kopiuj link z zaproszeniem",
+    "inviteCopied": "Skopiowano link z zaproszeniem",
+    "openingDoor": "Otwieranie drzwi",
+    "walkIn": "Wejdź"
+  },
+  "createRoom": {
+    "title": "Otwórz pokój.",
+    "roomName": "Nazwa pokoju",
+    "roomNamePlaceholder": "Zespół designu, Studio, Piątkowe spotkanie",
+    "advanced": "Zaawansowane",
+    "passwordPlaceholder": "Dodaj hasło (opcjonalnie)",
+    "passwordLabel": "Hasło pokoju",
+    "passwordHint": "Każdy pokój jest widoczny w katalogu. Hasło zamyka drzwi przed każdym, kto go nie zna.",
+    "submit": "Utwórz pokój",
+    "submitting": "Przygotowywanie",
+    "createError": "Nie udało się utworzyć pokoju. Spróbuj ponownie.",
+    "openError": "Nie udało się otworzyć pokoju"
+  },
+  "join": {
+    "unavailableTitle": "Te drzwi się nie otwierają.",
+    "unavailable": "Ten pokój nie jest już dostępny.",
+    "browse": "Przeglądaj pokoje",
+    "full": "Ten pokój jest teraz pełny",
+    "needsPassword": "Ten pokój wymaga hasła",
+    "error": "Nie udało się dołączyć do pokoju",
+    "roomFull": "Pokój jest pełny",
+    "guestNote": "Dołączasz jako gość. <link>Zaloguj się</link>, aby zachować imię i postać."
+  },
+  "directory": {
+    "title": "Katalog <em>społeczności</em>",
+    "roomsSubtitle": "Przeglądaj pokoje lub poznaj osoby w środku",
+    "peopleSubtitle": "Poznaj osoby, które tworzą SpatialMeet",
+    "rooms": "Pokoje",
+    "people": "Ludzie",
+    "createRoom": "Utwórz pokój",
+    "startRoom": "Załóż pokój",
+    "updating": "Aktualizowanie...",
+    "roomsLive": "{count, plural, one {# pokój na żywo} few {# pokoje na żywo} many {# pokoi na żywo} other {# pokoju na żywo}}",
+    "searchRooms": "Szukaj pokoi...",
+    "search": "Szukaj",
+    "loadingSpaces": "Ładowanie przestrzeni",
+    "noRoomsFound": "Nie znaleziono pokoi.",
+    "noRoomsAvailable": "Brak dostępnych pokoi.",
+    "noRoomsFoundBody": "Nie znaleźliśmy pokoi pasujących do wyszukiwania. Spróbuj zmienić zapytanie.",
+    "noRoomsAvailableBody": "Jest tu cicho. Bądź pierwszą osobą, która założy nową przestrzeń roboczą!",
+    "createARoom": "Utwórz pokój",
+    "presence": {
+      "ONLINE": "Online",
+      "IDLE": "Bezczynny",
+      "OFFLINE": "Offline"
+    },
+    "lastActive": "Aktywny {time}",
+    "justNow": "przed chwilą",
+    "full": "Pełny",
+    "enter": "Wejdź",
+    "gatheringPeople": "Zbieranie osób...",
+    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
+    "searchPeople": "Szukaj osób...",
+    "yourProfile": "Twój profil",
+    "loadingPeople": "Ładowanie osób",
+    "noPeople": "Nie znaleziono osób.",
+    "noPeopleBody": "Spróbuj innego wyszukiwania lub wróć wkrótce."
+  },
+  "userMenu": {
+    "signIn": "Zaloguj się",
+    "dashboard": "Panel",
+    "manageProfile": "Zarządzaj profilem",
+    "signOut": "Wyloguj się"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "subtitle": "Zarządzaj profilem i pokojami",
+    "activeCount": "Aktywne: {count}",
+    "userNotFound": "Nie znaleziono użytkownika",
+    "userNotFoundTitle": "Nie znaleziono użytkownika",
+    "backToRooms": "Wróć do pokoi",
+    "nameUpdated": "Zaktualizowano nazwę wyświetlaną!",
+    "profileFailed": "Nie udało się zaktualizować profilu",
+    "characterUpdated": "Zaktualizowano postać!",
+    "characterFailed": "Nie udało się zaktualizować postaci",
+    "linkCopied": "Skopiowano link!",
+    "profile": {
+      "changeCharacter": "Zmień postać",
+      "editName": "Edytuj nazwę wyświetlaną",
+      "saveName": "Zapisz nazwę wyświetlaną",
+      "displayName": "Nazwa wyświetlana",
+      "guestBadge": "GOŚĆ",
+      "copyLink": "Kopiuj link do profilu",
+      "share": "Udostępnij profil",
+      "shareTitle": "Profil użytkownika {name}",
+      "shareText": "Zobacz profil użytkownika {name} w SpatialMeet",
+      "created": "utworzone",
+      "joined": "dołączone",
+      "unknown": "Nieznane",
+      "chooseCharacter": "Wybierz postać",
+      "selectAvatar": "Wybierz swojego awatara"
+    },
+    "stats": {
+      "title": "Statystyki",
+      "empty": "Utwórz swój pierwszy pokój!",
+      "rooms": "Pokoje",
+      "active": "Aktywne",
+      "people": "Ludzie"
+    },
+    "quickActions": {
+      "title": "Szybkie akcje",
+      "createRoom": "Utwórz pokój",
+      "browseRooms": "Przeglądaj pokoje",
+      "createAccount": "Utwórz konto",
+      "signOut": "Wyloguj się"
+    },
+    "activity": {
+      "title": "Ostatnia aktywność",
+      "empty": "Brak aktywności",
+      "room_created": "Utworzono",
+      "room_joined": "Dołączono",
+      "room_visited": "Odwiedzono"
+    },
+    "collaborators": {
+      "title": "Ostatnio poznani",
+      "empty": "Dołączaj do pokoi, aby poznawać ludzi"
+    },
+    "rooms": {
+      "mine": "Moje pokoje",
+      "joined": "Dołączone",
+      "gridView": "Widok siatki",
+      "listView": "Widok listy",
+      "newRoom": "Nowy pokój",
+      "search": "Szukaj pokoi...",
+      "filter": {
+        "all": "Wszystkie",
+        "active": "Aktywne",
+        "idle": "Bezczynne",
+        "offline": "Offline"
+      },
+      "loading": "Ładowanie pokoi...",
+      "noMatches": "Brak wyników",
+      "noMatchesBody": "Spróbuj zmienić wyszukiwanie lub filtry",
+      "noRooms": "Nie masz jeszcze pokoi",
+      "noRoomsBody": "Utwórz swoje pierwsze wirtualne biuro",
+      "createRoom": "Utwórz pokój",
+      "noJoined": "Brak dołączonych pokoi",
+      "noJoinedBody": "Dołącz do pokoju, aby zobaczyć go tutaj",
+      "browsePublic": "Przeglądaj publiczne pokoje"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Aktywny",
+        "idle": "Bezczynny",
+        "offline": "Offline"
+      },
+      "join": "Dołącz",
+      "copyInvite": "Kopiuj link z zaproszeniem",
+      "copyLink": "Kopiuj link",
+      "players": "Gracze: {count}/{max}",
+      "unknown": "Nieznane"
+    },
+    "widget": {
+      "view": "Zobacz panel",
+      "created": "utworzone",
+      "joined": "dołączone"
+    }
+  },
+  "room": {
+    "connecting": "Łączenie...",
+    "fallbackName": "Pokój: {id}",
+    "people": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
+    "copied": "Skopiowano!",
+    "invite": "Zaproś",
+    "leave": "Wyjdź"
+  },
+  "call": {
+    "incomingVideo": "Przychodząca rozmowa wideo...",
+    "incomingAudio": "Przychodząca rozmowa głosowa...",
+    "decline": "Odrzuć",
+    "accept": "Odbierz",
+    "tutorial": "Rozmowa samouczka",
+    "minimize": "Zmniejsz",
+    "expand": "Powiększ",
+    "calling": "Dzwonienie...",
+    "cancel": "Anuluj połączenie",
+    "errors": {
+      "connection": "Nie udało się połączyć",
+      "unsupported": "Ta przeglądarka nie ma dostępu do urządzeń multimedialnych",
+      "media": "Kamera lub mikrofon są niedostępne",
+      "camera": "Kamera jest niedostępna"
+    }
+  },
+  "controls": {
+    "status": "Status: {status}",
+    "muteMic": "Wycisz mikrofon",
+    "unmuteMic": "Włącz mikrofon",
+    "cameraOff": "Wyłącz kamerę",
+    "cameraOn": "Włącz kamerę",
+    "muteSpeaker": "Wycisz głośnik",
+    "unmuteSpeaker": "Włącz głośnik",
+    "openChat": "Otwórz czat",
+    "settings": "Ustawienia",
+    "leaveCall": "Opuść rozmowę"
+  },
+  "status": {
+    "available": { "label": "Dostępny", "description": "Chętnie pogadam" },
+    "busy": { "label": "Zajęty", "description": "Nie przeszkadzać" },
+    "away": { "label": "Nieobecny", "description": "Zaraz wracam" }
+  },
+  "chat": {
+    "title": "Czat pokoju",
+    "system": "System",
+    "welcome": "Witaj na czacie pokoju. Wiadomości widzą wszyscy obecni.",
+    "intro": "Tutaj możesz rozmawiać ze wszystkimi w tym pokoju.",
+    "placeholder": "Napisz wiadomość...",
+    "close": "Zamknij czat",
+    "send": "Wyślij wiadomość"
+  },
+  "proximity": {
+    "videoCall": "Rozmowa wideo",
+    "audioCall": "Rozmowa głosowa",
+    "roomChat": "Czat pokoju",
+    "viewProfile": "Zobacz profil"
+  },
+  "jukebox": {
+    "title": "Głośnik pokoju",
+    "close": "Zamknij sterowanie głośnikiem",
+    "tapToPlay": "Dotknij odtwarzania, aby posłuchać",
+    "playing": "Gra dla wszystkich w pokoju",
+    "paused": "Wstrzymane dla wszystkich w pokoju",
+    "previous": "Poprzedni utwór",
+    "next": "Następny utwór",
+    "play": "Odtwórz",
+    "pause": "Wstrzymaj",
+    "playTrack": "Odtwórz {track}"
+  },
+  "whiteboard": {
+    "title": "Tablica",
+    "penColor": "Kolor pisaka {color}",
+    "penSize": "Rozmiar pisaka {size}",
+    "eraser": "Gumka",
+    "clear": "Wyczyść tablicę",
+    "close": "Zamknij tablicę",
+    "hint": "Wszyscy w pokoju rysują na tej samej tablicy. Naciśnij Esc, aby się odsunąć."
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "close": "Zamknij ustawienia",
+    "audio": "Dźwięk",
+    "video": "Wideo",
+    "microphone": "Mikrofon",
+    "micVolume": "Głośność mikrofonu",
+    "speaker": "Głośnik",
+    "speakerVolume": "Głośność głośnika",
+    "camera": "Kamera",
+    "videoQuality": "Jakość wideo",
+    "quality": {
+      "low": "Niska",
+      "medium": "Średnia",
+      "high": "Wysoka"
+    },
+    "qualityHint": {
+      "low": "360p, najlepsza przy wolnym łączu",
+      "medium": "480p, równowaga jakości i szybkości",
+      "high": "720p, najlepsza jakość, ale wymaga szybkiego internetu"
+    },
+    "default": "Domyślne",
+    "cancel": "Anuluj",
+    "save": "Zapisz"
+  },
+  "tutorial": {
+    "walk": "Chodź, używając W A S D",
+    "walkTouch": "Przeciągnij joystick, aby iść",
+    "click": "Albo kliknij w dowolne miejsce, aby tam przejść",
+    "clickTouch": "Albo dotknij dowolnego miejsca, aby tam przejść",
+    "approach": "Podejdź do kogoś, aby zadzwonić lub pogadać",
+    "invite": "Zaproś kogoś tym linkiem albo wszystko gotowe",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "linkHint": "Każdy z linkiem trafi do tego pokoju",
+    "done": "Gotowe",
+    "skip": "Pomiń",
+    "next": "Dalej"
+  },
+  "scene": {
+    "guide": "Przewodnik",
+    "sit": "Naciśnij E, aby usiąść",
+    "stand": "Naciśnij E, aby wstać",
+    "music": "Kliknij, by włączyć muzykę",
+    "draw": "Kliknij, aby rysować"
+  },
+  "characters": {
+    "previous": "Poprzednia postać",
+    "next": "Następna postać",
+    "select": "Wybierz: {name}",
+    "keyHint": "Użyj strzałek ← →"
+  },
+  "toast": {
+    "dismiss": "Zamknij"
+  },
+  "notFound": {
+    "title": "Tego pokoju nie ma na mapie.",
+    "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "home": "Wróć do lobby",
+    "rooms": "Przeglądaj pokoje"
+  }
+}

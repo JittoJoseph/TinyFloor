@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Plus, Search, LogOut, Shield, Sparkles } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 
 interface QuickActionsProps {
   onLogout?: () => void;
@@ -14,13 +15,14 @@ export function QuickActions({
   isGuest,
   isAuthenticated,
 }: QuickActionsProps) {
+  const t = useTranslations("dashboard.quickActions");
   const showCreateAccount = !isAuthenticated || isGuest;
 
   return (
     <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center gap-2 mb-3">
         <Sparkles className="w-4 h-4 text-gray-400" />
-        <h3 className="text-sm text-gray-900">Quick Actions</h3>
+        <h3 className="text-sm text-gray-900">{t("title")}</h3>
       </div>
 
       <div className="flex flex-col gap-2 flex-1 justify-center">
@@ -32,7 +34,9 @@ export function QuickActions({
           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white border border-blue-200 shrink-0">
             <Plus className="w-4 h-4 text-blue-600" />
           </div>
-          <span className="font-medium text-sm text-gray-800">Create Room</span>
+          <span className="font-medium text-sm text-gray-800">
+            {t("createRoom")}
+          </span>
         </Link>
 
         <Link
@@ -43,7 +47,7 @@ export function QuickActions({
             <Search className="w-4 h-4 text-emerald-600" />
           </div>
           <span className="font-medium text-sm text-gray-800">
-            Browse Rooms
+            {t("browseRooms")}
           </span>
         </Link>
 
@@ -60,18 +64,20 @@ export function QuickActions({
               <Shield className="w-4 h-4 text-amber-600" />
             </div>
             <span className="font-medium text-sm text-gray-800">
-              Create Account
+              {t("createAccount")}
             </span>
           </Link>
         ) : (
           <button
             onClick={onLogout}
-            className="cursor-pointer flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-red-50 border border-gray-100 hover:border-red-100 transition-colors w-full text-left"
+            className="cursor-pointer flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-red-50 border border-gray-100 hover:border-red-100 transition-colors w-full text-start"
           >
             <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-red-50 border border-red-200 shrink-0">
               <LogOut className="w-4 h-4 text-red-500" />
             </div>
-            <span className="font-medium text-sm text-gray-800">Sign Out</span>
+            <span className="font-medium text-sm text-gray-800">
+              {t("signOut")}
+            </span>
           </button>
         )}
       </div>

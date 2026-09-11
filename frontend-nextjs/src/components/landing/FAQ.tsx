@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
-import { faqs } from "./faqs";
 
 export const FAQ: React.FC = () => {
+  const t = useTranslations("faq");
   const [open, setOpen] = useState<number | null>(0);
+  const faqs = t.raw("items") as Array<{ q: string; a: string }>;
 
   return (
     <section
@@ -17,7 +19,9 @@ export const FAQ: React.FC = () => {
         id="faq-title"
         className="font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.1] mb-8 md:mb-12"
       >
-        Before you <span className="font-medium">walk in.</span>
+        {t.rich("title", {
+          em: (chunks) => <span className="font-medium">{chunks}</span>,
+        })}
       </h2>
 
       <div className="border-t border-black/10">
@@ -31,7 +35,7 @@ export const FAQ: React.FC = () => {
                   aria-expanded={expanded}
                   aria-controls={`faq-answer-${index}`}
                   onClick={() => setOpen(expanded ? null : index)}
-                  className="cursor-pointer w-full flex items-start justify-between gap-6 py-5 md:py-6 text-left font-body text-lg md:text-xl font-medium text-[var(--color-braun-text)] leading-snug transition-opacity duration-200 hover:opacity-70"
+                  className="cursor-pointer w-full flex items-start justify-between gap-6 py-5 md:py-6 text-start font-body text-lg md:text-xl font-medium text-[var(--color-braun-text)] leading-snug transition-opacity duration-200 hover:opacity-70"
                 >
                   {faq.q}
                   <Plus
@@ -53,7 +57,7 @@ export const FAQ: React.FC = () => {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="font-body text-base md:text-lg text-[var(--color-braun-text)] opacity-60 leading-relaxed pb-6 md:pb-7 pr-8 md:pr-12">
+                  <p className="font-body text-base md:text-lg text-[var(--color-braun-text)] opacity-60 leading-relaxed pb-6 md:pb-7 pe-8 md:pe-12">
                     {faq.a}
                   </p>
                 </div>

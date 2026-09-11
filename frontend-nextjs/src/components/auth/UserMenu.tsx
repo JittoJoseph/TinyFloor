@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import {
   User,
   LogOut,
@@ -10,13 +11,15 @@ import {
   Users,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
 
 interface UserMenuProps {
   onLoginClick: () => void;
 }
 
 export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
+  const t = useTranslations("userMenu");
+  const tc = useTranslations("common");
   const { user, isAuthenticated, isGuest, logout } = useAuth();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -27,7 +30,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
         className="cursor-pointer h-10 px-5 flex items-center gap-2 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all"
       >
         <User className="w-3.5 h-3.5" />
-        <span className="hidden sm:inline">Sign In</span>
+        <span className="hidden sm:inline">{t("signIn")}</span>
       </button>
     );
   }
@@ -47,11 +50,11 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
           </span>
         </div>
         <span className="hidden sm:inline max-w-24 truncate text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
-          {user?.displayName || "Guest"}
+          {user?.displayName || tc("guest")}
         </span>
         {isGuest && (
           <span className="text-[9px] font-bold uppercase tracking-widest bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-70 px-2 py-0.5 rounded-full">
-            Guest
+            {tc("guest")}
           </span>
         )}
         <ChevronDown
@@ -68,7 +71,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
             className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg z-50 overflow-hidden font-body">
+          <div className="absolute end-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg z-50 overflow-hidden font-body">
             {/* User info with stats */}
             <div className="p-5 border-b border-[rgba(0,0,0,0.04)]">
               <p className="text-base font-medium text-[var(--color-braun-text)] tracking-tight truncate">
@@ -109,10 +112,10 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   </div>
                   <div>
                     <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
-                      Dashboard
+                      {t("dashboard")}
                     </span>
                     <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">
-                      Manage profile
+                      {t("manageProfile")}
                     </span>
                   </div>
                 </Link>
@@ -129,7 +132,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
                   <LogOut className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:text-[var(--color-braun-orange)] group-hover:opacity-100" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] group-hover:text-[var(--color-braun-orange)]">
-                  Sign Out
+                  {t("signOut")}
                 </span>
               </button>
             </div>

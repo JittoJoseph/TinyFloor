@@ -37,6 +37,17 @@ This monorepo contains:
 - **Database**: MongoDB for user profiles, room metadata, and persistent data
 - **Deployment**: Vercel (frontend), Railway (backend)
 
+## Localization
+
+The frontend is translated into 18 languages with [next-intl](https://next-intl.dev): English (source), German, French, Spanish, Italian, Dutch, Swedish, Danish, Norwegian, Finnish, Portuguese, Polish, Japanese, Korean, Chinese, Russian, Hebrew and Arabic (the last two render right-to-left).
+
+- **Messages** live in `frontend-nextjs/messages/<locale>.json`. Every locale is deep-merged over `en.json`, so a missing key falls back to English instead of rendering blank.
+- **Routing**: all pages sit under `src/app/[locale]`. English is served unprefixed (`/rooms`), other languages are prefixed (`/de/rooms`). `src/proxy.ts` detects the language from the cookie, then `Accept-Language`, so a shared `/join?roomId=…` link opens in the recipient's language.
+- **Config**: `src/lib/i18n/routing.ts` is the source of truth for the locale list and text direction; `request.ts` loads messages; `navigation.ts` exports the locale-aware `Link` and router hooks to use instead of `next/link` and `next/navigation`.
+- **In code**: `useTranslations()` in components, `getTranslations()` in metadata. Phaser canvas labels are passed in through `src/lib/sceneText.ts`.
+- **SEO**: `src/lib/seo.ts` emits the canonical URL and hreflang alternates for each page, and `sitemap.ts` lists every route in every locale.
+- **Adding a language**: add it to `routing.ts`, add its Open Graph code in `seo.ts`, and create `messages/<code>.json`.
+
 ## Getting Started
 
 SpatialMeet requires Node.js 18+, Java 17+, Maven 3.6+, and MongoDB. The application consists of a Next.js frontend and Spring Boot backend that communicate via WebSocket and REST APIs for real-time multiplayer functionality.

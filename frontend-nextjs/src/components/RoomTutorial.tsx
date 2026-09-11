@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   Footprints,
   MousePointerClick,
@@ -15,7 +16,6 @@ import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
 import {
   GUIDE_ID,
-  GUIDE_NAME,
   GUIDE_SPRITE,
   INPUT_MODE_EVENT,
   completeTutorial,
@@ -27,33 +27,25 @@ const WALK_DISTANCE = 150;
 const SPRITE_HEADROOM_ROWS = 9;
 const SPRITE_ROWS = 32;
 
-const DEMO_PLAYER = {
-  id: GUIDE_ID,
-  name: GUIDE_NAME,
-  x: 0,
-  y: 0,
-  status: "offline",
-  guest: true,
-};
-
+// `text` and `touchText` are keys under `tutorial` in the messages.
 const STEPS = [
   {
     icon: Footprints,
-    text: "Walk around with W A S D",
-    touchText: "Drag the joystick to walk",
+    text: "walk",
+    touchText: "walkTouch",
   },
   {
     icon: MousePointerClick,
-    text: "Or click anywhere to walk straight there",
-    touchText: "Or tap anywhere to walk straight there",
+    text: "click",
+    touchText: "clickTouch",
   },
   {
     icon: Users,
-    text: "Step close to someone to call or chat",
+    text: "approach",
   },
   {
     icon: Link2,
-    text: "Invite someone with this link, or you are all set",
+    text: "invite",
   },
 ];
 
@@ -150,6 +142,8 @@ export default function RoomTutorial({
   character: string;
   roomId: string;
 }) {
+  const t = useTranslations("tutorial");
+  const guideName = useTranslations("scene")("guide");
   const [step, setStep] = useState(initialStep);
   const [touch, setTouch] = useState(isTouchInput);
   const [copied, setCopied] = useState(false);
@@ -213,7 +207,7 @@ export default function RoomTutorial({
 
   const current = STEPS[step];
   const Icon = current.icon;
-  const text = touch && current.touchText ? current.touchText : current.text;
+  const text = t(touch && current.touchText ? current.touchText : current.text);
   const isLast = step === STEPS.length - 1;
 
   let demo: ReactNode = null;
@@ -293,7 +287,7 @@ export default function RoomTutorial({
     demo = (
       <>
         <div className="absolute left-7 bottom-3 flex flex-col items-center gap-0.5">
-          <NameLabel label={GUIDE_NAME} />
+          <NameLabel label={guideName} />
           <DemoSprite
             character={GUIDE_SPRITE}
             state="idle"
@@ -307,7 +301,16 @@ export default function RoomTutorial({
           style={{ animation: "tutorial-bar-in 4.8s ease-in-out infinite" }}
         >
           <div className="relative">
-            <ProximityActions player={DEMO_PLAYER} />
+            <ProximityActions
+              player={{
+                id: GUIDE_ID,
+                name: guideName,
+                x: 0,
+                y: 0,
+                status: "offline",
+                guest: true,
+              }}
+            />
             <span
               className="absolute flex items-center justify-center pointer-events-none"
               style={{ left: 44, top: 8 }}
@@ -324,7 +327,10 @@ export default function RoomTutorial({
   } else {
     demo = (
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-4">
-        <div className="flex items-center gap-2 w-full bg-white border border-[rgba(0,0,0,0.06)] rounded-full pl-3 pr-1.5 py-1.5 shadow-sm">
+        <div
+          dir="ltr"
+          className="flex items-center gap-2 w-full bg-white border border-[rgba(0,0,0,0.06)] rounded-full pl-3 pr-1.5 py-1.5 shadow-sm"
+        >
           <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
           <span className="flex-1 truncate text-[10px] font-medium text-[var(--color-braun-text)]/70">
             /join?roomId={roomId}
@@ -338,11 +344,11 @@ export default function RoomTutorial({
             ) : (
               <Copy className="w-3 h-3" />
             )}
-            {copied ? "Copied" : "Copy"}
+            {copied ? t("copied") : t("copy")}
           </button>
         </div>
         <p className="text-[9px] font-medium text-[var(--color-braun-text)]/45 tracking-wide text-center">
-          Anyone with the link lands in this room
+          {t("linkHint")}
         </p>
       </div>
     );
@@ -351,7 +357,10 @@ export default function RoomTutorial({
   return (
     <div className="fixed inset-0 z-[46] pointer-events-none flex items-start justify-center p-3 md:items-center md:justify-end md:p-4">
       <div className="pointer-events-auto w-[300px] max-w-full bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-lg p-3.5">
-        <div className="relative h-[128px] rounded-xl bg-[var(--color-braun-text)]/[0.04] overflow-hidden">
+        <div
+          dir="ltr"
+          className="relative h-[128px] rounded-xl bg-[var(--color-braun-text)]/[0.04] overflow-hidden"
+        >
           {demo}
         </div>
 
@@ -384,7 +393,7 @@ export default function RoomTutorial({
                 onClick={finish}
                 className="cursor-pointer h-7 px-3.5 rounded-full bg-[var(--color-braun-text)] text-white text-[9px] font-bold uppercase tracking-widest transition-all active:scale-95"
               >
-                Done
+                {t("done")}
               </button>
             ) : (
               <>
@@ -392,14 +401,15 @@ export default function RoomTutorial({
                   onClick={finish}
                   className="cursor-pointer text-[9px] font-bold uppercase tracking-widest text-gray-400 hover:text-[var(--color-braun-text)] transition-colors"
                 >
-                  Skip
+                  {t("skip")}
                 </button>
                 <button
                   onClick={advance}
                   className="cursor-pointer w-7 h-7 rounded-full bg-[var(--color-braun-text)] text-white flex items-center justify-center transition-all active:scale-95"
-                  title="Next"
+                  title={t("next")}
+                  aria-label={t("next")}
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                 </button>
               </>
             )}

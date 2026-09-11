@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useFormatter, useTranslations } from "next-intl";
 import { X, Send, MessageSquare } from "lucide-react";
 
 interface ChatMessage {
@@ -29,13 +30,14 @@ export default function ChatPanel({
   onUnreadChange,
   participantCount = 1,
 }: ChatPanelProps) {
-  const [messages, setMessages] = useState<ChatMessage[]>([
+  const t = useTranslations("chat");
+  const format = useFormatter();
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [
     {
       id: "welcome",
       senderId: "system",
-      senderName: "System",
-      content:
-        "Welcome to the room chat. Messages are visible to everyone here.",
+      senderName: t("system"),
+      content: t("welcome"),
       timestamp: new Date(),
       type: "system",
     },
@@ -87,8 +89,8 @@ export default function ChatPanel({
           detail: {
             id: `intro-${Date.now()}`,
             senderId: "system-intro",
-            senderName: "System",
-            content: "You can chat with everyone in this room here.",
+            senderName: t("system"),
+            content: t("intro"),
             timestamp: new Date(),
             type: "text",
           } satisfies ChatMessage,
@@ -96,7 +98,7 @@ export default function ChatPanel({
       );
     }, 10000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [t]);
 
   // Close on click outside
   useEffect(() => {
@@ -153,10 +155,7 @@ export default function ChatPanel({
   );
 
   const formatTime = (date: Date) =>
-    new Date(date).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    format.dateTime(new Date(date), { hour: "2-digit", minute: "2-digit" });
 
   const handleFocus = () =>
     window.dispatchEvent(new CustomEvent("chatFocused"));
@@ -174,10 +173,11 @@ export default function ChatPanel({
       <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)] bg-white/50">
         <h3 className="font-semibold text-[var(--color-braun-text)] flex items-center gap-2">
           <MessageSquare className="w-4 h-4 opacity-70" />
-          Room Chat
+          {t("title")}
         </h3>
         <button
           onClick={onClose}
+          aria-label={t("close")}
           className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
         >
           <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-70" />
@@ -199,11 +199,12 @@ export default function ChatPanel({
                 className={`max-w-[85%] ${msg.senderId === userId ? "order-1" : ""}`}
               >
                 {msg.senderId !== userId && participantCount > 2 && (
-                  <p className="text-[11px] text-[var(--color-braun-text)] opacity-60 font-medium ml-1 mb-1">
+                  <p className="text-[11px] text-[var(--color-braun-text)] opacity-60 font-medium ms-1 mb-1">
                     {msg.senderName}
                   </p>
                 )}
                 <div
+                  dir="auto"
                   className={`px-3.5 py-2.5 rounded-2xl text-sm shadow-sm ${
                     msg.senderId === userId
                       ? "bg-[var(--color-braun-orange)] text-white rounded-br-sm"
@@ -214,7 +215,7 @@ export default function ChatPanel({
                 </div>
                 <p
                   className={`text-[10px] opacity-40 mt-1 ${
-                    msg.senderId === userId ? "text-right mr-1" : "ml-1"
+                    msg.senderId === userId ? "text-end me-1" : "ms-1"
                   } text-[var(--color-braun-text)]`}
                 >
                   {formatTime(msg.timestamp)}
@@ -227,28 +228,30 @@ export default function ChatPanel({
       </div>
 
       <div className="p-3 bg-white/50 border-t border-[rgba(0,0,0,0.04)]">
-        <div className="flex items-center gap-2 bg-white rounded-full border border-[rgba(0,0,0,0.06)] pr-1.5 pl-4 py-1.5 focus-within:border-[rgba(0,0,0,0.15)] transition-colors shadow-sm">
+        <div className="flex items-center gap-2 bg-white rounded-full border border-[rgba(0,0,0,0.06)] pe-1.5 ps-4 py-1.5 focus-within:border-[rgba(0,0,0,0.15)] transition-colors shadow-sm">
           <input
             ref={inputRef}
             type="text"
+            dir="auto"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            placeholder="Type a message..."
+            placeholder={t("placeholder")}
             className="flex-1 bg-transparent border-none outline-none text-sm text-[var(--color-braun-text)] placeholder:opacity-40"
           />
           <button
             onClick={sendMessage}
             disabled={!inputValue.trim()}
+            aria-label={t("send")}
             className={`cursor-pointer p-2 rounded-full transition-all flex items-center justify-center ${
               inputValue.trim()
                 ? "bg-[var(--color-braun-text)] text-white hover:bg-[#3d3d3d]"
                 : "bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-30"
             }`}
           >
-            <Send className="w-4 h-4 ml-0.5" />
+            <Send className="w-4 h-4 ml-0.5 rtl:rotate-180" />
           </button>
         </div>
       </div>

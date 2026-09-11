@@ -1,6 +1,10 @@
 import { WebSocketManager } from "./WebSocketManager";
 import { playSound, loopSound, stopSound } from "./sounds";
-import { GUIDE_ID, GUIDE_NAME } from "./tutorial";
+import { GUIDE_ID } from "./tutorial";
+import { sceneText } from "./sceneText";
+
+// Error codes, not copy: the call overlay turns them into translated text.
+export type CallError = "connection" | "unsupported" | "media" | "camera";
 
 export interface CallPeer {
   id: string;
@@ -17,7 +21,7 @@ export interface CallSnapshot {
   micEnabled: boolean;
   cameraEnabled: boolean;
   speakerEnabled: boolean;
-  error: string | null;
+  error: CallError | null;
 }
 
 interface Signal {
@@ -106,7 +110,7 @@ class CallManager {
   private micEnabled = PREFS.mic;
   private cameraEnabled = PREFS.camera;
   private speakerEnabled = true;
-  private error: string | null = null;
+  private error: CallError | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
   private snap: CallSnapshot = {
@@ -166,7 +170,7 @@ class CallManager {
     this.outgoing = null;
     this.peers.set(GUIDE_ID, {
       id: GUIDE_ID,
-      name: GUIDE_NAME,
+      name: sceneText().guide,
       stream: new MediaStream(),
       polite: true,
       makingOffer: false,
@@ -376,7 +380,7 @@ class CallManager {
         await pc.setLocalDescription();
         this.send("call_signal", { to: id, signal: { sdp: pc.localDescription! } });
       } catch {
-        this.error = "Connection failed";
+        this.error = "connection";
         this.emit();
       } finally {
         peer.makingOffer = false;
@@ -460,7 +464,7 @@ class CallManager {
     if (this.local) return wantsCamera ? this.addCamera() : true;
 
     if (!navigator.mediaDevices?.getUserMedia) {
-      this.error = "This browser cannot access media devices";
+      this.error = "unsupported";
       return false;
     }
 
@@ -476,7 +480,7 @@ class CallManager {
       this.error = null;
       return true;
     } catch {
-      this.error = "Camera or microphone unavailable";
+      this.error = "media";
       return false;
     }
   }
@@ -498,7 +502,7 @@ class CallManager {
       this.error = null;
       return true;
     } catch {
-      this.error = "Camera unavailable";
+      this.error = "camera";
       return false;
     }
   }

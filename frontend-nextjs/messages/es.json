@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet - Una oficina virtual que puedes recorrer",
+    "description": "SpatialMeet es una oficina virtual gratuita en tu navegador. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo acercarte a alguien.",
+    "ogAlt": "Una sala de SpatialMeet: una planta de oficina de 16 bits con escritorios y compañeros",
+    "keywords": "oficina virtual, trabajo remoto, chat espacial, colaboración en línea, espacio de trabajo virtual, oficina metaverso, chat de proximidad, videochat de proximidad, coworking virtual, videollamadas en el navegador",
+    "createRoomTitle": "Crear una sala",
+    "createRoomDescription": "Abre una sala de oficina virtual en SpatialMeet. Ponle nombre, añade una contraseña si quieres y comparte un solo enlace con tu equipo.",
+    "joinTitle": "Unirse a la sala",
+    "roomsTitle": "Explorar salas",
+    "roomsDescription": "Explora las salas virtuales activas y únete a espacios de trabajo públicos en SpatialMeet.",
+    "peopleTitle": "Personas",
+    "peopleDescription": "Conoce a las personas que pasan el rato en las salas de SpatialMeet.",
+    "authTitle": "Iniciar sesión",
+    "authDescription": "Inicia sesión en SpatialMeet para conservar tu nombre, tu personaje y la lista de tus salas.",
+    "dashboardTitle": "Panel",
+    "roomTitle": "Sala activa",
+    "notFoundTitle": "Página no encontrada"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "back": "Volver",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "guest": "Invitado",
+    "you": "Tú"
+  },
+  "languageSwitcher": {
+    "label": "Idioma",
+    "select": "Seleccionar idioma",
+    "searchPlaceholder": "Buscar idioma…",
+    "noResults": "No se encontraron idiomas"
+  },
+  "nav": {
+    "main": "Principal",
+    "questions": "Preguntas",
+    "tour": "Recorrido",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "title": "La oficina virtual <br></br>más <em>acogedora</em>.",
+    "subtitle": "Una oficina virtual que parece un videojuego. Pasea, habla con tus compañeros y vuelve a sentirte parte de un equipo.",
+    "cta": "Pruébalo",
+    "caption": "Una sala de SpatialMeet: una planta de oficina de 16 bits con escritorios y dos compañeros de pie."
+  },
+  "landing": {
+    "description": "Una oficina virtual que parece un videojuego. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo acercarte a alguien.",
+    "features": [
+      "Llamadas de vídeo y voz por proximidad",
+      "Mapa de oficina 2D que puedes recorrer",
+      "Avatares pixel art",
+      "Presencia y estado en tiempo real",
+      "Chat de sala"
+    ]
+  },
+  "moments": {
+    "title": "Una oficina que puedes <em>recorrer.</em>",
+    "subtitle": "SpatialMeet conserva la parte de la oficina que las llamadas nunca sustituyeron: saber quién está y poder acercarte.",
+    "roomsLabel": "Salas",
+    "alwaysOn": "Siempre abiertas",
+    "directory": {
+      "design": { "name": "Equipo de diseño", "here": "5 aquí" },
+      "founders": { "name": "Fundadores", "here": "2 aquí" },
+      "jam": { "name": "Jam del finde", "here": "Vacía" }
+    },
+    "enter": {
+      "title": "Abre un enlace y ya estás dentro.",
+      "body": "Alguien comparte el enlace de una sala. Elige un personaje, escribe un nombre y ya estás en la planta con todos los demás.",
+      "chip1": "Sin descargas",
+      "chip2": "Invitados bienvenidos",
+      "chip3": "Cualquier navegador"
+    },
+    "call": {
+      "title": "Acércate para empezar a hablar.",
+      "body": "Acércate a un compañero y su barra de llamada aparece encima. Un toque abre vídeo o voz, directamente entre navegadores.",
+      "chip1": "Vídeo o voz",
+      "chip2": "Entre pares",
+      "chip3": "Un toque"
+    },
+    "presence": {
+      "title": "Sabes quién anda por aquí.",
+      "body": "Todos llevan una placa con su nombre y un estado. Mira quién está libre, quién está concentrado y quién ya está en una llamada antes de acercarte.",
+      "chip1": "Placas en vivo",
+      "chip2": "Ausente y ocupado",
+      "chip3": "Chat de sala"
+    },
+    "rooms": {
+      "title": "Mañana la sala seguirá ahí.",
+      "body": "Las salas no terminan cuando acaba una reunión. Mantén una abierta para tu equipo, ponle contraseña si lo necesitas y envía el enlace una sola vez.",
+      "chip1": "Visible para todos",
+      "chip2": "Compartir por enlace",
+      "chip3": "Gratis"
+    },
+    "floor": {
+      "title": "Una oficina, no una reunión.",
+      "body": "Nadie envía invitaciones. La gente pasa, trabaja cerca y se acerca cuando surge algo.",
+      "chip1": "Sin invitaciones",
+      "chip2": "Acércate",
+      "chip3": "Toda la planta"
+    }
+  },
+  "faq": {
+    "title": "Antes de <em>entrar.</em>",
+    "items": [
+      {
+        "q": "¿Qué es SpatialMeet?",
+        "a": "SpatialMeet es una oficina virtual que puedes recorrer. Tu equipo aparece como personajes pixel art en una planta 2D compartida, y una llamada de vídeo o voz empieza cuando te colocas junto a alguien, no cuando haces clic en un enlace de reunión."
+      },
+      {
+        "q": "¿Tengo que instalar algo?",
+        "a": "No. SpatialMeet funciona en el navegador, en ordenador y en móvil. Abre el enlace de una sala y ya estás dentro de la oficina."
+      },
+      {
+        "q": "¿SpatialMeet es gratis?",
+        "a": "Sí. Crear salas, pasear, chatear y llamar es gratis."
+      },
+      {
+        "q": "¿Necesito una cuenta para unirme a una sala?",
+        "a": "No. Cualquiera puede unirse como invitado solo con un nombre. Iniciar sesión solo añade un perfil guardado, un personaje que conservas y una lista de tus salas."
+      },
+      {
+        "q": "¿Cómo funcionan las videollamadas?",
+        "a": "Las llamadas van entre pares por WebRTC, así que el audio y el vídeo viajan directamente entre navegadores. Una vez conectada, la llamada sigue activa hasta que alguien cuelga o sale de la sala. Alejarte no la corta."
+      },
+      {
+        "q": "¿Mi cámara está encendida todo el tiempo que estoy en una sala?",
+        "a": "No. La cámara y el micrófono solo se abren durante una llamada y se liberan en cuanto termina."
+      },
+      {
+        "q": "¿Puedo usar SpatialMeet en el móvil?",
+        "a": "Sí. En dispositivos táctiles te mueves con un joystick en pantalla, y los controles de llamada se adaptan a la pantalla más pequeña."
+      },
+      {
+        "q": "¿En qué se diferencia de una videollamada normal?",
+        "a": "Una llamada normal pone a todos en una cuadrícula hasta que acaba la reunión. Una sala de SpatialMeet sigue abierta todo el día, así que puedes ver quién está, pasar de una conversación a otra y hablar con las personas a las que te acercas."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Tu sala ya <em>está abierta.</em>",
+    "publicTitle": "Entra en la oficina pública",
+    "publicBody": "La sala que siempre está abierta. Elige un personaje, pasea y saluda a quien esté por ahí.",
+    "createTitle": "Abre una sala para tu equipo",
+    "createBody": "Ponle nombre, añade una contraseña si quieres y envía un enlace. Sigue abierta todo el tiempo que quieras.",
+    "sampleName": "Equipo de diseño",
+    "create": "Crear"
+  },
+  "footer": {
+    "tagline": "Una oficina virtual que puedes recorrer. Gratis, en el navegador.",
+    "product": "Producto",
+    "learn": "Aprender",
+    "elsewhere": "En otros sitios",
+    "rooms": "Salas",
+    "people": "Personas",
+    "createRoom": "Crear una sala",
+    "dashboard": "Panel",
+    "tour": "Recorre la sala",
+    "twoWays": "Dos formas de entrar",
+    "questions": "Preguntas",
+    "rights": "© {year} Jitto Joseph. Todos los derechos reservados."
+  },
+  "auth": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "joinUs": "Únete",
+    "signInSubtitle": "Inicia sesión en tu cuenta",
+    "registerSubtitle": "Crea tu cuenta de espacio de trabajo",
+    "username": "Nombre de usuario",
+    "emailOptional": "Correo (opcional)",
+    "displayNameOptional": "Nombre visible (opcional)",
+    "password": "Contraseña",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "createAccount": "Crear cuenta",
+    "noAccount": "¿No tienes cuenta?",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "continueGuest": "Continuar como invitado →",
+    "error": "Se produjo un error"
+  },
+  "entry": {
+    "allRooms": "Todas las salas",
+    "yourName": "Tu nombre",
+    "namePlaceholder": "¿Cómo quieres que te llamen?",
+    "roomPassword": "Contraseña de la sala",
+    "passwordPlaceholder": "Introduce la contraseña",
+    "character": "Personaje",
+    "copyInvite": "Copiar enlace de invitación",
+    "inviteCopied": "Enlace de invitación copiado",
+    "openingDoor": "Abriendo la puerta",
+    "walkIn": "Entrar"
+  },
+  "createRoom": {
+    "title": "Abre una sala.",
+    "roomName": "Nombre de la sala",
+    "roomNamePlaceholder": "Equipo de diseño, Estudio, Quedada del viernes",
+    "advanced": "Avanzado",
+    "passwordPlaceholder": "Añadir contraseña (opcional)",
+    "passwordLabel": "Contraseña de la sala",
+    "passwordHint": "Todas las salas aparecen en el directorio. Una contraseña mantiene la puerta cerrada a quien no la tenga.",
+    "submit": "Crear la sala",
+    "submitting": "Preparándola",
+    "createError": "No se pudo crear la sala. Inténtalo de nuevo.",
+    "openError": "No se pudo abrir la sala"
+  },
+  "join": {
+    "unavailableTitle": "Esa puerta no se abre.",
+    "unavailable": "Esta sala ya no está disponible.",
+    "browse": "Explorar salas",
+    "full": "Esta sala está llena ahora mismo",
+    "needsPassword": "Esta sala necesita contraseña",
+    "error": "No se pudo unir a esta sala",
+    "roomFull": "Sala llena",
+    "guestNote": "Te unes como invitado. <link>Inicia sesión</link> para conservar tu nombre y tu personaje."
+  },
+  "directory": {
+    "title": "Directorio de la <em>comunidad</em>",
+    "roomsSubtitle": "Explora salas o conoce a las personas que están dentro",
+    "peopleSubtitle": "Conoce a quienes dan forma a SpatialMeet",
+    "rooms": "Salas",
+    "people": "Personas",
+    "createRoom": "Crear sala",
+    "startRoom": "Empezar una sala",
+    "updating": "Actualizando...",
+    "roomsLive": "{count, plural, one {# sala activa} other {# salas activas}}",
+    "searchRooms": "Buscar salas...",
+    "search": "Buscar",
+    "loadingSpaces": "Cargando espacios",
+    "noRoomsFound": "No se encontraron salas.",
+    "noRoomsAvailable": "No hay salas disponibles.",
+    "noRoomsFoundBody": "No encontramos salas que coincidan con tu búsqueda. Prueba a ajustarla.",
+    "noRoomsAvailableBody": "Esto está muy tranquilo. ¡Sé el primero en crear un espacio de trabajo!",
+    "createARoom": "Crear una sala",
+    "presence": {
+      "ONLINE": "En línea",
+      "IDLE": "Inactiva",
+      "OFFLINE": "Desconectada"
+    },
+    "lastActive": "Activa {time}",
+    "justNow": "justo ahora",
+    "full": "Llena",
+    "enter": "Entrar",
+    "gatheringPeople": "Reuniendo personas...",
+    "peopleCount": "{count, plural, one {# persona} other {# personas}}",
+    "searchPeople": "Buscar personas...",
+    "yourProfile": "Tu perfil",
+    "loadingPeople": "Cargando personas",
+    "noPeople": "No se encontraron personas.",
+    "noPeopleBody": "Prueba otra búsqueda o vuelve pronto."
+  },
+  "userMenu": {
+    "signIn": "Iniciar sesión",
+    "dashboard": "Panel",
+    "manageProfile": "Gestionar perfil",
+    "signOut": "Cerrar sesión"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "subtitle": "Gestiona tu perfil y tus salas",
+    "activeCount": "{count} activas",
+    "userNotFound": "Usuario no encontrado",
+    "userNotFoundTitle": "Usuario no encontrado",
+    "backToRooms": "Volver a las salas",
+    "nameUpdated": "¡Nombre visible actualizado!",
+    "profileFailed": "No se pudo actualizar el perfil",
+    "characterUpdated": "¡Personaje actualizado!",
+    "characterFailed": "No se pudo actualizar el personaje",
+    "linkCopied": "¡Enlace copiado!",
+    "profile": {
+      "changeCharacter": "Cambiar personaje",
+      "editName": "Editar nombre visible",
+      "saveName": "Guardar nombre visible",
+      "displayName": "Nombre visible",
+      "guestBadge": "INVITADO",
+      "copyLink": "Copiar enlace del perfil",
+      "share": "Compartir perfil",
+      "shareTitle": "Perfil de {name}",
+      "shareText": "Mira el perfil de {name} en SpatialMeet",
+      "created": "creadas",
+      "joined": "unidas",
+      "unknown": "Desconocido",
+      "chooseCharacter": "Elegir personaje",
+      "selectAvatar": "Selecciona tu avatar"
+    },
+    "stats": {
+      "title": "Estadísticas",
+      "empty": "¡Crea tu primera sala!",
+      "rooms": "Salas",
+      "active": "Activas",
+      "people": "Personas"
+    },
+    "quickActions": {
+      "title": "Acciones rápidas",
+      "createRoom": "Crear sala",
+      "browseRooms": "Explorar salas",
+      "createAccount": "Crear cuenta",
+      "signOut": "Cerrar sesión"
+    },
+    "activity": {
+      "title": "Actividad reciente",
+      "empty": "Aún no hay actividad",
+      "room_created": "Creada",
+      "room_joined": "Unida",
+      "room_visited": "Visitada"
+    },
+    "collaborators": {
+      "title": "Personas recientes",
+      "empty": "Únete a salas para conocer gente"
+    },
+    "rooms": {
+      "mine": "Mis salas",
+      "joined": "Unidas",
+      "gridView": "Vista de cuadrícula",
+      "listView": "Vista de lista",
+      "newRoom": "Nueva sala",
+      "search": "Buscar salas...",
+      "filter": {
+        "all": "Todas",
+        "active": "Activas",
+        "idle": "Inactivas",
+        "offline": "Desconectadas"
+      },
+      "loading": "Cargando salas...",
+      "noMatches": "Sin coincidencias",
+      "noMatchesBody": "Prueba a ajustar la búsqueda o los filtros",
+      "noRooms": "Aún no hay salas",
+      "noRoomsBody": "Crea tu primer espacio de oficina virtual",
+      "createRoom": "Crear una sala",
+      "noJoined": "No te has unido a ninguna sala",
+      "noJoinedBody": "Únete a una sala para verla aquí",
+      "browsePublic": "Explorar salas públicas"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Activa",
+        "idle": "Inactiva",
+        "offline": "Desconectada"
+      },
+      "join": "Unirse",
+      "copyInvite": "Copiar enlace de invitación",
+      "copyLink": "Copiar enlace",
+      "players": "{count}/{max} jugadores",
+      "unknown": "Desconocido"
+    },
+    "widget": {
+      "view": "Ver panel",
+      "created": "creadas",
+      "joined": "unidas"
+    }
+  },
+  "room": {
+    "connecting": "Conectando...",
+    "fallbackName": "Sala: {id}",
+    "people": "{count, plural, one {# persona} other {# personas}}",
+    "copied": "¡Copiado!",
+    "invite": "Invitar",
+    "leave": "Salir"
+  },
+  "call": {
+    "incomingVideo": "Videollamada entrante...",
+    "incomingAudio": "Llamada de voz entrante...",
+    "decline": "Rechazar",
+    "accept": "Aceptar",
+    "tutorial": "Llamada del tutorial",
+    "minimize": "Minimizar",
+    "expand": "Ampliar",
+    "calling": "Llamando...",
+    "cancel": "Cancelar llamada",
+    "errors": {
+      "connection": "Error de conexión",
+      "unsupported": "Este navegador no puede acceder a los dispositivos multimedia",
+      "media": "Cámara o micrófono no disponibles",
+      "camera": "Cámara no disponible"
+    }
+  },
+  "controls": {
+    "status": "Estado: {status}",
+    "muteMic": "Silenciar micrófono",
+    "unmuteMic": "Activar micrófono",
+    "cameraOff": "Apagar cámara",
+    "cameraOn": "Encender cámara",
+    "muteSpeaker": "Silenciar altavoz",
+    "unmuteSpeaker": "Activar altavoz",
+    "openChat": "Abrir chat",
+    "settings": "Ajustes",
+    "leaveCall": "Salir de la llamada"
+  },
+  "status": {
+    "available": { "label": "Disponible", "description": "Listo para charlar" },
+    "busy": { "label": "Ocupado", "description": "No molestar" },
+    "away": { "label": "Ausente", "description": "Vuelvo enseguida" }
+  },
+  "chat": {
+    "title": "Chat de la sala",
+    "system": "Sistema",
+    "welcome": "Te damos la bienvenida al chat de la sala. Todos los que están aquí pueden ver los mensajes.",
+    "intro": "Aquí puedes chatear con todos los de esta sala.",
+    "placeholder": "Escribe un mensaje...",
+    "close": "Cerrar chat",
+    "send": "Enviar mensaje"
+  },
+  "proximity": {
+    "videoCall": "Videollamada",
+    "audioCall": "Llamada de voz",
+    "roomChat": "Chat de la sala",
+    "viewProfile": "Ver perfil"
+  },
+  "jukebox": {
+    "title": "Altavoz de la sala",
+    "close": "Cerrar los controles del altavoz",
+    "tapToPlay": "Pulsa reproducir para escucharlo",
+    "playing": "Sonando para todos en la sala",
+    "paused": "En pausa para todos en la sala",
+    "previous": "Pista anterior",
+    "next": "Pista siguiente",
+    "play": "Reproducir",
+    "pause": "Pausa",
+    "playTrack": "Reproducir {track}"
+  },
+  "whiteboard": {
+    "title": "Pizarra",
+    "penColor": "Color del lápiz {color}",
+    "penSize": "Tamaño del lápiz {size}",
+    "eraser": "Borrador",
+    "clear": "Limpiar la pizarra",
+    "close": "Cerrar la pizarra",
+    "hint": "Todos en la sala dibujan en la misma pizarra. Pulsa Esc para apartarte."
+  },
+  "settings": {
+    "title": "Ajustes",
+    "close": "Cerrar ajustes",
+    "audio": "Audio",
+    "video": "Vídeo",
+    "microphone": "Micrófono",
+    "micVolume": "Volumen del micrófono",
+    "speaker": "Altavoz",
+    "speakerVolume": "Volumen del altavoz",
+    "camera": "Cámara",
+    "videoQuality": "Calidad de vídeo",
+    "quality": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "qualityHint": {
+      "low": "360p, ideal para conexiones lentas",
+      "medium": "480p, equilibrio entre calidad y velocidad",
+      "high": "720p, la mejor calidad pero necesita internet rápido"
+    },
+    "default": "Predeterminado",
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  },
+  "tutorial": {
+    "walk": "Muévete con W A S D",
+    "walkTouch": "Arrastra el joystick para caminar",
+    "click": "O haz clic en cualquier sitio para ir directamente",
+    "clickTouch": "O toca cualquier sitio para ir directamente",
+    "approach": "Acércate a alguien para llamar o chatear",
+    "invite": "Invita a alguien con este enlace, o ya está todo listo",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "linkHint": "Quien tenga el enlace entra en esta sala",
+    "done": "Listo",
+    "skip": "Omitir",
+    "next": "Siguiente"
+  },
+  "scene": {
+    "guide": "Guía",
+    "sit": "Pulsa E para sentarte",
+    "stand": "Pulsa E para levantarte",
+    "music": "Haz clic para música",
+    "draw": "Haz clic para dibujar"
+  },
+  "characters": {
+    "previous": "Personaje anterior",
+    "next": "Personaje siguiente",
+    "select": "Seleccionar a {name}",
+    "keyHint": "Usa las flechas ← →"
+  },
+  "toast": {
+    "dismiss": "Descartar"
+  },
+  "notFound": {
+    "title": "Esta sala no está en el mapa.",
+    "body": "La página que buscas no existe o se ha movido.",
+    "home": "Volver al vestíbulo",
+    "rooms": "Explorar salas"
+  }
+}

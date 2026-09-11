@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { X, User, Mail, Lock, Eye, EyeOff, Sparkles } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -17,6 +18,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   initialMode = "login",
   showCloseButton = true,
 }) => {
+  const t = useTranslations("auth");
+  const tc = useTranslations("common");
   const [mode, setMode] = useState<"login" | "register">(initialMode);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -55,7 +58,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         }
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t("error"));
     } finally {
       setIsLoading(false);
     }
@@ -82,7 +85,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="cursor-pointer absolute top-5 right-5 p-2 bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.06)] rounded-full transition-colors"
+            aria-label={tc("close")}
+            className="cursor-pointer absolute top-5 end-5 p-2 bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.06)] rounded-full transition-colors"
           >
             <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
           </button>
@@ -97,12 +101,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             />
           </div>
           <h2 className="text-2xl font-light tracking-tight text-[var(--color-braun-text)] mb-2">
-            {mode === "login" ? "Welcome Back" : "Join Us"}
+            {mode === "login" ? t("welcomeBack") : t("joinUs")}
           </h2>
           <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
-            {mode === "login"
-              ? "Sign in to your account"
-              : "Create your workspace account"}
+            {mode === "login" ? t("signInSubtitle") : t("registerSubtitle")}
           </p>
         </div>
 
@@ -110,13 +112,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Username */}
           <div className="relative">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+            <User className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
-              className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+              placeholder={t("username")}
+              className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               required
             />
           </div>
@@ -124,13 +126,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           {/* Email (register only) */}
           {mode === "register" && (
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+              <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email (optional)"
-                className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+                placeholder={t("emailOptional")}
+                className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
             </div>
           )}
@@ -138,33 +140,34 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           {/* Display Name (register only) */}
           {mode === "register" && (
             <div className="relative">
-              <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+              <Sparkles className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Display Name (optional)"
-                className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+                placeholder={t("displayNameOptional")}
+                className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
             </div>
           )}
 
           {/* Password */}
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+            <Lock className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="w-full pl-11 pr-11 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+              placeholder={t("password")}
+              className="w-full ps-11 pe-11 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               required
               minLength={6}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-70 transition-opacity"
+              aria-label={showPassword ? t("hidePassword") : t("showPassword")}
+              className="absolute end-4 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-70 transition-opacity"
             >
               {showPassword ? (
                 <EyeOff className="w-4 h-4" />
@@ -188,24 +191,22 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             className="w-full h-12 mt-2 bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full hover:bg-[#1a1a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
           >
             {isLoading
-              ? "Loading..."
+              ? tc("loading")
               : mode === "login"
-                ? "Sign In"
-                : "Create Account"}
+                ? t("signIn")
+                : t("createAccount")}
           </button>
         </form>
 
         {/* Switch mode */}
         <div className="text-center mt-6 pt-6 border-t border-[rgba(0,0,0,0.06)]">
           <p className="text-[var(--color-braun-text)] opacity-60 text-sm">
-            {mode === "login"
-              ? "Don't have an account?"
-              : "Already have an account?"}
+            {mode === "login" ? t("noAccount") : t("haveAccount")}
             <button
               onClick={switchMode}
-              className="cursor-pointer ml-2 text-[var(--color-braun-text)] opacity-100 hover:text-[var(--color-braun-orange)] font-bold transition-colors"
+              className="cursor-pointer ms-2 text-[var(--color-braun-text)] opacity-100 hover:text-[var(--color-braun-orange)] font-bold transition-colors"
             >
-              {mode === "login" ? "Sign Up" : "Sign In"}
+              {mode === "login" ? t("signUp") : t("signIn")}
             </button>
           </p>
         </div>

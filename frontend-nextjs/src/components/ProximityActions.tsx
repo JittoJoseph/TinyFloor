@@ -1,8 +1,10 @@
 "use client";
 
 import { memo } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Video, Mic, MessageSquare, User } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
+import { getPathname } from "@/lib/i18n/navigation";
 
 export interface NearbyPlayer {
   id: string;
@@ -48,6 +50,8 @@ export const ProximityActions = memo(function ProximityActions({
   player: NearbyPlayer;
   touch?: boolean;
 }) {
+  const t = useTranslations("proximity");
+  const locale = useLocale();
   const size = touch ? SIZES.touch : SIZES.pointer;
   const actionClass = `cursor-pointer ${size.chip} rounded-full bg-white border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all flex items-center justify-center shrink-0`;
 
@@ -69,21 +73,24 @@ export const ProximityActions = memo(function ProximityActions({
       <button
         onClick={() => callManager.invite(player.id, player.name, true)}
         className={actionClass}
-        title="Video call"
+        title={t("videoCall")}
+        aria-label={t("videoCall")}
       >
         <Video className={size.icon} />
       </button>
       <button
         onClick={() => callManager.invite(player.id, player.name, false)}
         className={actionClass}
-        title="Audio call"
+        title={t("audioCall")}
+        aria-label={t("audioCall")}
       >
         <Mic className={size.icon} />
       </button>
       <button
         onClick={() => window.dispatchEvent(new Event("openChat"))}
         className={actionClass}
-        title="Room chat"
+        title={t("roomChat")}
+        aria-label={t("roomChat")}
       >
         <MessageSquare className={size.icon} />
       </button>
@@ -91,13 +98,17 @@ export const ProximityActions = memo(function ProximityActions({
         <button
           onClick={() =>
             window.open(
-              `/dashboard?user=${player.id}`,
+              getPathname({
+                href: { pathname: "/dashboard", query: { user: player.id } },
+                locale,
+              }),
               "_blank",
               "noopener,noreferrer",
             )
           }
           className={actionClass}
-          title="View profile"
+          title={t("viewProfile")}
+          aria-label={t("viewProfile")}
         >
           <User className={size.icon} />
         </button>

@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet – Ein virtuelles Büro zum Herumlaufen",
+    "description": "SpatialMeet ist ein kostenloses virtuelles Büro im Browser. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
+    "ogAlt": "Ein SpatialMeet-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern",
+    "keywords": "virtuelles Büro, Remote-Arbeit, räumlicher Chat, Online-Zusammenarbeit, virtueller Arbeitsplatz, Metaverse-Büro, Proximity-Chat, Proximity-Videochat, virtueller Coworking-Space, Videoanrufe im Browser",
+    "createRoomTitle": "Raum erstellen",
+    "createRoomDescription": "Eröffne einen virtuellen Büroraum auf SpatialMeet. Gib ihm einen Namen, lege bei Bedarf ein Passwort fest und teile einen einzigen Link mit deinem Team.",
+    "joinTitle": "Raum betreten",
+    "roomsTitle": "Räume entdecken",
+    "roomsDescription": "Durchstöbere aktive virtuelle Räume und tritt öffentlichen Arbeitsbereichen in SpatialMeet bei.",
+    "peopleTitle": "Personen",
+    "peopleDescription": "Lerne die Leute kennen, die sich in SpatialMeet-Räumen aufhalten.",
+    "authTitle": "Anmelden",
+    "authDescription": "Melde dich bei SpatialMeet an, um deinen Namen, deinen Charakter und eine Liste deiner Räume zu behalten.",
+    "dashboardTitle": "Dashboard",
+    "roomTitle": "Aktiver Raum",
+    "notFoundTitle": "Seite nicht gefunden"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "back": "Zurück",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "close": "Schließen",
+    "guest": "Gast",
+    "you": "Du"
+  },
+  "languageSwitcher": {
+    "label": "Sprache",
+    "select": "Sprache auswählen",
+    "searchPlaceholder": "Sprache suchen…",
+    "noResults": "Keine Sprachen gefunden"
+  },
+  "nav": {
+    "main": "Hauptnavigation",
+    "questions": "Fragen",
+    "tour": "Tour",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Das <em>gemütlichste</em> <br></br>virtuelle Büro.",
+    "subtitle": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf herum, sprich mit deinen Kollegen und fühl dich wieder wie ein Team.",
+    "cta": "Ausprobieren",
+    "caption": "Ein SpatialMeet-Raum: eine 16-Bit-Büroetage mit Schreibtischen und zwei Teammitgliedern darauf."
+  },
+  "landing": {
+    "description": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
+    "features": [
+      "Video- und Sprachanrufe in der Nähe",
+      "Begehbare 2D-Büro-Karte",
+      "Pixel-Art-Avatare",
+      "Anwesenheit und Status in Echtzeit",
+      "Raum-Chat"
+    ]
+  },
+  "moments": {
+    "title": "Ein Büro, in dem du <em>herumlaufen kannst.</em>",
+    "subtitle": "SpatialMeet bewahrt den Teil des Büros, den Anrufe nie ersetzt haben: zu wissen, wer da ist, und einfach rübergehen zu können.",
+    "roomsLabel": "Räume",
+    "alwaysOn": "Immer offen",
+    "directory": {
+      "design": { "name": "Designteam", "here": "5 da" },
+      "founders": { "name": "Gründer", "here": "2 da" },
+      "jam": { "name": "Wochenend-Jam", "here": "Leer" }
+    },
+    "enter": {
+      "title": "Link öffnen und du bist drin.",
+      "body": "Jemand teilt einen Raumlink. Wähl einen Charakter, gib einen Namen ein und schon stehst du mit allen anderen auf der Etage.",
+      "chip1": "Kein Download",
+      "chip2": "Gäste willkommen",
+      "chip3": "Jeder Browser"
+    },
+    "call": {
+      "title": "Geh rüber, um zu reden.",
+      "body": "Komm einem Teammitglied nahe, und über ihm erscheint die Anrufleiste. Ein Tipp startet Video oder Sprache, direkt zwischen den Browsern.",
+      "chip1": "Video oder Sprache",
+      "chip2": "Peer-to-Peer",
+      "chip3": "Ein Tipp"
+    },
+    "presence": {
+      "title": "Du siehst, wer gerade da ist.",
+      "body": "Alle tragen ein Namensschild und einen Status. Sieh, wer frei ist, wer konzentriert arbeitet und wer schon telefoniert, bevor du hingehst.",
+      "chip1": "Live-Namensschilder",
+      "chip2": "Abwesend und beschäftigt",
+      "chip3": "Raum-Chat"
+    },
+    "rooms": {
+      "title": "Der Raum ist morgen noch da.",
+      "body": "Räume enden nicht, wenn ein Meeting endet. Halte einen für dein Team offen, sichere ihn bei Bedarf mit einem Passwort und schick den Link nur einmal.",
+      "chip1": "Für alle gelistet",
+      "chip2": "Per Link teilen",
+      "chip3": "Kostenlos"
+    },
+    "floor": {
+      "title": "Ein Büro, kein Meeting.",
+      "body": "Niemand verschickt Einladungen. Leute schauen vorbei, arbeiten nebeneinander und gehen rüber, wenn etwas ansteht.",
+      "chip1": "Keine Einladungen",
+      "chip2": "Einfach rübergehen",
+      "chip3": "Die ganze Etage"
+    }
+  },
+  "faq": {
+    "title": "Bevor du <em>reingehst.</em>",
+    "items": [
+      {
+        "q": "Was ist SpatialMeet?",
+        "a": "SpatialMeet ist ein virtuelles Büro, in dem du herumläufst. Dein Team erscheint als Pixel-Art-Figuren auf einer gemeinsamen 2D-Etage, und ein Video- oder Sprachanruf startet, wenn du dich neben jemanden stellst – nicht, wenn du auf einen Meeting-Link klickst."
+      },
+      {
+        "q": "Muss ich etwas installieren?",
+        "a": "Nein. SpatialMeet läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
+      },
+      {
+        "q": "Ist SpatialMeet kostenlos?",
+        "a": "Ja. Räume erstellen, herumlaufen, chatten und telefonieren ist kostenlos."
+      },
+      {
+        "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
+        "a": "Nein. Alle können als Gast nur mit einem Namen beitreten. Eine Anmeldung bringt nur ein gespeichertes Profil, einen Charakter, den du behältst, und eine Liste deiner Räume."
+      },
+      {
+        "q": "Wie funktionieren die Videoanrufe?",
+        "a": "Anrufe laufen Peer-to-Peer über WebRTC, Audio und Video gehen also direkt zwischen den Browsern. Ist ein Anruf verbunden, bleibt er bestehen, bis jemand auflegt oder den Raum verlässt. Weggehen beendet ihn nicht."
+      },
+      {
+        "q": "Ist meine Kamera die ganze Zeit an, während ich in einem Raum bin?",
+        "a": "Nein. Kamera und Mikrofon werden nur für einen Anruf geöffnet und sofort freigegeben, wenn er endet."
+      },
+      {
+        "q": "Kann ich SpatialMeet auf dem Handy nutzen?",
+        "a": "Ja. Auf Touch-Geräten bewegst du dich mit einem Joystick auf dem Bildschirm, und die Anrufsteuerung passt sich dem kleineren Display an."
+      },
+      {
+        "q": "Was ist anders als bei einem normalen Videoanruf?",
+        "a": "Ein normaler Anruf steckt alle in ein Raster, bis das Meeting endet. Ein SpatialMeet-Raum bleibt den ganzen Tag offen, sodass du siehst, wer da ist, zwischen Gesprächen wechseln und mit den Leuten reden kannst, zu denen du hingehst."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Dein Raum ist <em>schon offen.</em>",
+    "publicTitle": "Betritt das öffentliche Büro",
+    "publicBody": "Der Raum, der immer offen ist. Wähl einen Charakter, lauf herum und sag Hallo zu allen, die gerade da sind.",
+    "createTitle": "Eröffne einen Raum für dein Team",
+    "createBody": "Gib ihm einen Namen, lege bei Bedarf ein Passwort fest und schick einen Link. Er bleibt so lange offen, wie du willst.",
+    "sampleName": "Designteam",
+    "create": "Erstellen"
+  },
+  "footer": {
+    "tagline": "Ein virtuelles Büro zum Herumlaufen. Kostenlos, im Browser.",
+    "product": "Produkt",
+    "learn": "Mehr erfahren",
+    "elsewhere": "Anderswo",
+    "rooms": "Räume",
+    "people": "Personen",
+    "createRoom": "Raum erstellen",
+    "dashboard": "Dashboard",
+    "tour": "Raum-Tour",
+    "twoWays": "Zwei Wege hinein",
+    "questions": "Fragen",
+    "rights": "© {year} Jitto Joseph. Alle Rechte vorbehalten."
+  },
+  "auth": {
+    "welcomeBack": "Willkommen zurück",
+    "joinUs": "Mach mit",
+    "signInSubtitle": "Melde dich bei deinem Konto an",
+    "registerSubtitle": "Erstelle dein Workspace-Konto",
+    "username": "Benutzername",
+    "emailOptional": "E-Mail (optional)",
+    "displayNameOptional": "Anzeigename (optional)",
+    "password": "Passwort",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "createAccount": "Konto erstellen",
+    "noAccount": "Noch kein Konto?",
+    "haveAccount": "Schon ein Konto?",
+    "continueGuest": "Als Gast fortfahren →",
+    "error": "Ein Fehler ist aufgetreten"
+  },
+  "entry": {
+    "allRooms": "Alle Räume",
+    "yourName": "Dein Name",
+    "namePlaceholder": "Wie sollen dich andere nennen?",
+    "roomPassword": "Raumpasswort",
+    "passwordPlaceholder": "Passwort eingeben",
+    "character": "Charakter",
+    "copyInvite": "Einladungslink kopieren",
+    "inviteCopied": "Einladungslink kopiert",
+    "openingDoor": "Tür wird geöffnet",
+    "walkIn": "Eintreten"
+  },
+  "createRoom": {
+    "title": "Eröffne einen Raum.",
+    "roomName": "Raumname",
+    "roomNamePlaceholder": "Designteam, Studio, Freitagsrunde",
+    "advanced": "Erweitert",
+    "passwordPlaceholder": "Passwort hinzufügen (optional)",
+    "passwordLabel": "Raumpasswort",
+    "passwordHint": "Jeder Raum wird im Verzeichnis gelistet. Ein Passwort hält die Tür für alle ohne Passwort geschlossen.",
+    "submit": "Raum erstellen",
+    "submitting": "Wird eingerichtet",
+    "createError": "Der Raum konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "openError": "Der Raum konnte nicht geöffnet werden"
+  },
+  "join": {
+    "unavailableTitle": "Diese Tür geht nicht auf.",
+    "unavailable": "Dieser Raum ist nicht mehr verfügbar.",
+    "browse": "Räume durchsuchen",
+    "full": "Dieser Raum ist gerade voll",
+    "needsPassword": "Dieser Raum braucht ein Passwort",
+    "error": "Beitritt zu diesem Raum nicht möglich",
+    "roomFull": "Raum ist voll",
+    "guestNote": "Du trittst als Gast bei. <link>Melde dich an</link>, um Namen und Charakter zu behalten."
+  },
+  "directory": {
+    "title": "Community-<em>Verzeichnis</em>",
+    "roomsSubtitle": "Durchstöbere Räume oder triff die Leute darin",
+    "peopleSubtitle": "Lerne die Leute kennen, die SpatialMeet prägen",
+    "rooms": "Räume",
+    "people": "Personen",
+    "createRoom": "Raum erstellen",
+    "startRoom": "Raum starten",
+    "updating": "Wird aktualisiert...",
+    "roomsLive": "{count, plural, one {# Raum live} other {# Räume live}}",
+    "searchRooms": "Räume suchen...",
+    "search": "Suchen",
+    "loadingSpaces": "Räume werden geladen",
+    "noRoomsFound": "Keine Räume gefunden.",
+    "noRoomsAvailable": "Keine Räume verfügbar.",
+    "noRoomsFoundBody": "Wir konnten keine Räume zu deiner Suche finden. Versuch es mit einer anderen Suchanfrage.",
+    "noRoomsAvailableBody": "Hier ist es ruhig. Starte als Erstes einen neuen Arbeitsbereich!",
+    "createARoom": "Raum erstellen",
+    "presence": {
+      "ONLINE": "Online",
+      "IDLE": "Inaktiv",
+      "OFFLINE": "Offline"
+    },
+    "lastActive": "Aktiv {time}",
+    "justNow": "gerade eben",
+    "full": "Voll",
+    "enter": "Betreten",
+    "gatheringPeople": "Personen werden gesammelt...",
+    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
+    "searchPeople": "Personen suchen...",
+    "yourProfile": "Dein Profil",
+    "loadingPeople": "Personen werden geladen",
+    "noPeople": "Keine Personen gefunden.",
+    "noPeopleBody": "Versuch eine andere Suche oder schau bald wieder vorbei."
+  },
+  "userMenu": {
+    "signIn": "Anmelden",
+    "dashboard": "Dashboard",
+    "manageProfile": "Profil verwalten",
+    "signOut": "Abmelden"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Verwalte dein Profil und deine Räume",
+    "activeCount": "{count} aktiv",
+    "userNotFound": "Benutzer nicht gefunden",
+    "userNotFoundTitle": "Benutzer nicht gefunden",
+    "backToRooms": "Zurück zu den Räumen",
+    "nameUpdated": "Anzeigename aktualisiert!",
+    "profileFailed": "Profil konnte nicht aktualisiert werden",
+    "characterUpdated": "Charakter aktualisiert!",
+    "characterFailed": "Charakter konnte nicht aktualisiert werden",
+    "linkCopied": "Link kopiert!",
+    "profile": {
+      "changeCharacter": "Charakter ändern",
+      "editName": "Anzeigenamen bearbeiten",
+      "saveName": "Anzeigenamen speichern",
+      "displayName": "Anzeigename",
+      "guestBadge": "GAST",
+      "copyLink": "Profillink kopieren",
+      "share": "Profil teilen",
+      "shareTitle": "Profil von {name}",
+      "shareText": "Sieh dir das Profil von {name} auf SpatialMeet an",
+      "created": "erstellt",
+      "joined": "beigetreten",
+      "unknown": "Unbekannt",
+      "chooseCharacter": "Charakter wählen",
+      "selectAvatar": "Wähle deinen Avatar"
+    },
+    "stats": {
+      "title": "Statistiken",
+      "empty": "Erstelle deinen ersten Raum!",
+      "rooms": "Räume",
+      "active": "Aktiv",
+      "people": "Personen"
+    },
+    "quickActions": {
+      "title": "Schnellaktionen",
+      "createRoom": "Raum erstellen",
+      "browseRooms": "Räume durchsuchen",
+      "createAccount": "Konto erstellen",
+      "signOut": "Abmelden"
+    },
+    "activity": {
+      "title": "Letzte Aktivitäten",
+      "empty": "Noch keine Aktivität",
+      "room_created": "Erstellt",
+      "room_joined": "Beigetreten",
+      "room_visited": "Besucht"
+    },
+    "collaborators": {
+      "title": "Kürzlich getroffen",
+      "empty": "Tritt Räumen bei, um Leute kennenzulernen"
+    },
+    "rooms": {
+      "mine": "Meine Räume",
+      "joined": "Beigetreten",
+      "gridView": "Rasteransicht",
+      "listView": "Listenansicht",
+      "newRoom": "Neuer Raum",
+      "search": "Räume suchen...",
+      "filter": {
+        "all": "Alle",
+        "active": "Aktiv",
+        "idle": "Inaktiv",
+        "offline": "Offline"
+      },
+      "loading": "Räume werden geladen...",
+      "noMatches": "Keine Treffer",
+      "noMatchesBody": "Passe deine Suche oder die Filter an",
+      "noRooms": "Noch keine Räume",
+      "noRoomsBody": "Erstelle deinen ersten virtuellen Büroraum",
+      "createRoom": "Raum erstellen",
+      "noJoined": "Keine beigetretenen Räume",
+      "noJoinedBody": "Tritt einem Raum bei, damit er hier erscheint",
+      "browsePublic": "Öffentliche Räume durchsuchen"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Aktiv",
+        "idle": "Inaktiv",
+        "offline": "Offline"
+      },
+      "join": "Beitreten",
+      "copyInvite": "Einladungslink kopieren",
+      "copyLink": "Link kopieren",
+      "players": "{count}/{max} Spieler",
+      "unknown": "Unbekannt"
+    },
+    "widget": {
+      "view": "Dashboard ansehen",
+      "created": "erstellt",
+      "joined": "beigetreten"
+    }
+  },
+  "room": {
+    "connecting": "Verbinde...",
+    "fallbackName": "Raum: {id}",
+    "people": "{count, plural, one {# Person} other {# Personen}}",
+    "copied": "Kopiert!",
+    "invite": "Einladen",
+    "leave": "Verlassen"
+  },
+  "call": {
+    "incomingVideo": "Eingehender Videoanruf...",
+    "incomingAudio": "Eingehender Sprachanruf...",
+    "decline": "Ablehnen",
+    "accept": "Annehmen",
+    "tutorial": "Tutorial-Anruf",
+    "minimize": "Minimieren",
+    "expand": "Vergrößern",
+    "calling": "Anruf läuft...",
+    "cancel": "Anruf abbrechen",
+    "errors": {
+      "connection": "Verbindung fehlgeschlagen",
+      "unsupported": "Dieser Browser kann nicht auf Mediengeräte zugreifen",
+      "media": "Kamera oder Mikrofon nicht verfügbar",
+      "camera": "Kamera nicht verfügbar"
+    }
+  },
+  "controls": {
+    "status": "Status: {status}",
+    "muteMic": "Mikrofon stummschalten",
+    "unmuteMic": "Mikrofon einschalten",
+    "cameraOff": "Kamera ausschalten",
+    "cameraOn": "Kamera einschalten",
+    "muteSpeaker": "Lautsprecher stummschalten",
+    "unmuteSpeaker": "Lautsprecher einschalten",
+    "openChat": "Chat öffnen",
+    "settings": "Einstellungen",
+    "leaveCall": "Anruf verlassen"
+  },
+  "status": {
+    "available": { "label": "Verfügbar", "description": "Bereit zum Plaudern" },
+    "busy": { "label": "Beschäftigt", "description": "Bitte nicht stören" },
+    "away": { "label": "Abwesend", "description": "Bin gleich zurück" }
+  },
+  "chat": {
+    "title": "Raum-Chat",
+    "system": "System",
+    "welcome": "Willkommen im Raum-Chat. Nachrichten sind für alle hier sichtbar.",
+    "intro": "Hier kannst du mit allen in diesem Raum chatten.",
+    "placeholder": "Nachricht eingeben...",
+    "close": "Chat schließen",
+    "send": "Nachricht senden"
+  },
+  "proximity": {
+    "videoCall": "Videoanruf",
+    "audioCall": "Sprachanruf",
+    "roomChat": "Raum-Chat",
+    "viewProfile": "Profil ansehen"
+  },
+  "jukebox": {
+    "title": "Raumlautsprecher",
+    "close": "Lautsprecher-Steuerung schließen",
+    "tapToPlay": "Tippe auf Play, um es zu hören",
+    "playing": "Läuft für alle im Raum",
+    "paused": "Pausiert für alle im Raum",
+    "previous": "Vorheriger Titel",
+    "next": "Nächster Titel",
+    "play": "Abspielen",
+    "pause": "Pause",
+    "playTrack": "{track} abspielen"
+  },
+  "whiteboard": {
+    "title": "Whiteboard",
+    "penColor": "Stiftfarbe {color}",
+    "penSize": "Stiftgröße {size}",
+    "eraser": "Radiergummi",
+    "clear": "Tafel leeren",
+    "close": "Whiteboard schließen",
+    "hint": "Alle im Raum zeichnen auf derselben Tafel. Drück Esc, um zurückzutreten."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "close": "Einstellungen schließen",
+    "audio": "Audio",
+    "video": "Video",
+    "microphone": "Mikrofon",
+    "micVolume": "Mikrofonlautstärke",
+    "speaker": "Lautsprecher",
+    "speakerVolume": "Lautsprecherlautstärke",
+    "camera": "Kamera",
+    "videoQuality": "Videoqualität",
+    "quality": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "qualityHint": {
+      "low": "360p, am besten für langsame Verbindungen",
+      "medium": "480p, ausgewogene Qualität und Geschwindigkeit",
+      "high": "720p, beste Qualität, braucht aber schnelles Internet"
+    },
+    "default": "Standard",
+    "cancel": "Abbrechen",
+    "save": "Speichern"
+  },
+  "tutorial": {
+    "walk": "Lauf mit W A S D herum",
+    "walkTouch": "Zieh den Joystick, um zu laufen",
+    "click": "Oder klick irgendwohin, um direkt dorthin zu laufen",
+    "clickTouch": "Oder tippe irgendwohin, um direkt dorthin zu laufen",
+    "approach": "Geh nah an jemanden heran, um anzurufen oder zu chatten",
+    "invite": "Lade jemanden mit diesem Link ein, oder du bist startklar",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "linkHint": "Alle mit dem Link landen in diesem Raum",
+    "done": "Fertig",
+    "skip": "Überspringen",
+    "next": "Weiter"
+  },
+  "scene": {
+    "guide": "Guide",
+    "sit": "E drücken zum Hinsetzen",
+    "stand": "E drücken zum Aufstehen",
+    "music": "Klick für Musik",
+    "draw": "Klick zum Zeichnen"
+  },
+  "characters": {
+    "previous": "Vorheriger Charakter",
+    "next": "Nächster Charakter",
+    "select": "{name} auswählen",
+    "keyHint": "Pfeiltasten ← → verwenden"
+  },
+  "toast": {
+    "dismiss": "Schließen"
+  },
+  "notFound": {
+    "title": "Dieser Raum ist nicht auf der Karte.",
+    "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "home": "Zurück zur Lobby",
+    "rooms": "Räume durchsuchen"
+  }
+}

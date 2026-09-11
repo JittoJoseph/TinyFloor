@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Users } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { CharacterPreview } from "./CharacterPreview";
 
 export interface Collaborator {
@@ -21,12 +22,14 @@ export function RecentCollaborators({
   collaborators,
   isLoading,
 }: RecentCollaboratorsProps) {
+  const t = useTranslations("dashboard.collaborators");
+
   if (isLoading) {
     return (
       <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm">
         <div className="flex items-center gap-2 mb-3">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">{t("title")}</h3>
         </div>
         <div className="flex gap-2 animate-pulse">
           {[1, 2, 3, 4].map((i) => (
@@ -45,14 +48,14 @@ export function RecentCollaborators({
       <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">{t("title")}</h3>
         </div>
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center py-6">
             <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gray-100 border-2 border-dashed border-gray-200 flex items-center justify-center">
               <Users className="w-6 h-6 text-gray-300" />
             </div>
-            <p className="text-gray-400 text-xs">Join rooms to meet people</p>
+            <p className="text-gray-400 text-xs">{t("empty")}</p>
           </div>
         </div>
       </div>
@@ -64,7 +67,7 @@ export function RecentCollaborators({
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Users className="w-4 h-4 text-gray-400" />
-          <h3 className="text-sm text-gray-900">Recent People</h3>
+          <h3 className="text-sm text-gray-900">{t("title")}</h3>
         </div>
         <span className="px-2 py-0.5 bg-gray-100 rounded-full text-[10px] font-bold text-gray-600">
           {collaborators.length}
@@ -109,7 +112,7 @@ export function RecentCollaborators({
         })}
         {collaborators.length > 8 && (
           <div className="w-11 h-14 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border-2 border-dashed border-blue-200 flex items-center justify-center">
-            <span className="text-xs font-bold text-blue-600">
+            <span className="text-xs font-bold text-blue-600" dir="ltr">
               +{collaborators.length - 8}
             </span>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useFormatter, useNow, useTranslations } from "next-intl";
 import {
   Users,
   Lock,
@@ -10,6 +10,7 @@ import {
   Check,
   Crown,
 } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 
 export interface Room {
   id: string;
@@ -31,20 +32,23 @@ interface RoomCardProps {
   isCopied: boolean;
 }
 
-function getTimeAgo(dateString: string): string {
-  if (!dateString) return "Unknown";
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffMins = Math.floor(diffMs / 60000);
+const WEEK = 7 * 24 * 60 * 60 * 1000;
 
-  if (diffMins < 1) return "Just now";
-  if (diffMins < 60) return `${diffMins}m ago`;
-  const diffHours = Math.floor(diffMins / 60);
-  if (diffHours < 24) return `${diffHours}h ago`;
-  const diffDays = Math.floor(diffHours / 24);
-  if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString();
+function useTimeAgo() {
+  const t = useTranslations("dashboard.roomCard");
+  const tDirectory = useTranslations("directory");
+  const format = useFormatter();
+  const now = useNow({ updateInterval: 60000 });
+
+  return (dateString: string): string => {
+    if (!dateString) return t("unknown");
+    const date = new Date(dateString);
+    const diffMs = now.getTime() - date.getTime();
+
+    if (diffMs < 60000) return tDirectory("justNow");
+    if (diffMs < WEEK) return format.relativeTime(date, now);
+    return format.dateTime(date);
+  };
 }
 
 function getRoomStatus(room: Room): RoomStatus {
@@ -60,22 +64,19 @@ function getRoomStatus(room: Room): RoomStatus {
 
 const statusConfig: Record<
   RoomStatus,
-  { label: string; dotClass: string; bgClass: string; textClass: string }
+  { dotClass: string; bgClass: string; textClass: string }
 > = {
   active: {
-    label: "ACTIVE",
     dotClass: "bg-green-500 animate-pulse",
     bgClass: "bg-green-100",
     textClass: "text-green-700",
   },
   idle: {
-    label: "IDLE",
     dotClass: "bg-yellow-500",
     bgClass: "bg-yellow-100",
     textClass: "text-yellow-700",
   },
   offline: {
-    label: "OFFLINE",
     dotClass: "bg-gray-400",
     bgClass: "bg-gray-100",
     textClass: "text-gray-500",
@@ -83,6 +84,8 @@ const statusConfig: Record<
 };
 
 export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
+  const t = useTranslations("dashboard.roomCard");
+  const timeAgo = useTimeAgo();
   const status = getRoomStatus(room);
   const config = statusConfig[status];
 
@@ -105,23 +108,23 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
             </div>
           </div>
           <div
-            className={`px-2 py-1 text-xs font-bold rounded-full flex items-center gap-1.5 ${config.bgClass} ${config.textClass}`}
+            className={`px-2 py-1 text-xs font-bold uppercase rounded-full flex items-center gap-1.5 ${config.bgClass} ${config.textClass}`}
           >
             <div className={`w-1.5 h-1.5 rounded-full ${config.dotClass}`} />
-            {config.label}
+            {t(`status.${status}`)}
           </div>
         </div>
 
         {/* Stats Row */}
         <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5" dir="ltr">
             <Users className="w-4 h-4" />
             <span className="font-medium">{room.playerCount}</span>
             <span className="text-gray-400">/ {room.maxPlayers}</span>
           </span>
           <span className="flex items-center gap-1.5">
             <Clock className="w-4 h-4" />
-            {getTimeAgo(room.lastActivityAt)}
+            {timeAgo(room.lastActivityAt)}
           </span>
         </div>
 
@@ -132,12 +135,13 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
             className="cursor-pointer flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] font-bold uppercase tracking-widest text-xs rounded-full shadow-sm transition-all hover:-translate-y-0.5"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            Join
+            {t("join")}
           </Link>
           <button
             onClick={onCopy}
             className="cursor-pointer p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors"
-            title="Copy invite link"
+            title={t("copyInvite")}
+            aria-label={t("copyInvite")}
           >
             {isCopied ? (
               <Check className="w-4 h-4 text-green-600" />
@@ -158,6 +162,8 @@ export function RoomCardCompact({
   onCopy,
   isCopied,
 }: RoomCardProps) {
+  const t = useTranslations("dashboard.roomCard");
+  const timeAgo = useTimeAgo();
   const status = getRoomStatus(room);
   const config = statusConfig[status];
 
@@ -177,9 +183,9 @@ export function RoomCardCompact({
         </div>
         <div className="flex items-center gap-3 text-xs text-gray-400 mt-0.5">
           <span>
-            {room.playerCount}/{room.maxPlayers} players
+            {t("players", { count: room.playerCount, max: room.maxPlayers })}
           </span>
-          <span>{getTimeAgo(room.lastActivityAt)}</span>
+          <span>{timeAgo(room.lastActivityAt)}</span>
         </div>
       </div>
 
@@ -189,12 +195,13 @@ export function RoomCardCompact({
           href={`/join?roomId=${room.id}`}
           className="cursor-pointer px-3 py-1.5 bg-white hover:bg-gray-50 border border-[rgba(0,0,0,0.06)] shadow-sm text-[var(--color-braun-text)] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all hover:-translate-y-0.5"
         >
-          Join
+          {t("join")}
         </Link>
         <button
           onClick={onCopy}
           className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-500 rounded-lg transition-colors"
-          title="Copy link"
+          title={t("copyLink")}
+          aria-label={t("copyLink")}
         >
           {isCopied ? (
             <Check className="w-4 h-4 text-green-600" />

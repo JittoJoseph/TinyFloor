@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet - 걸어 다닐 수 있는 가상 오피스",
+    "description": "SpatialMeet는 브라우저에서 쓰는 무료 가상 오피스예요. 팀과 함께 픽셀 아트 층을 돌아다니고, 누군가의 옆에 서기만 하면 영상 통화가 시작돼요.",
+    "ogAlt": "SpatialMeet 방: 책상과 팀원이 있는 16비트 오피스 층",
+    "keywords": "가상 오피스, 원격 근무, 공간 채팅, 온라인 협업, 가상 업무 공간, 메타버스 오피스, 근접 채팅, 근접 영상 채팅, 가상 코워킹 스페이스, 브라우저 영상 통화",
+    "createRoomTitle": "방 만들기",
+    "createRoomDescription": "SpatialMeet에서 가상 오피스 방을 열어 보세요. 이름을 정하고, 원하면 비밀번호를 추가한 뒤 팀에 링크 하나만 공유하면 돼요.",
+    "joinTitle": "방 참여",
+    "roomsTitle": "방 둘러보기",
+    "roomsDescription": "활성화된 가상 방을 둘러보고 SpatialMeet의 공개 업무 공간에 참여하세요.",
+    "peopleTitle": "사람들",
+    "peopleDescription": "SpatialMeet 방에서 시간을 보내는 사람들을 만나 보세요.",
+    "authTitle": "로그인",
+    "authDescription": "SpatialMeet에 로그인하면 이름, 캐릭터, 방 목록을 저장할 수 있어요.",
+    "dashboardTitle": "대시보드",
+    "roomTitle": "활성 방",
+    "notFoundTitle": "페이지를 찾을 수 없어요"
+  },
+  "common": {
+    "loading": "불러오는 중...",
+    "back": "뒤로",
+    "cancel": "취소",
+    "save": "저장",
+    "close": "닫기",
+    "guest": "게스트",
+    "you": "나"
+  },
+  "languageSwitcher": {
+    "label": "언어",
+    "select": "언어 선택",
+    "searchPlaceholder": "언어 검색…",
+    "noResults": "언어를 찾을 수 없어요"
+  },
+  "nav": {
+    "main": "메인",
+    "questions": "자주 묻는 질문",
+    "tour": "둘러보기",
+    "dashboard": "대시보드"
+  },
+  "hero": {
+    "title": "가장 <em>아늑한</em> <br></br>가상 오피스.",
+    "subtitle": "게임처럼 생긴 가상 오피스. 돌아다니며 동료와 이야기하고 다시 한 팀이 된 기분을 느껴 보세요.",
+    "cta": "사용해 보기",
+    "caption": "SpatialMeet 방: 책상이 놓인 16비트 오피스 층에 팀원 두 명이 서 있어요."
+  },
+  "landing": {
+    "description": "게임처럼 생긴 가상 오피스. 팀과 함께 픽셀 아트 층을 돌아다니고, 누군가의 옆에 서기만 하면 영상 통화가 시작돼요.",
+    "features": [
+      "가까이 가면 시작되는 영상·음성 통화",
+      "걸어 다닐 수 있는 2D 오피스 지도",
+      "픽셀 아트 아바타",
+      "실시간 접속 여부와 상태",
+      "방 채팅"
+    ]
+  },
+  "moments": {
+    "title": "<em>걸어 다닐 수 있는</em> 오피스.",
+    "subtitle": "SpatialMeet는 통화가 대신하지 못한 오피스의 장점을 지켜요. 누가 있는지 알고, 바로 걸어가 말을 걸 수 있다는 것.",
+    "roomsLabel": "방",
+    "alwaysOn": "항상 열려 있음",
+    "directory": {
+      "design": { "name": "디자인 팀", "here": "5명 있음" },
+      "founders": { "name": "창업자", "here": "2명 있음" },
+      "jam": { "name": "주말 잼", "here": "비어 있음" }
+    },
+    "enter": {
+      "title": "링크를 열면 바로 입장이에요.",
+      "body": "누군가 방 링크를 공유해요. 캐릭터를 고르고 이름을 입력하면 모두와 같은 층에 서 있게 돼요.",
+      "chip1": "다운로드 없음",
+      "chip2": "게스트 환영",
+      "chip3": "모든 브라우저"
+    },
+    "call": {
+      "title": "다가가면 대화가 시작돼요.",
+      "body": "팀원에게 가까이 가면 머리 위에 통화 바가 나타나요. 한 번 탭하면 브라우저끼리 바로 영상이나 음성으로 연결돼요.",
+      "chip1": "영상 또는 음성",
+      "chip2": "P2P 연결",
+      "chip3": "한 번 탭"
+    },
+    "presence": {
+      "title": "누가 근처에 있는지 알 수 있어요.",
+      "body": "모두 이름표와 상태를 달고 있어요. 다가가기 전에 누가 한가한지, 누가 집중 중인지, 누가 이미 통화 중인지 확인하세요.",
+      "chip1": "실시간 이름표",
+      "chip2": "자리 비움·바쁨",
+      "chip3": "방 채팅"
+    },
+    "rooms": {
+      "title": "방은 내일도 그대로 있어요.",
+      "body": "회의가 끝나도 방은 사라지지 않아요. 팀을 위해 하나 열어 두고, 필요하면 비밀번호를 걸고, 링크는 한 번만 보내세요.",
+      "chip1": "모두에게 공개",
+      "chip2": "링크로 공유",
+      "chip3": "무료"
+    },
+    "floor": {
+      "title": "회의가 아니라 오피스예요.",
+      "body": "아무도 초대장을 보내지 않아요. 사람들이 들르고, 가까이에서 일하고, 일이 생기면 걸어가요.",
+      "chip1": "초대 없음",
+      "chip2": "걸어가서 대화",
+      "chip3": "층 전체"
+    }
+  },
+  "faq": {
+    "title": "<em>들어가기 전에.</em>",
+    "items": [
+      {
+        "q": "SpatialMeet는 무엇인가요?",
+        "a": "SpatialMeet는 걸어 다니는 가상 오피스예요. 팀원들이 공유된 2D 층 위에 픽셀 아트 캐릭터로 나타나고, 회의 링크를 클릭할 때가 아니라 누군가의 옆에 설 때 영상 또는 음성 통화가 시작돼요."
+      },
+      {
+        "q": "무언가를 설치해야 하나요?",
+        "a": "아니요. SpatialMeet는 데스크톱과 모바일 브라우저에서 실행돼요. 방 링크를 열면 바로 오피스 안이에요."
+      },
+      {
+        "q": "SpatialMeet는 무료인가요?",
+        "a": "네. 방 만들기, 돌아다니기, 채팅, 통화 모두 무료예요."
+      },
+      {
+        "q": "방에 참여하려면 계정이 필요한가요?",
+        "a": "아니요. 누구나 이름만으로 게스트로 참여할 수 있어요. 로그인하면 저장된 프로필, 계속 쓸 캐릭터, 방 목록이 추가될 뿐이에요."
+      },
+      {
+        "q": "영상 통화는 어떻게 작동하나요?",
+        "a": "통화는 WebRTC를 통한 P2P 방식이라 음성과 영상이 브라우저 사이를 직접 오가요. 한 번 연결되면 누군가 통화를 끊거나 방을 나갈 때까지 연결이 유지돼요. 멀리 걸어가도 끊기지 않아요."
+      },
+      {
+        "q": "방에 있는 동안 카메라가 계속 켜져 있나요?",
+        "a": "아니요. 카메라와 마이크는 통화할 때만 켜지고 통화가 끝나는 즉시 해제돼요."
+      },
+      {
+        "q": "휴대폰에서도 SpatialMeet를 쓸 수 있나요?",
+        "a": "네. 터치 기기에서는 화면의 조이스틱으로 이동하고, 통화 버튼도 작은 화면에 맞게 바뀌어요."
+      },
+      {
+        "q": "일반 영상 통화와 무엇이 다른가요?",
+        "a": "일반 통화는 회의가 끝날 때까지 모두를 하나의 격자 화면에 넣어요. SpatialMeet 방은 하루 종일 열려 있어서 누가 있는지 보고, 대화 사이를 오가며, 다가간 사람과 이야기할 수 있어요."
+      }
+    ]
+  },
+  "cta": {
+    "title": "당신의 방은 <em>이미 열려 있어요.</em>",
+    "publicTitle": "공개 오피스에 들어가기",
+    "publicBody": "항상 열려 있는 방이에요. 캐릭터를 고르고 돌아다니며 그곳에 있는 사람들에게 인사하세요.",
+    "createTitle": "팀을 위한 방 열기",
+    "createBody": "이름을 정하고, 원하면 비밀번호를 추가한 뒤 링크 하나를 보내세요. 원하는 만큼 계속 열려 있어요.",
+    "sampleName": "디자인 팀",
+    "create": "만들기"
+  },
+  "footer": {
+    "tagline": "걸어 다니는 가상 오피스. 무료, 브라우저에서.",
+    "product": "제품",
+    "learn": "알아보기",
+    "elsewhere": "다른 곳에서",
+    "rooms": "방",
+    "people": "사람들",
+    "createRoom": "방 만들기",
+    "dashboard": "대시보드",
+    "tour": "방 둘러보기",
+    "twoWays": "두 가지 입장 방법",
+    "questions": "자주 묻는 질문",
+    "rights": "© {year} Jitto Joseph. 모든 권리 보유."
+  },
+  "auth": {
+    "welcomeBack": "다시 오신 걸 환영해요",
+    "joinUs": "함께해요",
+    "signInSubtitle": "계정에 로그인하세요",
+    "registerSubtitle": "업무 공간 계정을 만드세요",
+    "username": "사용자 이름",
+    "emailOptional": "이메일 (선택)",
+    "displayNameOptional": "표시 이름 (선택)",
+    "password": "비밀번호",
+    "showPassword": "비밀번호 표시",
+    "hidePassword": "비밀번호 숨기기",
+    "signIn": "로그인",
+    "signUp": "가입하기",
+    "createAccount": "계정 만들기",
+    "noAccount": "계정이 없으신가요?",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "continueGuest": "게스트로 계속하기 →",
+    "error": "오류가 발생했어요"
+  },
+  "entry": {
+    "allRooms": "모든 방",
+    "yourName": "이름",
+    "namePlaceholder": "어떻게 불러 드릴까요?",
+    "roomPassword": "방 비밀번호",
+    "passwordPlaceholder": "비밀번호를 입력하세요",
+    "character": "캐릭터",
+    "copyInvite": "초대 링크 복사",
+    "inviteCopied": "초대 링크를 복사했어요",
+    "openingDoor": "문을 여는 중",
+    "walkIn": "입장하기"
+  },
+  "createRoom": {
+    "title": "방을 열어 보세요.",
+    "roomName": "방 이름",
+    "roomNamePlaceholder": "디자인 팀, 스튜디오, 금요일 모임",
+    "advanced": "고급",
+    "passwordPlaceholder": "비밀번호 추가 (선택)",
+    "passwordLabel": "방 비밀번호",
+    "passwordHint": "모든 방은 디렉터리에 표시돼요. 비밀번호를 설정하면 비밀번호가 없는 사람은 들어올 수 없어요.",
+    "submit": "방 만들기",
+    "submitting": "준비하는 중",
+    "createError": "방을 만들지 못했어요. 다시 시도해 주세요.",
+    "openError": "방을 열지 못했어요"
+  },
+  "join": {
+    "unavailableTitle": "이 문은 열리지 않아요.",
+    "unavailable": "이 방은 더 이상 사용할 수 없어요.",
+    "browse": "방 둘러보기",
+    "full": "지금은 방이 가득 찼어요",
+    "needsPassword": "이 방은 비밀번호가 필요해요",
+    "error": "이 방에 참여하지 못했어요",
+    "roomFull": "방이 가득 참",
+    "guestNote": "게스트로 참여 중이에요. 이름과 캐릭터를 유지하려면 <link>로그인</link>하세요."
+  },
+  "directory": {
+    "title": "커뮤니티 <em>디렉터리</em>",
+    "roomsSubtitle": "방을 둘러보거나 안에 있는 사람들을 만나 보세요",
+    "peopleSubtitle": "SpatialMeet를 만들어 가는 사람들을 만나 보세요",
+    "rooms": "방",
+    "people": "사람들",
+    "createRoom": "방 만들기",
+    "startRoom": "방 시작하기",
+    "updating": "업데이트 중...",
+    "roomsLive": "{count, plural, other {방 #개 운영 중}}",
+    "searchRooms": "방 검색...",
+    "search": "검색",
+    "loadingSpaces": "공간 불러오는 중",
+    "noRoomsFound": "방을 찾을 수 없어요.",
+    "noRoomsAvailable": "사용할 수 있는 방이 없어요.",
+    "noRoomsFoundBody": "검색과 일치하는 방을 찾지 못했어요. 검색어를 바꿔 보세요.",
+    "noRoomsAvailableBody": "아직 조용하네요. 첫 번째 업무 공간을 시작해 보세요!",
+    "createARoom": "방 만들기",
+    "presence": {
+      "ONLINE": "온라인",
+      "IDLE": "유휴",
+      "OFFLINE": "오프라인"
+    },
+    "lastActive": "{time} 활동",
+    "justNow": "방금",
+    "full": "가득 참",
+    "enter": "입장",
+    "gatheringPeople": "사람들을 모으는 중...",
+    "peopleCount": "{count, plural, other {#명}}",
+    "searchPeople": "사람 검색...",
+    "yourProfile": "내 프로필",
+    "loadingPeople": "사람들 불러오는 중",
+    "noPeople": "사람을 찾을 수 없어요.",
+    "noPeopleBody": "다른 검색어로 찾아보거나 나중에 다시 확인해 주세요."
+  },
+  "userMenu": {
+    "signIn": "로그인",
+    "dashboard": "대시보드",
+    "manageProfile": "프로필 관리",
+    "signOut": "로그아웃"
+  },
+  "dashboard": {
+    "title": "대시보드",
+    "subtitle": "프로필과 방을 관리하세요",
+    "activeCount": "{count}개 활성",
+    "userNotFound": "사용자를 찾을 수 없어요",
+    "userNotFoundTitle": "사용자를 찾을 수 없어요",
+    "backToRooms": "방 목록으로 돌아가기",
+    "nameUpdated": "표시 이름을 업데이트했어요!",
+    "profileFailed": "프로필을 업데이트하지 못했어요",
+    "characterUpdated": "캐릭터를 업데이트했어요!",
+    "characterFailed": "캐릭터를 업데이트하지 못했어요",
+    "linkCopied": "링크를 복사했어요!",
+    "profile": {
+      "changeCharacter": "캐릭터 변경",
+      "editName": "표시 이름 편집",
+      "saveName": "표시 이름 저장",
+      "displayName": "표시 이름",
+      "guestBadge": "게스트",
+      "copyLink": "프로필 링크 복사",
+      "share": "프로필 공유",
+      "shareTitle": "{name}님의 프로필",
+      "shareText": "SpatialMeet에서 {name}님의 프로필을 확인해 보세요",
+      "created": "생성",
+      "joined": "참여",
+      "unknown": "알 수 없음",
+      "chooseCharacter": "캐릭터 선택",
+      "selectAvatar": "아바타를 선택하세요"
+    },
+    "stats": {
+      "title": "통계",
+      "empty": "첫 번째 방을 만들어 보세요!",
+      "rooms": "방",
+      "active": "활성",
+      "people": "사람들"
+    },
+    "quickActions": {
+      "title": "빠른 작업",
+      "createRoom": "방 만들기",
+      "browseRooms": "방 둘러보기",
+      "createAccount": "계정 만들기",
+      "signOut": "로그아웃"
+    },
+    "activity": {
+      "title": "최근 활동",
+      "empty": "아직 활동이 없어요",
+      "room_created": "생성함",
+      "room_joined": "참여함",
+      "room_visited": "방문함"
+    },
+    "collaborators": {
+      "title": "최근 만난 사람",
+      "empty": "방에 참여해 사람들을 만나 보세요"
+    },
+    "rooms": {
+      "mine": "내 방",
+      "joined": "참여한 방",
+      "gridView": "그리드 보기",
+      "listView": "목록 보기",
+      "newRoom": "새 방",
+      "search": "방 검색...",
+      "filter": {
+        "all": "전체",
+        "active": "활성",
+        "idle": "유휴",
+        "offline": "오프라인"
+      },
+      "loading": "방 불러오는 중...",
+      "noMatches": "일치하는 결과가 없어요",
+      "noMatchesBody": "검색어나 필터를 바꿔 보세요",
+      "noRooms": "아직 방이 없어요",
+      "noRoomsBody": "첫 번째 가상 오피스를 만들어 보세요",
+      "createRoom": "방 만들기",
+      "noJoined": "참여한 방이 없어요",
+      "noJoinedBody": "방에 참여하면 여기에 표시돼요",
+      "browsePublic": "공개 방 둘러보기"
+    },
+    "roomCard": {
+      "status": {
+        "active": "활성",
+        "idle": "유휴",
+        "offline": "오프라인"
+      },
+      "join": "참여",
+      "copyInvite": "초대 링크 복사",
+      "copyLink": "링크 복사",
+      "players": "{count}/{max}명",
+      "unknown": "알 수 없음"
+    },
+    "widget": {
+      "view": "대시보드 보기",
+      "created": "생성",
+      "joined": "참여"
+    }
+  },
+  "room": {
+    "connecting": "연결 중...",
+    "fallbackName": "방: {id}",
+    "people": "{count, plural, other {#명}}",
+    "copied": "복사했어요!",
+    "invite": "초대",
+    "leave": "나가기"
+  },
+  "call": {
+    "incomingVideo": "영상 통화 수신 중...",
+    "incomingAudio": "음성 통화 수신 중...",
+    "decline": "거절",
+    "accept": "수락",
+    "tutorial": "튜토리얼 통화",
+    "minimize": "최소화",
+    "expand": "확대",
+    "calling": "전화 거는 중...",
+    "cancel": "통화 취소",
+    "errors": {
+      "connection": "연결에 실패했어요",
+      "unsupported": "이 브라우저는 미디어 장치에 접근할 수 없어요",
+      "media": "카메라 또는 마이크를 사용할 수 없어요",
+      "camera": "카메라를 사용할 수 없어요"
+    }
+  },
+  "controls": {
+    "status": "상태: {status}",
+    "muteMic": "마이크 끄기",
+    "unmuteMic": "마이크 켜기",
+    "cameraOff": "카메라 끄기",
+    "cameraOn": "카메라 켜기",
+    "muteSpeaker": "스피커 음소거",
+    "unmuteSpeaker": "스피커 음소거 해제",
+    "openChat": "채팅 열기",
+    "settings": "설정",
+    "leaveCall": "통화 나가기"
+  },
+  "status": {
+    "available": { "label": "대화 가능", "description": "이야기할 준비 완료" },
+    "busy": { "label": "바쁨", "description": "방해 금지" },
+    "away": { "label": "자리 비움", "description": "곧 돌아올게요" }
+  },
+  "chat": {
+    "title": "방 채팅",
+    "system": "시스템",
+    "welcome": "방 채팅에 오신 걸 환영해요. 메시지는 여기 있는 모두에게 보여요.",
+    "intro": "여기서 방에 있는 모두와 채팅할 수 있어요.",
+    "placeholder": "메시지를 입력하세요...",
+    "close": "채팅 닫기",
+    "send": "메시지 보내기"
+  },
+  "proximity": {
+    "videoCall": "영상 통화",
+    "audioCall": "음성 통화",
+    "roomChat": "방 채팅",
+    "viewProfile": "프로필 보기"
+  },
+  "jukebox": {
+    "title": "방 스피커",
+    "close": "스피커 컨트롤 닫기",
+    "tapToPlay": "재생을 탭해서 들어 보세요",
+    "playing": "방의 모두에게 재생 중",
+    "paused": "방의 모두에게 일시 정지됨",
+    "previous": "이전 곡",
+    "next": "다음 곡",
+    "play": "재생",
+    "pause": "일시 정지",
+    "playTrack": "{track} 재생"
+  },
+  "whiteboard": {
+    "title": "화이트보드",
+    "penColor": "펜 색상 {color}",
+    "penSize": "펜 굵기 {size}",
+    "eraser": "지우개",
+    "clear": "보드 지우기",
+    "close": "화이트보드 닫기",
+    "hint": "방에 있는 모두가 같은 보드에 그려요. Esc를 눌러 나올 수 있어요."
+  },
+  "settings": {
+    "title": "설정",
+    "close": "설정 닫기",
+    "audio": "오디오",
+    "video": "비디오",
+    "microphone": "마이크",
+    "micVolume": "마이크 음량",
+    "speaker": "스피커",
+    "speakerVolume": "스피커 음량",
+    "camera": "카메라",
+    "videoQuality": "영상 화질",
+    "quality": {
+      "low": "낮음",
+      "medium": "보통",
+      "high": "높음"
+    },
+    "qualityHint": {
+      "low": "360p, 느린 연결에 적합",
+      "medium": "480p, 화질과 속도의 균형",
+      "high": "720p, 최고 화질이지만 빠른 인터넷이 필요해요"
+    },
+    "default": "기본값",
+    "cancel": "취소",
+    "save": "저장"
+  },
+  "tutorial": {
+    "walk": "W A S D 키로 돌아다니세요",
+    "walkTouch": "조이스틱을 드래그해서 걸어요",
+    "click": "아니면 아무 곳이나 클릭해서 바로 이동하세요",
+    "clickTouch": "아니면 아무 곳이나 탭해서 바로 이동하세요",
+    "approach": "누군가에게 가까이 가면 통화하거나 채팅할 수 있어요",
+    "invite": "이 링크로 누군가를 초대하거나, 이제 준비 완료예요",
+    "copy": "복사",
+    "copied": "복사됨",
+    "linkHint": "링크가 있는 사람은 누구나 이 방에 들어와요",
+    "done": "완료",
+    "skip": "건너뛰기",
+    "next": "다음"
+  },
+  "scene": {
+    "guide": "가이드",
+    "sit": "E 키로 앉기",
+    "stand": "E 키로 일어서기",
+    "music": "클릭해서 음악 듣기",
+    "draw": "클릭해서 그리기"
+  },
+  "characters": {
+    "previous": "이전 캐릭터",
+    "next": "다음 캐릭터",
+    "select": "{name} 선택",
+    "keyHint": "← → 방향키를 사용하세요"
+  },
+  "toast": {
+    "dismiss": "닫기"
+  },
+  "notFound": {
+    "title": "이 방은 지도에 없어요.",
+    "body": "찾으시는 페이지가 없거나 이동했어요.",
+    "home": "로비로 돌아가기",
+    "rooms": "방 둘러보기"
+  }
+}

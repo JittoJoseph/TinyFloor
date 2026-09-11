@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 import { Eraser, Pencil, Trash2, X } from "lucide-react";
 import { whiteboard, Stroke } from "@/lib/WhiteboardManager";
 
@@ -9,6 +10,7 @@ const SIZES = [3, 7];
 const ERASER_SIZE = 26;
 
 export default function WhiteboardOverlay() {
+  const t = useTranslations("whiteboard");
   const board = useSyncExternalStore(
     whiteboard.subscribe,
     whiteboard.getSnapshot,
@@ -95,8 +97,8 @@ export default function WhiteboardOverlay() {
     <div className="fixed inset-0 z-[70] flex flex-col bg-[var(--color-braun-text)]/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
       <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-[1.5rem] bg-[#fbfbf9] border border-black/10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
         <div className="flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2.5 border-b border-black/8">
-          <span className="font-body text-sm font-semibold text-[var(--color-braun-text)] mr-auto shrink-0">
-            Whiteboard
+          <span className="font-body text-sm font-semibold text-[var(--color-braun-text)] me-auto shrink-0">
+            {t("title")}
           </span>
 
           <div className="flex items-center gap-1.5">
@@ -104,7 +106,7 @@ export default function WhiteboardOverlay() {
               <button
                 key={color}
                 type="button"
-                aria-label={`Pen colour ${color}`}
+                aria-label={t("penColor", { color })}
                 onClick={() => {
                   tool.color = color;
                   tool.erase = false;
@@ -121,7 +123,7 @@ export default function WhiteboardOverlay() {
             <button
               key={size}
               type="button"
-              aria-label={`Pen size ${size}`}
+              aria-label={t("penSize", { size })}
               onClick={() => {
                 tool.size = size;
                 tool.erase = false;
@@ -134,7 +136,7 @@ export default function WhiteboardOverlay() {
 
           <button
             type="button"
-            aria-label="Eraser"
+            aria-label={t("eraser")}
             onClick={() => {
               tool.erase = true;
               tool.size = ERASER_SIZE;
@@ -146,7 +148,7 @@ export default function WhiteboardOverlay() {
 
           <button
             type="button"
-            aria-label="Clear the board"
+            aria-label={t("clear")}
             onClick={() => {
               whiteboard.clear();
               repaint();
@@ -160,7 +162,7 @@ export default function WhiteboardOverlay() {
 
           <button
             type="button"
-            aria-label="Close the whiteboard"
+            aria-label={t("close")}
             onClick={() => whiteboard.setOpen(false)}
             className="cursor-pointer w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
           >
@@ -195,7 +197,7 @@ export default function WhiteboardOverlay() {
       </div>
 
       <p className="font-body text-[11px] text-white/70 text-center mt-2.5">
-        Everyone in the room draws on the same board. Press Esc to step away.
+        {t("hint")}
       </p>
     </div>
   );

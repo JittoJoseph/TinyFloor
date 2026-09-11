@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
   Globe,
   Users,
@@ -12,6 +12,7 @@ import {
   Filter,
   Search,
 } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { Room, RoomCard, RoomCardCompact } from "./RoomCard";
 
 type ViewMode = "grid" | "list";
@@ -33,6 +34,7 @@ export function RoomSection({
   onCopyLink,
   copiedRoomId,
 }: RoomSectionProps) {
+  const t = useTranslations("dashboard.rooms");
   const [activeTab, setActiveTab] = useState<TabType>("created");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filterStatus, setFilterStatus] = useState<FilterStatus>("all");
@@ -87,7 +89,7 @@ export function RoomSection({
               }`}
             >
               <Globe className="w-4 h-4" />
-              My Rooms
+              {t("mine")}
               <span
                 className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTab === "created"
@@ -107,7 +109,7 @@ export function RoomSection({
               }`}
             >
               <Users className="w-4 h-4" />
-              Joined
+              {t("joined")}
               <span
                 className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTab === "joined"
@@ -130,7 +132,8 @@ export function RoomSection({
                     ? "bg-white text-gray-900 shadow-sm"
                     : "text-gray-500 hover:text-gray-700"
                 }`}
-                title="Grid view"
+                title={t("gridView")}
+                aria-label={t("gridView")}
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
@@ -141,7 +144,8 @@ export function RoomSection({
                     ? "bg-white text-gray-900 shadow-sm"
                     : "text-gray-500 hover:text-gray-700"
                 }`}
-                title="List view"
+                title={t("listView")}
+                aria-label={t("listView")}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -151,7 +155,7 @@ export function RoomSection({
               className="cursor-pointer flex items-center gap-1.5 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white font-medium text-sm px-4 py-2 rounded-xl transition-colors"
             >
               <Plus className="w-4 h-4" />
-              <span className="hidden sm:inline">New Room</span>
+              <span className="hidden sm:inline">{t("newRoom")}</span>
             </Link>
           </div>
         </div>
@@ -160,13 +164,13 @@ export function RoomSection({
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search rooms..."
+              placeholder={t("search")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none text-sm transition-colors"
+              className="w-full ps-10 pe-4 py-2.5 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none text-sm transition-colors"
             />
           </div>
 
@@ -179,15 +183,15 @@ export function RoomSection({
                   <button
                     key={status}
                     onClick={() => setFilterStatus(status)}
-                    className={`px-3 py-1.5 rounded-md text-xs font-medium capitalize transition-colors ${
+                    className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                       filterStatus === status
                         ? "bg-white text-gray-900 shadow-sm"
                         : "text-gray-500 hover:text-gray-700"
                     }`}
                   >
-                    {status}
+                    {t(`filter.${status}`)}
                     {status === "active" && activeCount > 0 && (
-                      <span className="ml-1 w-1.5 h-1.5 bg-green-500 rounded-full inline-block animate-pulse" />
+                      <span className="ms-1 w-1.5 h-1.5 bg-green-500 rounded-full inline-block animate-pulse" />
                     )}
                   </button>
                 ),
@@ -201,7 +205,7 @@ export function RoomSection({
       {isLoading ? (
         <div className="bg-white border border-[rgba(0,0,0,0.06)] rounded-2xl p-12 text-center shadow-retro-sm">
           <Loader2 className="w-8 h-8 text-indigo-500 animate-spin mx-auto mb-3" />
-          <p className="text-gray-500">Loading rooms...</p>
+          <p className="text-gray-500">{t("loading")}</p>
         </div>
       ) : filteredRooms.length === 0 ? (
         <EmptyState
@@ -251,6 +255,8 @@ function EmptyState({
   searchQuery: string;
   filterStatus: FilterStatus;
 }) {
+  const t = useTranslations("dashboard.rooms");
+
   // No results from search/filter
   if (hasRooms && (searchQuery || filterStatus !== "all")) {
     return (
@@ -258,10 +264,8 @@ function EmptyState({
         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border border-[rgba(0,0,0,0.06)]">
           <Search className="w-8 h-8 text-gray-400" />
         </div>
-        <h3 className="text-xl text-gray-800 mb-2">No matches found</h3>
-        <p className="text-gray-500">
-          Try adjusting your search or filter criteria
-        </p>
+        <h3 className="text-xl text-gray-800 mb-2">{t("noMatches")}</h3>
+        <p className="text-gray-500">{t("noMatchesBody")}</p>
       </div>
     );
   }
@@ -273,16 +277,14 @@ function EmptyState({
         <div className="w-16 h-16 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[var(--color-braun-text)]/20">
           <Globe className="w-8 h-8 text-indigo-400" />
         </div>
-        <h3 className="text-xl text-gray-800 mb-2">No rooms yet</h3>
-        <p className="text-gray-500 mb-4">
-          Create your first virtual office space
-        </p>
+        <h3 className="text-xl text-gray-800 mb-2">{t("noRooms")}</h3>
+        <p className="text-gray-500 mb-4">{t("noRoomsBody")}</p>
         <Link
           href="/create-room"
           className="cursor-pointer inline-flex items-center gap-2 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white font-medium px-5 py-2.5 rounded-xl transition-colors"
         >
           <Plus className="w-4 h-4" />
-          Create a room
+          {t("createRoom")}
         </Link>
       </div>
     );
@@ -293,13 +295,13 @@ function EmptyState({
       <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-purple-100">
         <Users className="w-8 h-8 text-purple-400" />
       </div>
-      <h3 className="text-xl text-gray-800 mb-2">No joined rooms</h3>
-      <p className="text-gray-500 mb-4">Join a room to see it here</p>
+      <h3 className="text-xl text-gray-800 mb-2">{t("noJoined")}</h3>
+      <p className="text-gray-500 mb-4">{t("noJoinedBody")}</p>
       <Link
         href="/rooms"
         className="cursor-pointer inline-flex items-center gap-2 text-[var(--color-braun-text)] font-bold hover:underline"
       >
-        Browse public rooms
+        {t("browsePublic")}
       </Link>
     </div>
   );

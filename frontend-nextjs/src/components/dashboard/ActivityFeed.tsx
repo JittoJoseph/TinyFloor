@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormatter, useNow, useTranslations } from "next-intl";
 import { Clock, UserPlus, Globe, LogIn } from "lucide-react";
 import { Room } from "./RoomCard";
 
@@ -16,6 +17,11 @@ interface ActivityFeedProps {
 }
 
 export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
+  const t = useTranslations("dashboard.activity");
+  const tDirectory = useTranslations("directory");
+  const format = useFormatter();
+  const now = useNow({ updateInterval: 60000 });
+
   // Generate activity items from rooms data
   const activities: ActivityItem[] = [
     ...createdRooms.map((room) => ({
@@ -52,30 +58,11 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
     }
   };
 
-  const getActivityLabel = (type: ActivityItem["type"]) => {
-    switch (type) {
-      case "room_created":
-        return "Created";
-      case "room_joined":
-        return "Joined";
-      case "room_visited":
-        return "Visited";
-    }
-  };
-
   const formatTimeAgo = (timestamp: string) => {
     if (!timestamp) return "";
     const date = new Date(timestamp);
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-
-    if (diffMins < 1) return "now";
-    if (diffMins < 60) return `${diffMins}m`;
-    const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `${diffHours}h`;
-    const diffDays = Math.floor(diffHours / 24);
-    return `${diffDays}d`;
+    if (now.getTime() - date.getTime() < 60000) return tDirectory("justNow");
+    return format.relativeTime(date, { now, style: "narrow" });
   };
 
   if (activities.length === 0) {
@@ -83,12 +70,10 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
       <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <Clock className="w-4 h-4 text-gray-400" />
-          <h3 className="text-sm text-gray-900">Recent Activities</h3>
+          <h3 className="text-sm text-gray-900">{t("title")}</h3>
         </div>
         <div className="flex-1 flex items-center justify-center">
-          <p className="text-center py-8 text-gray-400 text-xs">
-            No activity yet
-          </p>
+          <p className="text-center py-8 text-gray-400 text-xs">{t("empty")}</p>
         </div>
       </div>
     );
@@ -99,14 +84,14 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
       <div className="flex items-center justify-between gap-2 mb-3">
         <div className="flex items-center gap-2">
           <Clock className="w-4 h-4 text-gray-400" />
-          <h3 className="text-sm text-gray-900">Recent Activities</h3>
+          <h3 className="text-sm text-gray-900">{t("title")}</h3>
         </div>
         <span className="text-xs text-gray-400 font-medium">
           {activities.length}
         </span>
       </div>
 
-      <div className="space-y-2 overflow-y-auto flex-1 min-h-[200px] pr-1 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-300">
+      <div className="space-y-2 overflow-y-auto flex-1 min-h-[200px] pe-1 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-300">
         {activities.map((activity) => {
           const { Icon, color, bg } = getActivityIcon(activity.type);
           return (
@@ -123,9 +108,7 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
                 <p className="text-xs text-gray-900 truncate font-medium">
                   {activity.roomName}
                 </p>
-                <p className="text-[10px] text-gray-400">
-                  {getActivityLabel(activity.type)}
-                </p>
+                <p className="text-[10px] text-gray-400">{t(activity.type)}</p>
               </div>
               <span className="text-[10px] text-gray-400 shrink-0">
                 {formatTimeAgo(activity.timestamp)}

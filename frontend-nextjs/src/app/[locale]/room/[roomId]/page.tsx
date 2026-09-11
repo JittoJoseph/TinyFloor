@@ -1,0 +1,272 @@
+"use client";
+
+import { useEffect, useState, useCallback } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
+import { LogOut, Users, Copy, Check } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
+import ControlBar from "@/components/ControlBar";
+import SettingsModal from "@/components/SettingsModal";
+import ChatPanel from "@/components/ChatPanel";
+import { ChatToasts } from "@/components/ChatToasts";
+import ProximityOverlay from "@/components/ProximityOverlay";
+import CallOverlay from "@/components/CallOverlay";
+import WhiteboardOverlay from "@/components/WhiteboardOverlay";
+import JukeboxPanel from "@/components/JukeboxPanel";
+import RoomTutorial from "@/components/RoomTutorial";
+import type { PlayerStatus } from "@/lib/types";
+import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
+
+function Connecting() {
+  const t = useTranslations("room");
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] font-sans text-sm font-bold tracking-widest uppercase">
+      <div className="text-center flex flex-col items-center gap-6">
+        <div className="w-10 h-10 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin"></div>
+        {t("connecting")}
+      </div>
+    </div>
+  );
+}
+
+const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
+  ssr: false,
+  loading: () => <Connecting />,
+});
+
+interface RoomData {
+  name: string;
+  activeUsers?: number;
+  maxPlayers?: number;
+}
+
+export default function RoomPage() {
+  const t = useTranslations("room");
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const roomId = params.roomId as string;
+  const name = searchParams.get("name");
+  const character = searchParams.get("character");
+  const urlUserId = searchParams.get("userId");
+  const [localPlayerId] = useState(() => urlUserId || crypto.randomUUID());
+
+  const [mounted, setMounted] = useState(false);
+  const [roomData, setRoomData] = useState<RoomData | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [unreadChatCount, setUnreadChatCount] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
+  const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
+  const [participants, setParticipants] = useState<
+    Array<{
+      id: string;
+      name: string;
+      username?: string;
+      isGuest?: boolean;
+      status?: PlayerStatus;
+    }>
+  >([]);
+
+  // Fetch room details
+  useEffect(() => {
+    setMounted(true);
+    if (!name || !character) {
+      router.replace(`/join?roomId=${roomId}`);
+    } else {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms/${roomId}`)
+        .then((res) => {
+          if (res.ok) return res.json();
+          throw new Error("Room not found");
+        })
+        .then((data: RoomData) => setRoomData(data))
+        .catch((err) => console.error("Failed to fetch room:", err));
+    }
+  }, [name, character, roomId, router]);
+
+  // Copy invite link
+  const copyInviteLink = useCallback(() => {
+    const link = `${window.location.origin}/join?roomId=${roomId}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [roomId]);
+
+  const handleSettingsClick = useCallback(() => {
+    setShowSettings(true);
+  }, []);
+
+  const handleChatClick = useCallback(() => {
+    setShowChat((prev) => !prev);
+  }, []);
+
+  // Handle status change
+  const handleStatusChange = useCallback((status: PlayerStatus) => {
+    setCurrentStatus(status);
+    // Dispatch event to WebSocket manager
+    window.dispatchEvent(
+      new CustomEvent("statusChange", { detail: { status } }),
+    );
+  }, []);
+
+  useEffect(() => {
+    const handleOpenChat = () => setShowChat(true);
+    const handlePlayerListUpdated = (e: CustomEvent) => {
+      // Filter out current user from participants list to avoid duplication
+      const allParticipants = e.detail as Array<{
+        id: string;
+        name: string;
+        username?: string;
+        isGuest?: boolean;
+      }>;
+      const otherParticipants = allParticipants.filter((p) => p.name !== name);
+      // If username is not provided, extract it from name (format: "displayName (username)")
+      const processedParticipants = otherParticipants.map((p) => {
+        if (p.username) return p;
+        // Try to extract username from name if it's in format "DisplayName (username)"
+        const match = p.name.match(/\(([^)]+)\)$/);
+        return {
+          ...p,
+          username: match ? match[1] : p.name.toLowerCase().replace(/\s+/g, ""),
+          isGuest: p.isGuest ?? false,
+        };
+      });
+      setParticipants(processedParticipants);
+    };
+
+    const handleTutorialFinished = () => setTutorialActive(false);
+
+    window.addEventListener(TUTORIAL_FINISHED_EVENT, handleTutorialFinished);
+    window.addEventListener("openChat", handleOpenChat);
+    window.addEventListener(
+      "playerListUpdated",
+      handlePlayerListUpdated as EventListener,
+    );
+
+    return () => {
+      window.removeEventListener(
+        TUTORIAL_FINISHED_EVENT,
+        handleTutorialFinished,
+      );
+      window.removeEventListener("openChat", handleOpenChat);
+      window.removeEventListener(
+        "playerListUpdated",
+        handlePlayerListUpdated as EventListener,
+      );
+    };
+  }, []);
+
+  if (!mounted || !name || !character) return null;
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
+      {/* Header Overlay */}
+      <div
+        className={`absolute top-0 left-0 right-0 p-4 sm:p-6 ${
+          tutorialActive ? "hidden md:flex" : "flex"
+        } flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none`}
+      >
+        {/* Room Info */}
+        <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-sm pointer-events-auto flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+          <div className="flex flex-col">
+            <h1 className="font-bold text-sm text-[var(--color-braun-text)] tracking-wide">
+              {roomData?.name || t("fallbackName", { id: roomId })}
+            </h1>
+            {roomData?.activeUsers !== undefined && (
+              <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1.5 mt-0.5">
+                <Users className="w-3 h-3" />
+                {t("people", { count: roomData.activeUsers })}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto self-end sm:self-auto">
+          {/* Copy Invite Link */}
+          <button
+            onClick={copyInviteLink}
+            className="cursor-pointer bg-white hover:bg-gray-50 text-[var(--color-braun-text)] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[rgba(0,0,0,0.06)] shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-500" />
+                {t("copied")}
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5" />
+                {t("invite")}
+              </>
+            )}
+          </button>
+
+          {/* Leave Room */}
+          <Link
+            href="/rooms"
+            className="cursor-pointer bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
+          >
+            <LogOut className="w-3.5 h-3.5 rtl:rotate-180" />
+            {t("leave")}
+          </Link>
+        </div>
+      </div>
+
+      {/* Game Canvas */}
+      <PhaserGame
+        name={name}
+        roomId={roomId}
+        character={character}
+        userId={localPlayerId}
+      />
+
+      {/* Proximity Overlay */}
+      <ProximityOverlay />
+
+      {/* Call Overlay */}
+      <CallOverlay />
+      <WhiteboardOverlay />
+      <JukeboxPanel />
+
+      <RoomTutorial name={name} character={character} roomId={roomId} />
+
+      {/* Bottom Control Bar */}
+      <div className={tutorialActive ? "hidden md:block" : undefined}>
+        <ControlBar
+          onSettingsClick={handleSettingsClick}
+          onChatClick={handleChatClick}
+          onStatusChange={handleStatusChange}
+          currentStatus={currentStatus}
+          unreadChatCount={unreadChatCount}
+        />
+      </div>
+
+      {/* Settings Modal */}
+      <SettingsModal
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
+
+      {/* Chat Panel */}
+      <ChatPanel
+        isOpen={showChat}
+        onClose={() => setShowChat(false)}
+        userId={localPlayerId}
+        userName={name}
+        onUnreadChange={setUnreadChatCount}
+        participantCount={participants.length + 1}
+      />
+
+      {/* Chat Toasts for unread messages */}
+      <ChatToasts
+        isChatOpen={showChat}
+        onOpenChat={() => setShowChat(true)}
+      />
+    </div>
+  );
+}

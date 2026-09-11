@@ -1,6 +1,7 @@
 import React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowUpRight, DoorOpen, Plus } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { OfficeScene } from "@/components/OfficeScene";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { Reveal } from "./Reveal";
@@ -16,6 +17,8 @@ const tileClass =
   "group relative flex flex-col h-full overflow-hidden rounded-[1.5rem] border border-black/10 bg-[#f2efe6] p-6 md:p-8 transition-[background-color,border-color,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:border-black/15 hover:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.35)] motion-reduce:transition-none";
 
 export const CTA: React.FC = () => {
+  const t = useTranslations("cta");
+
   return (
     <section
       id="start"
@@ -28,7 +31,9 @@ export const CTA: React.FC = () => {
             id="cta-title"
             className="font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.08]"
           >
-            Your room is <span className="font-medium">already open.</span>
+            {t.rich("title", {
+              em: (chunks) => <span className="font-medium">{chunks}</span>,
+            })}
           </h2>
         </Reveal>
 
@@ -40,13 +45,12 @@ export const CTA: React.FC = () => {
                   <DoorOpen className="w-5 h-5" />
                 </span>
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
-                  Walk into the public office
+                  {t("publicTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
+                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
-                The room that is always on. Pick a character, walk around, and
-                say hello to whoever is there.
+                {t("publicBody")}
               </span>
               <OfficeScene
                 className="mt-auto aspect-[16/7] rounded-xl border border-black/10"
@@ -73,20 +77,19 @@ export const CTA: React.FC = () => {
                   <Plus className="w-5 h-5" />
                 </span>
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
-                  Open a room for your team
+                  {t("createTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ml-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
+                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
-                Name it, add a password if you want one, then send one link. It
-                stays open for as long as you want.
+                {t("createBody")}
               </span>
               <span className="mt-auto flex items-center gap-2 rounded-xl border border-black/10 bg-white p-2">
                 <span className="flex-1 min-w-0 rounded-lg bg-[#f0f0eb] px-3 py-2.5 font-body text-[11px] md:text-xs text-[var(--color-braun-text)] opacity-50 truncate">
-                  Design team
+                  {t("sampleName")}
                 </span>
                 <span className="rounded-lg bg-[var(--color-braun-text)] px-3 py-2.5 font-body text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-[#f2efe6] shrink-0">
-                  Create
+                  {t("create")}
                 </span>
               </span>
             </Link>

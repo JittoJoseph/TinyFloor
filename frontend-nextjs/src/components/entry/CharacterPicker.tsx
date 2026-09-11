@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { PixelAvatar } from "@/components/PixelAvatar";
 
@@ -9,10 +10,13 @@ export const CHARACTER_IDS = ["Adam", "Alex", "Amelia", "Bob"];
 export const CharacterPicker: React.FC<{
   value: string;
   onChange: (character: string) => void;
-}> = ({ value, onChange }) => (
+}> = ({ value, onChange }) => {
+  const t = useTranslations("entry");
+
+  return (
   <div
     role="radiogroup"
-    aria-label="Character"
+    aria-label={t("character")}
     className="grid grid-cols-4 gap-2"
   >
     {CHARACTER_IDS.map((character) => {
@@ -56,4 +60,5 @@ export const CharacterPicker: React.FC<{
       );
     })}
   </div>
-);
+  );
+};

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CharacterSprite } from "./CharacterSprite";
 
@@ -26,6 +27,7 @@ interface AnimatedCharacterSelectorProps {
 export const AnimatedCharacterSelector: React.FC<
   AnimatedCharacterSelectorProps
 > = ({ selectedCharacter, onSelect, variant = "grid" }) => {
+  const t = useTranslations("characters");
   const [currentIndex, setCurrentIndex] = useState(
     Math.max(
       0,
@@ -68,7 +70,7 @@ export const AnimatedCharacterSelector: React.FC<
           <button
             onClick={handlePrev}
             className="cursor-pointer w-10 h-10 flex items-center justify-center bg-white rounded-full border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] hover:shadow-sm transition-all"
-            aria-label="Previous character"
+            aria-label={t("previous")}
           >
             <ChevronLeft className="w-5 h-5 text-[var(--color-braun-text)] opacity-60" />
           </button>
@@ -93,7 +95,7 @@ export const AnimatedCharacterSelector: React.FC<
           <button
             onClick={handleNext}
             className="cursor-pointer w-10 h-10 flex items-center justify-center bg-white rounded-full border border-[rgba(0,0,0,0.06)] hover:border-[rgba(0,0,0,0.15)] hover:shadow-sm transition-all"
-            aria-label="Next character"
+            aria-label={t("next")}
           >
             <ChevronRight className="w-5 h-5 text-[var(--color-braun-text)] opacity-60" />
           </button>
@@ -113,14 +115,14 @@ export const AnimatedCharacterSelector: React.FC<
                   ? "bg-[var(--color-braun-text)] scale-150"
                   : "bg-[var(--color-braun-text)] opacity-20 hover:opacity-40"
               }`}
-              aria-label={`Select ${char.name}`}
+              aria-label={t("select", { name: char.name })}
             />
           ))}
         </div>
 
         {/* Keyboard hint */}
         <p className="text-[10px] uppercase tracking-widest text-[var(--color-braun-text)] opacity-40 mt-4 font-bold">
-          Use ← → arrow keys
+          {t("keyHint")}
         </p>
       </div>
     );

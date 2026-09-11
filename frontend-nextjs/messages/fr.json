@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet – Un bureau virtuel où l’on se promène",
+    "description": "SpatialMeet est un bureau virtuel gratuit dans votre navigateur. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
+    "ogAlt": "Une salle SpatialMeet : un étage de bureau 16 bits avec des bureaux et des coéquipiers",
+    "keywords": "bureau virtuel, télétravail, chat spatial, collaboration en ligne, espace de travail virtuel, bureau metaverse, chat de proximité, chat vidéo de proximité, espace de coworking virtuel, appels vidéo dans le navigateur",
+    "createRoomTitle": "Créer une salle",
+    "createRoomDescription": "Ouvrez une salle de bureau virtuel sur SpatialMeet. Donnez-lui un nom, ajoutez un mot de passe si vous le souhaitez, puis partagez un seul lien avec votre équipe.",
+    "joinTitle": "Rejoindre la salle",
+    "roomsTitle": "Explorer les salles",
+    "roomsDescription": "Parcourez les salles virtuelles actives et rejoignez des espaces de travail publics sur SpatialMeet.",
+    "peopleTitle": "Personnes",
+    "peopleDescription": "Rencontrez les personnes qui passent du temps dans les salles SpatialMeet.",
+    "authTitle": "Connexion",
+    "authDescription": "Connectez-vous à SpatialMeet pour garder votre nom, votre personnage et la liste de vos salles.",
+    "dashboardTitle": "Tableau de bord",
+    "roomTitle": "Salle active",
+    "notFoundTitle": "Page introuvable"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "back": "Retour",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "close": "Fermer",
+    "guest": "Invité",
+    "you": "Vous"
+  },
+  "languageSwitcher": {
+    "label": "Langue",
+    "select": "Choisir la langue",
+    "searchPlaceholder": "Rechercher une langue…",
+    "noResults": "Aucune langue trouvée"
+  },
+  "nav": {
+    "main": "Principal",
+    "questions": "Questions",
+    "tour": "Visite",
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "title": "Le bureau virtuel <br></br>le plus <em>douillet</em>.",
+    "subtitle": "Un bureau virtuel qui ressemble à un jeu. Promenez-vous, parlez à vos collègues et retrouvez l’esprit d’équipe.",
+    "cta": "Essayer",
+    "caption": "Une salle SpatialMeet : un étage de bureau 16 bits avec des bureaux et deux coéquipiers."
+  },
+  "landing": {
+    "description": "Un bureau virtuel qui ressemble à un jeu. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
+    "features": [
+      "Appels vidéo et audio de proximité",
+      "Plan de bureau 2D où l’on se déplace",
+      "Avatars en pixel art",
+      "Présence et statut en temps réel",
+      "Chat de salle"
+    ]
+  },
+  "moments": {
+    "title": "Un bureau où l’on peut <em>se promener.</em>",
+    "subtitle": "SpatialMeet garde ce que les appels n’ont jamais remplacé au bureau : savoir qui est là, et pouvoir aller le voir.",
+    "roomsLabel": "Salles",
+    "alwaysOn": "Toujours ouvertes",
+    "directory": {
+      "design": { "name": "Équipe design", "here": "5 présents" },
+      "founders": { "name": "Fondateurs", "here": "2 présents" },
+      "jam": { "name": "Jam du week-end", "here": "Vide" }
+    },
+    "enter": {
+      "title": "Ouvrez un lien et vous êtes dedans.",
+      "body": "Quelqu’un partage un lien de salle. Choisissez un personnage, tapez un nom, et vous voilà sur l’étage avec tout le monde.",
+      "chip1": "Aucun téléchargement",
+      "chip2": "Invités bienvenus",
+      "chip3": "Tout navigateur"
+    },
+    "call": {
+      "title": "Approchez-vous pour parler.",
+      "body": "Approchez-vous d’un coéquipier et sa barre d’appel apparaît au-dessus de lui. Un seul geste lance la vidéo ou l’audio, directement entre navigateurs.",
+      "chip1": "Vidéo ou audio",
+      "chip2": "Pair à pair",
+      "chip3": "Un seul geste"
+    },
+    "presence": {
+      "title": "Vous savez qui est là.",
+      "body": "Chacun a un badge nominatif et un statut. Voyez qui est libre, qui est concentré et qui est déjà en appel avant d’aller le voir.",
+      "chip1": "Badges en direct",
+      "chip2": "Absent ou occupé",
+      "chip3": "Chat de salle"
+    },
+    "rooms": {
+      "title": "La salle sera encore là demain.",
+      "body": "Les salles ne se ferment pas à la fin d’une réunion. Gardez-en une ouverte pour votre équipe, protégez-la par un mot de passe si besoin, et envoyez le lien une seule fois.",
+      "chip1": "Visible par tous",
+      "chip2": "Partage par lien",
+      "chip3": "Gratuit"
+    },
+    "floor": {
+      "title": "Un bureau, pas une réunion.",
+      "body": "Personne n’envoie d’invitation. On passe, on travaille côte à côte, et on va voir quelqu’un quand un sujet se présente.",
+      "chip1": "Aucune invitation",
+      "chip2": "Allez les voir",
+      "chip3": "Tout l’étage"
+    }
+  },
+  "faq": {
+    "title": "Avant <em>d’entrer.</em>",
+    "items": [
+      {
+        "q": "Qu’est-ce que SpatialMeet ?",
+        "a": "SpatialMeet est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
+      },
+      {
+        "q": "Dois-je installer quelque chose ?",
+        "a": "Non. SpatialMeet fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
+      },
+      {
+        "q": "SpatialMeet est-il gratuit ?",
+        "a": "Oui. Créer des salles, se promener, discuter et appeler sont gratuits."
+      },
+      {
+        "q": "Faut-il un compte pour rejoindre une salle ?",
+        "a": "Non. Tout le monde peut rejoindre en tant qu’invité avec un simple nom. Se connecter ajoute seulement un profil enregistré, un personnage que vous gardez et la liste de vos salles."
+      },
+      {
+        "q": "Comment fonctionnent les appels vidéo ?",
+        "a": "Les appels passent en pair à pair via WebRTC : l’audio et la vidéo circulent directement entre les navigateurs. Une fois connecté, un appel le reste jusqu’à ce que quelqu’un raccroche ou quitte la salle. S’éloigner ne le coupe pas."
+      },
+      {
+        "q": "Ma caméra est-elle allumée tout le temps dans une salle ?",
+        "a": "Non. La caméra et le micro ne sont ouverts que pendant un appel et libérés dès qu’il se termine."
+      },
+      {
+        "q": "Puis-je utiliser SpatialMeet sur un téléphone ?",
+        "a": "Oui. Sur les appareils tactiles, vous vous déplacez avec un joystick à l’écran, et les commandes d’appel s’adaptent au petit écran."
+      },
+      {
+        "q": "En quoi est-ce différent d’un appel vidéo classique ?",
+        "a": "Un appel classique met tout le monde dans une grille jusqu’à la fin de la réunion. Une salle SpatialMeet reste ouverte toute la journée : vous voyez qui est là, passez d’une conversation à l’autre et parlez aux personnes vers qui vous allez."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Votre salle est <em>déjà ouverte.</em>",
+    "publicTitle": "Entrez dans le bureau public",
+    "publicBody": "La salle toujours ouverte. Choisissez un personnage, promenez-vous et dites bonjour à qui est là.",
+    "createTitle": "Ouvrez une salle pour votre équipe",
+    "createBody": "Donnez-lui un nom, ajoutez un mot de passe si vous le souhaitez, puis envoyez un lien. Elle reste ouverte aussi longtemps que vous le voulez.",
+    "sampleName": "Équipe design",
+    "create": "Créer"
+  },
+  "footer": {
+    "tagline": "Un bureau virtuel où l’on se promène. Gratuit, dans le navigateur.",
+    "product": "Produit",
+    "learn": "Découvrir",
+    "elsewhere": "Ailleurs",
+    "rooms": "Salles",
+    "people": "Personnes",
+    "createRoom": "Créer une salle",
+    "dashboard": "Tableau de bord",
+    "tour": "Visiter la salle",
+    "twoWays": "Deux façons d’entrer",
+    "questions": "Questions",
+    "rights": "© {year} Jitto Joseph. Tous droits réservés."
+  },
+  "auth": {
+    "welcomeBack": "Bon retour",
+    "joinUs": "Rejoignez-nous",
+    "signInSubtitle": "Connectez-vous à votre compte",
+    "registerSubtitle": "Créez votre compte d’espace de travail",
+    "username": "Nom d’utilisateur",
+    "emailOptional": "E-mail (facultatif)",
+    "displayNameOptional": "Nom affiché (facultatif)",
+    "password": "Mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "signIn": "Se connecter",
+    "signUp": "S’inscrire",
+    "createAccount": "Créer un compte",
+    "noAccount": "Pas encore de compte ?",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "continueGuest": "Continuer en tant qu’invité →",
+    "error": "Une erreur est survenue"
+  },
+  "entry": {
+    "allRooms": "Toutes les salles",
+    "yourName": "Votre nom",
+    "namePlaceholder": "Comment doit-on vous appeler ?",
+    "roomPassword": "Mot de passe de la salle",
+    "passwordPlaceholder": "Saisissez le mot de passe",
+    "character": "Personnage",
+    "copyInvite": "Copier le lien d’invitation",
+    "inviteCopied": "Lien d’invitation copié",
+    "openingDoor": "Ouverture de la porte",
+    "walkIn": "Entrer"
+  },
+  "createRoom": {
+    "title": "Ouvrez une salle.",
+    "roomName": "Nom de la salle",
+    "roomNamePlaceholder": "Équipe design, Studio, Apéro du vendredi",
+    "advanced": "Avancé",
+    "passwordPlaceholder": "Ajouter un mot de passe (facultatif)",
+    "passwordLabel": "Mot de passe de la salle",
+    "passwordHint": "Toutes les salles sont listées dans l’annuaire. Un mot de passe garde la porte fermée à ceux qui ne l’ont pas.",
+    "submit": "Créer la salle",
+    "submitting": "Préparation en cours",
+    "createError": "Impossible de créer la salle. Veuillez réessayer.",
+    "openError": "Impossible d’ouvrir la salle"
+  },
+  "join": {
+    "unavailableTitle": "Cette porte ne s’ouvre pas.",
+    "unavailable": "Cette salle n’est plus disponible.",
+    "browse": "Parcourir les salles",
+    "full": "Cette salle est pleine pour le moment",
+    "needsPassword": "Cette salle nécessite un mot de passe",
+    "error": "Impossible de rejoindre cette salle",
+    "roomFull": "Salle pleine",
+    "guestNote": "Vous rejoignez en tant qu’invité. <link>Connectez-vous</link> pour garder votre nom et votre personnage."
+  },
+  "directory": {
+    "title": "Annuaire de la <em>communauté</em>",
+    "roomsSubtitle": "Parcourez les salles ou rencontrez les personnes qui s’y trouvent",
+    "peopleSubtitle": "Rencontrez celles et ceux qui font SpatialMeet",
+    "rooms": "Salles",
+    "people": "Personnes",
+    "createRoom": "Créer une salle",
+    "startRoom": "Lancer une salle",
+    "updating": "Mise à jour...",
+    "roomsLive": "{count, plural, one {# salle en direct} other {# salles en direct}}",
+    "searchRooms": "Rechercher des salles...",
+    "search": "Rechercher",
+    "loadingSpaces": "Chargement des espaces",
+    "noRoomsFound": "Aucune salle trouvée.",
+    "noRoomsAvailable": "Aucune salle disponible.",
+    "noRoomsFoundBody": "Aucune salle ne correspond à votre recherche. Essayez d’ajuster votre requête.",
+    "noRoomsAvailableBody": "C’est calme ici. Soyez le premier à lancer un nouvel espace de travail !",
+    "createARoom": "Créer une salle",
+    "presence": {
+      "ONLINE": "En ligne",
+      "IDLE": "Inactive",
+      "OFFLINE": "Hors ligne"
+    },
+    "lastActive": "Active {time}",
+    "justNow": "à l’instant",
+    "full": "Pleine",
+    "enter": "Entrer",
+    "gatheringPeople": "Rassemblement des personnes...",
+    "peopleCount": "{count, plural, one {# personne} other {# personnes}}",
+    "searchPeople": "Rechercher des personnes...",
+    "yourProfile": "Votre profil",
+    "loadingPeople": "Chargement des personnes",
+    "noPeople": "Aucune personne trouvée.",
+    "noPeopleBody": "Essayez une autre recherche ou revenez bientôt."
+  },
+  "userMenu": {
+    "signIn": "Se connecter",
+    "dashboard": "Tableau de bord",
+    "manageProfile": "Gérer le profil",
+    "signOut": "Se déconnecter"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Gérez votre profil et vos salles",
+    "activeCount": "{count} actives",
+    "userNotFound": "Utilisateur introuvable",
+    "userNotFoundTitle": "Utilisateur introuvable",
+    "backToRooms": "Retour aux salles",
+    "nameUpdated": "Nom affiché mis à jour !",
+    "profileFailed": "Échec de la mise à jour du profil",
+    "characterUpdated": "Personnage mis à jour !",
+    "characterFailed": "Échec de la mise à jour du personnage",
+    "linkCopied": "Lien copié !",
+    "profile": {
+      "changeCharacter": "Changer de personnage",
+      "editName": "Modifier le nom affiché",
+      "saveName": "Enregistrer le nom affiché",
+      "displayName": "Nom affiché",
+      "guestBadge": "INVITÉ",
+      "copyLink": "Copier le lien du profil",
+      "share": "Partager le profil",
+      "shareTitle": "Profil de {name}",
+      "shareText": "Découvrez le profil de {name} sur SpatialMeet",
+      "created": "créées",
+      "joined": "rejointes",
+      "unknown": "Inconnu",
+      "chooseCharacter": "Choisir un personnage",
+      "selectAvatar": "Sélectionnez votre avatar"
+    },
+    "stats": {
+      "title": "Statistiques",
+      "empty": "Créez votre première salle !",
+      "rooms": "Salles",
+      "active": "Actives",
+      "people": "Personnes"
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "createRoom": "Créer une salle",
+      "browseRooms": "Parcourir les salles",
+      "createAccount": "Créer un compte",
+      "signOut": "Se déconnecter"
+    },
+    "activity": {
+      "title": "Activités récentes",
+      "empty": "Aucune activité pour le moment",
+      "room_created": "Créée",
+      "room_joined": "Rejointe",
+      "room_visited": "Visitée"
+    },
+    "collaborators": {
+      "title": "Personnes récentes",
+      "empty": "Rejoignez des salles pour rencontrer du monde"
+    },
+    "rooms": {
+      "mine": "Mes salles",
+      "joined": "Rejointes",
+      "gridView": "Vue grille",
+      "listView": "Vue liste",
+      "newRoom": "Nouvelle salle",
+      "search": "Rechercher des salles...",
+      "filter": {
+        "all": "Toutes",
+        "active": "Actives",
+        "idle": "Inactives",
+        "offline": "Hors ligne"
+      },
+      "loading": "Chargement des salles...",
+      "noMatches": "Aucun résultat",
+      "noMatchesBody": "Essayez d’ajuster votre recherche ou vos filtres",
+      "noRooms": "Aucune salle pour l’instant",
+      "noRoomsBody": "Créez votre premier espace de bureau virtuel",
+      "createRoom": "Créer une salle",
+      "noJoined": "Aucune salle rejointe",
+      "noJoinedBody": "Rejoignez une salle pour la voir ici",
+      "browsePublic": "Parcourir les salles publiques"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Active",
+        "idle": "Inactive",
+        "offline": "Hors ligne"
+      },
+      "join": "Rejoindre",
+      "copyInvite": "Copier le lien d’invitation",
+      "copyLink": "Copier le lien",
+      "players": "{count}/{max} joueurs",
+      "unknown": "Inconnu"
+    },
+    "widget": {
+      "view": "Voir le tableau de bord",
+      "created": "créées",
+      "joined": "rejointes"
+    }
+  },
+  "room": {
+    "connecting": "Connexion...",
+    "fallbackName": "Salle : {id}",
+    "people": "{count, plural, one {# personne} other {# personnes}}",
+    "copied": "Copié !",
+    "invite": "Inviter",
+    "leave": "Quitter"
+  },
+  "call": {
+    "incomingVideo": "Appel vidéo entrant...",
+    "incomingAudio": "Appel audio entrant...",
+    "decline": "Refuser",
+    "accept": "Accepter",
+    "tutorial": "Appel du tutoriel",
+    "minimize": "Réduire",
+    "expand": "Agrandir",
+    "calling": "Appel en cours...",
+    "cancel": "Annuler l’appel",
+    "errors": {
+      "connection": "Échec de la connexion",
+      "unsupported": "Ce navigateur ne peut pas accéder aux périphériques multimédias",
+      "media": "Caméra ou micro indisponible",
+      "camera": "Caméra indisponible"
+    }
+  },
+  "controls": {
+    "status": "Statut : {status}",
+    "muteMic": "Couper le micro",
+    "unmuteMic": "Activer le micro",
+    "cameraOff": "Désactiver la caméra",
+    "cameraOn": "Activer la caméra",
+    "muteSpeaker": "Couper le haut-parleur",
+    "unmuteSpeaker": "Activer le haut-parleur",
+    "openChat": "Ouvrir le chat",
+    "settings": "Paramètres",
+    "leaveCall": "Quitter l’appel"
+  },
+  "status": {
+    "available": { "label": "Disponible", "description": "Prêt à discuter" },
+    "busy": { "label": "Occupé", "description": "Ne pas déranger" },
+    "away": { "label": "Absent", "description": "Je reviens tout de suite" }
+  },
+  "chat": {
+    "title": "Chat de la salle",
+    "system": "Système",
+    "welcome": "Bienvenue dans le chat de la salle. Les messages sont visibles par tous ici.",
+    "intro": "Vous pouvez discuter ici avec tout le monde dans cette salle.",
+    "placeholder": "Écrivez un message...",
+    "close": "Fermer le chat",
+    "send": "Envoyer le message"
+  },
+  "proximity": {
+    "videoCall": "Appel vidéo",
+    "audioCall": "Appel audio",
+    "roomChat": "Chat de la salle",
+    "viewProfile": "Voir le profil"
+  },
+  "jukebox": {
+    "title": "Enceinte de la salle",
+    "close": "Fermer les commandes de l’enceinte",
+    "tapToPlay": "Appuyez sur lecture pour l’écouter",
+    "playing": "Lecture pour tout le monde dans la salle",
+    "paused": "En pause pour tout le monde dans la salle",
+    "previous": "Piste précédente",
+    "next": "Piste suivante",
+    "play": "Lecture",
+    "pause": "Pause",
+    "playTrack": "Lire {track}"
+  },
+  "whiteboard": {
+    "title": "Tableau blanc",
+    "penColor": "Couleur du stylo {color}",
+    "penSize": "Taille du stylo {size}",
+    "eraser": "Gomme",
+    "clear": "Effacer le tableau",
+    "close": "Fermer le tableau blanc",
+    "hint": "Tout le monde dans la salle dessine sur le même tableau. Appuyez sur Échap pour vous éloigner."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "close": "Fermer les paramètres",
+    "audio": "Audio",
+    "video": "Vidéo",
+    "microphone": "Micro",
+    "micVolume": "Volume du micro",
+    "speaker": "Haut-parleur",
+    "speakerVolume": "Volume du haut-parleur",
+    "camera": "Caméra",
+    "videoQuality": "Qualité vidéo",
+    "quality": {
+      "low": "Basse",
+      "medium": "Moyenne",
+      "high": "Haute"
+    },
+    "qualityHint": {
+      "low": "360p, idéal pour les connexions lentes",
+      "medium": "480p, équilibre entre qualité et vitesse",
+      "high": "720p, meilleure qualité mais nécessite une connexion rapide"
+    },
+    "default": "Par défaut",
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
+  "tutorial": {
+    "walk": "Déplacez-vous avec W A S D",
+    "walkTouch": "Faites glisser le joystick pour marcher",
+    "click": "Ou cliquez n’importe où pour y aller directement",
+    "clickTouch": "Ou touchez n’importe où pour y aller directement",
+    "approach": "Approchez-vous de quelqu’un pour appeler ou discuter",
+    "invite": "Invitez quelqu’un avec ce lien, ou c’est tout bon",
+    "copy": "Copier",
+    "copied": "Copié",
+    "linkHint": "Toute personne ayant le lien arrive dans cette salle",
+    "done": "Terminé",
+    "skip": "Passer",
+    "next": "Suivant"
+  },
+  "scene": {
+    "guide": "Guide",
+    "sit": "Appuyez sur E pour vous asseoir",
+    "stand": "Appuyez sur E pour vous lever",
+    "music": "Cliquez pour la musique",
+    "draw": "Cliquez pour dessiner"
+  },
+  "characters": {
+    "previous": "Personnage précédent",
+    "next": "Personnage suivant",
+    "select": "Sélectionner {name}",
+    "keyHint": "Utilisez les flèches ← →"
+  },
+  "toast": {
+    "dismiss": "Fermer"
+  },
+  "notFound": {
+    "title": "Cette salle n’est pas sur la carte.",
+    "body": "La page que vous cherchez n’existe pas ou a été déplacée.",
+    "home": "Retour au hall",
+    "rooms": "Parcourir les salles"
+  }
+}

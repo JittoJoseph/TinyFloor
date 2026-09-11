@@ -86,7 +86,6 @@ export default function ControlBar({
           <StatusSelector
             currentStatus={status}
             onStatusChange={handleStatusChange}
-            compact
           />
         </div>
 

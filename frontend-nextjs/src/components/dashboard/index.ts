@@ -6,5 +6,4 @@ export { RoomSection } from "./RoomSection";
 export { QuickActions } from "./QuickActions";
 export { ActivityFeed } from "./ActivityFeed";
 export { RecentCollaborators, type Collaborator } from "./RecentCollaborators";
-export { DashboardWidget } from "./DashboardWidget";
 export { StatsCard } from "./StatsCard";

@@ -45,12 +45,21 @@ export class MovementManager {
     this.collides = collides;
     this.joystick = joystick;
 
+    // Phaser matches keys by the character they type, so AZERTY players get the
+    // same physical cluster as Z/Q/S/D. Arrows work on every layout.
+    const { KeyCodes } = Phaser.Input.Keyboard;
     this.keys = scene.input.keyboard?.addKeys(
       {
-        W: Phaser.Input.Keyboard.KeyCodes.W,
-        S: Phaser.Input.Keyboard.KeyCodes.S,
-        A: Phaser.Input.Keyboard.KeyCodes.A,
-        D: Phaser.Input.Keyboard.KeyCodes.D,
+        W: KeyCodes.W,
+        Z: KeyCodes.Z,
+        UP: KeyCodes.UP,
+        S: KeyCodes.S,
+        DOWN: KeyCodes.DOWN,
+        A: KeyCodes.A,
+        Q: KeyCodes.Q,
+        LEFT: KeyCodes.LEFT,
+        D: KeyCodes.D,
+        RIGHT: KeyCodes.RIGHT,
       },
       false,
     ) as Record<string, Phaser.Input.Keyboard.Key>;
@@ -94,10 +103,12 @@ export class MovementManager {
   private readInput(): Vec {
     const joystick = this.joystick?.getVelocity();
     if (joystick && (joystick.x || joystick.y)) return joystick;
-    if (!this.keys) return { x: 0, y: 0 };
+    const keys = this.keys;
+    if (!keys) return { x: 0, y: 0 };
+    const held = (...names: string[]) => (names.some((n) => keys[n].isDown) ? 1 : 0);
     return {
-      x: (this.keys.D.isDown ? 1 : 0) - (this.keys.A.isDown ? 1 : 0),
-      y: (this.keys.S.isDown ? 1 : 0) - (this.keys.W.isDown ? 1 : 0),
+      x: held("D", "RIGHT") - held("A", "Q", "LEFT"),
+      y: held("S", "DOWN") - held("W", "Z", "UP"),
     };
   }
 

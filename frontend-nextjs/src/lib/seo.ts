@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
 
@@ -101,6 +102,7 @@ export function pageMetadata({
 }
 
 type RouteParams = Record<string, string>;
+type MetadataKey = keyof Messages["metadata"];
 
 /**
  * A route's `generateMetadata`, built from keys under the `metadata` messages.
@@ -114,14 +116,17 @@ export function localizedMetadata({
   noindex,
 }: {
   path: string | ((params: RouteParams) => string);
-  title?: string;
-  description?: string;
-  socialTitle?: string;
+  title?: MetadataKey;
+  description?: MetadataKey;
+  socialTitle?: MetadataKey;
   noindex?: boolean;
 }) {
   return async ({ params }: { params: Promise<RouteParams> }): Promise<Metadata> => {
     const resolved = await params;
-    const t = await getTranslations({ locale: resolved.locale, namespace: "metadata" });
+    const t = await getTranslations({
+      locale: resolved.locale as Locale,
+      namespace: "metadata",
+    });
     return pageMetadata({
       path: typeof path === "function" ? path(resolved) : path,
       locale: resolved.locale,

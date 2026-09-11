@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, type Messages } from "next-intl";
 import {
   Footprints,
   MousePointerClick,
@@ -10,6 +10,7 @@ import {
   Link2,
   Check,
   Copy,
+  type LucideIcon,
 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { ProximityActions } from "./ProximityActions";
@@ -28,8 +29,13 @@ const WALK_DISTANCE = 150;
 const SPRITE_HEADROOM_ROWS = 9;
 const SPRITE_ROWS = 32;
 
-// `text` and `touchText` are keys under `tutorial` in the messages.
-const STEPS = [
+type TutorialKey = keyof Messages["tutorial"];
+
+const STEPS: Array<{
+  icon: LucideIcon;
+  text: TutorialKey;
+  touchText?: TutorialKey;
+}> = [
   {
     icon: Footprints,
     text: "walk",

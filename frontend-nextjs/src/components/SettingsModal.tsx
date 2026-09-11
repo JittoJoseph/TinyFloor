@@ -18,6 +18,7 @@ type Tab = "audio" | "video";
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const t = useTranslations("settings");
+  const tc = useTranslations("common");
   const [activeTab, setActiveTab] = useState<Tab>("audio");
   const [audioInputDevices, setAudioInputDevices] = useState<MediaDevice[]>([]);
   const [audioOutputDevices, setAudioOutputDevices] = useState<MediaDevice[]>(
@@ -223,13 +224,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             onClick={onClose}
             className="cursor-pointer px-4 py-2 text-sm text-[var(--color-braun-text)] opacity-50 hover:opacity-80 transition-opacity"
           >
-            {t("cancel")}
+            {tc("cancel")}
           </button>
           <button
             onClick={saveSettings}
             className="cursor-pointer px-5 py-2 bg-[var(--color-braun-text)] hover:bg-[#2a2a2a] text-white rounded-full text-sm font-medium transition-all"
           >
-            {t("save")}
+            {tc("save")}
           </button>
         </div>
       </div>

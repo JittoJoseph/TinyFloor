@@ -16,6 +16,8 @@ export function QuickActions({
   isAuthenticated,
 }: QuickActionsProps) {
   const t = useTranslations("dashboard.quickActions");
+  const tc = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const showCreateAccount = !isAuthenticated || isGuest;
 
   return (
@@ -35,7 +37,7 @@ export function QuickActions({
             <Plus className="w-4 h-4 text-blue-600" />
           </div>
           <span className="font-medium text-sm text-gray-800">
-            {t("createRoom")}
+            {tc("createRoom")}
           </span>
         </Link>
 
@@ -47,7 +49,7 @@ export function QuickActions({
             <Search className="w-4 h-4 text-emerald-600" />
           </div>
           <span className="font-medium text-sm text-gray-800">
-            {t("browseRooms")}
+            {tc("browseRooms")}
           </span>
         </Link>
 
@@ -64,7 +66,7 @@ export function QuickActions({
               <Shield className="w-4 h-4 text-amber-600" />
             </div>
             <span className="font-medium text-sm text-gray-800">
-              {t("createAccount")}
+              {tAuth("createAccount")}
             </span>
           </Link>
         ) : (
@@ -76,7 +78,7 @@ export function QuickActions({
               <LogOut className="w-4 h-4 text-red-500" />
             </div>
             <span className="font-medium text-sm text-gray-800">
-              {t("signOut")}
+              {tc("signOut")}
             </span>
           </button>
         )}

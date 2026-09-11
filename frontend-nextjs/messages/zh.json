@@ -26,7 +26,16 @@
     "guest": "访客",
     "you": "你",
     "justNow": "刚刚",
-    "unknown": "未知"
+    "unknown": "未知",
+    "rooms": "房间",
+    "people": "成员",
+    "peopleCount": "{count, plural, other {# 人}}",
+    "createRoom": "创建房间",
+    "browseRooms": "浏览房间",
+    "searchRooms": "搜索房间...",
+    "dashboard": "控制台",
+    "questions": "常见问题",
+    "signOut": "退出登录"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "主导航",
-    "questions": "常见问题",
-    "tour": "导览",
-    "dashboard": "控制台"
+    "tour": "导览"
   },
   "hero": {
     "title": "最<em>温馨</em>的<br></br>虚拟办公室。",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "一间<em>可以四处走动</em>的办公室。",
     "subtitle": "SpatialMeet 保留了通话从未取代的办公室日常：知道谁在，随时可以走过去。",
-    "roomsLabel": "房间",
     "alwaysOn": "全天开放",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "产品",
     "learn": "了解",
     "elsewhere": "其他",
-    "rooms": "房间",
-    "people": "成员",
-    "createRoom": "创建房间",
-    "dashboard": "控制台",
     "tour": "房间导览",
     "twoWays": "两种进入方式",
-    "questions": "常见问题",
     "rights": "© {year} Jitto Joseph。保留所有权利。"
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "设计团队、工作室、周五闲聊",
     "advanced": "高级",
     "passwordPlaceholder": "添加密码（可选）",
-    "passwordLabel": "房间密码",
     "passwordHint": "所有房间都会显示在目录中。设置密码后，没有密码的人无法进入。",
     "submit": "创建房间",
     "submitting": "正在准备",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "这扇门打不开。",
     "unavailable": "这个房间已不可用。",
-    "browse": "浏览房间",
     "full": "房间当前已满",
     "needsPassword": "这个房间需要密码",
     "error": "无法加入这个房间",
@@ -229,20 +228,14 @@
     "title": "社区<em>目录</em>",
     "roomsSubtitle": "浏览房间，或认识里面的人",
     "peopleSubtitle": "认识正在打造 SpatialMeet 的人",
-    "rooms": "房间",
-    "people": "成员",
-    "createRoom": "创建房间",
-    "startRoom": "开一个房间",
     "updating": "更新中...",
     "roomsLive": "{count, plural, other {# 个房间在线}}",
-    "searchRooms": "搜索房间...",
     "search": "搜索",
     "loadingSpaces": "正在加载空间",
     "noRoomsFound": "未找到房间。",
     "noRoomsAvailable": "暂无可用房间。",
     "noRoomsFoundBody": "没有找到符合搜索条件的房间，试试调整关键词。",
     "noRoomsAvailableBody": "这里很安静。来开第一个工作空间吧！",
-    "createARoom": "创建房间",
     "presence": {
       "ONLINE": "在线",
       "IDLE": "空闲",
@@ -252,7 +245,6 @@
     "full": "已满",
     "enter": "进入",
     "gatheringPeople": "正在召集成员...",
-    "peopleCount": "{count, plural, other {# 人}}",
     "searchPeople": "搜索成员...",
     "yourProfile": "你的资料",
     "loadingPeople": "正在加载成员",
@@ -260,17 +252,12 @@
     "noPeopleBody": "换个关键词试试，或稍后再来。"
   },
   "userMenu": {
-    "signIn": "登录",
-    "dashboard": "控制台",
-    "manageProfile": "管理资料",
-    "signOut": "退出登录"
+    "manageProfile": "管理资料"
   },
   "dashboard": {
-    "title": "控制台",
     "subtitle": "管理你的资料和房间",
     "activeCount": "{count} 个活跃",
     "userNotFound": "未找到用户",
-    "userNotFoundTitle": "未找到用户",
     "backToRooms": "返回房间列表",
     "nameUpdated": "显示名称已更新！",
     "profileFailed": "资料更新失败",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "统计",
       "empty": "创建你的第一个房间吧！",
-      "rooms": "房间",
-      "active": "活跃",
-      "people": "成员"
+      "active": "活跃"
     },
     "quickActions": {
-      "title": "快捷操作",
-      "createRoom": "创建房间",
-      "browseRooms": "浏览房间",
-      "createAccount": "创建账号",
-      "signOut": "退出登录"
+      "title": "快捷操作"
     },
     "activity": {
       "title": "最近活动",
@@ -323,7 +304,6 @@
       "gridView": "网格视图",
       "listView": "列表视图",
       "newRoom": "新建房间",
-      "search": "搜索房间...",
       "filter": {
         "all": "全部",
         "active": "活跃",
@@ -335,7 +315,6 @@
       "noMatchesBody": "试试调整搜索或筛选条件",
       "noRooms": "还没有房间",
       "noRoomsBody": "创建你的第一个虚拟办公空间",
-      "createRoom": "创建房间",
       "noJoined": "还没有加入过房间",
       "noJoinedBody": "加入房间后会显示在这里",
       "browsePublic": "浏览公共房间"
@@ -347,7 +326,6 @@
         "offline": "离线"
       },
       "join": "加入",
-      "copyInvite": "复制邀请链接",
       "copyLink": "复制链接",
       "players": "{count}/{max} 人"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "连接中...",
     "fallbackName": "房间：{id}",
-    "people": "{count, plural, other {# 人}}",
     "copied": "已复制！",
     "invite": "邀请",
     "leave": "离开"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "视频通话",
     "audioCall": "语音通话",
-    "roomChat": "房间聊天",
     "viewProfile": "查看资料"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p，兼顾画质与速度",
       "high": "720p，画质最佳，但需要高速网络"
     },
-    "default": "默认",
-    "cancel": "取消",
-    "save": "保存"
+    "default": "默认"
   },
   "tutorial": {
     "walk": "用 W A S D 四处走动",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "这个房间不在地图上。",
     "body": "你要找的页面不存在或已被移动。",
-    "home": "返回大厅",
-    "rooms": "浏览房间"
+    "home": "返回大厅"
   }
 }

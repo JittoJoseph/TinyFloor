@@ -51,6 +51,7 @@ export const ProximityActions = memo(function ProximityActions({
   touch?: boolean;
 }) {
   const t = useTranslations("proximity");
+  const tChat = useTranslations("chat");
   const size = touch ? SIZES.touch : SIZES.pointer;
   const actionClass = `cursor-pointer ${size.chip} rounded-full bg-white border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all flex items-center justify-center shrink-0`;
 
@@ -88,8 +89,8 @@ export const ProximityActions = memo(function ProximityActions({
       <button
         onClick={() => window.dispatchEvent(new Event("openChat"))}
         className={actionClass}
-        title={t("roomChat")}
-        aria-label={t("roomChat")}
+        title={tChat("title")}
+        aria-label={tChat("title")}
       >
         <MessageSquare className={size.icon} />
       </button>

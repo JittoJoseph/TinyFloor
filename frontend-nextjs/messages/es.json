@@ -26,7 +26,16 @@
     "guest": "Invitado",
     "you": "Tú",
     "justNow": "justo ahora",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "rooms": "Salas",
+    "people": "Personas",
+    "peopleCount": "{count, plural, one {# persona} other {# personas}}",
+    "createRoom": "Crear una sala",
+    "browseRooms": "Explorar salas",
+    "searchRooms": "Buscar salas...",
+    "dashboard": "Panel",
+    "questions": "Preguntas",
+    "signOut": "Cerrar sesión"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Principal",
-    "questions": "Preguntas",
-    "tour": "Recorrido",
-    "dashboard": "Panel"
+    "tour": "Recorrido"
   },
   "hero": {
     "title": "La oficina virtual <br></br>más <em>acogedora</em>.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Una oficina que puedes <em>recorrer.</em>",
     "subtitle": "SpatialMeet conserva la parte de la oficina que las llamadas nunca sustituyeron: saber quién está y poder acercarte.",
-    "roomsLabel": "Salas",
     "alwaysOn": "Siempre abiertas",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Producto",
     "learn": "Aprender",
     "elsewhere": "En otros sitios",
-    "rooms": "Salas",
-    "people": "Personas",
-    "createRoom": "Crear una sala",
-    "dashboard": "Panel",
     "tour": "Recorre la sala",
     "twoWays": "Dos formas de entrar",
-    "questions": "Preguntas",
     "rights": "© {year} Jitto Joseph. Todos los derechos reservados."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Equipo de diseño, Estudio, Quedada del viernes",
     "advanced": "Avanzado",
     "passwordPlaceholder": "Añadir contraseña (opcional)",
-    "passwordLabel": "Contraseña de la sala",
     "passwordHint": "Todas las salas aparecen en el directorio. Una contraseña mantiene la puerta cerrada a quien no la tenga.",
     "submit": "Crear la sala",
     "submitting": "Preparándola",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Esa puerta no se abre.",
     "unavailable": "Esta sala ya no está disponible.",
-    "browse": "Explorar salas",
     "full": "Esta sala está llena ahora mismo",
     "needsPassword": "Esta sala necesita contraseña",
     "error": "No se pudo unir a esta sala",
@@ -229,20 +228,14 @@
     "title": "Directorio de la <em>comunidad</em>",
     "roomsSubtitle": "Explora salas o conoce a las personas que están dentro",
     "peopleSubtitle": "Conoce a quienes dan forma a SpatialMeet",
-    "rooms": "Salas",
-    "people": "Personas",
-    "createRoom": "Crear sala",
-    "startRoom": "Empezar una sala",
     "updating": "Actualizando...",
     "roomsLive": "{count, plural, one {# sala activa} other {# salas activas}}",
-    "searchRooms": "Buscar salas...",
     "search": "Buscar",
     "loadingSpaces": "Cargando espacios",
     "noRoomsFound": "No se encontraron salas.",
     "noRoomsAvailable": "No hay salas disponibles.",
     "noRoomsFoundBody": "No encontramos salas que coincidan con tu búsqueda. Prueba a ajustarla.",
     "noRoomsAvailableBody": "Esto está muy tranquilo. ¡Sé el primero en crear un espacio de trabajo!",
-    "createARoom": "Crear una sala",
     "presence": {
       "ONLINE": "En línea",
       "IDLE": "Inactiva",
@@ -252,7 +245,6 @@
     "full": "Llena",
     "enter": "Entrar",
     "gatheringPeople": "Reuniendo personas...",
-    "peopleCount": "{count, plural, one {# persona} other {# personas}}",
     "searchPeople": "Buscar personas...",
     "yourProfile": "Tu perfil",
     "loadingPeople": "Cargando personas",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Prueba otra búsqueda o vuelve pronto."
   },
   "userMenu": {
-    "signIn": "Iniciar sesión",
-    "dashboard": "Panel",
-    "manageProfile": "Gestionar perfil",
-    "signOut": "Cerrar sesión"
+    "manageProfile": "Gestionar perfil"
   },
   "dashboard": {
-    "title": "Panel",
     "subtitle": "Gestiona tu perfil y tus salas",
     "activeCount": "{count} activas",
     "userNotFound": "Usuario no encontrado",
-    "userNotFoundTitle": "Usuario no encontrado",
     "backToRooms": "Volver a las salas",
     "nameUpdated": "¡Nombre visible actualizado!",
     "profileFailed": "No se pudo actualizar el perfil",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Estadísticas",
       "empty": "¡Crea tu primera sala!",
-      "rooms": "Salas",
-      "active": "Activas",
-      "people": "Personas"
+      "active": "Activas"
     },
     "quickActions": {
-      "title": "Acciones rápidas",
-      "createRoom": "Crear sala",
-      "browseRooms": "Explorar salas",
-      "createAccount": "Crear cuenta",
-      "signOut": "Cerrar sesión"
+      "title": "Acciones rápidas"
     },
     "activity": {
       "title": "Actividad reciente",
@@ -323,7 +304,6 @@
       "gridView": "Vista de cuadrícula",
       "listView": "Vista de lista",
       "newRoom": "Nueva sala",
-      "search": "Buscar salas...",
       "filter": {
         "all": "Todas",
         "active": "Activas",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Prueba a ajustar la búsqueda o los filtros",
       "noRooms": "Aún no hay salas",
       "noRoomsBody": "Crea tu primer espacio de oficina virtual",
-      "createRoom": "Crear una sala",
       "noJoined": "No te has unido a ninguna sala",
       "noJoinedBody": "Únete a una sala para verla aquí",
       "browsePublic": "Explorar salas públicas"
@@ -347,7 +326,6 @@
         "offline": "Desconectada"
       },
       "join": "Unirse",
-      "copyInvite": "Copiar enlace de invitación",
       "copyLink": "Copiar enlace",
       "players": "{count}/{max} jugadores"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Conectando...",
     "fallbackName": "Sala: {id}",
-    "people": "{count, plural, one {# persona} other {# personas}}",
     "copied": "¡Copiado!",
     "invite": "Invitar",
     "leave": "Salir"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videollamada",
     "audioCall": "Llamada de voz",
-    "roomChat": "Chat de la sala",
     "viewProfile": "Ver perfil"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, equilibrio entre calidad y velocidad",
       "high": "720p, la mejor calidad pero necesita internet rápido"
     },
-    "default": "Predeterminado",
-    "cancel": "Cancelar",
-    "save": "Guardar"
+    "default": "Predeterminado"
   },
   "tutorial": {
     "walk": "Muévete con W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Esta sala no está en el mapa.",
     "body": "La página que buscas no existe o se ha movido.",
-    "home": "Volver al vestíbulo",
-    "rooms": "Explorar salas"
+    "home": "Volver al vestíbulo"
   }
 }

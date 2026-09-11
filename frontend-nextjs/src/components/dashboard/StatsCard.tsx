@@ -15,6 +15,7 @@ export function StatsCard({
   totalCollaborators,
 }: StatsCardProps) {
   const t = useTranslations("dashboard.stats");
+  const tc = useTranslations("common");
   const hasNoActivity = totalRooms === 0 && totalCollaborators === 0;
 
   return (
@@ -42,7 +43,7 @@ export function StatsCard({
             </div>
             <div className="text-lg text-blue-700">{totalRooms}</div>
             <div className="text-[9px] text-blue-500 font-medium uppercase tracking-wide">
-              {t("rooms")}
+              {tc("rooms")}
             </div>
           </div>
 
@@ -64,7 +65,7 @@ export function StatsCard({
             </div>
             <div className="text-lg text-amber-700">{totalCollaborators}</div>
             <div className="text-[9px] text-amber-500 font-medium uppercase tracking-wide">
-              {t("people")}
+              {tc("people")}
             </div>
           </div>
         </div>

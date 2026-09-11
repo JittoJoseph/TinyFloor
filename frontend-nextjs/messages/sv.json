@@ -26,7 +26,16 @@
     "guest": "Gäst",
     "you": "Du",
     "justNow": "nyss",
-    "unknown": "Okänt"
+    "unknown": "Okänt",
+    "rooms": "Rum",
+    "people": "Personer",
+    "peopleCount": "{count, plural, one {# person} other {# personer}}",
+    "createRoom": "Skapa ett rum",
+    "browseRooms": "Bläddra bland rum",
+    "searchRooms": "Sök rum...",
+    "dashboard": "Översikt",
+    "questions": "Frågor",
+    "signOut": "Logga ut"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Huvudmeny",
-    "questions": "Frågor",
-    "tour": "Rundtur",
-    "dashboard": "Översikt"
+    "tour": "Rundtur"
   },
   "hero": {
     "title": "Det <em>mysigaste</em> <br></br>virtuella kontoret.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Ett kontor du kan <em>gå runt i.</em>",
     "subtitle": "SpatialMeet behåller den del av kontoret som samtal aldrig ersatte: att veta vem som är där och kunna gå fram.",
-    "roomsLabel": "Rum",
     "alwaysOn": "Alltid öppet",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Produkt",
     "learn": "Lär dig mer",
     "elsewhere": "På andra ställen",
-    "rooms": "Rum",
-    "people": "Personer",
-    "createRoom": "Skapa ett rum",
-    "dashboard": "Översikt",
     "tour": "Rundtur i rummet",
     "twoWays": "Två vägar in",
-    "questions": "Frågor",
     "rights": "© {year} Jitto Joseph. Alla rättigheter förbehållna."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Designteamet, Studion, Fredagshäng",
     "advanced": "Avancerat",
     "passwordPlaceholder": "Lägg till lösenord (valfritt)",
-    "passwordLabel": "Rummets lösenord",
     "passwordHint": "Alla rum listas i katalogen. Ett lösenord håller dörren stängd för den som inte har det.",
     "submit": "Skapa rummet",
     "submitting": "Förbereder",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Den dörren går inte att öppna.",
     "unavailable": "Det här rummet är inte längre tillgängligt.",
-    "browse": "Bläddra bland rum",
     "full": "Rummet är fullt just nu",
     "needsPassword": "Rummet kräver ett lösenord",
     "error": "Det gick inte att gå med i rummet",
@@ -229,20 +228,14 @@
     "title": "Community-<em>katalog</em>",
     "roomsSubtitle": "Bläddra bland rum eller träffa folket där inne",
     "peopleSubtitle": "Träffa dem som formar SpatialMeet",
-    "rooms": "Rum",
-    "people": "Personer",
-    "createRoom": "Skapa rum",
-    "startRoom": "Starta ett rum",
     "updating": "Uppdaterar...",
     "roomsLive": "{count, plural, one {# rum live} other {# rum live}}",
-    "searchRooms": "Sök rum...",
     "search": "Sök",
     "loadingSpaces": "Laddar rum",
     "noRoomsFound": "Inga rum hittades.",
     "noRoomsAvailable": "Inga rum tillgängliga.",
     "noRoomsFoundBody": "Vi hittade inga rum som matchar din sökning. Prova att justera den.",
     "noRoomsAvailableBody": "Det är tyst här. Bli först med att starta en ny arbetsyta!",
-    "createARoom": "Skapa ett rum",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Inaktivt",
@@ -252,7 +245,6 @@
     "full": "Fullt",
     "enter": "Gå in",
     "gatheringPeople": "Samlar personer...",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "searchPeople": "Sök personer...",
     "yourProfile": "Din profil",
     "loadingPeople": "Laddar personer",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Prova en annan sökning eller titta in snart igen."
   },
   "userMenu": {
-    "signIn": "Logga in",
-    "dashboard": "Översikt",
-    "manageProfile": "Hantera profil",
-    "signOut": "Logga ut"
+    "manageProfile": "Hantera profil"
   },
   "dashboard": {
-    "title": "Översikt",
     "subtitle": "Hantera din profil och dina rum",
     "activeCount": "{count} aktiva",
     "userNotFound": "Användaren hittades inte",
-    "userNotFoundTitle": "Användaren hittades inte",
     "backToRooms": "Tillbaka till rummen",
     "nameUpdated": "Visningsnamnet har uppdaterats!",
     "profileFailed": "Det gick inte att uppdatera profilen",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statistik",
       "empty": "Skapa ditt första rum!",
-      "rooms": "Rum",
-      "active": "Aktiva",
-      "people": "Personer"
+      "active": "Aktiva"
     },
     "quickActions": {
-      "title": "Snabbåtgärder",
-      "createRoom": "Skapa rum",
-      "browseRooms": "Bläddra bland rum",
-      "createAccount": "Skapa konto",
-      "signOut": "Logga ut"
+      "title": "Snabbåtgärder"
     },
     "activity": {
       "title": "Senaste aktivitet",
@@ -323,7 +304,6 @@
       "gridView": "Rutnätsvy",
       "listView": "Listvy",
       "newRoom": "Nytt rum",
-      "search": "Sök rum...",
       "filter": {
         "all": "Alla",
         "active": "Aktiva",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Prova att justera sökningen eller filtren",
       "noRooms": "Inga rum än",
       "noRoomsBody": "Skapa ditt första virtuella kontor",
-      "createRoom": "Skapa ett rum",
       "noJoined": "Inga anslutna rum",
       "noJoinedBody": "Gå med i ett rum så visas det här",
       "browsePublic": "Bläddra bland offentliga rum"
@@ -347,7 +326,6 @@
         "offline": "Offline"
       },
       "join": "Gå med",
-      "copyInvite": "Kopiera inbjudningslänk",
       "copyLink": "Kopiera länk",
       "players": "{count}/{max} spelare"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Ansluter...",
     "fallbackName": "Rum: {id}",
-    "people": "{count, plural, one {# person} other {# personer}}",
     "copied": "Kopierat!",
     "invite": "Bjud in",
     "leave": "Lämna"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videosamtal",
     "audioCall": "Röstsamtal",
-    "roomChat": "Rumschatt",
     "viewProfile": "Visa profil"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, balans mellan kvalitet och hastighet",
       "high": "720p, bäst kvalitet men kräver snabbt internet"
     },
-    "default": "Standard",
-    "cancel": "Avbryt",
-    "save": "Spara"
+    "default": "Standard"
   },
   "tutorial": {
     "walk": "Gå runt med W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Det här rummet finns inte på kartan.",
     "body": "Sidan du letar efter finns inte eller har flyttats.",
-    "home": "Tillbaka till lobbyn",
-    "rooms": "Bläddra bland rum"
+    "home": "Tillbaka till lobbyn"
   }
 }

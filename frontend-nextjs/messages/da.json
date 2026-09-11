@@ -26,7 +26,16 @@
     "guest": "Gæst",
     "you": "Dig",
     "justNow": "lige nu",
-    "unknown": "Ukendt"
+    "unknown": "Ukendt",
+    "rooms": "Rum",
+    "people": "Personer",
+    "peopleCount": "{count, plural, one {# person} other {# personer}}",
+    "createRoom": "Opret et rum",
+    "browseRooms": "Gennemse rum",
+    "searchRooms": "Søg efter rum...",
+    "dashboard": "Oversigt",
+    "questions": "Spørgsmål",
+    "signOut": "Log ud"
   },
   "languageSwitcher": {
     "label": "Sprog",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Hovedmenu",
-    "questions": "Spørgsmål",
-    "tour": "Rundvisning",
-    "dashboard": "Oversigt"
+    "tour": "Rundvisning"
   },
   "hero": {
     "title": "Det <em>hyggeligste</em> <br></br>virtuelle kontor.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Et kontor, du kan <em>gå rundt i.</em>",
     "subtitle": "SpatialMeet bevarer den del af kontoret, som opkald aldrig erstattede: at vide, hvem der er der, og kunne gå hen til dem.",
-    "roomsLabel": "Rum",
     "alwaysOn": "Altid åbent",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Produkt",
     "learn": "Lær mere",
     "elsewhere": "Andre steder",
-    "rooms": "Rum",
-    "people": "Personer",
-    "createRoom": "Opret et rum",
-    "dashboard": "Oversigt",
     "tour": "Rundvisning i rummet",
     "twoWays": "To veje ind",
-    "questions": "Spørgsmål",
     "rights": "© {year} Jitto Joseph. Alle rettigheder forbeholdes."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Designteamet, Studiet, Fredagsbar",
     "advanced": "Avanceret",
     "passwordPlaceholder": "Tilføj adgangskode (valgfrit)",
-    "passwordLabel": "Rummets adgangskode",
     "passwordHint": "Alle rum vises i oversigten. En adgangskode holder døren lukket for alle, der ikke har den.",
     "submit": "Opret rummet",
     "submitting": "Gør klar",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Den dør kan ikke åbnes.",
     "unavailable": "Dette rum er ikke længere tilgængeligt.",
-    "browse": "Gennemse rum",
     "full": "Rummet er fuldt lige nu",
     "needsPassword": "Rummet kræver en adgangskode",
     "error": "Kunne ikke deltage i rummet",
@@ -229,20 +228,14 @@
     "title": "Fællesskabets <em>oversigt</em>",
     "roomsSubtitle": "Gennemse rum eller mød folkene derinde",
     "peopleSubtitle": "Mød dem, der former SpatialMeet",
-    "rooms": "Rum",
-    "people": "Personer",
-    "createRoom": "Opret rum",
-    "startRoom": "Start et rum",
     "updating": "Opdaterer...",
     "roomsLive": "{count, plural, one {# rum live} other {# rum live}}",
-    "searchRooms": "Søg efter rum...",
     "search": "Søg",
     "loadingSpaces": "Indlæser rum",
     "noRoomsFound": "Ingen rum fundet.",
     "noRoomsAvailable": "Ingen rum tilgængelige.",
     "noRoomsFoundBody": "Vi kunne ikke finde rum, der matcher din søgning. Prøv at justere den.",
     "noRoomsAvailableBody": "Her er stille. Vær den første til at starte et nyt arbejdsområde!",
-    "createARoom": "Opret et rum",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Inaktivt",
@@ -252,7 +245,6 @@
     "full": "Fuldt",
     "enter": "Gå ind",
     "gatheringPeople": "Samler personer...",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "searchPeople": "Søg efter personer...",
     "yourProfile": "Din profil",
     "loadingPeople": "Indlæser personer",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Prøv en anden søgning, eller kig forbi igen snart."
   },
   "userMenu": {
-    "signIn": "Log ind",
-    "dashboard": "Oversigt",
-    "manageProfile": "Administrer profil",
-    "signOut": "Log ud"
+    "manageProfile": "Administrer profil"
   },
   "dashboard": {
-    "title": "Oversigt",
     "subtitle": "Administrer din profil og dine rum",
     "activeCount": "{count} aktive",
     "userNotFound": "Brugeren blev ikke fundet",
-    "userNotFoundTitle": "Brugeren blev ikke fundet",
     "backToRooms": "Tilbage til rummene",
     "nameUpdated": "Visningsnavn opdateret!",
     "profileFailed": "Profilen kunne ikke opdateres",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statistik",
       "empty": "Opret dit første rum!",
-      "rooms": "Rum",
-      "active": "Aktive",
-      "people": "Personer"
+      "active": "Aktive"
     },
     "quickActions": {
-      "title": "Hurtige handlinger",
-      "createRoom": "Opret rum",
-      "browseRooms": "Gennemse rum",
-      "createAccount": "Opret konto",
-      "signOut": "Log ud"
+      "title": "Hurtige handlinger"
     },
     "activity": {
       "title": "Seneste aktivitet",
@@ -323,7 +304,6 @@
       "gridView": "Gittervisning",
       "listView": "Listevisning",
       "newRoom": "Nyt rum",
-      "search": "Søg efter rum...",
       "filter": {
         "all": "Alle",
         "active": "Aktive",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Prøv at justere din søgning eller dine filtre",
       "noRooms": "Ingen rum endnu",
       "noRoomsBody": "Opret dit første virtuelle kontor",
-      "createRoom": "Opret et rum",
       "noJoined": "Ingen rum, du har deltaget i",
       "noJoinedBody": "Deltag i et rum for at se det her",
       "browsePublic": "Gennemse offentlige rum"
@@ -347,7 +326,6 @@
         "offline": "Offline"
       },
       "join": "Deltag",
-      "copyInvite": "Kopiér invitationslink",
       "copyLink": "Kopiér link",
       "players": "{count}/{max} spillere"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Forbinder...",
     "fallbackName": "Rum: {id}",
-    "people": "{count, plural, one {# person} other {# personer}}",
     "copied": "Kopieret!",
     "invite": "Inviter",
     "leave": "Forlad"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videoopkald",
     "audioCall": "Taleopkald",
-    "roomChat": "Rumchat",
     "viewProfile": "Se profil"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, balance mellem kvalitet og hastighed",
       "high": "720p, bedste kvalitet, men kræver hurtigt internet"
     },
-    "default": "Standard",
-    "cancel": "Annuller",
-    "save": "Gem"
+    "default": "Standard"
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Dette rum er ikke på kortet.",
     "body": "Siden, du leder efter, findes ikke eller er flyttet.",
-    "home": "Tilbage til lobbyen",
-    "rooms": "Gennemse rum"
+    "home": "Tilbage til lobbyen"
   }
 }

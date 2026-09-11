@@ -26,7 +26,16 @@
     "guest": "Gast",
     "you": "Jij",
     "justNow": "zojuist",
-    "unknown": "Onbekend"
+    "unknown": "Onbekend",
+    "rooms": "Ruimtes",
+    "people": "Mensen",
+    "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
+    "createRoom": "Ruimte aanmaken",
+    "browseRooms": "Ruimtes bekijken",
+    "searchRooms": "Ruimtes zoeken...",
+    "dashboard": "Dashboard",
+    "questions": "Vragen",
+    "signOut": "Uitloggen"
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Hoofdmenu",
-    "questions": "Vragen",
-    "tour": "Rondleiding",
-    "dashboard": "Dashboard"
+    "tour": "Rondleiding"
   },
   "hero": {
     "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Een kantoor waar je <em>kunt rondlopen.</em>",
     "subtitle": "SpatialMeet behoudt het deel van een kantoor dat gesprekken nooit hebben vervangen: weten wie er is, en even naar iemand toe kunnen lopen.",
-    "roomsLabel": "Ruimtes",
     "alwaysOn": "Altijd open",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Product",
     "learn": "Ontdekken",
     "elsewhere": "Elders",
-    "rooms": "Ruimtes",
-    "people": "Mensen",
-    "createRoom": "Ruimte aanmaken",
-    "dashboard": "Dashboard",
     "tour": "Rondleiding door de ruimte",
     "twoWays": "Twee manieren om binnen te komen",
-    "questions": "Vragen",
     "rights": "© {year} Jitto Joseph. Alle rechten voorbehouden."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Designteam, Studio, Vrijdagborrel",
     "advanced": "Geavanceerd",
     "passwordPlaceholder": "Wachtwoord toevoegen (optioneel)",
-    "passwordLabel": "Wachtwoord van de ruimte",
     "passwordHint": "Elke ruimte staat in de gids. Een wachtwoord houdt de deur dicht voor iedereen die het niet heeft.",
     "submit": "Ruimte aanmaken",
     "submitting": "Bezig met inrichten",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Die deur gaat niet open.",
     "unavailable": "Deze ruimte is niet meer beschikbaar.",
-    "browse": "Ruimtes bekijken",
     "full": "Deze ruimte is nu vol",
     "needsPassword": "Deze ruimte heeft een wachtwoord nodig",
     "error": "Kan niet deelnemen aan deze ruimte",
@@ -229,20 +228,14 @@
     "title": "Community-<em>gids</em>",
     "roomsSubtitle": "Bekijk ruimtes of ontmoet de mensen erin",
     "peopleSubtitle": "Maak kennis met de makers die SpatialMeet vormgeven",
-    "rooms": "Ruimtes",
-    "people": "Mensen",
-    "createRoom": "Ruimte aanmaken",
-    "startRoom": "Start een ruimte",
     "updating": "Bijwerken...",
     "roomsLive": "{count, plural, one {# ruimte live} other {# ruimtes live}}",
-    "searchRooms": "Ruimtes zoeken...",
     "search": "Zoeken",
     "loadingSpaces": "Ruimtes laden",
     "noRoomsFound": "Geen ruimtes gevonden.",
     "noRoomsAvailable": "Geen ruimtes beschikbaar.",
     "noRoomsFoundBody": "We konden geen ruimtes vinden die bij je zoekopdracht passen. Probeer je zoekopdracht aan te passen.",
     "noRoomsAvailableBody": "Het is hier stil. Wees de eerste die een nieuwe werkplek start!",
-    "createARoom": "Ruimte aanmaken",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Inactief",
@@ -252,7 +245,6 @@
     "full": "Vol",
     "enter": "Binnengaan",
     "gatheringPeople": "Mensen verzamelen...",
-    "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
     "searchPeople": "Mensen zoeken...",
     "yourProfile": "Je profiel",
     "loadingPeople": "Mensen laden",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Probeer een andere zoekopdracht of kom snel terug."
   },
   "userMenu": {
-    "signIn": "Inloggen",
-    "dashboard": "Dashboard",
-    "manageProfile": "Profiel beheren",
-    "signOut": "Uitloggen"
+    "manageProfile": "Profiel beheren"
   },
   "dashboard": {
-    "title": "Dashboard",
     "subtitle": "Beheer je profiel en ruimtes",
     "activeCount": "{count} actief",
     "userNotFound": "Gebruiker niet gevonden",
-    "userNotFoundTitle": "Gebruiker niet gevonden",
     "backToRooms": "Terug naar ruimtes",
     "nameUpdated": "Weergavenaam bijgewerkt!",
     "profileFailed": "Profiel bijwerken mislukt",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statistieken",
       "empty": "Maak je eerste ruimte aan!",
-      "rooms": "Ruimtes",
-      "active": "Actief",
-      "people": "Mensen"
+      "active": "Actief"
     },
     "quickActions": {
-      "title": "Snelle acties",
-      "createRoom": "Ruimte aanmaken",
-      "browseRooms": "Ruimtes bekijken",
-      "createAccount": "Account aanmaken",
-      "signOut": "Uitloggen"
+      "title": "Snelle acties"
     },
     "activity": {
       "title": "Recente activiteit",
@@ -323,7 +304,6 @@
       "gridView": "Rasterweergave",
       "listView": "Lijstweergave",
       "newRoom": "Nieuwe ruimte",
-      "search": "Ruimtes zoeken...",
       "filter": {
         "all": "Alle",
         "active": "Actief",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Pas je zoekopdracht of filters aan",
       "noRooms": "Nog geen ruimtes",
       "noRoomsBody": "Maak je eerste virtuele kantoorruimte",
-      "createRoom": "Ruimte aanmaken",
       "noJoined": "Nog geen ruimtes bijgewoond",
       "noJoinedBody": "Ga een ruimte binnen om hem hier te zien",
       "browsePublic": "Openbare ruimtes bekijken"
@@ -347,7 +326,6 @@
         "offline": "Offline"
       },
       "join": "Deelnemen",
-      "copyInvite": "Uitnodigingslink kopiëren",
       "copyLink": "Link kopiëren",
       "players": "{count}/{max} spelers"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Verbinden...",
     "fallbackName": "Ruimte: {id}",
-    "people": "{count, plural, one {# persoon} other {# mensen}}",
     "copied": "Gekopieerd!",
     "invite": "Uitnodigen",
     "leave": "Verlaten"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videogesprek",
     "audioCall": "Spraakgesprek",
-    "roomChat": "Ruimtechat",
     "viewProfile": "Profiel bekijken"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, balans tussen kwaliteit en snelheid",
       "high": "720p, beste kwaliteit maar vereist snel internet"
     },
-    "default": "Standaard",
-    "cancel": "Annuleren",
-    "save": "Opslaan"
+    "default": "Standaard"
   },
   "tutorial": {
     "walk": "Loop rond met W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
-    "home": "Terug naar de lobby",
-    "rooms": "Ruimtes bekijken"
+    "home": "Terug naar de lobby"
   }
 }

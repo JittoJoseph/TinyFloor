@@ -26,7 +26,16 @@
     "guest": "ゲスト",
     "you": "あなた",
     "justNow": "たった今",
-    "unknown": "不明"
+    "unknown": "不明",
+    "rooms": "ルーム",
+    "people": "メンバー",
+    "peopleCount": "{count, plural, other {# 人}}",
+    "createRoom": "ルームを作成",
+    "browseRooms": "ルームを探す",
+    "searchRooms": "ルームを検索...",
+    "dashboard": "ダッシュボード",
+    "questions": "よくある質問",
+    "signOut": "ログアウト"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "メイン",
-    "questions": "よくある質問",
-    "tour": "ツアー",
-    "dashboard": "ダッシュボード"
+    "tour": "ツアー"
   },
   "hero": {
     "title": "いちばん<em>居心地のいい</em><br></br>バーチャルオフィス。",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "<em>歩き回れる</em>オフィス。",
     "subtitle": "SpatialMeet は、通話では代わりにならなかったオフィスの良さを残します。誰がいるかがわかり、そのまま話しに行けること。",
-    "roomsLabel": "ルーム",
     "alwaysOn": "いつでもオープン",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "プロダクト",
     "learn": "詳しく知る",
     "elsewhere": "その他のリンク",
-    "rooms": "ルーム",
-    "people": "メンバー",
-    "createRoom": "ルームを作成",
-    "dashboard": "ダッシュボード",
     "tour": "ルームのツアー",
     "twoWays": "2つの入り方",
-    "questions": "よくある質問",
     "rights": "© {year} Jitto Joseph. 無断転載を禁じます。"
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "デザインチーム、スタジオ、金曜の雑談",
     "advanced": "詳細設定",
     "passwordPlaceholder": "パスワードを追加（任意）",
-    "passwordLabel": "ルームのパスワード",
     "passwordHint": "すべてのルームはディレクトリに表示されます。パスワードを設定すると、知らない人はドアを開けられません。",
     "submit": "ルームを作成",
     "submitting": "準備中",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "このドアは開きません。",
     "unavailable": "このルームは利用できなくなりました。",
-    "browse": "ルームを探す",
     "full": "このルームは現在満員です",
     "needsPassword": "このルームにはパスワードが必要です",
     "error": "このルームに参加できませんでした",
@@ -229,20 +228,14 @@
     "title": "コミュニティ<em>ディレクトリ</em>",
     "roomsSubtitle": "ルームを探すか、中にいる人に会いましょう",
     "peopleSubtitle": "SpatialMeet をつくる人たちに会いましょう",
-    "rooms": "ルーム",
-    "people": "メンバー",
-    "createRoom": "ルームを作成",
-    "startRoom": "ルームを始める",
     "updating": "更新中...",
     "roomsLive": "{count, plural, other {# ルームがライブ}}",
-    "searchRooms": "ルームを検索...",
     "search": "検索",
     "loadingSpaces": "スペースを読み込み中",
     "noRoomsFound": "ルームが見つかりません。",
     "noRoomsAvailable": "利用できるルームはありません。",
     "noRoomsFoundBody": "検索に一致するルームが見つかりませんでした。キーワードを変えてみてください。",
     "noRoomsAvailableBody": "まだ静かです。最初のワークスペースを始めましょう！",
-    "createARoom": "ルームを作成",
     "presence": {
       "ONLINE": "オンライン",
       "IDLE": "アイドル",
@@ -252,7 +245,6 @@
     "full": "満員",
     "enter": "入室",
     "gatheringPeople": "メンバーを集めています...",
-    "peopleCount": "{count, plural, other {# 人}}",
     "searchPeople": "メンバーを検索...",
     "yourProfile": "あなたのプロフィール",
     "loadingPeople": "メンバーを読み込み中",
@@ -260,17 +252,12 @@
     "noPeopleBody": "別のキーワードで検索するか、また後で見てください。"
   },
   "userMenu": {
-    "signIn": "ログイン",
-    "dashboard": "ダッシュボード",
-    "manageProfile": "プロフィールを管理",
-    "signOut": "ログアウト"
+    "manageProfile": "プロフィールを管理"
   },
   "dashboard": {
-    "title": "ダッシュボード",
     "subtitle": "プロフィールとルームを管理",
     "activeCount": "{count} 件アクティブ",
     "userNotFound": "ユーザーが見つかりません",
-    "userNotFoundTitle": "ユーザーが見つかりません",
     "backToRooms": "ルーム一覧に戻る",
     "nameUpdated": "表示名を更新しました！",
     "profileFailed": "プロフィールを更新できませんでした",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "統計",
       "empty": "最初のルームを作りましょう！",
-      "rooms": "ルーム",
-      "active": "アクティブ",
-      "people": "メンバー"
+      "active": "アクティブ"
     },
     "quickActions": {
-      "title": "クイックアクション",
-      "createRoom": "ルームを作成",
-      "browseRooms": "ルームを探す",
-      "createAccount": "アカウントを作成",
-      "signOut": "ログアウト"
+      "title": "クイックアクション"
     },
     "activity": {
       "title": "最近のアクティビティ",
@@ -323,7 +304,6 @@
       "gridView": "グリッド表示",
       "listView": "リスト表示",
       "newRoom": "新しいルーム",
-      "search": "ルームを検索...",
       "filter": {
         "all": "すべて",
         "active": "アクティブ",
@@ -335,7 +315,6 @@
       "noMatchesBody": "検索条件やフィルターを変えてみてください",
       "noRooms": "まだルームがありません",
       "noRoomsBody": "最初のバーチャルオフィスを作りましょう",
-      "createRoom": "ルームを作成",
       "noJoined": "参加したルームはありません",
       "noJoinedBody": "ルームに参加するとここに表示されます",
       "browsePublic": "公開ルームを探す"
@@ -347,7 +326,6 @@
         "offline": "オフライン"
       },
       "join": "参加",
-      "copyInvite": "招待リンクをコピー",
       "copyLink": "リンクをコピー",
       "players": "{count}/{max} 人"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "接続中...",
     "fallbackName": "ルーム: {id}",
-    "people": "{count, plural, other {# 人}}",
     "copied": "コピーしました！",
     "invite": "招待",
     "leave": "退出"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "ビデオ通話",
     "audioCall": "音声通話",
-    "roomChat": "ルームチャット",
     "viewProfile": "プロフィールを見る"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p、画質と速度のバランス",
       "high": "720p、最高画質ですが高速な回線が必要です"
     },
-    "default": "デフォルト",
-    "cancel": "キャンセル",
-    "save": "保存"
+    "default": "デフォルト"
   },
   "tutorial": {
     "walk": "W A S D キーで歩き回りましょう",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "このルームは地図にありません。",
     "body": "お探しのページは存在しないか、移動しました。",
-    "home": "ロビーに戻る",
-    "rooms": "ルームを探す"
+    "home": "ロビーに戻る"
   }
 }

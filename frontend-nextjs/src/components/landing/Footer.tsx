@@ -17,15 +17,16 @@ const headingClass =
 
 export const Footer: React.FC = () => {
   const t = useTranslations("footer");
+  const tc = useTranslations("common");
 
   const columns = [
     {
       title: t("product"),
       links: [
-        { label: t("rooms"), href: "/rooms" },
-        { label: t("people"), href: "/people" },
-        { label: t("createRoom"), href: "/create-room" },
-        { label: t("dashboard"), href: "/dashboard" },
+        { label: tc("rooms"), href: "/rooms" },
+        { label: tc("people"), href: "/people" },
+        { label: tc("createRoom"), href: "/create-room" },
+        { label: tc("dashboard"), href: "/dashboard" },
       ],
     },
     {
@@ -33,7 +34,7 @@ export const Footer: React.FC = () => {
       links: [
         { label: t("tour"), href: "/#how-it-works" },
         { label: t("twoWays"), href: "/#start" },
-        { label: t("questions"), href: "/#faq" },
+        { label: tc("questions"), href: "/#faq" },
       ],
     },
   ];

@@ -26,7 +26,16 @@
     "guest": "Gość",
     "you": "Ty",
     "justNow": "przed chwilą",
-    "unknown": "Nieznane"
+    "unknown": "Nieznane",
+    "rooms": "Pokoje",
+    "people": "Ludzie",
+    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
+    "createRoom": "Utwórz pokój",
+    "browseRooms": "Przeglądaj pokoje",
+    "searchRooms": "Szukaj pokoi...",
+    "dashboard": "Panel",
+    "questions": "Pytania",
+    "signOut": "Wyloguj się"
   },
   "languageSwitcher": {
     "label": "Język",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Główne",
-    "questions": "Pytania",
-    "tour": "Wycieczka",
-    "dashboard": "Panel"
+    "tour": "Wycieczka"
   },
   "hero": {
     "title": "<em>Najprzytulniejsze</em> <br></br>wirtualne biuro.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Biuro, po którym <em>można chodzić.</em>",
     "subtitle": "SpatialMeet zachowuje tę część biura, której rozmowy nigdy nie zastąpiły: wiesz, kto jest na miejscu, i możesz do niego podejść.",
-    "roomsLabel": "Pokoje",
     "alwaysOn": "Zawsze otwarte",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Produkt",
     "learn": "Dowiedz się więcej",
     "elsewhere": "Gdzie indziej",
-    "rooms": "Pokoje",
-    "people": "Ludzie",
-    "createRoom": "Utwórz pokój",
-    "dashboard": "Panel",
     "tour": "Zwiedź pokój",
     "twoWays": "Dwie drogi do środka",
-    "questions": "Pytania",
     "rights": "© {year} Jitto Joseph. Wszelkie prawa zastrzeżone."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Zespół designu, Studio, Piątkowe spotkanie",
     "advanced": "Zaawansowane",
     "passwordPlaceholder": "Dodaj hasło (opcjonalnie)",
-    "passwordLabel": "Hasło pokoju",
     "passwordHint": "Każdy pokój jest widoczny w katalogu. Hasło zamyka drzwi przed każdym, kto go nie zna.",
     "submit": "Utwórz pokój",
     "submitting": "Przygotowywanie",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Te drzwi się nie otwierają.",
     "unavailable": "Ten pokój nie jest już dostępny.",
-    "browse": "Przeglądaj pokoje",
     "full": "Ten pokój jest teraz pełny",
     "needsPassword": "Ten pokój wymaga hasła",
     "error": "Nie udało się dołączyć do pokoju",
@@ -229,20 +228,14 @@
     "title": "Katalog <em>społeczności</em>",
     "roomsSubtitle": "Przeglądaj pokoje lub poznaj osoby w środku",
     "peopleSubtitle": "Poznaj osoby, które tworzą SpatialMeet",
-    "rooms": "Pokoje",
-    "people": "Ludzie",
-    "createRoom": "Utwórz pokój",
-    "startRoom": "Załóż pokój",
     "updating": "Aktualizowanie...",
     "roomsLive": "{count, plural, one {# pokój na żywo} few {# pokoje na żywo} many {# pokoi na żywo} other {# pokoju na żywo}}",
-    "searchRooms": "Szukaj pokoi...",
     "search": "Szukaj",
     "loadingSpaces": "Ładowanie przestrzeni",
     "noRoomsFound": "Nie znaleziono pokoi.",
     "noRoomsAvailable": "Brak dostępnych pokoi.",
     "noRoomsFoundBody": "Nie znaleźliśmy pokoi pasujących do wyszukiwania. Spróbuj zmienić zapytanie.",
     "noRoomsAvailableBody": "Jest tu cicho. Bądź pierwszą osobą, która założy nową przestrzeń roboczą!",
-    "createARoom": "Utwórz pokój",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Bezczynny",
@@ -252,7 +245,6 @@
     "full": "Pełny",
     "enter": "Wejdź",
     "gatheringPeople": "Zbieranie osób...",
-    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
     "searchPeople": "Szukaj osób...",
     "yourProfile": "Twój profil",
     "loadingPeople": "Ładowanie osób",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Spróbuj innego wyszukiwania lub wróć wkrótce."
   },
   "userMenu": {
-    "signIn": "Zaloguj się",
-    "dashboard": "Panel",
-    "manageProfile": "Zarządzaj profilem",
-    "signOut": "Wyloguj się"
+    "manageProfile": "Zarządzaj profilem"
   },
   "dashboard": {
-    "title": "Panel",
     "subtitle": "Zarządzaj profilem i pokojami",
     "activeCount": "Aktywne: {count}",
     "userNotFound": "Nie znaleziono użytkownika",
-    "userNotFoundTitle": "Nie znaleziono użytkownika",
     "backToRooms": "Wróć do pokoi",
     "nameUpdated": "Zaktualizowano nazwę wyświetlaną!",
     "profileFailed": "Nie udało się zaktualizować profilu",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statystyki",
       "empty": "Utwórz swój pierwszy pokój!",
-      "rooms": "Pokoje",
-      "active": "Aktywne",
-      "people": "Ludzie"
+      "active": "Aktywne"
     },
     "quickActions": {
-      "title": "Szybkie akcje",
-      "createRoom": "Utwórz pokój",
-      "browseRooms": "Przeglądaj pokoje",
-      "createAccount": "Utwórz konto",
-      "signOut": "Wyloguj się"
+      "title": "Szybkie akcje"
     },
     "activity": {
       "title": "Ostatnia aktywność",
@@ -323,7 +304,6 @@
       "gridView": "Widok siatki",
       "listView": "Widok listy",
       "newRoom": "Nowy pokój",
-      "search": "Szukaj pokoi...",
       "filter": {
         "all": "Wszystkie",
         "active": "Aktywne",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Spróbuj zmienić wyszukiwanie lub filtry",
       "noRooms": "Nie masz jeszcze pokoi",
       "noRoomsBody": "Utwórz swoje pierwsze wirtualne biuro",
-      "createRoom": "Utwórz pokój",
       "noJoined": "Brak dołączonych pokoi",
       "noJoinedBody": "Dołącz do pokoju, aby zobaczyć go tutaj",
       "browsePublic": "Przeglądaj publiczne pokoje"
@@ -347,7 +326,6 @@
         "offline": "Offline"
       },
       "join": "Dołącz",
-      "copyInvite": "Kopiuj link z zaproszeniem",
       "copyLink": "Kopiuj link",
       "players": "Gracze: {count}/{max}"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Łączenie...",
     "fallbackName": "Pokój: {id}",
-    "people": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
     "copied": "Skopiowano!",
     "invite": "Zaproś",
     "leave": "Wyjdź"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Rozmowa wideo",
     "audioCall": "Rozmowa głosowa",
-    "roomChat": "Czat pokoju",
     "viewProfile": "Zobacz profil"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, równowaga jakości i szybkości",
       "high": "720p, najlepsza jakość, ale wymaga szybkiego internetu"
     },
-    "default": "Domyślne",
-    "cancel": "Anuluj",
-    "save": "Zapisz"
+    "default": "Domyślne"
   },
   "tutorial": {
     "walk": "Chodź, używając W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Tego pokoju nie ma na mapie.",
     "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
-    "home": "Wróć do lobby",
-    "rooms": "Przeglądaj pokoje"
+    "home": "Wróć do lobby"
   }
 }

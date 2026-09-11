@@ -142,7 +142,7 @@ function JoinContent() {
             {t("unavailable")}
           </p>
           <Link href="/rooms" className={primaryButtonClass}>
-            {t("browse")}
+            {tc("browseRooms")}
           </Link>
         </div>
       </EntryShell>

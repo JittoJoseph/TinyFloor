@@ -26,7 +26,16 @@
     "guest": "Gjest",
     "you": "Deg",
     "justNow": "akkurat nå",
-    "unknown": "Ukjent"
+    "unknown": "Ukjent",
+    "rooms": "Rom",
+    "people": "Personer",
+    "peopleCount": "{count, plural, one {# person} other {# personer}}",
+    "createRoom": "Opprett et rom",
+    "browseRooms": "Bla gjennom rom",
+    "searchRooms": "Søk etter rom...",
+    "dashboard": "Oversikt",
+    "questions": "Spørsmål",
+    "signOut": "Logg ut"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Hovedmeny",
-    "questions": "Spørsmål",
-    "tour": "Omvisning",
-    "dashboard": "Oversikt"
+    "tour": "Omvisning"
   },
   "hero": {
     "title": "Det <em>koseligste</em> <br></br>virtuelle kontoret.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Et kontor du kan <em>gå rundt i.</em>",
     "subtitle": "SpatialMeet beholder den delen av kontoret som samtaler aldri erstattet: å vite hvem som er der, og kunne gå bort til dem.",
-    "roomsLabel": "Rom",
     "alwaysOn": "Alltid åpent",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Produkt",
     "learn": "Lær mer",
     "elsewhere": "Andre steder",
-    "rooms": "Rom",
-    "people": "Personer",
-    "createRoom": "Opprett et rom",
-    "dashboard": "Oversikt",
     "tour": "Omvisning i rommet",
     "twoWays": "To veier inn",
-    "questions": "Spørsmål",
     "rights": "© {year} Jitto Joseph. Med enerett."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Designteamet, Studio, Fredagspils",
     "advanced": "Avansert",
     "passwordPlaceholder": "Legg til passord (valgfritt)",
-    "passwordLabel": "Rompassord",
     "passwordHint": "Alle rom vises i katalogen. Et passord holder døren lukket for alle som ikke har det.",
     "submit": "Opprett rommet",
     "submitting": "Gjør klar",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Den døren åpner seg ikke.",
     "unavailable": "Dette rommet er ikke lenger tilgjengelig.",
-    "browse": "Bla gjennom rom",
     "full": "Rommet er fullt akkurat nå",
     "needsPassword": "Rommet krever passord",
     "error": "Kunne ikke bli med i rommet",
@@ -229,20 +228,14 @@
     "title": "Fellesskapets <em>katalog</em>",
     "roomsSubtitle": "Bla gjennom rom eller møt folkene der inne",
     "peopleSubtitle": "Møt dem som former SpatialMeet",
-    "rooms": "Rom",
-    "people": "Personer",
-    "createRoom": "Opprett rom",
-    "startRoom": "Start et rom",
     "updating": "Oppdaterer...",
     "roomsLive": "{count, plural, one {# rom live} other {# rom live}}",
-    "searchRooms": "Søk etter rom...",
     "search": "Søk",
     "loadingSpaces": "Laster inn rom",
     "noRoomsFound": "Fant ingen rom.",
     "noRoomsAvailable": "Ingen tilgjengelige rom.",
     "noRoomsFoundBody": "Vi fant ingen rom som passer søket ditt. Prøv å justere det.",
     "noRoomsAvailableBody": "Det er stille her. Bli den første som starter et nytt arbeidsområde!",
-    "createARoom": "Opprett et rom",
     "presence": {
       "ONLINE": "Pålogget",
       "IDLE": "Inaktivt",
@@ -252,7 +245,6 @@
     "full": "Fullt",
     "enter": "Gå inn",
     "gatheringPeople": "Samler personer...",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "searchPeople": "Søk etter personer...",
     "yourProfile": "Profilen din",
     "loadingPeople": "Laster inn personer",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Prøv et annet søk eller kom innom igjen snart."
   },
   "userMenu": {
-    "signIn": "Logg inn",
-    "dashboard": "Oversikt",
-    "manageProfile": "Administrer profil",
-    "signOut": "Logg ut"
+    "manageProfile": "Administrer profil"
   },
   "dashboard": {
-    "title": "Oversikt",
     "subtitle": "Administrer profilen og rommene dine",
     "activeCount": "{count} aktive",
     "userNotFound": "Fant ikke brukeren",
-    "userNotFoundTitle": "Fant ikke brukeren",
     "backToRooms": "Tilbake til rommene",
     "nameUpdated": "Visningsnavnet er oppdatert!",
     "profileFailed": "Kunne ikke oppdatere profilen",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statistikk",
       "empty": "Opprett ditt første rom!",
-      "rooms": "Rom",
-      "active": "Aktive",
-      "people": "Personer"
+      "active": "Aktive"
     },
     "quickActions": {
-      "title": "Hurtighandlinger",
-      "createRoom": "Opprett rom",
-      "browseRooms": "Bla gjennom rom",
-      "createAccount": "Opprett konto",
-      "signOut": "Logg ut"
+      "title": "Hurtighandlinger"
     },
     "activity": {
       "title": "Nylig aktivitet",
@@ -323,7 +304,6 @@
       "gridView": "Rutenettvisning",
       "listView": "Listevisning",
       "newRoom": "Nytt rom",
-      "search": "Søk etter rom...",
       "filter": {
         "all": "Alle",
         "active": "Aktive",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Prøv å justere søket eller filtrene",
       "noRooms": "Ingen rom ennå",
       "noRoomsBody": "Opprett ditt første virtuelle kontor",
-      "createRoom": "Opprett et rom",
       "noJoined": "Ingen rom du har blitt med i",
       "noJoinedBody": "Bli med i et rom for å se det her",
       "browsePublic": "Bla gjennom offentlige rom"
@@ -347,7 +326,6 @@
         "offline": "Frakoblet"
       },
       "join": "Bli med",
-      "copyInvite": "Kopier invitasjonslenke",
       "copyLink": "Kopier lenke",
       "players": "{count}/{max} spillere"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Kobler til...",
     "fallbackName": "Rom: {id}",
-    "people": "{count, plural, one {# person} other {# personer}}",
     "copied": "Kopiert!",
     "invite": "Inviter",
     "leave": "Forlat"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videosamtale",
     "audioCall": "Taleanrop",
-    "roomChat": "Romchat",
     "viewProfile": "Se profil"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, balanse mellom kvalitet og hastighet",
       "high": "720p, best kvalitet, men krever raskt internett"
     },
-    "default": "Standard",
-    "cancel": "Avbryt",
-    "save": "Lagre"
+    "default": "Standard"
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Dette rommet finnes ikke på kartet.",
     "body": "Siden du leter etter finnes ikke eller er flyttet.",
-    "home": "Tilbake til lobbyen",
-    "rooms": "Bla gjennom rom"
+    "home": "Tilbake til lobbyen"
   }
 }

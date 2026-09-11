@@ -2,20 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
-import {
-  Gamepad2,
-  Users,
-  Plus,
-  ArrowLeft,
-  Search,
-  Lock,
-  Crown,
-  ChevronRight,
-} from "lucide-react";
+import { Gamepad2, Users, Lock, Crown, ChevronRight } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
-import { AuthModal } from "@/components/auth/AuthModal";
-import { UserMenu } from "@/components/auth/UserMenu";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { DirectoryHeader } from "@/components/DirectoryHeader";
 import { apiClient } from "@/lib/api";
 import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
 import { useTimeAgo } from "@/lib/i18n/useTimeAgo";
@@ -58,7 +47,6 @@ export default function RoomsPage() {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const pageRef = useRef(0);
@@ -125,92 +113,16 @@ export default function RoomsPage() {
   return (
     <div className="min-h-screen w-full pt-8 md:pt-20 pb-12 px-4 md:px-8 font-body relative">
       <div className="max-w-5xl mx-auto space-y-8">
-        {/* Minimal Header */}
-        <div className="flex flex-col gap-4 md:gap-8">
-          {/* Top Navigation Bar */}
-          <div className="flex items-center justify-between gap-4">
-            <Link
-              href="/"
-              className="cursor-pointer flex items-center justify-center h-10 px-4 sm:px-5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all gap-2"
-            >
-              <ArrowLeft className="w-3.5 h-3.5 opacity-70 rtl:rotate-180" />
-              <span className="hidden sm:inline">{tc("back")}</span>
-            </Link>
-
-            <div className="flex items-center gap-2 sm:gap-4">
-              <LanguageSwitcher side="bottom" align="end" compact />
-              <UserMenu onLoginClick={() => setShowAuthModal(true)} />
-              <Link
-                href="/create-room"
-                className="cursor-pointer flex items-center justify-center gap-2 h-10 px-5 sm:px-6 bg-[var(--color-braun-orange)] text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#3d3d3d] transition-colors shadow-sm hover:shadow-md"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{t("createRoom")}</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Page Title */}
-          <div>
-            <h1 className="text-3xl md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              {t.rich("title", {
-                em: (chunks) => <span className="font-medium">{chunks}</span>,
-              })}
-            </h1>
-            <p className="text-[var(--color-braun-text)] opacity-50 text-sm md:text-base">
-              {t("roomsSubtitle")}
-            </p>
-          </div>
-        </div>
-
-        {/* Filters and Search Strip */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-[rgba(0,0,0,0.06)]">
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
-            {/* Minimal Segmented Control */}
-            <div className="flex w-full md:inline-flex md:w-auto items-center bg-[#e0e0da] p-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(0,0,0,0.06)]">
-              <Link
-                href="/rooms"
-                className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium bg-white text-[var(--color-braun-text)] shadow-sm transition-all"
-              >
-                {t("rooms")}
-              </Link>
-              <Link
-                href="/people"
-                className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-100 transition-all"
-              >
-                {t("people")}
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs font-medium text-[var(--color-braun-text)] opacity-40 uppercase tracking-widest">
-              <Users className="w-3.5 h-3.5" />
-              <span>
-                {loading
-                  ? t("updating")
-                  : t("roomsLive", { count: rooms.length })}
-              </span>
-            </div>
-          </div>
-
-          <div className="w-full md:w-72 relative">
-            <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder={t("searchRooms")}
-              className="w-full ps-10 pe-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
-            />
-            <button
-              onClick={handleSearch}
-              aria-label={t("search")}
-              className="cursor-pointer absolute end-1.5 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full bg-[rgba(0,0,0,0.04)] hover:bg-[rgba(0,0,0,0.08)] transition-colors"
-            >
-              <Search className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-60" />
-            </button>
-          </div>
-        </div>
+        <DirectoryHeader
+          active="rooms"
+          subtitle={t("roomsSubtitle")}
+          ctaLabel={tc("createRoom")}
+          count={loading ? t("updating") : t("roomsLive", { count: rooms.length })}
+          query={searchQuery}
+          onQueryChange={setSearchQuery}
+          searchPlaceholder={tc("searchRooms")}
+          onSearch={handleSearch}
+        />
 
         {/* Main Content Grid */}
         {loading ? (
@@ -236,7 +148,7 @@ export default function RoomsPage() {
               href="/create-room"
               className="cursor-pointer h-10 px-6 inline-flex items-center justify-center bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] text-xs font-bold uppercase tracking-[0.1em] rounded-full border border-[rgba(0,0,0,0.05)] hover:bg-white hover:shadow-md transition-all"
             >
-              {t("createARoom")}
+              {tc("createRoom")}
             </Link>
           </div>
         ) : (
@@ -351,11 +263,6 @@ export default function RoomsPage() {
           </div>
         )}
       </div>
-
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-      />
     </div>
   );
 }

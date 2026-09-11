@@ -26,7 +26,16 @@
     "guest": "אורח",
     "you": "את/ה",
     "justNow": "ממש עכשיו",
-    "unknown": "לא ידוע"
+    "unknown": "לא ידוע",
+    "rooms": "חדרים",
+    "people": "אנשים",
+    "peopleCount": "{count, plural, one {אדם אחד} two {# אנשים} other {# אנשים}}",
+    "createRoom": "יצירת חדר",
+    "browseRooms": "עיון בחדרים",
+    "searchRooms": "חיפוש חדרים...",
+    "dashboard": "לוח בקרה",
+    "questions": "שאלות",
+    "signOut": "התנתקות"
   },
   "languageSwitcher": {
     "label": "שפה",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "ראשי",
-    "questions": "שאלות",
-    "tour": "סיור",
-    "dashboard": "לוח בקרה"
+    "tour": "סיור"
   },
   "hero": {
     "title": "המשרד הווירטואלי <br></br><em>הכי נעים</em>.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "משרד <em>שאפשר להסתובב בו.</em>",
     "subtitle": "SpatialMeet שומר על החלק במשרד ששיחות אף פעם לא החליפו: לדעת מי נמצא, ולגשת אליו.",
-    "roomsLabel": "חדרים",
     "alwaysOn": "תמיד פתוח",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "מוצר",
     "learn": "מידע",
     "elsewhere": "במקומות אחרים",
-    "rooms": "חדרים",
-    "people": "אנשים",
-    "createRoom": "יצירת חדר",
-    "dashboard": "לוח בקרה",
     "tour": "סיור בחדר",
     "twoWays": "שתי דרכים להיכנס",
-    "questions": "שאלות",
     "rights": "© {year} Jitto Joseph. כל הזכויות שמורות."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "צוות עיצוב, סטודיו, מפגש שישי",
     "advanced": "מתקדם",
     "passwordPlaceholder": "הוספת סיסמה (לא חובה)",
-    "passwordLabel": "סיסמת החדר",
     "passwordHint": "כל החדרים מופיעים במדריך. סיסמה שומרת את הדלת סגורה בפני מי שאין לו אותה.",
     "submit": "יצירת החדר",
     "submitting": "מכינים",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "הדלת הזו לא נפתחת.",
     "unavailable": "החדר הזה כבר לא זמין.",
-    "browse": "עיון בחדרים",
     "full": "החדר מלא כרגע",
     "needsPassword": "החדר הזה דורש סיסמה",
     "error": "לא הצלחנו להצטרף לחדר",
@@ -229,20 +228,14 @@
     "title": "מדריך <em>הקהילה</em>",
     "roomsSubtitle": "עיון בחדרים או היכרות עם האנשים שבתוכם",
     "peopleSubtitle": "הכירו את מי שבונים את SpatialMeet",
-    "rooms": "חדרים",
-    "people": "אנשים",
-    "createRoom": "יצירת חדר",
-    "startRoom": "פתיחת חדר",
     "updating": "מתעדכן...",
     "roomsLive": "{count, plural, one {חדר אחד פעיל} two {# חדרים פעילים} other {# חדרים פעילים}}",
-    "searchRooms": "חיפוש חדרים...",
     "search": "חיפוש",
     "loadingSpaces": "טוען מרחבים",
     "noRoomsFound": "לא נמצאו חדרים.",
     "noRoomsAvailable": "אין חדרים זמינים.",
     "noRoomsFoundBody": "לא מצאנו חדרים שמתאימים לחיפוש. כדאי לנסות מילים אחרות.",
     "noRoomsAvailableBody": "שקט כאן. אפשר להיות הראשונים לפתוח סביבת עבודה חדשה!",
-    "createARoom": "יצירת חדר",
     "presence": {
       "ONLINE": "מחובר",
       "IDLE": "לא פעיל",
@@ -252,7 +245,6 @@
     "full": "מלא",
     "enter": "כניסה",
     "gatheringPeople": "אוספים אנשים...",
-    "peopleCount": "{count, plural, one {אדם אחד} two {# אנשים} other {# אנשים}}",
     "searchPeople": "חיפוש אנשים...",
     "yourProfile": "הפרופיל שלך",
     "loadingPeople": "טוען אנשים",
@@ -260,17 +252,12 @@
     "noPeopleBody": "כדאי לנסות חיפוש אחר או לחזור בקרוב."
   },
   "userMenu": {
-    "signIn": "התחברות",
-    "dashboard": "לוח בקרה",
-    "manageProfile": "ניהול פרופיל",
-    "signOut": "התנתקות"
+    "manageProfile": "ניהול פרופיל"
   },
   "dashboard": {
-    "title": "לוח בקרה",
     "subtitle": "ניהול הפרופיל והחדרים שלך",
     "activeCount": "{count} פעילים",
     "userNotFound": "המשתמש לא נמצא",
-    "userNotFoundTitle": "המשתמש לא נמצא",
     "backToRooms": "חזרה לחדרים",
     "nameUpdated": "שם התצוגה עודכן!",
     "profileFailed": "עדכון הפרופיל נכשל",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "סטטיסטיקה",
       "empty": "אפשר ליצור את החדר הראשון!",
-      "rooms": "חדרים",
-      "active": "פעילים",
-      "people": "אנשים"
+      "active": "פעילים"
     },
     "quickActions": {
-      "title": "פעולות מהירות",
-      "createRoom": "יצירת חדר",
-      "browseRooms": "עיון בחדרים",
-      "createAccount": "יצירת חשבון",
-      "signOut": "התנתקות"
+      "title": "פעולות מהירות"
     },
     "activity": {
       "title": "פעילות אחרונה",
@@ -323,7 +304,6 @@
       "gridView": "תצוגת רשת",
       "listView": "תצוגת רשימה",
       "newRoom": "חדר חדש",
-      "search": "חיפוש חדרים...",
       "filter": {
         "all": "הכול",
         "active": "פעילים",
@@ -335,7 +315,6 @@
       "noMatchesBody": "כדאי לשנות את החיפוש או את המסננים",
       "noRooms": "אין עדיין חדרים",
       "noRoomsBody": "אפשר ליצור את המשרד הווירטואלי הראשון",
-      "createRoom": "יצירת חדר",
       "noJoined": "לא הצטרפת לחדרים",
       "noJoinedBody": "הצטרפות לחדר תציג אותו כאן",
       "browsePublic": "עיון בחדרים ציבוריים"
@@ -347,7 +326,6 @@
         "offline": "לא מחובר"
       },
       "join": "הצטרפות",
-      "copyInvite": "העתקת קישור הזמנה",
       "copyLink": "העתקת קישור",
       "players": "{count}/{max} שחקנים"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "מתחבר...",
     "fallbackName": "חדר: {id}",
-    "people": "{count, plural, one {אדם אחד} two {# אנשים} other {# אנשים}}",
     "copied": "הועתק!",
     "invite": "הזמנה",
     "leave": "יציאה"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "שיחת וידאו",
     "audioCall": "שיחה קולית",
-    "roomChat": "צ׳אט החדר",
     "viewProfile": "צפייה בפרופיל"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, איזון בין איכות למהירות",
       "high": "720p, האיכות הטובה ביותר אבל דורש אינטרנט מהיר"
     },
-    "default": "ברירת מחדל",
-    "cancel": "ביטול",
-    "save": "שמירה"
+    "default": "ברירת מחדל"
   },
   "tutorial": {
     "walk": "מסתובבים עם W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "החדר הזה לא מופיע במפה.",
     "body": "הדף שחיפשת לא קיים או שהועבר.",
-    "home": "חזרה ללובי",
-    "rooms": "עיון בחדרים"
+    "home": "חזרה ללובי"
   }
 }

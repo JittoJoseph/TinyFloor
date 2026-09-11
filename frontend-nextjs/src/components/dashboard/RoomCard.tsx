@@ -68,6 +68,7 @@ const statusConfig: Record<
 
 export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
   const t = useTranslations("dashboard.roomCard");
+  const te = useTranslations("entry");
   const timeAgo = useTimeAgo({ dateAfterWeek: true });
   const status = getRoomStatus(room);
   const config = statusConfig[status];
@@ -123,8 +124,8 @@ export function RoomCard({ room, isOwned, onCopy, isCopied }: RoomCardProps) {
           <button
             onClick={onCopy}
             className="cursor-pointer p-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors"
-            title={t("copyInvite")}
-            aria-label={t("copyInvite")}
+            title={te("copyInvite")}
+            aria-label={te("copyInvite")}
           >
             {isCopied ? (
               <Check className="w-4 h-4 text-green-600" />

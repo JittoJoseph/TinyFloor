@@ -26,7 +26,16 @@
     "guest": "Gast",
     "you": "Du",
     "justNow": "gerade eben",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "rooms": "Räume",
+    "people": "Personen",
+    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
+    "createRoom": "Raum erstellen",
+    "browseRooms": "Räume durchsuchen",
+    "searchRooms": "Räume suchen...",
+    "dashboard": "Dashboard",
+    "questions": "Fragen",
+    "signOut": "Abmelden"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "Hauptnavigation",
-    "questions": "Fragen",
-    "tour": "Tour",
-    "dashboard": "Dashboard"
+    "tour": "Tour"
   },
   "hero": {
     "title": "Das <em>gemütlichste</em> <br></br>virtuelle Büro.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "Ein Büro, in dem du <em>herumlaufen kannst.</em>",
     "subtitle": "SpatialMeet bewahrt den Teil des Büros, den Anrufe nie ersetzt haben: zu wissen, wer da ist, und einfach rübergehen zu können.",
-    "roomsLabel": "Räume",
     "alwaysOn": "Immer offen",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "Produkt",
     "learn": "Mehr erfahren",
     "elsewhere": "Anderswo",
-    "rooms": "Räume",
-    "people": "Personen",
-    "createRoom": "Raum erstellen",
-    "dashboard": "Dashboard",
     "tour": "Raum-Tour",
     "twoWays": "Zwei Wege hinein",
-    "questions": "Fragen",
     "rights": "© {year} Jitto Joseph. Alle Rechte vorbehalten."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "Designteam, Studio, Freitagsrunde",
     "advanced": "Erweitert",
     "passwordPlaceholder": "Passwort hinzufügen (optional)",
-    "passwordLabel": "Raumpasswort",
     "passwordHint": "Jeder Raum wird im Verzeichnis gelistet. Ein Passwort hält die Tür für alle ohne Passwort geschlossen.",
     "submit": "Raum erstellen",
     "submitting": "Wird eingerichtet",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "Diese Tür geht nicht auf.",
     "unavailable": "Dieser Raum ist nicht mehr verfügbar.",
-    "browse": "Räume durchsuchen",
     "full": "Dieser Raum ist gerade voll",
     "needsPassword": "Dieser Raum braucht ein Passwort",
     "error": "Beitritt zu diesem Raum nicht möglich",
@@ -229,20 +228,14 @@
     "title": "Community-<em>Verzeichnis</em>",
     "roomsSubtitle": "Durchstöbere Räume oder triff die Leute darin",
     "peopleSubtitle": "Lerne die Leute kennen, die SpatialMeet prägen",
-    "rooms": "Räume",
-    "people": "Personen",
-    "createRoom": "Raum erstellen",
-    "startRoom": "Raum starten",
     "updating": "Wird aktualisiert...",
     "roomsLive": "{count, plural, one {# Raum live} other {# Räume live}}",
-    "searchRooms": "Räume suchen...",
     "search": "Suchen",
     "loadingSpaces": "Räume werden geladen",
     "noRoomsFound": "Keine Räume gefunden.",
     "noRoomsAvailable": "Keine Räume verfügbar.",
     "noRoomsFoundBody": "Wir konnten keine Räume zu deiner Suche finden. Versuch es mit einer anderen Suchanfrage.",
     "noRoomsAvailableBody": "Hier ist es ruhig. Starte als Erstes einen neuen Arbeitsbereich!",
-    "createARoom": "Raum erstellen",
     "presence": {
       "ONLINE": "Online",
       "IDLE": "Inaktiv",
@@ -252,7 +245,6 @@
     "full": "Voll",
     "enter": "Betreten",
     "gatheringPeople": "Personen werden gesammelt...",
-    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
     "searchPeople": "Personen suchen...",
     "yourProfile": "Dein Profil",
     "loadingPeople": "Personen werden geladen",
@@ -260,17 +252,12 @@
     "noPeopleBody": "Versuch eine andere Suche oder schau bald wieder vorbei."
   },
   "userMenu": {
-    "signIn": "Anmelden",
-    "dashboard": "Dashboard",
-    "manageProfile": "Profil verwalten",
-    "signOut": "Abmelden"
+    "manageProfile": "Profil verwalten"
   },
   "dashboard": {
-    "title": "Dashboard",
     "subtitle": "Verwalte dein Profil und deine Räume",
     "activeCount": "{count} aktiv",
     "userNotFound": "Benutzer nicht gefunden",
-    "userNotFoundTitle": "Benutzer nicht gefunden",
     "backToRooms": "Zurück zu den Räumen",
     "nameUpdated": "Anzeigename aktualisiert!",
     "profileFailed": "Profil konnte nicht aktualisiert werden",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "Statistiken",
       "empty": "Erstelle deinen ersten Raum!",
-      "rooms": "Räume",
-      "active": "Aktiv",
-      "people": "Personen"
+      "active": "Aktiv"
     },
     "quickActions": {
-      "title": "Schnellaktionen",
-      "createRoom": "Raum erstellen",
-      "browseRooms": "Räume durchsuchen",
-      "createAccount": "Konto erstellen",
-      "signOut": "Abmelden"
+      "title": "Schnellaktionen"
     },
     "activity": {
       "title": "Letzte Aktivitäten",
@@ -323,7 +304,6 @@
       "gridView": "Rasteransicht",
       "listView": "Listenansicht",
       "newRoom": "Neuer Raum",
-      "search": "Räume suchen...",
       "filter": {
         "all": "Alle",
         "active": "Aktiv",
@@ -335,7 +315,6 @@
       "noMatchesBody": "Passe deine Suche oder die Filter an",
       "noRooms": "Noch keine Räume",
       "noRoomsBody": "Erstelle deinen ersten virtuellen Büroraum",
-      "createRoom": "Raum erstellen",
       "noJoined": "Keine beigetretenen Räume",
       "noJoinedBody": "Tritt einem Raum bei, damit er hier erscheint",
       "browsePublic": "Öffentliche Räume durchsuchen"
@@ -347,7 +326,6 @@
         "offline": "Offline"
       },
       "join": "Beitreten",
-      "copyInvite": "Einladungslink kopieren",
       "copyLink": "Link kopieren",
       "players": "{count}/{max} Spieler"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "Verbinde...",
     "fallbackName": "Raum: {id}",
-    "people": "{count, plural, one {# Person} other {# Personen}}",
     "copied": "Kopiert!",
     "invite": "Einladen",
     "leave": "Verlassen"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "Videoanruf",
     "audioCall": "Sprachanruf",
-    "roomChat": "Raum-Chat",
     "viewProfile": "Profil ansehen"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p, ausgewogene Qualität und Geschwindigkeit",
       "high": "720p, beste Qualität, braucht aber schnelles Internet"
     },
-    "default": "Standard",
-    "cancel": "Abbrechen",
-    "save": "Speichern"
+    "default": "Standard"
   },
   "tutorial": {
     "walk": "Lauf mit W A S D herum",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "Dieser Raum ist nicht auf der Karte.",
     "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
-    "home": "Zurück zur Lobby",
-    "rooms": "Räume durchsuchen"
+    "home": "Zurück zur Lobby"
   }
 }

@@ -26,7 +26,16 @@
     "guest": "ضيف",
     "you": "أنت",
     "justNow": "الآن",
-    "unknown": "غير معروف"
+    "unknown": "غير معروف",
+    "rooms": "الغرف",
+    "people": "الأشخاص",
+    "peopleCount": "{count, plural, zero {لا أحد} one {شخص واحد} two {شخصان} few {# أشخاص} many {# شخصًا} other {# شخص}}",
+    "createRoom": "إنشاء غرفة",
+    "browseRooms": "تصفّح الغرف",
+    "searchRooms": "ابحث عن غرف...",
+    "dashboard": "لوحة التحكم",
+    "questions": "الأسئلة",
+    "signOut": "تسجيل الخروج"
   },
   "languageSwitcher": {
     "label": "اللغة",
@@ -36,9 +45,7 @@
   },
   "nav": {
     "main": "الرئيسية",
-    "questions": "الأسئلة",
-    "tour": "جولة",
-    "dashboard": "لوحة التحكم"
+    "tour": "جولة"
   },
   "hero": {
     "title": "المكتب الافتراضي <br></br><em>الأكثر دفئًا</em>.",
@@ -59,7 +66,6 @@
   "moments": {
     "title": "مكتب <em>يمكنك التجول فيه.</em>",
     "subtitle": "يحافظ SpatialMeet على ما لم تعوّضه المكالمات أبدًا في المكتب: أن تعرف من الموجود، وأن تستطيع الذهاب إليه.",
-    "roomsLabel": "الغرف",
     "alwaysOn": "مفتوحة دائمًا",
     "directory": {
       "design": {
@@ -162,13 +168,8 @@
     "product": "المنتج",
     "learn": "تعرّف أكثر",
     "elsewhere": "في أماكن أخرى",
-    "rooms": "الغرف",
-    "people": "الأشخاص",
-    "createRoom": "إنشاء غرفة",
-    "dashboard": "لوحة التحكم",
     "tour": "جولة في الغرفة",
     "twoWays": "طريقتان للدخول",
-    "questions": "الأسئلة",
     "rights": "© {year} Jitto Joseph. جميع الحقوق محفوظة."
   },
   "auth": {
@@ -208,7 +209,6 @@
     "roomNamePlaceholder": "فريق التصميم، الاستوديو، لقاء الجمعة",
     "advanced": "متقدم",
     "passwordPlaceholder": "أضف كلمة مرور (اختياري)",
-    "passwordLabel": "كلمة مرور الغرفة",
     "passwordHint": "تظهر كل الغرف في الدليل. كلمة المرور تُبقي الباب مغلقًا أمام من لا يعرفها.",
     "submit": "إنشاء الغرفة",
     "submitting": "جارٍ التجهيز",
@@ -218,7 +218,6 @@
   "join": {
     "unavailableTitle": "هذا الباب لا يُفتح.",
     "unavailable": "هذه الغرفة لم تعد متاحة.",
-    "browse": "تصفّح الغرف",
     "full": "هذه الغرفة ممتلئة الآن",
     "needsPassword": "تتطلب هذه الغرفة كلمة مرور",
     "error": "تعذّر الانضمام إلى هذه الغرفة",
@@ -229,20 +228,14 @@
     "title": "دليل <em>المجتمع</em>",
     "roomsSubtitle": "تصفّح الغرف أو تعرّف على من فيها",
     "peopleSubtitle": "تعرّف على من يصنعون SpatialMeet",
-    "rooms": "الغرف",
-    "people": "الأشخاص",
-    "createRoom": "إنشاء غرفة",
-    "startRoom": "ابدأ غرفة",
     "updating": "جارٍ التحديث...",
     "roomsLive": "{count, plural, zero {لا توجد غرف نشطة} one {غرفة واحدة نشطة} two {غرفتان نشطتان} few {# غرف نشطة} many {# غرفة نشطة} other {# غرفة نشطة}}",
-    "searchRooms": "ابحث عن غرف...",
     "search": "بحث",
     "loadingSpaces": "جارٍ تحميل المساحات",
     "noRoomsFound": "لم يتم العثور على غرف.",
     "noRoomsAvailable": "لا توجد غرف متاحة.",
     "noRoomsFoundBody": "لم نجد غرفًا تطابق بحثك. جرّب تعديل كلمات البحث.",
     "noRoomsAvailableBody": "المكان هادئ هنا. كن أول من يبدأ مساحة عمل جديدة!",
-    "createARoom": "إنشاء غرفة",
     "presence": {
       "ONLINE": "متصلة",
       "IDLE": "خاملة",
@@ -252,7 +245,6 @@
     "full": "ممتلئة",
     "enter": "ادخل",
     "gatheringPeople": "جارٍ جمع الأشخاص...",
-    "peopleCount": "{count, plural, zero {لا أحد} one {شخص واحد} two {شخصان} few {# أشخاص} many {# شخصًا} other {# شخص}}",
     "searchPeople": "ابحث عن أشخاص...",
     "yourProfile": "ملفك الشخصي",
     "loadingPeople": "جارٍ تحميل الأشخاص",
@@ -260,17 +252,12 @@
     "noPeopleBody": "جرّب بحثًا آخر أو عُد لاحقًا."
   },
   "userMenu": {
-    "signIn": "تسجيل الدخول",
-    "dashboard": "لوحة التحكم",
-    "manageProfile": "إدارة الملف الشخصي",
-    "signOut": "تسجيل الخروج"
+    "manageProfile": "إدارة الملف الشخصي"
   },
   "dashboard": {
-    "title": "لوحة التحكم",
     "subtitle": "أدِر ملفك الشخصي وغرفك",
     "activeCount": "نشطة: {count}",
     "userNotFound": "المستخدم غير موجود",
-    "userNotFoundTitle": "المستخدم غير موجود",
     "backToRooms": "العودة إلى الغرف",
     "nameUpdated": "تم تحديث الاسم المعروض!",
     "profileFailed": "تعذّر تحديث الملف الشخصي",
@@ -295,16 +282,10 @@
     "stats": {
       "title": "الإحصاءات",
       "empty": "أنشئ غرفتك الأولى!",
-      "rooms": "الغرف",
-      "active": "النشطة",
-      "people": "الأشخاص"
+      "active": "النشطة"
     },
     "quickActions": {
-      "title": "إجراءات سريعة",
-      "createRoom": "إنشاء غرفة",
-      "browseRooms": "تصفّح الغرف",
-      "createAccount": "إنشاء حساب",
-      "signOut": "تسجيل الخروج"
+      "title": "إجراءات سريعة"
     },
     "activity": {
       "title": "النشاط الأخير",
@@ -323,7 +304,6 @@
       "gridView": "عرض الشبكة",
       "listView": "عرض القائمة",
       "newRoom": "غرفة جديدة",
-      "search": "ابحث عن غرف...",
       "filter": {
         "all": "الكل",
         "active": "النشطة",
@@ -335,7 +315,6 @@
       "noMatchesBody": "جرّب تعديل البحث أو عوامل التصفية",
       "noRooms": "لا توجد غرف بعد",
       "noRoomsBody": "أنشئ أول مكتب افتراضي لك",
-      "createRoom": "إنشاء غرفة",
       "noJoined": "لم تنضم إلى أي غرفة",
       "noJoinedBody": "انضم إلى غرفة لتظهر هنا",
       "browsePublic": "تصفّح الغرف العامة"
@@ -347,7 +326,6 @@
         "offline": "غير متصلة"
       },
       "join": "انضمام",
-      "copyInvite": "نسخ رابط الدعوة",
       "copyLink": "نسخ الرابط",
       "players": "اللاعبون: {count}/{max}"
     }
@@ -355,7 +333,6 @@
   "room": {
     "connecting": "جارٍ الاتصال...",
     "fallbackName": "الغرفة: {id}",
-    "people": "{count, plural, zero {لا أحد} one {شخص واحد} two {شخصان} few {# أشخاص} many {# شخصًا} other {# شخص}}",
     "copied": "تم النسخ!",
     "invite": "دعوة",
     "leave": "مغادرة"
@@ -415,7 +392,6 @@
   "proximity": {
     "videoCall": "مكالمة فيديو",
     "audioCall": "مكالمة صوتية",
-    "roomChat": "دردشة الغرفة",
     "viewProfile": "عرض الملف الشخصي"
   },
   "jukebox": {
@@ -460,9 +436,7 @@
       "medium": "480p، توازن بين الجودة والسرعة",
       "high": "720p، أفضل جودة لكنها تحتاج إلى إنترنت سريع"
     },
-    "default": "الافتراضي",
-    "cancel": "إلغاء",
-    "save": "حفظ"
+    "default": "الافتراضي"
   },
   "tutorial": {
     "walk": "تجوّل باستخدام W A S D",
@@ -497,7 +471,6 @@
   "notFound": {
     "title": "هذه الغرفة ليست على الخريطة.",
     "body": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
-    "home": "العودة إلى الردهة",
-    "rooms": "تصفّح الغرف"
+    "home": "العودة إلى الردهة"
   }
 }

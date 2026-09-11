@@ -17,6 +17,7 @@ import {
   Users,
   CalendarOff,
   Footprints,
+  type LucideIcon,
 } from "lucide-react";
 import { OfficeScene, Occupant } from "@/components/OfficeScene";
 import { Reveal } from "./Reveal";
@@ -167,15 +168,16 @@ const directory = [
   { id: "design", focus: "40% 55%", locked: false, live: true },
   { id: "founders", focus: "70% 40%", locked: true, live: true },
   { id: "jam", focus: "24% 78%", locked: false, live: false },
-];
+] as const;
 
 const RoomsMockup = () => {
   const t = useTranslations("moments");
+  const tc = useTranslations("common");
   return (
     <div className="rounded-2xl overflow-hidden bg-[#fbfbf9] border border-black/10 shadow-[0_20px_44px_-30px_rgba(0,0,0,0.5)]">
       <div className="flex items-baseline justify-between px-4 py-3 border-b border-black/8">
         <span className="font-body text-sm font-semibold text-[var(--color-braun-text)]">
-          {t("roomsLabel")}
+          {tc("rooms")}
         </span>
         <span className="font-body text-[11px] text-[var(--color-braun-text)] opacity-45">
           {t("alwaysOn")}
@@ -267,8 +269,21 @@ const FloorMockup = () => (
   </Frame>
 );
 
-// Copy for each moment lives under `moments.<id>` in the messages.
-const moments = [
+// Copy for each moment lives under `moments.<id>` in the messages, one icon
+// per chip.
+const CHIPS = ["chip1", "chip2", "chip3"] as const;
+
+interface Moment {
+  id: "enter" | "call" | "presence" | "rooms" | "floor";
+  icons: [LucideIcon, LucideIcon, LucideIcon];
+  surface: string;
+  chip: string;
+  muted: string;
+  wide?: boolean;
+  mockup: React.ReactNode;
+}
+
+const moments: Moment[] = [
   {
     id: "enter",
     icons: [Download, UserPlus, Globe],
@@ -377,14 +392,17 @@ export const RoomMoments: React.FC = () => {
                 </p>
 
                 <ul className="flex flex-wrap gap-2 mt-7">
-                  {moment.icons.map((Icon, chip) => (
-                    <Reveal key={chip} as="li" y={10}>
-                      <span className={`${chipBase} ${moment.chip}`}>
-                        <Icon aria-hidden="true" className="w-4 h-4" />
-                        {t(`${moment.id}.chip${chip + 1}`)}
-                      </span>
-                    </Reveal>
-                  ))}
+                  {CHIPS.map((chip, index) => {
+                    const Icon = moment.icons[index];
+                    return (
+                      <Reveal key={chip} as="li" y={10}>
+                        <span className={`${chipBase} ${moment.chip}`}>
+                          <Icon aria-hidden="true" className="w-4 h-4" />
+                          {t(`${moment.id}.${chip}`)}
+                        </span>
+                      </Reveal>
+                    );
+                  })}
                 </ul>
               </div>
 

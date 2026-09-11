@@ -49,6 +49,7 @@ function Loading() {
 
 function DashboardContent() {
   const t = useTranslations("dashboard");
+  const tc = useTranslations("common");
   const router = useRouter();
   const searchParams = useSearchParams();
   const {
@@ -227,7 +228,7 @@ function DashboardContent() {
               <Users className="w-10 h-10 text-red-400" />
             </div>
             <h2 className="text-2xl text-gray-900 mb-2">
-              {t("userNotFoundTitle")}
+              {t("userNotFound")}
             </h2>
             <p className="text-gray-600 mb-6">{profileError}</p>
             <Link
@@ -267,7 +268,7 @@ function DashboardContent() {
             </Link>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl text-gray-900">
-                {isViewingOther ? profileUser.displayName : t("title")}
+                {isViewingOther ? profileUser.displayName : tc("dashboard")}
               </h1>
               {isViewingOther ? (
                 <p className="text-gray-500 text-sm" dir="ltr">

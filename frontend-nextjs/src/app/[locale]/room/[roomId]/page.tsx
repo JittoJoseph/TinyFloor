@@ -44,6 +44,7 @@ interface RoomData {
 
 export default function RoomPage() {
   const t = useTranslations("room");
+  const tc = useTranslations("common");
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -182,7 +183,7 @@ export default function RoomPage() {
             {roomData?.activeUsers !== undefined && (
               <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1.5 mt-0.5">
                 <Users className="w-3 h-3" />
-                {t("people", { count: roomData.activeUsers })}
+                {tc("peopleCount", { count: roomData.activeUsers })}
               </p>
             )}
           </div>

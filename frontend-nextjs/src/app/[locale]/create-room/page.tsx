@@ -196,7 +196,7 @@ export default function CreateRoomPage() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder={t("passwordPlaceholder")}
-                  aria-label={t("passwordLabel")}
+                  aria-label={te("roomPassword")}
                   className={`${inputClass} ps-11`}
                   maxLength={40}
                 />

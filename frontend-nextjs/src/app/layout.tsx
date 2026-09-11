@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | SpatialMeet",
     },
     description,
-    keywords: t("keywords").split(/\s*[,、，]\s*/),
+    keywords: t("keywords").split(/\s*[,،、，]\s*/),
     authors: [{ name: "Jitto Joseph" }],
     creator: "Jitto Joseph",
     openGraph: {

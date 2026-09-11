@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "title": "SpatialMeet – Virtuaalitoimisto, jossa voit kävellä",
+    "description": "SpatialMeet on ilmainen virtuaalitoimisto selaimessasi. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
+    "ogAlt": "SpatialMeet-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisineen",
+    "keywords": "virtuaalitoimisto, etätyö, tilachat, verkkoyhteistyö, virtuaalinen työtila, metaverse-toimisto, läheisyyschat, läheisyysvideochat, virtuaalinen coworking, videopuhelut selaimessa",
+    "createRoomTitle": "Luo huone",
+    "createRoomDescription": "Avaa virtuaalinen toimistohuone SpatialMeetissä. Anna sille nimi, lisää halutessasi salasana ja jaa yksi linkki tiimillesi.",
+    "joinTitle": "Liity huoneeseen",
+    "roomsTitle": "Selaa huoneita",
+    "roomsDescription": "Selaa aktiivisia virtuaalihuoneita ja liity SpatialMeetin julkisiin työtiloihin.",
+    "peopleTitle": "Ihmiset",
+    "peopleDescription": "Tutustu ihmisiin, jotka viettävät aikaa SpatialMeet-huoneissa.",
+    "authTitle": "Kirjaudu sisään",
+    "authDescription": "Kirjaudu SpatialMeetiin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
+    "dashboardTitle": "Hallintapaneeli",
+    "roomTitle": "Aktiivinen huone",
+    "notFoundTitle": "Sivua ei löytynyt"
+  },
+  "common": {
+    "loading": "Ladataan...",
+    "back": "Takaisin",
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "close": "Sulje",
+    "guest": "Vieras",
+    "you": "Sinä"
+  },
+  "languageSwitcher": {
+    "label": "Kieli",
+    "select": "Valitse kieli",
+    "searchPlaceholder": "Hae kieltä…",
+    "noResults": "Kieliä ei löytynyt"
+  },
+  "nav": {
+    "main": "Päävalikko",
+    "questions": "Kysymykset",
+    "tour": "Esittely",
+    "dashboard": "Hallintapaneeli"
+  },
+  "hero": {
+    "title": "<em>Kodikkain</em> <br></br>virtuaalitoimisto.",
+    "subtitle": "Virtuaalitoimisto, joka näyttää peliltä. Kävele ympäriinsä, juttele työkavereiden kanssa ja tunne olevasi taas tiimi.",
+    "cta": "Kokeile",
+    "caption": "SpatialMeet-huone: 16-bittinen toimistokerros työpöytineen ja kaksi tiimiläistä."
+  },
+  "landing": {
+    "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
+    "features": [
+      "Video- ja äänipuhelut lähietäisyydeltä",
+      "Kävelyyn sopiva 2D-toimistokartta",
+      "Pikselitaidehahmot",
+      "Läsnäolo ja tila reaaliajassa",
+      "Huonechat"
+    ]
+  },
+  "moments": {
+    "title": "Toimisto, jossa voit <em>kävellä.</em>",
+    "subtitle": "SpatialMeet säilyttää sen osan toimistosta, jota puhelut eivät koskaan korvanneet: tiedät, kuka on paikalla, ja voit kävellä hänen luokseen.",
+    "roomsLabel": "Huoneet",
+    "alwaysOn": "Aina auki",
+    "directory": {
+      "design": { "name": "Designtiimi", "here": "5 paikalla" },
+      "founders": { "name": "Perustajat", "here": "2 paikalla" },
+      "jam": { "name": "Viikonloppujamit", "here": "Tyhjä" }
+    },
+    "enter": {
+      "title": "Avaa linkki, ja olet sisällä.",
+      "body": "Joku jakaa huoneen linkin. Valitse hahmo, kirjoita nimi, ja seisot kerroksessa kaikkien muiden kanssa.",
+      "chip1": "Ei latauksia",
+      "chip2": "Vieraat tervetulleita",
+      "chip3": "Mikä tahansa selain"
+    },
+    "call": {
+      "title": "Kävele luo ja ala jutella.",
+      "body": "Mene lähelle tiimiläistä, niin hänen puhelupalkkinsa ilmestyy näkyviin. Yksi napautus avaa videon tai äänen suoraan selainten välillä.",
+      "chip1": "Video tai ääni",
+      "chip2": "Vertaisyhteys",
+      "chip3": "Yksi napautus"
+    },
+    "presence": {
+      "title": "Näet, kuka on lähellä.",
+      "body": "Jokaisella on nimikyltti ja tila. Näet, kuka on vapaana, kuka keskittyy ja kuka on jo puhelussa, ennen kuin menet luokse.",
+      "chip1": "Nimikyltit livenä",
+      "chip2": "Poissa ja varattu",
+      "chip3": "Huonechat"
+    },
+    "rooms": {
+      "title": "Huone on huomennakin paikallaan.",
+      "body": "Huoneet eivät lopu, kun palaveri loppuu. Pidä yksi auki tiimillesi, lisää tarvittaessa salasana ja lähetä linkki kerran.",
+      "chip1": "Kaikkien nähtävillä",
+      "chip2": "Jaa linkillä",
+      "chip3": "Ilmainen"
+    },
+    "floor": {
+      "title": "Toimisto, ei palaveri.",
+      "body": "Kukaan ei lähetä kutsuja. Ihmiset poikkeavat, tekevät töitä lähekkäin ja kävelevät luo, kun jotain tulee mieleen.",
+      "chip1": "Ei kutsuja",
+      "chip2": "Kävele luo",
+      "chip3": "Koko kerros"
+    }
+  },
+  "faq": {
+    "title": "Ennen kuin <em>astut sisään.</em>",
+    "items": [
+      {
+        "q": "Mikä SpatialMeet on?",
+        "a": "SpatialMeet on virtuaalitoimisto, jossa liikut kävellen. Tiimisi näkyy pikselitaidehahmoina yhteisessä 2D-kerroksessa, ja video- tai äänipuhelu alkaa, kun asetut jonkun viereen, eikä silloin, kun napsautat palaverilinkkiä."
+      },
+      {
+        "q": "Pitääkö minun asentaa jotain?",
+        "a": "Ei. SpatialMeet toimii selaimessa tietokoneella ja mobiililaitteilla. Avaa huoneen linkki, ja olet toimistossa."
+      },
+      {
+        "q": "Onko SpatialMeet ilmainen?",
+        "a": "Kyllä. Huoneiden luominen, käveleminen, chattailu ja puhelut ovat ilmaisia."
+      },
+      {
+        "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
+        "a": "Et. Kuka tahansa voi liittyä vieraana pelkällä nimellä. Kirjautuminen tuo vain tallennetun profiilin, pysyvän hahmon ja listan huoneistasi."
+      },
+      {
+        "q": "Miten videopuhelut toimivat?",
+        "a": "Puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja video kulkevat suoraan selainten välillä. Kun puhelu on yhdistetty, se pysyy yhdistettynä, kunnes joku lopettaa sen tai poistuu huoneesta. Pois käveleminen ei katkaise sitä."
+      },
+      {
+        "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
+        "a": "Ei. Kamera ja mikrofoni avataan vain puhelua varten ja vapautetaan heti, kun puhelu päättyy."
+      },
+      {
+        "q": "Voinko käyttää SpatialMeetiä puhelimella?",
+        "a": "Kyllä. Kosketuslaitteilla liikut näytön ohjaussauvalla, ja puhelun säätimet mukautuvat pienempään näyttöön."
+      },
+      {
+        "q": "Miten tämä eroaa tavallisesta videopuhelusta?",
+        "a": "Tavallinen puhelu laittaa kaikki samaan ruudukkoon palaverin loppuun asti. SpatialMeet-huone on auki koko päivän, joten näet, kuka on paikalla, voit siirtyä keskustelusta toiseen ja jutella niiden kanssa, joiden luo kävelet."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Huoneesi on <em>jo auki.</em>",
+    "publicTitle": "Astu julkiseen toimistoon",
+    "publicBody": "Huone, joka on aina auki. Valitse hahmo, kävele ympäriinsä ja tervehdi paikallaolijoita.",
+    "createTitle": "Avaa huone tiimillesi",
+    "createBody": "Anna sille nimi, lisää halutessasi salasana ja lähetä yksi linkki. Se pysyy auki niin kauan kuin haluat.",
+    "sampleName": "Designtiimi",
+    "create": "Luo"
+  },
+  "footer": {
+    "tagline": "Virtuaalitoimisto, jossa kävellään. Ilmainen, selaimessa.",
+    "product": "Tuote",
+    "learn": "Lue lisää",
+    "elsewhere": "Muualla",
+    "rooms": "Huoneet",
+    "people": "Ihmiset",
+    "createRoom": "Luo huone",
+    "dashboard": "Hallintapaneeli",
+    "tour": "Huoneen esittely",
+    "twoWays": "Kaksi tietä sisään",
+    "questions": "Kysymykset",
+    "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään."
+  },
+  "auth": {
+    "welcomeBack": "Tervetuloa takaisin",
+    "joinUs": "Liity mukaan",
+    "signInSubtitle": "Kirjaudu tilillesi",
+    "registerSubtitle": "Luo työtilatilisi",
+    "username": "Käyttäjänimi",
+    "emailOptional": "Sähköposti (valinnainen)",
+    "displayNameOptional": "Näyttönimi (valinnainen)",
+    "password": "Salasana",
+    "showPassword": "Näytä salasana",
+    "hidePassword": "Piilota salasana",
+    "signIn": "Kirjaudu sisään",
+    "signUp": "Rekisteröidy",
+    "createAccount": "Luo tili",
+    "noAccount": "Eikö sinulla ole tiliä?",
+    "haveAccount": "Onko sinulla jo tili?",
+    "continueGuest": "Jatka vieraana →",
+    "error": "Tapahtui virhe"
+  },
+  "entry": {
+    "allRooms": "Kaikki huoneet",
+    "yourName": "Nimesi",
+    "namePlaceholder": "Millä nimellä sinua kutsutaan?",
+    "roomPassword": "Huoneen salasana",
+    "passwordPlaceholder": "Anna salasana",
+    "character": "Hahmo",
+    "copyInvite": "Kopioi kutsulinkki",
+    "inviteCopied": "Kutsulinkki kopioitu",
+    "openingDoor": "Ovi avautuu",
+    "walkIn": "Astu sisään"
+  },
+  "createRoom": {
+    "title": "Avaa huone.",
+    "roomName": "Huoneen nimi",
+    "roomNamePlaceholder": "Designtiimi, Studio, Perjantaihengailu",
+    "advanced": "Lisäasetukset",
+    "passwordPlaceholder": "Lisää salasana (valinnainen)",
+    "passwordLabel": "Huoneen salasana",
+    "passwordHint": "Jokainen huone näkyy hakemistossa. Salasana pitää oven kiinni niiltä, joilla sitä ei ole.",
+    "submit": "Luo huone",
+    "submitting": "Valmistellaan",
+    "createError": "Huoneen luominen epäonnistui. Yritä uudelleen.",
+    "openError": "Huoneen avaaminen epäonnistui"
+  },
+  "join": {
+    "unavailableTitle": "Tämä ovi ei aukea.",
+    "unavailable": "Tämä huone ei ole enää saatavilla.",
+    "browse": "Selaa huoneita",
+    "full": "Huone on juuri nyt täynnä",
+    "needsPassword": "Huone vaatii salasanan",
+    "error": "Huoneeseen liittyminen epäonnistui",
+    "roomFull": "Huone on täynnä",
+    "guestNote": "Liityt vieraana. <link>Kirjaudu sisään</link>, niin nimesi ja hahmosi säilyvät."
+  },
+  "directory": {
+    "title": "Yhteisön <em>hakemisto</em>",
+    "roomsSubtitle": "Selaa huoneita tai tapaa niissä olevia ihmisiä",
+    "peopleSubtitle": "Tutustu SpatialMeetin tekijöihin",
+    "rooms": "Huoneet",
+    "people": "Ihmiset",
+    "createRoom": "Luo huone",
+    "startRoom": "Aloita huone",
+    "updating": "Päivitetään...",
+    "roomsLive": "{count, plural, one {# huone livenä} other {# huonetta livenä}}",
+    "searchRooms": "Hae huoneita...",
+    "search": "Hae",
+    "loadingSpaces": "Ladataan tiloja",
+    "noRoomsFound": "Huoneita ei löytynyt.",
+    "noRoomsAvailable": "Huoneita ei ole saatavilla.",
+    "noRoomsFoundBody": "Hakuasi vastaavia huoneita ei löytynyt. Kokeile muokata hakua.",
+    "noRoomsAvailableBody": "Täällä on hiljaista. Aloita ensimmäisenä uusi työtila!",
+    "createARoom": "Luo huone",
+    "presence": {
+      "ONLINE": "Paikalla",
+      "IDLE": "Hiljainen",
+      "OFFLINE": "Offline"
+    },
+    "lastActive": "Aktiivinen {time}",
+    "justNow": "juuri nyt",
+    "full": "Täynnä",
+    "enter": "Astu sisään",
+    "gatheringPeople": "Kootaan ihmisiä...",
+    "peopleCount": "{count, plural, one {# henkilö} other {# henkilöä}}",
+    "searchPeople": "Hae ihmisiä...",
+    "yourProfile": "Profiilisi",
+    "loadingPeople": "Ladataan ihmisiä",
+    "noPeople": "Ihmisiä ei löytynyt.",
+    "noPeopleBody": "Kokeile toista hakua tai palaa pian."
+  },
+  "userMenu": {
+    "signIn": "Kirjaudu sisään",
+    "dashboard": "Hallintapaneeli",
+    "manageProfile": "Hallitse profiilia",
+    "signOut": "Kirjaudu ulos"
+  },
+  "dashboard": {
+    "title": "Hallintapaneeli",
+    "subtitle": "Hallitse profiiliasi ja huoneitasi",
+    "activeCount": "{count} aktiivista",
+    "userNotFound": "Käyttäjää ei löytynyt",
+    "userNotFoundTitle": "Käyttäjää ei löytynyt",
+    "backToRooms": "Takaisin huoneisiin",
+    "nameUpdated": "Näyttönimi päivitetty!",
+    "profileFailed": "Profiilin päivitys epäonnistui",
+    "characterUpdated": "Hahmo päivitetty!",
+    "characterFailed": "Hahmon päivitys epäonnistui",
+    "linkCopied": "Linkki kopioitu!",
+    "profile": {
+      "changeCharacter": "Vaihda hahmo",
+      "editName": "Muokkaa näyttönimeä",
+      "saveName": "Tallenna näyttönimi",
+      "displayName": "Näyttönimi",
+      "guestBadge": "VIERAS",
+      "copyLink": "Kopioi profiilin linkki",
+      "share": "Jaa profiili",
+      "shareTitle": "Käyttäjän {name} profiili",
+      "shareText": "Katso käyttäjän {name} profiili SpatialMeetissä",
+      "created": "luotu",
+      "joined": "liitytty",
+      "unknown": "Tuntematon",
+      "chooseCharacter": "Valitse hahmo",
+      "selectAvatar": "Valitse avatarisi"
+    },
+    "stats": {
+      "title": "Tilastot",
+      "empty": "Luo ensimmäinen huoneesi!",
+      "rooms": "Huoneet",
+      "active": "Aktiiviset",
+      "people": "Ihmiset"
+    },
+    "quickActions": {
+      "title": "Pikatoiminnot",
+      "createRoom": "Luo huone",
+      "browseRooms": "Selaa huoneita",
+      "createAccount": "Luo tili",
+      "signOut": "Kirjaudu ulos"
+    },
+    "activity": {
+      "title": "Viimeaikainen toiminta",
+      "empty": "Ei vielä toimintaa",
+      "room_created": "Luotu",
+      "room_joined": "Liityit",
+      "room_visited": "Vierailtu"
+    },
+    "collaborators": {
+      "title": "Viimeaikaiset ihmiset",
+      "empty": "Liity huoneisiin tavataksesi ihmisiä"
+    },
+    "rooms": {
+      "mine": "Omat huoneet",
+      "joined": "Liitytyt",
+      "gridView": "Ruudukkonäkymä",
+      "listView": "Luettelonäkymä",
+      "newRoom": "Uusi huone",
+      "search": "Hae huoneita...",
+      "filter": {
+        "all": "Kaikki",
+        "active": "Aktiiviset",
+        "idle": "Hiljaiset",
+        "offline": "Offline"
+      },
+      "loading": "Ladataan huoneita...",
+      "noMatches": "Ei osumia",
+      "noMatchesBody": "Kokeile muokata hakua tai suodattimia",
+      "noRooms": "Ei vielä huoneita",
+      "noRoomsBody": "Luo ensimmäinen virtuaalitoimistosi",
+      "createRoom": "Luo huone",
+      "noJoined": "Ei liitytyjä huoneita",
+      "noJoinedBody": "Liity huoneeseen, niin se näkyy täällä",
+      "browsePublic": "Selaa julkisia huoneita"
+    },
+    "roomCard": {
+      "status": {
+        "active": "Aktiivinen",
+        "idle": "Hiljainen",
+        "offline": "Offline"
+      },
+      "join": "Liity",
+      "copyInvite": "Kopioi kutsulinkki",
+      "copyLink": "Kopioi linkki",
+      "players": "{count}/{max} pelaajaa",
+      "unknown": "Tuntematon"
+    },
+    "widget": {
+      "view": "Näytä hallintapaneeli",
+      "created": "luotu",
+      "joined": "liitytty"
+    }
+  },
+  "room": {
+    "connecting": "Yhdistetään...",
+    "fallbackName": "Huone: {id}",
+    "people": "{count, plural, one {# henkilö} other {# henkilöä}}",
+    "copied": "Kopioitu!",
+    "invite": "Kutsu",
+    "leave": "Poistu"
+  },
+  "call": {
+    "incomingVideo": "Saapuva videopuhelu...",
+    "incomingAudio": "Saapuva äänipuhelu...",
+    "decline": "Hylkää",
+    "accept": "Vastaa",
+    "tutorial": "Opastuspuhelu",
+    "minimize": "Pienennä",
+    "expand": "Suurenna",
+    "calling": "Soitetaan...",
+    "cancel": "Peru puhelu",
+    "errors": {
+      "connection": "Yhteys epäonnistui",
+      "unsupported": "Tämä selain ei pääse medialaitteisiin",
+      "media": "Kamera tai mikrofoni ei ole käytettävissä",
+      "camera": "Kamera ei ole käytettävissä"
+    }
+  },
+  "controls": {
+    "status": "Tila: {status}",
+    "muteMic": "Mykistä mikrofoni",
+    "unmuteMic": "Poista mikrofonin mykistys",
+    "cameraOff": "Sammuta kamera",
+    "cameraOn": "Käynnistä kamera",
+    "muteSpeaker": "Mykistä kaiutin",
+    "unmuteSpeaker": "Poista kaiuttimen mykistys",
+    "openChat": "Avaa chat",
+    "settings": "Asetukset",
+    "leaveCall": "Poistu puhelusta"
+  },
+  "status": {
+    "available": { "label": "Tavoitettavissa", "description": "Valmis juttelemaan" },
+    "busy": { "label": "Varattu", "description": "Älä häiritse" },
+    "away": { "label": "Poissa", "description": "Palaan pian" }
+  },
+  "chat": {
+    "title": "Huonechat",
+    "system": "Järjestelmä",
+    "welcome": "Tervetuloa huoneen chattiin. Viestit näkyvät kaikille täällä.",
+    "intro": "Täällä voit jutella kaikkien huoneessa olevien kanssa.",
+    "placeholder": "Kirjoita viesti...",
+    "close": "Sulje chat",
+    "send": "Lähetä viesti"
+  },
+  "proximity": {
+    "videoCall": "Videopuhelu",
+    "audioCall": "Äänipuhelu",
+    "roomChat": "Huonechat",
+    "viewProfile": "Näytä profiili"
+  },
+  "jukebox": {
+    "title": "Huoneen kaiutin",
+    "close": "Sulje kaiuttimen säätimet",
+    "tapToPlay": "Napauta toista kuullaksesi",
+    "playing": "Soi kaikille huoneessa",
+    "paused": "Tauolla kaikille huoneessa",
+    "previous": "Edellinen kappale",
+    "next": "Seuraava kappale",
+    "play": "Toista",
+    "pause": "Tauko",
+    "playTrack": "Toista {track}"
+  },
+  "whiteboard": {
+    "title": "Valkotaulu",
+    "penColor": "Kynän väri {color}",
+    "penSize": "Kynän koko {size}",
+    "eraser": "Pyyhekumi",
+    "clear": "Tyhjennä taulu",
+    "close": "Sulje valkotaulu",
+    "hint": "Kaikki huoneessa piirtävät samalle taululle. Paina Esc siirtyäksesi pois."
+  },
+  "settings": {
+    "title": "Asetukset",
+    "close": "Sulje asetukset",
+    "audio": "Ääni",
+    "video": "Video",
+    "microphone": "Mikrofoni",
+    "micVolume": "Mikrofonin äänenvoimakkuus",
+    "speaker": "Kaiutin",
+    "speakerVolume": "Kaiuttimen äänenvoimakkuus",
+    "camera": "Kamera",
+    "videoQuality": "Videon laatu",
+    "quality": {
+      "low": "Matala",
+      "medium": "Keskitaso",
+      "high": "Korkea"
+    },
+    "qualityHint": {
+      "low": "360p, paras hitaille yhteyksille",
+      "medium": "480p, tasapaino laadun ja nopeuden välillä",
+      "high": "720p, paras laatu mutta vaatii nopean yhteyden"
+    },
+    "default": "Oletus",
+    "cancel": "Peruuta",
+    "save": "Tallenna"
+  },
+  "tutorial": {
+    "walk": "Kävele näppäimillä W A S D",
+    "walkTouch": "Vedä ohjaussauvaa kävelläksesi",
+    "click": "Tai napsauta mihin tahansa kävelläksesi suoraan sinne",
+    "clickTouch": "Tai napauta mihin tahansa kävelläksesi suoraan sinne",
+    "approach": "Mene jonkun lähelle soittaaksesi tai jutellaksesi",
+    "invite": "Kutsu joku tällä linkillä, tai olet valmis",
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "linkHint": "Kaikki linkin saaneet päätyvät tähän huoneeseen",
+    "done": "Valmis",
+    "skip": "Ohita",
+    "next": "Seuraava"
+  },
+  "scene": {
+    "guide": "Opas",
+    "sit": "Paina E istuaksesi",
+    "stand": "Paina E noustaksesi",
+    "music": "Napsauta musiikkia varten",
+    "draw": "Napsauta piirtääksesi"
+  },
+  "characters": {
+    "previous": "Edellinen hahmo",
+    "next": "Seuraava hahmo",
+    "select": "Valitse {name}",
+    "keyHint": "Käytä nuolinäppäimiä ← →"
+  },
+  "toast": {
+    "dismiss": "Sulje"
+  },
+  "notFound": {
+    "title": "Tätä huonetta ei ole kartalla.",
+    "body": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
+    "home": "Takaisin aulaan",
+    "rooms": "Selaa huoneita"
+  }
+}

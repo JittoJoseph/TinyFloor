@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { AlertCircle, ArrowRight } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import {
   EntryShell,
   primaryButtonClass,
@@ -23,6 +24,9 @@ interface RoomInfo {
 }
 
 function JoinContent() {
+  const t = useTranslations("join");
+  const te = useTranslations("entry");
+  const tc = useTranslations("common");
   const searchParams = useSearchParams();
   const roomId = searchParams.get("roomId");
   const shareCode = searchParams.get("code");
@@ -58,7 +62,7 @@ function JoinContent() {
           hasPassword: found.hasPassword || false,
         });
       } catch {
-        if (!cancelled) setError("This room is not available any more.");
+        if (!cancelled) setError(t("unavailable"));
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -68,7 +72,7 @@ function JoinContent() {
     return () => {
       cancelled = true;
     };
-  }, [roomId, shareCode]);
+  }, [roomId, shareCode, t]);
 
   const walkIn = async () => {
     if (!room || !identity.name.trim() || busy) return;
@@ -78,13 +82,13 @@ function JoinContent() {
 
     try {
       if (room.playerCount >= room.maxPlayers) {
-        setError("This room is full right now");
+        setError(t("full"));
         setBusy(false);
         return;
       }
 
       if (room.hasPassword && !password) {
-        setError("This room needs a password");
+        setError(t("needsPassword"));
         setBusy(false);
         return;
       }
@@ -96,7 +100,7 @@ function JoinContent() {
       );
 
       if (!result.success) {
-        setError(result.message || "Could not join this room");
+        setError(result.message || t("error"));
         setBusy(false);
         return;
       }
@@ -106,7 +110,7 @@ function JoinContent() {
         roomHref(room.id, identity.name, identity.character, result.userId),
       );
     } catch {
-      setError("Could not join this room");
+      setError(t("error"));
       setBusy(false);
     }
   };
@@ -132,13 +136,13 @@ function JoinContent() {
             <AlertCircle className="w-5 h-5 text-red-500" />
           </span>
           <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
-            That door does not open.
+            {t("unavailableTitle")}
           </h1>
           <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">
             {error}
           </p>
           <Link href="/rooms" className={primaryButtonClass}>
-            Browse rooms
+            {t("browse")}
           </Link>
         </div>
       </EntryShell>
@@ -157,7 +161,7 @@ function JoinContent() {
               character: identity.character,
               left: "50%",
               top: "79%",
-              name: identity.name.trim() || "You",
+              name: identity.name.trim() || tc("you"),
               width: 44,
               running: identity.arriving,
             },
@@ -198,21 +202,23 @@ function JoinContent() {
             disabled={!identity.name.trim() || busy || full}
             className={`${primaryButtonClass} mt-5`}
           >
-            {busy ? "Opening the door" : full ? "Room is full" : "Walk in"}
-            {!busy && !full && <ArrowRight className="w-4 h-4" />}
+            {busy ? te("openingDoor") : full ? t("roomFull") : te("walkIn")}
+            {!busy && !full && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
           </button>
         </form>
 
         {!identity.isAuthenticated && (
           <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 text-center mt-5">
-            Joining as a guest.{" "}
-            <Link
-              href="/auth"
-              className="underline underline-offset-2 hover:opacity-100"
-            >
-              Sign in
-            </Link>{" "}
-            to keep your name and character.
+            {t.rich("guestNote", {
+              link: (chunks) => (
+                <Link
+                  href="/auth"
+                  className="underline underline-offset-2 hover:opacity-100"
+                >
+                  {chunks}
+                </Link>
+              ),
+            })}
           </p>
         )}
       </div>

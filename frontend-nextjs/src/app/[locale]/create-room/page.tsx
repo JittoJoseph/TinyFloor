@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight, ChevronDown, Lock } from "lucide-react";
+import { useRouter } from "@/lib/i18n/navigation";
 import {
   EntryShell,
   Field,
@@ -21,6 +22,9 @@ interface CreatedRoom {
 }
 
 export default function CreateRoomPage() {
+  const t = useTranslations("createRoom");
+  const te = useTranslations("entry");
+  const tc = useTranslations("common");
   const router = useRouter();
   const identity = useIdentity();
 
@@ -45,7 +49,7 @@ export default function CreateRoomPage() {
       });
       setCreated({ id: room.id, name: room.name });
     } catch {
-      setError("Could not create the room. Please try again.");
+      setError(t("createError"));
     } finally {
       setBusy(false);
     }
@@ -65,7 +69,7 @@ export default function CreateRoomPage() {
       );
 
       if (!result.success) {
-        setError(result.message || "Could not open the room");
+        setError(result.message || t("openError"));
         setBusy(false);
         return;
       }
@@ -75,7 +79,7 @@ export default function CreateRoomPage() {
         roomHref(created.id, identity.name, identity.character, result.userId),
       );
     } catch {
-      setError("Could not open the room");
+      setError(t("openError"));
       setBusy(false);
     }
   };
@@ -91,7 +95,7 @@ export default function CreateRoomPage() {
                 character: identity.character,
                 left: "50%",
                 top: "79%",
-                name: identity.name.trim() || "You",
+                name: identity.name.trim() || tc("you"),
                 width: 44,
                 running: identity.arriving,
               },
@@ -123,8 +127,8 @@ export default function CreateRoomPage() {
             disabled={!identity.name.trim() || busy}
             className={`${primaryButtonClass} mt-5`}
           >
-            {busy ? "Opening the door" : "Walk in"}
-            {!busy && <ArrowRight className="w-4 h-4" />}
+            {busy ? te("openingDoor") : te("walkIn")}
+            {!busy && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
           </button>
         </div>
       </EntryShell>
@@ -150,17 +154,17 @@ export default function CreateRoomPage() {
     >
       <div className="entry-rise">
         <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-5">
-          Open a room.
+          {t("title")}
         </h1>
 
         <form onSubmit={createRoom}>
-          <Field label="Room name" htmlFor="room-name">
+          <Field label={t("roomName")} htmlFor="room-name">
             <input
               id="room-name"
               type="text"
               value={roomName}
               onChange={(event) => setRoomName(event.target.value)}
-              placeholder="Design team, Studio, Friday hangout"
+              placeholder={t("roomNamePlaceholder")}
               className={inputClass}
               maxLength={50}
               autoFocus
@@ -174,7 +178,7 @@ export default function CreateRoomPage() {
             aria-controls="advanced-options"
             className="cursor-pointer mt-3.5 inline-flex items-center gap-1.5 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-90 transition-opacity duration-200"
           >
-            Advanced
+            {t("advanced")}
             <ChevronDown
               aria-hidden="true"
               className={`w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
@@ -186,20 +190,19 @@ export default function CreateRoomPage() {
           {advanced && (
             <div id="advanced-options" className="entry-rise mt-3.5">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-35" />
+                <Lock className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-35" />
                 <input
                   type="text"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Add a password (optional)"
-                  aria-label="Room password"
-                  className={`${inputClass} pl-11`}
+                  placeholder={t("passwordPlaceholder")}
+                  aria-label={t("passwordLabel")}
+                  className={`${inputClass} ps-11`}
                   maxLength={40}
                 />
               </div>
               <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 mt-2 px-1">
-                Every room is listed in the directory. A password keeps the door
-                shut to anyone without it.
+                {t("passwordHint")}
               </p>
             </div>
           )}
@@ -215,8 +218,8 @@ export default function CreateRoomPage() {
             disabled={!roomName.trim() || busy}
             className={`${primaryButtonClass} mt-5`}
           >
-            {busy ? "Setting it up" : "Create the room"}
-            {!busy && <ArrowRight className="w-4 h-4" />}
+            {busy ? t("submitting") : t("submit")}
+            {!busy && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
           </button>
         </form>
       </div>

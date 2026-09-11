@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowLeft, Plus, Search, Sparkles, Users } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { UserMenu } from "@/components/auth/UserMenu";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { CharacterPreview } from "@/components/dashboard";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
@@ -14,6 +16,8 @@ import type { PublicUser } from "@/lib/types";
 const PAGE_SIZE = 24;
 
 export default function PeoplePage() {
+  const t = useTranslations("directory");
+  const tc = useTranslations("common");
   const { user, isAuthenticated } = useAuth();
   const [people, setPeople] = useState<PublicUser[]>([]);
   const [loading, setLoading] = useState(true);
@@ -96,18 +100,19 @@ export default function PeoplePage() {
               href="/"
               className="cursor-pointer flex items-center justify-center h-10 px-4 sm:px-5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all gap-2"
             >
-              <ArrowLeft className="w-3.5 h-3.5 opacity-70" />
-              <span className="hidden sm:inline">Back</span>
+              <ArrowLeft className="w-3.5 h-3.5 opacity-70 rtl:rotate-180" />
+              <span className="hidden sm:inline">{tc("back")}</span>
             </Link>
 
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <LanguageSwitcher side="bottom" align="end" compact />
               <UserMenu onLoginClick={() => setShowAuthModal(true)} />
               <Link
                 href="/create-room"
                 className="cursor-pointer flex items-center justify-center gap-2 h-10 px-5 sm:px-6 bg-[var(--color-braun-orange)] text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#3d3d3d] transition-colors shadow-sm hover:shadow-md"
               >
                 <Plus className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Start a Room</span>
+                <span className="hidden sm:inline">{t("startRoom")}</span>
               </Link>
             </div>
           </div>
@@ -115,10 +120,12 @@ export default function PeoplePage() {
           {/* Page Title */}
           <div>
             <h1 className="text-3xl md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              Community <span className="font-medium">Directory</span>
+              {t.rich("title", {
+                em: (chunks) => <span className="font-medium">{chunks}</span>,
+              })}
             </h1>
             <p className="text-[var(--color-braun-text)] opacity-50 text-sm md:text-base">
-              Meet the builders shaping SpatialMeet
+              {t("peopleSubtitle")}
             </p>
           </div>
         </div>
@@ -132,32 +139,34 @@ export default function PeoplePage() {
                 href="/rooms"
                 className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-100 transition-all"
               >
-                Rooms
+                {t("rooms")}
               </Link>
               <Link
                 href="/people"
                 className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium bg-white text-[var(--color-braun-text)] shadow-sm transition-all"
               >
-                People
+                {t("people")}
               </Link>
             </div>
 
             <div className="flex items-center gap-2 text-xs font-medium text-[var(--color-braun-text)] opacity-40 uppercase tracking-widest">
               <Users className="w-3.5 h-3.5" />
               <span>
-                {loading ? "Gathering people..." : `${people.length} people`}
+                {loading
+                  ? t("gatheringPeople")
+                  : t("peopleCount", { count: people.length })}
               </span>
             </div>
           </div>
 
           <div className="w-full md:w-72 relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
+            <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search people..."
-              className="w-full pl-10 pr-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
+              placeholder={t("searchPeople")}
+              className="w-full ps-10 pe-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
             />
           </div>
         </div>
@@ -168,7 +177,7 @@ export default function PeoplePage() {
             className="cursor-pointer block w-full"
           >
             <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1 h-full bg-[var(--color-braun-orange)]"></div>
+              <div className="absolute top-0 start-0 w-1 h-full bg-[var(--color-braun-orange)]"></div>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-5">
                   <div className="w-16 h-20 bg-white border border-[rgba(0,0,0,0.05)] rounded-2xl flex items-center justify-center">
@@ -184,17 +193,17 @@ export default function PeoplePage() {
                         {yourCard.displayName}
                       </h2>
                       <span className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-[rgba(255,78,0,0.08)] text-[var(--color-braun-orange)] rounded-full border border-[rgba(255,78,0,0.1)]">
-                        You
+                        {tc("you")}
                       </span>
                     </div>
-                    <p className="text-sm text-[var(--color-braun-text)] opacity-50">
+                    <p className="text-sm text-[var(--color-braun-text)] opacity-50" dir="ltr">
                       @{yourCard.username}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-[var(--color-braun-text)] opacity-40 group-hover:opacity-70 transition-opacity">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Your Profile</span>
+                  <span>{t("yourProfile")}</span>
                 </div>
               </div>
             </div>
@@ -205,7 +214,7 @@ export default function PeoplePage() {
           <div className="text-center py-32 flex flex-col items-center">
             <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin"></div>
             <p className="mt-4 text-sm text-[var(--color-braun-text)] opacity-50 tracking-widest uppercase font-medium">
-              Loading people
+              {t("loadingPeople")}
             </p>
           </div>
         ) : visiblePeople.length === 0 ? (
@@ -215,10 +224,10 @@ export default function PeoplePage() {
               strokeWidth={1.5}
             />
             <h3 className="text-xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              No people found.
+              {t("noPeople")}
             </h3>
             <p className="text-sm text-[var(--color-braun-text)] opacity-50 mb-6 max-w-sm">
-              Try a different search or check back soon.
+              {t("noPeopleBody")}
             </p>
           </div>
         ) : (
@@ -241,12 +250,12 @@ export default function PeoplePage() {
                     <p className="text-base font-medium text-[var(--color-braun-text)] tracking-tight truncate mb-0.5">
                       {person.displayName}
                     </p>
-                    <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate">
+                    <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate" dir="ltr">
                       @{person.username}
                     </p>
                     {person.isGuest && (
                       <span className="self-start mt-2 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-70 rounded-full">
-                        Guest
+                        {tc("guest")}
                       </span>
                     )}
                   </div>

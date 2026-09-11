@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useFormatter, useNow, useTranslations } from "next-intl";
 import {
   Gamepad2,
   Users,
@@ -13,8 +12,10 @@ import {
   Crown,
   ChevronRight,
 } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { UserMenu } from "@/components/auth/UserMenu";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { apiClient } from "@/lib/api";
 import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
 
@@ -48,6 +49,10 @@ const getPresence = (room: Room): Presence => {
 };
 
 export default function RoomsPage() {
+  const t = useTranslations("directory");
+  const tc = useTranslations("common");
+  const format = useFormatter();
+  const now = useNow({ updateInterval: 60000 });
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -119,16 +124,8 @@ export default function RoomsPage() {
   const getTimeAgo = (dateString?: string) => {
     if (!dateString) return "";
     const date = new Date(dateString);
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-
-    if (diffMins < 1) return "Just now";
-    if (diffMins < 60) return `${diffMins}m ago`;
-    const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `${diffHours}h ago`;
-    const diffDays = Math.floor(diffHours / 24);
-    return `${diffDays}d ago`;
+    if (now.getTime() - date.getTime() < 60000) return t("justNow");
+    return format.relativeTime(date, now);
   };
 
   return (
@@ -142,18 +139,19 @@ export default function RoomsPage() {
               href="/"
               className="cursor-pointer flex items-center justify-center h-10 px-4 sm:px-5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all gap-2"
             >
-              <ArrowLeft className="w-3.5 h-3.5 opacity-70" />
-              <span className="hidden sm:inline">Back</span>
+              <ArrowLeft className="w-3.5 h-3.5 opacity-70 rtl:rotate-180" />
+              <span className="hidden sm:inline">{tc("back")}</span>
             </Link>
 
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <LanguageSwitcher side="bottom" align="end" compact />
               <UserMenu onLoginClick={() => setShowAuthModal(true)} />
               <Link
                 href="/create-room"
                 className="cursor-pointer flex items-center justify-center gap-2 h-10 px-5 sm:px-6 bg-[var(--color-braun-orange)] text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#3d3d3d] transition-colors shadow-sm hover:shadow-md"
               >
                 <Plus className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Create Room</span>
+                <span className="hidden sm:inline">{t("createRoom")}</span>
               </Link>
             </div>
           </div>
@@ -161,10 +159,12 @@ export default function RoomsPage() {
           {/* Page Title */}
           <div>
             <h1 className="text-3xl md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              Community <span className="font-medium">Directory</span>
+              {t.rich("title", {
+                em: (chunks) => <span className="font-medium">{chunks}</span>,
+              })}
             </h1>
             <p className="text-[var(--color-braun-text)] opacity-50 text-sm md:text-base">
-              Browse rooms or meet the people inside
+              {t("roomsSubtitle")}
             </p>
           </div>
         </div>
@@ -178,37 +178,40 @@ export default function RoomsPage() {
                 href="/rooms"
                 className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium bg-white text-[var(--color-braun-text)] shadow-sm transition-all"
               >
-                Rooms
+                {t("rooms")}
               </Link>
               <Link
                 href="/people"
                 className="cursor-pointer flex-1 text-center py-2.5 md:px-10 rounded-full text-sm font-medium text-[var(--color-braun-text)] opacity-50 hover:opacity-100 transition-all"
               >
-                People
+                {t("people")}
               </Link>
             </div>
 
             <div className="flex items-center gap-2 text-xs font-medium text-[var(--color-braun-text)] opacity-40 uppercase tracking-widest">
               <Users className="w-3.5 h-3.5" />
               <span>
-                {loading ? "Updating..." : `${rooms.length} rooms live`}
+                {loading
+                  ? t("updating")
+                  : t("roomsLive", { count: rooms.length })}
               </span>
             </div>
           </div>
 
           <div className="w-full md:w-72 relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
+            <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-30" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder="Search rooms..."
-              className="w-full pl-10 pr-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
+              placeholder={t("searchRooms")}
+              className="w-full ps-10 pe-10 h-10 md:h-11 bg-white border border-[rgba(0,0,0,0.08)] shadow-sm rounded-full text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-all placeholder:text-[var(--color-braun-text)] placeholder:opacity-30"
             />
             <button
               onClick={handleSearch}
-              className="cursor-pointer absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full bg-[rgba(0,0,0,0.04)] hover:bg-[rgba(0,0,0,0.08)] transition-colors"
+              aria-label={t("search")}
+              className="cursor-pointer absolute end-1.5 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full bg-[rgba(0,0,0,0.04)] hover:bg-[rgba(0,0,0,0.08)] transition-colors"
             >
               <Search className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-60" />
             </button>
@@ -220,7 +223,7 @@ export default function RoomsPage() {
           <div className="text-center py-32 flex flex-col items-center">
             <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin"></div>
             <p className="mt-4 text-sm text-[var(--color-braun-text)] opacity-50 tracking-widest uppercase font-medium">
-              Loading spaces
+              {t("loadingSpaces")}
             </p>
           </div>
         ) : rooms.length === 0 ? (
@@ -230,18 +233,16 @@ export default function RoomsPage() {
               strokeWidth={1.5}
             />
             <h3 className="text-xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-              {searchQuery ? "No rooms found." : "No rooms available."}
+              {searchQuery ? t("noRoomsFound") : t("noRoomsAvailable")}
             </h3>
             <p className="text-sm text-[var(--color-braun-text)] opacity-50 mb-6 max-w-sm">
-              {searchQuery
-                ? "We couldn't find any rooms matching your search. Try adjusting your query."
-                : "It's quiet here. Be the first to start a new workspace!"}
+              {searchQuery ? t("noRoomsFoundBody") : t("noRoomsAvailableBody")}
             </p>
             <Link
               href="/create-room"
               className="cursor-pointer h-10 px-6 inline-flex items-center justify-center bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] text-xs font-bold uppercase tracking-[0.1em] rounded-full border border-[rgba(0,0,0,0.05)] hover:bg-white hover:shadow-md transition-all"
             >
-              Create a room
+              {t("createARoom")}
             </Link>
           </div>
         ) : (
@@ -300,7 +301,7 @@ export default function RoomsPage() {
                             }`}
                           />
                           <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--color-braun-text)] opacity-70">
-                            {presence}
+                            {t(`presence.${presence}`)}
                           </span>
                         </div>
                       </div>
@@ -312,7 +313,9 @@ export default function RoomsPage() {
                       </h3>
                       {room.lastActivityAt && (
                         <p className="text-[13px] text-[var(--color-braun-text)] opacity-60 mt-1">
-                          Active {getTimeAgo(room.lastActivityAt)}
+                          {t("lastActive", {
+                            time: getTimeAgo(room.lastActivityAt),
+                          })}
                         </p>
                       )}
                     </div>
@@ -320,7 +323,7 @@ export default function RoomsPage() {
                     <div className="mt-4 pt-4 border-t border-[rgba(0,0,0,0.04)] flex items-center justify-between">
                       <div className="flex items-center gap-1.5 text-[var(--color-braun-text)] opacity-60">
                         <Users className="w-3.5 h-3.5" />
-                        <span className="text-xs font-medium">
+                        <span className="text-xs font-medium" dir="ltr">
                           {room.playerCount} / {room.maxPlayers || 20}
                         </span>
                       </div>
@@ -332,8 +335,8 @@ export default function RoomsPage() {
                             : "text-[var(--color-braun-text)] opacity-60 group-hover:text-[var(--color-braun-orange)] group-hover:opacity-100"
                         }`}
                       >
-                        {isFull ? "Full" : "Enter"}
-                        {!isFull && <ChevronRight className="w-3 h-3" />}
+                        {isFull ? t("full") : t("enter")}
+                        {!isFull && <ChevronRight className="w-3 h-3 rtl:rotate-180" />}
                       </span>
                     </div>
                   </div>

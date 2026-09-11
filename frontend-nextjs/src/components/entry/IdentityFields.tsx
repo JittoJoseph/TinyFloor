@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { AlertCircle } from "lucide-react";
 import { Field, inputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
@@ -32,36 +33,40 @@ export const IdentityFields: React.FC<{
   onPassword,
   needsPassword = false,
   autoFocus = false,
-}) => (
-  <div className="space-y-4">
-    <Field label="Your name" htmlFor="identity-name">
-      <input
-        id="identity-name"
-        type="text"
-        value={name}
-        onChange={(event) => onName(event.target.value)}
-        placeholder="What should people call you?"
-        className={inputClass}
-        maxLength={30}
-        autoFocus={autoFocus}
-      />
-    </Field>
+}) => {
+  const t = useTranslations("entry");
 
-    {needsPassword && onPassword && (
-      <Field label="Room password" htmlFor="identity-password">
+  return (
+    <div className="space-y-4">
+      <Field label={t("yourName")} htmlFor="identity-name">
         <input
-          id="identity-password"
-          type="password"
-          value={password}
-          onChange={(event) => onPassword(event.target.value)}
-          placeholder="Enter the password"
+          id="identity-name"
+          type="text"
+          value={name}
+          onChange={(event) => onName(event.target.value)}
+          placeholder={t("namePlaceholder")}
           className={inputClass}
+          maxLength={30}
+          autoFocus={autoFocus}
         />
       </Field>
-    )}
 
-    <Field label="Character">
-      <CharacterPicker value={character} onChange={onCharacter} />
-    </Field>
-  </div>
-);
+      {needsPassword && onPassword && (
+        <Field label={t("roomPassword")} htmlFor="identity-password">
+          <input
+            id="identity-password"
+            type="password"
+            value={password}
+            onChange={(event) => onPassword(event.target.value)}
+            placeholder={t("passwordPlaceholder")}
+            className={inputClass}
+          />
+        </Field>
+      )}
+
+      <Field label={t("character")}>
+        <CharacterPicker value={character} onChange={onCharacter} />
+      </Field>
+    </div>
+  );
+};

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   Gamepad2,
@@ -13,9 +13,26 @@ import {
   EyeOff,
   Sparkles,
 } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
+function Loading() {
+  const t = useTranslations("common");
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-[var(--color-braun-bg)]">
+      <div className="text-center flex flex-col items-center">
+        <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-xs text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest font-bold">
+          {t("loading")}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function AuthPageContent() {
+  const t = useTranslations("auth");
+  const tc = useTranslations("common");
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isAuthenticated, isLoading, login, register } = useAuth();
@@ -73,23 +90,14 @@ function AuthPageContent() {
         }
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t("error"));
     } finally {
       setIsSubmitting(false);
     }
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-[var(--color-braun-bg)]">
-        <div className="text-center flex flex-col items-center">
-          <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-xs text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest font-bold">
-            Loading...
-          </p>
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -100,9 +108,9 @@ function AuthPageContent() {
           href="/"
           className="cursor-pointer inline-flex items-center gap-2 text-[var(--color-braun-text)] opacity-50 hover:opacity-100 transition-opacity"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
           <span className="font-bold text-xs uppercase tracking-widest">
-            Back
+            {tc("back")}
           </span>
         </Link>
       </div>
@@ -131,12 +139,10 @@ function AuthPageContent() {
             />
           </div>
           <h2 className="text-2xl font-light tracking-tight text-[var(--color-braun-text)] mb-2">
-            {mode === "login" ? "Welcome Back" : "Join Us"}
+            {mode === "login" ? t("welcomeBack") : t("joinUs")}
           </h2>
           <p className="text-[var(--color-braun-text)] opacity-50 text-sm">
-            {mode === "login"
-              ? "Sign in to your account"
-              : "Create your workspace account"}
+            {mode === "login" ? t("signInSubtitle") : t("registerSubtitle")}
           </p>
         </div>
 
@@ -144,13 +150,13 @@ function AuthPageContent() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Username */}
           <div className="relative">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+            <User className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
-              className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+              placeholder={t("username")}
+              className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               required
             />
           </div>
@@ -158,13 +164,13 @@ function AuthPageContent() {
           {/* Email (register only) */}
           {mode === "register" && (
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+              <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email (optional)"
-                className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+                placeholder={t("emailOptional")}
+                className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
             </div>
           )}
@@ -172,33 +178,34 @@ function AuthPageContent() {
           {/* Display Name (register only) */}
           {mode === "register" && (
             <div className="relative">
-              <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+              <Sparkles className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
               <input
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Display Name (optional)"
-                className="w-full pl-11 pr-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+                placeholder={t("displayNameOptional")}
+                className="w-full ps-11 pe-4 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               />
             </div>
           )}
 
           {/* Password */}
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
+            <Lock className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-braun-text)] opacity-40" />
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="w-full pl-11 pr-11 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
+              placeholder={t("password")}
+              className="w-full ps-11 pe-11 h-12 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] focus:border-[var(--color-braun-text)] outline-none transition-colors placeholder:text-[var(--color-braun-text)] placeholder:opacity-40"
               required
               minLength={6}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-70 transition-opacity"
+              aria-label={showPassword ? t("hidePassword") : t("showPassword")}
+              className="absolute end-4 top-1/2 -translate-y-1/2 text-[var(--color-braun-text)] opacity-40 hover:opacity-70 transition-opacity"
             >
               {showPassword ? (
                 <EyeOff className="w-4 h-4" />
@@ -222,27 +229,25 @@ function AuthPageContent() {
             className="w-full h-12 mt-2 bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] font-bold uppercase tracking-widest text-xs rounded-full hover:bg-[#1a1a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
           >
             {isSubmitting
-              ? "Loading..."
+              ? tc("loading")
               : mode === "login"
-                ? "Sign In"
-                : "Create Account"}
+                ? t("signIn")
+                : t("createAccount")}
           </button>
         </form>
 
         {/* Switch mode */}
         <div className="text-center mt-6 pt-6 border-t border-[rgba(0,0,0,0.06)]">
           <p className="text-[var(--color-braun-text)] opacity-60 text-sm">
-            {mode === "login"
-              ? "Don't have an account?"
-              : "Already have an account?"}
+            {mode === "login" ? t("noAccount") : t("haveAccount")}
             <button
               onClick={() => {
                 setMode(mode === "login" ? "register" : "login");
                 setError("");
               }}
-              className="ml-2 text-[var(--color-braun-text)] opacity-100 hover:text-[var(--color-braun-orange)] font-bold transition-colors"
+              className="ms-2 text-[var(--color-braun-text)] opacity-100 hover:text-[var(--color-braun-orange)] font-bold transition-colors"
             >
-              {mode === "login" ? "Sign Up" : "Sign In"}
+              {mode === "login" ? t("signUp") : t("signIn")}
             </button>
           </p>
         </div>
@@ -254,7 +259,7 @@ function AuthPageContent() {
           href="/rooms"
           className="cursor-pointer inline-block text-[var(--color-braun-text)] opacity-40 hover:opacity-70 text-xs font-bold uppercase tracking-widest transition-opacity"
         >
-          Continue as guest →
+          {t("continueGuest")}
         </Link>
       </div>
     </div>
@@ -263,18 +268,7 @@ function AuthPageContent() {
 
 export default function AuthPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen w-full flex items-center justify-center bg-[var(--color-braun-bg)]">
-          <div className="text-center flex flex-col items-center">
-            <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin mb-4" />
-            <p className="text-xs text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest font-bold">
-              Loading...
-            </p>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<Loading />}>
       <AuthPageContent />
     </Suspense>
   );

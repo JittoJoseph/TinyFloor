@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useParams, useSearchParams, useRouter } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { LogOut, Users, Copy, Check } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import ControlBar from "@/components/ControlBar";
 import SettingsModal from "@/components/SettingsModal";
 import ChatPanel from "@/components/ChatPanel";
@@ -17,16 +18,21 @@ import RoomTutorial from "@/components/RoomTutorial";
 import type { PlayerStatus } from "@/lib/types";
 import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
-  ssr: false,
-  loading: () => (
+function Connecting() {
+  const t = useTranslations("room");
+  return (
     <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] font-sans text-sm font-bold tracking-widest uppercase">
       <div className="text-center flex flex-col items-center gap-6">
         <div className="w-10 h-10 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin"></div>
-        Connecting...
+        {t("connecting")}
       </div>
     </div>
-  ),
+  );
+}
+
+const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
+  ssr: false,
+  loading: () => <Connecting />,
 });
 
 interface RoomData {
@@ -36,6 +42,7 @@ interface RoomData {
 }
 
 export default function RoomPage() {
+  const t = useTranslations("room");
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -169,13 +176,12 @@ export default function RoomPage() {
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
           <div className="flex flex-col">
             <h1 className="font-bold text-sm text-[var(--color-braun-text)] tracking-wide">
-              {roomData?.name || `Room: ${roomId}`}
+              {roomData?.name || t("fallbackName", { id: roomId })}
             </h1>
             {roomData?.activeUsers !== undefined && (
               <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1.5 mt-0.5">
                 <Users className="w-3 h-3" />
-                {roomData.activeUsers}{" "}
-                {roomData.activeUsers === 1 ? "person" : "people"}
+                {t("people", { count: roomData.activeUsers })}
               </p>
             )}
           </div>
@@ -190,12 +196,12 @@ export default function RoomPage() {
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5 text-emerald-500" />
-                Copied!
+                {t("copied")}
               </>
             ) : (
               <>
                 <Copy className="w-3.5 h-3.5" />
-                Invite
+                {t("invite")}
               </>
             )}
           </button>
@@ -205,8 +211,8 @@ export default function RoomPage() {
             href="/rooms"
             className="cursor-pointer bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
           >
-            <LogOut className="w-3.5 h-3.5" />
-            Leave
+            <LogOut className="w-3.5 h-3.5 rtl:rotate-180" />
+            {t("leave")}
           </Link>
         </div>
       </div>
@@ -257,9 +263,9 @@ export default function RoomPage() {
       />
 
       {/* Chat Toasts for unread messages */}
-      <ChatToasts 
-        isChatOpen={showChat} 
-        onOpenChat={() => setShowChat(true)} 
+      <ChatToasts
+        isChatOpen={showChat}
+        onOpenChat={() => setShowChat(true)}
       />
     </div>
   );

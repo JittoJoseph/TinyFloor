@@ -2,6 +2,7 @@ import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
 import { ChairSpec, depthForY } from "./MapManager";
 import { WebSocketManager } from "./WebSocketManager";
+import { sceneText } from "./sceneText";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -123,7 +124,7 @@ export class SeatManager {
       y: Math.round(this.player.y),
       direction: seat.direction,
     });
-    this.drawPrompt("Press E to stand");
+    this.drawPrompt(sceneText().stand);
   }
 
   private stand() {
@@ -199,7 +200,7 @@ export class SeatManager {
     );
     this.ring.lineStyle(2, HIGHLIGHT, 0.9);
     this.ring.strokeRoundedRect(best.x - 17, best.baseY - 44, 34, 46, 6);
-    this.drawPrompt("Press E to sit");
+    this.drawPrompt(sceneText().sit);
     this.prompt.setVisible(true);
     this.prompt.setPosition(best.x, best.baseY + 22);
   }

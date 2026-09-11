@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { jukebox } from "./JukeboxManager";
+import { sceneText } from "./sceneText";
 
 const REACH = 210;
 
@@ -88,7 +89,7 @@ export class JukeboxObject {
 
   private createPrompt() {
     const label = this.scene.add
-      .text(0, 0, "Click for music", {
+      .text(0, 0, sceneText().music, {
         fontSize: "13px",
         fontFamily: "VT323, monospace",
         color: "#ffffff",

@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Globe, Users, ChevronRight } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { CharacterPreview } from "./CharacterPreview";
 
 interface DashboardWidgetProps {
@@ -24,6 +25,7 @@ export function DashboardWidget({
   stats,
   variant = "compact",
 }: DashboardWidgetProps) {
+  const t = useTranslations("dashboard.widget");
   const characterId = user.avatarPreferences?.characterName || "Adam";
 
   if (variant === "compact") {
@@ -57,7 +59,7 @@ export function DashboardWidget({
         </div>
 
         {/* Arrow */}
-        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[var(--color-braun-text)] transition-colors shrink-0" />
+        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[var(--color-braun-text)] transition-colors shrink-0 rtl:rotate-180" />
       </Link>
     );
   }
@@ -80,9 +82,9 @@ export function DashboardWidget({
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-lg text-gray-900 truncate">{user.displayName}</p>
-            <p className="text-xs text-gray-400">View Dashboard</p>
+            <p className="text-xs text-gray-400">{t("view")}</p>
           </div>
-          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[var(--color-braun-text)] transition-colors" />
+          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[var(--color-braun-text)] transition-colors rtl:rotate-180" />
         </div>
       </div>
 
@@ -91,12 +93,12 @@ export function DashboardWidget({
         <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
           <Globe className="w-4 h-4 text-gray-500" />
           <span className="text-sm text-gray-700">{stats.createdRooms}</span>
-          <span className="text-xs text-gray-400">created</span>
+          <span className="text-xs text-gray-400">{t("created")}</span>
         </div>
         <div className="flex-1 flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
           <Users className="w-4 h-4 text-gray-500" />
           <span className="text-sm text-gray-700">{stats.joinedRooms}</span>
-          <span className="text-xs text-gray-400">joined</span>
+          <span className="text-xs text-gray-400">{t("joined")}</span>
         </div>
       </div>
     </Link>

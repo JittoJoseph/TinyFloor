@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowLeft, Users } from "lucide-react";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
 import { useToast } from "@/components/ui/Toast";
@@ -33,7 +34,20 @@ interface PublicProfile {
   publicRooms: unknown[];
 }
 
+function Loading() {
+  const t = useTranslations("common");
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-xl text-gray-600">{t("loading")}</p>
+      </div>
+    </div>
+  );
+}
+
 function DashboardContent() {
+  const t = useTranslations("dashboard");
   const router = useRouter();
   const searchParams = useSearchParams();
   const {
@@ -106,7 +120,7 @@ function DashboardContent() {
         setProfileError(null);
       } catch (error: unknown) {
         const message =
-          error instanceof Error ? error.message : "User not found";
+          error instanceof Error ? error.message : t("userNotFound");
         setProfileError(message);
       } finally {
         setLoadingRooms(false);
@@ -116,7 +130,7 @@ function DashboardContent() {
     if (isViewingOther) {
       fetchPublicProfile();
     }
-  }, [targetUserId, isViewingOther]);
+  }, [targetUserId, isViewingOther, t]);
 
   // Fetch rooms with error handling
   const fetchRooms = useCallback(async () => {
@@ -161,10 +175,10 @@ function DashboardContent() {
     try {
       const updated = await apiClient.updateProfile(name);
       updateUser(updated);
-      showToast("Display name updated!", "success");
+      showToast(t("nameUpdated"), "success");
     } catch (error) {
       console.error("Failed to update profile:", error);
-      showToast("Failed to update profile", "error");
+      showToast(t("profileFailed"), "error");
       throw error;
     }
   };
@@ -175,10 +189,10 @@ function DashboardContent() {
         characterName: characterId,
       });
       updateUser(updated);
-      showToast("Character updated!", "success");
+      showToast(t("characterUpdated"), "success");
     } catch (error) {
       console.error("Failed to update character:", error);
-      showToast("Failed to update character", "error");
+      showToast(t("characterFailed"), "error");
       throw error;
     }
   };
@@ -188,7 +202,7 @@ function DashboardContent() {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(link);
       setCopiedRoomId(room.id);
-      showToast("Link copied!", "success");
+      showToast(t("linkCopied"), "success");
       setTimeout(() => setCopiedRoomId(null), 2000);
     }
   };
@@ -200,14 +214,7 @@ function DashboardContent() {
 
   // Loading state
   if (authLoading || loadingRooms) {
-    return (
-      <div className="min-h-screen w-full flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-xl text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (profileError) {
@@ -218,13 +225,15 @@ function DashboardContent() {
             <div className="w-20 h-20 bg-red-50 rounded-2xl border-2 border-red-200 flex items-center justify-center mx-auto mb-4">
               <Users className="w-10 h-10 text-red-400" />
             </div>
-            <h2 className="text-2xl text-gray-900 mb-2">User Not Found</h2>
+            <h2 className="text-2xl text-gray-900 mb-2">
+              {t("userNotFoundTitle")}
+            </h2>
             <p className="text-gray-600 mb-6">{profileError}</p>
             <Link
               href="/rooms"
               className="cursor-pointer inline-block bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white text-lg px-6 py-3 rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm hover:-translate-y-1 hover:shadow-md active:translate-y-0 transition-all"
             >
-              Back to Rooms
+              {t("backToRooms")}
             </Link>
           </div>
         </div>
@@ -250,19 +259,22 @@ function DashboardContent() {
           <div className="flex items-center gap-3">
             <Link
               href="/rooms"
+              aria-label={t("backToRooms")}
               className="cursor-pointer p-2 bg-white hover:bg-gray-50 rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm hover:-translate-y-0.5 transition-all shrink-0"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-700" />
+              <ArrowLeft className="w-5 h-5 text-gray-700 rtl:rotate-180" />
             </Link>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl text-gray-900">
-                {isViewingOther ? profileUser.displayName : "Dashboard"}
+                {isViewingOther ? profileUser.displayName : t("title")}
               </h1>
               {isViewingOther ? (
-                <p className="text-gray-500 text-sm">@{profileUser.username}</p>
+                <p className="text-gray-500 text-sm" dir="ltr">
+                  @{profileUser.username}
+                </p>
               ) : (
                 <p className="text-gray-500 text-sm hidden sm:block">
-                  Manage your profile & rooms
+                  {t("subtitle")}
                 </p>
               )}
             </div>
@@ -273,7 +285,7 @@ function DashboardContent() {
               <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 rounded-lg border border-emerald-100">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                 <span className="text-xs font-medium text-emerald-700">
-                  {activeRoomCount} active
+                  {t("activeCount", { count: activeRoomCount })}
                 </span>
               </div>
             )}
@@ -350,16 +362,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen w-full flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-12 h-12 border-4 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-xl text-gray-600">Loading...</p>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<Loading />}>
       <DashboardContent />
     </Suspense>
   );

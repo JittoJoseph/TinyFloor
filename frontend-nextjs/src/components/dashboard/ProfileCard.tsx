@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useFormatter, useTranslations } from "next-intl";
 import {
   Edit3,
   Check,
@@ -48,6 +49,9 @@ export function ProfileCard({
   onUpdateCharacter,
   readOnly = false,
 }: ProfileCardProps) {
+  const t = useTranslations("dashboard.profile");
+  const tc = useTranslations("common");
+  const format = useFormatter();
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingCharacter, setIsEditingCharacter] = useState(false);
   const [editDisplayName, setEditDisplayName] = useState(user.displayName);
@@ -93,8 +97,8 @@ export function ProfileCard({
   };
 
   const formatDate = (dateString: string) => {
-    if (!dateString) return "Unknown";
-    return new Date(dateString).toLocaleDateString("en-US", {
+    if (!dateString) return t("unknown");
+    return format.dateTime(new Date(dateString), {
       month: "short",
       year: "numeric",
     });
@@ -112,8 +116,8 @@ export function ProfileCard({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${user.displayName}'s Profile`,
-          text: `Check out ${user.displayName}'s profile on SpatialMeet`,
+          title: t("shareTitle", { name: user.displayName }),
+          text: t("shareText", { name: user.displayName }),
           url: profileUrl,
         });
       } catch {
@@ -146,8 +150,9 @@ export function ProfileCard({
                 {!readOnly && (
                   <button
                     onClick={() => setIsEditingCharacter(true)}
-                    className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-lg border border-[rgba(0,0,0,0.06)] shadow-sm hover:bg-gray-50 transition-all"
-                    title="Change character"
+                    className="absolute -bottom-1 -end-1 p-1.5 bg-white rounded-lg border border-[rgba(0,0,0,0.06)] shadow-sm hover:bg-gray-50 transition-all"
+                    title={t("changeCharacter")}
+                    aria-label={t("changeCharacter")}
                   >
                     <Edit3 className="w-3.5 h-3.5 text-gray-600" />
                   </button>
@@ -159,7 +164,7 @@ export function ProfileCard({
             </div>
 
             {/* Info */}
-            <div className="flex-1 min-w-0 text-center sm:text-left w-full">
+            <div className="flex-1 min-w-0 text-center sm:text-start w-full">
               {/* Display Name */}
               {isEditingName ? (
                 <div className="flex items-center gap-2">
@@ -168,13 +173,14 @@ export function ProfileCard({
                     value={editDisplayName}
                     onChange={(e) => setEditDisplayName(e.target.value)}
                     className="flex-1 px-3 py-2 bg-gray-50 border border-[rgba(0,0,0,0.06)] rounded-xl focus:border-[var(--color-braun-text)] outline-none font-medium transition-colors min-w-0"
-                    placeholder="Display name"
+                    placeholder={t("displayName")}
                     maxLength={30}
                     autoFocus
                   />
                   <button
                     onClick={handleSaveDisplayName}
                     disabled={isSaving || !editDisplayName.trim()}
+                    aria-label={t("saveName")}
                     className="cursor-pointer p-2 bg-green-100 hover:bg-green-200 text-green-700 rounded-xl transition-colors disabled:opacity-50 shrink-0"
                   >
                     {isSaving ? (
@@ -188,6 +194,7 @@ export function ProfileCard({
                       setEditDisplayName(user.displayName);
                       setIsEditingName(false);
                     }}
+                    aria-label={tc("cancel")}
                     className="p-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl transition-colors shrink-0"
                   >
                     <X className="w-4 h-4" />
@@ -201,6 +208,7 @@ export function ProfileCard({
                   {!readOnly && !user.isGuest && (
                     <button
                       onClick={() => setIsEditingName(true)}
+                      aria-label={t("editName")}
                       className="p-1 hover:bg-gray-100 text-gray-400 hover:text-gray-600 rounded-lg transition-colors shrink-0"
                     >
                       <Edit3 className="w-3.5 h-3.5" />
@@ -208,14 +216,15 @@ export function ProfileCard({
                   )}
                   {user.isGuest && (
                     <span className="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-[10px] font-bold rounded-full border border-yellow-200 shrink-0">
-                      GUEST
+                      {t("guestBadge")}
                     </span>
                   )}
-                  <div className="flex items-center gap-1 ml-auto">
+                  <div className="flex items-center gap-1 ms-auto">
                     <button
                       onClick={handleCopyProfileLink}
                       className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
-                      title="Copy profile link"
+                      title={t("copyLink")}
+                      aria-label={t("copyLink")}
                     >
                       {copied ? (
                         <Check className="w-4 h-4 text-green-600" />
@@ -226,7 +235,8 @@ export function ProfileCard({
                     <button
                       onClick={handleShareProfile}
                       className="cursor-pointer p-1.5 hover:bg-gray-100 text-gray-400 hover:text-blue-600 rounded-lg transition-colors shrink-0"
-                      title="Share profile"
+                      title={t("share")}
+                      aria-label={t("share")}
                     >
                       <Share2 className="w-4 h-4" />
                     </button>
@@ -234,7 +244,9 @@ export function ProfileCard({
                 </div>
               )}
 
-              <p className="text-gray-400 text-sm mt-0.5">@{user.username}</p>
+              <p className="text-gray-400 text-sm mt-0.5" dir="ltr">
+                @{user.username}
+              </p>
 
               {/* Stats */}
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-3">
@@ -243,14 +255,18 @@ export function ProfileCard({
                   <span className="text-xs text-blue-700">
                     {createdRoomsCount}
                   </span>
-                  <span className="text-blue-500 text-[10px]">created</span>
+                  <span className="text-blue-500 text-[10px]">
+                    {t("created")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 rounded-md border border-emerald-100">
                   <Users className="w-3 h-3 text-emerald-600" />
                   <span className="text-xs text-emerald-700">
                     {joinedRoomsCount}
                   </span>
-                  <span className="text-emerald-500 text-[10px]">joined</span>
+                  <span className="text-emerald-500 text-[10px]">
+                    {t("joined")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 rounded-md border border-amber-100">
                   <Calendar className="w-3 h-3 text-amber-600" />
@@ -275,7 +291,8 @@ export function ProfileCard({
                 );
                 setIsEditingCharacter(false);
               }}
-              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-xl transition-colors"
+              aria-label={tc("close")}
+              className="absolute top-4 end-4 p-2 hover:bg-gray-100 rounded-xl transition-colors"
             >
               <X className="w-5 h-5 text-gray-500" />
             </button>
@@ -284,8 +301,8 @@ export function ProfileCard({
               <div className="w-14 h-14 bg-gray-100 rounded-2xl border border-[rgba(0,0,0,0.06)] flex items-center justify-center mx-auto mb-3">
                 <Sparkles className="w-7 h-7 text-gray-600" />
               </div>
-              <h3 className="text-2xl text-gray-900">Choose Character</h3>
-              <p className="text-gray-500 text-sm mt-1">Select your avatar</p>
+              <h3 className="text-2xl text-gray-900">{t("chooseCharacter")}</h3>
+              <p className="text-gray-500 text-sm mt-1">{t("selectAvatar")}</p>
             </div>
 
             <AnimatedCharacterSelector
@@ -304,7 +321,7 @@ export function ProfileCard({
                 }}
                 className="flex-1 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl border border-[rgba(0,0,0,0.06)] transition-colors"
               >
-                Cancel
+                {tc("cancel")}
               </button>
               <button
                 onClick={handleSaveCharacter}
@@ -314,7 +331,7 @@ export function ProfileCard({
                 {isSaving ? (
                   <Loader2 className="w-5 h-5 animate-spin mx-auto" />
                 ) : (
-                  "Save"
+                  tc("save")
                 )}
               </button>
             </div>

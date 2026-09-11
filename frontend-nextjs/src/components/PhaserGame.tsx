@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
+import { setSceneText } from "@/lib/sceneText";
 
 interface PhaserGameProps {
   name: string;
@@ -17,11 +19,20 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   character,
   userId,
 }) => {
+  const t = useTranslations("scene");
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
 
   useEffect(() => {
     if (gameRef.current && !game.current) {
+      setSceneText({
+        guide: t("guide"),
+        sit: t("sit"),
+        stand: t("stand"),
+        music: t("music"),
+        draw: t("draw"),
+      });
+
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
         width: window.innerWidth,
@@ -68,7 +79,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         game.current = null;
       }
     };
-  }, [name, roomId, character, userId]);
+  }, [name, roomId, character, userId, t]);
 
   return <div ref={gameRef} />;
 };

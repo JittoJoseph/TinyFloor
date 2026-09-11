@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Phone, Video, X, Check, Maximize2, Minimize2 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { GUIDE_ID } from "@/lib/tutorial";
 
 export default function CallOverlay() {
+  const t = useTranslations("call");
+  const tc = useTranslations("common");
   const {
     incoming,
     outgoing,
@@ -33,7 +36,7 @@ export default function CallOverlay() {
       muted
       mirrored
       hidden={!cameraEnabled}
-      initial="You"
+      initial={tc("you")}
     />
   );
 
@@ -54,7 +57,7 @@ export default function CallOverlay() {
                 {incoming.name}
               </h3>
               <p className="text-gray-500 font-medium text-sm tracking-wide">
-                Incoming {incoming.video ? "video" : "audio"} call...
+                {incoming.video ? t("incomingVideo") : t("incomingAudio")}
               </p>
             </div>
 
@@ -64,14 +67,14 @@ export default function CallOverlay() {
                 className="cursor-pointer flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 border border-[rgba(0,0,0,0.06)] shadow-sm"
               >
                 <X className="w-4 h-4" />
-                Decline
+                {t("decline")}
               </button>
               <button
                 onClick={() => callManager.accept()}
                 className="cursor-pointer flex-1 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm"
               >
                 <Check className="w-4 h-4" />
-                Accept
+                {t("accept")}
               </button>
             </div>
           </div>
@@ -98,7 +101,7 @@ export default function CallOverlay() {
 
           {peer.id === GUIDE_ID && (
             <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-sm text-[var(--color-braun-text)] rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest shadow-sm">
-              Tutorial call
+              {t("tutorial")}
             </span>
           )}
 
@@ -116,7 +119,8 @@ export default function CallOverlay() {
             className={`cursor-pointer absolute top-3 right-3 p-2 rounded-full bg-white/85 text-[var(--color-braun-text)] shadow-sm backdrop-blur-sm transition-opacity ${
               expanded ? "opacity-70 hover:opacity-100" : "opacity-0 group-hover:opacity-100"
             }`}
-            title={expanded ? "Minimize" : "Expand"}
+            title={expanded ? t("minimize") : t("expand")}
+            aria-label={expanded ? t("minimize") : t("expand")}
           >
             {expanded ? (
               <Minimize2 className="w-4 h-4" />
@@ -141,9 +145,9 @@ export default function CallOverlay() {
         {error && (
           <button
             onClick={() => callManager.clearError()}
-            className="cursor-pointer pointer-events-auto w-64 text-left bg-[#ff4e00]/10 border border-[#ff4e00]/20 text-[#ff4e00] rounded-2xl px-4 py-3 text-[11px] font-bold tracking-wide"
+            className="cursor-pointer pointer-events-auto w-64 text-start bg-[#ff4e00]/10 border border-[#ff4e00]/20 text-[#ff4e00] rounded-2xl px-4 py-3 text-[11px] font-bold tracking-wide"
           >
-            {error}
+            {t(`errors.${error}`)}
           </button>
         )}
 
@@ -157,13 +161,14 @@ export default function CallOverlay() {
                 {outgoing.name}
               </div>
               <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-                Calling...
+                {t("calling")}
               </div>
             </div>
             <button
               onClick={() => callManager.cancel()}
               className="cursor-pointer p-2 rounded-full bg-[#ff4e00] text-white transition-all active:scale-95"
-              title="Cancel call"
+              title={t("cancel")}
+              aria-label={t("cancel")}
             >
               <X className="w-3.5 h-3.5" />
             </button>

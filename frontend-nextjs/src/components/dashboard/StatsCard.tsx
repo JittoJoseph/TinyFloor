@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { TrendingUp, Users, Zap } from "lucide-react";
 
 interface StatsCardProps {
@@ -13,13 +14,14 @@ export function StatsCard({
   activeRooms,
   totalCollaborators,
 }: StatsCardProps) {
+  const t = useTranslations("dashboard.stats");
   const hasNoActivity = totalRooms === 0 && totalCollaborators === 0;
 
   return (
     <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-2xl p-4 shadow-retro-sm h-full flex flex-col">
       <div className="flex items-center gap-2 mb-3">
         <TrendingUp className="w-4 h-4 text-gray-400" />
-        <h3 className="text-sm text-gray-900">Stats</h3>
+        <h3 className="text-sm text-gray-900">{t("title")}</h3>
       </div>
 
       {hasNoActivity ? (
@@ -28,7 +30,7 @@ export function StatsCard({
             <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-50 border-2 border-blue-100 flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-blue-400" />
             </div>
-            <p className="text-gray-400 text-xs">Create your first room!</p>
+            <p className="text-gray-400 text-xs">{t("empty")}</p>
           </div>
         </div>
       ) : (
@@ -40,7 +42,7 @@ export function StatsCard({
             </div>
             <div className="text-lg text-blue-700">{totalRooms}</div>
             <div className="text-[9px] text-blue-500 font-medium uppercase tracking-wide">
-              Rooms
+              {t("rooms")}
             </div>
           </div>
 
@@ -51,7 +53,7 @@ export function StatsCard({
             </div>
             <div className="text-lg text-emerald-700">{activeRooms}</div>
             <div className="text-[9px] text-emerald-500 font-medium uppercase tracking-wide">
-              Active
+              {t("active")}
             </div>
           </div>
 
@@ -62,7 +64,7 @@ export function StatsCard({
             </div>
             <div className="text-lg text-amber-700">{totalCollaborators}</div>
             <div className="text-[9px] text-amber-500 font-medium uppercase tracking-wide">
-              People
+              {t("people")}
             </div>
           </div>
         </div>

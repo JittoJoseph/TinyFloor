@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from "lucide-react";
 
 type ToastType = "success" | "error" | "info" | "warning";
@@ -41,6 +42,7 @@ const iconStyles = {
 };
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
+  const t = useTranslations("toast");
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const showToast = useCallback(
@@ -82,6 +84,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               <p className="flex-1 font-medium text-sm">{toast.message}</p>
               <button
                 onClick={() => hideToast(toast.id)}
+                aria-label={t("dismiss")}
                 className="shrink-0 p-1 hover:bg-black/5 rounded-lg transition-colors"
               >
                 <X className="w-4 h-4" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { X, Mic, Video, Volume2 } from "lucide-react";
 
 interface SettingsModalProps {
@@ -16,6 +17,7 @@ interface MediaDevice {
 type Tab = "audio" | "video";
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
+  const t = useTranslations("settings");
   const [activeTab, setActiveTab] = useState<Tab>("audio");
   const [audioInputDevices, setAudioInputDevices] = useState<MediaDevice[]>([]);
   const [audioOutputDevices, setAudioOutputDevices] = useState<MediaDevice[]>(
@@ -53,15 +55,15 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               deviceId: d.deviceId,
               label: d.label || `${fallback} ${d.deviceId.slice(0, 6)}`,
             }));
-        setAudioInputDevices(map("audioinput", "Microphone"));
-        setAudioOutputDevices(map("audiooutput", "Speaker"));
-        setVideoDevices(map("videoinput", "Camera"));
+        setAudioInputDevices(map("audioinput", t("microphone")));
+        setAudioOutputDevices(map("audiooutput", t("speaker")));
+        setVideoDevices(map("videoinput", t("camera")));
       } catch {
         // Permission denied or no devices — silently ignore
       }
     };
     loadDevices();
-  }, [isOpen]);
+  }, [isOpen, t]);
 
   useEffect(() => {
     const saved = localStorage.getItem("spacialMeetSettings");
@@ -103,16 +105,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   if (!isOpen) return null;
 
-  const tabs: { id: Tab; icon: typeof Mic; label: string }[] = [
-    { id: "audio", icon: Mic, label: "Audio" },
-    { id: "video", icon: Video, label: "Video" },
+  const tabs: { id: Tab; icon: typeof Mic }[] = [
+    { id: "audio", icon: Mic },
+    { id: "video", icon: Video },
   ];
-
-  const videoQualityMeta = {
-    low: "360p, best for slow connections",
-    medium: "480p, balanced quality and speed",
-    high: "720p, best quality but needs fast internet",
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -124,10 +120,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       <div className="relative bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg w-full max-w-md overflow-hidden">
         <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
           <h2 className="font-semibold text-[var(--color-braun-text)] text-base tracking-wide">
-            Settings
+            {t("title")}
           </h2>
           <button
             onClick={onClose}
+            aria-label={t("close")}
             className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
           >
             <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
@@ -135,7 +132,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </div>
 
         <div className="flex px-6 pt-4 gap-1">
-          {tabs.map(({ id, icon: Icon, label }) => (
+          {tabs.map(({ id, icon: Icon }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
@@ -146,7 +143,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
-              {label}
+              {t(id)}
             </button>
           ))}
         </div>
@@ -154,27 +151,29 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         <div className="px-6 py-5 space-y-5 max-h-[60vh] overflow-y-auto">
           {activeTab === "audio" && (
             <>
-              <SettingRow label="Microphone" icon={Mic}>
+              <SettingRow label={t("microphone")} icon={Mic}>
                 <DeviceSelect
                   value={selectedAudioInput}
                   onChange={setSelectedAudioInput}
                   devices={audioInputDevices}
+                  defaultLabel={t("default")}
                 />
               </SettingRow>
 
-              <SettingRow label="Microphone volume" value={`${micVolume}%`}>
+              <SettingRow label={t("micVolume")} value={`${micVolume}%`}>
                 <VolumeSlider value={micVolume} onChange={setMicVolume} />
               </SettingRow>
 
-              <SettingRow label="Speaker" icon={Volume2}>
+              <SettingRow label={t("speaker")} icon={Volume2}>
                 <DeviceSelect
                   value={selectedAudioOutput}
                   onChange={setSelectedAudioOutput}
                   devices={audioOutputDevices}
+                  defaultLabel={t("default")}
                 />
               </SettingRow>
 
-              <SettingRow label="Speaker volume" value={`${masterVolume}%`}>
+              <SettingRow label={t("speakerVolume")} value={`${masterVolume}%`}>
                 <VolumeSlider value={masterVolume} onChange={setMasterVolume} />
               </SettingRow>
             </>
@@ -182,35 +181,36 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
           {activeTab === "video" && (
             <>
-              <SettingRow label="Camera" icon={Video}>
+              <SettingRow label={t("camera")} icon={Video}>
                 <DeviceSelect
                   value={selectedVideoInput}
                   onChange={setSelectedVideoInput}
                   devices={videoDevices}
+                  defaultLabel={t("default")}
                 />
               </SettingRow>
 
               <div>
                 <p className="text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest mb-3">
-                  Video quality
+                  {t("videoQuality")}
                 </p>
                 <div className="grid grid-cols-3 gap-2">
                   {(["low", "medium", "high"] as const).map((q) => (
                     <button
                       key={q}
                       onClick={() => setVideoQuality(q)}
-                      className={`py-2.5 rounded-xl border text-sm font-medium capitalize transition-all cursor-pointer ${
+                      className={`py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer ${
                         videoQuality === q
                           ? "border-[var(--color-braun-text)] bg-[var(--color-braun-text)] text-white"
                           : "border-[rgba(0,0,0,0.08)] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:border-[rgba(0,0,0,0.2)]"
                       }`}
                     >
-                      {q}
+                      {t(`quality.${q}`)}
                     </button>
                   ))}
                 </div>
                 <p className="text-xs text-[var(--color-braun-text)] opacity-40 mt-2">
-                  {videoQualityMeta[videoQuality]}
+                  {t(`qualityHint.${videoQuality}`)}
                 </p>
               </div>
             </>
@@ -223,13 +223,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             onClick={onClose}
             className="cursor-pointer px-4 py-2 text-sm text-[var(--color-braun-text)] opacity-50 hover:opacity-80 transition-opacity"
           >
-            Cancel
+            {t("cancel")}
           </button>
           <button
             onClick={saveSettings}
             className="cursor-pointer px-5 py-2 bg-[var(--color-braun-text)] hover:bg-[#2a2a2a] text-white rounded-full text-sm font-medium transition-all"
           >
-            Save
+            {t("save")}
           </button>
         </div>
       </div>
@@ -256,7 +256,7 @@ function SettingRow({
           {label}
         </label>
         {value && (
-          <span className="text-xs font-semibold text-[var(--color-braun-text)]">
+          <span className="text-xs font-semibold text-[var(--color-braun-text)]" dir="ltr">
             {value}
           </span>
         )}
@@ -270,10 +270,12 @@ function DeviceSelect({
   value,
   onChange,
   devices,
+  defaultLabel,
 }: {
   value: string;
   onChange: (v: string) => void;
   devices: MediaDevice[];
+  defaultLabel: string;
 }) {
   return (
     <select
@@ -281,7 +283,7 @@ function DeviceSelect({
       onChange={(e) => onChange(e.target.value)}
       className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] outline-none focus:border-[rgba(0,0,0,0.2)] transition-colors cursor-pointer"
     >
-      <option value="">Default</option>
+      <option value="">{defaultLabel}</option>
       {devices.map((d) => (
         <option key={d.deviceId} value={d.deviceId}>
           {d.label}
@@ -304,6 +306,7 @@ function VolumeSlider({
       min="0"
       max="100"
       value={value}
+      dir="ltr"
       onChange={(e) => onChange(Number(e.target.value))}
       className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
       style={{

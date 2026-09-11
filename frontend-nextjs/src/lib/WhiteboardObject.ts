@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { whiteboard, Stroke } from "./WhiteboardManager";
+import { sceneText } from "./sceneText";
 
 const TRAY = 7;
 const REACH = 210;
@@ -86,7 +87,7 @@ export class WhiteboardObject {
 
   private createPrompt() {
     const label = this.scene.add
-      .text(0, 0, "Click to draw", {
+      .text(0, 0, sceneText().draw, {
         fontSize: "13px",
         fontFamily: "VT323, monospace",
         color: "#ffffff",

@@ -14,6 +14,7 @@ import {
 import { callManager } from "@/lib/CallManager";
 import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
+import { joinPath, shareUrl } from "@/lib/links";
 import {
   GUIDE_ID,
   GUIDE_SPRITE,
@@ -153,9 +154,7 @@ export default function RoomTutorial({
 
   const copyInvite = useCallback(() => {
     if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(
-      `${window.location.origin}/join?roomId=${roomId}`,
-    );
+    navigator.clipboard.writeText(shareUrl(joinPath(roomId)));
     setCopied(true);
     clearTimeout(copyTimer.current);
     copyTimer.current = setTimeout(() => setCopied(false), 2000);
@@ -333,7 +332,7 @@ export default function RoomTutorial({
         >
           <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
           <span className="flex-1 truncate text-[10px] font-medium text-[var(--color-braun-text)]/70">
-            /join?roomId={roomId}
+            {joinPath(roomId)}
           </span>
           <button
             onClick={copyInvite}

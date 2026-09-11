@@ -24,7 +24,9 @@
     "save": "저장",
     "close": "닫기",
     "guest": "게스트",
-    "you": "나"
+    "you": "나",
+    "justNow": "방금",
+    "unknown": "알 수 없음"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -60,9 +62,18 @@
     "roomsLabel": "방",
     "alwaysOn": "항상 열려 있음",
     "directory": {
-      "design": { "name": "디자인 팀", "here": "5명 있음" },
-      "founders": { "name": "창업자", "here": "2명 있음" },
-      "jam": { "name": "주말 잼", "here": "비어 있음" }
+      "design": {
+        "name": "디자인 팀",
+        "here": "5명 있음"
+      },
+      "founders": {
+        "name": "창업자",
+        "here": "2명 있음"
+      },
+      "jam": {
+        "name": "주말 잼",
+        "here": "비어 있음"
+      }
     },
     "enter": {
       "title": "링크를 열면 바로 입장이에요.",
@@ -238,7 +249,6 @@
       "OFFLINE": "오프라인"
     },
     "lastActive": "{time} 활동",
-    "justNow": "방금",
     "full": "가득 참",
     "enter": "입장",
     "gatheringPeople": "사람들을 모으는 중...",
@@ -279,7 +289,6 @@
       "shareText": "SpatialMeet에서 {name}님의 프로필을 확인해 보세요",
       "created": "생성",
       "joined": "참여",
-      "unknown": "알 수 없음",
       "chooseCharacter": "캐릭터 선택",
       "selectAvatar": "아바타를 선택하세요"
     },
@@ -340,13 +349,7 @@
       "join": "참여",
       "copyInvite": "초대 링크 복사",
       "copyLink": "링크 복사",
-      "players": "{count}/{max}명",
-      "unknown": "알 수 없음"
-    },
-    "widget": {
-      "view": "대시보드 보기",
-      "created": "생성",
-      "joined": "참여"
+      "players": "{count}/{max}명"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "통화 나가기"
   },
   "status": {
-    "available": { "label": "대화 가능", "description": "이야기할 준비 완료" },
-    "busy": { "label": "바쁨", "description": "방해 금지" },
-    "away": { "label": "자리 비움", "description": "곧 돌아올게요" }
+    "available": {
+      "label": "대화 가능",
+      "description": "이야기할 준비 완료"
+    },
+    "busy": {
+      "label": "바쁨",
+      "description": "방해 금지"
+    },
+    "away": {
+      "label": "자리 비움",
+      "description": "곧 돌아올게요"
+    }
   },
   "chat": {
     "title": "방 채팅",

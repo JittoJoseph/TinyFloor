@@ -8,6 +8,7 @@ import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
 import { useToast } from "@/components/ui/Toast";
+import { joinPath, profilePath, shareUrl } from "@/lib/links";
 import {
   ProfileCard,
   RoomSection,
@@ -86,7 +87,7 @@ function DashboardContent() {
     if (!authLoading && isAuthenticated && user && !isViewingOther) {
       const currentUrl = new URL(window.location.href);
       if (!currentUrl.searchParams.get("user")) {
-        router.replace(`/dashboard?user=${user.id}`, { scroll: false });
+        router.replace(profilePath(user.id), { scroll: false });
       }
     }
   }, [authLoading, isAuthenticated, user, isViewingOther, router]);
@@ -198,7 +199,7 @@ function DashboardContent() {
   };
 
   const handleCopyLink = (room: Room) => {
-    const link = `${window.location.origin}/join?roomId=${room.id}`;
+    const link = shareUrl(joinPath(room.id));
     if (navigator.clipboard) {
       navigator.clipboard.writeText(link);
       setCopiedRoomId(room.id);

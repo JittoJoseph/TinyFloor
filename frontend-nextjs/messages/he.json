@@ -24,7 +24,9 @@
     "save": "שמירה",
     "close": "סגירה",
     "guest": "אורח",
-    "you": "את/ה"
+    "you": "את/ה",
+    "justNow": "ממש עכשיו",
+    "unknown": "לא ידוע"
   },
   "languageSwitcher": {
     "label": "שפה",
@@ -60,9 +62,18 @@
     "roomsLabel": "חדרים",
     "alwaysOn": "תמיד פתוח",
     "directory": {
-      "design": { "name": "צוות עיצוב", "here": "5 כאן" },
-      "founders": { "name": "מייסדים", "here": "2 כאן" },
-      "jam": { "name": "ג׳אם סופ״ש", "here": "ריק" }
+      "design": {
+        "name": "צוות עיצוב",
+        "here": "5 כאן"
+      },
+      "founders": {
+        "name": "מייסדים",
+        "here": "2 כאן"
+      },
+      "jam": {
+        "name": "ג׳אם סופ״ש",
+        "here": "ריק"
+      }
     },
     "enter": {
       "title": "פותחים קישור ונמצאים בפנים.",
@@ -238,7 +249,6 @@
       "OFFLINE": "לא מחובר"
     },
     "lastActive": "פעיל {time}",
-    "justNow": "ממש עכשיו",
     "full": "מלא",
     "enter": "כניסה",
     "gatheringPeople": "אוספים אנשים...",
@@ -279,7 +289,6 @@
       "shareText": "כדאי לראות את הפרופיל של {name} ב־SpatialMeet",
       "created": "נוצרו",
       "joined": "הצטרפות",
-      "unknown": "לא ידוע",
       "chooseCharacter": "בחירת דמות",
       "selectAvatar": "בחירת האווטר שלך"
     },
@@ -340,13 +349,7 @@
       "join": "הצטרפות",
       "copyInvite": "העתקת קישור הזמנה",
       "copyLink": "העתקת קישור",
-      "players": "{count}/{max} שחקנים",
-      "unknown": "לא ידוע"
-    },
-    "widget": {
-      "view": "צפייה בלוח הבקרה",
-      "created": "נוצרו",
-      "joined": "הצטרפות"
+      "players": "{count}/{max} שחקנים"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "יציאה מהשיחה"
   },
   "status": {
-    "available": { "label": "זמין", "description": "מוכן לשיחה" },
-    "busy": { "label": "עסוק", "description": "נא לא להפריע" },
-    "away": { "label": "לא ליד המחשב", "description": "כבר חוזר" }
+    "available": {
+      "label": "זמין",
+      "description": "מוכן לשיחה"
+    },
+    "busy": {
+      "label": "עסוק",
+      "description": "נא לא להפריע"
+    },
+    "away": {
+      "label": "לא ליד המחשב",
+      "description": "כבר חוזר"
+    }
   },
   "chat": {
     "title": "צ׳אט החדר",

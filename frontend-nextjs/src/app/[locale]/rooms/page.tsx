@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useFormatter, useNow, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Gamepad2,
   Users,
@@ -18,6 +18,8 @@ import { UserMenu } from "@/components/auth/UserMenu";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { apiClient } from "@/lib/api";
 import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
+import { useTimeAgo } from "@/lib/i18n/useTimeAgo";
+import { joinPath } from "@/lib/links";
 
 interface Room {
   id: string;
@@ -51,8 +53,7 @@ const getPresence = (room: Room): Presence => {
 export default function RoomsPage() {
   const t = useTranslations("directory");
   const tc = useTranslations("common");
-  const format = useFormatter();
-  const now = useNow({ updateInterval: 60000 });
+  const timeAgo = useTimeAgo();
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -120,13 +121,6 @@ export default function RoomsPage() {
     !isSearching && hasMore && !loading,
     loadMore,
   );
-
-  const getTimeAgo = (dateString?: string) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-    if (now.getTime() - date.getTime() < 60000) return t("justNow");
-    return format.relativeTime(date, now);
-  };
 
   return (
     <div className="min-h-screen w-full pt-8 md:pt-20 pb-12 px-4 md:px-8 font-body relative">
@@ -257,7 +251,7 @@ export default function RoomsPage() {
                   <div
                     key={room.id}
                     onClick={() =>
-                      !isFull && router.push(`/join?roomId=${room.id}`)
+                      !isFull && router.push(joinPath(room.id))
                     }
                     className={`group flex flex-col justify-between h-[220px] p-6 rounded-3xl transition-all duration-300 relative overflow-hidden ${
                       isSystemLobby
@@ -314,7 +308,7 @@ export default function RoomsPage() {
                       {room.lastActivityAt && (
                         <p className="text-[13px] text-[var(--color-braun-text)] opacity-60 mt-1">
                           {t("lastActive", {
-                            time: getTimeAgo(room.lastActivityAt),
+                            time: timeAgo(room.lastActivityAt),
                           })}
                         </p>
                       )}

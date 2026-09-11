@@ -24,7 +24,9 @@
     "save": "Save",
     "close": "Close",
     "guest": "Guest",
-    "you": "You"
+    "you": "You",
+    "justNow": "just now",
+    "unknown": "Unknown"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -60,9 +62,18 @@
     "roomsLabel": "Rooms",
     "alwaysOn": "Always on",
     "directory": {
-      "design": { "name": "Design team", "here": "5 here" },
-      "founders": { "name": "Founders", "here": "2 here" },
-      "jam": { "name": "Weekend jam", "here": "Empty" }
+      "design": {
+        "name": "Design team",
+        "here": "5 here"
+      },
+      "founders": {
+        "name": "Founders",
+        "here": "2 here"
+      },
+      "jam": {
+        "name": "Weekend jam",
+        "here": "Empty"
+      }
     },
     "enter": {
       "title": "Open a link and you are inside.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Offline"
     },
     "lastActive": "Active {time}",
-    "justNow": "just now",
     "full": "Full",
     "enter": "Enter",
     "gatheringPeople": "Gathering people...",
@@ -279,7 +289,6 @@
       "shareText": "Check out {name}'s profile on SpatialMeet",
       "created": "created",
       "joined": "joined",
-      "unknown": "Unknown",
       "chooseCharacter": "Choose Character",
       "selectAvatar": "Select your avatar"
     },
@@ -340,13 +349,7 @@
       "join": "Join",
       "copyInvite": "Copy invite link",
       "copyLink": "Copy link",
-      "players": "{count}/{max} players",
-      "unknown": "Unknown"
-    },
-    "widget": {
-      "view": "View Dashboard",
-      "created": "created",
-      "joined": "joined"
+      "players": "{count}/{max} players"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Leave call"
   },
   "status": {
-    "available": { "label": "Available", "description": "Ready to chat" },
-    "busy": { "label": "Busy", "description": "Do not disturb" },
-    "away": { "label": "Away", "description": "Be right back" }
+    "available": {
+      "label": "Available",
+      "description": "Ready to chat"
+    },
+    "busy": {
+      "label": "Busy",
+      "description": "Do not disturb"
+    },
+    "away": {
+      "label": "Away",
+      "description": "Be right back"
+    }
   },
   "chat": {
     "title": "Room Chat",

@@ -1,7 +1,8 @@
 "use client";
 
-import { useFormatter, useNow, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Clock, UserPlus, Globe, LogIn } from "lucide-react";
+import { useTimeAgo } from "@/lib/i18n/useTimeAgo";
 import { Room } from "./RoomCard";
 
 interface ActivityItem {
@@ -18,9 +19,7 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
   const t = useTranslations("dashboard.activity");
-  const tDirectory = useTranslations("directory");
-  const format = useFormatter();
-  const now = useNow({ updateInterval: 60000 });
+  const timeAgo = useTimeAgo({ narrow: true });
 
   // Generate activity items from rooms data
   const activities: ActivityItem[] = [
@@ -56,13 +55,6 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
       case "room_visited":
         return { Icon: LogIn, color: "text-amber-600", bg: "bg-amber-50" };
     }
-  };
-
-  const formatTimeAgo = (timestamp: string) => {
-    if (!timestamp) return "";
-    const date = new Date(timestamp);
-    if (now.getTime() - date.getTime() < 60000) return tDirectory("justNow");
-    return format.relativeTime(date, { now, style: "narrow" });
   };
 
   if (activities.length === 0) {
@@ -111,7 +103,7 @@ export function ActivityFeed({ createdRooms, joinedRooms }: ActivityFeedProps) {
                 <p className="text-[10px] text-gray-400">{t(activity.type)}</p>
               </div>
               <span className="text-[10px] text-gray-400 shrink-0">
-                {formatTimeAgo(activity.timestamp)}
+                {timeAgo(activity.timestamp)}
               </span>
             </div>
           );

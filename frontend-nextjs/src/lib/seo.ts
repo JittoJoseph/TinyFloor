@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
 
 const SITE_NAME = "SpatialMeet";
@@ -96,5 +97,38 @@ export function pageMetadata({
       ...(description ? { description } : {}),
       images: ["/office.png"],
     },
+  };
+}
+
+type RouteParams = Record<string, string>;
+
+/**
+ * A route's `generateMetadata`, built from keys under the `metadata` messages.
+ * Each localized layout declares only what differs: path, copy and indexing.
+ */
+export function localizedMetadata({
+  path,
+  title,
+  description,
+  socialTitle,
+  noindex,
+}: {
+  path: string | ((params: RouteParams) => string);
+  title?: string;
+  description?: string;
+  socialTitle?: string;
+  noindex?: boolean;
+}) {
+  return async ({ params }: { params: Promise<RouteParams> }): Promise<Metadata> => {
+    const resolved = await params;
+    const t = await getTranslations({ locale: resolved.locale, namespace: "metadata" });
+    return pageMetadata({
+      path: typeof path === "function" ? path(resolved) : path,
+      locale: resolved.locale,
+      title: title && t(title),
+      description: description && t(description),
+      socialTitle: socialTitle && t(socialTitle),
+      noindex,
+    });
   };
 }

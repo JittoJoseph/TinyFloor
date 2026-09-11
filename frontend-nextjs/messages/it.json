@@ -24,7 +24,9 @@
     "save": "Salva",
     "close": "Chiudi",
     "guest": "Ospite",
-    "you": "Tu"
+    "you": "Tu",
+    "justNow": "proprio ora",
+    "unknown": "Sconosciuto"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -60,9 +62,18 @@
     "roomsLabel": "Stanze",
     "alwaysOn": "Sempre aperte",
     "directory": {
-      "design": { "name": "Team design", "here": "5 presenti" },
-      "founders": { "name": "Fondatori", "here": "2 presenti" },
-      "jam": { "name": "Jam del weekend", "here": "Vuota" }
+      "design": {
+        "name": "Team design",
+        "here": "5 presenti"
+      },
+      "founders": {
+        "name": "Fondatori",
+        "here": "2 presenti"
+      },
+      "jam": {
+        "name": "Jam del weekend",
+        "here": "Vuota"
+      }
     },
     "enter": {
       "title": "Apri un link e sei dentro.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Offline"
     },
     "lastActive": "Attiva {time}",
-    "justNow": "proprio ora",
     "full": "Piena",
     "enter": "Entra",
     "gatheringPeople": "Raccolta delle persone...",
@@ -279,7 +289,6 @@
       "shareText": "Guarda il profilo di {name} su SpatialMeet",
       "created": "create",
       "joined": "frequentate",
-      "unknown": "Sconosciuto",
       "chooseCharacter": "Scegli personaggio",
       "selectAvatar": "Seleziona il tuo avatar"
     },
@@ -340,13 +349,7 @@
       "join": "Entra",
       "copyInvite": "Copia link di invito",
       "copyLink": "Copia link",
-      "players": "{count}/{max} giocatori",
-      "unknown": "Sconosciuto"
-    },
-    "widget": {
-      "view": "Vai alla dashboard",
-      "created": "create",
-      "joined": "frequentate"
+      "players": "{count}/{max} giocatori"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Abbandona chiamata"
   },
   "status": {
-    "available": { "label": "Disponibile", "description": "Pronto a chiacchierare" },
-    "busy": { "label": "Occupato", "description": "Non disturbare" },
-    "away": { "label": "Assente", "description": "Torno subito" }
+    "available": {
+      "label": "Disponibile",
+      "description": "Pronto a chiacchierare"
+    },
+    "busy": {
+      "label": "Occupato",
+      "description": "Non disturbare"
+    },
+    "away": {
+      "label": "Assente",
+      "description": "Torno subito"
+    }
   },
   "chat": {
     "title": "Chat della stanza",

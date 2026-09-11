@@ -24,7 +24,9 @@
     "save": "Enregistrer",
     "close": "Fermer",
     "guest": "Invité",
-    "you": "Vous"
+    "you": "Vous",
+    "justNow": "à l’instant",
+    "unknown": "Inconnu"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -60,9 +62,18 @@
     "roomsLabel": "Salles",
     "alwaysOn": "Toujours ouvertes",
     "directory": {
-      "design": { "name": "Équipe design", "here": "5 présents" },
-      "founders": { "name": "Fondateurs", "here": "2 présents" },
-      "jam": { "name": "Jam du week-end", "here": "Vide" }
+      "design": {
+        "name": "Équipe design",
+        "here": "5 présents"
+      },
+      "founders": {
+        "name": "Fondateurs",
+        "here": "2 présents"
+      },
+      "jam": {
+        "name": "Jam du week-end",
+        "here": "Vide"
+      }
     },
     "enter": {
       "title": "Ouvrez un lien et vous êtes dedans.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Hors ligne"
     },
     "lastActive": "Active {time}",
-    "justNow": "à l’instant",
     "full": "Pleine",
     "enter": "Entrer",
     "gatheringPeople": "Rassemblement des personnes...",
@@ -279,7 +289,6 @@
       "shareText": "Découvrez le profil de {name} sur SpatialMeet",
       "created": "créées",
       "joined": "rejointes",
-      "unknown": "Inconnu",
       "chooseCharacter": "Choisir un personnage",
       "selectAvatar": "Sélectionnez votre avatar"
     },
@@ -340,13 +349,7 @@
       "join": "Rejoindre",
       "copyInvite": "Copier le lien d’invitation",
       "copyLink": "Copier le lien",
-      "players": "{count}/{max} joueurs",
-      "unknown": "Inconnu"
-    },
-    "widget": {
-      "view": "Voir le tableau de bord",
-      "created": "créées",
-      "joined": "rejointes"
+      "players": "{count}/{max} joueurs"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Quitter l’appel"
   },
   "status": {
-    "available": { "label": "Disponible", "description": "Prêt à discuter" },
-    "busy": { "label": "Occupé", "description": "Ne pas déranger" },
-    "away": { "label": "Absent", "description": "Je reviens tout de suite" }
+    "available": {
+      "label": "Disponible",
+      "description": "Prêt à discuter"
+    },
+    "busy": {
+      "label": "Occupé",
+      "description": "Ne pas déranger"
+    },
+    "away": {
+      "label": "Absent",
+      "description": "Je reviens tout de suite"
+    }
   },
   "chat": {
     "title": "Chat de la salle",

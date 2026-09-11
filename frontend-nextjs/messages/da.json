@@ -24,7 +24,9 @@
     "save": "Gem",
     "close": "Luk",
     "guest": "Gæst",
-    "you": "Dig"
+    "you": "Dig",
+    "justNow": "lige nu",
+    "unknown": "Ukendt"
   },
   "languageSwitcher": {
     "label": "Sprog",
@@ -60,9 +62,18 @@
     "roomsLabel": "Rum",
     "alwaysOn": "Altid åbent",
     "directory": {
-      "design": { "name": "Designteamet", "here": "5 her" },
-      "founders": { "name": "Stifterne", "here": "2 her" },
-      "jam": { "name": "Weekendjam", "here": "Tomt" }
+      "design": {
+        "name": "Designteamet",
+        "here": "5 her"
+      },
+      "founders": {
+        "name": "Stifterne",
+        "here": "2 her"
+      },
+      "jam": {
+        "name": "Weekendjam",
+        "here": "Tomt"
+      }
     },
     "enter": {
       "title": "Åbn et link, så er du inde.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Offline"
     },
     "lastActive": "Aktivt {time}",
-    "justNow": "lige nu",
     "full": "Fuldt",
     "enter": "Gå ind",
     "gatheringPeople": "Samler personer...",
@@ -279,7 +289,6 @@
       "shareText": "Se profilen for {name} på SpatialMeet",
       "created": "oprettet",
       "joined": "deltaget",
-      "unknown": "Ukendt",
       "chooseCharacter": "Vælg figur",
       "selectAvatar": "Vælg din avatar"
     },
@@ -340,13 +349,7 @@
       "join": "Deltag",
       "copyInvite": "Kopiér invitationslink",
       "copyLink": "Kopiér link",
-      "players": "{count}/{max} spillere",
-      "unknown": "Ukendt"
-    },
-    "widget": {
-      "view": "Se oversigt",
-      "created": "oprettet",
-      "joined": "deltaget"
+      "players": "{count}/{max} spillere"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Forlad opkald"
   },
   "status": {
-    "available": { "label": "Tilgængelig", "description": "Klar til en snak" },
-    "busy": { "label": "Optaget", "description": "Må ikke forstyrres" },
-    "away": { "label": "Væk", "description": "Er straks tilbage" }
+    "available": {
+      "label": "Tilgængelig",
+      "description": "Klar til en snak"
+    },
+    "busy": {
+      "label": "Optaget",
+      "description": "Må ikke forstyrres"
+    },
+    "away": {
+      "label": "Væk",
+      "description": "Er straks tilbage"
+    }
   },
   "chat": {
     "title": "Rumchat",

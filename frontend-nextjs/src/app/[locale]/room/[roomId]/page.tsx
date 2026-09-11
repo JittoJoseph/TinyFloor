@@ -16,6 +16,7 @@ import WhiteboardOverlay from "@/components/WhiteboardOverlay";
 import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
 import type { PlayerStatus } from "@/lib/types";
+import { joinPath, shareUrl } from "@/lib/links";
 import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
 function Connecting() {
@@ -75,7 +76,7 @@ export default function RoomPage() {
   useEffect(() => {
     setMounted(true);
     if (!name || !character) {
-      router.replace(`/join?roomId=${roomId}`);
+      router.replace(joinPath(roomId));
     } else {
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms/${roomId}`)
         .then((res) => {
@@ -89,7 +90,7 @@ export default function RoomPage() {
 
   // Copy invite link
   const copyInviteLink = useCallback(() => {
-    const link = `${window.location.origin}/join?roomId=${roomId}`;
+    const link = shareUrl(joinPath(roomId));
     if (navigator.clipboard) {
       navigator.clipboard.writeText(link);
       setCopied(true);

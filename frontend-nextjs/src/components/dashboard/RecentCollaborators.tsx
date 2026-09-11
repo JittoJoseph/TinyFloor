@@ -4,6 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Users } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
+import { profilePath } from "@/lib/links";
 import { CharacterPreview } from "./CharacterPreview";
 
 export interface Collaborator {
@@ -78,7 +79,7 @@ export function RecentCollaborators({
       <div className="flex flex-wrap gap-2 flex-1 content-start">
         {collaborators.slice(0, 8).map((person, index) => {
           const hasValidId = Boolean(person.id);
-          const linkHref = hasValidId ? `/dashboard?user=${person.id}` : "#";
+          const linkHref = hasValidId ? profilePath(person.id) : "#";
           const content = (
             <div className="w-11 h-14 bg-white rounded-xl border border-[rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden hover:border-blue-300 hover:shadow-sm transition-all hover:-translate-y-0.5 pb-4">
               <CharacterPreview

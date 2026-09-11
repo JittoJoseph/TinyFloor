@@ -24,7 +24,9 @@
     "save": "保存",
     "close": "閉じる",
     "guest": "ゲスト",
-    "you": "あなた"
+    "you": "あなた",
+    "justNow": "たった今",
+    "unknown": "不明"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -60,9 +62,18 @@
     "roomsLabel": "ルーム",
     "alwaysOn": "いつでもオープン",
     "directory": {
-      "design": { "name": "デザインチーム", "here": "5人在席" },
-      "founders": { "name": "創業メンバー", "here": "2人在席" },
-      "jam": { "name": "週末ジャム", "here": "空き" }
+      "design": {
+        "name": "デザインチーム",
+        "here": "5人在席"
+      },
+      "founders": {
+        "name": "創業メンバー",
+        "here": "2人在席"
+      },
+      "jam": {
+        "name": "週末ジャム",
+        "here": "空き"
+      }
     },
     "enter": {
       "title": "リンクを開けば、もう中にいます。",
@@ -238,7 +249,6 @@
       "OFFLINE": "オフライン"
     },
     "lastActive": "{time}にアクティブ",
-    "justNow": "たった今",
     "full": "満員",
     "enter": "入室",
     "gatheringPeople": "メンバーを集めています...",
@@ -279,7 +289,6 @@
       "shareText": "SpatialMeet で {name} さんのプロフィールを見てみよう",
       "created": "作成",
       "joined": "参加",
-      "unknown": "不明",
       "chooseCharacter": "キャラクターを選ぶ",
       "selectAvatar": "アバターを選択してください"
     },
@@ -340,13 +349,7 @@
       "join": "参加",
       "copyInvite": "招待リンクをコピー",
       "copyLink": "リンクをコピー",
-      "players": "{count}/{max} 人",
-      "unknown": "不明"
-    },
-    "widget": {
-      "view": "ダッシュボードを見る",
-      "created": "作成",
-      "joined": "参加"
+      "players": "{count}/{max} 人"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "通話から退出"
   },
   "status": {
-    "available": { "label": "対応可能", "description": "話しかけてOK" },
-    "busy": { "label": "取り込み中", "description": "話しかけないでください" },
-    "away": { "label": "離席中", "description": "すぐ戻ります" }
+    "available": {
+      "label": "対応可能",
+      "description": "話しかけてOK"
+    },
+    "busy": {
+      "label": "取り込み中",
+      "description": "話しかけないでください"
+    },
+    "away": {
+      "label": "離席中",
+      "description": "すぐ戻ります"
+    }
   },
   "chat": {
     "title": "ルームチャット",

@@ -1,21 +1,10 @@
-import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { pageMetadata } from '@/lib/seo';
+import { localizedMetadata } from '@/lib/seo';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata' });
-  return pageMetadata({
-    title: t('roomsTitle'),
-    description: t('roomsDescription'),
-    path: '/rooms',
-    locale,
-  });
-}
+export const generateMetadata = localizedMetadata({
+  path: '/rooms',
+  title: 'roomsTitle',
+  description: 'roomsDescription',
+});
 
 export default function RoomsLayout({
   children,

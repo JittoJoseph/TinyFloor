@@ -11,6 +11,7 @@ import { CharacterPreview } from "@/components/dashboard";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiClient } from "@/lib/api";
 import { useInfiniteScroll } from "@/lib/useInfiniteScroll";
+import { profilePath } from "@/lib/links";
 import type { PublicUser } from "@/lib/types";
 
 const PAGE_SIZE = 24;
@@ -173,7 +174,7 @@ export default function PeoplePage() {
 
         {yourCard && (
           <Link
-            href={`/dashboard?user=${yourCard.id}`}
+            href={profilePath(yourCard.id)}
             className="cursor-pointer block w-full"
           >
             <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 relative overflow-hidden group">
@@ -235,7 +236,7 @@ export default function PeoplePage() {
             {visiblePeople.map((person) => (
               <Link
                 key={person.id}
-                href={`/dashboard?user=${person.id}`}
+                href={profilePath(person.id)}
                 className="cursor-pointer group"
               >
                 <div className="bg-white border border-[rgba(0,0,0,0.05)] rounded-3xl p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 h-full flex items-center gap-4">

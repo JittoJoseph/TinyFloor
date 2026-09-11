@@ -24,7 +24,9 @@
     "save": "Zapisz",
     "close": "Zamknij",
     "guest": "Gość",
-    "you": "Ty"
+    "you": "Ty",
+    "justNow": "przed chwilą",
+    "unknown": "Nieznane"
   },
   "languageSwitcher": {
     "label": "Język",
@@ -60,9 +62,18 @@
     "roomsLabel": "Pokoje",
     "alwaysOn": "Zawsze otwarte",
     "directory": {
-      "design": { "name": "Zespół designu", "here": "5 osób" },
-      "founders": { "name": "Założyciele", "here": "2 osoby" },
-      "jam": { "name": "Weekendowy jam", "here": "Pusty" }
+      "design": {
+        "name": "Zespół designu",
+        "here": "5 osób"
+      },
+      "founders": {
+        "name": "Założyciele",
+        "here": "2 osoby"
+      },
+      "jam": {
+        "name": "Weekendowy jam",
+        "here": "Pusty"
+      }
     },
     "enter": {
       "title": "Otwórz link i już jesteś w środku.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Offline"
     },
     "lastActive": "Aktywny {time}",
-    "justNow": "przed chwilą",
     "full": "Pełny",
     "enter": "Wejdź",
     "gatheringPeople": "Zbieranie osób...",
@@ -279,7 +289,6 @@
       "shareText": "Zobacz profil użytkownika {name} w SpatialMeet",
       "created": "utworzone",
       "joined": "dołączone",
-      "unknown": "Nieznane",
       "chooseCharacter": "Wybierz postać",
       "selectAvatar": "Wybierz swojego awatara"
     },
@@ -340,13 +349,7 @@
       "join": "Dołącz",
       "copyInvite": "Kopiuj link z zaproszeniem",
       "copyLink": "Kopiuj link",
-      "players": "Gracze: {count}/{max}",
-      "unknown": "Nieznane"
-    },
-    "widget": {
-      "view": "Zobacz panel",
-      "created": "utworzone",
-      "joined": "dołączone"
+      "players": "Gracze: {count}/{max}"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Opuść rozmowę"
   },
   "status": {
-    "available": { "label": "Dostępny", "description": "Chętnie pogadam" },
-    "busy": { "label": "Zajęty", "description": "Nie przeszkadzać" },
-    "away": { "label": "Nieobecny", "description": "Zaraz wracam" }
+    "available": {
+      "label": "Dostępny",
+      "description": "Chętnie pogadam"
+    },
+    "busy": {
+      "label": "Zajęty",
+      "description": "Nie przeszkadzać"
+    },
+    "away": {
+      "label": "Nieobecny",
+      "description": "Zaraz wracam"
+    }
   },
   "chat": {
     "title": "Czat pokoju",

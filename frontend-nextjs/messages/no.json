@@ -24,7 +24,9 @@
     "save": "Lagre",
     "close": "Lukk",
     "guest": "Gjest",
-    "you": "Deg"
+    "you": "Deg",
+    "justNow": "akkurat nå",
+    "unknown": "Ukjent"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -60,9 +62,18 @@
     "roomsLabel": "Rom",
     "alwaysOn": "Alltid åpent",
     "directory": {
-      "design": { "name": "Designteamet", "here": "5 her" },
-      "founders": { "name": "Gründerne", "here": "2 her" },
-      "jam": { "name": "Helgejam", "here": "Tomt" }
+      "design": {
+        "name": "Designteamet",
+        "here": "5 her"
+      },
+      "founders": {
+        "name": "Gründerne",
+        "here": "2 her"
+      },
+      "jam": {
+        "name": "Helgejam",
+        "here": "Tomt"
+      }
     },
     "enter": {
       "title": "Åpne en lenke, så er du inne.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Frakoblet"
     },
     "lastActive": "Aktivt {time}",
-    "justNow": "akkurat nå",
     "full": "Fullt",
     "enter": "Gå inn",
     "gatheringPeople": "Samler personer...",
@@ -279,7 +289,6 @@
       "shareText": "Sjekk ut profilen til {name} på SpatialMeet",
       "created": "opprettet",
       "joined": "deltatt",
-      "unknown": "Ukjent",
       "chooseCharacter": "Velg figur",
       "selectAvatar": "Velg avataren din"
     },
@@ -340,13 +349,7 @@
       "join": "Bli med",
       "copyInvite": "Kopier invitasjonslenke",
       "copyLink": "Kopier lenke",
-      "players": "{count}/{max} spillere",
-      "unknown": "Ukjent"
-    },
-    "widget": {
-      "view": "Se oversikt",
-      "created": "opprettet",
-      "joined": "deltatt"
+      "players": "{count}/{max} spillere"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Forlat samtalen"
   },
   "status": {
-    "available": { "label": "Tilgjengelig", "description": "Klar for en prat" },
-    "busy": { "label": "Opptatt", "description": "Ikke stør" },
-    "away": { "label": "Borte", "description": "Straks tilbake" }
+    "available": {
+      "label": "Tilgjengelig",
+      "description": "Klar for en prat"
+    },
+    "busy": {
+      "label": "Opptatt",
+      "description": "Ikke stør"
+    },
+    "away": {
+      "label": "Borte",
+      "description": "Straks tilbake"
+    }
   },
   "chat": {
     "title": "Romchat",

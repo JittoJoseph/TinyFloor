@@ -24,7 +24,9 @@
     "save": "Guardar",
     "close": "Cerrar",
     "guest": "Invitado",
-    "you": "Tú"
+    "you": "Tú",
+    "justNow": "justo ahora",
+    "unknown": "Desconocido"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -60,9 +62,18 @@
     "roomsLabel": "Salas",
     "alwaysOn": "Siempre abiertas",
     "directory": {
-      "design": { "name": "Equipo de diseño", "here": "5 aquí" },
-      "founders": { "name": "Fundadores", "here": "2 aquí" },
-      "jam": { "name": "Jam del finde", "here": "Vacía" }
+      "design": {
+        "name": "Equipo de diseño",
+        "here": "5 aquí"
+      },
+      "founders": {
+        "name": "Fundadores",
+        "here": "2 aquí"
+      },
+      "jam": {
+        "name": "Jam del finde",
+        "here": "Vacía"
+      }
     },
     "enter": {
       "title": "Abre un enlace y ya estás dentro.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Desconectada"
     },
     "lastActive": "Activa {time}",
-    "justNow": "justo ahora",
     "full": "Llena",
     "enter": "Entrar",
     "gatheringPeople": "Reuniendo personas...",
@@ -279,7 +289,6 @@
       "shareText": "Mira el perfil de {name} en SpatialMeet",
       "created": "creadas",
       "joined": "unidas",
-      "unknown": "Desconocido",
       "chooseCharacter": "Elegir personaje",
       "selectAvatar": "Selecciona tu avatar"
     },
@@ -340,13 +349,7 @@
       "join": "Unirse",
       "copyInvite": "Copiar enlace de invitación",
       "copyLink": "Copiar enlace",
-      "players": "{count}/{max} jugadores",
-      "unknown": "Desconocido"
-    },
-    "widget": {
-      "view": "Ver panel",
-      "created": "creadas",
-      "joined": "unidas"
+      "players": "{count}/{max} jugadores"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Salir de la llamada"
   },
   "status": {
-    "available": { "label": "Disponible", "description": "Listo para charlar" },
-    "busy": { "label": "Ocupado", "description": "No molestar" },
-    "away": { "label": "Ausente", "description": "Vuelvo enseguida" }
+    "available": {
+      "label": "Disponible",
+      "description": "Listo para charlar"
+    },
+    "busy": {
+      "label": "Ocupado",
+      "description": "No molestar"
+    },
+    "away": {
+      "label": "Ausente",
+      "description": "Vuelvo enseguida"
+    }
   },
   "chat": {
     "title": "Chat de la sala",

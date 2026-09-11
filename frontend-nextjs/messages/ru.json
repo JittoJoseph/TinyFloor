@@ -24,7 +24,9 @@
     "save": "Сохранить",
     "close": "Закрыть",
     "guest": "Гость",
-    "you": "Вы"
+    "you": "Вы",
+    "justNow": "только что",
+    "unknown": "Неизвестно"
   },
   "languageSwitcher": {
     "label": "Язык",
@@ -60,9 +62,18 @@
     "roomsLabel": "Комнаты",
     "alwaysOn": "Всегда открыты",
     "directory": {
-      "design": { "name": "Команда дизайна", "here": "5 здесь" },
-      "founders": { "name": "Основатели", "here": "2 здесь" },
-      "jam": { "name": "Выходной джем", "here": "Пусто" }
+      "design": {
+        "name": "Команда дизайна",
+        "here": "5 здесь"
+      },
+      "founders": {
+        "name": "Основатели",
+        "here": "2 здесь"
+      },
+      "jam": {
+        "name": "Выходной джем",
+        "here": "Пусто"
+      }
     },
     "enter": {
       "title": "Откройте ссылку — и вы внутри.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Офлайн"
     },
     "lastActive": "Активна {time}",
-    "justNow": "только что",
     "full": "Мест нет",
     "enter": "Войти",
     "gatheringPeople": "Собираем людей...",
@@ -279,7 +289,6 @@
       "shareText": "Посмотрите профиль пользователя {name} в SpatialMeet",
       "created": "создано",
       "joined": "посещено",
-      "unknown": "Неизвестно",
       "chooseCharacter": "Выберите персонажа",
       "selectAvatar": "Выберите аватар"
     },
@@ -340,13 +349,7 @@
       "join": "Войти",
       "copyInvite": "Копировать ссылку-приглашение",
       "copyLink": "Копировать ссылку",
-      "players": "Игроков: {count}/{max}",
-      "unknown": "Неизвестно"
-    },
-    "widget": {
-      "view": "Открыть панель",
-      "created": "создано",
-      "joined": "посещено"
+      "players": "Игроков: {count}/{max}"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Покинуть звонок"
   },
   "status": {
-    "available": { "label": "На месте", "description": "Готов пообщаться" },
-    "busy": { "label": "Занят", "description": "Не беспокоить" },
-    "away": { "label": "Отошёл", "description": "Скоро вернусь" }
+    "available": {
+      "label": "На месте",
+      "description": "Готов пообщаться"
+    },
+    "busy": {
+      "label": "Занят",
+      "description": "Не беспокоить"
+    },
+    "away": {
+      "label": "Отошёл",
+      "description": "Скоро вернусь"
+    }
   },
   "chat": {
     "title": "Чат комнаты",

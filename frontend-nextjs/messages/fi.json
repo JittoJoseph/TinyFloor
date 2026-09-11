@@ -24,7 +24,9 @@
     "save": "Tallenna",
     "close": "Sulje",
     "guest": "Vieras",
-    "you": "Sinä"
+    "you": "Sinä",
+    "justNow": "juuri nyt",
+    "unknown": "Tuntematon"
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -60,9 +62,18 @@
     "roomsLabel": "Huoneet",
     "alwaysOn": "Aina auki",
     "directory": {
-      "design": { "name": "Designtiimi", "here": "5 paikalla" },
-      "founders": { "name": "Perustajat", "here": "2 paikalla" },
-      "jam": { "name": "Viikonloppujamit", "here": "Tyhjä" }
+      "design": {
+        "name": "Designtiimi",
+        "here": "5 paikalla"
+      },
+      "founders": {
+        "name": "Perustajat",
+        "here": "2 paikalla"
+      },
+      "jam": {
+        "name": "Viikonloppujamit",
+        "here": "Tyhjä"
+      }
     },
     "enter": {
       "title": "Avaa linkki, ja olet sisällä.",
@@ -238,7 +249,6 @@
       "OFFLINE": "Offline"
     },
     "lastActive": "Aktiivinen {time}",
-    "justNow": "juuri nyt",
     "full": "Täynnä",
     "enter": "Astu sisään",
     "gatheringPeople": "Kootaan ihmisiä...",
@@ -279,7 +289,6 @@
       "shareText": "Katso käyttäjän {name} profiili SpatialMeetissä",
       "created": "luotu",
       "joined": "liitytty",
-      "unknown": "Tuntematon",
       "chooseCharacter": "Valitse hahmo",
       "selectAvatar": "Valitse avatarisi"
     },
@@ -340,13 +349,7 @@
       "join": "Liity",
       "copyInvite": "Kopioi kutsulinkki",
       "copyLink": "Kopioi linkki",
-      "players": "{count}/{max} pelaajaa",
-      "unknown": "Tuntematon"
-    },
-    "widget": {
-      "view": "Näytä hallintapaneeli",
-      "created": "luotu",
-      "joined": "liitytty"
+      "players": "{count}/{max} pelaajaa"
     }
   },
   "room": {
@@ -387,9 +390,18 @@
     "leaveCall": "Poistu puhelusta"
   },
   "status": {
-    "available": { "label": "Tavoitettavissa", "description": "Valmis juttelemaan" },
-    "busy": { "label": "Varattu", "description": "Älä häiritse" },
-    "away": { "label": "Poissa", "description": "Palaan pian" }
+    "available": {
+      "label": "Tavoitettavissa",
+      "description": "Valmis juttelemaan"
+    },
+    "busy": {
+      "label": "Varattu",
+      "description": "Älä häiritse"
+    },
+    "away": {
+      "label": "Poissa",
+      "description": "Palaan pian"
+    }
   },
   "chat": {
     "title": "Huonechat",

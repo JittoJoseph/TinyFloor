@@ -48,22 +48,19 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           devices = await navigator.mediaDevices.enumerateDevices();
           probe.getTracks().forEach((track) => track.stop());
         }
-        const map = (kind: string, fallback: string): MediaDevice[] =>
+        const map = (kind: string): MediaDevice[] =>
           devices
             .filter((d) => d.kind === kind)
-            .map((d) => ({
-              deviceId: d.deviceId,
-              label: d.label || `${fallback} ${d.deviceId.slice(0, 6)}`,
-            }));
-        setAudioInputDevices(map("audioinput", t("microphone")));
-        setAudioOutputDevices(map("audiooutput", t("speaker")));
-        setVideoDevices(map("videoinput", t("camera")));
+            .map((d) => ({ deviceId: d.deviceId, label: d.label }));
+        setAudioInputDevices(map("audioinput"));
+        setAudioOutputDevices(map("audiooutput"));
+        setVideoDevices(map("videoinput"));
       } catch {
         // Permission denied or no devices — silently ignore
       }
     };
     loadDevices();
-  }, [isOpen, t]);
+  }, [isOpen]);
 
   useEffect(() => {
     const saved = localStorage.getItem("spacialMeetSettings");
@@ -157,6 +154,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   onChange={setSelectedAudioInput}
                   devices={audioInputDevices}
                   defaultLabel={t("default")}
+                  fallbackLabel={t("microphone")}
                 />
               </SettingRow>
 
@@ -170,6 +168,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   onChange={setSelectedAudioOutput}
                   devices={audioOutputDevices}
                   defaultLabel={t("default")}
+                  fallbackLabel={t("speaker")}
                 />
               </SettingRow>
 
@@ -187,6 +186,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   onChange={setSelectedVideoInput}
                   devices={videoDevices}
                   defaultLabel={t("default")}
+                  fallbackLabel={t("camera")}
                 />
               </SettingRow>
 
@@ -271,11 +271,13 @@ function DeviceSelect({
   onChange,
   devices,
   defaultLabel,
+  fallbackLabel,
 }: {
   value: string;
   onChange: (v: string) => void;
   devices: MediaDevice[];
   defaultLabel: string;
+  fallbackLabel: string;
 }) {
   return (
     <select
@@ -286,7 +288,7 @@ function DeviceSelect({
       <option value="">{defaultLabel}</option>
       {devices.map((d) => (
         <option key={d.deviceId} value={d.deviceId}>
-          {d.label}
+          {d.label || `${fallbackLabel} ${d.deviceId.slice(0, 6)}`}
         </option>
       ))}
     </select>

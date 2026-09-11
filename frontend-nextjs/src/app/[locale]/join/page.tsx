@@ -62,7 +62,7 @@ function JoinContent() {
           hasPassword: found.hasPassword || false,
         });
       } catch {
-        if (!cancelled) setError(t("unavailable"));
+        // shown as the "unavailable" state below
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -72,7 +72,7 @@ function JoinContent() {
     return () => {
       cancelled = true;
     };
-  }, [roomId, shareCode, t]);
+  }, [roomId, shareCode]);
 
   const walkIn = async () => {
     if (!room || !identity.name.trim() || busy) return;
@@ -139,7 +139,7 @@ function JoinContent() {
             {t("unavailableTitle")}
           </h1>
           <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">
-            {error}
+            {t("unavailable")}
           </p>
           <Link href="/rooms" className={primaryButtonClass}>
             {t("browse")}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
@@ -23,15 +23,21 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
 
+  // An effect event, so a new translator instance (refreshed messages) is never
+  // a reason to tear down the scene and its WebSocket.
+  const applySceneText = useEffectEvent(() =>
+    setSceneText({
+      guide: t("guide"),
+      sit: t("sit"),
+      stand: t("stand"),
+      music: t("music"),
+      draw: t("draw"),
+    }),
+  );
+
   useEffect(() => {
     if (gameRef.current && !game.current) {
-      setSceneText({
-        guide: t("guide"),
-        sit: t("sit"),
-        stand: t("stand"),
-        music: t("music"),
-        draw: t("draw"),
-      });
+      applySceneText();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
@@ -79,7 +85,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         game.current = null;
       }
     };
-  }, [name, roomId, character, userId, t]);
+  }, [name, roomId, character, userId]);
 
   return <div ref={gameRef} />;
 };

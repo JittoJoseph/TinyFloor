@@ -343,19 +343,15 @@
     "decline": "رفض",
     "accept": "قبول",
     "tutorial": "مكالمة تعليمية",
-    "minimize": "تصغير",
-    "expand": "تكبير",
     "calling": "جارٍ الاتصال...",
     "cancel": "إلغاء المكالمة",
+    "micOff": "الميكروفون مغلق",
     "errors": {
       "connection": "فشل الاتصال",
       "unsupported": "لا يستطيع هذا المتصفح الوصول إلى أجهزة الوسائط",
       "media": "الكاميرا أو الميكروفون غير متاح",
       "camera": "الكاميرا غير متاحة"
     }
-  },
-  "meeting": {
-    "micOff": "الميكروفون مغلق"
   },
   "controls": {
     "status": "الحالة: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "إلغاء كتم السماعة",
     "openChat": "فتح الدردشة",
     "settings": "الإعدادات",
-    "leaveCall": "مغادرة المكالمة"
+    "leaveCall": "مغادرة المكالمة",
+    "leaveMeeting": "مغادرة الاجتماع"
   },
   "status": {
     "available": {

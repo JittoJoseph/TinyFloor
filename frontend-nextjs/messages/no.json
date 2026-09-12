@@ -343,19 +343,15 @@
     "decline": "Avslå",
     "accept": "Godta",
     "tutorial": "Opplæringssamtale",
-    "minimize": "Minimer",
-    "expand": "Utvid",
     "calling": "Ringer...",
     "cancel": "Avbryt samtale",
+    "micOff": "Mikrofon av",
     "errors": {
       "connection": "Tilkoblingen mislyktes",
       "unsupported": "Denne nettleseren har ikke tilgang til medieenheter",
       "media": "Kamera eller mikrofon er ikke tilgjengelig",
       "camera": "Kameraet er ikke tilgjengelig"
     }
-  },
-  "meeting": {
-    "micOff": "Mikrofon av"
   },
   "controls": {
     "status": "Status: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Slå på høyttaleren",
     "openChat": "Åpne chat",
     "settings": "Innstillinger",
-    "leaveCall": "Forlat samtalen"
+    "leaveCall": "Forlat samtalen",
+    "leaveMeeting": "Forlat møtet"
   },
   "status": {
     "available": {

@@ -343,19 +343,15 @@
     "decline": "Decline",
     "accept": "Accept",
     "tutorial": "Tutorial call",
-    "minimize": "Minimize",
-    "expand": "Expand",
     "calling": "Calling...",
     "cancel": "Cancel call",
+    "micOff": "Microphone off",
     "errors": {
       "connection": "Connection failed",
       "unsupported": "This browser cannot access media devices",
       "media": "Camera or microphone unavailable",
       "camera": "Camera unavailable"
     }
-  },
-  "meeting": {
-    "micOff": "Microphone off"
   },
   "controls": {
     "status": "Status: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Unmute speaker",
     "openChat": "Open chat",
     "settings": "Settings",
-    "leaveCall": "Leave call"
+    "leaveCall": "Leave call",
+    "leaveMeeting": "Leave meeting"
   },
   "status": {
     "available": {

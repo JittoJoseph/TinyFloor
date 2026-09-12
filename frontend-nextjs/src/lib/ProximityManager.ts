@@ -19,17 +19,21 @@ export class ProximityManager {
   private scene: Phaser.Scene;
   private playerManager: PlayerManager;
   private currentPlayer: Phaser.Physics.Arcade.Sprite;
+  private reachable: (id: string) => boolean;
   private proximityStartTimes = new Map<string, number>();
   private lastSignature = "";
 
+  /** `reachable` rules out people it makes no sense to call right now. */
   constructor(
     scene: Phaser.Scene,
     playerManager: PlayerManager,
     currentPlayer: Phaser.Physics.Arcade.Sprite,
+    reachable: (id: string) => boolean,
   ) {
     this.scene = scene;
     this.playerManager = playerManager;
     this.currentPlayer = currentPlayer;
+    this.reachable = reachable;
   }
 
   update() {
@@ -48,7 +52,7 @@ export class ProximityManager {
         container.y,
       );
 
-      if (distance > PROXIMITY_RADIUS) {
+      if (distance > PROXIMITY_RADIUS || !this.reachable(id)) {
         this.proximityStartTimes.delete(id);
         return;
       }

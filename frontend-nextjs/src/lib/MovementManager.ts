@@ -162,11 +162,7 @@ export class MovementManager {
     this.pulseTile(path[path.length - 1]);
   }
 
-  /**
-   * Whether we are free to walk. A casual seat lets go when you head somewhere
-   * else; a seat without `release`, like a meeting chair, holds you until you
-   * get up on purpose.
-   */
+  /** Whether we are free to walk; heading somewhere else gets you out of a seat first. */
   private unfreeze(): boolean {
     if (this.frozen) this.release?.();
     return !this.frozen;
@@ -276,8 +272,7 @@ export class MovementManager {
 
   /**
    * Sitting holds the pose, so walking and the idle animation both stop.
-   * `release` stands you up when you head somewhere else; leave it out for
-   * seats you should only leave on purpose.
+   * `release` stands you up when you head somewhere else.
    */
   setFrozen(frozen: boolean, release?: () => void) {
     this.frozen = frozen;

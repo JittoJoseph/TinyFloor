@@ -63,7 +63,7 @@ export class SeatManager {
   private dirty = false;
   // the E hints mean nothing without a keyboard; on touch the outline and a tap do
   private keyboard: boolean;
-  private onSitChange?: (seated: boolean, casual: boolean) => void;
+  private onSitChange?: (seated: boolean) => void;
   private goTo?: GoTo;
   private onMeetingChange?: (people: ReadonlySet<string> | null) => void;
 
@@ -108,8 +108,8 @@ export class SeatManager {
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
         if (seat.occupant) return;
-        // walk over and sit, unless someone beats us to it; from a casual seat
-        // this gets you up first, from a meeting chair it does nothing
+        // walk over and sit, unless someone beats us to it; from another seat
+        // this gets you up first
         const { standX, standY } = this.poseFor(seat);
         this.goTo?.(standX, standY, () => {
           if (!seat.occupant && !this.seated) this.sit(seat);
@@ -121,13 +121,9 @@ export class SeatManager {
     scene.input.keyboard?.on("keydown-E", () => this.toggle());
   }
 
-  /**
-   * `onSitChange` hears whether we sat or stood, and whether the seat is casual
-   * enough to leave just by heading somewhere else. Meeting chairs are not.
-   */
   attach(
     ws: WebSocketManager,
-    onSitChange: (seated: boolean, casual: boolean) => void,
+    onSitChange: (seated: boolean) => void,
     goTo: GoTo,
     onMeetingChange: (people: ReadonlySet<string> | null) => void,
   ) {
@@ -139,6 +135,12 @@ export class SeatManager {
 
   seatedDirection(): CardinalDirection | undefined {
     return this.seated?.direction;
+  }
+
+  /** Whether someone, or us when no id is given, sits at the meeting table. */
+  inMeeting(id?: string): boolean {
+    const seat = id ? this.seats.find((s) => s.occupant === id) : this.seated;
+    return seat?.zone === MEETING_ZONE;
   }
 
   toggle() {
@@ -216,7 +218,7 @@ export class SeatManager {
     this.player.setFrame(pose.frame);
     this.player.setDepth(pose.depth);
 
-    this.onSitChange?.(true, !meeting);
+    this.onSitChange?.(true);
     this.changed();
 
     const tile = pixelToTile(seat.x, seat.y);
@@ -249,7 +251,7 @@ export class SeatManager {
       ),
       true,
     );
-    this.onSitChange?.(false, false);
+    this.onSitChange?.(false);
     this.changed();
 
     if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();

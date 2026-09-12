@@ -343,19 +343,15 @@
     "decline": "拒绝",
     "accept": "接听",
     "tutorial": "教程通话",
-    "minimize": "缩小",
-    "expand": "放大",
     "calling": "呼叫中...",
     "cancel": "取消通话",
+    "micOff": "麦克风已关闭",
     "errors": {
       "connection": "连接失败",
       "unsupported": "此浏览器无法访问媒体设备",
       "media": "摄像头或麦克风不可用",
       "camera": "摄像头不可用"
     }
-  },
-  "meeting": {
-    "micOff": "麦克风已关闭"
   },
   "controls": {
     "status": "状态：{status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "打开扬声器",
     "openChat": "打开聊天",
     "settings": "设置",
-    "leaveCall": "退出通话"
+    "leaveCall": "退出通话",
+    "leaveMeeting": "离开会议"
   },
   "status": {
     "available": {

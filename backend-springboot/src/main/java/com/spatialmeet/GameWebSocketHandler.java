@@ -171,6 +171,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "call_accept":
                 case "call_decline":
                 case "call_signal":
+                case "call_add":
                 case "call_end": relayToPeer(session, msg); break;
                 case "chat": handleChat(session, msg); break;
                 case "board_sync": handleBoardSync(session); break;
@@ -588,6 +589,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         payload.remove("to");
         payload.put("from", sender.getId());
         payload.put("fromName", sender.getName());
+        if ("call_add".equals(msg.getType())) {
+            Player added = roomPlayers.getOrDefault(roomId, Collections.emptyMap()).get(String.valueOf(payload.get("id")));
+            if (added == null) return;
+            payload.put("name", added.getName());
+        }
         sendTo(peerSession, new Message(msg.getType(), payload));
     }
 

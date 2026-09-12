@@ -343,19 +343,15 @@
     "decline": "Avvisa",
     "accept": "Svara",
     "tutorial": "Introduktionssamtal",
-    "minimize": "Minimera",
-    "expand": "Förstora",
     "calling": "Ringer...",
     "cancel": "Avbryt samtal",
+    "micOff": "Mikrofon av",
     "errors": {
       "connection": "Anslutningen misslyckades",
       "unsupported": "Den här webbläsaren kan inte komma åt medieenheter",
       "media": "Kamera eller mikrofon är inte tillgänglig",
       "camera": "Kameran är inte tillgänglig"
     }
-  },
-  "meeting": {
-    "micOff": "Mikrofon av"
   },
   "controls": {
     "status": "Status: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Slå på högtalaren",
     "openChat": "Öppna chatten",
     "settings": "Inställningar",
-    "leaveCall": "Lämna samtalet"
+    "leaveCall": "Lämna samtalet",
+    "leaveMeeting": "Lämna mötet"
   },
   "status": {
     "available": {

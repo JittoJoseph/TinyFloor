@@ -6,6 +6,7 @@ import { MicOff } from "lucide-react";
 import type { CallPeer } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useSpeaking } from "@/lib/useSpeaking";
+import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
 
 type Tile = Omit<CallPeer, "stream"> & {
@@ -34,9 +35,9 @@ const GRID = {
   maxWidth: "calc(var(--cols) * var(--card) + (var(--cols) - 1) * 0.75rem)",
 } as CSSProperties;
 
-/** Everyone in the meeting, you first and then in the order they sat down. */
-export default function MeetingCards() {
-  const t = useTranslations("meeting");
+/** Everyone on the call or at the table, you first and then in the order they joined. */
+export default function CallCards() {
+  const t = useTranslations("call");
   const tc = useTranslations("common");
   const {
     meeting,
@@ -47,7 +48,7 @@ export default function MeetingCards() {
     speakerEnabled,
   } = useCall();
 
-  if (!meeting) return null;
+  if (!meeting && !peers.length) return null;
 
   const tiles: Tile[] = [
     {
@@ -71,11 +72,12 @@ export default function MeetingCards() {
         style={GRID}
       >
         {tiles.map((tile) => (
-          <MeetingCard
+          <CallCard
             key={tile.id}
             tile={tile}
             muted={!!tile.self || !speakerEnabled}
             micOff={t("micOff")}
+            badge={tile.id === GUIDE_ID ? t("tutorial") : undefined}
           />
         ))}
       </div>
@@ -83,14 +85,16 @@ export default function MeetingCards() {
   );
 }
 
-function MeetingCard({
+function CallCard({
   tile,
   muted,
   micOff,
+  badge,
 }: {
   tile: Tile;
   muted: boolean;
   micOff: string;
+  badge?: string;
 }) {
   const speaking = useSpeaking(tile.stream, tile.mic && tile.connected);
 
@@ -110,6 +114,11 @@ function MeetingCard({
         <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
           <div className="w-5 h-5 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
         </div>
+      )}
+      {badge && (
+        <span className="absolute top-2 start-2 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm">
+          {badge}
+        </span>
       )}
       <span className="absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-[var(--color-braun-text)] shadow-sm">
         {!tile.mic && (

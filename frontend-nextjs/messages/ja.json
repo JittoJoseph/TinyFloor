@@ -343,19 +343,15 @@
     "decline": "拒否",
     "accept": "応答",
     "tutorial": "チュートリアル通話",
-    "minimize": "最小化",
-    "expand": "拡大",
     "calling": "発信中...",
     "cancel": "通話をキャンセル",
+    "micOff": "マイクオフ",
     "errors": {
       "connection": "接続に失敗しました",
       "unsupported": "このブラウザではメディアデバイスにアクセスできません",
       "media": "カメラまたはマイクを使用できません",
       "camera": "カメラを使用できません"
     }
-  },
-  "meeting": {
-    "micOff": "マイクオフ"
   },
   "controls": {
     "status": "ステータス: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "スピーカーのミュートを解除",
     "openChat": "チャットを開く",
     "settings": "設定",
-    "leaveCall": "通話から退出"
+    "leaveCall": "通話から退出",
+    "leaveMeeting": "ミーティングを退出"
   },
   "status": {
     "available": {

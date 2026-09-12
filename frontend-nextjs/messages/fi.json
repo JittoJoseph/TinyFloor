@@ -343,19 +343,15 @@
     "decline": "Hylkää",
     "accept": "Vastaa",
     "tutorial": "Opastuspuhelu",
-    "minimize": "Pienennä",
-    "expand": "Suurenna",
     "calling": "Soitetaan...",
     "cancel": "Peru puhelu",
+    "micOff": "Mikrofoni pois",
     "errors": {
       "connection": "Yhteys epäonnistui",
       "unsupported": "Tämä selain ei pääse medialaitteisiin",
       "media": "Kamera tai mikrofoni ei ole käytettävissä",
       "camera": "Kamera ei ole käytettävissä"
     }
-  },
-  "meeting": {
-    "micOff": "Mikrofoni pois"
   },
   "controls": {
     "status": "Tila: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Poista kaiuttimen mykistys",
     "openChat": "Avaa chat",
     "settings": "Asetukset",
-    "leaveCall": "Poistu puhelusta"
+    "leaveCall": "Poistu puhelusta",
+    "leaveMeeting": "Poistu kokouksesta"
   },
   "status": {
     "available": {

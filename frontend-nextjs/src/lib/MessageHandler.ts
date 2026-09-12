@@ -110,6 +110,7 @@ export class MessageHandler {
       case "call_accept":
       case "call_decline":
       case "call_signal":
+      case "call_add":
       case "call_end":
         callManager.handleMessage(msg.type, msg.data);
         break;

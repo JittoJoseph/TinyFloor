@@ -343,19 +343,15 @@
     "decline": "Refuser",
     "accept": "Accepter",
     "tutorial": "Appel du tutoriel",
-    "minimize": "Réduire",
-    "expand": "Agrandir",
     "calling": "Appel en cours...",
     "cancel": "Annuler l’appel",
+    "micOff": "Micro coupé",
     "errors": {
       "connection": "Échec de la connexion",
       "unsupported": "Ce navigateur ne peut pas accéder aux périphériques multimédias",
       "media": "Caméra ou micro indisponible",
       "camera": "Caméra indisponible"
     }
-  },
-  "meeting": {
-    "micOff": "Micro coupé"
   },
   "controls": {
     "status": "Statut : {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Activer le haut-parleur",
     "openChat": "Ouvrir le chat",
     "settings": "Paramètres",
-    "leaveCall": "Quitter l’appel"
+    "leaveCall": "Quitter l’appel",
+    "leaveMeeting": "Quitter la réunion"
   },
   "status": {
     "available": {

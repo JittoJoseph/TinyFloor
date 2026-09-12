@@ -1,50 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Phone, Video, X, Check, Maximize2, Minimize2 } from "lucide-react";
+import { Phone, Video, X, Check } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { GUIDE_ID } from "@/lib/tutorial";
-import { CallStream } from "./CallStream";
-import MeetingCards from "./MeetingCards";
+import CallCards from "./CallCards";
 
 export default function CallOverlay() {
   const t = useTranslations("call");
-  const tc = useTranslations("common");
-  const {
-    incoming,
-    outgoing,
-    peers,
-    localStream,
-    speakerEnabled,
-    cameraEnabled,
-    meeting,
-    error,
-  } = useCall();
-  const [zoomed, setZoomed] = useState(false);
-  const peer = meeting ? undefined : peers[0];
-  const expanded = zoomed && !!peer;
-
-  useEffect(() => {
-    if (!expanded) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoomed(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [expanded]);
-
-  const selfView = localStream && (
-    <CallStream
-      stream={localStream}
-      muted
-      hidden={!cameraEnabled}
-      initial={tc("you")}
-    />
-  );
+  const { incoming, outgoing, error } = useCall();
 
   return (
     <>
-      <MeetingCards />
+      <CallCards />
 
       {incoming && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -85,72 +53,7 @@ export default function CallOverlay() {
         </div>
       )}
 
-      {expanded && peer && (
-        <div
-          className="fixed inset-0 z-40 bg-[var(--color-braun-text)]/25 backdrop-blur-md"
-          onClick={() => setZoomed(false)}
-        />
-      )}
-
-      {peer && (
-        <div
-          onClick={() => !expanded && setZoomed(true)}
-          className={
-            expanded
-              ? "fixed z-[45] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(860px,92vw)] aspect-video rounded-3xl overflow-hidden shadow-2xl border border-[rgba(0,0,0,0.06)] bg-[#fbfbf9]"
-              : "fixed z-40 bottom-24 right-4 w-64 aspect-video rounded-2xl overflow-hidden shadow-md border border-[rgba(0,0,0,0.06)] bg-[#fbfbf9] cursor-pointer group transition-transform hover:-translate-y-0.5"
-          }
-        >
-          <CallStream
-            stream={peer.stream}
-            muted={!speakerEnabled}
-            hidden={!peer.camera}
-            initial={peer.name}
-          />
-
-          {peer.id === GUIDE_ID && (
-            <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-sm text-[var(--color-braun-text)] rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest shadow-sm">
-              {t("tutorial")}
-            </span>
-          )}
-
-          {!peer.connected && (
-            <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
-              <div className="w-6 h-6 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
-            </div>
-          )}
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setZoomed(!expanded);
-            }}
-            className={`cursor-pointer absolute top-3 right-3 p-2 rounded-full bg-white/85 text-[var(--color-braun-text)] shadow-sm backdrop-blur-sm transition-opacity ${
-              expanded ? "opacity-70 hover:opacity-100" : "opacity-0 group-hover:opacity-100"
-            }`}
-            title={expanded ? t("minimize") : t("expand")}
-            aria-label={expanded ? t("minimize") : t("expand")}
-          >
-            {expanded ? (
-              <Minimize2 className="w-4 h-4" />
-            ) : (
-              <Maximize2 className="w-4 h-4" />
-            )}
-          </button>
-
-          {expanded && (
-            <div className="absolute bottom-4 right-4 w-1/4 aspect-video rounded-xl overflow-hidden border border-white/40 shadow-lg bg-[#fbfbf9]">
-              {selfView}
-            </div>
-          )}
-        </div>
-      )}
-
-      <div
-        className={`fixed right-4 z-40 flex flex-col items-end gap-3 pointer-events-none ${
-          peer && !expanded ? "bottom-64" : "bottom-24"
-        }`}
-      >
+      <div className="fixed right-4 bottom-24 z-40 flex flex-col items-end gap-3 pointer-events-none">
         {error && (
           <button
             onClick={() => callManager.clearError()}

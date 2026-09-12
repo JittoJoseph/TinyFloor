@@ -343,19 +343,15 @@
     "decline": "Rechazar",
     "accept": "Aceptar",
     "tutorial": "Llamada del tutorial",
-    "minimize": "Minimizar",
-    "expand": "Ampliar",
     "calling": "Llamando...",
     "cancel": "Cancelar llamada",
+    "micOff": "Micrófono desactivado",
     "errors": {
       "connection": "Error de conexión",
       "unsupported": "Este navegador no puede acceder a los dispositivos multimedia",
       "media": "Cámara o micrófono no disponibles",
       "camera": "Cámara no disponible"
     }
-  },
-  "meeting": {
-    "micOff": "Micrófono desactivado"
   },
   "controls": {
     "status": "Estado: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Activar altavoz",
     "openChat": "Abrir chat",
     "settings": "Ajustes",
-    "leaveCall": "Salir de la llamada"
+    "leaveCall": "Salir de la llamada",
+    "leaveMeeting": "Salir de la reunión"
   },
   "status": {
     "available": {

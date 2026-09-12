@@ -343,19 +343,15 @@
     "decline": "Weigeren",
     "accept": "Accepteren",
     "tutorial": "Tutorialgesprek",
-    "minimize": "Minimaliseren",
-    "expand": "Vergroten",
     "calling": "Bellen...",
     "cancel": "Gesprek annuleren",
+    "micOff": "Microfoon uit",
     "errors": {
       "connection": "Verbinding mislukt",
       "unsupported": "Deze browser heeft geen toegang tot mediaapparaten",
       "media": "Camera of microfoon niet beschikbaar",
       "camera": "Camera niet beschikbaar"
     }
-  },
-  "meeting": {
-    "micOff": "Microfoon uit"
   },
   "controls": {
     "status": "Status: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Luidspreker aanzetten",
     "openChat": "Chat openen",
     "settings": "Instellingen",
-    "leaveCall": "Gesprek verlaten"
+    "leaveCall": "Gesprek verlaten",
+    "leaveMeeting": "Vergadering verlaten"
   },
   "status": {
     "available": {

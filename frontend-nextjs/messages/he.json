@@ -343,19 +343,15 @@
     "decline": "דחייה",
     "accept": "מענה",
     "tutorial": "שיחת הדרכה",
-    "minimize": "מזעור",
-    "expand": "הגדלה",
     "calling": "מתקשר...",
     "cancel": "ביטול השיחה",
+    "micOff": "המיקרופון כבוי",
     "errors": {
       "connection": "החיבור נכשל",
       "unsupported": "לדפדפן הזה אין גישה להתקני מדיה",
       "media": "המצלמה או המיקרופון לא זמינים",
       "camera": "המצלמה לא זמינה"
     }
-  },
-  "meeting": {
-    "micOff": "המיקרופון כבוי"
   },
   "controls": {
     "status": "סטטוס: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "ביטול השתקת הרמקול",
     "openChat": "פתיחת הצ׳אט",
     "settings": "הגדרות",
-    "leaveCall": "יציאה מהשיחה"
+    "leaveCall": "יציאה מהשיחה",
+    "leaveMeeting": "יציאה מהפגישה"
   },
   "status": {
     "available": {

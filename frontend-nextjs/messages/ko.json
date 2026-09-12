@@ -343,19 +343,15 @@
     "decline": "거절",
     "accept": "수락",
     "tutorial": "튜토리얼 통화",
-    "minimize": "최소화",
-    "expand": "확대",
     "calling": "전화 거는 중...",
     "cancel": "통화 취소",
+    "micOff": "마이크 꺼짐",
     "errors": {
       "connection": "연결에 실패했어요",
       "unsupported": "이 브라우저는 미디어 장치에 접근할 수 없어요",
       "media": "카메라 또는 마이크를 사용할 수 없어요",
       "camera": "카메라를 사용할 수 없어요"
     }
-  },
-  "meeting": {
-    "micOff": "마이크 꺼짐"
   },
   "controls": {
     "status": "상태: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "스피커 음소거 해제",
     "openChat": "채팅 열기",
     "settings": "설정",
-    "leaveCall": "통화 나가기"
+    "leaveCall": "통화 나가기",
+    "leaveMeeting": "회의 나가기"
   },
   "status": {
     "available": {

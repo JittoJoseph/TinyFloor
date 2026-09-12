@@ -343,19 +343,15 @@
     "decline": "Odrzuć",
     "accept": "Odbierz",
     "tutorial": "Rozmowa samouczka",
-    "minimize": "Zmniejsz",
-    "expand": "Powiększ",
     "calling": "Dzwonienie...",
     "cancel": "Anuluj połączenie",
+    "micOff": "Mikrofon wyłączony",
     "errors": {
       "connection": "Nie udało się połączyć",
       "unsupported": "Ta przeglądarka nie ma dostępu do urządzeń multimedialnych",
       "media": "Kamera lub mikrofon są niedostępne",
       "camera": "Kamera jest niedostępna"
     }
-  },
-  "meeting": {
-    "micOff": "Mikrofon wyłączony"
   },
   "controls": {
     "status": "Status: {status}",
@@ -367,7 +363,8 @@
     "unmuteSpeaker": "Włącz głośnik",
     "openChat": "Otwórz czat",
     "settings": "Ustawienia",
-    "leaveCall": "Opuść rozmowę"
+    "leaveCall": "Opuść rozmowę",
+    "leaveMeeting": "Opuść spotkanie"
   },
   "status": {
     "available": {

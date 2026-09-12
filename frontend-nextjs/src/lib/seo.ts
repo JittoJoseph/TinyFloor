@@ -93,13 +93,13 @@ export function pageMetadata({
       alternateLocale: localeCodes
         .filter((code) => code !== locale)
         .map((code) => OG_LOCALE[code]),
-      images: [{ url: "/office.png", width: 1200, height: 800 }],
+      images: [{ url: "/og.png", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       ...(fullTitle ? { title: fullTitle } : {}),
       ...(description ? { description } : {}),
-      images: ["/office.png"],
+      images: ["/og.png"],
     },
   };
 }

@@ -48,9 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "SpatialMeet",
       images: [
         {
-          url: "/office.png",
+          url: "/og.png",
           width: 1200,
-          height: 800,
+          height: 630,
           alt: t("ogAlt"),
         },
       ],
@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: ["/office.png"],
+      images: ["/og.png"],
     },
     applicationName: "SpatialMeet",
     robots: {

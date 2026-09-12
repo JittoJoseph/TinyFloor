@@ -68,7 +68,7 @@ export function DirectoryHeader({
 
         <div>
           <h1 className="text-3xl md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight mb-2">
-            {t.rich("title", {
+            {t.rich(`${active}Title`, {
               em: (chunks) => <span className="font-medium">{chunks}</span>,
             })}
           </h1>

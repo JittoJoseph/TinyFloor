@@ -225,7 +225,8 @@
     "guestNote": "Du går med som gäst. <link>Logga in</link> för att behålla ditt namn och din karaktär."
   },
   "directory": {
-    "title": "Community-<em>katalog</em>",
+    "roomsTitle": "Rum i det <em>virtuella kontoret</em>",
+    "peopleTitle": "SpatialMeet-<em>gemenskapen</em>",
     "roomsSubtitle": "Bläddra bland rum eller träffa folket där inne",
     "peopleSubtitle": "Träffa dem som formar SpatialMeet",
     "updating": "Uppdaterar...",

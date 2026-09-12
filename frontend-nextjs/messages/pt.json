@@ -225,7 +225,8 @@
     "guestNote": "Entrando como convidado. <link>Entre</link> para manter seu nome e seu personagem."
   },
   "directory": {
-    "title": "Diretório da <em>comunidade</em>",
+    "roomsTitle": "Salas de <em>escritório virtual</em>",
+    "peopleTitle": "A <em>comunidade</em> SpatialMeet",
     "roomsSubtitle": "Navegue pelas salas ou conheça as pessoas lá dentro",
     "peopleSubtitle": "Conheça quem está construindo o SpatialMeet",
     "updating": "Atualizando...",

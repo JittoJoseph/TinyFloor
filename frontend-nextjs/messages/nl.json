@@ -225,7 +225,8 @@
     "guestNote": "Je doet mee als gast. <link>Log in</link> om je naam en personage te bewaren."
   },
   "directory": {
-    "title": "Community-<em>gids</em>",
+    "roomsTitle": "Ruimtes in het <em>virtuele kantoor</em>",
+    "peopleTitle": "De SpatialMeet-<em>community</em>",
     "roomsSubtitle": "Bekijk ruimtes of ontmoet de mensen erin",
     "peopleSubtitle": "Maak kennis met de makers die SpatialMeet vormgeven",
     "updating": "Bijwerken...",

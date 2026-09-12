@@ -225,7 +225,8 @@
     "guestNote": "게스트로 참여 중이에요. 이름과 캐릭터를 유지하려면 <link>로그인</link>하세요."
   },
   "directory": {
-    "title": "커뮤니티 <em>디렉터리</em>",
+    "roomsTitle": "<em>가상 오피스</em> 방",
+    "peopleTitle": "SpatialMeet <em>커뮤니티</em>",
     "roomsSubtitle": "방을 둘러보거나 안에 있는 사람들을 만나 보세요",
     "peopleSubtitle": "SpatialMeet를 만들어 가는 사람들을 만나 보세요",
     "updating": "업데이트 중...",

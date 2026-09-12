@@ -225,7 +225,8 @@
     "guestNote": "你正以访客身份加入。<link>登录</link>即可保留名字和角色。"
   },
   "directory": {
-    "title": "社区<em>目录</em>",
+    "roomsTitle": "<em>虚拟办公室</em>房间",
+    "peopleTitle": "SpatialMeet <em>社区</em>",
     "roomsSubtitle": "浏览房间，或认识里面的人",
     "peopleSubtitle": "认识正在打造 SpatialMeet 的人",
     "updating": "更新中...",

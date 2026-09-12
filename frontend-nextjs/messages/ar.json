@@ -225,7 +225,8 @@
     "guestNote": "أنت تنضم كضيف. <link>سجّل الدخول</link> للاحتفاظ باسمك وشخصيتك."
   },
   "directory": {
-    "title": "دليل <em>المجتمع</em>",
+    "roomsTitle": "غرف <em>المكتب الافتراضي</em>",
+    "peopleTitle": "<em>مجتمع</em> SpatialMeet",
     "roomsSubtitle": "تصفّح الغرف أو تعرّف على من فيها",
     "peopleSubtitle": "تعرّف على من يصنعون SpatialMeet",
     "updating": "جارٍ التحديث...",

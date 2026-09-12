@@ -225,7 +225,8 @@
     "guestNote": "ゲストとして参加しています。名前とキャラクターを残すには<link>ログイン</link>してください。"
   },
   "directory": {
-    "title": "コミュニティ<em>ディレクトリ</em>",
+    "roomsTitle": "<em>バーチャルオフィス</em>のルーム",
+    "peopleTitle": "SpatialMeet <em>コミュニティ</em>",
     "roomsSubtitle": "ルームを探すか、中にいる人に会いましょう",
     "peopleSubtitle": "SpatialMeet をつくる人たちに会いましょう",
     "updating": "更新中...",

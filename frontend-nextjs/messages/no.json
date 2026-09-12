@@ -225,7 +225,8 @@
     "guestNote": "Du blir med som gjest. <link>Logg inn</link> for å beholde navnet og figuren din."
   },
   "directory": {
-    "title": "Fellesskapets <em>katalog</em>",
+    "roomsTitle": "Rom i det <em>virtuelle kontoret</em>",
+    "peopleTitle": "SpatialMeet-<em>fellesskapet</em>",
     "roomsSubtitle": "Bla gjennom rom eller møt folkene der inne",
     "peopleSubtitle": "Møt dem som former SpatialMeet",
     "updating": "Oppdaterer...",

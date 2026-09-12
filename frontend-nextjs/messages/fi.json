@@ -225,7 +225,8 @@
     "guestNote": "Liityt vieraana. <link>Kirjaudu sisään</link>, niin nimesi ja hahmosi säilyvät."
   },
   "directory": {
-    "title": "Yhteisön <em>hakemisto</em>",
+    "roomsTitle": "<em>Virtuaalitoimiston</em> huoneet",
+    "peopleTitle": "SpatialMeetin <em>yhteisö</em>",
     "roomsSubtitle": "Selaa huoneita tai tapaa niissä olevia ihmisiä",
     "peopleSubtitle": "Tutustu SpatialMeetin tekijöihin",
     "updating": "Päivitetään...",

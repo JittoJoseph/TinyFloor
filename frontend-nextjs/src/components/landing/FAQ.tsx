@@ -4,10 +4,14 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
 
-export const FAQ: React.FC = () => {
+/** The home page FAQ by default; a page with its own questions passes them in. */
+export const FAQ: React.FC<{
+  title?: React.ReactNode;
+  items?: Array<{ q: string; a: string }>;
+}> = ({ title, items }) => {
   const t = useTranslations("faq");
   const [open, setOpen] = useState<number | null>(0);
-  const faqs = t.raw("items") as Array<{ q: string; a: string }>;
+  const faqs = items ?? (t.raw("items") as Array<{ q: string; a: string }>);
 
   return (
     <section
@@ -19,9 +23,10 @@ export const FAQ: React.FC = () => {
         id="faq-title"
         className="font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.1] mb-8 md:mb-12"
       >
-        {t.rich("title", {
-          em: (chunks) => <span className="font-medium">{chunks}</span>,
-        })}
+        {title ??
+          t.rich("title", {
+            em: (chunks) => <span className="font-medium">{chunks}</span>,
+          })}
       </h2>
 
       <div className="border-t border-black/10">

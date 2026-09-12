@@ -475,5 +475,479 @@
     "title": "This room is not on the map.",
     "body": "The page you were looking for does not exist or has moved.",
     "home": "Back to the lobby"
+  },
+  "landings": {
+    "tryIt": "Walk into the public office",
+    "create": "Create a room",
+    "free": "Free, in the browser, no account needed.",
+    "compare": "Compare",
+    "useCases": "Use cases",
+    "compareTitle": "SpatialMeet and {name}, <em>side by side.</em>",
+    "checked": "{name} details come from its pricing page, checked in September 2026.",
+    "rows": {
+      "price": "Price",
+      "freePlan": "Free plan",
+      "browser": "Runs in the browser",
+      "screenShare": "Screen sharing"
+    },
+    "us": {
+      "price": "Free",
+      "freePlan": "Everything, with no time limit. Rooms hold 20 people.",
+      "browser": "Yes, nothing to install",
+      "screenShare": "Not yet"
+    },
+    "stepsTitle": "How it <em>works.</em>",
+    "steps": [
+      {
+        "title": "Open a room",
+        "body": "Walk into the public office, or create a room and share its link."
+      },
+      {
+        "title": "Pick a character",
+        "body": "Type a name and choose a pixel-art character. No account needed."
+      },
+      {
+        "title": "Walk over to talk",
+        "body": "Stand next to someone and start a video or voice call with one tap."
+      }
+    ],
+    "faqTitle": "Common <em>questions.</em>",
+    "relatedTitle": "Keep <em>exploring.</em>",
+    "pages": {
+      "gather": {
+        "label": "Gather alternative",
+        "meta": {
+          "title": "Free Gather Alternative in Your Browser",
+          "description": "Looking for a free Gather alternative? SpatialMeet is a pixel-art virtual office with proximity video calls. No trial, no per-seat price, nothing to install."
+        },
+        "title": "A free <em>Gather alternative.</em>",
+        "subtitle": "Gather dropped its free plan and now charges per member. SpatialMeet keeps the same idea, an office you walk around and talk in, and keeps it free.",
+        "points": [
+          {
+            "title": "No trial clock",
+            "body": "Gather gives you 30 days before you pay. SpatialMeet has no trial, because there is nothing to upgrade to."
+          },
+          {
+            "title": "Nothing to install",
+            "body": "Everything runs in the browser on desktop and mobile. Share a link and your team is inside in seconds."
+          },
+          {
+            "title": "Guests walk straight in",
+            "body": "Anyone with the link joins with just a name. Accounts are optional and only keep your profile and rooms."
+          }
+        ],
+        "them": {
+          "price": "From $12 per member per month",
+          "freePlan": "None, only a 30-day trial",
+          "browser": "Yes, with a desktop app",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is Gather still free?",
+            "a": "No. Gather no longer has a permanent free plan. It offers a 30-day trial, then the Essential plan starts at $12 per member per month. SpatialMeet is free."
+          },
+          {
+            "q": "What does Gather have that SpatialMeet does not?",
+            "a": "Gather has screen sharing, AI meeting notes and office customization. SpatialMeet focuses on the core: walking around, proximity calls, a meeting table, chat, a whiteboard and room music."
+          },
+          {
+            "q": "Can I move my team from Gather to SpatialMeet?",
+            "a": "Yes. Create a room, share its link, and everyone walks in. There is no data to migrate and nothing to install."
+          },
+          {
+            "q": "How many people fit in a SpatialMeet room?",
+            "a": "A room holds up to 20 people at once, and you can open as many rooms as you need."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Kumospace alternative",
+        "meta": {
+          "title": "Free Kumospace Alternative for Whole Teams",
+          "description": "Kumospace's free plan stops at 5 members. SpatialMeet is a free pixel-art virtual office with proximity video calls, open to your whole team in the browser."
+        },
+        "title": "A <em>Kumospace alternative</em> for the whole team.",
+        "subtitle": "Kumospace's free plan fits 5 members on one floor. SpatialMeet has no member cap and no paid tier, so the whole team can move in.",
+        "points": [
+          {
+            "title": "No 5-member cap",
+            "body": "Invite everyone. Rooms hold 20 people at a time, and you can open more rooms whenever you need them."
+          },
+          {
+            "title": "No weekly guest limit",
+            "body": "Kumospace gives free guests 4 hours a week. In SpatialMeet a guest joins with a name and stays as long as they like."
+          },
+          {
+            "title": "Made for phones too",
+            "body": "On a phone you move with an on-screen joystick and calls fit the smaller screen, all in the mobile browser."
+          }
+        ],
+        "them": {
+          "price": "Business from $16 per user per month",
+          "freePlan": "Up to 5 members, 50 guests and 1 floor",
+          "browser": "Yes, with desktop and mobile apps",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is Kumospace free?",
+            "a": "Kumospace has a free plan for up to 5 registered members, with one floor and guests limited to 4 hours a week. The Business plan starts at $16 per user per month. SpatialMeet is free for everyone."
+          },
+          {
+            "q": "What does Kumospace have that SpatialMeet does not?",
+            "a": "Kumospace includes screen sharing, and its paid plans add recording and unlimited chat history. SpatialMeet does not have screen sharing or recording yet."
+          },
+          {
+            "q": "Do my teammates need an account?",
+            "a": "No. Anyone with a room link can join as a guest with just a name. Signing in only keeps a saved profile, a character and a list of your rooms."
+          },
+          {
+            "q": "Does SpatialMeet work on phones?",
+            "a": "Yes. It runs in mobile browsers with an on-screen joystick, so there is no app to download."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "SpatialChat alternative",
+        "meta": {
+          "title": "SpatialChat Alternative With No Daily Limit",
+          "description": "SpatialChat's free plan allows 2 hours a day. SpatialMeet is a free pixel-art virtual office with proximity calls that you can keep open all day."
+        },
+        "title": "A <em>SpatialChat alternative</em> you can leave open all day.",
+        "subtitle": "SpatialChat is built around events, and its free plan stops after 2 hours a day. SpatialMeet is an office, so the room stays open for as long as your team works.",
+        "points": [
+          {
+            "title": "No daily time limit",
+            "body": "Keep the room open from the morning stand up to the last message of the day. Nothing counts down."
+          },
+          {
+            "title": "An office, not an event",
+            "body": "Rooms do not end when a meeting does. The same link works tomorrow, and people drop in when they are free."
+          },
+          {
+            "title": "Walk over to talk",
+            "body": "Get close to a teammate to start a video or voice call. Sit at the meeting table and everyone there joins one call."
+          }
+        ],
+        "them": {
+          "price": "Day Pass $5 per user per day, Business from $399 per month",
+          "freePlan": "2 hours a day, up to 12 people",
+          "browser": "Yes",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is SpatialChat free?",
+            "a": "SpatialChat has a free plan with up to 2 hours of meetings a day for up to 12 participants. Paid options include a $5 Day Pass per user and Business plans from $399 per month. SpatialMeet is free with no daily limit."
+          },
+          {
+            "q": "Is SpatialMeet good for virtual events?",
+            "a": "SpatialMeet is made for groups that meet every day. Rooms hold 20 people at a time, so it suits team offices, study groups and small meetups more than large events."
+          },
+          {
+            "q": "What does SpatialChat have that SpatialMeet does not?",
+            "a": "SpatialChat supports screen sharing, pinned files and large events. SpatialMeet does not have screen sharing yet, and focuses on everyday presence and quick conversations."
+          },
+          {
+            "q": "Do calls work between browsers?",
+            "a": "Yes. SpatialMeet calls run peer to peer over WebRTC, so audio and video go straight between browsers."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "WorkAdventure alternative",
+        "meta": {
+          "title": "WorkAdventure Alternative With Rooms for 20",
+          "description": "WorkAdventure's free plan allows 10 people at once. SpatialMeet is a free pixel-art virtual office with proximity video calls and rooms that hold 20."
+        },
+        "title": "A <em>WorkAdventure alternative</em> with room to grow.",
+        "subtitle": "WorkAdventure is a pixel-art office too, and its free plan fits 10 people at once. SpatialMeet rooms hold 20, and there is no paid plan to move up to.",
+        "points": [
+          {
+            "title": "Twice the room",
+            "body": "A free WorkAdventure map fits 10 people at a time. A SpatialMeet room fits 20, and you can open as many rooms as you like."
+          },
+          {
+            "title": "No map to build",
+            "body": "Every room comes with an office floor, a meeting table, a whiteboard and a speaker. Create a room and walk in."
+          },
+          {
+            "title": "Nothing to host",
+            "body": "There is no server to run and no setup. Share a link and your team is standing on the floor."
+          }
+        ],
+        "them": {
+          "price": "Business from €8 per user per month",
+          "freePlan": "Up to 10 people at once",
+          "browser": "Yes",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is WorkAdventure free?",
+            "a": "WorkAdventure has a free plan for up to 10 simultaneous users. The Business plan starts at €8 per user per month, and event pricing starts at €4 per user per day. SpatialMeet is free."
+          },
+          {
+            "q": "Can I customize the map in SpatialMeet?",
+            "a": "Not yet. Every room uses the same office floor. WorkAdventure lets you design your own maps, which suits teams that want a custom world."
+          },
+          {
+            "q": "Do I need to run a server?",
+            "a": "No. SpatialMeet is hosted for you. Create a room in the browser and share the link."
+          },
+          {
+            "q": "How do calls start in SpatialMeet?",
+            "a": "Walk up to a teammate and their call bar appears. One tap starts video or voice. At the meeting table, everyone who sits down joins the same call."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Wonder alternative",
+        "meta": {
+          "title": "Wonder.me Alternative: Walk Up and Talk",
+          "description": "Wonder.me shut down in 2023. SpatialMeet is a free browser space where you move a character and start a video call by walking up to people."
+        },
+        "title": "Missing <em>Wonder?</em>",
+        "subtitle": "Wonder.me closed in April 2023. SpatialMeet keeps what made it work, moving around and talking to whoever you walk up to, on a pixel-art office floor.",
+        "points": [
+          {
+            "title": "Walk up to talk",
+            "body": "Like stepping into a circle on Wonder, you start a call by standing next to someone. Moving between groups is just walking."
+          },
+          {
+            "title": "Still in the browser",
+            "body": "Open a link, pick a character, and you are in. Guests do not need an account."
+          },
+          {
+            "title": "Free and open all day",
+            "body": "There are no plans and no time limits. Keep a room open for a team, a class or a regular meetup."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Is Wonder.me still available?",
+            "a": "No. Wonder.me shut down on April 25, 2023, after its founders could not find a sustainable business model."
+          },
+          {
+            "q": "How is SpatialMeet different from Wonder?",
+            "a": "Wonder used circles on a flat canvas and was made for events. SpatialMeet is a walkable office with desks, a meeting table, a whiteboard and music, made for groups that meet regularly."
+          },
+          {
+            "q": "How many people can join?",
+            "a": "A room holds up to 20 people at once, and you can open as many rooms as you need."
+          },
+          {
+            "q": "Is SpatialMeet free?",
+            "a": "Yes. Creating rooms, walking around, chatting and calling are free."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Virtual office",
+        "meta": {
+          "title": "Free Virtual Office for Remote Teams",
+          "description": "A free virtual office in your browser. See who is around, walk over to talk with proximity video calls, and keep one room open for your remote team."
+        },
+        "title": "A free <em>virtual office</em> for remote teams.",
+        "subtitle": "Give your team a place to be during the day. See who is around, walk over to ask a quick question, and sit at the meeting table when it is time to talk.",
+        "points": [
+          {
+            "title": "See who is in",
+            "body": "Everyone has a character, a nameplate and a status, so you know who is free before you walk up."
+          },
+          {
+            "title": "Quick questions stay quick",
+            "body": "Walk over and tap to call. No calendar invite, no meeting link, no waiting room."
+          },
+          {
+            "title": "A table for meetings",
+            "body": "Sit at the meeting table and everyone there joins one call, with a card for each person."
+          }
+        ],
+        "faq": [
+          {
+            "q": "What is a virtual office?",
+            "a": "A virtual office is a shared online space where a remote team works together. In SpatialMeet it is a pixel-art floor where you can see your teammates and talk by walking up to them."
+          },
+          {
+            "q": "Is it free?",
+            "a": "Yes. SpatialMeet is free, with no trial and no per-seat price."
+          },
+          {
+            "q": "How many people can use one office?",
+            "a": "A room holds up to 20 people at once. Larger teams can open a room for each team."
+          },
+          {
+            "q": "Does it replace video calls?",
+            "a": "It replaces the quick scheduled call. You still get video and voice, but conversations start when you walk over instead of when a meeting begins."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Virtual coworking",
+        "meta": {
+          "title": "Free Virtual Coworking Space Online",
+          "description": "Cowork online with friends or strangers in a free pixel-art office. Work side by side, take breaks together and talk when you want to."
+        },
+        "title": "<em>Virtual coworking</em> that feels like a shared desk.",
+        "subtitle": "Working alone is easier with people around. Sit in a shared office, get on with your work, and walk over to someone when you want a break.",
+        "points": [
+          {
+            "title": "Company without calls",
+            "body": "You can see others working without being on camera. Calls only start when someone walks over."
+          },
+          {
+            "title": "An open room, any time",
+            "body": "The public office is always open. Or create a room for your own coworking group and share the link."
+          },
+          {
+            "title": "Set your status",
+            "body": "Mark yourself busy while you focus and available when you are up for a chat."
+          }
+        ],
+        "faq": [
+          {
+            "q": "What is virtual coworking?",
+            "a": "Virtual coworking means working online alongside other people so it feels less isolated. Many people find it easier to focus when others are working nearby."
+          },
+          {
+            "q": "Do I need to be on camera?",
+            "a": "No. Your camera and microphone stay off until you join a call."
+          },
+          {
+            "q": "Can I cowork with strangers?",
+            "a": "Yes. The public office is open to everyone. For a private group, create a room and add a password."
+          },
+          {
+            "q": "Is there a time limit?",
+            "a": "No. Stay as long as you like."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Online study room",
+        "meta": {
+          "title": "Free Online Study Room to Study With Friends",
+          "description": "Study with friends in a free online study room. Sit together in a pixel-art room, focus quietly, and talk when you need a break. No download needed."
+        },
+        "title": "An <em>online study room</em> for you and your friends.",
+        "subtitle": "Make a room for your study group, share one link, and sit together while you work. Talk a problem through at the table, then get back to it.",
+        "points": [
+          {
+            "title": "Quiet by default",
+            "body": "Nobody hears you until you start a call, so the room stays focused."
+          },
+          {
+            "title": "A table for group work",
+            "body": "Sit at the meeting table to talk as a group, then stand up to go back to studying on your own."
+          },
+          {
+            "title": "A whiteboard for problems",
+            "body": "Walk up to the whiteboard to sketch an idea or work through a question together."
+          }
+        ],
+        "faq": [
+          {
+            "q": "How do I make a study room?",
+            "a": "Create a room, give it a name, and share the link with your friends. Add a password if you want to keep it private."
+          },
+          {
+            "q": "Is it free for students?",
+            "a": "Yes. SpatialMeet is free for everyone, and nobody needs an account to join."
+          },
+          {
+            "q": "Can we play music while we study?",
+            "a": "Yes. Walk up to the speaker in the room to play music that everyone in the room hears."
+          },
+          {
+            "q": "Does it work on a phone?",
+            "a": "Yes. It works in mobile browsers with an on-screen joystick."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Virtual classroom",
+        "meta": {
+          "title": "Free Virtual Classroom for Office Hours",
+          "description": "Run office hours, tutoring and small classes in a free virtual classroom. Students walk up to talk, groups meet at the table, and everyone shares a whiteboard."
+        },
+        "title": "A <em>virtual classroom</em> students can walk around.",
+        "subtitle": "Hold office hours, tutoring or a small class in a room students can move around in. They walk up when they have a question, and groups talk at the table.",
+        "points": [
+          {
+            "title": "Office hours that flow",
+            "body": "Students see when you are free and walk over to ask. Nobody sits in a waiting room."
+          },
+          {
+            "title": "Small groups at the table",
+            "body": "Up to six people sit at the meeting table and share one call, with a card for each person."
+          },
+          {
+            "title": "A shared whiteboard",
+            "body": "Draw on the whiteboard to explain an idea. Everyone in the room sees the same board."
+          }
+        ],
+        "faq": [
+          {
+            "q": "How many students can join?",
+            "a": "A room holds up to 20 people at once, which suits small classes, tutoring groups and office hours."
+          },
+          {
+            "q": "Do students need accounts?",
+            "a": "No. Students join from a link with just a name."
+          },
+          {
+            "q": "Can I keep the classroom private?",
+            "a": "Yes. Add a password when you create the room and share it only with your class."
+          },
+          {
+            "q": "Is it free for teachers?",
+            "a": "Yes. SpatialMeet is free, with no paid plan."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Proximity chat",
+        "meta": {
+          "title": "Free Proximity Video Chat in the Browser",
+          "description": "Proximity chat for teams and friends: walk your character up to someone to start a video or voice call. Free, in the browser, no download."
+        },
+        "title": "<em>Proximity chat</em> that starts when you walk over.",
+        "subtitle": "In SpatialMeet, where you stand decides who you talk to. Walk up to someone to call them, sit at the table to talk as a group, and walk on when you are done.",
+        "points": [
+          {
+            "title": "Getting close starts it",
+            "body": "Stand next to a teammate and a call bar appears. One tap opens video or voice."
+          },
+          {
+            "title": "Groups at the table",
+            "body": "Sit at the meeting table and you join the call with everyone sitting there."
+          },
+          {
+            "title": "Peer to peer",
+            "body": "Calls travel straight between browsers over WebRTC, so there is nothing to install."
+          }
+        ],
+        "faq": [
+          {
+            "q": "What is proximity chat?",
+            "a": "Proximity chat connects you with people based on where your character is. You talk to the people near you, the way you would in a real room."
+          },
+          {
+            "q": "Does the call end when I walk away?",
+            "a": "No. Once a call is connected it stays connected until someone hangs up, so walking around does not drop it."
+          },
+          {
+            "q": "Can more than two people talk?",
+            "a": "Yes. Call someone who is already on a call to join them, or sit at the meeting table to talk as a group."
+          },
+          {
+            "q": "Is it free?",
+            "a": "Yes. SpatialMeet is free in the browser on desktop and mobile."
+          }
+        ]
+      }
+    }
   }
 }

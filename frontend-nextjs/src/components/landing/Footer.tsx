@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LANDINGS, LANDING_GROUPS } from "@/lib/landings";
 
 const elsewhere = [
   { label: "GitHub", href: "https://github.com/JittoJoseph" },
@@ -18,6 +19,7 @@ const headingClass =
 export const Footer: React.FC = () => {
   const t = useTranslations("footer");
   const tc = useTranslations("common");
+  const tl = useTranslations("landings");
 
   const columns = [
     {
@@ -37,13 +39,20 @@ export const Footer: React.FC = () => {
         { label: tc("questions"), href: "/#faq" },
       ],
     },
+    ...LANDING_GROUPS.map((group) => ({
+      title: tl(group),
+      links: LANDINGS.filter((page) => page.group === group).map((page) => ({
+        label: tl(`pages.${page.key}.label`),
+        href: `/${page.slug}`,
+      })),
+    })),
   ];
 
   return (
     <footer className="w-full bg-[var(--color-braun-bg)] border-t border-black/10 py-12 md:py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <div className="font-body font-bold text-xl tracking-tight text-[var(--color-braun-text)]">
               SpatialMeet
             </div>

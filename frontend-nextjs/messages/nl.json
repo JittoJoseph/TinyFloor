@@ -475,5 +475,479 @@
     "title": "Deze ruimte staat niet op de kaart.",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
     "home": "Terug naar de lobby"
+  },
+  "landings": {
+    "tryIt": "Naar het openbare kantoor",
+    "create": "Ruimte maken",
+    "free": "Gratis, in de browser, zonder account.",
+    "compare": "Vergelijkingen",
+    "useCases": "Toepassingen",
+    "compareTitle": "SpatialMeet en {name}, <em>naast elkaar.</em>",
+    "checked": "De gegevens over {name} komen van de prijzenpagina, gecontroleerd in september 2026.",
+    "rows": {
+      "price": "Prijs",
+      "freePlan": "Gratis abonnement",
+      "browser": "Werkt in de browser",
+      "screenShare": "Scherm delen"
+    },
+    "us": {
+      "price": "Gratis",
+      "freePlan": "Alles, zonder tijdslimiet. Ruimtes bieden plek aan 20 mensen.",
+      "browser": "Ja, niets te installeren",
+      "screenShare": "Nog niet"
+    },
+    "stepsTitle": "Zo <em>werkt het.</em>",
+    "steps": [
+      {
+        "title": "Open een ruimte",
+        "body": "Loop het openbare kantoor in, of maak een ruimte en deel de link."
+      },
+      {
+        "title": "Kies een personage",
+        "body": "Typ een naam en kies een pixel-art personage. Geen account nodig."
+      },
+      {
+        "title": "Loop erheen om te praten",
+        "body": "Ga naast iemand staan en start met één tik een video- of spraakgesprek."
+      }
+    ],
+    "faqTitle": "Veelgestelde <em>vragen.</em>",
+    "relatedTitle": "Verder <em>ontdekken.</em>",
+    "pages": {
+      "gather": {
+        "label": "Gather-alternatief",
+        "meta": {
+          "title": "Gratis Gather-alternatief in je browser",
+          "description": "Op zoek naar een gratis Gather-alternatief? SpatialMeet is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid. Geen proefperiode, geen prijs per plek, niets te installeren."
+        },
+        "title": "Een gratis <em>Gather-alternatief.</em>",
+        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. SpatialMeet houdt hetzelfde idee, een kantoor waar je rondloopt en praat, en blijft gratis.",
+        "points": [
+          {
+            "title": "Geen proefperiode die afloopt",
+            "body": "Gather geeft je 30 dagen voordat je betaalt. SpatialMeet heeft geen proefperiode, want er is niets om naar te upgraden."
+          },
+          {
+            "title": "Niets te installeren",
+            "body": "Alles werkt in de browser, op desktop en mobiel. Deel een link en je team is binnen enkele seconden binnen."
+          },
+          {
+            "title": "Gasten lopen zo naar binnen",
+            "body": "Iedereen met de link doet mee met alleen een naam. Een account is optioneel en bewaart alleen je profiel en ruimtes."
+          }
+        ],
+        "them": {
+          "price": "Vanaf $ 12 per lid per maand",
+          "freePlan": "Geen, alleen een proefperiode van 30 dagen",
+          "browser": "Ja, met een desktop-app",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is Gather nog gratis?",
+            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. SpatialMeet is gratis."
+          },
+          {
+            "q": "Wat heeft Gather dat SpatialMeet niet heeft?",
+            "a": "Gather heeft scherm delen, AI-vergadernotities en een aanpasbaar kantoor. SpatialMeet richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
+          },
+          {
+            "q": "Kan ik mijn team van Gather naar SpatialMeet verhuizen?",
+            "a": "Ja. Maak een ruimte, deel de link en iedereen loopt naar binnen. Er zijn geen gegevens over te zetten en niets te installeren."
+          },
+          {
+            "q": "Hoeveel mensen passen er in een SpatialMeet-ruimte?",
+            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Kumospace-alternatief",
+        "meta": {
+          "title": "Gratis Kumospace-alternatief voor het hele team",
+          "description": "Het gratis abonnement van Kumospace stopt bij 5 leden. SpatialMeet is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, open voor je hele team in de browser."
+        },
+        "title": "Een <em>Kumospace-alternatief</em> voor het hele team.",
+        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. SpatialMeet heeft geen ledenlimiet en geen betaald abonnement, dus het hele team kan erin.",
+        "points": [
+          {
+            "title": "Geen limiet van 5 leden",
+            "body": "Nodig iedereen uit. Ruimtes bieden plek aan 20 mensen tegelijk, en je kunt altijd meer ruimtes openen."
+          },
+          {
+            "title": "Geen wekelijkse gastenlimiet",
+            "body": "Kumospace geeft gratis gasten 4 uur per week. In SpatialMeet doet een gast mee met een naam en blijft zo lang als hij wil."
+          },
+          {
+            "title": "Ook gemaakt voor je telefoon",
+            "body": "Op je telefoon beweeg je met een joystick op het scherm en gesprekken passen zich aan het kleinere scherm aan, allemaal in de mobiele browser."
+          }
+        ],
+        "them": {
+          "price": "Business vanaf $ 16 per gebruiker per maand",
+          "freePlan": "Tot 5 leden, 50 gasten en 1 verdieping",
+          "browser": "Ja, met desktop- en mobiele apps",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is Kumospace gratis?",
+            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. SpatialMeet is gratis voor iedereen."
+          },
+          {
+            "q": "Wat heeft Kumospace dat SpatialMeet niet heeft?",
+            "a": "Kumospace heeft scherm delen, en de betaalde abonnementen voegen opnemen en onbeperkte chatgeschiedenis toe. SpatialMeet heeft nog geen scherm delen of opnemen."
+          },
+          {
+            "q": "Hebben mijn teamgenoten een account nodig?",
+            "a": "Nee. Iedereen met een ruimtelink kan als gast meedoen met alleen een naam. Inloggen bewaart alleen een profiel, een personage en een lijst van je ruimtes."
+          },
+          {
+            "q": "Werkt SpatialMeet op een telefoon?",
+            "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm, dus je hoeft geen app te downloaden."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "SpatialChat-alternatief",
+        "meta": {
+          "title": "SpatialChat-alternatief zonder daglimiet",
+          "description": "Het gratis abonnement van SpatialChat staat 2 uur per dag toe. SpatialMeet is een gratis virtueel pixel-art kantoor met gesprekken op basis van nabijheid dat de hele dag open kan blijven."
+        },
+        "title": "Een <em>SpatialChat-alternatief</em> dat de hele dag open blijft.",
+        "subtitle": "SpatialChat is gebouwd rond evenementen, en het gratis abonnement stopt na 2 uur per dag. SpatialMeet is een kantoor, dus de ruimte blijft open zolang je team werkt.",
+        "points": [
+          {
+            "title": "Geen daglimiet",
+            "body": "Houd de ruimte open van de ochtendstand-up tot het laatste bericht van de dag. Er loopt niets af."
+          },
+          {
+            "title": "Een kantoor, geen evenement",
+            "body": "Ruimtes stoppen niet als een vergadering afloopt. Dezelfde link werkt morgen nog, en mensen lopen binnen als ze tijd hebben."
+          },
+          {
+            "title": "Loop erheen om te praten",
+            "body": "Ga dicht bij een collega staan om een video- of spraakgesprek te starten. Aan de vergadertafel zit iedereen in één gesprek."
+          }
+        ],
+        "them": {
+          "price": "Day Pass $ 5 per gebruiker per dag, Business vanaf $ 399 per maand",
+          "freePlan": "2 uur per dag, tot 12 mensen",
+          "browser": "Ja",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is SpatialChat gratis?",
+            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. SpatialMeet is gratis en zonder daglimiet."
+          },
+          {
+            "q": "Is SpatialMeet geschikt voor virtuele evenementen?",
+            "a": "SpatialMeet is gemaakt voor groepen die elke dag samenkomen. Ruimtes bieden plek aan 20 mensen tegelijk, dus het past beter bij teamkantoren, studiegroepen en kleine meetups dan bij grote evenementen."
+          },
+          {
+            "q": "Wat heeft SpatialChat dat SpatialMeet niet heeft?",
+            "a": "SpatialChat ondersteunt scherm delen, vastgezette bestanden en grote evenementen. SpatialMeet heeft nog geen scherm delen en richt zich op dagelijkse aanwezigheid en korte gesprekken."
+          },
+          {
+            "q": "Werken gesprekken tussen browsers?",
+            "a": "Ja. Gesprekken in SpatialMeet lopen peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "WorkAdventure-alternatief",
+        "meta": {
+          "title": "WorkAdventure-alternatief met ruimtes voor 20",
+          "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. SpatialMeet is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid en ruimtes voor 20."
+        },
+        "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
+        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. Ruimtes in SpatialMeet bieden plek aan 20, en er is geen betaald abonnement om naar over te stappen.",
+        "points": [
+          {
+            "title": "Twee keer zoveel plek",
+            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een SpatialMeet-ruimte biedt plek aan 20, en je kunt zoveel ruimtes openen als je wilt."
+          },
+          {
+            "title": "Geen kaart om te bouwen",
+            "body": "Elke ruimte heeft een kantoorvloer, een vergadertafel, een whiteboard en een speaker. Maak een ruimte en loop naar binnen."
+          },
+          {
+            "title": "Niets te hosten",
+            "body": "Geen server te beheren en geen installatie. Deel een link en je team staat al op de vloer."
+          }
+        ],
+        "them": {
+          "price": "Business vanaf € 8 per gebruiker per maand",
+          "freePlan": "Tot 10 mensen tegelijk",
+          "browser": "Ja",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is WorkAdventure gratis?",
+            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. SpatialMeet is gratis."
+          },
+          {
+            "q": "Kan ik de kaart in SpatialMeet aanpassen?",
+            "a": "Nog niet. Elke ruimte gebruikt dezelfde kantoorvloer. Met WorkAdventure ontwerp je je eigen kaarten, wat past bij teams die een eigen wereld willen."
+          },
+          {
+            "q": "Moet ik een server draaien?",
+            "a": "Nee. SpatialMeet wordt voor je gehost. Maak een ruimte in de browser en deel de link."
+          },
+          {
+            "q": "Hoe starten gesprekken in SpatialMeet?",
+            "a": "Loop naar een collega en de gespreksbalk verschijnt. Eén tik start video of spraak. Aan de vergadertafel zit iedereen die gaat zitten in hetzelfde gesprek."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Wonder-alternatief",
+        "meta": {
+          "title": "Wonder.me-alternatief: loop erheen en praat",
+          "description": "Wonder.me stopte in 2023. SpatialMeet is een gratis plek in de browser waar je een personage beweegt en een videogesprek start door naar mensen toe te lopen."
+        },
+        "title": "Mis je <em>Wonder?</em>",
+        "subtitle": "Wonder.me stopte in april 2023. SpatialMeet houdt vast aan wat het goed maakte, rondlopen en praten met wie je tegenkomt, op een pixel-art kantoorvloer.",
+        "points": [
+          {
+            "title": "Loop erheen om te praten",
+            "body": "Net als een cirkel binnenstappen op Wonder start je een gesprek door naast iemand te gaan staan. Van groep wisselen is gewoon lopen."
+          },
+          {
+            "title": "Nog steeds in de browser",
+            "body": "Open een link, kies een personage en je bent binnen. Gasten hebben geen account nodig."
+          },
+          {
+            "title": "Gratis en de hele dag open",
+            "body": "Geen abonnementen en geen tijdslimieten. Houd een ruimte open voor een team, een klas of een vaste meetup."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Bestaat Wonder.me nog?",
+            "a": "Nee. Wonder.me stopte op 25 april 2023, nadat de oprichters geen duurzaam verdienmodel vonden."
+          },
+          {
+            "q": "Hoe verschilt SpatialMeet van Wonder?",
+            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. SpatialMeet is een kantoor waar je rondloopt, met bureaus, een vergadertafel, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
+          },
+          {
+            "q": "Hoeveel mensen kunnen meedoen?",
+            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
+          },
+          {
+            "q": "Is SpatialMeet gratis?",
+            "a": "Ja. Ruimtes maken, rondlopen, chatten en bellen is gratis."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Virtueel kantoor",
+        "meta": {
+          "title": "Gratis virtueel kantoor voor remote teams",
+          "description": "Een gratis virtueel kantoor in je browser. Zie wie er is, loop erheen voor een videogesprek en houd één ruimte open voor je remote team."
+        },
+        "title": "Een gratis <em>virtueel kantoor</em> voor remote teams.",
+        "subtitle": "Geef je team overdag een plek om te zijn. Zie wie er is, loop erheen voor een snelle vraag en ga aan de vergadertafel zitten als het tijd is om te praten.",
+        "points": [
+          {
+            "title": "Zie wie er is",
+            "body": "Iedereen heeft een personage, een naambordje en een status, dus je weet wie tijd heeft voordat je erheen loopt."
+          },
+          {
+            "title": "Snelle vragen blijven snel",
+            "body": "Loop erheen en tik om te bellen. Geen agenda-uitnodiging, geen vergaderlink, geen wachtruimte."
+          },
+          {
+            "title": "Een tafel voor vergaderingen",
+            "body": "Ga aan de vergadertafel zitten en iedereen daar zit in één gesprek, met een kaartje per persoon."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat is een virtueel kantoor?",
+            "a": "Een virtueel kantoor is een gedeelde online plek waar een remote team samenwerkt. In SpatialMeet is het een pixel-art vloer waar je je collega's ziet en met ze praat door naar ze toe te lopen."
+          },
+          {
+            "q": "Is het gratis?",
+            "a": "Ja. SpatialMeet is gratis, zonder proefperiode en zonder prijs per plek."
+          },
+          {
+            "q": "Hoeveel mensen kunnen één kantoor gebruiken?",
+            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk. Grotere teams kunnen per team een ruimte openen."
+          },
+          {
+            "q": "Vervangt het videogesprekken?",
+            "a": "Het vervangt het korte geplande gesprek. Je hebt nog steeds video en spraak, maar gesprekken beginnen als je erheen loopt, niet als een vergadering begint."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Virtueel coworken",
+        "meta": {
+          "title": "Gratis virtuele coworkingplek online",
+          "description": "Cowork online met vrienden of onbekenden in een gratis pixel-art kantoor. Werk naast elkaar, neem samen pauze en praat wanneer je wilt."
+        },
+        "title": "<em>Virtueel coworken</em> dat voelt als een gedeeld bureau.",
+        "subtitle": "Alleen werken gaat makkelijker met mensen om je heen. Zit in een gedeeld kantoor, ga aan de slag en loop naar iemand toe als je pauze wilt.",
+        "points": [
+          {
+            "title": "Gezelschap zonder gesprekken",
+            "body": "Je ziet anderen werken zonder in beeld te zijn. Gesprekken starten pas als iemand erheen loopt."
+          },
+          {
+            "title": "Een open ruimte, altijd",
+            "body": "Het openbare kantoor is altijd open. Of maak een ruimte voor je eigen coworkinggroep en deel de link."
+          },
+          {
+            "title": "Stel je status in",
+            "body": "Zet jezelf op bezet als je je concentreert en op beschikbaar als je zin hebt in een praatje."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat is virtueel coworken?",
+            "a": "Virtueel coworken betekent online naast anderen werken, zodat het minder eenzaam voelt. Veel mensen concentreren zich makkelijker als anderen in de buurt werken."
+          },
+          {
+            "q": "Moet ik in beeld zijn?",
+            "a": "Nee. Je camera en microfoon blijven uit tot je aan een gesprek meedoet."
+          },
+          {
+            "q": "Kan ik met onbekenden coworken?",
+            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een ruimte en voeg je een wachtwoord toe."
+          },
+          {
+            "q": "Is er een tijdslimiet?",
+            "a": "Nee. Blijf zo lang als je wilt."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Online studieruimte",
+        "meta": {
+          "title": "Gratis online studieruimte om samen te studeren",
+          "description": "Studeer met vrienden in een gratis online studieruimte. Zit samen in een pixel-art ruimte, concentreer je en praat als je pauze nodig hebt. Niets te downloaden."
+        },
+        "title": "Een <em>online studieruimte</em> voor jou en je vrienden.",
+        "subtitle": "Maak een ruimte voor je studiegroep, deel één link en zit samen terwijl je werkt. Bespreek een opgave aan tafel en ga daarna weer verder.",
+        "points": [
+          {
+            "title": "Standaard stil",
+            "body": "Niemand hoort je tot je een gesprek start, dus de ruimte blijft geconcentreerd."
+          },
+          {
+            "title": "Een tafel voor groepswerk",
+            "body": "Ga aan de vergadertafel zitten om als groep te praten en sta op om weer alleen te studeren."
+          },
+          {
+            "title": "Een whiteboard voor opgaven",
+            "body": "Loop naar het whiteboard om een idee te schetsen of samen een vraag uit te werken."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hoe maak ik een studieruimte?",
+            "a": "Maak een ruimte, geef hem een naam en deel de link met je vrienden. Voeg een wachtwoord toe als je hem privé wilt houden."
+          },
+          {
+            "q": "Is het gratis voor studenten?",
+            "a": "Ja. SpatialMeet is gratis voor iedereen, en niemand heeft een account nodig om mee te doen."
+          },
+          {
+            "q": "Kunnen we muziek luisteren tijdens het studeren?",
+            "a": "Ja. Loop naar de speaker in de ruimte om muziek af te spelen die iedereen in de ruimte hoort."
+          },
+          {
+            "q": "Werkt het op een telefoon?",
+            "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Virtueel klaslokaal",
+        "meta": {
+          "title": "Gratis virtueel klaslokaal voor spreekuren",
+          "description": "Houd spreekuren, bijles en kleine lessen in een gratis virtueel klaslokaal. Studenten lopen erheen om te praten, groepen komen samen aan tafel en iedereen deelt een whiteboard."
+        },
+        "title": "Een <em>virtueel klaslokaal</em> waar studenten rondlopen.",
+        "subtitle": "Houd spreekuren, bijles of een kleine les in een ruimte waar studenten kunnen rondlopen. Ze komen naar je toe als ze een vraag hebben, en groepen praten aan tafel.",
+        "points": [
+          {
+            "title": "Spreekuren die doorlopen",
+            "body": "Studenten zien wanneer je tijd hebt en lopen erheen om iets te vragen. Niemand zit in een wachtruimte."
+          },
+          {
+            "title": "Kleine groepen aan tafel",
+            "body": "Tot zes mensen zitten aan de vergadertafel en delen één gesprek, met een kaartje per persoon."
+          },
+          {
+            "title": "Een gedeeld whiteboard",
+            "body": "Teken op het whiteboard om een idee uit te leggen. Iedereen in de ruimte ziet hetzelfde bord."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hoeveel studenten kunnen meedoen?",
+            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, wat past bij kleine klassen, bijlesgroepen en spreekuren."
+          },
+          {
+            "q": "Hebben studenten een account nodig?",
+            "a": "Nee. Studenten doen mee via een link met alleen een naam."
+          },
+          {
+            "q": "Kan ik het klaslokaal privé houden?",
+            "a": "Ja. Voeg een wachtwoord toe als je de ruimte maakt en deel het alleen met je klas."
+          },
+          {
+            "q": "Is het gratis voor docenten?",
+            "a": "Ja. SpatialMeet is gratis, zonder betaald abonnement."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Proximity chat",
+        "meta": {
+          "title": "Gratis proximity videochat in de browser",
+          "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een video- of spraakgesprek te starten. Gratis, in de browser, zonder download."
+        },
+        "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
+        "subtitle": "In SpatialMeet bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, ga aan tafel zitten om als groep te praten en loop verder als je klaar bent.",
+        "points": [
+          {
+            "title": "Dichtbij komen start het gesprek",
+            "body": "Ga naast een collega staan en er verschijnt een gespreksbalk. Eén tik opent video of spraak."
+          },
+          {
+            "title": "Groepen aan tafel",
+            "body": "Ga aan de vergadertafel zitten en je doet mee aan het gesprek met iedereen die daar zit."
+          },
+          {
+            "title": "Peer-to-peer",
+            "body": "Gesprekken gaan rechtstreeks tussen browsers via WebRTC, dus er is niets te installeren."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat is proximity chat?",
+            "a": "Proximity chat verbindt je met mensen op basis van waar je personage staat. Je praat met de mensen bij je in de buurt, zoals in een echte ruimte."
+          },
+          {
+            "q": "Stopt het gesprek als ik wegloop?",
+            "a": "Nee. Een verbonden gesprek blijft verbonden tot iemand ophangt, dus rondlopen verbreekt het niet."
+          },
+          {
+            "q": "Kunnen meer dan twee mensen praten?",
+            "a": "Ja. Bel iemand die al in een gesprek zit om mee te doen, of ga aan de vergadertafel zitten om als groep te praten."
+          },
+          {
+            "q": "Is het gratis?",
+            "a": "Ja. SpatialMeet is gratis in de browser, op desktop en mobiel."
+          }
+        ]
+      }
+    }
   }
 }

@@ -1,15 +1,11 @@
-import { localizedMetadata } from '@/lib/seo';
+import { seoLayout } from '@/lib/seoLayout';
 
-export const generateMetadata = localizedMetadata({
+const route = seoLayout({
   path: '/people',
   title: 'peopleTitle',
   description: 'peopleDescription',
+  type: 'CollectionPage',
 });
 
-export default function PeopleLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
-}
+export const generateMetadata = route.generateMetadata;
+export default route.Layout;

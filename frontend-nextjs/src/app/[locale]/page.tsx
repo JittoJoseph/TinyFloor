@@ -1,7 +1,8 @@
 import React from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { SITE_URL } from "@/lib/site";
 import { localizedMetadata } from "@/lib/seo";
+import { appNode, faqNode, pageGraph } from "@/lib/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 import type { Locale } from "@/lib/i18n/routing";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
@@ -23,43 +24,25 @@ export default async function LandingPage({ params }: Props) {
   setRequestLocale(locale as Locale);
   const t = await getTranslations();
   const faqs = t.raw("faq.items") as Array<{ q: string; a: string }>;
-
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: "SpatialMeet",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web browser",
-      url: SITE_URL,
-      image: `${SITE_URL}/office.png`,
-      inLanguage: locale,
-      description: t("landing.description"),
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
-      featureList: t.raw("landing.features") as string[],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      inLanguage: locale,
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: { "@type": "Answer", text: faq.a },
-      })),
-    },
-  ];
+  const app = appNode(
+    locale,
+    t("landing.description"),
+    t.raw("landing.features") as string[],
+  );
 
   return (
     <div className="min-h-screen w-full relative">
       <link rel="preload" as="image" href="/office.png" fetchPriority="high" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        schema={pageGraph({
+          locale,
+          path: "/",
+          name: t("metadata.title"),
+          description: t("metadata.description"),
+          crumb: false,
+          mainEntity: app["@id"] as string,
+          nodes: [app, faqNode(locale, "/", faqs)],
+        })}
       />
       <Navbar />
 

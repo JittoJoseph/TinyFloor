@@ -90,6 +90,9 @@ export function pageMetadata({
       ...(fullTitle ? { title: fullTitle } : {}),
       ...(description ? { description } : {}),
       locale: ogLocale(locale),
+      alternateLocale: localeCodes
+        .filter((code) => code !== locale)
+        .map((code) => OG_LOCALE[code]),
       images: [{ url: "/office.png", width: 1200, height: 800 }],
     },
     twitter: {

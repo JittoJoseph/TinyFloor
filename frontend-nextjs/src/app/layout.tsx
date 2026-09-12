@@ -10,6 +10,8 @@ import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localeDirection } from "@/lib/i18n/routing";
 import { ogLocale } from "@/lib/seo";
+import { siteGraph } from "@/lib/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 
 const vt323 = VT323({
   variable: "--font-pixel",
@@ -61,9 +63,17 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: ["/office.png"],
     },
+    applicationName: "SpatialMeet",
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
   };
 }
@@ -78,6 +88,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth">
       <body className={`${vt323.variable} ${nunito.variable} antialiased`}>
+        <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
           <AuthProvider>
             <ToastProvider>{children}</ToastProvider>

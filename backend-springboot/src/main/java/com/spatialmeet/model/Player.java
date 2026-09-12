@@ -15,6 +15,8 @@ public class Player {
     private String inCallWith;
     private String status = "available"; // available, busy, away, in_call
     private boolean guest = true;
+    private Integer seat;
+    private String meeting;
 
     // Constructors, getters, setters
     public Player() {}
@@ -61,4 +63,10 @@ public class Player {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public Integer getSeat() { return seat; }
+    public void setSeat(Integer seat) { this.seat = seat; }
+
+    public String getMeeting() { return meeting; }
+    public void setMeeting(String meeting) { this.meeting = meeting; }
 }

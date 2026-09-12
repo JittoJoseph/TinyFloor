@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
-import { TILE_SIZE } from "./types";
+import { MAP_WIDTH_TILES, TILE_SIZE } from "./types";
 
 export interface MapAnchor {
   name: string;
@@ -11,9 +11,11 @@ export interface MapAnchor {
 }
 
 export interface ChairSpec {
+  id: number;
   x: number;
   y: number;
   direction: "up" | "down" | "left" | "right";
+  zone?: string;
 }
 
 interface TilesetRef {
@@ -93,8 +95,8 @@ export class MapManager {
     this.map.createLayer("Walls", [rb, mo], 0, 0)!.setDepth(1);
 
     this.createFurniture();
-    this.readChairs();
     this.readAnchors();
+    this.readChairs();
     this.createColliders();
     this.nav = new NavGrid(this.solidRects);
   }
@@ -146,16 +148,24 @@ export class MapManager {
         .image(x, y, tile.key, tile.frame)
         .setOrigin(0, 1)
         .setDepth(depthForY(y) + (direction === "down" ? -1 : 0));
+      const cx = x + TILE_SIZE / 2;
+      const cy = y - TILE_SIZE / 2;
       this.chairSpecs.push({
-        x: x + TILE_SIZE / 2,
-        y: y - TILE_SIZE / 2,
+        // the chair's tile, so ids survive the map being regenerated
+        id: (y / TILE_SIZE) * MAP_WIDTH_TILES + x / TILE_SIZE,
+        x: cx,
+        y: cy,
         direction: direction as ChairSpec["direction"],
+        zone: this.getAnchors("Zones").find(
+          (z) =>
+            cx >= z.x && cx < z.x + z.width && cy >= z.y && cy < z.y + z.height,
+        )?.name,
       });
     });
   }
 
   private readAnchors() {
-    ["Computer", "Whiteboard", "Speaker", "Zones"].forEach((layer) => {
+    ["Computer", "Whiteboard", "Speaker", "Zones", "Table"].forEach((layer) => {
       this.anchors[layer] = (
         this.map.getObjectLayer(layer)?.objects ?? []
       ).map((obj) => ({
@@ -215,10 +225,6 @@ export class MapManager {
 
   getAnchors(layer: string): MapAnchor[] {
     return this.anchors[layer] ?? [];
-  }
-
-  getZone(name: string): MapAnchor | undefined {
-    return this.anchors.Zones?.find((z) => z.name === name);
   }
 
   getNavGrid(): NavGrid {

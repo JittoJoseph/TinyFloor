@@ -12,7 +12,6 @@ const routes: Array<{
   { path: '/rooms', changeFrequency: 'daily', priority: 0.8 },
   { path: '/people', changeFrequency: 'daily', priority: 0.6 },
   { path: '/create-room', changeFrequency: 'monthly', priority: 0.5 },
-  { path: '/auth', changeFrequency: 'monthly', priority: 0.5 },
 ];
 
 const absolute = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;

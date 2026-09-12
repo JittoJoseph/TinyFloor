@@ -7,9 +7,10 @@ import {
 import { WebSocketManager } from "./WebSocketManager";
 import { VirtualJoystickManager } from "./VirtualJoystickManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
+import { depthForY } from "./MapManager";
 import { pixelToTile, isValidTile, MOVEMENT_SPEED } from "./types";
 
-const APPROACH_RANGE = 3;
+const ARRIVE_RANGE = 3;
 
 export class MovementManager {
   private scene: Phaser.Scene;
@@ -21,6 +22,8 @@ export class MovementManager {
   private joystick?: VirtualJoystickManager;
   private keys?: Record<string, Phaser.Input.Keyboard.Key>;
   private path: Vec[] = [];
+  private arrive?: () => void;
+  private release?: () => void;
   private currentDirection: Direction = "down";
   private lastSentTile = "";
   private needsFinalSend = false;
@@ -68,9 +71,10 @@ export class MovementManager {
   }
 
   update(delta: number) {
-    if (this.frozen) return;
-    const step = (MOVEMENT_SPEED * delta) / 1000;
     const input = this.inputEnabled ? this.readInput() : { x: 0, y: 0 };
+    if (this.frozen && (!(input.x || input.y) || !this.unfreeze())) return;
+
+    const step = (MOVEMENT_SPEED * delta) / 1000;
     let manualMoved = false;
     let moving = false;
     let dx = input.x;
@@ -78,6 +82,7 @@ export class MovementManager {
 
     if (dx || dy) {
       this.path.length = 0;
+      this.arrive = undefined;
       const len = Math.hypot(dx, dy);
       manualMoved = this.moveBy((dx / len) * step, (dy / len) * step);
       moving = manualMoved;
@@ -98,6 +103,14 @@ export class MovementManager {
     this.movingBefore = manualMoved;
     this.playAnimation(moving);
     this.syncManualMovement(manualMoved);
+    // standing players sort by where their feet are; sitting sets its own depth
+    this.player.setDepth(depthForY(this.player.y));
+
+    if (this.arrive && !this.path.length) {
+      const arrive = this.arrive;
+      this.arrive = undefined;
+      arrive();
+    }
   }
 
   private readInput(): Vec {
@@ -132,8 +145,8 @@ export class MovementManager {
     pointer: Phaser.Input.Pointer,
     over: Phaser.GameObjects.GameObject[],
   ) {
-    if (this.frozen || !this.inputEnabled || over.length || pointer.button !== 0)
-      return;
+    if (!this.inputEnabled || over.length || pointer.button !== 0) return;
+    if (!this.unfreeze()) return;
 
     const goal = pixelToTile(pointer.worldX, pointer.worldY);
     const path = this.nav.buildPath(
@@ -144,13 +157,69 @@ export class MovementManager {
     );
     if (!path.length) return;
 
-    this.path = path;
+    this.follow(path, goal.tileX, goal.tileY);
     this.signalMove("click");
     this.pulseTile(path[path.length - 1]);
-    this.wsManager.send("walk_to", {
-      tileX: goal.tileX,
-      tileY: goal.tileY,
-    });
+  }
+
+  /**
+   * Whether we are free to walk. A casual seat lets go when you head somewhere
+   * else; a seat without `release`, like a meeting chair, holds you until you
+   * get up on purpose.
+   */
+  private unfreeze(): boolean {
+    if (this.frozen) this.release?.();
+    return !this.frozen;
+  }
+
+  /** Every walk goes through here so everyone else sees it too. */
+  private follow(path: Vec[], tileX: number, tileY: number) {
+    this.path = path;
+    this.arrive = undefined;
+    this.wsManager.send("walk_to", { tileX, tileY });
+  }
+
+  /**
+   * Walks to the reachable tile nearest a world point, then runs `arrive`.
+   * Everything you click in the room goes through here, so using it from across
+   * the room works the same with a mouse or a finger. Steering or clicking the
+   * floor on the way drops the errand.
+   */
+  goTo(worldX: number, worldY: number, arrive: () => void) {
+    if (!this.inputEnabled || !this.unfreeze()) return;
+
+    const goal = pixelToTile(worldX, worldY);
+    const here = pixelToTile(this.player.x, this.player.y);
+    const spots: Array<{ tileX: number; tileY: number; away: number }> = [];
+    for (let dy = -ARRIVE_RANGE; dy <= ARRIVE_RANGE; dy++) {
+      for (let dx = -ARRIVE_RANGE; dx <= ARRIVE_RANGE; dx++) {
+        const tileX = goal.tileX + dx;
+        const tileY = goal.tileY + dy;
+        if (this.nav.isWalkable(tileX, tileY)) {
+          spots.push({ tileX, tileY, away: dx * dx + dy * dy });
+        }
+      }
+    }
+    spots.sort((a, b) => a.away - b.away);
+
+    for (const spot of spots) {
+      if (spot.tileX === here.tileX && spot.tileY === here.tileY) {
+        this.path.length = 0;
+        this.arrive = undefined;
+        arrive();
+        return;
+      }
+      const path = this.nav.buildPath(
+        this.player.x,
+        this.player.y,
+        spot.tileX,
+        spot.tileY,
+      );
+      if (!path.length) continue;
+      this.follow(path, spot.tileX, spot.tileY);
+      this.arrive = arrive;
+      return;
+    }
   }
 
   private signalMove(method: "manual" | "click") {
@@ -201,50 +270,21 @@ export class MovementManager {
     this.wsManager.send("move", { tileX: tile.tileX, tileY: tile.tileY });
   }
 
-  /**
-   * Walks to the closest walkable tile beside a world point, so clicking a chair
-   * or the board from across the room takes you there instead of doing nothing.
-   */
-  approach(worldX: number, worldY: number): boolean {
-    if (this.frozen || !this.inputEnabled) return false;
-    const goal = pixelToTile(worldX, worldY);
-    const candidates: Array<{ tileX: number; tileY: number; away: number }> = [];
-    for (let dy = -APPROACH_RANGE; dy <= APPROACH_RANGE; dy++) {
-      for (let dx = -APPROACH_RANGE; dx <= APPROACH_RANGE; dx++) {
-        const tileX = goal.tileX + dx;
-        const tileY = goal.tileY + dy;
-        if (!isValidTile(tileX, tileY)) continue;
-        if (!this.nav.isWalkable(tileX, tileY)) continue;
-        candidates.push({ tileX, tileY, away: dx * dx + dy * dy });
-      }
-    }
-    candidates.sort((a, b) => a.away - b.away);
-    for (const candidate of candidates) {
-      const path = this.nav.buildPath(
-        this.player.x,
-        this.player.y,
-        candidate.tileX,
-        candidate.tileY,
-      );
-      if (path.length) {
-        this.path = path;
-        return true;
-      }
-    }
-    return false;
-  }
-
   setInputEnabled(enabled: boolean) {
     this.inputEnabled = enabled;
   }
 
-  /** Sitting holds the pose, so movement and the idle animation both stop. */
-  setFrozen(frozen: boolean) {
+  /**
+   * Sitting holds the pose, so walking and the idle animation both stop.
+   * `release` stands you up when you head somewhere else; leave it out for
+   * seats you should only leave on purpose.
+   */
+  setFrozen(frozen: boolean, release?: () => void) {
     this.frozen = frozen;
-    if (frozen) {
-      this.path.length = 0;
-      (this.player.body as Phaser.Physics.Arcade.Body).setVelocity(0, 0);
-    }
+    this.release = release;
+    this.path.length = 0;
+    this.arrive = undefined;
+    (this.player.body as Phaser.Physics.Arcade.Body).setVelocity(0, 0);
   }
 
   destroy() {

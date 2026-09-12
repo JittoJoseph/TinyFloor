@@ -1,8 +1,7 @@
 import * as Phaser from "phaser";
 import { jukebox } from "./JukeboxManager";
 import { sceneText } from "./sceneText";
-
-const REACH = 210;
+import { GoTo, Interactable } from "./Interactable";
 
 /** Pulled from the office tileset so it sits in the same palette as the desks. */
 const OUTLINE = 0x3a3a50;
@@ -19,59 +18,48 @@ const ACCENT = 0xff4e00;
 
 /**
  * A floor speaker. It shows a small level meter while the room's music plays,
- * lights up when you are close enough to touch it, and opens the controls when
- * clicked.
+ * lights up when you are close, and opens the controls once you walk up to it.
  */
 export class JukeboxObject {
-  private scene: Phaser.Scene;
-  private player: Phaser.Physics.Arcade.Sprite;
   private cabinet: Phaser.GameObjects.Graphics;
   private meter: Phaser.GameObjects.Graphics;
-  private prompt: Phaser.GameObjects.Container;
   private hitArea: Phaser.GameObjects.Zone;
+  private reach: Interactable;
   private unsubscribe: () => void;
-  private inReach = false;
-  private hovered = false;
+  private lit = false;
   private playing = false;
   private meterAt = 0;
   private box: { x: number; y: number; width: number; height: number };
-  private onApproach?: (x: number, y: number) => void;
 
   constructor(
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     at: { x: number; y: number },
-    onApproach?: (x: number, y: number) => void,
+    goTo: GoTo,
   ) {
-    this.scene = scene;
-    this.player = player;
     this.box = { x: at.x, y: at.y - 46, width: 30, height: 46 };
-    this.onApproach = onApproach;
+    const cx = this.box.x + this.box.width / 2;
+    const bottom = this.box.y + this.box.height;
 
-    this.cabinet = scene.add.graphics().setDepth(this.depth());
-    this.meter = scene.add.graphics().setDepth(this.depth() + 0.1);
-    this.prompt = this.createPrompt();
-
+    this.cabinet = scene.add.graphics().setDepth(bottom);
+    this.meter = scene.add.graphics().setDepth(bottom + 0.1);
     this.hitArea = scene.add
-      .zone(
-        this.box.x + this.box.width / 2,
-        this.box.y + this.box.height / 2,
-        this.box.width + 12,
-        this.box.height + 12,
-      )
-      .setOrigin(0.5)
-      .setInteractive();
-    this.hitArea.on("pointerover", () => this.setHovered(true));
-    this.hitArea.on("pointerout", () => this.setHovered(false));
-    this.hitArea.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-      pointer.event.stopPropagation();
-      if (this.inReach) jukebox.setOpen(!jukebox.getSnapshot().open);
-      else
-        this.onApproach?.(
-          this.box.x + this.box.width / 2,
-          this.box.y + this.box.height + 24,
-        );
-    });
+      .zone(cx, this.box.y + this.box.height / 2, this.box.width + 12, this.box.height + 12)
+      .setOrigin(0.5);
+
+    this.reach = new Interactable(
+      scene,
+      player,
+      { x: cx, y: bottom },
+      this.hitArea,
+      sceneText().music,
+      goTo,
+      () => jukebox.setOpen(!jukebox.getSnapshot().open),
+      (lit) => {
+        this.lit = lit;
+        this.draw();
+      },
+    );
 
     this.draw();
     this.unsubscribe = jukebox.subscribe(() => {
@@ -81,34 +69,6 @@ export class JukeboxObject {
       this.draw();
       this.drawMeter();
     });
-  }
-
-  private depth() {
-    return this.box.y + this.box.height;
-  }
-
-  private createPrompt() {
-    const label = this.scene.add
-      .text(0, 0, sceneText().music, {
-        fontSize: "13px",
-        fontFamily: "VT323, monospace",
-        color: "#ffffff",
-        resolution: 2,
-      })
-      .setOrigin(0.5);
-
-    const background = this.scene.add.graphics();
-    const width = label.width + 20;
-    background.fillStyle(0x1f2937, 0.9);
-    background.fillRoundedRect(-width / 2, -11, width, 22, 11);
-
-    const container = this.scene.add.container(
-      this.box.x + this.box.width / 2,
-      this.box.y + this.box.height + 20,
-      [background, label],
-    );
-    container.setDepth(this.depth() + 0.2).setAlpha(0).setVisible(false);
-    return container;
   }
 
   /** Flat shapes with a 1px outline, the way the tileset draws its furniture. */
@@ -161,7 +121,7 @@ export class JukeboxObject {
     g.fillStyle(this.playing ? ACCENT : CONE, 1);
     g.fillRect(x + width - 7, y + 6, 2, 2);
 
-    if (this.inReach) {
+    if (this.lit) {
       g.lineStyle(1, ACCENT, 0.9);
       g.strokeRect(x - 2, y - 2, width + 4, height + 2);
     }
@@ -184,56 +144,19 @@ export class JukeboxObject {
   }
 
   update(_time: number, delta: number) {
-    const distance = Phaser.Math.Distance.Between(
-      this.player.x,
-      this.player.y,
-      this.box.x + this.box.width / 2,
-      this.box.y + this.box.height,
-    );
-    const reachable = distance < REACH;
-    jukebox.setProximity(distance, reachable);
+    jukebox.setProximity(this.reach.update(), this.lit);
 
     if (this.playing) {
       this.meterAt += delta / 130;
       this.drawMeter();
     }
-
-    if (reachable === this.inReach) return;
-    this.inReach = reachable;
-    this.draw();
-    this.applyCursor();
-
-    if (reachable) this.prompt.setVisible(true);
-    this.scene.tweens.add({
-      targets: this.prompt,
-      alpha: reachable ? 1 : 0,
-      y: this.box.y + this.box.height + (reachable ? 14 : 20),
-      duration: 220,
-      ease: "Cubic.easeOut",
-      onComplete: () => {
-        if (!this.inReach) this.prompt.setVisible(false);
-      },
-    });
-  }
-
-  private setHovered(hovered: boolean) {
-    if (this.hovered === hovered) return;
-    this.hovered = hovered;
-    this.applyCursor();
-  }
-
-  private applyCursor() {
-    this.scene.input.setDefaultCursor(
-      this.hovered && this.inReach ? "pointer" : "default",
-    );
   }
 
   destroy() {
     this.unsubscribe();
-    this.scene.tweens.killTweensOf(this.prompt);
+    this.reach.destroy();
     this.cabinet.destroy();
     this.meter.destroy();
-    this.prompt.destroy();
     this.hitArea.destroy();
   }
 }

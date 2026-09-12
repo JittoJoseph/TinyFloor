@@ -101,6 +101,24 @@ export class NavGrid {
     );
   }
 
+  nearestWalkable(
+    tileX: number,
+    tileY: number,
+    range = 3,
+  ): { tileX: number; tileY: number } | null {
+    let best: { tileX: number; tileY: number } | null = null;
+    let bestAway = Infinity;
+    for (let dy = -range; dy <= range; dy++) {
+      for (let dx = -range; dx <= range; dx++) {
+        const away = dx * dx + dy * dy;
+        if (away >= bestAway || !this.isWalkable(tileX + dx, tileY + dy)) continue;
+        best = { tileX: tileX + dx, tileY: tileY + dy };
+        bestAway = away;
+      }
+    }
+    return best;
+  }
+
   buildPath(fromX: number, fromY: number, goalX: number, goalY: number): Vec[] {
     const from = pixelToTile(fromX, fromY);
     const turns = this.findTurns(from.tileX, from.tileY, goalX, goalY);

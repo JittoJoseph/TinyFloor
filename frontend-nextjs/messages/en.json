@@ -354,6 +354,9 @@
       "camera": "Camera unavailable"
     }
   },
+  "meeting": {
+    "micOff": "Microphone off"
+  },
   "controls": {
     "status": "Status: {status}",
     "muteMic": "Mute microphone",
@@ -456,6 +459,8 @@
     "guide": "Guide",
     "sit": "Press E to sit",
     "stand": "Press E to stand",
+    "joinMeeting": "Press E to join",
+    "meeting": "Meeting",
     "music": "Click for music",
     "draw": "Click to draw"
   },

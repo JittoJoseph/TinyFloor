@@ -1,12 +1,16 @@
 import * as Phaser from "phaser";
 import {
   AnimationManager,
+  AnimationState,
+  CardinalDirection,
   Direction,
   directionFromVector,
 } from "./AnimationManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { TILE_SIZE, MOVEMENT_SPEED, tileToPixel } from "./types";
+import type { SeatPose } from "./SeatManager";
+import { SceneLabel } from "./SceneLabel";
+import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "./types";
 import { GUIDE_ID } from "./tutorial";
 import type { PlayerStatus } from "./types";
 
@@ -19,20 +23,18 @@ interface RemotePlayerState {
   guest: boolean;
   lastDirection?: Direction;
   lastMoving?: boolean;
-}
-
-interface NameTag {
-  container: Phaser.GameObjects.Container;
-  nameText: Phaser.GameObjects.Text;
-  statusDot: Phaser.GameObjects.Graphics;
-  width: number;
+  seat?: SeatPose;
+  onArrive?: () => void;
 }
 
 const SNAP_THRESHOLD = TILE_SIZE * 6;
 const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
+const BEHIND_TAG_OFFSET_Y = 40;
 const TAG_DEPTH = 100000;
 const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
+const HOP_DURATION = 220;
+const HOP_REACH = TILE_SIZE * 2;
 
 const STATUS_COLORS: Record<string, number> = {
   available: 0x34d399,
@@ -42,13 +44,21 @@ const STATUS_COLORS: Record<string, number> = {
   offline: 0x9ca3af,
 };
 
+/**
+ * Sitting with your back to us puts your head over the desk, where a name would
+ * cover it, so the name hangs under the chair instead.
+ */
+function nameTagOffset(seated?: CardinalDirection): number {
+  return seated === "up" ? BEHIND_TAG_OFFSET_Y : TAG_OFFSET_Y;
+}
+
 export class PlayerManager {
   private scene: Phaser.Scene;
   private animationManager: AnimationManager;
   private nav: NavGrid;
   private playerId: string;
   private players: Map<string, Phaser.GameObjects.Container> = new Map();
-  private nameTags: Map<string, NameTag> = new Map();
+  private nameTags: Map<string, SceneLabel> = new Map();
   private playerStates: Map<string, RemotePlayerState> = new Map();
   private localPlayer?: Phaser.Physics.Arcade.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
@@ -79,64 +89,22 @@ export class PlayerManager {
     player.setData("spriteName", character);
     player.play(this.animationManager.getAnimationKey(character, "idle", "down"));
 
+    const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
+    tag.container.setDepth(TAG_DEPTH);
+    this.scene.tweens.add({
+      targets: tag.container,
+      y: y + TAG_OFFSET_Y - 2,
+      duration: 1500,
+      ease: "Sine.easeInOut",
+      yoyo: true,
+      repeat: -1,
+    });
+
     this.localPlayer = player;
-    this.nameTags.set(id, this.createNameTag(name, x, y + TAG_OFFSET_Y, true));
+    this.nameTags.set(id, tag);
     this.updatePlayerStatus(id, "available");
 
     return player;
-  }
-
-  private createNameTag(
-    name: string,
-    x: number,
-    y: number,
-    isLocal: boolean,
-  ): NameTag {
-    const container = this.scene.add.container(x, y);
-    container.setDepth(TAG_DEPTH);
-
-    const font = { fontSize: "13px", fontFamily: "VT323, monospace" };
-    const measure = this.scene.add.text(0, 0, name, font);
-    const textWidth = measure.width;
-    measure.destroy();
-
-    const paddingX = 8;
-    const dotRadius = 4;
-    const width = textWidth + paddingX * 2 + dotRadius * 2 + 8;
-    const height = 16;
-
-    const background = this.scene.add.graphics();
-    background.fillStyle(0x1f2937, 0.85);
-    background.fillRoundedRect(-width / 2, -height / 2, width, height, 8);
-    background.lineStyle(1, 0x374151, 0.5);
-    background.strokeRoundedRect(-width / 2, -height / 2, width, height, 8);
-    container.add(background);
-
-    const statusDot = this.scene.add.graphics();
-    container.add(statusDot);
-
-    const dotX = -width / 2 + paddingX + dotRadius;
-    const nameText = this.scene.add.text(dotX + dotRadius + 6, 0, name, {
-      ...font,
-      color: "#ffffff",
-      resolution: 2,
-      strokeThickness: 0,
-    });
-    nameText.setOrigin(0, 0.5);
-    container.add(nameText);
-
-    if (isLocal) {
-      this.scene.tweens.add({
-        targets: container,
-        y: y - 2,
-        duration: 1500,
-        ease: "Sine.easeInOut",
-        yoyo: true,
-        repeat: -1,
-      });
-    }
-
-    return { container, nameText, statusDot, width };
   }
 
   addPlayer(
@@ -166,9 +134,9 @@ export class PlayerManager {
     container.add(sprite);
     container.setDepth(depthForY(pos.y));
 
-    const nameTag = this.createNameTag(name, 0, TAG_OFFSET_Y, false);
-    container.add(nameTag.container);
-    this.nameTags.set(id, nameTag);
+    const tag = new SceneLabel(this.scene, 0, TAG_OFFSET_Y, name, true);
+    container.add(tag.container);
+    this.nameTags.set(id, tag);
     this.players.set(id, container);
 
     this.scene.physics.world.enable(container);
@@ -193,32 +161,41 @@ export class PlayerManager {
     this.updatePlayerStatus(id, status);
   }
 
-  updateLocalPlayerNameTag(pixelX: number, pixelY: number) {
+  updateLocalPlayerNameTag(
+    pixelX: number,
+    pixelY: number,
+    seated?: CardinalDirection,
+  ) {
     this.nameTags
       .get(this.playerId)
-      ?.container.setPosition(pixelX, pixelY + TAG_OFFSET_Y);
+      ?.container.setPosition(pixelX, pixelY + nameTagOffset(seated));
+  }
+
+  /**
+   * While we sit in a meeting the cards carry everyone's name, so the names of
+   * the people at the table, ours included, come off the map.
+   */
+  hideNameTags(people: ReadonlySet<string> | null) {
+    this.nameTags.forEach((tag, id) =>
+      tag.container.setVisible(
+        !people || (id !== this.playerId && !people.has(id)),
+      ),
+    );
   }
 
   updatePlayerStatus(id: string, status: PlayerStatus) {
-    const nameTag = this.nameTags.get(id);
-    if (!nameTag) return;
+    const tag = this.nameTags.get(id);
+    if (!tag?.dot) return;
 
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
-    const dotX = -nameTag.width / 2 + 12;
-    nameTag.statusDot.clear();
-    nameTag.statusDot.fillStyle(
-      STATUS_COLORS[status] ?? STATUS_COLORS.available,
-      1,
-    );
-    nameTag.statusDot.fillCircle(dotX, 0, 4);
-
-    this.scene.tweens.killTweensOf(nameTag.statusDot);
-    nameTag.statusDot.setAlpha(1);
+    tag.setDot(STATUS_COLORS[status] ?? STATUS_COLORS.available);
+    this.scene.tweens.killTweensOf(tag.dot);
+    tag.dot.setAlpha(1);
     if (status === "in_call") {
       this.scene.tweens.add({
-        targets: nameTag.statusDot,
+        targets: tag.dot,
         alpha: 0.5,
         duration: 500,
         ease: "Sine.easeInOut",
@@ -231,7 +208,7 @@ export class PlayerManager {
   updatePlayerPosition(id: string, tileX: number, tileY: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
-    if (!state || !container) return;
+    if (!state || !container || state.seat) return;
 
     state.streaming = true;
 
@@ -254,7 +231,7 @@ export class PlayerManager {
   walkPlayerTo(id: string, tileX: number, tileY: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
-    if (!state || !container) return;
+    if (!state || !container || state.seat) return;
 
     state.streaming = false;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
@@ -262,6 +239,125 @@ export class PlayerManager {
       const point = tileToPixel(tileX, tileY);
       container.setPosition(point.x, point.y);
     }
+  }
+
+  /**
+   * Walks someone to the spot beside the chair they took, then hops them onto
+   * it. Players already seated when we arrive are placed there directly.
+   */
+  sitPlayer(id: string, pose: SeatPose, walk = true) {
+    const state = this.playerStates.get(id);
+    const container = this.players.get(id);
+    if (!state || !container) return;
+
+    this.scene.tweens.killTweensOf(container);
+    state.seat = pose;
+    state.streaming = false;
+    state.onArrive = undefined;
+    state.path = [];
+
+    if (!walk) {
+      container.setPosition(pose.x, pose.y).setDepth(pose.depth);
+      this.settle(id, pose);
+      return;
+    }
+
+    const stand = pixelToTile(pose.standX, pose.standY);
+    const goal = this.nav.nearestWalkable(stand.tileX, stand.tileY);
+    if (goal) {
+      state.path = this.nav.buildPath(container.x, container.y, goal.tileX, goal.tileY);
+    }
+    if (state.path.length) state.onArrive = () => this.hopOnto(id);
+    else this.hopOnto(id);
+  }
+
+  standPlayer(id: string) {
+    const state = this.playerStates.get(id);
+    const container = this.players.get(id);
+    const pose = state?.seat;
+    if (!state || !container || !pose) return;
+
+    this.scene.tweens.killTweensOf(container);
+    state.seat = undefined;
+    state.onArrive = undefined;
+    state.path = [];
+    state.direction = pose.direction;
+    state.lastMoving = undefined;
+    this.nameTags.get(id)?.container.setY(TAG_OFFSET_Y);
+
+    const gap = Phaser.Math.Distance.Between(container.x, container.y, pose.standX, pose.standY);
+    if (gap <= HOP_REACH) {
+      this.glide(container, pose.standX, pose.standY);
+      return;
+    }
+    // stood up before reaching the chair, so finish the walk to where they are
+    const goal = pixelToTile(pose.standX, pose.standY);
+    this.walkPlayerTo(id, goal.tileX, goal.tileY);
+  }
+
+  private hopOnto(id: string) {
+    const state = this.playerStates.get(id);
+    const container = this.players.get(id);
+    const pose = state?.seat;
+    if (!state || !container || !pose) return;
+
+    state.isMoving = false;
+    state.lastMoving = undefined;
+    this.animate(container, "run", pose.direction);
+    this.glide(container, pose.x, pose.y, pose.depth, () => {
+      if (state.seat === pose) this.settle(id, pose);
+    });
+  }
+
+  /** A short eased move, holding a depth or following y when none is given. */
+  private glide(
+    container: Phaser.GameObjects.Container,
+    x: number,
+    y: number,
+    depth?: number,
+    onComplete?: () => void,
+  ) {
+    if (depth !== undefined) container.setDepth(depth);
+    this.scene.tweens.add({
+      targets: container,
+      x,
+      y,
+      duration: HOP_DURATION,
+      ease: "Sine.easeOut",
+      onUpdate: () => {
+        if (depth === undefined) container.setDepth(depthForY(container.y));
+      },
+      onComplete,
+    });
+  }
+
+  private spriteOf(container: Phaser.GameObjects.Container) {
+    return container.list[0] as Phaser.GameObjects.Sprite;
+  }
+
+  private animate(
+    container: Phaser.GameObjects.Container,
+    state: AnimationState,
+    direction: Direction,
+  ) {
+    const sprite = this.spriteOf(container);
+    sprite.play(
+      this.animationManager.getAnimationKey(
+        sprite.getData("spriteName") || "Adam",
+        state,
+        direction,
+      ),
+      true,
+    );
+  }
+
+  private settle(id: string, pose: SeatPose) {
+    const container = this.players.get(id);
+    if (!container) return;
+    const sprite = this.spriteOf(container);
+    sprite.anims.stop();
+    sprite.setFrame(pose.frame);
+    this.nameTags.get(id)?.container.setY(nameTagOffset(pose.direction));
   }
 
   update(delta: number) {
@@ -293,6 +389,15 @@ export class PlayerManager {
         container.setDepth(depthForY(pos.y));
         state.direction = directionFromVector(dx, dy, state.direction);
         state.isMoving = state.path.length > 0 || dx !== 0 || dy !== 0;
+
+        if (!state.path.length && state.onArrive) {
+          const arrive = state.onArrive;
+          state.onArrive = undefined;
+          arrive();
+          return;
+        }
+      } else if (state.seat) {
+        return;
       } else {
         state.isMoving = false;
       }
@@ -305,28 +410,22 @@ export class PlayerManager {
       }
       state.lastMoving = state.isMoving;
       state.lastDirection = state.direction;
-
-      const sprite = container.list[0] as Phaser.GameObjects.Sprite;
-      sprite.play(
-        this.animationManager.getAnimationKey(
-          sprite.getData("spriteName") || "Adam",
-          state.isMoving ? "run" : "idle",
-          state.direction,
-        ),
-        true,
-      );
+      this.animate(container, state.isMoving ? "run" : "idle", state.direction);
     });
   }
 
   removePlayer(id: string) {
-    const nameTag = this.nameTags.get(id);
-    if (nameTag) {
-      this.scene.tweens.killTweensOf(nameTag.container);
-      this.scene.tweens.killTweensOf(nameTag.statusDot);
+    const tag = this.nameTags.get(id);
+    if (tag) {
+      this.scene.tweens.killTweensOf([tag.container, tag.dot]);
       this.nameTags.delete(id);
     }
 
-    this.players.get(id)?.destroy();
+    const container = this.players.get(id);
+    if (container) {
+      this.scene.tweens.killTweensOf(container);
+      container.destroy();
+    }
     this.players.delete(id);
     this.playerStates.delete(id);
   }
@@ -336,7 +435,7 @@ export class PlayerManager {
   }
 
   getPlayerName(id: string): string | undefined {
-    return this.nameTags.get(id)?.nameText.text;
+    return this.nameTags.get(id)?.text;
   }
 
   getPlayerStatus(id: string): PlayerStatus | undefined {
@@ -350,15 +449,17 @@ export class PlayerManager {
   getPlayerList(): Array<{ id: string; name: string }> {
     return [...this.nameTags]
       .filter(([id]) => id !== GUIDE_ID)
-      .map(([id, tag]) => ({ id, name: tag.nameText.text }));
+      .map(([id, tag]) => ({ id, name: tag.text }));
   }
 
   destroy() {
-    this.nameTags.forEach((tag) => {
-      this.scene.tweens.killTweensOf(tag.container);
-      this.scene.tweens.killTweensOf(tag.statusDot);
+    this.nameTags.forEach((tag) =>
+      this.scene.tweens.killTweensOf([tag.container, tag.dot]),
+    );
+    this.players.forEach((container) => {
+      this.scene.tweens.killTweensOf(container);
+      container.destroy();
     });
-    this.players.forEach((container) => container.destroy());
     this.players.clear();
     this.nameTags.clear();
     this.playerStates.clear();

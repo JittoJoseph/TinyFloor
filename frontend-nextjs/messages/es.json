@@ -354,6 +354,9 @@
       "camera": "Cámara no disponible"
     }
   },
+  "meeting": {
+    "micOff": "Micrófono desactivado"
+  },
   "controls": {
     "status": "Estado: {status}",
     "muteMic": "Silenciar micrófono",
@@ -456,6 +459,8 @@
     "guide": "Guía",
     "sit": "Pulsa E para sentarte",
     "stand": "Pulsa E para levantarte",
+    "joinMeeting": "Pulsa E para unirte",
+    "meeting": "Reunión",
     "music": "Haz clic para música",
     "draw": "Haz clic para dibujar"
   },

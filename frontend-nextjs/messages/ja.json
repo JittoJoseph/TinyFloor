@@ -354,6 +354,9 @@
       "camera": "カメラを使用できません"
     }
   },
+  "meeting": {
+    "micOff": "マイクオフ"
+  },
   "controls": {
     "status": "ステータス: {status}",
     "muteMic": "マイクをミュート",
@@ -456,6 +459,8 @@
     "guide": "ガイド",
     "sit": "E キーで座る",
     "stand": "E キーで立つ",
+    "joinMeeting": "E キーで参加",
+    "meeting": "会議",
     "music": "クリックで音楽",
     "draw": "クリックで描く"
   },

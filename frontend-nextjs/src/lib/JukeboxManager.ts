@@ -1,6 +1,7 @@
 "use client";
 
 import { WebSocketManager } from "./WebSocketManager";
+import { isSpeakerMuted, onSpeakerChange } from "./speaker";
 
 export interface Track {
   title: string;
@@ -68,6 +69,12 @@ class JukeboxManager {
   private near = false;
   private blocked = false;
   private distance = Infinity;
+
+  constructor() {
+    onSpeakerChange((muted) => {
+      if (this.audio) this.audio.muted = muted;
+    });
+  }
 
   attach(ws: WebSocketManager) {
     this.ws = ws;
@@ -158,6 +165,7 @@ class JukeboxManager {
       this.audio.loop = true;
       this.audio.preload = "auto";
     }
+    this.audio.muted = isSpeakerMuted();
 
     const wanted = new URL(source.src, window.location.origin).href;
     if (restart || this.audio.src !== wanted) this.audio.src = source.src;

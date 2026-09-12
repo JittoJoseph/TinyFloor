@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { WebSocketMessage } from "./WebSocketManager";
 import { PlayerManager } from "./PlayerManager";
+import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
 import { whiteboard } from "./WhiteboardManager";
 import { jukebox } from "./JukeboxManager";
@@ -23,6 +24,7 @@ interface UserData {
   sprite: string;
   status?: PlayerStatus;
   guest?: boolean;
+  seat?: number | null;
 }
 
 const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
@@ -31,6 +33,7 @@ export class MessageHandler {
   private scene: Phaser.Scene;
   private playerManager: PlayerManager;
   private animationManager: AnimationManager;
+  private seats: SeatManager;
   private playerId: string;
   private player: Phaser.Physics.Arcade.Sprite;
 
@@ -38,12 +41,14 @@ export class MessageHandler {
     scene: Phaser.Scene,
     playerManager: PlayerManager,
     animationManager: AnimationManager,
+    seats: SeatManager,
     playerId: string,
     player: Phaser.Physics.Arcade.Sprite,
   ) {
     this.scene = scene;
     this.playerManager = playerManager;
     this.animationManager = animationManager;
+    this.seats = seats;
     this.playerId = playerId;
     this.player = player;
   }
@@ -79,6 +84,21 @@ export class MessageHandler {
         }
         break;
       }
+      case "player_sit":
+        this.seatPlayer(msg.data.id as string, Number(msg.data.seat), true);
+        break;
+      case "player_stand":
+        this.seats.release(msg.data.id as string);
+        this.playerManager.standPlayer(msg.data.id as string);
+        break;
+      case "sit_rejected":
+        this.seats.rejected();
+        break;
+      case "meeting_joined":
+      case "meeting_member_joined":
+      case "meeting_member_left":
+        callManager.handleMeeting(msg.type, msg.data);
+        break;
       case "user-join":
         this.handleUserJoin(msg.data as unknown as UserData);
         playSound("join");
@@ -106,6 +126,12 @@ export class MessageHandler {
         });
         break;
     }
+  }
+
+  private seatPlayer(id: string, seat: number, walk: boolean) {
+    if (id === this.playerId || !Number.isFinite(seat)) return;
+    const pose = this.seats.occupy(seat, id);
+    if (pose) this.playerManager.sitPlayer(id, pose, walk);
   }
 
   private applyMovement(movement: MovementData) {
@@ -160,9 +186,11 @@ export class MessageHandler {
       user.status || "available",
       user.guest !== false,
     );
+    if (user.seat != null) this.seatPlayer(user.id, user.seat, false);
   }
 
   private handleUserLeft(id: string) {
+    this.seats.release(id);
     this.playerManager.removePlayer(id);
     callManager.dropPeer(id);
     this.dispatchPlayerList();

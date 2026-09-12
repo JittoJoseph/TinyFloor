@@ -354,6 +354,9 @@
       "camera": "Kamera ei ole käytettävissä"
     }
   },
+  "meeting": {
+    "micOff": "Mikrofoni pois"
+  },
   "controls": {
     "status": "Tila: {status}",
     "muteMic": "Mykistä mikrofoni",
@@ -456,6 +459,8 @@
     "guide": "Opas",
     "sit": "Paina E istuaksesi",
     "stand": "Paina E noustaksesi",
+    "joinMeeting": "Paina E liittyäksesi",
+    "meeting": "Palaveri",
     "music": "Napsauta musiikkia varten",
     "draw": "Napsauta piirtääksesi"
   },

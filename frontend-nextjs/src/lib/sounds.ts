@@ -1,3 +1,5 @@
+import { isSpeakerMuted, onSpeakerChange } from "./speaker";
+
 const SOURCES = {
   ring: "https://assets.mixkit.co/active_storage/sfx/1361/1361.wav",
   connect: "https://assets.mixkit.co/active_storage/sfx/2574/2574-preview.mp3",
@@ -18,6 +20,8 @@ export type SoundName = keyof typeof SOURCES;
 
 const cache = new Map<SoundName, HTMLAudioElement>();
 
+onSpeakerChange((muted) => cache.forEach((audio) => (audio.muted = muted)));
+
 function element(name: SoundName) {
   let audio = cache.get(name);
   if (!audio) {
@@ -26,6 +30,7 @@ function element(name: SoundName) {
     audio.volume = VOLUME[name];
     cache.set(name, audio);
   }
+  audio.muted = isSpeakerMuted();
   return audio;
 }
 

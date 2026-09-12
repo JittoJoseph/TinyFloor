@@ -354,6 +354,9 @@
       "camera": "Camera niet beschikbaar"
     }
   },
+  "meeting": {
+    "micOff": "Microfoon uit"
+  },
   "controls": {
     "status": "Status: {status}",
     "muteMic": "Microfoon dempen",
@@ -456,6 +459,8 @@
     "guide": "Gids",
     "sit": "Druk op E om te zitten",
     "stand": "Druk op E om op te staan",
+    "joinMeeting": "Druk op E om mee te doen",
+    "meeting": "Vergadering",
     "music": "Klik voor muziek",
     "draw": "Klik om te tekenen"
   },

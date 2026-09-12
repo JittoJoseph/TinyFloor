@@ -2,6 +2,7 @@ import { WebSocketManager } from "./WebSocketManager";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { GUIDE_ID } from "./tutorial";
 import { sceneText } from "./sceneText";
+import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";
@@ -11,6 +12,8 @@ export interface CallPeer {
   name: string;
   stream: MediaStream;
   connected: boolean;
+  mic: boolean;
+  camera: boolean;
 }
 
 export interface CallSnapshot {
@@ -21,25 +24,23 @@ export interface CallSnapshot {
   micEnabled: boolean;
   cameraEnabled: boolean;
   speakerEnabled: boolean;
+  meeting: string | null;
   error: CallError | null;
 }
 
 interface Signal {
   sdp?: RTCSessionDescriptionInit;
   candidate?: RTCIceCandidateInit;
+  media?: { mic: boolean; camera: boolean };
 }
 
-interface PeerEntry {
-  id: string;
-  name: string;
+interface PeerEntry extends CallPeer {
   pc?: RTCPeerConnection;
-  stream: MediaStream;
-  polite: boolean;
-  makingOffer: boolean;
-  ignoreOffer: boolean;
-  connected: boolean;
-  pendingCandidates: RTCIceCandidateInit[];
-  videoSender?: RTCRtpSender;
+}
+
+interface MeetingMember {
+  id: string;
+  name?: string;
 }
 
 const ICE_SERVERS = [
@@ -52,6 +53,7 @@ const AUDIO_CONSTRAINTS = {
   noiseSuppression: true,
   autoGainControl: true,
 };
+const KINDS = ["audio", "video"] as const;
 
 function savedDevices(): { audio?: string; video?: string } {
   try {
@@ -95,21 +97,27 @@ const EMPTY: CallSnapshot = {
   micEnabled: true,
   cameraEnabled: true,
   speakerEnabled: true,
+  meeting: null,
   error: null,
 };
 
 const PREFS = loadPreferences();
 
+/**
+ * Every connection has one side that offers, the caller or whoever sat down
+ * last, and the other only answers, so two offers never cross. Each connection
+ * carries a fixed audio and video slot, and turning the mic or camera on or off
+ * swaps what is in the slot instead of renegotiating.
+ */
 class CallManager {
   private ws: WebSocketManager | null = null;
-  private selfId = "";
   private peers = new Map<string, PeerEntry>();
   private local: MediaStream | null = null;
   private incoming: { id: string; name: string; video: boolean } | null = null;
   private outgoing: { id: string; name: string; video: boolean } | null = null;
   private micEnabled = PREFS.mic;
   private cameraEnabled = PREFS.camera;
-  private speakerEnabled = true;
+  private meeting: string | null = null;
   private error: CallError | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
@@ -117,18 +125,22 @@ class CallManager {
     ...EMPTY,
     micEnabled: PREFS.mic,
     cameraEnabled: PREFS.camera,
+    speakerEnabled: !isSpeakerMuted(),
   };
 
-  attach(ws: WebSocketManager, selfId: string) {
+  constructor() {
+    onSpeakerChange(() => this.emit());
+  }
+
+  attach(ws: WebSocketManager) {
     this.ws = ws;
-    this.selfId = selfId;
   }
 
   detach() {
+    this.leaveMeeting();
     this.hangUp();
     stopSound("ring");
     this.ws = null;
-    this.selfId = "";
   }
 
   subscribe = (listener: () => void) => {
@@ -147,7 +159,7 @@ class CallManager {
   }
 
   invite(id: string, name: string, video: boolean) {
-    if (this.peers.size || this.incoming || this.outgoing) return;
+    if (this.meeting || this.peers.size || this.incoming || this.outgoing) return;
     if (id !== GUIDE_ID && !this.ws) return;
 
     this.error = null;
@@ -172,11 +184,9 @@ class CallManager {
       id: GUIDE_ID,
       name: sceneText().guide,
       stream: new MediaStream(),
-      polite: true,
-      makingOffer: false,
-      ignoreOffer: false,
       connected: true,
-      pendingCandidates: [],
+      mic: true,
+      camera: true,
     });
     playSound("connect");
     this.emit();
@@ -193,11 +203,11 @@ class CallManager {
     stopSound("ring");
     this.incoming = null;
 
-    const peer = this.createPeer(call.id, call.name);
+    this.createPeer(call.id, call.name, false);
     this.send("call_accept", { to: call.id });
     this.emit();
 
-    await this.startMedia(peer, call.video);
+    await this.startCall(call.id, call.video);
   }
 
   decline() {
@@ -269,10 +279,43 @@ class CallManager {
     }
   }
 
+  /**
+   * A table call is a mesh. Whoever sits down offers to everyone already
+   * seated; those already seated wait for that offer.
+   */
+  handleMeeting(type: string, data: Record<string, unknown>) {
+    switch (type) {
+      case "meeting_joined":
+        void this.joinMeeting(
+          String(data.meeting),
+          (data.members as MeetingMember[] | undefined) ?? [],
+        );
+        break;
+      case "meeting_member_joined":
+        if (!this.meeting) break;
+        this.createPeer(String(data.id), String(data.name || "Someone"), false);
+        this.emit();
+        break;
+      case "meeting_member_left":
+        if (this.meeting) this.dropPeer(String(data.id));
+        break;
+    }
+  }
+
+  leaveMeeting() {
+    if (!this.meeting) return;
+    this.meeting = null;
+    [...this.peers.keys()].forEach((id) => this.closePeer(id));
+    this.releaseMedia();
+    playSound("end");
+    this.emit();
+  }
+
   setMic(enabled: boolean) {
     this.micEnabled = enabled;
     this.local?.getAudioTracks().forEach((track) => (track.enabled = enabled));
     savePreferences(enabled, this.cameraEnabled);
+    this.shareMedia();
     this.emit();
   }
 
@@ -284,17 +327,15 @@ class CallManager {
         this.local!.removeTrack(track);
         track.stop();
       });
-      this.peers.forEach((peer) => peer.videoSender?.replaceTrack(null));
     }
 
     this.cameraEnabled = enabled;
     savePreferences(this.micEnabled, enabled);
-    this.emit();
+    this.shareTracks();
   }
 
   setSpeaker(enabled: boolean) {
-    this.speakerEnabled = enabled;
-    this.emit();
+    setSpeakerMuted(!enabled);
   }
 
   clearError() {
@@ -302,8 +343,59 @@ class CallManager {
     this.emit();
   }
 
+  private async joinMeeting(name: string, members: MeetingMember[]) {
+    this.hangUp();
+    this.meeting = name;
+    this.error = null;
+    members.forEach((member) =>
+      this.createPeer(member.id, member.name || "Someone", true),
+    );
+    playSound("connect");
+    this.emit();
+
+    const opened = await this.openMedia(true);
+    if (this.meeting !== name) {
+      if (!this.peers.size) this.releaseMedia();
+      return;
+    }
+    if (opened) this.shareTracks();
+    else this.emit();
+  }
+
+  private async startCall(id: string, video: boolean) {
+    if (await this.openMedia(video)) this.shareTracks();
+    else this.hangUp(id);
+  }
+
+  /** Puts our mic and camera on every connection and tells each peer what is on. */
+  private shareTracks() {
+    this.peers.forEach((peer) => this.syncTracks(peer));
+    this.shareMedia();
+    this.emit();
+  }
+
+  private syncTracks(peer: PeerEntry) {
+    peer.pc?.getTransceivers().forEach((transceiver) => {
+      const kind = transceiver.receiver.track.kind;
+      if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
+      transceiver.sender
+        .replaceTrack(this.local?.getTracks().find((t) => t.kind === kind) ?? null)
+        .catch(() => {});
+    });
+  }
+
+  private shareMedia(to?: PeerEntry) {
+    const media = {
+      mic: this.micEnabled && !!this.local?.getAudioTracks().length,
+      camera: this.cameraEnabled && !!this.local?.getVideoTracks().length,
+    };
+    (to ? [to] : [...this.peers.values()]).forEach((peer) => {
+      if (peer.pc) this.send("call_signal", { to: peer.id, signal: { media } });
+    });
+  }
+
   private onInvite(id: string, name: string, video: boolean) {
-    if (this.peers.size || this.incoming || this.outgoing) {
+    if (this.meeting || this.peers.size || this.incoming || this.outgoing) {
       this.send("call_decline", { to: id, reason: "busy" });
       return;
     }
@@ -322,22 +414,10 @@ class CallManager {
     stopSound("ring");
     this.outgoing = null;
 
-    const peer = this.createPeer(id, call.name);
+    this.createPeer(id, call.name, true);
     this.emit();
 
-    await this.startMedia(peer, call.video);
-  }
-
-  private async startMedia(peer: PeerEntry, video: boolean) {
-    if (!(await this.openMedia(video))) {
-      this.hangUp(peer.id);
-      return;
-    }
-    this.local?.getTracks().forEach((track) => {
-      const sender = peer.pc?.addTrack(track, this.local!);
-      if (track.kind === "video" && sender) peer.videoSender = sender;
-    });
-    this.emit();
+    await this.startCall(id, call.video);
   }
 
   private cancelOutgoing() {
@@ -347,7 +427,7 @@ class CallManager {
     this.emit();
   }
 
-  private createPeer(id: string, name: string): PeerEntry {
+  private createPeer(id: string, name: string, offerer: boolean): PeerEntry {
     const existing = this.peers.get(id);
     if (existing) return existing;
 
@@ -357,40 +437,20 @@ class CallManager {
       name,
       pc,
       stream: new MediaStream(),
-      polite: this.selfId < id,
-      makingOffer: false,
-      ignoreOffer: false,
       connected: false,
-      pendingCandidates: [],
+      mic: true,
+      camera: true,
     };
     this.peers.set(id, peer);
 
     pc.onicecandidate = ({ candidate }) => {
       if (candidate) {
-        this.send("call_signal", {
-          to: id,
-          signal: { candidate: candidate.toJSON() },
-        });
+        this.send("call_signal", { to: id, signal: { candidate: candidate.toJSON() } });
       }
     };
 
-    pc.onnegotiationneeded = async () => {
-      try {
-        peer.makingOffer = true;
-        await pc.setLocalDescription();
-        this.send("call_signal", { to: id, signal: { sdp: pc.localDescription! } });
-      } catch {
-        this.error = "connection";
-        this.emit();
-      } finally {
-        peer.makingOffer = false;
-      }
-    };
-
-    pc.ontrack = ({ track, streams }) => {
-      if (streams[0]) peer.stream = streams[0];
-      else peer.stream.addTrack(track);
-      track.onended = () => this.emit();
+    pc.ontrack = ({ track }) => {
+      peer.stream = new MediaStream([...peer.stream.getTracks(), track]);
       this.emit();
     };
 
@@ -402,38 +462,42 @@ class CallManager {
       this.emit();
     };
 
+    if (offerer) {
+      pc.onnegotiationneeded = async () => {
+        try {
+          await pc.setLocalDescription();
+          this.send("call_signal", { to: id, signal: { sdp: pc.localDescription! } });
+        } catch {
+          this.error = "connection";
+          this.emit();
+        }
+      };
+      KINDS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
+    }
+
     return peer;
   }
 
   private async onSignal(from: string, signal: Signal) {
     const peer = this.peers.get(from);
-    if (!peer?.pc || !signal) return;
-    const { pc } = peer;
+    const pc = peer?.pc;
+    if (!peer || !pc || !signal) return;
 
     try {
-      if (signal.sdp) {
-        const collision =
-          signal.sdp.type === "offer" &&
-          (peer.makingOffer || pc.signalingState !== "stable");
-
-        peer.ignoreOffer = !peer.polite && collision;
-        if (peer.ignoreOffer) return;
-
-        await pc.setRemoteDescription(signal.sdp);
-        peer.pendingCandidates
-          .splice(0)
-          .forEach((candidate) => pc.addIceCandidate(candidate).catch(() => {}));
-
-        if (signal.sdp.type === "offer") {
-          await pc.setLocalDescription();
-          this.send("call_signal", {
-            to: from,
-            signal: { sdp: pc.localDescription! },
-          });
-        }
+      if (signal.media) {
+        peer.mic = signal.media.mic;
+        peer.camera = signal.media.camera;
+        this.emit();
       } else if (signal.candidate) {
-        if (!pc.remoteDescription) peer.pendingCandidates.push(signal.candidate);
-        else await pc.addIceCandidate(signal.candidate).catch(() => {});
+        await pc.addIceCandidate(signal.candidate).catch(() => {});
+      } else if (signal.sdp) {
+        await pc.setRemoteDescription(signal.sdp);
+        if (signal.sdp.type === "offer") {
+          this.syncTracks(peer);
+          await pc.setLocalDescription();
+          this.send("call_signal", { to: from, signal: { sdp: pc.localDescription! } });
+        }
+        this.shareMedia(peer);
       }
     } catch (err) {
       console.error("Signal handling failed:", err);
@@ -444,19 +508,12 @@ class CallManager {
     const peer = this.peers.get(id);
     if (!peer) return;
 
-    if (peer.pc) {
-      peer.pc.onicecandidate = null;
-      peer.pc.onnegotiationneeded = null;
-      peer.pc.ontrack = null;
-      peer.pc.onconnectionstatechange = null;
-      peer.pc.getSenders().forEach((sender) => sender.replaceTrack(null));
-      peer.pc.close();
-    }
+    peer.pc?.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
     playSound("end");
 
-    if (!this.peers.size) this.releaseMedia();
+    if (!this.peers.size && !this.meeting) this.releaseMedia();
   }
 
   private async openMedia(video: boolean): Promise<boolean> {
@@ -493,12 +550,7 @@ class CallManager {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: videoConstraints(savedDevices().video),
       });
-      const track = stream.getVideoTracks()[0];
-      this.local.addTrack(track);
-      this.peers.forEach((peer) => {
-        if (peer.videoSender) peer.videoSender.replaceTrack(track);
-        else if (peer.pc) peer.videoSender = peer.pc.addTrack(track, this.local!);
-      });
+      this.local.addTrack(stream.getVideoTracks()[0]);
       this.error = null;
       return true;
     } catch {
@@ -533,16 +585,12 @@ class CallManager {
         id: this.outgoing.id,
         name: this.outgoing.name,
       },
-      peers: [...this.peers.values()].map(({ id, name, stream, connected }) => ({
-        id,
-        name,
-        stream,
-        connected,
-      })),
+      peers: [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined })),
       localStream: this.local,
       micEnabled: this.micEnabled,
       cameraEnabled: this.cameraEnabled,
-      speakerEnabled: this.speakerEnabled,
+      speakerEnabled: !isSpeakerMuted(),
+      meeting: this.meeting,
       error: this.error,
     };
     this.listeners.forEach((listener) => listener());

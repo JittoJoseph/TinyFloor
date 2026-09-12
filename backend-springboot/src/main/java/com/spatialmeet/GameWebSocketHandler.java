@@ -165,6 +165,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 case "join": handleJoin(session, msg); break;
                 case "move": handleMove(session, msg); break;
                 case "walk_to": handleWalkTo(session, msg); break;
+                case "sit": handleSit(session, msg); break;
+                case "stand": handleStand(session, msg); break;
                 case "call_invite":
                 case "call_accept":
                 case "call_decline":
@@ -311,6 +313,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 user.put("tileY", p.getTileY());
                 user.put("status", p.getStatus());
                 user.put("guest", p.isGuest());
+                user.put("seat", p.getSeat());
                 return user;
             })
             .collect(Collectors.toList());
@@ -350,6 +353,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             return;
         }
 
+        leaveSeat(roomId, player);
         player.setTileX(targetTileX);
         player.setTileY(targetTileY);
         pendingMovements.computeIfAbsent(roomId, k -> new ConcurrentHashMap<>())
@@ -370,6 +374,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             return;
         }
 
+        leaveSeat(roomId, player);
         player.setTileX(targetTileX);
         player.setTileY(targetTileY);
 
@@ -395,6 +400,102 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private void rejectMove(WebSocketSession session, Player player) throws IOException {
         Map<String, Object> rejectionData = Map.of("tileX", player.getTileX(), "tileY", player.getTileY());
         session.sendMessage(new TextMessage(objectMapper.writeValueAsString(new Message("movement-rejected", rejectionData))));
+    }
+
+    private void handleSit(WebSocketSession session, Message msg) throws IOException {
+        Player player = resolvePlayer(session);
+        String roomId = sessionToRoom.get(session.getId());
+        if (player == null || roomId == null) return;
+
+        Map<String, Object> data = msg.getData();
+        if (!(data.get("seat") instanceof Number seatValue)) return;
+        int seat = seatValue.intValue();
+
+        Map<String, Player> players = roomPlayers.get(roomId);
+        synchronized (players) {
+            boolean taken = players.values().stream()
+                .anyMatch(p -> !p.getId().equals(player.getId()) && Integer.valueOf(seat).equals(p.getSeat()));
+            if (taken) {
+                sendTo(session, new Message("sit_rejected", Map.of("seat", seat)));
+                return;
+            }
+            leaveSeat(roomId, player);
+            player.setSeat(seat);
+        }
+
+        moveTo(player, data);
+        Map<String, Movement> pending = pendingMovements.get(roomId);
+        if (pending != null) pending.remove(player.getId());
+
+        broadcastToRoom(roomId, new Message("player_sit", Map.of("id", player.getId(), "seat", seat)), player.getId());
+
+        if (data.get("meeting") instanceof String meeting && meeting.matches("[a-z0-9-]{1,32}")) {
+            // two people sitting at once must not both miss each other, or
+            // neither knows it is the one that has to call the other
+            synchronized (players) {
+                List<Map<String, Object>> members = players.values().stream()
+                    .filter(p -> meeting.equals(p.getMeeting()) && !p.getId().equals(player.getId()))
+                    .map(this::meetingMember)
+                    .collect(Collectors.toList());
+                player.setMeeting(meeting);
+
+                sendTo(session, new Message("meeting_joined", Map.of("meeting", meeting, "members", members)));
+                broadcastToMeeting(roomId, meeting, new Message("meeting_member_joined", meetingMember(player)), player.getId());
+            }
+        }
+    }
+
+    private void handleStand(WebSocketSession session, Message msg) throws IOException {
+        Player player = resolvePlayer(session);
+        String roomId = sessionToRoom.get(session.getId());
+        if (player == null || roomId == null) return;
+
+        moveTo(player, msg.getData());
+        leaveSeat(roomId, player);
+    }
+
+    private void moveTo(Player player, Map<String, Object> data) {
+        if (data != null && data.get("tileX") instanceof Number tileX && data.get("tileY") instanceof Number tileY
+                && Player.isValidTile(tileX.intValue(), tileY.intValue())) {
+            player.setTileX(tileX.intValue());
+            player.setTileY(tileY.intValue());
+        }
+    }
+
+    /** Getting up from a chair, by standing or by walking off, also leaves its table's call. */
+    private void leaveSeat(String roomId, Player player) throws IOException {
+        if (player.getSeat() == null) return;
+        leaveMeeting(roomId, player);
+        player.setSeat(null);
+        broadcastToRoom(roomId, new Message("player_stand", Map.of("id", player.getId())), player.getId());
+    }
+
+    private void leaveMeeting(String roomId, Player player) throws IOException {
+        String meeting = player.getMeeting();
+        if (meeting == null) return;
+        player.setMeeting(null);
+        broadcastToMeeting(roomId, meeting, new Message("meeting_member_left", Map.of("id", player.getId())), player.getId());
+    }
+
+    private Map<String, Object> meetingMember(Player player) {
+        return Map.of("id", player.getId(), "name", player.getName());
+    }
+
+    private void broadcastToMeeting(String roomId, String meeting, Message message, String excludePlayerId) throws IOException {
+        Map<String, Player> players = roomPlayers.get(roomId);
+        Map<String, WebSocketSession> sessions = roomSessions.get(roomId);
+        if (players == null || sessions == null) return;
+
+        String json = objectMapper.writeValueAsString(message);
+        players.values().stream()
+            .filter(p -> meeting.equals(p.getMeeting()) && !p.getId().equals(excludePlayerId))
+            .map(p -> sessions.get(p.getId()))
+            .filter(s -> s != null && s.isOpen())
+            .forEach(s -> {
+                try {
+                    s.sendMessage(new TextMessage(json));
+                } catch (IOException ignored) {}
+            });
     }
 
     private void handleBoardSync(WebSocketSession session) throws IOException {
@@ -516,6 +617,12 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         }
         
         Map<String, Player> players = roomPlayers.get(roomId);
+        Player leaving = players != null ? players.get(playerId) : null;
+        if (leaving != null) {
+            try {
+                leaveMeeting(roomId, leaving);
+            } catch (IOException ignored) {}
+        }
         if (players != null) players.remove(playerId);
         
         Map<String, WebSocketSession> sessions = roomSessions.get(roomId);

@@ -30,6 +30,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       guide: t("guide"),
       sit: t("sit"),
       stand: t("stand"),
+      joinMeeting: t("joinMeeting"),
+      meeting: t("meeting"),
       music: t("music"),
       draw: t("draw"),
     }),

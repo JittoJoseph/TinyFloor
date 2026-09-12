@@ -1,9 +1,9 @@
 import * as Phaser from "phaser";
 import { whiteboard, Stroke } from "./WhiteboardManager";
 import { sceneText } from "./sceneText";
+import { GoTo, Interactable } from "./Interactable";
 
 const TRAY = 7;
-const REACH = 210;
 const TEXTURE = "whiteboard-surface";
 const SURFACE = { width: 540, height: 216 };
 
@@ -13,33 +13,28 @@ const HIGHLIGHT = 0xff4e00;
 
 /**
  * The board as it exists in the room: a panel on the north wall that shows what
- * has been drawn on it, lights up when you can reach it, and opens the canvas
- * when clicked.
+ * has been drawn on it, lights up when you are close, and opens the canvas once
+ * you walk up to it.
  */
 export class WhiteboardObject {
   private scene: Phaser.Scene;
-  private player: Phaser.Physics.Arcade.Sprite;
   private frame: Phaser.GameObjects.Graphics;
   private surface: Phaser.GameObjects.Image;
-  private prompt: Phaser.GameObjects.Container;
   private texture: Phaser.Textures.CanvasTexture;
+  private reach: Interactable;
   private unsubscribe: () => void;
-  private inReach = false;
-  private hovered = false;
+  private lit = false;
   private repaintQueued = false;
   private board: { x: number; y: number; width: number; height: number };
-  private onApproach?: (x: number, y: number) => void;
 
   constructor(
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     rect: { x: number; y: number; width: number; height: number },
-    onApproach?: (x: number, y: number) => void,
+    goTo: GoTo,
   ) {
     this.scene = scene;
-    this.player = player;
     this.board = rect;
-    this.onApproach = onApproach;
 
     this.texture = scene.textures.exists(TEXTURE)
       ? (scene.textures.get(TEXTURE) as Phaser.Textures.CanvasTexture)
@@ -52,22 +47,21 @@ export class WhiteboardObject {
       .setDisplaySize(inner.width, inner.height)
       .setDepth(this.depth() + 0.1);
 
-    this.prompt = this.createPrompt();
+    this.reach = new Interactable(
+      scene,
+      player,
+      { x: rect.x + rect.width / 2, y: this.depth() },
+      this.surface,
+      sceneText().draw,
+      goTo,
+      () => whiteboard.setOpen(true),
+      (lit) => {
+        this.lit = lit;
+        this.drawFrame();
+      },
+    );
     this.drawFrame();
     this.repaint();
-
-    this.surface.setInteractive({ pixelPerfect: false });
-    this.surface.on("pointerover", () => this.setHovered(true));
-    this.surface.on("pointerout", () => this.setHovered(false));
-    this.surface.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-      pointer.event.stopPropagation();
-      if (this.inReach) whiteboard.setOpen(true);
-      else
-        this.onApproach?.(
-          this.board.x + this.board.width / 2,
-          this.board.y + this.board.height + 40,
-        );
-    });
 
     this.unsubscribe = whiteboard.onStroke(() => this.queueRepaint());
   }
@@ -85,34 +79,9 @@ export class WhiteboardObject {
     };
   }
 
-  private createPrompt() {
-    const label = this.scene.add
-      .text(0, 0, sceneText().draw, {
-        fontSize: "13px",
-        fontFamily: "VT323, monospace",
-        color: "#ffffff",
-        resolution: 2,
-      })
-      .setOrigin(0.5);
-
-    const background = this.scene.add.graphics();
-    const width = label.width + 20;
-    background.fillStyle(0x1f2937, 0.9);
-    background.fillRoundedRect(-width / 2, -11, width, 22, 11);
-
-    const container = this.scene.add.container(
-      this.board.x + this.board.width / 2,
-      this.board.y + this.board.height + 24,
-      [background, label],
-    );
-    container.setDepth(this.depth() + 0.2).setAlpha(0);
-    return container;
-  }
-
   /** Flat, axis aligned and 1px shaded so it reads as part of the pixel art. */
   private drawFrame() {
     const inner = this.innerRect();
-    const lit = this.inReach;
     this.frame.clear();
 
     this.frame.fillStyle(0x000000, 0.18);
@@ -121,7 +90,7 @@ export class WhiteboardObject {
     this.frame.fillStyle(FRAME, 1);
     this.frame.fillRect(this.board.x, this.board.y, this.board.width, this.board.height);
 
-    if (lit) {
+    if (this.lit) {
       this.frame.lineStyle(2, HIGHLIGHT, 1);
       this.frame.strokeRect(
         this.board.x - 2,
@@ -150,18 +119,6 @@ export class WhiteboardObject {
     this.frame.fillRect(this.board.x + 14, this.board.y + this.board.height - 5, 14, 3);
     this.frame.fillStyle(0x2f4ad0, 1);
     this.frame.fillRect(this.board.x + 32, this.board.y + this.board.height - 5, 14, 3);
-  }
-
-  private setHovered(hovered: boolean) {
-    if (this.hovered === hovered) return;
-    this.hovered = hovered;
-    this.applyCursor();
-  }
-
-  private applyCursor() {
-    this.scene.input.setDefaultCursor(
-      this.hovered && this.inReach ? "pointer" : "default",
-    );
   }
 
   private queueRepaint() {
@@ -199,34 +156,13 @@ export class WhiteboardObject {
   }
 
   update() {
-    const reachable =
-      Phaser.Math.Distance.Between(
-        this.player.x,
-        this.player.y,
-        this.board.x + this.board.width / 2,
-        this.board.y + this.board.height,
-      ) < REACH;
-
-    if (reachable === this.inReach) return;
-    this.inReach = reachable;
-    this.drawFrame();
-    this.applyCursor();
-
-    this.scene.tweens.add({
-      targets: this.prompt,
-      alpha: reachable ? 1 : 0,
-      y: this.board.y + this.board.height + (reachable ? 18 : 24),
-      duration: 220,
-      ease: "Cubic.easeOut",
-    });
+    this.reach.update();
   }
 
   destroy() {
     this.unsubscribe();
-    this.scene.tweens.killTweensOf(this.prompt);
+    this.reach.destroy();
     this.surface.destroy();
     this.frame.destroy();
-    this.prompt.destroy();
-    this.scene.input.setDefaultCursor("default");
   }
 }

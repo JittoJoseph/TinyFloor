@@ -82,6 +82,7 @@ class Build:
         self.walls = [0] * (W * H)
         self.furniture = []
         self.chairs = []
+        self.tables = []
         self.computers = []
         self.boards = []
         self.speakers = []
@@ -190,6 +191,7 @@ class Build:
                 self.obj(self.furniture, (x + ix) * TS, (y + iy + 1) * TS,
                          TS, TS, gid=TABLE[key])
         self.solid(x, y, w, h)
+        self.obj(self.tables, x * TS, y * TS, w * TS, h * TS)
 
     def cluster(self, x, y):
         """A pod of four: two desks back to back across a divider, one seat per
@@ -254,7 +256,7 @@ def build():
     b.place("painting", 7, 0)
     b.place("cooler", 11, 0)
     b.place("counter", 12, 0)
-    b.table(3, 7, 8, 3)
+    b.table(3, 7, 7, 3)
     for i in range(3):
         b.chair(4 + i * 2, 7, "down", warm=True)
         b.chair(4 + i * 2, 10, "up", warm=True)
@@ -341,6 +343,7 @@ def main():
         objlayer("Speaker", b.speakers, 7),
         objlayer("Colliders", b.colliders, 8),
         objlayer("Zones", b.zones, 9),
+        objlayer("Table", b.tables, 10),
     ]
     json.dump(out, open(DST, "w"), indent=1)
     print("wrote", DST, "%dx%d" % (W, H),

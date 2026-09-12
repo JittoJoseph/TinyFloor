@@ -354,6 +354,9 @@
       "camera": "카메라를 사용할 수 없어요"
     }
   },
+  "meeting": {
+    "micOff": "마이크 꺼짐"
+  },
   "controls": {
     "status": "상태: {status}",
     "muteMic": "마이크 끄기",
@@ -456,6 +459,8 @@
     "guide": "가이드",
     "sit": "E 키로 앉기",
     "stand": "E 키로 일어서기",
+    "joinMeeting": "E 키로 참여",
+    "meeting": "회의",
     "music": "클릭해서 음악 듣기",
     "draw": "클릭해서 그리기"
   },

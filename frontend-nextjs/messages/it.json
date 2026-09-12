@@ -354,6 +354,9 @@
       "camera": "Fotocamera non disponibile"
     }
   },
+  "meeting": {
+    "micOff": "Microfono disattivato"
+  },
   "controls": {
     "status": "Stato: {status}",
     "muteMic": "Disattiva microfono",
@@ -456,6 +459,8 @@
     "guide": "Guida",
     "sit": "Premi E per sederti",
     "stand": "Premi E per alzarti",
+    "joinMeeting": "Premi E per unirti",
+    "meeting": "Riunione",
     "music": "Clicca per la musica",
     "draw": "Clicca per disegnare"
   },

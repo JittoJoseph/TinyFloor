@@ -475,5 +475,479 @@
     "title": "Tego pokoju nie ma na mapie.",
     "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
     "home": "Wróć do lobby"
+  },
+  "landings": {
+    "tryIt": "Wejdź do otwartego biura",
+    "create": "Utwórz pokój",
+    "free": "Za darmo, w przeglądarce, bez konta.",
+    "compare": "Porównania",
+    "useCases": "Zastosowania",
+    "compareTitle": "SpatialMeet i {name} <em>obok siebie.</em>",
+    "checked": "Dane o {name} pochodzą z cennika, sprawdzonego we wrześniu 2026.",
+    "rows": {
+      "price": "Cena",
+      "freePlan": "Darmowy plan",
+      "browser": "Działa w przeglądarce",
+      "screenShare": "Udostępnianie ekranu"
+    },
+    "us": {
+      "price": "Za darmo",
+      "freePlan": "Wszystko, bez limitu czasu. Pokoje mieszczą 20 osób.",
+      "browser": "Tak, nic do instalowania",
+      "screenShare": "Jeszcze nie"
+    },
+    "stepsTitle": "Jak to <em>działa.</em>",
+    "steps": [
+      {
+        "title": "Otwórz pokój",
+        "body": "Wejdź do otwartego biura albo utwórz pokój i udostępnij jego link."
+      },
+      {
+        "title": "Wybierz postać",
+        "body": "Wpisz imię i wybierz postać w stylu pixel art. Konto nie jest potrzebne."
+      },
+      {
+        "title": "Podejdź, żeby porozmawiać",
+        "body": "Stań obok kogoś i jednym dotknięciem rozpocznij rozmowę wideo lub głosową."
+      }
+    ],
+    "faqTitle": "Częste <em>pytania.</em>",
+    "relatedTitle": "Odkrywaj <em>dalej.</em>",
+    "pages": {
+      "gather": {
+        "label": "Alternatywa dla Gather",
+        "meta": {
+          "title": "Darmowa alternatywa dla Gather w przeglądarce",
+          "description": "Szukasz darmowej alternatywy dla Gather? SpatialMeet to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś. Bez okresu próbnego, bez opłat za miejsce, bez instalacji."
+        },
+        "title": "Darmowa <em>alternatywa dla Gather.</em>",
+        "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. SpatialMeet zachowuje ten sam pomysł, biuro, po którym się chodzi i w którym się rozmawia, i pozostaje darmowy.",
+        "points": [
+          {
+            "title": "Bez odliczania okresu próbnego",
+            "body": "Gather daje 30 dni, zanim zapłacisz. SpatialMeet nie ma okresu próbnego, bo nie ma na co przechodzić."
+          },
+          {
+            "title": "Nic do instalowania",
+            "body": "Wszystko działa w przeglądarce, na komputerze i telefonie. Udostępnij link, a zespół wejdzie w kilka sekund."
+          },
+          {
+            "title": "Goście wchodzą od razu",
+            "body": "Każdy z linkiem dołącza, podając tylko imię. Konto jest opcjonalne i zapisuje tylko Twój profil i pokoje."
+          }
+        ],
+        "them": {
+          "price": "Od 12 $ za członka miesięcznie",
+          "freePlan": "Brak, tylko 30-dniowy okres próbny",
+          "browser": "Tak, z aplikacją na komputer",
+          "screenShare": "Tak"
+        },
+        "faq": [
+          {
+            "q": "Czy Gather jest nadal darmowy?",
+            "a": "Nie. Gather nie ma już stałego darmowego planu. Oferuje 30-dniowy okres próbny, a potem plan Essential kosztuje od 12 $ za członka miesięcznie. SpatialMeet jest darmowy."
+          },
+          {
+            "q": "Co ma Gather, czego nie ma SpatialMeet?",
+            "a": "Gather ma udostępnianie ekranu, notatki ze spotkań tworzone przez AI i personalizację biura. SpatialMeet skupia się na podstawach: chodzeniu, rozmowach na odległość kilku kroków, stole konferencyjnym, czacie, tablicy i muzyce w pokoju."
+          },
+          {
+            "q": "Czy mogę przenieść zespół z Gather do SpatialMeet?",
+            "a": "Tak. Utwórz pokój, udostępnij link i wszyscy wchodzą. Nie ma danych do przenoszenia ani niczego do instalowania."
+          },
+          {
+            "q": "Ile osób mieści się w pokoju SpatialMeet?",
+            "a": "Pokój mieści jednocześnie do 20 osób, a Ty możesz otworzyć tyle pokoi, ile potrzebujesz."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Alternatywa dla Kumospace",
+        "meta": {
+          "title": "Darmowa alternatywa dla Kumospace dla całego zespołu",
+          "description": "Darmowy plan Kumospace kończy się na 5 członkach. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska, otwarte dla całego zespołu w przeglądarce."
+        },
+        "title": "<em>Alternatywa dla Kumospace</em> dla całego zespołu.",
+        "subtitle": "Darmowy plan Kumospace mieści 5 członków na jednym piętrze. SpatialMeet nie ma limitu członków ani płatnego planu, więc cały zespół może się wprowadzić.",
+        "points": [
+          {
+            "title": "Bez limitu 5 członków",
+            "body": "Zaproś wszystkich. Pokoje mieszczą 20 osób jednocześnie, a kolejne możesz otworzyć, kiedy chcesz."
+          },
+          {
+            "title": "Bez tygodniowego limitu dla gości",
+            "body": "Kumospace daje darmowym gościom 4 godziny tygodniowo. W SpatialMeet gość dołącza z imieniem i zostaje, jak długo chce."
+          },
+          {
+            "title": "Stworzone też na telefon",
+            "body": "Na telefonie poruszasz się joystickiem na ekranie, a rozmowy dopasowują się do mniejszego ekranu, wszystko w mobilnej przeglądarce."
+          }
+        ],
+        "them": {
+          "price": "Business od 16 $ za użytkownika miesięcznie",
+          "freePlan": "Do 5 członków, 50 gości i 1 piętro",
+          "browser": "Tak, z aplikacjami na komputer i telefon",
+          "screenShare": "Tak"
+        },
+        "faq": [
+          {
+            "q": "Czy Kumospace jest darmowy?",
+            "a": "Kumospace ma darmowy plan dla maksymalnie 5 zarejestrowanych członków, z jednym piętrem i gośćmi ograniczonymi do 4 godzin tygodniowo. Plan Business kosztuje od 16 $ za użytkownika miesięcznie. SpatialMeet jest darmowy dla wszystkich."
+          },
+          {
+            "q": "Co ma Kumospace, czego nie ma SpatialMeet?",
+            "a": "Kumospace ma udostępnianie ekranu, a płatne plany dodają nagrywanie i nieograniczoną historię czatu. SpatialMeet nie ma jeszcze udostępniania ekranu ani nagrywania."
+          },
+          {
+            "q": "Czy moi współpracownicy potrzebują konta?",
+            "a": "Nie. Każdy z linkiem do pokoju może dołączyć jako gość, podając tylko imię. Logowanie zapisuje tylko profil, postać i listę Twoich pokoi."
+          },
+          {
+            "q": "Czy SpatialMeet działa na telefonie?",
+            "a": "Tak. Działa w przeglądarkach mobilnych z joystickiem na ekranie, więc nie trzeba pobierać aplikacji."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "Alternatywa dla SpatialChat",
+        "meta": {
+          "title": "Alternatywa dla SpatialChat bez dziennego limitu",
+          "description": "Darmowy plan SpatialChat pozwala na 2 godziny dziennie. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami z bliska, które może być otwarte cały dzień."
+        },
+        "title": "<em>Alternatywa dla SpatialChat</em> otwarta przez cały dzień.",
+        "subtitle": "SpatialChat powstał z myślą o wydarzeniach, a jego darmowy plan kończy się po 2 godzinach dziennie. SpatialMeet to biuro, więc pokój jest otwarty tak długo, jak pracuje Twój zespół.",
+        "points": [
+          {
+            "title": "Bez dziennego limitu",
+            "body": "Trzymaj pokój otwarty od porannego spotkania do ostatniej wiadomości dnia. Nic się nie kończy."
+          },
+          {
+            "title": "Biuro, nie wydarzenie",
+            "body": "Pokoje nie znikają po spotkaniu. Ten sam link działa jutro, a ludzie wpadają, gdy mają chwilę."
+          },
+          {
+            "title": "Podejdź, żeby porozmawiać",
+            "body": "Podejdź do współpracownika, żeby zacząć rozmowę wideo lub głosową. Przy stole konferencyjnym wszyscy są w jednej rozmowie."
+          }
+        ],
+        "them": {
+          "price": "Day Pass 5 $ za użytkownika dziennie, Business od 399 $ miesięcznie",
+          "freePlan": "2 godziny dziennie, do 12 osób",
+          "browser": "Tak",
+          "screenShare": "Tak"
+        },
+        "faq": [
+          {
+            "q": "Czy SpatialChat jest darmowy?",
+            "a": "SpatialChat ma darmowy plan z maksymalnie 2 godzinami spotkań dziennie dla maksymalnie 12 uczestników. Płatne opcje to Day Pass za 5 $ za użytkownika i plany Business od 399 $ miesięcznie. SpatialMeet jest darmowy i bez dziennego limitu."
+          },
+          {
+            "q": "Czy SpatialMeet nadaje się do wydarzeń online?",
+            "a": "SpatialMeet jest stworzony dla grup, które spotykają się codziennie. Pokoje mieszczą 20 osób jednocześnie, więc lepiej sprawdza się w biurach zespołów, grupach nauki i małych spotkaniach niż na dużych wydarzeniach."
+          },
+          {
+            "q": "Co ma SpatialChat, czego nie ma SpatialMeet?",
+            "a": "SpatialChat obsługuje udostępnianie ekranu, przypięte pliki i duże wydarzenia. SpatialMeet nie ma jeszcze udostępniania ekranu i skupia się na codziennej obecności i szybkich rozmowach."
+          },
+          {
+            "q": "Czy rozmowy działają między przeglądarkami?",
+            "a": "Tak. Rozmowy w SpatialMeet działają peer to peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "Alternatywa dla WorkAdventure",
+        "meta": {
+          "title": "Alternatywa dla WorkAdventure z pokojami na 20 osób",
+          "description": "Darmowy plan WorkAdventure pozwala na 10 osób jednocześnie. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska i pokojami na 20 osób."
+        },
+        "title": "<em>Alternatywa dla WorkAdventure</em> z miejscem na rozwój.",
+        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. Pokoje SpatialMeet mieszczą 20 osób i nie ma płatnego planu, na który trzeba przejść.",
+        "points": [
+          {
+            "title": "Dwa razy więcej miejsca",
+            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Pokój SpatialMeet mieści 20, a pokoi możesz otworzyć, ile chcesz."
+          },
+          {
+            "title": "Bez budowania mapy",
+            "body": "Każdy pokój ma piętro biura, stół konferencyjny, tablicę i głośnik. Utwórz pokój i wejdź."
+          },
+          {
+            "title": "Nic do hostowania",
+            "body": "Bez serwera i bez konfiguracji. Udostępnij link, a zespół już stoi w biurze."
+          }
+        ],
+        "them": {
+          "price": "Business od 8 € za użytkownika miesięcznie",
+          "freePlan": "Do 10 osób jednocześnie",
+          "browser": "Tak",
+          "screenShare": "Tak"
+        },
+        "faq": [
+          {
+            "q": "Czy WorkAdventure jest darmowy?",
+            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. SpatialMeet jest darmowy."
+          },
+          {
+            "q": "Czy mogę dostosować mapę w SpatialMeet?",
+            "a": "Jeszcze nie. Każdy pokój ma to samo piętro biura. WorkAdventure pozwala projektować własne mapy, co pasuje zespołom, które chcą własnego świata."
+          },
+          {
+            "q": "Czy muszę utrzymywać serwer?",
+            "a": "Nie. SpatialMeet jest hostowany za Ciebie. Utwórz pokój w przeglądarce i udostępnij link."
+          },
+          {
+            "q": "Jak zaczynają się rozmowy w SpatialMeet?",
+            "a": "Podejdź do współpracownika, a pojawi się jego pasek rozmowy. Jedno dotknięcie włącza wideo lub głos. Przy stole konferencyjnym wszyscy, którzy usiądą, są w tej samej rozmowie."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Alternatywa dla Wonder",
+        "meta": {
+          "title": "Alternatywa dla Wonder.me: podejdź i porozmawiaj",
+          "description": "Wonder.me zakończył działalność w 2023 roku. SpatialMeet to darmowe miejsce w przeglądarce, w którym poruszasz postacią i zaczynasz rozmowę wideo, podchodząc do innych."
+        },
+        "title": "Brakuje Ci <em>Wonder?</em>",
+        "subtitle": "Wonder.me zakończył działalność w kwietniu 2023 roku. SpatialMeet zachowuje to, co w nim działało, chodzenie i rozmowę z tymi, do których podchodzisz, na piętrze biura w stylu pixel art.",
+        "points": [
+          {
+            "title": "Podejdź, żeby porozmawiać",
+            "body": "Jak przy wejściu do kręgu w Wonder, rozmowę zaczynasz, stając obok kogoś. Przejście do innej grupy to po prostu spacer."
+          },
+          {
+            "title": "Wciąż w przeglądarce",
+            "body": "Otwórz link, wybierz postać i jesteś w środku. Goście nie potrzebują konta."
+          },
+          {
+            "title": "Za darmo i otwarte cały dzień",
+            "body": "Bez planów i bez limitów czasu. Trzymaj pokój otwarty dla zespołu, klasy albo stałych spotkań."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czy Wonder.me jest nadal dostępny?",
+            "a": "Nie. Wonder.me zakończył działalność 25 kwietnia 2023 roku, gdy założyciele nie znaleźli trwałego modelu biznesowego."
+          },
+          {
+            "q": "Czym SpatialMeet różni się od Wonder?",
+            "a": "Wonder używał kręgów na płaskiej planszy i był stworzony z myślą o wydarzeniach. SpatialMeet to biuro, po którym się chodzi, z biurkami, stołem konferencyjnym, tablicą i muzyką, stworzone dla grup, które spotykają się regularnie."
+          },
+          {
+            "q": "Ile osób może dołączyć?",
+            "a": "Pokój mieści jednocześnie do 20 osób, a Ty możesz otworzyć tyle pokoi, ile potrzebujesz."
+          },
+          {
+            "q": "Czy SpatialMeet jest darmowy?",
+            "a": "Tak. Tworzenie pokoi, chodzenie, czat i rozmowy są darmowe."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Wirtualne biuro",
+        "meta": {
+          "title": "Darmowe wirtualne biuro dla zespołów pracujących na odległość",
+          "description": "Darmowe wirtualne biuro w przeglądarce. Zobacz, kto jest obecny, podejdź, żeby porozmawiać przez wideo, i trzymaj jeden pokój otwarty dla zespołu na odległość."
+        },
+        "title": "Darmowe <em>wirtualne biuro</em> dla zespołów na odległość.",
+        "subtitle": "Daj zespołowi miejsce, w którym może być w ciągu dnia. Zobacz, kto jest obecny, podejdź z szybkim pytaniem i usiądź przy stole konferencyjnym, gdy czas porozmawiać.",
+        "points": [
+          {
+            "title": "Zobacz, kto jest obecny",
+            "body": "Każdy ma postać, plakietkę z imieniem i status, więc wiesz, kto ma czas, zanim podejdziesz."
+          },
+          {
+            "title": "Szybkie pytania pozostają szybkie",
+            "body": "Podejdź i dotknij, żeby zadzwonić. Bez zaproszenia w kalendarzu, bez linku do spotkania, bez poczekalni."
+          },
+          {
+            "title": "Stół na spotkania",
+            "body": "Usiądź przy stole konferencyjnym, a wszyscy przy nim będą w jednej rozmowie, z kafelkiem dla każdej osoby."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czym jest wirtualne biuro?",
+            "a": "Wirtualne biuro to wspólne miejsce w sieci, w którym zespół pracujący na odległość pracuje razem. W SpatialMeet to piętro w stylu pixel art, na którym widzisz współpracowników i rozmawiasz z nimi, podchodząc do nich."
+          },
+          {
+            "q": "Czy to jest darmowe?",
+            "a": "Tak. SpatialMeet jest darmowy, bez okresu próbnego i bez opłat za miejsce."
+          },
+          {
+            "q": "Ile osób może korzystać z jednego biura?",
+            "a": "Pokój mieści jednocześnie do 20 osób. Większe zespoły mogą otworzyć osobny pokój dla każdego zespołu."
+          },
+          {
+            "q": "Czy to zastępuje rozmowy wideo?",
+            "a": "Zastępuje krótką zaplanowaną rozmowę. Nadal masz wideo i głos, ale rozmowa zaczyna się, gdy podchodzisz, a nie gdy zaczyna się spotkanie."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Wirtualny coworking",
+        "meta": {
+          "title": "Darmowa przestrzeń do wirtualnego coworkingu",
+          "description": "Pracuj online z przyjaciółmi lub nieznajomymi w darmowym biurze w stylu pixel art. Pracujcie obok siebie, róbcie razem przerwy i rozmawiajcie, kiedy chcecie."
+        },
+        "title": "<em>Wirtualny coworking</em> jak wspólne biurko.",
+        "subtitle": "Łatwiej pracować samemu, gdy wokół są ludzie. Usiądź we wspólnym biurze, zajmij się swoją pracą i podejdź do kogoś, gdy chcesz zrobić przerwę.",
+        "points": [
+          {
+            "title": "Towarzystwo bez rozmów",
+            "body": "Widzisz, jak inni pracują, bez włączania kamery. Rozmowy zaczynają się dopiero, gdy ktoś podejdzie."
+          },
+          {
+            "title": "Otwarty pokój o każdej porze",
+            "body": "Otwarte biuro jest zawsze dostępne. Albo utwórz pokój dla własnej grupy coworkingowej i udostępnij link."
+          },
+          {
+            "title": "Ustaw swój status",
+            "body": "Oznacz się jako zajęty, gdy się skupiasz, i dostępny, gdy masz ochotę pogadać."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czym jest wirtualny coworking?",
+            "a": "Wirtualny coworking to praca online obok innych osób, żeby czuć się mniej samotnie. Wielu osobom łatwiej się skupić, gdy inni pracują w pobliżu."
+          },
+          {
+            "q": "Czy muszę mieć włączoną kamerę?",
+            "a": "Nie. Kamera i mikrofon są wyłączone, dopóki nie dołączysz do rozmowy."
+          },
+          {
+            "q": "Czy mogę pracować z nieznajomymi?",
+            "a": "Tak. Otwarte biuro jest dostępne dla wszystkich. Dla prywatnej grupy utwórz pokój i dodaj hasło."
+          },
+          {
+            "q": "Czy jest limit czasu?",
+            "a": "Nie. Zostań, jak długo chcesz."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Pokój do nauki online",
+        "meta": {
+          "title": "Darmowy pokój do nauki online ze znajomymi",
+          "description": "Ucz się ze znajomymi w darmowym pokoju do nauki online. Siedźcie razem w pokoju w stylu pixel art, skupcie się i rozmawiajcie w przerwach. Bez pobierania."
+        },
+        "title": "<em>Pokój do nauki online</em> dla Ciebie i znajomych.",
+        "subtitle": "Utwórz pokój dla grupy do nauki, udostępnij jeden link i siedźcie razem podczas pracy. Omówcie zadanie przy stole i wracajcie do nauki.",
+        "points": [
+          {
+            "title": "Domyślnie cicho",
+            "body": "Nikt Cię nie słyszy, dopóki nie zaczniesz rozmowy, więc w pokoju panuje skupienie."
+          },
+          {
+            "title": "Stół do pracy w grupie",
+            "body": "Usiądźcie przy stole konferencyjnym, żeby porozmawiać w grupie, i wstańcie, żeby wrócić do samodzielnej nauki."
+          },
+          {
+            "title": "Tablica do zadań",
+            "body": "Podejdź do tablicy, żeby naszkicować pomysł albo razem rozwiązać zadanie."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Jak utworzyć pokój do nauki?",
+            "a": "Utwórz pokój, nadaj mu nazwę i udostępnij link znajomym. Dodaj hasło, jeśli chcesz, żeby był prywatny."
+          },
+          {
+            "q": "Czy to jest darmowe dla uczniów i studentów?",
+            "a": "Tak. SpatialMeet jest darmowy dla wszystkich i nikt nie potrzebuje konta, żeby dołączyć."
+          },
+          {
+            "q": "Czy możemy słuchać muzyki podczas nauki?",
+            "a": "Tak. Podejdź do głośnika w pokoju, żeby puścić muzykę, którą słyszą wszyscy w pokoju."
+          },
+          {
+            "q": "Czy działa na telefonie?",
+            "a": "Tak. Działa w przeglądarkach mobilnych z joystickiem na ekranie."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Wirtualna klasa",
+        "meta": {
+          "title": "Darmowa wirtualna klasa na konsultacje",
+          "description": "Prowadź konsultacje, korepetycje i małe zajęcia w darmowej wirtualnej klasie. Uczniowie podchodzą, żeby porozmawiać, grupy spotykają się przy stole, a wszyscy korzystają z jednej tablicy."
+        },
+        "title": "<em>Wirtualna klasa</em>, po której uczniowie chodzą.",
+        "subtitle": "Prowadź konsultacje, korepetycje albo małe zajęcia w pokoju, po którym uczniowie mogą się poruszać. Podchodzą, gdy mają pytanie, a grupy rozmawiają przy stole.",
+        "points": [
+          {
+            "title": "Płynne konsultacje",
+            "body": "Uczniowie widzą, kiedy masz czas, i podchodzą z pytaniem. Nikt nie czeka w poczekalni."
+          },
+          {
+            "title": "Małe grupy przy stole",
+            "body": "Do sześciu osób siada przy stole konferencyjnym i dzieli jedną rozmowę, z kafelkiem dla każdej osoby."
+          },
+          {
+            "title": "Wspólna tablica",
+            "body": "Rysuj na tablicy, żeby wyjaśnić pomysł. Wszyscy w pokoju widzą tę samą tablicę."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Ilu uczniów może dołączyć?",
+            "a": "Pokój mieści jednocześnie do 20 osób, co pasuje do małych klas, grup korepetycyjnych i konsultacji."
+          },
+          {
+            "q": "Czy uczniowie potrzebują konta?",
+            "a": "Nie. Uczniowie dołączają z linku, podając tylko imię."
+          },
+          {
+            "q": "Czy mogę zachować klasę jako prywatną?",
+            "a": "Tak. Dodaj hasło przy tworzeniu pokoju i udostępnij je tylko swojej klasie."
+          },
+          {
+            "q": "Czy to jest darmowe dla nauczycieli?",
+            "a": "Tak. SpatialMeet jest darmowy i nie ma płatnego planu."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Czat zbliżeniowy",
+        "meta": {
+          "title": "Darmowy czat wideo z bliska w przeglądarce",
+          "description": "Czat zbliżeniowy dla zespołów i znajomych: podejdź swoją postacią do kogoś, żeby zacząć rozmowę wideo lub głosową. Za darmo, w przeglądarce, bez pobierania."
+        },
+        "title": "<em>Czat zbliżeniowy</em>, który zaczyna się, gdy podchodzisz.",
+        "subtitle": "W SpatialMeet to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, usiądź przy stole, żeby porozmawiać w grupie, i idź dalej, gdy skończysz.",
+        "points": [
+          {
+            "title": "Bliskość zaczyna rozmowę",
+            "body": "Stań obok współpracownika, a pojawi się pasek rozmowy. Jedno dotknięcie włącza wideo lub głos."
+          },
+          {
+            "title": "Grupy przy stole",
+            "body": "Usiądź przy stole konferencyjnym, a dołączysz do rozmowy ze wszystkimi, którzy tam siedzą."
+          },
+          {
+            "title": "Peer to peer",
+            "body": "Rozmowy płyną bezpośrednio między przeglądarkami przez WebRTC, więc nie ma nic do instalowania."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czym jest czat zbliżeniowy?",
+            "a": "Czat zbliżeniowy łączy Cię z ludźmi w zależności od tego, gdzie stoi Twoja postać. Rozmawiasz z osobami w pobliżu, jak w prawdziwym pomieszczeniu."
+          },
+          {
+            "q": "Czy rozmowa kończy się, gdy odejdę?",
+            "a": "Nie. Połączona rozmowa trwa, dopóki ktoś się nie rozłączy, więc chodzenie jej nie przerywa."
+          },
+          {
+            "q": "Czy może rozmawiać więcej niż dwie osoby?",
+            "a": "Tak. Zadzwoń do kogoś, kto już jest w rozmowie, żeby dołączyć, albo usiądź przy stole konferencyjnym, żeby porozmawiać w grupie."
+          },
+          {
+            "q": "Czy to jest darmowe?",
+            "a": "Tak. SpatialMeet jest darmowy w przeglądarce, na komputerze i telefonie."
+          }
+        ]
+      }
+    }
   }
 }

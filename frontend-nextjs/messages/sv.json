@@ -475,5 +475,479 @@
     "title": "Det här rummet finns inte på kartan.",
     "body": "Sidan du letar efter finns inte eller har flyttats.",
     "home": "Tillbaka till lobbyn"
+  },
+  "landings": {
+    "tryIt": "Gå in på det öppna kontoret",
+    "create": "Skapa ett rum",
+    "free": "Gratis, i webbläsaren, utan konto.",
+    "compare": "Jämförelser",
+    "useCases": "Användningsområden",
+    "compareTitle": "SpatialMeet och {name}, <em>sida vid sida.</em>",
+    "checked": "Uppgifterna om {name} kommer från prissidan, kontrollerad i september 2026.",
+    "rows": {
+      "price": "Pris",
+      "freePlan": "Gratisplan",
+      "browser": "Fungerar i webbläsaren",
+      "screenShare": "Skärmdelning"
+    },
+    "us": {
+      "price": "Gratis",
+      "freePlan": "Allt, utan tidsgräns. Rummen rymmer 20 personer.",
+      "browser": "Ja, inget att installera",
+      "screenShare": "Inte än"
+    },
+    "stepsTitle": "Så <em>fungerar det.</em>",
+    "steps": [
+      {
+        "title": "Öppna ett rum",
+        "body": "Gå in på det öppna kontoret, eller skapa ett rum och dela länken."
+      },
+      {
+        "title": "Välj en figur",
+        "body": "Skriv ett namn och välj en pixelfigur. Inget konto behövs."
+      },
+      {
+        "title": "Gå fram för att prata",
+        "body": "Ställ dig bredvid någon och starta ett video- eller röstsamtal med ett tryck."
+      }
+    ],
+    "faqTitle": "Vanliga <em>frågor.</em>",
+    "relatedTitle": "Utforska <em>mer.</em>",
+    "pages": {
+      "gather": {
+        "label": "Alternativ till Gather",
+        "meta": {
+          "title": "Gratis alternativ till Gather i webbläsaren",
+          "description": "Letar du efter ett gratis alternativ till Gather? SpatialMeet är ett virtuellt kontor i pixelgrafik med videosamtal när man står nära varandra. Ingen provperiod, inget pris per plats, inget att installera."
+        },
+        "title": "Ett gratis <em>alternativ till Gather.</em>",
+        "subtitle": "Gather har tagit bort sin gratisplan och tar nu betalt per medlem. SpatialMeet behåller samma idé, ett kontor där du går runt och pratar, och förblir gratis.",
+        "points": [
+          {
+            "title": "Ingen provperiod som tar slut",
+            "body": "Gather ger dig 30 dagar innan du betalar. SpatialMeet har ingen provperiod, eftersom det inte finns något att uppgradera till."
+          },
+          {
+            "title": "Inget att installera",
+            "body": "Allt fungerar i webbläsaren, på datorn och i mobilen. Dela en länk så är teamet inne på några sekunder."
+          },
+          {
+            "title": "Gäster går rakt in",
+            "body": "Alla med länken kan gå med med bara ett namn. Ett konto är valfritt och sparar bara din profil och dina rum."
+          }
+        ],
+        "them": {
+          "price": "Från 12 $ per medlem i månaden",
+          "freePlan": "Ingen, bara 30 dagars provperiod",
+          "browser": "Ja, med en datorapp",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är Gather fortfarande gratis?",
+            "a": "Nej. Gather har inte längre en permanent gratisplan. Det finns en provperiod på 30 dagar, sedan börjar Essential-planen på 12 $ per medlem i månaden. SpatialMeet är gratis."
+          },
+          {
+            "q": "Vad har Gather som SpatialMeet inte har?",
+            "a": "Gather har skärmdelning, AI-mötesanteckningar och anpassning av kontoret. SpatialMeet fokuserar på grunderna: gå runt, samtal när man står nära, ett mötesbord, chatt, en whiteboard och musik i rummet."
+          },
+          {
+            "q": "Kan jag flytta mitt team från Gather till SpatialMeet?",
+            "a": "Ja. Skapa ett rum, dela länken och alla går in. Det finns ingen data att flytta och inget att installera."
+          },
+          {
+            "q": "Hur många får plats i ett SpatialMeet-rum?",
+            "a": "Ett rum rymmer upp till 20 personer samtidigt, och du kan öppna så många rum du behöver."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Alternativ till Kumospace",
+        "meta": {
+          "title": "Gratis alternativ till Kumospace för hela teamet",
+          "description": "Kumospaces gratisplan stannar vid 5 medlemmar. SpatialMeet är ett gratis virtuellt kontor i pixelgrafik med videosamtal när man står nära, öppet för hela teamet i webbläsaren."
+        },
+        "title": "Ett <em>alternativ till Kumospace</em> för hela teamet.",
+        "subtitle": "Kumospaces gratisplan rymmer 5 medlemmar på en våning. SpatialMeet har ingen medlemsgräns och ingen betald plan, så hela teamet kan flytta in.",
+        "points": [
+          {
+            "title": "Ingen gräns på 5 medlemmar",
+            "body": "Bjud in alla. Rummen rymmer 20 personer samtidigt, och du kan öppna fler rum när du behöver."
+          },
+          {
+            "title": "Ingen veckogräns för gäster",
+            "body": "Kumospace ger gratisgäster 4 timmar i veckan. I SpatialMeet går en gäst med med ett namn och stannar så länge den vill."
+          },
+          {
+            "title": "Gjort för mobilen också",
+            "body": "I mobilen rör du dig med en joystick på skärmen och samtalen anpassas till den mindre skärmen, allt i mobilens webbläsare."
+          }
+        ],
+        "them": {
+          "price": "Business från 16 $ per användare i månaden",
+          "freePlan": "Upp till 5 medlemmar, 50 gäster och 1 våning",
+          "browser": "Ja, med dator- och mobilappar",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är Kumospace gratis?",
+            "a": "Kumospace har en gratisplan för upp till 5 registrerade medlemmar, med en våning och gäster begränsade till 4 timmar i veckan. Business-planen börjar på 16 $ per användare i månaden. SpatialMeet är gratis för alla."
+          },
+          {
+            "q": "Vad har Kumospace som SpatialMeet inte har?",
+            "a": "Kumospace har skärmdelning, och de betalda planerna lägger till inspelning och obegränsad chatthistorik. SpatialMeet har inte skärmdelning eller inspelning än."
+          },
+          {
+            "q": "Behöver mina kollegor ett konto?",
+            "a": "Nej. Alla med en rumslänk kan gå med som gäst med bara ett namn. Att logga in sparar bara en profil, en figur och en lista över dina rum."
+          },
+          {
+            "q": "Fungerar SpatialMeet i mobilen?",
+            "a": "Ja. Det fungerar i mobilens webbläsare med en joystick på skärmen, så det finns ingen app att ladda ner."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "Alternativ till SpatialChat",
+        "meta": {
+          "title": "Alternativ till SpatialChat utan daglig gräns",
+          "description": "SpatialChats gratisplan tillåter 2 timmar om dagen. SpatialMeet är ett gratis virtuellt kontor i pixelgrafik med samtal när man står nära, som kan vara öppet hela dagen."
+        },
+        "title": "Ett <em>alternativ till SpatialChat</em> som är öppet hela dagen.",
+        "subtitle": "SpatialChat är byggt för evenemang, och gratisplanen stannar efter 2 timmar om dagen. SpatialMeet är ett kontor, så rummet är öppet så länge teamet jobbar.",
+        "points": [
+          {
+            "title": "Ingen daglig gräns",
+            "body": "Ha rummet öppet från morgonmötet till dagens sista meddelande. Ingenting räknar ner."
+          },
+          {
+            "title": "Ett kontor, inte ett evenemang",
+            "body": "Rummen tar inte slut när ett möte gör det. Samma länk fungerar i morgon, och folk tittar in när de har tid."
+          },
+          {
+            "title": "Gå fram för att prata",
+            "body": "Gå nära en kollega för att starta ett video- eller röstsamtal. Vid mötesbordet är alla i samma samtal."
+          }
+        ],
+        "them": {
+          "price": "Day Pass 5 $ per användare per dag, Business från 399 $ i månaden",
+          "freePlan": "2 timmar om dagen, upp till 12 personer",
+          "browser": "Ja",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är SpatialChat gratis?",
+            "a": "SpatialChat har en gratisplan med upp till 2 timmars möten om dagen för upp till 12 deltagare. Betalda alternativ är ett Day Pass för 5 $ per användare och Business-planer från 399 $ i månaden. SpatialMeet är gratis utan daglig gräns."
+          },
+          {
+            "q": "Passar SpatialMeet för virtuella evenemang?",
+            "a": "SpatialMeet är gjort för grupper som ses varje dag. Rummen rymmer 20 personer samtidigt, så det passar bättre för teamkontor, studiegrupper och små träffar än för stora evenemang."
+          },
+          {
+            "q": "Vad har SpatialChat som SpatialMeet inte har?",
+            "a": "SpatialChat har skärmdelning, fästa filer och stora evenemang. SpatialMeet har inte skärmdelning än och fokuserar på vardaglig närvaro och snabba samtal."
+          },
+          {
+            "q": "Fungerar samtal mellan webbläsare?",
+            "a": "Ja. Samtal i SpatialMeet går peer-to-peer via WebRTC, så ljud och bild går direkt mellan webbläsarna."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "Alternativ till WorkAdventure",
+        "meta": {
+          "title": "Alternativ till WorkAdventure med rum för 20",
+          "description": "WorkAdventures gratisplan tillåter 10 personer samtidigt. SpatialMeet är ett gratis virtuellt kontor i pixelgrafik med videosamtal när man står nära och rum för 20."
+        },
+        "title": "Ett <em>alternativ till WorkAdventure</em> med plats att växa.",
+        "subtitle": "WorkAdventure är också ett kontor i pixelgrafik, och gratisplanen rymmer 10 personer samtidigt. SpatialMeets rum rymmer 20, och det finns ingen betald plan att byta till.",
+        "points": [
+          {
+            "title": "Dubbelt så mycket plats",
+            "body": "En gratis WorkAdventure-karta rymmer 10 personer samtidigt. Ett SpatialMeet-rum rymmer 20, och du kan öppna hur många rum du vill."
+          },
+          {
+            "title": "Ingen karta att bygga",
+            "body": "Varje rum har ett kontorsgolv, ett mötesbord, en whiteboard och en högtalare. Skapa ett rum och gå in."
+          },
+          {
+            "title": "Inget att drifta",
+            "body": "Ingen server att sköta och ingen installation. Dela en länk så står teamet redan på kontoret."
+          }
+        ],
+        "them": {
+          "price": "Business från 8 € per användare i månaden",
+          "freePlan": "Upp till 10 personer samtidigt",
+          "browser": "Ja",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är WorkAdventure gratis?",
+            "a": "WorkAdventure har en gratisplan för upp till 10 samtidiga användare. Business-planen börjar på 8 € per användare i månaden, och evenemangspriser på 4 € per användare per dag. SpatialMeet är gratis."
+          },
+          {
+            "q": "Kan jag anpassa kartan i SpatialMeet?",
+            "a": "Inte än. Alla rum använder samma kontorsgolv. I WorkAdventure kan du designa egna kartor, vilket passar team som vill ha en egen värld."
+          },
+          {
+            "q": "Måste jag köra en server?",
+            "a": "Nej. SpatialMeet driftas åt dig. Skapa ett rum i webbläsaren och dela länken."
+          },
+          {
+            "q": "Hur startar samtal i SpatialMeet?",
+            "a": "Gå fram till en kollega så visas samtalsfältet. Ett tryck startar video eller röst. Vid mötesbordet hamnar alla som sätter sig i samma samtal."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Alternativ till Wonder",
+        "meta": {
+          "title": "Alternativ till Wonder.me: gå fram och prata",
+          "description": "Wonder.me lades ner 2023. SpatialMeet är en gratis plats i webbläsaren där du flyttar en figur och startar ett videosamtal genom att gå fram till andra."
+        },
+        "title": "Saknar du <em>Wonder?</em>",
+        "subtitle": "Wonder.me lades ner i april 2023. SpatialMeet behåller det som fick det att fungera, att gå runt och prata med dem du går fram till, på ett kontorsgolv i pixelgrafik.",
+        "points": [
+          {
+            "title": "Gå fram för att prata",
+            "body": "Som att kliva in i en cirkel på Wonder startar du ett samtal genom att ställa dig bredvid någon. Att byta grupp är bara att gå."
+          },
+          {
+            "title": "Fortfarande i webbläsaren",
+            "body": "Öppna en länk, välj en figur och du är inne. Gäster behöver inget konto."
+          },
+          {
+            "title": "Gratis och öppet hela dagen",
+            "body": "Inga planer och inga tidsgränser. Ha ett rum öppet för ett team, en klass eller en återkommande träff."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Finns Wonder.me fortfarande?",
+            "a": "Nej. Wonder.me lades ner den 25 april 2023, efter att grundarna inte hittat en hållbar affärsmodell."
+          },
+          {
+            "q": "Hur skiljer sig SpatialMeet från Wonder?",
+            "a": "Wonder använde cirklar på en platt yta och var gjort för evenemang. SpatialMeet är ett kontor du går runt i, med skrivbord, ett mötesbord, en whiteboard och musik, gjort för grupper som ses regelbundet."
+          },
+          {
+            "q": "Hur många kan gå med?",
+            "a": "Ett rum rymmer upp till 20 personer samtidigt, och du kan öppna så många rum du behöver."
+          },
+          {
+            "q": "Är SpatialMeet gratis?",
+            "a": "Ja. Att skapa rum, gå runt, chatta och ringa är gratis."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Virtuellt kontor",
+        "meta": {
+          "title": "Gratis virtuellt kontor för distansteam",
+          "description": "Ett gratis virtuellt kontor i webbläsaren. Se vem som är där, gå fram för ett videosamtal och ha ett rum öppet för ditt distansteam."
+        },
+        "title": "Ett gratis <em>virtuellt kontor</em> för distansteam.",
+        "subtitle": "Ge teamet en plats att vara på under dagen. Se vem som är där, gå fram med en snabb fråga och sätt dig vid mötesbordet när det är dags att prata.",
+        "points": [
+          {
+            "title": "Se vem som är inne",
+            "body": "Alla har en figur, en namnskylt och en status, så du vet vem som är ledig innan du går fram."
+          },
+          {
+            "title": "Snabba frågor förblir snabba",
+            "body": "Gå fram och tryck för att ringa. Ingen kalenderinbjudan, ingen möteslänk, inget väntrum."
+          },
+          {
+            "title": "Ett bord för möten",
+            "body": "Sätt dig vid mötesbordet så är alla där i samma samtal, med ett kort för varje person."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Vad är ett virtuellt kontor?",
+            "a": "Ett virtuellt kontor är en gemensam plats på nätet där ett distansteam jobbar tillsammans. I SpatialMeet är det ett golv i pixelgrafik där du ser dina kollegor och pratar med dem genom att gå fram."
+          },
+          {
+            "q": "Är det gratis?",
+            "a": "Ja. SpatialMeet är gratis, utan provperiod och utan pris per plats."
+          },
+          {
+            "q": "Hur många kan använda ett kontor?",
+            "a": "Ett rum rymmer upp till 20 personer samtidigt. Större team kan öppna ett rum per team."
+          },
+          {
+            "q": "Ersätter det videosamtal?",
+            "a": "Det ersätter det korta inbokade samtalet. Du har fortfarande video och röst, men samtalen börjar när du går fram, inte när ett möte startar."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Virtuell coworking",
+        "meta": {
+          "title": "Gratis virtuell coworking online",
+          "description": "Cowork på nätet med vänner eller främlingar i ett gratis kontor i pixelgrafik. Jobba sida vid sida, ta pauser ihop och prata när ni vill."
+        },
+        "title": "<em>Virtuell coworking</em> som känns som ett delat skrivbord.",
+        "subtitle": "Det är lättare att jobba ensam med folk omkring sig. Sätt dig på ett delat kontor, gör ditt jobb och gå fram till någon när du vill ta en paus.",
+        "points": [
+          {
+            "title": "Sällskap utan samtal",
+            "body": "Du ser andra jobba utan att synas i bild. Samtal startar bara när någon går fram."
+          },
+          {
+            "title": "Ett öppet rum, när som helst",
+            "body": "Det öppna kontoret är alltid öppet. Eller skapa ett rum för din egen coworkinggrupp och dela länken."
+          },
+          {
+            "title": "Sätt din status",
+            "body": "Markera dig som upptagen när du fokuserar och tillgänglig när du är sugen på att prata."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Vad är virtuell coworking?",
+            "a": "Virtuell coworking innebär att jobba på nätet bredvid andra så att det känns mindre ensamt. Många har lättare att fokusera när andra jobbar i närheten."
+          },
+          {
+            "q": "Måste jag synas i kameran?",
+            "a": "Nej. Kamera och mikrofon är avstängda tills du går med i ett samtal."
+          },
+          {
+            "q": "Kan jag cowork:a med främlingar?",
+            "a": "Ja. Det öppna kontoret är öppet för alla. För en privat grupp skapar du ett rum och lägger till ett lösenord."
+          },
+          {
+            "q": "Finns det en tidsgräns?",
+            "a": "Nej. Stanna så länge du vill."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Studierum online",
+        "meta": {
+          "title": "Gratis studierum online för att plugga med vänner",
+          "description": "Plugga med vänner i ett gratis studierum online. Sitt tillsammans i ett rum i pixelgrafik, fokusera och prata när ni behöver en paus. Inget att ladda ner."
+        },
+        "title": "Ett <em>studierum online</em> för dig och dina vänner.",
+        "subtitle": "Skapa ett rum för din studiegrupp, dela en länk och sitt tillsammans medan ni pluggar. Prata igenom en uppgift vid bordet och fortsätt sedan.",
+        "points": [
+          {
+            "title": "Tyst från början",
+            "body": "Ingen hör dig förrän du startar ett samtal, så rummet förblir fokuserat."
+          },
+          {
+            "title": "Ett bord för grupparbete",
+            "body": "Sätt er vid mötesbordet för att prata i grupp och res er för att plugga själva igen."
+          },
+          {
+            "title": "En whiteboard för uppgifter",
+            "body": "Gå fram till whiteboarden för att skissa en idé eller lösa en fråga tillsammans."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hur skapar jag ett studierum?",
+            "a": "Skapa ett rum, ge det ett namn och dela länken med dina vänner. Lägg till ett lösenord om du vill hålla det privat."
+          },
+          {
+            "q": "Är det gratis för studenter?",
+            "a": "Ja. SpatialMeet är gratis för alla, och ingen behöver ett konto för att gå med."
+          },
+          {
+            "q": "Kan vi lyssna på musik medan vi pluggar?",
+            "a": "Ja. Gå fram till högtalaren i rummet för att spela musik som alla i rummet hör."
+          },
+          {
+            "q": "Fungerar det i mobilen?",
+            "a": "Ja. Det fungerar i mobilens webbläsare med en joystick på skärmen."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Virtuellt klassrum",
+        "meta": {
+          "title": "Gratis virtuellt klassrum för lärarhandledning",
+          "description": "Håll handledning, läxhjälp och små lektioner i ett gratis virtuellt klassrum. Elever går fram för att prata, grupper samlas vid bordet och alla delar en whiteboard."
+        },
+        "title": "Ett <em>virtuellt klassrum</em> där elever kan gå runt.",
+        "subtitle": "Håll handledning, läxhjälp eller en liten lektion i ett rum där elever kan röra sig. De går fram när de har en fråga, och grupper pratar vid bordet.",
+        "points": [
+          {
+            "title": "Handledning utan kö",
+            "body": "Eleverna ser när du är ledig och går fram för att fråga. Ingen sitter i ett väntrum."
+          },
+          {
+            "title": "Små grupper vid bordet",
+            "body": "Upp till sex personer sitter vid mötesbordet och delar ett samtal, med ett kort för varje person."
+          },
+          {
+            "title": "En delad whiteboard",
+            "body": "Rita på whiteboarden för att förklara en idé. Alla i rummet ser samma tavla."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hur många elever kan gå med?",
+            "a": "Ett rum rymmer upp till 20 personer samtidigt, vilket passar små klasser, läxhjälpsgrupper och handledning."
+          },
+          {
+            "q": "Behöver eleverna ett konto?",
+            "a": "Nej. Eleverna går med via en länk med bara ett namn."
+          },
+          {
+            "q": "Kan jag hålla klassrummet privat?",
+            "a": "Ja. Lägg till ett lösenord när du skapar rummet och dela det bara med din klass."
+          },
+          {
+            "q": "Är det gratis för lärare?",
+            "a": "Ja. SpatialMeet är gratis och har ingen betald plan."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Närhetschatt",
+        "meta": {
+          "title": "Gratis videochatt efter närhet i webbläsaren",
+          "description": "Närhetschatt för team och vänner: gå med din figur fram till någon för att starta ett video- eller röstsamtal. Gratis, i webbläsaren, utan nedladdning."
+        },
+        "title": "<em>Närhetschatt</em> som börjar när du går fram.",
+        "subtitle": "I SpatialMeet avgör var du står vem du pratar med. Gå fram till någon för att ringa, sätt dig vid bordet för att prata i grupp och gå vidare när du är klar.",
+        "points": [
+          {
+            "title": "Närhet startar samtalet",
+            "body": "Ställ dig bredvid en kollega så visas ett samtalsfält. Ett tryck öppnar video eller röst."
+          },
+          {
+            "title": "Grupper vid bordet",
+            "body": "Sätt dig vid mötesbordet så är du med i samtalet med alla som sitter där."
+          },
+          {
+            "title": "Peer-to-peer",
+            "body": "Samtalen går direkt mellan webbläsare via WebRTC, så det finns inget att installera."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Vad är närhetschatt?",
+            "a": "Närhetschatt kopplar ihop dig med människor utifrån var din figur står. Du pratar med dem som är nära dig, som i ett riktigt rum."
+          },
+          {
+            "q": "Avslutas samtalet om jag går därifrån?",
+            "a": "Nej. Ett uppkopplat samtal fortsätter tills någon lägger på, så att gå runt bryter det inte."
+          },
+          {
+            "q": "Kan fler än två prata?",
+            "a": "Ja. Ring någon som redan är i ett samtal för att gå med, eller sätt dig vid mötesbordet för att prata i grupp."
+          },
+          {
+            "q": "Är det gratis?",
+            "a": "Ja. SpatialMeet är gratis i webbläsaren, på datorn och i mobilen."
+          }
+        ]
+      }
+    }
   }
 }

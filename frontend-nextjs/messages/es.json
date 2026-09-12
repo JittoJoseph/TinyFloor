@@ -475,5 +475,479 @@
     "title": "Esta sala no está en el mapa.",
     "body": "La página que buscas no existe o se ha movido.",
     "home": "Volver al vestíbulo"
+  },
+  "landings": {
+    "tryIt": "Entrar a la oficina pública",
+    "create": "Crear una sala",
+    "free": "Gratis, en el navegador, sin cuenta.",
+    "compare": "Comparativas",
+    "useCases": "Casos de uso",
+    "compareTitle": "SpatialMeet y {name}, <em>frente a frente.</em>",
+    "checked": "Los datos de {name} vienen de su página de precios, revisada en septiembre de 2026.",
+    "rows": {
+      "price": "Precio",
+      "freePlan": "Plan gratuito",
+      "browser": "Funciona en el navegador",
+      "screenShare": "Compartir pantalla"
+    },
+    "us": {
+      "price": "Gratis",
+      "freePlan": "Todo, sin límite de tiempo. Las salas admiten 20 personas.",
+      "browser": "Sí, sin instalar nada",
+      "screenShare": "Todavía no"
+    },
+    "stepsTitle": "Cómo <em>funciona.</em>",
+    "steps": [
+      {
+        "title": "Abre una sala",
+        "body": "Entra a la oficina pública, o crea una sala y comparte su enlace."
+      },
+      {
+        "title": "Elige un personaje",
+        "body": "Escribe un nombre y elige un personaje de pixel art. No necesitas cuenta."
+      },
+      {
+        "title": "Acércate para hablar",
+        "body": "Ponte al lado de alguien y empieza una videollamada o llamada de voz con un toque."
+      }
+    ],
+    "faqTitle": "Preguntas <em>frecuentes.</em>",
+    "relatedTitle": "Sigue <em>explorando.</em>",
+    "pages": {
+      "gather": {
+        "label": "Alternativa a Gather",
+        "meta": {
+          "title": "Alternativa gratis a Gather en tu navegador",
+          "description": "¿Buscas una alternativa gratis a Gather? SpatialMeet es una oficina virtual de pixel art con videollamadas por proximidad. Sin prueba, sin precio por puesto y sin nada que instalar."
+        },
+        "title": "Una <em>alternativa gratis a Gather.</em>",
+        "subtitle": "Gather eliminó su plan gratuito y ahora cobra por miembro. SpatialMeet mantiene la misma idea, una oficina por la que caminas y en la que hablas, y sigue siendo gratis.",
+        "points": [
+          {
+            "title": "Sin cuenta atrás",
+            "body": "Gather te da 30 días antes de pagar. SpatialMeet no tiene prueba, porque no hay nada a lo que pasarse después."
+          },
+          {
+            "title": "Nada que instalar",
+            "body": "Todo funciona en el navegador, en el ordenador y en el móvil. Comparte un enlace y tu equipo entra en segundos."
+          },
+          {
+            "title": "Los invitados entran directamente",
+            "body": "Cualquiera con el enlace entra solo con un nombre. La cuenta es opcional y solo guarda tu perfil y tus salas."
+          }
+        ],
+        "them": {
+          "price": "Desde 12 $ por miembro al mes",
+          "freePlan": "Ninguno, solo una prueba de 30 días",
+          "browser": "Sí, con app de escritorio",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Gather sigue siendo gratis?",
+            "a": "No. Gather ya no tiene un plan gratuito permanente. Ofrece una prueba de 30 días y después el plan Essential empieza en 12 $ por miembro al mes. SpatialMeet es gratis."
+          },
+          {
+            "q": "¿Qué tiene Gather que no tenga SpatialMeet?",
+            "a": "Gather tiene compartir pantalla, notas de reunión con IA y personalización de la oficina. SpatialMeet se centra en lo esencial: moverte, llamadas por proximidad, una mesa de reuniones, chat, una pizarra y música en la sala."
+          },
+          {
+            "q": "¿Puedo llevar a mi equipo de Gather a SpatialMeet?",
+            "a": "Sí. Crea una sala, comparte su enlace y todos entran. No hay datos que migrar ni nada que instalar."
+          },
+          {
+            "q": "¿Cuántas personas caben en una sala de SpatialMeet?",
+            "a": "Una sala admite hasta 20 personas a la vez, y puedes abrir tantas salas como necesites."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Alternativa a Kumospace",
+        "meta": {
+          "title": "Alternativa gratis a Kumospace para todo el equipo",
+          "description": "El plan gratuito de Kumospace llega hasta 5 miembros. SpatialMeet es una oficina virtual gratis de pixel art con videollamadas por proximidad, abierta a todo tu equipo en el navegador."
+        },
+        "title": "Una <em>alternativa a Kumospace</em> para todo el equipo.",
+        "subtitle": "El plan gratuito de Kumospace admite 5 miembros en una sola planta. SpatialMeet no tiene límite de miembros ni plan de pago, así que todo el equipo puede instalarse.",
+        "points": [
+          {
+            "title": "Sin límite de 5 miembros",
+            "body": "Invita a todo el mundo. Las salas admiten 20 personas a la vez y puedes abrir más cuando lo necesites."
+          },
+          {
+            "title": "Sin límite semanal para invitados",
+            "body": "Kumospace da a los invitados gratuitos 4 horas a la semana. En SpatialMeet un invitado entra con un nombre y se queda el tiempo que quiera."
+          },
+          {
+            "title": "Pensado también para el móvil",
+            "body": "En el teléfono te mueves con un joystick en pantalla y las llamadas se adaptan a la pantalla pequeña, todo en el navegador móvil."
+          }
+        ],
+        "them": {
+          "price": "Business desde 16 $ por usuario al mes",
+          "freePlan": "Hasta 5 miembros, 50 invitados y 1 planta",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Kumospace es gratis?",
+            "a": "Kumospace tiene un plan gratuito para hasta 5 miembros registrados, con una planta e invitados limitados a 4 horas a la semana. El plan Business empieza en 16 $ por usuario al mes. SpatialMeet es gratis para todos."
+          },
+          {
+            "q": "¿Qué tiene Kumospace que no tenga SpatialMeet?",
+            "a": "Kumospace incluye compartir pantalla, y sus planes de pago añaden grabación e historial de chat ilimitado. SpatialMeet todavía no tiene compartir pantalla ni grabación."
+          },
+          {
+            "q": "¿Mis compañeros necesitan una cuenta?",
+            "a": "No. Cualquiera con el enlace de una sala puede entrar como invitado solo con un nombre. Iniciar sesión solo guarda un perfil, un personaje y una lista de tus salas."
+          },
+          {
+            "q": "¿SpatialMeet funciona en el móvil?",
+            "a": "Sí. Funciona en navegadores móviles con un joystick en pantalla, así que no hay que descargar ninguna app."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "Alternativa a SpatialChat",
+        "meta": {
+          "title": "Alternativa a SpatialChat sin límite diario",
+          "description": "El plan gratuito de SpatialChat permite 2 horas al día. SpatialMeet es una oficina virtual gratis de pixel art con llamadas por proximidad que puedes dejar abierta todo el día."
+        },
+        "title": "Una <em>alternativa a SpatialChat</em> abierta todo el día.",
+        "subtitle": "SpatialChat está pensado para eventos, y su plan gratuito se corta tras 2 horas al día. SpatialMeet es una oficina, así que la sala sigue abierta mientras tu equipo trabaja.",
+        "points": [
+          {
+            "title": "Sin límite diario",
+            "body": "Deja la sala abierta desde la reunión de la mañana hasta el último mensaje del día. Nada se agota."
+          },
+          {
+            "title": "Una oficina, no un evento",
+            "body": "Las salas no terminan cuando acaba una reunión. El mismo enlace funciona mañana y la gente pasa cuando está libre."
+          },
+          {
+            "title": "Acércate para hablar",
+            "body": "Acércate a un compañero para empezar una videollamada o llamada de voz. En la mesa de reuniones, todos entran en la misma llamada."
+          }
+        ],
+        "them": {
+          "price": "Day Pass a 5 $ por usuario al día, Business desde 399 $ al mes",
+          "freePlan": "2 horas al día, hasta 12 personas",
+          "browser": "Sí",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿SpatialChat es gratis?",
+            "a": "SpatialChat tiene un plan gratuito con hasta 2 horas de reuniones al día para hasta 12 participantes. Las opciones de pago incluyen un Day Pass de 5 $ por usuario y planes Business desde 399 $ al mes. SpatialMeet es gratis y sin límite diario."
+          },
+          {
+            "q": "¿SpatialMeet sirve para eventos virtuales?",
+            "a": "SpatialMeet está hecho para grupos que se reúnen cada día. Las salas admiten 20 personas a la vez, así que encaja mejor en oficinas de equipo, grupos de estudio y encuentros pequeños que en eventos grandes."
+          },
+          {
+            "q": "¿Qué tiene SpatialChat que no tenga SpatialMeet?",
+            "a": "SpatialChat permite compartir pantalla, fijar archivos y hacer eventos grandes. SpatialMeet todavía no tiene compartir pantalla y se centra en la presencia diaria y las conversaciones rápidas."
+          },
+          {
+            "q": "¿Las llamadas funcionan entre navegadores?",
+            "a": "Sí. Las llamadas de SpatialMeet van de punto a punto con WebRTC, así que el audio y el vídeo viajan directamente entre navegadores."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "Alternativa a WorkAdventure",
+        "meta": {
+          "title": "Alternativa a WorkAdventure con salas de 20",
+          "description": "El plan gratuito de WorkAdventure permite 10 personas a la vez. SpatialMeet es una oficina virtual gratis de pixel art con videollamadas por proximidad y salas para 20."
+        },
+        "title": "Una <em>alternativa a WorkAdventure</em> con espacio para crecer.",
+        "subtitle": "WorkAdventure también es una oficina de pixel art, y su plan gratuito admite 10 personas a la vez. Las salas de SpatialMeet admiten 20, y no hay plan de pago al que pasarse.",
+        "points": [
+          {
+            "title": "El doble de espacio",
+            "body": "Un mapa gratuito de WorkAdventure admite 10 personas a la vez. Una sala de SpatialMeet admite 20, y puedes abrir tantas salas como quieras."
+          },
+          {
+            "title": "Ningún mapa que construir",
+            "body": "Cada sala trae una planta de oficina, una mesa de reuniones, una pizarra y un altavoz. Crea una sala y entra."
+          },
+          {
+            "title": "Nada que alojar",
+            "body": "No hay servidor que mantener ni configuración. Comparte un enlace y tu equipo ya está en la oficina."
+          }
+        ],
+        "them": {
+          "price": "Business desde 8 € por usuario al mes",
+          "freePlan": "Hasta 10 personas a la vez",
+          "browser": "Sí",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿WorkAdventure es gratis?",
+            "a": "WorkAdventure tiene un plan gratuito para hasta 10 usuarios simultáneos. El plan Business empieza en 8 € por usuario al mes, y los precios para eventos desde 4 € por usuario al día. SpatialMeet es gratis."
+          },
+          {
+            "q": "¿Puedo personalizar el mapa en SpatialMeet?",
+            "a": "Todavía no. Todas las salas usan la misma planta de oficina. WorkAdventure te deja diseñar tus propios mapas, algo que encaja con equipos que quieren un mundo a medida."
+          },
+          {
+            "q": "¿Tengo que mantener un servidor?",
+            "a": "No. SpatialMeet está alojado por nosotros. Crea una sala en el navegador y comparte el enlace."
+          },
+          {
+            "q": "¿Cómo empiezan las llamadas en SpatialMeet?",
+            "a": "Acércate a un compañero y aparece su barra de llamada. Un toque empieza vídeo o voz. En la mesa de reuniones, todos los que se sientan entran en la misma llamada."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Alternativa a Wonder",
+        "meta": {
+          "title": "Alternativa a Wonder.me: acércate y habla",
+          "description": "Wonder.me cerró en 2023. SpatialMeet es un espacio gratis en el navegador donde mueves un personaje y empiezas una videollamada acercándote a los demás."
+        },
+        "title": "¿Echas de menos <em>Wonder?</em>",
+        "subtitle": "Wonder.me cerró en abril de 2023. SpatialMeet conserva lo que lo hacía funcionar, moverte y hablar con quien te acercas, en una planta de oficina de pixel art.",
+        "points": [
+          {
+            "title": "Acércate para hablar",
+            "body": "Como al entrar en un círculo en Wonder, empiezas una llamada poniéndote al lado de alguien. Pasar de un grupo a otro es solo caminar."
+          },
+          {
+            "title": "Sigue en el navegador",
+            "body": "Abre un enlace, elige un personaje y ya estás dentro. Los invitados no necesitan cuenta."
+          },
+          {
+            "title": "Gratis y abierto todo el día",
+            "body": "Sin planes y sin límites de tiempo. Deja una sala abierta para un equipo, una clase o un encuentro habitual."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Wonder.me sigue disponible?",
+            "a": "No. Wonder.me cerró el 25 de abril de 2023, después de que sus fundadores no encontraran un modelo de negocio sostenible."
+          },
+          {
+            "q": "¿En qué se diferencia SpatialMeet de Wonder?",
+            "a": "Wonder usaba círculos sobre un lienzo plano y estaba pensado para eventos. SpatialMeet es una oficina por la que caminas, con escritorios, una mesa de reuniones, una pizarra y música, pensada para grupos que se reúnen con frecuencia."
+          },
+          {
+            "q": "¿Cuántas personas pueden entrar?",
+            "a": "Una sala admite hasta 20 personas a la vez, y puedes abrir tantas salas como necesites."
+          },
+          {
+            "q": "¿SpatialMeet es gratis?",
+            "a": "Sí. Crear salas, moverte, chatear y llamar es gratis."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Oficina virtual",
+        "meta": {
+          "title": "Oficina virtual gratis para equipos remotos",
+          "description": "Una oficina virtual gratis en tu navegador. Mira quién está, acércate para hablar con videollamadas por proximidad y deja una sala abierta para tu equipo remoto."
+        },
+        "title": "Una <em>oficina virtual</em> gratis para equipos remotos.",
+        "subtitle": "Dale a tu equipo un lugar donde estar durante el día. Mira quién está, acércate para hacer una pregunta rápida y siéntate en la mesa de reuniones cuando toque hablar.",
+        "points": [
+          {
+            "title": "Mira quién está",
+            "body": "Cada persona tiene un personaje, una etiqueta con su nombre y un estado, así sabes quién está libre antes de acercarte."
+          },
+          {
+            "title": "Las preguntas rápidas siguen siendo rápidas",
+            "body": "Acércate y toca para llamar. Sin invitación de calendario, sin enlace de reunión, sin sala de espera."
+          },
+          {
+            "title": "Una mesa para reuniones",
+            "body": "Siéntate en la mesa de reuniones y todos entran en la misma llamada, con una tarjeta para cada persona."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es una oficina virtual?",
+            "a": "Una oficina virtual es un espacio online compartido donde un equipo remoto trabaja junto. En SpatialMeet es una planta de pixel art donde ves a tus compañeros y hablas con ellos acercándote."
+          },
+          {
+            "q": "¿Es gratis?",
+            "a": "Sí. SpatialMeet es gratis, sin prueba y sin precio por puesto."
+          },
+          {
+            "q": "¿Cuántas personas pueden usar una oficina?",
+            "a": "Una sala admite hasta 20 personas a la vez. Los equipos grandes pueden abrir una sala por equipo."
+          },
+          {
+            "q": "¿Sustituye a las videollamadas?",
+            "a": "Sustituye a la llamada rápida programada. Sigues teniendo vídeo y voz, pero la conversación empieza cuando te acercas y no cuando empieza una reunión."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Coworking virtual",
+        "meta": {
+          "title": "Espacio de coworking virtual gratis online",
+          "description": "Haz coworking online con amigos o desconocidos en una oficina gratis de pixel art. Trabajad lado a lado, tomad descansos juntos y hablad cuando queráis."
+        },
+        "title": "<em>Coworking virtual</em> que se siente como un escritorio compartido.",
+        "subtitle": "Trabajar solo es más fácil con gente alrededor. Siéntate en una oficina compartida, sigue con tu trabajo y acércate a alguien cuando quieras un descanso.",
+        "points": [
+          {
+            "title": "Compañía sin llamadas",
+            "body": "Ves a otros trabajando sin estar en cámara. Las llamadas solo empiezan cuando alguien se acerca."
+          },
+          {
+            "title": "Una sala abierta a cualquier hora",
+            "body": "La oficina pública siempre está abierta. O crea una sala para tu propio grupo de coworking y comparte el enlace."
+          },
+          {
+            "title": "Pon tu estado",
+            "body": "Márcate como ocupado cuando te concentres y como disponible cuando te apetezca charlar."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es el coworking virtual?",
+            "a": "El coworking virtual es trabajar online junto a otras personas para sentirte menos aislado. A mucha gente le resulta más fácil concentrarse cuando otros trabajan cerca."
+          },
+          {
+            "q": "¿Tengo que estar en cámara?",
+            "a": "No. La cámara y el micrófono siguen apagados hasta que entras en una llamada."
+          },
+          {
+            "q": "¿Puedo hacer coworking con desconocidos?",
+            "a": "Sí. La oficina pública está abierta a todos. Para un grupo privado, crea una sala y ponle contraseña."
+          },
+          {
+            "q": "¿Hay límite de tiempo?",
+            "a": "No. Quédate el tiempo que quieras."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Sala de estudio online",
+        "meta": {
+          "title": "Sala de estudio online gratis para estudiar con amigos",
+          "description": "Estudia con amigos en una sala de estudio online gratis. Sentaos juntos en una sala de pixel art, concentraos y hablad cuando necesitéis un descanso. Sin descargas."
+        },
+        "title": "Una <em>sala de estudio online</em> para ti y tus amigos.",
+        "subtitle": "Crea una sala para tu grupo de estudio, comparte un enlace y sentaos juntos mientras trabajáis. Resolved un problema en la mesa y volved a lo vuestro.",
+        "points": [
+          {
+            "title": "Silenciosa por defecto",
+            "body": "Nadie te oye hasta que empiezas una llamada, así que la sala se mantiene concentrada."
+          },
+          {
+            "title": "Una mesa para trabajar en grupo",
+            "body": "Sentaos en la mesa de reuniones para hablar en grupo y levantaos para volver a estudiar por vuestra cuenta."
+          },
+          {
+            "title": "Una pizarra para los problemas",
+            "body": "Acércate a la pizarra para dibujar una idea o resolver una pregunta en grupo."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cómo creo una sala de estudio?",
+            "a": "Crea una sala, ponle un nombre y comparte el enlace con tus amigos. Añade una contraseña si quieres que sea privada."
+          },
+          {
+            "q": "¿Es gratis para estudiantes?",
+            "a": "Sí. SpatialMeet es gratis para todos, y nadie necesita cuenta para entrar."
+          },
+          {
+            "q": "¿Podemos poner música mientras estudiamos?",
+            "a": "Sí. Acércate al altavoz de la sala para poner música que oye todo el mundo en la sala."
+          },
+          {
+            "q": "¿Funciona en el móvil?",
+            "a": "Sí. Funciona en navegadores móviles con un joystick en pantalla."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Aula virtual",
+        "meta": {
+          "title": "Aula virtual gratis para tutorías",
+          "description": "Da tutorías, clases particulares y clases pequeñas en un aula virtual gratis. Los alumnos se acercan para hablar, los grupos se reúnen en la mesa y todos comparten una pizarra."
+        },
+        "title": "Un <em>aula virtual</em> por la que los alumnos caminan.",
+        "subtitle": "Da tutorías, clases particulares o una clase pequeña en una sala por la que los alumnos pueden moverse. Se acercan cuando tienen una pregunta, y los grupos hablan en la mesa.",
+        "points": [
+          {
+            "title": "Tutorías sin esperas",
+            "body": "Los alumnos ven cuándo estás libre y se acercan a preguntar. Nadie espera en una sala de espera."
+          },
+          {
+            "title": "Grupos pequeños en la mesa",
+            "body": "Hasta seis personas se sientan en la mesa de reuniones y comparten una llamada, con una tarjeta para cada persona."
+          },
+          {
+            "title": "Una pizarra compartida",
+            "body": "Dibuja en la pizarra para explicar una idea. Todos en la sala ven la misma pizarra."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cuántos alumnos pueden entrar?",
+            "a": "Una sala admite hasta 20 personas a la vez, lo que encaja con clases pequeñas, grupos de apoyo y tutorías."
+          },
+          {
+            "q": "¿Los alumnos necesitan cuenta?",
+            "a": "No. Los alumnos entran desde un enlace solo con un nombre."
+          },
+          {
+            "q": "¿Puedo mantener el aula privada?",
+            "a": "Sí. Añade una contraseña al crear la sala y compártela solo con tu clase."
+          },
+          {
+            "q": "¿Es gratis para profesores?",
+            "a": "Sí. SpatialMeet es gratis y no tiene plan de pago."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Chat de proximidad",
+        "meta": {
+          "title": "Videochat de proximidad gratis en el navegador",
+          "description": "Chat de proximidad para equipos y amigos: acerca tu personaje a alguien para empezar una videollamada o llamada de voz. Gratis, en el navegador, sin descargas."
+        },
+        "title": "<em>Chat de proximidad</em> que empieza cuando te acercas.",
+        "subtitle": "En SpatialMeet, donde estás decide con quién hablas. Acércate a alguien para llamarle, siéntate en la mesa para hablar en grupo y sigue tu camino cuando termines.",
+        "points": [
+          {
+            "title": "Acercarte lo empieza",
+            "body": "Ponte al lado de un compañero y aparece una barra de llamada. Un toque abre vídeo o voz."
+          },
+          {
+            "title": "Grupos en la mesa",
+            "body": "Siéntate en la mesa de reuniones y entras en la llamada con todos los que están sentados."
+          },
+          {
+            "title": "De punto a punto",
+            "body": "Las llamadas viajan directamente entre navegadores con WebRTC, así que no hay nada que instalar."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es el chat de proximidad?",
+            "a": "El chat de proximidad te conecta con personas según dónde está tu personaje. Hablas con quien tienes cerca, como en una sala de verdad."
+          },
+          {
+            "q": "¿La llamada termina si me alejo?",
+            "a": "No. Cuando una llamada conecta, sigue conectada hasta que alguien cuelga, así que moverte no la corta."
+          },
+          {
+            "q": "¿Pueden hablar más de dos personas?",
+            "a": "Sí. Llama a alguien que ya esté en una llamada para unirte, o siéntate en la mesa de reuniones para hablar en grupo."
+          },
+          {
+            "q": "¿Es gratis?",
+            "a": "Sí. SpatialMeet es gratis en el navegador, en el ordenador y en el móvil."
+          }
+        ]
+      }
+    }
   }
 }

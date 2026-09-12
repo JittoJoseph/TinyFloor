@@ -475,5 +475,479 @@
     "title": "Tätä huonetta ei ole kartalla.",
     "body": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
     "home": "Takaisin aulaan"
+  },
+  "landings": {
+    "tryIt": "Astu julkiseen toimistoon",
+    "create": "Luo huone",
+    "free": "Ilmainen, selaimessa, ilman tiliä.",
+    "compare": "Vertailut",
+    "useCases": "Käyttötavat",
+    "compareTitle": "SpatialMeet ja {name} <em>rinnakkain.</em>",
+    "checked": "Tiedot palvelusta {name} ovat sen hinnastosivulta, tarkistettu syyskuussa 2026.",
+    "rows": {
+      "price": "Hinta",
+      "freePlan": "Ilmainen paketti",
+      "browser": "Toimii selaimessa",
+      "screenShare": "Näytön jakaminen"
+    },
+    "us": {
+      "price": "Ilmainen",
+      "freePlan": "Kaikki, ilman aikarajaa. Huoneisiin mahtuu 20 henkeä.",
+      "browser": "Kyllä, ei asennettavaa",
+      "screenShare": "Ei vielä"
+    },
+    "stepsTitle": "Näin se <em>toimii.</em>",
+    "steps": [
+      {
+        "title": "Avaa huone",
+        "body": "Astu julkiseen toimistoon tai luo huone ja jaa sen linkki."
+      },
+      {
+        "title": "Valitse hahmo",
+        "body": "Kirjoita nimi ja valitse pikselitaidehahmo. Tiliä ei tarvita."
+      },
+      {
+        "title": "Kävele juttelemaan",
+        "body": "Asetu jonkun viereen ja aloita video- tai äänipuhelu yhdellä napautuksella."
+      }
+    ],
+    "faqTitle": "Usein kysyttyjä <em>kysymyksiä.</em>",
+    "relatedTitle": "Tutustu <em>lisää.</em>",
+    "pages": {
+      "gather": {
+        "label": "Gather-vaihtoehto",
+        "meta": {
+          "title": "Ilmainen Gather-vaihtoehto selaimessa",
+          "description": "Etsitkö ilmaista Gather-vaihtoehtoa? SpatialMeet on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista. Ei kokeilujaksoa, ei käyttäjäkohtaista hintaa, ei asennettavaa."
+        },
+        "title": "Ilmainen <em>Gather-vaihtoehto.</em>",
+        "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. SpatialMeet säilyttää saman idean, toimiston jossa kävellään ja jutellaan, ja pysyy ilmaisena.",
+        "points": [
+          {
+            "title": "Ei päättyvää kokeilujaksoa",
+            "body": "Gather antaa 30 päivää ennen maksua. SpatialMeetissä ei ole kokeilujaksoa, koska mitään ei tarvitse päivittää."
+          },
+          {
+            "title": "Ei mitään asennettavaa",
+            "body": "Kaikki toimii selaimessa tietokoneella ja puhelimella. Jaa linkki, niin tiimisi on sisällä sekunneissa."
+          },
+          {
+            "title": "Vieraat pääsevät suoraan sisään",
+            "body": "Kuka tahansa linkin saanut liittyy pelkällä nimellä. Tili on vapaaehtoinen ja tallentaa vain profiilisi ja huoneesi."
+          }
+        ],
+        "them": {
+          "price": "Alkaen 12 $ jäseneltä kuukaudessa",
+          "freePlan": "Ei ole, vain 30 päivän kokeilu",
+          "browser": "Kyllä, lisäksi työpöytäsovellus",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko Gather yhä ilmainen?",
+            "a": "Ei. Gatherilla ei ole enää pysyvää ilmaista pakettia. Tarjolla on 30 päivän kokeilu, jonka jälkeen Essential-paketti maksaa alkaen 12 $ jäseneltä kuukaudessa. SpatialMeet on ilmainen."
+          },
+          {
+            "q": "Mitä Gatherissa on, mitä SpatialMeetissä ei ole?",
+            "a": "Gatherissa on näytön jakaminen, tekoälyn kokousmuistiinpanot ja toimiston muokkaus. SpatialMeet keskittyy olennaiseen: liikkumiseen, lähipuheluihin, neuvottelupöytään, chattiin, valkotauluun ja huoneen musiikkiin."
+          },
+          {
+            "q": "Voinko siirtää tiimini Gatherista SpatialMeetiin?",
+            "a": "Kyllä. Luo huone, jaa linkki ja kaikki astuvat sisään. Siirrettävää dataa ei ole eikä mitään tarvitse asentaa."
+          },
+          {
+            "q": "Montako henkeä SpatialMeet-huoneeseen mahtuu?",
+            "a": "Huoneeseen mahtuu kerralla enintään 20 henkeä, ja voit avata niin monta huonetta kuin tarvitset."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Kumospace-vaihtoehto",
+        "meta": {
+          "title": "Ilmainen Kumospace-vaihtoehto koko tiimille",
+          "description": "Kumospacen ilmainen paketti loppuu 5 jäseneen. SpatialMeet on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, avoin koko tiimillesi selaimessa."
+        },
+        "title": "<em>Kumospace-vaihtoehto</em> koko tiimille.",
+        "subtitle": "Kumospacen ilmaiseen pakettiin mahtuu 5 jäsentä yhteen kerrokseen. SpatialMeetissä ei ole jäsenrajaa eikä maksullista pakettia, joten koko tiimi voi muuttaa sisään.",
+        "points": [
+          {
+            "title": "Ei 5 jäsenen rajaa",
+            "body": "Kutsu kaikki. Huoneisiin mahtuu kerralla 20 henkeä, ja voit avata lisää huoneita aina tarvittaessa."
+          },
+          {
+            "title": "Ei viikoittaista vierasrajaa",
+            "body": "Kumospace antaa ilmaisille vieraille 4 tuntia viikossa. SpatialMeetissä vieras liittyy nimellä ja viipyy niin kauan kuin haluaa."
+          },
+          {
+            "title": "Tehty myös puhelimelle",
+            "body": "Puhelimella liikut näytön ohjaussauvalla, ja puhelut sopeutuvat pienempään näyttöön, kaikki mobiiliselaimessa."
+          }
+        ],
+        "them": {
+          "price": "Business alkaen 16 $ käyttäjältä kuukaudessa",
+          "freePlan": "Enintään 5 jäsentä, 50 vierasta ja 1 kerros",
+          "browser": "Kyllä, lisäksi työpöytä- ja mobiilisovellukset",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko Kumospace ilmainen?",
+            "a": "Kumospacella on ilmainen paketti enintään 5 rekisteröityneelle jäsenelle, yksi kerros ja vieraille 4 tuntia viikossa. Business-paketti alkaa 16 $ käyttäjältä kuukaudessa. SpatialMeet on kaikille ilmainen."
+          },
+          {
+            "q": "Mitä Kumospacessa on, mitä SpatialMeetissä ei ole?",
+            "a": "Kumospacessa on näytön jakaminen, ja maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. SpatialMeetissä ei vielä ole näytön jakamista eikä tallennusta."
+          },
+          {
+            "q": "Tarvitsevatko tiimikaverini tilin?",
+            "a": "Eivät. Kuka tahansa huoneen linkin saanut voi liittyä vieraana pelkällä nimellä. Kirjautuminen tallentaa vain profiilin, hahmon ja listan huoneistasi."
+          },
+          {
+            "q": "Toimiiko SpatialMeet puhelimella?",
+            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaussauvalla, joten sovellusta ei tarvitse ladata."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "SpatialChat-vaihtoehto",
+        "meta": {
+          "title": "SpatialChat-vaihtoehto ilman päivärajaa",
+          "description": "SpatialChatin ilmainen paketti sallii 2 tuntia päivässä. SpatialMeet on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, jonka voi pitää auki koko päivän."
+        },
+        "title": "<em>SpatialChat-vaihtoehto</em>, joka on auki koko päivän.",
+        "subtitle": "SpatialChat on tehty tapahtumiin, ja sen ilmainen paketti loppuu 2 tunnin jälkeen päivässä. SpatialMeet on toimisto, joten huone pysyy auki niin kauan kuin tiimisi tekee töitä.",
+        "points": [
+          {
+            "title": "Ei päivärajaa",
+            "body": "Pidä huone auki aamupalaverista päivän viimeiseen viestiin. Mikään ei laske alaspäin."
+          },
+          {
+            "title": "Toimisto, ei tapahtuma",
+            "body": "Huoneet eivät lopu palaverin päättyessä. Sama linkki toimii huomennakin, ja ihmiset poikkeavat, kun ehtivät."
+          },
+          {
+            "title": "Kävele juttelemaan",
+            "body": "Mene lähelle kollegaa aloittaaksesi video- tai äänipuhelun. Neuvottelupöydässä kaikki ovat samassa puhelussa."
+          }
+        ],
+        "them": {
+          "price": "Day Pass 5 $ käyttäjältä päivässä, Business alkaen 399 $ kuukaudessa",
+          "freePlan": "2 tuntia päivässä, enintään 12 henkeä",
+          "browser": "Kyllä",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko SpatialChat ilmainen?",
+            "a": "SpatialChatilla on ilmainen paketti, jossa voi pitää kokouksia enintään 2 tuntia päivässä enintään 12 osallistujalle. Maksullisia vaihtoehtoja ovat 5 $ Day Pass käyttäjältä ja Business-paketit alkaen 399 $ kuukaudessa. SpatialMeet on ilmainen ilman päivärajaa."
+          },
+          {
+            "q": "Sopiiko SpatialMeet virtuaalitapahtumiin?",
+            "a": "SpatialMeet on tehty ryhmille, jotka tapaavat joka päivä. Huoneisiin mahtuu kerralla 20 henkeä, joten se sopii paremmin tiimitoimistoihin, opintoryhmiin ja pieniin tapaamisiin kuin suuriin tapahtumiin."
+          },
+          {
+            "q": "Mitä SpatialChatissa on, mitä SpatialMeetissä ei ole?",
+            "a": "SpatialChat tukee näytön jakamista, kiinnitettyjä tiedostoja ja suuria tapahtumia. SpatialMeetissä ei vielä ole näytön jakamista, ja se keskittyy arjen läsnäoloon ja nopeisiin keskusteluihin."
+          },
+          {
+            "q": "Toimivatko puhelut selainten välillä?",
+            "a": "Kyllä. SpatialMeetin puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "WorkAdventure-vaihtoehto",
+        "meta": {
+          "title": "WorkAdventure-vaihtoehto 20 hengen huoneilla",
+          "description": "WorkAdventuren ilmainen paketti sallii 10 henkeä kerralla. SpatialMeet on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla ja 20 hengen huoneilla."
+        },
+        "title": "<em>WorkAdventure-vaihtoehto</em>, jossa on tilaa kasvaa.",
+        "subtitle": "WorkAdventure on myös pikselitaiteinen toimisto, ja sen ilmaiseen pakettiin mahtuu 10 henkeä kerralla. SpatialMeetin huoneisiin mahtuu 20, eikä maksullista pakettia tarvitse ottaa.",
+        "points": [
+          {
+            "title": "Tuplasti tilaa",
+            "body": "Ilmaiseen WorkAdventure-karttaan mahtuu 10 henkeä kerralla. SpatialMeet-huoneeseen mahtuu 20, ja voit avata niin monta huonetta kuin haluat."
+          },
+          {
+            "title": "Ei rakennettavaa karttaa",
+            "body": "Jokaisessa huoneessa on toimistokerros, neuvottelupöytä, valkotaulu ja kaiutin. Luo huone ja astu sisään."
+          },
+          {
+            "title": "Ei ylläpidettävää",
+            "body": "Ei palvelinta eikä käyttöönottoa. Jaa linkki, niin tiimisi seisoo jo toimistossa."
+          }
+        ],
+        "them": {
+          "price": "Business alkaen 8 € käyttäjältä kuukaudessa",
+          "freePlan": "Enintään 10 henkeä kerralla",
+          "browser": "Kyllä",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko WorkAdventure ilmainen?",
+            "a": "WorkAdventurella on ilmainen paketti enintään 10 samanaikaiselle käyttäjälle. Business-paketti alkaa 8 € käyttäjältä kuukaudessa, ja tapahtumahinnat 4 € käyttäjältä päivässä. SpatialMeet on ilmainen."
+          },
+          {
+            "q": "Voinko muokata karttaa SpatialMeetissä?",
+            "a": "Et vielä. Kaikki huoneet käyttävät samaa toimistokerrosta. WorkAdventuressa voit suunnitella omia karttoja, mikä sopii tiimeille, jotka haluavat oman maailman."
+          },
+          {
+            "q": "Tarvitsenko oman palvelimen?",
+            "a": "Et. SpatialMeet ylläpidetään puolestasi. Luo huone selaimessa ja jaa linkki."
+          },
+          {
+            "q": "Miten puhelut alkavat SpatialMeetissä?",
+            "a": "Kävele kollegan luo, niin puhelupalkki ilmestyy. Yksi napautus aloittaa videon tai äänen. Neuvottelupöydässä kaikki istuutuvat liittyvät samaan puheluun."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Wonder-vaihtoehto",
+        "meta": {
+          "title": "Wonder.me-vaihtoehto: kävele luo ja juttele",
+          "description": "Wonder.me lopetti vuonna 2023. SpatialMeet on ilmainen paikka selaimessa, jossa liikutat hahmoa ja aloitat videopuhelun kävelemällä toisten luo."
+        },
+        "title": "Onko <em>Wonder</em> ikävä?",
+        "subtitle": "Wonder.me lopetti huhtikuussa 2023. SpatialMeet säilyttää sen, mikä toimi, liikkumisen ja juttelun niiden kanssa, joiden luo kävelet, pikselitaiteisessa toimistossa.",
+        "points": [
+          {
+            "title": "Kävele juttelemaan",
+            "body": "Kuten astuessa ympyrään Wonderissa, aloitat puhelun asettumalla jonkun viereen. Ryhmästä toiseen siirrytään kävelemällä."
+          },
+          {
+            "title": "Yhä selaimessa",
+            "body": "Avaa linkki, valitse hahmo ja olet sisällä. Vieraat eivät tarvitse tiliä."
+          },
+          {
+            "title": "Ilmainen ja auki koko päivän",
+            "body": "Ei paketteja eikä aikarajoja. Pidä huone auki tiimille, luokalle tai säännölliselle tapaamiselle."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Onko Wonder.me yhä olemassa?",
+            "a": "Ei. Wonder.me lopetti 25. huhtikuuta 2023, kun perustajat eivät löytäneet kestävää liiketoimintamallia."
+          },
+          {
+            "q": "Miten SpatialMeet eroaa Wonderista?",
+            "a": "Wonder käytti ympyröitä tasaisella pinnalla ja oli tehty tapahtumiin. SpatialMeet on toimisto, jossa kävellään, ja siinä on työpisteet, neuvottelupöytä, valkotaulu ja musiikkia. Se on tehty ryhmille, jotka tapaavat säännöllisesti."
+          },
+          {
+            "q": "Montako henkeä voi liittyä?",
+            "a": "Huoneeseen mahtuu kerralla enintään 20 henkeä, ja voit avata niin monta huonetta kuin tarvitset."
+          },
+          {
+            "q": "Onko SpatialMeet ilmainen?",
+            "a": "Kyllä. Huoneiden luominen, liikkuminen, chattailu ja soittaminen ovat ilmaisia."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Virtuaalitoimisto",
+        "meta": {
+          "title": "Ilmainen virtuaalitoimisto etätiimeille",
+          "description": "Ilmainen virtuaalitoimisto selaimessa. Näe kuka on paikalla, kävele juttelemaan videopuhelulla ja pidä yksi huone auki etätiimillesi."
+        },
+        "title": "Ilmainen <em>virtuaalitoimisto</em> etätiimeille.",
+        "subtitle": "Anna tiimillesi paikka, jossa olla päivän aikana. Näe kuka on paikalla, kävele kysymään nopea kysymys ja istu neuvottelupöytään, kun on aika puhua.",
+        "points": [
+          {
+            "title": "Näe kuka on paikalla",
+            "body": "Jokaisella on hahmo, nimikyltti ja tila, joten tiedät kuka on vapaana ennen kuin kävelet luo."
+          },
+          {
+            "title": "Nopeat kysymykset pysyvät nopeina",
+            "body": "Kävele luo ja soita napautuksella. Ei kalenterikutsua, ei kokouslinkkiä, ei odotushuonetta."
+          },
+          {
+            "title": "Pöytä palavereille",
+            "body": "Istu neuvottelupöytään, niin kaikki siellä ovat samassa puhelussa, ja jokaisella on oma korttinsa."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mikä on virtuaalitoimisto?",
+            "a": "Virtuaalitoimisto on yhteinen verkkotila, jossa etätiimi työskentelee yhdessä. SpatialMeetissä se on pikselitaiteinen kerros, jossa näet kollegasi ja juttelet heidän kanssaan kävelemällä heidän luokseen."
+          },
+          {
+            "q": "Onko se ilmainen?",
+            "a": "Kyllä. SpatialMeet on ilmainen, ilman kokeilujaksoa ja käyttäjäkohtaista hintaa."
+          },
+          {
+            "q": "Montako henkeä voi käyttää yhtä toimistoa?",
+            "a": "Huoneeseen mahtuu kerralla enintään 20 henkeä. Isommat tiimit voivat avata oman huoneen jokaiselle tiimille."
+          },
+          {
+            "q": "Korvaako se videopuhelut?",
+            "a": "Se korvaa lyhyen sovitun puhelun. Käytössä on yhä video ja ääni, mutta keskustelu alkaa, kun kävelet luo, eikä kun palaveri alkaa."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Virtuaalinen coworking",
+        "meta": {
+          "title": "Ilmainen virtuaalinen coworking-tila verkossa",
+          "description": "Tee töitä verkossa ystävien tai tuntemattomien kanssa ilmaisessa pikselitaiteisessa toimistossa. Työskentele vierekkäin, pitäkää taukoja yhdessä ja jutelkaa kun haluatte."
+        },
+        "title": "<em>Virtuaalinen coworking</em>, joka tuntuu jaetulta työpöydältä.",
+        "subtitle": "Yksin on helpompi tehdä töitä, kun ympärillä on ihmisiä. Istu jaettuun toimistoon, tee töitäsi ja kävele jonkun luo, kun haluat tauon.",
+        "points": [
+          {
+            "title": "Seuraa ilman puheluita",
+            "body": "Näet muiden tekevän töitä ilman että olet kameralla. Puhelut alkavat vasta, kun joku kävelee luo."
+          },
+          {
+            "title": "Avoin huone milloin vain",
+            "body": "Julkinen toimisto on aina auki. Tai luo huone omalle coworking-ryhmällesi ja jaa linkki."
+          },
+          {
+            "title": "Aseta tilasi",
+            "body": "Merkitse itsesi varatuksi keskittyessäsi ja vapaaksi, kun olet valmis juttelemaan."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mitä virtuaalinen coworking on?",
+            "a": "Virtuaalinen coworking tarkoittaa työskentelyä verkossa muiden rinnalla, jotta olo on vähemmän yksinäinen. Monen on helpompi keskittyä, kun muut tekevät töitä lähellä."
+          },
+          {
+            "q": "Pitääkö minun olla kameralla?",
+            "a": "Ei. Kamerasi ja mikrofonisi pysyvät pois päältä, kunnes liityt puheluun."
+          },
+          {
+            "q": "Voinko tehdä coworkingia tuntemattomien kanssa?",
+            "a": "Kyllä. Julkinen toimisto on avoin kaikille. Yksityistä ryhmää varten luo huone ja lisää salasana."
+          },
+          {
+            "q": "Onko aikarajaa?",
+            "a": "Ei. Viivy niin kauan kuin haluat."
+          }
+        ]
+      },
+      "onlineStudyRoom": {
+        "label": "Verkko-opiskeluhuone",
+        "meta": {
+          "title": "Ilmainen verkko-opiskeluhuone ystävien kanssa",
+          "description": "Opiskele ystävien kanssa ilmaisessa verkko-opiskeluhuoneessa. Istukaa yhdessä pikselitaiteisessa huoneessa, keskittykää ja jutelkaa tauolla. Ei ladattavaa."
+        },
+        "title": "<em>Verkko-opiskeluhuone</em> sinulle ja ystävillesi.",
+        "subtitle": "Luo huone opintoryhmällesi, jaa yksi linkki ja istukaa yhdessä opiskellessanne. Käykää tehtävä läpi pöydän ääressä ja jatkakaa sitten.",
+        "points": [
+          {
+            "title": "Oletuksena hiljainen",
+            "body": "Kukaan ei kuule sinua ennen kuin aloitat puhelun, joten huone pysyy keskittyneenä."
+          },
+          {
+            "title": "Pöytä ryhmätyölle",
+            "body": "Istukaa neuvottelupöytään puhumaan ryhmänä ja nouskaa jatkamaan opiskelua itseksenne."
+          },
+          {
+            "title": "Valkotaulu tehtäville",
+            "body": "Kävele valkotaululle luonnostelemaan ideaa tai ratkaisemaan kysymystä yhdessä."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Miten luon opiskeluhuoneen?",
+            "a": "Luo huone, anna sille nimi ja jaa linkki ystävillesi. Lisää salasana, jos haluat pitää sen yksityisenä."
+          },
+          {
+            "q": "Onko se ilmainen opiskelijoille?",
+            "a": "Kyllä. SpatialMeet on kaikille ilmainen, eikä kukaan tarvitse tiliä liittyäkseen."
+          },
+          {
+            "q": "Voimmeko kuunnella musiikkia opiskellessa?",
+            "a": "Kyllä. Kävele huoneen kaiuttimen luo soittamaan musiikkia, jonka kaikki huoneessa kuulevat."
+          },
+          {
+            "q": "Toimiiko se puhelimella?",
+            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaussauvalla."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Virtuaaliluokka",
+        "meta": {
+          "title": "Ilmainen virtuaaliluokka vastaanottoaikoihin",
+          "description": "Pidä vastaanottoaikoja, tukiopetusta ja pieniä tunteja ilmaisessa virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat pöydän ääreen ja kaikki jakavat valkotaulun."
+        },
+        "title": "<em>Virtuaaliluokka</em>, jossa opiskelijat liikkuvat.",
+        "subtitle": "Pidä vastaanottoaikoja, tukiopetusta tai pieni tunti huoneessa, jossa opiskelijat voivat liikkua. He tulevat luoksesi kysymään, ja ryhmät juttelevat pöydän ääressä.",
+        "points": [
+          {
+            "title": "Sujuvat vastaanottoajat",
+            "body": "Opiskelijat näkevät, milloin olet vapaana, ja tulevat kysymään. Kukaan ei istu odotushuoneessa."
+          },
+          {
+            "title": "Pienet ryhmät pöydän ääressä",
+            "body": "Enintään kuusi henkeä istuu neuvottelupöydässä ja jakaa yhden puhelun, jokaisella oma korttinsa."
+          },
+          {
+            "title": "Yhteinen valkotaulu",
+            "body": "Piirrä valkotaululle selittääksesi idean. Kaikki huoneessa näkevät saman taulun."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Montako opiskelijaa voi liittyä?",
+            "a": "Huoneeseen mahtuu kerralla enintään 20 henkeä, mikä sopii pienille luokille, tukiopetusryhmille ja vastaanottoajoille."
+          },
+          {
+            "q": "Tarvitsevatko opiskelijat tilin?",
+            "a": "Eivät. Opiskelijat liittyvät linkistä pelkällä nimellä."
+          },
+          {
+            "q": "Voinko pitää luokan yksityisenä?",
+            "a": "Kyllä. Lisää salasana huonetta luodessasi ja jaa se vain luokallesi."
+          },
+          {
+            "q": "Onko se ilmainen opettajille?",
+            "a": "Kyllä. SpatialMeet on ilmainen, eikä siinä ole maksullista pakettia."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Lähichat",
+        "meta": {
+          "title": "Ilmainen videolähichat selaimessa",
+          "description": "Lähichat tiimeille ja ystäville: kävele hahmollasi jonkun luo aloittaaksesi video- tai äänipuhelun. Ilmainen, selaimessa, ei latauksia."
+        },
+        "title": "<em>Lähichat</em>, joka alkaa, kun kävelet luo.",
+        "subtitle": "SpatialMeetissä sijaintisi ratkaisee, kenen kanssa puhut. Kävele jonkun luo soittaaksesi, istu pöytään puhumaan ryhmänä ja jatka matkaa, kun olet valmis.",
+        "points": [
+          {
+            "title": "Lähelle meneminen aloittaa sen",
+            "body": "Asetu kollegan viereen, niin puhelupalkki ilmestyy. Yksi napautus avaa videon tai äänen."
+          },
+          {
+            "title": "Ryhmät pöydän ääressä",
+            "body": "Istu neuvottelupöytään, niin liityt puheluun kaikkien siellä istuvien kanssa."
+          },
+          {
+            "title": "Vertaisyhteys",
+            "body": "Puhelut kulkevat suoraan selainten välillä WebRTC:n kautta, joten asennettavaa ei ole."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mikä on lähichat?",
+            "a": "Lähichat yhdistää sinut ihmisiin sen mukaan, missä hahmosi on. Puhut lähelläsi olevien kanssa, kuten oikeassa huoneessa."
+          },
+          {
+            "q": "Päättyykö puhelu, jos kävelen pois?",
+            "a": "Ei. Yhdistetty puhelu pysyy yhdistettynä, kunnes joku lopettaa sen, joten liikkuminen ei katkaise sitä."
+          },
+          {
+            "q": "Voiko useampi kuin kaksi puhua?",
+            "a": "Kyllä. Soita jollekulle, joka on jo puhelussa, liittyäksesi mukaan, tai istu neuvottelupöytään puhumaan ryhmänä."
+          },
+          {
+            "q": "Onko se ilmainen?",
+            "a": "Kyllä. SpatialMeet on ilmainen selaimessa tietokoneella ja puhelimella."
+          }
+        ]
+      }
+    }
   }
 }

@@ -120,11 +120,8 @@ class GameScene extends Phaser.Scene {
       this.movementManager.goTo(x, y, arrive);
     this.seatManager.attach(
       this.wsManager,
-      (seated, casual) =>
-        this.movementManager.setFrozen(
-          seated,
-          casual ? () => this.seatManager?.leave() : undefined,
-        ),
+      (seated) =>
+        this.movementManager.setFrozen(seated, () => this.seatManager?.leave()),
       approach,
       (people) => this.playerManager.hideNameTags(people),
     );
@@ -150,10 +147,13 @@ class GameScene extends Phaser.Scene {
         approach,
       );
     }
+    // nobody calls into a meeting or out of one, or rings someone already on the line
+    const seats = this.seatManager;
     this.proximityManager = new ProximityManager(
       this,
       this.playerManager,
       this.player,
+      (id) => !seats.inMeeting() && !seats.inMeeting(id) && !callManager.isPeer(id),
     );
 
     this.messageHandler = new MessageHandler(

@@ -258,7 +258,7 @@ const floorLanes: Occupant[] = [
   },
 ];
 
-const FloorMockup = () => (
+export const FloorMockup = () => (
   <Frame tone="glass">
     <OfficeScene
       className="aspect-square md:aspect-[4/3] rounded-xl"

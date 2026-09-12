@@ -9,8 +9,8 @@ import {
 } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
-import { OfficeScene } from "@/components/OfficeScene";
 import { Navbar } from "./Navbar";
+import { FloorMockup } from "./RoomMoments";
 import { FAQ } from "./FAQ";
 import { CTA } from "./CTA";
 import { Footer } from "./Footer";
@@ -30,7 +30,7 @@ const sectionTitle =
   "font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.1] mb-8 md:mb-12";
 
 const buttonBase =
-  "cursor-pointer inline-flex items-center justify-center h-12 md:h-14 px-7 md:px-8 rounded-full font-body font-medium uppercase tracking-widest text-xs md:text-sm transition-all duration-300";
+  "cursor-pointer inline-flex items-center justify-center whitespace-nowrap h-12 md:h-14 px-7 md:px-8 rounded-full font-body font-medium uppercase tracking-widest text-xs md:text-sm transition-all duration-300";
 
 /** One page written for a search: a pitch, the proof, how it works and the questions people ask. */
 export async function LandingPage({
@@ -59,50 +59,34 @@ export async function LandingPage({
       <Navbar />
 
       <main className="pt-24 md:pt-32">
-        <section className="max-w-5xl mx-auto px-4 md:px-8 pt-8 md:pt-12 flex flex-col items-center text-center">
-          <h1 className="font-body font-light text-[2.6rem] md:text-7xl text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6 max-w-4xl">
-            {t.rich(`pages.${page.key}.title`, { em })}
-          </h1>
-          <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl mb-10">
-            {copy.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4">
-            <Link
-              href="/room/public-room"
-              className={`${buttonBase} bg-[var(--color-braun-orange)] text-white shadow-[0_12px_28px_-14px_rgba(255,78,0,0.8)] hover:brightness-110`}
-            >
-              {t("tryIt")}
-            </Link>
-            <Link
-              href="/create-room"
-              className={`${buttonBase} bg-white border border-black/10 text-[var(--color-braun-text)] shadow-sm hover:shadow-md`}
-            >
-              {t("create")}
-            </Link>
+        <section className="max-w-6xl mx-auto px-4 md:px-8 pt-8 md:pt-12 grid gap-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
+            <h1 className="font-body font-light text-[2.6rem] md:text-6xl lg:text-[3.6rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6">
+              {t.rich(`pages.${page.key}.title`, { em })}
+            </h1>
+            <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl mb-10">
+              {copy.subtitle}
+            </p>
+            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3 md:gap-4">
+              <Link
+                href="/room/public-room"
+                className={`${buttonBase} bg-[var(--color-braun-orange)] text-white shadow-[0_12px_28px_-14px_rgba(255,78,0,0.8)] hover:brightness-110`}
+              >
+                {t("tryIt")}
+              </Link>
+              <Link
+                href="/create-room"
+                className={`${buttonBase} bg-white border border-black/10 text-[var(--color-braun-text)] shadow-sm hover:shadow-md`}
+              >
+                {t("create")}
+              </Link>
+            </div>
+            <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-5">
+              {t("free")}
+            </p>
           </div>
-          <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-5">
-            {t("free")}
-          </p>
 
-          <div className="w-full mt-12 md:mt-16 bg-white rounded-[1rem] md:rounded-[1.5rem] p-2 md:p-3 shadow-2xl border border-black/15">
-            <OfficeScene
-              className="aspect-[4/3] md:aspect-[16/8] rounded-lg md:rounded-xl"
-              focus="30% 58%"
-              zoom="auto 190%"
-              occupants={[
-                { character: "Adam", left: "34%", top: "60%", direction: "right", width: 34 },
-                { character: "Amelia", left: "43%", top: "60%", direction: "left", width: 34 },
-                { character: "Alex", left: "70%", top: "34%", direction: "down", width: 34 },
-                {
-                  character: "Bob",
-                  left: "18%",
-                  top: "84%",
-                  width: 34,
-                  stroll: { distance: 120, duration: 8200, pattern: "a" },
-                },
-              ]}
-            />
-          </div>
+          <FloorMockup />
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-24">

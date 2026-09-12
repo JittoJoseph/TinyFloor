@@ -158,9 +158,10 @@ class CallManager {
     return this.peers.has(id);
   }
 
+  /** Calling someone while already on a call brings them into it. */
   invite(id: string, name: string, video: boolean) {
-    if (this.meeting || this.peers.size || this.incoming || this.outgoing) return;
-    if (id !== GUIDE_ID && !this.ws) return;
+    if (this.busy() || this.peers.has(id)) return;
+    if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
 
     this.error = null;
     this.outgoing = { id, name, video };
@@ -169,7 +170,7 @@ class CallManager {
     if (id === GUIDE_ID) {
       this.ring(() => this.answerAsGuide(video), GUIDE_ANSWER_DELAY);
     } else {
-      this.send("call_invite", { to: id, video });
+      this.send("call_invite", { to: id, video, group: this.peers.size > 0 });
       this.ring(() => this.cancel());
     }
     this.emit();
@@ -205,6 +206,7 @@ class CallManager {
 
     this.createPeer(call.id, call.name, false);
     this.send("call_accept", { to: call.id });
+    this.introduce(call.id);
     this.emit();
 
     await this.startCall(call.id, call.video);
@@ -262,7 +264,10 @@ class CallManager {
 
     switch (type) {
       case "call_invite":
-        this.onInvite(from, data.fromName as string, !!data.video);
+        this.onInvite(from, data.fromName as string, !!data.video, !!data.group);
+        break;
+      case "call_add":
+        this.onAdd(from, data);
         break;
       case "call_accept":
         this.onAccept(from);
@@ -394,8 +399,34 @@ class CallManager {
     });
   }
 
-  private onInvite(id: string, name: string, video: boolean) {
-    if (this.meeting || this.peers.size || this.incoming || this.outgoing) {
+  /** Mid meeting, mid ring or on the tutorial call, nobody else gets through. */
+  private busy() {
+    return !!(this.meeting || this.incoming || this.outgoing || this.peers.has(GUIDE_ID));
+  }
+
+  /**
+   * Whoever already has others on the call introduces the newcomer to each of
+   * them, and the newcomer offers, just like sitting down at the table. Two
+   * calls never merge, so only one side ever has anyone to introduce.
+   */
+  private introduce(id: string) {
+    this.peers.forEach((peer) => {
+      if (peer.id === id || !peer.pc) return;
+      this.send("call_add", { to: peer.id, id, offer: false });
+      this.send("call_add", { to: id, id: peer.id, offer: true });
+    });
+  }
+
+  /** Only someone we are already talking to can add people to our call. */
+  private onAdd(from: string, data: Record<string, unknown>) {
+    if (this.meeting || !this.peers.has(from) || typeof data.id !== "string") return;
+    const peer = this.createPeer(data.id, String(data.name || "Someone"), !!data.offer);
+    if (this.local) this.syncTracks(peer);
+    this.emit();
+  }
+
+  private onInvite(id: string, name: string, video: boolean, group: boolean) {
+    if (this.busy() || (group && this.peers.size)) {
       this.send("call_decline", { to: id, reason: "busy" });
       return;
     }
@@ -415,6 +446,7 @@ class CallManager {
     this.outgoing = null;
 
     this.createPeer(id, call.name, true);
+    this.introduce(id);
     this.emit();
 
     await this.startCall(id, call.video);

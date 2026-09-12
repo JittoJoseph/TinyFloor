@@ -354,6 +354,9 @@
       "camera": "Kameraet er ikke tilgjengelig"
     }
   },
+  "meeting": {
+    "micOff": "Mikrofon av"
+  },
   "controls": {
     "status": "Status: {status}",
     "muteMic": "Slå av mikrofonen",
@@ -456,6 +459,8 @@
     "guide": "Guide",
     "sit": "Trykk E for å sette deg",
     "stand": "Trykk E for å reise deg",
+    "joinMeeting": "Trykk E for å bli med",
+    "meeting": "Møte",
     "music": "Klikk for musikk",
     "draw": "Klikk for å tegne"
   },

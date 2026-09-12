@@ -354,6 +354,9 @@
       "camera": "摄像头不可用"
     }
   },
+  "meeting": {
+    "micOff": "麦克风已关闭"
+  },
   "controls": {
     "status": "状态：{status}",
     "muteMic": "关闭麦克风",
@@ -456,6 +459,8 @@
     "guide": "向导",
     "sit": "按 E 坐下",
     "stand": "按 E 起身",
+    "joinMeeting": "按 E 加入",
+    "meeting": "会议",
     "music": "点击播放音乐",
     "draw": "点击开始画画"
   },

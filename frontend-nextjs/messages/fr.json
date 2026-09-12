@@ -354,6 +354,9 @@
       "camera": "Caméra indisponible"
     }
   },
+  "meeting": {
+    "micOff": "Micro coupé"
+  },
   "controls": {
     "status": "Statut : {status}",
     "muteMic": "Couper le micro",
@@ -456,6 +459,8 @@
     "guide": "Guide",
     "sit": "Appuyez sur E pour vous asseoir",
     "stand": "Appuyez sur E pour vous lever",
+    "joinMeeting": "Appuyez sur E pour rejoindre",
+    "meeting": "Réunion",
     "music": "Cliquez pour la musique",
     "draw": "Cliquez pour dessiner"
   },

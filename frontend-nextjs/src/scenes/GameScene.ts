@@ -5,7 +5,7 @@ import { ProximityManager } from "../lib/ProximityManager";
 import { callManager } from "../lib/CallManager";
 import { AnimationManager } from "../lib/AnimationManager";
 import { MovementManager } from "../lib/MovementManager";
-import { MapManager, depthForY } from "../lib/MapManager";
+import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { MessageHandler } from "../lib/MessageHandler";
 import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
@@ -114,16 +114,22 @@ class GameScene extends Phaser.Scene {
       this.player,
       this.animationManager,
       this.mapManager.getChairs(),
+      this.mapManager.getAnchors("Table")[0],
     );
-    const approach = (x: number, y: number) =>
-      void this.movementManager.approach(x, y);
+    const approach = (x: number, y: number, arrive: () => void) =>
+      this.movementManager.goTo(x, y, arrive);
     this.seatManager.attach(
       this.wsManager,
-      (seated) => this.movementManager.setFrozen(seated),
+      (seated, casual) =>
+        this.movementManager.setFrozen(
+          seated,
+          casual ? () => this.seatManager?.leave() : undefined,
+        ),
       approach,
+      (people) => this.playerManager.hideNameTags(people),
     );
 
-    callManager.attach(this.wsManager, this.playerId);
+    callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
     const board = this.mapManager.getAnchors("Whiteboard")[0];
     if (board) {
@@ -154,12 +160,14 @@ class GameScene extends Phaser.Scene {
       this,
       this.playerManager,
       this.animationManager,
+      this.seatManager,
       this.playerId,
       this.player,
     );
     this.wsManager.setOnMessage((msg: WebSocketMessage) =>
       this.messageHandler.handleMessage(msg),
     );
+    this.listen("leaveMeeting", () => this.seatManager?.leave());
 
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
@@ -210,12 +218,13 @@ class GameScene extends Phaser.Scene {
     if (!this.player) return;
 
     this.movementManager.update(delta);
-    if (!this.seatManager?.isSeated()) {
-      this.player.setDepth(depthForY(this.player.y));
-    }
     this.seatManager?.update();
     this.playerManager.update(delta);
-    this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y);
+    this.playerManager.updateLocalPlayerNameTag(
+      this.player.x,
+      this.player.y,
+      this.seatManager?.seatedDirection(),
+    );
     this.proximityManager.update();
     this.whiteboardObject?.update();
     this.jukeboxObject?.update(time, delta);

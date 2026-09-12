@@ -1,8 +1,12 @@
 import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
-import { ChairSpec, depthForY } from "./MapManager";
+import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
 import { WebSocketManager } from "./WebSocketManager";
+import { callManager } from "./CallManager";
+import type { GoTo } from "./Interactable";
+import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
+import { pixelToTile } from "./types";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -21,11 +25,26 @@ const SEAT: Record<
 
 const REACH = 56;
 const HIGHLIGHT = 0xff4e00;
+const IDLE = 0x9ca3af;
 const PROMPT_DEPTH = 99000;
+const SELF = "self";
+
+/** Chairs in this map zone put whoever sits down into the table's call. */
+const MEETING_ZONE = "meeting";
+
+export interface SeatPose {
+  x: number;
+  y: number;
+  depth: number;
+  frame: number;
+  direction: CardinalDirection;
+  standX: number;
+  standY: number;
+}
 
 interface Seat extends ChairSpec {
   baseY: number;
-  taken: boolean;
+  occupant?: string;
 }
 
 export class SeatManager {
@@ -34,41 +53,51 @@ export class SeatManager {
   private animations: AnimationManager;
   private ws?: WebSocketManager;
   private seats: Seat[] = [];
+  private byId = new Map<number, Seat>();
   private ring: Phaser.GameObjects.Graphics;
-  private prompt: Phaser.GameObjects.Container;
-  private promptLabel: Phaser.GameObjects.Text;
+  private prompt: SceneLabel;
+  private tag?: SceneLabel;
   private hitAreas: Phaser.GameObjects.Zone[] = [];
   private nearest?: Seat;
   private seated?: Seat;
-  private onSitChange?: (seated: boolean) => void;
-  private onApproach?: (x: number, y: number) => void;
+  private dirty = false;
+  // the E hints mean nothing without a keyboard; on touch the outline and a tap do
+  private keyboard: boolean;
+  private onSitChange?: (seated: boolean, casual: boolean) => void;
+  private goTo?: GoTo;
+  private onMeetingChange?: (people: ReadonlySet<string> | null) => void;
 
   constructor(
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     animations: AnimationManager,
     chairs: ChairSpec[],
+    table?: MapAnchor,
   ) {
     this.scene = scene;
     this.player = player;
     this.animations = animations;
-    this.seats = chairs.map((c) => ({ ...c, baseY: c.y + 16, taken: false }));
+    this.keyboard = scene.sys.game.device.os.desktop;
+    this.seats = chairs.map((c) => ({ ...c, baseY: c.y + 16 }));
+    this.seats.forEach((seat) => this.byId.set(seat.id, seat));
 
     this.ring = scene.add.graphics();
-    this.promptLabel = scene.add
-      .text(0, 0, "", {
-        fontSize: "13px",
-        fontFamily: "VT323, monospace",
-        color: "#ffffff",
-        resolution: 2,
-      })
-      .setOrigin(0.5);
-    const background = scene.add.graphics();
-    this.prompt = scene.add
-      .container(0, 0, [background, this.promptLabel])
-      .setDepth(PROMPT_DEPTH)
-      .setVisible(false);
-    this.prompt.setData("background", background);
+    this.prompt = new SceneLabel(scene, 0, 0, "");
+    this.prompt.container.setDepth(PROMPT_DEPTH).setVisible(false);
+
+    // a tag in the middle of the meeting table, so anyone walking past can see
+    // whether a call is on
+    if (table && this.seats.some((seat) => seat.zone === MEETING_ZONE)) {
+      this.tag = new SceneLabel(
+        scene,
+        table.x + table.width / 2,
+        table.y + table.height / 2,
+        "",
+        true,
+      );
+      this.tag.container.setDepth(table.y + table.height + 1);
+      this.changed();
+    }
 
     this.seats.forEach((seat) => {
       const zone = scene.add
@@ -77,9 +106,14 @@ export class SeatManager {
         .setInteractive({ useHandCursor: true });
       zone.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
         pointer.event.stopPropagation();
-        if (this.seated) this.stand();
-        else if (this.nearest === seat) this.sit(seat);
-        else this.onApproach?.(seat.x, seat.baseY);
+        if (this.seated === seat) return this.stand();
+        if (seat.occupant) return;
+        // walk over and sit, unless someone beats us to it; from a casual seat
+        // this gets you up first, from a meeting chair it does nothing
+        const { standX, standY } = this.poseFor(seat);
+        this.goTo?.(standX, standY, () => {
+          if (!seat.occupant && !this.seated) this.sit(seat);
+        });
       });
       this.hitAreas.push(zone);
     });
@@ -87,53 +121,126 @@ export class SeatManager {
     scene.input.keyboard?.on("keydown-E", () => this.toggle());
   }
 
+  /**
+   * `onSitChange` hears whether we sat or stood, and whether the seat is casual
+   * enough to leave just by heading somewhere else. Meeting chairs are not.
+   */
   attach(
     ws: WebSocketManager,
-    onSitChange: (seated: boolean) => void,
-    onApproach: (x: number, y: number) => void,
+    onSitChange: (seated: boolean, casual: boolean) => void,
+    goTo: GoTo,
+    onMeetingChange: (people: ReadonlySet<string> | null) => void,
   ) {
     this.ws = ws;
     this.onSitChange = onSitChange;
-    this.onApproach = onApproach;
+    this.goTo = goTo;
+    this.onMeetingChange = onMeetingChange;
   }
 
-  isSeated(): boolean {
-    return Boolean(this.seated);
+  seatedDirection(): CardinalDirection | undefined {
+    return this.seated?.direction;
   }
 
   toggle() {
     if (this.seated) this.stand();
-    else if (this.nearest) this.sit(this.nearest);
+    else if (this.nearest && !this.nearest.occupant) this.sit(this.nearest);
+  }
+
+  leave() {
+    this.stand();
+  }
+
+  poseFor(seat: Seat): SeatPose {
+    const shift = SEAT[seat.direction];
+    return {
+      x: seat.x + shift.dx,
+      y: seat.baseY + shift.dy,
+      depth: depthForY(seat.baseY) + shift.depth,
+      frame: this.animations.getSitFrame(seat.direction),
+      direction: seat.direction,
+      standX: seat.x,
+      standY: seat.baseY + shift.exit,
+    };
+  }
+
+  /** Someone else sat down, so the chair is theirs and no longer offered to us. */
+  occupy(seatId: number, playerId: string): SeatPose | undefined {
+    this.release(playerId);
+    const seat = this.byId.get(seatId);
+    if (!seat) return undefined;
+    seat.occupant = playerId;
+    this.changed();
+    return this.poseFor(seat);
+  }
+
+  release(playerId: string) {
+    this.seats.forEach((seat) => {
+      if (seat.occupant === playerId) seat.occupant = undefined;
+    });
+    this.changed();
+  }
+
+  /** The server gave the chair to whoever asked first. */
+  rejected() {
+    this.stand();
+  }
+
+  /**
+   * Keeps the table tag's count current, and while we are at the table tells
+   * the scene who else is, since the cards carry their names then.
+   */
+  private changed() {
+    this.dirty = true;
+    const people = this.seats
+      .filter((seat) => seat.zone === MEETING_ZONE && seat.occupant)
+      .map((seat) => seat.occupant!);
+    const label = sceneText().meeting;
+    this.tag
+      ?.setText(people.length ? `${label} · ${people.length}` : label)
+      .setDot(people.length ? HIGHLIGHT : IDLE);
+    this.onMeetingChange?.(
+      this.seated?.zone === MEETING_ZONE ? new Set(people) : null,
+    );
   }
 
   private sit(seat: Seat) {
-    const shift = SEAT[seat.direction];
+    const pose = this.poseFor(seat);
+    const meeting = seat.zone === MEETING_ZONE;
     this.seated = seat;
-    seat.taken = true;
+    seat.occupant = SELF;
 
     const body = this.player.body as Phaser.Physics.Arcade.Body;
     body.setVelocity(0, 0);
-    this.player.setPosition(seat.x + shift.dx, seat.baseY + shift.dy);
+    this.player.setPosition(pose.x, pose.y);
     this.player.anims.stop();
-    this.player.setFrame(this.animations.getSitFrame(seat.direction));
-    this.player.setDepth(depthForY(seat.baseY) + shift.depth);
+    this.player.setFrame(pose.frame);
+    this.player.setDepth(pose.depth);
 
-    this.onSitChange?.(true);
+    this.onSitChange?.(true, !meeting);
+    this.changed();
+
+    const tile = pixelToTile(seat.x, seat.y);
     this.ws?.send("sit", {
-      x: Math.round(this.player.x),
-      y: Math.round(this.player.y),
-      direction: seat.direction,
+      seat: seat.id,
+      tileX: tile.tileX,
+      tileY: tile.tileY,
+      meeting: meeting ? MEETING_ZONE : undefined,
     });
-    this.drawPrompt(sceneText().stand);
+    this.ring.clear();
+    // at the meeting table the call is the focus, and E still gets you up
+    this.prompt
+      .setText(sceneText().stand)
+      .container.setVisible(this.keyboard && !meeting);
   }
 
   private stand() {
     const seat = this.seated;
     if (!seat) return;
     this.seated = undefined;
-    seat.taken = false;
+    if (seat.occupant === SELF) seat.occupant = undefined;
 
-    this.player.setPosition(seat.x, seat.baseY + SEAT[seat.direction].exit);
+    const pose = this.poseFor(seat);
+    this.player.setPosition(pose.standX, pose.standY);
     this.player.play(
       this.animations.getAnimationKey(
         this.player.getData("spriteName") || "Adam",
@@ -142,33 +249,36 @@ export class SeatManager {
       ),
       true,
     );
-    this.onSitChange?.(false);
-    this.ws?.send("stand", {});
+    this.onSitChange?.(false, false);
+    this.changed();
+
+    if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();
+    const tile = pixelToTile(pose.standX, pose.standY);
+    this.ws?.send("stand", { tileX: tile.tileX, tileY: tile.tileY });
+    this.prompt.container.setVisible(false);
   }
 
-  private drawPrompt(text: string) {
-    this.promptLabel.setText(text);
-    const background = this.prompt.getData(
-      "background",
-    ) as Phaser.GameObjects.Graphics;
-    const width = this.promptLabel.width + 20;
-    background.clear();
-    background.fillStyle(0x1f2937, 0.9);
-    background.fillRoundedRect(-width / 2, -11, width, 22, 11);
+  /**
+   * Beside a far side chair the table is below you, so the hint rides above
+   * your head; beside a near side chair it sits under the chair.
+   */
+  private placePrompt(seat: Seat) {
+    this.prompt.container.setPosition(
+      seat.x,
+      seat.direction === "down" ? this.player.y - 80 : seat.baseY + 34,
+    );
   }
 
   update() {
     if (this.seated) {
-      this.prompt.setVisible(true);
-      this.prompt.setPosition(this.seated.x, this.seated.baseY + 26);
-      this.ring.clear();
+      this.placePrompt(this.seated);
       return;
     }
 
     let best: Seat | undefined;
     let bestDistance = REACH;
     for (const seat of this.seats) {
-      if (seat.taken) continue;
+      if (seat.occupant) continue;
       const distance = Phaser.Math.Distance.Between(
         this.player.x,
         this.player.y,
@@ -181,15 +291,14 @@ export class SeatManager {
       }
     }
 
-    if (best === this.nearest) {
-      if (best) this.player.setDepth(depthForY(this.player.y));
-      return;
-    }
+    if (best) this.placePrompt(best);
+    if (best === this.nearest && !this.dirty) return;
     this.nearest = best;
+    this.dirty = false;
 
     this.ring.clear();
     if (!best) {
-      this.prompt.setVisible(false);
+      this.prompt.container.setVisible(false);
       return;
     }
 
@@ -200,15 +309,18 @@ export class SeatManager {
     );
     this.ring.lineStyle(2, HIGHLIGHT, 0.9);
     this.ring.strokeRoundedRect(best.x - 17, best.baseY - 44, 34, 46, 6);
-    this.drawPrompt(sceneText().sit);
-    this.prompt.setVisible(true);
-    this.prompt.setPosition(best.x, best.baseY + 22);
+    this.prompt
+      .setText(
+        best.zone === MEETING_ZONE ? sceneText().joinMeeting : sceneText().sit,
+      )
+      .container.setVisible(this.keyboard);
   }
 
   destroy() {
     this.scene.input.keyboard?.off("keydown-E");
     this.hitAreas.forEach((zone) => zone.destroy());
     this.ring.destroy();
-    this.prompt.destroy();
+    this.prompt.container.destroy();
+    this.tag?.container.destroy();
   }
 }

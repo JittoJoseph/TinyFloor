@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Phone, Video, X, Check, Maximize2, Minimize2 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { GUIDE_ID } from "@/lib/tutorial";
+import { CallStream } from "./CallStream";
+import MeetingCards from "./MeetingCards";
 
 export default function CallOverlay() {
   const t = useTranslations("call");
@@ -17,10 +19,11 @@ export default function CallOverlay() {
     localStream,
     speakerEnabled,
     cameraEnabled,
+    meeting,
     error,
   } = useCall();
   const [zoomed, setZoomed] = useState(false);
-  const peer = peers[0];
+  const peer = meeting ? undefined : peers[0];
   const expanded = zoomed && !!peer;
 
   useEffect(() => {
@@ -31,10 +34,9 @@ export default function CallOverlay() {
   }, [expanded]);
 
   const selfView = localStream && (
-    <Stream
+    <CallStream
       stream={localStream}
       muted
-      mirrored
       hidden={!cameraEnabled}
       initial={tc("you")}
     />
@@ -42,6 +44,8 @@ export default function CallOverlay() {
 
   return (
     <>
+      <MeetingCards />
+
       {incoming && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <div className="bg-[#fbfbf9] rounded-[2rem] shadow-xl p-8 w-80 border border-[rgba(0,0,0,0.06)] animate-bounce-slight">
@@ -97,7 +101,12 @@ export default function CallOverlay() {
               : "fixed z-40 bottom-24 right-4 w-64 aspect-video rounded-2xl overflow-hidden shadow-md border border-[rgba(0,0,0,0.06)] bg-[#fbfbf9] cursor-pointer group transition-transform hover:-translate-y-0.5"
           }
         >
-          <Stream stream={peer.stream} muted={!speakerEnabled} initial={peer.name} />
+          <CallStream
+            stream={peer.stream}
+            muted={!speakerEnabled}
+            hidden={!peer.camera}
+            initial={peer.name}
+          />
 
           {peer.id === GUIDE_ID && (
             <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-sm text-[var(--color-braun-text)] rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest shadow-sm">
@@ -175,49 +184,6 @@ export default function CallOverlay() {
           </div>
         )}
       </div>
-    </>
-  );
-}
-
-function Stream({
-  stream,
-  muted,
-  mirrored,
-  hidden,
-  initial,
-}: {
-  stream: MediaStream;
-  muted: boolean;
-  mirrored?: boolean;
-  hidden?: boolean;
-  initial: string;
-}) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const hasVideo = !hidden && stream.getVideoTracks().length > 0;
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && video.srcObject !== stream) video.srcObject = stream;
-  }, [stream]);
-
-  return (
-    <>
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        muted={muted}
-        className={`w-full h-full object-cover ${mirrored ? "scale-x-[-1]" : ""} ${
-          hasVideo ? "" : "invisible"
-        }`}
-      />
-      {!hasVideo && (
-        <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
-          <div className="w-1/4 max-w-[72px] aspect-square bg-[var(--color-braun-text)]/5 border border-[rgba(0,0,0,0.06)] rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[min(4vw,28px)]">
-            {initial.charAt(0).toUpperCase()}
-          </div>
-        </div>
-      )}
     </>
   );
 }

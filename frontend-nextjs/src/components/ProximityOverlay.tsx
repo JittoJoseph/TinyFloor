@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useCall } from "@/lib/useCall";
 import {
   NearbyPlayer,
   ProximityActions,
@@ -17,6 +18,7 @@ const BAR_WIDTH = {
 export default function ProximityOverlay() {
   const [nearbyPlayers, setNearbyPlayers] = useState<NearbyPlayer[]>([]);
   const [viewportWidth, setViewportWidth] = useState(0);
+  const { peers } = useCall();
 
   useEffect(() => {
     const handleResize = () => setViewportWidth(window.innerWidth);
@@ -60,9 +62,13 @@ export default function ProximityOverlay() {
     };
   }, []);
 
+  // no point offering to call someone you are already talking to
+  const inCall = new Set(peers.map((peer) => peer.id));
+  const visible = nearbyPlayers.filter((player) => !inCall.has(player.id));
+
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
-      {nearbyPlayers.map((player) => {
+      {visible.map((player) => {
         const touch = viewportWidth > 0 && viewportWidth < TOUCH_BREAKPOINT;
         const width =
           BAR_WIDTH[touch ? "touch" : "pointer"][

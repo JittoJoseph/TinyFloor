@@ -34,8 +34,9 @@ export default function ControlBar({
   unreadChatCount = 0,
 }: ControlBarProps) {
   const t = useTranslations("controls");
-  const { peers, micEnabled, cameraEnabled, speakerEnabled } = useCall();
-  const isInCall = peers.length > 0;
+  const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled } =
+    useCall();
+  const isInCall = peers.length > 0 || !!meeting;
   const [status, setStatus] = useState<PlayerStatus>(currentStatus);
 
   useEffect(() => {
@@ -178,7 +179,11 @@ export default function ControlBar({
             <>
               <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1" />
               <button
-                onClick={() => callManager.hangUp()}
+                onClick={() =>
+                  meeting
+                    ? window.dispatchEvent(new Event("leaveMeeting"))
+                    : callManager.hangUp()
+                }
                 className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0 my-1"
                 title={t("leaveCall")}
                 aria-label={t("leaveCall")}

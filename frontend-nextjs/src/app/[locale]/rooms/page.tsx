@@ -4,8 +4,6 @@ import { fetchPublic } from "@/lib/serverApi";
 import { ROOMS_PAGE_SIZE, toDirectoryRooms, type RawRoom } from "@/lib/directory";
 import { RoomsDirectory } from "@/components/directory/RoomsDirectory";
 
-export const revalidate = 60;
-
 export default async function RoomsPage({
   params,
 }: {

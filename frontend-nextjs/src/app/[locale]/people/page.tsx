@@ -5,8 +5,6 @@ import { fetchPublic } from "@/lib/serverApi";
 import { PEOPLE_PAGE_SIZE, toDirectoryPeople } from "@/lib/directory";
 import { PeopleDirectory } from "@/components/directory/PeopleDirectory";
 
-export const revalidate = 60;
-
 export default async function PeoplePage({
   params,
 }: {

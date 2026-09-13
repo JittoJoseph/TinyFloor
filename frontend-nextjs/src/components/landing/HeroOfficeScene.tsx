@@ -6,23 +6,12 @@ const size = "max(4cqw, 6cqh, 22px)";
 /** A walk as a share of the image's width, so it stays inside its aisle at any size. */
 const lane = (share: number) => `calc(${COVER_WIDTH} * ${share})`;
 
-export const HeroOfficeScene: React.FC = () => (
-  <OfficeScene
-    className="w-full h-full rounded-xl select-none"
-    focus="center center"
-    occupants={[
-      { character: "Alex", left: "30%", top: "78%", width: size },
-      { character: "Bob", left: "75%", top: "33%", width: size },
-    ]}
-  />
-);
-
 /**
  * The hero office with people strolling its aisles. Spots are on the image
  * itself, and every walk keeps clear of the desks, plants and the cubicle
  * whether the window shows the floor at 4:3 or 16:9.
  */
-export const StrollingOfficeScene: React.FC = () => (
+export const HeroOfficeScene: React.FC = () => (
   <OfficeScene
     className="w-full h-full rounded-xl select-none"
     focus="center center"

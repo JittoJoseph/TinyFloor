@@ -46,7 +46,7 @@ import { CTA } from "./CTA";
 import { Footer } from "./Footer";
 import { Reveal } from "./Reveal";
 import { BrowserWindow } from "./Hero";
-import { StrollingOfficeScene } from "./HeroOfficeScene";
+import { HeroOfficeScene } from "./HeroOfficeScene";
 
 interface LandingCopy {
   subtitle: string;
@@ -231,7 +231,7 @@ export async function LandingPage({
             </div>
 
             <BrowserWindow>
-              <StrollingOfficeScene />
+              <HeroOfficeScene />
             </BrowserWindow>
           </section>
         </div>

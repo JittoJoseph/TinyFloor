@@ -59,6 +59,7 @@
     "description": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
     "features": [
       "Video- und Sprachanrufe in der Nähe",
+      "Bildschirmfreigabe in Anrufen und Meetings",
       "Begehbare 2D-Büro-Karte",
       "Pixel-Art-Avatare",
       "Anwesenheit und Status in Echtzeit",
@@ -349,6 +350,10 @@
     "calling": "Anruf läuft...",
     "cancel": "Anruf abbrechen",
     "micOff": "Mikrofon aus",
+    "yourScreen": "Dein Bildschirm",
+    "screenOf": "Bildschirm von {name}",
+    "enlarge": "Vergrößern",
+    "shrink": "Verkleinern",
     "errors": {
       "connection": "Verbindung fehlgeschlagen",
       "unsupported": "Dieser Browser kann nicht auf Mediengeräte zugreifen",
@@ -362,6 +367,8 @@
     "unmuteMic": "Mikrofon einschalten",
     "cameraOff": "Kamera ausschalten",
     "cameraOn": "Kamera einschalten",
+    "shareScreen": "Bildschirm teilen",
+    "stopSharing": "Freigabe beenden",
     "muteSpeaker": "Lautsprecher stummschalten",
     "unmuteSpeaker": "Lautsprecher einschalten",
     "openChat": "Chat öffnen",
@@ -496,7 +503,7 @@
       "price": "Kostenlos",
       "freePlan": "Alles, ohne Zeitlimit. Räume fassen 20 Personen.",
       "browser": "Ja, ohne Installation",
-      "screenShare": "Noch nicht"
+      "screenShare": "Ja, in Anrufen und Meetings"
     },
     "stepsTitle": "So <em>funktioniert es.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "Was hat Gather, was TinyFloor nicht hat?",
-            "a": "Gather bietet Bildschirmfreigabe, KI-Meetingnotizen und anpassbare Büros. TinyFloor konzentriert sich auf das Wesentliche: herumlaufen, Anrufe in der Nähe, einen Besprechungstisch, Chat, ein Whiteboard und Musik im Raum."
+            "a": "Gather bietet zusätzlich KI-Meetingnotizen und anpassbare Büros. TinyFloor konzentriert sich auf das Wesentliche: herumlaufen, Anrufe in der Nähe, Bildschirmfreigabe, einen Besprechungstisch, Chat, ein Whiteboard und Musik im Raum."
           },
           {
             "q": "Kann ich mein Team von Gather zu TinyFloor holen?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "Was hat Kumospace, was TinyFloor nicht hat?",
-            "a": "Kumospace bietet Bildschirmfreigabe, und die bezahlten Tarife ergänzen Aufzeichnung und unbegrenzten Chatverlauf. TinyFloor hat noch keine Bildschirmfreigabe und keine Aufzeichnung."
+            "a": "Die bezahlten Tarife von Kumospace bieten Aufzeichnung und unbegrenzten Chatverlauf. TinyFloor zeichnet Anrufe noch nicht auf, aber Bildschirmfreigabe, Chat und Anrufe sind für alle kostenlos."
           },
           {
             "q": "Brauchen meine Teammitglieder ein Konto?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "Was hat SpatialChat, was TinyFloor nicht hat?",
-            "a": "SpatialChat unterstützt Bildschirmfreigabe, angeheftete Dateien und große Events. TinyFloor hat noch keine Bildschirmfreigabe und konzentriert sich auf alltägliche Präsenz und kurze Gespräche."
+            "a": "SpatialChat bietet zusätzlich angeheftete Dateien und große Events. TinyFloor konzentriert sich auf alltägliche Präsenz, kurze Gespräche und Bildschirmfreigabe in Anrufen und Meetings."
           },
           {
             "q": "Funktionieren Anrufe zwischen Browsern?",

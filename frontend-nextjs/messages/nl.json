@@ -59,6 +59,7 @@
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "features": [
       "Video- en spraakgesprekken op nabijheid",
+      "Scherm delen in gesprekken en vergaderingen",
       "Begaanbare 2D-kantoorkaart",
       "Pixel-art avatars",
       "Aanwezigheid en status in realtime",
@@ -349,6 +350,10 @@
     "calling": "Bellen...",
     "cancel": "Gesprek annuleren",
     "micOff": "Microfoon uit",
+    "yourScreen": "Jouw scherm",
+    "screenOf": "Scherm van {name}",
+    "enlarge": "Vergroten",
+    "shrink": "Verkleinen",
     "errors": {
       "connection": "Verbinding mislukt",
       "unsupported": "Deze browser heeft geen toegang tot mediaapparaten",
@@ -362,6 +367,8 @@
     "unmuteMic": "Microfoon aanzetten",
     "cameraOff": "Camera uitzetten",
     "cameraOn": "Camera aanzetten",
+    "shareScreen": "Scherm delen",
+    "stopSharing": "Delen stoppen",
     "muteSpeaker": "Luidspreker dempen",
     "unmuteSpeaker": "Luidspreker aanzetten",
     "openChat": "Chat openen",
@@ -496,7 +503,7 @@
       "price": "Gratis",
       "freePlan": "Alles, zonder tijdslimiet. Ruimtes bieden plek aan 20 mensen.",
       "browser": "Ja, niets te installeren",
-      "screenShare": "Nog niet"
+      "screenShare": "Ja, in gesprekken en vergaderingen"
     },
     "stepsTitle": "Zo <em>werkt het.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "Wat heeft Gather dat TinyFloor niet heeft?",
-            "a": "Gather heeft scherm delen, AI-vergadernotities en een aanpasbaar kantoor. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
+            "a": "Gather voegt AI-vergadernotities en een aanpasbaar kantoor toe. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, scherm delen, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
           },
           {
             "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "Wat heeft Kumospace dat TinyFloor niet heeft?",
-            "a": "Kumospace heeft scherm delen, en de betaalde abonnementen voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor heeft nog geen scherm delen of opnemen."
+            "a": "De betaalde abonnementen van Kumospace voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor neemt gesprekken nog niet op, maar scherm delen, chat en bellen zijn gratis voor iedereen."
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
-            "a": "SpatialChat ondersteunt scherm delen, vastgezette bestanden en grote evenementen. TinyFloor heeft nog geen scherm delen en richt zich op dagelijkse aanwezigheid en korte gesprekken."
+            "a": "SpatialChat voegt vastgezette bestanden en grote evenementen toe. TinyFloor richt zich op dagelijkse aanwezigheid, korte gesprekken en scherm delen in gesprekken en vergaderingen."
           },
           {
             "q": "Werken gesprekken tussen browsers?",

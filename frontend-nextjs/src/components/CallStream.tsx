@@ -7,11 +7,14 @@ export function CallStream({
   muted,
   hidden,
   initial,
+  fit = "cover",
 }: {
   stream: MediaStream | null;
   muted: boolean;
   hidden?: boolean;
   initial: string;
+  /** A shared screen is letterboxed so nothing on it is cropped away. */
+  fit?: "cover" | "contain";
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasVideo = !hidden && !!stream && stream.getVideoTracks().length > 0;
@@ -28,7 +31,7 @@ export function CallStream({
         autoPlay
         playsInline
         muted={muted}
-        className={`w-full h-full object-cover ${hasVideo ? "" : "invisible"}`}
+        className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} ${hasVideo ? "" : "invisible"}`}
       />
       {!hasVideo && (
         <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center [container-type:size]">

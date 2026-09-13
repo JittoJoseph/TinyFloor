@@ -14,6 +14,8 @@ export interface CallPeer {
   connected: boolean;
   mic: boolean;
   camera: boolean;
+  screen: boolean;
+  screenStream: MediaStream | null;
 }
 
 export interface CallSnapshot {
@@ -21,6 +23,7 @@ export interface CallSnapshot {
   outgoing: { id: string; name: string } | null;
   peers: CallPeer[];
   localStream: MediaStream | null;
+  screenStream: MediaStream | null;
   micEnabled: boolean;
   cameraEnabled: boolean;
   speakerEnabled: boolean;
@@ -31,7 +34,7 @@ export interface CallSnapshot {
 interface Signal {
   sdp?: RTCSessionDescriptionInit;
   candidate?: RTCIceCandidateInit;
-  media?: { mic: boolean; camera: boolean };
+  media?: { mic: boolean; camera: boolean; screen?: boolean };
 }
 
 interface PeerEntry extends CallPeer {
@@ -53,7 +56,10 @@ const AUDIO_CONSTRAINTS = {
   noiseSuppression: true,
   autoGainControl: true,
 };
-const KINDS = ["audio", "video"] as const;
+// Every connection carries the same slots in the same order on both ends, so a
+// track's slot says what it is: the mic, the camera or a shared screen.
+const SLOTS = ["audio", "video", "video"] as const;
+const SCREEN_SLOT = 2;
 
 function savedDevices(): { audio?: string; video?: string } {
   try {
@@ -94,6 +100,7 @@ const EMPTY: CallSnapshot = {
   outgoing: null,
   peers: [],
   localStream: null,
+  screenStream: null,
   micEnabled: true,
   cameraEnabled: true,
   speakerEnabled: true,
@@ -106,13 +113,14 @@ const PREFS = loadPreferences();
 /**
  * Every connection has one side that offers, the caller or whoever sat down
  * last, and the other only answers, so two offers never cross. Each connection
- * carries a fixed audio and video slot, and turning the mic or camera on or off
+ * carries a fixed mic, camera and screen slot, and turning any of them on or off
  * swaps what is in the slot instead of renegotiating.
  */
 class CallManager {
   private ws: WebSocketManager | null = null;
   private peers = new Map<string, PeerEntry>();
   private local: MediaStream | null = null;
+  private screen: MediaStream | null = null;
   private incoming: { id: string; name: string; video: boolean } | null = null;
   private outgoing: { id: string; name: string; video: boolean } | null = null;
   private micEnabled = PREFS.mic;
@@ -188,6 +196,8 @@ class CallManager {
       connected: true,
       mic: true,
       camera: true,
+      screen: false,
+      screenStream: null,
     });
     playSound("connect");
     this.emit();
@@ -339,6 +349,43 @@ class CallManager {
     this.shareTracks();
   }
 
+  /**
+   * Shares a screen, window or tab with everyone on the call. The browser's own
+   * "Stop sharing" ends it too, and so does leaving the call.
+   */
+  async setScreen(enabled: boolean) {
+    if (!enabled) return this.stopScreen();
+    if (this.screen || !navigator.mediaDevices?.getDisplayMedia) return;
+
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getDisplayMedia({
+        video: { frameRate: { ideal: 15, max: 30 } },
+        audio: false,
+      });
+    } catch {
+      return; // the picker was dismissed
+    }
+
+    if (this.screen || !(this.peers.size || this.meeting)) {
+      stream.getTracks().forEach((track) => track.stop());
+      return;
+    }
+
+    const track = stream.getVideoTracks()[0];
+    track.contentHint = "detail";
+    track.addEventListener("ended", () => this.stopScreen());
+    this.screen = stream;
+    this.shareTracks();
+  }
+
+  private stopScreen() {
+    if (!this.screen) return;
+    this.screen.getTracks().forEach((track) => track.stop());
+    this.screen = null;
+    this.shareTracks();
+  }
+
   setSpeaker(enabled: boolean) {
     setSpeakerMuted(!enabled);
   }
@@ -372,7 +419,7 @@ class CallManager {
     else this.hangUp(id);
   }
 
-  /** Puts our mic and camera on every connection and tells each peer what is on. */
+  /** Puts our mic, camera and screen on every connection and tells each peer what is on. */
   private shareTracks() {
     this.peers.forEach((peer) => this.syncTracks(peer));
     this.shareMedia();
@@ -380,12 +427,14 @@ class CallManager {
   }
 
   private syncTracks(peer: PeerEntry) {
-    peer.pc?.getTransceivers().forEach((transceiver) => {
-      const kind = transceiver.receiver.track.kind;
+    const tracks = [
+      this.local?.getAudioTracks()[0],
+      this.local?.getVideoTracks()[0],
+      this.screen?.getVideoTracks()[0],
+    ];
+    peer.pc?.getTransceivers().forEach((transceiver, slot) => {
       if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
-      transceiver.sender
-        .replaceTrack(this.local?.getTracks().find((t) => t.kind === kind) ?? null)
-        .catch(() => {});
+      transceiver.sender.replaceTrack(tracks[slot] ?? null).catch(() => {});
     });
   }
 
@@ -393,6 +442,7 @@ class CallManager {
     const media = {
       mic: this.micEnabled && !!this.local?.getAudioTracks().length,
       camera: this.cameraEnabled && !!this.local?.getVideoTracks().length,
+      screen: !!this.screen,
     };
     (to ? [to] : [...this.peers.values()]).forEach((peer) => {
       if (peer.pc) this.send("call_signal", { to: peer.id, signal: { media } });
@@ -472,6 +522,8 @@ class CallManager {
       connected: false,
       mic: true,
       camera: true,
+      screen: false,
+      screenStream: null,
     };
     this.peers.set(id, peer);
 
@@ -481,8 +533,12 @@ class CallManager {
       }
     };
 
-    pc.ontrack = ({ track }) => {
-      peer.stream = new MediaStream([...peer.stream.getTracks(), track]);
+    pc.ontrack = ({ track, transceiver }) => {
+      if (pc.getTransceivers().indexOf(transceiver) === SCREEN_SLOT) {
+        peer.screenStream = new MediaStream([track]);
+      } else {
+        peer.stream = new MediaStream([...peer.stream.getTracks(), track]);
+      }
       this.emit();
     };
 
@@ -504,7 +560,7 @@ class CallManager {
           this.emit();
         }
       };
-      KINDS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
+      SLOTS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
     }
 
     return peer;
@@ -519,6 +575,7 @@ class CallManager {
       if (signal.media) {
         peer.mic = signal.media.mic;
         peer.camera = signal.media.camera;
+        peer.screen = !!signal.media.screen;
         this.emit();
       } else if (signal.candidate) {
         await pc.addIceCandidate(signal.candidate).catch(() => {});
@@ -593,7 +650,9 @@ class CallManager {
 
   private releaseMedia() {
     this.local?.getTracks().forEach((track) => track.stop());
+    this.screen?.getTracks().forEach((track) => track.stop());
     this.local = null;
+    this.screen = null;
   }
 
   private ring(onTimeout: () => void, delay: number = RING_TIMEOUT) {
@@ -619,6 +678,7 @@ class CallManager {
       },
       peers: [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined })),
       localStream: this.local,
+      screenStream: this.screen,
       micEnabled: this.micEnabled,
       cameraEnabled: this.cameraEnabled,
       speakerEnabled: !isSpeakerMuted(),

@@ -59,6 +59,7 @@
     "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
     "features": [
       "Video- ja äänipuhelut lähietäisyydeltä",
+      "Näytön jakaminen puheluissa ja kokouksissa",
       "Kävelyyn sopiva 2D-toimistokartta",
       "Pikselitaidehahmot",
       "Läsnäolo ja tila reaaliajassa",
@@ -349,6 +350,10 @@
     "calling": "Soitetaan...",
     "cancel": "Peru puhelu",
     "micOff": "Mikrofoni pois",
+    "yourScreen": "Sinun näyttösi",
+    "screenOf": "Näyttö: {name}",
+    "enlarge": "Suurenna",
+    "shrink": "Pienennä",
     "errors": {
       "connection": "Yhteys epäonnistui",
       "unsupported": "Tämä selain ei pääse medialaitteisiin",
@@ -362,6 +367,8 @@
     "unmuteMic": "Poista mikrofonin mykistys",
     "cameraOff": "Sammuta kamera",
     "cameraOn": "Käynnistä kamera",
+    "shareScreen": "Jaa näyttö",
+    "stopSharing": "Lopeta jakaminen",
     "muteSpeaker": "Mykistä kaiutin",
     "unmuteSpeaker": "Poista kaiuttimen mykistys",
     "openChat": "Avaa chat",
@@ -496,7 +503,7 @@
       "price": "Ilmainen",
       "freePlan": "Kaikki, ilman aikarajaa. Huoneisiin mahtuu 20 henkeä.",
       "browser": "Kyllä, ei asennettavaa",
-      "screenShare": "Ei vielä"
+      "screenShare": "Kyllä, puheluissa ja kokouksissa"
     },
     "stepsTitle": "Näin se <em>toimii.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "Mitä Gatherissa on, mitä TinyFloorissä ei ole?",
-            "a": "Gatherissa on näytön jakaminen, tekoälyn kokousmuistiinpanot ja toimiston muokkaus. TinyFloor keskittyy olennaiseen: liikkumiseen, lähipuheluihin, neuvottelupöytään, chattiin, valkotauluun ja huoneen musiikkiin."
+            "a": "Gather tarjoaa lisäksi tekoälyn kokousmuistiinpanot ja toimiston muokkauksen. TinyFloor keskittyy olennaiseen: liikkumiseen, lähipuheluihin, näytön jakamiseen, neuvottelupöytään, chattiin, valkotauluun ja huoneen musiikkiin."
           },
           {
             "q": "Voinko siirtää tiimini Gatherista TinyFlooriin?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "Mitä Kumospacessa on, mitä TinyFloorissä ei ole?",
-            "a": "Kumospacessa on näytön jakaminen, ja maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. TinyFloorissä ei vielä ole näytön jakamista eikä tallennusta."
+            "a": "Kumospacen maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. TinyFloor ei vielä tallenna puheluita, mutta näytön jakaminen, chat ja puhelut ovat kaikille ilmaisia."
           },
           {
             "q": "Tarvitsevatko tiimikaverini tilin?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "Mitä SpatialChatissa on, mitä TinyFloorissä ei ole?",
-            "a": "SpatialChat tukee näytön jakamista, kiinnitettyjä tiedostoja ja suuria tapahtumia. TinyFloorissä ei vielä ole näytön jakamista, ja se keskittyy arjen läsnäoloon ja nopeisiin keskusteluihin."
+            "a": "SpatialChat tarjoaa lisäksi kiinnitetyt tiedostot ja suuret tapahtumat. TinyFloor keskittyy arjen läsnäoloon, nopeisiin keskusteluihin ja näytön jakamiseen puheluissa ja kokouksissa."
           },
           {
             "q": "Toimivatko puhelut selainten välillä?",

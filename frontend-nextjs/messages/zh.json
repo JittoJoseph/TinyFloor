@@ -59,6 +59,7 @@
     "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
     "features": [
       "靠近即可开始视频和语音通话",
+      "通话和会议中的屏幕共享",
       "可以走动的 2D 办公地图",
       "像素风头像",
       "实时在线状态",
@@ -349,6 +350,10 @@
     "calling": "呼叫中...",
     "cancel": "取消通话",
     "micOff": "麦克风已关闭",
+    "yourScreen": "你的屏幕",
+    "screenOf": "{name} 的屏幕",
+    "enlarge": "放大",
+    "shrink": "缩小",
     "errors": {
       "connection": "连接失败",
       "unsupported": "此浏览器无法访问媒体设备",
@@ -362,6 +367,8 @@
     "unmuteMic": "打开麦克风",
     "cameraOff": "关闭摄像头",
     "cameraOn": "打开摄像头",
+    "shareScreen": "共享屏幕",
+    "stopSharing": "停止共享",
     "muteSpeaker": "关闭扬声器",
     "unmuteSpeaker": "打开扬声器",
     "openChat": "打开聊天",
@@ -496,7 +503,7 @@
       "price": "免费",
       "freePlan": "全部功能，不限时长。每个房间可容纳 20 人。",
       "browser": "是，无需安装",
-      "screenShare": "暂不支持"
+      "screenShare": "支持，可在通话和会议中使用"
     },
     "stepsTitle": "如何<em>使用。</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "Gather 有哪些 TinyFloor 没有的功能？",
-            "a": "Gather 有屏幕共享、AI 会议记录和办公室自定义。TinyFloor 专注于核心功能：走动、靠近通话、会议桌、聊天、白板和房间音乐。"
+            "a": "Gather 还提供 AI 会议记录和办公室自定义。TinyFloor 专注于核心功能：走动、靠近通话、屏幕共享、会议桌、聊天、白板和房间音乐。"
           },
           {
             "q": "可以把团队从 Gather 迁到 TinyFloor 吗？",
@@ -598,7 +605,7 @@
           },
           {
             "q": "Kumospace 有哪些 TinyFloor 没有的功能？",
-            "a": "Kumospace 支持屏幕共享，付费方案还提供录制和不限量的聊天记录。TinyFloor 目前还没有屏幕共享和录制。"
+            "a": "Kumospace 的付费方案提供录制和不限量的聊天记录。TinyFloor 暂时还不能录制通话，但屏幕共享、聊天和通话对所有人免费。"
           },
           {
             "q": "我的同事需要账号吗？",
@@ -649,7 +656,7 @@
           },
           {
             "q": "SpatialChat 有哪些 TinyFloor 没有的功能？",
-            "a": "SpatialChat 支持屏幕共享、置顶文件和大型活动。TinyFloor 目前还没有屏幕共享，专注于日常在线状态和快速交流。"
+            "a": "SpatialChat 还提供置顶文件和大型活动。TinyFloor 专注于日常在线状态、快速交流，以及通话和会议中的屏幕共享。"
           },
           {
             "q": "浏览器之间可以通话吗？",

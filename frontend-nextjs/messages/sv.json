@@ -59,6 +59,7 @@
     "description": "Ett virtuellt kontor som ser ut som ett spel. Gå runt på en våning i pixelgrafik med ditt team och starta ett videosamtal bara genom att ställa dig bredvid någon.",
     "features": [
       "Video- och röstsamtal på nära håll",
+      "Skärmdelning i samtal och möten",
       "2D-kontorskarta att gå runt i",
       "Avatarer i pixelgrafik",
       "Närvaro och status i realtid",
@@ -349,6 +350,10 @@
     "calling": "Ringer...",
     "cancel": "Avbryt samtal",
     "micOff": "Mikrofon av",
+    "yourScreen": "Din skärm",
+    "screenOf": "Skärm från {name}",
+    "enlarge": "Förstora",
+    "shrink": "Förminska",
     "errors": {
       "connection": "Anslutningen misslyckades",
       "unsupported": "Den här webbläsaren kan inte komma åt medieenheter",
@@ -362,6 +367,8 @@
     "unmuteMic": "Slå på mikrofonen",
     "cameraOff": "Stäng av kameran",
     "cameraOn": "Slå på kameran",
+    "shareScreen": "Dela skärm",
+    "stopSharing": "Sluta dela",
     "muteSpeaker": "Stäng av högtalaren",
     "unmuteSpeaker": "Slå på högtalaren",
     "openChat": "Öppna chatten",
@@ -496,7 +503,7 @@
       "price": "Gratis",
       "freePlan": "Allt, utan tidsgräns. Rummen rymmer 20 personer.",
       "browser": "Ja, inget att installera",
-      "screenShare": "Inte än"
+      "screenShare": "Ja, i samtal och möten"
     },
     "stepsTitle": "Så <em>fungerar det.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "Vad har Gather som TinyFloor inte har?",
-            "a": "Gather har skärmdelning, AI-mötesanteckningar och anpassning av kontoret. TinyFloor fokuserar på grunderna: gå runt, samtal när man står nära, ett mötesbord, chatt, en whiteboard och musik i rummet."
+            "a": "Gather lägger till AI-mötesanteckningar och anpassning av kontoret. TinyFloor fokuserar på grunderna: gå runt, samtal när man står nära, skärmdelning, ett mötesbord, chatt, en whiteboard och musik i rummet."
           },
           {
             "q": "Kan jag flytta mitt team från Gather till TinyFloor?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "Vad har Kumospace som TinyFloor inte har?",
-            "a": "Kumospace har skärmdelning, och de betalda planerna lägger till inspelning och obegränsad chatthistorik. TinyFloor har inte skärmdelning eller inspelning än."
+            "a": "Kumospaces betalda planer lägger till inspelning och obegränsad chatthistorik. TinyFloor spelar inte in samtal än, men skärmdelning, chatt och samtal är gratis för alla."
           },
           {
             "q": "Behöver mina kollegor ett konto?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "Vad har SpatialChat som TinyFloor inte har?",
-            "a": "SpatialChat har skärmdelning, fästa filer och stora evenemang. TinyFloor har inte skärmdelning än och fokuserar på vardaglig närvaro och snabba samtal."
+            "a": "SpatialChat lägger till fästa filer och stora evenemang. TinyFloor fokuserar på vardaglig närvaro, snabba samtal och skärmdelning i samtal och möten."
           },
           {
             "q": "Fungerar samtal mellan webbläsare?",

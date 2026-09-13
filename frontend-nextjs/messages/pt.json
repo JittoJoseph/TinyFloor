@@ -59,6 +59,7 @@
     "description": "Um escritório virtual que parece um jogo. Ande por um andar em pixel art com sua equipe e comece uma chamada de vídeo só de ficar ao lado de alguém.",
     "features": [
       "Chamadas de vídeo e voz por proximidade",
+      "Compartilhamento de tela em chamadas e reuniões",
       "Mapa de escritório 2D para explorar",
       "Avatares em pixel art",
       "Presença e status em tempo real",
@@ -349,6 +350,10 @@
     "calling": "Chamando...",
     "cancel": "Cancelar chamada",
     "micOff": "Microfone desligado",
+    "yourScreen": "Sua tela",
+    "screenOf": "Tela de {name}",
+    "enlarge": "Ampliar",
+    "shrink": "Reduzir",
     "errors": {
       "connection": "Falha na conexão",
       "unsupported": "Este navegador não consegue acessar dispositivos de mídia",
@@ -362,6 +367,8 @@
     "unmuteMic": "Ativar microfone",
     "cameraOff": "Desligar câmera",
     "cameraOn": "Ligar câmera",
+    "shareScreen": "Compartilhar tela",
+    "stopSharing": "Parar de compartilhar",
     "muteSpeaker": "Silenciar alto-falante",
     "unmuteSpeaker": "Ativar alto-falante",
     "openChat": "Abrir chat",
@@ -496,7 +503,7 @@
       "price": "Grátis",
       "freePlan": "Tudo, sem limite de tempo. As salas comportam 20 pessoas.",
       "browser": "Sim, sem instalar nada",
-      "screenShare": "Ainda não"
+      "screenShare": "Sim, em chamadas e reuniões"
     },
     "stepsTitle": "Como <em>funciona.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "O que o Gather tem que o TinyFloor não tem?",
-            "a": "O Gather tem compartilhamento de tela, notas de reunião com IA e personalização do escritório. O TinyFloor foca no essencial: andar pelo espaço, chamadas por proximidade, uma mesa de reunião, chat, um quadro branco e música na sala."
+            "a": "O Gather adiciona notas de reunião com IA e personalização do escritório. O TinyFloor foca no essencial: andar pelo espaço, chamadas por proximidade, compartilhamento de tela, uma mesa de reunião, chat, um quadro branco e música na sala."
           },
           {
             "q": "Posso levar minha equipe do Gather para o TinyFloor?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "O que o Kumospace tem que o TinyFloor não tem?",
-            "a": "O Kumospace inclui compartilhamento de tela, e os planos pagos adicionam gravação e histórico de chat ilimitado. O TinyFloor ainda não tem compartilhamento de tela nem gravação."
+            "a": "Os planos pagos do Kumospace adicionam gravação e histórico de chat ilimitado. O TinyFloor ainda não grava chamadas, mas compartilhamento de tela, chat e chamadas são grátis para todos."
           },
           {
             "q": "Meus colegas precisam de conta?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "O que o SpatialChat tem que o TinyFloor não tem?",
-            "a": "O SpatialChat oferece compartilhamento de tela, arquivos fixados e grandes eventos. O TinyFloor ainda não tem compartilhamento de tela e foca na presença do dia a dia e em conversas rápidas."
+            "a": "O SpatialChat adiciona arquivos fixados e grandes eventos. O TinyFloor foca na presença do dia a dia, em conversas rápidas e no compartilhamento de tela em chamadas e reuniões."
           },
           {
             "q": "As chamadas funcionam entre navegadores?",

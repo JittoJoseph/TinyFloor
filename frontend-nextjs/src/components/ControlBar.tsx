@@ -9,6 +9,8 @@ import {
   VideoOff,
   Settings,
   MessageSquare,
+  MonitorUp,
+  MonitorX,
   PhoneOff,
   Volume2,
   VolumeX,
@@ -34,9 +36,20 @@ export default function ControlBar({
   unreadChatCount = 0,
 }: ControlBarProps) {
   const t = useTranslations("controls");
-  const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled } =
-    useCall();
+  const {
+    peers,
+    meeting,
+    micEnabled,
+    cameraEnabled,
+    speakerEnabled,
+    screenStream,
+  } = useCall();
   const isInCall = peers.length > 0 || !!meeting;
+  // Phones and some browsers cannot share a screen, so the button only exists where it works.
+  const canShareScreen =
+    isInCall &&
+    typeof navigator !== "undefined" &&
+    !!navigator.mediaDevices?.getDisplayMedia;
   const [status, setStatus] = useState<PlayerStatus>(currentStatus);
 
   useEffect(() => {
@@ -80,6 +93,7 @@ export default function ControlBar({
   const cameraLabel = cameraEnabled ? t("cameraOff") : t("cameraOn");
   const speakerLabel = speakerEnabled ? t("muteSpeaker") : t("unmuteSpeaker");
   const leaveLabel = meeting ? t("leaveMeeting") : t("leaveCall");
+  const screenLabel = screenStream ? t("stopSharing") : t("shareScreen");
 
   return (
     <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto md:max-w-max overflow-visible">
@@ -133,6 +147,26 @@ export default function ControlBar({
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
             )}
           </button>
+
+          {canShareScreen && (
+            <button
+              onClick={() => callManager.setScreen(!screenStream)}
+              className={`cursor-pointer relative p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
+                screenStream
+                  ? "bg-[var(--color-braun-green)] border-[var(--color-braun-green)] text-white shadow-sm hover:opacity-90"
+                  : "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
+              }`}
+              title={screenLabel}
+              aria-label={screenLabel}
+              aria-pressed={!!screenStream}
+            >
+              {screenStream ? (
+                <MonitorX className="w-[18px] h-[18px]" />
+              ) : (
+                <MonitorUp className="w-[18px] h-[18px]" />
+              )}
+            </button>
+          )}
 
           <button
             onClick={toggleSpeaker}

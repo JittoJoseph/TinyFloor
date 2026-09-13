@@ -59,6 +59,7 @@
     "description": "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     "features": [
       "Proximity video and voice calls",
+      "Screen sharing in calls and meetings",
       "Walkable 2D office map",
       "Pixel-art avatars",
       "Real-time presence and status",
@@ -349,6 +350,10 @@
     "calling": "Calling...",
     "cancel": "Cancel call",
     "micOff": "Microphone off",
+    "yourScreen": "Your screen",
+    "screenOf": "{name}'s screen",
+    "enlarge": "Enlarge",
+    "shrink": "Shrink",
     "errors": {
       "connection": "Connection failed",
       "unsupported": "This browser cannot access media devices",
@@ -362,6 +367,8 @@
     "unmuteMic": "Unmute microphone",
     "cameraOff": "Turn off camera",
     "cameraOn": "Turn on camera",
+    "shareScreen": "Share screen",
+    "stopSharing": "Stop sharing",
     "muteSpeaker": "Mute speaker",
     "unmuteSpeaker": "Unmute speaker",
     "openChat": "Open chat",
@@ -496,7 +503,7 @@
       "price": "Free",
       "freePlan": "Everything, with no time limit. Rooms hold 20 people.",
       "browser": "Yes, nothing to install",
-      "screenShare": "Not yet"
+      "screenShare": "Yes, in calls and meetings"
     },
     "stepsTitle": "How it <em>works.</em>",
     "steps": [
@@ -551,7 +558,7 @@
           },
           {
             "q": "What does Gather have that TinyFloor does not?",
-            "a": "Gather has screen sharing, AI meeting notes and office customization. TinyFloor focuses on the core: walking around, proximity calls, a meeting table, chat, a whiteboard and room music."
+            "a": "Gather adds AI meeting notes and office customization. TinyFloor focuses on the core: walking around, proximity calls, screen sharing, a meeting table, chat, a whiteboard and room music."
           },
           {
             "q": "Can I move my team from Gather to TinyFloor?",
@@ -598,7 +605,7 @@
           },
           {
             "q": "What does Kumospace have that TinyFloor does not?",
-            "a": "Kumospace includes screen sharing, and its paid plans add recording and unlimited chat history. TinyFloor does not have screen sharing or recording yet."
+            "a": "Kumospace's paid plans add recording and unlimited chat history. TinyFloor does not record calls yet, but screen sharing, chat and calls are free for everyone."
           },
           {
             "q": "Do my teammates need an account?",
@@ -649,7 +656,7 @@
           },
           {
             "q": "What does SpatialChat have that TinyFloor does not?",
-            "a": "SpatialChat supports screen sharing, pinned files and large events. TinyFloor does not have screen sharing yet, and focuses on everyday presence and quick conversations."
+            "a": "SpatialChat adds pinned files and large events. TinyFloor focuses on everyday presence, quick conversations and screen sharing in calls and meetings."
           },
           {
             "q": "Do calls work between browsers?",

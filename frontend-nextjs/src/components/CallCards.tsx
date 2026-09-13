@@ -1,18 +1,25 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
-import { MicOff } from "lucide-react";
-import type { CallPeer } from "@/lib/CallManager";
+import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
 import { useCall } from "@/lib/useCall";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
 
-type Tile = Omit<CallPeer, "stream"> & {
+interface Tile {
+  key: string;
+  name: string;
   stream: MediaStream | null;
+  mic: boolean;
+  camera: boolean;
+  connected: boolean;
   self?: boolean;
-};
+  screen?: boolean;
+  badge?: string;
+}
 
 /** Rows each headcount wraps into: two cards a row on phones, three from sm up. */
 const ROWS = [
@@ -22,6 +29,9 @@ const ROWS = [
   "[--rows:2]",
   "[--rows:3] sm:[--rows:2]",
   "[--rows:3] sm:[--rows:2]",
+  "[--rows:4] sm:[--rows:3]",
+  "[--rows:4] sm:[--rows:3]",
+  "[--rows:5] sm:[--rows:3]",
 ];
 
 /**
@@ -35,7 +45,20 @@ const GRID = {
   maxWidth: "calc(var(--cols) * var(--card) + (var(--cols) - 1) * 0.75rem)",
 } as CSSProperties;
 
-/** Everyone on the call or at the table, you first and then in the order they joined. */
+/** Swaps the layout inside a view transition where the browser has one, so a card grows into place. */
+function transition(update: () => void) {
+  if (document.startViewTransition) {
+    document.startViewTransition(() => flushSync(update));
+  } else {
+    update();
+  }
+}
+
+/**
+ * Everyone on the call or at the table, you first and then in the order they
+ * joined, with a shared screen right after the person sharing it. Clicking a
+ * card enlarges it and sets the others aside; clicking it again puts it back.
+ */
 export default function CallCards() {
   const t = useTranslations("call");
   const tc = useTranslations("common");
@@ -43,16 +66,16 @@ export default function CallCards() {
     meeting,
     peers,
     localStream,
+    screenStream,
     micEnabled,
     cameraEnabled,
     speakerEnabled,
   } = useCall();
-
-  if (!meeting && !peers.length) return null;
+  const [focused, setFocused] = useState<string | null>(null);
 
   const tiles: Tile[] = [
     {
-      id: "self",
+      key: "self",
       name: tc("you"),
       stream: localStream,
       mic: micEnabled,
@@ -60,24 +83,89 @@ export default function CallCards() {
       connected: true,
       self: true,
     },
-    ...peers,
+    ...(screenStream
+      ? [
+          {
+            key: "self-screen",
+            name: t("yourScreen"),
+            stream: screenStream,
+            mic: false,
+            camera: true,
+            connected: true,
+            self: true,
+            screen: true,
+          },
+        ]
+      : []),
+    ...peers.flatMap((peer) => [
+      {
+        key: peer.id,
+        name: peer.name,
+        stream: peer.stream,
+        mic: peer.mic,
+        camera: peer.camera,
+        connected: peer.connected,
+        badge: peer.id === GUIDE_ID ? t("tutorial") : undefined,
+      },
+      ...(peer.screen && peer.screenStream
+        ? [
+            {
+              key: `${peer.id}-screen`,
+              name: t("screenOf", { name: peer.name }),
+              stream: peer.screenStream,
+              mic: false,
+              camera: true,
+              connected: peer.connected,
+              screen: true,
+            },
+          ]
+        : []),
+    ]),
   ];
 
+  const focusedTile = tiles.find((tile) => tile.key === focused);
+
+  useEffect(() => {
+    if (!focusedTile) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") transition(() => setFocused(null));
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [focusedTile]);
+
+  if (!meeting && !peers.length) return null;
+
   return (
-    <div className="fixed inset-x-0 top-[8.5rem] sm:top-[5.5rem] z-40 px-4 pointer-events-none">
+    <div
+      className={`fixed inset-x-0 top-[8.5rem] sm:top-[5.5rem] z-40 px-4 pointer-events-none ${
+        focusedTile ? "bottom-32 md:px-10 flex items-center justify-center" : ""
+      }`}
+    >
       <div
-        className={`mx-auto flex flex-wrap justify-center gap-3 [--cols:2] sm:[--cols:3] ${
-          ROWS[Math.min(tiles.length, ROWS.length) - 1]
-        }`}
-        style={GRID}
+        className={
+          focusedTile
+            ? "contents"
+            : `mx-auto flex flex-wrap justify-center gap-3 [--cols:2] sm:[--cols:3] ${
+                ROWS[Math.min(tiles.length, ROWS.length) - 1]
+              }`
+        }
+        style={focusedTile ? undefined : GRID}
       >
         {tiles.map((tile) => (
           <CallCard
-            key={tile.id}
+            key={tile.key}
             tile={tile}
-            muted={!!tile.self || !speakerEnabled}
+            muted={!!tile.self || !!tile.screen || !speakerEnabled}
+            focused={tile === focusedTile}
+            hidden={!!focusedTile && tile !== focusedTile}
+            label={tile === focusedTile ? t("shrink") : t("enlarge")}
             micOff={t("micOff")}
-            badge={tile.id === GUIDE_ID ? t("tutorial") : undefined}
+            onToggle={() =>
+              transition(() =>
+                setFocused((current) => (current === tile.key ? null : tile.key)),
+              )
+            }
           />
         ))}
       </div>
@@ -88,20 +176,42 @@ export default function CallCards() {
 function CallCard({
   tile,
   muted,
+  focused,
+  hidden,
+  label,
   micOff,
-  badge,
+  onToggle,
 }: {
   tile: Tile;
   muted: boolean;
+  focused: boolean;
+  hidden: boolean;
+  label: string;
   micOff: string;
-  badge?: string;
+  onToggle: () => void;
 }) {
-  const speaking = useSpeaking(tile.stream, tile.mic && tile.connected);
+  const speaking = useSpeaking(
+    tile.stream,
+    !tile.screen && tile.mic && tile.connected,
+  );
 
   return (
-    <div
-      className={`relative w-[var(--card)] aspect-video rounded-2xl overflow-hidden bg-[#fbfbf9] shadow-lg ring-2 transition-shadow duration-200 ${
-        speaking ? "ring-[#ff4e00]" : "ring-white/80"
+    <button
+      type="button"
+      hidden={hidden}
+      onClick={onToggle}
+      title={label}
+      aria-label={`${tile.name}. ${label}`}
+      aria-pressed={focused}
+      style={{ viewTransitionName: `tile-${tile.key}` }}
+      className={`group cursor-pointer pointer-events-auto relative block shrink-0 aspect-video overflow-hidden ring-2 transition-shadow duration-200 ${
+        focused
+          ? "w-[min(100%,calc((100dvh-16.5rem)*16/9))] sm:w-[min(100%,calc((100dvh-13.5rem)*16/9))] rounded-3xl shadow-2xl"
+          : "w-[var(--card)] rounded-2xl shadow-lg hover:shadow-xl"
+      } ${
+        tile.screen
+          ? "bg-[#1c1c1e] ring-[var(--color-braun-green)]"
+          : `bg-[#fbfbf9] ${speaking ? "ring-[#ff4e00]" : "ring-white/80"}`
       }`}
     >
       <CallStream
@@ -109,19 +219,41 @@ function CallCard({
         muted={muted}
         hidden={!tile.camera}
         initial={tile.name}
+        fit={tile.screen ? "contain" : "cover"}
       />
       {!tile.connected && (
         <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
           <div className="w-5 h-5 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
         </div>
       )}
-      {badge && (
+      {tile.badge && (
         <span className="absolute top-2 start-2 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm">
-          {badge}
+          {tile.badge}
         </span>
       )}
-      <span className="absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-[var(--color-braun-text)] shadow-sm">
-        {!tile.mic && (
+      <span
+        aria-hidden="true"
+        className={`absolute top-2 end-2 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm text-[var(--color-braun-text)] shadow-sm flex items-center justify-center transition-opacity duration-200 ${
+          focused ? "opacity-70 group-hover:opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
+        }`}
+      >
+        {focused ? (
+          <Minimize2 className="w-3.5 h-3.5" />
+        ) : (
+          <Maximize2 className="w-3.5 h-3.5" />
+        )}
+      </span>
+      <span
+        className={`absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1.5 rounded-full backdrop-blur-sm px-2.5 py-1 text-xs font-bold shadow-sm ${
+          tile.screen
+            ? "bg-[var(--color-braun-green)] text-white"
+            : "bg-white/90 text-[var(--color-braun-text)]"
+        }`}
+      >
+        {tile.screen && (
+          <MonitorUp className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+        )}
+        {!tile.screen && !tile.mic && (
           <MicOff
             className="w-3.5 h-3.5 shrink-0 text-[#ff4e00]"
             aria-label={micOff}
@@ -129,6 +261,6 @@ function CallCard({
         )}
         <span className="truncate">{tile.name}</span>
       </span>
-    </div>
+    </button>
   );
 }

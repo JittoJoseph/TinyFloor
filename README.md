@@ -1,10 +1,10 @@
 # TinyFloor
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-tinyfloor.com-007acc)](https://tinyfloor.com/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-www.tinyfloor.com-007acc)](https://www.tinyfloor.com/)
 
 [![Backend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=backend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
 [![Frontend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=frontend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
-[![Health Check](https://img.shields.io/website?url=https://tinyfloor.com&label=health)](https://tinyfloor.com)
+[![Health Check](https://img.shields.io/website?url=https://www.tinyfloor.com&label=health)](https://www.tinyfloor.com)
 
 A lightweight, top-down 2D virtual office experience for real-time presence and communication.
 

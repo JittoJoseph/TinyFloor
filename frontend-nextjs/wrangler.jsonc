@@ -15,8 +15,9 @@
     }
   ],
   "routes": [
+    { "pattern": "www.tinyfloor.com", "custom_domain": true },
     { "pattern": "tinyfloor.com", "custom_domain": true },
-    { "pattern": "www.tinyfloor.com", "custom_domain": true }
+    { "pattern": "spatialmeet.jittojoseph.xyz", "custom_domain": true }
   ],
   "observability": {
     "enabled": true

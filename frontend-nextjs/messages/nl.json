@@ -7,6 +7,8 @@
     "createRoomTitle": "Ruimte aanmaken",
     "createRoomDescription": "Open een virtuele kantoorruimte op TinyFloor. Geef hem een naam, voeg desgewenst een wachtwoord toe en deel één link met je team.",
     "joinTitle": "Ruimte binnengaan",
+    "joinRoomTitle": "Doe mee met {room}",
+    "joinRoomDescription": "Je bent uitgenodigd voor {room} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
     "roomsTitle": "Ruimtes verkennen",
     "roomsDescription": "Bekijk actieve virtuele ruimtes en ga openbare werkplekken binnen op TinyFloor.",
     "peopleTitle": "Mensen",

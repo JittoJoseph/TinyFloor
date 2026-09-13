@@ -7,6 +7,8 @@
     "createRoomTitle": "Luo huone",
     "createRoomDescription": "Avaa virtuaalinen toimistohuone TinyFloorissä. Anna sille nimi, lisää halutessasi salasana ja jaa yksi linkki tiimillesi.",
     "joinTitle": "Liity huoneeseen",
+    "joinRoomTitle": "Liity huoneeseen {room}",
+    "joinRoomDescription": "Sinut on kutsuttu huoneeseen {room} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
     "roomsTitle": "Selaa huoneita",
     "roomsDescription": "Selaa aktiivisia virtuaalihuoneita ja liity TinyFloorin julkisiin työtiloihin.",
     "peopleTitle": "Ihmiset",

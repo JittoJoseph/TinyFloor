@@ -7,6 +7,8 @@
     "createRoomTitle": "יצירת חדר",
     "createRoomDescription": "פותחים חדר במשרד וירטואלי ב־TinyFloor. נותנים לו שם, מוסיפים סיסמה אם רוצים ומשתפים קישור אחד עם הצוות.",
     "joinTitle": "הצטרפות לחדר",
+    "joinRoomTitle": "הצטרפות אל {room}",
+    "joinRoomDescription": "הוזמנת אל {room} ב-TinyFloor, משרד וירטואלי שמסתובבים בו. פותחים את הקישור, בוחרים דמות ונכנסים.",
     "roomsTitle": "גילוי חדרים",
     "roomsDescription": "עיון בחדרים וירטואליים פעילים והצטרפות לסביבות עבודה ציבוריות ב־TinyFloor.",
     "peopleTitle": "אנשים",

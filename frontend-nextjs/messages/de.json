@@ -7,6 +7,8 @@
     "createRoomTitle": "Raum erstellen",
     "createRoomDescription": "Eröffne einen virtuellen Büroraum auf TinyFloor. Gib ihm einen Namen, lege bei Bedarf ein Passwort fest und teile einen einzigen Link mit deinem Team.",
     "joinTitle": "Raum betreten",
+    "joinRoomTitle": "{room} beitreten",
+    "joinRoomDescription": "Du bist in {room} auf TinyFloor eingeladen, einem virtuellen Büro zum Herumlaufen. Öffne den Link, wähle eine Figur und komm rein.",
     "roomsTitle": "Räume entdecken",
     "roomsDescription": "Durchstöbere aktive virtuelle Räume und tritt öffentlichen Arbeitsbereichen in TinyFloor bei.",
     "peopleTitle": "Personen",

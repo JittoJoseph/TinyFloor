@@ -30,7 +30,27 @@ export const toDirectoryRooms = (rooms: RawRoom[]): DirectoryRoom[] =>
     lastActivityAt: room.lastActivityAt,
   }));
 
-export const toDirectoryPeople = (people: PublicUser[]): PublicUser[] =>
+export type InviteRoom = Pick<
+  DirectoryRoom,
+  "id" | "name" | "playerCount" | "maxPlayers" | "hasPassword"
+>;
+
+/** What the invite page needs to know about a room, from either lookup. */
+export const toInviteRoom = (room: {
+  id: string;
+  name: string;
+  playerCount?: number;
+  maxPlayers?: number;
+  hasPassword?: boolean;
+}): InviteRoom => ({
+  id: room.id,
+  name: room.name,
+  playerCount: room.playerCount || 0,
+  maxPlayers: room.maxPlayers || 20,
+  hasPassword: !!room.hasPassword,
+});
+
+export const toDirectoryPeople =(people: PublicUser[]): PublicUser[] =>
   people.map(({ id, username, displayName, characterName, isGuest }) => ({
     id,
     username,

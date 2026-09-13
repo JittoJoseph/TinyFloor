@@ -7,6 +7,8 @@
     "createRoomTitle": "Crear una sala",
     "createRoomDescription": "Abre una sala de oficina virtual en TinyFloor. Ponle nombre, añade una contraseña si quieres y comparte un solo enlace con tu equipo.",
     "joinTitle": "Unirse a la sala",
+    "joinRoomTitle": "Únete a {room}",
+    "joinRoomDescription": "Te han invitado a {room} en TinyFloor, una oficina virtual por la que caminas. Abre el enlace, elige un personaje y entra.",
     "roomsTitle": "Explorar salas",
     "roomsDescription": "Explora las salas virtuales activas y únete a espacios de trabajo públicos en TinyFloor.",
     "peopleTitle": "Personas",

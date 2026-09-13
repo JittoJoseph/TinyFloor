@@ -7,6 +7,8 @@
     "createRoomTitle": "Opret et rum",
     "createRoomDescription": "Åbn et virtuelt kontorrum på TinyFloor. Giv det et navn, tilføj en adgangskode, hvis du vil, og del ét link med dit team.",
     "joinTitle": "Deltag i rummet",
+    "joinRoomTitle": "Deltag i {room}",
+    "joinRoomDescription": "Du er inviteret til {room} på TinyFloor, et virtuelt kontor, du går rundt i. Åbn linket, vælg en figur og gå ind.",
     "roomsTitle": "Udforsk rum",
     "roomsDescription": "Gennemse aktive virtuelle rum, og deltag i offentlige arbejdsområder på TinyFloor.",
     "peopleTitle": "Personer",

@@ -7,6 +7,8 @@
     "createRoomTitle": "创建房间",
     "createRoomDescription": "在 TinyFloor 上开一个虚拟办公室房间。取个名字，需要的话加上密码，然后把一个链接分享给团队。",
     "joinTitle": "加入房间",
+    "joinRoomTitle": "加入 {room}",
+    "joinRoomDescription": "你受邀加入 TinyFloor 上的 {room}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",
     "roomsTitle": "浏览房间",
     "roomsDescription": "浏览活跃的虚拟房间，加入 TinyFloor 上的公共工作空间。",
     "peopleTitle": "成员",

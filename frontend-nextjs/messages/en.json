@@ -7,6 +7,8 @@
     "createRoomTitle": "Create a Room",
     "createRoomDescription": "Open a virtual office room on TinyFloor. Name it, add a password if you want one, then share one link with your team.",
     "joinTitle": "Join Room",
+    "joinRoomTitle": "Join {room}",
+    "joinRoomDescription": "You're invited to {room} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
     "roomsTitle": "Explore Rooms",
     "roomsDescription": "Browse active virtual rooms and join public workspaces in TinyFloor.",
     "peopleTitle": "People",

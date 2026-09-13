@@ -7,6 +7,8 @@
     "createRoomTitle": "إنشاء غرفة",
     "createRoomDescription": "افتح غرفة مكتب افتراضي على TinyFloor. سمّها، وأضف كلمة مرور إن أردت، ثم شارك رابطًا واحدًا مع فريقك.",
     "joinTitle": "الانضمام إلى الغرفة",
+    "joinRoomTitle": "انضم إلى {room}",
+    "joinRoomDescription": "أنت مدعو إلى {room} على TinyFloor، مكتب افتراضي تتجول فيه. افتح الرابط واختر شخصية وادخل.",
     "roomsTitle": "استكشاف الغرف",
     "roomsDescription": "تصفّح الغرف الافتراضية النشطة وانضم إلى مساحات العمل العامة في TinyFloor.",
     "peopleTitle": "الأشخاص",

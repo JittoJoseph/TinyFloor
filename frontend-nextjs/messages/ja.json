@@ -7,6 +7,8 @@
     "createRoomTitle": "ルームを作成",
     "createRoomDescription": "TinyFloor でバーチャルオフィスのルームを開きましょう。名前を付け、必要ならパスワードを設定して、チームにリンクを1つ共有するだけです。",
     "joinTitle": "ルームに参加",
+    "joinRoomTitle": "{room} に参加",
+    "joinRoomDescription": "TinyFloor の {room} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
     "roomsTitle": "ルームを探す",
     "roomsDescription": "アクティブなバーチャルルームを見て、TinyFloor の公開ワークスペースに参加しましょう。",
     "peopleTitle": "メンバー",

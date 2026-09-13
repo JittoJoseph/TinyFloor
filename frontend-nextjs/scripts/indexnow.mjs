@@ -1,7 +1,7 @@
 // Tells Bing, Yandex, Seznam and Naver (and ChatGPT search, which reads Bing)
 // about every URL in the live sitemap. Run after a deploy that adds or changes pages.
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com").replace(/\/+$/, "");
-const KEY = "5f3c9a1e7b2d4086a9e1c3f7b5d2e804";
+const KEY = "6537fa0233c5dc0cca20f9d1f56be989";
 
 const sitemap = await (await fetch(`${SITE}/sitemap.xml`)).text();
 const urlList = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);

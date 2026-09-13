@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "title": "SpatialMeet – Un bureau virtuel où l’on se promène",
-    "description": "SpatialMeet est un bureau virtuel gratuit dans votre navigateur. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
-    "ogAlt": "Une salle SpatialMeet : un étage de bureau 16 bits avec des bureaux et des coéquipiers",
+    "title": "TinyFloor – Un bureau virtuel où l’on se promène",
+    "description": "TinyFloor est un bureau virtuel gratuit dans votre navigateur. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
+    "ogAlt": "Une salle TinyFloor : un étage de bureau 16 bits avec des bureaux et des coéquipiers",
     "keywords": "bureau virtuel, télétravail, chat spatial, collaboration en ligne, espace de travail virtuel, bureau metaverse, chat de proximité, chat vidéo de proximité, espace de coworking virtuel, appels vidéo dans le navigateur",
     "createRoomTitle": "Créer une salle",
-    "createRoomDescription": "Ouvrez une salle de bureau virtuel sur SpatialMeet. Donnez-lui un nom, ajoutez un mot de passe si vous le souhaitez, puis partagez un seul lien avec votre équipe.",
+    "createRoomDescription": "Ouvrez une salle de bureau virtuel sur TinyFloor. Donnez-lui un nom, ajoutez un mot de passe si vous le souhaitez, puis partagez un seul lien avec votre équipe.",
     "joinTitle": "Rejoindre la salle",
     "roomsTitle": "Explorer les salles",
-    "roomsDescription": "Parcourez les salles virtuelles actives et rejoignez des espaces de travail publics sur SpatialMeet.",
+    "roomsDescription": "Parcourez les salles virtuelles actives et rejoignez des espaces de travail publics sur TinyFloor.",
     "peopleTitle": "Personnes",
-    "peopleDescription": "Rencontrez les personnes qui passent du temps dans les salles SpatialMeet.",
+    "peopleDescription": "Rencontrez les personnes qui passent du temps dans les salles TinyFloor.",
     "authTitle": "Connexion",
-    "authDescription": "Connectez-vous à SpatialMeet pour garder votre nom, votre personnage et la liste de vos salles.",
+    "authDescription": "Connectez-vous à TinyFloor pour garder votre nom, votre personnage et la liste de vos salles.",
     "dashboardTitle": "Tableau de bord",
     "roomTitle": "Salle active",
     "notFoundTitle": "Page introuvable"
@@ -51,7 +51,7 @@
     "title": "Le bureau virtuel <br></br>le plus <em>douillet</em>.",
     "subtitle": "Un bureau virtuel qui ressemble à un jeu. Promenez-vous, parlez à vos collègues et retrouvez l’esprit d’équipe.",
     "cta": "Essayer",
-    "caption": "Une salle SpatialMeet : un étage de bureau 16 bits avec des bureaux et deux coéquipiers."
+    "caption": "Une salle TinyFloor : un étage de bureau 16 bits avec des bureaux et deux coéquipiers."
   },
   "landing": {
     "description": "Un bureau virtuel qui ressemble à un jeu. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
@@ -65,7 +65,7 @@
   },
   "moments": {
     "title": "Un bureau où l’on peut <em>se promener.</em>",
-    "subtitle": "SpatialMeet garde ce que les appels n’ont jamais remplacé au bureau : savoir qui est là, et pouvoir aller le voir.",
+    "subtitle": "TinyFloor garde ce que les appels n’ont jamais remplacé au bureau : savoir qui est là, et pouvoir aller le voir.",
     "alwaysOn": "Toujours ouvertes",
     "directory": {
       "design": {
@@ -121,15 +121,15 @@
     "title": "Avant <em>d’entrer.</em>",
     "items": [
       {
-        "q": "Qu’est-ce que SpatialMeet ?",
-        "a": "SpatialMeet est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
+        "q": "Qu’est-ce que TinyFloor ?",
+        "a": "TinyFloor est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
       },
       {
         "q": "Dois-je installer quelque chose ?",
-        "a": "Non. SpatialMeet fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
+        "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
       },
       {
-        "q": "SpatialMeet est-il gratuit ?",
+        "q": "TinyFloor est-il gratuit ?",
         "a": "Oui. Créer des salles, se promener, discuter et appeler sont gratuits."
       },
       {
@@ -145,12 +145,12 @@
         "a": "Non. La caméra et le micro ne sont ouverts que pendant un appel et libérés dès qu’il se termine."
       },
       {
-        "q": "Puis-je utiliser SpatialMeet sur un téléphone ?",
+        "q": "Puis-je utiliser TinyFloor sur un téléphone ?",
         "a": "Oui. Sur les appareils tactiles, vous vous déplacez avec un joystick à l’écran, et les commandes d’appel s’adaptent au petit écran."
       },
       {
         "q": "En quoi est-ce différent d’un appel vidéo classique ?",
-        "a": "Un appel classique met tout le monde dans une grille jusqu’à la fin de la réunion. Une salle SpatialMeet reste ouverte toute la journée : vous voyez qui est là, passez d’une conversation à l’autre et parlez aux personnes vers qui vous allez."
+        "a": "Un appel classique met tout le monde dans une grille jusqu’à la fin de la réunion. Une salle TinyFloor reste ouverte toute la journée : vous voyez qui est là, passez d’une conversation à l’autre et parlez aux personnes vers qui vous allez."
       }
     ]
   },
@@ -226,9 +226,9 @@
   },
   "directory": {
     "roomsTitle": "Salles de <em>bureau virtuel</em>",
-    "peopleTitle": "La <em>communauté</em> SpatialMeet",
+    "peopleTitle": "La <em>communauté</em> TinyFloor",
     "roomsSubtitle": "Parcourez les salles ou rencontrez les personnes qui s’y trouvent",
-    "peopleSubtitle": "Rencontrez celles et ceux qui font SpatialMeet",
+    "peopleSubtitle": "Rencontrez celles et ceux qui font TinyFloor",
     "updating": "Mise à jour...",
     "roomsLive": "{count, plural, one {# salle en direct} other {# salles en direct}}",
     "search": "Rechercher",
@@ -274,7 +274,7 @@
       "copyLink": "Copier le lien du profil",
       "share": "Partager le profil",
       "shareTitle": "Profil de {name}",
-      "shareText": "Découvrez le profil de {name} sur SpatialMeet",
+      "shareText": "Découvrez le profil de {name} sur TinyFloor",
       "created": "créées",
       "joined": "rejointes",
       "chooseCharacter": "Choisir un personnage",
@@ -482,7 +482,7 @@
     "free": "Gratuit, dans le navigateur, sans compte.",
     "compare": "Comparatifs",
     "useCases": "Cas d’usage",
-    "compareTitle": "SpatialMeet et {name}, <em>côte à côte.</em>",
+    "compareTitle": "TinyFloor et {name}, <em>côte à côte.</em>",
     "checked": "Les informations sur {name} viennent de sa page de tarifs, vérifiée en septembre 2026.",
     "rows": {
       "price": "Prix",
@@ -518,14 +518,14 @@
         "label": "Alternative à Gather",
         "meta": {
           "title": "Alternative gratuite à Gather dans le navigateur",
-          "description": "Vous cherchez une alternative gratuite à Gather ? SpatialMeet est un bureau virtuel en pixel art avec des appels vidéo de proximité. Pas d’essai, pas de prix par siège, rien à installer."
+          "description": "Vous cherchez une alternative gratuite à Gather ? TinyFloor est un bureau virtuel en pixel art avec des appels vidéo de proximité. Pas d’essai, pas de prix par siège, rien à installer."
         },
         "title": "Une <em>alternative gratuite à Gather.</em>",
-        "subtitle": "Gather a supprimé son offre gratuite et facture désormais par membre. SpatialMeet garde la même idée, un bureau où l’on se déplace et où l’on discute, et reste gratuit.",
+        "subtitle": "Gather a supprimé son offre gratuite et facture désormais par membre. TinyFloor garde la même idée, un bureau où l’on se déplace et où l’on discute, et reste gratuit.",
         "points": [
           {
             "title": "Pas de compte à rebours",
-            "body": "Gather vous laisse 30 jours avant de payer. SpatialMeet n’a pas d’essai, car il n’y a rien à acheter ensuite."
+            "body": "Gather vous laisse 30 jours avant de payer. TinyFloor n’a pas d’essai, car il n’y a rien à acheter ensuite."
           },
           {
             "title": "Rien à installer",
@@ -545,18 +545,18 @@
         "faq": [
           {
             "q": "Gather est-il encore gratuit ?",
-            "a": "Non. Gather n’a plus d’offre gratuite permanente. Il propose un essai de 30 jours, puis l’offre Essential commence à 12 $ par membre par mois. SpatialMeet est gratuit."
+            "a": "Non. Gather n’a plus d’offre gratuite permanente. Il propose un essai de 30 jours, puis l’offre Essential commence à 12 $ par membre par mois. TinyFloor est gratuit."
           },
           {
-            "q": "Qu’est-ce que Gather propose et que SpatialMeet n’a pas ?",
-            "a": "Gather propose le partage d’écran, des notes de réunion par IA et la personnalisation du bureau. SpatialMeet se concentre sur l’essentiel : se déplacer, les appels de proximité, une table de réunion, le chat, un tableau blanc et la musique de la salle."
+            "q": "Qu’est-ce que Gather propose et que TinyFloor n’a pas ?",
+            "a": "Gather propose le partage d’écran, des notes de réunion par IA et la personnalisation du bureau. TinyFloor se concentre sur l’essentiel : se déplacer, les appels de proximité, une table de réunion, le chat, un tableau blanc et la musique de la salle."
           },
           {
-            "q": "Puis-je faire passer mon équipe de Gather à SpatialMeet ?",
+            "q": "Puis-je faire passer mon équipe de Gather à TinyFloor ?",
             "a": "Oui. Créez une salle, partagez son lien et tout le monde entre. Aucune donnée à migrer, rien à installer."
           },
           {
-            "q": "Combien de personnes tiennent dans une salle SpatialMeet ?",
+            "q": "Combien de personnes tiennent dans une salle TinyFloor ?",
             "a": "Une salle accueille jusqu’à 20 personnes à la fois, et vous pouvez ouvrir autant de salles que nécessaire."
           }
         ]
@@ -565,10 +565,10 @@
         "label": "Alternative à Kumospace",
         "meta": {
           "title": "Alternative gratuite à Kumospace pour toute l’équipe",
-          "description": "L’offre gratuite de Kumospace s’arrête à 5 membres. SpatialMeet est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité, ouvert à toute votre équipe dans le navigateur."
+          "description": "L’offre gratuite de Kumospace s’arrête à 5 membres. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité, ouvert à toute votre équipe dans le navigateur."
         },
         "title": "Une <em>alternative à Kumospace</em> pour toute l’équipe.",
-        "subtitle": "L’offre gratuite de Kumospace accueille 5 membres sur un seul étage. SpatialMeet n’a pas de limite de membres ni d’offre payante, toute l’équipe peut donc s’installer.",
+        "subtitle": "L’offre gratuite de Kumospace accueille 5 membres sur un seul étage. TinyFloor n’a pas de limite de membres ni d’offre payante, toute l’équipe peut donc s’installer.",
         "points": [
           {
             "title": "Pas de limite à 5 membres",
@@ -576,7 +576,7 @@
           },
           {
             "title": "Pas de limite hebdomadaire pour les invités",
-            "body": "Kumospace donne 4 heures par semaine aux invités gratuits. Dans SpatialMeet, un invité rejoint avec un nom et reste aussi longtemps qu’il le souhaite."
+            "body": "Kumospace donne 4 heures par semaine aux invités gratuits. Dans TinyFloor, un invité rejoint avec un nom et reste aussi longtemps qu’il le souhaite."
           },
           {
             "title": "Pensé aussi pour le mobile",
@@ -592,18 +592,18 @@
         "faq": [
           {
             "q": "Kumospace est-il gratuit ?",
-            "a": "Kumospace a une offre gratuite pour 5 membres inscrits au maximum, avec un étage et des invités limités à 4 heures par semaine. L’offre Business commence à 16 $ par utilisateur par mois. SpatialMeet est gratuit pour tout le monde."
+            "a": "Kumospace a une offre gratuite pour 5 membres inscrits au maximum, avec un étage et des invités limités à 4 heures par semaine. L’offre Business commence à 16 $ par utilisateur par mois. TinyFloor est gratuit pour tout le monde."
           },
           {
-            "q": "Qu’est-ce que Kumospace propose et que SpatialMeet n’a pas ?",
-            "a": "Kumospace inclut le partage d’écran, et ses offres payantes ajoutent l’enregistrement et un historique de chat illimité. SpatialMeet n’a pas encore de partage d’écran ni d’enregistrement."
+            "q": "Qu’est-ce que Kumospace propose et que TinyFloor n’a pas ?",
+            "a": "Kumospace inclut le partage d’écran, et ses offres payantes ajoutent l’enregistrement et un historique de chat illimité. TinyFloor n’a pas encore de partage d’écran ni d’enregistrement."
           },
           {
             "q": "Mes collègues ont-ils besoin d’un compte ?",
             "a": "Non. Toute personne ayant le lien d’une salle peut rejoindre en invité avec un simple nom. Se connecter garde seulement un profil, un personnage et la liste de vos salles."
           },
           {
-            "q": "SpatialMeet fonctionne-t-il sur téléphone ?",
+            "q": "TinyFloor fonctionne-t-il sur téléphone ?",
             "a": "Oui. Il fonctionne dans les navigateurs mobiles avec un joystick à l’écran, sans application à télécharger."
           }
         ]
@@ -612,10 +612,10 @@
         "label": "Alternative à SpatialChat",
         "meta": {
           "title": "Alternative à SpatialChat sans limite quotidienne",
-          "description": "L’offre gratuite de SpatialChat permet 2 heures par jour. SpatialMeet est un bureau virtuel gratuit en pixel art avec des appels de proximité, que vous pouvez laisser ouvert toute la journée."
+          "description": "L’offre gratuite de SpatialChat permet 2 heures par jour. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels de proximité, que vous pouvez laisser ouvert toute la journée."
         },
         "title": "Une <em>alternative à SpatialChat</em> ouverte toute la journée.",
-        "subtitle": "SpatialChat est pensé pour les événements, et son offre gratuite s’arrête après 2 heures par jour. SpatialMeet est un bureau, la salle reste donc ouverte tant que votre équipe travaille.",
+        "subtitle": "SpatialChat est pensé pour les événements, et son offre gratuite s’arrête après 2 heures par jour. TinyFloor est un bureau, la salle reste donc ouverte tant que votre équipe travaille.",
         "points": [
           {
             "title": "Pas de limite quotidienne",
@@ -639,19 +639,19 @@
         "faq": [
           {
             "q": "SpatialChat est-il gratuit ?",
-            "a": "SpatialChat a une offre gratuite avec jusqu’à 2 heures de réunion par jour pour 12 participants au maximum. Les options payantes incluent un Day Pass à 5 $ par utilisateur et des offres Business à partir de 399 $ par mois. SpatialMeet est gratuit, sans limite quotidienne."
+            "a": "SpatialChat a une offre gratuite avec jusqu’à 2 heures de réunion par jour pour 12 participants au maximum. Les options payantes incluent un Day Pass à 5 $ par utilisateur et des offres Business à partir de 399 $ par mois. TinyFloor est gratuit, sans limite quotidienne."
           },
           {
-            "q": "SpatialMeet convient-il aux événements virtuels ?",
-            "a": "SpatialMeet est conçu pour les groupes qui se retrouvent tous les jours. Les salles accueillent 20 personnes à la fois, il convient donc mieux aux bureaux d’équipe, aux groupes d’étude et aux petites rencontres qu’aux grands événements."
+            "q": "TinyFloor convient-il aux événements virtuels ?",
+            "a": "TinyFloor est conçu pour les groupes qui se retrouvent tous les jours. Les salles accueillent 20 personnes à la fois, il convient donc mieux aux bureaux d’équipe, aux groupes d’étude et aux petites rencontres qu’aux grands événements."
           },
           {
-            "q": "Qu’est-ce que SpatialChat propose et que SpatialMeet n’a pas ?",
-            "a": "SpatialChat prend en charge le partage d’écran, les fichiers épinglés et les grands événements. SpatialMeet n’a pas encore de partage d’écran et se concentre sur la présence au quotidien et les échanges rapides."
+            "q": "Qu’est-ce que SpatialChat propose et que TinyFloor n’a pas ?",
+            "a": "SpatialChat prend en charge le partage d’écran, les fichiers épinglés et les grands événements. TinyFloor n’a pas encore de partage d’écran et se concentre sur la présence au quotidien et les échanges rapides."
           },
           {
             "q": "Les appels fonctionnent-ils entre navigateurs ?",
-            "a": "Oui. Les appels SpatialMeet passent en pair à pair via WebRTC, le son et la vidéo vont donc directement d’un navigateur à l’autre."
+            "a": "Oui. Les appels TinyFloor passent en pair à pair via WebRTC, le son et la vidéo vont donc directement d’un navigateur à l’autre."
           }
         ]
       },
@@ -659,14 +659,14 @@
         "label": "Alternative à WorkAdventure",
         "meta": {
           "title": "Alternative à WorkAdventure avec des salles de 20",
-          "description": "L’offre gratuite de WorkAdventure permet 10 personnes à la fois. SpatialMeet est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité et des salles de 20 personnes."
+          "description": "L’offre gratuite de WorkAdventure permet 10 personnes à la fois. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité et des salles de 20 personnes."
         },
         "title": "Une <em>alternative à WorkAdventure</em> qui laisse de la place.",
-        "subtitle": "WorkAdventure est aussi un bureau en pixel art, et son offre gratuite accueille 10 personnes à la fois. Les salles SpatialMeet en accueillent 20, sans offre payante à prendre ensuite.",
+        "subtitle": "WorkAdventure est aussi un bureau en pixel art, et son offre gratuite accueille 10 personnes à la fois. Les salles TinyFloor en accueillent 20, sans offre payante à prendre ensuite.",
         "points": [
           {
             "title": "Deux fois plus de place",
-            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Une salle SpatialMeet en accueille 20, et vous pouvez ouvrir autant de salles que vous voulez."
+            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Une salle TinyFloor en accueille 20, et vous pouvez ouvrir autant de salles que vous voulez."
           },
           {
             "title": "Aucune carte à construire",
@@ -686,18 +686,18 @@
         "faq": [
           {
             "q": "WorkAdventure est-il gratuit ?",
-            "a": "WorkAdventure a une offre gratuite pour 10 utilisateurs simultanés au maximum. L’offre Business commence à 8 € par utilisateur par mois, et les tarifs événements à 4 € par utilisateur par jour. SpatialMeet est gratuit."
+            "a": "WorkAdventure a une offre gratuite pour 10 utilisateurs simultanés au maximum. L’offre Business commence à 8 € par utilisateur par mois, et les tarifs événements à 4 € par utilisateur par jour. TinyFloor est gratuit."
           },
           {
-            "q": "Puis-je personnaliser la carte dans SpatialMeet ?",
+            "q": "Puis-je personnaliser la carte dans TinyFloor ?",
             "a": "Pas encore. Toutes les salles utilisent le même plateau de bureau. WorkAdventure permet de créer vos propres cartes, ce qui convient aux équipes qui veulent un univers sur mesure."
           },
           {
             "q": "Dois-je gérer un serveur ?",
-            "a": "Non. SpatialMeet est hébergé pour vous. Créez une salle dans le navigateur et partagez le lien."
+            "a": "Non. TinyFloor est hébergé pour vous. Créez une salle dans le navigateur et partagez le lien."
           },
           {
-            "q": "Comment démarrent les appels dans SpatialMeet ?",
+            "q": "Comment démarrent les appels dans TinyFloor ?",
             "a": "Approchez-vous d’un collègue et sa barre d’appel apparaît. Un geste lance la vidéo ou l’audio. À la table de réunion, tous ceux qui s’assoient rejoignent le même appel."
           }
         ]
@@ -706,10 +706,10 @@
         "label": "Alternative à Wonder",
         "meta": {
           "title": "Alternative à Wonder.me : approchez-vous et parlez",
-          "description": "Wonder.me a fermé en 2023. SpatialMeet est un espace gratuit dans le navigateur où vous déplacez un personnage et lancez un appel vidéo en vous approchant des autres."
+          "description": "Wonder.me a fermé en 2023. TinyFloor est un espace gratuit dans le navigateur où vous déplacez un personnage et lancez un appel vidéo en vous approchant des autres."
         },
         "title": "<em>Wonder</em> vous manque ?",
-        "subtitle": "Wonder.me a fermé en avril 2023. SpatialMeet garde ce qui faisait son intérêt, se déplacer et parler à ceux dont on s’approche, sur un plateau de bureau en pixel art.",
+        "subtitle": "Wonder.me a fermé en avril 2023. TinyFloor garde ce qui faisait son intérêt, se déplacer et parler à ceux dont on s’approche, sur un plateau de bureau en pixel art.",
         "points": [
           {
             "title": "Approchez-vous pour parler",
@@ -730,15 +730,15 @@
             "a": "Non. Wonder.me a fermé le 25 avril 2023, ses fondateurs n’ayant pas trouvé de modèle économique viable."
           },
           {
-            "q": "En quoi SpatialMeet diffère-t-il de Wonder ?",
-            "a": "Wonder utilisait des cercles sur une surface plane et était pensé pour les événements. SpatialMeet est un bureau où l’on se déplace, avec des postes de travail, une table de réunion, un tableau blanc et de la musique, pensé pour les groupes qui se retrouvent régulièrement."
+            "q": "En quoi TinyFloor diffère-t-il de Wonder ?",
+            "a": "Wonder utilisait des cercles sur une surface plane et était pensé pour les événements. TinyFloor est un bureau où l’on se déplace, avec des postes de travail, une table de réunion, un tableau blanc et de la musique, pensé pour les groupes qui se retrouvent régulièrement."
           },
           {
             "q": "Combien de personnes peuvent rejoindre ?",
             "a": "Une salle accueille jusqu’à 20 personnes à la fois, et vous pouvez ouvrir autant de salles que nécessaire."
           },
           {
-            "q": "SpatialMeet est-il gratuit ?",
+            "q": "TinyFloor est-il gratuit ?",
             "a": "Oui. Créer des salles, se déplacer, discuter et appeler sont gratuits."
           }
         ]
@@ -768,11 +768,11 @@
         "faq": [
           {
             "q": "Qu’est-ce qu’un bureau virtuel ?",
-            "a": "Un bureau virtuel est un espace en ligne partagé où une équipe à distance travaille ensemble. Dans SpatialMeet, c’est un plateau en pixel art où vous voyez vos collègues et leur parlez en vous approchant."
+            "a": "Un bureau virtuel est un espace en ligne partagé où une équipe à distance travaille ensemble. Dans TinyFloor, c’est un plateau en pixel art où vous voyez vos collègues et leur parlez en vous approchant."
           },
           {
             "q": "Est-ce gratuit ?",
-            "a": "Oui. SpatialMeet est gratuit, sans essai et sans prix par siège."
+            "a": "Oui. TinyFloor est gratuit, sans essai et sans prix par siège."
           },
           {
             "q": "Combien de personnes peuvent utiliser un bureau ?",
@@ -854,7 +854,7 @@
           },
           {
             "q": "Est-ce gratuit pour les étudiants ?",
-            "a": "Oui. SpatialMeet est gratuit pour tout le monde, et personne n’a besoin de compte pour rejoindre."
+            "a": "Oui. TinyFloor est gratuit pour tout le monde, et personne n’a besoin de compte pour rejoindre."
           },
           {
             "q": "Peut-on écouter de la musique en étudiant ?",
@@ -903,7 +903,7 @@
           },
           {
             "q": "Est-ce gratuit pour les enseignants ?",
-            "a": "Oui. SpatialMeet est gratuit, sans offre payante."
+            "a": "Oui. TinyFloor est gratuit, sans offre payante."
           }
         ]
       },
@@ -914,7 +914,7 @@
           "description": "Un chat de proximité pour équipes et amis : approchez votre personnage de quelqu’un pour lancer un appel vidéo ou audio. Gratuit, dans le navigateur, sans téléchargement."
         },
         "title": "Un <em>chat de proximité</em> qui démarre quand vous vous approchez.",
-        "subtitle": "Dans SpatialMeet, là où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, asseyez-vous à la table pour parler en groupe, et repartez quand vous avez fini.",
+        "subtitle": "Dans TinyFloor, là où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, asseyez-vous à la table pour parler en groupe, et repartez quand vous avez fini.",
         "points": [
           {
             "title": "S’approcher lance la conversation",
@@ -944,7 +944,7 @@
           },
           {
             "q": "Est-ce gratuit ?",
-            "a": "Oui. SpatialMeet est gratuit dans le navigateur, sur ordinateur et sur mobile."
+            "a": "Oui. TinyFloor est gratuit dans le navigateur, sur ordinateur et sur mobile."
           }
         ]
       }

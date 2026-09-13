@@ -1,16 +1,16 @@
-# SpatialMeet
+# TinyFloor
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-spatialmeet.jittojoseph.xyz-007acc)](https://spatialmeet.jittojoseph.xyz/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-tinyfloor.com-007acc)](https://tinyfloor.com/)
 
 [![Backend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=backend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
 [![Frontend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=frontend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
-[![Health Check](https://img.shields.io/website?url=https://spatialmeet.jittojoseph.xyz&label=health)](https://spatialmeet.jittojoseph.xyz)
+[![Health Check](https://img.shields.io/website?url=https://tinyfloor.com&label=health)](https://tinyfloor.com)
 
 A lightweight, top-down 2D virtual office experience for real-time presence and communication.
 
 ## Overview
 
-SpatialMeet creates immersive virtual office environments where team members can interact naturally through proximity-based communication. Walk around pixel-art office spaces, engage in real-time conversations when near colleagues, and collaborate in shared digital rooms with persistent user profiles and customizable avatars.
+TinyFloor creates immersive virtual office environments where team members can interact naturally through proximity-based communication. Walk around pixel-art office spaces, engage in real-time conversations when near colleagues, and collaborate in shared digital rooms with persistent user profiles and customizable avatars.
 
 ## Features
 
@@ -35,7 +35,7 @@ This monorepo contains:
 - **Backend**: Spring Boot, Java, WebSocket, MongoDB
 - **Real-time Communication**: WebRTC for peer-to-peer audio/video, WebSocket for signaling and game state
 - **Database**: MongoDB for user profiles, room metadata, and persistent data
-- **Deployment**: Vercel (frontend), Railway (backend)
+- **Deployment**: Cloudflare Workers (frontend), Railway (backend)
 
 ## Localization
 
@@ -50,4 +50,4 @@ The frontend is translated into 18 languages with [next-intl](https://next-intl.
 
 ## Getting Started
 
-SpatialMeet requires Node.js 18+, Java 17+, Maven 3.6+, and MongoDB. The application consists of a Next.js frontend and Spring Boot backend that communicate via WebSocket and REST APIs for real-time multiplayer functionality.
+TinyFloor requires Node.js 18+, Java 17+, Maven 3.6+, and MongoDB. The application consists of a Next.js frontend and Spring Boot backend that communicate via WebSocket and REST APIs for real-time multiplayer functionality.

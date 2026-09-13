@@ -29,7 +29,7 @@ export const EntryShell: React.FC<{
             href="/"
             className="cursor-pointer hidden sm:inline font-body font-bold text-lg tracking-tight text-[var(--color-braun-text)]"
           >
-            SpatialMeet
+            TinyFloor
           </Link>
         </div>
       </header>

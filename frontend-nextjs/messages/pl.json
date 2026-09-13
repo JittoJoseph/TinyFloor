@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "title": "SpatialMeet – Wirtualne biuro, po którym można chodzić",
-    "description": "SpatialMeet to darmowe wirtualne biuro w przeglądarce. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
-    "ogAlt": "Pokój SpatialMeet: 16-bitowe piętro biura z biurkami i członkami zespołu",
+    "title": "TinyFloor – Wirtualne biuro, po którym można chodzić",
+    "description": "TinyFloor to darmowe wirtualne biuro w przeglądarce. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
+    "ogAlt": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i członkami zespołu",
     "keywords": "wirtualne biuro, praca na odległość, czat przestrzenny, współpraca online, wirtualna przestrzeń do pracy, biuro w metaverse, czat zbliżeniowy, wideoczat zbliżeniowy, wirtualny coworking, rozmowy wideo w przeglądarce",
     "createRoomTitle": "Utwórz pokój",
-    "createRoomDescription": "Otwórz wirtualny pokój biurowy w SpatialMeet. Nadaj mu nazwę, dodaj hasło, jeśli chcesz, i udostępnij zespołowi jeden link.",
+    "createRoomDescription": "Otwórz wirtualny pokój biurowy w TinyFloor. Nadaj mu nazwę, dodaj hasło, jeśli chcesz, i udostępnij zespołowi jeden link.",
     "joinTitle": "Dołącz do pokoju",
     "roomsTitle": "Przeglądaj pokoje",
-    "roomsDescription": "Przeglądaj aktywne wirtualne pokoje i dołączaj do publicznych przestrzeni roboczych w SpatialMeet.",
+    "roomsDescription": "Przeglądaj aktywne wirtualne pokoje i dołączaj do publicznych przestrzeni roboczych w TinyFloor.",
     "peopleTitle": "Ludzie",
-    "peopleDescription": "Poznaj osoby, które spędzają czas w pokojach SpatialMeet.",
+    "peopleDescription": "Poznaj osoby, które spędzają czas w pokojach TinyFloor.",
     "authTitle": "Zaloguj się",
-    "authDescription": "Zaloguj się do SpatialMeet, aby zachować swoje imię, postać i listę pokoi.",
+    "authDescription": "Zaloguj się do TinyFloor, aby zachować swoje imię, postać i listę pokoi.",
     "dashboardTitle": "Panel",
     "roomTitle": "Aktywny pokój",
     "notFoundTitle": "Nie znaleziono strony"
@@ -51,7 +51,7 @@
     "title": "<em>Najprzytulniejsze</em> <br></br>wirtualne biuro.",
     "subtitle": "Wirtualne biuro, które wygląda jak gra. Chodź po nim, rozmawiaj ze współpracownikami i znów poczuj się jak zespół.",
     "cta": "Wypróbuj",
-    "caption": "Pokój SpatialMeet: 16-bitowe piętro biura z biurkami i dwoma członkami zespołu."
+    "caption": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i dwoma członkami zespołu."
   },
   "landing": {
     "description": "Wirtualne biuro, które wygląda jak gra. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
@@ -65,7 +65,7 @@
   },
   "moments": {
     "title": "Biuro, po którym <em>można chodzić.</em>",
-    "subtitle": "SpatialMeet zachowuje tę część biura, której rozmowy nigdy nie zastąpiły: wiesz, kto jest na miejscu, i możesz do niego podejść.",
+    "subtitle": "TinyFloor zachowuje tę część biura, której rozmowy nigdy nie zastąpiły: wiesz, kto jest na miejscu, i możesz do niego podejść.",
     "alwaysOn": "Zawsze otwarte",
     "directory": {
       "design": {
@@ -121,15 +121,15 @@
     "title": "Zanim <em>wejdziesz.</em>",
     "items": [
       {
-        "q": "Czym jest SpatialMeet?",
-        "a": "SpatialMeet to wirtualne biuro, po którym chodzisz. Twój zespół pojawia się jako postacie w stylu pixel art na wspólnym piętrze 2D, a rozmowa wideo lub głosowa zaczyna się, gdy staniesz obok kogoś, a nie gdy klikniesz link do spotkania."
+        "q": "Czym jest TinyFloor?",
+        "a": "TinyFloor to wirtualne biuro, po którym chodzisz. Twój zespół pojawia się jako postacie w stylu pixel art na wspólnym piętrze 2D, a rozmowa wideo lub głosowa zaczyna się, gdy staniesz obok kogoś, a nie gdy klikniesz link do spotkania."
       },
       {
         "q": "Czy muszę coś instalować?",
-        "a": "Nie. SpatialMeet działa w przeglądarce na komputerze i telefonie. Otwórz link do pokoju i już jesteś w biurze."
+        "a": "Nie. TinyFloor działa w przeglądarce na komputerze i telefonie. Otwórz link do pokoju i już jesteś w biurze."
       },
       {
-        "q": "Czy SpatialMeet jest darmowy?",
+        "q": "Czy TinyFloor jest darmowy?",
         "a": "Tak. Tworzenie pokoi, chodzenie, czatowanie i rozmowy są bezpłatne."
       },
       {
@@ -145,12 +145,12 @@
         "a": "Nie. Kamera i mikrofon są włączane tylko na czas rozmowy i zwalniane, gdy tylko się skończy."
       },
       {
-        "q": "Czy mogę używać SpatialMeet na telefonie?",
+        "q": "Czy mogę używać TinyFloor na telefonie?",
         "a": "Tak. Na urządzeniach dotykowych poruszasz się za pomocą joysticka na ekranie, a przyciski rozmowy dopasowują się do mniejszego ekranu."
       },
       {
         "q": "Czym to się różni od zwykłej rozmowy wideo?",
-        "a": "Zwykła rozmowa umieszcza wszystkich w siatce do końca spotkania. Pokój SpatialMeet jest otwarty cały dzień, więc widzisz, kto jest obok, przechodzisz między rozmowami i rozmawiasz z osobami, do których podejdziesz."
+        "a": "Zwykła rozmowa umieszcza wszystkich w siatce do końca spotkania. Pokój TinyFloor jest otwarty cały dzień, więc widzisz, kto jest obok, przechodzisz między rozmowami i rozmawiasz z osobami, do których podejdziesz."
       }
     ]
   },
@@ -226,9 +226,9 @@
   },
   "directory": {
     "roomsTitle": "Pokoje w <em>wirtualnym biurze</em>",
-    "peopleTitle": "<em>Społeczność</em> SpatialMeet",
+    "peopleTitle": "<em>Społeczność</em> TinyFloor",
     "roomsSubtitle": "Przeglądaj pokoje lub poznaj osoby w środku",
-    "peopleSubtitle": "Poznaj osoby, które tworzą SpatialMeet",
+    "peopleSubtitle": "Poznaj osoby, które tworzą TinyFloor",
     "updating": "Aktualizowanie...",
     "roomsLive": "{count, plural, one {# pokój na żywo} few {# pokoje na żywo} many {# pokoi na żywo} other {# pokoju na żywo}}",
     "search": "Szukaj",
@@ -274,7 +274,7 @@
       "copyLink": "Kopiuj link do profilu",
       "share": "Udostępnij profil",
       "shareTitle": "Profil użytkownika {name}",
-      "shareText": "Zobacz profil użytkownika {name} w SpatialMeet",
+      "shareText": "Zobacz profil użytkownika {name} w TinyFloor",
       "created": "utworzone",
       "joined": "dołączone",
       "chooseCharacter": "Wybierz postać",
@@ -482,7 +482,7 @@
     "free": "Za darmo, w przeglądarce, bez konta.",
     "compare": "Porównania",
     "useCases": "Zastosowania",
-    "compareTitle": "SpatialMeet i {name} <em>obok siebie.</em>",
+    "compareTitle": "TinyFloor i {name} <em>obok siebie.</em>",
     "checked": "Dane o {name} pochodzą z cennika, sprawdzonego we wrześniu 2026.",
     "rows": {
       "price": "Cena",
@@ -518,14 +518,14 @@
         "label": "Alternatywa dla Gather",
         "meta": {
           "title": "Darmowa alternatywa dla Gather w przeglądarce",
-          "description": "Szukasz darmowej alternatywy dla Gather? SpatialMeet to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś. Bez okresu próbnego, bez opłat za miejsce, bez instalacji."
+          "description": "Szukasz darmowej alternatywy dla Gather? TinyFloor to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś. Bez okresu próbnego, bez opłat za miejsce, bez instalacji."
         },
         "title": "Darmowa <em>alternatywa dla Gather.</em>",
-        "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. SpatialMeet zachowuje ten sam pomysł, biuro, po którym się chodzi i w którym się rozmawia, i pozostaje darmowy.",
+        "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. TinyFloor zachowuje ten sam pomysł, biuro, po którym się chodzi i w którym się rozmawia, i pozostaje darmowy.",
         "points": [
           {
             "title": "Bez odliczania okresu próbnego",
-            "body": "Gather daje 30 dni, zanim zapłacisz. SpatialMeet nie ma okresu próbnego, bo nie ma na co przechodzić."
+            "body": "Gather daje 30 dni, zanim zapłacisz. TinyFloor nie ma okresu próbnego, bo nie ma na co przechodzić."
           },
           {
             "title": "Nic do instalowania",
@@ -545,18 +545,18 @@
         "faq": [
           {
             "q": "Czy Gather jest nadal darmowy?",
-            "a": "Nie. Gather nie ma już stałego darmowego planu. Oferuje 30-dniowy okres próbny, a potem plan Essential kosztuje od 12 $ za członka miesięcznie. SpatialMeet jest darmowy."
+            "a": "Nie. Gather nie ma już stałego darmowego planu. Oferuje 30-dniowy okres próbny, a potem plan Essential kosztuje od 12 $ za członka miesięcznie. TinyFloor jest darmowy."
           },
           {
-            "q": "Co ma Gather, czego nie ma SpatialMeet?",
-            "a": "Gather ma udostępnianie ekranu, notatki ze spotkań tworzone przez AI i personalizację biura. SpatialMeet skupia się na podstawach: chodzeniu, rozmowach na odległość kilku kroków, stole konferencyjnym, czacie, tablicy i muzyce w pokoju."
+            "q": "Co ma Gather, czego nie ma TinyFloor?",
+            "a": "Gather ma udostępnianie ekranu, notatki ze spotkań tworzone przez AI i personalizację biura. TinyFloor skupia się na podstawach: chodzeniu, rozmowach na odległość kilku kroków, stole konferencyjnym, czacie, tablicy i muzyce w pokoju."
           },
           {
-            "q": "Czy mogę przenieść zespół z Gather do SpatialMeet?",
+            "q": "Czy mogę przenieść zespół z Gather do TinyFloor?",
             "a": "Tak. Utwórz pokój, udostępnij link i wszyscy wchodzą. Nie ma danych do przenoszenia ani niczego do instalowania."
           },
           {
-            "q": "Ile osób mieści się w pokoju SpatialMeet?",
+            "q": "Ile osób mieści się w pokoju TinyFloor?",
             "a": "Pokój mieści jednocześnie do 20 osób, a Ty możesz otworzyć tyle pokoi, ile potrzebujesz."
           }
         ]
@@ -565,10 +565,10 @@
         "label": "Alternatywa dla Kumospace",
         "meta": {
           "title": "Darmowa alternatywa dla Kumospace dla całego zespołu",
-          "description": "Darmowy plan Kumospace kończy się na 5 członkach. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska, otwarte dla całego zespołu w przeglądarce."
+          "description": "Darmowy plan Kumospace kończy się na 5 członkach. TinyFloor to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska, otwarte dla całego zespołu w przeglądarce."
         },
         "title": "<em>Alternatywa dla Kumospace</em> dla całego zespołu.",
-        "subtitle": "Darmowy plan Kumospace mieści 5 członków na jednym piętrze. SpatialMeet nie ma limitu członków ani płatnego planu, więc cały zespół może się wprowadzić.",
+        "subtitle": "Darmowy plan Kumospace mieści 5 członków na jednym piętrze. TinyFloor nie ma limitu członków ani płatnego planu, więc cały zespół może się wprowadzić.",
         "points": [
           {
             "title": "Bez limitu 5 członków",
@@ -576,7 +576,7 @@
           },
           {
             "title": "Bez tygodniowego limitu dla gości",
-            "body": "Kumospace daje darmowym gościom 4 godziny tygodniowo. W SpatialMeet gość dołącza z imieniem i zostaje, jak długo chce."
+            "body": "Kumospace daje darmowym gościom 4 godziny tygodniowo. W TinyFloor gość dołącza z imieniem i zostaje, jak długo chce."
           },
           {
             "title": "Stworzone też na telefon",
@@ -592,18 +592,18 @@
         "faq": [
           {
             "q": "Czy Kumospace jest darmowy?",
-            "a": "Kumospace ma darmowy plan dla maksymalnie 5 zarejestrowanych członków, z jednym piętrem i gośćmi ograniczonymi do 4 godzin tygodniowo. Plan Business kosztuje od 16 $ za użytkownika miesięcznie. SpatialMeet jest darmowy dla wszystkich."
+            "a": "Kumospace ma darmowy plan dla maksymalnie 5 zarejestrowanych członków, z jednym piętrem i gośćmi ograniczonymi do 4 godzin tygodniowo. Plan Business kosztuje od 16 $ za użytkownika miesięcznie. TinyFloor jest darmowy dla wszystkich."
           },
           {
-            "q": "Co ma Kumospace, czego nie ma SpatialMeet?",
-            "a": "Kumospace ma udostępnianie ekranu, a płatne plany dodają nagrywanie i nieograniczoną historię czatu. SpatialMeet nie ma jeszcze udostępniania ekranu ani nagrywania."
+            "q": "Co ma Kumospace, czego nie ma TinyFloor?",
+            "a": "Kumospace ma udostępnianie ekranu, a płatne plany dodają nagrywanie i nieograniczoną historię czatu. TinyFloor nie ma jeszcze udostępniania ekranu ani nagrywania."
           },
           {
             "q": "Czy moi współpracownicy potrzebują konta?",
             "a": "Nie. Każdy z linkiem do pokoju może dołączyć jako gość, podając tylko imię. Logowanie zapisuje tylko profil, postać i listę Twoich pokoi."
           },
           {
-            "q": "Czy SpatialMeet działa na telefonie?",
+            "q": "Czy TinyFloor działa na telefonie?",
             "a": "Tak. Działa w przeglądarkach mobilnych z joystickiem na ekranie, więc nie trzeba pobierać aplikacji."
           }
         ]
@@ -612,10 +612,10 @@
         "label": "Alternatywa dla SpatialChat",
         "meta": {
           "title": "Alternatywa dla SpatialChat bez dziennego limitu",
-          "description": "Darmowy plan SpatialChat pozwala na 2 godziny dziennie. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami z bliska, które może być otwarte cały dzień."
+          "description": "Darmowy plan SpatialChat pozwala na 2 godziny dziennie. TinyFloor to darmowe wirtualne biuro w stylu pixel art z rozmowami z bliska, które może być otwarte cały dzień."
         },
         "title": "<em>Alternatywa dla SpatialChat</em> otwarta przez cały dzień.",
-        "subtitle": "SpatialChat powstał z myślą o wydarzeniach, a jego darmowy plan kończy się po 2 godzinach dziennie. SpatialMeet to biuro, więc pokój jest otwarty tak długo, jak pracuje Twój zespół.",
+        "subtitle": "SpatialChat powstał z myślą o wydarzeniach, a jego darmowy plan kończy się po 2 godzinach dziennie. TinyFloor to biuro, więc pokój jest otwarty tak długo, jak pracuje Twój zespół.",
         "points": [
           {
             "title": "Bez dziennego limitu",
@@ -639,19 +639,19 @@
         "faq": [
           {
             "q": "Czy SpatialChat jest darmowy?",
-            "a": "SpatialChat ma darmowy plan z maksymalnie 2 godzinami spotkań dziennie dla maksymalnie 12 uczestników. Płatne opcje to Day Pass za 5 $ za użytkownika i plany Business od 399 $ miesięcznie. SpatialMeet jest darmowy i bez dziennego limitu."
+            "a": "SpatialChat ma darmowy plan z maksymalnie 2 godzinami spotkań dziennie dla maksymalnie 12 uczestników. Płatne opcje to Day Pass za 5 $ za użytkownika i plany Business od 399 $ miesięcznie. TinyFloor jest darmowy i bez dziennego limitu."
           },
           {
-            "q": "Czy SpatialMeet nadaje się do wydarzeń online?",
-            "a": "SpatialMeet jest stworzony dla grup, które spotykają się codziennie. Pokoje mieszczą 20 osób jednocześnie, więc lepiej sprawdza się w biurach zespołów, grupach nauki i małych spotkaniach niż na dużych wydarzeniach."
+            "q": "Czy TinyFloor nadaje się do wydarzeń online?",
+            "a": "TinyFloor jest stworzony dla grup, które spotykają się codziennie. Pokoje mieszczą 20 osób jednocześnie, więc lepiej sprawdza się w biurach zespołów, grupach nauki i małych spotkaniach niż na dużych wydarzeniach."
           },
           {
-            "q": "Co ma SpatialChat, czego nie ma SpatialMeet?",
-            "a": "SpatialChat obsługuje udostępnianie ekranu, przypięte pliki i duże wydarzenia. SpatialMeet nie ma jeszcze udostępniania ekranu i skupia się na codziennej obecności i szybkich rozmowach."
+            "q": "Co ma SpatialChat, czego nie ma TinyFloor?",
+            "a": "SpatialChat obsługuje udostępnianie ekranu, przypięte pliki i duże wydarzenia. TinyFloor nie ma jeszcze udostępniania ekranu i skupia się na codziennej obecności i szybkich rozmowach."
           },
           {
             "q": "Czy rozmowy działają między przeglądarkami?",
-            "a": "Tak. Rozmowy w SpatialMeet działają peer to peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami."
+            "a": "Tak. Rozmowy w TinyFloor działają peer to peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami."
           }
         ]
       },
@@ -659,14 +659,14 @@
         "label": "Alternatywa dla WorkAdventure",
         "meta": {
           "title": "Alternatywa dla WorkAdventure z pokojami na 20 osób",
-          "description": "Darmowy plan WorkAdventure pozwala na 10 osób jednocześnie. SpatialMeet to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska i pokojami na 20 osób."
+          "description": "Darmowy plan WorkAdventure pozwala na 10 osób jednocześnie. TinyFloor to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska i pokojami na 20 osób."
         },
         "title": "<em>Alternatywa dla WorkAdventure</em> z miejscem na rozwój.",
-        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. Pokoje SpatialMeet mieszczą 20 osób i nie ma płatnego planu, na który trzeba przejść.",
+        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. Pokoje TinyFloor mieszczą 20 osób i nie ma płatnego planu, na który trzeba przejść.",
         "points": [
           {
             "title": "Dwa razy więcej miejsca",
-            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Pokój SpatialMeet mieści 20, a pokoi możesz otworzyć, ile chcesz."
+            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Pokój TinyFloor mieści 20, a pokoi możesz otworzyć, ile chcesz."
           },
           {
             "title": "Bez budowania mapy",
@@ -686,18 +686,18 @@
         "faq": [
           {
             "q": "Czy WorkAdventure jest darmowy?",
-            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. SpatialMeet jest darmowy."
+            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. TinyFloor jest darmowy."
           },
           {
-            "q": "Czy mogę dostosować mapę w SpatialMeet?",
+            "q": "Czy mogę dostosować mapę w TinyFloor?",
             "a": "Jeszcze nie. Każdy pokój ma to samo piętro biura. WorkAdventure pozwala projektować własne mapy, co pasuje zespołom, które chcą własnego świata."
           },
           {
             "q": "Czy muszę utrzymywać serwer?",
-            "a": "Nie. SpatialMeet jest hostowany za Ciebie. Utwórz pokój w przeglądarce i udostępnij link."
+            "a": "Nie. TinyFloor jest hostowany za Ciebie. Utwórz pokój w przeglądarce i udostępnij link."
           },
           {
-            "q": "Jak zaczynają się rozmowy w SpatialMeet?",
+            "q": "Jak zaczynają się rozmowy w TinyFloor?",
             "a": "Podejdź do współpracownika, a pojawi się jego pasek rozmowy. Jedno dotknięcie włącza wideo lub głos. Przy stole konferencyjnym wszyscy, którzy usiądą, są w tej samej rozmowie."
           }
         ]
@@ -706,10 +706,10 @@
         "label": "Alternatywa dla Wonder",
         "meta": {
           "title": "Alternatywa dla Wonder.me: podejdź i porozmawiaj",
-          "description": "Wonder.me zakończył działalność w 2023 roku. SpatialMeet to darmowe miejsce w przeglądarce, w którym poruszasz postacią i zaczynasz rozmowę wideo, podchodząc do innych."
+          "description": "Wonder.me zakończył działalność w 2023 roku. TinyFloor to darmowe miejsce w przeglądarce, w którym poruszasz postacią i zaczynasz rozmowę wideo, podchodząc do innych."
         },
         "title": "Brakuje Ci <em>Wonder?</em>",
-        "subtitle": "Wonder.me zakończył działalność w kwietniu 2023 roku. SpatialMeet zachowuje to, co w nim działało, chodzenie i rozmowę z tymi, do których podchodzisz, na piętrze biura w stylu pixel art.",
+        "subtitle": "Wonder.me zakończył działalność w kwietniu 2023 roku. TinyFloor zachowuje to, co w nim działało, chodzenie i rozmowę z tymi, do których podchodzisz, na piętrze biura w stylu pixel art.",
         "points": [
           {
             "title": "Podejdź, żeby porozmawiać",
@@ -730,15 +730,15 @@
             "a": "Nie. Wonder.me zakończył działalność 25 kwietnia 2023 roku, gdy założyciele nie znaleźli trwałego modelu biznesowego."
           },
           {
-            "q": "Czym SpatialMeet różni się od Wonder?",
-            "a": "Wonder używał kręgów na płaskiej planszy i był stworzony z myślą o wydarzeniach. SpatialMeet to biuro, po którym się chodzi, z biurkami, stołem konferencyjnym, tablicą i muzyką, stworzone dla grup, które spotykają się regularnie."
+            "q": "Czym TinyFloor różni się od Wonder?",
+            "a": "Wonder używał kręgów na płaskiej planszy i był stworzony z myślą o wydarzeniach. TinyFloor to biuro, po którym się chodzi, z biurkami, stołem konferencyjnym, tablicą i muzyką, stworzone dla grup, które spotykają się regularnie."
           },
           {
             "q": "Ile osób może dołączyć?",
             "a": "Pokój mieści jednocześnie do 20 osób, a Ty możesz otworzyć tyle pokoi, ile potrzebujesz."
           },
           {
-            "q": "Czy SpatialMeet jest darmowy?",
+            "q": "Czy TinyFloor jest darmowy?",
             "a": "Tak. Tworzenie pokoi, chodzenie, czat i rozmowy są darmowe."
           }
         ]
@@ -768,11 +768,11 @@
         "faq": [
           {
             "q": "Czym jest wirtualne biuro?",
-            "a": "Wirtualne biuro to wspólne miejsce w sieci, w którym zespół pracujący na odległość pracuje razem. W SpatialMeet to piętro w stylu pixel art, na którym widzisz współpracowników i rozmawiasz z nimi, podchodząc do nich."
+            "a": "Wirtualne biuro to wspólne miejsce w sieci, w którym zespół pracujący na odległość pracuje razem. W TinyFloor to piętro w stylu pixel art, na którym widzisz współpracowników i rozmawiasz z nimi, podchodząc do nich."
           },
           {
             "q": "Czy to jest darmowe?",
-            "a": "Tak. SpatialMeet jest darmowy, bez okresu próbnego i bez opłat za miejsce."
+            "a": "Tak. TinyFloor jest darmowy, bez okresu próbnego i bez opłat za miejsce."
           },
           {
             "q": "Ile osób może korzystać z jednego biura?",
@@ -854,7 +854,7 @@
           },
           {
             "q": "Czy to jest darmowe dla uczniów i studentów?",
-            "a": "Tak. SpatialMeet jest darmowy dla wszystkich i nikt nie potrzebuje konta, żeby dołączyć."
+            "a": "Tak. TinyFloor jest darmowy dla wszystkich i nikt nie potrzebuje konta, żeby dołączyć."
           },
           {
             "q": "Czy możemy słuchać muzyki podczas nauki?",
@@ -903,7 +903,7 @@
           },
           {
             "q": "Czy to jest darmowe dla nauczycieli?",
-            "a": "Tak. SpatialMeet jest darmowy i nie ma płatnego planu."
+            "a": "Tak. TinyFloor jest darmowy i nie ma płatnego planu."
           }
         ]
       },
@@ -914,7 +914,7 @@
           "description": "Czat zbliżeniowy dla zespołów i znajomych: podejdź swoją postacią do kogoś, żeby zacząć rozmowę wideo lub głosową. Za darmo, w przeglądarce, bez pobierania."
         },
         "title": "<em>Czat zbliżeniowy</em>, który zaczyna się, gdy podchodzisz.",
-        "subtitle": "W SpatialMeet to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, usiądź przy stole, żeby porozmawiać w grupie, i idź dalej, gdy skończysz.",
+        "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, usiądź przy stole, żeby porozmawiać w grupie, i idź dalej, gdy skończysz.",
         "points": [
           {
             "title": "Bliskość zaczyna rozmowę",
@@ -944,7 +944,7 @@
           },
           {
             "q": "Czy to jest darmowe?",
-            "a": "Tak. SpatialMeet jest darmowy w przeglądarce, na komputerze i telefonie."
+            "a": "Tak. TinyFloor jest darmowy w przeglądarce, na komputerze i telefonie."
           }
         ]
       }

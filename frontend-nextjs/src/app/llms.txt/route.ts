@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export async function GET() {
   const t = await getTranslations({ locale: "en" });
   const pages: Array<[string, string, string]> = [
-    ["SpatialMeet", "/", t("landing.description")],
+    ["TinyFloor", "/", t("landing.description")],
     [t("metadata.roomsTitle"), "/rooms", t("metadata.roomsDescription")],
     [t("metadata.peopleTitle"), "/people", t("metadata.peopleDescription")],
     [t("metadata.createRoomTitle"), "/create-room", t("metadata.createRoomDescription")],
@@ -22,7 +22,7 @@ export async function GET() {
   const faqs = t.raw("faq.items") as Array<{ q: string; a: string }>;
 
   const body = [
-    "# SpatialMeet",
+    "# TinyFloor",
     "",
     `> ${t("metadata.description")}`,
     "",

@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "title": "SpatialMeet - 可以四处走动的虚拟办公室",
-    "description": "SpatialMeet 是浏览器里的免费虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
-    "ogAlt": "SpatialMeet 房间：摆满办公桌和同事的 16 位像素办公楼层",
+    "title": "TinyFloor - 可以四处走动的虚拟办公室",
+    "description": "TinyFloor 是浏览器里的免费虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
+    "ogAlt": "TinyFloor 房间：摆满办公桌和同事的 16 位像素办公楼层",
     "keywords": "虚拟办公室，远程办公，空间聊天，在线协作，虚拟工作空间，元宇宙办公室，近距离聊天，近距离视频聊天，虚拟共享办公，浏览器视频通话",
     "createRoomTitle": "创建房间",
-    "createRoomDescription": "在 SpatialMeet 上开一个虚拟办公室房间。取个名字，需要的话加上密码，然后把一个链接分享给团队。",
+    "createRoomDescription": "在 TinyFloor 上开一个虚拟办公室房间。取个名字，需要的话加上密码，然后把一个链接分享给团队。",
     "joinTitle": "加入房间",
     "roomsTitle": "浏览房间",
-    "roomsDescription": "浏览活跃的虚拟房间，加入 SpatialMeet 上的公共工作空间。",
+    "roomsDescription": "浏览活跃的虚拟房间，加入 TinyFloor 上的公共工作空间。",
     "peopleTitle": "成员",
-    "peopleDescription": "认识常在 SpatialMeet 房间里出没的人。",
+    "peopleDescription": "认识常在 TinyFloor 房间里出没的人。",
     "authTitle": "登录",
-    "authDescription": "登录 SpatialMeet，保留你的名字、角色和房间列表。",
+    "authDescription": "登录 TinyFloor，保留你的名字、角色和房间列表。",
     "dashboardTitle": "控制台",
     "roomTitle": "当前房间",
     "notFoundTitle": "页面未找到"
@@ -51,7 +51,7 @@
     "title": "最<em>温馨</em>的<br></br>虚拟办公室。",
     "subtitle": "看起来像游戏的虚拟办公室。四处走走，和同事聊聊，重新找回团队的感觉。",
     "cta": "立即体验",
-    "caption": "SpatialMeet 房间：摆着办公桌的 16 位像素办公楼层上站着两位同事。"
+    "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上站着两位同事。"
   },
   "landing": {
     "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
@@ -65,7 +65,7 @@
   },
   "moments": {
     "title": "一间<em>可以四处走动</em>的办公室。",
-    "subtitle": "SpatialMeet 保留了通话从未取代的办公室日常：知道谁在，随时可以走过去。",
+    "subtitle": "TinyFloor 保留了通话从未取代的办公室日常：知道谁在，随时可以走过去。",
     "alwaysOn": "全天开放",
     "directory": {
       "design": {
@@ -121,15 +121,15 @@
     "title": "<em>进门之前。</em>",
     "items": [
       {
-        "q": "SpatialMeet 是什么？",
-        "a": "SpatialMeet 是一个可以四处走动的虚拟办公室。你的团队以像素风角色出现在共享的 2D 楼层上，只要站到某人身边就会开始视频或语音通话，而不是点击会议链接。"
+        "q": "TinyFloor 是什么？",
+        "a": "TinyFloor 是一个可以四处走动的虚拟办公室。你的团队以像素风角色出现在共享的 2D 楼层上，只要站到某人身边就会开始视频或语音通话，而不是点击会议链接。"
       },
       {
         "q": "需要安装什么吗？",
-        "a": "不需要。SpatialMeet 在电脑和手机的浏览器中运行。打开房间链接，你就在办公室里了。"
+        "a": "不需要。TinyFloor 在电脑和手机的浏览器中运行。打开房间链接，你就在办公室里了。"
       },
       {
-        "q": "SpatialMeet 免费吗？",
+        "q": "TinyFloor 免费吗？",
         "a": "免费。创建房间、四处走动、聊天和通话都不收费。"
       },
       {
@@ -145,12 +145,12 @@
         "a": "不会。摄像头和麦克风只在通话时开启，通话结束立刻释放。"
       },
       {
-        "q": "可以在手机上使用 SpatialMeet 吗？",
+        "q": "可以在手机上使用 TinyFloor 吗？",
         "a": "可以。在触屏设备上用屏幕摇杆移动，通话按钮也会适配小屏幕。"
       },
       {
         "q": "它和普通视频通话有什么不同？",
-        "a": "普通通话会把所有人放进同一个网格，直到会议结束。SpatialMeet 房间全天开放，你能看到谁在，在不同对话间切换，并和你走近的人交谈。"
+        "a": "普通通话会把所有人放进同一个网格，直到会议结束。TinyFloor 房间全天开放，你能看到谁在，在不同对话间切换，并和你走近的人交谈。"
       }
     ]
   },
@@ -226,9 +226,9 @@
   },
   "directory": {
     "roomsTitle": "<em>虚拟办公室</em>房间",
-    "peopleTitle": "SpatialMeet <em>社区</em>",
+    "peopleTitle": "TinyFloor <em>社区</em>",
     "roomsSubtitle": "浏览房间，或认识里面的人",
-    "peopleSubtitle": "认识正在打造 SpatialMeet 的人",
+    "peopleSubtitle": "认识正在打造 TinyFloor 的人",
     "updating": "更新中...",
     "roomsLive": "{count, plural, other {# 个房间在线}}",
     "search": "搜索",
@@ -274,7 +274,7 @@
       "copyLink": "复制资料链接",
       "share": "分享资料",
       "shareTitle": "{name} 的资料",
-      "shareText": "来 SpatialMeet 看看 {name} 的资料",
+      "shareText": "来 TinyFloor 看看 {name} 的资料",
       "created": "已创建",
       "joined": "已加入",
       "chooseCharacter": "选择角色",
@@ -482,7 +482,7 @@
     "free": "免费，在浏览器中使用，无需账号。",
     "compare": "对比",
     "useCases": "使用场景",
-    "compareTitle": "SpatialMeet 与 {name}，<em>并排对比。</em>",
+    "compareTitle": "TinyFloor 与 {name}，<em>并排对比。</em>",
     "checked": "{name} 的信息来自其价格页面，于 2026 年 9 月核对。",
     "rows": {
       "price": "价格",
@@ -518,14 +518,14 @@
         "label": "Gather 替代品",
         "meta": {
           "title": "在浏览器中使用的免费 Gather 替代品",
-          "description": "在找免费的 Gather 替代品？SpatialMeet 是一个像素风虚拟办公室，走近就能视频通话。没有试用期，不按席位收费，也无需安装。"
+          "description": "在找免费的 Gather 替代品？TinyFloor 是一个像素风虚拟办公室，走近就能视频通话。没有试用期，不按席位收费，也无需安装。"
         },
         "title": "免费的 <em>Gather 替代品。</em>",
-        "subtitle": "Gather 取消了免费方案，现在按成员收费。SpatialMeet 保留了同样的想法，一个可以走动和交谈的办公室，并且继续免费。",
+        "subtitle": "Gather 取消了免费方案，现在按成员收费。TinyFloor 保留了同样的想法，一个可以走动和交谈的办公室，并且继续免费。",
         "points": [
           {
             "title": "没有试用倒计时",
-            "body": "Gather 给你 30 天后才需付费。SpatialMeet 没有试用期，因为根本没有需要升级的方案。"
+            "body": "Gather 给你 30 天后才需付费。TinyFloor 没有试用期，因为根本没有需要升级的方案。"
           },
           {
             "title": "无需安装",
@@ -545,18 +545,18 @@
         "faq": [
           {
             "q": "Gather 还免费吗？",
-            "a": "不免费了。Gather 已经没有永久免费方案，只提供 30 天试用，之后 Essential 方案每位成员每月 12 美元起。SpatialMeet 是免费的。"
+            "a": "不免费了。Gather 已经没有永久免费方案，只提供 30 天试用，之后 Essential 方案每位成员每月 12 美元起。TinyFloor 是免费的。"
           },
           {
-            "q": "Gather 有哪些 SpatialMeet 没有的功能？",
-            "a": "Gather 有屏幕共享、AI 会议记录和办公室自定义。SpatialMeet 专注于核心功能：走动、靠近通话、会议桌、聊天、白板和房间音乐。"
+            "q": "Gather 有哪些 TinyFloor 没有的功能？",
+            "a": "Gather 有屏幕共享、AI 会议记录和办公室自定义。TinyFloor 专注于核心功能：走动、靠近通话、会议桌、聊天、白板和房间音乐。"
           },
           {
-            "q": "可以把团队从 Gather 迁到 SpatialMeet 吗？",
+            "q": "可以把团队从 Gather 迁到 TinyFloor 吗？",
             "a": "可以。创建房间，分享链接，大家就能进来。没有需要迁移的数据，也不用安装任何东西。"
           },
           {
-            "q": "一个 SpatialMeet 房间能容纳多少人？",
+            "q": "一个 TinyFloor 房间能容纳多少人？",
             "a": "每个房间最多同时容纳 20 人，你可以按需开设任意多个房间。"
           }
         ]
@@ -565,10 +565,10 @@
         "label": "Kumospace 替代品",
         "meta": {
           "title": "适合整个团队的免费 Kumospace 替代品",
-          "description": "Kumospace 免费方案最多 5 名成员。SpatialMeet 是免费的像素风虚拟办公室，走近即可视频通话，整个团队都能在浏览器中使用。"
+          "description": "Kumospace 免费方案最多 5 名成员。TinyFloor 是免费的像素风虚拟办公室，走近即可视频通话，整个团队都能在浏览器中使用。"
         },
         "title": "适合整个团队的 <em>Kumospace 替代品。</em>",
-        "subtitle": "Kumospace 免费方案只能在一个楼层容纳 5 名成员。SpatialMeet 没有成员上限，也没有付费方案，整个团队都能搬进来。",
+        "subtitle": "Kumospace 免费方案只能在一个楼层容纳 5 名成员。TinyFloor 没有成员上限，也没有付费方案，整个团队都能搬进来。",
         "points": [
           {
             "title": "没有 5 人上限",
@@ -576,7 +576,7 @@
           },
           {
             "title": "访客没有每周时长限制",
-            "body": "Kumospace 免费访客每周只有 4 小时。在 SpatialMeet 中，访客输入名字就能加入，想待多久都可以。"
+            "body": "Kumospace 免费访客每周只有 4 小时。在 TinyFloor 中，访客输入名字就能加入，想待多久都可以。"
           },
           {
             "title": "手机上也好用",
@@ -592,18 +592,18 @@
         "faq": [
           {
             "q": "Kumospace 免费吗？",
-            "a": "Kumospace 有免费方案，最多 5 名注册成员，一个楼层，访客每周限 4 小时。Business 方案每位用户每月 16 美元起。SpatialMeet 对所有人免费。"
+            "a": "Kumospace 有免费方案，最多 5 名注册成员，一个楼层，访客每周限 4 小时。Business 方案每位用户每月 16 美元起。TinyFloor 对所有人免费。"
           },
           {
-            "q": "Kumospace 有哪些 SpatialMeet 没有的功能？",
-            "a": "Kumospace 支持屏幕共享，付费方案还提供录制和不限量的聊天记录。SpatialMeet 目前还没有屏幕共享和录制。"
+            "q": "Kumospace 有哪些 TinyFloor 没有的功能？",
+            "a": "Kumospace 支持屏幕共享，付费方案还提供录制和不限量的聊天记录。TinyFloor 目前还没有屏幕共享和录制。"
           },
           {
             "q": "我的同事需要账号吗？",
             "a": "不需要。有房间链接的人只需输入名字就能以访客身份加入。登录只会保存资料、角色和你的房间列表。"
           },
           {
-            "q": "SpatialMeet 能在手机上用吗？",
+            "q": "TinyFloor 能在手机上用吗？",
             "a": "可以。它在手机浏览器中运行，使用屏幕摇杆移动，无需下载应用。"
           }
         ]
@@ -612,10 +612,10 @@
         "label": "SpatialChat 替代品",
         "meta": {
           "title": "没有每日时长限制的 SpatialChat 替代品",
-          "description": "SpatialChat 免费方案每天只有 2 小时。SpatialMeet 是免费的像素风虚拟办公室，走近即可通话，可以全天开放。"
+          "description": "SpatialChat 免费方案每天只有 2 小时。TinyFloor 是免费的像素风虚拟办公室，走近即可通话，可以全天开放。"
         },
         "title": "可以全天开放的 <em>SpatialChat 替代品。</em>",
-        "subtitle": "SpatialChat 面向活动设计，免费方案每天 2 小时就结束。SpatialMeet 是一个办公室，只要团队还在工作，房间就一直开着。",
+        "subtitle": "SpatialChat 面向活动设计，免费方案每天 2 小时就结束。TinyFloor 是一个办公室，只要团队还在工作，房间就一直开着。",
         "points": [
           {
             "title": "没有每日时长限制",
@@ -639,19 +639,19 @@
         "faq": [
           {
             "q": "SpatialChat 免费吗？",
-            "a": "SpatialChat 有免费方案，每天最多 2 小时会议，最多 12 名参与者。付费选项包括每位用户 5 美元的 Day Pass 和每月 399 美元起的 Business 方案。SpatialMeet 免费且没有每日时长限制。"
+            "a": "SpatialChat 有免费方案，每天最多 2 小时会议，最多 12 名参与者。付费选项包括每位用户 5 美元的 Day Pass 和每月 399 美元起的 Business 方案。TinyFloor 免费且没有每日时长限制。"
           },
           {
-            "q": "SpatialMeet 适合线上活动吗？",
-            "a": "SpatialMeet 是为每天见面的群体设计的。每个房间同时容纳 20 人，更适合团队办公室、学习小组和小型聚会，而不是大型活动。"
+            "q": "TinyFloor 适合线上活动吗？",
+            "a": "TinyFloor 是为每天见面的群体设计的。每个房间同时容纳 20 人，更适合团队办公室、学习小组和小型聚会，而不是大型活动。"
           },
           {
-            "q": "SpatialChat 有哪些 SpatialMeet 没有的功能？",
-            "a": "SpatialChat 支持屏幕共享、置顶文件和大型活动。SpatialMeet 目前还没有屏幕共享，专注于日常在线状态和快速交流。"
+            "q": "SpatialChat 有哪些 TinyFloor 没有的功能？",
+            "a": "SpatialChat 支持屏幕共享、置顶文件和大型活动。TinyFloor 目前还没有屏幕共享，专注于日常在线状态和快速交流。"
           },
           {
             "q": "浏览器之间可以通话吗？",
-            "a": "可以。SpatialMeet 的通话通过 WebRTC 点对点连接，音频和视频直接在浏览器之间传输。"
+            "a": "可以。TinyFloor 的通话通过 WebRTC 点对点连接，音频和视频直接在浏览器之间传输。"
           }
         ]
       },
@@ -659,14 +659,14 @@
         "label": "WorkAdventure 替代品",
         "meta": {
           "title": "房间可容纳 20 人的 WorkAdventure 替代品",
-          "description": "WorkAdventure 免费方案同时最多 10 人。SpatialMeet 是免费的像素风虚拟办公室，走近即可视频通话，每个房间可容纳 20 人。"
+          "description": "WorkAdventure 免费方案同时最多 10 人。TinyFloor 是免费的像素风虚拟办公室，走近即可视频通话，每个房间可容纳 20 人。"
         },
         "title": "留有成长空间的 <em>WorkAdventure 替代品。</em>",
-        "subtitle": "WorkAdventure 也是像素风办公室，免费方案同时最多 10 人。SpatialMeet 的房间可容纳 20 人，也没有需要升级的付费方案。",
+        "subtitle": "WorkAdventure 也是像素风办公室，免费方案同时最多 10 人。TinyFloor 的房间可容纳 20 人，也没有需要升级的付费方案。",
         "points": [
           {
             "title": "两倍的空间",
-            "body": "WorkAdventure 免费地图同时最多 10 人。SpatialMeet 房间可容纳 20 人，而且房间想开多少就开多少。"
+            "body": "WorkAdventure 免费地图同时最多 10 人。TinyFloor 房间可容纳 20 人，而且房间想开多少就开多少。"
           },
           {
             "title": "不用搭建地图",
@@ -686,18 +686,18 @@
         "faq": [
           {
             "q": "WorkAdventure 免费吗？",
-            "a": "WorkAdventure 有免费方案，同时最多 10 名用户。Business 方案每位用户每月 8 欧元起，活动价格每位用户每天 4 欧元起。SpatialMeet 是免费的。"
+            "a": "WorkAdventure 有免费方案，同时最多 10 名用户。Business 方案每位用户每月 8 欧元起，活动价格每位用户每天 4 欧元起。TinyFloor 是免费的。"
           },
           {
-            "q": "可以在 SpatialMeet 中自定义地图吗？",
+            "q": "可以在 TinyFloor 中自定义地图吗？",
             "a": "暂时不行。所有房间使用同一个办公楼层。WorkAdventure 允许你设计自己的地图，适合想要专属世界的团队。"
           },
           {
             "q": "需要自己运行服务器吗？",
-            "a": "不需要。SpatialMeet 已为你托管好。在浏览器中创建房间并分享链接即可。"
+            "a": "不需要。TinyFloor 已为你托管好。在浏览器中创建房间并分享链接即可。"
           },
           {
-            "q": "SpatialMeet 中的通话怎么开始？",
+            "q": "TinyFloor 中的通话怎么开始？",
             "a": "走到同事身边，通话栏就会出现。点一下即可开始视频或语音。在会议桌旁，坐下的人都会进入同一个通话。"
           }
         ]
@@ -706,10 +706,10 @@
         "label": "Wonder 替代品",
         "meta": {
           "title": "Wonder.me 替代品：走过去就能聊",
-          "description": "Wonder.me 已于 2023 年停止服务。SpatialMeet 是一个免费的浏览器空间，移动角色走近他人就能开始视频通话。"
+          "description": "Wonder.me 已于 2023 年停止服务。TinyFloor 是一个免费的浏览器空间，移动角色走近他人就能开始视频通话。"
         },
         "title": "想念 <em>Wonder</em> 吗？",
-        "subtitle": "Wonder.me 已于 2023 年 4 月关闭。SpatialMeet 保留了它最好的部分，四处走动并和你走近的人交谈，场景换成了像素风办公楼层。",
+        "subtitle": "Wonder.me 已于 2023 年 4 月关闭。TinyFloor 保留了它最好的部分，四处走动并和你走近的人交谈，场景换成了像素风办公楼层。",
         "points": [
           {
             "title": "走过去聊天",
@@ -730,15 +730,15 @@
             "a": "不能了。由于创始人没有找到可持续的商业模式，Wonder.me 于 2023 年 4 月 25 日关闭。"
           },
           {
-            "q": "SpatialMeet 和 Wonder 有什么不同？",
-            "a": "Wonder 在平面画布上使用圆圈，面向活动。SpatialMeet 是一个可以走动的办公室，有工位、会议桌、白板和音乐，面向经常见面的群体。"
+            "q": "TinyFloor 和 Wonder 有什么不同？",
+            "a": "Wonder 在平面画布上使用圆圈，面向活动。TinyFloor 是一个可以走动的办公室，有工位、会议桌、白板和音乐，面向经常见面的群体。"
           },
           {
             "q": "最多能有多少人加入？",
             "a": "每个房间最多同时容纳 20 人，你可以按需开设任意多个房间。"
           },
           {
-            "q": "SpatialMeet 免费吗？",
+            "q": "TinyFloor 免费吗？",
             "a": "免费。创建房间、走动、聊天和通话都是免费的。"
           }
         ]
@@ -768,11 +768,11 @@
         "faq": [
           {
             "q": "什么是虚拟办公室？",
-            "a": "虚拟办公室是远程团队一起工作的在线共享空间。在 SpatialMeet 中，它是一个像素风楼层，你能看到同事，走过去就能和他们交谈。"
+            "a": "虚拟办公室是远程团队一起工作的在线共享空间。在 TinyFloor 中，它是一个像素风楼层，你能看到同事，走过去就能和他们交谈。"
           },
           {
             "q": "免费吗？",
-            "a": "免费。SpatialMeet 没有试用期，也不按席位收费。"
+            "a": "免费。TinyFloor 没有试用期，也不按席位收费。"
           },
           {
             "q": "一个办公室可以多少人用？",
@@ -854,7 +854,7 @@
           },
           {
             "q": "学生免费吗？",
-            "a": "免费。SpatialMeet 对所有人免费，加入也不需要账号。"
+            "a": "免费。TinyFloor 对所有人免费，加入也不需要账号。"
           },
           {
             "q": "学习时可以放音乐吗？",
@@ -903,7 +903,7 @@
           },
           {
             "q": "老师使用免费吗？",
-            "a": "免费。SpatialMeet 是免费的，没有付费方案。"
+            "a": "免费。TinyFloor 是免费的，没有付费方案。"
           }
         ]
       },
@@ -914,7 +914,7 @@
           "description": "适合团队和朋友的近距离聊天：让角色走到某人身边，就能开始视频或语音通话。免费，在浏览器中使用，无需下载。"
         },
         "title": "走过去就开始的<em>近距离聊天。</em>",
-        "subtitle": "在 SpatialMeet 中，你站在哪里决定你和谁说话。走到某人身边就能通话，坐到桌边就能小组讨论，聊完再走开。",
+        "subtitle": "在 TinyFloor 中，你站在哪里决定你和谁说话。走到某人身边就能通话，坐到桌边就能小组讨论，聊完再走开。",
         "points": [
           {
             "title": "靠近就开始对话",
@@ -944,7 +944,7 @@
           },
           {
             "q": "免费吗？",
-            "a": "免费。SpatialMeet 在电脑和手机的浏览器中都可以免费使用。"
+            "a": "免费。TinyFloor 在电脑和手机的浏览器中都可以免费使用。"
           }
         ]
       }

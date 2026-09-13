@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: {
       default: title,
-      template: "%s | SpatialMeet",
+      template: "%s | TinyFloor",
     },
     description,
     keywords: t("keywords").split(/\s*[,،、，]\s*/),
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: SITE_URL,
-      siteName: "SpatialMeet",
+      siteName: "TinyFloor",
       images: [
         {
           url: "/og.png",
@@ -63,7 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: ["/og.png"],
     },
-    applicationName: "SpatialMeet",
+    applicationName: "TinyFloor",
     robots: {
       index: true,
       follow: true,

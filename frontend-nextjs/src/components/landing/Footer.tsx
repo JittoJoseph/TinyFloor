@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <div className="font-body font-bold text-xl tracking-tight text-[var(--color-braun-text)]">
-              SpatialMeet
+              TinyFloor
             </div>
             <p className="font-body text-sm text-[var(--color-braun-text)] opacity-50 mt-3 max-w-xs leading-relaxed">
               {t("tagline")}

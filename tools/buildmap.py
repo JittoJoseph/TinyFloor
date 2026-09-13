@@ -1,4 +1,4 @@
-"""Generates the SpatialMeet office map.
+"""Generates the TinyFloor office map.
 
 Floors and flat wall faces stay as tile layers. Everything a player can pass in
 front of or behind is emitted into object layers so the scene can sort it by y,

@@ -4,7 +4,7 @@ import { localePath } from "@/lib/seo";
 
 export type Schema = Record<string, unknown>;
 
-const NAME = "SpatialMeet";
+const NAME = "TinyFloor";
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const IMAGE = `${SITE_URL}/office.png`;
@@ -15,7 +15,7 @@ export function absoluteUrl(locale: string, path: string): string {
   return `${SITE_URL}${localized === "/" ? "" : localized}`;
 }
 
-/** Who makes SpatialMeet and the site itself: the same two nodes on every page. */
+/** Who makes TinyFloor and the site itself: the same two nodes on every page. */
 export function siteGraph(): Schema {
   return {
     "@context": "https://schema.org",

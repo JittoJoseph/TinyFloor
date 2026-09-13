@@ -64,7 +64,7 @@ function AuthPageContent() {
           />
         </div>
         <span className="text-xl font-medium tracking-tight text-[var(--color-braun-text)]">
-          SpatialMeet
+          TinyFloor
         </span>
       </div>
 

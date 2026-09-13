@@ -3,7 +3,7 @@ import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
 
-const SITE_NAME = "SpatialMeet";
+const SITE_NAME = "TinyFloor";
 
 // Open Graph wants language_TERRITORY; our routing codes are only the language.
 const OG_LOCALE: Record<Locale, string> = {

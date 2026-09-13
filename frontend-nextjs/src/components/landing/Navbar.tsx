@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-6 py-8 md:py-10 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
           <span className="font-body font-bold text-xl tracking-tight text-[var(--color-braun-text)]">
-            SpatialMeet
+            TinyFloor
           </span>
         </Link>
 

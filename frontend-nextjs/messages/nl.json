@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "title": "SpatialMeet - Een virtueel kantoor waar je rondloopt",
-    "description": "SpatialMeet is een gratis virtueel kantoor in je browser. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
-    "ogAlt": "Een SpatialMeet-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
+    "title": "TinyFloor - Een virtueel kantoor waar je rondloopt",
+    "description": "TinyFloor is een gratis virtueel kantoor in je browser. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
+    "ogAlt": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
     "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, metaverse-kantoor, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
     "createRoomTitle": "Ruimte aanmaken",
-    "createRoomDescription": "Open een virtuele kantoorruimte op SpatialMeet. Geef hem een naam, voeg desgewenst een wachtwoord toe en deel één link met je team.",
+    "createRoomDescription": "Open een virtuele kantoorruimte op TinyFloor. Geef hem een naam, voeg desgewenst een wachtwoord toe en deel één link met je team.",
     "joinTitle": "Ruimte binnengaan",
     "roomsTitle": "Ruimtes verkennen",
-    "roomsDescription": "Bekijk actieve virtuele ruimtes en ga openbare werkplekken binnen op SpatialMeet.",
+    "roomsDescription": "Bekijk actieve virtuele ruimtes en ga openbare werkplekken binnen op TinyFloor.",
     "peopleTitle": "Mensen",
-    "peopleDescription": "Maak kennis met de mensen die rondhangen in SpatialMeet-ruimtes.",
+    "peopleDescription": "Maak kennis met de mensen die rondhangen in TinyFloor-ruimtes.",
     "authTitle": "Inloggen",
-    "authDescription": "Log in bij SpatialMeet om je naam, je personage en een lijst van je ruimtes te bewaren.",
+    "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "dashboardTitle": "Dashboard",
     "roomTitle": "Actieve ruimte",
     "notFoundTitle": "Pagina niet gevonden"
@@ -51,7 +51,7 @@
     "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
     "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
     "cta": "Probeer het",
-    "caption": "Een SpatialMeet-ruimte: een 16-bit kantoorverdieping met bureaus en twee teamgenoten."
+    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en twee teamgenoten."
   },
   "landing": {
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
@@ -65,7 +65,7 @@
   },
   "moments": {
     "title": "Een kantoor waar je <em>kunt rondlopen.</em>",
-    "subtitle": "SpatialMeet behoudt het deel van een kantoor dat gesprekken nooit hebben vervangen: weten wie er is, en even naar iemand toe kunnen lopen.",
+    "subtitle": "TinyFloor behoudt het deel van een kantoor dat gesprekken nooit hebben vervangen: weten wie er is, en even naar iemand toe kunnen lopen.",
     "alwaysOn": "Altijd open",
     "directory": {
       "design": {
@@ -121,15 +121,15 @@
     "title": "Voordat je <em>binnenloopt.</em>",
     "items": [
       {
-        "q": "Wat is SpatialMeet?",
-        "a": "SpatialMeet is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
+        "q": "Wat is TinyFloor?",
+        "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
       },
       {
         "q": "Moet ik iets installeren?",
-        "a": "Nee. SpatialMeet werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
       },
       {
-        "q": "Is SpatialMeet gratis?",
+        "q": "Is TinyFloor gratis?",
         "a": "Ja. Ruimtes aanmaken, rondlopen, chatten en bellen is gratis."
       },
       {
@@ -145,12 +145,12 @@
         "a": "Nee. Camera en microfoon worden alleen voor een gesprek geopend en vrijgegeven zodra het afgelopen is."
       },
       {
-        "q": "Kan ik SpatialMeet op mijn telefoon gebruiken?",
+        "q": "Kan ik TinyFloor op mijn telefoon gebruiken?",
         "a": "Ja. Op touchapparaten beweeg je met een joystick op het scherm en passen de belknoppen zich aan het kleinere scherm aan."
       },
       {
         "q": "Wat is het verschil met een gewoon videogesprek?",
-        "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een SpatialMeet-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
+        "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een TinyFloor-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
       }
     ]
   },
@@ -226,9 +226,9 @@
   },
   "directory": {
     "roomsTitle": "Ruimtes in het <em>virtuele kantoor</em>",
-    "peopleTitle": "De SpatialMeet-<em>community</em>",
+    "peopleTitle": "De TinyFloor-<em>community</em>",
     "roomsSubtitle": "Bekijk ruimtes of ontmoet de mensen erin",
-    "peopleSubtitle": "Maak kennis met de makers die SpatialMeet vormgeven",
+    "peopleSubtitle": "Maak kennis met de makers die TinyFloor vormgeven",
     "updating": "Bijwerken...",
     "roomsLive": "{count, plural, one {# ruimte live} other {# ruimtes live}}",
     "search": "Zoeken",
@@ -274,7 +274,7 @@
       "copyLink": "Profiellink kopiëren",
       "share": "Profiel delen",
       "shareTitle": "Profiel van {name}",
-      "shareText": "Bekijk het profiel van {name} op SpatialMeet",
+      "shareText": "Bekijk het profiel van {name} op TinyFloor",
       "created": "aangemaakt",
       "joined": "bijgewoond",
       "chooseCharacter": "Kies personage",
@@ -482,7 +482,7 @@
     "free": "Gratis, in de browser, zonder account.",
     "compare": "Vergelijkingen",
     "useCases": "Toepassingen",
-    "compareTitle": "SpatialMeet en {name}, <em>naast elkaar.</em>",
+    "compareTitle": "TinyFloor en {name}, <em>naast elkaar.</em>",
     "checked": "De gegevens over {name} komen van de prijzenpagina, gecontroleerd in september 2026.",
     "rows": {
       "price": "Prijs",
@@ -518,14 +518,14 @@
         "label": "Gather-alternatief",
         "meta": {
           "title": "Gratis Gather-alternatief in je browser",
-          "description": "Op zoek naar een gratis Gather-alternatief? SpatialMeet is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid. Geen proefperiode, geen prijs per plek, niets te installeren."
+          "description": "Op zoek naar een gratis Gather-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid. Geen proefperiode, geen prijs per plek, niets te installeren."
         },
         "title": "Een gratis <em>Gather-alternatief.</em>",
-        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. SpatialMeet houdt hetzelfde idee, een kantoor waar je rondloopt en praat, en blijft gratis.",
+        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee, een kantoor waar je rondloopt en praat, en blijft gratis.",
         "points": [
           {
             "title": "Geen proefperiode die afloopt",
-            "body": "Gather geeft je 30 dagen voordat je betaalt. SpatialMeet heeft geen proefperiode, want er is niets om naar te upgraden."
+            "body": "Gather geeft je 30 dagen voordat je betaalt. TinyFloor heeft geen proefperiode, want er is niets om naar te upgraden."
           },
           {
             "title": "Niets te installeren",
@@ -545,18 +545,18 @@
         "faq": [
           {
             "q": "Is Gather nog gratis?",
-            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. SpatialMeet is gratis."
+            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. TinyFloor is gratis."
           },
           {
-            "q": "Wat heeft Gather dat SpatialMeet niet heeft?",
-            "a": "Gather heeft scherm delen, AI-vergadernotities en een aanpasbaar kantoor. SpatialMeet richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
+            "q": "Wat heeft Gather dat TinyFloor niet heeft?",
+            "a": "Gather heeft scherm delen, AI-vergadernotities en een aanpasbaar kantoor. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
           },
           {
-            "q": "Kan ik mijn team van Gather naar SpatialMeet verhuizen?",
+            "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
             "a": "Ja. Maak een ruimte, deel de link en iedereen loopt naar binnen. Er zijn geen gegevens over te zetten en niets te installeren."
           },
           {
-            "q": "Hoeveel mensen passen er in een SpatialMeet-ruimte?",
+            "q": "Hoeveel mensen passen er in een TinyFloor-ruimte?",
             "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
           }
         ]
@@ -565,10 +565,10 @@
         "label": "Kumospace-alternatief",
         "meta": {
           "title": "Gratis Kumospace-alternatief voor het hele team",
-          "description": "Het gratis abonnement van Kumospace stopt bij 5 leden. SpatialMeet is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, open voor je hele team in de browser."
+          "description": "Het gratis abonnement van Kumospace stopt bij 5 leden. TinyFloor is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, open voor je hele team in de browser."
         },
         "title": "Een <em>Kumospace-alternatief</em> voor het hele team.",
-        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. SpatialMeet heeft geen ledenlimiet en geen betaald abonnement, dus het hele team kan erin.",
+        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. TinyFloor heeft geen ledenlimiet en geen betaald abonnement, dus het hele team kan erin.",
         "points": [
           {
             "title": "Geen limiet van 5 leden",
@@ -576,7 +576,7 @@
           },
           {
             "title": "Geen wekelijkse gastenlimiet",
-            "body": "Kumospace geeft gratis gasten 4 uur per week. In SpatialMeet doet een gast mee met een naam en blijft zo lang als hij wil."
+            "body": "Kumospace geeft gratis gasten 4 uur per week. In TinyFloor doet een gast mee met een naam en blijft zo lang als hij wil."
           },
           {
             "title": "Ook gemaakt voor je telefoon",
@@ -592,18 +592,18 @@
         "faq": [
           {
             "q": "Is Kumospace gratis?",
-            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. SpatialMeet is gratis voor iedereen."
+            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. TinyFloor is gratis voor iedereen."
           },
           {
-            "q": "Wat heeft Kumospace dat SpatialMeet niet heeft?",
-            "a": "Kumospace heeft scherm delen, en de betaalde abonnementen voegen opnemen en onbeperkte chatgeschiedenis toe. SpatialMeet heeft nog geen scherm delen of opnemen."
+            "q": "Wat heeft Kumospace dat TinyFloor niet heeft?",
+            "a": "Kumospace heeft scherm delen, en de betaalde abonnementen voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor heeft nog geen scherm delen of opnemen."
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
             "a": "Nee. Iedereen met een ruimtelink kan als gast meedoen met alleen een naam. Inloggen bewaart alleen een profiel, een personage en een lijst van je ruimtes."
           },
           {
-            "q": "Werkt SpatialMeet op een telefoon?",
+            "q": "Werkt TinyFloor op een telefoon?",
             "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm, dus je hoeft geen app te downloaden."
           }
         ]
@@ -612,10 +612,10 @@
         "label": "SpatialChat-alternatief",
         "meta": {
           "title": "SpatialChat-alternatief zonder daglimiet",
-          "description": "Het gratis abonnement van SpatialChat staat 2 uur per dag toe. SpatialMeet is een gratis virtueel pixel-art kantoor met gesprekken op basis van nabijheid dat de hele dag open kan blijven."
+          "description": "Het gratis abonnement van SpatialChat staat 2 uur per dag toe. TinyFloor is een gratis virtueel pixel-art kantoor met gesprekken op basis van nabijheid dat de hele dag open kan blijven."
         },
         "title": "Een <em>SpatialChat-alternatief</em> dat de hele dag open blijft.",
-        "subtitle": "SpatialChat is gebouwd rond evenementen, en het gratis abonnement stopt na 2 uur per dag. SpatialMeet is een kantoor, dus de ruimte blijft open zolang je team werkt.",
+        "subtitle": "SpatialChat is gebouwd rond evenementen, en het gratis abonnement stopt na 2 uur per dag. TinyFloor is een kantoor, dus de ruimte blijft open zolang je team werkt.",
         "points": [
           {
             "title": "Geen daglimiet",
@@ -639,19 +639,19 @@
         "faq": [
           {
             "q": "Is SpatialChat gratis?",
-            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. SpatialMeet is gratis en zonder daglimiet."
+            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. TinyFloor is gratis en zonder daglimiet."
           },
           {
-            "q": "Is SpatialMeet geschikt voor virtuele evenementen?",
-            "a": "SpatialMeet is gemaakt voor groepen die elke dag samenkomen. Ruimtes bieden plek aan 20 mensen tegelijk, dus het past beter bij teamkantoren, studiegroepen en kleine meetups dan bij grote evenementen."
+            "q": "Is TinyFloor geschikt voor virtuele evenementen?",
+            "a": "TinyFloor is gemaakt voor groepen die elke dag samenkomen. Ruimtes bieden plek aan 20 mensen tegelijk, dus het past beter bij teamkantoren, studiegroepen en kleine meetups dan bij grote evenementen."
           },
           {
-            "q": "Wat heeft SpatialChat dat SpatialMeet niet heeft?",
-            "a": "SpatialChat ondersteunt scherm delen, vastgezette bestanden en grote evenementen. SpatialMeet heeft nog geen scherm delen en richt zich op dagelijkse aanwezigheid en korte gesprekken."
+            "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
+            "a": "SpatialChat ondersteunt scherm delen, vastgezette bestanden en grote evenementen. TinyFloor heeft nog geen scherm delen en richt zich op dagelijkse aanwezigheid en korte gesprekken."
           },
           {
             "q": "Werken gesprekken tussen browsers?",
-            "a": "Ja. Gesprekken in SpatialMeet lopen peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers."
+            "a": "Ja. Gesprekken in TinyFloor lopen peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers."
           }
         ]
       },
@@ -659,14 +659,14 @@
         "label": "WorkAdventure-alternatief",
         "meta": {
           "title": "WorkAdventure-alternatief met ruimtes voor 20",
-          "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. SpatialMeet is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid en ruimtes voor 20."
+          "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. TinyFloor is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid en ruimtes voor 20."
         },
         "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
-        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. Ruimtes in SpatialMeet bieden plek aan 20, en er is geen betaald abonnement om naar over te stappen.",
+        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. Ruimtes in TinyFloor bieden plek aan 20, en er is geen betaald abonnement om naar over te stappen.",
         "points": [
           {
             "title": "Twee keer zoveel plek",
-            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een SpatialMeet-ruimte biedt plek aan 20, en je kunt zoveel ruimtes openen als je wilt."
+            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een TinyFloor-ruimte biedt plek aan 20, en je kunt zoveel ruimtes openen als je wilt."
           },
           {
             "title": "Geen kaart om te bouwen",
@@ -686,18 +686,18 @@
         "faq": [
           {
             "q": "Is WorkAdventure gratis?",
-            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. SpatialMeet is gratis."
+            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. TinyFloor is gratis."
           },
           {
-            "q": "Kan ik de kaart in SpatialMeet aanpassen?",
+            "q": "Kan ik de kaart in TinyFloor aanpassen?",
             "a": "Nog niet. Elke ruimte gebruikt dezelfde kantoorvloer. Met WorkAdventure ontwerp je je eigen kaarten, wat past bij teams die een eigen wereld willen."
           },
           {
             "q": "Moet ik een server draaien?",
-            "a": "Nee. SpatialMeet wordt voor je gehost. Maak een ruimte in de browser en deel de link."
+            "a": "Nee. TinyFloor wordt voor je gehost. Maak een ruimte in de browser en deel de link."
           },
           {
-            "q": "Hoe starten gesprekken in SpatialMeet?",
+            "q": "Hoe starten gesprekken in TinyFloor?",
             "a": "Loop naar een collega en de gespreksbalk verschijnt. Eén tik start video of spraak. Aan de vergadertafel zit iedereen die gaat zitten in hetzelfde gesprek."
           }
         ]
@@ -706,10 +706,10 @@
         "label": "Wonder-alternatief",
         "meta": {
           "title": "Wonder.me-alternatief: loop erheen en praat",
-          "description": "Wonder.me stopte in 2023. SpatialMeet is een gratis plek in de browser waar je een personage beweegt en een videogesprek start door naar mensen toe te lopen."
+          "description": "Wonder.me stopte in 2023. TinyFloor is een gratis plek in de browser waar je een personage beweegt en een videogesprek start door naar mensen toe te lopen."
         },
         "title": "Mis je <em>Wonder?</em>",
-        "subtitle": "Wonder.me stopte in april 2023. SpatialMeet houdt vast aan wat het goed maakte, rondlopen en praten met wie je tegenkomt, op een pixel-art kantoorvloer.",
+        "subtitle": "Wonder.me stopte in april 2023. TinyFloor houdt vast aan wat het goed maakte, rondlopen en praten met wie je tegenkomt, op een pixel-art kantoorvloer.",
         "points": [
           {
             "title": "Loop erheen om te praten",
@@ -730,15 +730,15 @@
             "a": "Nee. Wonder.me stopte op 25 april 2023, nadat de oprichters geen duurzaam verdienmodel vonden."
           },
           {
-            "q": "Hoe verschilt SpatialMeet van Wonder?",
-            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. SpatialMeet is een kantoor waar je rondloopt, met bureaus, een vergadertafel, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
+            "q": "Hoe verschilt TinyFloor van Wonder?",
+            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergadertafel, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
           },
           {
             "q": "Hoeveel mensen kunnen meedoen?",
             "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
           },
           {
-            "q": "Is SpatialMeet gratis?",
+            "q": "Is TinyFloor gratis?",
             "a": "Ja. Ruimtes maken, rondlopen, chatten en bellen is gratis."
           }
         ]
@@ -768,11 +768,11 @@
         "faq": [
           {
             "q": "Wat is een virtueel kantoor?",
-            "a": "Een virtueel kantoor is een gedeelde online plek waar een remote team samenwerkt. In SpatialMeet is het een pixel-art vloer waar je je collega's ziet en met ze praat door naar ze toe te lopen."
+            "a": "Een virtueel kantoor is een gedeelde online plek waar een remote team samenwerkt. In TinyFloor is het een pixel-art vloer waar je je collega's ziet en met ze praat door naar ze toe te lopen."
           },
           {
             "q": "Is het gratis?",
-            "a": "Ja. SpatialMeet is gratis, zonder proefperiode en zonder prijs per plek."
+            "a": "Ja. TinyFloor is gratis, zonder proefperiode en zonder prijs per plek."
           },
           {
             "q": "Hoeveel mensen kunnen één kantoor gebruiken?",
@@ -854,7 +854,7 @@
           },
           {
             "q": "Is het gratis voor studenten?",
-            "a": "Ja. SpatialMeet is gratis voor iedereen, en niemand heeft een account nodig om mee te doen."
+            "a": "Ja. TinyFloor is gratis voor iedereen, en niemand heeft een account nodig om mee te doen."
           },
           {
             "q": "Kunnen we muziek luisteren tijdens het studeren?",
@@ -903,7 +903,7 @@
           },
           {
             "q": "Is het gratis voor docenten?",
-            "a": "Ja. SpatialMeet is gratis, zonder betaald abonnement."
+            "a": "Ja. TinyFloor is gratis, zonder betaald abonnement."
           }
         ]
       },
@@ -914,7 +914,7 @@
           "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een video- of spraakgesprek te starten. Gratis, in de browser, zonder download."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
-        "subtitle": "In SpatialMeet bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, ga aan tafel zitten om als groep te praten en loop verder als je klaar bent.",
+        "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, ga aan tafel zitten om als groep te praten en loop verder als je klaar bent.",
         "points": [
           {
             "title": "Dichtbij komen start het gesprek",
@@ -944,7 +944,7 @@
           },
           {
             "q": "Is het gratis?",
-            "a": "Ja. SpatialMeet is gratis in de browser, op desktop en mobiel."
+            "a": "Ja. TinyFloor is gratis in de browser, op desktop en mobiel."
           }
         ]
       }

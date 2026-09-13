@@ -121,7 +121,7 @@ export async function LandingPage({
                   <tr className="border-b border-black/10">
                     <td className="p-4 md:p-5" />
                     <th scope="col" className="p-4 md:p-5 text-start font-bold">
-                      SpatialMeet
+                      TinyFloor
                     </th>
                     <th scope="col" className="p-4 md:p-5 text-start font-bold opacity-60">
                       {page.competitor}

@@ -258,21 +258,14 @@ const floorLanes: Occupant[] = [
   },
 ];
 
-/** The office floor with people strolling its aisles. Their lanes line up with the aisles at 1:1 and 4:3. */
-export const FloorScene: React.FC<{ className?: string }> = ({
-  className = "",
-}) => (
-  <OfficeScene
-    className={className}
-    focus="50% 50%"
-    zoom="auto 150%"
-    occupants={floorLanes}
-  />
-);
-
 const FloorMockup = () => (
   <Frame tone="glass">
-    <FloorScene className="aspect-square md:aspect-[4/3] rounded-xl" />
+    <OfficeScene
+      className="aspect-square md:aspect-[4/3] rounded-xl"
+      focus="50% 50%"
+      zoom="auto 150%"
+      occupants={floorLanes}
+    />
   </Frame>
 );
 

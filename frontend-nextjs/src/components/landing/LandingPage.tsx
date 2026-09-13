@@ -45,7 +45,8 @@ import { FAQ } from "./FAQ";
 import { CTA } from "./CTA";
 import { Footer } from "./Footer";
 import { Reveal } from "./Reveal";
-import { FloorScene } from "./RoomMoments";
+import { BrowserWindow } from "./Hero";
+import { StrollingOfficeScene } from "./HeroOfficeScene";
 
 interface LandingCopy {
   subtitle: string;
@@ -194,66 +195,46 @@ export async function LandingPage({
       <Navbar />
 
       <main className="pt-24 md:pt-32">
-        <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 flex flex-col items-center">
-          <div className="w-full max-w-4xl text-center flex flex-col items-center mb-12 md:mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1.5 font-body text-sm font-medium text-[var(--color-braun-text)] mb-7">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-braun-orange)]" />
-              {t(`pages.${page.key}.label`)}
-            </span>
-            <h1 className="font-body font-light text-[2.75rem] sm:text-6xl md:text-[4.75rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6 text-balance">
-              {t.rich(`pages.${page.key}.title`, { em })}
-            </h1>
-            <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl px-2 mb-10">
-              {copy.subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
-              <Link
-                href="/room/public-room"
-                className="group relative flex items-center justify-center h-14 md:h-16 px-[5px] bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
-              >
-                <span className="h-[82%] px-7 md:px-9 rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm whitespace-nowrap group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
-                  {t("tryIt")}
-                </span>
-              </Link>
-              <Link
-                href="/create-room"
-                className="cursor-pointer group inline-flex items-center gap-2 font-body text-sm md:text-base font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 transition-opacity"
-              >
-                {t("create")}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-              </Link>
-            </div>
-            <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-6">
-              {t("free")}
-            </p>
-          </div>
-
-          <figure className="m-0 w-[calc(100%+1rem)] -mx-2 md:mx-0 md:w-full max-w-5xl">
-            <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] p-2 md:p-3 shadow-2xl border border-[rgba(0,0,0,0.15)]">
-              <div className="flex items-center justify-between gap-2 md:gap-4 px-2 py-1 mb-1">
-                <div
-                  aria-hidden="true"
-                  className="flex gap-1.5 shrink-0 w-[50px] md:w-[70px]"
-                >
-                  <div className="w-3 h-3 rounded-full bg-[#ed6a5e] border border-[rgba(0,0,0,0.1)]" />
-                  <div className="w-3 h-3 rounded-full bg-[#f4bf4f] border border-[rgba(0,0,0,0.1)]" />
-                  <div className="w-3 h-3 rounded-full bg-[#61c554] border border-[rgba(0,0,0,0.1)]" />
-                </div>
+        <div className="mx-auto w-full max-w-5xl px-4">
+          <section className="relative w-full pt-8 md:pt-12 pb-8 md:pb-12 px-4 md:px-8 max-w-6xl mx-auto flex flex-col items-center">
+            <div className="w-full max-w-4xl text-center flex flex-col items-center mb-12 md:mb-16">
+              <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1.5 font-body text-sm font-medium text-[var(--color-braun-text)] mb-7">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-braun-orange)]" />
+                {t(`pages.${page.key}.label`)}
+              </span>
+              <h1 className="font-body font-light text-[2.75rem] sm:text-6xl md:text-[4.75rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6 text-balance">
+                {t.rich(`pages.${page.key}.title`, { em })}
+              </h1>
+              <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl px-2 mb-10">
+                {copy.subtitle}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
                 <Link
                   href="/room/public-room"
-                  dir="ltr"
-                  className="cursor-pointer flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-xl"
+                  className="group relative flex items-center justify-center h-14 md:h-16 px-[5px] bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
                 >
-                  <span className="font-body text-[11px] md:text-xs font-medium text-[var(--color-braun-text)] opacity-50 tracking-wide truncate">
-                    {ROOM_LINK}
+                  <span className="h-[82%] px-7 md:px-9 rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm whitespace-nowrap group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
+                    {t("tryIt")}
                   </span>
                 </Link>
-                <div className="w-[50px] md:w-[70px] shrink-0" />
+                <Link
+                  href="/create-room"
+                  className="cursor-pointer group inline-flex items-center gap-2 font-body text-sm md:text-base font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 transition-opacity"
+                >
+                  {t("create")}
+                  <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+                </Link>
               </div>
-              <FloorScene className="aspect-square sm:aspect-[4/3] rounded-lg md:rounded-xl border border-[rgba(0,0,0,0.08)]" />
+              <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-6">
+                {t("free")}
+              </p>
             </div>
-          </figure>
-        </section>
+
+            <BrowserWindow>
+              <StrollingOfficeScene />
+            </BrowserWindow>
+          </section>
+        </div>
 
         <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-14 md:pt-24">
           <ul className="grid md:grid-cols-3 rounded-[1.5rem] md:rounded-[2rem] border border-black/10 bg-[#f2efe6] overflow-hidden">

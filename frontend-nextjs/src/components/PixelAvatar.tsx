@@ -48,11 +48,11 @@ export const PixelAvatar: React.FC<PixelAvatarProps> = ({
 export const Nameplate: React.FC<{
   name: string;
   status?: string;
-  offset?: number;
+  offset?: number | string;
 }> = ({ name, status = "available", offset = 62 }) => (
   <span
     className="absolute left-0 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-[#1f2937]/85 border border-[#374151]/60 px-2 py-[3px] font-pixel text-[13px] leading-none text-white whitespace-nowrap"
-    style={{ bottom: `${offset}px` }}
+    style={{ bottom: typeof offset === "number" ? `${offset}px` : offset }}
   >
     <span
       className={`w-[7px] h-[7px] rounded-full ${

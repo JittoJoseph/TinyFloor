@@ -1,6 +1,8 @@
 import React from "react";
 import { getTranslations } from "next-intl/server";
+import { ArrowRight, Check } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
+import { SITE_URL } from "@/lib/site";
 import {
   COMPARE_ROWS,
   LANDINGS,
@@ -10,10 +12,11 @@ import {
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { Navbar } from "./Navbar";
-import { FloorMockup } from "./RoomMoments";
 import { FAQ } from "./FAQ";
 import { CTA } from "./CTA";
 import { Footer } from "./Footer";
+import { Reveal } from "./Reveal";
+import { FloorScene } from "./RoomMoments";
 
 interface LandingCopy {
   subtitle: string;
@@ -27,10 +30,26 @@ const em = (chunks: React.ReactNode) => (
 );
 
 const sectionTitle =
-  "font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.1] mb-8 md:mb-12";
+  "font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.08]";
 
-const buttonBase =
-  "cursor-pointer inline-flex items-center justify-center whitespace-nowrap h-12 md:h-14 px-7 md:px-8 rounded-full font-body font-medium uppercase tracking-widest text-xs md:text-sm transition-all duration-300";
+/** The three reasons each get a surface of their own, the way the home page's moments do. */
+const POINT_SURFACES = [
+  {
+    card: "bg-[var(--color-braun-orange)] text-white",
+    number: "bg-white/20",
+    body: "opacity-85",
+  },
+  {
+    card: "bg-[#2c2c2c] text-[#f2efe6]",
+    number: "bg-white/10",
+    body: "opacity-70",
+  },
+  {
+    card: "bg-[#0f5741] text-[#eaf3ef]",
+    number: "bg-white/12",
+    body: "opacity-75",
+  },
+];
 
 /** One page written for a search: a pitch, the proof, how it works and the questions people ask. */
 export async function LandingPage({
@@ -44,6 +63,7 @@ export async function LandingPage({
   const copy = t.raw(`pages.${page.key}`) as LandingCopy;
   const them = copy.them;
   const path = `/${page.slug}`;
+  const steps = t.raw("steps") as Array<{ title: string; body: string }>;
 
   return (
     <div className="min-h-screen w-full relative">
@@ -59,122 +79,187 @@ export async function LandingPage({
       <Navbar />
 
       <main className="pt-24 md:pt-32">
-        <section className="max-w-6xl mx-auto px-4 md:px-8 pt-8 md:pt-12 grid gap-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-start">
-            <h1 className="font-body font-light text-[2.6rem] md:text-6xl lg:text-[3.6rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6">
+        <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-8 md:pt-12 pb-10 md:pb-16 flex flex-col items-center">
+          <div className="w-full max-w-4xl text-center flex flex-col items-center mb-12 md:mb-16">
+            <h1 className="font-body font-light text-[2.75rem] sm:text-6xl md:text-[4.75rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6">
               {t.rich(`pages.${page.key}.title`, { em })}
             </h1>
-            <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl mb-10">
+            <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl px-2 mb-10">
               {copy.subtitle}
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3 md:gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
               <Link
                 href="/room/public-room"
-                className={`${buttonBase} bg-[var(--color-braun-orange)] text-white shadow-[0_12px_28px_-14px_rgba(255,78,0,0.8)] hover:brightness-110`}
+                className="group relative flex items-center justify-center h-14 md:h-16 px-[5px] bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
               >
-                {t("tryIt")}
+                <span className="h-[82%] px-7 md:px-9 rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm whitespace-nowrap group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
+                  {t("tryIt")}
+                </span>
               </Link>
               <Link
                 href="/create-room"
-                className={`${buttonBase} bg-white border border-black/10 text-[var(--color-braun-text)] shadow-sm hover:shadow-md`}
+                className="cursor-pointer group inline-flex items-center gap-2 font-body text-sm md:text-base font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 transition-opacity"
               >
                 {t("create")}
+                <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>
             </div>
-            <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-5">
+            <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-6">
               {t("free")}
             </p>
           </div>
 
-          <FloorMockup />
+          <figure className="m-0 w-full max-w-[46rem]">
+            <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] p-2 md:p-3 shadow-2xl border border-[rgba(0,0,0,0.15)]">
+              <div className="flex items-center justify-between gap-2 md:gap-4 px-2 py-1 mb-1">
+                <div
+                  aria-hidden="true"
+                  className="flex gap-1.5 shrink-0 w-[50px] md:w-[70px]"
+                >
+                  <div className="w-3 h-3 rounded-full bg-[#ed6a5e] border border-[rgba(0,0,0,0.1)]" />
+                  <div className="w-3 h-3 rounded-full bg-[#f4bf4f] border border-[rgba(0,0,0,0.1)]" />
+                  <div className="w-3 h-3 rounded-full bg-[#61c554] border border-[rgba(0,0,0,0.1)]" />
+                </div>
+                <Link
+                  href="/room/public-room"
+                  dir="ltr"
+                  className="cursor-pointer flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-md"
+                >
+                  <span className="font-body text-[11px] md:text-xs font-medium text-[var(--color-braun-text)] opacity-50 tracking-wide truncate">
+                    {SITE_URL.replace("https://", "")}/room/public-room
+                  </span>
+                </Link>
+                <div className="w-[50px] md:w-[70px] shrink-0" />
+              </div>
+              <FloorScene className="aspect-square sm:aspect-[4/3] rounded-lg md:rounded-xl border border-[rgba(0,0,0,0.08)]" />
+            </div>
+          </figure>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-24">
-          <ul className="grid gap-4 md:grid-cols-3 md:gap-6">
-            {copy.points.map((point, index) => (
-              <li
-                key={point.title}
-                className="rounded-[1.5rem] border border-black/10 bg-[#f2efe6] p-6 md:p-8"
-              >
-                <span className="font-body text-sm font-bold text-[var(--color-braun-orange)]">
-                  0{index + 1}
-                </span>
-                <h2 className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight mt-3 mb-3">
-                  {point.title}
-                </h2>
-                <p className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed">
-                  {point.body}
-                </p>
-              </li>
-            ))}
+        <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pb-14 md:pb-24">
+          <ul className="grid gap-4 md:grid-cols-3 md:gap-5">
+            {copy.points.map((point, index) => {
+              const surface = POINT_SURFACES[index % POINT_SURFACES.length];
+              return (
+                <Reveal as="li" key={point.title} y={20} className="h-full">
+                  <article
+                    className={`h-full md:min-h-[20rem] flex flex-col rounded-[1.5rem] md:rounded-[2rem] p-7 md:p-9 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.5)] ${surface.card}`}
+                  >
+                    <span
+                      className={`w-10 h-10 rounded-full flex items-center justify-center font-pixel text-2xl leading-none ${surface.number}`}
+                    >
+                      {index + 1}
+                    </span>
+                    <h2 className="font-body text-[1.6rem] md:text-[1.85rem] font-medium tracking-tight leading-[1.1] mt-auto pt-10">
+                      {point.title}
+                    </h2>
+                    <p
+                      className={`font-body text-base leading-relaxed mt-3 ${surface.body}`}
+                    >
+                      {point.body}
+                    </p>
+                  </article>
+                </Reveal>
+              );
+            })}
           </ul>
         </section>
 
         {page.competitor && them && (
-          <section className="max-w-4xl mx-auto px-4 md:px-8 pb-14 md:pb-24">
-            <h2 className={sectionTitle}>
-              {t.rich("compareTitle", { name: page.competitor, em })}
-            </h2>
-            <div className="overflow-x-auto rounded-[1.5rem] border border-black/10 bg-white">
-              <table className="w-full min-w-[34rem] font-body text-sm md:text-base text-[var(--color-braun-text)]">
-                <thead>
-                  <tr className="border-b border-black/10">
-                    <td className="p-4 md:p-5" />
-                    <th scope="col" className="p-4 md:p-5 text-start font-bold">
-                      TinyFloor
-                    </th>
-                    <th scope="col" className="p-4 md:p-5 text-start font-bold opacity-60">
-                      {page.competitor}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARE_ROWS.map((row) => (
-                    <tr key={row} className="border-b border-black/5 last:border-0">
-                      <th scope="row" className="p-4 md:p-5 text-start font-medium opacity-60 w-[30%]">
-                        {t(`rows.${row}`)}
+          <section className="w-full max-w-5xl mx-auto px-4 md:px-8 pb-14 md:pb-24">
+            <Reveal className="max-w-2xl mb-8 md:mb-12">
+              <h2 className={sectionTitle}>
+                {t.rich("compareTitle", { name: page.competitor, em })}
+              </h2>
+            </Reveal>
+            <Reveal y={20}>
+              <div className="overflow-x-auto rounded-[1.5rem] md:rounded-[2rem] border border-black/10 bg-white shadow-[0_30px_70px_-45px_rgba(0,0,0,0.45)]">
+                <table className="w-full min-w-[36rem] border-collapse font-body text-[var(--color-braun-text)]">
+                  <thead>
+                    <tr>
+                      <td className="p-5 md:p-7 w-[28%]" />
+                      <th
+                        scope="col"
+                        className="p-5 md:p-7 text-start align-bottom bg-[#fff4ee]"
+                      >
+                        <span className="inline-flex items-center gap-2.5 text-lg md:text-xl font-bold tracking-tight">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-braun-orange)]" />
+                          TinyFloor
+                        </span>
                       </th>
-                      <td className="p-4 md:p-5">{t(`us.${row}`)}</td>
-                      <td className="p-4 md:p-5 opacity-60">{them[row]}</td>
+                      <th
+                        scope="col"
+                        className="p-5 md:p-7 text-start align-bottom text-lg md:text-xl font-medium tracking-tight opacity-45"
+                      >
+                        {page.competitor}
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-4">
-              {t("checked", { name: page.competitor })}
-            </p>
+                  </thead>
+                  <tbody>
+                    {COMPARE_ROWS.map((row) => (
+                      <tr key={row} className="border-t border-black/[0.06]">
+                        <th
+                          scope="row"
+                          className="p-5 md:p-7 text-start align-top text-[11px] md:text-xs font-bold uppercase tracking-[0.16em] opacity-40"
+                        >
+                          {t(`rows.${row}`)}
+                        </th>
+                        <td className="p-5 md:p-7 align-top bg-[#fff4ee] text-base md:text-lg font-medium leading-snug">
+                          <span className="flex gap-2.5">
+                            <Check
+                              aria-hidden="true"
+                              className="w-5 h-5 mt-0.5 shrink-0 text-[var(--color-braun-orange)]"
+                            />
+                            {t(`us.${row}`)}
+                          </span>
+                        </td>
+                        <td className="p-5 md:p-7 align-top text-base md:text-lg leading-snug opacity-55">
+                          {them[row]}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-4 px-1">
+                {t("checked", { name: page.competitor })}
+              </p>
+            </Reveal>
           </section>
         )}
 
-        <section id="how-it-works" className="max-w-6xl mx-auto px-4 md:px-8 pb-4">
-          <h2 className={sectionTitle}>{t.rich("stepsTitle", { em })}</h2>
-          <ol className="grid gap-4 md:grid-cols-3 md:gap-6">
-            {(t.raw("steps") as Array<{ title: string; body: string }>).map((step, index) => (
-              <li
-                key={step.title}
-                className="flex gap-4 rounded-[1.5rem] border border-black/10 bg-white p-6 md:p-8"
-              >
-                <span className="w-9 h-9 shrink-0 rounded-full bg-[var(--color-braun-text)] text-[#f2efe6] font-body text-sm font-bold flex items-center justify-center">
-                  {index + 1}
-                </span>
-                <span>
-                  <span className="block font-body text-lg md:text-xl font-medium text-[var(--color-braun-text)] tracking-tight mb-2">
+        <section
+          id="how-it-works"
+          className="w-full max-w-6xl mx-auto px-4 md:px-8"
+        >
+          <Reveal className="max-w-2xl mb-8 md:mb-12">
+            <h2 className={sectionTitle}>{t.rich("stepsTitle", { em })}</h2>
+          </Reveal>
+          <ol className="grid gap-4 md:grid-cols-3 md:gap-5">
+            {steps.map((step, index) => (
+              <Reveal as="li" key={step.title} y={16} className="h-full">
+                <div className="h-full rounded-[1.5rem] md:rounded-[2rem] border border-black/10 bg-[#f2efe6] p-7 md:p-9">
+                  <span className="block font-pixel text-5xl md:text-6xl leading-none text-[var(--color-braun-orange)]">
+                    0{index + 1}
+                  </span>
+                  <span className="block font-body text-xl md:text-2xl font-medium tracking-tight text-[var(--color-braun-text)] mt-8 mb-2">
                     {step.title}
                   </span>
-                  <span className="block font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed">
+                  <span className="block font-body text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed">
                     {step.body}
                   </span>
-                </span>
-              </li>
+                </div>
+              </Reveal>
             ))}
           </ol>
         </section>
 
         <FAQ title={t.rich("faqTitle", { em })} items={copy.faq} />
 
-        <section className="max-w-6xl mx-auto px-4 md:px-8">
-          <h2 className={sectionTitle}>{t.rich("relatedTitle", { em })}</h2>
+        <section className="w-full max-w-6xl mx-auto px-4 md:px-8">
+          <Reveal className="max-w-2xl mb-8 md:mb-12">
+            <h2 className={sectionTitle}>{t.rich("relatedTitle", { em })}</h2>
+          </Reveal>
           <div className="grid gap-8 md:grid-cols-2">
             {LANDING_GROUPS.map((group) => (
               <nav key={group} aria-label={t(group)}>

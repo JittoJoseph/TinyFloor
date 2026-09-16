@@ -90,6 +90,13 @@ export class AnimationManager {
 
   create() {
     AnimationManager.CHARACTERS.forEach((char) => {
+      // A character is 16px art drawn at 2.4x, so smooth sampling smears it and
+      // nearest keeps it crisp. The map stays smooth: at a zoom that is not a
+      // whole number, nearest makes every thin line on the floor flicker between
+      // two and three pixels thick as the camera moves.
+      this.scene.textures
+        .get(char)
+        .setFilter(Phaser.Textures.FilterMode.NEAREST);
       this.createAnimSet(char, "idle", IDLE_BASE);
       this.createAnimSet(char, "run", RUN_BASE);
     });

@@ -80,12 +80,16 @@ async function fetchFromR2(key) {
   return Buffer.from(await response.arrayBuffer());
 }
 
-const useLocal = existsSync(localSource);
+// --remote ignores both the local copy and what is already in public/, to
+// check the credentials a build will use.
+const forceRemote = process.argv.includes("--remote");
+const useLocal = !forceRemote && existsSync(localSource);
 let fetched = 0;
 
 for (const file of manifest.files) {
   const destination = path.join(root, "public", file.key);
-  if (existsSync(destination) && sha256(await readFile(destination)) === file.sha256) continue;
+  if (!forceRemote && existsSync(destination) && sha256(await readFile(destination)) === file.sha256)
+    continue;
 
   const buffer = useLocal
     ? await readFile(path.join(localSource, file.key))

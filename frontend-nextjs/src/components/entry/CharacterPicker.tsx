@@ -43,13 +43,20 @@ export const CharacterPicker: React.FC<{
               : "border-black/8 bg-[#fbfbf9] hover:bg-white hover:border-black/15"
           }`}
         >
-          <span className="relative block aspect-square rounded-xl bg-[#f0f0eb] overflow-hidden">
+          {/* Sized from the tile, not in pixels, so no tile is ever too small for
+              its character. Every character's art fills the bottom three
+              quarters of its frame, so at 48% of the tile wide the body is 72%
+              tall, and feet at 86% centre it with even room above and below. */}
+          <span
+            className="relative block aspect-square rounded-xl bg-[#f0f0eb] overflow-hidden"
+            style={{ containerType: "size" }}
+          >
+            <span className="absolute left-1/2 top-[86%] -translate-x-1/2 -translate-y-1/2 w-[46%] h-[7%] rounded-[100%] bg-black/10 blur-[1px]" />
             <PixelAvatar
               character={character}
-              width={34}
-              style={{ left: "50%", top: "84%" }}
+              width="48cqw"
+              style={{ left: "50%", top: "86%" }}
             />
-            <span className="absolute left-1/2 bottom-[14%] -translate-x-1/2 w-6 h-1.5 rounded-[100%] bg-black/10 blur-[1px]" />
           </span>
           <span
             className={`block text-center font-body text-[11px] font-semibold mt-2 transition-opacity duration-200 ${

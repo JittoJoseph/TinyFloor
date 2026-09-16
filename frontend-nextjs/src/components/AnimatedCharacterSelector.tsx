@@ -15,7 +15,9 @@ const CHARACTERS: Character[] = [
   { id: "Adam", name: "Adam", spriteKey: "Adam" },
   { id: "Alex", name: "Alex", spriteKey: "Alex" },
   { id: "Amelia", name: "Amelia", spriteKey: "Amelia" },
+  { id: "Ash", name: "Ash", spriteKey: "Ash" },
   { id: "Bob", name: "Bob", spriteKey: "Bob" },
+  { id: "Dan", name: "Dan", spriteKey: "Dan" },
 ];
 
 interface AnimatedCharacterSelectorProps {

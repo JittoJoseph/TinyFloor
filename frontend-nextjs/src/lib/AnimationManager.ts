@@ -1,6 +1,12 @@
 import * as Phaser from "phaser";
 
-export type CharacterName = "Adam" | "Alex" | "Amelia" | "Bob";
+export type CharacterName =
+  | "Adam"
+  | "Alex"
+  | "Amelia"
+  | "Ash"
+  | "Bob"
+  | "Dan";
 export type AnimationState = "idle" | "run";
 export type Direction =
   | "right"
@@ -59,7 +65,9 @@ export class AnimationManager {
     "Adam",
     "Alex",
     "Amelia",
+    "Ash",
     "Bob",
+    "Dan",
   ];
   private static readonly FRAME_RATE = 10;
 

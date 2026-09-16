@@ -27,7 +27,7 @@ interface UserData {
   seat?: number | null;
 }
 
-const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Bob"];
+const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Ash", "Bob", "Dan"];
 
 export class MessageHandler {
   private scene: Phaser.Scene;

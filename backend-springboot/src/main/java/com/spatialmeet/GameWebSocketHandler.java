@@ -42,7 +42,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     private final Map<String, Map<String, WebSocketSession>> roomSessions = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToRoom = new ConcurrentHashMap<>();
     private final Map<String, String> sessionToPlayer = new ConcurrentHashMap<>();
-    private static final String[] AVAILABLE_SPRITES = {"Adam", "Alex", "Amelia", "Bob"};
+    private static final String[] AVAILABLE_SPRITES = {"Adam", "Alex", "Amelia", "Ash", "Bob", "Dan"};
     private final java.util.Random random = new java.util.Random();
     
     // Movement batching optimization

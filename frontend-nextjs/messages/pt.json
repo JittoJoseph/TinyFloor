@@ -388,6 +388,10 @@
     "away": {
       "label": "Ausente",
       "description": "Volto já"
+    },
+    "in_call": {
+      "label": "Em chamada",
+      "description": "Definido enquanto você está em uma chamada"
     }
   },
   "chat": {

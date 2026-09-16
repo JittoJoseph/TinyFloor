@@ -388,6 +388,10 @@
     "away": {
       "label": "Absent",
       "description": "Je reviens tout de suite"
+    },
+    "in_call": {
+      "label": "En appel",
+      "description": "Défini pendant un appel"
     }
   },
   "chat": {

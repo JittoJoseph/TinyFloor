@@ -388,6 +388,10 @@
     "away": {
       "label": "자리 비움",
       "description": "곧 돌아올게요"
+    },
+    "in_call": {
+      "label": "통화 중",
+      "description": "통화하는 동안 자동으로 설정돼요"
     }
   },
   "chat": {

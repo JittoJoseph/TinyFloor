@@ -98,6 +98,13 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-6 border-t border-black/10 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4">
           <span className="font-body text-xs text-[var(--color-braun-text)] opacity-40">
             {t("rights", { year: new Date().getFullYear() })}
+            {" · "}
+            <a
+              href="/credits.txt"
+              className="cursor-pointer underline-offset-2 hover:underline hover:opacity-100"
+            >
+              {t("credits")}
+            </a>
           </span>
           <LanguageSwitcher />
         </div>

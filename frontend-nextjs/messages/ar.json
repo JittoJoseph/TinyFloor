@@ -173,7 +173,8 @@
     "elsewhere": "في أماكن أخرى",
     "tour": "جولة في الغرفة",
     "twoWays": "طريقتان للدخول",
-    "rights": "© {year} Jitto Joseph. جميع الحقوق محفوظة."
+    "rights": "© {year} Jitto Joseph. جميع الحقوق محفوظة.",
+    "credits": "شكر وتقدير"
   },
   "auth": {
     "welcomeBack": "مرحبًا بعودتك",

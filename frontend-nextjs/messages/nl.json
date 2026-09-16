@@ -173,7 +173,8 @@
     "elsewhere": "Elders",
     "tour": "Rondleiding door de ruimte",
     "twoWays": "Twee manieren om binnen te komen",
-    "rights": "© {year} Jitto Joseph. Alle rechten voorbehouden."
+    "rights": "© {year} Jitto Joseph. Alle rechten voorbehouden.",
+    "credits": "Credits"
   },
   "auth": {
     "welcomeBack": "Welkom terug",

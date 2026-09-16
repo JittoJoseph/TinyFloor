@@ -44,11 +44,14 @@ export default function JukeboxPanel() {
         <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 mt-0.5">
           {state.playing ? t("playing") : t("paused")}
         </p>
-        {state.credit ? (
-          <p className="font-body text-[11px] text-[var(--color-braun-text)] opacity-35 mt-1 truncate">
-            {state.credit}
-          </p>
-        ) : null}
+        {/* The line is always there, empty for tracks that need no credit, so
+            switching to one that does never moves the controls. */}
+        <p
+          aria-hidden={!state.credit}
+          className="font-body text-[11px] leading-4 h-4 text-[var(--color-braun-text)] opacity-35 mt-1 truncate"
+        >
+          {state.credit}
+        </p>
 
         <div className="flex items-center justify-center gap-3 mt-4" dir="ltr">
           <button

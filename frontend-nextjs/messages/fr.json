@@ -173,7 +173,8 @@
     "elsewhere": "Ailleurs",
     "tour": "Visiter la salle",
     "twoWays": "Deux façons d’entrer",
-    "rights": "© {year} Jitto Joseph. Tous droits réservés."
+    "rights": "© {year} Jitto Joseph. Tous droits réservés.",
+    "credits": "Crédits"
   },
   "auth": {
     "welcomeBack": "Bon retour",

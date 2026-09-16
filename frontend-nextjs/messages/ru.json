@@ -173,7 +173,8 @@
     "elsewhere": "В других местах",
     "tour": "Экскурсия по комнате",
     "twoWays": "Два способа войти",
-    "rights": "© {year} Jitto Joseph. Все права защищены."
+    "rights": "© {year} Jitto Joseph. Все права защищены.",
+    "credits": "Авторы"
   },
   "auth": {
     "welcomeBack": "С возвращением",

@@ -173,7 +173,8 @@
     "elsewhere": "Muualla",
     "tour": "Huoneen esittely",
     "twoWays": "Kaksi tietä sisään",
-    "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään."
+    "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään.",
+    "credits": "Tekijät"
   },
   "auth": {
     "welcomeBack": "Tervetuloa takaisin",

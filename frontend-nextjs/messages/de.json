@@ -173,7 +173,8 @@
     "elsewhere": "Anderswo",
     "tour": "Raum-Tour",
     "twoWays": "Zwei Wege hinein",
-    "rights": "© {year} Jitto Joseph. Alle Rechte vorbehalten."
+    "rights": "© {year} Jitto Joseph. Alle Rechte vorbehalten.",
+    "credits": "Credits"
   },
   "auth": {
     "welcomeBack": "Willkommen zurück",

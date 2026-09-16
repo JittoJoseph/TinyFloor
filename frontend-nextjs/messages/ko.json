@@ -173,7 +173,8 @@
     "elsewhere": "다른 곳에서",
     "tour": "방 둘러보기",
     "twoWays": "두 가지 입장 방법",
-    "rights": "© {year} Jitto Joseph. 모든 권리 보유."
+    "rights": "© {year} Jitto Joseph. 모든 권리 보유.",
+    "credits": "크레딧"
   },
   "auth": {
     "welcomeBack": "다시 오신 걸 환영해요",

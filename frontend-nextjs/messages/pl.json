@@ -173,7 +173,8 @@
     "elsewhere": "Gdzie indziej",
     "tour": "Zwiedź pokój",
     "twoWays": "Dwie drogi do środka",
-    "rights": "© {year} Jitto Joseph. Wszelkie prawa zastrzeżone."
+    "rights": "© {year} Jitto Joseph. Wszelkie prawa zastrzeżone.",
+    "credits": "Autorzy"
   },
   "auth": {
     "welcomeBack": "Witaj ponownie",

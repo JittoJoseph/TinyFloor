@@ -45,17 +45,30 @@ export const PixelAvatar: React.FC<PixelAvatarProps> = ({
   );
 };
 
+const length = (value: number | string) =>
+  typeof value === "number" ? `${value}px` : value;
+
+/**
+ * The plate reads off the character it belongs to, so a floor that scales with
+ * its container keeps the same proportions on a phone as on a desktop. Every
+ * part of it is in em, and 34px wide, the usual character, gives the 13px plate
+ * these screens were drawn with.
+ */
 export const Nameplate: React.FC<{
   name: string;
   status?: string;
   offset?: number | string;
-}> = ({ name, status = "available", offset = 62 }) => (
+  size?: number | string;
+}> = ({ name, status = "available", offset = 62, size = 34 }) => (
   <span
-    className="absolute left-0 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-[#1f2937]/85 border border-[#374151]/60 px-2 py-[3px] font-pixel text-[13px] leading-none text-white whitespace-nowrap"
-    style={{ bottom: typeof offset === "number" ? `${offset}px` : offset }}
+    className="absolute left-0 -translate-x-1/2 flex items-center gap-[0.45em] rounded-full bg-[#1f2937]/85 border border-[#374151]/60 px-[0.6em] py-[0.25em] font-pixel leading-none text-white whitespace-nowrap"
+    style={{
+      bottom: length(offset),
+      fontSize: `max(8px, calc(${length(size)} * 0.38))`,
+    }}
   >
     <span
-      className={`w-[7px] h-[7px] rounded-full ${
+      className={`w-[0.55em] h-[0.55em] rounded-full ${
         STATUS_DOTS[status] ?? STATUS_DOTS.available
       }`}
     />

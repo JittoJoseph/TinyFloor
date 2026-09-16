@@ -6,7 +6,9 @@ export type CharacterName =
   | "Amelia"
   | "Ash"
   | "Bob"
-  | "Dan";
+  | "Dan"
+  | "Lucy"
+  | "Molly";
 export type AnimationState = "idle" | "run";
 export type Direction =
   | "right"
@@ -68,6 +70,8 @@ export class AnimationManager {
     "Ash",
     "Bob",
     "Dan",
+    "Lucy",
+    "Molly",
   ];
   private static readonly FRAME_RATE = 10;
 

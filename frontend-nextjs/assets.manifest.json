@@ -94,6 +94,36 @@
       "bytes": 7272
     },
     {
+      "key": "characters/Lucy_idle_anim_16x16.png",
+      "sha256": "7f27c4d2e30ae180ed487d9253f20f4dff4d0842a7842f61eecad417aaeece3b",
+      "bytes": 3226
+    },
+    {
+      "key": "characters/Lucy_run_16x16.png",
+      "sha256": "6ef92e48140f3432c115b27e9c35adfef8fe3fd8b6e01994a3b5eb52ee9c89a6",
+      "bytes": 3654
+    },
+    {
+      "key": "characters/Lucy.png",
+      "sha256": "e1d7b726f3d7d8ab0edd95e16b7e48065e984e618968c5fa1f3ab14f49f5d25a",
+      "bytes": 7209
+    },
+    {
+      "key": "characters/Molly_idle_anim_16x16.png",
+      "sha256": "aa10fa11ef23365ffc8ab71a79b774f46f74efce23432a8aa705efcc155d8137",
+      "bytes": 3492
+    },
+    {
+      "key": "characters/Molly_run_16x16.png",
+      "sha256": "2e6f24f2894cc263c09ea53691e803dd8607116cee50eed12566032cae0b1806",
+      "bytes": 5014
+    },
+    {
+      "key": "characters/Molly.png",
+      "sha256": "634e076db1e8167baae7c39cd0299da2247a685489b9fea4d19859843c394ed2",
+      "bytes": 7738
+    },
+    {
       "key": "tilesets/items/chair.png",
       "sha256": "772d8f5759e3ecef0cf8070073ef19f9f45294707120859a43a2167ab2410928",
       "bytes": 5608

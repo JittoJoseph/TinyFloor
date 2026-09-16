@@ -5,7 +5,16 @@ import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { PixelAvatar } from "@/components/PixelAvatar";
 
-export const CHARACTER_IDS = ["Adam", "Alex", "Amelia", "Ash", "Bob", "Dan"];
+export const CHARACTER_IDS = [
+  "Adam",
+  "Alex",
+  "Amelia",
+  "Ash",
+  "Bob",
+  "Dan",
+  "Lucy",
+  "Molly",
+];
 
 export const CharacterPicker: React.FC<{
   value: string;

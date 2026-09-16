@@ -1,8 +1,16 @@
 TinyFloor credits
+=================
 
 Pixel art by LimeZu (https://limezu.itch.io)
   Characters from Modern Interiors: https://limezu.itch.io/moderninteriors
   Office tiles from Modern Office Revamped: https://limezu.itch.io/modernoffice
 
-Music
-  See /music/CREDITS.txt
+Room jukebox tracks
+  Public domain (CC0), credited anyway:
+    Heavenly Loop, by isaiah658: https://opengameart.org/content/heavenly-loop
+    Ambient Relaxing Loop, by isaiah658: https://opengameart.org/content/ambient-relaxing-loop
+    Slow Stride Loop, by isaiah658: https://opengameart.org/content/slow-stride
+
+  "Monkeys Spinning Monkeys" Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 4.0
+  http://creativecommons.org/licenses/by/4.0/

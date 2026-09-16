@@ -173,7 +173,8 @@
     "elsewhere": "Andre steder",
     "tour": "Rundvisning i rummet",
     "twoWays": "To veje ind",
-    "rights": "© {year} Jitto Joseph. Alle rettigheder forbeholdes."
+    "rights": "© {year} Jitto Joseph. Alle rettigheder forbeholdes.",
+    "credits": "Kreditering"
   },
   "auth": {
     "welcomeBack": "Velkommen tilbage",

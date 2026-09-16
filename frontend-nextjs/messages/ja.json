@@ -173,7 +173,8 @@
     "elsewhere": "その他のリンク",
     "tour": "ルームのツアー",
     "twoWays": "2つの入り方",
-    "rights": "© {year} Jitto Joseph. 無断転載を禁じます。"
+    "rights": "© {year} Jitto Joseph. 無断転載を禁じます。",
+    "credits": "クレジット"
   },
   "auth": {
     "welcomeBack": "おかえりなさい",

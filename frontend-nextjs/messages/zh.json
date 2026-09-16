@@ -173,7 +173,8 @@
     "elsewhere": "其他",
     "tour": "房间导览",
     "twoWays": "两种进入方式",
-    "rights": "© {year} Jitto Joseph。保留所有权利。"
+    "rights": "© {year} Jitto Joseph。保留所有权利。",
+    "credits": "致谢"
   },
   "auth": {
     "welcomeBack": "欢迎回来",

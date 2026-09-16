@@ -173,7 +173,8 @@
     "elsewhere": "På andra ställen",
     "tour": "Rundtur i rummet",
     "twoWays": "Två vägar in",
-    "rights": "© {year} Jitto Joseph. Alla rättigheter förbehållna."
+    "rights": "© {year} Jitto Joseph. Alla rättigheter förbehållna.",
+    "credits": "Medverkande"
   },
   "auth": {
     "welcomeBack": "Välkommen tillbaka",

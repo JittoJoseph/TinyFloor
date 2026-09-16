@@ -173,7 +173,8 @@
     "elsewhere": "במקומות אחרים",
     "tour": "סיור בחדר",
     "twoWays": "שתי דרכים להיכנס",
-    "rights": "© {year} Jitto Joseph. כל הזכויות שמורות."
+    "rights": "© {year} Jitto Joseph. כל הזכויות שמורות.",
+    "credits": "קרדיטים"
   },
   "auth": {
     "welcomeBack": "ברוכים השבים",

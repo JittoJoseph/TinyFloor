@@ -155,6 +155,7 @@ export const OfficeScene: React.FC<{
               name={person.name}
               status={person.status}
               offset={nameplateOffset(person.width)}
+              size={person.width ?? 30}
             />
           )}
         </div>

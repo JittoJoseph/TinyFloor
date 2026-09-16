@@ -388,6 +388,10 @@
     "away": {
       "label": "离开",
       "description": "马上回来"
+    },
+    "in_call": {
+      "label": "通话中",
+      "description": "通话期间自动设置"
     }
   },
   "chat": {

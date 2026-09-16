@@ -59,7 +59,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         parent: gameRef.current,
         scene: new GameScene(name, roomId, character, userId),
         backgroundColor: "#f0f0f0",
-        roundPixels: true,
         physics: {
           default: "arcade",
           arcade: {

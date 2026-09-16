@@ -37,7 +37,18 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     }),
   );
 
+  const sharpen = useEffectEvent(() => {
+    const canvas = game.current?.canvas;
+    if (!canvas) return;
+    const ratio = window.devicePixelRatio;
+    canvas.style.imageRendering =
+      Number.isInteger(ratio) && ratio > 1 ? "pixelated" : "";
+  });
+
   useEffect(() => {
+    const onResize = () => sharpen();
+    window.addEventListener("resize", onResize);
+
     if (gameRef.current && !game.current) {
       applySceneText();
 
@@ -48,6 +59,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         parent: gameRef.current,
         scene: new GameScene(name, roomId, character, userId),
         backgroundColor: "#f0f0f0",
+        roundPixels: true,
         physics: {
           default: "arcade",
           arcade: {
@@ -59,12 +71,14 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         },
       };
       game.current = new Phaser.Game(config);
+      game.current.events.once(Phaser.Core.Events.READY, onResize);
       if (process.env.NODE_ENV === "development") {
         (window as unknown as Record<string, unknown>).__game = game.current;
       }
     }
 
     return () => {
+      window.removeEventListener("resize", onResize);
       if (game.current) {
         const scene = game.current.scene.getScene("GameScene") as GameScene;
         if (scene) {

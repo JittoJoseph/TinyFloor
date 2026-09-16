@@ -2,7 +2,6 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { AutoHeight } from "./AutoHeight";
 
 export const EntryShell: React.FC<{
@@ -12,34 +11,47 @@ export const EntryShell: React.FC<{
   children: React.ReactNode;
 }> = ({ backHref = "/rooms", backLabel, preview, children }) => {
   const t = useTranslations("entry");
+  const back = backLabel ?? t("allRooms");
 
   return (
     <div className="min-h-screen w-full bg-[var(--color-braun-bg)] flex flex-col">
-      <main className="flex-1 w-full px-4 py-4 sm:py-8 flex items-center justify-center">
+      {/* A desktop has height to spare above the panel, so the way back and the
+          wordmark sit in a header there. */}
+      <header className="hidden lg:flex w-full max-w-6xl mx-auto px-6 py-4 items-center justify-between">
+        <Link
+          href={backHref}
+          className="cursor-pointer inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-3.5 py-2 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:bg-white transition-[opacity,background-color] duration-200"
+        >
+          <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
+          {back}
+        </Link>
+        <Link
+          href="/"
+          className="cursor-pointer font-body font-bold text-lg tracking-tight text-[var(--color-braun-text)]"
+        >
+          TinyFloor
+        </Link>
+      </header>
+
+      <main className="flex-1 w-full px-4 py-4 sm:py-8 lg:py-4 flex items-center justify-center">
         {/* A phone stacks the preview over the form. From lg up there is width to
             spare but not height, so the preview becomes a column beside it and
             the panel is only as tall as the form. */}
         <div className="w-full max-w-[27rem] lg:max-w-[58rem] rounded-[1.75rem] border border-black/10 bg-white p-2.5 sm:p-3 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.45)] lg:grid lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-2 lg:min-h-[34rem]">
-          {/* Everything that used to sit in a page header rides on the preview,
-              so a phone shows the whole panel without scrolling. */}
           <div className="relative lg:h-full">
             {preview}
-            <div className="absolute inset-x-2.5 top-2.5 flex items-start justify-between gap-2">
-              <Link
-                href={backHref}
-                aria-label={backLabel ?? t("allRooms")}
-                className="cursor-pointer inline-flex items-center gap-1.5 h-9 px-2.5 rounded-xl bg-white/92 border border-black/10 shadow-sm font-body text-[13px] font-medium text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
-              >
-                <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
-                <span className="hidden sm:inline">
-                  {backLabel ?? t("allRooms")}
-                </span>
-              </Link>
-              <LanguageSwitcher side="bottom" align="end" compact />
-            </div>
+            {/* On a phone the header would push the button below the fold, so
+                the way back and the wordmark ride on the preview instead. */}
+            <Link
+              href={backHref}
+              aria-label={back}
+              className="lg:hidden cursor-pointer absolute start-2.5 top-2.5 inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/92 border border-black/10 shadow-sm text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
+            >
+              <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
+            </Link>
             <Link
               href="/"
-              className="cursor-pointer absolute start-2.5 bottom-2.5 inline-flex items-center h-7 px-2.5 rounded-lg bg-white/92 border border-black/10 shadow-sm font-body font-bold text-[13px] tracking-tight text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
+              className="lg:hidden cursor-pointer absolute start-2.5 bottom-2.5 inline-flex items-center h-7 px-2.5 rounded-lg bg-white/92 border border-black/10 shadow-sm font-body font-bold text-[13px] tracking-tight text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
             >
               TinyFloor
             </Link>

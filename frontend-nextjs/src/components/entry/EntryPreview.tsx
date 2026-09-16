@@ -46,7 +46,7 @@ export const EntryPreview: React.FC<{
           onClick={copy}
           title={t("copyInvite")}
           aria-label={copied ? t("inviteCopied") : t("copyInvite")}
-          className="cursor-pointer absolute end-2.5 bottom-2.5 w-9 h-9 rounded-xl bg-white/92 border border-black/10 shadow-sm flex items-center justify-center text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
+          className="cursor-pointer absolute end-2.5 top-2.5 w-9 h-9 rounded-xl bg-white/92 border border-black/10 shadow-sm flex items-center justify-center text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
         >
           <span className="relative inline-flex w-4 h-4 items-center justify-center">
             <Link2

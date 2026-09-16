@@ -57,7 +57,6 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.crispTextures();
     this.animationManager.create();
     this.mapManager.create();
 
@@ -237,22 +236,6 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     this.whiteboardObject?.update();
     this.jukeboxObject?.update(time, delta);
-  }
-
-  private crispTextures() {
-    const crisp = (key: string) => {
-      const texture = this.textures.get(key);
-      const fromImages = texture.source.every(
-        (source) =>
-          !source.isCanvas && !source.isRenderTexture && !source.isVideo,
-      );
-      if (fromImages) texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
-    };
-    this.textures.getTextureKeys().forEach(crisp);
-    this.textures.on(Phaser.Textures.Events.ADD, crisp);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () =>
-      this.textures.off(Phaser.Textures.Events.ADD, crisp),
-    );
   }
 
   public cleanup() {

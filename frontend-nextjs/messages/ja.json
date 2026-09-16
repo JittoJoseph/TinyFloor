@@ -388,6 +388,10 @@
     "away": {
       "label": "離席中",
       "description": "すぐ戻ります"
+    },
+    "in_call": {
+      "label": "通話中",
+      "description": "通話中は自動で設定されます"
     }
   },
   "chat": {

@@ -96,19 +96,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 pt-6 border-t border-black/10 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4">
-            <span className="font-body text-xs text-[var(--color-braun-text)] opacity-40">
-              {t("rights", { year: new Date().getFullYear() })}
-            </span>
-            <a
-              href="https://limezu.itch.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-xs text-[var(--color-braun-text)] opacity-40 hover:opacity-70 transition-opacity"
-            >
-              Art by LimeZu
-            </a>
-          </div>
+          <span className="font-body text-xs text-[var(--color-braun-text)] opacity-40">
+            {t("rights", { year: new Date().getFullYear() })}
+          </span>
           <LanguageSwitcher />
         </div>
       </div>

@@ -388,6 +388,10 @@
     "away": {
       "label": "Away",
       "description": "Be right back"
+    },
+    "in_call": {
+      "label": "In a call",
+      "description": "Set while you are on a call"
     }
   },
   "chat": {

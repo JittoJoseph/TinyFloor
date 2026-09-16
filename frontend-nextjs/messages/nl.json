@@ -388,6 +388,10 @@
     "away": {
       "label": "Afwezig",
       "description": "Zo terug"
+    },
+    "in_call": {
+      "label": "In gesprek",
+      "description": "Staat aan tijdens een gesprek"
     }
   },
   "chat": {

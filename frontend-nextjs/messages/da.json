@@ -388,6 +388,10 @@
     "away": {
       "label": "Væk",
       "description": "Er straks tilbage"
+    },
+    "in_call": {
+      "label": "I et opkald",
+      "description": "Sat, mens du er i et opkald"
     }
   },
   "chat": {

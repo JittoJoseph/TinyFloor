@@ -57,6 +57,7 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.crispTextures();
     this.animationManager.create();
     this.mapManager.create();
 
@@ -76,7 +77,10 @@ class GameScene extends Phaser.Scene {
       this.name,
       this.character,
     );
-    this.wsManager.connect(`${this.getWsBaseUrl()}/ws/${this.roomId}`, spawnTile);
+    this.wsManager.connect(
+      `${this.getWsBaseUrl()}/ws/${this.roomId}`,
+      spawnTile,
+    );
 
     this.playerManager = new PlayerManager(
       this,
@@ -153,7 +157,8 @@ class GameScene extends Phaser.Scene {
       this,
       this.playerManager,
       this.player,
-      (id) => !seats.inMeeting() && !seats.inMeeting(id) && !callManager.isPeer(id),
+      (id) =>
+        !seats.inMeeting() && !seats.inMeeting(id) && !callManager.isPeer(id),
     );
 
     this.messageHandler = new MessageHandler(
@@ -189,8 +194,12 @@ class GameScene extends Phaser.Scene {
       );
     }
 
-    this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
-    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
+    this.listen("chatFocused", () =>
+      this.movementManager.setInputEnabled(false),
+    );
+    this.listen("chatBlurred", () =>
+      this.movementManager.setInputEnabled(true),
+    );
   }
 
   private getWsBaseUrl(): string {
@@ -228,6 +237,22 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     this.whiteboardObject?.update();
     this.jukeboxObject?.update(time, delta);
+  }
+
+  private crispTextures() {
+    const crisp = (key: string) => {
+      const texture = this.textures.get(key);
+      const fromImages = texture.source.every(
+        (source) =>
+          !source.isCanvas && !source.isRenderTexture && !source.isVideo,
+      );
+      if (fromImages) texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+    };
+    this.textures.getTextureKeys().forEach(crisp);
+    this.textures.on(Phaser.Textures.Events.ADD, crisp);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () =>
+      this.textures.off(Phaser.Textures.Events.ADD, crisp),
+    );
   }
 
   public cleanup() {

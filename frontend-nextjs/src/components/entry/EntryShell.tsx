@@ -16,10 +16,13 @@ export const EntryShell: React.FC<{
   return (
     <div className="min-h-screen w-full bg-[var(--color-braun-bg)] flex flex-col">
       <main className="flex-1 w-full px-4 py-4 sm:py-8 flex items-center justify-center">
-        <div className="w-full max-w-[27rem] rounded-[1.75rem] border border-black/10 bg-white p-2.5 sm:p-3 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.45)]">
+        {/* A phone stacks the preview over the form. From lg up there is width to
+            spare but not height, so the preview becomes a column beside it and
+            the panel is only as tall as the form. */}
+        <div className="w-full max-w-[27rem] lg:max-w-[58rem] rounded-[1.75rem] border border-black/10 bg-white p-2.5 sm:p-3 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.45)] lg:grid lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-2 lg:min-h-[34rem]">
           {/* Everything that used to sit in a page header rides on the preview,
               so a phone shows the whole panel without scrolling. */}
-          <div className="relative">
+          <div className="relative lg:h-full">
             {preview}
             <div className="absolute inset-x-2.5 top-2.5 flex items-start justify-between gap-2">
               <Link
@@ -41,9 +44,13 @@ export const EntryShell: React.FC<{
               TinyFloor
             </Link>
           </div>
-          <AutoHeight>
-            <div className="px-1.5 sm:px-2 pt-4 sm:pt-5 pb-1">{children}</div>
-          </AutoHeight>
+          <div className="lg:self-center">
+            <AutoHeight>
+              <div className="px-1.5 sm:px-2 pt-4 sm:pt-5 pb-1 lg:px-6 lg:py-6">
+                {children}
+              </div>
+            </AutoHeight>
+          </div>
         </div>
       </main>
     </div>

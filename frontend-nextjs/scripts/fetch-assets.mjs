@@ -6,8 +6,9 @@
  * Every build pulls them into public/ and checks each one against the manifest.
  *
  * Locally, ../private-assets is used when it is there, so a working copy of the
- * packs needs no credentials. In CI, set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID,
- * R2_SECRET_ACCESS_KEY and optionally R2_BUCKET.
+ * packs needs no credentials. Otherwise the files come from the bucket's public
+ * URL, which needs none either. Set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and
+ * R2_SECRET_ACCESS_KEY to read a bucket that is not public instead.
  */
 import { createHash, createHmac } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -19,6 +20,7 @@ const root = path.join(here, "..");
 const manifest = JSON.parse(await readFile(path.join(root, "assets.manifest.json"), "utf8"));
 const localSource = path.join(root, "..", "private-assets");
 const bucket = process.env.R2_BUCKET ?? manifest.bucket;
+const publicUrl = process.env.R2_PUBLIC_URL ?? manifest.publicUrl;
 
 const sha256 = (buffer) => createHash("sha256").update(buffer).digest("hex");
 
@@ -28,6 +30,14 @@ function signingKey(secret, date, region, service) {
     key = createHmac("sha256", key).update(part).digest();
   }
   return key;
+}
+
+async function fetchFromPublicUrl(key) {
+  const response = await fetch(`${publicUrl}/${key}`);
+  if (!response.ok) {
+    throw new Error(`${publicUrl} gave ${response.status} for ${key}`);
+  }
+  return Buffer.from(await response.arrayBuffer());
 }
 
 /** A plain SigV4 GET against the S3 endpoint, so the build needs no extra dependency. */
@@ -91,9 +101,14 @@ for (const file of manifest.files) {
   if (!forceRemote && existsSync(destination) && sha256(await readFile(destination)) === file.sha256)
     continue;
 
-  const buffer = useLocal
-    ? await readFile(path.join(localSource, file.key))
-    : await fetchFromR2(file.key);
+  let buffer;
+  if (useLocal) {
+    buffer = await readFile(path.join(localSource, file.key));
+  } else if (publicUrl) {
+    buffer = await fetchFromPublicUrl(file.key);
+  } else {
+    buffer = await fetchFromR2(file.key);
+  }
 
   const actual = sha256(buffer);
   if (actual !== file.sha256) {
@@ -107,6 +122,8 @@ for (const file of manifest.files) {
 
 console.log(
   fetched
-    ? `assets: ${fetched} of ${manifest.files.length} written from ${useLocal ? "private-assets" : `r2:${bucket}`}`
+    ? `assets: ${fetched} of ${manifest.files.length} written from ${
+        useLocal ? "private-assets" : publicUrl ? "the bucket's public url" : `r2:${bucket}`
+      }`
     : `assets: all ${manifest.files.length} already in place`,
 );

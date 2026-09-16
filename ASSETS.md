@@ -25,8 +25,11 @@ SHA-256. `pnpm assets`, which also runs before `dev` and every build, puts them
 into `public/` and checks each one against that manifest.
 
 It takes them from `private-assets/` when that folder exists, and otherwise
-downloads them from the R2 bucket. So a working copy needs no credentials, and
-CI needs no copy of the packs.
+downloads them from the R2 bucket's public URL. Neither needs credentials, so a
+working copy and CI both build without a copy of the packs.
+
+`pnpm assets --remote` ignores the local copy and downloads everything, which is
+how to check that a build elsewhere will work.
 
 ## Running it yourself
 
@@ -39,14 +42,22 @@ the characters will be missing.
 
 ## Deploying
 
-The Cloudflare build reads these environment variables:
+Nothing to configure: the bucket serves these files at the public URL recorded
+in the manifest, and the files are the same ones the site serves anyway.
+
+To close the bucket instead, run `wrangler r2 bucket dev-url disable tinyfloor`,
+drop `publicUrl` from the manifest, and give the build these variables from an
+R2 API token with read access:
 
 | Variable | Meaning |
 | --- | --- |
 | `R2_ACCOUNT_ID` | Cloudflare account id |
-| `R2_ACCESS_KEY_ID` | R2 API token key id, read access is enough |
+| `R2_ACCESS_KEY_ID` | R2 API token key id |
 | `R2_SECRET_ACCESS_KEY` | the matching secret |
 | `R2_BUCKET` | optional, defaults to `tinyfloor` |
+
+Uploading a changed file: `wrangler r2 object put tinyfloor/<key> --file=<path>
+--remote`, then update the manifest entry's size and SHA-256.
 
 ## Regenerating a character
 

@@ -1,0 +1,121 @@
+{
+  "bucket": "tinyfloor",
+  "prefix": "",
+  "files": [
+    {
+      "key": "characters/Adam_idle_anim_16x16.png",
+      "sha256": "486089994cfec9b927fac08e6e3f1af38c6b581d029c63509badfaa24e0a13fc",
+      "bytes": 4076
+    },
+    {
+      "key": "characters/Adam_run_16x16.png",
+      "sha256": "11b20f6be9df55e16956750817f9fd3ac19d159b93080cbf4d6a87b640ff16c0",
+      "bytes": 5765
+    },
+    {
+      "key": "characters/Adam.png",
+      "sha256": "23dcf39ec6346042d3a23206adee2df82a7feb8a38a43ad6775b7de4ed22066c",
+      "bytes": 5625
+    },
+    {
+      "key": "characters/Alex_idle_anim_16x16.png",
+      "sha256": "78a0031a37b3d518eee542923ee3d89cf668381e7fceead71206565e6b93e7e7",
+      "bytes": 3537
+    },
+    {
+      "key": "characters/Alex_run_16x16.png",
+      "sha256": "009f3c614856c8b7982022775824fac9234f3d49cf533b4b5d449b9edc69df21",
+      "bytes": 5392
+    },
+    {
+      "key": "characters/Alex.png",
+      "sha256": "ded791755bba05381870a6b79242b6948926a6a6d0640457ae4503c57ced828f",
+      "bytes": 5578
+    },
+    {
+      "key": "characters/Amelia_idle_anim_16x16.png",
+      "sha256": "fc72fda0247dba8d71a54e0018a79cc4ff831c164402d922c8e137d93c450bc5",
+      "bytes": 3764
+    },
+    {
+      "key": "characters/Amelia_run_16x16.png",
+      "sha256": "95211e599b42c04367e42d026f345b8bc5e438a72d9964da54b4e4a9bf8ee902",
+      "bytes": 5356
+    },
+    {
+      "key": "characters/Amelia.png",
+      "sha256": "17ee41a37d55bdeaa4b3b60a84d1db2e09cbebbc0e274934907ce2a4c6263378",
+      "bytes": 5562
+    },
+    {
+      "key": "characters/Ash_idle_anim_16x16.png",
+      "sha256": "43cbe1b8f770480a4d82c48c54ec3f45b11f6fd7417e46a48cb5992c05b61c09",
+      "bytes": 3388
+    },
+    {
+      "key": "characters/Ash_run_16x16.png",
+      "sha256": "8e33e129444fe534dbc599e870dd931794e4765fb136a947fe79afff09b5f8ea",
+      "bytes": 3803
+    },
+    {
+      "key": "characters/Ash.png",
+      "sha256": "a01e8e5e344d4fd15d64ffc4bf50db1c17086ad5531eef0e6b8fdea823ae3437",
+      "bytes": 7687
+    },
+    {
+      "key": "characters/Bob_idle_anim_16x16.png",
+      "sha256": "7a339499a5c5f3cdce8a65f926fa0c30d1e27d451ffc4f99693cbfc0a84e0c50",
+      "bytes": 3327
+    },
+    {
+      "key": "characters/Bob_run_16x16.png",
+      "sha256": "43cadb17d009be9224e381cdea4923fb88e4df9d243ba2320eff23dfcfb88f97",
+      "bytes": 5070
+    },
+    {
+      "key": "characters/Bob.png",
+      "sha256": "7bd493daa628d4850b06ab169eb0aa991ca3ad3af5d79a99a4a8ebd352438cef",
+      "bytes": 4952
+    },
+    {
+      "key": "characters/Dan_idle_anim_16x16.png",
+      "sha256": "f98cc63dddbe17a81e40b00295154718cac0a80c66d694ba30028f6c00fd4abc",
+      "bytes": 3137
+    },
+    {
+      "key": "characters/Dan_run_16x16.png",
+      "sha256": "64860e9817b1d2fa57302b8fc0315a5d1839526e99cae2f554e5c2dbb5a2286c",
+      "bytes": 3578
+    },
+    {
+      "key": "characters/Dan.png",
+      "sha256": "9863e55863e1bf8a7091d7e43a2db3341871c61e40a1d3534287cd934c7e93ec",
+      "bytes": 7272
+    },
+    {
+      "key": "tilesets/items/chair.png",
+      "sha256": "772d8f5759e3ecef0cf8070073ef19f9f45294707120859a43a2167ab2410928",
+      "bytes": 5608
+    },
+    {
+      "key": "tilesets/items/computer.png",
+      "sha256": "c01627530743023f75087e0ef9e2f9dac1d0a081bb1d67e526bc8bd4068c9af5",
+      "bytes": 4027
+    },
+    {
+      "key": "tilesets/items/whiteboard.png",
+      "sha256": "8e1a62ab9ec12fa4c6494c9f3814fed7bb21e30f425516539df09cc41129243d",
+      "bytes": 1121
+    },
+    {
+      "key": "tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
+      "sha256": "307e6c3760ea30ab049035cc68545b5228a922ceedfb6edfd7f3cb73ca76be3f",
+      "bytes": 112361
+    },
+    {
+      "key": "tilesets/textures/Room_Builder_Office_32x32.png",
+      "sha256": "ec09a6a6b295eb0ccc872f48d5428456121c5d6987ff43aca750d65c22b4ca61",
+      "bytes": 14590
+    }
+  ]
+}

@@ -4,15 +4,16 @@
   "private": true,
   "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "node scripts/fetch-assets.mjs && next dev --webpack",
+    "build": "node scripts/fetch-assets.mjs && next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "build:worker": "opennextjs-cloudflare build",
+    "build:worker": "node scripts/fetch-assets.mjs && opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:worker": "opennextjs-cloudflare deploy",
     "upload:worker": "opennextjs-cloudflare upload",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "assets": "node scripts/fetch-assets.mjs"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",

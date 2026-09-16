@@ -51,3 +51,11 @@ build/
 # Python caches
 __pycache__/
 *.pyc
+
+# Licensed art from the Modern Interiors and Modern Office packs. It may be
+# used in this project but not redistributed, so it lives in R2 and is pulled
+# in at build time by frontend-nextjs/scripts/fetch-assets.mjs.
+/private-assets/
+/frontend-nextjs/public/characters/*.png
+/frontend-nextjs/public/tilesets/textures/
+/frontend-nextjs/public/tilesets/items/

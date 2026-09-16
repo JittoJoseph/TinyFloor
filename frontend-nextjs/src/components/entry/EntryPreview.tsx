@@ -35,8 +35,8 @@ export const EntryPreview: React.FC<{
 
   return (
     <OfficeScene
-      className="aspect-[16/10] sm:aspect-[7/5] rounded-[1.35rem] border border-black/10"
-      zoom="auto 470px"
+      className="aspect-[16/10] sm:aspect-[7/5] lg:aspect-auto lg:h-full rounded-[1.35rem] border border-black/10"
+      zoom="auto max(470px, 100%)"
       focus="42% 79%"
       occupants={occupants}
     >

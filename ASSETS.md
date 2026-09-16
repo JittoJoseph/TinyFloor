@@ -68,5 +68,6 @@ the default location.
 
 ## Credit
 
-The Modern Interiors licence requires credit: art by
-[LimeZu](https://limezu.itch.io).
+The Modern Interiors licence requires credit to
+[LimeZu](https://limezu.itch.io), and the Modern Office licence welcomes it. The
+credit is served at `/credits.txt`, from `frontend-nextjs/public/credits.txt`.

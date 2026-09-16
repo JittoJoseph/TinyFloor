@@ -388,6 +388,10 @@
     "away": {
       "label": "Poissa",
       "description": "Palaan pian"
+    },
+    "in_call": {
+      "label": "Puhelussa",
+      "description": "Asetetaan puhelun ajaksi"
     }
   },
   "chat": {

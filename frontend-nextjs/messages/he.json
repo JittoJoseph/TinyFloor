@@ -388,6 +388,10 @@
     "away": {
       "label": "לא ליד המחשב",
       "description": "כבר חוזר"
+    },
+    "in_call": {
+      "label": "בשיחה",
+      "description": "מוגדר אוטומטית בזמן שיחה"
     }
   },
   "chat": {

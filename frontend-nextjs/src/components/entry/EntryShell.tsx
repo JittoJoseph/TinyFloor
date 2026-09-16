@@ -15,30 +15,34 @@ export const EntryShell: React.FC<{
 
   return (
     <div className="min-h-screen w-full bg-[var(--color-braun-bg)] flex flex-col">
-      <header className="w-full max-w-6xl mx-auto px-4 md:px-6 py-5 flex items-center justify-between gap-4">
-        <Link
-          href={backHref}
-          className="cursor-pointer inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-3.5 py-2 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 hover:bg-white transition-[opacity,background-color] duration-200"
-        >
-          <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
-          {backLabel ?? t("allRooms")}
-        </Link>
-        <div className="flex items-center gap-3">
-          <LanguageSwitcher side="bottom" align="end" compact />
-          <Link
-            href="/"
-            className="cursor-pointer hidden sm:inline font-body font-bold text-lg tracking-tight text-[var(--color-braun-text)]"
-          >
-            TinyFloor
-          </Link>
-        </div>
-      </header>
-
-      <main className="flex-1 w-full px-4 pb-10 flex items-start md:items-center justify-center">
-        <div className="w-full max-w-[27rem] rounded-[1.75rem] border border-black/10 bg-white p-3 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.45)]">
-          {preview}
+      <main className="flex-1 w-full px-4 py-4 sm:py-8 flex items-center justify-center">
+        <div className="w-full max-w-[27rem] rounded-[1.75rem] border border-black/10 bg-white p-2.5 sm:p-3 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.45)]">
+          {/* Everything that used to sit in a page header rides on the preview,
+              so a phone shows the whole panel without scrolling. */}
+          <div className="relative">
+            {preview}
+            <div className="absolute inset-x-2.5 top-2.5 flex items-start justify-between gap-2">
+              <Link
+                href={backHref}
+                aria-label={backLabel ?? t("allRooms")}
+                className="cursor-pointer inline-flex items-center gap-1.5 h-9 px-2.5 rounded-xl bg-white/92 border border-black/10 shadow-sm font-body text-[13px] font-medium text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
+              >
+                <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
+                <span className="hidden sm:inline">
+                  {backLabel ?? t("allRooms")}
+                </span>
+              </Link>
+              <LanguageSwitcher side="bottom" align="end" compact />
+            </div>
+            <Link
+              href="/"
+              className="cursor-pointer absolute start-2.5 bottom-2.5 inline-flex items-center h-7 px-2.5 rounded-lg bg-white/92 border border-black/10 shadow-sm font-body font-bold text-[13px] tracking-tight text-[var(--color-braun-text)] hover:bg-white transition-colors duration-[120ms]"
+            >
+              TinyFloor
+            </Link>
+          </div>
           <AutoHeight>
-            <div className="px-2 pt-5 pb-1">{children}</div>
+            <div className="px-1.5 sm:px-2 pt-4 sm:pt-5 pb-1">{children}</div>
           </AutoHeight>
         </div>
       </main>

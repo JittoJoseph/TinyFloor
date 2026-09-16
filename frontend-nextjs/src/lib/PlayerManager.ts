@@ -32,7 +32,16 @@ const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
 const TAG_DEPTH = 100000;
-const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Ash", "Bob", "Dan"];
+const VALID_SPRITES = [
+  "Adam",
+  "Alex",
+  "Amelia",
+  "Ash",
+  "Bob",
+  "Dan",
+  "Lucy",
+  "Molly",
+];
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
 

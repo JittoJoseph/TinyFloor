@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Rummet er der stadig i morgen.",
-      "body": "Rum slutter ikke, når et møde gør. Hold ét åbent for dit team, sæt en adgangskode på, hvis du har brug for det, og send linket én gang.",
-      "chip1": "Synligt for alle",
-      "chip2": "Del via link",
+      "body": "Rum slutter ikke, når et møde gør. Hold dem åbne for dit team, inviter folk én gang, og de kan gå ind, når de vil.",
+      "chip1": "Kun for dit team",
+      "chip2": "Gæstelinks",
       "chip3": "Gratis"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Det er gratis at oprette rum, gå rundt, chatte og ringe."
+        "a": "Ja. Den offentlige lobby er gratis for alle, og det er et arbejdsområde til et lille team også."
       },
       {
         "q": "Skal jeg have en konto for at deltage i et rum?",
-        "a": "Nej. Alle kan deltage som gæst med bare et navn. At logge ind giver kun en gemt profil, en figur, du beholder, og en liste over dine rum."
+        "a": "Ikke til den offentlige lobby. Der kan alle gå ind som gæst med bare et navn. Rum i et arbejdsområde er private: holdkammerater logger ind med en gratis konto, og besøgende kommer ind via et gæstelink."
       },
       {
         "q": "Hvordan fungerer videoopkaldene?",
-        "a": "Opkald kører peer-to-peer via WebRTC, så lyd og video går direkte mellem browserne. Når et opkald er forbundet, forbliver det forbundet, indtil nogen lægger på eller forlader rummet. At gå væk afbryder det ikke."
+        "a": "Et opkald med dem, du går hen til, kører peer-to-peer over WebRTC, så lyd og video går direkte mellem browserne. Det forbliver forbundet, indtil nogen lægger på eller forlader rummet, så det afbrydes ikke, når du går væk. Mødeborde sender gruppeopkald gennem en medieserver: sæt dig for at deltage, rejs dig for at gå."
       },
       {
         "q": "Er mit kamera tændt hele tiden, mens jeg er i et rum?",
@@ -160,7 +160,7 @@
     "publicTitle": "Gå ind på det offentlige kontor",
     "publicBody": "Rummet, der altid er åbent. Vælg en figur, gå rundt, og sig hej til dem, der er der.",
     "createTitle": "Åbn et rum til dit team",
-    "createBody": "Giv det et navn, tilføj en adgangskode, hvis du vil, og send ét link. Det er åbent, så længe du vil.",
+    "createBody": "Opret en gratis konto, navngiv dit arbejdsområde, og inviter dit team med ét link. Dine rum er åbne, så længe du vil.",
     "sampleName": "Designteamet",
     "create": "Opret"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Åbn et rum",
-        "body": "Gå ind på det åbne kontor, eller opret et rum og del linket."
+        "body": "Gå ind på det åbne kontor, eller opret et arbejdsområde og inviter dit team."
       },
       {
         "title": "Vælg en figur",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Gæster går lige ind",
-            "body": "Alle med linket kan deltage med bare et navn. En konto er valgfri og gemmer kun din profil og dine rum."
+            "body": "Holdkammerater kommer ind med en gratis konto, og alle andre kan komme ind via et gæstelink med bare et navn."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Kan jeg flytte mit team fra Gather til TinyFloor?",
-            "a": "Ja. Opret et rum, del linket, og alle går ind. Der er ingen data at flytte og intet at installere."
+            "a": "Ja. Opret et arbejdsområde, inviter dit team med ét link, og alle går ind. Der er ingen data at flytte og intet at installere."
           },
           {
             "q": "Hvor mange kan være i et TinyFloor-rum?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Skal mine kolleger have en konto?",
-            "a": "Nej. Alle med et rumlink kan deltage som gæst med bare et navn. At logge ind gemmer kun en profil, en figur og en liste over dine rum."
+            "a": "Holdkammerater bruger en gratis konto, så jeres rum forbliver private. Alle andre kan komme ind som gæst med bare et navn, via et gæstelink eller den offentlige lobby."
           },
           {
             "q": "Virker TinyFloor på mobilen?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Skal jeg drive en server?",
-            "a": "Nej. TinyFloor hostes for dig. Opret et rum i browseren og del linket."
+            "a": "Nej. TinyFloor hostes for dig. Opret et arbejdsområde i browseren, og inviter dit team."
           },
           {
             "q": "Hvordan starter opkald i TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Et åbent rum, når som helst",
-            "body": "Det åbne kontor er altid åbent. Eller opret et rum til din egen coworkinggruppe og del linket."
+            "body": "Det åbne kontor er altid åbent. Eller opret et arbejdsområde til din egen coworking-gruppe, og inviter dem."
           },
           {
             "title": "Sæt din status",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Kan jeg cowork'e med fremmede?",
-            "a": "Ja. Det åbne kontor er åbent for alle. Til en privat gruppe opretter du et rum og tilføjer en adgangskode."
+            "a": "Ja. Det åbne kontor er åbent for alle. Til en privat gruppe opretter du et arbejdsområde: dets rum er kun åbne for dem, du inviterer."
           },
           {
             "q": "Er der en tidsgrænse?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Hvordan opretter jeg et læserum?",
-            "a": "Opret et rum, giv det et navn, og del linket med dine venner. Tilføj en adgangskode, hvis det skal være privat."
+            "a": "Opret et arbejdsområde, tilføj et rum, og inviter dine venner med ét link. Kun dem, du inviterer, kan gå ind."
           },
           {
             "q": "Er det gratis for studerende?",
-            "a": "Ja. TinyFloor er gratis for alle, og ingen behøver en konto for at deltage."
+            "a": "Ja. TinyFloor er gratis for en lille gruppe, og venner kan komme ind via et gæstelink uden konto."
           },
           {
             "q": "Kan vi høre musik, mens vi læser?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Kan jeg holde klasseværelset privat?",
-            "a": "Ja. Tilføj en adgangskode, når du opretter rummet, og del den kun med din klasse."
+            "a": "Ja. Rum i et arbejdsområde er private. Del et gæstelink med din klasse, og slå det fra, når I er færdige."
           },
           {
             "q": "Er det gratis for lærere?",

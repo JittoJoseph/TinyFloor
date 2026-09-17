@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Morgen is de ruimte er nog.",
-      "body": "Ruimtes stoppen niet als een vergadering stopt. Houd er één open voor je team, zet er zo nodig een wachtwoord op en stuur de link één keer.",
-      "chip1": "Zichtbaar voor iedereen",
-      "chip2": "Delen via link",
+      "body": "Ruimtes stoppen niet als een meeting stopt. Houd ze open voor je team, nodig mensen één keer uit en ze lopen binnen wanneer ze willen.",
+      "chip1": "Alleen voor je team",
+      "chip2": "Gastlinks",
       "chip3": "Gratis"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. Ruimtes aanmaken, rondlopen, chatten en bellen is gratis."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een werkruimte voor een klein team ook."
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
-        "a": "Nee. Iedereen kan als gast meedoen met alleen een naam. Inloggen voegt alleen een opgeslagen profiel toe, een personage dat je houdt en een lijst van je ruimtes."
+        "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
       },
       {
         "q": "Hoe werken de videogesprekken?",
-        "a": "Gesprekken lopen peer-to-peer via WebRTC, dus audio en video gaan rechtstreeks tussen browsers. Zodra een gesprek verbonden is, blijft het verbonden tot iemand ophangt of de ruimte verlaat. Weglopen verbreekt het niet."
+        "a": "Een gesprek met de mensen naar wie je toeloopt gaat peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
@@ -160,7 +160,7 @@
     "publicTitle": "Loop het openbare kantoor binnen",
     "publicBody": "De ruimte die altijd open is. Kies een personage, loop rond en zeg hallo tegen wie er is.",
     "createTitle": "Open een ruimte voor je team",
-    "createBody": "Geef hem een naam, voeg desgewenst een wachtwoord toe en stuur één link. Hij blijft open zolang je wilt.",
+    "createBody": "Maak een gratis account, geef je werkruimte een naam en nodig je team uit met één link. Je ruimtes blijven open zo lang je wilt.",
     "sampleName": "Designteam",
     "create": "Aanmaken"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Open een ruimte",
-        "body": "Loop het openbare kantoor in, of maak een ruimte en deel de link."
+        "body": "Loop het openbare kantoor binnen, of maak een werkruimte en nodig je team uit."
       },
       {
         "title": "Kies een personage",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Gasten lopen zo naar binnen",
-            "body": "Iedereen met de link doet mee met alleen een naam. Een account is optioneel en bewaart alleen je profiel en ruimtes."
+            "body": "Teamleden komen binnen met een gratis account, en iedereen anders via een gastlink met alleen een naam."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
-            "a": "Ja. Maak een ruimte, deel de link en iedereen loopt naar binnen. Er zijn geen gegevens over te zetten en niets te installeren."
+            "a": "Ja. Maak een werkruimte, nodig je team uit met één link en iedereen loopt binnen. Er zijn geen gegevens over te zetten en niets te installeren."
           },
           {
             "q": "Hoeveel mensen passen er in een TinyFloor-ruimte?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
-            "a": "Nee. Iedereen met een ruimtelink kan als gast meedoen met alleen een naam. Inloggen bewaart alleen een profiel, een personage en een lijst van je ruimtes."
+            "a": "Teamleden gebruiken een gratis account, zo blijven jullie ruimtes privé. Iedereen anders kan als gast binnenkomen met alleen een naam, via een gastlink of de openbare lobby."
           },
           {
             "q": "Werkt TinyFloor op een telefoon?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Moet ik een server draaien?",
-            "a": "Nee. TinyFloor wordt voor je gehost. Maak een ruimte in de browser en deel de link."
+            "a": "Nee. TinyFloor wordt voor je gehost. Maak een werkruimte in de browser en nodig je team uit."
           },
           {
             "q": "Hoe starten gesprekken in TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Een open ruimte, altijd",
-            "body": "Het openbare kantoor is altijd open. Of maak een ruimte voor je eigen coworkinggroep en deel de link."
+            "body": "Het openbare kantoor is altijd open. Of maak een werkruimte voor je eigen coworkinggroep en nodig ze uit."
           },
           {
             "title": "Stel je status in",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Kan ik met onbekenden coworken?",
-            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een ruimte en voeg je een wachtwoord toe."
+            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een werkruimte: de ruimtes daarin zijn alleen open voor wie je uitnodigt."
           },
           {
             "q": "Is er een tijdslimiet?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Hoe maak ik een studieruimte?",
-            "a": "Maak een ruimte, geef hem een naam en deel de link met je vrienden. Voeg een wachtwoord toe als je hem privé wilt houden."
+            "a": "Maak een werkruimte, voeg een ruimte toe en nodig je vrienden uit met één link. Alleen wie je uitnodigt kan binnenlopen."
           },
           {
             "q": "Is het gratis voor studenten?",
-            "a": "Ja. TinyFloor is gratis voor iedereen, en niemand heeft een account nodig om mee te doen."
+            "a": "Ja. TinyFloor is gratis voor een kleine groep, en vrienden kunnen zonder account binnenkomen via een gastlink."
           },
           {
             "q": "Kunnen we muziek luisteren tijdens het studeren?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Kan ik het klaslokaal privé houden?",
-            "a": "Ja. Voeg een wachtwoord toe als je de ruimte maakt en deel het alleen met je klas."
+            "a": "Ja. Ruimtes in een werkruimte zijn privé. Deel een gastlink met je klas en zet hem uit als jullie klaar zijn."
           },
           {
             "q": "Is het gratis voor docenten?",

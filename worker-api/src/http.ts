@@ -3,6 +3,8 @@ export class HttpError extends Error {
     readonly status: number,
     readonly code: string,
     message: string,
+    /** The form field the error is about, so the site can show it in place. */
+    readonly field?: string,
   ) {
     super(message);
   }
@@ -13,7 +15,8 @@ export function json(body: unknown, init: ResponseInit = {}): Response {
 }
 
 export function errorResponse(error: HttpError): Response {
-  return json({ error: { code: error.code, message: error.message } }, { status: error.status });
+  const body = { code: error.code, message: error.message, ...(error.field ? { field: error.field } : {}) };
+  return json({ error: body }, { status: error.status });
 }
 
 export function allowedOrigin(request: Request, env: Env): string | null {

@@ -5,6 +5,8 @@ import { roomRoutes } from "./rooms";
 import { Router } from "./router";
 import { workspaceRoutes } from "./workspaces";
 
+export { PasswordGuard } from "./password-guard";
+
 const router = new Router().add("GET", "/v1/health", async ({ env }) => {
   const database = await env.DB.prepare("SELECT 1 AS ok").first<{ ok: number }>();
   return json({ service: "tinyfloor-api", ok: true, database: database?.ok === 1 });

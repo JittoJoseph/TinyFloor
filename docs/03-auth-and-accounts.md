@@ -2,37 +2,54 @@
 
 ## Constraints
 
-- **10ms of CPU per HTTP request on the Workers Free plan.** No password
-  hashing. Everything cryptographic uses WebCrypto: SHA-256 for token hashes,
-  HMAC-SHA-256 for room tickets, RSA verification for Google ID tokens. Waiting
-  on network calls does not count as CPU time.
-- **Email sending needs Workers Paid.** Magic links come later; see below.
-- **No passwords in the new system.** Password accounts from MongoDB are carried
-  over by email and sign in with Google (or a magic link once available).
+- **10ms of CPU per HTTP request on the Workers Free plan.** Password hashing
+  takes far longer, so it runs in the `PasswordGuard` Durable Object, which gets
+  30 seconds of CPU per request on every plan. Everything else uses WebCrypto:
+  SHA-256 for token hashes and HMAC-SHA-256 for room tickets.
+- **Email sending needs Workers Paid**, or an external provider. Password reset
+  and magic links wait for that.
 
 ## Sign-in methods
 
 | Method | When | Result |
 |---|---|---|
-| Google | From the start | Account session |
-| Guest | From the start | Guest session: lobby and guest-link rooms only |
-| Magic link | When on Workers Paid, or through an external email provider | Account session |
+| Email and password | From the start | Account session (30 days) |
+| Guest | From the start | Guest session (7 days): lobby and guest-link rooms only |
+| Google | Far later | Account session |
+| Magic link, password reset | Once email sending is set up | Account session |
 
-### Google (OpenID Connect, authorization code flow)
+### Email and password
 
-1. `GET /v1/auth/google/start?next=/dashboard`
-   - Creates `state` and `nonce`, and a PKCE `code_verifier`.
-   - Stores them in a short-lived, HttpOnly cookie (10 minutes).
-   - Redirects to Google with `scope=openid email profile`.
-2. `GET /v1/auth/google/callback?code&state`
-   - Checks `state` against the cookie.
-   - Exchanges the code at Google's token endpoint (network, not CPU).
-   - Verifies the ID token: signature against Google's JWKS (cached with the
-     Cache API for the time Google allows), `iss`, `aud`, `exp`, `nonce`,
-     `email_verified`.
-   - Finds the user by `google_sub`, else by verified `email` (this is how
-     migrated accounts get linked), else creates one.
-   - Creates a session and redirects to `next`, which must be a same-site path.
+- `POST /v1/auth/signup { email, password, displayName, character, turnstileToken }`
+  - Email is trimmed and lowercased. Passwords are 8 characters to 72 bytes
+    (bcrypt's limit), and not only spaces.
+  - Turnstile is checked before anything is created.
+  - An email that already has an account gets `409 email_taken`.
+  - **A guest who signs up is upgraded in place:** same user id, keeping their
+    name and character unless they chose new ones. Their guest session is
+    replaced by an account session.
+- `POST /v1/auth/login { email, password }`
+  - Wrong password and unknown email get the same `401 wrong_credentials`, and
+    an unknown email is checked against a decoy hash so both take as long.
+  - Five wrong passwords for one email within 15 minutes lock that email for the
+    rest of the window (`429`). One IP address gets 30 attempts per 15 minutes
+    across all emails.
+  - Signing in from a guest session ends the guest session.
+- `POST /v1/me/password { currentPassword, newPassword }` signs out every other
+  session.
+- Errors carry `field` when they are about one form field, so the site can show
+  them next to it.
+
+Hashes are bcrypt, cost 11. The Java backend's hashes are bcrypt too (cost 10),
+so carried-over accounts sign in with their old passwords, and their hash is
+quietly upgraded to cost 11 on the first sign-in.
+
+### `PasswordGuard` Durable Object
+
+One object per `email:<address>` or `ip:<address>`:
+- `hash(password)`, `verify(password, hash | null)`, `needsRehash(hash)`
+- `attempt(max)` for the per-IP count
+- Failure counts live in its SQLite and reset on a successful sign-in.
 
 ### Guests
 
@@ -40,9 +57,7 @@
 
 - Turnstile is verified server-side before anything is created.
 - Creates a user with `is_guest = 1` and a 7-day session.
-- Signing in with Google later **upgrades the guest in place** when it's the
-  same browser: the guest row becomes the account, so the name and character
-  carry over.
+- Signing up later upgrades the guest in place (above).
 
 ### Magic links (later)
 

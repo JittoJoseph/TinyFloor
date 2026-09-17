@@ -11,6 +11,8 @@ export default defineConfig(async () => ({
           TURNSTILE_SECRET: "test-turnstile-secret",
           COOKIE_DOMAIN: "",
           REALTIME_URL: "ws://localhost:8788",
+          TURN_KEY_ID: "test-turn-key",
+          TURN_KEY_API_TOKEN: "test-turn-token",
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
         workers: [

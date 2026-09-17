@@ -1,10 +1,11 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
+import type { RealtimeAdminApi } from "../../shared-protocol/src";
 
 /**
  * What tinyfloor-api may do to rooms. Reachable only through the API's service
  * binding, never from the internet.
  */
-export class RealtimeAdmin extends WorkerEntrypoint<Env> {
+export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdminApi {
   /** People in each room right now. Wakes hibernating rooms only briefly. */
   async presenceCounts(roomIds: string[]): Promise<Record<string, number>> {
     const counts = await Promise.all(roomIds.map((id) => this.env.ROOM.getByName(id).presenceCount()));

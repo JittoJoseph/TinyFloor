@@ -53,8 +53,8 @@ site's middleware redirects every other host to `www`, so it must let
 
 | Item | Where | Stored as |
 |---|---|---|
-| TURN key | Dashboard: Realtime → TURN | `TURN_KEY_ID`, `TURN_KEY_API_TOKEN` secrets on `tinyfloor-api` |
-| SFU app | Dashboard: Realtime → SFU | `REALTIME_APP_ID`, `REALTIME_APP_SECRET` secrets on `tinyfloor-realtime` |
+| TURN key | Dashboard: Realtime → TURN Server, app `tinyfloor`. Created | `TURN_KEY_ID`, `TURN_KEY_API_TOKEN` secrets on `tinyfloor-api`. Set |
+| SFU app | Dashboard: Realtime → Serverless SFU, app `tinyfloor`. Created | `REALTIME_APP_ID`, `REALTIME_APP_SECRET` secrets on `tinyfloor-realtime`. Set |
 
 ## Turnstile
 

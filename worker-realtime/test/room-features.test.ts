@@ -1,5 +1,8 @@
+import { runInDurableObject } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { BOARD_MAX_STROKES } from "../../shared-protocol/src";
+import { Board } from "../src/board";
 import { discordPayload, LobbyReporter } from "../src/discord";
 import { Client, settle, uniqueRoom } from "./client";
 
@@ -130,21 +133,22 @@ describe("whiteboard", () => {
   });
 
   it(`keeps at most ${BOARD_MAX_STROKES} strokes, dropping the oldest`, async () => {
-    const { room, ava } = await pair();
-    // 30 draws a second are allowed, so send in paced batches.
-    for (let batch = 0; batch * 25 < BOARD_MAX_STROKES + 5; batch++) {
-      for (let i = batch * 25; i < Math.min((batch + 1) * 25, BOARD_MAX_STROKES + 5); i++) {
-        ava.send({ t: "board_draw", id: `s${i}`, color: "#000000", size: 2, erase: false, points: [i, i] });
+    const { room, ava, ben } = await pair();
+    await runInDurableObject(env.ROOM.getByName(room), (_, state) => {
+      const board = new Board(state.storage.sql);
+      for (let i = 0; i < BOARD_MAX_STROKES; i++) {
+        board.append({ id: `s${i}`, color: "#000000", size: 2, erase: false, points: [i, i] });
       }
-      await new Promise((resolve) => setTimeout(resolve, 1050));
-    }
-    const viewer = await Client.open(room);
-    await viewer.next("welcome");
-    viewer.send({ t: "board_sync" });
-    const { strokes } = await viewer.next("board_state", 5000);
+    });
+
+    ava.send({ t: "board_draw", id: "newest", color: "#000000", size: 2, erase: false, points: [1, 1] });
+    await ben.next("board_draw");
+    ben.send({ t: "board_sync" });
+    const { strokes } = await ben.next("board_state");
     expect(strokes).toHaveLength(BOARD_MAX_STROKES);
-    expect(strokes[0].id).toBe("s5");
-  }, 30_000);
+    expect(strokes[0].id).toBe("s1");
+    expect(strokes.at(-1)?.id).toBe("newest");
+  });
 });
 
 describe("jukebox", () => {

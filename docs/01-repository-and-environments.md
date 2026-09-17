@@ -95,7 +95,7 @@ the root directory:
 | Worker | Root | Branch | Deploy |
 |---|---|---|---|
 | `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` (unchanged) |
-| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run deploy:worker` with the preview's name and variables |
+| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview` (the `preview` environment in `wrangler.jsonc`), with build variables `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_REALTIME_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `NEXT_PUBLIC_SITE_URL=https://preview.tinyfloor.com`. Created |
 | `tinyfloor-api` | `worker-api` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` (applies D1 migrations first) |
 | `tinyfloor-realtime` | `worker-realtime` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` |
 

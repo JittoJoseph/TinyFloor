@@ -11,6 +11,7 @@
     "COOKIE_DOMAIN": ".tinyfloor.com",
     "REALTIME_URL": "wss://realtime.tinyfloor.com"
   },
+  "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime", "entrypoint": "RealtimeAdmin" }],
   "d1_databases": [
     {
       "binding": "DB",

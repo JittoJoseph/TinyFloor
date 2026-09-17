@@ -1,3 +1,4 @@
+import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";
 
 export const SESSION_COOKIE = "tf_session";
@@ -6,6 +7,7 @@ const LAST_SEEN_REFRESH_MS = 24 * 60 * 60 * 1000;
 
 export interface User {
   id: string;
+  email: string | null;
   displayName: string;
   character: string;
   isGuest: boolean;
@@ -13,6 +15,7 @@ export interface User {
 
 interface SessionRow {
   user_id: string;
+  email: string | null;
   display_name: string;
   character: string;
   is_guest: number;
@@ -27,7 +30,7 @@ export async function createGuest(
 ): Promise<{ user: User; cookie: string }> {
   const now = Date.now();
   const userId = crypto.randomUUID();
-  const token = base64url(crypto.getRandomValues(new Uint8Array(32)));
+  const token = randomToken();
   const expiresAt = now + GUEST_SESSION_MS;
   const userAgent = request.headers.get("User-Agent")?.slice(0, 200) ?? null;
 
@@ -41,7 +44,7 @@ export async function createGuest(
   ]);
 
   return {
-    user: { id: userId, displayName, character, isGuest: true },
+    user: { id: userId, email: null, displayName, character, isGuest: true },
     cookie: sessionCookie(env, token, GUEST_SESSION_MS / 1000),
   };
 }
@@ -54,7 +57,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const now = Date.now();
   const id = await hashToken(token);
   const row = await env.DB.prepare(
-    `SELECT s.user_id, s.last_seen_at, u.display_name, u.character, u.is_guest
+    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -73,6 +76,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
 
   return {
     id: row.user_id,
+    email: row.email,
     displayName: row.display_name,
     character: row.character,
     isGuest: row.is_guest === 1,
@@ -85,23 +89,18 @@ export async function requireUser(env: Env, request: Request, ctx: ExecutionCont
   return user;
 }
 
+/** Workspaces are for accounts; guests only visit the lobby and guest-link rooms. */
+export async function requireAccount(env: Env, request: Request, ctx: ExecutionContext): Promise<User> {
+  const user = await requireUser(env, request, ctx);
+  if (user.isGuest) throw new HttpError(403, "account_required", "Sign in with an account first");
+  return user;
+}
+
 /** Deletes the session, if any, and returns a cookie that clears it. */
 export async function endSession(env: Env, request: Request): Promise<string> {
   const token = readCookie(request, SESSION_COOKIE);
   if (token) await env.DB.prepare("DELETE FROM sessions WHERE id = ?").bind(await hashToken(token)).run();
   return sessionCookie(env, "", 0);
-}
-
-/** Only a hash of the token is stored, so a database leak exposes no usable sessions. */
-async function hashToken(token: string): Promise<string> {
-  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token));
-  return base64url(new Uint8Array(digest));
-}
-
-function base64url(bytes: Uint8Array): string {
-  let binary = "";
-  for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
 function readCookie(request: Request, name: string): string | null {

@@ -13,6 +13,14 @@ export default defineConfig(async () => ({
           REALTIME_URL: "ws://localhost:8788",
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
+        workers: [
+          {
+            name: "tinyfloor-realtime",
+            modules: true,
+            scriptPath: "./test/fake-realtime.js",
+            compatibilityDate: "2026-09-01",
+          },
+        ],
       },
     }),
   ],

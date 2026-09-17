@@ -29,12 +29,12 @@ import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
-const MAX_STEP_TILES = 2;
 const MEETING_ID = /^[a-z0-9-]{1,32}$/;
 
 /** Per-socket limits. Kept in the attachment, so they survive hibernation. */
 const LIMITS = {
-  movesPerSecond: 6,
+  // Walking crosses about 4 tiles a second, 6 on a diagonal; this leaves headroom.
+  movesPerSecond: 12,
   actionsPerSecond: 4,
   drawsPerSecond: 30,
   sfuOpsPerSecond: 10,
@@ -204,7 +204,7 @@ export class Room extends DurableObject<Env> {
 
     switch (message.t) {
       case "move":
-        this.move(socket, me, message.x, message.y);
+        this.move(socket, me, message.x, message.y, tileOffset(message.ox), tileOffset(message.oy));
         break;
       case "walk_to":
         this.walkTo(socket, me, message.x, message.y);
@@ -261,17 +261,24 @@ export class Room extends DurableObject<Env> {
 
   // Handlers below change `me`; webSocketMessage saves it once they return.
 
-  private move(socket: WebSocket, me: Attachment, x: number, y: number): void {
-    me.moves++;
-    const step = Math.max(Math.abs(x - me.x), Math.abs(y - me.y));
-    if (me.moves > LIMITS.movesPerSecond || !isInsideMap(x, y) || step > MAX_STEP_TILES) {
-      if (me.moves <= LIMITS.movesPerSecond + 1) send(socket, { t: "move_rejected", x: me.x, y: me.y });
+  /**
+   * Where someone's feet are, tile by tile. There is no distance check: a click
+   * to walk records the destination straight away, so steering off halfway
+   * legitimately "jumps" back from it. Over the rate limit, moves are dropped
+   * quietly; the client sends its final tile when it stops, which catches up.
+   */
+  private move(socket: WebSocket, me: Attachment, x: number, y: number, ox?: number, oy?: number): void {
+    if (!isInsideMap(x, y)) {
+      send(socket, { t: "move_rejected", x: me.x, y: me.y });
       return;
     }
+    me.moves++;
+    if (me.moves > LIMITS.movesPerSecond) return;
     this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    this.broadcast({ t: "moved", id: me.userId, x, y }, socket);
+    const offsets = ox !== undefined && oy !== undefined ? { ox, oy } : {};
+    this.broadcast({ t: "moved", id: me.userId, x, y, ...offsets }, socket);
   }
 
   private walkTo(socket: WebSocket, me: Attachment, x: number, y: number): void {
@@ -763,6 +770,11 @@ function simulcast(layer: unknown): NonNullable<SfuTrack["simulcast"]> {
 function stringList(value: unknown, max: number): string[] | null {
   if (!Array.isArray(value) || value.length === 0 || value.length > max) return null;
   return value.every((item) => typeof item === "string") ? (value as string[]) : null;
+}
+
+/** A position inside a tile, in whole pixels, or nothing when it isn't one. */
+function tileOffset(value: unknown): number | undefined {
+  return Number.isInteger(value) && (value as number) >= 0 && (value as number) < 32 ? (value as number) : undefined;
 }
 
 function memberOf(attachment: Attachment): MeetingMember {

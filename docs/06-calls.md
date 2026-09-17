@@ -157,3 +157,33 @@ The load test page used for the cost measurements is extended to:
   expected bitrates;
 - confirm peer-to-peer calls still connect with TURN forced
   (`iceTransportPolicy: "relay"`).
+
+## Messages as built
+
+Peer-to-peer signalling: `{ t: "call", kind, to, data? }` where `kind` is
+`invite`, `accept`, `decline`, `signal`, `add` or `end`. The room relays
+`{ t: "call", kind, from, fromName, data }`. For `add`, `data` is `{ id }` and the
+room fills in the added person's name itself.
+
+Meeting-table media, all `{ t: "sfu", op, ... }`. Track kinds are `mic`, `camera`
+and `screen`, one of each per person; the SFU track name is the kind.
+
+| Client sends | Room replies or broadcasts |
+|---|---|
+| `publish { sdp, tracks: [{ mid, kind }] }` | `published { sdp }` to the sender; `tracks { userId, kinds }` to the table |
+| `unpublish { kinds }` | `untracks { userId, kinds }` to the table |
+| `subscribe { tracks: [{ userId, kind, layer? }] }` | `offer { sdp, tracks: [{ userId, kind, mid }] }` |
+| `answer { sdp }` | nothing; forwarded to the SFU as a renegotiation |
+| `layer { userId, mid, layer }` | `offer` only if the SFU asks for renegotiation |
+| `unsubscribe { mids }` | nothing; the tracks stop straight away |
+| (sits at a table) | `tracks` for each member already publishing |
+| (stands, walks off or disconnects) | `gone { userId }` to the table; the room closes their tracks |
+
+Errors come back as `{ op: "error", code }`, for example `not_in_meeting` or
+`no_tracks`. SFU operations are limited to 10 per second per person.
+
+Tested against the real SFU with two headless Chrome clients: the camera
+published three layers (1280x720, 640x360, 320x180), the watcher received
+320x180 at `q` and 1280x720 after switching to `f`, and `gone` arrived when the
+publisher stood up. A relay-only peer connection through Cloudflare TURN also
+connected.

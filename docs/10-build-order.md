@@ -109,6 +109,10 @@ languages. Waiting on the week of preview use.
 
 **Done when:** the rehearsal runs clean twice in a row.
 
+**Status (2026-09-17):** done. Two clean runs in a row and a carried-over
+password signed in locally. Open question: 9 of 18 production accounts have no
+email (username sign-in on the Java backend) and aren't carried over.
+
 ## M10. Cutover
 
 - The runbook in `09-data-migration-and-cutover.md`: import accounts, merge.

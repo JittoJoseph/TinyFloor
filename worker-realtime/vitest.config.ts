@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [
     cloudflareTest({
       wrangler: { configPath: "./wrangler.jsonc" },
-      miniflare: { bindings: { TICKET_SECRET: "test-ticket-secret" } },
+      miniflare: { bindings: { TICKET_SECRET: "test-ticket-secret", DISCORD_WEBHOOK_URL: "" } },
     }),
   ],
 });

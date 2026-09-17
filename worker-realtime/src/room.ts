@@ -7,23 +7,29 @@ import {
   PRESENCE_STATUSES,
   isInsideMap,
   type ClientMessage,
+  type MeetingMember,
+  type MusicState,
   type PlayerState,
   type PresenceStatus,
   type RoomRole,
   type RoomTicket,
   type ServerMessage,
 } from "../../shared-protocol/src";
-import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
+import { Board, parseStroke } from "./board";
+import { LobbyReporter } from "./discord";
+import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby-router";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
 const MAX_STEP_TILES = 2;
+const MEETING_ID = /^[a-z0-9-]{1,32}$/;
 
 /** Per-socket limits. Kept in the attachment, so they survive hibernation. */
 const LIMITS = {
   movesPerSecond: 6,
   actionsPerSecond: 4,
+  drawsPerSecond: 30,
   messagesPerSecond: 60,
   chatsPerTenSeconds: 5,
 };
@@ -38,6 +44,8 @@ interface Attachment {
   x: number;
   y: number;
   status: PresenceStatus;
+  seat: number | null;
+  meeting: string | null;
   joinedAt: number;
   lastSeenAt: number;
   /** Set when this socket was closed on purpose, so its close event doesn't announce a departure. */
@@ -45,6 +53,7 @@ interface Attachment {
   second: number;
   moves: number;
   actions: number;
+  draws: number;
   messages: number;
   chatWindow: number;
   chats: number;
@@ -55,12 +64,19 @@ interface Attachment {
  *
  * Built for hibernation: no timers, every message is handled and broadcast on
  * the spot, and everything needed after waking up lives in the WebSocket
- * attachments. The heartbeat is answered by the runtime without waking the room.
+ * attachments or the room's SQLite. The heartbeat is answered by the runtime
+ * without waking the room.
  */
 export class Room extends DurableObject<Env> {
+  private readonly board: Board;
+  private readonly reporter: LobbyReporter;
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair(HEARTBEAT_PING, HEARTBEAT_PONG));
+    ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS room_state (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
+    this.board = new Board(ctx.storage.sql);
+    this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
   }
 
   presenceCount(): number {
@@ -77,7 +93,11 @@ export class Room extends DurableObject<Env> {
 
     const { 0: client, 1: server } = new WebSocketPair();
 
+    // One connection per person: the older one goes, without a player_left,
+    // because the new one arrives as player_joined for the same id.
     for (const previous of this.ctx.getWebSockets(userTag(ticket.sub))) {
+      const old = attachmentOf(previous);
+      if (!old.leaving) this.leaveMeeting(old);
       this.closeQuietly(previous, CloseCode.Replaced, "replaced");
     }
 
@@ -97,12 +117,15 @@ export class Room extends DurableObject<Env> {
       role: ticket.role,
       ...spawnFrom(request.headers.get(SPAWN_HEADER)),
       status: "available",
+      seat: null,
+      meeting: null,
       joinedAt: now,
       lastSeenAt: now,
       leaving: false,
       second: 0,
       moves: 0,
       actions: 0,
+      draws: 0,
       messages: 0,
       chatWindow: 0,
       chats: 0,
@@ -113,8 +136,14 @@ export class Room extends DurableObject<Env> {
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     server.serializeAttachment(attachment);
 
-    send(server, { t: "welcome", self: playerState(attachment), players: others });
+    send(server, { t: "welcome", self: playerState(attachment), players: others, music: this.music() });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
+    this.reportToDiscord(room, {
+      kind: "join",
+      name: attachment.name,
+      character: attachment.character,
+      country: request.headers.get(COUNTRY_HEADER) ?? "",
+    });
     await this.reportHeadcount(room);
 
     return new Response(null, { status: 101, webSocket: client });
@@ -145,16 +174,34 @@ export class Room extends DurableObject<Env> {
       case "walk_to":
         this.walkTo(socket, me, message.x, message.y);
         break;
+      case "sit":
+        this.sit(socket, me, message);
+        break;
+      case "stand":
+        this.stand(me, message.x, message.y);
+        break;
       case "status":
-        this.setStatus(socket, me, message.status);
+        this.setStatus(me, message.status);
         break;
       case "chat":
         this.chat(socket, me, message.text, now);
         break;
+      case "board_sync":
+        send(socket, { t: "board_state", strokes: this.board.strokes() });
+        break;
+      case "board_draw":
+        this.draw(socket, me, message);
+        break;
+      case "board_clear":
+        this.clearBoard(me);
+        break;
+      case "music_set":
+        this.setMusic(me, message, now);
+        break;
       default:
-        socket.serializeAttachment(me);
         send(socket, { t: "error", code: "bad_message" });
     }
+    socket.serializeAttachment(me);
 
     if (this.dropStaleSockets(now)) await this.reportHeadcount(me.room);
   }
@@ -167,40 +214,70 @@ export class Room extends DurableObject<Env> {
     if (this.farewell(socket, 1011)) await this.reportHeadcount(attachmentOf(socket).room);
   }
 
+  // Handlers below change `me`; webSocketMessage saves it once they return.
+
   private move(socket: WebSocket, me: Attachment, x: number, y: number): void {
     me.moves++;
     const step = Math.max(Math.abs(x - me.x), Math.abs(y - me.y));
     if (me.moves > LIMITS.movesPerSecond || !isInsideMap(x, y) || step > MAX_STEP_TILES) {
-      socket.serializeAttachment(me);
       if (me.moves <= LIMITS.movesPerSecond + 1) send(socket, { t: "move_rejected", x: me.x, y: me.y });
       return;
     }
+    this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    socket.serializeAttachment(me);
     this.broadcast({ t: "moved", id: me.userId, x, y }, socket);
   }
 
   private walkTo(socket: WebSocket, me: Attachment, x: number, y: number): void {
-    me.actions++;
-    if (me.actions > LIMITS.actionsPerSecond || !isInsideMap(x, y)) {
-      socket.serializeAttachment(me);
-      return;
-    }
+    if (!this.takeAction(me) || !isInsideMap(x, y)) return;
+    this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    socket.serializeAttachment(me);
     this.broadcast({ t: "walking", id: me.userId, x, y }, socket);
   }
 
-  private setStatus(socket: WebSocket, me: Attachment, status: PresenceStatus): void {
-    me.actions++;
-    if (me.actions > LIMITS.actionsPerSecond || !PRESENCE_STATUSES.includes(status)) {
-      socket.serializeAttachment(me);
+  private sit(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "sit" }>): void {
+    if (!this.takeAction(me)) return;
+    const { seat, x, y, meeting } = message;
+    if (!Number.isInteger(seat) || seat < 0 || seat > 9999 || !isInsideMap(x, y)) return;
+    if (meeting !== undefined && (typeof meeting !== "string" || !MEETING_ID.test(meeting))) return;
+
+    const taken = this.present().some((other) => {
+      const them = attachmentOf(other);
+      return them.userId !== me.userId && them.seat === seat;
+    });
+    if (taken) {
+      send(socket, { t: "sit_rejected", seat });
       return;
     }
+
+    this.leaveSeat(me);
+    me.seat = seat;
+    me.x = x;
+    me.y = y;
+    this.broadcast({ t: "sat", id: me.userId, seat, x, y }, socket);
+
+    if (meeting) {
+      const members = this.meetingMembers(meeting).map((other) => memberOf(attachmentOf(other)));
+      me.meeting = meeting;
+      send(socket, { t: "meeting_joined", meeting, members });
+      this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
+    }
+  }
+
+  private stand(me: Attachment, x: number, y: number): void {
+    if (!this.takeAction(me)) return;
+    if (isInsideMap(x, y)) {
+      me.x = x;
+      me.y = y;
+    }
+    this.leaveSeat(me);
+  }
+
+  private setStatus(me: Attachment, status: PresenceStatus): void {
+    if (!this.takeAction(me) || !PRESENCE_STATUSES.includes(status)) return;
     me.status = status;
-    socket.serializeAttachment(me);
     this.broadcast({ t: "status", id: me.userId, status });
   }
 
@@ -210,8 +287,6 @@ export class Room extends DurableObject<Env> {
       me.chats = 0;
     }
     me.chats++;
-    socket.serializeAttachment(me);
-
     if (me.chats > LIMITS.chatsPerTenSeconds) {
       send(socket, { t: "error", code: "slow_down" });
       return;
@@ -220,6 +295,79 @@ export class Room extends DurableObject<Env> {
     if (!trimmed) return;
 
     this.broadcast({ t: "chat", id: me.userId, name: me.name, text: trimmed, at: now });
+    this.reportToDiscord(me.room, { kind: "chat", name: me.name, text: trimmed });
+  }
+
+  private draw(socket: WebSocket, me: Attachment, message: object): void {
+    me.draws++;
+    if (me.draws > LIMITS.drawsPerSecond) return;
+    const stroke = parseStroke(message);
+    if (!stroke) return;
+    this.board.append(stroke);
+    this.broadcast({ t: "board_draw", by: me.userId, ...stroke }, socket);
+  }
+
+  private clearBoard(me: Attachment): void {
+    if (!this.takeAction(me)) return;
+    this.board.clear();
+    this.broadcast({ t: "board_clear", by: me.userId });
+  }
+
+  private setMusic(me: Attachment, input: object, now: number): void {
+    if (!this.takeAction(me)) return;
+    const message = input as Record<string, unknown>;
+    const current = this.music();
+    const music: MusicState = {
+      track: Number.isInteger(message.track) ? Math.max(0, message.track as number) : current.track,
+      playing: typeof message.playing === "boolean" ? message.playing : current.playing,
+      startedAt: now,
+      offset:
+        typeof message.offset === "number" && Number.isFinite(message.offset) ? Math.max(0, message.offset) : 0,
+    };
+    this.ctx.storage.sql.exec(
+      "INSERT INTO room_state (key, value) VALUES ('music', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+      JSON.stringify(music),
+    );
+    this.broadcast({ t: "music", ...music });
+  }
+
+  private music(): MusicState {
+    const row = this.ctx.storage.sql
+      .exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'music'")
+      .toArray()[0];
+    return row ? (JSON.parse(row.value) as MusicState) : { track: 0, playing: false, startedAt: 0, offset: 0 };
+  }
+
+  /** Counts one of the shared per-second actions; false when over the limit. */
+  private takeAction(me: Attachment): boolean {
+    me.actions++;
+    return me.actions <= LIMITS.actionsPerSecond;
+  }
+
+  /** Getting up from a chair, by standing or by walking off, also leaves its table's meeting. */
+  private leaveSeat(me: Attachment): void {
+    if (me.seat === null) return;
+    this.leaveMeeting(me);
+    me.seat = null;
+    this.broadcast({ t: "stood", id: me.userId }, undefined, me.userId);
+  }
+
+  private leaveMeeting(me: Attachment): void {
+    if (me.meeting === null) return;
+    const meeting = me.meeting;
+    me.meeting = null;
+    this.broadcastToMeeting(meeting, { t: "meeting_member_left", id: me.userId }, me.userId);
+  }
+
+  private meetingMembers(meeting: string): WebSocket[] {
+    return this.present().filter((socket) => attachmentOf(socket).meeting === meeting);
+  }
+
+  private broadcastToMeeting(meeting: string, message: ServerMessage, exceptUserId: string): void {
+    const text = JSON.stringify(message);
+    for (const socket of this.meetingMembers(meeting)) {
+      if (attachmentOf(socket).userId !== exceptUserId) sendText(socket, text);
+    }
   }
 
   /** Counts this message against the socket's per-second budget; false when it must be dropped. */
@@ -229,14 +377,14 @@ export class Room extends DurableObject<Env> {
       me.second = second;
       me.moves = 0;
       me.actions = 0;
+      me.draws = 0;
       me.messages = 0;
     }
     me.messages++;
 
     if (me.messages > LIMITS.messagesPerSecond) {
-      socket.serializeAttachment(me);
-      this.closeQuietly(socket, CloseCode.TooManyMessages, "too_many_messages");
-      this.broadcast({ t: "player_left", id: me.userId });
+      this.depart(me);
+      this.closeQuietly(socket, CloseCode.TooManyMessages, "too_many_messages", me);
       return false;
     }
     return true;
@@ -245,19 +393,17 @@ export class Room extends DurableObject<Env> {
   /**
    * A client that vanishes without closing isn't noticed straight away. Whenever
    * the room is awake anyway, anyone without a heartbeat or message for 90
-   * seconds is let go. No timer is involved.
+   * seconds is let go. No timer is involved. Returns whether anyone was dropped.
    */
-  /** Returns whether anyone was dropped. */
   private dropStaleSockets(now: number): boolean {
     let dropped = false;
     for (const socket of this.ctx.getWebSockets()) {
       const attachment = attachmentOf(socket);
       if (attachment.leaving) continue;
       const heartbeat = this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0;
-      const lastHeard = Math.max(heartbeat, attachment.lastSeenAt);
-      if (now - lastHeard > HEARTBEAT_TIMEOUT_MS) {
-        this.closeQuietly(socket, 1001, "stale");
-        this.broadcast({ t: "player_left", id: attachment.userId });
+      if (now - Math.max(heartbeat, attachment.lastSeenAt) > HEARTBEAT_TIMEOUT_MS) {
+        this.depart(attachment);
+        this.closeQuietly(socket, 1001, "stale", attachment);
         dropped = true;
       }
     }
@@ -274,10 +420,16 @@ export class Room extends DurableObject<Env> {
     }
     if (attachment.leaving) return false;
 
+    this.depart(attachment);
     attachment.leaving = true;
     socket.serializeAttachment(attachment);
-    this.broadcast({ t: "player_left", id: attachment.userId }, socket);
     return true;
+  }
+
+  /** Tells everyone else this person has gone. Leaving the room also leaves their meeting. */
+  private depart(attachment: Attachment): void {
+    this.leaveMeeting(attachment);
+    this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
   }
 
   /** Lobby copies tell the router how many people they hold; other rooms don't. */
@@ -286,8 +438,17 @@ export class Room extends DurableObject<Env> {
     await this.env.LOBBY.getByName("global").report(room, this.present().length);
   }
 
-  private closeQuietly(socket: WebSocket, code: number, reason: string): void {
-    const attachment = attachmentOf(socket);
+  /** Only lobby copies report to Discord; workspace rooms never do. */
+  private reportToDiscord(
+    room: string,
+    event: { kind: "join"; name: string; character: string; country: string } | { kind: "chat"; name: string; text: string },
+  ): void {
+    if (lobbyCopyNumber(room) === null) return;
+    const request = this.reporter.report({ ...event, copy: room });
+    if (request) this.ctx.waitUntil(request);
+  }
+
+  private closeQuietly(socket: WebSocket, code: number, reason: string, attachment = attachmentOf(socket)): void {
     attachment.leaving = true;
     socket.serializeAttachment(attachment);
     try {
@@ -301,15 +462,12 @@ export class Room extends DurableObject<Env> {
     return this.ctx.getWebSockets().filter((socket) => !attachmentOf(socket).leaving);
   }
 
-  private broadcast(message: ServerMessage, except?: WebSocket): void {
+  private broadcast(message: ServerMessage, except?: WebSocket, exceptUserId?: string): void {
     const text = JSON.stringify(message);
     for (const socket of this.present()) {
       if (socket === except) continue;
-      try {
-        socket.send(text);
-      } catch {
-        // The close event will clean this socket up.
-      }
+      if (exceptUserId !== undefined && attachmentOf(socket).userId === exceptUserId) continue;
+      sendText(socket, text);
     }
   }
 }
@@ -331,12 +489,21 @@ function playerState(attachment: Attachment): PlayerState {
     y: attachment.y,
     status: attachment.status,
     guest: attachment.guest,
+    seat: attachment.seat,
   };
 }
 
+function memberOf(attachment: Attachment): MeetingMember {
+  return { id: attachment.userId, name: attachment.name };
+}
+
 function send(socket: WebSocket, message: ServerMessage): void {
+  sendText(socket, JSON.stringify(message));
+}
+
+function sendText(socket: WebSocket, text: string): void {
   try {
-    socket.send(JSON.stringify(message));
+    socket.send(text);
   } catch {
     // The close event will clean this socket up.
   }

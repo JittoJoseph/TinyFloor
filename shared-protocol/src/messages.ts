@@ -8,6 +8,10 @@ export const CHAT_MAX_LENGTH = 500;
 export const HEARTBEAT_PING = "ping";
 export const HEARTBEAT_PONG = "pong";
 
+/** Whiteboard limits, carried over from the Java server. */
+export const BOARD_MAX_STROKES = 400;
+export const BOARD_MAX_POINTS_PER_STROKE = 4000;
+
 export interface PlayerState {
   id: string;
   name: string;
@@ -16,23 +20,63 @@ export interface PlayerState {
   y: number;
   status: PresenceStatus;
   guest: boolean;
+  seat: number | null;
+}
+
+export interface MeetingMember {
+  id: string;
+  name: string;
+}
+
+export interface BoardStroke {
+  id: string;
+  color: string;
+  size: number;
+  erase: boolean;
+  /** Flat list of coordinates: x1, y1, x2, y2, ... */
+  points: number[];
+}
+
+export interface MusicState {
+  track: number;
+  playing: boolean;
+  /** When playback of `offset` started, in server milliseconds. */
+  startedAt: number;
+  /** Seconds into the track at `startedAt`. */
+  offset: number;
 }
 
 export type ClientMessage =
   | { t: "move"; x: number; y: number }
   | { t: "walk_to"; x: number; y: number }
+  | { t: "sit"; seat: number; x: number; y: number; meeting?: string }
+  | { t: "stand"; x: number; y: number }
   | { t: "status"; status: PresenceStatus }
-  | { t: "chat"; text: string };
+  | { t: "chat"; text: string }
+  | { t: "board_sync" }
+  | ({ t: "board_draw" } & BoardStroke)
+  | { t: "board_clear" }
+  | { t: "music_set"; track: number; playing: boolean; offset: number };
 
 export type ServerMessage =
-  | { t: "welcome"; self: PlayerState; players: PlayerState[] }
+  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState }
   | { t: "player_joined"; player: PlayerState }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number }
   | { t: "walking"; id: string; x: number; y: number }
   | { t: "move_rejected"; x: number; y: number }
+  | { t: "sat"; id: string; seat: number; x: number; y: number }
+  | { t: "stood"; id: string }
+  | { t: "sit_rejected"; seat: number }
+  | { t: "meeting_joined"; meeting: string; members: MeetingMember[] }
+  | ({ t: "meeting_member_joined" } & MeetingMember)
+  | { t: "meeting_member_left"; id: string }
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "chat"; id: string; name: string; text: string; at: number }
+  | { t: "board_state"; strokes: BoardStroke[] }
+  | ({ t: "board_draw"; by: string } & BoardStroke)
+  | { t: "board_clear"; by: string }
+  | ({ t: "music" } & MusicState)
   | { t: "error"; code: "slow_down" | "bad_message" };
 
 /** WebSocket close codes the room uses, and what the client should do about each. */

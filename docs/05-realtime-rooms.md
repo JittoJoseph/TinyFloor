@@ -136,13 +136,13 @@ the plain text `ping` / `pong`. Types are defined once in `shared-protocol/`.
 | `moved` | `id, x, y` |
 | `walking` | `id, x, y` |
 | `move_rejected` | `x, y` (where the server has you) |
-| `sat` / `stood` | `id, seat` / `id` |
+| `sat` / `stood` | `id, seat, x, y` / `id` |
 | `sit_rejected` | `seat` |
 | `status` | `id, status` |
 | `chat` | `id, name, text, at` |
-| `board_state` / `board_draw` / `board_clear` | as today |
+| `board_state` / `board_draw` / `board_clear` | `strokes` / stroke plus `by` / `by` |
 | `music` | `track, playing, startedAt, offset` |
-| `meeting_joined` / `meeting_member_joined` / `meeting_member_left` | as today |
+| `meeting_joined` / `meeting_member_joined` / `meeting_member_left` | `meeting, members` / `id, name` / `id` |
 | `call` | relayed signalling with `from, fromName` |
 | `sfu` | meeting media responses |
 | `error` | `code` |

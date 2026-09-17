@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Pokój będzie tu jutro.",
-      "body": "Pokoje nie znikają, gdy kończy się spotkanie. Zostaw jeden otwarty dla zespołu, w razie potrzeby dodaj hasło i wyślij link tylko raz.",
-      "chip1": "Widoczny dla wszystkich",
-      "chip2": "Udostępnianie linkiem",
+      "body": "Pokoje nie znikają, gdy kończy się spotkanie. Zostaw je otwarte dla zespołu, zaproś ludzi raz, a wejdą, kiedy zechcą.",
+      "chip1": "Tylko dla twojego zespołu",
+      "chip2": "Linki dla gości",
       "chip3": "Za darmo"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
-        "a": "Tak. Tworzenie pokoi, chodzenie, czatowanie i rozmowy są bezpłatne."
+        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak obszar roboczy dla małego zespołu."
       },
       {
         "q": "Czy potrzebuję konta, żeby dołączyć do pokoju?",
-        "a": "Nie. Każdy może dołączyć jako gość, podając tylko imię. Logowanie daje jedynie zapisany profil, postać, którą zachowujesz, i listę Twoich pokoi."
+        "a": "Do publicznego lobby nie. Tam każdy może wejść jako gość, podając tylko imię. Pokoje w obszarze roboczym są prywatne: członkowie zespołu logują się darmowym kontem, a odwiedzający wchodzą przez link dla gości."
       },
       {
         "q": "Jak działają rozmowy wideo?",
-        "a": "Rozmowy działają w trybie peer-to-peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami. Po nawiązaniu połączenie trwa, dopóki ktoś się nie rozłączy lub nie opuści pokoju. Odejście go nie przerywa."
+        "a": "Rozmowa z osobami, do których podchodzisz, działa peer-to-peer przez WebRTC, więc dźwięk i obraz płyną prosto między przeglądarkami. Trwa, dopóki ktoś się nie rozłączy albo nie wyjdzie z pokoju, więc odejście jej nie przerywa. Stoły konferencyjne przesyłają rozmowy grupowe przez serwer multimediów: usiądź, aby dołączyć, wstań, aby wyjść."
       },
       {
         "q": "Czy moja kamera jest włączona przez cały czas w pokoju?",
@@ -160,7 +160,7 @@
     "publicTitle": "Wejdź do publicznego biura",
     "publicBody": "Pokój, który jest zawsze otwarty. Wybierz postać, pospaceruj i przywitaj się z tymi, którzy tam są.",
     "createTitle": "Otwórz pokój dla zespołu",
-    "createBody": "Nadaj mu nazwę, dodaj hasło, jeśli chcesz, i wyślij jeden link. Pozostanie otwarty tak długo, jak zechcesz.",
+    "createBody": "Załóż darmowe konto, nazwij swój obszar roboczy i zaproś zespół jednym linkiem. Twoje pokoje są otwarte tak długo, jak chcesz.",
     "sampleName": "Zespół designu",
     "create": "Utwórz"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Otwórz pokój",
-        "body": "Wejdź do otwartego biura albo utwórz pokój i udostępnij jego link."
+        "body": "Wejdź do otwartego biura albo utwórz obszar roboczy i zaproś zespół."
       },
       {
         "title": "Wybierz postać",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Goście wchodzą od razu",
-            "body": "Każdy z linkiem dołącza, podając tylko imię. Konto jest opcjonalne i zapisuje tylko Twój profil i pokoje."
+            "body": "Członkowie zespołu wchodzą z darmowym kontem, a wszyscy inni przez link dla gości, podając tylko imię."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Czy mogę przenieść zespół z Gather do TinyFloor?",
-            "a": "Tak. Utwórz pokój, udostępnij link i wszyscy wchodzą. Nie ma danych do przenoszenia ani niczego do instalowania."
+            "a": "Tak. Utwórz obszar roboczy, zaproś zespół jednym linkiem i wszyscy wchodzą. Nie trzeba przenosić danych ani niczego instalować."
           },
           {
             "q": "Ile osób mieści się w pokoju TinyFloor?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Czy moi współpracownicy potrzebują konta?",
-            "a": "Nie. Każdy z linkiem do pokoju może dołączyć jako gość, podając tylko imię. Logowanie zapisuje tylko profil, postać i listę Twoich pokoi."
+            "a": "Członkowie zespołu używają darmowego konta, dzięki czemu wasze pokoje są prywatne. Każdy inny może wejść jako gość, podając tylko imię, przez link dla gości albo publiczne lobby."
           },
           {
             "q": "Czy TinyFloor działa na telefonie?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Czy muszę utrzymywać serwer?",
-            "a": "Nie. TinyFloor jest hostowany za Ciebie. Utwórz pokój w przeglądarce i udostępnij link."
+            "a": "Nie. TinyFloor jest hostowany za ciebie. Utwórz obszar roboczy w przeglądarce i zaproś zespół."
           },
           {
             "q": "Jak zaczynają się rozmowy w TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Otwarty pokój o każdej porze",
-            "body": "Otwarte biuro jest zawsze dostępne. Albo utwórz pokój dla własnej grupy coworkingowej i udostępnij link."
+            "body": "Otwarte biuro jest zawsze dostępne. Możesz też utworzyć obszar roboczy dla własnej grupy coworkingowej i zaprosić jej członków."
           },
           {
             "title": "Ustaw swój status",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Czy mogę pracować z nieznajomymi?",
-            "a": "Tak. Otwarte biuro jest dostępne dla wszystkich. Dla prywatnej grupy utwórz pokój i dodaj hasło."
+            "a": "Tak. Otwarte biuro jest dostępne dla wszystkich. Dla prywatnej grupy utwórz obszar roboczy: jego pokoje są otwarte tylko dla zaproszonych osób."
           },
           {
             "q": "Czy jest limit czasu?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Jak utworzyć pokój do nauki?",
-            "a": "Utwórz pokój, nadaj mu nazwę i udostępnij link znajomym. Dodaj hasło, jeśli chcesz, żeby był prywatny."
+            "a": "Utwórz obszar roboczy, dodaj pokój i zaproś znajomych jednym linkiem. Wejść mogą tylko zaproszone osoby."
           },
           {
             "q": "Czy to jest darmowe dla uczniów i studentów?",
-            "a": "Tak. TinyFloor jest darmowy dla wszystkich i nikt nie potrzebuje konta, żeby dołączyć."
+            "a": "Tak. TinyFloor jest darmowy dla małej grupy, a znajomi mogą wejść przez link dla gości bez konta."
           },
           {
             "q": "Czy możemy słuchać muzyki podczas nauki?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Czy mogę zachować klasę jako prywatną?",
-            "a": "Tak. Dodaj hasło przy tworzeniu pokoju i udostępnij je tylko swojej klasie."
+            "a": "Tak. Pokoje w obszarze roboczym są prywatne. Udostępnij klasie link dla gości i wyłącz go, gdy skończycie."
           },
           {
             "q": "Czy to jest darmowe dla nauczycieli?",

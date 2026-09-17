@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Der Raum ist morgen noch da.",
-      "body": "Räume enden nicht, wenn ein Meeting endet. Halte einen für dein Team offen, sichere ihn bei Bedarf mit einem Passwort und schick den Link nur einmal.",
-      "chip1": "Für alle gelistet",
-      "chip2": "Per Link teilen",
+      "body": "Räume enden nicht, wenn ein Meeting endet. Halte sie für dein Team offen, lade die Leute einmal ein, und sie kommen herein, wann sie wollen.",
+      "chip1": "Nur für dein Team",
+      "chip2": "Gastlinks",
       "chip3": "Kostenlos"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Räume erstellen, herumlaufen, chatten und telefonieren ist kostenlos."
+        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Workspace für ein kleines Team."
       },
       {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
-        "a": "Nein. Alle können als Gast nur mit einem Namen beitreten. Eine Anmeldung bringt nur ein gespeichertes Profil, einen Charakter, den du behältst, und eine Liste deiner Räume."
+        "a": "Für die öffentliche Lobby nicht. Dort kann jeder als Gast mit nur einem Namen hereinkommen. Räume in einem Workspace sind privat: Teammitglieder melden sich mit einem kostenlosen Konto an, Besucher kommen über einen Gastlink."
       },
       {
         "q": "Wie funktionieren die Videoanrufe?",
-        "a": "Anrufe laufen Peer-to-Peer über WebRTC, Audio und Video gehen also direkt zwischen den Browsern. Ist ein Anruf verbunden, bleibt er bestehen, bis jemand auflegt oder den Raum verlässt. Weggehen beendet ihn nicht."
+        "a": "Ein Gespräch mit den Leuten, zu denen du gehst, läuft Peer-to-Peer über WebRTC, Ton und Bild gehen also direkt zwischen den Browsern. Es bleibt verbunden, bis jemand auflegt oder den Raum verlässt, Weggehen beendet es also nicht. Besprechungstische übertragen Gruppengespräche über einen Medienserver: Hinsetzen zum Beitreten, Aufstehen zum Verlassen."
       },
       {
         "q": "Ist meine Kamera die ganze Zeit an, während ich in einem Raum bin?",
@@ -160,7 +160,7 @@
     "publicTitle": "Betritt das öffentliche Büro",
     "publicBody": "Der Raum, der immer offen ist. Wähl einen Charakter, lauf herum und sag Hallo zu allen, die gerade da sind.",
     "createTitle": "Eröffne einen Raum für dein Team",
-    "createBody": "Gib ihm einen Namen, lege bei Bedarf ein Passwort fest und schick einen Link. Er bleibt so lange offen, wie du willst.",
+    "createBody": "Erstelle ein kostenloses Konto, gib deinem Workspace einen Namen und lade dein Team mit einem Link ein. Deine Räume bleiben offen, so lange du willst.",
     "sampleName": "Designteam",
     "create": "Erstellen"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Raum öffnen",
-        "body": "Geh ins öffentliche Büro oder erstelle einen Raum und teile den Link."
+        "body": "Geh ins öffentliche Büro, oder erstelle einen Workspace und lade dein Team ein."
       },
       {
         "title": "Figur wählen",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Gäste kommen direkt rein",
-            "body": "Wer den Link hat, tritt nur mit einem Namen bei. Ein Konto ist freiwillig und speichert nur dein Profil und deine Räume."
+            "body": "Teammitglieder kommen mit einem kostenlosen Konto, alle anderen über einen Gastlink mit nur einem Namen."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Kann ich mein Team von Gather zu TinyFloor holen?",
-            "a": "Ja. Erstelle einen Raum, teile den Link und alle kommen rein. Es gibt keine Daten zu übertragen und nichts zu installieren."
+            "a": "Ja. Erstelle einen Workspace, lade dein Team mit einem Link ein, und alle kommen herein. Es gibt keine Daten zu übertragen und nichts zu installieren."
           },
           {
             "q": "Wie viele Personen passen in einen TinyFloor-Raum?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Brauchen meine Teammitglieder ein Konto?",
-            "a": "Nein. Wer einen Raumlink hat, kann als Gast nur mit einem Namen beitreten. Anmelden speichert nur ein Profil, eine Figur und eine Liste deiner Räume."
+            "a": "Teammitglieder nutzen ein kostenloses Konto, so bleiben eure Räume privat. Alle anderen kommen als Gast mit nur einem Namen herein, über einen Gastlink oder die öffentliche Lobby."
           },
           {
             "q": "Funktioniert TinyFloor auf dem Handy?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Muss ich einen Server betreiben?",
-            "a": "Nein. TinyFloor wird für dich gehostet. Erstelle einen Raum im Browser und teile den Link."
+            "a": "Nein. TinyFloor wird für dich betrieben. Erstelle einen Workspace im Browser und lade dein Team ein."
           },
           {
             "q": "Wie starten Anrufe in TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Ein offener Raum, jederzeit",
-            "body": "Das öffentliche Büro ist immer offen. Oder erstelle einen Raum für deine eigene Coworking-Gruppe und teile den Link."
+            "body": "Das öffentliche Büro ist immer offen. Oder erstelle einen Workspace für deine eigene Coworking-Gruppe und lade sie ein."
           },
           {
             "title": "Status setzen",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Kann ich mit Fremden coworken?",
-            "a": "Ja. Das öffentliche Büro ist für alle offen. Für eine private Gruppe erstellst du einen Raum und setzt ein Passwort."
+            "a": "Ja. Das öffentliche Büro ist für alle offen. Für eine private Gruppe erstellst du einen Workspace: Seine Räume sind nur für die Leute offen, die du einlädst."
           },
           {
             "q": "Gibt es ein Zeitlimit?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Wie erstelle ich einen Lernraum?",
-            "a": "Erstelle einen Raum, gib ihm einen Namen und teile den Link mit deinen Freunden. Setz ein Passwort, wenn er privat bleiben soll."
+            "a": "Erstelle einen Workspace, füge einen Raum hinzu und lade deine Freunde mit einem Link ein. Nur wer eingeladen ist, kommt herein."
           },
           {
             "q": "Ist es für Studierende kostenlos?",
-            "a": "Ja. TinyFloor ist für alle kostenlos, und niemand braucht ein Konto, um beizutreten."
+            "a": "Ja. TinyFloor ist für eine kleine Gruppe kostenlos, und Freunde kommen über einen Gastlink auch ohne Konto herein."
           },
           {
             "q": "Können wir beim Lernen Musik hören?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Kann ich das Klassenzimmer privat halten?",
-            "a": "Ja. Setz beim Erstellen des Raums ein Passwort und teile es nur mit deiner Klasse."
+            "a": "Ja. Räume in einem Workspace sind privat. Teile einen Gastlink mit deiner Klasse und schalte ihn ab, wenn ihr fertig seid."
           },
           {
             "q": "Ist es für Lehrkräfte kostenlos?",

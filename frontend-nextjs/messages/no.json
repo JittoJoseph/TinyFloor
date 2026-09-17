@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Rommet er der fortsatt i morgen.",
-      "body": "Rom slutter ikke når et møte gjør det. Hold ett åpent for teamet ditt, sett passord på hvis du trenger det, og send lenken én gang.",
-      "chip1": "Synlig for alle",
-      "chip2": "Del med lenke",
+      "body": "Rom slutter ikke når et møte gjør det. Hold dem åpne for teamet ditt, inviter folk én gang, og de kan gå inn når de vil.",
+      "chip1": "Bare for teamet ditt",
+      "chip2": "Gjestelenker",
       "chip3": "Gratis"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Det er gratis å opprette rom, gå rundt, chatte og ringe."
+        "a": "Ja. Den offentlige lobbyen er gratis for alle, og det er et arbeidsområde for et lite team også."
       },
       {
         "q": "Trenger jeg en konto for å bli med i et rom?",
-        "a": "Nei. Alle kan bli med som gjest med bare et navn. Å logge inn gir bare en lagret profil, en figur du beholder og en liste over rommene dine."
+        "a": "Ikke for den offentlige lobbyen. Der kan alle gå inn som gjest med bare et navn. Rom i et arbeidsområde er private: kolleger logger inn med en gratis konto, og besøkende kommer inn via en gjestelenke."
       },
       {
         "q": "Hvordan fungerer videosamtalene?",
-        "a": "Samtaler går peer-to-peer via WebRTC, så lyd og video går direkte mellom nettleserne. Når en samtale er koblet til, forblir den tilkoblet til noen legger på eller forlater rommet. Å gå bort bryter den ikke."
+        "a": "En samtale med dem du går bort til går peer-to-peer over WebRTC, så lyd og video går rett mellom nettleserne. Den holder seg tilkoblet til noen legger på eller forlater rommet, så den brytes ikke når du går bort. Møtebord sender gruppesamtaler gjennom en medieserver: sett deg for å bli med, reis deg for å gå."
       },
       {
         "q": "Er kameraet mitt på hele tiden mens jeg er i et rom?",
@@ -160,7 +160,7 @@
     "publicTitle": "Gå inn på det offentlige kontoret",
     "publicBody": "Rommet som alltid er åpent. Velg en figur, gå rundt og si hei til dem som er der.",
     "createTitle": "Åpne et rom for teamet ditt",
-    "createBody": "Gi det et navn, legg til et passord hvis du vil, og send én lenke. Det står åpent så lenge du vil.",
+    "createBody": "Opprett en gratis konto, gi arbeidsområdet et navn, og inviter teamet med én lenke. Rommene dine er åpne så lenge du vil.",
     "sampleName": "Designteamet",
     "create": "Opprett"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Åpne et rom",
-        "body": "Gå inn på det åpne kontoret, eller opprett et rom og del lenken."
+        "body": "Gå inn på det åpne kontoret, eller opprett et arbeidsområde og inviter teamet ditt."
       },
       {
         "title": "Velg en figur",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Gjester går rett inn",
-            "body": "Alle med lenken blir med med bare et navn. En konto er valgfri og lagrer bare profilen og rommene dine."
+            "body": "Kolleger kommer inn med en gratis konto, og alle andre kan komme inn via en gjestelenke med bare et navn."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Kan jeg flytte teamet mitt fra Gather til TinyFloor?",
-            "a": "Ja. Opprett et rom, del lenken, og alle går inn. Det er ingen data å flytte og ingenting å installere."
+            "a": "Ja. Opprett et arbeidsområde, inviter teamet med én lenke, og alle går inn. Det er ingen data å flytte og ingenting å installere."
           },
           {
             "q": "Hvor mange får plass i et TinyFloor-rom?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Trenger kollegene mine en konto?",
-            "a": "Nei. Alle med en romlenke kan bli med som gjest med bare et navn. Å logge inn lagrer bare en profil, en figur og en liste over rommene dine."
+            "a": "Kolleger bruker en gratis konto, så rommene deres holdes private. Alle andre kan komme inn som gjest med bare et navn, via en gjestelenke eller den offentlige lobbyen."
           },
           {
             "q": "Fungerer TinyFloor på mobil?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Må jeg drive en server?",
-            "a": "Nei. TinyFloor driftes for deg. Opprett et rom i nettleseren og del lenken."
+            "a": "Nei. TinyFloor driftes for deg. Opprett et arbeidsområde i nettleseren og inviter teamet ditt."
           },
           {
             "q": "Hvordan starter samtaler i TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Et åpent rom, når som helst",
-            "body": "Det åpne kontoret er alltid åpent. Eller opprett et rom for din egen coworkinggruppe og del lenken."
+            "body": "Det åpne kontoret er alltid åpent. Eller opprett et arbeidsområde for din egen coworking-gruppe og inviter dem."
           },
           {
             "title": "Sett statusen din",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Kan jeg cowork'e med fremmede?",
-            "a": "Ja. Det åpne kontoret er åpent for alle. For en privat gruppe oppretter du et rom og legger til et passord."
+            "a": "Ja. Det åpne kontoret er åpent for alle. For en privat gruppe oppretter du et arbeidsområde: rommene der er bare åpne for dem du inviterer."
           },
           {
             "q": "Er det en tidsbegrensning?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Hvordan oppretter jeg et studierom?",
-            "a": "Opprett et rom, gi det et navn og del lenken med vennene dine. Legg til et passord hvis det skal være privat."
+            "a": "Opprett et arbeidsområde, legg til et rom, og inviter vennene dine med én lenke. Bare de du inviterer kan gå inn."
           },
           {
             "q": "Er det gratis for studenter?",
-            "a": "Ja. TinyFloor er gratis for alle, og ingen trenger en konto for å bli med."
+            "a": "Ja. TinyFloor er gratis for en liten gruppe, og venner kan komme inn via en gjestelenke uten konto."
           },
           {
             "q": "Kan vi høre på musikk mens vi studerer?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Kan jeg holde klasserommet privat?",
-            "a": "Ja. Legg til et passord når du oppretter rommet, og del det bare med klassen din."
+            "a": "Ja. Rom i et arbeidsområde er private. Del en gjestelenke med klassen og slå den av når dere er ferdige."
           },
           {
             "q": "Er det gratis for lærere?",

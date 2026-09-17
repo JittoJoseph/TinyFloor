@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "A sala continua lá amanhã.",
-      "body": "As salas não acabam quando a reunião acaba. Deixe uma aberta para sua equipe, coloque uma senha se precisar e envie o link uma vez só.",
-      "chip1": "Visível para todos",
-      "chip2": "Compartilhe por link",
+      "body": "As salas não acabam quando a reunião acaba. Deixe-as abertas para sua equipe, convide as pessoas uma vez e elas entram quando quiserem.",
+      "chip1": "Só para sua equipe",
+      "chip2": "Links de convidado",
       "chip3": "Grátis"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "O TinyFloor é gratuito?",
-        "a": "Sim. Criar salas, andar por aí, conversar no chat e fazer chamadas é grátis."
+        "a": "Sim. O lobby público é grátis para todos, e um espaço de trabalho para uma equipe pequena também."
       },
       {
         "q": "Preciso de uma conta para entrar em uma sala?",
-        "a": "Não. Qualquer pessoa pode entrar como convidado só com um nome. Entrar na conta só adiciona um perfil salvo, um personagem que fica com você e uma lista das suas salas."
+        "a": "Para o lobby público, não. Qualquer pessoa pode entrar como convidada só com um nome. As salas de um espaço de trabalho são privadas: a equipe entra com uma conta grátis e os visitantes, com um link de convidado."
       },
       {
         "q": "Como funcionam as chamadas de vídeo?",
-        "a": "As chamadas são ponto a ponto via WebRTC, então áudio e vídeo vão direto entre os navegadores. Depois de conectada, a chamada continua até alguém desligar ou sair da sala. Afastar-se não derruba a chamada."
+        "a": "Uma chamada com as pessoas de quem você se aproxima é peer-to-peer via WebRTC, então áudio e vídeo vão direto entre os navegadores. Ela continua conectada até alguém desligar ou sair da sala, então se afastar não a derruba. As mesas de reunião levam chamadas em grupo por um servidor de mídia: sente-se para entrar e levante-se para sair."
       },
       {
         "q": "Minha câmera fica ligada o tempo todo em que estou em uma sala?",
@@ -160,7 +160,7 @@
     "publicTitle": "Entre no escritório público",
     "publicBody": "A sala que está sempre aberta. Escolha um personagem, ande por aí e diga oi para quem estiver lá.",
     "createTitle": "Abra uma sala para sua equipe",
-    "createBody": "Dê um nome, adicione uma senha se quiser e envie um link. Ela fica aberta pelo tempo que você quiser.",
+    "createBody": "Crie uma conta grátis, dê um nome ao seu espaço de trabalho e convide sua equipe com um só link. Suas salas ficam abertas pelo tempo que você quiser.",
     "sampleName": "Equipe de design",
     "create": "Criar"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Abra uma sala",
-        "body": "Entre no escritório público ou crie uma sala e compartilhe o link."
+        "body": "Entre no escritório público, ou crie um espaço de trabalho e convide sua equipe."
       },
       {
         "title": "Escolha um personagem",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Convidados entram direto",
-            "body": "Qualquer pessoa com o link entra só com um nome. A conta é opcional e só guarda seu perfil e suas salas."
+            "body": "A equipe entra com uma conta grátis, e qualquer outra pessoa pode entrar com um link de convidado e só um nome."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Posso levar minha equipe do Gather para o TinyFloor?",
-            "a": "Sim. Crie uma sala, compartilhe o link e todo mundo entra. Não há dados para migrar nem nada para instalar."
+            "a": "Sim. Crie um espaço de trabalho, convide sua equipe com um link e todos entram. Não há dados para migrar nem nada para instalar."
           },
           {
             "q": "Quantas pessoas cabem em uma sala do TinyFloor?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Meus colegas precisam de conta?",
-            "a": "Não. Qualquer pessoa com o link de uma sala pode entrar como convidada só com um nome. Entrar na conta só guarda um perfil, um personagem e uma lista das suas salas."
+            "a": "A equipe usa uma conta grátis, o que mantém suas salas privadas. Qualquer outra pessoa pode entrar como convidada só com um nome, por um link de convidado ou pelo lobby público."
           },
           {
             "q": "O TinyFloor funciona no celular?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Preciso manter um servidor?",
-            "a": "Não. O TinyFloor é hospedado para você. Crie uma sala no navegador e compartilhe o link."
+            "a": "Não. O TinyFloor é hospedado para você. Crie um espaço de trabalho no navegador e convide sua equipe."
           },
           {
             "q": "Como as chamadas começam no TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Uma sala aberta a qualquer hora",
-            "body": "O escritório público está sempre aberto. Ou crie uma sala para seu próprio grupo de coworking e compartilhe o link."
+            "body": "O escritório público está sempre aberto. Ou crie um espaço de trabalho para o seu grupo de coworking e convide as pessoas."
           },
           {
             "title": "Defina seu status",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Posso fazer coworking com desconhecidos?",
-            "a": "Sim. O escritório público é aberto a todos. Para um grupo privado, crie uma sala e adicione uma senha."
+            "a": "Sim. O escritório público é aberto a todos. Para um grupo privado, crie um espaço de trabalho: as salas dele só ficam abertas para quem você convidar."
           },
           {
             "q": "Existe limite de tempo?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Como crio uma sala de estudos?",
-            "a": "Crie uma sala, dê um nome a ela e compartilhe o link com seus amigos. Adicione uma senha se quiser deixá-la privada."
+            "a": "Crie um espaço de trabalho, adicione uma sala e convide seus amigos com um link. Só entra quem você convidar."
           },
           {
             "q": "É grátis para estudantes?",
-            "a": "Sim. O TinyFloor é grátis para todos, e ninguém precisa de conta para entrar."
+            "a": "Sim. O TinyFloor é grátis para um grupo pequeno, e seus amigos podem entrar com um link de convidado sem conta."
           },
           {
             "q": "Podemos ouvir música enquanto estudamos?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Posso deixar a sala privada?",
-            "a": "Sim. Adicione uma senha ao criar a sala e compartilhe só com a sua turma."
+            "a": "Sim. As salas de um espaço de trabalho são privadas. Compartilhe um link de convidado com a turma e desative-o quando terminarem."
           },
           {
             "q": "É grátis para professores?",

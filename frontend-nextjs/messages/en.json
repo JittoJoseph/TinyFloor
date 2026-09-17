@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "The room is still there tomorrow.",
-      "body": "Rooms do not end when a meeting does. Keep one open for your team, put a password on it if you need to, and send the link once.",
-      "chip1": "Listed for everyone",
-      "chip2": "Share by link",
+      "body": "Rooms do not end when a meeting does. Keep them open for your team, invite people once, and they can walk in whenever they like.",
+      "chip1": "Private to your team",
+      "chip2": "Guest links",
       "chip3": "Free"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. Creating rooms, walking around, chatting and calling are free."
+        "a": "Yes. The public lobby is free for everyone, and so is a workspace for a small team."
       },
       {
         "q": "Do I need an account to join a room?",
-        "a": "No. Anyone can join as a guest with just a name. Signing in only adds a saved profile, a character you keep, and a list of your rooms."
+        "a": "Not for the public lobby. Anyone can walk in there as a guest with just a name. Rooms in a workspace are private: teammates sign in with a free account, and visitors come in through a guest link."
       },
       {
         "q": "How do the video calls work?",
-        "a": "Calls run peer-to-peer over WebRTC, so audio and video travel straight between browsers. Once a call is connected it stays connected until someone hangs up or leaves the room. Walking away will not drop it."
+        "a": "A call with the people you walk up to runs peer-to-peer over WebRTC, so audio and video travel straight between browsers. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
       },
       {
         "q": "Is my camera on the whole time I am in a room?",
@@ -160,7 +160,7 @@
     "publicTitle": "Walk into the public office",
     "publicBody": "The room that is always on. Pick a character, walk around, and say hello to whoever is there.",
     "createTitle": "Open a room for your team",
-    "createBody": "Name it, add a password if you want one, then send one link. It stays open for as long as you want.",
+    "createBody": "Create a free account, name your workspace, and invite your team with one link. Your rooms stay open for as long as you want.",
     "sampleName": "Design team",
     "create": "Create"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Open a room",
-        "body": "Walk into the public office, or create a room and share its link."
+        "body": "Walk into the public office, or create a workspace and invite your team."
       },
       {
         "title": "Pick a character",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Guests walk straight in",
-            "body": "Anyone with the link joins with just a name. Accounts are optional and only keep your profile and rooms."
+            "body": "Teammates join with a free account, and anyone else can come in through a guest link with just a name."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Can I move my team from Gather to TinyFloor?",
-            "a": "Yes. Create a room, share its link, and everyone walks in. There is no data to migrate and nothing to install."
+            "a": "Yes. Create a workspace, invite your team with one link, and everyone walks in. There is no data to migrate and nothing to install."
           },
           {
             "q": "How many people fit in a TinyFloor room?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Do my teammates need an account?",
-            "a": "No. Anyone with a room link can join as a guest with just a name. Signing in only keeps a saved profile, a character and a list of your rooms."
+            "a": "Teammates use a free account, which keeps your rooms private to your team. Anyone else can join as a guest with just a name, through a guest link or the public lobby."
           },
           {
             "q": "Does TinyFloor work on phones?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Do I need to run a server?",
-            "a": "No. TinyFloor is hosted for you. Create a room in the browser and share the link."
+            "a": "No. TinyFloor is hosted for you. Create a workspace in the browser and invite your team."
           },
           {
             "q": "How do calls start in TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "An open room, any time",
-            "body": "The public office is always open. Or create a room for your own coworking group and share the link."
+            "body": "The public office is always open. Or create a workspace for your own coworking group and invite them."
           },
           {
             "title": "Set your status",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Can I cowork with strangers?",
-            "a": "Yes. The public office is open to everyone. For a private group, create a room and add a password."
+            "a": "Yes. The public office is open to everyone. For a private group, create a workspace: its rooms are open only to the people you invite."
           },
           {
             "q": "Is there a time limit?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "How do I make a study room?",
-            "a": "Create a room, give it a name, and share the link with your friends. Add a password if you want to keep it private."
+            "a": "Create a workspace, add a room, and invite your friends with one link. Only the people you invite can walk in."
           },
           {
             "q": "Is it free for students?",
-            "a": "Yes. TinyFloor is free for everyone, and nobody needs an account to join."
+            "a": "Yes. TinyFloor is free for a small group, and friends can join through a guest link without an account."
           },
           {
             "q": "Can we play music while we study?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Can I keep the classroom private?",
-            "a": "Yes. Add a password when you create the room and share it only with your class."
+            "a": "Yes. Rooms in a workspace are private. Share a guest link with your class, and turn it off when you are done."
           },
           {
             "q": "Is it free for teachers?",

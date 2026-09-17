@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Huone on huomennakin paikallaan.",
-      "body": "Huoneet eivät lopu, kun palaveri loppuu. Pidä yksi auki tiimillesi, lisää tarvittaessa salasana ja lähetä linkki kerran.",
-      "chip1": "Kaikkien nähtävillä",
-      "chip2": "Jaa linkillä",
+      "body": "Huoneet eivät lopu, kun kokous loppuu. Pidä ne auki tiimillesi, kutsu ihmiset kerran, ja he voivat tulla sisään milloin haluavat.",
+      "chip1": "Vain tiimillesi",
+      "chip2": "Vieraslinkit",
       "chip3": "Ilmainen"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä. Huoneiden luominen, käveleminen, chattailu ja puhelut ovat ilmaisia."
+        "a": "Kyllä. Julkinen aula on ilmainen kaikille, samoin työtila pienelle tiimille."
       },
       {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
-        "a": "Et. Kuka tahansa voi liittyä vieraana pelkällä nimellä. Kirjautuminen tuo vain tallennetun profiilin, pysyvän hahmon ja listan huoneistasi."
+        "a": "Julkiseen aulaan ei tarvita. Sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Työtilan huoneet ovat yksityisiä: tiimiläiset kirjautuvat ilmaisella tilillä, ja vierailijat tulevat sisään vieraslinkillä."
       },
       {
         "q": "Miten videopuhelut toimivat?",
-        "a": "Puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja video kulkevat suoraan selainten välillä. Kun puhelu on yhdistetty, se pysyy yhdistettynä, kunnes joku lopettaa sen tai poistuu huoneesta. Pois käveleminen ei katkaise sitä."
+        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poispäin käveleminen ei katkaise sitä. Kokouspöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
       },
       {
         "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
@@ -160,7 +160,7 @@
     "publicTitle": "Astu julkiseen toimistoon",
     "publicBody": "Huone, joka on aina auki. Valitse hahmo, kävele ympäriinsä ja tervehdi paikallaolijoita.",
     "createTitle": "Avaa huone tiimillesi",
-    "createBody": "Anna sille nimi, lisää halutessasi salasana ja lähetä yksi linkki. Se pysyy auki niin kauan kuin haluat.",
+    "createBody": "Luo ilmainen tili, nimeä työtilasi ja kutsu tiimisi yhdellä linkillä. Huoneesi pysyvät auki niin kauan kuin haluat.",
     "sampleName": "Designtiimi",
     "create": "Luo"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Avaa huone",
-        "body": "Astu julkiseen toimistoon tai luo huone ja jaa sen linkki."
+        "body": "Kävele julkiseen toimistoon, tai luo työtila ja kutsu tiimisi."
       },
       {
         "title": "Valitse hahmo",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Vieraat pääsevät suoraan sisään",
-            "body": "Kuka tahansa linkin saanut liittyy pelkällä nimellä. Tili on vapaaehtoinen ja tallentaa vain profiilisi ja huoneesi."
+            "body": "Tiimiläiset tulevat sisään ilmaisella tilillä, ja kuka tahansa muu vieraslinkillä pelkällä nimellä."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Voinko siirtää tiimini Gatherista TinyFlooriin?",
-            "a": "Kyllä. Luo huone, jaa linkki ja kaikki astuvat sisään. Siirrettävää dataa ei ole eikä mitään tarvitse asentaa."
+            "a": "Kyllä. Luo työtila, kutsu tiimisi yhdellä linkillä, ja kaikki kävelevät sisään. Siirrettävää dataa ei ole eikä mitään tarvitse asentaa."
           },
           {
             "q": "Montako henkeä TinyFloor-huoneeseen mahtuu?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "Tarvitsevatko tiimikaverini tilin?",
-            "a": "Eivät. Kuka tahansa huoneen linkin saanut voi liittyä vieraana pelkällä nimellä. Kirjautuminen tallentaa vain profiilin, hahmon ja listan huoneistasi."
+            "a": "Tiimiläiset käyttävät ilmaista tiliä, joten huoneenne pysyvät yksityisinä. Kuka tahansa muu voi tulla vieraana pelkällä nimellä, vieraslinkillä tai julkisen aulan kautta."
           },
           {
             "q": "Toimiiko TinyFloor puhelimella?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Tarvitsenko oman palvelimen?",
-            "a": "Et. TinyFloor ylläpidetään puolestasi. Luo huone selaimessa ja jaa linkki."
+            "a": "Ei. TinyFloor ylläpidetään puolestasi. Luo työtila selaimessa ja kutsu tiimisi."
           },
           {
             "q": "Miten puhelut alkavat TinyFloorissä?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Avoin huone milloin vain",
-            "body": "Julkinen toimisto on aina auki. Tai luo huone omalle coworking-ryhmällesi ja jaa linkki."
+            "body": "Julkinen toimisto on aina auki. Tai luo työtila omalle coworking-ryhmällesi ja kutsu heidät."
           },
           {
             "title": "Aseta tilasi",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Voinko tehdä coworkingia tuntemattomien kanssa?",
-            "a": "Kyllä. Julkinen toimisto on avoin kaikille. Yksityistä ryhmää varten luo huone ja lisää salasana."
+            "a": "Kyllä. Julkinen toimisto on avoin kaikille. Yksityistä ryhmää varten luo työtila: sen huoneet ovat avoinna vain kutsumillesi."
           },
           {
             "q": "Onko aikarajaa?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Miten luon opiskeluhuoneen?",
-            "a": "Luo huone, anna sille nimi ja jaa linkki ystävillesi. Lisää salasana, jos haluat pitää sen yksityisenä."
+            "a": "Luo työtila, lisää huone ja kutsu ystäväsi yhdellä linkillä. Vain kutsumasi pääsevät sisään."
           },
           {
             "q": "Onko se ilmainen opiskelijoille?",
-            "a": "Kyllä. TinyFloor on kaikille ilmainen, eikä kukaan tarvitse tiliä liittyäkseen."
+            "a": "Kyllä. TinyFloor on ilmainen pienelle ryhmälle, ja ystävät pääsevät sisään vieraslinkillä ilman tiliä."
           },
           {
             "q": "Voimmeko kuunnella musiikkia opiskellessa?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Voinko pitää luokan yksityisenä?",
-            "a": "Kyllä. Lisää salasana huonetta luodessasi ja jaa se vain luokallesi."
+            "a": "Kyllä. Työtilan huoneet ovat yksityisiä. Jaa vieraslinkki luokallesi ja poista se käytöstä, kun olette valmiita."
           },
           {
             "q": "Onko se ilmainen opettajille?",

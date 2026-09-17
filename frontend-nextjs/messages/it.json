@@ -105,9 +105,9 @@
     },
     "rooms": {
       "title": "Domani la stanza sarà ancora lì.",
-      "body": "Le stanze non finiscono quando finisce una riunione. Tienine una aperta per il tuo team, proteggila con una password se serve e invia il link una volta sola.",
-      "chip1": "Visibile a tutti",
-      "chip2": "Condividi con un link",
+      "body": "Le stanze non finiscono quando finisce una riunione. Tienile aperte per il tuo team, invita le persone una volta sola e potranno entrare quando vogliono.",
+      "chip1": "Solo per il tuo team",
+      "chip2": "Link ospite",
       "chip3": "Gratis"
     },
     "floor": {
@@ -131,15 +131,15 @@
       },
       {
         "q": "TinyFloor è gratuito?",
-        "a": "Sì. Creare stanze, camminare, chattare e chiamare è gratis."
+        "a": "Sì. La lobby pubblica è gratis per tutti, e lo è anche un workspace per un piccolo team."
       },
       {
         "q": "Serve un account per entrare in una stanza?",
-        "a": "No. Chiunque può entrare come ospite con un semplice nome. Accedere aggiunge solo un profilo salvato, un personaggio che mantieni e un elenco delle tue stanze."
+        "a": "Per la lobby pubblica no: chiunque può entrare come ospite con solo un nome. Le stanze di un workspace sono private: i colleghi accedono con un account gratuito e i visitatori entrano con un link ospite."
       },
       {
         "q": "Come funzionano le videochiamate?",
-        "a": "Le chiamate sono peer-to-peer tramite WebRTC, quindi audio e video viaggiano direttamente tra i browser. Una volta connessa, la chiamata resta attiva finché qualcuno non riaggancia o esce dalla stanza. Allontanarsi non la interrompe."
+        "a": "Una chiamata con le persone a cui ti avvicini passa peer-to-peer via WebRTC, quindi audio e video viaggiano direttamente tra i browser. Resta collegata finché qualcuno non riattacca o esce dalla stanza, quindi allontanarsi non la interrompe. I tavoli riunione portano le chiamate di gruppo tramite un server multimediale: siediti per unirti, alzati per uscire."
       },
       {
         "q": "La mia fotocamera resta accesa per tutto il tempo in cui sono in una stanza?",
@@ -160,7 +160,7 @@
     "publicTitle": "Entra nell’ufficio pubblico",
     "publicBody": "La stanza sempre aperta. Scegli un personaggio, fai un giro e saluta chi c’è.",
     "createTitle": "Apri una stanza per il tuo team",
-    "createBody": "Dalle un nome, aggiungi una password se vuoi e invia un link. Resta aperta per tutto il tempo che vuoi.",
+    "createBody": "Crea un account gratuito, dai un nome al tuo workspace e invita il team con un solo link. Le tue stanze restano aperte per tutto il tempo che vuoi.",
     "sampleName": "Team design",
     "create": "Crea"
   },
@@ -440,7 +440,7 @@
     "steps": [
       {
         "title": "Apri una stanza",
-        "body": "Entra nell’ufficio pubblico, oppure crea una stanza e condividi il link."
+        "body": "Entra nell’ufficio pubblico, oppure crea un workspace e invita il tuo team."
       },
       {
         "title": "Scegli un personaggio",
@@ -473,7 +473,7 @@
           },
           {
             "title": "Gli ospiti entrano subito",
-            "body": "Chi ha il link entra solo con un nome. L’account è facoltativo e conserva solo il tuo profilo e le tue stanze."
+            "body": "I colleghi entrano con un account gratuito, e chiunque altro può entrare con un link ospite e solo un nome."
           }
         ],
         "them": {
@@ -493,7 +493,7 @@
           },
           {
             "q": "Posso portare il mio team da Gather a TinyFloor?",
-            "a": "Sì. Crea una stanza, condividi il link e tutti entrano. Nessun dato da migrare e niente da installare."
+            "a": "Sì. Crea un workspace, invita il team con un link e tutti entrano. Nessun dato da migrare e niente da installare."
           },
           {
             "q": "Quante persone entrano in una stanza TinyFloor?",
@@ -540,7 +540,7 @@
           },
           {
             "q": "I miei colleghi hanno bisogno di un account?",
-            "a": "No. Chi ha il link di una stanza può entrare come ospite solo con un nome. Accedere conserva solo un profilo, un personaggio e l’elenco delle tue stanze."
+            "a": "I colleghi usano un account gratuito, così le vostre stanze restano private. Chiunque altro può entrare come ospite con solo un nome, con un link ospite o dalla lobby pubblica."
           },
           {
             "q": "TinyFloor funziona sul telefono?",
@@ -634,7 +634,7 @@
           },
           {
             "q": "Devo gestire un server?",
-            "a": "No. TinyFloor è ospitato per te. Crea una stanza nel browser e condividi il link."
+            "a": "No. TinyFloor è ospitato per te. Crea un workspace nel browser e invita il tuo team."
           },
           {
             "q": "Come iniziano le chiamate in TinyFloor?",
@@ -739,7 +739,7 @@
           },
           {
             "title": "Una stanza aperta a ogni ora",
-            "body": "L’ufficio pubblico è sempre aperto. Oppure crea una stanza per il tuo gruppo di coworking e condividi il link."
+            "body": "L’ufficio pubblico è sempre aperto. Oppure crea un workspace per il tuo gruppo di coworking e invitalo."
           },
           {
             "title": "Imposta il tuo stato",
@@ -757,7 +757,7 @@
           },
           {
             "q": "Posso fare coworking con sconosciuti?",
-            "a": "Sì. L’ufficio pubblico è aperto a tutti. Per un gruppo privato, crea una stanza e aggiungi una password."
+            "a": "Sì. L’ufficio pubblico è aperto a tutti. Per un gruppo privato, crea un workspace: le sue stanze sono aperte solo alle persone che inviti."
           },
           {
             "q": "C’è un limite di tempo?",
@@ -790,11 +790,11 @@
         "faq": [
           {
             "q": "Come creo un’aula studio?",
-            "a": "Crea una stanza, dalle un nome e condividi il link con i tuoi amici. Aggiungi una password se vuoi tenerla privata."
+            "a": "Crea un workspace, aggiungi una stanza e invita i tuoi amici con un link. Entra solo chi inviti."
           },
           {
             "q": "È gratis per gli studenti?",
-            "a": "Sì. TinyFloor è gratis per tutti, e nessuno ha bisogno di un account per entrare."
+            "a": "Sì. TinyFloor è gratis per un piccolo gruppo, e gli amici possono entrare con un link ospite senza account."
           },
           {
             "q": "Possiamo ascoltare musica mentre studiamo?",
@@ -839,7 +839,7 @@
           },
           {
             "q": "Posso tenere l’aula privata?",
-            "a": "Sì. Aggiungi una password quando crei la stanza e condividila solo con la tua classe."
+            "a": "Sì. Le stanze di un workspace sono private. Condividi un link ospite con la classe e disattivalo quando avete finito."
           },
           {
             "q": "È gratis per gli insegnanti?",

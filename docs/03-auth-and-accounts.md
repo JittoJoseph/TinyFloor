@@ -104,7 +104,8 @@ interface RoomTicket {
 
 ## Abuse protection
 
-- Turnstile on guest sign-up, magic-link requests and lobby tickets for guests.
+- Turnstile on guest sign-up and magic-link requests. A guest passes it once,
+  when the guest is created, not again for each lobby ticket.
 - Per-IP and per-user limits on sign-in, guest creation, invites and ICE
   credentials.
   - Use the Workers Rate Limiting binding if it's available on the plan in use.

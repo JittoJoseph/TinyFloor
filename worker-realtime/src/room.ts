@@ -13,7 +13,8 @@ import {
   type RoomTicket,
   type ServerMessage,
 } from "../../shared-protocol/src";
-import { SPAWN_HEADER, TICKET_HEADER } from "./headers";
+import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
+import { lobbyCopyNumber } from "./lobby-router";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
@@ -28,6 +29,7 @@ const LIMITS = {
 };
 
 interface Attachment {
+  room: string;
   userId: string;
   name: string;
   character: string;
@@ -67,7 +69,8 @@ export class Room extends DurableObject<Env> {
 
   async fetch(request: Request): Promise<Response> {
     const ticket = JSON.parse(request.headers.get(TICKET_HEADER) ?? "null") as RoomTicket | null;
-    if (!ticket) return new Response("Unauthorized", { status: 401 });
+    const room = request.headers.get(ROOM_HEADER);
+    if (!ticket || !room) return new Response("Unauthorized", { status: 401 });
 
     const now = Date.now();
     this.dropStaleSockets(now);
@@ -81,10 +84,12 @@ export class Room extends DurableObject<Env> {
     if (this.present().length >= ticket.cap) {
       server.accept();
       server.close(CloseCode.RoomFull, "room_full");
+      await this.reportHeadcount(room);
       return new Response(null, { status: 101, webSocket: client });
     }
 
     const attachment: Attachment = {
+      room,
       userId: ticket.sub,
       name: ticket.name,
       character: ticket.character,
@@ -110,6 +115,7 @@ export class Room extends DurableObject<Env> {
 
     send(server, { t: "welcome", self: playerState(attachment), players: others });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
+    await this.reportHeadcount(room);
 
     return new Response(null, { status: 101, webSocket: client });
   }
@@ -120,7 +126,10 @@ export class Room extends DurableObject<Env> {
     if (me.leaving) return;
 
     me.lastSeenAt = now;
-    if (!this.withinLimits(socket, me, now)) return;
+    if (!this.withinLimits(socket, me, now)) {
+      await this.reportHeadcount(me.room);
+      return;
+    }
 
     const message = parse(raw);
     if (!message) {
@@ -147,15 +156,15 @@ export class Room extends DurableObject<Env> {
         send(socket, { t: "error", code: "bad_message" });
     }
 
-    this.dropStaleSockets(now);
+    if (this.dropStaleSockets(now)) await this.reportHeadcount(me.room);
   }
 
   async webSocketClose(socket: WebSocket, code: number): Promise<void> {
-    this.farewell(socket, code);
+    if (this.farewell(socket, code)) await this.reportHeadcount(attachmentOf(socket).room);
   }
 
   async webSocketError(socket: WebSocket): Promise<void> {
-    this.farewell(socket, 1011);
+    if (this.farewell(socket, 1011)) await this.reportHeadcount(attachmentOf(socket).room);
   }
 
   private move(socket: WebSocket, me: Attachment, x: number, y: number): void {
@@ -238,7 +247,9 @@ export class Room extends DurableObject<Env> {
    * the room is awake anyway, anyone without a heartbeat or message for 90
    * seconds is let go. No timer is involved.
    */
-  private dropStaleSockets(now: number): void {
+  /** Returns whether anyone was dropped. */
+  private dropStaleSockets(now: number): boolean {
+    let dropped = false;
     for (const socket of this.ctx.getWebSockets()) {
       const attachment = attachmentOf(socket);
       if (attachment.leaving) continue;
@@ -247,22 +258,32 @@ export class Room extends DurableObject<Env> {
       if (now - lastHeard > HEARTBEAT_TIMEOUT_MS) {
         this.closeQuietly(socket, 1001, "stale");
         this.broadcast({ t: "player_left", id: attachment.userId });
+        dropped = true;
       }
     }
+    return dropped;
   }
 
-  private farewell(socket: WebSocket, code: number): void {
+  /** Returns whether this was a departure the room hadn't already announced. */
+  private farewell(socket: WebSocket, code: number): boolean {
     const attachment = attachmentOf(socket);
     try {
       socket.close(validCloseCode(code), "closing");
     } catch {
       // Already closed.
     }
-    if (attachment.leaving) return;
+    if (attachment.leaving) return false;
 
     attachment.leaving = true;
     socket.serializeAttachment(attachment);
     this.broadcast({ t: "player_left", id: attachment.userId }, socket);
+    return true;
+  }
+
+  /** Lobby copies tell the router how many people they hold; other rooms don't. */
+  private async reportHeadcount(room: string): Promise<void> {
+    if (lobbyCopyNumber(room) === null) return;
+    await this.env.LOBBY.getByName("global").report(room, this.present().length);
   }
 
   private closeQuietly(socket: WebSocket, code: number, reason: string): void {

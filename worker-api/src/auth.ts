@@ -14,7 +14,7 @@ import {
 } from "./session";
 import { verifyTurnstile } from "./turnstile";
 
-export const PASSWORD_MIN_LENGTH = 8;
+const PASSWORD_MIN_LENGTH = 8;
 /** bcrypt only reads the first 72 bytes, so longer passwords are refused rather than silently cut. */
 const PASSWORD_MAX_BYTES = 72;
 /** Sign-in attempts allowed from one IP address per 15 minutes, across all emails. */

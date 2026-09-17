@@ -68,7 +68,7 @@ export class Presence extends DurableObject<Env> {
   }
 }
 
-export function lobbyCopy(number: number): string {
+function lobbyCopy(number: number): string {
   return `lobby-${number}`;
 }
 

@@ -16,7 +16,30 @@ interface MediaDevice {
 
 type Tab = "audio" | "video";
 
+/** Saved choices, read when the dialog opens. */
+function savedSettings(): Partial<{
+  masterVolume: number;
+  micVolume: number;
+  videoQuality: "low" | "medium" | "high";
+  audioInput: string;
+  audioOutput: string;
+  videoInput: string;
+}> {
+  try {
+    return JSON.parse(localStorage.getItem("spacialMeetSettings") ?? "{}") ?? {};
+  } catch {
+    return {};
+  }
+}
+
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
+  // Mounted only while open, so saved settings and devices are read fresh each time.
+  if (!isOpen) return null;
+  return <SettingsDialog onClose={onClose} />;
+}
+
+function SettingsDialog({ onClose }: { onClose: () => void }) {
+  const [saved] = useState(savedSettings);
   const t = useTranslations("settings");
   const tc = useTranslations("common");
   const [activeTab, setActiveTab] = useState<Tab>("audio");
@@ -25,17 +48,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     [],
   );
   const [videoDevices, setVideoDevices] = useState<MediaDevice[]>([]);
-  const [selectedAudioInput, setSelectedAudioInput] = useState("");
-  const [selectedAudioOutput, setSelectedAudioOutput] = useState("");
-  const [selectedVideoInput, setSelectedVideoInput] = useState("");
-  const [masterVolume, setMasterVolume] = useState(80);
-  const [micVolume, setMicVolume] = useState(100);
+  const [selectedAudioInput, setSelectedAudioInput] = useState(saved.audioInput ?? "");
+  const [selectedAudioOutput, setSelectedAudioOutput] = useState(saved.audioOutput ?? "");
+  const [selectedVideoInput, setSelectedVideoInput] = useState(saved.videoInput ?? "");
+  const [masterVolume, setMasterVolume] = useState(saved.masterVolume ?? 80);
+  const [micVolume, setMicVolume] = useState(saved.micVolume ?? 100);
   const [videoQuality, setVideoQuality] = useState<"low" | "medium" | "high">(
-    "medium",
+    saved.videoQuality ?? "medium",
   );
 
   useEffect(() => {
-    if (!isOpen) return;
     const loadDevices = async () => {
       try {
         if (!navigator.mediaDevices?.enumerateDevices) return;
@@ -61,20 +83,6 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       }
     };
     loadDevices();
-  }, [isOpen]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("spacialMeetSettings");
-    if (!saved) return;
-    try {
-      const s = JSON.parse(saved);
-      if (s.masterVolume != null) setMasterVolume(s.masterVolume);
-      if (s.micVolume != null) setMicVolume(s.micVolume);
-      if (s.videoQuality) setVideoQuality(s.videoQuality);
-      if (s.audioInput) setSelectedAudioInput(s.audioInput);
-      if (s.audioOutput) setSelectedAudioOutput(s.audioOutput);
-      if (s.videoInput) setSelectedVideoInput(s.videoInput);
-    } catch {}
   }, []);
 
   const saveSettings = useCallback(() => {
@@ -100,8 +108,6 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     selectedVideoInput,
     onClose,
   ]);
-
-  if (!isOpen) return null;
 
   const tabs: { id: Tab; icon: typeof Mic }[] = [
     { id: "audio", icon: Mic },

@@ -1,8 +1,8 @@
 import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";
 
-export const SESSION_COOKIE = "tf_session";
-export const GUEST_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
+const SESSION_COOKIE = "tf_session";
+const GUEST_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
 export const ACCOUNT_SESSION_MS = 30 * 24 * 60 * 60 * 1000;
 const LAST_SEEN_REFRESH_MS = 24 * 60 * 60 * 1000;
 
@@ -115,7 +115,7 @@ export async function endSession(env: Env, request: Request): Promise<string> {
   return clearSessionCookie(env);
 }
 
-export function clearSessionCookie(env: Env): string {
+function clearSessionCookie(env: Env): string {
   return sessionCookie(env, "", 0);
 }
 

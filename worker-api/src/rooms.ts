@@ -146,7 +146,7 @@ export async function roomsOf(env: Env, workspaceId: string): Promise<RoomSummar
   return withPeople(env, results);
 }
 
-export async function withPeople(env: Env, rooms: RoomRow[]): Promise<RoomSummary[]> {
+async function withPeople(env: Env, rooms: RoomRow[]): Promise<RoomSummary[]> {
   if (!rooms.length) return [];
   const people = await realtime(env).presenceCounts(rooms.map((room) => room.id));
   return rooms.map((room) => ({ ...room, people: people[room.id] ?? 0 }));

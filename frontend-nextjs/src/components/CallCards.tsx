@@ -12,13 +12,15 @@ import { CallStream } from "./CallStream";
 
 interface Tile {
   key: string;
+  /** Who and what this card shows, so the call knows which video to send in high quality. */
+  id?: string;
+  screen?: boolean;
   name: string;
   stream: MediaStream | null;
   mic: boolean;
   camera: boolean;
   connected: boolean;
   self?: boolean;
-  screen?: boolean;
   badge?: string;
 }
 
@@ -101,6 +103,7 @@ export default function CallCards() {
     ...peers.flatMap((peer) => [
       {
         key: peer.id,
+        id: peer.id,
         name: peer.name,
         stream: peer.stream,
         mic: peer.mic,
@@ -112,6 +115,7 @@ export default function CallCards() {
         ? [
             {
               key: `${peer.id}-screen`,
+              id: peer.id,
               name: t("screenOf", { name: peer.name }),
               stream: peer.screenStream,
               mic: false,
@@ -126,12 +130,12 @@ export default function CallCards() {
 
   const focusedTile = tiles.find((tile) => tile.key === focused);
 
-  // At a meeting table this picks each camera's quality from the SFU.
-  const tileCount = tiles.length;
-  const focusedKey = focusedTile?.key ?? null;
+  // Only the enlarged card is worth receiving in high quality.
+  const focusedId = focusedTile?.id;
+  const focusedScreen = !!focusedTile?.screen;
   useEffect(() => {
-    callManager.setLayout(tileCount, focusedKey);
-  }, [tileCount, focusedKey, peers]);
+    callManager.setFocus(focusedId ? { id: focusedId, kind: focusedScreen ? "screen" : "camera" } : null);
+  }, [focusedId, focusedScreen, peers]);
 
   useEffect(() => {
     if (!focusedTile) return;

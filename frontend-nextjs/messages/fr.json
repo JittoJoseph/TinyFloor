@@ -359,24 +359,8 @@
   "settings": {
     "title": "Paramètres",
     "close": "Fermer les paramètres",
-    "audio": "Audio",
-    "video": "Vidéo",
     "microphone": "Micro",
-    "micVolume": "Volume du micro",
-    "speaker": "Haut-parleur",
-    "speakerVolume": "Volume du haut-parleur",
     "camera": "Caméra",
-    "videoQuality": "Qualité vidéo",
-    "quality": {
-      "low": "Basse",
-      "medium": "Moyenne",
-      "high": "Haute"
-    },
-    "qualityHint": {
-      "low": "360p, idéal pour les connexions lentes",
-      "medium": "480p, équilibre entre qualité et vitesse",
-      "high": "720p, meilleure qualité mais nécessite une connexion rapide"
-    },
     "default": "Par défaut"
   },
   "tutorial": {

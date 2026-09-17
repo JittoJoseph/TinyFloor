@@ -359,24 +359,8 @@
   "settings": {
     "title": "Settings",
     "close": "Close settings",
-    "audio": "Audio",
-    "video": "Video",
     "microphone": "Microphone",
-    "micVolume": "Microphone volume",
-    "speaker": "Speaker",
-    "speakerVolume": "Speaker volume",
     "camera": "Camera",
-    "videoQuality": "Video quality",
-    "quality": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
-    },
-    "qualityHint": {
-      "low": "360p, best for slow connections",
-      "medium": "480p, balanced quality and speed",
-      "high": "720p, best quality but needs fast internet"
-    },
     "default": "Default"
   },
   "tutorial": {

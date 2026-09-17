@@ -91,13 +91,13 @@ describe("meeting tables through the SFU", () => {
     });
   });
 
-  it("subscribes to another member's camera at the chosen layer, then renegotiates", async () => {
+  it("subscribes to another member's camera at the chosen quality, then renegotiates", async () => {
     const { ava, avaId, ben } = await seated();
     ava.send({ t: "sfu", op: "publish", sdp: "client-offer", tracks: [{ mid: "0", kind: "camera" }] });
     await ben.next("sfu");
     ben.messages.length = 0;
 
-    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", layer: "q" }] });
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "low" }] });
     expect(await ben.next("sfu")).toEqual({
       t: "sfu",
       op: "offer",
@@ -110,12 +110,12 @@ describe("meeting tables through the SFU", () => {
         location: "remote",
         sessionId: "session-1",
         trackName: "camera",
-        simulcast: { preferredRid: "q", priorityOrdering: "asciibetical", ridNotAvailable: "asciibetical" },
+        simulcast: { preferredRid: "l", priorityOrdering: "asciibetical", ridNotAvailable: "asciibetical" },
       },
     ]);
 
     ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
-    ben.send({ t: "sfu", op: "layer", userId: avaId, mid: "0", layer: "f" });
+    ben.send({ t: "sfu", op: "quality", userId: avaId, kind: "camera", mid: "0", quality: "high" });
     await vi.waitFor(() => {
       expect(sfuRequests).toContainEqual({
         method: "PUT",
@@ -123,7 +123,7 @@ describe("meeting tables through the SFU", () => {
         body: { sessionDescription: { type: "answer", sdp: "client-answer" } },
       });
       expect(sfuRequests.find((request) => request.path.endsWith("/tracks/update"))?.body?.tracks).toEqual([
-        expect.objectContaining({ sessionId: "session-1", mid: "0", simulcast: expect.objectContaining({ preferredRid: "f" }) }),
+        expect.objectContaining({ sessionId: "session-1", mid: "0", simulcast: expect.objectContaining({ preferredRid: "h" }) }),
       ]);
     }, { timeout: 5000 });
   });

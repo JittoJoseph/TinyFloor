@@ -359,24 +359,8 @@
   "settings": {
     "title": "Inställningar",
     "close": "Stäng inställningar",
-    "audio": "Ljud",
-    "video": "Video",
     "microphone": "Mikrofon",
-    "micVolume": "Mikrofonvolym",
-    "speaker": "Högtalare",
-    "speakerVolume": "Högtalarvolym",
     "camera": "Kamera",
-    "videoQuality": "Videokvalitet",
-    "quality": {
-      "low": "Låg",
-      "medium": "Medel",
-      "high": "Hög"
-    },
-    "qualityHint": {
-      "low": "360p, bäst för långsamma anslutningar",
-      "medium": "480p, balans mellan kvalitet och hastighet",
-      "high": "720p, bäst kvalitet men kräver snabbt internet"
-    },
     "default": "Standard"
   },
   "tutorial": {

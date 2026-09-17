@@ -1,7 +1,7 @@
 import { DurableObject } from "cloudflare:workers";
 import {
   CALL_KINDS,
-  CAMERA_LAYERS,
+  VIDEO_QUALITIES,
   CHAT_MAX_LENGTH,
   MEDIA_KINDS,
   CloseCode,
@@ -18,6 +18,8 @@ import {
   type RoomTicket,
   type MediaFlags,
   type MediaKind,
+  type VideoKind,
+  type VideoQuality,
   type ServerMessage,
   type SfuServerMessage,
 } from "../../shared-protocol/src";
@@ -516,8 +518,8 @@ export class Room extends DurableObject<Env> {
           socket.serializeAttachment(fresh);
           return this.broadcastToMeeting(meeting, { t: "sfu", op: "media", userId: fresh.userId, ...flags }, fresh.userId);
         }
-        case "layer":
-          return await this.sfuLayer(socket, meeting, message);
+        case "quality":
+          return await this.sfuQuality(socket, meeting, message);
         default:
           return sendSfu(socket, { op: "error", code: "bad_request" });
       }
@@ -579,7 +581,7 @@ export class Room extends DurableObject<Env> {
 
   private async sfuSubscribe(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
     const wanted = Array.isArray(message.tracks)
-      ? (message.tracks as { userId?: unknown; kind?: unknown; layer?: unknown }[]).slice(0, 30)
+      ? (message.tracks as { userId?: unknown; kind?: unknown; quality?: unknown }[]).slice(0, 30)
       : [];
     const me = attachmentOf(socket);
     const found: { userId: string; kind: MediaKind; track: SfuTrack }[] = [];
@@ -595,7 +597,7 @@ export class Room extends DurableObject<Env> {
           location: "remote",
           sessionId: publisher.media.sessionId,
           trackName: kind,
-          ...(kind === "camera" ? { simulcast: simulcast(want.layer) } : {}),
+          ...(kind === "mic" ? {} : { simulcast: simulcast(want.quality) }),
         },
       });
     }
@@ -613,19 +615,26 @@ export class Room extends DurableObject<Env> {
     });
   }
 
-  private async sfuLayer(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
+  /** Watching someone's camera or screen in the other quality. */
+  private async sfuQuality(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
     const me = attachmentOf(socket);
     const publisher = typeof message.userId === "string" ? this.publisher(meeting, message.userId) : null;
-    if (!me.media || !publisher?.media || typeof message.mid !== "string" || !CAMERA_LAYERS.includes(message.layer as never)) {
-      return sendSfu(socket, { op: "error", code: "bad_request" });
-    }
-    const result = await this.sfuApi.updateTracks(me.media.sessionId, [
+    const kind = message.kind as VideoKind;
+    const valid =
+      me.media &&
+      publisher?.media &&
+      typeof message.mid === "string" &&
+      (kind === "camera" || kind === "screen") &&
+      VIDEO_QUALITIES.includes(message.quality as never);
+    if (!valid) return sendSfu(socket, { op: "error", code: "bad_request" });
+
+    const result = await this.sfuApi.updateTracks(me.media!.sessionId, [
       {
         location: "remote",
-        sessionId: publisher.media.sessionId,
-        trackName: "camera",
-        mid: message.mid,
-        simulcast: simulcast(message.layer),
+        sessionId: publisher!.media!.sessionId,
+        trackName: kind,
+        mid: message.mid as string,
+        simulcast: simulcast(message.quality),
       },
     ]);
     if (result.requiresImmediateRenegotiation && result.sessionDescription) {
@@ -806,10 +815,10 @@ function sendSfu(socket: WebSocket, message: SfuServerMessage): void {
   send(socket, { t: "sfu", ...message });
 }
 
-/** Simulcast preferences: the requested layer, falling back to the next best one available. */
-function simulcast(layer: unknown): NonNullable<SfuTrack["simulcast"]> {
+/** Which simulcast layer to forward: the quality asked for, or low when it isn't one. */
+function simulcast(quality: unknown): NonNullable<SfuTrack["simulcast"]> {
   return {
-    preferredRid: CAMERA_LAYERS.includes(layer as never) ? (layer as string) : "h",
+    preferredRid: quality === ("high" satisfies VideoQuality) ? "h" : "l",
     priorityOrdering: "asciibetical",
     ridNotAvailable: "asciibetical",
   };

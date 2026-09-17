@@ -359,24 +359,8 @@
   "settings": {
     "title": "Indstillinger",
     "close": "Luk indstillinger",
-    "audio": "Lyd",
-    "video": "Video",
     "microphone": "Mikrofon",
-    "micVolume": "Mikrofonlydstyrke",
-    "speaker": "Højttaler",
-    "speakerVolume": "Højttalerlydstyrke",
     "camera": "Kamera",
-    "videoQuality": "Videokvalitet",
-    "quality": {
-      "low": "Lav",
-      "medium": "Mellem",
-      "high": "Høj"
-    },
-    "qualityHint": {
-      "low": "360p, bedst til langsomme forbindelser",
-      "medium": "480p, balance mellem kvalitet og hastighed",
-      "high": "720p, bedste kvalitet, men kræver hurtigt internet"
-    },
     "default": "Standard"
   },
   "tutorial": {

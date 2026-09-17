@@ -359,24 +359,8 @@
   "settings": {
     "title": "设置",
     "close": "关闭设置",
-    "audio": "音频",
-    "video": "视频",
     "microphone": "麦克风",
-    "micVolume": "麦克风音量",
-    "speaker": "扬声器",
-    "speakerVolume": "扬声器音量",
     "camera": "摄像头",
-    "videoQuality": "视频画质",
-    "quality": {
-      "low": "低",
-      "medium": "中",
-      "high": "高"
-    },
-    "qualityHint": {
-      "low": "360p，适合网速较慢时使用",
-      "medium": "480p，兼顾画质与速度",
-      "high": "720p，画质最佳，但需要高速网络"
-    },
     "default": "默认"
   },
   "tutorial": {

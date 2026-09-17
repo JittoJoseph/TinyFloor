@@ -359,24 +359,8 @@
   "settings": {
     "title": "設定",
     "close": "設定を閉じる",
-    "audio": "オーディオ",
-    "video": "ビデオ",
     "microphone": "マイク",
-    "micVolume": "マイクの音量",
-    "speaker": "スピーカー",
-    "speakerVolume": "スピーカーの音量",
     "camera": "カメラ",
-    "videoQuality": "ビデオ画質",
-    "quality": {
-      "low": "低",
-      "medium": "中",
-      "high": "高"
-    },
-    "qualityHint": {
-      "low": "360p、回線が遅い場合に最適",
-      "medium": "480p、画質と速度のバランス",
-      "high": "720p、最高画質ですが高速な回線が必要です"
-    },
     "default": "デフォルト"
   },
   "tutorial": {

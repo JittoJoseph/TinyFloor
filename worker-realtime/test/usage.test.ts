@@ -1,6 +1,6 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { dayOf } from "../src/usage";
 import { Client, settle, uniqueRoom } from "./client";
 
@@ -48,16 +48,14 @@ describe("usage totals", () => {
     expect(await usageOf(room)).toBeNull(); // Ava is still there.
 
     ava.socket.close(1000, "bye");
-    await settle();
-    expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 20, sfu_minutes: 4 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 20, sfu_minutes: 4 }), { timeout: 5000 });
 
     // Coming back later the same day adds to the row.
     const cara = await Client.open(room);
     await cara.next("welcome");
     await backdate(room, 3, 0);
     cara.socket.close(1000, "bye");
-    await settle();
-    expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 23, sfu_minutes: 4 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), { timeout: 5000 });
   });
 
   it("counts people removed by the room, and leaves the workspace empty for lobby copies", async () => {
@@ -68,8 +66,7 @@ describe("usage totals", () => {
 
     await exports.RealtimeAdmin.closeRoom(room);
     await ava.closed();
-    await settle();
-    expect(await usageOf(room)).toEqual({ workspace_id: null, peak_people: 1, person_minutes: 6, sfu_minutes: 0 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: null, peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), { timeout: 5000 });
   });
 
   it("forgets a deleted room's whiteboard", async () => {

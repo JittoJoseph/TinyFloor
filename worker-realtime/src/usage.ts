@@ -33,6 +33,8 @@ export class Usage {
   stayed(ms: number, meetingMs: number, now: number): void {
     const pending = this.read(now);
     pending.personMs += Math.max(0, ms);
+    // Someone who arrived before this code was deployed still counts as present.
+    if (ms > 0) pending.peak = Math.max(pending.peak, 1);
     pending.sfuMs += Math.max(0, meetingMs);
     this.write(pending);
   }

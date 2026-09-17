@@ -150,7 +150,7 @@ export function WalkIn({
           />
 
           {!isLoading && !user && (
-            <Turnstile ref={turnstile.ref} action="guest" onToken={turnstile.onToken} className="flex justify-center mt-4" />
+            <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
           )}
 
           {error && (

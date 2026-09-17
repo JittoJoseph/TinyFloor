@@ -25,10 +25,22 @@ export function GuestLinksDialog({ room, onClose }: { room: RoomSummary | null; 
 
   useEffect(() => {
     if (!room) return;
+    let cancelled = false;
+    api.guestLinks(room.id).then(
+      ({ guestLinks }) => !cancelled && setLinks(guestLinks),
+      () => !cancelled && setLinks([]),
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [room]);
+
+  const close = () => {
     setCreated(null);
     setError("");
-    api.guestLinks(room.id).then(({ guestLinks }) => setLinks(guestLinks), () => setLinks([]));
-  }, [room]);
+    setLinks([]);
+    onClose();
+  };
 
   const create = async () => {
     if (!room) return;
@@ -56,7 +68,7 @@ export function GuestLinksDialog({ room, onClose }: { room: RoomSummary | null; 
   };
 
   return (
-    <Dialog open={room !== null} title={t("title", { room: room?.name ?? "" })} description={t("description")} onClose={onClose}>
+    <Dialog open={room !== null} title={t("title", { room: room?.name ?? "" })} description={t("description")} onClose={close}>
       {created ? (
         <div className="space-y-3">
           <CopyField value={created} />

@@ -31,21 +31,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<SessionUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const refresh = useCallback(async () => {
-    try {
-      setUser((await api.session()).user);
-    } catch {
-      // Offline or the API is down: treat as signed out, and let pages that need
-      // a session say so when their own requests fail.
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  // Offline or the API is down: treated as signed out, and pages that need a
+  // session say so when their own requests fail.
+  const refresh = useCallback(
+    () =>
+      api.session().then(
+        ({ user: current }) => {
+          setUser(current);
+          setIsLoading(false);
+        },
+        () => {
+          setUser(null);
+          setIsLoading(false);
+        },
+      ),
+    [],
+  );
 
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    let cancelled = false;
+    api.session().then(
+      ({ user: current }) => {
+        if (cancelled) return;
+        setUser(current);
+        setIsLoading(false);
+      },
+      () => {
+        if (cancelled) return;
+        setUser(null);
+        setIsLoading(false);
+      },
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const value = useMemo<AuthContextType>(
     () => ({

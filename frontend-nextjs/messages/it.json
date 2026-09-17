@@ -4,20 +4,19 @@
     "description": "TinyFloor è un ufficio virtuale gratuito nel tuo browser. Muoviti con il tuo team su un piano in pixel art e avvia una videochiamata semplicemente mettendoti accanto a qualcuno.",
     "ogAlt": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi",
     "keywords": "ufficio virtuale, lavoro da remoto, chat spaziale, collaborazione online, spazio di lavoro virtuale, ufficio metaverso, chat di prossimità, videochat di prossimità, coworking virtuale, videochiamate nel browser",
-    "createRoomTitle": "Crea una stanza",
-    "createRoomDescription": "Apri una stanza d’ufficio virtuale su TinyFloor. Dalle un nome, aggiungi una password se vuoi e condividi un solo link con il tuo team.",
     "joinTitle": "Entra nella stanza",
     "joinRoomTitle": "Entra in {room}",
     "joinRoomDescription": "Sei invitato in {room} su TinyFloor, un ufficio virtuale in cui ti muovi. Apri il link, scegli un personaggio ed entra.",
-    "roomsTitle": "Esplora le stanze",
-    "roomsDescription": "Sfoglia le stanze virtuali attive ed entra negli spazi di lavoro pubblici di TinyFloor.",
-    "peopleTitle": "Persone",
-    "peopleDescription": "Scopri le persone che frequentano le stanze di TinyFloor.",
     "authTitle": "Accedi",
     "authDescription": "Accedi a TinyFloor per conservare il tuo nome, il tuo personaggio e l’elenco delle tue stanze.",
     "dashboardTitle": "Dashboard",
     "roomTitle": "Stanza attiva",
-    "notFoundTitle": "Pagina non trovata"
+    "notFoundTitle": "Pagina non trovata",
+    "lobbyTitle": "La lobby",
+    "lobbyDescription": "Entra come ospite nella lobby pubblica e gratuita di TinyFloor. Scegli un personaggio, conosci persone e prova le videochiamate di prossimità nel browser.",
+    "inviteTitle": "Unisciti a {workspace} su TinyFloor",
+    "inviteFallbackTitle": "Sei stato invitato su TinyFloor",
+    "inviteDescription": "{name} ti ha invitato in {workspace} su TinyFloor, un ufficio virtuale in cui puoi camminare."
   },
   "common": {
     "loading": "Caricamento...",
@@ -29,15 +28,14 @@
     "you": "Tu",
     "justNow": "proprio ora",
     "unknown": "Sconosciuto",
-    "rooms": "Stanze",
-    "people": "Persone",
     "peopleCount": "{count, plural, one {# persona} other {# persone}}",
-    "createRoom": "Crea una stanza",
-    "browseRooms": "Sfoglia le stanze",
-    "searchRooms": "Cerca stanze...",
     "dashboard": "Dashboard",
     "questions": "Domande",
-    "signOut": "Esci"
+    "signOut": "Esci",
+    "visitLobby": "Visita la lobby",
+    "lobby": "Lobby",
+    "signIn": "Accedi",
+    "rooms": "Stanze"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -223,153 +221,53 @@
     }
   },
   "entry": {
-    "allRooms": "Tutte le stanze",
     "yourName": "Il tuo nome",
     "namePlaceholder": "Come vuoi che ti chiamino?",
-    "roomPassword": "Password della stanza",
-    "passwordPlaceholder": "Inserisci la password",
     "character": "Personaggio",
-    "copyInvite": "Copia link di invito",
     "inviteCopied": "Link di invito copiato",
     "openingDoor": "Apertura della porta",
-    "walkIn": "Entra"
-  },
-  "createRoom": {
-    "title": "Apri una stanza.",
-    "roomName": "Nome della stanza",
-    "roomNamePlaceholder": "Team design, Studio, Aperitivo del venerdì",
-    "advanced": "Avanzate",
-    "passwordPlaceholder": "Aggiungi una password (facoltativa)",
-    "passwordHint": "Ogni stanza è elencata nella directory. Una password tiene la porta chiusa a chi non ce l’ha.",
-    "submit": "Crea la stanza",
-    "submitting": "Preparazione in corso",
-    "createError": "Impossibile creare la stanza. Riprova.",
-    "openError": "Impossibile aprire la stanza"
+    "walkIn": "Entra",
+    "guestNote": "Entri come ospite. <link>Accedi</link> per usare il tuo account.",
+    "guestKeep": "Sei un ospite. <link>Crea un account</link> per mantenere nome e personaggio.",
+    "copyInvite": "Copia link di invito"
   },
   "join": {
     "unavailableTitle": "Questa porta non si apre.",
-    "unavailable": "Questa stanza non è più disponibile.",
-    "full": "Questa stanza è piena al momento",
-    "needsPassword": "Questa stanza richiede una password",
-    "error": "Impossibile entrare in questa stanza",
-    "roomFull": "Stanza piena",
-    "guestNote": "Stai entrando come ospite. <link>Accedi</link> per conservare nome e personaggio."
-  },
-  "directory": {
-    "roomsTitle": "Stanze dell'<em>ufficio virtuale</em>",
-    "peopleTitle": "La <em>community</em> di TinyFloor",
-    "roomsSubtitle": "Sfoglia le stanze o conosci le persone al loro interno",
-    "peopleSubtitle": "Scopri chi dà forma a TinyFloor",
-    "updating": "Aggiornamento...",
-    "roomsLive": "{count, plural, one {# stanza attiva} other {# stanze attive}}",
-    "search": "Cerca",
-    "loadingSpaces": "Caricamento degli spazi",
-    "noRoomsFound": "Nessuna stanza trovata.",
-    "noRoomsAvailable": "Nessuna stanza disponibile.",
-    "noRoomsFoundBody": "Non abbiamo trovato stanze corrispondenti alla ricerca. Prova a modificarla.",
-    "noRoomsAvailableBody": "Qui è tutto tranquillo. Sii il primo ad avviare un nuovo spazio di lavoro!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Inattiva",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Attiva {time}",
-    "full": "Piena",
-    "enter": "Entra",
-    "gatheringPeople": "Raccolta delle persone...",
-    "searchPeople": "Cerca persone...",
-    "yourProfile": "Il tuo profilo",
-    "loadingPeople": "Caricamento delle persone",
-    "noPeople": "Nessuna persona trovata.",
-    "noPeopleBody": "Prova un’altra ricerca o torna presto."
+    "linkUnavailable": "Questo link ospite è scaduto o è stato disattivato. Chiedine uno nuovo a chi te l'ha mandato.",
+    "visitLobby": "Visita la lobby",
+    "invitedAsGuest": "Sei invitato a entrare come ospite."
   },
   "userMenu": {
     "manageProfile": "Gestisci profilo",
     "visitingAsGuest": "In visita come ospite",
     "keepYourName": "Mantieni nome e personaggio"
   },
-  "dashboard": {
-    "subtitle": "Gestisci il tuo profilo e le tue stanze",
-    "activeCount": "{count} attive",
-    "userNotFound": "Utente non trovato",
-    "backToRooms": "Torna alle stanze",
-    "nameUpdated": "Nome visualizzato aggiornato!",
-    "profileFailed": "Aggiornamento del profilo non riuscito",
-    "characterUpdated": "Personaggio aggiornato!",
-    "characterFailed": "Aggiornamento del personaggio non riuscito",
-    "linkCopied": "Link copiato!",
-    "profile": {
-      "changeCharacter": "Cambia personaggio",
-      "editName": "Modifica nome visualizzato",
-      "saveName": "Salva nome visualizzato",
-      "displayName": "Nome visualizzato",
-      "guestBadge": "OSPITE",
-      "copyLink": "Copia link del profilo",
-      "share": "Condividi profilo",
-      "shareTitle": "Profilo di {name}",
-      "shareText": "Guarda il profilo di {name} su TinyFloor",
-      "created": "create",
-      "joined": "frequentate",
-      "chooseCharacter": "Scegli personaggio",
-      "selectAvatar": "Seleziona il tuo avatar"
-    },
-    "stats": {
-      "title": "Statistiche",
-      "empty": "Crea la tua prima stanza!",
-      "active": "Attive"
-    },
-    "quickActions": {
-      "title": "Azioni rapide"
-    },
-    "activity": {
-      "title": "Attività recenti",
-      "empty": "Nessuna attività per ora",
-      "room_created": "Creata",
-      "room_joined": "Entrato",
-      "room_visited": "Visitata"
-    },
-    "collaborators": {
-      "title": "Persone recenti",
-      "empty": "Entra nelle stanze per conoscere persone"
-    },
-    "rooms": {
-      "mine": "Le mie stanze",
-      "joined": "Frequentate",
-      "gridView": "Vista a griglia",
-      "listView": "Vista a elenco",
-      "newRoom": "Nuova stanza",
-      "filter": {
-        "all": "Tutte",
-        "active": "Attive",
-        "idle": "Inattive",
-        "offline": "Offline"
-      },
-      "loading": "Caricamento stanze...",
-      "noMatches": "Nessun risultato",
-      "noMatchesBody": "Prova a modificare la ricerca o i filtri",
-      "noRooms": "Ancora nessuna stanza",
-      "noRoomsBody": "Crea il tuo primo ufficio virtuale",
-      "noJoined": "Nessuna stanza frequentata",
-      "noJoinedBody": "Entra in una stanza per vederla qui",
-      "browsePublic": "Sfoglia le stanze pubbliche"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Attiva",
-        "idle": "Inattiva",
-        "offline": "Offline"
-      },
-      "join": "Entra",
-      "copyLink": "Copia link",
-      "players": "{count}/{max} giocatori"
-    }
-  },
   "room": {
     "connecting": "Connessione...",
-    "fallbackName": "Stanza: {id}",
     "copied": "Copiato!",
-    "invite": "Invita",
-    "leave": "Esci"
+    "leave": "Esci",
+    "reconnecting": "Riconnessione…",
+    "peopleHere": "Qui ora: {count}",
+    "copyLink": "Copia link",
+    "reconnectingNote": "Connessione persa. Ti stiamo riportando dentro…",
+    "ended": {
+      "back": "Indietro",
+      "fullTitle": "Questa stanza è piena",
+      "full": "Chi ci sta è già dentro. Riprova tra poco.",
+      "replacedTitle": "Aperta in un'altra scheda",
+      "replaced": "Sei entrato in questa stanza da un'altra scheda o da un altro dispositivo, quindi questa è uscita.",
+      "closedTitle": "Questa stanza è chiusa",
+      "closed": "Un admin del workspace ha eliminato o archiviato la stanza.",
+      "revokedTitle": "Il tuo accesso è terminato",
+      "revoked": "Il link ospite con cui sei entrato è stato disattivato.",
+      "signedOutTitle": "Sei disconnesso",
+      "signedOut": "Accedi di nuovo per rientrare.",
+      "notFoundTitle": "Stanza non trovata",
+      "notFound": "Questa stanza non esiste oppure non sei membro del suo workspace.",
+      "signIn": "Accedi",
+      "tryAgain": "Riprova",
+      "useHere": "Usala qui"
+    }
   },
   "call": {
     "incomingVideo": "Videochiamata in arrivo...",
@@ -435,8 +333,7 @@
   },
   "proximity": {
     "videoCall": "Videochiamata",
-    "audioCall": "Chiamata vocale",
-    "viewProfile": "Vedi profilo"
+    "audioCall": "Chiamata vocale"
   },
   "jukebox": {
     "title": "Altoparlante della stanza",
@@ -991,6 +888,185 @@
           }
         ]
       }
+    }
+  },
+  "lobby": {
+    "eyebrow": "Aperta a tutti",
+    "title": "La lobby",
+    "subtitle": "Chiunque può passare. Scegli un nome e un personaggio, poi entra e saluta."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Copia",
+    "copied": "Copiato",
+    "switchWorkspace": "Cambia workspace",
+    "memberCount": "{count} membri su {limit}",
+    "peopleInside": "Nelle stanze ora: {count}",
+    "plans": {
+      "free": "Piano gratuito",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Proprietario",
+      "admin": "Admin",
+      "member": "Membro"
+    },
+    "settings": {
+      "button": "Impostazioni",
+      "title": "Impostazioni del workspace",
+      "name": "Nome del workspace",
+      "save": "Salva",
+      "transfer": "Trasferisci la proprietà",
+      "transferHint": "La nuova persona proprietaria avrà il pieno controllo. Tu resti admin.",
+      "choosePerson": "Scegli una persona",
+      "transferButton": "Trasferisci",
+      "deleteTitle": "Elimina questo workspace",
+      "deleteBody": "Verranno eliminati {name}, le sue stanze e i suoi link ospite per tutti. Non si può annullare. Scrivi il nome del workspace per confermare.",
+      "deleteConfirmLabel": "Nome del workspace per confermare",
+      "deleteButton": "Elimina workspace",
+      "leaveTitle": "Esci da questo workspace",
+      "leaveBody": "Perderai l'accesso alle stanze di {name} finché qualcuno non ti inviterà di nuovo.",
+      "leaveButton": "Esci dal workspace"
+    },
+    "onboarding": {
+      "title": "Allestisci il tuo ufficio",
+      "subtitle": "Dai un nome al workspace del tuo team. Include una prima stanza in cui entrare subito.",
+      "nameLabel": "Nome del workspace",
+      "namePlaceholder": "Acme Studio",
+      "create": "Crea workspace",
+      "freePlan": "Gratis fino a 3 persone. Nessuna carta richiesta.",
+      "firstRoom": "Piano principale"
+    },
+    "rooms": {
+      "title": "Stanze",
+      "detail": "Entra in qualsiasi stanza creata dal tuo team.",
+      "new": "Nuova stanza",
+      "empty": "Ancora nessuna stanza. Chiedi a un admin di crearne una.",
+      "emptyManager": "Ancora nessuna stanza. Crea la prima per il tuo team.",
+      "capacity": "Capienza: {count}",
+      "options": "Opzioni per {room}",
+      "guestLinks": "Link ospite",
+      "edit": "Rinomina o ridimensiona",
+      "delete": "Elimina stanza",
+      "peopleNow": "Dentro: {count}",
+      "quiet": "Vuota ora",
+      "enter": "Entra",
+      "editTitle": "Modifica stanza",
+      "newTitle": "Nuova stanza",
+      "name": "Nome della stanza",
+      "namePlaceholder": "Standup, Design, Angolo caffè",
+      "capacityLabel": "Quante persone ci stanno",
+      "cancel": "Annulla",
+      "save": "Salva modifiche",
+      "create": "Crea stanza",
+      "deleteTitle": "Eliminare {room}?",
+      "deleteBody": "La stanza e i suoi link ospite spariranno per sempre.",
+      "deleteBodyBusy": "Chi è dentro ora ({count}) dovrà uscire, e la stanza con i suoi link ospite sparirà per sempre."
+    },
+    "guestLinks": {
+      "title": "Link ospite per {room}",
+      "description": "Chiunque abbia un link ospite può entrare in questa stanza senza account.",
+      "onlyOnce": "Copialo ora. Per sicurezza, il link viene mostrato una sola volta.",
+      "another": "Crea un altro link",
+      "expiresIn": "Il link vale per",
+      "lifetimes": {
+        "1d": "1 giorno",
+        "7d": "7 giorni",
+        "30d": "30 giorni"
+      },
+      "create": "Crea link ospite",
+      "active": "Link attivi",
+      "expires": "Scade il {date}",
+      "revoke": "Disattiva"
+    },
+    "members": {
+      "title": "Membri",
+      "full": "Il tuo piano è completo con {limit} membri.",
+      "detail": "{count} membri su {limit}",
+      "invite": "Invita",
+      "pending": "Inviti in sospeso",
+      "anyoneWithLink": "Chiunque abbia il link",
+      "inviteMeta": "{role} · scade il {date}",
+      "revoke": "Revoca",
+      "roleNames": {
+        "owner": "Proprietario",
+        "admin": "Admin",
+        "member": "Membro"
+      },
+      "you": "tu",
+      "options": "Opzioni per {name}",
+      "makeMember": "Rendi membro",
+      "makeAdmin": "Rendi admin",
+      "leave": "Esci",
+      "remove": "Rimuovi",
+      "inviteTitle": "Invita persone in {workspace}",
+      "inviteDescription": "Manda loro il link. Per entrare serve un account.",
+      "linkForEmail": "Solo {email} può usare questo link. Funziona una volta e scade tra 7 giorni.",
+      "linkForAnyone": "Chiunque abbia questo link può entrare una volta. Scade tra 7 giorni.",
+      "done": "Fatto",
+      "roleLabel": "Entra come",
+      "roleHints": {
+        "member": "Usa le stanze e incontra il team",
+        "admin": "Crea anche stanze e invita persone"
+      },
+      "emailLabel": "Email (facoltativa)",
+      "emailPlaceholder": "collega@azienda.it",
+      "emailHint": "Aggiungi un'email perché il link funzioni solo per quella persona.",
+      "cancel": "Annulla",
+      "createLink": "Crea link di invito"
+    },
+    "profile": {
+      "title": "Il tuo profilo",
+      "changePassword": "Cambia password",
+      "name": "Il tuo nome",
+      "saved": "Salvato",
+      "save": "Salva",
+      "character": "Personaggio",
+      "passwordTitle": "Cambia la password",
+      "passwordDescription": "Inserisci la password attuale, poi scegline una nuova.",
+      "passwordChanged": "La password è stata cambiata.",
+      "done": "Fatto",
+      "currentPassword": "Password attuale",
+      "newPassword": "Nuova password",
+      "hidePasswords": "Nascondi password",
+      "showPasswords": "Mostra password",
+      "passwordRule": "Almeno 8 caratteri",
+      "signsOutOthers": "Resterai connesso qui. Ovunque altrove verrai disconnesso.",
+      "cancel": "Annulla"
+    },
+    "invite": {
+      "invalidTitle": "Questo invito non funziona",
+      "invalid": "Potrebbe essere scaduto, già usato o disattivato. Chiedine uno nuovo.",
+      "home": "Vai alla home",
+      "eyebrow": "{name} ti ha invitato",
+      "asAdmin": "Sei invitato a unirti come admin.",
+      "asMember": "Sei invitato a unirti al team.",
+      "join": "Unisciti a {workspace}",
+      "joiningAs": "Ti unisci come {name} ({email})",
+      "createAccount": "Crea un account",
+      "signIn": "Ho un account",
+      "needAccount": "Per unirti a un workspace serve un account. Ci vuole un minuto."
+    },
+    "errors": {
+      "member_limit": "Il workspace è completo con il piano attuale.",
+      "not_allowed": "Il tuo ruolo in questo workspace non lo consente.",
+      "owner_cannot_leave": "La persona proprietaria deve trasferire la proprietà prima di uscire.",
+      "owner_role": "Il ruolo di proprietario cambia solo trasferendo la proprietà.",
+      "bad_capacity": "Scegli tra 2 e 20 persone.",
+      "name_required": "Prima dagli un nome.",
+      "bad_email": "Non sembra un indirizzo email.",
+      "invite_used": "Questo invito è già stato usato.",
+      "invite_invalid": "Questo invito è scaduto o è stato disattivato.",
+      "wrong_account": "Questo invito è per un altro indirizzo email. Accedi con quell'account.",
+      "wrong_password": "La password attuale non è corretta.",
+      "password_too_short": "Usa almeno 8 caratteri.",
+      "password_too_long": "Usa meno di 72 caratteri.",
+      "too_many_attempts": "Troppi tentativi. Aspetta qualche minuto, poi riprova.",
+      "not_found": "Non trovato. Potrebbe essere stato eliminato.",
+      "network": "Impossibile raggiungere TinyFloor. Controlla la connessione e riprova.",
+      "generic": "Qualcosa è andato storto. Riprova."
     }
   }
 }

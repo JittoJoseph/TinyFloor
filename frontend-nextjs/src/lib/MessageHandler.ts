@@ -40,7 +40,7 @@ export class MessageHandler {
         break;
       case "moved":
         if (message.id !== this.playerId) {
-          this.playerManager.updatePlayerPosition(message.id, message.x, message.y, message.ox, message.oy);
+          this.playerManager.updatePlayerPosition(message.id, message.x, message.y, message.d);
         }
         break;
       case "walking":

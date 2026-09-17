@@ -232,7 +232,7 @@ export class Room extends DurableObject<Env> {
 
     switch (message.t) {
       case "move":
-        this.move(socket, me, message.x, message.y, tileOffset(message.ox), tileOffset(message.oy));
+        this.move(socket, me, message.x, message.y, message.d);
         break;
       case "walk_to":
         this.walkTo(socket, me, message.x, message.y);
@@ -295,7 +295,7 @@ export class Room extends DurableObject<Env> {
    * legitimately "jumps" back from it. Over the rate limit, moves are dropped
    * quietly; the client sends its final tile when it stops, which catches up.
    */
-  private move(socket: WebSocket, me: Attachment, x: number, y: number, ox?: number, oy?: number): void {
+  private move(socket: WebSocket, me: Attachment, x: number, y: number, d: unknown): void {
     if (!isInsideMap(x, y)) {
       send(socket, { t: "move_rejected", x: me.x, y: me.y });
       return;
@@ -305,8 +305,8 @@ export class Room extends DurableObject<Env> {
     this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    const offsets = ox !== undefined && oy !== undefined ? { ox, oy } : {};
-    this.broadcast({ t: "moved", id: me.userId, x, y, ...offsets }, socket);
+    const heading = Number.isInteger(d) && (d as number) >= 0 && (d as number) < 8 ? { d: d as number } : {};
+    this.broadcast({ t: "moved", id: me.userId, x, y, ...heading }, socket);
   }
 
   private walkTo(socket: WebSocket, me: Attachment, x: number, y: number): void {
@@ -818,11 +818,6 @@ function simulcast(layer: unknown): NonNullable<SfuTrack["simulcast"]> {
 function stringList(value: unknown, max: number): string[] | null {
   if (!Array.isArray(value) || value.length === 0 || value.length > max) return null;
   return value.every((item) => typeof item === "string") ? (value as string[]) : null;
-}
-
-/** A position inside a tile, in whole pixels, or nothing when it isn't one. */
-function tileOffset(value: unknown): number | undefined {
-  return Number.isInteger(value) && (value as number) >= 0 && (value as number) < 32 ? (value as number) : undefined;
 }
 
 function memberOf(attachment: Attachment): MeetingMember {

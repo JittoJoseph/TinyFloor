@@ -11,6 +11,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async closeRoom(roomId) {
     calls.push(["closeRoom", roomId]);
   }
+  async forgetRoom(roomId) {
+    calls.push(["forgetRoom", roomId]);
+  }
   async revokeGuestLink(roomId, linkId) {
     calls.push(["revokeGuestLink", roomId, linkId]);
   }

@@ -26,6 +26,7 @@ export function useErrorMessage() {
         password_too_short: t("password_too_short"),
         password_too_long: t("password_too_long"),
         too_many_attempts: t("too_many_attempts"),
+        slow_down: t("too_many_attempts"),
         not_found: t("not_found"),
         network: t("network"),
       };

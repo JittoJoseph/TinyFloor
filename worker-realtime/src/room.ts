@@ -26,6 +26,7 @@ import { LobbyReporter } from "./discord";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby-router";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
+import { Usage } from "./usage";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
@@ -54,6 +55,8 @@ interface Attachment {
   status: PresenceStatus;
   seat: number | null;
   meeting: string | null;
+  /** When this person sat down at their meeting table, for usage totals. */
+  meetingSince: number | null;
   link: string | null;
   /** This person's SFU session and the tracks they publish, while at a meeting table. */
   media: { sessionId: string; tracks: { mid: string; kind: MediaKind }[] } | null;
@@ -82,17 +85,23 @@ interface Attachment {
  * without waking the room.
  */
 export class Room extends DurableObject<Env> {
-  private readonly board: Board;
+  private board!: Board;
   private readonly reporter: LobbyReporter;
   private readonly sfuApi: SfuApi;
+  private usage!: Usage;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair(HEARTBEAT_PING, HEARTBEAT_PONG));
-    ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS room_state (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
-    this.board = new Board(ctx.storage.sql);
     this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
     this.sfuApi = new SfuApi(env.REALTIME_APP_ID, env.REALTIME_APP_SECRET);
+    this.createTables();
+  }
+
+  private createTables(): void {
+    this.ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS room_state (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
+    this.board = new Board(this.ctx.storage.sql);
+    this.usage = new Usage(this.ctx.storage.sql, this.env.DB);
   }
 
   presenceCount(): number {
@@ -100,18 +109,35 @@ export class Room extends DurableObject<Env> {
   }
 
   /** The room was deleted or archived: everyone leaves. */
-  disconnectAll(): void {
-    for (const socket of this.present()) this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed");
+  async disconnectAll(): Promise<void> {
+    const sockets = this.present();
+    for (const socket of sockets) {
+      const attachment = attachmentOf(socket);
+      this.leaveMeeting(attachment);
+      this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed", attachment);
+    }
+    if (sockets.length) await this.headcountChanged(attachmentOf(sockets[0]).room);
+  }
+
+  /** The room was deleted for good: everyone leaves and its storage goes. */
+  async forget(): Promise<void> {
+    await this.disconnectAll();
+    // Pending usage was handed to D1 as everyone left, so nothing is lost here.
+    await this.ctx.storage.deleteAll();
+    this.createTables();
   }
 
   /** A guest link was revoked: whoever came in through it leaves. */
-  disconnectLink(linkId: string): void {
+  async disconnectLink(linkId: string): Promise<void> {
+    let room: string | null = null;
     for (const socket of this.present()) {
       const attachment = attachmentOf(socket);
       if (attachment.link !== linkId) continue;
       this.depart(attachment);
       this.closeQuietly(socket, CloseCode.AccessRevoked, "access_revoked", attachment);
+      room = attachment.room;
     }
+    if (room) await this.headcountChanged(room);
   }
 
   async fetch(request: Request): Promise<Response> {
@@ -135,7 +161,7 @@ export class Room extends DurableObject<Env> {
     if (this.present().length >= ticket.cap) {
       server.accept();
       server.close(CloseCode.RoomFull, "room_full");
-      await this.reportHeadcount(room);
+      await this.headcountChanged(room);
       return new Response(null, { status: 101, webSocket: client });
     }
 
@@ -150,6 +176,7 @@ export class Room extends DurableObject<Env> {
       status: "available",
       seat: null,
       meeting: null,
+      meetingSince: null,
       link: ticket.link ?? null,
       media: null,
       flags: null,
@@ -170,6 +197,7 @@ export class Room extends DurableObject<Env> {
 
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     server.serializeAttachment(attachment);
+    this.usage.arrived(others.length + 1, now);
 
     send(server, { t: "welcome", self: playerState(attachment), players: others, music: this.music() });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
@@ -179,7 +207,7 @@ export class Room extends DurableObject<Env> {
       character: attachment.character,
       country: request.headers.get(COUNTRY_HEADER) ?? "",
     });
-    await this.reportHeadcount(room);
+    await this.headcountChanged(room);
 
     return new Response(null, { status: 101, webSocket: client });
   }
@@ -191,7 +219,7 @@ export class Room extends DurableObject<Env> {
 
     me.lastSeenAt = now;
     if (!this.withinLimits(socket, me, now)) {
-      await this.reportHeadcount(me.room);
+      await this.headcountChanged(me.room);
       return;
     }
 
@@ -248,15 +276,15 @@ export class Room extends DurableObject<Env> {
     }
     socket.serializeAttachment(me);
 
-    if (this.dropStaleSockets(now)) await this.reportHeadcount(me.room);
+    if (this.dropStaleSockets(now)) await this.headcountChanged(me.room);
   }
 
   async webSocketClose(socket: WebSocket, code: number): Promise<void> {
-    if (this.farewell(socket, code)) await this.reportHeadcount(attachmentOf(socket).room);
+    if (this.farewell(socket, code)) await this.headcountChanged(attachmentOf(socket).room);
   }
 
   async webSocketError(socket: WebSocket): Promise<void> {
-    if (this.farewell(socket, 1011)) await this.reportHeadcount(attachmentOf(socket).room);
+    if (this.farewell(socket, 1011)) await this.headcountChanged(attachmentOf(socket).room);
   }
 
   // Handlers below change `me`; webSocketMessage saves it once they return.
@@ -313,6 +341,7 @@ export class Room extends DurableObject<Env> {
     if (meeting) {
       const members = this.meetingMembers(meeting).map((other) => memberOf(attachmentOf(other)));
       me.meeting = meeting;
+      me.meetingSince = Date.now();
       send(socket, { t: "meeting_joined", meeting, members });
       this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
       for (const other of this.meetingMembers(meeting)) {
@@ -418,6 +447,11 @@ export class Room extends DurableObject<Env> {
     const meeting = me.meeting;
     me.meeting = null;
     me.flags = null;
+    if (me.meetingSince !== null) {
+      const now = Date.now();
+      this.usage.stayed(0, now - me.meetingSince, now);
+      me.meetingSince = null;
+    }
     if (me.media) {
       const { sessionId, tracks } = me.media;
       me.media = null;
@@ -682,6 +716,7 @@ export class Room extends DurableObject<Env> {
     if (attachment.leaving) return false;
 
     this.depart(attachment);
+    this.endStay(attachment);
     attachment.leaving = true;
     socket.serializeAttachment(attachment);
     return true;
@@ -693,10 +728,22 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
   }
 
-  /** Lobby copies tell the router how many people they hold; other rooms don't. */
-  private async reportHeadcount(room: string): Promise<void> {
+  /**
+   * After people arrive or leave: usage totals are written when due, and lobby
+   * copies tell the router how many people they hold.
+   */
+  private async headcountChanged(room: string): Promise<void> {
+    const now = Date.now();
+    const present = this.present().length;
+    if (this.usage.due(present, now)) this.ctx.waitUntil(this.usage.flush(room, present, now));
     if (lobbyCopyNumber(room) === null) return;
-    await this.env.LOBBY.getByName("global").report(room, this.present().length);
+    await this.env.LOBBY.getByName("global").report(room, present);
+  }
+
+  /** Counts this person's time in the room, once, as their socket ends. */
+  private endStay(attachment: Attachment): void {
+    const now = Date.now();
+    this.usage.stayed(now - attachment.joinedAt, 0, now);
   }
 
   /** Only lobby copies report to Discord; workspace rooms never do. */
@@ -710,6 +757,7 @@ export class Room extends DurableObject<Env> {
   }
 
   private closeQuietly(socket: WebSocket, code: number, reason: string, attachment = attachmentOf(socket)): void {
+    if (!attachment.leaving) this.endStay(attachment);
     attachment.leaving = true;
     socket.serializeAttachment(attachment);
     try {

@@ -1,6 +1,7 @@
 import { authRoutes } from "./auth";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
+import { runRetention } from "./retention";
 import { roomRoutes } from "./rooms";
 import { Router } from "./router";
 import { workspaceRoutes } from "./workspaces";
@@ -32,5 +33,10 @@ export default {
       response = errorResponse(error);
     }
     return withCors(response, origin);
+  },
+
+  /** The daily clean-up, at 03:00 UTC. */
+  async scheduled(_controller, env, ctx) {
+    ctx.waitUntil(runRetention(env).then((report) => console.log("retention", JSON.stringify(report))));
   },
 } satisfies ExportedHandler<Env>;

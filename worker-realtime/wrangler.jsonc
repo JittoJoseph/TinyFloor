@@ -15,5 +15,14 @@
       { "name": "LOBBY", "class_name": "LobbyRouter" }
     ]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room", "LobbyRouter"] }]
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room", "LobbyRouter"] }],
+  // Only usage_daily is written from here; the schema belongs to tinyfloor-api.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tinyfloor-db",
+      "database_id": "31aa401c-c9f4-4653-8bf4-57e84881a451",
+      "migrations_dir": "../worker-api/migrations"
+    }
+  ]
 }

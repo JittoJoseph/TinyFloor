@@ -95,7 +95,9 @@ export function WalkIn({
           ? tAuth("errors.network")
           : code.startsWith("turnstile")
             ? tAuth("errors.turnstile")
-            : tAuth("errors.generic"),
+            : code === "slow_down"
+              ? tAuth("errors.too_many_attempts")
+              : tAuth("errors.generic"),
       );
       if (!user) turnstile.reset();
     } finally {

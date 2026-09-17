@@ -13,12 +13,13 @@ means a signed-in non-guest user.
 
 | Method | Path | Who | Does |
 |---|---|---|---|
-| GET | `/auth/google/start` | Anyone | Redirects to Google |
-| GET | `/auth/google/callback` | Google | Signs in, redirects back to the site |
+| POST | `/auth/signup` | Anyone | Creates an account, or upgrades the current guest (Turnstile) |
+| POST | `/auth/login` | Anyone | Email and password; throttled per email and per IP |
 | POST | `/auth/guest` | Anyone | Creates a guest session (Turnstile) |
 | POST | `/auth/magic-link` | Anyone | Later: sends a sign-in email |
 | GET | `/auth/magic-link/verify` | Anyone | Later: signs in from the email |
 | POST | `/auth/logout` | Session | Ends the session |
+| POST | `/me/password` | Account | Changes the password; signs out other sessions |
 | GET | `/session` | Anyone | `{ user, guest }` or `{ user: null }` |
 
 ### Me
@@ -135,7 +136,7 @@ from `tinyfloor-realtime`, so abuse there can be spotted; see
 
 | Java | New |
 |---|---|
-| `POST /api/auth/register`, `/login` | Google sign-in; magic links later |
+| `POST /api/auth/register`, `/login` | `POST /v1/auth/signup`, `/v1/auth/login` (same bcrypt passwords) |
 | `POST /api/auth/guest` | `POST /v1/auth/guest` |
 | `POST /api/auth/logout` | `POST /v1/auth/logout` |
 | `GET /api/auth/validate`, `/session` | `GET /v1/session` |

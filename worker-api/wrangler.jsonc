@@ -11,6 +11,8 @@
     "COOKIE_DOMAIN": ".tinyfloor.com",
     "REALTIME_URL": "wss://realtime.tinyfloor.com"
   },
+  "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
   "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime", "entrypoint": "RealtimeAdmin" }],
   "d1_databases": [
     {

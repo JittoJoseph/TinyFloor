@@ -39,7 +39,9 @@ export class MessageHandler {
         this.handleUserLeft(message.id);
         break;
       case "moved":
-        if (message.id !== this.playerId) this.playerManager.updatePlayerPosition(message.id, message.x, message.y);
+        if (message.id !== this.playerId) {
+          this.playerManager.updatePlayerPosition(message.id, message.x, message.y, message.ox, message.oy);
+        }
         break;
       case "walking":
         if (message.id !== this.playerId) this.playerManager.walkPlayerTo(message.id, message.x, message.y);
@@ -105,7 +107,9 @@ export class MessageHandler {
 
   /** Arriving, or coming back after a reconnect: the room's word replaces whatever we had. */
   private welcome(self: PlayerState, players: PlayerState[]) {
+    // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
+      if (id === this.playerId) continue;
       this.seats.release(id);
       this.playerManager.removePlayer(id);
     }

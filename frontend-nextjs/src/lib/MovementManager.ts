@@ -8,7 +8,7 @@ import type { RoomSocket } from "./RoomSocket";
 import { VirtualJoystickManager } from "./VirtualJoystickManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, isValidTile, MOVEMENT_SPEED } from "./types";
+import { pixelToTile, isValidTile, MOVEMENT_SPEED, TILE_SIZE } from "./types";
 
 const ARRIVE_RANGE = 3;
 
@@ -263,7 +263,9 @@ export class MovementManager {
     }
 
     this.lastSentTile = key;
-    this.wsManager.send({ t: "move", x: tile.tileX, y: tile.tileY });
+    const ox = Math.floor(this.player.x) - tile.tileX * TILE_SIZE;
+    const oy = Math.floor(this.player.y) - tile.tileY * TILE_SIZE;
+    this.wsManager.send({ t: "move", x: tile.tileX, y: tile.tileY, ox, oy });
   }
 
   setInputEnabled(enabled: boolean) {

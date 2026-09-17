@@ -101,24 +101,33 @@ describe("room messages", () => {
     expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 11, y: 10 });
     await settle();
     expect(ava.messages.some((message) => message.t === "moved")).toBe(false);
+
+    // Where in the tile they stopped is passed on when it makes sense, and dropped when it doesn't.
+    ben.messages.length = 0;
+    ava.send({ t: "move", x: 12, y: 10, ox: 5, oy: 30 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 12, y: 10, ox: 5, oy: 30 });
+    ben.messages.length = 0;
+    ava.send({ t: "move", x: 13, y: 10, ox: 99, oy: 3 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 13, y: 10 });
   });
 
-  it("rejects a move that jumps too far or leaves the map", async () => {
+  it("rejects a move off the map, but not a long step after a click-to-walk", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, {}, "&x=10&y=10");
-    await ava.next("welcome");
+    const avaId = (await ava.next("welcome")).self.id;
     const ben = await Client.open(room);
     await ben.next("welcome");
 
-    ava.send({ t: "move", x: 20, y: 10 });
-    expect(await ava.next("move_rejected")).toEqual({ t: "move_rejected", x: 10, y: 10 });
-
-    ava.messages.length = 0;
     ava.send({ t: "move", x: 0, y: 10 });
     expect(await ava.next("move_rejected")).toEqual({ t: "move_rejected", x: 10, y: 10 });
 
+    // A click records the destination; steering off halfway is a long "step" back.
+    ava.send({ t: "walk_to", x: 30, y: 10 });
+    await ben.next("walking");
+    ava.send({ t: "move", x: 15, y: 11 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 15, y: 11 });
     await settle();
-    expect(ben.messages.some((message) => message.t === "moved")).toBe(false);
+    expect(ava.messages.filter((message) => message.t === "move_rejected")).toHaveLength(1);
   });
 
   it("broadcasts walking, status and chat", async () => {

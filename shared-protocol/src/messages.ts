@@ -85,7 +85,8 @@ export type SfuServerMessage =
   | { op: "error"; code: string };
 
 export type ClientMessage =
-  | { t: "move"; x: number; y: number }
+  /** A tile, and optionally where in it (0 to 31 pixels), so others see exactly where you stopped. */
+  | { t: "move"; x: number; y: number; ox?: number; oy?: number }
   | { t: "walk_to"; x: number; y: number }
   | { t: "sit"; seat: number; x: number; y: number; meeting?: string }
   | { t: "stand"; x: number; y: number }
@@ -102,7 +103,7 @@ export type ServerMessage =
   | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState }
   | { t: "player_joined"; player: PlayerState }
   | { t: "player_left"; id: string }
-  | { t: "moved"; id: string; x: number; y: number }
+  | { t: "moved"; id: string; x: number; y: number; ox?: number; oy?: number }
   | { t: "walking"; id: string; x: number; y: number }
   | { t: "move_rejected"; x: number; y: number }
   | { t: "sat"; id: string; seat: number; x: number; y: number }

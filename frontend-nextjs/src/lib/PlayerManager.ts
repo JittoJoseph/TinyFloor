@@ -28,6 +28,14 @@ interface RemotePlayerState {
 }
 
 const SNAP_THRESHOLD = TILE_SIZE * 6;
+/**
+ * Streamed moves are queued and walked through in order, so someone walking
+ * never stops between tiles. When the queue grows (a burst after a slow
+ * connection), they walk a little faster to catch up; past this many points the
+ * oldest are skipped.
+ */
+const STREAM_QUEUE = 5;
+const EASE_IN_FLOOR = 0.3;
 const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
@@ -98,16 +106,10 @@ export class PlayerManager {
     player.setData("spriteName", character);
     player.play(this.animationManager.getAnimationKey(character, "idle", "down"));
 
+    // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
+    // that and leave the name behind while the character walks off.
     const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
     tag.container.setDepth(TAG_DEPTH);
-    this.scene.tweens.add({
-      targets: tag.container,
-      y: y + TAG_OFFSET_Y - 2,
-      duration: 1500,
-      ease: "Sine.easeInOut",
-      yoyo: true,
-      repeat: -1,
-    });
 
     this.localPlayer = player;
     this.nameTags.set(id, tag);
@@ -214,14 +216,19 @@ export class PlayerManager {
     }
   }
 
-  updatePlayerPosition(id: string, tileX: number, tileY: number) {
+  /** A streamed move: the tile, and where in it when the sender says so. */
+  updatePlayerPosition(id: string, tileX: number, tileY: number, offsetX?: number, offsetY?: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
+    const wasStreaming = state.streaming;
     state.streaming = true;
 
-    const point = tileToPixel(tileX, tileY);
+    const point =
+      offsetX !== undefined && offsetY !== undefined
+        ? { x: tileX * TILE_SIZE + offsetX, y: tileY * TILE_SIZE + offsetY }
+        : tileToPixel(tileX, tileY);
     const gap = Phaser.Math.Distance.Between(
       container.x,
       container.y,
@@ -233,7 +240,9 @@ export class PlayerManager {
       state.path.length = 0;
       container.setPosition(point.x, point.y);
     } else {
-      state.path = [point];
+      if (!wasStreaming) state.path.length = 0;
+      state.path.push(point);
+      if (state.path.length > STREAM_QUEUE) state.path.splice(0, state.path.length - STREAM_QUEUE);
     }
   }
 
@@ -376,18 +385,14 @@ export class PlayerManager {
 
       if (state.path.length) {
         const target = state.path[0];
-        const catchup = state.streaming
-          ? Phaser.Math.Clamp(
-              Phaser.Math.Distance.Between(
-                container.x,
-                container.y,
-                target.x,
-                target.y,
-              ) / TILE_SIZE,
-              1,
-              MAX_CATCHUP,
-            )
-          : 1;
+        const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
+        // Behind: walk a little faster. On the last known point: ease in instead of
+        // stopping dead, so they are still moving when the next point arrives.
+        const catchup = !state.streaming
+          ? 1
+          : state.path.length === 1
+            ? Phaser.Math.Clamp(remaining / TILE_SIZE, EASE_IN_FLOOR, MAX_CATCHUP)
+            : Phaser.Math.Clamp(1 + 0.25 * (state.path.length - 1), 1, MAX_CATCHUP);
         const pos = this.scratch;
         pos.x = container.x;
         pos.y = container.y;
@@ -428,6 +433,8 @@ export class PlayerManager {
     if (tag) {
       this.scene.tweens.killTweensOf([tag.container, tag.dot]);
       this.nameTags.delete(id);
+      // A remote tag goes with its container below; the local one stands alone.
+      if (!this.players.has(id)) tag.container.destroy();
     }
 
     const container = this.players.get(id);

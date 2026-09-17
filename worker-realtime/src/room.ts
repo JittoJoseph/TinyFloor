@@ -46,6 +46,7 @@ interface Attachment {
   status: PresenceStatus;
   seat: number | null;
   meeting: string | null;
+  link: string | null;
   joinedAt: number;
   lastSeenAt: number;
   /** Set when this socket was closed on purpose, so its close event doesn't announce a departure. */
@@ -81,6 +82,21 @@ export class Room extends DurableObject<Env> {
 
   presenceCount(): number {
     return this.present().length;
+  }
+
+  /** The room was deleted or archived: everyone leaves. */
+  disconnectAll(): void {
+    for (const socket of this.present()) this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed");
+  }
+
+  /** A guest link was revoked: whoever came in through it leaves. */
+  disconnectLink(linkId: string): void {
+    for (const socket of this.present()) {
+      const attachment = attachmentOf(socket);
+      if (attachment.link !== linkId) continue;
+      this.depart(attachment);
+      this.closeQuietly(socket, CloseCode.AccessRevoked, "access_revoked", attachment);
+    }
   }
 
   async fetch(request: Request): Promise<Response> {
@@ -119,6 +135,7 @@ export class Room extends DurableObject<Env> {
       status: "available",
       seat: null,
       meeting: null,
+      link: ticket.link ?? null,
       joinedAt: now,
       lastSeenAt: now,
       leaving: false,

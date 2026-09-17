@@ -2,8 +2,9 @@ import { LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { Room } from "./room";
 import { LobbyRouter } from "./lobby-router";
+import { RealtimeAdmin } from "./admin";
 
-export { Room, LobbyRouter };
+export { Room, LobbyRouter, RealtimeAdmin };
 
 /** `/lobby` for the public lobby, `/rooms/:room` for a workspace room. */
 const ROOM_PATH = /^\/(?:rooms\/([a-z0-9-]{1,64})|lobby)$/;

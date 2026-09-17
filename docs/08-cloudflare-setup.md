@@ -58,10 +58,14 @@ site's middleware redirects every other host to `www`, so it must let
 
 ## Turnstile
 
-- One widget for `www.tinyfloor.com`, `preview.tinyfloor.com` and `localhost`,
-  in managed mode.
-- Site key: `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in the site's build settings.
-- Secret: `TURNSTILE_SECRET` on `tinyfloor-api`.
+- Widget `TinyFloor`, hostname `tinyfloor.com` (covers `www` and `preview`),
+  managed mode. Created.
+- Site key (public): `0x4AAAAAAE6AVMD41Jo_qCYG`, set as
+  `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in the site's build settings.
+- Secret: `TURNSTILE_SECRET` on `tinyfloor-api`. Set.
+- Local development uses Cloudflare's test keys instead: site key
+  `1x00000000000000000000AA` and secret `1x0000000000000000000000000000000AA`
+  (in `.dev.vars`), which always pass.
 
 ## Google OAuth (Google Cloud, not Cloudflare)
 

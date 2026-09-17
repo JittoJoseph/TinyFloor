@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tinyfloor-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "workers_dev": false,
+  "routes": [{ "pattern": "api.tinyfloor.com", "custom_domain": true }],
+  "vars": {
+    "SITE_ORIGINS": "https://www.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3000"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tinyfloor-db",
+      "database_id": "31aa401c-c9f4-4653-8bf4-57e84881a451",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

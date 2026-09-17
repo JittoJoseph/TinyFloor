@@ -33,8 +33,8 @@ password and land on "Create your workspace".
 
 **Accounts without an email.** The Java backend signed people in by username,
 and email was optional. Those accounts can't sign in on the new platform and
-are left out (reason `no_email` in the report). In the rehearsal on 2026-09-17
-that was 9 of 18 accounts.
+are left out (reason `no_email` in the report) and can register again. In the
+rehearsal on 2026-09-17 that was 9 of 18 accounts.
 
 ## Tooling
 
@@ -74,25 +74,18 @@ was upgraded to cost 11.
 - A backup of MongoDB taken.
 
 **On the day, with nobody online**
-1. Turn on the maintenance switch on the live site: on the `tinyfloor` Worker,
-   add the variables `MAINTENANCE=on` and `MAINTENANCE_BYPASS=<a secret>`.
-   Every page answers 503 with "Back in a few minutes". Open any page with
-   `?bypass=<the secret>` to get through yourself.
-2. Stop the Java backend on Railway, so no new accounts are created.
-3. In `tools/migrate-users-to-d1`: `export.mjs`, `transform.mjs`, read the
+1. Stop the Java backend on Railway, so no new accounts are created.
+2. In `tools/migrate-users-to-d1`: `export.mjs`, `transform.mjs`, read the
    report, `import.mjs --remote`, `verify.mjs --remote`.
-4. Merge the pull request. Workers Builds deploys the new frontend, which points
+3. Merge the pull request. Workers Builds deploys the new frontend, which points
    at `api.tinyfloor.com` and `realtime.tinyfloor.com`.
-5. Once the build has deployed, check the site through the bypass, then delete
-   `MAINTENANCE` (and `MAINTENANCE_BYPASS`).
-6. Smoke test on production: sign in as a carried-over account, create a
+4. Smoke test on production: sign in as a carried-over account, create a
    workspace and a room, invite a second account, enter the lobby as a guest, a
    proximity call, a meeting-table call, whiteboard, jukebox.
 
 **If something is wrong**
-- Before step 4: restart Railway and turn off the maintenance switch. Nothing has
-  changed for users.
-- After step 4: roll the `tinyfloor` Worker back to its previous deployment from
+- Before step 3: restart Railway. Nothing has changed for users.
+- After step 3: roll the `tinyfloor` Worker back to its previous deployment from
   the Workers dashboard, and restart Railway. MongoDB was never modified. Anything
   created on the new platform in between stays in D1 and is kept for the next
   attempt.

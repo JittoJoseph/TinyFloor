@@ -22,8 +22,6 @@
   "observability": {
     "enabled": true
   },
-  // Variables set in the dashboard (MAINTENANCE, MAINTENANCE_BYPASS) survive deploys.
-  "keep_vars": true,
   // preview.tinyfloor.com: the site on the new Workers, for trying changes before cutover.
   // Built from the feature branch with: pnpm run build:worker && pnpm run deploy:preview
   "env": {

@@ -21,5 +21,7 @@
   ],
   "observability": {
     "enabled": true
-  }
+  },
+  // Variables set in the dashboard (MAINTENANCE, MAINTENANCE_BYPASS) survive deploys.
+  "keep_vars": true
 }

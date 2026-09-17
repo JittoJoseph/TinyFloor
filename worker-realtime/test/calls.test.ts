@@ -28,8 +28,8 @@ describe("peer-to-peer call signalling", () => {
     const { ava, ben, benId } = await pair(room);
     const cara = await Client.open(room, { name: "Cara" });
     const caraId = (await cara.next("welcome")).self.id;
-    ava.send({ t: "call", kind: "add", to: benId, data: { id: caraId, name: "Impostor" } });
-    expect((await ben.next("call")).data).toEqual({ id: caraId, name: "Cara" });
+    ava.send({ t: "call", kind: "add", to: benId, data: { id: caraId, name: "Impostor", offer: true } });
+    expect((await ben.next("call")).data).toEqual({ id: caraId, name: "Cara", offer: true });
   });
 });
 
@@ -161,6 +161,26 @@ describe("meeting tables through the SFU", () => {
     await ben.next("welcome");
     ben.send({ t: "sit", seat: 2, x: 12, y: 10, meeting: "table" });
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: avaId, kinds: ["mic"] });
+  });
+
+  it("shares who has their mic, camera and screen on, including with newcomers", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { name: "Ava" });
+    const avaId = (await ava.next("welcome")).self.id;
+    ava.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table" });
+    await ava.next("meeting_joined");
+    const ben = await Client.open(room, { name: "Ben" });
+    await ben.next("welcome");
+    ben.send({ t: "sit", seat: 2, x: 12, y: 10, meeting: "table" });
+    await ben.next("meeting_joined");
+
+    ava.send({ t: "sfu", op: "media", mic: true, camera: false, screen: false });
+    expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "media", userId: avaId, mic: true, camera: false, screen: false });
+
+    const cara = await Client.open(room, { name: "Cara" });
+    await cara.next("welcome");
+    cara.send({ t: "sit", seat: 3, x: 13, y: 10, meeting: "table" });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "media", userId: avaId, mic: true, camera: false, screen: false });
   });
 
   it("closes a member's tracks when they leave the table", async () => {

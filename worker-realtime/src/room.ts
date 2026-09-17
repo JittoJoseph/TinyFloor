@@ -16,6 +16,7 @@ import {
   type PresenceStatus,
   type RoomRole,
   type RoomTicket,
+  type MediaFlags,
   type MediaKind,
   type ServerMessage,
   type SfuServerMessage,
@@ -56,6 +57,8 @@ interface Attachment {
   link: string | null;
   /** This person's SFU session and the tracks they publish, while at a meeting table. */
   media: { sessionId: string; tracks: { mid: string; kind: MediaKind }[] } | null;
+  /** What this person says is on at their table: mic, camera, screen. */
+  flags: MediaFlags | null;
   joinedAt: number;
   lastSeenAt: number;
   /** Set when this socket was closed on purpose, so its close event doesn't announce a departure. */
@@ -149,6 +152,7 @@ export class Room extends DurableObject<Env> {
       meeting: null,
       link: ticket.link ?? null,
       media: null,
+      flags: null,
       joinedAt: now,
       lastSeenAt: now,
       leaving: false,
@@ -237,7 +241,7 @@ export class Room extends DurableObject<Env> {
         // be handled meanwhile, so save first and let the handler re-read.
         me.sfuOps++;
         socket.serializeAttachment(me);
-        if (me.sfuOps <= LIMITS.sfuOpsPerSecond) await this.sfu(socket, message);
+        if (me.sfuOps <= LIMITS.sfuOpsPerSecond) await this.sfu(socket, message as unknown as Record<string, unknown>);
         return;
       default:
         send(socket, { t: "error", code: "bad_message" });
@@ -306,9 +310,11 @@ export class Room extends DurableObject<Env> {
       this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
       for (const other of this.meetingMembers(meeting)) {
         const them = attachmentOf(other);
-        if (them.userId !== me.userId && them.media?.tracks.length) {
+        if (them.userId === me.userId) continue;
+        if (them.media?.tracks.length) {
           sendSfu(socket, { op: "tracks", userId: them.userId, kinds: them.media.tracks.map((track) => track.kind) });
         }
+        if (them.flags) sendSfu(socket, { op: "media", userId: them.userId, ...them.flags });
       }
     }
   }
@@ -404,6 +410,7 @@ export class Room extends DurableObject<Env> {
     if (me.meeting === null) return;
     const meeting = me.meeting;
     me.meeting = null;
+    me.flags = null;
     if (me.media) {
       const { sessionId, tracks } = me.media;
       me.media = null;
@@ -432,7 +439,7 @@ export class Room extends DurableObject<Env> {
       const id = (data as { id?: unknown } | undefined)?.id;
       const added = typeof id === "string" ? this.ctx.getWebSockets(userTag(id))[0] : undefined;
       if (!added) return;
-      data = { id, name: attachmentOf(added).name };
+      data = { ...(data as object), id, name: attachmentOf(added).name };
     }
     const relayed = JSON.stringify({ t: "call", kind, from: me.userId, fromName: me.name, data });
     for (const target of targets) sendText(target, relayed);
@@ -460,6 +467,14 @@ export class Room extends DurableObject<Env> {
         case "answer":
           if (typeof message.sdp !== "string" || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
           return await this.sfuApi.renegotiate(me.media.sessionId, message.sdp);
+        case "media": {
+          const flags = { mic: message.mic === true, camera: message.camera === true, screen: message.screen === true };
+          const fresh = attachmentOf(socket);
+          if (fresh.meeting !== meeting) return;
+          fresh.flags = flags;
+          socket.serializeAttachment(fresh);
+          return this.broadcastToMeeting(meeting, { t: "sfu", op: "media", userId: fresh.userId, ...flags }, fresh.userId);
+        }
         case "layer":
           return await this.sfuLayer(socket, meeting, message);
         default:

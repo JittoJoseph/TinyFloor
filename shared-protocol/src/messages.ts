@@ -58,13 +58,21 @@ export type MediaKind = (typeof MEDIA_KINDS)[number];
 export const CAMERA_LAYERS = ["f", "h", "q"] as const;
 export type CameraLayer = (typeof CAMERA_LAYERS)[number];
 
+export interface MediaFlags {
+  mic: boolean;
+  camera: boolean;
+  screen: boolean;
+}
+
 export type SfuClientMessage =
   | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind }[] }
   | { op: "unpublish"; kinds: MediaKind[] }
   | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; layer?: CameraLayer }[] }
   | { op: "unsubscribe"; mids: string[] }
   | { op: "answer"; sdp: string }
-  | { op: "layer"; userId: string; mid: string; layer: CameraLayer };
+  | { op: "layer"; userId: string; mid: string; layer: CameraLayer }
+  /** Which of your mic, camera and screen are on, so the table can show it. */
+  | ({ op: "media" } & MediaFlags);
 
 export type SfuServerMessage =
   | { op: "published"; sdp: string }
@@ -73,6 +81,7 @@ export type SfuServerMessage =
   | { op: "tracks"; userId: string; kinds: MediaKind[] }
   | { op: "untracks"; userId: string; kinds: MediaKind[] }
   | { op: "gone"; userId: string }
+  | ({ op: "media"; userId: string } & MediaFlags)
   | { op: "error"; code: string };
 
 export type ClientMessage =

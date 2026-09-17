@@ -45,6 +45,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const t = useTranslations("toast");
   const [toasts, setToasts] = useState<Toast[]>([]);
 
+  const hideToast = useCallback((id: string) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  }, []);
+
   const showToast = useCallback(
     (message: string, type: ToastType = "info", duration = 4000) => {
       const id = Math.random().toString(36).substring(7);
@@ -58,12 +62,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         }, duration);
       }
     },
-    []
+    [hideToast]
   );
-
-  const hideToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
 
   return (
     <ToastContext.Provider value={{ showToast, hideToast }}>

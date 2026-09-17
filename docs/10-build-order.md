@@ -89,17 +89,12 @@ and standing up stops that person's tracks.
 - Daily cron cleanup, usage totals, Workers Logs, rate limits on sensitive
   endpoints.
 - Marketing copy updated for private rooms and the lobby (18 languages).
-- A maintenance switch: a variable on the `tinyfloor` Worker that makes the
-  site's middleware show a "back in a few minutes" page, for the cutover. It
-  has to reach master's frontend too, since that's what is live on the day.
-
 **Done when:** a week of preview use leaves expired rows cleaned up and
 `usage_daily` filled in.
 
 **Status (2026-09-17):** built and deployed. Cron cleanup and usage totals are
 live (the first `usage_daily` row came from the preview lobby); `AUTH_LIMIT`
-guards sign-up, sign-in and guest creation; the maintenance switch was tried on
-the preview and is in PR #32 for master; marketing copy is updated in all 18
+guards sign-up, sign-in and guest creation; marketing copy is updated in all 18
 languages. Waiting on the week of preview use.
 
 ## M9. Account migration rehearsal
@@ -110,8 +105,8 @@ languages. Waiting on the week of preview use.
 **Done when:** the rehearsal runs clean twice in a row.
 
 **Status (2026-09-17):** done. Two clean runs in a row and a carried-over
-password signed in locally. Open question: 9 of 18 production accounts have no
-email (username sign-in on the Java backend) and aren't carried over.
+password signed in locally. The 9 of 18 production accounts without an email
+(username sign-in on the Java backend) are dropped; they can register again.
 
 ## M10. Cutover
 

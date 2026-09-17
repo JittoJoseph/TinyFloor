@@ -1,7 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
-import { maintenanceResponse } from "@/lib/maintenance";
 import { SITE_URL } from "@/lib/site";
 
 const handleI18nRouting = createMiddleware(routing);
@@ -18,9 +17,6 @@ export function middleware(request: NextRequest) {
   if (process.env.NODE_ENV === "production" && host !== SITE.hostname) {
     return NextResponse.redirect(new URL(`${pathname}${search}`, SITE), 301);
   }
-
-  const maintenance = maintenanceResponse(request);
-  if (maintenance) return maintenance;
 
   // Files (sitemap.xml, robots.txt, sprites, music) carry no locale.
   if (/\.[^/]+$/.test(pathname)) return NextResponse.next();

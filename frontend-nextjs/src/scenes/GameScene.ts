@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
-import { WebSocketManager, WebSocketMessage } from "../lib/WebSocketManager";
+import type { RoomTicket } from "../lib/api";
+import { RoomSocket } from "../lib/RoomSocket";
 import { PlayerManager } from "../lib/PlayerManager";
 import { ProximityManager } from "../lib/ProximityManager";
 import { callManager } from "../lib/CallManager";
@@ -15,7 +16,7 @@ import { whiteboard } from "../lib/WhiteboardManager";
 import { JukeboxObject } from "../lib/JukeboxObject";
 import { jukebox } from "../lib/JukeboxManager";
 import { tutorialDone, setTouchInput } from "../lib/tutorial";
-import { tileToPixel } from "../lib/types";
+import { pixelToTile, tileToPixel } from "../lib/types";
 
 const CAMERA_LERP = 0.08;
 const CAMERA_ZOOM = 1.2;
@@ -23,7 +24,7 @@ const NARROW_WIDTH = 768;
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
-  private wsManager!: WebSocketManager;
+  private wsManager!: RoomSocket;
   private playerManager!: PlayerManager;
   private proximityManager!: ProximityManager;
   private animationManager!: AnimationManager;
@@ -35,17 +36,17 @@ class GameScene extends Phaser.Scene {
   private whiteboardObject?: WhiteboardObject;
   private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
-  private playerId: string;
   private windowListeners: Array<[string, EventListener]> = [];
 
   constructor(
     private name: string,
-    private roomId: string,
     private character: string,
-    userId?: string | null,
+    /** The signed-in person's id, which is also their id in the room. */
+    private playerId: string,
+    /** Gets a fresh ticket for this room from the API, for every connection attempt. */
+    private ticketFor: () => Promise<RoomTicket>,
   ) {
     super({ key: "GameScene" });
-    this.playerId = userId || Phaser.Utils.String.UUID();
   }
 
   preload() {
@@ -71,15 +72,11 @@ class GameScene extends Phaser.Scene {
     const spawnTile = this.mapManager.getRandomSpawnTile(keepCentered);
     const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
-    this.wsManager = new WebSocketManager(
-      this.playerId,
-      this.name,
-      this.character,
-    );
-    this.wsManager.connect(
-      `${this.getWsBaseUrl()}/ws/${this.roomId}`,
-      spawnTile,
-    );
+    // A reconnect puts you back where you were standing, not at the spawn tile.
+    this.wsManager = new RoomSocket(this.ticketFor, () => {
+      const tile = this.player ? pixelToTile(this.player.x, this.player.y) : spawnTile;
+      return { x: tile.tileX, y: tile.tileY };
+    });
 
     this.playerManager = new PlayerManager(
       this,
@@ -168,9 +165,7 @@ class GameScene extends Phaser.Scene {
       this.playerId,
       this.player,
     );
-    this.wsManager.setOnMessage((msg: WebSocketMessage) =>
-      this.messageHandler.handleMessage(msg),
-    );
+    this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
     this.listen("leaveMeeting", () => this.seatManager?.leave());
 
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
@@ -178,10 +173,10 @@ class GameScene extends Phaser.Scene {
     this.cameras.main.setDeadzone(120, 90);
 
     this.listen("sendChatMessage", (event: CustomEvent) =>
-      this.wsManager.send("chat", event.detail),
+      this.wsManager.send({ t: "chat", text: String(event.detail.content ?? "") }),
     );
     this.listen("statusChange", (event: CustomEvent) => {
-      this.wsManager.send("status_change", { status: event.detail.status });
+      this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
     });
     if (!tutorialDone()) {
@@ -199,21 +194,9 @@ class GameScene extends Phaser.Scene {
     this.listen("chatBlurred", () =>
       this.movementManager.setInputEnabled(true),
     );
-  }
 
-  private getWsBaseUrl(): string {
-    const host = window.location.hostname;
-    const configured = process.env.NEXT_PUBLIC_WS_URL;
-    const isStaleLocalhost =
-      configured?.includes("localhost") &&
-      host !== "localhost" &&
-      host !== "127.0.0.1";
-
-    if (!configured || isStaleLocalhost) {
-      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      return `${protocol}//${host}:8080`;
-    }
-    return configured;
+    // Everything is listening now, so nothing the room says first is missed.
+    this.wsManager.connect();
   }
 
   private listen(type: string, handler: (event: CustomEvent) => void) {

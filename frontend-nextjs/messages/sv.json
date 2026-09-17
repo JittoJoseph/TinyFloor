@@ -177,23 +177,50 @@
     "credits": "Medverkande"
   },
   "auth": {
-    "welcomeBack": "Välkommen tillbaka",
-    "joinUs": "Gå med",
-    "signInSubtitle": "Logga in på ditt konto",
-    "registerSubtitle": "Skapa ditt arbetsytekonto",
-    "username": "Användarnamn",
-    "emailOptional": "E-post (valfritt)",
-    "displayNameOptional": "Visningsnamn (valfritt)",
+    "tabSignIn": "Logga in",
+    "tabSignUp": "Skapa konto",
+    "chooseMode": "Logga in eller skapa ett konto",
+    "signInTitle": "Välkommen tillbaka",
+    "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
+    "signUpTitle": "Skapa ditt konto",
+    "signUpSubtitle": "Välj hur du ska se ut och sätt sedan upp ett kontor åt ditt team.",
+    "name": "Ditt namn",
+    "namePlaceholder": "Så ser andra dig",
+    "email": "E-post",
+    "emailPlaceholder": "du@foretag.se",
     "password": "Lösenord",
+    "passwordPlaceholder": "Ditt lösenord",
+    "newPasswordPlaceholder": "Välj ett lösenord",
+    "passwordRule": "Minst 8 tecken",
+    "capsLock": "Caps Lock är på",
     "showPassword": "Visa lösenord",
     "hidePassword": "Dölj lösenord",
+    "character": "Figur",
     "signIn": "Logga in",
-    "signUp": "Registrera dig",
+    "signingIn": "Loggar in…",
     "createAccount": "Skapa konto",
-    "noAccount": "Har du inget konto?",
+    "creatingAccount": "Skapar ditt konto…",
+    "noAccount": "Ny på TinyFloor?",
+    "createOne": "Skapa ett konto",
     "haveAccount": "Har du redan ett konto?",
-    "continueGuest": "Fortsätt som gäst →",
-    "error": "Ett fel uppstod"
+    "signInInstead": "Logga in i stället",
+    "guestCarryOver": "Du är här som {name}. Ditt namn och din figur följer med.",
+    "continueGuest": "Vill du bara titta? Besök lobbyn som gäst",
+    "errors": {
+      "wrong_credentials": "E-post och lösenord stämmer inte. Försök igen.",
+      "too_many_attempts": "För många försök. Vänta några minuter och försök sedan igen.",
+      "email_taken": "Det finns redan ett konto med den här e-posten.",
+      "bad_email": "Det ser inte ut som en e-postadress.",
+      "email_required": "Ange din e-post.",
+      "password_required": "Ange ditt lösenord.",
+      "password_too_short": "Använd minst 8 tecken.",
+      "password_too_long": "Använd färre än 72 tecken.",
+      "password_blank": "Ett lösenord kan inte bara vara mellanslag.",
+      "name_required": "Välj ett namn som andra ser.",
+      "turnstile": "Vi kunde inte kontrollera att du är en människa. Försök igen.",
+      "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
+      "generic": "Något gick fel. Försök igen."
+    }
   },
   "entry": {
     "allRooms": "Alla rum",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Prova en annan sökning eller titta in snart igen."
   },
   "userMenu": {
-    "manageProfile": "Hantera profil"
+    "manageProfile": "Hantera profil",
+    "visitingAsGuest": "Besöker som gäst",
+    "keepYourName": "Behåll namn och figur"
   },
   "dashboard": {
     "subtitle": "Hantera din profil och dina rum",

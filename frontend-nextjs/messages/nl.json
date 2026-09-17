@@ -177,23 +177,50 @@
     "credits": "Credits"
   },
   "auth": {
-    "welcomeBack": "Welkom terug",
-    "joinUs": "Doe mee",
-    "signInSubtitle": "Log in op je account",
-    "registerSubtitle": "Maak je werkplekaccount aan",
-    "username": "Gebruikersnaam",
-    "emailOptional": "E-mail (optioneel)",
-    "displayNameOptional": "Weergavenaam (optioneel)",
+    "tabSignIn": "Inloggen",
+    "tabSignUp": "Account maken",
+    "chooseMode": "Log in of maak een account",
+    "signInTitle": "Welkom terug",
+    "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
+    "signUpTitle": "Maak je account",
+    "signUpSubtitle": "Kies hoe je eruitziet en richt daarna een kantoor in voor je team.",
+    "name": "Je naam",
+    "namePlaceholder": "Zo zien anderen je",
+    "email": "E-mail",
+    "emailPlaceholder": "jij@bedrijf.nl",
     "password": "Wachtwoord",
+    "passwordPlaceholder": "Je wachtwoord",
+    "newPasswordPlaceholder": "Kies een wachtwoord",
+    "passwordRule": "Minstens 8 tekens",
+    "capsLock": "Caps Lock staat aan",
     "showPassword": "Wachtwoord tonen",
     "hidePassword": "Wachtwoord verbergen",
+    "character": "Personage",
     "signIn": "Inloggen",
-    "signUp": "Registreren",
-    "createAccount": "Account aanmaken",
-    "noAccount": "Nog geen account?",
+    "signingIn": "Bezig met inloggen…",
+    "createAccount": "Account maken",
+    "creatingAccount": "Je account wordt gemaakt…",
+    "noAccount": "Nieuw bij TinyFloor?",
+    "createOne": "Maak een account",
     "haveAccount": "Heb je al een account?",
-    "continueGuest": "Doorgaan als gast →",
-    "error": "Er is een fout opgetreden"
+    "signInInstead": "Log in",
+    "guestCarryOver": "Je bent hier als {name}. Je naam en personage gaan mee.",
+    "continueGuest": "Even rondkijken? Bezoek de lobby als gast",
+    "errors": {
+      "wrong_credentials": "Dat e-mailadres en wachtwoord passen niet bij elkaar. Probeer het opnieuw.",
+      "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
+      "email_taken": "Er bestaat al een account met dit e-mailadres.",
+      "bad_email": "Dat lijkt geen e-mailadres.",
+      "email_required": "Vul je e-mailadres in.",
+      "password_required": "Vul je wachtwoord in.",
+      "password_too_short": "Gebruik minstens 8 tekens.",
+      "password_too_long": "Gebruik minder dan 72 tekens.",
+      "password_blank": "Een wachtwoord mag niet alleen uit spaties bestaan.",
+      "name_required": "Kies een naam die anderen zien.",
+      "turnstile": "We konden niet controleren of je een mens bent. Probeer het opnieuw.",
+      "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
+      "generic": "Er ging iets mis. Probeer het opnieuw."
+    }
   },
   "entry": {
     "allRooms": "Alle ruimtes",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Probeer een andere zoekopdracht of kom snel terug."
   },
   "userMenu": {
-    "manageProfile": "Profiel beheren"
+    "manageProfile": "Profiel beheren",
+    "visitingAsGuest": "Op bezoek als gast",
+    "keepYourName": "Houd je naam en personage"
   },
   "dashboard": {
     "subtitle": "Beheer je profiel en ruimtes",

@@ -1,6 +1,7 @@
 "use client";
 
-import { WebSocketManager } from "./WebSocketManager";
+import type { MusicState } from "@shared/messages";
+import type { RoomSocket } from "./RoomSocket";
 import { isSpeakerMuted, onSpeakerChange } from "./speaker";
 
 export interface Track {
@@ -58,7 +59,7 @@ type Listener = () => void;
  * where you are standing.
  */
 class JukeboxManager {
-  private ws?: WebSocketManager;
+  private ws?: RoomSocket;
   private audio?: HTMLAudioElement;
   private listeners = new Set<Listener>();
   private snapshot: JukeboxSnapshot = EMPTY;
@@ -76,9 +77,8 @@ class JukeboxManager {
     });
   }
 
-  attach(ws: WebSocketManager) {
+  attach(ws: RoomSocket) {
     this.ws = ws;
-    ws.send("music_sync", {});
   }
 
   detach() {
@@ -107,13 +107,12 @@ class JukeboxManager {
     this.emit();
   }
 
-  handleMessage(type: string, data: Record<string, unknown>) {
-    if (type !== "music_state") return;
-
-    const track = Number(data.track) || 0;
-    const playing = Boolean(data.playing);
-    const startedAt = Number(data.startedAt) || Date.now();
-    const offset = Number(data.offset) || 0;
+  /** What's playing, from arriving in the room or from anyone changing it. */
+  handleMusic(music: MusicState) {
+    const track = Number(music.track) || 0;
+    const playing = Boolean(music.playing);
+    const startedAt = Number(music.startedAt) || Date.now();
+    const offset = Number(music.offset) || 0;
 
     const changed = track !== this.track;
     this.track = Math.min(Math.max(track, 0), TRACKS.length - 1);
@@ -153,7 +152,7 @@ class JukeboxManager {
 
   private push(next: { playing: boolean; track: number }) {
     this.blocked = false;
-    this.ws?.send("music_set", { ...next, offset: 0 });
+    this.ws?.send({ t: "music_set", ...next, offset: 0 });
   }
 
   private start(elapsed: number, restart: boolean) {

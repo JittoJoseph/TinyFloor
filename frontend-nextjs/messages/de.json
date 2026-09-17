@@ -177,23 +177,50 @@
     "credits": "Credits"
   },
   "auth": {
-    "welcomeBack": "Willkommen zurück",
-    "joinUs": "Mach mit",
-    "signInSubtitle": "Melde dich bei deinem Konto an",
-    "registerSubtitle": "Erstelle dein Workspace-Konto",
-    "username": "Benutzername",
-    "emailOptional": "E-Mail (optional)",
-    "displayNameOptional": "Anzeigename (optional)",
+    "tabSignIn": "Anmelden",
+    "tabSignUp": "Konto erstellen",
+    "chooseMode": "Anmelden oder Konto erstellen",
+    "signInTitle": "Willkommen zurück",
+    "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
+    "signUpTitle": "Konto erstellen",
+    "signUpSubtitle": "Such dir dein Aussehen aus und richte dann ein Büro für dein Team ein.",
+    "name": "Dein Name",
+    "namePlaceholder": "So sehen dich andere",
+    "email": "E-Mail",
+    "emailPlaceholder": "du@firma.de",
     "password": "Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "newPasswordPlaceholder": "Wähle ein Passwort",
+    "passwordRule": "Mindestens 8 Zeichen",
+    "capsLock": "Die Feststelltaste ist aktiv",
     "showPassword": "Passwort anzeigen",
     "hidePassword": "Passwort verbergen",
+    "character": "Figur",
     "signIn": "Anmelden",
-    "signUp": "Registrieren",
+    "signingIn": "Anmeldung läuft…",
     "createAccount": "Konto erstellen",
-    "noAccount": "Noch kein Konto?",
-    "haveAccount": "Schon ein Konto?",
-    "continueGuest": "Als Gast fortfahren →",
-    "error": "Ein Fehler ist aufgetreten"
+    "creatingAccount": "Konto wird erstellt…",
+    "noAccount": "Neu bei TinyFloor?",
+    "createOne": "Konto erstellen",
+    "haveAccount": "Du hast schon ein Konto?",
+    "signInInstead": "Stattdessen anmelden",
+    "guestCarryOver": "Du bist als {name} hier. Dein Name und deine Figur kommen mit.",
+    "continueGuest": "Nur mal schauen? Besuche die Lobby als Gast",
+    "errors": {
+      "wrong_credentials": "E-Mail und Passwort passen nicht zusammen. Versuch es noch einmal.",
+      "too_many_attempts": "Zu viele Versuche. Warte ein paar Minuten und versuch es dann erneut.",
+      "email_taken": "Mit dieser E-Mail gibt es schon ein Konto.",
+      "bad_email": "Das sieht nicht wie eine E-Mail-Adresse aus.",
+      "email_required": "Gib deine E-Mail ein.",
+      "password_required": "Gib dein Passwort ein.",
+      "password_too_short": "Verwende mindestens 8 Zeichen.",
+      "password_too_long": "Verwende weniger als 72 Zeichen.",
+      "password_blank": "Ein Passwort darf nicht nur aus Leerzeichen bestehen.",
+      "name_required": "Wähle einen Namen, den andere sehen.",
+      "turnstile": "Wir konnten nicht prüfen, ob du ein Mensch bist. Versuch es noch einmal.",
+      "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
+      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+    }
   },
   "entry": {
     "allRooms": "Alle Räume",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Versuch eine andere Suche oder schau bald wieder vorbei."
   },
   "userMenu": {
-    "manageProfile": "Profil verwalten"
+    "manageProfile": "Profil verwalten",
+    "visitingAsGuest": "Als Gast unterwegs",
+    "keepYourName": "Behalte Name und Figur"
   },
   "dashboard": {
     "subtitle": "Verwalte dein Profil und deine Räume",

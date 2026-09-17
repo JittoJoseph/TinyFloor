@@ -5,11 +5,17 @@ import { SITE_URL } from "./site";
 // copied from the Japanese UI opens in English for an English teammate. Inside
 // the app, pass them to the locale-aware `Link` / router, which adds the prefix.
 
-export const joinPath = (roomId: string) =>
-  `/join?roomId=${encodeURIComponent(roomId)}`;
+/** The free public lobby, open to anyone. */
+export const lobbyPath = "/lobby";
 
-export const profilePath = (userId: string) =>
-  `/dashboard?user=${encodeURIComponent(userId)}`;
+/** A workspace room, for its members. */
+export const roomPath = (roomId: string) => `/room/${encodeURIComponent(roomId)}`;
+
+/** A guest link into one room. */
+export const guestLinkPath = (token: string) => `/join/${encodeURIComponent(token)}`;
+
+/** An invitation to join a workspace. */
+export const invitePath = (token: string) => `/invite/${encodeURIComponent(token)}`;
 
 /** Absolute URL for a path, on the current origin in the browser. */
 export const shareUrl = (path: string) =>

@@ -10,9 +10,8 @@ const routes: Array<{
   priority: number;
 }> = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
-  { path: '/rooms', changeFrequency: 'daily', priority: 0.8 },
-  { path: '/people', changeFrequency: 'daily', priority: 0.6 },
-  { path: '/create-room', changeFrequency: 'monthly', priority: 0.5 },
+  { path: '/lobby', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/auth', changeFrequency: 'monthly', priority: 0.5 },
   ...LANDINGS.map(({ slug }) => ({
     path: `/${slug}`,
     changeFrequency: 'monthly' as const,

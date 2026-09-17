@@ -121,11 +121,11 @@ interface RoomTicket {
 
 - Turnstile on guest sign-up and magic-link requests. A guest passes it once,
   when the guest is created, not again for each lobby ticket.
-- Per-IP and per-user limits on sign-in, guest creation, invites and ICE
-  credentials.
-  - Use the Workers Rate Limiting binding if it's available on the plan in use.
-  - Otherwise, a small counter in D1 per IP per minute for the few sensitive
-    endpoints only.
+- `AUTH_LIMIT`, a Workers Rate Limiting binding: 10 sign-ups, sign-ins and
+  guest creations per IP per minute (`slow_down`), checked before Turnstile.
+- Sign-in: 5 wrong passwords per email per 15 minutes, 30 attempts per IP
+  (`PasswordGuard`).
+- ICE credentials are cached per user for an hour.
 - WebSocket message limits are enforced in the room object; see
   `05-realtime-rooms.md`.
 

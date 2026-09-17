@@ -63,12 +63,16 @@ until the report is clean.
 - A backup of MongoDB taken.
 
 **On the day, with nobody online**
-1. Turn on the maintenance switch (M8) on the live site.
+1. Turn on the maintenance switch on the live site: on the `tinyfloor` Worker,
+   add the variables `MAINTENANCE=on` and `MAINTENANCE_BYPASS=<a secret>`.
+   Every page answers 503 with "Back in a few minutes". Open any page with
+   `?bypass=<the secret>` to get through yourself.
 2. Stop the Java backend on Railway, so no new accounts are created.
 3. Export users, transform, import into `tinyfloor-db`, verify.
 4. Merge the pull request. Workers Builds deploys the new frontend, which points
    at `api.tinyfloor.com` and `realtime.tinyfloor.com`.
-5. Turn off the maintenance switch.
+5. Once the build has deployed, check the site through the bypass, then delete
+   `MAINTENANCE` (and `MAINTENANCE_BYPASS`).
 6. Smoke test on production: Google sign-in as a carried-over account, create an
    office and a room, invite a second account, enter the lobby as a guest, a
    proximity call, a meeting-table call, whiteboard, jukebox.

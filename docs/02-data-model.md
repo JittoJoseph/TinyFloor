@@ -137,9 +137,13 @@ on, and are handled by the `LobbyRouter` object.
 | person_minutes | INTEGER | |
 | sfu_minutes | INTEGER | Participant minutes on meeting tables |
 
-Primary key `(day, room_id)`. Written once per room per day by the room's
-Durable Object through the API, so writes stay proportional to active rooms,
-not to people or messages.
+Primary key `(day, room_id)`. The room's Durable Object keeps running totals in
+its own SQLite (`usage_pending`) and adds them to today's row when the room
+empties, or after an hour in a room that never does
+(`worker-realtime/src/usage.ts`). `tinyfloor-realtime` has its own D1 binding
+for this one table, so writes stay proportional to active rooms, not to people
+or messages. Person minutes are counted as each person leaves; meeting minutes
+as they stand up from a table.
 
 ### Migrations
 
@@ -201,6 +205,9 @@ interface Attachment {
 - Expired sessions: deleted daily.
 - Guest users with no session for 7 days: deleted daily (as today).
 - Expired or used invites and guest links older than 30 days: deleted daily.
-- `usage_daily` older than 13 months: deleted monthly.
-- Archived rooms older than 30 days: row deleted, and the room object's storage
-  cleared with `deleteAll()`.
+- `usage_daily` older than 13 months: deleted (checked daily, cheap).
+- Archived rooms older than 30 days: the room object's storage cleared with
+  `deleteAll()` (the `forgetRoom` admin call), then the row deleted.
+
+Each job deletes at most 1,000 rows (50 rooms) per run; the next day picks up
+the rest. Built in `worker-api/src/retention.ts`.

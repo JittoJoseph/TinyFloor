@@ -96,6 +96,12 @@ and standing up stops that person's tracks.
 **Done when:** a week of preview use leaves expired rows cleaned up and
 `usage_daily` filled in.
 
+**Status (2026-09-17):** built and deployed. Cron cleanup and usage totals are
+live (the first `usage_daily` row came from the preview lobby); `AUTH_LIMIT`
+guards sign-up, sign-in and guest creation; the maintenance switch was tried on
+the preview and is in PR #32 for master; marketing copy is updated in all 18
+languages. Waiting on the week of preview use.
+
 ## M9. Account migration rehearsal
 
 - `tools/migrate-users-to-d1/`, run against a copy of production accounts into

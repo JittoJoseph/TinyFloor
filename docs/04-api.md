@@ -118,12 +118,13 @@ reachable from the internet.
 | `sessionUser(cookieHeader)` | Site, during server rendering | Who is signed in |
 | `invitePreview(token)` | Site | Link previews on the invite page |
 | `guestLinkPreview(token)` | Site | Link previews on the guest link page |
-| `recordUsage(dayTotals)` | Realtime | Daily usage row per room |
 
 ## Scheduled work
 
 One Cron Trigger, `0 3 * * *` (daily), runs the retention jobs from
-`02-data-model.md`. It stays well under the Free plan's 5 cron triggers.
+`02-data-model.md` and logs how many rows each removed. It stays well under the
+Free plan's 5 cron triggers. Usage totals don't go through the API; the room
+objects write them (see `usage_daily`).
 
 ## Discord webhook
 

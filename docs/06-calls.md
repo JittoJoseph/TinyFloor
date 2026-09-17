@@ -82,11 +82,12 @@ tables' members reconnect their SFU sessions (below).
    adds its microphone, and its camera with **simulcast**:
    ```ts
    sendEncodings: [
-     { rid: "f", maxBitrate: 900_000 },
-     { rid: "h", maxBitrate: 300_000, scaleResolutionDownBy: 2 },
-     { rid: "q", maxBitrate: 120_000, scaleResolutionDownBy: 4 }
+     { rid: "h", maxBitrate: 900_000 },
+     { rid: "l", maxBitrate: 150_000, scaleResolutionDownBy: 4, maxFramerate: 20 }
    ]
    ```
+   Two qualities, not three: a card is either the enlarged one or small, and
+   everything about them lives in `frontend-nextjs/src/lib/media.ts`.
 3. The client sends `{ t: "sfu", op: "publish", offer, tracks: [{ mid, kind }] }`.
 4. The room creates an SFU session (`/sessions/new`), then publishes the tracks
    (`/sessions/:id/tracks/new` with the offer), stores them in the registry,
@@ -97,7 +98,7 @@ tables' members reconnect their SFU sessions (below).
 ### Watching others
 
 1. For each other member's tracks, the client sends
-   `{ t: "sfu", op: "subscribe", tracks: [{ userId, name, layer }] }`.
+   `{ t: "sfu", op: "subscribe", tracks: [{ userId, kind, quality }] }`.
 2. The room calls `/sessions/:id/tracks/new` with the remote track names and
    `simulcast.preferredRid`, and relays the SFU's offer back.
 3. The client answers with `{ t: "sfu", op: "answer", answer }`; the room
@@ -105,19 +106,21 @@ tables' members reconnect their SFU sessions (below).
 
 ### Choosing quality
 
-| Tile state | Camera layer |
+| Card | Quality |
 |---|---|
-| Grid, 3 or fewer tiles | `h` |
-| Grid, 4 or more tiles | `q` |
-| Enlarged card, or active speaker | `f` |
-| Hidden (another card is enlarged) | Video track closed; audio kept |
+| Enlarged, on a screen wider than 767px | `high` |
+| Small, set aside, or anything on a phone | `low` |
 
-Changes go through `{ t: "sfu", op: "layer", userId, layer }`. The room calls
-`/tracks/update` with the new `preferredRid`; Cloudflare requests a keyframe on
-its own.
+Changes go through `{ t: "sfu", op: "quality", userId, kind, mid, quality }`.
+The room calls `/tracks/update` with the new `preferredRid`; Cloudflare requests
+a keyframe on its own.
 
-Screen shares are published as one track at up to 1.5 Mbps and 15 fps, with no
-simulcast: viewers see it enlarged or in the grid at full quality.
+Screen shares work the same way: captured at up to 720p and 10 fps, published in
+both qualities, and watched at `low` until someone enlarges them.
+
+Peer-to-peer calls have no SFU to choose for them, so the viewer asks with
+`signal: { want: { camera, screen } }` and the sender turns its own encoder down
+to the same two profiles.
 
 ### Leaving a table
 
@@ -136,12 +139,12 @@ a few seconds, the same as a network blip.
 
 | Measured (worst-case video) | Per hour |
 |---|---|
-| 6-person meeting, full-quality tiles | ~20 GB (~$1.00 after the free 1,000 GB) |
-| 6-person meeting, `q` layers except the enlarged tile | ~7 GB (~$0.36) |
+| 6-person meeting, everyone watched at `high` | ~20 GB (~$1.00 after the free 1,000 GB) |
+| 6-person meeting, `low` except one enlarged card | ~5 GB (~$0.25) |
 
 Guardrails:
-- The layer table above is the main lever: most tiles are small most of the
-  time.
+- The quality table above is the main lever: most cards are small most of the
+  time, and phones never ask for more.
 - Cameras at meeting tables default to off for new people, but remember each
   person's last choice.
 - `sfu_minutes` are recorded per room per day (`usage_daily`), so heavy usage by

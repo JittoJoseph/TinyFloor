@@ -11,7 +11,7 @@ GET wss://realtime.tinyfloor.com/lobby?ticket=...
 2. Check `Origin` is the site.
 3. Verify the ticket: HMAC signature, `exp`, and `room` equal to `:room` (or
    `lobby` for `/lobby`).
-4. For the lobby, ask the `LobbyRouter` for a copy (`lobby-1`, `lobby-2`, ...).
+4. For the lobby, ask `Presence` for a copy (`lobby-1`, `lobby-2`, ...).
 5. `env.ROOM.getByName(room).fetch(request)`, with the verified ticket claims
    passed in a header set by the Worker (the client can't set it; the Worker
    overwrites it).
@@ -33,7 +33,7 @@ One per workspace room, and one per lobby copy (`lobby-1`, `lobby-2`, ...).
 - Build the attachment from the ticket and a spawn tile, and
   `serializeAttachment` it.
 - Send `welcome` to the new socket; send `player_joined` to everyone else.
-- If this is a lobby copy, tell the `LobbyRouter` the new count.
+- Tell `Presence` the new headcount.
 
 ### Heartbeat without waking
 
@@ -113,12 +113,12 @@ the plain text `ping` / `pong`. Types are defined once in `shared-protocol/`.
 
 | Type | Fields | Handling |
 |---|---|---|
-| `move` | `x, y` | Tile must be walkable and at most 2 tiles from the last position; rate limited (below). Leaves any seat. Broadcast `moved` |
+| `move` | `x, y, d?` | The tile you're on, and while walking a heading (0 to 7, clockwise from east). Must be on the map; rate limited (below). Leaves any seat. Broadcast `moved` |
 | `walk_to` | `x, y` | Click-to-walk destination. Leaves any seat. Broadcast `walking` |
 | `sit` | `seat, x, y, meeting?` | Rejected with `sit_rejected` if taken. Broadcast `sat`. With `meeting`, join that table's meeting |
 | `stand` | `x, y` | Leave the seat and meeting. Broadcast `stood` |
 | `status` | `status` | `available`, `busy`, `away`, `in_call`. Broadcast `status` |
-| `chat` | `text` | Up to 500 characters. The room adds the sender. Broadcast `chat`. Not saved |
+| `chat` | `text` | Up to 500 characters. The room adds the sender. Broadcast `chat` to everyone else; the sender already has it. Not saved |
 | `board_sync` | | Reply `board_state` with all strokes |
 | `board_draw` | `id, color, size, erase, points` | Validated as today; appended to SQLite; broadcast `board_draw` |
 | `board_clear` | | Clears SQLite; broadcast `board_clear` |
@@ -133,7 +133,7 @@ the plain text `ping` / `pong`. Types are defined once in `shared-protocol/`.
 | `welcome` | `self` (spawn tile, character), `players` (everyone else: id, name, character, x, y, status, seat, guest), `music` |
 | `player_joined` | player |
 | `player_left` | `id` |
-| `moved` | `id, x, y` |
+| `moved` | `id, x, y, d?` |
 | `walking` | `id, x, y` |
 | `move_rejected` | `x, y` (where the server has you) |
 | `sat` / `stood` | `id, seat, x, y` / `id` |
@@ -156,7 +156,7 @@ Kept in the attachment, so they survive hibernation:
 
 | Message | Limit | Over the limit |
 |---|---|---|
-| `move` | 6 per second (walking is at most ~3.75 tiles/s) | Dropped; `move_rejected` once per second |
+| `move` | 12 per second (a straight walk sends about one a second) | Dropped quietly; `move_rejected` only for a tile off the map |
 | `walk_to`, `sit`, `stand`, `status` | 4 per second combined | Dropped |
 | `chat` | 5 per 10 seconds | Dropped with `error: slow_down` |
 | `board_draw` | 30 per second | Dropped |
@@ -179,18 +179,33 @@ cap what a single misbehaving client can cost.
 After a reconnect, the client's own position is taken from the server's
 `welcome`, and other players are rebuilt from it, which also covers deploys.
 
-## `LobbyRouter` Durable Object
+## Walking
+
+A walk is sent as a heading, not as every tile. While someone walks, everyone
+else keeps them walking that way at the same speed, stopping at walls, so:
+
+- Starting to walk, or turning, sends one `move` with `d`.
+- The walker also walks its own shadow copy, exactly as the others draw it, and
+  sends a correction only when the two are more than a tile apart.
+- Stopping sends one `move` without `d`, at the tile they stopped on.
+- A click-to-walk sends `walk_to` alone: the others find the same path.
+
+Positions are tile centres. Crossing a room costs about two messages instead of
+one per tile, which is what the room object is billed for.
+
+## `Presence` Durable Object
 
 A single object, `getByName("global")`.
 
-- Keeps one SQLite row per lobby copy: number, people, last updated.
-- `place()`: returns the lowest-numbered copy with fewer than 20 people. When
-  all are full, it opens the next number. It counts the new visitor straight
-  away, so a burst of arrivals spreads out before the rooms report back.
-- `report(copy, count)`: called by lobby copies on every join and leave.
-- Counts older than 10 minutes are treated as zero, in case a copy was evicted
-  without reporting.
-- It's woken only by joins, leaves and placements, so it is idle almost always.
+- Keeps one SQLite row per room: name, people, last updated.
+- `report(room, people)`: called by every room on each join and leave.
+- `counts(rooms)`: what the dashboard shows, so listing rooms doesn't wake a
+  Durable Object per room.
+- `place()`: the lowest-numbered lobby copy with fewer than 20 people; when all
+  are full it opens the next number. It counts the new visitor straight away, so
+  a burst of arrivals spreads out before the rooms report back.
+- Counts older than 10 minutes are ignored, in case a room was evicted without
+  reporting.
 
 ## Usage totals
 

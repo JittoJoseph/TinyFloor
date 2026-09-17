@@ -142,8 +142,9 @@ its own SQLite (`usage_pending`) and adds them to today's row when the room
 empties, or after an hour in a room that never does
 (`worker-realtime/src/usage.ts`). `tinyfloor-realtime` has its own D1 binding
 for this one table, so writes stay proportional to active rooms, not to people
-or messages. Person minutes are counted as each person leaves; meeting minutes
-as they stand up from a table.
+or messages. Person minutes are counted as each person leaves, meeting minutes
+as they stand up from a table, and the peak is taken on a departure too, so
+arriving costs no write at all.
 
 ### Migrations
 

@@ -392,9 +392,6 @@
     "select": "{name} 선택",
     "keyHint": "← → 방향키를 사용하세요"
   },
-  "toast": {
-    "dismiss": "닫기"
-  },
   "notFound": {
     "title": "이 방은 지도에 없어요.",
     "body": "찾으시는 페이지가 없거나 이동했어요.",

@@ -12,6 +12,8 @@ import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "./types";
 import { GUIDE_ID } from "./tutorial";
+import { statusColorValue } from "./status";
+import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import type { PlayerStatus } from "./types";
 
 interface RemotePlayerState {
@@ -36,26 +38,8 @@ const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
 const TAG_DEPTH = 100000;
-const VALID_SPRITES = [
-  "Adam",
-  "Alex",
-  "Amelia",
-  "Ash",
-  "Bob",
-  "Dan",
-  "Lucy",
-  "Molly",
-];
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
-
-const STATUS_COLORS: Record<string, number> = {
-  available: 0x34d399,
-  away: 0xfbbf24,
-  busy: 0xf87171,
-  in_call: 0xa78bfa,
-  offline: 0x9ca3af,
-};
 
 /**
  * Sitting with your back to us puts your head over the desk, where a name would
@@ -126,9 +110,7 @@ export class PlayerManager {
     if (this.players.has(id)) return;
 
     const pos = tileToPixel(tileX, tileY);
-    const safeSpriteKey = VALID_SPRITES.includes(spriteKey)
-      ? spriteKey
-      : "Adam";
+    const safeSpriteKey = isCharacter(spriteKey) ? spriteKey : DEFAULT_CHARACTER;
 
     const container = this.scene.add.container(pos.x, pos.y);
     const sprite = this.scene.add.sprite(0, 0, safeSpriteKey);
@@ -197,7 +179,7 @@ export class PlayerManager {
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
-    tag.setDot(STATUS_COLORS[status] ?? STATUS_COLORS.available);
+    tag.setDot(statusColorValue(status));
     this.scene.tweens.killTweensOf(tag.dot);
     tag.dot.setAlpha(1);
     if (status === "in_call") {

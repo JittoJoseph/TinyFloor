@@ -392,9 +392,6 @@
     "select": "Välj {name}",
     "keyHint": "Använd piltangenterna ← →"
   },
-  "toast": {
-    "dismiss": "Stäng"
-  },
   "notFound": {
     "title": "Det här rummet finns inte på kartan.",
     "body": "Sidan du letar efter finns inte eller har flyttats.",

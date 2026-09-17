@@ -392,9 +392,6 @@
     "select": "Vælg {name}",
     "keyHint": "Brug piletasterne ← →"
   },
-  "toast": {
-    "dismiss": "Luk"
-  },
   "notFound": {
     "title": "Dette rum er ikke på kortet.",
     "body": "Siden, du leder efter, findes ikke eller er flyttet.",

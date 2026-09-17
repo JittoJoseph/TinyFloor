@@ -4,7 +4,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Copy, Loader2, X } from "lucide-react";
 
-export const textClass = "font-body text-[var(--color-braun-text)]";
+const textClass = "font-body text-[var(--color-braun-text)]";
 
 export function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
   return (

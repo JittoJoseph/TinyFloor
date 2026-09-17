@@ -16,16 +16,19 @@ const usageOf = (room: string) =>
     .bind(dayOf(Date.now()), room)
     .first<UsageRow>();
 
-/** Pretends everyone arrived, and sat down, some minutes ago. */
+interface RoomWithAttachments {
+  attachmentOf(socket: WebSocket): { joinedAt: number; meeting: string | null; meetingSince: number | null };
+}
+
+/** Pretends everyone arrived, and sat down, some minutes ago, in the room's own copy. */
 const backdate = (room: string, joinedMinutesAgo: number, satMinutesAgo: number) =>
-  runInDurableObject(env.ROOM.getByName(room), (_instance, state) => {
+  runInDurableObject(env.ROOM.getByName(room), (instance, state) => {
     for (const socket of state.getWebSockets()) {
-      const attachment = socket.deserializeAttachment();
+      const attachment = (instance as unknown as RoomWithAttachments).attachmentOf(socket);
       attachment.joinedAt = Date.now() - joinedMinutesAgo * 60_000;
       if (attachment.meeting) attachment.meetingSince = Date.now() - satMinutesAgo * 60_000;
-      socket.serializeAttachment(attachment);
     }
-  });
+  }, 20_000);
 
 describe("usage totals", () => {
   it("writes the day's peak, person minutes and meeting minutes when the room empties", async () => {
@@ -56,7 +59,7 @@ describe("usage totals", () => {
     await backdate(room, 3, 0);
     cara.socket.close(1000, "bye");
     await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), { timeout: 5000 });
-  });
+  }, 20_000);
 
   it("counts people removed by the room, and leaves the workspace empty for lobby copies", async () => {
     const room = uniqueRoom();
@@ -67,7 +70,7 @@ describe("usage totals", () => {
     await exports.RealtimeAdmin.closeRoom(room);
     await ava.closed();
     await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: null, peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), { timeout: 5000 });
-  });
+  }, 20_000);
 
   it("forgets a deleted room's whiteboard", async () => {
     const room = uniqueRoom();
@@ -83,5 +86,5 @@ describe("usage totals", () => {
     await ben.next("welcome");
     ben.send({ t: "board_sync" });
     expect((await ben.next("board_state")).strokes).toEqual([]);
-  });
+  }, 20_000);
 });

@@ -392,9 +392,6 @@
     "select": "Selecionar {name}",
     "keyHint": "Use as setas ← →"
   },
-  "toast": {
-    "dismiss": "Dispensar"
-  },
   "notFound": {
     "title": "Esta sala não está no mapa.",
     "body": "A página que você procura não existe ou foi movida.",

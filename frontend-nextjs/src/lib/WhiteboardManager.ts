@@ -21,7 +21,9 @@ export interface BoardSnapshot {
 type Listener = () => void;
 type StrokeListener = (stroke: Stroke, from: number) => void;
 
-const FLUSH_MS = 60;
+/** Points closer together than this add nothing to see, so they are not sent. */
+const MIN_POINT_GAP = 2;
+const FLUSH_MS = 100;
 const EMPTY: BoardSnapshot = {
   open: false,
   ready: false,
@@ -147,7 +149,12 @@ class WhiteboardManager {
 
   extendStroke(x: number, y: number) {
     if (!this.live) return;
-    const from = this.live.points.length;
+    // A pen reports far more points than a line needs; near-identical ones are dropped.
+    const points = this.live.points;
+    const lastX = points[points.length - 2];
+    const lastY = points[points.length - 1];
+    if (Math.abs(x - lastX) < MIN_POINT_GAP && Math.abs(y - lastY) < MIN_POINT_GAP) return;
+    const from = points.length;
     this.live.points.push(x, y);
     this.pending.push(x, y);
     this.emitStroke(this.live, Math.max(0, from - 2));

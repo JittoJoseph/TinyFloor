@@ -392,9 +392,6 @@
     "select": "Wybierz: {name}",
     "keyHint": "Użyj strzałek ← →"
   },
-  "toast": {
-    "dismiss": "Zamknij"
-  },
   "notFound": {
     "title": "Tego pokoju nie ma na mapie.",
     "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",

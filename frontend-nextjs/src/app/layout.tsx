@@ -5,7 +5,6 @@ import { SITE_URL } from "@/lib/site";
 import { VT323, Nunito } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { ToastProvider } from "@/components/ui/Toast";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localeDirection } from "@/lib/i18n/routing";
@@ -91,7 +90,7 @@ export default async function RootLayout({
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
           <AuthProvider>
-            <ToastProvider>{children}</ToastProvider>
+            {children}
           </AuthProvider>
         </NextIntlClientProvider>
         <GoogleAnalytics />

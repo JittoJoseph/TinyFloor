@@ -392,9 +392,6 @@
     "select": "{name} auswählen",
     "keyHint": "Pfeiltasten ← → verwenden"
   },
-  "toast": {
-    "dismiss": "Schließen"
-  },
   "notFound": {
     "title": "Dieser Raum ist nicht auf der Karte.",
     "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",

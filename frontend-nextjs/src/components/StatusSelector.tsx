@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { statusColor } from "@/lib/status";
 import { Check, ChevronUp } from "lucide-react";
 import type { PlayerStatus } from "@/lib/types";
 
@@ -11,20 +12,14 @@ const CHOICES = ["available", "busy", "away"] as const;
 /** What the pill can show: a choice, or the call the room put you in. */
 type Shown = (typeof CHOICES)[number] | "in_call";
 
-const DOT: Record<Shown, string> = {
-  available: "bg-emerald-500",
-  busy: "bg-red-500",
-  away: "bg-amber-400",
-  in_call: "bg-violet-500",
-};
-
 const StatusDot: React.FC<{ status: Shown; className?: string }> = ({
   status,
   className = "",
 }) => (
   <span
     aria-hidden="true"
-    className={`inline-block w-2.5 h-2.5 shrink-0 rounded-full ring-2 ring-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)] ${DOT[status]} ${className}`}
+    className={`inline-block w-2.5 h-2.5 shrink-0 rounded-full ring-2 ring-white shadow-[0_0_0_1px_rgba(0,0,0,0.08)] ${className}`}
+    style={{ backgroundColor: statusColor(status) }}
   />
 );
 

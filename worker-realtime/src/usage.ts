@@ -22,20 +22,17 @@ export class Usage {
     sql.exec("CREATE TABLE IF NOT EXISTS usage_pending (id INTEGER PRIMARY KEY CHECK (id = 1), value TEXT NOT NULL)");
   }
 
-  /** Someone arrived and the room now holds `present` people. */
-  arrived(present: number, now: number): void {
-    const pending = this.read(now);
-    pending.peak = Math.max(pending.peak, present);
-    this.write(pending);
-  }
-
-  /** Someone left after `ms` in the room, of which `meetingMs` at a meeting table. */
-  stayed(ms: number, meetingMs: number, now: number): void {
+  /**
+   * Someone left after `ms` in the room, `meetingMs` of it at a meeting table,
+   * with `present` people in the room at the time. The peak is taken here
+   * rather than on arrival: the busiest the room ever was is a moment someone
+   * then left, and this way an arrival costs no write at all.
+   */
+  stayed(ms: number, meetingMs: number, present: number, now: number): void {
     const pending = this.read(now);
     pending.personMs += Math.max(0, ms);
-    // Someone who arrived before this code was deployed still counts as present.
-    if (ms > 0) pending.peak = Math.max(pending.peak, 1);
     pending.sfuMs += Math.max(0, meetingMs);
+    pending.peak = Math.max(pending.peak, present);
     this.write(pending);
   }
 

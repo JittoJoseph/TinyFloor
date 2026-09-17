@@ -392,9 +392,6 @@
     "select": "Seleziona {name}",
     "keyHint": "Usa le frecce ← →"
   },
-  "toast": {
-    "dismiss": "Chiudi"
-  },
   "notFound": {
     "title": "Questa stanza non è sulla mappa.",
     "body": "La pagina che cerchi non esiste o è stata spostata.",

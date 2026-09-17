@@ -1,4 +1,5 @@
 import { cleanName, memberCount, realtime, requireMember, type WorkspaceRole } from "./access";
+import { roomsOf } from "./rooms";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
@@ -63,22 +64,20 @@ export function workspaceRoutes(router: Router): void {
     .add("GET", "/v1/workspaces/:id/members", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireMember(env, params.id, user.id);
-      const { results } = await env.DB.prepare(
-        `SELECT u.id, u.display_name, u.character, m.role, m.joined_at
-         FROM memberships m JOIN users u ON u.id = m.user_id
-         WHERE m.workspace_id = ? ORDER BY m.joined_at`,
-      )
-        .bind(params.id)
-        .all<{ id: string; display_name: string; character: string; role: WorkspaceRole; joined_at: number }>();
-      return json({
-        members: results.map((row) => ({
-          id: row.id,
-          displayName: row.display_name,
-          character: row.character,
-          role: row.role,
-          joinedAt: row.joined_at,
-        })),
-      });
+      return json({ members: await membersOf(env, params.id) });
+    })
+
+    // Everything the dashboard shows about a workspace, in one request.
+    .add("GET", "/v1/workspaces/:id/overview", async ({ request, env, ctx, params }) => {
+      const user = await requireUser(env, request, ctx);
+      const membership = await requireMember(env, params.id, user.id);
+      const manages = membership.role === "owner" || membership.role === "admin";
+      const [members, rooms, invites] = await Promise.all([
+        membersOf(env, params.id),
+        roomsOf(env, params.id),
+        manages ? invitesOf(env, params.id) : [],
+      ]);
+      return json({ workspace: workspaceJson(membership, members.length), rooms, members, invites });
     })
 
     .add("PATCH", "/v1/workspaces/:id/members/:userId", async ({ request, env, ctx, params }) => {
@@ -164,22 +163,7 @@ export function workspaceRoutes(router: Router): void {
     .add("GET", "/v1/workspaces/:id/invites", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireMember(env, params.id, user.id, ["owner", "admin"]);
-      const { results } = await env.DB.prepare(
-        `SELECT id, email, role, created_at, expires_at FROM invites
-         WHERE workspace_id = ? AND accepted_at IS NULL AND revoked_at IS NULL AND expires_at > ?
-         ORDER BY created_at DESC`,
-      )
-        .bind(params.id, Date.now())
-        .all<{ id: string; email: string | null; role: string; created_at: number; expires_at: number }>();
-      return json({
-        invites: results.map((row) => ({
-          id: row.id,
-          email: row.email,
-          role: row.role,
-          createdAt: row.created_at,
-          expiresAt: row.expires_at,
-        })),
-      });
+      return json({ invites: await invitesOf(env, params.id) });
     })
 
     .add("DELETE", "/v1/workspaces/:id/invites/:inviteId", async ({ request, env, ctx, params }) => {
@@ -256,6 +240,42 @@ async function findInvite(env: Env, token: string): Promise<InviteRow> {
     .first<InviteRow>();
   if (!invite) throw new HttpError(404, "invite_invalid", "This invite has expired or been used");
   return invite;
+}
+
+/** Invites that can still be used. */
+async function invitesOf(env: Env, workspaceId: string) {
+  const { results } = await env.DB.prepare(
+    `SELECT id, email, role, created_at, expires_at FROM invites
+     WHERE workspace_id = ? AND accepted_at IS NULL AND revoked_at IS NULL AND expires_at > ?
+     ORDER BY created_at DESC`,
+  )
+    .bind(workspaceId, Date.now())
+    .all<{ id: string; email: string | null; role: string; created_at: number; expires_at: number }>();
+  return results.map((row) => ({
+    id: row.id,
+    email: row.email,
+    role: row.role,
+    createdAt: row.created_at,
+    expiresAt: row.expires_at,
+  }));
+}
+
+/** Everyone in a workspace, oldest member first. */
+async function membersOf(env: Env, workspaceId: string) {
+  const { results } = await env.DB.prepare(
+    `SELECT u.id, u.display_name, u.character, m.role, m.joined_at
+     FROM memberships m JOIN users u ON u.id = m.user_id
+     WHERE m.workspace_id = ? ORDER BY m.joined_at`,
+  )
+    .bind(workspaceId)
+    .all<{ id: string; display_name: string; character: string; role: WorkspaceRole; joined_at: number }>();
+  return results.map((row) => ({
+    id: row.id,
+    displayName: row.display_name,
+    character: row.character,
+    role: row.role,
+    joinedAt: row.joined_at,
+  }));
 }
 
 function workspaceJson(membership: Awaited<ReturnType<typeof requireMember>>, members: number) {

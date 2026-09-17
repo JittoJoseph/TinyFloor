@@ -26,7 +26,7 @@ import {
 import { Board, parseStroke } from "./board";
 import { LobbyReporter } from "./discord";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
-import { lobbyCopyNumber } from "./lobby-router";
+import { lobbyCopyNumber } from "./presence";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 import { Usage } from "./usage";
 
@@ -409,7 +409,8 @@ export class Room extends DurableObject<Env> {
     const trimmed = typeof text === "string" ? text.trim().slice(0, CHAT_MAX_LENGTH) : "";
     if (!trimmed) return;
 
-    this.broadcast({ t: "chat", id: me.userId, name: me.name, text: trimmed, at: now });
+    // Not back to the sender: their own message is already in their panel.
+    this.broadcast({ t: "chat", id: me.userId, name: me.name, text: trimmed, at: now }, socket);
     this.reportToDiscord(me.room, { kind: "chat", name: me.name, text: trimmed });
   }
 
@@ -764,15 +765,15 @@ export class Room extends DurableObject<Env> {
   }
 
   /**
-   * After people arrive or leave: usage totals are written when due, and lobby
-   * copies tell the router how many people they hold.
+   * After people arrive or leave: usage totals are written when due, and the
+   * room tells Presence how many people it holds, so nothing has to wake it up
+   * to ask later.
    */
   private async headcountChanged(room: string): Promise<void> {
     const now = Date.now();
     const present = this.present().length;
     if (this.usage.due(present, now)) this.ctx.waitUntil(this.usage.flush(room, present, now));
-    if (lobbyCopyNumber(room) === null) return;
-    await this.env.LOBBY.getByName("global").report(room, present);
+    await this.env.PRESENCE.getByName("global").report(room, present);
   }
 
   /** Counts this person's time in the room, once, as their socket ends. */

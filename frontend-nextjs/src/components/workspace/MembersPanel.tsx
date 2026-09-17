@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { MoreHorizontal, UserPlus } from "lucide-react";
 import { PixelAvatar } from "@/components/PixelAvatar";
@@ -12,12 +12,15 @@ import { useErrorMessage } from "./useErrorMessage";
 export function MembersPanel({
   workspace,
   members,
+  invites,
   currentUserId,
   onChanged,
   onLeft,
 }: {
   workspace: Workspace;
   members: Member[];
+  /** Invites that can still be used; empty unless you manage the workspace. */
+  invites: Invite[];
   currentUserId: string;
   onChanged: () => Promise<void>;
   onLeft: () => void;
@@ -26,16 +29,8 @@ export function MembersPanel({
   const format = useFormatter();
   const explain = useErrorMessage();
   const manages = workspace.role === "owner" || workspace.role === "admin";
-  const [invites, setInvites] = useState<Invite[]>([]);
   const [inviting, setInviting] = useState(false);
   const [error, setError] = useState("");
-
-  const loadInvites = useCallback(() => {
-    if (!manages) return;
-    api.invites(workspace.id).then(({ invites: pending }) => setInvites(pending), () => setInvites([]));
-  }, [manages, workspace.id]);
-
-  useEffect(() => loadInvites(), [loadInvites]);
 
   const full = workspace.members >= workspace.memberLimit;
 
@@ -103,7 +98,7 @@ export function MembersPanel({
                 <Button
                   variant="ghost"
                   className="h-8 px-3 text-red-600"
-                  onClick={() => act(() => api.revokeInvite(workspace.id, invite.id), loadInvites)}
+                  onClick={() => act(() => api.revokeInvite(workspace.id, invite.id))}
                 >
                   {t("revoke")}
                 </Button>
@@ -120,7 +115,7 @@ export function MembersPanel({
         workspace={workspace}
         onClose={() => {
           setInviting(false);
-          loadInvites();
+          void onChanged();
         }}
       />
     </Card>

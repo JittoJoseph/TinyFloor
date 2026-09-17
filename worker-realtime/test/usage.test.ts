@@ -28,7 +28,7 @@ const backdate = (room: string, joinedMinutesAgo: number, satMinutesAgo: number)
       attachment.joinedAt = Date.now() - joinedMinutesAgo * 60_000;
       if (attachment.meeting) attachment.meetingSince = Date.now() - satMinutesAgo * 60_000;
     }
-  }, 20_000);
+  });
 
 describe("usage totals", () => {
   it("writes the day's peak, person minutes and meeting minutes when the room empties", async () => {

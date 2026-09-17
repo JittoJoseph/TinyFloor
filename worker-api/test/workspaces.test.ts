@@ -34,6 +34,26 @@ describe("workspaces", () => {
     expect(me.body.workspaces).toEqual([expect.objectContaining({ name: "Design Team", role: "owner" })]);
   });
 
+  it("hands the dashboard the workspace, its rooms and its members at once", async () => {
+    const owner = await makeUser("Olive");
+    const workspaceId = await workspaceOf(owner, "Overview");
+    await call(owner, "POST", `/v1/workspaces/${workspaceId}/rooms`, { name: "Design Review" });
+    const stranger = await makeUser("Sam");
+
+    const { status, body } = await call<{
+      workspace: { name: string; members: number; role: string };
+      rooms: { name: string; people: number }[];
+      members: { displayName: string }[];
+    }>(owner, "GET", `/v1/workspaces/${workspaceId}/overview`);
+
+    expect(status).toBe(200);
+    expect(body.workspace).toMatchObject({ name: "Overview", members: 1, role: "owner" });
+    expect(body.rooms).toEqual([expect.objectContaining({ name: "Design Review", people: 0 })]);
+    expect(body.members.map((member) => member.displayName)).toEqual(["Olive"]);
+
+    expect((await call(stranger, "GET", `/v1/workspaces/${workspaceId}/overview`)).status).toBe(404);
+  });
+
   it("is for accounts, not guests", async () => {
     const guest = await makeUser("Gus", { guest: true });
     expect((await call(guest, "POST", "/v1/workspaces", { name: "Nope" })).status).toBe(403);

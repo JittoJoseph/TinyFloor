@@ -199,6 +199,38 @@ export class NavGrid {
   }
 }
 
+/**
+ * The eight headings a `move` carries, clockwise from east. Everyone walks a
+ * heading the same way, so the sender can predict what the others are drawing
+ * and only correct them when it drifts.
+ */
+const HEADINGS: Vec[] = Array.from({ length: 8 }, (_, index) => ({
+  x: Math.round(Math.cos((index * Math.PI) / 4) * 1e6) / 1e6,
+  y: Math.round(Math.sin((index * Math.PI) / 4) * 1e6) / 1e6,
+}));
+
+/** The heading nearest a direction of travel, or null when there is none. */
+export function headingOf(dx: number, dy: number): number | null {
+  if (!dx && !dy) return null;
+  return (Math.round(Math.atan2(dy, dx) / (Math.PI / 4)) + 8) % 8;
+}
+
+export function headingVector(heading: number): Vec {
+  return HEADINGS[heading];
+}
+
+/** Walks `pos` along a heading, stopping at a wall. False when it couldn't move. */
+export function advanceHeading(pos: Vec, heading: number, step: number, nav: NavGrid): boolean {
+  const dir = HEADINGS[heading];
+  const x = pos.x + dir.x * step;
+  const y = pos.y + dir.y * step;
+  const tile = pixelToTile(x, y);
+  if (!nav.isWalkable(tile.tileX, tile.tileY)) return false;
+  pos.x = x;
+  pos.y = y;
+  return true;
+}
+
 export function advanceAlongPath(pos: Vec, path: Vec[], step: number) {
   let remaining = step;
   while (remaining > 0 && path.length) {

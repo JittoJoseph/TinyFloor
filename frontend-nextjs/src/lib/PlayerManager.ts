@@ -6,7 +6,7 @@ import {
   Direction,
   directionFromVector,
 } from "./AnimationManager";
-import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector } from "./Navigation";
 import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
@@ -18,7 +18,8 @@ interface RemotePlayerState {
   path: Vec[];
   direction: Direction;
   isMoving: boolean;
-  streaming: boolean;
+  /** Set while they walk: they keep going this way until their next move. */
+  heading: number | null;
   status: PlayerStatus;
   guest: boolean;
   lastDirection?: Direction;
@@ -28,14 +29,9 @@ interface RemotePlayerState {
 }
 
 const SNAP_THRESHOLD = TILE_SIZE * 6;
-/**
- * Streamed moves are queued and walked through in order, so someone walking
- * never stops between tiles. When the queue grows (a burst after a slow
- * connection), they walk a little faster to catch up; past this many points the
- * oldest are skipped.
- */
-const STREAM_QUEUE = 5;
-const EASE_IN_FLOOR = 0.3;
+/** Walking back to a correction looks like a stumble, so small ones are ignored. */
+const IGNORE_CORRECTION = TILE_SIZE / 4;
+/** Behind the tile they say they're on, they walk a little faster to catch up. */
 const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
@@ -164,7 +160,7 @@ export class PlayerManager {
       path: [],
       direction: "down",
       isMoving: false,
-      streaming: false,
+      heading: null,
       status,
       guest,
     });
@@ -216,34 +212,33 @@ export class PlayerManager {
     }
   }
 
-  /** A streamed move: the tile, and where in it when the sender says so. */
-  updatePlayerPosition(id: string, tileX: number, tileY: number, offsetX?: number, offsetY?: number) {
+  /**
+   * Where they are, and which way they're walking. Between moves they keep
+   * walking that way, so a straight walk arrives as one message. A correction
+   * they have already walked past is ignored rather than stumbled back to.
+   */
+  updatePlayerPosition(id: string, tileX: number, tileY: number, heading?: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
-    const wasStreaming = state.streaming;
-    state.streaming = true;
+    const point = tileToPixel(tileX, tileY);
+    const away = Phaser.Math.Distance.Between(container.x, container.y, point.x, point.y);
+    const sameWay = heading !== undefined && heading === state.heading;
+    state.heading = heading ?? null;
+    state.path.length = 0;
 
-    const point =
-      offsetX !== undefined && offsetY !== undefined
-        ? { x: tileX * TILE_SIZE + offsetX, y: tileY * TILE_SIZE + offsetY }
-        : tileToPixel(tileX, tileY);
-    const gap = Phaser.Math.Distance.Between(
-      container.x,
-      container.y,
-      point.x,
-      point.y,
-    );
-
-    if (gap > SNAP_THRESHOLD) {
-      state.path.length = 0;
+    if (away > SNAP_THRESHOLD) {
       container.setPosition(point.x, point.y);
-    } else {
-      if (!wasStreaming) state.path.length = 0;
-      state.path.push(point);
-      if (state.path.length > STREAM_QUEUE) state.path.splice(0, state.path.length - STREAM_QUEUE);
+      return;
     }
+    if (sameWay && away < TILE_SIZE) {
+      const dir = headingVector(heading!);
+      const ahead = (container.x - point.x) * dir.x + (container.y - point.y) * dir.y;
+      const sideways = Math.abs((container.x - point.x) * dir.y - (container.y - point.y) * dir.x);
+      if (ahead > 0 && sideways < IGNORE_CORRECTION) return;
+    }
+    state.path.push(point);
   }
 
   walkPlayerTo(id: string, tileX: number, tileY: number) {
@@ -251,7 +246,7 @@ export class PlayerManager {
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
-    state.streaming = false;
+    state.heading = null;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
     if (!state.path.length) {
       const point = tileToPixel(tileX, tileY);
@@ -270,7 +265,7 @@ export class PlayerManager {
 
     this.scene.tweens.killTweensOf(container);
     state.seat = pose;
-    state.streaming = false;
+    state.heading = null;
     state.onArrive = undefined;
     state.path = [];
 
@@ -297,6 +292,7 @@ export class PlayerManager {
 
     this.scene.tweens.killTweensOf(container);
     state.seat = undefined;
+    state.heading = null;
     state.onArrive = undefined;
     state.path = [];
     state.direction = pose.direction;
@@ -384,31 +380,31 @@ export class PlayerManager {
       if (!container) return;
 
       if (state.path.length) {
+        // Behind where they said they are, they walk a little faster to catch up.
         const target = state.path[0];
         const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
-        // Behind: walk a little faster. On the last known point: ease in instead of
-        // stopping dead, so they are still moving when the next point arrives.
-        const catchup = !state.streaming
-          ? 1
-          : state.path.length === 1
-            ? Phaser.Math.Clamp(remaining / TILE_SIZE, EASE_IN_FLOOR, MAX_CATCHUP)
-            : Phaser.Math.Clamp(1 + 0.25 * (state.path.length - 1), 1, MAX_CATCHUP);
+        const catchup = state.heading === null ? 1 : Phaser.Math.Clamp(remaining / TILE_SIZE, 1, MAX_CATCHUP);
         const pos = this.scratch;
         pos.x = container.x;
         pos.y = container.y;
         advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
-        const dx = pos.x - container.x;
-        const dy = pos.y - container.y;
-        container.setPosition(pos.x, pos.y);
-        container.setDepth(depthForY(pos.y));
-        state.direction = directionFromVector(dx, dy, state.direction);
-        state.isMoving = state.path.length > 0 || dx !== 0 || dy !== 0;
+        this.place(container, state, pos);
 
         if (!state.path.length && state.onArrive) {
           const arrive = state.onArrive;
           state.onArrive = undefined;
           arrive();
           return;
+        }
+      } else if (state.heading !== null) {
+        // Walking on the way they were last heading, until they say otherwise.
+        const pos = this.scratch;
+        pos.x = container.x;
+        pos.y = container.y;
+        if (advanceHeading(pos, state.heading, (MOVEMENT_SPEED * delta) / 1000, this.nav)) {
+          this.place(container, state, pos);
+        } else {
+          state.isMoving = false;
         }
       } else if (state.seat) {
         return;
@@ -426,6 +422,16 @@ export class PlayerManager {
       state.lastDirection = state.direction;
       this.animate(container, state.isMoving ? "run" : "idle", state.direction);
     });
+  }
+
+  /** Moves someone to a new spot, facing the way they went. */
+  private place(container: Phaser.GameObjects.Container, state: RemotePlayerState, pos: Vec) {
+    const dx = pos.x - container.x;
+    const dy = pos.y - container.y;
+    container.setPosition(pos.x, pos.y);
+    container.setDepth(depthForY(pos.y));
+    state.direction = directionFromVector(dx, dy, state.direction);
+    state.isMoving = dx !== 0 || dy !== 0 || state.path.length > 0;
   }
 
   removePlayer(id: string) {

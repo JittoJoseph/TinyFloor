@@ -102,12 +102,12 @@ describe("room messages", () => {
     await settle();
     expect(ava.messages.some((message) => message.t === "moved")).toBe(false);
 
-    // Where in the tile they stopped is passed on when it makes sense, and dropped when it doesn't.
+    // A heading is passed on when it is one, and dropped when it isn't.
     ben.messages.length = 0;
-    ava.send({ t: "move", x: 12, y: 10, ox: 5, oy: 30 });
-    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 12, y: 10, ox: 5, oy: 30 });
+    ava.send({ t: "move", x: 12, y: 10, d: 3 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 12, y: 10, d: 3 });
     ben.messages.length = 0;
-    ava.send({ t: "move", x: 13, y: 10, ox: 99, oy: 3 });
+    ava.send({ t: "move", x: 13, y: 10, d: 9 });
     expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 13, y: 10 });
   });
 

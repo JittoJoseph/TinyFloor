@@ -15,20 +15,26 @@ MongoDB collection `users` only:
 | MongoDB | D1 `users` |
 |---|---|
 | `_id` | `id` |
-| `email` (lowercased) | `email` |
-| | `email_verified = 0` until they sign in with Google |
-| `displayName`, else `username` | `display_name` |
-| `avatarPreferences.characterName` | `character` |
+| `email` (trimmed, lowercased) | `email` |
+| `passwordHash` (bcrypt `$2a$10$`) | `password_hash`, upgraded to cost 11 on first sign-in |
+| | `email_verified = 0` |
+| `displayName`, else `username`, cleaned like any display name | `display_name` |
+| `avatarPreferences.characterName`, else `Adam` | `character` |
 | `createdAt`, `lastActiveAt` | `created_at`, `last_active_at` |
 | | `is_guest = 0` |
 
-Only accounts with an email and `isGuest = false`. **Not carried over:**
-`passwordHash`, `status`, `createdRooms`, `joinedRooms`, `recentCollaborators`,
-and all guests.
+Only accounts with an email, a bcrypt password and `isGuest = false`. When two
+accounts share an email in different case, the one used most recently is kept.
+**Not carried over:** `username`, `status`, `createdRooms`, `joinedRooms`,
+`recentCollaborators`, and all guests.
 
-Carried-over accounts own no workspace. The first time they sign in with Google
-using the same email, the account is linked (`03-auth-and-accounts.md`) and they
-land on "Create your office".
+Carried-over accounts own no workspace. They sign in with their email and old
+password and land on "Create your workspace".
+
+**Accounts without an email.** The Java backend signed people in by username,
+and email was optional. Those accounts can't sign in on the new platform and
+are left out (reason `no_email` in the report). In the rehearsal on 2026-09-17
+that was 9 of 18 accounts.
 
 ## Tooling
 
@@ -43,15 +49,20 @@ land on "Create your office".
    - A report: accounts in, accounts written, and every skipped record with the
      reason (no email, guest, duplicate email).
 3. **Import:** `wrangler d1 execute tinyfloor-db --remote --file users.sql`
-4. **Verify:** D1 count matches the report; three spot-checked accounts sign in
-   with Google and keep their name and character.
+4. **Verify:** `verify.mjs` checks every written account is in D1 with the same
+   id, password hash, name, character and dates; an email already taken by a
+   new account is reported and left alone.
 
 ## Rehearsal
 
-Before the merge, the same scripts import a copy of production accounts into a
-local D1 (`wrangler d1 execute tinyfloor-db --local`). The new frontend runs
-against it locally, and a carried-over account signs in and is linked. Repeat
-until the report is clean.
+Before the merge, the same scripts import production accounts into the local D1
+(`import.mjs --local`), and a carried-over Java hash signs in through the local
+API. Repeat until the report is clean.
+
+**2026-09-17:** two fresh runs in a row, both clean (18 in, 9 written, 9
+`no_email`). A synthetic account with a Java `$2a$10$` hash signed in with its
+old password through the local API, kept its name and character, and its hash
+was upgraded to cost 11.
 
 ## Cutover runbook
 
@@ -68,13 +79,14 @@ until the report is clean.
    Every page answers 503 with "Back in a few minutes". Open any page with
    `?bypass=<the secret>` to get through yourself.
 2. Stop the Java backend on Railway, so no new accounts are created.
-3. Export users, transform, import into `tinyfloor-db`, verify.
+3. In `tools/migrate-users-to-d1`: `export.mjs`, `transform.mjs`, read the
+   report, `import.mjs --remote`, `verify.mjs --remote`.
 4. Merge the pull request. Workers Builds deploys the new frontend, which points
    at `api.tinyfloor.com` and `realtime.tinyfloor.com`.
 5. Once the build has deployed, check the site through the bypass, then delete
    `MAINTENANCE` (and `MAINTENANCE_BYPASS`).
-6. Smoke test on production: Google sign-in as a carried-over account, create an
-   office and a room, invite a second account, enter the lobby as a guest, a
+6. Smoke test on production: sign in as a carried-over account, create a
+   workspace and a room, invite a second account, enter the lobby as a guest, a
    proximity call, a meeting-table call, whiteboard, jukebox.
 
 **If something is wrong**

@@ -27,7 +27,6 @@ tinyfloor (frontend)
 tinyfloor-api
   DB -> D1 database tinyfloor-db
   ROOM -> Durable Object namespace Room, script_name tinyfloor-realtime
-  LOBBY -> Durable Object namespace LobbyRouter, script_name tinyfloor-realtime
 
 tinyfloor-realtime
   ROOM -> Durable Object class Room (defined here)

@@ -7,7 +7,9 @@
   "workers_dev": false,
   "routes": [{ "pattern": "api.tinyfloor.com", "custom_domain": true }],
   "vars": {
-    "SITE_ORIGINS": "https://www.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3000"
+    "SITE_ORIGINS": "https://www.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3000",
+    "COOKIE_DOMAIN": ".tinyfloor.com",
+    "REALTIME_URL": "wss://realtime.tinyfloor.com"
   },
   "d1_databases": [
     {

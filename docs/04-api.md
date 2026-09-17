@@ -80,10 +80,12 @@ dashboard fetches counts when it opens, not on a timer.
 |---|---|---|---|
 | POST | `/rooms/:id/ticket` | Member | `{ ticket, url }` |
 | POST | `/guest-links/:token/ticket` | Session | `{ ticket, url }` |
-| POST | `/lobby/ticket` | Session (Turnstile for guests) | `{ ticket, url, copy }` |
+| POST | `/lobby/ticket` | Session, guest or account | `{ ticket, url }` |
 
-`url` is `wss://realtime.tinyfloor.com/rooms/<room>`. The lobby endpoint asks the
-`LobbyRouter` object which copy to use.
+`url` is `wss://realtime.tinyfloor.com/rooms/<room>`, or
+`wss://realtime.tinyfloor.com/lobby` for the lobby. Lobby tickets name the room
+`lobby`, and the realtime Worker picks the copy, so the API never talks to the
+`LobbyRouter`.
 
 ### Calls
 

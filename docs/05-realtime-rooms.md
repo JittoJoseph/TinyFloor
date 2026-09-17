@@ -4,16 +4,20 @@
 
 ```
 GET wss://realtime.tinyfloor.com/rooms/:room?ticket=...
+GET wss://realtime.tinyfloor.com/lobby?ticket=...
 ```
 
 1. Reject anything that isn't a WebSocket upgrade.
 2. Check `Origin` is the site.
-3. Verify the ticket: HMAC signature, `exp`, and `room` equal to `:room`.
-4. `env.ROOM.getByName(room).fetch(request)`, with the verified ticket claims
+3. Verify the ticket: HMAC signature, `exp`, and `room` equal to `:room` (or
+   `lobby` for `/lobby`).
+4. For the lobby, ask the `LobbyRouter` for a copy (`lobby-1`, `lobby-2`, ...).
+5. `env.ROOM.getByName(room).fetch(request)`, with the verified ticket claims
    passed in a header set by the Worker (the client can't set it; the Worker
    overwrites it).
 
-No D1, no API call, no Cloudflare API call. One Worker request per connection.
+No D1, no API call, no Cloudflare API call. One Worker request per connection,
+plus one router call for the lobby.
 
 ## `Room` Durable Object
 
@@ -179,10 +183,10 @@ After a reconnect, the client's own position is taken from the server's
 
 A single object, `getByName("global")`.
 
-- Holds `{ copy: string, count: number, updatedAt: number }` for each lobby copy
-  in memory, mirrored to its SQLite.
+- Keeps one SQLite row per lobby copy: number, people, last updated.
 - `place()`: returns the lowest-numbered copy with fewer than 20 people. When
-  all are full, it opens the next number.
+  all are full, it opens the next number. It counts the new visitor straight
+  away, so a burst of arrivals spreads out before the rooms report back.
 - `report(copy, count)`: called by lobby copies on every join and leave.
 - Counts older than 10 minutes are treated as zero, in case a copy was evicted
   without reporting.

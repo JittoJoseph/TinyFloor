@@ -46,24 +46,28 @@ to rooms. API and site deploys never drop anyone from a room.
 
 ## Hostnames
 
-| Environment | Site | API | Realtime |
+| | Site | API | Realtime |
 |---|---|---|---|
-| Production | `www.tinyfloor.com` | `api.tinyfloor.com` | `realtime.tinyfloor.com` |
-| Staging | `staging.tinyfloor.com` | `staging-api.tinyfloor.com` | `staging-realtime.tinyfloor.com` |
+| Live | `www.tinyfloor.com` | `api.tinyfloor.com` | `realtime.tinyfloor.com` |
+| Preview of the branch | `preview.tinyfloor.com` | same live API | same live realtime |
 | Local | `localhost:3000` | `localhost:8787` | `localhost:8788` |
 
-Staging uses subdomains of `tinyfloor.com` rather than `workers.dev` URLs,
+The preview uses a subdomain of `tinyfloor.com` rather than a `workers.dev` URL,
 because the session cookie is scoped to `.tinyfloor.com`. On `workers.dev` the
 site and API would be different sites and the cookie would not be sent.
 
 ## Environments
 
-Each `wrangler.jsonc` defines a top-level production configuration and an
-`env.staging` block. Staging has its own D1 database (`tinyfloor-db-staging`),
-its own Durable Object namespaces (automatic per environment), its own secrets,
-and its own Turnstile and Google OAuth settings.
+**One live environment for the new backend.** `tinyfloor-api`,
+`tinyfloor-realtime` and `tinyfloor-db` are created and deployed during
+development on their real hostnames. Until the merge, only
+`preview.tinyfloor.com` and local development use them, so they double as the
+testing environment. There is no separate staging copy for now; one can be added
+after launch with an `env.staging` block in each `wrangler.jsonc`.
 
-Staging is used to rehearse the data migration and cutover before production.
+**The preview site** is a second Worker, `tinyfloor-preview`, built from
+`feature/cloudflare-platform` with the same `frontend-nextjs/` code. It exists
+only until the merge, then it's deleted.
 
 ## Local development
 
@@ -88,15 +92,15 @@ Staging is used to rehearse the data migration and cutover before production.
 Cloudflare Workers Builds, one connection per Worker, each with its folder as
 the root directory:
 
-| Worker | Root | Build | Deploy |
+| Worker | Root | Branch | Deploy |
 |---|---|---|---|
-| `tinyfloor` | `frontend-nextjs` | `pnpm run build:worker` | `pnpm run deploy:worker` |
-| `tinyfloor-api` | `worker-api` | `pnpm run build` | `pnpm run deploy` (runs `wrangler d1 migrations apply` first) |
-| `tinyfloor-realtime` | `worker-realtime` | `pnpm run build` | `pnpm run deploy` |
+| `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` (unchanged) |
+| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run deploy:worker` with the preview's name and variables |
+| `tinyfloor-api` | `worker-api` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` (applies D1 migrations first) |
+| `tinyfloor-realtime` | `worker-realtime` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` |
 
-While the branch is being built, the new Workers deploy from
-`feature/cloudflare-platform` to staging only. Production for the new Workers is
-set up during cutover (see `09-data-migration-and-cutover.md`).
+Deploying the backend Workers from the branch is safe: the live site doesn't use
+them until the merge.
 
 Build watch paths are set per Worker so that a change in one folder does not
 rebuild the others.

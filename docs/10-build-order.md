@@ -1,28 +1,30 @@
 # 10. Build order
 
-Each milestone is finished when its checks pass on staging, not locally. Later
-milestones assume the earlier ones.
+Each milestone is finished when its checks pass against the live backend Workers
+(and, from M5, on `preview.tinyfloor.com`), not only locally. Later milestones
+assume the earlier ones.
 
 ## M0. Scaffold
 
 - `worker-api/`, `worker-realtime/`, `shared-protocol/` created, with
-  `wrangler.jsonc` (production and staging), TypeScript, tests.
-- Staging D1, custom domains and Workers Builds connections.
+  `wrangler.jsonc`, TypeScript and tests.
+- `tinyfloor-db` created; custom domains `api.tinyfloor.com` and
+  `realtime.tinyfloor.com`; `TICKET_SECRET` set on both Workers.
 - A health route on both Workers.
 
-**Done when:** both Workers deploy to staging from the branch, and local
+**Done when:** both Workers are deployed and answer on their hostnames, and local
 `wrangler dev` runs both with working service bindings and local D1.
 
 ## M1. Room core
 
 - `Room` object: tickets verified, accept, `welcome`, `player_joined`,
   `player_left`, `move`, `walk_to`, `status`, `chat`, heartbeat auto-response,
-  rate limits, close codes.
-- A temporary ticket issuer on the API (fixed test users) so rooms can be tested
-  before auth exists.
+  stale-socket check, rate limits, close codes.
+- A temporary ticket issuer on the API, only enabled locally, so rooms can be
+  tested before auth exists.
 
 **Done when:**
-- Two browsers see each other move and chat.
+- Two clients see each other move and chat through `realtime.tinyfloor.com`.
 - An idle room hibernates: with the load test page, no duration is billed while
   nobody moves (checked in the Durable Objects metrics), and heartbeats don't
   wake it.
@@ -30,11 +32,11 @@ milestones assume the earlier ones.
 
 ## M2. Room features
 
-- Seats and meeting membership, whiteboard (SQLite), jukebox, lobby router and
-  lobby copies.
+- Seats and meeting membership, whiteboard (SQLite), jukebox, lobby router,
+  lobby copies, lobby-only Discord reports.
 
-**Done when:** everything the current room does, except calls, works on staging
-with 3 players, and the 21st lobby visitor lands in `lobby-2`.
+**Done when:** everything the current room does, except calls, works with 3
+clients, and the 21st lobby visitor lands in `lobby-2`.
 
 ## M3. Accounts
 
@@ -42,9 +44,8 @@ with 3 players, and the 21st lobby visitor lands in `lobby-2`.
   `/session`, `/me`.
 - Real tickets replace the temporary issuer.
 
-**Done when:** sign-in, guest entry and sign-out work across `staging` and
-`staging-api` with the cookie, and no auth request exceeds 10ms of CPU in
-Workers Logs.
+**Done when:** sign-in, guest entry and sign-out work from localhost and from
+the preview site, and no auth request exceeds 10ms of CPU in Workers Logs.
 
 ## M4. Workspaces
 
@@ -57,59 +58,60 @@ link removes the guest.
 
 ## M5. Frontend on the new platform
 
+- `tinyfloor-preview` Worker on `preview.tinyfloor.com`, built from the branch.
 - New API client, auth page, dashboard, onboarding, invite and guest-link
   pages, lobby page, game client on the new protocol and reconnects.
 - `/rooms` and `/people` removed with redirects; sitemap and `llms.txt`
   updated.
 
-**Done when:** `staging.tinyfloor.com` runs end to end without the Java
-backend, in all 18 languages, on desktop and phone.
+**Done when:** `preview.tinyfloor.com` runs end to end without the Java backend,
+in all 18 languages, on desktop and phone.
 
 ## M6. Proximity calls
 
-- ICE servers endpoint, TURN in `CallManager`, bitrate caps, signalling over
-  `call` messages.
+- TURN key, ICE servers endpoint, TURN in `CallManager`, bitrate caps,
+  signalling over `call` messages.
 
 **Done when:** a call connects normally, and also with `iceTransportPolicy:
 "relay"` forced, which proves TURN works for firewalled users.
 
 ## M7. Meeting tables on the SFU
 
-- `SfuMeeting`, the room's SFU broker, simulcast layers, tile-driven layer
-  choice, screen share, leaving and reconnecting.
+- SFU app, `SfuMeeting`, the room's SFU broker, simulcast layers, tile-driven
+  layer choice, screen share, leaving and reconnecting.
 
-**Done when:** a 3-person meeting with a screen share runs on staging, the load
-test confirms `q` layers for grid tiles and `f` for the enlarged one, and
-standing up stops that person's tracks.
+**Done when:** a 3-person meeting with a screen share runs on the preview site,
+the load test confirms `q` layers for grid tiles and `f` for the enlarged one,
+and standing up stops that person's tracks.
 
 ## M8. Operations
 
-- Daily cron cleanup, usage totals, Discord summaries, Workers Logs, rate limits
-  on sensitive endpoints.
+- Daily cron cleanup, usage totals, Workers Logs, rate limits on sensitive
+  endpoints.
+- Marketing copy updated for private rooms and the lobby (18 languages).
 - A maintenance switch: a variable on the `tinyfloor` Worker that makes the
   site's middleware show a "back in a few minutes" page, for the cutover. It
-  has to be added to master's frontend too, since that's what is live on the
-  day.
-- Marketing copy updated for private rooms and the lobby (18 languages).
+  has to reach master's frontend too, since that's what is live on the day.
 
-**Done when:** a week of staging use leaves expired rows cleaned up and
+**Done when:** a week of preview use leaves expired rows cleaned up and
 `usage_daily` filled in.
 
-## M9. Migration rehearsal
+## M9. Account migration rehearsal
 
-- `tools/migrate-mongo-to-d1/`, run against a copy of production data into
-  staging, with the checks from `09-data-migration-and-cutover.md`.
+- `tools/migrate-users-to-d1/`, run against a copy of production accounts into
+  a local D1, with the checks from `09-data-migration-and-cutover.md`.
 
 **Done when:** the rehearsal runs clean twice in a row.
 
 ## M10. Cutover
 
-- The runbook in `09-data-migration-and-cutover.md`.
+- The runbook in `09-data-migration-and-cutover.md`: import accounts, merge.
 
-**Done when:** production runs on Cloudflare only, and Railway is off.
+**Done when:** the live site runs on Cloudflare only, Railway is off, and
+`tinyfloor-preview` is deleted.
 
 ## Billing
 
-Not required for cutover. It can follow as its own milestone once the platform
-is live: provider choice, checkout, webhook, plan limits enforced (invites
-already refuse past the member limit), and pricing copy.
+Not required for cutover. It follows as its own milestone once the platform is
+live: provider choice, checkout, webhook, plan limits enforced (invites already
+refuse past the member limit), and pricing copy.

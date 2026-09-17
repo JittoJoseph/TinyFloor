@@ -124,14 +124,9 @@ One Cron Trigger, `0 3 * * *` (daily), runs the retention jobs from
 ## Discord webhook
 
 Today every chat message and every join, with a location from `ipwho.is`, goes
-to Discord. In private workspaces that would leak private conversations and
-names, so:
-
-- **Never sent:** chat, and names from workspace rooms.
-- **Sent (proposal):** new workspace created, new paying subscription, and a
-  daily summary (lobby visitors, active rooms), using `request.cf.country`
-  instead of an external lookup.
-- Sent with `ctx.waitUntil`, so it never slows a response.
+to Discord. The API sends nothing to Discord. Only the **public lobby** reports,
+from `tinyfloor-realtime`, so abuse there can be spotted; see
+`05-realtime-rooms.md`. Nothing from workspace rooms is ever sent.
 
 ## What replaces each Java endpoint
 

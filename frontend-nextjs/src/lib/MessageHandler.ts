@@ -8,8 +8,7 @@ import { jukebox } from "./JukeboxManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
-
-const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Ash", "Bob", "Dan", "Lucy", "Molly"];
+import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -116,7 +115,7 @@ export class MessageHandler {
 
     const spawn = tileToPixel(self.x, self.y);
     this.player.setPosition(spawn.x, spawn.y);
-    const spriteName = VALID_SPRITES.includes(self.character) ? self.character : "Adam";
+    const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
     this.player.setData("spriteName", spriteName);
     this.player.play(this.animationManager.getAnimationKey(spriteName, "idle", "down"));
 

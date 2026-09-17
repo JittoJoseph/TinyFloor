@@ -392,9 +392,6 @@
     "select": "选择 {name}",
     "keyHint": "使用 ← → 方向键"
   },
-  "toast": {
-    "dismiss": "关闭"
-  },
   "notFound": {
     "title": "这个房间不在地图上。",
     "body": "你要找的页面不存在或已被移动。",

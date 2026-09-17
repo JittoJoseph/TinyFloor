@@ -392,9 +392,6 @@
     "select": "Select {name}",
     "keyHint": "Use ← → arrow keys"
   },
-  "toast": {
-    "dismiss": "Dismiss"
-  },
   "notFound": {
     "title": "This room is not on the map.",
     "body": "The page you were looking for does not exist or has moved.",

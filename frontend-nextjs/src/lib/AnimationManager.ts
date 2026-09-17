@@ -34,7 +34,7 @@ const PER_DIRECTION = 6;
 const DIRECTION_ORDER: CardinalDirection[] = ["right", "up", "left", "down"];
 const SIT_ORDER: CardinalDirection[] = ["down", "left", "right", "up"];
 
-export const FRAME_SIZE = 32;
+const FRAME_SIZE = 32;
 
 export function directionFromVector(
   x: number,
@@ -47,7 +47,7 @@ export function directionFromVector(
   return (vertical || horizontal || fallback) as Direction;
 }
 
-export function toCardinal(direction: Direction): CardinalDirection {
+function toCardinal(direction: Direction): CardinalDirection {
   const mapping: Record<Direction, CardinalDirection> = {
     right: "right",
     "up-right": "right",

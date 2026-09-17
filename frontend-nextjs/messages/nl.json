@@ -392,9 +392,6 @@
     "select": "{name} selecteren",
     "keyHint": "Gebruik de pijltjestoetsen ← →"
   },
-  "toast": {
-    "dismiss": "Sluiten"
-  },
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",

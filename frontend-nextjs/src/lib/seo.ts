@@ -42,7 +42,7 @@ export function localePath(locale: string, path: string): string {
 }
 
 /** hreflang alternates for every locale plus x-default. */
-export function languageAlternates(path: string) {
+function languageAlternates(path: string) {
   return {
     ...Object.fromEntries(localeCodes.map((code) => [code, localePath(code, path)])),
     "x-default": localePath(defaultLocale, path),

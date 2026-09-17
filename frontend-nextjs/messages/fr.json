@@ -392,9 +392,6 @@
     "select": "Sélectionner {name}",
     "keyHint": "Utilisez les flèches ← →"
   },
-  "toast": {
-    "dismiss": "Fermer"
-  },
   "notFound": {
     "title": "Cette salle n’est pas sur la carte.",
     "body": "La page que vous cherchez n’existe pas ou a été déplacée.",

@@ -392,9 +392,6 @@
     "select": "Velg {name}",
     "keyHint": "Bruk piltastene ← →"
   },
-  "toast": {
-    "dismiss": "Lukk"
-  },
   "notFound": {
     "title": "Dette rommet finnes ikke på kartet.",
     "body": "Siden du leter etter finnes ikke eller er flyttet.",

@@ -392,9 +392,6 @@
     "select": "Valitse {name}",
     "keyHint": "Käytä nuolinäppäimiä ← →"
   },
-  "toast": {
-    "dismiss": "Sulje"
-  },
   "notFound": {
     "title": "Tätä huonetta ei ole kartalla.",
     "body": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",

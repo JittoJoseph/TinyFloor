@@ -32,6 +32,8 @@ import { Usage } from "./usage";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
+/** How often, at most, the room looks for sockets that stopped answering. */
+const SWEEP_EVERY_MS = 10_000;
 const MEETING_ID = /^[a-z0-9-]{1,32}$/;
 
 /** Per-socket limits. Kept in the attachment, so they survive hibernation. */
@@ -87,6 +89,14 @@ interface Attachment {
  * without waking the room.
  */
 export class Room extends DurableObject<Env> {
+  /**
+   * Attachments as they are right now. Reading one back from the socket costs a
+   * deserialize, and a broadcast reads every socket's, so they are kept here
+   * and only written back when something worth surviving hibernation changes.
+   */
+  private readonly attachments = new WeakMap<WebSocket, Attachment>();
+  /** When the room last looked for sockets that went quiet, in memory only. */
+  private sweptAt = 0;
   private board!: Board;
   private readonly reporter: LobbyReporter;
   private readonly sfuApi: SfuApi;
@@ -110,15 +120,30 @@ export class Room extends DurableObject<Env> {
     return this.present().length;
   }
 
+  private attachmentOf(socket: WebSocket): Attachment {
+    let attachment = this.attachments.get(socket);
+    if (!attachment) {
+      attachment = socket.deserializeAttachment() as Attachment;
+      this.attachments.set(socket, attachment);
+    }
+    return attachment;
+  }
+
+  /** Keeps an attachment through hibernation. Only state that must outlive it needs this. */
+  private remember(socket: WebSocket, attachment: Attachment): void {
+    this.attachments.set(socket, attachment);
+    socket.serializeAttachment(attachment);
+  }
+
   /** The room was deleted or archived: everyone leaves. */
   async disconnectAll(): Promise<void> {
     const sockets = this.present();
     for (const socket of sockets) {
-      const attachment = attachmentOf(socket);
+      const attachment = this.attachmentOf(socket);
       this.leaveMeeting(attachment);
       this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed", attachment);
     }
-    if (sockets.length) await this.headcountChanged(attachmentOf(sockets[0]).room);
+    if (sockets.length) await this.headcountChanged(this.attachmentOf(sockets[0]).room);
   }
 
   /** The room was deleted for good: everyone leaves and its storage goes. */
@@ -133,7 +158,7 @@ export class Room extends DurableObject<Env> {
   async disconnectLink(linkId: string): Promise<void> {
     let room: string | null = null;
     for (const socket of this.present()) {
-      const attachment = attachmentOf(socket);
+      const attachment = this.attachmentOf(socket);
       if (attachment.link !== linkId) continue;
       this.depart(attachment);
       this.closeQuietly(socket, CloseCode.AccessRevoked, "access_revoked", attachment);
@@ -155,7 +180,7 @@ export class Room extends DurableObject<Env> {
     // One connection per person: the older one goes, without a player_left,
     // because the new one arrives as player_joined for the same id.
     for (const previous of this.ctx.getWebSockets(userTag(ticket.sub))) {
-      const old = attachmentOf(previous);
+      const old = this.attachmentOf(previous);
       if (!old.leaving) this.leaveMeeting(old);
       this.closeQuietly(previous, CloseCode.Replaced, "replaced");
     }
@@ -195,11 +220,10 @@ export class Room extends DurableObject<Env> {
       chats: 0,
     };
 
-    const others = this.present().map((socket) => playerState(attachmentOf(socket)));
+    const others = this.present().map((socket) => playerState(this.attachmentOf(socket)));
 
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
-    server.serializeAttachment(attachment);
-    this.usage.arrived(others.length + 1, now);
+    this.remember(server, attachment);
 
     send(server, { t: "welcome", self: playerState(attachment), players: others, music: this.music() });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
@@ -216,7 +240,7 @@ export class Room extends DurableObject<Env> {
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer): Promise<void> {
     const now = Date.now();
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     if (me.leaving) return;
 
     me.lastSeenAt = now;
@@ -227,7 +251,7 @@ export class Room extends DurableObject<Env> {
 
     const message = parse(raw);
     if (!message) {
-      socket.serializeAttachment(me);
+      this.remember(socket, me);
       send(socket, { t: "error", code: "bad_message" });
       return;
     }
@@ -270,23 +294,23 @@ export class Room extends DurableObject<Env> {
         // SFU calls wait on the network, and other messages from this person may
         // be handled meanwhile, so save first and let the handler re-read.
         me.sfuOps++;
-        socket.serializeAttachment(me);
+        this.remember(socket, me);
         if (me.sfuOps <= LIMITS.sfuOpsPerSecond) await this.sfu(socket, message as unknown as Record<string, unknown>);
         return;
       default:
         send(socket, { t: "error", code: "bad_message" });
     }
-    socket.serializeAttachment(me);
+    this.remember(socket, me);
 
     if (this.dropStaleSockets(now)) await this.headcountChanged(me.room);
   }
 
   async webSocketClose(socket: WebSocket, code: number): Promise<void> {
-    if (this.farewell(socket, code)) await this.headcountChanged(attachmentOf(socket).room);
+    if (this.farewell(socket, code)) await this.headcountChanged(this.attachmentOf(socket).room);
   }
 
   async webSocketError(socket: WebSocket): Promise<void> {
-    if (this.farewell(socket, 1011)) await this.headcountChanged(attachmentOf(socket).room);
+    if (this.farewell(socket, 1011)) await this.headcountChanged(this.attachmentOf(socket).room);
   }
 
   // Handlers below change `me`; webSocketMessage saves it once they return.
@@ -326,7 +350,7 @@ export class Room extends DurableObject<Env> {
     if (meeting !== undefined && (typeof meeting !== "string" || !MEETING_ID.test(meeting))) return;
 
     const taken = this.present().some((other) => {
-      const them = attachmentOf(other);
+      const them = this.attachmentOf(other);
       return them.userId !== me.userId && them.seat === seat;
     });
     if (taken) {
@@ -341,13 +365,13 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "sat", id: me.userId, seat, x, y }, socket);
 
     if (meeting) {
-      const members = this.meetingMembers(meeting).map((other) => memberOf(attachmentOf(other)));
+      const members = this.meetingMembers(meeting).map((other) => memberOf(this.attachmentOf(other)));
       me.meeting = meeting;
       me.meetingSince = Date.now();
       send(socket, { t: "meeting_joined", meeting, members });
       this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
       for (const other of this.meetingMembers(meeting)) {
-        const them = attachmentOf(other);
+        const them = this.attachmentOf(other);
         if (them.userId === me.userId) continue;
         if (them.media?.tracks.length) {
           sendSfu(socket, { op: "tracks", userId: them.userId, kinds: them.media.tracks.map((track) => track.kind) });
@@ -451,7 +475,7 @@ export class Room extends DurableObject<Env> {
     me.flags = null;
     if (me.meetingSince !== null) {
       const now = Date.now();
-      this.usage.stayed(0, now - me.meetingSince, now);
+      this.usage.stayed(0, now - me.meetingSince, 0, now);
       me.meetingSince = null;
     }
     if (me.media) {
@@ -470,7 +494,7 @@ export class Room extends DurableObject<Env> {
   private relayCall(socket: WebSocket, me: Attachment, message: Record<string, unknown>): void {
     const { kind, to } = message;
     if (!CALL_KINDS.includes(kind as never) || typeof to !== "string") return;
-    const targets = this.ctx.getWebSockets(userTag(to)).filter((target) => !attachmentOf(target).leaving);
+    const targets = this.ctx.getWebSockets(userTag(to)).filter((target) => !this.attachmentOf(target).leaving);
     if (!targets.length) {
       if (kind !== "end") send(socket, { t: "call", kind: "end", from: to, fromName: "" });
       return;
@@ -482,7 +506,7 @@ export class Room extends DurableObject<Env> {
       const id = (data as { id?: unknown } | undefined)?.id;
       const added = typeof id === "string" ? this.ctx.getWebSockets(userTag(id))[0] : undefined;
       if (!added) return;
-      data = { ...(data as object), id, name: attachmentOf(added).name };
+      data = { ...(data as object), id, name: this.attachmentOf(added).name };
     }
     const relayed = JSON.stringify({ t: "call", kind, from: me.userId, fromName: me.name, data });
     for (const target of targets) sendText(target, relayed);
@@ -490,7 +514,7 @@ export class Room extends DurableObject<Env> {
 
   /** Meeting-table media through the SFU. The room decides who may publish and watch what. */
   private async sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     const meeting = me.meeting;
     if (!meeting) return sendSfu(socket, { op: "error", code: "not_in_meeting" });
 
@@ -512,10 +536,10 @@ export class Room extends DurableObject<Env> {
           return await this.sfuApi.renegotiate(me.media.sessionId, message.sdp);
         case "media": {
           const flags = { mic: message.mic === true, camera: message.camera === true, screen: message.screen === true };
-          const fresh = attachmentOf(socket);
+          const fresh = this.attachmentOf(socket);
           if (fresh.meeting !== meeting) return;
           fresh.flags = flags;
-          socket.serializeAttachment(fresh);
+          this.remember(socket, fresh);
           return this.broadcastToMeeting(meeting, { t: "sfu", op: "media", userId: fresh.userId, ...flags }, fresh.userId);
         }
         case "quality":
@@ -547,7 +571,7 @@ export class Room extends DurableObject<Env> {
       message.sdp as string,
     );
 
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     if (me.meeting !== meeting || !me.media) {
       // They left the table while the SFU was answering.
       await this.sfuApi.closeTracks(sessionId, published.map((track) => track.mid));
@@ -555,7 +579,7 @@ export class Room extends DurableObject<Env> {
     }
     const kinds = published.map((track) => track.kind);
     me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind)).concat(published);
-    socket.serializeAttachment(me);
+    this.remember(socket, me);
 
     sendSfu(socket, { op: "published", sdp: result.sessionDescription?.sdp ?? "" });
     this.broadcastToMeeting(meeting, { t: "sfu", op: "tracks", userId: me.userId, kinds }, me.userId);
@@ -565,12 +589,12 @@ export class Room extends DurableObject<Env> {
     const kinds = Array.isArray(message.kinds)
       ? (message.kinds.filter((kind) => MEDIA_KINDS.includes(kind)) as MediaKind[])
       : [];
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     if (!me.media || !kinds.length) return sendSfu(socket, { op: "error", code: "bad_request" });
 
     const closing = me.media.tracks.filter((track) => kinds.includes(track.kind));
     me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind));
-    socket.serializeAttachment(me);
+    this.remember(socket, me);
     this.broadcastToMeeting(
       meeting,
       { t: "sfu", op: "untracks", userId: me.userId, kinds: closing.map((track) => track.kind) },
@@ -583,7 +607,7 @@ export class Room extends DurableObject<Env> {
     const wanted = Array.isArray(message.tracks)
       ? (message.tracks as { userId?: unknown; kind?: unknown; quality?: unknown }[]).slice(0, 30)
       : [];
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     const found: { userId: string; kind: MediaKind; track: SfuTrack }[] = [];
     for (const want of wanted) {
       if (typeof want.userId !== "string" || want.userId === me.userId) continue;
@@ -617,7 +641,7 @@ export class Room extends DurableObject<Env> {
 
   /** Watching someone's camera or screen in the other quality. */
   private async sfuQuality(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     const publisher = typeof message.userId === "string" ? this.publisher(meeting, message.userId) : null;
     const kind = message.kind as VideoKind;
     const valid =
@@ -644,32 +668,32 @@ export class Room extends DurableObject<Env> {
 
   /** The person's SFU session, created on first use and kept while they stay at the table. */
   private async sessionFor(socket: WebSocket): Promise<string> {
-    const existing = attachmentOf(socket).media;
+    const existing = this.attachmentOf(socket).media;
     if (existing) return existing.sessionId;
     const sessionId = await this.sfuApi.newSession();
-    const me = attachmentOf(socket);
+    const me = this.attachmentOf(socket);
     if (me.media) return me.media.sessionId; // Another message made one meanwhile.
     me.media = { sessionId, tracks: [] };
-    socket.serializeAttachment(me);
+    this.remember(socket, me);
     return sessionId;
   }
 
   private publisher(meeting: string, userId: string): Attachment | null {
     for (const socket of this.meetingMembers(meeting)) {
-      const attachment = attachmentOf(socket);
+      const attachment = this.attachmentOf(socket);
       if (attachment.userId === userId) return attachment;
     }
     return null;
   }
 
   private meetingMembers(meeting: string): WebSocket[] {
-    return this.present().filter((socket) => attachmentOf(socket).meeting === meeting);
+    return this.present().filter((socket) => this.attachmentOf(socket).meeting === meeting);
   }
 
   private broadcastToMeeting(meeting: string, message: ServerMessage, exceptUserId: string): void {
     const text = JSON.stringify(message);
     for (const socket of this.meetingMembers(meeting)) {
-      if (attachmentOf(socket).userId !== exceptUserId) sendText(socket, text);
+      if (this.attachmentOf(socket).userId !== exceptUserId) sendText(socket, text);
     }
   }
 
@@ -700,9 +724,11 @@ export class Room extends DurableObject<Env> {
    * seconds is let go. No timer is involved. Returns whether anyone was dropped.
    */
   private dropStaleSockets(now: number): boolean {
+    if (now - this.sweptAt < SWEEP_EVERY_MS) return false;
+    this.sweptAt = now;
     let dropped = false;
     for (const socket of this.ctx.getWebSockets()) {
-      const attachment = attachmentOf(socket);
+      const attachment = this.attachmentOf(socket);
       if (attachment.leaving) continue;
       const heartbeat = this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0;
       if (now - Math.max(heartbeat, attachment.lastSeenAt) > HEARTBEAT_TIMEOUT_MS) {
@@ -716,7 +742,7 @@ export class Room extends DurableObject<Env> {
 
   /** Returns whether this was a departure the room hadn't already announced. */
   private farewell(socket: WebSocket, code: number): boolean {
-    const attachment = attachmentOf(socket);
+    const attachment = this.attachmentOf(socket);
     try {
       socket.close(validCloseCode(code), "closing");
     } catch {
@@ -727,7 +753,7 @@ export class Room extends DurableObject<Env> {
     this.depart(attachment);
     this.endStay(attachment);
     attachment.leaving = true;
-    socket.serializeAttachment(attachment);
+    this.remember(socket, attachment);
     return true;
   }
 
@@ -752,7 +778,9 @@ export class Room extends DurableObject<Env> {
   /** Counts this person's time in the room, once, as their socket ends. */
   private endStay(attachment: Attachment): void {
     const now = Date.now();
-    this.usage.stayed(now - attachment.joinedAt, 0, now);
+    // Everyone else still here, plus the one leaving: how full the room was.
+    const others = this.present().filter((socket) => this.attachmentOf(socket).userId !== attachment.userId);
+    this.usage.stayed(now - attachment.joinedAt, 0, others.length + 1, now);
   }
 
   /** Only lobby copies report to Discord; workspace rooms never do. */
@@ -765,10 +793,10 @@ export class Room extends DurableObject<Env> {
     if (request) this.ctx.waitUntil(request);
   }
 
-  private closeQuietly(socket: WebSocket, code: number, reason: string, attachment = attachmentOf(socket)): void {
+  private closeQuietly(socket: WebSocket, code: number, reason: string, attachment = this.attachmentOf(socket)): void {
     if (!attachment.leaving) this.endStay(attachment);
     attachment.leaving = true;
-    socket.serializeAttachment(attachment);
+    this.remember(socket, attachment);
     try {
       socket.close(code, reason);
     } catch {
@@ -777,14 +805,14 @@ export class Room extends DurableObject<Env> {
   }
 
   private present(): WebSocket[] {
-    return this.ctx.getWebSockets().filter((socket) => !attachmentOf(socket).leaving);
+    return this.ctx.getWebSockets().filter((socket) => !this.attachmentOf(socket).leaving);
   }
 
   private broadcast(message: ServerMessage, except?: WebSocket, exceptUserId?: string): void {
     const text = JSON.stringify(message);
     for (const socket of this.present()) {
       if (socket === except) continue;
-      if (exceptUserId !== undefined && attachmentOf(socket).userId === exceptUserId) continue;
+      if (exceptUserId !== undefined && this.attachmentOf(socket).userId === exceptUserId) continue;
       sendText(socket, text);
     }
   }
@@ -792,10 +820,6 @@ export class Room extends DurableObject<Env> {
 
 function userTag(userId: string): string {
   return `user:${userId}`;
-}
-
-function attachmentOf(socket: WebSocket): Attachment {
-  return socket.deserializeAttachment() as Attachment;
 }
 
 function playerState(attachment: Attachment): PlayerState {

@@ -20,18 +20,12 @@ export const IdentityFields: React.FC<{
   onName: (value: string) => void;
   character: string;
   onCharacter: (value: string) => void;
-  password?: string;
-  onPassword?: (value: string) => void;
-  needsPassword?: boolean;
   autoFocus?: boolean;
 }> = ({
   name,
   onName,
   character,
   onCharacter,
-  password = "",
-  onPassword,
-  needsPassword = false,
   autoFocus = false,
 }) => {
   const t = useTranslations("entry");
@@ -50,19 +44,6 @@ export const IdentityFields: React.FC<{
           autoFocus={autoFocus}
         />
       </Field>
-
-      {needsPassword && onPassword && (
-        <Field label={t("roomPassword")} htmlFor="identity-password">
-          <input
-            id="identity-password"
-            type="password"
-            value={password}
-            onChange={(event) => onPassword(event.target.value)}
-            placeholder={t("passwordPlaceholder")}
-            className={inputClass}
-          />
-        </Field>
-      )}
 
       <Field label={t("character")}>
         <CharacterPicker value={character} onChange={onCharacter} />

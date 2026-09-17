@@ -24,22 +24,31 @@ function DashboardContent() {
   const { user, isLoading } = useAuth();
   const [workspaces, setWorkspaces] = useState<WorkspaceSummary[] | null>(null);
 
-  const load = useCallback(async () => {
-    try {
-      setWorkspaces((await api.me()).workspaces);
-    } catch {
-      setWorkspaces([]);
-    }
-  }, []);
+  const load = useCallback(
+    () =>
+      api.me().then(
+        ({ workspaces: mine }) => setWorkspaces(mine),
+        () => setWorkspaces([]),
+      ),
+    [],
+  );
 
+  const signedIn = !isLoading && !!user && !user.guest;
   useEffect(() => {
     if (isLoading) return;
-    if (!user || user.guest) {
+    if (!signedIn) {
       router.replace(`/auth?${new URLSearchParams({ redirect: "/dashboard" })}`);
       return;
     }
-    void load();
-  }, [isLoading, user, router, load]);
+    let cancelled = false;
+    api.me().then(
+      ({ workspaces: mine }) => !cancelled && setWorkspaces(mine),
+      () => !cancelled && setWorkspaces([]),
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoading, signedIn, router]);
 
   if (!user || user.guest || workspaces === null) return <Loading />;
 

@@ -42,8 +42,22 @@ export function WorkspaceView({
   }, [workspaceId]);
 
   useEffect(() => {
-    refresh().catch(() => onGone());
-  }, [refresh, onGone]);
+    let cancelled = false;
+    Promise.all([api.workspace(workspaceId), api.rooms(workspaceId), api.members(workspaceId)]).then(
+      ([details, roomList, memberList]) => {
+        if (cancelled) return;
+        setWorkspace(details.workspace);
+        setRooms(roomList.rooms);
+        setMembers(memberList.members);
+      },
+      () => !cancelled && onGone(),
+    );
+    return () => {
+      cancelled = true;
+    };
+    // onGone changes identity every render of the page; only a new workspace reloads.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [workspaceId]);
 
   // Room headcounts are fetched when the dashboard opens and when you come back to the tab.
   useEffect(() => {

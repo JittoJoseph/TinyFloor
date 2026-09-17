@@ -4,20 +4,19 @@
     "description": "TinyFloor er et gratis virtuelt kontor i nettleseren. Gå rundt i en pikselkunst-etasje med teamet ditt og start en videosamtale bare ved å stille deg ved siden av noen.",
     "ogAlt": "Et TinyFloor-rom: en 16-biters kontoretasje med skrivebord og kolleger",
     "keywords": "virtuelt kontor, fjernarbeid, romlig chat, samarbeid på nett, virtuell arbeidsplass, metaverse-kontor, nærhetschat, nærhetsvideochat, virtuelt kontorfellesskap, videosamtaler i nettleseren",
-    "createRoomTitle": "Opprett et rom",
-    "createRoomDescription": "Åpne et virtuelt kontorrom på TinyFloor. Gi det et navn, legg til et passord hvis du vil, og del én lenke med teamet ditt.",
     "joinTitle": "Bli med i rommet",
     "joinRoomTitle": "Bli med i {room}",
     "joinRoomDescription": "Du er invitert til {room} på TinyFloor, et virtuelt kontor du går rundt i. Åpne lenken, velg en figur og gå inn.",
-    "roomsTitle": "Utforsk rom",
-    "roomsDescription": "Bla gjennom aktive virtuelle rom og bli med i offentlige arbeidsområder på TinyFloor.",
-    "peopleTitle": "Personer",
-    "peopleDescription": "Møt folkene som er innom TinyFloor-rommene.",
     "authTitle": "Logg inn",
     "authDescription": "Logg inn på TinyFloor for å beholde navnet ditt, figuren din og en liste over rommene dine.",
     "dashboardTitle": "Oversikt",
     "roomTitle": "Aktivt rom",
-    "notFoundTitle": "Fant ikke siden"
+    "notFoundTitle": "Fant ikke siden",
+    "lobbyTitle": "Lobbyen",
+    "lobbyDescription": "Gå inn i TinyFloors gratis, åpne lobby som gjest. Velg en figur, møt folk og prøv videosamtaler på nært hold i nettleseren.",
+    "inviteTitle": "Bli med i {workspace} på TinyFloor",
+    "inviteFallbackTitle": "Du er invitert til TinyFloor",
+    "inviteDescription": "{name} har invitert deg til {workspace} på TinyFloor, et virtuelt kontor du kan gå rundt i."
   },
   "common": {
     "loading": "Laster inn...",
@@ -29,15 +28,14 @@
     "you": "Deg",
     "justNow": "akkurat nå",
     "unknown": "Ukjent",
-    "rooms": "Rom",
-    "people": "Personer",
     "peopleCount": "{count, plural, one {# person} other {# personer}}",
-    "createRoom": "Opprett et rom",
-    "browseRooms": "Bla gjennom rom",
-    "searchRooms": "Søk etter rom...",
     "dashboard": "Oversikt",
     "questions": "Spørsmål",
-    "signOut": "Logg ut"
+    "signOut": "Logg ut",
+    "visitLobby": "Besøk lobbyen",
+    "lobby": "Lobby",
+    "signIn": "Logg inn",
+    "rooms": "Rom"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -223,153 +221,53 @@
     }
   },
   "entry": {
-    "allRooms": "Alle rom",
     "yourName": "Navnet ditt",
     "namePlaceholder": "Hva skal folk kalle deg?",
-    "roomPassword": "Rompassord",
-    "passwordPlaceholder": "Skriv inn passordet",
     "character": "Figur",
-    "copyInvite": "Kopier invitasjonslenke",
     "inviteCopied": "Invitasjonslenke kopiert",
     "openingDoor": "Åpner døren",
-    "walkIn": "Gå inn"
-  },
-  "createRoom": {
-    "title": "Åpne et rom.",
-    "roomName": "Romnavn",
-    "roomNamePlaceholder": "Designteamet, Studio, Fredagspils",
-    "advanced": "Avansert",
-    "passwordPlaceholder": "Legg til passord (valgfritt)",
-    "passwordHint": "Alle rom vises i katalogen. Et passord holder døren lukket for alle som ikke har det.",
-    "submit": "Opprett rommet",
-    "submitting": "Gjør klar",
-    "createError": "Kunne ikke opprette rommet. Prøv igjen.",
-    "openError": "Kunne ikke åpne rommet"
+    "walkIn": "Gå inn",
+    "guestNote": "Du går inn som gjest. <link>Logg inn</link> for å bruke kontoen din.",
+    "guestKeep": "Du er gjest. <link>Opprett en konto</link> for å beholde navn og figur.",
+    "copyInvite": "Kopier invitasjonslenke"
   },
   "join": {
     "unavailableTitle": "Den døren åpner seg ikke.",
-    "unavailable": "Dette rommet er ikke lenger tilgjengelig.",
-    "full": "Rommet er fullt akkurat nå",
-    "needsPassword": "Rommet krever passord",
-    "error": "Kunne ikke bli med i rommet",
-    "roomFull": "Rommet er fullt",
-    "guestNote": "Du blir med som gjest. <link>Logg inn</link> for å beholde navnet og figuren din."
-  },
-  "directory": {
-    "roomsTitle": "Rom i det <em>virtuelle kontoret</em>",
-    "peopleTitle": "TinyFloor-<em>fellesskapet</em>",
-    "roomsSubtitle": "Bla gjennom rom eller møt folkene der inne",
-    "peopleSubtitle": "Møt dem som former TinyFloor",
-    "updating": "Oppdaterer...",
-    "roomsLive": "{count, plural, one {# rom live} other {# rom live}}",
-    "search": "Søk",
-    "loadingSpaces": "Laster inn rom",
-    "noRoomsFound": "Fant ingen rom.",
-    "noRoomsAvailable": "Ingen tilgjengelige rom.",
-    "noRoomsFoundBody": "Vi fant ingen rom som passer søket ditt. Prøv å justere det.",
-    "noRoomsAvailableBody": "Det er stille her. Bli den første som starter et nytt arbeidsområde!",
-    "presence": {
-      "ONLINE": "Pålogget",
-      "IDLE": "Inaktivt",
-      "OFFLINE": "Frakoblet"
-    },
-    "lastActive": "Aktivt {time}",
-    "full": "Fullt",
-    "enter": "Gå inn",
-    "gatheringPeople": "Samler personer...",
-    "searchPeople": "Søk etter personer...",
-    "yourProfile": "Profilen din",
-    "loadingPeople": "Laster inn personer",
-    "noPeople": "Fant ingen personer.",
-    "noPeopleBody": "Prøv et annet søk eller kom innom igjen snart."
+    "linkUnavailable": "Denne gjestelenken er utløpt eller slått av. Be den som sendte den om en ny.",
+    "visitLobby": "Besøk lobbyen",
+    "invitedAsGuest": "Du er invitert inn som gjest."
   },
   "userMenu": {
     "manageProfile": "Administrer profil",
     "visitingAsGuest": "Besøker som gjest",
     "keepYourName": "Behold navn og figur"
   },
-  "dashboard": {
-    "subtitle": "Administrer profilen og rommene dine",
-    "activeCount": "{count} aktive",
-    "userNotFound": "Fant ikke brukeren",
-    "backToRooms": "Tilbake til rommene",
-    "nameUpdated": "Visningsnavnet er oppdatert!",
-    "profileFailed": "Kunne ikke oppdatere profilen",
-    "characterUpdated": "Figuren er oppdatert!",
-    "characterFailed": "Kunne ikke oppdatere figuren",
-    "linkCopied": "Lenken er kopiert!",
-    "profile": {
-      "changeCharacter": "Bytt figur",
-      "editName": "Rediger visningsnavn",
-      "saveName": "Lagre visningsnavn",
-      "displayName": "Visningsnavn",
-      "guestBadge": "GJEST",
-      "copyLink": "Kopier profillenke",
-      "share": "Del profil",
-      "shareTitle": "Profilen til {name}",
-      "shareText": "Sjekk ut profilen til {name} på TinyFloor",
-      "created": "opprettet",
-      "joined": "deltatt",
-      "chooseCharacter": "Velg figur",
-      "selectAvatar": "Velg avataren din"
-    },
-    "stats": {
-      "title": "Statistikk",
-      "empty": "Opprett ditt første rom!",
-      "active": "Aktive"
-    },
-    "quickActions": {
-      "title": "Hurtighandlinger"
-    },
-    "activity": {
-      "title": "Nylig aktivitet",
-      "empty": "Ingen aktivitet ennå",
-      "room_created": "Opprettet",
-      "room_joined": "Ble med",
-      "room_visited": "Besøkt"
-    },
-    "collaborators": {
-      "title": "Nylige personer",
-      "empty": "Bli med i rom for å møte folk"
-    },
-    "rooms": {
-      "mine": "Mine rom",
-      "joined": "Deltatt",
-      "gridView": "Rutenettvisning",
-      "listView": "Listevisning",
-      "newRoom": "Nytt rom",
-      "filter": {
-        "all": "Alle",
-        "active": "Aktive",
-        "idle": "Inaktive",
-        "offline": "Frakoblet"
-      },
-      "loading": "Laster inn rom...",
-      "noMatches": "Ingen treff",
-      "noMatchesBody": "Prøv å justere søket eller filtrene",
-      "noRooms": "Ingen rom ennå",
-      "noRoomsBody": "Opprett ditt første virtuelle kontor",
-      "noJoined": "Ingen rom du har blitt med i",
-      "noJoinedBody": "Bli med i et rom for å se det her",
-      "browsePublic": "Bla gjennom offentlige rom"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Aktivt",
-        "idle": "Inaktivt",
-        "offline": "Frakoblet"
-      },
-      "join": "Bli med",
-      "copyLink": "Kopier lenke",
-      "players": "{count}/{max} spillere"
-    }
-  },
   "room": {
     "connecting": "Kobler til...",
-    "fallbackName": "Rom: {id}",
     "copied": "Kopiert!",
-    "invite": "Inviter",
-    "leave": "Forlat"
+    "leave": "Forlat",
+    "reconnecting": "Kobler til igjen…",
+    "peopleHere": "Her nå: {count}",
+    "copyLink": "Kopier lenke",
+    "reconnectingNote": "Tilkoblingen ble brutt. Vi får deg inn igjen…",
+    "ended": {
+      "back": "Tilbake",
+      "fullTitle": "Rommet er fullt",
+      "full": "Alle som får plass, er allerede inne. Prøv igjen om litt.",
+      "replacedTitle": "Åpnet i en annen fane",
+      "replaced": "Du gikk inn i rommet fra en annen fane eller enhet, så denne gikk ut.",
+      "closedTitle": "Rommet er stengt",
+      "closed": "Rommet ble slettet eller arkivert av en administrator.",
+      "revokedTitle": "Tilgangen din er avsluttet",
+      "revoked": "Gjestelenken du kom inn med, er slått av.",
+      "signedOutTitle": "Du er logget ut",
+      "signedOut": "Logg inn igjen for å gå inn.",
+      "notFoundTitle": "Fant ikke rommet",
+      "notFound": "Rommet finnes ikke, eller du er ikke medlem av arbeidsområdet.",
+      "signIn": "Logg inn",
+      "tryAgain": "Prøv igjen",
+      "useHere": "Bruk det her i stedet"
+    }
   },
   "call": {
     "incomingVideo": "Innkommende videosamtale...",
@@ -435,8 +333,7 @@
   },
   "proximity": {
     "videoCall": "Videosamtale",
-    "audioCall": "Taleanrop",
-    "viewProfile": "Se profil"
+    "audioCall": "Taleanrop"
   },
   "jukebox": {
     "title": "Romhøyttaler",
@@ -991,6 +888,185 @@
           }
         ]
       }
+    }
+  },
+  "lobby": {
+    "eyebrow": "Åpen for alle",
+    "title": "Lobbyen",
+    "subtitle": "Alle kan stikke innom. Velg et navn og en figur, gå inn og si hei."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Kopier",
+    "copied": "Kopiert",
+    "switchWorkspace": "Bytt arbeidsområde",
+    "memberCount": "{count} av {limit} medlemmer",
+    "peopleInside": "I rommene nå: {count}",
+    "plans": {
+      "free": "Gratisplan",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Eier",
+      "admin": "Admin",
+      "member": "Medlem"
+    },
+    "settings": {
+      "button": "Innstillinger",
+      "title": "Innstillinger for arbeidsområdet",
+      "name": "Navn på arbeidsområdet",
+      "save": "Lagre",
+      "transfer": "Overfør eierskap",
+      "transferHint": "Den nye eieren får full kontroll. Du fortsetter som admin.",
+      "choosePerson": "Velg en person",
+      "transferButton": "Overfør",
+      "deleteTitle": "Slett arbeidsområdet",
+      "deleteBody": "Dette sletter {name}, rommene og gjestelenkene for alle. Det kan ikke angres. Skriv navnet på arbeidsområdet for å bekrefte.",
+      "deleteConfirmLabel": "Navn på arbeidsområdet for å bekrefte",
+      "deleteButton": "Slett arbeidsområde",
+      "leaveTitle": "Forlat arbeidsområdet",
+      "leaveBody": "Du mister tilgangen til rommene i {name} til noen inviterer deg igjen.",
+      "leaveButton": "Forlat arbeidsområde"
+    },
+    "onboarding": {
+      "title": "Sett opp kontoret ditt",
+      "subtitle": "Gi teamets arbeidsområde et navn. Det kommer med et første rom du kan gå inn i med en gang.",
+      "nameLabel": "Navn på arbeidsområdet",
+      "namePlaceholder": "Acme Studio",
+      "create": "Opprett arbeidsområde",
+      "freePlan": "Gratis for opptil 3 personer. Ikke noe kort nødvendig.",
+      "firstRoom": "Hovedetasjen"
+    },
+    "rooms": {
+      "title": "Rom",
+      "detail": "Gå inn i et hvilket som helst rom teamet ditt har laget.",
+      "new": "Nytt rom",
+      "empty": "Ingen rom ennå. Be en admin om å lage et.",
+      "emptyManager": "Ingen rom ennå. Lag det første for teamet ditt.",
+      "capacity": "Kapasitet: {count}",
+      "options": "Valg for {room}",
+      "guestLinks": "Gjestelenker",
+      "edit": "Gi nytt navn eller endre størrelse",
+      "delete": "Slett rom",
+      "peopleNow": "Inne: {count}",
+      "quiet": "Tomt akkurat nå",
+      "enter": "Gå inn",
+      "editTitle": "Rediger rom",
+      "newTitle": "Nytt rom",
+      "name": "Navn på rommet",
+      "namePlaceholder": "Standup, Design, Kaffekroken",
+      "capacityLabel": "Hvor mange får plass",
+      "cancel": "Avbryt",
+      "save": "Lagre endringer",
+      "create": "Opprett rom",
+      "deleteTitle": "Slette {room}?",
+      "deleteBody": "Rommet og gjestelenkene forsvinner for godt.",
+      "deleteBodyBusy": "De som er inne nå ({count}), blir sendt ut, og rommet og gjestelenkene forsvinner for godt."
+    },
+    "guestLinks": {
+      "title": "Gjestelenker for {room}",
+      "description": "Alle med en gjestelenke kan gå inn i rommet uten konto.",
+      "onlyOnce": "Kopier den nå. Av sikkerhetshensyn vises lenken bare én gang.",
+      "another": "Lag en lenke til",
+      "expiresIn": "Lenken gjelder i",
+      "lifetimes": {
+        "1d": "1 dag",
+        "7d": "7 dager",
+        "30d": "30 dager"
+      },
+      "create": "Opprett gjestelenke",
+      "active": "Aktive lenker",
+      "expires": "Utløper {date}",
+      "revoke": "Slå av"
+    },
+    "members": {
+      "title": "Medlemmer",
+      "full": "Planen din er full med {limit} medlemmer.",
+      "detail": "{count} av {limit} medlemmer",
+      "invite": "Inviter",
+      "pending": "Ventende invitasjoner",
+      "anyoneWithLink": "Alle med lenken",
+      "inviteMeta": "{role} · utløper {date}",
+      "revoke": "Trekk tilbake",
+      "roleNames": {
+        "owner": "Eier",
+        "admin": "Admin",
+        "member": "Medlem"
+      },
+      "you": "deg",
+      "options": "Valg for {name}",
+      "makeMember": "Gjør til medlem",
+      "makeAdmin": "Gjør til admin",
+      "leave": "Forlat",
+      "remove": "Fjern",
+      "inviteTitle": "Inviter folk til {workspace}",
+      "inviteDescription": "Send dem lenken. De trenger en konto for å bli med.",
+      "linkForEmail": "Bare {email} kan bruke denne lenken. Den virker én gang og utløper om 7 dager.",
+      "linkForAnyone": "Alle med denne lenken kan bli med én gang. Den utløper om 7 dager.",
+      "done": "Ferdig",
+      "roleLabel": "Bli med som",
+      "roleHints": {
+        "member": "Bruker rommene og møter teamet",
+        "admin": "Lager også rom og inviterer folk"
+      },
+      "emailLabel": "E-post (valgfritt)",
+      "emailPlaceholder": "kollega@firma.no",
+      "emailHint": "Legg til en e-postadresse så lenken bare virker for den personen.",
+      "cancel": "Avbryt",
+      "createLink": "Opprett invitasjonslenke"
+    },
+    "profile": {
+      "title": "Profilen din",
+      "changePassword": "Endre passord",
+      "name": "Navnet ditt",
+      "saved": "Lagret",
+      "save": "Lagre",
+      "character": "Figur",
+      "passwordTitle": "Endre passordet ditt",
+      "passwordDescription": "Skriv inn det nåværende passordet ditt, og velg så et nytt.",
+      "passwordChanged": "Passordet ditt er endret.",
+      "done": "Ferdig",
+      "currentPassword": "Nåværende passord",
+      "newPassword": "Nytt passord",
+      "hidePasswords": "Skjul passord",
+      "showPasswords": "Vis passord",
+      "passwordRule": "Minst 8 tegn",
+      "signsOutOthers": "Du forblir innlogget her. Alle andre steder blir du logget ut.",
+      "cancel": "Avbryt"
+    },
+    "invite": {
+      "invalidTitle": "Invitasjonen virker ikke",
+      "invalid": "Den kan ha utløpt, allerede blitt brukt eller slått av. Be om en ny.",
+      "home": "Til forsiden",
+      "eyebrow": "{name} har invitert deg",
+      "asAdmin": "Du er invitert som admin.",
+      "asMember": "Du er invitert til teamet.",
+      "join": "Bli med i {workspace}",
+      "joiningAs": "Du blir med som {name} ({email})",
+      "createAccount": "Opprett en konto",
+      "signIn": "Jeg har en konto",
+      "needAccount": "Du trenger en konto for å bli med i et arbeidsområde. Det tar et minutt."
+    },
+    "errors": {
+      "member_limit": "Arbeidsområdet er fullt med nåværende plan.",
+      "not_allowed": "Rollen din i arbeidsområdet kan ikke gjøre det.",
+      "owner_cannot_leave": "Eieren må overføre eierskapet før vedkommende forlater det.",
+      "owner_role": "Eierrollen endres bare ved å overføre eierskapet.",
+      "bad_capacity": "Velg mellom 2 og 20 personer.",
+      "name_required": "Gi det et navn først.",
+      "bad_email": "Det ser ikke ut som en e-postadresse.",
+      "invite_used": "Invitasjonen er allerede brukt.",
+      "invite_invalid": "Invitasjonen er utløpt eller slått av.",
+      "wrong_account": "Invitasjonen gjelder en annen e-postadresse. Logg inn med den kontoen.",
+      "wrong_password": "Det nåværende passordet ditt er feil.",
+      "password_too_short": "Bruk minst 8 tegn.",
+      "password_too_long": "Bruk færre enn 72 tegn.",
+      "too_many_attempts": "For mange forsøk. Vent noen minutter, og prøv igjen.",
+      "not_found": "Fant det ikke. Det kan ha blitt slettet.",
+      "network": "Får ikke kontakt med TinyFloor. Sjekk tilkoblingen og prøv igjen.",
+      "generic": "Noe gikk galt. Prøv igjen."
     }
   }
 }

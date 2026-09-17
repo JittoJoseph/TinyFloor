@@ -4,20 +4,19 @@
     "description": "TinyFloor är ett gratis virtuellt kontor i webbläsaren. Gå runt på en våning i pixelgrafik med ditt team och starta ett videosamtal bara genom att ställa dig bredvid någon.",
     "ogAlt": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor",
     "keywords": "virtuellt kontor, distansarbete, spatial chatt, samarbete online, virtuell arbetsplats, metaverse-kontor, närhetschatt, närhetsvideochatt, virtuellt coworking, videosamtal i webbläsaren",
-    "createRoomTitle": "Skapa ett rum",
-    "createRoomDescription": "Öppna ett virtuellt kontorsrum på TinyFloor. Ge det ett namn, lägg till ett lösenord om du vill och dela en enda länk med ditt team.",
     "joinTitle": "Gå med i rummet",
     "joinRoomTitle": "Gå med i {room}",
     "joinRoomDescription": "Du är inbjuden till {room} på TinyFloor, ett virtuellt kontor du går runt i. Öppna länken, välj en figur och gå in.",
-    "roomsTitle": "Utforska rum",
-    "roomsDescription": "Bläddra bland aktiva virtuella rum och gå med i offentliga arbetsytor i TinyFloor.",
-    "peopleTitle": "Personer",
-    "peopleDescription": "Träffa personerna som hänger i TinyFloor-rummen.",
     "authTitle": "Logga in",
     "authDescription": "Logga in på TinyFloor för att behålla ditt namn, din karaktär och en lista över dina rum.",
     "dashboardTitle": "Översikt",
     "roomTitle": "Aktivt rum",
-    "notFoundTitle": "Sidan hittades inte"
+    "notFoundTitle": "Sidan hittades inte",
+    "lobbyTitle": "Lobbyn",
+    "lobbyDescription": "Gå in i TinyFloors kostnadsfria, öppna lobby som gäst. Välj en figur, träffa folk och testa videosamtal på nära håll i webbläsaren.",
+    "inviteTitle": "Gå med i {workspace} på TinyFloor",
+    "inviteFallbackTitle": "Du är inbjuden till TinyFloor",
+    "inviteDescription": "{name} har bjudit in dig till {workspace} på TinyFloor, ett virtuellt kontor du kan gå runt i."
   },
   "common": {
     "loading": "Laddar...",
@@ -29,15 +28,14 @@
     "you": "Du",
     "justNow": "nyss",
     "unknown": "Okänt",
-    "rooms": "Rum",
-    "people": "Personer",
     "peopleCount": "{count, plural, one {# person} other {# personer}}",
-    "createRoom": "Skapa ett rum",
-    "browseRooms": "Bläddra bland rum",
-    "searchRooms": "Sök rum...",
     "dashboard": "Översikt",
     "questions": "Frågor",
-    "signOut": "Logga ut"
+    "signOut": "Logga ut",
+    "visitLobby": "Besök lobbyn",
+    "lobby": "Lobby",
+    "signIn": "Logga in",
+    "rooms": "Rum"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -223,153 +221,53 @@
     }
   },
   "entry": {
-    "allRooms": "Alla rum",
     "yourName": "Ditt namn",
     "namePlaceholder": "Vad ska folk kalla dig?",
-    "roomPassword": "Rummets lösenord",
-    "passwordPlaceholder": "Ange lösenordet",
     "character": "Karaktär",
-    "copyInvite": "Kopiera inbjudningslänk",
     "inviteCopied": "Inbjudningslänk kopierad",
     "openingDoor": "Öppnar dörren",
-    "walkIn": "Gå in"
-  },
-  "createRoom": {
-    "title": "Öppna ett rum.",
-    "roomName": "Rummets namn",
-    "roomNamePlaceholder": "Designteamet, Studion, Fredagshäng",
-    "advanced": "Avancerat",
-    "passwordPlaceholder": "Lägg till lösenord (valfritt)",
-    "passwordHint": "Alla rum listas i katalogen. Ett lösenord håller dörren stängd för den som inte har det.",
-    "submit": "Skapa rummet",
-    "submitting": "Förbereder",
-    "createError": "Det gick inte att skapa rummet. Försök igen.",
-    "openError": "Det gick inte att öppna rummet"
+    "walkIn": "Gå in",
+    "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
+    "guestKeep": "Du är gäst. <link>Skapa ett konto</link> för att behålla namn och figur.",
+    "copyInvite": "Kopiera inbjudningslänk"
   },
   "join": {
     "unavailableTitle": "Den dörren går inte att öppna.",
-    "unavailable": "Det här rummet är inte längre tillgängligt.",
-    "full": "Rummet är fullt just nu",
-    "needsPassword": "Rummet kräver ett lösenord",
-    "error": "Det gick inte att gå med i rummet",
-    "roomFull": "Rummet är fullt",
-    "guestNote": "Du går med som gäst. <link>Logga in</link> för att behålla ditt namn och din karaktär."
-  },
-  "directory": {
-    "roomsTitle": "Rum i det <em>virtuella kontoret</em>",
-    "peopleTitle": "TinyFloor-<em>gemenskapen</em>",
-    "roomsSubtitle": "Bläddra bland rum eller träffa folket där inne",
-    "peopleSubtitle": "Träffa dem som formar TinyFloor",
-    "updating": "Uppdaterar...",
-    "roomsLive": "{count, plural, one {# rum live} other {# rum live}}",
-    "search": "Sök",
-    "loadingSpaces": "Laddar rum",
-    "noRoomsFound": "Inga rum hittades.",
-    "noRoomsAvailable": "Inga rum tillgängliga.",
-    "noRoomsFoundBody": "Vi hittade inga rum som matchar din sökning. Prova att justera den.",
-    "noRoomsAvailableBody": "Det är tyst här. Bli först med att starta en ny arbetsyta!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Inaktivt",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Aktivt {time}",
-    "full": "Fullt",
-    "enter": "Gå in",
-    "gatheringPeople": "Samlar personer...",
-    "searchPeople": "Sök personer...",
-    "yourProfile": "Din profil",
-    "loadingPeople": "Laddar personer",
-    "noPeople": "Inga personer hittades.",
-    "noPeopleBody": "Prova en annan sökning eller titta in snart igen."
+    "linkUnavailable": "Den här gästlänken har gått ut eller stängts av. Be den som skickade den om en ny.",
+    "visitLobby": "Besök lobbyn",
+    "invitedAsGuest": "Du är inbjuden som gäst."
   },
   "userMenu": {
     "manageProfile": "Hantera profil",
     "visitingAsGuest": "Besöker som gäst",
     "keepYourName": "Behåll namn och figur"
   },
-  "dashboard": {
-    "subtitle": "Hantera din profil och dina rum",
-    "activeCount": "{count} aktiva",
-    "userNotFound": "Användaren hittades inte",
-    "backToRooms": "Tillbaka till rummen",
-    "nameUpdated": "Visningsnamnet har uppdaterats!",
-    "profileFailed": "Det gick inte att uppdatera profilen",
-    "characterUpdated": "Karaktären har uppdaterats!",
-    "characterFailed": "Det gick inte att uppdatera karaktären",
-    "linkCopied": "Länken har kopierats!",
-    "profile": {
-      "changeCharacter": "Byt karaktär",
-      "editName": "Redigera visningsnamn",
-      "saveName": "Spara visningsnamn",
-      "displayName": "Visningsnamn",
-      "guestBadge": "GÄST",
-      "copyLink": "Kopiera profillänk",
-      "share": "Dela profil",
-      "shareTitle": "Profil för {name}",
-      "shareText": "Kolla in profilen för {name} på TinyFloor",
-      "created": "skapade",
-      "joined": "anslutna",
-      "chooseCharacter": "Välj karaktär",
-      "selectAvatar": "Välj din avatar"
-    },
-    "stats": {
-      "title": "Statistik",
-      "empty": "Skapa ditt första rum!",
-      "active": "Aktiva"
-    },
-    "quickActions": {
-      "title": "Snabbåtgärder"
-    },
-    "activity": {
-      "title": "Senaste aktivitet",
-      "empty": "Ingen aktivitet än",
-      "room_created": "Skapat",
-      "room_joined": "Gick med",
-      "room_visited": "Besökt"
-    },
-    "collaborators": {
-      "title": "Senaste personer",
-      "empty": "Gå med i rum för att träffa folk"
-    },
-    "rooms": {
-      "mine": "Mina rum",
-      "joined": "Anslutna",
-      "gridView": "Rutnätsvy",
-      "listView": "Listvy",
-      "newRoom": "Nytt rum",
-      "filter": {
-        "all": "Alla",
-        "active": "Aktiva",
-        "idle": "Inaktiva",
-        "offline": "Offline"
-      },
-      "loading": "Laddar rum...",
-      "noMatches": "Inga träffar",
-      "noMatchesBody": "Prova att justera sökningen eller filtren",
-      "noRooms": "Inga rum än",
-      "noRoomsBody": "Skapa ditt första virtuella kontor",
-      "noJoined": "Inga anslutna rum",
-      "noJoinedBody": "Gå med i ett rum så visas det här",
-      "browsePublic": "Bläddra bland offentliga rum"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Aktivt",
-        "idle": "Inaktivt",
-        "offline": "Offline"
-      },
-      "join": "Gå med",
-      "copyLink": "Kopiera länk",
-      "players": "{count}/{max} spelare"
-    }
-  },
   "room": {
     "connecting": "Ansluter...",
-    "fallbackName": "Rum: {id}",
     "copied": "Kopierat!",
-    "invite": "Bjud in",
-    "leave": "Lämna"
+    "leave": "Lämna",
+    "reconnecting": "Ansluter igen…",
+    "peopleHere": "Här nu: {count}",
+    "copyLink": "Kopiera länk",
+    "reconnectingNote": "Anslutningen bröts. Vi tar dig tillbaka…",
+    "ended": {
+      "back": "Tillbaka",
+      "fullTitle": "Rummet är fullt",
+      "full": "Alla som får plats är redan inne. Försök igen om en stund.",
+      "replacedTitle": "Öppnat i en annan flik",
+      "replaced": "Du gick in i rummet från en annan flik eller enhet, så den här lämnade.",
+      "closedTitle": "Rummet är stängt",
+      "closed": "Rummet har tagits bort eller arkiverats av en administratör.",
+      "revokedTitle": "Din åtkomst har upphört",
+      "revoked": "Gästlänken du kom in med har stängts av.",
+      "signedOutTitle": "Du är utloggad",
+      "signedOut": "Logga in igen för att gå in.",
+      "notFoundTitle": "Rummet hittades inte",
+      "notFound": "Rummet finns inte, eller så är du inte medlem i dess arbetsyta.",
+      "signIn": "Logga in",
+      "tryAgain": "Försök igen",
+      "useHere": "Använd här i stället"
+    }
   },
   "call": {
     "incomingVideo": "Inkommande videosamtal...",
@@ -435,8 +333,7 @@
   },
   "proximity": {
     "videoCall": "Videosamtal",
-    "audioCall": "Röstsamtal",
-    "viewProfile": "Visa profil"
+    "audioCall": "Röstsamtal"
   },
   "jukebox": {
     "title": "Rummets högtalare",
@@ -991,6 +888,185 @@
           }
         ]
       }
+    }
+  },
+  "lobby": {
+    "eyebrow": "Öppen för alla",
+    "title": "Lobbyn",
+    "subtitle": "Vem som helst kan titta in. Välj ett namn och en figur, gå in och säg hej."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Kopiera",
+    "copied": "Kopierad",
+    "switchWorkspace": "Byt arbetsyta",
+    "memberCount": "{count} av {limit} medlemmar",
+    "peopleInside": "I rummen nu: {count}",
+    "plans": {
+      "free": "Gratisplan",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Ägare",
+      "admin": "Admin",
+      "member": "Medlem"
+    },
+    "settings": {
+      "button": "Inställningar",
+      "title": "Inställningar för arbetsytan",
+      "name": "Arbetsytans namn",
+      "save": "Spara",
+      "transfer": "Överför ägarskap",
+      "transferHint": "Den nya ägaren får full kontroll. Du blir kvar som admin.",
+      "choosePerson": "Välj en person",
+      "transferButton": "Överför",
+      "deleteTitle": "Ta bort arbetsytan",
+      "deleteBody": "Det här tar bort {name}, dess rum och gästlänkar för alla. Det går inte att ångra. Skriv arbetsytans namn för att bekräfta.",
+      "deleteConfirmLabel": "Arbetsytans namn för att bekräfta",
+      "deleteButton": "Ta bort arbetsyta",
+      "leaveTitle": "Lämna arbetsytan",
+      "leaveBody": "Du förlorar åtkomsten till rummen i {name} tills någon bjuder in dig igen.",
+      "leaveButton": "Lämna arbetsyta"
+    },
+    "onboarding": {
+      "title": "Ordna ditt kontor",
+      "subtitle": "Ge teamets arbetsyta ett namn. Den kommer med ett första rum du kan gå in i direkt.",
+      "nameLabel": "Arbetsytans namn",
+      "namePlaceholder": "Acme Studio",
+      "create": "Skapa arbetsyta",
+      "freePlan": "Gratis för upp till 3 personer. Inget kort behövs.",
+      "firstRoom": "Huvudplanet"
+    },
+    "rooms": {
+      "title": "Rum",
+      "detail": "Gå in i vilket rum som helst som ditt team har skapat.",
+      "new": "Nytt rum",
+      "empty": "Inga rum än. Be en admin att skapa ett.",
+      "emptyManager": "Inga rum än. Skapa det första för ditt team.",
+      "capacity": "Kapacitet: {count}",
+      "options": "Alternativ för {room}",
+      "guestLinks": "Gästlänkar",
+      "edit": "Byt namn eller storlek",
+      "delete": "Ta bort rum",
+      "peopleNow": "Inne: {count}",
+      "quiet": "Tomt just nu",
+      "enter": "Gå in",
+      "editTitle": "Redigera rum",
+      "newTitle": "Nytt rum",
+      "name": "Rummets namn",
+      "namePlaceholder": "Standup, Design, Kaffehörnan",
+      "capacityLabel": "Hur många får plats",
+      "cancel": "Avbryt",
+      "save": "Spara ändringar",
+      "create": "Skapa rum",
+      "deleteTitle": "Ta bort {room}?",
+      "deleteBody": "Rummet och dess gästlänkar försvinner för gott.",
+      "deleteBodyBusy": "De som är inne nu ({count}) skickas ut, och rummet och dess gästlänkar försvinner för gott."
+    },
+    "guestLinks": {
+      "title": "Gästlänkar för {room}",
+      "description": "Alla med en gästlänk kan gå in i rummet utan konto.",
+      "onlyOnce": "Kopiera den nu. Av säkerhetsskäl visas länken bara en gång.",
+      "another": "Skapa en till länk",
+      "expiresIn": "Länken gäller i",
+      "lifetimes": {
+        "1d": "1 dag",
+        "7d": "7 dagar",
+        "30d": "30 dagar"
+      },
+      "create": "Skapa gästlänk",
+      "active": "Aktiva länkar",
+      "expires": "Går ut {date}",
+      "revoke": "Stäng av"
+    },
+    "members": {
+      "title": "Medlemmar",
+      "full": "Din plan är full med {limit} medlemmar.",
+      "detail": "{count} av {limit} medlemmar",
+      "invite": "Bjud in",
+      "pending": "Väntande inbjudningar",
+      "anyoneWithLink": "Alla med länken",
+      "inviteMeta": "{role} · går ut {date}",
+      "revoke": "Återkalla",
+      "roleNames": {
+        "owner": "Ägare",
+        "admin": "Admin",
+        "member": "Medlem"
+      },
+      "you": "du",
+      "options": "Alternativ för {name}",
+      "makeMember": "Gör till medlem",
+      "makeAdmin": "Gör till admin",
+      "leave": "Lämna",
+      "remove": "Ta bort",
+      "inviteTitle": "Bjud in folk till {workspace}",
+      "inviteDescription": "Skicka länken till dem. De behöver ett konto för att gå med.",
+      "linkForEmail": "Bara {email} kan använda länken. Den fungerar en gång och går ut om 7 dagar.",
+      "linkForAnyone": "Alla med länken kan gå med en gång. Den går ut om 7 dagar.",
+      "done": "Klar",
+      "roleLabel": "Gå med som",
+      "roleHints": {
+        "member": "Använder rum och träffar teamet",
+        "admin": "Skapar även rum och bjuder in folk"
+      },
+      "emailLabel": "E-post (valfritt)",
+      "emailPlaceholder": "kollega@foretag.se",
+      "emailHint": "Lägg till en e-postadress så att länken bara fungerar för den personen.",
+      "cancel": "Avbryt",
+      "createLink": "Skapa inbjudningslänk"
+    },
+    "profile": {
+      "title": "Din profil",
+      "changePassword": "Byt lösenord",
+      "name": "Ditt namn",
+      "saved": "Sparat",
+      "save": "Spara",
+      "character": "Figur",
+      "passwordTitle": "Byt ditt lösenord",
+      "passwordDescription": "Ange ditt nuvarande lösenord och välj sedan ett nytt.",
+      "passwordChanged": "Ditt lösenord har ändrats.",
+      "done": "Klar",
+      "currentPassword": "Nuvarande lösenord",
+      "newPassword": "Nytt lösenord",
+      "hidePasswords": "Dölj lösenord",
+      "showPasswords": "Visa lösenord",
+      "passwordRule": "Minst 8 tecken",
+      "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
+      "cancel": "Avbryt"
+    },
+    "invite": {
+      "invalidTitle": "Inbjudan fungerar inte",
+      "invalid": "Den kan ha gått ut, redan använts eller stängts av. Be om en ny.",
+      "home": "Till startsidan",
+      "eyebrow": "{name} har bjudit in dig",
+      "asAdmin": "Du är inbjuden som admin.",
+      "asMember": "Du är inbjuden till teamet.",
+      "join": "Gå med i {workspace}",
+      "joiningAs": "Du går med som {name} ({email})",
+      "createAccount": "Skapa ett konto",
+      "signIn": "Jag har ett konto",
+      "needAccount": "Du behöver ett konto för att gå med i en arbetsyta. Det tar en minut."
+    },
+    "errors": {
+      "member_limit": "Arbetsytan är full med nuvarande plan.",
+      "not_allowed": "Din roll i arbetsytan får inte göra det.",
+      "owner_cannot_leave": "Ägaren måste överföra ägarskapet innan hen lämnar.",
+      "owner_role": "Ägarrollen ändras bara genom att överföra ägarskapet.",
+      "bad_capacity": "Välj mellan 2 och 20 personer.",
+      "name_required": "Ge det ett namn först.",
+      "bad_email": "Det ser inte ut som en e-postadress.",
+      "invite_used": "Inbjudan har redan använts.",
+      "invite_invalid": "Inbjudan har gått ut eller stängts av.",
+      "wrong_account": "Inbjudan gäller en annan e-postadress. Logga in med det kontot.",
+      "wrong_password": "Ditt nuvarande lösenord är fel.",
+      "password_too_short": "Använd minst 8 tecken.",
+      "password_too_long": "Använd färre än 72 tecken.",
+      "too_many_attempts": "För många försök. Vänta några minuter och försök sedan igen.",
+      "not_found": "Det hittades inte. Det kan ha tagits bort.",
+      "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
+      "generic": "Något gick fel. Försök igen."
     }
   }
 }

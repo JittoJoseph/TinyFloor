@@ -28,7 +28,6 @@ export const Footer: React.FC = () => {
         { label: tc("lobby"), href: "/lobby" },
         { label: tc("signIn"), href: "/auth" },
         { label: tc("dashboard"), href: "/dashboard" },
-        { label: tc("dashboard"), href: "/dashboard" },
       ],
     },
     {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef } from "react";
+import React, { useCallback, useEffect, useEffectEvent, useRef } from "react";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
 const SCRIPT_URL = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
@@ -22,7 +22,7 @@ declare global {
  * anyone submits, but a quick submit waits up to a few seconds for it.
  */
 export function useTurnstileToken() {
-  const ref = useRef<TurnstileHandle>(null);
+  const resetWidget = useRef<(() => void) | null>(null);
   const token = useRef<string | null>(null);
   const waiting = useRef<((token: string | null) => void) | null>(null);
 
@@ -51,10 +51,19 @@ export function useTurnstileToken() {
   );
 
   /** Tokens work once, so after using one, get the next. */
-  const reset = useCallback(() => ref.current?.reset(), []);
+  const reset = useCallback(() => {
+    token.current = null;
+    resetWidget.current?.();
+  }, []);
 
-  return { ref, onToken, waitForToken, reset };
+  const register = useCallback((resetFn: (() => void) | null) => {
+    resetWidget.current = resetFn;
+  }, []);
+
+  return { onToken, waitForToken, reset, register };
 }
+
+export type TurnstileController = ReturnType<typeof useTurnstileToken>;
 
 let scriptLoading: Promise<TurnstileApi> | null = null;
 
@@ -74,30 +83,30 @@ function loadTurnstile(): Promise<TurnstileApi> {
   return scriptLoading;
 }
 
-export interface TurnstileHandle {
-  /** Tokens work once; after a failed submit, get a fresh one. */
-  reset: () => void;
-}
-
 /**
  * Cloudflare's bot check. In managed mode most people never see it; it only
  * shows a checkbox when Cloudflare isn't sure. The token arrives through onToken.
  */
-export const Turnstile = forwardRef<
-  TurnstileHandle,
-  { onToken: (token: string | null) => void; action?: string; className?: string }
->(function Turnstile({ onToken, action, className }, ref) {
+export function Turnstile({
+  controller,
+  action,
+  className,
+}: {
+  controller: TurnstileController;
+  action?: string;
+  className?: string;
+}) {
   const container = useRef<HTMLDivElement>(null);
   const widget = useRef<string | null>(null);
-  const tokenCallback = useRef(onToken);
-  tokenCallback.current = onToken;
+  const emitToken = useEffectEvent((token: string | null) => controller.onToken(token));
+  const { register } = controller;
 
-  useImperativeHandle(ref, () => ({
-    reset: () => {
-      tokenCallback.current(null);
+  useEffect(() => {
+    register(() => {
       if (widget.current && window.turnstile) window.turnstile.reset(widget.current);
-    },
-  }));
+    });
+    return () => register(null);
+  }, [register]);
 
   useEffect(() => {
     let cancelled = false;
@@ -109,12 +118,12 @@ export const Turnstile = forwardRef<
           action,
           appearance: "interaction-only",
           theme: "light",
-          callback: (token: string) => tokenCallback.current(token),
-          "expired-callback": () => tokenCallback.current(null),
-          "error-callback": () => tokenCallback.current(null),
+          callback: (token: string) => emitToken(token),
+          "expired-callback": () => emitToken(null),
+          "error-callback": () => emitToken(null),
         });
       })
-      .catch(() => tokenCallback.current(null));
+      .catch(() => emitToken(null));
 
     return () => {
       cancelled = true;
@@ -124,4 +133,4 @@ export const Turnstile = forwardRef<
   }, [action]);
 
   return <div ref={container} className={className} />;
-});
+}

@@ -4,15 +4,9 @@
     "description": "TinyFloor is a free virtual office in your browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     "ogAlt": "A TinyFloor room: a 16-bit office floor with desks and teammates",
     "keywords": "virtual office, remote work, spatial chat, online collaboration, virtual workspace, metaverse office, proximity chat, proximity video chat, virtual coworking space, browser video calls",
-    "createRoomTitle": "Create a Room",
-    "createRoomDescription": "Open a virtual office room on TinyFloor. Name it, add a password if you want one, then share one link with your team.",
     "joinTitle": "Join Room",
     "joinRoomTitle": "Join {room}",
     "joinRoomDescription": "You're invited to {room} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
-    "roomsTitle": "Explore Rooms",
-    "roomsDescription": "Browse active virtual rooms and join public workspaces in TinyFloor.",
-    "peopleTitle": "People",
-    "peopleDescription": "Meet the people who hang out in TinyFloor rooms.",
     "authTitle": "Sign In",
     "authDescription": "Sign in to TinyFloor to keep your name, your character and a list of your rooms.",
     "dashboardTitle": "Dashboard",
@@ -34,18 +28,14 @@
     "you": "You",
     "justNow": "just now",
     "unknown": "Unknown",
-    "rooms": "Rooms",
-    "people": "People",
     "peopleCount": "{count, plural, one {# person} other {# people}}",
-    "createRoom": "Create a room",
-    "browseRooms": "Browse rooms",
-    "searchRooms": "Search rooms...",
     "dashboard": "Dashboard",
     "questions": "Questions",
     "signOut": "Sign Out",
     "visitLobby": "Visit the lobby",
     "lobby": "Lobby",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "rooms": "Rooms"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -231,157 +221,30 @@
     }
   },
   "entry": {
-    "allRooms": "All rooms",
     "yourName": "Your name",
     "namePlaceholder": "What should people call you?",
-    "roomPassword": "Room password",
-    "passwordPlaceholder": "Enter the password",
     "character": "Character",
-    "copyInvite": "Copy invite link",
     "inviteCopied": "Invite link copied",
     "openingDoor": "Opening the door",
     "walkIn": "Walk in",
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
-    "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character."
-  },
-  "createRoom": {
-    "title": "Open a room.",
-    "roomName": "Room name",
-    "roomNamePlaceholder": "Design team, Studio, Friday hangout",
-    "advanced": "Advanced",
-    "passwordPlaceholder": "Add a password (optional)",
-    "passwordHint": "Every room is listed in the directory. A password keeps the door shut to anyone without it.",
-    "submit": "Create the room",
-    "submitting": "Setting it up",
-    "createError": "Could not create the room. Please try again.",
-    "openError": "Could not open the room"
+    "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character.",
+    "copyInvite": "Copy invite link"
   },
   "join": {
     "unavailableTitle": "That door does not open.",
-    "unavailable": "This room is not available any more.",
-    "full": "This room is full right now",
-    "needsPassword": "This room needs a password",
-    "error": "Could not join this room",
-    "roomFull": "Room is full",
-    "guestNote": "Joining as a guest. <link>Sign in</link> to keep your name and character.",
     "linkUnavailable": "This guest link has expired or been turned off. Ask whoever sent it for a new one.",
     "visitLobby": "Visit the lobby",
     "invitedAsGuest": "You're invited in as a guest."
-  },
-  "directory": {
-    "roomsTitle": "Virtual office <em>rooms</em>",
-    "peopleTitle": "The TinyFloor <em>community</em>",
-    "roomsSubtitle": "Browse rooms or meet the people inside",
-    "peopleSubtitle": "Meet the builders shaping TinyFloor",
-    "updating": "Updating...",
-    "roomsLive": "{count, plural, one {# room live} other {# rooms live}}",
-    "search": "Search",
-    "loadingSpaces": "Loading spaces",
-    "noRoomsFound": "No rooms found.",
-    "noRoomsAvailable": "No rooms available.",
-    "noRoomsFoundBody": "We couldn't find any rooms matching your search. Try adjusting your query.",
-    "noRoomsAvailableBody": "It's quiet here. Be the first to start a new workspace!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Idle",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Active {time}",
-    "full": "Full",
-    "enter": "Enter",
-    "gatheringPeople": "Gathering people...",
-    "searchPeople": "Search people...",
-    "yourProfile": "Your Profile",
-    "loadingPeople": "Loading people",
-    "noPeople": "No people found.",
-    "noPeopleBody": "Try a different search or check back soon."
   },
   "userMenu": {
     "manageProfile": "Manage profile",
     "visitingAsGuest": "Visiting as a guest",
     "keepYourName": "Keep your name and character"
   },
-  "dashboard": {
-    "subtitle": "Manage your profile & rooms",
-    "activeCount": "{count} active",
-    "userNotFound": "User not found",
-    "backToRooms": "Back to Rooms",
-    "nameUpdated": "Display name updated!",
-    "profileFailed": "Failed to update profile",
-    "characterUpdated": "Character updated!",
-    "characterFailed": "Failed to update character",
-    "linkCopied": "Link copied!",
-    "profile": {
-      "changeCharacter": "Change character",
-      "editName": "Edit display name",
-      "saveName": "Save display name",
-      "displayName": "Display name",
-      "guestBadge": "GUEST",
-      "copyLink": "Copy profile link",
-      "share": "Share profile",
-      "shareTitle": "{name}'s Profile",
-      "shareText": "Check out {name}'s profile on TinyFloor",
-      "created": "created",
-      "joined": "joined",
-      "chooseCharacter": "Choose Character",
-      "selectAvatar": "Select your avatar"
-    },
-    "stats": {
-      "title": "Stats",
-      "empty": "Create your first room!",
-      "active": "Active"
-    },
-    "quickActions": {
-      "title": "Quick Actions"
-    },
-    "activity": {
-      "title": "Recent Activities",
-      "empty": "No activity yet",
-      "room_created": "Created",
-      "room_joined": "Joined",
-      "room_visited": "Visited"
-    },
-    "collaborators": {
-      "title": "Recent People",
-      "empty": "Join rooms to meet people"
-    },
-    "rooms": {
-      "mine": "My Rooms",
-      "joined": "Joined",
-      "gridView": "Grid view",
-      "listView": "List view",
-      "newRoom": "New Room",
-      "filter": {
-        "all": "All",
-        "active": "Active",
-        "idle": "Idle",
-        "offline": "Offline"
-      },
-      "loading": "Loading rooms...",
-      "noMatches": "No matches found",
-      "noMatchesBody": "Try adjusting your search or filter criteria",
-      "noRooms": "No rooms yet",
-      "noRoomsBody": "Create your first virtual office space",
-      "noJoined": "No joined rooms",
-      "noJoinedBody": "Join a room to see it here",
-      "browsePublic": "Browse public rooms"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Active",
-        "idle": "Idle",
-        "offline": "Offline"
-      },
-      "join": "Join",
-      "copyLink": "Copy link",
-      "players": "{count}/{max} players"
-    }
-  },
   "room": {
     "connecting": "Connecting...",
-    "fallbackName": "Room: {id}",
     "copied": "Copied!",
-    "invite": "Invite",
     "leave": "Leave",
     "reconnecting": "Reconnecting…",
     "peopleHere": "Here now: {count}",
@@ -470,8 +333,7 @@
   },
   "proximity": {
     "videoCall": "Video call",
-    "audioCall": "Audio call",
-    "viewProfile": "View profile"
+    "audioCall": "Audio call"
   },
   "jukebox": {
     "title": "Room speaker",

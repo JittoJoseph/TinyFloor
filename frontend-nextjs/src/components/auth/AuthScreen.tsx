@@ -22,6 +22,14 @@ export function safeRedirect(value: string | null): string {
   return value && value.startsWith("/") && !value.startsWith("//") && !value.startsWith("/\\") ? value : "/dashboard";
 }
 
+function FieldError({ id, message }: { id: string; message?: string }) {
+  return message ? (
+    <p id={id} className="mt-2 font-body text-[12px] text-red-600">
+      {message}
+    </p>
+  ) : null;
+}
+
 export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; redirect: string }) {
   const t = useTranslations("auth");
   const tc = useTranslations("common");
@@ -85,7 +93,11 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   /** Typing into a field clears what was wrong with it. */
   const edited = (field: FieldName) => {
     if (field in fieldErrors) {
-      setFieldErrors(({ [field]: _cleared, ...rest }) => rest);
+      setFieldErrors((current) => {
+        const next = { ...current };
+        delete next[field];
+        return next;
+      });
     }
   };
 
@@ -188,13 +200,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const fieldClass = (field: FieldName) =>
     `${inputClass} ${field in fieldErrors ? "!border-red-300 focus:!ring-red-100" : ""}`;
 
-  const FieldError = ({ field }: { field: FieldName }) =>
-    fieldErrors[field] ? (
-      <p id={`${ids}-${field}-error`} className="mt-2 font-body text-[12px] text-red-600">
-        {fieldErrors[field]}
-      </p>
-    ) : null;
-
   const passwordLongEnough = password.length >= PASSWORD_MIN_LENGTH;
 
   return (
@@ -277,7 +282,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                 aria-describedby={describedBy("displayName")}
                 className={fieldClass("displayName")}
               />
-              <FieldError field="displayName" />
+              <FieldError id={`${ids}-displayName-error`} message={fieldErrors.displayName} />
             </Field>
           )}
 
@@ -300,7 +305,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               aria-describedby={describedBy("email")}
               className={fieldClass("email")}
             />
-            <FieldError field="email" />
+            <FieldError id={`${ids}-email-error`} message={fieldErrors.email} />
           </Field>
 
           <Field label={t("password")} htmlFor={`${ids}-password`}>
@@ -332,7 +337,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
-            <FieldError field="password" />
+            <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
             {capsLock && (
               <p className="mt-2 font-body text-[12px] text-amber-700" role="status">
                 {t("capsLock")}
@@ -357,7 +362,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             </Field>
           )}
 
-          {signingUp && <Turnstile ref={turnstile.ref} action="signup" onToken={turnstile.onToken} className="flex justify-center" />}
+          {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}
 
           {formError && <ErrorNote>{formError}</ErrorNote>}
 

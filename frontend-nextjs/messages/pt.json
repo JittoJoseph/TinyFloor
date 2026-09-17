@@ -4,20 +4,19 @@
     "description": "O TinyFloor é um escritório virtual gratuito no seu navegador. Ande por um andar em pixel art com sua equipe e comece uma chamada de vídeo só de ficar ao lado de alguém.",
     "ogAlt": "Uma sala do TinyFloor: um andar de escritório em 16 bits com mesas e colegas",
     "keywords": "escritório virtual, trabalho remoto, chat espacial, colaboração online, espaço de trabalho virtual, escritório no metaverso, chat por proximidade, videochamada por proximidade, coworking virtual, chamadas de vídeo no navegador",
-    "createRoomTitle": "Criar uma sala",
-    "createRoomDescription": "Abra uma sala de escritório virtual no TinyFloor. Dê um nome, adicione uma senha se quiser e compartilhe um único link com sua equipe.",
     "joinTitle": "Entrar na sala",
     "joinRoomTitle": "Entrar em {room}",
     "joinRoomDescription": "Você foi convidado para {room} no TinyFloor, um escritório virtual por onde você anda. Abra o link, escolha um personagem e entre.",
-    "roomsTitle": "Explorar salas",
-    "roomsDescription": "Navegue pelas salas virtuais ativas e entre em espaços de trabalho públicos no TinyFloor.",
-    "peopleTitle": "Pessoas",
-    "peopleDescription": "Conheça as pessoas que frequentam as salas do TinyFloor.",
     "authTitle": "Entrar",
     "authDescription": "Entre no TinyFloor para manter seu nome, seu personagem e uma lista das suas salas.",
     "dashboardTitle": "Painel",
     "roomTitle": "Sala ativa",
-    "notFoundTitle": "Página não encontrada"
+    "notFoundTitle": "Página não encontrada",
+    "lobbyTitle": "O lobby",
+    "lobbyDescription": "Entre como convidado no lobby público e gratuito do TinyFloor. Escolha um personagem, conheça pessoas e experimente chamadas de vídeo por proximidade no navegador.",
+    "inviteTitle": "Entre em {workspace} no TinyFloor",
+    "inviteFallbackTitle": "Você foi convidado para o TinyFloor",
+    "inviteDescription": "{name} convidou você para {workspace} no TinyFloor, um escritório virtual em que dá para andar."
   },
   "common": {
     "loading": "Carregando...",
@@ -29,15 +28,14 @@
     "you": "Você",
     "justNow": "agora mesmo",
     "unknown": "Desconhecido",
-    "rooms": "Salas",
-    "people": "Pessoas",
     "peopleCount": "{count, plural, one {# pessoa} other {# pessoas}}",
-    "createRoom": "Criar uma sala",
-    "browseRooms": "Explorar salas",
-    "searchRooms": "Buscar salas...",
     "dashboard": "Painel",
     "questions": "Perguntas",
-    "signOut": "Sair"
+    "signOut": "Sair",
+    "visitLobby": "Visitar o lobby",
+    "lobby": "Lobby",
+    "signIn": "Entrar",
+    "rooms": "Salas"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -223,153 +221,53 @@
     }
   },
   "entry": {
-    "allRooms": "Todas as salas",
     "yourName": "Seu nome",
     "namePlaceholder": "Como as pessoas devem te chamar?",
-    "roomPassword": "Senha da sala",
-    "passwordPlaceholder": "Digite a senha",
     "character": "Personagem",
-    "copyInvite": "Copiar link de convite",
     "inviteCopied": "Link de convite copiado",
     "openingDoor": "Abrindo a porta",
-    "walkIn": "Entrar"
-  },
-  "createRoom": {
-    "title": "Abra uma sala.",
-    "roomName": "Nome da sala",
-    "roomNamePlaceholder": "Equipe de design, Estúdio, Happy hour de sexta",
-    "advanced": "Avançado",
-    "passwordPlaceholder": "Adicionar senha (opcional)",
-    "passwordHint": "Todas as salas aparecem no diretório. Uma senha mantém a porta fechada para quem não a tem.",
-    "submit": "Criar a sala",
-    "submitting": "Preparando",
-    "createError": "Não foi possível criar a sala. Tente novamente.",
-    "openError": "Não foi possível abrir a sala"
+    "walkIn": "Entrar",
+    "guestNote": "Entrando como convidado. <link>Entre</link> para usar sua conta.",
+    "guestKeep": "Você é convidado. <link>Crie uma conta</link> para manter seu nome e personagem.",
+    "copyInvite": "Copiar link de convite"
   },
   "join": {
     "unavailableTitle": "Essa porta não abre.",
-    "unavailable": "Esta sala não está mais disponível.",
-    "full": "Esta sala está cheia no momento",
-    "needsPassword": "Esta sala precisa de senha",
-    "error": "Não foi possível entrar nesta sala",
-    "roomFull": "Sala cheia",
-    "guestNote": "Entrando como convidado. <link>Entre</link> para manter seu nome e seu personagem."
-  },
-  "directory": {
-    "roomsTitle": "Salas de <em>escritório virtual</em>",
-    "peopleTitle": "A <em>comunidade</em> TinyFloor",
-    "roomsSubtitle": "Navegue pelas salas ou conheça as pessoas lá dentro",
-    "peopleSubtitle": "Conheça quem está construindo o TinyFloor",
-    "updating": "Atualizando...",
-    "roomsLive": "{count, plural, one {# sala ao vivo} other {# salas ao vivo}}",
-    "search": "Buscar",
-    "loadingSpaces": "Carregando espaços",
-    "noRoomsFound": "Nenhuma sala encontrada.",
-    "noRoomsAvailable": "Nenhuma sala disponível.",
-    "noRoomsFoundBody": "Não encontramos salas para a sua busca. Tente ajustar os termos.",
-    "noRoomsAvailableBody": "Está tudo quieto por aqui. Seja o primeiro a criar um espaço de trabalho!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Ociosa",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Ativa {time}",
-    "full": "Cheia",
-    "enter": "Entrar",
-    "gatheringPeople": "Reunindo pessoas...",
-    "searchPeople": "Buscar pessoas...",
-    "yourProfile": "Seu perfil",
-    "loadingPeople": "Carregando pessoas",
-    "noPeople": "Nenhuma pessoa encontrada.",
-    "noPeopleBody": "Tente outra busca ou volte em breve."
+    "linkUnavailable": "Este link de convidado expirou ou foi desativado. Peça um novo a quem enviou.",
+    "visitLobby": "Visitar o lobby",
+    "invitedAsGuest": "Você foi convidado a entrar como convidado."
   },
   "userMenu": {
     "manageProfile": "Gerenciar perfil",
     "visitingAsGuest": "Visitando como convidado",
     "keepYourName": "Mantenha seu nome e personagem"
   },
-  "dashboard": {
-    "subtitle": "Gerencie seu perfil e suas salas",
-    "activeCount": "{count} ativas",
-    "userNotFound": "Usuário não encontrado",
-    "backToRooms": "Voltar para as salas",
-    "nameUpdated": "Nome de exibição atualizado!",
-    "profileFailed": "Falha ao atualizar o perfil",
-    "characterUpdated": "Personagem atualizado!",
-    "characterFailed": "Falha ao atualizar o personagem",
-    "linkCopied": "Link copiado!",
-    "profile": {
-      "changeCharacter": "Trocar personagem",
-      "editName": "Editar nome de exibição",
-      "saveName": "Salvar nome de exibição",
-      "displayName": "Nome de exibição",
-      "guestBadge": "CONVIDADO",
-      "copyLink": "Copiar link do perfil",
-      "share": "Compartilhar perfil",
-      "shareTitle": "Perfil de {name}",
-      "shareText": "Confira o perfil de {name} no TinyFloor",
-      "created": "criadas",
-      "joined": "participou",
-      "chooseCharacter": "Escolher personagem",
-      "selectAvatar": "Selecione seu avatar"
-    },
-    "stats": {
-      "title": "Estatísticas",
-      "empty": "Crie sua primeira sala!",
-      "active": "Ativas"
-    },
-    "quickActions": {
-      "title": "Ações rápidas"
-    },
-    "activity": {
-      "title": "Atividades recentes",
-      "empty": "Nenhuma atividade ainda",
-      "room_created": "Criada",
-      "room_joined": "Entrou",
-      "room_visited": "Visitada"
-    },
-    "collaborators": {
-      "title": "Pessoas recentes",
-      "empty": "Entre em salas para conhecer pessoas"
-    },
-    "rooms": {
-      "mine": "Minhas salas",
-      "joined": "Participando",
-      "gridView": "Visualização em grade",
-      "listView": "Visualização em lista",
-      "newRoom": "Nova sala",
-      "filter": {
-        "all": "Todas",
-        "active": "Ativas",
-        "idle": "Ociosas",
-        "offline": "Offline"
-      },
-      "loading": "Carregando salas...",
-      "noMatches": "Nenhum resultado",
-      "noMatchesBody": "Tente ajustar a busca ou os filtros",
-      "noRooms": "Nenhuma sala ainda",
-      "noRoomsBody": "Crie seu primeiro escritório virtual",
-      "noJoined": "Você ainda não entrou em nenhuma sala",
-      "noJoinedBody": "Entre em uma sala para vê-la aqui",
-      "browsePublic": "Explorar salas públicas"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Ativa",
-        "idle": "Ociosa",
-        "offline": "Offline"
-      },
-      "join": "Entrar",
-      "copyLink": "Copiar link",
-      "players": "{count}/{max} jogadores"
-    }
-  },
   "room": {
     "connecting": "Conectando...",
-    "fallbackName": "Sala: {id}",
     "copied": "Copiado!",
-    "invite": "Convidar",
-    "leave": "Sair"
+    "leave": "Sair",
+    "reconnecting": "Reconectando…",
+    "peopleHere": "Aqui agora: {count}",
+    "copyLink": "Copiar link",
+    "reconnectingNote": "Conexão perdida. Trazendo você de volta…",
+    "ended": {
+      "back": "Voltar",
+      "fullTitle": "Esta sala está cheia",
+      "full": "Quem cabe já está lá dentro. Tente de novo daqui a pouco.",
+      "replacedTitle": "Aberta em outra aba",
+      "replaced": "Você entrou nesta sala por outra aba ou dispositivo, então esta saiu.",
+      "closedTitle": "Esta sala está fechada",
+      "closed": "A sala foi excluída ou arquivada por um admin do espaço de trabalho.",
+      "revokedTitle": "Seu acesso terminou",
+      "revoked": "O link de convidado que você usou foi desativado.",
+      "signedOutTitle": "Você saiu da conta",
+      "signedOut": "Entre de novo para voltar.",
+      "notFoundTitle": "Sala não encontrada",
+      "notFound": "Esta sala não existe ou você não é membro do espaço de trabalho dela.",
+      "signIn": "Entrar",
+      "tryAgain": "Tentar de novo",
+      "useHere": "Usar aqui"
+    }
   },
   "call": {
     "incomingVideo": "Chamada de vídeo recebida...",
@@ -435,8 +333,7 @@
   },
   "proximity": {
     "videoCall": "Chamada de vídeo",
-    "audioCall": "Chamada de voz",
-    "viewProfile": "Ver perfil"
+    "audioCall": "Chamada de voz"
   },
   "jukebox": {
     "title": "Alto-falante da sala",
@@ -991,6 +888,185 @@
           }
         ]
       }
+    }
+  },
+  "lobby": {
+    "eyebrow": "Aberto a todos",
+    "title": "O lobby",
+    "subtitle": "Qualquer pessoa pode passar. Escolha um nome e um personagem, entre e diga oi."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "switchWorkspace": "Trocar de espaço de trabalho",
+    "memberCount": "{count} de {limit} membros",
+    "peopleInside": "Nas salas agora: {count}",
+    "plans": {
+      "free": "Plano gratuito",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Dono",
+      "admin": "Admin",
+      "member": "Membro"
+    },
+    "settings": {
+      "button": "Configurações",
+      "title": "Configurações do espaço de trabalho",
+      "name": "Nome do espaço de trabalho",
+      "save": "Salvar",
+      "transfer": "Transferir a propriedade",
+      "transferHint": "A nova pessoa dona terá controle total. Você continua como admin.",
+      "choosePerson": "Escolha uma pessoa",
+      "transferButton": "Transferir",
+      "deleteTitle": "Excluir este espaço de trabalho",
+      "deleteBody": "Isso exclui {name}, suas salas e seus links de convidado para todos. Não dá para desfazer. Digite o nome do espaço de trabalho para confirmar.",
+      "deleteConfirmLabel": "Nome do espaço de trabalho para confirmar",
+      "deleteButton": "Excluir espaço de trabalho",
+      "leaveTitle": "Sair deste espaço de trabalho",
+      "leaveBody": "Você perderá o acesso às salas de {name} até alguém convidar você de novo.",
+      "leaveButton": "Sair do espaço de trabalho"
+    },
+    "onboarding": {
+      "title": "Monte seu escritório",
+      "subtitle": "Dê um nome ao espaço de trabalho da sua equipe. Ele vem com uma primeira sala para entrar agora mesmo.",
+      "nameLabel": "Nome do espaço de trabalho",
+      "namePlaceholder": "Acme Studio",
+      "create": "Criar espaço de trabalho",
+      "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
+      "firstRoom": "Andar principal"
+    },
+    "rooms": {
+      "title": "Salas",
+      "detail": "Entre em qualquer sala que sua equipe criou.",
+      "new": "Nova sala",
+      "empty": "Ainda não há salas. Peça a um admin para criar uma.",
+      "emptyManager": "Ainda não há salas. Crie a primeira para sua equipe.",
+      "capacity": "Capacidade: {count}",
+      "options": "Opções de {room}",
+      "guestLinks": "Links de convidado",
+      "edit": "Renomear ou mudar tamanho",
+      "delete": "Excluir sala",
+      "peopleNow": "Dentro: {count}",
+      "quiet": "Vazia agora",
+      "enter": "Entrar",
+      "editTitle": "Editar sala",
+      "newTitle": "Nova sala",
+      "name": "Nome da sala",
+      "namePlaceholder": "Standup, Design, Cantinho do café",
+      "capacityLabel": "Quantas pessoas cabem",
+      "cancel": "Cancelar",
+      "save": "Salvar alterações",
+      "create": "Criar sala",
+      "deleteTitle": "Excluir {room}?",
+      "deleteBody": "A sala e seus links de convidado vão sumir de vez.",
+      "deleteBodyBusy": "Quem está dentro agora ({count}) vai precisar sair, e a sala e seus links de convidado vão sumir de vez."
+    },
+    "guestLinks": {
+      "title": "Links de convidado de {room}",
+      "description": "Qualquer pessoa com um link de convidado pode entrar nesta sala sem conta.",
+      "onlyOnce": "Copie agora. Por segurança, o link só aparece uma vez.",
+      "another": "Criar outro link",
+      "expiresIn": "O link vale por",
+      "lifetimes": {
+        "1d": "1 dia",
+        "7d": "7 dias",
+        "30d": "30 dias"
+      },
+      "create": "Criar link de convidado",
+      "active": "Links ativos",
+      "expires": "Expira em {date}",
+      "revoke": "Desativar"
+    },
+    "members": {
+      "title": "Membros",
+      "full": "Seu plano está cheio com {limit} membros.",
+      "detail": "{count} de {limit} membros",
+      "invite": "Convidar",
+      "pending": "Convites pendentes",
+      "anyoneWithLink": "Qualquer pessoa com o link",
+      "inviteMeta": "{role} · expira em {date}",
+      "revoke": "Revogar",
+      "roleNames": {
+        "owner": "Dono",
+        "admin": "Admin",
+        "member": "Membro"
+      },
+      "you": "você",
+      "options": "Opções de {name}",
+      "makeMember": "Tornar membro",
+      "makeAdmin": "Tornar admin",
+      "leave": "Sair",
+      "remove": "Remover",
+      "inviteTitle": "Convide pessoas para {workspace}",
+      "inviteDescription": "Envie o link. Elas vão precisar de uma conta para entrar.",
+      "linkForEmail": "Só {email} pode usar este link. Ele funciona uma vez e expira em 7 dias.",
+      "linkForAnyone": "Qualquer pessoa com este link pode entrar uma vez. Ele expira em 7 dias.",
+      "done": "Pronto",
+      "roleLabel": "Entrar como",
+      "roleHints": {
+        "member": "Usa as salas e encontra a equipe",
+        "admin": "Também cria salas e convida pessoas"
+      },
+      "emailLabel": "E-mail (opcional)",
+      "emailPlaceholder": "colega@empresa.com",
+      "emailHint": "Adicione um e-mail para o link funcionar só para essa pessoa.",
+      "cancel": "Cancelar",
+      "createLink": "Criar link de convite"
+    },
+    "profile": {
+      "title": "Seu perfil",
+      "changePassword": "Alterar senha",
+      "name": "Seu nome",
+      "saved": "Salvo",
+      "save": "Salvar",
+      "character": "Personagem",
+      "passwordTitle": "Altere sua senha",
+      "passwordDescription": "Digite sua senha atual e depois escolha uma nova.",
+      "passwordChanged": "Sua senha foi alterada.",
+      "done": "Pronto",
+      "currentPassword": "Senha atual",
+      "newPassword": "Nova senha",
+      "hidePasswords": "Ocultar senhas",
+      "showPasswords": "Mostrar senhas",
+      "passwordRule": "Pelo menos 8 caracteres",
+      "signsOutOthers": "Você continua conectado aqui. Em todos os outros lugares, a sessão será encerrada.",
+      "cancel": "Cancelar"
+    },
+    "invite": {
+      "invalidTitle": "Este convite não funciona",
+      "invalid": "Ele pode ter expirado, já ter sido usado ou desativado. Peça um novo.",
+      "home": "Ir para o início",
+      "eyebrow": "{name} convidou você",
+      "asAdmin": "Você foi convidado a entrar como admin.",
+      "asMember": "Você foi convidado a entrar na equipe.",
+      "join": "Entrar em {workspace}",
+      "joiningAs": "Entrando como {name} ({email})",
+      "createAccount": "Criar uma conta",
+      "signIn": "Já tenho conta",
+      "needAccount": "Você precisa de uma conta para entrar em um espaço de trabalho. Leva um minuto."
+    },
+    "errors": {
+      "member_limit": "O espaço de trabalho está cheio no plano atual.",
+      "not_allowed": "Sua função neste espaço de trabalho não permite isso.",
+      "owner_cannot_leave": "A pessoa dona precisa transferir a propriedade antes de sair.",
+      "owner_role": "A função de dono só muda transferindo a propriedade.",
+      "bad_capacity": "Escolha entre 2 e 20 pessoas.",
+      "name_required": "Dê um nome primeiro.",
+      "bad_email": "Isso não parece um endereço de e-mail.",
+      "invite_used": "Este convite já foi usado.",
+      "invite_invalid": "Este convite expirou ou foi desativado.",
+      "wrong_account": "Este convite é para outro e-mail. Entre com essa conta.",
+      "wrong_password": "Sua senha atual está incorreta.",
+      "password_too_short": "Use pelo menos 8 caracteres.",
+      "password_too_long": "Use menos de 72 caracteres.",
+      "too_many_attempts": "Muitas tentativas. Espere alguns minutos e tente de novo.",
+      "not_found": "Não foi encontrado. Pode ter sido excluído.",
+      "network": "Não foi possível conectar ao TinyFloor. Verifique sua conexão e tente de novo.",
+      "generic": "Algo deu errado. Tente de novo."
     }
   }
 }

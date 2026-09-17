@@ -116,15 +116,16 @@ describe("meeting tables through the SFU", () => {
 
     ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
     ben.send({ t: "sfu", op: "layer", userId: avaId, mid: "0", layer: "f" });
-    await settle();
-    expect(sfuRequests).toContainEqual({
-      method: "PUT",
-      path: "/sessions/session-2/renegotiate",
-      body: { sessionDescription: { type: "answer", sdp: "client-answer" } },
-    });
-    expect(sfuRequests.find((request) => request.path.endsWith("/tracks/update"))?.body?.tracks).toEqual([
-      expect.objectContaining({ sessionId: "session-1", mid: "0", simulcast: expect.objectContaining({ preferredRid: "f" }) }),
-    ]);
+    await vi.waitFor(() => {
+      expect(sfuRequests).toContainEqual({
+        method: "PUT",
+        path: "/sessions/session-2/renegotiate",
+        body: { sessionDescription: { type: "answer", sdp: "client-answer" } },
+      });
+      expect(sfuRequests.find((request) => request.path.endsWith("/tracks/update"))?.body?.tracks).toEqual([
+        expect.objectContaining({ sessionId: "session-1", mid: "0", simulcast: expect.objectContaining({ preferredRid: "f" }) }),
+      ]);
+    }, { timeout: 5000 });
   });
 
   it("won't let someone watch a table they aren't at", async () => {

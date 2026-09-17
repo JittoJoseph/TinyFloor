@@ -177,23 +177,50 @@
     "credits": "Tekijät"
   },
   "auth": {
-    "welcomeBack": "Tervetuloa takaisin",
-    "joinUs": "Liity mukaan",
-    "signInSubtitle": "Kirjaudu tilillesi",
-    "registerSubtitle": "Luo työtilatilisi",
-    "username": "Käyttäjänimi",
-    "emailOptional": "Sähköposti (valinnainen)",
-    "displayNameOptional": "Näyttönimi (valinnainen)",
+    "tabSignIn": "Kirjaudu",
+    "tabSignUp": "Luo tili",
+    "chooseMode": "Kirjaudu sisään tai luo tili",
+    "signInTitle": "Tervetuloa takaisin",
+    "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
+    "signUpTitle": "Luo tilisi",
+    "signUpSubtitle": "Valitse ulkonäkösi ja perusta sitten toimisto tiimillesi.",
+    "name": "Nimesi",
+    "namePlaceholder": "Näin muut näkevät sinut",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sina@yritys.fi",
     "password": "Salasana",
+    "passwordPlaceholder": "Salasanasi",
+    "newPasswordPlaceholder": "Valitse salasana",
+    "passwordRule": "Vähintään 8 merkkiä",
+    "capsLock": "Caps Lock on päällä",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana",
-    "signIn": "Kirjaudu sisään",
-    "signUp": "Rekisteröidy",
+    "character": "Hahmo",
+    "signIn": "Kirjaudu",
+    "signingIn": "Kirjaudutaan…",
     "createAccount": "Luo tili",
-    "noAccount": "Eikö sinulla ole tiliä?",
+    "creatingAccount": "Luodaan tiliäsi…",
+    "noAccount": "Uusi TinyFloorissa?",
+    "createOne": "Luo tili",
     "haveAccount": "Onko sinulla jo tili?",
-    "continueGuest": "Jatka vieraana →",
-    "error": "Tapahtui virhe"
+    "signInInstead": "Kirjaudu sen sijaan",
+    "guestCarryOver": "Vierailet nimellä {name}. Nimesi ja hahmosi tulevat mukana.",
+    "continueGuest": "Katseletko vain? Vieraile aulassa vieraana",
+    "errors": {
+      "wrong_credentials": "Sähköposti ja salasana eivät täsmää. Yritä uudelleen.",
+      "too_many_attempts": "Liian monta yritystä. Odota muutama minuutti ja yritä sitten uudelleen.",
+      "email_taken": "Tällä sähköpostilla on jo tili.",
+      "bad_email": "Tämä ei näytä sähköpostiosoitteelta.",
+      "email_required": "Anna sähköpostisi.",
+      "password_required": "Anna salasanasi.",
+      "password_too_short": "Käytä vähintään 8 merkkiä.",
+      "password_too_long": "Käytä alle 72 merkkiä.",
+      "password_blank": "Salasana ei voi olla pelkkiä välilyöntejä.",
+      "name_required": "Valitse nimi, jonka muut näkevät.",
+      "turnstile": "Emme voineet varmistaa, että olet ihminen. Yritä uudelleen.",
+      "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
+      "generic": "Jokin meni vikaan. Yritä uudelleen."
+    }
   },
   "entry": {
     "allRooms": "Kaikki huoneet",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Kokeile toista hakua tai palaa pian."
   },
   "userMenu": {
-    "manageProfile": "Hallitse profiilia"
+    "manageProfile": "Hallitse profiilia",
+    "visitingAsGuest": "Vierailet vieraana",
+    "keepYourName": "Säilytä nimi ja hahmo"
   },
   "dashboard": {
     "subtitle": "Hallitse profiiliasi ja huoneitasi",

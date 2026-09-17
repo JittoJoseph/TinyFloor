@@ -177,23 +177,50 @@
     "credits": "Авторы"
   },
   "auth": {
-    "welcomeBack": "С возвращением",
-    "joinUs": "Присоединяйтесь",
-    "signInSubtitle": "Войдите в свой аккаунт",
-    "registerSubtitle": "Создайте рабочий аккаунт",
-    "username": "Имя пользователя",
-    "emailOptional": "Эл. почта (необязательно)",
-    "displayNameOptional": "Отображаемое имя (необязательно)",
+    "tabSignIn": "Войти",
+    "tabSignUp": "Создать аккаунт",
+    "chooseMode": "Войдите или создайте аккаунт",
+    "signInTitle": "С возвращением",
+    "signInSubtitle": "Войдите, чтобы вернуться в офис своей команды.",
+    "signUpTitle": "Создайте аккаунт",
+    "signUpSubtitle": "Выберите, как вы будете выглядеть, а затем обустройте офис для команды.",
+    "name": "Ваше имя",
+    "namePlaceholder": "Так вас увидят другие",
+    "email": "Эл. почта",
+    "emailPlaceholder": "vy@kompaniya.ru",
     "password": "Пароль",
+    "passwordPlaceholder": "Ваш пароль",
+    "newPasswordPlaceholder": "Придумайте пароль",
+    "passwordRule": "Не менее 8 символов",
+    "capsLock": "Включён Caps Lock",
     "showPassword": "Показать пароль",
     "hidePassword": "Скрыть пароль",
+    "character": "Персонаж",
     "signIn": "Войти",
-    "signUp": "Зарегистрироваться",
+    "signingIn": "Вход…",
     "createAccount": "Создать аккаунт",
-    "noAccount": "Нет аккаунта?",
+    "creatingAccount": "Создаём аккаунт…",
+    "noAccount": "Впервые в TinyFloor?",
+    "createOne": "Создайте аккаунт",
     "haveAccount": "Уже есть аккаунт?",
-    "continueGuest": "Продолжить как гость →",
-    "error": "Произошла ошибка"
+    "signInInstead": "Войти",
+    "guestCarryOver": "Вы в гостях как {name}. Ваше имя и персонаж сохранятся.",
+    "continueGuest": "Просто посмотреть? Загляните в лобби как гость",
+    "errors": {
+      "wrong_credentials": "Эл. почта и пароль не совпадают. Попробуйте ещё раз.",
+      "too_many_attempts": "Слишком много попыток. Подождите несколько минут и попробуйте снова.",
+      "email_taken": "Аккаунт с этой почтой уже существует.",
+      "bad_email": "Это не похоже на адрес эл. почты.",
+      "email_required": "Введите эл. почту.",
+      "password_required": "Введите пароль.",
+      "password_too_short": "Используйте не менее 8 символов.",
+      "password_too_long": "Используйте меньше 72 символов.",
+      "password_blank": "Пароль не может состоять только из пробелов.",
+      "name_required": "Выберите имя, которое увидят другие.",
+      "turnstile": "Не удалось убедиться, что вы человек. Попробуйте ещё раз.",
+      "network": "Не удаётся связаться с TinyFloor. Проверьте подключение и попробуйте снова.",
+      "generic": "Что-то пошло не так. Попробуйте ещё раз."
+    }
   },
   "entry": {
     "allRooms": "Все комнаты",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Попробуйте другой запрос или загляните позже."
   },
   "userMenu": {
-    "manageProfile": "Управление профилем"
+    "manageProfile": "Управление профилем",
+    "visitingAsGuest": "Вы в гостях",
+    "keepYourName": "Сохраните имя и персонажа"
   },
   "dashboard": {
     "subtitle": "Управляйте профилем и комнатами",

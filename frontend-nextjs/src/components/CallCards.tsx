@@ -5,6 +5,7 @@ import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
 import { useCall } from "@/lib/useCall";
+import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
@@ -124,6 +125,13 @@ export default function CallCards() {
   ];
 
   const focusedTile = tiles.find((tile) => tile.key === focused);
+
+  // At a meeting table this picks each camera's quality from the SFU.
+  const tileCount = tiles.length;
+  const focusedKey = focusedTile?.key ?? null;
+  useEffect(() => {
+    callManager.setLayout(tileCount, focusedKey);
+  }, [tileCount, focusedKey, peers]);
 
   useEffect(() => {
     if (!focusedTile) return;

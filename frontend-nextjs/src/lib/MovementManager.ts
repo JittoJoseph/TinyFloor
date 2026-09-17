@@ -4,7 +4,7 @@ import {
   Direction,
   directionFromVector,
 } from "./AnimationManager";
-import { WebSocketManager } from "./WebSocketManager";
+import type { RoomSocket } from "./RoomSocket";
 import { VirtualJoystickManager } from "./VirtualJoystickManager";
 import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
 import { depthForY } from "./MapManager";
@@ -16,7 +16,7 @@ export class MovementManager {
   private scene: Phaser.Scene;
   private player: Phaser.Physics.Arcade.Sprite;
   private animationManager: AnimationManager;
-  private wsManager: WebSocketManager;
+  private wsManager: RoomSocket;
   private nav: NavGrid;
   private collides: (x: number, y: number) => boolean;
   private joystick?: VirtualJoystickManager;
@@ -35,7 +35,7 @@ export class MovementManager {
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     animationManager: AnimationManager,
-    wsManager: WebSocketManager,
+    wsManager: RoomSocket,
     nav: NavGrid,
     collides: (x: number, y: number) => boolean,
     joystick?: VirtualJoystickManager,
@@ -172,7 +172,7 @@ export class MovementManager {
   private follow(path: Vec[], tileX: number, tileY: number) {
     this.path = path;
     this.arrive = undefined;
-    this.wsManager.send("walk_to", { tileX, tileY });
+    this.wsManager.send({ t: "walk_to", x: tileX, y: tileY });
   }
 
   /**
@@ -263,7 +263,7 @@ export class MovementManager {
     }
 
     this.lastSentTile = key;
-    this.wsManager.send("move", { tileX: tile.tileX, tileY: tile.tileY });
+    this.wsManager.send({ t: "move", x: tile.tileX, y: tile.tileY });
   }
 
   setInputEnabled(enabled: boolean) {

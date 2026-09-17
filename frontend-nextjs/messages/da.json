@@ -177,23 +177,50 @@
     "credits": "Kreditering"
   },
   "auth": {
-    "welcomeBack": "Velkommen tilbage",
-    "joinUs": "Kom med",
-    "signInSubtitle": "Log ind på din konto",
-    "registerSubtitle": "Opret din arbejdsområdekonto",
-    "username": "Brugernavn",
-    "emailOptional": "E-mail (valgfri)",
-    "displayNameOptional": "Visningsnavn (valgfrit)",
+    "tabSignIn": "Log ind",
+    "tabSignUp": "Opret konto",
+    "chooseMode": "Log ind eller opret en konto",
+    "signInTitle": "Velkommen tilbage",
+    "signInSubtitle": "Log ind for at komme tilbage til dit teams kontor.",
+    "signUpTitle": "Opret din konto",
+    "signUpSubtitle": "Vælg hvordan du ser ud, og indret så et kontor til dit team.",
+    "name": "Dit navn",
+    "namePlaceholder": "Sådan ser andre dig",
+    "email": "E-mail",
+    "emailPlaceholder": "dig@firma.dk",
     "password": "Adgangskode",
+    "passwordPlaceholder": "Din adgangskode",
+    "newPasswordPlaceholder": "Vælg en adgangskode",
+    "passwordRule": "Mindst 8 tegn",
+    "capsLock": "Caps Lock er slået til",
     "showPassword": "Vis adgangskode",
     "hidePassword": "Skjul adgangskode",
+    "character": "Figur",
     "signIn": "Log ind",
-    "signUp": "Tilmeld dig",
+    "signingIn": "Logger ind…",
     "createAccount": "Opret konto",
-    "noAccount": "Har du ikke en konto?",
+    "creatingAccount": "Opretter din konto…",
+    "noAccount": "Ny på TinyFloor?",
+    "createOne": "Opret en konto",
     "haveAccount": "Har du allerede en konto?",
-    "continueGuest": "Fortsæt som gæst →",
-    "error": "Der opstod en fejl"
+    "signInInstead": "Log ind i stedet",
+    "guestCarryOver": "Du er her som {name}. Dit navn og din figur følger med.",
+    "continueGuest": "Vil du bare kigge? Besøg lobbyen som gæst",
+    "errors": {
+      "wrong_credentials": "E-mail og adgangskode passer ikke sammen. Prøv igen.",
+      "too_many_attempts": "For mange forsøg. Vent et par minutter, og prøv så igen.",
+      "email_taken": "Der findes allerede en konto med denne e-mail.",
+      "bad_email": "Det ligner ikke en e-mailadresse.",
+      "email_required": "Skriv din e-mail.",
+      "password_required": "Skriv din adgangskode.",
+      "password_too_short": "Brug mindst 8 tegn.",
+      "password_too_long": "Brug færre end 72 tegn.",
+      "password_blank": "En adgangskode kan ikke kun bestå af mellemrum.",
+      "name_required": "Vælg et navn, som andre kan se.",
+      "turnstile": "Vi kunne ikke bekræfte, at du er et menneske. Prøv igen.",
+      "network": "TinyFloor kan ikke nås. Tjek din forbindelse, og prøv igen.",
+      "generic": "Noget gik galt. Prøv igen."
+    }
   },
   "entry": {
     "allRooms": "Alle rum",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Prøv en anden søgning, eller kig forbi igen snart."
   },
   "userMenu": {
-    "manageProfile": "Administrer profil"
+    "manageProfile": "Administrer profil",
+    "visitingAsGuest": "Besøger som gæst",
+    "keepYourName": "Behold navn og figur"
   },
   "dashboard": {
     "subtitle": "Administrer din profil og dine rum",

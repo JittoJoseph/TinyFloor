@@ -2,9 +2,8 @@
 
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import { Video, Mic, MessageSquare, User } from "lucide-react";
+import { Video, Mic, MessageSquare } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
-import { profilePath } from "@/lib/links";
 
 export interface NearbyPlayer {
   id: string;
@@ -94,18 +93,6 @@ export const ProximityActions = memo(function ProximityActions({
       >
         <MessageSquare className={size.icon} />
       </button>
-      {!player.guest && (
-        <button
-          onClick={() =>
-            window.open(profilePath(player.id), "_blank", "noopener,noreferrer")
-          }
-          className={actionClass}
-          title={t("viewProfile")}
-          aria-label={t("viewProfile")}
-        >
-          <User className={size.icon} />
-        </button>
-      )}
     </div>
   );
 });

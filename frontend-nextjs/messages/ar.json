@@ -177,23 +177,50 @@
     "credits": "شكر وتقدير"
   },
   "auth": {
-    "welcomeBack": "مرحبًا بعودتك",
-    "joinUs": "انضم إلينا",
-    "signInSubtitle": "سجّل الدخول إلى حسابك",
-    "registerSubtitle": "أنشئ حساب مساحة العمل",
-    "username": "اسم المستخدم",
-    "emailOptional": "البريد الإلكتروني (اختياري)",
-    "displayNameOptional": "الاسم المعروض (اختياري)",
+    "tabSignIn": "تسجيل الدخول",
+    "tabSignUp": "إنشاء حساب",
+    "chooseMode": "سجّل الدخول أو أنشئ حسابًا",
+    "signInTitle": "مرحبًا بعودتك",
+    "signInSubtitle": "سجّل الدخول للعودة إلى مكتب فريقك.",
+    "signUpTitle": "أنشئ حسابك",
+    "signUpSubtitle": "اختر مظهرك، ثم جهّز مكتبًا لفريقك.",
+    "name": "اسمك",
+    "namePlaceholder": "الاسم الذي يراه الآخرون",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "you@company.com",
     "password": "كلمة المرور",
+    "passwordPlaceholder": "كلمة المرور",
+    "newPasswordPlaceholder": "اختر كلمة مرور",
+    "passwordRule": "8 أحرف على الأقل",
+    "capsLock": "مفتاح Caps Lock مفعّل",
     "showPassword": "إظهار كلمة المرور",
     "hidePassword": "إخفاء كلمة المرور",
+    "character": "الشخصية",
     "signIn": "تسجيل الدخول",
-    "signUp": "اشترك",
+    "signingIn": "جارٍ تسجيل الدخول…",
     "createAccount": "إنشاء حساب",
-    "noAccount": "ليس لديك حساب؟",
+    "creatingAccount": "جارٍ إنشاء حسابك…",
+    "noAccount": "جديد على TinyFloor؟",
+    "createOne": "أنشئ حسابًا",
     "haveAccount": "لديك حساب بالفعل؟",
-    "continueGuest": "المتابعة كضيف ←",
-    "error": "حدث خطأ"
+    "signInInstead": "سجّل الدخول بدلًا من ذلك",
+    "guestCarryOver": "أنت تزور باسم {name}. سيبقى اسمك وشخصيتك معك.",
+    "continueGuest": "تتصفح فقط؟ زر الردهة كضيف",
+    "errors": {
+      "wrong_credentials": "البريد الإلكتروني وكلمة المرور غير متطابقين. حاول مرة أخرى.",
+      "too_many_attempts": "محاولات كثيرة جدًا. انتظر بضع دقائق ثم حاول مرة أخرى.",
+      "email_taken": "يوجد حساب بهذا البريد الإلكتروني بالفعل.",
+      "bad_email": "لا يبدو هذا عنوان بريد إلكتروني.",
+      "email_required": "أدخل بريدك الإلكتروني.",
+      "password_required": "أدخل كلمة المرور.",
+      "password_too_short": "استخدم 8 أحرف على الأقل.",
+      "password_too_long": "استخدم أقل من 72 حرفًا.",
+      "password_blank": "لا يمكن أن تتكون كلمة المرور من مسافات فقط.",
+      "name_required": "اختر اسمًا يراه الآخرون.",
+      "turnstile": "تعذّر التحقق من أنك إنسان. حاول مرة أخرى.",
+      "network": "تعذّر الوصول إلى TinyFloor. تحقق من اتصالك وحاول مرة أخرى.",
+      "generic": "حدث خطأ ما. حاول مرة أخرى."
+    }
   },
   "entry": {
     "allRooms": "كل الغرف",
@@ -257,7 +284,9 @@
     "noPeopleBody": "جرّب بحثًا آخر أو عُد لاحقًا."
   },
   "userMenu": {
-    "manageProfile": "إدارة الملف الشخصي"
+    "manageProfile": "إدارة الملف الشخصي",
+    "visitingAsGuest": "تزور كضيف",
+    "keepYourName": "احتفظ باسمك وشخصيتك"
   },
   "dashboard": {
     "subtitle": "أدِر ملفك الشخصي وغرفك",

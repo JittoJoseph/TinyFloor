@@ -1,7 +1,7 @@
 import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
-import { WebSocketManager } from "./WebSocketManager";
+import type { RoomSocket } from "./RoomSocket";
 import { callManager } from "./CallManager";
 import type { GoTo } from "./Interactable";
 import { SceneLabel } from "./SceneLabel";
@@ -51,7 +51,7 @@ export class SeatManager {
   private scene: Phaser.Scene;
   private player: Phaser.Physics.Arcade.Sprite;
   private animations: AnimationManager;
-  private ws?: WebSocketManager;
+  private ws?: RoomSocket;
   private seats: Seat[] = [];
   private byId = new Map<number, Seat>();
   private ring: Phaser.GameObjects.Graphics;
@@ -122,7 +122,7 @@ export class SeatManager {
   }
 
   attach(
-    ws: WebSocketManager,
+    ws: RoomSocket,
     onSitChange: (seated: boolean) => void,
     goTo: GoTo,
     onMeetingChange: (people: ReadonlySet<string> | null) => void,
@@ -182,6 +182,19 @@ export class SeatManager {
     this.changed();
   }
 
+  /**
+   * After a reconnect the room has forgotten where we sat, so sit down again,
+   * which also rejoins the table's call.
+   */
+  resit() {
+    const seat = this.seated;
+    if (!seat) return;
+    if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();
+    this.seated = undefined;
+    seat.occupant = undefined;
+    this.sit(seat);
+  }
+
   /** The server gave the chair to whoever asked first. */
   rejected() {
     this.stand();
@@ -222,11 +235,12 @@ export class SeatManager {
     this.changed();
 
     const tile = pixelToTile(seat.x, seat.y);
-    this.ws?.send("sit", {
+    this.ws?.send({
+      t: "sit",
       seat: seat.id,
-      tileX: tile.tileX,
-      tileY: tile.tileY,
-      meeting: meeting ? MEETING_ZONE : undefined,
+      x: tile.tileX,
+      y: tile.tileY,
+      ...(meeting ? { meeting: MEETING_ZONE } : {}),
     });
     this.ring.clear();
     // at the meeting table the call is the focus, and E still gets you up
@@ -256,7 +270,7 @@ export class SeatManager {
 
     if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();
     const tile = pixelToTile(pose.standX, pose.standY);
-    this.ws?.send("stand", { tileX: tile.tileX, tileY: tile.tileY });
+    this.ws?.send({ t: "stand", x: tile.tileX, y: tile.tileY });
     this.prompt.container.setVisible(false);
   }
 

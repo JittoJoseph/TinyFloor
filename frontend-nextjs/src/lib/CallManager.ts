@@ -1,4 +1,7 @@
-import { WebSocketManager } from "./WebSocketManager";
+import type { CallKind, MediaFlags, ServerMessage } from "@shared/messages";
+import type { RoomSocket } from "./RoomSocket";
+import { api } from "./api";
+import { SfuMeeting } from "./SfuMeeting";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { GUIDE_ID } from "./tutorial";
 import { sceneText } from "./sceneText";
@@ -46,9 +49,16 @@ interface MeetingMember {
   name?: string;
 }
 
-const ICE_SERVERS = [
-  { urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"] },
-];
+type CallMessage = Extract<ServerMessage, { t: "call" }>;
+type MeetingMessage = Extract<
+  ServerMessage,
+  { t: "meeting_joined" | "meeting_member_joined" | "meeting_member_left" | "sfu" }
+>;
+
+/** Used until the API's TURN credentials arrive, and if they can't be had. */
+const FALLBACK_ICE: RTCIceServer[] = [{ urls: "stun:stun.cloudflare.com:3478" }];
+/** Credentials are refreshed this long before they expire. */
+const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
 const GUIDE_ANSWER_DELAY = 1600;
 const AUDIO_CONSTRAINTS = {
@@ -59,7 +69,11 @@ const AUDIO_CONSTRAINTS = {
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
 const SLOTS = ["audio", "video", "video"] as const;
+const CAMERA_SLOT = 1;
 const SCREEN_SLOT = 2;
+// Upload caps for peer-to-peer calls. Uncapped, a camera sends about 1.7 Mbps.
+const CAMERA_MAX_BITRATE = 1_000_000;
+const SCREEN_MAX_BITRATE = 1_500_000;
 
 function savedDevices(): { audio?: string; video?: string } {
   try {
@@ -111,14 +125,16 @@ const EMPTY: CallSnapshot = {
 const PREFS = loadPreferences();
 
 /**
- * Every connection has one side that offers, the caller or whoever sat down
- * last, and the other only answers, so two offers never cross. Each connection
- * carries a fixed mic, camera and screen slot, and turning any of them on or off
- * swaps what is in the slot instead of renegotiating.
+ * Proximity calls are peer-to-peer: every connection has one side that offers,
+ * the caller or whoever was added last, and the other only answers, so two
+ * offers never cross. Each carries a fixed mic, camera and screen slot, and
+ * turning any of them on or off swaps what is in the slot instead of
+ * renegotiating. Meeting tables go through the SFU instead (SfuMeeting).
  */
 class CallManager {
-  private ws: WebSocketManager | null = null;
+  private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
+  private sfu: SfuMeeting | null = null;
   private local: MediaStream | null = null;
   private screen: MediaStream | null = null;
   private incoming: { id: string; name: string; video: boolean } | null = null;
@@ -128,6 +144,8 @@ class CallManager {
   private meeting: string | null = null;
   private error: CallError | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
+  private iceServers: RTCIceServer[] = FALLBACK_ICE;
+  private iceTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
   private snap: CallSnapshot = {
     ...EMPTY,
@@ -140,14 +158,16 @@ class CallManager {
     onSpeakerChange(() => this.emit());
   }
 
-  attach(ws: WebSocketManager) {
+  attach(ws: RoomSocket) {
     this.ws = ws;
+    void this.loadIceServers();
   }
 
   detach() {
     this.leaveMeeting();
     this.hangUp();
     stopSound("ring");
+    clearTimeout(this.iceTimer);
     this.ws = null;
   }
 
@@ -178,7 +198,7 @@ class CallManager {
     if (id === GUIDE_ID) {
       this.ring(() => this.answerAsGuide(video), GUIDE_ANSWER_DELAY);
     } else {
-      this.send("call_invite", { to: id, video, group: this.peers.size > 0 });
+      this.send("invite", id, { video, group: this.peers.size > 0 });
       this.ring(() => this.cancel());
     }
     this.emit();
@@ -215,7 +235,7 @@ class CallManager {
     this.incoming = null;
 
     this.createPeer(call.id, call.name, false);
-    this.send("call_accept", { to: call.id });
+    this.send("accept", call.id);
     this.introduce(call.id);
     this.emit();
 
@@ -226,7 +246,7 @@ class CallManager {
     if (!this.incoming) return;
     this.clearRing();
     stopSound("ring");
-    this.send("call_decline", { to: this.incoming.id, reason: "declined" });
+    this.send("decline", this.incoming.id, { reason: "declined" });
     this.incoming = null;
     this.emit();
   }
@@ -236,7 +256,7 @@ class CallManager {
     this.clearRing();
     stopSound("ring");
     if (this.outgoing.id !== GUIDE_ID) {
-      this.send("call_end", { to: this.outgoing.id });
+      this.send("end", this.outgoing.id);
     }
     this.outgoing = null;
     this.emit();
@@ -245,7 +265,7 @@ class CallManager {
   hangUp(id?: string) {
     const targets = id ? [id] : [...this.peers.keys()];
     targets.forEach((peerId) => {
-      if (peerId !== GUIDE_ID) this.send("call_end", { to: peerId });
+      if (peerId !== GUIDE_ID) this.send("end", peerId);
       this.closePeer(peerId);
     });
     if (!id) {
@@ -265,54 +285,50 @@ class CallManager {
       this.outgoing = null;
     }
     this.closePeer(id);
+    this.sfu?.removeMember(id);
     this.emit();
   }
 
-  handleMessage(type: string, data: Record<string, unknown>) {
-    const from = data.from as string;
+  handleCall({ kind, from, fromName, data }: CallMessage) {
     if (!from) return;
+    const payload = (data ?? {}) as Record<string, unknown>;
 
-    switch (type) {
-      case "call_invite":
-        this.onInvite(from, data.fromName as string, !!data.video, !!data.group);
+    switch (kind) {
+      case "invite":
+        this.onInvite(from, fromName, !!payload.video, !!payload.group);
         break;
-      case "call_add":
-        this.onAdd(from, data);
+      case "add":
+        this.onAdd(from, payload);
         break;
-      case "call_accept":
-        this.onAccept(from);
+      case "accept":
+        void this.onAccept(from);
         break;
-      case "call_decline":
+      case "decline":
         if (this.outgoing?.id === from) this.cancelOutgoing();
         break;
-      case "call_signal":
-        this.onSignal(from, data.signal as Signal);
+      case "signal":
+        void this.onSignal(from, payload.signal as Signal);
         break;
-      case "call_end":
+      case "end":
         this.dropPeer(from);
         break;
     }
   }
 
-  /**
-   * A table call is a mesh. Whoever sits down offers to everyone already
-   * seated; those already seated wait for that offer.
-   */
-  handleMeeting(type: string, data: Record<string, unknown>) {
-    switch (type) {
+  /** Sitting at a meeting table: the call runs through the SFU. */
+  handleMeeting(message: MeetingMessage) {
+    switch (message.t) {
       case "meeting_joined":
-        void this.joinMeeting(
-          String(data.meeting),
-          (data.members as MeetingMember[] | undefined) ?? [],
-        );
+        void this.joinMeeting(message.meeting, message.members);
         break;
       case "meeting_member_joined":
-        if (!this.meeting) break;
-        this.createPeer(String(data.id), String(data.name || "Someone"), false);
-        this.emit();
+        this.sfu?.addMember(message.id, message.name);
         break;
       case "meeting_member_left":
-        if (this.meeting) this.dropPeer(String(data.id));
+        this.sfu?.removeMember(message.id);
+        break;
+      case "sfu":
+        this.sfu?.handle(message);
         break;
     }
   }
@@ -320,10 +336,16 @@ class CallManager {
   leaveMeeting() {
     if (!this.meeting) return;
     this.meeting = null;
-    [...this.peers.keys()].forEach((id) => this.closePeer(id));
+    this.sfu?.close();
+    this.sfu = null;
     this.releaseMedia();
     playSound("end");
     this.emit();
+  }
+
+  /** The call cards' layout, which picks the quality of each camera at a table. */
+  setLayout(tiles: number, focusedPeer: string | null) {
+    this.sfu?.setLayout(tiles, focusedPeer);
   }
 
   setMic(enabled: boolean) {
@@ -376,6 +398,7 @@ class CallManager {
     track.contentHint = "detail";
     track.addEventListener("ended", () => this.stopScreen());
     this.screen = stream;
+    this.sfu?.setScreen(stream);
     this.shareTracks();
   }
 
@@ -383,6 +406,7 @@ class CallManager {
     if (!this.screen) return;
     this.screen.getTracks().forEach((track) => track.stop());
     this.screen = null;
+    this.sfu?.setScreen(null);
     this.shareTracks();
   }
 
@@ -397,21 +421,24 @@ class CallManager {
 
   private async joinMeeting(name: string, members: MeetingMember[]) {
     this.hangUp();
+    this.sfu?.close();
     this.meeting = name;
     this.error = null;
-    members.forEach((member) =>
-      this.createPeer(member.id, member.name || "Someone", true),
+    // Ready straight away, so it hears who is already sharing while media opens.
+    const sfu = new SfuMeeting(
+      (message) => this.ws?.send({ t: "sfu", ...message }),
+      () => this.emit(),
+      this.iceServers,
     );
+    this.sfu = sfu;
+    members.forEach((member) => sfu.addMember(member.id, member.name));
     playSound("connect");
     this.emit();
 
     const opened = await this.openMedia(true);
-    if (this.meeting !== name) {
-      if (!this.peers.size) this.releaseMedia();
-      return;
-    }
-    if (opened) this.shareTracks();
-    else this.emit();
+    if (this.sfu !== sfu) return;
+    sfu.publishLocal(opened ? this.local : null, this.flags());
+    this.emit();
   }
 
   private async startCall(id: string, video: boolean) {
@@ -432,21 +459,33 @@ class CallManager {
       this.local?.getVideoTracks()[0],
       this.screen?.getVideoTracks()[0],
     ];
+    const crowded = this.peers.size > 1;
     peer.pc?.getTransceivers().forEach((transceiver, slot) => {
       if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
-      transceiver.sender.replaceTrack(tracks[slot] ?? null).catch(() => {});
+      transceiver.sender
+        .replaceTrack(tracks[slot] ?? null)
+        .then(() => {
+          if (slot === CAMERA_SLOT) capSender(transceiver.sender, CAMERA_MAX_BITRATE, crowded ? 4 / 3 : 1);
+          if (slot === SCREEN_SLOT) capSender(transceiver.sender, SCREEN_MAX_BITRATE, 1, 15);
+        })
+        .catch(() => {});
     });
   }
 
-  private shareMedia(to?: PeerEntry) {
-    const media = {
+  private flags(): MediaFlags {
+    return {
       mic: this.micEnabled && !!this.local?.getAudioTracks().length,
       camera: this.cameraEnabled && !!this.local?.getVideoTracks().length,
       screen: !!this.screen,
     };
+  }
+
+  private shareMedia(to?: PeerEntry) {
+    const media = this.flags();
     (to ? [to] : [...this.peers.values()]).forEach((peer) => {
-      if (peer.pc) this.send("call_signal", { to: peer.id, signal: { media } });
+      if (peer.pc) this.send("signal", peer.id, { signal: { media } });
     });
+    if (!to) this.sfu?.updateLocal(this.local, media);
   }
 
   /** Mid meeting, mid ring or on the tutorial call, nobody else gets through. */
@@ -456,14 +495,14 @@ class CallManager {
 
   /**
    * Whoever already has others on the call introduces the newcomer to each of
-   * them, and the newcomer offers, just like sitting down at the table. Two
-   * calls never merge, so only one side ever has anyone to introduce.
+   * them, and the newcomer offers. Two calls never merge, so only one side ever
+   * has anyone to introduce.
    */
   private introduce(id: string) {
     this.peers.forEach((peer) => {
       if (peer.id === id || !peer.pc) return;
-      this.send("call_add", { to: peer.id, id, offer: false });
-      this.send("call_add", { to: id, id: peer.id, offer: true });
+      this.send("add", peer.id, { id, offer: false });
+      this.send("add", id, { id: peer.id, offer: true });
     });
   }
 
@@ -477,7 +516,7 @@ class CallManager {
 
   private onInvite(id: string, name: string, video: boolean, group: boolean) {
     if (this.busy() || (group && this.peers.size)) {
-      this.send("call_decline", { to: id, reason: "busy" });
+      this.send("decline", id, { reason: "busy" });
       return;
     }
     this.error = null;
@@ -513,7 +552,7 @@ class CallManager {
     const existing = this.peers.get(id);
     if (existing) return existing;
 
-    const pc = new RTCPeerConnection({ iceServers: ICE_SERVERS });
+    const pc = new RTCPeerConnection({ iceServers: this.iceServers });
     const peer: PeerEntry = {
       id,
       name,
@@ -528,9 +567,7 @@ class CallManager {
     this.peers.set(id, peer);
 
     pc.onicecandidate = ({ candidate }) => {
-      if (candidate) {
-        this.send("call_signal", { to: id, signal: { candidate: candidate.toJSON() } });
-      }
+      if (candidate) this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
     };
 
     pc.ontrack = ({ track, transceiver }) => {
@@ -554,7 +591,7 @@ class CallManager {
       pc.onnegotiationneeded = async () => {
         try {
           await pc.setLocalDescription();
-          this.send("call_signal", { to: id, signal: { sdp: pc.localDescription! } });
+          this.send("signal", id, { signal: { sdp: pc.localDescription! } });
         } catch {
           this.error = "connection";
           this.emit();
@@ -584,7 +621,7 @@ class CallManager {
         if (signal.sdp.type === "offer") {
           this.syncTracks(peer);
           await pc.setLocalDescription();
-          this.send("call_signal", { to: from, signal: { sdp: pc.localDescription! } });
+          this.send("signal", from, { signal: { sdp: pc.localDescription! } });
         }
         this.shareMedia(peer);
       }
@@ -620,9 +657,7 @@ class CallManager {
         audio: { ...AUDIO_CONSTRAINTS, deviceId: deviceId(devices.audio) },
         video: wantsCamera && videoConstraints(devices.video),
       });
-      this.local
-        .getAudioTracks()
-        .forEach((track) => (track.enabled = this.micEnabled));
+      this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
     } catch {
@@ -655,6 +690,20 @@ class CallManager {
     this.screen = null;
   }
 
+  /** Cloudflare TURN credentials from the API, refreshed before they run out. */
+  private async loadIceServers() {
+    clearTimeout(this.iceTimer);
+    try {
+      const { iceServers, expiresAt } = await api.iceServers();
+      this.iceServers = iceServers;
+      const refreshIn = Math.max(60_000, expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS);
+      this.iceTimer = setTimeout(() => void this.loadIceServers(), refreshIn);
+    } catch {
+      // Direct connections still work over STUN; try again in a minute.
+      this.iceTimer = setTimeout(() => void this.loadIceServers(), 60_000);
+    }
+  }
+
   private ring(onTimeout: () => void, delay: number = RING_TIMEOUT) {
     this.clearRing();
     this.ringTimer = setTimeout(onTimeout, delay);
@@ -665,18 +714,21 @@ class CallManager {
     this.ringTimer = undefined;
   }
 
-  private send(type: string, data: Record<string, unknown>) {
-    this.ws?.send(type, data);
+  private send(kind: CallKind, to: string, data?: Record<string, unknown>) {
+    this.ws?.send({ t: "call", kind, to, ...(data ? { data } : {}) });
   }
 
   private emit() {
+    const peers = this.sfu
+      ? this.sfu.peerList
+      : [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined }));
     this.snap = {
       incoming: this.incoming,
       outgoing: this.outgoing && {
         id: this.outgoing.id,
         name: this.outgoing.name,
       },
-      peers: [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined })),
+      peers,
       localStream: this.local,
       screenStream: this.screen,
       micEnabled: this.micEnabled,
@@ -687,6 +739,25 @@ class CallManager {
     };
     this.listeners.forEach((listener) => listener());
   }
+}
+
+/** Keeps a peer-to-peer sender under a bitrate, and optionally smaller or slower. */
+function capSender(sender: RTCRtpSender, maxBitrate: number, scaleDown = 1, maxFramerate?: number) {
+  if (!sender.track) return;
+  const parameters = sender.getParameters();
+  if (!parameters.encodings?.length) parameters.encodings = [{}];
+  const encoding = parameters.encodings[0];
+  if (
+    encoding.maxBitrate === maxBitrate &&
+    (encoding.scaleResolutionDownBy ?? 1) === scaleDown &&
+    encoding.maxFramerate === maxFramerate
+  ) {
+    return;
+  }
+  encoding.maxBitrate = maxBitrate;
+  encoding.scaleResolutionDownBy = scaleDown;
+  if (maxFramerate) encoding.maxFramerate = maxFramerate;
+  sender.setParameters(parameters).catch(() => {});
 }
 
 function videoConstraints(id?: string): MediaTrackConstraints {

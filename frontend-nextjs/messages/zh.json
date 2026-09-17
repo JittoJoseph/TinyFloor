@@ -177,23 +177,50 @@
     "credits": "致谢"
   },
   "auth": {
-    "welcomeBack": "欢迎回来",
-    "joinUs": "加入我们",
-    "signInSubtitle": "登录你的账号",
-    "registerSubtitle": "创建你的工作空间账号",
-    "username": "用户名",
-    "emailOptional": "邮箱（可选）",
-    "displayNameOptional": "显示名称（可选）",
+    "tabSignIn": "登录",
+    "tabSignUp": "创建账号",
+    "chooseMode": "登录或创建账号",
+    "signInTitle": "欢迎回来",
+    "signInSubtitle": "登录后回到你们团队的办公室。",
+    "signUpTitle": "创建你的账号",
+    "signUpSubtitle": "先选好你的形象，再为团队布置一间办公室。",
+    "name": "你的名字",
+    "namePlaceholder": "别人看到的名字",
+    "email": "邮箱",
+    "emailPlaceholder": "you@company.com",
     "password": "密码",
+    "passwordPlaceholder": "你的密码",
+    "newPasswordPlaceholder": "设置一个密码",
+    "passwordRule": "至少 8 个字符",
+    "capsLock": "大写锁定已开启",
     "showPassword": "显示密码",
     "hidePassword": "隐藏密码",
+    "character": "角色",
     "signIn": "登录",
-    "signUp": "注册",
+    "signingIn": "正在登录…",
     "createAccount": "创建账号",
-    "noAccount": "还没有账号？",
+    "creatingAccount": "正在创建账号…",
+    "noAccount": "第一次来 TinyFloor？",
+    "createOne": "创建账号",
     "haveAccount": "已经有账号了？",
-    "continueGuest": "以访客身份继续 →",
-    "error": "发生错误"
+    "signInInstead": "去登录",
+    "guestCarryOver": "你正以 {name} 的身份访问。名字和角色会一起保留。",
+    "continueGuest": "只是看看？以访客身份进入大厅",
+    "errors": {
+      "wrong_credentials": "邮箱和密码不匹配，请重试。",
+      "too_many_attempts": "尝试次数过多，请等几分钟再试。",
+      "email_taken": "这个邮箱已经有账号了。",
+      "bad_email": "这看起来不像邮箱地址。",
+      "email_required": "请输入邮箱。",
+      "password_required": "请输入密码。",
+      "password_too_short": "请至少使用 8 个字符。",
+      "password_too_long": "请少于 72 个字符。",
+      "password_blank": "密码不能只有空格。",
+      "name_required": "请取一个别人能看到的名字。",
+      "turnstile": "无法确认你是真人，请重试。",
+      "network": "无法连接 TinyFloor，请检查网络后重试。",
+      "generic": "出了点问题，请重试。"
+    }
   },
   "entry": {
     "allRooms": "所有房间",
@@ -257,7 +284,9 @@
     "noPeopleBody": "换个关键词试试，或稍后再来。"
   },
   "userMenu": {
-    "manageProfile": "管理资料"
+    "manageProfile": "管理资料",
+    "visitingAsGuest": "以访客身份访问",
+    "keepYourName": "保留你的名字和角色"
   },
   "dashboard": {
     "subtitle": "管理你的资料和房间",

@@ -2,48 +2,46 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import {
-  User,
-  LogOut,
-  LayoutDashboard,
-  ChevronDown,
-  Globe,
-  Users,
-} from "lucide-react";
+import { User, LogOut, LayoutDashboard, ChevronDown, UserPlus } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { Link } from "@/lib/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 
-interface UserMenuProps {
-  onLoginClick: () => void;
-}
-
-export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
+/** Sign in, or who is signed in with a way to the dashboard and out. */
+export const UserMenu: React.FC = () => {
   const t = useTranslations("userMenu");
   const tc = useTranslations("common");
   const tAuth = useTranslations("auth");
-  const { user, isAuthenticated, isGuest, logout } = useAuth();
+  const { user, isAuthenticated, isGuest, signOut } = useAuth();
+  const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
+  // Back to this page once signed in.
+  const authHref = (mode?: "signup") =>
+    `/auth?${new URLSearchParams({ redirect: pathname, ...(mode ? { mode } : {}) })}`;
 
   if (!isAuthenticated) {
     return (
-      <button
-        onClick={onLoginClick}
+      <Link
+        href={authHref()}
         className="cursor-pointer h-10 px-5 flex items-center gap-2 bg-white border border-[rgba(0,0,0,0.06)] rounded-full text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm hover:shadow-md transition-all"
       >
         <User className="w-3.5 h-3.5" />
         <span className="hidden sm:inline">{tAuth("signIn")}</span>
-      </button>
+      </Link>
     );
   }
 
-  const createdRoomsCount = user?.createdRooms?.length || 0;
-  const joinedRoomsCount = user?.joinedRooms?.length || 0;
+  const itemClass =
+    "flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(0,0,0,0.02)] transition-colors group w-full";
+  const iconWrapClass =
+    "w-8 h-8 bg-white border border-[rgba(0,0,0,0.05)] rounded-full flex items-center justify-center shadow-sm";
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="h-10 px-4 flex items-center gap-2.5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm hover:shadow-md transition-all"
+        aria-expanded={isOpen}
+        className="cursor-pointer h-10 px-4 flex items-center gap-2.5 bg-white border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm hover:shadow-md transition-all"
       >
         <div className="w-6 h-6 bg-[rgba(0,0,0,0.04)] rounded-full border border-[rgba(0,0,0,0.05)] flex items-center justify-center">
           <span className="text-[10px] text-[var(--color-braun-text)] font-bold uppercase">
@@ -65,71 +63,55 @@ export const UserMenu: React.FC<UserMenuProps> = ({ onLoginClick }) => {
         />
       </button>
 
-      {/* Dropdown Menu */}
       {isOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <div className="absolute end-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg z-50 overflow-hidden font-body">
-            {/* User info with stats */}
             <div className="p-5 border-b border-[rgba(0,0,0,0.04)]">
               <p className="text-base font-medium text-[var(--color-braun-text)] tracking-tight truncate">
                 {user?.displayName}
               </p>
-              <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate mb-3">
-                @{user?.username}
+              <p className="text-xs text-[var(--color-braun-text)] opacity-50 truncate">
+                {isGuest ? t("visitingAsGuest") : user?.email}
               </p>
-              {/* Mini Stats */}
-              {!isGuest && (
-                <div className="flex gap-2">
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#f8f8f6] border border-[rgba(0,0,0,0.04)] rounded-full text-[10px] uppercase tracking-widest font-bold">
-                    <Globe className="w-3 h-3 text-[var(--color-braun-orange)]" />
-                    <span className="text-[var(--color-braun-text)]">
-                      {createdRoomsCount}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#f8f8f6] border border-[rgba(0,0,0,0.04)] rounded-full text-[10px] uppercase tracking-widest font-bold">
-                    <Users className="w-3 h-3 text-[var(--color-braun-text)] opacity-60" />
-                    <span className="text-[var(--color-braun-text)]">
-                      {joinedRoomsCount}
-                    </span>
-                  </div>
-                </div>
-              )}
             </div>
 
-            {/* Menu items */}
             <div className="p-2">
-              {!isGuest && (
-                <Link
-                  href="/dashboard"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(0,0,0,0.02)] transition-colors group"
-                >
-                  <div className="w-8 h-8 bg-white border border-[rgba(0,0,0,0.05)] rounded-full flex items-center justify-center shadow-sm">
+              {isGuest ? (
+                <Link href={authHref("signup")} onClick={() => setIsOpen(false)} className={itemClass}>
+                  <div className={iconWrapClass}>
+                    <UserPlus className="w-3.5 h-3.5 text-[var(--color-braun-orange)]" />
+                  </div>
+                  <div className="text-start">
+                    <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
+                      {tAuth("createAccount")}
+                    </span>
+                    <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">{t("keepYourName")}</span>
+                  </div>
+                </Link>
+              ) : (
+                <Link href="/dashboard" onClick={() => setIsOpen(false)} className={itemClass}>
+                  <div className={iconWrapClass}>
                     <LayoutDashboard className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:opacity-100" />
                   </div>
-                  <div>
+                  <div className="text-start">
                     <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
                       {tc("dashboard")}
                     </span>
-                    <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">
-                      {t("manageProfile")}
-                    </span>
+                    <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">{t("manageProfile")}</span>
                   </div>
                 </Link>
               )}
 
               <button
-                onClick={() => {
-                  logout();
+                onClick={async () => {
                   setIsOpen(false);
+                  await signOut();
+                  router.push("/");
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(255,78,0,0.04)] transition-colors w-full group"
+                className={`${itemClass} cursor-pointer hover:bg-[rgba(255,78,0,0.04)]`}
               >
-                <div className="w-8 h-8 bg-white border border-[rgba(0,0,0,0.05)] rounded-full flex items-center justify-center shadow-sm group-hover:border-[rgba(255,78,0,0.2)]">
+                <div className={`${iconWrapClass} group-hover:border-[rgba(255,78,0,0.2)]`}>
                   <LogOut className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:text-[var(--color-braun-orange)] group-hover:opacity-100" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)] group-hover:text-[var(--color-braun-orange)]">

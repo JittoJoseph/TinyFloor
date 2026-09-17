@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import { WebSocketMessage } from "./WebSocketManager";
+import type { PlayerState, ServerMessage } from "@shared/messages";
 import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
@@ -8,97 +8,51 @@ import { jukebox } from "./JukeboxManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
-import type { PlayerStatus } from "./types";
 
-interface MovementData {
-  id: string;
-  tileX: number;
-  tileY: number;
-}
+const VALID_SPRITES = ["Adam", "Alex", "Amelia", "Ash", "Bob", "Dan", "Lucy", "Molly"];
 
-interface UserData {
-  id: string;
-  name: string;
-  tileX: number;
-  tileY: number;
-  sprite: string;
-  status?: PlayerStatus;
-  guest?: boolean;
-  seat?: number | null;
-}
-
-const VALID_SPRITES = [
-  "Adam",
-  "Alex",
-  "Amelia",
-  "Ash",
-  "Bob",
-  "Dan",
-  "Lucy",
-  "Molly",
-];
-
+/** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
-  private scene: Phaser.Scene;
-  private playerManager: PlayerManager;
-  private animationManager: AnimationManager;
-  private seats: SeatManager;
-  private playerId: string;
-  private player: Phaser.Physics.Arcade.Sprite;
-
   constructor(
-    scene: Phaser.Scene,
-    playerManager: PlayerManager,
-    animationManager: AnimationManager,
-    seats: SeatManager,
-    playerId: string,
-    player: Phaser.Physics.Arcade.Sprite,
-  ) {
-    this.scene = scene;
-    this.playerManager = playerManager;
-    this.animationManager = animationManager;
-    this.seats = seats;
-    this.playerId = playerId;
-    this.player = player;
-  }
+    private scene: Phaser.Scene,
+    private playerManager: PlayerManager,
+    private animationManager: AnimationManager,
+    private seats: SeatManager,
+    private playerId: string,
+    private player: Phaser.Physics.Arcade.Sprite,
+  ) {}
 
-  handleMessage(msg: WebSocketMessage) {
-    switch (msg.type) {
-      case "music_state":
-        jukebox.handleMessage(msg.type, msg.data);
+  handleMessage(message: ServerMessage) {
+    switch (message.t) {
+      case "welcome":
+        this.welcome(message.self, message.players);
+        jukebox.handleMusic(message.music);
+        whiteboard.sync();
         break;
-      case "board_state":
-      case "board_draw":
-      case "board_clear":
-        whiteboard.handleMessage(msg.type, msg.data);
+      case "player_joined":
+        if (message.player.id === this.playerId) return;
+        this.addUser(message.player);
+        this.dispatchPlayerList();
+        playSound("join");
         break;
-      case "space-joined":
-        this.handleSpaceJoined(msg.data);
+      case "player_left":
+        this.handleUserLeft(message.id);
         break;
-      case "movement-rejected":
-        this.snapLocalPlayer(msg.data as unknown as MovementData);
+      case "moved":
+        if (message.id !== this.playerId) this.playerManager.updatePlayerPosition(message.id, message.x, message.y);
         break;
-      case "movement":
-        this.applyMovement(msg.data as unknown as MovementData);
+      case "walking":
+        if (message.id !== this.playerId) this.playerManager.walkPlayerTo(message.id, message.x, message.y);
         break;
-      case "movements_batch":
-        (msg.data.movements as MovementData[] | undefined)?.forEach((m) =>
-          this.applyMovement(m),
-        );
+      case "move_rejected":
+        this.snapLocalPlayer(message.x, message.y);
         break;
-      case "walk_to": {
-        const { id, tileX, tileY } = msg.data as unknown as MovementData;
-        if (id !== this.playerId) {
-          this.playerManager.walkPlayerTo(id, tileX, tileY);
-        }
+      case "sat":
+        this.seatPlayer(message.id, message.seat, true);
         break;
-      }
-      case "player_sit":
-        this.seatPlayer(msg.data.id as string, Number(msg.data.seat), true);
-        break;
-      case "player_stand":
-        this.seats.release(msg.data.id as string);
-        this.playerManager.standPlayer(msg.data.id as string);
+      case "stood":
+        this.seats.release(message.id);
+        this.playerManager.standPlayer(message.id);
         break;
       case "sit_rejected":
         this.seats.rejected();
@@ -106,36 +60,78 @@ export class MessageHandler {
       case "meeting_joined":
       case "meeting_member_joined":
       case "meeting_member_left":
-        callManager.handleMeeting(msg.type, msg.data);
+      case "sfu":
+        callManager.handleMeeting(message);
         break;
-      case "user-join":
-        this.handleUserJoin(msg.data as unknown as UserData);
-        playSound("join");
+      case "call":
+        callManager.handleCall(message);
         break;
-      case "user-left":
-        this.handleUserLeft(msg.data.id as string);
-        break;
-      case "call_invite":
-      case "call_accept":
-      case "call_decline":
-      case "call_signal":
-      case "call_add":
-      case "call_end":
-        callManager.handleMessage(msg.type, msg.data);
-        break;
-      case "chat":
-        if (msg.data.senderId !== this.playerId) playSound("message");
+      case "status":
+        this.playerManager.updatePlayerStatus(message.id, message.status);
         window.dispatchEvent(
-          new CustomEvent("chatMessage", { detail: msg.data }),
+          new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }),
         );
         break;
-      case "status_changed":
-        this.handleStatusChanged(msg.data as unknown as {
-          id: string;
-          status: PlayerStatus;
-        });
+      case "chat":
+        // Your own messages are already in the panel; the room echoes them to everyone.
+        if (message.id === this.playerId) return;
+        playSound("message");
+        window.dispatchEvent(
+          new CustomEvent("chatMessage", {
+            detail: {
+              id: `${message.at}-${message.id}`,
+              senderId: message.id,
+              senderName: message.name,
+              content: message.text,
+              timestamp: new Date(message.at),
+              type: "text",
+            },
+          }),
+        );
+        break;
+      case "board_state":
+      case "board_draw":
+      case "board_clear":
+        whiteboard.handleMessage(message);
+        break;
+      case "music":
+        jukebox.handleMusic(message);
+        break;
+      case "error":
+        if (message.code === "slow_down") window.dispatchEvent(new CustomEvent("chatSlowDown"));
         break;
     }
+  }
+
+  /** Arriving, or coming back after a reconnect: the room's word replaces whatever we had. */
+  private welcome(self: PlayerState, players: PlayerState[]) {
+    for (const { id } of this.playerManager.getPlayerList()) {
+      this.seats.release(id);
+      this.playerManager.removePlayer(id);
+    }
+
+    const spawn = tileToPixel(self.x, self.y);
+    this.player.setPosition(spawn.x, spawn.y);
+    const spriteName = VALID_SPRITES.includes(self.character) ? self.character : "Adam";
+    this.player.setData("spriteName", spriteName);
+    this.player.play(this.animationManager.getAnimationKey(spriteName, "idle", "down"));
+
+    players.forEach((player) => this.addUser(player));
+    this.dispatchPlayerList();
+    this.seats.resit();
+  }
+
+  private addUser(player: PlayerState) {
+    this.playerManager.addPlayer(
+      player.id,
+      player.name,
+      player.x,
+      player.y,
+      player.character,
+      player.status,
+      player.guest,
+    );
+    if (player.seat !== null) this.seatPlayer(player.id, player.seat, false);
   }
 
   private seatPlayer(id: string, seat: number, walk: boolean) {
@@ -144,59 +140,9 @@ export class MessageHandler {
     if (pose) this.playerManager.sitPlayer(id, pose, walk);
   }
 
-  private applyMovement(movement: MovementData) {
-    if (movement.id === this.playerId) return;
-    this.playerManager.updatePlayerPosition(
-      movement.id,
-      movement.tileX,
-      movement.tileY,
-    );
-  }
-
-  private snapLocalPlayer({ tileX, tileY }: MovementData) {
-    const target = tileToPixel(tileX, tileY);
-    this.scene.tweens.add({
-      targets: this.player,
-      x: target.x,
-      y: target.y,
-      duration: 150,
-      ease: "Power2",
-    });
-  }
-
-  private handleSpaceJoined(data: Record<string, unknown>) {
-    const spawn = tileToPixel(data.tileX as number, data.tileY as number);
-    this.player.setPosition(spawn.x, spawn.y);
-
-    const sprite = data.sprite as string;
-    if (sprite) {
-      const spriteName = VALID_SPRITES.includes(sprite) ? sprite : "Adam";
-      this.player.setData("spriteName", spriteName);
-      this.player.play(
-        this.animationManager.getAnimationKey(spriteName, "idle", "down"),
-      );
-    }
-
-    (data.existingUsers as UserData[]).forEach((user) => this.addUser(user));
-    this.dispatchPlayerList();
-  }
-
-  private handleUserJoin(user: UserData) {
-    this.addUser(user);
-    this.dispatchPlayerList();
-  }
-
-  private addUser(user: UserData) {
-    this.playerManager.addPlayer(
-      user.id,
-      user.name,
-      user.tileX,
-      user.tileY,
-      user.sprite,
-      user.status || "available",
-      user.guest !== false,
-    );
-    if (user.seat != null) this.seatPlayer(user.id, user.seat, false);
+  private snapLocalPlayer(x: number, y: number) {
+    const target = tileToPixel(x, y);
+    this.scene.tweens.add({ targets: this.player, x: target.x, y: target.y, duration: 150, ease: "Power2" });
   }
 
   private handleUserLeft(id: string) {
@@ -206,24 +152,7 @@ export class MessageHandler {
     this.dispatchPlayerList();
   }
 
-  private handleStatusChanged({
-    id,
-    status,
-  }: {
-    id: string;
-    status: PlayerStatus;
-  }) {
-    this.playerManager.updatePlayerStatus(id, status);
-    window.dispatchEvent(
-      new CustomEvent("playerStatusChanged", { detail: { id, status } }),
-    );
-  }
-
   private dispatchPlayerList() {
-    window.dispatchEvent(
-      new CustomEvent("playerListUpdated", {
-        detail: this.playerManager.getPlayerList(),
-      }),
-    );
+    window.dispatchEvent(new CustomEvent("playerListUpdated", { detail: this.playerManager.getPlayerList() }));
   }
 }

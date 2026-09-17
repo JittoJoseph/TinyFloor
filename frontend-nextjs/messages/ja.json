@@ -177,23 +177,50 @@
     "credits": "クレジット"
   },
   "auth": {
-    "welcomeBack": "おかえりなさい",
-    "joinUs": "はじめましょう",
-    "signInSubtitle": "アカウントにログイン",
-    "registerSubtitle": "ワークスペースのアカウントを作成",
-    "username": "ユーザー名",
-    "emailOptional": "メールアドレス（任意）",
-    "displayNameOptional": "表示名（任意）",
+    "tabSignIn": "ログイン",
+    "tabSignUp": "アカウント作成",
+    "chooseMode": "ログインまたはアカウント作成",
+    "signInTitle": "おかえりなさい",
+    "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
+    "signUpTitle": "アカウントを作成",
+    "signUpSubtitle": "見た目を選んだら、チームのオフィスを用意しましょう。",
+    "name": "名前",
+    "namePlaceholder": "ほかの人に表示される名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@company.com",
     "password": "パスワード",
+    "passwordPlaceholder": "パスワード",
+    "newPasswordPlaceholder": "パスワードを決めてください",
+    "passwordRule": "8文字以上",
+    "capsLock": "Caps Lock がオンになっています",
     "showPassword": "パスワードを表示",
     "hidePassword": "パスワードを隠す",
+    "character": "キャラクター",
     "signIn": "ログイン",
-    "signUp": "新規登録",
+    "signingIn": "ログイン中…",
     "createAccount": "アカウントを作成",
-    "noAccount": "アカウントをお持ちでないですか？",
+    "creatingAccount": "アカウントを作成しています…",
+    "noAccount": "TinyFloor ははじめてですか？",
+    "createOne": "アカウントを作成",
     "haveAccount": "すでにアカウントをお持ちですか？",
-    "continueGuest": "ゲストとして続ける →",
-    "error": "エラーが発生しました"
+    "signInInstead": "ログインする",
+    "guestCarryOver": "{name} としてゲスト参加中です。名前とキャラクターはそのまま引き継がれます。",
+    "continueGuest": "見てみるだけ？ゲストとしてロビーに入る",
+    "errors": {
+      "wrong_credentials": "メールアドレスとパスワードが一致しません。もう一度お試しください。",
+      "too_many_attempts": "試行回数が多すぎます。数分待ってからもう一度お試しください。",
+      "email_taken": "このメールアドレスのアカウントはすでにあります。",
+      "bad_email": "メールアドレスの形式ではないようです。",
+      "email_required": "メールアドレスを入力してください。",
+      "password_required": "パスワードを入力してください。",
+      "password_too_short": "8文字以上にしてください。",
+      "password_too_long": "72文字未満にしてください。",
+      "password_blank": "スペースだけのパスワードは使えません。",
+      "name_required": "ほかの人に表示される名前を入力してください。",
+      "turnstile": "人間であることを確認できませんでした。もう一度お試しください。",
+      "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    }
   },
   "entry": {
     "allRooms": "すべてのルーム",
@@ -257,7 +284,9 @@
     "noPeopleBody": "別のキーワードで検索するか、また後で見てください。"
   },
   "userMenu": {
-    "manageProfile": "プロフィールを管理"
+    "manageProfile": "プロフィールを管理",
+    "visitingAsGuest": "ゲストとして参加中",
+    "keepYourName": "名前とキャラクターを引き継ぐ"
   },
   "dashboard": {
     "subtitle": "プロフィールとルームを管理",

@@ -177,23 +177,50 @@
     "credits": "Autorzy"
   },
   "auth": {
-    "welcomeBack": "Witaj ponownie",
-    "joinUs": "Dołącz do nas",
-    "signInSubtitle": "Zaloguj się na swoje konto",
-    "registerSubtitle": "Utwórz konto do pracy",
-    "username": "Nazwa użytkownika",
-    "emailOptional": "E-mail (opcjonalnie)",
-    "displayNameOptional": "Nazwa wyświetlana (opcjonalnie)",
+    "tabSignIn": "Zaloguj się",
+    "tabSignUp": "Utwórz konto",
+    "chooseMode": "Zaloguj się lub utwórz konto",
+    "signInTitle": "Witaj ponownie",
+    "signInSubtitle": "Zaloguj się, aby wrócić do biura swojego zespołu.",
+    "signUpTitle": "Utwórz konto",
+    "signUpSubtitle": "Wybierz swój wygląd, a potem urządź biuro dla zespołu.",
+    "name": "Twoje imię",
+    "namePlaceholder": "Tak zobaczą Cię inni",
+    "email": "E-mail",
+    "emailPlaceholder": "ty@firma.pl",
     "password": "Hasło",
+    "passwordPlaceholder": "Twoje hasło",
+    "newPasswordPlaceholder": "Wybierz hasło",
+    "passwordRule": "Co najmniej 8 znaków",
+    "capsLock": "Caps Lock jest włączony",
     "showPassword": "Pokaż hasło",
     "hidePassword": "Ukryj hasło",
+    "character": "Postać",
     "signIn": "Zaloguj się",
-    "signUp": "Zarejestruj się",
+    "signingIn": "Logowanie…",
     "createAccount": "Utwórz konto",
-    "noAccount": "Nie masz konta?",
+    "creatingAccount": "Tworzenie konta…",
+    "noAccount": "Pierwszy raz w TinyFloor?",
+    "createOne": "Utwórz konto",
     "haveAccount": "Masz już konto?",
-    "continueGuest": "Kontynuuj jako gość →",
-    "error": "Wystąpił błąd"
+    "signInInstead": "Zaloguj się",
+    "guestCarryOver": "Odwiedzasz jako {name}. Twoje imię i postać zostaną z Tobą.",
+    "continueGuest": "Tylko się rozglądasz? Odwiedź lobby jako gość",
+    "errors": {
+      "wrong_credentials": "E-mail i hasło nie pasują do siebie. Spróbuj ponownie.",
+      "too_many_attempts": "Zbyt wiele prób. Odczekaj kilka minut i spróbuj ponownie.",
+      "email_taken": "Konto z tym adresem e-mail już istnieje.",
+      "bad_email": "To nie wygląda na adres e-mail.",
+      "email_required": "Wpisz swój e-mail.",
+      "password_required": "Wpisz swoje hasło.",
+      "password_too_short": "Użyj co najmniej 8 znaków.",
+      "password_too_long": "Użyj mniej niż 72 znaków.",
+      "password_blank": "Hasło nie może składać się tylko ze spacji.",
+      "name_required": "Wybierz imię, które zobaczą inni.",
+      "turnstile": "Nie udało się potwierdzić, że jesteś człowiekiem. Spróbuj ponownie.",
+      "network": "Nie można połączyć się z TinyFloor. Sprawdź połączenie i spróbuj ponownie.",
+      "generic": "Coś poszło nie tak. Spróbuj ponownie."
+    }
   },
   "entry": {
     "allRooms": "Wszystkie pokoje",
@@ -257,7 +284,9 @@
     "noPeopleBody": "Spróbuj innego wyszukiwania lub wróć wkrótce."
   },
   "userMenu": {
-    "manageProfile": "Zarządzaj profilem"
+    "manageProfile": "Zarządzaj profilem",
+    "visitingAsGuest": "Odwiedzasz jako gość",
+    "keepYourName": "Zachowaj imię i postać"
   },
   "dashboard": {
     "subtitle": "Zarządzaj profilem i pokojami",

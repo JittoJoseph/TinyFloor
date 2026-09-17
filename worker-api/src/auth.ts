@@ -1,5 +1,6 @@
 import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter } from "../../shared-protocol/src";
 import { HttpError, json, readJson } from "./http";
+import { limitAuth } from "./limits";
 import type { Router } from "./router";
 import {
   ACCOUNT_SESSION_MS,
@@ -27,6 +28,7 @@ export function authRoutes(router: Router): void {
     })
 
     .add("POST", "/v1/auth/guest", async ({ request, env }) => {
+      await limitAuth(env, request);
       const body = await readJson(request);
       const name = cleanDisplayName(body.name);
       if (!name) throw new HttpError(400, "name_required", "Pick a name");
@@ -38,6 +40,7 @@ export function authRoutes(router: Router): void {
     })
 
     .add("POST", "/v1/auth/signup", async ({ request, env, ctx }) => {
+      await limitAuth(env, request);
       const body = await readJson(request);
       const email = cleanEmail(body.email);
       const password = checkPassword(body.password);
@@ -80,6 +83,7 @@ export function authRoutes(router: Router): void {
     })
 
     .add("POST", "/v1/auth/login", async ({ request, env, ctx }) => {
+      await limitAuth(env, request);
       const body = await readJson(request);
       const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
       const password = typeof body.password === "string" ? body.password : "";

@@ -17,7 +17,11 @@ beforeEach(() => {
 });
 afterEach(() => vi.restoreAllMocks());
 
-async function post(path: string, body: unknown, cookie?: string, ip = "203.0.113.1") {
+let addresses = 0;
+/** A different address per request unless a test names one, so the per-IP limits don't trip. */
+const freshIp = () => `10.1.${(++addresses >> 8) & 255}.${addresses & 255}`;
+
+async function post(path: string, body: unknown, cookie?: string, ip = freshIp()) {
   const response = await exports.default.fetch(`${API}${path}`, {
     method: "POST",
     headers: {
@@ -159,5 +163,20 @@ describe("changing the password", () => {
 
     const relogin = await post("/v1/auth/login", { email, password: "battery staple" }, undefined, "203.0.113.5");
     expect(relogin.status).toBe(200);
+  }, 30_000);
+});
+
+describe("per-address limit", () => {
+  it("slows down one address creating sessions quickly", async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 12; i++) {
+      statuses.push((await post("/v1/auth/login", { email: uniqueEmail(), password: "whatever it is" }, undefined, "198.51.100.9")).status);
+    }
+    expect(statuses.slice(0, 10).every((status) => status === 401)).toBe(true);
+    expect(statuses.slice(10)).toEqual([429, 429]);
+    const body = (await post("/v1/auth/login", { email: uniqueEmail(), password: "x" }, undefined, "198.51.100.9")).body;
+    expect(body.error.code).toBe("slow_down");
+    // Someone else is unaffected.
+    expect((await post("/v1/auth/login", { email: uniqueEmail(), password: "whatever it is" })).status).toBe(401);
   }, 30_000);
 });

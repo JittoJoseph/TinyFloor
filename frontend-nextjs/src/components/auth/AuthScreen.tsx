@@ -129,6 +129,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     const messages: Record<string, string> = {
       wrong_credentials: t("errors.wrong_credentials"),
       too_many_attempts: t("errors.too_many_attempts"),
+      slow_down: t("errors.too_many_attempts"),
       bad_email: t("errors.bad_email"),
       email_required: t("errors.email_required"),
       password_too_short: t("errors.password_too_short"),

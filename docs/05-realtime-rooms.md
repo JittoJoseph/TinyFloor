@@ -75,9 +75,9 @@ billed.
 `webSocketClose` and `webSocketError`:
 - Leave the seat and meeting (broadcast `stood` and `meeting_member_left`).
 - Broadcast `player_left`.
-- Update the lobby count if this is a lobby copy.
-- If nobody is left, set one alarm a minute later that writes usage totals
-  through `env.API.recordUsage`.
+- Tell `Presence` the new headcount.
+- Add this person's time to the room's pending usage, and write the day's totals
+  to D1 when the room empties (see `02-data-model.md`).
 
 ### Room RPC for the API
 
@@ -209,8 +209,7 @@ A single object, `getByName("global")`.
 
 ## Usage totals
 
-Each room tracks peak people and person-minutes in memory while awake. Because
-hibernation can drop memory, the totals are also recomputed from `joinedAt` in
-the attachments when people leave. They're written once through
-`env.API.recordUsage` by the alarm after the room empties, or once a day for a
-room that never empties.
+Each room keeps pending totals in its own SQLite, adds a person's time as they
+leave (from `joinedAt` in the attachment, which survives hibernation), and adds
+the lot to `usage_daily` in D1 when the room empties, or after an hour in a room
+that never does. `tinyfloor-realtime` has a D1 binding for that one table.

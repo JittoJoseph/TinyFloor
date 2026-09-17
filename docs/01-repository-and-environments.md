@@ -26,7 +26,8 @@ tinyfloor (frontend)
 
 tinyfloor-api
   DB -> D1 database tinyfloor-db
-  ROOM -> Durable Object namespace Room, script_name tinyfloor-realtime
+  REALTIME -> service binding to tinyfloor-realtime, entrypoint RealtimeAdmin
+            (presence counts, closing rooms, removing a revoked link's guests)
 
 tinyfloor-realtime
   ROOM -> Durable Object class Room (defined here)

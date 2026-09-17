@@ -38,15 +38,15 @@ means a signed-in non-guest user.
 | PATCH | `/workspaces/:id` | Owner, admin | Rename |
 | DELETE | `/workspaces/:id` | Owner | Deletes the workspace, its rooms and links |
 | GET | `/workspaces/:id/members` | Member | Members and roles |
-| PATCH | `/workspaces/:id/members/:userId` | Owner, admin | Change role (only the owner can make admins) |
-| DELETE | `/workspaces/:id/members/:userId` | Owner, admin, or themselves | Remove, or leave |
+| PATCH | `/workspaces/:id/members/:userId` | Owner | Change role between admin and member |
+| DELETE | `/workspaces/:id/members/:userId` | Owner (anyone), admin (members), or themselves | Remove, or leave. The owner can't leave; they transfer first |
 | POST | `/workspaces/:id/transfer` | Owner | Makes another member the owner |
 
 ### Invites
 
 | Method | Path | Who | Does |
 |---|---|---|---|
-| POST | `/workspaces/:id/invites` | Owner, admin | `{ role, email? }` → invite link. Refused if the member limit is reached |
+| POST | `/workspaces/:id/invites` | Owner, admin | `{ role, email? }` → invite token. Only the owner invites admins. Refused if the member limit is reached |
 | GET | `/workspaces/:id/invites` | Owner, admin | Pending invites |
 | DELETE | `/workspaces/:id/invites/:inviteId` | Owner, admin | Revoke |
 | GET | `/invites/:token` | Anyone | Preview: workspace name, inviter |
@@ -61,7 +61,7 @@ to copy and share.
 |---|---|---|---|
 | GET | `/workspaces/:id/rooms` | Member | Rooms, with how many people are in each right now |
 | POST | `/workspaces/:id/rooms` | Owner, admin | `{ name, capacity }` |
-| GET | `/rooms/:id` | Member, or guest-link holder | Name, workspace name, capacity |
+| GET | `/rooms/:id` | Member | Name, workspace name, capacity |
 | PATCH | `/rooms/:id` | Owner, admin | Rename, capacity |
 | DELETE | `/rooms/:id` | Owner, admin | Archives, and disconnects everyone in it |
 | POST | `/rooms/:id/guest-links` | Owner, admin | `{ expiresIn }` → link |
@@ -69,8 +69,9 @@ to copy and share.
 | DELETE | `/rooms/:id/guest-links/:linkId` | Owner, admin | Revoke, and disconnects guests who used it |
 | GET | `/guest-links/:token` | Anyone | Preview: room and workspace name |
 
-"How many people are in each" comes from one RPC call per room to its `Room`
-object (`presenceCount()`). A call wakes a hibernating room briefly; the count is
+"How many people are in each" comes from one `presenceCounts(roomIds)` call to
+the realtime Worker's `RealtimeAdmin` entrypoint, which asks each `Room` object
+(`presenceCount()`). A call wakes a hibernating room briefly; the count is
 just `ctx.getWebSockets().length`, so it takes well under a millisecond. The
 dashboard fetches counts when it opens, not on a timer.
 

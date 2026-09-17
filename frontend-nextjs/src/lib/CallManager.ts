@@ -1,6 +1,14 @@
-import type { CallKind, MediaFlags, ServerMessage } from "@shared/messages";
+import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "./api";
+import {
+  CAMERA_CAPTURE,
+  SCREEN_CAPTURE,
+  deviceConstraint,
+  savedDevices,
+  screenTooSmallForDetail,
+  sendAtQuality,
+} from "./media";
 import { SfuMeeting } from "./SfuMeeting";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { GUIDE_ID } from "./tutorial";
@@ -38,11 +46,24 @@ interface Signal {
   sdp?: RTCSessionDescriptionInit;
   candidate?: RTCIceCandidateInit;
   media?: { mic: boolean; camera: boolean; screen?: boolean };
+  /** The quality the other side's cards can show, so we send no more than that. */
+  want?: Record<VideoKind, VideoQuality>;
 }
 
 interface PeerEntry extends CallPeer {
   pc?: RTCPeerConnection;
+  /** What they asked us for, and what we last asked them for. */
+  wants: Record<VideoKind, VideoQuality>;
+  asked?: string;
 }
+
+/** Which card is enlarged, and so the only one worth sending in high quality. */
+export interface Focus {
+  id: string;
+  kind: VideoKind;
+}
+
+const LOW: Record<VideoKind, VideoQuality> = { camera: "low", screen: "low" };
 
 interface MeetingMember {
   id: string;
@@ -69,26 +90,8 @@ const AUDIO_CONSTRAINTS = {
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
 const SLOTS = ["audio", "video", "video"] as const;
-const CAMERA_SLOT = 1;
+const SLOT_KIND: Record<number, VideoKind> = { 1: "camera", 2: "screen" };
 const SCREEN_SLOT = 2;
-// Upload caps for peer-to-peer calls. Uncapped, a camera sends about 1.7 Mbps.
-const CAMERA_MAX_BITRATE = 1_000_000;
-const SCREEN_MAX_BITRATE = 1_500_000;
-
-function savedDevices(): { audio?: string; video?: string } {
-  try {
-    const raw = localStorage.getItem("spacialMeetSettings");
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return { audio: parsed.audioInput, video: parsed.videoInput };
-  } catch {
-    return {};
-  }
-}
-
-function deviceId(id?: string) {
-  return id ? { exact: id } : undefined;
-}
 
 const PREFS_KEY = "spacialMeetCallPrefs";
 
@@ -145,6 +148,7 @@ class CallManager {
   private error: CallError | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
   private iceServers: RTCIceServer[] = FALLBACK_ICE;
+  private focus: Focus | null = null;
   private iceTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
   private snap: CallSnapshot = {
@@ -156,6 +160,10 @@ class CallManager {
 
   constructor() {
     onSpeakerChange(() => this.emit());
+    // A phone turned sideways, or a window resized past the phone width.
+    if (typeof window !== "undefined") {
+      window.matchMedia("(max-width: 767px)").addEventListener("change", () => this.shareQuality());
+    }
   }
 
   attach(ws: RoomSocket) {
@@ -218,6 +226,7 @@ class CallManager {
       camera: true,
       screen: false,
       screenStream: null,
+      wants: { ...LOW },
     });
     playSound("connect");
     this.emit();
@@ -343,9 +352,29 @@ class CallManager {
     this.emit();
   }
 
-  /** The call cards' layout, which picks the quality of each camera at a table. */
-  setLayout(tiles: number, focusedPeer: string | null) {
-    this.sfu?.setLayout(tiles, focusedPeer);
+  /**
+   * The card someone enlarged. Only that one is worth sending in high quality,
+   * and on a phone not even that, so everything else stays low.
+   */
+  setFocus(focus: Focus | null) {
+    if (focus?.id === this.focus?.id && focus?.kind === this.focus?.kind) return;
+    this.focus = focus;
+    this.shareQuality();
+  }
+
+  /** Asks the SFU, and each peer we talk to directly, for what our cards can show. */
+  private shareQuality() {
+    const wanted = (id: string, kind: VideoKind): VideoQuality =>
+      this.focus?.id === id && this.focus.kind === kind && !screenTooSmallForDetail() ? "high" : "low";
+
+    this.sfu?.setQuality(wanted);
+    this.peers.forEach((peer) => {
+      const want = { camera: wanted(peer.id, "camera"), screen: wanted(peer.id, "screen") };
+      const asked = `${want.camera}${want.screen}`;
+      if (!peer.pc || peer.asked === asked) return;
+      peer.asked = asked;
+      this.send("signal", peer.id, { signal: { want } });
+    });
   }
 
   setMic(enabled: boolean) {
@@ -381,10 +410,7 @@ class CallManager {
 
     let stream: MediaStream;
     try {
-      stream = await navigator.mediaDevices.getDisplayMedia({
-        video: { frameRate: { ideal: 15, max: 30 } },
-        audio: false,
-      });
+      stream = await navigator.mediaDevices.getDisplayMedia({ video: SCREEN_CAPTURE, audio: false });
     } catch {
       return; // the picker was dismissed
     }
@@ -459,15 +485,12 @@ class CallManager {
       this.local?.getVideoTracks()[0],
       this.screen?.getVideoTracks()[0],
     ];
-    const crowded = this.peers.size > 1;
     peer.pc?.getTransceivers().forEach((transceiver, slot) => {
       if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
+      const kind = SLOT_KIND[slot];
       transceiver.sender
         .replaceTrack(tracks[slot] ?? null)
-        .then(() => {
-          if (slot === CAMERA_SLOT) capSender(transceiver.sender, CAMERA_MAX_BITRATE, crowded ? 4 / 3 : 1);
-          if (slot === SCREEN_SLOT) capSender(transceiver.sender, SCREEN_MAX_BITRATE, 1, 15);
-        })
+        .then(() => kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]))
         .catch(() => {});
     });
   }
@@ -563,6 +586,7 @@ class CallManager {
       camera: true,
       screen: false,
       screenStream: null,
+      wants: { ...LOW },
     };
     this.peers.set(id, peer);
 
@@ -609,7 +633,10 @@ class CallManager {
     if (!peer || !pc || !signal) return;
 
     try {
-      if (signal.media) {
+      if (signal.want) {
+        peer.wants = { camera: signal.want.camera ?? "low", screen: signal.want.screen ?? "low" };
+        this.syncTracks(peer);
+      } else if (signal.media) {
         peer.mic = signal.media.mic;
         peer.camera = signal.media.camera;
         peer.screen = !!signal.media.screen;
@@ -624,6 +651,7 @@ class CallManager {
           this.send("signal", from, { signal: { sdp: pc.localDescription! } });
         }
         this.shareMedia(peer);
+        this.shareQuality();
       }
     } catch (err) {
       console.error("Signal handling failed:", err);
@@ -654,8 +682,8 @@ class CallManager {
     try {
       const devices = savedDevices();
       this.local = await navigator.mediaDevices.getUserMedia({
-        audio: { ...AUDIO_CONSTRAINTS, deviceId: deviceId(devices.audio) },
-        video: wantsCamera && videoConstraints(devices.video),
+        audio: { ...AUDIO_CONSTRAINTS, deviceId: deviceConstraint(devices.audio) },
+        video: wantsCamera && { ...CAMERA_CAPTURE, deviceId: deviceConstraint(devices.video) },
       });
       this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
@@ -672,7 +700,7 @@ class CallManager {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: videoConstraints(savedDevices().video),
+        video: { ...CAMERA_CAPTURE, deviceId: deviceConstraint(savedDevices().video) },
       });
       this.local.addTrack(stream.getVideoTracks()[0]);
       this.error = null;
@@ -739,34 +767,6 @@ class CallManager {
     };
     this.listeners.forEach((listener) => listener());
   }
-}
-
-/** Keeps a peer-to-peer sender under a bitrate, and optionally smaller or slower. */
-function capSender(sender: RTCRtpSender, maxBitrate: number, scaleDown = 1, maxFramerate?: number) {
-  if (!sender.track) return;
-  const parameters = sender.getParameters();
-  if (!parameters.encodings?.length) parameters.encodings = [{}];
-  const encoding = parameters.encodings[0];
-  if (
-    encoding.maxBitrate === maxBitrate &&
-    (encoding.scaleResolutionDownBy ?? 1) === scaleDown &&
-    encoding.maxFramerate === maxFramerate
-  ) {
-    return;
-  }
-  encoding.maxBitrate = maxBitrate;
-  encoding.scaleResolutionDownBy = scaleDown;
-  if (maxFramerate) encoding.maxFramerate = maxFramerate;
-  sender.setParameters(parameters).catch(() => {});
-}
-
-function videoConstraints(id?: string): MediaTrackConstraints {
-  return {
-    width: { ideal: 640 },
-    height: { ideal: 480 },
-    facingMode: "user",
-    deviceId: deviceId(id),
-  };
 }
 
 export const callManager = new CallManager();

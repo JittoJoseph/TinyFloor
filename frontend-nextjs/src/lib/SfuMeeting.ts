@@ -1,4 +1,5 @@
-import type { CameraLayer, MediaFlags, MediaKind, SfuClientMessage, SfuServerMessage } from "@shared/messages";
+import type { MediaFlags, MediaKind, SfuClientMessage, SfuServerMessage, VideoKind, VideoQuality } from "@shared/messages";
+import { simulcastEncodings } from "./media";
 
 export interface MeetingPeer {
   id: string;
@@ -17,22 +18,17 @@ interface PeerMedia extends MeetingPeer {
   /** Our receiving transceivers for their tracks, by kind. */
   mids: Partial<Record<MediaKind, string>>;
   tracks: Partial<Record<MediaKind, MediaStreamTrack>>;
-  layer?: CameraLayer;
+  /** The quality we asked for, per video kind. */
+  quality: Partial<Record<VideoKind, VideoQuality>>;
 }
 
 type Waiter = { op: "published" | "offer"; resolve: (message: SfuServerMessage) => void; reject: (error: Error) => void };
 
-const CAMERA_ENCODINGS: RTCRtpEncodingParameters[] = [
-  { rid: "f", maxBitrate: 900_000 },
-  { rid: "h", maxBitrate: 300_000, scaleResolutionDownBy: 2 },
-  { rid: "q", maxBitrate: 120_000, scaleResolutionDownBy: 4 },
-];
-const SCREEN_ENCODING: RTCRtpEncodingParameters = { maxBitrate: 1_500_000, maxFramerate: 15 };
 const RESPONSE_TIMEOUT_MS = 15_000;
 
 /**
  * Meeting-table media through Cloudflare's SFU, brokered by the room. One peer
- * connection sends our mic, camera (in three simulcast layers) and screen, and
+ * connection sends our mic, and our camera and screen in both qualities, and
  * receives everyone else's. Negotiation steps run one at a time.
  */
 export class SfuMeeting {
@@ -44,7 +40,8 @@ export class SfuMeeting {
   private screen?: RTCRtpTransceiver;
   private chain: Promise<unknown> = Promise.resolve();
   private waiter: Waiter | null = null;
-  private layout = { tiles: 1, focused: null as string | null };
+  /** What each card can show; set by the call cards through CallManager. */
+  private wanted: (userId: string, kind: VideoKind) => VideoQuality = () => "low";
   private closed = false;
 
   constructor(
@@ -83,7 +80,7 @@ export class SfuMeeting {
     this.mic = this.pc.addTransceiver(local?.getAudioTracks()[0] ?? "audio", { direction: "sendonly" });
     this.camera = this.pc.addTransceiver(local?.getVideoTracks()[0] ?? "video", {
       direction: "sendonly",
-      sendEncodings: CAMERA_ENCODINGS,
+      sendEncodings: simulcastEncodings("camera"),
     });
     this.publish([
       { transceiver: this.mic, kind: "mic" },
@@ -106,6 +103,7 @@ export class SfuMeeting {
       published: new Set(),
       mids: {},
       tracks: {},
+      quality: {},
     });
     this.changed();
   }
@@ -190,7 +188,7 @@ export class SfuMeeting {
   setScreen(stream: MediaStream | null) {
     const track = stream?.getVideoTracks()[0];
     if (track && !this.screen) {
-      this.screen = this.pc.addTransceiver(track, { direction: "sendonly", sendEncodings: [SCREEN_ENCODING] });
+      this.screen = this.pc.addTransceiver(track, { direction: "sendonly", sendEncodings: simulcastEncodings("screen") });
       this.publish([{ transceiver: this.screen, kind: "screen" }]);
     } else if (!track && this.screen) {
       void this.screen.sender.replaceTrack(null).catch(() => {});
@@ -199,18 +197,17 @@ export class SfuMeeting {
     }
   }
 
-  /**
-   * The call cards' layout picks each camera's quality: full for the enlarged
-   * card, half in a small grid, quarter in a big grid or when set aside.
-   */
-  setLayout(tiles: number, focused: string | null) {
-    this.layout = { tiles, focused };
+  /** Asks the SFU for the quality each card can show, when it changes. */
+  setQuality(wanted: (userId: string, kind: VideoKind) => VideoQuality) {
+    this.wanted = wanted;
     this.peers.forEach((peer) => {
-      const mid = peer.mids.camera;
-      const layer = this.layerFor(peer.id);
-      if (!mid || peer.layer === layer) return;
-      peer.layer = layer;
-      this.send({ op: "layer", userId: peer.id, mid, layer });
+      (["camera", "screen"] as const).forEach((kind) => {
+        const mid = peer.mids[kind];
+        const quality = wanted(peer.id, kind);
+        if (!mid || peer.quality[kind] === quality) return;
+        peer.quality[kind] = quality;
+        this.send({ op: "quality", userId: peer.id, kind, mid, quality });
+      });
     });
   }
 
@@ -220,13 +217,6 @@ export class SfuMeeting {
     this.waiter = null;
     this.pc.close();
     this.peers.clear();
-  }
-
-  private layerFor(userId: string): CameraLayer {
-    const { tiles, focused } = this.layout;
-    if (focused === userId) return "f";
-    if (focused) return "q";
-    return tiles <= 3 ? "h" : "q";
   }
 
   private publish(slots: { transceiver: RTCRtpTransceiver; kind: MediaKind }[]) {
@@ -252,7 +242,7 @@ export class SfuMeeting {
         tracks: kinds.map((kind) => ({
           userId: peer.id,
           kind,
-          ...(kind === "camera" ? { layer: (peer.layer = this.layerFor(peer.id)) } : {}),
+          ...(kind === "mic" ? {} : { quality: (peer.quality[kind] = this.wanted(peer.id, kind)) }),
         })),
       });
       const offer = await offered;

@@ -54,9 +54,15 @@ export type CallKind = (typeof CALL_KINDS)[number];
 export const MEDIA_KINDS = ["mic", "camera", "screen"] as const;
 export type MediaKind = (typeof MEDIA_KINDS)[number];
 
-/** Camera simulcast layers: full, half and quarter resolution. */
-export const CAMERA_LAYERS = ["f", "h", "q"] as const;
-export type CameraLayer = (typeof CAMERA_LAYERS)[number];
+/**
+ * Video is sent in two qualities at once: `high` for the card someone has
+ * enlarged, `low` for the small cards and for phones, where nothing is big
+ * enough to tell the difference. Cameras and shared screens both use them, and
+ * so do peer-to-peer calls, where the sender turns its own camera down instead.
+ */
+export const VIDEO_QUALITIES = ["high", "low"] as const;
+export type VideoQuality = (typeof VIDEO_QUALITIES)[number];
+export type VideoKind = Exclude<MediaKind, "mic">;
 
 export interface MediaFlags {
   mic: boolean;
@@ -67,10 +73,11 @@ export interface MediaFlags {
 export type SfuClientMessage =
   | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind }[] }
   | { op: "unpublish"; kinds: MediaKind[] }
-  | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; layer?: CameraLayer }[] }
+  | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; quality?: VideoQuality }[] }
   | { op: "unsubscribe"; mids: string[] }
   | { op: "answer"; sdp: string }
-  | { op: "layer"; userId: string; mid: string; layer: CameraLayer }
+  /** Watch someone's video in the other quality, without renegotiating. */
+  | { op: "quality"; userId: string; kind: VideoKind; mid: string; quality: VideoQuality }
   /** Which of your mic, camera and screen are on, so the table can show it. */
   | ({ op: "media" } & MediaFlags);
 

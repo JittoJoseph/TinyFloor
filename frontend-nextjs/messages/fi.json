@@ -359,24 +359,8 @@
   "settings": {
     "title": "Asetukset",
     "close": "Sulje asetukset",
-    "audio": "Ääni",
-    "video": "Video",
     "microphone": "Mikrofoni",
-    "micVolume": "Mikrofonin äänenvoimakkuus",
-    "speaker": "Kaiutin",
-    "speakerVolume": "Kaiuttimen äänenvoimakkuus",
     "camera": "Kamera",
-    "videoQuality": "Videon laatu",
-    "quality": {
-      "low": "Matala",
-      "medium": "Keskitaso",
-      "high": "Korkea"
-    },
-    "qualityHint": {
-      "low": "360p, paras hitaille yhteyksille",
-      "medium": "480p, tasapaino laadun ja nopeuden välillä",
-      "high": "720p, paras laatu mutta vaatii nopean yhteyden"
-    },
     "default": "Oletus"
   },
   "tutorial": {

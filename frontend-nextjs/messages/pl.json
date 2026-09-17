@@ -359,24 +359,8 @@
   "settings": {
     "title": "Ustawienia",
     "close": "Zamknij ustawienia",
-    "audio": "Dźwięk",
-    "video": "Wideo",
     "microphone": "Mikrofon",
-    "micVolume": "Głośność mikrofonu",
-    "speaker": "Głośnik",
-    "speakerVolume": "Głośność głośnika",
     "camera": "Kamera",
-    "videoQuality": "Jakość wideo",
-    "quality": {
-      "low": "Niska",
-      "medium": "Średnia",
-      "high": "Wysoka"
-    },
-    "qualityHint": {
-      "low": "360p, najlepsza przy wolnym łączu",
-      "medium": "480p, równowaga jakości i szybkości",
-      "high": "720p, najlepsza jakość, ale wymaga szybkiego internetu"
-    },
     "default": "Domyślne"
   },
   "tutorial": {

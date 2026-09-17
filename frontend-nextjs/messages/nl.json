@@ -359,24 +359,8 @@
   "settings": {
     "title": "Instellingen",
     "close": "Instellingen sluiten",
-    "audio": "Audio",
-    "video": "Video",
     "microphone": "Microfoon",
-    "micVolume": "Microfoonvolume",
-    "speaker": "Luidspreker",
-    "speakerVolume": "Luidsprekervolume",
     "camera": "Camera",
-    "videoQuality": "Videokwaliteit",
-    "quality": {
-      "low": "Laag",
-      "medium": "Gemiddeld",
-      "high": "Hoog"
-    },
-    "qualityHint": {
-      "low": "360p, het best voor trage verbindingen",
-      "medium": "480p, balans tussen kwaliteit en snelheid",
-      "high": "720p, beste kwaliteit maar vereist snel internet"
-    },
     "default": "Standaard"
   },
   "tutorial": {

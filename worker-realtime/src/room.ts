@@ -1,6 +1,9 @@
 import { DurableObject } from "cloudflare:workers";
 import {
+  CALL_KINDS,
+  CAMERA_LAYERS,
   CHAT_MAX_LENGTH,
+  MEDIA_KINDS,
   CloseCode,
   HEARTBEAT_PING,
   HEARTBEAT_PONG,
@@ -13,12 +16,15 @@ import {
   type PresenceStatus,
   type RoomRole,
   type RoomTicket,
+  type MediaKind,
   type ServerMessage,
+  type SfuServerMessage,
 } from "../../shared-protocol/src";
 import { Board, parseStroke } from "./board";
 import { LobbyReporter } from "./discord";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby-router";
+import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
@@ -30,6 +36,7 @@ const LIMITS = {
   movesPerSecond: 6,
   actionsPerSecond: 4,
   drawsPerSecond: 30,
+  sfuOpsPerSecond: 10,
   messagesPerSecond: 60,
   chatsPerTenSeconds: 5,
 };
@@ -47,6 +54,8 @@ interface Attachment {
   seat: number | null;
   meeting: string | null;
   link: string | null;
+  /** This person's SFU session and the tracks they publish, while at a meeting table. */
+  media: { sessionId: string; tracks: { mid: string; kind: MediaKind }[] } | null;
   joinedAt: number;
   lastSeenAt: number;
   /** Set when this socket was closed on purpose, so its close event doesn't announce a departure. */
@@ -55,6 +64,7 @@ interface Attachment {
   moves: number;
   actions: number;
   draws: number;
+  sfuOps: number;
   messages: number;
   chatWindow: number;
   chats: number;
@@ -71,6 +81,7 @@ interface Attachment {
 export class Room extends DurableObject<Env> {
   private readonly board: Board;
   private readonly reporter: LobbyReporter;
+  private readonly sfuApi: SfuApi;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -78,6 +89,7 @@ export class Room extends DurableObject<Env> {
     ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS room_state (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
     this.board = new Board(ctx.storage.sql);
     this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
+    this.sfuApi = new SfuApi(env.REALTIME_APP_ID, env.REALTIME_APP_SECRET);
   }
 
   presenceCount(): number {
@@ -136,6 +148,7 @@ export class Room extends DurableObject<Env> {
       seat: null,
       meeting: null,
       link: ticket.link ?? null,
+      media: null,
       joinedAt: now,
       lastSeenAt: now,
       leaving: false,
@@ -143,6 +156,7 @@ export class Room extends DurableObject<Env> {
       moves: 0,
       actions: 0,
       draws: 0,
+      sfuOps: 0,
       messages: 0,
       chatWindow: 0,
       chats: 0,
@@ -215,6 +229,16 @@ export class Room extends DurableObject<Env> {
       case "music_set":
         this.setMusic(me, message, now);
         break;
+      case "call":
+        this.relayCall(socket, me, message);
+        break;
+      case "sfu":
+        // SFU calls wait on the network, and other messages from this person may
+        // be handled meanwhile, so save first and let the handler re-read.
+        me.sfuOps++;
+        socket.serializeAttachment(me);
+        if (me.sfuOps <= LIMITS.sfuOpsPerSecond) await this.sfu(socket, message);
+        return;
       default:
         send(socket, { t: "error", code: "bad_message" });
     }
@@ -280,6 +304,12 @@ export class Room extends DurableObject<Env> {
       me.meeting = meeting;
       send(socket, { t: "meeting_joined", meeting, members });
       this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
+      for (const other of this.meetingMembers(meeting)) {
+        const them = attachmentOf(other);
+        if (them.userId !== me.userId && them.media?.tracks.length) {
+          sendSfu(socket, { op: "tracks", userId: them.userId, kinds: them.media.tracks.map((track) => track.kind) });
+        }
+      }
     }
   }
 
@@ -369,11 +399,202 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "stood", id: me.userId }, undefined, me.userId);
   }
 
+  /** Leaving a table also stops the person's SFU tracks, so nobody keeps receiving them. */
   private leaveMeeting(me: Attachment): void {
     if (me.meeting === null) return;
     const meeting = me.meeting;
     me.meeting = null;
+    if (me.media) {
+      const { sessionId, tracks } = me.media;
+      me.media = null;
+      this.ctx.waitUntil(this.sfuApi.closeTracks(sessionId, tracks.map((track) => track.mid)).catch(() => undefined));
+      this.broadcastToMeeting(meeting, { t: "sfu", op: "gone", userId: me.userId }, me.userId);
+    }
     this.broadcastToMeeting(meeting, { t: "meeting_member_left", id: me.userId }, me.userId);
+  }
+
+  /**
+   * Peer-to-peer call signalling, relayed to one person with the sender added.
+   * If they aren't here, the caller hears the call ended, as with the Java server.
+   */
+  private relayCall(socket: WebSocket, me: Attachment, message: Record<string, unknown>): void {
+    const { kind, to } = message;
+    if (!CALL_KINDS.includes(kind as never) || typeof to !== "string") return;
+    const targets = this.ctx.getWebSockets(userTag(to)).filter((target) => !attachmentOf(target).leaving);
+    if (!targets.length) {
+      if (kind !== "end") send(socket, { t: "call", kind: "end", from: to, fromName: "" });
+      return;
+    }
+
+    let data = message.data;
+    if (kind === "add") {
+      // Adding someone to a call: name them from the room's own record, not the sender's word.
+      const id = (data as { id?: unknown } | undefined)?.id;
+      const added = typeof id === "string" ? this.ctx.getWebSockets(userTag(id))[0] : undefined;
+      if (!added) return;
+      data = { id, name: attachmentOf(added).name };
+    }
+    const relayed = JSON.stringify({ t: "call", kind, from: me.userId, fromName: me.name, data });
+    for (const target of targets) sendText(target, relayed);
+  }
+
+  /** Meeting-table media through the SFU. The room decides who may publish and watch what. */
+  private async sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
+    const me = attachmentOf(socket);
+    const meeting = me.meeting;
+    if (!meeting) return sendSfu(socket, { op: "error", code: "not_in_meeting" });
+
+    try {
+      switch (message.op) {
+        case "publish":
+          return await this.sfuPublish(socket, meeting, message);
+        case "unpublish":
+          return await this.sfuUnpublish(socket, meeting, message);
+        case "subscribe":
+          return await this.sfuSubscribe(socket, meeting, message);
+        case "unsubscribe": {
+          const mids = stringList(message.mids, 20);
+          if (!mids || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
+          return await this.sfuApi.closeTracks(me.media.sessionId, mids);
+        }
+        case "answer":
+          if (typeof message.sdp !== "string" || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
+          return await this.sfuApi.renegotiate(me.media.sessionId, message.sdp);
+        case "layer":
+          return await this.sfuLayer(socket, meeting, message);
+        default:
+          return sendSfu(socket, { op: "error", code: "bad_request" });
+      }
+    } catch (error) {
+      if (!(error instanceof SfuError)) throw error;
+      sendSfu(socket, { op: "error", code: error.code });
+    }
+  }
+
+  private async sfuPublish(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
+    const tracks = Array.isArray(message.tracks) ? (message.tracks as { mid?: unknown; kind?: unknown }[]) : [];
+    const valid =
+      typeof message.sdp === "string" &&
+      tracks.length > 0 &&
+      tracks.length <= MEDIA_KINDS.length &&
+      tracks.every((track) => typeof track.mid === "string" && MEDIA_KINDS.includes(track.kind as MediaKind)) &&
+      new Set(tracks.map((track) => track.kind)).size === tracks.length;
+    if (!valid) return sendSfu(socket, { op: "error", code: "bad_request" });
+    const published = tracks as { mid: string; kind: MediaKind }[];
+
+    const sessionId = await this.sessionFor(socket);
+    const result = await this.sfuApi.newTracks(
+      sessionId,
+      published.map((track) => ({ location: "local", mid: track.mid, trackName: track.kind })),
+      message.sdp as string,
+    );
+
+    const me = attachmentOf(socket);
+    if (me.meeting !== meeting || !me.media) {
+      // They left the table while the SFU was answering.
+      await this.sfuApi.closeTracks(sessionId, published.map((track) => track.mid));
+      return;
+    }
+    const kinds = published.map((track) => track.kind);
+    me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind)).concat(published);
+    socket.serializeAttachment(me);
+
+    sendSfu(socket, { op: "published", sdp: result.sessionDescription?.sdp ?? "" });
+    this.broadcastToMeeting(meeting, { t: "sfu", op: "tracks", userId: me.userId, kinds }, me.userId);
+  }
+
+  private async sfuUnpublish(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
+    const kinds = Array.isArray(message.kinds)
+      ? (message.kinds.filter((kind) => MEDIA_KINDS.includes(kind)) as MediaKind[])
+      : [];
+    const me = attachmentOf(socket);
+    if (!me.media || !kinds.length) return sendSfu(socket, { op: "error", code: "bad_request" });
+
+    const closing = me.media.tracks.filter((track) => kinds.includes(track.kind));
+    me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind));
+    socket.serializeAttachment(me);
+    this.broadcastToMeeting(
+      meeting,
+      { t: "sfu", op: "untracks", userId: me.userId, kinds: closing.map((track) => track.kind) },
+      me.userId,
+    );
+    await this.sfuApi.closeTracks(me.media.sessionId, closing.map((track) => track.mid));
+  }
+
+  private async sfuSubscribe(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
+    const wanted = Array.isArray(message.tracks)
+      ? (message.tracks as { userId?: unknown; kind?: unknown; layer?: unknown }[]).slice(0, 30)
+      : [];
+    const me = attachmentOf(socket);
+    const found: { userId: string; kind: MediaKind; track: SfuTrack }[] = [];
+    for (const want of wanted) {
+      if (typeof want.userId !== "string" || want.userId === me.userId) continue;
+      const publisher = this.publisher(meeting, want.userId);
+      const kind = want.kind as MediaKind;
+      if (!publisher?.media?.tracks.some((track) => track.kind === kind)) continue;
+      found.push({
+        userId: want.userId,
+        kind,
+        track: {
+          location: "remote",
+          sessionId: publisher.media.sessionId,
+          trackName: kind,
+          ...(kind === "camera" ? { simulcast: simulcast(want.layer) } : {}),
+        },
+      });
+    }
+    if (!found.length) return sendSfu(socket, { op: "error", code: "no_tracks" });
+
+    const sessionId = await this.sessionFor(socket);
+    const result = await this.sfuApi.newTracks(
+      sessionId,
+      found.map((item) => item.track),
+    );
+    sendSfu(socket, {
+      op: "offer",
+      sdp: result.requiresImmediateRenegotiation ? (result.sessionDescription?.sdp ?? "") : "",
+      tracks: found.map((item, index) => ({ userId: item.userId, kind: item.kind, mid: result.tracks?.[index]?.mid ?? "" })),
+    });
+  }
+
+  private async sfuLayer(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
+    const me = attachmentOf(socket);
+    const publisher = typeof message.userId === "string" ? this.publisher(meeting, message.userId) : null;
+    if (!me.media || !publisher?.media || typeof message.mid !== "string" || !CAMERA_LAYERS.includes(message.layer as never)) {
+      return sendSfu(socket, { op: "error", code: "bad_request" });
+    }
+    const result = await this.sfuApi.updateTracks(me.media.sessionId, [
+      {
+        location: "remote",
+        sessionId: publisher.media.sessionId,
+        trackName: "camera",
+        mid: message.mid,
+        simulcast: simulcast(message.layer),
+      },
+    ]);
+    if (result.requiresImmediateRenegotiation && result.sessionDescription) {
+      sendSfu(socket, { op: "offer", sdp: result.sessionDescription.sdp, tracks: [] });
+    }
+  }
+
+  /** The person's SFU session, created on first use and kept while they stay at the table. */
+  private async sessionFor(socket: WebSocket): Promise<string> {
+    const existing = attachmentOf(socket).media;
+    if (existing) return existing.sessionId;
+    const sessionId = await this.sfuApi.newSession();
+    const me = attachmentOf(socket);
+    if (me.media) return me.media.sessionId; // Another message made one meanwhile.
+    me.media = { sessionId, tracks: [] };
+    socket.serializeAttachment(me);
+    return sessionId;
+  }
+
+  private publisher(meeting: string, userId: string): Attachment | null {
+    for (const socket of this.meetingMembers(meeting)) {
+      const attachment = attachmentOf(socket);
+      if (attachment.userId === userId) return attachment;
+    }
+    return null;
   }
 
   private meetingMembers(meeting: string): WebSocket[] {
@@ -395,6 +616,7 @@ export class Room extends DurableObject<Env> {
       me.moves = 0;
       me.actions = 0;
       me.draws = 0;
+      me.sfuOps = 0;
       me.messages = 0;
     }
     me.messages++;
@@ -508,6 +730,24 @@ function playerState(attachment: Attachment): PlayerState {
     guest: attachment.guest,
     seat: attachment.seat,
   };
+}
+
+function sendSfu(socket: WebSocket, message: SfuServerMessage): void {
+  send(socket, { t: "sfu", ...message });
+}
+
+/** Simulcast preferences: the requested layer, falling back to the next best one available. */
+function simulcast(layer: unknown): NonNullable<SfuTrack["simulcast"]> {
+  return {
+    preferredRid: CAMERA_LAYERS.includes(layer as never) ? (layer as string) : "h",
+    priorityOrdering: "asciibetical",
+    ridNotAvailable: "asciibetical",
+  };
+}
+
+function stringList(value: unknown, max: number): string[] | null {
+  if (!Array.isArray(value) || value.length === 0 || value.length > max) return null;
+  return value.every((item) => typeof item === "string") ? (value as string[]) : null;
 }
 
 function memberOf(attachment: Attachment): MeetingMember {

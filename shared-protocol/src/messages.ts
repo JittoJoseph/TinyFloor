@@ -46,6 +46,35 @@ export interface MusicState {
   offset: number;
 }
 
+/** Peer-to-peer call signalling kinds, relayed to one person. */
+export const CALL_KINDS = ["invite", "accept", "decline", "signal", "add", "end"] as const;
+export type CallKind = (typeof CALL_KINDS)[number];
+
+/** Media a member publishes at a meeting table. One track of each kind at most. */
+export const MEDIA_KINDS = ["mic", "camera", "screen"] as const;
+export type MediaKind = (typeof MEDIA_KINDS)[number];
+
+/** Camera simulcast layers: full, half and quarter resolution. */
+export const CAMERA_LAYERS = ["f", "h", "q"] as const;
+export type CameraLayer = (typeof CAMERA_LAYERS)[number];
+
+export type SfuClientMessage =
+  | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind }[] }
+  | { op: "unpublish"; kinds: MediaKind[] }
+  | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; layer?: CameraLayer }[] }
+  | { op: "unsubscribe"; mids: string[] }
+  | { op: "answer"; sdp: string }
+  | { op: "layer"; userId: string; mid: string; layer: CameraLayer };
+
+export type SfuServerMessage =
+  | { op: "published"; sdp: string }
+  /** The SFU wants to send new tracks: set this offer, then reply with `answer`. */
+  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[] }
+  | { op: "tracks"; userId: string; kinds: MediaKind[] }
+  | { op: "untracks"; userId: string; kinds: MediaKind[] }
+  | { op: "gone"; userId: string }
+  | { op: "error"; code: string };
+
 export type ClientMessage =
   | { t: "move"; x: number; y: number }
   | { t: "walk_to"; x: number; y: number }
@@ -56,7 +85,9 @@ export type ClientMessage =
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
-  | { t: "music_set"; track: number; playing: boolean; offset: number };
+  | { t: "music_set"; track: number; playing: boolean; offset: number }
+  | { t: "call"; kind: CallKind; to: string; data?: unknown }
+  | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
   | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState }
@@ -77,6 +108,8 @@ export type ServerMessage =
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }
   | ({ t: "music" } & MusicState)
+  | { t: "call"; kind: CallKind; from: string; fromName: string; data?: unknown }
+  | ({ t: "sfu" } & SfuServerMessage)
   | { t: "error"; code: "slow_down" | "bad_message" };
 
 /** WebSocket close codes the room uses, and what the client should do about each. */

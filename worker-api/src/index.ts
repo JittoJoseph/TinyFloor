@@ -1,4 +1,5 @@
 import { authRoutes } from "./auth";
+import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { roomRoutes } from "./rooms";
 import { Router } from "./router";
@@ -11,6 +12,7 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
 authRoutes(router);
 workspaceRoutes(router);
 roomRoutes(router);
+callRoutes(router);
 
 export default {
   async fetch(request, env, ctx) {

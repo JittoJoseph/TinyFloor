@@ -6,10 +6,10 @@ import type { RealtimeAdminApi } from "../../shared-protocol/src";
  * binding, never from the internet.
  */
 export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdminApi {
-  /** People in each room right now. Wakes hibernating rooms only briefly. */
+  /** People in each room right now, from Presence, without waking the rooms. */
   async presenceCounts(roomIds: string[]): Promise<Record<string, number>> {
-    const counts = await Promise.all(roomIds.map((id) => this.env.ROOM.getByName(id).presenceCount()));
-    return Object.fromEntries(roomIds.map((id, index) => [id, counts[index]]));
+    const counts = await this.env.PRESENCE.getByName("global").counts(roomIds);
+    return Object.fromEntries(roomIds.map((id) => [id, counts[id] ?? 0]));
   }
 
   async closeRoom(roomId: string): Promise<void> {

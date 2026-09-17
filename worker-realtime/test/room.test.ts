@@ -146,7 +146,8 @@ describe("room messages", () => {
     ava.send({ t: "chat", text: "  hello  " });
     const chat = await ben.next("chat");
     expect(chat).toMatchObject({ id: avaId, name: "Ava", text: "hello" });
-    expect((await ava.next("chat")).text).toBe("hello");
+    await settle();
+    expect(ava.messages.some((message) => message.t === "chat")).toBe(false);
   });
 
   it("ignores an unknown status and slows down chat floods", async () => {

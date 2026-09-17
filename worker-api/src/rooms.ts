@@ -22,13 +22,7 @@ export function roomRoutes(router: Router): void {
     .add("GET", "/v1/workspaces/:id/rooms", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireMember(env, params.id, user.id);
-      const { results } = await env.DB.prepare(
-        "SELECT id, name, capacity FROM rooms WHERE workspace_id = ? AND archived_at IS NULL ORDER BY created_at",
-      )
-        .bind(params.id)
-        .all<{ id: string; name: string; capacity: number }>();
-      const people = results.length ? await realtime(env).presenceCounts(results.map((room) => room.id)) : {};
-      return json({ rooms: results.map((room) => ({ ...room, people: people[room.id] ?? 0 })) });
+      return json({ rooms: await roomsOf(env, params.id) });
     })
 
     .add("POST", "/v1/workspaces/:id/rooms", async ({ request, env, ctx, params }) => {
@@ -141,6 +135,30 @@ export function roomRoutes(router: Router): void {
       return json(await ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY));
     });
 }
+
+/** A workspace's rooms with how many people are in each, for the dashboard. */
+export async function roomsOf(env: Env, workspaceId: string): Promise<RoomSummary[]> {
+  const { results } = await env.DB.prepare(
+    "SELECT id, name, capacity FROM rooms WHERE workspace_id = ? AND archived_at IS NULL ORDER BY created_at",
+  )
+    .bind(workspaceId)
+    .all<{ id: string; name: string; capacity: number }>();
+  return withPeople(env, results);
+}
+
+export async function withPeople(env: Env, rooms: RoomRow[]): Promise<RoomSummary[]> {
+  if (!rooms.length) return [];
+  const people = await realtime(env).presenceCounts(rooms.map((room) => room.id));
+  return rooms.map((room) => ({ ...room, people: people[room.id] ?? 0 }));
+}
+
+interface RoomRow {
+  id: string;
+  name: string;
+  capacity: number;
+}
+
+type RoomSummary = RoomRow & { people: number };
 
 async function ticketFor(
   env: Env,

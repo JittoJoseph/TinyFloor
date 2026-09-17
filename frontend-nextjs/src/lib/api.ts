@@ -135,6 +135,11 @@ export const api = {
   // Workspaces and members
   createWorkspace: (name: string) => post<{ workspace: Workspace }>("/workspaces", { name }),
   workspace: (workspaceId: string) => get<{ workspace: Workspace }>(`/workspaces/${id(workspaceId)}`),
+  /** The workspace, its rooms and its members in one request, for the dashboard. */
+  overview: (workspaceId: string) =>
+    get<{ workspace: Workspace; rooms: RoomSummary[]; members: Member[]; invites: Invite[] }>(
+      `/workspaces/${id(workspaceId)}/overview`,
+    ),
   renameWorkspace: (workspaceId: string, name: string) =>
     patch<{ workspace: Workspace }>(`/workspaces/${id(workspaceId)}`, { name }),
   deleteWorkspace: (workspaceId: string) => del<{ ok: true }>(`/workspaces/${id(workspaceId)}`),

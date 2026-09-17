@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronDown, Settings } from "lucide-react";
-import { api, type Member, type RoomSummary, type Workspace, type WorkspaceSummary } from "@/lib/api";
+import { api, type Invite, type Member, type RoomSummary, type Workspace, type WorkspaceSummary } from "@/lib/api";
 import { useAuth } from "@/contexts/AuthContext";
 import { Badge, Button, Card } from "./ui";
 import { RoomsPanel } from "./RoomsPanel";
@@ -28,27 +28,26 @@ export function WorkspaceView({
   const [workspace, setWorkspace] = useState<Workspace | null>(null);
   const [rooms, setRooms] = useState<RoomSummary[] | null>(null);
   const [members, setMembers] = useState<Member[] | null>(null);
+  const [invites, setInvites] = useState<Invite[]>([]);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const refresh = useCallback(async () => {
-    const [details, roomList, memberList] = await Promise.all([
-      api.workspace(workspaceId),
-      api.rooms(workspaceId),
-      api.members(workspaceId),
-    ]);
-    setWorkspace(details.workspace);
-    setRooms(roomList.rooms);
-    setMembers(memberList.members);
+    const { workspace: details, rooms: roomList, members: memberList, invites: pending } = await api.overview(workspaceId);
+    setWorkspace(details);
+    setRooms(roomList);
+    setMembers(memberList);
+    setInvites(pending);
   }, [workspaceId]);
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all([api.workspace(workspaceId), api.rooms(workspaceId), api.members(workspaceId)]).then(
-      ([details, roomList, memberList]) => {
+    api.overview(workspaceId).then(
+      ({ workspace: details, rooms: roomList, members: memberList, invites: pending }) => {
         if (cancelled) return;
-        setWorkspace(details.workspace);
-        setRooms(roomList.rooms);
-        setMembers(memberList.members);
+        setWorkspace(details);
+        setRooms(roomList);
+        setMembers(memberList);
+        setInvites(pending);
       },
       () => !cancelled && onGone(),
     );
@@ -127,7 +126,14 @@ export function WorkspaceView({
 
       <RoomsPanel workspaceId={workspace.id} rooms={rooms} manages={manages} onChanged={refresh} />
 
-      <MembersPanel workspace={workspace} members={members} currentUserId={user.id} onChanged={refresh} onLeft={onGone} />
+      <MembersPanel
+        workspace={workspace}
+        members={members}
+        invites={invites}
+        currentUserId={user.id}
+        onChanged={refresh}
+        onLeft={onGone}
+      />
 
       <WorkspaceSettings
         open={settingsOpen}

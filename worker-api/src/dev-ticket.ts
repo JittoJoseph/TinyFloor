@@ -4,13 +4,12 @@ const ROLES: RoomRole[] = ["owner", "admin", "member", "guest"];
 
 /**
  * Hands out room tickets without accounts, for trying rooms out locally before
- * sign-in exists (M3). Only answers when DEV_TICKETS=true is set in .dev.vars
- * and the request is for localhost, so it never works on the live API.
+ * sign-in exists (M3). Only answers when DEV_TICKETS=true is set in .dev.vars,
+ * which is never set on the live API. (wrangler dev rewrites the URL to the
+ * route's hostname, so the hostname can't tell local from live.)
  */
 export async function devTicket(request: Request, env: Env): Promise<Response | null> {
-  const url = new URL(request.url);
-  if (env.DEV_TICKETS !== "true" || !["localhost", "127.0.0.1"].includes(url.hostname)) return null;
-  if (request.method !== "POST") return null;
+  if (env.DEV_TICKETS !== "true" || request.method !== "POST") return null;
 
   const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
   const room = typeof body.room === "string" && /^[a-z0-9-]{1,64}$/.test(body.room) ? body.room : "dev-room";

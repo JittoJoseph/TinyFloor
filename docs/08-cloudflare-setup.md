@@ -1,7 +1,7 @@
 # 08. Cloudflare setup
 
-Everything to create outside the code, for staging first and then production.
-Wrangler commands are run from the Worker's folder.
+Everything created outside the code. All of it is set up during development, on
+the real hostnames. Wrangler commands are run from the Worker's folder.
 
 ## Account
 
@@ -12,10 +12,9 @@ Wrangler commands are run from the Worker's folder.
 
 | Item | How |
 |---|---|
-| `tinyfloor-db-staging` | `wrangler d1 create tinyfloor-db-staging` |
 | `tinyfloor-db` | `wrangler d1 create tinyfloor-db` |
-| Database IDs | Into `worker-api/wrangler.jsonc` |
-| Migrations | Applied by the deploy script |
+| Database ID | Into `worker-api/wrangler.jsonc` |
+| Migrations | `worker-api/migrations/`, applied by the deploy script |
 
 ## Durable Objects
 
@@ -35,18 +34,20 @@ No resources to create. Declared in `worker-realtime/wrangler.jsonc`:
 
 SQLite-backed classes only, which is also the only kind the Free plan allows.
 `worker-api/wrangler.jsonc` binds the same classes with
-`"script_name": "tinyfloor-realtime"`.
+`"script_name": "tinyfloor-realtime"`, so `tinyfloor-realtime` is deployed first.
 
 ## Custom domains
 
-| Worker | Staging | Production |
-|---|---|---|
-| `tinyfloor` | `staging.tinyfloor.com` | `www.tinyfloor.com`, `tinyfloor.com` (existing) |
-| `tinyfloor-api` | `staging-api.tinyfloor.com` | `api.tinyfloor.com` |
-| `tinyfloor-realtime` | `staging-realtime.tinyfloor.com` | `realtime.tinyfloor.com` |
+| Worker | Hostname |
+|---|---|
+| `tinyfloor` | `www.tinyfloor.com`, `tinyfloor.com` (existing) |
+| `tinyfloor-preview` | `preview.tinyfloor.com` (until the merge) |
+| `tinyfloor-api` | `api.tinyfloor.com` |
+| `tinyfloor-realtime` | `realtime.tinyfloor.com` |
 
 Declared as `routes` with `custom_domain: true` in each `wrangler.jsonc`. The
-middleware redirect to `www` must allow `staging.tinyfloor.com`.
+site's middleware redirects every other host to `www`, so it must let
+`preview.tinyfloor.com` through.
 
 ## Realtime
 
@@ -55,12 +56,10 @@ middleware redirect to `www` must allow `staging.tinyfloor.com`.
 | TURN key | Dashboard: Realtime → TURN | `TURN_KEY_ID`, `TURN_KEY_API_TOKEN` secrets on `tinyfloor-api` |
 | SFU app | Dashboard: Realtime → SFU | `REALTIME_APP_ID`, `REALTIME_APP_SECRET` secrets on `tinyfloor-realtime` |
 
-One of each for staging and production, so staging traffic is visible separately.
-
 ## Turnstile
 
-- One widget covering `staging.tinyfloor.com`, `www.tinyfloor.com` and
-  `localhost`, in managed mode.
+- One widget for `www.tinyfloor.com`, `preview.tinyfloor.com` and `localhost`,
+  in managed mode.
 - Site key: `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in the site's build settings.
 - Secret: `TURNSTILE_SECRET` on `tinyfloor-api`.
 
@@ -69,9 +68,9 @@ One of each for staging and production, so staging traffic is visible separately
 - OAuth consent screen: TinyFloor, scopes `openid`, `email`, `profile`.
 - Web client with redirect URIs:
   - `https://api.tinyfloor.com/v1/auth/google/callback`
-  - `https://staging-api.tinyfloor.com/v1/auth/google/callback`
   - `http://localhost:8787/v1/auth/google/callback`
 - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` secrets on `tinyfloor-api`.
+- This needs a Google account with Google Cloud access, so it is set up by hand.
 
 ## Secrets
 
@@ -82,24 +81,29 @@ One of each for staging and production, so staging traffic is visible separately
 | `TURNSTILE_SECRET` | api | |
 | `TURN_KEY_ID`, `TURN_KEY_API_TOKEN` | api | |
 | `REALTIME_APP_ID`, `REALTIME_APP_SECRET` | realtime | |
-| `DISCORD_WEBHOOK_URL` | api | Optional |
-| `ADMIN_TOKEN` | api, realtime | Only for the migration import; removed afterwards |
+| `DISCORD_WEBHOOK_URL` | realtime | Lobby only |
 
-Set with `wrangler secret put <NAME>` (and `--env staging`). Never committed.
-Local values go in `.dev.vars`.
+Set with `wrangler secret put <NAME>`. Never committed. Local values go in each
+Worker's `.dev.vars`, which is gitignored.
 
 ## Workers Builds
 
 One Git connection per Worker, root directory set to its folder, build watch
-paths limited to that folder and `shared-protocol/`. Staging deploys from
-`feature/cloudflare-platform`; production is switched on during cutover.
+paths limited to that folder and `shared-protocol/`:
+
+| Worker | Branch |
+|---|---|
+| `tinyfloor` | `master` (existing) |
+| `tinyfloor-preview` | `feature/cloudflare-platform` |
+| `tinyfloor-api` | `feature/cloudflare-platform`, switched to `master` at the merge |
+| `tinyfloor-realtime` | `feature/cloudflare-platform`, switched to `master` at the merge |
+
+Git connections are made in the dashboard.
 
 ## Observability
 
 - `"observability": { "enabled": true }` in each `wrangler.jsonc` for Workers
   Logs.
-- Head sampling at 100% on staging, lower on production if log volume nears the
-  free limit.
 
 ## Existing resources, unchanged
 

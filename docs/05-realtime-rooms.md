@@ -82,7 +82,23 @@ billed.
 | `presenceCount()` | People connected, for room lists |
 | `disconnectAll(reason)` | Room deleted or archived: close all with 4003 |
 | `disconnectGuests(linkId)` | Guest link revoked: close sockets whose ticket came from it |
-| `importBoard(strokes)` | Used once, during data migration |
+
+## Discord, lobby only
+
+Lobby copies (and only lobby copies) report to `DISCORD_WEBHOOK_URL` so abuse in
+the free lobby can be spotted:
+
+- A join: name, character, lobby copy, and the country from `request.cf.country`
+  (read by the Worker at connect and passed in with the ticket claims).
+- A chat message: name, lobby copy, text.
+
+Each event is sent straight away with `ctx.waitUntil`, so it never delays the
+room and needs no timer. Discord limits a webhook to about 30 requests a minute,
+so each lobby copy sends at most 20 events per minute. Events past that are
+counted instead of sent, and the next event that goes out adds
+"(12 more skipped)".
+
+Workspace rooms never send anything to Discord.
 
 ## Message protocol
 

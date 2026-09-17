@@ -1,13 +1,16 @@
 # 09. Data migration and cutover
 
-The switch happens once, at a time with nobody online, after everything in
-`10-build-order.md` is done and rehearsed on staging.
+TinyFloor restarts fresh on the new platform. **Only user accounts are carried
+over.** Rooms, whiteboards, room passwords, share codes, guests and everything
+else start empty.
 
-## What moves, and how it maps
+By the time of the merge, every Cloudflare resource and both backend Workers are
+already live (see `08-cloudflare-setup.md`). The switch is the merge itself, done
+at a time with nobody online.
 
-MongoDB collections: `users`, `rooms`, `whiteboards`.
+## What is carried over
 
-### users
+MongoDB collection `users` only:
 
 | MongoDB | D1 `users` |
 |---|---|
@@ -17,105 +20,68 @@ MongoDB collections: `users`, `rooms`, `whiteboards`.
 | `displayName`, else `username` | `display_name` |
 | `avatarPreferences.characterName` | `character` |
 | `createdAt`, `lastActiveAt` | `created_at`, `last_active_at` |
+| | `is_guest = 0` |
 
 Only accounts with an email and `isGuest = false`. **Not carried over:**
 `passwordHash`, `status`, `createdRooms`, `joinedRooms`, `recentCollaborators`,
 and all guests.
 
-When someone signs in with Google using the same email, the account is linked
-(`03-auth-and-accounts.md`).
-
-### rooms
-
-For each room that is not archived, has an `ownerId` belonging to a carried-over
-account, and is not the lobby:
-
-| MongoDB | D1 |
-|---|---|
-| Owner | One workspace per owner, named "<name>'s office", plan `free`, owner membership |
-| `_id` | `rooms.id` |
-| `name` | `rooms.name` |
-| `maxPlayers` (capped at 20) | `rooms.capacity` |
-| `createdAt` | `rooms.created_at` |
-
-**Not carried over:** `passwordHash` (rooms are private to members now),
-`shareCode` (owners create guest links), `users`, `status`, and rooms owned by
-guests or nobody.
-
-People who were only visitors in someone's room don't become members. Owners
-invite them again.
-
-### whiteboards
-
-For each carried-over room with a whiteboard, the strokes are sent to that room's
-object through `importBoard(strokes)`, protected by `ADMIN_TOKEN`.
+Carried-over accounts own no workspace. The first time they sign in with Google
+using the same email, the account is linked (`03-auth-and-accounts.md`) and they
+land on "Create your office".
 
 ## Tooling
 
-`tools/migrate-mongo-to-d1/` (Node, run locally, not deployed):
+`tools/migrate-users-to-d1/` (Node, run locally, never deployed):
 
-1. **Export:** reads the three collections with the official MongoDB driver into
-   JSON files under a gitignored folder.
-2. **Transform:** applies the mapping above and writes:
-   - `d1-import.sql`: `INSERT` statements in batches of 500, in dependency order
-     (users, workspaces, memberships, rooms);
-   - `boards.json`: room id to strokes.
-   - A report: counts in, counts out, and every record skipped with the reason.
-3. **Import:**
-   `wrangler d1 execute tinyfloor-db --remote --file d1-import.sql`
-4. **Boards:** posts `boards.json` room by room to an admin-only endpoint on
-   `tinyfloor-realtime`.
-5. **Verify:** counts in D1 match the report; five spot-checked accounts, rooms
-   and boards.
+1. **Export:** reads `users` with the official MongoDB driver into a JSON file
+   under a gitignored folder.
+2. **Transform:** applies the mapping and writes:
+   - `users.sql`: `INSERT OR IGNORE` statements in batches of 500. An email that
+     already exists in D1 (someone who signed up on the new platform before the
+     merge) is left untouched.
+   - A report: accounts in, accounts written, and every skipped record with the
+     reason (no email, guest, duplicate email).
+3. **Import:** `wrangler d1 execute tinyfloor-db --remote --file users.sql`
+4. **Verify:** D1 count matches the report; three spot-checked accounts sign in
+   with Google and keep their name and character.
 
-The same scripts run against staging first, with a copy of production data.
+## Rehearsal
 
-## Rehearsal on staging
-
-1. Export production MongoDB.
-2. Import into `tinyfloor-db-staging` and the staging rooms.
-3. Point `staging.tinyfloor.com` at staging.
-4. Walk through: sign in with Google as a migrated account, see the workspace
-   and room, see the whiteboard, invite someone, enter the lobby as a guest,
-   hold a proximity call and a meeting-table call.
-5. Fix anything, repeat until clean.
+Before the merge, the same scripts import a copy of production accounts into a
+local D1 (`wrangler d1 execute tinyfloor-db --local`). The new frontend runs
+against it locally, and a carried-over account signs in and is linked. Repeat
+until the report is clean.
 
 ## Cutover runbook
 
 **Before the day**
-- Every milestone in `10-build-order.md` done on staging.
-- Production D1, secrets, custom domains, TURN key, SFU app, Turnstile and
-  Google redirect URIs created (`08-cloudflare-setup.md`).
-- `tinyfloor-api` and `tinyfloor-realtime` deployed to production, reachable but
-  unused.
+- Every milestone in `10-build-order.md` done, with `preview.tinyfloor.com`
+  working end to end.
+- The pull request from `feature/cloudflare-platform` into master reviewed and
+  green.
 - A backup of MongoDB taken.
 
 **On the day, with nobody online**
-1. Put the current site into a "back in a few minutes" state with the
-   maintenance switch built in M8 (a Worker variable read by the site's
-   middleware), so no deploy is needed.
-2. Stop the Java backend on Railway, so no new data is written.
-3. Export MongoDB, transform, import into production D1, import boards.
-4. Verify counts and spot checks.
-5. Make the new frontend the production build: merge
-   `feature/cloudflare-platform` into master, or set the `tinyfloor` Worker's
-   production branch to it. **This is decided on the day, by you.** The docs
-   don't assume either.
-6. Deploy, clear the maintenance flag.
-7. Smoke test on production: Google sign-in, dashboard, room entry, lobby as a
-   guest, a proximity call, a meeting-table call, whiteboard, jukebox.
+1. Turn on the maintenance switch (M8) on the live site.
+2. Stop the Java backend on Railway, so no new accounts are created.
+3. Export users, transform, import into `tinyfloor-db`, verify.
+4. Merge the pull request. Workers Builds deploys the new frontend, which points
+   at `api.tinyfloor.com` and `realtime.tinyfloor.com`.
+5. Turn off the maintenance switch.
+6. Smoke test on production: Google sign-in as a carried-over account, create an
+   office and a room, invite a second account, enter the lobby as a guest, a
+   proximity call, a meeting-table call, whiteboard, jukebox.
 
 **If something is wrong**
-- Before step 5: restart Railway and clear the maintenance flag. Nothing has
+- Before step 4: restart Railway and turn off the maintenance switch. Nothing has
   changed for users.
-- After step 5: redeploy the previous frontend build from the Workers dashboard
-  and restart Railway. MongoDB was never modified, so it is still complete. Any
-  data created on the new platform in between is lost, which is why this runs
-  when nobody is online.
+- After step 4: roll the `tinyfloor` Worker back to its previous deployment from
+  the Workers dashboard, and restart Railway. MongoDB was never modified. Anything
+  created on the new platform in between stays in D1 and is kept for the next
+  attempt.
 
 **After a quiet week**
 - Railway project shut down.
 - MongoDB backup archived; the database deleted.
 - `backend-springboot/` gets a `DEPRECATED.md` pointing to these docs.
-- `ADMIN_TOKEN` secrets deleted; the import endpoints removed in the next
-  realtime deploy.

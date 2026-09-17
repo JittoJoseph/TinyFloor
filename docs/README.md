@@ -5,14 +5,16 @@ and Realtime.
 
 ## Direction
 
-- The new platform is built on the `feature/cloudflare-platform` branch and is
-  not merged into master while it is being built.
+- The new platform is built on the `feature/cloudflare-platform` branch.
 - **It is not compatible with the current Java backend,** and doesn't try to be.
   The API, the WebSocket protocol and the data model are all new.
-- When everything is built and every Cloudflare resource is set up, the data is
-  migrated from MongoDB once, and the frontend is switched to the new platform
-  at a time when nobody is using TinyFloor.
-- From that point on, `backend-springboot/` is deprecated. Its code stays in the
+- **Every Cloudflare resource is set up during development,** including the API
+  and realtime Workers on their real hostnames. Nobody uses them until the merge.
+- **The merge switches the site over:** the branch brings the frontend changes
+  and points the frontend at the new API.
+- **It's a fresh start.** Only user accounts are carried over from MongoDB. Rooms,
+  whiteboards and everything else start empty.
+- From the merge on, `backend-springboot/` is deprecated. Its code stays in the
   repository, but nothing runs it.
 
 Where these documents differ from section 8 of the overview (side-by-side
@@ -30,16 +32,16 @@ testing against the Java backend), these documents win.
 | [05-realtime-rooms.md](05-realtime-rooms.md) | Room and lobby Durable Objects, the WebSocket protocol |
 | [06-calls.md](06-calls.md) | Peer-to-peer calls with TURN, meeting tables on the SFU |
 | [07-frontend-changes.md](07-frontend-changes.md) | What changes in the Next.js app |
-| [08-cloudflare-setup.md](08-cloudflare-setup.md) | Every Cloudflare resource and secret to create |
-| [09-data-migration-and-cutover.md](09-data-migration-and-cutover.md) | MongoDB to D1, and the switch-over runbook |
+| [08-cloudflare-setup.md](08-cloudflare-setup.md) | Every Cloudflare resource and secret |
+| [09-data-migration-and-cutover.md](09-data-migration-and-cutover.md) | Carrying over user accounts, and the switch-over runbook |
 | [10-build-order.md](10-build-order.md) | Milestones, in order, with what "done" means for each |
 
-## Proposals to confirm
-
-Some product choices below are proposals carried over from the pricing
-discussion, not final decisions. Each document marks them. The main ones:
+## Decisions
 
 - Plans: Free up to 3 members, then 10, 25 and 50 members.
 - One free lobby, split into copies of 20 people.
-- Chat stays unsaved, as it is today.
-- The Discord webhook no longer receives chat or names from private rooms.
+- Chat is not saved, as today.
+- Discord only hears about the public lobby (joins and chat, for spotting
+  abuse). Nothing from workspace rooms is ever sent.
+- Meeting tables always use the SFU, even with two people.
+- Only user accounts are carried over; everything else starts fresh.

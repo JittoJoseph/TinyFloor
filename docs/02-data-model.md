@@ -14,9 +14,9 @@ written to D1. The D1 free plan allows 100,000 rows written per day.
 
 ## IDs
 
-All primary keys are text. New records use `crypto.randomUUID()`. Records
-carried over from MongoDB keep their MongoDB `_id` as text, so nothing needs a
-lookup table during the migration.
+All primary keys are text. New records use `crypto.randomUUID()`. User accounts
+carried over from MongoDB keep their MongoDB `_id` as text. Nothing else is
+carried over.
 
 Timestamps are integers, milliseconds since the Unix epoch.
 

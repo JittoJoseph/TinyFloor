@@ -11,6 +11,7 @@
     "build:worker": "node scripts/fetch-assets.mjs && opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:worker": "opennextjs-cloudflare deploy",
+    "deploy:preview": "opennextjs-cloudflare deploy --env preview",
     "upload:worker": "opennextjs-cloudflare upload",
     "indexnow": "node scripts/indexnow.mjs",
     "assets": "node scripts/fetch-assets.mjs"

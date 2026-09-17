@@ -21,5 +21,15 @@
   ],
   "observability": {
     "enabled": true
+  },
+  // preview.tinyfloor.com: the site on the new Workers, for trying changes before cutover.
+  // Built from the feature branch with: pnpm run build:worker && pnpm run deploy:preview
+  "env": {
+    "preview": {
+      "name": "tinyfloor-preview",
+      "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "tinyfloor-preview" }],
+      "routes": [{ "pattern": "preview.tinyfloor.com", "custom_domain": true }],
+      "observability": { "enabled": true }
+    }
   }
 }

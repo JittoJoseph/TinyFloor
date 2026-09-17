@@ -1,9 +1,10 @@
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { verifyTicket } from "../../shared-protocol/src";
+import { devTicket } from "../src/dev-ticket";
 
 describe("dev tickets", () => {
-  it("signs a ticket the realtime worker will accept, on localhost", async () => {
+  it("signs a ticket the realtime worker will accept", async () => {
     const response = await exports.default.fetch("http://localhost:8787/v1/dev/ticket", {
       method: "POST",
       body: JSON.stringify({ room: "lobby-1", name: "Ava", role: "guest" }),
@@ -17,11 +18,8 @@ describe("dev tickets", () => {
     });
   });
 
-  it("doesn't exist on the live hostname", async () => {
-    const response = await exports.default.fetch("https://api.tinyfloor.com/v1/dev/ticket", {
-      method: "POST",
-      body: "{}",
-    });
-    expect(response.status).toBe(404);
+  it("doesn't exist without the DEV_TICKETS flag", async () => {
+    const request = new Request("https://api.tinyfloor.com/v1/dev/ticket", { method: "POST", body: "{}" });
+    expect(await devTicket(request, { ...env, DEV_TICKETS: undefined as never })).toBeNull();
   });
 });

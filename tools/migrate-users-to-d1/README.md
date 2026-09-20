@@ -1,7 +1,8 @@
 # migrate-users-to-d1
 
-Carries TinyFloor accounts from MongoDB into D1. Run locally, never deployed.
-The plan and the checks are in `docs/09-data-migration-and-cutover.md`.
+Carried TinyFloor accounts from MongoDB into D1 when the platform moved, in
+September 2026. Run locally, never deployed; kept only in case another batch of
+old accounts turns up.
 
 ```bash
 pnpm install

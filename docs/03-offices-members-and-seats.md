@@ -1,4 +1,4 @@
-# 11. Offices, members and seats
+# 03. Offices, members and seats
 
 The model we have was built for a product with many rooms per workspace. That
 is not the product. This collapses it.

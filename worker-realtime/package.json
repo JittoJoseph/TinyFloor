@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wrangler dev --port 8788",
     "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler deploy --env preview",
     "types": "wrangler types",
     "typecheck": "tsc --noEmit && tsc --noEmit -p test",
     "test": "vitest run"

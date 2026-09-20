@@ -49,25 +49,43 @@ to rooms. API and site deploys never drop anyone from a room.
 | | Site | API | Realtime |
 |---|---|---|---|
 | Live | `www.tinyfloor.com` | `api.tinyfloor.com` | `realtime.tinyfloor.com` |
-| Preview of the branch | `preview.tinyfloor.com` | same live API | same live realtime |
+| Preview | `preview.tinyfloor.com` | `api-preview.tinyfloor.com` | `realtime-preview.tinyfloor.com` |
 | Local | `localhost:3000` | `localhost:8787` | `localhost:8788` |
 
-The preview uses a subdomain of `tinyfloor.com` rather than a `workers.dev` URL,
-because the session cookie is scoped to `.tinyfloor.com`. On `workers.dev` the
-site and API would be different sites and the cookie would not be sent.
+Both use subdomains of `tinyfloor.com` rather than `workers.dev` URLs, because
+the session cookie has to be sent from the site to its API. On `workers.dev` the
+two would be different sites and the cookie would not go.
 
 ## Environments
 
-**One live environment for the new backend.** `tinyfloor-api`,
-`tinyfloor-realtime` and `tinyfloor-db` are created and deployed during
-development on their real hostnames. Until the merge, only
-`preview.tinyfloor.com` and local development use them, so they double as the
-testing environment. There is no separate staging copy for now; one can be added
-after launch with an `env.staging` block in each `wrangler.jsonc`.
+**Two systems, the same code.** Live is what people use. Preview is where the
+next sprint is built and tried, on `preview.tinyfloor.com`, and it is a whole
+system of its own: its own site Worker, API Worker, realtime Worker and
+database. Nothing tried on preview can touch a real account, room or office.
 
-**The preview site** is a second Worker, `tinyfloor-preview`, built from
-`feature/cloudflare-platform` with the same `frontend-nextjs/` code. It exists
-only until the merge, then it's deleted.
+| | Live | Preview |
+|---|---|---|
+| Site | `tinyfloor` | `tinyfloor-preview` |
+| API | `tinyfloor-api` | `tinyfloor-api-preview` |
+| Realtime | `tinyfloor-realtime` | `tinyfloor-realtime-preview` |
+| Database | `tinyfloor-db` | `tinyfloor-preview-db` |
+| Built from | `master` | `feature/cloudflare-platform` |
+| Turnstile widget | TinyFloor | TinyFloor preview |
+| Session cookie | `.tinyfloor.com` | host-only, so it never reaches the live API |
+| Daily clean-up cron | yes | no |
+
+The preview Workers are the `preview` environment in each `wrangler.jsonc`:
+`pnpm run deploy:preview` in `worker-api/` and `worker-realtime/`. The site
+deploys itself from the branch through Workers Builds.
+
+**TURN and the SFU are the same services for both**, because they hold no data
+of ours: TURN hands out short-lived credentials, the SFU forwards media between
+people who are already in a room. Each system has its own credentials
+(`tinyfloor-preview` TURN key, `tinyfloor-dev` SFU app) so usage can be told
+apart and one can be rotated without touching the other.
+
+Work happens on the branch, is tried on preview, and goes live as a merge to
+master.
 
 ## Local development
 
@@ -95,7 +113,7 @@ the root directory:
 | Worker | Root | Branch | Deploy |
 |---|---|---|---|
 | `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` (unchanged) |
-| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview` (the `preview` environment in `wrangler.jsonc`), with build variables `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_REALTIME_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `NEXT_PUBLIC_SITE_URL=https://preview.tinyfloor.com`. Created |
+| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview` (the `preview` environment in `wrangler.jsonc`), with build variables pointing at `api-preview`, `realtime-preview`, the preview Turnstile site key and `NEXT_PUBLIC_SITE_URL=https://preview.tinyfloor.com`. Created |
 | `tinyfloor-api` | `worker-api` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` (applies D1 migrations first) |
 | `tinyfloor-realtime` | `worker-realtime` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` |
 

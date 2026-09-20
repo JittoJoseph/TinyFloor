@@ -24,5 +24,34 @@
       "database_id": "31aa401c-c9f4-4653-8bf4-57e84881a451",
       "migrations_dir": "migrations"
     }
-  ]
+  ],
+  // The preview system: the same code with its own database, so anything tried
+  // on preview.tinyfloor.com never touches real accounts or offices. TURN and
+  // the SFU are the same services; only the credentials differ.
+  "env": {
+    "preview": {
+      "name": "tinyfloor-api-preview",
+      "routes": [{ "pattern": "api-preview.tinyfloor.com", "custom_domain": true }],
+      "vars": {
+        "SITE_ORIGINS": "https://preview.tinyfloor.com,http://localhost:3000",
+        // No Domain on the cookie, so a preview session is never sent to the live API.
+        "COOKIE_DOMAIN": "",
+        "REALTIME_URL": "wss://realtime-preview.tinyfloor.com"
+      },
+      "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
+      "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],
+      "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime-preview", "entrypoint": "RealtimeAdmin" }],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "tinyfloor-preview-db",
+          "database_id": "fa83d1fc-0e79-419c-a143-8934afb312c1",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "observability": { "enabled": true },
+      // The daily clean-up runs on the live system only.
+      "triggers": { "crons": [] }
+    }
+  }
 }

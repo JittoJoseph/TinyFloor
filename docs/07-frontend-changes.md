@@ -33,8 +33,13 @@ Removed from the client: JWT storage, `validateToken`, register and login forms.
 | Page | Today | After |
 |---|---|---|
 | `/` and marketing pages | Unchanged at cutover | Copy that promises public rooms or a people directory is updated (see below) |
-| `/auth` | Username and password | "Continue with Google". Magic link later |
-| `/dashboard` | Profile, created and joined rooms, recent collaborators | Workspaces: rooms with live counts, members, invites, plan. Onboarding: "Create your office" when they have none |
+| `/auth` | Username and password | Email and password. Name, email, password on sign-up: no character, that's asked at the door of a space |
+| `/dashboard` | Profile, created and joined rooms, recent collaborators | Your offices. One office opens straight into it; none shows the way to make one |
+| `/space/:id` (new) | | The office's rooms, with headcounts and a way in |
+| `/space/:id/people` (new) | | Members, roles and pending invites |
+| `/space/:id/settings` (new) | | Rename, hand over, leave or close the office |
+| `/account` (new) | | Your name, email and password |
+| `/create` (new) | | Name an office, then make an account if there isn't one |
 | `/rooms` | Public room directory | **Removed.** Redirects to `/dashboard` for accounts, `/lobby` otherwise |
 | `/people` | Public people directory | **Removed.** Redirects to `/` |
 | `/create-room` | Anyone creates a public room | Creates a room in a workspace; without one, onboarding first |
@@ -72,16 +77,22 @@ URLs, so they return a 301 to their replacement rather than a 404.
 
 ## Entry flows
 
-- **Lobby:** `/lobby` → guest name and character (Turnstile) or signed-in
-  account → `POST /lobby/ticket` → room.
-- **Guest link:** `/join/:token` → preview → name and character → session →
-  `POST /guest-links/:token/ticket` → room.
-- **Invite:** `/invite/:token` → preview → sign in with Google → accept →
-  dashboard.
-- **Member:** dashboard → room card → `POST /rooms/:id/ticket` → room.
+Every door is the same two steps: your name, then your character. An account
+already has a name, so it only picks a character. Both are kept in this browser
+(`lib/identity.ts`), so nobody types their name twice.
 
-The existing entry panel (preview, character picker, name) is reused for all
-three.
+- **Lobby:** `/lobby` → name → character (Turnstile) → guest session →
+  `POST /lobby/ticket` → room.
+- **Guest link:** `/join/:token` → preview → name → character → session →
+  `POST /guest-links/:token/ticket` → room.
+- **Invite:** `/invite/:token` → preview → name → character → *then* sign up or
+  sign in, with the name already filled in → accept → the office.
+- **Member:** office → room card → character → `POST /rooms/:id/ticket` → room.
+- **Making an office:** `/create` → name it → sign up (the name waits in the
+  browser) → the office and its first room are made → `/space/:id`.
+
+The entry panel (preview on one side, one question on the other) is reused by
+all of them.
 
 ## Marketing copy that changes
 

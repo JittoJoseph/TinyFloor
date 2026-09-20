@@ -20,7 +20,10 @@
 
 ### Email and password
 
-- `POST /v1/auth/signup { email, password, displayName, character, turnstileToken }`
+- `POST /v1/auth/signup { email, password, displayName, character?, turnstileToken }`
+  - The sign-up form asks for a name, an email and a password only. A
+    character comes from whatever the browser remembers, or the default; it
+    is picked at the door of a space, not when making an account.
   - Email is trimmed and lowercased. Passwords are 8 characters to 72 bytes
     (bcrypt's limit), and not only spaces.
   - Turnstile is checked before anything is created.

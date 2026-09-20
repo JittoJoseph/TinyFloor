@@ -1,4 +1,5 @@
 export * from "./admin";
+export * from "./chat";
 export * from "./lobby";
 export * from "./map";
 export * from "./messages";

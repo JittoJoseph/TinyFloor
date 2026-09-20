@@ -5,4 +5,6 @@ export interface RealtimeAdminApi {
   /** Everyone leaves and the room's storage (whiteboard, music) is deleted. */
   forgetRoom(roomId: string): Promise<void>;
   revokeGuestLink(roomId: string, linkId: string): Promise<void>;
+  /** Someone's membership ended: they leave the floor and the office's chat. */
+  removeMember(officeId: string, userId: string): Promise<void>;
 }

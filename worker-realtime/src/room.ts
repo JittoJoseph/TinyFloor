@@ -154,6 +154,19 @@ export class Room extends DurableObject<Env> {
     this.createTables();
   }
 
+  /** A membership ended: that person leaves the floor. */
+  async disconnectMember(userId: string): Promise<void> {
+    let room: string | null = null;
+    for (const socket of this.present()) {
+      const attachment = this.attachmentOf(socket);
+      if (attachment.userId !== userId) continue;
+      this.depart(attachment);
+      this.closeQuietly(socket, CloseCode.AccessRevoked, "access_revoked", attachment);
+      room = attachment.room;
+    }
+    if (room) await this.headcountChanged(room);
+  }
+
   /** A guest link was revoked: whoever came in through it leaves. */
   async disconnectLink(linkId: string): Promise<void> {
     let room: string | null = null;

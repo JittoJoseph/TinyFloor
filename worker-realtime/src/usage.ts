@@ -57,9 +57,9 @@ export class Usage {
     try {
       await this.db
         .prepare(
-          `INSERT INTO usage_daily (day, room_id, workspace_id, peak_people, person_minutes, sfu_minutes)
-           VALUES (?1, ?2, (SELECT workspace_id FROM rooms WHERE id = ?2), ?3, ?4, ?5)
-           ON CONFLICT (day, room_id) DO UPDATE SET
+          `INSERT INTO usage_daily (day, office_id, peak_people, person_minutes, sfu_minutes)
+           VALUES (?1, ?2, ?3, ?4, ?5)
+           ON CONFLICT (day, office_id) DO UPDATE SET
              peak_people = MAX(peak_people, excluded.peak_people),
              person_minutes = person_minutes + excluded.person_minutes,
              sfu_minutes = sfu_minutes + excluded.sfu_minutes`,

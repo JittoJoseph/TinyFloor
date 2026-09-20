@@ -69,7 +69,7 @@ was upgraded to cost 11.
 **Before the day**
 - Every milestone in `10-build-order.md` done, with `preview.tinyfloor.com`
   working end to end.
-- The pull request from `feature/cloudflare-platform` into master reviewed and
+- The pull request from `dev` into master reviewed and
   green.
 - A backup of MongoDB taken.
 

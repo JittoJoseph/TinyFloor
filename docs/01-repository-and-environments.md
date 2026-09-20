@@ -69,7 +69,7 @@ database. Nothing tried on preview can touch a real account, room or office.
 | API | `tinyfloor-api` | `tinyfloor-api-preview` |
 | Realtime | `tinyfloor-realtime` | `tinyfloor-realtime-preview` |
 | Database | `tinyfloor-db` | `tinyfloor-preview-db` |
-| Built from | `master` | `feature/cloudflare-platform` |
+| Built from | `master` | `dev` |
 | Turnstile widget | TinyFloor | TinyFloor preview |
 | Session cookie | `.tinyfloor.com` | host-only, so it never reaches the live API |
 | Daily clean-up cron | yes | no |
@@ -117,7 +117,7 @@ the root directory:
 | `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` |
 | `tinyfloor-api` | `worker-api` | `master` | `pnpm run deploy` (applies D1 migrations first) |
 | `tinyfloor-realtime` | `worker-realtime` | `master` | `pnpm run deploy` |
-| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview`, with build variables pointing at `api-preview`, `realtime-preview` and the preview Turnstile site key |
+| `tinyfloor-preview` | `frontend-nextjs` | `dev` | `pnpm run build:worker && pnpm run deploy:preview`, with build variables pointing at `api-preview`, `realtime-preview` and the preview Turnstile site key |
 
 A merge to master deploys the live system. A push to the branch rebuilds the
 preview site; the two preview Workers behind it are deployed by hand, because

@@ -55,7 +55,7 @@
     "subtitle": "Un bureau virtuel qui ressemble à un jeu. Promenez-vous, parlez à vos collègues et retrouvez l’esprit d’équipe.",
     "cta": "Entrer maintenant",
     "caption": "Une salle TinyFloor : un étage de bureau 16 bits avec des bureaux et des coéquipiers qui s’y promènent.",
-    "noSignUp": "sans inscription, entrez",
+    "noSignUp": "essaie",
     "secondaryCta": "Ou installez un bureau pour votre équipe"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Connexion...",
-    "copied": "Copié !",
     "leave": "Quitter",
     "reconnecting": "Reconnexion…",
     "peopleHere": "Ici maintenant : {count}",
-    "copyLink": "Copier le lien",
     "reconnectingNote": "Connexion perdue. On vous ramène…",
     "ended": {
       "back": "Retour",
@@ -274,7 +272,10 @@
       "signIn": "Se connecter",
       "tryAgain": "Réessayer",
       "useHere": "L’utiliser ici"
-    }
+    },
+    "invite": "Inviter",
+    "linkCopied": "Lien copié",
+    "inviteText": "Rejoins-moi dans {room} sur TinyFloor"
   },
   "call": {
     "incomingVideo": "Appel vidéo entrant...",
@@ -333,7 +334,6 @@
     "title": "Chat de la salle",
     "system": "Système",
     "welcome": "Bienvenue dans le chat de la salle. Les messages sont visibles par tous ici.",
-    "intro": "Vous pouvez discuter ici avec tout le monde dans cette salle.",
     "placeholder": "Écrivez un message...",
     "close": "Fermer le chat",
     "send": "Envoyer le message"

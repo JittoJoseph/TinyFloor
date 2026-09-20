@@ -67,11 +67,11 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
 
       <div className="relative bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg w-full max-w-md overflow-hidden">
         <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
-          <h2 className="font-semibold text-[var(--color-braun-text)] text-base tracking-wide">{t("title")}</h2>
+          <h2 className="font-body text-base font-semibold text-[var(--color-braun-text)]">{t("title")}</h2>
           <button
             onClick={onClose}
             aria-label={t("close")}
-            className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
+            className="cursor-pointer w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.04] transition-colors duration-150"
           >
             <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
           </button>
@@ -132,7 +132,7 @@ function DeviceRow({
 }) {
   return (
     <div>
-      <label className="flex items-center gap-1.5 mb-2 text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest">
+      <label className="flex items-center gap-1.5 mb-2 font-body text-[12px] font-semibold text-[var(--color-braun-text)] opacity-55">
         <Icon className="w-3.5 h-3.5" />
         {label}
       </label>

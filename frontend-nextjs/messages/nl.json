@@ -55,7 +55,7 @@
     "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
     "cta": "Loop nu binnen",
     "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten.",
-    "noSignUp": "geen account nodig, loop binnen",
+    "noSignUp": "probeer het",
     "secondaryCta": "Of richt een kantoor in voor je team"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Verbinden...",
-    "copied": "Gekopieerd!",
     "leave": "Verlaten",
     "reconnecting": "Opnieuw verbinden…",
     "peopleHere": "Nu hier: {count}",
-    "copyLink": "Link kopiëren",
     "reconnectingNote": "Verbinding verbroken. We halen je terug…",
     "ended": {
       "back": "Terug",
@@ -274,7 +272,10 @@
       "signIn": "Inloggen",
       "tryAgain": "Opnieuw proberen",
       "useHere": "Hier gebruiken"
-    }
+    },
+    "invite": "Uitnodigen",
+    "linkCopied": "Link gekopieerd",
+    "inviteText": "Kom bij me in {room} op TinyFloor"
   },
   "call": {
     "incomingVideo": "Inkomend videogesprek...",
@@ -333,7 +334,6 @@
     "title": "Ruimtechat",
     "system": "Systeem",
     "welcome": "Welkom in de ruimtechat. Berichten zijn zichtbaar voor iedereen hier.",
-    "intro": "Hier kun je chatten met iedereen in deze ruimte.",
     "placeholder": "Typ een bericht...",
     "close": "Chat sluiten",
     "send": "Bericht versturen"

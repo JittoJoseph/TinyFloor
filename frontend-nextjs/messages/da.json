@@ -55,7 +55,7 @@
     "subtitle": "Et virtuelt kontor, der ligner et spil. Gå rundt, snak med kollegerne, og føl jer som et team igen.",
     "cta": "Gå ind nu",
     "caption": "Et TinyFloor-rum: en 16-bit kontoretage med skriveborde og kolleger, der går rundt.",
-    "noSignUp": "ingen tilmelding, bare gå ind",
+    "noSignUp": "prøv det",
     "secondaryCta": "Eller indret et kontor til dit team"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Forbinder...",
-    "copied": "Kopieret!",
     "leave": "Forlad",
     "reconnecting": "Genopretter forbindelse…",
     "peopleHere": "Her nu: {count}",
-    "copyLink": "Kopiér link",
     "reconnectingNote": "Forbindelsen blev afbrudt. Vi får dig ind igen…",
     "ended": {
       "back": "Tilbage",
@@ -274,7 +272,10 @@
       "signIn": "Log ind",
       "tryAgain": "Prøv igen",
       "useHere": "Brug det her i stedet"
-    }
+    },
+    "invite": "Inviter",
+    "linkCopied": "Link kopieret",
+    "inviteText": "Kom med mig i {room} på TinyFloor"
   },
   "call": {
     "incomingVideo": "Indgående videoopkald...",
@@ -333,7 +334,6 @@
     "title": "Rumchat",
     "system": "System",
     "welcome": "Velkommen til rumchatten. Beskeder kan ses af alle her.",
-    "intro": "Her kan du chatte med alle i rummet.",
     "placeholder": "Skriv en besked...",
     "close": "Luk chat",
     "send": "Send besked"

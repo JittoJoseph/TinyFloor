@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useEffectEvent, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { X, Send, MessageSquare } from "lucide-react";
+import { surface, label } from "./room/ui";
 
 interface ChatMessage {
   id: string;
@@ -89,28 +90,6 @@ export default function ChatPanel({
     return () => window.removeEventListener("chatMessage", handleChatMessage);
   }, []);
 
-  // Introduce players to chat 10 seconds after mounting. The effect event keeps
-  // the translator out of the deps, so the intro can never be posted twice.
-  const introduce = useEffectEvent(() => {
-    window.dispatchEvent(
-      new CustomEvent("chatMessage", {
-        detail: {
-          id: `intro-${Date.now()}`,
-          senderId: "system-intro",
-          senderName: t("system"),
-          content: t("intro"),
-          timestamp: new Date(),
-          type: "text",
-        } satisfies ChatMessage,
-      }),
-    );
-  });
-
-  useEffect(() => {
-    const timer = setTimeout(() => introduce(), 10000);
-    return () => clearTimeout(timer);
-  }, []);
-
   // Close on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
@@ -175,23 +154,24 @@ export default function ChatPanel({
   return (
     <div
       ref={panelRef}
-      className={`fixed bottom-24 right-4 md:right-8 w-full max-w-[340px] h-[450px] z-50 bg-[#fbfbf9]/95 backdrop-blur-md border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg flex flex-col font-body overflow-hidden transition-all duration-200 ${
+      className={`${surface} fixed z-50 flex flex-col font-body overflow-hidden rounded-3xl transition-all duration-200 inset-x-3 bottom-20 h-[min(60vh,26rem)] sm:inset-x-auto sm:end-5 sm:bottom-24 sm:w-[21rem] sm:h-[28rem] ${
         isOpen
           ? "opacity-100 pointer-events-auto translate-y-0"
           : "opacity-0 pointer-events-none translate-y-2"
       }`}
     >
-      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)] bg-white/50">
-        <h3 className="font-semibold text-[var(--color-braun-text)] flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 opacity-70" />
+      <div className="flex items-center justify-between ps-4 pe-2.5 py-3 border-b border-black/[0.05]">
+        <h2 className={`${label} text-[var(--color-braun-text)] flex items-center gap-2`}>
+          <MessageSquare className="w-4 h-4 opacity-50" />
           {t("title")}
-        </h3>
+        </h2>
         <button
+          type="button"
           onClick={onClose}
           aria-label={t("close")}
-          className="cursor-pointer p-1.5 hover:bg-[rgba(0,0,0,0.04)] rounded-full transition-colors"
+          className="cursor-pointer w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.04] transition-colors duration-150"
         >
-          <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-70" />
+          <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
         </button>
       </div>
 
@@ -238,7 +218,7 @@ export default function ChatPanel({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-3 bg-white/50 border-t border-[rgba(0,0,0,0.04)]">
+      <div className="p-3 border-t border-black/[0.05]">
         <div className="flex items-center gap-2 bg-white rounded-full border border-[rgba(0,0,0,0.06)] pe-1.5 ps-4 py-1.5 focus-within:border-[rgba(0,0,0,0.15)] transition-colors shadow-sm">
           <input
             ref={inputRef}
@@ -262,7 +242,7 @@ export default function ChatPanel({
                 : "bg-[rgba(0,0,0,0.04)] text-[var(--color-braun-text)] opacity-30"
             }`}
           >
-            <Send className="w-4 h-4 ml-0.5 rtl:rotate-180" />
+            <Send className="w-4 h-4 rtl:rotate-180" />
           </button>
         </div>
       </div>

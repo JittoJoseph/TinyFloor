@@ -16,6 +16,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { StatusSelector } from "./StatusSelector";
+import { Badge, Divider, RoomIconButton, surface } from "./room/ui";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import type { PlayerStatus } from "@/lib/types";
@@ -28,6 +29,16 @@ interface ControlBarProps {
   unreadChatCount?: number;
 }
 
+/** A dot in the corner of a button that is off, so it reads at a glance. */
+const OffMark = () => (
+  <span className="absolute -top-0.5 -end-0.5 w-2 h-2 rounded-full bg-[var(--color-braun-orange)] border border-white" />
+);
+
+/**
+ * The bar along the bottom: who you are to the room, then your microphone and
+ * camera, then the ways to talk. Phones get the same buttons minus the ones
+ * that only matter on a desktop, so the row never runs out of room.
+ */
 export default function ControlBar({
   onSettingsClick,
   onChatClick,
@@ -36,20 +47,11 @@ export default function ControlBar({
   unreadChatCount = 0,
 }: ControlBarProps) {
   const t = useTranslations("controls");
-  const {
-    peers,
-    meeting,
-    micEnabled,
-    cameraEnabled,
-    speakerEnabled,
-    screenStream,
-  } = useCall();
+  const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   const isInCall = peers.length > 0 || !!meeting;
   // Phones and some browsers cannot share a screen, so the button only exists where it works.
   const canShareScreen =
-    isInCall &&
-    typeof navigator !== "undefined" &&
-    !!navigator.mediaDevices?.getDisplayMedia;
+    isInCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
   const [status, setStatus] = useState<PlayerStatus>(currentStatus);
 
   // Follow the status from outside, and switch to "in call" and back as calls
@@ -73,20 +75,9 @@ export default function ControlBar({
     onStatusChange?.(isInCall ? "in_call" : "available");
   }, [isInCall, onStatusChange]);
 
-  const toggleMic = useCallback(
-    () => callManager.setMic(!micEnabled),
-    [micEnabled],
-  );
-
-  const toggleVideo = useCallback(
-    () => callManager.setCamera(!cameraEnabled),
-    [cameraEnabled],
-  );
-
-  const toggleSpeaker = useCallback(
-    () => callManager.setSpeaker(!speakerEnabled),
-    [speakerEnabled],
-  );
+  const toggleMic = useCallback(() => callManager.setMic(!micEnabled), [micEnabled]);
+  const toggleVideo = useCallback(() => callManager.setCamera(!cameraEnabled), [cameraEnabled]);
+  const toggleSpeaker = useCallback(() => callManager.setSpeaker(!speakerEnabled), [speakerEnabled]);
 
   const handleStatusChange = useCallback(
     (newStatus: PlayerStatus) => {
@@ -98,145 +89,96 @@ export default function ControlBar({
     [isInCall, onStatusChange],
   );
 
-  const micLabel = micEnabled ? t("muteMic") : t("unmuteMic");
-  const cameraLabel = cameraEnabled ? t("cameraOff") : t("cameraOn");
-  const speakerLabel = speakerEnabled ? t("muteSpeaker") : t("unmuteSpeaker");
-  const leaveLabel = meeting ? t("leaveMeeting") : t("leaveCall");
-  const screenLabel = screenStream ? t("stopSharing") : t("shareScreen");
-
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto md:max-w-max overflow-visible">
-      <div className="bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-[2rem] shadow-sm px-3 sm:px-4 md:px-4 py-2 flex items-center justify-between md:justify-center gap-2 sm:gap-3 md:gap-2 mx-auto overflow-visible w-full">
-        <div className="shrink-0">
-          <StatusSelector
-            currentStatus={status}
-            onStatusChange={handleStatusChange}
-          />
-        </div>
+    <div className="fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-1.5rem)]">
+      <div className={`${surface} rounded-full px-2 py-2 flex items-center gap-1.5 sm:gap-2`}>
+        <StatusSelector currentStatus={status} onStatusChange={handleStatusChange} />
 
-        <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1" />
+        <Divider />
 
-        <div className="flex flex-1 items-center justify-evenly md:justify-center gap-2 sm:gap-3 md:gap-2">
-          <button
-            onClick={toggleMic}
-            className={`cursor-pointer relative p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
-              micEnabled
-                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
-                : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
-            }`}
-            title={micLabel}
-            aria-label={micLabel}
-          >
-            {micEnabled ? (
-              <Mic className="w-[18px] h-[18px]" />
-            ) : (
-              <MicOff className="w-[18px] h-[18px]" />
-            )}
-            {!micEnabled && (
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
-            )}
-          </button>
+        <RoomIconButton
+          onClick={toggleMic}
+          tone={micEnabled ? "quiet" : "alert"}
+          title={micEnabled ? t("muteMic") : t("unmuteMic")}
+          aria-pressed={!micEnabled}
+          icon={micEnabled ? <Mic className="w-[18px] h-[18px]" /> : <MicOff className="w-[18px] h-[18px]" />}
+          mark={micEnabled ? undefined : <OffMark />}
+        />
 
-          <button
-            onClick={toggleVideo}
-            className={`cursor-pointer relative p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
-              cameraEnabled
-                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
-                : "bg-[#ff4e00]/10 border-[#ff4e00]/20 text-[#ff4e00] hover:bg-[#ff4e00]/20"
-            }`}
-            title={cameraLabel}
-            aria-label={cameraLabel}
-          >
-            {cameraEnabled ? (
-              <Video className="w-[18px] h-[18px]" />
-            ) : (
-              <VideoOff className="w-[18px] h-[18px]" />
-            )}
-            {!cameraEnabled && (
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#ff4e00] rounded-full animate-pulse border border-white" />
-            )}
-          </button>
+        <RoomIconButton
+          onClick={toggleVideo}
+          tone={cameraEnabled ? "quiet" : "alert"}
+          title={cameraEnabled ? t("cameraOff") : t("cameraOn")}
+          aria-pressed={!cameraEnabled}
+          icon={
+            cameraEnabled ? <Video className="w-[18px] h-[18px]" /> : <VideoOff className="w-[18px] h-[18px]" />
+          }
+          mark={cameraEnabled ? undefined : <OffMark />}
+        />
 
-          {canShareScreen && (
-            <button
-              onClick={() => callManager.setScreen(!screenStream)}
-              className={`cursor-pointer relative p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
-                screenStream
-                  ? "bg-[var(--color-braun-green)] border-[var(--color-braun-green)] text-white shadow-sm hover:opacity-90"
-                  : "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
-              }`}
-              title={screenLabel}
-              aria-label={screenLabel}
-              aria-pressed={!!screenStream}
-            >
-              {screenStream ? (
+        {canShareScreen && (
+          <RoomIconButton
+            onClick={() => callManager.setScreen(!screenStream)}
+            tone={screenStream ? "on" : "quiet"}
+            title={screenStream ? t("stopSharing") : t("shareScreen")}
+            aria-pressed={!!screenStream}
+            icon={
+              screenStream ? (
                 <MonitorX className="w-[18px] h-[18px]" />
               ) : (
                 <MonitorUp className="w-[18px] h-[18px]" />
-              )}
-            </button>
-          )}
+              )
+            }
+          />
+        )}
 
-          <button
+        {/* The speaker only gets in the way on a phone when nobody is talking. */}
+        <span className={isInCall ? "contents" : "hidden sm:contents"}>
+          <RoomIconButton
             onClick={toggleSpeaker}
-            className={`cursor-pointer p-2.5 md:p-2.5 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 ${
-              speakerEnabled
-                ? "bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm"
-                : "bg-gray-100 border-[rgba(0,0,0,0.06)] text-gray-400 hover:bg-gray-200"
-            }`}
-            title={speakerLabel}
-            aria-label={speakerLabel}
-          >
-            {speakerEnabled ? (
-              <Volume2 className="w-[18px] h-[18px]" />
-            ) : (
-              <VolumeX className="w-[18px] h-[18px]" />
-            )}
-          </button>
+            title={speakerEnabled ? t("muteSpeaker") : t("unmuteSpeaker")}
+            aria-pressed={!speakerEnabled}
+            icon={
+              speakerEnabled ? (
+                <Volume2 className="w-[18px] h-[18px]" />
+              ) : (
+                <VolumeX className="w-[18px] h-[18px]" />
+              )
+            }
+          />
+        </span>
 
-          <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1 hidden md:block" />
+        <Divider />
 
-          <button
-            onClick={onChatClick}
-            className="cursor-pointer relative p-2.5 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1"
-            title={t("openChat")}
-            aria-label={t("openChat")}
-          >
-            <MessageSquare className="w-[18px] h-[18px]" />
-            {unreadChatCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 min-w-[17px] h-[17px] bg-[#ff4e00] text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 shadow border-[1.5px] border-white">
-                {unreadChatCount > 9 ? "9+" : unreadChatCount}
-              </span>
-            )}
-          </button>
+        <RoomIconButton
+          onClick={onChatClick}
+          title={t("openChat")}
+          icon={<MessageSquare className="w-[18px] h-[18px]" />}
+          mark={unreadChatCount > 0 ? <Badge count={unreadChatCount} /> : undefined}
+        />
 
-          <button
+        {/* Choosing a microphone or camera is a desktop job. */}
+        <span className="hidden sm:contents">
+          <RoomIconButton
             onClick={onSettingsClick}
-            className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-white border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 shrink-0 my-1 hidden md:block"
             title={t("settings")}
-            aria-label={t("settings")}
-          >
-            <Settings className="w-[18px] h-[18px]" />
-          </button>
+            icon={<Settings className="w-[18px] h-[18px]" />}
+          />
+        </span>
 
-          {isInCall && (
-            <>
-              <div className="w-px h-6 md:h-7 bg-gray-200 shrink-0 mx-0.5 sm:mx-1 md:mx-1" />
-              <button
-                onClick={() =>
-                  meeting
-                    ? window.dispatchEvent(new Event("leaveMeeting"))
-                    : callManager.hangUp()
-                }
-                className="cursor-pointer p-2.5 md:p-2.5 rounded-full border bg-[#ff4e00] border-[#ff4e00] text-white hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-sm shrink-0 my-1"
-                title={leaveLabel}
-                aria-label={leaveLabel}
-              >
-                <PhoneOff className="w-[18px] h-[18px]" />
-              </button>
-            </>
-          )}
-        </div>
+        {isInCall && (
+          <>
+            <Divider />
+            <RoomIconButton
+              onClick={() =>
+                meeting ? window.dispatchEvent(new Event("leaveMeeting")) : callManager.hangUp()
+              }
+              tone="danger"
+              title={meeting ? t("leaveMeeting") : t("leaveCall")}
+              icon={<PhoneOff className="w-[18px] h-[18px]" />}
+            />
+          </>
+        )}
       </div>
     </div>
   );

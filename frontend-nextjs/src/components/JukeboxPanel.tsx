@@ -25,7 +25,7 @@ export default function JukeboxPanel() {
           <span className="w-7 h-7 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] shrink-0">
             <Volume2 className="w-3.5 h-3.5" />
           </span>
-          <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-braun-text)] opacity-45 me-auto">
+          <span className="font-body text-[13px] font-semibold text-[var(--color-braun-text)] opacity-55 me-auto">
             {t("title")}
           </span>
           <button
@@ -72,7 +72,7 @@ export default function JukeboxPanel() {
             {state.playing ? (
               <Pause className="w-5 h-5" />
             ) : (
-              <Play className="w-5 h-5 ml-0.5" />
+              <Play className="w-5 h-5 ms-0.5" />
             )}
           </button>
 

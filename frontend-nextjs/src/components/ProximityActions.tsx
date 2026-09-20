@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { useTranslations } from "next-intl";
 import { Video, Mic, MessageSquare } from "lucide-react";
+import { RoomIconButton, surface } from "./room/ui";
 import { callManager } from "@/lib/CallManager";
 import { statusColor } from "@/lib/status";
 
@@ -17,25 +18,11 @@ export interface NearbyPlayer {
 
 export const TOUCH_BREAKPOINT = 768;
 
-const SIZES = {
-  pointer: {
-    chip: "w-7 h-7",
-    icon: "w-[13px] h-[13px]",
-    gap: "gap-1.5",
-    pad: "p-1.5",
-    initial: "text-xs",
-    dot: "w-2 h-2",
-  },
-  touch: {
-    chip: "w-9 h-9",
-    icon: "w-[17px] h-[17px]",
-    gap: "gap-2",
-    pad: "p-2",
-    initial: "text-sm",
-    dot: "w-2.5 h-2.5",
-  },
-};
-
+/**
+ * The little bar beside someone you have walked up to: who they are, and the
+ * two ways to talk. Touch gets the bigger buttons, since a fingertip needs
+ * more room than a cursor.
+ */
 export const ProximityActions = memo(function ProximityActions({
   player,
   touch = false,
@@ -45,47 +32,42 @@ export const ProximityActions = memo(function ProximityActions({
 }) {
   const t = useTranslations("proximity");
   const tChat = useTranslations("chat");
-  const size = touch ? SIZES.touch : SIZES.pointer;
-  const actionClass = `cursor-pointer ${size.chip} rounded-full bg-white border border-[rgba(0,0,0,0.06)] text-[var(--color-braun-text)] hover:bg-gray-50 shadow-sm transition-all flex items-center justify-center shrink-0`;
+  const size = touch ? "md" : "sm";
+  const icon = touch ? "w-[17px] h-[17px]" : "w-[14px] h-[14px]";
+  const face = touch ? "w-10 h-10 text-sm" : "w-8 h-8 text-xs";
 
   return (
-    <div
-      className={`flex items-center ${size.gap} ${size.pad} bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-full shadow-md`}
-    >
-      <div
-        className={`relative ${size.chip} rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] font-bold ${size.initial} shrink-0`}
+    <div className={`${surface} rounded-full flex items-center gap-1.5 p-1.5`}>
+      <span
+        className={`relative ${face} rounded-full bg-[var(--color-braun-text)]/[0.06] flex items-center justify-center font-body font-semibold text-[var(--color-braun-text)] shrink-0`}
+        title={player.name}
       >
         {player.name.charAt(0).toUpperCase()}
         <span
-          className={`absolute bottom-0 right-0 ${size.dot} rounded-full border-[1.5px] border-[#fbfbf9]`}
+          aria-hidden="true"
+          className="absolute bottom-0 end-0 w-2.5 h-2.5 rounded-full border-2 border-[#fbfbf9]"
           style={{ backgroundColor: statusColor(player.status) }}
         />
-      </div>
+      </span>
 
-      <button
+      <RoomIconButton
+        size={size}
         onClick={() => callManager.invite(player.id, player.name, true)}
-        className={actionClass}
         title={t("videoCall")}
-        aria-label={t("videoCall")}
-      >
-        <Video className={size.icon} />
-      </button>
-      <button
+        icon={<Video className={icon} />}
+      />
+      <RoomIconButton
+        size={size}
         onClick={() => callManager.invite(player.id, player.name, false)}
-        className={actionClass}
         title={t("audioCall")}
-        aria-label={t("audioCall")}
-      >
-        <Mic className={size.icon} />
-      </button>
-      <button
+        icon={<Mic className={icon} />}
+      />
+      <RoomIconButton
+        size={size}
         onClick={() => window.dispatchEvent(new Event("openChat"))}
-        className={actionClass}
         title={tChat("title")}
-        aria-label={tChat("title")}
-      >
-        <MessageSquare className={size.icon} />
-      </button>
+        icon={<MessageSquare className={icon} />}
+      />
     </div>
   );
 });

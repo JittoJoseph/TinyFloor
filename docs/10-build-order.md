@@ -104,7 +104,12 @@ languages. Waiting on the week of preview use.
 
 **Done when:** the rehearsal runs clean twice in a row.
 
-**Status (2026-09-17):** done. Two clean runs in a row and a carried-over
+**Status (2026-09-20):** done, and the accounts are in. 19 accounts in MongoDB,
+10 with an email, all imported into the live D1 and verified. The import is
+additive (`INSERT OR IGNORE`), so it is run again on the day to pick up anyone
+who signs up on the old system in between.
+
+**Status (2026-09-17):** two clean runs in a row and a carried-over
 password signed in locally. The 9 of 18 production accounts without an email
 (username sign-in on the Java backend) are dropped; they can register again.
 

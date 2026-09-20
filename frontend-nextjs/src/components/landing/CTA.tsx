@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, DoorOpen, Plus } from "lucide-react";
+import { DoorOpen, Plus } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { OfficeScene } from "@/components/OfficeScene";
 import { PixelAvatar } from "@/components/PixelAvatar";

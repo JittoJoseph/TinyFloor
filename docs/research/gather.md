@@ -33,6 +33,10 @@ Two things are worth stealing outright:
    mic/camera bar. Chat does not take you out of the office; it sits beside it.
    (`app/12.calendar-view.png`, `chat/01.chat-view-channels.png`.)
 
+The dashboard behind all of it is almost nothing (`app/01`): a card per space,
+a search box, and a three-item menu on the card — Edit Map, Copy URL, Manage
+Billing (`app/15`). No room lists, no settings, no analytics.
+
 The second column changes with the rail item — people online for the map, the
 channel list for chat, scheduled meetings for the calendar — and it carries a
 promo card at the top nudging you to invite people until you have.
@@ -51,7 +55,8 @@ all — the avatar was chosen once, on the account.
 
 Entering the office for the first time drops onboarding nudges into the
 activity feed ("Your desk is ready", "Chat activity lives here") rather than
-gating the screen with a tour.
+gating the screen with a tour, and a dismissible "What's new in Gather?" card
+in the corner walks through recent features one at a time (`app/14`).
 
 Friction they accept that we should not: an interstitial pushing the desktop
 app (`app/04.desktop-app-interstitial.png`) and a slow cold boot ("Loading

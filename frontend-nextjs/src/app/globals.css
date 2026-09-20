@@ -24,15 +24,16 @@
     inset 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-/* Lets a height animate to and from `auto`, where the browser can do it. */
-:root {
-  interpolate-size: allow-keywords;
-}
-
+/* The entry panel's height, animated by AutoHeight while a step changes. */
 .auto-height {
   height: auto;
-  overflow: hidden;
-  transition: height 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: height 380ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-height {
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -208,6 +209,44 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .entry-rise {
+    animation: none;
+  }
+}
+
+/* One step of the way in replacing another: it slides in from the side it came
+   from while the panel's height grows or shrinks under it. */
+@keyframes entry-step-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes entry-step-back {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.entry-step {
+  animation: entry-step-in 340ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.entry-step[data-back="true"] {
+  animation-name: entry-step-back;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-step {
     animation: none;
   }
 }

@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
 
           {/* Two ways in, the one that needs nothing first. */}
           <div className="relative flex flex-col items-center gap-3">
-            <Doodle arrow="down-end" className="hidden md:inline-flex absolute end-full top-1 me-1 -rotate-6">
+            <Doodle className="hidden md:flex flex-col absolute end-full bottom-7 -me-2">
               {t("noSignUp")}
             </Doodle>
             {/* No room for the arrow on a phone, so the note goes under the button. */}

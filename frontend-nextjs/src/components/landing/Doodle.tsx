@@ -2,58 +2,41 @@ import React from "react";
 
 /**
  * A handwritten note with an arrow, the way someone would scribble on a
- * printout to say "start here". Used sparingly on the landing page to point at
- * the thing worth trying first.
+ * printout to say "start here". The arrow sweeps out from under the note and
+ * ends pointing at whatever the note is about; `flip` sends it the other way.
  */
 export const Doodle: React.FC<{
   children: React.ReactNode;
-  /** Which way the arrow curves away from the note. */
-  arrow: "down-start" | "down-end" | "up-start";
   className?: string;
-}> = ({ children, arrow, className = "" }) => (
+  /** Point left instead of right, for a note that sits after its subject. */
+  flip?: boolean;
+}> = ({ children, className = "", flip = false }) => (
   // The display class comes from the caller, so a note can be hidden on a phone.
-  <span aria-hidden="true" className={`pointer-events-none select-none flex-col items-center ${className}`}>
-    <span className="font-hand text-[1.35rem] md:text-[1.6rem] leading-none text-[var(--color-braun-text)] opacity-45 -rotate-3 whitespace-nowrap">
+  <span aria-hidden="true" className={`pointer-events-none select-none items-center ${className}`}>
+    <span className="font-hand text-[1.35rem] md:text-[1.55rem] leading-none text-[var(--color-braun-text)] opacity-50 -rotate-2 whitespace-nowrap">
       {children}
     </span>
-    <Arrow shape={arrow} />
+    <Arrow flip={flip} />
   </span>
 );
 
-const PATHS: Record<string, { d: string; head: string; box: string }> = {
-  // A curve that leaves the note and points down and to the left.
-  "down-start": {
-    d: "M62 6C50 26 34 36 14 44",
-    head: "M14 44l14-3M14 44l6 12",
-    box: "0 0 72 60",
-  },
-  "down-end": {
-    d: "M10 6C22 26 38 36 58 44",
-    head: "M58 44l-14-3M58 44l-6 12",
-    box: "0 0 72 60",
-  },
-  // Points up and to the left, for a note that sits below what it means.
-  "up-start": {
-    d: "M62 54C50 34 34 24 14 16",
-    head: "M14 16l14 3M14 16l6-12",
-    box: "0 0 72 60",
-  },
-};
-
-const Arrow: React.FC<{ shape: string }> = ({ shape }) => {
-  const path = PATHS[shape] ?? PATHS["down-start"];
-  return (
-    <svg
-      viewBox={path.box}
-      className="w-16 h-12 md:w-[4.5rem] md:h-14 text-[var(--color-braun-text)] opacity-30 rtl:-scale-x-100"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d={path.d} />
-      <path d={path.head} />
-    </svg>
-  );
-};
+/**
+ * One stroke and one head, with the head's barbs set along the curve's last
+ * direction so the point lands where the line is going.
+ */
+const Arrow: React.FC<{ flip: boolean }> = ({ flip }) => (
+  <svg
+    viewBox="0 0 100 48"
+    className={`w-[5.5rem] h-[2.6rem] md:w-24 md:h-11 text-[var(--color-braun-text)] opacity-40 ${
+      flip ? "-scale-x-100" : ""
+    } rtl:-scale-x-100`}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M6 11C26 43 62 46 92 30" />
+    <path d="M86.2 39.3L92 30 81 29.6" />
+  </svg>
+);

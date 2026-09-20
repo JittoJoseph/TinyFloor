@@ -41,7 +41,7 @@ export const CTA: React.FC = () => {
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           <Reveal className="h-full">
             <Link href="/lobby" className={`${tileClass} relative`}>
-              <Doodle arrow="up-start" className="absolute end-5 top-4 hidden sm:inline-flex">
+              <Doodle flip className="hidden sm:flex flex-col absolute end-6 top-2">
                 {t("publicNote")}
               </Doodle>
               <span className="flex items-center gap-3 mb-4">

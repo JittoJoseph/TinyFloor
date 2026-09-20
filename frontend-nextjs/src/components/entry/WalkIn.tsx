@@ -43,6 +43,8 @@ export function WalkIn({
   const [typedName, setTypedName] = useState<string | null>(null);
   const [pickedCharacter, setPickedCharacter] = useState<string | null>(null);
   const [wentOn, setWentOn] = useState<boolean | null>(null);
+  // Which way the last step change went, so the new step slides in from there.
+  const [wentBack, setWentBack] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const turnstile = useTurnstileToken();
@@ -130,19 +132,31 @@ export function WalkIn({
           onSubmit={(event) => {
             event.preventDefault();
             if (onCharacterStep) void walkIn();
-            else if (trimmed) setOnCharacterStep(true);
+            else if (trimmed) {
+              setWentBack(false);
+              setOnCharacterStep(true);
+            }
           }}
         >
-          {onCharacterStep ? (
-            <CharacterStep
-              name={trimmed}
-              character={character}
-              onCharacter={setCharacter}
-              onBack={account ? undefined : () => setOnCharacterStep(false)}
-            />
-          ) : (
-            <NameStep name={name} onName={setName} />
-          )}
+          <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
+            {onCharacterStep ? (
+              <CharacterStep
+                name={trimmed}
+                character={character}
+                onCharacter={setCharacter}
+                onBack={
+                  account
+                    ? undefined
+                    : () => {
+                        setWentBack(true);
+                        setOnCharacterStep(false);
+                      }
+                }
+              />
+            ) : (
+              <NameStep name={name} onName={setName} />
+            )}
+          </div>
 
           {onCharacterStep && !isLoading && !user && (
             <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />

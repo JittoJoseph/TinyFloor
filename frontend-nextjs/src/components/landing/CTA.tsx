@@ -41,7 +41,10 @@ export const CTA: React.FC = () => {
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           <Reveal className="h-full">
             <Link href="/lobby" className={`${tileClass} relative`}>
-              <Doodle flip className="hidden sm:flex flex-col absolute end-6 top-2">
+              <Doodle
+                flip
+                className="hidden sm:flex flex-col absolute end-6 top-2"
+              >
                 {t("publicNote")}
               </Doodle>
               <span className="flex items-center gap-3 mb-4">
@@ -51,7 +54,6 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   {t("publicTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
                 {t("publicBody")}
@@ -83,7 +85,6 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   {t("createTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
                 {t("createBody")}

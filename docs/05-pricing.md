@@ -1,6 +1,6 @@
-# 13. Pricing
+# 05. Pricing
 
-A proposal, with the arithmetic from `12-costs.md` behind it. Nothing here is
+A proposal, with the arithmetic from `04-costs.md` behind it. Nothing here is
 built yet; payments come after the model is agreed.
 
 ## The shape
@@ -79,7 +79,7 @@ the product and name the line than to hide the feature.
 
 ## Fair use on group video
 
-From `12-costs.md`: ten people on camera in one meeting is ~7.4 GB an hour;
+From `04-costs.md`: ten people on camera in one meeting is ~7.4 GB an hour;
 the same ten with cameras off is 1.3 GB. Unlimited group video at $19 a month
 is a bet we would lose on a bad month.
 

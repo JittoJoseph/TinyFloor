@@ -1,4 +1,4 @@
-# 10. Chat
+# 02. Chat
 
 A team cannot work in a room that forgets everything the moment they walk out.
 Today we have one transient room chat; what an office needs is a place that
@@ -141,7 +141,7 @@ anonymous uploads are an abuse surface, and paying offices have a card on file.
 
 ## What the screen looks like
 
-Chat is a view in the office shell (`09-app-shell.md`), not a window floating
+Chat is a view in the office shell (`01-app-shell.md`), not a window floating
 over the map: the rail on the left, the channel list in the second column with
 the presence dock beneath it, and the conversation filling the rest.
 

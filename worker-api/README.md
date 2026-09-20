@@ -1,6 +1,7 @@
 # tinyfloor-api
 
-HTTP API for TinyFloor on `api.tinyfloor.com`. See `docs/04-api.md`.
+HTTP API for TinyFloor on `api.tinyfloor.com`. The routes are in
+`src/index.ts`; each module beside it owns one area.
 
 ## Commands
 

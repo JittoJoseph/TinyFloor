@@ -1,4 +1,4 @@
-# 12. What it costs to run
+# 04. What it costs to run
 
 Measured on 21 September 2026 from our own tables and the Cloudflare dashboard,
 after four days of real use (two people, the public lobby, proximity calls on

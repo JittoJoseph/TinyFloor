@@ -14,7 +14,7 @@ export interface RetentionReport {
   usage: number;
 }
 
-/** The daily clean-up from docs/02-data-model.md. Each job is safe to run again. */
+/** The daily clean-up. Each job is safe to run again. */
 export async function runRetention(env: Env, now = Date.now()): Promise<RetentionReport> {
   const deleted = (result: D1Result) => result.meta.changes ?? 0;
 

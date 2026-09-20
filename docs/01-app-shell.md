@@ -1,4 +1,4 @@
-# 09. The office shell
+# 01. The office shell
 
 Everything an office does now lives on one screen or another: the floor, the
 chat, the people, the settings. A shell holds them, the way Slack, Linear and
@@ -95,6 +95,6 @@ House rules, carried from the room:
 
 1. The shell itself: rail, context column, routes, presence dock — the floor
    moves inside it unchanged.
-2. People: members, invitations, guests, seats used (`11-offices-members-and-seats.md`).
-3. Chat (`10-chat.md`), which is the reason the shell exists.
+2. People: members, invitations, guests, seats used (`03-offices-members-and-seats.md`).
+3. Chat (`02-chat.md`), which is the reason the shell exists.
 4. Settings as a sheet: devices, floor settings, office, billing.

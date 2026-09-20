@@ -1,7 +1,12 @@
 import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";
 
-const SESSION_COOKIE = "tf_session";
+/**
+ * The session cookie's name. Preview uses its own, so a live session in the
+ * same browser can't shadow it: cookies are matched by name, and a `.tinyfloor.com`
+ * one is sent to every subdomain.
+ */
+const sessionCookieName = (env: Env) => env.SESSION_COOKIE || "tf_session";
 const GUEST_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
 export const ACCOUNT_SESSION_MS = 30 * 24 * 60 * 60 * 1000;
 const LAST_SEEN_REFRESH_MS = 24 * 60 * 60 * 1000;
@@ -62,7 +67,7 @@ export async function createSession(
 
 /** One D1 read per request; last_seen_at is written at most once a day. */
 export async function currentUser(env: Env, request: Request, ctx: ExecutionContext): Promise<User | null> {
-  const token = readCookie(request, SESSION_COOKIE);
+  const token = readCookie(request, sessionCookieName(env));
   if (!token) return null;
 
   const now = Date.now();
@@ -110,7 +115,7 @@ export async function requireAccount(env: Env, request: Request, ctx: ExecutionC
 
 /** Deletes the session, if any, and returns a cookie that clears it. */
 export async function endSession(env: Env, request: Request): Promise<string> {
-  const token = readCookie(request, SESSION_COOKIE);
+  const token = readCookie(request, sessionCookieName(env));
   if (token) await env.DB.prepare("DELETE FROM sessions WHERE id = ?").bind(await hashToken(token)).run();
   return clearSessionCookie(env);
 }
@@ -129,5 +134,5 @@ function readCookie(request: Request, name: string): string | null {
 
 function sessionCookie(env: Env, token: string, maxAgeSeconds: number): string {
   const domain = env.COOKIE_DOMAIN ? `; Domain=${env.COOKIE_DOMAIN}` : "";
-  return `${SESSION_COOKIE}=${token}${domain}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAgeSeconds}`;
+  return `${sessionCookieName(env)}=${token}${domain}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAgeSeconds}`;
 }

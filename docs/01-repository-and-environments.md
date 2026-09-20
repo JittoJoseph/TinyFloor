@@ -112,13 +112,19 @@ the root directory:
 
 | Worker | Root | Branch | Deploy |
 |---|---|---|---|
-| `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` (unchanged) |
-| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview` (the `preview` environment in `wrangler.jsonc`), with build variables pointing at `api-preview`, `realtime-preview`, the preview Turnstile site key and `NEXT_PUBLIC_SITE_URL=https://preview.tinyfloor.com`. Created |
-| `tinyfloor-api` | `worker-api` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` (applies D1 migrations first) |
-| `tinyfloor-realtime` | `worker-realtime` | `feature/cloudflare-platform`, then `master` after the merge | `pnpm run deploy` |
+| `tinyfloor` | `frontend-nextjs` | `master` | `pnpm run deploy:worker` |
+| `tinyfloor-api` | `worker-api` | `master` | `pnpm run deploy` (applies D1 migrations first) |
+| `tinyfloor-realtime` | `worker-realtime` | `master` | `pnpm run deploy` |
+| `tinyfloor-preview` | `frontend-nextjs` | `feature/cloudflare-platform` | `pnpm run build:worker && pnpm run deploy:preview`, with build variables pointing at `api-preview`, `realtime-preview` and the preview Turnstile site key |
 
-Deploying the backend Workers from the branch is safe: the live site doesn't use
-them until the merge.
+A merge to master deploys the live system. A push to the branch rebuilds the
+preview site; the two preview Workers behind it are deployed by hand, because
+they change rarely:
+
+```bash
+cd worker-realtime && pnpm run deploy:preview   # rooms first: the API binds to it
+cd ../worker-api && pnpm run deploy:preview     # applies migrations to the preview database
+```
 
 Build watch paths are set per Worker so that a change in one folder does not
 rebuild the others.

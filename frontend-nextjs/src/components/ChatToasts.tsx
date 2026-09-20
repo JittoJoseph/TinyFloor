@@ -27,11 +27,8 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     const handleChatMessage = ((event: CustomEvent<ChatMessage>) => {
-      // Don't show toast if chat is open, or if it's the system intro message
-      if (isChatOpen || event.detail.senderId === "system-intro") return;
-
-      // Don't show toast for own messages
-      if (event.detail.senderId === "local") return; // or however local sender is identified, though local shouldn't trigger if chat is closed since you can't type
+      // Nothing to pop up for your own words, or while the panel is open.
+      if (isChatOpen || event.detail.senderId === "local") return;
 
       const newMsg = { ...event.detail, visible: true };
 

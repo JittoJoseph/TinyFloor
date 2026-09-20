@@ -75,6 +75,27 @@ URLs, so they return a 301 to their replacement rather than a 404.
 | `SfuMeeting.ts` (new) | Meeting-table media from `06-calls.md` |
 | `CallCards.tsx` | Tells `SfuMeeting` which tiles are enlarged or hidden, to pick layers |
 
+## Inside a room
+
+Everything floating over the floor shares one look, from
+`components/room/ui.tsx`: the same surface, the same 40px round buttons, the
+same 13px sentence-case type. No uppercase labels, no second size of anything.
+
+- **Top row:** where you are on the left (a dot, the room, the office, and a
+  headcount once someone else is in), and what you can do on the right —
+  **Invite** and **Leave**. Both sides are the same height, so they read as one
+  bar. Reconnecting turns the dot amber and says so, rather than adding a
+  second notice in the middle of the screen.
+- **Invite** hands the link to whatever suits the device (`lib/share.ts`): the
+  share sheet on a touch screen, the clipboard on a desktop, where the button
+  says "Link copied" for a moment. A browser that allows neither falls back to
+  a hidden field.
+- **Control bar:** status, then microphone and camera, then the ways to talk.
+  A phone drops what only a desktop needs — the speaker unless a call is on,
+  and the device picker — so the row never runs out of room.
+- **Panels** (chat, whiteboard, jukebox) sit above the bar, and on a phone
+  spread to both edges instead of floating in a corner.
+
 ## Entry flows
 
 Every door is the same two steps: your name, then your character. An account

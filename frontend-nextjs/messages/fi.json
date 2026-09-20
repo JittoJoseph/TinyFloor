@@ -334,7 +334,6 @@
     "title": "Huonechat",
     "system": "Järjestelmä",
     "welcome": "Tervetuloa huoneen chattiin. Viestit näkyvät kaikille täällä.",
-    "intro": "Täällä voit jutella kaikkien huoneessa olevien kanssa.",
     "placeholder": "Kirjoita viesti...",
     "close": "Sulje chat",
     "send": "Lähetä viesti"

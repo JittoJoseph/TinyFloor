@@ -2,6 +2,8 @@
   "version": "0.0.1",
   "configurations": [
     { "name": "spatialmeet-web", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "frontend-nextjs", "run", "dev"], "port": 3000 },
+    { "name": "tinyfloor-api", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "worker-api", "run", "dev"], "port": 8787 },
+    { "name": "tinyfloor-realtime", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "worker-realtime", "run", "dev"], "port": 8788 },
     { "name": "spatialmeet-api", "runtimeExecutable": "cmd", "runtimeArgs": ["/c", "cd backend-springboot && mvn -q spring-boot:run"], "port": 8080 },
     { "name": "tinyfloor-prod", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "frontend-nextjs", "run", "start", "--", "-p", "3100"], "port": 3100 }
   ]

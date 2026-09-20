@@ -4,20 +4,19 @@
     "description": "TinyFloor is a free virtual office in your browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     "ogAlt": "A TinyFloor room: a 16-bit office floor with desks and teammates",
     "keywords": "virtual office, remote work, spatial chat, online collaboration, virtual workspace, metaverse office, proximity chat, proximity video chat, virtual coworking space, browser video calls",
-    "createRoomTitle": "Create a Room",
-    "createRoomDescription": "Open a virtual office room on TinyFloor. Name it, add a password if you want one, then share one link with your team.",
     "joinTitle": "Join Room",
     "joinRoomTitle": "Join {room}",
     "joinRoomDescription": "You're invited to {room} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
-    "roomsTitle": "Explore Rooms",
-    "roomsDescription": "Browse active virtual rooms and join public workspaces in TinyFloor.",
-    "peopleTitle": "People",
-    "peopleDescription": "Meet the people who hang out in TinyFloor rooms.",
     "authTitle": "Sign In",
     "authDescription": "Sign in to TinyFloor to keep your name, your character and a list of your rooms.",
     "dashboardTitle": "Dashboard",
     "roomTitle": "Active Room",
-    "notFoundTitle": "Page Not Found"
+    "notFoundTitle": "Page Not Found",
+    "lobbyTitle": "The Lobby",
+    "lobbyDescription": "Walk into TinyFloor's free public lobby as a guest. Pick a character, meet people, and try proximity video calls in your browser.",
+    "inviteTitle": "Join {workspace} on TinyFloor",
+    "inviteFallbackTitle": "You're invited to TinyFloor",
+    "inviteDescription": "{name} invited you to {workspace} on TinyFloor, a virtual office you walk around in."
   },
   "common": {
     "loading": "Loading...",
@@ -29,15 +28,17 @@
     "you": "You",
     "justNow": "just now",
     "unknown": "Unknown",
-    "rooms": "Rooms",
-    "people": "People",
     "peopleCount": "{count, plural, one {# person} other {# people}}",
-    "createRoom": "Create a room",
-    "browseRooms": "Browse rooms",
-    "searchRooms": "Search rooms...",
     "dashboard": "Dashboard",
     "questions": "Questions",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "visitLobby": "Visit the lobby",
+    "lobby": "Lobby",
+    "signIn": "Sign in",
+    "rooms": "Rooms",
+    "offices": "Your offices",
+    "account": "Account",
+    "createOffice": "Create an office"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -52,8 +53,10 @@
   "hero": {
     "title": "The <em>coziest</em> <br></br>virtual office.",
     "subtitle": "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    "cta": "Try It",
-    "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it."
+    "cta": "Walk in now",
+    "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it.",
+    "noSignUp": "no sign-up, just walk in",
+    "secondaryCta": "Or set up an office for your team"
   },
   "landing": {
     "description": "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
@@ -107,9 +110,9 @@
     },
     "rooms": {
       "title": "The room is still there tomorrow.",
-      "body": "Rooms do not end when a meeting does. Keep one open for your team, put a password on it if you need to, and send the link once.",
-      "chip1": "Listed for everyone",
-      "chip2": "Share by link",
+      "body": "Rooms do not end when a meeting does. Keep them open for your team, invite people once, and they can walk in whenever they like.",
+      "chip1": "Private to your team",
+      "chip2": "Guest links",
       "chip3": "Free"
     },
     "floor": {
@@ -133,15 +136,15 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. Creating rooms, walking around, chatting and calling are free."
+        "a": "Yes. The public lobby is free for everyone, and so is a workspace for a small team."
       },
       {
         "q": "Do I need an account to join a room?",
-        "a": "No. Anyone can join as a guest with just a name. Signing in only adds a saved profile, a character you keep, and a list of your rooms."
+        "a": "Not for the public lobby. Anyone can walk in there as a guest with just a name. Rooms in a workspace are private: teammates sign in with a free account, and visitors come in through a guest link."
       },
       {
         "q": "How do the video calls work?",
-        "a": "Calls run peer-to-peer over WebRTC, so audio and video travel straight between browsers. Once a call is connected it stays connected until someone hangs up or leaves the room. Walking away will not drop it."
+        "a": "A call with the people you walk up to runs peer-to-peer over WebRTC, so audio and video travel straight between browsers. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
       },
       {
         "q": "Is my camera on the whole time I am in a room?",
@@ -160,11 +163,12 @@
   "cta": {
     "title": "Your room is <em>already open.</em>",
     "publicTitle": "Walk into the public office",
-    "publicBody": "The room that is always on. Pick a character, walk around, and say hello to whoever is there.",
-    "createTitle": "Open a room for your team",
-    "createBody": "Name it, add a password if you want one, then send one link. It stays open for as long as you want.",
+    "publicBody": "Always on, open to anyone. Pick a name, pick a character, and you're in. No account.",
+    "createTitle": "Set up your own office",
+    "createBody": "Name it, invite your team with one link, and the rooms stay open for as long as you want.",
     "sampleName": "Design team",
-    "create": "Create"
+    "create": "Create",
+    "publicNote": "start here"
   },
   "footer": {
     "tagline": "A virtual office you walk around in. Free, in the browser.",
@@ -177,170 +181,100 @@
     "credits": "Credits"
   },
   "auth": {
-    "welcomeBack": "Welcome Back",
-    "joinUs": "Join Us",
-    "signInSubtitle": "Sign in to your account",
-    "registerSubtitle": "Create your workspace account",
-    "username": "Username",
-    "emailOptional": "Email (optional)",
-    "displayNameOptional": "Display Name (optional)",
+    "tabSignIn": "Sign in",
+    "tabSignUp": "Create account",
+    "chooseMode": "Sign in or create an account",
+    "signInTitle": "Welcome back",
+    "signInSubtitle": "Sign in to get back to your team's office.",
+    "signUpTitle": "Create your account",
+    "signUpSubtitle": "Your name, your email, a password. That's all it takes.",
+    "name": "Your name",
+    "namePlaceholder": "How people will see you",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
     "password": "Password",
+    "passwordPlaceholder": "Your password",
+    "newPasswordPlaceholder": "Choose a password",
+    "passwordRule": "At least 8 characters",
+    "capsLock": "Caps Lock is on",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "createAccount": "Create Account",
-    "noAccount": "Don't have an account?",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating your account…",
+    "noAccount": "New to TinyFloor?",
+    "createOne": "Create an account",
     "haveAccount": "Already have an account?",
-    "continueGuest": "Continue as guest →",
-    "error": "An error occurred"
+    "signInInstead": "Sign in instead",
+    "guestCarryOver": "You're visiting as {name}. Your name comes with you.",
+    "continueGuest": "Just looking? Visit the lobby as a guest",
+    "errors": {
+      "wrong_credentials": "That email and password don't match. Try again.",
+      "too_many_attempts": "Too many attempts. Wait a few minutes, then try again.",
+      "email_taken": "There's already an account with this email.",
+      "bad_email": "That doesn't look like an email address.",
+      "email_required": "Enter your email.",
+      "password_required": "Enter your password.",
+      "password_too_short": "Use at least 8 characters.",
+      "password_too_long": "Use fewer than 72 characters.",
+      "password_blank": "A password can't be only spaces.",
+      "name_required": "Pick a name people will see.",
+      "turnstile": "We couldn't check that you're human. Try again.",
+      "network": "Can't reach TinyFloor. Check your connection and try again.",
+      "generic": "Something went wrong. Try again."
+    }
   },
   "entry": {
-    "allRooms": "All rooms",
     "yourName": "Your name",
     "namePlaceholder": "What should people call you?",
-    "roomPassword": "Room password",
-    "passwordPlaceholder": "Enter the password",
     "character": "Character",
-    "copyInvite": "Copy invite link",
     "inviteCopied": "Invite link copied",
     "openingDoor": "Opening the door",
-    "walkIn": "Walk in"
-  },
-  "createRoom": {
-    "title": "Open a room.",
-    "roomName": "Room name",
-    "roomNamePlaceholder": "Design team, Studio, Friday hangout",
-    "advanced": "Advanced",
-    "passwordPlaceholder": "Add a password (optional)",
-    "passwordHint": "Every room is listed in the directory. A password keeps the door shut to anyone without it.",
-    "submit": "Create the room",
-    "submitting": "Setting it up",
-    "createError": "Could not create the room. Please try again.",
-    "openError": "Could not open the room"
+    "walkIn": "Walk in",
+    "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
+    "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character.",
+    "copyInvite": "Copy invite link",
+    "continue": "Continue",
+    "walkingInAs": "Walking in as {name}"
   },
   "join": {
     "unavailableTitle": "That door does not open.",
-    "unavailable": "This room is not available any more.",
-    "full": "This room is full right now",
-    "needsPassword": "This room needs a password",
-    "error": "Could not join this room",
-    "roomFull": "Room is full",
-    "guestNote": "Joining as a guest. <link>Sign in</link> to keep your name and character."
-  },
-  "directory": {
-    "roomsTitle": "Virtual office <em>rooms</em>",
-    "peopleTitle": "The TinyFloor <em>community</em>",
-    "roomsSubtitle": "Browse rooms or meet the people inside",
-    "peopleSubtitle": "Meet the builders shaping TinyFloor",
-    "updating": "Updating...",
-    "roomsLive": "{count, plural, one {# room live} other {# rooms live}}",
-    "search": "Search",
-    "loadingSpaces": "Loading spaces",
-    "noRoomsFound": "No rooms found.",
-    "noRoomsAvailable": "No rooms available.",
-    "noRoomsFoundBody": "We couldn't find any rooms matching your search. Try adjusting your query.",
-    "noRoomsAvailableBody": "It's quiet here. Be the first to start a new workspace!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Idle",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Active {time}",
-    "full": "Full",
-    "enter": "Enter",
-    "gatheringPeople": "Gathering people...",
-    "searchPeople": "Search people...",
-    "yourProfile": "Your Profile",
-    "loadingPeople": "Loading people",
-    "noPeople": "No people found.",
-    "noPeopleBody": "Try a different search or check back soon."
+    "linkUnavailable": "This guest link has expired or been turned off. Ask whoever sent it for a new one.",
+    "visitLobby": "Visit the lobby",
+    "invitedAsGuest": "You're invited in as a guest."
   },
   "userMenu": {
-    "manageProfile": "Manage profile"
-  },
-  "dashboard": {
-    "subtitle": "Manage your profile & rooms",
-    "activeCount": "{count} active",
-    "userNotFound": "User not found",
-    "backToRooms": "Back to Rooms",
-    "nameUpdated": "Display name updated!",
-    "profileFailed": "Failed to update profile",
-    "characterUpdated": "Character updated!",
-    "characterFailed": "Failed to update character",
-    "linkCopied": "Link copied!",
-    "profile": {
-      "changeCharacter": "Change character",
-      "editName": "Edit display name",
-      "saveName": "Save display name",
-      "displayName": "Display name",
-      "guestBadge": "GUEST",
-      "copyLink": "Copy profile link",
-      "share": "Share profile",
-      "shareTitle": "{name}'s Profile",
-      "shareText": "Check out {name}'s profile on TinyFloor",
-      "created": "created",
-      "joined": "joined",
-      "chooseCharacter": "Choose Character",
-      "selectAvatar": "Select your avatar"
-    },
-    "stats": {
-      "title": "Stats",
-      "empty": "Create your first room!",
-      "active": "Active"
-    },
-    "quickActions": {
-      "title": "Quick Actions"
-    },
-    "activity": {
-      "title": "Recent Activities",
-      "empty": "No activity yet",
-      "room_created": "Created",
-      "room_joined": "Joined",
-      "room_visited": "Visited"
-    },
-    "collaborators": {
-      "title": "Recent People",
-      "empty": "Join rooms to meet people"
-    },
-    "rooms": {
-      "mine": "My Rooms",
-      "joined": "Joined",
-      "gridView": "Grid view",
-      "listView": "List view",
-      "newRoom": "New Room",
-      "filter": {
-        "all": "All",
-        "active": "Active",
-        "idle": "Idle",
-        "offline": "Offline"
-      },
-      "loading": "Loading rooms...",
-      "noMatches": "No matches found",
-      "noMatchesBody": "Try adjusting your search or filter criteria",
-      "noRooms": "No rooms yet",
-      "noRoomsBody": "Create your first virtual office space",
-      "noJoined": "No joined rooms",
-      "noJoinedBody": "Join a room to see it here",
-      "browsePublic": "Browse public rooms"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Active",
-        "idle": "Idle",
-        "offline": "Offline"
-      },
-      "join": "Join",
-      "copyLink": "Copy link",
-      "players": "{count}/{max} players"
-    }
+    "manageProfile": "Manage profile",
+    "visitingAsGuest": "Visiting as a guest",
+    "keepYourName": "Keep your name and character"
   },
   "room": {
     "connecting": "Connecting...",
-    "fallbackName": "Room: {id}",
     "copied": "Copied!",
-    "invite": "Invite",
-    "leave": "Leave"
+    "leave": "Leave",
+    "reconnecting": "Reconnecting…",
+    "peopleHere": "Here now: {count}",
+    "copyLink": "Copy link",
+    "reconnectingNote": "Connection lost. Getting you back in…",
+    "ended": {
+      "back": "Back",
+      "fullTitle": "This room is full",
+      "full": "Everyone who fits is already inside. Try again in a little while.",
+      "replacedTitle": "Open in another tab",
+      "replaced": "You joined this room from another tab or device, so this one stepped out.",
+      "closedTitle": "This room is closed",
+      "closed": "The room was deleted or archived by a workspace admin.",
+      "revokedTitle": "Your access ended",
+      "revoked": "The guest link you came in with was turned off.",
+      "signedOutTitle": "You're signed out",
+      "signedOut": "Sign in again to walk back in.",
+      "notFoundTitle": "Room not found",
+      "notFound": "This room doesn't exist, or you're not a member of its workspace.",
+      "signIn": "Sign in",
+      "tryAgain": "Try again",
+      "useHere": "Use it here instead"
+    }
   },
   "call": {
     "incomingVideo": "Incoming video call...",
@@ -406,8 +340,7 @@
   },
   "proximity": {
     "videoCall": "Video call",
-    "audioCall": "Audio call",
-    "viewProfile": "View profile"
+    "audioCall": "Audio call"
   },
   "jukebox": {
     "title": "Room speaker",
@@ -433,24 +366,8 @@
   "settings": {
     "title": "Settings",
     "close": "Close settings",
-    "audio": "Audio",
-    "video": "Video",
     "microphone": "Microphone",
-    "micVolume": "Microphone volume",
-    "speaker": "Speaker",
-    "speakerVolume": "Speaker volume",
     "camera": "Camera",
-    "videoQuality": "Video quality",
-    "quality": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
-    },
-    "qualityHint": {
-      "low": "360p, best for slow connections",
-      "medium": "480p, balanced quality and speed",
-      "high": "720p, best quality but needs fast internet"
-    },
     "default": "Default"
   },
   "tutorial": {
@@ -482,9 +399,6 @@
     "select": "Select {name}",
     "keyHint": "Use ← → arrow keys"
   },
-  "toast": {
-    "dismiss": "Dismiss"
-  },
   "notFound": {
     "title": "This room is not on the map.",
     "body": "The page you were looking for does not exist or has moved.",
@@ -514,7 +428,7 @@
     "steps": [
       {
         "title": "Open a room",
-        "body": "Walk into the public office, or create a room and share its link."
+        "body": "Walk into the public office, or create a workspace and invite your team."
       },
       {
         "title": "Pick a character",
@@ -547,7 +461,7 @@
           },
           {
             "title": "Guests walk straight in",
-            "body": "Anyone with the link joins with just a name. Accounts are optional and only keep your profile and rooms."
+            "body": "Teammates join with a free account, and anyone else can come in through a guest link with just a name."
           }
         ],
         "them": {
@@ -567,7 +481,7 @@
           },
           {
             "q": "Can I move my team from Gather to TinyFloor?",
-            "a": "Yes. Create a room, share its link, and everyone walks in. There is no data to migrate and nothing to install."
+            "a": "Yes. Create a workspace, invite your team with one link, and everyone walks in. There is no data to migrate and nothing to install."
           },
           {
             "q": "How many people fit in a TinyFloor room?",
@@ -614,7 +528,7 @@
           },
           {
             "q": "Do my teammates need an account?",
-            "a": "No. Anyone with a room link can join as a guest with just a name. Signing in only keeps a saved profile, a character and a list of your rooms."
+            "a": "Teammates use a free account, which keeps your rooms private to your team. Anyone else can join as a guest with just a name, through a guest link or the public lobby."
           },
           {
             "q": "Does TinyFloor work on phones?",
@@ -708,7 +622,7 @@
           },
           {
             "q": "Do I need to run a server?",
-            "a": "No. TinyFloor is hosted for you. Create a room in the browser and share the link."
+            "a": "No. TinyFloor is hosted for you. Create a workspace in the browser and invite your team."
           },
           {
             "q": "How do calls start in TinyFloor?",
@@ -813,7 +727,7 @@
           },
           {
             "title": "An open room, any time",
-            "body": "The public office is always open. Or create a room for your own coworking group and share the link."
+            "body": "The public office is always open. Or create a workspace for your own coworking group and invite them."
           },
           {
             "title": "Set your status",
@@ -831,7 +745,7 @@
           },
           {
             "q": "Can I cowork with strangers?",
-            "a": "Yes. The public office is open to everyone. For a private group, create a room and add a password."
+            "a": "Yes. The public office is open to everyone. For a private group, create a workspace: its rooms are open only to the people you invite."
           },
           {
             "q": "Is there a time limit?",
@@ -864,11 +778,11 @@
         "faq": [
           {
             "q": "How do I make a study room?",
-            "a": "Create a room, give it a name, and share the link with your friends. Add a password if you want to keep it private."
+            "a": "Create a workspace, add a room, and invite your friends with one link. Only the people you invite can walk in."
           },
           {
             "q": "Is it free for students?",
-            "a": "Yes. TinyFloor is free for everyone, and nobody needs an account to join."
+            "a": "Yes. TinyFloor is free for a small group, and friends can join through a guest link without an account."
           },
           {
             "q": "Can we play music while we study?",
@@ -913,7 +827,7 @@
           },
           {
             "q": "Can I keep the classroom private?",
-            "a": "Yes. Add a password when you create the room and share it only with your class."
+            "a": "Yes. Rooms in a workspace are private. Share a guest link with your class, and turn it off when you are done."
           },
           {
             "q": "Is it free for teachers?",
@@ -963,5 +877,222 @@
         ]
       }
     }
+  },
+  "lobby": {
+    "eyebrow": "Open to everyone",
+    "title": "The lobby",
+    "subtitle": "Anyone can drop in. Say who you are, pick a character, and walk in."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Copy",
+    "copied": "Copied",
+    "switchWorkspace": "Switch workspace",
+    "memberCount": "{count} of {limit} members",
+    "peopleInside": "In rooms now: {count}",
+    "plans": {
+      "free": "Free plan",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member"
+    },
+    "settings": {
+      "button": "Settings",
+      "title": "Workspace settings",
+      "name": "Workspace name",
+      "save": "Save",
+      "transfer": "Transfer ownership",
+      "transferHint": "The new owner gets full control. You stay on as an admin.",
+      "choosePerson": "Choose a person",
+      "transferButton": "Transfer",
+      "deleteTitle": "Delete this workspace",
+      "deleteBody": "This deletes {name}, its rooms and its guest links for everyone. It can't be undone. Type the workspace name to confirm.",
+      "deleteConfirmLabel": "Workspace name to confirm",
+      "deleteButton": "Delete workspace",
+      "leaveTitle": "Leave this workspace",
+      "leaveBody": "You'll lose access to the rooms in {name} until someone invites you again.",
+      "leaveButton": "Leave workspace",
+      "nameDetail": "What your team sees at the top of the space."
+    },
+    "onboarding": {
+      "title": "Set up your office",
+      "subtitle": "Give your team's workspace a name. It comes with a first room you can walk into right away.",
+      "nameLabel": "Workspace name",
+      "namePlaceholder": "Acme Studio",
+      "create": "Create workspace",
+      "freePlan": "Free for up to 3 people. No card needed.",
+      "firstRoom": "Main floor"
+    },
+    "rooms": {
+      "title": "Rooms",
+      "detail": "Walk into any room your team has made.",
+      "new": "New room",
+      "empty": "No rooms yet. Ask an admin to make one.",
+      "emptyManager": "No rooms yet. Make the first one for your team.",
+      "capacity": "Capacity: {count}",
+      "options": "Options for {room}",
+      "guestLinks": "Guest links",
+      "edit": "Rename or resize",
+      "delete": "Delete room",
+      "peopleNow": "Inside: {count}",
+      "quiet": "Empty right now",
+      "enter": "Enter",
+      "editTitle": "Edit room",
+      "newTitle": "New room",
+      "name": "Room name",
+      "namePlaceholder": "Standup, Design, Coffee corner",
+      "capacityLabel": "How many people fit",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "create": "Create room",
+      "deleteTitle": "Delete {room}?",
+      "deleteBody": "The room and its guest links will be gone for good.",
+      "deleteBodyBusy": "People inside now ({count}) will be sent out, and the room and its guest links will be gone for good."
+    },
+    "guestLinks": {
+      "title": "Guest links for {room}",
+      "description": "Anyone with a guest link can walk into this room without an account.",
+      "onlyOnce": "Copy it now. For safety, the link is only shown once.",
+      "another": "Make another link",
+      "expiresIn": "Link works for",
+      "lifetimes": {
+        "1d": "1 day",
+        "7d": "7 days",
+        "30d": "30 days"
+      },
+      "create": "Create guest link",
+      "active": "Active links",
+      "expires": "Expires {date}",
+      "revoke": "Turn off"
+    },
+    "members": {
+      "title": "Members",
+      "full": "Your plan is full at {limit} members.",
+      "detail": "{count} of {limit} members",
+      "invite": "Invite",
+      "pending": "Pending invites",
+      "anyoneWithLink": "Anyone with the link",
+      "inviteMeta": "{role} · expires {date}",
+      "revoke": "Revoke",
+      "roleNames": {
+        "owner": "Owner",
+        "admin": "Admin",
+        "member": "Member"
+      },
+      "you": "you",
+      "options": "Options for {name}",
+      "makeMember": "Make member",
+      "makeAdmin": "Make admin",
+      "leave": "Leave",
+      "remove": "Remove",
+      "inviteTitle": "Invite people to {workspace}",
+      "inviteDescription": "Send them the link. They'll need an account to join.",
+      "linkForEmail": "Only {email} can use this link. It works once and expires in 7 days.",
+      "linkForAnyone": "Anyone with this link can join once. It expires in 7 days.",
+      "done": "Done",
+      "roleLabel": "Join as",
+      "roleHints": {
+        "member": "Uses rooms and meets the team",
+        "admin": "Also makes rooms and invites people"
+      },
+      "emailLabel": "Email (optional)",
+      "emailPlaceholder": "teammate@company.com",
+      "emailHint": "Add an email to make the link work only for that person.",
+      "cancel": "Cancel",
+      "createLink": "Create invite link"
+    },
+    "profile": {
+      "title": "Your profile",
+      "changePassword": "Change password",
+      "name": "Your name",
+      "saved": "Saved",
+      "save": "Save",
+      "character": "Character",
+      "passwordTitle": "Change your password",
+      "passwordDescription": "Enter your current password, then choose a new one.",
+      "passwordChanged": "Your password was changed.",
+      "done": "Done",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "hidePasswords": "Hide passwords",
+      "showPasswords": "Show passwords",
+      "passwordRule": "At least 8 characters",
+      "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
+      "cancel": "Cancel",
+      "pageTitle": "Your account"
+    },
+    "invite": {
+      "invalidTitle": "This invite doesn't work",
+      "invalid": "It may have expired, been used already, or been turned off. Ask for a new one.",
+      "home": "Go home",
+      "eyebrow": "{name} invited you",
+      "asAdmin": "You're invited to join as an admin.",
+      "asMember": "You're invited to join the team.",
+      "join": "Join {workspace}",
+      "joiningAs": "Joining as {name} ({email})",
+      "createAccount": "Create an account",
+      "signIn": "I have an account",
+      "needAccount": "You need an account to join a workspace. It takes a minute.",
+      "readyToJoin": "That's me",
+      "accountKeeps": "An account keeps {name} and your character for next time.",
+      "you": "You"
+    },
+    "errors": {
+      "member_limit": "The workspace is full on its current plan.",
+      "not_allowed": "Your role in this workspace can't do that.",
+      "owner_cannot_leave": "The owner has to transfer ownership before leaving.",
+      "owner_role": "The owner's role can only change by transferring ownership.",
+      "bad_capacity": "Choose between 2 and 20 people.",
+      "name_required": "Give it a name first.",
+      "bad_email": "That doesn't look like an email address.",
+      "invite_used": "This invite has already been used.",
+      "invite_invalid": "This invite has expired or been turned off.",
+      "wrong_account": "This invite is for a different email address. Sign in with that account.",
+      "wrong_password": "Your current password is incorrect.",
+      "password_too_short": "Use at least 8 characters.",
+      "password_too_long": "Use fewer than 72 characters.",
+      "too_many_attempts": "Too many attempts. Wait a few minutes, then try again.",
+      "not_found": "That couldn't be found. It may have been deleted.",
+      "network": "Can't reach TinyFloor. Check your connection and try again.",
+      "generic": "Something went wrong. Try again."
+    },
+    "tabs": {
+      "label": "Sections of this space",
+      "rooms": "Rooms",
+      "people": "People",
+      "settings": "Settings"
+    },
+    "spaces": {
+      "title": "Your offices",
+      "new": "New office",
+      "create": "Create an office",
+      "emptyTitle": "You don't have an office yet",
+      "emptyBody": "An office is private to the people you invite, with rooms your team can walk into any time.",
+      "visitLobby": "Visit the public office",
+      "roles": {
+        "owner": "You own this one",
+        "admin": "You're an admin here",
+        "member": "You're a member here"
+      }
+    }
+  },
+  "create": {
+    "eyebrow": "Your own office",
+    "title": "Name your office",
+    "subtitle": "This is what your team will see. You can change it later.",
+    "nameLabel": "Office name",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Continue",
+    "create": "Create office",
+    "creating": "Setting it up",
+    "firstRoom": "Main floor",
+    "freePlan": "Free for up to 3 people. No card needed.",
+    "accountNext": "Next: make an account, and your office is ready.",
+    "justLooking": "Just looking? <link>Walk into the public office</link> instead."
   }
 }

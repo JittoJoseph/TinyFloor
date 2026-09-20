@@ -13,7 +13,6 @@ import {
   Coffee,
   Link2,
   Sparkles,
-  Lock,
   Users,
   CalendarOff,
   Footprints,
@@ -165,9 +164,9 @@ const PresenceMockup = () => {
 };
 
 const directory = [
-  { id: "design", focus: "40% 55%", locked: false, live: true },
-  { id: "founders", focus: "70% 40%", locked: true, live: true },
-  { id: "jam", focus: "24% 78%", locked: false, live: false },
+  { id: "design", focus: "40% 55%", live: true },
+  { id: "founders", focus: "70% 40%", live: true },
+  { id: "jam", focus: "24% 78%", live: false },
 ] as const;
 
 const RoomsMockup = () => {
@@ -197,7 +196,6 @@ const RoomsMockup = () => {
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-1.5 font-body font-semibold text-[13px] text-[var(--color-braun-text)]">
               <span className="truncate">{t(`directory.${room.id}.name`)}</span>
-              {room.locked && <Lock className="w-3 h-3 shrink-0 opacity-45" />}
             </span>
             <span className="flex items-center gap-1.5 font-body text-[11px] text-[var(--color-braun-text)] opacity-50 mt-0.5">
               <Users className="w-3 h-3" />

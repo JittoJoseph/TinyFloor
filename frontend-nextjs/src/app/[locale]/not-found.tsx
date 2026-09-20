@@ -27,10 +27,10 @@ export default async function LocaleNotFound() {
             {t("home")}
           </Link>
           <Link
-            href="/rooms"
+            href="/lobby"
             className="cursor-pointer block text-center mt-3 py-2 font-body text-[13px] font-medium text-[var(--color-braun-text)] opacity-55 hover:opacity-100 transition-opacity duration-200"
           >
-            {tc("browseRooms")}
+            {tc("visitLobby")}
           </Link>
         </div>
       </div>

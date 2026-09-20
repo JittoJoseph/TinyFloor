@@ -1,6 +1,7 @@
 "use client";
 
-import { WebSocketManager } from "./WebSocketManager";
+import type { ServerMessage } from "@shared/messages";
+import type { RoomSocket } from "./RoomSocket";
 
 export interface Stroke {
   id: string;
@@ -20,7 +21,9 @@ export interface BoardSnapshot {
 type Listener = () => void;
 type StrokeListener = (stroke: Stroke, from: number) => void;
 
-const FLUSH_MS = 60;
+/** Points closer together than this add nothing to see, so they are not sent. */
+const MIN_POINT_GAP = 2;
+const FLUSH_MS = 100;
 const EMPTY: BoardSnapshot = {
   open: false,
   ready: false,
@@ -34,7 +37,7 @@ const EMPTY: BoardSnapshot = {
  * batched so a fast scribble is a handful of messages rather than hundreds.
  */
 class WhiteboardManager {
-  private ws?: WebSocketManager;
+  private ws?: RoomSocket;
   private strokes = new Map<string, Stroke>();
   private listeners = new Set<Listener>();
   private strokeListeners = new Set<StrokeListener>();
@@ -49,13 +52,17 @@ class WhiteboardManager {
   private pending: number[] = [];
   private flushTimer?: ReturnType<typeof setTimeout>;
 
-  attach(ws: WebSocketManager) {
+  attach(ws: RoomSocket) {
     this.ws = ws;
     window.addEventListener("openWhiteboard", this.openListener);
     this.ready = false;
     this.strokes.clear();
     this.bump();
-    ws.send("board_sync", {});
+  }
+
+  /** Asks for the whole board; done on arrival and again after a reconnect. */
+  sync() {
+    this.ws?.send({ t: "board_sync" });
   }
 
   detach() {
@@ -94,11 +101,11 @@ class WhiteboardManager {
     this.bump();
   }
 
-  handleMessage(type: string, data: Record<string, unknown>) {
-    switch (type) {
+  handleMessage(message: Extract<ServerMessage, { t: "board_state" | "board_draw" | "board_clear" }>) {
+    switch (message.t) {
       case "board_state": {
         this.strokes.clear();
-        (data.strokes as Stroke[] | undefined)?.forEach((stroke) => {
+        message.strokes.forEach((stroke) => {
           if (stroke?.id) this.strokes.set(stroke.id, normalise(stroke));
         });
         this.ready = true;
@@ -106,7 +113,7 @@ class WhiteboardManager {
         break;
       }
       case "board_draw": {
-        const incoming = normalise(data as unknown as Stroke);
+        const incoming = normalise(message);
         if (!incoming.id || !incoming.points.length) return;
 
         const existing = this.strokes.get(incoming.id);
@@ -142,7 +149,12 @@ class WhiteboardManager {
 
   extendStroke(x: number, y: number) {
     if (!this.live) return;
-    const from = this.live.points.length;
+    // A pen reports far more points than a line needs; near-identical ones are dropped.
+    const points = this.live.points;
+    const lastX = points[points.length - 2];
+    const lastY = points[points.length - 1];
+    if (Math.abs(x - lastX) < MIN_POINT_GAP && Math.abs(y - lastY) < MIN_POINT_GAP) return;
+    const from = points.length;
     this.live.points.push(x, y);
     this.pending.push(x, y);
     this.emitStroke(this.live, Math.max(0, from - 2));
@@ -158,7 +170,7 @@ class WhiteboardManager {
   clear() {
     this.endStroke();
     this.strokes.clear();
-    this.ws?.send("board_clear", {});
+    this.ws?.send({ t: "board_clear" });
     this.bump();
   }
 
@@ -177,7 +189,8 @@ class WhiteboardManager {
     }
     if (!this.live || !this.pending.length) return;
 
-    this.ws?.send("board_draw", {
+    this.ws?.send({
+      t: "board_draw",
       id: this.live.id,
       color: this.live.color,
       size: this.live.size,

@@ -82,7 +82,7 @@ const ICON_TONES = [
   "bg-[#0f5741] text-[#eaf3ef]",
 ];
 
-const ROOM_LINK = `${SITE_URL.replace("https://", "")}/room/public-room`;
+const ROOM_LINK = `${SITE_URL.replace("https://", "")}/lobby`;
 
 const PICKER = ["Adam", "Amelia", "Alex", "Bob"];
 
@@ -210,7 +210,7 @@ export async function LandingPage({
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
                 <Link
-                  href="/room/public-room"
+                  href="/lobby"
                   className="group relative flex items-center justify-center h-14 md:h-16 px-[5px] bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
                 >
                   <span className="h-[82%] px-7 md:px-9 rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm whitespace-nowrap group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
@@ -218,7 +218,7 @@ export async function LandingPage({
                   </span>
                 </Link>
                 <Link
-                  href="/create-room"
+                  href="/auth?mode=signup"
                   className="cursor-pointer group inline-flex items-center gap-2 font-body text-sm md:text-base font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 transition-opacity"
                 >
                   {t("create")}

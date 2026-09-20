@@ -4,20 +4,19 @@
     "description": "TinyFloor 是浏览器里的免费虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
     "ogAlt": "TinyFloor 房间：摆满办公桌和同事的 16 位像素办公楼层",
     "keywords": "虚拟办公室，远程办公，空间聊天，在线协作，虚拟工作空间，元宇宙办公室，近距离聊天，近距离视频聊天，虚拟共享办公，浏览器视频通话",
-    "createRoomTitle": "创建房间",
-    "createRoomDescription": "在 TinyFloor 上开一个虚拟办公室房间。取个名字，需要的话加上密码，然后把一个链接分享给团队。",
     "joinTitle": "加入房间",
     "joinRoomTitle": "加入 {room}",
     "joinRoomDescription": "你受邀加入 TinyFloor 上的 {room}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",
-    "roomsTitle": "浏览房间",
-    "roomsDescription": "浏览活跃的虚拟房间，加入 TinyFloor 上的公共工作空间。",
-    "peopleTitle": "成员",
-    "peopleDescription": "认识常在 TinyFloor 房间里出没的人。",
     "authTitle": "登录",
     "authDescription": "登录 TinyFloor，保留你的名字、角色和房间列表。",
     "dashboardTitle": "控制台",
     "roomTitle": "当前房间",
-    "notFoundTitle": "页面未找到"
+    "notFoundTitle": "页面未找到",
+    "lobbyTitle": "大厅",
+    "lobbyDescription": "以访客身份进入 TinyFloor 免费的公共大厅。选一个角色，认识新朋友，在浏览器里体验走近就能开的视频通话。",
+    "inviteTitle": "加入 TinyFloor 上的 {workspace}",
+    "inviteFallbackTitle": "你收到了 TinyFloor 的邀请",
+    "inviteDescription": "{name} 邀请你加入 TinyFloor 上的 {workspace}，这是一间可以四处走动的虚拟办公室。"
   },
   "common": {
     "loading": "加载中...",
@@ -29,15 +28,17 @@
     "you": "你",
     "justNow": "刚刚",
     "unknown": "未知",
-    "rooms": "房间",
-    "people": "成员",
     "peopleCount": "{count, plural, other {# 人}}",
-    "createRoom": "创建房间",
-    "browseRooms": "浏览房间",
-    "searchRooms": "搜索房间...",
     "dashboard": "控制台",
     "questions": "常见问题",
-    "signOut": "退出登录"
+    "signOut": "退出登录",
+    "visitLobby": "去大厅看看",
+    "lobby": "大厅",
+    "signIn": "登录",
+    "rooms": "房间",
+    "offices": "你的办公室",
+    "account": "账号",
+    "createOffice": "创建办公室"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -52,8 +53,10 @@
   "hero": {
     "title": "最<em>温馨</em>的<br></br>虚拟办公室。",
     "subtitle": "看起来像游戏的虚拟办公室。四处走走，和同事聊聊，重新找回团队的感觉。",
-    "cta": "立即体验",
-    "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上，同事们来回走动。"
+    "cta": "立即进入",
+    "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上，同事们来回走动。",
+    "noSignUp": "无需注册，走进去就行",
+    "secondaryCta": "或者为团队建一个办公室"
   },
   "landing": {
     "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
@@ -107,9 +110,9 @@
     },
     "rooms": {
       "title": "房间明天还在。",
-      "body": "会议结束，房间不会消失。为团队留一个房间，需要时加上密码，链接只需发一次。",
-      "chip1": "所有人可见",
-      "chip2": "通过链接分享",
+      "body": "会议结束了，房间还在。为团队一直开着，邀请一次，大家随时都能走进来。",
+      "chip1": "仅限你的团队",
+      "chip2": "访客链接",
       "chip3": "免费"
     },
     "floor": {
@@ -133,15 +136,15 @@
       },
       {
         "q": "TinyFloor 免费吗？",
-        "a": "免费。创建房间、四处走动、聊天和通话都不收费。"
+        "a": "是的。公共大厅对所有人免费，小团队的工作区也免费。"
       },
       {
         "q": "加入房间需要账号吗？",
-        "a": "不需要。任何人只要填个名字就能以访客身份加入。登录只会额外保存你的资料、固定角色和房间列表。"
+        "a": "进入公共大厅不需要。任何人只需填个名字就能以访客身份进来。工作区里的房间是私密的：团队成员用免费账号登录，访客通过访客链接进入。"
       },
       {
         "q": "视频通话是怎么工作的？",
-        "a": "通话通过 WebRTC 点对点进行，音频和视频直接在浏览器之间传输。一旦接通，通话会一直保持，直到有人挂断或离开房间。走开也不会断线。"
+        "a": "和你走近的人通话时，走的是 WebRTC 点对点连接，音频和视频直接在浏览器之间传输。通话会一直保持，直到有人挂断或离开房间，所以走开也不会断。会议桌上的多人通话经由媒体服务器传输：坐下即加入，起身即离开。"
       },
       {
         "q": "我在房间里时摄像头会一直开着吗？",
@@ -160,11 +163,12 @@
   "cta": {
     "title": "你的房间<em>已经开好了。</em>",
     "publicTitle": "走进公共办公室",
-    "publicBody": "永远开放的房间。选个角色，四处转转，和在场的人打个招呼。",
-    "createTitle": "为团队开一个房间",
-    "createBody": "取个名字，需要的话加上密码，然后发送一个链接。想开多久就开多久。",
+    "publicBody": "随时开放，谁都能进。取个名字、选个角色就进去了，不用账号。",
+    "createTitle": "建一个自己的办公室",
+    "createBody": "起个名字，用一个链接邀请团队，房间想开多久就开多久。",
     "sampleName": "设计团队",
-    "create": "创建"
+    "create": "创建",
+    "publicNote": "从这里开始"
   },
   "footer": {
     "tagline": "一间可以四处走动的虚拟办公室。免费，在浏览器中使用。",
@@ -177,170 +181,100 @@
     "credits": "致谢"
   },
   "auth": {
-    "welcomeBack": "欢迎回来",
-    "joinUs": "加入我们",
-    "signInSubtitle": "登录你的账号",
-    "registerSubtitle": "创建你的工作空间账号",
-    "username": "用户名",
-    "emailOptional": "邮箱（可选）",
-    "displayNameOptional": "显示名称（可选）",
+    "tabSignIn": "登录",
+    "tabSignUp": "创建账号",
+    "chooseMode": "登录或创建账号",
+    "signInTitle": "欢迎回来",
+    "signInSubtitle": "登录后回到你们团队的办公室。",
+    "signUpTitle": "创建你的账号",
+    "signUpSubtitle": "名字、邮箱、密码，就这些。",
+    "name": "你的名字",
+    "namePlaceholder": "别人看到的名字",
+    "email": "邮箱",
+    "emailPlaceholder": "you@company.com",
     "password": "密码",
+    "passwordPlaceholder": "你的密码",
+    "newPasswordPlaceholder": "设置一个密码",
+    "passwordRule": "至少 8 个字符",
+    "capsLock": "大写锁定已开启",
     "showPassword": "显示密码",
     "hidePassword": "隐藏密码",
     "signIn": "登录",
-    "signUp": "注册",
+    "signingIn": "正在登录…",
     "createAccount": "创建账号",
-    "noAccount": "还没有账号？",
+    "creatingAccount": "正在创建账号…",
+    "noAccount": "第一次来 TinyFloor？",
+    "createOne": "创建账号",
     "haveAccount": "已经有账号了？",
-    "continueGuest": "以访客身份继续 →",
-    "error": "发生错误"
+    "signInInstead": "去登录",
+    "guestCarryOver": "你正以 {name} 的身份来访，这个名字会一起带过去。",
+    "continueGuest": "只是看看？以访客身份进入大厅",
+    "errors": {
+      "wrong_credentials": "邮箱和密码不匹配，请重试。",
+      "too_many_attempts": "尝试次数过多，请等几分钟再试。",
+      "email_taken": "这个邮箱已经有账号了。",
+      "bad_email": "这看起来不像邮箱地址。",
+      "email_required": "请输入邮箱。",
+      "password_required": "请输入密码。",
+      "password_too_short": "请至少使用 8 个字符。",
+      "password_too_long": "请少于 72 个字符。",
+      "password_blank": "密码不能只有空格。",
+      "name_required": "请取一个别人能看到的名字。",
+      "turnstile": "无法确认你是真人，请重试。",
+      "network": "无法连接 TinyFloor，请检查网络后重试。",
+      "generic": "出了点问题，请重试。"
+    }
   },
   "entry": {
-    "allRooms": "所有房间",
     "yourName": "你的名字",
     "namePlaceholder": "大家该怎么称呼你？",
-    "roomPassword": "房间密码",
-    "passwordPlaceholder": "输入密码",
     "character": "角色",
-    "copyInvite": "复制邀请链接",
     "inviteCopied": "邀请链接已复制",
     "openingDoor": "正在开门",
-    "walkIn": "进入"
-  },
-  "createRoom": {
-    "title": "开一个房间。",
-    "roomName": "房间名称",
-    "roomNamePlaceholder": "设计团队、工作室、周五闲聊",
-    "advanced": "高级",
-    "passwordPlaceholder": "添加密码（可选）",
-    "passwordHint": "所有房间都会显示在目录中。设置密码后，没有密码的人无法进入。",
-    "submit": "创建房间",
-    "submitting": "正在准备",
-    "createError": "无法创建房间，请重试。",
-    "openError": "无法打开房间"
+    "walkIn": "进入",
+    "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
+    "guestKeep": "你是访客。<link>创建账号</link>即可保留名字和角色。",
+    "copyInvite": "复制邀请链接",
+    "continue": "继续",
+    "walkingInAs": "以 {name} 的身份进入"
   },
   "join": {
     "unavailableTitle": "这扇门打不开。",
-    "unavailable": "这个房间已不可用。",
-    "full": "房间当前已满",
-    "needsPassword": "这个房间需要密码",
-    "error": "无法加入这个房间",
-    "roomFull": "房间已满",
-    "guestNote": "你正以访客身份加入。<link>登录</link>即可保留名字和角色。"
-  },
-  "directory": {
-    "roomsTitle": "<em>虚拟办公室</em>房间",
-    "peopleTitle": "TinyFloor <em>社区</em>",
-    "roomsSubtitle": "浏览房间，或认识里面的人",
-    "peopleSubtitle": "认识正在打造 TinyFloor 的人",
-    "updating": "更新中...",
-    "roomsLive": "{count, plural, other {# 个房间在线}}",
-    "search": "搜索",
-    "loadingSpaces": "正在加载空间",
-    "noRoomsFound": "未找到房间。",
-    "noRoomsAvailable": "暂无可用房间。",
-    "noRoomsFoundBody": "没有找到符合搜索条件的房间，试试调整关键词。",
-    "noRoomsAvailableBody": "这里很安静。来开第一个工作空间吧！",
-    "presence": {
-      "ONLINE": "在线",
-      "IDLE": "空闲",
-      "OFFLINE": "离线"
-    },
-    "lastActive": "{time}活跃",
-    "full": "已满",
-    "enter": "进入",
-    "gatheringPeople": "正在召集成员...",
-    "searchPeople": "搜索成员...",
-    "yourProfile": "你的资料",
-    "loadingPeople": "正在加载成员",
-    "noPeople": "未找到成员。",
-    "noPeopleBody": "换个关键词试试，或稍后再来。"
+    "linkUnavailable": "这个访客链接已过期或已关闭。请向发送者要一个新的。",
+    "visitLobby": "去大厅看看",
+    "invitedAsGuest": "你被邀请以访客身份进入。"
   },
   "userMenu": {
-    "manageProfile": "管理资料"
-  },
-  "dashboard": {
-    "subtitle": "管理你的资料和房间",
-    "activeCount": "{count} 个活跃",
-    "userNotFound": "未找到用户",
-    "backToRooms": "返回房间列表",
-    "nameUpdated": "显示名称已更新！",
-    "profileFailed": "资料更新失败",
-    "characterUpdated": "角色已更新！",
-    "characterFailed": "角色更新失败",
-    "linkCopied": "链接已复制！",
-    "profile": {
-      "changeCharacter": "更换角色",
-      "editName": "编辑显示名称",
-      "saveName": "保存显示名称",
-      "displayName": "显示名称",
-      "guestBadge": "访客",
-      "copyLink": "复制资料链接",
-      "share": "分享资料",
-      "shareTitle": "{name} 的资料",
-      "shareText": "来 TinyFloor 看看 {name} 的资料",
-      "created": "已创建",
-      "joined": "已加入",
-      "chooseCharacter": "选择角色",
-      "selectAvatar": "选择你的头像"
-    },
-    "stats": {
-      "title": "统计",
-      "empty": "创建你的第一个房间吧！",
-      "active": "活跃"
-    },
-    "quickActions": {
-      "title": "快捷操作"
-    },
-    "activity": {
-      "title": "最近活动",
-      "empty": "暂无活动",
-      "room_created": "创建了",
-      "room_joined": "加入了",
-      "room_visited": "访问了"
-    },
-    "collaborators": {
-      "title": "最近见过的人",
-      "empty": "加入房间认识更多人"
-    },
-    "rooms": {
-      "mine": "我的房间",
-      "joined": "已加入",
-      "gridView": "网格视图",
-      "listView": "列表视图",
-      "newRoom": "新建房间",
-      "filter": {
-        "all": "全部",
-        "active": "活跃",
-        "idle": "空闲",
-        "offline": "离线"
-      },
-      "loading": "正在加载房间...",
-      "noMatches": "没有匹配结果",
-      "noMatchesBody": "试试调整搜索或筛选条件",
-      "noRooms": "还没有房间",
-      "noRoomsBody": "创建你的第一个虚拟办公空间",
-      "noJoined": "还没有加入过房间",
-      "noJoinedBody": "加入房间后会显示在这里",
-      "browsePublic": "浏览公共房间"
-    },
-    "roomCard": {
-      "status": {
-        "active": "活跃",
-        "idle": "空闲",
-        "offline": "离线"
-      },
-      "join": "加入",
-      "copyLink": "复制链接",
-      "players": "{count}/{max} 人"
-    }
+    "manageProfile": "管理资料",
+    "visitingAsGuest": "以访客身份访问",
+    "keepYourName": "保留你的名字和角色"
   },
   "room": {
     "connecting": "连接中...",
-    "fallbackName": "房间：{id}",
     "copied": "已复制！",
-    "invite": "邀请",
-    "leave": "离开"
+    "leave": "离开",
+    "reconnecting": "正在重新连接…",
+    "peopleHere": "此刻在这里：{count}",
+    "copyLink": "复制链接",
+    "reconnectingNote": "连接断开了，正在带你回来…",
+    "ended": {
+      "back": "返回",
+      "fullTitle": "这个房间满了",
+      "full": "能进的人都已经在里面了。稍后再试试吧。",
+      "replacedTitle": "已在其他标签页打开",
+      "replaced": "你在其他标签页或设备上进入了这个房间，所以这里已退出。",
+      "closedTitle": "这个房间已关闭",
+      "closed": "工作区管理员删除或归档了这个房间。",
+      "revokedTitle": "你的访问已结束",
+      "revoked": "你进入时使用的访客链接已被关闭。",
+      "signedOutTitle": "你已退出登录",
+      "signedOut": "重新登录就能回来。",
+      "notFoundTitle": "找不到房间",
+      "notFound": "这个房间不存在，或者你不是它所在工作区的成员。",
+      "signIn": "登录",
+      "tryAgain": "重试",
+      "useHere": "在这里使用"
+    }
   },
   "call": {
     "incomingVideo": "视频来电...",
@@ -406,8 +340,7 @@
   },
   "proximity": {
     "videoCall": "视频通话",
-    "audioCall": "语音通话",
-    "viewProfile": "查看资料"
+    "audioCall": "语音通话"
   },
   "jukebox": {
     "title": "房间音箱",
@@ -433,24 +366,8 @@
   "settings": {
     "title": "设置",
     "close": "关闭设置",
-    "audio": "音频",
-    "video": "视频",
     "microphone": "麦克风",
-    "micVolume": "麦克风音量",
-    "speaker": "扬声器",
-    "speakerVolume": "扬声器音量",
     "camera": "摄像头",
-    "videoQuality": "视频画质",
-    "quality": {
-      "low": "低",
-      "medium": "中",
-      "high": "高"
-    },
-    "qualityHint": {
-      "low": "360p，适合网速较慢时使用",
-      "medium": "480p，兼顾画质与速度",
-      "high": "720p，画质最佳，但需要高速网络"
-    },
     "default": "默认"
   },
   "tutorial": {
@@ -482,9 +399,6 @@
     "select": "选择 {name}",
     "keyHint": "使用 ← → 方向键"
   },
-  "toast": {
-    "dismiss": "关闭"
-  },
   "notFound": {
     "title": "这个房间不在地图上。",
     "body": "你要找的页面不存在或已被移动。",
@@ -514,7 +428,7 @@
     "steps": [
       {
         "title": "打开一个房间",
-        "body": "进入公共办公室，或创建房间并分享链接。"
+        "body": "走进公共办公室，或者创建工作区并邀请你的团队。"
       },
       {
         "title": "选择角色",
@@ -547,7 +461,7 @@
           },
           {
             "title": "访客直接进入",
-            "body": "有链接的人只需输入名字就能加入。账号是可选的，只用来保存你的资料和房间。"
+            "body": "团队成员用免费账号进入，其他人只需填个名字就能通过访客链接进来。"
           }
         ],
         "them": {
@@ -567,7 +481,7 @@
           },
           {
             "q": "可以把团队从 Gather 迁到 TinyFloor 吗？",
-            "a": "可以。创建房间，分享链接，大家就能进来。没有需要迁移的数据，也不用安装任何东西。"
+            "a": "可以。创建工作区，用一个链接邀请团队，大家就能走进来。不需要迁移数据，也不用安装任何东西。"
           },
           {
             "q": "一个 TinyFloor 房间能容纳多少人？",
@@ -614,7 +528,7 @@
           },
           {
             "q": "我的同事需要账号吗？",
-            "a": "不需要。有房间链接的人只需输入名字就能以访客身份加入。登录只会保存资料、角色和你的房间列表。"
+            "a": "团队成员使用免费账号，这样你们的房间只对团队开放。其他人可以通过访客链接或公共大厅，只填个名字就以访客身份进来。"
           },
           {
             "q": "TinyFloor 能在手机上用吗？",
@@ -708,7 +622,7 @@
           },
           {
             "q": "需要自己运行服务器吗？",
-            "a": "不需要。TinyFloor 已为你托管好。在浏览器中创建房间并分享链接即可。"
+            "a": "不需要。TinyFloor 已为你托管好。在浏览器里创建工作区并邀请团队即可。"
           },
           {
             "q": "TinyFloor 中的通话怎么开始？",
@@ -813,7 +727,7 @@
           },
           {
             "title": "随时开放的房间",
-            "body": "公共办公室一直开放。你也可以为自己的共享办公小组创建房间并分享链接。"
+            "body": "公共办公室一直开着。你也可以为自己的共享办公小组创建工作区并邀请大家。"
           },
           {
             "title": "设置你的状态",
@@ -831,7 +745,7 @@
           },
           {
             "q": "可以和陌生人一起办公吗？",
-            "a": "可以。公共办公室对所有人开放。如果是私人小组，就创建房间并设置密码。"
+            "a": "可以。公共办公室对所有人开放。如果是私人小组，就创建一个工作区：里面的房间只对你邀请的人开放。"
           },
           {
             "q": "有时间限制吗？",
@@ -864,11 +778,11 @@
         "faq": [
           {
             "q": "怎么创建自习室？",
-            "a": "创建一个房间，起个名字，把链接分享给朋友。如果想保持私密，可以设置密码。"
+            "a": "创建工作区，添加一个房间，用一个链接邀请朋友。只有你邀请的人才能进来。"
           },
           {
             "q": "学生免费吗？",
-            "a": "免费。TinyFloor 对所有人免费，加入也不需要账号。"
+            "a": "是的。小组使用 TinyFloor 是免费的，朋友不用注册账号，通过访客链接就能进来。"
           },
           {
             "q": "学习时可以放音乐吗？",
@@ -913,7 +827,7 @@
           },
           {
             "q": "可以把教室设为私密吗？",
-            "a": "可以。创建房间时设置密码，只分享给你的班级。"
+            "a": "可以。工作区里的房间是私密的。把访客链接分享给你的班级，结束后关闭它即可。"
           },
           {
             "q": "老师使用免费吗？",
@@ -963,5 +877,222 @@
         ]
       }
     }
+  },
+  "lobby": {
+    "eyebrow": "所有人都可以进",
+    "title": "大厅",
+    "subtitle": "谁都可以进来看看。说说你是谁，选个角色，就能进门。"
+  },
+  "workspace": {
+    "lobby": "大厅",
+    "copy": "复制",
+    "copied": "已复制",
+    "switchWorkspace": "切换工作区",
+    "memberCount": "成员 {count}/{limit}",
+    "peopleInside": "此刻在房间里：{count}",
+    "plans": {
+      "free": "免费版",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "所有者",
+      "admin": "管理员",
+      "member": "成员"
+    },
+    "settings": {
+      "button": "设置",
+      "title": "工作区设置",
+      "name": "工作区名称",
+      "save": "保存",
+      "transfer": "转让所有权",
+      "transferHint": "新的所有者将拥有全部权限，你会保留管理员身份。",
+      "choosePerson": "选择一个人",
+      "transferButton": "转让",
+      "deleteTitle": "删除这个工作区",
+      "deleteBody": "这会为所有人删除 {name}、其中的房间和访客链接，且无法撤销。请输入工作区名称以确认。",
+      "deleteConfirmLabel": "输入工作区名称以确认",
+      "deleteButton": "删除工作区",
+      "leaveTitle": "退出这个工作区",
+      "leaveBody": "在有人再次邀请你之前，你将无法进入 {name} 的房间。",
+      "leaveButton": "退出工作区",
+      "nameDetail": "团队在办公室顶部看到的名字。"
+    },
+    "onboarding": {
+      "title": "布置你的办公室",
+      "subtitle": "给团队的工作区取个名字。它自带一个马上就能进去的房间。",
+      "nameLabel": "工作区名称",
+      "namePlaceholder": "Acme Studio",
+      "create": "创建工作区",
+      "freePlan": "最多 3 人免费，无需绑卡。",
+      "firstRoom": "主楼层"
+    },
+    "rooms": {
+      "title": "房间",
+      "detail": "团队创建的房间都可以随时进入。",
+      "new": "新建房间",
+      "empty": "还没有房间。请管理员创建一个。",
+      "emptyManager": "还没有房间。为团队创建第一个吧。",
+      "capacity": "容量：{count}",
+      "options": "{room} 的选项",
+      "guestLinks": "访客链接",
+      "edit": "改名或调整容量",
+      "delete": "删除房间",
+      "peopleNow": "里面有：{count}",
+      "quiet": "现在没人",
+      "enter": "进入",
+      "editTitle": "编辑房间",
+      "newTitle": "新建房间",
+      "name": "房间名称",
+      "namePlaceholder": "站会、设计、咖啡角",
+      "capacityLabel": "能容纳多少人",
+      "cancel": "取消",
+      "save": "保存更改",
+      "create": "创建房间",
+      "deleteTitle": "删除 {room}？",
+      "deleteBody": "房间和它的访客链接将被永久删除。",
+      "deleteBodyBusy": "现在在里面的人（{count}）会被请出，房间和它的访客链接将被永久删除。"
+    },
+    "guestLinks": {
+      "title": "{room} 的访客链接",
+      "description": "拿到访客链接的人无需账号即可进入这个房间。",
+      "onlyOnce": "请现在复制。为了安全，链接只显示一次。",
+      "another": "再创建一个链接",
+      "expiresIn": "链接有效期",
+      "lifetimes": {
+        "1d": "1 天",
+        "7d": "7 天",
+        "30d": "30 天"
+      },
+      "create": "创建访客链接",
+      "active": "有效的链接",
+      "expires": "{date} 过期",
+      "revoke": "关闭"
+    },
+    "members": {
+      "title": "成员",
+      "full": "你的套餐已满（{limit} 人）。",
+      "detail": "成员 {count}/{limit}",
+      "invite": "邀请",
+      "pending": "待接受的邀请",
+      "anyoneWithLink": "任何拿到链接的人",
+      "inviteMeta": "{role} · {date} 过期",
+      "revoke": "撤销",
+      "roleNames": {
+        "owner": "所有者",
+        "admin": "管理员",
+        "member": "成员"
+      },
+      "you": "你",
+      "options": "{name} 的选项",
+      "makeMember": "设为成员",
+      "makeAdmin": "设为管理员",
+      "leave": "退出",
+      "remove": "移除",
+      "inviteTitle": "邀请大家加入 {workspace}",
+      "inviteDescription": "把链接发给他们。加入需要一个账号。",
+      "linkForEmail": "只有 {email} 可以使用这个链接。它只能用一次，7 天后过期。",
+      "linkForAnyone": "拿到这个链接的人可以加入一次。7 天后过期。",
+      "done": "完成",
+      "roleLabel": "加入身份",
+      "roleHints": {
+        "member": "使用房间，和团队见面",
+        "admin": "还可以创建房间、邀请他人"
+      },
+      "emailLabel": "邮箱（可选）",
+      "emailPlaceholder": "teammate@company.com",
+      "emailHint": "填写邮箱后，这个链接只对这个人有效。",
+      "cancel": "取消",
+      "createLink": "创建邀请链接"
+    },
+    "profile": {
+      "title": "你的资料",
+      "changePassword": "修改密码",
+      "name": "你的名字",
+      "saved": "已保存",
+      "save": "保存",
+      "character": "角色",
+      "passwordTitle": "修改你的密码",
+      "passwordDescription": "先输入当前密码，再设置一个新密码。",
+      "passwordChanged": "你的密码已修改。",
+      "done": "完成",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "hidePasswords": "隐藏密码",
+      "showPasswords": "显示密码",
+      "passwordRule": "至少 8 个字符",
+      "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
+      "cancel": "取消",
+      "pageTitle": "你的账号"
+    },
+    "invite": {
+      "invalidTitle": "这个邀请无法使用",
+      "invalid": "它可能已过期、已被使用或已关闭。请要一个新的。",
+      "home": "回到首页",
+      "eyebrow": "{name} 邀请了你",
+      "asAdmin": "你被邀请以管理员身份加入。",
+      "asMember": "你被邀请加入团队。",
+      "join": "加入 {workspace}",
+      "joiningAs": "将以 {name}（{email}）的身份加入",
+      "createAccount": "创建账号",
+      "signIn": "我已有账号",
+      "needAccount": "加入工作区需要一个账号，一分钟就能创建好。",
+      "readyToJoin": "就是我",
+      "accountKeeps": "有账号就能记住 {name} 和你的角色，下次接着用。",
+      "you": "你"
+    },
+    "errors": {
+      "member_limit": "当前套餐下工作区已满。",
+      "not_allowed": "你在这个工作区的角色无法执行这个操作。",
+      "owner_cannot_leave": "所有者需要先转让所有权才能退出。",
+      "owner_role": "所有者角色只能通过转让所有权来改变。",
+      "bad_capacity": "请选择 2 到 20 人之间。",
+      "name_required": "请先取个名字。",
+      "bad_email": "这看起来不像邮箱地址。",
+      "invite_used": "这个邀请已经被使用过了。",
+      "invite_invalid": "这个邀请已过期或已关闭。",
+      "wrong_account": "这个邀请是发给另一个邮箱的。请用那个账号登录。",
+      "wrong_password": "当前密码不正确。",
+      "password_too_short": "请至少使用 8 个字符。",
+      "password_too_long": "请少于 72 个字符。",
+      "too_many_attempts": "尝试次数过多，请等几分钟再试。",
+      "not_found": "找不到，可能已被删除。",
+      "network": "无法连接 TinyFloor，请检查网络后重试。",
+      "generic": "出了点问题，请重试。"
+    },
+    "tabs": {
+      "label": "这个办公室的分区",
+      "rooms": "房间",
+      "people": "成员",
+      "settings": "设置"
+    },
+    "spaces": {
+      "title": "你的办公室",
+      "new": "新建办公室",
+      "create": "创建办公室",
+      "emptyTitle": "你还没有办公室",
+      "emptyBody": "办公室只对你邀请的人开放，团队随时可以走进里面的房间。",
+      "visitLobby": "去公共办公室看看",
+      "roles": {
+        "owner": "这间归你所有",
+        "admin": "你在这里是管理员",
+        "member": "你在这里是成员"
+      }
+    }
+  },
+  "create": {
+    "eyebrow": "你自己的办公室",
+    "title": "给办公室起个名字",
+    "subtitle": "这是团队会看到的名字，以后可以改。",
+    "nameLabel": "办公室名称",
+    "namePlaceholder": "Acme Studio",
+    "continue": "继续",
+    "create": "创建办公室",
+    "creating": "正在准备",
+    "firstRoom": "主楼层",
+    "freePlan": "3 人以内免费，无需银行卡。",
+    "accountNext": "下一步：注册账号，办公室就绪。",
+    "justLooking": "只是看看？不如<link>走进公共办公室</link>。"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "tinyfloor-realtime",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "wrangler dev --port 8788",
+    "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler deploy --env preview",
+    "types": "wrangler types",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.1.10",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "wrangler": "4.132.0"
+  }
+}

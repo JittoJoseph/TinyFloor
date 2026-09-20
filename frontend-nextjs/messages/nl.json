@@ -4,20 +4,19 @@
     "description": "TinyFloor is een gratis virtueel kantoor in je browser. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "ogAlt": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
     "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, metaverse-kantoor, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
-    "createRoomTitle": "Ruimte aanmaken",
-    "createRoomDescription": "Open een virtuele kantoorruimte op TinyFloor. Geef hem een naam, voeg desgewenst een wachtwoord toe en deel één link met je team.",
     "joinTitle": "Ruimte binnengaan",
     "joinRoomTitle": "Doe mee met {room}",
     "joinRoomDescription": "Je bent uitgenodigd voor {room} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
-    "roomsTitle": "Ruimtes verkennen",
-    "roomsDescription": "Bekijk actieve virtuele ruimtes en ga openbare werkplekken binnen op TinyFloor.",
-    "peopleTitle": "Mensen",
-    "peopleDescription": "Maak kennis met de mensen die rondhangen in TinyFloor-ruimtes.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "dashboardTitle": "Dashboard",
     "roomTitle": "Actieve ruimte",
-    "notFoundTitle": "Pagina niet gevonden"
+    "notFoundTitle": "Pagina niet gevonden",
+    "lobbyTitle": "De lobby",
+    "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
+    "inviteTitle": "Doe mee met {workspace} op TinyFloor",
+    "inviteFallbackTitle": "Je bent uitgenodigd voor TinyFloor",
+    "inviteDescription": "{name} heeft je uitgenodigd voor {workspace} op TinyFloor, een virtueel kantoor waar je rondloopt."
   },
   "common": {
     "loading": "Laden...",
@@ -29,15 +28,17 @@
     "you": "Jij",
     "justNow": "zojuist",
     "unknown": "Onbekend",
-    "rooms": "Ruimtes",
-    "people": "Mensen",
     "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
-    "createRoom": "Ruimte aanmaken",
-    "browseRooms": "Ruimtes bekijken",
-    "searchRooms": "Ruimtes zoeken...",
     "dashboard": "Dashboard",
     "questions": "Vragen",
-    "signOut": "Uitloggen"
+    "signOut": "Uitloggen",
+    "visitLobby": "Bezoek de lobby",
+    "lobby": "Lobby",
+    "signIn": "Inloggen",
+    "rooms": "Ruimtes",
+    "offices": "Je kantoren",
+    "account": "Account",
+    "createOffice": "Kantoor maken"
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -52,8 +53,10 @@
   "hero": {
     "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
     "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
-    "cta": "Probeer het",
-    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten."
+    "cta": "Loop nu binnen",
+    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten.",
+    "noSignUp": "geen account nodig, loop binnen",
+    "secondaryCta": "Of richt een kantoor in voor je team"
   },
   "landing": {
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
@@ -107,9 +110,9 @@
     },
     "rooms": {
       "title": "Morgen is de ruimte er nog.",
-      "body": "Ruimtes stoppen niet als een vergadering stopt. Houd er één open voor je team, zet er zo nodig een wachtwoord op en stuur de link één keer.",
-      "chip1": "Zichtbaar voor iedereen",
-      "chip2": "Delen via link",
+      "body": "Ruimtes stoppen niet als een meeting stopt. Houd ze open voor je team, nodig mensen één keer uit en ze lopen binnen wanneer ze willen.",
+      "chip1": "Alleen voor je team",
+      "chip2": "Gastlinks",
       "chip3": "Gratis"
     },
     "floor": {
@@ -133,15 +136,15 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. Ruimtes aanmaken, rondlopen, chatten en bellen is gratis."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een werkruimte voor een klein team ook."
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
-        "a": "Nee. Iedereen kan als gast meedoen met alleen een naam. Inloggen voegt alleen een opgeslagen profiel toe, een personage dat je houdt en een lijst van je ruimtes."
+        "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
       },
       {
         "q": "Hoe werken de videogesprekken?",
-        "a": "Gesprekken lopen peer-to-peer via WebRTC, dus audio en video gaan rechtstreeks tussen browsers. Zodra een gesprek verbonden is, blijft het verbonden tot iemand ophangt of de ruimte verlaat. Weglopen verbreekt het niet."
+        "a": "Een gesprek met de mensen naar wie je toeloopt gaat peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
@@ -160,11 +163,12 @@
   "cta": {
     "title": "Je ruimte is <em>al open.</em>",
     "publicTitle": "Loop het openbare kantoor binnen",
-    "publicBody": "De ruimte die altijd open is. Kies een personage, loop rond en zeg hallo tegen wie er is.",
-    "createTitle": "Open een ruimte voor je team",
-    "createBody": "Geef hem een naam, voeg desgewenst een wachtwoord toe en stuur één link. Hij blijft open zolang je wilt.",
+    "publicBody": "Altijd open, voor iedereen. Kies een naam, kies een personage en je bent binnen. Zonder account.",
+    "createTitle": "Richt je eigen kantoor in",
+    "createBody": "Geef het een naam, nodig je team uit met één link, en de ruimtes blijven open zo lang je wilt.",
     "sampleName": "Designteam",
-    "create": "Aanmaken"
+    "create": "Maken",
+    "publicNote": "begin hier"
   },
   "footer": {
     "tagline": "Een virtueel kantoor waar je rondloopt. Gratis, in de browser.",
@@ -177,170 +181,100 @@
     "credits": "Credits"
   },
   "auth": {
-    "welcomeBack": "Welkom terug",
-    "joinUs": "Doe mee",
-    "signInSubtitle": "Log in op je account",
-    "registerSubtitle": "Maak je werkplekaccount aan",
-    "username": "Gebruikersnaam",
-    "emailOptional": "E-mail (optioneel)",
-    "displayNameOptional": "Weergavenaam (optioneel)",
+    "tabSignIn": "Inloggen",
+    "tabSignUp": "Account maken",
+    "chooseMode": "Log in of maak een account",
+    "signInTitle": "Welkom terug",
+    "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
+    "signUpTitle": "Maak je account",
+    "signUpSubtitle": "Je naam, je e-mail, een wachtwoord. Meer is het niet.",
+    "name": "Je naam",
+    "namePlaceholder": "Zo zien anderen je",
+    "email": "E-mail",
+    "emailPlaceholder": "jij@bedrijf.nl",
     "password": "Wachtwoord",
+    "passwordPlaceholder": "Je wachtwoord",
+    "newPasswordPlaceholder": "Kies een wachtwoord",
+    "passwordRule": "Minstens 8 tekens",
+    "capsLock": "Caps Lock staat aan",
     "showPassword": "Wachtwoord tonen",
     "hidePassword": "Wachtwoord verbergen",
     "signIn": "Inloggen",
-    "signUp": "Registreren",
-    "createAccount": "Account aanmaken",
-    "noAccount": "Nog geen account?",
+    "signingIn": "Bezig met inloggen…",
+    "createAccount": "Account maken",
+    "creatingAccount": "Je account wordt gemaakt…",
+    "noAccount": "Nieuw bij TinyFloor?",
+    "createOne": "Maak een account",
     "haveAccount": "Heb je al een account?",
-    "continueGuest": "Doorgaan als gast →",
-    "error": "Er is een fout opgetreden"
+    "signInInstead": "Log in",
+    "guestCarryOver": "Je bent op bezoek als {name}. Je naam gaat mee.",
+    "continueGuest": "Even rondkijken? Bezoek de lobby als gast",
+    "errors": {
+      "wrong_credentials": "Dat e-mailadres en wachtwoord passen niet bij elkaar. Probeer het opnieuw.",
+      "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
+      "email_taken": "Er bestaat al een account met dit e-mailadres.",
+      "bad_email": "Dat lijkt geen e-mailadres.",
+      "email_required": "Vul je e-mailadres in.",
+      "password_required": "Vul je wachtwoord in.",
+      "password_too_short": "Gebruik minstens 8 tekens.",
+      "password_too_long": "Gebruik minder dan 72 tekens.",
+      "password_blank": "Een wachtwoord mag niet alleen uit spaties bestaan.",
+      "name_required": "Kies een naam die anderen zien.",
+      "turnstile": "We konden niet controleren of je een mens bent. Probeer het opnieuw.",
+      "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
+      "generic": "Er ging iets mis. Probeer het opnieuw."
+    }
   },
   "entry": {
-    "allRooms": "Alle ruimtes",
     "yourName": "Je naam",
     "namePlaceholder": "Hoe moeten mensen je noemen?",
-    "roomPassword": "Wachtwoord van de ruimte",
-    "passwordPlaceholder": "Voer het wachtwoord in",
     "character": "Personage",
-    "copyInvite": "Uitnodigingslink kopiëren",
     "inviteCopied": "Uitnodigingslink gekopieerd",
     "openingDoor": "De deur gaat open",
-    "walkIn": "Naar binnen"
-  },
-  "createRoom": {
-    "title": "Open een ruimte.",
-    "roomName": "Naam van de ruimte",
-    "roomNamePlaceholder": "Designteam, Studio, Vrijdagborrel",
-    "advanced": "Geavanceerd",
-    "passwordPlaceholder": "Wachtwoord toevoegen (optioneel)",
-    "passwordHint": "Elke ruimte staat in de gids. Een wachtwoord houdt de deur dicht voor iedereen die het niet heeft.",
-    "submit": "Ruimte aanmaken",
-    "submitting": "Bezig met inrichten",
-    "createError": "Kan de ruimte niet aanmaken. Probeer het opnieuw.",
-    "openError": "Kan de ruimte niet openen"
+    "walkIn": "Naar binnen",
+    "guestNote": "Je komt binnen als gast. <link>Log in</link> om je account te gebruiken.",
+    "guestKeep": "Je bent gast. <link>Maak een account</link> om je naam en personage te houden.",
+    "copyInvite": "Uitnodigingslink kopiëren",
+    "continue": "Verder",
+    "walkingInAs": "Je loopt binnen als {name}"
   },
   "join": {
     "unavailableTitle": "Die deur gaat niet open.",
-    "unavailable": "Deze ruimte is niet meer beschikbaar.",
-    "full": "Deze ruimte is nu vol",
-    "needsPassword": "Deze ruimte heeft een wachtwoord nodig",
-    "error": "Kan niet deelnemen aan deze ruimte",
-    "roomFull": "Ruimte is vol",
-    "guestNote": "Je doet mee als gast. <link>Log in</link> om je naam en personage te bewaren."
-  },
-  "directory": {
-    "roomsTitle": "Ruimtes in het <em>virtuele kantoor</em>",
-    "peopleTitle": "De TinyFloor-<em>community</em>",
-    "roomsSubtitle": "Bekijk ruimtes of ontmoet de mensen erin",
-    "peopleSubtitle": "Maak kennis met de makers die TinyFloor vormgeven",
-    "updating": "Bijwerken...",
-    "roomsLive": "{count, plural, one {# ruimte live} other {# ruimtes live}}",
-    "search": "Zoeken",
-    "loadingSpaces": "Ruimtes laden",
-    "noRoomsFound": "Geen ruimtes gevonden.",
-    "noRoomsAvailable": "Geen ruimtes beschikbaar.",
-    "noRoomsFoundBody": "We konden geen ruimtes vinden die bij je zoekopdracht passen. Probeer je zoekopdracht aan te passen.",
-    "noRoomsAvailableBody": "Het is hier stil. Wees de eerste die een nieuwe werkplek start!",
-    "presence": {
-      "ONLINE": "Online",
-      "IDLE": "Inactief",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Actief {time}",
-    "full": "Vol",
-    "enter": "Binnengaan",
-    "gatheringPeople": "Mensen verzamelen...",
-    "searchPeople": "Mensen zoeken...",
-    "yourProfile": "Je profiel",
-    "loadingPeople": "Mensen laden",
-    "noPeople": "Geen mensen gevonden.",
-    "noPeopleBody": "Probeer een andere zoekopdracht of kom snel terug."
+    "linkUnavailable": "Deze gastlink is verlopen of uitgezet. Vraag degene die hem stuurde om een nieuwe.",
+    "visitLobby": "Bezoek de lobby",
+    "invitedAsGuest": "Je bent uitgenodigd als gast."
   },
   "userMenu": {
-    "manageProfile": "Profiel beheren"
-  },
-  "dashboard": {
-    "subtitle": "Beheer je profiel en ruimtes",
-    "activeCount": "{count} actief",
-    "userNotFound": "Gebruiker niet gevonden",
-    "backToRooms": "Terug naar ruimtes",
-    "nameUpdated": "Weergavenaam bijgewerkt!",
-    "profileFailed": "Profiel bijwerken mislukt",
-    "characterUpdated": "Personage bijgewerkt!",
-    "characterFailed": "Personage bijwerken mislukt",
-    "linkCopied": "Link gekopieerd!",
-    "profile": {
-      "changeCharacter": "Personage wijzigen",
-      "editName": "Weergavenaam bewerken",
-      "saveName": "Weergavenaam opslaan",
-      "displayName": "Weergavenaam",
-      "guestBadge": "GAST",
-      "copyLink": "Profiellink kopiëren",
-      "share": "Profiel delen",
-      "shareTitle": "Profiel van {name}",
-      "shareText": "Bekijk het profiel van {name} op TinyFloor",
-      "created": "aangemaakt",
-      "joined": "bijgewoond",
-      "chooseCharacter": "Kies personage",
-      "selectAvatar": "Selecteer je avatar"
-    },
-    "stats": {
-      "title": "Statistieken",
-      "empty": "Maak je eerste ruimte aan!",
-      "active": "Actief"
-    },
-    "quickActions": {
-      "title": "Snelle acties"
-    },
-    "activity": {
-      "title": "Recente activiteit",
-      "empty": "Nog geen activiteit",
-      "room_created": "Aangemaakt",
-      "room_joined": "Deelgenomen",
-      "room_visited": "Bezocht"
-    },
-    "collaborators": {
-      "title": "Recente mensen",
-      "empty": "Ga ruimtes binnen om mensen te ontmoeten"
-    },
-    "rooms": {
-      "mine": "Mijn ruimtes",
-      "joined": "Deelgenomen",
-      "gridView": "Rasterweergave",
-      "listView": "Lijstweergave",
-      "newRoom": "Nieuwe ruimte",
-      "filter": {
-        "all": "Alle",
-        "active": "Actief",
-        "idle": "Inactief",
-        "offline": "Offline"
-      },
-      "loading": "Ruimtes laden...",
-      "noMatches": "Geen resultaten",
-      "noMatchesBody": "Pas je zoekopdracht of filters aan",
-      "noRooms": "Nog geen ruimtes",
-      "noRoomsBody": "Maak je eerste virtuele kantoorruimte",
-      "noJoined": "Nog geen ruimtes bijgewoond",
-      "noJoinedBody": "Ga een ruimte binnen om hem hier te zien",
-      "browsePublic": "Openbare ruimtes bekijken"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Actief",
-        "idle": "Inactief",
-        "offline": "Offline"
-      },
-      "join": "Deelnemen",
-      "copyLink": "Link kopiëren",
-      "players": "{count}/{max} spelers"
-    }
+    "manageProfile": "Profiel beheren",
+    "visitingAsGuest": "Op bezoek als gast",
+    "keepYourName": "Houd je naam en personage"
   },
   "room": {
     "connecting": "Verbinden...",
-    "fallbackName": "Ruimte: {id}",
     "copied": "Gekopieerd!",
-    "invite": "Uitnodigen",
-    "leave": "Verlaten"
+    "leave": "Verlaten",
+    "reconnecting": "Opnieuw verbinden…",
+    "peopleHere": "Nu hier: {count}",
+    "copyLink": "Link kopiëren",
+    "reconnectingNote": "Verbinding verbroken. We halen je terug…",
+    "ended": {
+      "back": "Terug",
+      "fullTitle": "Deze ruimte is vol",
+      "full": "Iedereen die erin past, is al binnen. Probeer het zo nog eens.",
+      "replacedTitle": "Geopend in een ander tabblad",
+      "replaced": "Je bent deze ruimte binnengegaan vanuit een ander tabblad of apparaat, dus deze is gestopt.",
+      "closedTitle": "Deze ruimte is gesloten",
+      "closed": "Een beheerder van de werkruimte heeft de ruimte verwijderd of gearchiveerd.",
+      "revokedTitle": "Je toegang is beëindigd",
+      "revoked": "De gastlink waarmee je binnenkwam, is uitgezet.",
+      "signedOutTitle": "Je bent uitgelogd",
+      "signedOut": "Log opnieuw in om weer binnen te gaan.",
+      "notFoundTitle": "Ruimte niet gevonden",
+      "notFound": "Deze ruimte bestaat niet, of je bent geen lid van de werkruimte.",
+      "signIn": "Inloggen",
+      "tryAgain": "Opnieuw proberen",
+      "useHere": "Hier gebruiken"
+    }
   },
   "call": {
     "incomingVideo": "Inkomend videogesprek...",
@@ -406,8 +340,7 @@
   },
   "proximity": {
     "videoCall": "Videogesprek",
-    "audioCall": "Spraakgesprek",
-    "viewProfile": "Profiel bekijken"
+    "audioCall": "Spraakgesprek"
   },
   "jukebox": {
     "title": "Ruimtespeaker",
@@ -433,24 +366,8 @@
   "settings": {
     "title": "Instellingen",
     "close": "Instellingen sluiten",
-    "audio": "Audio",
-    "video": "Video",
     "microphone": "Microfoon",
-    "micVolume": "Microfoonvolume",
-    "speaker": "Luidspreker",
-    "speakerVolume": "Luidsprekervolume",
     "camera": "Camera",
-    "videoQuality": "Videokwaliteit",
-    "quality": {
-      "low": "Laag",
-      "medium": "Gemiddeld",
-      "high": "Hoog"
-    },
-    "qualityHint": {
-      "low": "360p, het best voor trage verbindingen",
-      "medium": "480p, balans tussen kwaliteit en snelheid",
-      "high": "720p, beste kwaliteit maar vereist snel internet"
-    },
     "default": "Standaard"
   },
   "tutorial": {
@@ -482,9 +399,6 @@
     "select": "{name} selecteren",
     "keyHint": "Gebruik de pijltjestoetsen ← →"
   },
-  "toast": {
-    "dismiss": "Sluiten"
-  },
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
@@ -514,7 +428,7 @@
     "steps": [
       {
         "title": "Open een ruimte",
-        "body": "Loop het openbare kantoor in, of maak een ruimte en deel de link."
+        "body": "Loop het openbare kantoor binnen, of maak een werkruimte en nodig je team uit."
       },
       {
         "title": "Kies een personage",
@@ -547,7 +461,7 @@
           },
           {
             "title": "Gasten lopen zo naar binnen",
-            "body": "Iedereen met de link doet mee met alleen een naam. Een account is optioneel en bewaart alleen je profiel en ruimtes."
+            "body": "Teamleden komen binnen met een gratis account, en iedereen anders via een gastlink met alleen een naam."
           }
         ],
         "them": {
@@ -567,7 +481,7 @@
           },
           {
             "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
-            "a": "Ja. Maak een ruimte, deel de link en iedereen loopt naar binnen. Er zijn geen gegevens over te zetten en niets te installeren."
+            "a": "Ja. Maak een werkruimte, nodig je team uit met één link en iedereen loopt binnen. Er zijn geen gegevens over te zetten en niets te installeren."
           },
           {
             "q": "Hoeveel mensen passen er in een TinyFloor-ruimte?",
@@ -614,7 +528,7 @@
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
-            "a": "Nee. Iedereen met een ruimtelink kan als gast meedoen met alleen een naam. Inloggen bewaart alleen een profiel, een personage en een lijst van je ruimtes."
+            "a": "Teamleden gebruiken een gratis account, zo blijven jullie ruimtes privé. Iedereen anders kan als gast binnenkomen met alleen een naam, via een gastlink of de openbare lobby."
           },
           {
             "q": "Werkt TinyFloor op een telefoon?",
@@ -708,7 +622,7 @@
           },
           {
             "q": "Moet ik een server draaien?",
-            "a": "Nee. TinyFloor wordt voor je gehost. Maak een ruimte in de browser en deel de link."
+            "a": "Nee. TinyFloor wordt voor je gehost. Maak een werkruimte in de browser en nodig je team uit."
           },
           {
             "q": "Hoe starten gesprekken in TinyFloor?",
@@ -813,7 +727,7 @@
           },
           {
             "title": "Een open ruimte, altijd",
-            "body": "Het openbare kantoor is altijd open. Of maak een ruimte voor je eigen coworkinggroep en deel de link."
+            "body": "Het openbare kantoor is altijd open. Of maak een werkruimte voor je eigen coworkinggroep en nodig ze uit."
           },
           {
             "title": "Stel je status in",
@@ -831,7 +745,7 @@
           },
           {
             "q": "Kan ik met onbekenden coworken?",
-            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een ruimte en voeg je een wachtwoord toe."
+            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een werkruimte: de ruimtes daarin zijn alleen open voor wie je uitnodigt."
           },
           {
             "q": "Is er een tijdslimiet?",
@@ -864,11 +778,11 @@
         "faq": [
           {
             "q": "Hoe maak ik een studieruimte?",
-            "a": "Maak een ruimte, geef hem een naam en deel de link met je vrienden. Voeg een wachtwoord toe als je hem privé wilt houden."
+            "a": "Maak een werkruimte, voeg een ruimte toe en nodig je vrienden uit met één link. Alleen wie je uitnodigt kan binnenlopen."
           },
           {
             "q": "Is het gratis voor studenten?",
-            "a": "Ja. TinyFloor is gratis voor iedereen, en niemand heeft een account nodig om mee te doen."
+            "a": "Ja. TinyFloor is gratis voor een kleine groep, en vrienden kunnen zonder account binnenkomen via een gastlink."
           },
           {
             "q": "Kunnen we muziek luisteren tijdens het studeren?",
@@ -913,7 +827,7 @@
           },
           {
             "q": "Kan ik het klaslokaal privé houden?",
-            "a": "Ja. Voeg een wachtwoord toe als je de ruimte maakt en deel het alleen met je klas."
+            "a": "Ja. Ruimtes in een werkruimte zijn privé. Deel een gastlink met je klas en zet hem uit als jullie klaar zijn."
           },
           {
             "q": "Is het gratis voor docenten?",
@@ -963,5 +877,222 @@
         ]
       }
     }
+  },
+  "lobby": {
+    "eyebrow": "Open voor iedereen",
+    "title": "De lobby",
+    "subtitle": "Iedereen mag binnenlopen. Zeg wie je bent, kies een personage en loop binnen."
+  },
+  "workspace": {
+    "lobby": "Lobby",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "switchWorkspace": "Andere werkruimte",
+    "memberCount": "{count} van {limit} leden",
+    "peopleInside": "Nu in ruimtes: {count}",
+    "plans": {
+      "free": "Gratis abonnement",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Eigenaar",
+      "admin": "Beheerder",
+      "member": "Lid"
+    },
+    "settings": {
+      "button": "Instellingen",
+      "title": "Instellingen van de werkruimte",
+      "name": "Naam van de werkruimte",
+      "save": "Opslaan",
+      "transfer": "Eigendom overdragen",
+      "transferHint": "De nieuwe eigenaar krijgt volledige controle. Jij blijft beheerder.",
+      "choosePerson": "Kies iemand",
+      "transferButton": "Overdragen",
+      "deleteTitle": "Deze werkruimte verwijderen",
+      "deleteBody": "Hiermee worden {name}, de ruimtes en de gastlinks voor iedereen verwijderd. Dit kan niet ongedaan worden. Typ de naam van de werkruimte om te bevestigen.",
+      "deleteConfirmLabel": "Naam van de werkruimte ter bevestiging",
+      "deleteButton": "Werkruimte verwijderen",
+      "leaveTitle": "Deze werkruimte verlaten",
+      "leaveBody": "Je verliest toegang tot de ruimtes in {name} tot iemand je opnieuw uitnodigt.",
+      "leaveButton": "Werkruimte verlaten",
+      "nameDetail": "Wat je team bovenaan het kantoor ziet."
+    },
+    "onboarding": {
+      "title": "Richt je kantoor in",
+      "subtitle": "Geef de werkruimte van je team een naam. Er hoort een eerste ruimte bij waar je meteen in kunt.",
+      "nameLabel": "Naam van de werkruimte",
+      "namePlaceholder": "Acme Studio",
+      "create": "Werkruimte maken",
+      "freePlan": "Gratis voor maximaal 3 mensen. Geen creditcard nodig.",
+      "firstRoom": "Hoofdverdieping"
+    },
+    "rooms": {
+      "title": "Ruimtes",
+      "detail": "Loop binnen in elke ruimte die je team heeft gemaakt.",
+      "new": "Nieuwe ruimte",
+      "empty": "Nog geen ruimtes. Vraag een beheerder er een te maken.",
+      "emptyManager": "Nog geen ruimtes. Maak de eerste voor je team.",
+      "capacity": "Capaciteit: {count}",
+      "options": "Opties voor {room}",
+      "guestLinks": "Gastlinks",
+      "edit": "Naam of grootte wijzigen",
+      "delete": "Ruimte verwijderen",
+      "peopleNow": "Binnen: {count}",
+      "quiet": "Nu leeg",
+      "enter": "Binnengaan",
+      "editTitle": "Ruimte bewerken",
+      "newTitle": "Nieuwe ruimte",
+      "name": "Naam van de ruimte",
+      "namePlaceholder": "Standup, Design, Koffiehoek",
+      "capacityLabel": "Hoeveel mensen passen erin",
+      "cancel": "Annuleren",
+      "save": "Wijzigingen opslaan",
+      "create": "Ruimte maken",
+      "deleteTitle": "{room} verwijderen?",
+      "deleteBody": "De ruimte en de gastlinks zijn dan voorgoed weg.",
+      "deleteBodyBusy": "Wie nu binnen is ({count}), moet eruit, en de ruimte en de gastlinks zijn voorgoed weg."
+    },
+    "guestLinks": {
+      "title": "Gastlinks voor {room}",
+      "description": "Iedereen met een gastlink kan deze ruimte zonder account in.",
+      "onlyOnce": "Kopieer hem nu. Voor de veiligheid wordt de link maar één keer getoond.",
+      "another": "Nog een link maken",
+      "expiresIn": "Link werkt",
+      "lifetimes": {
+        "1d": "1 dag",
+        "7d": "7 dagen",
+        "30d": "30 dagen"
+      },
+      "create": "Gastlink maken",
+      "active": "Actieve links",
+      "expires": "Verloopt op {date}",
+      "revoke": "Uitzetten"
+    },
+    "members": {
+      "title": "Leden",
+      "full": "Je abonnement is vol met {limit} leden.",
+      "detail": "{count} van {limit} leden",
+      "invite": "Uitnodigen",
+      "pending": "Openstaande uitnodigingen",
+      "anyoneWithLink": "Iedereen met de link",
+      "inviteMeta": "{role} · verloopt op {date}",
+      "revoke": "Intrekken",
+      "roleNames": {
+        "owner": "Eigenaar",
+        "admin": "Beheerder",
+        "member": "Lid"
+      },
+      "you": "jij",
+      "options": "Opties voor {name}",
+      "makeMember": "Lid maken",
+      "makeAdmin": "Beheerder maken",
+      "leave": "Verlaten",
+      "remove": "Verwijderen",
+      "inviteTitle": "Nodig mensen uit voor {workspace}",
+      "inviteDescription": "Stuur ze de link. Ze hebben een account nodig om mee te doen.",
+      "linkForEmail": "Alleen {email} kan deze link gebruiken. Hij werkt één keer en verloopt over 7 dagen.",
+      "linkForAnyone": "Iedereen met deze link kan één keer meedoen. Hij verloopt over 7 dagen.",
+      "done": "Klaar",
+      "roleLabel": "Meedoen als",
+      "roleHints": {
+        "member": "Gebruikt ruimtes en ontmoet het team",
+        "admin": "Maakt ook ruimtes en nodigt mensen uit"
+      },
+      "emailLabel": "E-mail (optioneel)",
+      "emailPlaceholder": "collega@bedrijf.nl",
+      "emailHint": "Voeg een e-mailadres toe zodat de link alleen voor die persoon werkt.",
+      "cancel": "Annuleren",
+      "createLink": "Uitnodigingslink maken"
+    },
+    "profile": {
+      "title": "Je profiel",
+      "changePassword": "Wachtwoord wijzigen",
+      "name": "Je naam",
+      "saved": "Opgeslagen",
+      "save": "Opslaan",
+      "character": "Personage",
+      "passwordTitle": "Wijzig je wachtwoord",
+      "passwordDescription": "Vul je huidige wachtwoord in en kies daarna een nieuw.",
+      "passwordChanged": "Je wachtwoord is gewijzigd.",
+      "done": "Klaar",
+      "currentPassword": "Huidig wachtwoord",
+      "newPassword": "Nieuw wachtwoord",
+      "hidePasswords": "Wachtwoorden verbergen",
+      "showPasswords": "Wachtwoorden tonen",
+      "passwordRule": "Minstens 8 tekens",
+      "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
+      "cancel": "Annuleren",
+      "pageTitle": "Je account"
+    },
+    "invite": {
+      "invalidTitle": "Deze uitnodiging werkt niet",
+      "invalid": "Misschien is hij verlopen, al gebruikt of uitgezet. Vraag om een nieuwe.",
+      "home": "Naar de startpagina",
+      "eyebrow": "{name} heeft je uitgenodigd",
+      "asAdmin": "Je bent uitgenodigd als beheerder.",
+      "asMember": "Je bent uitgenodigd voor het team.",
+      "join": "Meedoen met {workspace}",
+      "joiningAs": "Je doet mee als {name} ({email})",
+      "createAccount": "Account maken",
+      "signIn": "Ik heb een account",
+      "needAccount": "Je hebt een account nodig om lid te worden van een werkruimte. Dat duurt een minuut.",
+      "readyToJoin": "Dat ben ik",
+      "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
+      "you": "Jij"
+    },
+    "errors": {
+      "member_limit": "De werkruimte is vol met het huidige abonnement.",
+      "not_allowed": "Je rol in deze werkruimte mag dat niet.",
+      "owner_cannot_leave": "De eigenaar moet het eigendom overdragen voordat die vertrekt.",
+      "owner_role": "De rol van eigenaar verandert alleen door het eigendom over te dragen.",
+      "bad_capacity": "Kies tussen 2 en 20 mensen.",
+      "name_required": "Geef het eerst een naam.",
+      "bad_email": "Dat lijkt geen e-mailadres.",
+      "invite_used": "Deze uitnodiging is al gebruikt.",
+      "invite_invalid": "Deze uitnodiging is verlopen of uitgezet.",
+      "wrong_account": "Deze uitnodiging is voor een ander e-mailadres. Log in met dat account.",
+      "wrong_password": "Je huidige wachtwoord klopt niet.",
+      "password_too_short": "Gebruik minstens 8 tekens.",
+      "password_too_long": "Gebruik minder dan 72 tekens.",
+      "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
+      "not_found": "Dat is niet gevonden. Misschien is het verwijderd.",
+      "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
+      "generic": "Er ging iets mis. Probeer het opnieuw."
+    },
+    "tabs": {
+      "label": "Onderdelen van dit kantoor",
+      "rooms": "Ruimtes",
+      "people": "Mensen",
+      "settings": "Instellingen"
+    },
+    "spaces": {
+      "title": "Je kantoren",
+      "new": "Nieuw kantoor",
+      "create": "Kantoor maken",
+      "emptyTitle": "Je hebt nog geen kantoor",
+      "emptyBody": "Een kantoor is alleen voor wie je uitnodigt, met ruimtes waar je team altijd binnen kan lopen.",
+      "visitLobby": "Naar het openbare kantoor",
+      "roles": {
+        "owner": "Deze is van jou",
+        "admin": "Je bent hier admin",
+        "member": "Je bent hier lid"
+      }
+    }
+  },
+  "create": {
+    "eyebrow": "Je eigen kantoor",
+    "title": "Geef je kantoor een naam",
+    "subtitle": "Dit ziet je team. Je kunt het later aanpassen.",
+    "nameLabel": "Naam van het kantoor",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Verder",
+    "create": "Kantoor maken",
+    "creating": "Wordt klaargezet",
+    "firstRoom": "Hoofdverdieping",
+    "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
+    "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
+    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
   }
 }

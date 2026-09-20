@@ -1,0 +1,19 @@
+# tinyfloor-api
+
+HTTP API for TinyFloor on `api.tinyfloor.com`. See `docs/04-api.md`.
+
+## Commands
+
+| Command | Does |
+|---|---|
+| `pnpm dev` | Runs locally on `localhost:8787` with a local D1 |
+| `pnpm migrate:local` | Applies migrations to the local D1 |
+| `pnpm test` | Runs the tests |
+| `pnpm typecheck` | Type checks source and tests |
+| `pnpm types` | Regenerates `worker-configuration.d.ts` after changing `wrangler.jsonc` |
+| `pnpm deploy` | Applies migrations to `tinyfloor-db`, then deploys |
+
+Pushing to `feature/cloudflare-platform` deploys through Workers Builds when
+anything in `worker-api/` or `shared-protocol/` changes.
+
+Local secrets go in `.dev.vars`.

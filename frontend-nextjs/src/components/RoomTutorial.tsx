@@ -15,7 +15,7 @@ import {
 import { callManager } from "@/lib/CallManager";
 import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
-import { joinPath, shareUrl } from "@/lib/links";
+import { lobbyPath, shareUrl } from "@/lib/links";
 import {
   GUIDE_ID,
   GUIDE_SPRITE,
@@ -143,11 +143,12 @@ function Ripple({
 export default function RoomTutorial({
   name,
   character,
-  roomId,
+  sharePath = lobbyPath,
 }: {
   name: string;
   character: string;
-  roomId: string;
+  /** The link the invite step shows; the lobby's when the room has none to share. */
+  sharePath?: string;
 }) {
   const t = useTranslations("tutorial");
   const guideName = useTranslations("scene")("guide");
@@ -160,11 +161,11 @@ export default function RoomTutorial({
 
   const copyInvite = useCallback(() => {
     if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(shareUrl(joinPath(roomId)));
+    navigator.clipboard.writeText(shareUrl(sharePath));
     setCopied(true);
     clearTimeout(copyTimer.current);
     copyTimer.current = setTimeout(() => setCopied(false), 2000);
-  }, [roomId]);
+  }, [sharePath]);
 
   const finish = useCallback(() => {
     completeTutorial();
@@ -338,7 +339,7 @@ export default function RoomTutorial({
         >
           <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
           <span className="flex-1 truncate text-[10px] font-medium text-[var(--color-braun-text)]/70">
-            {joinPath(roomId)}
+            {sharePath}
           </span>
           <button
             onClick={copyInvite}

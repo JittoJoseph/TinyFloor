@@ -4,20 +4,19 @@
     "description": "TinyFloor on ilmainen virtuaalitoimisto selaimessasi. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
     "ogAlt": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisineen",
     "keywords": "virtuaalitoimisto, etätyö, tilachat, verkkoyhteistyö, virtuaalinen työtila, metaverse-toimisto, läheisyyschat, läheisyysvideochat, virtuaalinen coworking, videopuhelut selaimessa",
-    "createRoomTitle": "Luo huone",
-    "createRoomDescription": "Avaa virtuaalinen toimistohuone TinyFloorissä. Anna sille nimi, lisää halutessasi salasana ja jaa yksi linkki tiimillesi.",
     "joinTitle": "Liity huoneeseen",
     "joinRoomTitle": "Liity huoneeseen {room}",
     "joinRoomDescription": "Sinut on kutsuttu huoneeseen {room} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
-    "roomsTitle": "Selaa huoneita",
-    "roomsDescription": "Selaa aktiivisia virtuaalihuoneita ja liity TinyFloorin julkisiin työtiloihin.",
-    "peopleTitle": "Ihmiset",
-    "peopleDescription": "Tutustu ihmisiin, jotka viettävät aikaa TinyFloor-huoneissa.",
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
     "dashboardTitle": "Hallintapaneeli",
     "roomTitle": "Aktiivinen huone",
-    "notFoundTitle": "Sivua ei löytynyt"
+    "notFoundTitle": "Sivua ei löytynyt",
+    "lobbyTitle": "Aula",
+    "lobbyDescription": "Tule vieraana TinyFloorin ilmaiseen, avoimeen aulaan. Valitse hahmo, tapaa ihmisiä ja kokeile lähietäisyyden videopuheluita selaimessa.",
+    "inviteTitle": "Liity työtilaan {workspace} TinyFloorissa",
+    "inviteFallbackTitle": "Sinut on kutsuttu TinyFlooriin",
+    "inviteDescription": "{name} kutsui sinut työtilaan {workspace} TinyFloorissa, virtuaaliseen toimistoon, jossa voi kävellä."
   },
   "common": {
     "loading": "Ladataan...",
@@ -29,15 +28,17 @@
     "you": "Sinä",
     "justNow": "juuri nyt",
     "unknown": "Tuntematon",
-    "rooms": "Huoneet",
-    "people": "Ihmiset",
     "peopleCount": "{count, plural, one {# henkilö} other {# henkilöä}}",
-    "createRoom": "Luo huone",
-    "browseRooms": "Selaa huoneita",
-    "searchRooms": "Hae huoneita...",
     "dashboard": "Hallintapaneeli",
     "questions": "Kysymykset",
-    "signOut": "Kirjaudu ulos"
+    "signOut": "Kirjaudu ulos",
+    "visitLobby": "Käy aulassa",
+    "lobby": "Aula",
+    "signIn": "Kirjaudu",
+    "rooms": "Huoneet",
+    "offices": "Toimistosi",
+    "account": "Tili",
+    "createOffice": "Luo toimisto"
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -52,8 +53,10 @@
   "hero": {
     "title": "<em>Kodikkain</em> <br></br>virtuaalitoimisto.",
     "subtitle": "Virtuaalitoimisto, joka näyttää peliltä. Kävele ympäriinsä, juttele työkavereiden kanssa ja tunne olevasi taas tiimi.",
-    "cta": "Kokeile",
-    "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä."
+    "cta": "Astu sisään nyt",
+    "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä.",
+    "noSignUp": "ei rekisteröitymistä, kävele vain sisään",
+    "secondaryCta": "Tai perusta toimisto tiimillesi"
   },
   "landing": {
     "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
@@ -107,9 +110,9 @@
     },
     "rooms": {
       "title": "Huone on huomennakin paikallaan.",
-      "body": "Huoneet eivät lopu, kun palaveri loppuu. Pidä yksi auki tiimillesi, lisää tarvittaessa salasana ja lähetä linkki kerran.",
-      "chip1": "Kaikkien nähtävillä",
-      "chip2": "Jaa linkillä",
+      "body": "Huoneet eivät lopu, kun kokous loppuu. Pidä ne auki tiimillesi, kutsu ihmiset kerran, ja he voivat tulla sisään milloin haluavat.",
+      "chip1": "Vain tiimillesi",
+      "chip2": "Vieraslinkit",
       "chip3": "Ilmainen"
     },
     "floor": {
@@ -133,15 +136,15 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä. Huoneiden luominen, käveleminen, chattailu ja puhelut ovat ilmaisia."
+        "a": "Kyllä. Julkinen aula on ilmainen kaikille, samoin työtila pienelle tiimille."
       },
       {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
-        "a": "Et. Kuka tahansa voi liittyä vieraana pelkällä nimellä. Kirjautuminen tuo vain tallennetun profiilin, pysyvän hahmon ja listan huoneistasi."
+        "a": "Julkiseen aulaan ei tarvita. Sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Työtilan huoneet ovat yksityisiä: tiimiläiset kirjautuvat ilmaisella tilillä, ja vierailijat tulevat sisään vieraslinkillä."
       },
       {
         "q": "Miten videopuhelut toimivat?",
-        "a": "Puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja video kulkevat suoraan selainten välillä. Kun puhelu on yhdistetty, se pysyy yhdistettynä, kunnes joku lopettaa sen tai poistuu huoneesta. Pois käveleminen ei katkaise sitä."
+        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poispäin käveleminen ei katkaise sitä. Kokouspöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
       },
       {
         "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
@@ -160,11 +163,12 @@
   "cta": {
     "title": "Huoneesi on <em>jo auki.</em>",
     "publicTitle": "Astu julkiseen toimistoon",
-    "publicBody": "Huone, joka on aina auki. Valitse hahmo, kävele ympäriinsä ja tervehdi paikallaolijoita.",
-    "createTitle": "Avaa huone tiimillesi",
-    "createBody": "Anna sille nimi, lisää halutessasi salasana ja lähetä yksi linkki. Se pysyy auki niin kauan kuin haluat.",
+    "publicBody": "Aina auki, kaikille. Valitse nimi, valitse hahmo, ja olet sisällä. Ei tiliä.",
+    "createTitle": "Perusta oma toimistosi",
+    "createBody": "Nimeä se, kutsu tiimisi yhdellä linkillä, ja huoneet pysyvät auki niin kauan kuin haluat.",
     "sampleName": "Designtiimi",
-    "create": "Luo"
+    "create": "Luo",
+    "publicNote": "aloita tästä"
   },
   "footer": {
     "tagline": "Virtuaalitoimisto, jossa kävellään. Ilmainen, selaimessa.",
@@ -177,170 +181,100 @@
     "credits": "Tekijät"
   },
   "auth": {
-    "welcomeBack": "Tervetuloa takaisin",
-    "joinUs": "Liity mukaan",
-    "signInSubtitle": "Kirjaudu tilillesi",
-    "registerSubtitle": "Luo työtilatilisi",
-    "username": "Käyttäjänimi",
-    "emailOptional": "Sähköposti (valinnainen)",
-    "displayNameOptional": "Näyttönimi (valinnainen)",
+    "tabSignIn": "Kirjaudu",
+    "tabSignUp": "Luo tili",
+    "chooseMode": "Kirjaudu sisään tai luo tili",
+    "signInTitle": "Tervetuloa takaisin",
+    "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
+    "signUpTitle": "Luo tilisi",
+    "signUpSubtitle": "Nimesi, sähköpostisi ja salasana. Siinä kaikki.",
+    "name": "Nimesi",
+    "namePlaceholder": "Näin muut näkevät sinut",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sina@yritys.fi",
     "password": "Salasana",
+    "passwordPlaceholder": "Salasanasi",
+    "newPasswordPlaceholder": "Valitse salasana",
+    "passwordRule": "Vähintään 8 merkkiä",
+    "capsLock": "Caps Lock on päällä",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana",
-    "signIn": "Kirjaudu sisään",
-    "signUp": "Rekisteröidy",
+    "signIn": "Kirjaudu",
+    "signingIn": "Kirjaudutaan…",
     "createAccount": "Luo tili",
-    "noAccount": "Eikö sinulla ole tiliä?",
+    "creatingAccount": "Luodaan tiliäsi…",
+    "noAccount": "Uusi TinyFloorissa?",
+    "createOne": "Luo tili",
     "haveAccount": "Onko sinulla jo tili?",
-    "continueGuest": "Jatka vieraana →",
-    "error": "Tapahtui virhe"
+    "signInInstead": "Kirjaudu sen sijaan",
+    "guestCarryOver": "Olet vierailulla nimellä {name}. Nimesi tulee mukaan.",
+    "continueGuest": "Katseletko vain? Vieraile aulassa vieraana",
+    "errors": {
+      "wrong_credentials": "Sähköposti ja salasana eivät täsmää. Yritä uudelleen.",
+      "too_many_attempts": "Liian monta yritystä. Odota muutama minuutti ja yritä sitten uudelleen.",
+      "email_taken": "Tällä sähköpostilla on jo tili.",
+      "bad_email": "Tämä ei näytä sähköpostiosoitteelta.",
+      "email_required": "Anna sähköpostisi.",
+      "password_required": "Anna salasanasi.",
+      "password_too_short": "Käytä vähintään 8 merkkiä.",
+      "password_too_long": "Käytä alle 72 merkkiä.",
+      "password_blank": "Salasana ei voi olla pelkkiä välilyöntejä.",
+      "name_required": "Valitse nimi, jonka muut näkevät.",
+      "turnstile": "Emme voineet varmistaa, että olet ihminen. Yritä uudelleen.",
+      "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
+      "generic": "Jokin meni vikaan. Yritä uudelleen."
+    }
   },
   "entry": {
-    "allRooms": "Kaikki huoneet",
     "yourName": "Nimesi",
     "namePlaceholder": "Millä nimellä sinua kutsutaan?",
-    "roomPassword": "Huoneen salasana",
-    "passwordPlaceholder": "Anna salasana",
     "character": "Hahmo",
-    "copyInvite": "Kopioi kutsulinkki",
     "inviteCopied": "Kutsulinkki kopioitu",
     "openingDoor": "Ovi avautuu",
-    "walkIn": "Astu sisään"
-  },
-  "createRoom": {
-    "title": "Avaa huone.",
-    "roomName": "Huoneen nimi",
-    "roomNamePlaceholder": "Designtiimi, Studio, Perjantaihengailu",
-    "advanced": "Lisäasetukset",
-    "passwordPlaceholder": "Lisää salasana (valinnainen)",
-    "passwordHint": "Jokainen huone näkyy hakemistossa. Salasana pitää oven kiinni niiltä, joilla sitä ei ole.",
-    "submit": "Luo huone",
-    "submitting": "Valmistellaan",
-    "createError": "Huoneen luominen epäonnistui. Yritä uudelleen.",
-    "openError": "Huoneen avaaminen epäonnistui"
+    "walkIn": "Astu sisään",
+    "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
+    "guestKeep": "Olet vieras. <link>Luo tili</link>, niin nimesi ja hahmosi säilyvät.",
+    "copyInvite": "Kopioi kutsulinkki",
+    "continue": "Jatka",
+    "walkingInAs": "Astut sisään nimellä {name}"
   },
   "join": {
     "unavailableTitle": "Tämä ovi ei aukea.",
-    "unavailable": "Tämä huone ei ole enää saatavilla.",
-    "full": "Huone on juuri nyt täynnä",
-    "needsPassword": "Huone vaatii salasanan",
-    "error": "Huoneeseen liittyminen epäonnistui",
-    "roomFull": "Huone on täynnä",
-    "guestNote": "Liityt vieraana. <link>Kirjaudu sisään</link>, niin nimesi ja hahmosi säilyvät."
-  },
-  "directory": {
-    "roomsTitle": "<em>Virtuaalitoimiston</em> huoneet",
-    "peopleTitle": "TinyFloorin <em>yhteisö</em>",
-    "roomsSubtitle": "Selaa huoneita tai tapaa niissä olevia ihmisiä",
-    "peopleSubtitle": "Tutustu TinyFloorin tekijöihin",
-    "updating": "Päivitetään...",
-    "roomsLive": "{count, plural, one {# huone livenä} other {# huonetta livenä}}",
-    "search": "Hae",
-    "loadingSpaces": "Ladataan tiloja",
-    "noRoomsFound": "Huoneita ei löytynyt.",
-    "noRoomsAvailable": "Huoneita ei ole saatavilla.",
-    "noRoomsFoundBody": "Hakuasi vastaavia huoneita ei löytynyt. Kokeile muokata hakua.",
-    "noRoomsAvailableBody": "Täällä on hiljaista. Aloita ensimmäisenä uusi työtila!",
-    "presence": {
-      "ONLINE": "Paikalla",
-      "IDLE": "Hiljainen",
-      "OFFLINE": "Offline"
-    },
-    "lastActive": "Aktiivinen {time}",
-    "full": "Täynnä",
-    "enter": "Astu sisään",
-    "gatheringPeople": "Kootaan ihmisiä...",
-    "searchPeople": "Hae ihmisiä...",
-    "yourProfile": "Profiilisi",
-    "loadingPeople": "Ladataan ihmisiä",
-    "noPeople": "Ihmisiä ei löytynyt.",
-    "noPeopleBody": "Kokeile toista hakua tai palaa pian."
+    "linkUnavailable": "Tämä vieraslinkki on vanhentunut tai poistettu käytöstä. Pyydä lähettäjältä uusi.",
+    "visitLobby": "Käy aulassa",
+    "invitedAsGuest": "Sinut on kutsuttu vieraaksi."
   },
   "userMenu": {
-    "manageProfile": "Hallitse profiilia"
-  },
-  "dashboard": {
-    "subtitle": "Hallitse profiiliasi ja huoneitasi",
-    "activeCount": "{count} aktiivista",
-    "userNotFound": "Käyttäjää ei löytynyt",
-    "backToRooms": "Takaisin huoneisiin",
-    "nameUpdated": "Näyttönimi päivitetty!",
-    "profileFailed": "Profiilin päivitys epäonnistui",
-    "characterUpdated": "Hahmo päivitetty!",
-    "characterFailed": "Hahmon päivitys epäonnistui",
-    "linkCopied": "Linkki kopioitu!",
-    "profile": {
-      "changeCharacter": "Vaihda hahmo",
-      "editName": "Muokkaa näyttönimeä",
-      "saveName": "Tallenna näyttönimi",
-      "displayName": "Näyttönimi",
-      "guestBadge": "VIERAS",
-      "copyLink": "Kopioi profiilin linkki",
-      "share": "Jaa profiili",
-      "shareTitle": "Käyttäjän {name} profiili",
-      "shareText": "Katso käyttäjän {name} profiili TinyFloorissä",
-      "created": "luotu",
-      "joined": "liitytty",
-      "chooseCharacter": "Valitse hahmo",
-      "selectAvatar": "Valitse avatarisi"
-    },
-    "stats": {
-      "title": "Tilastot",
-      "empty": "Luo ensimmäinen huoneesi!",
-      "active": "Aktiiviset"
-    },
-    "quickActions": {
-      "title": "Pikatoiminnot"
-    },
-    "activity": {
-      "title": "Viimeaikainen toiminta",
-      "empty": "Ei vielä toimintaa",
-      "room_created": "Luotu",
-      "room_joined": "Liityit",
-      "room_visited": "Vierailtu"
-    },
-    "collaborators": {
-      "title": "Viimeaikaiset ihmiset",
-      "empty": "Liity huoneisiin tavataksesi ihmisiä"
-    },
-    "rooms": {
-      "mine": "Omat huoneet",
-      "joined": "Liitytyt",
-      "gridView": "Ruudukkonäkymä",
-      "listView": "Luettelonäkymä",
-      "newRoom": "Uusi huone",
-      "filter": {
-        "all": "Kaikki",
-        "active": "Aktiiviset",
-        "idle": "Hiljaiset",
-        "offline": "Offline"
-      },
-      "loading": "Ladataan huoneita...",
-      "noMatches": "Ei osumia",
-      "noMatchesBody": "Kokeile muokata hakua tai suodattimia",
-      "noRooms": "Ei vielä huoneita",
-      "noRoomsBody": "Luo ensimmäinen virtuaalitoimistosi",
-      "noJoined": "Ei liitytyjä huoneita",
-      "noJoinedBody": "Liity huoneeseen, niin se näkyy täällä",
-      "browsePublic": "Selaa julkisia huoneita"
-    },
-    "roomCard": {
-      "status": {
-        "active": "Aktiivinen",
-        "idle": "Hiljainen",
-        "offline": "Offline"
-      },
-      "join": "Liity",
-      "copyLink": "Kopioi linkki",
-      "players": "{count}/{max} pelaajaa"
-    }
+    "manageProfile": "Hallitse profiilia",
+    "visitingAsGuest": "Vierailet vieraana",
+    "keepYourName": "Säilytä nimi ja hahmo"
   },
   "room": {
     "connecting": "Yhdistetään...",
-    "fallbackName": "Huone: {id}",
     "copied": "Kopioitu!",
-    "invite": "Kutsu",
-    "leave": "Poistu"
+    "leave": "Poistu",
+    "reconnecting": "Yhdistetään uudelleen…",
+    "peopleHere": "Täällä nyt: {count}",
+    "copyLink": "Kopioi linkki",
+    "reconnectingNote": "Yhteys katkesi. Palautamme sinut sisään…",
+    "ended": {
+      "back": "Takaisin",
+      "fullTitle": "Huone on täynnä",
+      "full": "Kaikki mahtuvat ovat jo sisällä. Yritä hetken päästä uudelleen.",
+      "replacedTitle": "Avattu toisessa välilehdessä",
+      "replaced": "Tulit huoneeseen toisesta välilehdestä tai laitteesta, joten tämä poistui.",
+      "closedTitle": "Huone on suljettu",
+      "closed": "Työtilan ylläpitäjä poisti tai arkistoi huoneen.",
+      "revokedTitle": "Pääsysi päättyi",
+      "revoked": "Vieraslinkki, jolla tulit, poistettiin käytöstä.",
+      "signedOutTitle": "Olet kirjautunut ulos",
+      "signedOut": "Kirjaudu uudelleen palataksesi sisään.",
+      "notFoundTitle": "Huonetta ei löytynyt",
+      "notFound": "Huonetta ei ole, tai et ole sen työtilan jäsen.",
+      "signIn": "Kirjaudu",
+      "tryAgain": "Yritä uudelleen",
+      "useHere": "Käytä tässä"
+    }
   },
   "call": {
     "incomingVideo": "Saapuva videopuhelu...",
@@ -406,8 +340,7 @@
   },
   "proximity": {
     "videoCall": "Videopuhelu",
-    "audioCall": "Äänipuhelu",
-    "viewProfile": "Näytä profiili"
+    "audioCall": "Äänipuhelu"
   },
   "jukebox": {
     "title": "Huoneen kaiutin",
@@ -433,24 +366,8 @@
   "settings": {
     "title": "Asetukset",
     "close": "Sulje asetukset",
-    "audio": "Ääni",
-    "video": "Video",
     "microphone": "Mikrofoni",
-    "micVolume": "Mikrofonin äänenvoimakkuus",
-    "speaker": "Kaiutin",
-    "speakerVolume": "Kaiuttimen äänenvoimakkuus",
     "camera": "Kamera",
-    "videoQuality": "Videon laatu",
-    "quality": {
-      "low": "Matala",
-      "medium": "Keskitaso",
-      "high": "Korkea"
-    },
-    "qualityHint": {
-      "low": "360p, paras hitaille yhteyksille",
-      "medium": "480p, tasapaino laadun ja nopeuden välillä",
-      "high": "720p, paras laatu mutta vaatii nopean yhteyden"
-    },
     "default": "Oletus"
   },
   "tutorial": {
@@ -482,9 +399,6 @@
     "select": "Valitse {name}",
     "keyHint": "Käytä nuolinäppäimiä ← →"
   },
-  "toast": {
-    "dismiss": "Sulje"
-  },
   "notFound": {
     "title": "Tätä huonetta ei ole kartalla.",
     "body": "Etsimääsi sivua ei ole olemassa tai se on siirretty.",
@@ -514,7 +428,7 @@
     "steps": [
       {
         "title": "Avaa huone",
-        "body": "Astu julkiseen toimistoon tai luo huone ja jaa sen linkki."
+        "body": "Kävele julkiseen toimistoon, tai luo työtila ja kutsu tiimisi."
       },
       {
         "title": "Valitse hahmo",
@@ -547,7 +461,7 @@
           },
           {
             "title": "Vieraat pääsevät suoraan sisään",
-            "body": "Kuka tahansa linkin saanut liittyy pelkällä nimellä. Tili on vapaaehtoinen ja tallentaa vain profiilisi ja huoneesi."
+            "body": "Tiimiläiset tulevat sisään ilmaisella tilillä, ja kuka tahansa muu vieraslinkillä pelkällä nimellä."
           }
         ],
         "them": {
@@ -567,7 +481,7 @@
           },
           {
             "q": "Voinko siirtää tiimini Gatherista TinyFlooriin?",
-            "a": "Kyllä. Luo huone, jaa linkki ja kaikki astuvat sisään. Siirrettävää dataa ei ole eikä mitään tarvitse asentaa."
+            "a": "Kyllä. Luo työtila, kutsu tiimisi yhdellä linkillä, ja kaikki kävelevät sisään. Siirrettävää dataa ei ole eikä mitään tarvitse asentaa."
           },
           {
             "q": "Montako henkeä TinyFloor-huoneeseen mahtuu?",
@@ -614,7 +528,7 @@
           },
           {
             "q": "Tarvitsevatko tiimikaverini tilin?",
-            "a": "Eivät. Kuka tahansa huoneen linkin saanut voi liittyä vieraana pelkällä nimellä. Kirjautuminen tallentaa vain profiilin, hahmon ja listan huoneistasi."
+            "a": "Tiimiläiset käyttävät ilmaista tiliä, joten huoneenne pysyvät yksityisinä. Kuka tahansa muu voi tulla vieraana pelkällä nimellä, vieraslinkillä tai julkisen aulan kautta."
           },
           {
             "q": "Toimiiko TinyFloor puhelimella?",
@@ -708,7 +622,7 @@
           },
           {
             "q": "Tarvitsenko oman palvelimen?",
-            "a": "Et. TinyFloor ylläpidetään puolestasi. Luo huone selaimessa ja jaa linkki."
+            "a": "Ei. TinyFloor ylläpidetään puolestasi. Luo työtila selaimessa ja kutsu tiimisi."
           },
           {
             "q": "Miten puhelut alkavat TinyFloorissä?",
@@ -813,7 +727,7 @@
           },
           {
             "title": "Avoin huone milloin vain",
-            "body": "Julkinen toimisto on aina auki. Tai luo huone omalle coworking-ryhmällesi ja jaa linkki."
+            "body": "Julkinen toimisto on aina auki. Tai luo työtila omalle coworking-ryhmällesi ja kutsu heidät."
           },
           {
             "title": "Aseta tilasi",
@@ -831,7 +745,7 @@
           },
           {
             "q": "Voinko tehdä coworkingia tuntemattomien kanssa?",
-            "a": "Kyllä. Julkinen toimisto on avoin kaikille. Yksityistä ryhmää varten luo huone ja lisää salasana."
+            "a": "Kyllä. Julkinen toimisto on avoin kaikille. Yksityistä ryhmää varten luo työtila: sen huoneet ovat avoinna vain kutsumillesi."
           },
           {
             "q": "Onko aikarajaa?",
@@ -864,11 +778,11 @@
         "faq": [
           {
             "q": "Miten luon opiskeluhuoneen?",
-            "a": "Luo huone, anna sille nimi ja jaa linkki ystävillesi. Lisää salasana, jos haluat pitää sen yksityisenä."
+            "a": "Luo työtila, lisää huone ja kutsu ystäväsi yhdellä linkillä. Vain kutsumasi pääsevät sisään."
           },
           {
             "q": "Onko se ilmainen opiskelijoille?",
-            "a": "Kyllä. TinyFloor on kaikille ilmainen, eikä kukaan tarvitse tiliä liittyäkseen."
+            "a": "Kyllä. TinyFloor on ilmainen pienelle ryhmälle, ja ystävät pääsevät sisään vieraslinkillä ilman tiliä."
           },
           {
             "q": "Voimmeko kuunnella musiikkia opiskellessa?",
@@ -913,7 +827,7 @@
           },
           {
             "q": "Voinko pitää luokan yksityisenä?",
-            "a": "Kyllä. Lisää salasana huonetta luodessasi ja jaa se vain luokallesi."
+            "a": "Kyllä. Työtilan huoneet ovat yksityisiä. Jaa vieraslinkki luokallesi ja poista se käytöstä, kun olette valmiita."
           },
           {
             "q": "Onko se ilmainen opettajille?",
@@ -963,5 +877,222 @@
         ]
       }
     }
+  },
+  "lobby": {
+    "eyebrow": "Avoinna kaikille",
+    "title": "Aula",
+    "subtitle": "Kuka tahansa voi poiketa. Kerro kuka olet, valitse hahmo ja astu sisään."
+  },
+  "workspace": {
+    "lobby": "Aula",
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "switchWorkspace": "Vaihda työtilaa",
+    "memberCount": "{count}/{limit} jäsentä",
+    "peopleInside": "Huoneissa nyt: {count}",
+    "plans": {
+      "free": "Ilmainen paketti",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "Omistaja",
+      "admin": "Ylläpitäjä",
+      "member": "Jäsen"
+    },
+    "settings": {
+      "button": "Asetukset",
+      "title": "Työtilan asetukset",
+      "name": "Työtilan nimi",
+      "save": "Tallenna",
+      "transfer": "Siirrä omistajuus",
+      "transferHint": "Uusi omistaja saa täyden hallinnan. Sinä jatkat ylläpitäjänä.",
+      "choosePerson": "Valitse henkilö",
+      "transferButton": "Siirrä",
+      "deleteTitle": "Poista tämä työtila",
+      "deleteBody": "Tämä poistaa työtilan {name}, sen huoneet ja vieraslinkit kaikilta. Toimintoa ei voi perua. Vahvista kirjoittamalla työtilan nimi.",
+      "deleteConfirmLabel": "Työtilan nimi vahvistukseksi",
+      "deleteButton": "Poista työtila",
+      "leaveTitle": "Poistu tästä työtilasta",
+      "leaveBody": "Menetät pääsyn työtilan {name} huoneisiin, kunnes joku kutsuu sinut uudelleen.",
+      "leaveButton": "Poistu työtilasta",
+      "nameDetail": "Se, minkä tiimisi näkee toimiston yläreunassa."
+    },
+    "onboarding": {
+      "title": "Perusta toimistosi",
+      "subtitle": "Anna tiimisi työtilalle nimi. Mukana tulee ensimmäinen huone, johon voit mennä heti.",
+      "nameLabel": "Työtilan nimi",
+      "namePlaceholder": "Acme Studio",
+      "create": "Luo työtila",
+      "freePlan": "Ilmainen enintään 3 henkilölle. Korttia ei tarvita.",
+      "firstRoom": "Pääkerros"
+    },
+    "rooms": {
+      "title": "Huoneet",
+      "detail": "Mene mihin tahansa tiimisi tekemään huoneeseen.",
+      "new": "Uusi huone",
+      "empty": "Huoneita ei vielä ole. Pyydä ylläpitäjää tekemään sellainen.",
+      "emptyManager": "Huoneita ei vielä ole. Tee tiimillesi ensimmäinen.",
+      "capacity": "Kapasiteetti: {count}",
+      "options": "Huoneen {room} valinnat",
+      "guestLinks": "Vieraslinkit",
+      "edit": "Nimeä uudelleen tai muuta kokoa",
+      "delete": "Poista huone",
+      "peopleNow": "Sisällä: {count}",
+      "quiet": "Tyhjä juuri nyt",
+      "enter": "Mene sisään",
+      "editTitle": "Muokkaa huonetta",
+      "newTitle": "Uusi huone",
+      "name": "Huoneen nimi",
+      "namePlaceholder": "Standup, Design, Kahvinurkkaus",
+      "capacityLabel": "Montako ihmistä mahtuu",
+      "cancel": "Peruuta",
+      "save": "Tallenna muutokset",
+      "create": "Luo huone",
+      "deleteTitle": "Poistetaanko {room}?",
+      "deleteBody": "Huone ja sen vieraslinkit katoavat pysyvästi.",
+      "deleteBodyBusy": "Sisällä nyt olevat ({count}) poistetaan huoneesta, ja huone sekä sen vieraslinkit katoavat pysyvästi."
+    },
+    "guestLinks": {
+      "title": "Huoneen {room} vieraslinkit",
+      "description": "Kuka tahansa vieraslinkin saanut pääsee huoneeseen ilman tiliä.",
+      "onlyOnce": "Kopioi se nyt. Turvallisuussyistä linkki näytetään vain kerran.",
+      "another": "Tee toinen linkki",
+      "expiresIn": "Linkki on voimassa",
+      "lifetimes": {
+        "1d": "1 päivä",
+        "7d": "7 päivää",
+        "30d": "30 päivää"
+      },
+      "create": "Luo vieraslinkki",
+      "active": "Aktiiviset linkit",
+      "expires": "Vanhenee {date}",
+      "revoke": "Poista käytöstä"
+    },
+    "members": {
+      "title": "Jäsenet",
+      "full": "Pakettisi on täynnä, kun jäseniä on {limit}.",
+      "detail": "{count}/{limit} jäsentä",
+      "invite": "Kutsu",
+      "pending": "Odottavat kutsut",
+      "anyoneWithLink": "Kuka tahansa linkin saanut",
+      "inviteMeta": "{role} · vanhenee {date}",
+      "revoke": "Peru",
+      "roleNames": {
+        "owner": "Omistaja",
+        "admin": "Ylläpitäjä",
+        "member": "Jäsen"
+      },
+      "you": "sinä",
+      "options": "Henkilön {name} valinnat",
+      "makeMember": "Tee jäseneksi",
+      "makeAdmin": "Tee ylläpitäjäksi",
+      "leave": "Poistu",
+      "remove": "Poista",
+      "inviteTitle": "Kutsu ihmisiä työtilaan {workspace}",
+      "inviteDescription": "Lähetä heille linkki. Liittyminen vaatii tilin.",
+      "linkForEmail": "Vain {email} voi käyttää tätä linkkiä. Se toimii kerran ja vanhenee 7 päivässä.",
+      "linkForAnyone": "Kuka tahansa tämän linkin saanut voi liittyä kerran. Se vanhenee 7 päivässä.",
+      "done": "Valmis",
+      "roleLabel": "Liity roolissa",
+      "roleHints": {
+        "member": "Käyttää huoneita ja tapaa tiimin",
+        "admin": "Tekee myös huoneita ja kutsuu ihmisiä"
+      },
+      "emailLabel": "Sähköposti (valinnainen)",
+      "emailPlaceholder": "tiimilainen@yritys.fi",
+      "emailHint": "Lisää sähköposti, niin linkki toimii vain sille henkilölle.",
+      "cancel": "Peruuta",
+      "createLink": "Luo kutsulinkki"
+    },
+    "profile": {
+      "title": "Profiilisi",
+      "changePassword": "Vaihda salasana",
+      "name": "Nimesi",
+      "saved": "Tallennettu",
+      "save": "Tallenna",
+      "character": "Hahmo",
+      "passwordTitle": "Vaihda salasanasi",
+      "passwordDescription": "Anna nykyinen salasanasi ja valitse sitten uusi.",
+      "passwordChanged": "Salasanasi on vaihdettu.",
+      "done": "Valmis",
+      "currentPassword": "Nykyinen salasana",
+      "newPassword": "Uusi salasana",
+      "hidePasswords": "Piilota salasanat",
+      "showPasswords": "Näytä salasanat",
+      "passwordRule": "Vähintään 8 merkkiä",
+      "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
+      "cancel": "Peruuta",
+      "pageTitle": "Tilisi"
+    },
+    "invite": {
+      "invalidTitle": "Kutsu ei toimi",
+      "invalid": "Se on ehkä vanhentunut, jo käytetty tai poistettu käytöstä. Pyydä uusi.",
+      "home": "Etusivulle",
+      "eyebrow": "{name} kutsui sinut",
+      "asAdmin": "Sinut on kutsuttu ylläpitäjäksi.",
+      "asMember": "Sinut on kutsuttu tiimiin.",
+      "join": "Liity työtilaan {workspace}",
+      "joiningAs": "Liityt nimellä {name} ({email})",
+      "createAccount": "Luo tili",
+      "signIn": "Minulla on tili",
+      "needAccount": "Työtilaan liittyminen vaatii tilin. Se vie minuutin.",
+      "readyToJoin": "Se olen minä",
+      "accountKeeps": "Tili muistaa nimen {name} ja hahmosi ensi kertaa varten.",
+      "you": "Sinä"
+    },
+    "errors": {
+      "member_limit": "Työtila on täynnä nykyisellä paketilla.",
+      "not_allowed": "Roolisi tässä työtilassa ei salli sitä.",
+      "owner_cannot_leave": "Omistajan täytyy siirtää omistajuus ennen poistumista.",
+      "owner_role": "Omistajan rooli vaihtuu vain siirtämällä omistajuus.",
+      "bad_capacity": "Valitse vähintään 2 ja enintään 20 henkilöä.",
+      "name_required": "Anna ensin nimi.",
+      "bad_email": "Tämä ei näytä sähköpostiosoitteelta.",
+      "invite_used": "Tämä kutsu on jo käytetty.",
+      "invite_invalid": "Tämä kutsu on vanhentunut tai poistettu käytöstä.",
+      "wrong_account": "Tämä kutsu on toiselle sähköpostiosoitteelle. Kirjaudu sillä tilillä.",
+      "wrong_password": "Nykyinen salasanasi on väärä.",
+      "password_too_short": "Käytä vähintään 8 merkkiä.",
+      "password_too_long": "Käytä alle 72 merkkiä.",
+      "too_many_attempts": "Liian monta yritystä. Odota muutama minuutti ja yritä sitten uudelleen.",
+      "not_found": "Sitä ei löytynyt. Se on ehkä poistettu.",
+      "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
+      "generic": "Jokin meni vikaan. Yritä uudelleen."
+    },
+    "tabs": {
+      "label": "Tämän toimiston osiot",
+      "rooms": "Huoneet",
+      "people": "Ihmiset",
+      "settings": "Asetukset"
+    },
+    "spaces": {
+      "title": "Toimistosi",
+      "new": "Uusi toimisto",
+      "create": "Luo toimisto",
+      "emptyTitle": "Sinulla ei ole vielä toimistoa",
+      "emptyBody": "Toimisto on vain kutsumillesi, ja sen huoneisiin tiimisi voi astua milloin tahansa.",
+      "visitLobby": "Käy julkisessa toimistossa",
+      "roles": {
+        "owner": "Omistat tämän",
+        "admin": "Olet täällä ylläpitäjä",
+        "member": "Olet täällä jäsen"
+      }
+    }
+  },
+  "create": {
+    "eyebrow": "Oma toimistosi",
+    "title": "Nimeä toimistosi",
+    "subtitle": "Tämän tiimisi näkee. Voit muuttaa sen myöhemmin.",
+    "nameLabel": "Toimiston nimi",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Jatka",
+    "create": "Luo toimisto",
+    "creating": "Valmistellaan",
+    "firstRoom": "Pääkerros",
+    "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
+    "accountNext": "Seuraavaksi: tee tili, niin toimisto on valmis.",
+    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan."
   }
 }

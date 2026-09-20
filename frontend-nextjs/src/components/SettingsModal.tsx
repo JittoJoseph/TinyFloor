@@ -1,125 +1,73 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { X, Mic, Video, Volume2 } from "lucide-react";
-
-interface SettingsModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { Mic, Video, X } from "lucide-react";
+import { savedDevices, saveDevices } from "@/lib/media";
 
 interface MediaDevice {
   deviceId: string;
   label: string;
 }
 
-type Tab = "audio" | "video";
+export default function SettingsModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  // Mounted only while open, so the saved choices and the device list are read fresh each time.
+  if (!isOpen) return null;
+  return <SettingsDialog onClose={onClose} />;
+}
 
-export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
+/**
+ * Which microphone and camera to use. Video quality isn't a choice here: each
+ * card asks for what it can show (see lib/media.ts).
+ */
+function SettingsDialog({ onClose }: { onClose: () => void }) {
   const t = useTranslations("settings");
   const tc = useTranslations("common");
-  const [activeTab, setActiveTab] = useState<Tab>("audio");
-  const [audioInputDevices, setAudioInputDevices] = useState<MediaDevice[]>([]);
-  const [audioOutputDevices, setAudioOutputDevices] = useState<MediaDevice[]>(
-    [],
-  );
-  const [videoDevices, setVideoDevices] = useState<MediaDevice[]>([]);
-  const [selectedAudioInput, setSelectedAudioInput] = useState("");
-  const [selectedAudioOutput, setSelectedAudioOutput] = useState("");
-  const [selectedVideoInput, setSelectedVideoInput] = useState("");
-  const [masterVolume, setMasterVolume] = useState(80);
-  const [micVolume, setMicVolume] = useState(100);
-  const [videoQuality, setVideoQuality] = useState<"low" | "medium" | "high">(
-    "medium",
-  );
+  const [saved] = useState(savedDevices);
+  const [microphones, setMicrophones] = useState<MediaDevice[]>([]);
+  const [cameras, setCameras] = useState<MediaDevice[]>([]);
+  const [audio, setAudio] = useState(saved.audio ?? "");
+  const [video, setVideo] = useState(saved.video ?? "");
 
   useEffect(() => {
-    if (!isOpen) return;
-    const loadDevices = async () => {
+    let cancelled = false;
+    const load = async () => {
       try {
         if (!navigator.mediaDevices?.enumerateDevices) return;
         let devices = await navigator.mediaDevices.enumerateDevices();
-
-        if (devices.every((d) => !d.label)) {
-          const probe = await navigator.mediaDevices.getUserMedia({
-            audio: true,
-            video: true,
-          });
+        if (devices.every((device) => !device.label)) {
+          // Labels stay blank until the browser has granted the devices once.
+          const probe = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
           devices = await navigator.mediaDevices.enumerateDevices();
           probe.getTracks().forEach((track) => track.stop());
         }
-        const map = (kind: string): MediaDevice[] =>
-          devices
-            .filter((d) => d.kind === kind)
-            .map((d) => ({ deviceId: d.deviceId, label: d.label }));
-        setAudioInputDevices(map("audioinput"));
-        setAudioOutputDevices(map("audiooutput"));
-        setVideoDevices(map("videoinput"));
+        if (cancelled) return;
+        const of = (kind: MediaDeviceKind) =>
+          devices.filter((device) => device.kind === kind).map(({ deviceId, label }) => ({ deviceId, label }));
+        setMicrophones(of("audioinput"));
+        setCameras(of("videoinput"));
       } catch {
-        // Permission denied or no devices — silently ignore
+        // No permission or no devices: the default ones are used.
       }
     };
-    loadDevices();
-  }, [isOpen]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("spacialMeetSettings");
-    if (!saved) return;
-    try {
-      const s = JSON.parse(saved);
-      if (s.masterVolume != null) setMasterVolume(s.masterVolume);
-      if (s.micVolume != null) setMicVolume(s.micVolume);
-      if (s.videoQuality) setVideoQuality(s.videoQuality);
-      if (s.audioInput) setSelectedAudioInput(s.audioInput);
-      if (s.audioOutput) setSelectedAudioOutput(s.audioOutput);
-      if (s.videoInput) setSelectedVideoInput(s.videoInput);
-    } catch {}
+    void load();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const saveSettings = useCallback(() => {
-    const settings = {
-      masterVolume,
-      micVolume,
-      videoQuality,
-      audioInput: selectedAudioInput,
-      audioOutput: selectedAudioOutput,
-      videoInput: selectedVideoInput,
-    };
-    localStorage.setItem("spacialMeetSettings", JSON.stringify(settings));
-    window.dispatchEvent(
-      new CustomEvent("settingsChanged", { detail: settings }),
-    );
+  const save = () => {
+    saveDevices({ audio: audio || undefined, video: video || undefined });
     onClose();
-  }, [
-    masterVolume,
-    micVolume,
-    videoQuality,
-    selectedAudioInput,
-    selectedAudioOutput,
-    selectedVideoInput,
-    onClose,
-  ]);
-
-  if (!isOpen) return null;
-
-  const tabs: { id: Tab; icon: typeof Mic }[] = [
-    { id: "audio", icon: Mic },
-    { id: "video", icon: Video },
-  ];
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
-        onClick={onClose}
-      />
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
 
       <div className="relative bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg w-full max-w-md overflow-hidden">
         <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
-          <h2 className="font-semibold text-[var(--color-braun-text)] text-base tracking-wide">
-            {t("title")}
-          </h2>
+          <h2 className="font-semibold text-[var(--color-braun-text)] text-base tracking-wide">{t("title")}</h2>
           <button
             onClick={onClose}
             aria-label={t("close")}
@@ -129,96 +77,25 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </button>
         </div>
 
-        <div className="flex px-6 pt-4 gap-1">
-          {tabs.map(({ id, icon: Icon }) => (
-            <button
-              key={id}
-              onClick={() => setActiveTab(id)}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
-                activeTab === id
-                  ? "bg-[var(--color-braun-text)] text-white"
-                  : "text-[var(--color-braun-text)] opacity-50 hover:opacity-80 hover:bg-[rgba(0,0,0,0.04)]"
-              }`}
-            >
-              <Icon className="w-3.5 h-3.5" />
-              {t(id)}
-            </button>
-          ))}
+        <div className="px-6 py-5 space-y-5">
+          <DeviceRow
+            label={t("microphone")}
+            icon={Mic}
+            value={audio}
+            onChange={setAudio}
+            devices={microphones}
+            defaultLabel={t("default")}
+          />
+          <DeviceRow
+            label={t("camera")}
+            icon={Video}
+            value={video}
+            onChange={setVideo}
+            devices={cameras}
+            defaultLabel={t("default")}
+          />
         </div>
 
-        <div className="px-6 py-5 space-y-5 max-h-[60vh] overflow-y-auto">
-          {activeTab === "audio" && (
-            <>
-              <SettingRow label={t("microphone")} icon={Mic}>
-                <DeviceSelect
-                  value={selectedAudioInput}
-                  onChange={setSelectedAudioInput}
-                  devices={audioInputDevices}
-                  defaultLabel={t("default")}
-                  fallbackLabel={t("microphone")}
-                />
-              </SettingRow>
-
-              <SettingRow label={t("micVolume")} value={`${micVolume}%`}>
-                <VolumeSlider value={micVolume} onChange={setMicVolume} />
-              </SettingRow>
-
-              <SettingRow label={t("speaker")} icon={Volume2}>
-                <DeviceSelect
-                  value={selectedAudioOutput}
-                  onChange={setSelectedAudioOutput}
-                  devices={audioOutputDevices}
-                  defaultLabel={t("default")}
-                  fallbackLabel={t("speaker")}
-                />
-              </SettingRow>
-
-              <SettingRow label={t("speakerVolume")} value={`${masterVolume}%`}>
-                <VolumeSlider value={masterVolume} onChange={setMasterVolume} />
-              </SettingRow>
-            </>
-          )}
-
-          {activeTab === "video" && (
-            <>
-              <SettingRow label={t("camera")} icon={Video}>
-                <DeviceSelect
-                  value={selectedVideoInput}
-                  onChange={setSelectedVideoInput}
-                  devices={videoDevices}
-                  defaultLabel={t("default")}
-                  fallbackLabel={t("camera")}
-                />
-              </SettingRow>
-
-              <div>
-                <p className="text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest mb-3">
-                  {t("videoQuality")}
-                </p>
-                <div className="grid grid-cols-3 gap-2">
-                  {(["low", "medium", "high"] as const).map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => setVideoQuality(q)}
-                      className={`py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer ${
-                        videoQuality === q
-                          ? "border-[var(--color-braun-text)] bg-[var(--color-braun-text)] text-white"
-                          : "border-[rgba(0,0,0,0.08)] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:border-[rgba(0,0,0,0.2)]"
-                      }`}
-                    >
-                      {t(`quality.${q}`)}
-                    </button>
-                  ))}
-                </div>
-                <p className="text-xs text-[var(--color-braun-text)] opacity-40 mt-2">
-                  {t(`qualityHint.${videoQuality}`)}
-                </p>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Footer */}
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[rgba(0,0,0,0.04)] bg-white/40">
           <button
             onClick={onClose}
@@ -227,7 +104,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             {tc("cancel")}
           </button>
           <button
-            onClick={saveSettings}
+            onClick={save}
             className="cursor-pointer px-5 py-2 bg-[var(--color-braun-text)] hover:bg-[#2a2a2a] text-white rounded-full text-sm font-medium transition-all"
           >
             {tc("save")}
@@ -238,83 +115,39 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   );
 }
 
-function SettingRow({
+function DeviceRow({
   label,
   icon: Icon,
-  value,
-  children,
-}: {
-  label: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  value?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-2">
-        <label className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest">
-          {Icon && <Icon className="w-3.5 h-3.5" />}
-          {label}
-        </label>
-        {value && (
-          <span className="text-xs font-semibold text-[var(--color-braun-text)]" dir="ltr">
-            {value}
-          </span>
-        )}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function DeviceSelect({
   value,
   onChange,
   devices,
   defaultLabel,
-  fallbackLabel,
 }: {
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
   value: string;
-  onChange: (v: string) => void;
+  onChange: (value: string) => void;
   devices: MediaDevice[];
   defaultLabel: string;
-  fallbackLabel: string;
 }) {
   return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] outline-none focus:border-[rgba(0,0,0,0.2)] transition-colors cursor-pointer"
-    >
-      <option value="">{defaultLabel}</option>
-      {devices.map((d) => (
-        <option key={d.deviceId} value={d.deviceId}>
-          {d.label || `${fallbackLabel} ${d.deviceId.slice(0, 6)}`}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function VolumeSlider({
-  value,
-  onChange,
-}: {
-  value: number;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <input
-      type="range"
-      min="0"
-      max="100"
-      value={value}
-      dir="ltr"
-      onChange={(e) => onChange(Number(e.target.value))}
-      className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
-      style={{
-        background: `linear-gradient(to right, var(--color-braun-text) ${value}%, rgba(0,0,0,0.1) ${value}%)`,
-      }}
-    />
+    <div>
+      <label className="flex items-center gap-1.5 mb-2 text-xs font-medium text-[var(--color-braun-text)] opacity-50 uppercase tracking-widest">
+        <Icon className="w-3.5 h-3.5" />
+        {label}
+      </label>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] outline-none focus:border-[rgba(0,0,0,0.2)] transition-colors cursor-pointer"
+      >
+        <option value="">{defaultLabel}</option>
+        {devices.map((device) => (
+          <option key={device.deviceId} value={device.deviceId}>
+            {device.label || `${label} ${device.deviceId.slice(0, 6)}`}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

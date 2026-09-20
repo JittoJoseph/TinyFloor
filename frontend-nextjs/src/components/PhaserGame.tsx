@@ -4,21 +4,25 @@ import { useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
+import type { RoomTicket } from "@/lib/api";
 import { setSceneText } from "@/lib/sceneText";
 
 interface PhaserGameProps {
   name: string;
-  roomId: string;
   character: string;
-  userId?: string | null;
+  userId: string;
+  /** Asks the API for a ticket to this room; called again on every reconnect. */
+  ticketFor: () => Promise<RoomTicket>;
 }
 
 const PhaserGame: React.FC<PhaserGameProps> = ({
   name,
-  roomId,
   character,
   userId,
+  ticketFor,
 }) => {
+  // The scene keeps the first function it was given; this always calls the current one.
+  const nextTicket = useEffectEvent(() => ticketFor());
   const t = useTranslations("scene");
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
@@ -57,7 +61,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         width: window.innerWidth,
         height: window.innerHeight,
         parent: gameRef.current,
-        scene: new GameScene(name, roomId, character, userId),
+        scene: new GameScene(name, character, userId, () => nextTicket()),
         backgroundColor: "#f0f0f0",
         physics: {
           default: "arcade",
@@ -100,7 +104,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         game.current = null;
       }
     };
-  }, [name, roomId, character, userId]);
+  }, [name, character, userId]);
 
   return <div ref={gameRef} />;
 };

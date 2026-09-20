@@ -1,8 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+import { API_URL } from "./api";
 
 /**
- * A public backend read for a server rendered page, fresh on every request
- * and given up on quickly, so a slow backend leaves the list to the browser.
+ * A public API read for a server rendered page, fresh on every request and
+ * given up on quickly, so a slow API leaves the lookup to the browser.
  */
 export async function fetchPublic<T>(endpoint: string): Promise<T | null> {
   try {

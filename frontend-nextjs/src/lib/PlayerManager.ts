@@ -6,19 +6,22 @@ import {
   Direction,
   directionFromVector,
 } from "./AnimationManager";
-import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector } from "./Navigation";
 import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "./types";
 import { GUIDE_ID } from "./tutorial";
+import { statusColorValue } from "./status";
+import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import type { PlayerStatus } from "./types";
 
 interface RemotePlayerState {
   path: Vec[];
   direction: Direction;
   isMoving: boolean;
-  streaming: boolean;
+  /** Set while they walk: they keep going this way until their next move. */
+  heading: number | null;
   status: PlayerStatus;
   guest: boolean;
   lastDirection?: Direction;
@@ -28,30 +31,15 @@ interface RemotePlayerState {
 }
 
 const SNAP_THRESHOLD = TILE_SIZE * 6;
+/** Walking back to a correction looks like a stumble, so small ones are ignored. */
+const IGNORE_CORRECTION = TILE_SIZE / 4;
+/** Behind the tile they say they're on, they walk a little faster to catch up. */
 const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
 const TAG_DEPTH = 100000;
-const VALID_SPRITES = [
-  "Adam",
-  "Alex",
-  "Amelia",
-  "Ash",
-  "Bob",
-  "Dan",
-  "Lucy",
-  "Molly",
-];
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
-
-const STATUS_COLORS: Record<string, number> = {
-  available: 0x34d399,
-  away: 0xfbbf24,
-  busy: 0xf87171,
-  in_call: 0xa78bfa,
-  offline: 0x9ca3af,
-};
 
 /**
  * Sitting with your back to us puts your head over the desk, where a name would
@@ -98,16 +86,10 @@ export class PlayerManager {
     player.setData("spriteName", character);
     player.play(this.animationManager.getAnimationKey(character, "idle", "down"));
 
+    // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
+    // that and leave the name behind while the character walks off.
     const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
     tag.container.setDepth(TAG_DEPTH);
-    this.scene.tweens.add({
-      targets: tag.container,
-      y: y + TAG_OFFSET_Y - 2,
-      duration: 1500,
-      ease: "Sine.easeInOut",
-      yoyo: true,
-      repeat: -1,
-    });
 
     this.localPlayer = player;
     this.nameTags.set(id, tag);
@@ -128,9 +110,7 @@ export class PlayerManager {
     if (this.players.has(id)) return;
 
     const pos = tileToPixel(tileX, tileY);
-    const safeSpriteKey = VALID_SPRITES.includes(spriteKey)
-      ? spriteKey
-      : "Adam";
+    const safeSpriteKey = isCharacter(spriteKey) ? spriteKey : DEFAULT_CHARACTER;
 
     const container = this.scene.add.container(pos.x, pos.y);
     const sprite = this.scene.add.sprite(0, 0, safeSpriteKey);
@@ -162,7 +142,7 @@ export class PlayerManager {
       path: [],
       direction: "down",
       isMoving: false,
-      streaming: false,
+      heading: null,
       status,
       guest,
     });
@@ -199,7 +179,7 @@ export class PlayerManager {
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
-    tag.setDot(STATUS_COLORS[status] ?? STATUS_COLORS.available);
+    tag.setDot(statusColorValue(status));
     this.scene.tweens.killTweensOf(tag.dot);
     tag.dot.setAlpha(1);
     if (status === "in_call") {
@@ -214,27 +194,33 @@ export class PlayerManager {
     }
   }
 
-  updatePlayerPosition(id: string, tileX: number, tileY: number) {
+  /**
+   * Where they are, and which way they're walking. Between moves they keep
+   * walking that way, so a straight walk arrives as one message. A correction
+   * they have already walked past is ignored rather than stumbled back to.
+   */
+  updatePlayerPosition(id: string, tileX: number, tileY: number, heading?: number) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
-    state.streaming = true;
-
     const point = tileToPixel(tileX, tileY);
-    const gap = Phaser.Math.Distance.Between(
-      container.x,
-      container.y,
-      point.x,
-      point.y,
-    );
+    const away = Phaser.Math.Distance.Between(container.x, container.y, point.x, point.y);
+    const sameWay = heading !== undefined && heading === state.heading;
+    state.heading = heading ?? null;
+    state.path.length = 0;
 
-    if (gap > SNAP_THRESHOLD) {
-      state.path.length = 0;
+    if (away > SNAP_THRESHOLD) {
       container.setPosition(point.x, point.y);
-    } else {
-      state.path = [point];
+      return;
     }
+    if (sameWay && away < TILE_SIZE) {
+      const dir = headingVector(heading!);
+      const ahead = (container.x - point.x) * dir.x + (container.y - point.y) * dir.y;
+      const sideways = Math.abs((container.x - point.x) * dir.y - (container.y - point.y) * dir.x);
+      if (ahead > 0 && sideways < IGNORE_CORRECTION) return;
+    }
+    state.path.push(point);
   }
 
   walkPlayerTo(id: string, tileX: number, tileY: number) {
@@ -242,7 +228,7 @@ export class PlayerManager {
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
-    state.streaming = false;
+    state.heading = null;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
     if (!state.path.length) {
       const point = tileToPixel(tileX, tileY);
@@ -261,7 +247,7 @@ export class PlayerManager {
 
     this.scene.tweens.killTweensOf(container);
     state.seat = pose;
-    state.streaming = false;
+    state.heading = null;
     state.onArrive = undefined;
     state.path = [];
 
@@ -288,6 +274,7 @@ export class PlayerManager {
 
     this.scene.tweens.killTweensOf(container);
     state.seat = undefined;
+    state.heading = null;
     state.onArrive = undefined;
     state.path = [];
     state.direction = pose.direction;
@@ -375,35 +362,31 @@ export class PlayerManager {
       if (!container) return;
 
       if (state.path.length) {
+        // Behind where they said they are, they walk a little faster to catch up.
         const target = state.path[0];
-        const catchup = state.streaming
-          ? Phaser.Math.Clamp(
-              Phaser.Math.Distance.Between(
-                container.x,
-                container.y,
-                target.x,
-                target.y,
-              ) / TILE_SIZE,
-              1,
-              MAX_CATCHUP,
-            )
-          : 1;
+        const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
+        const catchup = state.heading === null ? 1 : Phaser.Math.Clamp(remaining / TILE_SIZE, 1, MAX_CATCHUP);
         const pos = this.scratch;
         pos.x = container.x;
         pos.y = container.y;
         advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
-        const dx = pos.x - container.x;
-        const dy = pos.y - container.y;
-        container.setPosition(pos.x, pos.y);
-        container.setDepth(depthForY(pos.y));
-        state.direction = directionFromVector(dx, dy, state.direction);
-        state.isMoving = state.path.length > 0 || dx !== 0 || dy !== 0;
+        this.place(container, state, pos);
 
         if (!state.path.length && state.onArrive) {
           const arrive = state.onArrive;
           state.onArrive = undefined;
           arrive();
           return;
+        }
+      } else if (state.heading !== null) {
+        // Walking on the way they were last heading, until they say otherwise.
+        const pos = this.scratch;
+        pos.x = container.x;
+        pos.y = container.y;
+        if (advanceHeading(pos, state.heading, (MOVEMENT_SPEED * delta) / 1000, this.nav)) {
+          this.place(container, state, pos);
+        } else {
+          state.isMoving = false;
         }
       } else if (state.seat) {
         return;
@@ -423,11 +406,23 @@ export class PlayerManager {
     });
   }
 
+  /** Moves someone to a new spot, facing the way they went. */
+  private place(container: Phaser.GameObjects.Container, state: RemotePlayerState, pos: Vec) {
+    const dx = pos.x - container.x;
+    const dy = pos.y - container.y;
+    container.setPosition(pos.x, pos.y);
+    container.setDepth(depthForY(pos.y));
+    state.direction = directionFromVector(dx, dy, state.direction);
+    state.isMoving = dx !== 0 || dy !== 0 || state.path.length > 0;
+  }
+
   removePlayer(id: string) {
     const tag = this.nameTags.get(id);
     if (tag) {
       this.scene.tweens.killTweensOf([tag.container, tag.dot]);
       this.nameTags.delete(id);
+      // A remote tag goes with its container below; the local one stands alone.
+      if (!this.players.has(id)) tag.container.destroy();
     }
 
     const container = this.players.get(id);

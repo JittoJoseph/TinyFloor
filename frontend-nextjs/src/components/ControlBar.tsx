@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import {
   Mic,
@@ -52,19 +52,26 @@ export default function ControlBar({
     !!navigator.mediaDevices?.getDisplayMedia;
   const [status, setStatus] = useState<PlayerStatus>(currentStatus);
 
-  useEffect(() => {
+  // Follow the status from outside, and switch to "in call" and back as calls
+  // start and end, adjusting during render rather than in an effect.
+  const [seenStatus, setSeenStatus] = useState(currentStatus);
+  if (currentStatus !== seenStatus) {
+    setSeenStatus(currentStatus);
     setStatus(currentStatus);
-  }, [currentStatus]);
+  }
+  const [seenInCall, setSeenInCall] = useState(isInCall);
+  if (isInCall !== seenInCall) {
+    setSeenInCall(isInCall);
+    setStatus(isInCall ? "in_call" : "available");
+  }
 
+  // Tell the room when a call starts or ends.
+  const wasInCall = useRef(isInCall);
   useEffect(() => {
-    if (isInCall && status !== "in_call") {
-      setStatus("in_call");
-      onStatusChange?.("in_call");
-    } else if (!isInCall && status === "in_call") {
-      setStatus("available");
-      onStatusChange?.("available");
-    }
-  }, [isInCall, status, onStatusChange]);
+    if (wasInCall.current === isInCall) return;
+    wasInCall.current = isInCall;
+    onStatusChange?.(isInCall ? "in_call" : "available");
+  }, [isInCall, onStatusChange]);
 
   const toggleMic = useCallback(
     () => callManager.setMic(!micEnabled),
@@ -83,10 +90,12 @@ export default function ControlBar({
 
   const handleStatusChange = useCallback(
     (newStatus: PlayerStatus) => {
+      // During a call the status stays "in call".
+      if (isInCall) return;
       setStatus(newStatus);
       onStatusChange?.(newStatus);
     },
-    [onStatusChange],
+    [isInCall, onStatusChange],
   );
 
   const micLabel = micEnabled ? t("muteMic") : t("unmuteMic");

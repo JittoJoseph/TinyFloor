@@ -91,10 +91,19 @@ House rules, carried from the room:
 - Orange is for attention and destruction only; green for "on"; everything else
   is ink on paper.
 
-## What lands in which order
+## What is built
 
-1. The shell itself: rail, context column, routes, presence dock — the floor
-   moves inside it unchanged.
-2. People: members, invitations, guests, seats used (`03-offices-members-and-seats.md`).
-3. Chat (`02-chat.md`), which is the reason the shell exists.
-4. Settings as a sheet: devices, floor settings, office, billing.
+The shell, the People view and chat are in. What the code does differs from the
+sketch above in two places, both for the better:
+
+- **The floor never unmounts.** It is rendered by the shell itself and the other
+  views cover it, rather than replacing it. That is what keeps your socket, your
+  call and your position while you read a message — the thing this was for.
+- **The column belongs to the view**, not to the shell: chat owns its channel
+  list, People owns its seat card, and each puts the presence dock underneath.
+  On a phone the column is the whole screen and picking a channel pushes the
+  conversation over it, with a back arrow.
+
+Still to come: the settings sheet holds only the office's own settings (name,
+seats, leave, close); microphone and camera pickers stay on the floor, with the
+microphone. Billing arrives with `05-pricing.md`.

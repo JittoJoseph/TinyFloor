@@ -44,12 +44,14 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
 
   if (inside && user && preview) {
     return (
-      <RoomView
-        title={preview.officeName}
-        user={user}
-        ticketFor={() => api.guestLinkTicket(token)}
-        leaveHref={user.guest ? "/" : "/dashboard"}
-      />
+      <div className="fixed inset-0">
+        <RoomView
+          title={preview.officeName}
+          user={user}
+          ticketFor={() => api.guestLinkTicket(token)}
+          leaveHref={user.guest ? "/" : "/dashboard"}
+        />
+      </div>
     );
   }
 

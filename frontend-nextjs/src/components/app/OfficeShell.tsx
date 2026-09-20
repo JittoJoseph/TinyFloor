@@ -211,15 +211,22 @@ export function OfficeView({
   action,
   column,
   children,
+  /** On a phone there is room for one or the other: the list, or what you picked. */
+  showDetail = false,
 }: {
   title: string;
   action?: React.ReactNode;
   column: React.ReactNode;
   children: React.ReactNode;
+  showDetail?: boolean;
 }) {
   return (
     <div className="absolute inset-0 z-[60] flex bg-[var(--color-braun-bg)]">
-      <aside className="w-full sm:w-60 shrink-0 flex flex-col border-e border-black/[0.06] bg-[#fbfbf9]">
+      <aside
+        className={`w-full sm:w-60 shrink-0 flex-col border-e border-black/[0.06] bg-[#fbfbf9] ${
+          showDetail ? "hidden sm:flex" : "flex"
+        }`}
+      >
         <header className="h-14 shrink-0 flex items-center gap-2 px-4">
           <h2 className="font-body text-[15px] font-semibold text-[var(--color-braun-text)] truncate me-auto">
             {title}
@@ -230,7 +237,7 @@ export function OfficeView({
         <PresenceDock />
       </aside>
 
-      <div className="flex-1 min-w-0 hidden sm:flex flex-col">{children}</div>
+      <div className={`flex-1 min-w-0 flex-col ${showDetail ? "flex" : "hidden sm:flex"}`}>{children}</div>
     </div>
   );
 }

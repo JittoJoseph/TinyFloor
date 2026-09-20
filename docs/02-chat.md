@@ -152,6 +152,20 @@ the presence dock beneath it, and the conversation filling the rest.
 - On a phone the second column becomes the whole screen, and picking a channel
   pushes the conversation over it.
 
+## What is built
+
+Everything above except attachments: channels, direct messages, reactions,
+unread counts, paging, lazy creation, the per-office `Chat` object with its own
+hibernating socket. The attach button is there and says that images are part of
+a paid office, which is also what the public lobby will say.
+
+Two details settled in the building:
+
+- History trims itself every 500 messages inside the object, so no nightly job
+  has to walk every office.
+- A runaway client is stopped at 100 sends per ten seconds. A person never
+  reaches it; a script does.
+
 ## Protocol
 
 New messages in `shared-protocol`, on the chat socket only:

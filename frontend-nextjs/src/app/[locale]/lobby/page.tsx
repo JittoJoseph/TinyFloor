@@ -16,13 +16,15 @@ export default function LobbyPage() {
 
   if (inside && user) {
     return (
-      <RoomView
-        title={t("title")}
-        user={user}
-        ticketFor={api.lobbyTicket}
-        sharePath={lobbyPath}
-        leaveHref={user.guest ? "/" : "/dashboard"}
-      />
+      <div className="fixed inset-0">
+        <RoomView
+          title={t("title")}
+          user={user}
+          ticketFor={api.lobbyTicket}
+          sharePath={lobbyPath}
+          leaveHref={user.guest ? "/" : "/dashboard"}
+        />
+      </div>
     );
   }
 

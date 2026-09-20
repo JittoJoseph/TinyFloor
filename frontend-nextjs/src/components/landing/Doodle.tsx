@@ -11,7 +11,8 @@ export const Doodle: React.FC<{
   arrow: "down-start" | "down-end" | "up-start";
   className?: string;
 }> = ({ children, arrow, className = "" }) => (
-  <span aria-hidden="true" className={`pointer-events-none select-none inline-flex flex-col items-center ${className}`}>
+  // The display class comes from the caller, so a note can be hidden on a phone.
+  <span aria-hidden="true" className={`pointer-events-none select-none flex-col items-center ${className}`}>
     <span className="font-hand text-[1.35rem] md:text-[1.6rem] leading-none text-[var(--color-braun-text)] opacity-45 -rotate-3 whitespace-nowrap">
       {children}
     </span>

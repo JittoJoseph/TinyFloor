@@ -7,6 +7,7 @@ export default defineConfig(async () => ({
       wrangler: { configPath: "./wrangler.jsonc" },
       miniflare: {
         bindings: {
+          SITE_ORIGINS: "http://localhost:3000",
           TICKET_SECRET: "test-ticket-secret",
           DISCORD_WEBHOOK_URL: "",
           REALTIME_APP_ID: "test-app",

@@ -38,6 +38,8 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const [invite, setInvite] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
   const [reached, setReached] = useState<"name" | "character" | "account" | null>(null);
+  // Which way the last step change went, so the new step slides in from there.
+  const [wentBack, setWentBack] = useState(false);
   const [typedName, setTypedName] = useState<string | null>(null);
   const [pickedCharacter, setPickedCharacter] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -184,6 +186,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
           <form
             onSubmit={(event) => {
               event.preventDefault();
+              setWentBack(false);
               if (step === "name" && trimmed) setStep("character");
               else if (step === "character") {
                 saveIdentity({ name: trimmed, character });
@@ -191,11 +194,21 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
               }
             }}
           >
-            {step === "name" ? (
-              <NameStep name={name} onName={setName} />
-            ) : (
-              <CharacterStep name={trimmed} character={character} onCharacter={setCharacter} onBack={() => setStep("name")} />
-            )}
+            <div key={step} className="entry-step" data-back={wentBack}>
+              {step === "name" ? (
+                <NameStep name={name} onName={setName} />
+              ) : (
+                <CharacterStep
+                  name={trimmed}
+                  character={character}
+                  onCharacter={setCharacter}
+                  onBack={() => {
+                    setWentBack(true);
+                    setStep("name");
+                  }}
+                />
+              )}
+            </div>
             <button type="submit" disabled={!trimmed} className={`${primaryButtonClass} mt-5`}>
               {step === "name" ? tEntry("continue") : t("readyToJoin")}
               <ArrowRight className="w-4 h-4 rtl:rotate-180" />

@@ -51,6 +51,14 @@ The check lives in one place — accepting an invitation — because that is the
 only moment membership grows. Everything else (sign-in, walking in, opening
 chat) just reads it.
 
+## What is built
+
+All of it: migration `0003_offices.sql` renames workspaces to offices, rebuilds
+memberships, invitations and guest links around two roles, and drops the rooms
+table. The API is `/v1/offices/...`; the floor and the chat each get their own
+ticket. Seats are checked where they should be — at accept time, and nowhere
+else.
+
 ## The schema, after
 
 Renames and deletions against what we have today (16 users, 1 workspace, 1

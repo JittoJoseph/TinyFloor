@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Hash, ImageUp, Plus, Send, SmilePlus } from "lucide-react";
+import { ArrowLeft, Hash, ImageUp, Plus, Send, SmilePlus } from "lucide-react";
 import { GENERAL_CHANNEL, type ChatMessage } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
@@ -17,6 +17,7 @@ const QUICK = ["👍", "😂", "❤️", "🎉"];
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
   const tOffice = useTranslations("office");
+  const tc = useTranslations("common");
   const router = useRouter();
   const { office } = useOffice();
   const state = useChat();
@@ -39,6 +40,7 @@ export function ChatView({ channel }: { channel?: string }) {
 
   return (
     <OfficeView
+      showDetail={!!channel}
       title={tOffice("chat")}
       action={
         <button
@@ -112,7 +114,16 @@ export function ChatView({ channel }: { channel?: string }) {
         </>
       }
     >
-      <header className="h-14 shrink-0 flex items-center gap-2 px-5 border-b border-black/[0.06]">
+      <header className="h-14 shrink-0 flex items-center gap-2 px-3 sm:px-5 border-b border-black/[0.06]">
+        <button
+          type="button"
+          onClick={() => router.push(officeChatPath(office.id))}
+          title={tc("back")}
+          aria-label={tc("back")}
+          className="cursor-pointer sm:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.05]"
+        >
+          <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
+        </button>
         <Hash className="w-4 h-4 opacity-40" />
         <h3 className={`${label} text-[var(--color-braun-text)]`}>{current?.name ?? open}</h3>
       </header>

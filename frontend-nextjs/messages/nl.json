@@ -35,7 +35,10 @@
     "visitLobby": "Bezoek de lobby",
     "lobby": "Lobby",
     "signIn": "Inloggen",
-    "rooms": "Ruimtes"
+    "rooms": "Ruimtes",
+    "offices": "Je kantoren",
+    "account": "Account",
+    "createOffice": "Kantoor maken"
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
     "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
-    "cta": "Probeer het",
-    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten."
+    "cta": "Loop nu binnen",
+    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten.",
+    "noSignUp": "geen account nodig, loop binnen",
+    "secondaryCta": "Of richt een kantoor in voor je team"
   },
   "landing": {
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Je ruimte is <em>al open.</em>",
     "publicTitle": "Loop het openbare kantoor binnen",
-    "publicBody": "De ruimte die altijd open is. Kies een personage, loop rond en zeg hallo tegen wie er is.",
-    "createTitle": "Open een ruimte voor je team",
-    "createBody": "Maak een gratis account, geef je werkruimte een naam en nodig je team uit met één link. Je ruimtes blijven open zo lang je wilt.",
+    "publicBody": "Altijd open, voor iedereen. Kies een naam, kies een personage en je bent binnen. Zonder account.",
+    "createTitle": "Richt je eigen kantoor in",
+    "createBody": "Geef het een naam, nodig je team uit met één link, en de ruimtes blijven open zo lang je wilt.",
     "sampleName": "Designteam",
-    "create": "Aanmaken"
+    "create": "Maken",
+    "publicNote": "begin hier"
   },
   "footer": {
     "tagline": "Een virtueel kantoor waar je rondloopt. Gratis, in de browser.",
@@ -181,7 +187,7 @@
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
-    "signUpSubtitle": "Kies hoe je eruitziet en richt daarna een kantoor in voor je team.",
+    "signUpSubtitle": "Je naam, je e-mail, een wachtwoord. Meer is het niet.",
     "name": "Je naam",
     "namePlaceholder": "Zo zien anderen je",
     "email": "E-mail",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock staat aan",
     "showPassword": "Wachtwoord tonen",
     "hidePassword": "Wachtwoord verbergen",
-    "character": "Personage",
     "signIn": "Inloggen",
     "signingIn": "Bezig met inloggen…",
     "createAccount": "Account maken",
@@ -202,7 +207,7 @@
     "createOne": "Maak een account",
     "haveAccount": "Heb je al een account?",
     "signInInstead": "Log in",
-    "guestCarryOver": "Je bent hier als {name}. Je naam en personage gaan mee.",
+    "guestCarryOver": "Je bent op bezoek als {name}. Je naam gaat mee.",
     "continueGuest": "Even rondkijken? Bezoek de lobby als gast",
     "errors": {
       "wrong_credentials": "Dat e-mailadres en wachtwoord passen niet bij elkaar. Probeer het opnieuw.",
@@ -229,7 +234,9 @@
     "walkIn": "Naar binnen",
     "guestNote": "Je komt binnen als gast. <link>Log in</link> om je account te gebruiken.",
     "guestKeep": "Je bent gast. <link>Maak een account</link> om je naam en personage te houden.",
-    "copyInvite": "Uitnodigingslink kopiëren"
+    "copyInvite": "Uitnodigingslink kopiëren",
+    "continue": "Verder",
+    "walkingInAs": "Je loopt binnen als {name}"
   },
   "join": {
     "unavailableTitle": "Die deur gaat niet open.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Open voor iedereen",
     "title": "De lobby",
-    "subtitle": "Iedereen kan langskomen. Kies een naam en een personage, loop binnen en zeg hallo."
+    "subtitle": "Iedereen mag binnenlopen. Zeg wie je bent, kies een personage en loop binnen."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Werkruimte verwijderen",
       "leaveTitle": "Deze werkruimte verlaten",
       "leaveBody": "Je verliest toegang tot de ruimtes in {name} tot iemand je opnieuw uitnodigt.",
-      "leaveButton": "Werkruimte verlaten"
+      "leaveButton": "Werkruimte verlaten",
+      "nameDetail": "Wat je team bovenaan het kantoor ziet."
     },
     "onboarding": {
       "title": "Richt je kantoor in",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Wachtwoorden tonen",
       "passwordRule": "Minstens 8 tekens",
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
-      "cancel": "Annuleren"
+      "cancel": "Annuleren",
+      "pageTitle": "Je account"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Je doet mee als {name} ({email})",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
-      "needAccount": "Je hebt een account nodig om lid te worden van een werkruimte. Dat duurt een minuut."
+      "needAccount": "Je hebt een account nodig om lid te worden van een werkruimte. Dat duurt een minuut.",
+      "readyToJoin": "Dat ben ik",
+      "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
+      "you": "Jij"
     },
     "errors": {
       "member_limit": "De werkruimte is vol met het huidige abonnement.",
@@ -1048,6 +1060,39 @@
       "not_found": "Dat is niet gevonden. Misschien is het verwijderd.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
       "generic": "Er ging iets mis. Probeer het opnieuw."
+    },
+    "tabs": {
+      "label": "Onderdelen van dit kantoor",
+      "rooms": "Ruimtes",
+      "people": "Mensen",
+      "settings": "Instellingen"
+    },
+    "spaces": {
+      "title": "Je kantoren",
+      "new": "Nieuw kantoor",
+      "create": "Kantoor maken",
+      "emptyTitle": "Je hebt nog geen kantoor",
+      "emptyBody": "Een kantoor is alleen voor wie je uitnodigt, met ruimtes waar je team altijd binnen kan lopen.",
+      "visitLobby": "Naar het openbare kantoor",
+      "roles": {
+        "owner": "Deze is van jou",
+        "admin": "Je bent hier admin",
+        "member": "Je bent hier lid"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Je eigen kantoor",
+    "title": "Geef je kantoor een naam",
+    "subtitle": "Dit ziet je team. Je kunt het later aanpassen.",
+    "nameLabel": "Naam van het kantoor",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Verder",
+    "create": "Kantoor maken",
+    "creating": "Wordt klaargezet",
+    "firstRoom": "Hoofdverdieping",
+    "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
+    "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
+    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
   }
 }

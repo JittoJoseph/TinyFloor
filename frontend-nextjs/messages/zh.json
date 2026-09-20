@@ -35,7 +35,10 @@
     "visitLobby": "去大厅看看",
     "lobby": "大厅",
     "signIn": "登录",
-    "rooms": "房间"
+    "rooms": "房间",
+    "offices": "你的办公室",
+    "account": "账号",
+    "createOffice": "创建办公室"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "最<em>温馨</em>的<br></br>虚拟办公室。",
     "subtitle": "看起来像游戏的虚拟办公室。四处走走，和同事聊聊，重新找回团队的感觉。",
-    "cta": "立即体验",
-    "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上，同事们来回走动。"
+    "cta": "立即进入",
+    "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上，同事们来回走动。",
+    "noSignUp": "无需注册，走进去就行",
+    "secondaryCta": "或者为团队建一个办公室"
   },
   "landing": {
     "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "你的房间<em>已经开好了。</em>",
     "publicTitle": "走进公共办公室",
-    "publicBody": "永远开放的房间。选个角色，四处转转，和在场的人打个招呼。",
-    "createTitle": "为团队开一个房间",
-    "createBody": "创建免费账号，给工作区起个名字，用一个链接邀请团队。房间想开多久就开多久。",
+    "publicBody": "随时开放，谁都能进。取个名字、选个角色就进去了，不用账号。",
+    "createTitle": "建一个自己的办公室",
+    "createBody": "起个名字，用一个链接邀请团队，房间想开多久就开多久。",
     "sampleName": "设计团队",
-    "create": "创建"
+    "create": "创建",
+    "publicNote": "从这里开始"
   },
   "footer": {
     "tagline": "一间可以四处走动的虚拟办公室。免费，在浏览器中使用。",
@@ -181,7 +187,7 @@
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
-    "signUpSubtitle": "先选好你的形象，再为团队布置一间办公室。",
+    "signUpSubtitle": "名字、邮箱、密码，就这些。",
     "name": "你的名字",
     "namePlaceholder": "别人看到的名字",
     "email": "邮箱",
@@ -193,7 +199,6 @@
     "capsLock": "大写锁定已开启",
     "showPassword": "显示密码",
     "hidePassword": "隐藏密码",
-    "character": "角色",
     "signIn": "登录",
     "signingIn": "正在登录…",
     "createAccount": "创建账号",
@@ -202,7 +207,7 @@
     "createOne": "创建账号",
     "haveAccount": "已经有账号了？",
     "signInInstead": "去登录",
-    "guestCarryOver": "你正以 {name} 的身份访问。名字和角色会一起保留。",
+    "guestCarryOver": "你正以 {name} 的身份来访，这个名字会一起带过去。",
     "continueGuest": "只是看看？以访客身份进入大厅",
     "errors": {
       "wrong_credentials": "邮箱和密码不匹配，请重试。",
@@ -229,7 +234,9 @@
     "walkIn": "进入",
     "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
     "guestKeep": "你是访客。<link>创建账号</link>即可保留名字和角色。",
-    "copyInvite": "复制邀请链接"
+    "copyInvite": "复制邀请链接",
+    "continue": "继续",
+    "walkingInAs": "以 {name} 的身份进入"
   },
   "join": {
     "unavailableTitle": "这扇门打不开。",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "所有人都可以进",
     "title": "大厅",
-    "subtitle": "谁都可以来坐坐。取个名字、选个角色，进来打个招呼吧。"
+    "subtitle": "谁都可以进来看看。说说你是谁，选个角色，就能进门。"
   },
   "workspace": {
     "lobby": "大厅",
@@ -909,7 +916,8 @@
       "deleteButton": "删除工作区",
       "leaveTitle": "退出这个工作区",
       "leaveBody": "在有人再次邀请你之前，你将无法进入 {name} 的房间。",
-      "leaveButton": "退出工作区"
+      "leaveButton": "退出工作区",
+      "nameDetail": "团队在办公室顶部看到的名字。"
     },
     "onboarding": {
       "title": "布置你的办公室",
@@ -1015,7 +1023,8 @@
       "showPasswords": "显示密码",
       "passwordRule": "至少 8 个字符",
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
-      "cancel": "取消"
+      "cancel": "取消",
+      "pageTitle": "你的账号"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -1028,7 +1037,10 @@
       "joiningAs": "将以 {name}（{email}）的身份加入",
       "createAccount": "创建账号",
       "signIn": "我已有账号",
-      "needAccount": "加入工作区需要一个账号，一分钟就能创建好。"
+      "needAccount": "加入工作区需要一个账号，一分钟就能创建好。",
+      "readyToJoin": "就是我",
+      "accountKeeps": "有账号就能记住 {name} 和你的角色，下次接着用。",
+      "you": "你"
     },
     "errors": {
       "member_limit": "当前套餐下工作区已满。",
@@ -1048,6 +1060,39 @@
       "not_found": "找不到，可能已被删除。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
       "generic": "出了点问题，请重试。"
+    },
+    "tabs": {
+      "label": "这个办公室的分区",
+      "rooms": "房间",
+      "people": "成员",
+      "settings": "设置"
+    },
+    "spaces": {
+      "title": "你的办公室",
+      "new": "新建办公室",
+      "create": "创建办公室",
+      "emptyTitle": "你还没有办公室",
+      "emptyBody": "办公室只对你邀请的人开放，团队随时可以走进里面的房间。",
+      "visitLobby": "去公共办公室看看",
+      "roles": {
+        "owner": "这间归你所有",
+        "admin": "你在这里是管理员",
+        "member": "你在这里是成员"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "你自己的办公室",
+    "title": "给办公室起个名字",
+    "subtitle": "这是团队会看到的名字，以后可以改。",
+    "nameLabel": "办公室名称",
+    "namePlaceholder": "Acme Studio",
+    "continue": "继续",
+    "create": "创建办公室",
+    "creating": "正在准备",
+    "firstRoom": "主楼层",
+    "freePlan": "3 人以内免费，无需银行卡。",
+    "accountNext": "下一步：注册账号，办公室就绪。",
+    "justLooking": "只是看看？不如<link>走进公共办公室</link>。"
   }
 }

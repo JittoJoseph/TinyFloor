@@ -6,7 +6,7 @@ import { ArrowRight, Link2, MoreHorizontal, Pencil, Plus, Trash2, Users } from "
 import { Link } from "@/lib/i18n/navigation";
 import { api, type RoomSummary } from "@/lib/api";
 import { roomPath } from "@/lib/links";
-import { Badge, Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "./ui";
+import { Badge, Button, Card, Dialog, ErrorText, fieldClass, Label } from "./ui";
 import { GuestLinksDialog } from "./GuestLinksDialog";
 import { useErrorMessage } from "./useErrorMessage";
 
@@ -29,24 +29,24 @@ export function RoomsPanel({
   const [deleting, setDeleting] = useState<RoomSummary | null>(null);
 
   return (
-    <Card>
-      <CardTitle
-        title={t("title")}
-        detail={t("detail")}
-        action={
-          manages && (
-            <Button variant="primary" onClick={() => setEditing("new")}>
-              <Plus className="w-4 h-4" />
-              {t("new")}
-            </Button>
-          )
-        }
-      />
+    <div>
+      {/* The tab above already says Rooms, so this is just the line about them. */}
+      <div className="flex items-center justify-between gap-3 mb-3">
+        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55">{t("detail")}</p>
+        {manages && (
+          <Button variant="primary" onClick={() => setEditing("new")}>
+            <Plus className="w-4 h-4" />
+            {t("new")}
+          </Button>
+        )}
+      </div>
 
       {rooms.length === 0 ? (
-        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 py-6 text-center">
-          {manages ? t("emptyManager") : t("empty")}
-        </p>
+        <Card>
+          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 py-6 text-center">
+            {manages ? t("emptyManager") : t("empty")}
+          </p>
+        </Card>
       ) : (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {rooms.map((room) => (
@@ -80,7 +80,7 @@ export function RoomsPanel({
           await onChanged();
         }}
       />
-    </Card>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import type { PlayerStatus } from "./types";
 
 /** One set of status colours for the whole app: the dots, the pill and the map. */
-export const STATUS_COLOR: Record<PlayerStatus, string> = {
+const STATUS_COLOR: Record<PlayerStatus, string> = {
   available: "#10b981",
   busy: "#ef4444",
   away: "#f59e0b",

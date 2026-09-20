@@ -35,7 +35,10 @@
     "visitLobby": "Besök lobbyn",
     "lobby": "Lobby",
     "signIn": "Logga in",
-    "rooms": "Rum"
+    "rooms": "Rum",
+    "offices": "Dina kontor",
+    "account": "Konto",
+    "createOffice": "Skapa ett kontor"
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "Det <em>mysigaste</em> <br></br>virtuella kontoret.",
     "subtitle": "Ett virtuellt kontor som ser ut som ett spel. Gå runt, prata med kollegor och känn dig som ett team igen.",
-    "cta": "Testa",
-    "caption": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor som går omkring."
+    "cta": "Gå in nu",
+    "caption": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor som går omkring.",
+    "noSignUp": "ingen registrering, gå bara in",
+    "secondaryCta": "Eller ordna ett kontor för ditt team"
   },
   "landing": {
     "description": "Ett virtuellt kontor som ser ut som ett spel. Gå runt på en våning i pixelgrafik med ditt team och starta ett videosamtal bara genom att ställa dig bredvid någon.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Ditt rum är <em>redan öppet.</em>",
     "publicTitle": "Gå in på det offentliga kontoret",
-    "publicBody": "Rummet som alltid är öppet. Välj en karaktär, gå runt och säg hej till den som är där.",
-    "createTitle": "Öppna ett rum för ditt team",
-    "createBody": "Skapa ett gratis konto, namnge din arbetsyta och bjud in ditt team med en länk. Dina rum är öppna så länge du vill.",
+    "publicBody": "Alltid öppet, för alla. Välj ett namn, välj en karaktär, så är du inne. Utan konto.",
+    "createTitle": "Ordna ditt eget kontor",
+    "createBody": "Ge det ett namn, bjud in ditt team med en länk, och rummen står öppna så länge du vill.",
     "sampleName": "Designteamet",
-    "create": "Skapa"
+    "create": "Skapa",
+    "publicNote": "börja här"
   },
   "footer": {
     "tagline": "Ett virtuellt kontor du går runt i. Gratis, i webbläsaren.",
@@ -181,7 +187,7 @@
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
-    "signUpSubtitle": "Välj hur du ska se ut och sätt sedan upp ett kontor åt ditt team.",
+    "signUpSubtitle": "Ditt namn, din e-post, ett lösenord. Mer är det inte.",
     "name": "Ditt namn",
     "namePlaceholder": "Så ser andra dig",
     "email": "E-post",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock är på",
     "showPassword": "Visa lösenord",
     "hidePassword": "Dölj lösenord",
-    "character": "Figur",
     "signIn": "Logga in",
     "signingIn": "Loggar in…",
     "createAccount": "Skapa konto",
@@ -202,7 +207,7 @@
     "createOne": "Skapa ett konto",
     "haveAccount": "Har du redan ett konto?",
     "signInInstead": "Logga in i stället",
-    "guestCarryOver": "Du är här som {name}. Ditt namn och din figur följer med.",
+    "guestCarryOver": "Du är på besök som {name}. Ditt namn följer med.",
     "continueGuest": "Vill du bara titta? Besök lobbyn som gäst",
     "errors": {
       "wrong_credentials": "E-post och lösenord stämmer inte. Försök igen.",
@@ -229,7 +234,9 @@
     "walkIn": "Gå in",
     "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
     "guestKeep": "Du är gäst. <link>Skapa ett konto</link> för att behålla namn och figur.",
-    "copyInvite": "Kopiera inbjudningslänk"
+    "copyInvite": "Kopiera inbjudningslänk",
+    "continue": "Vidare",
+    "walkingInAs": "Du går in som {name}"
   },
   "join": {
     "unavailableTitle": "Den dörren går inte att öppna.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Öppen för alla",
     "title": "Lobbyn",
-    "subtitle": "Vem som helst kan titta in. Välj ett namn och en figur, gå in och säg hej."
+    "subtitle": "Vem som helst får titta in. Säg vem du är, välj en karaktär och gå in."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Ta bort arbetsyta",
       "leaveTitle": "Lämna arbetsytan",
       "leaveBody": "Du förlorar åtkomsten till rummen i {name} tills någon bjuder in dig igen.",
-      "leaveButton": "Lämna arbetsyta"
+      "leaveButton": "Lämna arbetsyta",
+      "nameDetail": "Det ditt team ser högst upp i kontoret."
     },
     "onboarding": {
       "title": "Ordna ditt kontor",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Visa lösenord",
       "passwordRule": "Minst 8 tecken",
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
-      "cancel": "Avbryt"
+      "cancel": "Avbryt",
+      "pageTitle": "Ditt konto"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Du går med som {name} ({email})",
       "createAccount": "Skapa ett konto",
       "signIn": "Jag har ett konto",
-      "needAccount": "Du behöver ett konto för att gå med i en arbetsyta. Det tar en minut."
+      "needAccount": "Du behöver ett konto för att gå med i en arbetsyta. Det tar en minut.",
+      "readyToJoin": "Det är jag",
+      "accountKeeps": "Ett konto sparar {name} och din karaktär till nästa gång.",
+      "you": "Du"
     },
     "errors": {
       "member_limit": "Arbetsytan är full med nuvarande plan.",
@@ -1048,6 +1060,39 @@
       "not_found": "Det hittades inte. Det kan ha tagits bort.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
       "generic": "Något gick fel. Försök igen."
+    },
+    "tabs": {
+      "label": "Delar av det här kontoret",
+      "rooms": "Rum",
+      "people": "Personer",
+      "settings": "Inställningar"
+    },
+    "spaces": {
+      "title": "Dina kontor",
+      "new": "Nytt kontor",
+      "create": "Skapa ett kontor",
+      "emptyTitle": "Du har inget kontor än",
+      "emptyBody": "Ett kontor är bara för dem du bjuder in, med rum som ditt team kan gå in i när som helst.",
+      "visitLobby": "Besök det offentliga kontoret",
+      "roles": {
+        "owner": "Det här äger du",
+        "admin": "Du är admin här",
+        "member": "Du är medlem här"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Ditt eget kontor",
+    "title": "Ge kontoret ett namn",
+    "subtitle": "Det här ser ditt team. Du kan ändra det sen.",
+    "nameLabel": "Kontorets namn",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Vidare",
+    "create": "Skapa kontor",
+    "creating": "Gör i ordning",
+    "firstRoom": "Huvudplanet",
+    "freePlan": "Gratis för upp till 3 personer. Inget kort.",
+    "accountNext": "Sedan: skapa ett konto, så är kontoret klart.",
+    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället."
   }
 }

@@ -6,7 +6,8 @@ import { Link } from "@/lib/i18n/navigation";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-export function DashboardHeader() {
+/** The same header above every signed-in page: home, the lobby, and you. */
+export function AppHeader() {
   const t = useTranslations("workspace");
   return (
     <header className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">

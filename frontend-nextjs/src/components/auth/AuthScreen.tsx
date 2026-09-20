@@ -8,8 +8,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
 import { EntryShell, Field, inputClass, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
-import { CharacterPicker, CHARACTER_IDS } from "@/components/entry/CharacterPicker";
-import { ErrorNote } from "@/components/entry/IdentityFields";
+import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
+import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 
 export type AuthMode = "signin" | "signup";
@@ -39,7 +39,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
   const [mode, setMode] = useState<AuthMode>(initialMode);
   const [displayName, setDisplayName] = useState<string | null>(null);
-  const [character, setCharacter] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -47,15 +46,16 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [formError, setFormError] = useState<React.ReactNode>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [arriving, setArriving] = useState(false);
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
-  // A guest's name and character carry over into the account they create.
+  // A guest's name carries over into the account they create, and so does a
+  // name typed at a door on the way here. The character isn't asked for: it
+  // belongs to walking into a space, not to making an account.
   const guest = user?.guest ? user : null;
-  const name = displayName ?? guest?.displayName ?? "";
-  const chosenCharacter = character ?? guest?.character ?? "Adam";
-  const validCharacter = CHARACTER_IDS.includes(chosenCharacter) ? chosenCharacter : "Adam";
+  const remembered = isLoading ? { name: "", character: "Adam" } : readIdentity();
+  const name = displayName ?? guest?.displayName ?? remembered.name;
+  const validCharacter = cleanCharacter(guest?.character ?? remembered.character);
 
   // Already signed in with an account (or just did): carry on.
   useEffect(() => {
@@ -72,12 +72,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     else params.delete("mode");
     const query = params.toString();
     window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
-  };
-
-  const pickCharacter = (next: string) => {
-    setCharacter(next);
-    setArriving(true);
-    setTimeout(() => setArriving(false), 700);
   };
 
   const validate = (): Partial<Record<FieldName, string>> => {
@@ -180,6 +174,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           character: validCharacter,
           turnstileToken: token,
         });
+        saveIdentity({ name: name.trim(), character: validCharacter });
       } else {
         await signIn(email.trim(), password);
       }
@@ -216,7 +211,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               top: "79%",
               name: (signingUp ? name.trim() : guest?.displayName) || tc("you"),
               width: 44,
-              running: arriving,
             },
           ]}
         />
@@ -356,12 +350,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               </p>
             )}
           </Field>
-
-          {signingUp && (
-            <Field label={t("character")}>
-              <CharacterPicker value={validCharacter} onChange={pickCharacter} />
-            </Field>
-          )}
 
           {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}
 

@@ -35,7 +35,10 @@
     "visitLobby": "Visitar el lobby",
     "lobby": "Lobby",
     "signIn": "Iniciar sesión",
-    "rooms": "Salas"
+    "rooms": "Salas",
+    "offices": "Tus oficinas",
+    "account": "Cuenta",
+    "createOffice": "Crear una oficina"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "La oficina virtual <br></br>más <em>acogedora</em>.",
     "subtitle": "Una oficina virtual que parece un videojuego. Pasea, habla con tus compañeros y vuelve a sentirte parte de un equipo.",
-    "cta": "Pruébalo",
-    "caption": "Una sala de TinyFloor: una planta de oficina de 16 bits con escritorios y compañeros que caminan por ella."
+    "cta": "Entra ahora",
+    "caption": "Una sala de TinyFloor: una planta de oficina de 16 bits con escritorios y compañeros que caminan por ella.",
+    "noSignUp": "sin registro, solo entra",
+    "secondaryCta": "O monta una oficina para tu equipo"
   },
   "landing": {
     "description": "Una oficina virtual que parece un videojuego. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo acercarte a alguien.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Tu sala ya <em>está abierta.</em>",
     "publicTitle": "Entra en la oficina pública",
-    "publicBody": "La sala que siempre está abierta. Elige un personaje, pasea y saluda a quien esté por ahí.",
-    "createTitle": "Abre una sala para tu equipo",
-    "createBody": "Crea una cuenta gratis, ponle nombre a tu espacio de trabajo e invita a tu equipo con un solo enlace. Tus salas siguen abiertas todo el tiempo que quieras.",
+    "publicBody": "Siempre abierta, para cualquiera. Elige un nombre, elige un personaje y ya estás dentro. Sin cuenta.",
+    "createTitle": "Monta tu propia oficina",
+    "createBody": "Ponle nombre, invita a tu equipo con un enlace, y las salas siguen abiertas el tiempo que quieras.",
     "sampleName": "Equipo de diseño",
-    "create": "Crear"
+    "create": "Crear",
+    "publicNote": "empieza aquí"
   },
   "footer": {
     "tagline": "Una oficina virtual que puedes recorrer. Gratis, en el navegador.",
@@ -181,7 +187,7 @@
     "signInTitle": "Hola de nuevo",
     "signInSubtitle": "Inicia sesión para volver a la oficina de tu equipo.",
     "signUpTitle": "Crea tu cuenta",
-    "signUpSubtitle": "Elige tu aspecto y luego monta una oficina para tu equipo.",
+    "signUpSubtitle": "Tu nombre, tu email y una contraseña. Nada más.",
     "name": "Tu nombre",
     "namePlaceholder": "Cómo te verán los demás",
     "email": "Correo electrónico",
@@ -193,7 +199,6 @@
     "capsLock": "Bloq Mayús está activado",
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña",
-    "character": "Personaje",
     "signIn": "Iniciar sesión",
     "signingIn": "Iniciando sesión…",
     "createAccount": "Crear cuenta",
@@ -202,7 +207,7 @@
     "createOne": "Crea una cuenta",
     "haveAccount": "¿Ya tienes cuenta?",
     "signInInstead": "Inicia sesión",
-    "guestCarryOver": "Estás de visita como {name}. Tu nombre y tu personaje se quedan contigo.",
+    "guestCarryOver": "Estás de visita como {name}. Tu nombre te acompaña.",
     "continueGuest": "¿Solo quieres mirar? Visita el lobby como invitado",
     "errors": {
       "wrong_credentials": "El correo y la contraseña no coinciden. Inténtalo de nuevo.",
@@ -229,7 +234,9 @@
     "walkIn": "Entrar",
     "guestNote": "Entras como invitado. <link>Inicia sesión</link> para usar tu cuenta.",
     "guestKeep": "Eres invitado. <link>Crea una cuenta</link> para conservar tu nombre y tu personaje.",
-    "copyInvite": "Copiar enlace de invitación"
+    "copyInvite": "Copiar enlace de invitación",
+    "continue": "Continuar",
+    "walkingInAs": "Entras como {name}"
   },
   "join": {
     "unavailableTitle": "Esa puerta no se abre.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Abierto a todos",
     "title": "El lobby",
-    "subtitle": "Cualquiera puede pasar. Elige un nombre y un personaje, entra y saluda."
+    "subtitle": "Cualquiera puede pasar. Di quién eres, elige un personaje y entra."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Eliminar espacio de trabajo",
       "leaveTitle": "Salir de este espacio de trabajo",
       "leaveBody": "Perderás el acceso a las salas de {name} hasta que alguien te invite de nuevo.",
-      "leaveButton": "Salir del espacio de trabajo"
+      "leaveButton": "Salir del espacio de trabajo",
+      "nameDetail": "Lo que tu equipo ve arriba en la oficina."
     },
     "onboarding": {
       "title": "Monta tu oficina",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Mostrar contraseñas",
       "passwordRule": "Al menos 8 caracteres",
       "signsOutOthers": "Seguirás con la sesión iniciada aquí. En todos los demás sitios se cerrará.",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "pageTitle": "Tu cuenta"
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Te unes como {name} ({email})",
       "createAccount": "Crear una cuenta",
       "signIn": "Ya tengo cuenta",
-      "needAccount": "Necesitas una cuenta para unirte a un espacio de trabajo. Solo lleva un minuto."
+      "needAccount": "Necesitas una cuenta para unirte a un espacio de trabajo. Solo lleva un minuto.",
+      "readyToJoin": "Soy yo",
+      "accountKeeps": "Una cuenta guarda {name} y tu personaje para la próxima vez.",
+      "you": "Tú"
     },
     "errors": {
       "member_limit": "El espacio de trabajo está completo con su plan actual.",
@@ -1048,6 +1060,39 @@
       "not_found": "No se encontró. Puede que se haya eliminado.",
       "network": "No se puede conectar con TinyFloor. Revisa tu conexión y vuelve a intentarlo.",
       "generic": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "tabs": {
+      "label": "Secciones de esta oficina",
+      "rooms": "Salas",
+      "people": "Personas",
+      "settings": "Ajustes"
+    },
+    "spaces": {
+      "title": "Tus oficinas",
+      "new": "Nueva oficina",
+      "create": "Crear una oficina",
+      "emptyTitle": "Todavía no tienes oficina",
+      "emptyBody": "Una oficina es privada para quien invites, con salas en las que tu equipo puede entrar cuando quiera.",
+      "visitLobby": "Visitar la oficina pública",
+      "roles": {
+        "owner": "Esta es tuya",
+        "admin": "Eres admin aquí",
+        "member": "Eres miembro aquí"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Tu propia oficina",
+    "title": "Ponle nombre a tu oficina",
+    "subtitle": "Es lo que verá tu equipo. Puedes cambiarlo luego.",
+    "nameLabel": "Nombre de la oficina",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Continuar",
+    "create": "Crear oficina",
+    "creating": "Preparándola",
+    "firstRoom": "Planta principal",
+    "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
+    "accountNext": "Siguiente: crea una cuenta y tu oficina estará lista.",
+    "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor."
   }
 }

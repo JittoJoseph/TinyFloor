@@ -5,17 +5,18 @@ import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff, KeyRound } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { CharacterPicker, CHARACTER_IDS } from "@/components/entry/CharacterPicker";
-import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "./ui";
-import { useErrorMessage } from "./useErrorMessage";
+import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/workspace/ui";
+import { useErrorMessage } from "@/components/workspace/useErrorMessage";
 
-/** Your name and character, as everyone sees you in rooms, and your password. */
-export function ProfilePanel() {
+/**
+ * Your account: the name people see, your email, and your password. Which
+ * character you walk in as isn't here; that's asked at the door of each space.
+ */
+export function AccountPanel() {
   const t = useTranslations("workspace.profile");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
-  const [character, setCharacter] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -23,8 +24,7 @@ export function ProfilePanel() {
 
   if (!user) return null;
   const currentName = name ?? user.displayName;
-  const currentCharacter = character ?? (CHARACTER_IDS.includes(user.character) ? user.character : "Adam");
-  const changed = currentName.trim() !== user.displayName || currentCharacter !== user.character;
+  const changed = currentName.trim() !== user.displayName;
 
   const save = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -32,9 +32,8 @@ export function ProfilePanel() {
     setBusy(true);
     setError("");
     try {
-      await updateProfile({ displayName: currentName.trim(), character: currentCharacter });
+      await updateProfile({ displayName: currentName.trim() });
       setName(null);
-      setCharacter(null);
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
     } catch (err) {
@@ -56,26 +55,20 @@ export function ProfilePanel() {
           </Button>
         }
       />
-      <form onSubmit={save} className="grid gap-4 lg:grid-cols-[18rem_minmax(0,1fr)]">
-        <div>
-          <Label htmlFor="profile-name">{t("name")}</Label>
-          <input
-            id="profile-name"
-            value={currentName}
-            onChange={(event) => setName(event.target.value)}
-            maxLength={32}
-            className={fieldClass}
-          />
-          {error && <ErrorText>{error}</ErrorText>}
-          <Button type="submit" variant="primary" busy={busy} disabled={!changed || !currentName.trim()} className="mt-4">
-            {saved ? <Check className="w-4 h-4" /> : null}
-            {saved ? t("saved") : t("save")}
-          </Button>
-        </div>
-        <div>
-          <Label>{t("character")}</Label>
-          <CharacterPicker value={currentCharacter} onChange={setCharacter} />
-        </div>
+      <form onSubmit={save} className="max-w-sm">
+        <Label htmlFor="profile-name">{t("name")}</Label>
+        <input
+          id="profile-name"
+          value={currentName}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={32}
+          className={fieldClass}
+        />
+        {error && <ErrorText>{error}</ErrorText>}
+        <Button type="submit" variant="primary" busy={busy} disabled={!changed || !currentName.trim()} className="mt-4">
+          {saved ? <Check className="w-4 h-4" /> : null}
+          {saved ? t("saved") : t("save")}
+        </Button>
       </form>
       <PasswordDialog open={passwordOpen} onClose={() => setPasswordOpen(false)} />
     </Card>

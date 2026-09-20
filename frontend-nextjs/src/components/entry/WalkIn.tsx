@@ -6,26 +6,17 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
+import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { EntryShell, primaryButtonClass } from "./EntryShell";
 import { EntryPreview } from "./EntryPreview";
-import { IdentityFields, ErrorNote } from "./IdentityFields";
-import { CHARACTER_IDS } from "./CharacterPicker";
+import { CharacterStep, NameStep } from "./IdentitySteps";
+import { ErrorNote } from "./ErrorNote";
 import { Turnstile, useTurnstileToken } from "@/components/auth/Turnstile";
 
-const GUEST_NAME_KEY = "guestDisplayName";
-const GUEST_CHARACTER_KEY = "guestCharacter";
-
-function remembered(key: string): string {
-  try {
-    return localStorage.getItem(key) ?? "";
-  } catch {
-    return "";
-  }
-}
-
 /**
- * The step before a room: who you'll be in there. Without a session this makes
- * you a guest; with one it lets you change your name or character on the way in.
+ * The step before a room: your name, then who you'll be in there. Without a
+ * session it makes you a guest. With an account the name is already yours, so
+ * only the character is asked for.
  */
 export function WalkIn({
   eyebrow,
@@ -47,27 +38,28 @@ export function WalkIn({
   const tc = useTranslations("common");
   const pathname = usePathname();
   const { user, isLoading, continueAsGuest, updateProfile } = useAuth();
+  const account = !!user && !user.guest;
 
   const [typedName, setTypedName] = useState<string | null>(null);
   const [pickedCharacter, setPickedCharacter] = useState<string | null>(null);
-  const [arriving, setArriving] = useState(false);
+  const [wentOn, setWentOn] = useState<boolean | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const turnstile = useTurnstileToken();
 
-  const name = typedName ?? user?.displayName ?? (isLoading ? "" : remembered(GUEST_NAME_KEY));
-  // Stored values are read only after loading, so the first render matches the server.
-  const requested = pickedCharacter ?? user?.character ?? (isLoading ? "" : remembered(GUEST_CHARACTER_KEY));
-  const character = CHARACTER_IDS.includes(requested) ? requested : "Adam";
+  // What this browser remembers is only read once the session is known, so the
+  // first render still matches what the server sent.
+  const saved = isLoading ? { name: "", character: "Adam" } : readIdentity();
+  const name = typedName ?? user?.displayName ?? saved.name;
+  const character = cleanCharacter(pickedCharacter ?? user?.character ?? saved.character);
+  // Someone signed in has already given their name; only the character is left.
+  const onCharacterStep = wentOn ?? account;
 
-  const pickCharacter = (next: string) => {
-    setPickedCharacter(next);
-    setArriving(true);
-    setTimeout(() => setArriving(false), 700);
-  };
-
+  const setName = setTypedName;
+  const setCharacter = setPickedCharacter;
+  const setOnCharacterStep = setWentOn;
+  const trimmed = name.trim();
   const walkIn = async () => {
-    const trimmed = name.trim();
     if (!trimmed || busy) return;
     setBusy(true);
     setError("");
@@ -80,13 +72,10 @@ export function WalkIn({
           return;
         }
         await continueAsGuest({ name: trimmed, character, turnstileToken: token });
-        try {
-          localStorage.setItem(GUEST_NAME_KEY, trimmed);
-          localStorage.setItem(GUEST_CHARACTER_KEY, character);
-        } catch {}
       } else if (trimmed !== user.displayName || character !== user.character) {
         await updateProfile({ displayName: trimmed, character });
       }
+      saveIdentity({ name: trimmed, character });
       onReady();
     } catch (err) {
       const code = err instanceof ApiError ? err.code : "";
@@ -117,9 +106,9 @@ export function WalkIn({
               character,
               left: "50%",
               top: "79%",
-              name: name.trim() || tc("you"),
+              name: trimmed || tc("you"),
               width: 44,
-              running: arriving,
+              running: onCharacterStep,
             },
           ]}
         />
@@ -140,18 +129,22 @@ export function WalkIn({
           className={subtitle ? "" : "mt-5"}
           onSubmit={(event) => {
             event.preventDefault();
-            void walkIn();
+            if (onCharacterStep) void walkIn();
+            else if (trimmed) setOnCharacterStep(true);
           }}
         >
-          <IdentityFields
-            name={name}
-            onName={setTypedName}
-            character={character}
-            onCharacter={pickCharacter}
-            autoFocus={!user}
-          />
+          {onCharacterStep ? (
+            <CharacterStep
+              name={trimmed}
+              character={character}
+              onCharacter={setCharacter}
+              onBack={account ? undefined : () => setOnCharacterStep(false)}
+            />
+          ) : (
+            <NameStep name={name} onName={setName} />
+          )}
 
-          {!isLoading && !user && (
+          {onCharacterStep && !isLoading && !user && (
             <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
           )}
 
@@ -161,7 +154,7 @@ export function WalkIn({
             </div>
           )}
 
-          <button type="submit" disabled={!name.trim() || busy || isLoading} className={`${primaryButtonClass} mt-5`}>
+          <button type="submit" disabled={!trimmed || busy || isLoading} className={`${primaryButtonClass} mt-5`}>
             {busy ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -169,14 +162,14 @@ export function WalkIn({
               </>
             ) : (
               <>
-                {t("walkIn")}
+                {onCharacterStep ? t("walkIn") : t("continue")}
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />
               </>
             )}
           </button>
         </form>
 
-        {!isLoading && (!user || user.guest) && (
+        {!isLoading && !account && (
           <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-50 text-center mt-5">
             {t.rich(user ? "guestKeep" : "guestNote", {
               link: (chunks) => (

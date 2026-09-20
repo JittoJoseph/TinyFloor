@@ -13,7 +13,7 @@ HTTP API for TinyFloor on `api.tinyfloor.com`. See `docs/04-api.md`.
 | `pnpm types` | Regenerates `worker-configuration.d.ts` after changing `wrangler.jsonc` |
 | `pnpm deploy` | Applies migrations to `tinyfloor-db`, then deploys |
 
-Pushing to `feature/cloudflare-platform` deploys through Workers Builds when
+Pushing to `master` deploys through Workers Builds when
 anything in `worker-api/` or `shared-protocol/` changes.
 
 Local secrets go in `.dev.vars`.

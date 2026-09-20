@@ -15,7 +15,7 @@ WebSocket entry point and the `Room` and `LobbyRouter` Durable Objects. See
 | `pnpm deploy` | Deploys |
 
 Deploying disconnects everyone in every room, so this Worker is only deployed for
-changes to rooms. Pushing to `feature/cloudflare-platform` deploys through
+changes to rooms. Pushing to `master` deploys through
 Workers Builds when anything in `worker-realtime/` or `shared-protocol/` changes.
 
 Local secrets go in `.dev.vars`.

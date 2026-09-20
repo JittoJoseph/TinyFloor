@@ -55,7 +55,7 @@
     "subtitle": "看起来像游戏的虚拟办公室。四处走走，和同事聊聊，重新找回团队的感觉。",
     "cta": "立即进入",
     "caption": "TinyFloor 房间：摆着办公桌的 16 位像素办公楼层上，同事们来回走动。",
-    "noSignUp": "无需注册，走进去就行",
+    "noSignUp": "试试看",
     "secondaryCta": "或者为团队建一个办公室"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "连接中...",
-    "copied": "已复制！",
     "leave": "离开",
     "reconnecting": "正在重新连接…",
     "peopleHere": "此刻在这里：{count}",
-    "copyLink": "复制链接",
     "reconnectingNote": "连接断开了，正在带你回来…",
     "ended": {
       "back": "返回",
@@ -274,7 +272,10 @@
       "signIn": "登录",
       "tryAgain": "重试",
       "useHere": "在这里使用"
-    }
+    },
+    "invite": "邀请",
+    "linkCopied": "链接已复制",
+    "inviteText": "来 TinyFloor 的 {room} 找我吧"
   },
   "call": {
     "incomingVideo": "视频来电...",

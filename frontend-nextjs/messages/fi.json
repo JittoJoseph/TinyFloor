@@ -55,7 +55,7 @@
     "subtitle": "Virtuaalitoimisto, joka näyttää peliltä. Kävele ympäriinsä, juttele työkavereiden kanssa ja tunne olevasi taas tiimi.",
     "cta": "Astu sisään nyt",
     "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä.",
-    "noSignUp": "ei rekisteröitymistä, kävele vain sisään",
+    "noSignUp": "kokeile",
     "secondaryCta": "Tai perusta toimisto tiimillesi"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Yhdistetään...",
-    "copied": "Kopioitu!",
     "leave": "Poistu",
     "reconnecting": "Yhdistetään uudelleen…",
     "peopleHere": "Täällä nyt: {count}",
-    "copyLink": "Kopioi linkki",
     "reconnectingNote": "Yhteys katkesi. Palautamme sinut sisään…",
     "ended": {
       "back": "Takaisin",
@@ -274,7 +272,10 @@
       "signIn": "Kirjaudu",
       "tryAgain": "Yritä uudelleen",
       "useHere": "Käytä tässä"
-    }
+    },
+    "invite": "Kutsu",
+    "linkCopied": "Linkki kopioitu",
+    "inviteText": "Tule mukaan huoneeseen {room} TinyFloorissa"
   },
   "call": {
     "incomingVideo": "Saapuva videopuhelu...",

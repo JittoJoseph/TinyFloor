@@ -9,13 +9,14 @@ import {
   ChevronRight,
   Link2,
   Check,
-  Copy,
+  UserPlus,
   type LucideIcon,
 } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { ProximityActions } from "./ProximityActions";
 import { CharacterSprite } from "./CharacterSprite";
 import { lobbyPath, shareUrl } from "@/lib/links";
+import { shareLink } from "@/lib/share";
 import {
   GUIDE_ID,
   GUIDE_SPRITE,
@@ -151,6 +152,7 @@ export default function RoomTutorial({
   sharePath?: string;
 }) {
   const t = useTranslations("tutorial");
+  const tRoom = useTranslations("room");
   const guideName = useTranslations("scene")("guide");
   const [step, setStep] = useState(initialStep);
   const [touch, setTouch] = useState(isTouchInput);
@@ -159,9 +161,9 @@ export default function RoomTutorial({
 
   useEffect(() => () => clearTimeout(copyTimer.current), []);
 
-  const copyInvite = useCallback(() => {
-    if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(shareUrl(sharePath));
+  const copyInvite = useCallback(async () => {
+    const result = await shareLink(shareUrl(sharePath));
+    if (result !== "copied") return;
     setCopied(true);
     clearTimeout(copyTimer.current);
     copyTimer.current = setTimeout(() => setCopied(false), 2000);
@@ -338,22 +340,19 @@ export default function RoomTutorial({
           className="flex items-center gap-2 w-full bg-white border border-[rgba(0,0,0,0.06)] rounded-full pl-3 pr-1.5 py-1.5 shadow-sm"
         >
           <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
-          <span className="flex-1 truncate text-[10px] font-medium text-[var(--color-braun-text)]/70">
+          <span className="flex-1 truncate font-body text-[11px] text-[var(--color-braun-text)]/70">
             {sharePath}
           </span>
           <button
+            type="button"
             onClick={copyInvite}
-            className="cursor-pointer shrink-0 h-6 px-2.5 rounded-full bg-[var(--color-braun-text)] text-white text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 transition-all active:scale-95"
+            className="cursor-pointer shrink-0 h-7 px-3 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[11px] font-semibold flex items-center gap-1.5 transition-all active:scale-95"
           >
-            {copied ? (
-              <Check className="w-3 h-3" />
-            ) : (
-              <Copy className="w-3 h-3" />
-            )}
-            {copied ? t("copied") : t("copy")}
+            {copied ? <Check className="w-3 h-3" /> : <UserPlus className="w-3 h-3" />}
+            {copied ? tRoom("linkCopied") : tRoom("invite")}
           </button>
         </div>
-        <p className="text-[9px] font-medium text-[var(--color-braun-text)]/45 tracking-wide text-center">
+        <p className="font-body text-[11px] text-[var(--color-braun-text)]/50 text-center">
           {t("linkHint")}
         </p>
       </div>

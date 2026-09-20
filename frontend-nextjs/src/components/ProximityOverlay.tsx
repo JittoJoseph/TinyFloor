@@ -9,10 +9,8 @@ import {
 
 const GAP = 22;
 const PADDING = 12;
-const BAR_WIDTH = {
-  pointer: { guest: 144, member: 178 },
-  touch: { guest: 186, member: 230 },
-};
+/** How wide the bar ends up, so it can be kept on the screen before it paints. */
+const BAR_WIDTH = { pointer: 164, touch: 196 };
 
 export default function ProximityOverlay() {
   const [nearbyPlayers, setNearbyPlayers] = useState<NearbyPlayer[]>([]);
@@ -64,10 +62,7 @@ export default function ProximityOverlay() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
       {nearbyPlayers.map((player) => {
         const touch = viewportWidth > 0 && viewportWidth < TOUCH_BREAKPOINT;
-        const width =
-          BAR_WIDTH[touch ? "touch" : "pointer"][
-            player.guest ? "guest" : "member"
-          ];
+        const width = BAR_WIDTH[touch ? "touch" : "pointer"];
 
         const spaceRight = viewportWidth - PADDING - (player.x + GAP);
         const spaceLeft = player.x - GAP - PADDING;

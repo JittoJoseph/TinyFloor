@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 
+import { surface, label } from "./room/ui";
+
 interface ChatMessage {
   id: string;
   senderId: string;
@@ -60,35 +62,32 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed right-4 md:right-6 top-24 z-40 flex flex-col gap-2 pointer-events-none items-end">
+    <div className="fixed end-3 sm:end-5 top-16 sm:top-20 z-40 flex flex-col gap-2 pointer-events-none items-end">
       {toasts.map((toast) => (
-        <div
+        <button
           key={toast.id}
-          className={`pointer-events-auto bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-full shadow-sm pr-4 pl-1.5 py-1.5 md:pr-5 md:pl-2 md:py-2 transition-all duration-300 cursor-pointer hover:-translate-x-1 hover:shadow-md flex items-center gap-2 md:gap-3 max-w-[200px] sm:max-w-xs md:max-w-sm ${
-            toast.visible
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 translate-x-4"
-          }`}
+          type="button"
           onClick={() => {
-            // Dismiss this toast immediately when clicked
             setToasts((prev) => prev.filter((t) => t.id !== toast.id));
             onOpenChat();
           }}
+          className={`${surface} cursor-pointer pointer-events-auto rounded-full ps-1.5 pe-4 py-1.5 flex items-center gap-2.5 max-w-[min(20rem,70vw)] text-start transition-all duration-300 hover:-translate-x-0.5 ${
+            toast.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+          }`}
         >
-          <div className="w-6 h-6 md:w-8 md:h-8 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[10px] md:text-xs shrink-0">
+          <span className="w-7 h-7 rounded-full bg-[var(--color-braun-text)]/[0.06] flex items-center justify-center font-body font-semibold text-[11px] text-[var(--color-braun-text)] shrink-0">
             {toast.senderName.charAt(0).toUpperCase()}
-          </div>
-          <div className="flex-1 min-w-0 flex items-center gap-1.5 md:gap-2 overflow-hidden">
-            <span className="font-bold text-[11px] md:text-sm text-[var(--color-braun-text)] shrink-0 truncate max-w-[80px] md:max-w-[120px]">
+          </span>
+          <span className="min-w-0 flex items-baseline gap-1.5 overflow-hidden">
+            <span className={`${label} text-[var(--color-braun-text)] shrink-0 truncate max-w-[6rem]`}>
               {toast.senderName}
             </span>
-            <span className="text-[11px] md:text-sm text-gray-500 truncate">
+            <span className="font-body text-[12px] text-[var(--color-braun-text)] opacity-60 truncate">
               {toast.content}
             </span>
-          </div>
-        </div>
+          </span>
+        </button>
       ))}
     </div>
-
   );
 }

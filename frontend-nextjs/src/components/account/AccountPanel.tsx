@@ -5,15 +5,15 @@ import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff, KeyRound } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/workspace/ui";
-import { useErrorMessage } from "@/components/workspace/useErrorMessage";
+import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
+import { useErrorMessage } from "@/lib/useErrorMessage";
 
 /**
  * Your account: the name people see, your email, and your password. Which
  * character you walk in as isn't here; that's asked at the door of each space.
  */
 export function AccountPanel() {
-  const t = useTranslations("workspace.profile");
+  const t = useTranslations("office.profile");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
@@ -76,7 +76,7 @@ export function AccountPanel() {
 }
 
 function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const t = useTranslations("workspace.profile");
+  const t = useTranslations("office.profile");
   const explain = useErrorMessage();
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");

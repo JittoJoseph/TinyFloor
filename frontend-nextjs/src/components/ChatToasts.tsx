@@ -59,7 +59,7 @@ export function ChatToasts({ isChatOpen, onOpenChat }: ChatToastsProps) {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed end-3 sm:end-5 top-16 sm:top-20 z-40 flex flex-col gap-2 pointer-events-none items-end">
+    <div className="absolute end-3 sm:end-5 top-16 sm:top-20 z-40 flex flex-col gap-2 pointer-events-none items-end">
       {toasts.map((toast) => (
         <button
           key={toast.id}

@@ -5,8 +5,8 @@
     "ogAlt": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i członkami zespołu",
     "keywords": "wirtualne biuro, praca na odległość, czat przestrzenny, współpraca online, wirtualna przestrzeń do pracy, biuro w metaverse, czat zbliżeniowy, wideoczat zbliżeniowy, wirtualny coworking, rozmowy wideo w przeglądarce",
     "joinTitle": "Dołącz do pokoju",
-    "joinRoomTitle": "Dołącz do {room}",
-    "joinRoomDescription": "Masz zaproszenie do pokoju {room} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, wybierz postać i wejdź.",
+    "joinRoomTitle": "Dołącz do {office}",
+    "joinRoomDescription": "Masz zaproszenie do pokoju {office} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, wybierz postać i wejdź.",
     "authTitle": "Zaloguj się",
     "authDescription": "Zaloguj się do TinyFloor, aby zachować swoje imię, postać i listę pokoi.",
     "dashboardTitle": "Panel",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Nie znaleziono strony",
     "lobbyTitle": "Lobby",
     "lobbyDescription": "Wejdź jako gość do darmowego, otwartego lobby TinyFloor. Wybierz postać, poznaj ludzi i wypróbuj rozmowy wideo z bliska w przeglądarce.",
-    "inviteTitle": "Dołącz do {workspace} w TinyFloor",
+    "inviteTitle": "Dołącz do {office} w TinyFloor",
     "inviteFallbackTitle": "Masz zaproszenie do TinyFloor",
-    "inviteDescription": "{name} zaprasza Cię do {workspace} w TinyFloor, wirtualnego biura, po którym można chodzić."
+    "inviteDescription": "{name} zaprasza Cię do {office} w TinyFloor, wirtualnego biura, po którym można chodzić."
   },
   "common": {
     "loading": "Ładowanie...",
@@ -336,7 +336,18 @@
     "welcome": "Witaj na czacie pokoju. Wiadomości widzą wszyscy obecni.",
     "placeholder": "Napisz wiadomość...",
     "close": "Zamknij czat",
-    "send": "Wyślij wiadomość"
+    "send": "Wyślij wiadomość",
+    "channels": "Kanały",
+    "directMessages": "Wiadomości bezpośrednie",
+    "newChannel": "Nowy kanał",
+    "channelName": "Nazwa kanału",
+    "say": "Napisz na {channel}",
+    "older": "Starsze wiadomości",
+    "nothingYet": "Jeszcze tu pusto. Powiedz pierwsze słowo.",
+    "noDirect": "Brak wiadomości bezpośrednich.",
+    "attach": "Dodaj obraz",
+    "attachmentsPaid": "Obrazy są częścią płatnego biura.",
+    "attachmentsSoon": "Obrazy pojawią się wkrótce."
   },
   "proximity": {
     "videoCall": "Rozmowa wideo",
@@ -883,7 +894,7 @@
     "title": "Lobby",
     "subtitle": "Każdy może wpaść. Powiedz, kim jesteś, wybierz postać i wejdź."
   },
-  "workspace": {
+  "office": {
     "lobby": "Lobby",
     "copy": "Kopiuj",
     "copied": "Skopiowano",
@@ -917,7 +928,14 @@
       "leaveTitle": "Opuść ten obszar roboczy",
       "leaveBody": "Stracisz dostęp do pokoi w {name}, dopóki ktoś Cię znowu nie zaprosi.",
       "leaveButton": "Opuść obszar roboczy",
-      "nameDetail": "To, co zespół widzi na górze biura."
+      "nameDetail": "To, co zespół widzi na górze biura.",
+      "seats": "{used} z {seats} miejsc",
+      "seatsNote": "Miejsce to członek. Kto odchodzi, zwalnia swoje.",
+      "close": "Usuń obszar roboczy",
+      "closeIt": "Zamknij biuro",
+      "closeSure": "Zamknąć je dla wszystkich?",
+      "leave": "Opuść obszar roboczy",
+      "wrong": "Nie udało się. Spróbuj ponownie."
     },
     "onboarding": {
       "title": "Urządź swoje biuro",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} zaprasza Cię",
       "asAdmin": "Masz zaproszenie jako admin.",
       "asMember": "Masz zaproszenie do zespołu.",
-      "join": "Dołącz do {workspace}",
+      "join": "Dołącz do {office}",
       "joiningAs": "Dołączasz jako {name} ({email})",
       "createAccount": "Utwórz konto",
       "signIn": "Mam konto",
@@ -1078,8 +1096,52 @@
         "owner": "To biuro jest twoje",
         "admin": "Jesteś tu administratorem",
         "member": "Jesteś tu członkiem"
-      }
-    }
+      },
+      "members": "{used} z {seats} członków"
+    },
+    "floor": "Piętro",
+    "chat": "Czat",
+    "people": {
+      "title": "Członkowie",
+      "members": "Członkowie",
+      "invitations": "Oczekujące zaproszenia",
+      "guests": "Goście",
+      "guestsNote": "Gość wchodzi przez link. Nie zajmuje miejsca i nikogo nie zaprosi.",
+      "invite": "Zaproś",
+      "seats": "{used} z {seats} miejsc",
+      "seatsFull": "Wszystkie miejsca zajęte.",
+      "seatsFree": "Jest jeszcze miejsce.",
+      "onFloorNow": "{count} na piętrze teraz",
+      "noInvitations": "Nikt nie został jeszcze zaproszony.",
+      "noGuestLinks": "Brak linków dla gości.",
+      "newGuestLink": "Utwórz link dla gości",
+      "copied": "Skopiowano",
+      "revoke": "Cofnij",
+      "remove": "Usuń",
+      "leave": "Opuść",
+      "makeAdmin": "Ustaw jako admina",
+      "makeMember": "Ustaw jako członka",
+      "more": "Więcej",
+      "message": "Wiadomość",
+      "you": "Ty",
+      "owner": "Właściciel",
+      "admin": "Admin",
+      "member": "Członek",
+      "noEmail": "Bez e-maila",
+      "expires": "Wygasa {date}",
+      "anyoneWithLink": "Każdy z linkiem",
+      "wrong": "Nie udało się. Spróbuj ponownie."
+    },
+    "office": "Biuro",
+    "offices": "Twoje biura",
+    "leave": "Opuść",
+    "settingsButton": "Ustawienia",
+    "backToFloor": "Wróć na piętro",
+    "onTheFloor": "Na piętrze w {office}",
+    "goneTitle": "Tego biura już nie ma",
+    "gone": "Zostało zamknięte albo nie jesteś już członkiem.",
+    "backToOffices": "Wróć do swoich biur",
+    "peopleTab": "Osoby"
   },
   "create": {
     "eyebrow": "Twoje własne biuro",

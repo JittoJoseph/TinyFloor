@@ -8,7 +8,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 /** The same header above every signed-in page: home, the lobby, and you. */
 export function AppHeader() {
-  const t = useTranslations("workspace");
+  const t = useTranslations("office");
   return (
     <header className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
       <Link href="/" className="cursor-pointer font-body font-bold text-lg tracking-tight text-[var(--color-braun-text)]">

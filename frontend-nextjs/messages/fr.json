@@ -5,8 +5,8 @@
     "ogAlt": "Une salle TinyFloor : un étage de bureau 16 bits avec des bureaux et des coéquipiers",
     "keywords": "bureau virtuel, télétravail, chat spatial, collaboration en ligne, espace de travail virtuel, bureau metaverse, chat de proximité, chat vidéo de proximité, espace de coworking virtuel, appels vidéo dans le navigateur",
     "joinTitle": "Rejoindre la salle",
-    "joinRoomTitle": "Rejoindre {room}",
-    "joinRoomDescription": "Vous êtes invité dans {room} sur TinyFloor, un bureau virtuel où l’on se déplace. Ouvrez le lien, choisissez un personnage et entrez.",
+    "joinRoomTitle": "Rejoindre {office}",
+    "joinRoomDescription": "Vous êtes invité dans {office} sur TinyFloor, un bureau virtuel où l’on se déplace. Ouvrez le lien, choisissez un personnage et entrez.",
     "authTitle": "Connexion",
     "authDescription": "Connectez-vous à TinyFloor pour garder votre nom, votre personnage et la liste de vos salles.",
     "dashboardTitle": "Tableau de bord",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Page introuvable",
     "lobbyTitle": "Le hall",
     "lobbyDescription": "Entrez en tant qu’invité dans le hall public et gratuit de TinyFloor. Choisissez un personnage, rencontrez du monde et essayez les appels vidéo de proximité dans votre navigateur.",
-    "inviteTitle": "Rejoignez {workspace} sur TinyFloor",
+    "inviteTitle": "Rejoignez {office} sur TinyFloor",
     "inviteFallbackTitle": "Vous êtes invité sur TinyFloor",
-    "inviteDescription": "{name} vous invite dans {workspace} sur TinyFloor, un bureau virtuel dans lequel on se déplace."
+    "inviteDescription": "{name} vous invite dans {office} sur TinyFloor, un bureau virtuel dans lequel on se déplace."
   },
   "common": {
     "loading": "Chargement...",
@@ -336,7 +336,18 @@
     "welcome": "Bienvenue dans le chat de la salle. Les messages sont visibles par tous ici.",
     "placeholder": "Écrivez un message...",
     "close": "Fermer le chat",
-    "send": "Envoyer le message"
+    "send": "Envoyer le message",
+    "channels": "Canaux",
+    "directMessages": "Messages directs",
+    "newChannel": "Nouveau canal",
+    "channelName": "Nom du canal",
+    "say": "Écrire dans {channel}",
+    "older": "Messages plus anciens",
+    "nothingYet": "Rien ici pour l'instant. Lancez la conversation.",
+    "noDirect": "Pas encore de messages directs.",
+    "attach": "Ajouter une image",
+    "attachmentsPaid": "Les images font partie d'un bureau payant.",
+    "attachmentsSoon": "Les images arrivent bientôt."
   },
   "proximity": {
     "videoCall": "Appel vidéo",
@@ -883,7 +894,7 @@
     "title": "Le hall",
     "subtitle": "Tout le monde peut passer. Dites qui vous êtes, choisissez un personnage et entrez."
   },
-  "workspace": {
+  "office": {
     "lobby": "Hall",
     "copy": "Copier",
     "copied": "Copié",
@@ -917,7 +928,14 @@
       "leaveTitle": "Quitter cet espace de travail",
       "leaveBody": "Vous perdrez l’accès aux salles de {name} jusqu’à ce que quelqu’un vous invite à nouveau.",
       "leaveButton": "Quitter l’espace de travail",
-      "nameDetail": "Ce que votre équipe voit en haut du bureau."
+      "nameDetail": "Ce que votre équipe voit en haut du bureau.",
+      "seats": "{used} places sur {seats}",
+      "seatsNote": "Une place, c'est un membre. Qui part libère la sienne.",
+      "close": "Supprimer l’espace de travail",
+      "closeIt": "Fermer le bureau",
+      "closeSure": "Le fermer pour tout le monde ?",
+      "leave": "Quitter l’espace de travail",
+      "wrong": "Ça n'a pas marché. Réessayez."
     },
     "onboarding": {
       "title": "Installez votre bureau",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} vous a invité",
       "asAdmin": "Vous êtes invité à rejoindre en tant qu’admin.",
       "asMember": "Vous êtes invité à rejoindre l’équipe.",
-      "join": "Rejoindre {workspace}",
+      "join": "Rejoindre {office}",
       "joiningAs": "Vous rejoignez en tant que {name} ({email})",
       "createAccount": "Créer un compte",
       "signIn": "J’ai un compte",
@@ -1078,8 +1096,52 @@
         "owner": "Celui-ci est à vous",
         "admin": "Vous êtes admin ici",
         "member": "Vous êtes membre ici"
-      }
-    }
+      },
+      "members": "{used} membres sur {seats}"
+    },
+    "floor": "L'étage",
+    "chat": "Discussion",
+    "people": {
+      "title": "Membres",
+      "members": "Membres",
+      "invitations": "Invitations en attente",
+      "guests": "Invités",
+      "guestsNote": "Un invité entre avec un lien. Il ne prend pas de place et ne peut inviter personne.",
+      "invite": "Inviter",
+      "seats": "{used} places sur {seats}",
+      "seatsFull": "Toutes les places sont prises.",
+      "seatsFree": "Il reste de la place.",
+      "onFloorNow": "{count} à l'étage en ce moment",
+      "noInvitations": "Personne n'a encore été invité.",
+      "noGuestLinks": "Aucun lien invité pour l'instant.",
+      "newGuestLink": "Créer un lien invité",
+      "copied": "Copié",
+      "revoke": "Révoquer",
+      "remove": "Retirer",
+      "leave": "Quitter",
+      "makeAdmin": "Passer admin",
+      "makeMember": "Passer membre",
+      "more": "Plus",
+      "message": "Message",
+      "you": "vous",
+      "owner": "Propriétaire",
+      "admin": "Admin",
+      "member": "Membre",
+      "noEmail": "Sans e-mail",
+      "expires": "Expire le {date}",
+      "anyoneWithLink": "Toute personne ayant le lien",
+      "wrong": "Ça n'a pas marché. Réessayez."
+    },
+    "office": "Bureau",
+    "offices": "Vos bureaux",
+    "leave": "Quitter",
+    "settingsButton": "Paramètres",
+    "backToFloor": "Retour à l'étage",
+    "onTheFloor": "À l'étage de {office}",
+    "goneTitle": "Ce bureau n'existe plus",
+    "gone": "Il a été fermé, ou vous n'en êtes plus membre.",
+    "backToOffices": "Retour à vos bureaux",
+    "peopleTab": "Personnes"
   },
   "create": {
     "eyebrow": "Votre propre bureau",

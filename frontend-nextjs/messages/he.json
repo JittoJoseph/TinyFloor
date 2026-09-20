@@ -5,8 +5,8 @@
     "ogAlt": "חדר ב־TinyFloor: קומת משרד ב־16 ביט עם שולחנות וחברי צוות",
     "keywords": "משרד וירטואלי, עבודה מרחוק, צ׳אט מרחבי, שיתוף פעולה אונליין, סביבת עבודה וירטואלית, משרד במטאוורס, צ׳אט קרבה, וידאו צ׳אט קרבה, חלל עבודה משותף וירטואלי, שיחות וידאו בדפדפן",
     "joinTitle": "הצטרפות לחדר",
-    "joinRoomTitle": "הצטרפות אל {room}",
-    "joinRoomDescription": "הוזמנת אל {room} ב-TinyFloor, משרד וירטואלי שמסתובבים בו. פותחים את הקישור, בוחרים דמות ונכנסים.",
+    "joinRoomTitle": "הצטרפות אל {office}",
+    "joinRoomDescription": "הוזמנת אל {office} ב-TinyFloor, משרד וירטואלי שמסתובבים בו. פותחים את הקישור, בוחרים דמות ונכנסים.",
     "authTitle": "התחברות",
     "authDescription": "התחברות ל־TinyFloor שומרת את השם, הדמות ורשימת החדרים שלך.",
     "dashboardTitle": "לוח בקרה",
@@ -14,9 +14,9 @@
     "notFoundTitle": "הדף לא נמצא",
     "lobbyTitle": "הלובי",
     "lobbyDescription": "היכנסו כאורחים ללובי הציבורי והחינמי של TinyFloor. בחרו דמות, הכירו אנשים ונסו שיחות וידאו מקרוב בדפדפן.",
-    "inviteTitle": "הצטרפו אל {workspace} ב-TinyFloor",
+    "inviteTitle": "הצטרפו אל {office} ב-TinyFloor",
     "inviteFallbackTitle": "הוזמנתם ל-TinyFloor",
-    "inviteDescription": "{name} הזמין אתכם אל {workspace} ב-TinyFloor, משרד וירטואלי שאפשר להסתובב בו."
+    "inviteDescription": "{name} הזמין אתכם אל {office} ב-TinyFloor, משרד וירטואלי שאפשר להסתובב בו."
   },
   "common": {
     "loading": "טוען...",
@@ -336,7 +336,18 @@
     "welcome": "ברוכים הבאים לצ׳אט החדר. ההודעות גלויות לכל מי שנמצא כאן.",
     "placeholder": "כתיבת הודעה...",
     "close": "סגירת הצ׳אט",
-    "send": "שליחת הודעה"
+    "send": "שליחת הודעה",
+    "channels": "ערוצים",
+    "directMessages": "הודעות ישירות",
+    "newChannel": "ערוץ חדש",
+    "channelName": "שם הערוץ",
+    "say": "הודעה ל-{channel}",
+    "older": "הודעות קודמות",
+    "nothingYet": "אין כאן כלום עדיין. תגידו את הדבר הראשון.",
+    "noDirect": "אין עדיין הודעות ישירות.",
+    "attach": "הוספת תמונה",
+    "attachmentsPaid": "תמונות הן חלק ממשרד בתשלום.",
+    "attachmentsSoon": "תמונות מגיעות בקרוב."
   },
   "proximity": {
     "videoCall": "שיחת וידאו",
@@ -883,7 +894,7 @@
     "title": "הלובי",
     "subtitle": "כל אחד יכול לקפוץ. תגידו מי אתם, בחרו דמות והיכנסו."
   },
-  "workspace": {
+  "office": {
     "lobby": "לובי",
     "copy": "העתקה",
     "copied": "הועתק",
@@ -917,7 +928,14 @@
       "leaveTitle": "יציאה מסביבת העבודה",
       "leaveBody": "תאבדו גישה לחדרים ב-{name} עד שמישהו יזמין אתכם שוב.",
       "leaveButton": "יציאה מסביבת העבודה",
-      "nameDetail": "מה שהצוות רואה בראש המשרד."
+      "nameDetail": "מה שהצוות רואה בראש המשרד.",
+      "seats": "{used} מתוך {seats} מקומות",
+      "seatsNote": "מקום הוא חבר. מי שעוזב מפנה את שלו.",
+      "close": "מחיקת סביבת העבודה",
+      "closeIt": "סגירת המשרד",
+      "closeSure": "לסגור אותו לכולם?",
+      "leave": "יציאה מסביבת העבודה",
+      "wrong": "זה לא עבד. נסו שוב."
     },
     "onboarding": {
       "title": "הקימו את המשרד",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} הזמין אתכם",
       "asAdmin": "הוזמנתם להצטרף כמנהלים.",
       "asMember": "הוזמנתם להצטרף לצוות.",
-      "join": "הצטרפות אל {workspace}",
+      "join": "הצטרפות אל {office}",
       "joiningAs": "מצטרפים בתור {name} ({email})",
       "createAccount": "יצירת חשבון",
       "signIn": "יש לי חשבון",
@@ -1078,8 +1096,52 @@
         "owner": "המשרד הזה שלך",
         "admin": "כאן אתם מנהלים",
         "member": "כאן אתם חברים"
-      }
-    }
+      },
+      "members": "{used} מתוך {seats} חברים"
+    },
+    "floor": "הקומה",
+    "chat": "צ'אט",
+    "people": {
+      "title": "חברים",
+      "members": "חברים",
+      "invitations": "הזמנות ממתינות",
+      "guests": "אורחים",
+      "guestsNote": "אורח נכנס דרך קישור. הוא לא תופס מקום ואינו יכול להזמין אף אחד.",
+      "invite": "הזמנה",
+      "seats": "{used} מתוך {seats} מקומות",
+      "seatsFull": "כל המקומות תפוסים.",
+      "seatsFree": "יש עוד מקום.",
+      "onFloorNow": "{count} בקומה עכשיו",
+      "noInvitations": "עדיין לא הוזמן אף אחד.",
+      "noGuestLinks": "אין קישורי אורח כרגע.",
+      "newGuestLink": "יצירת קישור אורח",
+      "copied": "הועתק",
+      "revoke": "ביטול הזמנה",
+      "remove": "הסרה",
+      "leave": "יציאה",
+      "makeAdmin": "הפיכה למנהל",
+      "makeMember": "הפיכה לחבר",
+      "more": "עוד",
+      "message": "הודעה",
+      "you": "את/ה",
+      "owner": "בעלים",
+      "admin": "מנהל",
+      "member": "חבר",
+      "noEmail": "בלי אימייל",
+      "expires": "פג ב-{date}",
+      "anyoneWithLink": "כל מי שיש לו את הקישור",
+      "wrong": "זה לא עבד. נסו שוב."
+    },
+    "office": "משרד",
+    "offices": "המשרדים שלך",
+    "leave": "יציאה",
+    "settingsButton": "הגדרות",
+    "backToFloor": "חזרה לקומה",
+    "onTheFloor": "בקומה של {office}",
+    "goneTitle": "המשרד הזה כבר לא קיים",
+    "gone": "הוא נסגר, או שאינך חבר בו יותר.",
+    "backToOffices": "חזרה למשרדים שלך",
+    "peopleTab": "אנשים"
   },
   "create": {
     "eyebrow": "משרד משלכם",

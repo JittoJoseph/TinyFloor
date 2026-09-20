@@ -6,7 +6,7 @@ import { ApiError } from "@/lib/api";
 
 /** Turns an API error into a sentence for the person, in their language. */
 export function useErrorMessage() {
-  const t = useTranslations("workspace.errors");
+  const t = useTranslations("office.errors");
 
   return useCallback(
     (error: unknown) => {

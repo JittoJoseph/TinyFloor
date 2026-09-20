@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({
     locale,
     path: guestLinkPath(token),
-    title: link ? t("joinRoomTitle", { room: link.roomName }) : t("joinTitle"),
-    description: link ? t("joinRoomDescription", { room: link.roomName }) : t("description"),
+    title: link ? t("joinRoomTitle", { office: link.officeName }) : t("joinTitle"),
+    description: link ? t("joinRoomDescription", { office: link.officeName }) : t("description"),
     noindex: true,
   });
 }

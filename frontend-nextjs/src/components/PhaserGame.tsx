@@ -50,16 +50,24 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   });
 
   useEffect(() => {
-    const onResize = () => sharpen();
+    const onResize = () => {
+      const box = gameRef.current;
+      if (box && game.current) game.current.scale.resize(box.clientWidth, box.clientHeight);
+      sharpen();
+    };
     window.addEventListener("resize", onResize);
+    // The floor is a panel inside the office shell, not the whole window, so it
+    // follows its own box rather than the viewport.
+    const watcher = new ResizeObserver(onResize);
+    if (gameRef.current) watcher.observe(gameRef.current);
 
     if (gameRef.current && !game.current) {
       applySceneText();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: gameRef.current.clientWidth || window.innerWidth,
+        height: gameRef.current.clientHeight || window.innerHeight,
         parent: gameRef.current,
         scene: new GameScene(name, character, userId, () => nextTicket()),
         backgroundColor: "#f0f0f0",
@@ -72,8 +80,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
           arcade: {
             debug: false,
             gravity: { x: 0, y: 0 },
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: gameRef.current.clientWidth || window.innerWidth,
+            height: gameRef.current.clientHeight || window.innerHeight,
           },
         },
       };
@@ -86,6 +94,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
 
     return () => {
       window.removeEventListener("resize", onResize);
+      watcher.disconnect();
       if (game.current) {
         const scene = game.current.scene.getScene("GameScene") as GameScene;
         if (scene) {
@@ -103,7 +112,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     };
   }, [name, character, userId]);
 
-  return <div ref={gameRef} />;
+  return <div ref={gameRef} className="w-full h-full" />;
 };
 
 export default PhaserGame;

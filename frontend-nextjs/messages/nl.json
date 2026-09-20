@@ -5,8 +5,8 @@
     "ogAlt": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
     "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, metaverse-kantoor, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
     "joinTitle": "Ruimte binnengaan",
-    "joinRoomTitle": "Doe mee met {room}",
-    "joinRoomDescription": "Je bent uitgenodigd voor {room} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
+    "joinRoomTitle": "Doe mee met {office}",
+    "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "dashboardTitle": "Dashboard",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Pagina niet gevonden",
     "lobbyTitle": "De lobby",
     "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
-    "inviteTitle": "Doe mee met {workspace} op TinyFloor",
+    "inviteTitle": "Doe mee met {office} op TinyFloor",
     "inviteFallbackTitle": "Je bent uitgenodigd voor TinyFloor",
-    "inviteDescription": "{name} heeft je uitgenodigd voor {workspace} op TinyFloor, een virtueel kantoor waar je rondloopt."
+    "inviteDescription": "{name} heeft je uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
   },
   "common": {
     "loading": "Laden...",
@@ -336,7 +336,18 @@
     "welcome": "Welkom in de ruimtechat. Berichten zijn zichtbaar voor iedereen hier.",
     "placeholder": "Typ een bericht...",
     "close": "Chat sluiten",
-    "send": "Bericht versturen"
+    "send": "Bericht versturen",
+    "channels": "Kanalen",
+    "directMessages": "Directe berichten",
+    "newChannel": "Nieuw kanaal",
+    "channelName": "Kanaalnaam",
+    "say": "Bericht in {channel}",
+    "older": "Oudere berichten",
+    "nothingYet": "Hier is nog niets. Zeg het eerste.",
+    "noDirect": "Nog geen directe berichten.",
+    "attach": "Afbeelding toevoegen",
+    "attachmentsPaid": "Afbeeldingen horen bij een betaald kantoor.",
+    "attachmentsSoon": "Afbeeldingen komen binnenkort."
   },
   "proximity": {
     "videoCall": "Videogesprek",
@@ -883,7 +894,7 @@
     "title": "De lobby",
     "subtitle": "Iedereen mag binnenlopen. Zeg wie je bent, kies een personage en loop binnen."
   },
-  "workspace": {
+  "office": {
     "lobby": "Lobby",
     "copy": "Kopiëren",
     "copied": "Gekopieerd",
@@ -917,7 +928,14 @@
       "leaveTitle": "Deze werkruimte verlaten",
       "leaveBody": "Je verliest toegang tot de ruimtes in {name} tot iemand je opnieuw uitnodigt.",
       "leaveButton": "Werkruimte verlaten",
-      "nameDetail": "Wat je team bovenaan het kantoor ziet."
+      "nameDetail": "Wat je team bovenaan het kantoor ziet.",
+      "seats": "{used} van {seats} plekken",
+      "seatsNote": "Een plek is een lid. Wie weggaat, maakt de zijne vrij.",
+      "close": "Werkruimte verwijderen",
+      "closeIt": "Kantoor sluiten",
+      "closeSure": "Voor iedereen sluiten?",
+      "leave": "Werkruimte verlaten",
+      "wrong": "Dat lukte niet. Probeer het nog eens."
     },
     "onboarding": {
       "title": "Richt je kantoor in",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} heeft je uitgenodigd",
       "asAdmin": "Je bent uitgenodigd als beheerder.",
       "asMember": "Je bent uitgenodigd voor het team.",
-      "join": "Meedoen met {workspace}",
+      "join": "Meedoen met {office}",
       "joiningAs": "Je doet mee als {name} ({email})",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
@@ -1078,8 +1096,52 @@
         "owner": "Deze is van jou",
         "admin": "Je bent hier admin",
         "member": "Je bent hier lid"
-      }
-    }
+      },
+      "members": "{used} van {seats} leden"
+    },
+    "floor": "De vloer",
+    "chat": "Chat",
+    "people": {
+      "title": "Leden",
+      "members": "Leden",
+      "invitations": "Openstaande uitnodigingen",
+      "guests": "Gasten",
+      "guestsNote": "Een gast komt binnen via een link. Dat kost geen plek en hij kan niemand uitnodigen.",
+      "invite": "Uitnodigen",
+      "seats": "{used} van {seats} plekken",
+      "seatsFull": "Alle plekken zijn bezet.",
+      "seatsFree": "Er is nog plek.",
+      "onFloorNow": "{count} nu op de vloer",
+      "noInvitations": "Nog niemand uitgenodigd.",
+      "noGuestLinks": "Nu geen gastlinks.",
+      "newGuestLink": "Gastlink maken",
+      "copied": "Gekopieerd",
+      "revoke": "Intrekken",
+      "remove": "Verwijderen",
+      "leave": "Verlaten",
+      "makeAdmin": "Beheerder maken",
+      "makeMember": "Lid maken",
+      "more": "Meer",
+      "message": "Bericht",
+      "you": "jij",
+      "owner": "Eigenaar",
+      "admin": "Beheerder",
+      "member": "Lid",
+      "noEmail": "Geen e-mail",
+      "expires": "Verloopt op {date}",
+      "anyoneWithLink": "Iedereen met de link",
+      "wrong": "Dat lukte niet. Probeer het nog eens."
+    },
+    "office": "Kantoor",
+    "offices": "Je kantoren",
+    "leave": "Verlaten",
+    "settingsButton": "Instellingen",
+    "backToFloor": "Terug naar de vloer",
+    "onTheFloor": "Op de vloer in {office}",
+    "goneTitle": "Dit kantoor bestaat niet meer",
+    "gone": "Het is gesloten, of je bent geen lid meer.",
+    "backToOffices": "Terug naar je kantoren",
+    "peopleTab": "Mensen"
   },
   "create": {
     "eyebrow": "Je eigen kantoor",

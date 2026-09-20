@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { AppHeader } from "@/components/space/AppHeader";
+import { AppHeader } from "@/components/app/AppHeader";
 import { AccountPanel } from "@/components/account/AccountPanel";
 
 /** Your account, on its own page: the name people see, your email, your password. */
 export default function AccountPage() {
-  const t = useTranslations("workspace.profile");
+  const t = useTranslations("office.profile");
   const router = useRouter();
   const { user, isLoading } = useAuth();
   const signedIn = !isLoading && !!user && !user.guest;

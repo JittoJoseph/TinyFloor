@@ -12,8 +12,7 @@ import { WalkIn } from "./WalkIn";
 import { RoomView } from "@/components/room/RoomView";
 
 export interface GuestLinkPreview {
-  roomName: string;
-  workspaceName: string;
+  officeName: string;
 }
 
 /**
@@ -46,8 +45,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
   if (inside && user && preview) {
     return (
       <RoomView
-        title={preview.roomName}
-        subtitle={preview.workspaceName}
+        title={preview.officeName}
         user={user}
         ticketFor={() => api.guestLinkTicket(token)}
         leaveHref={user.guest ? "/" : "/dashboard"}
@@ -89,8 +87,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
 
   return (
     <WalkIn
-      eyebrow={preview.workspaceName}
-      title={preview.roomName}
+      title={preview.officeName}
       subtitle={t("invitedAsGuest")}
       onReady={() => setInside(true)}
     />

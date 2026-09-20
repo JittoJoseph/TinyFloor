@@ -5,8 +5,8 @@
     "ogAlt": "TinyFloor 房间：摆满办公桌和同事的 16 位像素办公楼层",
     "keywords": "虚拟办公室，远程办公，空间聊天，在线协作，虚拟工作空间，元宇宙办公室，近距离聊天，近距离视频聊天，虚拟共享办公，浏览器视频通话",
     "joinTitle": "加入房间",
-    "joinRoomTitle": "加入 {room}",
-    "joinRoomDescription": "你受邀加入 TinyFloor 上的 {room}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",
+    "joinRoomTitle": "加入 {office}",
+    "joinRoomDescription": "你受邀加入 TinyFloor 上的 {office}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",
     "authTitle": "登录",
     "authDescription": "登录 TinyFloor，保留你的名字、角色和房间列表。",
     "dashboardTitle": "控制台",
@@ -14,9 +14,9 @@
     "notFoundTitle": "页面未找到",
     "lobbyTitle": "大厅",
     "lobbyDescription": "以访客身份进入 TinyFloor 免费的公共大厅。选一个角色，认识新朋友，在浏览器里体验走近就能开的视频通话。",
-    "inviteTitle": "加入 TinyFloor 上的 {workspace}",
+    "inviteTitle": "加入 TinyFloor 上的 {office}",
     "inviteFallbackTitle": "你收到了 TinyFloor 的邀请",
-    "inviteDescription": "{name} 邀请你加入 TinyFloor 上的 {workspace}，这是一间可以四处走动的虚拟办公室。"
+    "inviteDescription": "{name} 邀请你加入 TinyFloor 上的 {office}，这是一间可以四处走动的虚拟办公室。"
   },
   "common": {
     "loading": "加载中...",
@@ -336,7 +336,18 @@
     "welcome": "欢迎来到房间聊天。这里的所有人都能看到消息。",
     "placeholder": "输入消息...",
     "close": "关闭聊天",
-    "send": "发送消息"
+    "send": "发送消息",
+    "channels": "频道",
+    "directMessages": "私信",
+    "newChannel": "新建频道",
+    "channelName": "频道名称",
+    "say": "在 {channel} 中发消息",
+    "older": "更早的消息",
+    "nothingYet": "这里还什么都没有，说第一句吧。",
+    "noDirect": "还没有私信。",
+    "attach": "添加图片",
+    "attachmentsPaid": "图片是付费办公室的功能。",
+    "attachmentsSoon": "图片很快就来。"
   },
   "proximity": {
     "videoCall": "视频通话",
@@ -883,7 +894,7 @@
     "title": "大厅",
     "subtitle": "谁都可以进来看看。说说你是谁，选个角色，就能进门。"
   },
-  "workspace": {
+  "office": {
     "lobby": "大厅",
     "copy": "复制",
     "copied": "已复制",
@@ -917,7 +928,14 @@
       "leaveTitle": "退出这个工作区",
       "leaveBody": "在有人再次邀请你之前，你将无法进入 {name} 的房间。",
       "leaveButton": "退出工作区",
-      "nameDetail": "团队在办公室顶部看到的名字。"
+      "nameDetail": "团队在办公室顶部看到的名字。",
+      "seats": "{seats} 个席位中的 {used} 个",
+      "seatsNote": "一个席位就是一位成员。有人离开，席位就空出来。",
+      "close": "删除工作区",
+      "closeIt": "关闭办公室",
+      "closeSure": "要对所有人关闭吗？",
+      "leave": "退出工作区",
+      "wrong": "没有成功，请再试一次。"
     },
     "onboarding": {
       "title": "布置你的办公室",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} 邀请了你",
       "asAdmin": "你被邀请以管理员身份加入。",
       "asMember": "你被邀请加入团队。",
-      "join": "加入 {workspace}",
+      "join": "加入 {office}",
       "joiningAs": "将以 {name}（{email}）的身份加入",
       "createAccount": "创建账号",
       "signIn": "我已有账号",
@@ -1078,8 +1096,52 @@
         "owner": "这间归你所有",
         "admin": "你在这里是管理员",
         "member": "你在这里是成员"
-      }
-    }
+      },
+      "members": "{seats} 人中的 {used} 人"
+    },
+    "floor": "楼层",
+    "chat": "聊天",
+    "people": {
+      "title": "成员",
+      "members": "成员",
+      "invitations": "待接受的邀请",
+      "guests": "访客",
+      "guestsNote": "访客通过链接进入，不占席位，也不能邀请别人。",
+      "invite": "邀请",
+      "seats": "{seats} 个席位中的 {used} 个",
+      "seatsFull": "席位已满。",
+      "seatsFree": "还有空位。",
+      "onFloorNow": "现在楼层里有 {count} 人",
+      "noInvitations": "还没有邀请任何人。",
+      "noGuestLinks": "目前没有访客链接。",
+      "newGuestLink": "创建访客链接",
+      "copied": "已复制",
+      "revoke": "撤销",
+      "remove": "移除",
+      "leave": "退出",
+      "makeAdmin": "设为管理员",
+      "makeMember": "设为成员",
+      "more": "更多",
+      "message": "发消息",
+      "you": "你",
+      "owner": "所有者",
+      "admin": "管理员",
+      "member": "成员",
+      "noEmail": "没有邮箱",
+      "expires": "{date} 过期",
+      "anyoneWithLink": "任何拿到链接的人",
+      "wrong": "没有成功，请再试一次。"
+    },
+    "office": "办公室",
+    "offices": "你的办公室",
+    "leave": "退出",
+    "settingsButton": "设置",
+    "backToFloor": "回到楼层",
+    "onTheFloor": "在 {office} 的楼层",
+    "goneTitle": "这个办公室不在了",
+    "gone": "它已关闭，或者你不再是成员。",
+    "backToOffices": "回到你的办公室",
+    "peopleTab": "成员"
   },
   "create": {
     "eyebrow": "你自己的办公室",

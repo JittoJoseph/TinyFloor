@@ -5,8 +5,8 @@
     "ogAlt": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisineen",
     "keywords": "virtuaalitoimisto, etätyö, tilachat, verkkoyhteistyö, virtuaalinen työtila, metaverse-toimisto, läheisyyschat, läheisyysvideochat, virtuaalinen coworking, videopuhelut selaimessa",
     "joinTitle": "Liity huoneeseen",
-    "joinRoomTitle": "Liity huoneeseen {room}",
-    "joinRoomDescription": "Sinut on kutsuttu huoneeseen {room} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
+    "joinRoomTitle": "Liity huoneeseen {office}",
+    "joinRoomDescription": "Sinut on kutsuttu huoneeseen {office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
     "dashboardTitle": "Hallintapaneeli",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Sivua ei löytynyt",
     "lobbyTitle": "Aula",
     "lobbyDescription": "Tule vieraana TinyFloorin ilmaiseen, avoimeen aulaan. Valitse hahmo, tapaa ihmisiä ja kokeile lähietäisyyden videopuheluita selaimessa.",
-    "inviteTitle": "Liity työtilaan {workspace} TinyFloorissa",
+    "inviteTitle": "Liity työtilaan {office} TinyFloorissa",
     "inviteFallbackTitle": "Sinut on kutsuttu TinyFlooriin",
-    "inviteDescription": "{name} kutsui sinut työtilaan {workspace} TinyFloorissa, virtuaaliseen toimistoon, jossa voi kävellä."
+    "inviteDescription": "{name} kutsui sinut työtilaan {office} TinyFloorissa, virtuaaliseen toimistoon, jossa voi kävellä."
   },
   "common": {
     "loading": "Ladataan...",
@@ -336,7 +336,18 @@
     "welcome": "Tervetuloa huoneen chattiin. Viestit näkyvät kaikille täällä.",
     "placeholder": "Kirjoita viesti...",
     "close": "Sulje chat",
-    "send": "Lähetä viesti"
+    "send": "Lähetä viesti",
+    "channels": "Kanavat",
+    "directMessages": "Yksityisviestit",
+    "newChannel": "Uusi kanava",
+    "channelName": "Kanavan nimi",
+    "say": "Viesti kanavalle {channel}",
+    "older": "Vanhemmat viestit",
+    "nothingYet": "Täällä ei ole vielä mitään. Sano ensimmäinen.",
+    "noDirect": "Ei vielä yksityisviestejä.",
+    "attach": "Lisää kuva",
+    "attachmentsPaid": "Kuvat kuuluvat maksulliseen toimistoon.",
+    "attachmentsSoon": "Kuvat saapuvat pian."
   },
   "proximity": {
     "videoCall": "Videopuhelu",
@@ -883,7 +894,7 @@
     "title": "Aula",
     "subtitle": "Kuka tahansa voi poiketa. Kerro kuka olet, valitse hahmo ja astu sisään."
   },
-  "workspace": {
+  "office": {
     "lobby": "Aula",
     "copy": "Kopioi",
     "copied": "Kopioitu",
@@ -917,7 +928,14 @@
       "leaveTitle": "Poistu tästä työtilasta",
       "leaveBody": "Menetät pääsyn työtilan {name} huoneisiin, kunnes joku kutsuu sinut uudelleen.",
       "leaveButton": "Poistu työtilasta",
-      "nameDetail": "Se, minkä tiimisi näkee toimiston yläreunassa."
+      "nameDetail": "Se, minkä tiimisi näkee toimiston yläreunassa.",
+      "seats": "{used}/{seats} paikkaa",
+      "seatsNote": "Paikka on jäsen. Lähtijä vapauttaa omansa.",
+      "close": "Poista työtila",
+      "closeIt": "Sulje toimisto",
+      "closeSure": "Suljetaanko kaikilta?",
+      "leave": "Poistu työtilasta",
+      "wrong": "Ei onnistunut. Yritä uudelleen."
     },
     "onboarding": {
       "title": "Perusta toimistosi",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} kutsui sinut",
       "asAdmin": "Sinut on kutsuttu ylläpitäjäksi.",
       "asMember": "Sinut on kutsuttu tiimiin.",
-      "join": "Liity työtilaan {workspace}",
+      "join": "Liity työtilaan {office}",
       "joiningAs": "Liityt nimellä {name} ({email})",
       "createAccount": "Luo tili",
       "signIn": "Minulla on tili",
@@ -1078,8 +1096,52 @@
         "owner": "Omistat tämän",
         "admin": "Olet täällä ylläpitäjä",
         "member": "Olet täällä jäsen"
-      }
-    }
+      },
+      "members": "{used}/{seats} jäsentä"
+    },
+    "floor": "Kerros",
+    "chat": "Chat",
+    "people": {
+      "title": "Jäsenet",
+      "members": "Jäsenet",
+      "invitations": "Odottavat kutsut",
+      "guests": "Vieraat",
+      "guestsNote": "Vieras tulee sisään linkillä. Hän ei vie paikkaa eikä voi kutsua ketään.",
+      "invite": "Kutsu",
+      "seats": "{used}/{seats} paikkaa",
+      "seatsFull": "Kaikki paikat ovat varattuja.",
+      "seatsFree": "Tilaa on vielä.",
+      "onFloorNow": "{count} kerroksessa nyt",
+      "noInvitations": "Ketään ei ole vielä kutsuttu.",
+      "noGuestLinks": "Ei vieraslinkkejä juuri nyt.",
+      "newGuestLink": "Luo vieraslinkki",
+      "copied": "Kopioitu",
+      "revoke": "Peru",
+      "remove": "Poista",
+      "leave": "Poistu",
+      "makeAdmin": "Tee ylläpitäjäksi",
+      "makeMember": "Tee jäseneksi",
+      "more": "Lisää",
+      "message": "Viesti",
+      "you": "sinä",
+      "owner": "Omistaja",
+      "admin": "Ylläpitäjä",
+      "member": "Jäsen",
+      "noEmail": "Ei sähköpostia",
+      "expires": "Vanhenee {date}",
+      "anyoneWithLink": "Kuka tahansa linkin saanut",
+      "wrong": "Ei onnistunut. Yritä uudelleen."
+    },
+    "office": "Toimisto",
+    "offices": "Toimistosi",
+    "leave": "Poistu",
+    "settingsButton": "Asetukset",
+    "backToFloor": "Takaisin kerrokseen",
+    "onTheFloor": "Kerroksessa {office}",
+    "goneTitle": "Tätä toimistoa ei enää ole",
+    "gone": "Se suljettiin, tai et ole enää jäsen.",
+    "backToOffices": "Takaisin toimistoihisi",
+    "peopleTab": "Ihmiset"
   },
   "create": {
     "eyebrow": "Oma toimistosi",

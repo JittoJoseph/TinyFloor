@@ -5,8 +5,8 @@
     "ogAlt": "Uma sala do TinyFloor: um andar de escritório em 16 bits com mesas e colegas",
     "keywords": "escritório virtual, trabalho remoto, chat espacial, colaboração online, espaço de trabalho virtual, escritório no metaverso, chat por proximidade, videochamada por proximidade, coworking virtual, chamadas de vídeo no navegador",
     "joinTitle": "Entrar na sala",
-    "joinRoomTitle": "Entrar em {room}",
-    "joinRoomDescription": "Você foi convidado para {room} no TinyFloor, um escritório virtual por onde você anda. Abra o link, escolha um personagem e entre.",
+    "joinRoomTitle": "Entrar em {office}",
+    "joinRoomDescription": "Você foi convidado para {office} no TinyFloor, um escritório virtual por onde você anda. Abra o link, escolha um personagem e entre.",
     "authTitle": "Entrar",
     "authDescription": "Entre no TinyFloor para manter seu nome, seu personagem e uma lista das suas salas.",
     "dashboardTitle": "Painel",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Página não encontrada",
     "lobbyTitle": "O lobby",
     "lobbyDescription": "Entre como convidado no lobby público e gratuito do TinyFloor. Escolha um personagem, conheça pessoas e experimente chamadas de vídeo por proximidade no navegador.",
-    "inviteTitle": "Entre em {workspace} no TinyFloor",
+    "inviteTitle": "Entre em {office} no TinyFloor",
     "inviteFallbackTitle": "Você foi convidado para o TinyFloor",
-    "inviteDescription": "{name} convidou você para {workspace} no TinyFloor, um escritório virtual em que dá para andar."
+    "inviteDescription": "{name} convidou você para {office} no TinyFloor, um escritório virtual em que dá para andar."
   },
   "common": {
     "loading": "Carregando...",
@@ -336,7 +336,18 @@
     "welcome": "Boas-vindas ao chat da sala. As mensagens ficam visíveis para todos aqui.",
     "placeholder": "Digite uma mensagem...",
     "close": "Fechar chat",
-    "send": "Enviar mensagem"
+    "send": "Enviar mensagem",
+    "channels": "Canais",
+    "directMessages": "Mensagens diretas",
+    "newChannel": "Novo canal",
+    "channelName": "Nome do canal",
+    "say": "Escrever em {channel}",
+    "older": "Mensagens antigas",
+    "nothingYet": "Ainda não há nada. Diz a primeira coisa.",
+    "noDirect": "Ainda sem mensagens diretas.",
+    "attach": "Adicionar uma imagem",
+    "attachmentsPaid": "As imagens fazem parte de um escritório pago.",
+    "attachmentsSoon": "As imagens chegam em breve."
   },
   "proximity": {
     "videoCall": "Chamada de vídeo",
@@ -883,7 +894,7 @@
     "title": "O lobby",
     "subtitle": "Qualquer um pode aparecer. Diga quem você é, escolha um personagem e entre."
   },
-  "workspace": {
+  "office": {
     "lobby": "Lobby",
     "copy": "Copiar",
     "copied": "Copiado",
@@ -917,7 +928,14 @@
       "leaveTitle": "Sair deste espaço de trabalho",
       "leaveBody": "Você perderá o acesso às salas de {name} até alguém convidar você de novo.",
       "leaveButton": "Sair do espaço de trabalho",
-      "nameDetail": "O que sua equipe vê no topo do escritório."
+      "nameDetail": "O que sua equipe vê no topo do escritório.",
+      "seats": "{used} de {seats} lugares",
+      "seatsNote": "Um lugar é um membro. Quem sai liberta o seu.",
+      "close": "Excluir espaço de trabalho",
+      "closeIt": "Fechar o escritório",
+      "closeSure": "Fechar para toda a gente?",
+      "leave": "Sair do espaço de trabalho",
+      "wrong": "Não resultou. Tenta outra vez."
     },
     "onboarding": {
       "title": "Monte seu escritório",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} convidou você",
       "asAdmin": "Você foi convidado a entrar como admin.",
       "asMember": "Você foi convidado a entrar na equipe.",
-      "join": "Entrar em {workspace}",
+      "join": "Entrar em {office}",
       "joiningAs": "Entrando como {name} ({email})",
       "createAccount": "Criar uma conta",
       "signIn": "Já tenho conta",
@@ -1078,8 +1096,52 @@
         "owner": "Este é seu",
         "admin": "Você é admin aqui",
         "member": "Você é membro aqui"
-      }
-    }
+      },
+      "members": "{used} de {seats} membros"
+    },
+    "floor": "O piso",
+    "chat": "Conversa",
+    "people": {
+      "title": "Membros",
+      "members": "Membros",
+      "invitations": "Convites pendentes",
+      "guests": "Convidados",
+      "guestsNote": "Um convidado entra por um link. Não ocupa lugar e não pode convidar ninguém.",
+      "invite": "Convidar",
+      "seats": "{used} de {seats} lugares",
+      "seatsFull": "Já não há lugares.",
+      "seatsFree": "Ainda há espaço.",
+      "onFloorNow": "{count} no piso agora",
+      "noInvitations": "Ainda não convidaste ninguém.",
+      "noGuestLinks": "Sem links de convidado agora.",
+      "newGuestLink": "Criar link de convidado",
+      "copied": "Copiado",
+      "revoke": "Revogar",
+      "remove": "Remover",
+      "leave": "Sair",
+      "makeAdmin": "Tornar admin",
+      "makeMember": "Tornar membro",
+      "more": "Mais",
+      "message": "Mensagem",
+      "you": "você",
+      "owner": "Dono",
+      "admin": "Admin",
+      "member": "Membro",
+      "noEmail": "Sem email",
+      "expires": "Expira em {date}",
+      "anyoneWithLink": "Qualquer pessoa com o link",
+      "wrong": "Não resultou. Tenta outra vez."
+    },
+    "office": "Escritório",
+    "offices": "Seus escritórios",
+    "leave": "Sair",
+    "settingsButton": "Configurações",
+    "backToFloor": "Voltar ao piso",
+    "onTheFloor": "No piso de {office}",
+    "goneTitle": "Este escritório já não existe",
+    "gone": "Foi fechado, ou já não és membro.",
+    "backToOffices": "Voltar aos teus escritórios",
+    "peopleTab": "Pessoas"
   },
   "create": {
     "eyebrow": "Seu próprio escritório",

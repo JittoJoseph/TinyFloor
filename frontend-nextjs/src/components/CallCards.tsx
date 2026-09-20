@@ -150,7 +150,7 @@ export default function CallCards() {
 
   return (
     <div
-      className={`fixed inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
+      className={`absolute inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
         focusedTile ? "bottom-28 md:px-10 flex items-center justify-center" : ""
       }`}
     >

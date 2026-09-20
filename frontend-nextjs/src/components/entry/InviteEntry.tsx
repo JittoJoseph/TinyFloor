@@ -7,15 +7,15 @@ import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
-import { invitePath, spacePath } from "@/lib/links";
+import { invitePath, officePath } from "@/lib/links";
 import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
 import { ErrorNote } from "@/components/entry/ErrorNote";
-import { useErrorMessage } from "./useErrorMessage";
+import { useErrorMessage } from "@/lib/useErrorMessage";
 
 export interface InvitePreview {
-  workspaceName: string;
+  officeName: string;
   invitedBy: string;
   role: string;
   expiresAt: number;
@@ -30,7 +30,7 @@ const secondaryButtonClass =
  * picked waits in this browser until they have one.
  */
 export function InviteEntry({ token, initialPreview }: { token: string; initialPreview: InvitePreview | null }) {
-  const t = useTranslations("workspace.invite");
+  const t = useTranslations("office.invite");
   const tEntry = useTranslations("entry");
   const router = useRouter();
   const explain = useErrorMessage();
@@ -80,8 +80,8 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       saveIdentity({ name: trimmed, character });
       // Walk in as the character they picked on the way here.
       if (user && character !== user.character) await updateProfile({ character }).catch(() => undefined);
-      const { workspaceId } = await api.acceptInvite(token);
-      router.push(spacePath(workspaceId));
+      const { officeId } = await api.acceptInvite(token);
+      router.push(officePath(officeId));
     } catch (err) {
       setError(explain(err));
       setBusy(false);
@@ -138,7 +138,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
           {t("eyebrow", { name: invite.invitedBy })}
         </p>
         <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5 break-words">
-          {invite.workspaceName}
+          {invite.officeName}
         </h1>
         <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-5">
           {invite.role === "admin" ? t("asAdmin") : t("asMember")}
@@ -154,7 +154,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
           <>
             <button type="button" onClick={join} disabled={busy} className={primaryButtonClass}>
               {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-              {t("join", { workspace: invite.workspaceName })}
+              {t("join", { office: invite.officeName })}
               {!busy && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
             </button>
             <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 text-center mt-4">

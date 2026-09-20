@@ -55,7 +55,7 @@
     "subtitle": "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
     "cta": "Walk in now",
     "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it.",
-    "noSignUp": "no sign-up, just walk in",
+    "noSignUp": "try it",
     "secondaryCta": "Or set up an office for your team"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Connecting...",
-    "copied": "Copied!",
     "leave": "Leave",
     "reconnecting": "Reconnecting…",
     "peopleHere": "Here now: {count}",
-    "copyLink": "Copy link",
     "reconnectingNote": "Connection lost. Getting you back in…",
     "ended": {
       "back": "Back",
@@ -274,7 +272,10 @@
       "signIn": "Sign in",
       "tryAgain": "Try again",
       "useHere": "Use it here instead"
-    }
+    },
+    "invite": "Invite",
+    "linkCopied": "Link copied",
+    "inviteText": "Join me in {room} on TinyFloor"
   },
   "call": {
     "incomingVideo": "Incoming video call...",
@@ -333,7 +334,6 @@
     "title": "Room Chat",
     "system": "System",
     "welcome": "Welcome to the room chat. Messages are visible to everyone here.",
-    "intro": "You can chat with everyone in this room here.",
     "placeholder": "Type a message...",
     "close": "Close chat",
     "send": "Send message"

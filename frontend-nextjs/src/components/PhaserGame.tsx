@@ -63,6 +63,10 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         parent: gameRef.current,
         scene: new GameScene(name, character, userId, () => nextTicket()),
         backgroundColor: "#f0f0f0",
+        // The room has no Phaser sounds; the jukebox plays through an <audio>
+        // element. Without this, every game builds a WebAudio context it never
+        // uses, and complains about it once the game is torn down.
+        audio: { noAudio: true },
         physics: {
           default: "arcade",
           arcade: {
@@ -86,13 +90,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         const scene = game.current.scene.getScene("GameScene") as GameScene;
         if (scene) {
           scene.cleanup();
-        }
-
-        // Prevent audio errors on destroy
-        if (game.current.sound) {
-          game.current.sound.pauseOnBlur = false;
-          game.current.sound.removeAll();
-          game.current.sound.stopAll();
         }
 
         try {

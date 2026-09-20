@@ -1,13 +1,21 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { Eraser, Pencil, Trash2, X } from "lucide-react";
 import { whiteboard, Stroke } from "@/lib/WhiteboardManager";
+import { RoomIconButton, Divider, label } from "@/components/room/ui";
 
 const COLORS = ["#2c2c2c", "#ff4e00", "#0f5741", "#2f4ad0"];
 const SIZES = [3, 7];
 const ERASER_SIZE = 26;
+
+/** Pen, colour and eraser, with the one in use plain to see. */
+interface Tool {
+  color: string;
+  size: number;
+  erase: boolean;
+}
 
 export default function WhiteboardOverlay() {
   const t = useTranslations("whiteboard");
@@ -18,7 +26,7 @@ export default function WhiteboardOverlay() {
   );
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const toolRef = useRef({ color: COLORS[0], size: SIZES[0], erase: false });
+  const [tool, setTool] = useState<Tool>({ color: COLORS[0], size: SIZES[0], erase: false });
   const drawingRef = useRef(false);
 
   const paint = useCallback((stroke: Stroke, from: number) => {
@@ -73,6 +81,7 @@ export default function WhiteboardOverlay() {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") whiteboard.setOpen(false);
     };
+    // Typing on the board must not walk the character around the room.
     window.dispatchEvent(new Event("chatFocused"));
     window.addEventListener("keydown", onKey);
     return () => {
@@ -83,6 +92,7 @@ export default function WhiteboardOverlay() {
 
   if (!board.open) return null;
 
+  /** Where the pointer is on the board, as a fraction of it. */
   const at = (event: React.PointerEvent<HTMLCanvasElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     return {
@@ -91,83 +101,78 @@ export default function WhiteboardOverlay() {
     };
   };
 
-  const tool = toolRef.current;
+  const pen = (size: number) => setTool({ color: tool.color, size, erase: false });
 
   return (
     <div className="fixed inset-0 z-[70] flex flex-col bg-[var(--color-braun-text)]/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
-      <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-[1.5rem] bg-[#fbfbf9] border border-black/10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
-        <div className="flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2.5 border-b border-black/8">
-          <span className="font-body text-sm font-semibold text-[var(--color-braun-text)] me-auto shrink-0">
+      <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-3xl bg-[#fbfbf9] border border-black/[0.07] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2.5 border-b border-black/[0.06]">
+          <span className={`${label} text-[var(--color-braun-text)] ps-1 hidden md:block`}>
             {t("title")}
           </span>
 
-          <div className="flex items-center gap-1.5">
-            {COLORS.map((color) => (
-              <button
-                key={color}
-                type="button"
-                aria-label={t("penColor", { color })}
-                onClick={() => {
-                  tool.color = color;
-                  tool.erase = false;
-                }}
-                className="cursor-pointer w-8 h-8 sm:w-7 sm:h-7 rounded-full border border-black/10 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
-                style={{ background: color }}
-              />
-            ))}
-          </div>
+          {/* The tools scroll sideways on a narrow phone rather than pushing
+              the way out of the board off the edge. */}
+          <div className="flex items-center gap-1 sm:gap-1.5 flex-1 min-w-0 overflow-x-auto md:justify-end scrollbar-none">
+            {COLORS.map((color) => {
+              const on = !tool.erase && tool.color === color;
+              return (
+                <button
+                  key={color}
+                  type="button"
+                  aria-label={t("penColor", { color })}
+                  aria-pressed={on}
+                  onClick={() => setTool({ color, size: tool.erase ? SIZES[0] : tool.size, erase: false })}
+                  className={`cursor-pointer w-6 h-6 sm:w-7 sm:h-7 shrink-0 rounded-full border border-black/10 transition-transform duration-150 ${
+                    on ? "ring-2 ring-offset-2 ring-[var(--color-braun-text)]/40 ring-offset-[#fbfbf9]" : ""
+                  }`}
+                  style={{ background: color }}
+                />
+              );
+            })}
 
-          <span className="hidden sm:block w-px h-6 bg-black/10 mx-1" />
+          <Divider className="mx-0 sm:mx-0.5" />
 
           {SIZES.map((size) => (
-            <button
+            <RoomIconButton
               key={size}
-              type="button"
-              aria-label={t("penSize", { size })}
-              onClick={() => {
-                tool.size = size;
-                tool.erase = false;
-              }}
-              className="cursor-pointer w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white border border-black/10 shadow-sm flex items-center justify-center text-[var(--color-braun-text)] transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
-            >
-              <Pencil style={{ width: 10 + size, height: 10 + size }} />
-            </button>
+              size="sm"
+              tone={!tool.erase && tool.size === size ? "dark" : "quiet"}
+              aria-pressed={!tool.erase && tool.size === size}
+              title={t("penSize", { size })}
+              onClick={() => pen(size)}
+              icon={<Pencil style={{ width: 9 + size, height: 9 + size }} />}
+            />
           ))}
 
-          <button
-            type="button"
-            aria-label={t("eraser")}
-            onClick={() => {
-              tool.erase = true;
-              tool.size = ERASER_SIZE;
-            }}
-            className="cursor-pointer w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white border border-black/10 shadow-sm flex items-center justify-center text-[var(--color-braun-text)] transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
-          >
-            <Eraser className="w-4 h-4" />
-          </button>
+          <RoomIconButton
+            size="sm"
+            tone={tool.erase ? "dark" : "quiet"}
+            aria-pressed={tool.erase}
+            title={t("eraser")}
+            onClick={() => setTool({ color: tool.color, size: ERASER_SIZE, erase: true })}
+            icon={<Eraser className="w-4 h-4" />}
+          />
 
-          <button
-            type="button"
-            aria-label={t("clear")}
+          <Divider className="mx-0 sm:mx-0.5" />
+
+          <RoomIconButton
+            size="sm"
+            title={t("clear")}
             onClick={() => {
               whiteboard.clear();
               repaint();
             }}
-            className="cursor-pointer w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white border border-black/10 shadow-sm flex items-center justify-center text-[var(--color-braun-text)] transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+            icon={<Trash2 className="w-4 h-4" />}
+          />
+          </div>
 
-          <span className="hidden sm:block w-px h-6 bg-black/10 mx-1" />
-
-          <button
-            type="button"
-            aria-label={t("close")}
+          <RoomIconButton
+            tone="dark"
+            title={t("close")}
             onClick={() => whiteboard.setOpen(false)}
-            className="cursor-pointer w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none"
-          >
-            <X className="w-4 h-4" />
-          </button>
+            icon={<X className="w-4 h-4" />}
+          />
         </div>
 
         <canvas
@@ -196,9 +201,7 @@ export default function WhiteboardOverlay() {
         />
       </div>
 
-      <p className="font-body text-[11px] text-white/70 text-center mt-2.5">
-        {t("hint")}
-      </p>
+      <p className="font-body text-[11px] text-white/70 text-center mt-2.5">{t("hint")}</p>
     </div>
   );
 }

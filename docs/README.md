@@ -5,7 +5,8 @@ and Realtime.
 
 ## Direction
 
-- The new platform is built on the `feature/cloudflare-platform` branch.
+- Live runs from `master`. The next sprint is built on `dev` and tried on
+  `preview.tinyfloor.com`.
 - **It is not compatible with the current Java backend,** and doesn't try to be.
   The API, the WebSocket protocol and the data model are all new.
 - **Every Cloudflare resource is set up during development,** including the API

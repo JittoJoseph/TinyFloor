@@ -36,10 +36,12 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .auto-height {
-    transition: none;
-  }
+/* A row that can be swiped sideways without a scrollbar sitting in the way. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 :root {

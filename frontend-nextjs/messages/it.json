@@ -55,7 +55,7 @@
     "subtitle": "Un ufficio virtuale che sembra un videogioco. Fai due passi, parla con i colleghi e torna a sentirti una squadra.",
     "cta": "Entra adesso",
     "caption": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi che vi passeggiano.",
-    "noSignUp": "niente registrazione, entra e basta",
+    "noSignUp": "provalo",
     "secondaryCta": "Oppure allestisci un ufficio per il tuo team"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Connessione...",
-    "copied": "Copiato!",
     "leave": "Esci",
     "reconnecting": "Riconnessione…",
     "peopleHere": "Qui ora: {count}",
-    "copyLink": "Copia link",
     "reconnectingNote": "Connessione persa. Ti stiamo riportando dentro…",
     "ended": {
       "back": "Indietro",
@@ -274,7 +272,10 @@
       "signIn": "Accedi",
       "tryAgain": "Riprova",
       "useHere": "Usala qui"
-    }
+    },
+    "invite": "Invita",
+    "linkCopied": "Link copiato",
+    "inviteText": "Raggiungimi in {room} su TinyFloor"
   },
   "call": {
     "incomingVideo": "Videochiamata in arrivo...",
@@ -333,7 +334,6 @@
     "title": "Chat della stanza",
     "system": "Sistema",
     "welcome": "Benvenuto nella chat della stanza. I messaggi sono visibili a tutti i presenti.",
-    "intro": "Qui puoi chattare con tutti in questa stanza.",
     "placeholder": "Scrivi un messaggio...",
     "close": "Chiudi chat",
     "send": "Invia messaggio"

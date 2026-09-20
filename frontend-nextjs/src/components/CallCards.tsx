@@ -150,8 +150,8 @@ export default function CallCards() {
 
   return (
     <div
-      className={`fixed inset-x-0 top-[8.5rem] sm:top-[5.5rem] z-40 px-4 pointer-events-none ${
-        focusedTile ? "bottom-32 md:px-10 flex items-center justify-center" : ""
+      className={`fixed inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
+        focusedTile ? "bottom-28 md:px-10 flex items-center justify-center" : ""
       }`}
     >
       <div
@@ -218,12 +218,12 @@ function CallCard({
       style={{ viewTransitionName: `tile-${tile.key}` }}
       className={`group cursor-pointer pointer-events-auto relative block shrink-0 aspect-video overflow-hidden ring-2 transition-shadow duration-200 ${
         focused
-          ? "w-[min(100%,calc((100dvh-16.5rem)*16/9))] sm:w-[min(100%,calc((100dvh-13.5rem)*16/9))] rounded-3xl shadow-2xl"
+          ? "w-[min(100%,calc((100dvh-14rem)*16/9))] sm:w-[min(100%,calc((100dvh-12.5rem)*16/9))] rounded-3xl shadow-2xl"
           : "w-[var(--card)] rounded-2xl shadow-lg hover:shadow-xl"
       } ${
         tile.screen
           ? "bg-[#1c1c1e] ring-[var(--color-braun-green)]"
-          : `bg-[#fbfbf9] ${speaking ? "ring-[#ff4e00]" : "ring-white/80"}`
+          : `bg-[#fbfbf9] ${speaking ? "ring-[var(--color-braun-orange)]" : "ring-white/80"}`
       }`}
     >
       <CallStream
@@ -239,7 +239,7 @@ function CallCard({
         </div>
       )}
       {tile.badge && (
-        <span className="absolute top-2 start-2 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[var(--color-braun-text)] shadow-sm">
+        <span className="absolute top-2 start-2 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 font-body text-[11px] font-semibold text-[var(--color-braun-text)] shadow-sm">
           {tile.badge}
         </span>
       )}
@@ -256,7 +256,7 @@ function CallCard({
         )}
       </span>
       <span
-        className={`absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1.5 rounded-full backdrop-blur-sm px-2.5 py-1 text-xs font-bold shadow-sm ${
+        className={`absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1.5 rounded-full backdrop-blur-sm px-2.5 py-1 font-body text-[12px] font-semibold shadow-sm ${
           tile.screen
             ? "bg-[var(--color-braun-green)] text-white"
             : "bg-white/90 text-[var(--color-braun-text)]"
@@ -267,7 +267,7 @@ function CallCard({
         )}
         {!tile.screen && !tile.mic && (
           <MicOff
-            className="w-3.5 h-3.5 shrink-0 text-[#ff4e00]"
+            className="w-3.5 h-3.5 shrink-0 text-[var(--color-braun-orange)]"
             aria-label={micOff}
           />
         )}

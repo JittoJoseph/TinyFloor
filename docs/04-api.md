@@ -132,25 +132,3 @@ Today every chat message and every join, with a location from `ipwho.is`, goes
 to Discord. The API sends nothing to Discord. Only the **public lobby** reports,
 from `tinyfloor-realtime`, so abuse there can be spotted; see
 `05-realtime-rooms.md`. Nothing from workspace rooms is ever sent.
-
-## What replaces each Java endpoint
-
-| Java | New |
-|---|---|
-| `POST /api/auth/register`, `/login` | `POST /v1/auth/signup`, `/v1/auth/login` (same bcrypt passwords) |
-| `POST /api/auth/guest` | `POST /v1/auth/guest` |
-| `POST /api/auth/logout` | `POST /v1/auth/logout` |
-| `GET /api/auth/validate`, `/session` | `GET /v1/session` |
-| `GET /api/users/me` | `GET /v1/me` |
-| `GET /api/users/me/summary` | `GET /v1/me` (workspaces) and `GET /v1/workspaces/:id/rooms` |
-| `PUT /api/users/me`, `/me/avatar` | `PATCH /v1/me` |
-| `GET /api/users/profile/:id`, `/public` | **Removed.** No public people directory |
-| `GET /api/rooms`, `/search` | **Removed.** No public room list |
-| `GET /api/rooms/:id` | `GET /v1/rooms/:id` (members and guest-link holders only) |
-| `GET /api/rooms/share/:code` | `GET /v1/guest-links/:token` |
-| `GET /api/rooms/my-rooms`, `/joined` | `GET /v1/workspaces/:id/rooms` |
-| `POST /api/rooms` | `POST /v1/workspaces/:id/rooms` |
-| `POST /api/rooms/:id/join`, `/leave` | **Removed.** Presence lives in the room object; entry is a ticket |
-| `PUT /api/rooms/:id` | `PATCH /v1/rooms/:id` |
-| `DELETE /api/rooms/:id` | `DELETE /v1/rooms/:id` |
-| Room passwords | **Removed.** Rooms are private to members; outsiders use guest links |

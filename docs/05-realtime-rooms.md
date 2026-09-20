@@ -44,12 +44,11 @@ ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair("ping", "pong"));
 ```
 
 The client sends the literal text `ping` every 30 seconds. It's answered without
-waking the object and without duration charges. This replaces the Java JSON ping.
+waking the object and without duration charges.
 
 A cleanly closed connection calls `webSocketClose`. A client that vanishes
 without closing (a laptop lid shut, a dropped network) may not be noticed
-straight away, so the Java server's 90-second inactivity sweep is replaced
-without a timer:
+straight away, so dead sockets are swept without a timer:
 
 - Whenever the room is awake anyway (any message, join or RPC call), it checks
   `ctx.getWebSocketAutoResponseTimestamp(ws)` for every socket, and closes
@@ -120,7 +119,7 @@ the plain text `ping` / `pong`. Types are defined once in `shared-protocol/`.
 | `status` | `status` | `available`, `busy`, `away`, `in_call`. Broadcast `status` |
 | `chat` | `text` | Up to 500 characters. The room adds the sender. Broadcast `chat` to everyone else; the sender already has it. Not saved |
 | `board_sync` | | Reply `board_state` with all strokes |
-| `board_draw` | `id, color, size, erase, points` | Validated as today; appended to SQLite; broadcast `board_draw` |
+| `board_draw` | `id, color, size, erase, points` | Validated, appended to SQLite, broadcast as `board_draw` |
 | `board_clear` | | Clears SQLite; broadcast `board_clear` |
 | `music_set` | `track, playing, offset` | Saved to `room_state`; broadcast `music` |
 | `call` | `kind, to, ...` | Peer-to-peer call signalling, relayed to one person. See `06-calls.md` |

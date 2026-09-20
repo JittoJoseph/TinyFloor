@@ -43,7 +43,7 @@
 - Errors carry `field` when they are about one form field, so the site can show
   them next to it.
 
-Hashes are bcrypt, cost 11. The Java backend's hashes are bcrypt too (cost 10),
+Hashes are bcrypt, cost 11. Imported accounts carry bcrypt hashes at cost 10,
 so carried-over accounts sign in with their old passwords, and their hash is
 quietly upgraded to cost 11 on the first sign-in.
 

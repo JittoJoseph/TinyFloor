@@ -4,7 +4,7 @@ Two paths:
 
 | Situation | Media path |
 |---|---|
-| Proximity calls (walk up, tap to call), up to 4 people | Peer-to-peer, as today, with Cloudflare TURN as the fallback |
+| Proximity calls (walk up, tap to call), up to 4 people | Peer-to-peer, with Cloudflare TURN as the fallback |
 | Sitting at a meeting table | Cloudflare Realtime SFU, whatever the number of people |
 
 Meeting tables always use the SFU, even with 2 people. Switching one live call
@@ -29,7 +29,7 @@ only what it relays to those users, from the shared 1,000 GB/month free.
 
 ### Signalling
 
-Same flow as today (invite, accept, decline, signal, add, end), carried by the
+Invite, accept, decline, signal, add, end — all carried by the
 room object's `call` message:
 
 ```json
@@ -37,12 +37,11 @@ room object's `call` message:
 ```
 
 The room relays it to `user:<to>` with `from` and `fromName` added. If that
-person isn't connected, the room replies `{ "t": "call", "kind": "end", "from": "<to>" }`,
-as the Java server does.
+person isn't connected, the room replies `{ "t": "call", "kind": "end", "from": "<to>" }`.
 
 `CallManager` keeps its fixed transceivers (audio, camera, screen) and
-`replaceTrack`. The 64 KB message limit the Java backend needed doesn't apply:
-Durable Objects accept messages up to 32 MiB.
+`replaceTrack`. Signalling messages are not squeezed into 64 KB: Durable
+Objects accept messages up to 32 MiB.
 
 ### Caps for peer-to-peer
 
@@ -77,7 +76,7 @@ tables' members reconnect their SFU sessions (below).
 ### Joining a table
 
 1. The client sends `sit` with `meeting`. The room broadcasts
-   `meeting_member_joined` as today.
+   `meeting_member_joined`.
 2. The client creates an `RTCPeerConnection` using the ICE servers from the API,
    adds its microphone, and its camera with **simulcast**:
    ```ts

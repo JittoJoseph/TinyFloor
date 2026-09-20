@@ -8,7 +8,7 @@
 | `worker-api/` | `tinyfloor-api` | HTTP API, D1 migrations, cron cleanup |
 | `worker-realtime/` | `tinyfloor-realtime` | WebSocket entry, `Room` and `LobbyRouter` Durable Objects, SFU broker |
 | `shared-protocol/` | none | TypeScript types for the WebSocket protocol and API payloads, imported by the three packages above |
-| `backend-springboot/` | none after cutover | Deprecated Java backend, kept for reference |
+| `backend-springboot/` | nothing | The retired Java backend, kept only for reference |
 
 `shared-protocol/` is plain TypeScript with no runtime dependencies. Each
 package imports it through a relative path or a `tsconfig` path alias, so there
@@ -92,7 +92,7 @@ master.
 - `wrangler dev` in `worker-api/` and `worker-realtime/`, with local D1 and local
   Durable Objects. Service bindings between the two work when both run
   locally.
-- `pnpm dev` in `frontend-nextjs/` as today, pointed at the local API and
+- `pnpm dev` in `frontend-nextjs/`, pointed at the local API and
   realtime URLs through `.env`.
 - Secrets for local use go in each Worker's `.dev.vars`, which is gitignored.
   That file also carries `SITE_ORIGINS=http://localhost:3000`, because the

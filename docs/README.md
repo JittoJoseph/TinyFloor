@@ -1,8 +1,8 @@
 # TinyFloor platform docs
 
-TinyFloor runs on Cloudflare: Workers, Durable Objects, D1 and Realtime. The
-move off the Java backend is done and merged; `backend-springboot/` stays in
-the repository but nothing runs it.
+TinyFloor runs on Cloudflare: Workers, Durable Objects, D1 and Realtime.
+Documents 01–08 are the system as it stands; 09–13 are where it is going.
+(`backend-springboot/` is the retired Java backend, kept for reference only.)
 
 ## Direction
 
@@ -27,7 +27,7 @@ the repository but nothing runs it.
 | [04-api.md](04-api.md) | Every endpoint of `tinyfloor-api` |
 | [05-realtime-rooms.md](05-realtime-rooms.md) | Room and presence Durable Objects, the WebSocket protocol |
 | [06-calls.md](06-calls.md) | Peer-to-peer calls with TURN, meeting tables on the SFU |
-| [07-frontend-changes.md](07-frontend-changes.md) | The Next.js app: pages, entry flows, the room |
+| [07-frontend.md](07-frontend.md) | The Next.js app: pages, entry flows, the room |
 | [08-cloudflare-setup.md](08-cloudflare-setup.md) | Every Cloudflare resource and secret |
 | [09-app-shell.md](09-app-shell.md) | The rail, the views, the presence dock, what it is built from |
 | [10-chat.md](10-chat.md) | Channels, direct messages, attachments, and what they cost |

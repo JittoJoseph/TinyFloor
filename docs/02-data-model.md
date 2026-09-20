@@ -15,7 +15,7 @@ written to D1. The D1 free plan allows 100,000 rows written per day.
 ## IDs
 
 All primary keys are text. New records use `crypto.randomUUID()`. User accounts
-carried over from MongoDB keep their MongoDB `_id` as text. Nothing else is
+imported from the old system keep their original id as text. Nothing else is
 carried over.
 
 Timestamps are integers, milliseconds since the Unix epoch.
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS room_state (
 );
 ```
 
-Limits carried over from the Java whiteboard: 400 strokes, 4,000 points per
+Whiteboard limits: 400 strokes, 4,000 points per
 stroke. The oldest stroke is dropped when a 401st arrives.
 
 Strokes are written when a stroke chunk arrives, not on a timer, so an idle
@@ -204,7 +204,7 @@ interface Attachment {
 ## Retention (cron, see `04-api.md`)
 
 - Expired sessions: deleted daily.
-- Guest users with no session for 7 days: deleted daily (as today).
+- Guest users with no session for 7 days: deleted daily.
 - Expired or used invites and guest links older than 30 days: deleted daily.
 - `usage_daily` older than 13 months: deleted (checked daily, cheap).
 - Archived rooms older than 30 days: the room object's storage cleared with

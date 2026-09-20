@@ -7,7 +7,7 @@
   "workers_dev": false,
   "routes": [{ "pattern": "realtime.tinyfloor.com", "custom_domain": true }],
   "vars": {
-    "SITE_ORIGINS": "https://www.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3000"
+    "SITE_ORIGINS": "https://www.tinyfloor.com,https://tinyfloor.com"
   },
   "durable_objects": {
     "bindings": [

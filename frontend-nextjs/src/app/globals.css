@@ -3,6 +3,7 @@
 @theme {
   --font-pixel: var(--font-pixel);
   --font-body: var(--font-body);
+  --font-hand: var(--font-hand);
 
   /* Dieter Rams Braun Palette */
   --color-braun-bg: #e8e8e3; /* Warm off-white hardware body */
@@ -21,6 +22,23 @@
     inset -2px -2px 6px rgba(255, 255, 255, 0.7);
   --shadow-braun-bezel:
     inset 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Lets a height animate to and from `auto`, where the browser can do it. */
+:root {
+  interpolate-size: allow-keywords;
+}
+
+.auto-height {
+  height: auto;
+  overflow: hidden;
+  transition: height 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-height {
+    transition: none;
+  }
 }
 
 :root {

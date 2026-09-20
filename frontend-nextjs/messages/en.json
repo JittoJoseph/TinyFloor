@@ -35,7 +35,10 @@
     "visitLobby": "Visit the lobby",
     "lobby": "Lobby",
     "signIn": "Sign in",
-    "rooms": "Rooms"
+    "rooms": "Rooms",
+    "offices": "Your offices",
+    "account": "Account",
+    "createOffice": "Create an office"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "The <em>coziest</em> <br></br>virtual office.",
     "subtitle": "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    "cta": "Try It",
-    "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it."
+    "cta": "Walk in now",
+    "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it.",
+    "noSignUp": "no sign-up, just walk in",
+    "secondaryCta": "Or set up an office for your team"
   },
   "landing": {
     "description": "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Your room is <em>already open.</em>",
     "publicTitle": "Walk into the public office",
-    "publicBody": "The room that is always on. Pick a character, walk around, and say hello to whoever is there.",
-    "createTitle": "Open a room for your team",
-    "createBody": "Create a free account, name your workspace, and invite your team with one link. Your rooms stay open for as long as you want.",
+    "publicBody": "Always on, open to anyone. Pick a name, pick a character, and you're in. No account.",
+    "createTitle": "Set up your own office",
+    "createBody": "Name it, invite your team with one link, and the rooms stay open for as long as you want.",
     "sampleName": "Design team",
-    "create": "Create"
+    "create": "Create",
+    "publicNote": "start here"
   },
   "footer": {
     "tagline": "A virtual office you walk around in. Free, in the browser.",
@@ -181,7 +187,7 @@
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
-    "signUpSubtitle": "Pick how you'll look, then set up an office for your team.",
+    "signUpSubtitle": "Your name, your email, a password. That's all it takes.",
     "name": "Your name",
     "namePlaceholder": "How people will see you",
     "email": "Email",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock is on",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
-    "character": "Character",
     "signIn": "Sign in",
     "signingIn": "Signing in…",
     "createAccount": "Create account",
@@ -202,7 +207,7 @@
     "createOne": "Create an account",
     "haveAccount": "Already have an account?",
     "signInInstead": "Sign in instead",
-    "guestCarryOver": "You're visiting as {name}. Your name and character come with you.",
+    "guestCarryOver": "You're visiting as {name}. Your name comes with you.",
     "continueGuest": "Just looking? Visit the lobby as a guest",
     "errors": {
       "wrong_credentials": "That email and password don't match. Try again.",
@@ -229,7 +234,9 @@
     "walkIn": "Walk in",
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
     "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character.",
-    "copyInvite": "Copy invite link"
+    "copyInvite": "Copy invite link",
+    "continue": "Continue",
+    "walkingInAs": "Walking in as {name}"
   },
   "join": {
     "unavailableTitle": "That door does not open.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Open to everyone",
     "title": "The lobby",
-    "subtitle": "Anyone can drop in. Pick a name and a character, then walk in and say hi."
+    "subtitle": "Anyone can drop in. Say who you are, pick a character, and walk in."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Delete workspace",
       "leaveTitle": "Leave this workspace",
       "leaveBody": "You'll lose access to the rooms in {name} until someone invites you again.",
-      "leaveButton": "Leave workspace"
+      "leaveButton": "Leave workspace",
+      "nameDetail": "What your team sees at the top of the space."
     },
     "onboarding": {
       "title": "Set up your office",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Show passwords",
       "passwordRule": "At least 8 characters",
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "pageTitle": "Your account"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Joining as {name} ({email})",
       "createAccount": "Create an account",
       "signIn": "I have an account",
-      "needAccount": "You need an account to join a workspace. It takes a minute."
+      "needAccount": "You need an account to join a workspace. It takes a minute.",
+      "readyToJoin": "That's me",
+      "accountKeeps": "An account keeps {name} and your character for next time.",
+      "you": "You"
     },
     "errors": {
       "member_limit": "The workspace is full on its current plan.",
@@ -1048,6 +1060,39 @@
       "not_found": "That couldn't be found. It may have been deleted.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
       "generic": "Something went wrong. Try again."
+    },
+    "tabs": {
+      "label": "Sections of this space",
+      "rooms": "Rooms",
+      "people": "People",
+      "settings": "Settings"
+    },
+    "spaces": {
+      "title": "Your offices",
+      "new": "New office",
+      "create": "Create an office",
+      "emptyTitle": "You don't have an office yet",
+      "emptyBody": "An office is private to the people you invite, with rooms your team can walk into any time.",
+      "visitLobby": "Visit the public office",
+      "roles": {
+        "owner": "You own this one",
+        "admin": "You're an admin here",
+        "member": "You're a member here"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Your own office",
+    "title": "Name your office",
+    "subtitle": "This is what your team will see. You can change it later.",
+    "nameLabel": "Office name",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Continue",
+    "create": "Create office",
+    "creating": "Setting it up",
+    "firstRoom": "Main floor",
+    "freePlan": "Free for up to 3 people. No card needed.",
+    "accountNext": "Next: make an account, and your office is ready.",
+    "justLooking": "Just looking? <link>Walk into the public office</link> instead."
   }
 }

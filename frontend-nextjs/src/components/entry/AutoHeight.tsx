@@ -1,28 +1,10 @@
-"use client";
+import React from "react";
 
-import React, { useEffect, useRef, useState } from "react";
-
-export const AutoHeight: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const inner = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>();
-
-  useEffect(() => {
-    const element = inner.current;
-    if (!element) return;
-
-    const observer = new ResizeObserver(() => setHeight(element.offsetHeight));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      style={{ height }}
-      className="overflow-hidden transition-[height] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-    >
-      <div ref={inner}>{children}</div>
-    </div>
-  );
-};
+/**
+ * The entry panel grows and shrinks as its steps change. The height is animated
+ * in CSS (see `.auto-height`), so the panel is always exactly as tall as what
+ * is inside it: a measured height could go stale and clip the buttons.
+ */
+export const AutoHeight: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="auto-height">{children}</div>
+);

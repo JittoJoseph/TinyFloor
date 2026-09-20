@@ -35,7 +35,10 @@
     "visitLobby": "Visita la lobby",
     "lobby": "Lobby",
     "signIn": "Accedi",
-    "rooms": "Stanze"
+    "rooms": "Stanze",
+    "offices": "I tuoi uffici",
+    "account": "Account",
+    "createOffice": "Crea un ufficio"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "L’ufficio virtuale <br></br>più <em>accogliente</em>.",
     "subtitle": "Un ufficio virtuale che sembra un videogioco. Fai due passi, parla con i colleghi e torna a sentirti una squadra.",
-    "cta": "Provalo",
-    "caption": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi che vi passeggiano."
+    "cta": "Entra adesso",
+    "caption": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi che vi passeggiano.",
+    "noSignUp": "niente registrazione, entra e basta",
+    "secondaryCta": "Oppure allestisci un ufficio per il tuo team"
   },
   "landing": {
     "description": "Un ufficio virtuale che sembra un videogioco. Muoviti con il tuo team su un piano in pixel art e avvia una videochiamata semplicemente mettendoti accanto a qualcuno.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "La tua stanza è <em>già aperta.</em>",
     "publicTitle": "Entra nell’ufficio pubblico",
-    "publicBody": "La stanza sempre aperta. Scegli un personaggio, fai un giro e saluta chi c’è.",
-    "createTitle": "Apri una stanza per il tuo team",
-    "createBody": "Crea un account gratuito, dai un nome al tuo workspace e invita il team con un solo link. Le tue stanze restano aperte per tutto il tempo che vuoi.",
+    "publicBody": "Sempre aperto, per chiunque. Scegli un nome, scegli un personaggio e sei dentro. Senza account.",
+    "createTitle": "Allestisci il tuo ufficio",
+    "createBody": "Dagli un nome, invita il team con un link, e le stanze restano aperte quanto vuoi.",
     "sampleName": "Team design",
-    "create": "Crea"
+    "create": "Crea",
+    "publicNote": "inizia da qui"
   },
   "footer": {
     "tagline": "Un ufficio virtuale in cui camminare. Gratis, nel browser.",
@@ -181,7 +187,7 @@
     "signInTitle": "Bentornato",
     "signInSubtitle": "Accedi per tornare nell'ufficio del tuo team.",
     "signUpTitle": "Crea il tuo account",
-    "signUpSubtitle": "Scegli il tuo aspetto, poi allestisci un ufficio per il tuo team.",
+    "signUpSubtitle": "Il tuo nome, la tua email, una password. Tutto qui.",
     "name": "Il tuo nome",
     "namePlaceholder": "Come ti vedranno gli altri",
     "email": "Email",
@@ -193,7 +199,6 @@
     "capsLock": "Il blocco maiuscole è attivo",
     "showPassword": "Mostra password",
     "hidePassword": "Nascondi password",
-    "character": "Personaggio",
     "signIn": "Accedi",
     "signingIn": "Accesso in corso…",
     "createAccount": "Crea account",
@@ -202,7 +207,7 @@
     "createOne": "Crea un account",
     "haveAccount": "Hai già un account?",
     "signInInstead": "Accedi invece",
-    "guestCarryOver": "Stai visitando come {name}. Il tuo nome e il tuo personaggio restano con te.",
+    "guestCarryOver": "Sei in visita come {name}. Il tuo nome viene con te.",
     "continueGuest": "Vuoi solo dare un'occhiata? Visita la lobby come ospite",
     "errors": {
       "wrong_credentials": "Email e password non corrispondono. Riprova.",
@@ -229,7 +234,9 @@
     "walkIn": "Entra",
     "guestNote": "Entri come ospite. <link>Accedi</link> per usare il tuo account.",
     "guestKeep": "Sei un ospite. <link>Crea un account</link> per mantenere nome e personaggio.",
-    "copyInvite": "Copia link di invito"
+    "copyInvite": "Copia link di invito",
+    "continue": "Continua",
+    "walkingInAs": "Entri come {name}"
   },
   "join": {
     "unavailableTitle": "Questa porta non si apre.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Aperta a tutti",
     "title": "La lobby",
-    "subtitle": "Chiunque può passare. Scegli un nome e un personaggio, poi entra e saluta."
+    "subtitle": "Può passare chiunque. Dì chi sei, scegli un personaggio ed entra."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Elimina workspace",
       "leaveTitle": "Esci da questo workspace",
       "leaveBody": "Perderai l'accesso alle stanze di {name} finché qualcuno non ti inviterà di nuovo.",
-      "leaveButton": "Esci dal workspace"
+      "leaveButton": "Esci dal workspace",
+      "nameDetail": "Quello che il team vede in cima all’ufficio."
     },
     "onboarding": {
       "title": "Allestisci il tuo ufficio",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Mostra password",
       "passwordRule": "Almeno 8 caratteri",
       "signsOutOthers": "Resterai connesso qui. Ovunque altrove verrai disconnesso.",
-      "cancel": "Annulla"
+      "cancel": "Annulla",
+      "pageTitle": "Il tuo account"
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Ti unisci come {name} ({email})",
       "createAccount": "Crea un account",
       "signIn": "Ho un account",
-      "needAccount": "Per unirti a un workspace serve un account. Ci vuole un minuto."
+      "needAccount": "Per unirti a un workspace serve un account. Ci vuole un minuto.",
+      "readyToJoin": "Sono io",
+      "accountKeeps": "Un account tiene {name} e il tuo personaggio per la prossima volta.",
+      "you": "Tu"
     },
     "errors": {
       "member_limit": "Il workspace è completo con il piano attuale.",
@@ -1048,6 +1060,39 @@
       "not_found": "Non trovato. Potrebbe essere stato eliminato.",
       "network": "Impossibile raggiungere TinyFloor. Controlla la connessione e riprova.",
       "generic": "Qualcosa è andato storto. Riprova."
+    },
+    "tabs": {
+      "label": "Sezioni di questo ufficio",
+      "rooms": "Stanze",
+      "people": "Persone",
+      "settings": "Impostazioni"
+    },
+    "spaces": {
+      "title": "I tuoi uffici",
+      "new": "Nuovo ufficio",
+      "create": "Crea un ufficio",
+      "emptyTitle": "Non hai ancora un ufficio",
+      "emptyBody": "Un ufficio è riservato a chi inviti, con stanze in cui il team può entrare quando vuole.",
+      "visitLobby": "Vai all’ufficio pubblico",
+      "roles": {
+        "owner": "Questo è tuo",
+        "admin": "Qui sei admin",
+        "member": "Qui sei membro"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Il tuo ufficio",
+    "title": "Dai un nome al tuo ufficio",
+    "subtitle": "È quello che vedrà il tuo team. Puoi cambiarlo dopo.",
+    "nameLabel": "Nome dell’ufficio",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Continua",
+    "create": "Crea ufficio",
+    "creating": "Lo stiamo preparando",
+    "firstRoom": "Piano principale",
+    "freePlan": "Gratis fino a 3 persone. Nessuna carta.",
+    "accountNext": "Poi: crea un account e l’ufficio è pronto.",
+    "justLooking": "Solo un’occhiata? <link>Entra nell’ufficio pubblico</link> invece."
   }
 }

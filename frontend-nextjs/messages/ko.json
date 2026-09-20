@@ -35,7 +35,10 @@
     "visitLobby": "로비 둘러보기",
     "lobby": "로비",
     "signIn": "로그인",
-    "rooms": "방"
+    "rooms": "방",
+    "offices": "내 오피스",
+    "account": "계정",
+    "createOffice": "오피스 만들기"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "가장 <em>아늑한</em> <br></br>가상 오피스.",
     "subtitle": "게임처럼 생긴 가상 오피스. 돌아다니며 동료와 이야기하고 다시 한 팀이 된 기분을 느껴 보세요.",
-    "cta": "사용해 보기",
-    "caption": "TinyFloor 방: 책상이 놓인 16비트 오피스 층을 팀원들이 걸어 다녀요."
+    "cta": "지금 들어가기",
+    "caption": "TinyFloor 방: 책상이 놓인 16비트 오피스 층을 팀원들이 걸어 다녀요.",
+    "noSignUp": "가입 없이 바로 입장",
+    "secondaryCta": "팀을 위한 오피스를 꾸릴 수도 있어요"
   },
   "landing": {
     "description": "게임처럼 생긴 가상 오피스. 팀과 함께 픽셀 아트 층을 돌아다니고, 누군가의 옆에 서기만 하면 영상 통화가 시작돼요.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "당신의 방은 <em>이미 열려 있어요.</em>",
     "publicTitle": "공개 오피스에 들어가기",
-    "publicBody": "항상 열려 있는 방이에요. 캐릭터를 고르고 돌아다니며 그곳에 있는 사람들에게 인사하세요.",
-    "createTitle": "팀을 위한 방 열기",
-    "createBody": "무료 계정을 만들고 워크스페이스 이름을 정한 뒤 링크 하나로 팀을 초대하세요. 방은 원하는 만큼 계속 열려 있어요.",
+    "publicBody": "언제나 열려 있고 누구나 들어올 수 있어요. 이름과 캐릭터만 고르면 끝. 계정도 필요 없어요.",
+    "createTitle": "내 오피스 꾸리기",
+    "createBody": "이름을 정하고 링크 하나로 팀을 초대하세요. 방은 원하는 만큼 계속 열려 있어요.",
     "sampleName": "디자인 팀",
-    "create": "만들기"
+    "create": "만들기",
+    "publicNote": "여기서 시작"
   },
   "footer": {
     "tagline": "걸어 다니는 가상 오피스. 무료, 브라우저에서.",
@@ -181,7 +187,7 @@
     "signInTitle": "다시 오신 것을 환영해요",
     "signInSubtitle": "로그인하고 팀 오피스로 돌아가세요.",
     "signUpTitle": "계정 만들기",
-    "signUpSubtitle": "모습을 고른 다음 팀을 위한 오피스를 만들어 보세요.",
+    "signUpSubtitle": "이름, 이메일, 비밀번호. 그게 전부예요.",
     "name": "이름",
     "namePlaceholder": "다른 사람에게 보이는 이름",
     "email": "이메일",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock이 켜져 있어요",
     "showPassword": "비밀번호 보기",
     "hidePassword": "비밀번호 숨기기",
-    "character": "캐릭터",
     "signIn": "로그인",
     "signingIn": "로그인하는 중…",
     "createAccount": "계정 만들기",
@@ -202,7 +207,7 @@
     "createOne": "계정 만들기",
     "haveAccount": "이미 계정이 있나요?",
     "signInInstead": "로그인하기",
-    "guestCarryOver": "{name}(으)로 둘러보는 중이에요. 이름과 캐릭터는 그대로 가져갈 수 있어요.",
+    "guestCarryOver": "{name}(으)로 둘러보는 중이에요. 이름은 그대로 이어져요.",
     "continueGuest": "구경만 하시나요? 게스트로 로비에 들어가 보세요",
     "errors": {
       "wrong_credentials": "이메일과 비밀번호가 일치하지 않아요. 다시 시도해 주세요.",
@@ -229,7 +234,9 @@
     "walkIn": "입장하기",
     "guestNote": "게스트로 들어가요. <link>로그인</link>하면 계정을 쓸 수 있어요.",
     "guestKeep": "게스트로 참여 중이에요. <link>계정을 만들면</link> 이름과 캐릭터를 유지할 수 있어요.",
-    "copyInvite": "초대 링크 복사"
+    "copyInvite": "초대 링크 복사",
+    "continue": "계속",
+    "walkingInAs": "{name}(으)로 입장"
   },
   "join": {
     "unavailableTitle": "이 문은 열리지 않아요.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "누구나 들어올 수 있어요",
     "title": "로비",
-    "subtitle": "누구나 들를 수 있어요. 이름과 캐릭터를 고르고 들어와서 인사해 보세요."
+    "subtitle": "누구나 들를 수 있어요. 이름을 정하고 캐릭터를 골라 들어오세요."
   },
   "workspace": {
     "lobby": "로비",
@@ -909,7 +916,8 @@
       "deleteButton": "워크스페이스 삭제",
       "leaveTitle": "이 워크스페이스에서 나가기",
       "leaveBody": "누군가 다시 초대할 때까지 {name}의 방에 들어갈 수 없어요.",
-      "leaveButton": "워크스페이스에서 나가기"
+      "leaveButton": "워크스페이스에서 나가기",
+      "nameDetail": "오피스 상단에 팀이 보는 이름이에요."
     },
     "onboarding": {
       "title": "오피스를 꾸며 보세요",
@@ -1015,7 +1023,8 @@
       "showPasswords": "비밀번호 보기",
       "passwordRule": "8자 이상",
       "signsOutOthers": "여기서는 로그인 상태가 유지돼요. 다른 곳에서는 모두 로그아웃돼요.",
-      "cancel": "취소"
+      "cancel": "취소",
+      "pageTitle": "내 계정"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",
@@ -1028,7 +1037,10 @@
       "joiningAs": "{name}({email})(으)로 참여해요",
       "createAccount": "계정 만들기",
       "signIn": "계정이 있어요",
-      "needAccount": "워크스페이스에 참여하려면 계정이 필요해요. 1분이면 돼요."
+      "needAccount": "워크스페이스에 참여하려면 계정이 필요해요. 1분이면 돼요.",
+      "readyToJoin": "저예요",
+      "accountKeeps": "계정을 만들면 {name}과 캐릭터가 다음에도 그대로예요.",
+      "you": "나"
     },
     "errors": {
       "member_limit": "현재 요금제에서 워크스페이스가 꽉 찼어요.",
@@ -1048,6 +1060,39 @@
       "not_found": "찾을 수 없어요. 삭제되었을 수 있어요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
       "generic": "문제가 생겼어요. 다시 시도해 주세요."
+    },
+    "tabs": {
+      "label": "이 오피스의 섹션",
+      "rooms": "방",
+      "people": "사람",
+      "settings": "설정"
+    },
+    "spaces": {
+      "title": "내 오피스",
+      "new": "새 오피스",
+      "create": "오피스 만들기",
+      "emptyTitle": "아직 오피스가 없어요",
+      "emptyBody": "오피스는 초대한 사람만 들어올 수 있고, 팀은 언제든 방에 들어갈 수 있어요.",
+      "visitLobby": "공개 오피스 둘러보기",
+      "roles": {
+        "owner": "내가 소유한 오피스",
+        "admin": "여기서는 관리자",
+        "member": "여기서는 멤버"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "내 오피스",
+    "title": "오피스 이름 정하기",
+    "subtitle": "팀에게 보이는 이름이에요. 나중에 바꿀 수 있어요.",
+    "nameLabel": "오피스 이름",
+    "namePlaceholder": "Acme Studio",
+    "continue": "계속",
+    "create": "오피스 만들기",
+    "creating": "준비하는 중",
+    "firstRoom": "메인 플로어",
+    "freePlan": "3명까지 무료예요. 카드도 필요 없어요.",
+    "accountNext": "다음은 계정 만들기. 그러면 오피스가 준비돼요.",
+    "justLooking": "구경만 하시나요? <link>공개 오피스에 들어가기</link>도 좋아요."
   }
 }

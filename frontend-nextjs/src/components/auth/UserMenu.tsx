@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { User, LogOut, LayoutDashboard, ChevronDown, UserPlus } from "lucide-react";
+import { User, LogOut, LayoutDashboard, ChevronDown, UserPlus, UserRound } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 
@@ -90,17 +90,27 @@ export const UserMenu: React.FC = () => {
                   </div>
                 </Link>
               ) : (
-                <Link href="/dashboard" onClick={() => setIsOpen(false)} className={itemClass}>
-                  <div className={iconWrapClass}>
-                    <LayoutDashboard className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:opacity-100" />
-                  </div>
-                  <div className="text-start">
-                    <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
-                      {tc("dashboard")}
+                <>
+                  <Link href="/dashboard" onClick={() => setIsOpen(false)} className={itemClass}>
+                    <div className={iconWrapClass}>
+                      <LayoutDashboard className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:opacity-100" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
+                      {tc("offices")}
                     </span>
-                    <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">{t("manageProfile")}</span>
-                  </div>
-                </Link>
+                  </Link>
+                  <Link href="/account" onClick={() => setIsOpen(false)} className={itemClass}>
+                    <div className={iconWrapClass}>
+                      <UserRound className="w-3.5 h-3.5 text-[var(--color-braun-text)] opacity-70 group-hover:opacity-100" />
+                    </div>
+                    <div className="text-start">
+                      <span className="block text-xs font-bold uppercase tracking-widest text-[var(--color-braun-text)]">
+                        {tc("account")}
+                      </span>
+                      <span className="text-[10px] text-[var(--color-braun-text)] opacity-50">{t("manageProfile")}</span>
+                    </div>
+                  </Link>
+                </>
               )}
 
               <button

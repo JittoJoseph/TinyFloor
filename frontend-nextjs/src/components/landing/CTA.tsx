@@ -5,6 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { OfficeScene } from "@/components/OfficeScene";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { Reveal } from "./Reveal";
+import { Doodle } from "./Doodle";
 
 const crowd = [
   { character: "Adam", left: "16%", direction: "right" as const },
@@ -39,7 +40,10 @@ export const CTA: React.FC = () => {
 
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           <Reveal className="h-full">
-            <Link href="/lobby" className={tileClass}>
+            <Link href="/lobby" className={`${tileClass} relative`}>
+              <Doodle arrow="up-start" className="absolute end-5 top-4 hidden sm:inline-flex">
+                {t("publicNote")}
+              </Doodle>
               <span className="flex items-center gap-3 mb-4">
                 <span className="w-10 h-10 rounded-xl bg-[var(--color-braun-orange)] text-white flex items-center justify-center shrink-0">
                   <DoorOpen className="w-5 h-5" />
@@ -71,7 +75,7 @@ export const CTA: React.FC = () => {
           </Reveal>
 
           <Reveal className="h-full">
-            <Link href="/auth?mode=signup" className={tileClass}>
+            <Link href="/create" className={tileClass}>
               <span className="flex items-center gap-3 mb-4">
                 <span className="w-10 h-10 rounded-xl bg-[var(--color-braun-text)] text-[#f2efe6] flex items-center justify-center shrink-0">
                   <Plus className="w-5 h-5" />

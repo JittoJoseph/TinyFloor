@@ -35,7 +35,10 @@
     "visitLobby": "Lobby besuchen",
     "lobby": "Lobby",
     "signIn": "Anmelden",
-    "rooms": "Räume"
+    "rooms": "Räume",
+    "offices": "Deine Büros",
+    "account": "Konto",
+    "createOffice": "Büro erstellen"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "Das <em>gemütlichste</em> <br></br>virtuelle Büro.",
     "subtitle": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf herum, sprich mit deinen Kollegen und fühl dich wieder wie ein Team.",
-    "cta": "Ausprobieren",
-    "caption": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern, die darauf herumlaufen."
+    "cta": "Jetzt eintreten",
+    "caption": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern, die darauf herumlaufen.",
+    "noSignUp": "keine Anmeldung, einfach rein",
+    "secondaryCta": "Oder richte ein Büro für dein Team ein"
   },
   "landing": {
     "description": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Dein Raum ist <em>schon offen.</em>",
     "publicTitle": "Betritt das öffentliche Büro",
-    "publicBody": "Der Raum, der immer offen ist. Wähl einen Charakter, lauf herum und sag Hallo zu allen, die gerade da sind.",
-    "createTitle": "Eröffne einen Raum für dein Team",
-    "createBody": "Erstelle ein kostenloses Konto, gib deinem Workspace einen Namen und lade dein Team mit einem Link ein. Deine Räume bleiben offen, so lange du willst.",
+    "publicBody": "Immer offen, für alle. Name wählen, Charakter wählen, drin. Ohne Konto.",
+    "createTitle": "Richte dein eigenes Büro ein",
+    "createBody": "Benenne es, lade dein Team mit einem Link ein, und die Räume bleiben offen, so lange du willst.",
     "sampleName": "Designteam",
-    "create": "Erstellen"
+    "create": "Erstellen",
+    "publicNote": "hier starten"
   },
   "footer": {
     "tagline": "Ein virtuelles Büro zum Herumlaufen. Kostenlos, im Browser.",
@@ -181,7 +187,7 @@
     "signInTitle": "Willkommen zurück",
     "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
     "signUpTitle": "Konto erstellen",
-    "signUpSubtitle": "Such dir dein Aussehen aus und richte dann ein Büro für dein Team ein.",
+    "signUpSubtitle": "Dein Name, deine E-Mail, ein Passwort. Mehr braucht es nicht.",
     "name": "Dein Name",
     "namePlaceholder": "So sehen dich andere",
     "email": "E-Mail",
@@ -193,7 +199,6 @@
     "capsLock": "Die Feststelltaste ist aktiv",
     "showPassword": "Passwort anzeigen",
     "hidePassword": "Passwort verbergen",
-    "character": "Figur",
     "signIn": "Anmelden",
     "signingIn": "Anmeldung läuft…",
     "createAccount": "Konto erstellen",
@@ -202,7 +207,7 @@
     "createOne": "Konto erstellen",
     "haveAccount": "Du hast schon ein Konto?",
     "signInInstead": "Stattdessen anmelden",
-    "guestCarryOver": "Du bist als {name} hier. Dein Name und deine Figur kommen mit.",
+    "guestCarryOver": "Du bist als {name} hier. Dein Name kommt mit.",
     "continueGuest": "Nur mal schauen? Besuche die Lobby als Gast",
     "errors": {
       "wrong_credentials": "E-Mail und Passwort passen nicht zusammen. Versuch es noch einmal.",
@@ -229,7 +234,9 @@
     "walkIn": "Eintreten",
     "guestNote": "Du kommst als Gast. <link>Melde dich an</link>, um dein Konto zu nutzen.",
     "guestKeep": "Du bist Gast. <link>Erstelle ein Konto</link>, um Namen und Figur zu behalten.",
-    "copyInvite": "Einladungslink kopieren"
+    "copyInvite": "Einladungslink kopieren",
+    "continue": "Weiter",
+    "walkingInAs": "Du kommst als {name} rein"
   },
   "join": {
     "unavailableTitle": "Diese Tür geht nicht auf.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Offen für alle",
     "title": "Die Lobby",
-    "subtitle": "Hier kann jeder vorbeischauen. Wähle einen Namen und eine Figur, dann komm rein und sag Hallo."
+    "subtitle": "Jeder kann vorbeischauen. Sag, wer du bist, wähle einen Charakter und komm rein."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Workspace löschen",
       "leaveTitle": "Diesen Workspace verlassen",
       "leaveBody": "Du verlierst den Zugang zu den Räumen in {name}, bis dich jemand wieder einlädt.",
-      "leaveButton": "Workspace verlassen"
+      "leaveButton": "Workspace verlassen",
+      "nameDetail": "Was dein Team oben im Büro sieht."
     },
     "onboarding": {
       "title": "Richte dein Büro ein",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Passwörter anzeigen",
       "passwordRule": "Mindestens 8 Zeichen",
       "signsOutOthers": "Hier bleibst du angemeldet. Überall sonst wirst du abgemeldet.",
-      "cancel": "Abbrechen"
+      "cancel": "Abbrechen",
+      "pageTitle": "Dein Konto"
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Du trittst bei als {name} ({email})",
       "createAccount": "Konto erstellen",
       "signIn": "Ich habe ein Konto",
-      "needAccount": "Um einem Workspace beizutreten, brauchst du ein Konto. Das dauert nur eine Minute."
+      "needAccount": "Um einem Workspace beizutreten, brauchst du ein Konto. Das dauert nur eine Minute.",
+      "readyToJoin": "Das bin ich",
+      "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
+      "you": "Du"
     },
     "errors": {
       "member_limit": "Der Workspace ist in seinem aktuellen Plan voll.",
@@ -1048,6 +1060,39 @@
       "not_found": "Das wurde nicht gefunden. Vielleicht wurde es gelöscht.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
       "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+    },
+    "tabs": {
+      "label": "Bereiche dieses Büros",
+      "rooms": "Räume",
+      "people": "Leute",
+      "settings": "Einstellungen"
+    },
+    "spaces": {
+      "title": "Deine Büros",
+      "new": "Neues Büro",
+      "create": "Büro erstellen",
+      "emptyTitle": "Du hast noch kein Büro",
+      "emptyBody": "Ein Büro ist nur für die Leute, die du einlädst, mit Räumen, die dein Team jederzeit betreten kann.",
+      "visitLobby": "Ins öffentliche Büro",
+      "roles": {
+        "owner": "Dir gehört dieses",
+        "admin": "Du bist hier Admin",
+        "member": "Du bist hier Mitglied"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Dein eigenes Büro",
+    "title": "Benenne dein Büro",
+    "subtitle": "Das sieht dein Team. Du kannst es später ändern.",
+    "nameLabel": "Name des Büros",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Weiter",
+    "create": "Büro erstellen",
+    "creating": "Wird eingerichtet",
+    "firstRoom": "Hauptetage",
+    "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
+    "accountNext": "Als Nächstes: ein Konto, dann ist das Büro fertig.",
+    "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen."
   }
 }

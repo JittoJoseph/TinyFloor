@@ -35,7 +35,10 @@
     "visitLobby": "Odwiedź lobby",
     "lobby": "Lobby",
     "signIn": "Zaloguj się",
-    "rooms": "Pokoje"
+    "rooms": "Pokoje",
+    "offices": "Twoje biura",
+    "account": "Konto",
+    "createOffice": "Utwórz biuro"
   },
   "languageSwitcher": {
     "label": "Język",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "<em>Najprzytulniejsze</em> <br></br>wirtualne biuro.",
     "subtitle": "Wirtualne biuro, które wygląda jak gra. Chodź po nim, rozmawiaj ze współpracownikami i znów poczuj się jak zespół.",
-    "cta": "Wypróbuj",
-    "caption": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i spacerującymi członkami zespołu."
+    "cta": "Wejdź teraz",
+    "caption": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i spacerującymi członkami zespołu.",
+    "noSignUp": "bez rejestracji, po prostu wejdź",
+    "secondaryCta": "Albo urządź biuro dla swojego zespołu"
   },
   "landing": {
     "description": "Wirtualne biuro, które wygląda jak gra. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Twój pokój jest <em>już otwarty.</em>",
     "publicTitle": "Wejdź do publicznego biura",
-    "publicBody": "Pokój, który jest zawsze otwarty. Wybierz postać, pospaceruj i przywitaj się z tymi, którzy tam są.",
-    "createTitle": "Otwórz pokój dla zespołu",
-    "createBody": "Załóż darmowe konto, nazwij swój obszar roboczy i zaproś zespół jednym linkiem. Twoje pokoje są otwarte tak długo, jak chcesz.",
+    "publicBody": "Zawsze otwarte, dla każdego. Wybierz imię, wybierz postać i jesteś w środku. Bez konta.",
+    "createTitle": "Urządź własne biuro",
+    "createBody": "Nazwij je, zaproś zespół jednym linkiem, a pokoje zostaną otwarte tak długo, jak chcesz.",
     "sampleName": "Zespół designu",
-    "create": "Utwórz"
+    "create": "Utwórz",
+    "publicNote": "zacznij tutaj"
   },
   "footer": {
     "tagline": "Wirtualne biuro, po którym się chodzi. Za darmo, w przeglądarce.",
@@ -181,7 +187,7 @@
     "signInTitle": "Witaj ponownie",
     "signInSubtitle": "Zaloguj się, aby wrócić do biura swojego zespołu.",
     "signUpTitle": "Utwórz konto",
-    "signUpSubtitle": "Wybierz swój wygląd, a potem urządź biuro dla zespołu.",
+    "signUpSubtitle": "Twoje imię, e-mail i hasło. Tyle wystarczy.",
     "name": "Twoje imię",
     "namePlaceholder": "Tak zobaczą Cię inni",
     "email": "E-mail",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock jest włączony",
     "showPassword": "Pokaż hasło",
     "hidePassword": "Ukryj hasło",
-    "character": "Postać",
     "signIn": "Zaloguj się",
     "signingIn": "Logowanie…",
     "createAccount": "Utwórz konto",
@@ -202,7 +207,7 @@
     "createOne": "Utwórz konto",
     "haveAccount": "Masz już konto?",
     "signInInstead": "Zaloguj się",
-    "guestCarryOver": "Odwiedzasz jako {name}. Twoje imię i postać zostaną z Tobą.",
+    "guestCarryOver": "Jesteś tu jako {name}. Twoje imię idzie z tobą.",
     "continueGuest": "Tylko się rozglądasz? Odwiedź lobby jako gość",
     "errors": {
       "wrong_credentials": "E-mail i hasło nie pasują do siebie. Spróbuj ponownie.",
@@ -229,7 +234,9 @@
     "walkIn": "Wejdź",
     "guestNote": "Wchodzisz jako gość. <link>Zaloguj się</link>, aby użyć swojego konta.",
     "guestKeep": "Jesteś gościem. <link>Utwórz konto</link>, aby zachować imię i postać.",
-    "copyInvite": "Kopiuj link z zaproszeniem"
+    "copyInvite": "Kopiuj link z zaproszeniem",
+    "continue": "Dalej",
+    "walkingInAs": "Wchodzisz jako {name}"
   },
   "join": {
     "unavailableTitle": "Te drzwi się nie otwierają.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Otwarte dla wszystkich",
     "title": "Lobby",
-    "subtitle": "Każdy może wpaść. Wybierz imię i postać, wejdź i się przywitaj."
+    "subtitle": "Każdy może wpaść. Powiedz, kim jesteś, wybierz postać i wejdź."
   },
   "workspace": {
     "lobby": "Lobby",
@@ -909,7 +916,8 @@
       "deleteButton": "Usuń obszar roboczy",
       "leaveTitle": "Opuść ten obszar roboczy",
       "leaveBody": "Stracisz dostęp do pokoi w {name}, dopóki ktoś Cię znowu nie zaprosi.",
-      "leaveButton": "Opuść obszar roboczy"
+      "leaveButton": "Opuść obszar roboczy",
+      "nameDetail": "To, co zespół widzi na górze biura."
     },
     "onboarding": {
       "title": "Urządź swoje biuro",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Pokaż hasła",
       "passwordRule": "Co najmniej 8 znaków",
       "signsOutOthers": "Tutaj pozostaniesz zalogowany. Wszędzie indziej nastąpi wylogowanie.",
-      "cancel": "Anuluj"
+      "cancel": "Anuluj",
+      "pageTitle": "Twoje konto"
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Dołączasz jako {name} ({email})",
       "createAccount": "Utwórz konto",
       "signIn": "Mam konto",
-      "needAccount": "Aby dołączyć do obszaru roboczego, potrzebujesz konta. To zajmie minutę."
+      "needAccount": "Aby dołączyć do obszaru roboczego, potrzebujesz konta. To zajmie minutę.",
+      "readyToJoin": "To ja",
+      "accountKeeps": "Konto zapamięta {name} i twoją postać na następny raz.",
+      "you": "Ty"
     },
     "errors": {
       "member_limit": "Obszar roboczy jest pełny w obecnym planie.",
@@ -1048,6 +1060,39 @@
       "not_found": "Nie znaleziono. Mogło zostać usunięte.",
       "network": "Nie można połączyć się z TinyFloor. Sprawdź połączenie i spróbuj ponownie.",
       "generic": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "tabs": {
+      "label": "Sekcje tego biura",
+      "rooms": "Pokoje",
+      "people": "Osoby",
+      "settings": "Ustawienia"
+    },
+    "spaces": {
+      "title": "Twoje biura",
+      "new": "Nowe biuro",
+      "create": "Utwórz biuro",
+      "emptyTitle": "Nie masz jeszcze biura",
+      "emptyBody": "Biuro jest tylko dla osób, które zaprosisz, z pokojami, do których zespół może wejść o każdej porze.",
+      "visitLobby": "Odwiedź publiczne biuro",
+      "roles": {
+        "owner": "To biuro jest twoje",
+        "admin": "Jesteś tu administratorem",
+        "member": "Jesteś tu członkiem"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Twoje własne biuro",
+    "title": "Nazwij swoje biuro",
+    "subtitle": "To zobaczy twój zespół. Możesz zmienić później.",
+    "nameLabel": "Nazwa biura",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Dalej",
+    "create": "Utwórz biuro",
+    "creating": "Przygotowujemy je",
+    "firstRoom": "Główne piętro",
+    "freePlan": "Za darmo do 3 osób. Bez karty.",
+    "accountNext": "Dalej: załóż konto i biuro jest gotowe.",
+    "justLooking": "Tylko się rozglądasz? <link>Wejdź do publicznego biura</link>."
   }
 }

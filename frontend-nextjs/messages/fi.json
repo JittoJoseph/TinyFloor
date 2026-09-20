@@ -35,7 +35,10 @@
     "visitLobby": "Käy aulassa",
     "lobby": "Aula",
     "signIn": "Kirjaudu",
-    "rooms": "Huoneet"
+    "rooms": "Huoneet",
+    "offices": "Toimistosi",
+    "account": "Tili",
+    "createOffice": "Luo toimisto"
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -50,8 +53,10 @@
   "hero": {
     "title": "<em>Kodikkain</em> <br></br>virtuaalitoimisto.",
     "subtitle": "Virtuaalitoimisto, joka näyttää peliltä. Kävele ympäriinsä, juttele työkavereiden kanssa ja tunne olevasi taas tiimi.",
-    "cta": "Kokeile",
-    "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä."
+    "cta": "Astu sisään nyt",
+    "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä.",
+    "noSignUp": "ei rekisteröitymistä, kävele vain sisään",
+    "secondaryCta": "Tai perusta toimisto tiimillesi"
   },
   "landing": {
     "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
@@ -158,11 +163,12 @@
   "cta": {
     "title": "Huoneesi on <em>jo auki.</em>",
     "publicTitle": "Astu julkiseen toimistoon",
-    "publicBody": "Huone, joka on aina auki. Valitse hahmo, kävele ympäriinsä ja tervehdi paikallaolijoita.",
-    "createTitle": "Avaa huone tiimillesi",
-    "createBody": "Luo ilmainen tili, nimeä työtilasi ja kutsu tiimisi yhdellä linkillä. Huoneesi pysyvät auki niin kauan kuin haluat.",
+    "publicBody": "Aina auki, kaikille. Valitse nimi, valitse hahmo, ja olet sisällä. Ei tiliä.",
+    "createTitle": "Perusta oma toimistosi",
+    "createBody": "Nimeä se, kutsu tiimisi yhdellä linkillä, ja huoneet pysyvät auki niin kauan kuin haluat.",
     "sampleName": "Designtiimi",
-    "create": "Luo"
+    "create": "Luo",
+    "publicNote": "aloita tästä"
   },
   "footer": {
     "tagline": "Virtuaalitoimisto, jossa kävellään. Ilmainen, selaimessa.",
@@ -181,7 +187,7 @@
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
-    "signUpSubtitle": "Valitse ulkonäkösi ja perusta sitten toimisto tiimillesi.",
+    "signUpSubtitle": "Nimesi, sähköpostisi ja salasana. Siinä kaikki.",
     "name": "Nimesi",
     "namePlaceholder": "Näin muut näkevät sinut",
     "email": "Sähköposti",
@@ -193,7 +199,6 @@
     "capsLock": "Caps Lock on päällä",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana",
-    "character": "Hahmo",
     "signIn": "Kirjaudu",
     "signingIn": "Kirjaudutaan…",
     "createAccount": "Luo tili",
@@ -202,7 +207,7 @@
     "createOne": "Luo tili",
     "haveAccount": "Onko sinulla jo tili?",
     "signInInstead": "Kirjaudu sen sijaan",
-    "guestCarryOver": "Vierailet nimellä {name}. Nimesi ja hahmosi tulevat mukana.",
+    "guestCarryOver": "Olet vierailulla nimellä {name}. Nimesi tulee mukaan.",
     "continueGuest": "Katseletko vain? Vieraile aulassa vieraana",
     "errors": {
       "wrong_credentials": "Sähköposti ja salasana eivät täsmää. Yritä uudelleen.",
@@ -229,7 +234,9 @@
     "walkIn": "Astu sisään",
     "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
     "guestKeep": "Olet vieras. <link>Luo tili</link>, niin nimesi ja hahmosi säilyvät.",
-    "copyInvite": "Kopioi kutsulinkki"
+    "copyInvite": "Kopioi kutsulinkki",
+    "continue": "Jatka",
+    "walkingInAs": "Astut sisään nimellä {name}"
   },
   "join": {
     "unavailableTitle": "Tämä ovi ei aukea.",
@@ -874,7 +881,7 @@
   "lobby": {
     "eyebrow": "Avoinna kaikille",
     "title": "Aula",
-    "subtitle": "Kuka tahansa voi poiketa. Valitse nimi ja hahmo, tule sisään ja sano hei."
+    "subtitle": "Kuka tahansa voi poiketa. Kerro kuka olet, valitse hahmo ja astu sisään."
   },
   "workspace": {
     "lobby": "Aula",
@@ -909,7 +916,8 @@
       "deleteButton": "Poista työtila",
       "leaveTitle": "Poistu tästä työtilasta",
       "leaveBody": "Menetät pääsyn työtilan {name} huoneisiin, kunnes joku kutsuu sinut uudelleen.",
-      "leaveButton": "Poistu työtilasta"
+      "leaveButton": "Poistu työtilasta",
+      "nameDetail": "Se, minkä tiimisi näkee toimiston yläreunassa."
     },
     "onboarding": {
       "title": "Perusta toimistosi",
@@ -1015,7 +1023,8 @@
       "showPasswords": "Näytä salasanat",
       "passwordRule": "Vähintään 8 merkkiä",
       "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
-      "cancel": "Peruuta"
+      "cancel": "Peruuta",
+      "pageTitle": "Tilisi"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
@@ -1028,7 +1037,10 @@
       "joiningAs": "Liityt nimellä {name} ({email})",
       "createAccount": "Luo tili",
       "signIn": "Minulla on tili",
-      "needAccount": "Työtilaan liittyminen vaatii tilin. Se vie minuutin."
+      "needAccount": "Työtilaan liittyminen vaatii tilin. Se vie minuutin.",
+      "readyToJoin": "Se olen minä",
+      "accountKeeps": "Tili muistaa nimen {name} ja hahmosi ensi kertaa varten.",
+      "you": "Sinä"
     },
     "errors": {
       "member_limit": "Työtila on täynnä nykyisellä paketilla.",
@@ -1048,6 +1060,39 @@
       "not_found": "Sitä ei löytynyt. Se on ehkä poistettu.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
       "generic": "Jokin meni vikaan. Yritä uudelleen."
+    },
+    "tabs": {
+      "label": "Tämän toimiston osiot",
+      "rooms": "Huoneet",
+      "people": "Ihmiset",
+      "settings": "Asetukset"
+    },
+    "spaces": {
+      "title": "Toimistosi",
+      "new": "Uusi toimisto",
+      "create": "Luo toimisto",
+      "emptyTitle": "Sinulla ei ole vielä toimistoa",
+      "emptyBody": "Toimisto on vain kutsumillesi, ja sen huoneisiin tiimisi voi astua milloin tahansa.",
+      "visitLobby": "Käy julkisessa toimistossa",
+      "roles": {
+        "owner": "Omistat tämän",
+        "admin": "Olet täällä ylläpitäjä",
+        "member": "Olet täällä jäsen"
+      }
     }
+  },
+  "create": {
+    "eyebrow": "Oma toimistosi",
+    "title": "Nimeä toimistosi",
+    "subtitle": "Tämän tiimisi näkee. Voit muuttaa sen myöhemmin.",
+    "nameLabel": "Toimiston nimi",
+    "namePlaceholder": "Acme Studio",
+    "continue": "Jatka",
+    "create": "Luo toimisto",
+    "creating": "Valmistellaan",
+    "firstRoom": "Pääkerros",
+    "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
+    "accountNext": "Seuraavaksi: tee tili, niin toimisto on valmis.",
+    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan."
   }
 }

@@ -7,9 +7,10 @@ import { AlertCircle } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type RoomDetails } from "@/lib/api";
-import { roomPath } from "@/lib/links";
+import { roomPath, spacePath } from "@/lib/links";
 import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
+import { WalkIn } from "@/components/entry/WalkIn";
 import { RoomView } from "@/components/room/RoomView";
 
 /** A workspace room. Members walk straight in; everyone else is sent to sign in. */
@@ -21,6 +22,7 @@ export default function RoomPage() {
   const { user, isLoading } = useAuth();
   const [room, setRoom] = useState<RoomDetails | null>(null);
   const [missing, setMissing] = useState(false);
+  const [inside, setInside] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
@@ -61,6 +63,19 @@ export default function RoomPage() {
 
   if (!user || user.guest || !room) return null;
 
+  // The door: pick who you'll be in there, then walk in.
+  if (!inside) {
+    return (
+      <WalkIn
+        eyebrow={room.workspaceName}
+        title={room.name}
+        backHref={spacePath(room.workspaceId)}
+        sharePath={roomPath(roomId)}
+        onReady={() => setInside(true)}
+      />
+    );
+  }
+
   return (
     <RoomView
       title={room.name}
@@ -68,7 +83,7 @@ export default function RoomPage() {
       user={user}
       ticketFor={() => api.roomTicket(roomId)}
       sharePath={roomPath(roomId)}
-      leaveHref="/dashboard"
+      leaveHref={spacePath(room.workspaceId)}
     />
   );
 }

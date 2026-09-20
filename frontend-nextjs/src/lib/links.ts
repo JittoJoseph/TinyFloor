@@ -8,6 +8,9 @@ import { SITE_URL } from "./site";
 /** The free public lobby, open to anyone. */
 export const lobbyPath = "/lobby";
 
+/** One space's own pages: rooms, people, settings. */
+export const spacePath = (workspaceId: string) => `/space/${encodeURIComponent(workspaceId)}`;
+
 /** A workspace room, for its members. */
 export const roomPath = (roomId: string) => `/room/${encodeURIComponent(roomId)}`;
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 import { HeroOfficeScene } from "./HeroOfficeScene";
+import { Doodle } from "./Doodle";
 import { Link } from "@/lib/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
 
@@ -62,14 +64,29 @@ export const Hero: React.FC = () => {
             {t("subtitle")}
           </p>
 
-          <Link
-            href="/lobby"
-            className="group relative flex items-center justify-center w-40 md:w-48 h-14 md:h-16 bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
-          >
-            <div className="w-[92%] h-[82%] rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center justify-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
-              {t("cta")}
-            </div>
-          </Link>
+          {/* Two ways in, the one that needs nothing first. */}
+          <div className="relative flex flex-col items-center gap-3">
+            <Doodle arrow="down-end" className="hidden md:inline-flex absolute end-full top-1 me-1 -rotate-6">
+              {t("noSignUp")}
+            </Doodle>
+
+            <Link
+              href="/lobby"
+              className="group relative flex items-center justify-center w-56 md:w-64 h-14 md:h-16 bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
+            >
+              <div className="w-[92%] h-[82%] rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center justify-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
+                {t("cta")}
+              </div>
+            </Link>
+
+            <Link
+              href="/create"
+              className="cursor-pointer group inline-flex items-center gap-1.5 font-body text-[15px] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 transition-opacity"
+            >
+              {t("secondaryCta")}
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+            </Link>
+          </div>
         </div>
 
         <BrowserWindow caption={t("caption")}>

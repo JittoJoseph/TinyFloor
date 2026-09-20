@@ -95,6 +95,8 @@ master.
 - `pnpm dev` in `frontend-nextjs/` as today, pointed at the local API and
   realtime URLs through `.env`.
 - Secrets for local use go in each Worker's `.dev.vars`, which is gitignored.
+  That file also carries `SITE_ORIGINS=http://localhost:3000`, because the
+  deployed systems only allow their own site.
 - The licensed art keeps coming from `private-assets/` as it does now.
 
 ## Tests

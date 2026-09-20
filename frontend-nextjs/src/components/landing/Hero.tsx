@@ -69,6 +69,13 @@ export const Hero: React.FC = () => {
             <Doodle arrow="down-end" className="hidden md:inline-flex absolute end-full top-1 me-1 -rotate-6">
               {t("noSignUp")}
             </Doodle>
+            {/* No room for the arrow on a phone, so the note goes under the button. */}
+            <span
+              aria-hidden="true"
+              className="md:hidden font-hand text-[1.2rem] leading-none text-[var(--color-braun-text)] opacity-45 -rotate-2"
+            >
+              {t("noSignUp")}
+            </span>
 
             <Link
               href="/lobby"

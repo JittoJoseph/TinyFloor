@@ -90,7 +90,7 @@ export default function ControlBar({
   );
 
   return (
-    <div className="fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-1.5rem)]">
+    <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100%-1.5rem)]">
       <div className={`${surface} rounded-full px-2 py-2 flex items-center gap-1.5 sm:gap-2`}>
         <StatusSelector currentStatus={status} onStatusChange={handleStatusChange} />
 

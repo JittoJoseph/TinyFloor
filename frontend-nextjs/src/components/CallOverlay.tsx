@@ -17,7 +17,7 @@ export default function CallOverlay() {
       <CallCards />
 
       {incoming && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[75] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-[#fbfbf9] rounded-3xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] border border-black/[0.07] p-7 w-[min(20rem,100%)] text-center">
             <span className="w-16 h-16 rounded-full bg-[var(--color-braun-text)]/[0.06] text-[var(--color-braun-text)] flex items-center justify-center mx-auto mb-4 animate-pulse">
               {incoming.video ? <Video className="w-7 h-7" /> : <Phone className="w-7 h-7" />}
@@ -51,7 +51,7 @@ export default function CallOverlay() {
         </div>
       )}
 
-      <div className="fixed end-3 sm:end-5 bottom-20 sm:bottom-24 z-40 flex flex-col items-end gap-2 pointer-events-none">
+      <div className="absolute end-3 sm:end-5 bottom-20 sm:bottom-24 z-40 flex flex-col items-end gap-2 pointer-events-none">
         {error && (
           <button
             type="button"

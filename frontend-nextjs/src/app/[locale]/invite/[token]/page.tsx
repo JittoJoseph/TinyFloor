@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { invitePath } from "@/lib/links";
 import { fetchPublic } from "@/lib/serverApi";
-import { InviteEntry, type InvitePreview } from "@/components/workspace/InviteEntry";
+import { InviteEntry, type InvitePreview } from "@/components/entry/InviteEntry";
 
 type Props = { params: Promise<{ locale: string; token: string }> };
 
@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({
     locale,
     path: invitePath(token),
-    title: invite ? t("inviteTitle", { workspace: invite.workspaceName }) : t("inviteFallbackTitle"),
+    title: invite ? t("inviteTitle", { office: invite.officeName }) : t("inviteFallbackTitle"),
     description: invite
-      ? t("inviteDescription", { workspace: invite.workspaceName, name: invite.invitedBy })
+      ? t("inviteDescription", { office: invite.officeName, name: invite.invitedBy })
       : t("description"),
     noindex: true,
   });

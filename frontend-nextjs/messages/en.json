@@ -5,8 +5,8 @@
     "ogAlt": "A TinyFloor room: a 16-bit office floor with desks and teammates",
     "keywords": "virtual office, remote work, spatial chat, online collaboration, virtual workspace, metaverse office, proximity chat, proximity video chat, virtual coworking space, browser video calls",
     "joinTitle": "Join Room",
-    "joinRoomTitle": "Join {room}",
-    "joinRoomDescription": "You're invited to {room} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
+    "joinRoomTitle": "Join {office}",
+    "joinRoomDescription": "You're invited to {office} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
     "authTitle": "Sign In",
     "authDescription": "Sign in to TinyFloor to keep your name, your character and a list of your rooms.",
     "dashboardTitle": "Dashboard",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Page Not Found",
     "lobbyTitle": "The Lobby",
     "lobbyDescription": "Walk into TinyFloor's free public lobby as a guest. Pick a character, meet people, and try proximity video calls in your browser.",
-    "inviteTitle": "Join {workspace} on TinyFloor",
+    "inviteTitle": "Join {office} on TinyFloor",
     "inviteFallbackTitle": "You're invited to TinyFloor",
-    "inviteDescription": "{name} invited you to {workspace} on TinyFloor, a virtual office you walk around in."
+    "inviteDescription": "{name} invited you to {office} on TinyFloor, a virtual office you walk around in."
   },
   "common": {
     "loading": "Loading...",
@@ -336,7 +336,18 @@
     "welcome": "Welcome to the room chat. Messages are visible to everyone here.",
     "placeholder": "Type a message...",
     "close": "Close chat",
-    "send": "Send message"
+    "send": "Send message",
+    "channels": "Channels",
+    "directMessages": "Direct messages",
+    "newChannel": "New channel",
+    "channelName": "Channel name",
+    "say": "Message {channel}",
+    "older": "Older messages",
+    "nothingYet": "Nothing here yet. Say the first thing.",
+    "noDirect": "No direct messages yet.",
+    "attach": "Add an image",
+    "attachmentsPaid": "Images are part of a paid office.",
+    "attachmentsSoon": "Images land here shortly."
   },
   "proximity": {
     "videoCall": "Video call",
@@ -883,7 +894,7 @@
     "title": "The lobby",
     "subtitle": "Anyone can drop in. Say who you are, pick a character, and walk in."
   },
-  "workspace": {
+  "office": {
     "lobby": "Lobby",
     "copy": "Copy",
     "copied": "Copied",
@@ -917,7 +928,14 @@
       "leaveTitle": "Leave this workspace",
       "leaveBody": "You'll lose access to the rooms in {name} until someone invites you again.",
       "leaveButton": "Leave workspace",
-      "nameDetail": "What your team sees at the top of the space."
+      "nameDetail": "What your team sees at the top of the space.",
+      "seats": "{used} of {seats} seats",
+      "seatsNote": "A seat is a member. Someone leaving frees theirs.",
+      "close": "Delete workspace",
+      "closeIt": "Close the office",
+      "closeSure": "Close it for everyone?",
+      "leave": "Leave workspace",
+      "wrong": "That didn't work. Try again."
     },
     "onboarding": {
       "title": "Set up your office",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} invited you",
       "asAdmin": "You're invited to join as an admin.",
       "asMember": "You're invited to join the team.",
-      "join": "Join {workspace}",
+      "join": "Join {office}",
       "joiningAs": "Joining as {name} ({email})",
       "createAccount": "Create an account",
       "signIn": "I have an account",
@@ -1078,8 +1096,52 @@
         "owner": "You own this one",
         "admin": "You're an admin here",
         "member": "You're a member here"
-      }
-    }
+      },
+      "members": "{used} of {seats} members"
+    },
+    "floor": "Floor",
+    "chat": "Chat",
+    "people": {
+      "title": "Members",
+      "members": "Members",
+      "invitations": "Pending invites",
+      "guests": "Guests",
+      "guestsNote": "A guest walks in on a link. They take no seat and cannot invite anyone.",
+      "invite": "Invite",
+      "seats": "{used} of {seats} seats",
+      "seatsFull": "Every seat is taken.",
+      "seatsFree": "There is room for more.",
+      "onFloorNow": "{count} on the floor now",
+      "noInvitations": "Nobody has been invited yet.",
+      "noGuestLinks": "No guest links right now.",
+      "newGuestLink": "Create guest link",
+      "copied": "Copied",
+      "revoke": "Revoke",
+      "remove": "Remove",
+      "leave": "Leave",
+      "makeAdmin": "Make admin",
+      "makeMember": "Make member",
+      "more": "More",
+      "message": "Message",
+      "you": "you",
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member",
+      "noEmail": "No email",
+      "expires": "Expires {date}",
+      "anyoneWithLink": "Anyone with the link",
+      "wrong": "That didn't work. Try again."
+    },
+    "office": "Office",
+    "offices": "Your offices",
+    "leave": "Leave",
+    "settingsButton": "Settings",
+    "backToFloor": "Back to the floor",
+    "onTheFloor": "On the floor in {office}",
+    "goneTitle": "This office is gone",
+    "gone": "It was closed, or you are no longer a member.",
+    "backToOffices": "Back to your offices",
+    "peopleTab": "People"
   },
   "create": {
     "eyebrow": "Your own office",

@@ -154,7 +154,7 @@ export default function ChatPanel({
   return (
     <div
       ref={panelRef}
-      className={`${surface} fixed z-50 flex flex-col font-body overflow-hidden rounded-3xl transition-all duration-200 inset-x-3 bottom-20 h-[min(60vh,26rem)] sm:inset-x-auto sm:end-5 sm:bottom-24 sm:w-[21rem] sm:h-[28rem] ${
+      className={`${surface} absolute z-50 flex flex-col font-body overflow-hidden rounded-3xl transition-all duration-200 inset-x-3 bottom-20 h-[min(60%,26rem)] sm:inset-x-auto sm:end-5 sm:bottom-24 sm:w-[21rem] sm:h-[28rem] ${
         isOpen
           ? "opacity-100 pointer-events-auto translate-y-0"
           : "opacity-0 pointer-events-none translate-y-2"

@@ -6,11 +6,11 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { spacePath } from "@/lib/links";
+import { officePath } from "@/lib/links";
 import { EntryShell, inputClass, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { ErrorNote } from "@/components/entry/ErrorNote";
-import { useErrorMessage } from "@/components/workspace/useErrorMessage";
+import { useErrorMessage } from "@/lib/useErrorMessage";
 
 const PENDING_KEY = "tinyfloorPendingSpace";
 
@@ -65,12 +65,11 @@ export default function CreateSpacePage() {
     making.current = true;
     let cancelled = false;
     api
-      .createWorkspace(waiting)
-      .then(async ({ workspace }) => {
-        // A first room to walk into. The office is there either way.
-        await api.createRoom(workspace.id, { name: t("firstRoom") }).catch(() => undefined);
+      .createOffice(waiting)
+      .then(({ office }) => {
+        // The office is the floor, so there is nothing else to make.
         forget();
-        router.replace(spacePath(workspace.id));
+        router.replace(officePath(office.id));
       })
       .catch((err) => {
         making.current = false;
@@ -81,7 +80,7 @@ export default function CreateSpacePage() {
     return () => {
       cancelled = true;
     };
-  }, [finishing, waiting, explain, router, t]);
+  }, [finishing, waiting, explain, router]);
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();

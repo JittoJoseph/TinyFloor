@@ -5,8 +5,8 @@
     "ogAlt": "غرفة في TinyFloor: طابق مكتبي بدقة 16 بت فيه مكاتب وزملاء",
     "keywords": "مكتب افتراضي، عمل عن بُعد، دردشة مكانية، تعاون عبر الإنترنت، مساحة عمل افتراضية، مكتب ميتافيرس، دردشة القرب، دردشة فيديو بالقرب، مساحة عمل مشتركة افتراضية، مكالمات فيديو في المتصفح",
     "joinTitle": "الانضمام إلى الغرفة",
-    "joinRoomTitle": "انضم إلى {room}",
-    "joinRoomDescription": "أنت مدعو إلى {room} على TinyFloor، مكتب افتراضي تتجول فيه. افتح الرابط واختر شخصية وادخل.",
+    "joinRoomTitle": "انضم إلى {office}",
+    "joinRoomDescription": "أنت مدعو إلى {office} على TinyFloor، مكتب افتراضي تتجول فيه. افتح الرابط واختر شخصية وادخل.",
     "authTitle": "تسجيل الدخول",
     "authDescription": "سجّل الدخول إلى TinyFloor للاحتفاظ باسمك وشخصيتك وقائمة غرفك.",
     "dashboardTitle": "لوحة التحكم",
@@ -14,9 +14,9 @@
     "notFoundTitle": "الصفحة غير موجودة",
     "lobbyTitle": "الردهة",
     "lobbyDescription": "ادخل ردهة TinyFloor العامة والمجانية كضيف. اختر شخصية، وتعرّف على الناس، وجرّب مكالمات الفيديو عن قرب في متصفحك.",
-    "inviteTitle": "انضم إلى {workspace} على TinyFloor",
+    "inviteTitle": "انضم إلى {office} على TinyFloor",
     "inviteFallbackTitle": "لديك دعوة إلى TinyFloor",
-    "inviteDescription": "دعاك {name} إلى {workspace} على TinyFloor، مكتب افتراضي يمكنك التجول فيه."
+    "inviteDescription": "دعاك {name} إلى {office} على TinyFloor، مكتب افتراضي يمكنك التجول فيه."
   },
   "common": {
     "loading": "جارٍ التحميل...",
@@ -336,7 +336,18 @@
     "welcome": "مرحبًا بك في دردشة الغرفة. الرسائل مرئية لكل الموجودين هنا.",
     "placeholder": "اكتب رسالة...",
     "close": "إغلاق الدردشة",
-    "send": "إرسال الرسالة"
+    "send": "إرسال الرسالة",
+    "channels": "القنوات",
+    "directMessages": "رسائل مباشرة",
+    "newChannel": "قناة جديدة",
+    "channelName": "اسم القناة",
+    "say": "راسل {channel}",
+    "older": "رسائل أقدم",
+    "nothingYet": "لا شيء هنا بعد. قل أول كلمة.",
+    "noDirect": "لا رسائل مباشرة بعد.",
+    "attach": "أضف صورة",
+    "attachmentsPaid": "الصور جزء من مكتب مدفوع.",
+    "attachmentsSoon": "الصور ستصل قريبًا."
   },
   "proximity": {
     "videoCall": "مكالمة فيديو",
@@ -883,7 +894,7 @@
     "title": "الردهة",
     "subtitle": "يمكن لأي شخص المرور. قل من أنت، واختر شخصية، وادخل."
   },
-  "workspace": {
+  "office": {
     "lobby": "الردهة",
     "copy": "نسخ",
     "copied": "تم النسخ",
@@ -917,7 +928,14 @@
       "leaveTitle": "مغادرة مساحة العمل هذه",
       "leaveBody": "ستفقد الوصول إلى غرف {name} حتى يدعوك أحد مرة أخرى.",
       "leaveButton": "مغادرة مساحة العمل",
-      "nameDetail": "ما يراه فريقك أعلى المكتب."
+      "nameDetail": "ما يراه فريقك أعلى المكتب.",
+      "seats": "{used} من {seats} مقاعد",
+      "seatsNote": "المقعد هو عضو. من يغادر يحرّر مقعده.",
+      "close": "حذف مساحة العمل",
+      "closeIt": "إغلاق المكتب",
+      "closeSure": "إغلاقه للجميع؟",
+      "leave": "مغادرة مساحة العمل",
+      "wrong": "لم ينجح ذلك. حاول مرة أخرى."
     },
     "onboarding": {
       "title": "جهّز مكتبك",
@@ -1033,7 +1051,7 @@
       "eyebrow": "دعاك {name}",
       "asAdmin": "أنت مدعو للانضمام بصفة مسؤول.",
       "asMember": "أنت مدعو للانضمام إلى الفريق.",
-      "join": "الانضمام إلى {workspace}",
+      "join": "الانضمام إلى {office}",
       "joiningAs": "ستنضم باسم {name} ({email})",
       "createAccount": "إنشاء حساب",
       "signIn": "لدي حساب",
@@ -1078,8 +1096,52 @@
         "owner": "هذا المكتب لك",
         "admin": "أنت مشرف هنا",
         "member": "أنت عضو هنا"
-      }
-    }
+      },
+      "members": "{used} من {seats} أعضاء"
+    },
+    "floor": "الطابق",
+    "chat": "الدردشة",
+    "people": {
+      "title": "الأعضاء",
+      "members": "الأعضاء",
+      "invitations": "دعوات معلقة",
+      "guests": "الضيوف",
+      "guestsNote": "يدخل الضيف عبر رابط. لا يشغل مقعدًا ولا يمكنه دعوة أحد.",
+      "invite": "دعوة",
+      "seats": "{used} من {seats} مقاعد",
+      "seatsFull": "كل المقاعد مشغولة.",
+      "seatsFree": "هناك متسع للمزيد.",
+      "onFloorNow": "{count} في الطابق الآن",
+      "noInvitations": "لم تتم دعوة أحد بعد.",
+      "noGuestLinks": "لا توجد روابط ضيوف الآن.",
+      "newGuestLink": "إنشاء رابط ضيف",
+      "copied": "تم النسخ",
+      "revoke": "إلغاء الدعوة",
+      "remove": "إزالة",
+      "leave": "مغادرة",
+      "makeAdmin": "تحويل إلى مسؤول",
+      "makeMember": "تحويل إلى عضو",
+      "more": "المزيد",
+      "message": "رسالة",
+      "you": "أنت",
+      "owner": "المالك",
+      "admin": "مسؤول",
+      "member": "عضو",
+      "noEmail": "بلا بريد",
+      "expires": "ينتهي في {date}",
+      "anyoneWithLink": "أي شخص لديه الرابط",
+      "wrong": "لم ينجح ذلك. حاول مرة أخرى."
+    },
+    "office": "مكتب",
+    "offices": "مكاتبك",
+    "leave": "مغادرة",
+    "settingsButton": "الإعدادات",
+    "backToFloor": "العودة إلى الطابق",
+    "onTheFloor": "في طابق {office}",
+    "goneTitle": "هذا المكتب لم يعد موجودًا",
+    "gone": "تم إغلاقه، أو لم تعد عضوًا فيه.",
+    "backToOffices": "العودة إلى مكاتبك",
+    "peopleTab": "الأشخاص"
   },
   "create": {
     "eyebrow": "مكتبك الخاص",

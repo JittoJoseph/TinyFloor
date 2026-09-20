@@ -5,8 +5,8 @@
     "ogAlt": "TinyFloor のルーム：デスクとチームメンバーがいる16ビットのオフィスフロア",
     "keywords": "バーチャルオフィス、リモートワーク、空間チャット、オンラインコラボレーション、仮想ワークスペース、メタバースオフィス、近接チャット、近接ビデオチャット、バーチャルコワーキング、ブラウザでビデオ通話",
     "joinTitle": "ルームに参加",
-    "joinRoomTitle": "{room} に参加",
-    "joinRoomDescription": "TinyFloor の {room} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
+    "joinRoomTitle": "{office} に参加",
+    "joinRoomDescription": "TinyFloor の {office} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
     "authTitle": "ログイン",
     "authDescription": "TinyFloor にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
     "dashboardTitle": "ダッシュボード",
@@ -14,9 +14,9 @@
     "notFoundTitle": "ページが見つかりません",
     "lobbyTitle": "ロビー",
     "lobbyDescription": "TinyFloor の無料の公開ロビーにゲストとして入れます。キャラクターを選んで、人に会い、ブラウザで近くの人とビデオ通話を試しましょう。",
-    "inviteTitle": "TinyFloor の {workspace} に参加",
+    "inviteTitle": "TinyFloor の {office} に参加",
     "inviteFallbackTitle": "TinyFloor に招待されています",
-    "inviteDescription": "{name} さんが、歩き回れるバーチャルオフィス TinyFloor の {workspace} に招待しています。"
+    "inviteDescription": "{name} さんが、歩き回れるバーチャルオフィス TinyFloor の {office} に招待しています。"
   },
   "common": {
     "loading": "読み込み中...",
@@ -336,7 +336,18 @@
     "welcome": "ルームチャットへようこそ。メッセージはここにいる全員に表示されます。",
     "placeholder": "メッセージを入力...",
     "close": "チャットを閉じる",
-    "send": "メッセージを送信"
+    "send": "メッセージを送信",
+    "channels": "チャンネル",
+    "directMessages": "ダイレクトメッセージ",
+    "newChannel": "新しいチャンネル",
+    "channelName": "チャンネル名",
+    "say": "{channel} にメッセージ",
+    "older": "以前のメッセージ",
+    "nothingYet": "まだ何もありません。最初のひと言をどうぞ。",
+    "noDirect": "ダイレクトメッセージはまだありません。",
+    "attach": "画像を追加",
+    "attachmentsPaid": "画像は有料オフィスの機能です。",
+    "attachmentsSoon": "画像はまもなく使えます。"
   },
   "proximity": {
     "videoCall": "ビデオ通話",
@@ -883,7 +894,7 @@
     "title": "ロビー",
     "subtitle": "誰でも立ち寄れます。名前を決めて、キャラクターを選んで入りましょう。"
   },
-  "workspace": {
+  "office": {
     "lobby": "ロビー",
     "copy": "コピー",
     "copied": "コピーしました",
@@ -917,7 +928,14 @@
       "leaveTitle": "このワークスペースから抜ける",
       "leaveBody": "だれかにまた招待されるまで、{name} のルームに入れなくなります。",
       "leaveButton": "ワークスペースから抜ける",
-      "nameDetail": "オフィスの上部にチームが見る名前です。"
+      "nameDetail": "オフィスの上部にチームが見る名前です。",
+      "seats": "{seats} 席中 {used} 席",
+      "seatsNote": "1席が1メンバーです。抜けた人の席は空きます。",
+      "close": "ワークスペースを削除",
+      "closeIt": "オフィスを閉じる",
+      "closeSure": "全員のために閉じますか？",
+      "leave": "ワークスペースから抜ける",
+      "wrong": "うまくいきませんでした。もう一度お試しください。"
     },
     "onboarding": {
       "title": "オフィスを用意しましょう",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} さんからの招待",
       "asAdmin": "管理者として招待されています。",
       "asMember": "チームへの参加に招待されています。",
-      "join": "{workspace} に参加",
+      "join": "{office} に参加",
       "joiningAs": "{name}（{email}）として参加します",
       "createAccount": "アカウントを作成",
       "signIn": "アカウントを持っています",
@@ -1078,8 +1096,52 @@
         "owner": "あなたのオフィスです",
         "admin": "ここでは管理者です",
         "member": "ここではメンバーです"
-      }
-    }
+      },
+      "members": "{seats} 人中 {used} 人"
+    },
+    "floor": "フロア",
+    "chat": "チャット",
+    "people": {
+      "title": "メンバー",
+      "members": "メンバー",
+      "invitations": "保留中の招待",
+      "guests": "ゲスト",
+      "guestsNote": "ゲストはリンクで入ります。席は使わず、誰かを招待することもできません。",
+      "invite": "招待",
+      "seats": "{seats} 席中 {used} 席",
+      "seatsFull": "席はすべて埋まっています。",
+      "seatsFree": "まだ空きがあります。",
+      "onFloorNow": "いまフロアに {count} 人",
+      "noInvitations": "まだ誰も招待していません。",
+      "noGuestLinks": "いまはゲストリンクがありません。",
+      "newGuestLink": "ゲストリンクを作成",
+      "copied": "コピーしました",
+      "revoke": "取り消す",
+      "remove": "外す",
+      "leave": "抜ける",
+      "makeAdmin": "管理者にする",
+      "makeMember": "メンバーにする",
+      "more": "その他",
+      "message": "メッセージ",
+      "you": "あなた",
+      "owner": "オーナー",
+      "admin": "管理者",
+      "member": "メンバー",
+      "noEmail": "メールなし",
+      "expires": "{date} に期限切れ",
+      "anyoneWithLink": "リンクを持つだれでも",
+      "wrong": "うまくいきませんでした。もう一度お試しください。"
+    },
+    "office": "オフィス",
+    "offices": "あなたのオフィス",
+    "leave": "抜ける",
+    "settingsButton": "設定",
+    "backToFloor": "フロアに戻る",
+    "onTheFloor": "{office} のフロアにいます",
+    "goneTitle": "このオフィスはありません",
+    "gone": "閉じられたか、メンバーではなくなりました。",
+    "backToOffices": "オフィス一覧へ",
+    "peopleTab": "メンバー"
   },
   "create": {
     "eyebrow": "自分のオフィス",

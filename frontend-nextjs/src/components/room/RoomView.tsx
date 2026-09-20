@@ -123,7 +123,7 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
+    <div className="absolute inset-0 overflow-hidden bg-[var(--color-braun-bg)]">
       {/* One row across the top: where you are on the left, what you can do on
           the right, both the same height so they read as one bar. */}
       <div

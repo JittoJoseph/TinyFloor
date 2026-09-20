@@ -5,8 +5,8 @@
     "ogAlt": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor",
     "keywords": "virtuellt kontor, distansarbete, spatial chatt, samarbete online, virtuell arbetsplats, metaverse-kontor, närhetschatt, närhetsvideochatt, virtuellt coworking, videosamtal i webbläsaren",
     "joinTitle": "Gå med i rummet",
-    "joinRoomTitle": "Gå med i {room}",
-    "joinRoomDescription": "Du är inbjuden till {room} på TinyFloor, ett virtuellt kontor du går runt i. Öppna länken, välj en figur och gå in.",
+    "joinRoomTitle": "Gå med i {office}",
+    "joinRoomDescription": "Du är inbjuden till {office} på TinyFloor, ett virtuellt kontor du går runt i. Öppna länken, välj en figur och gå in.",
     "authTitle": "Logga in",
     "authDescription": "Logga in på TinyFloor för att behålla ditt namn, din karaktär och en lista över dina rum.",
     "dashboardTitle": "Översikt",
@@ -14,9 +14,9 @@
     "notFoundTitle": "Sidan hittades inte",
     "lobbyTitle": "Lobbyn",
     "lobbyDescription": "Gå in i TinyFloors kostnadsfria, öppna lobby som gäst. Välj en figur, träffa folk och testa videosamtal på nära håll i webbläsaren.",
-    "inviteTitle": "Gå med i {workspace} på TinyFloor",
+    "inviteTitle": "Gå med i {office} på TinyFloor",
     "inviteFallbackTitle": "Du är inbjuden till TinyFloor",
-    "inviteDescription": "{name} har bjudit in dig till {workspace} på TinyFloor, ett virtuellt kontor du kan gå runt i."
+    "inviteDescription": "{name} har bjudit in dig till {office} på TinyFloor, ett virtuellt kontor du kan gå runt i."
   },
   "common": {
     "loading": "Laddar...",
@@ -336,7 +336,18 @@
     "welcome": "Välkommen till rumschatten. Meddelanden syns för alla här.",
     "placeholder": "Skriv ett meddelande...",
     "close": "Stäng chatten",
-    "send": "Skicka meddelande"
+    "send": "Skicka meddelande",
+    "channels": "Kanaler",
+    "directMessages": "Direktmeddelanden",
+    "newChannel": "Ny kanal",
+    "channelName": "Kanalnamn",
+    "say": "Skriv i {channel}",
+    "older": "Äldre meddelanden",
+    "nothingYet": "Här är tomt än. Säg det första.",
+    "noDirect": "Inga direktmeddelanden än.",
+    "attach": "Lägg till en bild",
+    "attachmentsPaid": "Bilder hör till ett betalt kontor.",
+    "attachmentsSoon": "Bilder kommer snart."
   },
   "proximity": {
     "videoCall": "Videosamtal",
@@ -883,7 +894,7 @@
     "title": "Lobbyn",
     "subtitle": "Vem som helst får titta in. Säg vem du är, välj en karaktär och gå in."
   },
-  "workspace": {
+  "office": {
     "lobby": "Lobby",
     "copy": "Kopiera",
     "copied": "Kopierad",
@@ -917,7 +928,14 @@
       "leaveTitle": "Lämna arbetsytan",
       "leaveBody": "Du förlorar åtkomsten till rummen i {name} tills någon bjuder in dig igen.",
       "leaveButton": "Lämna arbetsyta",
-      "nameDetail": "Det ditt team ser högst upp i kontoret."
+      "nameDetail": "Det ditt team ser högst upp i kontoret.",
+      "seats": "{used} av {seats} platser",
+      "seatsNote": "En plats är en medlem. Den som går frigör sin.",
+      "close": "Ta bort arbetsyta",
+      "closeIt": "Stäng kontoret",
+      "closeSure": "Stänga det för alla?",
+      "leave": "Lämna arbetsyta",
+      "wrong": "Det gick inte. Försök igen."
     },
     "onboarding": {
       "title": "Ordna ditt kontor",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} har bjudit in dig",
       "asAdmin": "Du är inbjuden som admin.",
       "asMember": "Du är inbjuden till teamet.",
-      "join": "Gå med i {workspace}",
+      "join": "Gå med i {office}",
       "joiningAs": "Du går med som {name} ({email})",
       "createAccount": "Skapa ett konto",
       "signIn": "Jag har ett konto",
@@ -1078,8 +1096,52 @@
         "owner": "Det här äger du",
         "admin": "Du är admin här",
         "member": "Du är medlem här"
-      }
-    }
+      },
+      "members": "{used} av {seats} medlemmar"
+    },
+    "floor": "Våningen",
+    "chat": "Chatt",
+    "people": {
+      "title": "Medlemmar",
+      "members": "Medlemmar",
+      "invitations": "Väntande inbjudningar",
+      "guests": "Gäster",
+      "guestsNote": "En gäst kommer in via en länk. Det kostar ingen plats och de kan inte bjuda in någon.",
+      "invite": "Bjud in",
+      "seats": "{used} av {seats} platser",
+      "seatsFull": "Alla platser är tagna.",
+      "seatsFree": "Det finns plats kvar.",
+      "onFloorNow": "{count} på våningen nu",
+      "noInvitations": "Ingen är inbjuden än.",
+      "noGuestLinks": "Inga gästlänkar just nu.",
+      "newGuestLink": "Skapa gästlänk",
+      "copied": "Kopierad",
+      "revoke": "Återkalla",
+      "remove": "Ta bort",
+      "leave": "Lämna",
+      "makeAdmin": "Gör till admin",
+      "makeMember": "Gör till medlem",
+      "more": "Mer",
+      "message": "Meddelande",
+      "you": "du",
+      "owner": "Ägare",
+      "admin": "Admin",
+      "member": "Medlem",
+      "noEmail": "Ingen e-post",
+      "expires": "Går ut {date}",
+      "anyoneWithLink": "Alla med länken",
+      "wrong": "Det gick inte. Försök igen."
+    },
+    "office": "Kontor",
+    "offices": "Dina kontor",
+    "leave": "Lämna",
+    "settingsButton": "Inställningar",
+    "backToFloor": "Tillbaka till våningen",
+    "onTheFloor": "På våningen i {office}",
+    "goneTitle": "Det här kontoret finns inte längre",
+    "gone": "Det stängdes, eller så är du inte medlem längre.",
+    "backToOffices": "Tillbaka till dina kontor",
+    "peopleTab": "Personer"
   },
   "create": {
     "eyebrow": "Ditt eget kontor",

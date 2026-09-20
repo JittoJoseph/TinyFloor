@@ -5,8 +5,8 @@
     "ogAlt": "TinyFloor 방: 책상과 팀원이 있는 16비트 오피스 층",
     "keywords": "가상 오피스, 원격 근무, 공간 채팅, 온라인 협업, 가상 업무 공간, 메타버스 오피스, 근접 채팅, 근접 영상 채팅, 가상 코워킹 스페이스, 브라우저 영상 통화",
     "joinTitle": "방 참여",
-    "joinRoomTitle": "{room} 참여하기",
-    "joinRoomDescription": "TinyFloor의 {room}에 초대되었습니다. 걸어 다니는 가상 오피스예요. 링크를 열고 캐릭터를 골라 들어오세요.",
+    "joinRoomTitle": "{office} 참여하기",
+    "joinRoomDescription": "TinyFloor의 {office}에 초대되었습니다. 걸어 다니는 가상 오피스예요. 링크를 열고 캐릭터를 골라 들어오세요.",
     "authTitle": "로그인",
     "authDescription": "TinyFloor에 로그인하면 이름, 캐릭터, 방 목록을 저장할 수 있어요.",
     "dashboardTitle": "대시보드",
@@ -14,9 +14,9 @@
     "notFoundTitle": "페이지를 찾을 수 없어요",
     "lobbyTitle": "로비",
     "lobbyDescription": "TinyFloor의 무료 공개 로비에 게스트로 들어가 보세요. 캐릭터를 고르고, 사람들을 만나고, 브라우저에서 근거리 영상 통화를 해 보세요.",
-    "inviteTitle": "TinyFloor의 {workspace}에 참여하세요",
+    "inviteTitle": "TinyFloor의 {office}에 참여하세요",
     "inviteFallbackTitle": "TinyFloor에 초대받았어요",
-    "inviteDescription": "{name} 님이 걸어 다닐 수 있는 가상 오피스 TinyFloor의 {workspace}에 초대했어요."
+    "inviteDescription": "{name} 님이 걸어 다닐 수 있는 가상 오피스 TinyFloor의 {office}에 초대했어요."
   },
   "common": {
     "loading": "불러오는 중...",
@@ -336,7 +336,18 @@
     "welcome": "방 채팅에 오신 걸 환영해요. 메시지는 여기 있는 모두에게 보여요.",
     "placeholder": "메시지를 입력하세요...",
     "close": "채팅 닫기",
-    "send": "메시지 보내기"
+    "send": "메시지 보내기",
+    "channels": "채널",
+    "directMessages": "다이렉트 메시지",
+    "newChannel": "새 채널",
+    "channelName": "채널 이름",
+    "say": "{channel}에 메시지",
+    "older": "이전 메시지",
+    "nothingYet": "아직 아무것도 없습니다. 먼저 말을 걸어 보세요.",
+    "noDirect": "아직 다이렉트 메시지가 없습니다.",
+    "attach": "이미지 추가",
+    "attachmentsPaid": "이미지는 유료 오피스의 기능입니다.",
+    "attachmentsSoon": "이미지는 곧 지원됩니다."
   },
   "proximity": {
     "videoCall": "영상 통화",
@@ -883,7 +894,7 @@
     "title": "로비",
     "subtitle": "누구나 들를 수 있어요. 이름을 정하고 캐릭터를 골라 들어오세요."
   },
-  "workspace": {
+  "office": {
     "lobby": "로비",
     "copy": "복사",
     "copied": "복사됨",
@@ -917,7 +928,14 @@
       "leaveTitle": "이 워크스페이스에서 나가기",
       "leaveBody": "누군가 다시 초대할 때까지 {name}의 방에 들어갈 수 없어요.",
       "leaveButton": "워크스페이스에서 나가기",
-      "nameDetail": "오피스 상단에 팀이 보는 이름이에요."
+      "nameDetail": "오피스 상단에 팀이 보는 이름이에요.",
+      "seats": "{seats}석 중 {used}석",
+      "seatsNote": "한 자리는 한 멤버입니다. 나가면 자리가 빕니다.",
+      "close": "워크스페이스 삭제",
+      "closeIt": "오피스 닫기",
+      "closeSure": "모두에게 닫을까요?",
+      "leave": "워크스페이스에서 나가기",
+      "wrong": "실패했습니다. 다시 시도해 주세요."
     },
     "onboarding": {
       "title": "오피스를 꾸며 보세요",
@@ -1033,7 +1051,7 @@
       "eyebrow": "{name} 님의 초대",
       "asAdmin": "관리자로 초대받았어요.",
       "asMember": "팀에 초대받았어요.",
-      "join": "{workspace}에 참여",
+      "join": "{office}에 참여",
       "joiningAs": "{name}({email})(으)로 참여해요",
       "createAccount": "계정 만들기",
       "signIn": "계정이 있어요",
@@ -1078,8 +1096,52 @@
         "owner": "내가 소유한 오피스",
         "admin": "여기서는 관리자",
         "member": "여기서는 멤버"
-      }
-    }
+      },
+      "members": "{seats}명 중 {used}명"
+    },
+    "floor": "플로어",
+    "chat": "채팅",
+    "people": {
+      "title": "멤버",
+      "members": "멤버",
+      "invitations": "대기 중인 초대",
+      "guests": "게스트",
+      "guestsNote": "게스트는 링크로 들어옵니다. 자리를 쓰지 않고 누구도 초대할 수 없습니다.",
+      "invite": "초대",
+      "seats": "{seats}석 중 {used}석",
+      "seatsFull": "자리가 모두 찼습니다.",
+      "seatsFree": "아직 자리가 있습니다.",
+      "onFloorNow": "지금 플로어에 {count}명",
+      "noInvitations": "아직 아무도 초대하지 않았습니다.",
+      "noGuestLinks": "지금은 게스트 링크가 없습니다.",
+      "newGuestLink": "게스트 링크 만들기",
+      "copied": "복사됨",
+      "revoke": "취소하기",
+      "remove": "내보내기",
+      "leave": "나가기",
+      "makeAdmin": "관리자로 변경",
+      "makeMember": "멤버로 변경",
+      "more": "더보기",
+      "message": "메시지",
+      "you": "나",
+      "owner": "소유자",
+      "admin": "관리자",
+      "member": "멤버",
+      "noEmail": "이메일 없음",
+      "expires": "{date}에 만료",
+      "anyoneWithLink": "링크가 있는 누구나",
+      "wrong": "실패했습니다. 다시 시도해 주세요."
+    },
+    "office": "오피스",
+    "offices": "내 오피스",
+    "leave": "나가기",
+    "settingsButton": "설정",
+    "backToFloor": "플로어로 돌아가기",
+    "onTheFloor": "{office} 플로어에 있습니다",
+    "goneTitle": "이 오피스는 없습니다",
+    "gone": "닫혔거나, 더 이상 멤버가 아닙니다.",
+    "backToOffices": "내 오피스로",
+    "peopleTab": "사람"
   },
   "create": {
     "eyebrow": "내 오피스",

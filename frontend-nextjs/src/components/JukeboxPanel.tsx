@@ -19,7 +19,7 @@ export default function JukeboxPanel() {
   if (!state.open) return null;
 
   return (
-    <div className="fixed z-[55] inset-x-3 bottom-24 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-[22rem] sm:bottom-28">
+    <div className="absolute z-[55] inset-x-3 bottom-24 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-[22rem] sm:bottom-28">
       <div className="entry-rise rounded-[1.25rem] bg-[#fbfbf9]/97 backdrop-blur-sm border border-black/8 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.45)] p-4">
         <div className="flex items-center gap-2 mb-3">
           <span className="w-7 h-7 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] shrink-0">

@@ -150,7 +150,7 @@ export function Dialog({
 
 /** A read-only link with a copy button, for invites and guest links. */
 export function CopyField({ value }: { value: string }) {
-  const t = useTranslations("workspace");
+  const t = useTranslations("office");
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {

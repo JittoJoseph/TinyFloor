@@ -55,7 +55,7 @@
     "subtitle": "게임처럼 생긴 가상 오피스. 돌아다니며 동료와 이야기하고 다시 한 팀이 된 기분을 느껴 보세요.",
     "cta": "지금 들어가기",
     "caption": "TinyFloor 방: 책상이 놓인 16비트 오피스 층을 팀원들이 걸어 다녀요.",
-    "noSignUp": "가입 없이 바로 입장",
+    "noSignUp": "한번 해보세요",
     "secondaryCta": "팀을 위한 오피스를 꾸릴 수도 있어요"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "연결 중...",
-    "copied": "복사했어요!",
     "leave": "나가기",
     "reconnecting": "다시 연결하는 중…",
     "peopleHere": "지금 여기: {count}",
-    "copyLink": "링크 복사",
     "reconnectingNote": "연결이 끊겼어요. 다시 들여보내는 중…",
     "ended": {
       "back": "뒤로",
@@ -274,7 +272,10 @@
       "signIn": "로그인",
       "tryAgain": "다시 시도",
       "useHere": "여기서 사용하기"
-    }
+    },
+    "invite": "초대",
+    "linkCopied": "링크 복사됨",
+    "inviteText": "TinyFloor의 {room}에서 만나요"
   },
   "call": {
     "incomingVideo": "영상 통화 수신 중...",

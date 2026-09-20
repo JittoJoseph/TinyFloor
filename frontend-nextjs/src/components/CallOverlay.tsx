@@ -5,7 +5,9 @@ import { Phone, Video, X, Check } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import CallCards from "./CallCards";
+import { RoomIconButton, surface, label, quietLabel } from "./room/ui";
 
+/** The ring, the wait and the "that didn't work", all in the same language. */
 export default function CallOverlay() {
   const t = useTranslations("call");
   const { incoming, outgoing, error } = useCall();
@@ -15,35 +17,31 @@ export default function CallOverlay() {
       <CallCards />
 
       {incoming && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-[#fbfbf9] rounded-[2rem] shadow-xl p-8 w-80 border border-[rgba(0,0,0,0.06)] animate-bounce-slight">
-            <div className="text-center mb-8">
-              <div className="w-20 h-20 bg-[var(--color-braun-text)]/5 rounded-full flex items-center justify-center mx-auto mb-5 animate-pulse text-[var(--color-braun-text)]">
-                {incoming.video ? (
-                  <Video className="w-8 h-8" />
-                ) : (
-                  <Phone className="w-8 h-8" />
-                )}
-              </div>
-              <h3 className="font-bold tracking-wide text-2xl text-[var(--color-braun-text)] mb-2">
-                {incoming.name}
-              </h3>
-              <p className="text-gray-500 font-medium text-sm tracking-wide">
-                {incoming.video ? t("incomingVideo") : t("incomingAudio")}
-              </p>
-            </div>
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+          <div className="bg-[#fbfbf9] rounded-3xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] border border-black/[0.07] p-7 w-[min(20rem,100%)] text-center">
+            <span className="w-16 h-16 rounded-full bg-[var(--color-braun-text)]/[0.06] text-[var(--color-braun-text)] flex items-center justify-center mx-auto mb-4 animate-pulse">
+              {incoming.video ? <Video className="w-7 h-7" /> : <Phone className="w-7 h-7" />}
+            </span>
+            <h2 className="font-body text-xl font-semibold text-[var(--color-braun-text)] truncate">
+              {incoming.name}
+            </h2>
+            <p className={`${quietLabel} mt-1 mb-6`}>
+              {incoming.video ? t("incomingVideo") : t("incomingAudio")}
+            </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <button
+                type="button"
                 onClick={() => callManager.decline()}
-                className="cursor-pointer flex-1 bg-white hover:bg-gray-50 text-[var(--color-braun-text)] py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 border border-[rgba(0,0,0,0.06)] shadow-sm"
+                className={`cursor-pointer flex-1 h-11 rounded-full bg-white border border-black/[0.06] text-[var(--color-braun-text)] hover:bg-[#f5f5f2] shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 ${label}`}
               >
                 <X className="w-4 h-4" />
                 {t("decline")}
               </button>
               <button
+                type="button"
                 onClick={() => callManager.accept()}
-                className="cursor-pointer flex-1 bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white py-3 rounded-full font-bold tracking-widest text-[10px] uppercase flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm"
+                className={`cursor-pointer flex-1 h-11 rounded-full bg-[var(--color-braun-text)] text-white hover:bg-[#1a1a1a] shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 ${label}`}
               >
                 <Check className="w-4 h-4" />
                 {t("accept")}
@@ -53,37 +51,32 @@ export default function CallOverlay() {
         </div>
       )}
 
-      <div className="fixed right-4 bottom-24 z-40 flex flex-col items-end gap-3 pointer-events-none">
+      <div className="fixed end-3 sm:end-5 bottom-20 sm:bottom-24 z-40 flex flex-col items-end gap-2 pointer-events-none">
         {error && (
           <button
+            type="button"
             onClick={() => callManager.clearError()}
-            className="cursor-pointer pointer-events-auto w-64 text-start bg-[#ff4e00]/10 border border-[#ff4e00]/20 text-[#ff4e00] rounded-2xl px-4 py-3 text-[11px] font-bold tracking-wide"
+            className="cursor-pointer pointer-events-auto max-w-[16rem] text-start rounded-2xl bg-[var(--color-braun-orange)]/10 border border-[var(--color-braun-orange)]/20 text-[var(--color-braun-orange)] px-4 py-2.5 font-body text-[12px] font-semibold"
           >
             {t(`errors.${error}`)}
           </button>
         )}
 
         {outgoing && (
-          <div className="pointer-events-auto w-64 bg-[#fbfbf9] rounded-2xl shadow-md border border-[rgba(0,0,0,0.06)] px-4 py-3 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] font-bold text-sm animate-pulse">
+          <div className={`${surface} pointer-events-auto rounded-full ps-2 pe-2 py-2 flex items-center gap-2.5`}>
+            <span className="w-9 h-9 rounded-full bg-[var(--color-braun-text)]/[0.06] flex items-center justify-center font-body font-semibold text-sm text-[var(--color-braun-text)] animate-pulse shrink-0">
               {outgoing.name.charAt(0).toUpperCase()}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-bold text-[var(--color-braun-text)] text-sm truncate tracking-wide">
-                {outgoing.name}
-              </div>
-              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-                {t("calling")}
-              </div>
-            </div>
-            <button
+            </span>
+            <span className="min-w-0 max-w-[9rem] pe-1">
+              <span className={`block ${label} text-[var(--color-braun-text)] truncate`}>{outgoing.name}</span>
+              <span className={`block ${quietLabel}`}>{t("calling")}</span>
+            </span>
+            <RoomIconButton
               onClick={() => callManager.cancel()}
-              className="cursor-pointer p-2 rounded-full bg-[#ff4e00] text-white transition-all active:scale-95"
+              tone="danger"
               title={t("cancel")}
-              aria-label={t("cancel")}
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
+              icon={<X className="w-4 h-4" />}
+            />
           </div>
         )}
       </div>

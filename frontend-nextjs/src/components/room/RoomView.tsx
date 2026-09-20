@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Check, Copy, LogOut, WifiOff } from "lucide-react";
+import { AlertCircle, Check, LogOut, UserPlus, Users } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import ControlBar from "@/components/ControlBar";
 import SettingsModal from "@/components/SettingsModal";
@@ -16,19 +16,21 @@ import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
 import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
+import { RoomButton, roomLinkClass, surface, label, quietLabel } from "@/components/room/ui";
 import type { RoomTicket } from "@/lib/api";
 import type { PlayerStatus } from "@/lib/types";
 import { shareUrl } from "@/lib/links";
+import { shareLink } from "@/lib/share";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
 import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
 function Connecting() {
   const t = useTranslations("room");
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] font-sans text-sm font-bold tracking-widest uppercase">
-      <div className="text-center flex flex-col items-center gap-6">
-        <div className="w-10 h-10 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin"></div>
-        {t("connecting")}
+    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)]">
+      <div className="text-center flex flex-col items-center gap-5">
+        <div className="w-9 h-9 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
+        <p className="font-body text-[13px] font-semibold">{t("connecting")}</p>
       </div>
     </div>
   );
@@ -64,12 +66,17 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
 
-  const copyLink = useCallback(() => {
-    if (!sharePath || !navigator.clipboard) return;
-    navigator.clipboard.writeText(shareUrl(sharePath));
+  const here = participants.length + 1;
+
+  // The share sheet on phones, the clipboard on a desktop; the button only says
+  // something when the link landed on the clipboard, where nothing else would.
+  const invite = useCallback(async () => {
+    if (!sharePath) return;
+    const result = await shareLink(shareUrl(sharePath), title, t("inviteText", { room: title }));
+    if (result !== "copied") return;
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [sharePath]);
+  }, [sharePath, title, t]);
 
   const handleStatusChange = useCallback((status: PlayerStatus) => {
     setCurrentStatus(status);
@@ -117,59 +124,59 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
+      {/* One row across the top: where you are on the left, what you can do on
+          the right, both the same height so they read as one bar. */}
       <div
-        className={`absolute top-0 left-0 right-0 p-4 sm:p-6 ${
+        className={`absolute top-0 inset-x-0 p-3 sm:p-5 ${
           tutorialActive ? "hidden md:flex" : "flex"
-        } flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none`}
+        } items-start justify-between gap-3 z-10 pointer-events-none`}
       >
-        <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-sm pointer-events-auto flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <div className={`w-2 h-2 rounded-full ${reconnecting ? "bg-amber-500" : "bg-emerald-500 animate-pulse"}`} />
-          <div className="flex flex-col min-w-0">
-            <h1 className="font-bold text-sm text-[var(--color-braun-text)] tracking-wide truncate">{title}</h1>
-            <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-0.5 truncate">
-              {reconnecting ? t("reconnecting") : subtitle ?? t("peopleHere", { count: participants.length + 1 })}
-            </p>
-          </div>
+        <div
+          className={`${surface} rounded-full pointer-events-auto flex items-center gap-2.5 h-10 ps-3.5 pe-4 min-w-0 max-w-[min(20rem,55vw)]`}
+        >
+          <span
+            className={`w-2 h-2 rounded-full shrink-0 ${
+              reconnecting ? "bg-amber-500 animate-pulse" : "bg-emerald-500"
+            }`}
+          />
+          <span className="min-w-0 flex items-baseline gap-2">
+            <span className={`${label} text-[var(--color-braun-text)] truncate`}>{title}</span>
+            <span className={`${quietLabel} truncate hidden sm:inline`}>
+              {reconnecting ? t("reconnecting") : subtitle}
+            </span>
+          </span>
+          {here > 1 && !reconnecting && (
+            <span
+              className="flex items-center gap-1 shrink-0 ps-2.5 ms-0.5 border-s border-black/[0.08] text-[var(--color-braun-text)] opacity-55"
+              title={t("peopleHere", { count: here })}
+            >
+              <Users className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="font-body text-[12px] font-semibold">{here}</span>
+            </span>
+          )}
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto self-end sm:self-auto">
+        <div className="flex items-center gap-2 pointer-events-auto shrink-0">
           {sharePath && (
-            <button
-              onClick={copyLink}
-              className="cursor-pointer bg-white hover:bg-gray-50 text-[var(--color-braun-text)] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[rgba(0,0,0,0.06)] shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
+            <RoomButton
+              onClick={invite}
+              icon={
+                copied ? (
+                  <Check className="w-4 h-4 text-[var(--color-braun-green)]" />
+                ) : (
+                  <UserPlus className="w-4 h-4" />
+                )
+              }
             >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-500" />
-                  {t("copied")}
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  {t("copyLink")}
-                </>
-              )}
-            </button>
+              {copied ? t("linkCopied") : t("invite")}
+            </RoomButton>
           )}
-          <Link
-            href={leaveHref}
-            className="cursor-pointer bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
-          >
-            <LogOut className="w-3.5 h-3.5 rtl:rotate-180" />
-            {t("leave")}
+          <Link href={leaveHref} className={roomLinkClass("dark")} title={t("leave")}>
+            <LogOut className="w-4 h-4 rtl:rotate-180" />
+            <span className="hidden sm:inline">{t("leave")}</span>
           </Link>
         </div>
       </div>
-
-      {reconnecting && (
-        <div
-          role="status"
-          className="absolute top-24 sm:top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-4 py-2 font-body text-[12px] text-amber-800 shadow-sm"
-        >
-          <WifiOff className="w-3.5 h-3.5" />
-          {t("reconnectingNote")}
-        </div>
-      )}
 
       <PhaserGame
         key={attempt}
@@ -204,7 +211,7 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
         userId={user.id}
         userName={user.displayName}
         onUnreadChange={setUnreadChatCount}
-        participantCount={participants.length + 1}
+        participantCount={here}
       />
 
       <ChatToasts isChatOpen={showChat} onOpenChat={() => setShowChat(true)} />

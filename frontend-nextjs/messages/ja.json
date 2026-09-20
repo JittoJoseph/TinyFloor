@@ -55,7 +55,7 @@
     "subtitle": "ゲームのような見た目のバーチャルオフィス。歩き回って同僚と話し、もう一度チームを感じましょう。",
     "cta": "今すぐ入る",
     "caption": "TinyFloor のルーム：デスクが並ぶ16ビットのオフィスフロアを、チームメンバーが歩き回っています。",
-    "noSignUp": "登録なし、そのまま入れます",
+    "noSignUp": "試してみて",
     "secondaryCta": "チーム用のオフィスを用意することもできます"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "接続中...",
-    "copied": "コピーしました！",
     "leave": "退出",
     "reconnecting": "再接続中…",
     "peopleHere": "いまここに: {count}",
-    "copyLink": "リンクをコピー",
     "reconnectingNote": "接続が切れました。もう一度入り直しています…",
     "ended": {
       "back": "戻る",
@@ -274,7 +272,10 @@
       "signIn": "ログイン",
       "tryAgain": "もう一度試す",
       "useHere": "こちらで使う"
-    }
+    },
+    "invite": "招待",
+    "linkCopied": "リンクをコピーしました",
+    "inviteText": "TinyFloor の {room} に参加しませんか"
   },
   "call": {
     "incomingVideo": "ビデオ通話の着信...",

@@ -55,7 +55,7 @@
     "subtitle": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf herum, sprich mit deinen Kollegen und fühl dich wieder wie ein Team.",
     "cta": "Jetzt eintreten",
     "caption": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern, die darauf herumlaufen.",
-    "noSignUp": "keine Anmeldung, einfach rein",
+    "noSignUp": "probier's aus",
     "secondaryCta": "Oder richte ein Büro für dein Team ein"
   },
   "landing": {
@@ -251,11 +251,9 @@
   },
   "room": {
     "connecting": "Verbinde...",
-    "copied": "Kopiert!",
     "leave": "Verlassen",
     "reconnecting": "Verbindung wird wiederhergestellt…",
     "peopleHere": "Jetzt hier: {count}",
-    "copyLink": "Link kopieren",
     "reconnectingNote": "Verbindung verloren. Wir holen dich zurück…",
     "ended": {
       "back": "Zurück",
@@ -274,7 +272,10 @@
       "signIn": "Anmelden",
       "tryAgain": "Erneut versuchen",
       "useHere": "Stattdessen hier nutzen"
-    }
+    },
+    "invite": "Einladen",
+    "linkCopied": "Link kopiert",
+    "inviteText": "Komm zu mir in {room} auf TinyFloor"
   },
   "call": {
     "incomingVideo": "Eingehender Videoanruf...",

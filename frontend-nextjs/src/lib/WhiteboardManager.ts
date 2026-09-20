@@ -21,8 +21,12 @@ export interface BoardSnapshot {
 type Listener = () => void;
 type StrokeListener = (stroke: Stroke, from: number) => void;
 
-/** Points closer together than this add nothing to see, so they are not sent. */
-const MIN_POINT_GAP = 2;
+/**
+ * Points closer together than this add nothing to see, so they are not sent.
+ * Coordinates are fractions of the board, so this is a fraction too: about two
+ * pixels across a 900px board.
+ */
+const MIN_POINT_GAP = 0.002;
 const FLUSH_MS = 100;
 const EMPTY: BoardSnapshot = {
   open: false,

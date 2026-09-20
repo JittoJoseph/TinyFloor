@@ -1,14 +1,8 @@
 import React from "react";
 import styles from "./pixel.module.css";
+import { statusColor } from "@/lib/status";
 
 export type AvatarDirection = "up" | "down" | "left" | "right";
-
-export const STATUS_DOTS: Record<string, string> = {
-  available: "bg-emerald-400",
-  away: "bg-amber-400",
-  busy: "bg-red-400",
-  in_call: "bg-violet-400",
-};
 
 interface PixelAvatarProps {
   character: string;
@@ -68,9 +62,8 @@ export const Nameplate: React.FC<{
     }}
   >
     <span
-      className={`w-[0.55em] h-[0.55em] rounded-full ${
-        STATUS_DOTS[status] ?? STATUS_DOTS.available
-      }`}
+      className="w-[0.55em] h-[0.55em] rounded-full"
+      style={{ backgroundColor: statusColor(status) }}
     />
     {name}
   </span>

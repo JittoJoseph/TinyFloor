@@ -4,20 +4,19 @@
     "description": "TinyFloor はブラウザで使える無料のバーチャルオフィスです。チームと一緒にピクセルアートのフロアを歩き回り、誰かの隣に立つだけでビデオ通話が始まります。",
     "ogAlt": "TinyFloor のルーム：デスクとチームメンバーがいる16ビットのオフィスフロア",
     "keywords": "バーチャルオフィス、リモートワーク、空間チャット、オンラインコラボレーション、仮想ワークスペース、メタバースオフィス、近接チャット、近接ビデオチャット、バーチャルコワーキング、ブラウザでビデオ通話",
-    "createRoomTitle": "ルームを作成",
-    "createRoomDescription": "TinyFloor でバーチャルオフィスのルームを開きましょう。名前を付け、必要ならパスワードを設定して、チームにリンクを1つ共有するだけです。",
     "joinTitle": "ルームに参加",
     "joinRoomTitle": "{room} に参加",
     "joinRoomDescription": "TinyFloor の {room} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
-    "roomsTitle": "ルームを探す",
-    "roomsDescription": "アクティブなバーチャルルームを見て、TinyFloor の公開ワークスペースに参加しましょう。",
-    "peopleTitle": "メンバー",
-    "peopleDescription": "TinyFloor のルームに集まる人たちに会いましょう。",
     "authTitle": "ログイン",
     "authDescription": "TinyFloor にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
     "dashboardTitle": "ダッシュボード",
     "roomTitle": "アクティブなルーム",
-    "notFoundTitle": "ページが見つかりません"
+    "notFoundTitle": "ページが見つかりません",
+    "lobbyTitle": "ロビー",
+    "lobbyDescription": "TinyFloor の無料の公開ロビーにゲストとして入れます。キャラクターを選んで、人に会い、ブラウザで近くの人とビデオ通話を試しましょう。",
+    "inviteTitle": "TinyFloor の {workspace} に参加",
+    "inviteFallbackTitle": "TinyFloor に招待されています",
+    "inviteDescription": "{name} さんが、歩き回れるバーチャルオフィス TinyFloor の {workspace} に招待しています。"
   },
   "common": {
     "loading": "読み込み中...",
@@ -29,15 +28,17 @@
     "you": "あなた",
     "justNow": "たった今",
     "unknown": "不明",
-    "rooms": "ルーム",
-    "people": "メンバー",
     "peopleCount": "{count, plural, other {# 人}}",
-    "createRoom": "ルームを作成",
-    "browseRooms": "ルームを探す",
-    "searchRooms": "ルームを検索...",
     "dashboard": "ダッシュボード",
     "questions": "よくある質問",
-    "signOut": "ログアウト"
+    "signOut": "ログアウト",
+    "visitLobby": "ロビーに行く",
+    "lobby": "ロビー",
+    "signIn": "ログイン",
+    "rooms": "ルーム",
+    "offices": "あなたのオフィス",
+    "account": "アカウント",
+    "createOffice": "オフィスを作る"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -52,8 +53,10 @@
   "hero": {
     "title": "いちばん<em>居心地のいい</em><br></br>バーチャルオフィス。",
     "subtitle": "ゲームのような見た目のバーチャルオフィス。歩き回って同僚と話し、もう一度チームを感じましょう。",
-    "cta": "試してみる",
-    "caption": "TinyFloor のルーム：デスクが並ぶ16ビットのオフィスフロアを、チームメンバーが歩き回っています。"
+    "cta": "今すぐ入る",
+    "caption": "TinyFloor のルーム：デスクが並ぶ16ビットのオフィスフロアを、チームメンバーが歩き回っています。",
+    "noSignUp": "登録なし、そのまま入れます",
+    "secondaryCta": "チーム用のオフィスを用意することもできます"
   },
   "landing": {
     "description": "ゲームのような見た目のバーチャルオフィス。チームと一緒にピクセルアートのフロアを歩き回り、誰かの隣に立つだけでビデオ通話が始まります。",
@@ -107,9 +110,9 @@
     },
     "rooms": {
       "title": "ルームは明日もそこにあります。",
-      "body": "ミーティングが終わってもルームは消えません。チーム用に開けたままにし、必要ならパスワードを付けて、リンクを一度送るだけです。",
-      "chip1": "全員に公開",
-      "chip2": "リンクで共有",
+      "body": "ミーティングが終わってもルームはなくなりません。チームのために開けたままにして、一度招待すれば、みんないつでも入ってこられます。",
+      "chip1": "チーム専用",
+      "chip2": "ゲストリンク",
       "chip3": "無料"
     },
     "floor": {
@@ -133,15 +136,15 @@
       },
       {
         "q": "TinyFloor は無料ですか？",
-        "a": "はい。ルームの作成、歩き回ること、チャット、通話はすべて無料です。"
+        "a": "はい。公開ロビーは誰でも無料で、小さなチームのワークスペースも無料です。"
       },
       {
         "q": "ルームに参加するのにアカウントは必要ですか？",
-        "a": "いいえ。名前だけでゲストとして誰でも参加できます。ログインすると、保存されたプロフィール、ずっと使えるキャラクター、ルームの一覧が加わるだけです。"
+        "a": "公開ロビーなら不要です。名前だけでゲストとして誰でも入れます。ワークスペースのルームは非公開で、チームメンバーは無料アカウントでサインインし、訪問者はゲストリンクから入ります。"
       },
       {
         "q": "ビデオ通話はどのように動作しますか？",
-        "a": "通話は WebRTC によるピアツーピアで行われ、音声と映像はブラウザ間で直接やり取りされます。一度つながると、誰かが通話を切るかルームを出るまで接続は続きます。離れて歩いても切れません。"
+        "a": "近づいた相手との通話はWebRTCのピアツーピアで、音声と映像はブラウザ同士で直接やり取りされます。誰かが通話を切るかルームを出るまでつながったままなので、離れても切れません。ミーティングテーブルではグループ通話をメディアサーバー経由で流します。座れば参加、立てば退出です。"
       },
       {
         "q": "ルームにいる間、カメラはずっとオンですか？",
@@ -160,11 +163,12 @@
   "cta": {
     "title": "あなたのルームは<em>もう開いています。</em>",
     "publicTitle": "公開オフィスに入る",
-    "publicBody": "いつでも開いているルームです。キャラクターを選んで歩き回り、そこにいる人にあいさつしましょう。",
-    "createTitle": "チームのためにルームを開く",
-    "createBody": "名前を付け、必要ならパスワードを設定して、リンクを1つ送るだけ。好きなだけ開いたままにできます。",
+    "publicBody": "いつでも開いていて、誰でも入れます。名前とキャラクターを選べばもう中です。アカウントは要りません。",
+    "createTitle": "自分のオフィスを用意する",
+    "createBody": "名前を付けて、リンクひとつでチームを招待。ルームは好きなだけ開いたままです。",
     "sampleName": "デザインチーム",
-    "create": "作成"
+    "create": "作成",
+    "publicNote": "ここから"
   },
   "footer": {
     "tagline": "歩き回れるバーチャルオフィス。無料、ブラウザで。",
@@ -177,170 +181,100 @@
     "credits": "クレジット"
   },
   "auth": {
-    "welcomeBack": "おかえりなさい",
-    "joinUs": "はじめましょう",
-    "signInSubtitle": "アカウントにログイン",
-    "registerSubtitle": "ワークスペースのアカウントを作成",
-    "username": "ユーザー名",
-    "emailOptional": "メールアドレス（任意）",
-    "displayNameOptional": "表示名（任意）",
+    "tabSignIn": "ログイン",
+    "tabSignUp": "アカウント作成",
+    "chooseMode": "ログインまたはアカウント作成",
+    "signInTitle": "おかえりなさい",
+    "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
+    "signUpTitle": "アカウントを作成",
+    "signUpSubtitle": "名前、メール、パスワード。それだけです。",
+    "name": "名前",
+    "namePlaceholder": "ほかの人に表示される名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@company.com",
     "password": "パスワード",
+    "passwordPlaceholder": "パスワード",
+    "newPasswordPlaceholder": "パスワードを決めてください",
+    "passwordRule": "8文字以上",
+    "capsLock": "Caps Lock がオンになっています",
     "showPassword": "パスワードを表示",
     "hidePassword": "パスワードを隠す",
     "signIn": "ログイン",
-    "signUp": "新規登録",
+    "signingIn": "ログイン中…",
     "createAccount": "アカウントを作成",
-    "noAccount": "アカウントをお持ちでないですか？",
+    "creatingAccount": "アカウントを作成しています…",
+    "noAccount": "TinyFloor ははじめてですか？",
+    "createOne": "アカウントを作成",
     "haveAccount": "すでにアカウントをお持ちですか？",
-    "continueGuest": "ゲストとして続ける →",
-    "error": "エラーが発生しました"
+    "signInInstead": "ログインする",
+    "guestCarryOver": "{name} として来ています。その名前はそのまま使えます。",
+    "continueGuest": "見てみるだけ？ゲストとしてロビーに入る",
+    "errors": {
+      "wrong_credentials": "メールアドレスとパスワードが一致しません。もう一度お試しください。",
+      "too_many_attempts": "試行回数が多すぎます。数分待ってからもう一度お試しください。",
+      "email_taken": "このメールアドレスのアカウントはすでにあります。",
+      "bad_email": "メールアドレスの形式ではないようです。",
+      "email_required": "メールアドレスを入力してください。",
+      "password_required": "パスワードを入力してください。",
+      "password_too_short": "8文字以上にしてください。",
+      "password_too_long": "72文字未満にしてください。",
+      "password_blank": "スペースだけのパスワードは使えません。",
+      "name_required": "ほかの人に表示される名前を入力してください。",
+      "turnstile": "人間であることを確認できませんでした。もう一度お試しください。",
+      "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    }
   },
   "entry": {
-    "allRooms": "すべてのルーム",
     "yourName": "あなたの名前",
     "namePlaceholder": "何と呼ばれたいですか？",
-    "roomPassword": "ルームのパスワード",
-    "passwordPlaceholder": "パスワードを入力",
     "character": "キャラクター",
-    "copyInvite": "招待リンクをコピー",
     "inviteCopied": "招待リンクをコピーしました",
     "openingDoor": "ドアを開けています",
-    "walkIn": "入室する"
-  },
-  "createRoom": {
-    "title": "ルームを開きましょう。",
-    "roomName": "ルーム名",
-    "roomNamePlaceholder": "デザインチーム、スタジオ、金曜の雑談",
-    "advanced": "詳細設定",
-    "passwordPlaceholder": "パスワードを追加（任意）",
-    "passwordHint": "すべてのルームはディレクトリに表示されます。パスワードを設定すると、知らない人はドアを開けられません。",
-    "submit": "ルームを作成",
-    "submitting": "準備中",
-    "createError": "ルームを作成できませんでした。もう一度お試しください。",
-    "openError": "ルームを開けませんでした"
+    "walkIn": "入室する",
+    "guestNote": "ゲストとして入ります。<link>ログイン</link>するとアカウントを使えます。",
+    "guestKeep": "ゲストで参加中です。<link>アカウントを作成</link>すると名前とキャラクターを残せます。",
+    "copyInvite": "招待リンクをコピー",
+    "continue": "次へ",
+    "walkingInAs": "{name} として入ります"
   },
   "join": {
     "unavailableTitle": "このドアは開きません。",
-    "unavailable": "このルームは利用できなくなりました。",
-    "full": "このルームは現在満員です",
-    "needsPassword": "このルームにはパスワードが必要です",
-    "error": "このルームに参加できませんでした",
-    "roomFull": "満員",
-    "guestNote": "ゲストとして参加しています。名前とキャラクターを残すには<link>ログイン</link>してください。"
-  },
-  "directory": {
-    "roomsTitle": "<em>バーチャルオフィス</em>のルーム",
-    "peopleTitle": "TinyFloor <em>コミュニティ</em>",
-    "roomsSubtitle": "ルームを探すか、中にいる人に会いましょう",
-    "peopleSubtitle": "TinyFloor をつくる人たちに会いましょう",
-    "updating": "更新中...",
-    "roomsLive": "{count, plural, other {# ルームがライブ}}",
-    "search": "検索",
-    "loadingSpaces": "スペースを読み込み中",
-    "noRoomsFound": "ルームが見つかりません。",
-    "noRoomsAvailable": "利用できるルームはありません。",
-    "noRoomsFoundBody": "検索に一致するルームが見つかりませんでした。キーワードを変えてみてください。",
-    "noRoomsAvailableBody": "まだ静かです。最初のワークスペースを始めましょう！",
-    "presence": {
-      "ONLINE": "オンライン",
-      "IDLE": "アイドル",
-      "OFFLINE": "オフライン"
-    },
-    "lastActive": "{time}にアクティブ",
-    "full": "満員",
-    "enter": "入室",
-    "gatheringPeople": "メンバーを集めています...",
-    "searchPeople": "メンバーを検索...",
-    "yourProfile": "あなたのプロフィール",
-    "loadingPeople": "メンバーを読み込み中",
-    "noPeople": "メンバーが見つかりません。",
-    "noPeopleBody": "別のキーワードで検索するか、また後で見てください。"
+    "linkUnavailable": "このゲストリンクは期限切れか、無効になっています。送ってくれた人に新しいリンクを頼んでください。",
+    "visitLobby": "ロビーに行く",
+    "invitedAsGuest": "ゲストとして招待されています。"
   },
   "userMenu": {
-    "manageProfile": "プロフィールを管理"
-  },
-  "dashboard": {
-    "subtitle": "プロフィールとルームを管理",
-    "activeCount": "{count} 件アクティブ",
-    "userNotFound": "ユーザーが見つかりません",
-    "backToRooms": "ルーム一覧に戻る",
-    "nameUpdated": "表示名を更新しました！",
-    "profileFailed": "プロフィールを更新できませんでした",
-    "characterUpdated": "キャラクターを更新しました！",
-    "characterFailed": "キャラクターを更新できませんでした",
-    "linkCopied": "リンクをコピーしました！",
-    "profile": {
-      "changeCharacter": "キャラクターを変更",
-      "editName": "表示名を編集",
-      "saveName": "表示名を保存",
-      "displayName": "表示名",
-      "guestBadge": "ゲスト",
-      "copyLink": "プロフィールのリンクをコピー",
-      "share": "プロフィールを共有",
-      "shareTitle": "{name} さんのプロフィール",
-      "shareText": "TinyFloor で {name} さんのプロフィールを見てみよう",
-      "created": "作成",
-      "joined": "参加",
-      "chooseCharacter": "キャラクターを選ぶ",
-      "selectAvatar": "アバターを選択してください"
-    },
-    "stats": {
-      "title": "統計",
-      "empty": "最初のルームを作りましょう！",
-      "active": "アクティブ"
-    },
-    "quickActions": {
-      "title": "クイックアクション"
-    },
-    "activity": {
-      "title": "最近のアクティビティ",
-      "empty": "まだアクティビティはありません",
-      "room_created": "作成",
-      "room_joined": "参加",
-      "room_visited": "訪問"
-    },
-    "collaborators": {
-      "title": "最近会った人",
-      "empty": "ルームに参加して人と出会いましょう"
-    },
-    "rooms": {
-      "mine": "マイルーム",
-      "joined": "参加中",
-      "gridView": "グリッド表示",
-      "listView": "リスト表示",
-      "newRoom": "新しいルーム",
-      "filter": {
-        "all": "すべて",
-        "active": "アクティブ",
-        "idle": "アイドル",
-        "offline": "オフライン"
-      },
-      "loading": "ルームを読み込み中...",
-      "noMatches": "一致するものがありません",
-      "noMatchesBody": "検索条件やフィルターを変えてみてください",
-      "noRooms": "まだルームがありません",
-      "noRoomsBody": "最初のバーチャルオフィスを作りましょう",
-      "noJoined": "参加したルームはありません",
-      "noJoinedBody": "ルームに参加するとここに表示されます",
-      "browsePublic": "公開ルームを探す"
-    },
-    "roomCard": {
-      "status": {
-        "active": "アクティブ",
-        "idle": "アイドル",
-        "offline": "オフライン"
-      },
-      "join": "参加",
-      "copyLink": "リンクをコピー",
-      "players": "{count}/{max} 人"
-    }
+    "manageProfile": "プロフィールを管理",
+    "visitingAsGuest": "ゲストとして参加中",
+    "keepYourName": "名前とキャラクターを引き継ぐ"
   },
   "room": {
     "connecting": "接続中...",
-    "fallbackName": "ルーム: {id}",
     "copied": "コピーしました！",
-    "invite": "招待",
-    "leave": "退出"
+    "leave": "退出",
+    "reconnecting": "再接続中…",
+    "peopleHere": "いまここに: {count}",
+    "copyLink": "リンクをコピー",
+    "reconnectingNote": "接続が切れました。もう一度入り直しています…",
+    "ended": {
+      "back": "戻る",
+      "fullTitle": "このルームは満員です",
+      "full": "入れる人数に達しています。少し待ってからもう一度お試しください。",
+      "replacedTitle": "別のタブで開かれています",
+      "replaced": "別のタブか端末でこのルームに入ったため、こちらは退出しました。",
+      "closedTitle": "このルームは閉じられました",
+      "closed": "ワークスペースの管理者がルームを削除またはアーカイブしました。",
+      "revokedTitle": "アクセスが終了しました",
+      "revoked": "入室に使ったゲストリンクが無効になりました。",
+      "signedOutTitle": "ログアウトしています",
+      "signedOut": "もう一度ログインすると入れます。",
+      "notFoundTitle": "ルームが見つかりません",
+      "notFound": "このルームは存在しないか、そのワークスペースのメンバーではありません。",
+      "signIn": "ログイン",
+      "tryAgain": "もう一度試す",
+      "useHere": "こちらで使う"
+    }
   },
   "call": {
     "incomingVideo": "ビデオ通話の着信...",
@@ -406,8 +340,7 @@
   },
   "proximity": {
     "videoCall": "ビデオ通話",
-    "audioCall": "音声通話",
-    "viewProfile": "プロフィールを見る"
+    "audioCall": "音声通話"
   },
   "jukebox": {
     "title": "ルームのスピーカー",
@@ -433,24 +366,8 @@
   "settings": {
     "title": "設定",
     "close": "設定を閉じる",
-    "audio": "オーディオ",
-    "video": "ビデオ",
     "microphone": "マイク",
-    "micVolume": "マイクの音量",
-    "speaker": "スピーカー",
-    "speakerVolume": "スピーカーの音量",
     "camera": "カメラ",
-    "videoQuality": "ビデオ画質",
-    "quality": {
-      "low": "低",
-      "medium": "中",
-      "high": "高"
-    },
-    "qualityHint": {
-      "low": "360p、回線が遅い場合に最適",
-      "medium": "480p、画質と速度のバランス",
-      "high": "720p、最高画質ですが高速な回線が必要です"
-    },
     "default": "デフォルト"
   },
   "tutorial": {
@@ -482,9 +399,6 @@
     "select": "{name} を選択",
     "keyHint": "← → キーを使います"
   },
-  "toast": {
-    "dismiss": "閉じる"
-  },
   "notFound": {
     "title": "このルームは地図にありません。",
     "body": "お探しのページは存在しないか、移動しました。",
@@ -514,7 +428,7 @@
     "steps": [
       {
         "title": "ルームを開く",
-        "body": "公開オフィスに入るか、ルームを作ってリンクを共有します。"
+        "body": "公開オフィスに入るか、ワークスペースを作ってチームを招待しましょう。"
       },
       {
         "title": "キャラクターを選ぶ",
@@ -547,7 +461,7 @@
           },
           {
             "title": "ゲストもすぐ入れる",
-            "body": "リンクを持っている人は名前だけで参加できます。アカウントは任意で、プロフィールとルームを保存するだけです。"
+            "body": "チームメンバーは無料アカウントで、それ以外の人はゲストリンクから名前だけで入れます。"
           }
         ],
         "them": {
@@ -567,7 +481,7 @@
           },
           {
             "q": "チームを Gather から TinyFloor に移せますか？",
-            "a": "はい。ルームを作ってリンクを共有すれば、全員が入れます。移行するデータもインストールも必要ありません。"
+            "a": "はい。ワークスペースを作り、リンクひとつでチームを招待すれば、みんな入ってこられます。データ移行もインストールも不要です。"
           },
           {
             "q": "TinyFloor のルームには何人入れますか？",
@@ -614,7 +528,7 @@
           },
           {
             "q": "チームメンバーにアカウントは必要ですか？",
-            "a": "いいえ。ルームのリンクを持っている人は、名前だけでゲストとして参加できます。サインインすると、プロフィール、キャラクター、ルームの一覧が保存されるだけです。"
+            "a": "チームメンバーは無料アカウントを使うので、ルームはチーム内だけで非公開に保てます。それ以外の人も、ゲストリンクや公開ロビーから名前だけでゲストとして入れます。"
           },
           {
             "q": "TinyFloor はスマホで使えますか？",
@@ -708,7 +622,7 @@
           },
           {
             "q": "サーバーを用意する必要はありますか？",
-            "a": "いいえ。TinyFloor はホスティング済みです。ブラウザでルームを作り、リンクを共有するだけです。"
+            "a": "いいえ。TinyFloorはホスティング済みです。ブラウザでワークスペースを作り、チームを招待してください。"
           },
           {
             "q": "TinyFloor ではどうやって通話が始まりますか？",
@@ -813,7 +727,7 @@
           },
           {
             "title": "いつでも開いているルーム",
-            "body": "公開オフィスはいつでも開いています。自分のコワーキンググループ用にルームを作ってリンクを共有することもできます。"
+            "body": "公開オフィスはいつでも開いています。自分のコワーキンググループ用にワークスペースを作って招待することもできます。"
           },
           {
             "title": "ステータスを設定",
@@ -831,7 +745,7 @@
           },
           {
             "q": "知らない人とコワーキングできますか？",
-            "a": "はい。公開オフィスは誰でも入れます。プライベートなグループなら、ルームを作ってパスワードを設定してください。"
+            "a": "はい。公開オフィスは誰でも入れます。プライベートなグループなら、ワークスペースを作ってください。そのルームには招待した人だけが入れます。"
           },
           {
             "q": "時間制限はありますか？",
@@ -864,11 +778,11 @@
         "faq": [
           {
             "q": "自習室はどうやって作りますか？",
-            "a": "ルームを作って名前を付け、友だちにリンクを共有します。プライベートにしたい場合はパスワードを設定してください。"
+            "a": "ワークスペースを作ってルームを追加し、リンクひとつで友だちを招待しましょう。入れるのは招待した人だけです。"
           },
           {
             "q": "学生は無料ですか？",
-            "a": "はい。TinyFloor は誰でも無料で、参加にアカウントは必要ありません。"
+            "a": "はい。TinyFloorは小さなグループなら無料で、友だちはアカウントなしでゲストリンクから入れます。"
           },
           {
             "q": "勉強中に音楽を流せますか？",
@@ -913,7 +827,7 @@
           },
           {
             "q": "教室を非公開にできますか？",
-            "a": "はい。ルームを作るときにパスワードを設定し、クラスにだけ共有してください。"
+            "a": "はい。ワークスペースのルームは非公開です。クラスにゲストリンクを共有し、終わったら無効にしてください。"
           },
           {
             "q": "教員は無料で使えますか？",
@@ -963,5 +877,222 @@
         ]
       }
     }
+  },
+  "lobby": {
+    "eyebrow": "だれでも入れます",
+    "title": "ロビー",
+    "subtitle": "誰でも立ち寄れます。名前を決めて、キャラクターを選んで入りましょう。"
+  },
+  "workspace": {
+    "lobby": "ロビー",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "switchWorkspace": "ワークスペースを切り替え",
+    "memberCount": "メンバー {count}/{limit}",
+    "peopleInside": "いまルームにいる人: {count}",
+    "plans": {
+      "free": "無料プラン",
+      "team10": "Team 10",
+      "team25": "Team 25",
+      "team50": "Team 50"
+    },
+    "roles": {
+      "owner": "オーナー",
+      "admin": "管理者",
+      "member": "メンバー"
+    },
+    "settings": {
+      "button": "設定",
+      "title": "ワークスペースの設定",
+      "name": "ワークスペース名",
+      "save": "保存",
+      "transfer": "オーナー権限を移す",
+      "transferHint": "新しいオーナーがすべてを管理できるようになります。あなたは管理者として残ります。",
+      "choosePerson": "メンバーを選ぶ",
+      "transferButton": "移す",
+      "deleteTitle": "このワークスペースを削除",
+      "deleteBody": "{name}、そのルーム、ゲストリンクが全員分削除されます。元に戻せません。確認のためワークスペース名を入力してください。",
+      "deleteConfirmLabel": "確認用のワークスペース名",
+      "deleteButton": "ワークスペースを削除",
+      "leaveTitle": "このワークスペースから抜ける",
+      "leaveBody": "だれかにまた招待されるまで、{name} のルームに入れなくなります。",
+      "leaveButton": "ワークスペースから抜ける",
+      "nameDetail": "オフィスの上部にチームが見る名前です。"
+    },
+    "onboarding": {
+      "title": "オフィスを用意しましょう",
+      "subtitle": "チームのワークスペースに名前を付けてください。すぐ入れる最初のルームも用意されます。",
+      "nameLabel": "ワークスペース名",
+      "namePlaceholder": "Acme Studio",
+      "create": "ワークスペースを作成",
+      "freePlan": "3 人まで無料。カード不要です。",
+      "firstRoom": "メインフロア"
+    },
+    "rooms": {
+      "title": "ルーム",
+      "detail": "チームが作ったルームにいつでも入れます。",
+      "new": "新しいルーム",
+      "empty": "まだルームがありません。管理者に作成を頼んでください。",
+      "emptyManager": "まだルームがありません。チームの最初のルームを作りましょう。",
+      "capacity": "定員: {count}",
+      "options": "{room} のオプション",
+      "guestLinks": "ゲストリンク",
+      "edit": "名前や定員を変更",
+      "delete": "ルームを削除",
+      "peopleNow": "中にいる人: {count}",
+      "quiet": "いまはだれもいません",
+      "enter": "入る",
+      "editTitle": "ルームを編集",
+      "newTitle": "新しいルーム",
+      "name": "ルーム名",
+      "namePlaceholder": "朝会、デザイン、コーヒーコーナー",
+      "capacityLabel": "入れる人数",
+      "cancel": "キャンセル",
+      "save": "変更を保存",
+      "create": "ルームを作成",
+      "deleteTitle": "{room} を削除しますか？",
+      "deleteBody": "ルームとそのゲストリンクは完全に削除されます。",
+      "deleteBodyBusy": "いま中にいる人（{count}）は退出になり、ルームとそのゲストリンクは完全に削除されます。"
+    },
+    "guestLinks": {
+      "title": "{room} のゲストリンク",
+      "description": "ゲストリンクがあれば、アカウントなしでこのルームに入れます。",
+      "onlyOnce": "いまコピーしてください。安全のため、リンクは一度しか表示されません。",
+      "another": "別のリンクを作る",
+      "expiresIn": "リンクの有効期間",
+      "lifetimes": {
+        "1d": "1 日",
+        "7d": "7 日",
+        "30d": "30 日"
+      },
+      "create": "ゲストリンクを作成",
+      "active": "有効なリンク",
+      "expires": "{date} に期限切れ",
+      "revoke": "無効にする"
+    },
+    "members": {
+      "title": "メンバー",
+      "full": "プランの上限（{limit} 人）に達しています。",
+      "detail": "メンバー {count}/{limit}",
+      "invite": "招待",
+      "pending": "保留中の招待",
+      "anyoneWithLink": "リンクを持つだれでも",
+      "inviteMeta": "{role} · {date} に期限切れ",
+      "revoke": "取り消す",
+      "roleNames": {
+        "owner": "オーナー",
+        "admin": "管理者",
+        "member": "メンバー"
+      },
+      "you": "あなた",
+      "options": "{name} のオプション",
+      "makeMember": "メンバーにする",
+      "makeAdmin": "管理者にする",
+      "leave": "抜ける",
+      "remove": "外す",
+      "inviteTitle": "{workspace} に招待",
+      "inviteDescription": "リンクを送ってください。参加にはアカウントが必要です。",
+      "linkForEmail": "このリンクは {email} だけが使えます。1 回だけ有効で、7 日後に期限切れになります。",
+      "linkForAnyone": "このリンクを持つ人は 1 回だけ参加できます。7 日後に期限切れになります。",
+      "done": "完了",
+      "roleLabel": "参加するときの役割",
+      "roleHints": {
+        "member": "ルームを使ってチームと会う",
+        "admin": "ルームの作成や招待もできる"
+      },
+      "emailLabel": "メールアドレス（任意）",
+      "emailPlaceholder": "teammate@company.com",
+      "emailHint": "メールアドレスを入れると、その人だけが使えるリンクになります。",
+      "cancel": "キャンセル",
+      "createLink": "招待リンクを作成"
+    },
+    "profile": {
+      "title": "プロフィール",
+      "changePassword": "パスワードを変更",
+      "name": "名前",
+      "saved": "保存しました",
+      "save": "保存",
+      "character": "キャラクター",
+      "passwordTitle": "パスワードの変更",
+      "passwordDescription": "現在のパスワードを入力してから、新しいパスワードを決めてください。",
+      "passwordChanged": "パスワードを変更しました。",
+      "done": "完了",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "hidePasswords": "パスワードを隠す",
+      "showPasswords": "パスワードを表示",
+      "passwordRule": "8文字以上",
+      "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
+      "cancel": "キャンセル",
+      "pageTitle": "アカウント"
+    },
+    "invite": {
+      "invalidTitle": "この招待は使えません",
+      "invalid": "期限切れ、使用済み、または無効になっている可能性があります。新しい招待を頼んでください。",
+      "home": "ホームへ",
+      "eyebrow": "{name} さんからの招待",
+      "asAdmin": "管理者として招待されています。",
+      "asMember": "チームへの参加に招待されています。",
+      "join": "{workspace} に参加",
+      "joiningAs": "{name}（{email}）として参加します",
+      "createAccount": "アカウントを作成",
+      "signIn": "アカウントを持っています",
+      "needAccount": "ワークスペースに参加するにはアカウントが必要です。1 分で作れます。",
+      "readyToJoin": "これで参加",
+      "accountKeeps": "アカウントがあれば、{name} とキャラクターを次回も使えます。",
+      "you": "あなた"
+    },
+    "errors": {
+      "member_limit": "現在のプランではワークスペースが満員です。",
+      "not_allowed": "このワークスペースでのあなたの役割では、その操作はできません。",
+      "owner_cannot_leave": "抜ける前に、オーナーは権限を移す必要があります。",
+      "owner_role": "オーナーの役割はオーナー権限を移すことでのみ変わります。",
+      "bad_capacity": "2 人から 20 人の間で選んでください。",
+      "name_required": "先に名前を入れてください。",
+      "bad_email": "メールアドレスの形式ではないようです。",
+      "invite_used": "この招待はすでに使われています。",
+      "invite_invalid": "この招待は期限切れか、無効になっています。",
+      "wrong_account": "この招待は別のメールアドレス宛てです。そのアカウントでログインしてください。",
+      "wrong_password": "現在のパスワードが正しくありません。",
+      "password_too_short": "8文字以上にしてください。",
+      "password_too_long": "72文字未満にしてください。",
+      "too_many_attempts": "試行回数が多すぎます。数分待ってからもう一度お試しください。",
+      "not_found": "見つかりませんでした。削除された可能性があります。",
+      "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    },
+    "tabs": {
+      "label": "このオフィスの各セクション",
+      "rooms": "ルーム",
+      "people": "メンバー",
+      "settings": "設定"
+    },
+    "spaces": {
+      "title": "あなたのオフィス",
+      "new": "新しいオフィス",
+      "create": "オフィスを作る",
+      "emptyTitle": "まだオフィスがありません",
+      "emptyBody": "オフィスは招待した人だけのもので、チームはいつでもルームに入れます。",
+      "visitLobby": "公開オフィスを見る",
+      "roles": {
+        "owner": "あなたのオフィスです",
+        "admin": "ここでは管理者です",
+        "member": "ここではメンバーです"
+      }
+    }
+  },
+  "create": {
+    "eyebrow": "自分のオフィス",
+    "title": "オフィスに名前を付ける",
+    "subtitle": "チームに表示される名前です。あとから変えられます。",
+    "nameLabel": "オフィス名",
+    "namePlaceholder": "Acme Studio",
+    "continue": "次へ",
+    "create": "オフィスを作る",
+    "creating": "準備しています",
+    "firstRoom": "メインフロア",
+    "freePlan": "3人まで無料。カード不要です。",
+    "accountNext": "次はアカウント作成。それでオフィスの準備は完了です。",
+    "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。"
   }
 }

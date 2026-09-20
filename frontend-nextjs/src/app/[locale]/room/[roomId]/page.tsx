@@ -1,274 +1,89 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { useParams, useSearchParams } from "next/navigation";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { LogOut, Users, Copy, Check } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
-import ControlBar from "@/components/ControlBar";
-import SettingsModal from "@/components/SettingsModal";
-import ChatPanel from "@/components/ChatPanel";
-import { ChatToasts } from "@/components/ChatToasts";
-import ProximityOverlay from "@/components/ProximityOverlay";
-import CallOverlay from "@/components/CallOverlay";
-import WhiteboardOverlay from "@/components/WhiteboardOverlay";
-import JukeboxPanel from "@/components/JukeboxPanel";
-import RoomTutorial from "@/components/RoomTutorial";
-import type { PlayerStatus } from "@/lib/types";
-import { joinPath, shareUrl } from "@/lib/links";
-import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
+import { useAuth } from "@/contexts/AuthContext";
+import { api, ApiError, type RoomDetails } from "@/lib/api";
+import { roomPath, spacePath } from "@/lib/links";
+import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
+import { EntryPreview } from "@/components/entry/EntryPreview";
+import { WalkIn } from "@/components/entry/WalkIn";
+import { RoomView } from "@/components/room/RoomView";
 
-function Connecting() {
-  const t = useTranslations("room");
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)] font-sans text-sm font-bold tracking-widest uppercase">
-      <div className="text-center flex flex-col items-center gap-6">
-        <div className="w-10 h-10 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin"></div>
-        {t("connecting")}
-      </div>
-    </div>
-  );
-}
-
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
-  ssr: false,
-  loading: () => <Connecting />,
-});
-
-interface RoomData {
-  name: string;
-  activeUsers?: number;
-  maxPlayers?: number;
-}
-
+/** A workspace room. Members walk straight in; everyone else is sent to sign in. */
 export default function RoomPage() {
   const t = useTranslations("room");
-  const tc = useTranslations("common");
   const params = useParams();
-  const searchParams = useSearchParams();
   const router = useRouter();
-
   const roomId = params.roomId as string;
-  const name = searchParams.get("name");
-  const character = searchParams.get("character");
-  const urlUserId = searchParams.get("userId");
-  const [localPlayerId] = useState(() => urlUserId || crypto.randomUUID());
-
-  const [mounted, setMounted] = useState(false);
-  const [roomData, setRoomData] = useState<RoomData | null>(null);
-  const [showSettings, setShowSettings] = useState(false);
-  const [showChat, setShowChat] = useState(false);
-  const [unreadChatCount, setUnreadChatCount] = useState(0);
-  const [copied, setCopied] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
-  const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
-  const [participants, setParticipants] = useState<
-    Array<{
-      id: string;
-      name: string;
-      username?: string;
-      isGuest?: boolean;
-      status?: PlayerStatus;
-    }>
-  >([]);
-
-  // Fetch room details
-  useEffect(() => {
-    setMounted(true);
-    if (!name || !character) {
-      router.replace(joinPath(roomId));
-    } else {
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rooms/${roomId}`)
-        .then((res) => {
-          if (res.ok) return res.json();
-          throw new Error("Room not found");
-        })
-        .then((data: RoomData) => setRoomData(data))
-        .catch((err) => console.error("Failed to fetch room:", err));
-    }
-  }, [name, character, roomId, router]);
-
-  // Copy invite link
-  const copyInviteLink = useCallback(() => {
-    const link = shareUrl(joinPath(roomId));
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(link);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }, [roomId]);
-
-  const handleSettingsClick = useCallback(() => {
-    setShowSettings(true);
-  }, []);
-
-  const handleChatClick = useCallback(() => {
-    setShowChat((prev) => !prev);
-  }, []);
-
-  // Handle status change
-  const handleStatusChange = useCallback((status: PlayerStatus) => {
-    setCurrentStatus(status);
-    // Dispatch event to WebSocket manager
-    window.dispatchEvent(
-      new CustomEvent("statusChange", { detail: { status } }),
-    );
-  }, []);
+  const { user, isLoading } = useAuth();
+  const [room, setRoom] = useState<RoomDetails | null>(null);
+  const [missing, setMissing] = useState(false);
+  const [inside, setInside] = useState(false);
 
   useEffect(() => {
-    const handleOpenChat = () => setShowChat(true);
-    const handlePlayerListUpdated = (e: CustomEvent) => {
-      // Filter out current user from participants list to avoid duplication
-      const allParticipants = e.detail as Array<{
-        id: string;
-        name: string;
-        username?: string;
-        isGuest?: boolean;
-      }>;
-      const otherParticipants = allParticipants.filter((p) => p.name !== name);
-      // If username is not provided, extract it from name (format: "displayName (username)")
-      const processedParticipants = otherParticipants.map((p) => {
-        if (p.username) return p;
-        // Try to extract username from name if it's in format "DisplayName (username)"
-        const match = p.name.match(/\(([^)]+)\)$/);
-        return {
-          ...p,
-          username: match ? match[1] : p.name.toLowerCase().replace(/\s+/g, ""),
-          isGuest: p.isGuest ?? false,
-        };
+    if (isLoading) return;
+    if (!user || user.guest) {
+      router.replace(`/auth?${new URLSearchParams({ redirect: roomPath(roomId) })}`);
+      return;
+    }
+    let cancelled = false;
+    api
+      .room(roomId)
+      .then(({ room: found }) => !cancelled && setRoom(found))
+      .catch((error) => {
+        if (!cancelled && error instanceof ApiError && (error.status === 404 || error.status === 403)) setMissing(true);
       });
-      setParticipants(processedParticipants);
-    };
-
-    const handleTutorialFinished = () => setTutorialActive(false);
-
-    window.addEventListener(TUTORIAL_FINISHED_EVENT, handleTutorialFinished);
-    window.addEventListener("openChat", handleOpenChat);
-    window.addEventListener(
-      "playerListUpdated",
-      handlePlayerListUpdated as EventListener,
-    );
-
     return () => {
-      window.removeEventListener(
-        TUTORIAL_FINISHED_EVENT,
-        handleTutorialFinished,
-      );
-      window.removeEventListener("openChat", handleOpenChat);
-      window.removeEventListener(
-        "playerListUpdated",
-        handlePlayerListUpdated as EventListener,
-      );
+      cancelled = true;
     };
-  }, []);
+  }, [isLoading, user, roomId, router]);
 
-  if (!mounted || !name || !character) return null;
-
-  return (
-    <div className="relative w-full h-screen overflow-hidden bg-[var(--color-braun-bg)]">
-      {/* Header Overlay */}
-      <div
-        className={`absolute top-0 left-0 right-0 p-4 sm:p-6 ${
-          tutorialActive ? "hidden md:flex" : "flex"
-        } flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 z-10 pointer-events-none`}
-      >
-        {/* Room Info */}
-        <div className="bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-sm pointer-events-auto flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-          <div className="flex flex-col">
-            <h1 className="font-bold text-sm text-[var(--color-braun-text)] tracking-wide">
-              {roomData?.name || t("fallbackName", { id: roomId })}
-            </h1>
-            {roomData?.activeUsers !== undefined && (
-              <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1.5 mt-0.5">
-                <Users className="w-3 h-3" />
-                {tc("peopleCount", { count: roomData.activeUsers })}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto self-end sm:self-auto">
-          {/* Copy Invite Link */}
-          <button
-            onClick={copyInviteLink}
-            className="cursor-pointer bg-white hover:bg-gray-50 text-[var(--color-braun-text)] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[rgba(0,0,0,0.06)] shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-500" />
-                {t("copied")}
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5" />
-                {t("invite")}
-              </>
-            )}
-          </button>
-
-          {/* Leave Room */}
-          <Link
-            href="/rooms"
-            className="cursor-pointer bg-[var(--color-braun-text)] hover:bg-[#1a1a1a] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-sm transition-all font-bold uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center gap-2"
-          >
-            <LogOut className="w-3.5 h-3.5 rtl:rotate-180" />
-            {t("leave")}
+  if (missing) {
+    return (
+      <EntryShell backHref="/dashboard" backLabel={t("ended.back")} preview={<EntryPreview occupants={[]} />}>
+        <div className="entry-rise">
+          <span className="inline-flex w-11 h-11 rounded-xl bg-red-50 items-center justify-center mb-5">
+            <AlertCircle className="w-5 h-5 text-red-500" />
+          </span>
+          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
+            {t("ended.notFoundTitle")}
+          </h1>
+          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">{t("ended.notFound")}</p>
+          <Link href="/dashboard" className={primaryButtonClass}>
+            {t("ended.back")}
           </Link>
         </div>
-      </div>
+      </EntryShell>
+    );
+  }
 
-      {/* Game Canvas */}
-      <PhaserGame
-        name={name}
-        roomId={roomId}
-        character={character}
-        userId={localPlayerId}
+  if (!user || user.guest || !room) return null;
+
+  // The door: pick who you'll be in there, then walk in.
+  if (!inside) {
+    return (
+      <WalkIn
+        eyebrow={room.workspaceName}
+        title={room.name}
+        backHref={spacePath(room.workspaceId)}
+        sharePath={roomPath(roomId)}
+        onReady={() => setInside(true)}
       />
+    );
+  }
 
-      {/* Proximity Overlay */}
-      <ProximityOverlay />
-
-      {/* Call Overlay */}
-      <CallOverlay />
-      <WhiteboardOverlay />
-      <JukeboxPanel />
-
-      <RoomTutorial name={name} character={character} roomId={roomId} />
-
-      {/* Bottom Control Bar */}
-      <div className={tutorialActive ? "hidden md:block" : undefined}>
-        <ControlBar
-          onSettingsClick={handleSettingsClick}
-          onChatClick={handleChatClick}
-          onStatusChange={handleStatusChange}
-          currentStatus={currentStatus}
-          unreadChatCount={unreadChatCount}
-        />
-      </div>
-
-      {/* Settings Modal */}
-      <SettingsModal
-        isOpen={showSettings}
-        onClose={() => setShowSettings(false)}
-      />
-
-      {/* Chat Panel */}
-      <ChatPanel
-        isOpen={showChat}
-        onClose={() => setShowChat(false)}
-        userId={localPlayerId}
-        userName={name}
-        onUnreadChange={setUnreadChatCount}
-        participantCount={participants.length + 1}
-      />
-
-      {/* Chat Toasts for unread messages */}
-      <ChatToasts
-        isChatOpen={showChat}
-        onOpenChat={() => setShowChat(true)}
-      />
-    </div>
+  return (
+    <RoomView
+      title={room.name}
+      subtitle={room.workspaceName}
+      user={user}
+      ticketFor={() => api.roomTicket(roomId)}
+      sharePath={roomPath(roomId)}
+      leaveHref={spacePath(room.workspaceId)}
+    />
   );
 }

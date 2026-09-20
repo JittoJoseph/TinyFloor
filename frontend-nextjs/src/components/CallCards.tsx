@@ -5,19 +5,22 @@ import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
 import { useCall } from "@/lib/useCall";
+import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
 
 interface Tile {
   key: string;
+  /** Who and what this card shows, so the call knows which video to send in high quality. */
+  id?: string;
+  screen?: boolean;
   name: string;
   stream: MediaStream | null;
   mic: boolean;
   camera: boolean;
   connected: boolean;
   self?: boolean;
-  screen?: boolean;
   badge?: string;
 }
 
@@ -100,6 +103,7 @@ export default function CallCards() {
     ...peers.flatMap((peer) => [
       {
         key: peer.id,
+        id: peer.id,
         name: peer.name,
         stream: peer.stream,
         mic: peer.mic,
@@ -111,6 +115,7 @@ export default function CallCards() {
         ? [
             {
               key: `${peer.id}-screen`,
+              id: peer.id,
               name: t("screenOf", { name: peer.name }),
               stream: peer.screenStream,
               mic: false,
@@ -124,6 +129,13 @@ export default function CallCards() {
   ];
 
   const focusedTile = tiles.find((tile) => tile.key === focused);
+
+  // Only the enlarged card is worth receiving in high quality.
+  const focusedId = focusedTile?.id;
+  const focusedScreen = !!focusedTile?.screen;
+  useEffect(() => {
+    callManager.setFocus(focusedId ? { id: focusedId, kind: focusedScreen ? "screen" : "camera" } : null);
+  }, [focusedId, focusedScreen, peers]);
 
   useEffect(() => {
     if (!focusedTile) return;

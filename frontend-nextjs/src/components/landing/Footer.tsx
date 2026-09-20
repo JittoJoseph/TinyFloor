@@ -25,9 +25,8 @@ export const Footer: React.FC = () => {
     {
       title: t("product"),
       links: [
-        { label: tc("rooms"), href: "/rooms" },
-        { label: tc("people"), href: "/people" },
-        { label: tc("createRoom"), href: "/create-room" },
+        { label: tc("lobby"), href: "/lobby" },
+        { label: tc("signIn"), href: "/auth" },
         { label: tc("dashboard"), href: "/dashboard" },
       ],
     },

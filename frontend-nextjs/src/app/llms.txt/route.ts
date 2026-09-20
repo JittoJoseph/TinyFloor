@@ -10,9 +10,8 @@ export async function GET() {
   const t = await getTranslations({ locale: "en" });
   const pages: Array<[string, string, string]> = [
     ["TinyFloor", "/", t("landing.description")],
-    [t("metadata.roomsTitle"), "/rooms", t("metadata.roomsDescription")],
-    [t("metadata.peopleTitle"), "/people", t("metadata.peopleDescription")],
-    [t("metadata.createRoomTitle"), "/create-room", t("metadata.createRoomDescription")],
+    [t("metadata.lobbyTitle"), "/lobby", t("metadata.lobbyDescription")],
+    [t("metadata.authTitle"), "/auth", t("metadata.authDescription")],
     ...LANDINGS.map(({ key, slug }): [string, string, string] => [
       t(`landings.pages.${key}.meta.title`),
       `/${slug}`,

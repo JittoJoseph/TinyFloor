@@ -2,9 +2,9 @@
 
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import { Video, Mic, MessageSquare, User } from "lucide-react";
+import { Video, Mic, MessageSquare } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
-import { profilePath } from "@/lib/links";
+import { statusColor } from "@/lib/status";
 
 export interface NearbyPlayer {
   id: string;
@@ -16,13 +16,6 @@ export interface NearbyPlayer {
 }
 
 export const TOUCH_BREAKPOINT = 768;
-
-const STATUS_COLORS: Record<string, string> = {
-  available: "bg-green-500",
-  busy: "bg-red-500",
-  away: "bg-yellow-500",
-  in_call: "bg-blue-500",
-};
 
 const SIZES = {
   pointer: {
@@ -64,9 +57,8 @@ export const ProximityActions = memo(function ProximityActions({
       >
         {player.name.charAt(0).toUpperCase()}
         <span
-          className={`absolute bottom-0 right-0 ${size.dot} rounded-full border-[1.5px] border-[#fbfbf9] ${
-            STATUS_COLORS[player.status] || "bg-gray-400"
-          }`}
+          className={`absolute bottom-0 right-0 ${size.dot} rounded-full border-[1.5px] border-[#fbfbf9]`}
+          style={{ backgroundColor: statusColor(player.status) }}
         />
       </div>
 
@@ -94,18 +86,6 @@ export const ProximityActions = memo(function ProximityActions({
       >
         <MessageSquare className={size.icon} />
       </button>
-      {!player.guest && (
-        <button
-          onClick={() =>
-            window.open(profilePath(player.id), "_blank", "noopener,noreferrer")
-          }
-          className={actionClass}
-          title={t("viewProfile")}
-          aria-label={t("viewProfile")}
-        >
-          <User className={size.icon} />
-        </button>
-      )}
     </div>
   );
 });

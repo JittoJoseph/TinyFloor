@@ -1,0 +1,24 @@
+{
+  "name": "tinyfloor-api",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "deploy": "wrangler d1 migrations apply tinyfloor-db --remote && wrangler deploy",
+    "deploy:preview": "wrangler d1 migrations apply tinyfloor-preview-db --remote --env preview && wrangler deploy --env preview",
+    "migrate:local": "wrangler d1 migrations apply tinyfloor-db --local",
+    "types": "wrangler types",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.1.10",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "wrangler": "4.132.0"
+  },
+  "dependencies": {
+    "bcryptjs": "3.0.2"
+  }
+}

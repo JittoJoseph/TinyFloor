@@ -1,6 +1,6 @@
 export const GUIDE_ID = "spatialmeet-guide";
 export const GUIDE_SPRITE = "Amelia";
-export const TUTORIAL_KEY = "spacialMeetTutorialDone";
+const TUTORIAL_KEY = "spacialMeetTutorialDone";
 export const TUTORIAL_FINISHED_EVENT = "tutorialFinished";
 export const INPUT_MODE_EVENT = "inputModeChanged";
 

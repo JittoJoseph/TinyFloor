@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { SITE_URL } from "@/lib/site";
-import { VT323, Nunito } from "next/font/google";
+import { VT323, Nunito, Caveat } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { ToastProvider } from "@/components/ui/Toast";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localeDirection } from "@/lib/i18n/routing";
@@ -23,6 +22,13 @@ const nunito = Nunito({
   variable: "--font-body",
   subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "600", "700", "800"],
+});
+
+// The handwriting on the landing page's notes and arrows.
+const caveat = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  weight: ["500"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -87,11 +93,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth">
-      <body className={`${vt323.variable} ${nunito.variable} antialiased`}>
+      <body className={`${vt323.variable} ${nunito.variable} ${caveat.variable} antialiased`}>
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
           <AuthProvider>
-            <ToastProvider>{children}</ToastProvider>
+            {children}
           </AuthProvider>
         </NextIntlClientProvider>
         <GoogleAnalytics />

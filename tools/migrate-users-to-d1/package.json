@@ -1,0 +1,18 @@
+{
+  "name": "migrate-users-to-d1",
+  "private": true,
+  "type": "module",
+  "description": "Carries TinyFloor accounts from MongoDB into D1. Run locally, never deployed.",
+  "scripts": {
+    "export": "node export.mjs",
+    "transform": "node transform.mjs",
+    "import:local": "node import.mjs --local",
+    "import:remote": "node import.mjs --remote",
+    "verify:local": "node verify.mjs --local",
+    "verify:remote": "node verify.mjs --remote",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "mongodb": "^6.20.0"
+  }
+}

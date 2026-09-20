@@ -9,9 +9,9 @@ export const EntryShell: React.FC<{
   backLabel?: string;
   preview: React.ReactNode;
   children: React.ReactNode;
-}> = ({ backHref = "/rooms", backLabel, preview, children }) => {
-  const t = useTranslations("entry");
-  const back = backLabel ?? t("allRooms");
+}> = ({ backHref = "/", backLabel, preview, children }) => {
+  const t = useTranslations("common");
+  const back = backLabel ?? t("back");
 
   return (
     <div className="min-h-screen w-full bg-[var(--color-braun-bg)] flex flex-col">

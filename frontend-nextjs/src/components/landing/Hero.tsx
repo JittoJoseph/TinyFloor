@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 import { HeroOfficeScene } from "./HeroOfficeScene";
+import { Doodle } from "./Doodle";
 import { Link } from "@/lib/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
 
@@ -23,12 +25,12 @@ export const BrowserWindow: React.FC<{
           </div>
 
           <Link
-            href="/room/public-room"
+            href="/lobby"
             dir="ltr"
             className="cursor-pointer flex-1 h-5 md:h-6 rounded md:rounded-md bg-[#f0f0eb] transition-colors border border-[rgba(0,0,0,0.06)] flex items-center justify-center px-4 overflow-hidden max-w-xl"
           >
             <span className="font-body text-[11px] md:text-xs font-medium text-[var(--color-braun-text)] opacity-50 tracking-wide truncate">
-              {SITE_URL.replace("https://", "")}/room/public-room
+              {SITE_URL.replace("https://", "")}/lobby
             </span>
           </Link>
 
@@ -62,14 +64,36 @@ export const Hero: React.FC = () => {
             {t("subtitle")}
           </p>
 
-          <Link
-            href="/rooms"
-            className="group relative flex items-center justify-center w-40 md:w-48 h-14 md:h-16 bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
-          >
-            <div className="w-[92%] h-[82%] rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center justify-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
-              {t("cta")}
-            </div>
-          </Link>
+          {/* Two ways in, the one that needs nothing first. */}
+          <div className="relative flex flex-col items-center gap-3">
+            <Doodle className="hidden md:flex flex-col absolute end-full bottom-7 -me-2">
+              {t("noSignUp")}
+            </Doodle>
+            {/* No room for the arrow on a phone, so the note goes under the button. */}
+            <span
+              aria-hidden="true"
+              className="md:hidden font-hand text-[1.2rem] leading-none text-[var(--color-braun-text)] opacity-45 -rotate-2"
+            >
+              {t("noSignUp")}
+            </span>
+
+            <Link
+              href="/lobby"
+              className="group relative flex items-center justify-center w-56 md:w-64 h-14 md:h-16 bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
+            >
+              <div className="w-[92%] h-[82%] rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center justify-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
+                {t("cta")}
+              </div>
+            </Link>
+
+            <Link
+              href="/create"
+              className="cursor-pointer group inline-flex items-center gap-1.5 font-body text-[15px] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 transition-opacity"
+            >
+              {t("secondaryCta")}
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+            </Link>
+          </div>
         </div>
 
         <BrowserWindow caption={t("caption")}>

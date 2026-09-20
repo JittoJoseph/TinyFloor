@@ -4,19 +4,25 @@ import {
   Direction,
   directionFromVector,
 } from "./AnimationManager";
-import { WebSocketManager } from "./WebSocketManager";
+import type { RoomSocket } from "./RoomSocket";
 import { VirtualJoystickManager } from "./VirtualJoystickManager";
-import { NavGrid, Vec, advanceAlongPath } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, isValidTile, MOVEMENT_SPEED } from "./types";
+import { pixelToTile, isValidTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "./types";
 
 const ARRIVE_RANGE = 3;
+/**
+ * How far the others' copy of us may drift before we correct it. They walk our
+ * last heading at our speed, so walking in a straight line costs one message,
+ * not one per tile.
+ */
+const DRIFT_LIMIT = TILE_SIZE;
 
 export class MovementManager {
   private scene: Phaser.Scene;
   private player: Phaser.Physics.Arcade.Sprite;
   private animationManager: AnimationManager;
-  private wsManager: WebSocketManager;
+  private wsManager: RoomSocket;
   private nav: NavGrid;
   private collides: (x: number, y: number) => boolean;
   private joystick?: VirtualJoystickManager;
@@ -25,8 +31,8 @@ export class MovementManager {
   private arrive?: () => void;
   private release?: () => void;
   private currentDirection: Direction = "down";
-  private lastSentTile = "";
-  private needsFinalSend = false;
+  /** Where the others have us, walked forward the same way they do. */
+  private shown = { x: 0, y: 0, heading: null as number | null, sent: false };
   private inputEnabled = true;
   private frozen = false;
   private movingBefore = false;
@@ -35,7 +41,7 @@ export class MovementManager {
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     animationManager: AnimationManager,
-    wsManager: WebSocketManager,
+    wsManager: RoomSocket,
     nav: NavGrid,
     collides: (x: number, y: number) => boolean,
     joystick?: VirtualJoystickManager,
@@ -102,7 +108,7 @@ export class MovementManager {
 
     this.movingBefore = manualMoved;
     this.playAnimation(moving);
-    this.syncManualMovement(manualMoved);
+    this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta);
     // standing players sort by where their feet are; sitting sets its own depth
     this.player.setDepth(depthForY(this.player.y));
 
@@ -171,8 +177,10 @@ export class MovementManager {
   /** Every walk goes through here so everyone else sees it too. */
   private follow(path: Vec[], tileX: number, tileY: number) {
     this.path = path;
+    // The others walk the path themselves, so our heading is theirs to forget.
+    this.shown.sent = false;
     this.arrive = undefined;
-    this.wsManager.send("walk_to", { tileX, tileY });
+    this.wsManager.send({ t: "walk_to", x: tileX, y: tileY });
   }
 
   /**
@@ -249,21 +257,33 @@ export class MovementManager {
     );
   }
 
-  private syncManualMovement(manualMoved: boolean) {
-    const tile = pixelToTile(this.player.x, this.player.y);
-    const key = `${tile.tileX},${tile.tileY}`;
+  /**
+   * Keeps everyone else's copy of us within a tile of where we are. While we
+   * walk, their copy follows our last heading; we only speak up when the
+   * heading changes, when their copy has drifted, and once when we stop.
+   */
+  private syncManualMovement(moved: Vec | null, delta: number) {
+    const heading = moved ? headingOf(moved.x, moved.y) : null;
 
-    if (manualMoved) {
-      this.needsFinalSend = true;
-      if (key === this.lastSentTile) return;
-    } else if (this.needsFinalSend && !this.path.length) {
-      this.needsFinalSend = false;
-    } else {
+    if (heading === null) {
+      // Only a walk of our own needs a full stop; a click-to-walk path ends by itself.
+      if (this.shown.sent && this.shown.heading !== null) this.sendPosition(null);
       return;
     }
 
-    this.lastSentTile = key;
-    this.wsManager.send("move", { tileX: tile.tileX, tileY: tile.tileY });
+    if (heading !== this.shown.heading || !this.shown.sent) return this.sendPosition(heading);
+
+    advanceHeading(this.shown, heading, (MOVEMENT_SPEED * delta) / 1000, this.nav);
+    const drift = Math.hypot(this.shown.x - this.player.x, this.shown.y - this.player.y);
+    if (drift > DRIFT_LIMIT) this.sendPosition(heading);
+  }
+
+  /** Our tile, with a heading while we are walking. Resets what the others see. */
+  private sendPosition(heading: number | null) {
+    const tile = pixelToTile(this.player.x, this.player.y);
+    const centre = tileToPixel(tile.tileX, tile.tileY);
+    this.shown = { ...centre, heading, sent: true };
+    this.wsManager.send({ t: "move", x: tile.tileX, y: tile.tileY, ...(heading === null ? {} : { d: heading }) });
   }
 
   setInputEnabled(enabled: boolean) {
@@ -276,6 +296,7 @@ export class MovementManager {
    */
   setFrozen(frozen: boolean, release?: () => void) {
     this.frozen = frozen;
+    this.shown.sent = false;
     this.release = release;
     this.path.length = 0;
     this.arrive = undefined;

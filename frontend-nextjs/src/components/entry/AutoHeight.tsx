@@ -1,28 +1,56 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 
-export const AutoHeight: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const inner = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>();
+/**
+ * The entry panel grows and shrinks as its steps change, instead of snapping to
+ * the new size. The height is fixed only while it animates and always ends back
+ * at `auto`, so a stale measurement can never clip what is inside.
+ */
+export const AutoHeight: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const box = useRef<HTMLDivElement>(null);
+  const content = useRef<HTMLDivElement>(null);
+  /** How tall it was before this render, which the new height animates from. */
+  const before = useRef<number | null>(null);
 
-  useEffect(() => {
-    const element = inner.current;
-    if (!element) return;
+  // After every render, in case a step, an error or a hint changed the height.
+  useLayoutEffect(() => {
+    const outer = box.current;
+    const inner = content.current;
+    if (!outer || !inner) return;
 
-    const observer = new ResizeObserver(() => setHeight(element.offsetHeight));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+    const settle = () => {
+      outer.style.height = "auto";
+      outer.style.overflow = "";
+      before.current = inner.getBoundingClientRect().height;
+    };
+
+    const to = inner.getBoundingClientRect().height;
+    const from = before.current;
+    before.current = to;
+    // The first render, or a change too small to be worth animating.
+    if (from === null || Math.abs(from - to) < 1) {
+      settle();
+      return;
+    }
+
+    outer.style.height = `${from}px`;
+    outer.style.overflow = "hidden";
+    void outer.offsetHeight; // so the browser starts from the old height
+    outer.style.height = `${to}px`;
+
+    outer.addEventListener("transitionend", settle, { once: true });
+    // Nothing animates when motion is reduced, so settle on a timer too.
+    const timer = setTimeout(settle, 600);
+    return () => {
+      clearTimeout(timer);
+      outer.removeEventListener("transitionend", settle);
+    };
+  });
 
   return (
-    <div
-      style={{ height }}
-      className="overflow-hidden transition-[height] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-    >
-      <div ref={inner}>{children}</div>
+    <div ref={box} className="auto-height">
+      <div ref={content}>{children}</div>
     </div>
   );
 };

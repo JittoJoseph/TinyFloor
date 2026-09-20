@@ -1,10 +1,11 @@
 import React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, DoorOpen, Plus } from "lucide-react";
+import { DoorOpen, Plus } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { OfficeScene } from "@/components/OfficeScene";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { Reveal } from "./Reveal";
+import { Doodle } from "./Doodle";
 
 const crowd = [
   { character: "Adam", left: "16%", direction: "right" as const },
@@ -39,7 +40,13 @@ export const CTA: React.FC = () => {
 
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           <Reveal className="h-full">
-            <Link href="/room/public-room" className={tileClass}>
+            <Link href="/lobby" className={`${tileClass} relative`}>
+              <Doodle
+                flip
+                className="hidden sm:flex flex-col absolute end-6 top-2"
+              >
+                {t("publicNote")}
+              </Doodle>
               <span className="flex items-center gap-3 mb-4">
                 <span className="w-10 h-10 rounded-xl bg-[var(--color-braun-orange)] text-white flex items-center justify-center shrink-0">
                   <DoorOpen className="w-5 h-5" />
@@ -47,7 +54,6 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   {t("publicTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
                 {t("publicBody")}
@@ -71,7 +77,7 @@ export const CTA: React.FC = () => {
           </Reveal>
 
           <Reveal className="h-full">
-            <Link href="/create-room" className={tileClass}>
+            <Link href="/create" className={tileClass}>
               <span className="flex items-center gap-3 mb-4">
                 <span className="w-10 h-10 rounded-xl bg-[var(--color-braun-text)] text-[#f2efe6] flex items-center justify-center shrink-0">
                   <Plus className="w-5 h-5" />
@@ -79,7 +85,6 @@ export const CTA: React.FC = () => {
                 <span className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight">
                   {t("createTitle")}
                 </span>
-                <ArrowUpRight className="w-5 h-5 ms-auto shrink-0 text-[var(--color-braun-text)] opacity-40 transition-[transform,opacity] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none" />
               </span>
               <span className="font-body text-sm md:text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mb-6">
                 {t("createBody")}

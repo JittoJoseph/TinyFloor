@@ -49,12 +49,20 @@ export default function ChatPanel({
   const panelRef = useRef<HTMLDivElement>(null);
   // Ref so the message listener always reads the latest isOpen without being in deps
   const isOpenRef = useRef(isOpen);
-  isOpenRef.current = isOpen;
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
 
-  // Reset unread and focus input when opened; unlock movement when closed
+  // Opening the panel reads everything, adjusted during render.
+  const [seenOpen, setSeenOpen] = useState(isOpen);
+  if (isOpen !== seenOpen) {
+    setSeenOpen(isOpen);
+    if (isOpen) setUnreadCount(0);
+  }
+
+  // Focus input when opened; unlock movement when closed
   useEffect(() => {
     if (isOpen) {
-      setUnreadCount(0);
       onUnreadChange?.(0);
       setTimeout(() => inputRef.current?.focus(), 50);
     } else {

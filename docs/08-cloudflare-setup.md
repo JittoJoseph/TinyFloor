@@ -106,10 +106,14 @@ paths limited to that folder and `shared-protocol/`:
 
 | Worker | Branch |
 |---|---|
-| `tinyfloor` | `master` (existing) |
-| `tinyfloor-preview` | `feature/cloudflare-platform` |
-| `tinyfloor-api` | `feature/cloudflare-platform`, switched to `master` at the merge |
-| `tinyfloor-realtime` | `feature/cloudflare-platform`, switched to `master` at the merge |
+| `tinyfloor` | `master` |
+| `tinyfloor-api` | `master` |
+| `tinyfloor-realtime` | `master` |
+| `tinyfloor-preview` | `dev` |
+
+The two preview Workers behind the site, `tinyfloor-api-preview` and
+`tinyfloor-realtime-preview`, have no Git connection: they are deployed by hand
+with `pnpm run deploy:preview` when their code changes.
 
 Git connections are made in the dashboard.
 

@@ -129,8 +129,7 @@ first subscription covers it.
 
 ## 8. How the migration runs
 
-On `feature/cloudflare-platform`, never merged to master, with the Java backend
-left untouched:
+On the development branch, with the Java backend left untouched:
 
 1. **Scaffold:** folders, wrangler configs, D1 database, local multi-Worker dev
    with service bindings, `vitest-pool-workers` tests.

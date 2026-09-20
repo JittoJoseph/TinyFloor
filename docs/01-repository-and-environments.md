@@ -105,7 +105,7 @@ master.
   and Durable Objects.
 - The load test page from the cost measurements
   (`frontend-nextjs/public/loadtest.html`, git-excluded) is reused to confirm
-  hibernation and message counts before cutover. See `10-build-order.md`.
+  hibernation and message counts. What it measures is in `12-costs.md`.
 
 ## Deploys
 

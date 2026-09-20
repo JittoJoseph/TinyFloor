@@ -1,48 +1,50 @@
 # TinyFloor platform docs
 
-The move of TinyFloor's backend onto Cloudflare: Workers, Durable Objects, D1
-and Realtime.
+TinyFloor runs on Cloudflare: Workers, Durable Objects, D1 and Realtime. The
+move off the Java backend is done and merged; `backend-springboot/` stays in
+the repository but nothing runs it.
 
 ## Direction
 
 - Live runs from `master`. The next sprint is built on `dev` and tried on
-  `preview.tinyfloor.com`.
-- **It is not compatible with the current Java backend,** and doesn't try to be.
-  The API, the WebSocket protocol and the data model are all new.
-- **Every Cloudflare resource is set up during development,** including the API
-  and realtime Workers on their real hostnames. Nobody uses them until the merge.
-- **The merge switches the site over:** the branch brings the frontend changes
-  and points the frontend at the new API.
-- **It's a fresh start.** Only user accounts are carried over from MongoDB. Rooms,
-  whiteboards and everything else start empty.
-- From the merge on, `backend-springboot/` is deprecated. Its code stays in the
-  repository, but nothing runs it.
-
-Where these documents differ from section 8 of the overview (side-by-side
-testing against the Java backend), these documents win.
+  `preview.tinyfloor.com`, which is a whole second system with its own
+  database.
+- **An office is a floor.** One office, one room, two roles. Nobody creates
+  rooms.
+- **Membership is the seat.** Three members free; paid tiers hold more.
+- **The floor is a fifth of the product.** The rest is the office shell: chat,
+  people, settings, all beside the map rather than on top of it.
+- **Costs stay near zero by design**, not by luck: hibernating sockets, small
+  messages, thumbnail-quality video, images compressed in the browser.
 
 ## Documents
 
 | Document | What it covers |
 |---|---|
-| [cloudflare-platform-plan.md](cloudflare-platform-plan.md) | The overview: services, costs, free allowances |
 | [01-repository-and-environments.md](01-repository-and-environments.md) | Folders, Workers, bindings, environments, local development, deploys |
 | [02-data-model.md](02-data-model.md) | D1 schema, room storage, what lives where |
 | [03-auth-and-accounts.md](03-auth-and-accounts.md) | Google sign-in, guests, sessions, room tickets, abuse protection |
-| [04-api.md](04-api.md) | Every endpoint of `tinyfloor-api`, and what replaces each Java endpoint |
-| [05-realtime-rooms.md](05-realtime-rooms.md) | Room and lobby Durable Objects, the WebSocket protocol |
+| [04-api.md](04-api.md) | Every endpoint of `tinyfloor-api` |
+| [05-realtime-rooms.md](05-realtime-rooms.md) | Room and presence Durable Objects, the WebSocket protocol |
 | [06-calls.md](06-calls.md) | Peer-to-peer calls with TURN, meeting tables on the SFU |
-| [07-frontend-changes.md](07-frontend-changes.md) | What changes in the Next.js app |
+| [07-frontend-changes.md](07-frontend-changes.md) | The Next.js app: pages, entry flows, the room |
 | [08-cloudflare-setup.md](08-cloudflare-setup.md) | Every Cloudflare resource and secret |
-| [09-data-migration-and-cutover.md](09-data-migration-and-cutover.md) | Carrying over user accounts, and the switch-over runbook |
-| [10-build-order.md](10-build-order.md) | Milestones, in order, with what "done" means for each |
+| [09-app-shell.md](09-app-shell.md) | The rail, the views, the presence dock, what it is built from |
+| [10-chat.md](10-chat.md) | Channels, direct messages, attachments, and what they cost |
+| [11-offices-members-and-seats.md](11-offices-members-and-seats.md) | One office one floor, two roles, what a seat is |
+| [12-costs.md](12-costs.md) | Measured usage, the prices we are charged, where money can go |
+| [13-pricing.md](13-pricing.md) | The tiers, the free office, fair use on group video |
+| [research/gather.md](research/gather.md) | Gather, looked at properly: what to take and what to leave |
 
 ## Decisions
 
-- Plans: Free up to 3 members, then 10, 25 and 50 members.
-- One free lobby, split into copies of 20 people.
-- Chat is not saved, as today.
+- Free office: 3 members. Paid: 10, 25 and 50.
+- One free public lobby, split into copies of 20 people.
+- Nearby chat on the floor is transient and never stored. Channels and direct
+  messages are, in the office's own chat object.
+- Image attachments in paid offices only, compressed in the browser, straight
+  into R2.
+- Meeting tables always use the SFU, even with two people, and start
+  audio-first.
 - Discord only hears about the public lobby (joins and chat, for spotting
-  abuse). Nothing from workspace rooms is ever sent.
-- Meeting tables always use the SFU, even with two people.
-- Only user accounts are carried over; everything else starts fresh.
+  abuse). Nothing from an office is ever sent.

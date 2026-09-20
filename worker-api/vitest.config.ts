@@ -7,6 +7,8 @@ export default defineConfig(async () => ({
       wrangler: { configPath: "./wrangler.jsonc" },
       miniflare: {
         bindings: {
+          // The origins the tests call from, rather than the live site's.
+          SITE_ORIGINS: "http://localhost:3000",
           TICKET_SECRET: "test-ticket-secret",
           TURNSTILE_SECRET: "test-turnstile-secret",
           COOKIE_DOMAIN: "",

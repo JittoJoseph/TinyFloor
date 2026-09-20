@@ -1,10 +1,10 @@
 import { authRoutes } from "./auth";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
+import { floorRoutes } from "./floor";
+import { officeRoutes } from "./offices";
 import { runRetention } from "./retention";
-import { roomRoutes } from "./rooms";
 import { Router } from "./router";
-import { workspaceRoutes } from "./workspaces";
 
 export { PasswordGuard } from "./password-guard";
 
@@ -13,8 +13,8 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
   return json({ service: "tinyfloor-api", ok: true, database: database?.ok === 1 });
 });
 authRoutes(router);
-workspaceRoutes(router);
-roomRoutes(router);
+officeRoutes(router);
+floorRoutes(router);
 callRoutes(router);
 
 export default {

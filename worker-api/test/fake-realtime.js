@@ -17,6 +17,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async revokeGuestLink(roomId, linkId) {
     calls.push(["revokeGuestLink", roomId, linkId]);
   }
+  async removeMember(officeId, userId) {
+    calls.push(["removeMember", officeId, userId]);
+  }
   // Test helpers.
   async setPeople(roomId, count) {
     people[roomId] = count;

@@ -175,13 +175,14 @@ export function authRoutes(router: Router): void {
     .add("GET", "/v1/me", async ({ request, env, ctx }) => {
       const user = await requireUser(env, request, ctx);
       const { results } = await env.DB.prepare(
-        `SELECT w.id, w.name, w.plan, m.role
-         FROM memberships m JOIN workspaces w ON w.id = m.workspace_id
+        `SELECT o.id, o.name, o.plan, o.seats, m.role,
+                (SELECT COUNT(*) FROM memberships WHERE office_id = o.id) AS members
+         FROM memberships m JOIN offices o ON o.id = m.office_id
          WHERE m.user_id = ? ORDER BY m.joined_at`,
       )
         .bind(user.id)
-        .all<{ id: string; name: string; plan: string; role: string }>();
-      return json({ user: publicUser(user), workspaces: results });
+        .all<{ id: string; name: string; plan: string; seats: number; role: string; members: number }>();
+      return json({ user: publicUser(user), offices: results });
     })
 
     .add("PATCH", "/v1/me", async ({ request, env, ctx }) => {

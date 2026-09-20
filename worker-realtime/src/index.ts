@@ -1,13 +1,16 @@
 import { LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { Room } from "./room";
+import { Chat } from "./chat";
 import { Presence } from "./presence";
 import { RealtimeAdmin } from "./admin";
 
-export { Room, Presence, RealtimeAdmin };
+export { Room, Chat, Presence, RealtimeAdmin };
 
-/** `/lobby` for the public lobby, `/rooms/:room` for a workspace room. */
+/** `/lobby` for the public lobby, `/rooms/:room` for an office floor. */
 const ROOM_PATH = /^\/(?:rooms\/([a-z0-9-]{1,64})|lobby)$/;
+/** `/offices/:id/chat` for the office's own chat, which is a separate object. */
+const CHAT_PATH = /^\/offices\/([a-z0-9-]{1,64})\/chat$/;
 
 export default {
   async fetch(request, env) {
@@ -17,9 +20,10 @@ export default {
       return Response.json({ service: "tinyfloor-realtime", ok: true });
     }
 
-    const match = url.pathname.match(ROOM_PATH);
-    if (!match) return new Response("Not found", { status: 404 });
-    const room = match[1] ?? LOBBY_ROOM;
+    const chat = url.pathname.match(CHAT_PATH);
+    const match = chat ? null : url.pathname.match(ROOM_PATH);
+    if (!chat && !match) return new Response("Not found", { status: 404 });
+    const room = chat ? `chat:${chat[1]}` : (match![1] ?? LOBBY_ROOM);
 
     if (request.headers.get("Upgrade")?.toLowerCase() !== "websocket") {
       return new Response("Expected a WebSocket", { status: 426 });
@@ -33,6 +37,12 @@ export default {
     const ticket = await verifyTicket(url.searchParams.get("ticket"), env.TICKET_SECRET);
     if (!ticket || ticket.room !== room) {
       return new Response("Unauthorized", { status: 401 });
+    }
+
+    if (chat) {
+      const headers = new Headers(request.headers);
+      headers.set(TICKET_HEADER, JSON.stringify(ticket));
+      return env.CHAT.getByName(chat[1]).fetch(new Request(request.url, { headers }));
     }
 
     // Lobby tickets name the lobby; the router picks which copy to join.

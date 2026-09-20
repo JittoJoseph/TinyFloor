@@ -41,9 +41,11 @@ SQLite-backed classes only, which is also the only kind the Free plan allows.
 | Worker | Hostname |
 |---|---|
 | `tinyfloor` | `www.tinyfloor.com`, `tinyfloor.com` (existing) |
-| `tinyfloor-preview` | `preview.tinyfloor.com` (until the merge) |
 | `tinyfloor-api` | `api.tinyfloor.com` |
 | `tinyfloor-realtime` | `realtime.tinyfloor.com` |
+| `tinyfloor-preview` | `preview.tinyfloor.com` |
+| `tinyfloor-api-preview` | `api-preview.tinyfloor.com` |
+| `tinyfloor-realtime-preview` | `realtime-preview.tinyfloor.com` |
 
 Declared as `routes` with `custom_domain: true` in each `wrangler.jsonc`. The
 site's middleware redirects every other host to `www`, so it must let
@@ -51,18 +53,25 @@ site's middleware redirects every other host to `www`, so it must let
 
 ## Realtime
 
+Both systems use the same TURN and SFU services, with their own credentials,
+because neither service holds anything of ours to keep apart.
+
 | Item | Where | Stored as |
 |---|---|---|
 | TURN key | Dashboard: Realtime → TURN Server, app `tinyfloor`. Created | `TURN_KEY_ID`, `TURN_KEY_API_TOKEN` secrets on `tinyfloor-api`. Set |
 | SFU app | Dashboard: Realtime → Serverless SFU, app `tinyfloor`. Created | `REALTIME_APP_ID`, `REALTIME_APP_SECRET` secrets on `tinyfloor-realtime`. Set |
+| TURN key (preview) | app `tinyfloor-preview`. Created | the same two secrets on `tinyfloor-api-preview`. Set |
+| SFU app (preview) | app `tinyfloor-dev`, also used for local development. Created | the same two secrets on `tinyfloor-realtime-preview`. Set |
 
 ## Turnstile
 
-- Widget `TinyFloor`, hostname `tinyfloor.com` (covers `www` and `preview`),
-  managed mode. Created.
+- Widget `TinyFloor`, hostname `tinyfloor.com`, managed mode. Created.
 - Site key (public): `0x4AAAAAAE6AVMD41Jo_qCYG`, set as
   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in the site's build settings.
 - Secret: `TURNSTILE_SECRET` on `tinyfloor-api`. Set.
+- Preview has its own widget, `TinyFloor preview`, hostname
+  `preview.tinyfloor.com`: site key `0x4AAAAAAE9nazlV53rNBQgP` in the preview
+  site's build settings, secret on `tinyfloor-api-preview`. Set.
 - Local development uses Cloudflare's test keys instead: site key
   `1x00000000000000000000AA` and secret `1x0000000000000000000000000000000AA`
   (in `.dev.vars`), which always pass.

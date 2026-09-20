@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wrangler dev --port 8787",
     "deploy": "wrangler d1 migrations apply tinyfloor-db --remote && wrangler deploy",
+    "deploy:preview": "wrangler d1 migrations apply tinyfloor-preview-db --remote --env preview && wrangler deploy --env preview",
     "migrate:local": "wrangler d1 migrations apply tinyfloor-db --local",
     "types": "wrangler types",
     "typecheck": "tsc --noEmit && tsc --noEmit -p test",

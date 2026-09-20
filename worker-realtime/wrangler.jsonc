@@ -27,5 +27,28 @@
       "database_id": "31aa401c-c9f4-4653-8bf4-57e84881a451",
       "migrations_dir": "../worker-api/migrations"
     }
-  ]
+  ],
+  // The rooms of the preview system, with the preview database behind them.
+  "env": {
+    "preview": {
+      "name": "tinyfloor-realtime-preview",
+      "routes": [{ "pattern": "realtime-preview.tinyfloor.com", "custom_domain": true }],
+      "vars": { "SITE_ORIGINS": "https://preview.tinyfloor.com,http://localhost:3000" },
+      "durable_objects": {
+        "bindings": [
+          { "name": "ROOM", "class_name": "Room" },
+          { "name": "PRESENCE", "class_name": "Presence" }
+        ]
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "tinyfloor-preview-db",
+          "database_id": "fa83d1fc-0e79-419c-a143-8934afb312c1",
+          "migrations_dir": "../worker-api/migrations"
+        }
+      ],
+      "observability": { "enabled": true }
+    }
+  }
 }

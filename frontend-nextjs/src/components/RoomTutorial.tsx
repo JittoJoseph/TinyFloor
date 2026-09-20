@@ -373,7 +373,7 @@ export default function RoomTutorial({
           <div className="w-8 h-8 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] shrink-0">
             <Icon className="w-4 h-4" />
           </div>
-          <p className="text-xs font-semibold text-[var(--color-braun-text)] leading-snug pt-1.5">
+          <p className="font-body text-[13px] font-semibold text-[var(--color-braun-text)] leading-snug pt-1.5">
             {text}
           </p>
         </div>
@@ -396,7 +396,7 @@ export default function RoomTutorial({
             {isLast ? (
               <button
                 onClick={finish}
-                className="cursor-pointer h-7 px-3.5 rounded-full bg-[var(--color-braun-text)] text-white text-[9px] font-bold uppercase tracking-widest transition-all active:scale-95"
+                className="cursor-pointer h-8 px-4 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[12px] font-semibold transition-all active:scale-95"
               >
                 {t("done")}
               </button>
@@ -404,13 +404,13 @@ export default function RoomTutorial({
               <>
                 <button
                   onClick={finish}
-                  className="cursor-pointer text-[9px] font-bold uppercase tracking-widest text-gray-400 hover:text-[var(--color-braun-text)] transition-colors"
+                  className="cursor-pointer px-1 font-body text-[12px] font-semibold text-[var(--color-braun-text)]/45 hover:text-[var(--color-braun-text)] transition-colors"
                 >
                   {t("skip")}
                 </button>
                 <button
                   onClick={advance}
-                  className="cursor-pointer w-7 h-7 rounded-full bg-[var(--color-braun-text)] text-white flex items-center justify-center transition-all active:scale-95"
+                  className="cursor-pointer w-8 h-8 rounded-full bg-[var(--color-braun-text)] text-white flex items-center justify-center transition-all active:scale-95"
                   title={t("next")}
                   aria-label={t("next")}
                 >

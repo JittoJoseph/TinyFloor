@@ -334,7 +334,6 @@
     "title": "Chat da sala",
     "system": "Sistema",
     "welcome": "Boas-vindas ao chat da sala. As mensagens ficam visíveis para todos aqui.",
-    "intro": "Aqui você pode conversar com todos desta sala.",
     "placeholder": "Digite uma mensagem...",
     "close": "Fechar chat",
     "send": "Enviar mensagem"

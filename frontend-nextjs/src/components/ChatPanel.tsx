@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useEffectEvent, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { X, Send, MessageSquare } from "lucide-react";
 import { surface, label } from "./room/ui";
@@ -88,28 +88,6 @@ export default function ChatPanel({
 
     window.addEventListener("chatMessage", handleChatMessage);
     return () => window.removeEventListener("chatMessage", handleChatMessage);
-  }, []);
-
-  // Introduce players to chat 10 seconds after mounting. The effect event keeps
-  // the translator out of the deps, so the intro can never be posted twice.
-  const introduce = useEffectEvent(() => {
-    window.dispatchEvent(
-      new CustomEvent("chatMessage", {
-        detail: {
-          id: `intro-${Date.now()}`,
-          senderId: "system-intro",
-          senderName: t("system"),
-          content: t("intro"),
-          timestamp: new Date(),
-          type: "text",
-        } satisfies ChatMessage,
-      }),
-    );
-  });
-
-  useEffect(() => {
-    const timer = setTimeout(() => introduce(), 10000);
-    return () => clearTimeout(timer);
   }, []);
 
   // Close on click outside

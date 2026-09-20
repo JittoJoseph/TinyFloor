@@ -334,7 +334,6 @@
     "title": "Room Chat",
     "system": "System",
     "welcome": "Welcome to the room chat. Messages are visible to everyone here.",
-    "intro": "You can chat with everyone in this room here.",
     "placeholder": "Type a message...",
     "close": "Close chat",
     "send": "Send message"

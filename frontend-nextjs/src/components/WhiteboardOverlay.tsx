@@ -106,12 +106,14 @@ export default function WhiteboardOverlay() {
   return (
     <div className="fixed inset-0 z-[70] flex flex-col bg-[var(--color-braun-text)]/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
       <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-3xl bg-[#fbfbf9] border border-black/[0.07] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
-        <div className="flex items-center gap-2 px-3 py-2.5 border-b border-black/[0.06]">
-          <span className={`${label} text-[var(--color-braun-text)] me-auto ps-1 hidden sm:block`}>
+        <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2.5 border-b border-black/[0.06]">
+          <span className={`${label} text-[var(--color-braun-text)] ps-1 hidden md:block`}>
             {t("title")}
           </span>
 
-          <div className="flex items-center gap-1.5">
+          {/* The tools scroll sideways on a narrow phone rather than pushing
+              the way out of the board off the edge. */}
+          <div className="flex items-center gap-1 sm:gap-1.5 flex-1 min-w-0 overflow-x-auto md:justify-end scrollbar-none">
             {COLORS.map((color) => {
               const on = !tool.erase && tool.color === color;
               return (
@@ -121,16 +123,15 @@ export default function WhiteboardOverlay() {
                   aria-label={t("penColor", { color })}
                   aria-pressed={on}
                   onClick={() => setTool({ color, size: tool.erase ? SIZES[0] : tool.size, erase: false })}
-                  className={`cursor-pointer w-7 h-7 rounded-full border border-black/10 transition-transform duration-150 ${
+                  className={`cursor-pointer w-6 h-6 sm:w-7 sm:h-7 shrink-0 rounded-full border border-black/10 transition-transform duration-150 ${
                     on ? "ring-2 ring-offset-2 ring-[var(--color-braun-text)]/40 ring-offset-[#fbfbf9]" : ""
                   }`}
                   style={{ background: color }}
                 />
               );
             })}
-          </div>
 
-          <Divider className="mx-0.5" />
+          <Divider className="mx-0 sm:mx-0.5" />
 
           {SIZES.map((size) => (
             <RoomIconButton
@@ -153,7 +154,7 @@ export default function WhiteboardOverlay() {
             icon={<Eraser className="w-4 h-4" />}
           />
 
-          <Divider className="mx-0.5" />
+          <Divider className="mx-0 sm:mx-0.5" />
 
           <RoomIconButton
             size="sm"
@@ -164,6 +165,7 @@ export default function WhiteboardOverlay() {
             }}
             icon={<Trash2 className="w-4 h-4" />}
           />
+          </div>
 
           <RoomIconButton
             tone="dark"

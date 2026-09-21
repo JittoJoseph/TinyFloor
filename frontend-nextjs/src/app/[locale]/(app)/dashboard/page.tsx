@@ -129,7 +129,7 @@ function Shortcut({
 }
 
 /** Good patches of the floor art to show on a card, so offices do not all look alike. */
-const VIEWS = ["18% 22%", "78% 30%", "40% 72%", "85% 80%", "55% 20%", "15% 85%"];
+const VIEWS = ["24% 26%", "26% 50%", "76% 42%", "76% 66%", "32% 84%"];
 
 function viewFor(id: string): string {
   let hash = 0;
@@ -162,7 +162,7 @@ function OfficeCard({ office, index }: { office: OfficeSummary; index: number })
         <div className="relative m-1.5 mb-0 h-40 overflow-hidden rounded-[17px] bg-[#8f8f96]">
           <span
             className="absolute inset-0 transition-transform duration-700 ease-out [image-rendering:pixelated] group-hover:scale-[1.03]"
-            style={{ backgroundImage: "url(/office.png)", backgroundSize: "900px 600px", backgroundPosition: viewFor(office.id) }}
+            style={{ backgroundImage: "url(/office.png)", backgroundSize: "780px 520px", backgroundPosition: viewFor(office.id) }}
           />
           <span
             className={cn(
@@ -204,7 +204,7 @@ function Empty() {
       <div className="relative m-2 min-h-56 overflow-hidden rounded-[20px] bg-[#8f8f96]">
         <span
           className="absolute inset-0 [image-rendering:pixelated]"
-          style={{ backgroundImage: "url(/office.png)", backgroundSize: "900px 600px", backgroundPosition: "40% 72%" }}
+          style={{ backgroundImage: "url(/office.png)", backgroundSize: "780px 520px", backgroundPosition: "76% 50%" }}
         />
       </div>
       <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">

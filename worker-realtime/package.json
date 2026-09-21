@@ -5,8 +5,10 @@
   "packageManager": "pnpm@11.22.0",
   "scripts": {
     "dev": "wrangler dev --port 8788",
-    "deploy": "wrangler deploy",
-    "deploy:preview": "wrangler deploy --env preview",
+    "deploy": "node ../tools/deploy.mjs release:production release:preview",
+    "deploy:preview": "node ../tools/deploy.mjs release:production release:preview --preview",
+    "release:production": "wrangler deploy",
+    "release:preview": "wrangler deploy --env preview",
     "types": "wrangler types",
     "typecheck": "tsc --noEmit && tsc --noEmit -p test",
     "test": "vitest run"

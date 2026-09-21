@@ -38,7 +38,8 @@
     "rooms": "房间",
     "offices": "你的办公室",
     "account": "账号",
-    "createOffice": "创建办公室"
+    "createOffice": "创建办公室",
+    "plansSoon": "团队更大？更多席位的方案即将推出。"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -136,7 +137,7 @@
       },
       {
         "q": "TinyFloor 免费吗？",
-        "a": "是的。公共大厅对所有人免费，小团队的工作区也免费。"
+        "a": "是的。公共大厅对所有人免费，最多 3 人的办公室也免费。面向更大团队的方案即将推出。"
       },
       {
         "q": "加入房间需要账号吗？",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "减少整个应用中的动画。",
     "performance": "性能",
     "batterySaver": "省电模式",
-    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。"
+    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。",
+    "enhancedNoise": "更强的降噪",
+    "enhancedNoiseNote": "设备上的小型 AI 模型会去掉键盘声、狗叫和旁人说话。从下一次通话开始生效，会多用一点电量。",
+    "experimental": "实验性"
   },
   "tutorial": {
     "walk": "用 W A S D 四处走动",

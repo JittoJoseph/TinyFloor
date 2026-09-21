@@ -38,7 +38,8 @@
     "rooms": "Rom",
     "offices": "Kontorene dine",
     "account": "Konto",
-    "createOffice": "Opprett et kontor"
+    "createOffice": "Opprett et kontor",
+    "plansSoon": "Større team? Planer med flere plasser kommer snart."
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Den offentlige lobbyen er gratis for alle, og det er et arbeidsområde for et lite team også."
+        "a": "Ja. Den åpne lobbyen er gratis for alle, og det samme er et kontor for opptil 3 personer. Planer for større team kommer snart."
       },
       {
         "q": "Trenger jeg en konto for å bli med i et rom?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Færre animasjoner i hele appen.",
     "performance": "Ytelse",
     "batterySaver": "Batterisparing",
-    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn."
+    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn.",
+    "enhancedNoise": "Sterkere støyfjerning",
+    "enhancedNoiseNote": "En liten AI-modell på enheten din fjerner tastatur, hunder og prat i bakgrunnen. Gjelder fra neste samtale og bruker litt mer batteri.",
+    "experimental": "Eksperimentell"
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",

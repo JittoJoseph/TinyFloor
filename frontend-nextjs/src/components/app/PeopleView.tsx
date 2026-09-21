@@ -1,5 +1,6 @@
 "use client";
 
+import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { ArrowRight, Check, Link2, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
@@ -324,6 +325,7 @@ function Seats({ used, seats, full }: { used: number; seats: number; full: boole
         </div>
       )}
       <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{t("seatsNote")}</p>
+      <PlansSoon className="mt-2" />
     </div>
   );
 }

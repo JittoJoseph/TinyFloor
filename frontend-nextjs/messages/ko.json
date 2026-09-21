@@ -38,7 +38,8 @@
     "rooms": "방",
     "offices": "내 오피스",
     "account": "계정",
-    "createOffice": "오피스 만들기"
+    "createOffice": "오피스 만들기",
+    "plansSoon": "팀이 더 크다면? 좌석이 더 많은 요금제가 곧 나와요."
   },
   "languageSwitcher": {
     "label": "언어",
@@ -136,7 +137,7 @@
       },
       {
         "q": "TinyFloor는 무료인가요?",
-        "a": "네. 공개 로비는 누구에게나 무료이고, 작은 팀의 워크스페이스도 무료예요."
+        "a": "네. 공개 로비는 누구에게나 무료이고, 3명까지의 오피스도 무료예요. 더 큰 팀을 위한 요금제가 곧 나와요."
       },
       {
         "q": "방에 참여하려면 계정이 필요한가요?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "앱 전체의 애니메이션을 줄여요.",
     "performance": "성능",
     "batterySaver": "배터리 절약",
-    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요."
+    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요.",
+    "enhancedNoise": "더 강한 소음 제거",
+    "enhancedNoiseNote": "기기 안의 작은 AI 모델이 키보드 소리, 개 짖는 소리, 주변 대화를 없애요. 다음 통화부터 적용되고 배터리를 조금 더 써요.",
+    "experimental": "실험 기능"
   },
   "tutorial": {
     "walk": "W A S D 키로 돌아다니세요",

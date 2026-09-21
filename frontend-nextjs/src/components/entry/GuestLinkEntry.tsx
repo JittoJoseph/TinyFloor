@@ -72,6 +72,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
           mark={<Logo size={40} />}
           destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: RailIcons.floor, active: !onSettings }]}
           settings={{ key: "settings", href: settingsHref, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
+          leave={{ href: user.guest ? "/" : "/dashboard", label: ts("leave") }}
           you={<YouMenu onFloor settingsHref={settingsHref} />}
           floor={
             <RoomView

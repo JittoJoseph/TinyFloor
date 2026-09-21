@@ -63,6 +63,12 @@ export function setPref<K extends keyof Prefs>(key: K, value: Prefs[K]) {
   listeners.forEach((listener) => listener());
 }
 
+/** Told whenever a preference changes, for code outside React. */
+export function onPrefsChange(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
 export function usePrefs(): Prefs {
   return useSyncExternalStore(
     (listener) => {

@@ -1209,7 +1209,9 @@
     "walkTo": "ללכת אליו",
     "youLower": "את/ה",
     "joined": "הצטרף/ה ב־{date}",
-    "yourProfile": "הפרופיל שלך"
+    "yourProfile": "הפרופיל שלך",
+    "leaveOffice": "לצאת מהמשרד",
+    "leave": "לצאת"
   },
   "dashboard": {
     "morning": "בוקר טוב, {name}",

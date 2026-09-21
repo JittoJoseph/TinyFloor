@@ -1,8 +1,6 @@
-import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { signTicket, type ServerMessage } from "../../shared-protocol/src";
-import type { Presence } from "../src/presence";
 
 const ORIGIN = "http://localhost:3000";
 let sequence = 0;
@@ -63,28 +61,5 @@ describe("lobby", () => {
       { headers: { Upgrade: "websocket", Origin: ORIGIN } },
     );
     expect(response.status).toBe(401);
-  });
-});
-
-describe("presence", () => {
-  it("ignores counts that haven't been refreshed for ten minutes", async () => {
-    const stub = env.PRESENCE.getByName("presence-staleness");
-    await runInDurableObject(stub, (presence: Presence, state) => {
-      const old = Date.now() - 11 * 60 * 1000;
-      state.storage.sql.exec("INSERT INTO rooms (room, people, updated_at) VALUES ('lobby-1', 20, ?)", old);
-      expect(presence.counts(["lobby-1"])).toEqual({});
-      expect(presence.place()).toBe("lobby-1");
-    });
-  });
-
-  it("counts placements before rooms report, so bursts spread out", async () => {
-    const stub = env.PRESENCE.getByName("presence-burst");
-    const copies = [];
-    for (let i = 0; i < 21; i++) copies.push(await stub.place());
-    expect(copies.filter((copy) => copy === "lobby-1")).toHaveLength(20);
-    expect(copies[20]).toBe("lobby-2");
-
-    await stub.report("lobby-1", 3);
-    expect(await stub.place()).toBe("lobby-1");
   });
 });

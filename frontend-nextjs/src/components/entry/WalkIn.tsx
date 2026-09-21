@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Loader2 } from "lucide-react";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
-import { EntryShell, primaryButtonClass } from "./EntryShell";
+import { EntryShell } from "./EntryShell";
+import { ActionButton } from "@/components/ui/Action";
 import { EntryPreview } from "./EntryPreview";
 import { CharacterStep, NameStep } from "./IdentitySteps";
 import { ErrorNote } from "./ErrorNote";
@@ -25,10 +25,13 @@ export function WalkIn({
   backHref = "/",
   sharePath,
   onReady,
+  detail,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  /** Something about the place behind the door: who is in there, say. */
+  detail?: React.ReactNode;
   backHref?: string;
   sharePath?: string;
   onReady: () => void;
@@ -117,18 +120,13 @@ export function WalkIn({
       }
     >
       <div className="entry-rise">
-        {eyebrow && (
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-45 mb-2">
-            {eyebrow}
-          </p>
-        )}
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5 break-words">
-          {title}
-        </h1>
-        {subtitle && <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-5">{subtitle}</p>}
+        {eyebrow && <p className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{eyebrow}</p>}
+        <h1 className="break-words text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground">{title}</h1>
+        {subtitle && <p className="mt-1.5 text-[14px] leading-relaxed text-muted-foreground">{subtitle}</p>}
+        {detail && <div className="mt-3">{detail}</div>}
 
         <form
-          className={subtitle ? "" : "mt-5"}
+          className="mt-6"
           onSubmit={(event) => {
             event.preventDefault();
             if (onCharacterStep) void walkIn();
@@ -168,23 +166,19 @@ export function WalkIn({
             </div>
           )}
 
-          <button type="submit" disabled={!trimmed || busy || isLoading} className={`${primaryButtonClass} mt-5`}>
-            {busy ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                {t("openingDoor")}
-              </>
-            ) : (
-              <>
-                {onCharacterStep ? t("walkIn") : t("continue")}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-              </>
-            )}
-          </button>
+          <ActionButton
+            type="submit"
+            disabled={!trimmed || isLoading}
+            busy={busy}
+            busyLabel={t("openingDoor")}
+            className="mt-5"
+          >
+            {onCharacterStep ? t("walkIn") : t("continue")}
+          </ActionButton>
         </form>
 
         {!isLoading && !account && (
-          <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-50 text-center mt-5">
+          <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
             {t.rich(user ? "guestKeep" : "guestNote", {
               link: (chunks) => (
                 <Link

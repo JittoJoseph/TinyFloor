@@ -1,20 +1,16 @@
-import { realtime } from "./access";
-
 const DAY_MS = 24 * 60 * 60 * 1000;
 /** Rows deleted per job per run, so one run stays small; the next day picks up the rest. */
 const BATCH = 1000;
-const ROOMS_PER_RUN = 50;
 
 export interface RetentionReport {
   sessions: number;
   guests: number;
   invites: number;
   guestLinks: number;
-  rooms: number;
   usage: number;
 }
 
-/** The daily clean-up from docs/02-data-model.md. Each job is safe to run again. */
+/** The daily clean-up. Each job is safe to run again. */
 export async function runRetention(env: Env, now = Date.now()): Promise<RetentionReport> {
   const deleted = (result: D1Result) => result.meta.changes ?? 0;
 
@@ -51,23 +47,7 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(now - 30 * DAY_MS)
     .run();
 
-  // Archived rooms: their Durable Object storage first, then the row.
-  const { results: archived } = await env.DB.prepare(
-    `SELECT id FROM rooms WHERE archived_at < ?1 LIMIT ${ROOMS_PER_RUN}`,
-  )
-    .bind(now - 30 * DAY_MS)
-    .all<{ id: string }>();
-  let rooms = 0;
-  for (const { id } of archived) {
-    try {
-      await realtime(env).forgetRoom(id);
-      await env.DB.prepare("DELETE FROM rooms WHERE id = ?").bind(id).run();
-      rooms++;
-    } catch (error) {
-      console.error("could not forget room", id, error);
-    }
-  }
-
+  // Chat trims itself as it writes, so there is nothing to do for it here.
   const cutoff = new Date(now);
   cutoff.setUTCMonth(cutoff.getUTCMonth() - 13);
   const usage = await env.DB.prepare("DELETE FROM usage_daily WHERE day < ?1")
@@ -79,7 +59,6 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     guests: deleted(guests),
     invites: deleted(invites),
     guestLinks: deleted(guestLinks),
-    rooms,
     usage: deleted(usage),
   };
 }

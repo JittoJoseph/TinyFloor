@@ -9,6 +9,8 @@ import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
+import { useAuth } from "@/contexts/AuthContext";
+import { usePrefs } from "@/lib/prefs";
 
 interface Tile {
   key: string;
@@ -65,6 +67,7 @@ function transition(update: () => void) {
 export default function CallCards() {
   const t = useTranslations("call");
   const tc = useTranslations("common");
+  const { user } = useAuth();
   const {
     meeting,
     peers,
@@ -79,6 +82,7 @@ export default function CallCards() {
   const tiles: Tile[] = [
     {
       key: "self",
+      id: user?.id,
       name: tc("you"),
       stream: localStream,
       mic: micEnabled,
@@ -150,7 +154,7 @@ export default function CallCards() {
 
   return (
     <div
-      className={`fixed inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
+      className={`absolute inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
         focusedTile ? "bottom-28 md:px-10 flex items-center justify-center" : ""
       }`}
     >
@@ -202,6 +206,7 @@ function CallCard({
   micOff: string;
   onToggle: () => void;
 }) {
+  const { mirrorVideo: mirror } = usePrefs();
   const speaking = useSpeaking(
     tile.stream,
     !tile.screen && tile.mic && tile.connected,
@@ -222,30 +227,31 @@ function CallCard({
           : "w-[var(--card)] rounded-2xl shadow-lg hover:shadow-xl"
       } ${
         tile.screen
-          ? "bg-[#1c1c1e] ring-[var(--color-braun-green)]"
-          : `bg-[#fbfbf9] ${speaking ? "ring-[var(--color-braun-orange)]" : "ring-white/80"}`
+          ? "bg-[#1c1c1e] ring-ok"
+          : `bg-card ${speaking ? "ring-brand" : "ring-card/80"}`
       }`}
     >
       <CallStream
         stream={tile.stream}
         muted={muted}
         hidden={!tile.camera}
-        initial={tile.name}
+        seed={tile.id ?? tile.key}
+        mirror={!!tile.self && !tile.screen && mirror}
         fit={tile.screen ? "contain" : "cover"}
       />
       {!tile.connected && (
-        <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center">
-          <div className="w-5 h-5 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
+        <div className="absolute inset-0 bg-card flex items-center justify-center">
+          <div className="w-5 h-5 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
         </div>
       )}
       {tile.badge && (
-        <span className="absolute top-2 start-2 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 font-body text-[11px] font-semibold text-[var(--color-braun-text)] shadow-sm">
+        <span className="absolute top-2 start-2 rounded-full bg-card/90 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm">
           {tile.badge}
         </span>
       )}
       <span
         aria-hidden="true"
-        className={`absolute top-2 end-2 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm text-[var(--color-braun-text)] shadow-sm flex items-center justify-center transition-opacity duration-200 ${
+        className={`absolute top-2 end-2 w-7 h-7 rounded-full bg-card/90 backdrop-blur-sm text-foreground shadow-sm flex items-center justify-center transition-opacity duration-200 ${
           focused ? "opacity-70 group-hover:opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
         }`}
       >
@@ -256,10 +262,10 @@ function CallCard({
         )}
       </span>
       <span
-        className={`absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1.5 rounded-full backdrop-blur-sm px-2.5 py-1 font-body text-[12px] font-semibold shadow-sm ${
+        className={`absolute start-2 bottom-2 max-w-[calc(100%-1rem)] flex items-center gap-1.5 rounded-full backdrop-blur-sm px-2.5 py-1 text-[12px] font-semibold shadow-sm ${
           tile.screen
-            ? "bg-[var(--color-braun-green)] text-white"
-            : "bg-white/90 text-[var(--color-braun-text)]"
+            ? "bg-ok text-white"
+            : "bg-card/90 text-foreground"
         }`}
       >
         {tile.screen && (
@@ -267,7 +273,7 @@ function CallCard({
         )}
         {!tile.screen && !tile.mic && (
           <MicOff
-            className="w-3.5 h-3.5 shrink-0 text-[var(--color-braun-orange)]"
+            className="w-3.5 h-3.5 shrink-0 text-brand"
             aria-label={micOff}
           />
         )}

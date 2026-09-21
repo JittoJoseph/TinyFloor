@@ -1,8 +1,8 @@
 # tinyfloor-realtime
 
 Rooms and the public lobby for TinyFloor on `realtime.tinyfloor.com`: the
-WebSocket entry point and the `Room` and `LobbyRouter` Durable Objects. See
-`docs/05-realtime-rooms.md`.
+WebSocket entry point and the `Room` and `Presence` Durable Objects. The
+protocol they speak is `shared-protocol/src/messages.ts`.
 
 ## Commands
 

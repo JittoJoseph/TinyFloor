@@ -11,27 +11,24 @@ import React from "react";
 
 /** A panel resting on top of the room. */
 export const surface =
-  "bg-[#fbfbf9]/95 backdrop-blur-sm border border-black/[0.07] shadow-[0_18px_44px_-24px_rgba(0,0,0,0.45)]";
+  "bg-card/92 backdrop-blur-md border border-border shadow-float [--face-ring:var(--ui-card)]";
 
 /** Anything with words in it: never shouted, never smaller than 12px. */
-export const label = "font-body text-[13px] font-semibold";
-export const quietLabel = "font-body text-[12px] text-[var(--color-braun-text)] opacity-55";
+export const label = "text-[13px] font-medium";
+export const quietLabel = "text-[12px] text-muted-foreground";
 
 export type Tone = "quiet" | "on" | "alert" | "danger" | "dark";
 
 const TONES: Record<Tone, string> = {
-  quiet:
-    "bg-white border-black/[0.06] text-[var(--color-braun-text)] hover:bg-[#f5f5f2] shadow-sm",
-  on: "bg-[var(--color-braun-green)] border-[var(--color-braun-green)] text-white hover:opacity-90 shadow-sm",
-  alert:
-    "bg-[var(--color-braun-orange)]/10 border-[var(--color-braun-orange)]/20 text-[var(--color-braun-orange)] hover:bg-[var(--color-braun-orange)]/15",
-  danger:
-    "bg-[var(--color-braun-orange)] border-[var(--color-braun-orange)] text-white hover:opacity-90 shadow-sm",
-  dark: "bg-[var(--color-braun-text)] border-[var(--color-braun-text)] text-white hover:bg-[#1a1a1a] shadow-sm",
+  quiet: "bg-card border-border text-foreground hover:bg-muted",
+  on: "bg-ok border-ok text-white hover:opacity-90",
+  alert: "bg-destructive/12 border-destructive/20 text-destructive hover:bg-destructive/18",
+  danger: "bg-destructive border-destructive text-white hover:opacity-90",
+  dark: "bg-foreground border-foreground text-background hover:bg-foreground/90",
 };
 
 const base =
-  "cursor-pointer inline-flex items-center justify-center shrink-0 border transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-braun-text)]/25 disabled:opacity-40 disabled:cursor-not-allowed";
+  "cursor-pointer inline-flex items-center justify-center shrink-0 border transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-ring/60 disabled:opacity-40 disabled:cursor-not-allowed";
 
 /** Two sizes: the bars you aim at, and the small ones that follow a person. */
 const SIZES = { md: "w-10 h-10", sm: "w-8 h-8" };
@@ -100,12 +97,12 @@ export function roomLinkClass(tone: Tone = "quiet") {
 
 /** A hairline between groups of buttons. */
 export const Divider = ({ className = "" }: { className?: string }) => (
-  <span aria-hidden="true" className={`w-px h-6 bg-black/[0.08] shrink-0 ${className}`} />
+  <span aria-hidden="true" className={`w-px h-6 bg-border shrink-0 ${className}`} />
 );
 
 /** The count badge on the chat button. */
 export const Badge = ({ count }: { count: number }) => (
-  <span className="absolute -top-1 -end-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--color-braun-orange)] text-white font-body text-[10px] font-bold leading-[18px] text-center border-2 border-[#fbfbf9]">
+  <span className="absolute -top-1 -end-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand text-white text-[10px] font-bold leading-[18px] text-center ring-2 ring-card">
     {count > 9 ? "9+" : count}
   </span>
 );

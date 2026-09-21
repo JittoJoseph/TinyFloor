@@ -5,7 +5,10 @@ import { useTranslations } from "next-intl";
 import { Video, Mic, MessageSquare } from "lucide-react";
 import { RoomIconButton, surface } from "./room/ui";
 import { callManager } from "@/lib/CallManager";
-import { statusColor } from "@/lib/status";
+import { Face, type Presence } from "@/components/ui/Face";
+
+/** Asks whichever shell holds the floor to open a conversation with someone. */
+export const OPEN_CONVERSATION_EVENT = "openConversation";
 
 export interface NearbyPlayer {
   id: string;
@@ -31,24 +34,13 @@ export const ProximityActions = memo(function ProximityActions({
   touch?: boolean;
 }) {
   const t = useTranslations("proximity");
-  const tChat = useTranslations("chat");
+  const tShell = useTranslations("shell");
   const size = touch ? "md" : "sm";
   const icon = touch ? "w-[17px] h-[17px]" : "w-[14px] h-[14px]";
-  const face = touch ? "w-10 h-10 text-sm" : "w-8 h-8 text-xs";
 
   return (
     <div className={`${surface} rounded-full flex items-center gap-1.5 p-1.5`}>
-      <span
-        className={`relative ${face} rounded-full bg-[var(--color-braun-text)]/[0.06] flex items-center justify-center font-body font-semibold text-[var(--color-braun-text)] shrink-0`}
-        title={player.name}
-      >
-        {player.name.charAt(0).toUpperCase()}
-        <span
-          aria-hidden="true"
-          className="absolute bottom-0 end-0 w-2.5 h-2.5 rounded-full border-2 border-[#fbfbf9]"
-          style={{ backgroundColor: statusColor(player.status) }}
-        />
-      </span>
+      <Face seed={player.id} size={touch ? 40 : 32} presence={player.status as Presence} title={player.name} />
 
       <RoomIconButton
         size={size}
@@ -64,8 +56,10 @@ export const ProximityActions = memo(function ProximityActions({
       />
       <RoomIconButton
         size={size}
-        onClick={() => window.dispatchEvent(new Event("openChat"))}
-        title={tChat("title")}
+        onClick={() =>
+          window.dispatchEvent(new CustomEvent(OPEN_CONVERSATION_EVENT, { detail: { id: player.id, name: player.name } }))
+        }
+        title={tShell("message")}
         icon={<MessageSquare className={icon} />}
       />
     </div>

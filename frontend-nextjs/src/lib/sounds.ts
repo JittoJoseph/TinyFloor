@@ -1,3 +1,4 @@
+import { prefs } from "./prefs";
 import { isSpeakerMuted, onSpeakerChange } from "./speaker";
 
 const SOURCES = {
@@ -43,6 +44,8 @@ function start(name: SoundName, loop: boolean) {
 }
 
 export function playSound(name: SoundName) {
+  const { messageSound, joinSound } = prefs();
+  if ((name === "message" && !messageSound) || (name === "join" && !joinSound)) return;
   start(name, false);
 }
 

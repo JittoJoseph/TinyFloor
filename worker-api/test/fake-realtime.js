@@ -8,6 +8,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async presenceCounts(roomIds) {
     return Object.fromEntries(roomIds.map((id) => [id, people[id] ?? 0]));
   }
+  async lobbyPeople() {
+    return { here: people.lobby ?? 0, faces: [] };
+  }
   async closeRoom(roomId) {
     calls.push(["closeRoom", roomId]);
   }
@@ -16,6 +19,12 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   }
   async revokeGuestLink(roomId, linkId) {
     calls.push(["revokeGuestLink", roomId, linkId]);
+  }
+  async removeMember(officeId, userId) {
+    calls.push(["removeMember", officeId, userId]);
+  }
+  async officeCreated(event) {
+    calls.push(["officeCreated", event.office, event.owner]);
   }
   // Test helpers.
   async setPeople(roomId, count) {

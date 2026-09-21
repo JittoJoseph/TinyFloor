@@ -6,6 +6,7 @@ import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
 import type { RoomTicket } from "@/lib/api";
 import { setSceneText } from "@/lib/sceneText";
+import { prefs } from "@/lib/prefs";
 
 interface PhaserGameProps {
   name: string;
@@ -50,19 +51,31 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   });
 
   useEffect(() => {
-    const onResize = () => sharpen();
+    const onResize = () => {
+      const box = gameRef.current;
+      if (box && game.current) game.current.scale.resize(box.clientWidth, box.clientHeight);
+      sharpen();
+    };
     window.addEventListener("resize", onResize);
+    // The floor is a panel inside the office shell, not the whole window, so it
+    // follows its own box rather than the viewport.
+    const watcher = new ResizeObserver(onResize);
+    if (gameRef.current) watcher.observe(gameRef.current);
 
     if (gameRef.current && !game.current) {
       applySceneText();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: gameRef.current.clientWidth || window.innerWidth,
+        height: gameRef.current.clientHeight || window.innerHeight,
         parent: gameRef.current,
         scene: new GameScene(name, character, userId, () => nextTicket()),
-        backgroundColor: "#f0f0f0",
+        // The panel behind the canvas paints the space around the map, so it
+        // follows the light or dark theme.
+        transparent: true,
+        // Battery saver: half the frames, which a top-down floor barely shows.
+        fps: prefs().batterySaver ? { limit: 30 } : undefined,
         // The room has no Phaser sounds; the jukebox plays through an <audio>
         // element. Without this, every game builds a WebAudio context it never
         // uses, and complains about it once the game is torn down.
@@ -72,8 +85,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
           arcade: {
             debug: false,
             gravity: { x: 0, y: 0 },
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: gameRef.current.clientWidth || window.innerWidth,
+            height: gameRef.current.clientHeight || window.innerHeight,
           },
         },
       };
@@ -86,6 +99,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
 
     return () => {
       window.removeEventListener("resize", onResize);
+      watcher.disconnect();
       if (game.current) {
         const scene = game.current.scene.getScene("GameScene") as GameScene;
         if (scene) {
@@ -103,7 +117,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     };
   }, [name, character, userId]);
 
-  return <div ref={gameRef} />;
+  return <div ref={gameRef} className="w-full h-full" />;
 };
 
 export default PhaserGame;

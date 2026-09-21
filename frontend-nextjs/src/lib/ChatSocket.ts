@@ -10,7 +10,8 @@ import {
   type ChatMessage,
   type ChatServerMessage,
 } from "@shared/chat";
-import { api } from "./api";
+import type { RoomTicket } from "./api";
+import { playSound } from "./sounds";
 
 const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
@@ -26,10 +27,21 @@ export interface ChatState {
   more: Record<string, boolean>;
   /** Total unread, for the badge on the rail. */
   unread: number;
+  /** The chat asked us to slow down; said under the composer for a moment. */
+  slowDown: boolean;
   version: number;
 }
 
-const EMPTY: ChatState = { ready: false, me: "", channels: [], history: {}, more: {}, unread: 0, version: 0 };
+const EMPTY: ChatState = {
+  ready: false,
+  me: "",
+  channels: [],
+  history: {},
+  more: {},
+  unread: 0,
+  slowDown: false,
+  version: 0,
+};
 
 /**
  * The office's chat, on its own socket. It is opened with the office shell, not
@@ -37,7 +49,9 @@ const EMPTY: ChatState = { ready: false, me: "", channels: [], history: {}, more
  */
 class ChatSocket {
   private ws: WebSocket | null = null;
-  private officeId: string | null = null;
+  /** Which chat: an office's id, or the lobby. */
+  private place: string | null = null;
+  private ticketFor: (() => Promise<RoomTicket>) | null = null;
   private stopped = true;
   private attempts = 0;
   private reconnectTimer?: ReturnType<typeof setTimeout>;
@@ -59,10 +73,12 @@ class ChatSocket {
     };
   }
 
-  connect(officeId: string) {
-    if (this.officeId === officeId && !this.stopped) return;
+  /** Opens a place's chat: an office's (its id) or the lobby's ("lobby"). */
+  connect(place: string, ticketFor: () => Promise<RoomTicket>) {
+    if (this.place === place && !this.stopped) return;
     this.disconnect();
-    this.officeId = officeId;
+    this.place = place;
+    this.ticketFor = ticketFor;
     this.stopped = false;
     this.attempts = 0;
     void this.open();
@@ -74,7 +90,8 @@ class ChatSocket {
     this.stopHeartbeat();
     this.ws?.close(1000, "left");
     this.ws = null;
-    this.officeId = null;
+    this.place = null;
+    this.ticketFor = null;
     this.queue = [];
     this.set(EMPTY);
   }
@@ -129,11 +146,11 @@ class ChatSocket {
   }
 
   private async open() {
-    if (this.stopped || !this.officeId) return;
+    if (this.stopped || !this.ticketFor) return;
     let url: string;
     let ticket: string;
     try {
-      const minted = await api.chatTicket(this.officeId);
+      const minted = await this.ticketFor();
       url = minted.url;
       ticket = minted.ticket;
     } catch {
@@ -222,7 +239,10 @@ class ChatSocket {
           history: { ...this.state.history, [channel]: history },
         });
         if (seen) this.send({ t: "chat_read", channel, seq: message.message.seq });
-        else if (message.message.author !== this.state.me) this.incoming.forEach((listener) => listener(message.message));
+        else if (message.message.author !== this.state.me) {
+          playSound("message");
+          this.incoming.forEach((listener) => listener(message.message));
+        }
         break;
       }
       case "chat_page": {
@@ -261,6 +281,10 @@ class ChatSocket {
         break;
       }
       case "chat_error":
+        if (message.code === "slow_down") {
+          this.set({ ...this.state, slowDown: true });
+          setTimeout(() => this.set({ ...this.state, slowDown: false }), 4000);
+        }
         break;
     }
   }

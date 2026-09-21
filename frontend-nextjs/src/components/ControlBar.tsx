@@ -8,13 +8,15 @@ import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { setMyStatus } from "@/lib/floor";
+import { useRouter } from "@/lib/i18n/navigation";
 
 /**
  * The dock along the bottom of the floor: your microphone and camera, always;
  * screen, speaker and hanging up only while you are in a call; and devices.
  * Status and chat live in the rail, so the dock stays short on a phone.
  */
-export default function ControlBar({ onDevices }: { onDevices?: () => void }) {
+export default function ControlBar({ settingsHref }: { settingsHref?: string }) {
+  const router = useRouter();
   const t = useTranslations("controls");
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   const inCall = peers.length > 0 || !!meeting;
@@ -72,11 +74,11 @@ export default function ControlBar({ onDevices }: { onDevices?: () => void }) {
           </>
         )}
 
-        {onDevices && (
+        {settingsHref && (
           // Choosing a microphone or camera is a desktop job.
           <span className="hidden items-center sm:flex">
             <DockSeparator className="mx-1" />
-            <IconButton label={t("settings")} size="lg" onClick={onDevices} icon={<Settings2 />} />
+            <IconButton label={t("settings")} size="lg" onClick={() => router.push(settingsHref)} icon={<Settings2 />} />
           </span>
         )}
 

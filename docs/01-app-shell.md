@@ -27,7 +27,7 @@ filling the rest.
 | Floor | `/office/:id` | who is on the floor |
 | Chat | `/office/:id/chat` | unread messages |
 | People | `/office/:id/people` | — |
-| Settings | `?settings=…` over whatever you are on | — |
+| Settings | `/office/:id/settings`, `/lobby/settings` | — |
 | You (avatar, bottom) | status, account, sign out | your status colour |
 
 **The context column (240px)** changes with the view: people online on the
@@ -84,6 +84,6 @@ sketch above in two places, both for the better:
   On a phone the column is the whole screen and picking a channel pushes the
   conversation over it, with a back arrow.
 
-Devices (microphone and camera) sit in your menu on the rail and on the floor's
-dock; office settings are a dialog from the same menu. Billing arrives with
+Settings, devices included, are a view of their own at the foot of the rail
+(see `06-app-design.md`); the office's own settings are a section of it. Billing arrives with
 `05-pricing.md`.

@@ -1,7 +1,7 @@
 "use client";
 
-import { LobbyPeopleView } from "@/components/app/LobbyViews";
+import { PeopleView } from "@/components/app/PeopleView";
 
 export default function LobbyPeoplePage() {
-  return <LobbyPeopleView />;
+  return <PeopleView />;
 }

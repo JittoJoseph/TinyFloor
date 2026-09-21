@@ -254,7 +254,6 @@
     "leave": "Leave",
     "reconnecting": "Reconnecting…",
     "peopleHere": "On the floor · {count}",
-    "reconnectingNote": "Connection lost. Getting you back in…",
     "ended": {
       "back": "Back",
       "fullTitle": "This room is full",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Room Chat",
-    "system": "System",
-    "welcome": "Welcome to the room chat. Messages are visible to everyone here.",
-    "placeholder": "Type a message...",
     "close": "Close chat",
     "send": "Send message",
     "channels": "Channels",
@@ -346,9 +342,6 @@
     "newChannel": "New channel",
     "channelName": "Channel name",
     "say": "Message {channel}",
-    "older": "Older messages",
-    "nothingYet": "Nothing here yet. Say the first thing.",
-    "noDirect": "No direct messages yet.",
     "attach": "Add an image",
     "attachmentsPaid": "Images are part of a paid office.",
     "attachmentsSoon": "Images land here shortly.",
@@ -372,20 +365,24 @@
     "sayTo": "Message {name}",
     "channelHint": "Lowercase, no spaces. Everyone in the office can join.",
     "create": "Create channel",
-    "lobbyIntroTitle": "The lobby's chat",
-    "lobbyIntro": "Everyone in the lobby can read this. It is not kept: it goes when you leave.",
-    "lobbyDirect": "Direct messages and channels that stay come with an office of your own.",
-    "attachmentsLobby": "Images are part of a paid office.",
     "slowDown": "Slow down a little — too many messages at once.",
     "addChannel": "Add a channel",
     "starterHi": "Hey {name} 👋",
     "sayHi": "Say hi",
     "starterMinute": "Got a minute?",
     "askMinute": "Got a minute?",
-    "findOnFloor": "Find them on the floor",
     "starterHello": "Hello everyone 👋",
     "sayHello": "Say hello to everyone",
-    "actions": "Actions"
+    "actions": "Actions",
+    "walkOver": "Walk over",
+    "lobbyAlone": "Direct messages come with an office of your own. Here, say hello in a channel.",
+    "dropHere": "Drop to share in {channel}",
+    "dropLobby": "Images are shared inside offices, not the lobby.",
+    "lobbyGeneral": "Everyone in every copy of the lobby reads this. Say hello, ask anything. Messages stay for 7 days.",
+    "lobbyIntroductions": "Who are you, and what brings you here? Everyone in the lobby can read it for 7 days.",
+    "lobbyFeedback": "What would make TinyFloor better for your team? We read every message here.",
+    "introduceYourself": "Introduce yourself",
+    "starterIntro": "Hi, I'm new here 👋"
   },
   "proximity": {
     "videoCall": "Video call",
@@ -418,7 +415,46 @@
     "microphone": "Microphone",
     "camera": "Camera",
     "default": "Default",
-    "description": "Which microphone and camera the floor uses."
+    "description": "Which microphone and camera the floor uses.",
+    "preferences": "Your preferences",
+    "sections": {
+      "general": "General",
+      "media": "Audio and video",
+      "notifications": "Notifications",
+      "accessibility": "Accessibility",
+      "office": "Office"
+    },
+    "appearance": "Appearance",
+    "themeNote": "System follows your device.",
+    "language": "Language",
+    "languageTitle": "Language",
+    "languageNote": "For menus, buttons and messages from TinyFloor.",
+    "devices": "Devices",
+    "devicesNote": "Used the next time you turn your microphone or camera on.",
+    "voice": "Voice",
+    "voiceNote": "Your browser does this on your device.",
+    "noiseSuppression": "Noise suppression",
+    "noiseSuppressionNote": "Quiets keyboards, fans and the room around you.",
+    "echoCancellation": "Echo cancellation",
+    "echoCancellationNote": "Keeps others from hearing themselves through your speakers.",
+    "video": "Video",
+    "mirror": "Mirror my video",
+    "mirrorNote": "Only for you: others always see you the right way round.",
+    "mediaLocal": "Kept in this browser only.",
+    "sounds": "Sounds",
+    "messageSound": "New messages",
+    "messageSoundNote": "A soft sound when a message comes in.",
+    "joinSound": "Someone arrives",
+    "joinSoundNote": "A soft sound when someone walks onto the floor.",
+    "onTheFloor": "On the floor",
+    "nudges": "Message previews",
+    "nudgesNote": "Show new messages briefly over the floor.",
+    "motion": "Motion",
+    "reduceMotion": "Reduce motion",
+    "reduceMotionNote": "Fewer animations across the app.",
+    "performance": "Performance",
+    "batterySaver": "Battery saver",
+    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
   },
   "tutorial": {
     "walk": "Walk around with W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Open to everyone",
     "title": "The lobby",
     "subtitle": "Anyone can drop in. Say who you are, pick a character, and walk in.",
-    "peopleSubtitle": "Everyone in the lobby right now. Anyone with the link can walk in."
+    "peopleSubtitle": "Everyone in the lobby right now. Anyone with the link can walk in.",
+    "door": "{here, plural, =0 {Nobody inside yet, be the first} one {# person inside now} other {# people inside now}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Channels come with an office",
+        "body": "In your own office you can make as many channels as your team needs, and they stay."
+      },
+      "directMessages": {
+        "title": "Direct messages come with an office",
+        "body": "Write to anyone in your office, one to one, and pick it up again tomorrow."
+      },
+      "attachments": {
+        "title": "Sharing images comes with an office",
+        "body": "Drop screenshots and photos into any conversation in your own office."
+      },
+      "invites": {
+        "title": "Invites come with an office",
+        "body": "Invite your team by email, or let a guest in with a link, in an office of your own."
+      },
+      "free": "Making an office takes a minute and is free for up to 3 people.",
+      "go": "Make my office",
+      "notNow": "Not now"
+    },
+    "yourOffice": {
+      "eyebrow": "Free for small teams",
+      "title": "A floor of your own, for your team",
+      "body": "Everything in the lobby, but yours: a private floor where your team walks up to talk, with chat that stays.",
+      "create": "Make my office",
+      "free": "Free for up to 3 people. No card needed.",
+      "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}",
+      "you": "You",
+      "teammate": "Teammate",
+      "whatYouGet": "What an office adds",
+      "perks": {
+        "private": {
+          "title": "A private floor",
+          "body": "Only your team and the guests you let in."
+        },
+        "channels": {
+          "title": "Channels that stay",
+          "body": "Make one for each project; nothing is lost when you leave."
+        },
+        "messages": {
+          "title": "Direct messages",
+          "body": "Write to anyone one to one, and see who is on the floor."
+        },
+        "team": {
+          "title": "Your team, by invite",
+          "body": "Invite people by email, and set who can manage the office."
+        },
+        "guests": {
+          "title": "Guest links",
+          "body": "Let a client or candidate visit without taking a seat."
+        },
+        "attachments": {
+          "title": "Images in chat",
+          "body": "Share screenshots and photos, on a paid office."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Name it",
+          "body": "Your team's name is enough."
+        },
+        "invite": {
+          "title": "Invite your team",
+          "body": "Send a link or an email."
+        },
+        "walk": {
+          "title": "Walk in",
+          "body": "Walk up to someone to talk."
+        }
+      },
+      "ready": "Ready when you are."
+    }
   },
   "office": {
     "copy": "Copy",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "A guest link lets a client or a candidate visit the floor, without taking a seat.",
       "allSeatsTaken": "Every seat is taken",
       "allSeatsTakenBody": "Someone leaving frees a seat. Offices with more seats are coming.",
-      "yourProfile": "Your profile"
+      "yourProfile": "Your profile",
+      "ownOfficeTitle": "Want a floor like this for your team?",
+      "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people."
     },
     "office": "Office",
     "goneTitle": "This office is gone",
@@ -1095,7 +1207,6 @@
       "dark": "Dark"
     },
     "devices": "Microphone and camera",
-    "officeSettings": "Office settings",
     "makeAccount": "Create an account",
     "account": "Account",
     "allOffices": "All offices",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Not on the floor",
     "message": "Message",
     "leaveLobby": "Leave the lobby",
-    "lobbyChannel": "lobby",
-    "hereNow": "Here now"
+    "hereNow": "Here now",
+    "settings": "Settings",
+    "inCall": "In a call",
+    "inMeeting": "In a meeting",
+    "yourOffice": "Your office",
+    "walkTo": "Walk to",
+    "youLower": "you",
+    "joined": "Joined {date}",
+    "yourProfile": "Your profile"
   },
   "dashboard": {
     "morning": "Good morning, {name}",

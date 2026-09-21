@@ -171,5 +171,8 @@ export const api = {
   chatTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/chat-ticket`),
   guestLinkTicket: (token: string) => post<RoomTicket>(`/guest-links/${id(token)}/ticket`),
   lobbyTicket: () => post<RoomTicket>("/lobby/ticket"),
+  lobbyChatTicket: () => post<RoomTicket>("/lobby/chat-ticket"),
+  /** Who is in the public lobby right now, for its door. */
+  lobbyPeople: () => get<{ here: number; faces: Array<{ id: string; name: string }> }>("/lobby"),
   iceServers: () => post<IceServers>("/calls/ice-servers"),
 };

@@ -1,3 +1,4 @@
+import { prefs } from "./prefs";
 import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "./api";
@@ -82,11 +83,11 @@ const FALLBACK_ICE: RTCIceServer[] = [{ urls: "stun:stun.cloudflare.com:3478" }]
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
 const GUIDE_ANSWER_DELAY = 1600;
-const AUDIO_CONSTRAINTS = {
-  echoCancellation: true,
-  noiseSuppression: true,
-  autoGainControl: true,
-};
+/** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
+function audioConstraints() {
+  const { echoCancellation, noiseSuppression } = prefs();
+  return { echoCancellation, noiseSuppression, autoGainControl: true };
+}
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
 const SLOTS = ["audio", "video", "video"] as const;
@@ -682,7 +683,7 @@ class CallManager {
     try {
       const devices = savedDevices();
       this.local = await navigator.mediaDevices.getUserMedia({
-        audio: { ...AUDIO_CONSTRAINTS, deviceId: deviceConstraint(devices.audio) },
+        audio: { ...audioConstraints(), deviceId: deviceConstraint(devices.audio) },
         video: wantsCamera && { ...CAMERA_CAPTURE, deviceId: deviceConstraint(devices.video) },
       });
       this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));

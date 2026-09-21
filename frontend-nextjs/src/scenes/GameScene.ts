@@ -1,3 +1,4 @@
+import { WALK_TO_PERSON_EVENT } from "../lib/floor";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "../lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
@@ -172,9 +173,12 @@ class GameScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
     this.cameras.main.setDeadzone(120, 90);
 
-    this.listen("sendChatMessage", (event: CustomEvent) =>
-      this.wsManager.send({ t: "chat", text: String(event.detail.content ?? "") }),
-    );
+    // "Walk to" beside someone in People or chat: the same walk a click on the
+    // floor makes, to the free tile nearest them.
+    this.listen(WALK_TO_PERSON_EVENT, (event: CustomEvent<{ id: string }>) => {
+      const spot = this.playerManager.positionOf(event.detail.id);
+      if (spot) this.movementManager.goTo(spot.x, spot.y, () => {});
+    });
     this.listen("statusChange", (event: CustomEvent) => {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);

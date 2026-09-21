@@ -254,7 +254,6 @@
     "leave": "Poistu",
     "reconnecting": "Yhdistetään uudelleen…",
     "peopleHere": "Kerroksella · {count}",
-    "reconnectingNote": "Yhteys katkesi. Palautamme sinut sisään…",
     "ended": {
       "back": "Takaisin",
       "fullTitle": "Huone on täynnä",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Huonechat",
-    "system": "Järjestelmä",
-    "welcome": "Tervetuloa huoneen chattiin. Viestit näkyvät kaikille täällä.",
-    "placeholder": "Kirjoita viesti...",
     "close": "Sulje chat",
     "send": "Lähetä viesti",
     "channels": "Kanavat",
@@ -346,9 +342,6 @@
     "newChannel": "Uusi kanava",
     "channelName": "Kanavan nimi",
     "say": "Viesti kanavalle {channel}",
-    "older": "Vanhemmat viestit",
-    "nothingYet": "Täällä ei ole vielä mitään. Sano ensimmäinen.",
-    "noDirect": "Ei vielä yksityisviestejä.",
     "attach": "Lisää kuva",
     "attachmentsPaid": "Kuvat kuuluvat maksulliseen toimistoon.",
     "attachmentsSoon": "Kuvat saapuvat pian.",
@@ -372,20 +365,24 @@
     "sayTo": "Viesti: {name}",
     "channelHint": "Pienet kirjaimet, ei välilyöntejä. Kaikki toimistossa voivat liittyä.",
     "create": "Luo kanava",
-    "lobbyIntroTitle": "Aulan chat",
-    "lobbyIntro": "Kaikki aulassa voivat lukea tämän. Sitä ei säilytetä: se katoaa, kun lähdet.",
-    "lobbyDirect": "Yksityisviestit ja pysyvät kanavat tulevat oman toimiston mukana.",
-    "attachmentsLobby": "Kuvat kuuluvat maksulliseen toimistoon.",
     "slowDown": "Hiukan hitaammin – liikaa viestejä kerralla.",
     "addChannel": "Lisää kanava",
     "starterHi": "Moi {name} 👋",
     "sayHi": "Sano hei",
     "starterMinute": "Onko sinulla hetki?",
     "askMinute": "Hetki aikaa?",
-    "findOnFloor": "Etsi kerrokselta",
     "starterHello": "Hei kaikki 👋",
     "sayHello": "Tervehdi kaikkia",
-    "actions": "Toiminnot"
+    "actions": "Toiminnot",
+    "walkOver": "Kävele luo",
+    "lobbyAlone": "Yksityisviestit kuuluvat omaan toimistoon. Tervehdi täällä kanavalla.",
+    "dropHere": "Pudota jakaaksesi kanavalle {channel}",
+    "dropLobby": "Kuvia jaetaan toimistoissa, ei aulassa.",
+    "lobbyGeneral": "Kaikki aulan kopioissa lukevat tämän. Tervehdi ja kysy mitä vain. Viestit säilyvät 7 päivää.",
+    "lobbyIntroductions": "Kuka olet, ja mikä toi sinut tänne? Koko aula voi lukea sen 7 päivän ajan.",
+    "lobbyFeedback": "Mikä tekisi TinyFloorista paremman tiimillesi? Luemme jokaisen viestin täällä.",
+    "introduceYourself": "Esittele itsesi",
+    "starterIntro": "Moi, olen uusi täällä 👋"
   },
   "proximity": {
     "videoCall": "Videopuhelu",
@@ -418,7 +415,46 @@
     "microphone": "Mikrofoni",
     "camera": "Kamera",
     "default": "Oletus",
-    "description": "Mitä mikrofonia ja kameraa kerros käyttää."
+    "description": "Mitä mikrofonia ja kameraa kerros käyttää.",
+    "preferences": "Omat asetukset",
+    "sections": {
+      "general": "Yleiset",
+      "media": "Ääni ja video",
+      "notifications": "Ilmoitukset",
+      "accessibility": "Saavutettavuus",
+      "office": "Toimisto"
+    },
+    "appearance": "Ulkoasu",
+    "themeNote": "”Järjestelmä” seuraa laitettasi.",
+    "language": "Kieli",
+    "languageTitle": "Kieli",
+    "languageNote": "Valikoille, painikkeille ja TinyFloorin viesteille.",
+    "devices": "Laitteet",
+    "devicesNote": "Käytetään, kun seuraavan kerran laitat mikrofonin tai kameran päälle.",
+    "voice": "Ääni",
+    "voiceNote": "Selaimesi tekee tämän laitteellasi.",
+    "noiseSuppression": "Kohinanvaimennus",
+    "noiseSuppressionNote": "Vaimentaa näppäimistön, tuulettimet ja ympäröivän tilan.",
+    "echoCancellation": "Kaiunpoisto",
+    "echoCancellationNote": "Estää muita kuulemasta itseään kaiuttimistasi.",
+    "video": "Video",
+    "mirror": "Peilaa videoni",
+    "mirrorNote": "Vain sinulle: muut näkevät sinut aina oikein päin.",
+    "mediaLocal": "Tallennetaan vain tähän selaimeen.",
+    "sounds": "Äänet",
+    "messageSound": "Uudet viestit",
+    "messageSoundNote": "Pehmeä ääni, kun viesti saapuu.",
+    "joinSound": "Joku saapuu",
+    "joinSoundNote": "Pehmeä ääni, kun joku astuu kerrokseen.",
+    "onTheFloor": "Kerroksessa",
+    "nudges": "Viestien esikatselu",
+    "nudgesNote": "Näytä uudet viestit hetken kerroksen päällä.",
+    "motion": "Liike",
+    "reduceMotion": "Vähennä liikettä",
+    "reduceMotionNote": "Vähemmän animaatioita koko sovelluksessa.",
+    "performance": "Suorituskyky",
+    "batterySaver": "Virransäästö",
+    "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla."
   },
   "tutorial": {
     "walk": "Kävele näppäimillä W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Avoinna kaikille",
     "title": "Aula",
     "subtitle": "Kuka tahansa voi poiketa. Kerro kuka olet, valitse hahmo ja astu sisään.",
-    "peopleSubtitle": "Kaikki, jotka ovat nyt aulassa. Linkin saanut pääsee sisään."
+    "peopleSubtitle": "Kaikki, jotka ovat nyt aulassa. Linkin saanut pääsee sisään.",
+    "door": "{here, plural, =0 {Ei vielä ketään, tule ensimmäisenä} one {# ihminen sisällä nyt} other {# ihmistä sisällä nyt}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Kanavat kuuluvat toimistoon",
+        "body": "Omassa toimistossa teet niin monta kanavaa kuin tiimi tarvitsee, ja ne säilyvät."
+      },
+      "directMessages": {
+        "title": "Yksityisviestit kuuluvat toimistoon",
+        "body": "Kirjoita kenelle tahansa toimistossasi kahden kesken ja jatka huomenna."
+      },
+      "attachments": {
+        "title": "Kuvien jakaminen kuuluu toimistoon",
+        "body": "Pudota kuvakaappauksia ja kuvia mihin tahansa keskusteluun omassa toimistossasi."
+      },
+      "invites": {
+        "title": "Kutsut kuuluvat toimistoon",
+        "body": "Kutsu tiimisi sähköpostilla tai päästä vieras sisään linkillä omassa toimistossasi."
+      },
+      "free": "Toimiston luominen vie minuutin, ja se on ilmainen enintään 3 hengelle.",
+      "go": "Luo toimistoni",
+      "notNow": "Ei nyt"
+    },
+    "yourOffice": {
+      "eyebrow": "Ilmainen pienille tiimeille",
+      "title": "Oma kerros tiimillesi",
+      "body": "Kaikki mitä aulassa on, mutta omana: yksityinen kerros, jossa tiimi kävelee toistensa luo juttelemaan, ja chat, joka säilyy.",
+      "create": "Luo toimistoni",
+      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita.",
+      "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}",
+      "you": "Sinä",
+      "teammate": "Tiimiläinen",
+      "whatYouGet": "Mitä toimisto tuo lisää",
+      "perks": {
+        "private": {
+          "title": "Yksityinen kerros",
+          "body": "Vain tiimisi ja vieraat, jotka päästät sisään."
+        },
+        "channels": {
+          "title": "Kanavat, jotka säilyvät",
+          "body": "Yksi jokaiselle projektille; mitään ei katoa, kun lähdet."
+        },
+        "messages": {
+          "title": "Yksityisviestit",
+          "body": "Kirjoita kenelle tahansa kahden kesken ja näe, kuka on kerroksessa."
+        },
+        "team": {
+          "title": "Tiimisi kutsusta",
+          "body": "Kutsu sähköpostilla ja päätä, kuka hallinnoi toimistoa."
+        },
+        "guests": {
+          "title": "Vieraslinkit",
+          "body": "Asiakas tai hakija käy vierailulla viemättä paikkaa."
+        },
+        "attachments": {
+          "title": "Kuvat chatissa",
+          "body": "Jaa kuvakaappauksia ja kuvia maksullisessa toimistossa."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Anna nimi",
+          "body": "Tiimisi nimi riittää."
+        },
+        "invite": {
+          "title": "Kutsu tiimisi",
+          "body": "Lähetä linkki tai sähköposti."
+        },
+        "walk": {
+          "title": "Kävele sisään",
+          "body": "Kävele jonkun luo juttelemaan."
+        }
+      },
+      "ready": "Valmiina, kun sinä olet."
+    }
   },
   "office": {
     "copy": "Kopioi",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Vieraslinkillä asiakas tai hakija voi käydä kerroksella viemättä paikkaa.",
       "allSeatsTaken": "Kaikki paikat on varattu",
       "allSeatsTakenBody": "Lähtijä vapauttaa paikan. Toimistoja, joissa on enemmän paikkoja, on tulossa.",
-      "yourProfile": "Profiilisi"
+      "yourProfile": "Profiilisi",
+      "ownOfficeTitle": "Tällainen kerros tiimillesi?",
+      "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle."
     },
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
@@ -1095,7 +1207,6 @@
       "dark": "Tumma"
     },
     "devices": "Mikrofoni ja kamera",
-    "officeSettings": "Toimiston asetukset",
     "makeAccount": "Luo tili",
     "account": "Tili",
     "allOffices": "Kaikki toimistot",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Ei kerroksella",
     "message": "Viesti",
     "leaveLobby": "Poistu aulasta",
-    "lobbyChannel": "aula",
-    "hereNow": "Nyt täällä"
+    "hereNow": "Nyt täällä",
+    "settings": "Asetukset",
+    "inCall": "Puhelussa",
+    "inMeeting": "Palaverissa",
+    "yourOffice": "Oma toimisto",
+    "walkTo": "Kävele luo",
+    "youLower": "sinä",
+    "joined": "Liittynyt {date}",
+    "yourProfile": "Oma profiili"
   },
   "dashboard": {
     "morning": "Huomenta, {name}",

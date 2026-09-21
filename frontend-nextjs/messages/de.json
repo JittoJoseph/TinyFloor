@@ -254,7 +254,6 @@
     "leave": "Verlassen",
     "reconnecting": "Verbindung wird wiederhergestellt…",
     "peopleHere": "Auf der Fläche · {count}",
-    "reconnectingNote": "Verbindung verloren. Wir holen dich zurück…",
     "ended": {
       "back": "Zurück",
       "fullTitle": "Dieser Raum ist voll",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Raum-Chat",
-    "system": "System",
-    "welcome": "Willkommen im Raum-Chat. Nachrichten sind für alle hier sichtbar.",
-    "placeholder": "Nachricht eingeben...",
     "close": "Chat schließen",
     "send": "Nachricht senden",
     "channels": "Kanäle",
@@ -346,9 +342,6 @@
     "newChannel": "Neuer Kanal",
     "channelName": "Kanalname",
     "say": "Nachricht an {channel}",
-    "older": "Ältere Nachrichten",
-    "nothingYet": "Hier ist noch nichts. Sag das Erste.",
-    "noDirect": "Noch keine Direktnachrichten.",
     "attach": "Bild hinzufügen",
     "attachmentsPaid": "Bilder gehören zu einem bezahlten Büro.",
     "attachmentsSoon": "Bilder kommen bald.",
@@ -372,20 +365,24 @@
     "sayTo": "Nachricht an {name}",
     "channelHint": "Kleinbuchstaben, keine Leerzeichen. Alle im Büro können beitreten.",
     "create": "Kanal erstellen",
-    "lobbyIntroTitle": "Der Chat der Lobby",
-    "lobbyIntro": "Alle in der Lobby können das lesen. Es wird nicht gespeichert: Es verschwindet, wenn du gehst.",
-    "lobbyDirect": "Direktnachrichten und Kanäle, die bleiben, gibt es mit einem eigenen Büro.",
-    "attachmentsLobby": "Bilder gehören zu einem bezahlten Büro.",
     "slowDown": "Etwas langsamer – zu viele Nachrichten auf einmal.",
     "addChannel": "Kanal hinzufügen",
     "starterHi": "Hey {name} 👋",
     "sayHi": "Hallo sagen",
     "starterMinute": "Hast du kurz Zeit?",
     "askMinute": "Kurz Zeit?",
-    "findOnFloor": "Auf der Fläche finden",
     "starterHello": "Hallo zusammen 👋",
     "sayHello": "Allen Hallo sagen",
-    "actions": "Aktionen"
+    "actions": "Aktionen",
+    "walkOver": "Hingehen",
+    "lobbyAlone": "Direktnachrichten gibt es mit einem eigenen Büro. Sag hier in einem Kanal Hallo.",
+    "dropHere": "Ablegen, um in {channel} zu teilen",
+    "dropLobby": "Bilder teilst du in Büros, nicht in der Lobby.",
+    "lobbyGeneral": "Alle in jeder Kopie der Lobby lesen das hier. Sag Hallo, frag, was du willst. Nachrichten bleiben 7 Tage.",
+    "lobbyIntroductions": "Wer bist du, und was führt dich her? Alle in der Lobby können es 7 Tage lang lesen.",
+    "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
+    "introduceYourself": "Stell dich vor",
+    "starterIntro": "Hallo, ich bin neu hier 👋"
   },
   "proximity": {
     "videoCall": "Videoanruf",
@@ -418,7 +415,46 @@
     "microphone": "Mikrofon",
     "camera": "Kamera",
     "default": "Standard",
-    "description": "Welches Mikrofon und welche Kamera die Fläche nutzt."
+    "description": "Welches Mikrofon und welche Kamera die Fläche nutzt.",
+    "preferences": "Deine Einstellungen",
+    "sections": {
+      "general": "Allgemein",
+      "media": "Audio und Video",
+      "notifications": "Benachrichtigungen",
+      "accessibility": "Barrierefreiheit",
+      "office": "Büro"
+    },
+    "appearance": "Darstellung",
+    "themeNote": "„System“ folgt deinem Gerät.",
+    "language": "Sprache",
+    "languageTitle": "Sprache",
+    "languageNote": "Für Menüs, Schaltflächen und Hinweise von TinyFloor.",
+    "devices": "Geräte",
+    "devicesNote": "Gilt, wenn du Mikrofon oder Kamera das nächste Mal einschaltest.",
+    "voice": "Stimme",
+    "voiceNote": "Das erledigt dein Browser auf deinem Gerät.",
+    "noiseSuppression": "Rauschunterdrückung",
+    "noiseSuppressionNote": "Dämpft Tastatur, Lüfter und den Raum um dich herum.",
+    "echoCancellation": "Echounterdrückung",
+    "echoCancellationNote": "Verhindert, dass andere sich über deine Lautsprecher selbst hören.",
+    "video": "Video",
+    "mirror": "Mein Video spiegeln",
+    "mirrorNote": "Nur für dich: Andere sehen dich immer richtig herum.",
+    "mediaLocal": "Nur in diesem Browser gespeichert.",
+    "sounds": "Töne",
+    "messageSound": "Neue Nachrichten",
+    "messageSoundNote": "Ein leiser Ton, wenn eine Nachricht eintrifft.",
+    "joinSound": "Jemand kommt dazu",
+    "joinSoundNote": "Ein leiser Ton, wenn jemand die Fläche betritt.",
+    "onTheFloor": "Auf der Fläche",
+    "nudges": "Nachrichtenvorschau",
+    "nudgesNote": "Neue Nachrichten kurz über der Fläche anzeigen.",
+    "motion": "Bewegung",
+    "reduceMotion": "Bewegung reduzieren",
+    "reduceMotionNote": "Weniger Animationen in der ganzen App.",
+    "performance": "Leistung",
+    "batterySaver": "Energiesparmodus",
+    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
   },
   "tutorial": {
     "walk": "Lauf mit W A S D herum",
@@ -932,7 +968,81 @@
     "eyebrow": "Offen für alle",
     "title": "Die Lobby",
     "subtitle": "Jeder kann vorbeischauen. Sag, wer du bist, wähle einen Charakter und komm rein.",
-    "peopleSubtitle": "Alle, die gerade in der Lobby sind. Wer den Link hat, kann hereinkommen."
+    "peopleSubtitle": "Alle, die gerade in der Lobby sind. Wer den Link hat, kann hereinkommen.",
+    "door": "{here, plural, =0 {Noch niemand drin – sei als Erstes da} one {# Person gerade drin} other {# Personen gerade drin}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Kanäle gibt es mit einem Büro",
+        "body": "In deinem eigenen Büro legst du so viele Kanäle an, wie dein Team braucht, und sie bleiben."
+      },
+      "directMessages": {
+        "title": "Direktnachrichten gibt es mit einem Büro",
+        "body": "Schreib allen in deinem Büro direkt und mach morgen genau dort weiter."
+      },
+      "attachments": {
+        "title": "Bilder teilen gibt es mit einem Büro",
+        "body": "Zieh Screenshots und Fotos in jedes Gespräch in deinem eigenen Büro."
+      },
+      "invites": {
+        "title": "Einladungen gibt es mit einem Büro",
+        "body": "Lade dein Team per E-Mail ein oder lass Gäste mit einem Link herein – in deinem eigenen Büro."
+      },
+      "free": "Ein Büro ist in einer Minute eingerichtet und für bis zu 3 Personen kostenlos.",
+      "go": "Mein Büro einrichten",
+      "notNow": "Nicht jetzt"
+    },
+    "yourOffice": {
+      "eyebrow": "Kostenlos für kleine Teams",
+      "title": "Eine eigene Fläche für dein Team",
+      "body": "Alles aus der Lobby, aber deins: eine private Fläche, auf der dein Team zum Reden einfach hingeht, mit einem Chat, der bleibt.",
+      "create": "Mein Büro einrichten",
+      "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig.",
+      "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}",
+      "you": "Du",
+      "teammate": "Teammitglied",
+      "whatYouGet": "Was ein Büro dazubringt",
+      "perks": {
+        "private": {
+          "title": "Eine private Fläche",
+          "body": "Nur dein Team und die Gäste, die du hereinlässt."
+        },
+        "channels": {
+          "title": "Kanäle, die bleiben",
+          "body": "Einer pro Projekt; nichts geht verloren, wenn du gehst."
+        },
+        "messages": {
+          "title": "Direktnachrichten",
+          "body": "Schreib allen direkt und sieh, wer auf der Fläche ist."
+        },
+        "team": {
+          "title": "Dein Team, per Einladung",
+          "body": "Lade per E-Mail ein und leg fest, wer das Büro verwaltet."
+        },
+        "guests": {
+          "title": "Gastlinks",
+          "body": "Kundschaft oder Bewerbende kommen zu Besuch, ohne einen Platz zu belegen."
+        },
+        "attachments": {
+          "title": "Bilder im Chat",
+          "body": "Teile Screenshots und Fotos, in einem bezahlten Büro."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Benenn es",
+          "body": "Der Name deines Teams reicht."
+        },
+        "invite": {
+          "title": "Lade dein Team ein",
+          "body": "Schick einen Link oder eine E-Mail."
+        },
+        "walk": {
+          "title": "Geh rein",
+          "body": "Geh zu jemandem hin, um zu reden."
+        }
+      },
+      "ready": "Bereit, wenn du es bist."
+    }
   },
   "office": {
     "copy": "Kopieren",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Mit einem Gastlink besucht eine Kundin oder ein Bewerber die Fläche, ohne einen Platz zu belegen.",
       "allSeatsTaken": "Alle Plätze sind belegt",
       "allSeatsTakenBody": "Wer geht, gibt einen Platz frei. Büros mit mehr Plätzen kommen bald.",
-      "yourProfile": "Dein Profil"
+      "yourProfile": "Dein Profil",
+      "ownOfficeTitle": "Eine Fläche wie diese für dein Team?",
+      "ownOfficeBody": "Richte in einer Minute dein eigenes Büro ein. Kostenlos für bis zu 3 Personen."
     },
     "office": "Büro",
     "goneTitle": "Dieses Büro gibt es nicht mehr",
@@ -1095,7 +1207,6 @@
       "dark": "Dunkel"
     },
     "devices": "Mikrofon und Kamera",
-    "officeSettings": "Büroeinstellungen",
     "makeAccount": "Konto erstellen",
     "account": "Konto",
     "allOffices": "Alle Büros",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Nicht auf der Fläche",
     "message": "Nachricht",
     "leaveLobby": "Lobby verlassen",
-    "lobbyChannel": "lobby",
-    "hereNow": "Gerade hier"
+    "hereNow": "Gerade hier",
+    "settings": "Einstellungen",
+    "inCall": "Im Anruf",
+    "inMeeting": "Im Meeting",
+    "yourOffice": "Dein Büro",
+    "walkTo": "Hingehen",
+    "youLower": "du",
+    "joined": "Dabei seit {date}",
+    "yourProfile": "Dein Profil"
   },
   "dashboard": {
     "morning": "Guten Morgen, {name}",

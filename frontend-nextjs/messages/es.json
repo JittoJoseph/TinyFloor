@@ -254,7 +254,6 @@
     "leave": "Salir",
     "reconnecting": "Reconectando…",
     "peopleHere": "En la planta · {count}",
-    "reconnectingNote": "Se perdió la conexión. Te estamos devolviendo…",
     "ended": {
       "back": "Volver",
       "fullTitle": "Esta sala está llena",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Chat de la sala",
-    "system": "Sistema",
-    "welcome": "Te damos la bienvenida al chat de la sala. Todos los que están aquí pueden ver los mensajes.",
-    "placeholder": "Escribe un mensaje...",
     "close": "Cerrar chat",
     "send": "Enviar mensaje",
     "channels": "Canales",
@@ -346,9 +342,6 @@
     "newChannel": "Nuevo canal",
     "channelName": "Nombre del canal",
     "say": "Escribe en {channel}",
-    "older": "Mensajes anteriores",
-    "nothingYet": "Aquí no hay nada aún. Di lo primero.",
-    "noDirect": "Aún no hay mensajes directos.",
     "attach": "Añadir una imagen",
     "attachmentsPaid": "Las imágenes son parte de una oficina de pago.",
     "attachmentsSoon": "Las imágenes llegan pronto.",
@@ -372,20 +365,24 @@
     "sayTo": "Mensaje para {name}",
     "channelHint": "Minúsculas, sin espacios. Toda la oficina puede unirse.",
     "create": "Crear canal",
-    "lobbyIntroTitle": "El chat del vestíbulo",
-    "lobbyIntro": "Todos en el vestíbulo pueden leer esto. No se guarda: desaparece cuando te vas.",
-    "lobbyDirect": "Los mensajes directos y los canales que se quedan vienen con una oficina propia.",
-    "attachmentsLobby": "Las imágenes son parte de una oficina de pago.",
     "slowDown": "Más despacio: demasiados mensajes a la vez.",
     "addChannel": "Añadir un canal",
     "starterHi": "Hola {name} 👋",
     "sayHi": "Saludar",
     "starterMinute": "¿Tienes un minuto?",
     "askMinute": "¿Un minuto?",
-    "findOnFloor": "Buscarle en la planta",
     "starterHello": "Hola a todos 👋",
     "sayHello": "Saludar a todos",
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "walkOver": "Ir hasta allí",
+    "lobbyAlone": "Los mensajes directos llegan con una oficina propia. Aquí, saluda en un canal.",
+    "dropHere": "Suelta para compartir en {channel}",
+    "dropLobby": "Las imágenes se comparten en las oficinas, no en el vestíbulo.",
+    "lobbyGeneral": "Todos, en cada copia del vestíbulo, leen esto. Saluda y pregunta lo que quieras. Los mensajes duran 7 días.",
+    "lobbyIntroductions": "¿Quién eres y qué te trae por aquí? Todo el vestíbulo puede leerlo durante 7 días.",
+    "lobbyFeedback": "¿Qué haría TinyFloor mejor para tu equipo? Leemos cada mensaje aquí.",
+    "introduceYourself": "Preséntate",
+    "starterIntro": "Hola, soy nuevo por aquí 👋"
   },
   "proximity": {
     "videoCall": "Videollamada",
@@ -418,7 +415,46 @@
     "microphone": "Micrófono",
     "camera": "Cámara",
     "default": "Predeterminado",
-    "description": "Qué micrófono y cámara usa la planta."
+    "description": "Qué micrófono y cámara usa la planta.",
+    "preferences": "Tus preferencias",
+    "sections": {
+      "general": "General",
+      "media": "Audio y vídeo",
+      "notifications": "Notificaciones",
+      "accessibility": "Accesibilidad",
+      "office": "Oficina"
+    },
+    "appearance": "Apariencia",
+    "themeNote": "«Sistema» sigue a tu dispositivo.",
+    "language": "Idioma",
+    "languageTitle": "Idioma",
+    "languageNote": "Para menús, botones y mensajes de TinyFloor.",
+    "devices": "Dispositivos",
+    "devicesNote": "Se usan la próxima vez que actives el micrófono o la cámara.",
+    "voice": "Voz",
+    "voiceNote": "Tu navegador lo hace en tu dispositivo.",
+    "noiseSuppression": "Supresión de ruido",
+    "noiseSuppressionNote": "Atenúa teclados, ventiladores y la sala a tu alrededor.",
+    "echoCancellation": "Cancelación de eco",
+    "echoCancellationNote": "Evita que los demás se oigan a sí mismos por tus altavoces.",
+    "video": "Vídeo",
+    "mirror": "Reflejar mi vídeo",
+    "mirrorNote": "Solo para ti: los demás siempre te ven del derecho.",
+    "mediaLocal": "Guardado solo en este navegador.",
+    "sounds": "Sonidos",
+    "messageSound": "Mensajes nuevos",
+    "messageSoundNote": "Un sonido suave cuando llega un mensaje.",
+    "joinSound": "Llega alguien",
+    "joinSoundNote": "Un sonido suave cuando alguien entra en la planta.",
+    "onTheFloor": "En la planta",
+    "nudges": "Vista previa de mensajes",
+    "nudgesNote": "Mostrar brevemente los mensajes nuevos sobre la planta.",
+    "motion": "Movimiento",
+    "reduceMotion": "Reducir movimiento",
+    "reduceMotionNote": "Menos animaciones en toda la aplicación.",
+    "performance": "Rendimiento",
+    "batterySaver": "Ahorro de batería",
+    "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres."
   },
   "tutorial": {
     "walk": "Muévete con W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Abierto a todos",
     "title": "El lobby",
     "subtitle": "Cualquiera puede pasar. Di quién eres, elige un personaje y entra.",
-    "peopleSubtitle": "Todos los que están ahora en el vestíbulo. Quien tenga el enlace puede entrar."
+    "peopleSubtitle": "Todos los que están ahora en el vestíbulo. Quien tenga el enlace puede entrar.",
+    "door": "{here, plural, =0 {Aún no hay nadie, entra primero} one {# persona dentro ahora} other {# personas dentro ahora}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Los canales llegan con una oficina",
+        "body": "En tu propia oficina puedes crear tantos canales como necesite tu equipo, y se quedan."
+      },
+      "directMessages": {
+        "title": "Los mensajes directos llegan con una oficina",
+        "body": "Escribe a cualquiera de tu oficina, de tú a tú, y sigue mañana donde lo dejaste."
+      },
+      "attachments": {
+        "title": "Compartir imágenes llega con una oficina",
+        "body": "Suelta capturas y fotos en cualquier conversación de tu propia oficina."
+      },
+      "invites": {
+        "title": "Las invitaciones llegan con una oficina",
+        "body": "Invita a tu equipo por correo o deja pasar a un invitado con un enlace, en tu propia oficina."
+      },
+      "free": "Crear una oficina lleva un minuto y es gratis hasta 3 personas.",
+      "go": "Crear mi oficina",
+      "notNow": "Ahora no"
+    },
+    "yourOffice": {
+      "eyebrow": "Gratis para equipos pequeños",
+      "title": "Una planta propia para tu equipo",
+      "body": "Todo lo del vestíbulo, pero tuyo: una planta privada donde tu equipo se acerca a hablar, con un chat que se queda.",
+      "create": "Crear mi oficina",
+      "free": "Gratis hasta 3 personas. Sin tarjeta.",
+      "bringThem": "{count, plural, one {Trae a la persona que conociste aquí} other {Trae a las # personas que conociste aquí}}",
+      "you": "Tú",
+      "teammate": "Compañero",
+      "whatYouGet": "Lo que añade una oficina",
+      "perks": {
+        "private": {
+          "title": "Una planta privada",
+          "body": "Solo tu equipo y los invitados que dejes pasar."
+        },
+        "channels": {
+          "title": "Canales que se quedan",
+          "body": "Uno por proyecto; nada se pierde al salir."
+        },
+        "messages": {
+          "title": "Mensajes directos",
+          "body": "Escribe a cualquiera de tú a tú y mira quién está en la planta."
+        },
+        "team": {
+          "title": "Tu equipo, por invitación",
+          "body": "Invita por correo y decide quién gestiona la oficina."
+        },
+        "guests": {
+          "title": "Enlaces de invitado",
+          "body": "Un cliente o candidato visita sin ocupar un puesto."
+        },
+        "attachments": {
+          "title": "Imágenes en el chat",
+          "body": "Comparte capturas y fotos, en una oficina de pago."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Ponle nombre",
+          "body": "Basta con el nombre de tu equipo."
+        },
+        "invite": {
+          "title": "Invita a tu equipo",
+          "body": "Envía un enlace o un correo."
+        },
+        "walk": {
+          "title": "Entra",
+          "body": "Acércate a alguien para hablar."
+        }
+      },
+      "ready": "Cuando tú quieras."
+    }
   },
   "office": {
     "copy": "Copiar",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Un enlace de invitado permite a un cliente o candidato visitar la planta sin ocupar un puesto.",
       "allSeatsTaken": "Todos los puestos están ocupados",
       "allSeatsTakenBody": "Si alguien se va, libera un puesto. Pronto habrá oficinas con más puestos.",
-      "yourProfile": "Tu perfil"
+      "yourProfile": "Tu perfil",
+      "ownOfficeTitle": "¿Una planta así para tu equipo?",
+      "ownOfficeBody": "Crea tu propia oficina en un minuto. Gratis hasta 3 personas."
     },
     "office": "Oficina",
     "goneTitle": "Esta oficina ya no existe",
@@ -1095,7 +1207,6 @@
       "dark": "Oscuro"
     },
     "devices": "Micrófono y cámara",
-    "officeSettings": "Ajustes de la oficina",
     "makeAccount": "Crear una cuenta",
     "account": "Cuenta",
     "allOffices": "Todas las oficinas",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "No está en la planta",
     "message": "Mensaje",
     "leaveLobby": "Salir del vestíbulo",
-    "lobbyChannel": "vestibulo",
-    "hereNow": "Aquí ahora"
+    "hereNow": "Aquí ahora",
+    "settings": "Ajustes",
+    "inCall": "En una llamada",
+    "inMeeting": "En una reunión",
+    "yourOffice": "Tu oficina",
+    "walkTo": "Ir hasta",
+    "youLower": "tú",
+    "joined": "Se unió en {date}",
+    "yourProfile": "Tu perfil"
   },
   "dashboard": {
     "morning": "Buenos días, {name}",

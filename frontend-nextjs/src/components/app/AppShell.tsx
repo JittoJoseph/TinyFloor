@@ -1,11 +1,11 @@
 "use client";
 
-import { useId, type ReactNode } from "react";
+import { cloneElement, isValidElement, useId, type ReactElement, type ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
-import { Count } from "@/components/ui/IconButton";
+import { Tooltip } from "@/components/motion/tooltip";
 
 export interface ShellDestination {
   key: string;
@@ -14,6 +14,8 @@ export interface ShellDestination {
   icon: ReactNode;
   active: boolean;
   badge?: number;
+  /** A small dot instead of a count: something new to look at. */
+  dot?: boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export interface ShellDestination {
 export function AppShell({
   mark,
   destinations,
+  settings,
   you,
   floor,
   children,
@@ -32,77 +35,152 @@ export function AppShell({
   /** The top of the rail: the office (a switcher) or the lobby. */
   mark: ReactNode;
   destinations: ShellDestination[];
+  /** Settings sit at the foot of the rail, above you; on a phone they are in your menu. */
+  settings?: ShellDestination;
   /** The bottom of the rail: you, and your menu. */
   you: ReactNode;
   floor: ReactNode;
   children?: ReactNode;
 }) {
-  const pill = useId();
+  const indicator = useId();
   return (
     <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
-      <nav className="hidden w-[76px] shrink-0 flex-col items-center gap-1 py-3 md:flex">
-        <div className="mb-3">{mark}</div>
-        {destinations.map((one) => (
-          <RailLink key={one.key} destination={one} pill={pill} />
-        ))}
-        <div className="mt-auto flex flex-col items-center gap-2 pb-1">{you}</div>
+      <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
+        <div className="mb-2">{mark}</div>
+        <span aria-hidden className="mb-2 h-px w-8 bg-border" />
+        <div className="flex w-full flex-col items-center gap-1.5">
+          {destinations.map((one) => (
+            <RailItem key={one.key} destination={one} indicator={indicator} />
+          ))}
+        </div>
+        <div className="mt-auto flex w-full flex-col items-center gap-2">
+          {settings && <RailItem destination={settings} indicator={indicator} quiet />}
+          <div className="pt-1">{you}</div>
+        </div>
       </nav>
 
-      <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border">
+      <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
         {floor}
         {children}
       </main>
 
       {/* Phones: the same places along the bottom, where a thumb is. */}
-      <nav className="flex shrink-0 items-stretch justify-around border-t border-border px-2 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1 md:hidden">
+      <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
         {destinations.map((one) => (
-          <RailLink key={one.key} destination={one} pill={`${pill}-bar`} compact />
+          <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
         ))}
-        <div className="flex min-w-16 items-center justify-center">{you}</div>
+        <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
       </nav>
     </div>
   );
 }
 
-function RailLink({ destination, pill, compact }: { destination: ShellDestination; pill: string; compact?: boolean }) {
+function RailItem({
+  destination,
+  indicator,
+  quiet,
+}: {
+  destination: ShellDestination;
+  indicator: string;
+  /** Settings: no label under it, since it stands apart at the foot. */
+  quiet?: boolean;
+}) {
   const reduce = useReducedMotion();
-  const { href, label, icon, active, badge } = destination;
+  const { href, label, icon, active, badge, dot } = destination;
+  const link = (
+    <Link
+      href={href}
+      aria-label={label}
+      aria-current={active ? "page" : undefined}
+      className="group relative flex w-full cursor-pointer flex-col items-center gap-1 outline-none"
+    >
+      {/* The bar at the rail's edge that says where you are, gliding between places. */}
+      {active && (
+        <motion.span
+          layoutId={indicator}
+          transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
+          className="absolute start-0 top-1.5 h-7 w-[3px] rounded-e-full bg-foreground"
+        />
+      )}
+      <span
+        className={cn(
+          "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-active:scale-95",
+          "group-focus-visible:ring-2 group-focus-visible:ring-ring",
+          active
+            ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)] dark:bg-muted"
+            : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+        )}
+      >
+        <Icon icon={icon} active={active} />
+        {!!badge && (
+          <span className="absolute -end-1.5 -top-1.5 min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums ring-2 ring-rail">
+            {badge > 99 ? "99+" : badge}
+          </span>
+        )}
+        {dot && !badge && <span className="absolute end-1 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+      </span>
+      {!quiet && (
+        <span
+          className={cn(
+            "max-w-full truncate px-1 text-[10.5px] leading-none tracking-tight transition-colors",
+            active ? "font-semibold text-foreground" : "text-muted-foreground group-hover:text-foreground",
+          )}
+        >
+          {label}
+        </span>
+      )}
+    </Link>
+  );
+  return quiet ? (
+    <Tooltip content={label} side="right" wrapperClassName="w-full">
+      {link}
+    </Tooltip>
+  ) : (
+    link
+  );
+}
+
+function BarItem({ destination, indicator }: { destination: ShellDestination; indicator: string }) {
+  const reduce = useReducedMotion();
+  const { href, label, icon, active, badge, dot } = destination;
   return (
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={cn(
-        "group flex cursor-pointer flex-col items-center gap-1 rounded-xl outline-none",
-        compact ? "min-w-16 py-1" : "w-full px-2 py-0.5",
-        "focus-visible:[&>span:first-child]:ring-2 focus-visible:[&>span:first-child]:ring-ring/60",
-      )}
+      className="group flex min-w-14 flex-1 cursor-pointer flex-col items-center gap-1 py-0.5 outline-none"
     >
-      <span
-        className={cn(
-          "relative flex h-9 w-11 items-center justify-center rounded-xl transition-colors [&_svg]:size-[19px]",
-          active ? "text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.05] group-hover:text-foreground",
-        )}
-      >
+      <span className="relative flex h-8 w-14 items-center justify-center">
         {active && (
           <motion.span
-            layoutId={pill}
+            layoutId={indicator}
             transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-            className="absolute inset-0 rounded-xl border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.06)] dark:bg-muted"
+            className="absolute inset-0 rounded-full bg-foreground/[0.08]"
           />
         )}
-        <span className="relative">{icon}</span>
-        {!!badge && <Count value={badge} />}
-      </span>
-      <span
-        className={cn(
-          "text-[11px] leading-none tracking-tight transition-colors",
-          active ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground",
+        <span className={cn("relative", active ? "text-foreground" : "text-muted-foreground")}>
+          <Icon icon={icon} active={active} />
+        </span>
+        {!!badge && (
+          <span className="absolute end-1.5 -top-0.5 min-w-[17px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[17px] text-brand-foreground tabular-nums ring-2 ring-rail">
+            {badge > 99 ? "99+" : badge}
+          </span>
         )}
-      >
+        {dot && !badge && <span className="absolute end-3 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+      </span>
+      <span className={cn("text-[11px] leading-none", active ? "font-semibold text-foreground" : "text-muted-foreground")}>
         {label}
       </span>
     </Link>
   );
+}
+
+/** An icon drawn a touch bolder where you are. */
+function Icon({ icon, active }: { icon: ReactNode; active: boolean }) {
+  if (!isValidElement(icon)) return <>{icon}</>;
+  return cloneElement(icon as ReactElement<{ strokeWidth?: number; className?: string }>, {
+    strokeWidth: active ? 2.25 : 1.75,
+    className: "size-5",
+  });
 }
 
 /**

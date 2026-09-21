@@ -74,23 +74,6 @@ export class MessageHandler {
           new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }),
         );
         break;
-      case "chat":
-        // Your own messages are already in the panel; the room echoes them to everyone.
-        if (message.id === this.playerId) return;
-        playSound("message");
-        window.dispatchEvent(
-          new CustomEvent("chatMessage", {
-            detail: {
-              id: `${message.at}-${message.id}`,
-              senderId: message.id,
-              senderName: message.name,
-              content: message.text,
-              timestamp: new Date(message.at),
-              type: "text",
-            },
-          }),
-        );
-        break;
       case "board_state":
       case "board_draw":
       case "board_clear":
@@ -98,9 +81,6 @@ export class MessageHandler {
         break;
       case "music":
         jukebox.handleMusic(message);
-        break;
-      case "error":
-        if (message.code === "slow_down") window.dispatchEvent(new CustomEvent("chatSlowDown"));
         break;
     }
   }

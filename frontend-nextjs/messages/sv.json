@@ -254,7 +254,6 @@
     "leave": "Lämna",
     "reconnecting": "Ansluter igen…",
     "peopleHere": "På golvet · {count}",
-    "reconnectingNote": "Anslutningen bröts. Vi tar dig tillbaka…",
     "ended": {
       "back": "Tillbaka",
       "fullTitle": "Rummet är fullt",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Rumschatt",
-    "system": "System",
-    "welcome": "Välkommen till rumschatten. Meddelanden syns för alla här.",
-    "placeholder": "Skriv ett meddelande...",
     "close": "Stäng chatten",
     "send": "Skicka meddelande",
     "channels": "Kanaler",
@@ -346,9 +342,6 @@
     "newChannel": "Ny kanal",
     "channelName": "Kanalnamn",
     "say": "Skriv i {channel}",
-    "older": "Äldre meddelanden",
-    "nothingYet": "Här är tomt än. Säg det första.",
-    "noDirect": "Inga direktmeddelanden än.",
     "attach": "Lägg till en bild",
     "attachmentsPaid": "Bilder hör till ett betalt kontor.",
     "attachmentsSoon": "Bilder kommer snart.",
@@ -372,20 +365,24 @@
     "sayTo": "Meddelande till {name}",
     "channelHint": "Små bokstäver, inga mellanslag. Alla på kontoret kan gå med.",
     "create": "Skapa kanal",
-    "lobbyIntroTitle": "Lobbyns chatt",
-    "lobbyIntro": "Alla i lobbyn kan läsa det här. Det sparas inte: det försvinner när du går.",
-    "lobbyDirect": "Direktmeddelanden och kanaler som finns kvar kommer med ett eget kontor.",
-    "attachmentsLobby": "Bilder ingår i ett betalt kontor.",
     "slowDown": "Lugna ner dig lite – för många meddelanden på en gång.",
     "addChannel": "Lägg till en kanal",
     "starterHi": "Hej {name} 👋",
     "sayHi": "Säg hej",
     "starterMinute": "Har du en minut?",
     "askMinute": "En minut?",
-    "findOnFloor": "Hitta på golvet",
     "starterHello": "Hej allihop 👋",
     "sayHello": "Säg hej till alla",
-    "actions": "Åtgärder"
+    "actions": "Åtgärder",
+    "walkOver": "Gå dit",
+    "lobbyAlone": "Direktmeddelanden ingår i ett eget kontor. Säg hej i en kanal här.",
+    "dropHere": "Släpp för att dela i {channel}",
+    "dropLobby": "Bilder delas i kontor, inte i lobbyn.",
+    "lobbyGeneral": "Alla i varje kopia av lobbyn läser det här. Säg hej, fråga vad du vill. Meddelanden finns kvar i 7 dagar.",
+    "lobbyIntroductions": "Vem är du, och vad för dig hit? Hela lobbyn kan läsa det i 7 dagar.",
+    "lobbyFeedback": "Vad skulle göra TinyFloor bättre för ditt team? Vi läser varje meddelande här.",
+    "introduceYourself": "Presentera dig",
+    "starterIntro": "Hej, jag är ny här 👋"
   },
   "proximity": {
     "videoCall": "Videosamtal",
@@ -418,7 +415,46 @@
     "microphone": "Mikrofon",
     "camera": "Kamera",
     "default": "Standard",
-    "description": "Vilken mikrofon och kamera golvet använder."
+    "description": "Vilken mikrofon och kamera golvet använder.",
+    "preferences": "Dina inställningar",
+    "sections": {
+      "general": "Allmänt",
+      "media": "Ljud och video",
+      "notifications": "Aviseringar",
+      "accessibility": "Tillgänglighet",
+      "office": "Kontor"
+    },
+    "appearance": "Utseende",
+    "themeNote": "”System” följer din enhet.",
+    "language": "Språk",
+    "languageTitle": "Språk",
+    "languageNote": "För menyer, knappar och meddelanden från TinyFloor.",
+    "devices": "Enheter",
+    "devicesNote": "Används nästa gång du slår på mikrofonen eller kameran.",
+    "voice": "Röst",
+    "voiceNote": "Din webbläsare gör det här på din enhet.",
+    "noiseSuppression": "Brusreducering",
+    "noiseSuppressionNote": "Dämpar tangentbord, fläktar och rummet omkring dig.",
+    "echoCancellation": "Ekoreducering",
+    "echoCancellationNote": "Hindrar andra från att höra sig själva genom dina högtalare.",
+    "video": "Video",
+    "mirror": "Spegelvänd min video",
+    "mirrorNote": "Bara för dig: andra ser dig alltid rättvänd.",
+    "mediaLocal": "Sparas bara i den här webbläsaren.",
+    "sounds": "Ljud",
+    "messageSound": "Nya meddelanden",
+    "messageSoundNote": "Ett mjukt ljud när ett meddelande kommer.",
+    "joinSound": "Någon kommer",
+    "joinSoundNote": "Ett mjukt ljud när någon kliver in på planet.",
+    "onTheFloor": "På planet",
+    "nudges": "Förhandsvisning av meddelanden",
+    "nudgesNote": "Visa nya meddelanden en kort stund över planet.",
+    "motion": "Rörelse",
+    "reduceMotion": "Minska rörelse",
+    "reduceMotionNote": "Färre animationer i hela appen.",
+    "performance": "Prestanda",
+    "batterySaver": "Batterisparläge",
+    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in."
   },
   "tutorial": {
     "walk": "Gå runt med W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Öppen för alla",
     "title": "Lobbyn",
     "subtitle": "Vem som helst får titta in. Säg vem du är, välj en karaktär och gå in.",
-    "peopleSubtitle": "Alla som är i lobbyn just nu. Den som har länken kan gå in."
+    "peopleSubtitle": "Alla som är i lobbyn just nu. Den som har länken kan gå in.",
+    "door": "{here, plural, =0 {Ingen här än, bli först} one {# person här nu} other {# personer här nu}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Kanaler ingår i ett kontor",
+        "body": "I ditt eget kontor skapar du så många kanaler som teamet behöver, och de finns kvar."
+      },
+      "directMessages": {
+        "title": "Direktmeddelanden ingår i ett kontor",
+        "body": "Skriv till vem som helst i ditt kontor, en till en, och fortsätt i morgon."
+      },
+      "attachments": {
+        "title": "Att dela bilder ingår i ett kontor",
+        "body": "Släpp skärmbilder och foton i vilken konversation som helst i ditt eget kontor."
+      },
+      "invites": {
+        "title": "Inbjudningar ingår i ett kontor",
+        "body": "Bjud in ditt team via e-post eller släpp in en gäst med en länk, i ditt eget kontor."
+      },
+      "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
+      "go": "Skapa mitt kontor",
+      "notNow": "Inte nu"
+    },
+    "yourOffice": {
+      "eyebrow": "Gratis för små team",
+      "title": "Ett eget våningsplan för ditt team",
+      "body": "Allt i lobbyn, men ditt: ett privat plan där teamet går fram till varandra för att prata, med en chatt som finns kvar.",
+      "create": "Skapa mitt kontor",
+      "free": "Gratis för upp till 3 personer. Inget kort behövs.",
+      "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}",
+      "you": "Du",
+      "teammate": "Kollega",
+      "whatYouGet": "Vad ett kontor tillför",
+      "perks": {
+        "private": {
+          "title": "Ett privat plan",
+          "body": "Bara ditt team och gästerna du släpper in."
+        },
+        "channels": {
+          "title": "Kanaler som finns kvar",
+          "body": "En per projekt; inget försvinner när du går."
+        },
+        "messages": {
+          "title": "Direktmeddelanden",
+          "body": "Skriv till vem som helst en till en och se vem som är på planet."
+        },
+        "team": {
+          "title": "Ditt team, via inbjudan",
+          "body": "Bjud in via e-post och välj vem som förvaltar kontoret."
+        },
+        "guests": {
+          "title": "Gästlänkar",
+          "body": "En kund eller kandidat kan hälsa på utan att ta en plats."
+        },
+        "attachments": {
+          "title": "Bilder i chatten",
+          "body": "Dela skärmbilder och foton, i ett betalt kontor."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Namnge det",
+          "body": "Teamets namn räcker."
+        },
+        "invite": {
+          "title": "Bjud in ditt team",
+          "body": "Skicka en länk eller ett mejl."
+        },
+        "walk": {
+          "title": "Gå in",
+          "body": "Gå fram till någon för att prata."
+        }
+      },
+      "ready": "Redo när du är det."
+    }
   },
   "office": {
     "copy": "Kopiera",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Med en gästlänk kan en kund eller kandidat besöka golvet utan att ta en plats.",
       "allSeatsTaken": "Alla platser är tagna",
       "allSeatsTakenBody": "Den som går frigör en plats. Kontor med fler platser kommer snart.",
-      "yourProfile": "Din profil"
+      "yourProfile": "Din profil",
+      "ownOfficeTitle": "Ett plan som det här för ditt team?",
+      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer."
     },
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
@@ -1095,7 +1207,6 @@
       "dark": "Mörkt"
     },
     "devices": "Mikrofon och kamera",
-    "officeSettings": "Kontorsinställningar",
     "makeAccount": "Skapa ett konto",
     "account": "Konto",
     "allOffices": "Alla kontor",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Inte på golvet",
     "message": "Meddelande",
     "leaveLobby": "Lämna lobbyn",
-    "lobbyChannel": "lobby",
-    "hereNow": "Här nu"
+    "hereNow": "Här nu",
+    "settings": "Inställningar",
+    "inCall": "I samtal",
+    "inMeeting": "I möte",
+    "yourOffice": "Ditt kontor",
+    "walkTo": "Gå dit",
+    "youLower": "du",
+    "joined": "Med sedan {date}",
+    "yourProfile": "Din profil"
   },
   "dashboard": {
     "morning": "God morgon, {name}",

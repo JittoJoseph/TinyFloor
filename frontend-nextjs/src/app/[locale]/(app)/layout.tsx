@@ -6,10 +6,5 @@ import { AppTheme } from "@/components/app/AppTheme";
  * AppTheme keeps it right on client-side navigation.
  */
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <AppTheme />
-      {children}
-    </>
-  );
+  return <AppTheme>{children}</AppTheme>;
 }

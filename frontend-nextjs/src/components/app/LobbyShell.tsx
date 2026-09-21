@@ -1,27 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, LayoutGrid, LogOut, Map as MapIcon, MessagesSquare, Plus, Users } from "lucide-react";
+import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, Map as MapIcon, MessagesSquare, Plus, Settings, Sparkles, Users } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { lobbyChatPath, lobbyPath, lobbyPeoplePath } from "@/lib/links";
-import { roomChat, useRoomChat } from "@/lib/roomChat";
-import { clearFloor } from "@/lib/floor";
+import { lobbyChatPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettingsPath } from "@/lib/links";
+import { chat } from "@/lib/ChatSocket";
+import { useChat } from "@/lib/useChat";
+import { clearFloor, useFloor } from "@/lib/floor";
 import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
-import SettingsModal from "@/components/SettingsModal";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
+import { Dialog } from "@/components/ui/Dialog";
+import { FaceStack } from "@/components/ui/Face";
+import { ActionLink } from "@/components/ui/Action";
+import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { ChatNudges } from "./ChatNudges";
-import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
+import { PlaceProvider, type OfficeFeature, type Place } from "./place";
 
-/** The free public lobby: the door, then the same shell an office has. */
+/**
+ * The free public lobby: the door, then the same shell an office has — floor,
+ * chat, people, settings — with one more place, about getting an office of
+ * your own, which is what the lobby is for.
+ */
 export function LobbyShell({ children }: { children: React.ReactNode }) {
   const t = useTranslations("lobby");
   const ts = useTranslations("shell");
@@ -29,31 +37,49 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { user } = useAuth();
   const [inside, setInside] = useState(false);
-  const [devices, setDevices] = useState(false);
-  const { unread } = useRoomChat();
+  const [asked, setAsked] = useState<OfficeFeature | null>(null);
+  const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
+  const { unread } = useChat();
+  const everyone = useFloor();
 
   // Reloading the page: you were already in, so you stay in.
   useEffect(() => {
     if (user && wasInside("lobby")) queueMicrotask(() => setInside(true));
   }, [user]);
 
-  // The lobby's chat lives as long as you are in the room.
+  // Who is inside, for the door.
+  useEffect(() => {
+    if (inside) return;
+    let cancelled = false;
+    api.lobbyPeople().then(
+      (found) => !cancelled && setDoor(found),
+      () => {},
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [inside]);
+
+  // One chat for every copy of the lobby, open while you are in.
   useEffect(() => {
     if (!inside) return;
+    chat.connect("lobby", api.lobbyChatTicket);
     rememberInside("lobby", true);
     return () => {
-      roomChat.reset();
+      chat.disconnect();
       clearFloor();
       rememberInside("lobby", false);
     };
   }, [inside]);
 
-  // The lobby has one conversation; "Message" beside someone opens it.
+  // "Message" beside someone on the floor: that is an office's, so ask for one.
   useEffect(() => {
-    const open = () => router.push(lobbyChatPath);
+    const open = () => setAsked("directMessages");
     window.addEventListener(OPEN_CONVERSATION_EVENT, open);
     return () => window.removeEventListener(OPEN_CONVERSATION_EVENT, open);
-  }, [router]);
+  }, []);
+
+  const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
 
   if (!inside || !user) {
     return (
@@ -63,39 +89,133 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         subtitle={t("subtitle")}
         sharePath={lobbyPath}
         onReady={() => setInside(true)}
+        detail={
+          door && (
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 ps-1 pe-3 [--face-ring:var(--ui-background)]">
+              {door.faces.length > 0 ? (
+                <FaceStack seeds={door.faces.map((one) => one.id)} size={22} max={4} />
+              ) : (
+                <span className="flex size-[22px] items-center justify-center rounded-full bg-muted">
+                  <span className="size-1.5 rounded-full bg-ok" />
+                </span>
+              )}
+              <span className="text-[12.5px] text-muted-foreground">{t("door", { here: door.here })}</span>
+            </span>
+          )
+        }
       />
     );
   }
 
-  const onChat = pathname.endsWith(lobbyChatPath);
-  const onPeople = pathname.endsWith(lobbyPeoplePath);
+  const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
+  const onChat = on(lobbyChatPath());
+  const onPeople = on(lobbyPeoplePath);
+  const onSettings = on(lobbySettingsPath);
+  const onOffice = on(lobbyOfficePath);
+
+  const place: Place = {
+    kind: "lobby",
+    id: "lobby",
+    name: t("title"),
+    role: "guest",
+    people,
+    paths: {
+      floor: lobbyPath,
+      chat: lobbyChatPath,
+      people: lobbyPeoplePath,
+      settings: lobbySettingsPath,
+      yourOffice: lobbyOfficePath,
+    },
+    sharePath: lobbyPath,
+    officesOnly: setAsked,
+  };
 
   return (
-    <AppShell
-      mark={<LobbyMark />}
-      destinations={[
-        { key: "floor", href: lobbyPath, label: ts("floor"), icon: <MapIcon />, active: !onChat && !onPeople },
-        { key: "chat", href: lobbyChatPath, label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
-        { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: <Users />, active: onPeople },
-      ]}
-      you={<YouMenu onFloor onDevices={() => setDevices(true)} />}
-      floor={
-        <>
-          <RoomView
-            title={t("title")}
-            user={user}
-            ticketFor={api.lobbyTicket}
-            sharePath={lobbyPath}
-            leaveHref={user.guest ? "/" : "/dashboard"}
-            onDevices={() => setDevices(true)}
-          />
-          {!onChat && <ChatNudges lobbyChatHref={lobbyChatPath} />}
-          <SettingsModal isOpen={devices} onClose={() => setDevices(false)} />
-        </>
-      }
+    <PlaceProvider value={place}>
+      <AppShell
+        mark={<LobbyMark />}
+        destinations={[
+          {
+            key: "floor",
+            href: lobbyPath,
+            label: ts("floor"),
+            icon: <MapIcon />,
+            active: !onChat && !onPeople && !onSettings && !onOffice,
+          },
+          { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
+          { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: <Users />, active: onPeople },
+          { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: <Sparkles />, active: onOffice, dot: !onOffice },
+        ]}
+        settings={{ key: "settings", href: lobbySettingsPath, label: ts("settings"), icon: <Settings />, active: onSettings }}
+        you={<YouMenu onFloor settingsHref={lobbySettingsPath} />}
+        floor={
+          <>
+            <RoomView
+              title={t("title")}
+              user={user}
+              ticketFor={api.lobbyTicket}
+              sharePath={lobbyPath}
+              leaveHref={user.guest ? "/" : "/dashboard"}
+              settingsHref={lobbySettingsPath}
+            />
+            {!onChat && <ChatNudges chatPath={lobbyChatPath} />}
+          </>
+        }
+      >
+        {children}
+      </AppShell>
+
+      <OfficesOnly
+        feature={asked}
+        onClose={() => setAsked(null)}
+        onGo={() => {
+          setAsked(null);
+          router.push(lobbyOfficePath);
+        }}
+      />
+    </PlaceProvider>
+  );
+}
+
+const FEATURE_ICON: Record<OfficeFeature, React.ReactNode> = {
+  channels: <Hash className="size-5" />,
+  directMessages: <MessagesSquare className="size-5" />,
+  attachments: <ImagePlus className="size-5" />,
+  invites: <Users className="size-5" />,
+};
+
+/** What you just reached for is an office's: say so, and offer one. */
+function OfficesOnly({ feature, onClose, onGo }: { feature: OfficeFeature | null; onClose: () => void; onGo: () => void }) {
+  const t = useTranslations("lobby.officesOnly");
+  const tc = useTranslations("common");
+  const shown = feature ?? "channels";
+  return (
+    <Dialog
+      open={!!feature}
+      onClose={onClose}
+      title={t(`${shown}.title`)}
+      description={t(`${shown}.body`)}
+      closeLabel={tc("close")}
     >
-      {children}
-    </AppShell>
+      <div className="flex items-center gap-3 rounded-2xl bg-muted p-3">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.06)]">
+          {FEATURE_ICON[shown]}
+        </span>
+        <p className="text-[13px] leading-relaxed text-muted-foreground">{t("free")}</p>
+      </div>
+      <div className="mt-4 flex flex-col gap-2 pb-3 sm:flex-row-reverse">
+        <span className="sm:flex-1" onClickCapture={onGo}>
+          <ActionLink href={lobbyOfficePath}>{t("go")}</ActionLink>
+        </span>
+        <button
+          type="button"
+          onClick={onClose}
+          className="h-11 cursor-pointer rounded-full px-5 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        >
+          {t("notNow")}
+        </button>
+      </div>
+    </Dialog>
   );
 }
 
@@ -129,19 +249,13 @@ function LobbyMark() {
         </div>
       </MenuHeader>
       <MenuSeparator />
-      {guest ? (
-        <MenuItem icon={<Plus />} onSelect={() => router.push("/auth?mode=signup")}>
-          {ts("makeAccount")}
+      <MenuItem icon={<Plus />} onSelect={() => router.push(lobbyOfficePath)}>
+        {ts("yourOffice")}
+      </MenuItem>
+      {!guest && (
+        <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
+          {ts("allOffices")}
         </MenuItem>
-      ) : (
-        <>
-          <MenuItem icon={<Plus />} onSelect={() => router.push("/create")}>
-            {ts("newOffice")}
-          </MenuItem>
-          <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
-            {ts("allOffices")}
-          </MenuItem>
-        </>
       )}
       <MenuSeparator />
       <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => router.push(guest ? "/" : "/dashboard")}>

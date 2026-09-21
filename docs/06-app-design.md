@@ -115,12 +115,15 @@ desktop                                   phone
 └────┴────────────┴─────────────────────┘  └─────────────────────┘
 ```
 
-- **Rail (76px):** office mark (switcher menu), Floor, Chat, People; you at the
-  bottom (status, theme, office settings, account, all offices, sign out).
-  Tooltips on every icon; a pill glides to the active one.
-- **The same shell runs the public lobby.** Floor, Chat (the lobby's live
-  conversation, with the image button saying images come with a paid office),
-  People (who is here now). Your menu offers an account instead of settings.
+- **Rail (72px):** office mark (switcher menu), Floor, Chat, People; Settings
+  and you at the foot. The active icon sits on a card with a bar at the rail's
+  edge that glides between them, and its strokes thicken.
+- **The same shell runs the public lobby,** with every element an office has:
+  channels (#general, #introductions, #feedback), *Add a channel*, direct
+  messages, the image button and drag and drop. What only an office can do is
+  still there, marked with a lock, and says so with an offer to make one. The
+  lobby adds one destination, **Your office**, a page whose only job is to get
+  a visitor to make an office of their own.
 - **Phones:** the rail becomes a bottom dock with the same destinations; the
   column is the screen and a picked item pushes over it.
 
@@ -134,9 +137,8 @@ The map gets the whole view. Floating chrome only:
 - bottom centre, the dock: mic, camera, and — only in a call — screen share,
   speaker and hang up; then devices.
 
-In an office the floor has no separate chat: the rail's Chat is the chat, and a
-new message shows as a toast over the floor that opens it. In the lobby the
-floor's live chat *is* the Chat view.
+The floor has no separate chat, in an office or in the lobby: the rail's Chat
+is the chat, and a new message shows as a toast over the floor that opens it.
 
 ### Chat (Slack's vocabulary, none of its cost)
 
@@ -213,16 +215,27 @@ differs from the plan, or adds to it:
 - **Faces use OKLCH** over nine curated base hues. Neighbouring hues are kept
   out of the olive band, where a darker shade turns muddy. The seed is the
   user id; offices use their id for a rounded-square mark.
-- **An office's floor has no chat panel of its own.** Chat is the rail's; a
-  message you have not seen shows as a nudge over the floor with a Reply. The
-  lobby's live floor chat became its Chat view, kept in a small store so it
-  survives switching views.
+- **No floor has a chat panel of its own.** Chat is the rail's; a message you
+  have not seen shows as a nudge over the floor with a Reply.
+- **The lobby's chat is one conversation for every copy of the lobby,** kept
+  seven days. Anyone inside can post, guests included, under the name they
+  walked in with.
 - **"Message" beside someone on the floor** opens your direct messages with
-  them in an office, and the lobby conversation in the lobby.
-- **Guests on a guest link** get the shell with the floor alone: an office's
-  chat and people are its members'.
-- **Your status and theme** moved into your menu at the bottom of the rail; the
-  dock keeps microphone, camera and — in a call — screen, speaker and hang up.
+  them in an office; in the lobby it explains that messages come with an office.
+- **Walk to.** A person on the floor has *Walk to* on their card in People and
+  in chat: the view switches to the floor and your character pathfinds to
+  them, the same way a click on a tile does.
+- **Guests on a guest link** get the shell with the floor and their own
+  settings: an office's chat and people are its members'.
+- **The presence dock** (under every column) follows Discord's: a call band
+  when you are in one (who with, camera, screen, hang up), then you, your
+  status, microphone, speaker and settings.
+- **Settings are a view in the shell,** not a dialog: General (theme, language),
+  Audio and video (devices, noise suppression, echo cancellation, mirror),
+  Notifications (message and arrival sounds, previews over the floor),
+  Accessibility (reduce motion, battery saver) and, in an office, the office
+  itself (name, seats, leave or close). Everything but the office's name is
+  kept in the browser, so none of it costs a request.
 - **Fixes found on the way:** typing in chat no longer walks your character
   (movement ignores keys while a text field has focus); text fields are 16px on
   phones so mobile browsers do not zoom on focus; the canvas is transparent so

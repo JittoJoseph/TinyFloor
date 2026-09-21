@@ -1,7 +1,7 @@
 "use client";
 
-import { LobbyChatView } from "@/components/app/LobbyViews";
+import { ChatView } from "@/components/app/ChatView";
 
 export default function LobbyChatPage() {
-  return <LobbyChatView />;
+  return <ChatView />;
 }

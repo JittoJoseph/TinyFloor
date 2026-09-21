@@ -112,7 +112,7 @@ export const Face = memo(function Face({
   const dot = Math.max(8, Math.round(size * 0.3));
 
   return (
-    <span className={cn("relative inline-flex shrink-0", className)} title={title} aria-hidden={title ? undefined : true}>
+    <span className={cn("relative inline-flex shrink-0 align-middle", className)} title={title} aria-hidden={title ? undefined : true}>
       <span className={cn("block", square ? "rounded-[30%]" : "rounded-full")} style={style} />
       {presence && (
         <span
@@ -139,19 +139,19 @@ export function FaceStack({
   const shown = seeds.slice(0, max);
   const extra = seeds.length - shown.length;
   return (
-    <span className={cn("inline-flex items-center", className)}>
+    <span className={cn("inline-flex shrink-0 items-center align-middle", className)}>
       {shown.map((seed, index) => (
         <span
           key={seed}
-          className="rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]"
-          style={{ marginInlineStart: index === 0 ? 0 : -size * 0.32 }}
+          className="flex shrink-0 rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]"
+          style={{ width: size, height: size, marginInlineStart: index === 0 ? 0 : -size * 0.32 }}
         >
           <Face seed={seed} size={size} />
         </span>
       ))}
       {extra > 0 && (
         <span
-          className="rounded-full bg-muted text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))] inline-flex items-center justify-center text-[10px] font-semibold tabular-nums"
+          className="flex shrink-0 items-center justify-center rounded-full bg-muted text-[10px] font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
           style={{ width: size, height: size, marginInlineStart: -size * 0.32 }}
         >
           +{extra}

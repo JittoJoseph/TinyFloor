@@ -2,19 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle } from "lucide-react";
 import { usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { EntryShell } from "./EntryShell";
+import { EntryProblem } from "./EntryProblem";
 import { ActionLink } from "@/components/ui/Action";
 import { EntryPreview } from "./EntryPreview";
 import { WalkIn } from "./WalkIn";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell, Logo } from "@/components/app/AppShell";
 import { YouMenu } from "@/components/app/YouMenu";
-import SettingsModal from "@/components/SettingsModal";
-import { Map as MapIcon } from "lucide-react";
+import { SettingsView } from "@/components/app/SettingsView";
+import { PlaceProvider, type Place } from "@/components/app/place";
+import { Map as MapIcon, Settings } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 export interface GuestLinkPreview {
   officeName: string;
@@ -26,13 +28,15 @@ export interface GuestLinkPreview {
  */
 export function GuestLinkEntry({ token, initialPreview }: { token: string; initialPreview: GuestLinkPreview | null }) {
   const t = useTranslations("join");
+  const tc = useTranslations("common");
   const { user } = useAuth();
   const [preview, setPreview] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
   const [inside, setInside] = useState(false);
-  const [devices, setDevices] = useState(false);
   const ts = useTranslations("shell");
   const pathname = usePathname();
+  const onSettings = useSearchParams().get("view") === "settings";
+  const settingsHref = `${pathname}?view=settings`;
 
   useEffect(() => {
     if (initialPreview) return;
@@ -52,24 +56,36 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
 
   // A guest visits the floor only: an office's chat and people are its members'.
   if (inside && user && preview) {
+    const place: Place = {
+      kind: "visit",
+      id: token,
+      name: preview.officeName,
+      role: "guest",
+      people: [],
+      paths: { floor: pathname, chat: () => pathname, people: pathname, settings: settingsHref },
+      sharePath: pathname,
+      officesOnly: () => {},
+    };
     return (
-      <AppShell
-        mark={<Logo size={40} />}
-        destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: <MapIcon />, active: true }]}
-        you={<YouMenu onFloor onDevices={() => setDevices(true)} />}
-        floor={
-          <>
+      <PlaceProvider value={place}>
+        <AppShell
+          mark={<Logo size={40} />}
+          destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: <MapIcon />, active: !onSettings }]}
+          settings={{ key: "settings", href: settingsHref, label: ts("settings"), icon: <Settings />, active: onSettings }}
+          you={<YouMenu onFloor settingsHref={settingsHref} />}
+          floor={
             <RoomView
               title={preview.officeName}
               user={user}
               ticketFor={() => api.guestLinkTicket(token)}
               leaveHref={user.guest ? "/" : "/dashboard"}
-              onDevices={() => setDevices(true)}
+              settingsHref={settingsHref}
             />
-            <SettingsModal isOpen={devices} onClose={() => setDevices(false)} />
-          </>
-        }
-      />
+          }
+        >
+          {onSettings && <SettingsView />}
+        </AppShell>
+      </PlaceProvider>
     );
   }
 
@@ -89,16 +105,12 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
   if (state === "invalid" || !preview) {
     return (
       <EntryShell preview={<EntryPreview occupants={[]} />}>
-        <div className="entry-rise">
-          <span className="inline-flex w-11 h-11 rounded-xl bg-destructive/10 items-center justify-center mb-5">
-            <AlertCircle className="w-5 h-5 text-destructive" />
-          </span>
-          <h1 className="text-[1.75rem] font-medium tracking-tight text-foreground mb-2">
-            {t("unavailableTitle")}
-          </h1>
-          <p className="text-sm text-foreground opacity-55 mb-6">{t("linkUnavailable")}</p>
+        <EntryProblem title={t("unavailableTitle")} body={t("linkUnavailable")}>
           <ActionLink href="/lobby">{t("visitLobby")}</ActionLink>
-        </div>
+          <ActionLink href="/create" tone="secondary" icon={null}>
+            {tc("createOffice")}
+          </ActionLink>
+        </EntryProblem>
       </EntryShell>
     );
   }

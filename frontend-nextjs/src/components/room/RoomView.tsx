@@ -7,6 +7,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { AlertCircle, Check, UserPlus } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import ControlBar from "@/components/ControlBar";
+import { Joystick } from "./Joystick";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
@@ -247,6 +248,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
         {sharePath && !inviteHref && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
+      <Joystick />
       <ProximityOverlay />
       <CallOverlay />
       <WhiteboardOverlay />

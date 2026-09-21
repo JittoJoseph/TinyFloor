@@ -38,7 +38,8 @@
     "rooms": "Salles",
     "offices": "Vos bureaux",
     "account": "Compte",
-    "createOffice": "Créer un bureau"
+    "createOffice": "Créer un bureau",
+    "plansSoon": "Une équipe plus grande ? Des offres avec plus de places arrivent bientôt."
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -136,7 +137,7 @@
       },
       {
         "q": "TinyFloor est-il gratuit ?",
-        "a": "Oui. Le hall public est gratuit pour tout le monde, tout comme un espace de travail pour une petite équipe."
+        "a": "Oui. Le hall public est gratuit pour tous, tout comme un bureau jusqu'à 3 personnes. Des offres pour les équipes plus grandes arrivent bientôt."
       },
       {
         "q": "Faut-il un compte pour rejoindre une salle ?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Moins d'animations dans toute l'application.",
     "performance": "Performances",
     "batterySaver": "Économie de batterie",
-    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée."
+    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée.",
+    "enhancedNoise": "Suppression du bruit renforcée",
+    "enhancedNoiseNote": "Un petit modèle d'IA sur votre appareil retire clavier, chiens et bavardages. Prend effet au prochain appel et consomme un peu plus de batterie.",
+    "experimental": "Expérimental"
   },
   "tutorial": {
     "walk": "Déplacez-vous avec W A S D",

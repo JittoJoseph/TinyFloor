@@ -38,7 +38,8 @@
     "rooms": "Rooms",
     "offices": "Your offices",
     "account": "Account",
-    "createOffice": "Create an office"
+    "createOffice": "Create an office",
+    "plansSoon": "Bigger teams? Plans with more seats are coming soon."
   },
   "languageSwitcher": {
     "label": "Language",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. The public lobby is free for everyone, and so is a workspace for a small team."
+        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Plans for bigger teams are coming soon."
       },
       {
         "q": "Do I need an account to join a room?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Fewer animations across the app.",
     "performance": "Performance",
     "batterySaver": "Battery saver",
-    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
+    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in.",
+    "enhancedNoise": "Stronger noise removal",
+    "enhancedNoiseNote": "A small AI model on your device takes out keyboards, dogs and chatter. Starts with your next call and uses a little more battery.",
+    "experimental": "Experimental"
   },
   "tutorial": {
     "walk": "Walk around with W A S D",

@@ -10,7 +10,6 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { MessageHandler } from "../lib/MessageHandler";
-import { VirtualJoystickManager } from "../lib/VirtualJoystickManager";
 import { TutorialGuide } from "../lib/TutorialGuide";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
@@ -32,7 +31,6 @@ class GameScene extends Phaser.Scene {
   private movementManager!: MovementManager;
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
-  private virtualJoystickManager?: VirtualJoystickManager;
   private tutorialGuide?: TutorialGuide;
   private whiteboardObject?: WhiteboardObject;
   private jukeboxObject?: JukeboxObject;
@@ -94,11 +92,8 @@ class GameScene extends Phaser.Scene {
     );
     this.mapManager.setupColliders(this.player);
 
-    const touchInput = !this.sys.game.device.os.desktop;
-    setTouchInput(touchInput);
-    if (touchInput) {
-      this.virtualJoystickManager = new VirtualJoystickManager(this);
-    }
+    // Phones and tablets steer with the on-screen joystick (components/room/Joystick.tsx).
+    setTouchInput(!this.sys.game.device.os.desktop);
 
     this.movementManager = new MovementManager(
       this,
@@ -107,7 +102,6 @@ class GameScene extends Phaser.Scene {
       this.wsManager,
       nav,
       (x, y) => this.mapManager.checkCollisionAt(x, y),
-      this.virtualJoystickManager,
     );
 
     this.seatManager = new SeatManager(
@@ -241,7 +235,6 @@ class GameScene extends Phaser.Scene {
     jukebox.detach();
     this.jukeboxObject?.destroy();
     this.seatManager?.destroy();
-    this.virtualJoystickManager?.destroy();
     this.tutorialGuide?.destroy();
   }
 }

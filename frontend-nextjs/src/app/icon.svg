@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .tile { fill: #1a1a18 } .ink { fill: #fafaf8 } .brand { fill: #ff5a1f }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #ededeb } .ink { fill: #0f0f10 } .brand { fill: #ff6b35 }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="9.6"/>
+  <g shape-rendering="crispEdges">
+    <rect class="ink" x="7" y="7" width="8" height="8"/>
+    <rect class="ink" x="17" y="7" width="8" height="8" opacity="0.45"/>
+    <rect class="ink" x="7" y="17" width="8" height="8" opacity="0.45"/>
+    <rect class="brand" x="17" y="17" width="8" height="8"/>
+  </g>
+</svg>

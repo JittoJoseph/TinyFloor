@@ -38,7 +38,8 @@
     "rooms": "Ruimtes",
     "offices": "Je kantoren",
     "account": "Account",
-    "createOffice": "Kantoor maken"
+    "createOffice": "Kantoor maken",
+    "plansSoon": "Groter team? Abonnementen met meer plekken komen binnenkort."
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een werkruimte voor een klein team ook."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Minder animaties in de hele app.",
     "performance": "Prestaties",
     "batterySaver": "Batterijbesparing",
-    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt."
+    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt.",
+    "enhancedNoise": "Sterkere ruisonderdrukking",
+    "enhancedNoiseNote": "Een klein AI-model op je apparaat haalt toetsenborden, honden en geklets weg. Werkt vanaf je volgende gesprek en kost iets meer batterij.",
+    "experimental": "Experimenteel"
   },
   "tutorial": {
     "walk": "Loop rond met W A S D",

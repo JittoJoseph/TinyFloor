@@ -10,6 +10,8 @@ export interface Prefs {
   /** Voice processing the browser does for free. */
   noiseSuppression: boolean;
   echoCancellation: boolean;
+  /** Experimental: RNNoise on this device instead of the browser's suppression (lib/noiseFilter.ts). */
+  enhancedNoise: boolean;
   /** Your own camera shown as a mirror, the way most people expect. */
   mirrorVideo: boolean;
   /** A sound when a message arrives. */
@@ -27,6 +29,7 @@ export interface Prefs {
 export const DEFAULT_PREFS: Prefs = {
   noiseSuppression: true,
   echoCancellation: true,
+  enhancedNoise: false,
   mirrorVideo: true,
   messageSound: true,
   joinSound: true,

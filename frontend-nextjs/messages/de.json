@@ -38,7 +38,8 @@
     "rooms": "Räume",
     "offices": "Deine Büros",
     "account": "Konto",
-    "createOffice": "Büro erstellen"
+    "createOffice": "Büro erstellen",
+    "plansSoon": "Größeres Team? Pläne mit mehr Plätzen kommen bald."
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Workspace für ein kleines Team."
+        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Pläne für größere Teams kommen bald."
       },
       {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Weniger Animationen in der ganzen App.",
     "performance": "Leistung",
     "batterySaver": "Energiesparmodus",
-    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
+    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten.",
+    "enhancedNoise": "Stärkere Geräuschunterdrückung",
+    "enhancedNoiseNote": "Ein kleines KI-Modell auf deinem Gerät entfernt Tastatur, Hunde und Gespräche im Hintergrund. Gilt ab deinem nächsten Anruf und braucht etwas mehr Akku.",
+    "experimental": "Experimentell"
   },
   "tutorial": {
     "walk": "Lauf mit W A S D herum",

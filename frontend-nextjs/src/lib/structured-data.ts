@@ -25,6 +25,7 @@ export function siteGraph(): Schema {
         "@id": ORG_ID,
         name: NAME,
         url: SITE_URL,
+        logo: `${SITE_URL}/icon-512.png`,
         sameAs: ["https://github.com/JittoJoseph/SpatialMeet"],
         founder: {
           "@type": "Person",

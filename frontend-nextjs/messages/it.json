@@ -38,7 +38,8 @@
     "rooms": "Stanze",
     "offices": "I tuoi uffici",
     "account": "Account",
-    "createOffice": "Crea un ufficio"
+    "createOffice": "Crea un ufficio",
+    "plansSoon": "Un team più grande? Presto arriveranno piani con più posti."
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -136,7 +137,7 @@
       },
       {
         "q": "TinyFloor è gratuito?",
-        "a": "Sì. La lobby pubblica è gratis per tutti, e lo è anche un workspace per un piccolo team."
+        "a": "Sì. La lobby pubblica è gratuita per tutti, così come un ufficio fino a 3 persone. Presto arriveranno piani per team più grandi."
       },
       {
         "q": "Serve un account per entrare in una stanza?",
@@ -458,7 +459,10 @@
     "reduceMotionNote": "Meno animazioni in tutta l'app.",
     "performance": "Prestazioni",
     "batterySaver": "Risparmio batteria",
-    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso."
+    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
+    "enhancedNoise": "Riduzione del rumore più forte",
+    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Parte dalla prossima chiamata e consuma un po' più di batteria.",
+    "experimental": "Sperimentale"
   },
   "tutorial": {
     "walk": "Muoviti con W A S D",

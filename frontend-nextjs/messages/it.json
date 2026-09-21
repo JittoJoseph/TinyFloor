@@ -1209,7 +1209,9 @@
     "walkTo": "Raggiungi",
     "youLower": "tu",
     "joined": "Qui da {date}",
-    "yourProfile": "Il tuo profilo"
+    "yourProfile": "Il tuo profilo",
+    "leaveOffice": "Esci dall'ufficio",
+    "leave": "Esci"
   },
   "dashboard": {
     "morning": "Buongiorno, {name}",

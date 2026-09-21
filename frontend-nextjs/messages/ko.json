@@ -1209,7 +1209,9 @@
     "walkTo": "걸어가기",
     "youLower": "나",
     "joined": "{date} 참여",
-    "yourProfile": "내 프로필"
+    "yourProfile": "내 프로필",
+    "leaveOffice": "오피스 나가기",
+    "leave": "나가기"
   },
   "dashboard": {
     "morning": "좋은 아침이에요, {name}님",

@@ -35,7 +35,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
 
   return (
     <div className="shrink-0 px-2 pb-2">
-      <div className="overflow-hidden rounded-xl bg-rail [--face-ring:var(--ui-rail)]">
+      <div className="overflow-hidden rounded-[14px] bg-rail [--face-ring:var(--ui-rail)]">
         {inCall && (
           <div className="border-b border-border px-2.5 pb-2 pt-2">
             <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
           </div>
         )}
 
-        <div className="flex items-center gap-1 p-1 pe-1.5">
+        <div className="flex items-center gap-1 p-1.5 pe-2">
           <YouMenu
             onFloor
             settingsHref={settingsHref}
@@ -94,12 +94,12 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
               <button
                 type="button"
                 aria-label={t("you")}
-                className="flex w-full min-w-0 cursor-pointer items-center gap-2.5 rounded-lg p-1 pe-2 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
+                className="flex w-full min-w-0 cursor-pointer items-center gap-2.5 rounded-[10px] p-1 pe-2 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
               >
-                <Face seed={user.id} size={28} presence={status} />
-                <span className="min-w-0 leading-[1.2]">
-                  <span className="block truncate text-[12.5px] font-semibold text-foreground">{user.displayName}</span>
-                  <span className="block truncate text-[11px] text-muted-foreground">
+                <Face seed={user.id} size={34} presence={status} />
+                <span className="min-w-0 leading-[1.25]">
+                  <span className="block truncate text-[13.5px] font-semibold text-foreground">{user.displayName}</span>
+                  <span className="block truncate text-[12px] text-muted-foreground">
                     {tStatus(`${status === "offline" ? "away" : status}.label`)}
                   </span>
                 </span>
@@ -126,9 +126,9 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
             <Link
               href={settingsHref}
               aria-label={t("settings")}
-              className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
+              className="flex size-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
             >
-              <Settings className="size-[17px]" />
+              <Settings className="size-[18px]" />
             </Link>
           </Tooltip>
         </div>
@@ -168,7 +168,7 @@ function PanelToggle({
       icon={on ? onIcon : offIcon}
       tone="ghost"
       className={cn(
-        "size-8 rounded-lg hover:bg-foreground/[0.06] [&_svg]:size-[17px]",
+        "size-9 rounded-lg hover:bg-foreground/[0.06] [&_svg]:size-[18px]",
         wide && "h-8 w-auto flex-1 bg-foreground/[0.06] px-3",
         highlight
           ? on && "bg-ok/15 text-ok hover:bg-ok/20 hover:text-ok"

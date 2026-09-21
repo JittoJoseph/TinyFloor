@@ -1209,7 +1209,9 @@
     "walkTo": "走过去",
     "youLower": "你",
     "joined": "{date} 加入",
-    "yourProfile": "你的资料"
+    "yourProfile": "你的资料",
+    "leaveOffice": "离开办公室",
+    "leave": "离开"
   },
   "dashboard": {
     "morning": "早上好，{name}",

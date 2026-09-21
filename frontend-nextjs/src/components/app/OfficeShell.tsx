@@ -200,6 +200,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
             { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
           ]}
           settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
+          leave={{ href: "/dashboard", label: ts("leaveOffice") }}
           you={<YouMenu onFloor settingsHref={settingsPath} />}
           floor={
             <>

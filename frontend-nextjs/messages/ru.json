@@ -1209,7 +1209,9 @@
     "walkTo": "Подойти",
     "youLower": "вы",
     "joined": "С нами с {date}",
-    "yourProfile": "Ваш профиль"
+    "yourProfile": "Ваш профиль",
+    "leaveOffice": "Выйти из офиса",
+    "leave": "Выйти"
   },
   "dashboard": {
     "morning": "Доброе утро, {name}",

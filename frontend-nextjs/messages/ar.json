@@ -1209,7 +1209,9 @@
     "walkTo": "امشِ إليه",
     "youLower": "أنت",
     "joined": "انضم في {date}",
-    "yourProfile": "ملفك الشخصي"
+    "yourProfile": "ملفك الشخصي",
+    "leaveOffice": "غادر المكتب",
+    "leave": "غادر"
   },
   "dashboard": {
     "morning": "صباح الخير يا {name}",

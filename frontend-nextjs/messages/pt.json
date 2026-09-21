@@ -1181,57 +1181,46 @@
       "main": "Navegação principal"
     },
     "hero": {
-      "eyebrow": "Um escritório virtual por onde você anda",
-      "title": "Trabalhem juntos, como se estivessem na mesma sala.",
-      "body": "O TinyFloor dá à sua equipe um andar compartilhado no navegador. Veja quem está por perto, vá até alguém para conversar e continue a conversa no chat, sem marcar reunião.",
-      "primary": "Criar seu escritório, grátis",
+      "title": "Um escritório virtual por onde a sua equipe pode andar.",
+      "body": "Veja quem está por aí, vá até alguém para conversar e puxe uma cadeira na hora da reunião. O TinyFloor é um pequeno escritório em pixel art que abre em qualquer navegador.",
       "secondary": "Entrar no lobby",
-      "note": "Grátis para até 3 pessoas. Nada para instalar.",
       "previewLabel": "Uma olhada no TinyFloor",
       "tabs": {
         "floor": "Andar",
         "chat": "Chat",
         "people": "Pessoas",
         "meeting": "Reuniões"
-      }
-    },
-    "facts": {
-      "label": "O que todo escritório traz",
-      "items": [
-        "Funciona em qualquer navegador moderno",
-        "Chamadas na rede global da Cloudflare",
-        "18 idiomas",
-        "Claro e escuro",
-        "Grátis para até 3 pessoas"
-      ]
+      },
+      "points": [
+        "Grátis para até 3 pessoas",
+        "Nada para instalar",
+        "Roda na Cloudflare"
+      ],
+      "lobbyLine": "O lobby público está aberto agora. Sem precisar de conta.",
+      "lobbyCta": "Entrar"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Chamadas por proximidade",
         "title": "Chegue perto para conversar.",
         "muted": "Sem links, sem agenda.",
         "body": "Chegue perto de alguém e a chamada está a um toque. Afaste-se e o andar volta ao silêncio, como passar na mesa de um colega."
       },
       "meetings": {
-        "eyebrow": "Mesas de reunião",
         "title": "Sente-se para a reunião.",
         "muted": "Levante-se para sair.",
         "body": "Chamadas em grupo acontecem numa mesa. Quem se senta entra, as câmeras ficam leves como miniaturas e qualquer um pode compartilhar a tela."
       },
       "chat": {
-        "eyebrow": "Chat",
         "title": "Conversas que ficam.",
         "muted": "Canais, mensagens diretas, reações.",
         "body": "Cada escritório tem seu próprio chat. Acompanhe pelo celular sem entrar e receba um aviso discreto no andar quando alguém escrever."
       },
       "people": {
-        "eyebrow": "Presença",
         "title": "Saiba quem está por perto.",
         "muted": "E vá direto até lá.",
         "body": "Veja quem está no andar, quem está ocupado e quem está em chamada. Toque em Ir até e seu personagem encontra o caminho sozinho."
       },
       "guests": {
-        "eyebrow": "Convidados",
         "title": "Deixe qualquer um entrar.",
         "muted": "Com um único link.",
         "body": "Convide colegas por e-mail ou mande um link de convidado para um cliente ou candidato. Eles escolhem um nome e um personagem e já estão no andar, sem conta."
@@ -1290,7 +1279,9 @@
           "title": "Nada para instalar",
           "body": "É uma página da web. No computador, notebook ou celular, abre do mesmo jeito, e está sempre na versão mais recente."
         }
-      }
+      },
+      "muted": "Privado, perto da sua equipe e nada para instalar.",
+      "stack": "Onde ele roda"
     },
     "plans": {
       "title": "Comece grátis.",
@@ -1318,24 +1309,23 @@
           "Imagens e arquivos no chat",
           "Mais tempo de reunião"
         ]
-      }
+      },
+      "note": "Sem cartão. Seu escritório fica pronto em um minuto."
     },
     "faq": {
       "title": "Perguntas,",
-      "muted": "respondidas."
+      "muted": "respondidas.",
+      "note": "Ainda tem alguma dúvida? O lobby público está aberto a todos, então você pode entrar e ver por conta própria."
     },
     "final": {
-      "title": "Sua equipe, a um andar de distância.",
-      "body": "Crie um escritório em um minuto, ou entre no lobby público e dê uma olhada antes."
+      "title": "Dê à sua equipe um andar para compartilhar.",
+      "body": "Crie um escritório em um minuto e envie o link para a equipe. Ou entre primeiro no lobby público e veja como é."
     },
     "preview": {
       "office": "Northwind",
       "general": "geral",
       "design": "design",
       "random": "aleatorio",
-      "inCall": "Em chamada",
-      "meeting": "Revisão de design",
-      "sharing": "Compartilhando a tela",
       "message1": "Bom dia! Daily na mesa grande em 5?",
       "message2": "Tô indo 👋",
       "message3": "Subi o novo fluxo de onboarding, adoraria uma olhada",
@@ -1351,7 +1341,6 @@
       "guestNote": "Quem tiver este link pode entrar como convidado.",
       "copy": "Copiar",
       "invite": "Convidar",
-      "here": "{count} aqui",
       "people": "Pessoas",
       "guestArrived": "entrou como convidada",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Engenharia",
         "product": "Produto"
       },
-      "board": {
-        "signUp": "Cadastro",
-        "name": "Dar nome",
-        "walkIn": "Entrar",
-        "note": "pular para convidados?"
-      },
       "message0": "Call com o cliente foi para as 14h, notas em #design",
       "message4": "Focada no lançamento até o almoço 🎧",
       "channels": "Canais",
       "directMessages": "Mensagens diretas",
       "today": "Hoje",
       "typing": "{name} está digitando…",
-      "guest": "Convidado"
+      "guest": "Convidado",
+      "inviteTeammate": "Convidar um colega",
+      "inviteTeammateNote": "Entram com um link"
     },
     "footer": {
       "tagline": "Um escritório virtual por onde você anda.",

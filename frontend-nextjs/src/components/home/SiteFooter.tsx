@@ -104,7 +104,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
                       locale={one.code}
                       hrefLang={one.code}
                       aria-current={one.code === locale ? "true" : undefined}
-                      className="flex h-8 items-center justify-between gap-2 rounded-[10px] px-2.5 text-[13px] text-foreground hover:bg-muted aria-[current]:font-medium"
+                      className="flex h-8 items-center justify-between gap-2 rounded-[10px] px-2.5 text-[13px] text-foreground hover:bg-muted aria-[current]:font-semibold"
                     >
                       <span dir={one.dir}>{one.label}</span>
                       {one.label !== one.enName && <span className="text-[12px] text-faint">{one.enName}</span>}

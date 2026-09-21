@@ -1181,57 +1181,46 @@
       "main": "Hovednavigation"
     },
     "hero": {
-      "eyebrow": "Et virtuelt kontor, du går rundt i",
-      "title": "Arbejd sammen, som i samme rum.",
-      "body": "TinyFloor giver dit team en fælles etage i browseren. Se hvem der er der, gå hen og snak, og fortsæt samtalen i chatten, uden at booke et møde.",
-      "primary": "Lav dit kontor, gratis",
+      "title": "Et virtuelt kontor, dit team kan gå rundt i.",
+      "body": "Se hvem der er her, gå over og snak, og find en stol, når det er tid til møde. TinyFloor er et lille pixel art-kontor, der åbner i enhver browser.",
       "secondary": "Gå ind i lobbyen",
-      "note": "Gratis for op til 3 personer. Intet at installere.",
       "previewLabel": "Et kig ind i TinyFloor",
       "tabs": {
         "floor": "Etage",
         "chat": "Chat",
         "people": "Personer",
         "meeting": "Møder"
-      }
-    },
-    "facts": {
-      "label": "Det får du med hvert kontor",
-      "items": [
-        "Kører i alle moderne browsere",
-        "Opkald på Cloudflares globale netværk",
-        "18 sprog",
-        "Lyst og mørkt",
-        "Gratis for op til 3 personer"
-      ]
+      },
+      "points": [
+        "Gratis for op til 3 personer",
+        "Intet at installere",
+        "Kører på Cloudflare"
+      ],
+      "lobbyLine": "Den offentlige lobby er åben lige nu. Ingen konto nødvendig.",
+      "lobbyCta": "Gå ind"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Nærhedsopkald",
         "title": "Gå hen og snak.",
         "muted": "Ingen links, ingen planlægning.",
         "body": "Gå tæt på nogen, så er et opkald et tryk væk. Gå videre, så bliver der stille på etagen igen, ligesom når man kigger forbi et skrivebord."
       },
       "meetings": {
-        "eyebrow": "Mødeborde",
         "title": "Sæt dig til møde.",
         "muted": "Rejs dig for at gå.",
         "body": "Gruppeopkald foregår ved et bord. Alle der sidder der er med, kameraerne holdes lette som miniaturer, og alle kan dele deres skærm."
       },
       "chat": {
-        "eyebrow": "Chat",
         "title": "Samtaler der bliver.",
         "muted": "Kanaler, direkte beskeder, reaktioner.",
         "body": "Hvert kontor har sin egen chat. Følg med fra telefonen uden at gå ind, og få et diskret hint på etagen, når nogen skriver."
       },
       "people": {
-        "eyebrow": "Tilstedeværelse",
         "title": "Se hvem der er der.",
         "muted": "Og gå direkte derhen.",
         "body": "Se hvem der er på etagen, hvem der er optaget, og hvem der er i et opkald. Tryk på Gå derhen, så finder din figur selv vejen."
       },
       "guests": {
-        "eyebrow": "Gæster",
         "title": "Lad hvem som helst komme ind.",
         "muted": "Med ét link.",
         "body": "Inviter kolleger via e-mail, eller send et gæstelink til en kunde eller kandidat. De vælger et navn og en figur og står på etagen, uden konto."
@@ -1290,7 +1279,9 @@
           "title": "Intet at installere",
           "body": "Det er en webside. På computer, laptop eller telefon åbner den på samme måde, og den er altid den nyeste version."
         }
-      }
+      },
+      "muted": "Privat, tæt på dit team og intet at installere.",
+      "stack": "Det kører på"
     },
     "plans": {
       "title": "Start gratis.",
@@ -1318,24 +1309,23 @@
           "Billeder og filer i chatten",
           "Mere mødetid"
         ]
-      }
+      },
+      "note": "Intet kort nødvendigt. Dit kontor er klar på et minut."
     },
     "faq": {
       "title": "Spørgsmål,",
-      "muted": "besvaret."
+      "muted": "besvaret.",
+      "note": "Undrer du dig stadig over noget? Den offentlige lobby er åben for alle, så du kan gå ind og se selv."
     },
     "final": {
-      "title": "Dit team, én etage væk.",
-      "body": "Lav et kontor på et minut, eller gå ind i den offentlige lobby og kig dig omkring først."
+      "title": "Giv dit team en etage at dele.",
+      "body": "Lav et kontor på et minut, og send linket til dit team. Eller gå først ind i den offentlige lobby og se, hvordan det føles."
     },
     "preview": {
       "office": "Northwind",
       "general": "generelt",
       "design": "design",
       "random": "tilfældigt",
-      "inCall": "I et opkald",
-      "meeting": "Designgennemgang",
-      "sharing": "Deler skærm",
       "message1": "Godmorgen! Standup ved det store bord om 5?",
       "message2": "På vej 👋",
       "message3": "Har pushet det nye onboarding-flow, kig gerne med",
@@ -1351,7 +1341,6 @@
       "guestNote": "Alle med dette link kan kigge forbi som gæst.",
       "copy": "Kopiér",
       "invite": "Inviter",
-      "here": "{count} her",
       "people": "Personer",
       "guestArrived": "kom ind som gæst",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Udvikling",
         "product": "Produkt"
       },
-      "board": {
-        "signUp": "Tilmeld",
-        "name": "Navngiv",
-        "walkIn": "Gå ind",
-        "note": "spring over for gæster?"
-      },
       "message0": "Kundeopkald flyttet til kl. 14, noter i #design",
       "message4": "Fokus på releasen til frokost 🎧",
       "channels": "Kanaler",
       "directMessages": "Direkte beskeder",
       "today": "I dag",
       "typing": "{name} skriver…",
-      "guest": "Gæst"
+      "guest": "Gæst",
+      "inviteTeammate": "Inviter en kollega",
+      "inviteTeammateNote": "De kommer ind med et link"
     },
     "footer": {
       "tagline": "Et virtuelt kontor, du går rundt i.",

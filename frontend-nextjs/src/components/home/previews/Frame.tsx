@@ -43,7 +43,7 @@ export function Frame({
   return (
     <div
       className={cn(
-        "flex overflow-hidden rounded-[18px] border border-border bg-rail [--face-ring:var(--ui-rail)]",
+        "home-app flex overflow-hidden rounded-[18px] border border-border bg-rail text-start [--face-ring:var(--ui-rail)]",
         "shadow-[0_1px_2px_rgb(0_0_0/0.05),0_24px_64px_-28px_rgb(0_0_0/0.28)]",
         className,
       )}

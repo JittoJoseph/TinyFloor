@@ -47,10 +47,6 @@
     "searchPlaceholder": "Søg efter sprog…",
     "noResults": "Ingen sprog fundet"
   },
-  "nav": {
-    "main": "Hovedmenu",
-    "tour": "Rundvisning"
-  },
   "landing": {
     "description": "Et virtuelt kontor, der ligner et spil. Gå rundt på en pixelart-etage med dit team, og start et videoopkald bare ved at stille dig ved siden af nogen.",
     "features": [
@@ -98,26 +94,6 @@
         "a": "Et almindeligt opkald samler alle i et gitter, indtil mødet slutter. Et TinyFloor-rum er åbent hele dagen, så du kan se, hvem der er der, glide mellem samtaler og snakke med dem, du går hen til."
       }
     ]
-  },
-  "cta": {
-    "title": "Dit rum er <em>allerede åbent.</em>",
-    "publicTitle": "Gå ind på det offentlige kontor",
-    "publicBody": "Altid åbent, for alle. Vælg et navn, vælg en figur, og du er inde. Ingen konto.",
-    "createTitle": "Indret dit eget kontor",
-    "createBody": "Giv det et navn, inviter dit team med ét link, og rummene bliver stående, så længe du vil.",
-    "sampleName": "Designteamet",
-    "create": "Opret",
-    "publicNote": "start her"
-  },
-  "footer": {
-    "tagline": "Et virtuelt kontor, du går rundt i. Gratis, i browseren.",
-    "product": "Produkt",
-    "learn": "Lær mere",
-    "elsewhere": "Andre steder",
-    "tour": "Rundvisning i rummet",
-    "twoWays": "To veje ind",
-    "rights": "© {year} Jitto Joseph. Alle rettigheder forbeholdes.",
-    "credits": "Kreditering"
   },
   "auth": {
     "tabSignIn": "Log ind",
@@ -1189,11 +1165,21 @@
       "everyOffice": "I hvert kontor",
       "lobbyTitle": "Lobbyen er åben",
       "lobbyBody": "Gå rundt på en rigtig etage, før du laver din egen. Ingen konto nødvendig.",
-      "menu": "Menu"
+      "menu": "Menu",
+      "teams": "Til teams",
+      "teamTitle": "Lavet til små teams",
+      "teamBody": "Gratis for op til 3 personer, større planer er på vej.",
+      "cases": {
+        "virtualOffice": "Et sted for dit fjernteam",
+        "virtualCoworking": "Arbejd fokuseret sammen med andre",
+        "onlineStudyRoom": "Studér sammen med venner",
+        "virtualClassroom": "Konsultationstid og små hold",
+        "proximityChat": "Tal med den, du går hen til"
+      }
     },
     "hero": {
       "title": "Et virtuelt kontor, dit team kan gå rundt i.",
-      "body": "Se hvem der er her, gå over og snak, og find en stol, når det er tid til møde. TinyFloor er et lille pixel art-kontor, der åbner i enhver browser.",
+      "body": "Til fjernteams, der savner at arbejde side om side. Se hvem der er her, kig forbi med et hurtigt spørgsmål, og find en stol, når det er tid til møde, uden at planlægge et eneste opkald.",
       "secondary": "Gå ind i lobbyen",
       "previewLabel": "Et kig ind i TinyFloor",
       "tabs": {

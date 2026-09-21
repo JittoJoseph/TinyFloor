@@ -47,10 +47,6 @@
     "searchPlaceholder": "언어 검색…",
     "noResults": "언어를 찾을 수 없어요"
   },
-  "nav": {
-    "main": "메인",
-    "tour": "둘러보기"
-  },
   "landing": {
     "description": "게임처럼 생긴 가상 오피스. 팀과 함께 픽셀 아트 층을 돌아다니고, 누군가의 옆에 서기만 하면 영상 통화가 시작돼요.",
     "features": [
@@ -98,26 +94,6 @@
         "a": "일반 통화는 회의가 끝날 때까지 모두를 하나의 격자 화면에 넣어요. TinyFloor 방은 하루 종일 열려 있어서 누가 있는지 보고, 대화 사이를 오가며, 다가간 사람과 이야기할 수 있어요."
       }
     ]
-  },
-  "cta": {
-    "title": "당신의 방은 <em>이미 열려 있어요.</em>",
-    "publicTitle": "공개 오피스에 들어가기",
-    "publicBody": "언제나 열려 있고 누구나 들어올 수 있어요. 이름과 캐릭터만 고르면 끝. 계정도 필요 없어요.",
-    "createTitle": "내 오피스 꾸리기",
-    "createBody": "이름을 정하고 링크 하나로 팀을 초대하세요. 방은 원하는 만큼 계속 열려 있어요.",
-    "sampleName": "디자인 팀",
-    "create": "만들기",
-    "publicNote": "여기서 시작"
-  },
-  "footer": {
-    "tagline": "걸어 다니는 가상 오피스. 무료, 브라우저에서.",
-    "product": "제품",
-    "learn": "알아보기",
-    "elsewhere": "다른 곳에서",
-    "tour": "방 둘러보기",
-    "twoWays": "두 가지 입장 방법",
-    "rights": "© {year} Jitto Joseph. 모든 권리 보유.",
-    "credits": "크레딧"
   },
   "auth": {
     "tabSignIn": "로그인",
@@ -1189,11 +1165,21 @@
       "everyOffice": "모든 오피스에",
       "lobbyTitle": "로비가 열려 있어요",
       "lobbyBody": "내 오피스를 만들기 전에 실제 층을 걸어 보세요. 계정은 필요 없어요.",
-      "menu": "메뉴"
+      "menu": "메뉴",
+      "teams": "팀을 위해",
+      "teamTitle": "작은 팀을 위해 만들었어요",
+      "teamBody": "3명까지 무료, 더 큰 요금제도 곧 나와요.",
+      "cases": {
+        "virtualOffice": "원격 팀이 머무는 곳",
+        "virtualCoworking": "다른 사람들 곁에서 집중해서 일하기",
+        "onlineStudyRoom": "친구들과 함께 공부하기",
+        "virtualClassroom": "상담 시간과 소규모 수업",
+        "proximityChat": "다가간 사람과 바로 대화"
+      }
     },
     "hero": {
       "title": "팀이 걸어 다닐 수 있는 가상 오피스.",
-      "body": "누가 있는지 보고, 다가가서 이야기하고, 회의 시간이 되면 테이블에 앉으세요. TinyFloor는 어떤 브라우저에서도 열리는 작은 픽셀 아트 오피스예요.",
+      "body": "나란히 일하던 때가 그리운 원격 팀을 위해. 누가 있는지 보고, 가볍게 질문하러 들르고, 회의 시간이 되면 자리에 앉으세요. 통화 일정을 잡을 필요가 없어요.",
       "secondary": "로비에 들어가기",
       "previewLabel": "TinyFloor 둘러보기",
       "tabs": {

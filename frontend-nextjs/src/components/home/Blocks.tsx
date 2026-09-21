@@ -1,0 +1,300 @@
+import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { Face, FaceStack } from "@/components/ui/Face";
+import { cn } from "@/lib/utils";
+import { HeroPreview } from "./HeroPreview";
+import { COLUMN, HomeNav } from "./HomeNav";
+import { SiteFooter } from "./SiteFooter";
+import { SiteTheme } from "./SiteTheme";
+import { CAST, Frame, type PreviewView } from "./previews/Frame";
+import { FloorPreview } from "./previews/FloorPreview";
+import { ChatPreview } from "./previews/ChatPreview";
+import { PeoplePreview } from "./previews/PeoplePreview";
+import { MeetingPreview } from "./previews/MeetingPreview";
+
+/*
+ * The pieces every marketing page is built from: the page shell, headings,
+ * the two ways in, the product preview, the questions and the last ask.
+ */
+
+export { COLUMN };
+
+/** The two pills every ask uses: ink for the main one, a quiet stone for the other. */
+const PILL =
+  "inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full px-6 text-[16px] transition-[background-color,transform] active:scale-[0.98]";
+export const INK = cn(PILL, "bg-foreground text-background hover:bg-foreground/85");
+export const STONE = cn(PILL, "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.11]");
+
+export const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
+
+/**
+ * A marketing page: the site's own face (Nunito), the app's theme, the
+ * floating nav, and the footer with its language links pointing at `path`.
+ */
+export function MarketingShell({ path = "/", children }: { path?: string; children: ReactNode }) {
+  return (
+    <div className="min-h-dvh overflow-x-clip bg-background font-(family-name:--font-body) text-foreground [font-feature-settings:normal]">
+      <SiteTheme />
+      <HomeNav />
+      {/* Room for the fixed header. */}
+      <div aria-hidden className="h-16" />
+      <main>{children}</main>
+      <SiteFooter path={path} />
+    </div>
+  );
+}
+
+/** A headline in two tones: the claim in ink, its second half quieter. */
+export function Heading({
+  title,
+  muted,
+  className,
+  as: Tag = "h2",
+  size = "lg",
+  block = false,
+}: {
+  title: ReactNode;
+  muted?: ReactNode;
+  className?: string;
+  as?: "h1" | "h2" | "h3";
+  size?: "lg" | "md";
+  /** Puts the quieter half on its own line. */
+  block?: boolean;
+}) {
+  return (
+    <Tag
+      className={cn(
+        "text-balance hyphens-auto font-semibold tracking-[-0.025em]",
+        size === "lg" ? "text-[32px] leading-[1.1] sm:text-[46px]" : "text-[27px] leading-[1.15] sm:text-[34px]",
+        CJK_HEADLINE,
+        className,
+      )}
+    >
+      {title}
+      {muted && (
+        <>
+          {" "}
+          <span className={cn("text-muted-foreground/80", block && "block")}>{muted}</span>
+        </>
+      )}
+    </Tag>
+  );
+}
+
+/** Rich copy's <em> as the quieter half of a two-tone headline. */
+export const quiet = (chunks: ReactNode) => <span className="text-muted-foreground/80">{chunks}</span>;
+
+/** The two ways in. */
+export function Actions({ className }: { className?: string }) {
+  const t = useTranslations("home");
+  return (
+    <div className={cn("flex flex-wrap items-center justify-center gap-2.5", className)}>
+      <Link href="/create" className={INK}>
+        {t("nav.start")}
+      </Link>
+      <Link href="/lobby" className={STONE}>
+        {t("hero.secondary")}
+      </Link>
+    </div>
+  );
+}
+
+/**
+ * The way into the public lobby, as a small pill: three faces that step apart
+ * when it's hovered, as if making room for you, and an arrow that leads on.
+ */
+export function LobbyPill({ className }: { className?: string }) {
+  const t = useTranslations("home.nav");
+  return (
+    <Link
+      href="/lobby"
+      className={cn(
+        "group inline-flex h-9 items-center gap-2.5 rounded-full border border-border bg-card pe-3.5 ps-1 text-[13.5px] text-foreground/80 shadow-[0_1px_2px_rgb(0_0_0/0.04)] transition-[border-color,color,box-shadow] duration-300 hover:border-border-strong hover:text-foreground hover:shadow-[0_6px_18px_-8px_rgb(0_0_0/0.2)] [--face-ring:var(--ui-card)]",
+        className,
+      )}
+    >
+      <span className="flex *:transition-[margin] *:duration-300 *:ease-out [&>*+*]:-ms-2 group-hover:[&>*+*]:ms-0.5">
+        {CAST.slice(0, 3).map((one) => (
+          <Face key={one.id} seed={one.id} size={26} />
+        ))}
+      </span>
+      {t("lobbyTitle")}
+      <ArrowRight className="size-3.5 opacity-60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:opacity-100 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
+    </Link>
+  );
+}
+
+function PreviewFrame({ view, children }: { view: PreviewView; children: ReactNode }) {
+  return (
+    <Frame active={view} className="aspect-[4/5] sm:aspect-[16/9]">
+      {children}
+    </Frame>
+  );
+}
+
+/** The app itself, in four tabs: the floor, chat, people and a meeting. */
+export function ProductPreview({ className }: { className?: string }) {
+  const t = useTranslations("home.hero");
+  return (
+    <div className={className}>
+      <HeroPreview
+        label={t("previewLabel")}
+        labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
+        panels={{
+          floor: <PreviewFrame view="floor"><FloorPreview /></PreviewFrame>,
+          chat: <PreviewFrame view="chat"><ChatPreview /></PreviewFrame>,
+          people: <PreviewFrame view="people"><PeoplePreview /></PreviewFrame>,
+          meeting: <PreviewFrame view="meeting"><MeetingPreview /></PreviewFrame>,
+        }}
+      />
+    </div>
+  );
+}
+
+/**
+ * One card: its words, then the app doing it. The card is a subgrid of its
+ * row, so headings and text line up with the cards beside it, and the preview
+ * rests on the card's bottom edge, a little of it running off.
+ */
+export function DayCard({
+  id,
+  title,
+  muted,
+  body,
+  small,
+  badge,
+  children,
+}: {
+  id?: string;
+  title: string;
+  muted?: string;
+  body: string;
+  small?: boolean;
+  /** A small mark before the heading, such as a step's number. */
+  badge?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <article
+      id={id}
+      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid"
+    >
+      <h3
+        className={cn(
+          "px-7 pt-7 text-balance font-semibold leading-[1.2] tracking-[-0.02em] sm:px-8 sm:pt-8",
+          small ? "text-[19px]" : "text-[23px]",
+          CJK_HEADLINE,
+        )}
+      >
+        {badge}
+        {title}
+        {muted && <span className="block text-muted-foreground/80">{muted}</span>}
+      </h3>
+      <p className={cn("px-7 pt-3 text-pretty leading-relaxed text-muted-foreground sm:px-8", small ? "text-[14.5px]" : "text-[15.5px]", !small && "max-w-[34rem]")}>
+        {body}
+      </p>
+      <div className={cn("flex items-end px-5 pt-7 sm:px-8", small ? "h-[320px]" : "h-[360px] sm:h-[400px]")}>
+        <div className="h-[calc(100%+18px)] w-full translate-y-[18px]">{children}</div>
+      </div>
+    </article>
+  );
+}
+
+/**
+ * A list as one ruled sheet, the way a spec sheet is drawn: cells split by
+ * hairlines, small marks at the corners, an icon, a name and a line each.
+ */
+export function RuledSheet({
+  items,
+  columns = 4,
+  className,
+}: {
+  items: Array<{ icon: ReactNode; title: string; body: string }>;
+  columns?: 3 | 4;
+  className?: string;
+}) {
+  return (
+    <div className={cn("relative", className)}>
+      {["-start-[3px] -top-[3px]", "-end-[3px] -top-[3px]", "-start-[3px] -bottom-[3px]", "-end-[3px] -bottom-[3px]"].map((spot) => (
+        <span key={spot} aria-hidden className={cn("absolute z-10 size-[7px] border border-border-strong bg-background", spot)} />
+      ))}
+      <ul className={cn("grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2", columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
+        {items.map((item) => (
+          <li key={item.title} className="group bg-background p-6 transition-colors hover:bg-card sm:p-7">
+            <span className="flex size-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
+              {item.icon}
+            </span>
+            <p className="mt-10 text-[17px] font-semibold tracking-tight">{item.title}</p>
+            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{item.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/**
+ * Questions as native disclosures: readable without scripts, and in the page
+ * for search engines. They slide open where the browser can animate to a
+ * height of auto, and open instantly everywhere else.
+ */
+export function Faq({ title, items }: { title: ReactNode; items: Array<{ q: string; a: string }> }) {
+  const t = useTranslations("home");
+  return (
+    <section id="faq" className={cn(COLUMN, "grid scroll-mt-24 gap-10 pb-20 sm:pb-28 lg:grid-cols-[1fr_1.6fr] lg:gap-20")}>
+      <div className="lg:sticky lg:top-28 lg:self-start">
+        <Heading title={title} />
+        <p className="mt-5 max-w-[22rem] text-[16px] leading-relaxed text-muted-foreground">{t("faq.note")}</p>
+        <Link href="/lobby" className={cn(STONE, "mt-7 h-11 text-[15px]")}>
+          {t("hero.secondary")}
+        </Link>
+      </div>
+      <div className="grid gap-2 [interpolate-size:allow-keywords]">
+        {items.map((item, index) => (
+          <details
+            key={item.q}
+            name="faq"
+            open={index === 0}
+            className="group rounded-[20px] bg-foreground/[0.045] transition-colors open:bg-card open:shadow-[0_0_0_1px_var(--ui-border)] details-content:h-0 details-content:overflow-hidden details-content:transition-[height,content-visibility] details-content:duration-300 details-content:ease-out details-content:[transition-behavior:allow-discrete] open:details-content:h-auto motion-reduce:details-content:transition-none"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[16.5px] font-semibold [&::-webkit-details-marker]:hidden">
+              {item.q}
+              <span
+                className="relative flex size-7 shrink-0 items-center justify-center rounded-full bg-card text-muted-foreground shadow-[0_0_0_1px_var(--ui-border)] transition-transform duration-300 group-open:rotate-45"
+                aria-hidden
+              >
+                <span className="absolute h-[1.5px] w-3 rounded-full bg-current" />
+                <span className="absolute h-3 w-[1.5px] rounded-full bg-current" />
+              </span>
+            </summary>
+            <p className="px-6 pb-6 pe-14 text-[15.5px] leading-relaxed text-muted-foreground">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** The last ask, in ink: the team's faces, one line, and the two ways in. */
+export function Final() {
+  const t = useTranslations("home");
+  return (
+    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
+      <div className="flex flex-col items-center rounded-[32px] bg-foreground px-6 py-16 text-center text-background sm:py-24 [--face-ring:var(--ui-foreground)]">
+        <FaceStack seeds={CAST.map((one) => one.id)} size={44} max={6} />
+        <Heading title={t("final.title")} className="mt-8 max-w-[18ch]" />
+        <p className="mt-5 max-w-[34rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-2.5">
+          <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
+            {t("nav.start")}
+          </Link>
+          <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+            {t("hero.secondary")}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -47,10 +47,6 @@
     "searchPlaceholder": "Taal zoeken…",
     "noResults": "Geen talen gevonden"
   },
-  "nav": {
-    "main": "Hoofdmenu",
-    "tour": "Rondleiding"
-  },
   "landing": {
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "features": [
@@ -98,26 +94,6 @@
         "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een TinyFloor-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
       }
     ]
-  },
-  "cta": {
-    "title": "Je ruimte is <em>al open.</em>",
-    "publicTitle": "Loop het openbare kantoor binnen",
-    "publicBody": "Altijd open, voor iedereen. Kies een naam, kies een personage en je bent binnen. Zonder account.",
-    "createTitle": "Richt je eigen kantoor in",
-    "createBody": "Geef het een naam, nodig je team uit met één link, en de ruimtes blijven open zo lang je wilt.",
-    "sampleName": "Designteam",
-    "create": "Maken",
-    "publicNote": "begin hier"
-  },
-  "footer": {
-    "tagline": "Een virtueel kantoor waar je rondloopt. Gratis, in de browser.",
-    "product": "Product",
-    "learn": "Ontdekken",
-    "elsewhere": "Elders",
-    "tour": "Rondleiding door de ruimte",
-    "twoWays": "Twee manieren om binnen te komen",
-    "rights": "© {year} Jitto Joseph. Alle rechten voorbehouden.",
-    "credits": "Credits"
   },
   "auth": {
     "tabSignIn": "Inloggen",
@@ -1189,11 +1165,21 @@
       "everyOffice": "In elk kantoor",
       "lobbyTitle": "De lobby is open",
       "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
-      "menu": "Menu"
+      "menu": "Menu",
+      "teams": "Voor teams",
+      "teamTitle": "Gemaakt voor kleine teams",
+      "teamBody": "Gratis voor maximaal 3 mensen, grotere abonnementen komen eraan.",
+      "cases": {
+        "virtualOffice": "Een plek voor je remote team",
+        "virtualCoworking": "Geconcentreerd werken naast anderen",
+        "onlineStudyRoom": "Samen studeren met vrienden",
+        "virtualClassroom": "Spreekuren en kleine klassen",
+        "proximityChat": "Praat met wie je tegenkomt"
+      }
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
-      "body": "Zie wie er is, loop even langs om te praten en schuif aan tafel als het tijd is om te vergaderen. TinyFloor is een klein pixel-art kantoor dat in elke browser opent.",
+      "body": "Voor remote teams die het missen om zij aan zij te werken. Zie wie er is, loop even langs met een snelle vraag en schuif aan tafel als het tijd is om te vergaderen, zonder ook maar één call in te plannen.",
       "secondary": "Loop de lobby in",
       "previewLabel": "Een kijkje in TinyFloor",
       "tabs": {

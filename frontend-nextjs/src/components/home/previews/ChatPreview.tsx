@@ -4,7 +4,7 @@ import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
-const [maya, leo, priya, sam, aiko] = CAST;
+const [emma, jack, olivia, sam, lily] = CAST;
 
 /**
  * The office's chat, as the app draws it: channels and direct messages in a
@@ -15,10 +15,10 @@ export function ChatPreview({ compact = false }: { compact?: boolean }) {
   const t = useTranslations("home.preview");
   const messages = [
     { who: sam, time: "9:12", text: t("message0") },
-    { who: maya, time: "9:41", text: t("message1"), reaction: "🙌 3" },
-    { who: leo, time: "9:42", text: t("message2") },
-    { who: priya, time: "9:47", text: t("message3"), reaction: "👀 2" },
-    { who: aiko, time: "9:52", text: t("message4") },
+    { who: emma, time: "9:41", text: t("message1"), reaction: "🙌 3" },
+    { who: jack, time: "9:42", text: t("message2") },
+    { who: olivia, time: "9:47", text: t("message3"), reaction: "👀 2" },
+    { who: lily, time: "9:52", text: t("message4") },
   ];
   const shown = compact ? messages.slice(2, 4) : messages;
 
@@ -49,7 +49,7 @@ export function ChatPreview({ compact = false }: { compact?: boolean }) {
           </div>
           <p className="mt-4 px-2 text-[10.5px] font-medium text-faint">{t("directMessages")}</p>
           <div className="mt-1 flex flex-col gap-px">
-            {[sam, aiko, leo].map((person, index) => (
+            {[sam, lily, jack].map((person, index) => (
               <span key={person.id} className="flex h-7 items-center gap-2 rounded-md px-2 text-[12px] text-muted-foreground">
                 <Face seed={person.id} size={16} presence={index === 1 ? "away" : "available"} />
                 {person.name}

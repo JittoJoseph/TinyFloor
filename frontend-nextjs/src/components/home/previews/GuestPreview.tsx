@@ -6,7 +6,7 @@ import { PixelAvatar } from "@/components/PixelAvatar";
 export function GuestPreview() {
   const t = useTranslations("home.preview");
   return (
-    <div className="home-app flex h-full flex-col justify-center gap-3 p-4 text-start">
+    <div className="font-(family-name:--font-app) [font-feature-settings:'cv11','ss01'] flex h-full flex-col justify-center gap-3 p-4 text-start">
       <div className="rounded-2xl border border-border bg-background p-3.5 shadow-[0_12px_32px_-18px_rgb(0_0_0/0.3)]">
         <p className="flex items-center gap-1.5 text-[12.5px] font-semibold text-foreground">
           <Link2 className="size-3.5 text-muted-foreground" />
@@ -33,7 +33,7 @@ export function GuestPreview() {
           <PixelAvatar character="Ash" width={20} style={{ left: "50%", top: "90%" }} />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[12.5px] font-semibold text-foreground">Elena</p>
+          <p className="text-[12.5px] font-semibold text-foreground">Grace</p>
           <p className="truncate text-[11px] text-muted-foreground">{t("guestArrived")}</p>
         </div>
         <span className="rounded-full bg-muted px-2 py-0.5 text-[10.5px] font-medium text-muted-foreground">{t("guest")}</span>

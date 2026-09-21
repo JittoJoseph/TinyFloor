@@ -47,10 +47,6 @@
     "searchPlaceholder": "Hae kieltä…",
     "noResults": "Kieliä ei löytynyt"
   },
-  "nav": {
-    "main": "Päävalikko",
-    "tour": "Esittely"
-  },
   "landing": {
     "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
     "features": [
@@ -98,26 +94,6 @@
         "a": "Tavallinen puhelu laittaa kaikki samaan ruudukkoon palaverin loppuun asti. TinyFloor-huone on auki koko päivän, joten näet, kuka on paikalla, voit siirtyä keskustelusta toiseen ja jutella niiden kanssa, joiden luo kävelet."
       }
     ]
-  },
-  "cta": {
-    "title": "Huoneesi on <em>jo auki.</em>",
-    "publicTitle": "Astu julkiseen toimistoon",
-    "publicBody": "Aina auki, kaikille. Valitse nimi, valitse hahmo, ja olet sisällä. Ei tiliä.",
-    "createTitle": "Perusta oma toimistosi",
-    "createBody": "Nimeä se, kutsu tiimisi yhdellä linkillä, ja huoneet pysyvät auki niin kauan kuin haluat.",
-    "sampleName": "Designtiimi",
-    "create": "Luo",
-    "publicNote": "aloita tästä"
-  },
-  "footer": {
-    "tagline": "Virtuaalitoimisto, jossa kävellään. Ilmainen, selaimessa.",
-    "product": "Tuote",
-    "learn": "Lue lisää",
-    "elsewhere": "Muualla",
-    "tour": "Huoneen esittely",
-    "twoWays": "Kaksi tietä sisään",
-    "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään.",
-    "credits": "Tekijät"
   },
   "auth": {
     "tabSignIn": "Kirjaudu",
@@ -1189,11 +1165,21 @@
       "everyOffice": "Jokaisessa toimistossa",
       "lobbyTitle": "Aula on auki",
       "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
-      "menu": "Valikko"
+      "menu": "Valikko",
+      "teams": "Tiimeille",
+      "teamTitle": "Tehty pienille tiimeille",
+      "teamBody": "Ilmainen enintään 3 hengelle, isommat paketit tulossa.",
+      "cases": {
+        "virtualOffice": "Paikka etätiimillesi",
+        "virtualCoworking": "Keskity töihin muiden seurassa",
+        "onlineStudyRoom": "Opiskele yhdessä ystävien kanssa",
+        "virtualClassroom": "Vastaanotot ja pienet ryhmät",
+        "proximityChat": "Juttele sen kanssa, jonka luo kävelet"
+      }
     },
     "hero": {
       "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",
-      "body": "Näe, kuka on paikalla, kävele juttelemaan ja vedä tuoli pöytään, kun on palaverin aika. TinyFloor on pieni pikselitaidetoimisto, joka aukeaa missä tahansa selaimessa.",
+      "body": "Etätiimeille, jotka kaipaavat työskentelyä vierekkäin. Näe, kuka on paikalla, poikkea kysymään nopeasti ja vedä tuoli pöytään, kun on palaverin aika, ilman yhtäkään sovittua puhelua.",
       "secondary": "Astu aulaan",
       "previewLabel": "Kurkistus TinyFlooriin",
       "tabs": {

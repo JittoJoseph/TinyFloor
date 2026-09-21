@@ -47,10 +47,6 @@
     "searchPlaceholder": "Cerca lingua…",
     "noResults": "Nessuna lingua trovata"
   },
-  "nav": {
-    "main": "Principale",
-    "tour": "Tour"
-  },
   "landing": {
     "description": "Un ufficio virtuale che sembra un videogioco. Muoviti con il tuo team su un piano in pixel art e avvia una videochiamata semplicemente mettendoti accanto a qualcuno.",
     "features": [
@@ -98,26 +94,6 @@
         "a": "Una normale chiamata mette tutti in una griglia finché la riunione non finisce. Una stanza TinyFloor resta aperta tutto il giorno, così vedi chi c’è, passi da una conversazione all’altra e parli con le persone che raggiungi."
       }
     ]
-  },
-  "cta": {
-    "title": "La tua stanza è <em>già aperta.</em>",
-    "publicTitle": "Entra nell’ufficio pubblico",
-    "publicBody": "Sempre aperto, per chiunque. Scegli un nome, scegli un personaggio e sei dentro. Senza account.",
-    "createTitle": "Allestisci il tuo ufficio",
-    "createBody": "Dagli un nome, invita il team con un link, e le stanze restano aperte quanto vuoi.",
-    "sampleName": "Team design",
-    "create": "Crea",
-    "publicNote": "inizia da qui"
-  },
-  "footer": {
-    "tagline": "Un ufficio virtuale in cui camminare. Gratis, nel browser.",
-    "product": "Prodotto",
-    "learn": "Scopri",
-    "elsewhere": "Altrove",
-    "tour": "Fai il tour della stanza",
-    "twoWays": "Due modi per entrare",
-    "rights": "© {year} Jitto Joseph. Tutti i diritti riservati.",
-    "credits": "Crediti"
   },
   "auth": {
     "tabSignIn": "Accedi",
@@ -1189,11 +1165,21 @@
       "everyOffice": "In ogni ufficio",
       "lobbyTitle": "La lobby è aperta",
       "lobbyBody": "Fai un giro su un piano vero prima di creare il tuo. Nessun account richiesto.",
-      "menu": "Menu"
+      "menu": "Menu",
+      "teams": "Per i team",
+      "teamTitle": "Pensato per i team piccoli",
+      "teamBody": "Gratis fino a 3 persone, con piani più grandi in arrivo.",
+      "cases": {
+        "virtualOffice": "Un posto per il tuo team da remoto",
+        "virtualCoworking": "Lavora concentrato insieme ad altri",
+        "onlineStudyRoom": "Studia con i tuoi amici",
+        "virtualClassroom": "Ricevimento e piccole classi",
+        "proximityChat": "Parla con chi raggiungi"
+      }
     },
     "hero": {
       "title": "Un ufficio virtuale in cui il tuo team può camminare.",
-      "body": "Vedi chi c'è, avvicinati per parlare e prendi una sedia quando è ora della riunione. TinyFloor è un piccolo ufficio in pixel art che si apre in qualsiasi browser.",
+      "body": "Per i team da remoto a cui manca lavorare fianco a fianco. Vedi chi c'è, passa con una domanda veloce e prendi una sedia quando è ora della riunione, senza programmare una sola chiamata.",
       "secondary": "Entra nella lobby",
       "previewLabel": "Uno sguardo dentro TinyFloor",
       "tabs": {

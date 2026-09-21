@@ -382,7 +382,7 @@
     "lobbyAlone": "Direktnachrichten gibt es mit einem eigenen Büro. Sag hier in einem Kanal Hallo.",
     "dropHere": "Ablegen, um in {channel} zu teilen",
     "dropLobby": "Bilder teilst du in Büros, nicht in der Lobby.",
-    "lobbyGeneral": "Alle in jeder Kopie der Lobby lesen das hier. Sag Hallo, frag, was du willst. Nachrichten bleiben 7 Tage.",
+    "lobbyGeneral": "Sag Hallo, stell eine Frage oder erzähl, woran du arbeitest. Nachrichten bleiben eine Woche hier.",
     "lobbyIntroductions": "Wer bist du, und was führt dich her? Alle in der Lobby können es 7 Tage lang lesen.",
     "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
     "introduceYourself": "Stell dich vor",
@@ -1222,6 +1222,7 @@
     "lobby": "Die öffentliche Lobby",
     "lobbyBody": "Schau vorbei und triff, wer gerade da ist.",
     "emptyTitle": "Starte dein erstes Büro",
-    "emptyBody": "Ein Büro ist eine Fläche, auf der dein Team herumläuft, mit Chat und Anrufen. Drei Mitglieder sind kostenlos."
+    "emptyBody": "Ein Büro ist eine Fläche, auf der dein Team herumläuft, mit Chat und Anrufen. Drei Mitglieder sind kostenlos.",
+    "walkIn": "Reingehen"
   }
 }

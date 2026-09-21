@@ -382,7 +382,7 @@
     "lobbyAlone": "Wiadomości prywatne są częścią własnego biura. Tutaj przywitaj się na kanale.",
     "dropHere": "Upuść, aby udostępnić w {channel}",
     "dropLobby": "Obrazy udostępnia się w biurach, nie w lobby.",
-    "lobbyGeneral": "Czytają to wszyscy w każdej kopii lobby. Przywitaj się, pytaj o co chcesz. Wiadomości zostają przez 7 dni.",
+    "lobbyGeneral": "Przywitaj się, zadaj pytanie albo opowiedz, nad czym pracujesz. Wiadomości zostają tu przez tydzień.",
     "lobbyIntroductions": "Kim jesteś i co cię tu sprowadza? Całe lobby może to czytać przez 7 dni.",
     "lobbyFeedback": "Co sprawiłoby, że TinyFloor byłby lepszy dla twojego zespołu? Czytamy tu każdą wiadomość.",
     "introduceYourself": "Przedstaw się",
@@ -1222,6 +1222,7 @@
     "lobby": "Publiczne lobby",
     "lobbyBody": "Wpadnij i poznaj tych, którzy są.",
     "emptyTitle": "Załóż swoje pierwsze biuro",
-    "emptyBody": "Biuro to piętro, po którym chodzi twój zespół, z czatem i rozmowami. Trzech członków za darmo."
+    "emptyBody": "Biuro to piętro, po którym chodzi twój zespół, z czatem i rozmowami. Trzech członków za darmo.",
+    "walkIn": "Wejdź"
   }
 }

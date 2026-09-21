@@ -382,7 +382,7 @@
     "lobbyAlone": "Les messages privés viennent avec votre propre bureau. Ici, dites bonjour dans un canal.",
     "dropHere": "Déposez pour partager dans {channel}",
     "dropLobby": "Les images se partagent dans les bureaux, pas dans le hall.",
-    "lobbyGeneral": "Tout le monde, dans chaque copie du hall, lit ceci. Dites bonjour, demandez ce que vous voulez. Les messages restent 7 jours.",
+    "lobbyGeneral": "Dites bonjour, posez une question ou partagez ce sur quoi vous travaillez. Les messages restent ici une semaine.",
     "lobbyIntroductions": "Qui êtes-vous, et qu'est-ce qui vous amène ? Tout le hall peut le lire pendant 7 jours.",
     "lobbyFeedback": "Qu'est-ce qui rendrait TinyFloor meilleur pour votre équipe ? Nous lisons chaque message ici.",
     "introduceYourself": "Présentez-vous",
@@ -1222,6 +1222,7 @@
     "lobby": "Le hall public",
     "lobbyBody": "Passez et rencontrez qui est là.",
     "emptyTitle": "Créez votre premier bureau",
-    "emptyBody": "Un bureau est un étage où votre équipe se promène, avec chat et appels intégrés. Trois membres sont gratuits."
+    "emptyBody": "Un bureau est un étage où votre équipe se promène, avec chat et appels intégrés. Trois membres sont gratuits.",
+    "walkIn": "Entrer"
   }
 }

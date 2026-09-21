@@ -3,7 +3,7 @@ import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { BOARD_MAX_STROKES } from "../../shared-protocol/src";
 import { Board } from "../src/board";
-import { discordPayload, LobbyReporter } from "../src/discord";
+import { describeWhere, discordPayload, Reporter } from "../src/discord";
 import { Client, settle, uniqueRoom } from "./client";
 
 async function pair(room = uniqueRoom()) {
@@ -170,14 +170,32 @@ describe("jukebox", () => {
 });
 
 describe("discord reports", () => {
+  const join = (name: string) =>
+    ({ kind: "lobby_join", name, character: "Adam", lobby: 1, where: { city: "Munich", region: "Bavaria", country: "DE" } }) as const;
+
   it("never lets a visitor ping anyone and mentions skipped events", () => {
-    const payload = discordPayload({ kind: "chat", name: "@everyone", copy: "lobby-1", text: "hi" }, 3);
+    const payload = discordPayload(join("@everyone"), 3);
     expect(payload.allowed_mentions).toEqual({ parse: [] });
-    expect(payload.embeds[0].description).toContain("(3 more skipped)");
+    expect(payload.embeds[0].footer?.text).toContain("3 more skipped");
+  });
+
+  it("says where someone is in words, not codes", () => {
+    expect(describeWhere({ city: "Munich", region: "Bavaria", country: "DE" })).toBe("Munich, Bavaria, Germany");
+    expect(describeWhere({ city: "Singapore", region: "Singapore", country: "SG" })).toBe("Singapore");
+    expect(describeWhere({})).toBe("Somewhere unknown");
+    const fields = discordPayload(join("Ada"), 0).embeds[0].fields;
+    expect(fields).toContainEqual({ name: "From", value: "Munich, Bavaria, Germany", inline: true });
+    expect(fields.some((field) => field.name === "Lobby")).toBe(false);
+  });
+
+  it("announces a new office", () => {
+    const payload = discordPayload({ kind: "office_created", office: "Northwind", owner: "Ada", where: { country: "FR" } }, 0);
+    expect(payload.embeds[0].title).toBe("New office: Northwind");
+    expect(payload.embeds[0].fields).toContainEqual({ name: "From", value: "France", inline: true });
   });
 
   it("sends at most 20 events a minute", () => {
-    const reporter = new LobbyReporter("https://discord.example/webhook");
+    const reporter = new Reporter("https://discord.example/webhook");
     const sends: unknown[] = [];
     const realFetch = globalThis.fetch;
     globalThis.fetch = (async () => {
@@ -186,9 +204,9 @@ describe("discord reports", () => {
     }) as typeof fetch;
     try {
       const now = 60_000 * 1000;
-      for (let i = 0; i < 25; i++) reporter.report({ kind: "chat", name: "A", copy: "lobby-1", text: `${i}` }, now);
+      for (let i = 0; i < 25; i++) reporter.report(join(`${i}`), now);
       expect(sends).toHaveLength(20);
-      reporter.report({ kind: "chat", name: "A", copy: "lobby-1", text: "next minute" }, now + 60_000);
+      reporter.report(join("next minute"), now + 60_000);
       expect(sends).toHaveLength(21);
     } finally {
       globalThis.fetch = realFetch;
@@ -196,6 +214,6 @@ describe("discord reports", () => {
   });
 
   it("does nothing without a webhook", () => {
-    expect(new LobbyReporter("").report({ kind: "chat", name: "A", copy: "lobby-1", text: "x" })).toBeNull();
+    expect(new Reporter("").report(join("A"))).toBeNull();
   });
 });

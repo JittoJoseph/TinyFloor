@@ -382,7 +382,7 @@
     "lobbyAlone": "Direktmeddelanden ingår i ett eget kontor. Säg hej i en kanal här.",
     "dropHere": "Släpp för att dela i {channel}",
     "dropLobby": "Bilder delas i kontor, inte i lobbyn.",
-    "lobbyGeneral": "Alla i varje kopia av lobbyn läser det här. Säg hej, fråga vad du vill. Meddelanden finns kvar i 7 dagar.",
+    "lobbyGeneral": "Säg hej, ställ en fråga eller berätta vad du jobbar med. Meddelanden finns kvar här i en vecka.",
     "lobbyIntroductions": "Vem är du, och vad för dig hit? Hela lobbyn kan läsa det i 7 dagar.",
     "lobbyFeedback": "Vad skulle göra TinyFloor bättre för ditt team? Vi läser varje meddelande här.",
     "introduceYourself": "Presentera dig",
@@ -1222,6 +1222,7 @@
     "lobby": "Den offentliga lobbyn",
     "lobbyBody": "Titta in och träffa den som är där.",
     "emptyTitle": "Starta ditt första kontor",
-    "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis."
+    "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
+    "walkIn": "Gå in"
   }
 }

@@ -86,7 +86,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
           </div>
         )}
 
-        <div className="flex items-center gap-0.5 p-1">
+        <div className="flex items-center gap-1 p-1 pe-1.5">
           <YouMenu
             onFloor
             settingsHref={settingsHref}
@@ -94,7 +94,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
               <button
                 type="button"
                 aria-label={t("you")}
-                className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-lg p-1 pe-2 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
+                className="flex w-full min-w-0 cursor-pointer items-center gap-2.5 rounded-lg p-1 pe-2 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
               >
                 <Face seed={user.id} size={28} presence={status} />
                 <span className="min-w-0 leading-[1.2]">
@@ -126,9 +126,9 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
             <Link
               href={settingsHref}
               aria-label={t("settings")}
-              className="flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
+              className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
             >
-              <Settings className="size-4" />
+              <Settings className="size-[17px]" />
             </Link>
           </Tooltip>
         </div>
@@ -168,8 +168,8 @@ function PanelToggle({
       icon={on ? onIcon : offIcon}
       tone="ghost"
       className={cn(
-        "size-7 rounded-md hover:bg-foreground/[0.06] [&_svg]:size-4",
-        wide && "h-7 w-auto flex-1 bg-foreground/[0.06] px-3",
+        "size-8 rounded-lg hover:bg-foreground/[0.06] [&_svg]:size-[17px]",
+        wide && "h-8 w-auto flex-1 bg-foreground/[0.06] px-3",
         highlight
           ? on && "bg-ok/15 text-ok hover:bg-ok/20 hover:text-ok"
           : !on && "text-destructive hover:bg-destructive/10 hover:text-destructive",

@@ -22,7 +22,6 @@ import {
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { TICKET_HEADER } from "./headers";
-import { LobbyReporter } from "./discord";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
@@ -58,8 +57,6 @@ const TEN_SECONDS = 10_000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 /** Where "is this the lobby's chat" is kept, so an alarm knows without a request. */
 const LOBBY_FLAG = "lobby";
-/** Lobby messages are public: the same abuse checks as the lobby floor. */
-const REPORT_ROOM = "lobby-chat";
 
 /**
  * One of these per office. It holds that office's channels and messages in its
@@ -76,11 +73,9 @@ const REPORT_ROOM = "lobby-chat";
  */
 export class Chat extends DurableObject<Env> {
   private lobby = false;
-  private readonly reporter: LobbyReporter;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
-    this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
     ctx.blockConcurrencyWhile(async () => {
       this.lobby = (await ctx.storage.get<boolean>(LOBBY_FLAG)) === true;
       this.sql.exec(`CREATE TABLE IF NOT EXISTS channels (
@@ -295,11 +290,7 @@ export class Chat extends DurableObject<Env> {
     // History trims itself as it grows, so no nightly job has to walk offices.
     if (seq % TRIM_EVERY === 0) this.trim();
 
-    if (this.lobby) {
-      const report = this.reporter.report({ kind: "chat", name: me.name, copy: REPORT_ROOM, text });
-      if (report) this.ctx.waitUntil(report);
-      this.ctx.waitUntil(this.keepAWeek(now));
-    }
+    if (this.lobby) this.ctx.waitUntil(this.keepAWeek(now));
   }
 
   /** The lobby forgets: once a day, anything older than a week goes. */

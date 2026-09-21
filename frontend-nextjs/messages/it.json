@@ -382,7 +382,7 @@
     "lobbyAlone": "I messaggi diretti arrivano con un ufficio tuo. Qui, saluta in un canale.",
     "dropHere": "Rilascia per condividere in {channel}",
     "dropLobby": "Le immagini si condividono negli uffici, non nella lobby.",
-    "lobbyGeneral": "Lo leggono tutti, in ogni copia della lobby. Saluta, chiedi quello che vuoi. I messaggi restano 7 giorni.",
+    "lobbyGeneral": "Saluta, fai una domanda o racconta a cosa stai lavorando. I messaggi restano qui per una settimana.",
     "lobbyIntroductions": "Chi sei e cosa ti porta qui? Tutta la lobby può leggerlo per 7 giorni.",
     "lobbyFeedback": "Cosa renderebbe TinyFloor migliore per il tuo team? Leggiamo ogni messaggio qui.",
     "introduceYourself": "Presentati",
@@ -1222,6 +1222,7 @@
     "lobby": "La hall pubblica",
     "lobbyBody": "Passa e incontra chi c'è.",
     "emptyTitle": "Crea il tuo primo ufficio",
-    "emptyBody": "Un ufficio è un piano in cui il tuo team si muove, con chat e chiamate incluse. Tre membri sono gratis."
+    "emptyBody": "Un ufficio è un piano in cui il tuo team si muove, con chat e chiamate incluse. Tre membri sono gratis.",
+    "walkIn": "Entra"
   }
 }

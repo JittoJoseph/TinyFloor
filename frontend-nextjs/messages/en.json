@@ -382,7 +382,7 @@
     "lobbyAlone": "Direct messages come with an office of your own. Here, say hello in a channel.",
     "dropHere": "Drop to share in {channel}",
     "dropLobby": "Images are shared inside offices, not the lobby.",
-    "lobbyGeneral": "Everyone in every copy of the lobby reads this. Say hello, ask anything. Messages stay for 7 days.",
+    "lobbyGeneral": "Say hello, ask a question, or share what you're working on. Messages stay here for a week.",
     "lobbyIntroductions": "Who are you, and what brings you here? Everyone in the lobby can read it for 7 days.",
     "lobbyFeedback": "What would make TinyFloor better for your team? We read every message here.",
     "introduceYourself": "Introduce yourself",
@@ -1222,6 +1222,7 @@
     "lobby": "The public lobby",
     "lobbyBody": "Drop in and meet whoever is around.",
     "emptyTitle": "Start your first office",
-    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free."
+    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
+    "walkIn": "Walk in"
   }
 }

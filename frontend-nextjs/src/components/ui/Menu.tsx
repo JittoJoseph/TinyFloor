@@ -19,6 +19,7 @@ export function Menu({
   className,
   width = 240,
   offset = 8,
+  rootClassName,
 }: {
   trigger: ReactElement;
   children: ReactNode;
@@ -28,10 +29,12 @@ export function Menu({
   width?: number;
   /** Gap between the trigger and the menu. */
   offset?: number;
+  /** For the wrapper around the trigger, when the trigger should stretch. */
+  rootClassName?: string;
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <MorphPopover open={open} onOpenChange={setOpen}>
+    <MorphPopover open={open} onOpenChange={setOpen} className={rootClassName}>
       <MorphPopoverTrigger>{trigger}</MorphPopoverTrigger>
       <MorphPopoverContent side={side} align={align} sideOffset={offset} radius={16} className={cn("bg-popover p-1.5", className)}>
         <div style={{ width }} className="flex flex-col">

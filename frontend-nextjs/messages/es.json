@@ -382,7 +382,7 @@
     "lobbyAlone": "Los mensajes directos llegan con una oficina propia. Aquí, saluda en un canal.",
     "dropHere": "Suelta para compartir en {channel}",
     "dropLobby": "Las imágenes se comparten en las oficinas, no en el vestíbulo.",
-    "lobbyGeneral": "Todos, en cada copia del vestíbulo, leen esto. Saluda y pregunta lo que quieras. Los mensajes duran 7 días.",
+    "lobbyGeneral": "Saluda, haz una pregunta o cuenta en qué estás trabajando. Los mensajes se quedan aquí una semana.",
     "lobbyIntroductions": "¿Quién eres y qué te trae por aquí? Todo el vestíbulo puede leerlo durante 7 días.",
     "lobbyFeedback": "¿Qué haría TinyFloor mejor para tu equipo? Leemos cada mensaje aquí.",
     "introduceYourself": "Preséntate",
@@ -1222,6 +1222,7 @@
     "lobby": "El vestíbulo público",
     "lobbyBody": "Pásate y conoce a quien esté.",
     "emptyTitle": "Crea tu primera oficina",
-    "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis."
+    "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis.",
+    "walkIn": "Entrar"
   }
 }

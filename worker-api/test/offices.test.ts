@@ -43,6 +43,13 @@ describe("offices", () => {
     expect(me.body.offices).toEqual([expect.objectContaining({ name: "Design Team", role: "admin", seats: 3 })]);
   });
 
+  it("tells the team's Discord about a new office", async () => {
+    const ines = await makeUser("Ines");
+    await officeOf(ines, "Harbour");
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    expect(await fakeRealtime().calls()).toContainEqual(["officeCreated", "Harbour", "Ines"]);
+  });
+
   it("gives the dashboard a few faces per office and who is on each floor", async () => {
     const olive = await makeUser("Olive");
     const officeId = await officeOf(olive, "Faces");

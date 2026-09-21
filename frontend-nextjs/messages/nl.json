@@ -382,7 +382,7 @@
     "lobbyAlone": "Privéberichten horen bij een eigen kantoor. Zeg hier hallo in een kanaal.",
     "dropHere": "Loslaten om te delen in {channel}",
     "dropLobby": "Afbeeldingen deel je in kantoren, niet in de lobby.",
-    "lobbyGeneral": "Iedereen in elke kopie van de lobby leest dit. Zeg hallo, vraag wat je wilt. Berichten blijven 7 dagen staan.",
+    "lobbyGeneral": "Zeg hallo, stel een vraag of vertel waar je aan werkt. Berichten blijven hier een week staan.",
     "lobbyIntroductions": "Wie ben je, en wat brengt je hier? De hele lobby kan het 7 dagen lezen.",
     "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
     "introduceYourself": "Stel jezelf voor",
@@ -1222,6 +1222,7 @@
     "lobby": "De openbare lobby",
     "lobbyBody": "Loop binnen en ontmoet wie er is.",
     "emptyTitle": "Begin je eerste kantoor",
-    "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis."
+    "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis.",
+    "walkIn": "Naar binnen"
   }
 }

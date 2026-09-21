@@ -21,10 +21,11 @@ import {
   type VideoQuality,
   type ServerMessage,
   type SfuServerMessage,
+  type Whereabouts,
 } from "../../shared-protocol/src";
 import { Board, parseStroke } from "./board";
-import { LobbyReporter } from "./discord";
-import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
+import { Reporter } from "./discord";
+import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 import { Usage } from "./usage";
@@ -94,14 +95,14 @@ export class Room extends DurableObject<Env> {
   /** When the room last looked for sockets that went quiet, in memory only. */
   private sweptAt = 0;
   private board!: Board;
-  private readonly reporter: LobbyReporter;
+  private readonly reporter: Reporter;
   private readonly sfuApi: SfuApi;
   private usage!: Usage;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair(HEARTBEAT_PING, HEARTBEAT_PONG));
-    this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
+    this.reporter = new Reporter(env.DISCORD_WEBHOOK_URL);
     this.sfuApi = new SfuApi(env.REALTIME_APP_ID, env.REALTIME_APP_SECRET);
     this.createTables();
   }
@@ -245,12 +246,7 @@ export class Room extends DurableObject<Env> {
 
     send(server, { t: "welcome", self: playerState(attachment), players: others, music: this.music() });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
-    this.reportToDiscord(room, {
-      kind: "join",
-      name: attachment.name,
-      character: attachment.character,
-      country: request.headers.get(COUNTRY_HEADER) ?? "",
-    });
+    this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
     await this.headcountChanged(room);
 
     return new Response(null, { status: 101, webSocket: client });
@@ -776,13 +772,17 @@ export class Room extends DurableObject<Env> {
     this.usage.stayed(now - attachment.joinedAt, 0, others.length + 1, now);
   }
 
-  /** Only lobby copies report to Discord; workspace rooms never do. */
-  private reportToDiscord(
-    room: string,
-    event: { kind: "join"; name: string; character: string; country: string },
-  ): void {
-    if (lobbyCopyNumber(room) === null) return;
-    const request = this.reporter.report({ ...event, copy: room });
+  /** Someone walked into the public lobby. Offices never report who comes in. */
+  private reportToDiscord(room: string, name: string, character: string, whereHeader: string | null): void {
+    const lobby = lobbyCopyNumber(room);
+    if (lobby === null) return;
+    let where: Whereabouts = {};
+    try {
+      where = whereHeader ? JSON.parse(decodeURIComponent(whereHeader)) : {};
+    } catch {
+      // Only the Worker sets it; a bad one just means "somewhere".
+    }
+    const request = this.reporter.report({ kind: "lobby_join", name, character, lobby, where });
     if (request) this.ctx.waitUntil(request);
   }
 

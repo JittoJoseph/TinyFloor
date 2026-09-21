@@ -382,7 +382,7 @@
     "lobbyAlone": "Direkte beskeder følger med et kontor for jer selv. Sig hej i en kanal her.",
     "dropHere": "Slip for at dele i {channel}",
     "dropLobby": "Billeder deles i kontorer, ikke i lobbyen.",
-    "lobbyGeneral": "Alle i hver kopi af lobbyen læser dette. Sig hej, spørg om hvad som helst. Beskeder bliver i 7 dage.",
+    "lobbyGeneral": "Sig hej, stil et spørgsmål, eller fortæl hvad du arbejder på. Beskeder bliver her i en uge.",
     "lobbyIntroductions": "Hvem er du, og hvad bringer dig her? Hele lobbyen kan læse det i 7 dage.",
     "lobbyFeedback": "Hvad ville gøre TinyFloor bedre for dit team? Vi læser hver besked her.",
     "introduceYourself": "Præsenter dig selv",
@@ -1222,6 +1222,7 @@
     "lobby": "Den offentlige lobby",
     "lobbyBody": "Kig forbi og mød dem, der er der.",
     "emptyTitle": "Start dit første kontor",
-    "emptyBody": "Et kontor er et gulv, dit team går rundt på, med chat og opkald indbygget. Tre medlemmer er gratis."
+    "emptyBody": "Et kontor er et gulv, dit team går rundt på, med chat og opkald indbygget. Tre medlemmer er gratis.",
+    "walkIn": "Gå ind"
   }
 }

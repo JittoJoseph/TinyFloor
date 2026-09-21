@@ -238,7 +238,10 @@ differs from the plan, or adds to it:
   drawn like the app — its mark, channels and floor — follows what you type.
   Sign-up shows the same preview beside the form, wearing that name.
 - **Settings are a view in the shell,** not a dialog: General (theme, language),
-  Audio and video (devices, noise suppression, echo cancellation, mirror),
+  Audio and video (devices, noise suppression, echo cancellation, mirror, and
+  an experimental, off-by-default *stronger noise removal*: RNNoise in an
+  AudioWorklet on the device, loaded only when a call opens the mic with it on,
+  falling back to the plain mic if it cannot load),
   Notifications (message and arrival sounds, previews over the floor),
   Accessibility (reduce motion, battery saver) and, in an office, the office
   itself (name, seats, leave or close). Everything but the office's name is

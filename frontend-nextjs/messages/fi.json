@@ -458,7 +458,10 @@
     "reduceMotionNote": "Vähemmän animaatioita koko sovelluksessa.",
     "performance": "Suorituskyky",
     "batterySaver": "Virransäästö",
-    "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla."
+    "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla.",
+    "enhancedNoise": "Tehokkaampi kohinanpoisto",
+    "enhancedNoiseNote": "Pieni tekoälymalli laitteellasi poistaa näppäimistön, koirat ja taustapuheen. Toimii seuraavasta puhelusta alkaen ja kuluttaa hieman enemmän akkua.",
+    "experimental": "Kokeellinen"
   },
   "tutorial": {
     "walk": "Kävele näppäimillä W A S D",

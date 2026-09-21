@@ -458,7 +458,10 @@
     "reduceMotionNote": "Mniej animacji w całej aplikacji.",
     "performance": "Wydajność",
     "batterySaver": "Oszczędzanie baterii",
-    "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia."
+    "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia.",
+    "enhancedNoise": "Silniejsze usuwanie szumów",
+    "enhancedNoiseNote": "Mały model AI na twoim urządzeniu usuwa klawiaturę, psy i rozmowy w tle. Działa od następnej rozmowy i zużywa trochę więcej baterii.",
+    "experimental": "Eksperymentalne"
   },
   "tutorial": {
     "walk": "Chodź, używając W A S D",

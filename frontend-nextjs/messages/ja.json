@@ -458,7 +458,10 @@
     "reduceMotionNote": "アプリ全体のアニメーションを減らします。",
     "performance": "パフォーマンス",
     "batterySaver": "バッテリー節約",
-    "batterySaverNote": "フロアを低いフレームレートで描画します。次に入ったときから有効です。"
+    "batterySaverNote": "フロアを低いフレームレートで描画します。次に入ったときから有効です。",
+    "enhancedNoise": "強力なノイズ除去",
+    "enhancedNoiseNote": "端末上の小さなAIモデルが、キーボード音や犬の声、周りの話し声を取り除きます。次の通話から有効で、バッテリーを少し多く使います。",
+    "experimental": "試験運用"
   },
   "tutorial": {
     "walk": "W A S D キーで歩き回りましょう",

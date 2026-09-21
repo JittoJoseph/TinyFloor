@@ -458,7 +458,10 @@
     "reduceMotionNote": "Moins d'animations dans toute l'application.",
     "performance": "Performances",
     "batterySaver": "Économie de batterie",
-    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée."
+    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée.",
+    "enhancedNoise": "Suppression du bruit renforcée",
+    "enhancedNoiseNote": "Un petit modèle d'IA sur votre appareil retire clavier, chiens et bavardages. Prend effet au prochain appel et consomme un peu plus de batterie.",
+    "experimental": "Expérimental"
   },
   "tutorial": {
     "walk": "Déplacez-vous avec W A S D",

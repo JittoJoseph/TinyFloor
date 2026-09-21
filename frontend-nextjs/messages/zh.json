@@ -458,7 +458,10 @@
     "reduceMotionNote": "减少整个应用中的动画。",
     "performance": "性能",
     "batterySaver": "省电模式",
-    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。"
+    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。",
+    "enhancedNoise": "更强的降噪",
+    "enhancedNoiseNote": "设备上的小型 AI 模型会去掉键盘声、狗叫和旁人说话。从下一次通话开始生效，会多用一点电量。",
+    "experimental": "实验性"
   },
   "tutorial": {
     "walk": "用 W A S D 四处走动",

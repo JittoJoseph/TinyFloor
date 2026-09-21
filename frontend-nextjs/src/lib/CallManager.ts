@@ -1,4 +1,5 @@
 import { onPrefsChange, prefs } from "./prefs";
+import type { FilteredMic } from "./noiseFilter";
 import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "./api";
@@ -85,8 +86,9 @@ const RING_TIMEOUT = 30000;
 const GUIDE_ANSWER_DELAY = 1600;
 /** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
 function audioConstraints() {
-  const { echoCancellation, noiseSuppression } = prefs();
-  return { echoCancellation, noiseSuppression, autoGainControl: true };
+  const { echoCancellation, noiseSuppression, enhancedNoise } = prefs();
+  // With RNNoise on, the browser's own suppression would only fight it.
+  return { echoCancellation, noiseSuppression: noiseSuppression && !enhancedNoise, autoGainControl: true };
 }
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
@@ -140,6 +142,9 @@ class CallManager {
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
   private local: MediaStream | null = null;
+  /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
+  private rawMic: MediaStreamTrack | null = null;
+  private filter: FilteredMic | null = null;
   private screen: MediaStream | null = null;
   private incoming: { id: string; name: string; video: boolean } | null = null;
   private outgoing: { id: string; name: string; video: boolean } | null = null;
@@ -168,7 +173,8 @@ class CallManager {
       // microphone that is already open, not only the next call's.
       onPrefsChange(() => {
         const wanted = audioConstraints();
-        this.local?.getAudioTracks().forEach((track) => void track.applyConstraints(wanted).catch(() => {}));
+        const mics = this.rawMic ? [this.rawMic] : (this.local?.getAudioTracks() ?? []);
+        mics.forEach((track) => void track.applyConstraints(wanted).catch(() => {}));
       });
     }
   }
@@ -692,6 +698,7 @@ class CallManager {
         audio: { ...audioConstraints(), deviceId: deviceConstraint(devices.audio) },
         video: wantsCamera && { ...CAMERA_CAPTURE, deviceId: deviceConstraint(devices.video) },
       });
+      await this.filterVoice();
       this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
@@ -718,7 +725,30 @@ class CallManager {
     }
   }
 
+  /**
+   * Stronger noise removal, when it is switched on: the call sends RNNoise's
+   * output instead of the microphone. Loaded only here, so nobody who leaves
+   * it off downloads it; if it fails, the plain microphone is used.
+   */
+  private async filterVoice() {
+    const mic = this.local?.getAudioTracks()[0];
+    if (!mic || !prefs().enhancedNoise) return;
+    const { filterMic } = await import("./noiseFilter");
+    const filter = await filterMic(mic);
+    if (!filter || !this.local) {
+      filter?.stop();
+      return;
+    }
+    this.filter = filter;
+    this.rawMic = mic;
+    this.local = new MediaStream([filter.track, ...this.local.getVideoTracks()]);
+  }
+
   private releaseMedia() {
+    this.filter?.stop();
+    this.rawMic?.stop();
+    this.filter = null;
+    this.rawMic = null;
     this.local?.getTracks().forEach((track) => track.stop());
     this.screen?.getTracks().forEach((track) => track.stop());
     this.local = null;

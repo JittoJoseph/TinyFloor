@@ -134,11 +134,27 @@ function Group({ title, note, children }: { title: string; note?: string; childr
   );
 }
 
-function Row({ title, description, control }: { title: string; description?: string; control: ReactNode }) {
+function Row({
+  title,
+  description,
+  control,
+  badge,
+}: {
+  title: string;
+  description?: string;
+  control: ReactNode;
+  /** A word beside the title, like "Experimental". */
+  badge?: string;
+}) {
   return (
     <div className="flex items-center gap-4 px-4 py-3.5">
       <div className="min-w-0 flex-1">
-        <p className="text-[13.5px] font-medium text-foreground">{title}</p>
+        <p className="flex flex-wrap items-center gap-2 text-[13.5px] font-medium text-foreground">
+          {title}
+          {badge && (
+            <span className="rounded-full bg-brand/10 px-2 py-px text-[11px] font-medium text-brand">{badge}</span>
+          )}
+        </p>
         {description && <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{description}</p>}
       </div>
       <div className="shrink-0">{control}</div>
@@ -146,12 +162,23 @@ function Row({ title, description, control }: { title: string; description?: str
   );
 }
 
-function Toggle({ pref, title, description }: { pref: keyof Prefs; title: string; description?: string }) {
+function Toggle({
+  pref,
+  title,
+  description,
+  badge,
+}: {
+  pref: keyof Prefs;
+  title: string;
+  description?: string;
+  badge?: string;
+}) {
   const prefs = usePrefs();
   return (
     <Row
       title={title}
       description={description}
+      badge={badge}
       control={<Switch checked={prefs[pref]} onCheckedChange={(on) => setPref(pref, on)} ariaLabel={title} />}
     />
   );
@@ -326,6 +353,12 @@ function Media() {
       <Group title={t("voice")} note={t("voiceNote")}>
         <Toggle pref="noiseSuppression" title={t("noiseSuppression")} description={t("noiseSuppressionNote")} />
         <Toggle pref="echoCancellation" title={t("echoCancellation")} description={t("echoCancellationNote")} />
+        <Toggle
+          pref="enhancedNoise"
+          title={t("enhancedNoise")}
+          description={t("enhancedNoiseNote")}
+          badge={t("experimental")}
+        />
       </Group>
       <Group title={t("video")}>
         <Toggle pref="mirrorVideo" title={t("mirror")} description={t("mirrorNote")} />

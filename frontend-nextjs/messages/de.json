@@ -458,7 +458,10 @@
     "reduceMotionNote": "Weniger Animationen in der ganzen App.",
     "performance": "Leistung",
     "batterySaver": "Energiesparmodus",
-    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
+    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten.",
+    "enhancedNoise": "Stärkere Geräuschunterdrückung",
+    "enhancedNoiseNote": "Ein kleines KI-Modell auf deinem Gerät entfernt Tastatur, Hunde und Gespräche im Hintergrund. Gilt ab deinem nächsten Anruf und braucht etwas mehr Akku.",
+    "experimental": "Experimentell"
   },
   "tutorial": {
     "walk": "Lauf mit W A S D herum",

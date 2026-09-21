@@ -458,7 +458,10 @@
     "reduceMotionNote": "Menos animaciones en toda la aplicación.",
     "performance": "Rendimiento",
     "batterySaver": "Ahorro de batería",
-    "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres."
+    "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres.",
+    "enhancedNoise": "Eliminación de ruido más fuerte",
+    "enhancedNoiseNote": "Un pequeño modelo de IA en tu dispositivo quita teclados, perros y conversaciones de fondo. Empieza en tu próxima llamada y gasta algo más de batería.",
+    "experimental": "Experimental"
   },
   "tutorial": {
     "walk": "Muévete con W A S D",

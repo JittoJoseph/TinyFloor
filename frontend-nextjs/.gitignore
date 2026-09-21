@@ -44,3 +44,6 @@ next-env.d.ts
 .open-next
 .wrangler
 .dev.vars
+
+# the noise suppressor's worklet and wasm, copied from node_modules (scripts/copy-noise.mjs)
+/public/noise/

@@ -10,12 +10,11 @@ interface __BaseEnv_Env {
 	SITE_ORIGINS: string;
 	ROOM: DurableObjectNamespace<import("./src/index").Room>;
 	CHAT: DurableObjectNamespace<import("./src/index").Chat>;
-	PRESENCE: DurableObjectNamespace<import("./src/index").Presence>;
 }
 declare namespace Cloudflare {
 	interface GlobalProps {
 		mainModule: typeof import("./src/index");
-		durableNamespaces: "Room" | "Presence" | "Chat";
+		durableNamespaces: "Room" | "Chat";
 	}
 	interface PreviewEnv {
 		DB: D1Database;
@@ -26,7 +25,6 @@ declare namespace Cloudflare {
 		SITE_ORIGINS: string;
 		ROOM: DurableObjectNamespace<import("./src/index").Room>;
 		CHAT: DurableObjectNamespace<import("./src/index").Chat>;
-		PRESENCE: DurableObjectNamespace<import("./src/index").Presence>;
 	}
 	interface Env extends __BaseEnv_Env {}
 }

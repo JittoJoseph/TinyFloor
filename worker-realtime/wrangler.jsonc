@@ -12,14 +12,15 @@
   "durable_objects": {
     "bindings": [
       { "name": "ROOM", "class_name": "Room" },
-      { "name": "CHAT", "class_name": "Chat" },
-      { "name": "PRESENCE", "class_name": "Presence" }
+      { "name": "CHAT", "class_name": "Chat" }
     ]
   },
   "migrations": [
     { "tag": "v1", "new_sqlite_classes": ["Room", "LobbyRouter"] },
     { "tag": "v2", "renamed_classes": [{ "from": "LobbyRouter", "to": "Presence" }] },
-    { "tag": "v3", "new_sqlite_classes": ["Chat"] }
+    { "tag": "v3", "new_sqlite_classes": ["Chat"] },
+    // Rooms count their own people now; see docs/07-services.md.
+    { "tag": "v4", "deleted_classes": ["Presence"] }
   ],
   // Only usage_daily is written from here; the schema belongs to tinyfloor-api.
   "d1_databases": [
@@ -39,8 +40,7 @@
       "durable_objects": {
         "bindings": [
           { "name": "ROOM", "class_name": "Room" },
-          { "name": "CHAT", "class_name": "Chat" },
-          { "name": "PRESENCE", "class_name": "Presence" }
+          { "name": "CHAT", "class_name": "Chat" }
         ]
       },
       "d1_databases": [

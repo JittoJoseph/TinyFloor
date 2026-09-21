@@ -26,7 +26,7 @@ import {
 import { Board, parseStroke } from "./board";
 import { LobbyReporter } from "./discord";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
-import { lobbyCopyNumber } from "./presence";
+import { lobbyCopyNumber } from "./lobby";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 import { Usage } from "./usage";
 
@@ -777,16 +777,11 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
   }
 
-  /**
-   * After people arrive or leave: usage totals are written when due, and the
-   * room tells Presence how many people it holds, so nothing has to wake it up
-   * to ask later.
-   */
+  /** After people arrive or leave: usage totals are written when due. */
   private async headcountChanged(room: string): Promise<void> {
     const now = Date.now();
     const present = this.present().length;
     if (this.usage.due(present, now)) this.ctx.waitUntil(this.usage.flush(room, present, now));
-    await this.env.PRESENCE.getByName("global").report(room, present);
   }
 
   /** Counts this person's time in the room, once, as their socket ends. */

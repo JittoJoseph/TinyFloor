@@ -1,4 +1,5 @@
 import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter } from "../../shared-protocol/src";
+import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
 import type { Router } from "./router";
@@ -19,6 +20,8 @@ const PASSWORD_MIN_LENGTH = 8;
 const PASSWORD_MAX_BYTES = 72;
 /** Sign-in attempts allowed from one IP address per 15 minutes, across all emails. */
 const ATTEMPTS_PER_IP = 30;
+/** Faces shown on each office card on the dashboard. */
+const FACES_PER_OFFICE = 5;
 
 export function authRoutes(router: Router): void {
   router
@@ -182,7 +185,35 @@ export function authRoutes(router: Router): void {
       )
         .bind(user.id)
         .all<{ id: string; name: string; plan: string; seats: number; role: string; members: number }>();
-      return json({ user: publicUser(user), offices: results });
+      if (!results.length) return json({ user: publicUser(user), offices: [] });
+
+      // A few faces per office for the dashboard, and who is on each floor now.
+      const [faces, here] = await Promise.all([
+        env.DB.prepare(
+          `SELECT m.office_id, u.id, u.display_name FROM memberships m JOIN users u ON u.id = m.user_id
+           WHERE m.office_id IN (SELECT office_id FROM memberships WHERE user_id = ?)
+           ORDER BY m.joined_at`,
+        )
+          .bind(user.id)
+          .all<{ office_id: string; id: string; display_name: string }>(),
+        realtime(env)
+          .presenceCounts(results.map((office) => office.id))
+          .catch(() => ({}) as Record<string, number>),
+      ]);
+      const byOffice = new Map<string, { id: string; name: string }[]>();
+      for (const row of faces.results) {
+        const list = byOffice.get(row.office_id) ?? [];
+        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name });
+        byOffice.set(row.office_id, list);
+      }
+      return json({
+        user: publicUser(user),
+        offices: results.map((office) => ({
+          ...office,
+          faces: byOffice.get(office.id) ?? [],
+          here: here[office.id] ?? 0,
+        })),
+      });
     })
 
     .add("PATCH", "/v1/me", async ({ request, env, ctx }) => {

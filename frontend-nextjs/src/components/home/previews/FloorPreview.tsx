@@ -8,7 +8,7 @@ import { CAST } from "./Frame";
 const [maya, leo, priya, sam, aiko] = CAST;
 
 /** Characters grow with the frame, like the app's camera does, but never past legible. */
-const SIZE = "max(4.2cqw, 6.3cqh, 24px)";
+const SIZE = "max(3.1cqw, 4.6cqh, 20px)";
 
 /** A walk as a share of the art's width, so it stays inside its aisle at any frame size. */
 const lane = (share: number) => `calc(${COVER_WIDTH} * ${share})`;

@@ -1178,7 +1178,18 @@
       "signIn": "Log ind",
       "start": "Lav dit kontor",
       "open": "Åbn TinyFloor",
-      "main": "Hovednavigation"
+      "main": "Hovednavigation",
+      "items": {
+        "proximity": "Nærhedsopkald",
+        "meetings": "Mødeborde",
+        "chat": "Chat",
+        "people": "Tilstedeværelse",
+        "guests": "Gæster"
+      },
+      "everyOffice": "I hvert kontor",
+      "lobbyTitle": "Lobbyen er åben",
+      "lobbyBody": "Gå rundt på en rigtig etage, før du laver din egen. Ingen konto nødvendig.",
+      "menu": "Menu"
     },
     "hero": {
       "title": "Et virtuelt kontor, dit team kan gå rundt i.",
@@ -1374,6 +1385,10 @@
       "theme": "Tema",
       "language": "Sprog",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Én etage til hele dagen,",
+      "muted": "fra det første hej til det sidste opkald."
     }
   }
 }

@@ -1178,7 +1178,18 @@
       "signIn": "登录",
       "start": "创建办公室",
       "open": "打开 TinyFloor",
-      "main": "主导航"
+      "main": "主导航",
+      "items": {
+        "proximity": "靠近通话",
+        "meetings": "会议桌",
+        "chat": "聊天",
+        "people": "在线状态",
+        "guests": "访客"
+      },
+      "everyOffice": "每个办公室都有",
+      "lobbyTitle": "大厅正开放",
+      "lobbyBody": "先在真实的楼层里走走，再建自己的办公室。无需账号。",
+      "menu": "菜单"
     },
     "hero": {
       "title": "一个团队可以四处走动的虚拟办公室。",
@@ -1374,6 +1385,10 @@
       "theme": "主题",
       "language": "语言",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "一整天，都在一层楼里，",
+      "muted": "从第一声招呼到最后一通电话。"
     }
   }
 }

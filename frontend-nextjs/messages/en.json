@@ -1178,7 +1178,18 @@
       "signIn": "Sign in",
       "start": "Make your office",
       "open": "Open TinyFloor",
-      "main": "Main"
+      "main": "Main",
+      "items": {
+        "proximity": "Proximity calls",
+        "meetings": "Meeting tables",
+        "chat": "Chat",
+        "people": "Presence",
+        "guests": "Guests"
+      },
+      "everyOffice": "In every office",
+      "lobbyTitle": "The lobby is open",
+      "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
+      "menu": "Menu"
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",
@@ -1374,6 +1385,10 @@
       "theme": "Theme",
       "language": "Language",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "One floor for the whole day,",
+      "muted": "from the first hello to the last call."
     }
   }
 }

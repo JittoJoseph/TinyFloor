@@ -1178,7 +1178,18 @@
       "signIn": "Zaloguj się",
       "start": "Utwórz biuro",
       "open": "Otwórz TinyFloor",
-      "main": "Nawigacja główna"
+      "main": "Nawigacja główna",
+      "items": {
+        "proximity": "Rozmowy w pobliżu",
+        "meetings": "Stoły konferencyjne",
+        "chat": "Czat",
+        "people": "Obecność",
+        "guests": "Goście"
+      },
+      "everyOffice": "W każdym biurze",
+      "lobbyTitle": "Lobby jest otwarte",
+      "lobbyBody": "Przejdź się po prawdziwym piętrze, zanim założysz własne. Bez konta.",
+      "menu": "Menu"
     },
     "hero": {
       "title": "Wirtualne biuro, po którym twój zespół może chodzić.",
@@ -1374,6 +1385,10 @@
       "theme": "Motyw",
       "language": "Język",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Jedno piętro na cały dzień,",
+      "muted": "od pierwszego cześć po ostatnią rozmowę."
     }
   }
 }

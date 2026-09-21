@@ -7,14 +7,14 @@ import { CAST } from "./Frame";
 
 const [maya, leo, priya, sam] = CAST;
 
-const SIZE = "max(3.4cqw, 5cqh, 20px)";
+const SIZE = "max(3.1cqw, 4.6cqh, 20px)";
 
-/** The four of them gathered at the desks on the right, facing in. */
+/** The four of them around the desks on the right, loosely, the way people gather. */
 const GATHERED: Occupant[] = [
-  { character: maya.character, name: maya.name, status: "in_call", left: "61%", top: "82%", direction: "up", width: SIZE },
-  { character: leo.character, name: leo.name, status: "in_call", left: "68%", top: "82%", direction: "up", width: SIZE },
-  { character: priya.character, name: priya.name, status: "in_call", left: "75%", top: "82%", direction: "up", width: SIZE },
-  { character: sam.character, name: sam.name, status: "in_call", left: "82%", top: "82%", direction: "up", width: SIZE },
+  { character: maya.character, name: maya.name, status: "in_call", left: "58.5%", top: "80%", direction: "right", width: SIZE },
+  { character: leo.character, name: leo.name, status: "in_call", left: "68%", top: "86.5%", direction: "up", width: SIZE },
+  { character: priya.character, name: priya.name, status: "in_call", left: "79.5%", top: "79%", direction: "left", width: SIZE },
+  { character: sam.character, name: sam.name, status: "in_call", left: "74%", top: "57%", direction: "down", width: SIZE },
 ];
 
 /**

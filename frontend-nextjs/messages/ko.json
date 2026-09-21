@@ -1178,7 +1178,18 @@
       "signIn": "로그인",
       "start": "오피스 만들기",
       "open": "TinyFloor 열기",
-      "main": "주 메뉴"
+      "main": "주 메뉴",
+      "items": {
+        "proximity": "근접 통화",
+        "meetings": "회의 테이블",
+        "chat": "채팅",
+        "people": "접속 상태",
+        "guests": "게스트"
+      },
+      "everyOffice": "모든 오피스에",
+      "lobbyTitle": "로비가 열려 있어요",
+      "lobbyBody": "내 오피스를 만들기 전에 실제 층을 걸어 보세요. 계정은 필요 없어요.",
+      "menu": "메뉴"
     },
     "hero": {
       "title": "팀이 걸어 다닐 수 있는 가상 오피스.",
@@ -1374,6 +1385,10 @@
       "theme": "테마",
       "language": "언어",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "하루 종일 한 층에서,",
+      "muted": "첫 인사부터 마지막 통화까지."
     }
   }
 }

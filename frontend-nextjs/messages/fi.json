@@ -1178,7 +1178,18 @@
       "signIn": "Kirjaudu",
       "start": "Luo toimistosi",
       "open": "Avaa TinyFloor",
-      "main": "Päänavigaatio"
+      "main": "Päänavigaatio",
+      "items": {
+        "proximity": "Läheisyyspuhelut",
+        "meetings": "Neuvottelupöydät",
+        "chat": "Chat",
+        "people": "Läsnäolo",
+        "guests": "Vieraat"
+      },
+      "everyOffice": "Jokaisessa toimistossa",
+      "lobbyTitle": "Aula on auki",
+      "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
+      "menu": "Valikko"
     },
     "hero": {
       "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",
@@ -1374,6 +1385,10 @@
       "theme": "Teema",
       "language": "Kieli",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Yksi kerros koko päiväksi,",
+      "muted": "ensimmäisestä moikkauksesta viimeiseen puheluun."
     }
   }
 }

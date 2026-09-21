@@ -50,6 +50,8 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   return (
     <div className="home min-h-dvh overflow-x-clip bg-background text-foreground">
       <HomeNav />
+      {/* Room for the fixed header. */}
+      <div aria-hidden className="h-16" />
       <main>
         <Hero />
         <Days />
@@ -86,9 +88,6 @@ function Hero() {
   const points = t.raw("hero.points") as string[];
   return (
     <section className={cn(COLUMN, "relative pt-16 sm:pt-24")}>
-      {/* One soft wash of the faces' colours behind the words. */}
-      <div aria-hidden className="home-glow pointer-events-none absolute -inset-x-48 -top-20 h-[560px]" />
-
       <div className="relative mx-auto flex max-w-[48rem] flex-col items-center text-center">
         <Link
           href="/lobby"

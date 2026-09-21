@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Acércate para empezar a hablar.",
-      "body": "Acércate a un compañero y su barra de llamada aparece encima. Un toque abre vídeo o voz, directamente entre navegadores.",
+      "body": "Acércate a un compañero y aparece su barra de llamada encima. Un toque abre vídeo o voz, a través de la red de Cloudflare.",
       "chip1": "Vídeo o voz",
-      "chip2": "Entre pares",
+      "chip2": "Cualquier red",
       "chip3": "Un toque"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "¿Cómo funcionan las videollamadas?",
-        "a": "Una llamada con las personas a las que te acercas va de navegador a navegador por WebRTC, así que el audio y el vídeo viajan directos. Sigue conectada hasta que alguien cuelga o sale de la sala, así que alejarse no la corta. Las mesas de reunión llevan las llamadas de grupo a través de un servidor de medios: siéntate para unirte y levántate para salir."
+        "a": "Una llamada con las personas a las que te acercas va por WebRTC a través de la red de retransmisión de Cloudflare, así que conecta igual en cualquier red, de oficina o de casa. Sigue conectada hasta que alguien cuelga o sale de la sala, así que alejarte no la corta. Las mesas de reunión llevan las llamadas de grupo por un servidor de medios: siéntate para unirte, levántate para salir."
       },
       {
         "q": "¿Mi cámara está encendida todo el tiempo que estoy en una sala?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "¿Las llamadas funcionan entre navegadores?",
-            "a": "Sí. Las llamadas de TinyFloor van de punto a punto con WebRTC, así que el audio y el vídeo viajan directamente entre navegadores."
+            "a": "Sí. Las llamadas de TinyFloor van por WebRTC en el navegador, a través de la red de retransmisión de Cloudflare, así que conectan en cualquier red, de oficina o de casa."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Siéntate en la mesa de reuniones y entras en la llamada con todos los que están sentados."
           },
           {
-            "title": "De punto a punto",
-            "body": "Las llamadas viajan directamente entre navegadores con WebRTC, así que no hay nada que instalar."
+            "title": "Funciona en cualquier red",
+            "body": "Las llamadas van por WebRTC a través de la red de retransmisión de Cloudflare, así que conectan incluso tras cortafuegos de empresa y no hay nada que instalar."
           }
         ],
         "faq": [

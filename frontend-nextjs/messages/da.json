@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Gå hen for at snakke.",
-      "body": "Kom tæt på en kollega, så dukker opkaldslinjen op over dem. Ét tryk starter video eller tale, direkte mellem browserne.",
+      "body": "Gå tæt på en kollega, så dukker opkaldslinjen op over dem. Et tryk åbner video eller lyd, båret af Cloudflares netværk.",
       "chip1": "Video eller tale",
-      "chip2": "Peer-to-peer",
+      "chip2": "Ethvert netværk",
       "chip3": "Ét tryk"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Hvordan fungerer videoopkaldene?",
-        "a": "Et opkald med dem, du går hen til, kører peer-to-peer over WebRTC, så lyd og video går direkte mellem browserne. Det forbliver forbundet, indtil nogen lægger på eller forlader rummet, så det afbrydes ikke, når du går væk. Mødeborde sender gruppeopkald gennem en medieserver: sæt dig for at deltage, rejs dig for at gå."
+        "a": "Et opkald med dem, du går hen til, kører over WebRTC gennem Cloudflares relænetværk, så det forbinder ens på ethvert netværk, på kontoret eller hjemme. Det forbliver forbundet, indtil nogen lægger på eller forlader rummet, så det afbrydes ikke, når du går væk. Mødeborde sender gruppeopkald gennem en medieserver: sæt dig for at deltage, rejs dig for at gå."
       },
       {
         "q": "Er mit kamera tændt hele tiden, mens jeg er i et rum?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Virker opkald mellem browsere?",
-            "a": "Ja. Opkald i TinyFloor kører peer-to-peer via WebRTC, så lyd og billede går direkte mellem browserne."
+            "a": "Ja. Opkald i TinyFloor kører over WebRTC i browseren gennem Cloudflares relænetværk, så de forbinder på ethvert netværk, på kontoret eller hjemme."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Sæt dig ved mødebordet, så er du med i opkaldet med alle, der sidder der."
           },
           {
-            "title": "Peer-to-peer",
-            "body": "Opkald går direkte mellem browsere via WebRTC, så der er intet at installere."
+            "title": "Virker på ethvert netværk",
+            "body": "Opkald kører over WebRTC gennem Cloudflares relænetværk, så de forbinder også bag firmaets firewall, og der er intet at installere."
           }
         ],
         "faq": [

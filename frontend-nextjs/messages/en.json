@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Walk over to start talking.",
-      "body": "Get close to a teammate and their call bar appears above them. One tap opens video or voice, straight between browsers.",
+      "body": "Get close to a teammate and their call bar appears above them. One tap opens video or voice, carried over Cloudflare's network.",
       "chip1": "Video or voice",
-      "chip2": "Peer to peer",
+      "chip2": "Any network",
       "chip3": "One tap"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "How do the video calls work?",
-        "a": "A call with the people you walk up to runs peer-to-peer over WebRTC, so audio and video travel straight between browsers. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
+        "a": "A call with the people you walk up to runs over WebRTC through Cloudflare's relay network, so it connects the same way on any office or home network. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
       },
       {
         "q": "Is my camera on the whole time I am in a room?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Do calls work between browsers?",
-            "a": "Yes. TinyFloor calls run peer to peer over WebRTC, so audio and video go straight between browsers."
+            "a": "Yes. TinyFloor calls run over WebRTC in the browser, through Cloudflare's relay network, so they connect on any office or home network."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Sit at the meeting table and you join the call with everyone sitting there."
           },
           {
-            "title": "Peer to peer",
-            "body": "Calls travel straight between browsers over WebRTC, so there is nothing to install."
+            "title": "Works on any network",
+            "body": "Calls run over WebRTC through Cloudflare's relay network, so they connect behind office firewalls and there is nothing to install."
           }
         ],
         "faq": [

@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Podejdź, żeby porozmawiać.",
-      "body": "Zbliż się do kogoś z zespołu, a nad tą osobą pojawi się pasek połączenia. Jedno dotknięcie uruchamia wideo lub głos, bezpośrednio między przeglądarkami.",
+      "body": "Podejdź do współpracownika, a nad nim pojawi się pasek rozmowy. Jedno dotknięcie otwiera wideo lub głos, przesyłane przez sieć Cloudflare.",
       "chip1": "Wideo lub głos",
-      "chip2": "Peer-to-peer",
+      "chip2": "Każda sieć",
       "chip3": "Jedno dotknięcie"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Jak działają rozmowy wideo?",
-        "a": "Rozmowa z osobami, do których podchodzisz, działa peer-to-peer przez WebRTC, więc dźwięk i obraz płyną prosto między przeglądarkami. Trwa, dopóki ktoś się nie rozłączy albo nie wyjdzie z pokoju, więc odejście jej nie przerywa. Stoły konferencyjne przesyłają rozmowy grupowe przez serwer multimediów: usiądź, aby dołączyć, wstań, aby wyjść."
+        "a": "Rozmowa z osobami, do których podchodzisz, idzie przez WebRTC siecią przekaźników Cloudflare, więc łączy się tak samo w każdej sieci, w biurze czy w domu. Trwa, dopóki ktoś się nie rozłączy lub nie opuści pokoju, więc odejście jej nie przerywa. Stoły konferencyjne przesyłają rozmowy grupowe przez serwer mediów: usiądź, by dołączyć, wstań, by wyjść."
       },
       {
         "q": "Czy moja kamera jest włączona przez cały czas w pokoju?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Czy rozmowy działają między przeglądarkami?",
-            "a": "Tak. Rozmowy w TinyFloor działają peer to peer przez WebRTC, więc dźwięk i obraz płyną bezpośrednio między przeglądarkami."
+            "a": "Tak. Rozmowy w TinyFloor idą przez WebRTC w przeglądarce, siecią przekaźników Cloudflare, więc łączą się w każdej sieci, w biurze czy w domu."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Usiądź przy stole konferencyjnym, a dołączysz do rozmowy ze wszystkimi, którzy tam siedzą."
           },
           {
-            "title": "Peer to peer",
-            "body": "Rozmowy płyną bezpośrednio między przeglądarkami przez WebRTC, więc nie ma nic do instalowania."
+            "title": "Działa w każdej sieci",
+            "body": "Rozmowy idą przez WebRTC siecią przekaźników Cloudflare, więc łączą się nawet za firmową zaporą i nie trzeba nic instalować."
           }
         ],
         "faq": [

@@ -84,6 +84,6 @@ sketch above in two places, both for the better:
   On a phone the column is the whole screen and picking a channel pushes the
   conversation over it, with a back arrow.
 
-Still to come: the settings sheet holds only the office's own settings (name,
-seats, leave, close); microphone and camera pickers stay on the floor, with the
-microphone. Billing arrives with `05-pricing.md`.
+Devices (microphone and camera) sit in your menu on the rail and on the floor's
+dock; office settings are a dialog from the same menu. Billing arrives with
+`05-pricing.md`.

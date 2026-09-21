@@ -275,7 +275,8 @@
     },
     "invite": "הזמנה",
     "linkCopied": "הקישור הועתק",
-    "inviteText": "הצטרפו אליי ב-{room} ב-TinyFloor"
+    "inviteText": "הצטרפו אליי ב-{room} ב-TinyFloor",
+    "you": "{name} (את/ה)"
   },
   "call": {
     "incomingVideo": "שיחת וידאו נכנסת...",
@@ -347,7 +348,32 @@
     "noDirect": "אין עדיין הודעות ישירות.",
     "attach": "הוספת תמונה",
     "attachmentsPaid": "תמונות הן חלק ממשרד בתשלום.",
-    "attachmentsSoon": "תמונות מגיעות בקרוב."
+    "attachmentsSoon": "תמונות מגיעות בקרוב.",
+    "new": "חדש",
+    "latest": "לחדשות ביותר",
+    "today": "היום",
+    "yesterday": "אתמול",
+    "react": "הוספת תגובה",
+    "copy": "העתקת טקסט",
+    "emoji": "אימוג׳י",
+    "newLine": "שורה חדשה",
+    "jumpTo": "מעבר אל…",
+    "noMatch": "אין התאמות.",
+    "aloneHere": "בינתיים רק את/ה. כדאי להזמין מישהו לדבר איתו.",
+    "invitePeople": "הזמנת אנשים",
+    "members": "{count, plural, one {חבר/ה אחד/ת} other {# חברים}}",
+    "dmIntro": "כאן מתחילה השיחה שלך עם {name}. רק שניכם יכולים לראות אותה.",
+    "channelIntroTitle": "ברוכים הבאים ל־#{channel}",
+    "generalIntro": "כאן מדבר כל {office}. כל המשרד יכול לקרוא, וזה נשאר גם כשיוצאים מהקומה.",
+    "channelIntro": "זו ההתחלה של #{channel}. כל המשרד יכול לקרוא.",
+    "sayTo": "הודעה אל {name}",
+    "channelHint": "אותיות קטנות, בלי רווחים. כל המשרד יכול להצטרף.",
+    "create": "יצירת ערוץ",
+    "lobbyIntroTitle": "הצ׳אט של הלובי",
+    "lobbyIntro": "כל מי שבלובי יכול לקרוא את זה. זה לא נשמר: זה נעלם כשיוצאים.",
+    "lobbyDirect": "הודעות פרטיות וערוצים שנשארים מגיעים עם משרד משלך.",
+    "attachmentsLobby": "תמונות הן חלק ממשרד בתשלום.",
+    "slowDown": "לאט יותר — יותר מדי הודעות בבת אחת."
   },
   "proximity": {
     "videoCall": "שיחת וידאו",
@@ -379,7 +405,8 @@
     "close": "סגירת ההגדרות",
     "microphone": "מיקרופון",
     "camera": "מצלמה",
-    "default": "ברירת מחדל"
+    "default": "ברירת מחדל",
+    "description": "איזה מיקרופון ואיזו מצלמה הקומה משתמשת."
   },
   "tutorial": {
     "walk": "מסתובבים עם W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "לפחות 8 תווים",
       "signsOutOthers": "כאן תישארו מחוברים. בכל מקום אחר תנותקו.",
       "cancel": "ביטול",
-      "pageTitle": "החשבון שלך"
+      "pageTitle": "החשבון שלך",
+      "faceNote": "הפנים שלך נוצרות מהחשבון שלך, זהות בכל מסך. שום דבר לא מועלה ולא נשמר.",
+      "themeNote": "״מערכת״ עוקב אחרי המכשיר שלך. הבחירה נשמרת בדפדפן הזה."
     },
     "invite": {
       "invalidTitle": "ההזמנה הזו לא עובדת",
@@ -1102,7 +1131,7 @@
     "floor": "הקומה",
     "chat": "צ'אט",
     "people": {
-      "title": "חברים",
+      "title": "אנשים",
       "members": "חברים",
       "invitations": "הזמנות ממתינות",
       "guests": "אורחים",
@@ -1130,7 +1159,14 @@
       "noEmail": "בלי אימייל",
       "expires": "פג ב-{date}",
       "anyoneWithLink": "כל מי שיש לו את הקישור",
-      "wrong": "זה לא עבד. נסו שוב."
+      "wrong": "זה לא עבד. נסו שוב.",
+      "subtitle": "כל מי שב־{office}, ומי יכול להיכנס.",
+      "linkCopied": "קישור ההזמנה הועתק",
+      "nobodyOnFloor": "אין כרגע אף אחד אחר בקומה.",
+      "seatsLeft": "{count, plural, one {נשאר מקום אחד — הזמינו מישהו} other {נשארו # מקומות — הזמינו מישהו}}",
+      "seatsNote": "מקום הוא חבר. מי שעוזב משחרר את שלו; להיות לא מחובר לא משחרר.",
+      "invitationsNote": "הזמנה לא תופסת מקום. הראשון שמאשר מקבל מקום, כל עוד יש פנוי.",
+      "guestLink": "קישור אורח"
     },
     "office": "משרד",
     "offices": "המשרדים שלך",
@@ -1156,5 +1192,53 @@
     "freePlan": "חינם עד 3 אנשים. בלי כרטיס.",
     "accountNext": "עכשיו חשבון, והמשרד מוכן.",
     "justLooking": "רק מסתכלים? <link>היכנסו למשרד הציבורי</link> במקום."
+  },
+  "shell": {
+    "floor": "קומה",
+    "chat": "צ׳אט",
+    "people": "אנשים",
+    "you": "את/ה",
+    "guest": "אורח",
+    "status": "סטטוס",
+    "theme": "ערכת נושא",
+    "themes": {
+      "system": "מערכת",
+      "light": "בהיר",
+      "dark": "כהה"
+    },
+    "devices": "מיקרופון ומצלמה",
+    "officeSettings": "הגדרות המשרד",
+    "makeAccount": "יצירת חשבון",
+    "account": "חשבון",
+    "allOffices": "כל המשרדים",
+    "signOut": "התנתקות",
+    "switchOffice": "החלפת משרד",
+    "membersOf": "{used} מתוך {seats} חברים",
+    "switchTo": "המשרדים האחרים שלך",
+    "newOffice": "משרד חדש",
+    "publicLobby": "לובי ציבורי",
+    "reply": "תגובה",
+    "backToFloor": "חזרה לקומה",
+    "onTheFloor": "את/ה בקומה",
+    "back": "חזרה",
+    "onFloorShort": "בקומה",
+    "notOnFloor": "לא בקומה",
+    "message": "הודעה",
+    "leaveLobby": "יציאה מהלובי",
+    "lobbyChannel": "lobby",
+    "hereNow": "כאן עכשיו"
+  },
+  "dashboard": {
+    "morning": "בוקר טוב, {name}",
+    "afternoon": "צהריים טובים, {name}",
+    "evening": "ערב טוב, {name}",
+    "subtitle": "המשרדים שלך, ומי נמצא עכשיו בכל קומה.",
+    "onFloor": "{count, plural, =0 {אין אף אחד בקומה} other {# בקומה}}",
+    "newOffice": "משרד חדש",
+    "newOfficeBody": "שלושה אנשים בחינם. קומה, צ׳אט ושיחות.",
+    "lobby": "הלובי הציבורי",
+    "lobbyBody": "קפצו לבקר ופגשו את מי שנמצא.",
+    "emptyTitle": "פתחו את המשרד הראשון שלכם",
+    "emptyBody": "משרד הוא קומה שהצוות שלך מסתובב בה, עם צ׳אט ושיחות מובנים. שלושה חברים בחינם."
   }
 }

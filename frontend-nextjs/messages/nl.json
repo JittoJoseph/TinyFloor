@@ -275,7 +275,8 @@
     },
     "invite": "Uitnodigen",
     "linkCopied": "Link gekopieerd",
-    "inviteText": "Kom bij me in {room} op TinyFloor"
+    "inviteText": "Kom bij me in {room} op TinyFloor",
+    "you": "{name} (jij)"
   },
   "call": {
     "incomingVideo": "Inkomend videogesprek...",
@@ -347,7 +348,32 @@
     "noDirect": "Nog geen directe berichten.",
     "attach": "Afbeelding toevoegen",
     "attachmentsPaid": "Afbeeldingen horen bij een betaald kantoor.",
-    "attachmentsSoon": "Afbeeldingen komen binnenkort."
+    "attachmentsSoon": "Afbeeldingen komen binnenkort.",
+    "new": "Nieuw",
+    "latest": "Naar het nieuwste",
+    "today": "Vandaag",
+    "yesterday": "Gisteren",
+    "react": "Reactie toevoegen",
+    "copy": "Tekst kopiëren",
+    "emoji": "Emoji",
+    "newLine": "nieuwe regel",
+    "jumpTo": "Ga naar…",
+    "noMatch": "Niets gevonden.",
+    "aloneHere": "Nog alleen jij. Nodig iemand uit om mee te praten.",
+    "invitePeople": "Mensen uitnodigen",
+    "members": "{count, plural, one {# lid} other {# leden}}",
+    "dmIntro": "Hier begint je gesprek met {name}. Alleen jullie twee kunnen het zien.",
+    "channelIntroTitle": "Welkom in #{channel}",
+    "generalIntro": "Hier praat heel {office}. Iedereen in het kantoor kan meelezen, en het blijft als je de vloer verlaat.",
+    "channelIntro": "Dit is het begin van #{channel}. Iedereen in het kantoor kan meelezen.",
+    "sayTo": "Bericht aan {name}",
+    "channelHint": "Kleine letters, geen spaties. Iedereen in het kantoor kan meedoen.",
+    "create": "Kanaal maken",
+    "lobbyIntroTitle": "De chat van de lobby",
+    "lobbyIntro": "Iedereen in de lobby kan dit lezen. Het wordt niet bewaard: het verdwijnt als je weggaat.",
+    "lobbyDirect": "Directe berichten en kanalen die blijven, krijg je met een eigen kantoor.",
+    "attachmentsLobby": "Afbeeldingen horen bij een betaald kantoor.",
+    "slowDown": "Iets rustiger: te veel berichten tegelijk."
   },
   "proximity": {
     "videoCall": "Videogesprek",
@@ -379,7 +405,8 @@
     "close": "Instellingen sluiten",
     "microphone": "Microfoon",
     "camera": "Camera",
-    "default": "Standaard"
+    "default": "Standaard",
+    "description": "Welke microfoon en camera de vloer gebruikt."
   },
   "tutorial": {
     "walk": "Loop rond met W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Minstens 8 tekens",
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
-      "pageTitle": "Je account"
+      "pageTitle": "Je account",
+      "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
+      "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard."
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -1102,7 +1131,7 @@
     "floor": "De vloer",
     "chat": "Chat",
     "people": {
-      "title": "Leden",
+      "title": "Mensen",
       "members": "Leden",
       "invitations": "Openstaande uitnodigingen",
       "guests": "Gasten",
@@ -1130,7 +1159,14 @@
       "noEmail": "Geen e-mail",
       "expires": "Verloopt op {date}",
       "anyoneWithLink": "Iedereen met de link",
-      "wrong": "Dat lukte niet. Probeer het nog eens."
+      "wrong": "Dat lukte niet. Probeer het nog eens.",
+      "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
+      "linkCopied": "Uitnodigingslink gekopieerd",
+      "nobodyOnFloor": "Er is nu niemand anders op de vloer.",
+      "seatsLeft": "{count, plural, one {# plek vrij — nodig iemand uit} other {# plekken vrij — nodig iemand uit}}",
+      "seatsNote": "Een plek is een lid. Wie vertrekt geeft die vrij; offline zijn niet.",
+      "invitationsNote": "Een uitnodiging houdt geen plek bezet. Wie het eerst accepteert krijgt er een, zolang er een vrij is.",
+      "guestLink": "Gastlink"
     },
     "office": "Kantoor",
     "offices": "Je kantoren",
@@ -1156,5 +1192,53 @@
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
     "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
     "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
+  },
+  "shell": {
+    "floor": "Vloer",
+    "chat": "Chat",
+    "people": "Mensen",
+    "you": "Jij",
+    "guest": "Gast",
+    "status": "Status",
+    "theme": "Thema",
+    "themes": {
+      "system": "Systeem",
+      "light": "Licht",
+      "dark": "Donker"
+    },
+    "devices": "Microfoon en camera",
+    "officeSettings": "Kantoorinstellingen",
+    "makeAccount": "Account aanmaken",
+    "account": "Account",
+    "allOffices": "Alle kantoren",
+    "signOut": "Afmelden",
+    "switchOffice": "Ander kantoor",
+    "membersOf": "{used} van {seats} leden",
+    "switchTo": "Je andere kantoren",
+    "newOffice": "Nieuw kantoor",
+    "publicLobby": "Openbare lobby",
+    "reply": "Beantwoorden",
+    "backToFloor": "Terug naar de vloer",
+    "onTheFloor": "Je bent op de vloer",
+    "back": "Terug",
+    "onFloorShort": "Op de vloer",
+    "notOnFloor": "Niet op de vloer",
+    "message": "Bericht",
+    "leaveLobby": "Lobby verlaten",
+    "lobbyChannel": "lobby",
+    "hereNow": "Nu hier"
+  },
+  "dashboard": {
+    "morning": "Goedemorgen, {name}",
+    "afternoon": "Goedemiddag, {name}",
+    "evening": "Goedenavond, {name}",
+    "subtitle": "Je kantoren, en wie er nu op elke vloer is.",
+    "onFloor": "{count, plural, =0 {Niemand op de vloer} other {# op de vloer}}",
+    "newOffice": "Nieuw kantoor",
+    "newOfficeBody": "Drie mensen gratis. Een vloer, chat en bellen.",
+    "lobby": "De openbare lobby",
+    "lobbyBody": "Loop binnen en ontmoet wie er is.",
+    "emptyTitle": "Begin je eerste kantoor",
+    "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis."
   }
 }

@@ -275,7 +275,8 @@
     },
     "invite": "招待",
     "linkCopied": "リンクをコピーしました",
-    "inviteText": "TinyFloor の {room} に参加しませんか"
+    "inviteText": "TinyFloor の {room} に参加しませんか",
+    "you": "{name}（あなた）"
   },
   "call": {
     "incomingVideo": "ビデオ通話の着信...",
@@ -347,7 +348,32 @@
     "noDirect": "ダイレクトメッセージはまだありません。",
     "attach": "画像を追加",
     "attachmentsPaid": "画像は有料オフィスの機能です。",
-    "attachmentsSoon": "画像はまもなく使えます。"
+    "attachmentsSoon": "画像はまもなく使えます。",
+    "new": "新着",
+    "latest": "最新へ",
+    "today": "今日",
+    "yesterday": "昨日",
+    "react": "リアクションを追加",
+    "copy": "テキストをコピー",
+    "emoji": "絵文字",
+    "newLine": "改行",
+    "jumpTo": "移動…",
+    "noMatch": "一致するものがありません。",
+    "aloneHere": "今はあなただけです。話し相手を招待しましょう。",
+    "invitePeople": "メンバーを招待",
+    "members": "{count, plural, other {メンバー#人}}",
+    "dmIntro": "{name}さんとの会話はここから始まります。見られるのはおふたりだけです。",
+    "channelIntroTitle": "#{channel}へようこそ",
+    "generalIntro": "{office}のみんなが話す場所です。オフィスの全員が読めて、フロアを離れても残ります。",
+    "channelIntro": "#{channel}のはじまりです。オフィスの全員が読めます。",
+    "sayTo": "{name}さんにメッセージ",
+    "channelHint": "小文字のみ、スペースなし。オフィスの誰でも参加できます。",
+    "create": "チャンネルを作成",
+    "lobbyIntroTitle": "ロビーのチャット",
+    "lobbyIntro": "ロビーにいる全員が読めます。保存されず、退出すると消えます。",
+    "lobbyDirect": "残るチャンネルとダイレクトメッセージは、自分のオフィスで使えます。",
+    "attachmentsLobby": "画像は有料オフィスの機能です。",
+    "slowDown": "少しゆっくり。一度に送るメッセージが多すぎます。"
   },
   "proximity": {
     "videoCall": "ビデオ通話",
@@ -379,7 +405,8 @@
     "close": "設定を閉じる",
     "microphone": "マイク",
     "camera": "カメラ",
-    "default": "デフォルト"
+    "default": "デフォルト",
+    "description": "フロアで使うマイクとカメラ。"
   },
   "tutorial": {
     "walk": "W A S D キーで歩き回りましょう",
@@ -1042,7 +1069,9 @@
       "passwordRule": "8文字以上",
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
-      "pageTitle": "アカウント"
+      "pageTitle": "アカウント",
+      "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
+      "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
@@ -1130,7 +1159,14 @@
       "noEmail": "メールなし",
       "expires": "{date} に期限切れ",
       "anyoneWithLink": "リンクを持つだれでも",
-      "wrong": "うまくいきませんでした。もう一度お試しください。"
+      "wrong": "うまくいきませんでした。もう一度お試しください。",
+      "subtitle": "{office}の全員と、入れる人。",
+      "linkCopied": "招待リンクをコピーしました",
+      "nobodyOnFloor": "今フロアには他に誰もいません。",
+      "seatsLeft": "{count, plural, other {空き#席 — 誰かを招待しましょう}}",
+      "seatsNote": "1席は1人のメンバーです。抜けると席が空きます。オフラインでは空きません。",
+      "invitationsNote": "招待は席を取りません。空きがあれば、最初に承諾した人が席を得ます。",
+      "guestLink": "ゲストリンク"
     },
     "office": "オフィス",
     "offices": "あなたのオフィス",
@@ -1156,5 +1192,53 @@
     "freePlan": "3人まで無料。カード不要です。",
     "accountNext": "次はアカウント作成。それでオフィスの準備は完了です。",
     "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。"
+  },
+  "shell": {
+    "floor": "フロア",
+    "chat": "チャット",
+    "people": "メンバー",
+    "you": "あなた",
+    "guest": "ゲスト",
+    "status": "ステータス",
+    "theme": "テーマ",
+    "themes": {
+      "system": "システム",
+      "light": "ライト",
+      "dark": "ダーク"
+    },
+    "devices": "マイクとカメラ",
+    "officeSettings": "オフィス設定",
+    "makeAccount": "アカウントを作成",
+    "account": "アカウント",
+    "allOffices": "すべてのオフィス",
+    "signOut": "ログアウト",
+    "switchOffice": "オフィスを切り替え",
+    "membersOf": "{seats}人中{used}人",
+    "switchTo": "ほかのオフィス",
+    "newOffice": "新しいオフィス",
+    "publicLobby": "公開ロビー",
+    "reply": "返信",
+    "backToFloor": "フロアに戻る",
+    "onTheFloor": "フロアにいます",
+    "back": "戻る",
+    "onFloorShort": "フロアにいる",
+    "notOnFloor": "フロアにいない",
+    "message": "メッセージ",
+    "leaveLobby": "ロビーを出る",
+    "lobbyChannel": "lobby",
+    "hereNow": "いまここに"
+  },
+  "dashboard": {
+    "morning": "おはようございます、{name}さん",
+    "afternoon": "こんにちは、{name}さん",
+    "evening": "こんばんは、{name}さん",
+    "subtitle": "あなたのオフィスと、いま各フロアにいる人。",
+    "onFloor": "{count, plural, =0 {フロアに誰もいません} other {フロアに#人}}",
+    "newOffice": "新しいオフィス",
+    "newOfficeBody": "3人まで無料。フロア、チャット、通話。",
+    "lobby": "公開ロビー",
+    "lobbyBody": "ふらっと立ち寄って、いる人と会いましょう。",
+    "emptyTitle": "最初のオフィスをつくる",
+    "emptyBody": "オフィスはチームが歩き回るひとつのフロアで、チャットと通話も付いています。メンバー3人まで無料です。"
   }
 }

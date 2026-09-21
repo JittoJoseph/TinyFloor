@@ -1225,7 +1225,6 @@
     "notOnFloor": "Not on the floor",
     "message": "Message",
     "leaveLobby": "Leave the lobby",
-    "lobby": "Lobby",
     "lobbyChannel": "lobby",
     "hereNow": "Here now"
   },
@@ -1240,8 +1239,6 @@
     "lobby": "The public lobby",
     "lobbyBody": "Drop in and meet whoever is around.",
     "emptyTitle": "Start your first office",
-    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
-    "yourRole": "{role}",
-    "enter": "Walk in"
+    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free."
   }
 }

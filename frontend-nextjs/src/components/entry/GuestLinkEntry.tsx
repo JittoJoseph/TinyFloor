@@ -3,13 +3,17 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AlertCircle } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { EntryShell, primaryButtonClass } from "./EntryShell";
 import { EntryPreview } from "./EntryPreview";
 import { WalkIn } from "./WalkIn";
 import { RoomView } from "@/components/room/RoomView";
+import { AppShell, Logo } from "@/components/app/AppShell";
+import { YouMenu } from "@/components/app/YouMenu";
+import SettingsModal from "@/components/SettingsModal";
+import { Map as MapIcon } from "lucide-react";
 
 export interface GuestLinkPreview {
   officeName: string;
@@ -25,6 +29,9 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
   const [preview, setPreview] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
   const [inside, setInside] = useState(false);
+  const [devices, setDevices] = useState(false);
+  const ts = useTranslations("shell");
+  const pathname = usePathname();
 
   useEffect(() => {
     if (initialPreview) return;
@@ -42,16 +49,26 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
     };
   }, [initialPreview, token]);
 
+  // A guest visits the floor only: an office's chat and people are its members'.
   if (inside && user && preview) {
     return (
-      <div className="fixed inset-0">
-        <RoomView
-          title={preview.officeName}
-          user={user}
-          ticketFor={() => api.guestLinkTicket(token)}
-          leaveHref={user.guest ? "/" : "/dashboard"}
-        />
-      </div>
+      <AppShell
+        mark={<Logo size={40} />}
+        destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: <MapIcon />, active: true }]}
+        you={<YouMenu onFloor onDevices={() => setDevices(true)} />}
+        floor={
+          <>
+            <RoomView
+              title={preview.officeName}
+              user={user}
+              ticketFor={() => api.guestLinkTicket(token)}
+              leaveHref={user.guest ? "/" : "/dashboard"}
+              onDevices={() => setDevices(true)}
+            />
+            <SettingsModal isOpen={devices} onClose={() => setDevices(false)} />
+          </>
+        }
+      />
     );
   }
 

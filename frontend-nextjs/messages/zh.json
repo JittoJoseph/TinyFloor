@@ -275,7 +275,8 @@
     },
     "invite": "邀请",
     "linkCopied": "链接已复制",
-    "inviteText": "来 TinyFloor 的 {room} 找我吧"
+    "inviteText": "来 TinyFloor 的 {room} 找我吧",
+    "you": "{name}（你）"
   },
   "call": {
     "incomingVideo": "视频来电...",
@@ -347,7 +348,32 @@
     "noDirect": "还没有私信。",
     "attach": "添加图片",
     "attachmentsPaid": "图片是付费办公室的功能。",
-    "attachmentsSoon": "图片很快就来。"
+    "attachmentsSoon": "图片很快就来。",
+    "new": "新消息",
+    "latest": "跳到最新",
+    "today": "今天",
+    "yesterday": "昨天",
+    "react": "添加回应",
+    "copy": "复制文字",
+    "emoji": "表情",
+    "newLine": "换行",
+    "jumpTo": "跳转到…",
+    "noMatch": "没有匹配的结果。",
+    "aloneHere": "目前只有你。邀请个人来聊天吧。",
+    "invitePeople": "邀请成员",
+    "members": "{count, plural, other {# 名成员}}",
+    "dmIntro": "这是你与 {name} 对话的开始。只有你们两人能看到。",
+    "channelIntroTitle": "欢迎来到 #{channel}",
+    "generalIntro": "这里是 {office} 所有人交流的地方。办公室里每个人都能看到，离开楼层后也会保留。",
+    "channelIntro": "这是 #{channel} 的开始。办公室里每个人都能看到。",
+    "sayTo": "给 {name} 发消息",
+    "channelHint": "小写字母，不含空格。办公室里任何人都能加入。",
+    "create": "创建频道",
+    "lobbyIntroTitle": "大厅聊天",
+    "lobbyIntro": "大厅里的每个人都能看到。不会保存：你离开后就会消失。",
+    "lobbyDirect": "会保留的频道和私信，属于你自己的办公室。",
+    "attachmentsLobby": "图片是付费办公室的功能。",
+    "slowDown": "慢一点——一次发送的消息太多了。"
   },
   "proximity": {
     "videoCall": "视频通话",
@@ -379,7 +405,8 @@
     "close": "关闭设置",
     "microphone": "麦克风",
     "camera": "摄像头",
-    "default": "默认"
+    "default": "默认",
+    "description": "楼层使用的麦克风和摄像头。"
   },
   "tutorial": {
     "walk": "用 W A S D 四处走动",
@@ -1042,7 +1069,9 @@
       "passwordRule": "至少 8 个字符",
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
       "cancel": "取消",
-      "pageTitle": "你的账号"
+      "pageTitle": "你的账号",
+      "faceNote": "你的头像根据你的账号生成，在每个屏幕上都一样。不会上传或保存任何内容。",
+      "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -1130,7 +1159,14 @@
       "noEmail": "没有邮箱",
       "expires": "{date} 过期",
       "anyoneWithLink": "任何拿到链接的人",
-      "wrong": "没有成功，请再试一次。"
+      "wrong": "没有成功，请再试一次。",
+      "subtitle": "{office} 的所有人，以及谁可以进来。",
+      "linkCopied": "邀请链接已复制",
+      "nobodyOnFloor": "现在楼层上没有其他人。",
+      "seatsLeft": "{count, plural, other {还剩 # 个席位——邀请个人吧}}",
+      "seatsNote": "一个席位就是一名成员。有人离开就会空出席位，离线则不会。",
+      "invitationsNote": "邀请不占席位。只要还有空位，最先接受的人就能得到一个。",
+      "guestLink": "访客链接"
     },
     "office": "办公室",
     "offices": "你的办公室",
@@ -1156,5 +1192,53 @@
     "freePlan": "3 人以内免费，无需银行卡。",
     "accountNext": "下一步：注册账号，办公室就绪。",
     "justLooking": "只是看看？不如<link>走进公共办公室</link>。"
+  },
+  "shell": {
+    "floor": "楼层",
+    "chat": "聊天",
+    "people": "成员",
+    "you": "你",
+    "guest": "访客",
+    "status": "状态",
+    "theme": "主题",
+    "themes": {
+      "system": "系统",
+      "light": "浅色",
+      "dark": "深色"
+    },
+    "devices": "麦克风和摄像头",
+    "officeSettings": "办公室设置",
+    "makeAccount": "创建账号",
+    "account": "账号",
+    "allOffices": "所有办公室",
+    "signOut": "退出登录",
+    "switchOffice": "切换办公室",
+    "membersOf": "{used}/{seats} 名成员",
+    "switchTo": "你的其他办公室",
+    "newOffice": "新建办公室",
+    "publicLobby": "公共大厅",
+    "reply": "回复",
+    "backToFloor": "回到楼层",
+    "onTheFloor": "你在楼层上",
+    "back": "返回",
+    "onFloorShort": "在楼层上",
+    "notOnFloor": "不在楼层上",
+    "message": "发消息",
+    "leaveLobby": "离开大厅",
+    "lobbyChannel": "lobby",
+    "hereNow": "现在在这里"
+  },
+  "dashboard": {
+    "morning": "早上好，{name}",
+    "afternoon": "下午好，{name}",
+    "evening": "晚上好，{name}",
+    "subtitle": "你的办公室，以及此刻每层楼上的人。",
+    "onFloor": "{count, plural, =0 {楼层上没有人} other {楼层上有 # 人}}",
+    "newOffice": "新建办公室",
+    "newOfficeBody": "三人免费。楼层、聊天和通话。",
+    "lobby": "公共大厅",
+    "lobbyBody": "随时来逛逛，认识在场的人。",
+    "emptyTitle": "开启你的第一个办公室",
+    "emptyBody": "办公室是团队走动的一层楼，内置聊天和通话。三名成员免费。"
   }
 }

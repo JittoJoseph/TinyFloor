@@ -275,7 +275,8 @@
     },
     "invite": "Convidar",
     "linkCopied": "Link copiado",
-    "inviteText": "Vem ter comigo em {room} no TinyFloor"
+    "inviteText": "Vem ter comigo em {room} no TinyFloor",
+    "you": "{name} (você)"
   },
   "call": {
     "incomingVideo": "Chamada de vídeo recebida...",
@@ -347,7 +348,32 @@
     "noDirect": "Ainda sem mensagens diretas.",
     "attach": "Adicionar uma imagem",
     "attachmentsPaid": "As imagens fazem parte de um escritório pago.",
-    "attachmentsSoon": "As imagens chegam em breve."
+    "attachmentsSoon": "As imagens chegam em breve.",
+    "new": "Novas",
+    "latest": "Ir para as mais recentes",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "react": "Adicionar uma reação",
+    "copy": "Copiar texto",
+    "emoji": "Emoji",
+    "newLine": "nova linha",
+    "jumpTo": "Ir para…",
+    "noMatch": "Nada corresponde.",
+    "aloneHere": "Por enquanto só você. Convide alguém para conversar.",
+    "invitePeople": "Convidar pessoas",
+    "members": "{count, plural, one {# membro} other {# membros}}",
+    "dmIntro": "Aqui começa sua conversa com {name}. Só vocês dois podem ver.",
+    "channelIntroTitle": "Boas-vindas a #{channel}",
+    "generalIntro": "É aqui que todo o {office} conversa. Todo o escritório pode ler, e fica quando você sai do andar.",
+    "channelIntro": "Este é o começo de #{channel}. Todo o escritório pode ler.",
+    "sayTo": "Mensagem para {name}",
+    "channelHint": "Minúsculas, sem espaços. Todo o escritório pode entrar.",
+    "create": "Criar canal",
+    "lobbyIntroTitle": "O chat do saguão",
+    "lobbyIntro": "Todos no saguão podem ler isto. Nada é guardado: some quando você sai.",
+    "lobbyDirect": "Mensagens diretas e canais que ficam vêm com um escritório só seu.",
+    "attachmentsLobby": "Imagens fazem parte de um escritório pago.",
+    "slowDown": "Mais devagar: mensagens demais de uma vez."
   },
   "proximity": {
     "videoCall": "Chamada de vídeo",
@@ -379,7 +405,8 @@
     "close": "Fechar configurações",
     "microphone": "Microfone",
     "camera": "Câmera",
-    "default": "Padrão"
+    "default": "Padrão",
+    "description": "Qual microfone e câmera o andar usa."
   },
   "tutorial": {
     "walk": "Ande com W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Pelo menos 8 caracteres",
       "signsOutOthers": "Você continua conectado aqui. Em todos os outros lugares, a sessão será encerrada.",
       "cancel": "Cancelar",
-      "pageTitle": "Sua conta"
+      "pageTitle": "Sua conta",
+      "faceNote": "Seu rosto é desenhado a partir da sua conta, igual em todas as telas. Nada é enviado nem guardado.",
+      "themeNote": "Sistema segue seu dispositivo. A escolha fica neste navegador."
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",
@@ -1102,7 +1131,7 @@
     "floor": "O piso",
     "chat": "Conversa",
     "people": {
-      "title": "Membros",
+      "title": "Pessoas",
       "members": "Membros",
       "invitations": "Convites pendentes",
       "guests": "Convidados",
@@ -1130,7 +1159,14 @@
       "noEmail": "Sem email",
       "expires": "Expira em {date}",
       "anyoneWithLink": "Qualquer pessoa com o link",
-      "wrong": "Não resultou. Tenta outra vez."
+      "wrong": "Não resultou. Tenta outra vez.",
+      "subtitle": "Todos em {office}, e quem pode entrar.",
+      "linkCopied": "Link de convite copiado",
+      "nobodyOnFloor": "Não há mais ninguém no andar agora.",
+      "seatsLeft": "{count, plural, one {# lugar livre — convide alguém} other {# lugares livres — convide alguém}}",
+      "seatsNote": "Um lugar é um membro. Quem sai libera o seu; ficar offline, não.",
+      "invitationsNote": "Um convite não ocupa lugar. Quem aceitar primeiro fica com um, enquanto houver.",
+      "guestLink": "Link de convidado"
     },
     "office": "Escritório",
     "offices": "Seus escritórios",
@@ -1156,5 +1192,53 @@
     "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
     "accountNext": "Depois: crie uma conta e o escritório fica pronto.",
     "justLooking": "Só dando uma olhada? <link>Entre no escritório público</link>."
+  },
+  "shell": {
+    "floor": "Andar",
+    "chat": "Chat",
+    "people": "Pessoas",
+    "you": "Você",
+    "guest": "Convidado",
+    "status": "Status",
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Escuro"
+    },
+    "devices": "Microfone e câmera",
+    "officeSettings": "Configurações do escritório",
+    "makeAccount": "Criar uma conta",
+    "account": "Conta",
+    "allOffices": "Todos os escritórios",
+    "signOut": "Sair",
+    "switchOffice": "Trocar de escritório",
+    "membersOf": "{used} de {seats} membros",
+    "switchTo": "Seus outros escritórios",
+    "newOffice": "Novo escritório",
+    "publicLobby": "Saguão público",
+    "reply": "Responder",
+    "backToFloor": "Voltar ao andar",
+    "onTheFloor": "Você está no andar",
+    "back": "Voltar",
+    "onFloorShort": "No andar",
+    "notOnFloor": "Fora do andar",
+    "message": "Mensagem",
+    "leaveLobby": "Sair do saguão",
+    "lobbyChannel": "saguao",
+    "hereNow": "Aqui agora"
+  },
+  "dashboard": {
+    "morning": "Bom dia, {name}",
+    "afternoon": "Boa tarde, {name}",
+    "evening": "Boa noite, {name}",
+    "subtitle": "Seus escritórios, e quem está em cada andar agora.",
+    "onFloor": "{count, plural, =0 {Ninguém no andar} other {# no andar}}",
+    "newOffice": "Novo escritório",
+    "newOfficeBody": "Três pessoas grátis. Um andar, chat e chamadas.",
+    "lobby": "O saguão público",
+    "lobbyBody": "Passe por lá e conheça quem estiver.",
+    "emptyTitle": "Comece seu primeiro escritório",
+    "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis."
   }
 }

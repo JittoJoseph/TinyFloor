@@ -438,6 +438,12 @@ export class PlayerManager {
     return this.players;
   }
 
+  /** Where someone is standing, in world pixels, if they are on this floor. */
+  positionOf(id: string): { x: number; y: number } | null {
+    const container = this.players.get(id);
+    return container ? { x: container.x, y: container.y } : null;
+  }
+
   getPlayerName(id: string): string | undefined {
     return this.nameTags.get(id)?.text;
   }

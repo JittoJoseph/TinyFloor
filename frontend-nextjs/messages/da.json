@@ -254,7 +254,6 @@
     "leave": "Forlad",
     "reconnecting": "Genopretter forbindelse…",
     "peopleHere": "På gulvet · {count}",
-    "reconnectingNote": "Forbindelsen blev afbrudt. Vi får dig ind igen…",
     "ended": {
       "back": "Tilbage",
       "fullTitle": "Rummet er fuldt",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Rumchat",
-    "system": "System",
-    "welcome": "Velkommen til rumchatten. Beskeder kan ses af alle her.",
-    "placeholder": "Skriv en besked...",
     "close": "Luk chat",
     "send": "Send besked",
     "channels": "Kanaler",
@@ -346,9 +342,6 @@
     "newChannel": "Ny kanal",
     "channelName": "Kanalnavn",
     "say": "Skriv i {channel}",
-    "older": "Ældre beskeder",
-    "nothingYet": "Her er tomt. Sig det første.",
-    "noDirect": "Ingen direkte beskeder endnu.",
     "attach": "Tilføj et billede",
     "attachmentsPaid": "Billeder hører til et betalt kontor.",
     "attachmentsSoon": "Billeder kommer snart.",
@@ -372,20 +365,24 @@
     "sayTo": "Besked til {name}",
     "channelHint": "Små bogstaver, ingen mellemrum. Alle på kontoret kan være med.",
     "create": "Opret kanal",
-    "lobbyIntroTitle": "Lobbyens chat",
-    "lobbyIntro": "Alle i lobbyen kan læse det her. Det gemmes ikke: det forsvinder, når du går.",
-    "lobbyDirect": "Direkte beskeder og kanaler, der bliver, følger med et kontor for sig selv.",
-    "attachmentsLobby": "Billeder hører til et betalt kontor.",
     "slowDown": "Lidt langsommere – for mange beskeder på én gang.",
     "addChannel": "Tilføj en kanal",
     "starterHi": "Hej {name} 👋",
     "sayHi": "Sig hej",
     "starterMinute": "Har du et øjeblik?",
     "askMinute": "Et øjeblik?",
-    "findOnFloor": "Find på gulvet",
     "starterHello": "Hej alle sammen 👋",
     "sayHello": "Sig hej til alle",
-    "actions": "Handlinger"
+    "actions": "Handlinger",
+    "walkOver": "Gå derhen",
+    "lobbyAlone": "Direkte beskeder følger med et kontor for jer selv. Sig hej i en kanal her.",
+    "dropHere": "Slip for at dele i {channel}",
+    "dropLobby": "Billeder deles i kontorer, ikke i lobbyen.",
+    "lobbyGeneral": "Alle i hver kopi af lobbyen læser dette. Sig hej, spørg om hvad som helst. Beskeder bliver i 7 dage.",
+    "lobbyIntroductions": "Hvem er du, og hvad bringer dig her? Hele lobbyen kan læse det i 7 dage.",
+    "lobbyFeedback": "Hvad ville gøre TinyFloor bedre for dit team? Vi læser hver besked her.",
+    "introduceYourself": "Præsenter dig selv",
+    "starterIntro": "Hej, jeg er ny her 👋"
   },
   "proximity": {
     "videoCall": "Videoopkald",
@@ -418,7 +415,46 @@
     "microphone": "Mikrofon",
     "camera": "Kamera",
     "default": "Standard",
-    "description": "Hvilken mikrofon og kamera gulvet bruger."
+    "description": "Hvilken mikrofon og kamera gulvet bruger.",
+    "preferences": "Dine præferencer",
+    "sections": {
+      "general": "Generelt",
+      "media": "Lyd og video",
+      "notifications": "Notifikationer",
+      "accessibility": "Tilgængelighed",
+      "office": "Kontor"
+    },
+    "appearance": "Udseende",
+    "themeNote": "\"System\" følger din enhed.",
+    "language": "Sprog",
+    "languageTitle": "Sprog",
+    "languageNote": "Til menuer, knapper og beskeder fra TinyFloor.",
+    "devices": "Enheder",
+    "devicesNote": "Bruges næste gang, du tænder mikrofonen eller kameraet.",
+    "voice": "Stemme",
+    "voiceNote": "Din browser gør det på din enhed.",
+    "noiseSuppression": "Støjdæmpning",
+    "noiseSuppressionNote": "Dæmper tastatur, blæsere og rummet omkring dig.",
+    "echoCancellation": "Ekkodæmpning",
+    "echoCancellationNote": "Forhindrer andre i at høre sig selv gennem dine højttalere.",
+    "video": "Video",
+    "mirror": "Spejlvend min video",
+    "mirrorNote": "Kun for dig: andre ser dig altid den rigtige vej.",
+    "mediaLocal": "Gemmes kun i denne browser.",
+    "sounds": "Lyde",
+    "messageSound": "Nye beskeder",
+    "messageSoundNote": "En blød lyd, når en besked kommer.",
+    "joinSound": "Nogen ankommer",
+    "joinSoundNote": "En blød lyd, når nogen træder ind på etagen.",
+    "onTheFloor": "På etagen",
+    "nudges": "Forhåndsvisning af beskeder",
+    "nudgesNote": "Vis nye beskeder kort over etagen.",
+    "motion": "Bevægelse",
+    "reduceMotion": "Reducer bevægelse",
+    "reduceMotionNote": "Færre animationer i hele appen.",
+    "performance": "Ydeevne",
+    "batterySaver": "Batterisparer",
+    "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind."
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Åben for alle",
     "title": "Lobbyen",
     "subtitle": "Alle kan kigge ind. Sig hvem du er, vælg en figur, og gå ind.",
-    "peopleSubtitle": "Alle, der er i lobbyen lige nu. Den, der har linket, kan komme ind."
+    "peopleSubtitle": "Alle, der er i lobbyen lige nu. Den, der har linket, kan komme ind.",
+    "door": "{here, plural, =0 {Ingen herinde endnu, bliv den første} one {# person herinde nu} other {# personer herinde nu}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Kanaler følger med et kontor",
+        "body": "I dit eget kontor laver du så mange kanaler, som dit team har brug for, og de bliver."
+      },
+      "directMessages": {
+        "title": "Direkte beskeder følger med et kontor",
+        "body": "Skriv til alle i dit kontor, en til en, og fortsæt i morgen."
+      },
+      "attachments": {
+        "title": "At dele billeder følger med et kontor",
+        "body": "Slip skærmbilleder og fotos i enhver samtale i dit eget kontor."
+      },
+      "invites": {
+        "title": "Invitationer følger med et kontor",
+        "body": "Inviter dit team via e-mail, eller luk en gæst ind med et link, i dit eget kontor."
+      },
+      "free": "Et kontor laves på et minut og er gratis for op til 3 personer.",
+      "go": "Lav mit kontor",
+      "notNow": "Ikke nu"
+    },
+    "yourOffice": {
+      "eyebrow": "Gratis for små teams",
+      "title": "En etage for jer selv, til dit team",
+      "body": "Alt fra lobbyen, men jeres: en privat etage, hvor teamet går hen til hinanden for at snakke, med en chat der bliver.",
+      "create": "Lav mit kontor",
+      "free": "Gratis for op til 3 personer. Intet kort nødvendigt.",
+      "bringThem": "{count, plural, one {Tag den person med, du mødte her} other {Tag de # personer med, du mødte her}}",
+      "you": "Dig",
+      "teammate": "Kollega",
+      "whatYouGet": "Hvad et kontor tilføjer",
+      "perks": {
+        "private": {
+          "title": "En privat etage",
+          "body": "Kun dit team og de gæster, du lukker ind."
+        },
+        "channels": {
+          "title": "Kanaler der bliver",
+          "body": "Én pr. projekt; intet går tabt, når du går."
+        },
+        "messages": {
+          "title": "Direkte beskeder",
+          "body": "Skriv til alle en til en, og se hvem der er på etagen."
+        },
+        "team": {
+          "title": "Dit team, via invitation",
+          "body": "Inviter via e-mail, og bestem hvem der styrer kontoret."
+        },
+        "guests": {
+          "title": "Gæstelinks",
+          "body": "En kunde eller kandidat kan kigge forbi uden at optage en plads."
+        },
+        "attachments": {
+          "title": "Billeder i chatten",
+          "body": "Del skærmbilleder og fotos, i et betalt kontor."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Giv det et navn",
+          "body": "Dit teams navn er nok."
+        },
+        "invite": {
+          "title": "Inviter dit team",
+          "body": "Send et link eller en e-mail."
+        },
+        "walk": {
+          "title": "Gå ind",
+          "body": "Gå hen til nogen for at snakke."
+        }
+      },
+      "ready": "Klar, når du er."
+    }
   },
   "office": {
     "copy": "Kopiér",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Med et gæstelink kan en kunde eller kandidat besøge gulvet uden at optage en plads.",
       "allSeatsTaken": "Alle pladser er optaget",
       "allSeatsTakenBody": "Den, der går, frigør en plads. Kontorer med flere pladser kommer snart.",
-      "yourProfile": "Din profil"
+      "yourProfile": "Din profil",
+      "ownOfficeTitle": "En etage som denne til dit team?",
+      "ownOfficeBody": "Lav dit eget kontor på et minut. Gratis for op til 3 personer."
     },
     "office": "Kontor",
     "goneTitle": "Kontoret findes ikke længere",
@@ -1095,7 +1207,6 @@
       "dark": "Mørkt"
     },
     "devices": "Mikrofon og kamera",
-    "officeSettings": "Kontorindstillinger",
     "makeAccount": "Opret en konto",
     "account": "Konto",
     "allOffices": "Alle kontorer",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Ikke på gulvet",
     "message": "Besked",
     "leaveLobby": "Forlad lobbyen",
-    "lobbyChannel": "lobby",
-    "hereNow": "Her nu"
+    "hereNow": "Her nu",
+    "settings": "Indstillinger",
+    "inCall": "I et opkald",
+    "inMeeting": "I et møde",
+    "yourOffice": "Dit kontor",
+    "walkTo": "Gå derhen",
+    "youLower": "dig",
+    "joined": "Med siden {date}",
+    "yourProfile": "Din profil"
   },
   "dashboard": {
     "morning": "Godmorgen, {name}",

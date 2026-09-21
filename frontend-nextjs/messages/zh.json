@@ -254,7 +254,6 @@
     "leave": "离开",
     "reconnecting": "正在重新连接…",
     "peopleHere": "楼层上 · {count}",
-    "reconnectingNote": "连接断开了，正在带你回来…",
     "ended": {
       "back": "返回",
       "fullTitle": "这个房间满了",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "房间聊天",
-    "system": "系统",
-    "welcome": "欢迎来到房间聊天。这里的所有人都能看到消息。",
-    "placeholder": "输入消息...",
     "close": "关闭聊天",
     "send": "发送消息",
     "channels": "频道",
@@ -346,9 +342,6 @@
     "newChannel": "新建频道",
     "channelName": "频道名称",
     "say": "在 {channel} 中发消息",
-    "older": "更早的消息",
-    "nothingYet": "这里还什么都没有，说第一句吧。",
-    "noDirect": "还没有私信。",
     "attach": "添加图片",
     "attachmentsPaid": "图片是付费办公室的功能。",
     "attachmentsSoon": "图片很快就来。",
@@ -372,20 +365,24 @@
     "sayTo": "给 {name} 发消息",
     "channelHint": "小写字母，不含空格。办公室里任何人都能加入。",
     "create": "创建频道",
-    "lobbyIntroTitle": "大厅聊天",
-    "lobbyIntro": "大厅里的每个人都能看到。不会保存：你离开后就会消失。",
-    "lobbyDirect": "会保留的频道和私信，属于你自己的办公室。",
-    "attachmentsLobby": "图片是付费办公室的功能。",
     "slowDown": "慢一点——一次发送的消息太多了。",
     "addChannel": "添加频道",
     "starterHi": "嗨，{name} 👋",
     "sayHi": "打个招呼",
     "starterMinute": "有空聊一下吗？",
     "askMinute": "有空吗？",
-    "findOnFloor": "在楼层上找到对方",
     "starterHello": "大家好 👋",
     "sayHello": "向大家问好",
-    "actions": "操作"
+    "actions": "操作",
+    "walkOver": "走过去",
+    "lobbyAlone": "私信属于你自己的办公室。在这里，去频道里打个招呼吧。",
+    "dropHere": "松开即可分享到 {channel}",
+    "dropLobby": "图片在办公室里分享，大厅里不行。",
+    "lobbyGeneral": "所有大厅副本里的每个人都能看到这里。打个招呼，随便问。消息保留 7 天。",
+    "lobbyIntroductions": "你是谁？为什么来这里？大厅里的每个人都能在 7 天内看到。",
+    "lobbyFeedback": "怎样让 TinyFloor 更适合你的团队？这里的每条消息我们都会看。",
+    "introduceYourself": "介绍一下自己",
+    "starterIntro": "你好，我是新来的 👋"
   },
   "proximity": {
     "videoCall": "视频通话",
@@ -418,7 +415,46 @@
     "microphone": "麦克风",
     "camera": "摄像头",
     "default": "默认",
-    "description": "楼层使用的麦克风和摄像头。"
+    "description": "楼层使用的麦克风和摄像头。",
+    "preferences": "你的偏好",
+    "sections": {
+      "general": "通用",
+      "media": "音频和视频",
+      "notifications": "通知",
+      "accessibility": "无障碍",
+      "office": "办公室"
+    },
+    "appearance": "外观",
+    "themeNote": "“系统”会跟随你的设备。",
+    "language": "语言",
+    "languageTitle": "语言",
+    "languageNote": "用于 TinyFloor 的菜单、按钮和消息。",
+    "devices": "设备",
+    "devicesNote": "下次打开麦克风或摄像头时使用。",
+    "voice": "语音",
+    "voiceNote": "由浏览器在你的设备上处理。",
+    "noiseSuppression": "降噪",
+    "noiseSuppressionNote": "减弱键盘、风扇和周围环境的声音。",
+    "echoCancellation": "回声消除",
+    "echoCancellationNote": "避免别人从你的扬声器里听到自己的声音。",
+    "video": "视频",
+    "mirror": "镜像我的视频",
+    "mirrorNote": "只对你生效：别人看到的始终是正向的。",
+    "mediaLocal": "仅保存在此浏览器中。",
+    "sounds": "声音",
+    "messageSound": "新消息",
+    "messageSoundNote": "收到消息时发出轻柔的提示音。",
+    "joinSound": "有人到来",
+    "joinSoundNote": "有人走进楼层时发出轻柔的提示音。",
+    "onTheFloor": "楼层上",
+    "nudges": "消息预览",
+    "nudgesNote": "在楼层上短暂显示新消息。",
+    "motion": "动效",
+    "reduceMotion": "减少动效",
+    "reduceMotionNote": "减少整个应用中的动画。",
+    "performance": "性能",
+    "batterySaver": "省电模式",
+    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。"
   },
   "tutorial": {
     "walk": "用 W A S D 四处走动",
@@ -932,7 +968,81 @@
     "eyebrow": "所有人都可以进",
     "title": "大厅",
     "subtitle": "谁都可以进来看看。说说你是谁，选个角色，就能进门。",
-    "peopleSubtitle": "此刻在大厅里的所有人。有链接的人都能进来。"
+    "peopleSubtitle": "此刻在大厅里的所有人。有链接的人都能进来。",
+    "door": "{here, plural, =0 {还没有人，来做第一个吧} other {现在有 # 人在里面}}",
+    "officesOnly": {
+      "channels": {
+        "title": "频道属于办公室",
+        "body": "在你自己的办公室里，团队需要多少频道就建多少，而且会一直保留。"
+      },
+      "directMessages": {
+        "title": "私信属于办公室",
+        "body": "和办公室里的任何人一对一聊天，明天接着聊。"
+      },
+      "attachments": {
+        "title": "分享图片属于办公室",
+        "body": "在你自己的办公室里，把截图和照片拖进任何对话。"
+      },
+      "invites": {
+        "title": "邀请属于办公室",
+        "body": "在你自己的办公室里，用邮件邀请团队，或用链接让访客进来。"
+      },
+      "free": "创建办公室只需一分钟，最多 3 人免费。",
+      "go": "创建我的办公室",
+      "notNow": "以后再说"
+    },
+    "yourOffice": {
+      "eyebrow": "小团队免费",
+      "title": "属于你们团队的楼层",
+      "body": "大厅里的一切，但属于你们：一个私密楼层，团队走过去就能聊，聊天记录也会保留。",
+      "create": "创建我的办公室",
+      "free": "最多 3 人免费，无需绑卡。",
+      "bringThem": "{count, plural, other {带上你在这里认识的 # 个人}}",
+      "you": "你",
+      "teammate": "队友",
+      "whatYouGet": "办公室多了什么",
+      "perks": {
+        "private": {
+          "title": "私密楼层",
+          "body": "只有你的团队和你放进来的访客。"
+        },
+        "channels": {
+          "title": "会保留的频道",
+          "body": "每个项目一个；离开也不会丢。"
+        },
+        "messages": {
+          "title": "私信",
+          "body": "和任何人一对一聊天，还能看到谁在楼层上。"
+        },
+        "team": {
+          "title": "邀请制团队",
+          "body": "用邮件邀请，并决定谁来管理办公室。"
+        },
+        "guests": {
+          "title": "访客链接",
+          "body": "客户或候选人来访，不占用席位。"
+        },
+        "attachments": {
+          "title": "聊天中的图片",
+          "body": "在付费办公室里分享截图和照片。"
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "起个名字",
+          "body": "团队名称就够了。"
+        },
+        "invite": {
+          "title": "邀请你的团队",
+          "body": "发送链接或邮件。"
+        },
+        "walk": {
+          "title": "走进去",
+          "body": "走到别人身边就能聊。"
+        }
+      },
+      "ready": "准备好就来吧。"
+    }
   },
   "office": {
     "copy": "复制",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "访客链接让客户或候选人参观楼层，不占席位。",
       "allSeatsTaken": "席位已满",
       "allSeatsTakenBody": "有人离开就会空出席位。更多席位的办公室即将推出。",
-      "yourProfile": "你的资料"
+      "yourProfile": "你的资料",
+      "ownOfficeTitle": "想给你的团队也来一层这样的楼吗？",
+      "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。"
     },
     "office": "办公室",
     "goneTitle": "这个办公室不在了",
@@ -1095,7 +1207,6 @@
       "dark": "深色"
     },
     "devices": "麦克风和摄像头",
-    "officeSettings": "办公室设置",
     "makeAccount": "创建账号",
     "account": "账号",
     "allOffices": "所有办公室",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "不在楼层上",
     "message": "发消息",
     "leaveLobby": "离开大厅",
-    "lobbyChannel": "lobby",
-    "hereNow": "现在在这里"
+    "hereNow": "现在在这里",
+    "settings": "设置",
+    "inCall": "通话中",
+    "inMeeting": "会议中",
+    "yourOffice": "你的办公室",
+    "walkTo": "走过去",
+    "youLower": "你",
+    "joined": "{date} 加入",
+    "yourProfile": "你的资料"
   },
   "dashboard": {
     "morning": "早上好，{name}",

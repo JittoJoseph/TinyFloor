@@ -254,7 +254,6 @@
     "leave": "退出",
     "reconnecting": "再接続中…",
     "peopleHere": "フロア · {count}",
-    "reconnectingNote": "接続が切れました。もう一度入り直しています…",
     "ended": {
       "back": "戻る",
       "fullTitle": "このルームは満員です",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "ルームチャット",
-    "system": "システム",
-    "welcome": "ルームチャットへようこそ。メッセージはここにいる全員に表示されます。",
-    "placeholder": "メッセージを入力...",
     "close": "チャットを閉じる",
     "send": "メッセージを送信",
     "channels": "チャンネル",
@@ -346,9 +342,6 @@
     "newChannel": "新しいチャンネル",
     "channelName": "チャンネル名",
     "say": "{channel} にメッセージ",
-    "older": "以前のメッセージ",
-    "nothingYet": "まだ何もありません。最初のひと言をどうぞ。",
-    "noDirect": "ダイレクトメッセージはまだありません。",
     "attach": "画像を追加",
     "attachmentsPaid": "画像は有料オフィスの機能です。",
     "attachmentsSoon": "画像はまもなく使えます。",
@@ -372,20 +365,24 @@
     "sayTo": "{name}さんにメッセージ",
     "channelHint": "小文字のみ、スペースなし。オフィスの誰でも参加できます。",
     "create": "チャンネルを作成",
-    "lobbyIntroTitle": "ロビーのチャット",
-    "lobbyIntro": "ロビーにいる全員が読めます。保存されず、退出すると消えます。",
-    "lobbyDirect": "残るチャンネルとダイレクトメッセージは、自分のオフィスで使えます。",
-    "attachmentsLobby": "画像は有料オフィスの機能です。",
     "slowDown": "少しゆっくり。一度に送るメッセージが多すぎます。",
     "addChannel": "チャンネルを追加",
     "starterHi": "{name}さん、こんにちは 👋",
     "sayHi": "あいさつする",
     "starterMinute": "ちょっといい？",
     "askMinute": "ちょっといい？",
-    "findOnFloor": "フロアで探す",
     "starterHello": "みなさん、こんにちは 👋",
     "sayHello": "みんなにあいさつ",
-    "actions": "アクション"
+    "actions": "アクション",
+    "walkOver": "歩いていく",
+    "lobbyAlone": "ダイレクトメッセージは自分のオフィスで使えます。ここではチャンネルで挨拶しましょう。",
+    "dropHere": "ドロップして{channel}で共有",
+    "dropLobby": "画像はロビーではなく、オフィスで共有できます。",
+    "lobbyGeneral": "ロビーのすべてのコピーにいる全員が読めます。挨拶や質問をどうぞ。メッセージは7日間残ります。",
+    "lobbyIntroductions": "あなたは誰で、何をしに来ましたか？ロビーの全員が7日間読めます。",
+    "lobbyFeedback": "TinyFloorがあなたのチームにもっと役立つには？ここのメッセージはすべて読んでいます。",
+    "introduceYourself": "自己紹介する",
+    "starterIntro": "はじめまして、新しく来ました 👋"
   },
   "proximity": {
     "videoCall": "ビデオ通話",
@@ -418,7 +415,46 @@
     "microphone": "マイク",
     "camera": "カメラ",
     "default": "デフォルト",
-    "description": "フロアで使うマイクとカメラ。"
+    "description": "フロアで使うマイクとカメラ。",
+    "preferences": "あなたの設定",
+    "sections": {
+      "general": "一般",
+      "media": "音声とビデオ",
+      "notifications": "通知",
+      "accessibility": "アクセシビリティ",
+      "office": "オフィス"
+    },
+    "appearance": "外観",
+    "themeNote": "「システム」はデバイスの設定に従います。",
+    "language": "言語",
+    "languageTitle": "言語",
+    "languageNote": "TinyFloorのメニュー、ボタン、メッセージに使われます。",
+    "devices": "デバイス",
+    "devicesNote": "次にマイクやカメラをオンにしたときに使われます。",
+    "voice": "音声",
+    "voiceNote": "ブラウザがあなたのデバイス上で処理します。",
+    "noiseSuppression": "ノイズ抑制",
+    "noiseSuppressionNote": "キーボードやファン、周りの音を抑えます。",
+    "echoCancellation": "エコーキャンセル",
+    "echoCancellationNote": "相手の声があなたのスピーカーから戻るのを防ぎます。",
+    "video": "ビデオ",
+    "mirror": "自分のビデオを反転",
+    "mirrorNote": "自分にだけ反転表示され、相手には正しい向きで映ります。",
+    "mediaLocal": "このブラウザにのみ保存されます。",
+    "sounds": "サウンド",
+    "messageSound": "新しいメッセージ",
+    "messageSoundNote": "メッセージが届くと控えめな音が鳴ります。",
+    "joinSound": "誰かが来たとき",
+    "joinSoundNote": "誰かがフロアに入ると控えめな音が鳴ります。",
+    "onTheFloor": "フロア",
+    "nudges": "メッセージのプレビュー",
+    "nudgesNote": "新しいメッセージをフロア上に少しだけ表示します。",
+    "motion": "動き",
+    "reduceMotion": "動きを減らす",
+    "reduceMotionNote": "アプリ全体のアニメーションを減らします。",
+    "performance": "パフォーマンス",
+    "batterySaver": "バッテリー節約",
+    "batterySaverNote": "フロアを低いフレームレートで描画します。次に入ったときから有効です。"
   },
   "tutorial": {
     "walk": "W A S D キーで歩き回りましょう",
@@ -932,7 +968,81 @@
     "eyebrow": "だれでも入れます",
     "title": "ロビー",
     "subtitle": "誰でも立ち寄れます。名前を決めて、キャラクターを選んで入りましょう。",
-    "peopleSubtitle": "いまロビーにいる全員です。リンクを知っていれば誰でも入れます。"
+    "peopleSubtitle": "いまロビーにいる全員です。リンクを知っていれば誰でも入れます。",
+    "door": "{here, plural, =0 {まだ誰もいません。最初の一人になりましょう} other {いま#人がいます}}",
+    "officesOnly": {
+      "channels": {
+        "title": "チャンネルはオフィスで使えます",
+        "body": "自分のオフィスなら、チームに必要なだけチャンネルを作れて、ずっと残ります。"
+      },
+      "directMessages": {
+        "title": "ダイレクトメッセージはオフィスで使えます",
+        "body": "オフィスの誰とでも1対1でやり取りし、明日そのまま続けられます。"
+      },
+      "attachments": {
+        "title": "画像の共有はオフィスで使えます",
+        "body": "自分のオフィスなら、どの会話にもスクリーンショットや写真をドロップできます。"
+      },
+      "invites": {
+        "title": "招待はオフィスで使えます",
+        "body": "自分のオフィスなら、メールでチームを招待したり、リンクでゲストを入れたりできます。"
+      },
+      "free": "オフィスは1分で作れて、3人まで無料です。",
+      "go": "オフィスを作る",
+      "notNow": "あとで"
+    },
+    "yourOffice": {
+      "eyebrow": "小さなチームは無料",
+      "title": "チームのための、自分たちのフロア",
+      "body": "ロビーのすべてを、自分たちのものに。チームが歩み寄って話せるプライベートなフロアと、残り続けるチャット。",
+      "create": "オフィスを作る",
+      "free": "3人まで無料。カード不要。",
+      "bringThem": "{count, plural, other {ここで出会った#人を誘いましょう}}",
+      "you": "あなた",
+      "teammate": "チームメイト",
+      "whatYouGet": "オフィスで増えること",
+      "perks": {
+        "private": {
+          "title": "プライベートなフロア",
+          "body": "あなたのチームと、招き入れたゲストだけ。"
+        },
+        "channels": {
+          "title": "残り続けるチャンネル",
+          "body": "プロジェクトごとに作れて、退出しても消えません。"
+        },
+        "messages": {
+          "title": "ダイレクトメッセージ",
+          "body": "誰とでも1対1で話せて、誰がフロアにいるかも分かります。"
+        },
+        "team": {
+          "title": "招待制のチーム",
+          "body": "メールで招待し、オフィスを管理する人を決められます。"
+        },
+        "guests": {
+          "title": "ゲストリンク",
+          "body": "クライアントや候補者が、席を使わずに訪問できます。"
+        },
+        "attachments": {
+          "title": "チャットで画像",
+          "body": "有料オフィスでスクリーンショットや写真を共有できます。"
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "名前を付ける",
+          "body": "チーム名だけで十分です。"
+        },
+        "invite": {
+          "title": "チームを招待する",
+          "body": "リンクかメールを送るだけ。"
+        },
+        "walk": {
+          "title": "入ってみる",
+          "body": "話したい人のところへ歩いていきましょう。"
+        }
+      },
+      "ready": "準備ができたらどうぞ。"
+    }
   },
   "office": {
     "copy": "コピー",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "ゲストリンクがあれば、顧客や候補者が席を使わずにフロアを訪れられます。",
       "allSeatsTaken": "すべての席が埋まっています",
       "allSeatsTakenBody": "誰かが抜けると席が空きます。席の多いオフィスは近日提供予定です。",
-      "yourProfile": "あなたのプロフィール"
+      "yourProfile": "あなたのプロフィール",
+      "ownOfficeTitle": "こんなフロアをあなたのチームにも？",
+      "ownOfficeBody": "1分で自分のオフィスを作れます。3人まで無料。"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
@@ -1095,7 +1207,6 @@
       "dark": "ダーク"
     },
     "devices": "マイクとカメラ",
-    "officeSettings": "オフィス設定",
     "makeAccount": "アカウントを作成",
     "account": "アカウント",
     "allOffices": "すべてのオフィス",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "フロアにいない",
     "message": "メッセージ",
     "leaveLobby": "ロビーを出る",
-    "lobbyChannel": "lobby",
-    "hereNow": "いまここに"
+    "hereNow": "いまここに",
+    "settings": "設定",
+    "inCall": "通話中",
+    "inMeeting": "ミーティング中",
+    "yourOffice": "あなたのオフィス",
+    "walkTo": "歩いていく",
+    "youLower": "あなた",
+    "joined": "{date}に参加",
+    "yourProfile": "プロフィール"
   },
   "dashboard": {
     "morning": "おはようございます、{name}さん",

@@ -254,7 +254,6 @@
     "leave": "Sair",
     "reconnecting": "Reconectando…",
     "peopleHere": "No andar · {count}",
-    "reconnectingNote": "Conexão perdida. Trazendo você de volta…",
     "ended": {
       "back": "Voltar",
       "fullTitle": "Esta sala está cheia",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Chat da sala",
-    "system": "Sistema",
-    "welcome": "Boas-vindas ao chat da sala. As mensagens ficam visíveis para todos aqui.",
-    "placeholder": "Digite uma mensagem...",
     "close": "Fechar chat",
     "send": "Enviar mensagem",
     "channels": "Canais",
@@ -346,9 +342,6 @@
     "newChannel": "Novo canal",
     "channelName": "Nome do canal",
     "say": "Escrever em {channel}",
-    "older": "Mensagens antigas",
-    "nothingYet": "Ainda não há nada. Diz a primeira coisa.",
-    "noDirect": "Ainda sem mensagens diretas.",
     "attach": "Adicionar uma imagem",
     "attachmentsPaid": "As imagens fazem parte de um escritório pago.",
     "attachmentsSoon": "As imagens chegam em breve.",
@@ -372,20 +365,24 @@
     "sayTo": "Mensagem para {name}",
     "channelHint": "Minúsculas, sem espaços. Todo o escritório pode entrar.",
     "create": "Criar canal",
-    "lobbyIntroTitle": "O chat do saguão",
-    "lobbyIntro": "Todos no saguão podem ler isto. Nada é guardado: some quando você sai.",
-    "lobbyDirect": "Mensagens diretas e canais que ficam vêm com um escritório só seu.",
-    "attachmentsLobby": "Imagens fazem parte de um escritório pago.",
     "slowDown": "Mais devagar: mensagens demais de uma vez.",
     "addChannel": "Adicionar um canal",
     "starterHi": "Oi {name} 👋",
     "sayHi": "Dizer oi",
     "starterMinute": "Tem um minuto?",
     "askMinute": "Um minuto?",
-    "findOnFloor": "Encontrar no andar",
     "starterHello": "Olá, pessoal 👋",
     "sayHello": "Dizer olá a todos",
-    "actions": "Ações"
+    "actions": "Ações",
+    "walkOver": "Ir até lá",
+    "lobbyAlone": "Mensagens diretas vêm com um escritório só seu. Aqui, diga oi em um canal.",
+    "dropHere": "Solte para compartilhar em {channel}",
+    "dropLobby": "Imagens são compartilhadas nos escritórios, não no lobby.",
+    "lobbyGeneral": "Todos, em cada cópia do lobby, leem isto. Diga oi, pergunte o que quiser. As mensagens ficam por 7 dias.",
+    "lobbyIntroductions": "Quem é você e o que te traz aqui? Todo o lobby pode ler por 7 dias.",
+    "lobbyFeedback": "O que tornaria o TinyFloor melhor para sua equipe? Lemos cada mensagem aqui.",
+    "introduceYourself": "Apresente-se",
+    "starterIntro": "Oi, sou novo por aqui 👋"
   },
   "proximity": {
     "videoCall": "Chamada de vídeo",
@@ -418,7 +415,46 @@
     "microphone": "Microfone",
     "camera": "Câmera",
     "default": "Padrão",
-    "description": "Qual microfone e câmera o andar usa."
+    "description": "Qual microfone e câmera o andar usa.",
+    "preferences": "Suas preferências",
+    "sections": {
+      "general": "Geral",
+      "media": "Áudio e vídeo",
+      "notifications": "Notificações",
+      "accessibility": "Acessibilidade",
+      "office": "Escritório"
+    },
+    "appearance": "Aparência",
+    "themeNote": "\"Sistema\" segue seu dispositivo.",
+    "language": "Idioma",
+    "languageTitle": "Idioma",
+    "languageNote": "Para menus, botões e mensagens do TinyFloor.",
+    "devices": "Dispositivos",
+    "devicesNote": "Usados na próxima vez que você ligar o microfone ou a câmera.",
+    "voice": "Voz",
+    "voiceNote": "Seu navegador faz isso no seu dispositivo.",
+    "noiseSuppression": "Supressão de ruído",
+    "noiseSuppressionNote": "Abafa teclados, ventiladores e o ambiente ao seu redor.",
+    "echoCancellation": "Cancelamento de eco",
+    "echoCancellationNote": "Evita que os outros se ouçam pelos seus alto-falantes.",
+    "video": "Vídeo",
+    "mirror": "Espelhar meu vídeo",
+    "mirrorNote": "Só para você: os outros sempre veem você do lado certo.",
+    "mediaLocal": "Guardado só neste navegador.",
+    "sounds": "Sons",
+    "messageSound": "Novas mensagens",
+    "messageSoundNote": "Um som suave quando chega uma mensagem.",
+    "joinSound": "Alguém chega",
+    "joinSoundNote": "Um som suave quando alguém entra no andar.",
+    "onTheFloor": "No andar",
+    "nudges": "Prévia das mensagens",
+    "nudgesNote": "Mostrar novas mensagens rapidamente sobre o andar.",
+    "motion": "Movimento",
+    "reduceMotion": "Reduzir movimento",
+    "reduceMotionNote": "Menos animações em todo o app.",
+    "performance": "Desempenho",
+    "batterySaver": "Economia de bateria",
+    "batterySaverNote": "Desenha o andar com menos quadros por segundo. Vale na próxima vez que você entrar."
   },
   "tutorial": {
     "walk": "Ande com W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Aberto a todos",
     "title": "O lobby",
     "subtitle": "Qualquer um pode aparecer. Diga quem você é, escolha um personagem e entre.",
-    "peopleSubtitle": "Todos que estão no saguão agora. Quem tiver o link pode entrar."
+    "peopleSubtitle": "Todos que estão no saguão agora. Quem tiver o link pode entrar.",
+    "door": "{here, plural, =0 {Ninguém aqui ainda, entre primeiro} one {# pessoa aqui agora} other {# pessoas aqui agora}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Canais vêm com um escritório",
+        "body": "No seu escritório você cria quantos canais sua equipe precisar, e eles ficam."
+      },
+      "directMessages": {
+        "title": "Mensagens diretas vêm com um escritório",
+        "body": "Escreva para qualquer pessoa do seu escritório, a sós, e continue amanhã."
+      },
+      "attachments": {
+        "title": "Compartilhar imagens vem com um escritório",
+        "body": "Solte capturas de tela e fotos em qualquer conversa do seu escritório."
+      },
+      "invites": {
+        "title": "Convites vêm com um escritório",
+        "body": "Convide sua equipe por e-mail ou deixe um convidado entrar com um link, no seu próprio escritório."
+      },
+      "free": "Criar um escritório leva um minuto e é grátis para até 3 pessoas.",
+      "go": "Criar meu escritório",
+      "notNow": "Agora não"
+    },
+    "yourOffice": {
+      "eyebrow": "Grátis para equipes pequenas",
+      "title": "Um andar só seu, para sua equipe",
+      "body": "Tudo o que o lobby tem, mas seu: um andar privado onde sua equipe vai até alguém para conversar, com um chat que fica.",
+      "create": "Criar meu escritório",
+      "free": "Grátis para até 3 pessoas. Sem cartão.",
+      "bringThem": "{count, plural, one {Traga a pessoa que você conheceu aqui} other {Traga as # pessoas que você conheceu aqui}}",
+      "you": "Você",
+      "teammate": "Colega",
+      "whatYouGet": "O que um escritório acrescenta",
+      "perks": {
+        "private": {
+          "title": "Um andar privado",
+          "body": "Só sua equipe e os convidados que você deixar entrar."
+        },
+        "channels": {
+          "title": "Canais que ficam",
+          "body": "Um para cada projeto; nada se perde quando você sai."
+        },
+        "messages": {
+          "title": "Mensagens diretas",
+          "body": "Escreva para qualquer um a sós e veja quem está no andar."
+        },
+        "team": {
+          "title": "Sua equipe, por convite",
+          "body": "Convide por e-mail e defina quem administra o escritório."
+        },
+        "guests": {
+          "title": "Links de convidado",
+          "body": "Um cliente ou candidato visita sem ocupar uma vaga."
+        },
+        "attachments": {
+          "title": "Imagens no chat",
+          "body": "Compartilhe capturas e fotos, em um escritório pago."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Dê um nome",
+          "body": "O nome da sua equipe basta."
+        },
+        "invite": {
+          "title": "Convide sua equipe",
+          "body": "Envie um link ou um e-mail."
+        },
+        "walk": {
+          "title": "Entre",
+          "body": "Vá até alguém para conversar."
+        }
+      },
+      "ready": "Quando você quiser."
+    }
   },
   "office": {
     "copy": "Copiar",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Um link de convidado permite que um cliente ou candidato visite o andar sem ocupar lugar.",
       "allSeatsTaken": "Todos os lugares estão ocupados",
       "allSeatsTakenBody": "Quem sai libera um lugar. Escritórios com mais lugares estão chegando.",
-      "yourProfile": "Seu perfil"
+      "yourProfile": "Seu perfil",
+      "ownOfficeTitle": "Quer um andar assim para sua equipe?",
+      "ownOfficeBody": "Crie seu escritório em um minuto. Grátis para até 3 pessoas."
     },
     "office": "Escritório",
     "goneTitle": "Este escritório já não existe",
@@ -1095,7 +1207,6 @@
       "dark": "Escuro"
     },
     "devices": "Microfone e câmera",
-    "officeSettings": "Configurações do escritório",
     "makeAccount": "Criar uma conta",
     "account": "Conta",
     "allOffices": "Todos os escritórios",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Fora do andar",
     "message": "Mensagem",
     "leaveLobby": "Sair do saguão",
-    "lobbyChannel": "saguao",
-    "hereNow": "Aqui agora"
+    "hereNow": "Aqui agora",
+    "settings": "Configurações",
+    "inCall": "Em chamada",
+    "inMeeting": "Em reunião",
+    "yourOffice": "Seu escritório",
+    "walkTo": "Ir até",
+    "youLower": "você",
+    "joined": "Entrou em {date}",
+    "yourProfile": "Seu perfil"
   },
   "dashboard": {
     "morning": "Bom dia, {name}",

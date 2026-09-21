@@ -3,24 +3,23 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Map as MapIcon, MessagesSquare, Users } from "lucide-react";
+import { Map as MapIcon, MessagesSquare, Settings, Users } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type Member, type Office } from "@/lib/api";
-import { officeChatPath, officePath, officePeoplePath } from "@/lib/links";
+import { officeChatPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor } from "@/lib/floor";
 import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
-import SettingsModal from "@/components/SettingsModal";
 import { Loader } from "@/components/motion/loader";
 import { FaceStack } from "@/components/ui/Face";
 import { AppShell } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { OfficeSwitcher } from "./OfficeSwitcher";
-import { OfficeSettings } from "./OfficeSettings";
+import { PlaceProvider, type Place } from "./place";
 import { ChatNudges } from "./ChatNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
@@ -31,7 +30,11 @@ interface OfficeContext {
   members: Member[];
   /** Re-reads the office and its members after something changed them. */
   refresh: () => Promise<void>;
-  openSettings: () => void;
+}
+
+/** The office, where a screen is shared with the lobby and only sometimes has one. */
+export function useOfficeMaybe(): OfficeContext | null {
+  return useContext(Context);
 }
 
 const Context = createContext<OfficeContext | null>(null);
@@ -54,8 +57,6 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const [here, setHere] = useState(0);
   const [gone, setGone] = useState(false);
   const [inside, setInside] = useState(false);
-  const [settings, setSettings] = useState(false);
-  const [devices, setDevices] = useState(false);
   const { unread } = useChat();
 
   const refresh = useCallback(async () => {
@@ -93,7 +94,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   // with the chat view, so unread counts work while you are on the floor.
   useEffect(() => {
     if (!office?.id || !inside) return;
-    chat.connect(office.id);
+    chat.connect(office.id, () => api.chatTicket(office.id));
     rememberInside(office.id, true);
     return () => {
       chat.disconnect();
@@ -164,45 +165,59 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const floor = officePath(office.id);
   const chatPath = officeChatPath(office.id);
   const people = officePeoplePath(office.id);
+  const settingsPath = officeSettingsPath(office.id);
   const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
   const onChat = on(chatPath);
   const onPeople = on(people);
+  const onSettings = on(settingsPath);
+
+  const place: Place = {
+    kind: "office",
+    id: office.id,
+    name: office.name,
+    role: office.role,
+    people: members,
+    plan: office.plan,
+    owner: office.owner,
+    paths: {
+      floor,
+      chat: (channel) => officeChatPath(office.id, channel),
+      people,
+      settings: settingsPath,
+    },
+    sharePath: floor,
+    officesOnly: () => {},
+  };
 
   return (
-    <Context.Provider value={{ office, members, refresh, openSettings: () => setSettings(true) }}>
-      <AppShell
-        mark={<OfficeSwitcher office={office} />}
-        destinations={[
-          { key: "floor", href: floor, label: ts("floor"), icon: <MapIcon />, active: !onChat && !onPeople },
-          { key: "chat", href: chatPath, label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
-          { key: "people", href: people, label: ts("people"), icon: <Users />, active: onPeople },
-        ]}
-        you={
-          <YouMenu
-            onFloor
-            onDevices={() => setDevices(true)}
-            onOfficeSettings={() => setSettings(true)}
-          />
-        }
-        floor={
-          <>
-            <RoomView
-              title={office.name}
-              user={user}
-              ticketFor={() => api.officeTicket(office.id)}
-              sharePath={floor}
-              leaveHref="/dashboard"
-              onDevices={() => setDevices(true)}
-            />
-            {!onChat && <ChatNudges officeId={office.id} />}
-          </>
-        }
-      >
-        {children}
-      </AppShell>
-
-      <OfficeSettings open={settings} onClose={() => setSettings(false)} />
-      <SettingsModal isOpen={devices} onClose={() => setDevices(false)} />
+    <Context.Provider value={{ office, members, refresh }}>
+      <PlaceProvider value={place}>
+        <AppShell
+          mark={<OfficeSwitcher office={office} />}
+          destinations={[
+            { key: "floor", href: floor, label: ts("floor"), icon: <MapIcon />, active: !onChat && !onPeople && !onSettings },
+            { key: "chat", href: chatPath, label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
+            { key: "people", href: people, label: ts("people"), icon: <Users />, active: onPeople },
+          ]}
+          settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: <Settings />, active: onSettings }}
+          you={<YouMenu onFloor settingsHref={settingsPath} />}
+          floor={
+            <>
+              <RoomView
+                title={office.name}
+                user={user}
+                ticketFor={() => api.officeTicket(office.id)}
+                sharePath={floor}
+                leaveHref="/dashboard"
+                settingsHref={settingsPath}
+              />
+              {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+            </>
+          }
+        >
+          {children}
+        </AppShell>
+      </PlaceProvider>
     </Context.Provider>
   );
 }

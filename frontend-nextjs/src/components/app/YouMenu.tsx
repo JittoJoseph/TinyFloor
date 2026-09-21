@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus, Headphones } from "lucide-react";
+import { LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -20,14 +20,12 @@ const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destr
  * menu for everything about you — status, theme, devices, account, leaving.
  */
 export function YouMenu({
-  onDevices,
-  onOfficeSettings,
+  settingsHref,
   onFloor,
   bar = false,
 }: {
-  onDevices?: () => void;
-  /** Present in an office; the lobby has no settings of its own. */
-  onOfficeSettings?: () => void;
+  /** Where this place keeps its settings. */
+  settingsHref?: string;
   /** Whether you are standing on a floor right now, so status means something. */
   onFloor: boolean;
   /** In a top bar (the dashboard) rather than on the rail. */
@@ -114,14 +112,9 @@ export function YouMenu({
       </div>
 
       <MenuSeparator />
-      {onDevices && (
-        <MenuItem icon={<Headphones />} onSelect={onDevices}>
-          {t("devices")}
-        </MenuItem>
-      )}
-      {onOfficeSettings && (
-        <MenuItem icon={<Settings2 />} onSelect={onOfficeSettings}>
-          {t("officeSettings")}
+      {settingsHref && (
+        <MenuItem icon={<Settings2 />} onSelect={() => router.push(settingsHref)}>
+          {t("settings")}
         </MenuItem>
       )}
       {isGuest ? (

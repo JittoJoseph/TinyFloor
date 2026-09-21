@@ -6,6 +6,7 @@ import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
 import type { RoomTicket } from "@/lib/api";
 import { setSceneText } from "@/lib/sceneText";
+import { prefs } from "@/lib/prefs";
 
 interface PhaserGameProps {
   name: string;
@@ -73,6 +74,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // The panel behind the canvas paints the space around the map, so it
         // follows the light or dark theme.
         transparent: true,
+        // Battery saver: half the frames, which a top-down floor barely shows.
+        fps: prefs().batterySaver ? { limit: 30 } : undefined,
         // The room has no Phaser sounds; the jukebox plays through an <audio>
         // element. Without this, every game builds a WebAudio context it never
         // uses, and complains about it once the game is torn down.

@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
 import { EntryShell } from "@/components/entry/EntryShell";
+import { EntryProblem } from "@/components/entry/EntryProblem";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
@@ -29,6 +29,7 @@ export interface InvitePreview {
  */
 export function InviteEntry({ token, initialPreview }: { token: string; initialPreview: InvitePreview | null }) {
   const t = useTranslations("office.invite");
+  const tc = useTranslations("common");
   const tEntry = useTranslations("entry");
   const router = useRouter();
   const explain = useErrorMessage();
@@ -111,16 +112,12 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   if (state === "invalid" || !invite) {
     return (
       <EntryShell backHref="/" preview={preview}>
-        <div className="entry-rise">
-          <span className="inline-flex w-11 h-11 rounded-xl bg-destructive/10 items-center justify-center mb-5">
-            <AlertCircle className="w-5 h-5 text-destructive" />
-          </span>
-          <h1 className="text-[1.75rem] font-medium tracking-tight text-foreground mb-2">
-            {t("invalidTitle")}
-          </h1>
-          <p className="text-sm text-foreground opacity-55 mb-6">{t("invalid")}</p>
+        <EntryProblem title={t("invalidTitle")} body={t("invalid")}>
           <ActionLink href="/">{t("home")}</ActionLink>
-        </div>
+          <ActionLink href="/create" tone="secondary" icon={null}>
+            {tc("createOffice")}
+          </ActionLink>
+        </EntryProblem>
       </EntryShell>
     );
   }
@@ -149,7 +146,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             <ActionButton onClick={join} busy={busy}>
               {t("join", { office: invite.officeName })}
             </ActionButton>
-            <p className="text-[12px] text-foreground opacity-45 text-center mt-4">
+            <p className="text-center text-[12px] text-muted-foreground mt-4">
               {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
             </p>
           </>
@@ -169,7 +166,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             >
               {t("signIn")}
             </ActionLink>
-            <p className="text-[12px] text-foreground opacity-45 text-center pt-1">
+            <p className="text-center text-[12px] text-muted-foreground pt-1">
               {t("accountKeeps", { name: trimmed })}
             </p>
           </div>

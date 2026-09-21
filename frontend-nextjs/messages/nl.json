@@ -254,7 +254,6 @@
     "leave": "Verlaten",
     "reconnecting": "Opnieuw verbinden…",
     "peopleHere": "Op de vloer · {count}",
-    "reconnectingNote": "Verbinding verbroken. We halen je terug…",
     "ended": {
       "back": "Terug",
       "fullTitle": "Deze ruimte is vol",
@@ -336,9 +335,6 @@
   },
   "chat": {
     "title": "Ruimtechat",
-    "system": "Systeem",
-    "welcome": "Welkom in de ruimtechat. Berichten zijn zichtbaar voor iedereen hier.",
-    "placeholder": "Typ een bericht...",
     "close": "Chat sluiten",
     "send": "Bericht versturen",
     "channels": "Kanalen",
@@ -346,9 +342,6 @@
     "newChannel": "Nieuw kanaal",
     "channelName": "Kanaalnaam",
     "say": "Bericht in {channel}",
-    "older": "Oudere berichten",
-    "nothingYet": "Hier is nog niets. Zeg het eerste.",
-    "noDirect": "Nog geen directe berichten.",
     "attach": "Afbeelding toevoegen",
     "attachmentsPaid": "Afbeeldingen horen bij een betaald kantoor.",
     "attachmentsSoon": "Afbeeldingen komen binnenkort.",
@@ -372,20 +365,24 @@
     "sayTo": "Bericht aan {name}",
     "channelHint": "Kleine letters, geen spaties. Iedereen in het kantoor kan meedoen.",
     "create": "Kanaal maken",
-    "lobbyIntroTitle": "De chat van de lobby",
-    "lobbyIntro": "Iedereen in de lobby kan dit lezen. Het wordt niet bewaard: het verdwijnt als je weggaat.",
-    "lobbyDirect": "Directe berichten en kanalen die blijven, krijg je met een eigen kantoor.",
-    "attachmentsLobby": "Afbeeldingen horen bij een betaald kantoor.",
     "slowDown": "Iets rustiger: te veel berichten tegelijk.",
     "addChannel": "Kanaal toevoegen",
     "starterHi": "Hoi {name} 👋",
     "sayHi": "Hallo zeggen",
     "starterMinute": "Heb je even?",
     "askMinute": "Heb je even?",
-    "findOnFloor": "Op de vloer zoeken",
     "starterHello": "Hallo allemaal 👋",
     "sayHello": "Iedereen gedag zeggen",
-    "actions": "Acties"
+    "actions": "Acties",
+    "walkOver": "Loop erheen",
+    "lobbyAlone": "Privéberichten horen bij een eigen kantoor. Zeg hier hallo in een kanaal.",
+    "dropHere": "Loslaten om te delen in {channel}",
+    "dropLobby": "Afbeeldingen deel je in kantoren, niet in de lobby.",
+    "lobbyGeneral": "Iedereen in elke kopie van de lobby leest dit. Zeg hallo, vraag wat je wilt. Berichten blijven 7 dagen staan.",
+    "lobbyIntroductions": "Wie ben je, en wat brengt je hier? De hele lobby kan het 7 dagen lezen.",
+    "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
+    "introduceYourself": "Stel jezelf voor",
+    "starterIntro": "Hoi, ik ben nieuw hier 👋"
   },
   "proximity": {
     "videoCall": "Videogesprek",
@@ -418,7 +415,46 @@
     "microphone": "Microfoon",
     "camera": "Camera",
     "default": "Standaard",
-    "description": "Welke microfoon en camera de vloer gebruikt."
+    "description": "Welke microfoon en camera de vloer gebruikt.",
+    "preferences": "Jouw voorkeuren",
+    "sections": {
+      "general": "Algemeen",
+      "media": "Audio en video",
+      "notifications": "Meldingen",
+      "accessibility": "Toegankelijkheid",
+      "office": "Kantoor"
+    },
+    "appearance": "Weergave",
+    "themeNote": "'Systeem' volgt je apparaat.",
+    "language": "Taal",
+    "languageTitle": "Taal",
+    "languageNote": "Voor menu's, knoppen en berichten van TinyFloor.",
+    "devices": "Apparaten",
+    "devicesNote": "Gebruikt als je je microfoon of camera de volgende keer aanzet.",
+    "voice": "Stem",
+    "voiceNote": "Je browser doet dit op je apparaat.",
+    "noiseSuppression": "Ruisonderdrukking",
+    "noiseSuppressionNote": "Dempt toetsenborden, ventilatoren en de ruimte om je heen.",
+    "echoCancellation": "Echo-onderdrukking",
+    "echoCancellationNote": "Voorkomt dat anderen zichzelf via je speakers horen.",
+    "video": "Video",
+    "mirror": "Mijn video spiegelen",
+    "mirrorNote": "Alleen voor jou: anderen zien je altijd goed om.",
+    "mediaLocal": "Alleen in deze browser bewaard.",
+    "sounds": "Geluiden",
+    "messageSound": "Nieuwe berichten",
+    "messageSoundNote": "Een zacht geluid als er een bericht binnenkomt.",
+    "joinSound": "Er komt iemand binnen",
+    "joinSoundNote": "Een zacht geluid als iemand de vloer op loopt.",
+    "onTheFloor": "Op de vloer",
+    "nudges": "Berichtvoorbeelden",
+    "nudgesNote": "Nieuwe berichten kort boven de vloer tonen.",
+    "motion": "Beweging",
+    "reduceMotion": "Minder beweging",
+    "reduceMotionNote": "Minder animaties in de hele app.",
+    "performance": "Prestaties",
+    "batterySaver": "Batterijbesparing",
+    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt."
   },
   "tutorial": {
     "walk": "Loop rond met W A S D",
@@ -932,7 +968,81 @@
     "eyebrow": "Open voor iedereen",
     "title": "De lobby",
     "subtitle": "Iedereen mag binnenlopen. Zeg wie je bent, kies een personage en loop binnen.",
-    "peopleSubtitle": "Iedereen die nu in de lobby is. Wie de link heeft, kan binnenlopen."
+    "peopleSubtitle": "Iedereen die nu in de lobby is. Wie de link heeft, kan binnenlopen.",
+    "door": "{here, plural, =0 {Nog niemand binnen, wees de eerste} one {# persoon nu binnen} other {# mensen nu binnen}}",
+    "officesOnly": {
+      "channels": {
+        "title": "Kanalen horen bij een kantoor",
+        "body": "In je eigen kantoor maak je zoveel kanalen als je team nodig heeft, en ze blijven."
+      },
+      "directMessages": {
+        "title": "Privéberichten horen bij een kantoor",
+        "body": "Schrijf iedereen in je kantoor één op één, en ga morgen verder."
+      },
+      "attachments": {
+        "title": "Afbeeldingen delen hoort bij een kantoor",
+        "body": "Sleep screenshots en foto's in elk gesprek in je eigen kantoor."
+      },
+      "invites": {
+        "title": "Uitnodigingen horen bij een kantoor",
+        "body": "Nodig je team uit per e-mail of laat een gast binnen met een link, in je eigen kantoor."
+      },
+      "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
+      "go": "Maak mijn kantoor",
+      "notNow": "Niet nu"
+    },
+    "yourOffice": {
+      "eyebrow": "Gratis voor kleine teams",
+      "title": "Een eigen vloer voor je team",
+      "body": "Alles uit de lobby, maar van jou: een privévloer waar je team naar elkaar toe loopt om te praten, met een chat die blijft.",
+      "create": "Maak mijn kantoor",
+      "free": "Gratis tot 3 mensen. Geen kaart nodig.",
+      "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}",
+      "you": "Jij",
+      "teammate": "Teamgenoot",
+      "whatYouGet": "Wat een kantoor toevoegt",
+      "perks": {
+        "private": {
+          "title": "Een privévloer",
+          "body": "Alleen je team en de gasten die je binnenlaat."
+        },
+        "channels": {
+          "title": "Kanalen die blijven",
+          "body": "Eén per project; niets gaat verloren als je weggaat."
+        },
+        "messages": {
+          "title": "Privéberichten",
+          "body": "Schrijf iedereen één op één, en zie wie er op de vloer is."
+        },
+        "team": {
+          "title": "Je team, op uitnodiging",
+          "body": "Nodig uit per e-mail en bepaal wie het kantoor beheert."
+        },
+        "guests": {
+          "title": "Gastlinks",
+          "body": "Een klant of kandidaat komt op bezoek zonder een plek in te nemen."
+        },
+        "attachments": {
+          "title": "Afbeeldingen in de chat",
+          "body": "Deel screenshots en foto's, in een betaald kantoor."
+        }
+      },
+      "steps": {
+        "name": {
+          "title": "Geef het een naam",
+          "body": "De naam van je team is genoeg."
+        },
+        "invite": {
+          "title": "Nodig je team uit",
+          "body": "Stuur een link of een e-mail."
+        },
+        "walk": {
+          "title": "Loop binnen",
+          "body": "Loop naar iemand toe om te praten."
+        }
+      },
+      "ready": "Klaar wanneer jij dat bent."
+    }
   },
   "office": {
     "copy": "Kopiëren",
@@ -1059,7 +1169,9 @@
       "noGuestLinksBody": "Met een gastlink bezoekt een klant of kandidaat de vloer, zonder een plek in te nemen.",
       "allSeatsTaken": "Alle plekken zijn bezet",
       "allSeatsTakenBody": "Wie vertrekt, maakt een plek vrij. Kantoren met meer plekken komen eraan.",
-      "yourProfile": "Je profiel"
+      "yourProfile": "Je profiel",
+      "ownOfficeTitle": "Een vloer als deze voor je team?",
+      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen."
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
@@ -1095,7 +1207,6 @@
       "dark": "Donker"
     },
     "devices": "Microfoon en camera",
-    "officeSettings": "Kantoorinstellingen",
     "makeAccount": "Account aanmaken",
     "account": "Account",
     "allOffices": "Alle kantoren",
@@ -1113,8 +1224,15 @@
     "notOnFloor": "Niet op de vloer",
     "message": "Bericht",
     "leaveLobby": "Lobby verlaten",
-    "lobbyChannel": "lobby",
-    "hereNow": "Nu hier"
+    "hereNow": "Nu hier",
+    "settings": "Instellingen",
+    "inCall": "In gesprek",
+    "inMeeting": "In een meeting",
+    "yourOffice": "Jouw kantoor",
+    "walkTo": "Loop erheen",
+    "youLower": "jij",
+    "joined": "Lid sinds {date}",
+    "yourProfile": "Jouw profiel"
   },
   "dashboard": {
     "morning": "Goedemorgen, {name}",

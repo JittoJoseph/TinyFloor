@@ -2,14 +2,14 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Check, Link2, Send, UserRound, MessageSquare, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
+import { ArrowRight, Check, Link2, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type GuestLink, type Invite, type OfficeOverview } from "@/lib/api";
-import { guestLinkPath, invitePath, officeChatPath, shareUrl } from "@/lib/links";
+import { guestLinkPath, invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
 import { shareLink } from "@/lib/share";
-import { useFloorStatus } from "@/lib/floor";
+import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
 import { Face } from "@/components/ui/Face";
@@ -18,9 +18,18 @@ import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
 import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
+import { usePlace } from "./place";
+import { MemberCard } from "./MemberCard";
+import { Link } from "@/lib/i18n/navigation";
+
+/** People: an office's members and who can come in, or who is in the lobby now. */
+export function PeopleView() {
+  const place = usePlace();
+  return place.kind === "office" ? <OfficePeople /> : <LobbyPeople />;
+}
 
 /** Who is in the office, who has been asked, and who can be let in as a guest. */
-export function PeopleView() {
+function OfficePeople() {
   const t = useTranslations("office.people");
   const ts = useTranslations("shell");
   const format = useFormatter();
@@ -143,20 +152,23 @@ export function PeopleView() {
                 const isMe = member.id === user?.id;
                 const owner = member.id === office.owner;
                 return (
-                  <li
+                  <MemberCard
                     key={member.id}
-                    className="flex flex-col rounded-2xl border border-border bg-background p-4 [--face-ring:var(--ui-background)]"
-                  >
-                    <div className="mb-4 flex items-start gap-3">
-                      <Face seed={member.id} size={44} presence={floor.get(member.id) ?? null} />
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-[14.5px] font-semibold text-foreground">
-                          {member.displayName}
-                          {isMe && <span className="font-normal text-muted-foreground"> · {t("you")}</span>}
-                        </p>
-                        <p className="truncate text-[12.5px] text-muted-foreground">{member.email ?? t("noEmail")}</p>
-                      </div>
-                      {admin && !owner && (
+                    id={member.id}
+                    name={member.displayName}
+                    detail={member.email ?? t("noEmail")}
+                    presence={floor.get(member.id) ?? null}
+                    role={owner ? t("owner") : t(member.role)}
+                    joinedAt={member.joinedAt}
+                    isMe={isMe}
+                    onProfile={() => router.push("/account")}
+                    onMessage={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
+                    onWalk={() => {
+                      router.push(officePath(office.id));
+                      walkToPerson(member.id);
+                    }}
+                    menu={
+                      admin && !owner ? (
                         <Menu
                           align="end"
                           width={208}
@@ -179,36 +191,9 @@ export function PeopleView() {
                             {isMe ? t("leave") : t("remove")}
                           </MenuItem>
                         </Menu>
-                      )}
-                    </div>
-                    <div className="mt-auto flex h-8 items-center gap-2">
-                      <RoleBadge>{owner ? t("owner") : t(member.role)}</RoleBadge>
-                      <span className="text-[12px] text-muted-foreground">
-                        {floor.has(member.id) ? ts("onFloorShort") : ts("notOnFloor")}
-                      </span>
-                      {isMe ? (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="ms-auto h-8 gap-1.5 px-3 text-[12.5px]"
-                          onClick={() => router.push("/account")}
-                        >
-                          <UserRound className="size-3.5" />
-                          {t("yourProfile")}
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          className="ms-auto h-8 gap-1.5 px-3 text-[12.5px]"
-                          onClick={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
-                        >
-                          <MessageSquare className="size-3.5" />
-                          {ts("message")}
-                        </Button>
-                      )}
-                    </div>
-                  </li>
+                      ) : undefined
+                    }
+                  />
                 );
               })}
               {admin && full && (
@@ -420,5 +405,112 @@ function LinkList({
         </li>
       ))}
     </ul>
+  );
+}
+
+/**
+ * The lobby's people: whoever is on this floor right now, as the same cards an
+ * office has. Writing to someone needs an office; walking over does not.
+ */
+function LobbyPeople() {
+  const t = useTranslations("office.people");
+  const tl = useTranslations("lobby");
+  const ts = useTranslations("shell");
+  const tr = useTranslations("room");
+  const router = useRouter();
+  const { user } = useAuth();
+  const place = usePlace();
+  const everyone = useFloor();
+  const [copied, setCopied] = useState(false);
+  const here = [...everyone.filter((one) => one.id === user?.id), ...everyone.filter((one) => one.id !== user?.id)];
+
+  const shareLobby = async () => {
+    const result = await shareLink(shareUrl(lobbyPath), tl("title"), tr("inviteText", { room: tl("title") }));
+    if (result !== "copied") return;
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
+      <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
+        <header className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{ts("hereNow")}</h1>
+            <p className="mt-1 text-[14px] text-muted-foreground">{tl("peopleSubtitle")}</p>
+          </div>
+          <Button size="md" className="h-10 gap-2 px-4 text-[13px]" onClick={shareLobby}>
+            {copied ? <Check className="size-4" /> : <UserPlus className="size-4" />}
+            {copied ? tr("linkCopied") : tr("invite")}
+          </Button>
+        </header>
+
+        {/* What the lobby is for: showing what your own office would be. */}
+        {place.paths.yourOffice && (
+          <Link
+            href={place.paths.yourOffice}
+            className="group mt-6 flex items-center gap-4 rounded-2xl border border-border bg-background p-4 transition-colors hover:border-border-strong [--face-ring:var(--ui-background)]"
+          >
+            <span className="flex">
+              {here.slice(0, 3).map((one, index) => (
+                <span key={one.id} style={{ marginInlineStart: index ? -12 : 0 }} className="flex shrink-0 rounded-full ring-2 ring-background">
+                  <Face seed={one.id} size={36} />
+                </span>
+              ))}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[14.5px] font-semibold text-foreground">{t("ownOfficeTitle")}</span>
+              <span className="block text-[13px] text-muted-foreground">{t("ownOfficeBody")}</span>
+            </span>
+            <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+          </Link>
+        )}
+
+        {here.length <= 1 ? (
+          <Empty
+            className="mt-6"
+            art={
+              <span className="flex items-center [--face-ring:var(--ui-card)]">
+                {user && <Face seed={user.id} size={44} presence="available" />}
+                {[0, 1].map((one) => (
+                  <span
+                    key={one}
+                    className="-ms-2.5 flex size-11 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-card text-faint"
+                  >
+                    <UserPlus className="size-4" />
+                  </span>
+                ))}
+              </span>
+            }
+            title={tr("aloneTitle")}
+            body={tr("aloneBody")}
+            actions={
+              <Chip solid icon={copied ? <Check /> : <UserPlus />} onClick={shareLobby}>
+                {copied ? tr("linkCopied") : tr("inviteSomeone")}
+              </Chip>
+            }
+          />
+        ) : (
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {here.map((one) => (
+              <MemberCard
+                key={one.id}
+                id={one.id}
+                name={one.name}
+                presence={one.status}
+                isMe={one.id === user?.id}
+                onProfile={user?.guest ? undefined : () => router.push("/account")}
+                onMessage={() => place.officesOnly("directMessages")}
+                messageLocked
+                onWalk={() => {
+                  router.push(place.paths.floor);
+                  walkToPerson(one.id);
+                }}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
   );
 }

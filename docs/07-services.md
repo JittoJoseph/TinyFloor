@@ -23,8 +23,8 @@ ever used. That is where "so many" came from.
 
 | Class | One per | Keeps | Verdict |
 |---|---|---|---|
-| `Room` | office floor, lobby copy | hibernating floor sockets, whiteboard, usage | **Keep.** The floor. |
-| `Chat` | office | channels, messages, reads, reactions | **Keep**, separate from `Room` — see below. |
+| `Room` | office floor, lobby copy | hibernating floor sockets, whiteboard, usage | **Keep.** The floor. No chat of its own any more. |
+| `Chat` | office, plus one `lobby` | channels, messages, reads, reactions | **Keep**, separate from `Room` — see below. |
 | `PasswordGuard` | email address, client IP | bcrypt work, failed-attempt counts | **Keep, but stop it leaving objects behind.** |
 | `Presence` | one, global | head count of every room | **Removed.** |
 
@@ -54,6 +54,24 @@ that exist are the ones currently counting failures.
 
 The class itself stays: bcrypt takes longer than a free-plan Worker's CPU
 budget, and a Durable Object request gets thirty seconds.
+
+### The lobby's chat
+
+Every copy of the lobby (`lobby-1`, `lobby-2`, …) is its own `Room`, but they
+share one `Chat` named `lobby`, so a conversation does not split when the lobby
+fills up. It has three fixed channels, takes posts from anyone inside, guests
+included, and refuses what only an office has (new channels, direct messages,
+images). It keeps a week: after a post it sets an alarm for a day later, which
+deletes messages older than seven days and sets itself again only while any
+remain. That is one alarm a day while the lobby is in use and none when it is
+quiet — cheaper than a cron trigger, which would wake the object every day
+regardless.
+
+The floor's old transient chat, which lived in `Room`, is gone.
+
+The door shows who is inside with `GET /v1/lobby`, which asks the copies in
+turn and is cached at the edge for fifteen seconds, so a crowd at the door is
+one Durable Object round per quarter minute.
 
 ### Why chat is not folded into Room
 

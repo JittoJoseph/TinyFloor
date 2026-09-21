@@ -52,7 +52,8 @@ export interface RoomViewProps {
   sharePath?: string;
   /** Where "back" goes when the room lets go of you. */
   leaveHref: string;
-  onDevices?: () => void;
+  /** Where this place's settings are, for the dock's gear. */
+  settingsHref?: string;
 }
 
 /**
@@ -60,7 +61,7 @@ export interface RoomViewProps {
  * who is here (top left), Invite (top right), and your microphone and camera
  * (bottom). Everything else lives in the rail.
  */
-export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevices }: RoomViewProps) {
+export function RoomView({ title, user, ticketFor, sharePath, leaveHref, settingsHref }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
   const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
@@ -251,7 +252,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevic
       <RoomTutorial name={user.displayName} character={user.character} sharePath={sharePath} />
 
       <div className={tutorialActive ? "hidden md:block" : undefined}>
-        <ControlBar onDevices={onDevices} />
+        <ControlBar settingsHref={settingsHref} />
       </div>
     </div>
   );

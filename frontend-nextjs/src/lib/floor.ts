@@ -28,6 +28,17 @@ if (typeof window !== "undefined") {
   );
 }
 
+/** Asks the floor to walk you over to someone (see GameScene). */
+export const WALK_TO_PERSON_EVENT = "walkToPerson";
+
+/**
+ * Walk over to someone. The views cover the floor, so the caller shows the
+ * floor first; the walk itself waits a frame for the map to be visible.
+ */
+export function walkToPerson(id: string) {
+  requestAnimationFrame(() => window.dispatchEvent(new CustomEvent(WALK_TO_PERSON_EVENT, { detail: { id } })));
+}
+
 /** The floor has gone (you left, or the room let go): nobody is known to be there. */
 export function clearFloor() {
   set([]);

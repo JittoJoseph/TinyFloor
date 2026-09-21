@@ -17,21 +17,21 @@ const EMOJI = ["😀", "😂", "🙂", "😍", "🤔", "😅", "👍", "👏", "
 export function Composer({
   placeholder,
   onSend,
-  attachNote,
+  onFiles,
   note,
   maxLength = 4000,
 }: {
   placeholder: string;
   onSend: (text: string) => void;
-  /** Said when the image button is pressed and images are not on offer here. */
-  attachNote?: string;
+  /** Images picked with the button; the view decides what can happen to them. */
+  onFiles: (files: File[]) => void;
   /** Something the room said, like "slow down". */
   note?: string | null;
   maxLength?: number;
 }) {
   const t = useTranslations("chat");
   const [body, setBody] = useState("");
-  const [said, setSaid] = useState<string | null>(null);
+  const picker = useRef<HTMLInputElement>(null);
   const [emoji, setEmoji] = useState(false);
   const box = useRef<HTMLTextAreaElement>(null);
 
@@ -63,7 +63,7 @@ export function Composer({
     });
   };
 
-  const shown = note ?? said;
+  const shown = note;
 
   return (
     <div className="shrink-0 px-4 pb-4 sm:px-5">
@@ -99,16 +99,23 @@ export function Composer({
             <button
               type="button"
               aria-label={t("attach")}
-              onClick={() => {
-                if (!attachNote) return;
-                setSaid(attachNote);
-                setTimeout(() => setSaid(null), 4000);
-              }}
+              onClick={() => picker.current?.click()}
               className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               <ImagePlus className="size-[18px]" />
             </button>
           </Tooltip>
+          <input
+            ref={picker}
+            type="file"
+            accept="image/*"
+            multiple
+            hidden
+            onChange={(event) => {
+              onFiles([...(event.target.files ?? [])]);
+              event.target.value = "";
+            }}
+          />
           <span className="relative">
             <Tooltip content={t("emoji")}>
               <button

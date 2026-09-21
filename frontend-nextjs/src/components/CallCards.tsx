@@ -9,6 +9,8 @@ import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
+import { useAuth } from "@/contexts/AuthContext";
+import { usePrefs } from "@/lib/prefs";
 
 interface Tile {
   key: string;
@@ -65,6 +67,7 @@ function transition(update: () => void) {
 export default function CallCards() {
   const t = useTranslations("call");
   const tc = useTranslations("common");
+  const { user } = useAuth();
   const {
     meeting,
     peers,
@@ -79,6 +82,7 @@ export default function CallCards() {
   const tiles: Tile[] = [
     {
       key: "self",
+      id: user?.id,
       name: tc("you"),
       stream: localStream,
       mic: micEnabled,
@@ -202,6 +206,7 @@ function CallCard({
   micOff: string;
   onToggle: () => void;
 }) {
+  const { mirrorVideo: mirror } = usePrefs();
   const speaking = useSpeaking(
     tile.stream,
     !tile.screen && tile.mic && tile.connected,
@@ -230,7 +235,8 @@ function CallCard({
         stream={tile.stream}
         muted={muted}
         hidden={!tile.camera}
-        initial={tile.name}
+        seed={tile.id ?? tile.key}
+        mirror={!!tile.self && !tile.screen && mirror}
         fit={tile.screen ? "contain" : "cover"}
       />
       {!tile.connected && (

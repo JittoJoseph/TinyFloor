@@ -38,7 +38,8 @@
     "rooms": "Salas",
     "offices": "Seus escritórios",
     "account": "Conta",
-    "createOffice": "Criar um escritório"
+    "createOffice": "Criar um escritório",
+    "plansSoon": "Equipe maior? Planos com mais vagas chegam em breve."
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -136,7 +137,7 @@
       },
       {
         "q": "O TinyFloor é gratuito?",
-        "a": "Sim. O lobby público é grátis para todos, e um espaço de trabalho para uma equipe pequena também."
+        "a": "Sim. O lobby público é gratuito para todos, assim como um escritório para até 3 pessoas. Planos para equipes maiores chegam em breve."
       },
       {
         "q": "Preciso de uma conta para entrar em uma sala?",

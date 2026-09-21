@@ -38,7 +38,8 @@
     "rooms": "Rum",
     "offices": "Dina kontor",
     "account": "Konto",
-    "createOffice": "Skapa ett kontor"
+    "createOffice": "Skapa ett kontor",
+    "plansSoon": "Större team? Planer med fler platser kommer snart."
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Är TinyFloor gratis?",
-        "a": "Ja. Den offentliga lobbyn är gratis för alla, och det är en arbetsyta för ett litet team också."
+        "a": "Ja. Den öppna lobbyn är gratis för alla, och ett kontor för upp till 3 personer också. Planer för större team kommer snart."
       },
       {
         "q": "Behöver jag ett konto för att gå med i ett rum?",

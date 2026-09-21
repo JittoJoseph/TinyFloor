@@ -38,7 +38,8 @@
     "rooms": "Rooms",
     "offices": "Your offices",
     "account": "Account",
-    "createOffice": "Create an office"
+    "createOffice": "Create an office",
+    "plansSoon": "Bigger teams? Plans with more seats are coming soon."
   },
   "languageSwitcher": {
     "label": "Language",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. The public lobby is free for everyone, and so is a workspace for a small team."
+        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Plans for bigger teams are coming soon."
       },
       {
         "q": "Do I need an account to join a room?",

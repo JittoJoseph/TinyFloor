@@ -9,6 +9,7 @@ import { officePath } from "@/lib/links";
 import { EntryShell, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
+import { PlansSoon } from "@/components/ui/PlansSoon";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { forgetOffice as forget, pendingOffice as pending, rememberOffice as remember } from "@/lib/pendingOffice";
@@ -114,6 +115,7 @@ export default function CreateSpacePage() {
         <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
           {account ? t("freePlan") : t("accountNext")}
         </p>
+        <PlansSoon className="mt-1.5 justify-center" />
 
         {!isLoading && !account && (
           <p className="text-[12px] text-foreground opacity-50 text-center mt-2">

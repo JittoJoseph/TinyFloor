@@ -458,7 +458,10 @@
     "reduceMotionNote": "Meno animazioni in tutta l'app.",
     "performance": "Prestazioni",
     "batterySaver": "Risparmio batteria",
-    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso."
+    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
+    "enhancedNoise": "Riduzione del rumore più forte",
+    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Parte dalla prossima chiamata e consuma un po' più di batteria.",
+    "experimental": "Sperimentale"
   },
   "tutorial": {
     "walk": "Muoviti con W A S D",

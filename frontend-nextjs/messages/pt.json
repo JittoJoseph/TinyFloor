@@ -458,7 +458,10 @@
     "reduceMotionNote": "Menos animações em todo o app.",
     "performance": "Desempenho",
     "batterySaver": "Economia de bateria",
-    "batterySaverNote": "Desenha o andar com menos quadros por segundo. Vale na próxima vez que você entrar."
+    "batterySaverNote": "Desenha o andar com menos quadros por segundo. Vale na próxima vez que você entrar.",
+    "enhancedNoise": "Remoção de ruído mais forte",
+    "enhancedNoiseNote": "Um pequeno modelo de IA no seu dispositivo tira teclados, cachorros e conversas ao fundo. Vale a partir da próxima chamada e gasta um pouco mais de bateria.",
+    "experimental": "Experimental"
   },
   "tutorial": {
     "walk": "Ande com W A S D",

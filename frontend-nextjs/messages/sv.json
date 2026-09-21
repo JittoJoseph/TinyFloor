@@ -458,7 +458,10 @@
     "reduceMotionNote": "Färre animationer i hela appen.",
     "performance": "Prestanda",
     "batterySaver": "Batterisparläge",
-    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in."
+    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in.",
+    "enhancedNoise": "Starkare brusreducering",
+    "enhancedNoiseNote": "En liten AI-modell på din enhet tar bort tangentbord, hundar och prat i bakgrunden. Gäller från nästa samtal och drar lite mer batteri.",
+    "experimental": "Experimentell"
   },
   "tutorial": {
     "walk": "Gå runt med W A S D",

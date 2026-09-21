@@ -66,8 +66,8 @@ function KeyCap({ label, active }: { label: string; active?: boolean }) {
     <span
       className={`w-5 h-5 rounded-[5px] text-[9px] font-bold flex items-center justify-center border ${
         active
-          ? "bg-[var(--color-braun-text)] text-white border-[var(--color-braun-text)]"
-          : "bg-white text-[var(--color-braun-text)] border-[rgba(0,0,0,0.1)]"
+          ? "bg-foreground text-white border-foreground"
+          : "bg-card text-foreground border-border-strong"
       }`}
     >
       {label}
@@ -120,7 +120,7 @@ function Cursor({
 }) {
   return (
     <MousePointerClick
-      className={`${size} text-[var(--color-braun-text)]/75`}
+      className={`${size} text-foreground/75`}
       style={{ animation }}
     />
   );
@@ -135,7 +135,7 @@ function Ripple({
 }) {
   return (
     <span
-      className={`block ${size} rounded-full border-2 border-[var(--color-braun-text)]/50`}
+      className={`block ${size} rounded-full border-2 border-foreground/50`}
       style={{ animation }}
     />
   );
@@ -240,8 +240,8 @@ export default function RoomTutorial({
         </div>
         <div className="absolute right-4 bottom-7 flex flex-col items-center gap-1">
           {touch ? (
-            <span className="w-11 h-11 rounded-full border-2 border-[rgba(0,0,0,0.12)] bg-white/70 flex items-center justify-center">
-              <span className="w-5 h-5 rounded-full bg-[var(--color-braun-text)]/70 translate-x-1.5" />
+            <span className="w-11 h-11 rounded-full border-2 border-border-strong bg-card/70 flex items-center justify-center">
+              <span className="w-5 h-5 rounded-full bg-foreground/70 translate-x-1.5" />
             </span>
           ) : (
             <>
@@ -337,22 +337,22 @@ export default function RoomTutorial({
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-4">
         <div
           dir="ltr"
-          className="flex items-center gap-2 w-full bg-white border border-[rgba(0,0,0,0.06)] rounded-full pl-3 pr-1.5 py-1.5 shadow-sm"
+          className="flex items-center gap-2 w-full bg-card border border-border rounded-full pl-3 pr-1.5 py-1.5 shadow-sm"
         >
-          <Link2 className="w-3.5 h-3.5 text-[var(--color-braun-text)]/50 shrink-0" />
-          <span className="flex-1 truncate font-body text-[11px] text-[var(--color-braun-text)]/70">
+          <Link2 className="w-3.5 h-3.5 text-foreground/50 shrink-0" />
+          <span className="flex-1 truncate text-[11px] text-foreground/70">
             {sharePath}
           </span>
           <button
             type="button"
             onClick={copyInvite}
-            className="cursor-pointer shrink-0 h-7 px-3 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[11px] font-semibold flex items-center gap-1.5 transition-all active:scale-95"
+            className="cursor-pointer shrink-0 h-7 px-3 rounded-full bg-foreground text-white text-[11px] font-semibold flex items-center gap-1.5 transition-all active:scale-95"
           >
             {copied ? <Check className="w-3 h-3" /> : <UserPlus className="w-3 h-3" />}
             {copied ? tRoom("linkCopied") : tRoom("invite")}
           </button>
         </div>
-        <p className="font-body text-[11px] text-[var(--color-braun-text)]/50 text-center">
+        <p className="text-[11px] text-foreground/50 text-center">
           {t("linkHint")}
         </p>
       </div>
@@ -361,19 +361,19 @@ export default function RoomTutorial({
 
   return (
     <div className="fixed inset-0 z-[46] pointer-events-none flex items-start justify-center p-3 md:items-center md:justify-end md:p-4">
-      <div className="pointer-events-auto w-[300px] max-w-full bg-[#fbfbf9]/95 backdrop-blur-sm border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-lg p-3.5">
+      <div className="pointer-events-auto w-[300px] max-w-full bg-card/95 backdrop-blur-sm border border-border rounded-2xl shadow-lg p-3.5">
         <div
           dir="ltr"
-          className="relative h-[128px] rounded-xl bg-[var(--color-braun-text)]/[0.04] overflow-hidden"
+          className="relative h-[128px] rounded-xl bg-foreground/[0.04] overflow-hidden"
         >
           {demo}
         </div>
 
         <div className="flex items-start gap-2.5 mt-3 h-[42px] overflow-hidden">
-          <div className="w-8 h-8 rounded-full bg-[var(--color-braun-text)]/5 flex items-center justify-center text-[var(--color-braun-text)] shrink-0">
+          <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center text-foreground shrink-0">
             <Icon className="w-4 h-4" />
           </div>
-          <p className="font-body text-[13px] font-semibold text-[var(--color-braun-text)] leading-snug pt-1.5">
+          <p className="text-[13px] font-semibold text-foreground leading-snug pt-1.5">
             {text}
           </p>
         </div>
@@ -385,8 +385,8 @@ export default function RoomTutorial({
                 key={index}
                 className={`h-1.5 rounded-full transition-all ${
                   index === step
-                    ? "w-3 bg-[var(--color-braun-text)]"
-                    : "w-1.5 bg-[var(--color-braun-text)]/20"
+                    ? "w-3 bg-foreground"
+                    : "w-1.5 bg-foreground/20"
                 }`}
               />
             ))}
@@ -396,7 +396,7 @@ export default function RoomTutorial({
             {isLast ? (
               <button
                 onClick={finish}
-                className="cursor-pointer h-8 px-4 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[12px] font-semibold transition-all active:scale-95"
+                className="cursor-pointer h-8 px-4 rounded-full bg-foreground text-white text-[12px] font-semibold transition-all active:scale-95"
               >
                 {t("done")}
               </button>
@@ -404,13 +404,13 @@ export default function RoomTutorial({
               <>
                 <button
                   onClick={finish}
-                  className="cursor-pointer px-1 font-body text-[12px] font-semibold text-[var(--color-braun-text)]/45 hover:text-[var(--color-braun-text)] transition-colors"
+                  className="cursor-pointer px-1 text-[12px] font-semibold text-foreground/45 hover:text-foreground transition-colors"
                 >
                   {t("skip")}
                 </button>
                 <button
                   onClick={advance}
-                  className="cursor-pointer w-8 h-8 rounded-full bg-[var(--color-braun-text)] text-white flex items-center justify-center transition-all active:scale-95"
+                  className="cursor-pointer w-8 h-8 rounded-full bg-foreground text-white flex items-center justify-center transition-all active:scale-95"
                   title={t("next")}
                   aria-label={t("next")}
                 >

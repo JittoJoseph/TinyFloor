@@ -118,14 +118,14 @@ export function WalkIn({
     >
       <div className="entry-rise">
         {eyebrow && (
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-45 mb-2">
+          <p className="text-[11px] font-bold text-foreground opacity-45 mb-2">
             {eyebrow}
           </p>
         )}
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5 break-words">
+        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5 break-words">
           {title}
         </h1>
-        {subtitle && <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-5">{subtitle}</p>}
+        {subtitle && <p className="text-sm text-foreground opacity-55 mb-5">{subtitle}</p>}
 
         <form
           className={subtitle ? "" : "mt-5"}
@@ -184,7 +184,7 @@ export function WalkIn({
         </form>
 
         {!isLoading && !account && (
-          <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-50 text-center mt-5">
+          <p className="text-[12px] text-foreground opacity-50 text-center mt-5">
             {t.rich(user ? "guestKeep" : "guestNote", {
               link: (chunks) => (
                 <Link

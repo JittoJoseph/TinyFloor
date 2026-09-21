@@ -34,8 +34,8 @@ export function CallStream({
         className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} ${hasVideo ? "" : "invisible"}`}
       />
       {!hasVideo && (
-        <div className="absolute inset-0 bg-[#fbfbf9] flex items-center justify-center [container-type:size]">
-          <div className="h-[40cqh] max-h-[72px] aspect-square bg-[var(--color-braun-text)]/5 border border-[rgba(0,0,0,0.06)] rounded-full flex items-center justify-center text-[var(--color-braun-text)] font-bold text-[length:min(18cqh,28px)]">
+        <div className="absolute inset-0 bg-card flex items-center justify-center [container-type:size]">
+          <div className="h-[40cqh] max-h-[72px] aspect-square bg-foreground/5 border border-border rounded-full flex items-center justify-center text-foreground font-bold text-[length:min(18cqh,28px)]">
             {initial.charAt(0).toUpperCase()}
           </div>
         </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { SITE_URL } from "@/lib/site";
-import { VT323, Nunito, Caveat } from "next/font/google";
+import { VT323, Nunito, Caveat, Geist } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
@@ -22,6 +22,14 @@ const nunito = Nunito({
   variable: "--font-body",
   subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "600", "700", "800"],
+});
+
+// The app's face (docs/06-app-design.md). Not preloaded: only the app routes
+// use it, so the landing pages never download it.
+const geist = Geist({
+  variable: "--font-app",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  preload: false,
 });
 
 // The handwriting on the landing page's notes and arrows.
@@ -92,8 +100,9 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth">
-      <body className={`${vt323.variable} ${nunito.variable} ${caveat.variable} antialiased`}>
+    // The app routes set their theme on <html> before React loads (lib/theme-script.ts).
+    <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${vt323.variable} ${nunito.variable} ${caveat.variable} ${geist.variable} antialiased`}>
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
           <AuthProvider>

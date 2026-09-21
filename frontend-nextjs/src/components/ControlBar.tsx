@@ -1,185 +1,99 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import {
-  Mic,
-  MicOff,
-  Video,
-  VideoOff,
-  Settings,
-  MessageSquare,
-  MonitorUp,
-  MonitorX,
-  PhoneOff,
-  Volume2,
-  VolumeX,
-} from "lucide-react";
-import { StatusSelector } from "./StatusSelector";
-import { Badge, Divider, RoomIconButton, surface } from "./room/ui";
+import { Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings2, Video, VideoOff, Volume2, VolumeX } from "lucide-react";
+import { Dock, DockSeparator } from "@/components/motion/dock";
+import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import type { PlayerStatus } from "@/lib/types";
-
-interface ControlBarProps {
-  onSettingsClick?: () => void;
-  onChatClick?: () => void;
-  onStatusChange?: (status: PlayerStatus) => void;
-  currentStatus?: PlayerStatus;
-  unreadChatCount?: number;
-}
-
-/** A dot in the corner of a button that is off, so it reads at a glance. */
-const OffMark = () => (
-  <span className="absolute -top-0.5 -end-0.5 w-2 h-2 rounded-full bg-[var(--color-braun-orange)] border border-white" />
-);
+import { setMyStatus } from "@/lib/floor";
 
 /**
- * The bar along the bottom: who you are to the room, then your microphone and
- * camera, then the ways to talk. Phones get the same buttons minus the ones
- * that only matter on a desktop, so the row never runs out of room.
+ * The dock along the bottom of the floor: your microphone and camera, always;
+ * screen, speaker and hanging up only while you are in a call; and devices.
+ * Status and chat live in the rail, so the dock stays short on a phone.
  */
-export default function ControlBar({
-  onSettingsClick,
-  onChatClick,
-  onStatusChange,
-  currentStatus = "available",
-  unreadChatCount = 0,
-}: ControlBarProps) {
+export default function ControlBar({ onDevices }: { onDevices?: () => void }) {
   const t = useTranslations("controls");
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
-  const isInCall = peers.length > 0 || !!meeting;
+  const inCall = peers.length > 0 || !!meeting;
   // Phones and some browsers cannot share a screen, so the button only exists where it works.
-  const canShareScreen =
-    isInCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
-  const [status, setStatus] = useState<PlayerStatus>(currentStatus);
+  const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
 
-  // Follow the status from outside, and switch to "in call" and back as calls
-  // start and end, adjusting during render rather than in an effect.
-  const [seenStatus, setSeenStatus] = useState(currentStatus);
-  if (currentStatus !== seenStatus) {
-    setSeenStatus(currentStatus);
-    setStatus(currentStatus);
-  }
-  const [seenInCall, setSeenInCall] = useState(isInCall);
-  if (isInCall !== seenInCall) {
-    setSeenInCall(isInCall);
-    setStatus(isInCall ? "in_call" : "available");
-  }
-
-  // Tell the room when a call starts or ends.
-  const wasInCall = useRef(isInCall);
+  // Everyone sees "in a call" while you are in one, and "available" after.
+  const wasInCall = useRef(inCall);
   useEffect(() => {
-    if (wasInCall.current === isInCall) return;
-    wasInCall.current = isInCall;
-    onStatusChange?.(isInCall ? "in_call" : "available");
-  }, [isInCall, onStatusChange]);
-
-  const toggleMic = useCallback(() => callManager.setMic(!micEnabled), [micEnabled]);
-  const toggleVideo = useCallback(() => callManager.setCamera(!cameraEnabled), [cameraEnabled]);
-  const toggleSpeaker = useCallback(() => callManager.setSpeaker(!speakerEnabled), [speakerEnabled]);
-
-  const handleStatusChange = useCallback(
-    (newStatus: PlayerStatus) => {
-      // During a call the status stays "in call".
-      if (isInCall) return;
-      setStatus(newStatus);
-      onStatusChange?.(newStatus);
-    },
-    [isInCall, onStatusChange],
-  );
+    if (wasInCall.current === inCall) return;
+    wasInCall.current = inCall;
+    setMyStatus(inCall ? "in_call" : "available");
+  }, [inCall]);
 
   return (
-    <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100%-1.5rem)]">
-      <div className={`${surface} rounded-full px-2 py-2 flex items-center gap-1.5 sm:gap-2`}>
-        <StatusSelector currentStatus={status} onStatusChange={handleStatusChange} />
-
-        <Divider />
-
-        <RoomIconButton
-          onClick={toggleMic}
-          tone={micEnabled ? "quiet" : "alert"}
-          title={micEnabled ? t("muteMic") : t("unmuteMic")}
+    <div className="absolute bottom-3 left-1/2 z-50 max-w-[calc(100%-1.5rem)] -translate-x-1/2 sm:bottom-4">
+      <Dock size={44} className="items-center gap-1 rounded-full border-border bg-card/90 p-1.5 shadow-float [--face-ring:var(--ui-card)]">
+        <IconButton
+          label={micEnabled ? t("muteMic") : t("unmuteMic")}
+          tone={micEnabled ? "soft" : "off"}
+          size="lg"
           aria-pressed={!micEnabled}
-          icon={micEnabled ? <Mic className="w-[18px] h-[18px]" /> : <MicOff className="w-[18px] h-[18px]" />}
-          mark={micEnabled ? undefined : <OffMark />}
+          onClick={() => callManager.setMic(!micEnabled)}
+          icon={micEnabled ? <Mic /> : <MicOff />}
         />
-
-        <RoomIconButton
-          onClick={toggleVideo}
-          tone={cameraEnabled ? "quiet" : "alert"}
-          title={cameraEnabled ? t("cameraOff") : t("cameraOn")}
+        <IconButton
+          label={cameraEnabled ? t("cameraOff") : t("cameraOn")}
+          tone={cameraEnabled ? "soft" : "off"}
+          size="lg"
           aria-pressed={!cameraEnabled}
-          icon={
-            cameraEnabled ? <Video className="w-[18px] h-[18px]" /> : <VideoOff className="w-[18px] h-[18px]" />
-          }
-          mark={cameraEnabled ? undefined : <OffMark />}
+          onClick={() => callManager.setCamera(!cameraEnabled)}
+          icon={cameraEnabled ? <Video /> : <VideoOff />}
         />
 
-        {canShareScreen && (
-          <RoomIconButton
-            onClick={() => callManager.setScreen(!screenStream)}
-            tone={screenStream ? "on" : "quiet"}
-            title={screenStream ? t("stopSharing") : t("shareScreen")}
-            aria-pressed={!!screenStream}
-            icon={
-              screenStream ? (
-                <MonitorX className="w-[18px] h-[18px]" />
-              ) : (
-                <MonitorUp className="w-[18px] h-[18px]" />
-              )
-            }
-          />
-        )}
-
-        {/* The speaker only gets in the way on a phone when nobody is talking. */}
-        <span className={isInCall ? "contents" : "hidden sm:contents"}>
-          <RoomIconButton
-            onClick={toggleSpeaker}
-            title={speakerEnabled ? t("muteSpeaker") : t("unmuteSpeaker")}
-            aria-pressed={!speakerEnabled}
-            icon={
-              speakerEnabled ? (
-                <Volume2 className="w-[18px] h-[18px]" />
-              ) : (
-                <VolumeX className="w-[18px] h-[18px]" />
-              )
-            }
-          />
-        </span>
-
-        <Divider />
-
-        <RoomIconButton
-          onClick={onChatClick}
-          title={t("openChat")}
-          icon={<MessageSquare className="w-[18px] h-[18px]" />}
-          mark={unreadChatCount > 0 ? <Badge count={unreadChatCount} /> : undefined}
-        />
-
-        {/* Choosing a microphone or camera is a desktop job. */}
-        <span className="hidden sm:contents">
-          <RoomIconButton
-            onClick={onSettingsClick}
-            title={t("settings")}
-            icon={<Settings className="w-[18px] h-[18px]" />}
-          />
-        </span>
-
-        {isInCall && (
+        {inCall && (
           <>
-            <Divider />
-            <RoomIconButton
-              onClick={() =>
-                meeting ? window.dispatchEvent(new Event("leaveMeeting")) : callManager.hangUp()
-              }
-              tone="danger"
-              title={meeting ? t("leaveMeeting") : t("leaveCall")}
-              icon={<PhoneOff className="w-[18px] h-[18px]" />}
+            {canShareScreen && (
+              <IconButton
+                label={screenStream ? t("stopSharing") : t("shareScreen")}
+                tone={screenStream ? "solid" : "ghost"}
+                size="lg"
+                aria-pressed={!!screenStream}
+                onClick={() => callManager.setScreen(!screenStream)}
+                icon={screenStream ? <MonitorX /> : <MonitorUp />}
+              />
+            )}
+            <IconButton
+              label={speakerEnabled ? t("muteSpeaker") : t("unmuteSpeaker")}
+              tone={speakerEnabled ? "ghost" : "off"}
+              size="lg"
+              aria-pressed={!speakerEnabled}
+              onClick={() => callManager.setSpeaker(!speakerEnabled)}
+              icon={speakerEnabled ? <Volume2 /> : <VolumeX />}
             />
           </>
         )}
-      </div>
+
+        {onDevices && (
+          // Choosing a microphone or camera is a desktop job.
+          <span className="hidden items-center sm:flex">
+            <DockSeparator className="mx-1" />
+            <IconButton label={t("settings")} size="lg" onClick={onDevices} icon={<Settings2 />} />
+          </span>
+        )}
+
+        {inCall && (
+          <>
+            <DockSeparator className="mx-1" />
+            <IconButton
+              label={meeting ? t("leaveMeeting") : t("leaveCall")}
+              tone="danger"
+              size="lg"
+              className="w-14"
+              onClick={() => (meeting ? window.dispatchEvent(new Event("leaveMeeting")) : callManager.hangUp())}
+              icon={<PhoneOff />}
+            />
+          </>
+        )}
+      </Dock>
     </div>
   );
 }

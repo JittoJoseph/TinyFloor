@@ -113,7 +113,7 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
     <Dialog open={open} title={t("passwordTitle")} description={done ? undefined : t("passwordDescription")} onClose={close}>
       {done ? (
         <div className="space-y-4">
-          <p className="flex items-center gap-2 font-body text-[14px] text-emerald-700">
+          <p className="flex items-center gap-2 text-[14px] text-ok">
             <Check className="w-4 h-4" />
             {t("passwordChanged")}
           </p>
@@ -153,17 +153,17 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
                 type="button"
                 onClick={() => setShow((value) => !value)}
                 aria-label={show ? t("hidePasswords") : t("showPasswords")}
-                className="cursor-pointer absolute end-1 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-[var(--color-braun-text)] opacity-45 hover:opacity-80"
+                className="cursor-pointer absolute end-1 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-foreground opacity-45 hover:opacity-80"
               >
                 {show ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
-            <p className={`mt-2 flex items-center gap-1.5 font-body text-[12px] ${next.length >= 8 ? "text-emerald-700" : "text-[var(--color-braun-text)] opacity-50"}`}>
+            <p className={`mt-2 flex items-center gap-1.5 text-[12px] ${next.length >= 8 ? "text-ok" : "text-foreground opacity-50"}`}>
               <Check className="w-3.5 h-3.5" />
               {t("passwordRule")}
             </p>
           </div>
-          <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-55">{t("signsOutOthers")}</p>
+          <p className="text-[12px] text-foreground opacity-55">{t("signsOutOthers")}</p>
           {error && <ErrorText>{error}</ErrorText>}
           <div className="flex justify-end gap-2">
             <Button onClick={close}>{t("cancel")}</Button>

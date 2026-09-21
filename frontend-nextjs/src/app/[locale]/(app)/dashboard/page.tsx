@@ -2,25 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Plus, Users } from "lucide-react";
+import { ArrowRight, DoorOpen, Plus } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type OfficeSummary } from "@/lib/api";
 import { officePath } from "@/lib/links";
-import { AppHeader } from "@/components/app/AppHeader";
-import { label, quietLabel } from "@/components/room/ui";
+import { EASE_OUT } from "@/lib/ease";
+import { AppTopBar } from "@/components/app/AppTopBar";
+import { Logo } from "@/components/app/AppShell";
+import { Face, FaceStack } from "@/components/ui/Face";
+import { Loader } from "@/components/motion/loader";
+import { cn } from "@/lib/utils";
 
-function Loading() {
-  return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[var(--color-braun-bg)]">
-      <div className="w-8 h-8 border-2 border-[var(--color-braun-orange)] border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
-
-/** Your offices: one card each, one click into the floor. */
+/** Your offices, each a place you can see into before walking in. */
 export default function DashboardPage() {
-  const t = useTranslations("office.spaces");
+  const t = useTranslations("dashboard");
   const router = useRouter();
   const { user, isLoading } = useAuth();
   const [offices, setOffices] = useState<OfficeSummary[] | null>(null);
@@ -42,74 +39,162 @@ export default function DashboardPage() {
     };
   }, [isLoading, signedIn, router]);
 
-  if (!offices) return <Loading />;
+  if (!offices || !user) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center bg-background text-muted-foreground">
+        <Loader variant="dots" size={20} />
+      </div>
+    );
+  }
+
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? "morning" : hour < 18 ? "afternoon" : "evening";
+  const firstName = user.displayName.split(" ")[0];
 
   return (
-    <div className="min-h-screen w-full bg-[var(--color-braun-bg)]">
-      <AppHeader />
-      <main className="w-full max-w-3xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="flex items-center justify-between gap-3 mb-5">
-          <h1 className="font-body text-2xl font-medium tracking-tight text-[var(--color-braun-text)]">{t("title")}</h1>
-          {offices.length > 0 && (
-            <Link
-              href="/create"
-              className="cursor-pointer h-10 px-4 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[13px] font-semibold flex items-center gap-2"
-            >
-              <Plus className="w-4 h-4" />
-              {t("new")}
-            </Link>
-          )}
-        </div>
+    <div className="min-h-dvh bg-background">
+      <AppTopBar />
+      <main className="mx-auto w-full max-w-6xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
+        <h1 className="text-[26px] font-semibold tracking-tight text-foreground sm:text-[30px]">
+          {t(greeting, { name: firstName })}
+        </h1>
+        {offices.length > 0 && <p className="mt-1 text-[14.5px] text-muted-foreground">{t("subtitle")}</p>}
 
         {offices.length === 0 ? (
-          <div className="rounded-3xl border border-black/[0.06] bg-[#fbfbf9] px-6 py-8 text-center">
-            <h2 className="font-body text-lg font-semibold tracking-tight text-[var(--color-braun-text)]">
-              {t("emptyTitle")}
-            </h2>
-            <p className={`${quietLabel} mt-1 mb-6`}>{t("emptyBody")}</p>
-            <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <Link
-                href="/create"
-                className="cursor-pointer h-11 px-5 rounded-full bg-[var(--color-braun-text)] text-white font-body text-[13px] font-semibold flex items-center justify-center gap-2"
-              >
-                <Plus className="w-4 h-4" />
-                {t("create")}
-              </Link>
-              <Link
-                href="/lobby"
-                className="cursor-pointer h-11 px-5 rounded-full bg-white border border-black/[0.06] shadow-sm font-body text-[13px] font-semibold flex items-center justify-center"
-              >
-                {t("visitLobby")}
-              </Link>
-            </div>
-          </div>
+          <Empty />
         ) : (
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {offices.map((office) => (
-              <li key={office.id}>
-                <Link
-                  href={officePath(office.id)}
-                  className="cursor-pointer group block rounded-3xl border border-black/[0.06] bg-[#fbfbf9] overflow-hidden transition-[border-color,box-shadow] hover:border-black/15 hover:shadow-[0_18px_44px_-28px_rgba(0,0,0,0.5)]"
-                >
-                  {/* A glimpse of the floor, so an office looks like a place. */}
-                  <span className="block h-28 bg-[var(--color-braun-panel)] bg-[url('/office.png')] bg-cover bg-center" />
-                  <span className="flex items-center gap-3 px-4 py-3.5">
-                    <span className="min-w-0 flex-1">
-                      <span className={`block ${label} text-[var(--color-braun-text)] truncate`}>{office.name}</span>
-                      <span className={`flex items-center gap-1.5 ${quietLabel} mt-0.5`}>
-                        <Users className="w-3.5 h-3.5" />
-                        {t("members", { used: office.members, seats: office.seats })}
-                        <span className="opacity-60">· {t(`roles.${office.role}`)}</span>
-                      </span>
-                    </span>
-                    <ArrowRight className="w-4 h-4 shrink-0 opacity-40 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
-                  </span>
-                </Link>
-              </li>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {offices.map((office, index) => (
+              <OfficeCard key={office.id} office={office} index={index} />
             ))}
           </ul>
         )}
+
+        {offices.length > 0 && (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <Shortcut href="/create" icon={<Plus className="size-5" />} title={t("newOffice")} body={t("newOfficeBody")} />
+            <Shortcut href="/lobby" icon={<Logo size={40} />} bare title={t("lobby")} body={t("lobbyBody")} />
+          </div>
+        )}
       </main>
+    </div>
+  );
+}
+
+/** Somewhere else to go, as a row: making an office, or the lobby. */
+function Shortcut({
+  href,
+  icon,
+  title,
+  body,
+  bare,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+  bare?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group flex items-center gap-4 rounded-[18px] border border-border bg-card p-3.5 pe-5 transition-colors hover:border-border-strong"
+    >
+      {bare ? (
+        icon
+      ) : (
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
+          {icon}
+        </span>
+      )}
+      <span className="min-w-0 flex-1">
+        <span className="block text-[14.5px] font-semibold text-foreground">{title}</span>
+        <span className="block truncate text-[13px] text-muted-foreground">{body}</span>
+      </span>
+      <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+    </Link>
+  );
+}
+
+function OfficeCard({ office, index }: { office: OfficeSummary; index: number }) {
+  const t = useTranslations("dashboard");
+  const tRoles = useTranslations("office.roles");
+  const ts = useTranslations("shell");
+  const reduce = useReducedMotion();
+  const here = office.here ?? 0;
+  const faces = office.faces ?? [];
+
+  return (
+    <motion.li
+      initial={reduce ? false : { opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.32, ease: EASE_OUT, delay: index * 0.04 }}
+    >
+      <Link
+        href={officePath(office.id)}
+        className="group block overflow-hidden rounded-[22px] border border-border bg-card transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-float [--face-ring:var(--ui-card)]"
+      >
+        {/* A look at the floor, so an office reads as a place. */}
+        <div className="relative h-36 overflow-hidden bg-muted">
+          <span className="absolute inset-0 bg-[url('/office.png')] bg-cover bg-center transition-transform duration-500 [image-rendering:pixelated] group-hover:scale-[1.04]" />
+          <span className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          <span
+            className={cn(
+              "absolute start-3 top-3 flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[12px] font-medium backdrop-blur-md",
+              here ? "bg-black/55 text-white" : "bg-black/35 text-white/80",
+            )}
+          >
+            <span className={cn("size-1.5 rounded-full", here ? "bg-ok" : "bg-white/50")} />
+            {t("onFloor", { count: here })}
+          </span>
+        </div>
+
+        <div className="relative px-5 pb-5 pt-0">
+          <Face seed={office.id} size={44} square className="-mt-6 rounded-[30%] ring-4 ring-card" />
+          <div className="mt-3 flex items-end justify-between gap-3">
+            <div className="min-w-0">
+              <p className="truncate text-[16px] font-semibold tracking-tight text-foreground">{office.name}</p>
+              <p className="mt-0.5 truncate text-[13px] text-muted-foreground">
+                {ts("membersOf", { used: office.members, seats: office.seats })} · {tRoles(office.role)}
+              </p>
+            </div>
+            {faces.length > 0 && <FaceStack seeds={faces.map((one) => one.id)} size={26} max={4} />}
+          </div>
+        </div>
+      </Link>
+    </motion.li>
+  );
+}
+
+function Empty() {
+  const t = useTranslations("dashboard");
+  return (
+    <div className="mt-8 grid overflow-hidden rounded-[26px] border border-border bg-card md:grid-cols-[1.1fr_1fr]">
+      <div className="relative min-h-52 bg-muted">
+        <span className="absolute inset-0 bg-[url('/office.png')] bg-cover bg-center [image-rendering:pixelated]" />
+      </div>
+      <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
+        <div>
+          <h2 className="text-[20px] font-semibold tracking-tight text-foreground">{t("emptyTitle")}</h2>
+          <p className="mt-1.5 text-[14px] leading-relaxed text-muted-foreground">{t("emptyBody")}</p>
+        </div>
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Link
+            href="/create"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-colors hover:bg-foreground/90"
+          >
+            <Plus className="size-4" />
+            {t("newOffice")}
+          </Link>
+          <Link
+            href="/lobby"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            <DoorOpen className="size-4" />
+            {t("lobby")}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

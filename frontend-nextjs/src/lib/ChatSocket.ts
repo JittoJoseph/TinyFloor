@@ -48,6 +48,16 @@ class ChatSocket {
   private listeners = new Set<() => void>();
   /** The channel on screen, so its messages are marked read as they arrive. */
   private watching: string | null = null;
+  /** Told about messages from others that land somewhere you are not looking. */
+  private incoming = new Set<(message: ChatMessage) => void>();
+
+  /** For the nudges over the floor: someone said something you have not seen. */
+  onIncoming(listener: (message: ChatMessage) => void) {
+    this.incoming.add(listener);
+    return () => {
+      this.incoming.delete(listener);
+    };
+  }
 
   connect(officeId: string) {
     if (this.officeId === officeId && !this.stopped) return;
@@ -212,6 +222,7 @@ class ChatSocket {
           history: { ...this.state.history, [channel]: history },
         });
         if (seen) this.send({ t: "chat_read", channel, seq: message.message.seq });
+        else if (message.message.author !== this.state.me) this.incoming.forEach((listener) => listener(message.message));
         break;
       }
       case "chat_page": {

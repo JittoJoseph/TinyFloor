@@ -4,12 +4,12 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Copy, Loader2, X } from "lucide-react";
 
-const textClass = "font-body text-[var(--color-braun-text)]";
+const textClass = " text-foreground";
 
 export function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
   return (
     <section
-      className={`rounded-[1.5rem] border border-black/10 bg-white p-5 sm:p-6 shadow-[0_18px_44px_-34px_rgba(0,0,0,0.45)] ${className}`}
+      className={`rounded-[1.25rem] border border-border bg-card p-5 sm:p-6 ${className}`}
     >
       {children}
     </section>
@@ -29,7 +29,7 @@ export function CardTitle({
     <div className="flex items-start justify-between gap-3 mb-4">
       <div className="min-w-0">
         <h2 className={`${textClass} text-[15px] font-semibold tracking-tight`}>{title}</h2>
-        {detail && <p className={`${textClass} text-[13px] opacity-55 mt-0.5`}>{detail}</p>}
+        {detail && <p className={`text-[13px] text-muted-foreground mt-0.5`}>{detail}</p>}
       </div>
       {action}
     </div>
@@ -39,10 +39,10 @@ export function CardTitle({
 type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] hover:bg-[#1a1a1a] shadow-sm",
-  secondary: "bg-white text-[var(--color-braun-text)] border border-black/10 hover:bg-[#f7f7f3]",
-  danger: "bg-white text-red-600 border border-red-200 hover:bg-red-50",
-  ghost: "text-[var(--color-braun-text)] opacity-60 hover:opacity-100 hover:bg-black/[0.04]",
+  primary: "bg-foreground text-background hover:bg-foreground/90 ",
+  secondary: "bg-card text-foreground border border-border hover:bg-muted",
+  danger: "bg-card text-destructive border border-destructive/25 hover:bg-destructive/10",
+  ghost: "text-muted-foreground hover:text-foreground hover:bg-muted",
 };
 
 export function Button({
@@ -57,7 +57,7 @@ export function Button({
       type="button"
       {...props}
       disabled={props.disabled || busy}
-      className={`cursor-pointer inline-flex items-center justify-center gap-2 h-10 px-4 rounded-full font-body text-[13px] font-semibold transition-[background-color,opacity,transform] duration-150 active:scale-[0.98] disabled:opacity-45 disabled:cursor-not-allowed disabled:active:scale-100 ${variants[variant]} ${className}`}
+      className={`cursor-pointer inline-flex items-center justify-center gap-2 h-10 px-4 rounded-full text-[13px] font-medium transition-[background-color,opacity,transform] duration-150 active:scale-[0.98] disabled:opacity-45 disabled:cursor-not-allowed disabled:active:scale-100 ${variants[variant]} ${className}`}
     >
       {busy && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
       {children}
@@ -66,13 +66,13 @@ export function Button({
 }
 
 export const fieldClass =
-  "w-full h-11 px-3.5 rounded-xl bg-[#fbfbf9] border border-black/10 font-body text-[14px] text-[var(--color-braun-text)] placeholder:text-[var(--color-braun-text)] placeholder:opacity-35 outline-none transition-[border-color,box-shadow,background-color] duration-200 focus:bg-white focus:border-[var(--color-braun-text)]/40 focus:ring-4 focus:ring-[var(--color-braun-text)]/5";
+  "w-full h-11 px-3.5 rounded-xl bg-background border border-border text-[16px] sm:text-[14px] text-foreground placeholder:text-faint outline-none transition-[border-color,box-shadow] duration-200 focus:border-border-strong focus:ring-4 focus:ring-ring/15";
 
 export function Label({ htmlFor, children }: { htmlFor?: string; children: React.ReactNode }) {
   return (
     <label
       htmlFor={htmlFor}
-      className="block font-body text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-braun-text)] opacity-50 mb-2"
+      className="block text-[12.5px] font-medium text-muted-foreground mb-2"
     >
       {children}
     </label>
@@ -81,12 +81,12 @@ export function Label({ htmlFor, children }: { htmlFor?: string; children: React
 
 export function Badge({ tone = "neutral", children }: { tone?: "neutral" | "accent" | "live"; children: React.ReactNode }) {
   const tones = {
-    neutral: "bg-black/[0.05] text-[var(--color-braun-text)]/70",
-    accent: "bg-[var(--color-braun-orange)]/10 text-[var(--color-braun-orange)]",
+    neutral: "bg-muted text-foreground/70",
+    accent: "bg-brand/10 text-brand",
     live: "bg-emerald-50 text-emerald-700",
   };
   return (
-    <span className={`inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full font-body text-[11px] font-semibold ${tones[tone]}`}>
+    <span className={`inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[11px] font-semibold ${tones[tone]}`}>
       {children}
     </span>
   );
@@ -127,21 +127,21 @@ export function Dialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="entry-rise relative w-full max-w-md rounded-[1.5rem] bg-white border border-black/10 p-5 sm:p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)]"
+        className="entry-rise relative w-full max-w-md rounded-[1.5rem] bg-card border border-border p-5 sm:p-6 shadow-float"
       >
         <button
           type="button"
           data-close
           onClick={onClose}
           aria-label={tc("close")}
-          className="cursor-pointer absolute top-4 end-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.05] transition-colors"
+          className="cursor-pointer absolute top-4 end-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
         >
-          <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
+          <X className="w-4 h-4 text-foreground opacity-60" />
         </button>
         <h2 id={titleId} className={`${textClass} text-lg font-semibold tracking-tight pe-8`}>
           {title}
         </h2>
-        {description && <p className={`${textClass} text-[13px] opacity-55 mt-1`}>{description}</p>}
+        {description && <p className={`text-[13px] text-muted-foreground mt-1`}>{description}</p>}
         <div className="mt-5">{children}</div>
       </div>
     </div>
@@ -164,8 +164,8 @@ export function CopyField({ value }: { value: string }) {
   };
 
   return (
-    <div className="flex items-center gap-2 rounded-xl bg-[#fbfbf9] border border-black/10 p-1.5 ps-3.5">
-      <span dir="ltr" className="flex-1 truncate font-body text-[13px] text-[var(--color-braun-text)]/75">
+    <div className="flex items-center gap-2 rounded-xl bg-card border border-border p-1.5 ps-3.5">
+      <span dir="ltr" className="flex-1 truncate text-[13px] text-foreground/75">
         {value}
       </span>
       <Button variant="primary" onClick={copy} className="h-8 px-3 shrink-0">
@@ -177,5 +177,5 @@ export function CopyField({ value }: { value: string }) {
 }
 
 export function ErrorText({ children }: { children: React.ReactNode }) {
-  return <p className="mt-3 font-body text-[13px] text-red-600">{children}</p>;
+  return <p className="mt-3 text-[13px] text-destructive">{children}</p>;
 }

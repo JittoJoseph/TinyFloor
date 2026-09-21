@@ -1,3 +1,4 @@
+import { typingElsewhere } from "./typing";
 import * as Phaser from "phaser";
 import {
   AnimationManager,
@@ -77,7 +78,7 @@ export class MovementManager {
   }
 
   update(delta: number) {
-    const input = this.inputEnabled ? this.readInput() : { x: 0, y: 0 };
+    const input = this.inputEnabled && !typingElsewhere() ? this.readInput() : { x: 0, y: 0 };
     if (this.frozen && (!(input.x || input.y) || !this.unfreeze())) return;
 
     const step = (MOVEMENT_SPEED * delta) / 1000;

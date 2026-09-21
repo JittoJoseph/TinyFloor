@@ -1,0 +1,115 @@
+/*
+ * The app's design tokens (docs/06-app-design.md). Components use the shadcn
+ * names beUI is written against — background, card, muted, border — plus a
+ * few of our own: rail, faint, brand, ok, warn. The app routes put `app` on
+ * <html>, and `dark` when the dark theme is on; the landing pages use none of
+ * these, so they are unaffected.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --ui-background: #fafaf8;
+  --ui-rail: #f0f0ec;
+  --ui-card: #ffffff;
+  --ui-popover: #ffffff;
+  --ui-muted: #f2f2ef;
+  --ui-border: rgb(24 24 20 / 0.09);
+  --ui-border-strong: rgb(24 24 20 / 0.18);
+  --ui-foreground: #1a1a18;
+  --ui-muted-foreground: #6b6b65;
+  --ui-faint: #a3a39c;
+  --ui-brand: #ff5a1f;
+  --ui-brand-foreground: #ffffff;
+  --ui-ok: #22a35a;
+  --ui-warn: #e59a13;
+  --ui-destructive: #e5484d;
+  --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+}
+
+.dark {
+  --ui-background: #0f0f10;
+  --ui-rail: #09090a;
+  --ui-card: #161617;
+  --ui-popover: #1b1b1d;
+  --ui-muted: #202022;
+  --ui-border: rgb(255 255 255 / 0.08);
+  --ui-border-strong: rgb(255 255 255 / 0.16);
+  --ui-foreground: #ededeb;
+  --ui-muted-foreground: #a0a09a;
+  --ui-faint: #6a6a65;
+  --ui-brand: #ff6b35;
+  --ui-brand-foreground: #ffffff;
+  --ui-ok: #3dd68c;
+  --ui-warn: #f5b83d;
+  --ui-destructive: #ff6369;
+  --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-background: var(--ui-background);
+  --color-foreground: var(--ui-foreground);
+  --color-rail: var(--ui-rail);
+  --color-card: var(--ui-card);
+  --color-card-foreground: var(--ui-foreground);
+  --color-popover: var(--ui-popover);
+  --color-popover-foreground: var(--ui-foreground);
+  --color-muted: var(--ui-muted);
+  --color-muted-foreground: var(--ui-muted-foreground);
+  --color-faint: var(--ui-faint);
+  --color-primary: var(--ui-foreground);
+  --color-primary-foreground: var(--ui-background);
+  --color-secondary: var(--ui-muted);
+  --color-secondary-foreground: var(--ui-foreground);
+  --color-accent: var(--ui-muted);
+  --color-accent-foreground: var(--ui-foreground);
+  --color-border: var(--ui-border);
+  --color-input: var(--ui-border);
+  --color-border-strong: var(--ui-border-strong);
+  --color-success: var(--ui-ok);
+  --color-ring: var(--ui-brand);
+  --color-brand: var(--ui-brand);
+  --color-brand-foreground: var(--ui-brand-foreground);
+  --color-ok: var(--ui-ok);
+  --color-warn: var(--ui-warn);
+  --color-destructive: var(--ui-destructive);
+  --shadow-float: var(--ui-shadow);
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html.app {
+  color-scheme: light;
+}
+html.app.dark {
+  color-scheme: dark;
+}
+
+html.app body {
+  font-family: var(--font-app), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--ui-background);
+  color: var(--ui-foreground);
+  font-feature-settings: "cv11", "ss01";
+}
+
+html.app ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html.app ::-webkit-scrollbar-track,
+html.app ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+html.app ::-webkit-scrollbar-thumb {
+  background: var(--ui-border);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 9999px;
+}
+html.app ::-webkit-scrollbar-thumb:hover {
+  background: var(--ui-faint);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+}
+html.app * {
+  scrollbar-color: var(--ui-border) transparent;
+}

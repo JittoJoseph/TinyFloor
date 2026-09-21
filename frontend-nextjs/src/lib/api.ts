@@ -33,6 +33,10 @@ export interface OfficeSummary {
   seats: number;
   members: number;
   role: OfficeRole;
+  /** A few members, for faces on the dashboard (only from /v1/me). */
+  faces?: Array<{ id: string; name: string }>;
+  /** Who is on the floor right now (only from /v1/me). */
+  here?: number;
 }
 
 export interface Office extends OfficeSummary {

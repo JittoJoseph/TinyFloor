@@ -450,10 +450,10 @@ export class PlayerManager {
     return this.playerStates.get(id)?.guest !== false;
   }
 
-  getPlayerList(): Array<{ id: string; name: string }> {
+  getPlayerList(): Array<{ id: string; name: string; status: PlayerStatus }> {
     return [...this.nameTags]
       .filter(([id]) => id !== GUIDE_ID)
-      .map(([id, tag]) => ({ id, name: tag.text }));
+      .map(([id, tag]) => ({ id, name: tag.text, status: this.playerStates.get(id)?.status ?? "available" }));
   }
 
   destroy() {

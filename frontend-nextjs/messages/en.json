@@ -51,14 +51,6 @@
     "main": "Main",
     "tour": "Tour"
   },
-  "hero": {
-    "title": "The <em>coziest</em> <br></br>virtual office.",
-    "subtitle": "A virtual office that looks like a game. Walk around, talk to coworkers, and feel like a team again.",
-    "cta": "Walk in now",
-    "caption": "A TinyFloor room: a 16-bit office floor with desks and teammates walking around it.",
-    "noSignUp": "try it",
-    "secondaryCta": "Or set up an office for your team"
-  },
   "landing": {
     "description": "A virtual office that looks like a game. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
     "features": [
@@ -69,60 +61,6 @@
       "Real-time presence and status",
       "Room chat"
     ]
-  },
-  "moments": {
-    "title": "An office you can <em>walk around in.</em>",
-    "subtitle": "TinyFloor keeps the part of an office that calls never replaced: knowing who is there, and being able to walk over.",
-    "alwaysOn": "Always on",
-    "directory": {
-      "design": {
-        "name": "Design team",
-        "here": "5 here"
-      },
-      "founders": {
-        "name": "Founders",
-        "here": "2 here"
-      },
-      "jam": {
-        "name": "Weekend jam",
-        "here": "Empty"
-      }
-    },
-    "enter": {
-      "title": "Open a link and you are inside.",
-      "body": "Someone shares a room link. Pick a character, type a name, and you are standing on the floor with everyone else.",
-      "chip1": "No download",
-      "chip2": "Guests welcome",
-      "chip3": "Any browser"
-    },
-    "call": {
-      "title": "Walk over to start talking.",
-      "body": "Get close to a teammate and their call bar appears above them. One tap opens video or voice, carried over Cloudflare's network.",
-      "chip1": "Video or voice",
-      "chip2": "Any network",
-      "chip3": "One tap"
-    },
-    "presence": {
-      "title": "You can tell who is around.",
-      "body": "Everyone carries a nameplate and a status. See who is free, who is heads down and who is already on a call before you walk up.",
-      "chip1": "Live nameplates",
-      "chip2": "Away and busy",
-      "chip3": "Room chat"
-    },
-    "rooms": {
-      "title": "The room is still there tomorrow.",
-      "body": "Rooms do not end when a meeting does. Keep them open for your team, invite people once, and they can walk in whenever they like.",
-      "chip1": "Private to your team",
-      "chip2": "Guest links",
-      "chip3": "Free"
-    },
-    "floor": {
-      "title": "An office, not a meeting.",
-      "body": "Nobody sends an invite. People drop in, work near each other, and wander over when something comes up.",
-      "chip1": "No invites",
-      "chip2": "Wander over",
-      "chip3": "The whole floor"
-    }
   },
   "faq": {
     "title": "Before you <em>walk in.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Start your first office",
     "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
     "walkIn": "Walk in"
+  },
+  "home": {
+    "nav": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Sign in",
+      "start": "Make your office",
+      "open": "Open TinyFloor",
+      "main": "Main"
+    },
+    "hero": {
+      "eyebrow": "A virtual office you walk around in",
+      "title": "Work together, like you're in the same room.",
+      "body": "TinyFloor gives your team a shared floor in the browser. See who's around, walk over to talk, and keep the conversation going in chat, without booking a meeting.",
+      "primary": "Make your office, free",
+      "secondary": "Walk into the lobby",
+      "note": "Free for up to 3 people. Nothing to install.",
+      "previewLabel": "A look inside TinyFloor",
+      "tabs": {
+        "floor": "Floor",
+        "chat": "Chat",
+        "people": "People",
+        "meeting": "Meetings"
+      }
+    },
+    "facts": {
+      "label": "What you get with every office",
+      "items": [
+        "Runs in any modern browser",
+        "Calls on Cloudflare's global network",
+        "18 languages",
+        "Light and dark",
+        "Free for up to 3 people"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Proximity calls",
+        "title": "Walk over to talk.",
+        "muted": "No links, no scheduling.",
+        "body": "Get close to someone and a call is one tap away. Walk off and the floor goes quiet again, the way stopping by a desk works."
+      },
+      "meetings": {
+        "eyebrow": "Meeting tables",
+        "title": "Sit down to meet.",
+        "muted": "Stand up to leave.",
+        "body": "Group calls happen at a table. Everyone sitting there joins, cameras stay light as thumbnails, and anyone can share their screen."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Conversations that stay.",
+        "muted": "Channels, direct messages, reactions.",
+        "body": "Every office has its own chat. Catch up from your phone without walking in, and get a quiet nudge on the floor when someone writes."
+      },
+      "people": {
+        "eyebrow": "Presence",
+        "title": "Know who's around.",
+        "muted": "Then walk right over.",
+        "body": "See who is on the floor, who is busy and who is in a call. Tap Walk to, and your character finds its own way there."
+      },
+      "guests": {
+        "eyebrow": "Guests",
+        "title": "Let anyone in.",
+        "muted": "With one link.",
+        "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
+      }
+    },
+    "more": {
+      "title": "Everything a small team needs,",
+      "muted": "on one floor.",
+      "items": {
+        "screen": {
+          "title": "Screen sharing",
+          "body": "Share a window in any call or meeting."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Sketch together on the wall of the office."
+        },
+        "music": {
+          "title": "Music",
+          "body": "Put on a track for everyone in the room."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Available, busy or away, right on your nameplate."
+        },
+        "noise": {
+          "title": "Noise removal",
+          "body": "Optional on-device AI takes out keyboards and chatter."
+        },
+        "mobile": {
+          "title": "On your phone",
+          "body": "A joystick that appears under your thumb."
+        },
+        "themes": {
+          "title": "Light and dark",
+          "body": "Follows your system, or pick one yourself."
+        },
+        "languages": {
+          "title": "18 languages",
+          "body": "From English and Español to 日本語 and العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Built to be trusted.",
+      "items": {
+        "private": {
+          "title": "Private by design",
+          "body": "An office floor is only for its members and the guests they let in. Nothing is public, and nothing is indexed."
+        },
+        "network": {
+          "title": "On Cloudflare's network",
+          "body": "Pages, chat and calls run on Cloudflare's global network, close to wherever your team is, and connect on any office or home network."
+        },
+        "install": {
+          "title": "Nothing to install",
+          "body": "It's a web page. On a desktop, a laptop or a phone, it opens the same way, and it's always the latest version."
+        }
+      }
+    },
+    "plans": {
+      "title": "Start free.",
+      "muted": "Grow when you're ready.",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "per": "for up to 3 people",
+        "cta": "Make your office",
+        "items": [
+          "A private floor for your team",
+          "Proximity calls and meeting tables",
+          "Screen sharing",
+          "Channels and direct messages",
+          "Guest links for visitors"
+        ]
+      },
+      "soon": {
+        "name": "Bigger plans",
+        "badge": "Coming soon",
+        "body": "For teams that outgrow three seats. Start free today, and your office carries over when they arrive.",
+        "cta": "Try the lobby first",
+        "items": [
+          "More seats for bigger teams",
+          "Images and files in chat",
+          "More meeting time"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Questions,",
+      "muted": "answered."
+    },
+    "final": {
+      "title": "Your team, one floor away.",
+      "body": "Make an office in a minute, or walk into the public lobby and look around first."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "general",
+      "design": "design",
+      "random": "random",
+      "inCall": "In a call",
+      "meeting": "Design review",
+      "sharing": "Sharing screen",
+      "message1": "Morning! Standup at the big table in 5?",
+      "message2": "On my way 👋",
+      "message3": "Pushed the new onboarding flow, would love eyes on it",
+      "composer": "Message #general",
+      "walkTo": "Walk to",
+      "message": "Message",
+      "onFloor": "On the floor",
+      "notOnFloor": "Not on the floor",
+      "available": "Available",
+      "busy": "Busy",
+      "away": "Away",
+      "guestLink": "Guest link",
+      "guestNote": "Anyone with this link can visit as a guest.",
+      "copy": "Copy",
+      "invite": "Invite",
+      "here": "{count} here",
+      "people": "People",
+      "guestArrived": "walked in as a guest",
+      "roles": {
+        "design": "Design",
+        "engineering": "Engineering",
+        "product": "Product"
+      },
+      "board": {
+        "signUp": "Sign up",
+        "name": "Name office",
+        "walkIn": "Walk in",
+        "note": "skip for guests?"
+      },
+      "message0": "Client call moved to 2pm, notes are in #design",
+      "message4": "Heads down on the release until lunch 🎧",
+      "channels": "Channels",
+      "directMessages": "Direct messages",
+      "today": "Today",
+      "typing": "{name} is typing…",
+      "guest": "Guest"
+    },
+    "footer": {
+      "tagline": "A virtual office you walk around in.",
+      "product": "Product",
+      "useCases": "Use cases",
+      "compare": "Compare",
+      "resources": "Resources",
+      "makeOffice": "Make an office",
+      "lobby": "Public lobby",
+      "signIn": "Sign in",
+      "dashboard": "Your offices",
+      "faq": "FAQ",
+      "credits": "Credits",
+      "vs": "vs {name}",
+      "theme": "Theme",
+      "language": "Language",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

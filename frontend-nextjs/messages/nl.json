@@ -51,14 +51,6 @@
     "main": "Hoofdmenu",
     "tour": "Rondleiding"
   },
-  "hero": {
-    "title": "Het <em>gezelligste</em> <br></br>virtuele kantoor.",
-    "subtitle": "Een virtueel kantoor dat eruitziet als een game. Loop rond, praat met collega’s en voel je weer een team.",
-    "cta": "Loop nu binnen",
-    "caption": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en rondlopende teamgenoten.",
-    "noSignUp": "probeer het",
-    "secondaryCta": "Of richt een kantoor in voor je team"
-  },
   "landing": {
     "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "features": [
@@ -69,60 +61,6 @@
       "Aanwezigheid en status in realtime",
       "Ruimtechat"
     ]
-  },
-  "moments": {
-    "title": "Een kantoor waar je <em>kunt rondlopen.</em>",
-    "subtitle": "TinyFloor behoudt het deel van een kantoor dat gesprekken nooit hebben vervangen: weten wie er is, en even naar iemand toe kunnen lopen.",
-    "alwaysOn": "Altijd open",
-    "directory": {
-      "design": {
-        "name": "Designteam",
-        "here": "5 aanwezig"
-      },
-      "founders": {
-        "name": "Oprichters",
-        "here": "2 aanwezig"
-      },
-      "jam": {
-        "name": "Weekendjam",
-        "here": "Leeg"
-      }
-    },
-    "enter": {
-      "title": "Open een link en je bent binnen.",
-      "body": "Iemand deelt een link naar een ruimte. Kies een personage, typ een naam en je staat op de verdieping met alle anderen.",
-      "chip1": "Geen download",
-      "chip2": "Gasten welkom",
-      "chip3": "Elke browser"
-    },
-    "call": {
-      "title": "Loop erheen om te praten.",
-      "body": "Kom dicht bij een collega en boven hem verschijnt de belbalk. Eén tik opent video of spraak, via het netwerk van Cloudflare.",
-      "chip1": "Video of spraak",
-      "chip2": "Elk netwerk",
-      "chip3": "Eén tik"
-    },
-    "presence": {
-      "title": "Je ziet wie er rondloopt.",
-      "body": "Iedereen heeft een naambordje en een status. Zie wie er vrij is, wie geconcentreerd werkt en wie al in gesprek is voordat je erheen loopt.",
-      "chip1": "Live naambordjes",
-      "chip2": "Afwezig en bezet",
-      "chip3": "Ruimtechat"
-    },
-    "rooms": {
-      "title": "Morgen is de ruimte er nog.",
-      "body": "Ruimtes stoppen niet als een meeting stopt. Houd ze open voor je team, nodig mensen één keer uit en ze lopen binnen wanneer ze willen.",
-      "chip1": "Alleen voor je team",
-      "chip2": "Gastlinks",
-      "chip3": "Gratis"
-    },
-    "floor": {
-      "title": "Een kantoor, geen vergadering.",
-      "body": "Niemand stuurt een uitnodiging. Mensen komen langs, werken bij elkaar in de buurt en lopen naar elkaar toe als er iets is.",
-      "chip1": "Geen uitnodigingen",
-      "chip2": "Loop even langs",
-      "chip3": "De hele verdieping"
-    }
   },
   "faq": {
     "title": "Voordat je <em>binnenloopt.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Begin je eerste kantoor",
     "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis.",
     "walkIn": "Naar binnen"
+  },
+  "home": {
+    "nav": {
+      "features": "Functies",
+      "pricing": "Prijzen",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Inloggen",
+      "start": "Maak je kantoor",
+      "open": "TinyFloor openen",
+      "main": "Hoofdnavigatie"
+    },
+    "hero": {
+      "eyebrow": "Een virtueel kantoor waar je rondloopt",
+      "title": "Samenwerken, alsof je in dezelfde ruimte zit.",
+      "body": "TinyFloor geeft je team een gedeelde vloer in de browser. Zie wie er is, loop naar iemand toe om te praten en zet het gesprek voort in de chat, zonder een meeting te plannen.",
+      "primary": "Maak je kantoor, gratis",
+      "secondary": "Loop de lobby in",
+      "note": "Gratis tot 3 mensen. Niets te installeren.",
+      "previewLabel": "Een kijkje in TinyFloor",
+      "tabs": {
+        "floor": "Vloer",
+        "chat": "Chat",
+        "people": "Mensen",
+        "meeting": "Meetings"
+      }
+    },
+    "facts": {
+      "label": "Wat elk kantoor je geeft",
+      "items": [
+        "Werkt in elke moderne browser",
+        "Gesprekken via het wereldwijde netwerk van Cloudflare",
+        "18 talen",
+        "Licht en donker",
+        "Gratis tot 3 mensen"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Gesprekken op afstand",
+        "title": "Loop erheen om te praten.",
+        "muted": "Geen links, geen planning.",
+        "body": "Kom dicht bij iemand en een gesprek is één tik verwijderd. Loop verder en de vloer wordt weer stil, zoals even langs iemands bureau lopen."
+      },
+      "meetings": {
+        "eyebrow": "Vergadertafels",
+        "title": "Ga zitten om te vergaderen.",
+        "muted": "Sta op om te gaan.",
+        "body": "Groepsgesprekken gebeuren aan een tafel. Wie daar zit, doet mee, camera's blijven licht als miniaturen en iedereen kan zijn scherm delen."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Gesprekken die blijven.",
+        "muted": "Kanalen, privéberichten, reacties.",
+        "body": "Elk kantoor heeft een eigen chat. Lees bij vanaf je telefoon zonder binnen te lopen, en krijg een rustige melding op de vloer als iemand schrijft."
+      },
+      "people": {
+        "eyebrow": "Aanwezigheid",
+        "title": "Weet wie er is.",
+        "muted": "En loop er meteen heen.",
+        "body": "Zie wie er op de vloer is, wie bezig is en wie in gesprek. Tik op Loop erheen en je poppetje vindt zelf de weg."
+      },
+      "guests": {
+        "eyebrow": "Gasten",
+        "title": "Laat iedereen binnen.",
+        "muted": "Met één link.",
+        "body": "Nodig teamgenoten uit per e-mail, of stuur een gastlink naar een klant of kandidaat. Die kiest een naam en een poppetje en staat op de vloer, zonder account."
+      }
+    },
+    "more": {
+      "title": "Alles wat een klein team nodig heeft,",
+      "muted": "op één vloer.",
+      "items": {
+        "screen": {
+          "title": "Scherm delen",
+          "body": "Deel een venster in elk gesprek of elke meeting."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Schets samen op de muur van het kantoor."
+        },
+        "music": {
+          "title": "Muziek",
+          "body": "Zet een nummer op voor iedereen in de ruimte."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Beschikbaar, bezig of weg, meteen op je naambordje."
+        },
+        "noise": {
+          "title": "Ruisverwijdering",
+          "body": "Optionele AI op je apparaat haalt toetsenborden en geklets weg."
+        },
+        "mobile": {
+          "title": "Op je telefoon",
+          "body": "Een joystick die onder je duim verschijnt."
+        },
+        "themes": {
+          "title": "Licht en donker",
+          "body": "Volgt je systeem, of kies zelf."
+        },
+        "languages": {
+          "title": "18 talen",
+          "body": "Van English en Español tot 日本語 en العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Gebouwd op vertrouwen.",
+      "items": {
+        "private": {
+          "title": "Privé vanaf het begin",
+          "body": "Een kantoorvloer is alleen voor de leden en de gasten die zij binnenlaten. Niets is openbaar en niets wordt geïndexeerd."
+        },
+        "network": {
+          "title": "Op het netwerk van Cloudflare",
+          "body": "Pagina's, chat en gesprekken draaien op het wereldwijde netwerk van Cloudflare, dicht bij je team, en verbinden op elk kantoor- of thuisnetwerk."
+        },
+        "install": {
+          "title": "Niets te installeren",
+          "body": "Het is een webpagina. Op desktop, laptop of telefoon opent hij hetzelfde, en het is altijd de nieuwste versie."
+        }
+      }
+    },
+    "plans": {
+      "title": "Begin gratis.",
+      "muted": "Groei wanneer je er klaar voor bent.",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "per": "tot 3 mensen",
+        "cta": "Maak je kantoor",
+        "items": [
+          "Een privévloer voor je team",
+          "Gesprekken op afstand en vergadertafels",
+          "Scherm delen",
+          "Kanalen en privéberichten",
+          "Gastlinks voor bezoek"
+        ]
+      },
+      "soon": {
+        "name": "Grotere abonnementen",
+        "badge": "Binnenkort",
+        "body": "Voor teams die groter worden dan drie plekken. Begin vandaag gratis, je kantoor blijft als ze er zijn.",
+        "cta": "Probeer eerst de lobby",
+        "items": [
+          "Meer plekken voor grotere teams",
+          "Afbeeldingen en bestanden in de chat",
+          "Meer vergadertijd"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Vragen,",
+      "muted": "beantwoord."
+    },
+    "final": {
+      "title": "Je team, één vloer verderop.",
+      "body": "Maak een kantoor in een minuut, of loop de openbare lobby in en kijk eerst rond."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "algemeen",
+      "design": "design",
+      "random": "overig",
+      "inCall": "In gesprek",
+      "meeting": "Design-review",
+      "sharing": "Deelt scherm",
+      "message1": "Goedemorgen! Standup aan de grote tafel over 5?",
+      "message2": "Ik kom eraan 👋",
+      "message3": "Nieuwe onboarding-flow staat erop, kijk gerust even mee",
+      "composer": "Bericht in #algemeen",
+      "walkTo": "Loop erheen",
+      "message": "Bericht",
+      "onFloor": "Op de vloer",
+      "notOnFloor": "Niet op de vloer",
+      "available": "Beschikbaar",
+      "busy": "Bezig",
+      "away": "Weg",
+      "guestLink": "Gastlink",
+      "guestNote": "Iedereen met deze link kan als gast langskomen.",
+      "copy": "Kopiëren",
+      "invite": "Uitnodigen",
+      "here": "{count} hier",
+      "people": "Mensen",
+      "guestArrived": "kwam binnen als gast",
+      "roles": {
+        "design": "Design",
+        "engineering": "Engineering",
+        "product": "Product"
+      },
+      "board": {
+        "signUp": "Aanmelden",
+        "name": "Naam kiezen",
+        "walkIn": "Binnenlopen",
+        "note": "overslaan voor gasten?"
+      },
+      "message0": "Klantgesprek verschoven naar 14:00, notities in #design",
+      "message4": "Tot de lunch vol bezig met de release 🎧",
+      "channels": "Kanalen",
+      "directMessages": "Privéberichten",
+      "today": "Vandaag",
+      "typing": "{name} typt…",
+      "guest": "Gast"
+    },
+    "footer": {
+      "tagline": "Een virtueel kantoor waar je rondloopt.",
+      "product": "Product",
+      "useCases": "Toepassingen",
+      "compare": "Vergelijken",
+      "resources": "Hulpbronnen",
+      "makeOffice": "Maak een kantoor",
+      "lobby": "Openbare lobby",
+      "signIn": "Inloggen",
+      "dashboard": "Je kantoren",
+      "faq": "FAQ",
+      "credits": "Credits",
+      "vs": "vs {name}",
+      "theme": "Thema",
+      "language": "Taal",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

@@ -51,14 +51,6 @@
     "main": "Huvudmeny",
     "tour": "Rundtur"
   },
-  "hero": {
-    "title": "Det <em>mysigaste</em> <br></br>virtuella kontoret.",
-    "subtitle": "Ett virtuellt kontor som ser ut som ett spel. Gå runt, prata med kollegor och känn dig som ett team igen.",
-    "cta": "Gå in nu",
-    "caption": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor som går omkring.",
-    "noSignUp": "testa",
-    "secondaryCta": "Eller ordna ett kontor för ditt team"
-  },
   "landing": {
     "description": "Ett virtuellt kontor som ser ut som ett spel. Gå runt på en våning i pixelgrafik med ditt team och starta ett videosamtal bara genom att ställa dig bredvid någon.",
     "features": [
@@ -69,60 +61,6 @@
       "Närvaro och status i realtid",
       "Rumschatt"
     ]
-  },
-  "moments": {
-    "title": "Ett kontor du kan <em>gå runt i.</em>",
-    "subtitle": "TinyFloor behåller den del av kontoret som samtal aldrig ersatte: att veta vem som är där och kunna gå fram.",
-    "alwaysOn": "Alltid öppet",
-    "directory": {
-      "design": {
-        "name": "Designteamet",
-        "here": "5 här"
-      },
-      "founders": {
-        "name": "Grundarna",
-        "here": "2 här"
-      },
-      "jam": {
-        "name": "Helgjam",
-        "here": "Tomt"
-      }
-    },
-    "enter": {
-      "title": "Öppna en länk så är du inne.",
-      "body": "Någon delar en rumslänk. Välj en karaktär, skriv ett namn och du står på våningen med alla andra.",
-      "chip1": "Ingen nedladdning",
-      "chip2": "Gäster välkomna",
-      "chip3": "Alla webbläsare"
-    },
-    "call": {
-      "title": "Gå fram för att börja prata.",
-      "body": "Gå nära en kollega så visas samtalsraden ovanför hen. Ett tryck startar video eller röst, via Cloudflares nätverk.",
-      "chip1": "Video eller röst",
-      "chip2": "Alla nätverk",
-      "chip3": "Ett tryck"
-    },
-    "presence": {
-      "title": "Du ser vem som är i närheten.",
-      "body": "Alla har en namnskylt och en status. Se vem som är ledig, vem som är fokuserad och vem som redan är i samtal innan du går fram.",
-      "chip1": "Namnskyltar live",
-      "chip2": "Borta och upptagen",
-      "chip3": "Rumschatt"
-    },
-    "rooms": {
-      "title": "Rummet finns kvar i morgon.",
-      "body": "Rum tar inte slut när ett möte gör det. Håll dem öppna för ditt team, bjud in folk en gång, så kan de gå in när de vill.",
-      "chip1": "Bara för ditt team",
-      "chip2": "Gästlänkar",
-      "chip3": "Gratis"
-    },
-    "floor": {
-      "title": "Ett kontor, inte ett möte.",
-      "body": "Ingen skickar inbjudningar. Folk tittar in, jobbar nära varandra och går fram när något dyker upp.",
-      "chip1": "Inga inbjudningar",
-      "chip2": "Gå fram",
-      "chip3": "Hela våningen"
-    }
   },
   "faq": {
     "title": "Innan du <em>går in.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Starta ditt första kontor",
     "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
     "walkIn": "Gå in"
+  },
+  "home": {
+    "nav": {
+      "features": "Funktioner",
+      "pricing": "Priser",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Logga in",
+      "start": "Skapa ditt kontor",
+      "open": "Öppna TinyFloor",
+      "main": "Huvudnavigering"
+    },
+    "hero": {
+      "eyebrow": "Ett virtuellt kontor du går omkring i",
+      "title": "Jobba tillsammans, som i samma rum.",
+      "body": "TinyFloor ger ditt team ett gemensamt plan i webbläsaren. Se vem som är där, gå fram och prata och fortsätt samtalet i chatten, utan att boka möten.",
+      "primary": "Skapa ditt kontor, gratis",
+      "secondary": "Gå in i lobbyn",
+      "note": "Gratis för upp till 3 personer. Inget att installera.",
+      "previewLabel": "En titt in i TinyFloor",
+      "tabs": {
+        "floor": "Plan",
+        "chat": "Chatt",
+        "people": "Personer",
+        "meeting": "Möten"
+      }
+    },
+    "facts": {
+      "label": "Det här ingår i varje kontor",
+      "items": [
+        "Fungerar i alla moderna webbläsare",
+        "Samtal på Cloudflares globala nätverk",
+        "18 språk",
+        "Ljust och mörkt",
+        "Gratis för upp till 3 personer"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Närhetssamtal",
+        "title": "Gå fram och prata.",
+        "muted": "Inga länkar, ingen bokning.",
+        "body": "Gå nära någon så är samtalet ett tryck bort. Gå därifrån så blir det tyst på planet igen, precis som när man tittar förbi någons skrivbord."
+      },
+      "meetings": {
+        "eyebrow": "Mötesbord",
+        "title": "Sätt dig för att mötas.",
+        "muted": "Res dig för att gå.",
+        "body": "Gruppsamtal sker vid ett bord. Alla som sitter där är med, kamerorna är lätta som miniatyrer och vem som helst kan dela sin skärm."
+      },
+      "chat": {
+        "eyebrow": "Chatt",
+        "title": "Samtal som finns kvar.",
+        "muted": "Kanaler, direktmeddelanden, reaktioner.",
+        "body": "Varje kontor har sin egen chatt. Läs ikapp från mobilen utan att gå in, och få en diskret påminnelse på planet när någon skriver."
+      },
+      "people": {
+        "eyebrow": "Närvaro",
+        "title": "Se vem som är där.",
+        "muted": "Och gå direkt dit.",
+        "body": "Se vem som är på planet, vem som är upptagen och vem som är i ett samtal. Tryck på Gå dit så hittar din figur vägen själv."
+      },
+      "guests": {
+        "eyebrow": "Gäster",
+        "title": "Släpp in vem som helst.",
+        "muted": "Med en länk.",
+        "body": "Bjud in kollegor via e-post, eller skicka en gästlänk till en kund eller kandidat. De väljer ett namn och en figur och står på planet, utan konto."
+      }
+    },
+    "more": {
+      "title": "Allt ett litet team behöver,",
+      "muted": "på ett plan.",
+      "items": {
+        "screen": {
+          "title": "Skärmdelning",
+          "body": "Dela ett fönster i alla samtal och möten."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Skissa tillsammans på kontorets vägg."
+        },
+        "music": {
+          "title": "Musik",
+          "body": "Sätt på en låt för alla i rummet."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Tillgänglig, upptagen eller borta, direkt på din namnskylt."
+        },
+        "noise": {
+          "title": "Brusborttagning",
+          "body": "Valfri AI på din enhet tar bort tangentbord och prat."
+        },
+        "mobile": {
+          "title": "På mobilen",
+          "body": "En joystick som dyker upp under tummen."
+        },
+        "themes": {
+          "title": "Ljust och mörkt",
+          "body": "Följer ditt system, eller välj själv."
+        },
+        "languages": {
+          "title": "18 språk",
+          "body": "Från English och Español till 日本語 och العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Byggt för att vara pålitligt.",
+      "items": {
+        "private": {
+          "title": "Privat från grunden",
+          "body": "Ett kontorsplan är bara för dess medlemmar och gästerna de släpper in. Inget är offentligt och inget indexeras."
+        },
+        "network": {
+          "title": "På Cloudflares nätverk",
+          "body": "Sidor, chatt och samtal körs på Cloudflares globala nätverk, nära ditt team, och ansluter på alla kontors- och hemnätverk."
+        },
+        "install": {
+          "title": "Inget att installera",
+          "body": "Det är en webbsida. På dator, laptop eller mobil öppnas den likadant, och den är alltid den senaste versionen."
+        }
+      }
+    },
+    "plans": {
+      "title": "Börja gratis.",
+      "muted": "Väx när du är redo.",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "per": "för upp till 3 personer",
+        "cta": "Skapa ditt kontor",
+        "items": [
+          "Ett privat plan för ditt team",
+          "Närhetssamtal och mötesbord",
+          "Skärmdelning",
+          "Kanaler och direktmeddelanden",
+          "Gästlänkar för besökare"
+        ]
+      },
+      "soon": {
+        "name": "Större planer",
+        "badge": "Kommer snart",
+        "body": "För team som växer ur tre platser. Börja gratis i dag, ditt kontor finns kvar när de kommer.",
+        "cta": "Testa lobbyn först",
+        "items": [
+          "Fler platser för större team",
+          "Bilder och filer i chatten",
+          "Mer mötestid"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Frågor,",
+      "muted": "besvarade."
+    },
+    "final": {
+      "title": "Ditt team, ett plan bort.",
+      "body": "Skapa ett kontor på en minut, eller gå in i den öppna lobbyn och titta runt först."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "allmänt",
+      "design": "design",
+      "random": "blandat",
+      "inCall": "I samtal",
+      "meeting": "Designgenomgång",
+      "sharing": "Delar skärm",
+      "message1": "God morgon! Standup vid stora bordet om 5?",
+      "message2": "På väg 👋",
+      "message3": "Har pushat det nya onboardingflödet, kika gärna",
+      "composer": "Meddelande i #allmänt",
+      "walkTo": "Gå dit",
+      "message": "Meddelande",
+      "onFloor": "På planet",
+      "notOnFloor": "Inte på planet",
+      "available": "Tillgänglig",
+      "busy": "Upptagen",
+      "away": "Borta",
+      "guestLink": "Gästlänk",
+      "guestNote": "Alla med den här länken kan hälsa på som gäst.",
+      "copy": "Kopiera",
+      "invite": "Bjud in",
+      "here": "{count} här",
+      "people": "Personer",
+      "guestArrived": "kom in som gäst",
+      "roles": {
+        "design": "Design",
+        "engineering": "Utveckling",
+        "product": "Produkt"
+      },
+      "board": {
+        "signUp": "Registrera",
+        "name": "Namnge",
+        "walkIn": "Gå in",
+        "note": "hoppa över för gäster?"
+      },
+      "message0": "Kundsamtalet flyttat till 14, anteckningar i #design",
+      "message4": "Fokus på releasen fram till lunch 🎧",
+      "channels": "Kanaler",
+      "directMessages": "Direktmeddelanden",
+      "today": "I dag",
+      "typing": "{name} skriver…",
+      "guest": "Gäst"
+    },
+    "footer": {
+      "tagline": "Ett virtuellt kontor du går omkring i.",
+      "product": "Produkt",
+      "useCases": "Användningsområden",
+      "compare": "Jämför",
+      "resources": "Resurser",
+      "makeOffice": "Skapa ett kontor",
+      "lobby": "Öppen lobby",
+      "signIn": "Logga in",
+      "dashboard": "Dina kontor",
+      "faq": "FAQ",
+      "credits": "Tack till",
+      "vs": "vs {name}",
+      "theme": "Tema",
+      "language": "Språk",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

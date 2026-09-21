@@ -1,8 +1,4 @@
 import React from "react";
-import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
-import { HeroOfficeScene } from "./HeroOfficeScene";
-import { Doodle } from "./Doodle";
 import { Link } from "@/lib/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
 
@@ -45,61 +41,3 @@ export const BrowserWindow: React.FC<{
     {caption && <figcaption className="sr-only">{caption}</figcaption>}
   </figure>
 );
-
-export const Hero: React.FC = () => {
-  const t = useTranslations("hero");
-
-  return (
-    <div className="mx-auto w-full max-w-5xl px-4">
-      <section className="relative w-full pt-8 md:pt-12 pb-8 md:pb-12 px-4 md:px-8 max-w-6xl mx-auto flex flex-col items-center">
-        <div className="w-full max-w-4xl text-center flex flex-col items-center mb-12 md:mb-16 z-20">
-          <h1 className="font-body font-light text-5xl md:text-[5.5rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6">
-            {t.rich("title", {
-              em: (chunks) => <span className="font-medium">{chunks}</span>,
-              br: () => <br />,
-            })}
-          </h1>
-
-          <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl mb-10 leading-relaxed max-w-2xl px-2">
-            {t("subtitle")}
-          </p>
-
-          {/* Two ways in, the one that needs nothing first. */}
-          <div className="relative flex flex-col items-center gap-3">
-            <Doodle className="hidden md:flex flex-col absolute end-full bottom-7 -me-2">
-              {t("noSignUp")}
-            </Doodle>
-            {/* No room for the arrow on a phone, so the note goes under the button. */}
-            <span
-              aria-hidden="true"
-              className="md:hidden font-hand text-[1.2rem] leading-none text-[var(--color-braun-text)] opacity-45 -rotate-2"
-            >
-              {t("noSignUp")}
-            </span>
-
-            <Link
-              href="/lobby"
-              className="group relative flex items-center justify-center w-56 md:w-64 h-14 md:h-16 bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
-            >
-              <div className="w-[92%] h-[82%] rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center justify-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
-                {t("cta")}
-              </div>
-            </Link>
-
-            <Link
-              href="/create"
-              className="cursor-pointer group inline-flex items-center gap-1.5 font-body text-[15px] text-[var(--color-braun-text)] opacity-60 hover:opacity-100 transition-opacity"
-            >
-              {t("secondaryCta")}
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
-            </Link>
-          </div>
-        </div>
-
-        <BrowserWindow caption={t("caption")}>
-          <HeroOfficeScene />
-        </BrowserWindow>
-      </section>
-    </div>
-  );
-};

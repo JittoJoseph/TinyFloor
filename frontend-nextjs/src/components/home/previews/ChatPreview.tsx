@@ -20,7 +20,7 @@ export function ChatPreview({ compact = false }: { compact?: boolean }) {
     { who: priya, time: "9:47", text: t("message3"), reaction: "👀 2" },
     { who: aiko, time: "9:52", text: t("message4") },
   ];
-  const shown = compact ? messages.slice(1, 4) : messages;
+  const shown = compact ? messages.slice(2, 4) : messages;
 
   return (
     <div className="flex h-full min-h-0 text-start">

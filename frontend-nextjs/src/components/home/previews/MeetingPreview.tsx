@@ -34,12 +34,12 @@ export function MeetingPreview({ close = false }: { close?: boolean }) {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <div className="absolute inset-0" style={close ? { transform: "scale(1.6)", transformOrigin: "74% 88%" } : undefined}>
+      <div className="absolute inset-0" style={close ? { transform: "scale(1.5)", transformOrigin: "72% 78%" } : undefined}>
         <OfficeScene pinned focus="center center" occupants={GATHERED} className="h-full w-full" />
       </div>
 
       <div className="absolute inset-x-0 top-3 flex justify-center px-3 sm:top-4">
-        <ul className="grid w-full max-w-[640px] grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5">
+        <ul className={cn("grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5", close ? "max-w-[360px] sm:gap-2" : "max-w-[640px]")}>
           {cards.map(({ person, you, speaking, muted }) => (
             <li
               key={person.id}
@@ -48,7 +48,7 @@ export function MeetingPreview({ close = false }: { close?: boolean }) {
                 speaking ? "ring-brand" : "ring-card/80",
               )}
             >
-              <Face seed={person.id} size={36} />
+              <Face seed={person.id} size={close ? 28 : 36} />
               <span className="absolute bottom-1.5 start-1.5 flex max-w-[calc(100%-0.75rem)] items-center gap-1 rounded-full bg-card/90 px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm backdrop-blur-sm">
                 {muted && <MicOff className="size-3 shrink-0 text-brand" />}
                 <span className="truncate">{you ? tc("you") : person.name}</span>

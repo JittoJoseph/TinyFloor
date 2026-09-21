@@ -1209,7 +1209,9 @@
     "walkTo": "Kävele luo",
     "youLower": "sinä",
     "joined": "Liittynyt {date}",
-    "yourProfile": "Oma profiili"
+    "yourProfile": "Oma profiili",
+    "leaveOffice": "Poistu toimistosta",
+    "leave": "Poistu"
   },
   "dashboard": {
     "morning": "Huomenta, {name}",

@@ -1,4 +1,4 @@
-import { prefs } from "./prefs";
+import { onPrefsChange, prefs } from "./prefs";
 import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "./api";
@@ -164,6 +164,12 @@ class CallManager {
     // A phone turned sideways, or a window resized past the phone width.
     if (typeof window !== "undefined") {
       window.matchMedia("(max-width: 767px)").addEventListener("change", () => this.shareQuality());
+      // Noise suppression and echo cancellation switched in settings reach the
+      // microphone that is already open, not only the next call's.
+      onPrefsChange(() => {
+        const wanted = audioConstraints();
+        this.local?.getAudioTracks().forEach((track) => void track.applyConstraints(wanted).catch(() => {}));
+      });
     }
   }
 

@@ -1209,7 +1209,9 @@
     "walkTo": "Walk to",
     "youLower": "you",
     "joined": "Joined {date}",
-    "yourProfile": "Your profile"
+    "yourProfile": "Your profile",
+    "leaveOffice": "Leave the office",
+    "leave": "Leave"
   },
   "dashboard": {
     "morning": "Good morning, {name}",

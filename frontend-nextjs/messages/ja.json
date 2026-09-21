@@ -1209,7 +1209,9 @@
     "walkTo": "歩いていく",
     "youLower": "あなた",
     "joined": "{date}に参加",
-    "yourProfile": "プロフィール"
+    "yourProfile": "プロフィール",
+    "leaveOffice": "オフィスを出る",
+    "leave": "出る"
   },
   "dashboard": {
     "morning": "おはようございます、{name}さん",

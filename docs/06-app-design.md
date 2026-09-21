@@ -115,8 +115,8 @@ desktop                                   phone
 └────┴────────────┴─────────────────────┘  └─────────────────────┘
 ```
 
-- **Rail (72px):** office mark (switcher menu), Floor, Chat, People; Settings
-  and you at the foot. Icons are Phosphor's (imported one file each), outlined
+- **Rail (72px):** office mark (switcher menu), Floor, Chat, People; Leave,
+  Settings and you at the foot. Icons are Phosphor's (imported one file each), outlined
   at rest and filled where you are, with a small spring as they fill; a bar at
   the rail's edge glides between them. While a view's presence dock is on
   screen, the rail leaves your face out, so you are never shown twice.

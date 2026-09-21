@@ -381,12 +381,24 @@ function MoreReactions({ onPick, label }: { onPick: (emoji: string) => void; lab
 }
 
 /** The top of a conversation: what this is and who can read it. */
-export function ConversationIntro({ mark, title, body }: { mark: ReactNode; title: string; body: ReactNode }) {
+export function ConversationIntro({
+  mark,
+  title,
+  body,
+  actions,
+}: {
+  mark: ReactNode;
+  title: string;
+  body: ReactNode;
+  /** Ways to start, while nothing has been said. */
+  actions?: ReactNode;
+}) {
   return (
     <div className="max-w-xl">
       <div className="mb-3">{mark}</div>
       <h3 className="text-[20px] font-semibold tracking-tight text-foreground">{title}</h3>
       <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{body}</p>
+      {actions && <div className="mt-4 flex flex-wrap gap-2">{actions}</div>}
     </div>
   );
 }

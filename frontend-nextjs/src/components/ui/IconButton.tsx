@@ -14,7 +14,7 @@ const TONES: Record<IconTone, string> = {
   solid: "bg-foreground text-background hover:bg-foreground/90",
   danger: "bg-destructive text-white hover:bg-destructive/90",
   // Something you turned off (a microphone): it should read as off at a glance.
-  off: "bg-destructive/12 text-destructive hover:bg-destructive/18",
+  off: "bg-muted text-destructive hover:bg-destructive/10",
 };
 
 const SIZES = { sm: "size-8 rounded-full", md: "size-10 rounded-full", lg: "size-11 rounded-full" };

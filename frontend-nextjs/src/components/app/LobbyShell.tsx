@@ -10,6 +10,7 @@ import { api } from "@/lib/api";
 import { lobbyChatPath, lobbyPath, lobbyPeoplePath } from "@/lib/links";
 import { roomChat, useRoomChat } from "@/lib/roomChat";
 import { clearFloor } from "@/lib/floor";
+import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import SettingsModal from "@/components/SettingsModal";
@@ -31,12 +32,19 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const [devices, setDevices] = useState(false);
   const { unread } = useRoomChat();
 
+  // Reloading the page: you were already in, so you stay in.
+  useEffect(() => {
+    if (user && wasInside("lobby")) queueMicrotask(() => setInside(true));
+  }, [user]);
+
   // The lobby's chat lives as long as you are in the room.
   useEffect(() => {
     if (!inside) return;
+    rememberInside("lobby", true);
     return () => {
       roomChat.reset();
       clearFloor();
+      rememberInside("lobby", false);
     };
   }, [inside]);
 

@@ -11,10 +11,12 @@ import { officeChatPath, officePath, officePeoplePath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor } from "@/lib/floor";
+import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import SettingsModal from "@/components/SettingsModal";
 import { Loader } from "@/components/motion/loader";
+import { FaceStack } from "@/components/ui/Face";
 import { AppShell } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { OfficeSwitcher } from "./OfficeSwitcher";
@@ -49,6 +51,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const { user, isLoading } = useAuth();
   const [office, setOffice] = useState<Office | null>(null);
   const [members, setMembers] = useState<Member[]>([]);
+  const [here, setHere] = useState(0);
   const [gone, setGone] = useState(false);
   const [inside, setInside] = useState(false);
   const [settings, setSettings] = useState(false);
@@ -74,6 +77,9 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
         if (cancelled) return;
         setOffice(found.office);
         setMembers(found.members);
+        setHere(found.people);
+        // Reloading the page: you were already in, so you stay in.
+        if (wasInside(found.office.id)) setInside(true);
       })
       .catch((error) => {
         if (!cancelled && error instanceof ApiError && error.status === 404) setGone(true);
@@ -88,9 +94,13 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   useEffect(() => {
     if (!office?.id || !inside) return;
     chat.connect(office.id);
+    rememberInside(office.id, true);
     return () => {
       chat.disconnect();
       clearFloor();
+      // Leaving for another page: next time starts at the door. A reload
+      // never gets here, so it keeps you inside.
+      rememberInside(office.id, false);
     };
   }, [office?.id, inside]);
 
@@ -139,6 +149,14 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
         backHref="/dashboard"
         sharePath={officePath(office.id)}
         onReady={() => setInside(true)}
+        detail={
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 ps-1 pe-3 [--face-ring:var(--ui-background)]">
+            <FaceStack seeds={members.map((one) => one.id)} size={22} max={4} />
+            <span className="text-[12.5px] text-muted-foreground">
+              {t("door", { members: members.length, here })}
+            </span>
+          </span>
+        }
       />
     );
   }

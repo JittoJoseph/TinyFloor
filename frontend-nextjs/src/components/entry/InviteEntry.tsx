@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle, ArrowRight, Loader2 } from "lucide-react";
-import { Link, useRouter } from "@/lib/i18n/navigation";
+import { AlertCircle } from "lucide-react";
+import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
-import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
+import { EntryShell } from "@/components/entry/EntryShell";
+import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
 import { ErrorNote } from "@/components/entry/ErrorNote";
@@ -20,9 +21,6 @@ export interface InvitePreview {
   role: string;
   expiresAt: number;
 }
-
-const secondaryButtonClass =
-  "cursor-pointer w-full h-12 rounded-full border border-border bg-card text-foreground font-medium text-[14px] transition-colors hover:bg-muted flex items-center justify-center gap-2";
 
 /**
  * An invitation to a space. Anyone can say who they'll be first, name then
@@ -121,9 +119,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             {t("invalidTitle")}
           </h1>
           <p className="text-sm text-foreground opacity-55 mb-6">{t("invalid")}</p>
-          <Link href="/" className={primaryButtonClass}>
-            {t("home")}
-          </Link>
+          <ActionLink href="/">{t("home")}</ActionLink>
         </div>
       </EntryShell>
     );
@@ -134,13 +130,11 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   return (
     <EntryShell backHref="/" preview={preview}>
       <div className="entry-rise">
-        <p className="text-[11px] font-bold text-foreground opacity-45 mb-2">
-          {t("eyebrow", { name: invite.invitedBy })}
-        </p>
-        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5 break-words">
+        <p className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{t("eyebrow", { name: invite.invitedBy })}</p>
+        <h1 className="break-words text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground">
           {invite.officeName}
         </h1>
-        <p className="text-sm text-foreground opacity-55 mb-5">
+        <p className="mb-6 mt-1.5 text-[14px] text-muted-foreground">
           {invite.role === "admin" ? t("asAdmin") : t("asMember")}
         </p>
 
@@ -152,32 +146,29 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
         {step === "account" && account ? (
           <>
-            <button type="button" onClick={join} disabled={busy} className={primaryButtonClass}>
-              {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+            <ActionButton onClick={join} busy={busy}>
               {t("join", { office: invite.officeName })}
-              {!busy && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
-            </button>
+            </ActionButton>
             <p className="text-[12px] text-foreground opacity-45 text-center mt-4">
               {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
             </p>
           </>
         ) : step === "account" ? (
           <div className="space-y-3">
-            <Link
+            <ActionLink
               href={`/auth?${new URLSearchParams({ mode: "signup", redirect: back })}`}
-              className={primaryButtonClass}
               onClick={() => saveIdentity({ name: trimmed, character })}
             >
               {t("createAccount")}
-              <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-            </Link>
-            <Link
+            </ActionLink>
+            <ActionLink
               href={`/auth?${new URLSearchParams({ redirect: back })}`}
-              className={secondaryButtonClass}
+              tone="secondary"
+              icon={null}
               onClick={() => saveIdentity({ name: trimmed, character })}
             >
               {t("signIn")}
-            </Link>
+            </ActionLink>
             <p className="text-[12px] text-foreground opacity-45 text-center pt-1">
               {t("accountKeeps", { name: trimmed })}
             </p>
@@ -209,10 +200,9 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
                 />
               )}
             </div>
-            <button type="submit" disabled={!trimmed} className={`${primaryButtonClass} mt-5`}>
+            <ActionButton type="submit" disabled={!trimmed} className="mt-5">
               {step === "name" ? tEntry("continue") : t("readyToJoin")}
-              <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-            </button>
+            </ActionButton>
           </form>
         )}
       </div>

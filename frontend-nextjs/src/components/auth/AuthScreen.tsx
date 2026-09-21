@@ -2,11 +2,12 @@
 
 import React, { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Check, Eye, EyeOff } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
-import { EntryShell, Field, inputClass, primaryButtonClass } from "@/components/entry/EntryShell";
+import { EntryShell, Field, inputClass } from "@/components/entry/EntryShell";
+import { ActionButton } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { ErrorNote } from "@/components/entry/ErrorNote";
@@ -355,19 +356,14 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
           {formError && <ErrorNote>{formError}</ErrorNote>}
 
-          <button type="submit" disabled={submitting} className={`${primaryButtonClass} !mt-6`}>
-            {submitting ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                {signingUp ? t("creatingAccount") : t("signingIn")}
-              </>
-            ) : (
-              <>
-                {signingUp ? t("createAccount") : t("signIn")}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-              </>
-            )}
-          </button>
+          <ActionButton
+            type="submit"
+            busy={submitting}
+            busyLabel={signingUp ? t("creatingAccount") : t("signingIn")}
+            className="!mt-6"
+          >
+            {signingUp ? t("createAccount") : t("signIn")}
+          </ActionButton>
         </form>
 
         <p className="text-[13px] text-foreground text-center mt-6">

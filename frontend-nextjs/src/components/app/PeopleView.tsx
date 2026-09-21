@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Check, Clock, Link2, MessageSquare, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
+import { Check, Link2, Send, UserRound, MessageSquare, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -16,6 +16,7 @@ import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
+import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
 
 /** Who is in the office, who has been asked, and who can be let in as a guest. */
@@ -70,6 +71,12 @@ export function PeopleView() {
   const full = used >= office.seats;
   const expires = (at: number) => t("expires", { date: format.dateTime(new Date(at), { dateStyle: "medium" }) });
 
+  const newGuestLink = () =>
+    run(async () => {
+      const { guestLink } = await api.createGuestLink(office.id, "7d");
+      await share(guestLinkPath(guestLink.token), "guest");
+    });
+
   const invite = () =>
     run(async () => {
       const { invite: made } = await api.createInvite(office.id, { role: "member" });
@@ -97,8 +104,16 @@ export function PeopleView() {
           <Seats used={used} seats={office.seats} full={full} />
           <OnTheFloor
             people={members.filter((one) => floor.has(one.id))}
+            alone={members.filter((one) => floor.has(one.id) && one.id !== user?.id).length === 0}
             status={floor}
             empty={t("nobodyOnFloor")}
+            action={
+              admin ? (
+                <Chip icon={<UserPlus />} onClick={invite}>
+                  {t("invite")}
+                </Chip>
+              ) : null
+            }
             title={t("onFloorNow", { count: members.filter((one) => floor.has(one.id)).length })}
           />
         </div>
@@ -132,7 +147,7 @@ export function PeopleView() {
                     key={member.id}
                     className="flex flex-col rounded-2xl border border-border bg-background p-4 [--face-ring:var(--ui-background)]"
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="mb-4 flex items-start gap-3">
                       <Face seed={member.id} size={44} presence={floor.get(member.id) ?? null} />
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-[14.5px] font-semibold text-foreground">
@@ -166,12 +181,22 @@ export function PeopleView() {
                         </Menu>
                       )}
                     </div>
-                    <div className="mt-auto flex min-h-8 items-center gap-2 pt-4">
+                    <div className="mt-auto flex h-8 items-center gap-2">
                       <RoleBadge>{owner ? t("owner") : t(member.role)}</RoleBadge>
                       <span className="text-[12px] text-muted-foreground">
                         {floor.has(member.id) ? ts("onFloorShort") : ts("notOnFloor")}
                       </span>
-                      {!isMe && (
+                      {isMe ? (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="ms-auto h-8 gap-1.5 px-3 text-[12.5px]"
+                          onClick={() => router.push("/account")}
+                        >
+                          <UserRound className="size-3.5" />
+                          {t("yourProfile")}
+                        </Button>
+                      ) : (
                         <Button
                           variant="secondary"
                           size="sm"
@@ -186,6 +211,14 @@ export function PeopleView() {
                   </li>
                 );
               })}
+              {admin && full && (
+                <li>
+                  <div className="flex h-full min-h-[132px] flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border-strong px-4 text-center">
+                    <p className="text-[13.5px] font-medium text-foreground">{t("allSeatsTaken")}</p>
+                    <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("allSeatsTakenBody")}</p>
+                  </div>
+                </li>
+              )}
               {admin && !full && (
                 <li>
                   <button
@@ -206,7 +239,18 @@ export function PeopleView() {
             <TabsContent value="invitations" className="mt-5">
               <p className="mb-4 max-w-2xl text-[13px] text-muted-foreground">{t("invitationsNote")}</p>
               <LinkList
-                empty={t("noInvitations")}
+                empty={
+                  <Empty
+                    icon={<Send />}
+                    title={t("noInvitations")}
+                    body={t("noInvitationsBody")}
+                    actions={
+                      <Chip solid icon={<UserPlus />} onClick={invite}>
+                        {t("invite")}
+                      </Chip>
+                    }
+                  />
+                }
                 items={(data?.invites ?? []).map((one: Invite) => ({
                   id: one.id,
                   icon: <UserPlus className="size-4" />,
@@ -223,24 +267,30 @@ export function PeopleView() {
             <TabsContent value="guests" className="mt-5">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <p className="max-w-2xl text-[13px] text-muted-foreground">{t("guestsNote")}</p>
-                <Button
+                {!!data?.guestLinks.length && <Button
                   variant="secondary"
                   size="sm"
                   disabled={busy}
                   className="h-9 gap-2 px-3.5 text-[13px]"
-                  onClick={() =>
-                    run(async () => {
-                      const { guestLink } = await api.createGuestLink(office.id, "7d");
-                      await share(guestLinkPath(guestLink.token), "guest");
-                    })
-                  }
+                  onClick={newGuestLink}
                 >
                   {copied === "guest" ? <Check className="size-4" /> : <Link2 className="size-4" />}
                   {copied === "guest" ? t("copied") : t("newGuestLink")}
-                </Button>
+                </Button>}
               </div>
               <LinkList
-                empty={t("noGuestLinks")}
+                empty={
+                  <Empty
+                    icon={<Link2 />}
+                    title={t("noGuestLinks")}
+                    body={t("noGuestLinksBody")}
+                    actions={
+                      <Chip solid icon={<Link2 />} onClick={newGuestLink}>
+                        {t("newGuestLink")}
+                      </Chip>
+                    }
+                  />
+                }
                 items={(data?.guestLinks ?? []).map((one: GuestLink) => ({
                   id: one.id,
                   icon: <Link2 className="size-4" />,
@@ -307,26 +357,39 @@ function OnTheFloor({
   status,
   title,
   empty,
+  action,
+  alone,
 }: {
+  alone: boolean;
   people: Array<{ id: string; displayName: string }>;
   status: Map<string, string>;
   title: string;
   empty: string;
+  action: ReactNode;
 }) {
   return (
     <div className="rounded-2xl border border-border bg-background p-4 [--face-ring:var(--ui-muted)]">
       <p className="text-[14px] font-semibold text-foreground">{title}</p>
       {people.length ? (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap items-center gap-2">
           {people.map((one) => (
             <span key={one.id} className="flex items-center gap-2 rounded-full bg-muted py-1 ps-1 pe-3">
               <Face seed={one.id} size={24} presence={(status.get(one.id) as never) ?? null} />
               <span className="text-[13px] text-foreground">{one.displayName}</span>
             </span>
           ))}
+          {alone && (
+            <>
+              <span className="text-[13px] text-muted-foreground">{empty}</span>
+              <span className="ms-auto">{action}</span>
+            </>
+          )}
         </div>
       ) : (
-        <p className="mt-2 text-[13px] text-muted-foreground">{empty}</p>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-[13px] text-muted-foreground">{empty}</p>
+          {action}
+        </div>
       )}
     </div>
   );
@@ -338,17 +401,10 @@ function LinkList({
   revoke,
 }: {
   items: Array<{ id: string; icon: ReactNode; title: string; detail: string; onRevoke: () => void }>;
-  empty: string;
+  empty: ReactNode;
   revoke: string;
 }) {
-  if (!items.length) {
-    return (
-      <div className="flex items-center gap-3 rounded-2xl border border-dashed border-border-strong px-4 py-6 text-[13px] text-muted-foreground">
-        <Clock className="size-4" />
-        {empty}
-      </div>
-    );
-  }
+  if (!items.length) return <>{empty}</>;
   return (
     <ul className="grid gap-2 sm:grid-cols-2">
       {items.map((item) => (

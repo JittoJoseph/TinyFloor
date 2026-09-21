@@ -227,3 +227,19 @@ differs from the plan, or adds to it:
   (movement ignores keys while a text field has focus); text fields are 16px on
   phones so mobile browsers do not zoom on focus; the canvas is transparent so
   the space around the map follows the theme.
+
+### Rules from the polish pass
+
+- **Focus is ink, never the accent.** Fields show focus with a darker border
+  and a faint ring; everything else gets one quiet outline on keyboard focus,
+  instead of the browser's blue or the brand orange.
+- **One big button per screen**, `ActionButton` in `components/ui/Action.tsx`,
+  built on beUI's stateful button: it springs when pressed and morphs into a
+  spinner while it waits, instead of swapping words.
+- **Nothing is ever just empty.** Where there is no data yet, the screen says
+  what will be there and offers the action that fills it: invite someone, make
+  a guest link, say the first thing in a channel, greet someone you have never
+  written to. Being alone on the floor shows your face beside empty places.
+- **A reload keeps you inside.** Walking through a door is remembered for the
+  tab, so refreshing lands you back on the floor; leaving through the app
+  brings you to the door next time.

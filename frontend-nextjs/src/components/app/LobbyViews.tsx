@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, Check, Hash, MessagesSquare, Plus, UserPlus } from "lucide-react";
+import { ArrowLeft, Check, Hand, Hash, MessagesSquare, Plus, UserPlus } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { lobbyChatPath, lobbyPath, shareUrl } from "@/lib/links";
@@ -10,7 +10,8 @@ import { shareLink } from "@/lib/share";
 import { roomChat, useRoomChat } from "@/lib/roomChat";
 import { useFloor } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
-import { FaceStack } from "@/components/ui/Face";
+import { Face, FaceStack } from "@/components/ui/Face";
+import { Chip, Empty } from "@/components/ui/Empty";
 import { IconButton } from "@/components/ui/IconButton";
 import { PersonPill } from "@/components/ui/Person";
 import { ShellView } from "./AppShell";
@@ -102,6 +103,13 @@ export function LobbyChatView() {
             }
             title={t("lobbyIntroTitle")}
             body={t("lobbyIntro")}
+            actions={
+              state.messages.length === 0 && (
+                <Chip solid icon={<Hand />} onClick={() => roomChat.say({ id: user.id, name: user.displayName }, t("starterHello"))}>
+                  {t("sayHello")}
+                </Chip>
+              )
+            }
           />
         }
       />
@@ -125,6 +133,12 @@ export function LobbyPeopleView() {
   const { user } = useAuth();
   const everyone = useFloor();
   const [copied, setCopied] = useState(false);
+  const shareLobby = async () => {
+    const result = await shareLink(shareUrl(lobbyPath), tl("title"), tr("inviteText", { room: tl("title") }));
+    if (result !== "copied") return;
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   const here = [...everyone.filter((one) => one.id === user?.id), ...everyone.filter((one) => one.id !== user?.id)];
 
   return (
@@ -133,36 +147,58 @@ export function LobbyPeopleView() {
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{ts("hereNow")}</h1>
-            <p className="mt-1 text-[14px] text-muted-foreground">{tl("subtitle")}</p>
+            <p className="mt-1 text-[14px] text-muted-foreground">{tl("peopleSubtitle")}</p>
           </div>
-          <Button
+          {here.length > 1 && <Button
             size="md"
             className="h-10 gap-2 px-4 text-[13px]"
-            onClick={async () => {
-              const result = await shareLink(shareUrl(lobbyPath), tl("title"), tr("inviteText", { room: tl("title") }));
-              if (result !== "copied") return;
-              setCopied(true);
-              setTimeout(() => setCopied(false), 2000);
-            }}
+            onClick={shareLobby}
           >
             {copied ? <Check className="size-4" /> : <UserPlus className="size-4" />}
             {copied ? tr("linkCopied") : tr("invite")}
-          </Button>
+          </Button>}
         </header>
 
-        <ul className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-          {here.map((one) => (
-            <li key={one.id}>
-              <PersonPill
-                id={one.id}
-                name={one.id === user?.id ? tr("you", { name: one.name }) : one.name}
-                detail={ts("onFloorShort")}
-                presence={one.status}
-                className="w-full bg-background [--face-ring:var(--ui-background)]"
-              />
-            </li>
-          ))}
-        </ul>
+        {here.length <= 1 && (
+          <Empty
+            className="mt-8"
+            art={
+              <span className="flex items-center [--face-ring:var(--ui-card)]">
+                {user && <Face seed={user.id} size={44} presence="available" />}
+                {[0, 1].map((one) => (
+                  <span
+                    key={one}
+                    className="-ms-2.5 flex size-11 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-card text-faint"
+                  >
+                    <UserPlus className="size-4" />
+                  </span>
+                ))}
+              </span>
+            }
+            title={tr("aloneTitle")}
+            body={tr("aloneBody")}
+            actions={
+              <Chip solid icon={copied ? <Check /> : <UserPlus />} onClick={shareLobby}>
+                {copied ? tr("linkCopied") : tr("inviteSomeone")}
+              </Chip>
+            }
+          />
+        )}
+        {here.length > 1 && (
+          <ul className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {here.map((one) => (
+              <li key={one.id}>
+                <PersonPill
+                  id={one.id}
+                  name={one.id === user?.id ? tr("you", { name: one.name }) : one.name}
+                  detail={ts("onFloorShort")}
+                  presence={one.status}
+                  className="w-full bg-background [--face-ring:var(--ui-background)]"
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

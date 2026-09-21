@@ -34,7 +34,7 @@ export const ProximityActions = memo(function ProximityActions({
   touch?: boolean;
 }) {
   const t = useTranslations("proximity");
-  const tChat = useTranslations("chat");
+  const tShell = useTranslations("shell");
   const size = touch ? "md" : "sm";
   const icon = touch ? "w-[17px] h-[17px]" : "w-[14px] h-[14px]";
 
@@ -59,7 +59,7 @@ export const ProximityActions = memo(function ProximityActions({
         onClick={() =>
           window.dispatchEvent(new CustomEvent(OPEN_CONVERSATION_EVENT, { detail: { id: player.id, name: player.name } }))
         }
-        title={tChat("title")}
+        title={tShell("message")}
         icon={<MessageSquare className={icon} />}
       />
     </div>

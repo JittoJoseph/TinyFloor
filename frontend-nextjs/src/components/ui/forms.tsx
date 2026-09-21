@@ -66,7 +66,7 @@ export function Button({
 }
 
 export const fieldClass =
-  "w-full h-11 px-3.5 rounded-xl bg-background border border-border text-[16px] sm:text-[14px] text-foreground placeholder:text-faint outline-none transition-[border-color,box-shadow] duration-200 focus:border-border-strong focus:ring-4 focus:ring-ring/15";
+  "w-full h-11 px-3.5 rounded-xl bg-background border border-border text-[16px] sm:text-[14px] text-foreground placeholder:text-faint outline-none transition-[border-color,box-shadow] duration-200 focus:border-foreground/35 focus:ring-4 focus:ring-foreground/[0.06]";
 
 export function Label({ htmlFor, children }: { htmlFor?: string; children: React.ReactNode }) {
   return (

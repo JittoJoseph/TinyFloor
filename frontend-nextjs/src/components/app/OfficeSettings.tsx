@@ -14,6 +14,7 @@ import { useOffice } from "./OfficeShell";
 export function OfficeSettings({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations("office.settings");
   const tc = useTranslations("common");
+  const tPlans = useTranslations("office.plans");
   const router = useRouter();
   const { user } = useAuth();
   const { office, refresh } = useOffice();
@@ -51,7 +52,13 @@ export function OfficeSettings({ open, onClose }: { open: boolean; onClose: () =
           <Face seed={office.id} size={48} square />
           <div className="min-w-0">
             <p className="truncate text-[15px] font-semibold text-foreground">{office.name}</p>
-            <p className="text-[12.5px] text-muted-foreground">{t("seats", { used: office.members, seats: office.seats })}</p>
+            <p className="text-[12.5px] text-muted-foreground">
+              {t("plan", {
+                plan: tPlans.has(office.plan as "free") ? tPlans(office.plan as "free") : office.plan,
+                used: office.members,
+                seats: office.seats,
+              })}
+            </p>
           </div>
         </div>
 
@@ -68,11 +75,11 @@ export function OfficeSettings({ open, onClose }: { open: boolean; onClose: () =
               onChange={(event) => setName(event.target.value)}
               className="h-10 min-w-0 flex-1 rounded-xl border border-border bg-background px-3.5 text-[16px] sm:text-[14px] text-foreground outline-none transition-colors focus:border-border-strong disabled:opacity-60"
             />
-            {admin && (
+            {admin && name.trim() && name.trim() !== office.name && (
               <Button
                 size="md"
                 className="h-10 px-4 text-[13px]"
-                disabled={busy || !name.trim() || name.trim() === office.name}
+                disabled={busy}
                 onClick={() =>
                   run(async () => {
                     await api.renameOffice(office.id, name.trim());
@@ -91,10 +98,12 @@ export function OfficeSettings({ open, onClose }: { open: boolean; onClose: () =
         {error && <p className="text-[12.5px] text-destructive">{error}</p>}
 
         <div className="border-t border-border pt-4">
+          <p className="mb-2 text-[12px] font-medium text-muted-foreground">{t("danger")}</p>
           {owner ? (
             confirming ? (
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="me-auto text-[13px] text-foreground">{t("closeSure")}</p>
+              <div className="rounded-xl border border-destructive/25 bg-destructive/[0.06] p-3">
+                <p className="text-[13px] leading-relaxed text-foreground">{t("closeSure")}</p>
+                <div className="mt-3 flex justify-end gap-2">
                 <Button variant="ghost" size="sm" className="h-9 px-3" onClick={() => setConfirming(false)}>
                   {tc("cancel")}
                 </Button>
@@ -111,6 +120,7 @@ export function OfficeSettings({ open, onClose }: { open: boolean; onClose: () =
                 >
                   {t("closeIt")}
                 </Button>
+                </div>
               </div>
             ) : (
               <button

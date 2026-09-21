@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AlertCircle } from "lucide-react";
-import { Link, usePathname } from "@/lib/i18n/navigation";
+import { usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { EntryShell, primaryButtonClass } from "./EntryShell";
+import { EntryShell } from "./EntryShell";
+import { ActionLink } from "@/components/ui/Action";
 import { EntryPreview } from "./EntryPreview";
 import { WalkIn } from "./WalkIn";
 import { RoomView } from "@/components/room/RoomView";
@@ -96,9 +97,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
             {t("unavailableTitle")}
           </h1>
           <p className="text-sm text-foreground opacity-55 mb-6">{t("linkUnavailable")}</p>
-          <Link href="/lobby" className={primaryButtonClass}>
-            {t("visitLobby")}
-          </Link>
+          <ActionLink href="/lobby">{t("visitLobby")}</ActionLink>
         </div>
       </EntryShell>
     );

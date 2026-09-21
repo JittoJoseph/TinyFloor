@@ -25,6 +25,7 @@
   --ui-warn: #e59a13;
   --ui-destructive: #e5484d;
   --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+  --ui-ring: rgb(24 24 20 / 0.35);
 }
 
 .dark {
@@ -44,6 +45,7 @@
   --ui-warn: #f5b83d;
   --ui-destructive: #ff6369;
   --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --ui-ring: rgb(255 255 255 / 0.4);
 }
 
 @theme inline {
@@ -67,7 +69,7 @@
   --color-input: var(--ui-border);
   --color-border-strong: var(--ui-border-strong);
   --color-success: var(--ui-ok);
-  --color-ring: var(--ui-brand);
+  --color-ring: var(--ui-ring);
   --color-brand: var(--ui-brand);
   --color-brand-foreground: var(--ui-brand-foreground);
   --color-ok: var(--ui-ok);
@@ -112,4 +114,16 @@ html.app ::-webkit-scrollbar-thumb:hover {
 }
 html.app * {
   scrollbar-color: var(--ui-border) transparent;
+}
+
+/* Keyboard focus: one quiet ring everywhere, instead of the browser's blue. A
+   field shows its focus with its border (see inputClass), so it has none. */
+@layer base {
+  html.app :where(a, button, [role="button"], [role="radio"], [role="tab"], summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--ui-ring);
+    outline-offset: 2px;
+  }
+  html.app :where(input, textarea, select):focus {
+    outline: none;
+  }
 }

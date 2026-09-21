@@ -1,22 +1,22 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { AlertCircle, Check, UserPlus } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Link } from "@/lib/i18n/navigation";
 import ControlBar from "@/components/ControlBar";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
 import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
-import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
+import { EntryShell } from "@/components/entry/EntryShell";
+import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { Button } from "@/components/motion/button/base";
 import { Loader } from "@/components/motion/loader";
-import { FaceStack } from "@/components/ui/Face";
+import { Face, FaceStack } from "@/components/ui/Face";
 import { PersonPill } from "@/components/ui/Person";
 import type { RoomTicket } from "@/lib/api";
 import { shareUrl } from "@/lib/links";
@@ -70,6 +70,17 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevic
   const [peopleOpen, setPeopleOpen] = useState(false);
   const everyone = useFloor();
   const reduce = useReducedMotion();
+  const peopleBox = useRef<HTMLDivElement>(null);
+
+  // The list closes when you press anywhere else, the map included.
+  useEffect(() => {
+    if (!peopleOpen) return;
+    const close = (event: PointerEvent) => {
+      if (!peopleBox.current?.contains(event.target as Node)) setPeopleOpen(false);
+    };
+    window.addEventListener("pointerdown", close);
+    return () => window.removeEventListener("pointerdown", close);
+  }, [peopleOpen]);
 
   // You first, then everyone else as they arrived.
   const here = [
@@ -137,7 +148,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevic
         )}
       >
         {/* Where you are and who is with you. Pressing it lists them. */}
-        <div className="pointer-events-auto relative">
+        <div ref={peopleBox} className="pointer-events-auto relative">
           <button
             type="button"
             onClick={() => setPeopleOpen((open) => !open)}
@@ -167,26 +178,53 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevic
                 style={{ transformOrigin: "top left" }}
                 className="absolute start-0 top-12 w-72 rounded-2xl border border-border bg-popover p-2 shadow-float"
               >
-                <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">
-                  {t("peopleHere", { count })}
-                </p>
-                <div className="flex max-h-72 flex-col gap-1.5 overflow-y-auto">
-                  {here.map((one) => (
-                    <PersonPill
-                      key={one.id}
-                      id={one.id}
-                      name={one.id === user.id ? t("you", { name: one.name }) : one.name}
-                      presence={one.status}
-                      size="sm"
-                      className="border-transparent bg-muted/60 [--face-ring:var(--ui-popover)]"
-                    />
-                  ))}
-                </div>
-                {sharePath && (
-                  <Button variant="secondary" size="sm" onClick={invite} className="mt-2 w-full">
-                    <UserPlus className="size-3.5" />
-                    {t("invite")}
-                  </Button>
+                {here.length > 1 ? (
+                  <>
+                    <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">
+                      {t("peopleHere", { count })}
+                    </p>
+                    <div className="flex max-h-72 flex-col gap-1 overflow-y-auto">
+                      {here.map((one) => (
+                        <PersonPill
+                          key={one.id}
+                          id={one.id}
+                          name={one.id === user.id ? t("you", { name: one.name }) : one.name}
+                          presence={one.status}
+                          size="sm"
+                          className="border-transparent bg-transparent hover:bg-muted [--face-ring:var(--ui-popover)]"
+                        />
+                      ))}
+                    </div>
+                    {sharePath && (
+                      <Button variant="secondary" size="sm" onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
+                        {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
+                        {copied ? t("linkCopied") : t("invite")}
+                      </Button>
+                    )}
+                  </>
+                ) : (
+                  // Alone: your face beside the empty places, and the way to fill them.
+                  <div className="flex flex-col items-center px-3 pb-2 pt-4 text-center [--face-ring:var(--ui-popover)]">
+                    <span className="flex items-center">
+                      <Face seed={user.id} size={40} presence="available" />
+                      {[0, 1].map((one) => (
+                        <span
+                          key={one}
+                          className="-ms-2 flex size-10 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-popover text-faint"
+                        >
+                          <UserPlus className="size-4" />
+                        </span>
+                      ))}
+                    </span>
+                    <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
+                    <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
+                    {sharePath && (
+                      <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
+                        {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
+                        {copied ? t("linkCopied") : t("inviteSomeone")}
+                      </Button>
+                    )}
+                  </div>
                 )}
               </motion.div>
             )}
@@ -254,17 +292,11 @@ function RoomEnded({
         <h1 className="mb-2 text-[1.6rem] font-semibold tracking-tight text-foreground">{copy[reason].title}</h1>
         <p className="mb-6 text-[14px] text-muted-foreground">{copy[reason].body}</p>
         {reason === "signedOut" ? (
-          <Link href="/auth" className={primaryButtonClass}>
-            {t("signIn")}
-          </Link>
+          <ActionLink href="/auth">{t("signIn")}</ActionLink>
         ) : canRetry ? (
-          <button type="button" onClick={onRetry} className={primaryButtonClass}>
-            {reason === "replaced" ? t("useHere") : t("tryAgain")}
-          </button>
+          <ActionButton onClick={onRetry}>{reason === "replaced" ? t("useHere") : t("tryAgain")}</ActionButton>
         ) : (
-          <Link href={leaveHref} className={primaryButtonClass}>
-            {t("back")}
-          </Link>
+          <ActionLink href={leaveHref}>{t("back")}</ActionLink>
         )}
       </div>
     </EntryShell>

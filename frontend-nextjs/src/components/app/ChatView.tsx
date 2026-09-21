@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, ChevronDown, Hash, MessageSquare, Plus, Search, SquarePen, UserPlus } from "lucide-react";
+import { ArrowLeft, ChevronDown, Coffee, Hand, Hash, Map as MapIcon, MessageSquare, Plus, Search, SquarePen, UserPlus, Users } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -15,6 +15,7 @@ import { CommandPalette, type CommandItem } from "@/components/motion/command-pa
 import { Face, FaceStack, type Presence } from "@/components/ui/Face";
 import { IconButton, Kbd } from "@/components/ui/IconButton";
 import { Menu, MenuHeader, MenuItem } from "@/components/ui/Menu";
+import { Chip } from "@/components/ui/Empty";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ShellView } from "./AppShell";
@@ -72,6 +73,8 @@ export function ChatView({ channel }: { channel?: string }) {
     reactions: message.reactions,
   }));
 
+  // Nothing said here yet: the intro offers a way to start.
+  const empty = !!history && history.length === 0 && !(state.more[open] ?? false);
   const title = pair ? (other?.displayName ?? summary?.name ?? "") : (summary?.name ?? open);
   const go = (id: string) => router.push(officeChatPath(office.id, id));
 
@@ -101,9 +104,23 @@ export function ChatView({ channel }: { channel?: string }) {
       label: person.member.displayName,
       group: t("directMessages"),
       keywords: [person.member.email ?? ""],
-      badge: <Face seed={person.member.id} size={18} presence={presenceOf(person.member.id)} />,
+      visual: <Face seed={person.member.id} size={18} presence={presenceOf(person.member.id)} />,
       onSelect: () => go(dmChannelId(me, person.member.id)),
     })),
+    {
+      id: "go-floor",
+      label: ts("backToFloor"),
+      group: t("actions"),
+      icon: MapIcon,
+      onSelect: () => router.push(officePath(office.id)),
+    },
+    {
+      id: "go-people",
+      label: office.role === "admin" ? t("invitePeople") : ts("people"),
+      group: t("actions"),
+      icon: office.role === "admin" ? UserPlus : Users,
+      onSelect: () => router.push(officePeoplePath(office.id)),
+    },
   ];
 
   return (
@@ -113,7 +130,10 @@ export function ChatView({ channel }: { channel?: string }) {
         <>
           <header className="flex h-14 shrink-0 items-center gap-2 px-4">
             <h2 className="me-auto truncate text-[15px] font-semibold tracking-tight text-foreground">{office.name}</h2>
-            <NewChannel onMade={go} />
+            <NewChannel
+              onMade={go}
+              trigger={<IconButton label={t("newChannel")} size="sm" icon={<SquarePen />} bare className="[&_svg]:size-4" />}
+            />
           </header>
 
           <div className="px-3 pb-2">
@@ -140,6 +160,17 @@ export function ChatView({ channel }: { channel?: string }) {
                   label={one.name}
                 />
               ))}
+              <NewChannel
+                onMade={go}
+                trigger={
+                  <button type="button" className={addRowClass}>
+                    <span className={addIconClass}>
+                      <Plus className="size-3.5" />
+                    </span>
+                    {t("addChannel")}
+                  </button>
+                }
+              />
             </Section>
 
             <Section title={t("directMessages")}>
@@ -153,17 +184,28 @@ export function ChatView({ channel }: { channel?: string }) {
                   label={member.displayName}
                 />
               ))}
-              {people.length === 0 && <p className="px-3 py-1.5 text-[12.5px] text-muted-foreground">{t("aloneHere")}</p>}
-              {office.role === "admin" && (
-                <Link
-                  href={officePeoplePath(office.id)}
-                  className="flex h-8 items-center gap-2.5 rounded-lg px-2.5 text-[13.5px] text-muted-foreground transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
-                >
-                  <span className="flex size-5 items-center justify-center rounded-md bg-muted">
-                    <UserPlus className="size-3.5" />
-                  </span>
-                  {t("invitePeople")}
-                </Link>
+              {people.length === 0 ? (
+                <div className="mx-1 mt-1 rounded-xl border border-dashed border-border-strong p-3">
+                  <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneHere")}</p>
+                  {office.role === "admin" && (
+                    <Link
+                      href={officePeoplePath(office.id)}
+                      className="mt-2.5 inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground px-3 text-[12.5px] font-medium text-background"
+                    >
+                      <UserPlus className="size-3.5" />
+                      {t("invitePeople")}
+                    </Link>
+                  )}
+                </div>
+              ) : (
+                office.role === "admin" && (
+                  <Link href={officePeoplePath(office.id)} className={addRowClass}>
+                    <span className={addIconClass}>
+                      <UserPlus className="size-3.5" />
+                    </span>
+                    {t("invitePeople")}
+                  </Link>
+                )
               )}
             </Section>
           </nav>
@@ -221,7 +263,7 @@ export function ChatView({ channel }: { channel?: string }) {
       </header>
 
       <Conversation
-        key={open}
+        key={`conversation-${open}`}
         lines={lines}
         me={me}
         more={state.more[open] ?? false}
@@ -235,6 +277,23 @@ export function ChatView({ channel }: { channel?: string }) {
               mark={<Face seed={other.id} size={64} presence={presenceOf(other.id)} />}
               title={other.displayName}
               body={t("dmIntro", { name: other.displayName })}
+              actions={
+                empty && (
+                  <>
+                    <Chip solid icon={<Hand />} onClick={() => chat.say(open, t("starterHi", { name: firstName(other.displayName) }))}>
+                      {t("sayHi")}
+                    </Chip>
+                    <Chip icon={<Coffee />} onClick={() => chat.say(open, t("starterMinute"))}>
+                      {t("askMinute")}
+                    </Chip>
+                    {presenceOf(other.id) && (
+                      <Chip icon={<MapIcon />} onClick={() => router.push(officePath(office.id))}>
+                        {t("findOnFloor")}
+                      </Chip>
+                    )}
+                  </>
+                )
+              }
             />
           ) : (
             <ConversationIntro
@@ -245,13 +304,27 @@ export function ChatView({ channel }: { channel?: string }) {
               }
               title={t("channelIntroTitle", { channel: title })}
               body={open === GENERAL_CHANNEL ? t("generalIntro", { office: office.name }) : t("channelIntro", { channel: title })}
+              actions={
+                empty && (
+                  <>
+                    <Chip solid icon={<Hand />} onClick={() => chat.say(open, t("starterHello"))}>
+                      {t("sayHello")}
+                    </Chip>
+                    {office.role === "admin" && (
+                      <Chip icon={<UserPlus />} onClick={() => router.push(officePeoplePath(office.id))}>
+                        {t("invitePeople")}
+                      </Chip>
+                    )}
+                  </>
+                )
+              }
             />
           )
         }
       />
 
       <Composer
-        key={open}
+        key={`composer-${open}`}
         placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
         onSend={(text) => chat.say(open, text)}
         attachNote={office.plan === "free" ? t("attachmentsPaid") : t("attachmentsSoon")}
@@ -345,16 +418,25 @@ export function Row({
 }
 
 /** A channel is made by naming it. */
-function NewChannel({ onMade }: { onMade: (id: string) => void }) {
+const addRowClass =
+  "flex h-8 w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-[13.5px] text-muted-foreground transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
+const addIconClass = "flex size-5 items-center justify-center rounded-md bg-muted";
+
+/** "Ana Lima" to "Ana": how you would start a message to someone. */
+function firstName(name: string) {
+  return name.trim().split(/\s+/)[0] ?? name;
+}
+
+function NewChannel({ onMade, trigger }: { onMade: (id: string) => void; trigger: React.ReactElement }) {
   const t = useTranslations("chat");
   const [name, setName] = useState("");
   const input = useRef<HTMLInputElement>(null);
   const clean = cleanChannelName(name);
   return (
     <Menu
-      align="end"
       width={272}
-      trigger={<IconButton label={t("newChannel")} size="sm" icon={<SquarePen />} bare className="[&_svg]:size-4" />}
+      align="start"
+      trigger={trigger}
     >
       <form
         className="p-1.5"

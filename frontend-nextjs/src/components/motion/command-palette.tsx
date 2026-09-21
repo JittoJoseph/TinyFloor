@@ -29,6 +29,8 @@ export type CommandItem = {
   keywords?: string[];
   icon?: LucideIcon;
   badge?: ReactNode;
+  /** Something to lead the row instead of an icon: a person's face. */
+  visual?: ReactNode;
   onSelect: () => void;
 };
 
@@ -116,7 +118,7 @@ export function CommandPalette({
 
   // Reserve the icon column only when at least one item brings an icon, so
   // icon-less lists don't render a dead gap before every label.
-  const hasIcons = useMemo(() => items.some((it) => it.icon), [items]);
+  const hasIcons = useMemo(() => items.some((it) => it.icon || it.visual), [items]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, CommandItem[]>();
@@ -283,7 +285,7 @@ export function CommandPalette({
                       <div key={group} className="mb-1 last:mb-0">
                         <div
                           aria-hidden
-                          className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                          className="px-2 py-1.5 text-[11.5px] font-medium text-muted-foreground"
                         >
                           {group}
                         </div>
@@ -329,7 +331,9 @@ export function CommandPalette({
                                   }
                                 />
                               ) : null}
-                              {Icon ? (
+                              {it.visual ? (
+                                <span className="relative z-10 flex h-4 w-4 items-center justify-center">{it.visual}</span>
+                              ) : Icon ? (
                                 <Icon className="relative z-10 h-4 w-4" />
                               ) : hasIcons ? (
                                 <span className="relative z-10 h-4 w-4" />

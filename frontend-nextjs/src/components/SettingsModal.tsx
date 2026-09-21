@@ -27,6 +27,7 @@ export default function SettingsModal({ isOpen, onClose }: { isOpen: boolean; on
 function DevicesDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations("settings");
   const tc = useTranslations("common");
+  const ts = useTranslations("shell");
   const [microphones, setMicrophones] = useState<MediaDevice[]>([]);
   const [cameras, setCameras] = useState<MediaDevice[]>([]);
   const [audio, setAudio] = useState(DEFAULT);
@@ -78,7 +79,7 @@ function DevicesDialog({ open, onClose }: { open: boolean; onClose: () => void }
     <Dialog
       open={open}
       onClose={onClose}
-      title={t("title")}
+      title={ts("devices")}
       description={t("description")}
       closeLabel={t("close")}
       footer={

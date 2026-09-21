@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Link2 } from "lucide-react";
 import { OfficeScene, Occupant } from "@/components/OfficeScene";
+import { shareUrl } from "@/lib/links";
 
 export const EntryPreview: React.FC<{
   occupants: Occupant[];
@@ -14,12 +15,14 @@ export const EntryPreview: React.FC<{
 
   const copy = async () => {
     if (!inviteLink) return;
+    // Callers pass the path; what goes on the clipboard is the whole link.
+    const link = inviteLink.startsWith("/") ? shareUrl(inviteLink) : inviteLink;
 
     try {
-      await navigator.clipboard.writeText(inviteLink);
+      await navigator.clipboard.writeText(link);
     } catch {
       const field = document.createElement("textarea");
-      field.value = inviteLink;
+      field.value = link;
       field.setAttribute("readonly", "");
       field.style.position = "fixed";
       field.style.opacity = "0";
@@ -36,7 +39,8 @@ export const EntryPreview: React.FC<{
   return (
     <OfficeScene
       className="aspect-[16/10] sm:aspect-[7/5] lg:aspect-auto lg:h-full rounded-[1.35rem] border border-border"
-      zoom="auto max(470px, 100%)"
+      // Taller than the frame, so the map's top and bottom walls stay out of view.
+      zoom="auto max(520px, 124%)"
       focus="42% 79%"
       occupants={occupants}
     >

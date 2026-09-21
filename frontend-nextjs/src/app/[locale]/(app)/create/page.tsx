@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Loader2 } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { officePath } from "@/lib/links";
-import { EntryShell, inputClass, primaryButtonClass } from "@/components/entry/EntryShell";
+import { EntryShell, inputClass } from "@/components/entry/EntryShell";
+import { ActionButton } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -127,22 +127,12 @@ export default function CreateSpacePage() {
             </div>
           )}
 
-          <button type="submit" disabled={!name.trim() || busy || isLoading} className={`${primaryButtonClass} mt-5`}>
-            {busy ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                {t("creating")}
-              </>
-            ) : (
-              <>
-                {account ? t("create") : t("continue")}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-              </>
-            )}
-          </button>
+          <ActionButton type="submit" disabled={!name.trim() || isLoading} busy={busy} busyLabel={t("creating")} className="mt-5">
+            {account ? t("create") : t("continue")}
+          </ActionButton>
         </form>
 
-        <p className="text-[12px] text-foreground opacity-50 text-center mt-5">
+        <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
           {account ? t("freePlan") : t("accountNext")}
         </p>
 

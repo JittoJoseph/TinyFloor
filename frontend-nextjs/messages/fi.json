@@ -47,18 +47,6 @@
     "searchPlaceholder": "Hae kieltä…",
     "noResults": "Kieliä ei löytynyt"
   },
-  "nav": {
-    "main": "Päävalikko",
-    "tour": "Esittely"
-  },
-  "hero": {
-    "title": "<em>Kodikkain</em> <br></br>virtuaalitoimisto.",
-    "subtitle": "Virtuaalitoimisto, joka näyttää peliltä. Kävele ympäriinsä, juttele työkavereiden kanssa ja tunne olevasi taas tiimi.",
-    "cta": "Astu sisään nyt",
-    "caption": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisiä kävelemässä.",
-    "noSignUp": "kokeile",
-    "secondaryCta": "Tai perusta toimisto tiimillesi"
-  },
   "landing": {
     "description": "Virtuaalitoimisto, joka näyttää peliltä. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
     "features": [
@@ -69,60 +57,6 @@
       "Läsnäolo ja tila reaaliajassa",
       "Huonechat"
     ]
-  },
-  "moments": {
-    "title": "Toimisto, jossa voit <em>kävellä.</em>",
-    "subtitle": "TinyFloor säilyttää sen osan toimistosta, jota puhelut eivät koskaan korvanneet: tiedät, kuka on paikalla, ja voit kävellä hänen luokseen.",
-    "alwaysOn": "Aina auki",
-    "directory": {
-      "design": {
-        "name": "Designtiimi",
-        "here": "5 paikalla"
-      },
-      "founders": {
-        "name": "Perustajat",
-        "here": "2 paikalla"
-      },
-      "jam": {
-        "name": "Viikonloppujamit",
-        "here": "Tyhjä"
-      }
-    },
-    "enter": {
-      "title": "Avaa linkki, ja olet sisällä.",
-      "body": "Joku jakaa huoneen linkin. Valitse hahmo, kirjoita nimi, ja seisot kerroksessa kaikkien muiden kanssa.",
-      "chip1": "Ei latauksia",
-      "chip2": "Vieraat tervetulleita",
-      "chip3": "Mikä tahansa selain"
-    },
-    "call": {
-      "title": "Kävele luo ja ala jutella.",
-      "body": "Mene lähelle tiimiläistä, niin hänen puhelupalkkinsa ilmestyy näkyviin. Yksi napautus avaa videon tai äänen suoraan selainten välillä.",
-      "chip1": "Video tai ääni",
-      "chip2": "Vertaisyhteys",
-      "chip3": "Yksi napautus"
-    },
-    "presence": {
-      "title": "Näet, kuka on lähellä.",
-      "body": "Jokaisella on nimikyltti ja tila. Näet, kuka on vapaana, kuka keskittyy ja kuka on jo puhelussa, ennen kuin menet luokse.",
-      "chip1": "Nimikyltit livenä",
-      "chip2": "Poissa ja varattu",
-      "chip3": "Huonechat"
-    },
-    "rooms": {
-      "title": "Huone on huomennakin paikallaan.",
-      "body": "Huoneet eivät lopu, kun kokous loppuu. Pidä ne auki tiimillesi, kutsu ihmiset kerran, ja he voivat tulla sisään milloin haluavat.",
-      "chip1": "Vain tiimillesi",
-      "chip2": "Vieraslinkit",
-      "chip3": "Ilmainen"
-    },
-    "floor": {
-      "title": "Toimisto, ei palaveri.",
-      "body": "Kukaan ei lähetä kutsuja. Ihmiset poikkeavat, tekevät töitä lähekkäin ja kävelevät luo, kun jotain tulee mieleen.",
-      "chip1": "Ei kutsuja",
-      "chip2": "Kävele luo",
-      "chip3": "Koko kerros"
-    }
   },
   "faq": {
     "title": "Ennen kuin <em>astut sisään.</em>",
@@ -145,7 +79,7 @@
       },
       {
         "q": "Miten videopuhelut toimivat?",
-        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poispäin käveleminen ei katkaise sitä. Kokouspöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
+        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee WebRTC:llä Cloudflaren välitysverkon kautta, joten se yhdistyy samalla tavalla missä tahansa verkossa, toimistolla tai kotona. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poistuminen paikalta ei katkaise sitä. Neuvottelupöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
       },
       {
         "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
@@ -160,26 +94,6 @@
         "a": "Tavallinen puhelu laittaa kaikki samaan ruudukkoon palaverin loppuun asti. TinyFloor-huone on auki koko päivän, joten näet, kuka on paikalla, voit siirtyä keskustelusta toiseen ja jutella niiden kanssa, joiden luo kävelet."
       }
     ]
-  },
-  "cta": {
-    "title": "Huoneesi on <em>jo auki.</em>",
-    "publicTitle": "Astu julkiseen toimistoon",
-    "publicBody": "Aina auki, kaikille. Valitse nimi, valitse hahmo, ja olet sisällä. Ei tiliä.",
-    "createTitle": "Perusta oma toimistosi",
-    "createBody": "Nimeä se, kutsu tiimisi yhdellä linkillä, ja huoneet pysyvät auki niin kauan kuin haluat.",
-    "sampleName": "Designtiimi",
-    "create": "Luo",
-    "publicNote": "aloita tästä"
-  },
-  "footer": {
-    "tagline": "Virtuaalitoimisto, jossa kävellään. Ilmainen, selaimessa.",
-    "product": "Tuote",
-    "learn": "Lue lisää",
-    "elsewhere": "Muualla",
-    "tour": "Huoneen esittely",
-    "twoWays": "Kaksi tietä sisään",
-    "rights": "© {year} Jitto Joseph. Kaikki oikeudet pidätetään.",
-    "credits": "Tekijät"
   },
   "auth": {
     "tabSignIn": "Kirjaudu",
@@ -673,7 +587,7 @@
           },
           {
             "q": "Toimivatko puhelut selainten välillä?",
-            "a": "Kyllä. TinyFloorin puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä."
+            "a": "Kyllä. TinyFloorin puhelut kulkevat selaimessa WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa verkossa, toimistolla tai kotona."
           }
         ]
       },
@@ -947,8 +861,8 @@
             "body": "Istu neuvottelupöytään, niin liityt puheluun kaikkien siellä istuvien kanssa."
           },
           {
-            "title": "Vertaisyhteys",
-            "body": "Puhelut kulkevat suoraan selainten välillä WebRTC:n kautta, joten asennettavaa ei ole."
+            "title": "Toimii missä tahansa verkossa",
+            "body": "Puhelut kulkevat WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät myös yrityksen palomuurin takaa, eikä mitään tarvitse asentaa."
           }
         ],
         "faq": [
@@ -1230,5 +1144,237 @@
     "emptyTitle": "Aloita ensimmäinen toimistosi",
     "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi.",
     "walkIn": "Kävele sisään"
+  },
+  "home": {
+    "nav": {
+      "features": "Ominaisuudet",
+      "pricing": "Hinnat",
+      "faq": "UKK",
+      "lobby": "Aula",
+      "signIn": "Kirjaudu",
+      "start": "Luo toimistosi",
+      "open": "Avaa TinyFloor",
+      "main": "Päänavigaatio",
+      "items": {
+        "proximity": "Läheisyyspuhelut",
+        "meetings": "Neuvottelupöydät",
+        "chat": "Chat",
+        "people": "Läsnäolo",
+        "guests": "Vieraat"
+      },
+      "everyOffice": "Jokaisessa toimistossa",
+      "lobbyTitle": "Aula on auki",
+      "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
+      "menu": "Valikko",
+      "teams": "Tiimeille",
+      "teamTitle": "Tehty pienille tiimeille",
+      "teamBody": "Ilmainen enintään 3 hengelle, isommat paketit tulossa.",
+      "cases": {
+        "virtualOffice": "Paikka etätiimillesi",
+        "virtualCoworking": "Keskity töihin muiden seurassa",
+        "onlineStudyRoom": "Opiskele yhdessä ystävien kanssa",
+        "virtualClassroom": "Vastaanotot ja pienet ryhmät",
+        "proximityChat": "Juttele sen kanssa, jonka luo kävelet"
+      }
+    },
+    "hero": {
+      "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",
+      "body": "Etätiimeille, jotka kaipaavat työskentelyä vierekkäin. Näe, kuka on paikalla, poikkea kysymään nopeasti ja vedä tuoli pöytään, kun on palaverin aika, ilman yhtäkään sovittua puhelua.",
+      "secondary": "Astu aulaan",
+      "previewLabel": "Kurkistus TinyFlooriin",
+      "tabs": {
+        "floor": "Kerros",
+        "chat": "Chat",
+        "people": "Ihmiset",
+        "meeting": "Palaverit"
+      },
+      "points": [
+        "Ilmainen enintään 3 hengelle",
+        "Ei mitään asennettavaa",
+        "Toimii Cloudflaren päällä"
+      ],
+      "lobbyLine": "Julkinen aula on auki juuri nyt. Tiliä ei tarvita.",
+      "lobbyCta": "Astu sisään"
+    },
+    "features": {
+      "proximity": {
+        "title": "Kävele juttelemaan.",
+        "muted": "Ei linkkejä, ei aikatauluja.",
+        "body": "Mene jonkun lähelle, niin puhelu on yhden napautuksen päässä. Kävele pois, niin kerros hiljenee taas, kuin pistäytyisit kollegan pöydän luona."
+      },
+      "meetings": {
+        "title": "Istu palaveriin.",
+        "muted": "Nouse lähteäksesi.",
+        "body": "Ryhmäpuhelut käydään pöydän ääressä. Kaikki pöydän ääressä istuvat ovat mukana, kamerat pysyvät kevyinä pienoiskuvina ja kuka tahansa voi jakaa näyttönsä."
+      },
+      "chat": {
+        "title": "Keskustelut, jotka säilyvät.",
+        "muted": "Kanavat, yksityisviestit, reaktiot.",
+        "body": "Jokaisella toimistolla on oma chat. Pysy kärryillä puhelimella kävelemättä sisään, ja saat hienovaraisen ilmoituksen kerrokseen, kun joku kirjoittaa."
+      },
+      "people": {
+        "title": "Tiedä, kuka on paikalla.",
+        "muted": "Ja kävele suoraan luo.",
+        "body": "Näe, kuka on kerroksessa, kuka on kiireinen ja kuka puhelussa. Napauta Kävele luo, niin hahmosi löytää tien itse."
+      },
+      "guests": {
+        "title": "Päästä kuka tahansa sisään.",
+        "muted": "Yhdellä linkillä.",
+        "body": "Kutsu tiimiläisiä sähköpostilla tai lähetä vieraslinkki asiakkaalle tai hakijalle. He valitsevat nimen ja hahmon ja ovat kerroksessa, ilman tiliä."
+      }
+    },
+    "more": {
+      "title": "Kaikki, mitä pieni tiimi tarvitsee,",
+      "muted": "yhdessä kerroksessa.",
+      "items": {
+        "screen": {
+          "title": "Näytön jako",
+          "body": "Jaa ikkuna missä tahansa puhelussa tai palaverissa."
+        },
+        "whiteboard": {
+          "title": "Valkotaulu",
+          "body": "Luonnostelkaa yhdessä toimiston seinällä."
+        },
+        "music": {
+          "title": "Musiikki",
+          "body": "Laita soimaan kappale kaikille huoneessa."
+        },
+        "status": {
+          "title": "Tila",
+          "body": "Tavoitettavissa, kiireinen tai poissa, suoraan nimikyltissäsi."
+        },
+        "noise": {
+          "title": "Kohinanpoisto",
+          "body": "Valinnainen tekoäly laitteellasi poistaa näppäimistön ja taustapuheen."
+        },
+        "mobile": {
+          "title": "Puhelimella",
+          "body": "Ohjain, joka ilmestyy peukalosi alle."
+        },
+        "themes": {
+          "title": "Vaalea ja tumma",
+          "body": "Seuraa järjestelmääsi, tai valitse itse."
+        },
+        "languages": {
+          "title": "18 kieltä",
+          "body": "Englannista ja espanjasta japaniin ja arabiaan."
+        }
+      }
+    },
+    "trust": {
+      "title": "Rakennettu luotettavaksi.",
+      "items": {
+        "private": {
+          "title": "Yksityinen lähtökohtaisesti",
+          "body": "Toimistokerros on vain sen jäsenille ja heidän päästämilleen vieraille. Mikään ei ole julkista, eikä mitään indeksoida."
+        },
+        "network": {
+          "title": "Cloudflaren verkossa",
+          "body": "Sivut, chat ja puhelut toimivat Cloudflaren maailmanlaajuisessa verkossa lähellä tiimiäsi ja yhdistyvät missä tahansa toimisto- tai kotiverkossa."
+        },
+        "install": {
+          "title": "Ei mitään asennettavaa",
+          "body": "Se on verkkosivu. Tietokoneella, kannettavalla tai puhelimella se aukeaa samalla tavalla, ja se on aina uusin versio."
+        }
+      },
+      "muted": "Yksityinen, lähellä tiimiäsi, eikä mitään asennettavaa.",
+      "stack": "Mitä se käyttää"
+    },
+    "plans": {
+      "title": "Aloita ilmaiseksi.",
+      "muted": "Kasva, kun olet valmis.",
+      "free": {
+        "name": "Ilmainen",
+        "price": "$0",
+        "per": "enintään 3 hengelle",
+        "cta": "Luo toimistosi",
+        "items": [
+          "Yksityinen kerros tiimillesi",
+          "Läheisyyspuhelut ja neuvottelupöydät",
+          "Näytön jako",
+          "Kanavat ja yksityisviestit",
+          "Vieraslinkit vierailijoille"
+        ]
+      },
+      "soon": {
+        "name": "Isommat paketit",
+        "badge": "Tulossa pian",
+        "body": "Tiimeille, joille kolme paikkaa ei riitä. Aloita ilmaiseksi tänään, toimistosi säilyy, kun ne tulevat.",
+        "cta": "Kokeile ensin aulaa",
+        "items": [
+          "Lisää paikkoja isommille tiimeille",
+          "Kuvat ja tiedostot chatissa",
+          "Lisää palaveriaikaa"
+        ]
+      },
+      "note": "Korttia ei tarvita. Toimistosi on valmis minuutissa."
+    },
+    "faq": {
+      "title": "Kysymyksiä,",
+      "muted": "vastauksia.",
+      "note": "Mietityttääkö vielä jokin? Julkinen aula on kaikille avoin, joten voit astua sisään ja katsoa itse."
+    },
+    "final": {
+      "title": "Anna tiimillesi yhteinen kerros.",
+      "body": "Luo toimisto minuutissa ja lähetä linkki tiimillesi. Tai astu ensin julkiseen aulaan ja katso, miltä se tuntuu."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "yleinen",
+      "design": "design",
+      "random": "sekalaiset",
+      "message1": "Huomenta! Aamupalaveri isolla pöydällä 5 minuutin päästä?",
+      "message2": "Tulossa 👋",
+      "message3": "Uusi käyttöönottopolku on julkaistu, kommentit tervetulleita",
+      "composer": "Viesti kanavalle #yleinen",
+      "walkTo": "Kävele luo",
+      "message": "Viesti",
+      "onFloor": "Kerroksessa",
+      "notOnFloor": "Ei kerroksessa",
+      "available": "Tavoitettavissa",
+      "busy": "Kiireinen",
+      "away": "Poissa",
+      "guestLink": "Vieraslinkki",
+      "guestNote": "Kuka tahansa tällä linkillä voi vierailla vieraana.",
+      "copy": "Kopioi",
+      "invite": "Kutsu",
+      "people": "Ihmiset",
+      "guestArrived": "tuli sisään vieraana",
+      "roles": {
+        "design": "Design",
+        "engineering": "Kehitys",
+        "product": "Tuote"
+      },
+      "message0": "Asiakaspuhelu siirtyi klo 14:ään, muistiinpanot kanavalla #design",
+      "message4": "Julkaisun parissa lounaaseen asti 🎧",
+      "channels": "Kanavat",
+      "directMessages": "Yksityisviestit",
+      "today": "Tänään",
+      "typing": "{name} kirjoittaa…",
+      "guest": "Vieras",
+      "inviteTeammate": "Kutsu tiimiläinen",
+      "inviteTeammateNote": "Hän liittyy linkillä"
+    },
+    "footer": {
+      "tagline": "Virtuaalitoimisto, jossa kävelet ympäriinsä.",
+      "product": "Tuote",
+      "useCases": "Käyttötapaukset",
+      "compare": "Vertaa",
+      "resources": "Resurssit",
+      "makeOffice": "Luo toimisto",
+      "lobby": "Julkinen aula",
+      "signIn": "Kirjaudu",
+      "dashboard": "Toimistosi",
+      "faq": "UKK",
+      "credits": "Kiitokset",
+      "vs": "vs. {name}",
+      "theme": "Teema",
+      "language": "Kieli",
+      "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Yksi kerros koko päiväksi,",
+      "muted": "ensimmäisestä moikkauksesta viimeiseen puheluun."
+    }
   }
 }

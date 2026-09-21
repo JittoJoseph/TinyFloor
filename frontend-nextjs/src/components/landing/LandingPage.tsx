@@ -1,17 +1,15 @@
-import React from "react";
+import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
   Building2,
   CalendarOff,
   Coffee,
-  Copy,
   DoorOpen,
   Eye,
   Footprints,
   Globe,
   GraduationCap,
-  Link2,
   Map as MapIcon,
   PenLine,
   Radio,
@@ -28,25 +26,28 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { SITE_URL } from "@/lib/site";
-import {
-  COMPARE_ROWS,
-  LANDINGS,
-  LANDING_GROUPS,
-  type Landing,
-  type LandingKey,
-} from "@/lib/landings";
+import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
-import { OfficeScene } from "@/components/OfficeScene";
+import { Logo } from "@/components/app/AppShell";
 import { PixelAvatar } from "@/components/PixelAvatar";
-import { Navbar } from "./Navbar";
-import { FAQ } from "./FAQ";
-import { CTA } from "./CTA";
-import { Footer } from "./Footer";
-import { Reveal } from "./Reveal";
-import { BrowserWindow } from "./Hero";
-import { HeroOfficeScene } from "./HeroOfficeScene";
+import { cn } from "@/lib/utils";
+import {
+  CJK_HEADLINE,
+  COLUMN,
+  Actions,
+  DayCard,
+  Faq,
+  Final,
+  Heading,
+  MarketingShell,
+  ProductPreview,
+  RuledSheet,
+  quiet,
+} from "@/components/home/Blocks";
+import { Frame } from "@/components/home/previews/Frame";
+import { FloorPreview } from "@/components/home/previews/FloorPreview";
+import { GuestPreview } from "@/components/home/previews/GuestPreview";
 
 interface LandingCopy {
   subtitle: string;
@@ -54,13 +55,6 @@ interface LandingCopy {
   them?: Record<(typeof COMPARE_ROWS)[number], string>;
   faq: Array<{ q: string; a: string }>;
 }
-
-const em = (chunks: React.ReactNode) => (
-  <span className="font-medium">{chunks}</span>
-);
-
-const sectionTitle =
-  "font-body text-[2rem] md:text-5xl font-light text-[var(--color-braun-text)] tracking-tight leading-[1.08]";
 
 /** An icon for each of a page's three reasons, in the order its copy lists them. */
 const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
@@ -76,113 +70,25 @@ const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
   proximityChat: [Footprints, Users, ShieldCheck],
 };
 
-const ICON_TONES = [
-  "bg-[var(--color-braun-orange)] text-white",
-  "bg-[var(--color-braun-text)] text-[#f2efe6]",
-  "bg-[#0f5741] text-[#eaf3ef]",
-];
+/** The words of a page's headline that name what it's about, in the brand colour. */
+const accent = (chunks: ReactNode) => <span className="text-brand">{chunks}</span>;
 
-const ROOM_LINK = `${SITE_URL.replace("https://", "")}/lobby`;
-
-const PICKER = ["Adam", "Amelia", "Alex", "Bob"];
-
-const StepLink = () => (
-  <div className="h-full flex flex-col items-center justify-center gap-4 px-5">
-    <span className="w-11 h-11 rounded-xl bg-[var(--color-braun-orange)] text-white flex items-center justify-center">
-      <DoorOpen aria-hidden="true" className="w-5 h-5" />
-    </span>
-    <span
-      dir="ltr"
-      className="w-full max-w-[17rem] flex items-center gap-2 rounded-xl border border-black/10 bg-[#f0f0eb] p-1.5 ps-3"
-    >
-      <Link2
-        aria-hidden="true"
-        className="w-3.5 h-3.5 shrink-0 text-[var(--color-braun-text)] opacity-45"
-      />
-      <span className="flex-1 min-w-0 truncate font-body text-[11px] font-medium text-[var(--color-braun-text)] opacity-60">
-        {ROOM_LINK}
-      </span>
-      <span className="w-7 h-7 shrink-0 rounded-lg bg-[var(--color-braun-text)] text-[#f2efe6] flex items-center justify-center">
-        <Copy aria-hidden="true" className="w-3.5 h-3.5" />
-      </span>
-    </span>
-  </div>
-);
-
-const StepCharacter = () => (
-  <div className="h-full flex flex-col items-center justify-center gap-4 px-5">
-    <div className="flex gap-2">
-      {PICKER.map((character, index) => (
-        <span
-          key={character}
-          className={`relative w-12 h-14 rounded-xl border ${
-            index === 1
-              ? "border-[var(--color-braun-orange)] bg-[#fff4ee] ring-2 ring-[#ff4e00]/20"
-              : "border-black/10 bg-[#fbfbf9]"
-          }`}
-        >
-          <PixelAvatar
-            character={character}
-            width={24}
-            style={{ left: "50%", top: "96%" }}
-          />
-        </span>
-      ))}
-    </div>
-    <span className="w-full max-w-[13.5rem] flex items-center rounded-lg border border-black/10 bg-[#f0f0eb] px-3 py-2 font-body text-xs font-medium text-[var(--color-braun-text)]">
-      Grace
-      <span className="ms-0.5 w-px h-3.5 bg-[var(--color-braun-orange)]" />
-    </span>
-  </div>
-);
-
-const StepTalk = () => (
-  <OfficeScene
-    className="w-full h-full"
-    focus="46% 62%"
-    zoom="auto 400px"
-    occupants={[
-      {
-        character: "Alex",
-        left: "40%",
-        top: "86%",
-        direction: "right",
-        name: "Jack",
-        status: "in_call",
-        width: 30,
-      },
-      {
-        character: "Amelia",
-        left: "60%",
-        top: "86%",
-        direction: "left",
-        name: "Grace",
-        status: "in_call",
-        width: 30,
-      },
-    ]}
-  />
-);
-
-const STEP_VISUALS = [StepLink, StepCharacter, StepTalk];
-
-/** One page written for a search: a pitch, the proof, how it works and the questions people ask. */
-export async function LandingPage({
-  page,
-  locale,
-}: {
-  page: Landing;
-  locale: string;
-}) {
+/**
+ * One page written for a search, in the site's design: the pitch over the
+ * product itself, three reasons, a side-by-side table on comparison pages, how
+ * it works, the questions people ask, where to go next, and the last ask.
+ */
+export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
+  const th = await getTranslations("home");
   const copy = t.raw(`pages.${page.key}`) as LandingCopy;
-  const them = copy.them;
   const path = `/${page.slug}`;
   const steps = t.raw("steps") as Array<{ title: string; body: string }>;
   const icons = POINT_ICONS[page.key];
+  const points = th.raw("hero.points") as string[];
 
   return (
-    <div className="min-h-screen w-full relative">
+    <MarketingShell path={path}>
       <JsonLd
         schema={pageGraph({
           locale,
@@ -192,251 +98,185 @@ export async function LandingPage({
           nodes: [faqNode(locale, path, copy.faq)],
         })}
       />
-      <Navbar />
 
-      <main className="pt-24 md:pt-32">
-        <div className="mx-auto w-full max-w-5xl px-4">
-          <section className="relative w-full pt-8 md:pt-12 pb-8 md:pb-12 px-4 md:px-8 max-w-6xl mx-auto flex flex-col items-center">
-            <div className="w-full max-w-4xl text-center flex flex-col items-center mb-12 md:mb-16">
-              <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1.5 font-body text-sm font-medium text-[var(--color-braun-text)] mb-7">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-braun-orange)]" />
-                {t(`pages.${page.key}.label`)}
-              </span>
-              <h1 className="font-body font-light text-[2.75rem] sm:text-6xl md:text-[4.75rem] text-[var(--color-braun-text)] tracking-tight leading-[1.05] mb-6 text-balance">
-                {t.rich(`pages.${page.key}.title`, { em })}
-              </h1>
-              <p className="font-body text-[var(--color-braun-text)] opacity-60 text-base md:text-xl leading-relaxed max-w-2xl px-2 mb-10">
-                {copy.subtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
-                <Link
-                  href="/lobby"
-                  className="group relative flex items-center justify-center h-14 md:h-16 px-[5px] bg-[var(--color-braun-bg)] rounded-full shadow-[var(--shadow-braun-raised)] active:shadow-[var(--shadow-braun-pressed)] transition-all cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
-                >
-                  <span className="h-[82%] px-7 md:px-9 rounded-full bg-[var(--color-braun-orange)] shadow-[inset_-1px_-1px_2px_rgba(0,0,0,0.15),inset_1px_1px_3px_rgba(255,255,255,0.4)] flex items-center text-white font-body font-medium uppercase tracking-widest text-xs md:text-sm whitespace-nowrap group-hover:brightness-110 group-active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.4)] transition-all duration-300">
-                    {t("tryIt")}
-                  </span>
-                </Link>
-                <Link
-                  href="/auth?mode=signup"
-                  className="cursor-pointer group inline-flex items-center gap-2 font-body text-sm md:text-base font-medium text-[var(--color-braun-text)] opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  {t("create")}
-                  <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                </Link>
-              </div>
-              <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-6">
-                {t("free")}
-              </p>
-            </div>
-
-            <BrowserWindow>
-              <HeroOfficeScene />
-            </BrowserWindow>
-          </section>
+      <section className={cn(COLUMN, "pt-16 sm:pt-24")}>
+        <div className="mx-auto flex max-w-[50rem] flex-col items-center text-center">
+          <span className="inline-flex h-8 items-center rounded-full border border-border bg-card px-3.5 text-[13px] text-muted-foreground">
+            {t(`pages.${page.key}.label`)}
+          </span>
+          <h1
+            className={cn(
+              "mt-7 text-balance hyphens-auto text-[40px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[58px] lg:text-[66px]",
+              CJK_HEADLINE,
+            )}
+          >
+            {t.rich(`pages.${page.key}.title`, { em: accent })}
+          </h1>
+          <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{copy.subtitle}</p>
+          <Actions className="mt-10" />
+          <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
         </div>
+        <ProductPreview className="mt-16 sm:mt-20" />
+      </section>
 
-        <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-14 md:pt-24">
-          <ul className="grid md:grid-cols-3 rounded-[1.5rem] md:rounded-[2rem] border border-black/10 bg-[#f2efe6] overflow-hidden">
-            {copy.points.map((point, index) => {
-              const Icon = icons[index % icons.length];
-              return (
-                <Reveal
-                  as="li"
-                  key={point.title}
-                  y={16}
-                  className={`p-7 md:p-9 lg:p-10 ${
-                    index > 0
-                      ? "border-t md:border-t-0 md:border-s border-black/10"
-                      : ""
-                  }`}
-                >
-                  <span
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center ${
-                      ICON_TONES[index % ICON_TONES.length]
-                    }`}
-                  >
-                    <Icon aria-hidden="true" className="w-5 h-5" />
-                  </span>
-                  <h2 className="font-body text-xl md:text-2xl font-medium text-[var(--color-braun-text)] tracking-tight leading-snug mt-6 mb-2">
-                    {point.title}
-                  </h2>
-                  <p className="font-body text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed">
-                    {point.body}
-                  </p>
-                </Reveal>
-              );
-            })}
-          </ul>
-        </section>
+      <section className={cn(COLUMN, "pt-24 sm:pt-32")}>
+        <RuledSheet
+          columns={3}
+          items={copy.points.map((point, index) => {
+            const Icon = icons[index % icons.length];
+            return { icon: <Icon />, title: point.title, body: point.body };
+          })}
+        />
+      </section>
 
-        {page.competitor && them && (
-          <section className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-14 md:pt-24">
-            <Reveal className="max-w-2xl mb-8 md:mb-12">
-              <h2 className={sectionTitle}>
-                {t.rich("compareTitle", { name: page.competitor, em })}
-              </h2>
-            </Reveal>
-            <Reveal y={16}>
-              <div className="hidden sm:block overflow-hidden rounded-[1.5rem] border border-black/10 bg-white">
-                <table className="w-full table-fixed border-collapse font-body text-[var(--color-braun-text)]">
-                  <thead>
-                    <tr className="border-b border-black/10">
-                      <td className="w-[28%] px-6 py-5" />
-                      <th
-                        scope="col"
-                        className="px-6 py-5 text-start bg-[#ff4e00]/[0.05]"
-                      >
-                        <span className="inline-flex items-center gap-2 text-base font-semibold tracking-tight">
-                          <span className="w-2 h-2 rounded-full bg-[var(--color-braun-orange)]" />
-                          TinyFloor
-                        </span>
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-5 text-start text-base font-semibold tracking-tight opacity-50"
-                      >
-                        {page.competitor}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {COMPARE_ROWS.map((row, index) => (
-                      <tr
-                        key={row}
-                        className={`border-b border-black/[0.06] last:border-0 ${
-                          index % 2 === 1 ? "bg-black/[0.018]" : ""
-                        }`}
-                      >
-                        <th
-                          scope="row"
-                          className="px-6 py-5 text-start align-top text-[15px] font-normal opacity-60"
-                        >
-                          {t(`rows.${row}`)}
-                        </th>
-                        <td className="px-6 py-5 align-top bg-[#ff4e00]/[0.05] text-[15px] font-medium leading-snug">
-                          {t(`us.${row}`)}
-                        </td>
-                        <td className="px-6 py-5 align-top text-[15px] leading-snug opacity-55">
-                          {them[row]}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+      {page.competitor && copy.them && <Compare name={page.competitor} them={copy.them} t={t} />}
 
-              <dl className="sm:hidden overflow-hidden rounded-[1.25rem] border border-black/10 bg-white font-body text-[var(--color-braun-text)]">
-                <div className="grid grid-cols-2 border-b border-black/10 text-sm font-semibold tracking-tight">
-                  <span className="flex items-center gap-2 px-4 py-3.5 bg-[#ff4e00]/[0.05]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-braun-orange)]" />
-                    TinyFloor
-                  </span>
-                  <span className="px-4 py-3.5 opacity-50">
-                    {page.competitor}
-                  </span>
-                </div>
-                {COMPARE_ROWS.map((row) => (
-                  <div
-                    key={row}
-                    className="border-b border-black/[0.06] last:border-0"
-                  >
-                    <dt className="px-4 pt-3.5 pb-1 text-xs font-medium opacity-50">
-                      {t(`rows.${row}`)}
-                    </dt>
-                    <dd className="grid grid-cols-2 text-sm leading-snug">
-                      <span className="px-4 pb-3.5 pt-1 font-medium">
-                        {t(`us.${row}`)}
-                      </span>
-                      <span className="px-4 pb-3.5 pt-1 opacity-55">
-                        {them[row]}
-                      </span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+      <section id="how-it-works" className={cn(COLUMN, "scroll-mt-24 pt-24 sm:pt-32")}>
+        <Heading title={t.rich("stepsTitle", { em: quiet })} />
+        <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
+          {steps.map((step, index) => (
+            <DayCard
+              key={step.title}
+              small
+              title={step.title}
+              body={step.body}
+              badge={
+                <span className="mb-3 flex size-7 items-center justify-center rounded-full bg-foreground text-[12.5px] font-bold text-background">
+                  {index + 1}
+                </span>
+              }
+            >
+              {index === 0 && (
+                <Frame active="people" rail={false} className="h-full">
+                  <GuestPreview />
+                </Frame>
+              )}
+              {index === 1 && <CharacterPicker />}
+              {index === 2 && (
+                <Frame active="floor" rail={false} className="h-full">
+                  <FloorPreview near />
+                </Frame>
+              )}
+            </DayCard>
+          ))}
+        </div>
+      </section>
 
-              <p className="font-body text-xs text-[var(--color-braun-text)] opacity-45 mt-4 px-1">
-                {t("checked", { name: page.competitor })}
-              </p>
-            </Reveal>
-          </section>
-        )}
+      <div className="pt-24 sm:pt-32">
+        <Faq title={t.rich("faqTitle", { em: quiet })} items={copy.faq} />
+      </div>
 
-        <section
-          id="how-it-works"
-          className="w-full max-w-6xl mx-auto px-4 md:px-8 pt-14 md:pt-24"
-        >
-          <Reveal className="max-w-2xl mb-8 md:mb-12">
-            <h2 className={sectionTitle}>{t.rich("stepsTitle", { em })}</h2>
-          </Reveal>
-          <ol className="grid gap-4 md:grid-cols-3 md:gap-5">
-            {steps.map((step, index) => {
-              const Visual = STEP_VISUALS[index % STEP_VISUALS.length];
-              return (
-                <Reveal as="li" key={step.title} y={16} className="h-full">
-                  <div className="h-full flex flex-col rounded-[1.5rem] border border-black/10 bg-[#f2efe6] p-2.5">
-                    <div
-                      aria-hidden="true"
-                      className="h-44 md:h-48 overflow-hidden rounded-[1.1rem] border border-black/[0.08] bg-white"
+      <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
+        <Heading title={t.rich("relatedTitle", { em: quiet })} />
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          {LANDING_GROUPS.map((group) => (
+            <nav key={group} aria-label={t(group)}>
+              <p className="text-[13px] font-semibold text-faint">{t(group)}</p>
+              <ul className="mt-3 grid gap-2">
+                {LANDINGS.filter((other) => other.group === group && other.key !== page.key).map((other) => (
+                  <li key={other.slug}>
+                    <Link
+                      href={`/${other.slug}`}
+                      className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3.5 text-[15px] transition-[border-color,background-color] hover:border-border-strong hover:bg-foreground/[0.03]"
                     >
-                      <Visual />
-                    </div>
-                    <div className="px-4 md:px-5 pt-5 pb-4 md:pb-5">
-                      <span className="flex items-center gap-3">
-                        <span className="w-7 h-7 shrink-0 rounded-full bg-[var(--color-braun-text)] text-[#f2efe6] font-body text-xs font-bold flex items-center justify-center">
-                          {index + 1}
-                        </span>
-                        <span className="font-body text-xl font-medium tracking-tight text-[var(--color-braun-text)]">
-                          {step.title}
-                        </span>
-                      </span>
-                      <span className="block font-body text-base text-[var(--color-braun-text)] opacity-60 leading-relaxed mt-3">
-                        {step.body}
-                      </span>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </ol>
-        </section>
+                      {t(`pages.${other.key}.label`)}
+                      <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+      </section>
 
-        <FAQ title={t.rich("faqTitle", { em })} items={copy.faq} />
+      <Final />
+    </MarketingShell>
+  );
+}
 
-        <section className="w-full max-w-6xl mx-auto px-4 md:px-8">
-          <Reveal className="max-w-2xl mb-8 md:mb-12">
-            <h2 className={sectionTitle}>{t.rich("relatedTitle", { em })}</h2>
-          </Reveal>
-          <div className="grid gap-8 md:grid-cols-2">
-            {LANDING_GROUPS.map((group) => (
-              <nav key={group} aria-label={t(group)}>
-                <h3 className="font-body text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-35 mb-4">
-                  {t(group)}
-                </h3>
-                <ul className="flex flex-wrap gap-2">
-                  {LANDINGS.filter(
-                    (other) => other.group === group && other.key !== page.key,
-                  ).map((other) => (
-                    <li key={other.slug}>
-                      <Link
-                        href={`/${other.slug}`}
-                        className="cursor-pointer inline-flex rounded-full border border-black/10 bg-white px-4 py-2 font-body text-sm text-[var(--color-braun-text)] shadow-sm hover:shadow-md hover:text-[var(--color-braun-orange)] transition-all"
-                      >
-                        {t(`pages.${other.key}.label`)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+type Translate = Awaited<ReturnType<typeof getTranslations<"landings">>>;
+
+/** TinyFloor and the other product, row by row: a table on wide screens, a list on a phone. */
+function Compare({ name, them, t }: { name: string; them: NonNullable<LandingCopy["them"]>; t: Translate }) {
+  return (
+    <section className={cn(COLUMN, "pt-24 sm:pt-32")}>
+      <Heading title={t.rich("compareTitle", { name, em: quiet })} className="max-w-[22ch]" />
+      <div className="mt-12 hidden overflow-hidden rounded-[24px] border border-border bg-card sm:block">
+        <table className="w-full table-fixed border-collapse">
+          <thead>
+            <tr className="border-b border-border">
+              <td className="w-[28%] px-6 py-5" />
+              <th scope="col" className="bg-brand/[0.05] px-6 py-5 text-start">
+                <span className="inline-flex items-center gap-2 text-[16px] font-semibold">
+                  <Logo size={22} />
+                  TinyFloor
+                </span>
+              </th>
+              <th scope="col" className="px-6 py-5 text-start text-[16px] font-semibold text-muted-foreground">
+                {name}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARE_ROWS.map((row) => (
+              <tr key={row} className="border-b border-border last:border-0">
+                <th scope="row" className="px-6 py-5 text-start align-top text-[15px] font-normal text-muted-foreground">
+                  {t(`rows.${row}`)}
+                </th>
+                <td className="bg-brand/[0.05] px-6 py-5 align-top text-[15px] font-semibold leading-snug">{t(`us.${row}`)}</td>
+                <td className="px-6 py-5 align-top text-[15px] leading-snug text-muted-foreground">{them[row]}</td>
+              </tr>
             ))}
+          </tbody>
+        </table>
+      </div>
+      <dl className="mt-10 overflow-hidden rounded-[20px] border border-border bg-card sm:hidden">
+        <div className="grid grid-cols-2 border-b border-border text-[14px] font-semibold">
+          <span className="flex items-center gap-2 bg-brand/[0.05] px-4 py-3.5">
+            <Logo size={18} />
+            TinyFloor
+          </span>
+          <span className="px-4 py-3.5 text-muted-foreground">{name}</span>
+        </div>
+        {COMPARE_ROWS.map((row) => (
+          <div key={row} className="border-b border-border last:border-0">
+            <dt className="px-4 pb-1 pt-3.5 text-[12.5px] text-muted-foreground">{t(`rows.${row}`)}</dt>
+            <dd className="grid grid-cols-2 text-[14px] leading-snug">
+              <span className="px-4 pb-3.5 pt-1 font-semibold">{t(`us.${row}`)}</span>
+              <span className="px-4 pb-3.5 pt-1 text-muted-foreground">{them[row]}</span>
+            </dd>
           </div>
-        </section>
+        ))}
+      </dl>
+      <p className="mt-4 px-1 text-[13px] text-faint">{t("checked", { name })}</p>
+    </section>
+  );
+}
 
-        <CTA />
-      </main>
+const PICKER = ["Adam", "Amelia", "Alex", "Bob"];
 
-      <Footer />
+/** Choosing who you'll be: four characters on the office floor, one picked, and a name being typed. */
+function CharacterPicker() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-4 rounded-[18px] border border-border bg-card p-5 font-(family-name:--font-app)">
+      <div className="flex gap-2">
+        {PICKER.map((character, index) => (
+          <span
+            key={character}
+            className={cn(
+              "relative h-16 w-12 overflow-hidden rounded-xl border",
+              index === 1 ? "border-brand bg-brand/10 ring-2 ring-brand/20" : "border-border bg-background",
+            )}
+          >
+            <PixelAvatar character={character} width={24} style={{ left: "50%", top: "92%" }} />
+          </span>
+        ))}
+      </div>
+      <span className="flex h-9 w-full max-w-[14rem] items-center rounded-lg border border-border bg-background px-3 text-[13px] font-medium">
+        Grace
+        <span className="ms-0.5 h-4 w-px animate-pulse bg-brand" />
+      </span>
     </div>
   );
 }

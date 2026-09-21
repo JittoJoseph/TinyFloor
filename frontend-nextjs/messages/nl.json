@@ -38,7 +38,8 @@
     "rooms": "Ruimtes",
     "offices": "Je kantoren",
     "account": "Account",
-    "createOffice": "Kantoor maken"
+    "createOffice": "Kantoor maken",
+    "plansSoon": "Groter team? Abonnementen met meer plekken komen binnenkort."
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een werkruimte voor een klein team ook."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",

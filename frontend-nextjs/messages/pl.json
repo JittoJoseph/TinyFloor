@@ -38,7 +38,8 @@
     "rooms": "Pokoje",
     "offices": "Twoje biura",
     "account": "Konto",
-    "createOffice": "Utwórz biuro"
+    "createOffice": "Utwórz biuro",
+    "plansSoon": "Większy zespół? Plany z większą liczbą miejsc już wkrótce."
   },
   "languageSwitcher": {
     "label": "Język",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
-        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak obszar roboczy dla małego zespołu."
+        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak biuro dla maksymalnie 3 osób. Plany dla większych zespołów już wkrótce."
       },
       {
         "q": "Czy potrzebuję konta, żeby dołączyć do pokoju?",

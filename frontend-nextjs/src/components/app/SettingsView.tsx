@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
+import { PlansSoon } from "@/components/ui/PlansSoon";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ShellView } from "./AppShell";
@@ -443,6 +444,7 @@ function OfficeSection() {
               seats: office.seats,
             })}
           </p>
+          <PlansSoon className="mt-1" />
         </div>
       </div>
 

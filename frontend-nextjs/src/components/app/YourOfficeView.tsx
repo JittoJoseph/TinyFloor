@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFloor } from "@/lib/floor";
 import { rememberOffice } from "@/lib/pendingOffice";
 import { OfficePreview } from "./OfficePreview";
+import { PlansSoon } from "@/components/ui/PlansSoon";
 
 /**
  * The lobby's reason to exist, on one screen: name an office, and see it take
@@ -81,6 +82,7 @@ export function YourOfficeView() {
                 <Check className="size-3.5 text-ok" />
                 {t("free")}
               </p>
+              <PlansSoon className="mt-1 ps-4" />
             </form>
 
             <ul className="mt-8 grid max-w-[26rem] grid-cols-2 gap-x-4 gap-y-3 border-t border-border pt-6">

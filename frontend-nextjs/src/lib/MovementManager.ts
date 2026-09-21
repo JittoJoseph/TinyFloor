@@ -6,7 +6,7 @@ import {
   directionFromVector,
 } from "./AnimationManager";
 import type { RoomSocket } from "./RoomSocket";
-import { VirtualJoystickManager } from "./VirtualJoystickManager";
+import { joystick } from "./joystick";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
 import { depthForY } from "./MapManager";
 import { pixelToTile, isValidTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "./types";
@@ -26,7 +26,6 @@ export class MovementManager {
   private wsManager: RoomSocket;
   private nav: NavGrid;
   private collides: (x: number, y: number) => boolean;
-  private joystick?: VirtualJoystickManager;
   private keys?: Record<string, Phaser.Input.Keyboard.Key>;
   private path: Vec[] = [];
   private arrive?: () => void;
@@ -45,7 +44,6 @@ export class MovementManager {
     wsManager: RoomSocket,
     nav: NavGrid,
     collides: (x: number, y: number) => boolean,
-    joystick?: VirtualJoystickManager,
   ) {
     this.scene = scene;
     this.player = player;
@@ -53,7 +51,6 @@ export class MovementManager {
     this.wsManager = wsManager;
     this.nav = nav;
     this.collides = collides;
-    this.joystick = joystick;
 
     // Phaser matches keys by the character they type, so AZERTY players get the
     // same physical cluster as Z/Q/S/D. Arrows work on every layout.
@@ -121,8 +118,8 @@ export class MovementManager {
   }
 
   private readInput(): Vec {
-    const joystick = this.joystick?.getVelocity();
-    if (joystick && (joystick.x || joystick.y)) return joystick;
+    const stick = joystick();
+    if (stick.x || stick.y) return { x: stick.x, y: stick.y };
     const keys = this.keys;
     if (!keys) return { x: 0, y: 0 };
     const held = (...names: string[]) => (names.some((n) => keys[n].isDown) ? 1 : 0);

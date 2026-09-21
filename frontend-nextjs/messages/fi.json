@@ -38,7 +38,8 @@
     "rooms": "Huoneet",
     "offices": "Toimistosi",
     "account": "Tili",
-    "createOffice": "Luo toimisto"
+    "createOffice": "Luo toimisto",
+    "plansSoon": "Isompi tiimi? Useamman paikan paketit tulossa pian."
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä. Julkinen aula on ilmainen kaikille, samoin työtila pienelle tiimille."
+        "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Paketit isommille tiimeille tulossa pian."
       },
       {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",

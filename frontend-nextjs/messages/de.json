@@ -38,7 +38,8 @@
     "rooms": "Räume",
     "offices": "Deine Büros",
     "account": "Konto",
-    "createOffice": "Büro erstellen"
+    "createOffice": "Büro erstellen",
+    "plansSoon": "Größeres Team? Pläne mit mehr Plätzen kommen bald."
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -136,7 +137,7 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Workspace für ein kleines Team."
+        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Pläne für größere Teams kommen bald."
       },
       {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",

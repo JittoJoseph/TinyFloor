@@ -223,7 +223,11 @@
       "turnstile": "Nie udało się potwierdzić, że jesteś człowiekiem. Spróbuj ponownie.",
       "network": "Nie można połączyć się z TinyFloor. Sprawdź połączenie i spróbuj ponownie.",
       "generic": "Coś poszło nie tak. Spróbuj ponownie."
-    }
+    },
+    "asideReady": "{office} jest prawie gotowe",
+    "asideTitle": "Twój zespół, jedno piętro stąd",
+    "asideSignIn": "Witaj z powrotem na piętrze",
+    "asideBody": "Podejdź do kogoś, żeby porozmawiać. Kanały i wiadomości zostają."
   },
   "entry": {
     "yourName": "Twoje imię",
@@ -992,56 +996,29 @@
       "notNow": "Nie teraz"
     },
     "yourOffice": {
-      "eyebrow": "Za darmo dla małych zespołów",
-      "title": "Własne piętro dla twojego zespołu",
-      "body": "Wszystko z lobby, ale twoje: prywatne piętro, na którym zespół podchodzi do siebie, żeby pogadać, z czatem, który zostaje.",
+      "eyebrow": "Twoje własne biuro",
+      "title": "Niech to piętro będzie twoje",
+      "body": "Prywatne piętro dla twojego zespołu, na którym podchodzicie do siebie pogadać, z kanałami i wiadomościami, które zostają.",
+      "nameLabel": "Nazwij swoje biuro",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Twoje biuro",
       "create": "Utwórz moje biuro",
       "free": "Za darmo dla maksymalnie 3 osób. Bez karty.",
-      "bringThem": "{count, plural, one {Zabierz osobę poznaną tutaj} few {Zabierz # osoby poznane tutaj} many {Zabierz # osób poznanych tutaj} other {Zabierz # osoby poznane tutaj}}",
+      "perks": {
+        "private": "Prywatne piętro",
+        "channels": "Kanały, które zostają",
+        "messages": "Wiadomości prywatne",
+        "guests": "Linki dla gości"
+      },
+      "channels": {
+        "general": "ogolny",
+        "projects": "projekty",
+        "random": "rozne"
+      },
+      "freeSeat": "Wolne miejsce",
       "you": "Ty",
       "teammate": "Współpracownik",
-      "whatYouGet": "Co dodaje biuro",
-      "perks": {
-        "private": {
-          "title": "Prywatne piętro",
-          "body": "Tylko twój zespół i goście, których wpuścisz."
-        },
-        "channels": {
-          "title": "Kanały, które zostają",
-          "body": "Po jednym na projekt; nic nie ginie, gdy wychodzisz."
-        },
-        "messages": {
-          "title": "Wiadomości prywatne",
-          "body": "Pisz do każdego jeden na jeden i zobacz, kto jest na piętrze."
-        },
-        "team": {
-          "title": "Twój zespół, na zaproszenie",
-          "body": "Zapraszaj e-mailem i ustal, kto zarządza biurem."
-        },
-        "guests": {
-          "title": "Linki dla gości",
-          "body": "Klient lub kandydat odwiedza bez zajmowania miejsca."
-        },
-        "attachments": {
-          "title": "Obrazy na czacie",
-          "body": "Udostępniaj zrzuty ekranu i zdjęcia w płatnym biurze."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Nazwij je",
-          "body": "Wystarczy nazwa twojego zespołu."
-        },
-        "invite": {
-          "title": "Zaproś zespół",
-          "body": "Wyślij link lub e-mail."
-        },
-        "walk": {
-          "title": "Wejdź",
-          "body": "Podejdź do kogoś, żeby porozmawiać."
-        }
-      },
-      "ready": "Gotowe, kiedy ty jesteś."
+      "bringThem": "{count, plural, one {Zabierz osobę poznaną tutaj} few {Zabierz # osoby poznane tutaj} many {Zabierz # osób poznanych tutaj} other {Zabierz # osoby poznane tutaj}}"
     }
   },
   "office": {

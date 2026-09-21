@@ -31,7 +31,6 @@ export function PeopleView() {
 /** Who is in the office, who has been asked, and who can be let in as a guest. */
 function OfficePeople() {
   const t = useTranslations("office.people");
-  const ts = useTranslations("shell");
   const format = useFormatter();
   const router = useRouter();
   const { user } = useAuth();
@@ -297,14 +296,6 @@ function TabCount({ value }: { value: number }) {
   return (
     <span className="ms-1.5 rounded-full bg-muted px-1.5 text-[11px] font-medium leading-[18px] tabular-nums text-muted-foreground">
       {value}
-    </span>
-  );
-}
-
-function RoleBadge({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded-full border border-border px-2 text-[11.5px] font-medium leading-5 text-muted-foreground">
-      {children}
     </span>
   );
 }

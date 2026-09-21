@@ -223,7 +223,11 @@
       "turnstile": "No pudimos comprobar que eres humano. Inténtalo de nuevo.",
       "network": "No se puede conectar con TinyFloor. Revisa tu conexión y vuelve a intentarlo.",
       "generic": "Algo salió mal. Inténtalo de nuevo."
-    }
+    },
+    "asideReady": "{office} está casi lista",
+    "asideTitle": "Tu equipo, a una planta de distancia",
+    "asideSignIn": "Bienvenido de nuevo a la planta",
+    "asideBody": "Acércate a alguien para hablar. Los canales y los mensajes se quedan."
   },
   "entry": {
     "yourName": "Tu nombre",
@@ -992,56 +996,29 @@
       "notNow": "Ahora no"
     },
     "yourOffice": {
-      "eyebrow": "Gratis para equipos pequeños",
-      "title": "Una planta propia para tu equipo",
-      "body": "Todo lo del vestíbulo, pero tuyo: una planta privada donde tu equipo se acerca a hablar, con un chat que se queda.",
+      "eyebrow": "Tu propia oficina",
+      "title": "Haz tuya esta planta",
+      "body": "Una planta privada para tu equipo, donde os acercáis a hablar, con canales y mensajes que se quedan.",
+      "nameLabel": "Ponle nombre a tu oficina",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Tu oficina",
       "create": "Crear mi oficina",
       "free": "Gratis hasta 3 personas. Sin tarjeta.",
-      "bringThem": "{count, plural, one {Trae a la persona que conociste aquí} other {Trae a las # personas que conociste aquí}}",
+      "perks": {
+        "private": "Una planta privada",
+        "channels": "Canales que se quedan",
+        "messages": "Mensajes directos",
+        "guests": "Enlaces de invitado"
+      },
+      "channels": {
+        "general": "general",
+        "projects": "proyectos",
+        "random": "varios"
+      },
+      "freeSeat": "Puesto libre",
       "you": "Tú",
       "teammate": "Compañero",
-      "whatYouGet": "Lo que añade una oficina",
-      "perks": {
-        "private": {
-          "title": "Una planta privada",
-          "body": "Solo tu equipo y los invitados que dejes pasar."
-        },
-        "channels": {
-          "title": "Canales que se quedan",
-          "body": "Uno por proyecto; nada se pierde al salir."
-        },
-        "messages": {
-          "title": "Mensajes directos",
-          "body": "Escribe a cualquiera de tú a tú y mira quién está en la planta."
-        },
-        "team": {
-          "title": "Tu equipo, por invitación",
-          "body": "Invita por correo y decide quién gestiona la oficina."
-        },
-        "guests": {
-          "title": "Enlaces de invitado",
-          "body": "Un cliente o candidato visita sin ocupar un puesto."
-        },
-        "attachments": {
-          "title": "Imágenes en el chat",
-          "body": "Comparte capturas y fotos, en una oficina de pago."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Ponle nombre",
-          "body": "Basta con el nombre de tu equipo."
-        },
-        "invite": {
-          "title": "Invita a tu equipo",
-          "body": "Envía un enlace o un correo."
-        },
-        "walk": {
-          "title": "Entra",
-          "body": "Acércate a alguien para hablar."
-        }
-      },
-      "ready": "Cuando tú quieras."
+      "bringThem": "{count, plural, one {Trae a la persona que conociste aquí} other {Trae a las # personas que conociste aquí}}"
     }
   },
   "office": {

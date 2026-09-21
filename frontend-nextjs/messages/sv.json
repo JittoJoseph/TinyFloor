@@ -223,7 +223,11 @@
       "turnstile": "Vi kunde inte kontrollera att du är en människa. Försök igen.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
       "generic": "Något gick fel. Försök igen."
-    }
+    },
+    "asideReady": "{office} är nästan klart",
+    "asideTitle": "Ditt team, ett plan bort",
+    "asideSignIn": "Välkommen tillbaka till planet",
+    "asideBody": "Gå fram till någon för att prata. Kanaler och meddelanden finns kvar."
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -992,56 +996,29 @@
       "notNow": "Inte nu"
     },
     "yourOffice": {
-      "eyebrow": "Gratis för små team",
-      "title": "Ett eget våningsplan för ditt team",
-      "body": "Allt i lobbyn, men ditt: ett privat plan där teamet går fram till varandra för att prata, med en chatt som finns kvar.",
+      "eyebrow": "Ditt eget kontor",
+      "title": "Gör det här planet till ditt",
+      "body": "Ett privat plan för ditt team, där ni går fram till varandra för att prata, med kanaler och meddelanden som finns kvar.",
+      "nameLabel": "Namnge ditt kontor",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Ditt kontor",
       "create": "Skapa mitt kontor",
       "free": "Gratis för upp till 3 personer. Inget kort behövs.",
-      "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}",
+      "perks": {
+        "private": "Ett privat plan",
+        "channels": "Kanaler som finns kvar",
+        "messages": "Direktmeddelanden",
+        "guests": "Gästlänkar"
+      },
+      "channels": {
+        "general": "allmänt",
+        "projects": "projekt",
+        "random": "blandat"
+      },
+      "freeSeat": "Ledig plats",
       "you": "Du",
       "teammate": "Kollega",
-      "whatYouGet": "Vad ett kontor tillför",
-      "perks": {
-        "private": {
-          "title": "Ett privat plan",
-          "body": "Bara ditt team och gästerna du släpper in."
-        },
-        "channels": {
-          "title": "Kanaler som finns kvar",
-          "body": "En per projekt; inget försvinner när du går."
-        },
-        "messages": {
-          "title": "Direktmeddelanden",
-          "body": "Skriv till vem som helst en till en och se vem som är på planet."
-        },
-        "team": {
-          "title": "Ditt team, via inbjudan",
-          "body": "Bjud in via e-post och välj vem som förvaltar kontoret."
-        },
-        "guests": {
-          "title": "Gästlänkar",
-          "body": "En kund eller kandidat kan hälsa på utan att ta en plats."
-        },
-        "attachments": {
-          "title": "Bilder i chatten",
-          "body": "Dela skärmbilder och foton, i ett betalt kontor."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Namnge det",
-          "body": "Teamets namn räcker."
-        },
-        "invite": {
-          "title": "Bjud in ditt team",
-          "body": "Skicka en länk eller ett mejl."
-        },
-        "walk": {
-          "title": "Gå in",
-          "body": "Gå fram till någon för att prata."
-        }
-      },
-      "ready": "Redo när du är det."
+      "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}"
     }
   },
   "office": {

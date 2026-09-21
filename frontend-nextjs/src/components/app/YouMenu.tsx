@@ -23,6 +23,7 @@ export function YouMenu({
   settingsHref,
   onFloor,
   bar = false,
+  panel,
 }: {
   /** Where this place keeps its settings. */
   settingsHref?: string;
@@ -30,6 +31,8 @@ export function YouMenu({
   onFloor: boolean;
   /** In a top bar (the dashboard) rather than on the rail. */
   bar?: boolean;
+  /** In the presence dock: this is the trigger, and the menu opens above it. */
+  panel?: React.ReactElement;
 }) {
   const t = useTranslations("shell");
   const tStatus = useTranslations("status");
@@ -48,12 +51,12 @@ export function YouMenu({
 
   return (
     <Menu
-      side={bar ? "bottom" : wide ? "right" : "top"}
-      align="end"
-      offset={bar ? 8 : wide ? 20 : 10}
+      side={panel ? "top" : bar ? "bottom" : wide ? "right" : "top"}
+      align={panel ? "start" : "end"}
+      offset={panel ? 8 : bar ? 8 : wide ? 20 : 10}
       width={260}
       trigger={
-        <button
+        panel ?? <button
           type="button"
           aria-label={t("you")}
           className="cursor-pointer rounded-full outline-none transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring/60"

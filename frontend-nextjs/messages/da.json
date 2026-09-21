@@ -223,7 +223,11 @@
       "turnstile": "Vi kunne ikke bekræfte, at du er et menneske. Prøv igen.",
       "network": "TinyFloor kan ikke nås. Tjek din forbindelse, og prøv igen.",
       "generic": "Noget gik galt. Prøv igen."
-    }
+    },
+    "asideReady": "{office} er næsten klar",
+    "asideTitle": "Dit team, én etage væk",
+    "asideSignIn": "Velkommen tilbage på etagen",
+    "asideBody": "Gå hen til nogen for at snakke. Kanaler og beskeder bliver."
   },
   "entry": {
     "yourName": "Dit navn",
@@ -992,56 +996,29 @@
       "notNow": "Ikke nu"
     },
     "yourOffice": {
-      "eyebrow": "Gratis for små teams",
-      "title": "En etage for jer selv, til dit team",
-      "body": "Alt fra lobbyen, men jeres: en privat etage, hvor teamet går hen til hinanden for at snakke, med en chat der bliver.",
+      "eyebrow": "Dit eget kontor",
+      "title": "Gør denne etage til jeres",
+      "body": "En privat etage til dit team, hvor I går hen til hinanden for at snakke, med kanaler og beskeder der bliver.",
+      "nameLabel": "Giv dit kontor et navn",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Dit kontor",
       "create": "Lav mit kontor",
       "free": "Gratis for op til 3 personer. Intet kort nødvendigt.",
-      "bringThem": "{count, plural, one {Tag den person med, du mødte her} other {Tag de # personer med, du mødte her}}",
+      "perks": {
+        "private": "En privat etage",
+        "channels": "Kanaler der bliver",
+        "messages": "Direkte beskeder",
+        "guests": "Gæstelinks"
+      },
+      "channels": {
+        "general": "generelt",
+        "projects": "projekter",
+        "random": "tilfældigt"
+      },
+      "freeSeat": "Ledig plads",
       "you": "Dig",
       "teammate": "Kollega",
-      "whatYouGet": "Hvad et kontor tilføjer",
-      "perks": {
-        "private": {
-          "title": "En privat etage",
-          "body": "Kun dit team og de gæster, du lukker ind."
-        },
-        "channels": {
-          "title": "Kanaler der bliver",
-          "body": "Én pr. projekt; intet går tabt, når du går."
-        },
-        "messages": {
-          "title": "Direkte beskeder",
-          "body": "Skriv til alle en til en, og se hvem der er på etagen."
-        },
-        "team": {
-          "title": "Dit team, via invitation",
-          "body": "Inviter via e-mail, og bestem hvem der styrer kontoret."
-        },
-        "guests": {
-          "title": "Gæstelinks",
-          "body": "En kunde eller kandidat kan kigge forbi uden at optage en plads."
-        },
-        "attachments": {
-          "title": "Billeder i chatten",
-          "body": "Del skærmbilleder og fotos, i et betalt kontor."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Giv det et navn",
-          "body": "Dit teams navn er nok."
-        },
-        "invite": {
-          "title": "Inviter dit team",
-          "body": "Send et link eller en e-mail."
-        },
-        "walk": {
-          "title": "Gå ind",
-          "body": "Gå hen til nogen for at snakke."
-        }
-      },
-      "ready": "Klar, når du er."
+      "bringThem": "{count, plural, one {Tag den person med, du mødte her} other {Tag de # personer med, du mødte her}}"
     }
   },
   "office": {

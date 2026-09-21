@@ -223,7 +223,11 @@
       "turnstile": "Vi klarte ikke å bekrefte at du er et menneske. Prøv igjen.",
       "network": "Får ikke kontakt med TinyFloor. Sjekk tilkoblingen og prøv igjen.",
       "generic": "Noe gikk galt. Prøv igjen."
-    }
+    },
+    "asideReady": "{office} er nesten klart",
+    "asideTitle": "Teamet ditt, én etasje unna",
+    "asideSignIn": "Velkommen tilbake til etasjen",
+    "asideBody": "Gå bort til noen for å snakke. Kanaler og meldinger blir værende."
   },
   "entry": {
     "yourName": "Navnet ditt",
@@ -992,56 +996,29 @@
       "notNow": "Ikke nå"
     },
     "yourOffice": {
-      "eyebrow": "Gratis for små team",
-      "title": "En egen etasje for teamet ditt",
-      "body": "Alt fra lobbyen, men ditt: en privat etasje der teamet går bort til hverandre for å snakke, med en chat som blir værende.",
+      "eyebrow": "Ditt eget kontor",
+      "title": "Gjør denne etasjen til deres",
+      "body": "En privat etasje for teamet ditt, der dere går bort til hverandre for å snakke, med kanaler og meldinger som blir værende.",
+      "nameLabel": "Gi kontoret ditt et navn",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Ditt kontor",
       "create": "Lag mitt kontor",
       "free": "Gratis for opptil 3 personer. Ikke noe kort.",
-      "bringThem": "{count, plural, one {Ta med personen du møtte her} other {Ta med de # personene du møtte her}}",
+      "perks": {
+        "private": "En privat etasje",
+        "channels": "Kanaler som blir værende",
+        "messages": "Direktemeldinger",
+        "guests": "Gjestelenker"
+      },
+      "channels": {
+        "general": "generelt",
+        "projects": "prosjekter",
+        "random": "tilfeldig"
+      },
+      "freeSeat": "Ledig plass",
       "you": "Deg",
       "teammate": "Kollega",
-      "whatYouGet": "Hva et kontor legger til",
-      "perks": {
-        "private": {
-          "title": "En privat etasje",
-          "body": "Bare teamet ditt og gjestene du slipper inn."
-        },
-        "channels": {
-          "title": "Kanaler som blir værende",
-          "body": "Én per prosjekt; ingenting forsvinner når du går."
-        },
-        "messages": {
-          "title": "Direktemeldinger",
-          "body": "Skriv til hvem som helst én til én, og se hvem som er i etasjen."
-        },
-        "team": {
-          "title": "Teamet ditt, på invitasjon",
-          "body": "Inviter på e-post og bestem hvem som styrer kontoret."
-        },
-        "guests": {
-          "title": "Gjestelenker",
-          "body": "En kunde eller kandidat kan komme på besøk uten å ta en plass."
-        },
-        "attachments": {
-          "title": "Bilder i chatten",
-          "body": "Del skjermbilder og bilder, i et betalt kontor."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Gi det et navn",
-          "body": "Teamets navn holder."
-        },
-        "invite": {
-          "title": "Inviter teamet ditt",
-          "body": "Send en lenke eller en e-post."
-        },
-        "walk": {
-          "title": "Gå inn",
-          "body": "Gå bort til noen for å snakke."
-        }
-      },
-      "ready": "Klar når du er."
+      "bringThem": "{count, plural, one {Ta med personen du møtte her} other {Ta med de # personene du møtte her}}"
     }
   },
   "office": {

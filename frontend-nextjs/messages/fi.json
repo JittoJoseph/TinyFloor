@@ -223,7 +223,11 @@
       "turnstile": "Emme voineet varmistaa, että olet ihminen. Yritä uudelleen.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
       "generic": "Jokin meni vikaan. Yritä uudelleen."
-    }
+    },
+    "asideReady": "{office} on melkein valmis",
+    "asideTitle": "Tiimisi, yhden kerroksen päässä",
+    "asideSignIn": "Tervetuloa takaisin kerrokseen",
+    "asideBody": "Kävele jonkun luo juttelemaan. Kanavat ja viestit säilyvät."
   },
   "entry": {
     "yourName": "Nimesi",
@@ -992,56 +996,29 @@
       "notNow": "Ei nyt"
     },
     "yourOffice": {
-      "eyebrow": "Ilmainen pienille tiimeille",
-      "title": "Oma kerros tiimillesi",
-      "body": "Kaikki mitä aulassa on, mutta omana: yksityinen kerros, jossa tiimi kävelee toistensa luo juttelemaan, ja chat, joka säilyy.",
+      "eyebrow": "Oma toimisto",
+      "title": "Tee tästä kerroksesta omanne",
+      "body": "Yksityinen kerros tiimillesi: kävelette toistenne luo juttelemaan, ja kanavat ja viestit säilyvät.",
+      "nameLabel": "Anna toimistollesi nimi",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Oma toimisto",
       "create": "Luo toimistoni",
       "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita.",
-      "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}",
+      "perks": {
+        "private": "Yksityinen kerros",
+        "channels": "Kanavat, jotka säilyvät",
+        "messages": "Yksityisviestit",
+        "guests": "Vieraslinkit"
+      },
+      "channels": {
+        "general": "yleinen",
+        "projects": "projektit",
+        "random": "sekalaiset"
+      },
+      "freeSeat": "Vapaa paikka",
       "you": "Sinä",
       "teammate": "Tiimiläinen",
-      "whatYouGet": "Mitä toimisto tuo lisää",
-      "perks": {
-        "private": {
-          "title": "Yksityinen kerros",
-          "body": "Vain tiimisi ja vieraat, jotka päästät sisään."
-        },
-        "channels": {
-          "title": "Kanavat, jotka säilyvät",
-          "body": "Yksi jokaiselle projektille; mitään ei katoa, kun lähdet."
-        },
-        "messages": {
-          "title": "Yksityisviestit",
-          "body": "Kirjoita kenelle tahansa kahden kesken ja näe, kuka on kerroksessa."
-        },
-        "team": {
-          "title": "Tiimisi kutsusta",
-          "body": "Kutsu sähköpostilla ja päätä, kuka hallinnoi toimistoa."
-        },
-        "guests": {
-          "title": "Vieraslinkit",
-          "body": "Asiakas tai hakija käy vierailulla viemättä paikkaa."
-        },
-        "attachments": {
-          "title": "Kuvat chatissa",
-          "body": "Jaa kuvakaappauksia ja kuvia maksullisessa toimistossa."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Anna nimi",
-          "body": "Tiimisi nimi riittää."
-        },
-        "invite": {
-          "title": "Kutsu tiimisi",
-          "body": "Lähetä linkki tai sähköposti."
-        },
-        "walk": {
-          "title": "Kävele sisään",
-          "body": "Kävele jonkun luo juttelemaan."
-        }
-      },
-      "ready": "Valmiina, kun sinä olet."
+      "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}"
     }
   },
   "office": {

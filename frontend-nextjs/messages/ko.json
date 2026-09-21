@@ -223,7 +223,11 @@
       "turnstile": "사람인지 확인하지 못했어요. 다시 시도해 주세요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
       "generic": "문제가 생겼어요. 다시 시도해 주세요."
-    }
+    },
+    "asideReady": "{office}이(가) 거의 준비됐어요",
+    "asideTitle": "팀이 한 층 거리에",
+    "asideSignIn": "다시 오신 걸 환영해요",
+    "asideBody": "다가가서 이야기하세요. 채널과 메시지는 계속 남아요."
   },
   "entry": {
     "yourName": "이름",
@@ -992,56 +996,29 @@
       "notNow": "나중에"
     },
     "yourOffice": {
-      "eyebrow": "작은 팀은 무료",
-      "title": "팀을 위한 나만의 층",
-      "body": "로비의 모든 것을 우리 것으로. 팀이 다가가서 이야기하는 비공개 층과, 계속 남는 채팅.",
+      "eyebrow": "나만의 오피스",
+      "title": "이 층을 우리 것으로",
+      "body": "팀을 위한 비공개 층. 다가가서 이야기하고, 채널과 메시지는 계속 남아요.",
+      "nameLabel": "오피스 이름 정하기",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "내 오피스",
       "create": "내 오피스 만들기",
       "free": "3명까지 무료. 카드 필요 없음.",
-      "bringThem": "{count, plural, other {여기서 만난 #명을 데려오세요}}",
+      "perks": {
+        "private": "비공개 층",
+        "channels": "계속 남는 채널",
+        "messages": "다이렉트 메시지",
+        "guests": "게스트 링크"
+      },
+      "channels": {
+        "general": "일반",
+        "projects": "프로젝트",
+        "random": "잡담"
+      },
+      "freeSeat": "빈자리",
       "you": "나",
       "teammate": "팀원",
-      "whatYouGet": "오피스에서 더해지는 것",
-      "perks": {
-        "private": {
-          "title": "비공개 층",
-          "body": "내 팀과 내가 들인 게스트만."
-        },
-        "channels": {
-          "title": "계속 남는 채널",
-          "body": "프로젝트마다 하나씩, 나가도 사라지지 않아요."
-        },
-        "messages": {
-          "title": "다이렉트 메시지",
-          "body": "누구와도 1:1로 대화하고, 누가 층에 있는지 볼 수 있어요."
-        },
-        "team": {
-          "title": "초대로 모이는 팀",
-          "body": "이메일로 초대하고 오피스 관리자를 정하세요."
-        },
-        "guests": {
-          "title": "게스트 링크",
-          "body": "고객이나 지원자가 자리를 차지하지 않고 방문해요."
-        },
-        "attachments": {
-          "title": "채팅 속 이미지",
-          "body": "유료 오피스에서 스크린샷과 사진을 공유하세요."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "이름 짓기",
-          "body": "팀 이름이면 충분해요."
-        },
-        "invite": {
-          "title": "팀 초대하기",
-          "body": "링크나 이메일을 보내세요."
-        },
-        "walk": {
-          "title": "들어가기",
-          "body": "이야기하고 싶은 사람에게 걸어가세요."
-        }
-      },
-      "ready": "준비되면 언제든지."
+      "bringThem": "{count, plural, other {여기서 만난 #명을 데려오세요}}"
     }
   },
   "office": {

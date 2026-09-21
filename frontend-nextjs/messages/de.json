@@ -223,7 +223,11 @@
       "turnstile": "Wir konnten nicht prüfen, ob du ein Mensch bist. Versuch es noch einmal.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
       "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
-    }
+    },
+    "asideReady": "{office} ist fast fertig",
+    "asideTitle": "Dein Team, nur eine Fläche entfernt",
+    "asideSignIn": "Willkommen zurück auf der Fläche",
+    "asideBody": "Geh zu jemandem hin, um zu reden. Kanäle und Nachrichten bleiben."
   },
   "entry": {
     "yourName": "Dein Name",
@@ -992,56 +996,29 @@
       "notNow": "Nicht jetzt"
     },
     "yourOffice": {
-      "eyebrow": "Kostenlos für kleine Teams",
-      "title": "Eine eigene Fläche für dein Team",
-      "body": "Alles aus der Lobby, aber deins: eine private Fläche, auf der dein Team zum Reden einfach hingeht, mit einem Chat, der bleibt.",
+      "eyebrow": "Dein eigenes Büro",
+      "title": "Mach diese Fläche zu deiner",
+      "body": "Eine private Fläche für dein Team, auf der ihr zum Reden einfach hingeht – mit Kanälen und Nachrichten, die bleiben.",
+      "nameLabel": "Gib deinem Büro einen Namen",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Dein Büro",
       "create": "Mein Büro einrichten",
       "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig.",
-      "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}",
+      "perks": {
+        "private": "Eine private Fläche",
+        "channels": "Kanäle, die bleiben",
+        "messages": "Direktnachrichten",
+        "guests": "Gastlinks"
+      },
+      "channels": {
+        "general": "allgemein",
+        "projects": "projekte",
+        "random": "zufall"
+      },
+      "freeSeat": "Freier Platz",
       "you": "Du",
       "teammate": "Teammitglied",
-      "whatYouGet": "Was ein Büro dazubringt",
-      "perks": {
-        "private": {
-          "title": "Eine private Fläche",
-          "body": "Nur dein Team und die Gäste, die du hereinlässt."
-        },
-        "channels": {
-          "title": "Kanäle, die bleiben",
-          "body": "Einer pro Projekt; nichts geht verloren, wenn du gehst."
-        },
-        "messages": {
-          "title": "Direktnachrichten",
-          "body": "Schreib allen direkt und sieh, wer auf der Fläche ist."
-        },
-        "team": {
-          "title": "Dein Team, per Einladung",
-          "body": "Lade per E-Mail ein und leg fest, wer das Büro verwaltet."
-        },
-        "guests": {
-          "title": "Gastlinks",
-          "body": "Kundschaft oder Bewerbende kommen zu Besuch, ohne einen Platz zu belegen."
-        },
-        "attachments": {
-          "title": "Bilder im Chat",
-          "body": "Teile Screenshots und Fotos, in einem bezahlten Büro."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Benenn es",
-          "body": "Der Name deines Teams reicht."
-        },
-        "invite": {
-          "title": "Lade dein Team ein",
-          "body": "Schick einen Link oder eine E-Mail."
-        },
-        "walk": {
-          "title": "Geh rein",
-          "body": "Geh zu jemandem hin, um zu reden."
-        }
-      },
-      "ready": "Bereit, wenn du es bist."
+      "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}"
     }
   },
   "office": {

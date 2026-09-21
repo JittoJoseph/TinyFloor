@@ -1,5 +1,6 @@
 "use client";
 
+import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "@/lib/i18n/navigation";
@@ -15,7 +16,6 @@ import { AppShell, Logo } from "@/components/app/AppShell";
 import { YouMenu } from "@/components/app/YouMenu";
 import { SettingsView } from "@/components/app/SettingsView";
 import { PlaceProvider, type Place } from "@/components/app/place";
-import { Map as MapIcon, Settings } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 export interface GuestLinkPreview {
@@ -70,8 +70,8 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
       <PlaceProvider value={place}>
         <AppShell
           mark={<Logo size={40} />}
-          destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: <MapIcon />, active: !onSettings }]}
-          settings={{ key: "settings", href: settingsHref, label: ts("settings"), icon: <Settings />, active: onSettings }}
+          destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: RailIcons.floor, active: !onSettings }]}
+          settings={{ key: "settings", href: settingsHref, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
           you={<YouMenu onFloor settingsHref={settingsHref} />}
           floor={
             <RoomView

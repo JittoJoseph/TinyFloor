@@ -116,8 +116,10 @@ desktop                                   phone
 ```
 
 - **Rail (72px):** office mark (switcher menu), Floor, Chat, People; Settings
-  and you at the foot. The active icon sits on a card with a bar at the rail's
-  edge that glides between them, and its strokes thicken.
+  and you at the foot. Icons are Phosphor's (imported one file each), outlined
+  at rest and filled where you are, with a small spring as they fill; a bar at
+  the rail's edge glides between them. While a view's presence dock is on
+  screen, the rail leaves your face out, so you are never shown twice.
 - **The same shell runs the public lobby,** with every element an office has:
   channels (#general, #introductions, #feedback), *Add a channel*, direct
   messages, the image button and drag and drop. What only an office can do is
@@ -133,7 +135,8 @@ The map gets the whole view. Floating chrome only:
 
 - top left, a chip: connection state and a stack of who is here — press it for
   the people panel;
-- top right, **Invite**;
+- top right, **Invite** — in the public lobby only; an office invites from
+  People, where the chip's people list also points;
 - bottom centre, the dock: mic, camera, and — only in a call — screen share,
   speaker and hang up; then devices.
 
@@ -229,7 +232,11 @@ differs from the plan, or adds to it:
   settings: an office's chat and people are its members'.
 - **The presence dock** (under every column) follows Discord's: a call band
   when you are in one (who with, camera, screen, hang up), then you, your
-  status, microphone, speaker and settings.
+  status, microphone, speaker and settings, on the rail's colour. Pressing
+  yourself opens the same menu the rail's face does.
+- **Your office** (lobby) is one screen: name an office inline, and a preview
+  drawn like the app — its mark, channels and floor — follows what you type.
+  Sign-up shows the same preview beside the form, wearing that name.
 - **Settings are a view in the shell,** not a dialog: General (theme, language),
   Audio and video (devices, noise suppression, echo cancellation, mirror),
   Notifications (message and arrival sounds, previews over the floor),

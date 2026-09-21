@@ -1,9 +1,9 @@
 "use client";
 
+import { RailIcons } from "@/components/app/railIcons";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Map as MapIcon, MessagesSquare, Settings, Users } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type Member, type Office } from "@/lib/api";
@@ -195,11 +195,11 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
         <AppShell
           mark={<OfficeSwitcher office={office} />}
           destinations={[
-            { key: "floor", href: floor, label: ts("floor"), icon: <MapIcon />, active: !onChat && !onPeople && !onSettings },
-            { key: "chat", href: chatPath, label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
-            { key: "people", href: people, label: ts("people"), icon: <Users />, active: onPeople },
+            { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onSettings },
+            { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+            { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
           ]}
-          settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: <Settings />, active: onSettings }}
+          settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
           you={<YouMenu onFloor settingsHref={settingsPath} />}
           floor={
             <>
@@ -208,6 +208,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
                 user={user}
                 ticketFor={() => api.officeTicket(office.id)}
                 sharePath={floor}
+                inviteHref={people}
                 leaveHref="/dashboard"
                 settingsHref={settingsPath}
               />

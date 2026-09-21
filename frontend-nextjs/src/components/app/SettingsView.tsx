@@ -96,7 +96,7 @@ export function SettingsView() {
               </>
             )}
           </nav>
-          <PresenceDock floorHref={place.paths.floor} place={place.name} settingsHref={place.paths.settings} />
+          <PresenceDock place={place.name} settingsHref={place.paths.settings} />
         </>
       }
     >

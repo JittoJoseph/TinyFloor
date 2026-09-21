@@ -279,7 +279,7 @@ export function ChatView({ channel }: { channel?: string }) {
             </Section>
           </nav>
 
-          <PresenceDock floorHref={place.paths.floor} place={place.name} settingsHref={place.paths.settings} />
+          <PresenceDock place={place.name} settingsHref={place.paths.settings} />
           <CommandPalette items={items} open={jump} onOpenChange={setJump} placeholder={t("jumpTo")} emptyMessage={t("noMatch")} />
         </>
       }

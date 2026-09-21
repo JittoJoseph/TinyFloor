@@ -1,11 +1,27 @@
 "use client";
 
-import { cloneElement, isValidElement, useId, type ReactElement, type ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { Tooltip } from "@/components/motion/tooltip";
+
+/**
+ * Whether the view on screen has a presence dock with you in it. When it does,
+ * the rail leaves you out, so your own face is never shown twice side by side.
+ */
+const DockContext = createContext<((shown: boolean) => void) | null>(null);
+
+/** Called by the presence dock: while it is mounted, it holds you. */
+export function useDockHoldsYou() {
+  const report = useContext(DockContext);
+  useEffect(() => {
+    if (!report) return;
+    report(true);
+    return () => report(false);
+  }, [report]);
+}
 
 export interface ShellDestination {
   key: string;
@@ -43,35 +59,53 @@ export function AppShell({
   children?: ReactNode;
 }) {
   const indicator = useId();
+  const reduce = useReducedMotion();
+  const [docks, setDocks] = useState(0);
+  const report = useCallback((shown: boolean) => setDocks((count) => count + (shown ? 1 : -1)), []);
   return (
-    <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
-      <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
-        <div className="mb-2">{mark}</div>
-        <span aria-hidden className="mb-2 h-px w-8 bg-border" />
-        <div className="flex w-full flex-col items-center gap-1.5">
+    <DockContext.Provider value={report}>
+      <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
+        <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
+          <div className="mb-2">{mark}</div>
+          <span aria-hidden className="mb-2 h-px w-8 bg-border" />
+          <div className="flex w-full flex-col items-center gap-1.5">
+            {destinations.map((one) => (
+              <RailItem key={one.key} destination={one} indicator={indicator} />
+            ))}
+          </div>
+          <div className="mt-auto flex w-full flex-col items-center gap-2">
+            {settings && <RailItem destination={settings} indicator={indicator} quiet />}
+            <AnimatePresence initial={false}>
+              {docks === 0 && (
+                <motion.div
+                  key="you"
+                  initial={reduce ? false : { opacity: 0, scale: 0.6, height: 0 }}
+                  animate={{ opacity: 1, scale: 1, height: "auto" }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6, height: 0 }}
+                  transition={SPRING_LAYOUT}
+                  className="pt-1"
+                >
+                  {you}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </nav>
+
+        <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
+          {floor}
+          {children}
+        </main>
+
+        {/* Phones: the same places along the bottom, where a thumb is. */}
+        <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
           {destinations.map((one) => (
-            <RailItem key={one.key} destination={one} indicator={indicator} />
+            <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
           ))}
-        </div>
-        <div className="mt-auto flex w-full flex-col items-center gap-2">
-          {settings && <RailItem destination={settings} indicator={indicator} quiet />}
-          <div className="pt-1">{you}</div>
-        </div>
-      </nav>
-
-      <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
-        {floor}
-        {children}
-      </main>
-
-      {/* Phones: the same places along the bottom, where a thumb is. */}
-      <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
-        {destinations.map((one) => (
-          <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
-        ))}
-        <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
-      </nav>
-    </div>
+          <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
+        </nav>
+      </div>
+    </DockContext.Provider>
   );
 }
 
@@ -174,13 +208,28 @@ function BarItem({ destination, indicator }: { destination: ShellDestination; in
   );
 }
 
-/** An icon drawn a touch bolder where you are. */
+/**
+ * A rail icon: outlined, and filled where you are, with a small spring as it
+ * fills. Phosphor icons take a weight; anything else is drawn as it is.
+ */
 function Icon({ icon, active }: { icon: ReactNode; active: boolean }) {
+  const reduce = useReducedMotion();
   if (!isValidElement(icon)) return <>{icon}</>;
-  return cloneElement(icon as ReactElement<{ strokeWidth?: number; className?: string }>, {
-    strokeWidth: active ? 2.25 : 1.75,
-    className: "size-5",
+  const drawn = cloneElement(icon as ReactElement<{ weight?: string; size?: number }>, {
+    weight: active ? "fill" : "regular",
+    size: 22,
   });
+  return (
+    <motion.span
+      key={active ? "on" : "off"}
+      initial={reduce || !active ? false : { scale: 0.78 }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring", stiffness: 520, damping: 18, mass: 0.6 }}
+      className="flex transition-transform duration-200 group-hover:-translate-y-px group-active:translate-y-0"
+    >
+      {drawn}
+    </motion.span>
+  );
 }
 
 /**

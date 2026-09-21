@@ -291,7 +291,9 @@ before first paint by the root layout's script (which now covers "/").
   check and the footer's theme switch. The FAQ is native `<details>` that
   slides open where the browser can animate to `auto`; the globe is SVG
   computed on the server; the language list is plain links.
-- **Layout from the references:** Gleap for the centred hero, the segmented
-  tabs over a product panel on a soft sky (the page's one gradient), two-tone
-  headlines and alternating feature rows; ElevenLabs for the feature grid;
-  ClickUp for the footer's link directory.
+- **Layout from the references:** Gleap for the centred hero, two-tone
+  headlines and alternating feature rows over a soft sky (the page's one
+  gradient); ElevenLabs for the hero's tabbed product panel, which sits on a
+  plain tray like the app itself; Cloudflare for the feature sheet (one ruled
+  grid of cells with corner marks, a drawing in each and one cell in the brand
+  colour) and the network card; ClickUp for the footer's link directory.

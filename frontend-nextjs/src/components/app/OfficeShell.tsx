@@ -3,23 +3,33 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { LogOut, Map, MessageSquare, Settings, Users } from "lucide-react";
+import { Map as MapIcon, MessagesSquare, Users } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Office } from "@/lib/api";
+import { api, ApiError, type Member, type Office } from "@/lib/api";
 import { officeChatPath, officePath, officePeoplePath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
-import { Badge } from "@/components/room/ui";
+import { clearFloor } from "@/lib/floor";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
-import { PresenceDock } from "./PresenceDock";
+import SettingsModal from "@/components/SettingsModal";
+import { Loader } from "@/components/motion/loader";
+import { AppShell } from "./AppShell";
+import { YouMenu } from "./YouMenu";
+import { OfficeSwitcher } from "./OfficeSwitcher";
 import { OfficeSettings } from "./OfficeSettings";
+import { ChatNudges } from "./ChatNudges";
+import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
+import { dmChannelId } from "@shared/chat";
 
 interface OfficeContext {
   office: Office;
-  /** Re-reads the office after something changed it. */
+  /** Everyone in the office, for chat's direct messages and the People view. */
+  members: Member[];
+  /** Re-reads the office and its members after something changed them. */
   refresh: () => Promise<void>;
+  openSettings: () => void;
 }
 
 const Context = createContext<OfficeContext | null>(null);
@@ -30,26 +40,25 @@ export function useOffice(): OfficeContext {
   return value;
 }
 
-/**
- * The frame every office view sits in: a rail that never moves, and the floor
- * filling the rest. Chat and People render *over* the floor rather than in
- * place of it, so the room keeps your socket, your call and your position while
- * you read a message.
- */
+/** An office: the door first, then the shell with the floor inside it. */
 export function OfficeShell({ officeId, children }: { officeId: string; children: React.ReactNode }) {
   const t = useTranslations("office");
+  const ts = useTranslations("shell");
   const router = useRouter();
   const pathname = usePathname();
   const { user, isLoading } = useAuth();
   const [office, setOffice] = useState<Office | null>(null);
+  const [members, setMembers] = useState<Member[]>([]);
   const [gone, setGone] = useState(false);
   const [inside, setInside] = useState(false);
   const [settings, setSettings] = useState(false);
+  const [devices, setDevices] = useState(false);
   const { unread } = useChat();
 
   const refresh = useCallback(async () => {
-    const { office: found } = await api.office(officeId);
-    setOffice(found);
+    const found = await api.overview(officeId);
+    setOffice(found.office);
+    setMembers(found.members);
   }, [officeId]);
 
   useEffect(() => {
@@ -60,8 +69,12 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
     }
     let cancelled = false;
     api
-      .office(officeId)
-      .then(({ office: found }) => !cancelled && setOffice(found))
+      .overview(officeId)
+      .then((found) => {
+        if (cancelled) return;
+        setOffice(found.office);
+        setMembers(found.members);
+      })
       .catch((error) => {
         if (!cancelled && error instanceof ApiError && error.status === 404) setGone(true);
       });
@@ -73,18 +86,35 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   // One chat socket for the whole office, opened with the shell rather than
   // with the chat view, so unread counts work while you are on the floor.
   useEffect(() => {
-    if (!office || !inside) return;
+    if (!office?.id || !inside) return;
     chat.connect(office.id);
-    return () => chat.disconnect();
-  }, [office, inside]);
+    return () => {
+      chat.disconnect();
+      clearFloor();
+    };
+  }, [office?.id, inside]);
+
+  // "Message" beside someone on the floor opens your conversation with them.
+  useEffect(() => {
+    if (!office?.id || !user) return;
+    const open = (event: Event) => {
+      const { id } = (event as CustomEvent<{ id: string }>).detail;
+      router.push(officeChatPath(office.id, dmChannelId(user.id, id)));
+    };
+    window.addEventListener(OPEN_CONVERSATION_EVENT, open);
+    return () => window.removeEventListener(OPEN_CONVERSATION_EVENT, open);
+  }, [office?.id, user, router]);
 
   if (gone) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-[var(--color-braun-bg)]">
-        <div className="text-center">
-          <h1 className="font-body text-xl font-medium text-[var(--color-braun-text)] mb-2">{t("goneTitle")}</h1>
-          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">{t("gone")}</p>
-          <Link href="/dashboard" className="font-body text-[13px] font-semibold underline">
+      <div className="flex min-h-dvh items-center justify-center bg-background p-6">
+        <div className="max-w-sm text-center">
+          <h1 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{t("goneTitle")}</h1>
+          <p className="mb-6 text-[14px] text-muted-foreground">{t("gone")}</p>
+          <Link
+            href="/dashboard"
+            className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background"
+          >
             {t("backToOffices")}
           </Link>
         </div>
@@ -92,7 +122,13 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
     );
   }
 
-  if (!office || !user) return <div className="min-h-screen bg-[var(--color-braun-bg)]" />;
+  if (!office || !user) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center bg-background text-muted-foreground">
+        <Loader variant="dots" size={20} />
+      </div>
+    );
+  }
 
   // The door, before any of the shell: pick who you'll be in there.
   if (!inside) {
@@ -110,134 +146,45 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const floor = officePath(office.id);
   const chatPath = officeChatPath(office.id);
   const people = officePeoplePath(office.id);
-  const on = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
+  const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
+  const onChat = on(chatPath);
+  const onPeople = on(people);
 
   return (
-    <Context.Provider value={{ office, refresh }}>
-      <div className="fixed inset-0 flex bg-[var(--color-braun-bg)]">
-        {/* The rail. Always there, never scrolls. */}
-        <nav className="w-14 shrink-0 flex flex-col items-center gap-1 py-3 border-e border-black/[0.06] bg-[#fbfbf9] z-30">
-          <Link
-            href="/dashboard"
-            title={t("offices")}
-            className="w-9 h-9 rounded-xl bg-[var(--color-braun-text)] text-[var(--color-braun-bg)] flex items-center justify-center font-body text-[13px] font-semibold mb-2 shrink-0"
-          >
-            {office.name.slice(0, 1).toUpperCase()}
-          </Link>
-
-          <RailLink href={floor} active={!on(chatPath) && !on(people)} label={t("floor")}>
-            <Map className="w-[18px] h-[18px]" />
-          </RailLink>
-          <RailLink href={chatPath} active={on(chatPath)} label={t("chat")}>
-            <MessageSquare className="w-[18px] h-[18px]" />
-            {unread > 0 && <Badge count={unread} />}
-          </RailLink>
-          <RailLink href={people} active={on(people)} label={t("peopleTab")}>
-            <Users className="w-[18px] h-[18px]" />
-          </RailLink>
-
-          <button
-            type="button"
-            onClick={() => setSettings(true)}
-            title={t("settingsButton")}
-            aria-label={t("settingsButton")}
-            className="mt-auto w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-braun-text)] opacity-55 hover:opacity-100 hover:bg-black/[0.04] transition-colors duration-150 cursor-pointer"
-          >
-            <Settings className="w-[18px] h-[18px]" />
-          </button>
-          <Link
-            href="/dashboard"
-            title={t("leave")}
-            aria-label={t("leave")}
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-braun-text)] opacity-55 hover:opacity-100 hover:bg-black/[0.04] transition-colors duration-150"
-          >
-            <LogOut className="w-[18px] h-[18px] rtl:rotate-180" />
-          </Link>
-        </nav>
-
-        <div className="flex-1 min-w-0 relative">
-          {/* The floor is always mounted: leaving it on screen is the only way
-              to stay in the room while you are reading something else. */}
-          <RoomView
-            title={office.name}
-            user={user}
-            ticketFor={() => api.officeTicket(office.id)}
-            sharePath={floor}
-            leaveHref="/dashboard"
+    <Context.Provider value={{ office, members, refresh, openSettings: () => setSettings(true) }}>
+      <AppShell
+        mark={<OfficeSwitcher office={office} />}
+        destinations={[
+          { key: "floor", href: floor, label: ts("floor"), icon: <MapIcon />, active: !onChat && !onPeople },
+          { key: "chat", href: chatPath, label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
+          { key: "people", href: people, label: ts("people"), icon: <Users />, active: onPeople },
+        ]}
+        you={
+          <YouMenu
+            onFloor
+            onDevices={() => setDevices(true)}
+            onOfficeSettings={() => setSettings(true)}
           />
-          {children}
-        </div>
-      </div>
-
-      {settings && <OfficeSettings onClose={() => setSettings(false)} />}
-    </Context.Provider>
-  );
-}
-
-function RailLink({
-  href,
-  active,
-  label,
-  children,
-}: {
-  href: string;
-  active: boolean;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      title={label}
-      aria-label={label}
-      aria-current={active ? "page" : undefined}
-      className={`relative w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-150 ${
-        active
-          ? "bg-[var(--color-braun-text)]/[0.08] text-[var(--color-braun-text)]"
-          : "text-[var(--color-braun-text)] opacity-55 hover:opacity-100 hover:bg-black/[0.04]"
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
-
-/**
- * A view that covers the floor: the column on the left, the view itself on the
- * right. Opaque, because the floor is still running underneath it.
- */
-export function OfficeView({
-  title,
-  action,
-  column,
-  children,
-  /** On a phone there is room for one or the other: the list, or what you picked. */
-  showDetail = false,
-}: {
-  title: string;
-  action?: React.ReactNode;
-  column: React.ReactNode;
-  children: React.ReactNode;
-  showDetail?: boolean;
-}) {
-  return (
-    <div className="absolute inset-0 z-[60] flex bg-[var(--color-braun-bg)]">
-      <aside
-        className={`w-full sm:w-60 shrink-0 flex-col border-e border-black/[0.06] bg-[#fbfbf9] ${
-          showDetail ? "hidden sm:flex" : "flex"
-        }`}
+        }
+        floor={
+          <>
+            <RoomView
+              title={office.name}
+              user={user}
+              ticketFor={() => api.officeTicket(office.id)}
+              sharePath={floor}
+              leaveHref="/dashboard"
+              onDevices={() => setDevices(true)}
+            />
+            {!onChat && <ChatNudges officeId={office.id} />}
+          </>
+        }
       >
-        <header className="h-14 shrink-0 flex items-center gap-2 px-4">
-          <h2 className="font-body text-[15px] font-semibold text-[var(--color-braun-text)] truncate me-auto">
-            {title}
-          </h2>
-          {action}
-        </header>
-        <div className="flex-1 min-h-0 overflow-y-auto px-2 pb-2">{column}</div>
-        <PresenceDock />
-      </aside>
+        {children}
+      </AppShell>
 
-      <div className={`flex-1 min-w-0 flex-col ${showDetail ? "flex" : "hidden sm:flex"}`}>{children}</div>
-    </div>
+      <OfficeSettings open={settings} onClose={() => setSettings(false)} />
+      <SettingsModal isOpen={devices} onClose={() => setDevices(false)} />
+    </Context.Provider>
   );
 }

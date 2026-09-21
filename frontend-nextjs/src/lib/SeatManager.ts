@@ -1,3 +1,4 @@
+import { typingElsewhere } from "./typing";
 import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
@@ -118,7 +119,7 @@ export class SeatManager {
       this.hitAreas.push(zone);
     });
 
-    scene.input.keyboard?.on("keydown-E", () => this.toggle());
+    scene.input.keyboard?.on("keydown-E", () => !typingElsewhere() && this.toggle());
   }
 
   attach(

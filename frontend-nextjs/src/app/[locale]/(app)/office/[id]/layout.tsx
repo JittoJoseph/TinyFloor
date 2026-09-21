@@ -8,5 +8,10 @@ type Props = { params: Promise<{ locale: string; id: string }>; children: React.
 export default async function OfficeLayout({ params, children }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale as Locale);
-  return <OfficeShell officeId={id}>{children}</OfficeShell>;
+  // Keyed by the office, so moving to another one starts at its door.
+  return (
+    <OfficeShell key={id} officeId={id}>
+      {children}
+    </OfficeShell>
+  );
 }

@@ -275,7 +275,8 @@
     },
     "invite": "Invite",
     "linkCopied": "Link copied",
-    "inviteText": "Join me in {room} on TinyFloor"
+    "inviteText": "Join me in {room} on TinyFloor",
+    "you": "{name} (you)"
   },
   "call": {
     "incomingVideo": "Incoming video call...",
@@ -347,7 +348,32 @@
     "noDirect": "No direct messages yet.",
     "attach": "Add an image",
     "attachmentsPaid": "Images are part of a paid office.",
-    "attachmentsSoon": "Images land here shortly."
+    "attachmentsSoon": "Images land here shortly.",
+    "new": "New",
+    "latest": "Jump to latest",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "react": "Add a reaction",
+    "copy": "Copy text",
+    "emoji": "Emoji",
+    "newLine": "new line",
+    "jumpTo": "Jump to…",
+    "noMatch": "Nothing matches that.",
+    "aloneHere": "Just you so far. Invite someone to talk to.",
+    "invitePeople": "Invite people",
+    "members": "{count, plural, one {# member} other {# members}}",
+    "dmIntro": "This is the start of your conversation with {name}. Only the two of you can see it.",
+    "channelIntroTitle": "Welcome to #{channel}",
+    "generalIntro": "This is where everyone in {office} talks. Everyone in the office can read it, and it stays when you leave the floor.",
+    "channelIntro": "This is the very beginning of #{channel}. Everyone in the office can read it.",
+    "sayTo": "Message {name}",
+    "channelHint": "Lowercase, no spaces. Everyone in the office can join.",
+    "create": "Create channel",
+    "lobbyIntroTitle": "The lobby's chat",
+    "lobbyIntro": "Everyone in the lobby can read this. It is not kept: it goes when you leave.",
+    "lobbyDirect": "Direct messages and channels that stay come with an office of your own.",
+    "attachmentsLobby": "Images are part of a paid office.",
+    "slowDown": "Slow down a little — too many messages at once."
   },
   "proximity": {
     "videoCall": "Video call",
@@ -379,7 +405,8 @@
     "close": "Close settings",
     "microphone": "Microphone",
     "camera": "Camera",
-    "default": "Default"
+    "default": "Default",
+    "description": "Which microphone and camera the floor uses."
   },
   "tutorial": {
     "walk": "Walk around with W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "At least 8 characters",
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
-      "pageTitle": "Your account"
+      "pageTitle": "Your account",
+      "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
+      "themeNote": "System follows your device. The choice is kept in this browser."
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -1102,7 +1131,7 @@
     "floor": "Floor",
     "chat": "Chat",
     "people": {
-      "title": "Members",
+      "title": "People",
       "members": "Members",
       "invitations": "Pending invites",
       "guests": "Guests",
@@ -1130,7 +1159,14 @@
       "noEmail": "No email",
       "expires": "Expires {date}",
       "anyoneWithLink": "Anyone with the link",
-      "wrong": "That didn't work. Try again."
+      "wrong": "That didn't work. Try again.",
+      "subtitle": "Everyone in {office}, and who can come in.",
+      "linkCopied": "Invite link copied",
+      "nobodyOnFloor": "Nobody else is on the floor right now.",
+      "seatsLeft": "{count, plural, one {# seat left — invite someone} other {# seats left — invite someone}}",
+      "seatsNote": "A seat is a member. Someone leaving frees theirs; being offline does not.",
+      "invitationsNote": "An invitation holds no seat. Whoever accepts first takes one, while there is one free.",
+      "guestLink": "Guest link"
     },
     "office": "Office",
     "offices": "Your offices",
@@ -1156,5 +1192,56 @@
     "freePlan": "Free for up to 3 people. No card needed.",
     "accountNext": "Next: make an account, and your office is ready.",
     "justLooking": "Just looking? <link>Walk into the public office</link> instead."
+  },
+  "shell": {
+    "floor": "Floor",
+    "chat": "Chat",
+    "people": "People",
+    "you": "You",
+    "guest": "Guest",
+    "status": "Status",
+    "theme": "Theme",
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "devices": "Microphone and camera",
+    "officeSettings": "Office settings",
+    "makeAccount": "Create an account",
+    "account": "Account",
+    "allOffices": "All offices",
+    "signOut": "Sign out",
+    "switchOffice": "Switch office",
+    "membersOf": "{used} of {seats} members",
+    "switchTo": "Your other offices",
+    "newOffice": "New office",
+    "publicLobby": "Public lobby",
+    "reply": "Reply",
+    "backToFloor": "Back to the floor",
+    "onTheFloor": "You're on the floor",
+    "back": "Back",
+    "onFloorShort": "On the floor",
+    "notOnFloor": "Not on the floor",
+    "message": "Message",
+    "leaveLobby": "Leave the lobby",
+    "lobby": "Lobby",
+    "lobbyChannel": "lobby",
+    "hereNow": "Here now"
+  },
+  "dashboard": {
+    "morning": "Good morning, {name}",
+    "afternoon": "Good afternoon, {name}",
+    "evening": "Good evening, {name}",
+    "subtitle": "Your offices, and who is on each floor right now.",
+    "onFloor": "{count, plural, =0 {Nobody on the floor} one {# on the floor} other {# on the floor}}",
+    "newOffice": "New office",
+    "newOfficeBody": "Three people free. A floor, chat and calls.",
+    "lobby": "The public lobby",
+    "lobbyBody": "Drop in and meet whoever is around.",
+    "emptyTitle": "Start your first office",
+    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
+    "yourRole": "{role}",
+    "enter": "Walk in"
   }
 }

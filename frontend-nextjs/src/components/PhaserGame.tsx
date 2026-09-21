@@ -70,7 +70,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         height: gameRef.current.clientHeight || window.innerHeight,
         parent: gameRef.current,
         scene: new GameScene(name, character, userId, () => nextTicket()),
-        backgroundColor: "#f0f0f0",
+        // The panel behind the canvas paints the space around the map, so it
+        // follows the light or dark theme.
+        transparent: true,
         // The room has no Phaser sounds; the jukebox plays through an <audio>
         // element. Without this, every game builds a WebAudio context it never
         // uses, and complains about it once the game is torn down.

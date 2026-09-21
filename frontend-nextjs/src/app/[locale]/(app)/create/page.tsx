@@ -96,18 +96,18 @@ export default function CreateSpacePage() {
   return (
     <EntryShell preview={<EntryPreview occupants={[]} />}>
       <div className="entry-rise">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-45 mb-2">
+        <p className="text-[11px] font-bold text-foreground opacity-45 mb-2">
           {t("eyebrow")}
         </p>
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5">
+        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5">
           {t("title")}
         </h1>
-        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-5">{t("subtitle")}</p>
+        <p className="text-sm text-foreground opacity-55 mb-5">{t("subtitle")}</p>
 
         <form onSubmit={submit}>
           <label
             htmlFor="space-name"
-            className="block font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-50 mb-2.5"
+            className="block text-[11px] font-bold text-foreground opacity-50 mb-2.5"
           >
             {t("nameLabel")}
           </label>
@@ -142,12 +142,12 @@ export default function CreateSpacePage() {
           </button>
         </form>
 
-        <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-50 text-center mt-5">
+        <p className="text-[12px] text-foreground opacity-50 text-center mt-5">
           {account ? t("freePlan") : t("accountNext")}
         </p>
 
         {!isLoading && !account && (
-          <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-50 text-center mt-2">
+          <p className="text-[12px] text-foreground opacity-50 text-center mt-2">
             {t.rich("justLooking", {
               link: (chunks) => (
                 <Link href="/lobby" className="underline underline-offset-2 hover:opacity-100">

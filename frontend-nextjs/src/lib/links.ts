@@ -7,6 +7,8 @@ import { SITE_URL } from "./site";
 
 /** The free public lobby, open to anyone. */
 export const lobbyPath = "/lobby";
+export const lobbyChatPath = `${lobbyPath}/chat`;
+export const lobbyPeoplePath = `${lobbyPath}/people`;
 
 /** An office: its floor, and everything beside it. */
 export const officePath = (officeId: string) => `/office/${encodeURIComponent(officeId)}`;

@@ -2,35 +2,46 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, Video, X } from "lucide-react";
+import { Mic, Video } from "lucide-react";
 import { savedDevices, saveDevices } from "@/lib/media";
+import { Dialog } from "@/components/ui/Dialog";
+import { Button } from "@/components/motion/button/base";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/motion/select";
 
 interface MediaDevice {
   deviceId: string;
   label: string;
 }
 
+/** The value a select can hold for "whatever the browser picks". */
+const DEFAULT = "default";
+
 export default function SettingsModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  // Mounted only while open, so the saved choices and the device list are read fresh each time.
-  if (!isOpen) return null;
-  return <SettingsDialog onClose={onClose} />;
+  return <DevicesDialog open={isOpen} onClose={onClose} />;
 }
 
 /**
  * Which microphone and camera to use. Video quality isn't a choice here: each
  * card asks for what it can show (see lib/media.ts).
  */
-function SettingsDialog({ onClose }: { onClose: () => void }) {
+function DevicesDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations("settings");
   const tc = useTranslations("common");
-  const [saved] = useState(savedDevices);
   const [microphones, setMicrophones] = useState<MediaDevice[]>([]);
   const [cameras, setCameras] = useState<MediaDevice[]>([]);
-  const [audio, setAudio] = useState(saved.audio ?? "");
-  const [video, setVideo] = useState(saved.video ?? "");
+  const [audio, setAudio] = useState(DEFAULT);
+  const [video, setVideo] = useState(DEFAULT);
 
+  // Each time it opens: what was saved, and the devices plugged in now.
   useEffect(() => {
+    if (!open) return;
     let cancelled = false;
+    const saved = savedDevices();
+    queueMicrotask(() => {
+      if (cancelled) return;
+      setAudio(saved.audio ?? DEFAULT);
+      setVideo(saved.video ?? DEFAULT);
+    });
     const load = async () => {
       try {
         if (!navigator.mediaDevices?.enumerateDevices) return;
@@ -43,7 +54,9 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
         }
         if (cancelled) return;
         const of = (kind: MediaDeviceKind) =>
-          devices.filter((device) => device.kind === kind).map(({ deviceId, label }) => ({ deviceId, label }));
+          devices
+            .filter((device) => device.kind === kind && device.deviceId && device.deviceId !== DEFAULT)
+            .map(({ deviceId, label }) => ({ deviceId, label }));
         setMicrophones(of("audioinput"));
         setCameras(of("videoinput"));
       } catch {
@@ -54,64 +67,36 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [open]);
 
   const save = () => {
-    saveDevices({ audio: audio || undefined, video: video || undefined });
+    saveDevices({ audio: audio === DEFAULT ? undefined : audio, video: video === DEFAULT ? undefined : video });
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
-
-      <div className="relative bg-[#fbfbf9] border border-[rgba(0,0,0,0.06)] rounded-3xl shadow-lg w-full max-w-md overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
-          <h2 className="font-body text-base font-semibold text-[var(--color-braun-text)]">{t("title")}</h2>
-          <button
-            onClick={onClose}
-            aria-label={t("close")}
-            className="cursor-pointer w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.04] transition-colors duration-150"
-          >
-            <X className="w-4 h-4 text-[var(--color-braun-text)] opacity-60" />
-          </button>
-        </div>
-
-        <div className="px-6 py-5 space-y-5">
-          <DeviceRow
-            label={t("microphone")}
-            icon={Mic}
-            value={audio}
-            onChange={setAudio}
-            devices={microphones}
-            defaultLabel={t("default")}
-          />
-          <DeviceRow
-            label={t("camera")}
-            icon={Video}
-            value={video}
-            onChange={setVideo}
-            devices={cameras}
-            defaultLabel={t("default")}
-          />
-        </div>
-
-        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[rgba(0,0,0,0.04)] bg-white/40">
-          <button
-            onClick={onClose}
-            className="cursor-pointer px-4 py-2 text-sm text-[var(--color-braun-text)] opacity-50 hover:opacity-80 transition-opacity"
-          >
+    <Dialog
+      open={open}
+      onClose={onClose}
+      title={t("title")}
+      description={t("description")}
+      closeLabel={t("close")}
+      footer={
+        <>
+          <Button variant="ghost" size="md" onClick={onClose}>
             {tc("cancel")}
-          </button>
-          <button
-            onClick={save}
-            className="cursor-pointer px-5 py-2 bg-[var(--color-braun-text)] hover:bg-[#2a2a2a] text-white rounded-full text-sm font-medium transition-all"
-          >
+          </Button>
+          <Button size="md" onClick={save}>
             {tc("save")}
-          </button>
-        </div>
+          </Button>
+        </>
+      }
+    >
+      <div className="space-y-4">
+        <DeviceRow label={t("microphone")} icon={Mic} value={audio} onChange={setAudio} devices={microphones} defaultLabel={t("default")} />
+        <DeviceRow label={t("camera")} icon={Video} value={video} onChange={setVideo} devices={cameras} defaultLabel={t("default")} />
       </div>
-    </div>
+    </Dialog>
   );
 }
 
@@ -132,22 +117,23 @@ function DeviceRow({
 }) {
   return (
     <div>
-      <label className="flex items-center gap-1.5 mb-2 font-body text-[12px] font-semibold text-[var(--color-braun-text)] opacity-55">
-        <Icon className="w-3.5 h-3.5" />
+      <p className="mb-1.5 flex items-center gap-1.5 text-[12px] font-medium text-muted-foreground">
+        <Icon className="size-3.5" />
         {label}
-      </label>
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm text-[var(--color-braun-text)] outline-none focus:border-[rgba(0,0,0,0.2)] transition-colors cursor-pointer"
-      >
-        <option value="">{defaultLabel}</option>
-        {devices.map((device) => (
-          <option key={device.deviceId} value={device.deviceId}>
-            {device.label || `${label} ${device.deviceId.slice(0, 6)}`}
-          </option>
-        ))}
-      </select>
+      </p>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="h-10 bg-background text-[13px]">
+          <SelectValue className="truncate" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value={DEFAULT}>{defaultLabel}</SelectItem>
+          {devices.map((device) => (
+            <SelectItem key={device.deviceId} value={device.deviceId}>
+              {device.label || `${label} ${device.deviceId.slice(0, 6)}`}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

@@ -46,14 +46,14 @@ export const CharacterStep: React.FC<{
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3 mb-2.5">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-50">
+        <p className="text-[11px] font-bold text-foreground opacity-50">
           {t("character")}
         </p>
         {onBack && (
           <button
             type="button"
             onClick={onBack}
-            className="cursor-pointer inline-flex items-center gap-1 font-body text-[12px] text-[var(--color-braun-text)] opacity-55 hover:opacity-100 transition-opacity"
+            className="cursor-pointer inline-flex items-center gap-1 text-[12px] text-foreground opacity-55 hover:opacity-100 transition-opacity"
           >
             <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" />
             {t("walkingInAs", { name })}

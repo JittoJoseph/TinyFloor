@@ -1,80 +1,62 @@
 "use client";
 
-import { useCallback } from "react";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Map, Mic, MicOff, Video, VideoOff } from "lucide-react";
+import { Map as MapIcon, Mic, MicOff, Video, VideoOff } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { officePath } from "@/lib/links";
 import { CharacterSprite } from "@/components/CharacterSprite";
-import { RoomIconButton } from "@/components/room/ui";
-import { useOffice } from "./OfficeShell";
+import { IconButton } from "@/components/ui/IconButton";
 
 /**
  * You are still standing on the floor while you read a message, so the bottom
- * of every column keeps you there: who you are, where you are, and the two
- * controls worth having to hand.
+ * of every column keeps you there: your character, where it is standing, the
+ * two controls worth having to hand, and the way back.
  */
-export function PresenceDock() {
-  const t = useTranslations("office");
+export function PresenceDock({ floorHref, place }: { floorHref: string; place: string }) {
+  const t = useTranslations("shell");
   const tControls = useTranslations("controls");
   const { user } = useAuth();
-  const { office } = useOffice();
-  const pathname = usePathname();
   const { micEnabled, cameraEnabled } = useCall();
-
-  const toggleMic = useCallback(() => callManager.setMic(!micEnabled), [micEnabled]);
-  const toggleCamera = useCallback(() => callManager.setCamera(!cameraEnabled), [cameraEnabled]);
-
   if (!user) return null;
-  const floor = officePath(office.id);
-  const away = pathname !== floor && !pathname.endsWith(floor);
 
   return (
-    <div className="shrink-0 border-t border-black/[0.06] p-2">
-      <div className="rounded-2xl bg-[var(--color-braun-text)]/[0.04] p-2">
-        <div className="flex items-center gap-2 px-1 pb-2">
-          <span className="w-8 h-8 rounded-full overflow-hidden bg-[var(--color-braun-bg)] flex items-end justify-center shrink-0">
-            <CharacterSprite character={user.character} scale={1.4} offsetY={-2} />
+    <div className="shrink-0 p-2">
+      <div className="flex items-center gap-2 rounded-2xl border border-border bg-card p-1.5 ps-2 [--face-ring:var(--ui-card)]">
+        <Link
+          href={floorHref}
+          title={t("backToFloor")}
+          className="group flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 rounded-xl p-0.5 transition-colors hover:bg-muted"
+        >
+          <span className="relative flex size-9 shrink-0 items-end justify-center overflow-hidden rounded-xl bg-muted">
+            <CharacterSprite character={user.character} scale={1.5} offsetY={-3} />
+            <span className="absolute bottom-0.5 end-0.5 size-2 rounded-full bg-ok ring-2 ring-muted" />
           </span>
           <span className="min-w-0">
-            <span className="block font-body text-[13px] font-semibold text-[var(--color-braun-text)] truncate">
-              {user.displayName}
-            </span>
-            <span className="block font-body text-[11px] text-[var(--color-braun-text)] opacity-55 truncate">
-              {t("onTheFloor", { office: office.name })}
+            <span className="block truncate text-[13px] font-medium text-foreground">{t("onTheFloor")}</span>
+            <span className="flex items-center gap-1 truncate text-[11.5px] text-muted-foreground group-hover:text-foreground">
+              <MapIcon className="size-3 shrink-0" />
+              <span className="truncate">{place}</span>
             </span>
           </span>
-        </div>
-
-        <div className="flex items-center gap-1.5">
-          <RoomIconButton
-            size="sm"
-            onClick={toggleMic}
-            tone={micEnabled ? "quiet" : "alert"}
-            title={micEnabled ? tControls("muteMic") : tControls("unmuteMic")}
-            icon={micEnabled ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
-          />
-          <RoomIconButton
-            size="sm"
-            onClick={toggleCamera}
-            tone={cameraEnabled ? "quiet" : "alert"}
-            title={cameraEnabled ? tControls("cameraOff") : tControls("cameraOn")}
-            icon={cameraEnabled ? <Video className="w-4 h-4" /> : <VideoOff className="w-4 h-4" />}
-          />
-          {away && (
-            <Link
-              href={floor}
-              className="cursor-pointer ms-auto h-8 px-3 rounded-full bg-white border border-black/[0.06] shadow-sm flex items-center gap-1.5 font-body text-[12px] font-semibold text-[var(--color-braun-text)] hover:bg-[#f5f5f2] transition-colors duration-150"
-            >
-              <Map className="w-3.5 h-3.5" />
-              {t("backToFloor")}
-            </Link>
-          )}
-        </div>
+        </Link>
+        <IconButton
+          size="sm"
+          label={micEnabled ? tControls("muteMic") : tControls("unmuteMic")}
+          tone={micEnabled ? "ghost" : "off"}
+          onClick={() => callManager.setMic(!micEnabled)}
+          icon={micEnabled ? <Mic /> : <MicOff />}
+          className="[&_svg]:size-4"
+        />
+        <IconButton
+          size="sm"
+          label={cameraEnabled ? tControls("cameraOff") : tControls("cameraOn")}
+          tone={cameraEnabled ? "ghost" : "off"}
+          onClick={() => callManager.setCamera(!cameraEnabled)}
+          icon={cameraEnabled ? <Video /> : <VideoOff />}
+          className="[&_svg]:size-4"
+        />
       </div>
     </div>
   );

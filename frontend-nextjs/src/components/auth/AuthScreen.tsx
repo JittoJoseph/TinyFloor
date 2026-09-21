@@ -24,7 +24,7 @@ export function safeRedirect(value: string | null): string {
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   return message ? (
-    <p id={id} className="mt-2 font-body text-[12px] text-red-600">
+    <p id={id} className="mt-2 text-[12px] text-destructive">
       {message}
     </p>
   ) : null;
@@ -194,7 +194,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     [fieldErrors[field] ? `${ids}-${field}-error` : null, extra].filter(Boolean).join(" ") || undefined;
 
   const fieldClass = (field: FieldName) =>
-    `${inputClass} ${field in fieldErrors ? "!border-red-300 focus:!ring-red-100" : ""}`;
+    `${inputClass} ${field in fieldErrors ? "!border-destructive/50 focus:!ring-destructive/15" : ""}`;
 
   const passwordLongEnough = password.length >= PASSWORD_MIN_LENGTH;
 
@@ -221,11 +221,11 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         <div
           role="tablist"
           aria-label={t("chooseMode")}
-          className="relative grid grid-cols-2 p-1 mb-6 rounded-full bg-[#f3f3ef] border border-black/5"
+          className="relative grid grid-cols-2 p-1 mb-6 rounded-full bg-muted border border-border"
         >
           <span
             aria-hidden
-            className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+            className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-card shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
               signingUp ? "translate-x-full rtl:-translate-x-full" : "translate-x-0"
             } start-1`}
           />
@@ -236,8 +236,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               role="tab"
               aria-selected={mode === option}
               onClick={() => switchMode(option)}
-              className={`cursor-pointer relative h-9 rounded-full font-body text-[13px] font-semibold transition-opacity duration-200 ${
-                mode === option ? "text-[var(--color-braun-text)]" : "text-[var(--color-braun-text)] opacity-45 hover:opacity-75"
+              className={`cursor-pointer relative h-9 rounded-full text-[13px] font-semibold transition-opacity duration-200 ${
+                mode === option ? "text-foreground" : "text-foreground opacity-45 hover:opacity-75"
               }`}
             >
               {option === "signin" ? t("tabSignIn") : t("tabSignUp")}
@@ -245,16 +245,16 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           ))}
         </div>
 
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5">
+        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5">
           {signingUp ? t("signUpTitle") : t("signInTitle")}
         </h1>
-        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">
+        <p className="text-sm text-foreground opacity-55 mb-6">
           {signingUp ? t("signUpSubtitle") : t("signInSubtitle")}
         </p>
 
         {signingUp && guest && (
-          <p className="mb-5 flex items-start gap-2.5 rounded-xl bg-[#f6f5f0] border border-black/5 px-4 py-3 font-body text-[13px] text-[var(--color-braun-text)]">
-            <Check className="w-4 h-4 mt-0.5 shrink-0 text-emerald-600" />
+          <p className="mb-5 flex items-start gap-2.5 rounded-xl bg-muted border border-border px-4 py-3 text-[13px] text-foreground">
+            <Check className="w-4 h-4 mt-0.5 shrink-0 text-ok" />
             <span className="opacity-75">{t("guestCarryOver", { name: guest.displayName })}</span>
           </p>
         )}
@@ -327,22 +327,22 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                 onClick={() => setShowPassword((shown) => !shown)}
                 aria-label={showPassword ? t("hidePassword") : t("showPassword")}
                 aria-pressed={showPassword}
-                className="cursor-pointer absolute end-1.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg flex items-center justify-center text-[var(--color-braun-text)] opacity-45 hover:opacity-80 transition-opacity"
+                className="cursor-pointer absolute end-1.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg flex items-center justify-center text-foreground opacity-45 hover:opacity-80 transition-opacity"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
             <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
             {capsLock && (
-              <p className="mt-2 font-body text-[12px] text-amber-700" role="status">
+              <p className="mt-2 text-[12px] text-warn" role="status">
                 {t("capsLock")}
               </p>
             )}
             {signingUp && !fieldErrors.password && (
               <p
                 id={`${ids}-password-rule`}
-                className={`mt-2 flex items-center gap-1.5 font-body text-[12px] transition-colors duration-200 ${
-                  passwordLongEnough ? "text-emerald-700" : "text-[var(--color-braun-text)] opacity-50"
+                className={`mt-2 flex items-center gap-1.5 text-[12px] transition-colors duration-200 ${
+                  passwordLongEnough ? "text-ok" : "text-foreground opacity-50"
                 }`}
               >
                 <Check className={`w-3.5 h-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
@@ -370,7 +370,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           </button>
         </form>
 
-        <p className="font-body text-[13px] text-[var(--color-braun-text)] text-center mt-6">
+        <p className="text-[13px] text-foreground text-center mt-6">
           <span className="opacity-55">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
           <button
             type="button"
@@ -382,10 +382,10 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         </p>
 
         {!user && (
-          <p className="font-body text-[12px] text-center mt-3">
+          <p className="text-[12px] text-center mt-3">
             <Link
               href="/lobby"
-              className="cursor-pointer text-[var(--color-braun-text)] opacity-45 hover:opacity-80 underline-offset-2 hover:underline transition-opacity"
+              className="cursor-pointer text-foreground opacity-45 hover:opacity-80 underline-offset-2 hover:underline transition-opacity"
             >
               {t("continueGuest")}
             </Link>

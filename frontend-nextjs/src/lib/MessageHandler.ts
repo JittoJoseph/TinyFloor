@@ -69,6 +69,7 @@ export class MessageHandler {
         break;
       case "status":
         this.playerManager.updatePlayerStatus(message.id, message.status);
+        this.dispatchPlayerList();
         window.dispatchEvent(
           new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }),
         );

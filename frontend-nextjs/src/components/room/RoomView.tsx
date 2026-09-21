@@ -3,12 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Check, LogOut, UserPlus, Users } from "lucide-react";
+import { AlertCircle, Check, UserPlus } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import ControlBar from "@/components/ControlBar";
-import SettingsModal from "@/components/SettingsModal";
-import ChatPanel from "@/components/ChatPanel";
-import { ChatToasts } from "@/components/ChatToasts";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
@@ -16,21 +14,26 @@ import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
 import { EntryShell, primaryButtonClass } from "@/components/entry/EntryShell";
 import { EntryPreview } from "@/components/entry/EntryPreview";
-import { RoomButton, roomLinkClass, surface, label, quietLabel } from "@/components/room/ui";
+import { Button } from "@/components/motion/button/base";
+import { Loader } from "@/components/motion/loader";
+import { FaceStack } from "@/components/ui/Face";
+import { PersonPill } from "@/components/ui/Person";
 import type { RoomTicket } from "@/lib/api";
-import type { PlayerStatus } from "@/lib/types";
 import { shareUrl } from "@/lib/links";
 import { shareLink } from "@/lib/share";
+import { useFloor } from "@/lib/floor";
+import { EASE_OUT } from "@/lib/ease";
+import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
 import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
 function Connecting() {
   const t = useTranslations("room");
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--color-braun-bg)] text-[var(--color-braun-text)]">
-      <div className="text-center flex flex-col items-center gap-5">
-        <div className="w-9 h-9 border-2 border-[var(--color-braun-text)] border-t-transparent rounded-full animate-spin" />
-        <p className="font-body text-[13px] font-semibold">{t("connecting")}</p>
+    <div className="absolute inset-0 flex items-center justify-center bg-background text-muted-foreground">
+      <div className="flex flex-col items-center gap-4">
+        <Loader variant="dots" size={22} />
+        <p className="text-[13px]">{t("connecting")}</p>
       </div>
     </div>
   );
@@ -43,30 +46,37 @@ const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
 
 export interface RoomViewProps {
   title: string;
-  subtitle?: string;
   user: { id: string; displayName: string; character: string };
   ticketFor: () => Promise<RoomTicket>;
   /** A path worth sharing from inside the room, if there is one. */
   sharePath?: string;
-  /** Where "Leave" goes. */
+  /** Where "back" goes when the room lets go of you. */
   leaveHref: string;
+  onDevices?: () => void;
 }
 
-/** A room: the floor, the overlays, and what to show when the room lets go of you. */
-export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHref }: RoomViewProps) {
+/**
+ * The floor: the map, and only what has to float over it — where you are and
+ * who is here (top left), Invite (top right), and your microphone and camera
+ * (bottom). Everything else lives in the rail.
+ */
+export function RoomView({ title, user, ticketFor, sharePath, leaveHref, onDevices }: RoomViewProps) {
   const t = useTranslations("room");
-  const [showSettings, setShowSettings] = useState(false);
-  const [showChat, setShowChat] = useState(false);
-  const [unreadChatCount, setUnreadChatCount] = useState(0);
   const [copied, setCopied] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState<PlayerStatus>("available");
   const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
-  const [participants, setParticipants] = useState<Array<{ id: string; name: string }>>([]);
   const [reconnecting, setReconnecting] = useState(false);
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
+  const [peopleOpen, setPeopleOpen] = useState(false);
+  const everyone = useFloor();
+  const reduce = useReducedMotion();
 
-  const here = participants.length + 1;
+  // You first, then everyone else as they arrived.
+  const here = [
+    ...everyone.filter((one) => one.id === user.id),
+    ...everyone.filter((one) => one.id !== user.id),
+  ];
+  const count = Math.max(here.length, 1);
 
   // The share sheet on phones, the clipboard on a desktop; the button only says
   // something when the link landed on the clipboard, where nothing else would.
@@ -78,106 +88,40 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
     setTimeout(() => setCopied(false), 2000);
   }, [sharePath, title, t]);
 
-  const handleStatusChange = useCallback((status: PlayerStatus) => {
-    setCurrentStatus(status);
-    window.dispatchEvent(new CustomEvent("statusChange", { detail: { status } }));
-  }, []);
-
   useEffect(() => {
-    const onOpenChat = () => setShowChat(true);
-    const onPlayers = (event: Event) => {
-      const everyone = (event as CustomEvent<Array<{ id: string; name: string }>>).detail;
-      setParticipants(everyone.filter((person) => person.id !== user.id));
-    };
     const onTutorialFinished = () => setTutorialActive(false);
     const onConnection = (event: Event) =>
       setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
     const onEnded = (event: Event) => setEnded((event as CustomEvent<{ reason: RoomEnd }>).detail.reason);
 
     window.addEventListener(TUTORIAL_FINISHED_EVENT, onTutorialFinished);
-    window.addEventListener("openChat", onOpenChat);
-    window.addEventListener("playerListUpdated", onPlayers);
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
     window.addEventListener(ROOM_ENDED_EVENT, onEnded);
     return () => {
       window.removeEventListener(TUTORIAL_FINISHED_EVENT, onTutorialFinished);
-      window.removeEventListener("openChat", onOpenChat);
-      window.removeEventListener("playerListUpdated", onPlayers);
       window.removeEventListener(ROOM_CONNECTION_EVENT, onConnection);
       window.removeEventListener(ROOM_ENDED_EVENT, onEnded);
     };
-  }, [user.id]);
+  }, []);
 
   if (ended) {
     return (
-      <RoomEnded
-        reason={ended}
-        leaveHref={leaveHref}
-        character={user.character}
-        onRetry={() => {
-          setEnded(null);
-          setAttempt((count) => count + 1);
-        }}
-      />
+      <div className="absolute inset-0 z-[70] overflow-y-auto bg-background">
+        <RoomEnded
+          reason={ended}
+          leaveHref={leaveHref}
+          character={user.character}
+          onRetry={() => {
+            setEnded(null);
+            setAttempt((value) => value + 1);
+          }}
+        />
+      </div>
     );
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[var(--color-braun-bg)]">
-      {/* One row across the top: where you are on the left, what you can do on
-          the right, both the same height so they read as one bar. */}
-      <div
-        className={`absolute top-0 inset-x-0 p-3 sm:p-5 ${
-          tutorialActive ? "hidden md:flex" : "flex"
-        } items-start justify-between gap-3 z-10 pointer-events-none`}
-      >
-        <div
-          className={`${surface} rounded-full pointer-events-auto flex items-center gap-2.5 h-10 ps-3.5 pe-4 min-w-0 max-w-[min(20rem,55vw)]`}
-        >
-          <span
-            className={`w-2 h-2 rounded-full shrink-0 ${
-              reconnecting ? "bg-amber-500 animate-pulse" : "bg-emerald-500"
-            }`}
-          />
-          <span className="min-w-0 flex items-baseline gap-2">
-            <span className={`${label} text-[var(--color-braun-text)] truncate`}>{title}</span>
-            <span className={`${quietLabel} truncate hidden sm:inline`}>
-              {reconnecting ? t("reconnecting") : subtitle}
-            </span>
-          </span>
-          {here > 1 && !reconnecting && (
-            <span
-              className="flex items-center gap-1 shrink-0 ps-2.5 ms-0.5 border-s border-black/[0.08] text-[var(--color-braun-text)] opacity-55"
-              title={t("peopleHere", { count: here })}
-            >
-              <Users className="w-3.5 h-3.5" aria-hidden="true" />
-              <span className="font-body text-[12px] font-semibold">{here}</span>
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2 pointer-events-auto shrink-0">
-          {sharePath && (
-            <RoomButton
-              onClick={invite}
-              icon={
-                copied ? (
-                  <Check className="w-4 h-4 text-[var(--color-braun-green)]" />
-                ) : (
-                  <UserPlus className="w-4 h-4" />
-                )
-              }
-            >
-              {copied ? t("linkCopied") : t("invite")}
-            </RoomButton>
-          )}
-          <Link href={leaveHref} className={roomLinkClass("dark")} title={t("leave")}>
-            <LogOut className="w-4 h-4 rtl:rotate-180" />
-            <span className="hidden sm:inline">{t("leave")}</span>
-          </Link>
-        </div>
-      </div>
-
+    <div className="absolute inset-0 overflow-hidden bg-[color-mix(in_oklab,var(--ui-background)_70%,var(--ui-muted))]">
       <PhaserGame
         key={attempt}
         name={user.displayName}
@@ -185,6 +129,81 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
         userId={user.id}
         ticketFor={ticketFor}
       />
+
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4",
+          tutorialActive && "hidden md:flex",
+        )}
+      >
+        {/* Where you are and who is with you. Pressing it lists them. */}
+        <div className="pointer-events-auto relative">
+          <button
+            type="button"
+            onClick={() => setPeopleOpen((open) => !open)}
+            aria-expanded={peopleOpen}
+            className="flex h-10 max-w-[min(22rem,60vw)] cursor-pointer items-center gap-2.5 rounded-full border border-border bg-card/90 ps-3.5 pe-2 shadow-float backdrop-blur-md transition-colors hover:bg-card [--face-ring:var(--ui-card)]"
+          >
+            <span
+              className={cn("size-2 shrink-0 rounded-full", reconnecting ? "animate-pulse bg-warn" : "bg-ok")}
+              aria-hidden
+            />
+            <span className="truncate text-[13px] font-medium text-foreground">
+              {reconnecting ? t("reconnecting") : title}
+            </span>
+            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-muted py-0.5 ps-0.5 pe-2 [--face-ring:var(--ui-muted)]">
+              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} />
+              <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{count}</span>
+            </span>
+          </button>
+
+          <AnimatePresence>
+            {peopleOpen && (
+              <motion.div
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, y: -4, scale: 0.98 }}
+                transition={{ duration: 0.18, ease: EASE_OUT }}
+                style={{ transformOrigin: "top left" }}
+                className="absolute start-0 top-12 w-72 rounded-2xl border border-border bg-popover p-2 shadow-float"
+              >
+                <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">
+                  {t("peopleHere", { count })}
+                </p>
+                <div className="flex max-h-72 flex-col gap-1.5 overflow-y-auto">
+                  {here.map((one) => (
+                    <PersonPill
+                      key={one.id}
+                      id={one.id}
+                      name={one.id === user.id ? t("you", { name: one.name }) : one.name}
+                      presence={one.status}
+                      size="sm"
+                      className="border-transparent bg-muted/60 [--face-ring:var(--ui-popover)]"
+                    />
+                  ))}
+                </div>
+                {sharePath && (
+                  <Button variant="secondary" size="sm" onClick={invite} className="mt-2 w-full">
+                    <UserPlus className="size-3.5" />
+                    {t("invite")}
+                  </Button>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {sharePath && (
+          <Button
+            size="md"
+            onClick={invite}
+            className="pointer-events-auto h-10 shrink-0 gap-2 px-4 text-[13px] shadow-float"
+          >
+            {copied ? <Check className="size-4" /> : <UserPlus className="size-4" />}
+            <span className="hidden sm:inline">{copied ? t("linkCopied") : t("invite")}</span>
+          </Button>
+        )}
+      </div>
 
       <ProximityOverlay />
       <CallOverlay />
@@ -194,27 +213,8 @@ export function RoomView({ title, subtitle, user, ticketFor, sharePath, leaveHre
       <RoomTutorial name={user.displayName} character={user.character} sharePath={sharePath} />
 
       <div className={tutorialActive ? "hidden md:block" : undefined}>
-        <ControlBar
-          onSettingsClick={() => setShowSettings(true)}
-          onChatClick={() => setShowChat((open) => !open)}
-          onStatusChange={handleStatusChange}
-          currentStatus={currentStatus}
-          unreadChatCount={unreadChatCount}
-        />
+        <ControlBar onDevices={onDevices} />
       </div>
-
-      <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
-
-      <ChatPanel
-        isOpen={showChat}
-        onClose={() => setShowChat(false)}
-        userId={user.id}
-        userName={user.displayName}
-        onUnreadChange={setUnreadChatCount}
-        participantCount={here}
-      />
-
-      <ChatToasts isChatOpen={showChat} onOpenChat={() => setShowChat(true)} />
     </div>
   );
 }
@@ -248,13 +248,11 @@ function RoomEnded({
       preview={<EntryPreview occupants={[{ character, left: "50%", top: "79%", width: 44 }]} />}
     >
       <div className="entry-rise">
-        <span className="inline-flex w-11 h-11 rounded-xl bg-amber-50 items-center justify-center mb-5">
-          <AlertCircle className="w-5 h-5 text-amber-600" />
+        <span className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-warn/15 text-warn">
+          <AlertCircle className="size-5" />
         </span>
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
-          {copy[reason].title}
-        </h1>
-        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">{copy[reason].body}</p>
+        <h1 className="mb-2 text-[1.6rem] font-semibold tracking-tight text-foreground">{copy[reason].title}</h1>
+        <p className="mb-6 text-[14px] text-muted-foreground">{copy[reason].body}</p>
         {reason === "signedOut" ? (
           <Link href="/auth" className={primaryButtonClass}>
             {t("signIn")}

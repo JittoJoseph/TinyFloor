@@ -22,7 +22,7 @@ export interface InvitePreview {
 }
 
 const secondaryButtonClass =
-  "cursor-pointer w-full h-14 rounded-full border border-black/10 bg-white text-[var(--color-braun-text)] font-body font-bold uppercase tracking-[0.15em] text-xs transition-colors hover:bg-[#f7f7f3] flex items-center justify-center gap-2";
+  "cursor-pointer w-full h-12 rounded-full border border-border bg-card text-foreground font-medium text-[14px] transition-colors hover:bg-muted flex items-center justify-center gap-2";
 
 /**
  * An invitation to a space. Anyone can say who they'll be first, name then
@@ -102,9 +102,9 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     return (
       <EntryShell backHref="/" preview={preview}>
         <div className="space-y-4">
-          <div className="h-3 w-24 rounded-full bg-black/5 animate-pulse" />
-          <div className="h-7 w-2/3 rounded-lg bg-black/5 animate-pulse" />
-          <div className="h-14 w-full rounded-full bg-black/5 animate-pulse" />
+          <div className="h-3 w-24 rounded-full bg-muted animate-pulse" />
+          <div className="h-7 w-2/3 rounded-lg bg-muted animate-pulse" />
+          <div className="h-14 w-full rounded-full bg-muted animate-pulse" />
         </div>
       </EntryShell>
     );
@@ -114,13 +114,13 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     return (
       <EntryShell backHref="/" preview={preview}>
         <div className="entry-rise">
-          <span className="inline-flex w-11 h-11 rounded-xl bg-red-50 items-center justify-center mb-5">
-            <AlertCircle className="w-5 h-5 text-red-500" />
+          <span className="inline-flex w-11 h-11 rounded-xl bg-destructive/10 items-center justify-center mb-5">
+            <AlertCircle className="w-5 h-5 text-destructive" />
           </span>
-          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
+          <h1 className="text-[1.75rem] font-medium tracking-tight text-foreground mb-2">
             {t("invalidTitle")}
           </h1>
-          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">{t("invalid")}</p>
+          <p className="text-sm text-foreground opacity-55 mb-6">{t("invalid")}</p>
           <Link href="/" className={primaryButtonClass}>
             {t("home")}
           </Link>
@@ -134,13 +134,13 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   return (
     <EntryShell backHref="/" preview={preview}>
       <div className="entry-rise">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-braun-text)] opacity-45 mb-2">
+        <p className="text-[11px] font-bold text-foreground opacity-45 mb-2">
           {t("eyebrow", { name: invite.invitedBy })}
         </p>
-        <h1 className="font-body text-[1.75rem] font-medium tracking-tight leading-tight text-[var(--color-braun-text)] mb-1.5 break-words">
+        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5 break-words">
           {invite.officeName}
         </h1>
-        <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-5">
+        <p className="text-sm text-foreground opacity-55 mb-5">
           {invite.role === "admin" ? t("asAdmin") : t("asMember")}
         </p>
 
@@ -157,7 +157,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
               {t("join", { office: invite.officeName })}
               {!busy && <ArrowRight className="w-4 h-4 rtl:rotate-180" />}
             </button>
-            <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 text-center mt-4">
+            <p className="text-[12px] text-foreground opacity-45 text-center mt-4">
               {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
             </p>
           </>
@@ -178,7 +178,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             >
               {t("signIn")}
             </Link>
-            <p className="font-body text-[12px] text-[var(--color-braun-text)] opacity-45 text-center pt-1">
+            <p className="text-[12px] text-foreground opacity-45 text-center pt-1">
               {t("accountKeeps", { name: trimmed })}
             </p>
           </div>

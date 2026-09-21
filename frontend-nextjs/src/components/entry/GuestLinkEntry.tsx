@@ -59,10 +59,10 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
     return (
       <EntryShell preview={<EntryPreview occupants={[]} />}>
         <div className="space-y-4">
-          <div className="h-3 w-20 rounded-full bg-black/5 animate-pulse" />
-          <div className="h-7 w-2/3 rounded-lg bg-black/5 animate-pulse" />
-          <div className="h-13 w-full rounded-xl bg-black/5 animate-pulse" />
-          <div className="h-24 w-full rounded-xl bg-black/5 animate-pulse" />
+          <div className="h-3 w-20 rounded-full bg-muted animate-pulse" />
+          <div className="h-7 w-2/3 rounded-lg bg-muted animate-pulse" />
+          <div className="h-13 w-full rounded-xl bg-muted animate-pulse" />
+          <div className="h-24 w-full rounded-xl bg-muted animate-pulse" />
         </div>
       </EntryShell>
     );
@@ -72,13 +72,13 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
     return (
       <EntryShell preview={<EntryPreview occupants={[]} />}>
         <div className="entry-rise">
-          <span className="inline-flex w-11 h-11 rounded-xl bg-red-50 items-center justify-center mb-5">
-            <AlertCircle className="w-5 h-5 text-red-500" />
+          <span className="inline-flex w-11 h-11 rounded-xl bg-destructive/10 items-center justify-center mb-5">
+            <AlertCircle className="w-5 h-5 text-destructive" />
           </span>
-          <h1 className="font-body text-[1.75rem] font-medium tracking-tight text-[var(--color-braun-text)] mb-2">
+          <h1 className="text-[1.75rem] font-medium tracking-tight text-foreground mb-2">
             {t("unavailableTitle")}
           </h1>
-          <p className="font-body text-sm text-[var(--color-braun-text)] opacity-55 mb-6">{t("linkUnavailable")}</p>
+          <p className="text-sm text-foreground opacity-55 mb-6">{t("linkUnavailable")}</p>
           <Link href="/lobby" className={primaryButtonClass}>
             {t("visitLobby")}
           </Link>

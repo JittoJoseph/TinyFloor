@@ -91,7 +91,7 @@ cost nothing while idle, so the separation is free.
 | Realtime TURN | relay for calls behind strict NATs | Keep; pay-as-you-go past 1,000 GB. |
 | Realtime SFU | group meetings | Keep; same. |
 | Turnstile | bot check on sign-up and guest creation | Keep; free. |
-| Discord webhook | public lobby activity, for spotting abuse | Keep while the lobby is open to anyone. |
+| Discord webhook | someone walking into the public lobby (name, character, city/region/country); a new office (name, maker, where) | Keep. Lobby chat is not sent (it is stored, a week), nor office arrivals. The webhook is a secret of `tinyfloor-realtime` only; the API reaches it through `RealtimeAdmin.officeCreated`. |
 | R2 | image attachments (not built yet) | Add with attachments. |
 
 ## Outside Cloudflare

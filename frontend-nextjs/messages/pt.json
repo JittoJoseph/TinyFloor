@@ -382,7 +382,7 @@
     "lobbyAlone": "Mensagens diretas vêm com um escritório só seu. Aqui, diga oi em um canal.",
     "dropHere": "Solte para compartilhar em {channel}",
     "dropLobby": "Imagens são compartilhadas nos escritórios, não no lobby.",
-    "lobbyGeneral": "Todos, em cada cópia do lobby, leem isto. Diga oi, pergunte o que quiser. As mensagens ficam por 7 dias.",
+    "lobbyGeneral": "Diga oi, faça uma pergunta ou conte no que está trabalhando. As mensagens ficam aqui por uma semana.",
     "lobbyIntroductions": "Quem é você e o que te traz aqui? Todo o lobby pode ler por 7 dias.",
     "lobbyFeedback": "O que tornaria o TinyFloor melhor para sua equipe? Lemos cada mensagem aqui.",
     "introduceYourself": "Apresente-se",
@@ -1222,6 +1222,7 @@
     "lobby": "O saguão público",
     "lobbyBody": "Passe por lá e conheça quem estiver.",
     "emptyTitle": "Comece seu primeiro escritório",
-    "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis."
+    "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis.",
+    "walkIn": "Entrar"
   }
 }

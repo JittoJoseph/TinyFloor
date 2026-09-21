@@ -55,15 +55,28 @@ export default function DashboardPage() {
     <div className="min-h-dvh bg-background">
       <AppTopBar />
       <main className="mx-auto w-full max-w-6xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
-        <h1 className="text-[26px] font-semibold tracking-tight text-foreground sm:text-[30px]">
-          {t(greeting, { name: firstName })}
-        </h1>
-        {offices.length > 0 && <p className="mt-1 text-[14.5px] text-muted-foreground">{t("subtitle")}</p>}
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-[26px] font-semibold tracking-[-0.02em] text-foreground sm:text-[30px]">
+              {t(greeting, { name: firstName })}
+            </h1>
+            {offices.length > 0 && <p className="mt-1 text-[14.5px] text-muted-foreground">{t("subtitle")}</p>}
+          </div>
+          {offices.length > 0 && (
+            <Link
+              href="/create"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-[background-color,transform] hover:bg-foreground/90 active:scale-[0.98]"
+            >
+              <Plus className="size-4" />
+              {t("newOffice")}
+            </Link>
+          )}
+        </div>
 
         {offices.length === 0 ? (
           <Empty />
         ) : (
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {offices.map((office, index) => (
               <OfficeCard key={office.id} office={office} index={index} />
             ))}
@@ -71,8 +84,7 @@ export default function DashboardPage() {
         )}
 
         {offices.length > 0 && (
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <Shortcut href="/create" icon={<Plus className="size-5" />} title={t("newOffice")} body={t("newOfficeBody")} />
+          <div className="mt-10">
             <Shortcut href="/lobby" icon={<Logo size={40} />} bare title={t("lobby")} body={t("lobbyBody")} />
           </div>
         )}
@@ -116,6 +128,19 @@ function Shortcut({
   );
 }
 
+/** Good patches of the floor art to show on a card, so offices do not all look alike. */
+const VIEWS = ["18% 22%", "78% 30%", "40% 72%", "85% 80%", "55% 20%", "15% 85%"];
+
+function viewFor(id: string): string {
+  let hash = 0;
+  for (const char of id) hash = (hash * 31 + char.charCodeAt(0)) | 0;
+  return VIEWS[Math.abs(hash) % VIEWS.length];
+}
+
+/**
+ * An office as a place: a window onto its floor, drawn at the art's own pixel
+ * size so it stays crisp, who is there now, and the way in.
+ */
 function OfficeCard({ office, index }: { office: OfficeSummary; index: number }) {
   const t = useTranslations("dashboard");
   const tRoles = useTranslations("office.roles");
@@ -132,34 +157,40 @@ function OfficeCard({ office, index }: { office: OfficeSummary; index: number })
     >
       <Link
         href={officePath(office.id)}
-        className="group block overflow-hidden rounded-[22px] border border-border bg-card transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-float [--face-ring:var(--ui-card)]"
+        className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-border bg-card transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-float [--face-ring:var(--ui-card)]"
       >
-        {/* A look at the floor, so an office reads as a place. */}
-        <div className="relative h-36 overflow-hidden bg-muted">
-          <span className="absolute inset-0 bg-[url('/office.png')] bg-cover bg-center transition-transform duration-500 [image-rendering:pixelated] group-hover:scale-[1.04]" />
-          <span className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+        <div className="relative m-1.5 mb-0 h-40 overflow-hidden rounded-[17px] bg-[#8f8f96]">
+          <span
+            className="absolute inset-0 transition-transform duration-700 ease-out [image-rendering:pixelated] group-hover:scale-[1.03]"
+            style={{ backgroundImage: "url(/office.png)", backgroundSize: "900px 600px", backgroundPosition: viewFor(office.id) }}
+          />
           <span
             className={cn(
-              "absolute start-3 top-3 flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[12px] font-medium backdrop-blur-md",
-              here ? "bg-black/55 text-white" : "bg-black/35 text-white/80",
+              "absolute start-2.5 top-2.5 flex h-7 items-center gap-1.5 rounded-full border border-border bg-card/90 px-2.5 text-[12px] font-medium shadow-float backdrop-blur-md",
+              here ? "text-foreground" : "text-muted-foreground",
             )}
           >
-            <span className={cn("size-1.5 rounded-full", here ? "bg-ok" : "bg-white/50")} />
+            <span className={cn("size-1.5 rounded-full", here ? "bg-ok" : "bg-faint")} />
             {t("onFloor", { count: here })}
           </span>
         </div>
 
-        <div className="relative px-5 pb-5 pt-0">
-          <Face seed={office.id} size={44} square className="-mt-6 rounded-[30%] ring-4 ring-card" />
-          <div className="mt-3 flex items-end justify-between gap-3">
-            <div className="min-w-0">
-              <p className="truncate text-[16px] font-semibold tracking-tight text-foreground">{office.name}</p>
-              <p className="mt-0.5 truncate text-[13px] text-muted-foreground">
-                {ts("membersOf", { used: office.members, seats: office.seats })} · {tRoles(office.role)}
-              </p>
-            </div>
-            {faces.length > 0 && <FaceStack seeds={faces.map((one) => one.id)} size={26} max={4} />}
+        <div className="flex flex-1 items-center gap-3.5 p-4">
+          <Face seed={office.id} size={44} square />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[15.5px] font-semibold tracking-tight text-foreground">{office.name}</p>
+            <p className="mt-0.5 truncate text-[12.5px] text-muted-foreground">
+              {ts("membersOf", { used: office.members, seats: office.seats })} · {tRoles(office.role)}
+            </p>
           </div>
+          {faces.length > 0 && <FaceStack seeds={faces.map((one) => one.id)} size={24} max={3} />}
+        </div>
+
+        <div className="flex items-center justify-between border-t border-border px-4 py-3 text-[13px]">
+          <span className="font-medium text-foreground">{t("walkIn")}</span>
+          <span className="flex size-7 items-center justify-center rounded-full bg-muted text-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+          </span>
         </div>
       </Link>
     </motion.li>
@@ -170,8 +201,11 @@ function Empty() {
   const t = useTranslations("dashboard");
   return (
     <div className="mt-8 grid overflow-hidden rounded-[26px] border border-border bg-card md:grid-cols-[1.1fr_1fr]">
-      <div className="relative min-h-52 bg-muted">
-        <span className="absolute inset-0 bg-[url('/office.png')] bg-cover bg-center [image-rendering:pixelated]" />
+      <div className="relative m-2 min-h-56 overflow-hidden rounded-[20px] bg-[#8f8f96]">
+        <span
+          className="absolute inset-0 [image-rendering:pixelated]"
+          style={{ backgroundImage: "url(/office.png)", backgroundSize: "900px 600px", backgroundPosition: "40% 72%" }}
+        />
       </div>
       <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
         <div>

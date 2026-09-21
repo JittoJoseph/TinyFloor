@@ -382,7 +382,7 @@
     "lobbyAlone": "Yksityisviestit kuuluvat omaan toimistoon. Tervehdi täällä kanavalla.",
     "dropHere": "Pudota jakaaksesi kanavalle {channel}",
     "dropLobby": "Kuvia jaetaan toimistoissa, ei aulassa.",
-    "lobbyGeneral": "Kaikki aulan kopioissa lukevat tämän. Tervehdi ja kysy mitä vain. Viestit säilyvät 7 päivää.",
+    "lobbyGeneral": "Tervehdi, kysy jotain tai kerro, mitä teet. Viestit säilyvät täällä viikon.",
     "lobbyIntroductions": "Kuka olet, ja mikä toi sinut tänne? Koko aula voi lukea sen 7 päivän ajan.",
     "lobbyFeedback": "Mikä tekisi TinyFloorista paremman tiimillesi? Luemme jokaisen viestin täällä.",
     "introduceYourself": "Esittele itsesi",
@@ -1222,6 +1222,7 @@
     "lobby": "Julkinen aula",
     "lobbyBody": "Poikkea ja tapaa, kuka paikalla on.",
     "emptyTitle": "Aloita ensimmäinen toimistosi",
-    "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi."
+    "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi.",
+    "walkIn": "Kävele sisään"
   }
 }

@@ -1,5 +1,6 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
-import { LOBBY_COPY_CAPACITY, type LobbyPeople, type RealtimeAdminApi } from "../../shared-protocol/src";
+import { LOBBY_COPY_CAPACITY, type LobbyPeople, type RealtimeAdminApi, type Whereabouts } from "../../shared-protocol/src";
+import { Reporter } from "./discord";
 import { lobbyCopy } from "./lobby";
 
 /** Faces the lobby door shows. */
@@ -43,6 +44,11 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
       for (const one of people) if (faces.length < FACES) faces.push(one);
     }
     return { here, faces };
+  }
+
+  /** A new office, for the team's Discord. The webhook lives here, with the lobby's. */
+  async officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void> {
+    await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "office_created", ...event });
   }
 
   /** A membership ended: the floor and the office's chat both let go of them. */

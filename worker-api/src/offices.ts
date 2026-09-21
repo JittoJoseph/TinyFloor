@@ -36,6 +36,13 @@ export function officeRoutes(router: Router): void {
           now,
         ),
       ]);
+      // The team hears about every new office; a Discord hiccup never fails the request.
+      const cf = request.cf as { city?: string; region?: string; country?: string } | undefined;
+      ctx.waitUntil(
+        realtime(env)
+          .officeCreated({ office: name, owner: user.displayName, where: { city: cf?.city, region: cf?.region, country: cf?.country } })
+          .catch(() => undefined),
+      );
       return json({ office: officeJson(await requireOffice(env, id, user.id), 1) }, { status: 201 });
     })
 

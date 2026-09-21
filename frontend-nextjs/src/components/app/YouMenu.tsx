@@ -55,6 +55,7 @@ export function YouMenu({
       align={panel ? "start" : "end"}
       offset={panel ? 8 : bar ? 8 : wide ? 20 : 10}
       width={260}
+      rootClassName={panel ? "min-w-0 flex-1" : undefined}
       trigger={
         panel ?? <button
           type="button"

@@ -1,5 +1,5 @@
 import { LOBBY_CHAT, LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
-import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
+import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
 import { Room } from "./room";
 import { Chat } from "./chat";
 import { placeInLobby } from "./lobby";
@@ -56,7 +56,8 @@ export default {
     headers.set(ROOM_HEADER, target);
     headers.set(TICKET_HEADER, JSON.stringify(ticket));
     headers.set(SPAWN_HEADER, `${url.searchParams.get("x") ?? ""},${url.searchParams.get("y") ?? ""}`);
-    headers.set(COUNTRY_HEADER, String((request.cf?.country as string | undefined) ?? ""));
+    const cf = request.cf as { city?: string; region?: string; country?: string } | undefined;
+    headers.set(WHERE_HEADER, encodeURIComponent(JSON.stringify({ city: cf?.city, region: cf?.region, country: cf?.country })));
 
     return env.ROOM.getByName(target).fetch(new Request(request.url, { headers }));
   },

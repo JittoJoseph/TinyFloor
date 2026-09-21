@@ -1,26 +1,18 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
-  AudioLines,
   Check,
-  CircleDot,
   Clock3,
   Globe2,
-  Languages,
   LockKeyhole,
   MonitorSmartphone,
-  MonitorUp,
-  Music2,
-  PenLine,
-  Smartphone,
-  SunMoon,
 } from "lucide-react";
-import { ChatsCircleIcon, MapTrifoldIcon, UsersThreeIcon, VideoConferenceIcon } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/lib/i18n/navigation";
 import { Logo } from "@/components/app/AppShell";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { HeroPreview } from "./HeroPreview";
+import { MoreGrid } from "./MoreGrid";
 import { HomeNavActions } from "./HomeNavActions";
 import { SiteFooter } from "./SiteFooter";
 import { CAST, Frame, type PreviewView } from "./previews/Frame";
@@ -166,7 +158,6 @@ const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-norma
 function Hero() {
   const t = useTranslations("home.hero");
   const points = t.raw("points") as string[];
-  const icon = { size: 17, weight: "regular" as const };
   return (
     <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
       <div className="mx-auto flex max-w-[52rem] flex-col items-center text-center">
@@ -190,16 +181,10 @@ function Hero() {
         </ul>
       </div>
 
-      <div className="mt-14 sm:mt-20">
+      <div className="mt-12 sm:mt-16">
         <HeroPreview
           label={t("previewLabel")}
           labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
-          icons={{
-            floor: <MapTrifoldIcon {...icon} />,
-            chat: <ChatsCircleIcon {...icon} />,
-            people: <UsersThreeIcon {...icon} />,
-            meeting: <VideoConferenceIcon {...icon} />,
-          }}
           panels={{
             floor: <HeroFrame view="floor"><FloorPreview /></HeroFrame>,
             chat: <HeroFrame view="chat"><ChatPreview /></HeroFrame>,
@@ -310,33 +295,12 @@ function FeatureRow({
   );
 }
 
-const MORE: Array<{ key: string; icon: ReactNode }> = [
-  { key: "screen", icon: <MonitorUp /> },
-  { key: "whiteboard", icon: <PenLine /> },
-  { key: "music", icon: <Music2 /> },
-  { key: "status", icon: <CircleDot /> },
-  { key: "noise", icon: <AudioLines /> },
-  { key: "mobile", icon: <Smartphone /> },
-  { key: "themes", icon: <SunMoon /> },
-  { key: "languages", icon: <Languages /> },
-];
-
 function More() {
   const t = useTranslations("home.more");
   return (
     <section className={cn(COLUMN, "py-20 sm:py-28")}>
       <Heading title={t("title")} muted={t("muted")} className="max-w-[22ch]" />
-      <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {MORE.map((item) => (
-          <li key={item.key} className="rounded-[22px] bg-foreground/[0.045] p-6">
-            <span className="flex size-10 items-center justify-center rounded-full bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] [&_svg]:size-[18px]">
-              {item.icon}
-            </span>
-            <p className="mt-8 text-[17px] font-semibold tracking-tight">{t(`items.${item.key}.title` as "items.screen.title")}</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${item.key}.body` as "items.screen.body")}</p>
-          </li>
-        ))}
-      </ul>
+      <MoreGrid />
     </section>
   );
 }
@@ -410,10 +374,12 @@ function Plans() {
           <Link href="/create" className={cn(INK, "mt-8 w-full")}>
             {t("free.cta")}
           </Link>
-          <ul className="mt-8 grid gap-3 border-t border-border pt-7 sm:grid-cols-2">
+          <ul className="mt-7 divide-y divide-border border-t border-border">
             {items.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-[15px]">
-                <Check className="mt-0.5 size-4 shrink-0 text-ok" strokeWidth={2.5} />
+              <li key={item} className="flex items-center gap-3 py-3 text-[15px]">
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-ok/12 text-ok">
+                  <Check className="size-3" strokeWidth={3} />
+                </span>
                 {item}
               </li>
             ))}
@@ -425,10 +391,12 @@ function Plans() {
             <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[12.5px] font-semibold text-brand">{t("soon.badge")}</span>
           </p>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">{t("soon.body")}</p>
-          <ul className="mt-7 grid gap-3">
+          <ul className="mt-6 divide-y divide-border border-t border-border">
             {(t.raw("soon.items") as string[]).map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-[15px] text-foreground/80">
-                <Clock3 className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+              <li key={item} className="flex items-center gap-3 py-3 text-[15px] text-foreground/80">
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.07] text-muted-foreground">
+                  <Clock3 className="size-3" strokeWidth={2.5} />
+                </span>
                 {item}
               </li>
             ))}

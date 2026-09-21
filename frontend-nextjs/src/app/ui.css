@@ -175,6 +175,19 @@ html.app .home .home-app {
 @media (prefers-reduced-motion: reduce) {
   .home-faq details::details-content { transition: none; }
 }
+/* The music cell's equaliser. */
+.home-eq {
+  height: 100%;
+  transform-origin: bottom;
+  animation: home-eq 900ms ease-in-out infinite alternate;
+}
+@keyframes home-eq {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-eq { animation: none; transform: scaleY(0.6); }
+}
 .home-dwell {
   animation: home-dwell linear forwards;
 }

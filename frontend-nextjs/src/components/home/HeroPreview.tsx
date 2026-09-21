@@ -6,7 +6,7 @@ import type { PreviewView } from "./previews/Frame";
 
 const VIEWS: PreviewView[] = ["floor", "chat", "people", "meeting"];
 /** How long each view shows before the next, until someone picks one. */
-const DWELL_MS = 7000;
+const DWELL_MS = 6500;
 
 /**
  * The hero's look inside the app. The four views, frames and all, are rendered
@@ -15,12 +15,10 @@ const DWELL_MS = 7000;
  */
 export function HeroPreview({
   labels,
-  icons,
   panels,
   label,
 }: {
   labels: Record<PreviewView, string>;
-  icons: Record<PreviewView, ReactNode>;
   panels: Record<PreviewView, ReactNode>;
   label: string;
 }) {
@@ -45,44 +43,41 @@ export function HeroPreview({
   }, [picked]);
 
   return (
-    <div ref={box}>
-      <div className="flex justify-center">
-        <div role="tablist" aria-label={label} className="inline-flex max-w-full gap-0.5 rounded-full bg-foreground/[0.055] p-1 sm:gap-1">
-          {VIEWS.map((one) => (
-            <button
-              key={one}
-              type="button"
-              role="tab"
-              id={`hero-tab-${one}`}
-              aria-selected={view === one}
-              aria-controls={`hero-panel-${one}`}
-              onClick={() => {
-                setPicked(true);
-                setView(one);
-              }}
-              className={cn(
-                "relative flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full px-2.5 text-[13.5px] transition-colors sm:px-5 sm:text-[15px]",
-                view === one
-                  ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)]"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              <span className="hidden sm:inline-flex [&_svg]:size-[17px]">{icons[one]}</span>
-              {labels[one]}
-              {/* How long until the next view, while it is still moving on by itself. */}
-              {view === one && !picked && (
-                <span
-                  aria-hidden
-                  key={one}
-                  className="home-dwell absolute inset-x-4 bottom-1 h-[2px] origin-left rounded-full bg-foreground/15 motion-reduce:hidden rtl:origin-right"
-                  style={{ animationDuration: `${DWELL_MS}ms` }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+    <div ref={box} className="rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2">
+      <div role="tablist" aria-label={label} className="grid grid-cols-4 gap-1 p-0.5">
+        {VIEWS.map((one) => (
+          <button
+            key={one}
+            type="button"
+            role="tab"
+            id={`hero-tab-${one}`}
+            aria-selected={view === one}
+            aria-controls={`hero-panel-${one}`}
+            onClick={() => {
+              setPicked(true);
+              setView(one);
+            }}
+            className={cn(
+              "relative h-9 cursor-pointer overflow-hidden whitespace-nowrap rounded-full px-1 text-[12.5px] font-medium transition-colors sm:h-10 sm:text-[13.5px]",
+              view === one
+                ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.06),0_0_0_1px_var(--ui-border)]"
+                : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            {labels[one]}
+            {/* How long until the next view, while it is still moving on by itself. */}
+            {view === one && !picked && (
+              <span
+                aria-hidden
+                key={one}
+                className="home-dwell absolute inset-x-5 bottom-1 h-[2px] origin-left rounded-full bg-foreground/15 motion-reduce:hidden rtl:origin-right"
+                style={{ animationDuration: `${DWELL_MS}ms` }}
+              />
+            )}
+          </button>
+        ))}
       </div>
-      <div className="home-sky mt-5 rounded-[28px] p-2.5 sm:mt-6 sm:p-8 lg:px-14 lg:pb-14 lg:pt-12">
+      <div className="mt-1.5 sm:mt-2">
         {VIEWS.map((one) => (
           <div
             key={one}

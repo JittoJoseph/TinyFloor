@@ -266,3 +266,36 @@ differs from the plan, or adds to it:
 - **A reload keeps you inside.** Walking through a door is remembered for the
   tab, so refreshing lands you back on the floor; leaving through the app
   brings you to the door next time.
+
+## The home page
+
+Every marketing page (the home page and the use case and comparison pages in
+`components/landing`) is built from the same pieces in `components/home/Blocks.tsx`:
+the page shell, headings, the two ways in, the product preview, the questions
+and the last ask. Styling is Tailwind utilities only; there is no page CSS. It uses the same tokens and the
+same theme as the app: system by default, light or dark from its footer, set
+before first paint by the root layout's script (which now covers "/").
+
+- **Its own face.** The page's words are set in Nunito; the previews keep the
+  app's face, so they read as the app. The app's own
+  routes never change font.
+- **Built around previews.** The hero is the app's shell in miniature with four
+  tabs (floor, chat, people, a meeting), and each feature row shows the app
+  doing that one thing. The previews are server-rendered markup drawn with the
+  app's own pieces (faces, the office art and walking characters, the bar you
+  get beside someone, call cards, member cards); none of them are screenshots,
+  so they follow the theme and every language.
+- **Honest.** No invented customers, logos, reviews or numbers. The trust
+  section names the Cloudflare services TinyFloor actually runs on, and the
+  plans say only what is true today; bigger plans are "coming soon" with no
+  price or date.
+- **Light.** The only scripts are the hero's tab switcher, the nav's signed-in
+  check and the footer's theme switch. The FAQ is native `<details>` that
+  slides open where the browser can animate to `auto`; the globe is SVG
+  computed on the server; the language list is plain links.
+- **Layout from the references:** Gleap for the nav (two menus that open into
+  a wide panel with a dark card on the right), the centred hero and two-tone
+  headlines; ElevenLabs for the hero's tabbed product panel on a plain tray;
+  a bento of cards whose previews run off their bottom edge for the product
+  itself; a light Cloudflare touch (one ruled sheet with corner marks) for
+  everything else, and for the network card; ClickUp for the footer.

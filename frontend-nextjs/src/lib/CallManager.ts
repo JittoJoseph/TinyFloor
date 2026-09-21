@@ -1,6 +1,12 @@
 import { onPrefsChange, prefs } from "./prefs";
 import type { FilteredMic } from "./noiseFilter";
-import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
+import type {
+  CallKind,
+  MediaFlags,
+  ServerMessage,
+  VideoKind,
+  VideoQuality,
+} from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "./api";
 import {
@@ -75,11 +81,16 @@ interface MeetingMember {
 type CallMessage = Extract<ServerMessage, { t: "call" }>;
 type MeetingMessage = Extract<
   ServerMessage,
-  { t: "meeting_joined" | "meeting_member_joined" | "meeting_member_left" | "sfu" }
+  {
+    t:
+      | "meeting_joined"
+      | "meeting_member_joined"
+      | "meeting_member_left"
+      | "sfu";
+  }
 >;
 
-/** Used until the API's TURN credentials arrive, and if they can't be had. */
-const FALLBACK_ICE: RTCIceServer[] = [{ urls: "stun:stun.cloudflare.com:3478" }];
+const RELAY_ONLY: RTCIceTransportPolicy = "relay";
 /** Credentials are refreshed this long before they expire. */
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
@@ -88,7 +99,11 @@ const GUIDE_ANSWER_DELAY = 1600;
 function audioConstraints() {
   const { echoCancellation, noiseSuppression, enhancedNoise } = prefs();
   // With RNNoise on, the browser's own suppression would only fight it.
-  return { echoCancellation, noiseSuppression: noiseSuppression && !enhancedNoise, autoGainControl: true };
+  return {
+    echoCancellation,
+    noiseSuppression: noiseSuppression && !enhancedNoise,
+    autoGainControl: true,
+  };
 }
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
@@ -131,7 +146,8 @@ const EMPTY: CallSnapshot = {
 const PREFS = loadPreferences();
 
 /**
- * Proximity calls are peer-to-peer: every connection has one side that offers,
+ * Proximity calls are one WebRTC connection per pair, always through the TURN
+ * relay (see RELAY_ONLY). Every connection has one side that offers,
  * the caller or whoever was added last, and the other only answers, so two
  * offers never cross. Each carries a fixed mic, camera and screen slot, and
  * turning any of them on or off swaps what is in the slot instead of
@@ -153,7 +169,8 @@ class CallManager {
   private meeting: string | null = null;
   private error: CallError | null = null;
   private ringTimer?: ReturnType<typeof setTimeout>;
-  private iceServers: RTCIceServer[] = FALLBACK_ICE;
+  /** Cloudflare TURN credentials, fetched on the floor; empty until they arrive. */
+  private iceServers: RTCIceServer[] = [];
   private focus: Focus | null = null;
   private iceTimer?: ReturnType<typeof setTimeout>;
   private listeners = new Set<() => void>();
@@ -168,13 +185,19 @@ class CallManager {
     onSpeakerChange(() => this.emit());
     // A phone turned sideways, or a window resized past the phone width.
     if (typeof window !== "undefined") {
-      window.matchMedia("(max-width: 767px)").addEventListener("change", () => this.shareQuality());
+      window
+        .matchMedia("(max-width: 767px)")
+        .addEventListener("change", () => this.shareQuality());
       // Noise suppression and echo cancellation switched in settings reach the
       // microphone that is already open, not only the next call's.
       onPrefsChange(() => {
         const wanted = audioConstraints();
-        const mics = this.rawMic ? [this.rawMic] : (this.local?.getAudioTracks() ?? []);
-        mics.forEach((track) => void track.applyConstraints(wanted).catch(() => {}));
+        const mics = this.rawMic
+          ? [this.rawMic]
+          : (this.local?.getAudioTracks() ?? []);
+        mics.forEach(
+          (track) => void track.applyConstraints(wanted).catch(() => {}),
+        );
       });
     }
   }
@@ -370,7 +393,8 @@ class CallManager {
    * and on a phone not even that, so everything else stays low.
    */
   setFocus(focus: Focus | null) {
-    if (focus?.id === this.focus?.id && focus?.kind === this.focus?.kind) return;
+    if (focus?.id === this.focus?.id && focus?.kind === this.focus?.kind)
+      return;
     this.focus = focus;
     this.shareQuality();
   }
@@ -378,11 +402,18 @@ class CallManager {
   /** Asks the SFU, and each peer we talk to directly, for what our cards can show. */
   private shareQuality() {
     const wanted = (id: string, kind: VideoKind): VideoQuality =>
-      this.focus?.id === id && this.focus.kind === kind && !screenTooSmallForDetail() ? "high" : "low";
+      this.focus?.id === id &&
+      this.focus.kind === kind &&
+      !screenTooSmallForDetail()
+        ? "high"
+        : "low";
 
     this.sfu?.setQuality(wanted);
     this.peers.forEach((peer) => {
-      const want = { camera: wanted(peer.id, "camera"), screen: wanted(peer.id, "screen") };
+      const want = {
+        camera: wanted(peer.id, "camera"),
+        screen: wanted(peer.id, "screen"),
+      };
       const asked = `${want.camera}${want.screen}`;
       if (!peer.pc || peer.asked === asked) return;
       peer.asked = asked;
@@ -423,7 +454,10 @@ class CallManager {
 
     let stream: MediaStream;
     try {
-      stream = await navigator.mediaDevices.getDisplayMedia({ video: SCREEN_CAPTURE, audio: false });
+      stream = await navigator.mediaDevices.getDisplayMedia({
+        video: SCREEN_CAPTURE,
+        audio: false,
+      });
     } catch {
       return; // the picker was dismissed
     }
@@ -499,11 +533,15 @@ class CallManager {
       this.screen?.getVideoTracks()[0],
     ];
     peer.pc?.getTransceivers().forEach((transceiver, slot) => {
-      if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
+      if (transceiver.direction !== "sendrecv")
+        transceiver.direction = "sendrecv";
       const kind = SLOT_KIND[slot];
       transceiver.sender
         .replaceTrack(tracks[slot] ?? null)
-        .then(() => kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]))
+        .then(
+          () =>
+            kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]),
+        )
         .catch(() => {});
     });
   }
@@ -526,7 +564,12 @@ class CallManager {
 
   /** Mid meeting, mid ring or on the tutorial call, nobody else gets through. */
   private busy() {
-    return !!(this.meeting || this.incoming || this.outgoing || this.peers.has(GUIDE_ID));
+    return !!(
+      this.meeting ||
+      this.incoming ||
+      this.outgoing ||
+      this.peers.has(GUIDE_ID)
+    );
   }
 
   /**
@@ -544,8 +587,13 @@ class CallManager {
 
   /** Only someone we are already talking to can add people to our call. */
   private onAdd(from: string, data: Record<string, unknown>) {
-    if (this.meeting || !this.peers.has(from) || typeof data.id !== "string") return;
-    const peer = this.createPeer(data.id, String(data.name || "Someone"), !!data.offer);
+    if (this.meeting || !this.peers.has(from) || typeof data.id !== "string")
+      return;
+    const peer = this.createPeer(
+      data.id,
+      String(data.name || "Someone"),
+      !!data.offer,
+    );
     if (this.local) this.syncTracks(peer);
     this.emit();
   }
@@ -588,7 +636,10 @@ class CallManager {
     const existing = this.peers.get(id);
     if (existing) return existing;
 
-    const pc = new RTCPeerConnection({ iceServers: this.iceServers });
+    const pc = new RTCPeerConnection({
+      iceServers: this.iceServers,
+      iceTransportPolicy: RELAY_ONLY,
+    });
     const peer: PeerEntry = {
       id,
       name,
@@ -604,7 +655,8 @@ class CallManager {
     this.peers.set(id, peer);
 
     pc.onicecandidate = ({ candidate }) => {
-      if (candidate) this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
+      if (candidate)
+        this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
     };
 
     pc.ontrack = ({ track, transceiver }) => {
@@ -634,7 +686,9 @@ class CallManager {
           this.emit();
         }
       };
-      SLOTS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
+      SLOTS.forEach((kind) =>
+        pc.addTransceiver(kind, { direction: "sendrecv" }),
+      );
     }
 
     return peer;
@@ -647,7 +701,10 @@ class CallManager {
 
     try {
       if (signal.want) {
-        peer.wants = { camera: signal.want.camera ?? "low", screen: signal.want.screen ?? "low" };
+        peer.wants = {
+          camera: signal.want.camera ?? "low",
+          screen: signal.want.screen ?? "low",
+        };
         this.syncTracks(peer);
       } else if (signal.media) {
         peer.mic = signal.media.mic;
@@ -695,11 +752,19 @@ class CallManager {
     try {
       const devices = savedDevices();
       this.local = await navigator.mediaDevices.getUserMedia({
-        audio: { ...audioConstraints(), deviceId: deviceConstraint(devices.audio) },
-        video: wantsCamera && { ...CAMERA_CAPTURE, deviceId: deviceConstraint(devices.video) },
+        audio: {
+          ...audioConstraints(),
+          deviceId: deviceConstraint(devices.audio),
+        },
+        video: wantsCamera && {
+          ...CAMERA_CAPTURE,
+          deviceId: deviceConstraint(devices.video),
+        },
       });
       await this.filterVoice();
-      this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
+      this.local
+        .getAudioTracks()
+        .forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
     } catch {
@@ -714,7 +779,10 @@ class CallManager {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { ...CAMERA_CAPTURE, deviceId: deviceConstraint(savedDevices().video) },
+        video: {
+          ...CAMERA_CAPTURE,
+          deviceId: deviceConstraint(savedDevices().video),
+        },
       });
       this.local.addTrack(stream.getVideoTracks()[0]);
       this.error = null;
@@ -741,7 +809,10 @@ class CallManager {
     }
     this.filter = filter;
     this.rawMic = mic;
-    this.local = new MediaStream([filter.track, ...this.local.getVideoTracks()]);
+    this.local = new MediaStream([
+      filter.track,
+      ...this.local.getVideoTracks(),
+    ]);
   }
 
   private releaseMedia() {
@@ -760,12 +831,30 @@ class CallManager {
     clearTimeout(this.iceTimer);
     try {
       const { iceServers, expiresAt } = await api.iceServers();
+      const first = !this.iceServers.length;
       this.iceServers = iceServers;
-      const refreshIn = Math.max(60_000, expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS);
+      // A call that started before the first credentials came has nothing to
+      // relay through yet: hand them over and gather again.
+      if (first) {
+        for (const peer of this.peers.values()) {
+          peer.pc?.setConfiguration({
+            iceServers,
+            iceTransportPolicy: RELAY_ONLY,
+          });
+          peer.pc?.restartIce();
+        }
+      }
+      const refreshIn = Math.max(
+        60_000,
+        expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS,
+      );
       this.iceTimer = setTimeout(() => void this.loadIceServers(), refreshIn);
     } catch {
-      // Direct connections still work over STUN; try again in a minute.
-      this.iceTimer = setTimeout(() => void this.loadIceServers(), 60_000);
+      // No relay, no call: try again soon, sooner while there are none at all.
+      this.iceTimer = setTimeout(
+        () => void this.loadIceServers(),
+        this.iceServers.length ? 60_000 : 5_000,
+      );
     }
   }
 

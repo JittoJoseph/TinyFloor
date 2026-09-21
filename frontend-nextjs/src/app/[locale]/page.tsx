@@ -4,12 +4,7 @@ import { localizedMetadata } from "@/lib/seo";
 import { appNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import type { Locale } from "@/lib/i18n/routing";
-import { Navbar } from "@/components/landing/Navbar";
-import { Hero } from "@/components/landing/Hero";
-import { RoomMoments } from "@/components/landing/RoomMoments";
-import { FAQ } from "@/components/landing/FAQ";
-import { CTA } from "@/components/landing/CTA";
-import { Footer } from "@/components/landing/Footer";
+import { HomePage } from "@/components/home/HomePage";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -31,7 +26,7 @@ export default async function LandingPage({ params }: Props) {
   );
 
   return (
-    <div className="min-h-screen w-full relative">
+    <>
       <link rel="preload" as="image" href="/office.png" fetchPriority="high" />
       <JsonLd
         schema={pageGraph({
@@ -44,16 +39,7 @@ export default async function LandingPage({ params }: Props) {
           nodes: [app, faqNode(locale, "/", faqs)],
         })}
       />
-      <Navbar />
-
-      <main className="pt-24 md:pt-32">
-        <Hero />
-        <RoomMoments />
-        <FAQ />
-        <CTA />
-      </main>
-
-      <Footer />
-    </div>
+      <HomePage faqs={faqs} />
+    </>
   );
 }

@@ -47,18 +47,6 @@
     "searchPlaceholder": "Buscar idioma…",
     "noResults": "No se encontraron idiomas"
   },
-  "nav": {
-    "main": "Principal",
-    "tour": "Recorrido"
-  },
-  "hero": {
-    "title": "La oficina virtual <br></br>más <em>acogedora</em>.",
-    "subtitle": "Una oficina virtual que parece un videojuego. Pasea, habla con tus compañeros y vuelve a sentirte parte de un equipo.",
-    "cta": "Entra ahora",
-    "caption": "Una sala de TinyFloor: una planta de oficina de 16 bits con escritorios y compañeros que caminan por ella.",
-    "noSignUp": "pruébalo",
-    "secondaryCta": "O monta una oficina para tu equipo"
-  },
   "landing": {
     "description": "Una oficina virtual que parece un videojuego. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo acercarte a alguien.",
     "features": [
@@ -69,60 +57,6 @@
       "Presencia y estado en tiempo real",
       "Chat de sala"
     ]
-  },
-  "moments": {
-    "title": "Una oficina que puedes <em>recorrer.</em>",
-    "subtitle": "TinyFloor conserva la parte de la oficina que las llamadas nunca sustituyeron: saber quién está y poder acercarte.",
-    "alwaysOn": "Siempre abiertas",
-    "directory": {
-      "design": {
-        "name": "Equipo de diseño",
-        "here": "5 aquí"
-      },
-      "founders": {
-        "name": "Fundadores",
-        "here": "2 aquí"
-      },
-      "jam": {
-        "name": "Jam del finde",
-        "here": "Vacía"
-      }
-    },
-    "enter": {
-      "title": "Abre un enlace y ya estás dentro.",
-      "body": "Alguien comparte el enlace de una sala. Elige un personaje, escribe un nombre y ya estás en la planta con todos los demás.",
-      "chip1": "Sin descargas",
-      "chip2": "Invitados bienvenidos",
-      "chip3": "Cualquier navegador"
-    },
-    "call": {
-      "title": "Acércate para empezar a hablar.",
-      "body": "Acércate a un compañero y su barra de llamada aparece encima. Un toque abre vídeo o voz, directamente entre navegadores.",
-      "chip1": "Vídeo o voz",
-      "chip2": "Entre pares",
-      "chip3": "Un toque"
-    },
-    "presence": {
-      "title": "Sabes quién anda por aquí.",
-      "body": "Todos llevan una placa con su nombre y un estado. Mira quién está libre, quién está concentrado y quién ya está en una llamada antes de acercarte.",
-      "chip1": "Placas en vivo",
-      "chip2": "Ausente y ocupado",
-      "chip3": "Chat de sala"
-    },
-    "rooms": {
-      "title": "Mañana la sala seguirá ahí.",
-      "body": "Las salas no terminan cuando termina una reunión. Mantenlas abiertas para tu equipo, invita a la gente una vez y podrán entrar cuando quieran.",
-      "chip1": "Solo para tu equipo",
-      "chip2": "Enlaces de invitado",
-      "chip3": "Gratis"
-    },
-    "floor": {
-      "title": "Una oficina, no una reunión.",
-      "body": "Nadie envía invitaciones. La gente pasa, trabaja cerca y se acerca cuando surge algo.",
-      "chip1": "Sin invitaciones",
-      "chip2": "Acércate",
-      "chip3": "Toda la planta"
-    }
   },
   "faq": {
     "title": "Antes de <em>entrar.</em>",
@@ -145,7 +79,7 @@
       },
       {
         "q": "¿Cómo funcionan las videollamadas?",
-        "a": "Una llamada con las personas a las que te acercas va de navegador a navegador por WebRTC, así que el audio y el vídeo viajan directos. Sigue conectada hasta que alguien cuelga o sale de la sala, así que alejarse no la corta. Las mesas de reunión llevan las llamadas de grupo a través de un servidor de medios: siéntate para unirte y levántate para salir."
+        "a": "Una llamada con las personas a las que te acercas va por WebRTC a través de la red de retransmisión de Cloudflare, así que conecta igual en cualquier red, de oficina o de casa. Sigue conectada hasta que alguien cuelga o sale de la sala, así que alejarte no la corta. Las mesas de reunión llevan las llamadas de grupo por un servidor de medios: siéntate para unirte, levántate para salir."
       },
       {
         "q": "¿Mi cámara está encendida todo el tiempo que estoy en una sala?",
@@ -160,26 +94,6 @@
         "a": "Una llamada normal pone a todos en una cuadrícula hasta que acaba la reunión. Una sala de TinyFloor sigue abierta todo el día, así que puedes ver quién está, pasar de una conversación a otra y hablar con las personas a las que te acercas."
       }
     ]
-  },
-  "cta": {
-    "title": "Tu sala ya <em>está abierta.</em>",
-    "publicTitle": "Entra en la oficina pública",
-    "publicBody": "Siempre abierta, para cualquiera. Elige un nombre, elige un personaje y ya estás dentro. Sin cuenta.",
-    "createTitle": "Monta tu propia oficina",
-    "createBody": "Ponle nombre, invita a tu equipo con un enlace, y las salas siguen abiertas el tiempo que quieras.",
-    "sampleName": "Equipo de diseño",
-    "create": "Crear",
-    "publicNote": "empieza aquí"
-  },
-  "footer": {
-    "tagline": "Una oficina virtual que puedes recorrer. Gratis, en el navegador.",
-    "product": "Producto",
-    "learn": "Aprender",
-    "elsewhere": "En otros sitios",
-    "tour": "Recorre la sala",
-    "twoWays": "Dos formas de entrar",
-    "rights": "© {year} Jitto Joseph. Todos los derechos reservados.",
-    "credits": "Créditos"
   },
   "auth": {
     "tabSignIn": "Iniciar sesión",
@@ -673,7 +587,7 @@
           },
           {
             "q": "¿Las llamadas funcionan entre navegadores?",
-            "a": "Sí. Las llamadas de TinyFloor van de punto a punto con WebRTC, así que el audio y el vídeo viajan directamente entre navegadores."
+            "a": "Sí. Las llamadas de TinyFloor van por WebRTC en el navegador, a través de la red de retransmisión de Cloudflare, así que conectan en cualquier red, de oficina o de casa."
           }
         ]
       },
@@ -947,8 +861,8 @@
             "body": "Siéntate en la mesa de reuniones y entras en la llamada con todos los que están sentados."
           },
           {
-            "title": "De punto a punto",
-            "body": "Las llamadas viajan directamente entre navegadores con WebRTC, así que no hay nada que instalar."
+            "title": "Funciona en cualquier red",
+            "body": "Las llamadas van por WebRTC a través de la red de retransmisión de Cloudflare, así que conectan incluso tras cortafuegos de empresa y no hay nada que instalar."
           }
         ],
         "faq": [
@@ -1230,5 +1144,237 @@
     "emptyTitle": "Crea tu primera oficina",
     "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis.",
     "walkIn": "Entrar"
+  },
+  "home": {
+    "nav": {
+      "features": "Funciones",
+      "pricing": "Precios",
+      "faq": "FAQ",
+      "lobby": "Vestíbulo",
+      "signIn": "Iniciar sesión",
+      "start": "Crea tu oficina",
+      "open": "Abrir TinyFloor",
+      "main": "Navegación principal",
+      "items": {
+        "proximity": "Llamadas por proximidad",
+        "meetings": "Mesas de reunión",
+        "chat": "Chat",
+        "people": "Presencia",
+        "guests": "Invitados"
+      },
+      "everyOffice": "En cada oficina",
+      "lobbyTitle": "El lobby está abierto",
+      "lobbyBody": "Recorre una planta de verdad antes de crear la tuya. Sin cuenta.",
+      "menu": "Menú",
+      "teams": "Para equipos",
+      "teamTitle": "Hecho para equipos pequeños",
+      "teamBody": "Gratis para hasta 3 personas, con planes más grandes en camino.",
+      "cases": {
+        "virtualOffice": "Un lugar para tu equipo remoto",
+        "virtualCoworking": "Trabaja concentrado junto a otros",
+        "onlineStudyRoom": "Estudia con tus amigos",
+        "virtualClassroom": "Tutorías y clases pequeñas",
+        "proximityChat": "Habla con quien tengas al lado"
+      }
+    },
+    "hero": {
+      "title": "Una oficina virtual por la que tu equipo puede caminar.",
+      "body": "Para equipos remotos que echan de menos trabajar codo con codo. Mira quién está, pásate con una pregunta rápida y siéntate a la mesa cuando toque reunirse, sin agendar ni una sola llamada.",
+      "secondary": "Entrar al vestíbulo",
+      "previewLabel": "Un vistazo a TinyFloor",
+      "tabs": {
+        "floor": "Planta",
+        "chat": "Chat",
+        "people": "Personas",
+        "meeting": "Reuniones"
+      },
+      "points": [
+        "Gratis para hasta 3 personas",
+        "Nada que instalar",
+        "Funciona sobre Cloudflare"
+      ],
+      "lobbyLine": "El lobby público está abierto ahora mismo. Sin cuenta.",
+      "lobbyCta": "Entrar"
+    },
+    "features": {
+      "proximity": {
+        "title": "Acércate para hablar.",
+        "muted": "Sin enlaces, sin agendas.",
+        "body": "Acércate a alguien y la llamada está a un toque. Aléjate y la planta vuelve a quedar en silencio, como cuando pasas por el escritorio de alguien."
+      },
+      "meetings": {
+        "title": "Siéntate para reunirte.",
+        "muted": "Levántate para salir.",
+        "body": "Las llamadas de grupo se hacen en una mesa. Quien se sienta, se une; las cámaras van ligeras como miniaturas y cualquiera puede compartir pantalla."
+      },
+      "chat": {
+        "title": "Conversaciones que se quedan.",
+        "muted": "Canales, mensajes directos, reacciones.",
+        "body": "Cada oficina tiene su propio chat. Ponte al día desde el móvil sin entrar y recibe un aviso discreto en la planta cuando alguien escribe."
+      },
+      "people": {
+        "title": "Sabe quién está.",
+        "muted": "Y ve directo hasta allí.",
+        "body": "Mira quién está en la planta, quién está ocupado y quién está en una llamada. Toca Ir hasta y tu personaje encuentra el camino solo."
+      },
+      "guests": {
+        "title": "Deja entrar a quien quieras.",
+        "muted": "Con un solo enlace.",
+        "body": "Invita a tu equipo por correo o envía un enlace de invitado a un cliente o candidato. Elige un nombre y un personaje y ya está en la planta, sin cuenta."
+      }
+    },
+    "more": {
+      "title": "Todo lo que un equipo pequeño necesita,",
+      "muted": "en una sola planta.",
+      "items": {
+        "screen": {
+          "title": "Compartir pantalla",
+          "body": "Comparte una ventana en cualquier llamada o reunión."
+        },
+        "whiteboard": {
+          "title": "Pizarra",
+          "body": "Dibujad juntos en la pared de la oficina."
+        },
+        "music": {
+          "title": "Música",
+          "body": "Pon una canción para todos en la sala."
+        },
+        "status": {
+          "title": "Estado",
+          "body": "Disponible, ocupado o ausente, en tu placa de nombre."
+        },
+        "noise": {
+          "title": "Eliminación de ruido",
+          "body": "Una IA opcional en tu dispositivo quita teclados y conversaciones de fondo."
+        },
+        "mobile": {
+          "title": "En el móvil",
+          "body": "Un joystick que aparece bajo tu pulgar."
+        },
+        "themes": {
+          "title": "Claro y oscuro",
+          "body": "Sigue a tu sistema, o elige tú."
+        },
+        "languages": {
+          "title": "18 idiomas",
+          "body": "De English y Español a 日本語 y العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Hecho para dar confianza.",
+      "items": {
+        "private": {
+          "title": "Privado por diseño",
+          "body": "Una planta de oficina es solo para sus miembros y los invitados que dejan entrar. Nada es público y nada se indexa."
+        },
+        "network": {
+          "title": "En la red de Cloudflare",
+          "body": "Las páginas, el chat y las llamadas funcionan en la red global de Cloudflare, cerca de tu equipo, y conectan en cualquier red de oficina o de casa."
+        },
+        "install": {
+          "title": "Nada que instalar",
+          "body": "Es una página web. En un ordenador, un portátil o un móvil se abre igual, y siempre es la última versión."
+        }
+      },
+      "muted": "Privada, cerca de tu equipo y sin nada que instalar.",
+      "stack": "Sobre qué funciona"
+    },
+    "plans": {
+      "title": "Empieza gratis.",
+      "muted": "Crece cuando estés listo.",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "per": "hasta 3 personas",
+        "cta": "Crea tu oficina",
+        "items": [
+          "Una planta privada para tu equipo",
+          "Llamadas por proximidad y mesas de reunión",
+          "Compartir pantalla",
+          "Canales y mensajes directos",
+          "Enlaces de invitado para visitas"
+        ]
+      },
+      "soon": {
+        "name": "Planes más grandes",
+        "badge": "Próximamente",
+        "body": "Para equipos que superan los tres puestos. Empieza gratis hoy y tu oficina se mantiene cuando lleguen.",
+        "cta": "Prueba antes el vestíbulo",
+        "items": [
+          "Más puestos para equipos grandes",
+          "Imágenes y archivos en el chat",
+          "Más tiempo de reunión"
+        ]
+      },
+      "note": "Sin tarjeta. Tu oficina está lista en un minuto."
+    },
+    "faq": {
+      "title": "Preguntas,",
+      "muted": "respondidas.",
+      "note": "¿Aún te queda alguna duda? El lobby público está abierto a todos, así que puedes entrar y verlo por ti mismo."
+    },
+    "final": {
+      "title": "Dale a tu equipo una planta que compartir.",
+      "body": "Crea una oficina en un minuto y envía el enlace a tu equipo. O entra primero al lobby público y mira qué se siente."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "general",
+      "design": "diseño",
+      "random": "varios",
+      "message1": "¡Buenos días! ¿Reunión diaria en la mesa grande en 5?",
+      "message2": "Voy para allá 👋",
+      "message3": "Subí el nuevo flujo de bienvenida, me encantaría que lo revisarais",
+      "composer": "Mensaje en #general",
+      "walkTo": "Ir hasta",
+      "message": "Mensaje",
+      "onFloor": "En la planta",
+      "notOnFloor": "Fuera de la planta",
+      "available": "Disponible",
+      "busy": "Ocupado",
+      "away": "Ausente",
+      "guestLink": "Enlace de invitado",
+      "guestNote": "Cualquiera con este enlace puede entrar como invitado.",
+      "copy": "Copiar",
+      "invite": "Invitar",
+      "people": "Personas",
+      "guestArrived": "entró como invitada",
+      "roles": {
+        "design": "Diseño",
+        "engineering": "Ingeniería",
+        "product": "Producto"
+      },
+      "message0": "La llamada con el cliente pasa a las 14:00, notas en #diseño",
+      "message4": "Centrada en el lanzamiento hasta el almuerzo 🎧",
+      "channels": "Canales",
+      "directMessages": "Mensajes directos",
+      "today": "Hoy",
+      "typing": "{name} está escribiendo…",
+      "guest": "Invitado",
+      "inviteTeammate": "Invitar a un compañero",
+      "inviteTeammateNote": "Entran con un enlace"
+    },
+    "footer": {
+      "tagline": "Una oficina virtual por la que caminas.",
+      "product": "Producto",
+      "useCases": "Casos de uso",
+      "compare": "Comparar",
+      "resources": "Recursos",
+      "makeOffice": "Crear una oficina",
+      "lobby": "Vestíbulo público",
+      "signIn": "Iniciar sesión",
+      "dashboard": "Tus oficinas",
+      "faq": "FAQ",
+      "credits": "Créditos",
+      "vs": "vs {name}",
+      "theme": "Tema",
+      "language": "Idioma",
+      "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Una planta para todo el día,",
+      "muted": "del primer hola a la última llamada."
+    }
   }
 }

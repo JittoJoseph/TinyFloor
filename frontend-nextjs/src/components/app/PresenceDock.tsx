@@ -11,36 +11,33 @@ import { Face, FaceStack } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
 import { cn } from "@/lib/utils";
-
-const STATUS_DOT: Record<string, string> = {
-  available: "bg-ok",
-  busy: "bg-destructive",
-  away: "bg-warn",
-  in_call: "bg-violet-500",
-};
+import { useDockHoldsYou } from "./AppShell";
+import { YouMenu } from "./YouMenu";
 
 /**
  * You, at the foot of every column — the way Discord keeps you in the corner.
  * While you are in a call, a band above says so and holds the call's own
  * controls; below it, always, your face and status with your microphone,
- * sound and settings to hand. Pressing your name takes you back to the floor.
+ * sound and settings to hand. Pressing yourself opens your menu, the same one
+ * the rail has — which steps aside while this is on screen (useDockHoldsYou).
  */
-export function PresenceDock({ floorHref, place, settingsHref }: { floorHref: string; place: string; settingsHref: string }) {
+export function PresenceDock({ place, settingsHref }: { place: string; settingsHref: string }) {
   const t = useTranslations("shell");
   const tStatus = useTranslations("status");
   const tControls = useTranslations("controls");
   const { user } = useAuth();
   const status = useMyStatus();
+  useDockHoldsYou();
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   if (!user) return null;
   const inCall = peers.length > 0 || !!meeting;
   const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
 
   return (
-    <div className="shrink-0 p-2">
-      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.05)] [--face-ring:var(--ui-card)]">
+    <div className="shrink-0 px-2 pb-2">
+      <div className="overflow-hidden rounded-xl bg-rail [--face-ring:var(--ui-rail)]">
         {inCall && (
-          <div className="border-b border-border px-3 pb-2.5 pt-2.5">
+          <div className="border-b border-border px-2.5 pb-2 pt-2">
             <div className="flex items-center gap-2">
               <Signal />
               <div className="min-w-0 flex-1">
@@ -89,23 +86,26 @@ export function PresenceDock({ floorHref, place, settingsHref }: { floorHref: st
           </div>
         )}
 
-        <div className="flex items-center gap-1 p-1.5">
-          <Tooltip content={t("backToFloor")} side="top" wrapperClassName="min-w-0 flex-1">
-            <Link
-              href={floorHref}
-              className="group flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 rounded-xl p-1 pe-2 transition-colors hover:bg-muted"
-            >
-              <Face seed={user.id} size={32} presence={status} />
-              <span className="min-w-0 leading-tight">
-                <span className="block truncate text-[13px] font-semibold text-foreground">{user.displayName}</span>
-                <span className="flex items-center gap-1 truncate text-[11.5px] text-muted-foreground">
-                  <span className={cn("size-1.5 shrink-0 rounded-full", STATUS_DOT[status] ?? "bg-ok")} />
-                  <span className="truncate group-hover:hidden">{tStatus(`${status === "offline" ? "away" : status}.label`)}</span>
-                  <span className="hidden truncate group-hover:inline">{place}</span>
+        <div className="flex items-center gap-0.5 p-1">
+          <YouMenu
+            onFloor
+            settingsHref={settingsHref}
+            panel={
+              <button
+                type="button"
+                aria-label={t("you")}
+                className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-lg p-1 pe-2 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
+              >
+                <Face seed={user.id} size={28} presence={status} />
+                <span className="min-w-0 leading-[1.2]">
+                  <span className="block truncate text-[12.5px] font-semibold text-foreground">{user.displayName}</span>
+                  <span className="block truncate text-[11px] text-muted-foreground">
+                    {tStatus(`${status === "offline" ? "away" : status}.label`)}
+                  </span>
                 </span>
-              </span>
-            </Link>
-          </Tooltip>
+              </button>
+            }
+          />
           <PanelToggle
             on={micEnabled}
             onLabel={tControls("muteMic")}
@@ -126,9 +126,9 @@ export function PresenceDock({ floorHref, place, settingsHref }: { floorHref: st
             <Link
               href={settingsHref}
               aria-label={t("settings")}
-              className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
             >
-              <Settings className="size-[17px]" />
+              <Settings className="size-4" />
             </Link>
           </Tooltip>
         </div>
@@ -168,8 +168,8 @@ function PanelToggle({
       icon={on ? onIcon : offIcon}
       tone="ghost"
       className={cn(
-        "rounded-lg [&_svg]:size-[17px]",
-        wide && "h-8 w-auto flex-1 bg-muted px-3",
+        "size-7 rounded-md hover:bg-foreground/[0.06] [&_svg]:size-4",
+        wide && "h-7 w-auto flex-1 bg-foreground/[0.06] px-3",
         highlight
           ? on && "bg-ok/15 text-ok hover:bg-ok/20 hover:text-ok"
           : !on && "text-destructive hover:bg-destructive/10 hover:text-destructive",

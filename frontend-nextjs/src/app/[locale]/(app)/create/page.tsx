@@ -11,28 +11,7 @@ import { ActionButton } from "@/components/ui/Action";
 import { EntryPreview } from "@/components/entry/EntryPreview";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-
-const PENDING_KEY = "tinyfloorPendingSpace";
-
-function remember(name: string) {
-  try {
-    localStorage.setItem(PENDING_KEY, name);
-  } catch {}
-}
-
-function pending(): string {
-  try {
-    return localStorage.getItem(PENDING_KEY) ?? "";
-  } catch {
-    return "";
-  }
-}
-
-function forget() {
-  try {
-    localStorage.removeItem(PENDING_KEY);
-  } catch {}
-}
+import { forgetOffice as forget, pendingOffice as pending, rememberOffice as remember } from "@/lib/pendingOffice";
 
 /**
  * Setting up an office: name it first, sign in second. The name waits in this

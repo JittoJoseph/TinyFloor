@@ -1,14 +1,17 @@
 "use client";
 
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
-import { EntryShell, Field, inputClass } from "@/components/entry/EntryShell";
+import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
-import { EntryPreview } from "@/components/entry/EntryPreview";
+import { OfficePreview } from "@/components/app/OfficePreview";
+import { Face } from "@/components/ui/Face";
+import { pendingOffice } from "@/lib/pendingOffice";
+import { AuthLayout } from "./AuthLayout";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
@@ -33,7 +36,6 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 
 export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; redirect: string }) {
   const t = useTranslations("auth");
-  const tc = useTranslations("common");
   const router = useRouter();
   const { user, isLoading, hasAccount, signIn, signUp } = useAuth();
   const ids = useId();
@@ -200,20 +202,11 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const passwordLongEnough = password.length >= PASSWORD_MIN_LENGTH;
 
   return (
-    <EntryShell
-      backHref="/"
-      backLabel={tc("back")}
-      preview={
-        <EntryPreview
-          occupants={[
-            {
-              character: validCharacter,
-              left: "50%",
-              top: "79%",
-              name: (signingUp ? name.trim() : guest?.displayName) || tc("you"),
-              width: 44,
-            },
-          ]}
+    <AuthLayout
+      aside={
+        <AuthAside
+          signingUp={signingUp}
+          person={{ id: guest?.id ?? `name:${name.trim().toLowerCase()}`, name: (signingUp ? name.trim() : guest?.displayName) || "" }}
         />
       }
     >
@@ -222,11 +215,11 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         <div
           role="tablist"
           aria-label={t("chooseMode")}
-          className="relative grid grid-cols-2 p-1 mb-6 rounded-full bg-muted border border-border"
+          className="relative mb-8 grid h-10 grid-cols-2 rounded-full bg-muted p-1"
         >
           <span
             aria-hidden
-            className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-card shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+            className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-card shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
               signingUp ? "translate-x-full rtl:-translate-x-full" : "translate-x-0"
             } start-1`}
           />
@@ -237,8 +230,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               role="tab"
               aria-selected={mode === option}
               onClick={() => switchMode(option)}
-              className={`cursor-pointer relative h-9 rounded-full text-[13px] font-semibold transition-opacity duration-200 ${
-                mode === option ? "text-foreground" : "text-foreground opacity-45 hover:opacity-75"
+              className={`relative h-8 cursor-pointer rounded-full text-[13px] font-medium transition-colors duration-200 ${
+                mode === option ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {option === "signin" ? t("tabSignIn") : t("tabSignUp")}
@@ -246,17 +239,17 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           ))}
         </div>
 
-        <h1 className="text-[1.75rem] font-medium tracking-tight leading-tight text-foreground mb-1.5">
+        <h1 className="mb-1.5 text-[28px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
           {signingUp ? t("signUpTitle") : t("signInTitle")}
         </h1>
-        <p className="text-sm text-foreground opacity-55 mb-6">
+        <p className="mb-7 text-[14px] leading-relaxed text-muted-foreground">
           {signingUp ? t("signUpSubtitle") : t("signInSubtitle")}
         </p>
 
         {signingUp && guest && (
-          <p className="mb-5 flex items-start gap-2.5 rounded-xl bg-muted border border-border px-4 py-3 text-[13px] text-foreground">
-            <Check className="w-4 h-4 mt-0.5 shrink-0 text-ok" />
-            <span className="opacity-75">{t("guestCarryOver", { name: guest.displayName })}</span>
+          <p className="mb-6 flex items-center gap-3 rounded-2xl bg-muted/70 p-3 text-[13px] leading-snug text-muted-foreground [--face-ring:var(--ui-muted)]">
+            <Face seed={guest.id} size={32} />
+            <span className="min-w-0">{t("guestCarryOver", { name: guest.displayName })}</span>
           </p>
         )}
 
@@ -328,7 +321,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                 onClick={() => setShowPassword((shown) => !shown)}
                 aria-label={showPassword ? t("hidePassword") : t("showPassword")}
                 aria-pressed={showPassword}
-                className="cursor-pointer absolute end-1.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg flex items-center justify-center text-foreground opacity-45 hover:opacity-80 transition-opacity"
+                className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -343,7 +336,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               <p
                 id={`${ids}-password-rule`}
                 className={`mt-2 flex items-center gap-1.5 text-[12px] transition-colors duration-200 ${
-                  passwordLongEnough ? "text-ok" : "text-foreground opacity-50"
+                  passwordLongEnough ? "text-ok" : "text-muted-foreground"
                 }`}
               >
                 <Check className={`w-3.5 h-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
@@ -366,8 +359,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           </ActionButton>
         </form>
 
-        <p className="text-[13px] text-foreground text-center mt-6">
-          <span className="opacity-55">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
+        <p className="mt-7 text-center text-[13px] text-foreground">
+          <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
           <button
             type="button"
             onClick={() => switchMode(signingUp ? "signin" : "signup")}
@@ -381,13 +374,41 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           <p className="text-[12px] text-center mt-3">
             <Link
               href="/lobby"
-              className="cursor-pointer text-foreground opacity-45 hover:opacity-80 underline-offset-2 hover:underline transition-opacity"
+              className="cursor-pointer text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
             >
               {t("continueGuest")}
             </Link>
           </p>
         )}
       </div>
-    </EntryShell>
+    </AuthLayout>
+  );
+}
+
+const noChange = () => () => {};
+
+/**
+ * The right half: the office being signed up for. A name typed at "make an
+ * office" waits in this browser, so the preview wears it.
+ */
+function AuthAside({ signingUp, person }: { signingUp: boolean; person: { id: string; name: string } }) {
+  const t = useTranslations("auth");
+  const tOffice = useTranslations("lobby.yourOffice");
+  const office = useSyncExternalStore(noChange, pendingOffice, () => "");
+  return (
+    <div className="w-full max-w-[620px]">
+      <p className="text-[13px] font-medium text-muted-foreground">TinyFloor</p>
+      <h2 className="mt-1.5 max-w-md text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">
+        {office && signingUp ? t("asideReady", { office }) : signingUp ? t("asideTitle") : t("asideSignIn")}
+      </h2>
+      <p className="mt-2 max-w-md text-[14px] leading-relaxed text-muted-foreground">{t("asideBody")}</p>
+      <OfficePreview
+        className="mt-8"
+        name={office || tOffice("placeholderName")}
+        typed={!!office}
+        others={[]}
+        person={person.name ? person : null}
+      />
+    </div>
   );
 }

@@ -223,7 +223,11 @@
       "turnstile": "We konden niet controleren of je een mens bent. Probeer het opnieuw.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
       "generic": "Er ging iets mis. Probeer het opnieuw."
-    }
+    },
+    "asideReady": "{office} is bijna klaar",
+    "asideTitle": "Je team, één vloer verderop",
+    "asideSignIn": "Welkom terug op de vloer",
+    "asideBody": "Loop naar iemand toe om te praten. Kanalen en berichten blijven."
   },
   "entry": {
     "yourName": "Je naam",
@@ -992,56 +996,29 @@
       "notNow": "Niet nu"
     },
     "yourOffice": {
-      "eyebrow": "Gratis voor kleine teams",
-      "title": "Een eigen vloer voor je team",
-      "body": "Alles uit de lobby, maar van jou: een privévloer waar je team naar elkaar toe loopt om te praten, met een chat die blijft.",
+      "eyebrow": "Je eigen kantoor",
+      "title": "Maak deze vloer van jou",
+      "body": "Een privévloer voor je team, waar je naar elkaar toe loopt om te praten, met kanalen en berichten die blijven.",
+      "nameLabel": "Geef je kantoor een naam",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Jouw kantoor",
       "create": "Maak mijn kantoor",
       "free": "Gratis tot 3 mensen. Geen kaart nodig.",
-      "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}",
+      "perks": {
+        "private": "Een privévloer",
+        "channels": "Kanalen die blijven",
+        "messages": "Privéberichten",
+        "guests": "Gastlinks"
+      },
+      "channels": {
+        "general": "algemeen",
+        "projects": "projecten",
+        "random": "overig"
+      },
+      "freeSeat": "Vrije plek",
       "you": "Jij",
       "teammate": "Teamgenoot",
-      "whatYouGet": "Wat een kantoor toevoegt",
-      "perks": {
-        "private": {
-          "title": "Een privévloer",
-          "body": "Alleen je team en de gasten die je binnenlaat."
-        },
-        "channels": {
-          "title": "Kanalen die blijven",
-          "body": "Eén per project; niets gaat verloren als je weggaat."
-        },
-        "messages": {
-          "title": "Privéberichten",
-          "body": "Schrijf iedereen één op één, en zie wie er op de vloer is."
-        },
-        "team": {
-          "title": "Je team, op uitnodiging",
-          "body": "Nodig uit per e-mail en bepaal wie het kantoor beheert."
-        },
-        "guests": {
-          "title": "Gastlinks",
-          "body": "Een klant of kandidaat komt op bezoek zonder een plek in te nemen."
-        },
-        "attachments": {
-          "title": "Afbeeldingen in de chat",
-          "body": "Deel screenshots en foto's, in een betaald kantoor."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Geef het een naam",
-          "body": "De naam van je team is genoeg."
-        },
-        "invite": {
-          "title": "Nodig je team uit",
-          "body": "Stuur een link of een e-mail."
-        },
-        "walk": {
-          "title": "Loop binnen",
-          "body": "Loop naar iemand toe om te praten."
-        }
-      },
-      "ready": "Klaar wanneer jij dat bent."
+      "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}"
     }
   },
   "office": {

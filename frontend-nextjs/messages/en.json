@@ -223,7 +223,11 @@
       "turnstile": "We couldn't check that you're human. Try again.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
       "generic": "Something went wrong. Try again."
-    }
+    },
+    "asideReady": "{office} is almost ready",
+    "asideTitle": "Your team, one floor away",
+    "asideSignIn": "Welcome back to the floor",
+    "asideBody": "Walk up to someone to talk. Channels and messages stay."
   },
   "entry": {
     "yourName": "Your name",
@@ -992,56 +996,29 @@
       "notNow": "Not now"
     },
     "yourOffice": {
-      "eyebrow": "Free for small teams",
-      "title": "A floor of your own, for your team",
-      "body": "Everything in the lobby, but yours: a private floor where your team walks up to talk, with chat that stays.",
+      "eyebrow": "Your own office",
+      "title": "Make this floor yours",
+      "body": "A private floor for your team, where you walk up to talk, with channels and messages that stay.",
+      "nameLabel": "Name your office",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "Your office",
       "create": "Make my office",
       "free": "Free for up to 3 people. No card needed.",
-      "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}",
+      "perks": {
+        "private": "A private floor",
+        "channels": "Channels that stay",
+        "messages": "Direct messages",
+        "guests": "Guest links"
+      },
+      "channels": {
+        "general": "general",
+        "projects": "projects",
+        "random": "random"
+      },
+      "freeSeat": "Free seat",
       "you": "You",
       "teammate": "Teammate",
-      "whatYouGet": "What an office adds",
-      "perks": {
-        "private": {
-          "title": "A private floor",
-          "body": "Only your team and the guests you let in."
-        },
-        "channels": {
-          "title": "Channels that stay",
-          "body": "Make one for each project; nothing is lost when you leave."
-        },
-        "messages": {
-          "title": "Direct messages",
-          "body": "Write to anyone one to one, and see who is on the floor."
-        },
-        "team": {
-          "title": "Your team, by invite",
-          "body": "Invite people by email, and set who can manage the office."
-        },
-        "guests": {
-          "title": "Guest links",
-          "body": "Let a client or candidate visit without taking a seat."
-        },
-        "attachments": {
-          "title": "Images in chat",
-          "body": "Share screenshots and photos, on a paid office."
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "Name it",
-          "body": "Your team's name is enough."
-        },
-        "invite": {
-          "title": "Invite your team",
-          "body": "Send a link or an email."
-        },
-        "walk": {
-          "title": "Walk in",
-          "body": "Walk up to someone to talk."
-        }
-      },
-      "ready": "Ready when you are."
+      "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}"
     }
   },
   "office": {

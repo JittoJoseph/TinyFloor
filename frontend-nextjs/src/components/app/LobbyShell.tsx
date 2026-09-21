@@ -1,9 +1,10 @@
 "use client";
 
+import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, Map as MapIcon, MessagesSquare, Plus, Settings, Sparkles, Users } from "lucide-react";
+import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, MessagesSquare, Plus, Users } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
@@ -139,14 +140,14 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
             key: "floor",
             href: lobbyPath,
             label: ts("floor"),
-            icon: <MapIcon />,
+            icon: RailIcons.floor,
             active: !onChat && !onPeople && !onSettings && !onOffice,
           },
-          { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: <MessagesSquare />, active: onChat, badge: unread },
-          { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: <Users />, active: onPeople },
-          { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: <Sparkles />, active: onOffice, dot: !onOffice },
+          { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+          { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: RailIcons.people, active: onPeople },
+          { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: RailIcons.office, active: onOffice, dot: !onOffice },
         ]}
-        settings={{ key: "settings", href: lobbySettingsPath, label: ts("settings"), icon: <Settings />, active: onSettings }}
+        settings={{ key: "settings", href: lobbySettingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
         you={<YouMenu onFloor settingsHref={lobbySettingsPath} />}
         floor={
           <>

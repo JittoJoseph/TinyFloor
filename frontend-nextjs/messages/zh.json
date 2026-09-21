@@ -223,7 +223,11 @@
       "turnstile": "无法确认你是真人，请重试。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
       "generic": "出了点问题，请重试。"
-    }
+    },
+    "asideReady": "{office} 快准备好了",
+    "asideTitle": "你的团队，只隔一层楼",
+    "asideSignIn": "欢迎回到楼层",
+    "asideBody": "走过去就能聊。频道和消息都会保留。"
   },
   "entry": {
     "yourName": "你的名字",
@@ -992,56 +996,29 @@
       "notNow": "以后再说"
     },
     "yourOffice": {
-      "eyebrow": "小团队免费",
-      "title": "属于你们团队的楼层",
-      "body": "大厅里的一切，但属于你们：一个私密楼层，团队走过去就能聊，聊天记录也会保留。",
+      "eyebrow": "你自己的办公室",
+      "title": "让这层楼属于你们",
+      "body": "为你的团队准备的私密楼层：走过去就能聊，频道和消息都会保留。",
+      "nameLabel": "给你的办公室起个名字",
+      "namePlaceholder": "Acme Studio",
+      "placeholderName": "你的办公室",
       "create": "创建我的办公室",
       "free": "最多 3 人免费，无需绑卡。",
-      "bringThem": "{count, plural, other {带上你在这里认识的 # 个人}}",
+      "perks": {
+        "private": "私密楼层",
+        "channels": "会保留的频道",
+        "messages": "私信",
+        "guests": "访客链接"
+      },
+      "channels": {
+        "general": "综合",
+        "projects": "项目",
+        "random": "闲聊"
+      },
+      "freeSeat": "空位",
       "you": "你",
       "teammate": "队友",
-      "whatYouGet": "办公室多了什么",
-      "perks": {
-        "private": {
-          "title": "私密楼层",
-          "body": "只有你的团队和你放进来的访客。"
-        },
-        "channels": {
-          "title": "会保留的频道",
-          "body": "每个项目一个；离开也不会丢。"
-        },
-        "messages": {
-          "title": "私信",
-          "body": "和任何人一对一聊天，还能看到谁在楼层上。"
-        },
-        "team": {
-          "title": "邀请制团队",
-          "body": "用邮件邀请，并决定谁来管理办公室。"
-        },
-        "guests": {
-          "title": "访客链接",
-          "body": "客户或候选人来访，不占用席位。"
-        },
-        "attachments": {
-          "title": "聊天中的图片",
-          "body": "在付费办公室里分享截图和照片。"
-        }
-      },
-      "steps": {
-        "name": {
-          "title": "起个名字",
-          "body": "团队名称就够了。"
-        },
-        "invite": {
-          "title": "邀请你的团队",
-          "body": "发送链接或邮件。"
-        },
-        "walk": {
-          "title": "走进去",
-          "body": "走到别人身边就能聊。"
-        }
-      },
-      "ready": "准备好就来吧。"
+      "bringThem": "{count, plural, other {带上你在这里认识的 # 个人}}"
     }
   },
   "office": {

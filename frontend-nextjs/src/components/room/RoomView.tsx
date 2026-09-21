@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/lib/i18n/navigation";
 import { AlertCircle, Check, UserPlus } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import ControlBar from "@/components/ControlBar";
@@ -50,6 +51,11 @@ export interface RoomViewProps {
   ticketFor: () => Promise<RoomTicket>;
   /** A path worth sharing from inside the room, if there is one. */
   sharePath?: string;
+  /**
+   * In an office, where inviting happens (its People): the floor then keeps no
+   * invite button of its own, and "invite" in the people list goes there.
+   */
+  inviteHref?: string;
   /** Where "back" goes when the room lets go of you. */
   leaveHref: string;
   /** Where this place's settings are, for the dock's gear. */
@@ -61,7 +67,7 @@ export interface RoomViewProps {
  * who is here (top left), Invite (top right), and your microphone and camera
  * (bottom). Everything else lives in the rail.
  */
-export function RoomView({ title, user, ticketFor, sharePath, leaveHref, settingsHref }: RoomViewProps) {
+export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveHref, settingsHref }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
   const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
@@ -70,6 +76,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, setting
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
   const everyone = useFloor();
+  const router = useRouter();
   const reduce = useReducedMotion();
   const peopleBox = useRef<HTMLDivElement>(null);
 
@@ -93,12 +100,17 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, setting
   // The share sheet on phones, the clipboard on a desktop; the button only says
   // something when the link landed on the clipboard, where nothing else would.
   const invite = useCallback(async () => {
+    if (inviteHref) {
+      setPeopleOpen(false);
+      router.push(inviteHref);
+      return;
+    }
     if (!sharePath) return;
     const result = await shareLink(shareUrl(sharePath), title, t("inviteText", { room: title }));
     if (result !== "copied") return;
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [sharePath, title, t]);
+  }, [inviteHref, router, sharePath, title, t]);
 
   useEffect(() => {
     const onTutorialFinished = () => setTutorialActive(false);
@@ -196,7 +208,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, setting
                         />
                       ))}
                     </div>
-                    {sharePath && (
+                    {(sharePath || inviteHref) && (
                       <Button variant="secondary" size="sm" onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("invite")}
@@ -219,7 +231,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, setting
                     </span>
                     <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
                     <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
-                    {sharePath && (
+                    {(sharePath || inviteHref) && (
                       <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("inviteSomeone")}
@@ -232,16 +244,7 @@ export function RoomView({ title, user, ticketFor, sharePath, leaveHref, setting
           </AnimatePresence>
         </div>
 
-        {sharePath && (
-          <Button
-            size="md"
-            onClick={invite}
-            className="pointer-events-auto h-10 shrink-0 gap-2 px-4 text-[13px] shadow-float"
-          >
-            {copied ? <Check className="size-4" /> : <UserPlus className="size-4" />}
-            <span className="hidden sm:inline">{copied ? t("linkCopied") : t("invite")}</span>
-          </Button>
-        )}
+        {sharePath && !inviteHref && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
       <ProximityOverlay />
@@ -301,5 +304,57 @@ function RoomEnded({
         )}
       </div>
     </EntryShell>
+  );
+}
+
+/**
+ * The lobby's invite, matching the chip opposite it: frosted, one line, and
+ * the label trading places with "Link copied" when it has done its job.
+ */
+function InviteChip({ copied, onClick }: { copied: boolean; onClick: () => void }) {
+  const t = useTranslations("room");
+  const reduce = useReducedMotion();
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      layout={!reduce}
+      whileTap={reduce ? undefined : { scale: 0.96 }}
+      transition={{ type: "spring", stiffness: 520, damping: 34 }}
+      className="pointer-events-auto flex h-10 shrink-0 cursor-pointer items-center gap-2 overflow-hidden rounded-full border border-border bg-card/90 ps-1.5 pe-3.5 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md transition-colors hover:bg-card"
+    >
+      <motion.span
+        layout={!reduce ? "position" : false}
+        className={cn(
+          "flex size-7 items-center justify-center rounded-full transition-colors duration-200",
+          copied ? "bg-ok text-white" : "bg-foreground text-background",
+        )}
+      >
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            key={copied ? "done" : "invite"}
+            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5, rotate: -30 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5 }}
+            transition={{ type: "spring", stiffness: 600, damping: 30 }}
+            className="flex"
+          >
+            {copied ? <Check className="size-3.5" strokeWidth={2.75} /> : <UserPlus className="size-3.5" strokeWidth={2.25} />}
+          </motion.span>
+        </AnimatePresence>
+      </motion.span>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={copied ? "done" : "invite"}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
+          transition={{ duration: 0.18, ease: EASE_OUT }}
+          className="hidden whitespace-nowrap sm:inline"
+        >
+          {copied ? t("linkCopied") : t("invite")}
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
   );
 }

@@ -1,67 +1,71 @@
 import { useTranslations } from "next-intl";
-import { Mic, MonitorUp, PhoneOff, Settings2, Video } from "lucide-react";
+import { MessageSquare, Mic, MonitorUp, Settings2, Video } from "lucide-react";
 import { COVER_WIDTH, OfficeScene, type Occupant } from "@/components/OfficeScene";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
-const [maya, leo, priya, sam, aiko, noah] = CAST;
+const [maya, leo, priya, sam, aiko] = CAST;
 
-/** Where everyone stands, on the art itself (pinned), so a wide or narrow frame keeps them on their tiles. */
-const PEOPLE: Occupant[] = [
-  { character: maya.character, name: maya.name, left: "45.5%", top: "57%", direction: "right", status: "in_call", width: 30 },
-  { character: leo.character, name: leo.name, left: "53.5%", top: "57%", direction: "left", status: "in_call", width: 30 },
-  { character: priya.character, name: priya.name, left: "21%", top: "38%", direction: "up", status: "busy", width: 30 },
-  { character: sam.character, name: sam.name, left: "80%", top: "58%", direction: "down", status: "available", width: 30 },
-  { character: aiko.character, name: aiko.name, left: "63%", top: "31%", direction: "down", status: "available", width: 30 },
-  { character: noah.character, name: noah.name, left: "31%", top: "72%", direction: "right", status: "away", width: 30 },
+/** Characters grow with the frame, like the app's camera does, but never past legible. */
+const SIZE = "max(4.2cqw, 6.3cqh, 24px)";
+
+/** A walk as a share of the art's width, so it stays inside its aisle at any frame size. */
+const lane = (share: number) => `calc(${COVER_WIDTH} * ${share})`;
+
+/**
+ * Everyone strolling their own aisle. The spots are on the art (pinned), and
+ * each walk keeps clear of the desks and plants at any frame shape.
+ */
+const STROLLING: Occupant[] = [
+  { character: sam.character, name: sam.name, status: "available", left: "67.5%", top: "30%", width: SIZE, stroll: { distance: lane(0.3), duration: 9400, pattern: "a" } },
+  { character: maya.character, name: maya.name, status: "available", left: "25.8%", top: "43%", width: SIZE, stroll: { distance: lane(0.24), duration: 9100, delay: -2600, pattern: "c" } },
+  { character: priya.character, name: priya.name, status: "busy", left: "72.5%", top: "59%", width: SIZE, stroll: { distance: lane(0.25), duration: 10300, delay: -4100, pattern: "b" } },
+  { character: leo.character, name: leo.name, status: "available", left: "19%", top: "75%", width: SIZE, stroll: { distance: lane(0.17), duration: 7700, delay: -1500, pattern: "a" } },
+  { character: aiko.character, name: aiko.name, status: "away", left: "57.5%", top: "88%", width: SIZE, stroll: { distance: lane(0.22), duration: 8600, delay: -5200, pattern: "c" } },
+];
+
+/** Two people who just met in the aisle, for the proximity close-up: you, and Leo. */
+const MEETING_UP: Occupant[] = [
+  { character: maya.character, left: "44.5%", top: "57%", direction: "right", width: 30 },
+  { character: leo.character, name: leo.name, status: "available", left: "54.5%", top: "57%", direction: "left", width: 30 },
 ];
 
 /**
- * The floor, as the app shows it: the office art with people on it, the
- * room's chip, a call that started because two people stood close, and the
- * dock. `zoom` crops in on the call for the proximity feature.
+ * The floor, as the app shows it: the office art with people walking around
+ * it, the room's chip and the dock. `near` crops in on two people who have
+ * walked up to each other, with the little bar the app puts beside someone
+ * you're close to.
  */
-export function FloorPreview({ zoom = false, className }: { zoom?: boolean; className?: string }) {
+export function FloorPreview({ near = false, className }: { near?: boolean; className?: string }) {
   const t = useTranslations("home.preview");
+  const people = near ? MEETING_UP : STROLLING;
+
   return (
     <div className={cn("relative h-full w-full overflow-hidden", className)}>
       <div
         className="absolute inset-0"
-        style={zoom ? { transform: "scale(1.9)", transformOrigin: "49% 56%" } : undefined}
+        style={near ? { transform: "scale(1.9)", transformOrigin: "49% 56%" } : undefined}
       >
-        <OfficeScene pinned occupants={PEOPLE} className="h-full w-full" />
+        <OfficeScene pinned focus="center center" occupants={people} className="h-full w-full" />
       </div>
 
-      {/* The call. On the full floor it sits on the art, just over the two
-          nameplates, so any frame shape keeps it there; zoomed in, below them. */}
-      {zoom ? (
-        <div className="absolute bottom-[7%] start-1/2 -translate-x-1/2">
-          <CallCard />
+      {near ? (
+        <div className="absolute bottom-[8%] start-1/2 -translate-x-1/2 rtl:translate-x-1/2">
+          <NearbyBar name={leo.name} seed={leo.id} labels={{ message: t("message") }} />
         </div>
       ) : (
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 aspect-[3/2] -translate-x-1/2 -translate-y-1/2"
-          style={{ width: COVER_WIDTH }}
-        >
-          <div className="absolute" style={{ left: "49.5%", top: "57%", transform: "translate(-50%, calc(-100% - 64px))" }}>
-            <CallCard />
-          </div>
-        </div>
-      )}
-
-      {!zoom && (
         <>
           <span className="absolute start-3 top-3 flex h-8 items-center gap-2 rounded-full border border-border bg-card/90 pe-1.5 ps-3 shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]">
             <span className="size-1.5 rounded-full bg-ok" />
             <span className="text-[12px] font-medium text-foreground">{t("office")}</span>
             <span className="flex items-center gap-1 rounded-full bg-muted py-0.5 pe-1.5 ps-0.5 [--face-ring:var(--ui-muted)]">
-              <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={16} max={3} />
-              <span className="text-[10.5px] font-medium tabular-nums text-muted-foreground">{CAST.length}</span>
+              <FaceStack seeds={[sam, maya, priya].map((one) => one.id)} size={16} max={3} />
+              <span className="text-[10.5px] font-medium tabular-nums text-muted-foreground">{STROLLING.length}</span>
             </span>
           </span>
 
-          <span className="absolute bottom-3 start-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-card/90 p-1 shadow-float backdrop-blur-md">
+          <span className="absolute bottom-3 start-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-card/90 p-1 shadow-float backdrop-blur-md rtl:translate-x-1/2">
             {[Mic, Video, MonitorUp].map((Icon, index) => (
               <span
                 key={index}
@@ -84,25 +88,25 @@ export function FloorPreview({ zoom = false, className }: { zoom?: boolean; clas
   );
 }
 
-/** The call two people fell into by standing close: their tiles, and hanging up. */
-function CallCard() {
-  const t = useTranslations("home.preview");
+/** The app's bar beside someone you've walked up to: who, and the ways to talk. */
+function NearbyBar({ name, seed, labels }: { name: string; seed: string; labels: { message: string } }) {
   return (
-    <div className="flex items-center gap-2 whitespace-nowrap rounded-2xl border border-white/15 bg-black/60 p-1.5 pe-2.5 text-white shadow-[0_12px_32px_-12px_rgb(0_0_0/0.6)] backdrop-blur-md">
-      {[maya, leo].map((person) => (
-        <span key={person.id} className="relative flex h-9 w-12 items-center justify-center overflow-hidden rounded-[9px] bg-white/10 sm:h-10 sm:w-14">
-          <Face seed={person.id} size={24} />
-          <span className="absolute bottom-0.5 start-1 text-[8px] font-medium text-white/85">{person.name}</span>
+    <div className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card/95 p-1.5 shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]">
+      <Face seed={seed} size={32} presence="available" />
+      <span className="px-1 text-[12.5px] font-semibold text-foreground">{name}</span>
+      {[Video, Mic].map((Icon, index) => (
+        <span
+          key={index}
+          className={cn(
+            "flex size-8 items-center justify-center rounded-full border",
+            index === 0 ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground",
+          )}
+        >
+          <Icon className="size-3.5" />
         </span>
       ))}
-      <span className="ms-0.5 leading-tight">
-        <span className="block text-[11px] font-semibold">{t("inCall")}</span>
-        <span className="block text-[10px] text-white/65">
-          {maya.name}, {leo.name}
-        </span>
-      </span>
-      <span className="ms-1 flex size-6 items-center justify-center rounded-full bg-[#e5484d]">
-        <PhoneOff className="size-3" />
+      <span title={labels.message} className="flex size-8 items-center justify-center rounded-full border border-border bg-card text-foreground">
+        <MessageSquare className="size-3.5" />
       </span>
     </div>
   );

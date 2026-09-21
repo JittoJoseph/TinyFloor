@@ -1181,57 +1181,46 @@
       "main": "Nawigacja główna"
     },
     "hero": {
-      "eyebrow": "Wirtualne biuro, po którym chodzisz",
-      "title": "Pracujcie razem, jak w jednym pokoju.",
-      "body": "TinyFloor daje twojemu zespołowi wspólne piętro w przeglądarce. Zobacz, kto jest, podejdź porozmawiać i kontynuuj rozmowę na czacie, bez umawiania spotkań.",
-      "primary": "Utwórz biuro za darmo",
+      "title": "Wirtualne biuro, po którym twój zespół może chodzić.",
+      "body": "Zobacz, kto jest na miejscu, podejdź porozmawiać i przysuń krzesło, gdy przychodzi pora spotkania. TinyFloor to małe biuro w stylu pixel art, które otwiera się w każdej przeglądarce.",
       "secondary": "Wejdź do lobby",
-      "note": "Za darmo dla maksymalnie 3 osób. Nic do instalowania.",
       "previewLabel": "Zajrzyj do TinyFloor",
       "tabs": {
         "floor": "Piętro",
         "chat": "Czat",
         "people": "Ludzie",
         "meeting": "Spotkania"
-      }
-    },
-    "facts": {
-      "label": "Co daje każde biuro",
-      "items": [
-        "Działa w każdej nowoczesnej przeglądarce",
-        "Rozmowy w globalnej sieci Cloudflare",
-        "18 języków",
-        "Jasny i ciemny",
-        "Za darmo dla maksymalnie 3 osób"
-      ]
+      },
+      "points": [
+        "Za darmo dla maksymalnie 3 osób",
+        "Nic do instalowania",
+        "Działa na Cloudflare"
+      ],
+      "lobbyLine": "Publiczne lobby jest teraz otwarte. Bez zakładania konta.",
+      "lobbyCta": "Wejdź"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Rozmowy w pobliżu",
         "title": "Podejdź, by porozmawiać.",
         "muted": "Bez linków, bez planowania.",
         "body": "Podejdź do kogoś, a rozmowa jest o jedno dotknięcie. Odejdź, a na piętrze znów robi się cicho, jak po wpadnięciu do czyjegoś biurka."
       },
       "meetings": {
-        "eyebrow": "Stoły konferencyjne",
         "title": "Usiądź na spotkanie.",
         "muted": "Wstań, by wyjść.",
         "body": "Rozmowy grupowe odbywają się przy stole. Kto przy nim siedzi, dołącza, kamery pozostają lekkie jako miniatury, a każdy może udostępnić ekran."
       },
       "chat": {
-        "eyebrow": "Czat",
         "title": "Rozmowy, które zostają.",
         "muted": "Kanały, wiadomości prywatne, reakcje.",
         "body": "Każde biuro ma własny czat. Nadrabiaj z telefonu bez wchodzenia i dostań dyskretne powiadomienie na piętrze, gdy ktoś napisze."
       },
       "people": {
-        "eyebrow": "Obecność",
         "title": "Wiedz, kto jest obok.",
         "muted": "I podejdź prosto do niego.",
         "body": "Zobacz, kto jest na piętrze, kto jest zajęty, a kto w rozmowie. Dotknij Podejdź, a twoja postać sama znajdzie drogę."
       },
       "guests": {
-        "eyebrow": "Goście",
         "title": "Wpuść każdego.",
         "muted": "Jednym linkiem.",
         "body": "Zaproś współpracowników e-mailem albo wyślij link gościa do klienta lub kandydata. Wybierają imię i postać i są na piętrze, bez konta."
@@ -1290,7 +1279,9 @@
           "title": "Nic do instalowania",
           "body": "To strona internetowa. Na komputerze, laptopie czy telefonie otwiera się tak samo i zawsze jest najnowszą wersją."
         }
-      }
+      },
+      "muted": "Prywatne, blisko twojego zespołu i nic do instalowania.",
+      "stack": "Na czym działa"
     },
     "plans": {
       "title": "Zacznij za darmo.",
@@ -1318,24 +1309,23 @@
           "Obrazy i pliki na czacie",
           "Więcej czasu na spotkania"
         ]
-      }
+      },
+      "note": "Bez karty. Twoje biuro jest gotowe w minutę."
     },
     "faq": {
       "title": "Pytania",
-      "muted": "i odpowiedzi."
+      "muted": "i odpowiedzi.",
+      "note": "Masz jeszcze jakieś pytanie? Publiczne lobby jest otwarte dla wszystkich, więc możesz wejść i przekonać się sam."
     },
     "final": {
-      "title": "Twój zespół, jedno piętro stąd.",
-      "body": "Utwórz biuro w minutę albo wejdź do publicznego lobby i najpierw się rozejrzyj."
+      "title": "Daj swojemu zespołowi wspólne piętro.",
+      "body": "Załóż biuro w minutę i wyślij zespołowi link. Albo najpierw wejdź do publicznego lobby i zobacz, jak to jest."
     },
     "preview": {
       "office": "Northwind",
       "general": "ogolny",
       "design": "design",
       "random": "rozne",
-      "inCall": "W rozmowie",
-      "meeting": "Przegląd projektu",
-      "sharing": "Udostępnia ekran",
       "message1": "Dzień dobry! Standup przy dużym stole za 5?",
       "message2": "Już idę 👋",
       "message3": "Wrzuciłam nowy proces onboardingu, chętnie przyjmę uwagi",
@@ -1351,7 +1341,6 @@
       "guestNote": "Każdy z tym linkiem może wejść jako gość.",
       "copy": "Kopiuj",
       "invite": "Zaproś",
-      "here": "{count} obecnych",
       "people": "Ludzie",
       "guestArrived": "weszła jako gość",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Inżynieria",
         "product": "Produkt"
       },
-      "board": {
-        "signUp": "Rejestracja",
-        "name": "Nazwij biuro",
-        "walkIn": "Wejdź",
-        "note": "pominąć dla gości?"
-      },
       "message0": "Rozmowa z klientem przesunięta na 14:00, notatki na #design",
       "message4": "Skupiona na wydaniu do lunchu 🎧",
       "channels": "Kanały",
       "directMessages": "Wiadomości prywatne",
       "today": "Dzisiaj",
       "typing": "{name} pisze…",
-      "guest": "Gość"
+      "guest": "Gość",
+      "inviteTeammate": "Zaproś osobę z zespołu",
+      "inviteTeammateNote": "Dołącza przez link"
     },
     "footer": {
       "tagline": "Wirtualne biuro, po którym chodzisz.",

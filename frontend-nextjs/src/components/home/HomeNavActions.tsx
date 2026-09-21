@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -13,21 +12,20 @@ export function HomeNavActions({ signIn, start, open }: { signIn: string; start:
   const { user, isLoading } = useAuth();
   const account = !isLoading && !!user && !user.guest;
   return (
-    <div className="ms-auto flex items-center gap-1.5">
+    <div className="flex items-center justify-end gap-5">
       {!account && (
         <Link
           href="/auth"
-          className="hidden h-9 items-center rounded-full px-3.5 text-[13.5px] font-medium text-foreground transition-colors hover:bg-muted sm:inline-flex"
+          className="hidden text-[15px] text-foreground/75 transition-colors hover:text-foreground sm:inline"
         >
           {signIn}
         </Link>
       )}
       <Link
         href={account ? "/dashboard" : "/create"}
-        className="group inline-flex h-9 items-center gap-1.5 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-colors hover:bg-foreground/90"
+        className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-foreground px-[18px] text-[15px] text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.98]"
       >
         {account ? open : start}
-        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
       </Link>
     </div>
   );

@@ -1181,57 +1181,46 @@
       "main": "Main"
     },
     "hero": {
-      "eyebrow": "A virtual office you walk around in",
-      "title": "Work together, like you're in the same room.",
-      "body": "TinyFloor gives your team a shared floor in the browser. See who's around, walk over to talk, and keep the conversation going in chat, without booking a meeting.",
-      "primary": "Make your office, free",
+      "title": "A virtual office your team can walk around in.",
+      "body": "See who's in, walk over to talk, and pull up a chair when it's time to meet. TinyFloor is a small pixel-art office that opens in any browser.",
       "secondary": "Walk into the lobby",
-      "note": "Free for up to 3 people. Nothing to install.",
       "previewLabel": "A look inside TinyFloor",
       "tabs": {
         "floor": "Floor",
         "chat": "Chat",
         "people": "People",
         "meeting": "Meetings"
-      }
-    },
-    "facts": {
-      "label": "What you get with every office",
-      "items": [
-        "Runs in any modern browser",
-        "Calls on Cloudflare's global network",
-        "18 languages",
-        "Light and dark",
-        "Free for up to 3 people"
-      ]
+      },
+      "points": [
+        "Free for up to 3 people",
+        "Nothing to install",
+        "Runs on Cloudflare"
+      ],
+      "lobbyLine": "The public lobby is open right now. No account needed.",
+      "lobbyCta": "Walk in"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Proximity calls",
         "title": "Walk over to talk.",
         "muted": "No links, no scheduling.",
         "body": "Get close to someone and a call is one tap away. Walk off and the floor goes quiet again, the way stopping by a desk works."
       },
       "meetings": {
-        "eyebrow": "Meeting tables",
         "title": "Sit down to meet.",
         "muted": "Stand up to leave.",
         "body": "Group calls happen at a table. Everyone sitting there joins, cameras stay light as thumbnails, and anyone can share their screen."
       },
       "chat": {
-        "eyebrow": "Chat",
         "title": "Conversations that stay.",
         "muted": "Channels, direct messages, reactions.",
         "body": "Every office has its own chat. Catch up from your phone without walking in, and get a quiet nudge on the floor when someone writes."
       },
       "people": {
-        "eyebrow": "Presence",
         "title": "Know who's around.",
         "muted": "Then walk right over.",
         "body": "See who is on the floor, who is busy and who is in a call. Tap Walk to, and your character finds its own way there."
       },
       "guests": {
-        "eyebrow": "Guests",
         "title": "Let anyone in.",
         "muted": "With one link.",
         "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
@@ -1290,7 +1279,9 @@
           "title": "Nothing to install",
           "body": "It's a web page. On a desktop, a laptop or a phone, it opens the same way, and it's always the latest version."
         }
-      }
+      },
+      "muted": "Private, close to your team, and nothing to install.",
+      "stack": "What it runs on"
     },
     "plans": {
       "title": "Start free.",
@@ -1318,24 +1309,23 @@
           "Images and files in chat",
           "More meeting time"
         ]
-      }
+      },
+      "note": "No card needed. Your office is ready in a minute."
     },
     "faq": {
       "title": "Questions,",
-      "muted": "answered."
+      "muted": "answered.",
+      "note": "Still wondering about something? The public lobby is open to anyone, so you can walk in and see for yourself."
     },
     "final": {
-      "title": "Your team, one floor away.",
-      "body": "Make an office in a minute, or walk into the public lobby and look around first."
+      "title": "Give your team a floor to share.",
+      "body": "Make an office in a minute and send your team the link. Or walk into the public lobby and see how it feels first."
     },
     "preview": {
       "office": "Northwind",
       "general": "general",
       "design": "design",
       "random": "random",
-      "inCall": "In a call",
-      "meeting": "Design review",
-      "sharing": "Sharing screen",
       "message1": "Morning! Standup at the big table in 5?",
       "message2": "On my way 👋",
       "message3": "Pushed the new onboarding flow, would love eyes on it",
@@ -1351,7 +1341,6 @@
       "guestNote": "Anyone with this link can visit as a guest.",
       "copy": "Copy",
       "invite": "Invite",
-      "here": "{count} here",
       "people": "People",
       "guestArrived": "walked in as a guest",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Engineering",
         "product": "Product"
       },
-      "board": {
-        "signUp": "Sign up",
-        "name": "Name office",
-        "walkIn": "Walk in",
-        "note": "skip for guests?"
-      },
       "message0": "Client call moved to 2pm, notes are in #design",
       "message4": "Heads down on the release until lunch 🎧",
       "channels": "Channels",
       "directMessages": "Direct messages",
       "today": "Today",
       "typing": "{name} is typing…",
-      "guest": "Guest"
+      "guest": "Guest",
+      "inviteTeammate": "Invite a teammate",
+      "inviteTeammateNote": "They join with a link"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",

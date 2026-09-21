@@ -6,7 +6,7 @@ import { PixelAvatar } from "@/components/PixelAvatar";
 export function GuestPreview() {
   const t = useTranslations("home.preview");
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-4 p-5 text-start">
+    <div className="home-app flex h-full flex-col items-center justify-center gap-4 p-5 text-start">
       <div className="w-full max-w-[320px] rounded-2xl border border-border bg-card p-3.5 shadow-[0_12px_32px_-18px_rgb(0_0_0/0.35)]">
         <p className="flex items-center gap-1.5 text-[12.5px] font-semibold text-foreground">
           <Link2 className="size-3.5 text-muted-foreground" />

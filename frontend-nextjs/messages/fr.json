@@ -1181,57 +1181,46 @@
       "main": "Navigation principale"
     },
     "hero": {
-      "eyebrow": "Un bureau virtuel où l'on se déplace",
-      "title": "Travaillez ensemble, comme dans la même pièce.",
-      "body": "TinyFloor donne à votre équipe un étage partagé dans le navigateur. Voyez qui est là, allez parler à quelqu'un et poursuivez la conversation dans le chat, sans réserver de réunion.",
-      "primary": "Créer votre bureau, gratuit",
+      "title": "Un bureau virtuel dans lequel votre équipe peut se promener.",
+      "body": "Voyez qui est là, allez parler à quelqu'un et prenez une chaise quand vient l'heure de la réunion. TinyFloor est un petit bureau en pixel art qui s'ouvre dans n'importe quel navigateur.",
       "secondary": "Entrer dans le hall",
-      "note": "Gratuit jusqu'à 3 personnes. Rien à installer.",
       "previewLabel": "Un aperçu de TinyFloor",
       "tabs": {
         "floor": "Étage",
         "chat": "Chat",
         "people": "Personnes",
         "meeting": "Réunions"
-      }
-    },
-    "facts": {
-      "label": "Ce que chaque bureau vous apporte",
-      "items": [
-        "Fonctionne dans tout navigateur moderne",
-        "Appels sur le réseau mondial de Cloudflare",
-        "18 langues",
-        "Clair et sombre",
-        "Gratuit jusqu'à 3 personnes"
-      ]
+      },
+      "points": [
+        "Gratuit jusqu'à 3 personnes",
+        "Rien à installer",
+        "Fonctionne sur Cloudflare"
+      ],
+      "lobbyLine": "Le hall public est ouvert en ce moment. Aucun compte requis.",
+      "lobbyCta": "Entrer"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Appels de proximité",
         "title": "Approchez-vous pour parler.",
         "muted": "Sans lien, sans planning.",
         "body": "Approchez-vous de quelqu'un et un appel est à un toucher. Éloignez-vous et l'étage redevient calme, comme quand on passe voir un collègue à son bureau."
       },
       "meetings": {
-        "eyebrow": "Tables de réunion",
         "title": "Asseyez-vous pour une réunion.",
         "muted": "Levez-vous pour partir.",
         "body": "Les appels de groupe se font autour d'une table. Tous ceux qui y sont assis rejoignent l'appel, les caméras restent légères en miniatures, et chacun peut partager son écran."
       },
       "chat": {
-        "eyebrow": "Chat",
         "title": "Des conversations qui restent.",
         "muted": "Canaux, messages privés, réactions.",
         "body": "Chaque bureau a son propre chat. Rattrapez-vous depuis votre téléphone sans entrer, et recevez un discret rappel sur l'étage quand quelqu'un écrit."
       },
       "people": {
-        "eyebrow": "Présence",
         "title": "Voyez qui est là.",
         "muted": "Puis allez-y directement.",
         "body": "Voyez qui est sur l'étage, qui est occupé et qui est en appel. Touchez Y aller, et votre personnage trouve son chemin tout seul."
       },
       "guests": {
-        "eyebrow": "Invités",
         "title": "Laissez entrer n'importe qui.",
         "muted": "Avec un seul lien.",
         "body": "Invitez vos collègues par e-mail, ou envoyez un lien invité à un client ou un candidat. Il choisit un nom et un personnage, et le voilà sur l'étage, sans compte."
@@ -1290,7 +1279,9 @@
           "title": "Rien à installer",
           "body": "C'est une page web. Sur un ordinateur, un portable ou un téléphone, elle s'ouvre de la même façon, et c'est toujours la dernière version."
         }
-      }
+      },
+      "muted": "Privé, proche de votre équipe, et rien à installer.",
+      "stack": "Ce qui le fait tourner"
     },
     "plans": {
       "title": "Commencez gratuitement.",
@@ -1318,24 +1309,23 @@
           "Images et fichiers dans le chat",
           "Plus de temps de réunion"
         ]
-      }
+      },
+      "note": "Aucune carte requise. Votre bureau est prêt en une minute."
     },
     "faq": {
       "title": "Vos questions,",
-      "muted": "nos réponses."
+      "muted": "nos réponses.",
+      "note": "Encore une question ? Le hall public est ouvert à tous : entrez et voyez par vous-même."
     },
     "final": {
-      "title": "Votre équipe, à un étage près.",
-      "body": "Créez un bureau en une minute, ou entrez dans le hall public pour jeter d'abord un œil."
+      "title": "Offrez à votre équipe un étage à partager.",
+      "body": "Créez un bureau en une minute et envoyez le lien à votre équipe. Ou entrez d'abord dans le hall public pour voir ce que ça donne."
     },
     "preview": {
       "office": "Northwind",
       "general": "general",
       "design": "design",
       "random": "divers",
-      "inCall": "En appel",
-      "meeting": "Revue de design",
-      "sharing": "Partage l'écran",
       "message1": "Bonjour ! Point d'équipe à la grande table dans 5 min ?",
       "message2": "J'arrive 👋",
       "message3": "J'ai poussé le nouveau parcours d'accueil, vos retours sont bienvenus",
@@ -1351,7 +1341,6 @@
       "guestNote": "Toute personne ayant ce lien peut venir en invité.",
       "copy": "Copier",
       "invite": "Inviter",
-      "here": "{count} ici",
       "people": "Personnes",
       "guestArrived": "est entré(e) en invité",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Ingénierie",
         "product": "Produit"
       },
-      "board": {
-        "signUp": "Inscription",
-        "name": "Nommer le bureau",
-        "walkIn": "Entrer",
-        "note": "sauter pour les invités ?"
-      },
       "message0": "Appel client décalé à 14 h, notes dans #design",
       "message4": "Concentré sur la mise en production jusqu'au déjeuner 🎧",
       "channels": "Canaux",
       "directMessages": "Messages privés",
       "today": "Aujourd'hui",
       "typing": "{name} écrit…",
-      "guest": "Invité"
+      "guest": "Invité",
+      "inviteTeammate": "Inviter un coéquipier",
+      "inviteTeammateNote": "Il suffit d'un lien pour entrer"
     },
     "footer": {
       "tagline": "Un bureau virtuel où l'on se déplace.",

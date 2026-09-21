@@ -274,19 +274,24 @@ design system, and the others will follow it. It uses the same tokens and the
 same theme as the app: system by default, light or dark from its footer, set
 before first paint by the root layout's script (which now covers "/").
 
+- **Its own face.** The page's words are set in Nunito (`.home`); the previews
+  keep the app's face (`.home-app`), so they read as the app. The app's own
+  routes never change font.
 - **Built around previews.** The hero is the app's shell in miniature with four
-  tabs — floor, chat, people, a meeting — and each feature row shows the app
+  tabs (floor, chat, people, a meeting), and each feature row shows the app
   doing that one thing. The previews are server-rendered markup drawn with the
-  app's own pieces (faces, the office art and characters, chips, cards); none
-  of them are screenshots, so they follow the theme and every language.
-- **Honest.** No invented customers, logos, reviews or numbers. The facts strip,
-  the trust cards and the plans say only what is true today; bigger plans are
-  "coming soon" with no price or date.
+  app's own pieces (faces, the office art and walking characters, the bar you
+  get beside someone, call cards, member cards); none of them are screenshots,
+  so they follow the theme and every language.
+- **Honest.** No invented customers, logos, reviews or numbers. The trust
+  section names the Cloudflare services TinyFloor actually runs on, and the
+  plans say only what is true today; bigger plans are "coming soon" with no
+  price or date.
 - **Light.** The only scripts are the hero's tab switcher, the nav's signed-in
-  check and the footer's theme switch. The FAQ is native `<details>`, the
-  language list is plain links (crawlable, no script), and the theme helper
-  does not bring the animation library.
-- **Layout from the references:** ElevenLabs for the split hero, the tabbed
-  product panel and the line-art trust cards; Gleap for two-tone headlines,
-  alternating feature rows over a soft wash, the FAQ layout and the closing
-  call with faces; ClickUp for the footer's link directory.
+  check and the footer's theme switch. The FAQ is native `<details>` that
+  slides open where the browser can animate to `auto`; the globe is SVG
+  computed on the server; the language list is plain links.
+- **Layout from the references:** Gleap for the centred hero, the segmented
+  tabs over a product panel on a soft sky (the page's one gradient), two-tone
+  headlines and alternating feature rows; ElevenLabs for the feature grid;
+  ClickUp for the footer's link directory.

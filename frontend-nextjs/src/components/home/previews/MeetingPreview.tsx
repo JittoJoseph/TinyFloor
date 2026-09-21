@@ -1,86 +1,75 @@
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, MonitorUp, PhoneOff, Video } from "lucide-react";
+import { LogOut, Mic, MicOff, MonitorUp, Video } from "lucide-react";
+import { OfficeScene, type Occupant } from "@/components/OfficeScene";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
-const [maya, leo, priya, sam, aiko] = CAST;
+const [maya, leo, priya, sam] = CAST;
+
+const SIZE = "max(3.4cqw, 5cqh, 20px)";
+
+/** The four of them gathered at the desks on the right, facing in. */
+const GATHERED: Occupant[] = [
+  { character: maya.character, name: maya.name, status: "in_call", left: "61%", top: "82%", direction: "up", width: SIZE },
+  { character: leo.character, name: leo.name, status: "in_call", left: "68%", top: "82%", direction: "up", width: SIZE },
+  { character: priya.character, name: priya.name, status: "in_call", left: "75%", top: "82%", direction: "up", width: SIZE },
+  { character: sam.character, name: sam.name, status: "in_call", left: "82%", top: "82%", direction: "up", width: SIZE },
+];
 
 /**
- * A meeting table's call: the shared screen large, everyone else as light
- * thumbnails (the app's two-quality rule), and the meeting's own controls.
+ * A meeting, as the app shows it: the floor stays in view, everyone at the
+ * table appears as a card along the top (faces while cameras are off, a ring
+ * on whoever is talking), and the bar at the bottom leaves the meeting.
  */
-export function MeetingPreview() {
-  const t = useTranslations("home.preview");
-  const tiles = [
+export function MeetingPreview({ close = false }: { close?: boolean }) {
+  const tc = useTranslations("common");
+  const tb = useTranslations("controls");
+  const cards = [
+    { person: maya, you: true },
     { person: leo, speaking: true },
     { person: priya, muted: true },
     { person: sam },
-    { person: aiko },
   ];
 
   return (
-    <div className="flex h-full flex-col gap-2.5 bg-[#101012] p-3 text-start text-white">
-      <div className="flex items-center gap-2 px-1">
-        <span className="size-1.5 rounded-full bg-ok" />
-        <span className="text-[12px] font-semibold">{t("meeting")}</span>
-        <span className="text-[11px] text-white/50">· 5</span>
+    <div className="relative h-full w-full overflow-hidden">
+      <div className="absolute inset-0" style={close ? { transform: "scale(1.6)", transformOrigin: "74% 88%" } : undefined}>
+        <OfficeScene pinned focus="center center" occupants={GATHERED} className="h-full w-full" />
       </div>
 
-      <div className="grid min-h-0 flex-1 grid-cols-[1fr] gap-2.5 sm:grid-cols-[1fr_150px]">
-        {/* The shared screen: a whiteboard someone is walking through. */}
-        <div className="relative overflow-hidden rounded-xl bg-[#f7f7f4]">
-          <svg viewBox="0 0 400 240" className="absolute inset-0 size-full" preserveAspectRatio="xMidYMid meet" aria-hidden>
-            <g fill="none" stroke="#1a1a18" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="40" y="46" width="92" height="56" rx="10" />
-              <rect x="170" y="46" width="92" height="56" rx="10" />
-              <rect x="300" y="46" width="70" height="56" rx="10" stroke="#ff5a1f" />
-              <path d="M132 74h38M262 74h38" />
-              <path d="M86 102v48c0 10 8 18 18 18h60" strokeDasharray="4 6" />
-            </g>
-            <g fontFamily="ui-sans-serif, system-ui" fontSize="12" fill="#1a1a18">
-              <text x="58" y="79">{t("board.signUp")}</text>
-              <text x="185" y="79">{t("board.name")}</text>
-              <text x="314" y="79" fill="#ff5a1f">{t("board.walkIn")}</text>
-              <text x="170" y="172" fill="#6b6b65">{t("board.note")}</text>
-            </g>
-            <path d="M320 130c14-8 30-6 38 4" stroke="#ff5a1f" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-          </svg>
-          <span className="absolute bottom-2 start-2 flex items-center gap-1.5 rounded-full bg-black/60 py-0.5 pe-2 ps-0.5 text-[10.5px] backdrop-blur">
-            <Face seed={maya.id} size={16} />
-            {maya.name} · {t("sharing")}
-          </span>
-        </div>
-
-        <div className="hidden grid-rows-4 gap-2 sm:grid">
-          {tiles.map(({ person, speaking, muted }) => (
-            <span
+      <div className="absolute inset-x-0 top-3 flex justify-center px-3 sm:top-4">
+        <ul className="grid w-full max-w-[640px] grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5">
+          {cards.map(({ person, you, speaking, muted }) => (
+            <li
               key={person.id}
               className={cn(
-                "relative flex items-center justify-center overflow-hidden rounded-xl bg-white/[0.06]",
-                speaking && "ring-2 ring-ok",
+                "relative flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-card shadow-lg ring-2 [--face-ring:var(--ui-card)]",
+                speaking ? "ring-brand" : "ring-card/80",
               )}
             >
-              <Face seed={person.id} size={34} />
-              <span className="absolute bottom-1 start-1.5 flex items-center gap-1 text-[9.5px] text-white/85">
-                {muted && <MicOff className="size-2.5 text-[#ff6369]" />}
-                {person.name}
+              <Face seed={person.id} size={36} />
+              <span className="absolute bottom-1.5 start-1.5 flex max-w-[calc(100%-0.75rem)] items-center gap-1 rounded-full bg-card/90 px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm backdrop-blur-sm">
+                {muted && <MicOff className="size-3 shrink-0 text-brand" />}
+                <span className="truncate">{you ? tc("you") : person.name}</span>
               </span>
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <div className="flex items-center justify-center gap-1.5">
+      <span className="absolute bottom-3 start-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-card/90 p-1 shadow-float backdrop-blur-md rtl:translate-x-1/2">
         {[Mic, Video, MonitorUp].map((Icon, index) => (
-          <span key={index} className="flex size-8 items-center justify-center rounded-full bg-white/10">
+          <span key={index} className="flex size-7 items-center justify-center rounded-full text-foreground">
             <Icon className="size-3.5" />
           </span>
         ))}
-        <span className="flex h-8 items-center gap-1 rounded-full bg-[#e5484d] px-3 text-[11px] font-medium">
-          <PhoneOff className="size-3.5" />
+        <span className="mx-0.5 h-4 w-px bg-border" />
+        <span className="flex h-7 items-center gap-1.5 whitespace-nowrap rounded-full bg-destructive px-3 text-[11px] font-medium text-white">
+          <LogOut className="size-3.5 rtl:rotate-180" />
+          {tb("leaveMeeting")}
         </span>
-      </div>
+      </span>
     </div>
   );
 }

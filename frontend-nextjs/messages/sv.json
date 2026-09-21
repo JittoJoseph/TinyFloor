@@ -1181,57 +1181,46 @@
       "main": "Huvudnavigering"
     },
     "hero": {
-      "eyebrow": "Ett virtuellt kontor du går omkring i",
-      "title": "Jobba tillsammans, som i samma rum.",
-      "body": "TinyFloor ger ditt team ett gemensamt plan i webbläsaren. Se vem som är där, gå fram och prata och fortsätt samtalet i chatten, utan att boka möten.",
-      "primary": "Skapa ditt kontor, gratis",
+      "title": "Ett virtuellt kontor som ditt team kan gå runt i.",
+      "body": "Se vem som är här, gå fram och prata och dra fram en stol när det är dags för möte. TinyFloor är ett litet kontor i pixelkonst som öppnas i vilken webbläsare som helst.",
       "secondary": "Gå in i lobbyn",
-      "note": "Gratis för upp till 3 personer. Inget att installera.",
       "previewLabel": "En titt in i TinyFloor",
       "tabs": {
         "floor": "Plan",
         "chat": "Chatt",
         "people": "Personer",
         "meeting": "Möten"
-      }
-    },
-    "facts": {
-      "label": "Det här ingår i varje kontor",
-      "items": [
-        "Fungerar i alla moderna webbläsare",
-        "Samtal på Cloudflares globala nätverk",
-        "18 språk",
-        "Ljust och mörkt",
-        "Gratis för upp till 3 personer"
-      ]
+      },
+      "points": [
+        "Gratis för upp till 3 personer",
+        "Inget att installera",
+        "Körs på Cloudflare"
+      ],
+      "lobbyLine": "Den offentliga lobbyn är öppen just nu. Inget konto behövs.",
+      "lobbyCta": "Gå in"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Närhetssamtal",
         "title": "Gå fram och prata.",
         "muted": "Inga länkar, ingen bokning.",
         "body": "Gå nära någon så är samtalet ett tryck bort. Gå därifrån så blir det tyst på planet igen, precis som när man tittar förbi någons skrivbord."
       },
       "meetings": {
-        "eyebrow": "Mötesbord",
         "title": "Sätt dig för att mötas.",
         "muted": "Res dig för att gå.",
         "body": "Gruppsamtal sker vid ett bord. Alla som sitter där är med, kamerorna är lätta som miniatyrer och vem som helst kan dela sin skärm."
       },
       "chat": {
-        "eyebrow": "Chatt",
         "title": "Samtal som finns kvar.",
         "muted": "Kanaler, direktmeddelanden, reaktioner.",
         "body": "Varje kontor har sin egen chatt. Läs ikapp från mobilen utan att gå in, och få en diskret påminnelse på planet när någon skriver."
       },
       "people": {
-        "eyebrow": "Närvaro",
         "title": "Se vem som är där.",
         "muted": "Och gå direkt dit.",
         "body": "Se vem som är på planet, vem som är upptagen och vem som är i ett samtal. Tryck på Gå dit så hittar din figur vägen själv."
       },
       "guests": {
-        "eyebrow": "Gäster",
         "title": "Släpp in vem som helst.",
         "muted": "Med en länk.",
         "body": "Bjud in kollegor via e-post, eller skicka en gästlänk till en kund eller kandidat. De väljer ett namn och en figur och står på planet, utan konto."
@@ -1290,7 +1279,9 @@
           "title": "Inget att installera",
           "body": "Det är en webbsida. På dator, laptop eller mobil öppnas den likadant, och den är alltid den senaste versionen."
         }
-      }
+      },
+      "muted": "Privat, nära ditt team och inget att installera.",
+      "stack": "Det körs på"
     },
     "plans": {
       "title": "Börja gratis.",
@@ -1318,24 +1309,23 @@
           "Bilder och filer i chatten",
           "Mer mötestid"
         ]
-      }
+      },
+      "note": "Inget kort behövs. Ditt kontor är klart på en minut."
     },
     "faq": {
       "title": "Frågor,",
-      "muted": "besvarade."
+      "muted": "besvarade.",
+      "note": "Undrar du fortfarande något? Den offentliga lobbyn är öppen för alla, så du kan gå in och se själv."
     },
     "final": {
-      "title": "Ditt team, ett plan bort.",
-      "body": "Skapa ett kontor på en minut, eller gå in i den öppna lobbyn och titta runt först."
+      "title": "Ge ditt team ett våningsplan att dela.",
+      "body": "Skapa ett kontor på en minut och skicka länken till ditt team. Eller gå in i den offentliga lobbyn först och känn efter."
     },
     "preview": {
       "office": "Northwind",
       "general": "allmänt",
       "design": "design",
       "random": "blandat",
-      "inCall": "I samtal",
-      "meeting": "Designgenomgång",
-      "sharing": "Delar skärm",
       "message1": "God morgon! Standup vid stora bordet om 5?",
       "message2": "På väg 👋",
       "message3": "Har pushat det nya onboardingflödet, kika gärna",
@@ -1351,7 +1341,6 @@
       "guestNote": "Alla med den här länken kan hälsa på som gäst.",
       "copy": "Kopiera",
       "invite": "Bjud in",
-      "here": "{count} här",
       "people": "Personer",
       "guestArrived": "kom in som gäst",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Utveckling",
         "product": "Produkt"
       },
-      "board": {
-        "signUp": "Registrera",
-        "name": "Namnge",
-        "walkIn": "Gå in",
-        "note": "hoppa över för gäster?"
-      },
       "message0": "Kundsamtalet flyttat till 14, anteckningar i #design",
       "message4": "Fokus på releasen fram till lunch 🎧",
       "channels": "Kanaler",
       "directMessages": "Direktmeddelanden",
       "today": "I dag",
       "typing": "{name} skriver…",
-      "guest": "Gäst"
+      "guest": "Gäst",
+      "inviteTeammate": "Bjud in en kollega",
+      "inviteTeammateNote": "De kommer in med en länk"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",

@@ -1181,57 +1181,46 @@
       "main": "Navigazione principale"
     },
     "hero": {
-      "eyebrow": "Un ufficio virtuale in cui ti muovi",
-      "title": "Lavorate insieme, come nella stessa stanza.",
-      "body": "TinyFloor dà al tuo team un piano condiviso nel browser. Vedi chi c'è, avvicinati per parlare e continua la conversazione in chat, senza prenotare riunioni.",
-      "primary": "Crea il tuo ufficio, gratis",
+      "title": "Un ufficio virtuale in cui il tuo team può camminare.",
+      "body": "Vedi chi c'è, avvicinati per parlare e prendi una sedia quando è ora della riunione. TinyFloor è un piccolo ufficio in pixel art che si apre in qualsiasi browser.",
       "secondary": "Entra nella lobby",
-      "note": "Gratis fino a 3 persone. Niente da installare.",
       "previewLabel": "Uno sguardo dentro TinyFloor",
       "tabs": {
         "floor": "Piano",
         "chat": "Chat",
         "people": "Persone",
         "meeting": "Riunioni"
-      }
-    },
-    "facts": {
-      "label": "Cosa offre ogni ufficio",
-      "items": [
-        "Funziona in ogni browser moderno",
-        "Chiamate sulla rete globale di Cloudflare",
-        "18 lingue",
-        "Chiaro e scuro",
-        "Gratis fino a 3 persone"
-      ]
+      },
+      "points": [
+        "Gratis fino a 3 persone",
+        "Niente da installare",
+        "Funziona su Cloudflare"
+      ],
+      "lobbyLine": "La lobby pubblica è aperta adesso. Nessun account richiesto.",
+      "lobbyCta": "Entra"
     },
     "features": {
       "proximity": {
-        "eyebrow": "Chiamate di prossimità",
         "title": "Avvicinati per parlare.",
         "muted": "Niente link, niente agende.",
         "body": "Avvicinati a qualcuno e una chiamata è a un tocco. Allontanati e il piano torna tranquillo, come quando passi alla scrivania di un collega."
       },
       "meetings": {
-        "eyebrow": "Tavoli riunione",
         "title": "Siediti per la riunione.",
         "muted": "Alzati per uscire.",
         "body": "Le chiamate di gruppo si fanno a un tavolo. Chi si siede partecipa, le videocamere restano leggere come miniature e chiunque può condividere lo schermo."
       },
       "chat": {
-        "eyebrow": "Chat",
         "title": "Conversazioni che restano.",
         "muted": "Canali, messaggi diretti, reazioni.",
         "body": "Ogni ufficio ha la sua chat. Recupera dal telefono senza entrare e ricevi un discreto avviso sul piano quando qualcuno scrive."
       },
       "people": {
-        "eyebrow": "Presenza",
         "title": "Sappi chi c'è.",
         "muted": "Poi raggiungilo subito.",
         "body": "Vedi chi è sul piano, chi è occupato e chi è in chiamata. Tocca Raggiungi e il tuo personaggio trova da solo la strada."
       },
       "guests": {
-        "eyebrow": "Ospiti",
         "title": "Fai entrare chiunque.",
         "muted": "Con un solo link.",
         "body": "Invita i colleghi via email o manda un link ospite a un cliente o a un candidato. Scelgono un nome e un personaggio e sono sul piano, senza account."
@@ -1290,7 +1279,9 @@
           "title": "Niente da installare",
           "body": "È una pagina web. Su desktop, portatile o telefono si apre allo stesso modo, ed è sempre l'ultima versione."
         }
-      }
+      },
+      "muted": "Privato, vicino al tuo team e niente da installare.",
+      "stack": "Su cosa funziona"
     },
     "plans": {
       "title": "Inizia gratis.",
@@ -1318,24 +1309,23 @@
           "Immagini e file in chat",
           "Più tempo per le riunioni"
         ]
-      }
+      },
+      "note": "Nessuna carta richiesta. Il tuo ufficio è pronto in un minuto."
     },
     "faq": {
       "title": "Domande,",
-      "muted": "risposte."
+      "muted": "risposte.",
+      "note": "Hai ancora qualche dubbio? La lobby pubblica è aperta a tutti, quindi puoi entrare e vedere di persona."
     },
     "final": {
-      "title": "Il tuo team, a un piano di distanza.",
-      "body": "Crea un ufficio in un minuto, oppure entra nella lobby pubblica e dai prima un'occhiata."
+      "title": "Dai al tuo team un piano da condividere.",
+      "body": "Crea un ufficio in un minuto e manda il link al tuo team. Oppure entra prima nella lobby pubblica e senti com'è."
     },
     "preview": {
       "office": "Northwind",
       "general": "generale",
       "design": "design",
       "random": "varie",
-      "inCall": "In chiamata",
-      "meeting": "Revisione design",
-      "sharing": "Condivide lo schermo",
       "message1": "Buongiorno! Standup al tavolo grande tra 5?",
       "message2": "Arrivo 👋",
       "message3": "Ho pubblicato il nuovo flusso di onboarding, datemi un parere",
@@ -1351,7 +1341,6 @@
       "guestNote": "Chiunque abbia questo link può entrare come ospite.",
       "copy": "Copia",
       "invite": "Invita",
-      "here": "{count} qui",
       "people": "Persone",
       "guestArrived": "è entrata come ospite",
       "roles": {
@@ -1359,19 +1348,15 @@
         "engineering": "Ingegneria",
         "product": "Prodotto"
       },
-      "board": {
-        "signUp": "Iscriviti",
-        "name": "Dai un nome",
-        "walkIn": "Entra",
-        "note": "saltare per gli ospiti?"
-      },
       "message0": "Call col cliente spostata alle 14, note in #design",
       "message4": "Concentrata sul rilascio fino a pranzo 🎧",
       "channels": "Canali",
       "directMessages": "Messaggi diretti",
       "today": "Oggi",
       "typing": "{name} sta scrivendo…",
-      "guest": "Ospite"
+      "guest": "Ospite",
+      "inviteTeammate": "Invita un collega",
+      "inviteTeammateNote": "Entrano con un link"
     },
     "footer": {
       "tagline": "Un ufficio virtuale in cui ti muovi.",

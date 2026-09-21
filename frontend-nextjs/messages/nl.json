@@ -1209,7 +1209,9 @@
     "walkTo": "Loop erheen",
     "youLower": "jij",
     "joined": "Lid sinds {date}",
-    "yourProfile": "Jouw profiel"
+    "yourProfile": "Jouw profiel",
+    "leaveOffice": "Kantoor verlaten",
+    "leave": "Verlaten"
   },
   "dashboard": {
     "morning": "Goedemorgen, {name}",

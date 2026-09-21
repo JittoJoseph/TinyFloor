@@ -1209,7 +1209,9 @@
     "walkTo": "Gå dit",
     "youLower": "du",
     "joined": "Med sedan {date}",
-    "yourProfile": "Din profil"
+    "yourProfile": "Din profil",
+    "leaveOffice": "Lämna kontoret",
+    "leave": "Lämna"
   },
   "dashboard": {
     "morning": "God morgon, {name}",

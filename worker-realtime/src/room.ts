@@ -2,7 +2,6 @@ import { DurableObject } from "cloudflare:workers";
 import {
   CALL_KINDS,
   VIDEO_QUALITIES,
-  CHAT_MAX_LENGTH,
   MEDIA_KINDS,
   CloseCode,
   HEARTBEAT_PING,
@@ -44,7 +43,6 @@ const LIMITS = {
   drawsPerSecond: 30,
   sfuOpsPerSecond: 10,
   messagesPerSecond: 60,
-  chatsPerTenSeconds: 5,
 };
 
 interface Attachment {
@@ -76,8 +74,6 @@ interface Attachment {
   draws: number;
   sfuOps: number;
   messages: number;
-  chatWindow: number;
-  chats: number;
 }
 
 /**
@@ -118,6 +114,17 @@ export class Room extends DurableObject<Env> {
 
   presenceCount(): number {
     return this.present().length;
+  }
+
+  /** Who is here, once each, for a door that shows faces before you walk in. */
+  presentPeople(limit = 8): Array<{ id: string; name: string }> {
+    const seen = new Map<string, string>();
+    for (const socket of this.present()) {
+      const { userId, name } = this.attachmentOf(socket);
+      if (!seen.has(userId)) seen.set(userId, name);
+      if (seen.size >= limit) break;
+    }
+    return [...seen].map(([id, name]) => ({ id, name }));
   }
 
   private attachmentOf(socket: WebSocket): Attachment {
@@ -229,8 +236,6 @@ export class Room extends DurableObject<Env> {
       draws: 0,
       sfuOps: 0,
       messages: 0,
-      chatWindow: 0,
-      chats: 0,
     };
 
     const others = this.present().map((socket) => playerState(this.attachmentOf(socket)));
@@ -284,9 +289,6 @@ export class Room extends DurableObject<Env> {
         break;
       case "status":
         this.setStatus(me, message.status);
-        break;
-      case "chat":
-        this.chat(socket, me, message.text, now);
         break;
       case "board_sync":
         send(socket, { t: "board_state", strokes: this.board.strokes() });
@@ -407,24 +409,6 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || !PRESENCE_STATUSES.includes(status)) return;
     me.status = status;
     this.broadcast({ t: "status", id: me.userId, status });
-  }
-
-  private chat(socket: WebSocket, me: Attachment, text: unknown, now: number): void {
-    if (now - me.chatWindow >= 10_000) {
-      me.chatWindow = now;
-      me.chats = 0;
-    }
-    me.chats++;
-    if (me.chats > LIMITS.chatsPerTenSeconds) {
-      send(socket, { t: "error", code: "slow_down" });
-      return;
-    }
-    const trimmed = typeof text === "string" ? text.trim().slice(0, CHAT_MAX_LENGTH) : "";
-    if (!trimmed) return;
-
-    // Not back to the sender: their own message is already in their panel.
-    this.broadcast({ t: "chat", id: me.userId, name: me.name, text: trimmed, at: now }, socket);
-    this.reportToDiscord(me.room, { kind: "chat", name: me.name, text: trimmed });
   }
 
   private draw(socket: WebSocket, me: Attachment, message: object): void {
@@ -795,7 +779,7 @@ export class Room extends DurableObject<Env> {
   /** Only lobby copies report to Discord; workspace rooms never do. */
   private reportToDiscord(
     room: string,
-    event: { kind: "join"; name: string; character: string; country: string } | { kind: "chat"; name: string; text: string },
+    event: { kind: "join"; name: string; character: string; country: string },
   ): void {
     if (lobbyCopyNumber(room) === null) return;
     const request = this.reporter.report({ ...event, copy: room });

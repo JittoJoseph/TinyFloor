@@ -6,6 +6,9 @@ import {
   CloseCode,
   GENERAL_CHANNEL,
   HEARTBEAT_PING,
+  LOBBY_CHANNELS,
+  LOBBY_CHAT,
+  LOBBY_RETENTION_DAYS,
   HEARTBEAT_PONG,
   cleanChannelName,
   dmChannelId,
@@ -19,6 +22,7 @@ import {
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { TICKET_HEADER } from "./headers";
+import { LobbyReporter } from "./discord";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
@@ -51,6 +55,11 @@ const SENDS_PER_TEN_SECONDS = 100;
 /** Messages between trims. Cheap, and it keeps the object's storage bounded. */
 const TRIM_EVERY = 500;
 const TEN_SECONDS = 10_000;
+const DAY_MS = 24 * 60 * 60 * 1000;
+/** Where "is this the lobby's chat" is kept, so an alarm knows without a request. */
+const LOBBY_FLAG = "lobby";
+/** Lobby messages are public: the same abuse checks as the lobby floor. */
+const REPORT_ROOM = "lobby-chat";
 
 /**
  * One of these per office. It holds that office's channels and messages in its
@@ -59,11 +68,21 @@ const TEN_SECONDS = 10_000;
  * The sockets hibernate, so an office with ten people connected all day costs
  * nothing while nobody is typing: the object wakes for the millisecond it takes
  * to write a message and pass it on.
+ *
+ * The public lobby has one of these too, named "lobby", shared by every copy
+ * of its floor. There the channels are fixed, guests may post under the name
+ * they walked in with, there are no direct messages, new channels or images,
+ * and an alarm once a day forgets anything older than a week.
  */
 export class Chat extends DurableObject<Env> {
+  private lobby = false;
+  private readonly reporter: LobbyReporter;
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
+    this.reporter = new LobbyReporter(env.DISCORD_WEBHOOK_URL);
     ctx.blockConcurrencyWhile(async () => {
+      this.lobby = (await ctx.storage.get<boolean>(LOBBY_FLAG)) === true;
       this.sql.exec(`CREATE TABLE IF NOT EXISTS channels (
         id TEXT PRIMARY KEY,
         kind TEXT NOT NULL,
@@ -114,6 +133,10 @@ export class Chat extends DurableObject<Env> {
     const pair = new WebSocketPair();
     const [client, server] = Object.values(pair);
     this.ctx.acceptWebSocket(server);
+    if (ticket.room === `chat:${LOBBY_CHAT}` && !this.lobby) {
+      this.lobby = true;
+      await this.ctx.storage.put(LOBBY_FLAG, true);
+    }
     const attachment: Attachment = { userId: ticket.sub, name: ticket.name, sends: 0, window: 0 };
     this.remember(server, attachment);
 
@@ -239,7 +262,8 @@ export class Chat extends DurableObject<Env> {
     now: number,
   ): void {
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
-    const picture = parseImage(image);
+    const picture = this.lobby ? null : parseImage(image);
+    if (this.lobby && image) return this.send(socket, { t: "chat_error", code: "offices_only" });
     if (!text && !picture) return;
     if (!this.mayPost(me.userId, channel)) return this.send(socket, { t: "chat_error", code: "no_such_channel" });
 
@@ -270,6 +294,31 @@ export class Chat extends DurableObject<Env> {
 
     // History trims itself as it grows, so no nightly job has to walk offices.
     if (seq % TRIM_EVERY === 0) this.trim();
+
+    if (this.lobby) {
+      const report = this.reporter.report({ kind: "chat", name: me.name, copy: REPORT_ROOM, text });
+      if (report) this.ctx.waitUntil(report);
+      this.ctx.waitUntil(this.keepAWeek(now));
+    }
+  }
+
+  /** The lobby forgets: once a day, anything older than a week goes. */
+  async alarm(): Promise<void> {
+    if (!this.lobby) return;
+    const now = Date.now();
+    const cutoff = now - LOBBY_RETENTION_DAYS * DAY_MS;
+    this.sql.exec("DELETE FROM reactions WHERE seq IN (SELECT seq FROM messages WHERE at < ?)", cutoff);
+    this.sql.exec("DELETE FROM messages WHERE at < ?", cutoff);
+    // Guests come and go; who they were goes with their messages.
+    this.sql.exec("DELETE FROM reads WHERE member IN (SELECT id FROM people WHERE seen_at < ?)", cutoff);
+    this.sql.exec("DELETE FROM people WHERE seen_at < ?", cutoff);
+    const left = this.sql.exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages").one().n;
+    if (Number(left) > 0) await this.ctx.storage.setAlarm(now + DAY_MS);
+  }
+
+  /** The first message after a quiet spell starts the daily clean-up again. */
+  private async keepAWeek(now: number): Promise<void> {
+    if ((await this.ctx.storage.getAlarm()) === null) await this.ctx.storage.setAlarm(now + DAY_MS);
   }
 
   private page(socket: WebSocket, me: Attachment, channel: string, before?: number): void {
@@ -319,6 +368,7 @@ export class Chat extends DurableObject<Env> {
   }
 
   private makeChannel(socket: WebSocket, me: Attachment, name: unknown, now: number): void {
+    if (this.lobby) return this.send(socket, { t: "chat_error", code: "offices_only" });
     const clean = cleanChannelName(name);
     if (!clean) return this.send(socket, { t: "chat_error", code: "bad_name" });
     if (clean === GENERAL_CHANNEL) return this.send(socket, { t: "chat_error", code: "exists" });
@@ -337,6 +387,7 @@ export class Chat extends DurableObject<Env> {
   }
 
   private openDm(socket: WebSocket, me: Attachment, userId: unknown, now: number): void {
+    if (this.lobby) return this.send(socket, { t: "chat_error", code: "offices_only" });
     if (typeof userId !== "string" || userId === me.userId) return;
     const id = dmChannelId(me.userId, userId);
     this.ensureChannel(id, me.userId, now);
@@ -360,6 +411,7 @@ export class Chat extends DurableObject<Env> {
   /** Channels are the whole office's; a direct message is only its two people's. */
   private mayPost(userId: string, channel: string): boolean {
     if (typeof channel !== "string" || !channel) return false;
+    if (this.lobby) return (LOBBY_CHANNELS as readonly string[]).includes(channel);
     const pair = dmMembers(channel);
     if (pair) return pair.includes(userId);
     return channel === GENERAL_CHANNEL || cleanChannelName(channel) === channel;
@@ -367,6 +419,7 @@ export class Chat extends DurableObject<Env> {
 
   /** Everything this person should see in their sidebar. */
   private channelsFor(userId: string): ChannelSummary[] {
+    if (this.lobby) return LOBBY_CHANNELS.map((channel) => this.summary(channel, userId));
     const rows = this.sql
       .exec<ChannelRow>("SELECT id, kind, name, created_at FROM channels ORDER BY created_at")
       .toArray();

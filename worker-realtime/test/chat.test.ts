@@ -1,7 +1,10 @@
 import { env, exports } from "cloudflare:workers";
+import { runDurableObjectAlarm, runInDurableObject } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
 import {
   GENERAL_CHANNEL,
+  LOBBY_CHANNELS,
+  LOBBY_CHAT,
   dmChannelId,
   signTicket,
   type ChatClientMessage,
@@ -28,7 +31,7 @@ class ChatClient {
     });
   }
 
-  static async open(office: string, who: { id: string; name: string }): Promise<ChatClient> {
+  static async open(office: string, who: { id: string; name: string }, role = "member"): Promise<ChatClient> {
     const ticket = await signTicket(
       {
         v: 1,
@@ -36,14 +39,14 @@ class ChatClient {
         sub: who.id,
         name: who.name,
         character: "Adam",
-        role: "member",
+        role: role as "member",
         cap: 10,
         exp: Date.now() + 60_000,
       },
       env.TICKET_SECRET,
     );
     const response = await exports.default.fetch(
-      `https://realtime.tinyfloor.com/offices/${office}/chat?ticket=${encodeURIComponent(ticket)}`,
+      `https://realtime.tinyfloor.com/${office === LOBBY_CHAT ? "lobby" : `offices/${office}`}/chat?ticket=${encodeURIComponent(ticket)}`,
       { headers: { Upgrade: "websocket", Origin: ORIGIN } },
     );
     expect(response.status).toBe(101);
@@ -201,5 +204,64 @@ describe("office chat", () => {
     ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "   " });
     ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "real" });
     expect((await ada.next("chat_new")).message.body).toBe("real");
+  });
+});
+
+describe("lobby chat", () => {
+  it("has the same fixed channels for everyone, and guests post under their name", async () => {
+    const guest = await ChatClient.open(LOBBY_CHAT, { id: `guest-${sequence++}`, name: "Mara" }, "guest");
+    const ready = await guest.next("chat_ready");
+    expect(ready.channels.map((one) => one.id)).toEqual([...LOBBY_CHANNELS]);
+
+    const other = await ChatClient.open(LOBBY_CHAT, { id: `guest-${sequence++}`, name: "Tomas" }, "guest");
+    await other.next("chat_ready");
+    const text = `hello lobby ${sequence++}`;
+    guest.send({ t: "chat_send", channel: "introductions", body: text });
+    const seen = await other.next("chat_new");
+    expect(seen.message).toMatchObject({ channel: "introductions", authorName: "Mara", body: text });
+  });
+
+  it("keeps what an office adds for offices: no channels, no DMs, no images, no other channel names", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-ada-${sequence++}`, name: "Ada" });
+    await ada.next("chat_ready");
+
+    ada.send({ t: "chat_channel", name: "random" });
+    expect((await ada.next("chat_error")).code).toBe("offices_only");
+    ada.messages.length = 0;
+
+    ada.send({ t: "chat_dm", userId: "someone" });
+    expect((await ada.next("chat_error")).code).toBe("offices_only");
+    ada.messages.length = 0;
+
+    ada.send({ t: "chat_send", channel: "general", body: "", image: { key: "att/x.webp", width: 1, height: 1 } });
+    expect((await ada.next("chat_error")).code).toBe("offices_only");
+    ada.messages.length = 0;
+
+    ada.send({ t: "chat_send", channel: "random", body: "nope" });
+    expect((await ada.next("chat_error")).code).toBe("no_such_channel");
+  });
+
+  it("forgets messages older than a week, once a day", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-old-${sequence++}`, name: "Ada" });
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: "feedback", body: "fresh one" });
+    await ada.next("chat_new");
+
+    const stub = env.CHAT.getByName(LOBBY_CHAT);
+    await runInDurableObject(stub, async (_chat, state) => {
+      const old = Date.now() - 8 * 24 * 60 * 60 * 1000;
+      state.storage.sql.exec(
+        "INSERT INTO messages (channel, author, author_name, body, image, at) VALUES ('feedback', 'x', 'X', 'stale', NULL, ?)",
+        old,
+      );
+      expect(await state.storage.getAlarm()).not.toBeNull();
+    });
+    expect(await runDurableObjectAlarm(stub)).toBe(true);
+    await runInDurableObject(stub, async (_chat, state) => {
+      const bodies = state.storage.sql.exec<{ body: string }>("SELECT body FROM messages WHERE channel = 'feedback'").toArray();
+      expect(bodies.map((row) => row.body)).toContain("fresh one");
+      expect(bodies.map((row) => row.body)).not.toContain("stale");
+      expect(await state.storage.getAlarm()).not.toBeNull();
+    });
   });
 });

@@ -112,4 +112,19 @@ describe("lobby tickets", () => {
     const response = await post("/v1/lobby/ticket", {});
     expect(response.status).toBe(401);
   });
+
+  it("lets a guest into the lobby's one chat", async () => {
+    const { cookie } = await becomeGuest("Mara", "Lucy");
+    const response = await post("/v1/lobby/chat-ticket", {}, { Cookie: cookie });
+    expect(response.status).toBe(200);
+    const { ticket, url } = await response.json<{ ticket: string; url: string }>();
+    expect(url).toBe("ws://localhost:8788/lobby/chat");
+    expect(await verifyTicket(ticket, env.TICKET_SECRET)).toMatchObject({ room: "chat:lobby", name: "Mara", role: "guest" });
+  });
+
+  it("shows who is in the lobby to anyone at its door", async () => {
+    const response = await exports.default.fetch(`${API}/v1/lobby`, { headers: { Origin: SITE } });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ here: expect.any(Number), faces: expect.any(Array) });
+  });
 });

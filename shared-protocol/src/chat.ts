@@ -12,6 +12,16 @@ export const CHAT_PAGE = 50;
 /** Every office has this channel from the day it is made, without a row anywhere. */
 export const GENERAL_CHANNEL = "general";
 export const CHANNEL_NAME_MAX = 32;
+
+/**
+ * The public lobby has one chat for every copy of its floor: the same channels
+ * whichever copy you landed in, fixed ones only, open to guests, and nothing
+ * older than a week. Direct messages, new channels and images are what an
+ * office adds, so the lobby shows them and says so.
+ */
+export const LOBBY_CHAT = "lobby";
+export const LOBBY_CHANNELS = ["general", "introductions", "feedback"] as const;
+export const LOBBY_RETENTION_DAYS = 7;
 /** Kept per channel, oldest trimmed by the nightly job. */
 export const CHANNEL_HISTORY_MAX = 5000;
 

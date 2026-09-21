@@ -1,5 +1,9 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
-import type { RealtimeAdminApi } from "../../shared-protocol/src";
+import { LOBBY_COPY_CAPACITY, type LobbyPeople, type RealtimeAdminApi } from "../../shared-protocol/src";
+import { lobbyCopy } from "./lobby";
+
+/** Faces the lobby door shows. */
+const FACES = 5;
 
 /**
  * What tinyfloor-api may do to rooms. Reachable only through the API's service
@@ -22,6 +26,23 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
 
   async revokeGuestLink(roomId: string, linkId: string): Promise<void> {
     await this.env.ROOM.getByName(roomId).disconnectLink(linkId);
+  }
+
+  /**
+   * The lobby's door: the copies in order, until two in a row are empty (a
+   * copy can empty out while the next still has people). Normally two calls.
+   */
+  async lobbyPeople(): Promise<LobbyPeople> {
+    let here = 0;
+    let empty = 0;
+    const faces: LobbyPeople["faces"] = [];
+    for (let number = 1; number <= 50 && empty < 2; number++) {
+      const people = await this.env.ROOM.getByName(lobbyCopy(number)).presentPeople(LOBBY_COPY_CAPACITY);
+      empty = people.length ? 0 : empty + 1;
+      here += people.length;
+      for (const one of people) if (faces.length < FACES) faces.push(one);
+    }
+    return { here, faces };
   }
 
   /** A membership ended: the floor and the office's chat both let go of them. */

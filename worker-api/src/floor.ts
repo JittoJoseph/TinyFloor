@@ -1,4 +1,5 @@
 import {
+  LOBBY_CHAT,
   LOBBY_COPY_CAPACITY,
   LOBBY_ROOM,
   signTicket,
@@ -13,6 +14,8 @@ import type { Router } from "./router";
 import { requireUser, type User } from "./session";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
+/** How stale the lobby door's head count may be. */
+const LOBBY_CACHE_SECONDS = 15;
 const GUEST_LINK_LIFETIMES: Record<string, number> = { "1d": DAY_MS, "7d": 7 * DAY_MS, "30d": 30 * DAY_MS };
 
 /** The floor is the office, so a room id is an office id. */
@@ -93,6 +96,42 @@ export function floorRoutes(router: Router): void {
     .add("POST", "/v1/lobby/ticket", async ({ request, env, ctx }) => {
       const user = await requireUser(env, request, ctx);
       return json(await ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY));
+    })
+
+    // The lobby's one chat, shared by every copy of its floor. Guests post too,
+    // under the name they walked in with.
+    .add("POST", "/v1/lobby/chat-ticket", async ({ request, env, ctx }) => {
+      const user = await requireUser(env, request, ctx);
+      const claims: RoomTicket = {
+        v: 1,
+        room: `chat:${LOBBY_CHAT}`,
+        sub: user.id,
+        name: user.displayName,
+        character: user.character,
+        role: user.isGuest ? "guest" : "member",
+        cap: LOBBY_COPY_CAPACITY,
+        exp: Date.now() + TICKET_LIFETIME_MS,
+      };
+      return json({ ticket: await signTicket(claims, env.TICKET_SECRET), url: `${env.REALTIME_URL}/lobby/chat` });
+    })
+
+    // Who is in the lobby, for its door, before you have walked in (or signed
+    // up). Cached at the edge for a few seconds, so a busy door never wakes the
+    // rooms once per visitor.
+    .add("GET", "/v1/lobby", async ({ env, ctx }) => {
+      const key = new Request("https://lobby-people.internal/");
+      const cached = await caches.default.match(key);
+      if (cached) return json(await cached.json());
+      const people = await realtime(env)
+        .lobbyPeople()
+        .catch(() => ({ here: 0, faces: [] }));
+      ctx.waitUntil(
+        caches.default.put(
+          key,
+          new Response(JSON.stringify(people), { headers: { "Cache-Control": `max-age=${LOBBY_CACHE_SECONDS}` } }),
+        ),
+      );
+      return json(people);
     });
 }
 

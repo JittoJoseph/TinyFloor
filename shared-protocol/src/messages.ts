@@ -2,7 +2,6 @@ export type PresenceStatus = "available" | "busy" | "away" | "in_call";
 
 export const PRESENCE_STATUSES: readonly PresenceStatus[] = ["available", "busy", "away", "in_call"];
 
-export const CHAT_MAX_LENGTH = 500;
 
 /** The plain-text heartbeat. The room answers it without waking up. */
 export const HEARTBEAT_PING = "ping";
@@ -103,7 +102,6 @@ export type ClientMessage =
   | { t: "sit"; seat: number; x: number; y: number; meeting?: string }
   | { t: "stand"; x: number; y: number }
   | { t: "status"; status: PresenceStatus }
-  | { t: "chat"; text: string }
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
@@ -125,7 +123,6 @@ export type ServerMessage =
   | ({ t: "meeting_member_joined" } & MeetingMember)
   | { t: "meeting_member_left"; id: string }
   | { t: "status"; id: string; status: PresenceStatus }
-  | { t: "chat"; id: string; name: string; text: string; at: number }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }

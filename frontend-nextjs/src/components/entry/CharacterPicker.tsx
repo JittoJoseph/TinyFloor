@@ -37,10 +37,10 @@ export const CharacterPicker: React.FC<{
           role="radio"
           aria-checked={selected}
           onClick={() => onChange(character)}
-          className={`cursor-pointer group relative rounded-2xl border p-2 pb-2.5 transition-[border-color,background-color,transform,box-shadow] duration-200 ${
+          className={`cursor-pointer group relative rounded-2xl border p-1.5 pb-2 outline-none transition-[border-color,background-color,box-shadow,transform] duration-200 active:scale-[0.97] focus-visible:ring-4 focus-visible:ring-foreground/10 ${
             selected
-              ? "border-[var(--color-braun-text)]/35 bg-white shadow-[0_10px_24px_-16px_rgba(0,0,0,0.5)]"
-              : "border-black/8 bg-[#fbfbf9] hover:bg-white hover:border-black/15"
+              ? "border-foreground bg-card shadow-[0_0_0_1px_var(--ui-foreground)]"
+              : "border-border bg-card hover:border-border-strong"
           }`}
         >
           {/* Sized from the tile, not in pixels, so no tile is ever too small for
@@ -48,10 +48,10 @@ export const CharacterPicker: React.FC<{
               quarters of its frame, so at 48% of the tile wide the body is 72%
               tall, and feet at 86% centre it with even room above and below. */}
           <span
-            className="relative block aspect-square rounded-xl bg-[#f0f0eb] overflow-hidden"
+            className="relative block aspect-square rounded-xl bg-muted overflow-hidden"
             style={{ containerType: "size" }}
           >
-            <span className="absolute left-1/2 top-[86%] -translate-x-1/2 -translate-y-1/2 w-[46%] h-[7%] rounded-[100%] bg-black/10 blur-[1px]" />
+            <span className="absolute left-1/2 top-[86%] -translate-x-1/2 -translate-y-1/2 w-[46%] h-[7%] rounded-[100%] bg-foreground/10 blur-[1px]" />
             <PixelAvatar
               character={character}
               width="48cqw"
@@ -59,17 +59,15 @@ export const CharacterPicker: React.FC<{
             />
           </span>
           <span
-            className={`block text-center font-body text-[11px] font-semibold mt-2 transition-opacity duration-200 ${
-              selected
-                ? "text-[var(--color-braun-text)]"
-                : "text-[var(--color-braun-text)] opacity-45 group-hover:opacity-70"
+            className={`mt-1.5 block text-center text-[12px] transition-colors duration-200 ${
+              selected ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"
             }`}
           >
             {character}
           </span>
           {selected && (
-            <span className="absolute top-1 right-1 w-4.5 h-4.5 rounded-full bg-[var(--color-braun-orange)] text-white flex items-center justify-center shadow-sm">
-              <Check className="w-2.5 h-2.5" strokeWidth={3} />
+            <span className="absolute end-2.5 top-2.5 flex size-4 items-center justify-center rounded-full bg-foreground text-background">
+              <Check className="size-2.5" strokeWidth={3.5} />
             </span>
           )}
         </button>

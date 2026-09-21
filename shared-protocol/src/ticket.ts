@@ -1,4 +1,4 @@
-export type RoomRole = "owner" | "admin" | "member" | "guest";
+export type RoomRole = "admin" | "member" | "guest";
 
 /**
  * What the API vouches for when it lets someone into a room. Signed with

@@ -1,0 +1,6 @@
+# Screenshots of other people's products: reference while we build, not ours to
+# ship. The notes beside them carry everything worth keeping in the repo.
+*.png
+*.jpg
+*.jpeg
+*.webp

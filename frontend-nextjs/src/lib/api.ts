@@ -24,55 +24,58 @@ export interface SessionUser {
   guest: boolean;
 }
 
-export type WorkspaceRole = "owner" | "admin" | "member";
+export type OfficeRole = "admin" | "member";
 
-export interface WorkspaceSummary {
+export interface OfficeSummary {
   id: string;
   name: string;
   plan: string;
-  role: WorkspaceRole;
+  seats: number;
+  members: number;
+  role: OfficeRole;
+  /** A few members, for faces on the dashboard (only from /v1/me). */
+  faces?: Array<{ id: string; name: string }>;
+  /** Who is on the floor right now (only from /v1/me). */
+  here?: number;
 }
 
-export interface Workspace extends WorkspaceSummary {
-  memberLimit: number;
-  members: number;
+export interface Office extends OfficeSummary {
+  /** How many people fit on the floor at once: members plus room for guests. */
+  capacity: number;
+  /** Who holds the subscription. */
+  owner: string;
 }
 
 export interface Member {
   id: string;
   displayName: string;
   character: string;
-  role: WorkspaceRole;
+  email: string | null;
+  role: OfficeRole;
   joinedAt: number;
 }
 
 export interface Invite {
   id: string;
   email: string | null;
-  role: "admin" | "member";
+  role: OfficeRole;
   createdAt: number;
   expiresAt: number;
-}
-
-export interface RoomSummary {
-  id: string;
-  name: string;
-  capacity: number;
-  people: number;
-}
-
-export interface RoomDetails {
-  id: string;
-  name: string;
-  capacity: number;
-  workspaceId: string;
-  workspaceName: string;
 }
 
 export interface GuestLink {
   id: string;
   createdAt: number;
   expiresAt: number;
+}
+
+export interface OfficeOverview {
+  office: Office;
+  members: Member[];
+  invites: Invite[];
+  guestLinks: GuestLink[];
+  /** How many people are on the floor right now. */
+  people: number;
 }
 
 export interface RoomTicket {
@@ -128,60 +131,48 @@ export const api = {
   signOut: () => post<{ ok: true }>("/auth/logout"),
 
   // The signed-in person
-  me: () => get<{ user: SessionUser; workspaces: WorkspaceSummary[] }>("/me"),
+  me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
   updateMe: (body: { displayName?: string; character?: string }) => patch<{ user: SessionUser }>("/me", body),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
 
-  // Workspaces and members
-  createWorkspace: (name: string) => post<{ workspace: Workspace }>("/workspaces", { name }),
-  workspace: (workspaceId: string) => get<{ workspace: Workspace }>(`/workspaces/${id(workspaceId)}`),
-  /** The workspace, its rooms and its members in one request, for the dashboard. */
-  overview: (workspaceId: string) =>
-    get<{ workspace: Workspace; rooms: RoomSummary[]; members: Member[]; invites: Invite[] }>(
-      `/workspaces/${id(workspaceId)}/overview`,
-    ),
-  renameWorkspace: (workspaceId: string, name: string) =>
-    patch<{ workspace: Workspace }>(`/workspaces/${id(workspaceId)}`, { name }),
-  deleteWorkspace: (workspaceId: string) => del<{ ok: true }>(`/workspaces/${id(workspaceId)}`),
-  members: (workspaceId: string) => get<{ members: Member[] }>(`/workspaces/${id(workspaceId)}/members`),
-  setRole: (workspaceId: string, userId: string, role: "admin" | "member") =>
-    patch<{ ok: true }>(`/workspaces/${id(workspaceId)}/members/${id(userId)}`, { role }),
-  removeMember: (workspaceId: string, userId: string) =>
-    del<{ ok: true }>(`/workspaces/${id(workspaceId)}/members/${id(userId)}`),
-  transferOwnership: (workspaceId: string, userId: string) =>
-    post<{ ok: true }>(`/workspaces/${id(workspaceId)}/transfer`, { userId }),
+  // Offices
+  createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),
+  office: (officeId: string) => get<{ office: Office }>(`/offices/${id(officeId)}`),
+  /** The office, its people and its invitations in one request. */
+  overview: (officeId: string) => get<OfficeOverview>(`/offices/${id(officeId)}/overview`),
+  renameOffice: (officeId: string, name: string) => patch<{ office: Office }>(`/offices/${id(officeId)}`, { name }),
+  closeOffice: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}`),
+  setRole: (officeId: string, userId: string, role: OfficeRole) =>
+    patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),
+  removeMember: (officeId: string, userId: string) =>
+    del<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`),
+  handOver: (officeId: string, userId: string) => post<{ ok: true }>(`/offices/${id(officeId)}/transfer`, { userId }),
 
-  // Invites
-  createInvite: (workspaceId: string, body: { role: "admin" | "member"; email?: string }) =>
-    post<{ invite: Invite & { token: string } }>(`/workspaces/${id(workspaceId)}/invites`, body),
-  invites: (workspaceId: string) => get<{ invites: Invite[] }>(`/workspaces/${id(workspaceId)}/invites`),
-  revokeInvite: (workspaceId: string, inviteId: string) =>
-    del<{ ok: true }>(`/workspaces/${id(workspaceId)}/invites/${id(inviteId)}`),
+  // Invitations
+  createInvite: (officeId: string, body: { role: OfficeRole; email?: string }) =>
+    post<{ invite: Invite & { token: string } }>(`/offices/${id(officeId)}/invites`, body),
+  revokeInvite: (officeId: string, inviteId: string) =>
+    del<{ ok: true }>(`/offices/${id(officeId)}/invites/${id(inviteId)}`),
   invitePreview: (token: string) =>
-    get<{ invite: { workspaceName: string; invitedBy: string; role: string; expiresAt: number } }>(
+    get<{ invite: { officeName: string; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
       `/invites/${id(token)}`,
     ),
-  acceptInvite: (token: string) => post<{ workspaceId: string }>(`/invites/${id(token)}/accept`),
+  acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
 
-  // Rooms and guest links
-  rooms: (workspaceId: string) => get<{ rooms: RoomSummary[] }>(`/workspaces/${id(workspaceId)}/rooms`),
-  createRoom: (workspaceId: string, body: { name: string; capacity?: number }) =>
-    post<{ room: RoomSummary }>(`/workspaces/${id(workspaceId)}/rooms`, body),
-  room: (roomId: string) => get<{ room: RoomDetails }>(`/rooms/${id(roomId)}`),
-  updateRoom: (roomId: string, body: { name?: string; capacity?: number }) =>
-    patch<{ room: RoomDetails }>(`/rooms/${id(roomId)}`, body),
-  deleteRoom: (roomId: string) => del<{ ok: true }>(`/rooms/${id(roomId)}`),
-  createGuestLink: (roomId: string, expiresIn: "1d" | "7d" | "30d") =>
-    post<{ guestLink: GuestLink & { token: string } }>(`/rooms/${id(roomId)}/guest-links`, { expiresIn }),
-  guestLinks: (roomId: string) => get<{ guestLinks: GuestLink[] }>(`/rooms/${id(roomId)}/guest-links`),
-  revokeGuestLink: (roomId: string, linkId: string) =>
-    del<{ ok: true }>(`/rooms/${id(roomId)}/guest-links/${id(linkId)}`),
-  guestLinkPreview: (token: string) =>
-    get<{ guestLink: { roomName: string; workspaceName: string } }>(`/guest-links/${id(token)}`),
+  // Guest links
+  createGuestLink: (officeId: string, expiresIn: "1d" | "7d" | "30d") =>
+    post<{ guestLink: GuestLink & { token: string } }>(`/offices/${id(officeId)}/guest-links`, { expiresIn }),
+  revokeGuestLink: (officeId: string, linkId: string) =>
+    del<{ ok: true }>(`/offices/${id(officeId)}/guest-links/${id(linkId)}`),
+  guestLinkPreview: (token: string) => get<{ guestLink: { officeName: string } }>(`/guest-links/${id(token)}`),
 
-  // Entering rooms and calls
-  roomTicket: (roomId: string) => post<RoomTicket>(`/rooms/${id(roomId)}/ticket`),
+  // Walking in, chatting, calling
+  officeTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/ticket`),
+  chatTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/chat-ticket`),
   guestLinkTicket: (token: string) => post<RoomTicket>(`/guest-links/${id(token)}/ticket`),
   lobbyTicket: () => post<RoomTicket>("/lobby/ticket"),
+  lobbyChatTicket: () => post<RoomTicket>("/lobby/chat-ticket"),
+  /** Who is in the public lobby right now, for its door. */
+  lobbyPeople: () => get<{ here: number; faces: Array<{ id: string; name: string }> }>("/lobby"),
   iceServers: () => post<IceServers>("/calls/ice-servers"),
 };

@@ -5,14 +5,13 @@ import { dayOf } from "../src/usage";
 import { Client, settle, uniqueRoom } from "./client";
 
 interface UsageRow {
-  workspace_id: string | null;
   peak_people: number;
   person_minutes: number;
   sfu_minutes: number;
 }
 
 const usageOf = (room: string) =>
-  env.DB.prepare("SELECT workspace_id, peak_people, person_minutes, sfu_minutes FROM usage_daily WHERE day = ? AND room_id = ?")
+  env.DB.prepare("SELECT peak_people, person_minutes, sfu_minutes FROM usage_daily WHERE day = ? AND office_id = ?")
     .bind(dayOf(Date.now()), room)
     .first<UsageRow>();
 
@@ -33,10 +32,6 @@ const backdate = (room: string, joinedMinutesAgo: number, satMinutesAgo: number)
 describe("usage totals", () => {
   it("writes the day's peak, person minutes and meeting minutes when the room empties", async () => {
     const room = uniqueRoom();
-    await env.DB.prepare("INSERT INTO users (id, display_name, created_at, last_active_at) VALUES ('owner-u', 'O', 0, 0) ON CONFLICT DO NOTHING").run();
-    await env.DB.prepare("INSERT INTO workspaces (id, name, owner_id, created_at) VALUES ('ws-usage', 'W', 'owner-u', 0) ON CONFLICT DO NOTHING").run();
-    await env.DB.prepare("INSERT INTO rooms (id, workspace_id, name, created_by, created_at) VALUES (?, 'ws-usage', 'R', 'owner-u', 0)").bind(room).run();
-
     const ava = await Client.open(room);
     await ava.next("welcome");
     const ben = await Client.open(room);
@@ -51,17 +46,17 @@ describe("usage totals", () => {
     expect(await usageOf(room)).toBeNull(); // Ava is still there.
 
     ava.socket.close(1000, "bye");
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 20, sfu_minutes: 4 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 20, sfu_minutes: 4 }), { timeout: 5000 });
 
     // Coming back later the same day adds to the row.
     const cara = await Client.open(room);
     await cara.next("welcome");
     await backdate(room, 3, 0);
     cara.socket.close(1000, "bye");
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: "ws-usage", peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), { timeout: 5000 });
   }, 20_000);
 
-  it("counts people removed by the room, and leaves the workspace empty for lobby copies", async () => {
+  it("counts people removed by the room, in the lobby copy's own row", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room);
     await ava.next("welcome");
@@ -69,7 +64,7 @@ describe("usage totals", () => {
 
     await exports.RealtimeAdmin.closeRoom(room);
     await ava.closed();
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ workspace_id: null, peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), { timeout: 5000 });
   }, 20_000);
 
   it("forgets a deleted room's whiteboard", async () => {

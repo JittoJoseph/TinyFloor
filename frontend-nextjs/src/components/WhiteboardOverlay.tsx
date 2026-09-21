@@ -104,10 +104,10 @@ export default function WhiteboardOverlay() {
   const pen = (size: number) => setTool({ color: tool.color, size, erase: false });
 
   return (
-    <div className="fixed inset-0 z-[70] flex flex-col bg-[var(--color-braun-text)]/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
-      <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-3xl bg-[#fbfbf9] border border-black/[0.07] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
-        <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2.5 border-b border-black/[0.06]">
-          <span className={`${label} text-[var(--color-braun-text)] ps-1 hidden md:block`}>
+    <div className="fixed inset-0 z-[70] flex flex-col bg-foreground/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
+      <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-3xl bg-card border border-border shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2.5 border-b border-border">
+          <span className={`${label} text-foreground ps-1 hidden md:block`}>
             {t("title")}
           </span>
 
@@ -123,8 +123,8 @@ export default function WhiteboardOverlay() {
                   aria-label={t("penColor", { color })}
                   aria-pressed={on}
                   onClick={() => setTool({ color, size: tool.erase ? SIZES[0] : tool.size, erase: false })}
-                  className={`cursor-pointer w-6 h-6 sm:w-7 sm:h-7 shrink-0 rounded-full border border-black/10 transition-transform duration-150 ${
-                    on ? "ring-2 ring-offset-2 ring-[var(--color-braun-text)]/40 ring-offset-[#fbfbf9]" : ""
+                  className={`cursor-pointer w-6 h-6 sm:w-7 sm:h-7 shrink-0 rounded-full border border-border transition-transform duration-150 ${
+                    on ? "ring-2 ring-offset-2 ring-foreground/40 ring-offset-[#fbfbf9]" : ""
                   }`}
                   style={{ background: color }}
                 />
@@ -177,7 +177,7 @@ export default function WhiteboardOverlay() {
 
         <canvas
           ref={canvasRef}
-          className="flex-1 min-h-0 w-full touch-none cursor-crosshair bg-white"
+          className="flex-1 min-h-0 w-full touch-none cursor-crosshair bg-card"
           onPointerDown={(event) => {
             event.currentTarget.setPointerCapture(event.pointerId);
             drawingRef.current = true;
@@ -201,7 +201,7 @@ export default function WhiteboardOverlay() {
         />
       </div>
 
-      <p className="font-body text-[11px] text-white/70 text-center mt-2.5">{t("hint")}</p>
+      <p className="text-[11px] text-white/70 text-center mt-2.5">{t("hint")}</p>
     </div>
   );
 }

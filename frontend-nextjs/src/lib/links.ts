@@ -7,17 +7,24 @@ import { SITE_URL } from "./site";
 
 /** The free public lobby, open to anyone. */
 export const lobbyPath = "/lobby";
+export const lobbyChatPath = (channel?: string) =>
+  channel ? `${lobbyPath}/chat/${encodeURIComponent(channel)}` : `${lobbyPath}/chat`;
+export const lobbyPeoplePath = `${lobbyPath}/people`;
+export const lobbySettingsPath = `${lobbyPath}/settings`;
+/** The lobby's page about getting a floor of your own. */
+export const lobbyOfficePath = `${lobbyPath}/your-office`;
 
-/** One space's own pages: rooms, people, settings. */
-export const spacePath = (workspaceId: string) => `/space/${encodeURIComponent(workspaceId)}`;
+/** An office: its floor, and everything beside it. */
+export const officePath = (officeId: string) => `/office/${encodeURIComponent(officeId)}`;
+export const officeChatPath = (officeId: string, channel?: string) =>
+  channel ? `${officePath(officeId)}/chat/${encodeURIComponent(channel)}` : `${officePath(officeId)}/chat`;
+export const officePeoplePath = (officeId: string) => `${officePath(officeId)}/people`;
+export const officeSettingsPath = (officeId: string) => `${officePath(officeId)}/settings`;
 
-/** A workspace room, for its members. */
-export const roomPath = (roomId: string) => `/room/${encodeURIComponent(roomId)}`;
-
-/** A guest link into one room. */
+/** A guest link into an office. */
 export const guestLinkPath = (token: string) => `/join/${encodeURIComponent(token)}`;
 
-/** An invitation to join a workspace. */
+/** An invitation to become a member of an office. */
 export const invitePath = (token: string) => `/invite/${encodeURIComponent(token)}`;
 
 /** Absolute URL for a path, on the current origin in the browser. */

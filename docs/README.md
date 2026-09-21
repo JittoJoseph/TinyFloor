@@ -1,48 +1,40 @@
-# TinyFloor platform docs
+# What we are building next
 
-The move of TinyFloor's backend onto Cloudflare: Workers, Durable Objects, D1
-and Realtime.
+TinyFloor is live on Cloudflare — Workers, Durable Objects, D1 and Realtime —
+and the floor works. These documents are about the part that does not exist
+yet: the office around it.
 
-## Direction
+What has already shipped is described by the code and by git history, not here.
 
-- Live runs from `master`. The next sprint is built on `dev` and tried on
-  `preview.tinyfloor.com`.
-- **It is not compatible with the current Java backend,** and doesn't try to be.
-  The API, the WebSocket protocol and the data model are all new.
-- **Every Cloudflare resource is set up during development,** including the API
-  and realtime Workers on their real hostnames. Nobody uses them until the merge.
-- **The merge switches the site over:** the branch brings the frontend changes
-  and points the frontend at the new API.
-- **It's a fresh start.** Only user accounts are carried over from MongoDB. Rooms,
-  whiteboards and everything else start empty.
-- From the merge on, `backend-springboot/` is deprecated. Its code stays in the
-  repository, but nothing runs it.
+## The idea
 
-Where these documents differ from section 8 of the overview (side-by-side
-testing against the Java backend), these documents win.
+- **An office is a floor.** One office, one room, two roles. Nobody creates
+  rooms.
+- **Membership is the seat.** Three members free; paid tiers hold more. An
+  invitation is not a seat, and neither is being online.
+- **The floor is a fifth of the product.** The rest is the shell around it:
+  chat, people, settings, beside the map rather than on top of it.
+- **A team cannot work in a room that forgets.** Channels and direct messages
+  that persist, beside the transient chat on the floor.
+- **Costs stay near zero by design**, not by luck: hibernating sockets, small
+  messages, thumbnail-quality video, images compressed in the browser.
 
-## Documents
+## The plan
 
 | Document | What it covers |
 |---|---|
-| [cloudflare-platform-plan.md](cloudflare-platform-plan.md) | The overview: services, costs, free allowances |
-| [01-repository-and-environments.md](01-repository-and-environments.md) | Folders, Workers, bindings, environments, local development, deploys |
-| [02-data-model.md](02-data-model.md) | D1 schema, room storage, what lives where |
-| [03-auth-and-accounts.md](03-auth-and-accounts.md) | Google sign-in, guests, sessions, room tickets, abuse protection |
-| [04-api.md](04-api.md) | Every endpoint of `tinyfloor-api`, and what replaces each Java endpoint |
-| [05-realtime-rooms.md](05-realtime-rooms.md) | Room and lobby Durable Objects, the WebSocket protocol |
-| [06-calls.md](06-calls.md) | Peer-to-peer calls with TURN, meeting tables on the SFU |
-| [07-frontend-changes.md](07-frontend-changes.md) | What changes in the Next.js app |
-| [08-cloudflare-setup.md](08-cloudflare-setup.md) | Every Cloudflare resource and secret |
-| [09-data-migration-and-cutover.md](09-data-migration-and-cutover.md) | Carrying over user accounts, and the switch-over runbook |
-| [10-build-order.md](10-build-order.md) | Milestones, in order, with what "done" means for each |
+| [01-app-shell.md](01-app-shell.md) | The rail, the views, the presence dock, what it is built from |
+| [02-chat.md](02-chat.md) | Channels, direct messages, attachments, and what they cost |
+| [03-offices-members-and-seats.md](03-offices-members-and-seats.md) | One office one floor, two roles, what a seat is |
+| [04-costs.md](04-costs.md) | Measured usage, the prices we are charged, where money can go |
+| [05-pricing.md](05-pricing.md) | The tiers, the free office, fair use on group video |
+| [06-app-design.md](06-app-design.md) | The design system: tokens, themes, generated faces, the shell, every view |
+| [07-services.md](07-services.md) | Each Worker, Durable Object and service, and whether it earns its place |
+| [research/gather.md](research/gather.md) | Gather, looked at properly: what to take and what to leave |
 
-## Decisions
+## Order
 
-- Plans: Free up to 3 members, then 10, 25 and 50 members.
-- One free lobby, split into copies of 20 people.
-- Chat is not saved, as today.
-- Discord only hears about the public lobby (joins and chat, for spotting
-  abuse). Nothing from workspace rooms is ever sent.
-- Meeting tables always use the SFU, even with two people.
-- Only user accounts are carried over; everything else starts fresh.
+1. The shell, with the floor moved inside it unchanged.
+2. Offices, members and seats — the model the rest hangs off.
+3. Chat, which is the reason the shell exists.
+4. Billing, once the tiers are agreed.

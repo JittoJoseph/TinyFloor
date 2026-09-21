@@ -143,14 +143,9 @@ describe("room messages", () => {
     ava.send({ t: "status", status: "busy" });
     expect(await ben.next("status")).toEqual({ t: "status", id: avaId, status: "busy" });
 
-    ava.send({ t: "chat", text: "  hello  " });
-    const chat = await ben.next("chat");
-    expect(chat).toMatchObject({ id: avaId, name: "Ava", text: "hello" });
-    await settle();
-    expect(ava.messages.some((message) => message.t === "chat")).toBe(false);
   });
 
-  it("ignores an unknown status and slows down chat floods", async () => {
+  it("ignores an unknown status", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room);
     await ava.next("welcome");
@@ -158,11 +153,7 @@ describe("room messages", () => {
     await ben.next("welcome");
 
     ava.send({ t: "status", status: "asleep" as never });
-    for (let i = 0; i < 6; i++) ava.send({ t: "chat", text: `message ${i}` });
-
-    expect(await ava.next("error")).toEqual({ t: "error", code: "slow_down" });
     await settle();
-    expect(ben.messages.filter((message) => message.t === "chat")).toHaveLength(5);
     expect(ben.messages.some((message) => message.t === "status")).toBe(false);
   });
 

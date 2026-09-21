@@ -1,4 +1,4 @@
-import { LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
+import { LOBBY_CHAT, LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { Room } from "./room";
 import { Chat } from "./chat";
@@ -9,8 +9,8 @@ export { Room, Chat, RealtimeAdmin };
 
 /** `/lobby` for the public lobby, `/rooms/:room` for an office floor. */
 const ROOM_PATH = /^\/(?:rooms\/([a-z0-9-]{1,64})|lobby)$/;
-/** `/offices/:id/chat` for the office's own chat, which is a separate object. */
-const CHAT_PATH = /^\/offices\/([a-z0-9-]{1,64})\/chat$/;
+/** `/offices/:id/chat` for an office's own chat, `/lobby/chat` for the lobby's one chat. */
+const CHAT_PATH = /^\/(?:offices\/([a-z0-9-]{1,64})|lobby)\/chat$/;
 
 export default {
   async fetch(request, env) {
@@ -23,7 +23,9 @@ export default {
     const chat = url.pathname.match(CHAT_PATH);
     const match = chat ? null : url.pathname.match(ROOM_PATH);
     if (!chat && !match) return new Response("Not found", { status: 404 });
-    const room = chat ? `chat:${chat[1]}` : (match![1] ?? LOBBY_ROOM);
+    // Every copy of the lobby shares one chat, so its name is fixed.
+    const chatName = chat ? (chat[1] ?? LOBBY_CHAT) : null;
+    const room = chatName ? `chat:${chatName}` : (match![1] ?? LOBBY_ROOM);
 
     if (request.headers.get("Upgrade")?.toLowerCase() !== "websocket") {
       return new Response("Expected a WebSocket", { status: 426 });
@@ -39,10 +41,10 @@ export default {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    if (chat) {
+    if (chatName) {
       const headers = new Headers(request.headers);
       headers.set(TICKET_HEADER, JSON.stringify(ticket));
-      return env.CHAT.getByName(chat[1]).fetch(new Request(request.url, { headers }));
+      return env.CHAT.getByName(chatName).fetch(new Request(request.url, { headers }));
     }
 
     // Lobby tickets name the lobby; the first copy with space takes them.

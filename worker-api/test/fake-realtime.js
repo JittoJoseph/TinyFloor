@@ -8,6 +8,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async presenceCounts(roomIds) {
     return Object.fromEntries(roomIds.map((id) => [id, people[id] ?? 0]));
   }
+  async lobbyPeople() {
+    return { here: people.lobby ?? 0, faces: [] };
+  }
   async closeRoom(roomId) {
     calls.push(["closeRoom", roomId]);
   }

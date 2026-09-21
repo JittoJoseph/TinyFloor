@@ -19,7 +19,10 @@ export const Navbar: React.FC = () => {
   return (
     <nav aria-label={t("main")} className="absolute top-0 left-0 right-0 z-50">
       <div className="max-w-[1400px] mx-auto px-6 py-8 md:py-10 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3 cursor-pointer group">
+        <Link href="/" className="flex items-center gap-2.5 cursor-pointer group">
+          {/* The mark, as the favicon and the app's rail draw it (scripts/make-icons.py). */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icon-192.png" alt="" width={30} height={30} className="size-[30px]" />
           <span className="font-body font-bold text-xl tracking-tight text-[var(--color-braun-text)]">TinyFloor</span>
         </Link>
 

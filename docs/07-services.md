@@ -100,3 +100,34 @@ cost nothing while idle, so the separation is free.
 |---|---|
 | `backend-springboot/`, `dev-docs/` (MongoDB) | The old backend. Nothing live uses it; candidates for removal. |
 | Microsoft Clarity and Google Analytics | Two analytics tools on the landing pages doing the same job; worth picking one when the landing pages are reworked. |
+
+## Deploying
+
+Workers Builds builds each Worker from git: `tinyfloor`, `tinyfloor-api` and
+`tinyfloor-realtime` from master, and `tinyfloor-preview` from dev. Every
+package's deploy script goes through `tools/deploy.mjs`, which reads the
+branch Workers Builds is building (`WORKERS_CI_BRANCH`):
+
+| Branch | Runs | So |
+|---|---|---|
+| master | the production script | production, and the API's D1 migrations on `tinyfloor-db` |
+| anything else | the preview script | the `preview` environment, never production |
+| (a laptop) | production, or preview with `deploy:preview` | as before |
+
+A project pointed at the wrong branch or command can no longer put unmerged
+code, or a migration, into production. The guard also sets `CLOUDFLARE_ENV`
+("" or "preview"), so Wrangler knows which environment was meant.
+
+The site's `build:worker` is just `opennextjs-cloudflare build`: OpenNext runs
+the package's own `build`, which already fetches the licensed art and copies
+the noise suppressor, so those steps run once.
+
+Things in the build log that are expected:
+
+- *The "middleware" file convention is deprecated.* Kept on purpose: `proxy.ts`
+  runs on the Node.js runtime, which OpenNext on Workers still calls experimental.
+- *A Node.js API is used (process.cwd) … not supported in the Edge Runtime.*
+  From inside `next/server`, which the middleware imports; that code path never
+  runs in the middleware.
+- *No build cache found* or a full pnpm download: the caches Workers Builds keeps
+  (`.next/cache`, the pnpm store) were empty; the next build reuses them.

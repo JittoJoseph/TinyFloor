@@ -1178,7 +1178,18 @@
       "signIn": "Iniciar sesión",
       "start": "Crea tu oficina",
       "open": "Abrir TinyFloor",
-      "main": "Navegación principal"
+      "main": "Navegación principal",
+      "items": {
+        "proximity": "Llamadas por proximidad",
+        "meetings": "Mesas de reunión",
+        "chat": "Chat",
+        "people": "Presencia",
+        "guests": "Invitados"
+      },
+      "everyOffice": "En cada oficina",
+      "lobbyTitle": "El lobby está abierto",
+      "lobbyBody": "Recorre una planta de verdad antes de crear la tuya. Sin cuenta.",
+      "menu": "Menú"
     },
     "hero": {
       "title": "Una oficina virtual por la que tu equipo puede caminar.",
@@ -1374,6 +1385,10 @@
       "theme": "Tema",
       "language": "Idioma",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Una planta para todo el día,",
+      "muted": "del primer hola a la última llamada."
     }
   }
 }

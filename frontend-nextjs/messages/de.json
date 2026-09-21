@@ -1178,7 +1178,18 @@
       "signIn": "Anmelden",
       "start": "Büro einrichten",
       "open": "TinyFloor öffnen",
-      "main": "Hauptnavigation"
+      "main": "Hauptnavigation",
+      "items": {
+        "proximity": "Nähe-Anrufe",
+        "meetings": "Besprechungstische",
+        "chat": "Chat",
+        "people": "Anwesenheit",
+        "guests": "Gäste"
+      },
+      "everyOffice": "In jedem Büro",
+      "lobbyTitle": "Die Lobby ist offen",
+      "lobbyBody": "Lauf über eine echte Fläche, bevor du deine eigene einrichtest. Kein Konto nötig.",
+      "menu": "Menü"
     },
     "hero": {
       "title": "Ein virtuelles Büro, durch das dein Team laufen kann.",
@@ -1374,6 +1385,10 @@
       "theme": "Darstellung",
       "language": "Sprache",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Eine Fläche für den ganzen Tag,",
+      "muted": "vom ersten Hallo bis zum letzten Call."
     }
   }
 }

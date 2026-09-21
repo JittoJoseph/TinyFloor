@@ -1178,7 +1178,18 @@
       "signIn": "Inloggen",
       "start": "Maak je kantoor",
       "open": "TinyFloor openen",
-      "main": "Hoofdnavigatie"
+      "main": "Hoofdnavigatie",
+      "items": {
+        "proximity": "Gesprekken van dichtbij",
+        "meetings": "Vergadertafels",
+        "chat": "Chat",
+        "people": "Aanwezigheid",
+        "guests": "Gasten"
+      },
+      "everyOffice": "In elk kantoor",
+      "lobbyTitle": "De lobby is open",
+      "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
+      "menu": "Menu"
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
@@ -1374,6 +1385,10 @@
       "theme": "Thema",
       "language": "Taal",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Eén verdieping voor de hele dag,",
+      "muted": "van het eerste hallo tot het laatste gesprek."
     }
   }
 }

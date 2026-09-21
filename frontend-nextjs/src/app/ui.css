@@ -175,18 +175,16 @@ html.app .home .home-app {
 @media (prefers-reduced-motion: reduce) {
   .home-faq details::details-content { transition: none; }
 }
-/* The music cell's equaliser. */
-.home-eq {
-  height: 100%;
-  transform-origin: bottom;
-  animation: home-eq 900ms ease-in-out infinite alternate;
+/* The people drifting around the hero's words. */
+.home-float {
+  animation: home-float 7s ease-in-out infinite;
 }
-@keyframes home-eq {
-  from { transform: scaleY(0.25); }
-  to { transform: scaleY(1); }
+@keyframes home-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -10px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-eq { animation: none; transform: scaleY(0.6); }
+  .home-float { animation: none; }
 }
 .home-dwell {
   animation: home-dwell linear forwards;

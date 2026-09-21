@@ -14,7 +14,7 @@ const TONE: Record<string, string> = {
 const DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn" };
 
 /** People, as the app's cards: who they are, what they're up to, and the way to them. */
-export function PeoplePreview({ count = 5, narrow = false }: { count?: number; narrow?: boolean }) {
+export function PeoplePreview({ count = 5, narrow = false, mini = false }: { count?: number; narrow?: boolean; mini?: boolean }) {
   const t = useTranslations("home.preview");
   const tp = useTranslations("office.people");
   type Row = { person: (typeof CAST)[number]; status: "available" | "busy" | "away" | "offline"; role: string };
@@ -27,6 +27,32 @@ export function PeoplePreview({ count = 5, narrow = false }: { count?: number; n
     { person: noah, status: "offline", role: t("roles.product") },
   ];
   const people = rows.slice(0, count);
+
+  // A short list, for a small card: each person on one line, with the way to them.
+  if (mini) {
+    return (
+      <div className="h-full overflow-hidden p-3.5 text-start">
+        <p className="px-1 text-[13px] font-semibold text-foreground">{tp("onFloorNow", { count: 4 })}</p>
+        <ul className="mt-2.5 grid gap-1.5">
+          {rows.slice(0, 4).map(({ person, status, role }) => (
+            <li key={person.id} className="flex items-center gap-2.5 rounded-xl border border-border bg-background p-2 [--face-ring:var(--ui-background)]">
+              <Face seed={person.id} size={30} presence={status === "offline" ? null : (status as Presence)} />
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[12.5px] font-semibold text-foreground">{person.name}</span>
+                <span className="block truncate text-[11px] text-muted-foreground">
+                  {t(status as "available")} · {role}
+                </span>
+              </span>
+              <span className="flex h-7 shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-foreground px-2.5 text-[11px] font-medium text-background">
+                <Footprints className="size-3" />
+                {t("walkTo")}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full overflow-hidden p-4 text-start sm:p-5">

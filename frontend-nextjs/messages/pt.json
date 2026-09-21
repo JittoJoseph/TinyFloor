@@ -1178,7 +1178,18 @@
       "signIn": "Entrar",
       "start": "Criar seu escritório",
       "open": "Abrir TinyFloor",
-      "main": "Navegação principal"
+      "main": "Navegação principal",
+      "items": {
+        "proximity": "Chamadas por proximidade",
+        "meetings": "Mesas de reunião",
+        "chat": "Chat",
+        "people": "Presença",
+        "guests": "Convidados"
+      },
+      "everyOffice": "Em todo escritório",
+      "lobbyTitle": "O lobby está aberto",
+      "lobbyBody": "Ande por um andar de verdade antes de criar o seu. Sem precisar de conta.",
+      "menu": "Menu"
     },
     "hero": {
       "title": "Um escritório virtual por onde a sua equipe pode andar.",
@@ -1374,6 +1385,10 @@
       "theme": "Tema",
       "language": "Idioma",
       "rights": "© {year} TinyFloor"
+    },
+    "days": {
+      "title": "Um andar para o dia todo,",
+      "muted": "do primeiro oi à última chamada."
     }
   }
 }

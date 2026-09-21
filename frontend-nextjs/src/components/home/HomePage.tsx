@@ -1,19 +1,26 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
+  ArrowRight,
+  AudioLines,
   Check,
+  CircleDot,
+  Languages,
+  MonitorUp,
+  Music2,
+  PenLine,
+  Smartphone,
+  SunMoon,
   Clock3,
   Globe2,
   LockKeyhole,
   MonitorSmartphone,
 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { Logo } from "@/components/app/AppShell";
-import { FaceStack } from "@/components/ui/Face";
+import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { HeroPreview } from "./HeroPreview";
-import { MoreGrid } from "./MoreGrid";
-import { HomeNavActions } from "./HomeNavActions";
+import { COLUMN, HomeNav } from "./HomeNav";
 import { SiteFooter } from "./SiteFooter";
 import { CAST, Frame, type PreviewView } from "./previews/Frame";
 import { FloorPreview } from "./previews/FloorPreview";
@@ -23,8 +30,6 @@ import { MeetingPreview } from "./previews/MeetingPreview";
 import { GuestPreview } from "./previews/GuestPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
 
-/** The page's column. */
-const COLUMN = "mx-auto w-full max-w-[1200px] px-5 sm:px-8";
 
 /** The two pills every ask on the page uses: ink for the main one, a quiet stone for the other. */
 const PILL = "inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full px-6 text-[16px] transition-[background-color,transform] active:scale-[0.98]";
@@ -42,67 +47,12 @@ const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
  * footer's theme switch.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  const t = useTranslations("home");
-
   return (
-    <div className="home min-h-dvh bg-background text-foreground">
+    <div className="home min-h-dvh overflow-x-clip bg-background text-foreground">
       <HomeNav />
       <main>
         <Hero />
-
-        <section id="features" aria-label={t("nav.features")} className="scroll-mt-20 pt-10 sm:pt-16">
-          <FeatureRow
-            title={t("features.proximity.title")}
-            muted={t("features.proximity.muted")}
-            body={t("features.proximity.body")}
-            preview={
-              <Frame active="floor" rail={false} className="aspect-[4/3]">
-                <FloorPreview near />
-              </Frame>
-            }
-          />
-          <FeatureRow
-            flip
-            stone
-            title={t("features.meetings.title")}
-            muted={t("features.meetings.muted")}
-            body={t("features.meetings.body")}
-            preview={
-              <Frame active="meeting" rail={false} className="aspect-[4/3]">
-                <MeetingPreview close />
-              </Frame>
-            }
-          />
-          <FeatureRow
-            title={t("features.chat.title")}
-            muted={t("features.chat.muted")}
-            body={t("features.chat.body")}
-            preview={
-              <Frame active="chat" rail={false} className="aspect-[4/3]">
-                <ChatPreview compact />
-              </Frame>
-            }
-          />
-          <FeatureRow
-            flip
-            stone
-            title={t("features.people.title")}
-            muted={t("features.people.muted")}
-            body={t("features.people.body")}
-            preview={
-              <Frame active="people" rail={false} className="aspect-[4/3]">
-                <PeoplePreview count={3} narrow />
-              </Frame>
-            }
-          />
-          <FeatureRow
-            title={t("features.guests.title")}
-            muted={t("features.guests.muted")}
-            body={t("features.guests.body")}
-            preview={<GuestPreview />}
-          />
-        </section>
-
+        <Days />
         <More />
         <Trust />
         <Plans />
@@ -111,30 +61,6 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
       </main>
       <SiteFooter />
     </div>
-  );
-}
-
-function HomeNav() {
-  const t = useTranslations("home.nav");
-  const quiet = "text-[15px] text-foreground/75 transition-colors hover:text-foreground";
-  return (
-    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl">
-      <nav aria-label={t("main")} className={cn(COLUMN, "grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4")}>
-        <Link href="/" className="flex w-fit items-center gap-2 text-[18px] font-bold tracking-tight">
-          <Logo size={28} />
-          TinyFloor
-        </Link>
-        <div className="hidden items-center gap-7 md:flex">
-          <a href="#features" className={quiet}>{t("features")}</a>
-          <a href="#plans" className={quiet}>{t("pricing")}</a>
-          <a href="#faq" className={quiet}>{t("faq")}</a>
-          <Link href="/lobby" className={quiet}>{t("lobby")}</Link>
-        </div>
-        <div className="col-start-3">
-          <HomeNavActions signIn={t("signIn")} start={t("start")} open={t("open")} />
-        </div>
-      </nav>
-    </header>
   );
 }
 
@@ -155,12 +81,62 @@ function Actions({ className }: { className?: string }) {
 
 const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
 
+/** The people drifting around the hero's words, as they'd stand on a floor. Wide screens only. */
+const DRIFTERS = [
+  { person: 0, spot: "start-[1%] top-[26%]", presence: "available" as const, delay: "0s" },
+  { person: 1, spot: "end-[1%] top-[12%]", presence: "available" as const, delay: "-2.4s", say: true },
+  { person: 2, spot: "start-[5%] top-[62%]", presence: "busy" as const, delay: "-4.1s" },
+  { person: 4, spot: "end-[5%] top-[58%]", presence: "away" as const, delay: "-1.3s" },
+];
+
 function Hero() {
   const t = useTranslations("home.hero");
+  const tp = useTranslations("home.preview");
   const points = t.raw("points") as string[];
   return (
-    <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
-      <div className="mx-auto flex max-w-[52rem] flex-col items-center text-center">
+    <section className={cn(COLUMN, "relative pt-12 sm:pt-20")}>
+      {/* Soft colour behind the words, in the faces' own hues. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-16 h-[640px]">
+        <span className="absolute start-[6%] top-10 size-[360px] rounded-full bg-[#ff6fa9] opacity-[0.18] blur-[90px] dark:opacity-[0.12]" />
+        <span className="absolute start-[36%] -top-6 size-[400px] rounded-full bg-[#ff9a4d] opacity-[0.16] blur-[100px] dark:opacity-[0.1]" />
+        <span className="absolute end-[4%] top-20 size-[360px] rounded-full bg-[#22c7b8] opacity-[0.18] blur-[90px] dark:opacity-[0.12]" />
+      </div>
+
+      <div aria-hidden className="pointer-events-none absolute inset-x-5 top-0 hidden h-[440px] sm:inset-x-8 xl:block">
+        {DRIFTERS.map(({ person, spot, presence, delay, say }) => (
+          <div
+            key={person}
+            className={cn("home-float absolute flex items-start gap-2 [--face-ring:var(--ui-background)]", spot)}
+            style={{ animationDelay: delay }}
+          >
+            <Face seed={CAST[person].id} size={46} presence={presence} />
+            <span className="mt-1 flex flex-col items-start gap-1.5">
+              <span className="rounded-full border border-border bg-card px-2.5 py-0.5 text-[12.5px] font-semibold shadow-sm">
+                {CAST[person].name}
+              </span>
+              {say && (
+                <span className="rounded-2xl rounded-ss-md border border-border bg-card px-3 py-1.5 text-[12.5px] text-foreground/80 shadow-sm">
+                  {tp("message2")}
+                </span>
+              )}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="relative mx-auto flex max-w-[52rem] flex-col items-center text-center">
+        <Link
+          href="/lobby"
+          className="mb-8 inline-flex min-h-10 items-center gap-2.5 rounded-full border border-border bg-card/80 py-1 pe-4 ps-1.5 text-start text-[13px] sm:text-[14px] text-foreground/80 shadow-sm backdrop-blur transition-colors hover:text-foreground [--face-ring:var(--ui-card)]"
+        >
+          <FaceStack seeds={CAST.slice(0, 4).map((one) => one.id)} size={26} max={4} />
+          <span className="relative flex size-2">
+            <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 motion-reduce:hidden" />
+            <span className="relative size-2 rounded-full bg-ok" />
+          </span>
+          {t("lobbyLine")}
+          <ArrowRight className="size-3.5 shrink-0 rtl:rotate-180" />
+        </Link>
         <h1
           className={cn(
             "text-balance hyphens-auto text-[40px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[60px] lg:text-[68px]",
@@ -181,7 +157,7 @@ function Hero() {
         </ul>
       </div>
 
-      <div className="mt-12 sm:mt-16">
+      <div className="relative mt-12 sm:mt-16">
         <HeroPreview
           label={t("previewLabel")}
           labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
@@ -192,18 +168,6 @@ function Hero() {
             meeting: <HeroFrame view="meeting"><MeetingPreview /></HeroFrame>,
           }}
         />
-        <p className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-center text-[15px] text-foreground/80">
-          <span className="flex items-center gap-2.5">
-            <span className="relative flex size-2">
-              <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 motion-reduce:hidden" />
-              <span className="relative size-2 rounded-full bg-ok" />
-            </span>
-            {t("lobbyLine")}
-          </span>
-          <Link href="/lobby" className="inline-flex h-9 items-center rounded-full bg-foreground/[0.07] px-4 text-[14px] transition-colors hover:bg-foreground/[0.11]">
-            {t("lobbyCta")}
-          </Link>
-        </p>
       </div>
     </section>
   );
@@ -254,53 +218,119 @@ function Heading({
   );
 }
 
-/** One feature: the words on one side, the app doing it on the other. */
-function FeatureRow({
-  title,
-  muted,
-  body,
-  preview,
-  flip,
-  stone,
-}: {
-  title: string;
-  muted: string;
-  body: string;
-  preview: ReactNode;
-  flip?: boolean;
-  stone?: boolean;
-}) {
+/**
+ * The rest of the product as one set of cards, the way a day on the floor
+ * goes: two wide ones (walking over, sitting down), then three smaller ones
+ * (chat, who's around, guests). Each card is its words, then the app doing
+ * it, running off the card's bottom edge.
+ */
+function Days() {
+  const t = useTranslations("home");
+  const card = (key: "proximity" | "meetings" | "chat" | "people" | "guests") => ({
+    title: t(`features.${key}.title`),
+    muted: t(`features.${key}.muted`),
+    body: t(`features.${key}.body`),
+  });
   return (
-    <div
-      className={cn(
-        COLUMN,
-        "grid items-center gap-8 py-10 sm:py-14 lg:gap-20",
-        flip ? "lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]" : "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]",
-      )}
-    >
-      <div className={cn("max-w-[28rem]", flip && "lg:order-2")}>
-        <Heading as="h3" size="md" block title={title} muted={muted} />
-        <p className="mt-5 text-pretty text-[16.5px] leading-relaxed text-muted-foreground">{body}</p>
+    <section id="features" className={cn(COLUMN, "scroll-mt-20 pt-24 sm:pt-32")}>
+      <Heading title={t("days.title")} muted={t("days.muted")} block className="max-w-[26ch]" />
+      <div className="mt-12 grid gap-3 lg:grid-cols-6">
+        <DayCard id="floor" className="lg:col-span-3" {...card("proximity")}>
+          <Frame active="floor" rail={false} className="h-full">
+            <FloorPreview near />
+          </Frame>
+        </DayCard>
+        <DayCard id="meetings" className="lg:col-span-3" {...card("meetings")}>
+          <Frame active="meeting" rail={false} className="h-full">
+            <MeetingPreview close />
+          </Frame>
+        </DayCard>
+        <DayCard id="chat" small className="lg:col-span-2" {...card("chat")}>
+          <Frame active="chat" rail={false} className="h-full">
+            <ChatPreview compact />
+          </Frame>
+        </DayCard>
+        <DayCard id="people" small className="lg:col-span-2" {...card("people")}>
+          <Frame active="people" rail={false} className="h-full">
+            <PeoplePreview mini />
+          </Frame>
+        </DayCard>
+        <DayCard id="guests" small className="lg:col-span-2" {...card("guests")}>
+          <div className="h-full rounded-[18px] border border-border bg-rail">
+            <GuestPreview />
+          </div>
+        </DayCard>
       </div>
-      <div
-        className={cn(
-          "rounded-[28px] p-3 sm:p-10",
-          stone ? "bg-foreground/[0.045]" : "home-sky",
-          flip && "lg:order-1",
-        )}
-      >
-        <div className="mx-auto max-w-[540px]">{preview}</div>
-      </div>
-    </div>
+    </section>
   );
 }
 
+function DayCard({
+  id,
+  title,
+  muted,
+  body,
+  small,
+  className,
+  children,
+}: {
+  id: string;
+  title: string;
+  muted: string;
+  body: string;
+  small?: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <article id={id} className={cn("flex scroll-mt-24 flex-col overflow-hidden rounded-[28px] bg-foreground/[0.045]", className)}>
+      <div className="p-7 pb-0 sm:p-8 sm:pb-0">
+        <h3 className={cn("text-balance font-semibold leading-[1.2] tracking-[-0.02em]", small ? "text-[21px]" : "text-[24px] sm:text-[26px]", CJK_HEADLINE)}>
+          {title} <span className="text-muted-foreground/80">{muted}</span>
+        </h3>
+        <p className="mt-3 max-w-[34rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground">{body}</p>
+      </div>
+      {/* The preview sits low and runs off the card's bottom edge. */}
+      <div className={cn("mt-auto px-5 pt-7 sm:px-8", small ? "h-[330px]" : "h-[380px] sm:h-[420px]")}>
+        <div className="h-[calc(100%+20px)]">{children}</div>
+      </div>
+    </article>
+  );
+}
+
+const MORE: Array<{ key: string; icon: ReactNode }> = [
+  { key: "screen", icon: <MonitorUp /> },
+  { key: "whiteboard", icon: <PenLine /> },
+  { key: "music", icon: <Music2 /> },
+  { key: "status", icon: <CircleDot /> },
+  { key: "noise", icon: <AudioLines /> },
+  { key: "mobile", icon: <Smartphone /> },
+  { key: "themes", icon: <SunMoon /> },
+  { key: "languages", icon: <Languages /> },
+];
+
+/** Everything else, as one ruled sheet: an icon, a name and a line each. */
 function More() {
   const t = useTranslations("home.more");
   return (
-    <section className={cn(COLUMN, "py-20 sm:py-28")}>
+    <section id="more" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
       <Heading title={t("title")} muted={t("muted")} className="max-w-[22ch]" />
-      <MoreGrid />
+      <div className="relative mt-12">
+        {["-start-[3px] -top-[3px]", "-end-[3px] -top-[3px]", "-start-[3px] -bottom-[3px]", "-end-[3px] -bottom-[3px]"].map((spot) => (
+          <span key={spot} aria-hidden className={cn("absolute z-10 size-[7px] border border-border-strong bg-background", spot)} />
+        ))}
+        <ul className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {MORE.map((item) => (
+            <li key={item.key} className="group bg-background p-6 transition-colors hover:bg-card sm:p-7">
+              <span className="flex size-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
+                {item.icon}
+              </span>
+              <p className="mt-10 text-[17px] font-semibold tracking-tight">{t(`items.${item.key}.title` as "items.screen.title")}</p>
+              <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${item.key}.body` as "items.screen.body")}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
@@ -374,12 +404,10 @@ function Plans() {
           <Link href="/create" className={cn(INK, "mt-8 w-full")}>
             {t("free.cta")}
           </Link>
-          <ul className="mt-7 divide-y divide-border border-t border-border">
+          <ul className="mt-7 flex flex-wrap gap-1.5 border-t border-border pt-6">
             {items.map((item) => (
-              <li key={item} className="flex items-center gap-3 py-3 text-[15px]">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-ok/12 text-ok">
-                  <Check className="size-3" strokeWidth={3} />
-                </span>
+              <li key={item} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] pe-3 ps-2.5 text-[13.5px]">
+                <Check className="size-3.5 shrink-0 text-ok" strokeWidth={2.75} />
                 {item}
               </li>
             ))}
@@ -391,12 +419,13 @@ function Plans() {
             <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[12.5px] font-semibold text-brand">{t("soon.badge")}</span>
           </p>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">{t("soon.body")}</p>
-          <ul className="mt-6 divide-y divide-border border-t border-border">
+          <ul className="mt-6 flex flex-wrap gap-1.5">
             {(t.raw("soon.items") as string[]).map((item) => (
-              <li key={item} className="flex items-center gap-3 py-3 text-[15px] text-foreground/80">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-foreground/[0.07] text-muted-foreground">
-                  <Clock3 className="size-3" strokeWidth={2.5} />
-                </span>
+              <li
+                key={item}
+                className="inline-flex h-8 items-center gap-1.5 rounded-full border border-dashed border-border-strong pe-3 ps-2.5 text-[13.5px] text-foreground/75"
+              >
+                <Clock3 className="size-3.5 shrink-0 text-muted-foreground" />
                 {item}
               </li>
             ))}

@@ -17,7 +17,7 @@ import {
   MonitorSmartphone,
 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { HeroPreview } from "./HeroPreview";
 import { COLUMN, HomeNav } from "./HomeNav";
@@ -81,86 +81,41 @@ function Actions({ className }: { className?: string }) {
 
 const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
 
-/** The people drifting around the hero's words, as they'd stand on a floor. Wide screens only. */
-const DRIFTERS = [
-  { person: 0, spot: "start-[1%] top-[26%]", presence: "available" as const, delay: "0s" },
-  { person: 1, spot: "end-[1%] top-[12%]", presence: "available" as const, delay: "-2.4s", say: true },
-  { person: 2, spot: "start-[5%] top-[62%]", presence: "busy" as const, delay: "-4.1s" },
-  { person: 4, spot: "end-[5%] top-[58%]", presence: "away" as const, delay: "-1.3s" },
-];
-
 function Hero() {
-  const t = useTranslations("home.hero");
-  const tp = useTranslations("home.preview");
-  const points = t.raw("points") as string[];
+  const t = useTranslations("home");
+  const points = t.raw("hero.points") as string[];
   return (
-    <section className={cn(COLUMN, "relative pt-12 sm:pt-20")}>
-      {/* Soft colour behind the words, in the faces' own hues. */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-16 h-[640px]">
-        <span className="absolute start-[6%] top-10 size-[360px] rounded-full bg-[#ff6fa9] opacity-[0.18] blur-[90px] dark:opacity-[0.12]" />
-        <span className="absolute start-[36%] -top-6 size-[400px] rounded-full bg-[#ff9a4d] opacity-[0.16] blur-[100px] dark:opacity-[0.1]" />
-        <span className="absolute end-[4%] top-20 size-[360px] rounded-full bg-[#22c7b8] opacity-[0.18] blur-[90px] dark:opacity-[0.12]" />
-      </div>
+    <section className={cn(COLUMN, "relative pt-16 sm:pt-24")}>
+      {/* One soft wash of the faces' colours behind the words. */}
+      <div aria-hidden className="home-glow pointer-events-none absolute -inset-x-48 -top-20 h-[560px]" />
 
-      <div aria-hidden className="pointer-events-none absolute inset-x-5 top-0 hidden h-[440px] sm:inset-x-8 xl:block">
-        {DRIFTERS.map(({ person, spot, presence, delay, say }) => (
-          <div
-            key={person}
-            className={cn("home-float absolute flex items-start gap-2 [--face-ring:var(--ui-background)]", spot)}
-            style={{ animationDelay: delay }}
-          >
-            <Face seed={CAST[person].id} size={46} presence={presence} />
-            <span className="mt-1 flex flex-col items-start gap-1.5">
-              <span className="rounded-full border border-border bg-card px-2.5 py-0.5 text-[12.5px] font-semibold shadow-sm">
-                {CAST[person].name}
-              </span>
-              {say && (
-                <span className="rounded-2xl rounded-ss-md border border-border bg-card px-3 py-1.5 text-[12.5px] text-foreground/80 shadow-sm">
-                  {tp("message2")}
-                </span>
-              )}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <div className="relative mx-auto flex max-w-[52rem] flex-col items-center text-center">
+      <div className="relative mx-auto flex max-w-[48rem] flex-col items-center text-center">
         <Link
           href="/lobby"
-          className="mb-8 inline-flex min-h-10 items-center gap-2.5 rounded-full border border-border bg-card/80 py-1 pe-4 ps-1.5 text-start text-[13px] sm:text-[14px] text-foreground/80 shadow-sm backdrop-blur transition-colors hover:text-foreground [--face-ring:var(--ui-card)]"
+          className="group inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card/80 pe-3.5 ps-1 text-[13.5px] text-foreground/80 shadow-[0_1px_2px_rgb(0_0_0/0.04)] backdrop-blur transition-colors hover:text-foreground [--face-ring:var(--ui-card)]"
         >
-          <FaceStack seeds={CAST.slice(0, 4).map((one) => one.id)} size={26} max={4} />
-          <span className="relative flex size-2">
-            <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 motion-reduce:hidden" />
-            <span className="relative size-2 rounded-full bg-ok" />
-          </span>
-          {t("lobbyLine")}
-          <ArrowRight className="size-3.5 shrink-0 rtl:rotate-180" />
+          <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={26} max={3} />
+          <span className="ms-0.5 size-1.5 rounded-full bg-ok" />
+          {t("nav.lobbyTitle")}
+          <ArrowRight className="size-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
         </Link>
         <h1
           className={cn(
-            "text-balance hyphens-auto text-[40px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[60px] lg:text-[68px]",
+            "mt-8 text-balance hyphens-auto text-[40px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[62px] lg:text-[72px]",
             CJK_HEADLINE,
           )}
         >
-          {t("title")}
+          {t("hero.title")}
         </h1>
-        <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("body")}</p>
-        <Actions className="mt-9" />
-        <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[14px] text-muted-foreground">
-          {points.map((point) => (
-            <li key={point} className="flex items-center gap-1.5">
-              <Check className="size-3.5 text-ok" strokeWidth={2.5} />
-              {point}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-6 max-w-[36rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
+        <Actions className="mt-10" />
+        <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
       </div>
 
-      <div className="relative mt-12 sm:mt-16">
+      <div className="relative mt-16 sm:mt-20">
         <HeroPreview
-          label={t("previewLabel")}
-          labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
+          label={t("hero.previewLabel")}
+          labels={{ floor: t("hero.tabs.floor"), chat: t("hero.tabs.chat"), people: t("hero.tabs.people"), meeting: t("hero.tabs.meeting") }}
           panels={{
             floor: <HeroFrame view="floor"><FloorPreview /></HeroFrame>,
             chat: <HeroFrame view="chat"><ChatPreview /></HeroFrame>,
@@ -234,44 +189,50 @@ function Days() {
   return (
     <section id="features" className={cn(COLUMN, "scroll-mt-20 pt-24 sm:pt-32")}>
       <Heading title={t("days.title")} muted={t("days.muted")} block className="max-w-[26ch]" />
-      <div className="mt-12 grid gap-3 lg:grid-cols-6">
-        <DayCard id="floor" className="lg:col-span-3" {...card("proximity")}>
+      <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-2">
+        <DayCard id="floor" {...card("proximity")}>
           <Frame active="floor" rail={false} className="h-full">
             <FloorPreview near />
           </Frame>
         </DayCard>
-        <DayCard id="meetings" className="lg:col-span-3" {...card("meetings")}>
+        <DayCard id="meetings" {...card("meetings")}>
           <Frame active="meeting" rail={false} className="h-full">
             <MeetingPreview close />
           </Frame>
         </DayCard>
-        <DayCard id="chat" small className="lg:col-span-2" {...card("chat")}>
+      </div>
+      <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
+        <DayCard id="chat" small {...card("chat")}>
           <Frame active="chat" rail={false} className="h-full">
             <ChatPreview compact />
           </Frame>
         </DayCard>
-        <DayCard id="people" small className="lg:col-span-2" {...card("people")}>
+        <DayCard id="people" small {...card("people")}>
           <Frame active="people" rail={false} className="h-full">
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" small className="lg:col-span-2" {...card("guests")}>
-          <div className="h-full rounded-[18px] border border-border bg-rail">
+        <DayCard id="guests" small {...card("guests")}>
+          <Frame active="people" rail={false} className="h-full">
             <GuestPreview />
-          </div>
+          </Frame>
         </DayCard>
       </div>
     </section>
   );
 }
 
+/**
+ * One card: its words, then the app doing it. The card is a subgrid of its
+ * row, so headings and text line up with the cards beside it, and the preview
+ * rests on the card's bottom edge, a little of it running off.
+ */
 function DayCard({
   id,
   title,
   muted,
   body,
   small,
-  className,
   children,
 }: {
   id: string;
@@ -279,20 +240,28 @@ function DayCard({
   muted: string;
   body: string;
   small?: boolean;
-  className?: string;
   children: ReactNode;
 }) {
   return (
-    <article id={id} className={cn("flex scroll-mt-24 flex-col overflow-hidden rounded-[28px] bg-foreground/[0.045]", className)}>
-      <div className="p-7 pb-0 sm:p-8 sm:pb-0">
-        <h3 className={cn("text-balance font-semibold leading-[1.2] tracking-[-0.02em]", small ? "text-[21px]" : "text-[24px] sm:text-[26px]", CJK_HEADLINE)}>
-          {title} <span className="text-muted-foreground/80">{muted}</span>
-        </h3>
-        <p className="mt-3 max-w-[34rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground">{body}</p>
-      </div>
-      {/* The preview sits low and runs off the card's bottom edge. */}
-      <div className={cn("mt-auto px-5 pt-7 sm:px-8", small ? "h-[330px]" : "h-[380px] sm:h-[420px]")}>
-        <div className="h-[calc(100%+20px)]">{children}</div>
+    <article
+      id={id}
+      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid"
+    >
+      <h3
+        className={cn(
+          "px-7 pt-7 text-balance font-semibold leading-[1.2] tracking-[-0.02em] sm:px-8 sm:pt-8",
+          small ? "text-[19px]" : "text-[23px]",
+          CJK_HEADLINE,
+        )}
+      >
+        {title}
+        <span className="block text-muted-foreground/80">{muted}</span>
+      </h3>
+      <p className={cn("px-7 pt-3 text-pretty leading-relaxed text-muted-foreground sm:px-8", small ? "text-[14.5px]" : "text-[15.5px]", !small && "max-w-[34rem]")}>
+        {body}
+      </p>
+      <div className={cn("flex items-end px-5 pt-7 sm:px-8", small ? "h-[320px]" : "h-[360px] sm:h-[400px]")}>
+        <div className="h-[calc(100%+18px)] w-full translate-y-[18px]">{children}</div>
       </div>
     </article>
   );

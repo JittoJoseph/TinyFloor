@@ -175,16 +175,18 @@ html.app .home .home-app {
 @media (prefers-reduced-motion: reduce) {
   .home-faq details::details-content { transition: none; }
 }
-/* The people drifting around the hero's words. */
-.home-float {
-  animation: home-float 7s ease-in-out infinite;
+/* The hero's one wash of colour, in the faces' hues, fading out at every edge. */
+.home-glow {
+  background:
+    radial-gradient(34% 46% at 22% 34%, rgb(255 111 169 / 0.16), transparent 70%),
+    radial-gradient(34% 46% at 50% 18%, rgb(255 154 77 / 0.14), transparent 70%),
+    radial-gradient(34% 46% at 78% 34%, rgb(34 199 184 / 0.15), transparent 70%);
 }
-@keyframes home-float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(6px, -10px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .home-float { animation: none; }
+.dark .home-glow {
+  background:
+    radial-gradient(34% 46% at 22% 34%, rgb(255 111 169 / 0.1), transparent 70%),
+    radial-gradient(34% 46% at 50% 18%, rgb(255 154 77 / 0.08), transparent 70%),
+    radial-gradient(34% 46% at 78% 34%, rgb(34 199 184 / 0.09), transparent 70%);
 }
 .home-dwell {
   animation: home-dwell linear forwards;

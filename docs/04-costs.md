@@ -27,17 +27,18 @@ Two numbers fall out of that, and they are the ones to design against:
 - **SFU: ~1.8 MB per participant-minute** (47.37 MB ÷ 26 participant-minutes),
   about 240 kbps — one subscribed stream each, which is what a two-person
   meeting is.
-- **TURN carried three times more than the SFU did.** Proximity calls are
-  peer-to-peer, but on this network the peers could not reach each other
-  directly and the relay carried the lot. Relay is not the exception we assumed
-  it was.
+- **TURN carried three times more than the SFU did.** Proximity calls were
+  peer-to-peer with the relay as a fallback, but the peers almost never reached
+  each other directly and the relay carried the lot. So proximity calls now
+  always go through the relay (`iceTransportPolicy: "relay"`): the direct
+  attempt only added setup time, and relayed is what they cost anyway.
 
 Both sit inside the free allowance: 0.21 GB against 1,000 GB a month, per
 service. At list price ($0.05/GB) the whole week of calls would have cost
 **about one cent**.
 
-Gap worth closing: we count `sfu_minutes` but nothing for peer-to-peer calls,
-so we cannot attribute that 165 MB to a call. Count relayed P2P minutes too.
+Gap worth closing: we count `sfu_minutes` but nothing for proximity calls, so
+we cannot attribute that 165 MB to a call. Count relayed call minutes too.
 
 ## The prices we are charged against
 
@@ -93,8 +94,7 @@ audio):
 | 10 people, all cameras on | 9 × 150 kbps + audio ≈ 1.6 Mbps | ~123 MB | **7.4 GB** |
 | 10 people, cameras off | 9 × 32 kbps ≈ 290 kbps | ~22 MB | **1.3 GB** |
 | 4 people, cameras on | 3 × 150 kbps + audio ≈ 550 kbps | ~16 MB | 1.0 GB |
-| 2 people, proximity (P2P, direct) | — | 0 | **0** |
-| 2 people, proximity (relayed) | measured | ~2.8 MB | 0.17 GB |
+| 2 people, proximity (always relayed) | measured | ~2.8 MB | 0.17 GB |
 
 So the free 1,000 GB a month is roughly **135 hours of ten-person full-video
 meetings across every office we host**, or 750 hours with cameras off.
@@ -123,7 +123,7 @@ are an abuse surface; paying offices have a card on file.
 |---|---|---|
 | ~$0 | compute, storage, database | hibernation, small messages, WebP |
 | the whole bill | group video egress | default audio, thumbnail quality, meeting-hour caps |
-| second place | TURN relay on proximity calls | prefer direct, cap relayed bitrate |
+| second place | TURN relay on proximity calls | cap the relayed bitrate |
 
 Two people using TinyFloor all week cost us a cent. A hundred offices doing
 daily all-hands on camera cost real money. Price the second, give away the

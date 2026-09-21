@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Kävele luo ja ala jutella.",
-      "body": "Mene lähelle tiimiläistä, niin hänen puhelupalkkinsa ilmestyy näkyviin. Yksi napautus avaa videon tai äänen suoraan selainten välillä.",
+      "body": "Mene lähelle kollegaa, niin puhelupalkki ilmestyy hänen yläpuolelleen. Yksi napautus avaa videon tai äänen, Cloudflaren verkon kautta.",
       "chip1": "Video tai ääni",
-      "chip2": "Vertaisyhteys",
+      "chip2": "Mikä tahansa verkko",
       "chip3": "Yksi napautus"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Miten videopuhelut toimivat?",
-        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poispäin käveleminen ei katkaise sitä. Kokouspöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
+        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee WebRTC:llä Cloudflaren välitysverkon kautta, joten se yhdistyy samalla tavalla missä tahansa verkossa, toimistolla tai kotona. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poistuminen paikalta ei katkaise sitä. Neuvottelupöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
       },
       {
         "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Toimivatko puhelut selainten välillä?",
-            "a": "Kyllä. TinyFloorin puhelut kulkevat vertaisyhteytenä WebRTC:n kautta, joten ääni ja kuva kulkevat suoraan selainten välillä."
+            "a": "Kyllä. TinyFloorin puhelut kulkevat selaimessa WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa verkossa, toimistolla tai kotona."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Istu neuvottelupöytään, niin liityt puheluun kaikkien siellä istuvien kanssa."
           },
           {
-            "title": "Vertaisyhteys",
-            "body": "Puhelut kulkevat suoraan selainten välillä WebRTC:n kautta, joten asennettavaa ei ole."
+            "title": "Toimii missä tahansa verkossa",
+            "body": "Puhelut kulkevat WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät myös yrityksen palomuurin takaa, eikä mitään tarvitse asentaa."
           }
         ],
         "faq": [

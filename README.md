@@ -20,7 +20,7 @@ TinyFloor creates immersive virtual office environments where team members can i
 - **Avatar Customization**: Choose from various character appearances, outfits, and accessories for personalized presence
 - **User Authentication**: Secure login system with persistent user profiles stored in MongoDB
 - **Pixel Art Aesthetic**: Nostalgic 2D graphics inspired by classic office environments with tile-based movement
-- **Cross-Platform Support**: Works on desktop and mobile browsers with WebRTC support for peer-to-peer communication
+- **Cross-Platform Support**: Works on desktop and mobile browsers with WebRTC calls
 
 ## Project Structure
 
@@ -33,7 +33,7 @@ This monorepo contains:
 
 - **Frontend**: Next.js, React, TypeScript, Phaser.js, Tailwind CSS
 - **Backend**: Spring Boot, Java, WebSocket, MongoDB
-- **Real-time Communication**: WebRTC for peer-to-peer audio/video, WebSocket for signaling and game state
+- **Real-time Communication**: WebRTC audio/video through Cloudflare Realtime (TURN relay for one-to-one calls, SFU for group meetings), WebSocket for signaling and game state
 - **Database**: MongoDB for user profiles, room metadata, and persistent data
 - **Deployment**: Cloudflare Workers (frontend), Railway (backend)
 

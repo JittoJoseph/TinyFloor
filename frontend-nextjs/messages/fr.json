@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Approchez-vous pour parler.",
-      "body": "Approchez-vous d’un coéquipier et sa barre d’appel apparaît au-dessus de lui. Un seul geste lance la vidéo ou l’audio, directement entre navigateurs.",
+      "body": "Approchez-vous d'un collègue et sa barre d'appel apparaît au-dessus de lui. Un toucher lance la vidéo ou la voix, transportées par le réseau de Cloudflare.",
       "chip1": "Vidéo ou audio",
-      "chip2": "Pair à pair",
+      "chip2": "Tout réseau",
       "chip3": "Un seul geste"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Comment fonctionnent les appels vidéo ?",
-        "a": "Un appel avec les personnes que vous rejoignez passe en pair à pair via WebRTC : le son et la vidéo vont directement d’un navigateur à l’autre. Il reste connecté jusqu’à ce que quelqu’un raccroche ou quitte la salle, donc s’éloigner ne le coupe pas. Les tables de réunion font passer les appels de groupe par un serveur média : asseyez-vous pour rejoindre, levez-vous pour partir."
+        "a": "Un appel avec les personnes que vous rejoignez passe par WebRTC via le réseau relais de Cloudflare : il se connecte de la même façon sur n'importe quel réseau, au bureau comme à la maison. Il reste connecté jusqu'à ce que quelqu'un raccroche ou quitte la salle, donc s'éloigner ne le coupe pas. Les tables de réunion font passer les appels de groupe par un serveur média : asseyez-vous pour rejoindre, levez-vous pour partir."
       },
       {
         "q": "Ma caméra est-elle allumée tout le temps dans une salle ?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Les appels fonctionnent-ils entre navigateurs ?",
-            "a": "Oui. Les appels TinyFloor passent en pair à pair via WebRTC, le son et la vidéo vont donc directement d’un navigateur à l’autre."
+            "a": "Oui. Les appels TinyFloor passent par WebRTC dans le navigateur, via le réseau relais de Cloudflare : ils se connectent sur n'importe quel réseau, au bureau comme à la maison."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Asseyez-vous à la table de réunion et vous rejoignez l’appel de tous ceux qui y sont assis."
           },
           {
-            "title": "En pair à pair",
-            "body": "Les appels passent directement d’un navigateur à l’autre via WebRTC, il n’y a donc rien à installer."
+            "title": "Fonctionne sur tout réseau",
+            "body": "Les appels passent par WebRTC via le réseau relais de Cloudflare : ils se connectent même derrière un pare-feu d'entreprise, et il n'y a rien à installer."
           }
         ],
         "faq": [

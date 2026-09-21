@@ -482,7 +482,7 @@ export class Room extends DurableObject<Env> {
   }
 
   /**
-   * Peer-to-peer call signalling, relayed to one person with the sender added.
+   * One-to-one call signalling, passed to one person with the sender added.
    * If they aren't here, the caller hears the call ended, as with the Java server.
    */
   private relayCall(socket: WebSocket, me: Attachment, message: Record<string, unknown>): void {

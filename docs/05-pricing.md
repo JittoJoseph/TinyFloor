@@ -95,14 +95,15 @@ rather than bills:
 
 Worst case at Team: 40 hours × 7.4 GB = 296 GB, $14.80 at list price against
 $19 of revenue — and only if every hour is a full ten-person camera meeting,
-which no office does. Typical use is proximity calls, which are peer-to-peer
-and cost nothing.
+which no office does. Typical use is proximity calls: two people through the
+TURN relay, about 0.17 GB an hour, a cent an hour at list price.
 
 Three rules make the cap almost never bite:
 
 1. Meeting tables start **audio-first**; turning your camera on is a choice.
 2. Thumbnails stay at 150 kbps; only an enlarged card gets 720p.
-3. Proximity calls are not counted at all — they are peer-to-peer.
+3. Proximity calls are not counted against the cap — two people through the
+   relay cost a fraction of a meeting, and they are what the floor is for.
 
 No overage charges, ever. A surprise bill would cost us more in trust than the
 bandwidth costs in money.

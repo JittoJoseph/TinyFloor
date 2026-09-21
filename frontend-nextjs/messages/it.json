@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Avvicinati per parlare.",
-      "body": "Avvicinati a un collega e sopra di lui compare la barra di chiamata. Un tocco avvia video o voce, direttamente tra i browser.",
+      "body": "Avvicinati a un collega e sopra di lui compare la barra di chiamata. Un tocco apre video o voce, trasportati dalla rete di Cloudflare.",
       "chip1": "Video o voce",
-      "chip2": "Peer-to-peer",
+      "chip2": "Qualsiasi rete",
       "chip3": "Un tocco"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Come funzionano le videochiamate?",
-        "a": "Una chiamata con le persone a cui ti avvicini passa peer-to-peer via WebRTC, quindi audio e video viaggiano direttamente tra i browser. Resta collegata finché qualcuno non riattacca o esce dalla stanza, quindi allontanarsi non la interrompe. I tavoli riunione portano le chiamate di gruppo tramite un server multimediale: siediti per unirti, alzati per uscire."
+        "a": "Una chiamata con le persone a cui ti avvicini passa su WebRTC attraverso la rete di relay di Cloudflare, quindi si collega allo stesso modo su qualsiasi rete, in ufficio o a casa. Resta attiva finché qualcuno non riattacca o lascia la stanza, quindi allontanarsi non la interrompe. I tavoli riunione portano le chiamate di gruppo su un media server: siediti per entrare, alzati per uscire."
       },
       {
         "q": "La mia fotocamera resta accesa per tutto il tempo in cui sono in una stanza?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Le chiamate funzionano tra browser?",
-            "a": "Sì. Le chiamate di TinyFloor sono peer to peer tramite WebRTC, quindi audio e video passano direttamente tra i browser."
+            "a": "Sì. Le chiamate di TinyFloor passano su WebRTC nel browser, attraverso la rete di relay di Cloudflare, quindi si collegano su qualsiasi rete, in ufficio o a casa."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Siediti al tavolo riunioni ed entri nella chiamata con tutti quelli seduti lì."
           },
           {
-            "title": "Peer to peer",
-            "body": "Le chiamate passano direttamente tra i browser tramite WebRTC, quindi non c’è niente da installare."
+            "title": "Funziona su qualsiasi rete",
+            "body": "Le chiamate passano su WebRTC attraverso la rete di relay di Cloudflare, quindi si collegano anche dietro i firewall aziendali e non c'è nulla da installare."
           }
         ],
         "faq": [

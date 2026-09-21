@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Geh rüber, um zu reden.",
-      "body": "Komm einem Teammitglied nahe, und über ihm erscheint die Anrufleiste. Ein Tipp startet Video oder Sprache, direkt zwischen den Browsern.",
+      "body": "Geh nah an jemanden heran, und über ihm erscheint die Anrufleiste. Ein Tipp startet Video oder Sprache, übertragen über das Netz von Cloudflare.",
       "chip1": "Video oder Sprache",
-      "chip2": "Peer-to-Peer",
+      "chip2": "Jedes Netzwerk",
       "chip3": "Ein Tipp"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Wie funktionieren die Videoanrufe?",
-        "a": "Ein Gespräch mit den Leuten, zu denen du gehst, läuft Peer-to-Peer über WebRTC, Ton und Bild gehen also direkt zwischen den Browsern. Es bleibt verbunden, bis jemand auflegt oder den Raum verlässt, Weggehen beendet es also nicht. Besprechungstische übertragen Gruppengespräche über einen Medienserver: Hinsetzen zum Beitreten, Aufstehen zum Verlassen."
+        "a": "Ein Gespräch mit den Leuten, zu denen du gehst, läuft über WebRTC durch das Relay-Netz von Cloudflare und verbindet sich daher in jedem Büro- oder Heimnetz gleich. Es bleibt verbunden, bis jemand auflegt oder den Raum verlässt, Weggehen beendet es also nicht. Besprechungstische übertragen Gruppengespräche über einen Medienserver: Hinsetzen zum Beitreten, Aufstehen zum Verlassen."
       },
       {
         "q": "Ist meine Kamera die ganze Zeit an, während ich in einem Raum bin?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Funktionieren Anrufe zwischen Browsern?",
-            "a": "Ja. Anrufe in TinyFloor laufen Peer-to-Peer über WebRTC, Ton und Bild gehen also direkt von Browser zu Browser."
+            "a": "Ja. Anrufe in TinyFloor laufen über WebRTC im Browser durch das Relay-Netz von Cloudflare und verbinden sich daher in jedem Büro- oder Heimnetz."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Setz dich an den Besprechungstisch und du bist im Anruf mit allen, die dort sitzen."
           },
           {
-            "title": "Peer-to-Peer",
-            "body": "Anrufe gehen über WebRTC direkt von Browser zu Browser, also gibt es nichts zu installieren."
+            "title": "Funktioniert in jedem Netz",
+            "body": "Anrufe laufen über WebRTC durch das Relay-Netz von Cloudflare, verbinden sich also auch hinter Firmen-Firewalls, und es gibt nichts zu installieren."
           }
         ],
         "faq": [

@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Gå bort for å prate.",
-      "body": "Kom nær en kollega, så dukker samtalelinjen opp over dem. Ett trykk starter video eller tale, direkte mellom nettleserne.",
+      "body": "Gå nær en kollega, så dukker samtalelinjen opp over dem. Ett trykk åpner video eller lyd, båret av Cloudflares nettverk.",
       "chip1": "Video eller tale",
-      "chip2": "Peer-to-peer",
+      "chip2": "Alle nettverk",
       "chip3": "Ett trykk"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Hvordan fungerer videosamtalene?",
-        "a": "En samtale med dem du går bort til går peer-to-peer over WebRTC, så lyd og video går rett mellom nettleserne. Den holder seg tilkoblet til noen legger på eller forlater rommet, så den brytes ikke når du går bort. Møtebord sender gruppesamtaler gjennom en medieserver: sett deg for å bli med, reis deg for å gå."
+        "a": "En samtale med dem du går bort til går over WebRTC gjennom Cloudflares relénettverk, så den kobler til likt på alle nettverk, på jobb eller hjemme. Den holder seg tilkoblet til noen legger på eller forlater rommet, så det å gå bort bryter den ikke. Møtebord sender gruppesamtaler gjennom en medieserver: sett deg for å bli med, reis deg for å gå."
       },
       {
         "q": "Er kameraet mitt på hele tiden mens jeg er i et rom?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Fungerer samtaler mellom nettlesere?",
-            "a": "Ja. Samtaler i TinyFloor går peer-to-peer via WebRTC, så lyd og bilde går direkte mellom nettleserne."
+            "a": "Ja. Samtaler i TinyFloor går over WebRTC i nettleseren gjennom Cloudflares relénettverk, så de kobler til på alle nettverk, på jobb eller hjemme."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Sett deg ved møtebordet, så er du med i samtalen med alle som sitter der."
           },
           {
-            "title": "Peer-to-peer",
-            "body": "Samtaler går direkte mellom nettlesere via WebRTC, så det er ingenting å installere."
+            "title": "Fungerer på alle nettverk",
+            "body": "Samtaler går over WebRTC gjennom Cloudflares relénettverk, så de kobler til også bak bedriftens brannmur, og det er ingenting å installere."
           }
         ],
         "faq": [

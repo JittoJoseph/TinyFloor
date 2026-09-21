@@ -97,9 +97,9 @@
     },
     "call": {
       "title": "Loop erheen om te praten.",
-      "body": "Kom dicht bij een teamgenoot en de belbalk verschijnt boven diegene. Eén tik start video of spraak, rechtstreeks tussen browsers.",
+      "body": "Kom dicht bij een collega en boven hem verschijnt de belbalk. Eén tik opent video of spraak, via het netwerk van Cloudflare.",
       "chip1": "Video of spraak",
-      "chip2": "Peer-to-peer",
+      "chip2": "Elk netwerk",
       "chip3": "Eén tik"
     },
     "presence": {
@@ -145,7 +145,7 @@
       },
       {
         "q": "Hoe werken de videogesprekken?",
-        "a": "Een gesprek met de mensen naar wie je toeloopt gaat peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om te vertrekken."
+        "a": "Een gesprek met de mensen naar wie je toe loopt gaat via WebRTC over het relaynetwerk van Cloudflare, dus het verbindt op elk netwerk even goed, op kantoor of thuis. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om weg te gaan."
       },
       {
         "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
@@ -673,7 +673,7 @@
           },
           {
             "q": "Werken gesprekken tussen browsers?",
-            "a": "Ja. Gesprekken in TinyFloor lopen peer-to-peer via WebRTC, dus geluid en beeld gaan rechtstreeks tussen browsers."
+            "a": "Ja. Gesprekken in TinyFloor lopen via WebRTC in de browser, over het relaynetwerk van Cloudflare, dus ze verbinden op elk netwerk, op kantoor of thuis."
           }
         ]
       },
@@ -947,8 +947,8 @@
             "body": "Ga aan de vergadertafel zitten en je doet mee aan het gesprek met iedereen die daar zit."
           },
           {
-            "title": "Peer-to-peer",
-            "body": "Gesprekken gaan rechtstreeks tussen browsers via WebRTC, dus er is niets te installeren."
+            "title": "Werkt op elk netwerk",
+            "body": "Gesprekken lopen via WebRTC over het relaynetwerk van Cloudflare, dus ze verbinden ook achter bedrijfsfirewalls en er is niets te installeren."
           }
         ],
         "faq": [

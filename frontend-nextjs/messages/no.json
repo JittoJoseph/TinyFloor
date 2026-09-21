@@ -51,14 +51,6 @@
     "main": "Hovedmeny",
     "tour": "Omvisning"
   },
-  "hero": {
-    "title": "Det <em>koseligste</em> <br></br>virtuelle kontoret.",
-    "subtitle": "Et virtuelt kontor som ser ut som et spill. Gå rundt, prat med kollegene og føl dere som et team igjen.",
-    "cta": "Gå inn nå",
-    "caption": "Et TinyFloor-rom: en 16-biters kontoretasje med skrivebord og kolleger som går rundt.",
-    "noSignUp": "prøv det",
-    "secondaryCta": "Eller sett opp et kontor for teamet ditt"
-  },
   "landing": {
     "description": "Et virtuelt kontor som ser ut som et spill. Gå rundt i en pikselkunst-etasje med teamet ditt og start en videosamtale bare ved å stille deg ved siden av noen.",
     "features": [
@@ -69,60 +61,6 @@
       "Tilstedeværelse og status i sanntid",
       "Romchat"
     ]
-  },
-  "moments": {
-    "title": "Et kontor du kan <em>gå rundt i.</em>",
-    "subtitle": "TinyFloor beholder den delen av kontoret som samtaler aldri erstattet: å vite hvem som er der, og kunne gå bort til dem.",
-    "alwaysOn": "Alltid åpent",
-    "directory": {
-      "design": {
-        "name": "Designteamet",
-        "here": "5 her"
-      },
-      "founders": {
-        "name": "Gründerne",
-        "here": "2 her"
-      },
-      "jam": {
-        "name": "Helgejam",
-        "here": "Tomt"
-      }
-    },
-    "enter": {
-      "title": "Åpne en lenke, så er du inne.",
-      "body": "Noen deler en romlenke. Velg en figur, skriv et navn, og så står du i etasjen med alle de andre.",
-      "chip1": "Ingen nedlasting",
-      "chip2": "Gjester velkommen",
-      "chip3": "Alle nettlesere"
-    },
-    "call": {
-      "title": "Gå bort for å prate.",
-      "body": "Gå nær en kollega, så dukker samtalelinjen opp over dem. Ett trykk åpner video eller lyd, båret av Cloudflares nettverk.",
-      "chip1": "Video eller tale",
-      "chip2": "Alle nettverk",
-      "chip3": "Ett trykk"
-    },
-    "presence": {
-      "title": "Du ser hvem som er i nærheten.",
-      "body": "Alle har navneskilt og status. Se hvem som er ledig, hvem som er konsentrert, og hvem som allerede er i en samtale før du går bort.",
-      "chip1": "Navneskilt live",
-      "chip2": "Borte og opptatt",
-      "chip3": "Romchat"
-    },
-    "rooms": {
-      "title": "Rommet er der fortsatt i morgen.",
-      "body": "Rom slutter ikke når et møte gjør det. Hold dem åpne for teamet ditt, inviter folk én gang, og de kan gå inn når de vil.",
-      "chip1": "Bare for teamet ditt",
-      "chip2": "Gjestelenker",
-      "chip3": "Gratis"
-    },
-    "floor": {
-      "title": "Et kontor, ikke et møte.",
-      "body": "Ingen sender invitasjoner. Folk stikker innom, jobber nær hverandre og går bort når noe dukker opp.",
-      "chip1": "Ingen invitasjoner",
-      "chip2": "Gå bort",
-      "chip3": "Hele etasjen"
-    }
   },
   "faq": {
     "title": "Før du <em>går inn.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Start ditt første kontor",
     "emptyBody": "Et kontor er et gulv teamet ditt går rundt på, med chat og samtaler innebygd. Tre medlemmer er gratis.",
     "walkIn": "Gå inn"
+  },
+  "home": {
+    "nav": {
+      "features": "Funksjoner",
+      "pricing": "Priser",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Logg inn",
+      "start": "Lag kontoret ditt",
+      "open": "Åpne TinyFloor",
+      "main": "Hovednavigasjon"
+    },
+    "hero": {
+      "eyebrow": "Et virtuelt kontor du går rundt i",
+      "title": "Jobb sammen, som i samme rom.",
+      "body": "TinyFloor gir teamet ditt en felles etasje i nettleseren. Se hvem som er der, gå bort og snakk, og fortsett samtalen i chatten, uten å booke møter.",
+      "primary": "Lag kontoret ditt, gratis",
+      "secondary": "Gå inn i lobbyen",
+      "note": "Gratis for opptil 3 personer. Ingenting å installere.",
+      "previewLabel": "En titt inn i TinyFloor",
+      "tabs": {
+        "floor": "Etasje",
+        "chat": "Chat",
+        "people": "Personer",
+        "meeting": "Møter"
+      }
+    },
+    "facts": {
+      "label": "Dette får du med hvert kontor",
+      "items": [
+        "Kjører i alle moderne nettlesere",
+        "Samtaler på Cloudflares globale nettverk",
+        "18 språk",
+        "Lyst og mørkt",
+        "Gratis for opptil 3 personer"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Nærhetssamtaler",
+        "title": "Gå bort og snakk.",
+        "muted": "Ingen lenker, ingen planlegging.",
+        "body": "Gå nær noen, så er en samtale ett trykk unna. Gå videre, så blir det stille i etasjen igjen, akkurat som når du stikker innom en pult."
+      },
+      "meetings": {
+        "eyebrow": "Møtebord",
+        "title": "Sett deg for å møtes.",
+        "muted": "Reis deg for å gå.",
+        "body": "Gruppesamtaler skjer ved et bord. Alle som sitter der er med, kameraene holdes lette som miniatyrer, og alle kan dele skjermen sin."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Samtaler som blir.",
+        "muted": "Kanaler, direktemeldinger, reaksjoner.",
+        "body": "Hvert kontor har sin egen chat. Les deg opp fra mobilen uten å gå inn, og få et diskret varsel i etasjen når noen skriver."
+      },
+      "people": {
+        "eyebrow": "Tilstedeværelse",
+        "title": "Se hvem som er der.",
+        "muted": "Og gå rett bort.",
+        "body": "Se hvem som er i etasjen, hvem som er opptatt og hvem som er i en samtale. Trykk på Gå dit, så finner figuren din veien selv."
+      },
+      "guests": {
+        "eyebrow": "Gjester",
+        "title": "Slipp inn hvem som helst.",
+        "muted": "Med én lenke.",
+        "body": "Inviter kolleger på e-post, eller send en gjestelenke til en kunde eller kandidat. De velger et navn og en figur og står i etasjen, uten konto."
+      }
+    },
+    "more": {
+      "title": "Alt et lite team trenger,",
+      "muted": "i én etasje.",
+      "items": {
+        "screen": {
+          "title": "Skjermdeling",
+          "body": "Del et vindu i alle samtaler og møter."
+        },
+        "whiteboard": {
+          "title": "Tavle",
+          "body": "Skisser sammen på kontorveggen."
+        },
+        "music": {
+          "title": "Musikk",
+          "body": "Sett på en låt for alle i rommet."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Ledig, opptatt eller borte, rett på navneskiltet ditt."
+        },
+        "noise": {
+          "title": "Støyfjerning",
+          "body": "Valgfri AI på enheten din fjerner tastatur og prat."
+        },
+        "mobile": {
+          "title": "På mobilen",
+          "body": "En joystick som dukker opp under tommelen."
+        },
+        "themes": {
+          "title": "Lyst og mørkt",
+          "body": "Følger systemet ditt, eller velg selv."
+        },
+        "languages": {
+          "title": "18 språk",
+          "body": "Fra English og Español til 日本語 og العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Bygget for tillit.",
+      "items": {
+        "private": {
+          "title": "Privat fra grunnen av",
+          "body": "En kontoretasje er bare for medlemmene og gjestene de slipper inn. Ingenting er offentlig, og ingenting blir indeksert."
+        },
+        "network": {
+          "title": "På Cloudflares nettverk",
+          "body": "Sider, chat og samtaler kjører på Cloudflares globale nettverk, nær teamet ditt, og kobler til på alle kontor- og hjemmenettverk."
+        },
+        "install": {
+          "title": "Ingenting å installere",
+          "body": "Det er en nettside. På datamaskin, bærbar eller mobil åpnes den likt, og den er alltid den nyeste versjonen."
+        }
+      }
+    },
+    "plans": {
+      "title": "Start gratis.",
+      "muted": "Vokse når dere er klare.",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "per": "for opptil 3 personer",
+        "cta": "Lag kontoret ditt",
+        "items": [
+          "En privat etasje for teamet ditt",
+          "Nærhetssamtaler og møtebord",
+          "Skjermdeling",
+          "Kanaler og direktemeldinger",
+          "Gjestelenker for besøkende"
+        ]
+      },
+      "soon": {
+        "name": "Større planer",
+        "badge": "Kommer snart",
+        "body": "For team som vokser ut av tre plasser. Start gratis i dag, kontoret blir med når de kommer.",
+        "cta": "Prøv lobbyen først",
+        "items": [
+          "Flere plasser for større team",
+          "Bilder og filer i chatten",
+          "Mer møtetid"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Spørsmål,",
+      "muted": "besvart."
+    },
+    "final": {
+      "title": "Teamet ditt, én etasje unna.",
+      "body": "Lag et kontor på ett minutt, eller gå inn i den åpne lobbyen og se deg rundt først."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "generelt",
+      "design": "design",
+      "random": "tilfeldig",
+      "inCall": "I en samtale",
+      "meeting": "Designgjennomgang",
+      "sharing": "Deler skjerm",
+      "message1": "God morgen! Standup ved det store bordet om 5?",
+      "message2": "På vei 👋",
+      "message3": "Har pushet den nye onboarding-flyten, ta gjerne en titt",
+      "composer": "Melding i #generelt",
+      "walkTo": "Gå dit",
+      "message": "Melding",
+      "onFloor": "I etasjen",
+      "notOnFloor": "Ikke i etasjen",
+      "available": "Ledig",
+      "busy": "Opptatt",
+      "away": "Borte",
+      "guestLink": "Gjestelenke",
+      "guestNote": "Alle med denne lenken kan komme innom som gjest.",
+      "copy": "Kopier",
+      "invite": "Inviter",
+      "here": "{count} her",
+      "people": "Personer",
+      "guestArrived": "kom inn som gjest",
+      "roles": {
+        "design": "Design",
+        "engineering": "Utvikling",
+        "product": "Produkt"
+      },
+      "board": {
+        "signUp": "Registrer",
+        "name": "Gi navn",
+        "walkIn": "Gå inn",
+        "note": "hoppe over for gjester?"
+      },
+      "message0": "Kundemøtet flyttet til 14, notater i #design",
+      "message4": "Fokus på lanseringen til lunsj 🎧",
+      "channels": "Kanaler",
+      "directMessages": "Direktemeldinger",
+      "today": "I dag",
+      "typing": "{name} skriver…",
+      "guest": "Gjest"
+    },
+    "footer": {
+      "tagline": "Et virtuelt kontor du går rundt i.",
+      "product": "Produkt",
+      "useCases": "Bruksområder",
+      "compare": "Sammenlign",
+      "resources": "Ressurser",
+      "makeOffice": "Lag et kontor",
+      "lobby": "Åpen lobby",
+      "signIn": "Logg inn",
+      "dashboard": "Kontorene dine",
+      "faq": "FAQ",
+      "credits": "Takk til",
+      "vs": "vs {name}",
+      "theme": "Tema",
+      "language": "Språk",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

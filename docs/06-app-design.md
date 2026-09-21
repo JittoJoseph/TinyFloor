@@ -266,3 +266,27 @@ differs from the plan, or adds to it:
 - **A reload keeps you inside.** Walking through a door is remembered for the
   tab, so refreshing lands you back on the floor; leaving through the app
   brings you to the door next time.
+
+## The home page
+
+The home page (`components/home`) is the first marketing page in the app's
+design system, and the others will follow it. It uses the same tokens and the
+same theme as the app: system by default, light or dark from its footer, set
+before first paint by the root layout's script (which now covers "/").
+
+- **Built around previews.** The hero is the app's shell in miniature with four
+  tabs — floor, chat, people, a meeting — and each feature row shows the app
+  doing that one thing. The previews are server-rendered markup drawn with the
+  app's own pieces (faces, the office art and characters, chips, cards); none
+  of them are screenshots, so they follow the theme and every language.
+- **Honest.** No invented customers, logos, reviews or numbers. The facts strip,
+  the trust cards and the plans say only what is true today; bigger plans are
+  "coming soon" with no price or date.
+- **Light.** The only scripts are the hero's tab switcher, the nav's signed-in
+  check and the footer's theme switch. The FAQ is native `<details>`, the
+  language list is plain links (crawlable, no script), and the theme helper
+  does not bring the animation library.
+- **Layout from the references:** ElevenLabs for the split hero, the tabbed
+  product panel and the line-art trust cards; Gleap for two-tone headlines,
+  alternating feature rows over a soft wash, the FAQ layout and the closing
+  call with faces; ClickUp for the footer's link directory.

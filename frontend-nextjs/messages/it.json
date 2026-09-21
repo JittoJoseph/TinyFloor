@@ -51,14 +51,6 @@
     "main": "Principale",
     "tour": "Tour"
   },
-  "hero": {
-    "title": "L’ufficio virtuale <br></br>più <em>accogliente</em>.",
-    "subtitle": "Un ufficio virtuale che sembra un videogioco. Fai due passi, parla con i colleghi e torna a sentirti una squadra.",
-    "cta": "Entra adesso",
-    "caption": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi che vi passeggiano.",
-    "noSignUp": "provalo",
-    "secondaryCta": "Oppure allestisci un ufficio per il tuo team"
-  },
   "landing": {
     "description": "Un ufficio virtuale che sembra un videogioco. Muoviti con il tuo team su un piano in pixel art e avvia una videochiamata semplicemente mettendoti accanto a qualcuno.",
     "features": [
@@ -69,60 +61,6 @@
       "Presenza e stato in tempo reale",
       "Chat della stanza"
     ]
-  },
-  "moments": {
-    "title": "Un ufficio in cui puoi <em>camminare.</em>",
-    "subtitle": "TinyFloor conserva la parte dell’ufficio che le chiamate non hanno mai sostituito: sapere chi c’è e poterlo raggiungere.",
-    "alwaysOn": "Sempre aperte",
-    "directory": {
-      "design": {
-        "name": "Team design",
-        "here": "5 presenti"
-      },
-      "founders": {
-        "name": "Fondatori",
-        "here": "2 presenti"
-      },
-      "jam": {
-        "name": "Jam del weekend",
-        "here": "Vuota"
-      }
-    },
-    "enter": {
-      "title": "Apri un link e sei dentro.",
-      "body": "Qualcuno condivide il link di una stanza. Scegli un personaggio, scrivi un nome e sei sul piano con tutti gli altri.",
-      "chip1": "Nessun download",
-      "chip2": "Ospiti benvenuti",
-      "chip3": "Qualsiasi browser"
-    },
-    "call": {
-      "title": "Avvicinati per parlare.",
-      "body": "Avvicinati a un collega e sopra di lui compare la barra di chiamata. Un tocco apre video o voce, trasportati dalla rete di Cloudflare.",
-      "chip1": "Video o voce",
-      "chip2": "Qualsiasi rete",
-      "chip3": "Un tocco"
-    },
-    "presence": {
-      "title": "Sai chi c’è in giro.",
-      "body": "Ognuno ha una targhetta con il nome e uno stato. Vedi chi è libero, chi è concentrato e chi è già in chiamata prima di avvicinarti.",
-      "chip1": "Targhette dal vivo",
-      "chip2": "Assente e occupato",
-      "chip3": "Chat della stanza"
-    },
-    "rooms": {
-      "title": "Domani la stanza sarà ancora lì.",
-      "body": "Le stanze non finiscono quando finisce una riunione. Tienile aperte per il tuo team, invita le persone una volta sola e potranno entrare quando vogliono.",
-      "chip1": "Solo per il tuo team",
-      "chip2": "Link ospite",
-      "chip3": "Gratis"
-    },
-    "floor": {
-      "title": "Un ufficio, non una riunione.",
-      "body": "Nessuno manda inviti. Le persone passano, lavorano vicine e si avvicinano quando serve.",
-      "chip1": "Nessun invito",
-      "chip2": "Fai un salto",
-      "chip3": "Tutto il piano"
-    }
   },
   "faq": {
     "title": "Prima di <em>entrare.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Crea il tuo primo ufficio",
     "emptyBody": "Un ufficio è un piano in cui il tuo team si muove, con chat e chiamate incluse. Tre membri sono gratis.",
     "walkIn": "Entra"
+  },
+  "home": {
+    "nav": {
+      "features": "Funzionalità",
+      "pricing": "Prezzi",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Accedi",
+      "start": "Crea il tuo ufficio",
+      "open": "Apri TinyFloor",
+      "main": "Navigazione principale"
+    },
+    "hero": {
+      "eyebrow": "Un ufficio virtuale in cui ti muovi",
+      "title": "Lavorate insieme, come nella stessa stanza.",
+      "body": "TinyFloor dà al tuo team un piano condiviso nel browser. Vedi chi c'è, avvicinati per parlare e continua la conversazione in chat, senza prenotare riunioni.",
+      "primary": "Crea il tuo ufficio, gratis",
+      "secondary": "Entra nella lobby",
+      "note": "Gratis fino a 3 persone. Niente da installare.",
+      "previewLabel": "Uno sguardo dentro TinyFloor",
+      "tabs": {
+        "floor": "Piano",
+        "chat": "Chat",
+        "people": "Persone",
+        "meeting": "Riunioni"
+      }
+    },
+    "facts": {
+      "label": "Cosa offre ogni ufficio",
+      "items": [
+        "Funziona in ogni browser moderno",
+        "Chiamate sulla rete globale di Cloudflare",
+        "18 lingue",
+        "Chiaro e scuro",
+        "Gratis fino a 3 persone"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Chiamate di prossimità",
+        "title": "Avvicinati per parlare.",
+        "muted": "Niente link, niente agende.",
+        "body": "Avvicinati a qualcuno e una chiamata è a un tocco. Allontanati e il piano torna tranquillo, come quando passi alla scrivania di un collega."
+      },
+      "meetings": {
+        "eyebrow": "Tavoli riunione",
+        "title": "Siediti per la riunione.",
+        "muted": "Alzati per uscire.",
+        "body": "Le chiamate di gruppo si fanno a un tavolo. Chi si siede partecipa, le videocamere restano leggere come miniature e chiunque può condividere lo schermo."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Conversazioni che restano.",
+        "muted": "Canali, messaggi diretti, reazioni.",
+        "body": "Ogni ufficio ha la sua chat. Recupera dal telefono senza entrare e ricevi un discreto avviso sul piano quando qualcuno scrive."
+      },
+      "people": {
+        "eyebrow": "Presenza",
+        "title": "Sappi chi c'è.",
+        "muted": "Poi raggiungilo subito.",
+        "body": "Vedi chi è sul piano, chi è occupato e chi è in chiamata. Tocca Raggiungi e il tuo personaggio trova da solo la strada."
+      },
+      "guests": {
+        "eyebrow": "Ospiti",
+        "title": "Fai entrare chiunque.",
+        "muted": "Con un solo link.",
+        "body": "Invita i colleghi via email o manda un link ospite a un cliente o a un candidato. Scelgono un nome e un personaggio e sono sul piano, senza account."
+      }
+    },
+    "more": {
+      "title": "Tutto ciò che serve a un piccolo team,",
+      "muted": "su un solo piano.",
+      "items": {
+        "screen": {
+          "title": "Condivisione schermo",
+          "body": "Condividi una finestra in qualsiasi chiamata o riunione."
+        },
+        "whiteboard": {
+          "title": "Lavagna",
+          "body": "Disegnate insieme sulla parete dell'ufficio."
+        },
+        "music": {
+          "title": "Musica",
+          "body": "Metti un brano per tutti nella stanza."
+        },
+        "status": {
+          "title": "Stato",
+          "body": "Disponibile, occupato o assente, sul tuo cartellino."
+        },
+        "noise": {
+          "title": "Rimozione del rumore",
+          "body": "Un'IA opzionale sul tuo dispositivo toglie tastiere e chiacchiere."
+        },
+        "mobile": {
+          "title": "Sul telefono",
+          "body": "Un joystick che compare sotto il pollice."
+        },
+        "themes": {
+          "title": "Chiaro e scuro",
+          "body": "Segue il tuo sistema, oppure scegli tu."
+        },
+        "languages": {
+          "title": "18 lingue",
+          "body": "Da English ed Español a 日本語 e العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Pensato per la fiducia.",
+      "items": {
+        "private": {
+          "title": "Privato per progettazione",
+          "body": "Un piano d'ufficio è solo per i suoi membri e gli ospiti che fanno entrare. Niente è pubblico, niente è indicizzato."
+        },
+        "network": {
+          "title": "Sulla rete di Cloudflare",
+          "body": "Pagine, chat e chiamate girano sulla rete globale di Cloudflare, vicino al tuo team, e si collegano su qualsiasi rete d'ufficio o di casa."
+        },
+        "install": {
+          "title": "Niente da installare",
+          "body": "È una pagina web. Su desktop, portatile o telefono si apre allo stesso modo, ed è sempre l'ultima versione."
+        }
+      }
+    },
+    "plans": {
+      "title": "Inizia gratis.",
+      "muted": "Cresci quando sei pronto.",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "per": "fino a 3 persone",
+        "cta": "Crea il tuo ufficio",
+        "items": [
+          "Un piano privato per il tuo team",
+          "Chiamate di prossimità e tavoli riunione",
+          "Condivisione schermo",
+          "Canali e messaggi diretti",
+          "Link ospite per i visitatori"
+        ]
+      },
+      "soon": {
+        "name": "Piani più grandi",
+        "badge": "In arrivo",
+        "body": "Per i team che superano i tre posti. Inizia gratis oggi, il tuo ufficio resta quando arriveranno.",
+        "cta": "Prova prima la lobby",
+        "items": [
+          "Più posti per team più grandi",
+          "Immagini e file in chat",
+          "Più tempo per le riunioni"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Domande,",
+      "muted": "risposte."
+    },
+    "final": {
+      "title": "Il tuo team, a un piano di distanza.",
+      "body": "Crea un ufficio in un minuto, oppure entra nella lobby pubblica e dai prima un'occhiata."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "generale",
+      "design": "design",
+      "random": "varie",
+      "inCall": "In chiamata",
+      "meeting": "Revisione design",
+      "sharing": "Condivide lo schermo",
+      "message1": "Buongiorno! Standup al tavolo grande tra 5?",
+      "message2": "Arrivo 👋",
+      "message3": "Ho pubblicato il nuovo flusso di onboarding, datemi un parere",
+      "composer": "Messaggio in #generale",
+      "walkTo": "Raggiungi",
+      "message": "Messaggio",
+      "onFloor": "Sul piano",
+      "notOnFloor": "Non sul piano",
+      "available": "Disponibile",
+      "busy": "Occupato",
+      "away": "Assente",
+      "guestLink": "Link ospite",
+      "guestNote": "Chiunque abbia questo link può entrare come ospite.",
+      "copy": "Copia",
+      "invite": "Invita",
+      "here": "{count} qui",
+      "people": "Persone",
+      "guestArrived": "è entrata come ospite",
+      "roles": {
+        "design": "Design",
+        "engineering": "Ingegneria",
+        "product": "Prodotto"
+      },
+      "board": {
+        "signUp": "Iscriviti",
+        "name": "Dai un nome",
+        "walkIn": "Entra",
+        "note": "saltare per gli ospiti?"
+      },
+      "message0": "Call col cliente spostata alle 14, note in #design",
+      "message4": "Concentrata sul rilascio fino a pranzo 🎧",
+      "channels": "Canali",
+      "directMessages": "Messaggi diretti",
+      "today": "Oggi",
+      "typing": "{name} sta scrivendo…",
+      "guest": "Ospite"
+    },
+    "footer": {
+      "tagline": "Un ufficio virtuale in cui ti muovi.",
+      "product": "Prodotto",
+      "useCases": "Casi d'uso",
+      "compare": "Confronti",
+      "resources": "Risorse",
+      "makeOffice": "Crea un ufficio",
+      "lobby": "Lobby pubblica",
+      "signIn": "Accedi",
+      "dashboard": "I tuoi uffici",
+      "faq": "FAQ",
+      "credits": "Crediti",
+      "vs": "vs {name}",
+      "theme": "Tema",
+      "language": "Lingua",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

@@ -51,14 +51,6 @@
     "main": "Principal",
     "tour": "Tour"
   },
-  "hero": {
-    "title": "O escritório virtual <br></br>mais <em>aconchegante</em>.",
-    "subtitle": "Um escritório virtual que parece um jogo. Ande por aí, converse com os colegas e sinta-se uma equipe de novo.",
-    "cta": "Entre agora",
-    "caption": "Uma sala do TinyFloor: um andar de escritório em 16 bits com mesas e colegas andando por ele.",
-    "noSignUp": "experimenta",
-    "secondaryCta": "Ou monte um escritório para sua equipe"
-  },
   "landing": {
     "description": "Um escritório virtual que parece um jogo. Ande por um andar em pixel art com sua equipe e comece uma chamada de vídeo só de ficar ao lado de alguém.",
     "features": [
@@ -69,60 +61,6 @@
       "Presença e status em tempo real",
       "Chat da sala"
     ]
-  },
-  "moments": {
-    "title": "Um escritório para você <em>andar por aí.</em>",
-    "subtitle": "O TinyFloor mantém a parte do escritório que as chamadas nunca substituíram: saber quem está por perto e poder ir até a pessoa.",
-    "alwaysOn": "Sempre abertas",
-    "directory": {
-      "design": {
-        "name": "Equipe de design",
-        "here": "5 aqui"
-      },
-      "founders": {
-        "name": "Fundadores",
-        "here": "2 aqui"
-      },
-      "jam": {
-        "name": "Jam de fim de semana",
-        "here": "Vazia"
-      }
-    },
-    "enter": {
-      "title": "Abra um link e você já está dentro.",
-      "body": "Alguém compartilha o link de uma sala. Escolha um personagem, digite um nome e você está no andar com todo mundo.",
-      "chip1": "Sem download",
-      "chip2": "Convidados bem-vindos",
-      "chip3": "Qualquer navegador"
-    },
-    "call": {
-      "title": "Chegue perto para começar a conversar.",
-      "body": "Chegue perto de um colega e a barra de chamada aparece acima dele. Um toque abre vídeo ou voz, levados pela rede da Cloudflare.",
-      "chip1": "Vídeo ou voz",
-      "chip2": "Qualquer rede",
-      "chip3": "Um toque"
-    },
-    "presence": {
-      "title": "Você sabe quem está por perto.",
-      "body": "Todo mundo tem um crachá com nome e um status. Veja quem está livre, quem está concentrado e quem já está em chamada antes de chegar perto.",
-      "chip1": "Crachás ao vivo",
-      "chip2": "Ausente e ocupado",
-      "chip3": "Chat da sala"
-    },
-    "rooms": {
-      "title": "A sala continua lá amanhã.",
-      "body": "As salas não acabam quando a reunião acaba. Deixe-as abertas para sua equipe, convide as pessoas uma vez e elas entram quando quiserem.",
-      "chip1": "Só para sua equipe",
-      "chip2": "Links de convidado",
-      "chip3": "Grátis"
-    },
-    "floor": {
-      "title": "Um escritório, não uma reunião.",
-      "body": "Ninguém manda convite. As pessoas aparecem, trabalham perto umas das outras e vão até alguém quando surge algo.",
-      "chip1": "Sem convites",
-      "chip2": "Chegue junto",
-      "chip3": "O andar inteiro"
-    }
   },
   "faq": {
     "title": "Antes de <em>entrar.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Comece seu primeiro escritório",
     "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis.",
     "walkIn": "Entrar"
+  },
+  "home": {
+    "nav": {
+      "features": "Recursos",
+      "pricing": "Preços",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Entrar",
+      "start": "Criar seu escritório",
+      "open": "Abrir TinyFloor",
+      "main": "Navegação principal"
+    },
+    "hero": {
+      "eyebrow": "Um escritório virtual por onde você anda",
+      "title": "Trabalhem juntos, como se estivessem na mesma sala.",
+      "body": "O TinyFloor dá à sua equipe um andar compartilhado no navegador. Veja quem está por perto, vá até alguém para conversar e continue a conversa no chat, sem marcar reunião.",
+      "primary": "Criar seu escritório, grátis",
+      "secondary": "Entrar no lobby",
+      "note": "Grátis para até 3 pessoas. Nada para instalar.",
+      "previewLabel": "Uma olhada no TinyFloor",
+      "tabs": {
+        "floor": "Andar",
+        "chat": "Chat",
+        "people": "Pessoas",
+        "meeting": "Reuniões"
+      }
+    },
+    "facts": {
+      "label": "O que todo escritório traz",
+      "items": [
+        "Funciona em qualquer navegador moderno",
+        "Chamadas na rede global da Cloudflare",
+        "18 idiomas",
+        "Claro e escuro",
+        "Grátis para até 3 pessoas"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Chamadas por proximidade",
+        "title": "Chegue perto para conversar.",
+        "muted": "Sem links, sem agenda.",
+        "body": "Chegue perto de alguém e a chamada está a um toque. Afaste-se e o andar volta ao silêncio, como passar na mesa de um colega."
+      },
+      "meetings": {
+        "eyebrow": "Mesas de reunião",
+        "title": "Sente-se para a reunião.",
+        "muted": "Levante-se para sair.",
+        "body": "Chamadas em grupo acontecem numa mesa. Quem se senta entra, as câmeras ficam leves como miniaturas e qualquer um pode compartilhar a tela."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Conversas que ficam.",
+        "muted": "Canais, mensagens diretas, reações.",
+        "body": "Cada escritório tem seu próprio chat. Acompanhe pelo celular sem entrar e receba um aviso discreto no andar quando alguém escrever."
+      },
+      "people": {
+        "eyebrow": "Presença",
+        "title": "Saiba quem está por perto.",
+        "muted": "E vá direto até lá.",
+        "body": "Veja quem está no andar, quem está ocupado e quem está em chamada. Toque em Ir até e seu personagem encontra o caminho sozinho."
+      },
+      "guests": {
+        "eyebrow": "Convidados",
+        "title": "Deixe qualquer um entrar.",
+        "muted": "Com um único link.",
+        "body": "Convide colegas por e-mail ou mande um link de convidado para um cliente ou candidato. Eles escolhem um nome e um personagem e já estão no andar, sem conta."
+      }
+    },
+    "more": {
+      "title": "Tudo o que uma equipe pequena precisa,",
+      "muted": "em um só andar.",
+      "items": {
+        "screen": {
+          "title": "Compartilhamento de tela",
+          "body": "Compartilhe uma janela em qualquer chamada ou reunião."
+        },
+        "whiteboard": {
+          "title": "Quadro branco",
+          "body": "Desenhem juntos na parede do escritório."
+        },
+        "music": {
+          "title": "Música",
+          "body": "Coloque uma música para todos na sala."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Disponível, ocupado ou ausente, direto no seu crachá."
+        },
+        "noise": {
+          "title": "Remoção de ruído",
+          "body": "Uma IA opcional no seu aparelho tira teclado e conversas ao fundo."
+        },
+        "mobile": {
+          "title": "No celular",
+          "body": "Um joystick que aparece sob o seu polegar."
+        },
+        "themes": {
+          "title": "Claro e escuro",
+          "body": "Segue o seu sistema, ou escolha você."
+        },
+        "languages": {
+          "title": "18 idiomas",
+          "body": "De English e Español a 日本語 e العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Feito para ser confiável.",
+      "items": {
+        "private": {
+          "title": "Privado por padrão",
+          "body": "Um andar de escritório é só para os membros e os convidados que eles deixam entrar. Nada é público e nada é indexado."
+        },
+        "network": {
+          "title": "Na rede da Cloudflare",
+          "body": "Páginas, chat e chamadas rodam na rede global da Cloudflare, perto de onde sua equipe estiver, e conectam em qualquer rede de escritório ou de casa."
+        },
+        "install": {
+          "title": "Nada para instalar",
+          "body": "É uma página da web. No computador, notebook ou celular, abre do mesmo jeito, e está sempre na versão mais recente."
+        }
+      }
+    },
+    "plans": {
+      "title": "Comece grátis.",
+      "muted": "Cresça quando estiver pronto.",
+      "free": {
+        "name": "Grátis",
+        "price": "$0",
+        "per": "para até 3 pessoas",
+        "cta": "Criar seu escritório",
+        "items": [
+          "Um andar privado para sua equipe",
+          "Chamadas por proximidade e mesas de reunião",
+          "Compartilhamento de tela",
+          "Canais e mensagens diretas",
+          "Links de convidado para visitas"
+        ]
+      },
+      "soon": {
+        "name": "Planos maiores",
+        "badge": "Em breve",
+        "body": "Para equipes que passam de três vagas. Comece grátis hoje, e seu escritório continua quando eles chegarem.",
+        "cta": "Experimente o lobby primeiro",
+        "items": [
+          "Mais vagas para equipes maiores",
+          "Imagens e arquivos no chat",
+          "Mais tempo de reunião"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Perguntas,",
+      "muted": "respondidas."
+    },
+    "final": {
+      "title": "Sua equipe, a um andar de distância.",
+      "body": "Crie um escritório em um minuto, ou entre no lobby público e dê uma olhada antes."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "geral",
+      "design": "design",
+      "random": "aleatorio",
+      "inCall": "Em chamada",
+      "meeting": "Revisão de design",
+      "sharing": "Compartilhando a tela",
+      "message1": "Bom dia! Daily na mesa grande em 5?",
+      "message2": "Tô indo 👋",
+      "message3": "Subi o novo fluxo de onboarding, adoraria uma olhada",
+      "composer": "Mensagem em #geral",
+      "walkTo": "Ir até",
+      "message": "Mensagem",
+      "onFloor": "No andar",
+      "notOnFloor": "Fora do andar",
+      "available": "Disponível",
+      "busy": "Ocupado",
+      "away": "Ausente",
+      "guestLink": "Link de convidado",
+      "guestNote": "Quem tiver este link pode entrar como convidado.",
+      "copy": "Copiar",
+      "invite": "Convidar",
+      "here": "{count} aqui",
+      "people": "Pessoas",
+      "guestArrived": "entrou como convidada",
+      "roles": {
+        "design": "Design",
+        "engineering": "Engenharia",
+        "product": "Produto"
+      },
+      "board": {
+        "signUp": "Cadastro",
+        "name": "Dar nome",
+        "walkIn": "Entrar",
+        "note": "pular para convidados?"
+      },
+      "message0": "Call com o cliente foi para as 14h, notas em #design",
+      "message4": "Focada no lançamento até o almoço 🎧",
+      "channels": "Canais",
+      "directMessages": "Mensagens diretas",
+      "today": "Hoje",
+      "typing": "{name} está digitando…",
+      "guest": "Convidado"
+    },
+    "footer": {
+      "tagline": "Um escritório virtual por onde você anda.",
+      "product": "Produto",
+      "useCases": "Casos de uso",
+      "compare": "Comparar",
+      "resources": "Recursos",
+      "makeOffice": "Criar um escritório",
+      "lobby": "Lobby público",
+      "signIn": "Entrar",
+      "dashboard": "Seus escritórios",
+      "faq": "FAQ",
+      "credits": "Créditos",
+      "vs": "vs {name}",
+      "theme": "Tema",
+      "language": "Idioma",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

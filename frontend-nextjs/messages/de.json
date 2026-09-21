@@ -51,14 +51,6 @@
     "main": "Hauptnavigation",
     "tour": "Tour"
   },
-  "hero": {
-    "title": "Das <em>gemütlichste</em> <br></br>virtuelle Büro.",
-    "subtitle": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf herum, sprich mit deinen Kollegen und fühl dich wieder wie ein Team.",
-    "cta": "Jetzt eintreten",
-    "caption": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern, die darauf herumlaufen.",
-    "noSignUp": "probier's aus",
-    "secondaryCta": "Oder richte ein Büro für dein Team ein"
-  },
   "landing": {
     "description": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
     "features": [
@@ -69,60 +61,6 @@
       "Anwesenheit und Status in Echtzeit",
       "Raum-Chat"
     ]
-  },
-  "moments": {
-    "title": "Ein Büro, in dem du <em>herumlaufen kannst.</em>",
-    "subtitle": "TinyFloor bewahrt den Teil des Büros, den Anrufe nie ersetzt haben: zu wissen, wer da ist, und einfach rübergehen zu können.",
-    "alwaysOn": "Immer offen",
-    "directory": {
-      "design": {
-        "name": "Designteam",
-        "here": "5 da"
-      },
-      "founders": {
-        "name": "Gründer",
-        "here": "2 da"
-      },
-      "jam": {
-        "name": "Wochenend-Jam",
-        "here": "Leer"
-      }
-    },
-    "enter": {
-      "title": "Link öffnen und du bist drin.",
-      "body": "Jemand teilt einen Raumlink. Wähl einen Charakter, gib einen Namen ein und schon stehst du mit allen anderen auf der Etage.",
-      "chip1": "Kein Download",
-      "chip2": "Gäste willkommen",
-      "chip3": "Jeder Browser"
-    },
-    "call": {
-      "title": "Geh rüber, um zu reden.",
-      "body": "Geh nah an jemanden heran, und über ihm erscheint die Anrufleiste. Ein Tipp startet Video oder Sprache, übertragen über das Netz von Cloudflare.",
-      "chip1": "Video oder Sprache",
-      "chip2": "Jedes Netzwerk",
-      "chip3": "Ein Tipp"
-    },
-    "presence": {
-      "title": "Du siehst, wer gerade da ist.",
-      "body": "Alle tragen ein Namensschild und einen Status. Sieh, wer frei ist, wer konzentriert arbeitet und wer schon telefoniert, bevor du hingehst.",
-      "chip1": "Live-Namensschilder",
-      "chip2": "Abwesend und beschäftigt",
-      "chip3": "Raum-Chat"
-    },
-    "rooms": {
-      "title": "Der Raum ist morgen noch da.",
-      "body": "Räume enden nicht, wenn ein Meeting endet. Halte sie für dein Team offen, lade die Leute einmal ein, und sie kommen herein, wann sie wollen.",
-      "chip1": "Nur für dein Team",
-      "chip2": "Gastlinks",
-      "chip3": "Kostenlos"
-    },
-    "floor": {
-      "title": "Ein Büro, kein Meeting.",
-      "body": "Niemand verschickt Einladungen. Leute schauen vorbei, arbeiten nebeneinander und gehen rüber, wenn etwas ansteht.",
-      "chip1": "Keine Einladungen",
-      "chip2": "Einfach rübergehen",
-      "chip3": "Die ganze Etage"
-    }
   },
   "faq": {
     "title": "Bevor du <em>reingehst.</em>",
@@ -1230,5 +1168,227 @@
     "emptyTitle": "Starte dein erstes Büro",
     "emptyBody": "Ein Büro ist eine Fläche, auf der dein Team herumläuft, mit Chat und Anrufen. Drei Mitglieder sind kostenlos.",
     "walkIn": "Reingehen"
+  },
+  "home": {
+    "nav": {
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Anmelden",
+      "start": "Büro einrichten",
+      "open": "TinyFloor öffnen",
+      "main": "Hauptnavigation"
+    },
+    "hero": {
+      "eyebrow": "Ein virtuelles Büro, in dem du herumläufst",
+      "title": "Zusammenarbeiten, als wärt ihr im selben Raum.",
+      "body": "TinyFloor gibt deinem Team eine gemeinsame Fläche im Browser. Sieh, wer da ist, geh zum Reden hin und führ das Gespräch im Chat weiter, ohne ein Meeting zu buchen.",
+      "primary": "Büro einrichten, kostenlos",
+      "secondary": "In die Lobby gehen",
+      "note": "Kostenlos für bis zu 3 Personen. Nichts zu installieren.",
+      "previewLabel": "Ein Blick in TinyFloor",
+      "tabs": {
+        "floor": "Fläche",
+        "chat": "Chat",
+        "people": "Personen",
+        "meeting": "Meetings"
+      }
+    },
+    "facts": {
+      "label": "Was jedes Büro mitbringt",
+      "items": [
+        "Läuft in jedem modernen Browser",
+        "Anrufe über das globale Netz von Cloudflare",
+        "18 Sprachen",
+        "Hell und dunkel",
+        "Kostenlos für bis zu 3 Personen"
+      ]
+    },
+    "features": {
+      "proximity": {
+        "eyebrow": "Nähe-Anrufe",
+        "title": "Geh hin und rede.",
+        "muted": "Keine Links, keine Termine.",
+        "body": "Geh nah an jemanden heran, und ein Anruf ist nur einen Tipp entfernt. Geh weiter, und auf der Fläche wird es wieder ruhig, so wie beim kurzen Vorbeischauen am Schreibtisch."
+      },
+      "meetings": {
+        "eyebrow": "Besprechungstische",
+        "title": "Setz dich zum Meeting.",
+        "muted": "Steh auf, um zu gehen.",
+        "body": "Gruppengespräche finden an einem Tisch statt. Alle, die dort sitzen, sind dabei, Kameras bleiben als Vorschaubilder leicht, und jeder kann seinen Bildschirm teilen."
+      },
+      "chat": {
+        "eyebrow": "Chat",
+        "title": "Gespräche, die bleiben.",
+        "muted": "Kanäle, Direktnachrichten, Reaktionen.",
+        "body": "Jedes Büro hat seinen eigenen Chat. Lies vom Handy aus nach, ohne reinzugehen, und bekomm einen leisen Hinweis auf der Fläche, wenn jemand schreibt."
+      },
+      "people": {
+        "eyebrow": "Anwesenheit",
+        "title": "Sieh, wer da ist.",
+        "muted": "Und geh direkt hin.",
+        "body": "Sieh, wer auf der Fläche ist, wer beschäftigt ist und wer im Anruf. Tipp auf Hingehen, und deine Figur findet selbst den Weg."
+      },
+      "guests": {
+        "eyebrow": "Gäste",
+        "title": "Lass jeden herein.",
+        "muted": "Mit einem Link.",
+        "body": "Lade Teammitglieder per E-Mail ein oder schick einen Gastlink an Kundschaft oder Bewerbende. Sie wählen einen Namen und eine Figur und stehen auf der Fläche, ganz ohne Konto."
+      }
+    },
+    "more": {
+      "title": "Alles, was ein kleines Team braucht,",
+      "muted": "auf einer Fläche.",
+      "items": {
+        "screen": {
+          "title": "Bildschirm teilen",
+          "body": "Teile ein Fenster in jedem Anruf und Meeting."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Skizziert gemeinsam an der Bürowand."
+        },
+        "music": {
+          "title": "Musik",
+          "body": "Leg einen Song für alle im Raum auf."
+        },
+        "status": {
+          "title": "Status",
+          "body": "Verfügbar, beschäftigt oder abwesend, direkt auf deinem Namensschild."
+        },
+        "noise": {
+          "title": "Geräuschentfernung",
+          "body": "Optionale KI auf deinem Gerät entfernt Tastatur und Gerede."
+        },
+        "mobile": {
+          "title": "Auf dem Handy",
+          "body": "Ein Joystick, der unter deinem Daumen erscheint."
+        },
+        "themes": {
+          "title": "Hell und dunkel",
+          "body": "Folgt deinem System, oder wähl selbst."
+        },
+        "languages": {
+          "title": "18 Sprachen",
+          "body": "Von English und Español bis 日本語 und العربية."
+        }
+      }
+    },
+    "trust": {
+      "title": "Gebaut für Vertrauen.",
+      "items": {
+        "private": {
+          "title": "Privat von Grund auf",
+          "body": "Eine Bürofläche gehört nur ihren Mitgliedern und den Gästen, die sie hereinlassen. Nichts ist öffentlich, nichts wird indexiert."
+        },
+        "network": {
+          "title": "Im Netz von Cloudflare",
+          "body": "Seiten, Chat und Anrufe laufen im globalen Netz von Cloudflare, nah an deinem Team, und verbinden sich in jedem Büro- oder Heimnetz."
+        },
+        "install": {
+          "title": "Nichts zu installieren",
+          "body": "Es ist eine Webseite. Auf Desktop, Laptop oder Handy öffnet sie sich gleich, und sie ist immer auf dem neuesten Stand."
+        }
+      }
+    },
+    "plans": {
+      "title": "Starte kostenlos.",
+      "muted": "Wachse, wenn du bereit bist.",
+      "free": {
+        "name": "Kostenlos",
+        "price": "$0",
+        "per": "für bis zu 3 Personen",
+        "cta": "Büro einrichten",
+        "items": [
+          "Eine private Fläche für dein Team",
+          "Nähe-Anrufe und Besprechungstische",
+          "Bildschirm teilen",
+          "Kanäle und Direktnachrichten",
+          "Gastlinks für Besuch"
+        ]
+      },
+      "soon": {
+        "name": "Größere Pläne",
+        "badge": "Bald verfügbar",
+        "body": "Für Teams, die über drei Plätze hinauswachsen. Starte heute kostenlos, dein Büro bleibt erhalten, wenn sie kommen.",
+        "cta": "Erst die Lobby ausprobieren",
+        "items": [
+          "Mehr Plätze für größere Teams",
+          "Bilder und Dateien im Chat",
+          "Mehr Meeting-Zeit"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Fragen,",
+      "muted": "beantwortet."
+    },
+    "final": {
+      "title": "Dein Team, nur eine Fläche entfernt.",
+      "body": "Richte in einer Minute ein Büro ein, oder geh in die öffentliche Lobby und schau dich erst um."
+    },
+    "preview": {
+      "office": "Northwind",
+      "general": "allgemein",
+      "design": "design",
+      "random": "zufall",
+      "inCall": "Im Anruf",
+      "meeting": "Design-Review",
+      "sharing": "Teilt Bildschirm",
+      "message1": "Morgen! Standup am großen Tisch in 5?",
+      "message2": "Bin unterwegs 👋",
+      "message3": "Neuer Onboarding-Flow ist gepusht, schaut gern mal drüber",
+      "composer": "Nachricht an #allgemein",
+      "walkTo": "Hingehen",
+      "message": "Nachricht",
+      "onFloor": "Auf der Fläche",
+      "notOnFloor": "Nicht auf der Fläche",
+      "available": "Verfügbar",
+      "busy": "Beschäftigt",
+      "away": "Abwesend",
+      "guestLink": "Gastlink",
+      "guestNote": "Wer diesen Link hat, kann als Gast vorbeischauen.",
+      "copy": "Kopieren",
+      "invite": "Einladen",
+      "here": "{count} hier",
+      "people": "Personen",
+      "guestArrived": "ist als Gast hereingekommen",
+      "roles": {
+        "design": "Design",
+        "engineering": "Entwicklung",
+        "product": "Produkt"
+      },
+      "board": {
+        "signUp": "Registrieren",
+        "name": "Büro benennen",
+        "walkIn": "Reingehen",
+        "note": "Gäste überspringen?"
+      },
+      "message0": "Kundencall auf 14 Uhr verschoben, Notizen in #design",
+      "message4": "Bis Mittag voll im Release 🎧",
+      "channels": "Kanäle",
+      "directMessages": "Direktnachrichten",
+      "today": "Heute",
+      "typing": "{name} schreibt…",
+      "guest": "Gast"
+    },
+    "footer": {
+      "tagline": "Ein virtuelles Büro, in dem du herumläufst.",
+      "product": "Produkt",
+      "useCases": "Anwendungsfälle",
+      "compare": "Vergleiche",
+      "resources": "Ressourcen",
+      "makeOffice": "Büro einrichten",
+      "lobby": "Öffentliche Lobby",
+      "signIn": "Anmelden",
+      "dashboard": "Deine Büros",
+      "faq": "FAQ",
+      "credits": "Credits",
+      "vs": "vs. {name}",
+      "theme": "Darstellung",
+      "language": "Sprache",
+      "rights": "© {year} TinyFloor"
+    }
   }
 }

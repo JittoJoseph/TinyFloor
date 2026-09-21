@@ -275,7 +275,8 @@
     },
     "invite": "Zaproś",
     "linkCopied": "Skopiowano link",
-    "inviteText": "Dołącz do mnie w {room} na TinyFloor"
+    "inviteText": "Dołącz do mnie w {room} na TinyFloor",
+    "you": "{name} (ty)"
   },
   "call": {
     "incomingVideo": "Przychodząca rozmowa wideo...",
@@ -347,7 +348,32 @@
     "noDirect": "Brak wiadomości bezpośrednich.",
     "attach": "Dodaj obraz",
     "attachmentsPaid": "Obrazy są częścią płatnego biura.",
-    "attachmentsSoon": "Obrazy pojawią się wkrótce."
+    "attachmentsSoon": "Obrazy pojawią się wkrótce.",
+    "new": "Nowe",
+    "latest": "Do najnowszych",
+    "today": "Dziś",
+    "yesterday": "Wczoraj",
+    "react": "Dodaj reakcję",
+    "copy": "Kopiuj tekst",
+    "emoji": "Emoji",
+    "newLine": "nowy wiersz",
+    "jumpTo": "Przejdź do…",
+    "noMatch": "Nic nie pasuje.",
+    "aloneHere": "Na razie tylko ty. Zaproś kogoś do rozmowy.",
+    "invitePeople": "Zaproś ludzi",
+    "members": "{count, plural, one {# członek} few {# członków} many {# członków} other {# członka}}",
+    "dmIntro": "Tu zaczyna się twoja rozmowa z {name}. Widzicie ją tylko wy dwoje.",
+    "channelIntroTitle": "Witaj na #{channel}",
+    "generalIntro": "Tu rozmawia całe {office}. Całe biuro może czytać, a rozmowa zostaje, gdy zejdziesz z piętra.",
+    "channelIntro": "To początek #{channel}. Całe biuro może czytać.",
+    "sayTo": "Wiadomość do {name}",
+    "channelHint": "Małe litery, bez spacji. Całe biuro może dołączyć.",
+    "create": "Utwórz kanał",
+    "lobbyIntroTitle": "Czat lobby",
+    "lobbyIntro": "Każdy w lobby może to przeczytać. Nic nie jest zapisywane: znika, gdy wychodzisz.",
+    "lobbyDirect": "Wiadomości prywatne i kanały, które zostają, przychodzą z własnym biurem.",
+    "attachmentsLobby": "Obrazy są częścią płatnego biura.",
+    "slowDown": "Trochę wolniej — za dużo wiadomości naraz."
   },
   "proximity": {
     "videoCall": "Rozmowa wideo",
@@ -379,7 +405,8 @@
     "close": "Zamknij ustawienia",
     "microphone": "Mikrofon",
     "camera": "Kamera",
-    "default": "Domyślne"
+    "default": "Domyślne",
+    "description": "Którego mikrofonu i kamery używa piętro."
   },
   "tutorial": {
     "walk": "Chodź, używając W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Co najmniej 8 znaków",
       "signsOutOthers": "Tutaj pozostaniesz zalogowany. Wszędzie indziej nastąpi wylogowanie.",
       "cancel": "Anuluj",
-      "pageTitle": "Twoje konto"
+      "pageTitle": "Twoje konto",
+      "faceNote": "Twoja twarz powstaje z twojego konta, taka sama na każdym ekranie. Nic nie jest wysyłane ani przechowywane.",
+      "themeNote": "System podąża za twoim urządzeniem. Wybór zostaje w tej przeglądarce."
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",
@@ -1102,7 +1131,7 @@
     "floor": "Piętro",
     "chat": "Czat",
     "people": {
-      "title": "Członkowie",
+      "title": "Ludzie",
       "members": "Członkowie",
       "invitations": "Oczekujące zaproszenia",
       "guests": "Goście",
@@ -1130,7 +1159,14 @@
       "noEmail": "Bez e-maila",
       "expires": "Wygasa {date}",
       "anyoneWithLink": "Każdy z linkiem",
-      "wrong": "Nie udało się. Spróbuj ponownie."
+      "wrong": "Nie udało się. Spróbuj ponownie.",
+      "subtitle": "Wszyscy w {office} i kto może wejść.",
+      "linkCopied": "Skopiowano link z zaproszeniem",
+      "nobodyOnFloor": "Nikogo innego nie ma teraz na piętrze.",
+      "seatsLeft": "{count, plural, one {Zostało # miejsce — zaproś kogoś} few {Zostały # miejsca — zaproś kogoś} many {Zostało # miejsc — zaproś kogoś} other {Zostało # miejsca — zaproś kogoś}}",
+      "seatsNote": "Miejsce to członek. Kto odchodzi, zwalnia swoje; bycie offline nie.",
+      "invitationsNote": "Zaproszenie nie zajmuje miejsca. Kto pierwszy przyjmie, ten je dostaje, póki jest wolne.",
+      "guestLink": "Link dla gościa"
     },
     "office": "Biuro",
     "offices": "Twoje biura",
@@ -1156,5 +1192,53 @@
     "freePlan": "Za darmo do 3 osób. Bez karty.",
     "accountNext": "Dalej: załóż konto i biuro jest gotowe.",
     "justLooking": "Tylko się rozglądasz? <link>Wejdź do publicznego biura</link>."
+  },
+  "shell": {
+    "floor": "Piętro",
+    "chat": "Czat",
+    "people": "Ludzie",
+    "you": "Ty",
+    "guest": "Gość",
+    "status": "Status",
+    "theme": "Motyw",
+    "themes": {
+      "system": "Systemowy",
+      "light": "Jasny",
+      "dark": "Ciemny"
+    },
+    "devices": "Mikrofon i kamera",
+    "officeSettings": "Ustawienia biura",
+    "makeAccount": "Załóż konto",
+    "account": "Konto",
+    "allOffices": "Wszystkie biura",
+    "signOut": "Wyloguj się",
+    "switchOffice": "Zmień biuro",
+    "membersOf": "{used} z {seats} członków",
+    "switchTo": "Twoje inne biura",
+    "newOffice": "Nowe biuro",
+    "publicLobby": "Publiczne lobby",
+    "reply": "Odpowiedz",
+    "backToFloor": "Wróć na piętro",
+    "onTheFloor": "Jesteś na piętrze",
+    "back": "Wstecz",
+    "onFloorShort": "Na piętrze",
+    "notOnFloor": "Poza piętrem",
+    "message": "Wiadomość",
+    "leaveLobby": "Wyjdź z lobby",
+    "lobbyChannel": "lobby",
+    "hereNow": "Teraz tutaj"
+  },
+  "dashboard": {
+    "morning": "Dzień dobry, {name}",
+    "afternoon": "Dzień dobry, {name}",
+    "evening": "Dobry wieczór, {name}",
+    "subtitle": "Twoje biura i kto jest teraz na każdym piętrze.",
+    "onFloor": "{count, plural, =0 {Nikogo na piętrze} other {# na piętrze}}",
+    "newOffice": "Nowe biuro",
+    "newOfficeBody": "Trzy osoby za darmo. Piętro, czat i rozmowy.",
+    "lobby": "Publiczne lobby",
+    "lobbyBody": "Wpadnij i poznaj tych, którzy są.",
+    "emptyTitle": "Załóż swoje pierwsze biuro",
+    "emptyBody": "Biuro to piętro, po którym chodzi twój zespół, z czatem i rozmowami. Trzech członków za darmo."
   }
 }

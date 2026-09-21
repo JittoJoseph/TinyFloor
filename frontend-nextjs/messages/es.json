@@ -275,7 +275,8 @@
     },
     "invite": "Invitar",
     "linkCopied": "Enlace copiado",
-    "inviteText": "Únete a mí en {room} en TinyFloor"
+    "inviteText": "Únete a mí en {room} en TinyFloor",
+    "you": "{name} (tú)"
   },
   "call": {
     "incomingVideo": "Videollamada entrante...",
@@ -347,7 +348,32 @@
     "noDirect": "Aún no hay mensajes directos.",
     "attach": "Añadir una imagen",
     "attachmentsPaid": "Las imágenes son parte de una oficina de pago.",
-    "attachmentsSoon": "Las imágenes llegan pronto."
+    "attachmentsSoon": "Las imágenes llegan pronto.",
+    "new": "Nuevo",
+    "latest": "Ir a lo más reciente",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "react": "Añadir una reacción",
+    "copy": "Copiar texto",
+    "emoji": "Emoji",
+    "newLine": "nueva línea",
+    "jumpTo": "Ir a…",
+    "noMatch": "Nada coincide.",
+    "aloneHere": "Por ahora solo tú. Invita a alguien con quien hablar.",
+    "invitePeople": "Invitar personas",
+    "members": "{count, plural, one {# miembro} other {# miembros}}",
+    "dmIntro": "Aquí empieza tu conversación con {name}. Solo vosotros dos podéis verla.",
+    "channelIntroTitle": "Te damos la bienvenida a #{channel}",
+    "generalIntro": "Aquí habla todo {office}. Toda la oficina puede leerlo, y se queda cuando sales de la planta.",
+    "channelIntro": "Este es el comienzo de #{channel}. Toda la oficina puede leerlo.",
+    "sayTo": "Mensaje para {name}",
+    "channelHint": "Minúsculas, sin espacios. Toda la oficina puede unirse.",
+    "create": "Crear canal",
+    "lobbyIntroTitle": "El chat del vestíbulo",
+    "lobbyIntro": "Todos en el vestíbulo pueden leer esto. No se guarda: desaparece cuando te vas.",
+    "lobbyDirect": "Los mensajes directos y los canales que se quedan vienen con una oficina propia.",
+    "attachmentsLobby": "Las imágenes son parte de una oficina de pago.",
+    "slowDown": "Más despacio: demasiados mensajes a la vez."
   },
   "proximity": {
     "videoCall": "Videollamada",
@@ -379,7 +405,8 @@
     "close": "Cerrar ajustes",
     "microphone": "Micrófono",
     "camera": "Cámara",
-    "default": "Predeterminado"
+    "default": "Predeterminado",
+    "description": "Qué micrófono y cámara usa la planta."
   },
   "tutorial": {
     "walk": "Muévete con W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Al menos 8 caracteres",
       "signsOutOthers": "Seguirás con la sesión iniciada aquí. En todos los demás sitios se cerrará.",
       "cancel": "Cancelar",
-      "pageTitle": "Tu cuenta"
+      "pageTitle": "Tu cuenta",
+      "faceNote": "Tu cara se dibuja a partir de tu cuenta, igual en cada pantalla. No se sube ni se guarda nada.",
+      "themeNote": "Sistema sigue a tu dispositivo. La elección se guarda en este navegador."
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",
@@ -1102,7 +1131,7 @@
     "floor": "La planta",
     "chat": "Chat",
     "people": {
-      "title": "Miembros",
+      "title": "Personas",
       "members": "Miembros",
       "invitations": "Invitaciones pendientes",
       "guests": "Invitados",
@@ -1130,7 +1159,14 @@
       "noEmail": "Sin correo",
       "expires": "Caduca el {date}",
       "anyoneWithLink": "Cualquiera con el enlace",
-      "wrong": "No ha funcionado. Inténtalo otra vez."
+      "wrong": "No ha funcionado. Inténtalo otra vez.",
+      "subtitle": "Todos en {office}, y quién puede entrar.",
+      "linkCopied": "Enlace de invitación copiado",
+      "nobodyOnFloor": "Ahora mismo no hay nadie más en la planta.",
+      "seatsLeft": "{count, plural, one {Queda # puesto: invita a alguien} other {Quedan # puestos: invita a alguien}}",
+      "seatsNote": "Un puesto es un miembro. Quien se va libera el suyo; estar desconectado, no.",
+      "invitationsNote": "Una invitación no ocupa puesto. Quien acepte primero se queda uno, mientras haya libre.",
+      "guestLink": "Enlace de invitado"
     },
     "office": "Oficina",
     "offices": "Tus oficinas",
@@ -1156,5 +1192,53 @@
     "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
     "accountNext": "Siguiente: crea una cuenta y tu oficina estará lista.",
     "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor."
+  },
+  "shell": {
+    "floor": "Planta",
+    "chat": "Chat",
+    "people": "Personas",
+    "you": "Tú",
+    "guest": "Invitado",
+    "status": "Estado",
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "devices": "Micrófono y cámara",
+    "officeSettings": "Ajustes de la oficina",
+    "makeAccount": "Crear una cuenta",
+    "account": "Cuenta",
+    "allOffices": "Todas las oficinas",
+    "signOut": "Cerrar sesión",
+    "switchOffice": "Cambiar de oficina",
+    "membersOf": "{used} de {seats} miembros",
+    "switchTo": "Tus otras oficinas",
+    "newOffice": "Nueva oficina",
+    "publicLobby": "Vestíbulo público",
+    "reply": "Responder",
+    "backToFloor": "Volver a la planta",
+    "onTheFloor": "Estás en la planta",
+    "back": "Atrás",
+    "onFloorShort": "En la planta",
+    "notOnFloor": "No está en la planta",
+    "message": "Mensaje",
+    "leaveLobby": "Salir del vestíbulo",
+    "lobbyChannel": "vestibulo",
+    "hereNow": "Aquí ahora"
+  },
+  "dashboard": {
+    "morning": "Buenos días, {name}",
+    "afternoon": "Buenas tardes, {name}",
+    "evening": "Buenas noches, {name}",
+    "subtitle": "Tus oficinas y quién está en cada planta ahora mismo.",
+    "onFloor": "{count, plural, =0 {Nadie en la planta} other {# en la planta}}",
+    "newOffice": "Nueva oficina",
+    "newOfficeBody": "Tres personas gratis. Una planta, chat y llamadas.",
+    "lobby": "El vestíbulo público",
+    "lobbyBody": "Pásate y conoce a quien esté.",
+    "emptyTitle": "Crea tu primera oficina",
+    "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis."
   }
 }

@@ -275,7 +275,8 @@
     },
     "invite": "Invita",
     "linkCopied": "Link copiato",
-    "inviteText": "Raggiungimi in {room} su TinyFloor"
+    "inviteText": "Raggiungimi in {room} su TinyFloor",
+    "you": "{name} (tu)"
   },
   "call": {
     "incomingVideo": "Videochiamata in arrivo...",
@@ -347,7 +348,32 @@
     "noDirect": "Ancora nessun messaggio diretto.",
     "attach": "Aggiungi un'immagine",
     "attachmentsPaid": "Le immagini fanno parte di un ufficio a pagamento.",
-    "attachmentsSoon": "Le immagini arrivano presto."
+    "attachmentsSoon": "Le immagini arrivano presto.",
+    "new": "Nuovi",
+    "latest": "Vai ai più recenti",
+    "today": "Oggi",
+    "yesterday": "Ieri",
+    "react": "Aggiungi una reazione",
+    "copy": "Copia testo",
+    "emoji": "Emoji",
+    "newLine": "nuova riga",
+    "jumpTo": "Vai a…",
+    "noMatch": "Nessun risultato.",
+    "aloneHere": "Per ora ci sei solo tu. Invita qualcuno con cui parlare.",
+    "invitePeople": "Invita persone",
+    "members": "{count, plural, one {# membro} other {# membri}}",
+    "dmIntro": "Qui inizia la tua conversazione con {name}. Solo voi due potete vederla.",
+    "channelIntroTitle": "Benvenuto in #{channel}",
+    "generalIntro": "Qui parla tutto {office}. Tutto l'ufficio può leggerlo, e resta quando lasci il piano.",
+    "channelIntro": "Questo è l'inizio di #{channel}. Tutto l'ufficio può leggerlo.",
+    "sayTo": "Messaggio a {name}",
+    "channelHint": "Minuscole, senza spazi. Tutto l'ufficio può unirsi.",
+    "create": "Crea canale",
+    "lobbyIntroTitle": "La chat della hall",
+    "lobbyIntro": "Tutti nella hall possono leggerlo. Non viene conservato: sparisce quando esci.",
+    "lobbyDirect": "Messaggi diretti e canali che restano arrivano con un ufficio tutto tuo.",
+    "attachmentsLobby": "Le immagini fanno parte di un ufficio a pagamento.",
+    "slowDown": "Piano piano: troppi messaggi insieme."
   },
   "proximity": {
     "videoCall": "Videochiamata",
@@ -379,7 +405,8 @@
     "close": "Chiudi impostazioni",
     "microphone": "Microfono",
     "camera": "Fotocamera",
-    "default": "Predefinito"
+    "default": "Predefinito",
+    "description": "Quale microfono e quale videocamera usa il piano."
   },
   "tutorial": {
     "walk": "Muoviti con W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Almeno 8 caratteri",
       "signsOutOthers": "Resterai connesso qui. Ovunque altrove verrai disconnesso.",
       "cancel": "Annulla",
-      "pageTitle": "Il tuo account"
+      "pageTitle": "Il tuo account",
+      "faceNote": "Il tuo volto nasce dal tuo account, uguale su ogni schermo. Niente viene caricato o salvato.",
+      "themeNote": "Sistema segue il tuo dispositivo. La scelta resta in questo browser."
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",
@@ -1102,7 +1131,7 @@
     "floor": "Il piano",
     "chat": "Chat",
     "people": {
-      "title": "Membri",
+      "title": "Persone",
       "members": "Membri",
       "invitations": "Inviti in sospeso",
       "guests": "Ospiti",
@@ -1130,7 +1159,14 @@
       "noEmail": "Senza email",
       "expires": "Scade il {date}",
       "anyoneWithLink": "Chiunque abbia il link",
-      "wrong": "Non ha funzionato. Riprova."
+      "wrong": "Non ha funzionato. Riprova.",
+      "subtitle": "Tutti in {office}, e chi può entrare.",
+      "linkCopied": "Link di invito copiato",
+      "nobodyOnFloor": "Al momento non c'è nessun altro sul piano.",
+      "seatsLeft": "{count, plural, one {# posto libero: invita qualcuno} other {# posti liberi: invita qualcuno}}",
+      "seatsNote": "Un posto è un membro. Chi se ne va libera il suo; essere offline no.",
+      "invitationsNote": "Un invito non occupa posti. Il primo che accetta ne prende uno, finché ce n'è uno libero.",
+      "guestLink": "Link ospite"
     },
     "office": "Ufficio",
     "offices": "I tuoi uffici",
@@ -1156,5 +1192,53 @@
     "freePlan": "Gratis fino a 3 persone. Nessuna carta.",
     "accountNext": "Poi: crea un account e l’ufficio è pronto.",
     "justLooking": "Solo un’occhiata? <link>Entra nell’ufficio pubblico</link> invece."
+  },
+  "shell": {
+    "floor": "Piano",
+    "chat": "Chat",
+    "people": "Persone",
+    "you": "Tu",
+    "guest": "Ospite",
+    "status": "Stato",
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Chiaro",
+      "dark": "Scuro"
+    },
+    "devices": "Microfono e videocamera",
+    "officeSettings": "Impostazioni dell'ufficio",
+    "makeAccount": "Crea un account",
+    "account": "Account",
+    "allOffices": "Tutti gli uffici",
+    "signOut": "Esci",
+    "switchOffice": "Cambia ufficio",
+    "membersOf": "{used} di {seats} membri",
+    "switchTo": "I tuoi altri uffici",
+    "newOffice": "Nuovo ufficio",
+    "publicLobby": "Hall pubblica",
+    "reply": "Rispondi",
+    "backToFloor": "Torna sul piano",
+    "onTheFloor": "Sei sul piano",
+    "back": "Indietro",
+    "onFloorShort": "Sul piano",
+    "notOnFloor": "Non è sul piano",
+    "message": "Messaggio",
+    "leaveLobby": "Esci dalla hall",
+    "lobbyChannel": "hall",
+    "hereNow": "Qui ora"
+  },
+  "dashboard": {
+    "morning": "Buongiorno, {name}",
+    "afternoon": "Buon pomeriggio, {name}",
+    "evening": "Buonasera, {name}",
+    "subtitle": "I tuoi uffici e chi c'è ora su ogni piano.",
+    "onFloor": "{count, plural, =0 {Nessuno sul piano} other {# sul piano}}",
+    "newOffice": "Nuovo ufficio",
+    "newOfficeBody": "Tre persone gratis. Un piano, chat e chiamate.",
+    "lobby": "La hall pubblica",
+    "lobbyBody": "Passa e incontra chi c'è.",
+    "emptyTitle": "Crea il tuo primo ufficio",
+    "emptyBody": "Un ufficio è un piano in cui il tuo team si muove, con chat e chiamate incluse. Tre membri sono gratis."
   }
 }

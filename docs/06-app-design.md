@@ -48,21 +48,24 @@ of it, so they carry none of the weight.
 
 ## Tokens
 
-Defined once in `globals.css` as CSS variables, exposed to Tailwind with
-`@theme inline`, swapped by a `.dark` class on `<html>`.
+Defined once in `app/ui.css` as CSS variables, exposed to Tailwind with
+`@theme inline`, swapped by a `.dark` class on `<html>`. The names are the
+shadcn ones beUI is written against, so its components drop in unchanged, plus
+a few of our own.
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `canvas` | `#fafaf9` | `#0e0e10` | the page |
-| `rail` | `#f1f1ef` | `#09090b` | the rail and the app frame |
-| `surface` | `#ffffff` | `#161618` | columns, cards, panels |
-| `raised` | `#f4f4f3` | `#1e1e21` | inputs, hovered rows, chips |
-| `line` | `black / 8%` | `white / 8%` | every border |
-| `ink` | `#18181b` | `#ededef` | text, primary buttons |
-| `muted` | `#63636b` | `#a1a1aa` | secondary text |
-| `faint` | `#9d9da5` | `#6b6b73` | timestamps, placeholders |
-| `accent` | `#ff5a1f` | `#ff6a33` | unread, focus, live |
-| `ok` / `warn` / `bad` | green / amber / red | brighter in dark | presence and states |
+| `background` | `#fafaf8` | `#0f0f10` | the page, columns |
+| `rail` | `#f0f0ec` | `#09090a` | the rail and the frame around the view |
+| `card` | `#ffffff` | `#161617` | the view, cards, panels |
+| `popover` | `#ffffff` | `#1b1b1d` | menus, profile cards |
+| `muted` | `#f2f2ef` | `#202022` | hovered rows, chips, quiet fills |
+| `border` / `border-strong` | ink at 9% / 18% | white at 8% / 16% | every hairline |
+| `foreground` | `#1a1a18` | `#ededeb` | text, primary buttons |
+| `muted-foreground` | `#6b6b65` | `#a0a09a` | secondary text |
+| `faint` | `#a3a39c` | `#6a6a65` | timestamps, placeholders |
+| `brand` | `#ff5a1f` | `#ff6b35` | unread, focus rings, the logo's live tile |
+| `ok` / `warn` / `destructive` | green / amber / red | brighter in dark | presence and states |
 
 Type: Geist, 13px for dense UI, 14px for reading (messages), 15/20/28px for
 headings. Radii: `full` for buttons, chips and people pills; `2xl` for cards and
@@ -105,14 +108,14 @@ desktop                                   phone
 ┌────┬────────────┬─────────────────────┐  ┌─────────────────────┐
 │ ◉  │ context    │                     │  │                     │
 │ ▦  │ column     │      the view       │  │   the view, or the  │
-│ 💬 │ (260px)    │                     │  │   column, full size │
+│ 💬 │ (280px)    │                     │  │   column, full size │
 │ 👥 │            │                     │  │                     │
 │    ├────────────┤                     │  ├─────────────────────┤
 │ ◐  │ presence   │                     │  │ ▦   💬   👥   ◐     │
 └────┴────────────┴─────────────────────┘  └─────────────────────┘
 ```
 
-- **Rail (64px):** office mark (switcher menu), Floor, Chat, People; you at the
+- **Rail (76px):** office mark (switcher menu), Floor, Chat, People; you at the
   bottom (status, theme, office settings, account, all offices, sign out).
   Tooltips on every icon; a pill glides to the active one.
 - **The same shell runs the public lobby.** Floor, Chat (the lobby's live
@@ -192,3 +195,35 @@ Everything uses transform and opacity only, and honours reduced motion.
 5. Dashboard, the door, sign-in, invitations, create.
 6. Every view looked at in the browser at phone, tablet and desktop, light and
    dark, and reworked until it holds together.
+
+## What is built
+
+All of the above is in, for offices, the lobby and guest links. Where the code
+differs from the plan, or adds to it:
+
+- **beUI in use:** button, tooltip, tabs, select, morph popover (menus, profile
+  cards), centre-morph modal (dialogs), dock (the floor's controls), toast
+  stack (chat nudges over the floor), command palette (Jump to…, ⌘K) and
+  loader. They live in `components/motion/` as the registry ships them; the
+  React Compiler lint rules are scoped off for that folder only. Components we
+  tried and did not need were removed rather than kept "just in case".
+- **The popover grows sideways.** beUI's morph popover opened only up or down;
+  it now also opens to the right, so menus on the rail clear it, and it keeps
+  itself on screen on a phone.
+- **Faces use OKLCH** over nine curated base hues. Neighbouring hues are kept
+  out of the olive band, where a darker shade turns muddy. The seed is the
+  user id; offices use their id for a rounded-square mark.
+- **An office's floor has no chat panel of its own.** Chat is the rail's; a
+  message you have not seen shows as a nudge over the floor with a Reply. The
+  lobby's live floor chat became its Chat view, kept in a small store so it
+  survives switching views.
+- **"Message" beside someone on the floor** opens your direct messages with
+  them in an office, and the lobby conversation in the lobby.
+- **Guests on a guest link** get the shell with the floor alone: an office's
+  chat and people are its members'.
+- **Your status and theme** moved into your menu at the bottom of the rail; the
+  dock keeps microphone, camera and — in a call — screen, speaker and hang up.
+- **Fixes found on the way:** typing in chat no longer walks your character
+  (movement ignores keys while a text field has focus); text fields are 16px on
+  phones so mobile browsers do not zoom on focus; the canvas is transparent so
+  the space around the map follows the theme.

@@ -275,7 +275,8 @@
     },
     "invite": "Inviter",
     "linkCopied": "Lenke kopiert",
-    "inviteText": "Bli med meg i {room} på TinyFloor"
+    "inviteText": "Bli med meg i {room} på TinyFloor",
+    "you": "{name} (deg)"
   },
   "call": {
     "incomingVideo": "Innkommende videosamtale...",
@@ -347,7 +348,32 @@
     "noDirect": "Ingen direktemeldinger ennå.",
     "attach": "Legg til et bilde",
     "attachmentsPaid": "Bilder hører til et betalt kontor.",
-    "attachmentsSoon": "Bilder kommer snart."
+    "attachmentsSoon": "Bilder kommer snart.",
+    "new": "Nytt",
+    "latest": "Til det nyeste",
+    "today": "I dag",
+    "yesterday": "I går",
+    "react": "Legg til en reaksjon",
+    "copy": "Kopier tekst",
+    "emoji": "Emoji",
+    "newLine": "ny linje",
+    "jumpTo": "Hopp til…",
+    "noMatch": "Ingenting passer.",
+    "aloneHere": "Bare deg så langt. Inviter noen å snakke med.",
+    "invitePeople": "Inviter folk",
+    "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+    "dmIntro": "Her starter samtalen din med {name}. Bare dere to kan se den.",
+    "channelIntroTitle": "Velkommen til #{channel}",
+    "generalIntro": "Her snakker hele {office}. Alle på kontoret kan lese, og det blir liggende når du forlater gulvet.",
+    "channelIntro": "Dette er begynnelsen på #{channel}. Alle på kontoret kan lese.",
+    "sayTo": "Melding til {name}",
+    "channelHint": "Små bokstaver, ingen mellomrom. Alle på kontoret kan bli med.",
+    "create": "Opprett kanal",
+    "lobbyIntroTitle": "Lobbyens chat",
+    "lobbyIntro": "Alle i lobbyen kan lese dette. Det lagres ikke: det forsvinner når du går.",
+    "lobbyDirect": "Direktemeldinger og kanaler som blir, følger med et eget kontor.",
+    "attachmentsLobby": "Bilder hører til et betalt kontor.",
+    "slowDown": "Litt roligere – for mange meldinger på en gang."
   },
   "proximity": {
     "videoCall": "Videosamtale",
@@ -379,7 +405,8 @@
     "close": "Lukk innstillinger",
     "microphone": "Mikrofon",
     "camera": "Kamera",
-    "default": "Standard"
+    "default": "Standard",
+    "description": "Hvilken mikrofon og kamera gulvet bruker."
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",
@@ -1042,7 +1069,9 @@
       "passwordRule": "Minst 8 tegn",
       "signsOutOthers": "Du forblir innlogget her. Alle andre steder blir du logget ut.",
       "cancel": "Avbryt",
-      "pageTitle": "Kontoen din"
+      "pageTitle": "Kontoen din",
+      "faceNote": "Ansiktet ditt tegnes ut fra kontoen din, likt på hver skjerm. Ingenting lastes opp eller lagres.",
+      "themeNote": "System følger enheten din. Valget lagres i denne nettleseren."
     },
     "invite": {
       "invalidTitle": "Invitasjonen virker ikke",
@@ -1102,7 +1131,7 @@
     "floor": "Etasjen",
     "chat": "Chat",
     "people": {
-      "title": "Medlemmer",
+      "title": "Folk",
       "members": "Medlemmer",
       "invitations": "Ventende invitasjoner",
       "guests": "Gjester",
@@ -1130,7 +1159,14 @@
       "noEmail": "Ingen e-post",
       "expires": "Utløper {date}",
       "anyoneWithLink": "Alle med lenken",
-      "wrong": "Det gikk ikke. Prøv igjen."
+      "wrong": "Det gikk ikke. Prøv igjen.",
+      "subtitle": "Alle i {office}, og hvem som kan komme inn.",
+      "linkCopied": "Invitasjonslenke kopiert",
+      "nobodyOnFloor": "Ingen andre er på gulvet akkurat nå.",
+      "seatsLeft": "{count, plural, one {# plass igjen – inviter noen} other {# plasser igjen – inviter noen}}",
+      "seatsNote": "En plass er et medlem. Den som går, frigjør sin; å være frakoblet gjør ikke det.",
+      "invitationsNote": "En invitasjon tar ingen plass. Den som sier ja først, får en, så lenge det er en ledig.",
+      "guestLink": "Gjestelenke"
     },
     "office": "Kontor",
     "offices": "Kontorene dine",
@@ -1156,5 +1192,53 @@
     "freePlan": "Gratis for opptil 3 personer. Uten kort.",
     "accountNext": "Neste: lag en konto, så er kontoret klart.",
     "justLooking": "Bare ser? <link>Gå inn på det offentlige kontoret</link> i stedet."
+  },
+  "shell": {
+    "floor": "Gulvet",
+    "chat": "Chat",
+    "people": "Folk",
+    "you": "Deg",
+    "guest": "Gjest",
+    "status": "Status",
+    "theme": "Tema",
+    "themes": {
+      "system": "System",
+      "light": "Lyst",
+      "dark": "Mørkt"
+    },
+    "devices": "Mikrofon og kamera",
+    "officeSettings": "Kontorinnstillinger",
+    "makeAccount": "Opprett en konto",
+    "account": "Konto",
+    "allOffices": "Alle kontorer",
+    "signOut": "Logg ut",
+    "switchOffice": "Bytt kontor",
+    "membersOf": "{used} av {seats} medlemmer",
+    "switchTo": "Dine andre kontorer",
+    "newOffice": "Nytt kontor",
+    "publicLobby": "Offentlig lobby",
+    "reply": "Svar",
+    "backToFloor": "Tilbake til gulvet",
+    "onTheFloor": "Du er på gulvet",
+    "back": "Tilbake",
+    "onFloorShort": "På gulvet",
+    "notOnFloor": "Ikke på gulvet",
+    "message": "Melding",
+    "leaveLobby": "Forlat lobbyen",
+    "lobbyChannel": "lobby",
+    "hereNow": "Her nå"
+  },
+  "dashboard": {
+    "morning": "God morgen, {name}",
+    "afternoon": "God ettermiddag, {name}",
+    "evening": "God kveld, {name}",
+    "subtitle": "Kontorene dine, og hvem som er på hvert gulv nå.",
+    "onFloor": "{count, plural, =0 {Ingen på gulvet} other {# på gulvet}}",
+    "newOffice": "Nytt kontor",
+    "newOfficeBody": "Tre personer gratis. Et gulv, chat og samtaler.",
+    "lobby": "Den offentlige lobbyen",
+    "lobbyBody": "Stikk innom og møt dem som er der.",
+    "emptyTitle": "Start ditt første kontor",
+    "emptyBody": "Et kontor er et gulv teamet ditt går rundt på, med chat og samtaler innebygd. Tre medlemmer er gratis."
   }
 }

@@ -7,6 +7,7 @@ import { Logo } from "@/components/app/AppShell";
 import { cn } from "@/lib/utils";
 import { HomeNavActions } from "./HomeNavActions";
 import { MobileMenu } from "./MobileMenu";
+import { ScrollHeader } from "./ScrollHeader";
 import { FloorPreview } from "./previews/FloorPreview";
 
 export const COLUMN = "mx-auto w-full max-w-[1200px] px-5 sm:px-8";
@@ -37,8 +38,17 @@ export function HomeNav() {
   const compare = LANDINGS.filter((page) => page.group === "compare");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/75 backdrop-blur-xl">
-      <nav aria-label={t("nav.main")} className={cn(COLUMN, "grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4")}>
+    <ScrollHeader>
+      <nav
+        aria-label={t("nav.main")}
+        className={cn(
+          "mx-auto grid h-16 max-w-[1200px] grid-cols-[1fr_auto_1fr] items-center gap-4 border border-transparent bg-background px-5 sm:px-8",
+          "transition-[max-width,height,border-radius,background-color,border-color,box-shadow,padding] duration-300 ease-out",
+          "group-data-[scrolled=true]/header:h-14 group-data-[scrolled=true]/header:max-w-[1100px] group-data-[scrolled=true]/header:rounded-full",
+          "group-data-[scrolled=true]/header:border-border/80 group-data-[scrolled=true]/header:bg-background/85 group-data-[scrolled=true]/header:backdrop-blur-xl",
+          "group-data-[scrolled=true]/header:px-3 group-data-[scrolled=true]/header:shadow-[0_8px_24px_-10px_rgb(0_0_0/0.18)] sm:group-data-[scrolled=true]/header:px-4 sm:group-data-[scrolled=true]/header:ps-5",
+        )}
+      >
         <Link href="/" className="flex w-fit items-center gap-2.5 text-[17px] font-bold tracking-tight">
           <Logo size={28} />
           TinyFloor
@@ -145,7 +155,7 @@ export function HomeNav() {
           </MobileMenu>
         </div>
       </nav>
-    </header>
+    </ScrollHeader>
   );
 }
 

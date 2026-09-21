@@ -2,10 +2,10 @@ import { LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
 import { COUNTRY_HEADER, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER } from "./headers";
 import { Room } from "./room";
 import { Chat } from "./chat";
-import { Presence } from "./presence";
+import { placeInLobby } from "./lobby";
 import { RealtimeAdmin } from "./admin";
 
-export { Room, Chat, Presence, RealtimeAdmin };
+export { Room, Chat, RealtimeAdmin };
 
 /** `/lobby` for the public lobby, `/rooms/:room` for an office floor. */
 const ROOM_PATH = /^\/(?:rooms\/([a-z0-9-]{1,64})|lobby)$/;
@@ -45,8 +45,8 @@ export default {
       return env.CHAT.getByName(chat[1]).fetch(new Request(request.url, { headers }));
     }
 
-    // Lobby tickets name the lobby; the router picks which copy to join.
-    const target = room === LOBBY_ROOM ? await env.PRESENCE.getByName("global").place() : room;
+    // Lobby tickets name the lobby; the first copy with space takes them.
+    const target = room === LOBBY_ROOM ? await placeInLobby(env) : room;
 
     // The room trusts these headers, so anything a client sent under the same
     // names is overwritten here, where the ticket has just been checked.

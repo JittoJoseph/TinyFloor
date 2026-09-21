@@ -68,28 +68,8 @@ control bar.
 
 ## What it is built from
 
-No UI kit with a design language of its own — they all arrive with 60–200 KB of
-someone else's opinions. Instead:
-
-| Layer | Choice | Why |
-|---|---|---|
-| Styling | Tailwind, as now | already here, no runtime |
-| Primitives | our own, in `components/ui/` | grown from `components/room/ui.tsx`, which already carries the surface, the button sizes and the type scale |
-| Behaviour | Radix primitives, one package at a time (`@radix-ui/react-dialog`, `-dropdown-menu`, `-tooltip`, `-popover`) | headless, unstyled, ~5–8 KB gzipped each, proper focus traps and keyboard handling — the part that is genuinely hard |
-| Icons | lucide-react, as now | tree-shaken per icon |
-
-That is the Linear approach: a small set of primitives, one type scale, one
-spacing scale, and no component library to fight. The room pass has already
-proved it — one `RoomIconButton` replaced five hand-rolled button styles.
-
-House rules, carried from the room:
-
-- 13px semibold for anything with words in it, 12px at 55% opacity for the
-  quiet line, and **no uppercase letter-spaced labels anywhere**.
-- One button height (40px), one small size (32px) for dense rows.
-- One surface: `#fbfbf9`, a hairline border at 7% black, one shadow.
-- Orange is for attention and destruction only; green for "on"; everything else
-  is ink on paper.
+The design system — tokens, themes, beUI components, generated faces, and how
+each view is composed — is [06-app-design.md](06-app-design.md).
 
 ## What is built
 

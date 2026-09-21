@@ -28,6 +28,8 @@ What has already shipped is described by the code and by git history, not here.
 | [03-offices-members-and-seats.md](03-offices-members-and-seats.md) | One office one floor, two roles, what a seat is |
 | [04-costs.md](04-costs.md) | Measured usage, the prices we are charged, where money can go |
 | [05-pricing.md](05-pricing.md) | The tiers, the free office, fair use on group video |
+| [06-app-design.md](06-app-design.md) | The design system: tokens, themes, generated faces, the shell, every view |
+| [07-services.md](07-services.md) | Each Worker, Durable Object and service, and whether it earns its place |
 | [research/gather.md](research/gather.md) | Gather, looked at properly: what to take and what to leave |
 
 ## Order

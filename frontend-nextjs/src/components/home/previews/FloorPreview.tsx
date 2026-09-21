@@ -5,7 +5,7 @@ import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
-const [maya, leo, priya, sam, aiko] = CAST;
+const [emma, jack, olivia, sam, lily] = CAST;
 
 /** Characters grow with the frame, like the app's camera does, but never past legible. */
 const SIZE = "max(3.1cqw, 4.6cqh, 20px)";
@@ -19,10 +19,10 @@ const lane = (share: number) => `calc(${COVER_WIDTH} * ${share})`;
  */
 const strolling = (width: string): Occupant[] => [
   { character: sam.character, name: sam.name, status: "available", left: "67.5%", top: "30%", width, stroll: { distance: lane(0.3), duration: 9400, pattern: "a" } },
-  { character: maya.character, name: maya.name, status: "available", left: "25.8%", top: "43%", width, stroll: { distance: lane(0.24), duration: 9100, delay: -2600, pattern: "c" } },
-  { character: priya.character, name: priya.name, status: "busy", left: "72.5%", top: "59%", width, stroll: { distance: lane(0.25), duration: 10300, delay: -4100, pattern: "b" } },
-  { character: leo.character, name: leo.name, status: "available", left: "19%", top: "75%", width, stroll: { distance: lane(0.17), duration: 7700, delay: -1500, pattern: "a" } },
-  { character: aiko.character, name: aiko.name, status: "away", left: "57.5%", top: "88%", width, stroll: { distance: lane(0.22), duration: 8600, delay: -5200, pattern: "c" } },
+  { character: emma.character, name: emma.name, status: "available", left: "25.8%", top: "43%", width, stroll: { distance: lane(0.24), duration: 9100, delay: -2600, pattern: "c" } },
+  { character: olivia.character, name: olivia.name, status: "busy", left: "72.5%", top: "59%", width, stroll: { distance: lane(0.25), duration: 10300, delay: -4100, pattern: "b" } },
+  { character: jack.character, name: jack.name, status: "available", left: "19%", top: "75%", width, stroll: { distance: lane(0.17), duration: 7700, delay: -1500, pattern: "a" } },
+  { character: lily.character, name: lily.name, status: "away", left: "57.5%", top: "88%", width, stroll: { distance: lane(0.22), duration: 8600, delay: -5200, pattern: "c" } },
 ];
 const STROLLING = strolling(SIZE);
 /** For a small window: smaller people, so the floor still reads as a floor. */
@@ -32,11 +32,11 @@ const STROLLING_SMALL = strolling("max(2.4cqw, 3.6cqh, 14px)");
 const NEAR_ZOOM = 1.45;
 const NEAR_SIZE = "max(2.6cqw, 3.9cqh, 18px)";
 
-/** You, having just walked up to Leo in the aisle, and Priya passing behind. */
+/** You, having just walked up to Jack in the aisle, and Olivia passing behind. */
 const MEETING_UP: Occupant[] = [
-  { character: maya.character, left: "46%", top: "58.5%", direction: "right", width: NEAR_SIZE },
-  { character: leo.character, name: leo.name, status: "available", left: "52%", top: "58.5%", direction: "left", width: NEAR_SIZE },
-  { character: priya.character, name: priya.name, status: "busy", left: "67.5%", top: "30%", width: NEAR_SIZE, stroll: { distance: lane(0.16), duration: 9100, delay: -2600, pattern: "c" } },
+  { character: emma.character, left: "46%", top: "58.5%", direction: "right", width: NEAR_SIZE },
+  { character: jack.character, name: jack.name, status: "available", left: "52%", top: "58.5%", direction: "left", width: NEAR_SIZE },
+  { character: olivia.character, name: olivia.name, status: "busy", left: "67.5%", top: "30%", width: NEAR_SIZE, stroll: { distance: lane(0.16), duration: 9100, delay: -2600, pattern: "c" } },
 ];
 
 /**
@@ -62,7 +62,7 @@ export function FloorPreview({ near = false, bare = false, className }: { near?:
                 className="absolute"
                 style={{ left: "49%", top: "59.5%", transform: `translateX(-50%) scale(${1 / NEAR_ZOOM})`, transformOrigin: "50% 0" }}
               >
-                <NearbyBar name={leo.name} seed={leo.id} labels={{ message: t("message") }} />
+                <NearbyBar name={jack.name} seed={jack.id} labels={{ message: t("message") }} />
               </div>
             </div>
           </OfficeScene>
@@ -81,7 +81,7 @@ export function FloorPreview({ near = false, bare = false, className }: { near?:
             <span className="size-1.5 rounded-full bg-ok" />
             <span className="text-[12px] font-medium text-foreground">{t("office")}</span>
             <span className="flex items-center gap-1 rounded-full bg-muted py-0.5 pe-1.5 ps-0.5 [--face-ring:var(--ui-muted)]">
-              <FaceStack seeds={[sam, maya, priya].map((one) => one.id)} size={16} max={3} />
+              <FaceStack seeds={[sam, emma, olivia].map((one) => one.id)} size={16} max={3} />
               <span className="text-[10.5px] font-medium tabular-nums text-muted-foreground">{STROLLING.length}</span>
             </span>
           </span>

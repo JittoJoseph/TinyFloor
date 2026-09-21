@@ -1,15 +1,27 @@
+import { LANDINGS } from "./landings";
+
 export const THEME_KEY = "tf-theme";
 
 /**
- * The first part of every app route, after the locale. The home page ("/")
- * shares the app's theme too; the other landing pages are everything else.
+ * The first part of every route that wears the app's theme, after the locale:
+ * the app itself, and the marketing pages. The home page ("/") does too.
  */
-export const APP_SECTIONS = ["dashboard", "office", "lobby", "auth", "create", "account", "invite", "join"];
+export const APP_SECTIONS = [
+  "dashboard",
+  "office",
+  "lobby",
+  "auth",
+  "create",
+  "account",
+  "invite",
+  "join",
+  ...LANDINGS.map((page) => page.slug),
+];
 
 /**
  * Runs before first paint (the root layout loads it with next/script's
  * beforeInteractive), so an app page never flashes the wrong theme. It only
- * touches app routes and the home page; on another landing page it does nothing, and AppTheme takes
+ * touches the app's and the marketing pages' routes; anywhere else it does nothing, and AppTheme takes
  * over on client-side navigation. Kept as a string because it runs before any
  * bundle has loaded.
  */

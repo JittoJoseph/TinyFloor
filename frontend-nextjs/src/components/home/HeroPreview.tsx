@@ -26,6 +26,11 @@ export function HeroPreview({
   const [picked, setPicked] = useState(false);
   const box = useRef<HTMLDivElement>(null);
 
+  /** Fills the active tab's line over the dwell, with the Web Animations API rather than a stylesheet. */
+  const fill = (line: HTMLSpanElement | null) => {
+    line?.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: DWELL_MS, fill: "forwards" });
+  };
+
   useEffect(() => {
     if (picked || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let visible = true;
@@ -70,8 +75,8 @@ export function HeroPreview({
               <span
                 aria-hidden
                 key={one}
-                className="home-dwell absolute inset-x-5 bottom-1 h-[2px] origin-left rounded-full bg-foreground/15 motion-reduce:hidden rtl:origin-right"
-                style={{ animationDuration: `${DWELL_MS}ms` }}
+                ref={fill}
+                className="absolute inset-x-5 bottom-1 h-[2px] origin-left scale-x-0 rounded-full bg-foreground/15 motion-reduce:hidden rtl:origin-right"
               />
             )}
           </button>
@@ -85,7 +90,7 @@ export function HeroPreview({
             id={`hero-panel-${one}`}
             aria-labelledby={`hero-tab-${one}`}
             hidden={view !== one}
-            className="home-fade"
+            className="transition-[opacity,translate] duration-300 ease-out starting:translate-y-1 starting:opacity-0 motion-reduce:transition-none"
           >
             {panels[one]}
           </div>

@@ -7,11 +7,11 @@ export type PreviewView = "floor" | "chat" | "people" | "meeting";
 
 /** Stand-in people for the previews. Faces come from these ids, like the app's do. */
 export const CAST = [
-  { id: "maya-12", name: "Maya", character: "Amelia" },
-  { id: "leo-21", name: "Leo", character: "Adam" },
-  { id: "priya-25", name: "Priya", character: "Lucy" },
+  { id: "maya-12", name: "Emma", character: "Amelia" },
+  { id: "leo-21", name: "Jack", character: "Adam" },
+  { id: "priya-25", name: "Olivia", character: "Lucy" },
   { id: "sam-20", name: "Sam", character: "Bob" },
-  { id: "aiko-6", name: "Aiko", character: "Molly" },
+  { id: "aiko-6", name: "Lily", character: "Molly" },
   { id: "noah-20", name: "Noah", character: "Dan" },
 ] as const;
 
@@ -43,7 +43,7 @@ export function Frame({
   return (
     <div
       className={cn(
-        "home-app flex overflow-hidden rounded-[18px] border border-border bg-rail text-start [--face-ring:var(--ui-rail)]",
+        "font-(family-name:--font-app) [font-feature-settings:'cv11','ss01'] flex overflow-hidden rounded-[18px] border border-border bg-rail text-start [--face-ring:var(--ui-rail)]",
         "shadow-[0_1px_2px_rgb(0_0_0/0.05),0_24px_64px_-28px_rgb(0_0_0/0.28)]",
         className,
       )}

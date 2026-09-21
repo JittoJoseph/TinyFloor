@@ -5,7 +5,6 @@ import { appNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import type { Locale } from "@/lib/i18n/routing";
 import { HomePage } from "@/components/home/HomePage";
-import { SiteTheme } from "@/components/home/SiteTheme";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -40,7 +39,6 @@ export default async function LandingPage({ params }: Props) {
           nodes: [app, faqNode(locale, "/", faqs)],
         })}
       />
-      <SiteTheme />
       <HomePage faqs={faqs} />
     </>
   );

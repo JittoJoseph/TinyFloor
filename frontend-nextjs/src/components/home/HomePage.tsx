@@ -1,40 +1,31 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
-  ArrowRight,
   AudioLines,
   Check,
   CircleDot,
+  Clock3,
+  Globe2,
   Languages,
+  LockKeyhole,
+  MonitorSmartphone,
   MonitorUp,
   Music2,
   PenLine,
   Smartphone,
   SunMoon,
-  Clock3,
-  Globe2,
-  LockKeyhole,
-  MonitorSmartphone,
 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
-import { HeroPreview } from "./HeroPreview";
-import { COLUMN, HomeNav } from "./HomeNav";
-import { SiteFooter } from "./SiteFooter";
-import { CAST, Frame, type PreviewView } from "./previews/Frame";
+import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, RuledSheet, STONE } from "./Blocks";
+import { CAST, Frame } from "./previews/Frame";
 import { FloorPreview } from "./previews/FloorPreview";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
 import { MeetingPreview } from "./previews/MeetingPreview";
 import { GuestPreview } from "./previews/GuestPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
-
-
-/** The two pills every ask on the page uses: ink for the main one, a quiet stone for the other. */
-const PILL = "inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full px-6 text-[16px] transition-[background-color,transform] active:scale-[0.98]";
-const INK = cn(PILL, "bg-foreground text-background hover:bg-foreground/85");
-const STONE = cn(PILL, "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.11]");
 
 /** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
 const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
@@ -47,57 +38,27 @@ const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
  * footer's theme switch.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  return (
-    <div className="home min-h-dvh overflow-x-clip bg-background text-foreground">
-      <HomeNav />
-      {/* Room for the fixed header. */}
-      <div aria-hidden className="h-16" />
-      <main>
-        <Hero />
-        <Days />
-        <More />
-        <Trust />
-        <Plans />
-        <Faq faqs={faqs} />
-        <Final />
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-/** The two ways in. */
-function Actions({ className }: { className?: string }) {
   const t = useTranslations("home");
   return (
-    <div className={cn("flex flex-wrap items-center justify-center gap-2.5", className)}>
-      <Link href="/create" className={INK}>
-        {t("nav.start")}
-      </Link>
-      <Link href="/lobby" className={STONE}>
-        {t("hero.secondary")}
-      </Link>
-    </div>
+    <MarketingShell>
+      <Hero />
+      <Days />
+      <More />
+      <Trust />
+      <Plans />
+      <Faq title={<>{t("faq.title")} <span className="text-muted-foreground/80">{t("faq.muted")}</span></>} items={faqs} />
+      <Final />
+    </MarketingShell>
   );
 }
-
-const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
 
 function Hero() {
   const t = useTranslations("home");
   const points = t.raw("hero.points") as string[];
   return (
-    <section className={cn(COLUMN, "relative pt-16 sm:pt-24")}>
-      <div className="relative mx-auto flex max-w-[48rem] flex-col items-center text-center">
-        <Link
-          href="/lobby"
-          className="group inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card/80 pe-3.5 ps-1 text-[13.5px] text-foreground/80 shadow-[0_1px_2px_rgb(0_0_0/0.04)] backdrop-blur transition-colors hover:text-foreground [--face-ring:var(--ui-card)]"
-        >
-          <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={26} max={3} />
-          <span className="ms-0.5 size-1.5 rounded-full bg-ok" />
-          {t("nav.lobbyTitle")}
-          <ArrowRight className="size-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
-        </Link>
+    <section className={cn(COLUMN, "pt-16 sm:pt-24")}>
+      <div className="mx-auto flex max-w-[48rem] flex-col items-center text-center">
+        <LobbyPill />
         <h1
           className={cn(
             "mt-8 text-balance hyphens-auto text-[40px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[62px] lg:text-[72px]",
@@ -106,69 +67,12 @@ function Hero() {
         >
           {t("hero.title")}
         </h1>
-        <p className="mt-6 max-w-[36rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
+        <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
         <Actions className="mt-10" />
         <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
       </div>
-
-      <div className="relative mt-16 sm:mt-20">
-        <HeroPreview
-          label={t("hero.previewLabel")}
-          labels={{ floor: t("hero.tabs.floor"), chat: t("hero.tabs.chat"), people: t("hero.tabs.people"), meeting: t("hero.tabs.meeting") }}
-          panels={{
-            floor: <HeroFrame view="floor"><FloorPreview /></HeroFrame>,
-            chat: <HeroFrame view="chat"><ChatPreview /></HeroFrame>,
-            people: <HeroFrame view="people"><PeoplePreview /></HeroFrame>,
-            meeting: <HeroFrame view="meeting"><MeetingPreview /></HeroFrame>,
-          }}
-        />
-      </div>
+      <ProductPreview className="mt-16 sm:mt-20" />
     </section>
-  );
-}
-
-function HeroFrame({ view, children }: { view: PreviewView; children: ReactNode }) {
-  return (
-    <Frame active={view} className="aspect-[4/5] sm:aspect-[16/9]">
-      {children}
-    </Frame>
-  );
-}
-
-/** A headline in two tones: the claim in ink, its second half quieter. */
-function Heading({
-  title,
-  muted,
-  className,
-  as: Tag = "h2",
-  size = "lg",
-  block = false,
-}: {
-  title: string;
-  muted?: string;
-  className?: string;
-  as?: "h2" | "h3";
-  size?: "lg" | "md";
-  /** Puts the quieter half on its own line. */
-  block?: boolean;
-}) {
-  return (
-    <Tag
-      className={cn(
-        "text-balance hyphens-auto font-semibold tracking-[-0.025em]",
-        size === "lg" ? "text-[32px] leading-[1.1] sm:text-[46px]" : "text-[27px] leading-[1.15] sm:text-[34px]",
-        CJK_HEADLINE,
-        className,
-      )}
-    >
-      {title}
-      {muted && (
-        <>
-          {" "}
-          <span className={cn("text-muted-foreground/80", block && "block")}>{muted}</span>
-        </>
-      )}
-    </Tag>
   );
 }
 
@@ -221,51 +125,6 @@ function Days() {
   );
 }
 
-/**
- * One card: its words, then the app doing it. The card is a subgrid of its
- * row, so headings and text line up with the cards beside it, and the preview
- * rests on the card's bottom edge, a little of it running off.
- */
-function DayCard({
-  id,
-  title,
-  muted,
-  body,
-  small,
-  children,
-}: {
-  id: string;
-  title: string;
-  muted: string;
-  body: string;
-  small?: boolean;
-  children: ReactNode;
-}) {
-  return (
-    <article
-      id={id}
-      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid"
-    >
-      <h3
-        className={cn(
-          "px-7 pt-7 text-balance font-semibold leading-[1.2] tracking-[-0.02em] sm:px-8 sm:pt-8",
-          small ? "text-[19px]" : "text-[23px]",
-          CJK_HEADLINE,
-        )}
-      >
-        {title}
-        <span className="block text-muted-foreground/80">{muted}</span>
-      </h3>
-      <p className={cn("px-7 pt-3 text-pretty leading-relaxed text-muted-foreground sm:px-8", small ? "text-[14.5px]" : "text-[15.5px]", !small && "max-w-[34rem]")}>
-        {body}
-      </p>
-      <div className={cn("flex items-end px-5 pt-7 sm:px-8", small ? "h-[320px]" : "h-[360px] sm:h-[400px]")}>
-        <div className="h-[calc(100%+18px)] w-full translate-y-[18px]">{children}</div>
-      </div>
-    </article>
-  );
-}
-
 const MORE: Array<{ key: string; icon: ReactNode }> = [
   { key: "screen", icon: <MonitorUp /> },
   { key: "whiteboard", icon: <PenLine /> },
@@ -281,24 +140,16 @@ const MORE: Array<{ key: string; icon: ReactNode }> = [
 function More() {
   const t = useTranslations("home.more");
   return (
-    <section id="more" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
+    <section id="more" className={cn(COLUMN, "scroll-mt-24 py-24 sm:py-32")}>
       <Heading title={t("title")} muted={t("muted")} className="max-w-[22ch]" />
-      <div className="relative mt-12">
-        {["-start-[3px] -top-[3px]", "-end-[3px] -top-[3px]", "-start-[3px] -bottom-[3px]", "-end-[3px] -bottom-[3px]"].map((spot) => (
-          <span key={spot} aria-hidden className={cn("absolute z-10 size-[7px] border border-border-strong bg-background", spot)} />
-        ))}
-        <ul className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {MORE.map((item) => (
-            <li key={item.key} className="group bg-background p-6 transition-colors hover:bg-card sm:p-7">
-              <span className="flex size-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
-                {item.icon}
-              </span>
-              <p className="mt-10 text-[17px] font-semibold tracking-tight">{t(`items.${item.key}.title` as "items.screen.title")}</p>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${item.key}.body` as "items.screen.body")}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <RuledSheet
+        className="mt-12"
+        items={MORE.map((item) => ({
+          icon: item.icon,
+          title: t(`items.${item.key}.title` as "items.screen.title"),
+          body: t(`items.${item.key}.body` as "items.screen.body"),
+        }))}
+      />
     </section>
   );
 }
@@ -407,53 +258,3 @@ function Plans() {
   );
 }
 
-/**
- * Questions as native disclosures: readable without scripts, and in the page
- * for search engines. They open and close smoothly where the browser can
- * animate to `auto` (see .home-faq), and instantly everywhere else.
- */
-function Faq({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  const t = useTranslations("home");
-  return (
-    <section id="faq" className={cn(COLUMN, "grid scroll-mt-20 gap-10 pb-20 sm:pb-28 lg:grid-cols-[1fr_1.6fr] lg:gap-20")}>
-      <div className="lg:sticky lg:top-24 lg:self-start">
-        <Heading title={t("faq.title")} muted={t("faq.muted")} />
-        <p className="mt-5 max-w-[22rem] text-[16px] leading-relaxed text-muted-foreground">{t("faq.note")}</p>
-        <Link href="/lobby" className={cn(STONE, "mt-7 h-11 text-[15px]")}>
-          {t("hero.secondary")}
-        </Link>
-      </div>
-      <div className="home-faq grid gap-2">
-        {faqs.map((item, index) => (
-          <details key={item.q} name="faq" className="group rounded-[20px] bg-foreground/[0.045] transition-colors open:bg-card open:shadow-[0_0_0_1px_var(--ui-border)]" open={index === 0}>
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[16.5px] font-semibold [&::-webkit-details-marker]:hidden">
-              {item.q}
-              <span
-                className="relative flex size-7 shrink-0 items-center justify-center rounded-full bg-card text-muted-foreground shadow-[0_0_0_1px_var(--ui-border)] transition-transform duration-300 group-open:rotate-45"
-                aria-hidden
-              >
-                <span className="absolute h-[1.5px] w-3 rounded-full bg-current" />
-                <span className="absolute h-3 w-[1.5px] rounded-full bg-current" />
-              </span>
-            </summary>
-            <p className="px-6 pb-6 pe-14 text-[15.5px] leading-relaxed text-muted-foreground">{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Final() {
-  const t = useTranslations("home.final");
-  return (
-    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-      <div className="home-sky flex flex-col items-center rounded-[32px] px-6 py-16 text-center sm:py-24 [--face-ring:var(--ui-card)]">
-        <FaceStack seeds={CAST.map((one) => one.id)} size={44} max={6} />
-        <Heading title={t("title")} className="mt-8 max-w-[18ch]" />
-        <p className="mt-5 max-w-[34rem] text-pretty text-[17px] leading-relaxed text-foreground/70">{t("body")}</p>
-        <Actions className="mt-9" />
-      </div>
-    </section>
-  );
-}

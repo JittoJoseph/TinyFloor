@@ -269,13 +269,15 @@ differs from the plan, or adds to it:
 
 ## The home page
 
-The home page (`components/home`) is the first marketing page in the app's
-design system, and the others will follow it. It uses the same tokens and the
+Every marketing page (the home page and the use case and comparison pages in
+`components/landing`) is built from the same pieces in `components/home/Blocks.tsx`:
+the page shell, headings, the two ways in, the product preview, the questions
+and the last ask. Styling is Tailwind utilities only; there is no page CSS. It uses the same tokens and the
 same theme as the app: system by default, light or dark from its footer, set
 before first paint by the root layout's script (which now covers "/").
 
-- **Its own face.** The page's words are set in Nunito (`.home`); the previews
-  keep the app's face (`.home-app`), so they read as the app. The app's own
+- **Its own face.** The page's words are set in Nunito; the previews keep the
+  app's face, so they read as the app. The app's own
   routes never change font.
 - **Built around previews.** The hero is the app's shell in miniature with four
   tabs (floor, chat, people, a meeting), and each feature row shows the app

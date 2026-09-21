@@ -47,10 +47,6 @@
     "searchPlaceholder": "搜索语言…",
     "noResults": "未找到语言"
   },
-  "nav": {
-    "main": "主导航",
-    "tour": "导览"
-  },
   "landing": {
     "description": "看起来像游戏的虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
     "features": [
@@ -98,26 +94,6 @@
         "a": "普通通话会把所有人放进同一个网格，直到会议结束。TinyFloor 房间全天开放，你能看到谁在，在不同对话间切换，并和你走近的人交谈。"
       }
     ]
-  },
-  "cta": {
-    "title": "你的房间<em>已经开好了。</em>",
-    "publicTitle": "走进公共办公室",
-    "publicBody": "随时开放，谁都能进。取个名字、选个角色就进去了，不用账号。",
-    "createTitle": "建一个自己的办公室",
-    "createBody": "起个名字，用一个链接邀请团队，房间想开多久就开多久。",
-    "sampleName": "设计团队",
-    "create": "创建",
-    "publicNote": "从这里开始"
-  },
-  "footer": {
-    "tagline": "一间可以四处走动的虚拟办公室。免费，在浏览器中使用。",
-    "product": "产品",
-    "learn": "了解",
-    "elsewhere": "其他",
-    "tour": "房间导览",
-    "twoWays": "两种进入方式",
-    "rights": "© {year} Jitto Joseph。保留所有权利。",
-    "credits": "致谢"
   },
   "auth": {
     "tabSignIn": "登录",
@@ -1189,11 +1165,21 @@
       "everyOffice": "每个办公室都有",
       "lobbyTitle": "大厅正开放",
       "lobbyBody": "先在真实的楼层里走走，再建自己的办公室。无需账号。",
-      "menu": "菜单"
+      "menu": "菜单",
+      "teams": "团队方案",
+      "teamTitle": "为小团队打造",
+      "teamBody": "最多 3 人免费，更大的方案即将推出。",
+      "cases": {
+        "virtualOffice": "远程团队的共同空间",
+        "virtualCoworking": "在大家身边专注工作",
+        "onlineStudyRoom": "和朋友一起学习",
+        "virtualClassroom": "答疑时间和小班课",
+        "proximityChat": "走近谁就和谁聊"
+      }
     },
     "hero": {
       "title": "一个团队可以四处走动的虚拟办公室。",
-      "body": "看看谁在，走过去聊，到了开会时间就拉把椅子坐下。TinyFloor 是一间小小的像素风办公室，在任何浏览器里都能打开。",
+      "body": "献给怀念并肩工作的远程团队。看看谁在，带着小问题走过去，到了开会时间就拉把椅子坐下，一通电话都不用预约。",
       "secondary": "走进大厅",
       "previewLabel": "看看 TinyFloor 里面",
       "tabs": {

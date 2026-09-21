@@ -4,7 +4,7 @@ import { Face, FaceStack, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
-const [maya, leo, priya, sam, aiko, noah] = CAST;
+const [emma, jack, olivia, sam, lily, noah] = CAST;
 
 const TONE: Record<string, string> = {
   available: "bg-ok/12 text-ok",
@@ -19,11 +19,11 @@ export function PeoplePreview({ count = 5, narrow = false, mini = false }: { cou
   const tp = useTranslations("office.people");
   type Row = { person: (typeof CAST)[number]; status: "available" | "busy" | "away" | "offline"; role: string };
   const rows: Row[] = [
-    { person: maya, status: "available", role: t("roles.design") },
-    { person: priya, status: "busy", role: t("roles.engineering") },
+    { person: emma, status: "available", role: t("roles.design") },
+    { person: olivia, status: "busy", role: t("roles.engineering") },
     { person: sam, status: "away", role: t("roles.product") },
-    { person: leo, status: "available", role: t("roles.engineering") },
-    { person: aiko, status: "available", role: t("roles.design") },
+    { person: jack, status: "available", role: t("roles.engineering") },
+    { person: lily, status: "available", role: t("roles.design") },
     { person: noah, status: "offline", role: t("roles.product") },
   ];
   const people = rows.slice(0, count);

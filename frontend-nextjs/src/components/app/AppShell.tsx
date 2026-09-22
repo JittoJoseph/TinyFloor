@@ -7,6 +7,7 @@ import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
+import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
 
 /**
  * Whether the view on screen has a presence dock with you in it. When it does,
@@ -62,6 +63,7 @@ export function AppShell({
   floor: ReactNode;
   children?: ReactNode;
 }) {
+  useDesktopSiteZoom();
   const indicator = useId();
   const reduce = useReducedMotion();
   const [docks, setDocks] = useState(0);

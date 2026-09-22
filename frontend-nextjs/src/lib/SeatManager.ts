@@ -8,6 +8,7 @@ import type { GoTo } from "./Interactable";
 import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "./types";
+import { touchFirst } from "./touch";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -78,7 +79,7 @@ export class SeatManager {
     this.scene = scene;
     this.player = player;
     this.animations = animations;
-    this.keyboard = scene.sys.game.device.os.desktop;
+    this.keyboard = scene.sys.game.device.os.desktop && !touchFirst();
     this.seats = chairs.map((c) => ({ ...c, baseY: c.y + 16 }));
     this.seats.forEach((seat) => this.byId.set(seat.id, seat));
 

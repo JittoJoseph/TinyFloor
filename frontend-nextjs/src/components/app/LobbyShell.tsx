@@ -131,6 +131,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
     officesOnly: setAsked,
   };
 
+  const leave = { href: user.guest ? "/" : "/dashboard", label: ts("leaveLobby") };
+
   return (
     <PlaceProvider value={place}>
       <AppShell
@@ -148,8 +150,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
           { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: RailIcons.office, active: onOffice, dot: !onOffice },
         ]}
         settings={{ key: "settings", href: lobbySettingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-        leave={{ href: user.guest ? "/" : "/dashboard", label: ts("leaveLobby") }}
-        you={<YouMenu onFloor settingsHref={lobbySettingsPath} />}
+        leave={leave}
+        you={<YouMenu onFloor settingsHref={lobbySettingsPath} leave={leave} />}
         floor={
           <>
             <RoomView

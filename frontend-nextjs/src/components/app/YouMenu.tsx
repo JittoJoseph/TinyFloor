@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "lucide-react";
+import { DoorOpen, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -24,6 +24,7 @@ export function YouMenu({
   onFloor,
   bar = false,
   panel,
+  leave,
 }: {
   /** Where this place keeps its settings. */
   settingsHref?: string;
@@ -33,6 +34,8 @@ export function YouMenu({
   bar?: boolean;
   /** In the presence dock: this is the trigger, and the menu opens above it. */
   panel?: React.ReactElement;
+  /** The way out of this place. The rail has it on a wide screen; on a phone it is here. */
+  leave?: { href: string; label: string };
 }) {
   const t = useTranslations("shell");
   const tStatus = useTranslations("status");
@@ -132,6 +135,14 @@ export function YouMenu({
           </MenuItem>
           <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
             {t("allOffices")}
+          </MenuItem>
+        </>
+      )}
+      {leave && !wide && (
+        <>
+          <MenuSeparator />
+          <MenuItem icon={<DoorOpen className="rtl:-scale-x-100" />} onSelect={() => router.push(leave.href)}>
+            {leave.label}
           </MenuItem>
         </>
       )}

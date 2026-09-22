@@ -66,14 +66,15 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
       sharePath: pathname,
       officesOnly: () => {},
     };
+    const leave = { href: user.guest ? "/" : "/dashboard", label: ts("leave") };
     return (
       <PlaceProvider value={place}>
         <AppShell
           mark={<Logo size={40} />}
           destinations={[{ key: "floor", href: pathname, label: ts("floor"), icon: RailIcons.floor, active: !onSettings }]}
           settings={{ key: "settings", href: settingsHref, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-          leave={{ href: user.guest ? "/" : "/dashboard", label: ts("leave") }}
-          you={<YouMenu onFloor settingsHref={settingsHref} />}
+          leave={leave}
+          you={<YouMenu onFloor settingsHref={settingsHref} leave={leave} />}
           floor={
             <RoomView
               title={preview.officeName}

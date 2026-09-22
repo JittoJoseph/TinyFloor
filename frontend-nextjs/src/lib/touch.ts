@@ -115,3 +115,32 @@ export const isHoveringPointer = (event: {
   pointerType: string;
   buttons: number;
 }) => event.pointerType !== "touch" && event.buttons === 0;
+
+/**
+ * Whether a finger is how this device is mostly driven: the joystick and tap
+ * prompts rather than keys. The user agent can't say — a phone with "Desktop
+ * site" on, and every iPad, claims to be a desktop — so it asks the screen:
+ * a coarse primary pointer, or the iPad's tell of a "Mac" with touch points.
+ * A touchscreen laptop keeps its mouse as the primary pointer, and its keys.
+ */
+export function touchFirst(): boolean {
+  if (typeof window === "undefined") return false;
+  if (matchMedia("(pointer: coarse)").matches) return true;
+  return navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent);
+}
+
+/**
+ * How far a phone with "Desktop site" on has shrunk the page. It ignores the
+ * viewport meta tag and lays out 980px wide, then scales that down to fit, so
+ * everything draws at well under half size. 1 anywhere else. Phones only: a
+ * tablet's desktop layout is its size already.
+ */
+export function desktopSiteScale(): number {
+  if (typeof window === "undefined" || !touchFirst()) return 1;
+  const short = Math.min(screen.width, screen.height);
+  if (short >= 600) return 1;
+  // iOS keeps screen.width the portrait width after a turn; the window's shape says which way up it is.
+  const across = innerWidth > innerHeight ? Math.max(screen.width, screen.height) : short;
+  const scale = innerWidth / across;
+  return scale > 1.2 ? Math.min(scale, 3) : 1;
+}

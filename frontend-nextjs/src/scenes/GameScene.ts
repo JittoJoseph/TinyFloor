@@ -16,6 +16,7 @@ import { whiteboard } from "../lib/WhiteboardManager";
 import { JukeboxObject } from "../lib/JukeboxObject";
 import { jukebox } from "../lib/JukeboxManager";
 import { tutorialDone, setTouchInput } from "../lib/tutorial";
+import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "../lib/types";
 
 const CAMERA_LERP = 0.08;
@@ -33,11 +34,13 @@ const NARROW_WIDTH = 768;
  * view; a phone pulls back so you can see where you are going, with enough of
  * the room around you on both sides of the short edge.
  */
-export function zoomFor(width: number, height: number): number {
+export function zoomFor(width: number, height: number, mapWidth: number, mapHeight: number): number {
   const short = Math.min(width, height);
   const long = Math.max(width, height);
   const fit = Math.min(short / (MIN_TILES_SHORT * TILE_SIZE), long / (MIN_TILES_LONG * TILE_SIZE));
-  return Phaser.Math.Clamp(fit, MIN_ZOOM, CAMERA_ZOOM);
+  // Never so far out that the map stops short of an edge and leaves a void past it.
+  const cover = Math.max(width / mapWidth, height / mapHeight);
+  return Math.max(Phaser.Math.Clamp(fit, MIN_ZOOM, CAMERA_ZOOM), cover);
 }
 
 class GameScene extends Phaser.Scene {
@@ -82,7 +85,7 @@ class GameScene extends Phaser.Scene {
     const mapWidth = this.mapManager.getMapWidth();
     const mapHeight = this.mapManager.getMapHeight();
     this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height));
+    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
 
     const keepCentered =
       !tutorialDone() && this.cameras.main.width < NARROW_WIDTH;
@@ -110,8 +113,9 @@ class GameScene extends Phaser.Scene {
     );
     this.mapManager.setupColliders(this.player);
 
-    // Phones and tablets steer with the on-screen joystick (components/room/Joystick.tsx).
-    setTouchInput(!this.sys.game.device.os.desktop);
+    // Phones and tablets steer with the on-screen joystick (components/room/Joystick.tsx),
+    // including the ones that say they are desktops ("Desktop site", iPads).
+    setTouchInput(touchFirst() || !this.sys.game.device.os.desktop);
 
     this.movementManager = new MovementManager(
       this,
@@ -227,7 +231,7 @@ class GameScene extends Phaser.Scene {
    */
   private fitCamera(width: number, height: number) {
     const camera = this.cameras.main;
-    const zoom = zoomFor(width, height);
+    const zoom = zoomFor(width, height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
     camera.setZoom(zoom);
     camera.setDeadzone(Math.min(120, width * 0.2), Math.min(90, height * 0.12));
     this.playerManager.setTagScale(Math.max(1, (CAMERA_ZOOM * 0.9) / zoom));

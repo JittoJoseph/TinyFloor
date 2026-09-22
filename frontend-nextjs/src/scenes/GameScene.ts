@@ -16,11 +16,29 @@ import { whiteboard } from "../lib/WhiteboardManager";
 import { JukeboxObject } from "../lib/JukeboxObject";
 import { jukebox } from "../lib/JukeboxManager";
 import { tutorialDone, setTouchInput } from "../lib/tutorial";
-import { pixelToTile, tileToPixel } from "../lib/types";
+import { TILE_SIZE, pixelToTile, tileToPixel } from "../lib/types";
 
 const CAMERA_LERP = 0.08;
+/** How close the camera sits wherever there is room for it. */
 const CAMERA_ZOOM = 1.2;
+/** On a small screen it pulls back until at least this many tiles show each way... */
+const MIN_TILES_SHORT = 15;
+const MIN_TILES_LONG = 24;
+/** ...but never so far that people and their names get too small to read. */
+const MIN_ZOOM = 0.62;
 const NARROW_WIDTH = 768;
+
+/**
+ * The camera's zoom for a floor this size. A big screen gets the usual close
+ * view; a phone pulls back so you can see where you are going, with enough of
+ * the room around you on both sides of the short edge.
+ */
+export function zoomFor(width: number, height: number): number {
+  const short = Math.min(width, height);
+  const long = Math.max(width, height);
+  const fit = Math.min(short / (MIN_TILES_SHORT * TILE_SIZE), long / (MIN_TILES_LONG * TILE_SIZE));
+  return Phaser.Math.Clamp(fit, MIN_ZOOM, CAMERA_ZOOM);
+}
 
 class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -64,7 +82,7 @@ class GameScene extends Phaser.Scene {
     const mapWidth = this.mapManager.getMapWidth();
     const mapHeight = this.mapManager.getMapHeight();
     this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setZoom(CAMERA_ZOOM);
+    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height));
 
     const keepCentered =
       !tutorialDone() && this.cameras.main.width < NARROW_WIDTH;
@@ -165,7 +183,12 @@ class GameScene extends Phaser.Scene {
 
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
-    this.cameras.main.setDeadzone(120, 90);
+    this.fitCamera(this.scale.width, this.scale.height);
+    // The floor panel changes size with the window, a rotated phone or a
+    // panel opening beside it; the view keeps up.
+    const onResize = (size: Phaser.Structs.Size) => this.fitCamera(size.width, size.height);
+    this.scale.on(Phaser.Scale.Events.RESIZE, onResize);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off(Phaser.Scale.Events.RESIZE, onResize));
 
     // "Walk to" beside someone in People or chat: the same walk a click on the
     // floor makes, to the free tile nearest them.
@@ -195,6 +218,19 @@ class GameScene extends Phaser.Scene {
 
     // Everything is listening now, so nothing the room says first is missed.
     this.wsManager.connect();
+  }
+
+  /**
+   * Zoom and deadzone for the floor's size, and name tags kept readable as the
+   * camera pulls back: they shrink with the map only down to about their
+   * usual size on screen.
+   */
+  private fitCamera(width: number, height: number) {
+    const camera = this.cameras.main;
+    const zoom = zoomFor(width, height);
+    camera.setZoom(zoom);
+    camera.setDeadzone(Math.min(120, width * 0.2), Math.min(90, height * 0.12));
+    this.playerManager.setTagScale(Math.max(1, (CAMERA_ZOOM * 0.9) / zoom));
   }
 
   private listen(type: string, handler: (event: CustomEvent) => void) {

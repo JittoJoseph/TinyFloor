@@ -59,6 +59,8 @@ export class PlayerManager {
   private playerStates: Map<string, RemotePlayerState> = new Map();
   private localPlayer?: Phaser.Physics.Arcade.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
+  /** Name tags grow a little when the camera pulls back, so they stay readable. */
+  private tagScale = 1;
 
   constructor(
     scene: Phaser.Scene,
@@ -89,7 +91,7 @@ export class PlayerManager {
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
     const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
-    tag.container.setDepth(TAG_DEPTH);
+    tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale);
 
     this.localPlayer = player;
     this.nameTags.set(id, tag);
@@ -124,6 +126,7 @@ export class PlayerManager {
     container.setDepth(depthForY(pos.y));
 
     const tag = new SceneLabel(this.scene, 0, TAG_OFFSET_Y, name, true);
+    tag.container.setScale(this.tagScale);
     container.add(tag.container);
     this.nameTags.set(id, tag);
     this.players.set(id, container);
@@ -158,6 +161,11 @@ export class PlayerManager {
     this.nameTags
       .get(this.playerId)
       ?.container.setPosition(pixelX, pixelY + nameTagOffset(seated));
+  }
+
+  setTagScale(scale: number) {
+    this.tagScale = scale;
+    this.nameTags.forEach((tag) => tag.container.setScale(scale));
   }
 
   /**

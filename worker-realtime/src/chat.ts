@@ -47,6 +47,7 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   body: string;
   image: string | null;
   at: number;
+  edited_at: SqlStorageValue;
 }
 
 /** A runaway client is stopped at ten messages a second; a person never gets near it. */
@@ -68,8 +69,10 @@ const LOBBY_FLAG = "lobby";
  *
  * The public lobby has one of these too, named "lobby", shared by every copy
  * of its floor. There the channels are fixed, guests may post under the name
- * they walked in with, there are no direct messages, new channels or images,
- * and an alarm once a day forgets anything older than a week.
+ * they walked in with, people can edit and delete what they said, there are no
+ * new channels or images, and an alarm once a day forgets anything older than
+ * a week. Its direct messages are passed from one socket to the other and
+ * never written down, so they last as long as both people stay.
  */
 export class Chat extends DurableObject<Env> {
   private lobby = false;
@@ -95,6 +98,9 @@ export class Chat extends DurableObject<Env> {
         at INTEGER NOT NULL
       )`);
       this.sql.exec("CREATE INDEX IF NOT EXISTS messages_channel ON messages (channel, seq)");
+      // Added with editing; older objects get the column the first time they wake.
+      const columns = this.sql.exec<{ name: string }>("SELECT name FROM pragma_table_info('messages')").toArray();
+      if (!columns.some((column) => column.name === "edited_at")) this.sql.exec("ALTER TABLE messages ADD COLUMN edited_at INTEGER");
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
         member TEXT NOT NULL,
         channel TEXT NOT NULL,
@@ -184,11 +190,20 @@ export class Chat extends DurableObject<Env> {
         return this.makeChannel(socket, me, message.name, now);
       case "chat_dm":
         return this.openDm(socket, me, message.userId, now);
+      case "chat_edit":
+        return this.edit(me, message.seq, message.body, now);
+      case "chat_delete":
+        return this.remove(me, message.seq);
     }
   }
 
   webSocketClose(socket: WebSocket): void {
+    const who = this.attachmentOf(socket);
     this.attachments.delete(socket);
+    // The last tab of someone in the lobby closed: whatever they said privately there goes with them.
+    if (!this.lobby || !who) return;
+    const still = this.ctx.getWebSockets().some((other) => other !== socket && this.attachmentOf(other)?.userId === who.userId);
+    if (!still) this.broadcast({ t: "chat_gone", userId: who.userId });
   }
 
   /** Someone's membership ended: their sockets close and their DMs stay put. */
@@ -262,6 +277,7 @@ export class Chat extends DurableObject<Env> {
     if (this.lobby && image) return this.send(socket, { t: "chat_error", code: "offices_only" });
     if (!text && !picture) return;
     if (!this.mayPost(me.userId, channel)) return this.send(socket, { t: "chat_error", code: "no_such_channel" });
+    if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
 
     this.ensureChannel(channel, me.userId, now);
     this.sql.exec(
@@ -294,6 +310,53 @@ export class Chat extends DurableObject<Env> {
     if (this.lobby) this.ctx.waitUntil(this.keepAWeek(now));
   }
 
+  /**
+   * A direct message in the lobby: straight to the other person's open tabs
+   * and your own, and nowhere else. Its number is below zero, so it never
+   * meets a stored message's.
+   */
+  private passing = 0;
+  private pass(socket: WebSocket, me: Attachment, channel: string, text: string, now: number): void {
+    const pair = dmMembers(channel)!;
+    const other = pair[0] === me.userId ? pair[1] : pair[0];
+    const here = this.ctx.getWebSockets().some((one) => this.attachmentOf(one)?.userId === other);
+    if (!here) return this.send(socket, { t: "chat_error", code: "not_here" });
+    const message: ChatMessage = {
+      seq: -(now * 1000 + (this.passing++ % 1000)),
+      channel,
+      author: me.userId,
+      authorName: me.name,
+      body: text,
+      at: now,
+      passing: true,
+    };
+    this.deliver(channel, { t: "chat_new", message });
+  }
+
+  /** In the lobby, the author can change what they said. */
+  private edit(me: Attachment, seq: number, body: unknown, now: number): void {
+    const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
+    const row = this.ownMessage(me, seq);
+    if (!row || !text) return;
+    this.sql.exec("UPDATE messages SET body = ?, edited_at = ? WHERE seq = ?", text, now, seq);
+    this.deliver(row.channel, { t: "chat_edited", seq, channel: row.channel, body: text, edited: now });
+  }
+
+  /** In the lobby, the author can take back what they said. */
+  private remove(me: Attachment, seq: number): void {
+    const row = this.ownMessage(me, seq);
+    if (!row) return;
+    this.sql.exec("DELETE FROM reactions WHERE seq = ?", seq);
+    this.sql.exec("DELETE FROM messages WHERE seq = ?", seq);
+    this.deliver(row.channel, { t: "chat_deleted", seq, channel: row.channel });
+  }
+
+  private ownMessage(me: Attachment, seq: number): { channel: string } | null {
+    if (!this.lobby || !Number.isFinite(seq)) return null;
+    const row = this.sql.exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ?", seq).toArray()[0];
+    return row && row.author === me.userId ? { channel: String(row.channel) } : null;
+  }
+
   /** The lobby forgets: once a day, anything older than a week goes. */
   async alarm(): Promise<void> {
     if (!this.lobby) return;
@@ -317,7 +380,7 @@ export class Chat extends DurableObject<Env> {
     if (!this.mayPost(me.userId, channel)) return;
     const rows = this.sql
       .exec<MessageRow>(
-        `SELECT seq, channel, author, author_name, body, image, at FROM messages
+        `SELECT seq, channel, author, author_name, body, image, at, edited_at FROM messages
          WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
         channel,
         before ?? Number.MAX_SAFE_INTEGER,
@@ -379,10 +442,10 @@ export class Chat extends DurableObject<Env> {
   }
 
   private openDm(socket: WebSocket, me: Attachment, userId: unknown, now: number): void {
-    if (this.lobby) return this.send(socket, { t: "chat_error", code: "offices_only" });
     if (typeof userId !== "string" || userId === me.userId) return;
     const id = dmChannelId(me.userId, userId);
-    this.ensureChannel(id, me.userId, now);
+    // The lobby's direct messages are never stored, so there is no channel to write down.
+    if (!this.lobby) this.ensureChannel(id, me.userId, now);
     this.send(socket, { t: "chat_channel", channel: this.summary(id, me.userId) });
   }
 
@@ -403,9 +466,9 @@ export class Chat extends DurableObject<Env> {
   /** Channels are the whole office's; a direct message is only its two people's. */
   private mayPost(userId: string, channel: string): boolean {
     if (typeof channel !== "string" || !channel) return false;
-    if (this.lobby) return (LOBBY_CHANNELS as readonly string[]).includes(channel);
     const pair = dmMembers(channel);
     if (pair) return pair.includes(userId);
+    if (this.lobby) return (LOBBY_CHANNELS as readonly string[]).includes(channel);
     return channel === GENERAL_CHANNEL || cleanChannelName(channel) === channel;
   }
 
@@ -538,5 +601,6 @@ function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatM
     at: Number(row.at),
     ...(row.image ? { image: JSON.parse(String(row.image)) as ChatImage } : {}),
     ...(reactions ? { reactions } : {}),
+    ...(row.edited_at ? { edited: Number(row.edited_at) } : {}),
   };
 }

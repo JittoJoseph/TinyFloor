@@ -1055,7 +1055,6 @@
     "create": "Opret kontor",
     "creating": "Gør det klar",
     "freePlan": "Gratis for op til 3 personer. Intet kort.",
-    "accountNext": "Næste: opret en konto, så er kontoret klar.",
     "justLooking": "Kigger du bare? <link>Gå ind på det offentlige kontor</link> i stedet.",
     "steps": [
       "Navngiv",
@@ -1063,8 +1062,7 @@
       "Gå ind"
     ],
     "asideTitle": "Dit kontor, klar på et minut",
-    "asideBody": "En etage for sig selv til dit team, med chat og mødeborde. Gratis for op til 3 personer.",
-    "nameFirst": "Giv dit kontor et navn for at fortsætte med Google"
+    "asideBody": "En etage for sig selv til dit team, med chat og mødeborde. Gratis for op til 3 personer."
   },
   "shell": {
     "floor": "Gulvet",

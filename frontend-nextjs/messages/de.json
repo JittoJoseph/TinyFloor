@@ -1055,7 +1055,6 @@
     "create": "Büro erstellen",
     "creating": "Wird eingerichtet",
     "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
-    "accountNext": "Als Nächstes: ein Konto, dann ist das Büro fertig.",
     "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen.",
     "steps": [
       "Benennen",
@@ -1063,8 +1062,7 @@
       "Reingehen"
     ],
     "asideTitle": "Dein Büro, fertig in einer Minute",
-    "asideBody": "Eine eigene Etage für dein Team, mit Chat und Besprechungstischen. Kostenlos für bis zu 3 Personen.",
-    "nameFirst": "Gib deinem Büro einen Namen, um mit Google weiterzumachen"
+    "asideBody": "Eine eigene Etage für dein Team, mit Chat und Besprechungstischen. Kostenlos für bis zu 3 Personen."
   },
   "shell": {
     "floor": "Fläche",

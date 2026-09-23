@@ -1055,7 +1055,6 @@
     "create": "Créer le bureau",
     "creating": "Préparation",
     "freePlan": "Gratuit jusqu’à 3 personnes. Sans carte.",
-    "accountNext": "Ensuite : créez un compte, et votre bureau est prêt.",
     "justLooking": "Juste un coup d’œil ? <link>Entrez dans le bureau public</link> plutôt.",
     "steps": [
       "Le nommer",
@@ -1063,8 +1062,7 @@
       "Entrer"
     ],
     "asideTitle": "Votre bureau, prêt en une minute",
-    "asideBody": "Un étage rien qu'à votre équipe, avec chat et tables de réunion. Gratuit jusqu'à 3 personnes.",
-    "nameFirst": "Nommez votre bureau pour continuer avec Google"
+    "asideBody": "Un étage rien qu'à votre équipe, avec chat et tables de réunion. Gratuit jusqu'à 3 personnes."
   },
   "shell": {
     "floor": "Étage",

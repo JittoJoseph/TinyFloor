@@ -1055,7 +1055,6 @@
     "create": "创建办公室",
     "creating": "正在准备",
     "freePlan": "3 人以内免费，无需银行卡。",
-    "accountNext": "下一步：注册账号，办公室就绪。",
     "justLooking": "只是看看？不如<link>走进公共办公室</link>。",
     "steps": [
       "起个名字",
@@ -1063,8 +1062,7 @@
       "走进去"
     ],
     "asideTitle": "你的办公室，一分钟就绪",
-    "asideBody": "团队专属的楼层，带聊天和会议桌。最多 3 人免费。",
-    "nameFirst": "先给办公室起个名字，再用 Google 继续"
+    "asideBody": "团队专属的楼层，带聊天和会议桌。最多 3 人免费。"
   },
   "shell": {
     "floor": "楼层",

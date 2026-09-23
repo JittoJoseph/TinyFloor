@@ -10,7 +10,6 @@
     "authTitle": "Log ind",
     "authDescription": "Log ind på TinyFloor for at beholde dit navn, din figur og en liste over dine rum.",
     "dashboardTitle": "Oversigt",
-    "roomTitle": "Aktivt rum",
     "notFoundTitle": "Siden blev ikke fundet",
     "lobbyTitle": "Lobbyen",
     "lobbyDescription": "Gå ind i TinyFloors gratis, åbne lobby som gæst. Vælg en figur, mød folk, og prøv videoopkald på nært hold i din browser.",
@@ -26,17 +25,12 @@
     "close": "Luk",
     "guest": "Gæst",
     "you": "Dig",
-    "justNow": "lige nu",
     "unknown": "Ukendt",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "dashboard": "Oversigt",
-    "questions": "Spørgsmål",
     "signOut": "Log ud",
     "visitLobby": "Besøg lobbyen",
     "lobby": "Lobby",
     "signIn": "Log ind",
-    "rooms": "Rum",
-    "offices": "Dine kontorer",
     "account": "Konto",
     "createOffice": "Opret et kontor",
     "plansSoon": "Større team? Abonnementer med flere pladser kommer snart."
@@ -159,11 +153,6 @@
     "visitLobby": "Besøg lobbyen",
     "invitedAsGuest": "Du er inviteret ind som gæst."
   },
-  "userMenu": {
-    "manageProfile": "Administrer profil",
-    "visitingAsGuest": "Besøger som gæst",
-    "keepYourName": "Behold navn og figur"
-  },
   "room": {
     "connecting": "Forbinder...",
     "leave": "Forlad",
@@ -225,7 +214,6 @@
     "stopSharing": "Stop deling",
     "muteSpeaker": "Slå højttaler fra",
     "unmuteSpeaker": "Slå højttaler til",
-    "openChat": "Åbn chat",
     "settings": "Indstillinger",
     "leaveCall": "Forlad opkald",
     "leaveMeeting": "Forlad mødet"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Forrige figur",
     "next": "Næste figur",
-    "select": "Vælg {name}",
-    "keyHint": "Brug piletasterne ← →"
+    "select": "Vælg {name}"
   },
   "notFound": {
     "title": "Dette rum er ikke på kortet.",
@@ -409,7 +396,6 @@
     "home": "Tilbage til lobbyen"
   },
   "landings": {
-    "tryIt": "Gå ind på det åbne kontor",
     "create": "Opret et rum",
     "free": "Gratis, i browseren, uden konto.",
     "compare": "Sammenligninger",
@@ -980,7 +966,6 @@
       "passwordRule": "Mindst 8 tegn",
       "signsOutOthers": "Du forbliver logget ind her. Alle andre steder bliver du logget ud.",
       "cancel": "Annullér",
-      "pageTitle": "Din konto",
       "faceNote": "Dit ansigt tegnes ud fra din konto, ens på hver skærm. Intet uploades eller gemmes.",
       "themeNote": "System følger din enhed. Valget gemmes i denne browser."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Du bliver medlem som {name} ({email})",
       "createAccount": "Opret en konto",
       "signIn": "Jeg har en konto",
-      "needAccount": "Du skal have en konto for at blive medlem af et arbejdsområde. Det tager et minut.",
       "readyToJoin": "Det er mig",
       "accountKeeps": "En konto gemmer {name} og din figur til næste gang.",
       "you": "Dig"
@@ -1079,7 +1063,6 @@
     "continue": "Videre",
     "create": "Opret kontor",
     "creating": "Gør det klar",
-    "firstRoom": "Hovedetagen",
     "freePlan": "Gratis for op til 3 personer. Intet kort.",
     "accountNext": "Næste: opret en konto, så er kontoret klar.",
     "justLooking": "Kigger du bare? <link>Gå ind på det offentlige kontor</link> i stedet."
@@ -1134,7 +1117,6 @@
     "subtitle": "Dine kontorer, og hvem der er på hvert gulv lige nu.",
     "onFloor": "{count, plural, =0 {Ingen på gulvet} other {# på gulvet}}",
     "newOffice": "Nyt kontor",
-    "newOfficeBody": "Tre personer gratis. Et gulv, chat og opkald.",
     "lobby": "Den offentlige lobby",
     "lobbyBody": "Kig forbi og mød dem, der er der.",
     "emptyTitle": "Start dit første kontor",
@@ -1158,7 +1140,6 @@
         "people": "Tilstedeværelse",
         "guests": "Gæster"
       },
-      "everyOffice": "I hvert kontor",
       "lobbyTitle": "Lobbyen er åben",
       "lobbyBody": "Gå rundt på en rigtig etage, før du laver din egen. Ingen konto nødvendig.",
       "menu": "Menu",
@@ -1189,19 +1170,14 @@
         "Intet at installere",
         "Kører på Cloudflare"
       ],
-      "lobbyLine": "Den offentlige lobby er åben lige nu. Ingen konto nødvendig.",
       "lobbyCta": "Gå ind"
     },
     "features": {
       "proximity": {
-        "title": "Gå hen og snak.",
-        "muted": "Ingen links, ingen planlægning.",
-        "body": "Gå tæt på nogen, så er et opkald et tryk væk. Gå videre, så bliver der stille på etagen igen, ligesom når man kigger forbi et skrivebord."
+        "muted": "Ingen links, ingen planlægning."
       },
       "meetings": {
-        "title": "Sæt dig til møde.",
-        "muted": "Rejs dig for at gå.",
-        "body": "Gruppeopkald foregår ved et bord. Alle der sidder der er med, kameraerne holdes lette som miniaturer, og alle kan dele deres skærm."
+        "muted": "Rejs dig for at gå."
       },
       "chat": {
         "title": "Samtaler der bliver.",
@@ -1279,28 +1255,22 @@
       "muted": "i ét virtuelt kontor.",
       "items": {
         "screen": {
-          "title": "Skærmdeling",
-          "body": "Del et vindue i ethvert opkald eller møde."
+          "title": "Skærmdeling"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Tegn sammen på kontorets væg."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Musik",
-          "body": "Sæt en sang på for alle i rummet."
+          "title": "Musik"
         },
         "noise": {
-          "title": "Støjfjernelse",
-          "body": "Valgfri AI på din enhed fjerner tastatur og snak."
+          "title": "Støjfjernelse"
         },
         "mobile": {
-          "title": "På telefonen",
-          "body": "En joystick, der dukker op under din tommelfinger."
+          "title": "På telefonen"
         },
         "languages": {
-          "title": "18 sprog",
-          "body": "Fra English og Español til 日本語 og العربية."
+          "title": "18 sprog"
         }
       },
       "also": "Også på hver etage"
@@ -1420,10 +1390,6 @@
       "theme": "Tema",
       "language": "Sprog",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Én etage til hele dagen,",
-      "muted": "fra det første hej til det sidste opkald."
     }
   }
 }

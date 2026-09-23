@@ -10,7 +10,6 @@
     "authTitle": "Iniciar sesión",
     "authDescription": "Inicia sesión en TinyFloor para conservar tu nombre, tu personaje y la lista de tus salas.",
     "dashboardTitle": "Panel",
-    "roomTitle": "Sala activa",
     "notFoundTitle": "Página no encontrada",
     "lobbyTitle": "El lobby",
     "lobbyDescription": "Entra como invitado al lobby público y gratuito de TinyFloor. Elige un personaje, conoce gente y prueba las videollamadas por cercanía en tu navegador.",
@@ -26,17 +25,12 @@
     "close": "Cerrar",
     "guest": "Invitado",
     "you": "Tú",
-    "justNow": "justo ahora",
     "unknown": "Desconocido",
-    "peopleCount": "{count, plural, one {# persona} other {# personas}}",
     "dashboard": "Panel",
-    "questions": "Preguntas",
     "signOut": "Cerrar sesión",
     "visitLobby": "Visitar el lobby",
     "lobby": "Lobby",
     "signIn": "Iniciar sesión",
-    "rooms": "Salas",
-    "offices": "Tus oficinas",
     "account": "Cuenta",
     "createOffice": "Crear una oficina",
     "plansSoon": "¿Un equipo más grande? Pronto habrá planes con más puestos."
@@ -159,11 +153,6 @@
     "visitLobby": "Visitar el lobby",
     "invitedAsGuest": "Te han invitado a entrar como invitado."
   },
-  "userMenu": {
-    "manageProfile": "Gestionar perfil",
-    "visitingAsGuest": "De visita como invitado",
-    "keepYourName": "Conserva tu nombre y personaje"
-  },
   "room": {
     "connecting": "Conectando...",
     "leave": "Salir",
@@ -225,7 +214,6 @@
     "stopSharing": "Dejar de compartir",
     "muteSpeaker": "Silenciar altavoz",
     "unmuteSpeaker": "Activar altavoz",
-    "openChat": "Abrir chat",
     "settings": "Ajustes",
     "leaveCall": "Salir de la llamada",
     "leaveMeeting": "Salir de la reunión"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Personaje anterior",
     "next": "Personaje siguiente",
-    "select": "Seleccionar a {name}",
-    "keyHint": "Usa las flechas ← →"
+    "select": "Seleccionar a {name}"
   },
   "notFound": {
     "title": "Esta sala no está en el mapa.",
@@ -409,7 +396,6 @@
     "home": "Volver al vestíbulo"
   },
   "landings": {
-    "tryIt": "Entrar a la oficina pública",
     "create": "Crear una sala",
     "free": "Gratis, en el navegador, sin cuenta.",
     "compare": "Comparativas",
@@ -980,7 +966,6 @@
       "passwordRule": "Al menos 8 caracteres",
       "signsOutOthers": "Seguirás con la sesión iniciada aquí. En todos los demás sitios se cerrará.",
       "cancel": "Cancelar",
-      "pageTitle": "Tu cuenta",
       "faceNote": "Tu cara se dibuja a partir de tu cuenta, igual en cada pantalla. No se sube ni se guarda nada.",
       "themeNote": "Sistema sigue a tu dispositivo. La elección se guarda en este navegador."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Te unes como {name} ({email})",
       "createAccount": "Crear una cuenta",
       "signIn": "Ya tengo cuenta",
-      "needAccount": "Necesitas una cuenta para unirte a un espacio de trabajo. Solo lleva un minuto.",
       "readyToJoin": "Soy yo",
       "accountKeeps": "Una cuenta guarda {name} y tu personaje para la próxima vez.",
       "you": "Tú"
@@ -1079,7 +1063,6 @@
     "continue": "Continuar",
     "create": "Crear oficina",
     "creating": "Preparándola",
-    "firstRoom": "Planta principal",
     "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
     "accountNext": "Siguiente: crea una cuenta y tu oficina estará lista.",
     "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor."
@@ -1134,7 +1117,6 @@
     "subtitle": "Tus oficinas y quién está en cada planta ahora mismo.",
     "onFloor": "{count, plural, =0 {Nadie en la planta} other {# en la planta}}",
     "newOffice": "Nueva oficina",
-    "newOfficeBody": "Tres personas gratis. Una planta, chat y llamadas.",
     "lobby": "El vestíbulo público",
     "lobbyBody": "Pásate y conoce a quien esté.",
     "emptyTitle": "Crea tu primera oficina",
@@ -1158,7 +1140,6 @@
         "people": "Presencia",
         "guests": "Invitados"
       },
-      "everyOffice": "En cada oficina",
       "lobbyTitle": "El lobby está abierto",
       "lobbyBody": "Recorre una planta de verdad antes de crear la tuya. Sin cuenta.",
       "menu": "Menú",
@@ -1189,19 +1170,14 @@
         "Nada que instalar",
         "Funciona sobre Cloudflare"
       ],
-      "lobbyLine": "El lobby público está abierto ahora mismo. Sin cuenta.",
       "lobbyCta": "Entrar"
     },
     "features": {
       "proximity": {
-        "title": "Acércate para hablar.",
-        "muted": "Sin enlaces, sin agendas.",
-        "body": "Acércate a alguien y la llamada está a un toque. Aléjate y la planta vuelve a quedar en silencio, como cuando pasas por el escritorio de alguien."
+        "muted": "Sin enlaces, sin agendas."
       },
       "meetings": {
-        "title": "Siéntate para reunirte.",
-        "muted": "Levántate para salir.",
-        "body": "Las llamadas de grupo se hacen en una mesa. Quien se sienta, se une; las cámaras van ligeras como miniaturas y cualquiera puede compartir pantalla."
+        "muted": "Levántate para salir."
       },
       "chat": {
         "title": "Conversaciones que se quedan.",
@@ -1279,28 +1255,22 @@
       "muted": "en una sola oficina virtual.",
       "items": {
         "screen": {
-          "title": "Compartir pantalla",
-          "body": "Comparte una ventana en cualquier llamada o reunión."
+          "title": "Compartir pantalla"
         },
         "whiteboard": {
-          "title": "Pizarra",
-          "body": "Dibujad juntos en la pared de la oficina."
+          "title": "Pizarra"
         },
         "music": {
-          "title": "Música",
-          "body": "Pon una canción para todos en la sala."
+          "title": "Música"
         },
         "noise": {
-          "title": "Eliminación de ruido",
-          "body": "Una IA opcional en tu dispositivo quita teclados y conversaciones de fondo."
+          "title": "Eliminación de ruido"
         },
         "mobile": {
-          "title": "En el móvil",
-          "body": "Un joystick que aparece bajo tu pulgar."
+          "title": "En el móvil"
         },
         "languages": {
-          "title": "18 idiomas",
-          "body": "De English y Español a 日本語 y العربية."
+          "title": "18 idiomas"
         }
       },
       "also": "También en cada planta"
@@ -1420,10 +1390,6 @@
       "theme": "Tema",
       "language": "Idioma",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Una planta para todo el día,",
-      "muted": "del primer hola a la última llamada."
     }
   }
 }

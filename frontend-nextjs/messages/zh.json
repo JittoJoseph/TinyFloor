@@ -10,7 +10,6 @@
     "authTitle": "登录",
     "authDescription": "登录 TinyFloor，保留你的名字、角色和房间列表。",
     "dashboardTitle": "控制台",
-    "roomTitle": "当前房间",
     "notFoundTitle": "页面未找到",
     "lobbyTitle": "大厅",
     "lobbyDescription": "以访客身份进入 TinyFloor 免费的公共大厅。选一个角色，认识新朋友，在浏览器里体验走近就能开的视频通话。",
@@ -26,17 +25,12 @@
     "close": "关闭",
     "guest": "访客",
     "you": "你",
-    "justNow": "刚刚",
     "unknown": "未知",
-    "peopleCount": "{count, plural, other {# 人}}",
     "dashboard": "控制台",
-    "questions": "常见问题",
     "signOut": "退出登录",
     "visitLobby": "去大厅看看",
     "lobby": "大厅",
     "signIn": "登录",
-    "rooms": "房间",
-    "offices": "你的办公室",
     "account": "账号",
     "createOffice": "创建办公室",
     "plansSoon": "团队更大？更多席位的方案即将推出。"
@@ -159,11 +153,6 @@
     "visitLobby": "去大厅看看",
     "invitedAsGuest": "你被邀请以访客身份进入。"
   },
-  "userMenu": {
-    "manageProfile": "管理资料",
-    "visitingAsGuest": "以访客身份访问",
-    "keepYourName": "保留你的名字和角色"
-  },
   "room": {
     "connecting": "连接中...",
     "leave": "离开",
@@ -225,7 +214,6 @@
     "stopSharing": "停止共享",
     "muteSpeaker": "关闭扬声器",
     "unmuteSpeaker": "打开扬声器",
-    "openChat": "打开聊天",
     "settings": "设置",
     "leaveCall": "退出通话",
     "leaveMeeting": "离开会议"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "上一个角色",
     "next": "下一个角色",
-    "select": "选择 {name}",
-    "keyHint": "使用 ← → 方向键"
+    "select": "选择 {name}"
   },
   "notFound": {
     "title": "这个房间不在地图上。",
@@ -409,7 +396,6 @@
     "home": "返回大厅"
   },
   "landings": {
-    "tryIt": "进入公共办公室",
     "create": "创建房间",
     "free": "免费，在浏览器中使用，无需账号。",
     "compare": "对比",
@@ -980,7 +966,6 @@
       "passwordRule": "至少 8 个字符",
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
       "cancel": "取消",
-      "pageTitle": "你的账号",
       "faceNote": "你的头像根据你的账号生成，在每个屏幕上都一样。不会上传或保存任何内容。",
       "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。"
     },
@@ -995,7 +980,6 @@
       "joiningAs": "将以 {name}（{email}）的身份加入",
       "createAccount": "创建账号",
       "signIn": "我已有账号",
-      "needAccount": "加入工作区需要一个账号，一分钟就能创建好。",
       "readyToJoin": "就是我",
       "accountKeeps": "有账号就能记住 {name} 和你的角色，下次接着用。",
       "you": "你"
@@ -1079,7 +1063,6 @@
     "continue": "继续",
     "create": "创建办公室",
     "creating": "正在准备",
-    "firstRoom": "主楼层",
     "freePlan": "3 人以内免费，无需银行卡。",
     "accountNext": "下一步：注册账号，办公室就绪。",
     "justLooking": "只是看看？不如<link>走进公共办公室</link>。"
@@ -1134,7 +1117,6 @@
     "subtitle": "你的办公室，以及此刻每层楼上的人。",
     "onFloor": "{count, plural, =0 {楼层上没有人} other {楼层上有 # 人}}",
     "newOffice": "新建办公室",
-    "newOfficeBody": "三人免费。楼层、聊天和通话。",
     "lobby": "公共大厅",
     "lobbyBody": "随时来逛逛，认识在场的人。",
     "emptyTitle": "开启你的第一个办公室",
@@ -1158,7 +1140,6 @@
         "people": "在线状态",
         "guests": "访客"
       },
-      "everyOffice": "每个办公室都有",
       "lobbyTitle": "大厅正开放",
       "lobbyBody": "先在真实的楼层里走走，再建自己的办公室。无需账号。",
       "menu": "菜单",
@@ -1189,19 +1170,14 @@
         "无需安装",
         "运行在 Cloudflare 上"
       ],
-      "lobbyLine": "公共大厅现在就开着，无需账号。",
       "lobbyCta": "走进去"
     },
     "features": {
       "proximity": {
-        "title": "走过去就能聊。",
-        "muted": "不用链接，不用约时间。",
-        "body": "走近一个人，一点就能通话。走开后楼层又恢复安静，就像顺路去同事桌边说两句。"
+        "muted": "不用链接，不用约时间。"
       },
       "meetings": {
-        "title": "坐下就开会。",
-        "muted": "起身就离开。",
-        "body": "群组通话在桌边进行。坐下的人自动加入，摄像头以缩略图保持轻量，谁都可以共享屏幕。"
+        "muted": "起身就离开。"
       },
       "chat": {
         "title": "留得住的对话。",
@@ -1279,28 +1255,22 @@
       "muted": "都在一个虚拟办公室里。",
       "items": {
         "screen": {
-          "title": "屏幕共享",
-          "body": "在任何通话或会议中共享窗口。"
+          "title": "屏幕共享"
         },
         "whiteboard": {
-          "title": "白板",
-          "body": "在办公室墙上一起画。"
+          "title": "白板"
         },
         "music": {
-          "title": "音乐",
-          "body": "为房间里的每个人放一首歌。"
+          "title": "音乐"
         },
         "noise": {
-          "title": "降噪",
-          "body": "可选的设备端 AI，去掉键盘声和周围的说话声。"
+          "title": "降噪"
         },
         "mobile": {
-          "title": "在手机上",
-          "body": "出现在拇指下方的摇杆。"
+          "title": "在手机上"
         },
         "languages": {
-          "title": "18 种语言",
-          "body": "从 English、Español 到 日本語 和 العربية。"
+          "title": "18 种语言"
         }
       },
       "also": "每个楼层都有"
@@ -1420,10 +1390,6 @@
       "theme": "主题",
       "language": "语言",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "一整天，都在一层楼里，",
-      "muted": "从第一声招呼到最后一通电话。"
     }
   }
 }

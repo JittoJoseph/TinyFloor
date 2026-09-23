@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const { sam, emma, olivia, jack, lily } = PEOPLE;
 
 /** The room's chip, top left: its name, and who is in. */
-export function RoomChip({ count, className }: { count: number; className?: string }) {
+function RoomChip({ count, className }: { count: number; className?: string }) {
   const t = useTranslations("home.preview");
   return (
     <span
@@ -29,7 +29,7 @@ export function RoomChip({ count, className }: { count: number; className?: stri
 }
 
 /** The dock along the bottom: mic, camera (off), screen, settings. */
-export function Dock({ className }: { className?: string }) {
+function Dock({ className }: { className?: string }) {
   return (
     <span className={cn("pointer-events-none flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-float ", className)}>
       {[Mic, Video, MonitorUp].map((Icon, index) => (

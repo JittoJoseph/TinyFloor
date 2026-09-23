@@ -10,7 +10,6 @@
     "authTitle": "Zaloguj się",
     "authDescription": "Zaloguj się do TinyFloor, aby zachować swoje imię, postać i listę pokoi.",
     "dashboardTitle": "Panel",
-    "roomTitle": "Aktywny pokój",
     "notFoundTitle": "Nie znaleziono strony",
     "lobbyTitle": "Lobby",
     "lobbyDescription": "Wejdź jako gość do darmowego, otwartego lobby TinyFloor. Wybierz postać, poznaj ludzi i wypróbuj rozmowy wideo z bliska w przeglądarce.",
@@ -26,17 +25,12 @@
     "close": "Zamknij",
     "guest": "Gość",
     "you": "Ty",
-    "justNow": "przed chwilą",
     "unknown": "Nieznane",
-    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
     "dashboard": "Panel",
-    "questions": "Pytania",
     "signOut": "Wyloguj się",
     "visitLobby": "Odwiedź lobby",
     "lobby": "Lobby",
     "signIn": "Zaloguj się",
-    "rooms": "Pokoje",
-    "offices": "Twoje biura",
     "account": "Konto",
     "createOffice": "Utwórz biuro",
     "plansSoon": "Większy zespół? Plany z większą liczbą miejsc już wkrótce."
@@ -159,11 +153,6 @@
     "visitLobby": "Odwiedź lobby",
     "invitedAsGuest": "Masz zaproszenie jako gość."
   },
-  "userMenu": {
-    "manageProfile": "Zarządzaj profilem",
-    "visitingAsGuest": "Odwiedzasz jako gość",
-    "keepYourName": "Zachowaj imię i postać"
-  },
   "room": {
     "connecting": "Łączenie...",
     "leave": "Wyjdź",
@@ -225,7 +214,6 @@
     "stopSharing": "Zatrzymaj udostępnianie",
     "muteSpeaker": "Wycisz głośnik",
     "unmuteSpeaker": "Włącz głośnik",
-    "openChat": "Otwórz czat",
     "settings": "Ustawienia",
     "leaveCall": "Opuść rozmowę",
     "leaveMeeting": "Opuść spotkanie"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Poprzednia postać",
     "next": "Następna postać",
-    "select": "Wybierz: {name}",
-    "keyHint": "Użyj strzałek ← →"
+    "select": "Wybierz: {name}"
   },
   "notFound": {
     "title": "Tego pokoju nie ma na mapie.",
@@ -409,7 +396,6 @@
     "home": "Wróć do lobby"
   },
   "landings": {
-    "tryIt": "Wejdź do otwartego biura",
     "create": "Utwórz pokój",
     "free": "Za darmo, w przeglądarce, bez konta.",
     "compare": "Porównania",
@@ -980,7 +966,6 @@
       "passwordRule": "Co najmniej 8 znaków",
       "signsOutOthers": "Tutaj pozostaniesz zalogowany. Wszędzie indziej nastąpi wylogowanie.",
       "cancel": "Anuluj",
-      "pageTitle": "Twoje konto",
       "faceNote": "Twoja twarz powstaje z twojego konta, taka sama na każdym ekranie. Nic nie jest wysyłane ani przechowywane.",
       "themeNote": "System podąża za twoim urządzeniem. Wybór zostaje w tej przeglądarce."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Dołączasz jako {name} ({email})",
       "createAccount": "Utwórz konto",
       "signIn": "Mam konto",
-      "needAccount": "Aby dołączyć do obszaru roboczego, potrzebujesz konta. To zajmie minutę.",
       "readyToJoin": "To ja",
       "accountKeeps": "Konto zapamięta {name} i twoją postać na następny raz.",
       "you": "Ty"
@@ -1079,7 +1063,6 @@
     "continue": "Dalej",
     "create": "Utwórz biuro",
     "creating": "Przygotowujemy je",
-    "firstRoom": "Główne piętro",
     "freePlan": "Za darmo do 3 osób. Bez karty.",
     "accountNext": "Dalej: załóż konto i biuro jest gotowe.",
     "justLooking": "Tylko się rozglądasz? <link>Wejdź do publicznego biura</link>."
@@ -1134,7 +1117,6 @@
     "subtitle": "Twoje biura i kto jest teraz na każdym piętrze.",
     "onFloor": "{count, plural, =0 {Nikogo na piętrze} other {# na piętrze}}",
     "newOffice": "Nowe biuro",
-    "newOfficeBody": "Trzy osoby za darmo. Piętro, czat i rozmowy.",
     "lobby": "Publiczne lobby",
     "lobbyBody": "Wpadnij i poznaj tych, którzy są.",
     "emptyTitle": "Załóż swoje pierwsze biuro",
@@ -1158,7 +1140,6 @@
         "people": "Obecność",
         "guests": "Goście"
       },
-      "everyOffice": "W każdym biurze",
       "lobbyTitle": "Lobby jest otwarte",
       "lobbyBody": "Przejdź się po prawdziwym piętrze, zanim założysz własne. Bez konta.",
       "menu": "Menu",
@@ -1189,19 +1170,14 @@
         "Nic do instalowania",
         "Działa na Cloudflare"
       ],
-      "lobbyLine": "Publiczne lobby jest teraz otwarte. Bez zakładania konta.",
       "lobbyCta": "Wejdź"
     },
     "features": {
       "proximity": {
-        "title": "Podejdź, by porozmawiać.",
-        "muted": "Bez linków, bez planowania.",
-        "body": "Podejdź do kogoś, a rozmowa jest o jedno dotknięcie. Odejdź, a na piętrze znów robi się cicho, jak po wpadnięciu do czyjegoś biurka."
+        "muted": "Bez linków, bez planowania."
       },
       "meetings": {
-        "title": "Usiądź na spotkanie.",
-        "muted": "Wstań, by wyjść.",
-        "body": "Rozmowy grupowe odbywają się przy stole. Kto przy nim siedzi, dołącza, kamery pozostają lekkie jako miniatury, a każdy może udostępnić ekran."
+        "muted": "Wstań, by wyjść."
       },
       "chat": {
         "title": "Rozmowy, które zostają.",
@@ -1279,28 +1255,22 @@
       "muted": "w jednym wirtualnym biurze.",
       "items": {
         "screen": {
-          "title": "Udostępnianie ekranu",
-          "body": "Udostępnij okno w każdej rozmowie lub spotkaniu."
+          "title": "Udostępnianie ekranu"
         },
         "whiteboard": {
-          "title": "Tablica",
-          "body": "Rysujcie razem na ścianie biura."
+          "title": "Tablica"
         },
         "music": {
-          "title": "Muzyka",
-          "body": "Włącz utwór dla wszystkich w pokoju."
+          "title": "Muzyka"
         },
         "noise": {
-          "title": "Usuwanie szumów",
-          "body": "Opcjonalna AI na twoim urządzeniu usuwa klawiaturę i rozmowy w tle."
+          "title": "Usuwanie szumów"
         },
         "mobile": {
-          "title": "Na telefonie",
-          "body": "Joystick, który pojawia się pod kciukiem."
+          "title": "Na telefonie"
         },
         "languages": {
-          "title": "18 języków",
-          "body": "Od English i Español po 日本語 i العربية."
+          "title": "18 języków"
         }
       },
       "also": "Też na każdym piętrze"
@@ -1420,10 +1390,6 @@
       "theme": "Motyw",
       "language": "Język",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Jedno piętro na cały dzień,",
-      "muted": "od pierwszego cześć po ostatnią rozmowę."
     }
   }
 }

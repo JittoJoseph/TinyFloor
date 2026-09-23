@@ -13,11 +13,11 @@ import { notFound } from "next/navigation";
 export const metadata = { robots: { index: false } };
 
 /** Draws a page's social card at 1200 by 630, for scripts/pictures.mjs to photograph. Only in development. */
-export default async function Page({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ page?: string; v?: string }> }) {
+export default async function Page({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ page?: string }> }) {
   if (process.env.NODE_ENV === "production") notFound();
   const { locale } = await params;
   setRequestLocale(locale as Locale);
-  const { page = "home", v = "O1" } = await searchParams;
+  const { page = "home" } = await searchParams;
   const t = await getTranslations();
   const landing = LANDINGS.find((one) => one.slug === page);
   const raw =
@@ -31,9 +31,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const title = raw ? highlight(String(raw)) : null;
   return (
     <div id="card" className="relative h-[630px] w-[1200px] overflow-hidden bg-background font-(family-name:--font-body) text-foreground">
-      {v === "O1" && <Split title={title} labels={{ video: "Video call", audio: "Voice call", message: "Message" }} />}
-      {v === "O2" && <Floating title={title} />}
-      {v === "O3" && <Centered title={title} />}
+      <Split title={title} labels={{ video: t("home.preview.video"), audio: t("home.preview.audio"), message: t("home.preview.message") }} />
     </div>
   );
 }
@@ -83,30 +81,5 @@ function Split({ title, labels }: { title: ReactNode; labels: { video: string; a
         />
       </div>
     </div>
-  );
-}
-
-function Floating({ title }: { title: ReactNode }) {
-  return (
-    <>
-      <FloorScene {...EVERYONE} view={[12, 1, 34, 22]} className="absolute inset-0" />
-      <div className="absolute bottom-10 start-10 max-w-[700px] rounded-[28px] border border-border bg-card/95 p-10 shadow-[0_30px_80px_-30px_rgb(0_0_0/0.5)] backdrop-blur">
-        <Mark className="text-[24px]" />
-        <p className="mt-6 text-balance text-[48px] font-semibold leading-[1.05] tracking-[-0.035em]">{title}</p>
-      </div>
-    </>
-  );
-}
-
-function Centered({ title }: { title: ReactNode }) {
-  return (
-    <>
-      <FloorScene {...EVERYONE} view={[8, 1, 38, 24]} className="absolute inset-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--ui-background)_28%,transparent_78%)] opacity-95" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-24 text-center">
-        <Mark />
-        <p className="mt-8 text-balance text-[58px] font-semibold leading-[1.04] tracking-[-0.035em]">{title}</p>
-      </div>
-    </>
   );
 }

@@ -16,6 +16,7 @@ import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/i
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 import { GoogleButton, googleAvailable } from "./GoogleButton";
+import { OfficeSteps } from "./OfficeSteps";
 
 export type AuthMode = "signin" | "signup";
 
@@ -54,6 +55,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
+  const office = useSyncExternalStore(noChange, pendingOffice, () => "");
   // A guest's name carries over into the account they create, and so does a
   // name typed at a door on the way here. The character isn't asked for: it
   // belongs to walking into a space, not to making an account.
@@ -229,6 +231,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       }
     >
       <div className="entry-rise">
+        {/* On the way to making an office: the second of its three steps. */}
+        {office && <OfficeSteps at={1} className="mb-6" />}
         {/* Two ways in, one panel. Switching keeps what was typed. */}
         <div
           role="tablist"

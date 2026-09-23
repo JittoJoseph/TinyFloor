@@ -37,7 +37,7 @@ export function AuthLayout({
             {tc("back")}
           </Link>
         </header>
-        <main className="flex flex-1 items-center justify-center px-5 pb-10 pt-2 sm:px-8">
+        <main className="flex flex-1 items-start justify-center px-5 pb-10 pt-6 sm:items-center sm:px-8 sm:pt-2">
           <div className="w-full max-w-[380px]">{children}</div>
         </main>
       </section>

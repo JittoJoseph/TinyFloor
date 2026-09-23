@@ -1055,7 +1055,6 @@
     "create": "Create office",
     "creating": "Setting it up",
     "freePlan": "Free for up to 3 people. No card needed.",
-    "accountNext": "Next: make an account, and your office is ready.",
     "justLooking": "Just looking? <link>Walk into the public office</link> instead.",
     "steps": [
       "Name it",
@@ -1063,8 +1062,7 @@
       "Walk in"
     ],
     "asideTitle": "Your office, ready in a minute",
-    "asideBody": "A floor of its own for your team, with chat and meeting tables. Free for up to 3 people.",
-    "nameFirst": "Name your office to continue with Google"
+    "asideBody": "A floor of its own for your team, with chat and meeting tables. Free for up to 3 people."
   },
   "shell": {
     "floor": "Floor",

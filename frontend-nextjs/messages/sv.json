@@ -90,6 +90,8 @@
     "tabSignIn": "Logga in",
     "tabSignUp": "Skapa konto",
     "chooseMode": "Logga in eller skapa ett konto",
+    "continueWithGoogle": "Fortsätt med Google",
+    "or": "eller",
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
@@ -128,7 +130,10 @@
       "name_required": "Välj ett namn som andra ser.",
       "turnstile": "Vi kunde inte kontrollera att du är en människa. Försök igen.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
-      "generic": "Något gick fel. Försök igen."
+      "generic": "Något gick fel. Försök igen.",
+      "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
+      "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
+      "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
     },
     "asideReady": "{office} är nästan klart",
     "asideTitle": "Ditt team, ett plan bort",
@@ -1156,7 +1161,8 @@
         "Inget att installera",
         "Körs på Cloudflare"
       ],
-      "lobbyCta": "Gå in"
+      "lobbyCta": "Gå in",
+      "noAccount": "Inget konto behövs"
     },
     "features": {
       "proximity": {

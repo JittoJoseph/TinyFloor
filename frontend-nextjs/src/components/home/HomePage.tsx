@@ -5,7 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { wholeWords } from "@/lib/words";
-import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, DayCard, Faq, Final, Heading, HeroAsk, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
 import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
@@ -39,22 +39,20 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
 function Hero() {
   const t = useTranslations("home");
   const locale = useLocale();
-  const points = t.raw("hero.points") as string[];
   return (
-    <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
-      <div className="mx-auto flex max-w-[52rem] flex-col items-center text-center">
-        <LobbyPill />
+    <section className={cn(COLUMN, "pt-9 sm:pt-24")}>
+      <div className="mx-auto flex max-w-[52rem] flex-col items-start text-start sm:items-center sm:text-center">
+        <LobbyPill className="hidden sm:inline-flex" />
         <h1
           className={cn(
-            "mt-8 text-balance hyphens-auto text-[42px] font-semibold leading-[1.03] tracking-[-0.038em] sm:text-[64px] sm:leading-[1.02] lg:text-[76px]",
+            "text-balance hyphens-auto text-[40px] font-semibold leading-[1.02] tracking-[-0.038em] sm:mt-8 sm:text-[64px] lg:text-[76px]",
             CJK_HEADLINE,
           )}
         >
           {wholeWords(t("hero.title"), locale)}
         </h1>
-        <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
-        <Actions className="mt-10" />
-        <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
+        <p className="mt-4 max-w-[38rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[19px]">{t("hero.body")}</p>
+        <HeroAsk />
       </div>
       <ProductPreview className="mt-14 sm:mt-20" />
     </section>

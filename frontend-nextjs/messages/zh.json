@@ -90,6 +90,8 @@
     "tabSignIn": "登录",
     "tabSignUp": "创建账号",
     "chooseMode": "登录或创建账号",
+    "continueWithGoogle": "使用 Google 继续",
+    "or": "或",
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
@@ -128,7 +130,10 @@
       "name_required": "请取一个别人能看到的名字。",
       "turnstile": "无法确认你是真人，请重试。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
-      "generic": "出了点问题，请重试。"
+      "generic": "出了点问题，请重试。",
+      "google_failed": "Google 登录未成功，请重试。",
+      "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
+      "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
     },
     "asideReady": "{office} 快准备好了",
     "asideTitle": "你的团队，只隔一层楼",
@@ -1156,7 +1161,8 @@
         "无需安装",
         "运行在 Cloudflare 上"
       ],
-      "lobbyCta": "走进去"
+      "lobbyCta": "走进去",
+      "noAccount": "无需注册账号"
     },
     "features": {
       "proximity": {

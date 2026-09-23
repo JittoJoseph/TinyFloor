@@ -90,6 +90,8 @@
     "tabSignIn": "Zaloguj się",
     "tabSignUp": "Utwórz konto",
     "chooseMode": "Zaloguj się lub utwórz konto",
+    "continueWithGoogle": "Kontynuuj z Google",
+    "or": "lub",
     "signInTitle": "Witaj ponownie",
     "signInSubtitle": "Zaloguj się, aby wrócić do biura swojego zespołu.",
     "signUpTitle": "Utwórz konto",
@@ -128,7 +130,10 @@
       "name_required": "Wybierz imię, które zobaczą inni.",
       "turnstile": "Nie udało się potwierdzić, że jesteś człowiekiem. Spróbuj ponownie.",
       "network": "Nie można połączyć się z TinyFloor. Sprawdź połączenie i spróbuj ponownie.",
-      "generic": "Coś poszło nie tak. Spróbuj ponownie."
+      "generic": "Coś poszło nie tak. Spróbuj ponownie.",
+      "google_failed": "Logowanie przez Google się nie udało. Spróbuj ponownie.",
+      "google_unverified": "Najpierw potwierdź adres e-mail w Google, a potem spróbuj ponownie.",
+      "google_mismatch": "Ten adres e-mail jest powiązany z innym kontem Google."
     },
     "asideReady": "{office} jest prawie gotowe",
     "asideTitle": "Twój zespół, jedno piętro stąd",
@@ -1156,7 +1161,8 @@
         "Nic do instalowania",
         "Działa na Cloudflare"
       ],
-      "lobbyCta": "Wejdź"
+      "lobbyCta": "Wejdź",
+      "noAccount": "Bez zakładania konta"
     },
     "features": {
       "proximity": {

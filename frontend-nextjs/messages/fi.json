@@ -90,6 +90,8 @@
     "tabSignIn": "Kirjaudu",
     "tabSignUp": "Luo tili",
     "chooseMode": "Kirjaudu sisään tai luo tili",
+    "continueWithGoogle": "Jatka Googlella",
+    "or": "tai",
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
@@ -128,7 +130,10 @@
       "name_required": "Valitse nimi, jonka muut näkevät.",
       "turnstile": "Emme voineet varmistaa, että olet ihminen. Yritä uudelleen.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
-      "generic": "Jokin meni vikaan. Yritä uudelleen."
+      "generic": "Jokin meni vikaan. Yritä uudelleen.",
+      "google_failed": "Kirjautuminen Googlella ei onnistunut. Yritä uudelleen.",
+      "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
+      "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
     },
     "asideReady": "{office} on melkein valmis",
     "asideTitle": "Tiimisi, yhden kerroksen päässä",
@@ -1156,7 +1161,8 @@
         "Ei mitään asennettavaa",
         "Toimii Cloudflaren päällä"
       ],
-      "lobbyCta": "Astu sisään"
+      "lobbyCta": "Astu sisään",
+      "noAccount": "Tiliä ei tarvita"
     },
     "features": {
       "proximity": {

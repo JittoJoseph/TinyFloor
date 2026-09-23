@@ -90,6 +90,8 @@
     "tabSignIn": "Iniciar sesión",
     "tabSignUp": "Crear cuenta",
     "chooseMode": "Inicia sesión o crea una cuenta",
+    "continueWithGoogle": "Continuar con Google",
+    "or": "o",
     "signInTitle": "Hola de nuevo",
     "signInSubtitle": "Inicia sesión para volver a la oficina de tu equipo.",
     "signUpTitle": "Crea tu cuenta",
@@ -128,7 +130,10 @@
       "name_required": "Elige un nombre que verán los demás.",
       "turnstile": "No pudimos comprobar que eres humano. Inténtalo de nuevo.",
       "network": "No se puede conectar con TinyFloor. Revisa tu conexión y vuelve a intentarlo.",
-      "generic": "Algo salió mal. Inténtalo de nuevo."
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "google_failed": "No se pudo iniciar sesión con Google. Inténtalo de nuevo.",
+      "google_unverified": "Primero verifica tu correo con Google y vuelve a intentarlo.",
+      "google_mismatch": "Este correo está vinculado a otra cuenta de Google."
     },
     "asideReady": "{office} está casi lista",
     "asideTitle": "Tu equipo, a una planta de distancia",
@@ -1156,7 +1161,8 @@
         "Nada que instalar",
         "Funciona sobre Cloudflare"
       ],
-      "lobbyCta": "Entrar"
+      "lobbyCta": "Entrar",
+      "noAccount": "Sin necesidad de cuenta"
     },
     "features": {
       "proximity": {

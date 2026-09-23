@@ -90,6 +90,8 @@
     "tabSignIn": "התחברות",
     "tabSignUp": "יצירת חשבון",
     "chooseMode": "התחברות או יצירת חשבון",
+    "continueWithGoogle": "המשך עם Google",
+    "or": "או",
     "signInTitle": "טוב לראות אותך שוב",
     "signInSubtitle": "התחברו כדי לחזור למשרד של הצוות.",
     "signUpTitle": "יצירת חשבון",
@@ -128,7 +130,10 @@
       "name_required": "בחרו שם שאחרים יראו.",
       "turnstile": "לא הצלחנו לוודא שאתם אנושיים. נסו שוב.",
       "network": "אין חיבור ל-TinyFloor. בדקו את החיבור ונסו שוב.",
-      "generic": "משהו השתבש. נסו שוב."
+      "generic": "משהו השתבש. נסו שוב.",
+      "google_failed": "ההתחברות עם Google לא הצליחה. נסו שוב.",
+      "google_unverified": "אמתו קודם את האימייל שלכם ב-Google, ואז נסו שוב.",
+      "google_mismatch": "האימייל הזה מקושר לחשבון Google אחר."
     },
     "asideReady": "{office} כמעט מוכן",
     "asideTitle": "הצוות שלך, קומה אחת מכאן",
@@ -1156,7 +1161,8 @@
         "אין מה להתקין",
         "רץ על Cloudflare"
       ],
-      "lobbyCta": "היכנסו"
+      "lobbyCta": "היכנסו",
+      "noAccount": "בלי צורך בחשבון"
     },
     "features": {
       "proximity": {

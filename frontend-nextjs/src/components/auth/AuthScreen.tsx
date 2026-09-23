@@ -15,6 +15,7 @@ import { AuthLayout } from "./AuthLayout";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
+import { GoogleButton, googleAvailable } from "./GoogleButton";
 
 export type AuthMode = "signin" | "signup";
 
@@ -37,7 +38,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; redirect: string }) {
   const t = useTranslations("auth");
   const router = useRouter();
-  const { user, isLoading, hasAccount, signIn, signUp } = useAuth();
+  const { user, isLoading, hasAccount, signIn, signUp, signInWithGoogle } = useAuth();
   const ids = useId();
 
   const [mode, setMode] = useState<AuthMode>(initialMode);
@@ -49,6 +50,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [formError, setFormError] = useState<React.ReactNode>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [googling, setGoogling] = useState(false);
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
@@ -133,6 +135,9 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       password_too_long: t("errors.password_too_long"),
       password_blank: t("errors.password_blank"),
       name_required: t("errors.name_required"),
+      google_failed: t("errors.google_failed"),
+      google_unverified: t("errors.google_unverified"),
+      google_mismatch: t("errors.google_mismatch"),
       network: t("errors.network"),
     };
     const message = code.startsWith("turnstile") ? t("errors.turnstile") : (messages[code] ?? t("errors.generic"));
@@ -187,6 +192,19 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       if (signingUp) turnstile.reset();
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  /** Google's popup came back with a code: the API signs in, links or makes the account, and the effect above moves on. */
+  const withGoogle = async (code: string) => {
+    setFormError(null);
+    setGoogling(true);
+    try {
+      await signInWithGoogle(code);
+    } catch (error) {
+      explain(error);
+    } finally {
+      setGoogling(false);
     }
   };
 
@@ -251,6 +269,15 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             <Face seed={guest.id} size={32} />
             <span className="min-w-0">{t("guestCarryOver", { name: guest.displayName })}</span>
           </p>
+        )}
+
+        {googleAvailable && (
+          <>
+            <GoogleButton label={t("continueWithGoogle")} busy={googling} onCode={withGoogle} onError={() => setFormError(t("errors.google_failed"))} />
+            <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+              {t("or")}
+            </p>
+          </>
         )}
 
         <form onSubmit={submit} noValidate className="space-y-4">

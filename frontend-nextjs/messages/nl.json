@@ -90,6 +90,8 @@
     "tabSignIn": "Inloggen",
     "tabSignUp": "Account maken",
     "chooseMode": "Log in of maak een account",
+    "continueWithGoogle": "Doorgaan met Google",
+    "or": "of",
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
@@ -128,7 +130,10 @@
       "name_required": "Kies een naam die anderen zien.",
       "turnstile": "We konden niet controleren of je een mens bent. Probeer het opnieuw.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
-      "generic": "Er ging iets mis. Probeer het opnieuw."
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "google_failed": "Inloggen met Google is niet gelukt. Probeer het opnieuw.",
+      "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
+      "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
     },
     "asideReady": "{office} is bijna klaar",
     "asideTitle": "Je team, één vloer verderop",
@@ -1156,7 +1161,8 @@
         "Niets te installeren",
         "Draait op Cloudflare"
       ],
-      "lobbyCta": "Loop binnen"
+      "lobbyCta": "Loop binnen",
+      "noAccount": "Geen account nodig"
     },
     "features": {
       "proximity": {

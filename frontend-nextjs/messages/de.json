@@ -90,6 +90,8 @@
     "tabSignIn": "Anmelden",
     "tabSignUp": "Konto erstellen",
     "chooseMode": "Anmelden oder Konto erstellen",
+    "continueWithGoogle": "Weiter mit Google",
+    "or": "oder",
     "signInTitle": "Willkommen zurück",
     "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
     "signUpTitle": "Konto erstellen",
@@ -128,7 +130,10 @@
       "name_required": "Wähle einen Namen, den andere sehen.",
       "turnstile": "Wir konnten nicht prüfen, ob du ein Mensch bist. Versuch es noch einmal.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
-      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal.",
+      "google_failed": "Die Anmeldung mit Google hat nicht geklappt. Versuch es noch einmal.",
+      "google_unverified": "Bestätige zuerst deine E-Mail-Adresse bei Google und versuch es dann noch einmal.",
+      "google_mismatch": "Diese E-Mail-Adresse ist mit einem anderen Google-Konto verknüpft."
     },
     "asideReady": "{office} ist fast fertig",
     "asideTitle": "Dein Team, nur eine Fläche entfernt",
@@ -1156,7 +1161,8 @@
         "Nichts zu installieren",
         "Läuft auf Cloudflare"
       ],
-      "lobbyCta": "Reingehen"
+      "lobbyCta": "Reingehen",
+      "noAccount": "Kein Konto nötig"
     },
     "features": {
       "proximity": {

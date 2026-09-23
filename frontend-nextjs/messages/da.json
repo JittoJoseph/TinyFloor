@@ -90,6 +90,8 @@
     "tabSignIn": "Log ind",
     "tabSignUp": "Opret konto",
     "chooseMode": "Log ind eller opret en konto",
+    "continueWithGoogle": "Fortsæt med Google",
+    "or": "eller",
     "signInTitle": "Velkommen tilbage",
     "signInSubtitle": "Log ind for at komme tilbage til dit teams kontor.",
     "signUpTitle": "Opret din konto",
@@ -128,7 +130,10 @@
       "name_required": "Vælg et navn, som andre kan se.",
       "turnstile": "Vi kunne ikke bekræfte, at du er et menneske. Prøv igen.",
       "network": "TinyFloor kan ikke nås. Tjek din forbindelse, og prøv igen.",
-      "generic": "Noget gik galt. Prøv igen."
+      "generic": "Noget gik galt. Prøv igen.",
+      "google_failed": "Login med Google gik ikke igennem. Prøv igen.",
+      "google_unverified": "Bekræft først din e-mail hos Google, og prøv så igen.",
+      "google_mismatch": "Denne e-mail er knyttet til en anden Google-konto."
     },
     "asideReady": "{office} er næsten klar",
     "asideTitle": "Dit team, én etage væk",
@@ -1156,7 +1161,8 @@
         "Intet at installere",
         "Kører på Cloudflare"
       ],
-      "lobbyCta": "Gå ind"
+      "lobbyCta": "Gå ind",
+      "noAccount": "Ingen konto nødvendig"
     },
     "features": {
       "proximity": {

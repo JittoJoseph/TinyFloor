@@ -148,7 +148,6 @@
     "openingDoor": "De deur gaat open",
     "walkIn": "Naar binnen",
     "guestNote": "Je komt binnen als gast. <link>Log in</link> om je account te gebruiken.",
-    "guestKeep": "Je bent gast. <link>Maak een account</link> om je naam en personage te houden.",
     "copyInvite": "Uitnodigingslink kopiëren",
     "continue": "Verder",
     "walkingInAs": "Je loopt binnen als {name}"
@@ -946,6 +945,7 @@
       "saved": "Opgeslagen",
       "save": "Opslaan",
       "character": "Personage",
+      "characterNote": "Wie je bent als je binnenloopt, in de lobby en in elk kantoor.",
       "passwordTitle": "Wijzig je wachtwoord",
       "passwordDescription": "Vul je huidige wachtwoord in en kies daarna een nieuw.",
       "passwordChanged": "Je wachtwoord is gewijzigd.",
@@ -1042,8 +1042,7 @@
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
     "gone": "Het is gesloten, of je bent geen lid meer.",
-    "backToOffices": "Terug naar je kantoren",
-    "door": "{members, plural, one {# lid} other {# leden}} · {here, plural, =0 {nog niemand op de vloer} other {# nu op de vloer}}"
+    "backToOffices": "Terug naar je kantoren"
   },
   "create": {
     "eyebrow": "Je eigen kantoor",

@@ -14,9 +14,9 @@ import { ErrorNote } from "./ErrorNote";
 import { Turnstile, useTurnstileToken } from "@/components/auth/Turnstile";
 
 /**
- * The step before a room: your name, then who you'll be in there. Without a
- * session it makes you a guest. With an account the name is already yours, so
- * only the character is asked for.
+ * The step before a room for someone new: a name, then who they'll be in
+ * there, and they're a guest. Anyone with a session walks straight in as the
+ * character on their account.
  */
 export function WalkIn({
   eyebrow,
@@ -40,8 +40,7 @@ export function WalkIn({
   const tAuth = useTranslations("auth");
   const tc = useTranslations("common");
   const pathname = usePathname();
-  const { user, isLoading, continueAsGuest, updateProfile } = useAuth();
-  const account = !!user && !user.guest;
+  const { isLoading, continueAsGuest } = useAuth();
 
   const [typedName, setTypedName] = useState<string | null>(null);
   const [pickedCharacter, setPickedCharacter] = useState<string | null>(null);
@@ -55,10 +54,9 @@ export function WalkIn({
   // What this browser remembers is only read once the session is known, so the
   // first render still matches what the server sent.
   const saved = isLoading ? { name: "", character: "Adam" } : readIdentity();
-  const name = typedName ?? user?.displayName ?? saved.name;
-  const character = cleanCharacter(pickedCharacter ?? user?.character ?? saved.character);
-  // Someone signed in has already given their name; only the character is left.
-  const onCharacterStep = wentOn ?? account;
+  const name = typedName ?? saved.name;
+  const character = cleanCharacter(pickedCharacter ?? saved.character);
+  const onCharacterStep = wentOn ?? false;
 
   const setName = setTypedName;
   const setCharacter = setPickedCharacter;
@@ -70,16 +68,12 @@ export function WalkIn({
     setError("");
 
     try {
-      if (!user) {
-        const token = await turnstile.waitForToken();
-        if (!token) {
-          setError(tAuth("errors.turnstile"));
-          return;
-        }
-        await continueAsGuest({ name: trimmed, character, turnstileToken: token });
-      } else if (trimmed !== user.displayName || character !== user.character) {
-        await updateProfile({ displayName: trimmed, character });
+      const token = await turnstile.waitForToken();
+      if (!token) {
+        setError(tAuth("errors.turnstile"));
+        return;
       }
+      await continueAsGuest({ name: trimmed, character, turnstileToken: token });
       saveIdentity({ name: trimmed, character });
       onReady();
     } catch (err) {
@@ -93,7 +87,7 @@ export function WalkIn({
               ? tAuth("errors.too_many_attempts")
               : tAuth("errors.generic"),
       );
-      if (!user) turnstile.reset();
+      turnstile.reset();
     } finally {
       setBusy(false);
     }
@@ -139,21 +133,17 @@ export function WalkIn({
                 name={trimmed}
                 character={character}
                 onCharacter={setCharacter}
-                onBack={
-                  account
-                    ? undefined
-                    : () => {
-                        setWentBack(true);
-                        setOnCharacterStep(false);
-                      }
-                }
+                onBack={() => {
+                  setWentBack(true);
+                  setOnCharacterStep(false);
+                }}
               />
             ) : (
               <NameStep name={name} onName={setName} />
             )}
           </div>
 
-          {onCharacterStep && !isLoading && !user && (
+          {onCharacterStep && !isLoading && (
             <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
           )}
 
@@ -174,12 +164,12 @@ export function WalkIn({
           </ActionButton>
         </form>
 
-        {!isLoading && !account && (
+        {!isLoading && (
           <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
-            {t.rich(user ? "guestKeep" : "guestNote", {
+            {t.rich("guestNote", {
               link: (chunks) => (
                 <Link
-                  href={`/auth?${new URLSearchParams({ redirect: pathname, ...(user ? { mode: "signup" } : {}) })}`}
+                  href={`/auth?${new URLSearchParams({ redirect: pathname })}`}
                   className="underline underline-offset-2 hover:opacity-100"
                 >
                   {chunks}

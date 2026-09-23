@@ -148,7 +148,6 @@
     "openingDoor": "正在开门",
     "walkIn": "进入",
     "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
-    "guestKeep": "你是访客。<link>创建账号</link>即可保留名字和角色。",
     "copyInvite": "复制邀请链接",
     "continue": "继续",
     "walkingInAs": "以 {name} 的身份进入"
@@ -946,6 +945,7 @@
       "saved": "已保存",
       "save": "保存",
       "character": "角色",
+      "characterNote": "你在大厅和每个办公室里的角色。",
       "passwordTitle": "修改你的密码",
       "passwordDescription": "先输入当前密码，再设置一个新密码。",
       "passwordChanged": "你的密码已修改。",
@@ -1042,8 +1042,7 @@
     "office": "办公室",
     "goneTitle": "这个办公室不在了",
     "gone": "它已关闭，或者你不再是成员。",
-    "backToOffices": "回到你的办公室",
-    "door": "{members, plural, other {# 名成员}} · {here, plural, =0 {楼层上还没有人} other {此刻楼层上有 # 人}}"
+    "backToOffices": "回到你的办公室"
   },
   "create": {
     "eyebrow": "你自己的办公室",

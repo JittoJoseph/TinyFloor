@@ -32,7 +32,9 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
   const { user } = useAuth();
   const [preview, setPreview] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
-  const [inside, setInside] = useState(false);
+  const [walkedIn, setWalkedIn] = useState(false);
+  // Someone with a session already has a name and a character, so the door is only for someone new.
+  const inside = walkedIn || !!user;
   const ts = useTranslations("shell");
   const pathname = usePathname();
   const onSettings = useSearchParams().get("view") === "settings";
@@ -121,7 +123,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
     <WalkIn
       title={preview.officeName}
       subtitle={t("invitedAsGuest")}
-      onReady={() => setInside(true)}
+      onReady={() => setWalkedIn(true)}
     />
   );
 }

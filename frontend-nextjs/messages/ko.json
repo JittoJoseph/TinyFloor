@@ -148,7 +148,6 @@
     "openingDoor": "문을 여는 중",
     "walkIn": "입장하기",
     "guestNote": "게스트로 들어가요. <link>로그인</link>하면 계정을 쓸 수 있어요.",
-    "guestKeep": "게스트로 참여 중이에요. <link>계정을 만들면</link> 이름과 캐릭터를 유지할 수 있어요.",
     "copyInvite": "초대 링크 복사",
     "continue": "계속",
     "walkingInAs": "{name}(으)로 입장"
@@ -946,6 +945,7 @@
       "saved": "저장됨",
       "save": "저장",
       "character": "캐릭터",
+      "characterNote": "로비와 모든 오피스에서 쓰는 캐릭터예요.",
       "passwordTitle": "비밀번호 변경",
       "passwordDescription": "현재 비밀번호를 입력한 다음 새 비밀번호를 정하세요.",
       "passwordChanged": "비밀번호가 변경되었어요.",
@@ -1042,8 +1042,7 @@
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",
     "gone": "닫혔거나, 더 이상 멤버가 아닙니다.",
-    "backToOffices": "내 오피스로",
-    "door": "{members, plural, other {멤버 #명}} · {here, plural, =0 {아직 층에 아무도 없음} other {지금 층에 #명}}"
+    "backToOffices": "내 오피스로"
   },
   "create": {
     "eyebrow": "내 오피스",

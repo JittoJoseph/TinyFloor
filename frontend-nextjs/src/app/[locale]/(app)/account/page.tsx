@@ -7,7 +7,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { AccountPanel } from "@/components/account/AccountPanel";
+import { AccountPanel, CharacterPanel } from "@/components/account/AccountPanel";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 
@@ -49,6 +49,7 @@ export default function AccountPage() {
 
             <div className="space-y-4">
               <AccountPanel />
+              <CharacterPanel />
 
               <section className="rounded-[1.25rem] border border-border bg-card p-5 sm:p-6">
                 <h2 className="text-[15px] font-semibold text-foreground">{ts("theme")}</h2>

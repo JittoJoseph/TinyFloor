@@ -148,7 +148,6 @@
     "openingDoor": "Abrindo a porta",
     "walkIn": "Entrar",
     "guestNote": "Entrando como convidado. <link>Entre</link> para usar sua conta.",
-    "guestKeep": "Você é convidado. <link>Crie uma conta</link> para manter seu nome e personagem.",
     "copyInvite": "Copiar link de convite",
     "continue": "Continuar",
     "walkingInAs": "Entrando como {name}"
@@ -946,6 +945,7 @@
       "saved": "Salvo",
       "save": "Salvar",
       "character": "Personagem",
+      "characterNote": "Quem você é ao entrar, no lobby e em todo escritório.",
       "passwordTitle": "Altere sua senha",
       "passwordDescription": "Digite sua senha atual e depois escolha uma nova.",
       "passwordChanged": "Sua senha foi alterada.",
@@ -1042,8 +1042,7 @@
     "office": "Escritório",
     "goneTitle": "Este escritório já não existe",
     "gone": "Foi fechado, ou já não és membro.",
-    "backToOffices": "Voltar aos teus escritórios",
-    "door": "{members, plural, one {# membro} other {# membros}} · {here, plural, =0 {ninguém no andar ainda} other {# no andar agora}}"
+    "backToOffices": "Voltar aos teus escritórios"
   },
   "create": {
     "eyebrow": "Seu próprio escritório",

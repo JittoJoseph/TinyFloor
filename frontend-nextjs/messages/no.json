@@ -148,7 +148,6 @@
     "openingDoor": "Åpner døren",
     "walkIn": "Gå inn",
     "guestNote": "Du går inn som gjest. <link>Logg inn</link> for å bruke kontoen din.",
-    "guestKeep": "Du er gjest. <link>Opprett en konto</link> for å beholde navn og figur.",
     "copyInvite": "Kopier invitasjonslenke",
     "continue": "Videre",
     "walkingInAs": "Du går inn som {name}"
@@ -946,6 +945,7 @@
       "saved": "Lagret",
       "save": "Lagre",
       "character": "Figur",
+      "characterNote": "Den du går inn som, i lobbyen og på hvert kontor.",
       "passwordTitle": "Endre passordet ditt",
       "passwordDescription": "Skriv inn det nåværende passordet ditt, og velg så et nytt.",
       "passwordChanged": "Passordet ditt er endret.",
@@ -1042,8 +1042,7 @@
     "office": "Kontor",
     "goneTitle": "Dette kontoret finnes ikke lenger",
     "gone": "Det ble lukket, eller du er ikke medlem lenger.",
-    "backToOffices": "Tilbake til kontorene dine",
-    "door": "{members, plural, one {# medlem} other {# medlemmer}} · {here, plural, =0 {ingen på gulvet ennå} other {# på gulvet nå}}"
+    "backToOffices": "Tilbake til kontorene dine"
   },
   "create": {
     "eyebrow": "Ditt eget kontor",

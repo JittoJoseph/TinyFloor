@@ -148,7 +148,6 @@
     "openingDoor": "Opening the door",
     "walkIn": "Walk in",
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
-    "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character.",
     "copyInvite": "Copy invite link",
     "continue": "Continue",
     "walkingInAs": "Walking in as {name}"
@@ -946,6 +945,7 @@
       "saved": "Saved",
       "save": "Save",
       "character": "Character",
+      "characterNote": "Who you walk in as, in the lobby and every office.",
       "passwordTitle": "Change your password",
       "passwordDescription": "Enter your current password, then choose a new one.",
       "passwordChanged": "Your password was changed.",
@@ -1042,8 +1042,7 @@
     "office": "Office",
     "goneTitle": "This office is gone",
     "gone": "It was closed, or you are no longer a member.",
-    "backToOffices": "Back to your offices",
-    "door": "{members, plural, one {# member} other {# members}} · {here, plural, =0 {nobody on the floor yet} other {# on the floor now}}"
+    "backToOffices": "Back to your offices"
   },
   "create": {
     "eyebrow": "Your own office",

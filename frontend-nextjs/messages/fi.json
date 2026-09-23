@@ -148,7 +148,6 @@
     "openingDoor": "Ovi avautuu",
     "walkIn": "Astu sisään",
     "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
-    "guestKeep": "Olet vieras. <link>Luo tili</link>, niin nimesi ja hahmosi säilyvät.",
     "copyInvite": "Kopioi kutsulinkki",
     "continue": "Jatka",
     "walkingInAs": "Astut sisään nimellä {name}"
@@ -946,6 +945,7 @@
       "saved": "Tallennettu",
       "save": "Tallenna",
       "character": "Hahmo",
+      "characterNote": "Hahmo, jona kävelet sisään aulaan ja jokaiseen toimistoon.",
       "passwordTitle": "Vaihda salasanasi",
       "passwordDescription": "Anna nykyinen salasanasi ja valitse sitten uusi.",
       "passwordChanged": "Salasanasi on vaihdettu.",
@@ -1042,8 +1042,7 @@
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
     "gone": "Se suljettiin, tai et ole enää jäsen.",
-    "backToOffices": "Takaisin toimistoihisi",
-    "door": "{members, plural, one {# jäsen} other {# jäsentä}} · {here, plural, =0 {kerroksella ei vielä ketään} other {# kerroksella nyt}}"
+    "backToOffices": "Takaisin toimistoihisi"
   },
   "create": {
     "eyebrow": "Oma toimistosi",

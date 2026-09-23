@@ -148,7 +148,6 @@
     "openingDoor": "Öppnar dörren",
     "walkIn": "Gå in",
     "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
-    "guestKeep": "Du är gäst. <link>Skapa ett konto</link> för att behålla namn och figur.",
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
     "walkingInAs": "Du går in som {name}"
@@ -946,6 +945,7 @@
       "saved": "Sparat",
       "save": "Spara",
       "character": "Figur",
+      "characterNote": "Den du går in som, i lobbyn och på varje kontor.",
       "passwordTitle": "Byt ditt lösenord",
       "passwordDescription": "Ange ditt nuvarande lösenord och välj sedan ett nytt.",
       "passwordChanged": "Ditt lösenord har ändrats.",
@@ -1042,8 +1042,7 @@
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
     "gone": "Det stängdes, eller så är du inte medlem längre.",
-    "backToOffices": "Tillbaka till dina kontor",
-    "door": "{members, plural, one {# medlem} other {# medlemmar}} · {here, plural, =0 {ingen på golvet än} other {# på golvet nu}}"
+    "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {
     "eyebrow": "Ditt eget kontor",

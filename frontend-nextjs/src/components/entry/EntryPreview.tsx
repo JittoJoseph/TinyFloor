@@ -3,11 +3,22 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Link2 } from "lucide-react";
-import { OfficeScene, Occupant } from "@/components/OfficeScene";
+import { FloorScene } from "@/components/floor/FloorScene";
 import { shareUrl } from "@/lib/links";
 
+/** Who stands in the middle of the preview: you, as you're being made. */
+export interface Arrival {
+  character: string;
+  name?: string;
+  running?: boolean;
+}
+
+/** An open stretch of the hall, the arrival standing in the middle of it. */
+const VIEW: [number, number, number, number] = [17, 8, 15, 12];
+const SPOT: [number, number] = [24, 13];
+
 export const EntryPreview: React.FC<{
-  occupants: Occupant[];
+  occupants: Arrival[];
   inviteLink?: string;
 }> = ({ occupants, inviteLink }) => {
   const t = useTranslations("entry");
@@ -37,14 +48,12 @@ export const EntryPreview: React.FC<{
   };
 
   return (
-    <OfficeScene
+    <FloorScene
       className="aspect-[16/10] sm:aspect-[7/5] lg:aspect-auto lg:h-full rounded-[1.35rem] border border-border"
-      // Taller than the frame, so the map's top and bottom walls stay out of view.
-      zoom="auto max(520px, 124%)"
-      focus="42% 79%"
-      occupants={occupants}
-    >
-      {inviteLink && (
+      view={VIEW}
+      standing={occupants.map((one) => ({ ...one, at: SPOT }))}
+      over={
+        inviteLink && (
         <button
           type="button"
           onClick={copy}
@@ -69,7 +78,8 @@ export const EntryPreview: React.FC<{
             />
           </span>
         </button>
-      )}
-    </OfficeScene>
+        )
+      }
+    />
   );
 };

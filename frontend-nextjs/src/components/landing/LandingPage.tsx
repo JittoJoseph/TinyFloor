@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
@@ -30,24 +29,22 @@ import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey }
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/AppShell";
-import { PixelAvatar } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
+import { emphasised } from "@/lib/words";
 import {
   CJK_HEADLINE,
   COLUMN,
   Actions,
-  DayCard,
   Faq,
   Final,
   Heading,
   MarketingShell,
   ProductPreview,
   RuledSheet,
+  Trust,
   quiet,
 } from "@/components/home/Blocks";
-import { Frame } from "@/components/home/previews/Frame";
-import { FloorPreview } from "@/components/home/previews/FloorPreview";
-import { GuestPreview } from "@/components/home/previews/GuestPreview";
+import { Moments, Steps } from "@/components/home/Moments";
 
 interface LandingCopy {
   subtitle: string;
@@ -70,20 +67,17 @@ const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
   proximityChat: [Footprints, Users, ShieldCheck],
 };
 
-/** The words of a page's headline that name what it's about, in the brand colour. */
-const accent = (chunks: ReactNode) => <span className="text-brand">{chunks}</span>;
-
 /**
  * One page written for a search, in the site's design: the pitch over the
- * product itself, three reasons, a side-by-side table on comparison pages, how
- * it works, the questions people ask, where to go next, and the last ask.
+ * product itself, three reasons, a side-by-side table on comparison pages,
+ * then the home page's quick question, three steps and trust, the questions
+ * people ask, where to go next, and the last ask.
  */
 export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
   const th = await getTranslations("home");
-  const copy = t.raw(`pages.${page.key}`) as LandingCopy;
+  const copy = t.raw(`pages.${page.key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
   const path = `/${page.slug}`;
-  const steps = t.raw("steps") as Array<{ title: string; body: string }>;
   const icons = POINT_ICONS[page.key];
   const points = th.raw("hero.points") as string[];
 
@@ -110,7 +104,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
               CJK_HEADLINE,
             )}
           >
-            {t.rich(`pages.${page.key}.title`, { em: accent })}
+            {emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "text-brand")}
           </h1>
           <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{copy.subtitle}</p>
           <Actions className="mt-10" />
@@ -131,40 +125,13 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
       {page.competitor && copy.them && <Compare name={page.competitor} them={copy.them} t={t} />}
 
-      <section id="how-it-works" className={cn(COLUMN, "scroll-mt-24 pt-24 sm:pt-32")}>
-        <Heading title={t.rich("stepsTitle", { em: quiet })} />
-        <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
-          {steps.map((step, index) => (
-            <DayCard
-              key={step.title}
-              small
-              title={step.title}
-              body={step.body}
-              badge={
-                <span className="mb-3 flex size-7 items-center justify-center rounded-full bg-foreground text-[12.5px] font-bold text-background">
-                  {index + 1}
-                </span>
-              }
-            >
-              {index === 0 && (
-                <Frame active="people" rail={false} className="h-full">
-                  <GuestPreview />
-                </Frame>
-              )}
-              {index === 1 && <CharacterPicker />}
-              {index === 2 && (
-                <Frame active="floor" rail={false} className="h-full">
-                  <FloorPreview near />
-                </Frame>
-              )}
-            </DayCard>
-          ))}
-        </div>
-      </section>
-
-      <div className="pt-24 sm:pt-32">
-        <Faq title={t.rich("faqTitle", { em: quiet })} items={copy.faq} />
+      <Moments />
+      <div id="how-it-works" className="scroll-mt-24 pt-24 sm:pt-32">
+        <Steps />
       </div>
+      <Trust />
+
+      <Faq title={t.rich("faqTitle", { em: quiet })} items={copy.faq} />
 
       <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
         <Heading title={t.rich("relatedTitle", { em: quiet })} />
@@ -251,32 +218,5 @@ function Compare({ name, them, t }: { name: string; them: NonNullable<LandingCop
       </dl>
       <p className="mt-4 px-1 text-[13px] text-faint">{t("checked", { name })}</p>
     </section>
-  );
-}
-
-const PICKER = ["Adam", "Amelia", "Alex", "Bob"];
-
-/** Choosing who you'll be: four characters on the office floor, one picked, and a name being typed. */
-function CharacterPicker() {
-  return (
-    <div className="flex h-full flex-col items-center justify-center gap-4 rounded-[18px] border border-border bg-card p-5 font-(family-name:--font-app)">
-      <div className="flex gap-2">
-        {PICKER.map((character, index) => (
-          <span
-            key={character}
-            className={cn(
-              "relative h-16 w-12 overflow-hidden rounded-xl border",
-              index === 1 ? "border-brand bg-brand/10 ring-2 ring-brand/20" : "border-border bg-background",
-            )}
-          >
-            <PixelAvatar character={character} width={24} style={{ left: "50%", top: "92%" }} />
-          </span>
-        ))}
-      </div>
-      <span className="flex h-9 w-full max-w-[14rem] items-center rounded-lg border border-border bg-background px-3 text-[13px] font-medium">
-        Grace
-        <span className="ms-0.5 h-4 w-px animate-pulse bg-brand" />
-      </span>
-    </div>
   );
 }

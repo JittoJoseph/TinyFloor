@@ -15,8 +15,10 @@ frontend-nextjs/public/tilesets/textures/*.png
 frontend-nextjs/public/tilesets/items/*.png
 ```
 
-The map (`tilesets/office-map.tmj`) and the rendered screenshots (`office.png`,
-`og.png`) are our own work and stay in the repository.
+The map (`tilesets/office-map.tmj`) and the pictures rendered from it
+(`floor.webp` and the social cards in `og/`, drawn by
+`frontend-nextjs/scripts/pictures.mjs`) are our own work and stay in the
+repository.
 
 ## How a build gets them
 

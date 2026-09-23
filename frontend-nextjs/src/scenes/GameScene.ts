@@ -34,7 +34,7 @@ const NARROW_WIDTH = 768;
  * view; a phone pulls back so you can see where you are going, with enough of
  * the room around you on both sides of the short edge.
  */
-export function zoomFor(width: number, height: number, mapWidth: number, mapHeight: number): number {
+function zoomFor(width: number, height: number, mapWidth: number, mapHeight: number): number {
   const short = Math.min(width, height);
   const long = Math.max(width, height);
   const fit = Math.min(short / (MIN_TILES_SHORT * TILE_SIZE), long / (MIN_TILES_LONG * TILE_SIZE));

@@ -24,7 +24,28 @@ export function HeroPreview({
 }) {
   const [view, setView] = useState<PreviewView>("floor");
   const [picked, setPicked] = useState(false);
+  const [offscreen, setOffscreen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+
+  // The nav's "Meetings" links here: arriving by it opens the meeting view.
+  useEffect(() => {
+    const open = () => {
+      if (location.hash !== "#meetings") return;
+      setView("meeting");
+      setPicked(true);
+    };
+    open();
+    window.addEventListener("hashchange", open);
+    return () => window.removeEventListener("hashchange", open);
+  }, []);
+
+  // Off screen, everything on the floor holds still: no walking, no idle frames, nothing to paint.
+  useEffect(() => {
+    if (!box.current) return;
+    const watch = new IntersectionObserver(([entry]) => setOffscreen(!entry.isIntersecting));
+    watch.observe(box.current);
+    return () => watch.disconnect();
+  }, []);
 
   /** Fills the active tab's line over the dwell, with the Web Animations API rather than a stylesheet. */
   const fill = (line: HTMLSpanElement | null) => {
@@ -48,7 +69,12 @@ export function HeroPreview({
   }, [picked]);
 
   return (
-    <div ref={box} className="rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2">
+    <div
+      ref={box}
+      data-paused={offscreen || undefined}
+      className="relative rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2 [&[data-paused]_*]:[animation-play-state:paused]"
+    >
+      <span id="meetings" aria-hidden className="absolute -top-24" />
       <div role="tablist" aria-label={label} className="grid grid-cols-4 gap-1 p-0.5">
         {VIEWS.map((one) => (
           <button
@@ -82,7 +108,18 @@ export function HeroPreview({
           </button>
         ))}
       </div>
-      <div className="mt-1.5 sm:mt-2">
+      {/* Walking the floor, or any touch on a panel, keeps it where it is. */}
+      <div
+        className="mt-1.5 sm:mt-2"
+        onPointerDown={() => setPicked(true)}
+        onKeyDown={() => setPicked(true)}
+        onClick={(event) => {
+          // The rail inside each view is the app's own way between them.
+          const rail = (event.target as HTMLElement).closest<HTMLElement>("[data-view]");
+          const next = rail?.dataset.view as PreviewView | undefined;
+          if (next && VIEWS.includes(next)) setView(next);
+        }}
+      >
         {VIEWS.map((one) => (
           <div
             key={one}

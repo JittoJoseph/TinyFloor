@@ -92,7 +92,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       occupants={
         step === "name" && !trimmed
           ? []
-          : [{ character, left: "50%", top: "79%", name: trimmed || t("you"), width: 44, running: step !== "name" }]
+          : [{ character, name: trimmed || t("you"), running: step !== "name" }]
       }
     />
   );

@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { pageMetadata } from "@/lib/seo";
+import { officePath } from "@/lib/links";
 import { OfficeShell } from "@/components/app/OfficeShell";
+
+// Private to the office's members, so nothing here belongs in a search index;
+// a link to it pasted in a chat unfurls with the invitation card.
+export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
+  const { locale, id } = await params;
+  return pageMetadata({ locale, path: officePath(id), noindex: true });
+}
 
 type Props = { params: Promise<{ locale: string; id: string }>; children: React.ReactNode };
 

@@ -9,8 +9,8 @@
     "joinRoomDescription": "Du er invitert til {office} på TinyFloor, et virtuelt kontor du går rundt i. Åpne lenken, velg en figur og gå inn.",
     "authTitle": "Logg inn",
     "authDescription": "Logg inn på TinyFloor for å beholde navnet ditt, figuren din og en liste over rommene dine.",
+    "createTitle": "Lag kontoret ditt",
     "dashboardTitle": "Oversikt",
-    "roomTitle": "Aktivt rom",
     "notFoundTitle": "Fant ikke siden",
     "lobbyTitle": "Lobbyen",
     "lobbyDescription": "Gå inn i TinyFloors gratis, åpne lobby som gjest. Velg en figur, møt folk og prøv videosamtaler på nært hold i nettleseren.",
@@ -26,17 +26,12 @@
     "close": "Lukk",
     "guest": "Gjest",
     "you": "Deg",
-    "justNow": "akkurat nå",
     "unknown": "Ukjent",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "dashboard": "Oversikt",
-    "questions": "Spørsmål",
     "signOut": "Logg ut",
     "visitLobby": "Besøk lobbyen",
     "lobby": "Lobby",
     "signIn": "Logg inn",
-    "rooms": "Rom",
-    "offices": "Kontorene dine",
     "account": "Konto",
     "createOffice": "Opprett et kontor",
     "plansSoon": "Større team? Planer med flere plasser kommer snart."
@@ -66,32 +61,28 @@
         "a": "TinyFloor er et virtuelt kontor du går rundt i. Teamet ditt vises som pikselfigurer i en felles 2D-etasje, og en video- eller talesamtale starter når du stiller deg ved siden av noen, ikke når du klikker på en møtelenke."
       },
       {
-        "q": "Må jeg installere noe?",
-        "a": "Nei. TinyFloor kjører i nettleseren på datamaskin og mobil. Åpne en romlenke, så er du inne på kontoret."
+        "q": "Hvordan fungerer nærhetsbasert videochat?",
+        "a": "Gå bort til noen, så dukker samtaleknappene opp ved siden av dem; trykk på en for å starte en video- eller taleanrop. Samtaler går over WebRTC gjennom Cloudflares nettverk, så de kobler til på ethvert kontor- eller hjemmenettverk, og de varer til noen legger på. Møtebord bærer gruppesamtaler: sett deg for å bli med, reis deg for å gå."
       },
       {
         "q": "Er TinyFloor gratis?",
         "a": "Ja. Den åpne lobbyen er gratis for alle, og det samme er et kontor for opptil 3 personer. Planer for større team kommer snart."
       },
       {
+        "q": "Må jeg installere noe?",
+        "a": "Nei. TinyFloor kjører i nettleseren på datamaskin og mobil. Åpne en romlenke, så er du inne på kontoret."
+      },
+      {
         "q": "Trenger jeg en konto for å bli med i et rom?",
         "a": "Ikke for den offentlige lobbyen. Der kan alle gå inn som gjest med bare et navn. Rom i et arbeidsområde er private: kolleger logger inn med en gratis konto, og besøkende kommer inn via en gjestelenke."
       },
       {
-        "q": "Hvordan fungerer videosamtalene?",
-        "a": "En samtale med dem du går bort til går over WebRTC gjennom Cloudflares relénettverk, så den kobler til likt på alle nettverk, på jobb eller hjemme. Den holder seg tilkoblet til noen legger på eller forlater rommet, så det å gå bort bryter den ikke. Møtebord sender gruppesamtaler gjennom en medieserver: sett deg for å bli med, reis deg for å gå."
+        "q": "Er TinyFloor privat og sikkert?",
+        "a": "En etasje er bare for medlemmene og gjestene de slipper inn, og ingenting der inne er offentlig eller indeksert av søkemotorer. Samtaler er kryptert under overføring av WebRTC, og kameraet og mikrofonen er bare på under en samtale."
       },
       {
-        "q": "Er kameraet mitt på hele tiden mens jeg er i et rom?",
-        "a": "Nei. Kamera og mikrofon åpnes bare for en samtale og frigjøres så snart den er over."
-      },
-      {
-        "q": "Kan jeg bruke TinyFloor på mobilen?",
-        "a": "Ja. På berøringsskjermer beveger du deg med en styrespak på skjermen, og samtalekontrollene tilpasser seg den mindre skjermen."
-      },
-      {
-        "q": "Hva er forskjellen fra en vanlig videosamtale?",
-        "a": "En vanlig samtale setter alle i et rutenett til møtet er slutt. Et TinyFloor-rom står åpent hele dagen, så du ser hvem som er der, kan gli mellom samtaler og prate med dem du går bort til."
+        "q": "Hvordan skiller TinyFloor seg fra Zoom eller Google Meet?",
+        "a": "Zoom og Google Meet setter alle i et rutenett til møtet er over. Et TinyFloor-kontor er åpent hele dagen: du ser hvem som er her, glir mellom samtaler og snakker med den du går bort til, uten å avtale noe."
       }
     ]
   },
@@ -163,11 +154,6 @@
     "visitLobby": "Besøk lobbyen",
     "invitedAsGuest": "Du er invitert inn som gjest."
   },
-  "userMenu": {
-    "manageProfile": "Administrer profil",
-    "visitingAsGuest": "Besøker som gjest",
-    "keepYourName": "Behold navn og figur"
-  },
   "room": {
     "connecting": "Kobler til...",
     "leave": "Forlat",
@@ -229,7 +215,6 @@
     "stopSharing": "Slutt å dele",
     "muteSpeaker": "Slå av høyttaleren",
     "unmuteSpeaker": "Slå på høyttaleren",
-    "openChat": "Åpne chat",
     "settings": "Innstillinger",
     "leaveCall": "Forlat samtalen",
     "leaveMeeting": "Forlat møtet"
@@ -404,8 +389,7 @@
   "characters": {
     "previous": "Forrige figur",
     "next": "Neste figur",
-    "select": "Velg {name}",
-    "keyHint": "Bruk piltastene ← →"
+    "select": "Velg {name}"
   },
   "notFound": {
     "title": "Dette rommet finnes ikke på kartet.",
@@ -413,7 +397,6 @@
     "home": "Tilbake til lobbyen"
   },
   "landings": {
-    "tryIt": "Gå inn på det åpne kontoret",
     "create": "Opprett et rom",
     "free": "Gratis, i nettleseren, uten konto.",
     "compare": "Sammenligninger",
@@ -432,21 +415,6 @@
       "browser": "Ja, ingenting å installere",
       "screenShare": "Ja, i samtaler og møter"
     },
-    "stepsTitle": "Slik <em>fungerer det.</em>",
-    "steps": [
-      {
-        "title": "Åpne et rom",
-        "body": "Gå inn på det åpne kontoret, eller opprett et arbeidsområde og inviter teamet ditt."
-      },
-      {
-        "title": "Velg en figur",
-        "body": "Skriv inn et navn og velg en pikselfigur. Ingen konto nødvendig."
-      },
-      {
-        "title": "Gå bort for å prate",
-        "body": "Still deg ved siden av noen og start en video- eller lydsamtale med ett trykk."
-      }
-    ],
     "faqTitle": "Vanlige <em>spørsmål.</em>",
     "relatedTitle": "Utforsk <em>mer.</em>",
     "pages": {
@@ -984,7 +952,6 @@
       "passwordRule": "Minst 8 tegn",
       "signsOutOthers": "Du forblir innlogget her. Alle andre steder blir du logget ut.",
       "cancel": "Avbryt",
-      "pageTitle": "Kontoen din",
       "faceNote": "Ansiktet ditt tegnes ut fra kontoen din, likt på hver skjerm. Ingenting lastes opp eller lagres.",
       "themeNote": "System følger enheten din. Valget lagres i denne nettleseren."
     },
@@ -999,7 +966,6 @@
       "joiningAs": "Du blir med som {name} ({email})",
       "createAccount": "Opprett en konto",
       "signIn": "Jeg har en konto",
-      "needAccount": "Du trenger en konto for å bli med i et arbeidsområde. Det tar et minutt.",
       "readyToJoin": "Det er meg",
       "accountKeeps": "En konto husker {name} og figuren din til neste gang.",
       "you": "Du"
@@ -1083,7 +1049,6 @@
     "continue": "Videre",
     "create": "Opprett kontor",
     "creating": "Gjør det klart",
-    "firstRoom": "Hovedetasjen",
     "freePlan": "Gratis for opptil 3 personer. Uten kort.",
     "accountNext": "Neste: lag en konto, så er kontoret klart.",
     "justLooking": "Bare ser? <link>Gå inn på det offentlige kontoret</link> i stedet."
@@ -1138,7 +1103,6 @@
     "subtitle": "Kontorene dine, og hvem som er på hvert gulv nå.",
     "onFloor": "{count, plural, =0 {Ingen på gulvet} other {# på gulvet}}",
     "newOffice": "Nytt kontor",
-    "newOfficeBody": "Tre personer gratis. Et gulv, chat og samtaler.",
     "lobby": "Den offentlige lobbyen",
     "lobbyBody": "Stikk innom og møt dem som er der.",
     "emptyTitle": "Start ditt første kontor",
@@ -1162,12 +1126,11 @@
         "people": "Tilstedeværelse",
         "guests": "Gjester"
       },
-      "everyOffice": "I hvert kontor",
       "lobbyTitle": "Lobbyen er åpen",
       "lobbyBody": "Gå rundt på en ekte etasje før du lager din egen. Ingen konto nødvendig.",
       "menu": "Meny",
       "teams": "For team",
-      "teamTitle": "Laget for små team",
+      "teamTitle": "Laget for eksterne team",
       "teamBody": "Gratis for opptil 3 personer, større planer er på vei.",
       "cases": {
         "virtualOffice": "Et sted for fjernteamet ditt",
@@ -1193,19 +1156,14 @@
         "Ingenting å installere",
         "Kjører på Cloudflare"
       ],
-      "lobbyLine": "Den offentlige lobbyen er åpen akkurat nå. Ingen konto nødvendig.",
       "lobbyCta": "Gå inn"
     },
     "features": {
       "proximity": {
-        "title": "Gå bort og snakk.",
-        "muted": "Ingen lenker, ingen planlegging.",
-        "body": "Gå nær noen, så er en samtale ett trykk unna. Gå videre, så blir det stille i etasjen igjen, akkurat som når du stikker innom en pult."
+        "muted": "Ingen lenker, ingen planlegging."
       },
       "meetings": {
-        "title": "Sett deg for å møtes.",
-        "muted": "Reis deg for å gå.",
-        "body": "Gruppesamtaler skjer ved et bord. Alle som sitter der er med, kameraene holdes lette som miniatyrer, og alle kan dele skjermen sin."
+        "muted": "Reis deg for å gå."
       },
       "chat": {
         "title": "Samtaler som blir.",
@@ -1223,43 +1181,85 @@
         "body": "Inviter kolleger på e-post, eller send en gjestelenke til en kunde eller kandidat. De velger et navn og en figur og står i etasjen, uten konto."
       }
     },
+    "versus": {
+      "title": "Et raskt spørsmål",
+      "muted": "burde ikke trenge en kalenderinvitasjon.",
+      "body": "I de fleste eksterne team krever et spørsmål en melding, en invitasjon og en møtelenke. I et virtuelt kontor går du bare bort, som på jobb.",
+      "before": {
+        "label": "Uten etasje",
+        "items": [
+          {
+            "title": "Jack, har du 5 minutter i dag?",
+            "body": "Sendt 9:41 · Sett"
+          },
+          {
+            "title": "Kjapp avstemming",
+            "body": "I morgen, 10:30 til 11:00 · Invitasjon fra Jack"
+          },
+          {
+            "title": "Bli med i videosamtalen",
+            "body": "Venter på at verten slipper deg inn"
+          },
+          {
+            "title": "Kan du hoppe inn i en samtale?",
+            "body": "3 uleste meldinger"
+          }
+        ],
+        "result": "En dag senere: et møte på 30 minutter for et spørsmål på 2."
+      },
+      "after": {
+        "label": "På TinyFloor",
+        "you": "Deg",
+        "result": "Gå bort, spør, gå tilbake. To minutter."
+      }
+    },
+    "steps": {
+      "title": "Sett opp et virtuelt kontor på ett minutt.",
+      "muted": "Ingen nedlasting, intet kredittkort.",
+      "make": {
+        "title": "Lag kontoret ditt.",
+        "body": "Gi det et navn og velg en figur. Det er klart på et minutt."
+      },
+      "invite": {
+        "title": "Send lenken til teamet.",
+        "body": "Inviter kolleger på e-post, eller del en gjestelenke med hvem som helst."
+      },
+      "walk": {
+        "title": "Gå inn.",
+        "body": "Alle havner på samme etasje. Gå bort til den du trenger."
+      },
+      "joined": "{count} ble med i dag",
+      "walkedIn": "{name} kom inn"
+    },
+    "cases": {
+      "title": "Én etasje,",
+      "muted": "mange måter å bruke den på.",
+      "body": "Team gjør den til kontoret sitt. Venner til et lesesal. Lærere holder kontortid der. Velg din."
+    },
     "more": {
-      "title": "Alt et lite team trenger,",
-      "muted": "i én etasje.",
+      "title": "Alt det eksterne teamet ditt trenger,",
+      "muted": "i ett virtuelt kontor.",
       "items": {
         "screen": {
-          "title": "Skjermdeling",
-          "body": "Del et vindu i alle samtaler og møter."
+          "title": "Skjermdeling"
         },
         "whiteboard": {
-          "title": "Tavle",
-          "body": "Skisser sammen på kontorveggen."
+          "title": "Tavle"
         },
         "music": {
-          "title": "Musikk",
-          "body": "Sett på en låt for alle i rommet."
-        },
-        "status": {
-          "title": "Status",
-          "body": "Ledig, opptatt eller borte, rett på navneskiltet ditt."
+          "title": "Musikk"
         },
         "noise": {
-          "title": "Støyfjerning",
-          "body": "Valgfri AI på enheten din fjerner tastatur og prat."
+          "title": "Støyfjerning"
         },
         "mobile": {
-          "title": "På mobilen",
-          "body": "En joystick som dukker opp under tommelen."
-        },
-        "themes": {
-          "title": "Lyst og mørkt",
-          "body": "Følger systemet ditt, eller velg selv."
+          "title": "På mobilen"
         },
         "languages": {
-          "title": "18 språk",
-          "body": "Fra English og Español til 日本語 og العربية."
+          "title": "18 språk"
         }
-      }
+      },
+      "also": "Også på hver etasje"
     },
     "trust": {
       "title": "Bygget for tillit.",
@@ -1353,7 +1353,12 @@
       "typing": "{name} skriver…",
       "guest": "Gjest",
       "inviteTeammate": "Inviter en kollega",
-      "inviteTeammateNote": "De kommer inn med en lenke"
+      "inviteTeammateNote": "De kommer inn med en lenke",
+      "video": "Videosamtale",
+      "audio": "Taleanrop",
+      "you": "Deg",
+      "clickToWalk": "Klikk hvor som helst for å gå",
+      "playable": "Etasjen å prøve: klikk hvor som helst for å gå dit, eller bruk piltastene"
     },
     "footer": {
       "tagline": "Et virtuelt kontor du går rundt i.",
@@ -1371,10 +1376,6 @@
       "theme": "Tema",
       "language": "Språk",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Én etasje for hele dagen,",
-      "muted": "fra det første hei til den siste samtalen."
     }
   }
 }

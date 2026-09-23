@@ -9,8 +9,8 @@
     "joinRoomDescription": "You're invited to {office} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
     "authTitle": "Sign In",
     "authDescription": "Sign in to TinyFloor to keep your name, your character and a list of your rooms.",
+    "createTitle": "Make your office",
     "dashboardTitle": "Dashboard",
-    "roomTitle": "Active Room",
     "notFoundTitle": "Page Not Found",
     "lobbyTitle": "The Lobby",
     "lobbyDescription": "Walk into TinyFloor's free public lobby as a guest. Pick a character, meet people, and try proximity video calls in your browser.",
@@ -26,17 +26,12 @@
     "close": "Close",
     "guest": "Guest",
     "you": "You",
-    "justNow": "just now",
     "unknown": "Unknown",
-    "peopleCount": "{count, plural, one {# person} other {# people}}",
     "dashboard": "Dashboard",
-    "questions": "Questions",
     "signOut": "Sign Out",
     "visitLobby": "Visit the lobby",
     "lobby": "Lobby",
     "signIn": "Sign in",
-    "rooms": "Rooms",
-    "offices": "Your offices",
     "account": "Account",
     "createOffice": "Create an office",
     "plansSoon": "Bigger teams? Plans with more seats are coming soon."
@@ -66,32 +61,28 @@
         "a": "TinyFloor is a virtual office you walk around in. Your team appears as pixel-art characters on a shared 2D floor, and a video or voice call starts when you stand next to someone instead of when you click a meeting link."
       },
       {
-        "q": "Do I need to install anything?",
-        "a": "No. TinyFloor runs in the browser on desktop and mobile. Open a room link and you are inside the office."
+        "q": "How does proximity video chat work?",
+        "a": "Walk up to someone and the call buttons appear next to them; tap one to start a video or voice call. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. Meeting tables carry group calls: sit down to join, stand up to leave."
       },
       {
         "q": "Is TinyFloor free?",
         "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Plans for bigger teams are coming soon."
       },
       {
+        "q": "Do I need to install anything?",
+        "a": "No. TinyFloor runs in the browser on desktop and mobile. Open a room link and you are inside the office."
+      },
+      {
         "q": "Do I need an account to join a room?",
         "a": "Not for the public lobby. Anyone can walk in there as a guest with just a name. Rooms in a workspace are private: teammates sign in with a free account, and visitors come in through a guest link."
       },
       {
-        "q": "How do the video calls work?",
-        "a": "A call with the people you walk up to runs over WebRTC through Cloudflare's relay network, so it connects the same way on any office or home network. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
+        "q": "Is TinyFloor private and secure?",
+        "a": "An office floor is only for its members and the guests they let in, and nothing inside it is public or indexed by search engines. Calls are encrypted in transit by WebRTC, and your camera and microphone are only on during a call."
       },
       {
-        "q": "Is my camera on the whole time I am in a room?",
-        "a": "No. The camera and microphone are opened only for a call and released the moment it ends."
-      },
-      {
-        "q": "Can I use TinyFloor on a phone?",
-        "a": "Yes. On touch devices you move with an on-screen joystick, and the call controls adapt to the smaller screen."
-      },
-      {
-        "q": "How is this different from a normal video call?",
-        "a": "A normal call puts everyone in one grid until the meeting ends. A TinyFloor room stays open all day, so you can see who is around, drift between conversations, and talk to the people you walk over to."
+        "q": "How is TinyFloor different from Zoom or Google Meet?",
+        "a": "Zoom and Google Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around, drift between conversations and talk to whoever you walk over to, without scheduling a call."
       }
     ]
   },
@@ -163,11 +154,6 @@
     "visitLobby": "Visit the lobby",
     "invitedAsGuest": "You're invited in as a guest."
   },
-  "userMenu": {
-    "manageProfile": "Manage profile",
-    "visitingAsGuest": "Visiting as a guest",
-    "keepYourName": "Keep your name and character"
-  },
   "room": {
     "connecting": "Connecting...",
     "leave": "Leave",
@@ -229,7 +215,6 @@
     "stopSharing": "Stop sharing",
     "muteSpeaker": "Mute speaker",
     "unmuteSpeaker": "Unmute speaker",
-    "openChat": "Open chat",
     "settings": "Settings",
     "leaveCall": "Leave call",
     "leaveMeeting": "Leave meeting"
@@ -404,8 +389,7 @@
   "characters": {
     "previous": "Previous character",
     "next": "Next character",
-    "select": "Select {name}",
-    "keyHint": "Use ← → arrow keys"
+    "select": "Select {name}"
   },
   "notFound": {
     "title": "This room is not on the map.",
@@ -413,7 +397,6 @@
     "home": "Back to the lobby"
   },
   "landings": {
-    "tryIt": "Walk into the public office",
     "create": "Create a room",
     "free": "Free, in the browser, no account needed.",
     "compare": "Compare",
@@ -432,21 +415,6 @@
       "browser": "Yes, nothing to install",
       "screenShare": "Yes, in calls and meetings"
     },
-    "stepsTitle": "How it <em>works.</em>",
-    "steps": [
-      {
-        "title": "Open a room",
-        "body": "Walk into the public office, or create a workspace and invite your team."
-      },
-      {
-        "title": "Pick a character",
-        "body": "Type a name and choose a pixel-art character. No account needed."
-      },
-      {
-        "title": "Walk over to talk",
-        "body": "Stand next to someone and start a video or voice call with one tap."
-      }
-    ],
     "faqTitle": "Common <em>questions.</em>",
     "relatedTitle": "Keep <em>exploring.</em>",
     "pages": {
@@ -984,7 +952,6 @@
       "passwordRule": "At least 8 characters",
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
-      "pageTitle": "Your account",
       "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
       "themeNote": "System follows your device. The choice is kept in this browser."
     },
@@ -999,7 +966,6 @@
       "joiningAs": "Joining as {name} ({email})",
       "createAccount": "Create an account",
       "signIn": "I have an account",
-      "needAccount": "You need an account to join a workspace. It takes a minute.",
       "readyToJoin": "That's me",
       "accountKeeps": "An account keeps {name} and your character for next time.",
       "you": "You"
@@ -1083,7 +1049,6 @@
     "continue": "Continue",
     "create": "Create office",
     "creating": "Setting it up",
-    "firstRoom": "Main floor",
     "freePlan": "Free for up to 3 people. No card needed.",
     "accountNext": "Next: make an account, and your office is ready.",
     "justLooking": "Just looking? <link>Walk into the public office</link> instead."
@@ -1138,7 +1103,6 @@
     "subtitle": "Your offices, and who is on each floor right now.",
     "onFloor": "{count, plural, =0 {Nobody on the floor} one {# on the floor} other {# on the floor}}",
     "newOffice": "New office",
-    "newOfficeBody": "Three people free. A floor, chat and calls.",
     "lobby": "The public lobby",
     "lobbyBody": "Drop in and meet whoever is around.",
     "emptyTitle": "Start your first office",
@@ -1162,12 +1126,11 @@
         "people": "Presence",
         "guests": "Guests"
       },
-      "everyOffice": "In every office",
       "lobbyTitle": "The lobby is open",
       "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
       "menu": "Menu",
       "teams": "For teams",
-      "teamTitle": "Made for small teams",
+      "teamTitle": "Made for remote teams",
       "teamBody": "Free for up to 3 people, with bigger plans on the way.",
       "cases": {
         "virtualOffice": "A place for your remote team to be",
@@ -1193,19 +1156,14 @@
         "Nothing to install",
         "Runs on Cloudflare"
       ],
-      "lobbyLine": "The public lobby is open right now. No account needed.",
       "lobbyCta": "Walk in"
     },
     "features": {
       "proximity": {
-        "title": "Walk over to talk.",
-        "muted": "No links, no scheduling.",
-        "body": "Get close to someone and a call is one tap away. Walk off and the floor goes quiet again, the way stopping by a desk works."
+        "muted": "No links, no scheduling."
       },
       "meetings": {
-        "title": "Sit down to meet.",
-        "muted": "Stand up to leave.",
-        "body": "Group calls happen at a table. Everyone sitting there joins, cameras stay light as thumbnails, and anyone can share their screen."
+        "muted": "Stand up to leave."
       },
       "chat": {
         "title": "Conversations that stay.",
@@ -1223,43 +1181,80 @@
         "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
       }
     },
+    "versus": {
+      "title": "A quick question",
+      "muted": "shouldn't need a calendar invite.",
+      "body": "In most remote teams, asking takes a message, an invite and a meeting link. In a virtual office you walk over, the way you would at work.",
+      "before": {
+        "label": "Without a floor",
+        "items": [
+          {
+            "title": "Jack, got 5 minutes today?",
+            "body": "Sent 9:41 · Seen"
+          },
+          {
+            "title": "Quick sync",
+            "body": "Tomorrow, 10:30 to 11:00 · Invite from Jack"
+          },
+          {
+            "title": "Join the video call",
+            "body": "Waiting for the host to let you in"
+          },
+          {
+            "title": "Can you hop on a call?",
+            "body": "3 unread messages"
+          }
+        ],
+        "result": "A day later: a 30-minute meeting for a 2-minute question."
+      },
+      "after": {
+        "label": "On TinyFloor",
+        "you": "You",
+        "result": "Walk over, ask, walk back. Two minutes."
+      }
+    },
+    "steps": {
+      "title": "Set up a virtual office in a minute.",
+      "muted": "No downloads, no credit card.",
+      "make": {
+        "title": "Make your office.",
+        "body": "Give it a name and pick a character. It's ready in a minute."
+      },
+      "invite": {
+        "title": "Send your team the link.",
+        "body": "Invite teammates by email, or share a guest link with anyone else."
+      },
+      "walk": {
+        "title": "Walk in.",
+        "body": "Everyone lands on the same floor. Walk over to whoever you need."
+      },
+      "joined": "{count} joined today",
+      "walkedIn": "{name} walked in"
+    },
     "more": {
-      "title": "Everything a small team needs,",
-      "muted": "on one floor.",
+      "title": "Everything your remote team needs,",
+      "muted": "in one virtual office.",
       "items": {
         "screen": {
-          "title": "Screen sharing",
-          "body": "Share a window in any call or meeting."
+          "title": "Screen sharing"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Sketch together on the wall of the office."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Music",
-          "body": "Put on a track for everyone in the room."
-        },
-        "status": {
-          "title": "Status",
-          "body": "Available, busy or away, right on your nameplate."
+          "title": "Music"
         },
         "noise": {
-          "title": "Noise removal",
-          "body": "Optional on-device AI takes out keyboards and chatter."
+          "title": "Noise removal"
         },
         "mobile": {
-          "title": "On your phone",
-          "body": "A joystick that appears under your thumb."
-        },
-        "themes": {
-          "title": "Light and dark",
-          "body": "Follows your system, or pick one yourself."
+          "title": "On your phone"
         },
         "languages": {
-          "title": "18 languages",
-          "body": "From English and Español to 日本語 and العربية."
+          "title": "18 languages"
         }
-      }
+      },
+      "also": "Also on every floor"
     },
     "trust": {
       "title": "Built to be trusted.",
@@ -1353,7 +1348,12 @@
       "typing": "{name} is typing…",
       "guest": "Guest",
       "inviteTeammate": "Invite a teammate",
-      "inviteTeammateNote": "They join with a link"
+      "inviteTeammateNote": "They join with a link",
+      "video": "Video call",
+      "audio": "Voice call",
+      "you": "You",
+      "clickToWalk": "Click anywhere to walk",
+      "playable": "The floor, to try: click anywhere to walk there, or use the arrow keys"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",
@@ -1372,9 +1372,10 @@
       "language": "Language",
       "rights": "© {year} TinyFloor"
     },
-    "days": {
-      "title": "One floor for the whole day,",
-      "muted": "from the first hello to the last call."
+    "cases": {
+      "title": "One floor,",
+      "muted": "many ways to use it.",
+      "body": "Teams make it their office. Friends make it a study room. Teachers hold office hours in it. Pick yours."
     }
   }
 }

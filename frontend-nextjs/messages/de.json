@@ -9,8 +9,8 @@
     "joinRoomDescription": "Du bist in {office} auf TinyFloor eingeladen, einem virtuellen Büro zum Herumlaufen. Öffne den Link, wähle eine Figur und komm rein.",
     "authTitle": "Anmelden",
     "authDescription": "Melde dich bei TinyFloor an, um deinen Namen, deinen Charakter und eine Liste deiner Räume zu behalten.",
+    "createTitle": "Büro einrichten",
     "dashboardTitle": "Dashboard",
-    "roomTitle": "Aktiver Raum",
     "notFoundTitle": "Seite nicht gefunden",
     "lobbyTitle": "Die Lobby",
     "lobbyDescription": "Betritt die kostenlose öffentliche Lobby von TinyFloor als Gast. Such dir eine Figur aus, triff Leute und probiere Videoanrufe per Nähe direkt im Browser.",
@@ -26,17 +26,12 @@
     "close": "Schließen",
     "guest": "Gast",
     "you": "Du",
-    "justNow": "gerade eben",
     "unknown": "Unbekannt",
-    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
     "dashboard": "Dashboard",
-    "questions": "Fragen",
     "signOut": "Abmelden",
     "visitLobby": "Lobby besuchen",
     "lobby": "Lobby",
     "signIn": "Anmelden",
-    "rooms": "Räume",
-    "offices": "Deine Büros",
     "account": "Konto",
     "createOffice": "Büro erstellen",
     "plansSoon": "Größeres Team? Pläne mit mehr Plätzen kommen bald."
@@ -66,32 +61,28 @@
         "a": "TinyFloor ist ein virtuelles Büro, in dem du herumläufst. Dein Team erscheint als Pixel-Art-Figuren auf einer gemeinsamen 2D-Etage, und ein Video- oder Sprachanruf startet, wenn du dich neben jemanden stellst – nicht, wenn du auf einen Meeting-Link klickst."
       },
       {
-        "q": "Muss ich etwas installieren?",
-        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
+        "q": "Wie funktioniert Proximity-Videochat?",
+        "a": "Geh zu jemandem, und neben der Person erscheinen die Anruf-Buttons; tipp einen an, um einen Video- oder Sprachanruf zu starten. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
       },
       {
         "q": "Ist TinyFloor kostenlos?",
         "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Pläne für größere Teams kommen bald."
       },
       {
+        "q": "Muss ich etwas installieren?",
+        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
+      },
+      {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
         "a": "Für die öffentliche Lobby nicht. Dort kann jeder als Gast mit nur einem Namen hereinkommen. Räume in einem Workspace sind privat: Teammitglieder melden sich mit einem kostenlosen Konto an, Besucher kommen über einen Gastlink."
       },
       {
-        "q": "Wie funktionieren die Videoanrufe?",
-        "a": "Ein Gespräch mit den Leuten, zu denen du gehst, läuft über WebRTC durch das Relay-Netz von Cloudflare und verbindet sich daher in jedem Büro- oder Heimnetz gleich. Es bleibt verbunden, bis jemand auflegt oder den Raum verlässt, Weggehen beendet es also nicht. Besprechungstische übertragen Gruppengespräche über einen Medienserver: Hinsetzen zum Beitreten, Aufstehen zum Verlassen."
+        "q": "Ist TinyFloor privat und sicher?",
+        "a": "Eine Büroetage ist nur für ihre Mitglieder und die Gäste, die sie hereinlassen. Nichts darin ist öffentlich oder wird von Suchmaschinen indexiert. Anrufe sind per WebRTC bei der Übertragung verschlüsselt, und Kamera und Mikrofon sind nur während eines Anrufs an."
       },
       {
-        "q": "Ist meine Kamera die ganze Zeit an, während ich in einem Raum bin?",
-        "a": "Nein. Kamera und Mikrofon werden nur für einen Anruf geöffnet und sofort freigegeben, wenn er endet."
-      },
-      {
-        "q": "Kann ich TinyFloor auf dem Handy nutzen?",
-        "a": "Ja. Auf Touch-Geräten bewegst du dich mit einem Joystick auf dem Bildschirm, und die Anrufsteuerung passt sich dem kleineren Display an."
-      },
-      {
-        "q": "Was ist anders als bei einem normalen Videoanruf?",
-        "a": "Ein normaler Anruf steckt alle in ein Raster, bis das Meeting endet. Ein TinyFloor-Raum bleibt den ganzen Tag offen, sodass du siehst, wer da ist, zwischen Gesprächen wechseln und mit den Leuten reden kannst, zu denen du hingehst."
+        "q": "Was unterscheidet TinyFloor von Zoom oder Google Meet?",
+        "a": "Zoom und Google Meet setzen alle in ein Raster, bis das Meeting endet. Ein TinyFloor-Büro ist den ganzen Tag offen: Du siehst, wer da ist, wechselst zwischen Gesprächen und redest mit dem, zu dem du gehst, ganz ohne Termin."
       }
     ]
   },
@@ -163,11 +154,6 @@
     "visitLobby": "Lobby besuchen",
     "invitedAsGuest": "Du bist als Gast eingeladen."
   },
-  "userMenu": {
-    "manageProfile": "Profil verwalten",
-    "visitingAsGuest": "Als Gast unterwegs",
-    "keepYourName": "Behalte Name und Figur"
-  },
   "room": {
     "connecting": "Verbinde...",
     "leave": "Verlassen",
@@ -229,7 +215,6 @@
     "stopSharing": "Freigabe beenden",
     "muteSpeaker": "Lautsprecher stummschalten",
     "unmuteSpeaker": "Lautsprecher einschalten",
-    "openChat": "Chat öffnen",
     "settings": "Einstellungen",
     "leaveCall": "Anruf verlassen",
     "leaveMeeting": "Meeting verlassen"
@@ -404,8 +389,7 @@
   "characters": {
     "previous": "Vorheriger Charakter",
     "next": "Nächster Charakter",
-    "select": "{name} auswählen",
-    "keyHint": "Pfeiltasten ← → verwenden"
+    "select": "{name} auswählen"
   },
   "notFound": {
     "title": "Dieser Raum ist nicht auf der Karte.",
@@ -413,7 +397,6 @@
     "home": "Zurück zur Lobby"
   },
   "landings": {
-    "tryIt": "Ins öffentliche Büro gehen",
     "create": "Raum erstellen",
     "free": "Kostenlos, im Browser, ohne Konto.",
     "compare": "Vergleiche",
@@ -432,21 +415,6 @@
       "browser": "Ja, ohne Installation",
       "screenShare": "Ja, in Anrufen und Meetings"
     },
-    "stepsTitle": "So <em>funktioniert es.</em>",
-    "steps": [
-      {
-        "title": "Raum öffnen",
-        "body": "Geh ins öffentliche Büro, oder erstelle einen Workspace und lade dein Team ein."
-      },
-      {
-        "title": "Figur wählen",
-        "body": "Gib einen Namen ein und wähle eine Pixel-Art-Figur. Kein Konto nötig."
-      },
-      {
-        "title": "Hingehen und reden",
-        "body": "Stell dich neben jemanden und starte mit einem Tipp einen Video- oder Sprachanruf."
-      }
-    ],
     "faqTitle": "Häufige <em>Fragen.</em>",
     "relatedTitle": "Weiter <em>entdecken.</em>",
     "pages": {
@@ -984,7 +952,6 @@
       "passwordRule": "Mindestens 8 Zeichen",
       "signsOutOthers": "Hier bleibst du angemeldet. Überall sonst wirst du abgemeldet.",
       "cancel": "Abbrechen",
-      "pageTitle": "Dein Konto",
       "faceNote": "Dein Gesicht entsteht aus deinem Konto, auf jedem Bildschirm gleich. Nichts wird hochgeladen oder gespeichert.",
       "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert."
     },
@@ -999,7 +966,6 @@
       "joiningAs": "Du trittst bei als {name} ({email})",
       "createAccount": "Konto erstellen",
       "signIn": "Ich habe ein Konto",
-      "needAccount": "Um einem Workspace beizutreten, brauchst du ein Konto. Das dauert nur eine Minute.",
       "readyToJoin": "Das bin ich",
       "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
       "you": "Du"
@@ -1083,7 +1049,6 @@
     "continue": "Weiter",
     "create": "Büro erstellen",
     "creating": "Wird eingerichtet",
-    "firstRoom": "Hauptetage",
     "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
     "accountNext": "Als Nächstes: ein Konto, dann ist das Büro fertig.",
     "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen."
@@ -1138,7 +1103,6 @@
     "subtitle": "Deine Büros und wer gerade auf welcher Fläche ist.",
     "onFloor": "{count, plural, =0 {Niemand auf der Fläche} other {# auf der Fläche}}",
     "newOffice": "Neues Büro",
-    "newOfficeBody": "Drei Personen kostenlos. Fläche, Chat und Anrufe.",
     "lobby": "Die öffentliche Lobby",
     "lobbyBody": "Schau vorbei und triff, wer gerade da ist.",
     "emptyTitle": "Starte dein erstes Büro",
@@ -1162,12 +1126,11 @@
         "people": "Anwesenheit",
         "guests": "Gäste"
       },
-      "everyOffice": "In jedem Büro",
       "lobbyTitle": "Die Lobby ist offen",
       "lobbyBody": "Lauf über eine echte Fläche, bevor du deine eigene einrichtest. Kein Konto nötig.",
       "menu": "Menü",
       "teams": "Für Teams",
-      "teamTitle": "Gemacht für kleine Teams",
+      "teamTitle": "Gemacht für Remote-Teams",
       "teamBody": "Kostenlos für bis zu 3 Personen, größere Pläne sind unterwegs.",
       "cases": {
         "virtualOffice": "Ein Ort für dein Remote-Team",
@@ -1193,19 +1156,14 @@
         "Nichts zu installieren",
         "Läuft auf Cloudflare"
       ],
-      "lobbyLine": "Die öffentliche Lobby ist gerade offen. Kein Konto nötig.",
       "lobbyCta": "Reingehen"
     },
     "features": {
       "proximity": {
-        "title": "Geh hin und rede.",
-        "muted": "Keine Links, keine Termine.",
-        "body": "Geh nah an jemanden heran, und ein Anruf ist nur einen Tipp entfernt. Geh weiter, und auf der Fläche wird es wieder ruhig, so wie beim kurzen Vorbeischauen am Schreibtisch."
+        "muted": "Keine Links, keine Termine."
       },
       "meetings": {
-        "title": "Setz dich zum Meeting.",
-        "muted": "Steh auf, um zu gehen.",
-        "body": "Gruppengespräche finden an einem Tisch statt. Alle, die dort sitzen, sind dabei, Kameras bleiben als Vorschaubilder leicht, und jeder kann seinen Bildschirm teilen."
+        "muted": "Steh auf, um zu gehen."
       },
       "chat": {
         "title": "Gespräche, die bleiben.",
@@ -1223,43 +1181,85 @@
         "body": "Lade Teammitglieder per E-Mail ein oder schick einen Gastlink an Kundschaft oder Bewerbende. Sie wählen einen Namen und eine Figur und stehen auf der Fläche, ganz ohne Konto."
       }
     },
+    "versus": {
+      "title": "Eine kurze Frage",
+      "muted": "braucht keine Kalendereinladung.",
+      "body": "In den meisten Remote-Teams braucht eine Frage eine Nachricht, eine Einladung und einen Meeting-Link. In einem virtuellen Büro gehst du einfach rüber, wie bei der Arbeit.",
+      "before": {
+        "label": "Ohne Etage",
+        "items": [
+          {
+            "title": "Jack, hast du heute 5 Minuten?",
+            "body": "Gesendet 9:41 · Gesehen"
+          },
+          {
+            "title": "Kurzer Abgleich",
+            "body": "Morgen, 10:30 bis 11:00 · Einladung von Jack"
+          },
+          {
+            "title": "Dem Videoanruf beitreten",
+            "body": "Warte, bis der Host dich reinlässt"
+          },
+          {
+            "title": "Kannst du kurz in einen Call?",
+            "body": "3 ungelesene Nachrichten"
+          }
+        ],
+        "result": "Einen Tag später: ein 30-Minuten-Meeting für eine 2-Minuten-Frage."
+      },
+      "after": {
+        "label": "Auf TinyFloor",
+        "you": "Du",
+        "result": "Rübergehen, fragen, zurückgehen. Zwei Minuten."
+      }
+    },
+    "steps": {
+      "title": "Richte in einer Minute ein virtuelles Büro ein.",
+      "muted": "Kein Download, keine Kreditkarte.",
+      "make": {
+        "title": "Erstell dein Büro.",
+        "body": "Gib ihm einen Namen und wähl eine Figur. In einer Minute ist es fertig."
+      },
+      "invite": {
+        "title": "Schick deinem Team den Link.",
+        "body": "Lade dein Team per E-Mail ein oder teile einen Gastlink mit allen anderen."
+      },
+      "walk": {
+        "title": "Komm rein.",
+        "body": "Alle landen auf derselben Etage. Geh zu dem, den du gerade brauchst."
+      },
+      "joined": "{count} heute dazugekommen",
+      "walkedIn": "{name} ist reingekommen"
+    },
+    "cases": {
+      "title": "Eine Etage,",
+      "muted": "viele Möglichkeiten.",
+      "body": "Teams machen sie zu ihrem Büro. Freunde zu ihrem Lernraum. Lehrkräfte halten darin Sprechstunden. Such dir deins aus."
+    },
     "more": {
-      "title": "Alles, was ein kleines Team braucht,",
-      "muted": "auf einer Fläche.",
+      "title": "Alles, was dein Remote-Team braucht,",
+      "muted": "in einem virtuellen Büro.",
       "items": {
         "screen": {
-          "title": "Bildschirm teilen",
-          "body": "Teile ein Fenster in jedem Anruf und Meeting."
+          "title": "Bildschirm teilen"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Skizziert gemeinsam an der Bürowand."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Musik",
-          "body": "Leg einen Song für alle im Raum auf."
-        },
-        "status": {
-          "title": "Status",
-          "body": "Verfügbar, beschäftigt oder abwesend, direkt auf deinem Namensschild."
+          "title": "Musik"
         },
         "noise": {
-          "title": "Geräuschentfernung",
-          "body": "Optionale KI auf deinem Gerät entfernt Tastatur und Gerede."
+          "title": "Geräuschentfernung"
         },
         "mobile": {
-          "title": "Auf dem Handy",
-          "body": "Ein Joystick, der unter deinem Daumen erscheint."
-        },
-        "themes": {
-          "title": "Hell und dunkel",
-          "body": "Folgt deinem System, oder wähl selbst."
+          "title": "Auf dem Handy"
         },
         "languages": {
-          "title": "18 Sprachen",
-          "body": "Von English und Español bis 日本語 und العربية."
+          "title": "18 Sprachen"
         }
-      }
+      },
+      "also": "Auf jeder Etage dabei"
     },
     "trust": {
       "title": "Gebaut für Vertrauen.",
@@ -1353,7 +1353,12 @@
       "typing": "{name} schreibt…",
       "guest": "Gast",
       "inviteTeammate": "Teammitglied einladen",
-      "inviteTeammateNote": "Sie kommen über einen Link rein"
+      "inviteTeammateNote": "Sie kommen über einen Link rein",
+      "video": "Videoanruf",
+      "audio": "Sprachanruf",
+      "you": "Du",
+      "clickToWalk": "Klick irgendwohin, um zu laufen",
+      "playable": "Die Etage zum Ausprobieren: Klick irgendwohin, um dorthin zu laufen, oder nutze die Pfeiltasten"
     },
     "footer": {
       "tagline": "Ein virtuelles Büro, in dem du herumläufst.",
@@ -1371,10 +1376,6 @@
       "theme": "Darstellung",
       "language": "Sprache",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Eine Fläche für den ganzen Tag,",
-      "muted": "vom ersten Hallo bis zum letzten Call."
     }
   }
 }

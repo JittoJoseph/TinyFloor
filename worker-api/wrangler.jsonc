@@ -11,7 +11,9 @@
     "SITE_ORIGINS": "https://www.tinyfloor.com,https://tinyfloor.com",
     "COOKIE_DOMAIN": ".tinyfloor.com",
     "SESSION_COOKIE": "tf_session",
-    "REALTIME_URL": "wss://realtime.tinyfloor.com"
+    "REALTIME_URL": "wss://realtime.tinyfloor.com",
+    // Google sign-in's OAuth client (public); its secret is GOOGLE_CLIENT_SECRET.
+    "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
   },
   "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
@@ -39,7 +41,8 @@
         // the same browser neither reaches preview nor shadows it.
         "COOKIE_DOMAIN": "",
         "SESSION_COOKIE": "tf_preview_session",
-        "REALTIME_URL": "wss://realtime-preview.tinyfloor.com"
+        "REALTIME_URL": "wss://realtime-preview.tinyfloor.com",
+        "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],

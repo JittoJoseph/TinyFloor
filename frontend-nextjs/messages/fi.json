@@ -1248,7 +1248,6 @@
       "after": {
         "label": "TinyFloorissa",
         "you": "Sinä",
-        "talking": "Puhelu: {name} · 0:42",
         "result": "Kävele luo, kysy, kävele takaisin. Kaksi minuuttia."
       }
     },

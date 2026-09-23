@@ -1248,7 +1248,6 @@
       "after": {
         "label": "在 TinyFloor 上",
         "you": "你",
-        "talking": "正在与 {name} 通话 · 0:42",
         "result": "走过去，问一句，走回来。两分钟。"
       }
     },

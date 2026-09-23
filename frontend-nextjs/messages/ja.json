@@ -1248,7 +1248,6 @@
       "after": {
         "label": "TinyFloor なら",
         "you": "あなた",
-        "talking": "{name} と通話中 · 0:42",
         "result": "歩いて行って、聞いて、戻る。2分です。"
       }
     },

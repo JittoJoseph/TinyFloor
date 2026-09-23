@@ -1248,7 +1248,6 @@
       "after": {
         "label": "No TinyFloor",
         "you": "Você",
-        "talking": "Conversando com {name} · 0:42",
         "result": "Vá até lá, pergunte, volte. Dois minutos."
       }
     },

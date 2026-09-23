@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Bell, BookOpen, Building2, CalendarDays, Check, Clock3, Coffee, Copy, Footprints, GraduationCap, Link2, MessageSquare, Mic, Radio, Video } from "lucide-react";
+import { ArrowRight, Bell, BookOpen, Building2, CalendarDays, Check, Clock3, Coffee, Copy, Footprints, GraduationCap, Link2, MessageSquare, Radio, Video } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";
-import { FloorScene } from "@/components/floor/FloorScene";
+import { FloorScene, OnFloor } from "@/components/floor/FloorScene";
+import { NearbyBar } from "@/components/floor/PlayableYou";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { COLUMN, Heading } from "./Blocks";
 
@@ -24,10 +25,6 @@ const CHIP = cn(
 );
 
 const KEYFRAMES =
-  // You crossing the floor to Jack, staying a while, and heading back.
-  "@keyframes m-walk{0%,10%{translate:0 0}38%,78%{translate:var(--reach) 0}92%,100%{translate:0 0}}" +
-  // What only shows while you're beside him: his ring, and the call.
-  "@keyframes m-lit{0%,36%{opacity:0;translate:0 4px}44%,76%{opacity:1;translate:0 0}84%,100%{opacity:0;translate:0 4px}}" +
   // The other way: the messages piling up one after another.
   "@keyframes m-pile{0%,4%{opacity:0;translate:0 10px}10%,92%{opacity:1;translate:0 0}98%,100%{opacity:0}}" +
   "@keyframes m-type{0%{width:0}45%,100%{width:var(--chars)}}" +
@@ -35,10 +32,36 @@ const KEYFRAMES =
   "@keyframes m-toast{0%,30%{opacity:0;translate:0 -6px}38%,85%{opacity:1;translate:0 0}93%,100%{opacity:0;translate:0 -6px}}" +
   "@media (prefers-reduced-motion:reduce){.m-still,.m-still *{animation:none!important}}";
 
-const PILL = cn(
-  APP,
-  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card px-2.5 py-1 text-[11.5px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.05)] [--face-ring:var(--ui-card)]",
-);
+/*
+ * The walk over to Jack, in seconds: a while beside him, the walk back along
+ * the desks, a moment there, and the walk over again. The loop starts beside
+ * him, so that's where you are without motion, and everything that happens
+ * there is timed on the same loop.
+ */
+const WAIT = 1.5;
+const STAY = 7.5;
+const SPEED = 2.2;
+const FROM: [number, number] = [25, 15];
+const TO: [number, number] = [32, 15];
+const GO = (TO[0] - FROM[0]) / SPEED;
+const LOOP = WAIT + GO * 2 + STAY;
+/** A moment this many seconds after you arrive, as a point in the loop. */
+const beat = (seconds: number) => `${((seconds / LOOP) * 100).toFixed(2)}%`;
+
+const CALL_KEYFRAMES =
+  // The bar beside Jack, under your feet, until the call replaces it.
+  `@keyframes mc-bar{0%,${beat(0.3)}{opacity:0;translate:0 6px}${beat(0.6)},${beat(1.95)}{opacity:1;translate:0 0}${beat(2.2)},100%{opacity:0;translate:0 0}}` +
+  // The pointer coming in from the corner to the video button, and pressing it.
+  `@keyframes mc-hand{0%,${beat(0.7)}{opacity:0;translate:72px 48px}${beat(0.9)}{opacity:1}${beat(1.55)}{translate:0 0}${beat(2.3)}{opacity:1}${beat(2.6)},100%{opacity:0;translate:0 0}}` +
+  `@keyframes mc-press{0%,${beat(1.62)}{scale:1}${beat(1.72)}{scale:.82}${beat(1.86)},100%{scale:1}}` +
+  `@keyframes mc-ring{0%,${beat(1.71)}{opacity:0;scale:.3}${beat(1.73)}{opacity:1;scale:.35}${beat(2.2)},100%{opacity:0;scale:1.3}}` +
+  // The call's cards dropping in along the top, and going as you leave.
+  `@keyframes mc-card{0%,${beat(2.05)}{opacity:0;translate:0 -12px;scale:.96}${beat(2.4)},${beat(STAY - 0.5)}{opacity:1;translate:0 0;scale:1}${beat(STAY - 0.1)},100%{opacity:0;translate:0 -6px;scale:1}}` +
+  // Who's talking: Jack, then you.
+  `@keyframes mc-them{0%,${beat(2.6)}{opacity:0}${beat(2.75)},${beat(4.3)}{opacity:1}${beat(4.45)},100%{opacity:0}}` +
+  `@keyframes mc-you{0%,${beat(4.55)}{opacity:0}${beat(4.7)},${beat(6.3)}{opacity:1}${beat(6.45)},100%{opacity:0}}`;
+
+const loop = (name: string, timing = "ease-in-out", delay = 0) => `${name} ${LOOP.toFixed(3)}s ${timing} ${delay}s infinite both`;
 
 const NOTICE_ICONS: ReactNode[] = [<MessageSquare key="m" />, <CalendarDays key="c" />, <Video key="v" />, <Bell key="b" />];
 
@@ -50,11 +73,12 @@ const NOTICE_ICONS: ReactNode[] = [<MessageSquare key="m" />, <CalendarDays key=
  */
 export function Moments() {
   const t = useTranslations("home.versus");
-  const { emma, jack, olivia, sam } = PEOPLE;
+  const tp = useTranslations("home.preview");
+  const { emma, jack } = PEOPLE;
   const notices = t.raw("before.items") as Array<{ title: string; body: string }>;
   return (
     <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
-      <style>{KEYFRAMES}</style>
+      <style>{KEYFRAMES + CALL_KEYFRAMES}</style>
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
         <Heading title={t("title")} muted={t("muted")} />
         <p className="max-w-[30rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("body")}</p>
@@ -88,45 +112,69 @@ export function Moments() {
         {/* The way it goes on a floor. */}
         <div className="flex flex-col overflow-hidden rounded-[28px] border border-border bg-card p-6 sm:p-8">
           <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-brand")}>{t("after.label")}</p>
-          {/* A picture, not text: laid out left to right in every language. */}
-          <div dir="ltr" className="relative mt-6 h-[252px] overflow-hidden rounded-[20px] bg-muted/50 [container-type:inline-size] [--face-ring:var(--ui-card)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle,var(--ui-border-strong)_1px,transparent_1.2px)] bg-[length:22px_22px] opacity-70" />
-            {/* The rest of the floor, getting on with their day. */}
-            <span className="absolute left-[8%] top-[12%] opacity-60">
-              <Face seed={sam.id} size={30} presence="busy" />
-            </span>
-            <span className="absolute bottom-[12%] left-[26%] opacity-60">
-              <Face seed={olivia.id} size={30} presence="available" />
-            </span>
-            {/* Jack, and his ring lighting up once you're beside him. */}
-            <span className="absolute right-[14%] top-[34%] flex flex-col items-center gap-1.5">
-              <span className="relative">
-                <span className="absolute -inset-2 rounded-full border-2 border-brand opacity-0" style={{ animation: "m-lit 8s ease-in-out infinite" }} />
-                <Face seed={jack.id} size={52} presence="available" />
-              </span>
-              <span className={PILL}>{jack.name}</span>
-            </span>
-            {/* You, and how far you can be heard, walking over. */}
-            <span
-              className="absolute left-[12%] top-[34%] [--reach:calc(100cqw*0.6-100px)]"
-              style={{ animation: "m-walk 8s cubic-bezier(.6,0,.3,1) infinite" }}
-            >
-              <span className="relative flex flex-col items-center gap-1.5">
-                <span className="absolute left-1/2 top-[26px] size-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-foreground/25 bg-brand/[0.05]" />
-                <Face seed={emma.id} size={52} />
-                <span className={cn(PILL, "relative")}>{t("after.you")}</span>
-              </span>
-            </span>
-            <span className="absolute bottom-4 right-4 opacity-0" style={{ animation: "m-lit 8s ease-in-out infinite" }}>
-              <span className={cn(PILL, "gap-2 py-1 pe-1 ps-1.5")}>
-                <Face seed={jack.id} size={20} />
-                {t("after.talking", { name: jack.name })}
-                <span className="flex size-6 items-center justify-center rounded-full bg-muted text-foreground">
-                  <Mic className="size-3" />
-                </span>
-              </span>
-            </span>
-          </div>
+          {/* The real floor, zoomed out: you walk along the desks to Jack's, and a click on the bar beside him starts the call. */}
+          <FloorScene
+            view={[25, 8.5, 19, 11]}
+            className="mt-6 h-[260px] rounded-[20px] sm:h-[288px]"
+            sitting={[
+              { ...PEOPLE.jack, chair: [34, 16], status: "available" },
+              { ...PEOPLE.noah, chair: [34, 13], status: "busy" },
+              { ...PEOPLE.sam, chair: [40, 13], status: "busy" },
+              { ...PEOPLE.grace, chair: [40, 16], status: "away" },
+            ]}
+            walking={[
+              {
+                ...emma,
+                name: t("after.you"),
+                status: "available",
+                speed: SPEED,
+                path: [
+                  [TO[0], TO[1], STAY],
+                  [FROM[0], FROM[1], WAIT],
+                ],
+                faces: { 0: "right", 1: "right" },
+              },
+              { ...PEOPLE.olivia, status: "available", path: [[31, 9, 2], [44, 9, 3]], speed: 1.6, offset: 4 },
+            ]}
+            over={
+              <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center gap-2 px-3 [--face-ring:var(--ui-card)]">
+                {[
+                  { seed: emma.id, name: t("after.you"), talks: "mc-you" },
+                  { seed: jack.id, name: jack.name, talks: "mc-them" },
+                ].map((card, index) => (
+                  <div
+                    key={card.seed}
+                    className={cn(APP, "relative aspect-video w-[min(40%,10.5rem)] overflow-hidden rounded-xl bg-card shadow-lg ring-2 ring-card/80")}
+                    style={{ animation: loop("mc-card", "ease-out", index * 0.08) }}
+                  >
+                    <span className={cn("absolute inset-0 rounded-[inherit] border-2 border-brand", index === 0 && "motion-reduce:hidden")} style={{ animation: loop(card.talks, "linear") }} />
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <Face seed={card.seed} size={34} />
+                    </span>
+                    <span className="absolute bottom-1.5 start-1.5 rounded-full bg-card/90 px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm">{card.name}</span>
+                  </div>
+                ))}
+              </div>
+            }
+          >
+            <OnFloor at={[TO[0] + 0.5, TO[1] + 0.85]}>
+              <div className="mt-[calc(var(--tile)*0.95)] motion-reduce:hidden" style={{ animation: loop("mc-bar", "ease-out") }}>
+                <NearbyBar
+                  name={jack.name}
+                  seed={jack.id}
+                  labels={{ video: tp("video"), audio: tp("audio"), message: tp("message") }}
+                  call={
+                    <span className="absolute left-1/2 top-1/2 motion-reduce:hidden" style={{ animation: loop("mc-hand") }}>
+                      <span className="absolute -left-4 -top-4 size-8 rounded-full border-2 border-brand" style={{ animation: loop("mc-ring", "ease-out") }} />
+                      <svg width="18" height="22" viewBox="0 0 22 26" className="absolute -left-[2px] -top-[2px] origin-[2px_2px] drop-shadow-[0_2px_2px_rgb(0_0_0/0.4)]" style={{ animation: loop("mc-press", "linear") }}>
+                        <path d="M2 2 L2 21 L7 16.5 L10.5 24 L13.8 22.6 L10.4 15.2 L17 15.2 Z" fill="#fff" stroke="#111" strokeWidth="1.6" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  }
+                />
+              </div>
+            </OnFloor>
+          </FloorScene>
           <p className="mt-auto flex items-center gap-2 pt-8 text-[15px] text-foreground">
             <Footprints className="size-4 shrink-0 text-brand" />
             {t("after.result")}

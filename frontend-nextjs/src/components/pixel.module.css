@@ -64,9 +64,19 @@
   }
 }
 
+/* Standing still, but still facing the way they were. */
 @media (prefers-reduced-motion: reduce) {
   .sprite {
     animation: none;
     background-position-x: 78.26087%;
+  }
+  .right {
+    background-position-x: 0%;
+  }
+  .up {
+    background-position-x: 26.086957%;
+  }
+  .left {
+    background-position-x: 52.173913%;
   }
 }

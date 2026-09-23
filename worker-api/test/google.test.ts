@@ -145,6 +145,30 @@ describe("sign in with Google", () => {
     // Two bcrypt runs, which take a while when every test file runs at once.
   }, 20_000);
 
+  it("connects Google to an account that signed up with a password, once", async () => {
+    const email = `connect${Date.now()}@example.com`;
+    const ada = await makeUser("Ada", { email });
+    claims = person({ email });
+    const connected = await exports.default.fetch(`${API}/v1/me/google`, {
+      method: "POST",
+      headers: { Origin: SITE, "Content-Type": "application/json", Cookie: ada.cookie },
+      body: JSON.stringify({ code: "one-time-code" }),
+    });
+    expect(connected.status).toBe(200);
+    expect(((await connected.json()) as { user: { google: boolean } }).user.google).toBe(true);
+    // Signing in with that Google account now lands in the same account.
+    expect((await google()).body.user.id).toBe(ada.id);
+
+    // Another account can't take the same Google account.
+    const bo = await makeUser("Bo");
+    const again = await exports.default.fetch(`${API}/v1/me/google`, {
+      method: "POST",
+      headers: { Origin: SITE, "Content-Type": "application/json", Cookie: bo.cookie },
+      body: JSON.stringify({ code: "one-time-code" }),
+    });
+    expect(again.status).toBe(409);
+  });
+
   it("refuses a token meant for another app, expired, or with an unverified email", async () => {
     for (const bad of [{ aud: "other.apps.googleusercontent.com" }, { exp: 1 }, { iss: "https://evil.example" }]) {
       claims = person(bad);

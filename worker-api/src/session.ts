@@ -19,6 +19,10 @@ export interface User {
   isGuest: boolean;
   /** Has a password, not only Google. */
   hasPassword?: boolean;
+  /** Can sign in with Google. */
+  hasGoogle?: boolean;
+  /** The link on their profile. */
+  link?: string | null;
   /** The hashed id of the session this request came with. */
   sessionId: string;
 }
@@ -30,6 +34,8 @@ interface SessionRow {
   character: string;
   is_guest: number;
   has_password: number;
+  has_google: number;
+  link: string | null;
   last_seen_at: number;
 }
 
@@ -86,7 +92,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const now = Date.now();
   const id = await hashToken(token);
   const row = await env.DB.prepare(
-    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password
+    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
+            u.google_sub IS NOT NULL AS has_google, u.link
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -114,6 +121,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     character: row.character,
     isGuest: row.is_guest === 1,
     hasPassword: row.has_password === 1,
+    hasGoogle: row.has_google === 1,
+    link: row.link,
     sessionId: id,
   };
 }

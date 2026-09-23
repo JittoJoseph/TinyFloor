@@ -98,10 +98,10 @@ export function authRoutes(router: Router): void {
       }
 
       const account = await env.DB.prepare(
-        "SELECT id, email, password_hash, display_name, character FROM users WHERE email = ? AND is_guest = 0",
+        "SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link FROM users WHERE email = ? AND is_guest = 0",
       )
         .bind(email)
-        .first<{ id: string; email: string; password_hash: string | null; display_name: string; character: string }>();
+        .first<{ id: string; email: string; password_hash: string | null; display_name: string; character: string; has_google: number; link: string | null }>();
 
       const emailGuard = guard(env, `email:${email}`);
       const verdict = await emailGuard.verify(password.slice(0, 256), account?.password_hash ?? null);
@@ -140,6 +140,8 @@ export function authRoutes(router: Router): void {
         character: found.character,
         isGuest: false,
         hasPassword: true,
+        hasGoogle: found.has_google === 1,
+        link: found.link,
         sessionId,
       };
       return json({ user: publicUser(user) }, { headers: { "Set-Cookie": cookie } });
@@ -227,11 +229,26 @@ export function authRoutes(router: Router): void {
         throw new HttpError(400, "bad_character", "Pick one of the characters", "character");
       }
       const character = (body.character as string | undefined) ?? user.character;
+      // A link is for accounts; a guest's profile lasts a week.
+      const link = body.link === undefined || user.isGuest ? (user.link ?? null) : cleanLink(body.link);
 
-      await env.DB.prepare("UPDATE users SET display_name = ?, character = ? WHERE id = ?")
-        .bind(displayName, character, user.id)
+      await env.DB.prepare("UPDATE users SET display_name = ?, character = ?, link = ? WHERE id = ?")
+        .bind(displayName, character, link, user.id)
         .run();
-      return json({ user: publicUser({ ...user, displayName, character }) });
+      return json({ user: publicUser({ ...user, displayName, character, link }) });
+    })
+
+    // Someone's profile, for whoever they share a floor or a chat with: their name and their link.
+    .add("GET", "/v1/people/:id", async ({ request, env, ctx, params }) => {
+      await requireUser(env, request, ctx);
+      const person = await env.DB.prepare("SELECT id, display_name, link, is_guest FROM users WHERE id = ?")
+        .bind(params.id)
+        .first<{ id: string; display_name: string; link: string | null; is_guest: number }>();
+      if (!person) throw new HttpError(404, "not_found", "No such person");
+      return json(
+        { person: { id: person.id, displayName: person.display_name, link: person.is_guest ? null : person.link, guest: person.is_guest === 1 } },
+        { headers: { "Cache-Control": "private, max-age=60" } },
+      );
     });
 }
 
@@ -246,6 +263,24 @@ function cleanEmail(value: unknown): string {
     throw new HttpError(400, "bad_email", "That email doesn't look right", "email");
   }
   return email;
+}
+
+/** A profile link: a web address, http or https, or nothing. */
+function cleanLink(value: unknown): string | null {
+  const text = typeof value === "string" ? value.trim() : "";
+  if (!text) return null;
+  const candidate = /^[a-z][a-z0-9+.-]*:/i.test(text) ? text : `https://${text}`;
+  let url: URL;
+  try {
+    url = new URL(candidate);
+  } catch {
+    throw new HttpError(400, "bad_link", "That doesn't look like a web address", "link");
+  }
+  if ((url.protocol !== "https:" && url.protocol !== "http:") || !url.hostname.includes(".") || candidate.length > 200) {
+    throw new HttpError(400, "bad_link", "That doesn't look like a web address", "link");
+  }
+  // Kept as written (with https:// added), so it reads the way they typed it.
+  return candidate;
 }
 
 function checkPassword(value: unknown, field = "password"): string {
@@ -268,5 +303,7 @@ export function publicUser(user: User) {
     character: user.character,
     guest: user.isGuest,
     password: !!user.hasPassword,
+    google: !!user.hasGoogle,
+    link: user.link ?? null,
   };
 }

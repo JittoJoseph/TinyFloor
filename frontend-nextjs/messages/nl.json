@@ -1353,7 +1353,12 @@
       "typing": "{name} typt…",
       "guest": "Gast",
       "inviteTeammate": "Teamgenoot uitnodigen",
-      "inviteTeammateNote": "Ze komen binnen met een link"
+      "inviteTeammateNote": "Ze komen binnen met een link",
+      "video": "Videogesprek",
+      "audio": "Spraakgesprek",
+      "you": "Jij",
+      "clickToWalk": "Klik ergens om te lopen",
+      "playable": "De verdieping, om te proberen: klik ergens om erheen te lopen, of gebruik de pijltjestoetsen"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Eén verdieping voor de hele dag,",
       "muted": "van het eerste hallo tot het laatste gesprek."
+    },
+    "tour": {
+      "title": "Een dag op de verdieping.",
+      "muted": "Elke ruimte heeft een reden.",
+      "hall": {
+        "title": "Zie wie er is.",
+        "body": "Iedereen is op de verdieping: aan een bureau, onderweg of in een meeting. Eén blik vertelt je wie er is, wie bezig is en wie geconcentreerd werkt."
+      },
+      "office": {
+        "title": "Doe de deur dicht.",
+        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je.",
+        "chip": "{name} is bezig · geconcentreerd"
+      },
+      "lounge": {
+        "title": "Neem even pauze.",
+        "body": "De bank, de speaker met de muziek van de ruimte, en de mensen die je bij het koffieapparaat tegen zou komen.",
+        "chip": "Speelt nu"
+      }
+    },
+    "vignettes": {
+      "sharing": "Deelt",
+      "playing": "Speelt voor de ruimte"
     }
   }
 }

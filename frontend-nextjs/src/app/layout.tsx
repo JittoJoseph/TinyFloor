@@ -10,7 +10,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localeDirection } from "@/lib/i18n/routing";
-import { ogLocale } from "@/lib/seo";
+import { ogLocale, socialImage } from "@/lib/seo";
 import { siteGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -64,9 +64,10 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "TinyFloor",
       images: [
         {
-          url: "/og.png",
+          url: socialImage(locale, "/"),
           width: 1200,
           height: 630,
+          type: "image/jpeg",
           alt: t("ogAlt"),
         },
       ],
@@ -77,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: [{ url: socialImage(locale, "/"), alt: t("ogAlt") }],
     },
     applicationName: "TinyFloor",
     robots: {

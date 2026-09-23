@@ -1,13 +1,12 @@
 import { SITE_URL } from "@/lib/site";
 import { localeCodes } from "@/lib/i18n/routing";
-import { localePath } from "@/lib/seo";
+import { localePath, socialImage } from "@/lib/seo";
 
 export type Schema = Record<string, unknown>;
 
 const NAME = "TinyFloor";
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
-const IMAGE = `${SITE_URL}/office.png`;
 
 /** The absolute URL a route is served at in a locale, matching its canonical. */
 export function absoluteUrl(locale: string, path: string): string {
@@ -92,7 +91,7 @@ export function pageGraph({
         name,
         ...(description ? { description } : {}),
         inLanguage: locale,
-        image: IMAGE,
+        image: `${SITE_URL}${socialImage(locale, path)}`,
         isPartOf: { "@id": WEBSITE_ID },
         ...(breadcrumb ? { breadcrumb: { "@id": breadcrumb["@id"] } } : {}),
         ...(mainEntity ? { mainEntity: { "@id": mainEntity } } : {}),
@@ -121,8 +120,8 @@ export function appNode(
     applicationSubCategory: "Virtual office",
     operatingSystem: "Any",
     browserRequirements: "Requires a modern browser with WebRTC",
-    image: IMAGE,
-    screenshot: IMAGE,
+    image: `${SITE_URL}${socialImage(locale, "/")}`,
+    screenshot: `${SITE_URL}${socialImage(locale, "/")}`,
     isAccessibleForFree: true,
     featureList: features,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },

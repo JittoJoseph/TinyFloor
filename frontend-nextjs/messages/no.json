@@ -1353,7 +1353,12 @@
       "typing": "{name} skriver…",
       "guest": "Gjest",
       "inviteTeammate": "Inviter en kollega",
-      "inviteTeammateNote": "De kommer inn med en lenke"
+      "inviteTeammateNote": "De kommer inn med en lenke",
+      "video": "Videosamtale",
+      "audio": "Taleanrop",
+      "you": "Deg",
+      "clickToWalk": "Klikk hvor som helst for å gå",
+      "playable": "Etasjen å prøve: klikk hvor som helst for å gå dit, eller bruk piltastene"
     },
     "footer": {
       "tagline": "Et virtuelt kontor du går rundt i.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Én etasje for hele dagen,",
       "muted": "fra det første hei til den siste samtalen."
+    },
+    "tour": {
+      "title": "En dag på etasjen.",
+      "muted": "Hvert rom er der av en grunn.",
+      "hall": {
+        "title": "Se hvem som er her.",
+        "body": "Alle er på etasjen: ved en pult, på farten eller i et møte. Ett blikk forteller deg hvem som er her, hvem som er opptatt og hvem som jobber konsentrert."
+      },
+      "office": {
+        "title": "Lukk døren.",
+        "body": "Sett deg som opptatt og ta det private kontoret. Andre ser at du jobber konsentrert før de kommer bort, og chatten venter på deg.",
+        "chip": "{name} er opptatt · konsentrert"
+      },
+      "lounge": {
+        "title": "Ta en pause.",
+        "body": "Sofaen, høyttaleren som spiller rommets musikk, og folkene du ville truffet ved kaffemaskinen.",
+        "chip": "Spilles nå"
+      }
+    },
+    "vignettes": {
+      "sharing": "Deler",
+      "playing": "Spilles for rommet"
     }
   }
 }

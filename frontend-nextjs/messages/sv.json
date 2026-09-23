@@ -1353,7 +1353,12 @@
       "typing": "{name} skriver…",
       "guest": "Gäst",
       "inviteTeammate": "Bjud in en kollega",
-      "inviteTeammateNote": "De kommer in med en länk"
+      "inviteTeammateNote": "De kommer in med en länk",
+      "video": "Videosamtal",
+      "audio": "Röstsamtal",
+      "you": "Du",
+      "clickToWalk": "Klicka var som helst för att gå",
+      "playable": "Våningen att testa: klicka var som helst för att gå dit, eller använd piltangenterna"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Ett våningsplan för hela dagen,",
       "muted": "från första hej till sista samtalet."
+    },
+    "tour": {
+      "title": "En dag på våningen.",
+      "muted": "Varje rum finns där av en anledning.",
+      "hall": {
+        "title": "Se vem som är här.",
+        "body": "Alla är på våningen: vid ett skrivbord, på väg någonstans eller i ett möte. En blick räcker för att se vem som är här, vem som är upptagen och vem som jobbar koncentrerat."
+      },
+      "office": {
+        "title": "Stäng dörren.",
+        "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig.",
+        "chip": "{name} är upptagen · koncentrerad"
+      },
+      "lounge": {
+        "title": "Ta en paus.",
+        "body": "Soffan, högtalaren som spelar rummets musik och folket du skulle stöta på vid kaffemaskinen.",
+        "chip": "Spelas nu"
+      }
+    },
+    "vignettes": {
+      "sharing": "Delar",
+      "playing": "Spelas för rummet"
     }
   }
 }

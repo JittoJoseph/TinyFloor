@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
+import { LANDINGS } from "@/lib/landings";
 
 const SITE_NAME = "TinyFloor";
 
@@ -41,6 +42,19 @@ export function localePath(locale: string, path: string): string {
   return `/${locale}${path === "/" ? "" : path}`;
 }
 
+/**
+ * A page's social card (scripts/pictures.mjs draws them): the home page and
+ * the lobby have one in every language; the other marketing pages have an
+ * English one, and a card without words stands in for them elsewhere.
+ */
+export function socialImage(locale: string, path: string): string {
+  const code = localeCodes.includes(locale as Locale) ? locale : defaultLocale;
+  if (path === "/lobby") return `/og/lobby-${code}.jpg`;
+  const slug = path.slice(1);
+  if (slug && LANDINGS.some((page) => page.slug === slug)) return code === "en" ? `/og/${slug}.jpg` : "/og/neutral.jpg";
+  return `/og/home-${code}.jpg`;
+}
+
 /** hreflang alternates for every locale plus x-default. */
 function languageAlternates(path: string) {
   return {
@@ -60,6 +74,8 @@ interface PageMetadataInput {
   noindex?: boolean;
   /** OG/Twitter title for pages without a `title` (the home page). */
   socialTitle?: string;
+  /** What the social card shows, for people who can't see it. */
+  imageAlt?: string;
 }
 
 /**
@@ -74,9 +90,11 @@ export function pageMetadata({
   locale,
   noindex = false,
   socialTitle,
+  imageAlt,
 }: PageMetadataInput): Metadata {
   const canonical = localePath(locale, path);
   const fullTitle = title ? `${title} | ${SITE_NAME}` : socialTitle;
+  const image = { url: socialImage(locale, path), width: 1200, height: 630, type: "image/jpeg", ...(imageAlt ? { alt: imageAlt } : {}) };
 
   return {
     ...(title ? { title } : {}),
@@ -93,13 +111,13 @@ export function pageMetadata({
       alternateLocale: localeCodes
         .filter((code) => code !== locale)
         .map((code) => OG_LOCALE[code]),
-      images: [{ url: "/og.png", width: 1200, height: 630 }],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       ...(fullTitle ? { title: fullTitle } : {}),
       ...(description ? { description } : {}),
-      images: ["/og.png"],
+      images: [image],
     },
   };
 }
@@ -136,6 +154,7 @@ export function localizedMetadata({
       title: title && t(title),
       description: description && t(description),
       socialTitle: socialTitle && t(socialTitle),
+      imageAlt: t("ogAlt"),
       noindex,
     });
   };

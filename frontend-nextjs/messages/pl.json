@@ -1353,7 +1353,12 @@
       "typing": "{name} pisze…",
       "guest": "Gość",
       "inviteTeammate": "Zaproś osobę z zespołu",
-      "inviteTeammateNote": "Dołącza przez link"
+      "inviteTeammateNote": "Dołącza przez link",
+      "video": "Rozmowa wideo",
+      "audio": "Rozmowa głosowa",
+      "you": "Ty",
+      "clickToWalk": "Kliknij gdziekolwiek, aby iść",
+      "playable": "Piętro do wypróbowania: kliknij gdziekolwiek, aby tam pójść, albo użyj strzałek"
     },
     "footer": {
       "tagline": "Wirtualne biuro, po którym chodzisz.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Jedno piętro na cały dzień,",
       "muted": "od pierwszego cześć po ostatnią rozmowę."
+    },
+    "tour": {
+      "title": "Dzień na piętrze.",
+      "muted": "Każdy pokój jest po coś.",
+      "hall": {
+        "title": "Zobacz, kto jest.",
+        "body": "Wszyscy są na piętrze: przy biurku, w ruchu albo na spotkaniu. Jedno spojrzenie mówi, kto jest, kto jest zajęty, a kto pracuje w skupieniu."
+      },
+      "office": {
+        "title": "Zamknij drzwi.",
+        "body": "Ustaw status zajęty i zajmij prywatny gabinet. Inni widzą, że pracujesz w skupieniu, zanim podejdą, a czat na ciebie poczeka.",
+        "chip": "{name} jest zajęty · w skupieniu"
+      },
+      "lounge": {
+        "title": "Zrób przerwę.",
+        "body": "Kanapa, głośnik grający muzykę pokoju i ludzie, na których wpadłbyś przy ekspresie do kawy.",
+        "chip": "Teraz gra"
+      }
+    },
+    "vignettes": {
+      "sharing": "Udostępnia",
+      "playing": "Gra dla całego pokoju"
     }
   }
 }

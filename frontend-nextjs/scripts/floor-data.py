@@ -113,7 +113,7 @@ chair_rows = "\n".join(entries)
  * Where you can stand on the floor, one character a tile: "." to walk on, "#"
  * a wall or furniture, as the app's NavGrid works it out from the colliders.
  */
-export const WALKABLE = [
+const WALKABLE = [
 {walkable}
 ];
 

@@ -80,6 +80,7 @@ export function FloorScene({
   style,
   playable,
   over,
+  glide = false,
 }: {
   /** The part of the map in view, in tiles: [left, top, width, height]. It covers the box, cropping whichever side is long. */
   view: [number, number, number, number];
@@ -96,6 +97,8 @@ export function FloorScene({
   style?: CSSProperties;
   /** The floor can be walked on (PlayableYou is among the children): it takes focus for the arrow keys, and this names it. */
   playable?: string;
+  /** Pan smoothly to a new view, the way the app's camera follows you: keep the views the same size and only the pan moves. */
+  glide?: boolean;
 }) {
   const [vx, vy, vw, vh] = view;
   const cx = vx + vw / 2;
@@ -116,12 +119,14 @@ export function FloorScene({
     >
       <div
         aria-hidden={playable ? undefined : true}
-        className="absolute aspect-[3/2] [container-type:inline-size]"
+        className={cn(
+          "absolute left-0 top-0 aspect-[3/2] [container-type:inline-size]",
+          glide && "transition-[translate] duration-[1100ms] ease-[cubic-bezier(0.65,0,0.25,1)] motion-reduce:transition-none",
+        )}
         style={{
           width,
           // Centred on the view, but never past the map's edge, like the app's camera bounds.
-          left: `clamp(calc(100cqw - ${width}), calc(50cqw - ${width} * ${(cx / MAP.width).toFixed(5)}), 0px)`,
-          top: `clamp(calc(100cqh - ${width} * ${MAP.height / MAP.width}), calc(50cqh - ${width} * ${(cy / MAP.width).toFixed(5)}), 0px)`,
+          translate: `clamp(calc(100cqw - ${width}), calc(50cqw - ${width} * ${(cx / MAP.width).toFixed(5)}), 0px) clamp(calc(100cqh - ${width} * ${MAP.height / MAP.width}), calc(50cqh - ${width} * ${(cy / MAP.width).toFixed(5)}), 0px)`,
           ["--tile" as string]: `calc(100cqw / ${MAP.width})`,
           direction: "ltr",
         }}

@@ -1056,7 +1056,15 @@
     "creating": "Valmistellaan",
     "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
     "accountNext": "Seuraavaksi: tee tili, niin toimisto on valmis.",
-    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan."
+    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan.",
+    "steps": [
+      "Nimeä",
+      "Luo tili",
+      "Astu sisään"
+    ],
+    "asideTitle": "Toimistosi valmiina minuutissa",
+    "asideBody": "Oma kerros tiimillesi, chatin ja kokouspöytien kanssa. Ilmainen enintään 3 hengelle.",
+    "nameFirst": "Nimeä toimistosi jatkaaksesi Googlella"
   },
   "shell": {
     "floor": "Kerros",

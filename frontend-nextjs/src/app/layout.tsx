@@ -3,7 +3,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { SITE_URL, X_HANDLE } from "@/lib/site";
 import { VT323, Nunito, Caveat, Geist } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -105,17 +104,19 @@ export default async function RootLayout({
 
   return (
     // The app routes set their theme on <html> before React loads (lib/theme-script.ts).
-    <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${vt323.variable} ${nunito.variable} ${caveat.variable} ${geist.variable} antialiased`}>
-        {/* The app routes' theme, set before first paint (lib/theme-script.ts). */}
-        <Script id="tf-theme" strategy="beforeInteractive">
-          {THEME_SCRIPT}
-        </Script>
+    <html
+      lang={locale}
+      dir={localeDirection(locale)}
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
+      <body
+        className={`${vt323.variable} ${nunito.variable} ${caveat.variable} ${geist.variable} antialiased`}
+      >
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
-          <AuthProvider>
-            {children}
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </NextIntlClientProvider>
         <GoogleAnalytics />
         <ClarityAnalytics />

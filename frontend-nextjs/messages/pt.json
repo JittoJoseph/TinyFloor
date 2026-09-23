@@ -1056,7 +1056,15 @@
     "creating": "Preparando tudo",
     "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
     "accountNext": "Depois: crie uma conta e o escritório fica pronto.",
-    "justLooking": "Só dando uma olhada? <link>Entre no escritório público</link>."
+    "justLooking": "Só dando uma olhada? <link>Entre no escritório público</link>.",
+    "steps": [
+      "Dê um nome",
+      "Crie uma conta",
+      "Entre"
+    ],
+    "asideTitle": "Seu escritório, pronto em um minuto",
+    "asideBody": "Um andar só da sua equipe, com chat e mesas de reunião. Grátis para até 3 pessoas.",
+    "nameFirst": "Dê um nome ao escritório para continuar com o Google"
   },
   "shell": {
     "floor": "Andar",

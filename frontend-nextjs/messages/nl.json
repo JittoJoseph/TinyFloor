@@ -1056,7 +1056,15 @@
     "creating": "Wordt klaargezet",
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
     "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
-    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
+    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>.",
+    "steps": [
+      "Geef een naam",
+      "Maak een account",
+      "Loop binnen"
+    ],
+    "asideTitle": "Je kantoor, klaar in een minuut",
+    "asideBody": "Een eigen verdieping voor je team, met chat en vergadertafels. Gratis voor maximaal 3 mensen.",
+    "nameFirst": "Geef je kantoor een naam om door te gaan met Google"
   },
   "shell": {
     "floor": "Vloer",

@@ -1056,7 +1056,15 @@
     "creating": "Przygotowujemy je",
     "freePlan": "Za darmo do 3 osób. Bez karty.",
     "accountNext": "Dalej: załóż konto i biuro jest gotowe.",
-    "justLooking": "Tylko się rozglądasz? <link>Wejdź do publicznego biura</link>."
+    "justLooking": "Tylko się rozglądasz? <link>Wejdź do publicznego biura</link>.",
+    "steps": [
+      "Nazwij",
+      "Załóż konto",
+      "Wejdź"
+    ],
+    "asideTitle": "Twoje biuro, gotowe w minutę",
+    "asideBody": "Własne piętro dla twojego zespołu, z czatem i stołami do spotkań. Za darmo dla maksymalnie 3 osób.",
+    "nameFirst": "Nazwij biuro, aby kontynuować z Google"
   },
   "shell": {
     "floor": "Piętro",

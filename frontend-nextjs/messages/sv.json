@@ -1056,7 +1056,15 @@
     "creating": "Gör i ordning",
     "freePlan": "Gratis för upp till 3 personer. Inget kort.",
     "accountNext": "Sedan: skapa ett konto, så är kontoret klart.",
-    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället."
+    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället.",
+    "steps": [
+      "Namnge",
+      "Skapa konto",
+      "Gå in"
+    ],
+    "asideTitle": "Ditt kontor, klart på en minut",
+    "asideBody": "En egen våning för ditt team, med chatt och mötesbord. Gratis för upp till 3 personer.",
+    "nameFirst": "Namnge ditt kontor för att fortsätta med Google"
   },
   "shell": {
     "floor": "Golvet",

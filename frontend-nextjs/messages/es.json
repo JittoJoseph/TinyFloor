@@ -1056,7 +1056,15 @@
     "creating": "Preparándola",
     "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
     "accountNext": "Siguiente: crea una cuenta y tu oficina estará lista.",
-    "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor."
+    "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor.",
+    "steps": [
+      "Ponle nombre",
+      "Crea una cuenta",
+      "Entra"
+    ],
+    "asideTitle": "Tu oficina, lista en un minuto",
+    "asideBody": "Una planta propia para tu equipo, con chat y mesas de reunión. Gratis hasta 3 personas.",
+    "nameFirst": "Ponle nombre a tu oficina para continuar con Google"
   },
   "shell": {
     "floor": "Planta",

@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   // Bottom left is where the app keeps you (your face on the rail).
   devIndicators: { position: "bottom-right" },
+  // The floor only ever loads in the browser (ssr: false, or inside an effect),
+  // so the server build leaves Phaser out instead of carrying 1.2MB it never runs.
+  webpack: (config, { isServer }) => {
+    if (isServer) config.resolve.alias = { ...config.resolve.alias, phaser: false };
+    return config;
+  },
 };
 
 export default withNextIntl(nextConfig);

@@ -8,7 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
  * instead of the sign-up pitch; everyone else sees sign in and the main ask.
  * The session is already being read by the root layout, so this costs nothing.
  */
-export function HomeNavActions({ signIn, lobby, walkIn, open }: { signIn: string; lobby: string; walkIn: string; open: string }) {
+export function HomeNavActions({ signIn, start, open }: { signIn: string; start: string; open: string }) {
   const { user, isLoading } = useAuth();
   const account = !isLoading && !!user && !user.guest;
   return (
@@ -22,18 +22,10 @@ export function HomeNavActions({ signIn, lobby, walkIn, open }: { signIn: string
         </Link>
       )}
       <Link
-        href={account ? "/dashboard" : "/lobby"}
+        href={account ? "/dashboard" : "/create"}
         className="inline-flex h-9 items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[14.5px] text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.98]"
       >
-        {account ? (
-          open
-        ) : (
-          <>
-            {/* A phone's nav has room for the short way to say it. */}
-            <span className="sm:hidden">{walkIn}</span>
-            <span className="hidden sm:inline">{lobby}</span>
-          </>
-        )}
+        {account ? open : start}
       </Link>
     </div>
   );

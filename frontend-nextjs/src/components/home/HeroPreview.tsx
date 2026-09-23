@@ -11,8 +11,9 @@ const DWELL_MS = 6500;
 /**
  * The hero's look inside the app. The four views, frames and all, are rendered
  * on the server and sent as markup; this only chooses which one shows. It moves
- * on by itself until a tab or the rail is pressed: a line under each tab fills
- * while the view shows, and the next one comes when it's full. The fill is a
+ * on by itself: a line under each tab fills while the view shows, and the next
+ * one comes when it's full. Pressing a tab or the rail shows that view and
+ * carries on from it. The fill is a
  * CSS animation, so it holds still with everything else while off screen, and
  * doesn't run at all with reduced motion.
  */
@@ -26,7 +27,6 @@ export function HeroPreview({
   label: string;
 }) {
   const [view, setView] = useState<PreviewView>("floor");
-  const [picked, setPicked] = useState(false);
   const [offscreen, setOffscreen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
 
@@ -35,7 +35,6 @@ export function HeroPreview({
     const open = () => {
       if (location.hash !== "#meetings") return;
       setView("meeting");
-      setPicked(true);
     };
     open();
     window.addEventListener("hashchange", open);
@@ -67,10 +66,7 @@ export function HeroPreview({
             id={`hero-tab-${one}`}
             aria-selected={view === one}
             aria-controls={`hero-panel-${one}`}
-            onClick={() => {
-              setPicked(true);
-              setView(one);
-            }}
+            onClick={() => setView(one)}
             className={cn(
               "relative h-9 cursor-pointer overflow-hidden whitespace-nowrap rounded-full px-1 text-[12.5px] font-medium transition-colors sm:h-10 sm:text-[13.5px]",
               view === one
@@ -79,30 +75,26 @@ export function HeroPreview({
             )}
           >
             {labels[one]}
-            {/* Every tab's track while the views move on by themselves; the showing one fills, and moves on when full. */}
-            {!picked && (
-              <span aria-hidden className="absolute inset-x-4 bottom-1 h-[2px] overflow-hidden rounded-full bg-foreground/10 motion-reduce:hidden sm:inset-x-6">
-                {view === one && (
-                  <span
-                    key={one}
-                    className="block h-full origin-left animate-[hero-fill_var(--dwell)_linear_forwards] rounded-full bg-foreground/55 rtl:origin-right"
-                    onAnimationEnd={() => setView(VIEWS[(VIEWS.indexOf(one) + 1) % VIEWS.length])}
-                  />
-                )}
-              </span>
-            )}
+            {/* Every tab's track; the showing one fills, and moves on when full. */}
+            <span aria-hidden className="absolute inset-x-4 bottom-1 h-[2px] overflow-hidden rounded-full bg-foreground/10 motion-reduce:hidden sm:inset-x-6">
+              {view === one && (
+                <span
+                  key={one}
+                  className="block h-full origin-left animate-[hero-fill_var(--dwell)_linear_forwards] rounded-full bg-foreground/55 rtl:origin-right"
+                  onAnimationEnd={() => setView(VIEWS[(VIEWS.indexOf(one) + 1) % VIEWS.length])}
+                />
+              )}
+            </span>
           </button>
         ))}
       </div>
       <div
         className="mt-1.5 sm:mt-2"
         onClick={(event) => {
-          // The rail inside each view is the app's own way between them, and like the tabs, a press there stays put.
+          // The rail inside each view is the app's own way between them.
           const rail = (event.target as HTMLElement).closest<HTMLElement>("[data-view]");
           const next = rail?.dataset.view as PreviewView | undefined;
-          if (!next || !VIEWS.includes(next)) return;
-          setPicked(true);
-          setView(next);
+          if (next && VIEWS.includes(next)) setView(next);
         }}
       >
         {VIEWS.map((one) => (

@@ -3,10 +3,11 @@ import { useTranslations } from "next-intl";
 import { Check, Coffee, Copy, DoorClosed, Footprints, Headphones, Link2, Music2, Presentation } from "lucide-react";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
-import { FloorScene } from "@/components/floor/FloorScene";
 import { PEOPLE } from "@/components/floor/scenes";
+import { FloorScene } from "@/components/floor/FloorScene";
 import { NearbyBar } from "@/components/floor/PlayableYou";
 import { COLUMN, Heading } from "./Blocks";
+import { FloorTour } from "./FloorTour";
 
 /*
  * The floor's everyday moments, and how a team gets there: cards that hold
@@ -36,99 +37,7 @@ const KEYFRAMES =
   "@keyframes m-toast{0%,30%{opacity:0;translate:0 -6px}38%,85%{opacity:1;translate:0 0}93%,100%{opacity:0;translate:0 -6px}}" +
   "@media (prefers-reduced-motion:reduce){.m-still,.m-still *{animation:none!important}}";
 
-function WalkOver({ you, labels, className }: { you: string; labels: { video: string; audio: string; message: string }; className?: string }) {
-  const { jack, olivia } = PEOPLE;
-  return (
-    <FloorScene
-      view={[29, 5, 14, 10]}
-      standing={[
-        { ...jack, at: [35, 10], face: "right", status: "available" },
-        { ...olivia, at: [38, 10], face: "left", status: "available" },
-      ]}
-      walking={[{ character: "Ash", name: you, status: "available", path: [[33, 11], [37, 11, STOP]], faces: { 1: "up" } }]}
-      className={className}
-      over={
-        <div className="m-still absolute inset-x-0 bottom-4 flex justify-center" style={{ animation: `m-bar ${LOOP.toFixed(2)}s linear infinite` }}>
-          <NearbyBar name={olivia.name} seed={olivia.id} labels={labels} />
-        </div>
-      }
-    />
-  );
-}
-
 type Kind = "walk" | "meet" | "door" | "lounge";
-
-/** Each moment's piece of the real floor, with the app's own chip or bar over it. */
-export function MomentScene({ kind, className }: { kind: Kind; className?: string }) {
-  const t = useTranslations("home");
-  if (kind === "walk") {
-    return (
-      <WalkOver
-        you={t("preview.you")}
-        labels={{ video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") }}
-        className={className}
-      />
-    );
-  }
-  if (kind === "meet") {
-    return (
-      <FloorScene
-        view={[1, 3, 13, 10]}
-        sitting={[
-          { name: "Ava", character: "Amelia", chair: [4, 11], status: "in_call" },
-          { name: "Leo", character: "Adam", chair: [6, 8], status: "in_call" },
-          { name: "Zoe", character: "Lucy", chair: [8, 11], status: "in_call" },
-          { name: "Ben", character: "Bob", chair: [4, 8], status: "in_call" },
-        ]}
-        className={className}
-        over={
-          <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5 [--face-ring:var(--ui-card)]">
-            {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
-              <span
-                key={name}
-                className={cn("flex aspect-video w-11 items-center justify-center rounded-[9px] sm:w-14 bg-card shadow-lg ring-2", index === 1 ? "ring-brand" : "ring-card/80")}
-              >
-                <Face seed={`${name.toLowerCase()}-desk`} size={18} />
-              </span>
-            ))}
-          </div>
-        }
-      />
-    );
-  }
-  if (kind === "door") {
-    return (
-      <FloorScene
-        view={[1, 19, 13, 9]}
-        sitting={[{ ...PEOPLE.noah, chair: [7, 24], status: "busy" }]}
-        className={className}
-        over={
-          <span className={cn(CHIP, "absolute start-3 top-3")}>
-            <Headphones className="size-3.5 text-destructive" />
-            {t("moments.door.chip", { name: PEOPLE.noah.name })}
-          </span>
-        }
-      />
-    );
-  }
-  return (
-    <FloorScene
-      view={[33, 1, 14, 9]}
-      standing={[
-        { ...PEOPLE.lily, at: [38, 4], face: "right", status: "away" },
-        { ...PEOPLE.ryan, at: [40, 4], face: "left", status: "away" },
-      ]}
-      walking={[{ ...PEOPLE.grace, status: "available", path: [[45, 6, 1.5], [42, 6], [42, 5, 2.5]], faces: { 2: "up" }, speed: 1.8 }]}
-      className={className}
-      over={
-        <span className={cn(CHIP, "absolute start-3 top-3")}>
-          <Music2 className="size-3.5 text-brand" />
-          {t("moments.lounge.chip")} · Slow Stride
-        </span>
-      }
-    />
-  );
-}
 
 const ICONS: Record<Kind, ReactNode> = {
   walk: <Footprints />,
@@ -147,15 +56,6 @@ function useMoments() {
   ] as const;
 }
 
-function Label({ kind, children }: { kind: Kind; children: ReactNode }) {
-  return (
-    <span className={cn(APP, "flex items-center gap-1.5 text-[12.5px] font-medium text-brand [&_svg]:size-3.5")}>
-      {ICONS[kind]}
-      {children}
-    </span>
-  );
-}
-
 /** The section's head: the claim on one side, the plain answer on the other. */
 function Head() {
   const t = useTranslations("home");
@@ -167,32 +67,121 @@ function Head() {
   );
 }
 
+
+/*
+ * The whole office for the tour: every moment's people at once, so panning
+ * from one to the next finds the others still there.
+ */
+const TOUR_SCENE = {
+  standing: [
+    { ...PEOPLE.jack, at: [35, 10] as [number, number], face: "right" as const, status: "available" },
+    { ...PEOPLE.olivia, at: [38, 10] as [number, number], face: "left" as const, status: "available" },
+    { ...PEOPLE.lily, at: [38, 4] as [number, number], face: "right" as const, status: "away" },
+    { ...PEOPLE.ryan, at: [40, 4] as [number, number], face: "left" as const, status: "away" },
+  ],
+  sitting: [
+    { name: "Ava", character: "Amelia", chair: [4, 11] as [number, number], status: "in_call" },
+    { name: "Leo", character: "Adam", chair: [6, 8] as [number, number], status: "in_call" },
+    { name: "Zoe", character: "Lucy", chair: [8, 11] as [number, number], status: "in_call" },
+    { name: "Ben", character: "Bob", chair: [4, 8] as [number, number], status: "in_call" },
+    { ...PEOPLE.noah, chair: [7, 24] as [number, number], status: "busy" },
+    { ...PEOPLE.sam, chair: [20, 11] as [number, number], status: "busy" },
+    { name: "Mia", character: "Molly", chair: [34, 16] as [number, number], status: "available" },
+  ],
+  walking: [
+    { ...PEOPLE.grace, status: "available", path: [[45, 6, 1.5], [42, 6], [42, 5, 2.5]] as Array<[number, number, number?]>, faces: { 2: "up" as const }, speed: 1.8 },
+  ],
+};
+
+/** The four views, one size, so the camera only pans between them. */
+const VIEWS: Record<Kind, [number, number, number, number]> = {
+  walk: [23, 3, 26, 14],
+  meet: [0, 1, 26, 14],
+  door: [0, 17, 26, 14],
+  lounge: [22, 0, 26, 14],
+};
+
+/** The same four, closer, for a phone. */
+const NARROW: Record<Kind, [number, number, number, number]> = {
+  walk: [30, 5, 14, 10.5],
+  meet: [0, 2.5, 14, 10.5],
+  door: [0, 18.5, 14, 10.5],
+  lounge: [33, 0.5, 14, 10.5],
+};
+
+function TourOverlay({ kind }: { kind: Kind }) {
+  const t = useTranslations("home");
+  if (kind === "walk") {
+    // Only while you're stopped beside her, in time with your walk.
+    return (
+      <div style={{ animation: `m-bar ${LOOP.toFixed(2)}s linear infinite` }}>
+        <NearbyBar name={PEOPLE.olivia.name} seed={PEOPLE.olivia.id} labels={{ video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") }} />
+      </div>
+    );
+  }
+  if (kind === "meet") {
+    return (
+      <div className="flex gap-1.5 [--face-ring:var(--ui-card)]">
+        {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
+          <span key={name} className={cn("flex aspect-video w-12 items-center justify-center rounded-[9px] bg-card shadow-lg ring-2 sm:w-16", index === 1 ? "ring-brand" : "ring-card/80")}>
+            <Face seed={`${name.toLowerCase()}-desk`} size={18} />
+          </span>
+        ))}
+      </div>
+    );
+  }
+  if (kind === "door") {
+    return (
+      <span className={CHIP}>
+        <Headphones className="size-3.5 text-destructive" />
+        {t("moments.door.chip", { name: PEOPLE.noah.name })}
+      </span>
+    );
+  }
+  return (
+    <span className={CHIP}>
+      <Music2 className="size-3.5 text-brand" />
+      {t("moments.lounge.chip")} · Slow Stride
+    </span>
+  );
+}
+
 /**
- * What happens on the floor, as four moments of an ordinary day: two by two,
- * each a piece of the real floor with the app's own chip or bar over it, then
- * what it's called, what it is and how it works.
+ * What happens on the floor, as a tour of one office: pills name four moments
+ * of an ordinary day, and each pans the camera to where it happens.
  */
 export function Moments() {
+  const t = useTranslations("home");
   const moments = useMoments();
+  const walker = {
+    character: "Ash",
+    name: t("preview.you"),
+    status: "available",
+    path: [[33, 11], [37, 11, STOP]] as Array<[number, number, number?]>,
+    faces: { 1: "up" as const },
+  };
   return (
     <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
       <style>{KEYFRAMES}</style>
       <Head />
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-14">
-        {moments.map((one) => (
-          <article
-            key={one.kind}
-            id={one.id}
-            className="grid min-w-0 scroll-mt-24 grid-rows-[auto_1fr] overflow-hidden rounded-[28px] border border-border bg-card p-2 transition-[border-color,box-shadow] duration-300 hover:border-border-strong hover:shadow-[0_24px_60px_-36px_rgb(0_0_0/0.35)]"
-          >
-            <MomentScene kind={one.kind} className="aspect-[16/9] w-full rounded-[22px]" />
-            <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6">
-              <Label kind={one.kind}>{one.label}</Label>
-              <h3 className="mt-2.5 text-balance text-[21px] font-semibold leading-[1.2] tracking-[-0.02em]">{one.title}</h3>
-              <p className="mt-2 max-w-[32rem] text-pretty text-[15px] leading-relaxed text-muted-foreground">{one.body}</p>
-            </div>
-          </article>
-        ))}
+      <div className="mt-12 lg:mt-14">
+        <FloorTour
+          label={t("moments.title")}
+          scene={{ ...TOUR_SCENE, walking: [...TOUR_SCENE.walking, walker] }}
+          stops={moments.map((one) => ({
+            key: one.kind,
+            label: one.label,
+            icon: ICONS[one.kind],
+            title: one.title,
+            body: one.body,
+            view: VIEWS[one.kind],
+            narrow: NARROW[one.kind],
+            overlay: <TourOverlay kind={one.kind} />,
+            hash: one.id,
+            // The meeting room and the private office are at the map's left edge, so their card floats right.
+            side: one.kind === "meet" || one.kind === "door" ? ("end" as const) : ("start" as const),
+          }))}
+        />
       </div>
     </section>
   );

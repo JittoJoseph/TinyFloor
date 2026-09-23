@@ -90,6 +90,8 @@
     "tabSignIn": "Logga in",
     "tabSignUp": "Skapa konto",
     "chooseMode": "Logga in eller skapa ett konto",
+    "continueWithGoogle": "Fortsätt med Google",
+    "or": "eller",
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
@@ -128,7 +130,10 @@
       "name_required": "Välj ett namn som andra ser.",
       "turnstile": "Vi kunde inte kontrollera att du är en människa. Försök igen.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
-      "generic": "Något gick fel. Försök igen."
+      "generic": "Något gick fel. Försök igen.",
+      "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
+      "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
+      "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
     },
     "asideReady": "{office} är nästan klart",
     "asideTitle": "Ditt team, ett plan bort",
@@ -143,7 +148,6 @@
     "openingDoor": "Öppnar dörren",
     "walkIn": "Gå in",
     "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
-    "guestKeep": "Du är gäst. <link>Skapa ett konto</link> för att behålla namn och figur.",
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
     "walkingInAs": "Du går in som {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Säg hej till alla",
     "actions": "Åtgärder",
     "walkOver": "Gå dit",
-    "lobbyAlone": "Direktmeddelanden ingår i ett eget kontor. Säg hej i en kanal här.",
+    "lobbyAlone": "Ingen annan är här än. När någon kommer in kan du skriva till hen här, bara mellan er två.",
     "dropHere": "Släpp för att dela i {channel}",
     "dropLobby": "Bilder delas i kontor, inte i lobbyn.",
     "lobbyGeneral": "Säg hej, ställ en fråga eller berätta vad du jobbar med. Meddelanden finns kvar här i en vecka.",
     "lobbyIntroductions": "Vem är du, och vad för dig hit? Hela lobbyn kan läsa det i 7 dagar.",
     "lobbyFeedback": "Vad skulle göra TinyFloor bättre för ditt team? Vi läser varje meddelande här.",
     "introduceYourself": "Presentera dig",
-    "starterIntro": "Hej, jag är ny här 👋"
+    "starterIntro": "Hej, jag är ny här 👋",
+    "lobbyDmIntro": "Bara mellan er två och sparas aldrig: det försvinner när någon av er lämnar lobbyn.",
+    "notHere": "Personen har lämnat lobbyn, så det skickades inte.",
+    "gone": "{name} lämnade lobbyn, och samtalet försvann med.",
+    "edited": "redigerat",
+    "edit": "Redigera",
+    "delete": "Radera",
+    "deleteConfirm": "Radera?",
+    "save": "Spara",
+    "cancel": "Avbryt"
   },
   "proximity": {
     "videoCall": "Videosamtal",
@@ -422,7 +435,7 @@
         "label": "Alternativ till Gather",
         "meta": {
           "title": "Gratis alternativ till Gather i webbläsaren",
-          "description": "Letar du efter ett gratis alternativ till Gather? TinyFloor är ett virtuellt kontor i pixelgrafik med videosamtal när man står nära varandra. Ingen provperiod, inget pris per plats, inget att installera."
+          "description": "Letar du efter ett gratis alternativ till Gather? TinyFloor är ett virtuellt kontor i pixelgrafik med videosamtal när man står nära varandra."
         },
         "title": "Ett gratis <em>alternativ till Gather.</em>",
         "subtitle": "Gather har tagit bort sin gratisplan och tar nu betalt per medlem. TinyFloor behåller samma idé, ett kontor där du går runt och pratar, och förblir gratis.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Din profil",
       "changePassword": "Byt lösenord",
+      "setPassword": "Ange ett lösenord",
+      "setPasswordDescription": "Lägg till ett lösenord för att logga in med din e-post också, inte bara med Google.",
       "name": "Ditt namn",
       "saved": "Sparat",
       "save": "Spara",
       "character": "Figur",
+      "characterNote": "Den du går in som, i lobbyn och på varje kontor.",
       "passwordTitle": "Byt ditt lösenord",
       "passwordDescription": "Ange ditt nuvarande lösenord och välj sedan ett nytt.",
       "passwordChanged": "Ditt lösenord har ändrats.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
       "cancel": "Avbryt",
       "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant på varje skärm. Inget laddas upp eller sparas.",
-      "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren."
+      "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren.",
+      "link": "Din länk",
+      "linkPlaceholder": "dinwebbplats.se",
+      "linkNote": "Visas när någon öppnar din profil från chatten.",
+      "google": "Google",
+      "googleNote": "Logga in med Google också.",
+      "connectGoogle": "Koppla Google",
+      "googleConnected": "Kopplat"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "För många försök. Vänta några minuter och försök sedan igen.",
       "not_found": "Det hittades inte. Det kan ha tagits bort.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
-      "generic": "Något gick fel. Försök igen."
+      "generic": "Något gick fel. Försök igen.",
+      "bad_link": "Det ser inte ut som en webbadress.",
+      "google_taken": "Det Google-kontot är redan kopplat till ett annat TinyFloor-konto.",
+      "google_failed": "Det gick inte med Google. Försök igen."
     },
     "people": {
       "title": "Personer",
@@ -1037,8 +1063,7 @@
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
     "gone": "Det stängdes, eller så är du inte medlem längre.",
-    "backToOffices": "Tillbaka till dina kontor",
-    "door": "{members, plural, one {# medlem} other {# medlemmar}} · {here, plural, =0 {ingen på golvet än} other {# på golvet nu}}"
+    "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {
     "eyebrow": "Ditt eget kontor",
@@ -1050,8 +1075,14 @@
     "create": "Skapa kontor",
     "creating": "Gör i ordning",
     "freePlan": "Gratis för upp till 3 personer. Inget kort.",
-    "accountNext": "Sedan: skapa ett konto, så är kontoret klart.",
-    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället."
+    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället.",
+    "steps": [
+      "Namnge",
+      "Skapa konto",
+      "Gå in"
+    ],
+    "asideTitle": "Ditt kontor, klart på en minut",
+    "asideBody": "En egen våning för ditt team, med chatt och mötesbord. Gratis för upp till 3 personer."
   },
   "shell": {
     "floor": "Golvet",
@@ -1156,7 +1187,8 @@
         "Inget att installera",
         "Körs på Cloudflare"
       ],
-      "lobbyCta": "Gå in"
+      "lobbyCta": "Gå in",
+      "noAccount": "Inget konto behövs"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Bjud in en kollega",
       "inviteTeammateNote": "De kommer in med en länk",
       "video": "Videosamtal",
-      "audio": "Röstsamtal",
-      "you": "Du",
-      "clickToWalk": "Klicka var som helst för att gå",
-      "playable": "Våningen att testa: klicka var som helst för att gå dit, eller använd piltangenterna"
+      "audio": "Röstsamtal"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",
@@ -1375,7 +1404,30 @@
       "vs": "vs {name}",
       "theme": "Tema",
       "language": "Språk",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Om oss",
+      "privacy": "Integritet",
+      "terms": "Villkor"
     }
+  },
+  "legal": {
+    "englishOnly": "Den här sidan är på engelska.",
+    "agree": "Genom att fortsätta godkänner du <terms>villkoren</terms> och <privacy>integritetspolicyn</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "Om TinyFloor",
+      "description": "TinyFloor är ett virtuellt kontor du går runt i, gjort av Jitto Joseph. Varför det finns, vem som gör det och hur du når oss."
+    },
+    "eyebrow": "Om oss",
+    "title": "Distansarbetet tappade korridoren. Vi bygger tillbaka den.",
+    "p1": "Att jobba på olika platser är bra för fokus, men det tog tyst bort de små stunderna: den snabba frågan vid någons skrivbord, hejet i förbifarten, att se vem som är där. Videosamtal fungerar bra för möten. De gjorde varje annat samtal till en bokning.",
+    "p2": "TinyFloor är en våning i stället för en länk. Ditt team går runt på ett delat kontor i pixelgrafik, och att gå fram till någon är hur man börjar prata. Sätt dig vid ett bord och du är i ett möte. Gå därifrån och det blir tyst igen.",
+    "p3": "Det körs i webbläsaren på Cloudflares nätverk, på 18 språk, utan något att installera, och det är gratis för små team.",
+    "founderTitle": "Gjort av Jitto Joseph",
+    "founderBody": "Jag designar och bygger TinyFloor, från pixelvåningen till servrarna den körs på. Har du en idé, ett problem eller vill bara säga hej? Hör gärna av dig.",
+    "website": "Webbplats",
+    "elsewhere": "TinyFloor på andra ställen",
+    "contact": "Skriv till oss"
   }
 }

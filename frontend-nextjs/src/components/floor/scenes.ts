@@ -74,3 +74,21 @@ export const EVERYONE: Scene = {
     { name: "Nora", character: "Alex", status: "available", path: [[16, 24, 1], [16, 27], [30, 27, 2.5], [30, 24]], offset: 5 },
   ],
 };
+
+/** The lobby on a phone's hero: an upright patch of the hall, everyone inside x 23 to 37. */
+export const LOBBY: Scene = {
+  view: [23, 5, 14, 13],
+  sitting: [
+    { ...person(sam), chair: [26, 11], status: "available" },
+    { ...person(lily), chair: [34, 16], status: "away" },
+    { ...person(grace), chair: [34, 13], status: "busy" },
+  ],
+  standing: [
+    { ...person(jack), at: [28, 14], face: "right", status: "available" },
+    { ...person(olivia), at: [30, 14], face: "left", status: "available" },
+  ],
+  walking: [
+    { ...person(emma), status: "available", path: [[30, 10, 1.5], [37, 10, 2]], speed: 1.8 },
+    { ...person(ryan), status: "available", path: [[36, 18, 1], [25, 18, 2]], speed: 2, offset: 2 },
+  ],
+};

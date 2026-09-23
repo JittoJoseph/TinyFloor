@@ -21,8 +21,8 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     await this.env.ROOM.getByName(roomId).disconnectAll();
   }
 
-  async forgetRoom(roomId: string): Promise<void> {
-    await this.env.ROOM.getByName(roomId).forget();
+  async forgetOffice(officeId: string): Promise<void> {
+    await Promise.all([this.env.ROOM.getByName(officeId).forget(), this.env.CHAT.getByName(officeId).forget()]);
   }
 
   async revokeGuestLink(roomId: string, linkId: string): Promise<void> {

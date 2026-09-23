@@ -74,7 +74,7 @@ describe("usage totals", () => {
     ava.send({ t: "board_draw", id: "s1", color: "#000000", size: 2, erase: false, points: [1, 2, 3, 4] });
     await settle();
 
-    await exports.RealtimeAdmin.forgetRoom(room);
+    await exports.RealtimeAdmin.forgetOffice(room);
     await ava.closed();
 
     const ben = await Client.open(room);

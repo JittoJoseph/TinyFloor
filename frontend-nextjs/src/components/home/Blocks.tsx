@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
+import { ArrowRight, ChevronRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ import { PeoplePreview } from "./previews/PeoplePreview";
 import { MeetingPreview } from "./previews/MeetingPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { EVERYONE } from "@/components/floor/scenes";
+import { EVERYONE, LOBBY } from "@/components/floor/scenes";
 
 /*
  * The pieces every marketing page is built from: the page shell, headings,
@@ -27,6 +27,14 @@ export { COLUMN };
 
 /** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
 const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
+
+/**
+ * A row of cards that a phone or tablet swipes through, each snapping into
+ * place with the next one peeking in; three across as a grid on a wide screen.
+ */
+export const SWIPE =
+  "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-1 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden";
+export const SWIPE_ITEM = "w-[85%] shrink-0 snap-start sm:w-[46%] lg:w-auto";
 
 /** The two pills every ask uses: ink for the main one, a quiet stone for the other. */
 const PILL =
@@ -98,18 +106,62 @@ export function Heading({
 /** Rich copy's <em> as the quieter half of a two-tone headline. */
 export const quiet = (chunks: ReactNode) => <span className="text-muted-foreground/80">{chunks}</span>;
 
-/** The two ways in. */
+/** The two ways in: the lobby first, since it needs no account, then an office of your own. */
 export function Actions({ className }: { className?: string }) {
   const t = useTranslations("home");
   return (
     <div className={cn("flex flex-wrap items-center justify-center gap-2.5", className)}>
-      <Link href="/create" className={INK}>
-        {t("nav.start")}
-      </Link>
-      <Link href="/lobby" className={STONE}>
+      <Link href="/lobby" className={INK}>
         {t("hero.secondary")}
       </Link>
+      <Link href="/create" className={STONE}>
+        {t("nav.start")}
+      </Link>
     </div>
+  );
+}
+
+/**
+ * A hero's ask. On a wide screen, the two ways in as pills. On a phone, the
+ * lobby itself: a live patch of floor you tap to walk into, with nothing to
+ * sign up for, and making an office as a quieter link under it.
+ */
+export function HeroAsk() {
+  const t = useTranslations("home");
+  const points = t.raw("hero.points") as string[];
+  return (
+    <>
+      <Actions className="mt-10 hidden sm:flex" />
+      <Link href="/lobby" className="group mt-7 block w-full overflow-hidden rounded-[30px] bg-foreground/[0.06] p-1.5 text-start sm:hidden">
+        <FloorScene
+          {...LOBBY}
+          priority
+          className="h-64 rounded-[24px]"
+          over={
+            <span className="absolute start-3 top-3 flex h-7 items-center gap-1.5 rounded-full bg-card/95 pe-2.5 ps-2 font-(family-name:--font-app) text-[11.5px] font-medium text-foreground shadow-float">
+              <span className="relative flex size-2">
+                <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 motion-reduce:hidden" />
+                <span className="relative size-2 rounded-full bg-ok" />
+              </span>
+              {t("nav.lobbyTitle")}
+            </span>
+          }
+        />
+        <span className="flex items-center gap-3 px-2.5 pb-1 pt-2.5 [--face-ring:var(--ui-muted)]">
+          <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={24} max={3} />
+          <span className="min-w-0 flex-1 text-[13.5px] leading-snug text-muted-foreground">{t("hero.noAccount")}</span>
+          <span className="flex h-11 items-center gap-1.5 rounded-full bg-foreground pe-4 ps-5 text-[15px] font-medium text-background transition-transform group-active:scale-[0.97]">
+            {t("hero.lobbyCta")}
+            <ArrowRight className="size-4 rtl:rotate-180" />
+          </span>
+        </span>
+      </Link>
+      <Link href="/create" className="mt-6 flex items-center gap-1 self-center text-[15px] font-medium sm:hidden">
+        {t("nav.start")}
+        <ChevronRight className="size-4 text-muted-foreground rtl:rotate-180" />
+      </Link>
+      <p className="mt-3 self-center text-center text-[12.5px] text-faint sm:mt-5 sm:text-[13.5px]">{points.join(" · ")}</p>
+    </>
   );
 }
 
@@ -140,7 +192,7 @@ export function LobbyPill({ className }: { className?: string }) {
 
 function PreviewFrame({ view, children }: { view: PreviewView; children: ReactNode }) {
   return (
-    <Frame active={view} className="aspect-[4/5] sm:aspect-[16/9]">
+    <Frame active={view} className="aspect-square sm:aspect-[16/9]">
       {children}
     </Frame>
   );
@@ -155,7 +207,7 @@ export function ProductPreview({ className }: { className?: string }) {
         label={t("previewLabel")}
         labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
         panels={{
-          floor: <PreviewFrame view="floor"><FloorPreview playable priority /></PreviewFrame>,
+          floor: <PreviewFrame view="floor"><FloorPreview priority /></PreviewFrame>,
           chat: <PreviewFrame view="chat"><ChatPreview /></PreviewFrame>,
           people: <PreviewFrame view="people"><PeoplePreview /></PreviewFrame>,
           meeting: <PreviewFrame view="meeting"><MeetingPreview /></PreviewFrame>,
@@ -177,7 +229,9 @@ export function DayCard({
   muted,
   body,
   children,
+  className,
 }: {
+  className?: string;
   id?: string;
   title: string;
   muted?: string;
@@ -188,7 +242,10 @@ export function DayCard({
   return (
     <article
       id={id}
-      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0"
+      className={cn(
+        "grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0",
+        className,
+      )}
     >
       <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
         {wholeWords(title, locale)}
@@ -227,12 +284,14 @@ export function RuledSheet({
       ))}
       <ul className={cn("grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2", columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
         {items.map((item) => (
-          <li key={item.title} className="group bg-background p-6 transition-colors hover:bg-card sm:p-7">
-            <span className="flex size-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
+          <li key={item.title} className="group flex gap-4 bg-background p-5 transition-colors hover:bg-card sm:block sm:p-7">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
               {item.icon}
             </span>
-            <p className="mt-10 text-[17px] font-semibold tracking-tight">{item.title}</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{item.body}</p>
+            <span className="block min-w-0">
+              <span className="block pt-2 text-[17px] font-semibold tracking-tight sm:mt-10 sm:pt-0">{item.title}</span>
+              <span className="mt-1.5 block text-[15px] leading-relaxed text-muted-foreground">{item.body}</span>
+            </span>
           </li>
         ))}
       </ul>
@@ -310,7 +369,7 @@ export function Trust() {
               ))}
             </ul>
           </div>
-          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[360px] text-foreground/70" />
+          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[240px] text-foreground/70 sm:max-w-[360px]" />
         </div>
         {small.map(({ key, icon }) => (
           <div key={key} className="flex flex-col rounded-[24px] bg-foreground/[0.045] p-6 sm:p-8">
@@ -336,12 +395,12 @@ export function Final() {
           <FaceStack seeds={CAST.map((one) => one.id)} size={36} max={5} />
           <Heading title={t("final.title")} className="mt-7 max-w-[15ch]" />
           <p className="mt-5 max-w-[30rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
-          <div className="mt-9 flex flex-wrap gap-2.5">
-            <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
-              {t("nav.start")}
-            </Link>
-            <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+          <div className="mt-9 grid gap-2.5 sm:flex sm:flex-wrap">
+            <Link href="/lobby" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
               {t("hero.secondary")}
+            </Link>
+            <Link href="/create" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+              {t("nav.start")}
             </Link>
           </div>
         </div>

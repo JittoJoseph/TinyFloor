@@ -10,6 +10,7 @@ import {
   Hand,
   Hash,
   ImagePlus,
+  ExternalLink,
   Lock,
   Map as MapIcon,
   MessageSquare,
@@ -23,6 +24,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
+import { api, type PersonProfile } from "@/lib/api";
 import { useChat } from "@/lib/useChat";
 import { useFloorStatus, walkToPerson } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
@@ -40,8 +42,9 @@ import { Composer } from "./chat/Composer";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
- * office and in the lobby; in the lobby what only an office can do (making
- * channels, direct messages, images) is all here, and asks for an office.
+ * office and in the lobby. In the lobby you can edit and delete what you said,
+ * direct messages last only while both of you are there, and what only an
+ * office can do (making channels, images) is all here and asks for an office.
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -109,13 +112,22 @@ export function ChatView({ channel }: { channel?: string }) {
     at: message.at,
     image: message.image,
     reactions: message.reactions,
+    edited: message.edited,
   }));
+
+  // A lobby direct message is never stored: the conversation lasts while you are both here.
+  const otherId = pair ? (pair[0] === me ? pair[1] : pair[0]) : null;
+  // It ended once they left; before the floor has said who is here, it is simply loading.
+  const ended = lobby && !!otherId && !other && !!state.left[otherId];
+  useEffect(() => {
+    if (lobby && otherId && other && state.ready && !summary) chat.openDm(otherId);
+  }, [lobby, otherId, other, state.ready, summary]);
 
   // Nothing said here yet: the intro offers a way to start.
   const empty = !!history && history.length === 0 && !(state.more[open] ?? false);
   const title = pair ? (other?.displayName ?? summary?.name ?? "") : (summary?.name ?? open);
   const go = (id: string) => router.push(place.paths.chat(id));
-  const message = (id: string) => (lobby ? place.officesOnly("directMessages") : go(dmChannelId(me, id)));
+  const message = (id: string) => go(dmChannelId(me, id));
   const walkTo = (id: string) => {
     router.push(place.paths.floor);
     walkToPerson(id);
@@ -229,28 +241,16 @@ export function ChatView({ channel }: { channel?: string }) {
             </Section>
 
             <Section title={t("directMessages")}>
-              {dms.map(({ person, summary: dm }) =>
-                lobby ? (
-                  <Row
-                    key={person.id}
-                    onClick={() => place.officesOnly("directMessages")}
-                    active={false}
-                    unread={0}
-                    icon={<Face seed={person.id} size={20} presence={presenceOf(person.id)} />}
-                    label={person.displayName}
-                    trailing={<Lock className="size-3.5 text-faint" />}
-                  />
-                ) : (
-                  <Row
-                    key={person.id}
-                    href={place.paths.chat(dmChannelId(me, person.id))}
-                    active={open === dmChannelId(me, person.id)}
-                    unread={dm?.unread ?? 0}
-                    icon={<Face seed={person.id} size={20} presence={presenceOf(person.id)} />}
-                    label={person.displayName}
-                  />
-                ),
-              )}
+              {dms.map(({ person, summary: dm }) => (
+                <Row
+                  key={person.id}
+                  href={place.paths.chat(dmChannelId(me, person.id))}
+                  active={open === dmChannelId(me, person.id)}
+                  unread={dm?.unread ?? 0}
+                  icon={<Face seed={person.id} size={20} presence={presenceOf(person.id)} />}
+                  label={person.displayName}
+                />
+              ))}
               {dms.length === 0 ? (
                 <div className="mx-1 mt-1 rounded-xl border border-dashed border-border-strong p-3">
                   <p className="text-[12.5px] leading-relaxed text-muted-foreground">
@@ -344,6 +344,14 @@ export function ChatView({ channel }: { channel?: string }) {
           )}
         </header>
 
+        {ended ? (
+          <div className="flex flex-1 items-center justify-center p-8 text-center">
+            <p className="max-w-sm text-[14px] leading-relaxed text-muted-foreground">
+              {t("gone", { name: (otherId && state.left[otherId]) || summary?.name || "" })}
+            </p>
+          </div>
+        ) : (
+        <>
         <Conversation
           key={`conversation-${open}`}
           lines={lines}
@@ -352,13 +360,15 @@ export function ChatView({ channel }: { channel?: string }) {
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
           onReact={(line, emoji, on) => chat.react(Number(line.id), emoji, on)}
+          onEdit={lobby && !pair ? (line, body) => chat.edit(Number(line.id), body) : undefined}
+          onDelete={lobby && !pair ? (line) => chat.remove(Number(line.id)) : undefined}
           personCard={personCard}
           intro={
             pair && other ? (
               <ConversationIntro
                 mark={<Face seed={other.id} size={64} presence={presenceOf(other.id)} />}
                 title={other.displayName}
-                body={t("dmIntro", { name: other.displayName })}
+                body={lobby ? t("lobbyDmIntro") : t("dmIntro", { name: other.displayName })}
                 actions={
                   empty && (
                     <>
@@ -414,8 +424,10 @@ export function ChatView({ channel }: { channel?: string }) {
           placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
           onSend={(text) => chat.say(open, text)}
           onFiles={onFiles}
-          note={note ?? (state.slowDown ? t("slowDown") : null)}
+          note={note ?? (state.slowDown ? t("slowDown") : state.notHere ? t("notHere") : null)}
         />
+        </>
+        )}
 
         {dragging && (
           <div className="pointer-events-none absolute inset-3 z-20 flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-foreground/30 bg-card/90 text-center backdrop-blur-sm">
@@ -624,6 +636,7 @@ function PersonCard({
             .join(" · ")}
         </p>
         {detail && <p className="mt-0.5 truncate text-[12.5px] text-muted-foreground">{detail}</p>}
+        <ProfileLink id={id} />
       </MenuHeader>
       {!isMe && onMessage && (
         <MenuItem icon={<MessageSquare />} onSelect={onMessage}>
@@ -636,5 +649,34 @@ function PersonCard({
         </MenuItem>
       )}
     </Menu>
+  );
+}
+
+/** Profiles already looked up, so opening someone twice doesn't ask twice. */
+const profiles = new Map<string, Promise<PersonProfile | null>>();
+
+/** The link someone put on their profile, if they did, under their name wherever a card opens. */
+function ProfileLink({ id }: { id: string }) {
+  const [profile, setProfile] = useState<PersonProfile | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    if (!profiles.has(id)) profiles.set(id, api.person(id).then(({ person }) => person, () => null));
+    profiles.get(id)!.then((found) => !cancelled && setProfile(found));
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+  if (!profile?.link) return null;
+  const shown = profile.link.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  return (
+    <a
+      href={profile.link}
+      target="_blank"
+      rel="noopener noreferrer nofollow ugc"
+      className="mt-2 flex max-w-full items-center gap-1.5 truncate text-[12.5px] font-medium text-foreground underline-offset-2 hover:underline"
+    >
+      <ExternalLink className="size-3.5 shrink-0 text-muted-foreground" />
+      <span className="truncate">{shown}</span>
+    </a>
   );
 }

@@ -90,6 +90,8 @@
     "tabSignIn": "Inloggen",
     "tabSignUp": "Account maken",
     "chooseMode": "Log in of maak een account",
+    "continueWithGoogle": "Doorgaan met Google",
+    "or": "of",
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
@@ -128,7 +130,10 @@
       "name_required": "Kies een naam die anderen zien.",
       "turnstile": "We konden niet controleren of je een mens bent. Probeer het opnieuw.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
-      "generic": "Er ging iets mis. Probeer het opnieuw."
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "google_failed": "Inloggen met Google is niet gelukt. Probeer het opnieuw.",
+      "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
+      "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
     },
     "asideReady": "{office} is bijna klaar",
     "asideTitle": "Je team, één vloer verderop",
@@ -143,7 +148,6 @@
     "openingDoor": "De deur gaat open",
     "walkIn": "Naar binnen",
     "guestNote": "Je komt binnen als gast. <link>Log in</link> om je account te gebruiken.",
-    "guestKeep": "Je bent gast. <link>Maak een account</link> om je naam en personage te houden.",
     "copyInvite": "Uitnodigingslink kopiëren",
     "continue": "Verder",
     "walkingInAs": "Je loopt binnen als {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Iedereen gedag zeggen",
     "actions": "Acties",
     "walkOver": "Loop erheen",
-    "lobbyAlone": "Privéberichten horen bij een eigen kantoor. Zeg hier hallo in een kanaal.",
+    "lobbyAlone": "Er is nog niemand anders. Zodra iemand binnenkomt, kun je hier met diegene praten, alleen tussen jullie twee.",
     "dropHere": "Loslaten om te delen in {channel}",
     "dropLobby": "Afbeeldingen deel je in kantoren, niet in de lobby.",
     "lobbyGeneral": "Zeg hallo, stel een vraag of vertel waar je aan werkt. Berichten blijven hier een week staan.",
     "lobbyIntroductions": "Wie ben je, en wat brengt je hier? De hele lobby kan het 7 dagen lezen.",
     "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
     "introduceYourself": "Stel jezelf voor",
-    "starterIntro": "Hoi, ik ben nieuw hier 👋"
+    "starterIntro": "Hoi, ik ben nieuw hier 👋",
+    "lobbyDmIntro": "Alleen tussen jullie twee en nooit bewaard: het verdwijnt zodra een van jullie de lobby verlaat.",
+    "notHere": "Die persoon heeft de lobby verlaten, dus dit is niet verstuurd.",
+    "gone": "{name} heeft de lobby verlaten en dit gesprek is mee verdwenen.",
+    "edited": "bewerkt",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "deleteConfirm": "Verwijderen?",
+    "save": "Opslaan",
+    "cancel": "Annuleren"
   },
   "proximity": {
     "videoCall": "Videogesprek",
@@ -422,7 +435,7 @@
         "label": "Gather-alternatief",
         "meta": {
           "title": "Gratis Gather-alternatief in je browser",
-          "description": "Op zoek naar een gratis Gather-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid. Geen proefperiode, geen prijs per plek, niets te installeren."
+          "description": "Op zoek naar een gratis Gather-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid."
         },
         "title": "Een gratis <em>Gather-alternatief.</em>",
         "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee, een kantoor waar je rondloopt en praat, en blijft gratis.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Je profiel",
       "changePassword": "Wachtwoord wijzigen",
+      "setPassword": "Wachtwoord instellen",
+      "setPasswordDescription": "Stel een wachtwoord in om ook met je e-mailadres in te loggen, niet alleen met Google.",
       "name": "Je naam",
       "saved": "Opgeslagen",
       "save": "Opslaan",
       "character": "Personage",
+      "characterNote": "Wie je bent als je binnenloopt, in de lobby en in elk kantoor.",
       "passwordTitle": "Wijzig je wachtwoord",
       "passwordDescription": "Vul je huidige wachtwoord in en kies daarna een nieuw.",
       "passwordChanged": "Je wachtwoord is gewijzigd.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
       "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
-      "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard."
+      "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard.",
+      "link": "Je link",
+      "linkPlaceholder": "jouwwebsite.nl",
+      "linkNote": "Zichtbaar als iemand je profiel opent vanuit de chat.",
+      "google": "Google",
+      "googleNote": "Log ook in met Google.",
+      "connectGoogle": "Google koppelen",
+      "googleConnected": "Gekoppeld"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
       "not_found": "Dat is niet gevonden. Misschien is het verwijderd.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
-      "generic": "Er ging iets mis. Probeer het opnieuw."
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "bad_link": "Dat lijkt geen webadres.",
+      "google_taken": "Dat Google-account is al gekoppeld aan een ander TinyFloor-account.",
+      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw."
     },
     "people": {
       "title": "Mensen",
@@ -1037,8 +1063,7 @@
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
     "gone": "Het is gesloten, of je bent geen lid meer.",
-    "backToOffices": "Terug naar je kantoren",
-    "door": "{members, plural, one {# lid} other {# leden}} · {here, plural, =0 {nog niemand op de vloer} other {# nu op de vloer}}"
+    "backToOffices": "Terug naar je kantoren"
   },
   "create": {
     "eyebrow": "Je eigen kantoor",
@@ -1050,8 +1075,14 @@
     "create": "Kantoor maken",
     "creating": "Wordt klaargezet",
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
-    "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
-    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
+    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>.",
+    "steps": [
+      "Geef een naam",
+      "Maak een account",
+      "Loop binnen"
+    ],
+    "asideTitle": "Je kantoor, klaar in een minuut",
+    "asideBody": "Een eigen verdieping voor je team, met chat en vergadertafels. Gratis voor maximaal 3 mensen."
   },
   "shell": {
     "floor": "Vloer",
@@ -1156,7 +1187,8 @@
         "Niets te installeren",
         "Draait op Cloudflare"
       ],
-      "lobbyCta": "Loop binnen"
+      "lobbyCta": "Loop binnen",
+      "noAccount": "Geen account nodig"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Teamgenoot uitnodigen",
       "inviteTeammateNote": "Ze komen binnen met een link",
       "video": "Videogesprek",
-      "audio": "Spraakgesprek",
-      "you": "Jij",
-      "clickToWalk": "Klik ergens om te lopen",
-      "playable": "De verdieping, om te proberen: klik ergens om erheen te lopen, of gebruik de pijltjestoetsen"
+      "audio": "Spraakgesprek"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",
@@ -1375,7 +1404,30 @@
       "vs": "vs {name}",
       "theme": "Thema",
       "language": "Taal",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Over ons",
+      "privacy": "Privacy",
+      "terms": "Voorwaarden"
     }
+  },
+  "legal": {
+    "englishOnly": "Deze pagina is in het Engels.",
+    "agree": "Door verder te gaan, ga je akkoord met de <terms>Voorwaarden</terms> en het <privacy>Privacybeleid</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "Over TinyFloor",
+      "description": "TinyFloor is een virtueel kantoor waar je doorheen loopt, gemaakt door Jitto Joseph. Waarom het bestaat, wie het maakt en hoe je ons bereikt."
+    },
+    "eyebrow": "Over ons",
+    "title": "Op afstand werken verloor de gang. Wij bouwen hem terug.",
+    "p1": "Apart werken is goed voor je focus, maar het nam ongemerkt de kleine momenten weg: de snelle vraag bij iemands bureau, het hallo in het voorbijgaan, zien wie er is. Videogesprekken werken goed voor vergaderingen. Ze maakten van elk ander gesprek een afspraak.",
+    "p2": "TinyFloor is een verdieping in plaats van een link. Je team loopt door een gedeeld pixel-art kantoor, en naar iemand toe lopen is hoe je begint te praten. Ga aan een tafel zitten en je zit in een vergadering. Loop weg en het is weer stil.",
+    "p3": "Het draait in de browser op het netwerk van Cloudflare, in 18 talen, zonder iets te installeren, en het is gratis voor kleine teams.",
+    "founderTitle": "Gemaakt door Jitto Joseph",
+    "founderBody": "Ik ontwerp en bouw TinyFloor, van de pixelverdieping tot de servers waarop het draait. Heb je een idee, een probleem of wil je gewoon hallo zeggen? Ik hoor graag van je.",
+    "website": "Website",
+    "elsewhere": "TinyFloor elders",
+    "contact": "Schrijf ons"
   }
 }

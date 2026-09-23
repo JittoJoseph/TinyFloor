@@ -90,6 +90,8 @@
     "tabSignIn": "Kirjaudu",
     "tabSignUp": "Luo tili",
     "chooseMode": "Kirjaudu sisään tai luo tili",
+    "continueWithGoogle": "Jatka Googlella",
+    "or": "tai",
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
@@ -128,7 +130,10 @@
       "name_required": "Valitse nimi, jonka muut näkevät.",
       "turnstile": "Emme voineet varmistaa, että olet ihminen. Yritä uudelleen.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
-      "generic": "Jokin meni vikaan. Yritä uudelleen."
+      "generic": "Jokin meni vikaan. Yritä uudelleen.",
+      "google_failed": "Kirjautuminen Googlella ei onnistunut. Yritä uudelleen.",
+      "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
+      "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
     },
     "asideReady": "{office} on melkein valmis",
     "asideTitle": "Tiimisi, yhden kerroksen päässä",
@@ -143,7 +148,6 @@
     "openingDoor": "Ovi avautuu",
     "walkIn": "Astu sisään",
     "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
-    "guestKeep": "Olet vieras. <link>Luo tili</link>, niin nimesi ja hahmosi säilyvät.",
     "copyInvite": "Kopioi kutsulinkki",
     "continue": "Jatka",
     "walkingInAs": "Astut sisään nimellä {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Tervehdi kaikkia",
     "actions": "Toiminnot",
     "walkOver": "Kävele luo",
-    "lobbyAlone": "Yksityisviestit kuuluvat omaan toimistoon. Tervehdi täällä kanavalla.",
+    "lobbyAlone": "Täällä ei ole vielä muita. Kun joku tulee sisään, voit kirjoittaa hänelle täällä, vain teidän kahden kesken.",
     "dropHere": "Pudota jakaaksesi kanavalle {channel}",
     "dropLobby": "Kuvia jaetaan toimistoissa, ei aulassa.",
     "lobbyGeneral": "Tervehdi, kysy jotain tai kerro, mitä teet. Viestit säilyvät täällä viikon.",
     "lobbyIntroductions": "Kuka olet, ja mikä toi sinut tänne? Koko aula voi lukea sen 7 päivän ajan.",
     "lobbyFeedback": "Mikä tekisi TinyFloorista paremman tiimillesi? Luemme jokaisen viestin täällä.",
     "introduceYourself": "Esittele itsesi",
-    "starterIntro": "Moi, olen uusi täällä 👋"
+    "starterIntro": "Moi, olen uusi täällä 👋",
+    "lobbyDmIntro": "Vain teidän kahden välillä, eikä sitä tallenneta: se katoaa, kun jompikumpi poistuu aulasta.",
+    "notHere": "Hän on poistunut aulasta, joten viestiä ei lähetetty.",
+    "gone": "{name} poistui aulasta, ja keskustelu lähti mukana.",
+    "edited": "muokattu",
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "deleteConfirm": "Poistetaanko?",
+    "save": "Tallenna",
+    "cancel": "Peruuta"
   },
   "proximity": {
     "videoCall": "Videopuhelu",
@@ -422,7 +435,7 @@
         "label": "Gather-vaihtoehto",
         "meta": {
           "title": "Ilmainen Gather-vaihtoehto selaimessa",
-          "description": "Etsitkö ilmaista Gather-vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista. Ei kokeilujaksoa, ei käyttäjäkohtaista hintaa, ei asennettavaa."
+          "description": "Etsitkö ilmaista Gather-vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista."
         },
         "title": "Ilmainen <em>Gather-vaihtoehto.</em>",
         "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. TinyFloor säilyttää saman idean, toimiston jossa kävellään ja jutellaan, ja pysyy ilmaisena.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Profiilisi",
       "changePassword": "Vaihda salasana",
+      "setPassword": "Aseta salasana",
+      "setPasswordDescription": "Lisää salasana, niin voit kirjautua myös sähköpostillasi etkä vain Googlella.",
       "name": "Nimesi",
       "saved": "Tallennettu",
       "save": "Tallenna",
       "character": "Hahmo",
+      "characterNote": "Hahmo, jona kävelet sisään aulaan ja jokaiseen toimistoon.",
       "passwordTitle": "Vaihda salasanasi",
       "passwordDescription": "Anna nykyinen salasanasi ja valitse sitten uusi.",
       "passwordChanged": "Salasanasi on vaihdettu.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
       "cancel": "Peruuta",
       "faceNote": "Kasvosi piirretään tilisi perusteella, samanlaisina joka näytöllä. Mitään ei ladata eikä tallenneta.",
-      "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen."
+      "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen.",
+      "link": "Linkkisi",
+      "linkPlaceholder": "verkkosivusi.fi",
+      "linkNote": "Näkyy, kun joku avaa profiilisi chatista.",
+      "google": "Google",
+      "googleNote": "Kirjaudu myös Googlella.",
+      "connectGoogle": "Yhdistä Google",
+      "googleConnected": "Yhdistetty"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "Liian monta yritystä. Odota muutama minuutti ja yritä sitten uudelleen.",
       "not_found": "Sitä ei löytynyt. Se on ehkä poistettu.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
-      "generic": "Jokin meni vikaan. Yritä uudelleen."
+      "generic": "Jokin meni vikaan. Yritä uudelleen.",
+      "bad_link": "Tämä ei näytä verkko-osoitteelta.",
+      "google_taken": "Tämä Google-tili on jo yhdistetty toiseen TinyFloor-tiliin.",
+      "google_failed": "Google ei onnistunut. Yritä uudelleen."
     },
     "people": {
       "title": "Ihmiset",
@@ -1037,8 +1063,7 @@
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
     "gone": "Se suljettiin, tai et ole enää jäsen.",
-    "backToOffices": "Takaisin toimistoihisi",
-    "door": "{members, plural, one {# jäsen} other {# jäsentä}} · {here, plural, =0 {kerroksella ei vielä ketään} other {# kerroksella nyt}}"
+    "backToOffices": "Takaisin toimistoihisi"
   },
   "create": {
     "eyebrow": "Oma toimistosi",
@@ -1050,8 +1075,14 @@
     "create": "Luo toimisto",
     "creating": "Valmistellaan",
     "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
-    "accountNext": "Seuraavaksi: tee tili, niin toimisto on valmis.",
-    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan."
+    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan.",
+    "steps": [
+      "Nimeä",
+      "Luo tili",
+      "Astu sisään"
+    ],
+    "asideTitle": "Toimistosi valmiina minuutissa",
+    "asideBody": "Oma kerros tiimillesi, chatin ja kokouspöytien kanssa. Ilmainen enintään 3 hengelle."
   },
   "shell": {
     "floor": "Kerros",
@@ -1156,7 +1187,8 @@
         "Ei mitään asennettavaa",
         "Toimii Cloudflaren päällä"
       ],
-      "lobbyCta": "Astu sisään"
+      "lobbyCta": "Astu sisään",
+      "noAccount": "Tiliä ei tarvita"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Kutsu tiimiläinen",
       "inviteTeammateNote": "Hän liittyy linkillä",
       "video": "Videopuhelu",
-      "audio": "Äänipuhelu",
-      "you": "Sinä",
-      "clickToWalk": "Klikkaa mihin tahansa kävelläksesi",
-      "playable": "Kerros kokeiltavaksi: klikkaa mihin tahansa kävelläksesi sinne, tai käytä nuolinäppäimiä"
+      "audio": "Äänipuhelu"
     },
     "footer": {
       "tagline": "Virtuaalitoimisto, jossa kävelet ympäriinsä.",
@@ -1375,7 +1404,30 @@
       "vs": "vs. {name}",
       "theme": "Teema",
       "language": "Kieli",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Tietoa meistä",
+      "privacy": "Tietosuoja",
+      "terms": "Käyttöehdot"
     }
+  },
+  "legal": {
+    "englishOnly": "Tämä sivu on englanniksi.",
+    "agree": "Jatkamalla hyväksyt <terms>käyttöehdot</terms> ja <privacy>tietosuojakäytännön</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "Tietoa TinyFloorista",
+      "description": "TinyFloor on virtuaalitoimisto, jossa voi kävellä, ja sen on tehnyt Jitto Joseph. Miksi se on olemassa, kuka sitä tekee ja miten meihin saa yhteyden."
+    },
+    "eyebrow": "Tietoa meistä",
+    "title": "Etätyö menetti käytävän. Rakennamme sen takaisin.",
+    "p1": "Erillään työskentely auttaa keskittymään, mutta se vei hiljaa pienet hetket: nopean kysymyksen jonkun työpöydän ääressä, ohimennen sanotun moikan, näkymän siihen, kuka on paikalla. Videopuhelut hoitavat kokoukset hyvin. Ne tekivät kaikista muista keskusteluista sovittuja tapaamisia.",
+    "p2": "TinyFloor on kerros linkin sijaan. Tiimisi kävelee yhteisessä pikselitaidetoimistossa, ja jonkun luo käveleminen on tapa aloittaa keskustelu. Istu pöydän ääreen, niin olet kokouksessa. Kävele pois, niin on taas hiljaista.",
+    "p3": "Se toimii selaimessa Cloudflaren verkossa, 18 kielellä, ilman asennuksia, ja se on ilmainen pienille tiimeille.",
+    "founderTitle": "Tekijä: Jitto Joseph",
+    "founderBody": "Suunnittelen ja rakennan TinyFlooria pikselikerroksesta palvelimiin, joilla se pyörii. Jos sinulla on idea, ongelma tai haluat vain tervehtiä, kuulen sinusta mielelläni.",
+    "website": "Verkkosivusto",
+    "elsewhere": "TinyFloor muualla",
+    "contact": "Kirjoita meille"
   }
 }

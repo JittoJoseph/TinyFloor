@@ -16,8 +16,10 @@ export const CHANNEL_NAME_MAX = 32;
 /**
  * The public lobby has one chat for every copy of its floor: the same channels
  * whichever copy you landed in, fixed ones only, open to guests, and nothing
- * older than a week. Direct messages, new channels and images are what an
- * office adds, so the lobby shows them and says so.
+ * older than a week. You can edit or delete what you said there. Direct
+ * messages in the lobby are passed along and never stored: they last until
+ * either of you leaves. New channels and images are what an office adds, so
+ * the lobby shows them and says so.
  */
 export const LOBBY_CHAT = "lobby";
 export const LOBBY_CHANNELS = ["general", "introductions", "feedback"] as const;
@@ -59,6 +61,10 @@ export interface ChatMessage {
   at: number;
   /** Emoji to the people who reacted with it. */
   reactions?: Record<string, string[]>;
+  /** When it was last edited, if it was. */
+  edited?: number;
+  /** A lobby direct message: passed along, never stored. */
+  passing?: boolean;
 }
 
 /** What a client sends up the chat socket. */
@@ -68,7 +74,10 @@ export type ChatClientMessage =
   | { t: "chat_read"; channel: string; seq: number }
   | { t: "chat_react"; seq: number; emoji: string; on: boolean }
   | { t: "chat_channel"; name: string }
-  | { t: "chat_dm"; userId: string };
+  | { t: "chat_dm"; userId: string }
+  /** The lobby only: change or take back something you said. */
+  | { t: "chat_edit"; seq: number; body: string }
+  | { t: "chat_delete"; seq: number };
 
 /** What the chat object sends down. */
 export type ChatServerMessage =
@@ -77,6 +86,10 @@ export type ChatServerMessage =
   | { t: "chat_page"; channel: string; messages: ChatMessage[]; more: boolean }
   | { t: "chat_reacted"; seq: number; channel: string; emoji: string; by: string; on: boolean }
   | { t: "chat_channel"; channel: ChannelSummary }
+  | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number }
+  | { t: "chat_deleted"; seq: number; channel: string }
+  /** Someone left the lobby: their direct messages go with them. */
+  | { t: "chat_gone"; userId: string }
   | { t: "chat_error"; code: string };
 
 /** The id of the direct-message channel between two people, whoever asks. */

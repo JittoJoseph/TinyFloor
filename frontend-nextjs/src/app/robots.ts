@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/office/', '/join/', '/invite/', '/dashboard', '/account', '/*/office/', '/*/join/', '/*/invite/', '/*/dashboard', '/*/account'],
+      disallow: ['/office/', '/join/', '/invite/', '/dashboard', '/account', '/*/office/', '/*/join/', '/*/invite/', '/*/dashboard', '/*/account', '/admin', '/*/admin'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

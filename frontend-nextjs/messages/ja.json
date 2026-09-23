@@ -90,6 +90,8 @@
     "tabSignIn": "ログイン",
     "tabSignUp": "アカウント作成",
     "chooseMode": "ログインまたはアカウント作成",
+    "continueWithGoogle": "Google で続ける",
+    "or": "または",
     "signInTitle": "おかえりなさい",
     "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
     "signUpTitle": "アカウントを作成",
@@ -128,7 +130,10 @@
       "name_required": "ほかの人に表示される名前を入力してください。",
       "turnstile": "人間であることを確認できませんでした。もう一度お試しください。",
       "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
-      "generic": "問題が発生しました。もう一度お試しください。"
+      "generic": "問題が発生しました。もう一度お試しください。",
+      "google_failed": "Google でのログインに失敗しました。もう一度お試しください。",
+      "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
+      "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
     },
     "asideReady": "{office} はもうすぐ完成です",
     "asideTitle": "チームまで、フロアひとつ",
@@ -143,7 +148,6 @@
     "openingDoor": "ドアを開けています",
     "walkIn": "入室する",
     "guestNote": "ゲストとして入ります。<link>ログイン</link>するとアカウントを使えます。",
-    "guestKeep": "ゲストで参加中です。<link>アカウントを作成</link>すると名前とキャラクターを残せます。",
     "copyInvite": "招待リンクをコピー",
     "continue": "次へ",
     "walkingInAs": "{name} として入ります"
@@ -279,14 +283,23 @@
     "sayHello": "みんなにあいさつ",
     "actions": "アクション",
     "walkOver": "歩いていく",
-    "lobbyAlone": "ダイレクトメッセージは自分のオフィスで使えます。ここではチャンネルで挨拶しましょう。",
+    "lobbyAlone": "まだ誰もいません。誰かが入ってきたら、ここから二人だけでメッセージを送れます。",
     "dropHere": "ドロップして{channel}で共有",
     "dropLobby": "画像はロビーではなく、オフィスで共有できます。",
     "lobbyGeneral": "挨拶や質問、いま取り組んでいることをどうぞ。メッセージは1週間残ります。",
     "lobbyIntroductions": "あなたは誰で、何をしに来ましたか？ロビーの全員が7日間読めます。",
     "lobbyFeedback": "TinyFloorがあなたのチームにもっと役立つには？ここのメッセージはすべて読んでいます。",
     "introduceYourself": "自己紹介する",
-    "starterIntro": "はじめまして、新しく来ました 👋"
+    "starterIntro": "はじめまして、新しく来ました 👋",
+    "lobbyDmIntro": "二人だけのやりとりで、保存されません。どちらかがロビーを出ると消えます。",
+    "notHere": "相手がロビーを出たため、送信されませんでした。",
+    "gone": "{name} がロビーを出たため、この会話も消えました。",
+    "edited": "編集済み",
+    "edit": "編集",
+    "delete": "削除",
+    "deleteConfirm": "削除しますか？",
+    "save": "保存",
+    "cancel": "キャンセル"
   },
   "proximity": {
     "videoCall": "ビデオ通話",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "プロフィール",
       "changePassword": "パスワードを変更",
+      "setPassword": "パスワードを設定",
+      "setPasswordDescription": "Google に加えて、メールアドレスでもログインできるようにパスワードを追加します。",
       "name": "名前",
       "saved": "保存しました",
       "save": "保存",
       "character": "キャラクター",
+      "characterNote": "ロビーとすべてのオフィスで使うキャラクターです。",
       "passwordTitle": "パスワードの変更",
       "passwordDescription": "現在のパスワードを入力してから、新しいパスワードを決めてください。",
       "passwordChanged": "パスワードを変更しました。",
@@ -953,7 +969,14 @@
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
       "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
-      "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。"
+      "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。",
+      "link": "リンク",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "チャットからプロフィールを開いた人に表示されます。",
+      "google": "Google",
+      "googleNote": "Google でもログインできます。",
+      "connectGoogle": "Google と連携",
+      "googleConnected": "連携済み"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "試行回数が多すぎます。数分待ってからもう一度お試しください。",
       "not_found": "見つかりませんでした。削除された可能性があります。",
       "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
-      "generic": "問題が発生しました。もう一度お試しください。"
+      "generic": "問題が発生しました。もう一度お試しください。",
+      "bad_link": "ウェブアドレスではないようです。",
+      "google_taken": "その Google アカウントは別の TinyFloor アカウントと連携済みです。",
+      "google_failed": "Google での処理に失敗しました。もう一度お試しください。"
     },
     "people": {
       "title": "メンバー",
@@ -1037,8 +1063,7 @@
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
     "gone": "閉じられたか、メンバーではなくなりました。",
-    "backToOffices": "オフィス一覧へ",
-    "door": "{members, plural, other {メンバー#人}} · {here, plural, =0 {まだフロアに誰もいません} other {いまフロアに#人}}"
+    "backToOffices": "オフィス一覧へ"
   },
   "create": {
     "eyebrow": "自分のオフィス",
@@ -1050,8 +1075,14 @@
     "create": "オフィスを作る",
     "creating": "準備しています",
     "freePlan": "3人まで無料。カード不要です。",
-    "accountNext": "次はアカウント作成。それでオフィスの準備は完了です。",
-    "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。"
+    "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。",
+    "steps": [
+      "名前をつける",
+      "アカウントを作る",
+      "入ってみる"
+    ],
+    "asideTitle": "あなたのオフィスが1分で完成",
+    "asideBody": "チャットと会議テーブルのある、チーム専用のフロア。3人まで無料です。"
   },
   "shell": {
     "floor": "フロア",
@@ -1156,7 +1187,8 @@
         "インストール不要",
         "Cloudflare 上で動作"
       ],
-      "lobbyCta": "入ってみる"
+      "lobbyCta": "入ってみる",
+      "noAccount": "アカウント不要"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "メンバーを招待",
       "inviteTeammateNote": "リンクから参加できます",
       "video": "ビデオ通話",
-      "audio": "音声通話",
-      "you": "あなた",
-      "clickToWalk": "どこかをクリックして歩く",
-      "playable": "試せるフロア：どこかをクリックするとそこまで歩きます。矢印キーでも動けます"
+      "audio": "音声通話"
     },
     "footer": {
       "tagline": "歩き回れるバーチャルオフィス。",
@@ -1375,7 +1404,30 @@
       "vs": "{name} との比較",
       "theme": "テーマ",
       "language": "言語",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "概要",
+      "privacy": "プライバシー",
+      "terms": "利用規約"
     }
+  },
+  "legal": {
+    "englishOnly": "このページは英語です。",
+    "agree": "続行すると、<terms>利用規約</terms>と<privacy>プライバシーポリシー</privacy>に同意したことになります。"
+  },
+  "about": {
+    "meta": {
+      "title": "TinyFloor について",
+      "description": "TinyFloor は歩き回れるバーチャルオフィスで、Jitto Joseph が作っています。生まれた理由、作り手、連絡先をご紹介します。"
+    },
+    "eyebrow": "概要",
+    "title": "リモートワークで失われた「廊下」を、取り戻します。",
+    "p1": "離れて働くと集中はしやすくなりますが、小さな瞬間は静かに消えていきました。誰かの席でのちょっとした質問、すれ違いざまのあいさつ、誰がいるかが見えること。ビデオ通話は会議には向いています。でも、それ以外の会話まで予定を立てるものにしてしまいました。",
+    "p2": "TinyFloor はリンクではなくフロアです。チームは共有のピクセルアートのオフィスを歩き回り、誰かに近づけば話が始まります。テーブルに座れば会議に、離れればまた静かになります。",
+    "p3": "Cloudflare のネットワーク上で、ブラウザだけで動きます。18 言語に対応し、インストールは不要、少人数のチームは無料です。",
+    "founderTitle": "作っているのは Jitto Joseph です",
+    "founderBody": "ピクセルのフロアから、それを動かすサーバーまで、TinyFloor のデザインと開発をしています。アイデアや困りごと、ちょっとしたあいさつでも、ぜひ聞かせてください。",
+    "website": "ウェブサイト",
+    "elsewhere": "SNS の TinyFloor",
+    "contact": "お問い合わせ"
   }
 }

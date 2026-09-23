@@ -78,7 +78,6 @@ export function FloorScene({
   className,
   children,
   style,
-  playable,
   over,
   glide = false,
 }: {
@@ -95,8 +94,6 @@ export function FloorScene({
   /** Laid over the box itself, in its coordinates: the app's chips and buttons. Not hidden. */
   over?: ReactNode;
   style?: CSSProperties;
-  /** The floor can be walked on (PlayableYou is among the children): it takes focus for the arrow keys, and this names it. */
-  playable?: string;
   /** Pan smoothly to a new view, the way the app's camera follows you: keep the views the same size and only the pan moves. */
   glide?: boolean;
 }) {
@@ -109,16 +106,14 @@ export function FloorScene({
 
   return (
     <div
-      {...(playable ? { role: "application", "aria-label": playable, tabIndex: 0 } : {})}
       className={cn(
         "relative overflow-hidden bg-[#3a3a50] [container-type:size]",
-        playable && "cursor-pointer touch-manipulation select-none outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
         className,
       )}
       style={style}
     >
       <div
-        aria-hidden={playable ? undefined : true}
+        aria-hidden
         className={cn(
           "absolute left-0 top-0 aspect-[3/2] [container-type:inline-size]",
           glide && "transition-[translate] duration-[1100ms] ease-[cubic-bezier(0.65,0,0.25,1)] motion-reduce:transition-none",

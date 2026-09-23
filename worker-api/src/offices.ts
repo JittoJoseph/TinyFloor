@@ -68,9 +68,9 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
-      // Members, invites and guest links go with it (ON DELETE CASCADE).
+      // Members, invites and guest links go with it (ON DELETE CASCADE), and so do its floor and chat.
       await env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id).run();
-      await realtime(env).closeRoom(params.id);
+      await realtime(env).forgetOffice(params.id);
       return json({ ok: true });
     })
 

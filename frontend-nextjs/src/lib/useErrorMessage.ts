@@ -28,6 +28,9 @@ export function useErrorMessage() {
         too_many_attempts: t("too_many_attempts"),
         slow_down: t("too_many_attempts"),
         not_found: t("not_found"),
+        bad_link: t("bad_link"),
+        google_taken: t("google_taken"),
+        google_failed: t("google_failed"),
         network: t("network"),
       };
       return messages[code] ?? t("generic");

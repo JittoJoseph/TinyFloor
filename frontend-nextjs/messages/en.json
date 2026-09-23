@@ -90,6 +90,8 @@
     "tabSignIn": "Sign in",
     "tabSignUp": "Create account",
     "chooseMode": "Sign in or create an account",
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
@@ -128,7 +130,10 @@
       "name_required": "Pick a name people will see.",
       "turnstile": "We couldn't check that you're human. Try again.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
-      "generic": "Something went wrong. Try again."
+      "generic": "Something went wrong. Try again.",
+      "google_failed": "Google sign-in didn't go through. Try again.",
+      "google_unverified": "Verify your email with Google first, then try again.",
+      "google_mismatch": "This email is linked to a different Google account."
     },
     "asideReady": "{office} is almost ready",
     "asideTitle": "Your team, one floor away",
@@ -143,7 +148,6 @@
     "openingDoor": "Opening the door",
     "walkIn": "Walk in",
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
-    "guestKeep": "You're a guest. <link>Create an account</link> to keep your name and character.",
     "copyInvite": "Copy invite link",
     "continue": "Continue",
     "walkingInAs": "Walking in as {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Say hello to everyone",
     "actions": "Actions",
     "walkOver": "Walk over",
-    "lobbyAlone": "Direct messages come with an office of your own. Here, say hello in a channel.",
+    "lobbyAlone": "Nobody else is here yet. When someone walks in, you can write to them here, just between you two.",
     "dropHere": "Drop to share in {channel}",
     "dropLobby": "Images are shared inside offices, not the lobby.",
     "lobbyGeneral": "Say hello, ask a question, or share what you're working on. Messages stay here for a week.",
     "lobbyIntroductions": "Who are you, and what brings you here? Everyone in the lobby can read it for 7 days.",
     "lobbyFeedback": "What would make TinyFloor better for your team? We read every message here.",
     "introduceYourself": "Introduce yourself",
-    "starterIntro": "Hi, I'm new here 👋"
+    "starterIntro": "Hi, I'm new here 👋",
+    "lobbyDmIntro": "Just between you two, and never saved: it's gone when either of you leaves the lobby.",
+    "notHere": "They've left the lobby, so this didn't send.",
+    "gone": "{name} left the lobby, and this conversation went with them.",
+    "edited": "edited",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete?",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "proximity": {
     "videoCall": "Video call",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Your profile",
       "changePassword": "Change password",
+      "setPassword": "Set a password",
+      "setPasswordDescription": "Add a password to sign in with your email as well as with Google.",
       "name": "Your name",
       "saved": "Saved",
       "save": "Save",
       "character": "Character",
+      "characterNote": "Who you walk in as, in the lobby and every office.",
       "passwordTitle": "Change your password",
       "passwordDescription": "Enter your current password, then choose a new one.",
       "passwordChanged": "Your password was changed.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
       "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
-      "themeNote": "System follows your device. The choice is kept in this browser."
+      "themeNote": "System follows your device. The choice is kept in this browser.",
+      "link": "Your link",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "Shown when people open your profile from chat.",
+      "google": "Google",
+      "googleNote": "Sign in with Google as well.",
+      "connectGoogle": "Connect Google",
+      "googleConnected": "Connected"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "Too many attempts. Wait a few minutes, then try again.",
       "not_found": "That couldn't be found. It may have been deleted.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
-      "generic": "Something went wrong. Try again."
+      "generic": "Something went wrong. Try again.",
+      "bad_link": "That doesn't look like a web address.",
+      "google_taken": "That Google account is already connected to another TinyFloor account.",
+      "google_failed": "Google didn't go through. Try again."
     },
     "people": {
       "title": "People",
@@ -1037,8 +1063,7 @@
     "office": "Office",
     "goneTitle": "This office is gone",
     "gone": "It was closed, or you are no longer a member.",
-    "backToOffices": "Back to your offices",
-    "door": "{members, plural, one {# member} other {# members}} · {here, plural, =0 {nobody on the floor yet} other {# on the floor now}}"
+    "backToOffices": "Back to your offices"
   },
   "create": {
     "eyebrow": "Your own office",
@@ -1050,8 +1075,14 @@
     "create": "Create office",
     "creating": "Setting it up",
     "freePlan": "Free for up to 3 people. No card needed.",
-    "accountNext": "Next: make an account, and your office is ready.",
-    "justLooking": "Just looking? <link>Walk into the public office</link> instead."
+    "justLooking": "Just looking? <link>Walk into the public office</link> instead.",
+    "steps": [
+      "Name it",
+      "Make an account",
+      "Walk in"
+    ],
+    "asideTitle": "Your office, ready in a minute",
+    "asideBody": "A floor of its own for your team, with chat and meeting tables. Free for up to 3 people."
   },
   "shell": {
     "floor": "Floor",
@@ -1156,7 +1187,8 @@
         "Nothing to install",
         "Runs on Cloudflare"
       ],
-      "lobbyCta": "Walk in"
+      "lobbyCta": "Walk in",
+      "noAccount": "No account needed"
     },
     "features": {
       "proximity": {
@@ -1350,10 +1382,7 @@
       "inviteTeammate": "Invite a teammate",
       "inviteTeammateNote": "They join with a link",
       "video": "Video call",
-      "audio": "Voice call",
-      "you": "You",
-      "clickToWalk": "Click anywhere to walk",
-      "playable": "The floor, to try: click anywhere to walk there, or use the arrow keys"
+      "audio": "Voice call"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",
@@ -1370,12 +1399,35 @@
       "vs": "vs {name}",
       "theme": "Theme",
       "language": "Language",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "About",
+      "privacy": "Privacy",
+      "terms": "Terms"
     },
     "cases": {
       "title": "One floor,",
       "muted": "many ways to use it.",
       "body": "Teams make it their office. Friends make it a study room. Teachers hold office hours in it. Pick yours."
     }
+  },
+  "legal": {
+    "englishOnly": "This page is in English.",
+    "agree": "By continuing, you agree to the <terms>Terms</terms> and the <privacy>Privacy Policy</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "About TinyFloor",
+      "description": "TinyFloor is a virtual office you walk around in, made by Jitto Joseph. Why it exists, who makes it and how to get in touch."
+    },
+    "eyebrow": "About",
+    "title": "Remote work lost the hallway. We're building it back.",
+    "p1": "Working apart is great for focus, but it quietly took away the small moments: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls handle meetings well. They made every other conversation a scheduled one.",
+    "p2": "TinyFloor is a floor instead of a link. Your team walks around a shared pixel-art office, and walking up to someone is how you start talking. Sit at a table and you're in a meeting. Walk away and it's quiet again.",
+    "p3": "It runs in the browser on Cloudflare's network, in 18 languages, with nothing to install, and it's free for small teams.",
+    "founderTitle": "Made by Jitto Joseph",
+    "founderBody": "I design and build TinyFloor, from the pixel floor to the servers it runs on. If you have an idea, a problem or just want to say hello, I'd love to hear from you.",
+    "website": "Website",
+    "elsewhere": "TinyFloor elsewhere",
+    "contact": "Write to us"
   }
 }

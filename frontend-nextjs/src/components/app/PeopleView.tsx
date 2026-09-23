@@ -493,8 +493,7 @@ function LobbyPeople() {
                 presence={one.status}
                 isMe={one.id === user?.id}
                 onProfile={user?.guest ? undefined : () => router.push("/account")}
-                onMessage={() => place.officesOnly("directMessages")}
-                messageLocked
+                onMessage={user && one.id !== user.id ? () => router.push(place.paths.chat(dmChannelId(user.id, one.id))) : undefined}
                 onWalk={() => {
                   router.push(place.paths.floor);
                   walkToPerson(one.id);

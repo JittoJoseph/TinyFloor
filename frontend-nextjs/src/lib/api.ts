@@ -22,6 +22,20 @@ export interface SessionUser {
   displayName: string;
   character: string;
   guest: boolean;
+  /** Has a password; someone who only signs in with Google doesn't, until they set one. */
+  password?: boolean;
+  /** Can sign in with Google. */
+  google?: boolean;
+  /** The link on their profile. */
+  link?: string | null;
+}
+
+/** Someone's profile, as the people they chat with see it. */
+export interface PersonProfile {
+  id: string;
+  displayName: string;
+  link: string | null;
+  guest: boolean;
 }
 
 export type OfficeRole = "admin" | "member";
@@ -88,6 +102,39 @@ export interface IceServers {
   expiresAt: number;
 }
 
+/** The admin view (open only to the admin accounts). */
+export interface AdminSummary {
+  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle", number>;
+  countries: Array<{ country: string; people: number }>;
+  /** Sign-ups on each of the last 30 days, oldest first. */
+  signups: number[];
+}
+
+export interface AdminPerson {
+  id: string;
+  displayName: string;
+  email: string | null;
+  character: string;
+  country: string | null;
+  createdAt: number;
+  lastActiveAt: number;
+  google: number;
+  password: number;
+  offices: number;
+}
+
+export interface AdminOffice {
+  id: string;
+  name: string;
+  plan: string;
+  seats: number;
+  createdAt: number;
+  ownerName: string | null;
+  ownerEmail: string | null;
+  here: number;
+  members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   let response: Response;
   try {
@@ -126,14 +173,32 @@ export const api = {
   signUp: (body: { email: string; password: string; displayName: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
+  /** Signs in with the one-time code from Google's popup, making an account the first time. */
+  signInWithGoogle: (code: string) => post<{ user: SessionUser; created: boolean }>("/auth/google", { code }),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
-  updateMe: (body: { displayName?: string; character?: string }) => patch<{ user: SessionUser }>("/me", body),
+  updateMe: (body: { displayName?: string; character?: string; link?: string }) => patch<{ user: SessionUser }>("/me", body),
+  /** Connects a Google account to the signed-in account, with the code from Google's popup. */
+  connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
+  person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
+
+  // The admin view
+  adminSummary: () => get<AdminSummary>("/admin/summary"),
+  adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
+    get<{ users: AdminPerson[]; more: boolean }>(
+      `/admin/users?${new URLSearchParams({
+        ...(params.q ? { q: params.q } : {}),
+        ...(params.guests ? { guests: "1" } : {}),
+        ...(params.before ? { before: String(params.before) } : {}),
+      })}`,
+    ),
+  adminOffices: (before?: number) =>
+    get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

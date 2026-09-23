@@ -4,19 +4,20 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff, KeyRound } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { useErrorMessage } from "@/lib/useErrorMessage";
+import { saveIdentity } from "@/lib/identity";
+import { CharacterPicker } from "@/components/entry/CharacterPicker";
+import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 
-/**
- * Your account: the name people see, your email, and your password. Which
- * character you walk in as isn't here; that's asked at the door of each space.
- */
+/** Your account: the name people see, your email, and your password. */
 export function AccountPanel() {
   const t = useTranslations("office.profile");
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, refresh } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
+  const [link, setLink] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -24,7 +25,8 @@ export function AccountPanel() {
 
   if (!user) return null;
   const currentName = name ?? user.displayName;
-  const changed = currentName.trim() !== user.displayName;
+  const currentLink = link ?? user.link ?? "";
+  const changed = currentName.trim() !== user.displayName || currentLink.trim() !== (user.link ?? "");
 
   const save = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -32,8 +34,9 @@ export function AccountPanel() {
     setBusy(true);
     setError("");
     try {
-      await updateProfile({ displayName: currentName.trim() });
+      await updateProfile({ displayName: currentName.trim(), link: currentLink.trim() });
       setName(null);
+      setLink(null);
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
     } catch (err) {
@@ -51,7 +54,7 @@ export function AccountPanel() {
         action={
           <Button onClick={() => setPasswordOpen(true)}>
             <KeyRound className="w-4 h-4" />
-            {t("changePassword")}
+            {user.password ? t("changePassword") : t("setPassword")}
           </Button>
         }
       />
@@ -64,18 +67,124 @@ export function AccountPanel() {
           maxLength={32}
           className={fieldClass}
         />
+        <div className="mt-4">
+          <Label htmlFor="profile-link">{t("link")}</Label>
+        </div>
+        <input
+          id="profile-link"
+          type="url"
+          inputMode="url"
+          autoComplete="url"
+          value={currentLink}
+          onChange={(event) => setLink(event.target.value)}
+          placeholder={t("linkPlaceholder")}
+          maxLength={200}
+          className={fieldClass}
+        />
+        <p className="mt-1.5 text-[12px] text-muted-foreground">{t("linkNote")}</p>
         {error && <ErrorText>{error}</ErrorText>}
         <Button type="submit" variant="primary" busy={busy} disabled={!changed || !currentName.trim()} className="mt-4">
           {saved ? <Check className="w-4 h-4" /> : null}
           {saved ? t("saved") : t("save")}
         </Button>
       </form>
-      <PasswordDialog open={passwordOpen} onClose={() => setPasswordOpen(false)} />
+      <PasswordDialog
+        open={passwordOpen}
+        first={!user.password}
+        onClose={() => {
+          setPasswordOpen(false);
+          // A first password changes what the account can do; the session says so again.
+          void refresh();
+        }}
+      />
     </Card>
   );
 }
 
-function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+/**
+ * Google, as a second way to sign in: connected in one popup, for an account
+ * that was made with an email and a password.
+ */
+export function GooglePanel() {
+  const t = useTranslations("office.profile");
+  const { user, refresh } = useAuth();
+  const explain = useErrorMessage();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  if (!user || user.guest || (!googleAvailable && !user.google)) return null;
+
+  const connect = async (code: string) => {
+    setBusy(true);
+    setError("");
+    try {
+      await api.connectGoogle(code);
+      await refresh();
+    } catch (err) {
+      setError(explain(err));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Card>
+      <CardTitle
+        title={t("google")}
+        detail={t("googleNote")}
+        action={
+          user.google ? (
+            <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-ok/10 px-3 text-[12.5px] font-medium text-ok">
+              <Check className="size-3.5" />
+              {t("googleConnected")}
+            </span>
+          ) : undefined
+        }
+      />
+      {!user.google && (
+        <div className="max-w-sm">
+          <GoogleButton label={t("connectGoogle")} busy={busy} onCode={connect} onError={() => setError(explain(new ApiError(0, "google_failed", "")))} />
+        </div>
+      )}
+      {error && <ErrorText>{error}</ErrorText>}
+    </Card>
+  );
+}
+
+/**
+ * Who you walk in as, everywhere: saved on the account the moment it's
+ * picked, and remembered in this browser for the doors that ask.
+ */
+export function CharacterPanel() {
+  const t = useTranslations("office.profile");
+  const { user, updateProfile } = useAuth();
+  const explain = useErrorMessage();
+  const [error, setError] = useState("");
+  if (!user) return null;
+
+  const pick = async (character: string) => {
+    if (character === user.character) return;
+    setError("");
+    try {
+      await updateProfile({ character });
+      saveIdentity({ name: user.displayName, character });
+    } catch (err) {
+      setError(explain(err));
+    }
+  };
+
+  return (
+    <Card>
+      <CardTitle title={t("character")} detail={t("characterNote")} />
+      <div className="max-w-md">
+        <CharacterPicker value={user.character} onChange={pick} />
+      </div>
+      {error && <ErrorText>{error}</ErrorText>}
+    </Card>
+  );
+}
+
+/** Changing the password, or setting a first one for someone who has only used Google, which asks for no current password. */
+function PasswordDialog({ open, first, onClose }: { open: boolean; first: boolean; onClose: () => void }) {
   const t = useTranslations("office.profile");
   const explain = useErrorMessage();
   const [current, setCurrent] = useState("");
@@ -96,11 +205,11 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!current || next.length < 8 || busy) return;
+    if ((!first && !current) || next.length < 8 || busy) return;
     setBusy(true);
     setError("");
     try {
-      await api.changePassword({ currentPassword: current, newPassword: next });
+      await api.changePassword({ currentPassword: first ? "" : current, newPassword: next });
       setDone(true);
     } catch (err) {
       setError(explain(err));
@@ -110,7 +219,12 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
   };
 
   return (
-    <Dialog open={open} title={t("passwordTitle")} description={done ? undefined : t("passwordDescription")} onClose={close}>
+    <Dialog
+      open={open}
+      title={first ? t("setPassword") : t("passwordTitle")}
+      description={done ? undefined : first ? t("setPasswordDescription") : t("passwordDescription")}
+      onClose={close}
+    >
       {done ? (
         <div className="space-y-4">
           <p className="flex items-center gap-2 text-[14px] text-ok">
@@ -127,17 +241,19 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
         <form onSubmit={submit} className="space-y-4">
           {/* Lets password managers know whose password this is. */}
           <input type="email" autoComplete="username" className="hidden" readOnly tabIndex={-1} aria-hidden />
-          <div>
-            <Label htmlFor="password-current">{t("currentPassword")}</Label>
-            <input
-              id="password-current"
-              type={show ? "text" : "password"}
-              autoComplete="current-password"
-              value={current}
-              onChange={(event) => setCurrent(event.target.value)}
-              className={fieldClass}
-            />
-          </div>
+          {!first && (
+            <div>
+              <Label htmlFor="password-current">{t("currentPassword")}</Label>
+              <input
+                id="password-current"
+                type={show ? "text" : "password"}
+                autoComplete="current-password"
+                value={current}
+                onChange={(event) => setCurrent(event.target.value)}
+                className={fieldClass}
+              />
+            </div>
+          )}
           <div>
             <Label htmlFor="password-new">{t("newPassword")}</Label>
             <div className="relative">

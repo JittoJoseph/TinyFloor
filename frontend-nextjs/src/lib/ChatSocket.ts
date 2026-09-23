@@ -29,6 +29,10 @@ export interface ChatState {
   unread: number;
   /** The chat asked us to slow down; said under the composer for a moment. */
   slowDown: boolean;
+  /** A lobby direct message found the other person gone; said under the composer for a moment. */
+  notHere: boolean;
+  /** People who left the lobby while in a conversation with you, by id, with their names. */
+  left: Record<string, string>;
   version: number;
 }
 
@@ -40,6 +44,8 @@ const EMPTY: ChatState = {
   more: {},
   unread: 0,
   slowDown: false,
+  notHere: false,
+  left: {},
   version: 0,
 };
 
@@ -109,7 +115,8 @@ class ChatSocket {
     this.watching = channel;
     if (!channel) return;
     const seen = this.state.history[channel]?.at(-1)?.seq;
-    if (seen) this.send({ t: "chat_read", channel, seq: seen });
+    // A lobby direct message (numbered below zero) is never stored, so there is nothing to mark read.
+    if (seen && seen > 0) this.send({ t: "chat_read", channel, seq: seen });
     this.set({
       ...this.state,
       channels: this.state.channels.map((one) => (one.id === channel ? { ...one, unread: 0 } : one)),
@@ -128,6 +135,15 @@ class ChatSocket {
 
   react(seq: number, emoji: string, on: boolean) {
     this.send({ t: "chat_react", seq, emoji, on });
+  }
+
+  /** The lobby only: change or take back something you said. */
+  edit(seq: number, body: string) {
+    this.send({ t: "chat_edit", seq, body });
+  }
+
+  remove(seq: number) {
+    this.send({ t: "chat_delete", seq });
   }
 
   makeChannel(name: string) {
@@ -198,7 +214,9 @@ class ChatSocket {
   private handle(message: ChatServerMessage) {
     switch (message.t) {
       case "chat_ready": {
-        const channels = withGeneral(message.channels);
+        // Coming back after a dropped connection: the lobby's direct messages live only here, so they stay.
+        const kept = this.state.channels.filter((one) => one.kind === "dm" && !message.channels.some((other) => other.id === one.id));
+        const channels = withGeneral([...message.channels, ...kept]);
         this.set({ ...this.state, ready: true, me: message.me, channels, unread: total(channels) });
         break;
       }
@@ -238,7 +256,7 @@ class ChatSocket {
           unread: total(channels),
           history: { ...this.state.history, [channel]: history },
         });
-        if (seen) this.send({ t: "chat_read", channel, seq: message.message.seq });
+        if (seen && message.message.seq > 0) this.send({ t: "chat_read", channel, seq: message.message.seq });
         else if (message.message.author !== this.state.me) {
           playSound("message");
           this.incoming.forEach((listener) => listener(message.message));
@@ -271,6 +289,24 @@ class ChatSocket {
         this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
         break;
       }
+      case "chat_edited":
+      case "chat_deleted": {
+        const history = (this.state.history[message.channel] ?? []).flatMap((one) =>
+          one.seq !== message.seq ? [one] : message.t === "chat_deleted" ? [] : [{ ...one, body: message.body, edited: message.edited }],
+        );
+        this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
+        break;
+      }
+      case "chat_gone": {
+        // Someone left the lobby: the conversation with them, never stored, goes too.
+        const gone = (id: string) => id.startsWith("dm:") && id.slice(3).split("~").includes(message.userId);
+        const ended = this.state.channels.find((one) => gone(one.id));
+        const channels = this.state.channels.filter((one) => !gone(one.id));
+        const history = Object.fromEntries(Object.entries(this.state.history).filter(([id]) => !gone(id)));
+        const left = ended ? { ...this.state.left, [message.userId]: ended.name } : this.state.left;
+        this.set({ ...this.state, channels, history, left, unread: total(channels) });
+        break;
+      }
       case "chat_channel": {
         const channels = withGeneral(
           this.state.channels.some((one) => one.id === message.channel.id)
@@ -284,6 +320,10 @@ class ChatSocket {
         if (message.code === "slow_down") {
           this.set({ ...this.state, slowDown: true });
           setTimeout(() => this.set({ ...this.state, slowDown: false }), 4000);
+        }
+        if (message.code === "not_here") {
+          this.set({ ...this.state, notHere: true });
+          setTimeout(() => this.set({ ...this.state, notHere: false }), 4000);
         }
         break;
     }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { X_HANDLE } from "@/lib/site";
 import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
@@ -118,6 +119,7 @@ export function pageMetadata({
       images: [image],
     },
     twitter: {
+      site: X_HANDLE,
       card: "summary_large_image",
       ...(fullTitle ? { title: fullTitle } : {}),
       ...(description ? { description } : {}),

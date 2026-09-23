@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, X_HANDLE } from "@/lib/site";
 import { VT323, Nunito, Caveat, Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -75,6 +75,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
     },
     twitter: {
+      site: X_HANDLE,
       card: "summary_large_image",
       title,
       description,

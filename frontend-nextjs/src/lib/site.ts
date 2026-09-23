@@ -6,3 +6,6 @@ export const SOCIALS = {
   linkedin: "https://www.linkedin.com/company/tinyfloor",
   x: "https://x.com/tinyflooroffice",
 } as const;
+
+/** The company's handle on X, for link cards there. */
+export const X_HANDLE = "@tinyflooroffice";

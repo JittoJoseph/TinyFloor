@@ -1219,22 +1219,38 @@
         "body": "Nodig teamgenoten uit per e-mail, of stuur een gastlink naar een klant of kandidaat. Die kiest een naam en een poppetje en staat op de vloer, zonder account."
       }
     },
-    "moments": {
-      "title": "Een virtueel kantoor dat werkt als een echt kantoor.",
-      "lines": {
-        "walk": "Loop naar <faces></faces> iemand toe om te praten.",
-        "meet": "Schuif aan <faces></faces> om te vergaderen.",
-        "door": "Doe de deur dicht <faces></faces> om te <quiet>focussen.</quiet>"
+    "versus": {
+      "title": "Een korte vraag",
+      "muted": "hoort geen agenda-uitnodiging nodig te hebben.",
+      "body": "In de meeste remote teams kost een vraag een bericht, een uitnodiging en een vergaderlink. In een virtueel kantoor loop je erheen, zoals op kantoor.",
+      "before": {
+        "label": "Zonder verdieping",
+        "items": [
+          {
+            "title": "Jack, heb je vandaag 5 minuten?",
+            "body": "Verstuurd 9:41 · Gezien"
+          },
+          {
+            "title": "Korte afstemming",
+            "body": "Morgen, 10:30 tot 11:00 · Uitnodiging van Jack"
+          },
+          {
+            "title": "Deelnemen aan videogesprek",
+            "body": "Wachten tot de host je binnenlaat"
+          },
+          {
+            "title": "Kun je even bellen?",
+            "body": "3 ongelezen berichten"
+          }
+        ],
+        "result": "Een dag later: een meeting van 30 minuten voor een vraag van 2."
       },
-      "labels": {
-        "walk": "Proximity chat",
-        "meet": "Vergaderruimtes",
-        "door": "Niet storen"
-      },
-      "door": {
-        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je."
-      },
-      "more": "Zo werkt proximity chat"
+      "after": {
+        "label": "Op TinyFloor",
+        "you": "Jij",
+        "talking": "In gesprek met {name} · 0:42",
+        "result": "Erheen lopen, vragen, teruglopen. Twee minuten."
+      }
     },
     "steps": {
       "title": "Zet in een minuut een virtueel kantoor op.",

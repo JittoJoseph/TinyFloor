@@ -1219,22 +1219,38 @@
         "body": "Inviter kolleger via e-mail, eller send et gæstelink til en kunde eller kandidat. De vælger et navn og en figur og står på etagen, uden konto."
       }
     },
-    "moments": {
-      "title": "Et virtuelt kontor, der fungerer som et rigtigt.",
-      "lines": {
-        "walk": "Gå hen <faces></faces> og snak.",
-        "meet": "Sæt dig <faces></faces> til møde.",
-        "door": "Luk døren <faces></faces> og <quiet>fokusér.</quiet>"
+    "versus": {
+      "title": "Et hurtigt spørgsmål",
+      "muted": "burde ikke kræve en kalenderinvitation.",
+      "body": "I de fleste remote-teams kræver et spørgsmål en besked, en invitation og et mødelink. I et virtuelt kontor går du bare hen, som på arbejdet.",
+      "before": {
+        "label": "Uden etage",
+        "items": [
+          {
+            "title": "Jack, har du 5 minutter i dag?",
+            "body": "Sendt 9:41 · Set"
+          },
+          {
+            "title": "Hurtigt statusmøde",
+            "body": "I morgen, 10:30 til 11:00 · Invitation fra Jack"
+          },
+          {
+            "title": "Deltag i videoopkaldet",
+            "body": "Venter på at værten lukker dig ind"
+          },
+          {
+            "title": "Kan du hoppe på et opkald?",
+            "body": "3 ulæste beskeder"
+          }
+        ],
+        "result": "En dag senere: et møde på 30 minutter for et spørgsmål på 2."
       },
-      "labels": {
-        "walk": "Nærhedschat",
-        "meet": "Mødelokaler",
-        "door": "Forstyr ikke"
-      },
-      "door": {
-        "body": "Sæt dig som optaget og tag privatkontoret. Andre kan se, at du er fordybet, før de kommer forbi, og chatten venter på dig."
-      },
-      "more": "Sådan virker nærhedschat"
+      "after": {
+        "label": "På TinyFloor",
+        "you": "Dig",
+        "talking": "Taler med {name} · 0:42",
+        "result": "Gå hen, spørg, gå tilbage. To minutter."
+      }
     },
     "steps": {
       "title": "Opret et virtuelt kontor på et minut.",

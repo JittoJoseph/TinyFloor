@@ -1219,22 +1219,38 @@
         "body": "Kutsu tiimiläisiä sähköpostilla tai lähetä vieraslinkki asiakkaalle tai hakijalle. He valitsevat nimen ja hahmon ja ovat kerroksessa, ilman tiliä."
       }
     },
-    "moments": {
-      "title": "Virtuaalitoimisto, joka toimii kuin oikea.",
-      "lines": {
-        "walk": "Kävele luo <faces></faces> juttelemaan.",
-        "meet": "Istu alas <faces></faces> kokoukseen.",
-        "door": "Sulje ovi <faces></faces> ja <quiet>keskity.</quiet>"
+    "versus": {
+      "title": "Nopea kysymys",
+      "muted": "ei saisi vaatia kalenterikutsua.",
+      "body": "Useimmissa etätiimeissä kysyminen vaatii viestin, kutsun ja kokouslinkin. Virtuaalitoimistossa kävelet vain luo, kuten töissä.",
+      "before": {
+        "label": "Ilman kerrosta",
+        "items": [
+          {
+            "title": "Jack, onko sinulla tänään 5 minuuttia?",
+            "body": "Lähetetty 9:41 · Nähty"
+          },
+          {
+            "title": "Nopea palaveri",
+            "body": "Huomenna 10:30–11:00 · Kutsu Jackilta"
+          },
+          {
+            "title": "Liity videopuheluun",
+            "body": "Odotetaan, että isäntä päästää sisään"
+          },
+          {
+            "title": "Ehditkö puheluun?",
+            "body": "3 lukematonta viestiä"
+          }
+        ],
+        "result": "Päivää myöhemmin: 30 minuutin kokous 2 minuutin kysymyksestä."
       },
-      "labels": {
-        "walk": "Läheisyyschat",
-        "meet": "Neuvotteluhuoneet",
-        "door": "Älä häiritse"
-      },
-      "door": {
-        "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua."
-      },
-      "more": "Näin läheisyyschat toimii"
+      "after": {
+        "label": "TinyFloorissa",
+        "you": "Sinä",
+        "talking": "Puhelu: {name} · 0:42",
+        "result": "Kävele luo, kysy, kävele takaisin. Kaksi minuuttia."
+      }
     },
     "steps": {
       "title": "Perusta virtuaalitoimisto minuutissa.",

@@ -27,6 +27,18 @@ export function HeroPreview({
   const [offscreen, setOffscreen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
 
+  // The nav's "Meetings" links here: arriving by it opens the meeting view.
+  useEffect(() => {
+    const open = () => {
+      if (location.hash !== "#meetings") return;
+      setView("meeting");
+      setPicked(true);
+    };
+    open();
+    window.addEventListener("hashchange", open);
+    return () => window.removeEventListener("hashchange", open);
+  }, []);
+
   // Off screen, everything on the floor holds still: no walking, no idle frames, nothing to paint.
   useEffect(() => {
     if (!box.current) return;
@@ -60,8 +72,9 @@ export function HeroPreview({
     <div
       ref={box}
       data-paused={offscreen || undefined}
-      className="rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2 [&[data-paused]_*]:[animation-play-state:paused]"
+      className="relative rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2 [&[data-paused]_*]:[animation-play-state:paused]"
     >
+      <span id="meetings" aria-hidden className="absolute -top-24" />
       <div role="tablist" aria-label={label} className="grid grid-cols-4 gap-1 p-0.5">
         {VIEWS.map((one) => (
           <button

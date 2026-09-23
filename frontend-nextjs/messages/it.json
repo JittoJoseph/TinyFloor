@@ -1219,22 +1219,38 @@
         "body": "Invita i colleghi via email o manda un link ospite a un cliente o a un candidato. Scelgono un nome e un personaggio e sono sul piano, senza account."
       }
     },
-    "moments": {
-      "title": "Un ufficio virtuale che funziona come uno vero.",
-      "lines": {
-        "walk": "Avvicinati <faces></faces> per parlare.",
-        "meet": "Siediti <faces></faces> per la riunione.",
-        "door": "Chiudi la porta <faces></faces> per <quiet>concentrarti.</quiet>"
+    "versus": {
+      "title": "Una domanda veloce",
+      "muted": "non dovrebbe richiedere un invito.",
+      "body": "Nella maggior parte dei team da remoto, chiedere richiede un messaggio, un invito e un link alla riunione. In un ufficio virtuale ti avvicini, come al lavoro.",
+      "before": {
+        "label": "Senza un piano",
+        "items": [
+          {
+            "title": "Jack, hai 5 minuti oggi?",
+            "body": "Inviato 9:41 · Visualizzato"
+          },
+          {
+            "title": "Allineamento veloce",
+            "body": "Domani, dalle 10:30 alle 11:00 · Invito da Jack"
+          },
+          {
+            "title": "Partecipa alla videochiamata",
+            "body": "In attesa che l'host ti faccia entrare"
+          },
+          {
+            "title": "Puoi entrare in chiamata?",
+            "body": "3 messaggi non letti"
+          }
+        ],
+        "result": "Un giorno dopo: una riunione di 30 minuti per una domanda da 2."
       },
-      "labels": {
-        "walk": "Chat di prossimità",
-        "meet": "Sale riunioni",
-        "door": "Non disturbare"
-      },
-      "door": {
-        "body": "Mettiti come occupato e prendi l'ufficio privato. Gli altri vedono che sei concentrato prima di passare, e la chat ti aspetta."
-      },
-      "more": "Come funziona la chat di prossimità"
+      "after": {
+        "label": "Su TinyFloor",
+        "you": "Tu",
+        "talking": "In chiamata con {name} · 0:42",
+        "result": "Avvicinati, chiedi, torna. Due minuti."
+      }
     },
     "steps": {
       "title": "Crea un ufficio virtuale in un minuto.",

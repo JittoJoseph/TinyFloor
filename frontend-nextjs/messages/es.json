@@ -1219,22 +1219,38 @@
         "body": "Invita a tu equipo por correo o envía un enlace de invitado a un cliente o candidato. Elige un nombre y un personaje y ya está en la planta, sin cuenta."
       }
     },
-    "moments": {
-      "title": "Una oficina virtual que funciona como una de verdad.",
-      "lines": {
-        "walk": "Acércate <faces></faces> para hablar.",
-        "meet": "Siéntate <faces></faces> para reunirte.",
-        "door": "Cierra la puerta <faces></faces> para <quiet>concentrarte.</quiet>"
+    "versus": {
+      "title": "Una pregunta rápida",
+      "muted": "no debería necesitar una invitación.",
+      "body": "En la mayoría de los equipos remotos, preguntar lleva un mensaje, una invitación y un enlace de reunión. En una oficina virtual te acercas, como en el trabajo.",
+      "before": {
+        "label": "Sin planta",
+        "items": [
+          {
+            "title": "Jack, ¿tienes 5 minutos hoy?",
+            "body": "Enviado 9:41 · Visto"
+          },
+          {
+            "title": "Sincronización rápida",
+            "body": "Mañana, de 10:30 a 11:00 · Invitación de Jack"
+          },
+          {
+            "title": "Unirse a la videollamada",
+            "body": "Esperando a que el anfitrión te deje entrar"
+          },
+          {
+            "title": "¿Te puedes meter en una llamada?",
+            "body": "3 mensajes sin leer"
+          }
+        ],
+        "result": "Un día después: una reunión de 30 minutos para una pregunta de 2."
       },
-      "labels": {
-        "walk": "Chat de proximidad",
-        "meet": "Salas de reuniones",
-        "door": "No molestar"
-      },
-      "door": {
-        "body": "Ponte como ocupado y usa el despacho privado. Los demás ven que estás concentrado antes de acercarse, y el chat te espera."
-      },
-      "more": "Cómo funciona el chat de proximidad"
+      "after": {
+        "label": "En TinyFloor",
+        "you": "Tú",
+        "talking": "Hablando con {name} · 0:42",
+        "result": "Acércate, pregunta, vuelve. Dos minutos."
+      }
     },
     "steps": {
       "title": "Monta una oficina virtual en un minuto.",

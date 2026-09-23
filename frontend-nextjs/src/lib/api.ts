@@ -88,6 +88,39 @@ export interface IceServers {
   expiresAt: number;
 }
 
+/** The admin view (open only to the admin accounts). */
+export interface AdminSummary {
+  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle", number>;
+  countries: Array<{ country: string; people: number }>;
+  /** Sign-ups on each of the last 30 days, oldest first. */
+  signups: number[];
+}
+
+export interface AdminPerson {
+  id: string;
+  displayName: string;
+  email: string | null;
+  character: string;
+  country: string | null;
+  createdAt: number;
+  lastActiveAt: number;
+  google: number;
+  password: number;
+  offices: number;
+}
+
+export interface AdminOffice {
+  id: string;
+  name: string;
+  plan: string;
+  seats: number;
+  createdAt: number;
+  ownerName: string | null;
+  ownerEmail: string | null;
+  here: number;
+  members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   let response: Response;
   try {
@@ -136,6 +169,19 @@ export const api = {
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
   updateMe: (body: { displayName?: string; character?: string }) => patch<{ user: SessionUser }>("/me", body),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
+
+  // The admin view
+  adminSummary: () => get<AdminSummary>("/admin/summary"),
+  adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
+    get<{ users: AdminPerson[]; more: boolean }>(
+      `/admin/users?${new URLSearchParams({
+        ...(params.q ? { q: params.q } : {}),
+        ...(params.guests ? { guests: "1" } : {}),
+        ...(params.before ? { before: String(params.before) } : {}),
+      })}`,
+    ),
+  adminOffices: (before?: number) =>
+    get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

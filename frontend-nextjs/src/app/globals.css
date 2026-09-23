@@ -59,6 +59,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Korean wraps between words, the way it's spaced, not inside them. */
+:root:lang(ko) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;

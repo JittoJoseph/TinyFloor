@@ -114,7 +114,9 @@ const card = async (locale, name, file) => {
     });
   console.log(file);
 };
-for (const locale of LOCALES) {
+// LANGS=ja,zh,ko redraws the per-language cards for just those languages.
+const langs = process.env.LANGS?.split(",") ?? LOCALES;
+for (const locale of LOCALES.filter((code) => langs.includes(code))) {
   if (wants("home")) await card(locale, "home", `home-${locale}.jpg`);
   if (wants("lobby")) await card(locale, "lobby", `lobby-${locale}.jpg`);
 }

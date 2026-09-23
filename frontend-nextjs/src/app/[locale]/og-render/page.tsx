@@ -7,6 +7,7 @@ import { NearbyBar } from "@/components/floor/PlayableYou";
 import { FaceStack } from "@/components/ui/Face";
 import { LANDINGS } from "@/lib/landings";
 import { cn } from "@/lib/utils";
+import { emphasised } from "@/lib/words";
 
 import { notFound } from "next/navigation";
 
@@ -28,17 +29,12 @@ export default async function Page({ params, searchParams }: { params: Promise<{
         : page === "neutral"
           ? ""
           : (t.raw(`landings.pages.${landing!.key}.title` as "home.hero.title") as string);
-  const title = raw ? highlight(String(raw)) : null;
+  const title = raw ? emphasised(String(raw), locale, "text-brand") : null;
   return (
     <div id="card" className="relative h-[630px] w-[1200px] overflow-hidden bg-background font-(family-name:--font-body) text-foreground">
       <Split title={title} labels={{ video: t("home.preview.video"), audio: t("home.preview.audio"), message: t("home.preview.message") }} />
     </div>
   );
-}
-
-/** Copy's <em> in the brand colour. */
-function highlight(text: string): ReactNode {
-  return text.split(/<em>|<\/em>/).map((part, i) => (i % 2 ? <span key={i} className="text-brand">{part}</span> : part));
 }
 
 function Mark({ className }: { className?: string }) {
@@ -57,7 +53,7 @@ function Split({ title, labels }: { title: ReactNode; labels: { video: string; a
       <div className="flex flex-col justify-between p-16">
         <Mark />
         {title ? (
-          <p className="text-balance text-[56px] font-bold leading-[1.04] tracking-[-0.035em] [:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal [:lang(ja)_&]:[word-break:auto-phrase]">{title}</p>
+          <p className="text-balance text-[56px] font-bold leading-[1.04] tracking-[-0.035em] [:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal">{title}</p>
         ) : (
           <p className="text-balance text-[56px] font-bold leading-[1.04] tracking-[-0.035em]">
             A virtual office <span className="text-brand">you walk around in.</span>

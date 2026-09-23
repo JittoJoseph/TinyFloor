@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { AudioLines, Check, Clock3, Languages, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import { wholeWords } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
 import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
@@ -37,6 +38,7 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
 
 function Hero() {
   const t = useTranslations("home");
+  const locale = useLocale();
   const points = t.raw("hero.points") as string[];
   return (
     <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
@@ -48,7 +50,7 @@ function Hero() {
             CJK_HEADLINE,
           )}
         >
-          {t("hero.title")}
+          {wholeWords(t("hero.title"), locale)}
         </h1>
         <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
         <Actions className="mt-10" />

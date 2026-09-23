@@ -8,6 +8,9 @@ interface __BaseEnv_Env {
 	SESSION_COOKIE: "tf_preview_session" | "tf_session";
 	TICKET_SECRET: string;
 	TURNSTILE_SECRET: string;
+	GOOGLE_CLIENT_ID: string;
+	ADMIN_EMAILS: string;
+	GOOGLE_CLIENT_SECRET: string;
 	COOKIE_DOMAIN: string;
 	REALTIME_URL: string;
 	TURN_KEY_ID: string;
@@ -27,6 +30,11 @@ declare namespace Cloudflare {
 		SESSION_COOKIE: "tf_preview_session";
 		TICKET_SECRET: string;
 		TURNSTILE_SECRET: string;
+		GOOGLE_CLIENT_ID: string;
+		ADMIN_EMAILS: string;
+		GOOGLE_CLIENT_SECRET: string;
+	GOOGLE_CLIENT_ID: string;
+	GOOGLE_CLIENT_SECRET: string;
 		COOKIE_DOMAIN: string;
 		REALTIME_URL: string;
 		TURN_KEY_ID: string;
@@ -41,7 +49,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "SITE_ORIGINS" | "SESSION_COOKIE" | "TICKET_SECRET" | "TURNSTILE_SECRET" | "COOKIE_DOMAIN" | "REALTIME_URL" | "TURN_KEY_ID" | "TURN_KEY_API_TOKEN">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "SITE_ORIGINS" | "SESSION_COOKIE" | "TICKET_SECRET" | "TURNSTILE_SECRET" | "GOOGLE_CLIENT_ID" | "ADMIN_EMAILS" | "GOOGLE_CLIENT_SECRET" | "COOKIE_DOMAIN" | "REALTIME_URL" | "TURN_KEY_ID" | "TURN_KEY_API_TOKEN">> {}
 }
 
 // Begin runtime types

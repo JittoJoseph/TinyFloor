@@ -90,6 +90,8 @@
     "tabSignIn": "Accedi",
     "tabSignUp": "Crea account",
     "chooseMode": "Accedi o crea un account",
+    "continueWithGoogle": "Continua con Google",
+    "or": "oppure",
     "signInTitle": "Bentornato",
     "signInSubtitle": "Accedi per tornare nell'ufficio del tuo team.",
     "signUpTitle": "Crea il tuo account",
@@ -128,7 +130,10 @@
       "name_required": "Scegli un nome che gli altri vedranno.",
       "turnstile": "Non siamo riusciti a verificare che sei umano. Riprova.",
       "network": "Impossibile raggiungere TinyFloor. Controlla la connessione e riprova.",
-      "generic": "Qualcosa è andato storto. Riprova."
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "google_failed": "L'accesso con Google non è andato a buon fine. Riprova.",
+      "google_unverified": "Prima verifica la tua email con Google, poi riprova.",
+      "google_mismatch": "Questa email è collegata a un altro account Google."
     },
     "asideReady": "{office} è quasi pronto",
     "asideTitle": "Il tuo team, a un piano di distanza",
@@ -143,7 +148,6 @@
     "openingDoor": "Apertura della porta",
     "walkIn": "Entra",
     "guestNote": "Entri come ospite. <link>Accedi</link> per usare il tuo account.",
-    "guestKeep": "Sei un ospite. <link>Crea un account</link> per mantenere nome e personaggio.",
     "copyInvite": "Copia link di invito",
     "continue": "Continua",
     "walkingInAs": "Entri come {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Saluta tutti",
     "actions": "Azioni",
     "walkOver": "Raggiungilo",
-    "lobbyAlone": "I messaggi diretti arrivano con un ufficio tuo. Qui, saluta in un canale.",
+    "lobbyAlone": "Non c'è ancora nessun altro. Quando entra qualcuno, puoi scrivergli qui, solo tra voi due.",
     "dropHere": "Rilascia per condividere in {channel}",
     "dropLobby": "Le immagini si condividono negli uffici, non nella lobby.",
     "lobbyGeneral": "Saluta, fai una domanda o racconta a cosa stai lavorando. I messaggi restano qui per una settimana.",
     "lobbyIntroductions": "Chi sei e cosa ti porta qui? Tutta la lobby può leggerlo per 7 giorni.",
     "lobbyFeedback": "Cosa renderebbe TinyFloor migliore per il tuo team? Leggiamo ogni messaggio qui.",
     "introduceYourself": "Presentati",
-    "starterIntro": "Ciao, sono nuovo qui 👋"
+    "starterIntro": "Ciao, sono nuovo qui 👋",
+    "lobbyDmIntro": "Solo tra voi due, e mai salvato: sparisce quando uno di voi lascia la lobby.",
+    "notHere": "Ha lasciato la lobby, quindi il messaggio non è partito.",
+    "gone": "{name} ha lasciato la lobby e questa conversazione è andata via con lui.",
+    "edited": "modificato",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "deleteConfirm": "Eliminare?",
+    "save": "Salva",
+    "cancel": "Annulla"
   },
   "proximity": {
     "videoCall": "Videochiamata",
@@ -422,7 +435,7 @@
         "label": "Alternativa a Gather",
         "meta": {
           "title": "Alternativa gratuita a Gather nel browser",
-          "description": "Cerchi un’alternativa gratuita a Gather? TinyFloor è un ufficio virtuale in pixel art con videochiamate di prossimità. Nessuna prova, nessun prezzo per postazione, niente da installare."
+          "description": "Cerchi un’alternativa gratuita a Gather? TinyFloor è un ufficio virtuale in pixel art con videochiamate di prossimità."
         },
         "title": "Un’<em>alternativa gratuita a Gather.</em>",
         "subtitle": "Gather ha eliminato il piano gratuito e ora fa pagare per membro. TinyFloor mantiene la stessa idea, un ufficio in cui ti muovi e parli, e resta gratis.",
@@ -733,7 +746,7 @@
         "label": "Aula studio online",
         "meta": {
           "title": "Aula studio online gratuita per studiare con gli amici",
-          "description": "Studia con gli amici in un’aula studio online gratuita. Sedetevi insieme in una stanza in pixel art, concentratevi e parlate quando serve una pausa. Niente da scaricare."
+          "description": "Studia con gli amici in un’aula studio online gratuita. Sedetevi insieme in una stanza in pixel art, concentratevi e parlate quando serve una pausa."
         },
         "title": "Un’<em>aula studio online</em> per te e i tuoi amici.",
         "subtitle": "Crea una stanza per il tuo gruppo di studio, condividi un link e sedetevi insieme mentre lavorate. Discutete un esercizio al tavolo, poi tornate a studiare.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Il tuo profilo",
       "changePassword": "Cambia password",
+      "setPassword": "Imposta una password",
+      "setPasswordDescription": "Aggiungi una password per accedere anche con la tua email, non solo con Google.",
       "name": "Il tuo nome",
       "saved": "Salvato",
       "save": "Salva",
       "character": "Personaggio",
+      "characterNote": "Chi sei quando entri, nella lobby e in ogni ufficio.",
       "passwordTitle": "Cambia la password",
       "passwordDescription": "Inserisci la password attuale, poi scegline una nuova.",
       "passwordChanged": "La password è stata cambiata.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Resterai connesso qui. Ovunque altrove verrai disconnesso.",
       "cancel": "Annulla",
       "faceNote": "Il tuo volto nasce dal tuo account, uguale su ogni schermo. Niente viene caricato o salvato.",
-      "themeNote": "Sistema segue il tuo dispositivo. La scelta resta in questo browser."
+      "themeNote": "Sistema segue il tuo dispositivo. La scelta resta in questo browser.",
+      "link": "Il tuo link",
+      "linkPlaceholder": "iltuosito.it",
+      "linkNote": "Si vede quando qualcuno apre il tuo profilo dalla chat.",
+      "google": "Google",
+      "googleNote": "Accedi anche con Google.",
+      "connectGoogle": "Collega Google",
+      "googleConnected": "Collegato"
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "Troppi tentativi. Aspetta qualche minuto, poi riprova.",
       "not_found": "Non trovato. Potrebbe essere stato eliminato.",
       "network": "Impossibile raggiungere TinyFloor. Controlla la connessione e riprova.",
-      "generic": "Qualcosa è andato storto. Riprova."
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "bad_link": "Non sembra un indirizzo web.",
+      "google_taken": "Questo account Google è già collegato a un altro account TinyFloor.",
+      "google_failed": "Con Google non è andata a buon fine. Riprova."
     },
     "people": {
       "title": "Persone",
@@ -1037,8 +1063,7 @@
     "office": "Ufficio",
     "goneTitle": "Questo ufficio non c'è più",
     "gone": "È stato chiuso, o non ne fai più parte.",
-    "backToOffices": "Torna ai tuoi uffici",
-    "door": "{members, plural, one {# membro} other {# membri}} · {here, plural, =0 {nessuno sul piano per ora} other {# sul piano ora}}"
+    "backToOffices": "Torna ai tuoi uffici"
   },
   "create": {
     "eyebrow": "Il tuo ufficio",
@@ -1050,8 +1075,14 @@
     "create": "Crea ufficio",
     "creating": "Lo stiamo preparando",
     "freePlan": "Gratis fino a 3 persone. Nessuna carta.",
-    "accountNext": "Poi: crea un account e l’ufficio è pronto.",
-    "justLooking": "Solo un’occhiata? <link>Entra nell’ufficio pubblico</link> invece."
+    "justLooking": "Solo un’occhiata? <link>Entra nell’ufficio pubblico</link> invece.",
+    "steps": [
+      "Dagli un nome",
+      "Crea un account",
+      "Entra"
+    ],
+    "asideTitle": "Il tuo ufficio, pronto in un minuto",
+    "asideBody": "Un piano tutto per il tuo team, con chat e tavoli riunione. Gratis fino a 3 persone."
   },
   "shell": {
     "floor": "Piano",
@@ -1156,7 +1187,8 @@
         "Niente da installare",
         "Funziona su Cloudflare"
       ],
-      "lobbyCta": "Entra"
+      "lobbyCta": "Entra",
+      "noAccount": "Nessun account richiesto"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Invita un collega",
       "inviteTeammateNote": "Entrano con un link",
       "video": "Videochiamata",
-      "audio": "Chiamata vocale",
-      "you": "Tu",
-      "clickToWalk": "Clicca ovunque per camminare",
-      "playable": "Il piano, da provare: clicca ovunque per andarci, o usa le frecce"
+      "audio": "Chiamata vocale"
     },
     "footer": {
       "tagline": "Un ufficio virtuale in cui ti muovi.",
@@ -1375,7 +1404,30 @@
       "vs": "vs {name}",
       "theme": "Tema",
       "language": "Lingua",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Chi siamo",
+      "privacy": "Privacy",
+      "terms": "Termini"
     }
+  },
+  "legal": {
+    "englishOnly": "Questa pagina è in inglese.",
+    "agree": "Continuando, accetti i <terms>Termini</terms> e l'<privacy>Informativa sulla privacy</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "Chi siamo, TinyFloor",
+      "description": "TinyFloor è un ufficio virtuale in cui camminare, creato da Jitto Joseph. Perché esiste, chi lo fa e come contattarci."
+    },
+    "eyebrow": "Chi siamo",
+    "title": "Il lavoro da remoto ha perso il corridoio. Lo stiamo ricostruendo.",
+    "p1": "Lavorare a distanza aiuta la concentrazione, ma ha portato via in silenzio i piccoli momenti: la domanda veloce alla scrivania di qualcuno, il saluto di passaggio, vedere chi c'è. Le videochiamate vanno bene per le riunioni. Hanno trasformato ogni altra conversazione in un appuntamento.",
+    "p2": "TinyFloor è un piano invece di un link. Il tuo team cammina in un ufficio condiviso in pixel art, e avvicinarsi a qualcuno è il modo per iniziare a parlare. Siediti a un tavolo e sei in riunione. Allontanati e torna il silenzio.",
+    "p3": "Funziona nel browser sulla rete di Cloudflare, in 18 lingue, senza nulla da installare, ed è gratis per i team piccoli.",
+    "founderTitle": "Creato da Jitto Joseph",
+    "founderBody": "Progetto e costruisco TinyFloor, dal piano in pixel ai server su cui gira. Se hai un'idea, un problema o vuoi solo salutare, mi farà piacere sentirti.",
+    "website": "Sito web",
+    "elsewhere": "TinyFloor altrove",
+    "contact": "Scrivici"
   }
 }

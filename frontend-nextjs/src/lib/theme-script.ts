@@ -18,13 +18,6 @@ const APP_SECTIONS = [
   ...LANDINGS.map((page) => page.slug),
 ];
 
-/**
- * Runs before first paint (the root layout loads it with next/script's
- * beforeInteractive), so an app page never flashes the wrong theme. It only
- * touches the app's and the marketing pages' routes; anywhere else it does nothing, and AppTheme takes
- * over on client-side navigation. Kept as a string because it runs before any
- * bundle has loaded.
- */
 export const THEME_SCRIPT = `try{var p=location.pathname.split("/").filter(Boolean);if(p[0]&&p[0].length===2)p.shift();if(!p[0]||${JSON.stringify(
   APP_SECTIONS,
 )}.indexOf(p[0])>-1){var t=localStorage.getItem("${THEME_KEY}")||"system";var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);var c=document.documentElement.classList;c.add("app");c.toggle("dark",d)}}catch(e){}`;

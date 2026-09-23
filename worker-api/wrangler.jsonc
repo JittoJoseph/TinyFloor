@@ -11,11 +11,16 @@
     "SITE_ORIGINS": "https://www.tinyfloor.com,https://tinyfloor.com",
     "COOKIE_DOMAIN": ".tinyfloor.com",
     "SESSION_COOKIE": "tf_session",
-    "REALTIME_URL": "wss://realtime.tinyfloor.com"
+    "REALTIME_URL": "wss://realtime.tinyfloor.com",
+    // Google sign-in's OAuth client (public); its secret is GOOGLE_CLIENT_SECRET.
+    "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
   },
   "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
   // Per-IP limit on sign-up, sign-in and guest creation (src/limits.ts).
+  // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
+  // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
+  // ADMIN_EMAILS, the comma-separated accounts that can open /admin.
   "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }],
   "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime", "entrypoint": "RealtimeAdmin" }],
   "d1_databases": [
@@ -39,7 +44,8 @@
         // the same browser neither reaches preview nor shadows it.
         "COOKIE_DOMAIN": "",
         "SESSION_COOKIE": "tf_preview_session",
-        "REALTIME_URL": "wss://realtime-preview.tinyfloor.com"
+        "REALTIME_URL": "wss://realtime-preview.tinyfloor.com",
+        "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],

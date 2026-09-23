@@ -15,6 +15,9 @@ import { AuthLayout } from "./AuthLayout";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
+import { GoogleButton, googleAvailable } from "./GoogleButton";
+import { OfficeSteps } from "./OfficeSteps";
+import { Agree } from "@/components/legal/Agree";
 
 export type AuthMode = "signin" | "signup";
 
@@ -37,7 +40,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; redirect: string }) {
   const t = useTranslations("auth");
   const router = useRouter();
-  const { user, isLoading, hasAccount, signIn, signUp } = useAuth();
+  const { user, isLoading, hasAccount, signIn, signUp, signInWithGoogle } = useAuth();
   const ids = useId();
 
   const [mode, setMode] = useState<AuthMode>(initialMode);
@@ -49,9 +52,11 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [formError, setFormError] = useState<React.ReactNode>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [googling, setGoogling] = useState(false);
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
+  const office = useSyncExternalStore(noChange, pendingOffice, () => "");
   // A guest's name carries over into the account they create, and so does a
   // name typed at a door on the way here. The character isn't asked for: it
   // belongs to walking into a space, not to making an account.
@@ -133,6 +138,9 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       password_too_long: t("errors.password_too_long"),
       password_blank: t("errors.password_blank"),
       name_required: t("errors.name_required"),
+      google_failed: t("errors.google_failed"),
+      google_unverified: t("errors.google_unverified"),
+      google_mismatch: t("errors.google_mismatch"),
       network: t("errors.network"),
     };
     const message = code.startsWith("turnstile") ? t("errors.turnstile") : (messages[code] ?? t("errors.generic"));
@@ -190,6 +198,19 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     }
   };
 
+  /** Google's popup came back with a code: the API signs in, links or makes the account, and the effect above moves on. */
+  const withGoogle = async (code: string) => {
+    setFormError(null);
+    setGoogling(true);
+    try {
+      await signInWithGoogle(code);
+    } catch (error) {
+      explain(error);
+    } finally {
+      setGoogling(false);
+    }
+  };
+
   const trackCapsLock = (event: React.KeyboardEvent<HTMLInputElement>) =>
     setCapsLock(event.getModifierState?.("CapsLock") ?? false);
 
@@ -211,6 +232,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       }
     >
       <div className="entry-rise">
+        {/* On the way to making an office: the second of its three steps. */}
+        {office && <OfficeSteps at={1} className="mb-6" />}
         {/* Two ways in, one panel. Switching keeps what was typed. */}
         <div
           role="tablist"
@@ -251,6 +274,15 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             <Face seed={guest.id} size={32} />
             <span className="min-w-0">{t("guestCarryOver", { name: guest.displayName })}</span>
           </p>
+        )}
+
+        {googleAvailable && (
+          <>
+            <GoogleButton label={t("continueWithGoogle")} busy={googling} onCode={withGoogle} onError={() => setFormError(t("errors.google_failed"))} />
+            <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+              {t("or")}
+            </p>
+          </>
         )}
 
         <form onSubmit={submit} noValidate className="space-y-4">
@@ -358,6 +390,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             {signingUp ? t("createAccount") : t("signIn")}
           </ActionButton>
         </form>
+
+        {signingUp && <Agree className="mt-4" />}
 
         <p className="mt-7 text-center text-[13px] text-foreground">
           <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}

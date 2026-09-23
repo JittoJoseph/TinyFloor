@@ -12,6 +12,7 @@ interface AuthContextType {
   /** Signed in with an account (not a guest). */
   hasAccount: boolean;
   signIn: (email: string, password: string) => Promise<SessionUser>;
+  signInWithGoogle: (code: string) => Promise<SessionUser>;
   signUp: (details: {
     email: string;
     password: string;
@@ -21,7 +22,7 @@ interface AuthContextType {
   }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
-  updateProfile: (changes: { displayName?: string; character?: string }) => Promise<SessionUser>;
+  updateProfile: (changes: { displayName?: string; character?: string; link?: string }) => Promise<SessionUser>;
   refresh: () => Promise<void>;
 }
 
@@ -76,6 +77,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       hasAccount: !!user && !user.guest,
       signIn: async (email, password) => {
         const { user: next } = await api.signIn({ email, password });
+        setUser(next);
+        return next;
+      },
+      signInWithGoogle: async (code) => {
+        const { user: next } = await api.signInWithGoogle(code);
         setUser(next);
         return next;
       },

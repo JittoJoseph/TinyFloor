@@ -90,6 +90,8 @@
     "tabSignIn": "登录",
     "tabSignUp": "创建账号",
     "chooseMode": "登录或创建账号",
+    "continueWithGoogle": "使用 Google 继续",
+    "or": "或",
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
@@ -128,7 +130,10 @@
       "name_required": "请取一个别人能看到的名字。",
       "turnstile": "无法确认你是真人，请重试。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
-      "generic": "出了点问题，请重试。"
+      "generic": "出了点问题，请重试。",
+      "google_failed": "Google 登录未成功，请重试。",
+      "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
+      "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
     },
     "asideReady": "{office} 快准备好了",
     "asideTitle": "你的团队，只隔一层楼",
@@ -143,7 +148,6 @@
     "openingDoor": "正在开门",
     "walkIn": "进入",
     "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
-    "guestKeep": "你是访客。<link>创建账号</link>即可保留名字和角色。",
     "copyInvite": "复制邀请链接",
     "continue": "继续",
     "walkingInAs": "以 {name} 的身份进入"
@@ -279,14 +283,23 @@
     "sayHello": "向大家问好",
     "actions": "操作",
     "walkOver": "走过去",
-    "lobbyAlone": "私信属于你自己的办公室。在这里，去频道里打个招呼吧。",
+    "lobbyAlone": "这里还没有其他人。有人进来后，你可以在这里给对方发只有你们俩能看到的消息。",
     "dropHere": "松开即可分享到 {channel}",
     "dropLobby": "图片在办公室里分享，大厅里不行。",
     "lobbyGeneral": "打个招呼、问个问题，或者聊聊你在做什么。消息会在这里保留一周。",
     "lobbyIntroductions": "你是谁？为什么来这里？大厅里的每个人都能在 7 天内看到。",
     "lobbyFeedback": "怎样让 TinyFloor 更适合你的团队？这里的每条消息我们都会看。",
     "introduceYourself": "介绍一下自己",
-    "starterIntro": "你好，我是新来的 👋"
+    "starterIntro": "你好，我是新来的 👋",
+    "lobbyDmIntro": "只在你们两人之间，且不会保存：任何一方离开大厅后就会消失。",
+    "notHere": "对方已离开大厅，所以没有发出。",
+    "gone": "{name} 离开了大厅，这段对话也随之消失。",
+    "edited": "已编辑",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleteConfirm": "删除？",
+    "save": "保存",
+    "cancel": "取消"
   },
   "proximity": {
     "videoCall": "视频通话",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "你的资料",
       "changePassword": "修改密码",
+      "setPassword": "设置密码",
+      "setPasswordDescription": "添加密码后，除了 Google，也可以用邮箱登录。",
       "name": "你的名字",
       "saved": "已保存",
       "save": "保存",
       "character": "角色",
+      "characterNote": "你在大厅和每个办公室里的角色。",
       "passwordTitle": "修改你的密码",
       "passwordDescription": "先输入当前密码，再设置一个新密码。",
       "passwordChanged": "你的密码已修改。",
@@ -953,7 +969,14 @@
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
       "cancel": "取消",
       "faceNote": "你的头像根据你的账号生成，在每个屏幕上都一样。不会上传或保存任何内容。",
-      "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。"
+      "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。",
+      "link": "你的链接",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "别人在聊天中打开你的资料时会看到。",
+      "google": "Google",
+      "googleNote": "也可以用 Google 登录。",
+      "connectGoogle": "关联 Google",
+      "googleConnected": "已关联"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "尝试次数过多，请等几分钟再试。",
       "not_found": "找不到，可能已被删除。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
-      "generic": "出了点问题，请重试。"
+      "generic": "出了点问题，请重试。",
+      "bad_link": "这看起来不像网址。",
+      "google_taken": "这个 Google 账号已关联到另一个 TinyFloor 账号。",
+      "google_failed": "Google 未能完成，请重试。"
     },
     "people": {
       "title": "成员",
@@ -1037,8 +1063,7 @@
     "office": "办公室",
     "goneTitle": "这个办公室不在了",
     "gone": "它已关闭，或者你不再是成员。",
-    "backToOffices": "回到你的办公室",
-    "door": "{members, plural, other {# 名成员}} · {here, plural, =0 {楼层上还没有人} other {此刻楼层上有 # 人}}"
+    "backToOffices": "回到你的办公室"
   },
   "create": {
     "eyebrow": "你自己的办公室",
@@ -1050,8 +1075,14 @@
     "create": "创建办公室",
     "creating": "正在准备",
     "freePlan": "3 人以内免费，无需银行卡。",
-    "accountNext": "下一步：注册账号，办公室就绪。",
-    "justLooking": "只是看看？不如<link>走进公共办公室</link>。"
+    "justLooking": "只是看看？不如<link>走进公共办公室</link>。",
+    "steps": [
+      "起个名字",
+      "创建账号",
+      "走进去"
+    ],
+    "asideTitle": "你的办公室，一分钟就绪",
+    "asideBody": "团队专属的楼层，带聊天和会议桌。最多 3 人免费。"
   },
   "shell": {
     "floor": "楼层",
@@ -1156,7 +1187,8 @@
         "无需安装",
         "运行在 Cloudflare 上"
       ],
-      "lobbyCta": "走进去"
+      "lobbyCta": "走进去",
+      "noAccount": "无需注册账号"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "邀请队友",
       "inviteTeammateNote": "通过链接加入",
       "video": "视频通话",
-      "audio": "语音通话",
-      "you": "你",
-      "clickToWalk": "点击任意位置走过去",
-      "playable": "可以试走的楼层：点击任意位置走过去，或使用方向键"
+      "audio": "语音通话"
     },
     "footer": {
       "tagline": "可以四处走动的虚拟办公室。",
@@ -1375,7 +1404,30 @@
       "vs": "对比 {name}",
       "theme": "主题",
       "language": "语言",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "关于",
+      "privacy": "隐私",
+      "terms": "条款"
     }
+  },
+  "legal": {
+    "englishOnly": "此页面为英文。",
+    "agree": "继续即表示你同意<terms>条款</terms>和<privacy>隐私政策</privacy>。"
+  },
+  "about": {
+    "meta": {
+      "title": "关于 TinyFloor",
+      "description": "TinyFloor 是一个可以四处走动的虚拟办公室，由 Jitto Joseph 打造。了解它为何存在、由谁制作以及如何联系我们。"
+    },
+    "eyebrow": "关于",
+    "title": "远程办公丢掉了走廊，我们正在把它找回来。",
+    "p1": "分开工作有助于专注，却悄悄带走了那些小时刻：在同事桌边问个小问题，路过时打声招呼，看看谁在。视频会议很适合开会，却把其他所有对话都变成了预约。",
+    "p2": "TinyFloor 是一层楼，而不是一个链接。你的团队在共享的像素风办公室里走动，走到某人身边就能开始交谈。坐到桌边就是开会，走开就又安静了。",
+    "p3": "它在浏览器中运行，基于 Cloudflare 的网络，支持 18 种语言，无需安装，小团队免费。",
+    "founderTitle": "由 Jitto Joseph 打造",
+    "founderBody": "从像素楼层到运行它的服务器，TinyFloor 的设计和开发都由我来完成。如果你有想法、遇到问题，或只是想打个招呼，都很欢迎来信。",
+    "website": "个人网站",
+    "elsewhere": "TinyFloor 的其他平台",
+    "contact": "联系我们"
   }
 }

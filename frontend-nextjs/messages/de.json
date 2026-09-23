@@ -90,6 +90,8 @@
     "tabSignIn": "Anmelden",
     "tabSignUp": "Konto erstellen",
     "chooseMode": "Anmelden oder Konto erstellen",
+    "continueWithGoogle": "Weiter mit Google",
+    "or": "oder",
     "signInTitle": "Willkommen zurück",
     "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
     "signUpTitle": "Konto erstellen",
@@ -128,7 +130,10 @@
       "name_required": "Wähle einen Namen, den andere sehen.",
       "turnstile": "Wir konnten nicht prüfen, ob du ein Mensch bist. Versuch es noch einmal.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
-      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal.",
+      "google_failed": "Die Anmeldung mit Google hat nicht geklappt. Versuch es noch einmal.",
+      "google_unverified": "Bestätige zuerst deine E-Mail-Adresse bei Google und versuch es dann noch einmal.",
+      "google_mismatch": "Diese E-Mail-Adresse ist mit einem anderen Google-Konto verknüpft."
     },
     "asideReady": "{office} ist fast fertig",
     "asideTitle": "Dein Team, nur eine Fläche entfernt",
@@ -143,7 +148,6 @@
     "openingDoor": "Tür wird geöffnet",
     "walkIn": "Eintreten",
     "guestNote": "Du kommst als Gast. <link>Melde dich an</link>, um dein Konto zu nutzen.",
-    "guestKeep": "Du bist Gast. <link>Erstelle ein Konto</link>, um Namen und Figur zu behalten.",
     "copyInvite": "Einladungslink kopieren",
     "continue": "Weiter",
     "walkingInAs": "Du kommst als {name} rein"
@@ -279,14 +283,23 @@
     "sayHello": "Allen Hallo sagen",
     "actions": "Aktionen",
     "walkOver": "Hingehen",
-    "lobbyAlone": "Direktnachrichten gibt es mit einem eigenen Büro. Sag hier in einem Kanal Hallo.",
+    "lobbyAlone": "Noch ist niemand sonst hier. Sobald jemand hereinkommt, kannst du ihm hier schreiben, nur zwischen euch beiden.",
     "dropHere": "Ablegen, um in {channel} zu teilen",
     "dropLobby": "Bilder teilst du in Büros, nicht in der Lobby.",
     "lobbyGeneral": "Sag Hallo, stell eine Frage oder erzähl, woran du arbeitest. Nachrichten bleiben eine Woche hier.",
     "lobbyIntroductions": "Wer bist du, und was führt dich her? Alle in der Lobby können es 7 Tage lang lesen.",
     "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
     "introduceYourself": "Stell dich vor",
-    "starterIntro": "Hallo, ich bin neu hier 👋"
+    "starterIntro": "Hallo, ich bin neu hier 👋",
+    "lobbyDmIntro": "Nur zwischen euch beiden und nie gespeichert: Es verschwindet, sobald einer von euch die Lobby verlässt.",
+    "notHere": "Die Person hat die Lobby verlassen, daher wurde das nicht gesendet.",
+    "gone": "{name} hat die Lobby verlassen, und dieses Gespräch ist mitgegangen.",
+    "edited": "bearbeitet",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "deleteConfirm": "Löschen?",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
   },
   "proximity": {
     "videoCall": "Videoanruf",
@@ -422,7 +435,7 @@
         "label": "Gather-Alternative",
         "meta": {
           "title": "Kostenlose Gather-Alternative im Browser",
-          "description": "Du suchst eine kostenlose Gather-Alternative? TinyFloor ist ein virtuelles Pixel-Art-Büro mit Videoanrufen in der Nähe. Keine Testphase, kein Preis pro Platz, nichts zu installieren."
+          "description": "Du suchst eine kostenlose Gather-Alternative? TinyFloor ist ein virtuelles Pixel-Art-Büro mit Videoanrufen in der Nähe."
         },
         "title": "Eine kostenlose <em>Gather-Alternative.</em>",
         "subtitle": "Gather hat den kostenlosen Tarif gestrichen und berechnet jetzt pro Mitglied. TinyFloor behält die gleiche Idee, ein Büro zum Herumlaufen und Reden, und bleibt kostenlos.",
@@ -733,7 +746,7 @@
         "label": "Online-Lernraum",
         "meta": {
           "title": "Kostenloser Online-Lernraum für Lerngruppen",
-          "description": "Lern mit Freunden in einem kostenlosen Online-Lernraum. Sitzt zusammen in einem Pixel-Art-Raum, konzentriert euch und redet, wenn ihr eine Pause braucht. Kein Download nötig."
+          "description": "Lern mit Freunden in einem kostenlosen Online-Lernraum. Sitzt zusammen in einem Pixel-Art-Raum, konzentriert euch und redet, wenn ihr eine Pause braucht."
         },
         "title": "Ein <em>Online-Lernraum</em> für dich und deine Freunde.",
         "subtitle": "Erstelle einen Raum für deine Lerngruppe, teile einen Link und sitzt beim Arbeiten zusammen. Besprecht eine Aufgabe am Tisch und macht dann weiter.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Dein Profil",
       "changePassword": "Passwort ändern",
+      "setPassword": "Passwort festlegen",
+      "setPasswordDescription": "Leg ein Passwort fest, um dich auch mit deiner E-Mail-Adresse anzumelden, nicht nur mit Google.",
       "name": "Dein Name",
       "saved": "Gespeichert",
       "save": "Speichern",
       "character": "Figur",
+      "characterNote": "So trittst du auf, in der Lobby und in jedem Büro.",
       "passwordTitle": "Passwort ändern",
       "passwordDescription": "Gib dein aktuelles Passwort ein und wähle dann ein neues.",
       "passwordChanged": "Dein Passwort wurde geändert.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Hier bleibst du angemeldet. Überall sonst wirst du abgemeldet.",
       "cancel": "Abbrechen",
       "faceNote": "Dein Gesicht entsteht aus deinem Konto, auf jedem Bildschirm gleich. Nichts wird hochgeladen oder gespeichert.",
-      "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert."
+      "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert.",
+      "link": "Dein Link",
+      "linkPlaceholder": "deinewebsite.de",
+      "linkNote": "Wird angezeigt, wenn jemand im Chat dein Profil öffnet.",
+      "google": "Google",
+      "googleNote": "Melde dich auch mit Google an.",
+      "connectGoogle": "Google verbinden",
+      "googleConnected": "Verbunden"
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "Zu viele Versuche. Warte ein paar Minuten und versuch es dann erneut.",
       "not_found": "Das wurde nicht gefunden. Vielleicht wurde es gelöscht.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
-      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal.",
+      "bad_link": "Das sieht nicht nach einer Webadresse aus.",
+      "google_taken": "Dieses Google-Konto ist schon mit einem anderen TinyFloor-Konto verbunden.",
+      "google_failed": "Das hat mit Google nicht geklappt. Versuch es noch einmal."
     },
     "people": {
       "title": "Leute",
@@ -1037,8 +1063,7 @@
     "office": "Büro",
     "goneTitle": "Dieses Büro gibt es nicht mehr",
     "gone": "Es wurde geschlossen, oder du bist kein Mitglied mehr.",
-    "backToOffices": "Zurück zu deinen Büros",
-    "door": "{members, plural, one {# Mitglied} other {# Mitglieder}} · {here, plural, =0 {noch niemand auf der Fläche} other {# gerade auf der Fläche}}"
+    "backToOffices": "Zurück zu deinen Büros"
   },
   "create": {
     "eyebrow": "Dein eigenes Büro",
@@ -1050,8 +1075,14 @@
     "create": "Büro erstellen",
     "creating": "Wird eingerichtet",
     "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
-    "accountNext": "Als Nächstes: ein Konto, dann ist das Büro fertig.",
-    "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen."
+    "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen.",
+    "steps": [
+      "Benennen",
+      "Konto erstellen",
+      "Reingehen"
+    ],
+    "asideTitle": "Dein Büro, fertig in einer Minute",
+    "asideBody": "Eine eigene Etage für dein Team, mit Chat und Besprechungstischen. Kostenlos für bis zu 3 Personen."
   },
   "shell": {
     "floor": "Fläche",
@@ -1156,7 +1187,8 @@
         "Nichts zu installieren",
         "Läuft auf Cloudflare"
       ],
-      "lobbyCta": "Reingehen"
+      "lobbyCta": "Reingehen",
+      "noAccount": "Kein Konto nötig"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Teammitglied einladen",
       "inviteTeammateNote": "Sie kommen über einen Link rein",
       "video": "Videoanruf",
-      "audio": "Sprachanruf",
-      "you": "Du",
-      "clickToWalk": "Klick irgendwohin, um zu laufen",
-      "playable": "Die Etage zum Ausprobieren: Klick irgendwohin, um dorthin zu laufen, oder nutze die Pfeiltasten"
+      "audio": "Sprachanruf"
     },
     "footer": {
       "tagline": "Ein virtuelles Büro, in dem du herumläufst.",
@@ -1375,7 +1404,30 @@
       "vs": "vs. {name}",
       "theme": "Darstellung",
       "language": "Sprache",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Über uns",
+      "privacy": "Datenschutz",
+      "terms": "AGB"
     }
+  },
+  "legal": {
+    "englishOnly": "Diese Seite ist auf Englisch.",
+    "agree": "Wenn du fortfährst, stimmst du den <terms>AGB</terms> und der <privacy>Datenschutzerklärung</privacy> zu."
+  },
+  "about": {
+    "meta": {
+      "title": "Über TinyFloor",
+      "description": "TinyFloor ist ein virtuelles Büro zum Herumlaufen, gebaut von Jitto Joseph. Warum es das gibt, wer es macht und wie du uns erreichst."
+    },
+    "eyebrow": "Über uns",
+    "title": "Remote-Arbeit hat den Flur verloren. Wir bauen ihn wieder auf.",
+    "p1": "Getrennt zu arbeiten ist gut für die Konzentration, aber es hat die kleinen Momente still mitgenommen: die kurze Frage am Schreibtisch, das Hallo im Vorbeigehen, zu sehen, wer da ist. Videocalls sind gut für Meetings. Sie haben jedes andere Gespräch zu einem Termin gemacht.",
+    "p2": "TinyFloor ist eine Etage statt eines Links. Dein Team läuft durch ein gemeinsames Pixel-Art-Büro, und wer zu jemandem hingeht, fängt an zu reden. Setz dich an einen Tisch, und du bist im Meeting. Geh weg, und es ist wieder ruhig.",
+    "p3": "Es läuft im Browser auf dem Netzwerk von Cloudflare, in 18 Sprachen, ohne Installation, und für kleine Teams kostenlos.",
+    "founderTitle": "Gebaut von Jitto Joseph",
+    "founderBody": "Ich gestalte und baue TinyFloor, von der Pixel-Etage bis zu den Servern, auf denen sie läuft. Wenn du eine Idee, ein Problem hast oder einfach Hallo sagen willst, freue ich mich von dir zu hören.",
+    "website": "Website",
+    "elsewhere": "TinyFloor im Netz",
+    "contact": "Schreib uns"
   }
 }

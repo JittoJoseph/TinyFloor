@@ -107,7 +107,7 @@ describe("offices", () => {
     expect(renamed.body.office.name).toBe("Second");
 
     expect((await call(olive, "DELETE", `/v1/offices/${id}`)).status).toBe(200);
-    expect(await fakeRealtime().calls()).toContainEqual(["closeRoom", id]);
+    expect(await fakeRealtime().calls()).toContainEqual(["forgetOffice", id]);
     expect((await call(olive, "GET", `/v1/offices/${id}`)).status).toBe(404);
   });
 });

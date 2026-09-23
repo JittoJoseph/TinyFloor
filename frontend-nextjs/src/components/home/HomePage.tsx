@@ -5,7 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { wholeWords } from "@/lib/words";
-import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, DayCard, Faq, Final, Heading, HeroAsk, INK, LobbyPill, MarketingShell, ProductPreview, STONE, SWIPE, SWIPE_ITEM, Trust } from "./Blocks";
 import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
@@ -39,22 +39,20 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
 function Hero() {
   const t = useTranslations("home");
   const locale = useLocale();
-  const points = t.raw("hero.points") as string[];
   return (
-    <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
-      <div className="mx-auto flex max-w-[52rem] flex-col items-center text-center">
-        <LobbyPill />
+    <section className={cn(COLUMN, "pt-9 sm:pt-24")}>
+      <div className="mx-auto flex max-w-[52rem] flex-col items-start text-start sm:items-center sm:text-center">
+        <LobbyPill className="hidden sm:inline-flex" />
         <h1
           className={cn(
-            "mt-8 text-balance hyphens-auto text-[42px] font-semibold leading-[1.03] tracking-[-0.038em] sm:text-[64px] sm:leading-[1.02] lg:text-[76px]",
+            "text-balance hyphens-auto text-[40px] font-semibold leading-[1.02] tracking-[-0.038em] sm:mt-8 sm:text-[64px] lg:text-[76px]",
             CJK_HEADLINE,
           )}
         >
           {wholeWords(t("hero.title"), locale)}
         </h1>
-        <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
-        <Actions className="mt-10" />
-        <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
+        <p className="mt-4 max-w-[38rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[19px]">{t("hero.body")}</p>
+        <HeroAsk />
       </div>
       <ProductPreview className="mt-14 sm:mt-20" />
     </section>
@@ -80,25 +78,25 @@ function Everything() {
   return (
     <section id="features" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
       <Heading title={t("more.title")} muted={t("more.muted")} className="max-w-[22ch]" />
-      <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
-        <DayCard id="chat" {...card("chat")}>
+      <div className={cn(SWIPE, "mt-10 sm:mt-12")}>
+        <DayCard id="chat" className={SWIPE_ITEM} {...card("chat")}>
           <Frame active="chat" rail={false} className="h-full">
             <ChatPreview compact />
           </Frame>
         </DayCard>
-        <DayCard id="people" {...card("people")}>
+        <DayCard id="people" className={SWIPE_ITEM} {...card("people")}>
           <Frame active="people" rail={false} className="h-full">
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" {...card("guests")}>
+        <DayCard id="guests" className={SWIPE_ITEM} {...card("guests")}>
           <Frame active="people" rail={false} className="h-full">
             <GuestPreview />
           </Frame>
         </DayCard>
       </div>
-      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-[24px] border border-border/60 px-5 py-4">
-        <span className="me-2 text-[14px] text-muted-foreground">{t("more.also")}</span>
+      <div className="mt-3 grid grid-cols-2 items-center gap-2 rounded-[24px] border border-border/60 p-4 sm:flex sm:flex-wrap sm:px-5">
+        <span className="col-span-2 mb-1 ms-1 text-[14px] text-muted-foreground sm:mb-0 sm:me-2">{t("more.also")}</span>
         {extras.map(({ key, icon }) => (
           <span key={key} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 text-[13.5px] [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
             {icon}
@@ -115,7 +113,7 @@ function Plans() {
   const items = t.raw("free.items") as string[];
   return (
     <section id="plans" className={cn(COLUMN, "scroll-mt-20 pb-20 sm:pb-28")}>
-      <div className="flex flex-col items-center text-center">
+      <div className="flex flex-col items-start sm:items-center sm:text-center">
         <Heading title={t("title")} muted={t("muted")} />
         <p className="mt-4 text-[16px] text-muted-foreground">{t("note")}</p>
       </div>

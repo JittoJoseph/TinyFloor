@@ -1,12 +1,11 @@
 import { useTranslations } from "next-intl";
-import { Mic, MonitorUp, MousePointerClick, Settings2, Video } from "lucide-react";
+import { Mic, MonitorUp, Settings2, Video } from "lucide-react";
 import { FaceStack } from "@/components/ui/Face";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { PlayableYou } from "@/components/floor/PlayableYou";
 import { HALL, PEOPLE } from "@/components/floor/scenes";
 import { cn } from "@/lib/utils";
 
-const { sam, emma, olivia, jack, lily } = PEOPLE;
+const { sam, emma, olivia } = PEOPLE;
 
 /** The room's chip, top left: its name, and who is in. */
 function RoomChip({ count, className }: { count: number; className?: string }) {
@@ -52,59 +51,23 @@ const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0
 
 /**
  * The floor, as the app shows it: the real map with people at their desks,
- * chatting and walking around, the room's chip and the dock. `playable` puts
- * you on it too, to walk wherever you click; `bare` is the floor alone, for
- * a small window.
+ * chatting and walking around, the room's chip and the dock. `bare` is the
+ * floor alone, for a small window.
  */
-export function FloorPreview({
-  bare = false,
-  playable = false,
-  priority = false,
-  className,
-}: {
-  bare?: boolean;
-  playable?: boolean;
-  priority?: boolean;
-  className?: string;
-}) {
-  const t = useTranslations("home.preview");
-  const labels = { video: t("video"), audio: t("audio"), message: t("message") };
-
+export function FloorPreview({ bare = false, priority = false, className }: { bare?: boolean; priority?: boolean; className?: string }) {
   if (bare) return <FloorScene {...HALL} view={[16, 3, 22, 14]} className={cn("h-full w-full", className)} />;
 
   return (
     <FloorScene
       {...HALL}
       priority={priority}
-      playable={playable ? t("playable") : undefined}
       className={cn("absolute inset-0 h-full w-full", className)}
       over={
         <>
-          <RoomChip count={PEOPLE_IN_HALL + (playable ? 1 : 0)} className="absolute start-3 top-3" />
+          <RoomChip count={PEOPLE_IN_HALL} className="absolute start-3 top-3" />
           <Dock className="absolute bottom-3 start-1/2 -translate-x-1/2 rtl:translate-x-1/2" />
         </>
       }
-    >
-      {playable && (
-        <PlayableYou
-          start={[26, 14]}
-          character="Alex"
-          name={t("you")}
-          labels={labels}
-          neighbours={[
-            { name: jack.name, seed: jack.id, at: [36, 10] },
-            { name: olivia.name, seed: olivia.id, at: [38, 10] },
-            { name: sam.name, seed: sam.id, at: [20, 10] },
-            { name: lily.name, seed: lily.id, at: [34, 15] },
-          ]}
-          hint={
-            <span className="flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[12px] font-medium text-background shadow-float">
-              <MousePointerClick className="size-3.5" />
-              {t("clickToWalk")}
-            </span>
-          }
-        />
-      )}
-    </FloorScene>
+    />
   );
 }

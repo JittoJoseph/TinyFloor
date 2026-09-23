@@ -90,6 +90,8 @@
     "tabSignIn": "Logg inn",
     "tabSignUp": "Opprett konto",
     "chooseMode": "Logg inn eller opprett en konto",
+    "continueWithGoogle": "Fortsett med Google",
+    "or": "eller",
     "signInTitle": "Velkommen tilbake",
     "signInSubtitle": "Logg inn for å komme tilbake til teamets kontor.",
     "signUpTitle": "Opprett kontoen din",
@@ -128,7 +130,10 @@
       "name_required": "Velg et navn som andre ser.",
       "turnstile": "Vi klarte ikke å bekrefte at du er et menneske. Prøv igjen.",
       "network": "Får ikke kontakt med TinyFloor. Sjekk tilkoblingen og prøv igjen.",
-      "generic": "Noe gikk galt. Prøv igjen."
+      "generic": "Noe gikk galt. Prøv igjen.",
+      "google_failed": "Innloggingen med Google gikk ikke gjennom. Prøv igjen.",
+      "google_unverified": "Bekreft e-postadressen din hos Google først, og prøv så igjen.",
+      "google_mismatch": "Denne e-postadressen er knyttet til en annen Google-konto."
     },
     "asideReady": "{office} er nesten klart",
     "asideTitle": "Teamet ditt, én etasje unna",
@@ -143,7 +148,6 @@
     "openingDoor": "Åpner døren",
     "walkIn": "Gå inn",
     "guestNote": "Du går inn som gjest. <link>Logg inn</link> for å bruke kontoen din.",
-    "guestKeep": "Du er gjest. <link>Opprett en konto</link> for å beholde navn og figur.",
     "copyInvite": "Kopier invitasjonslenke",
     "continue": "Videre",
     "walkingInAs": "Du går inn som {name}"
@@ -279,14 +283,23 @@
     "sayHello": "Si hei til alle",
     "actions": "Handlinger",
     "walkOver": "Gå dit",
-    "lobbyAlone": "Direktemeldinger følger med et eget kontor. Si hei i en kanal her.",
+    "lobbyAlone": "Ingen andre er her ennå. Når noen kommer inn, kan du skrive til dem her, bare mellom dere to.",
     "dropHere": "Slipp for å dele i {channel}",
     "dropLobby": "Bilder deles i kontorer, ikke i lobbyen.",
     "lobbyGeneral": "Si hei, still et spørsmål eller fortell hva du jobber med. Meldinger blir liggende her i en uke.",
     "lobbyIntroductions": "Hvem er du, og hva bringer deg hit? Hele lobbyen kan lese det i 7 dager.",
     "lobbyFeedback": "Hva ville gjort TinyFloor bedre for teamet ditt? Vi leser hver melding her.",
     "introduceYourself": "Presenter deg",
-    "starterIntro": "Hei, jeg er ny her 👋"
+    "starterIntro": "Hei, jeg er ny her 👋",
+    "lobbyDmIntro": "Bare mellom dere to og lagres aldri: det forsvinner når en av dere forlater lobbyen.",
+    "notHere": "Personen har forlatt lobbyen, så meldingen ble ikke sendt.",
+    "gone": "{name} forlot lobbyen, og samtalen forsvant med.",
+    "edited": "redigert",
+    "edit": "Rediger",
+    "delete": "Slett",
+    "deleteConfirm": "Slette?",
+    "save": "Lagre",
+    "cancel": "Avbryt"
   },
   "proximity": {
     "videoCall": "Videosamtale",
@@ -422,7 +435,7 @@
         "label": "Alternativ til Gather",
         "meta": {
           "title": "Gratis alternativ til Gather i nettleseren",
-          "description": "Ser du etter et gratis alternativ til Gather? TinyFloor er et virtuelt kontor i pikselgrafikk med videosamtaler når dere står nær hverandre. Ingen prøveperiode, ingen pris per plass, ingenting å installere."
+          "description": "Ser du etter et gratis alternativ til Gather? TinyFloor er et virtuelt kontor i pikselgrafikk med videosamtaler når dere står nær hverandre."
         },
         "title": "Et gratis <em>alternativ til Gather.</em>",
         "subtitle": "Gather har fjernet gratisplanen og tar nå betalt per medlem. TinyFloor beholder den samme ideen, et kontor du går rundt og prater i, og forblir gratis.",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "Profilen din",
       "changePassword": "Endre passord",
+      "setPassword": "Velg et passord",
+      "setPasswordDescription": "Legg til et passord for å logge inn med e-posten din også, ikke bare med Google.",
       "name": "Navnet ditt",
       "saved": "Lagret",
       "save": "Lagre",
       "character": "Figur",
+      "characterNote": "Den du går inn som, i lobbyen og på hvert kontor.",
       "passwordTitle": "Endre passordet ditt",
       "passwordDescription": "Skriv inn det nåværende passordet ditt, og velg så et nytt.",
       "passwordChanged": "Passordet ditt er endret.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "Du forblir innlogget her. Alle andre steder blir du logget ut.",
       "cancel": "Avbryt",
       "faceNote": "Ansiktet ditt tegnes ut fra kontoen din, likt på hver skjerm. Ingenting lastes opp eller lagres.",
-      "themeNote": "System følger enheten din. Valget lagres i denne nettleseren."
+      "themeNote": "System følger enheten din. Valget lagres i denne nettleseren.",
+      "link": "Lenken din",
+      "linkPlaceholder": "dittnettsted.no",
+      "linkNote": "Vises når noen åpner profilen din fra chatten.",
+      "google": "Google",
+      "googleNote": "Logg inn med Google også.",
+      "connectGoogle": "Koble til Google",
+      "googleConnected": "Koblet til"
     },
     "invite": {
       "invalidTitle": "Invitasjonen virker ikke",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "For mange forsøk. Vent noen minutter, og prøv igjen.",
       "not_found": "Fant det ikke. Det kan ha blitt slettet.",
       "network": "Får ikke kontakt med TinyFloor. Sjekk tilkoblingen og prøv igjen.",
-      "generic": "Noe gikk galt. Prøv igjen."
+      "generic": "Noe gikk galt. Prøv igjen.",
+      "bad_link": "Det ser ikke ut som en nettadresse.",
+      "google_taken": "Den Google-kontoen er allerede koblet til en annen TinyFloor-konto.",
+      "google_failed": "Det gikk ikke med Google. Prøv igjen."
     },
     "people": {
       "title": "Folk",
@@ -1037,8 +1063,7 @@
     "office": "Kontor",
     "goneTitle": "Dette kontoret finnes ikke lenger",
     "gone": "Det ble lukket, eller du er ikke medlem lenger.",
-    "backToOffices": "Tilbake til kontorene dine",
-    "door": "{members, plural, one {# medlem} other {# medlemmer}} · {here, plural, =0 {ingen på gulvet ennå} other {# på gulvet nå}}"
+    "backToOffices": "Tilbake til kontorene dine"
   },
   "create": {
     "eyebrow": "Ditt eget kontor",
@@ -1050,8 +1075,14 @@
     "create": "Opprett kontor",
     "creating": "Gjør det klart",
     "freePlan": "Gratis for opptil 3 personer. Uten kort.",
-    "accountNext": "Neste: lag en konto, så er kontoret klart.",
-    "justLooking": "Bare ser? <link>Gå inn på det offentlige kontoret</link> i stedet."
+    "justLooking": "Bare ser? <link>Gå inn på det offentlige kontoret</link> i stedet.",
+    "steps": [
+      "Gi navn",
+      "Lag konto",
+      "Gå inn"
+    ],
+    "asideTitle": "Kontoret ditt, klart på et minutt",
+    "asideBody": "En egen etasje for teamet ditt, med chat og møtebord. Gratis for opptil 3 personer."
   },
   "shell": {
     "floor": "Gulvet",
@@ -1156,7 +1187,8 @@
         "Ingenting å installere",
         "Kjører på Cloudflare"
       ],
-      "lobbyCta": "Gå inn"
+      "lobbyCta": "Gå inn",
+      "noAccount": "Ingen konto nødvendig"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "Inviter en kollega",
       "inviteTeammateNote": "De kommer inn med en lenke",
       "video": "Videosamtale",
-      "audio": "Taleanrop",
-      "you": "Deg",
-      "clickToWalk": "Klikk hvor som helst for å gå",
-      "playable": "Etasjen å prøve: klikk hvor som helst for å gå dit, eller bruk piltastene"
+      "audio": "Taleanrop"
     },
     "footer": {
       "tagline": "Et virtuelt kontor du går rundt i.",
@@ -1375,7 +1404,30 @@
       "vs": "vs {name}",
       "theme": "Tema",
       "language": "Språk",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Om oss",
+      "privacy": "Personvern",
+      "terms": "Vilkår"
     }
+  },
+  "legal": {
+    "englishOnly": "Denne siden er på engelsk.",
+    "agree": "Ved å fortsette godtar du <terms>vilkårene</terms> og <privacy>personvernerklæringen</privacy>."
+  },
+  "about": {
+    "meta": {
+      "title": "Om TinyFloor",
+      "description": "TinyFloor er et virtuelt kontor du går rundt i, laget av Jitto Joseph. Hvorfor det finnes, hvem som lager det og hvordan du når oss."
+    },
+    "eyebrow": "Om oss",
+    "title": "Fjernarbeid mistet gangen. Vi bygger den opp igjen.",
+    "p1": "Å jobbe hver for seg er bra for fokus, men det tok stille bort de små øyeblikkene: det raske spørsmålet ved noens pult, hei-et i forbifarten, å se hvem som er der. Videosamtaler fungerer bra for møter. De gjorde alle andre samtaler til en avtale.",
+    "p2": "TinyFloor er en etasje i stedet for en lenke. Teamet ditt går rundt i et felles kontor i pikselgrafikk, og å gå bort til noen er måten man begynner å snakke på. Sett deg ved et bord, og du er i et møte. Gå derfra, og det blir stille igjen.",
+    "p3": "Det kjører i nettleseren på Cloudflares nettverk, på 18 språk, uten noe å installere, og det er gratis for små team.",
+    "founderTitle": "Laget av Jitto Joseph",
+    "founderBody": "Jeg designer og bygger TinyFloor, fra pikseletasjen til serverne den kjører på. Har du en idé, et problem eller vil bare si hei, hører jeg gjerne fra deg.",
+    "website": "Nettsted",
+    "elsewhere": "TinyFloor andre steder",
+    "contact": "Skriv til oss"
   }
 }

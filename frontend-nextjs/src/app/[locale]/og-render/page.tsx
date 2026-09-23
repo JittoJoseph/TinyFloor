@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { EVERYONE, PEOPLE } from "@/components/floor/scenes";
-import { NearbyBar } from "@/components/floor/PlayableYou";
+import { NearbyBar } from "@/components/floor/NearbyBar";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { LANDINGS } from "@/lib/landings";
 import { cn } from "@/lib/utils";

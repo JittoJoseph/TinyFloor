@@ -90,6 +90,8 @@
     "tabSignIn": "로그인",
     "tabSignUp": "계정 만들기",
     "chooseMode": "로그인하거나 계정 만들기",
+    "continueWithGoogle": "Google로 계속하기",
+    "or": "또는",
     "signInTitle": "다시 오신 것을 환영해요",
     "signInSubtitle": "로그인하고 팀 오피스로 돌아가세요.",
     "signUpTitle": "계정 만들기",
@@ -128,7 +130,10 @@
       "name_required": "다른 사람에게 보일 이름을 정해 주세요.",
       "turnstile": "사람인지 확인하지 못했어요. 다시 시도해 주세요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
-      "generic": "문제가 생겼어요. 다시 시도해 주세요."
+      "generic": "문제가 생겼어요. 다시 시도해 주세요.",
+      "google_failed": "Google 로그인이 완료되지 않았어요. 다시 시도해 주세요.",
+      "google_unverified": "먼저 Google에서 이메일을 인증한 뒤 다시 시도해 주세요.",
+      "google_mismatch": "이 이메일은 다른 Google 계정에 연결되어 있어요."
     },
     "asideReady": "{office}이(가) 거의 준비됐어요",
     "asideTitle": "팀이 한 층 거리에",
@@ -143,7 +148,6 @@
     "openingDoor": "문을 여는 중",
     "walkIn": "입장하기",
     "guestNote": "게스트로 들어가요. <link>로그인</link>하면 계정을 쓸 수 있어요.",
-    "guestKeep": "게스트로 참여 중이에요. <link>계정을 만들면</link> 이름과 캐릭터를 유지할 수 있어요.",
     "copyInvite": "초대 링크 복사",
     "continue": "계속",
     "walkingInAs": "{name}(으)로 입장"
@@ -279,14 +283,23 @@
     "sayHello": "모두에게 인사하기",
     "actions": "작업",
     "walkOver": "걸어가기",
-    "lobbyAlone": "다이렉트 메시지는 나만의 오피스에서 쓸 수 있어요. 여기서는 채널에서 인사해 보세요.",
+    "lobbyAlone": "아직 아무도 없어요. 누군가 들어오면 여기서 둘만의 메시지를 보낼 수 있어요.",
     "dropHere": "놓아서 {channel}에 공유",
     "dropLobby": "이미지는 로비가 아닌 오피스에서 공유할 수 있어요.",
     "lobbyGeneral": "인사하고, 질문하고, 요즘 하는 일을 나눠 보세요. 메시지는 일주일 동안 남아요.",
     "lobbyIntroductions": "당신은 누구이고, 어떻게 오셨나요? 로비의 모두가 7일 동안 읽을 수 있어요.",
     "lobbyFeedback": "TinyFloor가 팀에 더 도움이 되려면 무엇이 필요할까요? 여기 메시지는 모두 읽어요.",
     "introduceYourself": "자기소개하기",
-    "starterIntro": "안녕하세요, 처음 왔어요 👋"
+    "starterIntro": "안녕하세요, 처음 왔어요 👋",
+    "lobbyDmIntro": "두 사람만 보고 저장되지 않아요. 둘 중 한 명이 로비를 나가면 사라져요.",
+    "notHere": "상대가 로비를 나가서 보내지 못했어요.",
+    "gone": "{name} 님이 로비를 나가서 이 대화도 사라졌어요.",
+    "edited": "수정됨",
+    "edit": "수정",
+    "delete": "삭제",
+    "deleteConfirm": "삭제할까요?",
+    "save": "저장",
+    "cancel": "취소"
   },
   "proximity": {
     "videoCall": "영상 통화",
@@ -937,10 +950,13 @@
     "profile": {
       "title": "내 프로필",
       "changePassword": "비밀번호 변경",
+      "setPassword": "비밀번호 설정",
+      "setPasswordDescription": "Google뿐 아니라 이메일로도 로그인할 수 있도록 비밀번호를 추가하세요.",
       "name": "이름",
       "saved": "저장됨",
       "save": "저장",
       "character": "캐릭터",
+      "characterNote": "로비와 모든 오피스에서 쓰는 캐릭터예요.",
       "passwordTitle": "비밀번호 변경",
       "passwordDescription": "현재 비밀번호를 입력한 다음 새 비밀번호를 정하세요.",
       "passwordChanged": "비밀번호가 변경되었어요.",
@@ -953,7 +969,14 @@
       "signsOutOthers": "여기서는 로그인 상태가 유지돼요. 다른 곳에서는 모두 로그아웃돼요.",
       "cancel": "취소",
       "faceNote": "얼굴은 계정으로 그려지며 모든 화면에서 같아요. 업로드되거나 저장되는 건 없어요.",
-      "themeNote": "시스템은 기기 설정을 따라요. 선택은 이 브라우저에 저장돼요."
+      "themeNote": "시스템은 기기 설정을 따라요. 선택은 이 브라우저에 저장돼요.",
+      "link": "내 링크",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "채팅에서 내 프로필을 열면 보여요.",
+      "google": "Google",
+      "googleNote": "Google로도 로그인하세요.",
+      "connectGoogle": "Google 연결",
+      "googleConnected": "연결됨"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",
@@ -987,7 +1010,10 @@
       "too_many_attempts": "시도 횟수가 너무 많아요. 몇 분 뒤에 다시 시도해 주세요.",
       "not_found": "찾을 수 없어요. 삭제되었을 수 있어요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
-      "generic": "문제가 생겼어요. 다시 시도해 주세요."
+      "generic": "문제가 생겼어요. 다시 시도해 주세요.",
+      "bad_link": "웹 주소가 아닌 것 같아요.",
+      "google_taken": "그 Google 계정은 이미 다른 TinyFloor 계정에 연결되어 있어요.",
+      "google_failed": "Google 연결이 완료되지 않았어요. 다시 시도해 주세요."
     },
     "people": {
       "title": "사람들",
@@ -1037,8 +1063,7 @@
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",
     "gone": "닫혔거나, 더 이상 멤버가 아닙니다.",
-    "backToOffices": "내 오피스로",
-    "door": "{members, plural, other {멤버 #명}} · {here, plural, =0 {아직 층에 아무도 없음} other {지금 층에 #명}}"
+    "backToOffices": "내 오피스로"
   },
   "create": {
     "eyebrow": "내 오피스",
@@ -1050,8 +1075,14 @@
     "create": "오피스 만들기",
     "creating": "준비하는 중",
     "freePlan": "3명까지 무료예요. 카드도 필요 없어요.",
-    "accountNext": "다음은 계정 만들기. 그러면 오피스가 준비돼요.",
-    "justLooking": "구경만 하시나요? <link>공개 오피스에 들어가기</link>도 좋아요."
+    "justLooking": "구경만 하시나요? <link>공개 오피스에 들어가기</link>도 좋아요.",
+    "steps": [
+      "이름 짓기",
+      "계정 만들기",
+      "들어가기"
+    ],
+    "asideTitle": "1분이면 준비되는 우리 오피스",
+    "asideBody": "채팅과 회의 테이블이 있는 팀만의 층. 3명까지 무료예요."
   },
   "shell": {
     "floor": "층",
@@ -1156,7 +1187,8 @@
         "설치할 것 없음",
         "Cloudflare 위에서 작동"
       ],
-      "lobbyCta": "들어가기"
+      "lobbyCta": "들어가기",
+      "noAccount": "계정 없이 바로"
     },
     "features": {
       "proximity": {
@@ -1355,10 +1387,7 @@
       "inviteTeammate": "팀원 초대",
       "inviteTeammateNote": "링크로 들어와요",
       "video": "영상 통화",
-      "audio": "음성 통화",
-      "you": "나",
-      "clickToWalk": "아무 곳이나 클릭해 걸어 보세요",
-      "playable": "직접 걸어 보는 층: 아무 곳이나 클릭하면 그곳으로 걸어가고, 화살표 키로도 움직일 수 있습니다"
+      "audio": "음성 통화"
     },
     "footer": {
       "tagline": "걸어 다니는 가상 오피스.",
@@ -1375,7 +1404,30 @@
       "vs": "{name}과 비교",
       "theme": "테마",
       "language": "언어",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "소개",
+      "privacy": "개인정보",
+      "terms": "이용약관"
     }
+  },
+  "legal": {
+    "englishOnly": "이 페이지는 영어로 되어 있어요.",
+    "agree": "계속하면 <terms>이용약관</terms> 및 <privacy>개인정보 처리방침</privacy>에 동의하게 돼요."
+  },
+  "about": {
+    "meta": {
+      "title": "TinyFloor 소개",
+      "description": "TinyFloor는 걸어 다니는 가상 오피스로, Jitto Joseph가 만들고 있어요. 왜 만들었는지, 누가 만드는지, 어떻게 연락하는지 소개해요."
+    },
+    "eyebrow": "소개",
+    "title": "원격 근무가 잃어버린 복도를 다시 만들고 있어요.",
+    "p1": "떨어져서 일하면 집중하기엔 좋지만, 작은 순간들이 조용히 사라졌어요. 누군가의 자리에서 건네는 짧은 질문, 지나가며 하는 인사, 누가 있는지 보이는 것. 화상 통화는 회의에는 잘 맞아요. 하지만 그 밖의 모든 대화를 일정으로 만들어 버렸죠.",
+    "p2": "TinyFloor는 링크가 아니라 층이에요. 팀은 함께 쓰는 픽셀 아트 오피스를 돌아다니고, 누군가에게 다가가는 것만으로 대화가 시작돼요. 테이블에 앉으면 회의가 되고, 자리를 뜨면 다시 조용해져요.",
+    "p3": "Cloudflare 네트워크 위에서 브라우저로 동작하고, 18개 언어를 지원하며, 설치할 것도 없고, 작은 팀은 무료예요.",
+    "founderTitle": "Jitto Joseph가 만들어요",
+    "founderBody": "픽셀 층부터 그것을 돌리는 서버까지, TinyFloor를 디자인하고 만들고 있어요. 아이디어나 문제가 있거나 그냥 인사를 건네고 싶다면, 언제든 연락 주세요.",
+    "website": "웹사이트",
+    "elsewhere": "다른 곳의 TinyFloor",
+    "contact": "문의하기"
   }
 }

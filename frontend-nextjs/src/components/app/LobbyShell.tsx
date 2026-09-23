@@ -12,7 +12,6 @@ import { lobbyChatPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettin
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
-import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -20,6 +19,7 @@ import { Dialog } from "@/components/ui/Dialog";
 import { FaceStack } from "@/components/ui/Face";
 import { ActionLink } from "@/components/ui/Action";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
+import { dmChannelId } from "@shared/chat";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
@@ -37,16 +37,13 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuth();
-  const [inside, setInside] = useState(false);
   const [asked, setAsked] = useState<OfficeFeature | null>(null);
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
   const everyone = useFloor();
 
-  // Reloading the page: you were already in, so you stay in.
-  useEffect(() => {
-    if (user && wasInside("lobby")) queueMicrotask(() => setInside(true));
-  }, [user]);
+  // Anyone with a session already has a name and a character, so the door is only for someone new.
+  const inside = !!user;
 
   // Who is inside, for the door.
   useEffect(() => {
@@ -65,20 +62,22 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!inside) return;
     chat.connect("lobby", api.lobbyChatTicket);
-    rememberInside("lobby", true);
     return () => {
       chat.disconnect();
       clearFloor();
-      rememberInside("lobby", false);
     };
   }, [inside]);
 
-  // "Message" beside someone on the floor: that is an office's, so ask for one.
+  // "Message" beside someone on the floor opens a direct message with them, one that lasts while you're both here.
   useEffect(() => {
-    const open = () => setAsked("directMessages");
+    if (!user) return;
+    const open = (event: Event) => {
+      const { id } = (event as CustomEvent<{ id: string }>).detail;
+      router.push(lobbyChatPath(dmChannelId(user.id, id)));
+    };
     window.addEventListener(OPEN_CONVERSATION_EVENT, open);
     return () => window.removeEventListener(OPEN_CONVERSATION_EVENT, open);
-  }, []);
+  }, [user, router]);
 
   const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
 
@@ -89,7 +88,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         title={t("title")}
         subtitle={t("subtitle")}
         sharePath={lobbyPath}
-        onReady={() => setInside(true)}
+        onReady={() => {}}
         detail={
           door && (
             <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 ps-1 pe-3 [--face-ring:var(--ui-background)]">

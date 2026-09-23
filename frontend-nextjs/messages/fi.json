@@ -1223,6 +1223,38 @@
         "body": "Kutsu tiimiläisiä sähköpostilla tai lähetä vieraslinkki asiakkaalle tai hakijalle. He valitsevat nimen ja hahmon ja ovat kerroksessa, ilman tiliä."
       }
     },
+    "moments": {
+      "title": "Kaikki tapahtuu kerroksessa.",
+      "muted": "Niin kuin toimistossakin.",
+      "door": {
+        "title": "Sulje ovi.",
+        "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua.",
+        "chip": "{name} on kiireinen · keskittyy"
+      },
+      "lounge": {
+        "title": "Pidä tauko.",
+        "body": "Sohva, kaiutin joka soittaa huoneen musiikkia, ja ihmiset, joihin törmäisit kahvinkeittimellä.",
+        "chip": "Nyt soi"
+      }
+    },
+    "steps": {
+      "title": "Valmiina",
+      "muted": "ennen kuin kahvi ehtii jäähtyä.",
+      "make": {
+        "title": "Luo toimistosi.",
+        "body": "Anna sille nimi ja valitse hahmo. Se on valmis minuutissa."
+      },
+      "invite": {
+        "title": "Lähetä linkki tiimillesi.",
+        "body": "Kutsu kollegat sähköpostilla tai jaa vieraslinkki kenelle tahansa."
+      },
+      "walk": {
+        "title": "Astu sisään.",
+        "body": "Kaikki päätyvät samaan kerrokseen. Kävele sen luo, jota tarvitset."
+      },
+      "joined": "{count} liittyi tänään",
+      "walkedIn": "{name} tuli sisään"
+    },
     "more": {
       "title": "Kaikki, mitä pieni tiimi tarvitsee,",
       "muted": "yhdessä kerroksessa.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Yksi kerros koko päiväksi,",
       "muted": "ensimmäisestä moikkauksesta viimeiseen puheluun."
-    },
-    "tour": {
-      "title": "Päivä kerroksessa.",
-      "muted": "Jokaisella huoneella on tarkoituksensa.",
-      "hall": {
-        "title": "Näe, kuka on paikalla.",
-        "body": "Kaikki ovat kerroksessa: työpöydän ääressä, liikkeellä tai palaverissa. Yhdellä silmäyksellä näet, kuka on paikalla, kuka on kiireinen ja kuka keskittyy."
-      },
-      "office": {
-        "title": "Sulje ovi.",
-        "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua.",
-        "chip": "{name} on kiireinen · keskittyy"
-      },
-      "lounge": {
-        "title": "Pidä tauko.",
-        "body": "Sohva, kaiutin joka soittaa huoneen musiikkia, ja ihmiset, joihin törmäisit kahvinkeittimellä.",
-        "chip": "Nyt soi"
-      }
     },
     "vignettes": {
       "sharing": "Jakaa",

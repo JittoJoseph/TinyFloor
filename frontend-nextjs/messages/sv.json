@@ -1223,6 +1223,38 @@
         "body": "Bjud in kollegor via e-post, eller skicka en gästlänk till en kund eller kandidat. De väljer ett namn och en figur och står på planet, utan konto."
       }
     },
+    "moments": {
+      "title": "Allt händer på våningen.",
+      "muted": "Precis som på ett kontor.",
+      "door": {
+        "title": "Stäng dörren.",
+        "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig.",
+        "chip": "{name} är upptagen · koncentrerad"
+      },
+      "lounge": {
+        "title": "Ta en paus.",
+        "body": "Soffan, högtalaren som spelar rummets musik och folket du skulle stöta på vid kaffemaskinen.",
+        "chip": "Spelas nu"
+      }
+    },
+    "steps": {
+      "title": "Igång",
+      "muted": "innan kaffet hunnit kallna.",
+      "make": {
+        "title": "Skapa ditt kontor.",
+        "body": "Ge det ett namn och välj en figur. Det är klart på en minut."
+      },
+      "invite": {
+        "title": "Skicka länken till teamet.",
+        "body": "Bjud in kollegor via e-post, eller dela en gästlänk med vem som helst."
+      },
+      "walk": {
+        "title": "Gå in.",
+        "body": "Alla hamnar på samma våning. Gå fram till den du behöver."
+      },
+      "joined": "{count} har anslutit i dag",
+      "walkedIn": "{name} kom in"
+    },
     "more": {
       "title": "Allt ett litet team behöver,",
       "muted": "på ett plan.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Ett våningsplan för hela dagen,",
       "muted": "från första hej till sista samtalet."
-    },
-    "tour": {
-      "title": "En dag på våningen.",
-      "muted": "Varje rum finns där av en anledning.",
-      "hall": {
-        "title": "Se vem som är här.",
-        "body": "Alla är på våningen: vid ett skrivbord, på väg någonstans eller i ett möte. En blick räcker för att se vem som är här, vem som är upptagen och vem som jobbar koncentrerat."
-      },
-      "office": {
-        "title": "Stäng dörren.",
-        "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig.",
-        "chip": "{name} är upptagen · koncentrerad"
-      },
-      "lounge": {
-        "title": "Ta en paus.",
-        "body": "Soffan, högtalaren som spelar rummets musik och folket du skulle stöta på vid kaffemaskinen.",
-        "chip": "Spelas nu"
-      }
     },
     "vignettes": {
       "sharing": "Delar",

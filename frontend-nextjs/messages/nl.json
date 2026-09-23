@@ -1223,6 +1223,38 @@
         "body": "Nodig teamgenoten uit per e-mail, of stuur een gastlink naar een klant of kandidaat. Die kiest een naam en een poppetje en staat op de vloer, zonder account."
       }
     },
+    "moments": {
+      "title": "Alles gebeurt op de verdieping.",
+      "muted": "Zoals in een kantoor.",
+      "door": {
+        "title": "Doe de deur dicht.",
+        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je.",
+        "chip": "{name} is bezig · geconcentreerd"
+      },
+      "lounge": {
+        "title": "Neem even pauze.",
+        "body": "De bank, de speaker met de muziek van de ruimte, en de mensen die je bij het koffieapparaat tegen zou komen.",
+        "chip": "Speelt nu"
+      }
+    },
+    "steps": {
+      "title": "Klaar voor gebruik",
+      "muted": "voordat je koffie koud is.",
+      "make": {
+        "title": "Maak je kantoor.",
+        "body": "Geef het een naam en kies een personage. Het staat binnen een minuut klaar."
+      },
+      "invite": {
+        "title": "Stuur je team de link.",
+        "body": "Nodig collega's uit per e-mail, of deel een gastlink met iedereen."
+      },
+      "walk": {
+        "title": "Loop binnen.",
+        "body": "Iedereen komt op dezelfde verdieping. Loop naar wie je nodig hebt."
+      },
+      "joined": "{count} vandaag binnengekomen",
+      "walkedIn": "{name} kwam binnen"
+    },
     "more": {
       "title": "Alles wat een klein team nodig heeft,",
       "muted": "op één vloer.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Eén verdieping voor de hele dag,",
       "muted": "van het eerste hallo tot het laatste gesprek."
-    },
-    "tour": {
-      "title": "Een dag op de verdieping.",
-      "muted": "Elke ruimte heeft een reden.",
-      "hall": {
-        "title": "Zie wie er is.",
-        "body": "Iedereen is op de verdieping: aan een bureau, onderweg of in een meeting. Eén blik vertelt je wie er is, wie bezig is en wie geconcentreerd werkt."
-      },
-      "office": {
-        "title": "Doe de deur dicht.",
-        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je.",
-        "chip": "{name} is bezig · geconcentreerd"
-      },
-      "lounge": {
-        "title": "Neem even pauze.",
-        "body": "De bank, de speaker met de muziek van de ruimte, en de mensen die je bij het koffieapparaat tegen zou komen.",
-        "chip": "Speelt nu"
-      }
     },
     "vignettes": {
       "sharing": "Deelt",

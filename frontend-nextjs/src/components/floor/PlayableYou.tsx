@@ -85,6 +85,7 @@ export function PlayableYou({
       const x = Math.floor(((event.clientX - box.left) / box.width) * MAP.width);
       const y = Math.floor(((event.clientY - box.top) / box.height) * MAP.height - 0.3);
       walkTo([x, y]);
+      wake();
     };
     const KEYS: Record<string, AvatarDirection> = {
       ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right",
@@ -95,6 +96,7 @@ export function PlayableYou({
       if (!direction) return;
       event.preventDefault();
       held.current = event.type === "keydown" ? direction : held.current === direction ? null : held.current;
+      if (held.current) wake();
     };
     root.addEventListener("click", onPointer);
     root.addEventListener("keydown", onKey);
@@ -102,9 +104,17 @@ export function PlayableYou({
     const onBlur = () => (held.current = null);
     root.addEventListener("blur", onBlur);
 
-    let last = performance.now();
+    // The loop runs only while you're on the move; standing still costs nothing.
+    let last = 0;
     let frame = 0;
+    let running = false;
     let wasMoving = false;
+    const wake = () => {
+      if (running) return;
+      running = true;
+      last = performance.now();
+      frame = requestAnimationFrame(tick);
+    };
     const tick = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
@@ -140,9 +150,9 @@ export function PlayableYou({
       const distance = (one: Neighbour) => Math.hypot(one.at[0] - spot.current.x, one.at[1] - spot.current.y);
       const close = neighbours.filter((one) => distance(one) <= NEAR).sort((a, b) => distance(a) - distance(b))[0] ?? null;
       setNear((current) => (current?.name === close?.name ? current : close));
-      frame = requestAnimationFrame(tick);
+      if (path.current.length || held.current) frame = requestAnimationFrame(tick);
+      else running = false;
     };
-    frame = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(frame);
       root.removeEventListener("click", onPointer);
@@ -181,7 +191,7 @@ export function PlayableYou({
 /** The app's bar beside someone you've walked up to: who, and the ways to talk. */
 export function NearbyBar({ name, seed, labels }: { name: string; seed: string; labels: { video: string; audio: string; message: string } }) {
   return (
-    <div className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card/95 p-1.5 pe-2 font-(family-name:--font-app) shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]">
+    <div className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card p-1.5 pe-2 font-(family-name:--font-app) shadow-float  [--face-ring:var(--ui-card)]">
       <Face seed={seed} size={26} presence="available" />
       <span className="px-0.5 text-[12px] font-semibold text-foreground">{name}</span>
       <span title={labels.video} className="flex size-7 items-center justify-center rounded-full bg-foreground text-background">

@@ -1223,6 +1223,38 @@
         "body": "Zaproś współpracowników e-mailem albo wyślij link gościa do klienta lub kandydata. Wybierają imię i postać i są na piętrze, bez konta."
       }
     },
+    "moments": {
+      "title": "Wszystko dzieje się na piętrze.",
+      "muted": "Tak jak w biurze.",
+      "door": {
+        "title": "Zamknij drzwi.",
+        "body": "Ustaw status zajęty i zajmij prywatny gabinet. Inni widzą, że pracujesz w skupieniu, zanim podejdą, a czat na ciebie poczeka.",
+        "chip": "{name} jest zajęty · w skupieniu"
+      },
+      "lounge": {
+        "title": "Zrób przerwę.",
+        "body": "Kanapa, głośnik grający muzykę pokoju i ludzie, na których wpadłbyś przy ekspresie do kawy.",
+        "chip": "Teraz gra"
+      }
+    },
+    "steps": {
+      "title": "Gotowe,",
+      "muted": "zanim ostygnie kawa.",
+      "make": {
+        "title": "Utwórz swoje biuro.",
+        "body": "Nadaj mu nazwę i wybierz postać. Będzie gotowe w minutę."
+      },
+      "invite": {
+        "title": "Wyślij link zespołowi.",
+        "body": "Zaproś współpracowników mailem albo udostępnij link gościa komukolwiek."
+      },
+      "walk": {
+        "title": "Wejdź.",
+        "body": "Wszyscy trafiają na to samo piętro. Podejdź do osoby, której potrzebujesz."
+      },
+      "joined": "{count} dołączyło dziś",
+      "walkedIn": "{name} wszedł"
+    },
     "more": {
       "title": "Wszystko, czego potrzebuje mały zespół,",
       "muted": "na jednym piętrze.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Jedno piętro na cały dzień,",
       "muted": "od pierwszego cześć po ostatnią rozmowę."
-    },
-    "tour": {
-      "title": "Dzień na piętrze.",
-      "muted": "Każdy pokój jest po coś.",
-      "hall": {
-        "title": "Zobacz, kto jest.",
-        "body": "Wszyscy są na piętrze: przy biurku, w ruchu albo na spotkaniu. Jedno spojrzenie mówi, kto jest, kto jest zajęty, a kto pracuje w skupieniu."
-      },
-      "office": {
-        "title": "Zamknij drzwi.",
-        "body": "Ustaw status zajęty i zajmij prywatny gabinet. Inni widzą, że pracujesz w skupieniu, zanim podejdą, a czat na ciebie poczeka.",
-        "chip": "{name} jest zajęty · w skupieniu"
-      },
-      "lounge": {
-        "title": "Zrób przerwę.",
-        "body": "Kanapa, głośnik grający muzykę pokoju i ludzie, na których wpadłbyś przy ekspresie do kawy.",
-        "chip": "Teraz gra"
-      }
     },
     "vignettes": {
       "sharing": "Udostępnia",

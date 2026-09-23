@@ -1223,6 +1223,38 @@
         "body": "Lade Teammitglieder per E-Mail ein oder schick einen Gastlink an Kundschaft oder Bewerbende. Sie wählen einen Namen und eine Figur und stehen auf der Fläche, ganz ohne Konto."
       }
     },
+    "moments": {
+      "title": "Alles passiert auf der Etage.",
+      "muted": "So wie in einem Büro.",
+      "door": {
+        "title": "Mach die Tür zu.",
+        "body": "Stell dich auf beschäftigt und nimm das Einzelbüro. Alle sehen, dass du konzentriert arbeitest, bevor sie vorbeikommen, und der Chat wartet auf dich.",
+        "chip": "{name} ist beschäftigt · konzentriert"
+      },
+      "lounge": {
+        "title": "Mach mal Pause.",
+        "body": "Das Sofa, der Lautsprecher mit der Musik des Raums und die Leute, die du sonst an der Kaffeemaschine triffst.",
+        "chip": "Läuft gerade"
+      }
+    },
+    "steps": {
+      "title": "Startklar,",
+      "muted": "bevor dein Kaffee kalt wird.",
+      "make": {
+        "title": "Erstell dein Büro.",
+        "body": "Gib ihm einen Namen und wähl eine Figur. In einer Minute ist es fertig."
+      },
+      "invite": {
+        "title": "Schick deinem Team den Link.",
+        "body": "Lade dein Team per E-Mail ein oder teile einen Gastlink mit allen anderen."
+      },
+      "walk": {
+        "title": "Komm rein.",
+        "body": "Alle landen auf derselben Etage. Geh zu dem, den du gerade brauchst."
+      },
+      "joined": "{count} heute dazugekommen",
+      "walkedIn": "{name} ist reingekommen"
+    },
     "more": {
       "title": "Alles, was ein kleines Team braucht,",
       "muted": "auf einer Fläche.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Eine Fläche für den ganzen Tag,",
       "muted": "vom ersten Hallo bis zum letzten Call."
-    },
-    "tour": {
-      "title": "Ein Tag auf der Etage.",
-      "muted": "Jeder Raum hat seinen Zweck.",
-      "hall": {
-        "title": "Sieh, wer da ist.",
-        "body": "Alle sind auf der Etage: am Schreibtisch, unterwegs oder in einem Meeting. Ein Blick zeigt dir, wer da ist, wer beschäftigt ist und wer gerade konzentriert arbeitet."
-      },
-      "office": {
-        "title": "Mach die Tür zu.",
-        "body": "Stell dich auf beschäftigt und nimm das Einzelbüro. Alle sehen, dass du konzentriert arbeitest, bevor sie vorbeikommen, und der Chat wartet auf dich.",
-        "chip": "{name} ist beschäftigt · konzentriert"
-      },
-      "lounge": {
-        "title": "Mach mal Pause.",
-        "body": "Das Sofa, der Lautsprecher mit der Musik des Raums und die Leute, die du sonst an der Kaffeemaschine triffst.",
-        "chip": "Läuft gerade"
-      }
     },
     "vignettes": {
       "sharing": "Teilt",

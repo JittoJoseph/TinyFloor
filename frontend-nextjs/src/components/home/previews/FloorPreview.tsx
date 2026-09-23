@@ -14,7 +14,7 @@ export function RoomChip({ count, className }: { count: number; className?: stri
   return (
     <span
       className={cn(
-        "pointer-events-none flex h-8 items-center gap-2 rounded-full border border-border bg-card/90 pe-1.5 ps-3 shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]",
+        "pointer-events-none flex h-8 items-center gap-2 rounded-full border border-border bg-card pe-1.5 ps-3 shadow-float  [--face-ring:var(--ui-card)]",
         className,
       )}
     >
@@ -31,7 +31,7 @@ export function RoomChip({ count, className }: { count: number; className?: stri
 /** The dock along the bottom: mic, camera (off), screen, settings. */
 export function Dock({ className }: { className?: string }) {
   return (
-    <span className={cn("pointer-events-none flex items-center gap-1 rounded-full border border-border bg-card/90 p-1 shadow-float backdrop-blur-md", className)}>
+    <span className={cn("pointer-events-none flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-float ", className)}>
       {[Mic, Video, MonitorUp].map((Icon, index) => (
         <span
           key={index}

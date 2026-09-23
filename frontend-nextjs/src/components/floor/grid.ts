@@ -40,3 +40,36 @@ export const WALKABLE = [
 ];
 
 export const walkable = (x: number, y: number) => WALKABLE[y]?.[x] === ".";
+
+/**
+ * The map's chairs, by the tile Tiled keeps them at (their left edge and
+ * bottom): which frame of items/chair.png they are and which way they face.
+ * A chair facing up is drawn over whoever sits in it, as the app does.
+ */
+export const CHAIRS: Record<string, { frame: number; face: "up" | "down" | "left" | "right" }> = {
+  "4,8": { frame: 7, face: "down" },
+  "4,11": { frame: 11, face: "up" },
+  "6,8": { frame: 7, face: "down" },
+  "6,11": { frame: 11, face: "up" },
+  "8,8": { frame: 7, face: "down" },
+  "8,11": { frame: 11, face: "up" },
+  "7,24": { frame: 1, face: "down" },
+  "5,26": { frame: 5, face: "up" },
+  "9,26": { frame: 5, face: "up" },
+  "20,11": { frame: 5, face: "up" },
+  "20,8": { frame: 1, face: "down" },
+  "26,11": { frame: 5, face: "up" },
+  "26,8": { frame: 1, face: "down" },
+  "34,16": { frame: 5, face: "up" },
+  "34,13": { frame: 1, face: "down" },
+  "40,16": { frame: 5, face: "up" },
+  "40,13": { frame: 1, face: "down" },
+  "21,23": { frame: 5, face: "up" },
+  "21,20": { frame: 1, face: "down" },
+  "27,23": { frame: 5, face: "up" },
+  "27,20": { frame: 1, face: "down" },
+  "35,28": { frame: 5, face: "up" },
+  "35,25": { frame: 1, face: "down" },
+  "41,28": { frame: 5, face: "up" },
+  "41,25": { frame: 1, face: "down" },
+};

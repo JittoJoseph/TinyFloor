@@ -1223,6 +1223,38 @@
         "body": "Invitez vos collègues par e-mail, ou envoyez un lien invité à un client ou un candidat. Il choisit un nom et un personnage, et le voilà sur l'étage, sans compte."
       }
     },
+    "moments": {
+      "title": "Tout se passe sur l'étage.",
+      "muted": "Comme dans un bureau.",
+      "door": {
+        "title": "Fermez la porte.",
+        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend.",
+        "chip": "{name} est occupé · concentré"
+      },
+      "lounge": {
+        "title": "Faites une pause.",
+        "body": "Le canapé, l'enceinte qui joue la musique de la salle, et les gens que vous croiseriez à la machine à café.",
+        "chip": "En cours"
+      }
+    },
+    "steps": {
+      "title": "Prêt à démarrer",
+      "muted": "avant que votre café refroidisse.",
+      "make": {
+        "title": "Créez votre bureau.",
+        "body": "Donnez-lui un nom et choisissez un personnage. Il est prêt en une minute."
+      },
+      "invite": {
+        "title": "Envoyez le lien à votre équipe.",
+        "body": "Invitez vos collègues par e-mail, ou partagez un lien invité avec n'importe qui."
+      },
+      "walk": {
+        "title": "Entrez.",
+        "body": "Tout le monde arrive sur le même étage. Allez voir qui vous voulez."
+      },
+      "joined": "{count} arrivés aujourd'hui",
+      "walkedIn": "{name} est entré"
+    },
     "more": {
       "title": "Tout ce dont une petite équipe a besoin,",
       "muted": "sur un seul étage.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Un étage pour toute la journée,",
       "muted": "du premier bonjour au dernier appel."
-    },
-    "tour": {
-      "title": "Une journée sur l'étage.",
-      "muted": "Chaque pièce a sa raison d'être.",
-      "hall": {
-        "title": "Voyez qui est là.",
-        "body": "Tout le monde est sur l'étage : à son bureau, en mouvement ou en réunion. Un coup d'œil suffit pour voir qui est là, qui est occupé et qui est concentré."
-      },
-      "office": {
-        "title": "Fermez la porte.",
-        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend.",
-        "chip": "{name} est occupé · concentré"
-      },
-      "lounge": {
-        "title": "Faites une pause.",
-        "body": "Le canapé, l'enceinte qui joue la musique de la salle, et les gens que vous croiseriez à la machine à café.",
-        "chip": "En cours"
-      }
     },
     "vignettes": {
       "sharing": "Partage",

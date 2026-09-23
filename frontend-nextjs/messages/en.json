@@ -1223,6 +1223,38 @@
         "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
       }
     },
+    "moments": {
+      "title": "Everything happens on the floor.",
+      "muted": "The way it would in an office.",
+      "door": {
+        "title": "Close the door.",
+        "body": "Set yourself busy and take the private office. People can see you're heads-down before they walk over, and chat waits for you.",
+        "chip": "{name} is busy · heads-down"
+      },
+      "lounge": {
+        "title": "Take five.",
+        "body": "The sofa, the speaker playing the room's music, and the people you'd bump into by the coffee machine.",
+        "chip": "Now playing"
+      }
+    },
+    "steps": {
+      "title": "Up and running",
+      "muted": "before your coffee gets cold.",
+      "make": {
+        "title": "Make your office.",
+        "body": "Give it a name and pick a character. It's ready in a minute."
+      },
+      "invite": {
+        "title": "Send your team the link.",
+        "body": "Invite teammates by email, or share a guest link with anyone else."
+      },
+      "walk": {
+        "title": "Walk in.",
+        "body": "Everyone lands on the same floor. Walk over to whoever you need."
+      },
+      "joined": "{count} joined today",
+      "walkedIn": "{name} walked in"
+    },
     "more": {
       "title": "Everything a small team needs,",
       "muted": "on one floor.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "One floor for the whole day,",
       "muted": "from the first hello to the last call."
-    },
-    "tour": {
-      "title": "A day on the floor.",
-      "muted": "Every room is there for a reason.",
-      "hall": {
-        "title": "See who's in.",
-        "body": "Everyone is on the floor: at a desk, on the move, or in a meeting. One look tells you who's around, who's busy and who's heads-down."
-      },
-      "office": {
-        "title": "Close the door.",
-        "body": "Set yourself busy and take the private office. People can see you're heads-down before they walk over, and chat waits for you.",
-        "chip": "{name} is busy · heads-down"
-      },
-      "lounge": {
-        "title": "Take five.",
-        "body": "The sofa, the speaker playing the room's music, and the people you'd bump into by the coffee machine.",
-        "chip": "Now playing"
-      }
     },
     "vignettes": {
       "sharing": "Sharing",

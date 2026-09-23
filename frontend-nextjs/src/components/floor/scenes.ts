@@ -22,10 +22,10 @@ const person = ({ name, character }: { name: string; character: string }) => ({ 
 export const HALL: Scene = {
   view: [15, 3, 32, 20],
   sitting: [
-    { ...person(sam), chair: [20, 11], face: "up", status: "busy" },
-    { ...person(noah), chair: [26, 8], face: "down", tucked: true, status: "available" },
-    { ...person(lily), chair: [34, 16], face: "up", status: "away" },
-    { ...person(grace), chair: [40, 13], face: "down", tucked: true, status: "busy" },
+    { ...person(sam), chair: [20, 11], status: "busy" },
+    { ...person(noah), chair: [26, 8], status: "available" },
+    { ...person(lily), chair: [34, 16], status: "away" },
+    { ...person(grace), chair: [40, 13], status: "busy" },
   ],
   standing: [
     { ...person(jack), at: [36, 10], face: "right", status: "available" },
@@ -37,16 +37,6 @@ export const HALL: Scene = {
   ],
 };
 
-/** The hall, wider, for a big window: more of the floor and more people on it. */
-export const HALL_WIDE: Scene = {
-  ...HALL,
-  view: [14, 2, 34, 26],
-  walking: [
-    ...HALL.walking!,
-    { character: "Molly", name: "Mia", status: "available", path: [[16, 22, 1], [16, 27], [30, 27, 2.5], [30, 22]], offset: 5 },
-  ],
-};
-
 /** Two people who have walked up to each other in the aisle: close, so it reads as a conversation. */
 export const NEAR: Scene = {
   view: [30, 5, 16, 11],
@@ -55,8 +45,8 @@ export const NEAR: Scene = {
     { ...person(jack), at: [38, 10], face: "left", status: "available" },
   ],
   sitting: [
-    { ...person(lily), chair: [34, 13], face: "down", tucked: true, status: "busy" },
-    { ...person(sam), chair: [40, 13], face: "down", tucked: true, status: "busy" },
+    { ...person(lily), chair: [34, 13], status: "busy" },
+    { ...person(sam), chair: [40, 13], status: "busy" },
   ],
   walking: [{ ...person(olivia), status: "available", path: [[31, 6, 1], [44, 6, 2]], speed: 1.8 }],
 };
@@ -65,25 +55,10 @@ export const NEAR: Scene = {
 export const MEETING: Scene = {
   view: [1, 3, 13, 12],
   sitting: [
-    { ...person(emma), chair: [4, 11], face: "up", status: "in_call" },
-    { ...person(jack), chair: [6, 8], face: "down", tucked: true, status: "in_call" },
-    { ...person(olivia), chair: [8, 11], face: "up", status: "in_call" },
-    { ...person(sam), chair: [4, 8], face: "down", tucked: true, status: "in_call" },
-  ],
-};
-
-/** The private office: someone heads-down at the desk, door shut. */
-export const OFFICE: Scene = {
-  view: [1, 18, 13, 13],
-  sitting: [{ ...person(noah), chair: [7, 24], face: "down", tucked: true, status: "busy" }],
-};
-
-/** The lounge in the hall's top right: the sofa, the speaker, a couple of people taking five. */
-export const LOUNGE: Scene = {
-  view: [32, 1, 15, 10],
-  standing: [
-    { ...person(lily), at: [37, 4], face: "right", status: "away" },
-    { ...person(ryan), at: [39, 4], face: "left", status: "away" },
+    { ...person(emma), chair: [4, 11], status: "in_call" },
+    { ...person(jack), chair: [6, 8], status: "in_call" },
+    { ...person(olivia), chair: [8, 11], status: "in_call" },
+    { ...person(sam), chair: [4, 8], status: "in_call" },
   ],
 };
 
@@ -91,15 +66,15 @@ export const LOUNGE: Scene = {
 export const EVERYONE: Scene = {
   view: [0, 0, 48, 32],
   sitting: [
-    { name: "Ava", character: "Amelia", chair: [4, 11], face: "up", status: "in_call" },
-    { name: "Leo", character: "Adam", chair: [6, 8], face: "down", tucked: true, status: "in_call" },
-    { name: "Zoe", character: "Lucy", chair: [8, 11], face: "up", status: "in_call" },
-    { name: "Ben", character: "Bob", chair: [4, 8], face: "down", tucked: true, status: "in_call" },
-    { ...person(noah), chair: [7, 24], face: "down", tucked: true, status: "busy" },
-    { ...person(sam), chair: [20, 11], face: "up", status: "busy" },
-    { name: "Mia", character: "Molly", chair: [34, 16], face: "up", status: "available" },
-    { ...person(grace), chair: [40, 13], face: "down", tucked: true, status: "busy" },
-    { name: "Max", character: "Dan", chair: [27, 23], face: "up", status: "available" },
+    { name: "Ava", character: "Amelia", chair: [4, 11], status: "in_call" },
+    { name: "Leo", character: "Adam", chair: [6, 8], status: "in_call" },
+    { name: "Zoe", character: "Lucy", chair: [8, 11], status: "in_call" },
+    { name: "Ben", character: "Bob", chair: [4, 8], status: "in_call" },
+    { ...person(noah), chair: [7, 24], status: "busy" },
+    { ...person(sam), chair: [20, 11], status: "busy" },
+    { name: "Mia", character: "Molly", chair: [34, 16], status: "available" },
+    { ...person(grace), chair: [40, 13], status: "busy" },
+    { name: "Max", character: "Dan", chair: [27, 23], status: "available" },
   ],
   standing: [
     { ...person(jack), at: [36, 10], face: "right", status: "available" },

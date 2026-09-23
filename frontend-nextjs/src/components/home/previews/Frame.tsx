@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { ChatsCircleIcon, GearSixIcon, MapTrifoldIcon, UsersThreeIcon } from "@phosphor-icons/react/dist/ssr";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
@@ -40,6 +41,7 @@ export function Frame({
   className?: string;
   rail?: boolean;
 }) {
+  const t = useTranslations("home.hero");
   return (
     <div
       className={cn(
@@ -54,17 +56,22 @@ export function Frame({
           <span className="my-1 h-px w-6 bg-border" />
           {RAIL.map(({ view, icon: Icon }) => {
             const on = view === active || (active === "meeting" && view === "floor");
+            // Buttons, as in the app: where the preview can change views (the hero's), a press here does.
             return (
-              <span
+              <button
                 key={view}
+                type="button"
+                data-view={view}
+                aria-label={t(`tabs.${view}`)}
+                aria-pressed={on}
                 className={cn(
-                  "relative flex size-9 items-center justify-center rounded-[11px]",
-                  on ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] dark:bg-muted" : "text-muted-foreground",
+                  "relative flex size-9 cursor-pointer items-center justify-center rounded-[11px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/60",
+                  on ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] dark:bg-muted" : "text-muted-foreground hover:bg-foreground/[0.06] hover:text-foreground",
                 )}
               >
                 {on && <span className="absolute -start-2.5 h-5 w-[3px] rounded-e-full bg-foreground" />}
                 <Icon size={19} weight={on ? "fill" : "regular"} />
-              </span>
+              </button>
             );
           })}
           <span className="mt-auto flex size-9 items-center justify-center text-muted-foreground">

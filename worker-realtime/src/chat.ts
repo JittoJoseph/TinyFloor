@@ -217,6 +217,7 @@ export class Chat extends DurableObject<Env> {
     this.sql.exec("DELETE FROM channels");
     this.sql.exec("DELETE FROM reads");
     this.sql.exec("DELETE FROM reactions");
+    this.sql.exec("DELETE FROM people");
   }
 
   /** Keeps each channel to its last messages. Runs from the API's nightly job. */

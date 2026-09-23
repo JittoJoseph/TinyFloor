@@ -35,7 +35,7 @@ describe("room tickets", () => {
   it("rejects a ticket whose claims were edited", async () => {
     const token = await signTicket(ticket(), SECRET);
     const [, signature] = token.split(".");
-    const forged = btoa(JSON.stringify(ticket({ role: "owner" })))
+    const forged = btoa(JSON.stringify(ticket({ role: "admin" })))
       .replace(/\+/g, "-")
       .replace(/\//g, "_")
       .replace(/=+$/, "");

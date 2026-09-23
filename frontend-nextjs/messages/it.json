@@ -66,40 +66,24 @@
         "a": "TinyFloor è un ufficio virtuale in cui ti muovi. Il tuo team appare come personaggi in pixel art su un piano 2D condiviso, e una chiamata audio o video parte quando ti metti accanto a qualcuno, non quando clicchi su un link di riunione."
       },
       {
-        "q": "Che cos'è un ufficio virtuale?",
-        "a": "Un ufficio virtuale è uno spazio online in cui un team da remoto lavora insieme come se condividesse lo stesso edificio. In TinyFloor è un piano in 2D con scrivanie, una sala riunioni e un ufficio privato, dove vedi chi c'è e inizi una conversazione avvicinandoti a qualcuno."
-      },
-      {
-        "q": "Devo installare qualcosa?",
-        "a": "No. TinyFloor funziona nel browser, su computer e dispositivi mobili. Apri il link di una stanza e sei dentro l’ufficio."
+        "q": "Come funziona la videochat di prossimità?",
+        "a": "Avvicinati a qualcuno e accanto a lui compaiono i pulsanti di chiamata; toccane uno per avviare una videochiamata o una chiamata vocale. Le chiamate passano via WebRTC attraverso la rete di Cloudflare, quindi si collegano su qualsiasi rete di ufficio o di casa, e restano attive finché qualcuno non chiude. I tavoli riunioni gestiscono le chiamate di gruppo: siediti per entrare, alzati per uscire."
       },
       {
         "q": "TinyFloor è gratuito?",
         "a": "Sì. La lobby pubblica è gratuita per tutti, così come un ufficio fino a 3 persone. Presto arriveranno piani per team più grandi."
       },
       {
-        "q": "TinyFloor è un'alternativa gratuita a Gather?",
-        "a": "Sì. Come Gather, TinyFloor è un ufficio virtuale in cui il tuo team si muove su una mappa 2D e parla avvicinandosi. TinyFloor è gratuito fino a 3 persone, funziona nel browser senza installare nulla e fa entrare gli ospiti senza account."
+        "q": "Devo installare qualcosa?",
+        "a": "No. TinyFloor funziona nel browser, su computer e dispositivi mobili. Apri il link di una stanza e sei dentro l’ufficio."
       },
       {
         "q": "Serve un account per entrare in una stanza?",
         "a": "Per la lobby pubblica no: chiunque può entrare come ospite con solo un nome. Le stanze di un workspace sono private: i colleghi accedono con un account gratuito e i visitatori entrano con un link ospite."
       },
       {
-        "q": "Come funziona la videochat di prossimità?",
-        "a": "Avvicinati a qualcuno e accanto a lui compaiono i pulsanti di chiamata; toccane uno per avviare una videochiamata o una chiamata vocale. Le chiamate passano via WebRTC attraverso la rete di Cloudflare, quindi si collegano su qualsiasi rete di ufficio o di casa, e restano attive finché qualcuno non chiude. I tavoli riunioni gestiscono le chiamate di gruppo: siediti per entrare, alzati per uscire."
-      },
-      {
-        "q": "La mia fotocamera resta accesa per tutto il tempo in cui sono in una stanza?",
-        "a": "No. Fotocamera e microfono si attivano solo per una chiamata e vengono rilasciati appena finisce."
-      },
-      {
         "q": "TinyFloor è privato e sicuro?",
         "a": "Un piano è solo per i suoi membri e per gli ospiti che fanno entrare, e nulla al suo interno è pubblico o indicizzato dai motori di ricerca. Le chiamate sono cifrate in transito da WebRTC, e fotocamera e microfono sono attivi solo durante una chiamata."
-      },
-      {
-        "q": "Posso usare TinyFloor sul telefono?",
-        "a": "Sì. Sui dispositivi touch ti muovi con un joystick sullo schermo e i controlli di chiamata si adattano allo schermo più piccolo."
       },
       {
         "q": "In cosa TinyFloor è diverso da Zoom o Google Meet?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Un ufficio virtuale che funziona come uno vero.",
-      "muted": "Senza un solo link di riunione.",
-      "lead": "TinyFloor porta il tuo team da remoto su un unico piano, nel browser. Vedi chi c'è, avvicinati per parlare, siediti insieme per le riunioni e chiudi la porta quando devi concentrarti.",
+      "lines": {
+        "walk": "Avvicinati <faces></faces> per parlare.",
+        "meet": "Siediti <faces></faces> per la riunione.",
+        "door": "Chiudi la porta <faces></faces> per <quiet>concentrarti.</quiet>"
+      },
       "labels": {
         "walk": "Chat di prossimità",
         "meet": "Sale riunioni",
-        "door": "Non disturbare",
-        "lounge": "Area relax"
+        "door": "Non disturbare"
       },
       "door": {
-        "title": "Chiudi la porta.",
-        "body": "Mettiti come occupato e prendi l'ufficio privato. Gli altri vedono che sei concentrato prima di passare, e la chat ti aspetta.",
-        "chip": "{name} è occupato · concentrato"
+        "body": "Mettiti come occupato e prendi l'ufficio privato. Gli altri vedono che sei concentrato prima di passare, e la chat ti aspetta."
       },
-      "lounge": {
-        "title": "Fai una pausa.",
-        "body": "Il divano, la cassa con la musica della stanza e le persone che incontreresti alla macchinetta del caffè.",
-        "chip": "In riproduzione"
-      }
+      "more": "Come funziona la chat di prossimità"
     },
     "steps": {
       "title": "Crea un ufficio virtuale in un minuto.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} arrivati oggi",
       "walkedIn": "{name} è entrato"
     },
+    "cases": {
+      "title": "Un solo piano,",
+      "muted": "tanti modi di usarlo.",
+      "body": "I team ne fanno il loro ufficio. Gli amici, un'aula studio. I docenti ci tengono il ricevimento. Scegli il tuo."
+    },
     "more": {
       "title": "Tutto ciò che serve al tuo team da remoto,",
       "muted": "in un solo ufficio virtuale.",
@@ -1290,10 +1275,6 @@
           "title": "Musica",
           "body": "Metti un brano per tutti nella stanza."
         },
-        "status": {
-          "title": "Stato",
-          "body": "Disponibile, occupato o assente, sul tuo cartellino."
-        },
         "noise": {
           "title": "Rimozione del rumore",
           "body": "Un'IA opzionale sul tuo dispositivo toglie tastiere e chiacchiere."
@@ -1302,15 +1283,12 @@
           "title": "Sul telefono",
           "body": "Un joystick che compare sotto il pollice."
         },
-        "themes": {
-          "title": "Chiaro e scuro",
-          "body": "Segue il tuo sistema, oppure scegli tu."
-        },
         "languages": {
           "title": "18 lingue",
           "body": "Da English ed Español a 日本語 e العربية."
         }
-      }
+      },
+      "also": "In ogni piano anche"
     },
     "trust": {
       "title": "Pensato per la fiducia.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Un piano per tutta la giornata,",
       "muted": "dal primo saluto all'ultima chiamata."
-    },
-    "vignettes": {
-      "sharing": "Condivisione",
-      "playing": "Per tutta la stanza"
     }
   }
 }

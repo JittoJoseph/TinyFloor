@@ -66,40 +66,24 @@
         "a": "TinyFloor est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
       },
       {
-        "q": "Qu'est-ce qu'un bureau virtuel ?",
-        "a": "Un bureau virtuel est un espace en ligne où une équipe à distance travaille ensemble comme si elle partageait les mêmes locaux. Dans TinyFloor, c'est un étage en 2D avec des bureaux, une salle de réunion et un bureau privé, où vous voyez qui est là et lancez une conversation en allant vers quelqu'un."
-      },
-      {
-        "q": "Dois-je installer quelque chose ?",
-        "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
+        "q": "Comment fonctionne le chat vidéo de proximité ?",
+        "a": "Approchez-vous de quelqu'un et les boutons d'appel apparaissent à côté de lui ; touchez-en un pour lancer un appel vidéo ou audio. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
       },
       {
         "q": "TinyFloor est-il gratuit ?",
         "a": "Oui. Le hall public est gratuit pour tous, tout comme un bureau jusqu'à 3 personnes. Des offres pour les équipes plus grandes arrivent bientôt."
       },
       {
-        "q": "TinyFloor est-il une alternative gratuite à Gather ?",
-        "a": "Oui. Comme Gather, TinyFloor est un bureau virtuel où votre équipe se déplace sur une carte 2D et se parle en se rapprochant. TinyFloor est gratuit jusqu'à 3 personnes, fonctionne dans le navigateur sans rien installer et accueille les invités sans compte."
+        "q": "Dois-je installer quelque chose ?",
+        "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
       },
       {
         "q": "Faut-il un compte pour rejoindre une salle ?",
         "a": "Pas pour le hall public : tout le monde peut y entrer en invité avec un simple nom. Les salles d’un espace de travail sont privées : les membres de l’équipe se connectent avec un compte gratuit, et les visiteurs entrent avec un lien invité."
       },
       {
-        "q": "Comment fonctionne le chat vidéo de proximité ?",
-        "a": "Approchez-vous de quelqu'un et les boutons d'appel apparaissent à côté de lui ; touchez-en un pour lancer un appel vidéo ou audio. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
-      },
-      {
-        "q": "Ma caméra est-elle allumée tout le temps dans une salle ?",
-        "a": "Non. La caméra et le micro ne sont ouverts que pendant un appel et libérés dès qu’il se termine."
-      },
-      {
         "q": "TinyFloor est-il privé et sécurisé ?",
         "a": "Un étage n'est accessible qu'à ses membres et aux invités qu'ils font entrer, et rien à l'intérieur n'est public ni indexé par les moteurs de recherche. Les appels sont chiffrés en transit par WebRTC, et votre caméra et votre micro ne sont actifs que pendant un appel."
-      },
-      {
-        "q": "Puis-je utiliser TinyFloor sur un téléphone ?",
-        "a": "Oui. Sur les appareils tactiles, vous vous déplacez avec un joystick à l’écran, et les commandes d’appel s’adaptent au petit écran."
       },
       {
         "q": "En quoi TinyFloor est-il différent de Zoom ou Google Meet ?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Un bureau virtuel qui fonctionne comme un vrai.",
-      "muted": "Sans un seul lien de réunion.",
-      "lead": "TinyFloor réunit votre équipe à distance sur un même étage, dans le navigateur. Voyez qui est là, allez parler à quelqu'un, asseyez-vous ensemble pour les réunions et fermez la porte quand vous devez vous concentrer.",
+      "lines": {
+        "walk": "Allez vers <faces></faces> quelqu'un pour parler.",
+        "meet": "Asseyez-vous <faces></faces> pour la réunion.",
+        "door": "Fermez la porte <faces></faces> pour vous <quiet>concentrer.</quiet>"
+      },
       "labels": {
         "walk": "Chat de proximité",
         "meet": "Salles de réunion",
-        "door": "Ne pas déranger",
-        "lounge": "Salle de pause"
+        "door": "Ne pas déranger"
       },
       "door": {
-        "title": "Fermez la porte.",
-        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend.",
-        "chip": "{name} est occupé · concentré"
+        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend."
       },
-      "lounge": {
-        "title": "Faites une pause.",
-        "body": "Le canapé, l'enceinte qui joue la musique de la salle, et les gens que vous croiseriez à la machine à café.",
-        "chip": "En cours"
-      }
+      "more": "Comment fonctionne le chat de proximité"
     },
     "steps": {
       "title": "Créez un bureau virtuel en une minute.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} arrivés aujourd'hui",
       "walkedIn": "{name} est entré"
     },
+    "cases": {
+      "title": "Un seul étage,",
+      "muted": "mille façons de s'en servir.",
+      "body": "Les équipes en font leur bureau. Les amis, une salle d'étude. Les enseignants y tiennent leurs permanences. À vous de choisir."
+    },
     "more": {
       "title": "Tout ce dont votre équipe à distance a besoin,",
       "muted": "dans un seul bureau virtuel.",
@@ -1290,10 +1275,6 @@
           "title": "Musique",
           "body": "Lancez un morceau pour tout le monde dans la pièce."
         },
-        "status": {
-          "title": "Statut",
-          "body": "Disponible, occupé ou absent, directement sur votre badge."
-        },
         "noise": {
           "title": "Suppression du bruit",
           "body": "Une IA optionnelle sur votre appareil retire clavier et bavardages."
@@ -1302,15 +1283,12 @@
           "title": "Sur votre téléphone",
           "body": "Un joystick qui apparaît sous votre pouce."
         },
-        "themes": {
-          "title": "Clair et sombre",
-          "body": "Suit votre système, ou choisissez vous-même."
-        },
         "languages": {
           "title": "18 langues",
           "body": "De English et Español à 日本語 et العربية."
         }
-      }
+      },
+      "also": "Aussi sur chaque étage"
     },
     "trust": {
       "title": "Conçu pour la confiance.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Un étage pour toute la journée,",
       "muted": "du premier bonjour au dernier appel."
-    },
-    "vignettes": {
-      "sharing": "Partage",
-      "playing": "Pour toute la salle"
     }
   }
 }

@@ -1,29 +1,18 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Clock3, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
+import { AudioLines, Check, Clock3, Globe2, Languages, LockKeyhole, MonitorSmartphone, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { EVERYONE } from "@/components/floor/scenes";
 import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE } from "./Blocks";
-import { Moments, Steps } from "./Moments";
+import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
 import { GuestPreview } from "./previews/GuestPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
-import {
-  LanguagesVignette,
-  MusicVignette,
-  NoiseVignette,
-  PhoneVignette,
-  ScreenVignette,
-  StatusVignette,
-  ThemeVignette,
-  VignetteStyles,
-  WhiteboardVignette,
-} from "./Vignettes";
 
 /** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
 const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
@@ -31,8 +20,8 @@ const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 /**
  * The home page, in the app's own design system and theme, built on the real
  * floor: the map the app loads, with people on it. The hero's floor is yours
- * to walk; the tour walks the rooms; everything else is a card with the app
- * doing it. The page speaks in its own face (Nunito); the app's pieces keep
+ * to walk; what the floor is like is set in type with the people in it; the
+ * rest is the app doing it, how to start, and who it's for. The page speaks in its own face (Nunito); the app's pieces keep
  * the app's.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
@@ -43,6 +32,7 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
       <Moments />
       <Everything />
       <Steps />
+      <UseCases />
       <Trust />
       <Plans />
       <Faq title={<>{t("faq.title")} <span className="text-muted-foreground/80">{t("faq.muted")}</span></>} items={faqs} />
@@ -75,7 +65,7 @@ function Hero() {
   );
 }
 
-/** The rest of the app: three cards with the app doing it, then a moving picture for each smaller thing. */
+/** The rest of the app: three cards with the app doing it, then the smaller things in one quiet line. */
 function Everything() {
   const t = useTranslations("home");
   const card = (key: "chat" | "people" | "guests") => ({
@@ -83,19 +73,16 @@ function Everything() {
     muted: t(`features.${key}.muted`),
     body: t(`features.${key}.body`),
   });
-  const small: Array<{ key: "screen" | "whiteboard" | "music" | "status" | "noise" | "mobile" | "themes" | "languages"; art: ReactNode }> = [
-    { key: "screen", art: <ScreenVignette /> },
-    { key: "whiteboard", art: <WhiteboardVignette /> },
-    { key: "music", art: <MusicVignette /> },
-    { key: "status", art: <StatusVignette /> },
-    { key: "noise", art: <NoiseVignette /> },
-    { key: "mobile", art: <PhoneVignette /> },
-    { key: "themes", art: <ThemeVignette /> },
-    { key: "languages", art: <LanguagesVignette /> },
+  const extras: Array<{ key: "screen" | "whiteboard" | "music" | "noise" | "mobile" | "languages"; icon: ReactNode }> = [
+    { key: "screen", icon: <MonitorUp /> },
+    { key: "whiteboard", icon: <PenLine /> },
+    { key: "music", icon: <Music2 /> },
+    { key: "noise", icon: <AudioLines /> },
+    { key: "mobile", icon: <Smartphone /> },
+    { key: "languages", icon: <Languages /> },
   ];
   return (
     <section id="features" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
-      <VignetteStyles />
       <Heading title={t("more.title")} muted={t("more.muted")} className="max-w-[22ch]" />
       <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
         <DayCard id="chat" small {...card("chat")}>
@@ -114,17 +101,15 @@ function Everything() {
           </Frame>
         </DayCard>
       </div>
-      <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {small.map(({ key, art }) => (
-          <li key={key} className="rounded-[24px] border border-border/60 bg-foreground/[0.035] p-2">
-            {art}
-            <div className="px-4 pb-4 pt-4">
-              <p className="text-[16px] font-semibold tracking-tight">{t(`more.items.${key}.title`)}</p>
-              <p className="mt-1 text-[14.5px] leading-relaxed text-muted-foreground">{t(`more.items.${key}.body`)}</p>
-            </div>
-          </li>
+      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-[24px] border border-border/60 px-5 py-4">
+        <span className="me-2 text-[14px] text-muted-foreground">{t("more.also")}</span>
+        {extras.map(({ key, icon }) => (
+          <span key={key} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 text-[13.5px] [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
+            {icon}
+            {t(`more.items.${key}.title`)}
+          </span>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

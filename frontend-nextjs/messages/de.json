@@ -66,40 +66,24 @@
         "a": "TinyFloor ist ein virtuelles Büro, in dem du herumläufst. Dein Team erscheint als Pixel-Art-Figuren auf einer gemeinsamen 2D-Etage, und ein Video- oder Sprachanruf startet, wenn du dich neben jemanden stellst – nicht, wenn du auf einen Meeting-Link klickst."
       },
       {
-        "q": "Was ist ein virtuelles Büro?",
-        "a": "Ein virtuelles Büro ist ein Online-Raum, in dem ein Remote-Team zusammenarbeitet, als säße es im selben Gebäude. Bei TinyFloor ist es eine 2D-Etage mit Schreibtischen, einem Besprechungsraum und einem Einzelbüro, auf der du siehst, wer da ist, und ein Gespräch beginnst, indem du zu jemandem gehst."
-      },
-      {
-        "q": "Muss ich etwas installieren?",
-        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
+        "q": "Wie funktioniert Proximity-Videochat?",
+        "a": "Geh zu jemandem, und neben der Person erscheinen die Anruf-Buttons; tipp einen an, um einen Video- oder Sprachanruf zu starten. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
       },
       {
         "q": "Ist TinyFloor kostenlos?",
         "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Pläne für größere Teams kommen bald."
       },
       {
-        "q": "Ist TinyFloor eine kostenlose Alternative zu Gather?",
-        "a": "Ja. Wie Gather ist TinyFloor ein virtuelles Büro, in dem dein Team über eine 2D-Karte läuft und redet, wenn es sich nähert. TinyFloor ist für bis zu 3 Personen kostenlos, läuft im Browser ohne Installation und lässt Gäste ohne Konto herein."
+        "q": "Muss ich etwas installieren?",
+        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
       },
       {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
         "a": "Für die öffentliche Lobby nicht. Dort kann jeder als Gast mit nur einem Namen hereinkommen. Räume in einem Workspace sind privat: Teammitglieder melden sich mit einem kostenlosen Konto an, Besucher kommen über einen Gastlink."
       },
       {
-        "q": "Wie funktioniert Proximity-Videochat?",
-        "a": "Geh zu jemandem, und neben der Person erscheinen die Anruf-Buttons; tipp einen an, um einen Video- oder Sprachanruf zu starten. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
-      },
-      {
-        "q": "Ist meine Kamera die ganze Zeit an, während ich in einem Raum bin?",
-        "a": "Nein. Kamera und Mikrofon werden nur für einen Anruf geöffnet und sofort freigegeben, wenn er endet."
-      },
-      {
         "q": "Ist TinyFloor privat und sicher?",
         "a": "Eine Büroetage ist nur für ihre Mitglieder und die Gäste, die sie hereinlassen. Nichts darin ist öffentlich oder wird von Suchmaschinen indexiert. Anrufe sind per WebRTC bei der Übertragung verschlüsselt, und Kamera und Mikrofon sind nur während eines Anrufs an."
-      },
-      {
-        "q": "Kann ich TinyFloor auf dem Handy nutzen?",
-        "a": "Ja. Auf Touch-Geräten bewegst du dich mit einem Joystick auf dem Bildschirm, und die Anrufsteuerung passt sich dem kleineren Display an."
       },
       {
         "q": "Was unterscheidet TinyFloor von Zoom oder Google Meet?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Ein virtuelles Büro, das wie ein echtes funktioniert.",
-      "muted": "Ganz ohne Meeting-Links.",
-      "lead": "TinyFloor bringt dein Remote-Team auf eine gemeinsame Etage im Browser. Sieh, wer da ist, geh rüber zum Reden, setz dich für Meetings zusammen und mach die Tür zu, wenn du dich konzentrieren musst.",
+      "lines": {
+        "walk": "Geh rüber <faces></faces> zum Reden.",
+        "meet": "Setz dich <faces></faces> zum Meeting.",
+        "door": "Mach die Tür zu <faces></faces> und <quiet>konzentrier dich.</quiet>"
+      },
       "labels": {
         "walk": "Proximity-Chat",
         "meet": "Besprechungsräume",
-        "door": "Bitte nicht stören",
-        "lounge": "Pausenraum"
+        "door": "Bitte nicht stören"
       },
       "door": {
-        "title": "Mach die Tür zu.",
-        "body": "Stell dich auf beschäftigt und nimm das Einzelbüro. Alle sehen, dass du konzentriert arbeitest, bevor sie vorbeikommen, und der Chat wartet auf dich.",
-        "chip": "{name} ist beschäftigt · konzentriert"
+        "body": "Stell dich auf beschäftigt und nimm das Einzelbüro. Alle sehen, dass du konzentriert arbeitest, bevor sie vorbeikommen, und der Chat wartet auf dich."
       },
-      "lounge": {
-        "title": "Mach mal Pause.",
-        "body": "Das Sofa, der Lautsprecher mit der Musik des Raums und die Leute, die du sonst an der Kaffeemaschine triffst.",
-        "chip": "Läuft gerade"
-      }
+      "more": "So funktioniert Proximity-Chat"
     },
     "steps": {
       "title": "Richte in einer Minute ein virtuelles Büro ein.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} heute dazugekommen",
       "walkedIn": "{name} ist reingekommen"
     },
+    "cases": {
+      "title": "Eine Etage,",
+      "muted": "viele Möglichkeiten.",
+      "body": "Teams machen sie zu ihrem Büro. Freunde zu ihrem Lernraum. Lehrkräfte halten darin Sprechstunden. Such dir deins aus."
+    },
     "more": {
       "title": "Alles, was dein Remote-Team braucht,",
       "muted": "in einem virtuellen Büro.",
@@ -1290,10 +1275,6 @@
           "title": "Musik",
           "body": "Leg einen Song für alle im Raum auf."
         },
-        "status": {
-          "title": "Status",
-          "body": "Verfügbar, beschäftigt oder abwesend, direkt auf deinem Namensschild."
-        },
         "noise": {
           "title": "Geräuschentfernung",
           "body": "Optionale KI auf deinem Gerät entfernt Tastatur und Gerede."
@@ -1302,15 +1283,12 @@
           "title": "Auf dem Handy",
           "body": "Ein Joystick, der unter deinem Daumen erscheint."
         },
-        "themes": {
-          "title": "Hell und dunkel",
-          "body": "Folgt deinem System, oder wähl selbst."
-        },
         "languages": {
           "title": "18 Sprachen",
           "body": "Von English und Español bis 日本語 und العربية."
         }
-      }
+      },
+      "also": "Auf jeder Etage dabei"
     },
     "trust": {
       "title": "Gebaut für Vertrauen.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Eine Fläche für den ganzen Tag,",
       "muted": "vom ersten Hallo bis zum letzten Call."
-    },
-    "vignettes": {
-      "sharing": "Teilt",
-      "playing": "Läuft für den Raum"
     }
   }
 }

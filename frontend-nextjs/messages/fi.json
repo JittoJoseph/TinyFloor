@@ -66,40 +66,24 @@
         "a": "TinyFloor on virtuaalitoimisto, jossa liikut kävellen. Tiimisi näkyy pikselitaidehahmoina yhteisessä 2D-kerroksessa, ja video- tai äänipuhelu alkaa, kun asetut jonkun viereen, eikä silloin, kun napsautat palaverilinkkiä."
       },
       {
-        "q": "Mikä on virtuaalitoimisto?",
-        "a": "Virtuaalitoimisto on verkossa oleva tila, jossa etätiimi työskentelee yhdessä kuin samassa rakennuksessa. TinyFloorissa se on 2D-kerros, jossa on työpöytiä, neuvotteluhuone ja oma työhuone, ja jossa näet, kuka on paikalla, ja aloitat keskustelun kävelemällä jonkun luo."
-      },
-      {
-        "q": "Pitääkö minun asentaa jotain?",
-        "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiililaitteilla. Avaa huoneen linkki, ja olet toimistossa."
+        "q": "Miten läheisyyteen perustuva videochat toimii?",
+        "a": "Kävele jonkun luo, niin puhelupainikkeet ilmestyvät hänen viereensä; napauta yhtä aloittaaksesi video- tai äänipuhelun. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
       },
       {
         "q": "Onko TinyFloor ilmainen?",
         "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Paketit isommille tiimeille tulossa pian."
       },
       {
-        "q": "Onko TinyFloor ilmainen vaihtoehto Gatherille?",
-        "a": "On. Gatherin tavoin TinyFloor on virtuaalitoimisto, jossa tiimisi liikkuu 2D-kartalla ja juttelee tulemalla lähelle. TinyFloor on ilmainen enintään 3 hengelle, toimii selaimessa ilman asennusta ja päästää vieraat sisään ilman tiliä."
+        "q": "Pitääkö minun asentaa jotain?",
+        "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiililaitteilla. Avaa huoneen linkki, ja olet toimistossa."
       },
       {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
         "a": "Julkiseen aulaan ei tarvita. Sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Työtilan huoneet ovat yksityisiä: tiimiläiset kirjautuvat ilmaisella tilillä, ja vierailijat tulevat sisään vieraslinkillä."
       },
       {
-        "q": "Miten läheisyyteen perustuva videochat toimii?",
-        "a": "Kävele jonkun luo, niin puhelupainikkeet ilmestyvät hänen viereensä; napauta yhtä aloittaaksesi video- tai äänipuhelun. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
-      },
-      {
-        "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
-        "a": "Ei. Kamera ja mikrofoni avataan vain puhelua varten ja vapautetaan heti, kun puhelu päättyy."
-      },
-      {
         "q": "Onko TinyFloor yksityinen ja turvallinen?",
         "a": "Kerros on vain sen jäsenille ja heidän sisään päästämilleen vieraille, eikä mikään sen sisällä ole julkista tai hakukoneiden indeksoimaa. WebRTC salaa puhelut siirron aikana, ja kamerasi ja mikrofonisi ovat päällä vain puhelun ajan."
-      },
-      {
-        "q": "Voinko käyttää TinyFlooriä puhelimella?",
-        "a": "Kyllä. Kosketuslaitteilla liikut näytön ohjaussauvalla, ja puhelun säätimet mukautuvat pienempään näyttöön."
       },
       {
         "q": "Miten TinyFloor eroaa Zoomista tai Google Meetistä?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Virtuaalitoimisto, joka toimii kuin oikea.",
-      "muted": "Ilman yhtäkään kokouslinkkiä.",
-      "lead": "TinyFloor tuo etätiimisi samaan kerrokseen selaimessa. Näe, kuka on paikalla, kävele juttelemaan, istukaa yhdessä kokouksiin ja sulje ovi, kun haluat keskittyä.",
+      "lines": {
+        "walk": "Kävele luo <faces></faces> juttelemaan.",
+        "meet": "Istu alas <faces></faces> kokoukseen.",
+        "door": "Sulje ovi <faces></faces> ja <quiet>keskity.</quiet>"
+      },
       "labels": {
         "walk": "Läheisyyschat",
         "meet": "Neuvotteluhuoneet",
-        "door": "Älä häiritse",
-        "lounge": "Taukotila"
+        "door": "Älä häiritse"
       },
       "door": {
-        "title": "Sulje ovi.",
-        "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua.",
-        "chip": "{name} on kiireinen · keskittyy"
+        "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua."
       },
-      "lounge": {
-        "title": "Pidä tauko.",
-        "body": "Sohva, kaiutin joka soittaa huoneen musiikkia, ja ihmiset, joihin törmäisit kahvinkeittimellä.",
-        "chip": "Nyt soi"
-      }
+      "more": "Näin läheisyyschat toimii"
     },
     "steps": {
       "title": "Perusta virtuaalitoimisto minuutissa.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} liittyi tänään",
       "walkedIn": "{name} tuli sisään"
     },
+    "cases": {
+      "title": "Yksi kerros,",
+      "muted": "monta tapaa käyttää sitä.",
+      "body": "Tiimit tekevät siitä toimistonsa. Ystävät lukusalin. Opettajat pitävät siellä vastaanottoa. Valitse omasi."
+    },
     "more": {
       "title": "Kaikki mitä etätiimisi tarvitsee,",
       "muted": "yhdessä virtuaalitoimistossa.",
@@ -1290,10 +1275,6 @@
           "title": "Musiikki",
           "body": "Laita soimaan kappale kaikille huoneessa."
         },
-        "status": {
-          "title": "Tila",
-          "body": "Tavoitettavissa, kiireinen tai poissa, suoraan nimikyltissäsi."
-        },
         "noise": {
           "title": "Kohinanpoisto",
           "body": "Valinnainen tekoäly laitteellasi poistaa näppäimistön ja taustapuheen."
@@ -1302,15 +1283,12 @@
           "title": "Puhelimella",
           "body": "Ohjain, joka ilmestyy peukalosi alle."
         },
-        "themes": {
-          "title": "Vaalea ja tumma",
-          "body": "Seuraa järjestelmääsi, tai valitse itse."
-        },
         "languages": {
           "title": "18 kieltä",
           "body": "Englannista ja espanjasta japaniin ja arabiaan."
         }
-      }
+      },
+      "also": "Myös joka kerroksessa"
     },
     "trust": {
       "title": "Rakennettu luotettavaksi.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Yksi kerros koko päiväksi,",
       "muted": "ensimmäisestä moikkauksesta viimeiseen puheluun."
-    },
-    "vignettes": {
-      "sharing": "Jakaa",
-      "playing": "Soi koko huoneelle"
     }
   }
 }

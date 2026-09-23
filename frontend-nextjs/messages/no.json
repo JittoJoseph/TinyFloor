@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "Denne siden er på engelsk."
+    "englishOnly": "Denne siden er på engelsk.",
+    "agree": "Ved å fortsette godtar du <terms>vilkårene</terms> og <privacy>personvernerklæringen</privacy>."
   },
   "about": {
     "meta": {

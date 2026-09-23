@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "Deze pagina is in het Engels."
+    "englishOnly": "Deze pagina is in het Engels.",
+    "agree": "Door verder te gaan, ga je akkoord met de <terms>Voorwaarden</terms> en het <privacy>Privacybeleid</privacy>."
   },
   "about": {
     "meta": {

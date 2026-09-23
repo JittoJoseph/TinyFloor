@@ -17,6 +17,7 @@ import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 import { GoogleButton, googleAvailable } from "./GoogleButton";
 import { OfficeSteps } from "./OfficeSteps";
+import { Agree } from "@/components/legal/Agree";
 
 export type AuthMode = "signin" | "signup";
 
@@ -389,6 +390,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             {signingUp ? t("createAccount") : t("signIn")}
           </ActionButton>
         </form>
+
+        {signingUp && <Agree className="mt-4" />}
 
         <p className="mt-7 text-center text-[13px] text-foreground">
           <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}

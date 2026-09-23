@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "הדף הזה באנגלית."
+    "englishOnly": "הדף הזה באנגלית.",
+    "agree": "בהמשך, אתם מסכימים ל<terms>תנאים</terms> ול<privacy>מדיניות הפרטיות</privacy>."
   },
   "about": {
     "meta": {

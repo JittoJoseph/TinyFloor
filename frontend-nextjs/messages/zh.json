@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "此页面为英文。"
+    "englishOnly": "此页面为英文。",
+    "agree": "继续即表示你同意<terms>条款</terms>和<privacy>隐私政策</privacy>。"
   },
   "about": {
     "meta": {

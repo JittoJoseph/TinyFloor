@@ -12,6 +12,7 @@ import { EntryPreview } from "./EntryPreview";
 import { CharacterStep, NameStep } from "./IdentitySteps";
 import { ErrorNote } from "./ErrorNote";
 import { Turnstile, useTurnstileToken } from "@/components/auth/Turnstile";
+import { Agree } from "@/components/legal/Agree";
 
 /**
  * The step before a room for someone new: a name, then who they'll be in
@@ -163,6 +164,7 @@ export function WalkIn({
             {onCharacterStep ? t("walkIn") : t("continue")}
           </ActionButton>
         </form>
+        {onCharacterStep && <Agree className="mt-4" />}
 
         {!isLoading && (
           <p className="mt-5 text-center text-[12.5px] text-muted-foreground">

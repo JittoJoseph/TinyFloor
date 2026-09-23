@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "Ta strona jest po angielsku."
+    "englishOnly": "Ta strona jest po angielsku.",
+    "agree": "Kontynuując, akceptujesz <terms>Regulamin</terms> i <privacy>Politykę prywatności</privacy>."
   },
   "about": {
     "meta": {

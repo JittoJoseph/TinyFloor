@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "이 페이지는 영어로 되어 있어요."
+    "englishOnly": "이 페이지는 영어로 되어 있어요.",
+    "agree": "계속하면 <terms>이용약관</terms> 및 <privacy>개인정보 처리방침</privacy>에 동의하게 돼요."
   },
   "about": {
     "meta": {

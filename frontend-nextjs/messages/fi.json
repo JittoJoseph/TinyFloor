@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "Tämä sivu on englanniksi."
+    "englishOnly": "Tämä sivu on englanniksi.",
+    "agree": "Jatkamalla hyväksyt <terms>käyttöehdot</terms> ja <privacy>tietosuojakäytännön</privacy>."
   },
   "about": {
     "meta": {

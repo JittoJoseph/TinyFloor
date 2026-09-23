@@ -1390,7 +1390,8 @@
     }
   },
   "legal": {
-    "englishOnly": "このページは英語です。"
+    "englishOnly": "このページは英語です。",
+    "agree": "続行すると、<terms>利用規約</terms>と<privacy>プライバシーポリシー</privacy>に同意したことになります。"
   },
   "about": {
     "meta": {

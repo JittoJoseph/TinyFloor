@@ -66,40 +66,24 @@
         "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
       },
       {
-        "q": "Wat is een virtueel kantoor?",
-        "a": "Een virtueel kantoor is een online ruimte waar een remote team samenwerkt alsof het hetzelfde gebouw deelt. In TinyFloor is het een 2D-verdieping met bureaus, een vergaderruimte en een privékantoor, waar je ziet wie er is en een gesprek begint door naar iemand toe te lopen."
-      },
-      {
-        "q": "Moet ik iets installeren?",
-        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+        "q": "Hoe werkt proximity-videochat?",
+        "a": "Loop naar iemand toe en de belknoppen verschijnen naast diegene; tik er een aan om een video- of spraakgesprek te starten. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Is TinyFloor gratis?",
         "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
       },
       {
-        "q": "Is TinyFloor een gratis alternatief voor Gather?",
-        "a": "Ja. Net als Gather is TinyFloor een virtueel kantoor waar je team over een 2D-kaart loopt en praat door dichtbij te komen. TinyFloor is gratis voor maximaal 3 personen, werkt in de browser zonder installatie en laat gasten binnen zonder account."
+        "q": "Moet ik iets installeren?",
+        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
         "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
       },
       {
-        "q": "Hoe werkt proximity-videochat?",
-        "a": "Loop naar iemand toe en de belknoppen verschijnen naast diegene; tik er een aan om een video- of spraakgesprek te starten. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
-      },
-      {
-        "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
-        "a": "Nee. Camera en microfoon worden alleen voor een gesprek geopend en vrijgegeven zodra het afgelopen is."
-      },
-      {
         "q": "Is TinyFloor privé en veilig?",
         "a": "Een verdieping is alleen voor de leden en de gasten die zij binnenlaten, en niets daarbinnen is openbaar of wordt door zoekmachines geïndexeerd. Gesprekken zijn onderweg versleuteld door WebRTC, en je camera en microfoon staan alleen aan tijdens een gesprek."
-      },
-      {
-        "q": "Kan ik TinyFloor op mijn telefoon gebruiken?",
-        "a": "Ja. Op touchapparaten beweeg je met een joystick op het scherm en passen de belknoppen zich aan het kleinere scherm aan."
       },
       {
         "q": "Hoe verschilt TinyFloor van Zoom of Google Meet?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Een virtueel kantoor dat werkt als een echt kantoor.",
-      "muted": "Zonder één vergaderlink.",
-      "lead": "TinyFloor zet je remote team op één gedeelde verdieping in de browser. Zie wie er is, loop naar iemand toe om te praten, schuif aan voor meetings en doe de deur dicht als je je moet concentreren.",
+      "lines": {
+        "walk": "Loop naar <faces></faces> iemand toe om te praten.",
+        "meet": "Schuif aan <faces></faces> om te vergaderen.",
+        "door": "Doe de deur dicht <faces></faces> om te <quiet>focussen.</quiet>"
+      },
       "labels": {
         "walk": "Proximity chat",
         "meet": "Vergaderruimtes",
-        "door": "Niet storen",
-        "lounge": "Pauzeruimte"
+        "door": "Niet storen"
       },
       "door": {
-        "title": "Doe de deur dicht.",
-        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je.",
-        "chip": "{name} is bezig · geconcentreerd"
+        "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je."
       },
-      "lounge": {
-        "title": "Neem even pauze.",
-        "body": "De bank, de speaker met de muziek van de ruimte, en de mensen die je bij het koffieapparaat tegen zou komen.",
-        "chip": "Speelt nu"
-      }
+      "more": "Zo werkt proximity chat"
     },
     "steps": {
       "title": "Zet in een minuut een virtueel kantoor op.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} vandaag binnengekomen",
       "walkedIn": "{name} kwam binnen"
     },
+    "cases": {
+      "title": "Eén verdieping,",
+      "muted": "veel manieren om hem te gebruiken.",
+      "body": "Teams maken er hun kantoor van. Vrienden een studieruimte. Docenten houden er spreekuur. Kies de jouwe."
+    },
     "more": {
       "title": "Alles wat je remote team nodig heeft,",
       "muted": "in één virtueel kantoor.",
@@ -1290,10 +1275,6 @@
           "title": "Muziek",
           "body": "Zet een nummer op voor iedereen in de ruimte."
         },
-        "status": {
-          "title": "Status",
-          "body": "Beschikbaar, bezig of weg, meteen op je naambordje."
-        },
         "noise": {
           "title": "Ruisverwijdering",
           "body": "Optionele AI op je apparaat haalt toetsenborden en geklets weg."
@@ -1302,15 +1283,12 @@
           "title": "Op je telefoon",
           "body": "Een joystick die onder je duim verschijnt."
         },
-        "themes": {
-          "title": "Licht en donker",
-          "body": "Volgt je systeem, of kies zelf."
-        },
         "languages": {
           "title": "18 talen",
           "body": "Van English en Español tot 日本語 en العربية."
         }
-      }
+      },
+      "also": "Ook op elke verdieping"
     },
     "trust": {
       "title": "Gebouwd op vertrouwen.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Eén verdieping voor de hele dag,",
       "muted": "van het eerste hallo tot het laatste gesprek."
-    },
-    "vignettes": {
-      "sharing": "Deelt",
-      "playing": "Speelt voor de ruimte"
     }
   }
 }

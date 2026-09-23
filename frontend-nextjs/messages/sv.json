@@ -66,40 +66,24 @@
         "a": "TinyFloor är ett virtuellt kontor som du går runt i. Ditt team syns som figurer i pixelgrafik på en delad 2D-våning, och ett video- eller röstsamtal startar när du ställer dig bredvid någon i stället för när du klickar på en möteslänk."
       },
       {
-        "q": "Vad är ett virtuellt kontor?",
-        "a": "Ett virtuellt kontor är ett onlineutrymme där ett distansteam arbetar tillsammans som om det delade samma byggnad. I TinyFloor är det en 2D-våning med skrivbord, ett mötesrum och ett eget kontor, där du ser vem som är här och startar ett samtal genom att gå fram till någon."
-      },
-      {
-        "q": "Behöver jag installera något?",
-        "a": "Nej. TinyFloor körs i webbläsaren på dator och mobil. Öppna en rumslänk så är du inne på kontoret."
+        "q": "Hur fungerar närhetsbaserad videochatt?",
+        "a": "Gå fram till någon så visas samtalsknapparna bredvid personen; tryck på en för att starta ett video- eller röstsamtal. Samtalen går via WebRTC genom Cloudflares nätverk, så de ansluter på alla kontors- och hemnätverk, och de fortsätter tills någon lägger på. Mötesbord bär gruppsamtal: sätt dig för att gå med, res dig för att lämna."
       },
       {
         "q": "Är TinyFloor gratis?",
         "a": "Ja. Den öppna lobbyn är gratis för alla, och ett kontor för upp till 3 personer också. Planer för större team kommer snart."
       },
       {
-        "q": "Är TinyFloor ett gratis alternativ till Gather?",
-        "a": "Ja. Precis som Gather är TinyFloor ett virtuellt kontor där ditt team rör sig på en 2D-karta och pratar genom att komma nära. TinyFloor är gratis för upp till 3 personer, körs i webbläsaren utan installation och släpper in gäster utan konto."
+        "q": "Behöver jag installera något?",
+        "a": "Nej. TinyFloor körs i webbläsaren på dator och mobil. Öppna en rumslänk så är du inne på kontoret."
       },
       {
         "q": "Behöver jag ett konto för att gå med i ett rum?",
         "a": "Inte för den offentliga lobbyn. Där kan vem som helst gå in som gäst med bara ett namn. Rum i en arbetsyta är privata: kollegor loggar in med ett gratis konto och besökare kommer in via en gästlänk."
       },
       {
-        "q": "Hur fungerar närhetsbaserad videochatt?",
-        "a": "Gå fram till någon så visas samtalsknapparna bredvid personen; tryck på en för att starta ett video- eller röstsamtal. Samtalen går via WebRTC genom Cloudflares nätverk, så de ansluter på alla kontors- och hemnätverk, och de fortsätter tills någon lägger på. Mötesbord bär gruppsamtal: sätt dig för att gå med, res dig för att lämna."
-      },
-      {
-        "q": "Är min kamera på hela tiden när jag är i ett rum?",
-        "a": "Nej. Kameran och mikrofonen öppnas bara för ett samtal och släpps så fort det tar slut."
-      },
-      {
         "q": "Är TinyFloor privat och säkert?",
         "a": "En våning är bara för sina medlemmar och de gäster de släpper in, och inget där inne är offentligt eller indexeras av sökmotorer. Samtal krypteras under överföringen av WebRTC, och din kamera och mikrofon är bara på under ett samtal."
-      },
-      {
-        "q": "Kan jag använda TinyFloor på mobilen?",
-        "a": "Ja. På pekskärmar rör du dig med en joystick på skärmen, och samtalskontrollerna anpassar sig till den mindre skärmen."
       },
       {
         "q": "Hur skiljer sig TinyFloor från Zoom eller Google Meet?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Ett virtuellt kontor som fungerar som ett riktigt.",
-      "muted": "Utan en enda möteslänk.",
-      "lead": "TinyFloor samlar ditt distansteam på en gemensam våning i webbläsaren. Se vem som är här, gå fram och prata, sätt er tillsammans för möten och stäng dörren när du behöver fokusera.",
+      "lines": {
+        "walk": "Gå fram <faces></faces> och prata.",
+        "meet": "Sätt dig <faces></faces> för att ha möte.",
+        "door": "Stäng dörren <faces></faces> för att <quiet>fokusera.</quiet>"
+      },
       "labels": {
         "walk": "Närhetschatt",
         "meet": "Mötesrum",
-        "door": "Stör ej",
-        "lounge": "Pausrum"
+        "door": "Stör ej"
       },
       "door": {
-        "title": "Stäng dörren.",
-        "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig.",
-        "chip": "{name} är upptagen · koncentrerad"
+        "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig."
       },
-      "lounge": {
-        "title": "Ta en paus.",
-        "body": "Soffan, högtalaren som spelar rummets musik och folket du skulle stöta på vid kaffemaskinen.",
-        "chip": "Spelas nu"
-      }
+      "more": "Så fungerar närhetschatt"
     },
     "steps": {
       "title": "Skapa ett virtuellt kontor på en minut.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} har anslutit i dag",
       "walkedIn": "{name} kom in"
     },
+    "cases": {
+      "title": "En våning,",
+      "muted": "många sätt att använda den.",
+      "body": "Team gör den till sitt kontor. Vänner till ett studierum. Lärare håller mottagning där. Välj ditt."
+    },
     "more": {
       "title": "Allt ditt distansteam behöver,",
       "muted": "i ett virtuellt kontor.",
@@ -1290,10 +1275,6 @@
           "title": "Musik",
           "body": "Sätt på en låt för alla i rummet."
         },
-        "status": {
-          "title": "Status",
-          "body": "Tillgänglig, upptagen eller borta, direkt på din namnskylt."
-        },
         "noise": {
           "title": "Brusborttagning",
           "body": "Valfri AI på din enhet tar bort tangentbord och prat."
@@ -1302,15 +1283,12 @@
           "title": "På mobilen",
           "body": "En joystick som dyker upp under tummen."
         },
-        "themes": {
-          "title": "Ljust och mörkt",
-          "body": "Följer ditt system, eller välj själv."
-        },
         "languages": {
           "title": "18 språk",
           "body": "Från English och Español till 日本語 och العربية."
         }
-      }
+      },
+      "also": "Finns också på varje våning"
     },
     "trust": {
       "title": "Byggt för att vara pålitligt.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Ett våningsplan för hela dagen,",
       "muted": "från första hej till sista samtalet."
-    },
-    "vignettes": {
-      "sharing": "Delar",
-      "playing": "Spelas för rummet"
     }
   }
 }

@@ -66,40 +66,24 @@
         "a": "O TinyFloor é um escritório virtual onde você anda por aí. Sua equipe aparece como personagens em pixel art em um andar 2D compartilhado, e uma chamada de vídeo ou voz começa quando você fica ao lado de alguém, e não quando clica em um link de reunião."
       },
       {
-        "q": "O que é um escritório virtual?",
-        "a": "Um escritório virtual é um espaço online onde uma equipe remota trabalha junta como se dividisse o mesmo prédio. No TinyFloor, é um andar em 2D com mesas, uma sala de reunião e uma sala privada, onde você vê quem está por perto e começa uma conversa indo até alguém."
-      },
-      {
-        "q": "Preciso instalar alguma coisa?",
-        "a": "Não. O TinyFloor funciona no navegador, no computador e no celular. Abra o link de uma sala e você já está no escritório."
+        "q": "Como funciona o vídeo chat por proximidade?",
+        "a": "Chegue perto de alguém e os botões de chamada aparecem ao lado da pessoa; toque em um para iniciar uma chamada de vídeo ou de voz. As chamadas usam WebRTC pela rede da Cloudflare, então conectam em qualquer rede de escritório ou de casa, e continuam até alguém desligar. As mesas de reunião levam as chamadas em grupo: sente para entrar, levante para sair."
       },
       {
         "q": "O TinyFloor é gratuito?",
         "a": "Sim. O lobby público é gratuito para todos, assim como um escritório para até 3 pessoas. Planos para equipes maiores chegam em breve."
       },
       {
-        "q": "O TinyFloor é uma alternativa gratuita ao Gather?",
-        "a": "Sim. Como o Gather, o TinyFloor é um escritório virtual onde sua equipe anda por um mapa 2D e conversa ao se aproximar. O TinyFloor é gratuito para até 3 pessoas, roda no navegador sem instalar nada e deixa convidados entrarem sem conta."
+        "q": "Preciso instalar alguma coisa?",
+        "a": "Não. O TinyFloor funciona no navegador, no computador e no celular. Abra o link de uma sala e você já está no escritório."
       },
       {
         "q": "Preciso de uma conta para entrar em uma sala?",
         "a": "Para o lobby público, não. Qualquer pessoa pode entrar como convidada só com um nome. As salas de um espaço de trabalho são privadas: a equipe entra com uma conta grátis e os visitantes, com um link de convidado."
       },
       {
-        "q": "Como funciona o vídeo chat por proximidade?",
-        "a": "Chegue perto de alguém e os botões de chamada aparecem ao lado da pessoa; toque em um para iniciar uma chamada de vídeo ou de voz. As chamadas usam WebRTC pela rede da Cloudflare, então conectam em qualquer rede de escritório ou de casa, e continuam até alguém desligar. As mesas de reunião levam as chamadas em grupo: sente para entrar, levante para sair."
-      },
-      {
-        "q": "Minha câmera fica ligada o tempo todo em que estou em uma sala?",
-        "a": "Não. A câmera e o microfone só são abertos durante uma chamada e liberados assim que ela termina."
-      },
-      {
         "q": "O TinyFloor é privado e seguro?",
         "a": "Um andar é só para seus membros e os convidados que eles deixam entrar, e nada lá dentro é público ou indexado por buscadores. As chamadas são criptografadas em trânsito pelo WebRTC, e sua câmera e seu microfone só ficam ligados durante uma chamada."
-      },
-      {
-        "q": "Posso usar o TinyFloor no celular?",
-        "a": "Sim. Em dispositivos touch você se move com um joystick na tela, e os controles de chamada se adaptam à tela menor."
       },
       {
         "q": "Qual a diferença entre o TinyFloor e o Zoom ou o Google Meet?",
@@ -1237,24 +1221,20 @@
     },
     "moments": {
       "title": "Um escritório virtual que funciona como um de verdade.",
-      "muted": "Sem nenhum link de reunião.",
-      "lead": "O TinyFloor reúne sua equipe remota em um mesmo andar, no navegador. Veja quem está por aí, vá até alguém para conversar, sentem juntos para reuniões e feche a porta quando precisar se concentrar.",
+      "lines": {
+        "walk": "Vá até <faces></faces> alguém para conversar.",
+        "meet": "Sente-se <faces></faces> para a reunião.",
+        "door": "Feche a porta <faces></faces> para se <quiet>concentrar.</quiet>"
+      },
       "labels": {
         "walk": "Chat por proximidade",
         "meet": "Salas de reunião",
-        "door": "Não perturbe",
-        "lounge": "Copa"
+        "door": "Não perturbe"
       },
       "door": {
-        "title": "Feche a porta.",
-        "body": "Marque-se como ocupado e use a sala privada. As pessoas veem que você está concentrado antes de chegar, e o chat espera por você.",
-        "chip": "{name} está ocupado · concentrado"
+        "body": "Marque-se como ocupado e use a sala privada. As pessoas veem que você está concentrado antes de chegar, e o chat espera por você."
       },
-      "lounge": {
-        "title": "Faça uma pausa.",
-        "body": "O sofá, a caixa de som tocando a música da sala e as pessoas que você encontraria na máquina de café.",
-        "chip": "Tocando agora"
-      }
+      "more": "Como funciona o chat por proximidade"
     },
     "steps": {
       "title": "Monte um escritório virtual em um minuto.",
@@ -1274,6 +1254,11 @@
       "joined": "{count} entraram hoje",
       "walkedIn": "{name} entrou"
     },
+    "cases": {
+      "title": "Um andar,",
+      "muted": "muitas formas de usar.",
+      "body": "Equipes fazem dele seu escritório. Amigos, uma sala de estudos. Professores dão plantão de dúvidas nele. Escolha o seu."
+    },
     "more": {
       "title": "Tudo o que sua equipe remota precisa,",
       "muted": "em um só escritório virtual.",
@@ -1290,10 +1275,6 @@
           "title": "Música",
           "body": "Coloque uma música para todos na sala."
         },
-        "status": {
-          "title": "Status",
-          "body": "Disponível, ocupado ou ausente, direto no seu crachá."
-        },
         "noise": {
           "title": "Remoção de ruído",
           "body": "Uma IA opcional no seu aparelho tira teclado e conversas ao fundo."
@@ -1302,15 +1283,12 @@
           "title": "No celular",
           "body": "Um joystick que aparece sob o seu polegar."
         },
-        "themes": {
-          "title": "Claro e escuro",
-          "body": "Segue o seu sistema, ou escolha você."
-        },
         "languages": {
           "title": "18 idiomas",
           "body": "De English e Español a 日本語 e العربية."
         }
-      }
+      },
+      "also": "Também em todo andar"
     },
     "trust": {
       "title": "Feito para ser confiável.",
@@ -1431,10 +1409,6 @@
     "days": {
       "title": "Um andar para o dia todo,",
       "muted": "do primeiro oi à última chamada."
-    },
-    "vignettes": {
-      "sharing": "Compartilhando",
-      "playing": "Tocando para a sala"
     }
   }
 }

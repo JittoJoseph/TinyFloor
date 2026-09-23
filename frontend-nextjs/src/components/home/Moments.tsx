@@ -1,188 +1,251 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Coffee, Copy, DoorClosed, Footprints, Headphones, Link2, Music2, Presentation } from "lucide-react";
-import { Face, FaceStack } from "@/components/ui/Face";
+import {
+  ArrowRight,
+  BookOpen,
+  Building2,
+  Check,
+  Coffee,
+  Copy,
+  DoorClosed,
+  Footprints,
+  GraduationCap,
+  Link2,
+  Presentation,
+  Radio,
+} from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { Face, FaceStack, faceBackground } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { NearbyBar } from "@/components/floor/PlayableYou";
-import { COLUMN, Heading } from "./Blocks";
-import { FloorTour } from "./FloorTour";
+import { LANDINGS, type LandingKey } from "@/lib/landings";
+import { CJK_HEADLINE, COLUMN, Heading } from "./Blocks";
 
 /*
- * The floor's everyday moments, and how a team gets there: cards that hold
- * still on the page, each with a small piece of the real floor living in it.
- * CSS only; nothing here runs in the browser.
+ * The sections between the features and the pricing that say what the floor
+ * is like, how a team gets onto it, and who it's for: type set with faces in
+ * it, three steps with the app doing each, and a directory of the pages for
+ * each use. CSS only; nothing here runs in the browser.
  */
 
-const APP = "font-(family-name:--font-app) [font-feature-settings:'cv11','ss01']";
+const APP =
+  "font-(family-name:--font-app) [font-feature-settings:'cv11','ss01']";
 const CHIP = cn(
   APP,
   "flex h-8 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card px-3 text-[12px] font-medium text-foreground shadow-float [--face-ring:var(--ui-card)]",
 );
 
-/*
- * You walk four tiles over to Jack and Olivia at 2.2 a second, stop, and walk
- * back. The app's bar for the person you're next to shows only while you're
- * stopped beside them.
- */
-const WALK = 4 / 2.2;
-const STOP = 3.6;
-const LOOP = WALK * 2 + STOP;
-const at = (seconds: number) => ((seconds / LOOP) * 100).toFixed(1);
 const KEYFRAMES =
-  `@keyframes m-bar{0%,${at(WALK)}%{opacity:0;translate:0 6px}${at(WALK + 0.25)}%,${at(WALK + STOP - 0.2)}%{opacity:1;translate:0 0}${at(WALK + STOP)}%,100%{opacity:0;translate:0 6px}}` +
+  // The second face in "walk over" closing the gap to the first, then leaving again.
+  "@keyframes m-near{0%,20%{translate:14px 0}40%,80%{translate:0 0}95%,100%{translate:14px 0}}" +
+  // A ring on whoever is talking at the table.
+  "@keyframes m-talk{0%,100%{scale:1;opacity:.9}50%{scale:1.08;opacity:.55}}" +
   "@keyframes m-type{0%{width:0}45%,100%{width:var(--chars)}}" +
   "@keyframes m-swap{0%,55%{opacity:1}60%,92%{opacity:0}100%{opacity:1}}" +
   "@keyframes m-toast{0%,30%{opacity:0;translate:0 -6px}38%,85%{opacity:1;translate:0 0}93%,100%{opacity:0;translate:0 -6px}}" +
   "@media (prefers-reduced-motion:reduce){.m-still,.m-still *{animation:none!important}}";
 
-type Kind = "walk" | "meet" | "door" | "lounge";
-
-const ICONS: Record<Kind, ReactNode> = {
-  walk: <Footprints />,
-  meet: <Presentation />,
-  door: <DoorClosed />,
-  lounge: <Coffee />,
-};
-
-function useMoments() {
-  const t = useTranslations("home");
-  return [
-    { kind: "walk", id: undefined, label: t("moments.labels.walk"), title: t("features.proximity.title"), body: t("features.proximity.body") },
-    { kind: "meet", id: "meetings", label: t("moments.labels.meet"), title: t("features.meetings.title"), body: t("features.meetings.body") },
-    { kind: "door", id: undefined, label: t("moments.labels.door"), title: t("moments.door.title"), body: t("moments.door.body") },
-    { kind: "lounge", id: undefined, label: t("moments.labels.lounge"), title: t("moments.lounge.title"), body: t("moments.lounge.body") },
-  ] as const;
-}
-
-/** The section's head: the claim on one side, the plain answer on the other. */
-function Head() {
-  const t = useTranslations("home");
+/** Faces set into a line of type, sized to it and sitting on its baseline. */
+function InType({ children }: { children: ReactNode }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
-      <Heading title={t("moments.title")} muted={t("moments.muted")} block />
-      <p className="max-w-[34rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("moments.lead")}</p>
-    </div>
-  );
-}
-
-
-/*
- * The whole office for the tour: every moment's people at once, so panning
- * from one to the next finds the others still there.
- */
-const TOUR_SCENE = {
-  standing: [
-    { ...PEOPLE.jack, at: [35, 10] as [number, number], face: "right" as const, status: "available" },
-    { ...PEOPLE.olivia, at: [38, 10] as [number, number], face: "left" as const, status: "available" },
-    { ...PEOPLE.lily, at: [38, 4] as [number, number], face: "right" as const, status: "away" },
-    { ...PEOPLE.ryan, at: [40, 4] as [number, number], face: "left" as const, status: "away" },
-  ],
-  sitting: [
-    { name: "Ava", character: "Amelia", chair: [4, 11] as [number, number], status: "in_call" },
-    { name: "Leo", character: "Adam", chair: [6, 8] as [number, number], status: "in_call" },
-    { name: "Zoe", character: "Lucy", chair: [8, 11] as [number, number], status: "in_call" },
-    { name: "Ben", character: "Bob", chair: [4, 8] as [number, number], status: "in_call" },
-    { ...PEOPLE.noah, chair: [7, 24] as [number, number], status: "busy" },
-    { ...PEOPLE.sam, chair: [20, 11] as [number, number], status: "busy" },
-    { name: "Mia", character: "Molly", chair: [34, 16] as [number, number], status: "available" },
-  ],
-  walking: [
-    { ...PEOPLE.grace, status: "available", path: [[45, 6, 1.5], [42, 6], [42, 5, 2.5]] as Array<[number, number, number?]>, faces: { 2: "up" as const }, speed: 1.8 },
-  ],
-};
-
-/** The four views, one size, so the camera only pans between them. */
-const VIEWS: Record<Kind, [number, number, number, number]> = {
-  walk: [23, 3, 26, 14],
-  meet: [0, 1, 26, 14],
-  door: [0, 17, 26, 14],
-  lounge: [22, 0, 26, 14],
-};
-
-/** The same four, closer, for a phone. */
-const NARROW: Record<Kind, [number, number, number, number]> = {
-  walk: [30, 5, 14, 10.5],
-  meet: [0, 2.5, 14, 10.5],
-  door: [0, 18.5, 14, 10.5],
-  lounge: [33, 0.5, 14, 10.5],
-};
-
-function TourOverlay({ kind }: { kind: Kind }) {
-  const t = useTranslations("home");
-  if (kind === "walk") {
-    // Only while you're stopped beside her, in time with your walk.
-    return (
-      <div style={{ animation: `m-bar ${LOOP.toFixed(2)}s linear infinite` }}>
-        <NearbyBar name={PEOPLE.olivia.name} seed={PEOPLE.olivia.id} labels={{ video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") }} />
-      </div>
-    );
-  }
-  if (kind === "meet") {
-    return (
-      <div className="flex gap-1.5 [--face-ring:var(--ui-card)]">
-        {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
-          <span key={name} className={cn("flex aspect-video w-12 items-center justify-center rounded-[9px] bg-card shadow-lg ring-2 sm:w-16", index === 1 ? "ring-brand" : "ring-card/80")}>
-            <Face seed={`${name.toLowerCase()}-desk`} size={18} />
-          </span>
-        ))}
-      </div>
-    );
-  }
-  if (kind === "door") {
-    return (
-      <span className={CHIP}>
-        <Headphones className="size-3.5 text-destructive" />
-        {t("moments.door.chip", { name: PEOPLE.noah.name })}
-      </span>
-    );
-  }
-  return (
-    <span className={CHIP}>
-      <Music2 className="size-3.5 text-brand" />
-      {t("moments.lounge.chip")} · Slow Stride
+    <span className="mx-[0.18em] inline-flex translate-y-[0.1em] items-center align-baseline [--face-ring:var(--ui-background)]">
+      {children}
     </span>
   );
 }
 
+const ORB = "size-[0.92em]";
+
 /**
- * What happens on the floor, as a tour of one office: pills name four moments
- * of an ordinary day, and each pans the camera to where it happens.
+ * What the floor is like, said the way a person would, the people in it set
+ * into the words: two faces walking together, three at a table with a ring on
+ * whoever is talking, one on their own and busy. Then what each is called and
+ * how it works, under a hairline.
  */
 export function Moments() {
   const t = useTranslations("home");
-  const moments = useMoments();
-  const walker = {
-    character: "Ash",
-    name: t("preview.you"),
-    status: "available",
-    path: [[33, 11], [37, 11, STOP]] as Array<[number, number, number?]>,
-    faces: { 1: "up" as const },
-  };
+  const { emma, jack, olivia, sam, noah } = PEOPLE;
+  // A face at the size of the type around it, with the same light and shade the app's faces have.
+  const face = (seed: string, className?: string, busy?: boolean) => (
+    <span
+      className={cn(
+        "relative inline-block shrink-0 rounded-full",
+        ORB,
+        className,
+      )}
+      style={{
+        backgroundImage: faceBackground(seed),
+        boxShadow:
+          "inset -0.06em -0.08em 0.18em rgb(0 0 0 / 0.22), inset 0.04em 0.05em 0.12em rgb(255 255 255 / 0.28)",
+      }}
+    >
+      {busy && (
+        <span className="absolute bottom-[2%] end-[2%] size-[28%] rounded-full bg-destructive shadow-[0_0_0_0.06em_var(--ui-background)]" />
+      )}
+    </span>
+  );
+  const columns: Array<{
+    key: "walk" | "meet" | "door";
+    icon: ReactNode;
+    body: string;
+    href?: string;
+  }> = [
+    {
+      key: "walk",
+      icon: <Footprints />,
+      body: t("features.proximity.body"),
+      href: "/proximity-chat",
+    },
+    { key: "meet", icon: <Presentation />, body: t("features.meetings.body") },
+    { key: "door", icon: <DoorClosed />, body: t("moments.door.body") },
+  ];
   return (
-    <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
+    <section
+      id="floor"
+      className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}
+    >
       <style>{KEYFRAMES}</style>
-      <Head />
-      <div className="mt-12 lg:mt-14">
-        <FloorTour
-          label={t("moments.title")}
-          scene={{ ...TOUR_SCENE, walking: [...TOUR_SCENE.walking, walker] }}
-          stops={moments.map((one) => ({
-            key: one.kind,
-            label: one.label,
-            icon: ICONS[one.kind],
-            title: one.title,
-            body: one.body,
-            view: VIEWS[one.kind],
-            narrow: NARROW[one.kind],
-            overlay: <TourOverlay kind={one.kind} />,
-            hash: one.id,
-            // The meeting room and the private office are at the map's left edge, so their card floats right.
-            side: one.kind === "meet" || one.kind === "door" ? ("end" as const) : ("start" as const),
-          }))}
-        />
+      <h2
+        className={cn(
+          APP,
+          "text-[13px] font-medium uppercase tracking-[0.08em] text-muted-foreground",
+        )}
+      >
+        {t("moments.title")}
+      </h2>
+      <p
+        className={cn(
+          "mt-6 text-[36px] font-normal leading-[1.22] tracking-[-0.025em] sm:text-[54px] sm:leading-[1.18] lg:text-[62px] [:lang(ja)_&]:[word-break:auto-phrase]",
+          CJK_HEADLINE,
+        )}
+      >
+        {/* A sentence to a line where there's room for it. */}
+        <span className="sm:block">
+          {t.rich("moments.lines.walk", {
+            faces: () => (
+              <InType>
+                {face(emma.id)}
+                <span
+                  className="-ms-[0.18em] inline-flex"
+                  style={{
+                    animation: "m-near 6s cubic-bezier(.6,0,.3,1) infinite",
+                  }}
+                >
+                  {face(jack.id)}
+                </span>
+              </InType>
+            ),
+          })}
+        </span>{" "}
+        <span className="sm:block">
+          {t.rich("moments.lines.meet", {
+            faces: () => (
+              <InType>
+                {face(olivia.id)}
+                <span className="relative -ms-[0.18em] inline-flex">
+                  <span
+                    className="absolute -inset-[0.08em] rounded-full border-[0.05em] border-brand"
+                    style={{ animation: "m-talk 1.4s ease-in-out infinite" }}
+                  />
+                  {face(jack.id)}
+                </span>
+                <span className="-ms-[0.18em] inline-flex">{face(sam.id)}</span>
+              </InType>
+            ),
+          })}
+        </span>{" "}
+        <span className="sm:block">
+          {t.rich("moments.lines.door", {
+            faces: () => <InType>{face(noah.id, undefined, true)}</InType>,
+            quiet: (chunks) => (
+              <span className="text-muted-foreground/80">{chunks}</span>
+            ),
+          })}
+        </span>
+      </p>
+      <div
+        id="meetings"
+        className="mt-14 grid scroll-mt-28 gap-10 border-t border-border pt-10 sm:grid-cols-3 sm:gap-8"
+      >
+        {columns.map((one) => (
+          <div key={one.key}>
+            <span className="flex items-center gap-2 text-[15.5px] font-semibold [&_svg]:size-4 [&_svg]:text-brand">
+              {one.icon}
+              {t(`moments.labels.${one.key}`)}
+            </span>
+            <p className="mt-2.5 max-w-[24rem] text-pretty text-[15px] leading-relaxed text-muted-foreground">
+              {one.body}
+            </p>
+            {one.href && (
+              <Link
+                href={one.href}
+                className="group mt-3 inline-flex items-center gap-1 text-[14.5px] font-medium text-foreground"
+              >
+                {t("moments.more")}
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+              </Link>
+            )}
+          </div>
+        ))}
       </div>
+    </section>
+  );
+}
+
+const CASE_ICONS: Partial<Record<LandingKey, ReactNode>> = {
+  virtualOffice: <Building2 />,
+  virtualCoworking: <Coffee />,
+  onlineStudyRoom: <BookOpen />,
+  virtualClassroom: <GraduationCap />,
+  proximityChat: <Radio />,
+};
+
+/** Who it's for: a ruled directory of the pages written for each use, one row each. */
+export function UseCases() {
+  const t = useTranslations();
+  const cases = LANDINGS.filter((page) => page.group === "useCases");
+  return (
+    <section
+      id="use-cases"
+      className={cn(
+        COLUMN,
+        "grid scroll-mt-24 gap-10 pb-24 sm:pb-32 lg:grid-cols-[1fr_1.5fr] lg:gap-20",
+      )}
+    >
+      <div className="lg:sticky lg:top-28 lg:self-start">
+        <Heading title={t("home.cases.title")} muted={t("home.cases.muted")} />
+        <p className="mt-5 max-w-[26rem] text-pretty text-[16px] leading-relaxed text-muted-foreground">
+          {t("home.cases.body")}
+        </p>
+      </div>
+      <ul className="border-t border-border">
+        {cases.map((page) => (
+          <li key={page.slug}>
+            <Link
+              href={`/${page.slug}`}
+              className="group flex items-center gap-5 border-b border-border py-6 outline-none focus-visible:bg-muted/60"
+            >
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-muted text-foreground transition-colors group-hover:bg-foreground group-hover:text-background [&_svg]:size-[18px]">
+                {CASE_ICONS[page.key]}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[19px] font-semibold tracking-tight">
+                  {t(
+                    `landings.pages.${page.key}.label` as "landings.pages.gather.label",
+                  )}
+                </span>
+                <span className="mt-0.5 block text-[15px] text-muted-foreground">
+                  {t(
+                    `home.nav.cases.${page.key}` as "home.nav.cases.virtualOffice",
+                  )}
+                </span>
+              </span>
+              <ArrowRight className="size-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-foreground rtl:rotate-180" />
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -195,44 +258,71 @@ export function Steps() {
     {
       key: "make",
       art: (
-        <div className={cn(APP, "flex h-full flex-col justify-center gap-3 p-6")}>
-          <span className="text-[11.5px] font-medium text-muted-foreground">{t("create.nameLabel")}</span>
+        <div
+          className={cn(APP, "flex h-full flex-col justify-center gap-3 p-6")}
+        >
+          <span className="text-[11.5px] font-medium text-muted-foreground">
+            {t("create.nameLabel")}
+          </span>
           <span className="flex h-10 items-center rounded-xl border border-border bg-card px-3 text-[14px] text-foreground">
             {/* The name typing itself in, the caret riding its end. */}
             <span
               dir="ltr"
               className="overflow-hidden whitespace-nowrap border-e-2 border-brand pe-0.5"
-              style={{ ["--chars" as string]: `${office.length}ch`, animation: `m-type 4.5s steps(${office.length}) infinite` }}
+              style={{
+                ["--chars" as string]: `${office.length}ch`,
+                animation: `m-type 4.5s steps(${office.length}) infinite`,
+              }}
             >
               {office}
             </span>
           </span>
-          <span className="flex h-10 items-center justify-center rounded-full bg-foreground text-[13px] font-medium text-background">{t("create.continue")}</span>
+          <span className="flex h-10 items-center justify-center rounded-full bg-foreground text-[13px] font-medium text-background">
+            {t("create.continue")}
+          </span>
         </div>
       ),
     },
     {
       key: "invite",
       art: (
-        <div className={cn(APP, "flex h-full flex-col justify-center gap-3 p-6 [--face-ring:var(--ui-background)]")}>
+        <div
+          className={cn(
+            APP,
+            "flex h-full flex-col justify-center gap-3 p-6 [--face-ring:var(--ui-background)]",
+          )}
+        >
           <span className="flex items-center gap-1.5 text-[12px] font-semibold text-foreground">
             <Link2 className="size-3.5 text-muted-foreground" />
             {t("home.preview.guestLink")}
           </span>
           <span className="flex h-10 items-center gap-2 rounded-full border border-border bg-card pe-1 ps-3.5">
-            <span dir="ltr" className="min-w-0 flex-1 truncate text-[12px] text-muted-foreground">
+            <span
+              dir="ltr"
+              className="min-w-0 flex-1 truncate text-[12px] text-muted-foreground"
+            >
               tinyfloor.com/join/x7k2q
             </span>
             <span className="flex h-8 items-center gap-1 rounded-full bg-foreground px-3 text-[11.5px] font-medium text-background">
               <span className="relative size-3">
-                <Copy className="absolute inset-0 size-3" style={{ animation: "m-swap 4s infinite" }} />
-                <Check className="absolute inset-0 size-3 opacity-0" style={{ animation: "m-swap 4s infinite reverse" }} />
+                <Copy
+                  className="absolute inset-0 size-3"
+                  style={{ animation: "m-swap 4s infinite" }}
+                />
+                <Check
+                  className="absolute inset-0 size-3 opacity-0"
+                  style={{ animation: "m-swap 4s infinite reverse" }}
+                />
               </span>
               {t("home.preview.copy")}
             </span>
           </span>
           <span className="flex items-center gap-2 text-[12px] text-muted-foreground">
-            <FaceStack seeds={Object.values(PEOPLE).map((one) => one.id)} size={22} max={4} />
+            <FaceStack
+              seeds={Object.values(PEOPLE).map((one) => one.id)}
+              size={22}
+              max={4}
+            />
             {t("home.steps.joined", { count: 4 })}
           </span>
         </div>
@@ -247,10 +337,28 @@ export function Steps() {
             { ...PEOPLE.sam, at: [24, 14], face: "left", status: "available" },
             { ...PEOPLE.olivia, at: [25, 13], face: "down", status: "busy" },
           ]}
-          walking={[{ ...PEOPLE.emma, status: "available", path: [[17, 14, 2.4], [22, 14, 3], [22, 12, 1.5], [17, 12]], faces: { 1: "right" } }]}
+          walking={[
+            {
+              ...PEOPLE.emma,
+              status: "available",
+              path: [
+                [17, 14, 2.4],
+                [22, 14, 3],
+                [22, 12, 1.5],
+                [17, 12],
+              ],
+              faces: { 1: "right" },
+            },
+          ]}
           className="h-full w-full"
           over={
-            <span className={cn(CHIP, "absolute bottom-3 start-1/2 -translate-x-1/2 rtl:translate-x-1/2")} style={{ animation: "m-toast 8s infinite" }}>
+            <span
+              className={cn(
+                CHIP,
+                "absolute bottom-3 start-1/2 -translate-x-1/2 rtl:translate-x-1/2",
+              )}
+              style={{ animation: "m-toast 8s infinite" }}
+            >
               <Face seed={PEOPLE.emma.id} size={18} />
               {t("home.steps.walkedIn", { name: PEOPLE.emma.name })}
             </span>
@@ -261,15 +369,35 @@ export function Steps() {
   ];
   return (
     <section className={cn(COLUMN, "m-still pb-24 sm:pb-32")}>
-      <Heading title={t("home.steps.title")} muted={t("home.steps.muted")} className="max-w-[24ch]" />
+      <Heading
+        title={t("home.steps.title")}
+        muted={t("home.steps.muted")}
+        className="max-w-[24ch]"
+      />
       <ol className="mt-12 grid gap-3 lg:grid-cols-3">
         {steps.map((step, index) => (
-          <li key={step.key} className="flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035]">
-            <div className="m-2 h-[220px] overflow-hidden rounded-[22px] border border-border bg-background">{step.art}</div>
+          <li
+            key={step.key}
+            className="flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035]"
+          >
+            <div className="m-2 h-[220px] overflow-hidden rounded-[22px] border border-border bg-background">
+              {step.art}
+            </div>
             <div className="px-6 pb-7 pt-4 sm:px-7">
-              <span className={cn(APP, "text-[12.5px] font-semibold tabular-nums text-brand")}>{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="mt-1.5 text-balance text-[20px] font-semibold tracking-[-0.02em]">{t(`home.steps.${step.key}.title`)}</h3>
-              <p className="mt-1.5 text-pretty text-[15px] leading-relaxed text-muted-foreground">{t(`home.steps.${step.key}.body`)}</p>
+              <span
+                className={cn(
+                  APP,
+                  "text-[12.5px] font-semibold tabular-nums text-brand",
+                )}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-1.5 text-balance text-[20px] font-semibold tracking-[-0.02em]">
+                {t(`home.steps.${step.key}.title`)}
+              </h3>
+              <p className="mt-1.5 text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                {t(`home.steps.${step.key}.body`)}
+              </p>
             </div>
           </li>
         ))}

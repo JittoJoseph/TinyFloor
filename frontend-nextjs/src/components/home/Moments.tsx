@@ -8,7 +8,7 @@ import { PEOPLE } from "@/components/floor/scenes";
 import { FloorScene, OnFloor } from "@/components/floor/FloorScene";
 import { NearbyBar } from "@/components/floor/NearbyBar";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
-import { COLUMN, Heading } from "./Blocks";
+import { COLUMN, Heading, SWIPE, SWIPE_ITEM } from "./Blocks";
 
 /*
  * The sections that say why a floor, how a team gets onto it, and who it's
@@ -103,7 +103,7 @@ export function Moments() {
               </li>
             ))}
           </ol>
-          <p className="mt-auto flex items-center gap-2 pt-8 text-[15px] text-muted-foreground">
+          <p className="mt-auto flex items-center gap-2 text-pretty pt-8 text-[15px] text-muted-foreground">
             <Clock3 className="size-4 shrink-0" />
             {t("before.result")}
           </p>
@@ -175,7 +175,7 @@ export function Moments() {
               </div>
             </OnFloor>
           </FloorScene>
-          <p className="mt-auto flex items-center gap-2 pt-8 text-[15px] text-foreground">
+          <p className="mt-auto flex items-center gap-2 text-pretty pt-8 text-[15px] text-foreground">
             <Footprints className="size-4 shrink-0 text-brand" />
             {t("after.result")}
           </p>
@@ -366,11 +366,11 @@ export function Steps() {
         muted={t("home.steps.muted")}
         className="max-w-[24ch]"
       />
-      <ol className="mt-12 grid gap-3 lg:grid-cols-3">
+      <ol className={cn(SWIPE, "mt-10 sm:mt-12")}>
         {steps.map((step, index) => (
           <li
             key={step.key}
-            className="flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035]"
+            className={cn(SWIPE_ITEM, "flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035]")}
           >
             <div className="m-2 h-[220px] overflow-hidden rounded-[22px] border border-border bg-background">
               {step.art}

@@ -9,6 +9,7 @@
     "joinRoomDescription": "Sinut on kutsuttu huoneeseen {office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
+    "createTitle": "Luo toimistosi",
     "dashboardTitle": "Hallintapaneeli",
     "notFoundTitle": "Sivua ei löytynyt",
     "lobbyTitle": "Aula",
@@ -414,21 +415,6 @@
       "browser": "Kyllä, ei asennettavaa",
       "screenShare": "Kyllä, puheluissa ja kokouksissa"
     },
-    "stepsTitle": "Näin se <em>toimii.</em>",
-    "steps": [
-      {
-        "title": "Avaa huone",
-        "body": "Kävele julkiseen toimistoon, tai luo työtila ja kutsu tiimisi."
-      },
-      {
-        "title": "Valitse hahmo",
-        "body": "Kirjoita nimi ja valitse pikselitaidehahmo. Tiliä ei tarvita."
-      },
-      {
-        "title": "Kävele juttelemaan",
-        "body": "Asetu jonkun viereen ja aloita video- tai äänipuhelu yhdellä napautuksella."
-      }
-    ],
     "faqTitle": "Usein kysyttyjä <em>kysymyksiä.</em>",
     "relatedTitle": "Tutustu <em>lisää.</em>",
     "pages": {

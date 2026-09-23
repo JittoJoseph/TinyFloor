@@ -9,6 +9,7 @@
     "joinRoomDescription": "TinyFloor の {office} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
     "authTitle": "ログイン",
     "authDescription": "TinyFloor にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
+    "createTitle": "オフィスを作る",
     "dashboardTitle": "ダッシュボード",
     "notFoundTitle": "ページが見つかりません",
     "lobbyTitle": "ロビー",
@@ -414,21 +415,6 @@
       "browser": "はい、インストール不要",
       "screenShare": "あり、通話とミーティングで利用可能"
     },
-    "stepsTitle": "使い方は<em>かんたん。</em>",
-    "steps": [
-      {
-        "title": "ルームを開く",
-        "body": "公開オフィスに入るか、ワークスペースを作ってチームを招待しましょう。"
-      },
-      {
-        "title": "キャラクターを選ぶ",
-        "body": "名前を入力してピクセルアートのキャラクターを選びます。アカウントは不要です。"
-      },
-      {
-        "title": "近づいて話す",
-        "body": "誰かの隣に立ち、ワンタップでビデオ通話や音声通話を始めます。"
-      }
-    ],
     "faqTitle": "よくある<em>質問。</em>",
     "relatedTitle": "ほかにも<em>見てみる。</em>",
     "pages": {

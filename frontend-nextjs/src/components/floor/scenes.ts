@@ -37,20 +37,6 @@ export const HALL: Scene = {
   ],
 };
 
-/** Two people who have walked up to each other in the aisle: close, so it reads as a conversation. */
-export const NEAR: Scene = {
-  view: [30, 5, 16, 11],
-  standing: [
-    { ...person(emma), at: [36, 10], face: "right" },
-    { ...person(jack), at: [38, 10], face: "left", status: "available" },
-  ],
-  sitting: [
-    { ...person(lily), chair: [34, 13], status: "busy" },
-    { ...person(sam), chair: [40, 13], status: "busy" },
-  ],
-  walking: [{ ...person(olivia), status: "available", path: [[31, 6, 1], [44, 6, 2]], speed: 1.8 }],
-};
-
 /** A meeting at the table in the meeting room. */
 export const MEETING: Scene = {
   view: [1, 3, 13, 12],

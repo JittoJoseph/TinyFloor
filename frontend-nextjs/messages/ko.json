@@ -9,6 +9,7 @@
     "joinRoomDescription": "TinyFloor의 {office}에 초대되었습니다. 걸어 다니는 가상 오피스예요. 링크를 열고 캐릭터를 골라 들어오세요.",
     "authTitle": "로그인",
     "authDescription": "TinyFloor에 로그인하면 이름, 캐릭터, 방 목록을 저장할 수 있어요.",
+    "createTitle": "오피스 만들기",
     "dashboardTitle": "대시보드",
     "notFoundTitle": "페이지를 찾을 수 없어요",
     "lobbyTitle": "로비",
@@ -414,21 +415,6 @@
       "browser": "네, 설치할 것 없음",
       "screenShare": "있음, 통화와 회의에서 사용 가능"
     },
-    "stepsTitle": "이렇게 <em>사용해요.</em>",
-    "steps": [
-      {
-        "title": "방 열기",
-        "body": "공개 오피스로 들어가거나, 워크스페이스를 만들어 팀을 초대하세요."
-      },
-      {
-        "title": "캐릭터 고르기",
-        "body": "이름을 입력하고 픽셀 아트 캐릭터를 고르세요. 계정은 필요 없습니다."
-      },
-      {
-        "title": "다가가서 이야기하기",
-        "body": "누군가의 옆에 서서 한 번의 탭으로 영상 통화나 음성 통화를 시작하세요."
-      }
-    ],
     "faqTitle": "자주 묻는 <em>질문.</em>",
     "relatedTitle": "더 <em>둘러보기.</em>",
     "pages": {

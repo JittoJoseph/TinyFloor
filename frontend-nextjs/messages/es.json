@@ -9,6 +9,7 @@
     "joinRoomDescription": "Te han invitado a {office} en TinyFloor, una oficina virtual por la que caminas. Abre el enlace, elige un personaje y entra.",
     "authTitle": "Iniciar sesión",
     "authDescription": "Inicia sesión en TinyFloor para conservar tu nombre, tu personaje y la lista de tus salas.",
+    "createTitle": "Crea tu oficina",
     "dashboardTitle": "Panel",
     "notFoundTitle": "Página no encontrada",
     "lobbyTitle": "El lobby",
@@ -414,21 +415,6 @@
       "browser": "Sí, sin instalar nada",
       "screenShare": "Sí, en llamadas y reuniones"
     },
-    "stepsTitle": "Cómo <em>funciona.</em>",
-    "steps": [
-      {
-        "title": "Abre una sala",
-        "body": "Entra en la oficina pública, o crea un espacio de trabajo e invita a tu equipo."
-      },
-      {
-        "title": "Elige un personaje",
-        "body": "Escribe un nombre y elige un personaje de pixel art. No necesitas cuenta."
-      },
-      {
-        "title": "Acércate para hablar",
-        "body": "Ponte al lado de alguien y empieza una videollamada o llamada de voz con un toque."
-      }
-    ],
     "faqTitle": "Preguntas <em>frecuentes.</em>",
     "relatedTitle": "Sigue <em>explorando.</em>",
     "pages": {

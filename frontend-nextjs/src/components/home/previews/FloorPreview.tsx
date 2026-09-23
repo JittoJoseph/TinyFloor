@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import { Mic, MonitorUp, MousePointerClick, Settings2, Video } from "lucide-react";
 import { FaceStack } from "@/components/ui/Face";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { NearbyBar, PlayableYou } from "@/components/floor/PlayableYou";
-import { HALL, NEAR, PEOPLE } from "@/components/floor/scenes";
+import { PlayableYou } from "@/components/floor/PlayableYou";
+import { HALL, PEOPLE } from "@/components/floor/scenes";
 import { cn } from "@/lib/utils";
 
 const { sam, emma, olivia, jack, lily } = PEOPLE;
@@ -53,18 +53,15 @@ const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0
 /**
  * The floor, as the app shows it: the real map with people at their desks,
  * chatting and walking around, the room's chip and the dock. `playable` puts
- * you on it too, to walk wherever you click. `near` leans in on two people
- * who have walked up to each other, with the bar the app puts beside someone
- * you're close to; `bare` is the floor alone, for a small window.
+ * you on it too, to walk wherever you click; `bare` is the floor alone, for
+ * a small window.
  */
 export function FloorPreview({
-  near = false,
   bare = false,
   playable = false,
   priority = false,
   className,
 }: {
-  near?: boolean;
   bare?: boolean;
   playable?: boolean;
   priority?: boolean;
@@ -72,20 +69,6 @@ export function FloorPreview({
 }) {
   const t = useTranslations("home.preview");
   const labels = { video: t("video"), audio: t("audio"), message: t("message") };
-
-  if (near) {
-    return (
-      <FloorScene
-        {...NEAR}
-        className={cn("h-full w-full", className)}
-        over={
-          <div className="absolute inset-x-0 bottom-5 flex justify-center">
-            <NearbyBar name={jack.name} seed={jack.id} labels={labels} />
-          </div>
-        }
-      />
-    );
-  }
 
   if (bare) return <FloorScene {...HALL} view={[16, 3, 22, 14]} className={cn("h-full w-full", className)} />;
 

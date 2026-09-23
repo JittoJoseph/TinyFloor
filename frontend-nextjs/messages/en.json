@@ -9,6 +9,7 @@
     "joinRoomDescription": "You're invited to {office} on TinyFloor, a virtual office you walk around in. Open the link, pick a character and walk in.",
     "authTitle": "Sign In",
     "authDescription": "Sign in to TinyFloor to keep your name, your character and a list of your rooms.",
+    "createTitle": "Make your office",
     "dashboardTitle": "Dashboard",
     "notFoundTitle": "Page Not Found",
     "lobbyTitle": "The Lobby",
@@ -414,21 +415,6 @@
       "browser": "Yes, nothing to install",
       "screenShare": "Yes, in calls and meetings"
     },
-    "stepsTitle": "How it <em>works.</em>",
-    "steps": [
-      {
-        "title": "Open a room",
-        "body": "Walk into the public office, or create a workspace and invite your team."
-      },
-      {
-        "title": "Pick a character",
-        "body": "Type a name and choose a pixel-art character. No account needed."
-      },
-      {
-        "title": "Walk over to talk",
-        "body": "Stand next to someone and start a video or voice call with one tap."
-      }
-    ],
     "faqTitle": "Common <em>questions.</em>",
     "relatedTitle": "Keep <em>exploring.</em>",
     "pages": {

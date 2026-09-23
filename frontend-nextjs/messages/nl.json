@@ -9,6 +9,7 @@
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
+    "createTitle": "Maak je kantoor",
     "dashboardTitle": "Dashboard",
     "notFoundTitle": "Pagina niet gevonden",
     "lobbyTitle": "De lobby",
@@ -414,21 +415,6 @@
       "browser": "Ja, niets te installeren",
       "screenShare": "Ja, in gesprekken en vergaderingen"
     },
-    "stepsTitle": "Zo <em>werkt het.</em>",
-    "steps": [
-      {
-        "title": "Open een ruimte",
-        "body": "Loop het openbare kantoor binnen, of maak een werkruimte en nodig je team uit."
-      },
-      {
-        "title": "Kies een personage",
-        "body": "Typ een naam en kies een pixel-art personage. Geen account nodig."
-      },
-      {
-        "title": "Loop erheen om te praten",
-        "body": "Ga naast iemand staan en start met één tik een video- of spraakgesprek."
-      }
-    ],
     "faqTitle": "Veelgestelde <em>vragen.</em>",
     "relatedTitle": "Verder <em>ontdekken.</em>",
     "pages": {

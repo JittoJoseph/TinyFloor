@@ -38,10 +38,10 @@ const KEYFRAMES =
  * him, so that's where you are without motion, and everything that happens
  * there is timed on the same loop.
  */
-const WAIT = 1.5;
+const WAIT = 1;
 const STAY = 7.5;
-const SPEED = 2.2;
-const FROM: [number, number] = [25, 15];
+const SPEED = 3;
+const FROM: [number, number] = [28, 15];
 const TO: [number, number] = [32, 15];
 const GO = (TO[0] - FROM[0]) / SPEED;
 const LOOP = WAIT + GO * 2 + STAY;

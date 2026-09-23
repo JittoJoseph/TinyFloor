@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SOCIALS } from "@/lib/site";
 import { localeCodes } from "@/lib/i18n/routing";
 import { localePath, socialImage } from "@/lib/seo";
 
@@ -8,10 +8,10 @@ const NAME = "TinyFloor";
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
-/** The absolute URL a route is served at in a locale, matching its canonical. */
 /** The home page's "also on every floor" items, named after the product's own features wherever those are listed. */
 export const MORE_FEATURES = ["whiteboard", "music", "noise", "mobile", "languages"] as const;
 
+/** The absolute URL a route is served at in a locale, matching its canonical. */
 export function absoluteUrl(locale: string, path: string): string {
   const localized = localePath(locale, path);
   return `${SITE_URL}${localized === "/" ? "" : localized}`;
@@ -28,7 +28,7 @@ export function siteGraph(): Schema {
         name: NAME,
         url: SITE_URL,
         logo: `${SITE_URL}/icon-512.png`,
-        sameAs: ["https://github.com/JittoJoseph/SpatialMeet"],
+        sameAs: Object.values(SOCIALS),
         founder: {
           "@type": "Person",
           name: "Jitto Joseph",

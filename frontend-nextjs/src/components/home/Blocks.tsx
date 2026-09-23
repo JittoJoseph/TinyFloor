@@ -154,16 +154,16 @@ export function ProductPreview({ className }: { className?: string }) {
 }
 
 /**
- * One card: its words, then the app doing it. The card is a subgrid of its
- * row, so headings and text line up with the cards beside it, and the preview
- * rests on the card's bottom edge, a little of it running off.
+ * One card: its words, then the app doing it. The heading runs on into its
+ * quieter half, the way the section headings do. The card is a subgrid of
+ * its row, so headings and text line up with the cards beside it, and the
+ * preview rests on the card's bottom edge, a little of it running off.
  */
 export function DayCard({
   id,
   title,
   muted,
   body,
-  small,
   badge,
   children,
 }: {
@@ -171,7 +171,6 @@ export function DayCard({
   title: string;
   muted?: string;
   body: string;
-  small?: boolean;
   /** A small mark before the heading, such as a step's number. */
   badge?: ReactNode;
   children: ReactNode;
@@ -179,23 +178,15 @@ export function DayCard({
   return (
     <article
       id={id}
-      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid"
+      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0"
     >
-      <h3
-        className={cn(
-          "px-7 pt-7 text-balance font-semibold leading-[1.2] tracking-[-0.02em] sm:px-8 sm:pt-8",
-          small ? "text-[19px]" : "text-[23px]",
-          CJK_HEADLINE,
-        )}
-      >
+      <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
         {badge}
         {title}
-        {muted && <span className="block text-muted-foreground/80">{muted}</span>}
+        {muted && <span className="text-muted-foreground/80"> {muted}</span>}
       </h3>
-      <p className={cn("px-7 pt-3 text-pretty leading-relaxed text-muted-foreground sm:px-8", small ? "text-[14.5px]" : "text-[15.5px]", !small && "max-w-[34rem]")}>
-        {body}
-      </p>
-      <div className={cn("flex items-end px-5 pt-7 sm:px-8", small ? "h-[320px]" : "h-[360px] sm:h-[400px]")}>
+      <p className="px-7 pt-3 text-pretty text-[14.5px] leading-relaxed text-muted-foreground sm:px-8">{body}</p>
+      <div className="flex h-[320px] items-end px-5 pt-7 sm:px-8">
         <div className="h-[calc(100%+18px)] w-full translate-y-[18px]">{children}</div>
       </div>
     </article>

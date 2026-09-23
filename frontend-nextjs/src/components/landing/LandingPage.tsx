@@ -137,7 +137,6 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
           {steps.map((step, index) => (
             <DayCard
               key={step.title}
-              small
               title={step.title}
               body={step.body}
               badge={

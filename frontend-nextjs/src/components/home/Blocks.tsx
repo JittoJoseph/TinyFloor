@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import { wholeWords } from "@/lib/words";
 import { HeroPreview } from "./HeroPreview";
 import { COLUMN, HomeNav } from "./HomeNav";
 import { SiteFooter } from "./SiteFooter";
@@ -72,6 +73,8 @@ export function Heading({
   /** Puts the quieter half on its own line. */
   block?: boolean;
 }) {
+  const locale = useLocale();
+  const words = (text: ReactNode) => (typeof text === "string" ? wholeWords(text, locale) : text);
   return (
     <Tag
       className={cn(
@@ -81,11 +84,11 @@ export function Heading({
         className,
       )}
     >
-      {title}
+      {words(title)}
       {muted && (
         <>
           {gap(title)}
-          <span className={cn("text-muted-foreground/80", block && "block")}>{muted}</span>
+          <span className={cn("text-muted-foreground/80", block && "block")}>{words(muted)}</span>
         </>
       )}
     </Tag>
@@ -181,17 +184,18 @@ export function DayCard({
   body: string;
   children: ReactNode;
 }) {
+  const locale = useLocale();
   return (
     <article
       id={id}
       className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0"
     >
       <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
-        {title}
+        {wholeWords(title, locale)}
         {muted && (
           <span className="text-muted-foreground/80">
             {gap(title)}
-            {muted}
+            {wholeWords(muted, locale)}
           </span>
         )}
       </h3>

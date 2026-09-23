@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
@@ -31,6 +30,7 @@ import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/AppShell";
 import { cn } from "@/lib/utils";
+import { emphasised } from "@/lib/words";
 import {
   CJK_HEADLINE,
   COLUMN,
@@ -66,9 +66,6 @@ const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
   virtualClassroom: [GraduationCap, Users, PenLine],
   proximityChat: [Footprints, Users, ShieldCheck],
 };
-
-/** The words of a page's headline that name what it's about, in the brand colour. */
-const accent = (chunks: ReactNode) => <span className="text-brand">{chunks}</span>;
 
 /**
  * One page written for a search, in the site's design: the pitch over the
@@ -107,7 +104,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
               CJK_HEADLINE,
             )}
           >
-            {t.rich(`pages.${page.key}.title`, { em: accent })}
+            {emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "text-brand")}
           </h1>
           <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{copy.subtitle}</p>
           <Actions className="mt-10" />

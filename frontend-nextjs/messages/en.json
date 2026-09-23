@@ -1219,22 +1219,38 @@
         "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
       }
     },
-    "moments": {
-      "title": "A virtual office that works like a real one.",
-      "lines": {
-        "walk": "Walk over <faces></faces> to talk.",
-        "meet": "Sit down <faces></faces> to meet.",
-        "door": "Close the door <faces></faces> to <quiet>focus.</quiet>"
+    "versus": {
+      "title": "A quick question",
+      "muted": "shouldn't need a calendar invite.",
+      "body": "In most remote teams, asking takes a message, an invite and a meeting link. In a virtual office you walk over, the way you would at work.",
+      "before": {
+        "label": "Without a floor",
+        "items": [
+          {
+            "title": "Jack, got 5 minutes today?",
+            "body": "Sent 9:41 · Seen"
+          },
+          {
+            "title": "Quick sync",
+            "body": "Tomorrow, 10:30 to 11:00 · Invite from Jack"
+          },
+          {
+            "title": "Join the video call",
+            "body": "Waiting for the host to let you in"
+          },
+          {
+            "title": "Can you hop on a call?",
+            "body": "3 unread messages"
+          }
+        ],
+        "result": "A day later: a 30-minute meeting for a 2-minute question."
       },
-      "labels": {
-        "walk": "Proximity chat",
-        "meet": "Meeting rooms",
-        "door": "Do not disturb"
-      },
-      "door": {
-        "body": "Set yourself busy and take the private office. People can see you're heads-down before they walk over, and chat waits for you."
-      },
-      "more": "How proximity chat works"
+      "after": {
+        "label": "On TinyFloor",
+        "you": "You",
+        "talking": "Talking with {name} · 0:42",
+        "result": "Walk over, ask, walk back. Two minutes."
+      }
     },
     "steps": {
       "title": "Set up a virtual office in a minute.",

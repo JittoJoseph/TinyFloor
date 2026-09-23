@@ -1219,22 +1219,38 @@
         "body": "Invitez vos collègues par e-mail, ou envoyez un lien invité à un client ou un candidat. Il choisit un nom et un personnage, et le voilà sur l'étage, sans compte."
       }
     },
-    "moments": {
-      "title": "Un bureau virtuel qui fonctionne comme un vrai.",
-      "lines": {
-        "walk": "Allez vers <faces></faces> quelqu'un pour parler.",
-        "meet": "Asseyez-vous <faces></faces> pour la réunion.",
-        "door": "Fermez la porte <faces></faces> pour vous <quiet>concentrer.</quiet>"
+    "versus": {
+      "title": "Une petite question",
+      "muted": "ne devrait pas demander une invitation.",
+      "body": "Dans la plupart des équipes à distance, poser une question demande un message, une invitation et un lien de réunion. Dans un bureau virtuel, vous allez voir la personne, comme au travail.",
+      "before": {
+        "label": "Sans étage",
+        "items": [
+          {
+            "title": "Jack, tu as 5 minutes aujourd'hui ?",
+            "body": "Envoyé 9:41 · Vu"
+          },
+          {
+            "title": "Point rapide",
+            "body": "Demain, 10:30 à 11:00 · Invitation de Jack"
+          },
+          {
+            "title": "Rejoindre l'appel vidéo",
+            "body": "En attente que l'hôte vous fasse entrer"
+          },
+          {
+            "title": "Tu peux passer en appel ?",
+            "body": "3 messages non lus"
+          }
+        ],
+        "result": "Un jour plus tard : une réunion de 30 minutes pour une question de 2 minutes."
       },
-      "labels": {
-        "walk": "Chat de proximité",
-        "meet": "Salles de réunion",
-        "door": "Ne pas déranger"
-      },
-      "door": {
-        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend."
-      },
-      "more": "Comment fonctionne le chat de proximité"
+      "after": {
+        "label": "Sur TinyFloor",
+        "you": "Vous",
+        "talking": "En conversation avec {name} · 0:42",
+        "result": "Aller voir, demander, revenir. Deux minutes."
+      }
     },
     "steps": {
       "title": "Créez un bureau virtuel en une minute.",

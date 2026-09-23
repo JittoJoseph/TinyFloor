@@ -1,32 +1,19 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import {
-  ArrowRight,
-  BookOpen,
-  Building2,
-  Check,
-  Coffee,
-  Copy,
-  DoorClosed,
-  Footprints,
-  GraduationCap,
-  Link2,
-  Presentation,
-  Radio,
-} from "lucide-react";
+import { ArrowRight, Bell, BookOpen, Building2, CalendarDays, Check, Clock3, Coffee, Copy, Footprints, GraduationCap, Link2, MessageSquare, Mic, Radio, Video } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { Face, FaceStack, faceBackground } from "@/components/ui/Face";
+import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
-import { CJK_HEADLINE, COLUMN, Heading } from "./Blocks";
+import { COLUMN, Heading } from "./Blocks";
 
 /*
- * The sections between the features and the pricing that say what the floor
- * is like, how a team gets onto it, and who it's for: type set with faces in
- * it, three steps with the app doing each, and a directory of the pages for
- * each use. CSS only; nothing here runs in the browser.
+ * The sections that say why a floor, how a team gets onto it, and who it's
+ * for: the same question asked the usual way and by walking over, three steps
+ * with the app doing each, and a directory of the pages for each use. CSS
+ * only; nothing here runs in the browser.
  */
 
 const APP =
@@ -37,157 +24,114 @@ const CHIP = cn(
 );
 
 const KEYFRAMES =
-  // The second face in "walk over" closing the gap to the first, then leaving again.
-  "@keyframes m-near{0%,20%{translate:14px 0}40%,80%{translate:0 0}95%,100%{translate:14px 0}}" +
-  // A ring on whoever is talking at the table.
-  "@keyframes m-talk{0%,100%{scale:1;opacity:.9}50%{scale:1.08;opacity:.55}}" +
+  // You crossing the floor to Jack, staying a while, and heading back.
+  "@keyframes m-walk{0%,10%{translate:0 0}38%,78%{translate:var(--reach) 0}92%,100%{translate:0 0}}" +
+  // What only shows while you're beside him: his ring, and the call.
+  "@keyframes m-lit{0%,36%{opacity:0;translate:0 4px}44%,76%{opacity:1;translate:0 0}84%,100%{opacity:0;translate:0 4px}}" +
+  // The other way: the messages piling up one after another.
+  "@keyframes m-pile{0%,4%{opacity:0;translate:0 10px}10%,92%{opacity:1;translate:0 0}98%,100%{opacity:0}}" +
   "@keyframes m-type{0%{width:0}45%,100%{width:var(--chars)}}" +
   "@keyframes m-swap{0%,55%{opacity:1}60%,92%{opacity:0}100%{opacity:1}}" +
   "@keyframes m-toast{0%,30%{opacity:0;translate:0 -6px}38%,85%{opacity:1;translate:0 0}93%,100%{opacity:0;translate:0 -6px}}" +
   "@media (prefers-reduced-motion:reduce){.m-still,.m-still *{animation:none!important}}";
 
-/** Faces set into a line of type, sized to it and sitting on its baseline. */
-function InType({ children }: { children: ReactNode }) {
-  return (
-    <span className="mx-[0.18em] inline-flex translate-y-[0.1em] items-center align-baseline [--face-ring:var(--ui-background)]">
-      {children}
-    </span>
-  );
-}
+const PILL = cn(
+  APP,
+  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card px-2.5 py-1 text-[11.5px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.05)] [--face-ring:var(--ui-card)]",
+);
 
-const ORB = "size-[0.92em]";
+const NOTICE_ICONS: ReactNode[] = [<MessageSquare key="m" />, <CalendarDays key="c" />, <Video key="v" />, <Bell key="b" />];
 
 /**
- * What the floor is like, said the way a person would, the people in it set
- * into the words: two faces walking together, three at a table with a ring on
- * whoever is talking, one on their own and busy. Then what each is called and
- * how it works, under a hairline.
+ * Why a floor, as the same small question asked two ways: on the left the
+ * messages, the invite and the link it takes in most remote teams, piling
+ * up; on the right you walking over to Jack, and the call that's one tap
+ * away once you're there. Each side ends on how long it took.
  */
 export function Moments() {
-  const t = useTranslations("home");
-  const { emma, jack, olivia, sam, noah } = PEOPLE;
-  // A face at the size of the type around it, with the same light and shade the app's faces have.
-  const face = (seed: string, className?: string, busy?: boolean) => (
-    <span
-      className={cn(
-        "relative inline-block shrink-0 rounded-full",
-        ORB,
-        className,
-      )}
-      style={{
-        backgroundImage: faceBackground(seed),
-        boxShadow:
-          "inset -0.06em -0.08em 0.18em rgb(0 0 0 / 0.22), inset 0.04em 0.05em 0.12em rgb(255 255 255 / 0.28)",
-      }}
-    >
-      {busy && (
-        <span className="absolute bottom-[2%] end-[2%] size-[28%] rounded-full bg-destructive shadow-[0_0_0_0.06em_var(--ui-background)]" />
-      )}
-    </span>
-  );
-  const columns: Array<{
-    key: "walk" | "meet" | "door";
-    icon: ReactNode;
-    body: string;
-    href?: string;
-  }> = [
-    {
-      key: "walk",
-      icon: <Footprints />,
-      body: t("features.proximity.body"),
-      href: "/proximity-chat",
-    },
-    { key: "meet", icon: <Presentation />, body: t("features.meetings.body") },
-    { key: "door", icon: <DoorClosed />, body: t("moments.door.body") },
-  ];
+  const t = useTranslations("home.versus");
+  const { emma, jack, olivia, sam } = PEOPLE;
+  const notices = t.raw("before.items") as Array<{ title: string; body: string }>;
   return (
-    <section
-      id="floor"
-      className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}
-    >
+    <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
       <style>{KEYFRAMES}</style>
-      <h2
-        className={cn(
-          APP,
-          "text-[13px] font-medium uppercase tracking-[0.08em] text-muted-foreground",
-        )}
-      >
-        {t("moments.title")}
-      </h2>
-      <p
-        className={cn(
-          "mt-6 text-[36px] font-normal leading-[1.22] tracking-[-0.025em] sm:text-[54px] sm:leading-[1.18] lg:text-[62px] [:lang(ja)_&]:[word-break:auto-phrase]",
-          CJK_HEADLINE,
-        )}
-      >
-        {/* A sentence to a line where there's room for it. */}
-        <span className="sm:block">
-          {t.rich("moments.lines.walk", {
-            faces: () => (
-              <InType>
-                {face(emma.id)}
-                <span
-                  className="-ms-[0.18em] inline-flex"
-                  style={{
-                    animation: "m-near 6s cubic-bezier(.6,0,.3,1) infinite",
-                  }}
-                >
-                  {face(jack.id)}
-                </span>
-              </InType>
-            ),
-          })}
-        </span>{" "}
-        <span className="sm:block">
-          {t.rich("moments.lines.meet", {
-            faces: () => (
-              <InType>
-                {face(olivia.id)}
-                <span className="relative -ms-[0.18em] inline-flex">
-                  <span
-                    className="absolute -inset-[0.08em] rounded-full border-[0.05em] border-brand"
-                    style={{ animation: "m-talk 1.4s ease-in-out infinite" }}
-                  />
-                  {face(jack.id)}
-                </span>
-                <span className="-ms-[0.18em] inline-flex">{face(sam.id)}</span>
-              </InType>
-            ),
-          })}
-        </span>{" "}
-        <span className="sm:block">
-          {t.rich("moments.lines.door", {
-            faces: () => <InType>{face(noah.id, undefined, true)}</InType>,
-            quiet: (chunks) => (
-              <span className="text-muted-foreground/80">{chunks}</span>
-            ),
-          })}
-        </span>
-      </p>
-      <div
-        id="meetings"
-        className="mt-14 grid scroll-mt-28 gap-10 border-t border-border pt-10 sm:grid-cols-3 sm:gap-8"
-      >
-        {columns.map((one) => (
-          <div key={one.key}>
-            <span className="flex items-center gap-2 text-[15.5px] font-semibold [&_svg]:size-4 [&_svg]:text-brand">
-              {one.icon}
-              {t(`moments.labels.${one.key}`)}
-            </span>
-            <p className="mt-2.5 max-w-[24rem] text-pretty text-[15px] leading-relaxed text-muted-foreground">
-              {one.body}
-            </p>
-            {one.href && (
-              <Link
-                href={one.href}
-                className="group mt-3 inline-flex items-center gap-1 text-[14.5px] font-medium text-foreground"
+      <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
+        <Heading title={t("title")} muted={t("muted")} />
+        <p className="max-w-[30rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("body")}</p>
+      </div>
+      <div className="mt-12 grid gap-3 lg:mt-14 lg:grid-cols-2">
+        {/* The way it usually goes. */}
+        <div className="flex flex-col rounded-[28px] bg-muted/60 p-6 sm:p-8">
+          <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-muted-foreground")}>{t("before.label")}</p>
+          <ol className="mt-6 grid gap-2">
+            {notices.map((one, index) => (
+              <li
+                key={one.title}
+                className={cn(APP, "flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-[0_1px_2px_rgb(0_0_0/0.04)]")}
+                style={{ animation: `m-pile 10s ease-out ${index * 0.9}s infinite both` }}
               >
-                {t("moments.more")}
-                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
-              </Link>
-            )}
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-4">{NOTICE_ICONS[index]}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[12.5px] font-semibold text-foreground">{one.title}</span>
+                  <span className="block truncate text-[11.5px] text-muted-foreground">{one.body}</span>
+                </span>
+                <span className="size-2 shrink-0 rounded-full bg-brand" />
+              </li>
+            ))}
+          </ol>
+          <p className="mt-auto flex items-center gap-2 pt-8 text-[15px] text-muted-foreground">
+            <Clock3 className="size-4 shrink-0" />
+            {t("before.result")}
+          </p>
+        </div>
+
+        {/* The way it goes on a floor. */}
+        <div className="flex flex-col overflow-hidden rounded-[28px] border border-border bg-card p-6 sm:p-8">
+          <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-brand")}>{t("after.label")}</p>
+          {/* A picture, not text: laid out left to right in every language. */}
+          <div dir="ltr" className="relative mt-6 h-[252px] overflow-hidden rounded-[20px] bg-muted/50 [container-type:inline-size] [--face-ring:var(--ui-card)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle,var(--ui-border-strong)_1px,transparent_1.2px)] bg-[length:22px_22px] opacity-70" />
+            {/* The rest of the floor, getting on with their day. */}
+            <span className="absolute left-[8%] top-[12%] opacity-60">
+              <Face seed={sam.id} size={30} presence="busy" />
+            </span>
+            <span className="absolute bottom-[12%] left-[26%] opacity-60">
+              <Face seed={olivia.id} size={30} presence="available" />
+            </span>
+            {/* Jack, and his ring lighting up once you're beside him. */}
+            <span className="absolute right-[14%] top-[34%] flex flex-col items-center gap-1.5">
+              <span className="relative">
+                <span className="absolute -inset-2 rounded-full border-2 border-brand opacity-0" style={{ animation: "m-lit 8s ease-in-out infinite" }} />
+                <Face seed={jack.id} size={52} presence="available" />
+              </span>
+              <span className={PILL}>{jack.name}</span>
+            </span>
+            {/* You, and how far you can be heard, walking over. */}
+            <span
+              className="absolute left-[12%] top-[34%] [--reach:calc(100cqw*0.6-100px)]"
+              style={{ animation: "m-walk 8s cubic-bezier(.6,0,.3,1) infinite" }}
+            >
+              <span className="relative flex flex-col items-center gap-1.5">
+                <span className="absolute left-1/2 top-[26px] size-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-foreground/25 bg-brand/[0.05]" />
+                <Face seed={emma.id} size={52} />
+                <span className={cn(PILL, "relative")}>{t("after.you")}</span>
+              </span>
+            </span>
+            <span className="absolute bottom-4 right-4 opacity-0" style={{ animation: "m-lit 8s ease-in-out infinite" }}>
+              <span className={cn(PILL, "gap-2 py-1 pe-1 ps-1.5")}>
+                <Face seed={jack.id} size={20} />
+                {t("after.talking", { name: jack.name })}
+                <span className="flex size-6 items-center justify-center rounded-full bg-muted text-foreground">
+                  <Mic className="size-3" />
+                </span>
+              </span>
+            </span>
           </div>
-        ))}
+          <p className="mt-auto flex items-center gap-2 pt-8 text-[15px] text-foreground">
+            <Footprints className="size-4 shrink-0 text-brand" />
+            {t("after.result")}
+          </p>
+        </div>
       </div>
     </section>
   );

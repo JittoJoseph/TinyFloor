@@ -1219,22 +1219,38 @@
         "body": "Zaproś współpracowników e-mailem albo wyślij link gościa do klienta lub kandydata. Wybierają imię i postać i są na piętrze, bez konta."
       }
     },
-    "moments": {
-      "title": "Wirtualne biuro, które działa jak prawdziwe.",
-      "lines": {
-        "walk": "Podejdź <faces></faces>, żeby pogadać.",
-        "meet": "Usiądź <faces></faces> na spotkanie.",
-        "door": "Zamknij drzwi <faces></faces>, żeby się <quiet>skupić.</quiet>"
+    "versus": {
+      "title": "Szybkie pytanie",
+      "muted": "nie powinno wymagać zaproszenia w kalendarzu.",
+      "body": "W większości zdalnych zespołów zadanie pytania to wiadomość, zaproszenie i link do spotkania. W wirtualnym biurze po prostu podchodzisz, jak w pracy.",
+      "before": {
+        "label": "Bez piętra",
+        "items": [
+          {
+            "title": "Jack, masz dziś 5 minut?",
+            "body": "Wysłano 9:41 · Wyświetlono"
+          },
+          {
+            "title": "Szybki sync",
+            "body": "Jutro, 10:30–11:00 · Zaproszenie od Jacka"
+          },
+          {
+            "title": "Dołącz do rozmowy wideo",
+            "body": "Czekasz, aż gospodarz cię wpuści"
+          },
+          {
+            "title": "Możesz wskoczyć na call?",
+            "body": "3 nieprzeczytane wiadomości"
+          }
+        ],
+        "result": "Dzień później: 30-minutowe spotkanie w sprawie 2-minutowego pytania."
       },
-      "labels": {
-        "walk": "Czat zbliżeniowy",
-        "meet": "Sale spotkań",
-        "door": "Nie przeszkadzać"
-      },
-      "door": {
-        "body": "Ustaw status zajęty i zajmij prywatny gabinet. Inni widzą, że pracujesz w skupieniu, zanim podejdą, a czat na ciebie poczeka."
-      },
-      "more": "Jak działa czat zbliżeniowy"
+      "after": {
+        "label": "W TinyFloor",
+        "you": "Ty",
+        "talking": "Rozmowa z: {name} · 0:42",
+        "result": "Podejdź, zapytaj, wróć. Dwie minuty."
+      }
     },
     "steps": {
       "title": "Załóż wirtualne biuro w minutę.",

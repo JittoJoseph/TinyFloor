@@ -1219,22 +1219,38 @@
         "body": "Convide colegas por e-mail ou mande um link de convidado para um cliente ou candidato. Eles escolhem um nome e um personagem e já estão no andar, sem conta."
       }
     },
-    "moments": {
-      "title": "Um escritório virtual que funciona como um de verdade.",
-      "lines": {
-        "walk": "Vá até <faces></faces> alguém para conversar.",
-        "meet": "Sente-se <faces></faces> para a reunião.",
-        "door": "Feche a porta <faces></faces> para se <quiet>concentrar.</quiet>"
+    "versus": {
+      "title": "Uma pergunta rápida",
+      "muted": "não deveria precisar de convite na agenda.",
+      "body": "Na maioria das equipes remotas, perguntar exige uma mensagem, um convite e um link de reunião. Num escritório virtual, você vai até a pessoa, como no trabalho.",
+      "before": {
+        "label": "Sem um andar",
+        "items": [
+          {
+            "title": "Jack, tem 5 minutos hoje?",
+            "body": "Enviada 9:41 · Vista"
+          },
+          {
+            "title": "Alinhamento rápido",
+            "body": "Amanhã, das 10:30 às 11:00 · Convite de Jack"
+          },
+          {
+            "title": "Entrar na chamada de vídeo",
+            "body": "Esperando o anfitrião deixar você entrar"
+          },
+          {
+            "title": "Pode entrar numa chamada?",
+            "body": "3 mensagens não lidas"
+          }
+        ],
+        "result": "Um dia depois: uma reunião de 30 minutos para uma pergunta de 2."
       },
-      "labels": {
-        "walk": "Chat por proximidade",
-        "meet": "Salas de reunião",
-        "door": "Não perturbe"
-      },
-      "door": {
-        "body": "Marque-se como ocupado e use a sala privada. As pessoas veem que você está concentrado antes de chegar, e o chat espera por você."
-      },
-      "more": "Como funciona o chat por proximidade"
+      "after": {
+        "label": "No TinyFloor",
+        "you": "Você",
+        "talking": "Conversando com {name} · 0:42",
+        "result": "Vá até lá, pergunte, volte. Dois minutos."
+      }
     },
     "steps": {
       "title": "Monte um escritório virtual em um minuto.",

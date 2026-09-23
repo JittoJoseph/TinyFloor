@@ -1219,22 +1219,38 @@
         "body": "Inviter kolleger på e-post, eller send en gjestelenke til en kunde eller kandidat. De velger et navn og en figur og står i etasjen, uten konto."
       }
     },
-    "moments": {
-      "title": "Et virtuelt kontor som fungerer som et ekte.",
-      "lines": {
-        "walk": "Gå bort <faces></faces> for å snakke.",
-        "meet": "Sett deg <faces></faces> til møte.",
-        "door": "Lukk døren <faces></faces> for å <quiet>fokusere.</quiet>"
+    "versus": {
+      "title": "Et raskt spørsmål",
+      "muted": "burde ikke trenge en kalenderinvitasjon.",
+      "body": "I de fleste eksterne team krever et spørsmål en melding, en invitasjon og en møtelenke. I et virtuelt kontor går du bare bort, som på jobb.",
+      "before": {
+        "label": "Uten etasje",
+        "items": [
+          {
+            "title": "Jack, har du 5 minutter i dag?",
+            "body": "Sendt 9:41 · Sett"
+          },
+          {
+            "title": "Kjapp avstemming",
+            "body": "I morgen, 10:30 til 11:00 · Invitasjon fra Jack"
+          },
+          {
+            "title": "Bli med i videosamtalen",
+            "body": "Venter på at verten slipper deg inn"
+          },
+          {
+            "title": "Kan du hoppe inn i en samtale?",
+            "body": "3 uleste meldinger"
+          }
+        ],
+        "result": "En dag senere: et møte på 30 minutter for et spørsmål på 2."
       },
-      "labels": {
-        "walk": "Nærhetschat",
-        "meet": "Møterom",
-        "door": "Ikke forstyrr"
-      },
-      "door": {
-        "body": "Sett deg som opptatt og ta det private kontoret. Andre ser at du jobber konsentrert før de kommer bort, og chatten venter på deg."
-      },
-      "more": "Slik fungerer nærhetschat"
+      "after": {
+        "label": "På TinyFloor",
+        "you": "Deg",
+        "talking": "Snakker med {name} · 0:42",
+        "result": "Gå bort, spør, gå tilbake. To minutter."
+      }
     },
     "steps": {
       "title": "Sett opp et virtuelt kontor på ett minutt.",

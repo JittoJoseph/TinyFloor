@@ -1219,22 +1219,38 @@
         "body": "Lade Teammitglieder per E-Mail ein oder schick einen Gastlink an Kundschaft oder Bewerbende. Sie wählen einen Namen und eine Figur und stehen auf der Fläche, ganz ohne Konto."
       }
     },
-    "moments": {
-      "title": "Ein virtuelles Büro, das wie ein echtes funktioniert.",
-      "lines": {
-        "walk": "Geh rüber <faces></faces> zum Reden.",
-        "meet": "Setz dich <faces></faces> zum Meeting.",
-        "door": "Mach die Tür zu <faces></faces> und <quiet>konzentrier dich.</quiet>"
+    "versus": {
+      "title": "Eine kurze Frage",
+      "muted": "braucht keine Kalendereinladung.",
+      "body": "In den meisten Remote-Teams braucht eine Frage eine Nachricht, eine Einladung und einen Meeting-Link. In einem virtuellen Büro gehst du einfach rüber, wie bei der Arbeit.",
+      "before": {
+        "label": "Ohne Etage",
+        "items": [
+          {
+            "title": "Jack, hast du heute 5 Minuten?",
+            "body": "Gesendet 9:41 · Gesehen"
+          },
+          {
+            "title": "Kurzer Abgleich",
+            "body": "Morgen, 10:30 bis 11:00 · Einladung von Jack"
+          },
+          {
+            "title": "Dem Videoanruf beitreten",
+            "body": "Warte, bis der Host dich reinlässt"
+          },
+          {
+            "title": "Kannst du kurz in einen Call?",
+            "body": "3 ungelesene Nachrichten"
+          }
+        ],
+        "result": "Einen Tag später: ein 30-Minuten-Meeting für eine 2-Minuten-Frage."
       },
-      "labels": {
-        "walk": "Proximity-Chat",
-        "meet": "Besprechungsräume",
-        "door": "Bitte nicht stören"
-      },
-      "door": {
-        "body": "Stell dich auf beschäftigt und nimm das Einzelbüro. Alle sehen, dass du konzentriert arbeitest, bevor sie vorbeikommen, und der Chat wartet auf dich."
-      },
-      "more": "So funktioniert Proximity-Chat"
+      "after": {
+        "label": "Auf TinyFloor",
+        "you": "Du",
+        "talking": "Im Gespräch mit {name} · 0:42",
+        "result": "Rübergehen, fragen, zurückgehen. Zwei Minuten."
+      }
     },
     "steps": {
       "title": "Richte in einer Minute ein virtuelles Büro ein.",

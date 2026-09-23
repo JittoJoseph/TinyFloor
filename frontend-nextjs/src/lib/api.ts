@@ -22,6 +22,8 @@ export interface SessionUser {
   displayName: string;
   character: string;
   guest: boolean;
+  /** Has a password; someone who only signs in with Google doesn't, until they set one. */
+  password?: boolean;
 }
 
 export type OfficeRole = "admin" | "member";

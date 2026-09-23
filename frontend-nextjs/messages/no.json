@@ -941,6 +941,8 @@
     "profile": {
       "title": "Profilen din",
       "changePassword": "Endre passord",
+      "setPassword": "Velg et passord",
+      "setPasswordDescription": "Legg til et passord for å logge inn med e-posten din også, ikke bare med Google.",
       "name": "Navnet ditt",
       "saved": "Lagret",
       "save": "Lagre",

@@ -941,6 +941,8 @@
     "profile": {
       "title": "Ваш профиль",
       "changePassword": "Сменить пароль",
+      "setPassword": "Задать пароль",
+      "setPasswordDescription": "Добавьте пароль, чтобы входить не только через Google, но и по почте.",
       "name": "Ваше имя",
       "saved": "Сохранено",
       "save": "Сохранить",

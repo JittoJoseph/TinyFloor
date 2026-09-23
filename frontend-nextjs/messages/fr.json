@@ -941,6 +941,8 @@
     "profile": {
       "title": "Votre profil",
       "changePassword": "Changer le mot de passe",
+      "setPassword": "Définir un mot de passe",
+      "setPasswordDescription": "Ajoutez un mot de passe pour vous connecter aussi avec votre e-mail, pas seulement avec Google.",
       "name": "Votre nom",
       "saved": "Enregistré",
       "save": "Enregistrer",

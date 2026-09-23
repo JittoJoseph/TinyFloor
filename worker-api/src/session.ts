@@ -17,6 +17,8 @@ export interface User {
   displayName: string;
   character: string;
   isGuest: boolean;
+  /** Has a password, not only Google. */
+  hasPassword?: boolean;
   /** The hashed id of the session this request came with. */
   sessionId: string;
 }
@@ -27,6 +29,7 @@ interface SessionRow {
   display_name: string;
   character: string;
   is_guest: number;
+  has_password: number;
   last_seen_at: number;
 }
 
@@ -83,7 +86,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const now = Date.now();
   const id = await hashToken(token);
   const row = await env.DB.prepare(
-    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest
+    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -110,6 +113,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     displayName: row.display_name,
     character: row.character,
     isGuest: row.is_guest === 1,
+    hasPassword: row.has_password === 1,
     sessionId: id,
   };
 }

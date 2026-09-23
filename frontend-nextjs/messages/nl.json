@@ -941,6 +941,8 @@
     "profile": {
       "title": "Je profiel",
       "changePassword": "Wachtwoord wijzigen",
+      "setPassword": "Wachtwoord instellen",
+      "setPasswordDescription": "Stel een wachtwoord in om ook met je e-mailadres in te loggen, niet alleen met Google.",
       "name": "Je naam",
       "saved": "Opgeslagen",
       "save": "Opslaan",

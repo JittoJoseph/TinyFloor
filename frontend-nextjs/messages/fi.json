@@ -941,6 +941,8 @@
     "profile": {
       "title": "Profiilisi",
       "changePassword": "Vaihda salasana",
+      "setPassword": "Aseta salasana",
+      "setPasswordDescription": "Lisää salasana, niin voit kirjautua myös sähköpostillasi etkä vain Googlella.",
       "name": "Nimesi",
       "saved": "Tallennettu",
       "save": "Tallenna",

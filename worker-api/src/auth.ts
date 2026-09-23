@@ -81,7 +81,7 @@ export function authRoutes(router: Router): void {
       }
 
       const { sessionId, cookie } = await createSession(env, request, userId, ACCOUNT_SESSION_MS);
-      const user: User = { id: userId, email, displayName, character, isGuest: false, sessionId };
+      const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, sessionId };
       return json({ user: publicUser(user) }, { status: 201, headers: { "Set-Cookie": cookie } });
     })
 
@@ -139,6 +139,7 @@ export function authRoutes(router: Router): void {
         displayName: found.display_name,
         character: found.character,
         isGuest: false,
+        hasPassword: true,
         sessionId,
       };
       return json({ user: publicUser(user) }, { headers: { "Set-Cookie": cookie } });
@@ -159,7 +160,8 @@ export function authRoutes(router: Router): void {
         .bind(user.id)
         .first<{ password_hash: string | null }>();
       const emailGuard = guard(env, `email:${user.email}`);
-      const verdict = await emailGuard.verify(current.slice(0, 256), row?.password_hash ?? null);
+      // Someone who has only ever signed in with Google is setting their first password: there is none to check.
+      const verdict = row?.password_hash ? await emailGuard.verify(current.slice(0, 256), row.password_hash) : { ok: true as const };
       if (!verdict.ok) {
         throw verdict.reason === "locked"
           ? new HttpError(429, "too_many_attempts", "Too many wrong passwords. Try again later")
@@ -265,5 +267,6 @@ export function publicUser(user: User) {
     displayName: user.displayName,
     character: user.character,
     guest: user.isGuest,
+    password: !!user.hasPassword,
   };
 }

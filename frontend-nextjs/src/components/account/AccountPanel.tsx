@@ -13,7 +13,7 @@ import { CharacterPicker } from "@/components/entry/CharacterPicker";
 /** Your account: the name people see, your email, and your password. */
 export function AccountPanel() {
   const t = useTranslations("office.profile");
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, refresh } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -50,7 +50,7 @@ export function AccountPanel() {
         action={
           <Button onClick={() => setPasswordOpen(true)}>
             <KeyRound className="w-4 h-4" />
-            {t("changePassword")}
+            {user.password ? t("changePassword") : t("setPassword")}
           </Button>
         }
       />
@@ -69,7 +69,15 @@ export function AccountPanel() {
           {saved ? t("saved") : t("save")}
         </Button>
       </form>
-      <PasswordDialog open={passwordOpen} onClose={() => setPasswordOpen(false)} />
+      <PasswordDialog
+        open={passwordOpen}
+        first={!user.password}
+        onClose={() => {
+          setPasswordOpen(false);
+          // A first password changes what the account can do; the session says so again.
+          void refresh();
+        }}
+      />
     </Card>
   );
 }
@@ -107,7 +115,8 @@ export function CharacterPanel() {
   );
 }
 
-function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+/** Changing the password, or setting a first one for someone who has only used Google, which asks for no current password. */
+function PasswordDialog({ open, first, onClose }: { open: boolean; first: boolean; onClose: () => void }) {
   const t = useTranslations("office.profile");
   const explain = useErrorMessage();
   const [current, setCurrent] = useState("");
@@ -128,11 +137,11 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!current || next.length < 8 || busy) return;
+    if ((!first && !current) || next.length < 8 || busy) return;
     setBusy(true);
     setError("");
     try {
-      await api.changePassword({ currentPassword: current, newPassword: next });
+      await api.changePassword({ currentPassword: first ? "" : current, newPassword: next });
       setDone(true);
     } catch (err) {
       setError(explain(err));
@@ -142,7 +151,12 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
   };
 
   return (
-    <Dialog open={open} title={t("passwordTitle")} description={done ? undefined : t("passwordDescription")} onClose={close}>
+    <Dialog
+      open={open}
+      title={first ? t("setPassword") : t("passwordTitle")}
+      description={done ? undefined : first ? t("setPasswordDescription") : t("passwordDescription")}
+      onClose={close}
+    >
       {done ? (
         <div className="space-y-4">
           <p className="flex items-center gap-2 text-[14px] text-ok">
@@ -159,17 +173,19 @@ function PasswordDialog({ open, onClose }: { open: boolean; onClose: () => void 
         <form onSubmit={submit} className="space-y-4">
           {/* Lets password managers know whose password this is. */}
           <input type="email" autoComplete="username" className="hidden" readOnly tabIndex={-1} aria-hidden />
-          <div>
-            <Label htmlFor="password-current">{t("currentPassword")}</Label>
-            <input
-              id="password-current"
-              type={show ? "text" : "password"}
-              autoComplete="current-password"
-              value={current}
-              onChange={(event) => setCurrent(event.target.value)}
-              className={fieldClass}
-            />
-          </div>
+          {!first && (
+            <div>
+              <Label htmlFor="password-current">{t("currentPassword")}</Label>
+              <input
+                id="password-current"
+                type={show ? "text" : "password"}
+                autoComplete="current-password"
+                value={current}
+                onChange={(event) => setCurrent(event.target.value)}
+                className={fieldClass}
+              />
+            </div>
+          )}
           <div>
             <Label htmlFor="password-new">{t("newPassword")}</Label>
             <div className="relative">

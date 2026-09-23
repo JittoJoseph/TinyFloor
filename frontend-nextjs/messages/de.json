@@ -941,6 +941,8 @@
     "profile": {
       "title": "Dein Profil",
       "changePassword": "Passwort ändern",
+      "setPassword": "Passwort festlegen",
+      "setPasswordDescription": "Leg ein Passwort fest, um dich auch mit deiner E-Mail-Adresse anzumelden, nicht nur mit Google.",
       "name": "Dein Name",
       "saved": "Gespeichert",
       "save": "Speichern",

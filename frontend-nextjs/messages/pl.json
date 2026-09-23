@@ -941,6 +941,8 @@
     "profile": {
       "title": "Twój profil",
       "changePassword": "Zmień hasło",
+      "setPassword": "Ustaw hasło",
+      "setPasswordDescription": "Dodaj hasło, aby logować się także adresem e-mail, nie tylko przez Google.",
       "name": "Twoje imię",
       "saved": "Zapisano",
       "save": "Zapisz",

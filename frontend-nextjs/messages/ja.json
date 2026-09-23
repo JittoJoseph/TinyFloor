@@ -941,6 +941,8 @@
     "profile": {
       "title": "プロフィール",
       "changePassword": "パスワードを変更",
+      "setPassword": "パスワードを設定",
+      "setPasswordDescription": "Google に加えて、メールアドレスでもログインできるようにパスワードを追加します。",
       "name": "名前",
       "saved": "保存しました",
       "save": "保存",

@@ -941,6 +941,8 @@
     "profile": {
       "title": "Din profil",
       "changePassword": "Byt lösenord",
+      "setPassword": "Ange ett lösenord",
+      "setPasswordDescription": "Lägg till ett lösenord för att logga in med din e-post också, inte bara med Google.",
       "name": "Ditt namn",
       "saved": "Sparat",
       "save": "Spara",

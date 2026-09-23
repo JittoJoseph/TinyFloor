@@ -258,7 +258,7 @@ function checkPassword(value: unknown, field = "password"): string {
   return password;
 }
 
-function publicUser(user: User) {
+export function publicUser(user: User) {
   return {
     id: user.id,
     email: user.email,

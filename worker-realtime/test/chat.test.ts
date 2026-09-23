@@ -221,15 +221,11 @@ describe("lobby chat", () => {
     expect(seen.message).toMatchObject({ channel: "introductions", authorName: "Mara", body: text });
   });
 
-  it("keeps what an office adds for offices: no channels, no DMs, no images, no other channel names", async () => {
+  it("keeps what an office adds for offices: no channels, no images, no other channel names", async () => {
     const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-ada-${sequence++}`, name: "Ada" });
     await ada.next("chat_ready");
 
     ada.send({ t: "chat_channel", name: "random" });
-    expect((await ada.next("chat_error")).code).toBe("offices_only");
-    ada.messages.length = 0;
-
-    ada.send({ t: "chat_dm", userId: "someone" });
     expect((await ada.next("chat_error")).code).toBe("offices_only");
     ada.messages.length = 0;
 
@@ -239,6 +235,80 @@ describe("lobby chat", () => {
 
     ada.send({ t: "chat_send", channel: "random", body: "nope" });
     expect((await ada.next("chat_error")).code).toBe("no_such_channel");
+  });
+
+  it("passes direct messages between two people without storing them, and says when the other isn't there", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dm-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dm-bo-${sequence++}`, name: "Bo" }, "guest");
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    const channel = dmChannelId(ada.userId, bo.userId);
+    ada.send({ t: "chat_dm", userId: bo.userId });
+    expect((await ada.next("chat_channel")).channel).toMatchObject({ id: channel, kind: "dm", name: "Bo" });
+
+    ada.send({ t: "chat_send", channel, body: "just between us" });
+    const got = await bo.next("chat_new");
+    expect(got.message).toMatchObject({ channel, body: "just between us", passing: true });
+    expect(got.message.seq).toBeLessThan(0);
+
+    await runInDurableObject(env.CHAT.getByName(LOBBY_CHAT), async (_chat, state) => {
+      const stored = state.storage.sql.exec("SELECT 1 FROM messages WHERE channel = ?", channel).toArray();
+      expect(stored).toHaveLength(0);
+    });
+
+    // Someone outside the conversation can't post into it.
+    const cy = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dm-cy-${sequence++}`, name: "Cy" });
+    await cy.next("chat_ready");
+    cy.send({ t: "chat_send", channel, body: "hi" });
+    expect((await cy.next("chat_error")).code).toBe("no_such_channel");
+
+    // Bo leaves: everyone hears, and Ada's next message has nowhere to go.
+    bo.socket.close(1000, "left");
+    expect((await ada.next("chat_gone")).userId).toBe(bo.userId);
+    ada.send({ t: "chat_send", channel, body: "still there?" });
+    expect((await ada.next("chat_error")).code).toBe("not_here");
+  });
+
+  it("lets people edit and delete what they said in the lobby, and only that", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-edit-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(LOBBY_CHAT, { id: `lobby-edit-bo-${sequence++}`, name: "Bo" });
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    ada.send({ t: "chat_send", channel: "general", body: "helo" });
+    const { seq } = (await ada.next("chat_new")).message;
+    await bo.next("chat_new");
+
+    // Not Bo's to change.
+    bo.send({ t: "chat_edit", seq, body: "hijacked" });
+    bo.send({ t: "chat_delete", seq });
+
+    ada.send({ t: "chat_edit", seq, body: "hello" });
+    const edited = await bo.next("chat_edited");
+    expect(edited).toMatchObject({ seq, channel: "general", body: "hello" });
+
+    ada.send({ t: "chat_history", channel: "general" });
+    const page = await ada.next("chat_page");
+    expect(page.messages.find((one) => one.seq === seq)).toMatchObject({ body: "hello", edited: edited.edited });
+
+    ada.send({ t: "chat_delete", seq });
+    expect(await bo.next("chat_deleted")).toMatchObject({ seq, channel: "general" });
+    await runInDurableObject(env.CHAT.getByName(LOBBY_CHAT), async (_chat, state) => {
+      expect(state.storage.sql.exec("SELECT 1 FROM messages WHERE seq = ?", seq).toArray()).toHaveLength(0);
+    });
+  });
+
+  it("keeps editing to the lobby", async () => {
+    const office = `office-edit-${sequence++}`;
+    const ada = await ChatClient.open(office, { id: `edit-ada-${sequence++}`, name: "Ada" });
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "first" });
+    const { seq } = (await ada.next("chat_new")).message;
+    ada.send({ t: "chat_edit", seq, body: "second" });
+    ada.send({ t: "chat_history", channel: GENERAL_CHANNEL });
+    const page = await ada.next("chat_page");
+    expect(page.messages.find((one) => one.seq === seq)?.body).toBe("first");
   });
 
   it("forgets messages older than a week, once a day", async () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { localizedMetadata } from "@/lib/seo";
-import { appNode, faqNode, pageGraph } from "@/lib/structured-data";
+import { MORE_FEATURES, appNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import type { Locale } from "@/lib/i18n/routing";
 import { HomePage } from "@/components/home/HomePage";
@@ -22,7 +22,7 @@ export default async function LandingPage({ params }: Props) {
   const app = appNode(
     locale,
     t("landing.description"),
-    t.raw("landing.features") as string[],
+    [...(t.raw("landing.features") as string[]), ...MORE_FEATURES.map((key) => t(`home.more.items.${key}.title`))],
   );
 
   return (

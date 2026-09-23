@@ -941,6 +941,8 @@
     "profile": {
       "title": "ملفك الشخصي",
       "changePassword": "تغيير كلمة المرور",
+      "setPassword": "تعيين كلمة مرور",
+      "setPasswordDescription": "أضف كلمة مرور لتسجّل الدخول ببريدك الإلكتروني أيضًا، وليس بـ Google فقط.",
       "name": "اسمك",
       "saved": "تم الحفظ",
       "save": "حفظ",

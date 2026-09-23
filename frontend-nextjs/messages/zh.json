@@ -941,6 +941,8 @@
     "profile": {
       "title": "你的资料",
       "changePassword": "修改密码",
+      "setPassword": "设置密码",
+      "setPasswordDescription": "添加密码后，除了 Google，也可以用邮箱登录。",
       "name": "你的名字",
       "saved": "已保存",
       "save": "保存",

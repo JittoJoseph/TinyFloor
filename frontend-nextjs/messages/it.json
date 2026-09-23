@@ -941,6 +941,8 @@
     "profile": {
       "title": "Il tuo profilo",
       "changePassword": "Cambia password",
+      "setPassword": "Imposta una password",
+      "setPasswordDescription": "Aggiungi una password per accedere anche con la tua email, non solo con Google.",
       "name": "Il tuo nome",
       "saved": "Salvato",
       "save": "Salva",

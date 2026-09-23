@@ -28,6 +28,7 @@ interface AccountRow {
   display_name: string;
   character: string;
   google_sub: string | null;
+  has_password?: number;
 }
 
 export function googleRoutes(router: Router): void {
@@ -41,7 +42,7 @@ export function googleRoutes(router: Router): void {
 
     const google = await identify(env, body.code);
     const current = await currentUser(env, request, ctx);
-    const columns = "id, email, display_name, character, google_sub";
+    const columns = "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password";
 
     let account =
       (await env.DB.prepare(`SELECT ${columns} FROM users WHERE google_sub = ?`).bind(google.sub).first<AccountRow>()) ??
@@ -90,6 +91,7 @@ export function googleRoutes(router: Router): void {
       displayName: account.display_name,
       character: account.character,
       isGuest: false,
+      hasPassword: account.has_password === 1,
       sessionId,
     };
     return json({ user: publicUser(user), created }, { status: created ? 201 : 200, headers: { "Set-Cookie": cookie } });

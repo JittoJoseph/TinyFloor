@@ -941,6 +941,8 @@
     "profile": {
       "title": "Din profil",
       "changePassword": "Skift adgangskode",
+      "setPassword": "Vælg en adgangskode",
+      "setPasswordDescription": "Tilføj en adgangskode, så du også kan logge ind med din e-mail og ikke kun med Google.",
       "name": "Dit navn",
       "saved": "Gemt",
       "save": "Gem",

@@ -941,6 +941,8 @@
     "profile": {
       "title": "내 프로필",
       "changePassword": "비밀번호 변경",
+      "setPassword": "비밀번호 설정",
+      "setPasswordDescription": "Google뿐 아니라 이메일로도 로그인할 수 있도록 비밀번호를 추가하세요.",
       "name": "이름",
       "saved": "저장됨",
       "save": "저장",

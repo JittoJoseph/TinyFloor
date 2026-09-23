@@ -125,6 +125,26 @@ describe("sign in with Google", () => {
     expect((await call(guest, "GET", "/v1/session")).body.user).toBeNull();
   });
 
+  it("lets someone who came in with Google set a first password, and then sign in with it", async () => {
+    claims = person();
+    const made = await google();
+    expect(made.body.user.password).toBe(false);
+    const set = await exports.default.fetch(`${API}/v1/me/password`, {
+      method: "POST",
+      headers: { Origin: SITE, "Content-Type": "application/json", Cookie: made.cookie! },
+      body: JSON.stringify({ newPassword: "a new password" }),
+    });
+    expect(set.status).toBe(200);
+    const login = await exports.default.fetch(`${API}/v1/auth/login`, {
+      method: "POST",
+      headers: { Origin: SITE, "Content-Type": "application/json", "CF-Connecting-IP": "10.9.200.1" },
+      body: JSON.stringify({ email: String(claims.email).toLowerCase(), password: "a new password" }),
+    });
+    expect(login.status).toBe(200);
+    expect(((await login.json()) as { user: { password: boolean } }).user.password).toBe(true);
+    // Two bcrypt runs, which take a while when every test file runs at once.
+  }, 20_000);
+
   it("refuses a token meant for another app, expired, or with an unverified email", async () => {
     for (const bad of [{ aud: "other.apps.googleusercontent.com" }, { exp: 1 }, { iss: "https://evil.example" }]) {
       claims = person(bad);

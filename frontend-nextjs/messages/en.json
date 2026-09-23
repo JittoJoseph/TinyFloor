@@ -941,6 +941,8 @@
     "profile": {
       "title": "Your profile",
       "changePassword": "Change password",
+      "setPassword": "Set a password",
+      "setPasswordDescription": "Add a password to sign in with your email as well as with Google.",
       "name": "Your name",
       "saved": "Saved",
       "save": "Save",

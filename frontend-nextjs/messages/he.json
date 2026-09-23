@@ -941,6 +941,8 @@
     "profile": {
       "title": "הפרופיל שלכם",
       "changePassword": "שינוי סיסמה",
+      "setPassword": "הגדרת סיסמה",
+      "setPasswordDescription": "הוסיפו סיסמה כדי להתחבר גם עם האימייל, לא רק עם Google.",
       "name": "השם שלכם",
       "saved": "נשמר",
       "save": "שמירה",

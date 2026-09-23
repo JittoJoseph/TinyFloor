@@ -6,7 +6,7 @@ import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";
 import { FloorScene, OnFloor } from "@/components/floor/FloorScene";
-import { NearbyBar } from "@/components/floor/PlayableYou";
+import { NearbyBar } from "@/components/floor/NearbyBar";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { COLUMN, Heading } from "./Blocks";
 

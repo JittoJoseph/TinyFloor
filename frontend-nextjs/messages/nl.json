@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Teamgenoot uitnodigen",
       "inviteTeammateNote": "Ze komen binnen met een link",
       "video": "Videogesprek",
-      "audio": "Spraakgesprek",
-      "you": "Jij",
-      "clickToWalk": "Klik ergens om te lopen",
-      "playable": "De verdieping, om te proberen: klik ergens om erheen te lopen, of gebruik de pijltjestoetsen"
+      "audio": "Spraakgesprek"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",

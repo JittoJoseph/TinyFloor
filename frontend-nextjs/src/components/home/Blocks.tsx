@@ -98,16 +98,16 @@ export function Heading({
 /** Rich copy's <em> as the quieter half of a two-tone headline. */
 export const quiet = (chunks: ReactNode) => <span className="text-muted-foreground/80">{chunks}</span>;
 
-/** The two ways in. */
+/** The two ways in: the lobby first, since it needs no account, then an office of your own. */
 export function Actions({ className }: { className?: string }) {
   const t = useTranslations("home");
   return (
     <div className={cn("flex flex-wrap items-center justify-center gap-2.5", className)}>
-      <Link href="/create" className={INK}>
-        {t("nav.start")}
-      </Link>
-      <Link href="/lobby" className={STONE}>
+      <Link href="/lobby" className={INK}>
         {t("hero.secondary")}
+      </Link>
+      <Link href="/create" className={STONE}>
+        {t("nav.start")}
       </Link>
     </div>
   );
@@ -155,7 +155,7 @@ export function ProductPreview({ className }: { className?: string }) {
         label={t("previewLabel")}
         labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
         panels={{
-          floor: <PreviewFrame view="floor"><FloorPreview playable priority /></PreviewFrame>,
+          floor: <PreviewFrame view="floor"><FloorPreview priority /></PreviewFrame>,
           chat: <PreviewFrame view="chat"><ChatPreview /></PreviewFrame>,
           people: <PreviewFrame view="people"><PeoplePreview /></PreviewFrame>,
           meeting: <PreviewFrame view="meeting"><MeetingPreview /></PreviewFrame>,
@@ -337,11 +337,11 @@ export function Final() {
           <Heading title={t("final.title")} className="mt-7 max-w-[15ch]" />
           <p className="mt-5 max-w-[30rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
           <div className="mt-9 flex flex-wrap gap-2.5">
-            <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
-              {t("nav.start")}
-            </Link>
-            <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+            <Link href="/lobby" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
               {t("hero.secondary")}
+            </Link>
+            <Link href="/create" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+              {t("nav.start")}
             </Link>
           </div>
         </div>

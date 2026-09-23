@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Inviter un coéquipier",
       "inviteTeammateNote": "Il suffit d'un lien pour entrer",
       "video": "Appel vidéo",
-      "audio": "Appel audio",
-      "you": "Vous",
-      "clickToWalk": "Cliquez n'importe où pour marcher",
-      "playable": "L'étage, à essayer : cliquez n'importe où pour y aller, ou utilisez les flèches"
+      "audio": "Appel audio"
     },
     "footer": {
       "tagline": "Un bureau virtuel où l'on se déplace.",

@@ -1355,10 +1355,7 @@
       "inviteTeammate": "邀请队友",
       "inviteTeammateNote": "通过链接加入",
       "video": "视频通话",
-      "audio": "语音通话",
-      "you": "你",
-      "clickToWalk": "点击任意位置走过去",
-      "playable": "可以试走的楼层：点击任意位置走过去，或使用方向键"
+      "audio": "语音通话"
     },
     "footer": {
       "tagline": "可以四处走动的虚拟办公室。",

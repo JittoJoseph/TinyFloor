@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Bjud in en kollega",
       "inviteTeammateNote": "De kommer in med en länk",
       "video": "Videosamtal",
-      "audio": "Röstsamtal",
-      "you": "Du",
-      "clickToWalk": "Klicka var som helst för att gå",
-      "playable": "Våningen att testa: klicka var som helst för att gå dit, eller använd piltangenterna"
+      "audio": "Röstsamtal"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",

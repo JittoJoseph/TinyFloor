@@ -66,43 +66,8 @@ export const RoomIconButton = React.forwardRef<
   );
 });
 
-/** The same button with a word next to the icon, for the header. */
-export const RoomButton = React.forwardRef<
-  HTMLButtonElement,
-  {
-    icon: React.ReactNode;
-    children: React.ReactNode;
-    tone?: Tone;
-    /** Hides the word on phones, where the icon is enough. */
-    compact?: boolean;
-  } & React.ButtonHTMLAttributes<HTMLButtonElement>
->(function RoomButton({ icon, children, tone = "quiet", compact = true, className = "", ...rest }, ref) {
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={`${base} ${TONES[tone]} h-10 gap-2 rounded-full px-3 sm:px-4 ${label} ${className}`}
-      {...rest}
-    >
-      {icon}
-      <span className={compact ? "hidden sm:inline" : undefined}>{children}</span>
-    </button>
-  );
-});
-
-/** The link version of the same thing, for Leave. */
-export function roomLinkClass(tone: Tone = "quiet") {
-  return `${base} ${TONES[tone]} h-10 gap-2 rounded-full px-3 sm:px-4 ${label}`;
-}
-
 /** A hairline between groups of buttons. */
 export const Divider = ({ className = "" }: { className?: string }) => (
   <span aria-hidden="true" className={`w-px h-6 bg-border shrink-0 ${className}`} />
 );
 
-/** The count badge on the chat button. */
-export const Badge = ({ count }: { count: number }) => (
-  <span className="absolute -top-1 -end-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand text-white text-[10px] font-bold leading-[18px] text-center ring-2 ring-card">
-    {count > 9 ? "9+" : count}
-  </span>
-);

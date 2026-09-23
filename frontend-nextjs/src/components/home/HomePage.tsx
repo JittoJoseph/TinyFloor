@@ -1,49 +1,33 @@
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import {
-  AudioLines,
-  Check,
-  CircleDot,
-  Clock3,
-  Globe2,
-  Languages,
-  LockKeyhole,
-  MonitorSmartphone,
-  MonitorUp,
-  Music2,
-  PenLine,
-  Smartphone,
-  SunMoon,
-} from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { AudioLines, Check, Clock3, Languages, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
-import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, RuledSheet, STONE } from "./Blocks";
+import { wholeWords } from "@/lib/words";
+import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
+import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
-import { FloorPreview } from "./previews/FloorPreview";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
-import { MeetingPreview } from "./previews/MeetingPreview";
 import { GuestPreview } from "./previews/GuestPreview";
-import { NetworkGlobe } from "./previews/NetworkGlobe";
-
-/** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
-const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 
 /**
- * The home page, in the app's own design system and theme, built around
- * previews of the real app. The page speaks in its own face (Nunito); the
- * previews keep the app's. Everything here is server-rendered markup; the
- * only scripts are the hero's tab switcher, the nav's signed-in check and the
- * footer's theme switch.
+ * The home page, in the app's own design system and theme, built on the real
+ * floor: the map the app loads, with people on it. The hero's floor is yours
+ * to walk; what the floor is like is set in type with the people in it; the
+ * rest is the app doing it, how to start, and who it's for. The page speaks in its own face (Nunito); the app's pieces keep
+ * the app's.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const t = useTranslations("home");
   return (
     <MarketingShell>
       <Hero />
-      <Days />
-      <More />
+      <Moments />
+      <Everything />
+      <Steps />
+      <UseCases />
       <Trust />
       <Plans />
       <Faq title={<>{t("faq.title")} <span className="text-muted-foreground/80">{t("faq.muted")}</span></>} items={faqs} />
@@ -54,147 +38,72 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
 
 function Hero() {
   const t = useTranslations("home");
+  const locale = useLocale();
   const points = t.raw("hero.points") as string[];
   return (
-    <section className={cn(COLUMN, "pt-16 sm:pt-24")}>
-      <div className="mx-auto flex max-w-[48rem] flex-col items-center text-center">
+    <section className={cn(COLUMN, "pt-14 sm:pt-24")}>
+      <div className="mx-auto flex max-w-[52rem] flex-col items-center text-center">
         <LobbyPill />
         <h1
           className={cn(
-            "mt-8 text-balance hyphens-auto text-[40px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[62px] lg:text-[72px]",
+            "mt-8 text-balance hyphens-auto text-[42px] font-semibold leading-[1.03] tracking-[-0.038em] sm:text-[64px] sm:leading-[1.02] lg:text-[76px]",
             CJK_HEADLINE,
           )}
         >
-          {t("hero.title")}
+          {wholeWords(t("hero.title"), locale)}
         </h1>
         <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{t("hero.body")}</p>
         <Actions className="mt-10" />
         <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
       </div>
-      <ProductPreview className="mt-16 sm:mt-20" />
+      <ProductPreview className="mt-14 sm:mt-20" />
     </section>
   );
 }
 
-/**
- * The rest of the product as one set of cards, the way a day on the floor
- * goes: two wide ones (walking over, sitting down), then three smaller ones
- * (chat, who's around, guests). Each card is its words, then the app doing
- * it, running off the card's bottom edge.
- */
-function Days() {
+/** The rest of the app: three cards with the app doing it, then the smaller things in one quiet line. */
+function Everything() {
   const t = useTranslations("home");
-  const card = (key: "proximity" | "meetings" | "chat" | "people" | "guests") => ({
+  const card = (key: "chat" | "people" | "guests") => ({
     title: t(`features.${key}.title`),
     muted: t(`features.${key}.muted`),
     body: t(`features.${key}.body`),
   });
+  const extras: Array<{ key: "screen" | "whiteboard" | "music" | "noise" | "mobile" | "languages"; icon: ReactNode }> = [
+    { key: "screen", icon: <MonitorUp /> },
+    { key: "whiteboard", icon: <PenLine /> },
+    { key: "music", icon: <Music2 /> },
+    { key: "noise", icon: <AudioLines /> },
+    { key: "mobile", icon: <Smartphone /> },
+    { key: "languages", icon: <Languages /> },
+  ];
   return (
-    <section id="features" className={cn(COLUMN, "scroll-mt-20 pt-24 sm:pt-32")}>
-      <Heading title={t("days.title")} muted={t("days.muted")} block className="max-w-[26ch]" />
-      <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-2">
-        <DayCard id="floor" {...card("proximity")}>
-          <Frame active="floor" rail={false} className="h-full">
-            <FloorPreview near />
-          </Frame>
-        </DayCard>
-        <DayCard id="meetings" {...card("meetings")}>
-          <Frame active="meeting" rail={false} className="h-full">
-            <MeetingPreview close />
-          </Frame>
-        </DayCard>
-      </div>
-      <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
-        <DayCard id="chat" small {...card("chat")}>
+    <section id="features" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
+      <Heading title={t("more.title")} muted={t("more.muted")} className="max-w-[22ch]" />
+      <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
+        <DayCard id="chat" {...card("chat")}>
           <Frame active="chat" rail={false} className="h-full">
             <ChatPreview compact />
           </Frame>
         </DayCard>
-        <DayCard id="people" small {...card("people")}>
+        <DayCard id="people" {...card("people")}>
           <Frame active="people" rail={false} className="h-full">
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" small {...card("guests")}>
+        <DayCard id="guests" {...card("guests")}>
           <Frame active="people" rail={false} className="h-full">
             <GuestPreview />
           </Frame>
         </DayCard>
       </div>
-    </section>
-  );
-}
-
-const MORE: Array<{ key: string; icon: ReactNode }> = [
-  { key: "screen", icon: <MonitorUp /> },
-  { key: "whiteboard", icon: <PenLine /> },
-  { key: "music", icon: <Music2 /> },
-  { key: "status", icon: <CircleDot /> },
-  { key: "noise", icon: <AudioLines /> },
-  { key: "mobile", icon: <Smartphone /> },
-  { key: "themes", icon: <SunMoon /> },
-  { key: "languages", icon: <Languages /> },
-];
-
-/** Everything else, as one ruled sheet: an icon, a name and a line each. */
-function More() {
-  const t = useTranslations("home.more");
-  return (
-    <section id="more" className={cn(COLUMN, "scroll-mt-24 py-24 sm:py-32")}>
-      <Heading title={t("title")} muted={t("muted")} className="max-w-[22ch]" />
-      <RuledSheet
-        className="mt-12"
-        items={MORE.map((item) => ({
-          icon: item.icon,
-          title: t(`items.${item.key}.title` as "items.screen.title"),
-          body: t(`items.${item.key}.body` as "items.screen.body"),
-        }))}
-      />
-    </section>
-  );
-}
-
-function Trust() {
-  const t = useTranslations("home.trust");
-  const small: Array<{ key: "private" | "install"; icon: ReactNode }> = [
-    { key: "private", icon: <LockKeyhole /> },
-    { key: "install", icon: <MonitorSmartphone /> },
-  ];
-  return (
-    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-      <Heading title={t("title")} muted={t("muted")} className="max-w-[30ch]" />
-      <div className="mt-12 grid gap-3 lg:grid-cols-3 lg:grid-rows-2">
-        <div className="grid items-center gap-6 overflow-hidden rounded-[24px] border border-border bg-card p-6 sm:p-9 lg:col-span-2 lg:row-span-2 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <span className="flex size-10 items-center justify-center rounded-full bg-brand/10 text-brand [&_svg]:size-[18px]">
-              <Globe2 />
-            </span>
-            <p className="mt-6 text-[22px] font-semibold tracking-tight sm:text-[26px]">{t("items.network.title")}</p>
-            <p className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">{t("items.network.body")}</p>
-            <p className="mt-8 text-[13px] text-muted-foreground">{t("stack")}</p>
-            <ul className="mt-2.5 flex flex-wrap gap-1.5">
-              {STACK.map((name) => (
-                <li
-                  key={name}
-                  dir="ltr"
-                  className="flex h-8 items-center gap-2 rounded-full border border-border bg-background px-3 text-[13.5px]"
-                >
-                  <span className="size-1.5 rounded-full bg-brand" />
-                  {name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[360px] text-foreground/70" />
-        </div>
-        {small.map(({ key, icon }) => (
-          <div key={key} className="flex flex-col rounded-[24px] bg-foreground/[0.045] p-6 sm:p-8">
-            <span className="flex size-10 items-center justify-center rounded-full bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] [&_svg]:size-[18px]">
-              {icon}
-            </span>
-            <p className="mt-auto pt-6 text-[19px] font-semibold tracking-tight lg:pt-10">{t(`items.${key}.title`)}</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${key}.body`)}</p>
-          </div>
+      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-[24px] border border-border/60 px-5 py-4">
+        <span className="me-2 text-[14px] text-muted-foreground">{t("more.also")}</span>
+        {extras.map(({ key, icon }) => (
+          <span key={key} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 text-[13.5px] [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
+            {icon}
+            {t(`more.items.${key}.title`)}
+          </span>
         ))}
       </div>
     </section>
@@ -257,4 +166,3 @@ function Plans() {
     </section>
   );
 }
-

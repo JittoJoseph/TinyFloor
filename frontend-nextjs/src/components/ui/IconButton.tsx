@@ -59,21 +59,6 @@ export const IconButton = forwardRef<
   return bare ? button : <Tooltip content={label} side={side}>{button}</Tooltip>;
 });
 
-/** The unread count on an icon. */
-export function Count({ value, className }: { value: number; className?: string }) {
-  if (value <= 0) return null;
-  return (
-    <span
-      className={cn(
-        "pointer-events-none absolute -end-1 -top-1 min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums ring-2 ring-[var(--face-ring,var(--ui-rail))]",
-        className,
-      )}
-    >
-      {value > 99 ? "99+" : value}
-    </span>
-  );
-}
-
 /** A keyboard key, for shortcuts in hints and menus. */
 export function Kbd({ children }: { children: ReactNode }) {
   return (

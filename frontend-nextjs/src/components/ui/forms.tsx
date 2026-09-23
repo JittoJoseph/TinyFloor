@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useId, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Copy, Loader2, X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 
 const textClass = " text-foreground";
 
@@ -79,19 +79,6 @@ export function Label({ htmlFor, children }: { htmlFor?: string; children: React
   );
 }
 
-export function Badge({ tone = "neutral", children }: { tone?: "neutral" | "accent" | "live"; children: React.ReactNode }) {
-  const tones = {
-    neutral: "bg-muted text-foreground/70",
-    accent: "bg-brand/10 text-brand",
-    live: "bg-emerald-50 text-emerald-700",
-  };
-  return (
-    <span className={`inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[11px] font-semibold ${tones[tone]}`}>
-      {children}
-    </span>
-  );
-}
-
 /** A modal with a title, closed by its button, Escape or a click outside. */
 export function Dialog({
   open,
@@ -144,34 +131,6 @@ export function Dialog({
         {description && <p className={`text-[13px] text-muted-foreground mt-1`}>{description}</p>}
         <div className="mt-5">{children}</div>
       </div>
-    </div>
-  );
-}
-
-/** A read-only link with a copy button, for invites and guest links. */
-export function CopyField({ value }: { value: string }) {
-  const t = useTranslations("office");
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch {
-      return;
-    }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="flex items-center gap-2 rounded-xl bg-card border border-border p-1.5 ps-3.5">
-      <span dir="ltr" className="flex-1 truncate text-[13px] text-foreground/75">
-        {value}
-      </span>
-      <Button variant="primary" onClick={copy} className="h-8 px-3 shrink-0">
-        {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-        {copied ? t("copied") : t("copy")}
-      </Button>
     </div>
   );
 }

@@ -9,8 +9,8 @@
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
+    "createTitle": "Maak je kantoor",
     "dashboardTitle": "Dashboard",
-    "roomTitle": "Actieve ruimte",
     "notFoundTitle": "Pagina niet gevonden",
     "lobbyTitle": "De lobby",
     "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
@@ -26,17 +26,12 @@
     "close": "Sluiten",
     "guest": "Gast",
     "you": "Jij",
-    "justNow": "zojuist",
     "unknown": "Onbekend",
-    "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
     "dashboard": "Dashboard",
-    "questions": "Vragen",
     "signOut": "Uitloggen",
     "visitLobby": "Bezoek de lobby",
     "lobby": "Lobby",
     "signIn": "Inloggen",
-    "rooms": "Ruimtes",
-    "offices": "Je kantoren",
     "account": "Account",
     "createOffice": "Kantoor maken",
     "plansSoon": "Groter team? Abonnementen met meer plekken komen binnenkort."
@@ -66,32 +61,28 @@
         "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
       },
       {
-        "q": "Moet ik iets installeren?",
-        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+        "q": "Hoe werkt proximity-videochat?",
+        "a": "Loop naar iemand toe en de belknoppen verschijnen naast diegene; tik er een aan om een video- of spraakgesprek te starten. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Is TinyFloor gratis?",
         "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
       },
       {
+        "q": "Moet ik iets installeren?",
+        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+      },
+      {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
         "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
       },
       {
-        "q": "Hoe werken de videogesprekken?",
-        "a": "Een gesprek met de mensen naar wie je toe loopt gaat via WebRTC over het relaynetwerk van Cloudflare, dus het verbindt op elk netwerk even goed, op kantoor of thuis. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om weg te gaan."
+        "q": "Is TinyFloor privé en veilig?",
+        "a": "Een verdieping is alleen voor de leden en de gasten die zij binnenlaten, en niets daarbinnen is openbaar of wordt door zoekmachines geïndexeerd. Gesprekken zijn onderweg versleuteld door WebRTC, en je camera en microfoon staan alleen aan tijdens een gesprek."
       },
       {
-        "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
-        "a": "Nee. Camera en microfoon worden alleen voor een gesprek geopend en vrijgegeven zodra het afgelopen is."
-      },
-      {
-        "q": "Kan ik TinyFloor op mijn telefoon gebruiken?",
-        "a": "Ja. Op touchapparaten beweeg je met een joystick op het scherm en passen de belknoppen zich aan het kleinere scherm aan."
-      },
-      {
-        "q": "Wat is het verschil met een gewoon videogesprek?",
-        "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een TinyFloor-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
+        "q": "Hoe verschilt TinyFloor van Zoom of Google Meet?",
+        "a": "Zoom en Google Meet zetten iedereen in één raster tot de meeting voorbij is. Een TinyFloor-kantoor is de hele dag open: je ziet wie er is, wisselt tussen gesprekken en praat met wie je opzoekt, zonder iets in te plannen."
       }
     ]
   },
@@ -163,11 +154,6 @@
     "visitLobby": "Bezoek de lobby",
     "invitedAsGuest": "Je bent uitgenodigd als gast."
   },
-  "userMenu": {
-    "manageProfile": "Profiel beheren",
-    "visitingAsGuest": "Op bezoek als gast",
-    "keepYourName": "Houd je naam en personage"
-  },
   "room": {
     "connecting": "Verbinden...",
     "leave": "Verlaten",
@@ -229,7 +215,6 @@
     "stopSharing": "Delen stoppen",
     "muteSpeaker": "Luidspreker dempen",
     "unmuteSpeaker": "Luidspreker aanzetten",
-    "openChat": "Chat openen",
     "settings": "Instellingen",
     "leaveCall": "Gesprek verlaten",
     "leaveMeeting": "Vergadering verlaten"
@@ -404,8 +389,7 @@
   "characters": {
     "previous": "Vorig personage",
     "next": "Volgend personage",
-    "select": "{name} selecteren",
-    "keyHint": "Gebruik de pijltjestoetsen ← →"
+    "select": "{name} selecteren"
   },
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
@@ -413,7 +397,6 @@
     "home": "Terug naar de lobby"
   },
   "landings": {
-    "tryIt": "Naar het openbare kantoor",
     "create": "Ruimte maken",
     "free": "Gratis, in de browser, zonder account.",
     "compare": "Vergelijkingen",
@@ -432,21 +415,6 @@
       "browser": "Ja, niets te installeren",
       "screenShare": "Ja, in gesprekken en vergaderingen"
     },
-    "stepsTitle": "Zo <em>werkt het.</em>",
-    "steps": [
-      {
-        "title": "Open een ruimte",
-        "body": "Loop het openbare kantoor binnen, of maak een werkruimte en nodig je team uit."
-      },
-      {
-        "title": "Kies een personage",
-        "body": "Typ een naam en kies een pixel-art personage. Geen account nodig."
-      },
-      {
-        "title": "Loop erheen om te praten",
-        "body": "Ga naast iemand staan en start met één tik een video- of spraakgesprek."
-      }
-    ],
     "faqTitle": "Veelgestelde <em>vragen.</em>",
     "relatedTitle": "Verder <em>ontdekken.</em>",
     "pages": {
@@ -984,7 +952,6 @@
       "passwordRule": "Minstens 8 tekens",
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
-      "pageTitle": "Je account",
       "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
       "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard."
     },
@@ -999,7 +966,6 @@
       "joiningAs": "Je doet mee als {name} ({email})",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
-      "needAccount": "Je hebt een account nodig om lid te worden van een werkruimte. Dat duurt een minuut.",
       "readyToJoin": "Dat ben ik",
       "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
       "you": "Jij"
@@ -1083,7 +1049,6 @@
     "continue": "Verder",
     "create": "Kantoor maken",
     "creating": "Wordt klaargezet",
-    "firstRoom": "Hoofdverdieping",
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
     "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
     "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
@@ -1138,7 +1103,6 @@
     "subtitle": "Je kantoren, en wie er nu op elke vloer is.",
     "onFloor": "{count, plural, =0 {Niemand op de vloer} other {# op de vloer}}",
     "newOffice": "Nieuw kantoor",
-    "newOfficeBody": "Drie mensen gratis. Een vloer, chat en bellen.",
     "lobby": "De openbare lobby",
     "lobbyBody": "Loop binnen en ontmoet wie er is.",
     "emptyTitle": "Begin je eerste kantoor",
@@ -1162,12 +1126,11 @@
         "people": "Aanwezigheid",
         "guests": "Gasten"
       },
-      "everyOffice": "In elk kantoor",
       "lobbyTitle": "De lobby is open",
       "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
       "menu": "Menu",
       "teams": "Voor teams",
-      "teamTitle": "Gemaakt voor kleine teams",
+      "teamTitle": "Gemaakt voor remote teams",
       "teamBody": "Gratis voor maximaal 3 mensen, grotere abonnementen komen eraan.",
       "cases": {
         "virtualOffice": "Een plek voor je remote team",
@@ -1193,19 +1156,14 @@
         "Niets te installeren",
         "Draait op Cloudflare"
       ],
-      "lobbyLine": "De openbare lobby is nu open. Geen account nodig.",
       "lobbyCta": "Loop binnen"
     },
     "features": {
       "proximity": {
-        "title": "Loop erheen om te praten.",
-        "muted": "Geen links, geen planning.",
-        "body": "Kom dicht bij iemand en een gesprek is één tik verwijderd. Loop verder en de vloer wordt weer stil, zoals even langs iemands bureau lopen."
+        "muted": "Geen links, geen planning."
       },
       "meetings": {
-        "title": "Ga zitten om te vergaderen.",
-        "muted": "Sta op om te gaan.",
-        "body": "Groepsgesprekken gebeuren aan een tafel. Wie daar zit, doet mee, camera's blijven licht als miniaturen en iedereen kan zijn scherm delen."
+        "muted": "Sta op om te gaan."
       },
       "chat": {
         "title": "Gesprekken die blijven.",
@@ -1223,43 +1181,85 @@
         "body": "Nodig teamgenoten uit per e-mail, of stuur een gastlink naar een klant of kandidaat. Die kiest een naam en een poppetje en staat op de vloer, zonder account."
       }
     },
+    "versus": {
+      "title": "Een korte vraag",
+      "muted": "hoort geen agenda-uitnodiging nodig te hebben.",
+      "body": "In de meeste remote teams kost een vraag een bericht, een uitnodiging en een vergaderlink. In een virtueel kantoor loop je erheen, zoals op kantoor.",
+      "before": {
+        "label": "Zonder verdieping",
+        "items": [
+          {
+            "title": "Jack, heb je vandaag 5 minuten?",
+            "body": "Verstuurd 9:41 · Gezien"
+          },
+          {
+            "title": "Korte afstemming",
+            "body": "Morgen, 10:30 tot 11:00 · Uitnodiging van Jack"
+          },
+          {
+            "title": "Deelnemen aan videogesprek",
+            "body": "Wachten tot de host je binnenlaat"
+          },
+          {
+            "title": "Kun je even bellen?",
+            "body": "3 ongelezen berichten"
+          }
+        ],
+        "result": "Een dag later: een meeting van 30 minuten voor een vraag van 2."
+      },
+      "after": {
+        "label": "Op TinyFloor",
+        "you": "Jij",
+        "result": "Erheen lopen, vragen, teruglopen. Twee minuten."
+      }
+    },
+    "steps": {
+      "title": "Zet in een minuut een virtueel kantoor op.",
+      "muted": "Geen downloads, geen creditcard.",
+      "make": {
+        "title": "Maak je kantoor.",
+        "body": "Geef het een naam en kies een personage. Het staat binnen een minuut klaar."
+      },
+      "invite": {
+        "title": "Stuur je team de link.",
+        "body": "Nodig collega's uit per e-mail, of deel een gastlink met iedereen."
+      },
+      "walk": {
+        "title": "Loop binnen.",
+        "body": "Iedereen komt op dezelfde verdieping. Loop naar wie je nodig hebt."
+      },
+      "joined": "{count} vandaag binnengekomen",
+      "walkedIn": "{name} kwam binnen"
+    },
+    "cases": {
+      "title": "Eén verdieping,",
+      "muted": "veel manieren om hem te gebruiken.",
+      "body": "Teams maken er hun kantoor van. Vrienden een studieruimte. Docenten houden er spreekuur. Kies de jouwe."
+    },
     "more": {
-      "title": "Alles wat een klein team nodig heeft,",
-      "muted": "op één vloer.",
+      "title": "Alles wat je remote team nodig heeft,",
+      "muted": "in één virtueel kantoor.",
       "items": {
         "screen": {
-          "title": "Scherm delen",
-          "body": "Deel een venster in elk gesprek of elke meeting."
+          "title": "Scherm delen"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Schets samen op de muur van het kantoor."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Muziek",
-          "body": "Zet een nummer op voor iedereen in de ruimte."
-        },
-        "status": {
-          "title": "Status",
-          "body": "Beschikbaar, bezig of weg, meteen op je naambordje."
+          "title": "Muziek"
         },
         "noise": {
-          "title": "Ruisverwijdering",
-          "body": "Optionele AI op je apparaat haalt toetsenborden en geklets weg."
+          "title": "Ruisverwijdering"
         },
         "mobile": {
-          "title": "Op je telefoon",
-          "body": "Een joystick die onder je duim verschijnt."
-        },
-        "themes": {
-          "title": "Licht en donker",
-          "body": "Volgt je systeem, of kies zelf."
+          "title": "Op je telefoon"
         },
         "languages": {
-          "title": "18 talen",
-          "body": "Van English en Español tot 日本語 en العربية."
+          "title": "18 talen"
         }
-      }
+      },
+      "also": "Ook op elke verdieping"
     },
     "trust": {
       "title": "Gebouwd op vertrouwen.",
@@ -1353,7 +1353,12 @@
       "typing": "{name} typt…",
       "guest": "Gast",
       "inviteTeammate": "Teamgenoot uitnodigen",
-      "inviteTeammateNote": "Ze komen binnen met een link"
+      "inviteTeammateNote": "Ze komen binnen met een link",
+      "video": "Videogesprek",
+      "audio": "Spraakgesprek",
+      "you": "Jij",
+      "clickToWalk": "Klik ergens om te lopen",
+      "playable": "De verdieping, om te proberen: klik ergens om erheen te lopen, of gebruik de pijltjestoetsen"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",
@@ -1371,10 +1376,6 @@
       "theme": "Thema",
       "language": "Taal",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Eén verdieping voor de hele dag,",
-      "muted": "van het eerste hallo tot het laatste gesprek."
     }
   }
 }

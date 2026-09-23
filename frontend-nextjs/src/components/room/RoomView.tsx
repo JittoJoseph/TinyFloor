@@ -289,7 +289,7 @@ function RoomEnded({
     <EntryShell
       backHref={leaveHref}
       backLabel={t("back")}
-      preview={<EntryPreview occupants={[{ character, left: "50%", top: "79%", width: 44 }]} />}
+      preview={<EntryPreview occupants={[{ character }]} />}
     >
       <div className="entry-rise">
         <span className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-warn/15 text-warn">

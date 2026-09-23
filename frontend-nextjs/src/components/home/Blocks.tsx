@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { ArrowRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import { wholeWords } from "@/lib/words";
 import { HeroPreview } from "./HeroPreview";
 import { COLUMN, HomeNav } from "./HomeNav";
 import { SiteFooter } from "./SiteFooter";
@@ -13,6 +14,9 @@ import { FloorPreview } from "./previews/FloorPreview";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
 import { MeetingPreview } from "./previews/MeetingPreview";
+import { NetworkGlobe } from "./previews/NetworkGlobe";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { EVERYONE } from "@/components/floor/scenes";
 
 /*
  * The pieces every marketing page is built from: the page shell, headings,
@@ -20,6 +24,9 @@ import { MeetingPreview } from "./previews/MeetingPreview";
  */
 
 export { COLUMN };
+
+/** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
+const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 
 /** The two pills every ask uses: ink for the main one, a quiet stone for the other. */
 const PILL =
@@ -46,6 +53,9 @@ export function MarketingShell({ path = "/", children }: { path?: string; childr
   );
 }
 
+/** The space between a headline's halves, except after Chinese or Japanese, which run on without one. */
+const gap = (before: ReactNode) => (typeof before === "string" && /[　-ヿ㐀-鿿＀-￯]$/.test(before) ? "" : " ");
+
 /** A headline in two tones: the claim in ink, its second half quieter. */
 export function Heading({
   title,
@@ -63,6 +73,8 @@ export function Heading({
   /** Puts the quieter half on its own line. */
   block?: boolean;
 }) {
+  const locale = useLocale();
+  const words = (text: ReactNode) => (typeof text === "string" ? wholeWords(text, locale) : text);
   return (
     <Tag
       className={cn(
@@ -72,11 +84,11 @@ export function Heading({
         className,
       )}
     >
-      {title}
+      {words(title)}
       {muted && (
         <>
-          {" "}
-          <span className={cn("text-muted-foreground/80", block && "block")}>{muted}</span>
+          {gap(title)}
+          <span className={cn("text-muted-foreground/80", block && "block")}>{words(muted)}</span>
         </>
       )}
     </Tag>
@@ -143,7 +155,7 @@ export function ProductPreview({ className }: { className?: string }) {
         label={t("previewLabel")}
         labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
         panels={{
-          floor: <PreviewFrame view="floor"><FloorPreview /></PreviewFrame>,
+          floor: <PreviewFrame view="floor"><FloorPreview playable priority /></PreviewFrame>,
           chat: <PreviewFrame view="chat"><ChatPreview /></PreviewFrame>,
           people: <PreviewFrame view="people"><PeoplePreview /></PreviewFrame>,
           meeting: <PreviewFrame view="meeting"><MeetingPreview /></PreviewFrame>,
@@ -154,48 +166,41 @@ export function ProductPreview({ className }: { className?: string }) {
 }
 
 /**
- * One card: its words, then the app doing it. The card is a subgrid of its
- * row, so headings and text line up with the cards beside it, and the preview
- * rests on the card's bottom edge, a little of it running off.
+ * One card: its words, then the app doing it. The heading runs on into its
+ * quieter half, the way the section headings do. The card is a subgrid of
+ * its row, so headings and text line up with the cards beside it, and the
+ * preview rests on the card's bottom edge, a little of it running off.
  */
 export function DayCard({
   id,
   title,
   muted,
   body,
-  small,
-  badge,
   children,
 }: {
   id?: string;
   title: string;
   muted?: string;
   body: string;
-  small?: boolean;
-  /** A small mark before the heading, such as a step's number. */
-  badge?: ReactNode;
   children: ReactNode;
 }) {
+  const locale = useLocale();
   return (
     <article
       id={id}
-      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid"
+      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0"
     >
-      <h3
-        className={cn(
-          "px-7 pt-7 text-balance font-semibold leading-[1.2] tracking-[-0.02em] sm:px-8 sm:pt-8",
-          small ? "text-[19px]" : "text-[23px]",
-          CJK_HEADLINE,
+      <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
+        {wholeWords(title, locale)}
+        {muted && (
+          <span className="text-muted-foreground/80">
+            {gap(title)}
+            {wholeWords(muted, locale)}
+          </span>
         )}
-      >
-        {badge}
-        {title}
-        {muted && <span className="block text-muted-foreground/80">{muted}</span>}
       </h3>
-      <p className={cn("px-7 pt-3 text-pretty leading-relaxed text-muted-foreground sm:px-8", small ? "text-[14.5px]" : "text-[15.5px]", !small && "max-w-[34rem]")}>
-        {body}
-      </p>
-      <div className={cn("flex items-end px-5 pt-7 sm:px-8", small ? "h-[320px]" : "h-[360px] sm:h-[400px]")}>
+      <p className="px-7 pt-3 text-pretty text-[14.5px] leading-relaxed text-muted-foreground sm:px-8">{body}</p>
+      <div className="flex h-[320px] items-end px-5 pt-7 sm:px-8">
         <div className="h-[calc(100%+18px)] w-full translate-y-[18px]">{children}</div>
       </div>
     </article>
@@ -277,22 +282,71 @@ export function Faq({ title, items }: { title: ReactNode; items: Array<{ q: stri
   );
 }
 
-/** The last ask, in ink: the team's faces, one line, and the two ways in. */
+/** Why it can be trusted: the network it runs on, drawn as a globe, then privacy and nothing to install. */
+export function Trust() {
+  const t = useTranslations("home.trust");
+  const small: Array<{ key: "private" | "install"; icon: ReactNode }> = [
+    { key: "private", icon: <LockKeyhole /> },
+    { key: "install", icon: <MonitorSmartphone /> },
+  ];
+  return (
+    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
+      <Heading title={t("title")} muted={t("muted")} className="max-w-[30ch]" />
+      <div className="mt-12 grid gap-3 lg:grid-cols-3 lg:grid-rows-2">
+        <div className="grid items-center gap-6 overflow-hidden rounded-[24px] border border-border bg-card p-6 sm:p-9 lg:col-span-2 lg:row-span-2 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <span className="flex size-10 items-center justify-center rounded-full bg-brand/10 text-brand [&_svg]:size-[18px]">
+              <Globe2 />
+            </span>
+            <p className="mt-6 text-[22px] font-semibold tracking-tight sm:text-[26px]">{t("items.network.title")}</p>
+            <p className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">{t("items.network.body")}</p>
+            <p className="mt-8 text-[13px] text-muted-foreground">{t("stack")}</p>
+            <ul className="mt-2.5 flex flex-wrap gap-1.5">
+              {STACK.map((name) => (
+                <li key={name} dir="ltr" className="flex h-8 items-center gap-2 rounded-full border border-border bg-background px-3 text-[13.5px]">
+                  <span className="size-1.5 rounded-full bg-brand" />
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[360px] text-foreground/70" />
+        </div>
+        {small.map(({ key, icon }) => (
+          <div key={key} className="flex flex-col rounded-[24px] bg-foreground/[0.045] p-6 sm:p-8">
+            <span className="flex size-10 items-center justify-center rounded-full bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] [&_svg]:size-[18px]">
+              {icon}
+            </span>
+            <p className="mt-auto pt-6 text-[19px] font-semibold tracking-tight lg:pt-10">{t(`items.${key}.title`)}</p>
+            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${key}.body`)}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** The last ask, in ink, beside a window onto a floor with people already on it. */
 export function Final() {
   const t = useTranslations("home");
   return (
     <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-      <div className="flex flex-col items-center rounded-[32px] bg-foreground px-6 py-16 text-center text-background sm:py-24 [--face-ring:var(--ui-foreground)]">
-        <FaceStack seeds={CAST.map((one) => one.id)} size={44} max={6} />
-        <Heading title={t("final.title")} className="mt-8 max-w-[18ch]" />
-        <p className="mt-5 max-w-[34rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-2.5">
-          <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
-            {t("nav.start")}
-          </Link>
-          <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
-            {t("hero.secondary")}
-          </Link>
+      <div className="grid overflow-hidden rounded-[32px] bg-foreground text-background lg:grid-cols-[1fr_1.1fr] [--face-ring:var(--ui-foreground)]">
+        <div className="flex flex-col justify-center p-8 sm:p-14">
+          <FaceStack seeds={CAST.map((one) => one.id)} size={36} max={5} />
+          <Heading title={t("final.title")} className="mt-7 max-w-[15ch]" />
+          <p className="mt-5 max-w-[30rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
+          <div className="mt-9 flex flex-wrap gap-2.5">
+            <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
+              {t("nav.start")}
+            </Link>
+            <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
+              {t("hero.secondary")}
+            </Link>
+          </div>
+        </div>
+        <div className="relative min-h-[320px] p-3 lg:ps-0">
+          <FloorScene {...EVERYONE} view={[15, 1, 24, 18]} className="absolute inset-3 rounded-[22px] lg:start-0" />
         </div>
       </div>
     </section>

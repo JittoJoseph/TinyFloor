@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/lib/i18n/routing";
-import { absoluteUrl } from "@/lib/structured-data";
+import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
 import { LANDINGS } from "@/lib/landings";
 
 export const dynamic = "force-static";
@@ -11,7 +11,6 @@ export async function GET() {
   const pages: Array<[string, string, string]> = [
     ["TinyFloor", "/", t("landing.description")],
     [t("metadata.lobbyTitle"), "/lobby", t("metadata.lobbyDescription")],
-    [t("metadata.authTitle"), "/auth", t("metadata.authDescription")],
     ...LANDINGS.map(({ key, slug }): [string, string, string] => [
       t(`landings.pages.${key}.meta.title`),
       `/${slug}`,
@@ -32,6 +31,7 @@ export async function GET() {
     "## Features",
     "",
     ...(t.raw("landing.features") as string[]).map((feature) => `- ${feature}`),
+    ...MORE_FEATURES.map((key) => `- ${t(`home.more.items.${key}.title`)}`),
     "",
     "## FAQ",
     "",

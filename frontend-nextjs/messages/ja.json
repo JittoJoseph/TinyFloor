@@ -148,7 +148,6 @@
     "openingDoor": "ドアを開けています",
     "walkIn": "入室する",
     "guestNote": "ゲストとして入ります。<link>ログイン</link>するとアカウントを使えます。",
-    "guestKeep": "ゲストで参加中です。<link>アカウントを作成</link>すると名前とキャラクターを残せます。",
     "copyInvite": "招待リンクをコピー",
     "continue": "次へ",
     "walkingInAs": "{name} として入ります"
@@ -946,6 +945,7 @@
       "saved": "保存しました",
       "save": "保存",
       "character": "キャラクター",
+      "characterNote": "ロビーとすべてのオフィスで使うキャラクターです。",
       "passwordTitle": "パスワードの変更",
       "passwordDescription": "現在のパスワードを入力してから、新しいパスワードを決めてください。",
       "passwordChanged": "パスワードを変更しました。",
@@ -1042,8 +1042,7 @@
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
     "gone": "閉じられたか、メンバーではなくなりました。",
-    "backToOffices": "オフィス一覧へ",
-    "door": "{members, plural, other {メンバー#人}} · {here, plural, =0 {まだフロアに誰もいません} other {いまフロアに#人}}"
+    "backToOffices": "オフィス一覧へ"
   },
   "create": {
     "eyebrow": "自分のオフィス",

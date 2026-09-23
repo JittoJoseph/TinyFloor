@@ -148,7 +148,6 @@
     "openingDoor": "Otwieranie drzwi",
     "walkIn": "Wejdź",
     "guestNote": "Wchodzisz jako gość. <link>Zaloguj się</link>, aby użyć swojego konta.",
-    "guestKeep": "Jesteś gościem. <link>Utwórz konto</link>, aby zachować imię i postać.",
     "copyInvite": "Kopiuj link z zaproszeniem",
     "continue": "Dalej",
     "walkingInAs": "Wchodzisz jako {name}"
@@ -946,6 +945,7 @@
       "saved": "Zapisano",
       "save": "Zapisz",
       "character": "Postać",
+      "characterNote": "Kim wchodzisz, w lobby i w każdym biurze.",
       "passwordTitle": "Zmień hasło",
       "passwordDescription": "Wpisz obecne hasło, a potem wybierz nowe.",
       "passwordChanged": "Hasło zostało zmienione.",
@@ -1042,8 +1042,7 @@
     "office": "Biuro",
     "goneTitle": "Tego biura już nie ma",
     "gone": "Zostało zamknięte albo nie jesteś już członkiem.",
-    "backToOffices": "Wróć do swoich biur",
-    "door": "{members, plural, one {# członek} few {# członków} many {# członków} other {# członka}} · {here, plural, =0 {nikogo jeszcze na piętrze} other {na piętrze: #}}"
+    "backToOffices": "Wróć do swoich biur"
   },
   "create": {
     "eyebrow": "Twoje własne biuro",

@@ -148,7 +148,6 @@
     "openingDoor": "جارٍ فتح الباب",
     "walkIn": "ادخل",
     "guestNote": "ستدخل كضيف. <link>سجّل الدخول</link> لاستخدام حسابك.",
-    "guestKeep": "أنت ضيف. <link>أنشئ حسابًا</link> لتحتفظ باسمك وشخصيتك.",
     "copyInvite": "نسخ رابط الدعوة",
     "continue": "متابعة",
     "walkingInAs": "تدخل باسم {name}"
@@ -946,6 +945,7 @@
       "saved": "تم الحفظ",
       "save": "حفظ",
       "character": "الشخصية",
+      "characterNote": "شخصيتك في الردهة وفي كل مكتب.",
       "passwordTitle": "غيّر كلمة المرور",
       "passwordDescription": "أدخل كلمة المرور الحالية، ثم اختر كلمة مرور جديدة.",
       "passwordChanged": "تم تغيير كلمة المرور.",
@@ -1042,8 +1042,7 @@
     "office": "مكتب",
     "goneTitle": "هذا المكتب لم يعد موجودًا",
     "gone": "تم إغلاقه، أو لم تعد عضوًا فيه.",
-    "backToOffices": "العودة إلى مكاتبك",
-    "door": "{members, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}} · {here, plural, =0 {لا أحد في الطابق بعد} other {# في الطابق الآن}}"
+    "backToOffices": "العودة إلى مكاتبك"
   },
   "create": {
     "eyebrow": "مكتبك الخاص",

@@ -7,11 +7,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { useErrorMessage } from "@/lib/useErrorMessage";
+import { saveIdentity } from "@/lib/identity";
+import { CharacterPicker } from "@/components/entry/CharacterPicker";
 
-/**
- * Your account: the name people see, your email, and your password. Which
- * character you walk in as isn't here; that's asked at the door of each space.
- */
+/** Your account: the name people see, your email, and your password. */
 export function AccountPanel() {
   const t = useTranslations("office.profile");
   const { user, updateProfile } = useAuth();
@@ -71,6 +70,39 @@ export function AccountPanel() {
         </Button>
       </form>
       <PasswordDialog open={passwordOpen} onClose={() => setPasswordOpen(false)} />
+    </Card>
+  );
+}
+
+/**
+ * Who you walk in as, everywhere: saved on the account the moment it's
+ * picked, and remembered in this browser for the doors that ask.
+ */
+export function CharacterPanel() {
+  const t = useTranslations("office.profile");
+  const { user, updateProfile } = useAuth();
+  const explain = useErrorMessage();
+  const [error, setError] = useState("");
+  if (!user) return null;
+
+  const pick = async (character: string) => {
+    if (character === user.character) return;
+    setError("");
+    try {
+      await updateProfile({ character });
+      saveIdentity({ name: user.displayName, character });
+    } catch (err) {
+      setError(explain(err));
+    }
+  };
+
+  return (
+    <Card>
+      <CardTitle title={t("character")} detail={t("characterNote")} />
+      <div className="max-w-md">
+        <CharacterPicker value={user.character} onChange={pick} />
+      </div>
+      {error && <ErrorText>{error}</ErrorText>}
     </Card>
   );
 }

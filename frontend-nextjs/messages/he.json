@@ -148,7 +148,6 @@
     "openingDoor": "פותחים את הדלת",
     "walkIn": "כניסה",
     "guestNote": "נכנסים כאורחים. <link>התחברו</link> כדי להשתמש בחשבון שלכם.",
-    "guestKeep": "אתם אורחים. <link>צרו חשבון</link> כדי לשמור על השם והדמות.",
     "copyInvite": "העתקת קישור הזמנה",
     "continue": "המשך",
     "walkingInAs": "נכנסים בשם {name}"
@@ -946,6 +945,7 @@
       "saved": "נשמר",
       "save": "שמירה",
       "character": "דמות",
+      "characterNote": "הדמות שלכם, בלובי ובכל משרד.",
       "passwordTitle": "שינוי הסיסמה",
       "passwordDescription": "הזינו את הסיסמה הנוכחית ואז בחרו סיסמה חדשה.",
       "passwordChanged": "הסיסמה שונתה.",
@@ -1042,8 +1042,7 @@
     "office": "משרד",
     "goneTitle": "המשרד הזה כבר לא קיים",
     "gone": "הוא נסגר, או שאינך חבר בו יותר.",
-    "backToOffices": "חזרה למשרדים שלך",
-    "door": "{members, plural, one {חבר אחד} other {# חברים}} · {here, plural, =0 {אין עדיין אף אחד בקומה} other {# בקומה עכשיו}}"
+    "backToOffices": "חזרה למשרדים שלך"
   },
   "create": {
     "eyebrow": "משרד משלכם",

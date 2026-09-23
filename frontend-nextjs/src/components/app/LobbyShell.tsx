@@ -12,7 +12,6 @@ import { lobbyChatPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettin
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
-import { rememberInside, wasInside } from "@/lib/inside";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -37,16 +36,13 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuth();
-  const [inside, setInside] = useState(false);
   const [asked, setAsked] = useState<OfficeFeature | null>(null);
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
   const everyone = useFloor();
 
-  // Reloading the page: you were already in, so you stay in.
-  useEffect(() => {
-    if (user && wasInside("lobby")) queueMicrotask(() => setInside(true));
-  }, [user]);
+  // Anyone with a session already has a name and a character, so the door is only for someone new.
+  const inside = !!user;
 
   // Who is inside, for the door.
   useEffect(() => {
@@ -65,11 +61,9 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!inside) return;
     chat.connect("lobby", api.lobbyChatTicket);
-    rememberInside("lobby", true);
     return () => {
       chat.disconnect();
       clearFloor();
-      rememberInside("lobby", false);
     };
   }, [inside]);
 
@@ -89,7 +83,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         title={t("title")}
         subtitle={t("subtitle")}
         sharePath={lobbyPath}
-        onReady={() => setInside(true)}
+        onReady={() => {}}
         detail={
           door && (
             <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 ps-1 pe-3 [--face-ring:var(--ui-background)]">

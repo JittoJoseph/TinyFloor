@@ -5,7 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { wholeWords } from "@/lib/words";
-import { CJK_HEADLINE, COLUMN, DayCard, Faq, Final, Heading, HeroAsk, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, DayCard, Faq, Final, Heading, HeroAsk, INK, LobbyPill, MarketingShell, ProductPreview, STONE, SWIPE, SWIPE_ITEM, Trust } from "./Blocks";
 import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
@@ -78,25 +78,25 @@ function Everything() {
   return (
     <section id="features" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
       <Heading title={t("more.title")} muted={t("more.muted")} className="max-w-[22ch]" />
-      <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
-        <DayCard id="chat" {...card("chat")}>
+      <div className={cn(SWIPE, "mt-10 sm:mt-12")}>
+        <DayCard id="chat" className={SWIPE_ITEM} {...card("chat")}>
           <Frame active="chat" rail={false} className="h-full">
             <ChatPreview compact />
           </Frame>
         </DayCard>
-        <DayCard id="people" {...card("people")}>
+        <DayCard id="people" className={SWIPE_ITEM} {...card("people")}>
           <Frame active="people" rail={false} className="h-full">
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" {...card("guests")}>
+        <DayCard id="guests" className={SWIPE_ITEM} {...card("guests")}>
           <Frame active="people" rail={false} className="h-full">
             <GuestPreview />
           </Frame>
         </DayCard>
       </div>
-      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-[24px] border border-border/60 px-5 py-4">
-        <span className="me-2 text-[14px] text-muted-foreground">{t("more.also")}</span>
+      <div className="mt-3 grid grid-cols-2 items-center gap-2 rounded-[24px] border border-border/60 p-4 sm:flex sm:flex-wrap sm:px-5">
+        <span className="col-span-2 mb-1 ms-1 text-[14px] text-muted-foreground sm:mb-0 sm:me-2">{t("more.also")}</span>
         {extras.map(({ key, icon }) => (
           <span key={key} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 text-[13.5px] [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
             {icon}
@@ -113,7 +113,7 @@ function Plans() {
   const items = t.raw("free.items") as string[];
   return (
     <section id="plans" className={cn(COLUMN, "scroll-mt-20 pb-20 sm:pb-28")}>
-      <div className="flex flex-col items-center text-center">
+      <div className="flex flex-col items-start sm:items-center sm:text-center">
         <Heading title={t("title")} muted={t("muted")} />
         <p className="mt-4 text-[16px] text-muted-foreground">{t("note")}</p>
       </div>

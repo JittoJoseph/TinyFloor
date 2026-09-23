@@ -28,6 +28,14 @@ export { COLUMN };
 /** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
 const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 
+/**
+ * A row of cards that a phone or tablet swipes through, each snapping into
+ * place with the next one peeking in; three across as a grid on a wide screen.
+ */
+export const SWIPE =
+  "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-1 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden";
+export const SWIPE_ITEM = "w-[85%] shrink-0 snap-start sm:w-[46%] lg:w-auto";
+
 /** The two pills every ask uses: ink for the main one, a quiet stone for the other. */
 const PILL =
   "inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full px-6 text-[16px] transition-[background-color,transform] active:scale-[0.98]";
@@ -184,7 +192,7 @@ export function LobbyPill({ className }: { className?: string }) {
 
 function PreviewFrame({ view, children }: { view: PreviewView; children: ReactNode }) {
   return (
-    <Frame active={view} className="aspect-[4/5] sm:aspect-[16/9]">
+    <Frame active={view} className="aspect-square sm:aspect-[16/9]">
       {children}
     </Frame>
   );
@@ -221,7 +229,9 @@ export function DayCard({
   muted,
   body,
   children,
+  className,
 }: {
+  className?: string;
   id?: string;
   title: string;
   muted?: string;
@@ -232,7 +242,10 @@ export function DayCard({
   return (
     <article
       id={id}
-      className="grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0"
+      className={cn(
+        "grid min-w-0 scroll-mt-24 grid-cols-1 grid-rows-[auto_auto_1fr] overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035] lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-0",
+        className,
+      )}
     >
       <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
         {wholeWords(title, locale)}
@@ -271,12 +284,14 @@ export function RuledSheet({
       ))}
       <ul className={cn("grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2", columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
         {items.map((item) => (
-          <li key={item.title} className="group bg-background p-6 transition-colors hover:bg-card sm:p-7">
-            <span className="flex size-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
+          <li key={item.title} className="group flex gap-4 bg-background p-5 transition-colors hover:bg-card sm:block sm:p-7">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand [&_svg]:size-[18px]">
               {item.icon}
             </span>
-            <p className="mt-10 text-[17px] font-semibold tracking-tight">{item.title}</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{item.body}</p>
+            <span className="block min-w-0">
+              <span className="block pt-2 text-[17px] font-semibold tracking-tight sm:mt-10 sm:pt-0">{item.title}</span>
+              <span className="mt-1.5 block text-[15px] leading-relaxed text-muted-foreground">{item.body}</span>
+            </span>
           </li>
         ))}
       </ul>
@@ -354,7 +369,7 @@ export function Trust() {
               ))}
             </ul>
           </div>
-          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[360px] text-foreground/70" />
+          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[240px] text-foreground/70 sm:max-w-[360px]" />
         </div>
         {small.map(({ key, icon }) => (
           <div key={key} className="flex flex-col rounded-[24px] bg-foreground/[0.045] p-6 sm:p-8">
@@ -380,7 +395,7 @@ export function Final() {
           <FaceStack seeds={CAST.map((one) => one.id)} size={36} max={5} />
           <Heading title={t("final.title")} className="mt-7 max-w-[15ch]" />
           <p className="mt-5 max-w-[30rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
-          <div className="mt-9 flex flex-wrap gap-2.5">
+          <div className="mt-9 grid gap-2.5 sm:flex sm:flex-wrap">
             <Link href="/lobby" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
               {t("hero.secondary")}
             </Link>

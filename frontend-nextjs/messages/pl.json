@@ -1248,7 +1248,6 @@
       "after": {
         "label": "W TinyFloor",
         "you": "Ty",
-        "talking": "Rozmowa z: {name} · 0:42",
         "result": "Podejdź, zapytaj, wróć. Dwie minuty."
       }
     },

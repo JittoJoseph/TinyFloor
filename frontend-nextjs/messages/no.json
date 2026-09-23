@@ -1248,7 +1248,6 @@
       "after": {
         "label": "På TinyFloor",
         "you": "Deg",
-        "talking": "Snakker med {name} · 0:42",
         "result": "Gå bort, spør, gå tilbake. To minutter."
       }
     },

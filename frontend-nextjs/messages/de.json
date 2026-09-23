@@ -1248,7 +1248,6 @@
       "after": {
         "label": "Auf TinyFloor",
         "you": "Du",
-        "talking": "Im Gespräch mit {name} · 0:42",
         "result": "Rübergehen, fragen, zurückgehen. Zwei Minuten."
       }
     },

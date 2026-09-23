@@ -85,17 +85,17 @@ function Everything() {
     <section id="features" className={cn(COLUMN, "scroll-mt-20 py-24 sm:py-32")}>
       <Heading title={t("more.title")} muted={t("more.muted")} className="max-w-[22ch]" />
       <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
-        <DayCard id="chat" small {...card("chat")}>
+        <DayCard id="chat" {...card("chat")}>
           <Frame active="chat" rail={false} className="h-full">
             <ChatPreview compact />
           </Frame>
         </DayCard>
-        <DayCard id="people" small {...card("people")}>
+        <DayCard id="people" {...card("people")}>
           <Frame active="people" rail={false} className="h-full">
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" small {...card("guests")}>
+        <DayCard id="guests" {...card("guests")}>
           <Frame active="people" rail={false} className="h-full">
             <GuestPreview />
           </Frame>

@@ -13,6 +13,7 @@ export default defineConfig(async () => ({
           TURNSTILE_SECRET: "test-turnstile-secret",
           GOOGLE_CLIENT_ID: "test-client.apps.googleusercontent.com",
           GOOGLE_CLIENT_SECRET: "test-google-secret",
+          ADMIN_EMAILS: "boss@example.com",
           COOKIE_DOMAIN: "",
           REALTIME_URL: "ws://localhost:8788",
           TURN_KEY_ID: "test-turn-key",

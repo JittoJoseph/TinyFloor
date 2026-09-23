@@ -1,21 +1,15 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Check, Clock3, Globe2, Languages, LockKeyhole, MonitorSmartphone, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
+import { AudioLines, Check, Clock3, Languages, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
-import { FloorScene } from "@/components/floor/FloorScene";
-import { EVERYONE } from "@/components/floor/scenes";
-import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Final, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE, Trust } from "./Blocks";
 import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
 import { GuestPreview } from "./previews/GuestPreview";
-import { NetworkGlobe } from "./previews/NetworkGlobe";
-
-/** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
-const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 
 /**
  * The home page, in the app's own design system and theme, built on the real
@@ -114,49 +108,6 @@ function Everything() {
   );
 }
 
-function Trust() {
-  const t = useTranslations("home.trust");
-  const small: Array<{ key: "private" | "install"; icon: ReactNode }> = [
-    { key: "private", icon: <LockKeyhole /> },
-    { key: "install", icon: <MonitorSmartphone /> },
-  ];
-  return (
-    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-      <Heading title={t("title")} muted={t("muted")} className="max-w-[30ch]" />
-      <div className="mt-12 grid gap-3 lg:grid-cols-3 lg:grid-rows-2">
-        <div className="grid items-center gap-6 overflow-hidden rounded-[24px] border border-border bg-card p-6 sm:p-9 lg:col-span-2 lg:row-span-2 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <span className="flex size-10 items-center justify-center rounded-full bg-brand/10 text-brand [&_svg]:size-[18px]">
-              <Globe2 />
-            </span>
-            <p className="mt-6 text-[22px] font-semibold tracking-tight sm:text-[26px]">{t("items.network.title")}</p>
-            <p className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">{t("items.network.body")}</p>
-            <p className="mt-8 text-[13px] text-muted-foreground">{t("stack")}</p>
-            <ul className="mt-2.5 flex flex-wrap gap-1.5">
-              {STACK.map((name) => (
-                <li key={name} dir="ltr" className="flex h-8 items-center gap-2 rounded-full border border-border bg-background px-3 text-[13.5px]">
-                  <span className="size-1.5 rounded-full bg-brand" />
-                  {name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <NetworkGlobe className="pointer-events-none mx-auto w-full max-w-[360px] text-foreground/70" />
-        </div>
-        {small.map(({ key, icon }) => (
-          <div key={key} className="flex flex-col rounded-[24px] bg-foreground/[0.045] p-6 sm:p-8">
-            <span className="flex size-10 items-center justify-center rounded-full bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)] [&_svg]:size-[18px]">
-              {icon}
-            </span>
-            <p className="mt-auto pt-6 text-[19px] font-semibold tracking-tight lg:pt-10">{t(`items.${key}.title`)}</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">{t(`items.${key}.body`)}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function Plans() {
   const t = useTranslations("home.plans");
   const items = t.raw("free.items") as string[];
@@ -208,35 +159,6 @@ function Plans() {
           <Link href="/lobby" className={cn(STONE, "mt-9 w-full lg:mt-auto")}>
             {t("soon.cta")}
           </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const PILL = "inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full px-6 text-[16px] transition-[background-color,transform] active:scale-[0.98]";
-
-/** The last ask, in ink, beside a window onto a floor with people already on it. */
-function Final() {
-  const t = useTranslations("home");
-  return (
-    <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-      <div className="grid overflow-hidden rounded-[32px] bg-foreground text-background lg:grid-cols-[1fr_1.1fr] [--face-ring:var(--ui-foreground)]">
-        <div className="flex flex-col justify-center p-8 sm:p-14">
-          <FaceStack seeds={CAST.map((one) => one.id)} size={36} max={5} />
-          <Heading title={t("final.title")} className="mt-7 max-w-[15ch]" />
-          <p className="mt-5 max-w-[30rem] text-pretty text-[17px] leading-relaxed text-background/70">{t("final.body")}</p>
-          <div className="mt-9 flex flex-wrap gap-2.5">
-            <Link href="/create" className={cn(PILL, "bg-background text-foreground hover:bg-background/85")}>
-              {t("nav.start")}
-            </Link>
-            <Link href="/lobby" className={cn(PILL, "bg-background/10 text-background hover:bg-background/15")}>
-              {t("hero.secondary")}
-            </Link>
-          </div>
-        </div>
-        <div className="relative min-h-[320px] p-3 lg:ps-0">
-          <FloorScene {...EVERYONE} view={[15, 1, 24, 18]} className="absolute inset-3 rounded-[22px] lg:start-0" />
         </div>
       </div>
     </section>

@@ -9,6 +9,7 @@
     "joinRoomDescription": "Masz zaproszenie do pokoju {office} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, wybierz postać i wejdź.",
     "authTitle": "Zaloguj się",
     "authDescription": "Zaloguj się do TinyFloor, aby zachować swoje imię, postać i listę pokoi.",
+    "createTitle": "Utwórz biuro",
     "dashboardTitle": "Panel",
     "notFoundTitle": "Nie znaleziono strony",
     "lobbyTitle": "Lobby",
@@ -414,21 +415,6 @@
       "browser": "Tak, nic do instalowania",
       "screenShare": "Tak, w rozmowach i spotkaniach"
     },
-    "stepsTitle": "Jak to <em>działa.</em>",
-    "steps": [
-      {
-        "title": "Otwórz pokój",
-        "body": "Wejdź do otwartego biura albo utwórz obszar roboczy i zaproś zespół."
-      },
-      {
-        "title": "Wybierz postać",
-        "body": "Wpisz imię i wybierz postać w stylu pixel art. Konto nie jest potrzebne."
-      },
-      {
-        "title": "Podejdź, żeby porozmawiać",
-        "body": "Stań obok kogoś i jednym dotknięciem rozpocznij rozmowę wideo lub głosową."
-      }
-    ],
     "faqTitle": "Częste <em>pytania.</em>",
     "relatedTitle": "Odkrywaj <em>dalej.</em>",
     "pages": {

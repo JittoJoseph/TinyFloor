@@ -9,6 +9,7 @@
     "joinRoomDescription": "Du er invitert til {office} på TinyFloor, et virtuelt kontor du går rundt i. Åpne lenken, velg en figur og gå inn.",
     "authTitle": "Logg inn",
     "authDescription": "Logg inn på TinyFloor for å beholde navnet ditt, figuren din og en liste over rommene dine.",
+    "createTitle": "Lag kontoret ditt",
     "dashboardTitle": "Oversikt",
     "notFoundTitle": "Fant ikke siden",
     "lobbyTitle": "Lobbyen",
@@ -414,21 +415,6 @@
       "browser": "Ja, ingenting å installere",
       "screenShare": "Ja, i samtaler og møter"
     },
-    "stepsTitle": "Slik <em>fungerer det.</em>",
-    "steps": [
-      {
-        "title": "Åpne et rom",
-        "body": "Gå inn på det åpne kontoret, eller opprett et arbeidsområde og inviter teamet ditt."
-      },
-      {
-        "title": "Velg en figur",
-        "body": "Skriv inn et navn og velg en pikselfigur. Ingen konto nødvendig."
-      },
-      {
-        "title": "Gå bort for å prate",
-        "body": "Still deg ved siden av noen og start en video- eller lydsamtale med ett trykk."
-      }
-    ],
     "faqTitle": "Vanlige <em>spørsmål.</em>",
     "relatedTitle": "Utforsk <em>mer.</em>",
     "pages": {

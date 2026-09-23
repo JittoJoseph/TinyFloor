@@ -3,7 +3,7 @@ import { publicUser } from "./auth";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
 import type { Router } from "./router";
-import { ACCOUNT_SESSION_MS, createSession, currentUser, endSession, type User } from "./session";
+import { ACCOUNT_SESSION_MS, createSession, currentUser, endSession, requireAccount, type User } from "./session";
 
 /**
  * Signing in with Google. The site opens Google's consent popup (Google
@@ -29,9 +29,33 @@ interface AccountRow {
   character: string;
   google_sub: string | null;
   has_password?: number;
+  link?: string | null;
 }
 
 export function googleRoutes(router: Router): void {
+  // Someone signed in some other way connects their Google account, to sign in with it from now on.
+  router.add("POST", "/v1/me/google", async ({ request, env, ctx }) => {
+    const user = await requireAccount(env, request, ctx);
+    if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET) {
+      throw new HttpError(503, "google_unavailable", "Google sign-in isn't set up here");
+    }
+    const body = await readJson(request);
+    if (typeof body.code !== "string" || !body.code) throw new HttpError(400, "code_required", "Try connecting Google again");
+
+    const google = await identify(env, body.code);
+    const taken = await env.DB.prepare("SELECT id FROM users WHERE google_sub = ?").bind(google.sub).first<{ id: string }>();
+    if (taken && taken.id !== user.id) {
+      throw new HttpError(409, "google_taken", "That Google account is already connected to another TinyFloor account");
+    }
+    // Google has checked this address, so if it is the account's own, the account's is verified too.
+    await env.DB.prepare(
+      "UPDATE users SET google_sub = ?, email_verified = CASE WHEN email = ? THEN 1 ELSE email_verified END WHERE id = ?",
+    )
+      .bind(google.sub, google.email, user.id)
+      .run();
+    return json({ user: publicUser({ ...user, hasGoogle: true }) });
+  });
+
   router.add("POST", "/v1/auth/google", async ({ request, env, ctx }) => {
     await limitAuth(env, request);
     if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET) {
@@ -42,7 +66,7 @@ export function googleRoutes(router: Router): void {
 
     const google = await identify(env, body.code);
     const current = await currentUser(env, request, ctx);
-    const columns = "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password";
+    const columns = "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password, link";
 
     let account =
       (await env.DB.prepare(`SELECT ${columns} FROM users WHERE google_sub = ?`).bind(google.sub).first<AccountRow>()) ??
@@ -92,6 +116,8 @@ export function googleRoutes(router: Router): void {
       character: account.character,
       isGuest: false,
       hasPassword: account.has_password === 1,
+      hasGoogle: true,
+      link: account.link ?? null,
       sessionId,
     };
     return json({ user: publicUser(user), created }, { status: created ? 201 : 200, headers: { "Set-Cookie": cookie } });

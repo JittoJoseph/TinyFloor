@@ -52,6 +52,9 @@ export function MarketingShell({ path = "/", children }: { path?: string; childr
   );
 }
 
+/** The space between a headline's halves, except after Chinese or Japanese, which run on without one. */
+const gap = (before: ReactNode) => (typeof before === "string" && /[　-ヿ㐀-鿿＀-￯]$/.test(before) ? "" : " ");
+
 /** A headline in two tones: the claim in ink, its second half quieter. */
 export function Heading({
   title,
@@ -81,7 +84,7 @@ export function Heading({
       {title}
       {muted && (
         <>
-          {" "}
+          {gap(title)}
           <span className={cn("text-muted-foreground/80", block && "block")}>{muted}</span>
         </>
       )}
@@ -185,7 +188,12 @@ export function DayCard({
     >
       <h3 className={cn("px-7 pt-7 text-pretty text-[20px] font-semibold leading-[1.3] tracking-[-0.02em] sm:px-8 sm:pt-8", CJK_HEADLINE)}>
         {title}
-        {muted && <span className="text-muted-foreground/80"> {muted}</span>}
+        {muted && (
+          <span className="text-muted-foreground/80">
+            {gap(title)}
+            {muted}
+          </span>
+        )}
       </h3>
       <p className="px-7 pt-3 text-pretty text-[14.5px] leading-relaxed text-muted-foreground sm:px-8">{body}</p>
       <div className="flex h-[320px] items-end px-5 pt-7 sm:px-8">

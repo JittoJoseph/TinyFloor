@@ -9,6 +9,9 @@ const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /** The absolute URL a route is served at in a locale, matching its canonical. */
+/** The home page's "also on every floor" items, named after the product's own features wherever those are listed. */
+export const MORE_FEATURES = ["whiteboard", "music", "noise", "mobile", "languages"] as const;
+
 export function absoluteUrl(locale: string, path: string): string {
   const localized = localePath(locale, path);
   return `${SITE_URL}${localized === "/" ? "" : localized}`;

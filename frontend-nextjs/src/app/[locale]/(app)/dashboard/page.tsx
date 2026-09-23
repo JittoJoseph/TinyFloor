@@ -14,6 +14,7 @@ import { Logo } from "@/components/app/AppShell";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
+import { FloorScene } from "@/components/floor/FloorScene";
 
 /** Your offices, each a place you can see into before walking in. */
 export default function DashboardPage() {
@@ -128,10 +129,16 @@ function Shortcut({
   );
 }
 
-/** Good patches of the floor art to show on a card, so offices do not all look alike. */
-const VIEWS = ["24% 26%", "26% 50%", "76% 42%", "76% 66%", "32% 84%"];
+/** The floor's rooms, one to a card, so offices do not all look alike. */
+const VIEWS: Array<[number, number, number, number]> = [
+  [16, 4, 16, 9],
+  [31, 10, 16, 9],
+  [0, 2, 15, 12],
+  [0, 18, 15, 12],
+  [32, 1, 15, 9],
+];
 
-function viewFor(id: string): string {
+function viewFor(id: string): [number, number, number, number] {
   let hash = 0;
   for (const char of id) hash = (hash * 31 + char.charCodeAt(0)) | 0;
   return VIEWS[Math.abs(hash) % VIEWS.length];
@@ -159,11 +166,8 @@ function OfficeCard({ office, index }: { office: OfficeSummary; index: number })
         href={officePath(office.id)}
         className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-border bg-card transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-float [--face-ring:var(--ui-card)]"
       >
-        <div className="relative m-1.5 mb-0 h-40 overflow-hidden rounded-[17px] bg-[#8f8f96]">
-          <span
-            className="absolute inset-0 transition-transform duration-700 ease-out [image-rendering:pixelated] group-hover:scale-[1.03]"
-            style={{ backgroundImage: "url(/office.png)", backgroundSize: "780px 520px", backgroundPosition: viewFor(office.id) }}
-          />
+        <div className="relative m-1.5 mb-0 h-40 overflow-hidden rounded-[17px]">
+          <FloorScene view={viewFor(office.id)} className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
           <span
             className={cn(
               "absolute start-2.5 top-2.5 flex h-7 items-center gap-1.5 rounded-full border border-border bg-card/90 px-2.5 text-[12px] font-medium shadow-float backdrop-blur-md",
@@ -201,12 +205,7 @@ function Empty() {
   const t = useTranslations("dashboard");
   return (
     <div className="mt-8 grid overflow-hidden rounded-[26px] border border-border bg-card md:grid-cols-[1.1fr_1fr]">
-      <div className="relative m-2 min-h-56 overflow-hidden rounded-[20px] bg-[#8f8f96]">
-        <span
-          className="absolute inset-0 [image-rendering:pixelated]"
-          style={{ backgroundImage: "url(/office.png)", backgroundSize: "780px 520px", backgroundPosition: "76% 50%" }}
-        />
-      </div>
+      <FloorScene view={[15, 2, 32, 22]} className="relative m-2 min-h-56 rounded-[20px]" />
       <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
         <div>
           <h2 className="text-[20px] font-semibold tracking-tight text-foreground">{t("emptyTitle")}</h2>

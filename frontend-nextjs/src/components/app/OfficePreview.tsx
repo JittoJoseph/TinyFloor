@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Hash } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { readIdentity } from "@/lib/identity";
-import { OfficeScene } from "@/components/OfficeScene";
+import { FloorScene } from "@/components/floor/FloorScene";
 import { Face, FaceStack, faceBackground } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { RailIcons } from "./railIcons";
@@ -117,20 +117,12 @@ export function OfficePreview({
 
         {/* Floor */}
         <div className="relative my-1.5 me-1.5 min-w-0 flex-1 overflow-hidden rounded-e-[14px] rounded-s-[14px] border border-border sm:rounded-s-none">
-          <OfficeScene
+          <FloorScene
             className="h-full w-full"
-            zoom="auto max(560px, 150%)"
-            focus="40% 74%"
-            occupants={[
-              { character, left: "40%", top: "70%", name: person?.name || t("you"), width: 40 },
-              {
-                character: character === "Amelia" ? "Adam" : "Amelia",
-                left: "60%",
-                top: "66%",
-                name: t("teammate"),
-                width: 40,
-                direction: "left",
-              },
+            view={[18, 9, 13, 9]}
+            standing={[
+              { character, at: [23, 13], face: "right", name: person?.name || t("you") },
+              { character: character === "Amelia" ? "Adam" : "Amelia", at: [25, 13], face: "left", name: t("teammate") },
             ]}
           />
           <span className="absolute start-2.5 top-2.5 flex h-8 max-w-[70%] items-center gap-2 rounded-full border border-border bg-card/90 ps-3 pe-3 shadow-float backdrop-blur-md">

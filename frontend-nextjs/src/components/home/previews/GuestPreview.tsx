@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Check, Link2 } from "lucide-react";
-import { PixelAvatar } from "@/components/PixelAvatar";
+import { FloorScene } from "@/components/floor/FloorScene";
 
 /** A guest link being handed out, and the guest who used it walking in. */
 export function GuestPreview() {
@@ -26,12 +26,7 @@ export function GuestPreview() {
 
       <div className="flex items-center gap-3 rounded-2xl border border-border bg-background p-2.5 pe-3.5">
         {/* The whole character, standing on a patch of the office floor. */}
-        <span
-          className="relative size-12 shrink-0 overflow-hidden rounded-xl border border-border"
-          style={{ backgroundImage: "url(/office.png)", backgroundSize: "900px auto", backgroundPosition: "38% 62%", imageRendering: "pixelated" }}
-        >
-          <PixelAvatar character="Ash" width={20} style={{ left: "50%", top: "90%" }} />
-        </span>
+        <FloorScene view={[22.5, 13, 3, 3]} standing={[{ character: "Alex", at: [23.5, 13.6] }]} className="size-12 shrink-0 rounded-xl border border-border" />
         <div className="min-w-0 flex-1">
           <p className="text-[12.5px] font-semibold text-foreground">Grace</p>
           <p className="truncate text-[11px] text-muted-foreground">{t("guestArrived")}</p>

@@ -109,10 +109,7 @@ export function WalkIn({
           occupants={[
             {
               character,
-              left: "50%",
-              top: "79%",
               name: trimmed || tc("you"),
-              width: 44,
               running: onCharacterStep,
             },
           ]}

@@ -82,7 +82,8 @@ export function HeroPreview({
           </button>
         ))}
       </div>
-      <div className="mt-1.5 sm:mt-2">
+      {/* Walking the floor, or any touch on a panel, keeps it where it is. */}
+      <div className="mt-1.5 sm:mt-2" onPointerDown={() => setPicked(true)} onKeyDown={() => setPicked(true)}>
         {VIEWS.map((one) => (
           <div
             key={one}

@@ -1353,7 +1353,12 @@
       "typing": "{name} écrit…",
       "guest": "Invité",
       "inviteTeammate": "Inviter un coéquipier",
-      "inviteTeammateNote": "Il suffit d'un lien pour entrer"
+      "inviteTeammateNote": "Il suffit d'un lien pour entrer",
+      "video": "Appel vidéo",
+      "audio": "Appel audio",
+      "you": "Vous",
+      "clickToWalk": "Cliquez n'importe où pour marcher",
+      "playable": "L'étage, à essayer : cliquez n'importe où pour y aller, ou utilisez les flèches"
     },
     "footer": {
       "tagline": "Un bureau virtuel où l'on se déplace.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Un étage pour toute la journée,",
       "muted": "du premier bonjour au dernier appel."
+    },
+    "tour": {
+      "title": "Une journée sur l'étage.",
+      "muted": "Chaque pièce a sa raison d'être.",
+      "hall": {
+        "title": "Voyez qui est là.",
+        "body": "Tout le monde est sur l'étage : à son bureau, en mouvement ou en réunion. Un coup d'œil suffit pour voir qui est là, qui est occupé et qui est concentré."
+      },
+      "office": {
+        "title": "Fermez la porte.",
+        "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend.",
+        "chip": "{name} est occupé · concentré"
+      },
+      "lounge": {
+        "title": "Faites une pause.",
+        "body": "Le canapé, l'enceinte qui joue la musique de la salle, et les gens que vous croiseriez à la machine à café.",
+        "chip": "En cours"
+      }
+    },
+    "vignettes": {
+      "sharing": "Partage",
+      "playing": "Pour toute la salle"
     }
   }
 }

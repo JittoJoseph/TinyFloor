@@ -1353,7 +1353,12 @@
       "typing": "{name} sta scrivendo…",
       "guest": "Ospite",
       "inviteTeammate": "Invita un collega",
-      "inviteTeammateNote": "Entrano con un link"
+      "inviteTeammateNote": "Entrano con un link",
+      "video": "Videochiamata",
+      "audio": "Chiamata vocale",
+      "you": "Tu",
+      "clickToWalk": "Clicca ovunque per camminare",
+      "playable": "Il piano, da provare: clicca ovunque per andarci, o usa le frecce"
     },
     "footer": {
       "tagline": "Un ufficio virtuale in cui ti muovi.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Un piano per tutta la giornata,",
       "muted": "dal primo saluto all'ultima chiamata."
+    },
+    "tour": {
+      "title": "Una giornata sul piano.",
+      "muted": "Ogni stanza ha il suo perché.",
+      "hall": {
+        "title": "Guarda chi c'è.",
+        "body": "Sono tutti sul piano: alla scrivania, in movimento o in riunione. Basta un'occhiata per sapere chi c'è, chi è occupato e chi è concentrato."
+      },
+      "office": {
+        "title": "Chiudi la porta.",
+        "body": "Mettiti come occupato e prendi l'ufficio privato. Gli altri vedono che sei concentrato prima di passare, e la chat ti aspetta.",
+        "chip": "{name} è occupato · concentrato"
+      },
+      "lounge": {
+        "title": "Fai una pausa.",
+        "body": "Il divano, la cassa con la musica della stanza e le persone che incontreresti alla macchinetta del caffè.",
+        "chip": "In riproduzione"
+      }
+    },
+    "vignettes": {
+      "sharing": "Condivisione",
+      "playing": "Per tutta la stanza"
     }
   }
 }

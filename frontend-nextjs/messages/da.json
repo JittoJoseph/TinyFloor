@@ -1353,7 +1353,12 @@
       "typing": "{name} skriver…",
       "guest": "Gæst",
       "inviteTeammate": "Inviter en kollega",
-      "inviteTeammateNote": "De kommer ind med et link"
+      "inviteTeammateNote": "De kommer ind med et link",
+      "video": "Videoopkald",
+      "audio": "Taleopkald",
+      "you": "Dig",
+      "clickToWalk": "Klik hvor som helst for at gå",
+      "playable": "Etagen til at prøve: klik hvor som helst for at gå derhen, eller brug piletasterne"
     },
     "footer": {
       "tagline": "Et virtuelt kontor, du går rundt i.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Én etage til hele dagen,",
       "muted": "fra det første hej til det sidste opkald."
+    },
+    "tour": {
+      "title": "En dag på etagen.",
+      "muted": "Hvert rum er der af en grund.",
+      "hall": {
+        "title": "Se hvem der er her.",
+        "body": "Alle er på etagen: ved et skrivebord, på farten eller til møde. Ét blik fortæller dig, hvem der er her, hvem der har travlt, og hvem der er fordybet."
+      },
+      "office": {
+        "title": "Luk døren.",
+        "body": "Sæt dig som optaget og tag privatkontoret. Andre kan se, at du er fordybet, før de kommer forbi, og chatten venter på dig.",
+        "chip": "{name} er optaget · fordybet"
+      },
+      "lounge": {
+        "title": "Hold en pause.",
+        "body": "Sofaen, højttaleren med rummets musik og de folk, du ville møde ved kaffemaskinen.",
+        "chip": "Spiller nu"
+      }
+    },
+    "vignettes": {
+      "sharing": "Deler",
+      "playing": "Spiller for rummet"
     }
   }
 }

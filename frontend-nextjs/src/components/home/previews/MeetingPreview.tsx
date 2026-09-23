@@ -1,26 +1,17 @@
 import { useTranslations } from "next-intl";
 import { LogOut, Mic, MicOff, MonitorUp, Video } from "lucide-react";
-import { OfficeScene, type Occupant } from "@/components/OfficeScene";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { MEETING } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
 
 const [emma, jack, olivia, sam] = CAST;
 
-const SIZE = "max(3.1cqw, 4.6cqh, 20px)";
-
-/** The four of them around the desks on the right, loosely, the way people gather. */
-const GATHERED: Occupant[] = [
-  { character: emma.character, name: emma.name, status: "in_call", left: "58.5%", top: "80%", direction: "right", width: SIZE },
-  { character: jack.character, name: jack.name, status: "in_call", left: "68%", top: "86.5%", direction: "up", width: SIZE },
-  { character: olivia.character, name: olivia.name, status: "in_call", left: "79.5%", top: "79%", direction: "left", width: SIZE },
-  { character: sam.character, name: sam.name, status: "in_call", left: "74%", top: "57%", direction: "down", width: SIZE },
-];
-
 /**
- * A meeting, as the app shows it: the floor stays in view, everyone at the
- * table appears as a card along the top (faces while cameras are off, a ring
- * on whoever is talking), and the bar at the bottom leaves the meeting.
+ * A meeting, as the app shows it: the four of them at the table in the
+ * meeting room, everyone at it as a card along the top (faces while cameras
+ * are off, a ring on whoever is talking), and the bar that leaves the meeting.
  */
 export function MeetingPreview({ close = false }: { close?: boolean }) {
   const tc = useTranslations("common");
@@ -34,9 +25,8 @@ export function MeetingPreview({ close = false }: { close?: boolean }) {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <div className="absolute inset-0" style={close ? { transform: "scale(1.5)", transformOrigin: "72% 78%" } : undefined}>
-        <OfficeScene pinned focus="center center" occupants={GATHERED} className="h-full w-full" />
-      </div>
+      {/* The meeting room's table, everyone sitting at it. */}
+      <FloorScene {...MEETING} view={close ? [1.5, 4, 10, 9] : MEETING.view} className="absolute inset-0 h-full w-full" />
 
       <div className="absolute inset-x-0 top-3 flex justify-center px-3 sm:top-4">
         <ul className={cn("grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5", close ? "max-w-[360px] sm:gap-2" : "max-w-[640px]")}>

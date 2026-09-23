@@ -1353,7 +1353,12 @@
       "typing": "{name} está digitando…",
       "guest": "Convidado",
       "inviteTeammate": "Convidar um colega",
-      "inviteTeammateNote": "Entram com um link"
+      "inviteTeammateNote": "Entram com um link",
+      "video": "Chamada de vídeo",
+      "audio": "Chamada de voz",
+      "you": "Você",
+      "clickToWalk": "Clique em qualquer lugar para andar",
+      "playable": "O andar, para experimentar: clique em qualquer lugar para ir até lá, ou use as setas"
     },
     "footer": {
       "tagline": "Um escritório virtual por onde você anda.",
@@ -1375,6 +1380,28 @@
     "days": {
       "title": "Um andar para o dia todo,",
       "muted": "do primeiro oi à última chamada."
+    },
+    "tour": {
+      "title": "Um dia no andar.",
+      "muted": "Cada sala tem um motivo.",
+      "hall": {
+        "title": "Veja quem está aí.",
+        "body": "Todo mundo está no andar: na mesa, circulando ou em reunião. Um olhar mostra quem está por perto, quem está ocupado e quem está concentrado."
+      },
+      "office": {
+        "title": "Feche a porta.",
+        "body": "Marque-se como ocupado e use a sala privada. As pessoas veem que você está concentrado antes de chegar, e o chat espera por você.",
+        "chip": "{name} está ocupado · concentrado"
+      },
+      "lounge": {
+        "title": "Faça uma pausa.",
+        "body": "O sofá, a caixa de som tocando a música da sala e as pessoas que você encontraria na máquina de café.",
+        "chip": "Tocando agora"
+      }
+    },
+    "vignettes": {
+      "sharing": "Compartilhando",
+      "playing": "Tocando para a sala"
     }
   }
 }

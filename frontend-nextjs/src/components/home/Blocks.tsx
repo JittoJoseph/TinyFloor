@@ -143,7 +143,7 @@ export function ProductPreview({ className }: { className?: string }) {
         label={t("previewLabel")}
         labels={{ floor: t("tabs.floor"), chat: t("tabs.chat"), people: t("tabs.people"), meeting: t("tabs.meeting") }}
         panels={{
-          floor: <PreviewFrame view="floor"><FloorPreview /></PreviewFrame>,
+          floor: <PreviewFrame view="floor"><FloorPreview playable priority /></PreviewFrame>,
           chat: <PreviewFrame view="chat"><ChatPreview /></PreviewFrame>,
           people: <PreviewFrame view="people"><PeoplePreview /></PreviewFrame>,
           meeting: <PreviewFrame view="meeting"><MeetingPreview /></PreviewFrame>,

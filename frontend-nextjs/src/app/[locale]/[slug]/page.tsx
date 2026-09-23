@@ -23,11 +23,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale: locale as Locale,
     namespace: "landings",
   });
+  const tm = await getTranslations({ locale: locale as Locale, namespace: "metadata" });
   return pageMetadata({
     title: t(`pages.${page.key}.meta.title`),
     description: t(`pages.${page.key}.meta.description`),
     path: `/${slug}`,
     locale,
+    imageAlt: tm("ogAlt"),
   });
 }
 

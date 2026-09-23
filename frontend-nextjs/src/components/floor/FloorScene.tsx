@@ -1,0 +1,313 @@
+import type { CSSProperties, ReactNode } from "react";
+import { PixelAvatar, Nameplate, type AvatarDirection } from "@/components/PixelAvatar";
+import { cn } from "@/lib/utils";
+
+/**
+ * The real floor, drawn for the website: the map the app loads, rendered once
+ * to /floor.webp (48 by 32 tiles of 32px, 20KB), with people standing, sitting
+ * and walking on it. Everything is placed in tiles, the way the app places
+ * it, so a person is one tile wide at any size and a walk follows the aisles.
+ *
+ * Server-rendered markup and CSS only: each walk is a keyframe animation
+ * written out for that walk, with the sprite for each way they face shown
+ * only while they face it. Nothing here runs in the browser.
+ */
+
+export const MAP = { width: 48, height: 32 };
+const TILE_PX = 32;
+
+type Tile = [number, number];
+type Face = AvatarDirection;
+
+interface Someone {
+  character: string;
+  name?: string;
+  status?: string;
+}
+
+/** Someone standing still on a tile. */
+export interface Stander extends Someone {
+  at: Tile;
+  face?: Face;
+  /** Running on the spot, as a character does while it is being picked. */
+  running?: boolean;
+}
+
+/**
+ * Someone sitting on one of the map's chairs, given as the chair object's
+ * tile (its left edge and its bottom, as Tiled stores it). A chair facing down
+ * sits behind its desk, so `tucked` hides the legs the desk would cover.
+ */
+export interface Sitter extends Someone {
+  chair: Tile;
+  face: Face;
+  tucked?: boolean;
+}
+
+/**
+ * Someone walking a loop through the given tiles, straight lines only (a
+ * diagonal step is walked across then down). A third number on a stop is a
+ * pause there, in seconds, facing `faces[index]` or the way they arrived.
+ */
+export interface Walker extends Someone {
+  path: Array<[number, number, number?]>;
+  faces?: Record<number, Face>;
+  /** Tiles a second. The app walks at 3.75; people strolling on a website look calmer slower. */
+  speed?: number;
+  /** Start this many seconds into the loop, so a room doesn't set off in step. */
+  offset?: number;
+}
+
+/** Where a person's feet go on their tile. */
+const feet = ([x, y]: Tile) => ({ x: x + 0.5, y: y + 0.85 });
+
+const pct = (value: number, of: number) => `${((value / of) * 100).toFixed(4)}%`;
+
+/** The seated pose's offset from the chair, from SeatManager's SEAT table, in tiles. */
+const SEAT_DY: Record<Face, number> = { down: -12 / TILE_PX, up: -1, left: -20 / TILE_PX, right: -20 / TILE_PX };
+/** Frame of each seated pose in the character atlas (24 idle, 24 run, then down, left, right, up). */
+const SIT_FRAME: Record<Face, number> = { down: 48, left: 49, right: 50, up: 51 };
+
+export function FloorScene({
+  view,
+  standing = [],
+  sitting = [],
+  walking = [],
+  priority = false,
+  className,
+  children,
+  style,
+  playable,
+  glide = false,
+  over,
+}: {
+  /** The part of the map in view, in tiles: [left, top, width, height]. It covers the box, cropping whichever side is long. */
+  view: [number, number, number, number];
+  standing?: Stander[];
+  sitting?: Sitter[];
+  walking?: Walker[];
+  /** The page's main picture: fetch it first. */
+  priority?: boolean;
+  className?: string;
+  /** Laid over the floor, in the floor's own coordinates (see OnFloor). Decorative: hidden from assistive tech. */
+  children?: ReactNode;
+  /** Laid over the box itself, in its coordinates: the app's chips and buttons. Not hidden. */
+  over?: ReactNode;
+  style?: CSSProperties;
+  /** The floor can be walked on (PlayableYou is among the children): it takes focus for the arrow keys, and this names it. */
+  playable?: string;
+  /** Pan and zoom smoothly when the view changes, like the app's camera. */
+  glide?: boolean;
+}) {
+  const [vx, vy, vw, vh] = view;
+  const cx = vx + vw / 2;
+  const cy = vy + vh / 2;
+  const walks = walking.map((walker, index) => walk(walker, index));
+
+  return (
+    <div
+      {...(playable ? { role: "application", "aria-label": playable, tabIndex: 0 } : {})}
+      className={cn(
+        "relative overflow-hidden bg-[#3a3a50] [container-type:size]",
+        playable && "cursor-pointer touch-manipulation select-none outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
+        className,
+      )}
+      style={style}
+    >
+      <div
+        aria-hidden={playable ? undefined : true}
+        className={cn(
+          "absolute left-1/2 top-1/2 aspect-[3/2] [container-type:inline-size]",
+          glide && "transition-[width,translate] duration-[1400ms] ease-[cubic-bezier(0.65,0,0.2,1)] motion-reduce:transition-none",
+        )}
+        style={{
+          width: `max(calc(100cqw * ${MAP.width / vw}), calc(100cqh * ${MAP.width / vh}))`,
+          translate: `-${pct(cx, MAP.width)} -${pct(cy, MAP.height)}`,
+          ["--tile" as string]: `calc(100cqw / ${MAP.width})`,
+          direction: "ltr",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element -- a 20KB pixel map, drawn at its own pixels */}
+        <img
+          src="/floor.webp"
+          width={MAP.width * TILE_PX}
+          height={MAP.height * TILE_PX}
+          alt=""
+          draggable={false}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+          className="absolute inset-0 size-full select-none [image-rendering:pixelated]"
+        />
+
+        {walks.length > 0 && <style>{walks.map((one) => one.css).join("")}</style>}
+
+        {/* Back to front, so whoever stands lower on the floor is drawn over whoever stands behind them. */}
+        {[
+          ...sitting.map((one) => ({ y: one.chair[1] + SEAT_DY[one.face], node: <Seated key={`s${one.chair}`} {...one} /> })),
+          ...standing.map((one) => ({ y: feet(one.at).y, node: <Standing key={`t${one.at}${one.character}`} {...one} /> })),
+          ...walks.map((one) => ({ y: one.y, node: one.node })),
+        ]
+          .sort((a, b) => a.y - b.y)
+          .map((one) => one.node)}
+
+        {children}
+      </div>
+      {over}
+    </div>
+  );
+}
+
+/** Lays its children on the floor at a tile, centred on it, in the floor's coordinates. */
+export function OnFloor({ at, className, children }: { at: [number, number]; className?: string; children: ReactNode }) {
+  return (
+    <div className={cn("absolute -translate-x-1/2", className)} style={{ left: pct(at[0], MAP.width), top: pct(at[1], MAP.height) }}>
+      {children}
+    </div>
+  );
+}
+
+const TILE = "var(--tile)";
+
+function Plate({ name, status }: { name?: string; status?: string }) {
+  if (!name) return null;
+  return <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * 1.45 + 4px)`} />;
+}
+
+function Standing({ character, name, status, at, face = "down", running }: Stander) {
+  const spot = feet(at);
+  return (
+    <div className="absolute" style={{ left: pct(spot.x, MAP.width), top: pct(spot.y, MAP.height) }}>
+      <PixelAvatar character={character} direction={face} running={running} width={TILE} style={{ left: 0, top: 0 }} />
+      <Plate name={name} status={status} />
+    </div>
+  );
+}
+
+function Seated({ character, name, status, chair, face, tucked = false }: Sitter) {
+  const x = chair[0] + 0.5;
+  const y = chair[1] + SEAT_DY[face];
+  return (
+    <div className="absolute" style={{ left: pct(x, MAP.width), top: pct(y, MAP.height) }}>
+      <span
+        className="absolute left-0 top-0 aspect-square -translate-x-1/2 -translate-y-full bg-no-repeat [image-rendering:pixelated]"
+        style={{
+          width: `calc(${TILE} * 2)`,
+          backgroundImage: `url(/characters/${character}.png)`,
+          backgroundSize: "5200% 100%",
+          backgroundPositionX: `${((SIT_FRAME[face] / 51) * 100).toFixed(4)}%`,
+          clipPath: tucked ? "inset(0 0 34% 0)" : undefined,
+        }}
+      />
+      <Plate name={name} status={status} />
+    </div>
+  );
+}
+
+type State = `${"run" | "idle"}-${Face}`;
+
+/**
+ * One walker's loop as CSS: a keyframe track moving them from stop to stop,
+ * and one track per sprite (running or standing, each way they face) that
+ * shows it only while it is the one in use.
+ */
+function walk(walker: Walker, index: number) {
+  const { character, name, status, faces = {}, speed = 2.2, offset = 0 } = walker;
+  const stops = walker.path.map(([x, y, pause]) => ({ x, y, pause: pause ?? 0 }));
+  if (stops.length > 1 && (stops[0].x !== stops.at(-1)!.x || stops[0].y !== stops.at(-1)!.y)) {
+    stops.push({ ...stops[0], pause: 0 });
+  }
+
+  // Straight legs only: a diagonal is split into across, then down.
+  type Leg = { from: Tile; to: Tile; face: Face; seconds: number } | { at: Tile; face: Face; seconds: number };
+  const legs: Leg[] = [];
+  let facing: Face = "down";
+  for (let i = 0; i < stops.length; i++) {
+    const stop = stops[i];
+    if (i > 0) {
+      const prev = stops[i - 1];
+      const corners: Tile[] = [[prev.x, prev.y]];
+      if (prev.x !== stop.x && prev.y !== stop.y) corners.push([stop.x, prev.y]);
+      corners.push([stop.x, stop.y]);
+      for (let c = 1; c < corners.length; c++) {
+        const [ax, ay] = corners[c - 1];
+        const [bx, by] = corners[c];
+        facing = bx > ax ? "right" : bx < ax ? "left" : by < ay ? "up" : "down";
+        legs.push({ from: [ax, ay], to: [bx, by], face: facing, seconds: Math.hypot(bx - ax, by - ay) / speed });
+      }
+    }
+    // The last stop is the first again; its pause was taken at the start.
+    if (stop.pause > 0 && i < stops.length - 1) {
+      facing = faces[i] ?? facing;
+      legs.push({ at: [stop.x, stop.y], face: facing, seconds: stop.pause });
+    }
+  }
+
+  const total = legs.reduce((sum, leg) => sum + leg.seconds, 0) || 1;
+  const id = `fw${hash(`${character}${JSON.stringify(walker.path)}${index}`)}`;
+  const start = feet([stops[0].x, stops[0].y]);
+
+  // Where they are at each leg's start and end, relative to the start, in tiles.
+  const moves: string[] = [];
+  const spans = new Map<State, string[]>();
+  let t = 0;
+  const states: Array<{ from: number; state: State }> = [];
+  for (const leg of legs) {
+    const p = (value: number) => ((value / total) * 100).toFixed(3);
+    if ("from" in leg) {
+      const a = feet(leg.from);
+      const b = feet(leg.to);
+      moves.push(`${p(t)}%{translate:calc(var(--tile)*${(a.x - start.x).toFixed(3)}) calc(var(--tile)*${(a.y - start.y).toFixed(3)})}`);
+      moves.push(`${p(t + leg.seconds)}%{translate:calc(var(--tile)*${(b.x - start.x).toFixed(3)}) calc(var(--tile)*${(b.y - start.y).toFixed(3)})}`);
+      states.push({ from: t, state: `run-${leg.face}` });
+    } else {
+      states.push({ from: t, state: `idle-${leg.face}` });
+    }
+    t += leg.seconds;
+  }
+  const used = [...new Set(states.map((one) => one.state))];
+  for (const state of used) {
+    const frames = states.map((one) => `${((one.from / total) * 100).toFixed(3)}%{opacity:${one.state === state ? 1 : 0}}`);
+    frames.push(`100%{opacity:${states.at(-1)!.state === state ? 1 : 0}}`);
+    spans.set(state, frames);
+  }
+
+  const delay = `${(-offset).toFixed(2)}s`;
+  const css =
+    `@keyframes ${id}{${moves.join("")}}` +
+    `.${id}{animation:${id} ${total.toFixed(2)}s linear ${delay} infinite}` +
+    used
+      .map((state) => `@keyframes ${id}-${state}{${spans.get(state)!.join("")}}.${id}-${state}{animation:${id}-${state} ${total.toFixed(2)}s step-end ${delay} infinite}`)
+      .join("") +
+    `@media (prefers-reduced-motion:reduce){.${id},[class*="${id}-"]{animation:none!important}}`;
+
+  // Without animation (reduced motion), they stand at the start facing the first way they'd go.
+  const first = states[0]?.state ?? "idle-down";
+  const node = (
+    <div key={id} className="absolute" style={{ left: pct(start.x, MAP.width), top: pct(start.y, MAP.height) }}>
+      <div className={cn("absolute left-0 top-0", id)}>
+        {used.map((state) => {
+          const [mode, face] = state.split("-") as ["run" | "idle", Face];
+          return (
+            <span key={state} className={cn("absolute left-0 top-0", `${id}-${state}`)} style={{ opacity: state === first ? 1 : 0 }}>
+              <PixelAvatar character={character} direction={face} running={mode === "run"} width={TILE} style={{ left: 0, top: 0 }} />
+            </span>
+          );
+        })}
+        <Plate name={name} status={status} />
+      </div>
+    </div>
+  );
+
+  return { css, node, y: start.y };
+}
+
+/** A short stable name for a walk's keyframes. */
+function hash(text: string) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36);
+}

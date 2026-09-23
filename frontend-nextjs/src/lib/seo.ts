@@ -43,13 +43,15 @@ export function localePath(locale: string, path: string): string {
 }
 
 /**
- * A page's social card (scripts/pictures.mjs draws them): the home page and
- * the lobby have one in every language; the other marketing pages have an
+ * A page's social card (scripts/pictures.mjs draws them): the home page, the
+ * lobby and invitations (member invites, guest links and an office's own
+ * links) have one in every language; the other marketing pages have an
  * English one, and a card without words stands in for them elsewhere.
  */
 export function socialImage(locale: string, path: string): string {
   const code = localeCodes.includes(locale as Locale) ? locale : defaultLocale;
-  if (path === "/lobby") return `/og/lobby-${code}.jpg`;
+  if (path === "/lobby" || path.startsWith("/lobby/")) return `/og/lobby-${code}.jpg`;
+  if (/^\/(invite|join|office)\//.test(path)) return `/og/invite-${code}.jpg`;
   const slug = path.slice(1);
   if (slug && LANDINGS.some((page) => page.slug === slug)) return code === "en" ? `/og/${slug}.jpg` : "/og/neutral.jpg";
   return `/og/home-${code}.jpg`;
@@ -93,11 +95,13 @@ export function pageMetadata({
   imageAlt,
 }: PageMetadataInput): Metadata {
   const canonical = localePath(locale, path);
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : socialTitle;
+  // A title that already names us (an invite's "Join Northwind on TinyFloor") isn't suffixed again.
+  const branded = title?.includes(SITE_NAME);
+  const fullTitle = title ? (branded ? title : `${title} | ${SITE_NAME}`) : socialTitle;
   const image = { url: socialImage(locale, path), width: 1200, height: 630, type: "image/jpeg", ...(imageAlt ? { alt: imageAlt } : {}) };
 
   return {
-    ...(title ? { title } : {}),
+    ...(title ? { title: branded ? { absolute: title } : title } : {}),
     ...(description ? { description } : {}),
     ...(noindex ? { robots: { index: false, follow: false } } : {}),
     alternates: { canonical, languages: languageAlternates(path) },

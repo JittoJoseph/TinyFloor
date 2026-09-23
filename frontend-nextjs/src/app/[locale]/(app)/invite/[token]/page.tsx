@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: invite
       ? t("inviteDescription", { office: invite.officeName, name: invite.invitedBy })
       : t("description"),
+    imageAlt: t("ogAlt"),
     noindex: true,
   });
 }

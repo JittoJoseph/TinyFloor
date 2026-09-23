@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: guestLinkPath(token),
     title: link ? t("joinRoomTitle", { office: link.officeName }) : t("joinTitle"),
     description: link ? t("joinRoomDescription", { office: link.officeName }) : t("description"),
+    imageAlt: t("ogAlt"),
     noindex: true,
   });
 }

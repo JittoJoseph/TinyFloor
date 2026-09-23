@@ -283,14 +283,23 @@
     "sayHello": "Say hello to everyone",
     "actions": "Actions",
     "walkOver": "Walk over",
-    "lobbyAlone": "Direct messages come with an office of your own. Here, say hello in a channel.",
+    "lobbyAlone": "Nobody else is here yet. When someone walks in, you can write to them here, just between you two.",
     "dropHere": "Drop to share in {channel}",
     "dropLobby": "Images are shared inside offices, not the lobby.",
     "lobbyGeneral": "Say hello, ask a question, or share what you're working on. Messages stay here for a week.",
     "lobbyIntroductions": "Who are you, and what brings you here? Everyone in the lobby can read it for 7 days.",
     "lobbyFeedback": "What would make TinyFloor better for your team? We read every message here.",
     "introduceYourself": "Introduce yourself",
-    "starterIntro": "Hi, I'm new here 👋"
+    "starterIntro": "Hi, I'm new here 👋",
+    "lobbyDmIntro": "Just between you two, and never saved: it's gone when either of you leaves the lobby.",
+    "notHere": "They've left the lobby, so this didn't send.",
+    "gone": "{name} left the lobby, and this conversation went with them.",
+    "edited": "edited",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete?",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "proximity": {
     "videoCall": "Video call",
@@ -960,7 +969,14 @@
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
       "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
-      "themeNote": "System follows your device. The choice is kept in this browser."
+      "themeNote": "System follows your device. The choice is kept in this browser.",
+      "link": "Your link",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "Shown when people open your profile from chat.",
+      "google": "Google",
+      "googleNote": "Sign in with Google as well.",
+      "connectGoogle": "Connect Google",
+      "googleConnected": "Connected"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Too many attempts. Wait a few minutes, then try again.",
       "not_found": "That couldn't be found. It may have been deleted.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
-      "generic": "Something went wrong. Try again."
+      "generic": "Something went wrong. Try again.",
+      "bad_link": "That doesn't look like a web address.",
+      "google_taken": "That Google account is already connected to another TinyFloor account.",
+      "google_failed": "Google didn't go through. Try again."
     },
     "people": {
       "title": "People",

@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff, KeyRound } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { Button, Card, CardTitle, Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { saveIdentity } from "@/lib/identity";
 import { CharacterPicker } from "@/components/entry/CharacterPicker";
+import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 
 /** Your account: the name people see, your email, and your password. */
 export function AccountPanel() {
@@ -16,6 +17,7 @@ export function AccountPanel() {
   const { user, updateProfile, refresh } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
+  const [link, setLink] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -23,7 +25,8 @@ export function AccountPanel() {
 
   if (!user) return null;
   const currentName = name ?? user.displayName;
-  const changed = currentName.trim() !== user.displayName;
+  const currentLink = link ?? user.link ?? "";
+  const changed = currentName.trim() !== user.displayName || currentLink.trim() !== (user.link ?? "");
 
   const save = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -31,8 +34,9 @@ export function AccountPanel() {
     setBusy(true);
     setError("");
     try {
-      await updateProfile({ displayName: currentName.trim() });
+      await updateProfile({ displayName: currentName.trim(), link: currentLink.trim() });
       setName(null);
+      setLink(null);
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
     } catch (err) {
@@ -63,6 +67,21 @@ export function AccountPanel() {
           maxLength={32}
           className={fieldClass}
         />
+        <div className="mt-4">
+          <Label htmlFor="profile-link">{t("link")}</Label>
+        </div>
+        <input
+          id="profile-link"
+          type="url"
+          inputMode="url"
+          autoComplete="url"
+          value={currentLink}
+          onChange={(event) => setLink(event.target.value)}
+          placeholder={t("linkPlaceholder")}
+          maxLength={200}
+          className={fieldClass}
+        />
+        <p className="mt-1.5 text-[12px] text-muted-foreground">{t("linkNote")}</p>
         {error && <ErrorText>{error}</ErrorText>}
         <Button type="submit" variant="primary" busy={busy} disabled={!changed || !currentName.trim()} className="mt-4">
           {saved ? <Check className="w-4 h-4" /> : null}
@@ -78,6 +97,55 @@ export function AccountPanel() {
           void refresh();
         }}
       />
+    </Card>
+  );
+}
+
+/**
+ * Google, as a second way to sign in: connected in one popup, for an account
+ * that was made with an email and a password.
+ */
+export function GooglePanel() {
+  const t = useTranslations("office.profile");
+  const { user, refresh } = useAuth();
+  const explain = useErrorMessage();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  if (!user || user.guest || (!googleAvailable && !user.google)) return null;
+
+  const connect = async (code: string) => {
+    setBusy(true);
+    setError("");
+    try {
+      await api.connectGoogle(code);
+      await refresh();
+    } catch (err) {
+      setError(explain(err));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Card>
+      <CardTitle
+        title={t("google")}
+        detail={t("googleNote")}
+        action={
+          user.google ? (
+            <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-ok/10 px-3 text-[12.5px] font-medium text-ok">
+              <Check className="size-3.5" />
+              {t("googleConnected")}
+            </span>
+          ) : undefined
+        }
+      />
+      {!user.google && (
+        <div className="max-w-sm">
+          <GoogleButton label={t("connectGoogle")} busy={busy} onCode={connect} onError={() => setError(explain(new ApiError(0, "google_failed", "")))} />
+        </div>
+      )}
+      {error && <ErrorText>{error}</ErrorText>}
     </Card>
   );
 }

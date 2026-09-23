@@ -283,14 +283,23 @@
     "sayHello": "Iedereen gedag zeggen",
     "actions": "Acties",
     "walkOver": "Loop erheen",
-    "lobbyAlone": "Privéberichten horen bij een eigen kantoor. Zeg hier hallo in een kanaal.",
+    "lobbyAlone": "Er is nog niemand anders. Zodra iemand binnenkomt, kun je hier met diegene praten, alleen tussen jullie twee.",
     "dropHere": "Loslaten om te delen in {channel}",
     "dropLobby": "Afbeeldingen deel je in kantoren, niet in de lobby.",
     "lobbyGeneral": "Zeg hallo, stel een vraag of vertel waar je aan werkt. Berichten blijven hier een week staan.",
     "lobbyIntroductions": "Wie ben je, en wat brengt je hier? De hele lobby kan het 7 dagen lezen.",
     "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
     "introduceYourself": "Stel jezelf voor",
-    "starterIntro": "Hoi, ik ben nieuw hier 👋"
+    "starterIntro": "Hoi, ik ben nieuw hier 👋",
+    "lobbyDmIntro": "Alleen tussen jullie twee en nooit bewaard: het verdwijnt zodra een van jullie de lobby verlaat.",
+    "notHere": "Die persoon heeft de lobby verlaten, dus dit is niet verstuurd.",
+    "gone": "{name} heeft de lobby verlaten en dit gesprek is mee verdwenen.",
+    "edited": "bewerkt",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "deleteConfirm": "Verwijderen?",
+    "save": "Opslaan",
+    "cancel": "Annuleren"
   },
   "proximity": {
     "videoCall": "Videogesprek",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
       "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
-      "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard."
+      "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard.",
+      "link": "Je link",
+      "linkPlaceholder": "jouwwebsite.nl",
+      "linkNote": "Zichtbaar als iemand je profiel opent vanuit de chat.",
+      "google": "Google",
+      "googleNote": "Log ook in met Google.",
+      "connectGoogle": "Google koppelen",
+      "googleConnected": "Gekoppeld"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
       "not_found": "Dat is niet gevonden. Misschien is het verwijderd.",
       "network": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
-      "generic": "Er ging iets mis. Probeer het opnieuw."
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "bad_link": "Dat lijkt geen webadres.",
+      "google_taken": "Dat Google-account is al gekoppeld aan een ander TinyFloor-account.",
+      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw."
     },
     "people": {
       "title": "Mensen",

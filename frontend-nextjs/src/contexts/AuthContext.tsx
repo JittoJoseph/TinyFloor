@@ -22,7 +22,7 @@ interface AuthContextType {
   }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
-  updateProfile: (changes: { displayName?: string; character?: string }) => Promise<SessionUser>;
+  updateProfile: (changes: { displayName?: string; character?: string; link?: string }) => Promise<SessionUser>;
   refresh: () => Promise<void>;
 }
 

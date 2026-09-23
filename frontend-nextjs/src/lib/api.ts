@@ -24,6 +24,18 @@ export interface SessionUser {
   guest: boolean;
   /** Has a password; someone who only signs in with Google doesn't, until they set one. */
   password?: boolean;
+  /** Can sign in with Google. */
+  google?: boolean;
+  /** The link on their profile. */
+  link?: string | null;
+}
+
+/** Someone's profile, as the people they chat with see it. */
+export interface PersonProfile {
+  id: string;
+  displayName: string;
+  link: string | null;
+  guest: boolean;
 }
 
 export type OfficeRole = "admin" | "member";
@@ -169,7 +181,10 @@ export const api = {
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
-  updateMe: (body: { displayName?: string; character?: string }) => patch<{ user: SessionUser }>("/me", body),
+  updateMe: (body: { displayName?: string; character?: string; link?: string }) => patch<{ user: SessionUser }>("/me", body),
+  /** Connects a Google account to the signed-in account, with the code from Google's popup. */
+  connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
+  person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
 
   // The admin view

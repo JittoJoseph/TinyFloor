@@ -283,14 +283,23 @@
     "sayHello": "Saludar a todos",
     "actions": "Acciones",
     "walkOver": "Ir hasta allí",
-    "lobbyAlone": "Los mensajes directos llegan con una oficina propia. Aquí, saluda en un canal.",
+    "lobbyAlone": "Todavía no hay nadie más. Cuando alguien entre, podrás escribirle aquí, solo entre ustedes dos.",
     "dropHere": "Suelta para compartir en {channel}",
     "dropLobby": "Las imágenes se comparten en las oficinas, no en el vestíbulo.",
     "lobbyGeneral": "Saluda, haz una pregunta o cuenta en qué estás trabajando. Los mensajes se quedan aquí una semana.",
     "lobbyIntroductions": "¿Quién eres y qué te trae por aquí? Todo el vestíbulo puede leerlo durante 7 días.",
     "lobbyFeedback": "¿Qué haría TinyFloor mejor para tu equipo? Leemos cada mensaje aquí.",
     "introduceYourself": "Preséntate",
-    "starterIntro": "Hola, soy nuevo por aquí 👋"
+    "starterIntro": "Hola, soy nuevo por aquí 👋",
+    "lobbyDmIntro": "Solo entre ustedes dos y nunca se guarda: desaparece cuando cualquiera de los dos sale del vestíbulo.",
+    "notHere": "Esa persona salió del vestíbulo, así que no se envió.",
+    "gone": "{name} salió del vestíbulo y esta conversación se fue con ella.",
+    "edited": "editado",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar?",
+    "save": "Guardar",
+    "cancel": "Cancelar"
   },
   "proximity": {
     "videoCall": "Videollamada",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Seguirás con la sesión iniciada aquí. En todos los demás sitios se cerrará.",
       "cancel": "Cancelar",
       "faceNote": "Tu cara se dibuja a partir de tu cuenta, igual en cada pantalla. No se sube ni se guarda nada.",
-      "themeNote": "Sistema sigue a tu dispositivo. La elección se guarda en este navegador."
+      "themeNote": "Sistema sigue a tu dispositivo. La elección se guarda en este navegador.",
+      "link": "Tu enlace",
+      "linkPlaceholder": "tusitio.com",
+      "linkNote": "Se muestra cuando alguien abre tu perfil desde el chat.",
+      "google": "Google",
+      "googleNote": "Entra también con Google.",
+      "connectGoogle": "Conectar Google",
+      "googleConnected": "Conectado"
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Demasiados intentos. Espera unos minutos y vuelve a intentarlo.",
       "not_found": "No se encontró. Puede que se haya eliminado.",
       "network": "No se puede conectar con TinyFloor. Revisa tu conexión y vuelve a intentarlo.",
-      "generic": "Algo salió mal. Inténtalo de nuevo."
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "bad_link": "Eso no parece una dirección web.",
+      "google_taken": "Esa cuenta de Google ya está conectada a otra cuenta de TinyFloor.",
+      "google_failed": "No se pudo con Google. Inténtalo de nuevo."
     },
     "people": {
       "title": "Personas",

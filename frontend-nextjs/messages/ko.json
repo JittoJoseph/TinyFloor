@@ -283,14 +283,23 @@
     "sayHello": "모두에게 인사하기",
     "actions": "작업",
     "walkOver": "걸어가기",
-    "lobbyAlone": "다이렉트 메시지는 나만의 오피스에서 쓸 수 있어요. 여기서는 채널에서 인사해 보세요.",
+    "lobbyAlone": "아직 아무도 없어요. 누군가 들어오면 여기서 둘만의 메시지를 보낼 수 있어요.",
     "dropHere": "놓아서 {channel}에 공유",
     "dropLobby": "이미지는 로비가 아닌 오피스에서 공유할 수 있어요.",
     "lobbyGeneral": "인사하고, 질문하고, 요즘 하는 일을 나눠 보세요. 메시지는 일주일 동안 남아요.",
     "lobbyIntroductions": "당신은 누구이고, 어떻게 오셨나요? 로비의 모두가 7일 동안 읽을 수 있어요.",
     "lobbyFeedback": "TinyFloor가 팀에 더 도움이 되려면 무엇이 필요할까요? 여기 메시지는 모두 읽어요.",
     "introduceYourself": "자기소개하기",
-    "starterIntro": "안녕하세요, 처음 왔어요 👋"
+    "starterIntro": "안녕하세요, 처음 왔어요 👋",
+    "lobbyDmIntro": "두 사람만 보고 저장되지 않아요. 둘 중 한 명이 로비를 나가면 사라져요.",
+    "notHere": "상대가 로비를 나가서 보내지 못했어요.",
+    "gone": "{name} 님이 로비를 나가서 이 대화도 사라졌어요.",
+    "edited": "수정됨",
+    "edit": "수정",
+    "delete": "삭제",
+    "deleteConfirm": "삭제할까요?",
+    "save": "저장",
+    "cancel": "취소"
   },
   "proximity": {
     "videoCall": "영상 통화",
@@ -960,7 +969,14 @@
       "signsOutOthers": "여기서는 로그인 상태가 유지돼요. 다른 곳에서는 모두 로그아웃돼요.",
       "cancel": "취소",
       "faceNote": "얼굴은 계정으로 그려지며 모든 화면에서 같아요. 업로드되거나 저장되는 건 없어요.",
-      "themeNote": "시스템은 기기 설정을 따라요. 선택은 이 브라우저에 저장돼요."
+      "themeNote": "시스템은 기기 설정을 따라요. 선택은 이 브라우저에 저장돼요.",
+      "link": "내 링크",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "채팅에서 내 프로필을 열면 보여요.",
+      "google": "Google",
+      "googleNote": "Google로도 로그인하세요.",
+      "connectGoogle": "Google 연결",
+      "googleConnected": "연결됨"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "시도 횟수가 너무 많아요. 몇 분 뒤에 다시 시도해 주세요.",
       "not_found": "찾을 수 없어요. 삭제되었을 수 있어요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
-      "generic": "문제가 생겼어요. 다시 시도해 주세요."
+      "generic": "문제가 생겼어요. 다시 시도해 주세요.",
+      "bad_link": "웹 주소가 아닌 것 같아요.",
+      "google_taken": "그 Google 계정은 이미 다른 TinyFloor 계정에 연결되어 있어요.",
+      "google_failed": "Google 연결이 완료되지 않았어요. 다시 시도해 주세요."
     },
     "people": {
       "title": "사람들",

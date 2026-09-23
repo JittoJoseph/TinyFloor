@@ -283,14 +283,23 @@
     "sayHello": "向大家问好",
     "actions": "操作",
     "walkOver": "走过去",
-    "lobbyAlone": "私信属于你自己的办公室。在这里，去频道里打个招呼吧。",
+    "lobbyAlone": "这里还没有其他人。有人进来后，你可以在这里给对方发只有你们俩能看到的消息。",
     "dropHere": "松开即可分享到 {channel}",
     "dropLobby": "图片在办公室里分享，大厅里不行。",
     "lobbyGeneral": "打个招呼、问个问题，或者聊聊你在做什么。消息会在这里保留一周。",
     "lobbyIntroductions": "你是谁？为什么来这里？大厅里的每个人都能在 7 天内看到。",
     "lobbyFeedback": "怎样让 TinyFloor 更适合你的团队？这里的每条消息我们都会看。",
     "introduceYourself": "介绍一下自己",
-    "starterIntro": "你好，我是新来的 👋"
+    "starterIntro": "你好，我是新来的 👋",
+    "lobbyDmIntro": "只在你们两人之间，且不会保存：任何一方离开大厅后就会消失。",
+    "notHere": "对方已离开大厅，所以没有发出。",
+    "gone": "{name} 离开了大厅，这段对话也随之消失。",
+    "edited": "已编辑",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleteConfirm": "删除？",
+    "save": "保存",
+    "cancel": "取消"
   },
   "proximity": {
     "videoCall": "视频通话",
@@ -960,7 +969,14 @@
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
       "cancel": "取消",
       "faceNote": "你的头像根据你的账号生成，在每个屏幕上都一样。不会上传或保存任何内容。",
-      "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。"
+      "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。",
+      "link": "你的链接",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "别人在聊天中打开你的资料时会看到。",
+      "google": "Google",
+      "googleNote": "也可以用 Google 登录。",
+      "connectGoogle": "关联 Google",
+      "googleConnected": "已关联"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "尝试次数过多，请等几分钟再试。",
       "not_found": "找不到，可能已被删除。",
       "network": "无法连接 TinyFloor，请检查网络后重试。",
-      "generic": "出了点问题，请重试。"
+      "generic": "出了点问题，请重试。",
+      "bad_link": "这看起来不像网址。",
+      "google_taken": "这个 Google 账号已关联到另一个 TinyFloor 账号。",
+      "google_failed": "Google 未能完成，请重试。"
     },
     "people": {
       "title": "成员",

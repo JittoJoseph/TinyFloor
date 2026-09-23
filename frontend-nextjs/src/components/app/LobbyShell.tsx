@@ -19,6 +19,7 @@ import { Dialog } from "@/components/ui/Dialog";
 import { FaceStack } from "@/components/ui/Face";
 import { ActionLink } from "@/components/ui/Action";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
+import { dmChannelId } from "@shared/chat";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
@@ -67,12 +68,16 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
     };
   }, [inside]);
 
-  // "Message" beside someone on the floor: that is an office's, so ask for one.
+  // "Message" beside someone on the floor opens a direct message with them, one that lasts while you're both here.
   useEffect(() => {
-    const open = () => setAsked("directMessages");
+    if (!user) return;
+    const open = (event: Event) => {
+      const { id } = (event as CustomEvent<{ id: string }>).detail;
+      router.push(lobbyChatPath(dmChannelId(user.id, id)));
+    };
     window.addEventListener(OPEN_CONVERSATION_EVENT, open);
     return () => window.removeEventListener(OPEN_CONVERSATION_EVENT, open);
-  }, []);
+  }, [user, router]);
 
   const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
 

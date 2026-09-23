@@ -283,14 +283,23 @@
     "sayHello": "Allen Hallo sagen",
     "actions": "Aktionen",
     "walkOver": "Hingehen",
-    "lobbyAlone": "Direktnachrichten gibt es mit einem eigenen Büro. Sag hier in einem Kanal Hallo.",
+    "lobbyAlone": "Noch ist niemand sonst hier. Sobald jemand hereinkommt, kannst du ihm hier schreiben, nur zwischen euch beiden.",
     "dropHere": "Ablegen, um in {channel} zu teilen",
     "dropLobby": "Bilder teilst du in Büros, nicht in der Lobby.",
     "lobbyGeneral": "Sag Hallo, stell eine Frage oder erzähl, woran du arbeitest. Nachrichten bleiben eine Woche hier.",
     "lobbyIntroductions": "Wer bist du, und was führt dich her? Alle in der Lobby können es 7 Tage lang lesen.",
     "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
     "introduceYourself": "Stell dich vor",
-    "starterIntro": "Hallo, ich bin neu hier 👋"
+    "starterIntro": "Hallo, ich bin neu hier 👋",
+    "lobbyDmIntro": "Nur zwischen euch beiden und nie gespeichert: Es verschwindet, sobald einer von euch die Lobby verlässt.",
+    "notHere": "Die Person hat die Lobby verlassen, daher wurde das nicht gesendet.",
+    "gone": "{name} hat die Lobby verlassen, und dieses Gespräch ist mitgegangen.",
+    "edited": "bearbeitet",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "deleteConfirm": "Löschen?",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
   },
   "proximity": {
     "videoCall": "Videoanruf",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Hier bleibst du angemeldet. Überall sonst wirst du abgemeldet.",
       "cancel": "Abbrechen",
       "faceNote": "Dein Gesicht entsteht aus deinem Konto, auf jedem Bildschirm gleich. Nichts wird hochgeladen oder gespeichert.",
-      "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert."
+      "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert.",
+      "link": "Dein Link",
+      "linkPlaceholder": "deinewebsite.de",
+      "linkNote": "Wird angezeigt, wenn jemand im Chat dein Profil öffnet.",
+      "google": "Google",
+      "googleNote": "Melde dich auch mit Google an.",
+      "connectGoogle": "Google verbinden",
+      "googleConnected": "Verbunden"
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Zu viele Versuche. Warte ein paar Minuten und versuch es dann erneut.",
       "not_found": "Das wurde nicht gefunden. Vielleicht wurde es gelöscht.",
       "network": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es erneut.",
-      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal."
+      "generic": "Etwas ist schiefgelaufen. Versuch es noch einmal.",
+      "bad_link": "Das sieht nicht nach einer Webadresse aus.",
+      "google_taken": "Dieses Google-Konto ist schon mit einem anderen TinyFloor-Konto verbunden.",
+      "google_failed": "Das hat mit Google nicht geklappt. Versuch es noch einmal."
     },
     "people": {
       "title": "Leute",

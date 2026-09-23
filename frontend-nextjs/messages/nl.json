@@ -1383,7 +1383,29 @@
       "vs": "vs {name}",
       "theme": "Thema",
       "language": "Taal",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Over ons",
+      "privacy": "Privacy",
+      "terms": "Voorwaarden"
     }
+  },
+  "legal": {
+    "englishOnly": "Deze pagina is in het Engels."
+  },
+  "about": {
+    "meta": {
+      "title": "Over TinyFloor",
+      "description": "TinyFloor is een virtueel kantoor waar je doorheen loopt, gemaakt door Jitto Joseph. Waarom het bestaat, wie het maakt en hoe je ons bereikt."
+    },
+    "eyebrow": "Over ons",
+    "title": "Op afstand werken verloor de gang. Wij bouwen hem terug.",
+    "p1": "Apart werken is goed voor je focus, maar het nam ongemerkt de kleine momenten weg: de snelle vraag bij iemands bureau, het hallo in het voorbijgaan, zien wie er is. Videogesprekken werken goed voor vergaderingen. Ze maakten van elk ander gesprek een afspraak.",
+    "p2": "TinyFloor is een verdieping in plaats van een link. Je team loopt door een gedeeld pixel-art kantoor, en naar iemand toe lopen is hoe je begint te praten. Ga aan een tafel zitten en je zit in een vergadering. Loop weg en het is weer stil.",
+    "p3": "Het draait in de browser op het netwerk van Cloudflare, in 18 talen, zonder iets te installeren, en het is gratis voor kleine teams.",
+    "founderTitle": "Gemaakt door Jitto Joseph",
+    "founderBody": "Ik ontwerp en bouw TinyFloor, van de pixelverdieping tot de servers waarop het draait. Heb je een idee, een probleem of wil je gewoon hallo zeggen? Ik hoor graag van je.",
+    "website": "Website",
+    "elsewhere": "TinyFloor elders",
+    "contact": "Schrijf ons"
   }
 }

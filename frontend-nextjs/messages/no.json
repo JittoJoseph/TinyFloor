@@ -1383,7 +1383,29 @@
       "vs": "vs {name}",
       "theme": "Tema",
       "language": "Språk",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Om oss",
+      "privacy": "Personvern",
+      "terms": "Vilkår"
     }
+  },
+  "legal": {
+    "englishOnly": "Denne siden er på engelsk."
+  },
+  "about": {
+    "meta": {
+      "title": "Om TinyFloor",
+      "description": "TinyFloor er et virtuelt kontor du går rundt i, laget av Jitto Joseph. Hvorfor det finnes, hvem som lager det og hvordan du når oss."
+    },
+    "eyebrow": "Om oss",
+    "title": "Fjernarbeid mistet gangen. Vi bygger den opp igjen.",
+    "p1": "Å jobbe hver for seg er bra for fokus, men det tok stille bort de små øyeblikkene: det raske spørsmålet ved noens pult, hei-et i forbifarten, å se hvem som er der. Videosamtaler fungerer bra for møter. De gjorde alle andre samtaler til en avtale.",
+    "p2": "TinyFloor er en etasje i stedet for en lenke. Teamet ditt går rundt i et felles kontor i pikselgrafikk, og å gå bort til noen er måten man begynner å snakke på. Sett deg ved et bord, og du er i et møte. Gå derfra, og det blir stille igjen.",
+    "p3": "Det kjører i nettleseren på Cloudflares nettverk, på 18 språk, uten noe å installere, og det er gratis for små team.",
+    "founderTitle": "Laget av Jitto Joseph",
+    "founderBody": "Jeg designer og bygger TinyFloor, fra pikseletasjen til serverne den kjører på. Har du en idé, et problem eller vil bare si hei, hører jeg gjerne fra deg.",
+    "website": "Nettsted",
+    "elsewhere": "TinyFloor andre steder",
+    "contact": "Skriv til oss"
   }
 }

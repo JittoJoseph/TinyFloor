@@ -5,7 +5,7 @@ import { localePath, socialImage } from "@/lib/seo";
 export type Schema = Record<string, unknown>;
 
 const NAME = "TinyFloor";
-const ORG_ID = `${SITE_URL}/#organization`;
+export const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /** The home page's "also on every floor" items, named after the product's own features wherever those are listed. */
@@ -69,7 +69,7 @@ export function pageGraph({
   path: string;
   name: string;
   description?: string;
-  type?: "WebPage" | "CollectionPage";
+  type?: "WebPage" | "CollectionPage" | "AboutPage";
   crumb?: boolean;
   mainEntity?: string;
   nodes?: Schema[];

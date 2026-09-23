@@ -1383,7 +1383,29 @@
       "vs": "vs. {name}",
       "theme": "Teema",
       "language": "Kieli",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Tietoa meistä",
+      "privacy": "Tietosuoja",
+      "terms": "Käyttöehdot"
     }
+  },
+  "legal": {
+    "englishOnly": "Tämä sivu on englanniksi."
+  },
+  "about": {
+    "meta": {
+      "title": "Tietoa TinyFloorista",
+      "description": "TinyFloor on virtuaalitoimisto, jossa voi kävellä, ja sen on tehnyt Jitto Joseph. Miksi se on olemassa, kuka sitä tekee ja miten meihin saa yhteyden."
+    },
+    "eyebrow": "Tietoa meistä",
+    "title": "Etätyö menetti käytävän. Rakennamme sen takaisin.",
+    "p1": "Erillään työskentely auttaa keskittymään, mutta se vei hiljaa pienet hetket: nopean kysymyksen jonkun työpöydän ääressä, ohimennen sanotun moikan, näkymän siihen, kuka on paikalla. Videopuhelut hoitavat kokoukset hyvin. Ne tekivät kaikista muista keskusteluista sovittuja tapaamisia.",
+    "p2": "TinyFloor on kerros linkin sijaan. Tiimisi kävelee yhteisessä pikselitaidetoimistossa, ja jonkun luo käveleminen on tapa aloittaa keskustelu. Istu pöydän ääreen, niin olet kokouksessa. Kävele pois, niin on taas hiljaista.",
+    "p3": "Se toimii selaimessa Cloudflaren verkossa, 18 kielellä, ilman asennuksia, ja se on ilmainen pienille tiimeille.",
+    "founderTitle": "Tekijä: Jitto Joseph",
+    "founderBody": "Suunnittelen ja rakennan TinyFlooria pikselikerroksesta palvelimiin, joilla se pyörii. Jos sinulla on idea, ongelma tai haluat vain tervehtiä, kuulen sinusta mielelläni.",
+    "website": "Verkkosivusto",
+    "elsewhere": "TinyFloor muualla",
+    "contact": "Kirjoita meille"
   }
 }

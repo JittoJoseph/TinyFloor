@@ -1,8 +1,8 @@
+// Written by scripts/floor-data.py from the map. Run it again rather than editing this by hand.
+
 /**
  * Where you can stand on the floor, one character a tile: "." to walk on, "#"
- * a wall or furniture. Worked out from the map's colliders the way the app's
- * NavGrid does, and kept here so the website can walk the floor without
- * loading the map or the game.
+ * a wall or furniture, as the app's NavGrid works it out from the colliders.
  */
 export const WALKABLE = [
   "################################################",
@@ -41,35 +41,40 @@ export const WALKABLE = [
 
 export const walkable = (x: number, y: number) => WALKABLE[y]?.[x] === ".";
 
+/** How many pieces are in /floor-pieces.webp, one to a 32 by 64 cell. */
+export const PIECES = 8;
+
 /**
  * The map's chairs, by the tile Tiled keeps them at (their left edge and
- * bottom): which frame of items/chair.png they are and which way they face.
- * A chair facing up is drawn over whoever sits in it, as the app does.
+ * bottom): the way each faces, and what the app draws over whoever sits in
+ * it: the desk over the legs of someone facing us, the chair's back over
+ * someone facing away. Each is [piece, left, top, tall] in tiles, a piece
+ * being a cell of /floor-pieces.webp, one tile tall or two.
  */
-export const CHAIRS: Record<string, { frame: number; face: "up" | "down" | "left" | "right" }> = {
-  "4,8": { frame: 7, face: "down" },
-  "4,11": { frame: 11, face: "up" },
-  "6,8": { frame: 7, face: "down" },
-  "6,11": { frame: 11, face: "up" },
-  "8,8": { frame: 7, face: "down" },
-  "8,11": { frame: 11, face: "up" },
-  "7,24": { frame: 1, face: "down" },
-  "5,26": { frame: 5, face: "up" },
-  "9,26": { frame: 5, face: "up" },
-  "20,11": { frame: 5, face: "up" },
-  "20,8": { frame: 1, face: "down" },
-  "26,11": { frame: 5, face: "up" },
-  "26,8": { frame: 1, face: "down" },
-  "34,16": { frame: 5, face: "up" },
-  "34,13": { frame: 1, face: "down" },
-  "40,16": { frame: 5, face: "up" },
-  "40,13": { frame: 1, face: "down" },
-  "21,23": { frame: 5, face: "up" },
-  "21,20": { frame: 1, face: "down" },
-  "27,23": { frame: 5, face: "up" },
-  "27,20": { frame: 1, face: "down" },
-  "35,28": { frame: 5, face: "up" },
-  "35,25": { frame: 1, face: "down" },
-  "41,28": { frame: 5, face: "up" },
-  "41,25": { frame: 1, face: "down" },
+export const CHAIRS: Record<string, { face: "up" | "down" | "left" | "right"; over: Array<[number, number, number, number]> }> = {
+  "4,8": { face: "down", over: [[0, 4, 7, 0]] },
+  "4,11": { face: "up", over: [[1, 4, 9, 1]] },
+  "6,8": { face: "down", over: [[0, 6, 7, 0]] },
+  "6,11": { face: "up", over: [[1, 6, 9, 1]] },
+  "8,8": { face: "down", over: [[0, 8, 7, 0]] },
+  "8,11": { face: "up", over: [[1, 8, 9, 1]] },
+  "7,24": { face: "down", over: [[2, 7, 23, 0], [3, 7, 23, 0]] },
+  "5,26": { face: "up", over: [[4, 5, 24, 1]] },
+  "9,26": { face: "up", over: [[4, 9, 24, 1]] },
+  "20,11": { face: "up", over: [[4, 20, 9, 1]] },
+  "20,8": { face: "down", over: [[5, 20, 7, 0], [6, 20, 7, 0]] },
+  "26,11": { face: "up", over: [[4, 26, 9, 1]] },
+  "26,8": { face: "down", over: [[5, 26, 7, 0], [7, 26, 7, 0]] },
+  "34,16": { face: "up", over: [[4, 34, 14, 1]] },
+  "34,13": { face: "down", over: [[5, 34, 12, 0], [6, 34, 12, 0]] },
+  "40,16": { face: "up", over: [[4, 40, 14, 1]] },
+  "40,13": { face: "down", over: [[5, 40, 12, 0], [7, 40, 12, 0]] },
+  "21,23": { face: "up", over: [[4, 21, 21, 1]] },
+  "21,20": { face: "down", over: [[5, 21, 19, 0], [6, 21, 19, 0]] },
+  "27,23": { face: "up", over: [[4, 27, 21, 1]] },
+  "27,20": { face: "down", over: [[5, 27, 19, 0], [7, 27, 19, 0]] },
+  "35,28": { face: "up", over: [[4, 35, 26, 1]] },
+  "35,25": { face: "down", over: [[5, 35, 24, 0], [6, 35, 24, 0]] },
+  "41,28": { face: "up", over: [[4, 41, 26, 1]] },
+  "41,25": { face: "down", over: [[5, 41, 24, 0], [7, 41, 24, 0]] },
 };

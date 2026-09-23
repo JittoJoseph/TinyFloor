@@ -66,6 +66,10 @@
         "a": "O TinyFloor é um escritório virtual onde você anda por aí. Sua equipe aparece como personagens em pixel art em um andar 2D compartilhado, e uma chamada de vídeo ou voz começa quando você fica ao lado de alguém, e não quando clica em um link de reunião."
       },
       {
+        "q": "O que é um escritório virtual?",
+        "a": "Um escritório virtual é um espaço online onde uma equipe remota trabalha junta como se dividisse o mesmo prédio. No TinyFloor, é um andar em 2D com mesas, uma sala de reunião e uma sala privada, onde você vê quem está por perto e começa uma conversa indo até alguém."
+      },
+      {
         "q": "Preciso instalar alguma coisa?",
         "a": "Não. O TinyFloor funciona no navegador, no computador e no celular. Abra o link de uma sala e você já está no escritório."
       },
@@ -74,24 +78,32 @@
         "a": "Sim. O lobby público é gratuito para todos, assim como um escritório para até 3 pessoas. Planos para equipes maiores chegam em breve."
       },
       {
+        "q": "O TinyFloor é uma alternativa gratuita ao Gather?",
+        "a": "Sim. Como o Gather, o TinyFloor é um escritório virtual onde sua equipe anda por um mapa 2D e conversa ao se aproximar. O TinyFloor é gratuito para até 3 pessoas, roda no navegador sem instalar nada e deixa convidados entrarem sem conta."
+      },
+      {
         "q": "Preciso de uma conta para entrar em uma sala?",
         "a": "Para o lobby público, não. Qualquer pessoa pode entrar como convidada só com um nome. As salas de um espaço de trabalho são privadas: a equipe entra com uma conta grátis e os visitantes, com um link de convidado."
       },
       {
-        "q": "Como funcionam as chamadas de vídeo?",
-        "a": "Uma chamada com as pessoas de quem você se aproxima passa por WebRTC pela rede de retransmissão da Cloudflare, então conecta do mesmo jeito em qualquer rede, no escritório ou em casa. Ela fica conectada até alguém desligar ou sair da sala, então se afastar não a derruba. As mesas de reunião levam chamadas em grupo por um servidor de mídia: sente-se para entrar, levante-se para sair."
+        "q": "Como funciona o vídeo chat por proximidade?",
+        "a": "Chegue perto de alguém e os botões de chamada aparecem ao lado da pessoa; toque em um para iniciar uma chamada de vídeo ou de voz. As chamadas usam WebRTC pela rede da Cloudflare, então conectam em qualquer rede de escritório ou de casa, e continuam até alguém desligar. As mesas de reunião levam as chamadas em grupo: sente para entrar, levante para sair."
       },
       {
         "q": "Minha câmera fica ligada o tempo todo em que estou em uma sala?",
         "a": "Não. A câmera e o microfone só são abertos durante uma chamada e liberados assim que ela termina."
       },
       {
+        "q": "O TinyFloor é privado e seguro?",
+        "a": "Um andar é só para seus membros e os convidados que eles deixam entrar, e nada lá dentro é público ou indexado por buscadores. As chamadas são criptografadas em trânsito pelo WebRTC, e sua câmera e seu microfone só ficam ligados durante uma chamada."
+      },
+      {
         "q": "Posso usar o TinyFloor no celular?",
         "a": "Sim. Em dispositivos touch você se move com um joystick na tela, e os controles de chamada se adaptam à tela menor."
       },
       {
-        "q": "Qual a diferença para uma chamada de vídeo comum?",
-        "a": "Uma chamada comum coloca todo mundo em uma grade até a reunião acabar. Uma sala do TinyFloor fica aberta o dia todo, então você vê quem está por lá, passa de uma conversa para outra e fala com as pessoas de quem se aproxima."
+        "q": "Qual a diferença entre o TinyFloor e o Zoom ou o Google Meet?",
+        "a": "Zoom e Google Meet colocam todos em uma grade até a reunião acabar. Um escritório no TinyFloor fica aberto o dia todo: você vê quem está por perto, passa de uma conversa para outra e fala com quem for até, sem agendar chamadas."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Ande por um andar de verdade antes de criar o seu. Sem precisar de conta.",
       "menu": "Menu",
       "teams": "Para equipes",
-      "teamTitle": "Feito para equipes pequenas",
+      "teamTitle": "Feito para equipes remotas",
       "teamBody": "Grátis para até 3 pessoas, com planos maiores a caminho.",
       "cases": {
         "virtualOffice": "Um lugar para sua equipe remota",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Tudo acontece no andar.",
-      "muted": "Como aconteceria num escritório.",
+      "title": "Um escritório virtual que funciona como um de verdade.",
+      "muted": "Sem nenhum link de reunião.",
+      "lead": "O TinyFloor reúne sua equipe remota em um mesmo andar, no navegador. Veja quem está por aí, vá até alguém para conversar, sentem juntos para reuniões e feche a porta quando precisar se concentrar.",
+      "labels": {
+        "walk": "Chat por proximidade",
+        "meet": "Salas de reunião",
+        "door": "Não perturbe",
+        "lounge": "Copa"
+      },
       "door": {
         "title": "Feche a porta.",
         "body": "Marque-se como ocupado e use a sala privada. As pessoas veem que você está concentrado antes de chegar, e o chat espera por você.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Pronto para usar",
-      "muted": "antes de o café esfriar.",
+      "title": "Monte um escritório virtual em um minuto.",
+      "muted": "Sem downloads, sem cartão de crédito.",
       "make": {
         "title": "Crie seu escritório.",
         "body": "Dê um nome e escolha um personagem. Fica pronto em um minuto."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} entrou"
     },
     "more": {
-      "title": "Tudo o que uma equipe pequena precisa,",
-      "muted": "em um só andar.",
+      "title": "Tudo o que sua equipe remota precisa,",
+      "muted": "em um só escritório virtual.",
       "items": {
         "screen": {
           "title": "Compartilhamento de tela",

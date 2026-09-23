@@ -66,6 +66,10 @@
         "a": "TinyFloor är ett virtuellt kontor som du går runt i. Ditt team syns som figurer i pixelgrafik på en delad 2D-våning, och ett video- eller röstsamtal startar när du ställer dig bredvid någon i stället för när du klickar på en möteslänk."
       },
       {
+        "q": "Vad är ett virtuellt kontor?",
+        "a": "Ett virtuellt kontor är ett onlineutrymme där ett distansteam arbetar tillsammans som om det delade samma byggnad. I TinyFloor är det en 2D-våning med skrivbord, ett mötesrum och ett eget kontor, där du ser vem som är här och startar ett samtal genom att gå fram till någon."
+      },
+      {
         "q": "Behöver jag installera något?",
         "a": "Nej. TinyFloor körs i webbläsaren på dator och mobil. Öppna en rumslänk så är du inne på kontoret."
       },
@@ -74,24 +78,32 @@
         "a": "Ja. Den öppna lobbyn är gratis för alla, och ett kontor för upp till 3 personer också. Planer för större team kommer snart."
       },
       {
+        "q": "Är TinyFloor ett gratis alternativ till Gather?",
+        "a": "Ja. Precis som Gather är TinyFloor ett virtuellt kontor där ditt team rör sig på en 2D-karta och pratar genom att komma nära. TinyFloor är gratis för upp till 3 personer, körs i webbläsaren utan installation och släpper in gäster utan konto."
+      },
+      {
         "q": "Behöver jag ett konto för att gå med i ett rum?",
         "a": "Inte för den offentliga lobbyn. Där kan vem som helst gå in som gäst med bara ett namn. Rum i en arbetsyta är privata: kollegor loggar in med ett gratis konto och besökare kommer in via en gästlänk."
       },
       {
-        "q": "Hur fungerar videosamtalen?",
-        "a": "Ett samtal med de du går fram till går över WebRTC genom Cloudflares relänät, så det ansluter likadant på alla nätverk, på jobbet eller hemma. Det är anslutet tills någon lägger på eller lämnar rummet, så att gå därifrån bryter det inte. Mötesbord skickar gruppsamtal via en mediaserver: sätt dig för att delta, res dig för att gå."
+        "q": "Hur fungerar närhetsbaserad videochatt?",
+        "a": "Gå fram till någon så visas samtalsknapparna bredvid personen; tryck på en för att starta ett video- eller röstsamtal. Samtalen går via WebRTC genom Cloudflares nätverk, så de ansluter på alla kontors- och hemnätverk, och de fortsätter tills någon lägger på. Mötesbord bär gruppsamtal: sätt dig för att gå med, res dig för att lämna."
       },
       {
         "q": "Är min kamera på hela tiden när jag är i ett rum?",
         "a": "Nej. Kameran och mikrofonen öppnas bara för ett samtal och släpps så fort det tar slut."
       },
       {
+        "q": "Är TinyFloor privat och säkert?",
+        "a": "En våning är bara för sina medlemmar och de gäster de släpper in, och inget där inne är offentligt eller indexeras av sökmotorer. Samtal krypteras under överföringen av WebRTC, och din kamera och mikrofon är bara på under ett samtal."
+      },
+      {
         "q": "Kan jag använda TinyFloor på mobilen?",
         "a": "Ja. På pekskärmar rör du dig med en joystick på skärmen, och samtalskontrollerna anpassar sig till den mindre skärmen."
       },
       {
-        "q": "Hur skiljer det sig från ett vanligt videosamtal?",
-        "a": "Ett vanligt samtal lägger alla i ett rutnät tills mötet är slut. Ett TinyFloor-rum är öppet hela dagen, så du ser vem som är där, kan glida mellan samtal och prata med dem du går fram till."
+        "q": "Hur skiljer sig TinyFloor från Zoom eller Google Meet?",
+        "a": "Zoom och Google Meet sätter alla i ett rutnät tills mötet är slut. Ett TinyFloor-kontor är öppet hela dagen: du ser vem som är här, glider mellan samtal och pratar med den du går fram till, utan att boka något."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Gå runt på ett riktigt våningsplan innan du skapar ditt eget. Inget konto behövs.",
       "menu": "Meny",
       "teams": "För team",
-      "teamTitle": "Gjort för små team",
+      "teamTitle": "Gjort för distansteam",
       "teamBody": "Gratis för upp till 3 personer, större planer är på väg.",
       "cases": {
         "virtualOffice": "En plats för ditt distansteam",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Allt händer på våningen.",
-      "muted": "Precis som på ett kontor.",
+      "title": "Ett virtuellt kontor som fungerar som ett riktigt.",
+      "muted": "Utan en enda möteslänk.",
+      "lead": "TinyFloor samlar ditt distansteam på en gemensam våning i webbläsaren. Se vem som är här, gå fram och prata, sätt er tillsammans för möten och stäng dörren när du behöver fokusera.",
+      "labels": {
+        "walk": "Närhetschatt",
+        "meet": "Mötesrum",
+        "door": "Stör ej",
+        "lounge": "Pausrum"
+      },
       "door": {
         "title": "Stäng dörren.",
         "body": "Sätt dig som upptagen och ta det egna kontoret. Andra ser att du jobbar koncentrerat innan de kommer förbi, och chatten väntar på dig.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Igång",
-      "muted": "innan kaffet hunnit kallna.",
+      "title": "Skapa ett virtuellt kontor på en minut.",
+      "muted": "Inga nedladdningar, inget kreditkort.",
       "make": {
         "title": "Skapa ditt kontor.",
         "body": "Ge det ett namn och välj en figur. Det är klart på en minut."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} kom in"
     },
     "more": {
-      "title": "Allt ett litet team behöver,",
-      "muted": "på ett plan.",
+      "title": "Allt ditt distansteam behöver,",
+      "muted": "i ett virtuellt kontor.",
       "items": {
         "screen": {
           "title": "Skärmdelning",

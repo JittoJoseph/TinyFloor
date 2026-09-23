@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { PixelAvatar, Nameplate, type AvatarDirection } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
-import { CHAIRS } from "./grid";
+import { CHAIRS, PIECES } from "./grid";
 
 /**
  * The real floor, drawn for the website: the map the app loads, rendered once
@@ -170,7 +170,7 @@ const TILE = "var(--tile)";
 
 function Plate({ name, status }: { name?: string; status?: string }) {
   if (!name) return null;
-  return <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * 1.45 + 4px)`} />;
+  return <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * 1.45 - 2px)`} />;
 }
 
 function Standing({ character, name, status, at, face = "down", running }: Stander) {
@@ -183,8 +183,25 @@ function Standing({ character, name, status, at, face = "down", running }: Stand
   );
 }
 
+/** A piece of furniture from /floor-pieces.webp (see scripts/floor-data.py), placed on the floor in tiles. */
+function Piece({ index, left, top, tall }: { index: number; left: number; top: number; tall: boolean }) {
+  return (
+    <span
+      className="absolute bg-[url(/floor-pieces.webp)] bg-no-repeat [image-rendering:pixelated]"
+      style={{
+        left: pct(left, MAP.width),
+        top: pct(top, MAP.height),
+        width: TILE,
+        height: tall ? `calc(${TILE} * 2)` : TILE,
+        backgroundSize: `calc(${TILE} * ${PIECES}) calc(${TILE} * 2)`,
+        backgroundPosition: `calc(${TILE} * ${-index}) 0`,
+      }}
+    />
+  );
+}
+
 function Seated({ character, name, status, chair }: Sitter) {
-  const { frame, face } = CHAIRS[`${chair[0]},${chair[1]}`] ?? { frame: 1, face: "down" as const };
+  const { face, over } = CHAIRS[`${chair[0]},${chair[1]}`] ?? { face: "down" as const, over: [] };
   const x = chair[0] + 0.5;
   const y = chair[1] + SEAT_DY[face];
   return (
@@ -197,31 +214,18 @@ function Seated({ character, name, status, chair }: Sitter) {
             backgroundImage: `url(/characters/${character}.png)`,
             backgroundSize: "5200% 100%",
             backgroundPositionX: `${((SIT_FRAME[face] / 51) * 100).toFixed(4)}%`,
-            // Behind a desk: the desk covers everything below the waist.
-            clipPath: face === "down" ? "inset(0 0 34% 0)" : undefined,
           }}
         />
         {face !== "up" && <Plate name={name} status={status} />}
       </div>
-      {face === "up" && (
-        <div className="absolute" style={{ left: pct(chair[0], MAP.width), top: pct(chair[1] - 2, MAP.height) }}>
-          {/* The chair's back, over them. */}
-          <span
-            className="absolute left-0 top-0 block bg-no-repeat [image-rendering:pixelated]"
-            style={{
-              width: TILE,
-              height: `calc(${TILE} * 2)`,
-              backgroundImage: "url(/tilesets/items/chair.png)",
-              backgroundSize: "100% 2300%",
-              backgroundPositionY: `${((frame / 22) * 100).toFixed(4)}%`,
-            }}
-          />
-          {/* Their name under the chair, where the app puts it for someone with their back to us. */}
-          {name && (
-            <span className="absolute left-[calc(var(--tile)*0.5)] top-[calc(var(--tile)*2)]">
-              <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * -0.85)`} />
-            </span>
-          )}
+      {/* Whatever the app draws in front of them: the desk over their legs, or the chair's back. */}
+      {over.map(([index, left, top, tall]) => (
+        <Piece key={`${index}-${left}-${top}`} index={index} left={left} top={top} tall={tall === 1} />
+      ))}
+      {/* Someone facing away has their name under the chair, where the app puts it. */}
+      {face === "up" && name && (
+        <div className="absolute" style={{ left: pct(x, MAP.width), top: pct(chair[1], MAP.height) }}>
+          <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * -0.58)`} />
         </div>
       )}
     </>

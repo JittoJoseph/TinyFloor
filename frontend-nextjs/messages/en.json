@@ -66,6 +66,10 @@
         "a": "TinyFloor is a virtual office you walk around in. Your team appears as pixel-art characters on a shared 2D floor, and a video or voice call starts when you stand next to someone instead of when you click a meeting link."
       },
       {
+        "q": "What is a virtual office?",
+        "a": "A virtual office is an online space where a remote team works together as if it shared a building. In TinyFloor it is a 2D floor with desks, a meeting room and a private office, where you can see who's around and start a conversation by walking up to someone."
+      },
+      {
         "q": "Do I need to install anything?",
         "a": "No. TinyFloor runs in the browser on desktop and mobile. Open a room link and you are inside the office."
       },
@@ -74,24 +78,32 @@
         "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Plans for bigger teams are coming soon."
       },
       {
+        "q": "Is TinyFloor a free alternative to Gather?",
+        "a": "Yes. Like Gather, TinyFloor is a virtual office where your team walks around a 2D map and talks by getting close. TinyFloor is free for up to 3 people, runs in the browser with nothing to install, and lets guests in without an account."
+      },
+      {
         "q": "Do I need an account to join a room?",
         "a": "Not for the public lobby. Anyone can walk in there as a guest with just a name. Rooms in a workspace are private: teammates sign in with a free account, and visitors come in through a guest link."
       },
       {
-        "q": "How do the video calls work?",
-        "a": "A call with the people you walk up to runs over WebRTC through Cloudflare's relay network, so it connects the same way on any office or home network. It stays connected until someone hangs up or leaves the room, so walking away will not drop it. Meeting tables carry group calls through a media server: sit down to join, stand up to leave."
+        "q": "How does proximity video chat work?",
+        "a": "Walk up to someone and the call buttons appear next to them; tap one to start a video or voice call. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. Meeting tables carry group calls: sit down to join, stand up to leave."
       },
       {
         "q": "Is my camera on the whole time I am in a room?",
         "a": "No. The camera and microphone are opened only for a call and released the moment it ends."
       },
       {
+        "q": "Is TinyFloor private and secure?",
+        "a": "An office floor is only for its members and the guests they let in, and nothing inside it is public or indexed by search engines. Calls are encrypted in transit by WebRTC, and your camera and microphone are only on during a call."
+      },
+      {
         "q": "Can I use TinyFloor on a phone?",
         "a": "Yes. On touch devices you move with an on-screen joystick, and the call controls adapt to the smaller screen."
       },
       {
-        "q": "How is this different from a normal video call?",
-        "a": "A normal call puts everyone in one grid until the meeting ends. A TinyFloor room stays open all day, so you can see who is around, drift between conversations, and talk to the people you walk over to."
+        "q": "How is TinyFloor different from Zoom or Google Meet?",
+        "a": "Zoom and Google Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around, drift between conversations and talk to whoever you walk over to, without scheduling a call."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
       "menu": "Menu",
       "teams": "For teams",
-      "teamTitle": "Made for small teams",
+      "teamTitle": "Made for remote teams",
       "teamBody": "Free for up to 3 people, with bigger plans on the way.",
       "cases": {
         "virtualOffice": "A place for your remote team to be",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Everything happens on the floor.",
-      "muted": "The way it would in an office.",
+      "title": "A virtual office that works like a real one.",
+      "muted": "Without a single meeting link.",
+      "lead": "TinyFloor puts your remote team on one shared floor in the browser. See who's in, walk over to talk, sit down together to meet and close the door when you need to focus.",
+      "labels": {
+        "walk": "Proximity chat",
+        "meet": "Meeting rooms",
+        "door": "Do not disturb",
+        "lounge": "Break room"
+      },
       "door": {
         "title": "Close the door.",
         "body": "Set yourself busy and take the private office. People can see you're heads-down before they walk over, and chat waits for you.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Up and running",
-      "muted": "before your coffee gets cold.",
+      "title": "Set up a virtual office in a minute.",
+      "muted": "No downloads, no credit card.",
       "make": {
         "title": "Make your office.",
         "body": "Give it a name and pick a character. It's ready in a minute."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} walked in"
     },
     "more": {
-      "title": "Everything a small team needs,",
-      "muted": "on one floor.",
+      "title": "Everything your remote team needs,",
+      "muted": "in one virtual office.",
       "items": {
         "screen": {
           "title": "Screen sharing",

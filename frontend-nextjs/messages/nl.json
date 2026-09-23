@@ -66,6 +66,10 @@
         "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
       },
       {
+        "q": "Wat is een virtueel kantoor?",
+        "a": "Een virtueel kantoor is een online ruimte waar een remote team samenwerkt alsof het hetzelfde gebouw deelt. In TinyFloor is het een 2D-verdieping met bureaus, een vergaderruimte en een privékantoor, waar je ziet wie er is en een gesprek begint door naar iemand toe te lopen."
+      },
+      {
         "q": "Moet ik iets installeren?",
         "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
       },
@@ -74,24 +78,32 @@
         "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
       },
       {
+        "q": "Is TinyFloor een gratis alternatief voor Gather?",
+        "a": "Ja. Net als Gather is TinyFloor een virtueel kantoor waar je team over een 2D-kaart loopt en praat door dichtbij te komen. TinyFloor is gratis voor maximaal 3 personen, werkt in de browser zonder installatie en laat gasten binnen zonder account."
+      },
+      {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
         "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
       },
       {
-        "q": "Hoe werken de videogesprekken?",
-        "a": "Een gesprek met de mensen naar wie je toe loopt gaat via WebRTC over het relaynetwerk van Cloudflare, dus het verbindt op elk netwerk even goed, op kantoor of thuis. Het blijft verbonden tot iemand ophangt of de ruimte verlaat, dus weglopen verbreekt het niet. Vergadertafels sturen groepsgesprekken via een mediaserver: ga zitten om mee te doen, sta op om weg te gaan."
+        "q": "Hoe werkt proximity-videochat?",
+        "a": "Loop naar iemand toe en de belknoppen verschijnen naast diegene; tik er een aan om een video- of spraakgesprek te starten. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Staat mijn camera de hele tijd aan als ik in een ruimte ben?",
         "a": "Nee. Camera en microfoon worden alleen voor een gesprek geopend en vrijgegeven zodra het afgelopen is."
       },
       {
+        "q": "Is TinyFloor privé en veilig?",
+        "a": "Een verdieping is alleen voor de leden en de gasten die zij binnenlaten, en niets daarbinnen is openbaar of wordt door zoekmachines geïndexeerd. Gesprekken zijn onderweg versleuteld door WebRTC, en je camera en microfoon staan alleen aan tijdens een gesprek."
+      },
+      {
         "q": "Kan ik TinyFloor op mijn telefoon gebruiken?",
         "a": "Ja. Op touchapparaten beweeg je met een joystick op het scherm en passen de belknoppen zich aan het kleinere scherm aan."
       },
       {
-        "q": "Wat is het verschil met een gewoon videogesprek?",
-        "a": "Een gewoon gesprek zet iedereen in één raster tot de vergadering voorbij is. Een TinyFloor-ruimte blijft de hele dag open, zodat je ziet wie er is, tussen gesprekken kunt wisselen en praat met de mensen naar wie je toeloopt."
+        "q": "Hoe verschilt TinyFloor van Zoom of Google Meet?",
+        "a": "Zoom en Google Meet zetten iedereen in één raster tot de meeting voorbij is. Een TinyFloor-kantoor is de hele dag open: je ziet wie er is, wisselt tussen gesprekken en praat met wie je opzoekt, zonder iets in te plannen."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
       "menu": "Menu",
       "teams": "Voor teams",
-      "teamTitle": "Gemaakt voor kleine teams",
+      "teamTitle": "Gemaakt voor remote teams",
       "teamBody": "Gratis voor maximaal 3 mensen, grotere abonnementen komen eraan.",
       "cases": {
         "virtualOffice": "Een plek voor je remote team",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Alles gebeurt op de verdieping.",
-      "muted": "Zoals in een kantoor.",
+      "title": "Een virtueel kantoor dat werkt als een echt kantoor.",
+      "muted": "Zonder één vergaderlink.",
+      "lead": "TinyFloor zet je remote team op één gedeelde verdieping in de browser. Zie wie er is, loop naar iemand toe om te praten, schuif aan voor meetings en doe de deur dicht als je je moet concentreren.",
+      "labels": {
+        "walk": "Proximity chat",
+        "meet": "Vergaderruimtes",
+        "door": "Niet storen",
+        "lounge": "Pauzeruimte"
+      },
       "door": {
         "title": "Doe de deur dicht.",
         "body": "Zet jezelf op bezig en neem het privékantoor. Anderen zien dat je geconcentreerd werkt voordat ze langskomen, en de chat wacht op je.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Klaar voor gebruik",
-      "muted": "voordat je koffie koud is.",
+      "title": "Zet in een minuut een virtueel kantoor op.",
+      "muted": "Geen downloads, geen creditcard.",
       "make": {
         "title": "Maak je kantoor.",
         "body": "Geef het een naam en kies een personage. Het staat binnen een minuut klaar."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} kwam binnen"
     },
     "more": {
-      "title": "Alles wat een klein team nodig heeft,",
-      "muted": "op één vloer.",
+      "title": "Alles wat je remote team nodig heeft,",
+      "muted": "in één virtueel kantoor.",
       "items": {
         "screen": {
           "title": "Scherm delen",

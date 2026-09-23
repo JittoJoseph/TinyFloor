@@ -283,14 +283,23 @@
     "sayHello": "Säg hej till alla",
     "actions": "Åtgärder",
     "walkOver": "Gå dit",
-    "lobbyAlone": "Direktmeddelanden ingår i ett eget kontor. Säg hej i en kanal här.",
+    "lobbyAlone": "Ingen annan är här än. När någon kommer in kan du skriva till hen här, bara mellan er två.",
     "dropHere": "Släpp för att dela i {channel}",
     "dropLobby": "Bilder delas i kontor, inte i lobbyn.",
     "lobbyGeneral": "Säg hej, ställ en fråga eller berätta vad du jobbar med. Meddelanden finns kvar här i en vecka.",
     "lobbyIntroductions": "Vem är du, och vad för dig hit? Hela lobbyn kan läsa det i 7 dagar.",
     "lobbyFeedback": "Vad skulle göra TinyFloor bättre för ditt team? Vi läser varje meddelande här.",
     "introduceYourself": "Presentera dig",
-    "starterIntro": "Hej, jag är ny här 👋"
+    "starterIntro": "Hej, jag är ny här 👋",
+    "lobbyDmIntro": "Bara mellan er två och sparas aldrig: det försvinner när någon av er lämnar lobbyn.",
+    "notHere": "Personen har lämnat lobbyn, så det skickades inte.",
+    "gone": "{name} lämnade lobbyn, och samtalet försvann med.",
+    "edited": "redigerat",
+    "edit": "Redigera",
+    "delete": "Radera",
+    "deleteConfirm": "Radera?",
+    "save": "Spara",
+    "cancel": "Avbryt"
   },
   "proximity": {
     "videoCall": "Videosamtal",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
       "cancel": "Avbryt",
       "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant på varje skärm. Inget laddas upp eller sparas.",
-      "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren."
+      "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren.",
+      "link": "Din länk",
+      "linkPlaceholder": "dinwebbplats.se",
+      "linkNote": "Visas när någon öppnar din profil från chatten.",
+      "google": "Google",
+      "googleNote": "Logga in med Google också.",
+      "connectGoogle": "Koppla Google",
+      "googleConnected": "Kopplat"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "För många försök. Vänta några minuter och försök sedan igen.",
       "not_found": "Det hittades inte. Det kan ha tagits bort.",
       "network": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
-      "generic": "Något gick fel. Försök igen."
+      "generic": "Något gick fel. Försök igen.",
+      "bad_link": "Det ser inte ut som en webbadress.",
+      "google_taken": "Det Google-kontot är redan kopplat till ett annat TinyFloor-konto.",
+      "google_failed": "Det gick inte med Google. Försök igen."
     },
     "people": {
       "title": "Personer",

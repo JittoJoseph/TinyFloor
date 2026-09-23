@@ -283,14 +283,23 @@
     "sayHello": "Tervehdi kaikkia",
     "actions": "Toiminnot",
     "walkOver": "Kävele luo",
-    "lobbyAlone": "Yksityisviestit kuuluvat omaan toimistoon. Tervehdi täällä kanavalla.",
+    "lobbyAlone": "Täällä ei ole vielä muita. Kun joku tulee sisään, voit kirjoittaa hänelle täällä, vain teidän kahden kesken.",
     "dropHere": "Pudota jakaaksesi kanavalle {channel}",
     "dropLobby": "Kuvia jaetaan toimistoissa, ei aulassa.",
     "lobbyGeneral": "Tervehdi, kysy jotain tai kerro, mitä teet. Viestit säilyvät täällä viikon.",
     "lobbyIntroductions": "Kuka olet, ja mikä toi sinut tänne? Koko aula voi lukea sen 7 päivän ajan.",
     "lobbyFeedback": "Mikä tekisi TinyFloorista paremman tiimillesi? Luemme jokaisen viestin täällä.",
     "introduceYourself": "Esittele itsesi",
-    "starterIntro": "Moi, olen uusi täällä 👋"
+    "starterIntro": "Moi, olen uusi täällä 👋",
+    "lobbyDmIntro": "Vain teidän kahden välillä, eikä sitä tallenneta: se katoaa, kun jompikumpi poistuu aulasta.",
+    "notHere": "Hän on poistunut aulasta, joten viestiä ei lähetetty.",
+    "gone": "{name} poistui aulasta, ja keskustelu lähti mukana.",
+    "edited": "muokattu",
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "deleteConfirm": "Poistetaanko?",
+    "save": "Tallenna",
+    "cancel": "Peruuta"
   },
   "proximity": {
     "videoCall": "Videopuhelu",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
       "cancel": "Peruuta",
       "faceNote": "Kasvosi piirretään tilisi perusteella, samanlaisina joka näytöllä. Mitään ei ladata eikä tallenneta.",
-      "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen."
+      "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen.",
+      "link": "Linkkisi",
+      "linkPlaceholder": "verkkosivusi.fi",
+      "linkNote": "Näkyy, kun joku avaa profiilisi chatista.",
+      "google": "Google",
+      "googleNote": "Kirjaudu myös Googlella.",
+      "connectGoogle": "Yhdistä Google",
+      "googleConnected": "Yhdistetty"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Liian monta yritystä. Odota muutama minuutti ja yritä sitten uudelleen.",
       "not_found": "Sitä ei löytynyt. Se on ehkä poistettu.",
       "network": "TinyFlooriin ei saada yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
-      "generic": "Jokin meni vikaan. Yritä uudelleen."
+      "generic": "Jokin meni vikaan. Yritä uudelleen.",
+      "bad_link": "Tämä ei näytä verkko-osoitteelta.",
+      "google_taken": "Tämä Google-tili on jo yhdistetty toiseen TinyFloor-tiliin.",
+      "google_failed": "Google ei onnistunut. Yritä uudelleen."
     },
     "people": {
       "title": "Ihmiset",

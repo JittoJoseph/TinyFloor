@@ -283,14 +283,23 @@
     "sayHello": "Sig hej til alle",
     "actions": "Handlinger",
     "walkOver": "Gå derhen",
-    "lobbyAlone": "Direkte beskeder følger med et kontor for jer selv. Sig hej i en kanal her.",
+    "lobbyAlone": "Der er ingen andre her endnu. Når nogen kommer ind, kan du skrive til dem her, kun mellem jer to.",
     "dropHere": "Slip for at dele i {channel}",
     "dropLobby": "Billeder deles i kontorer, ikke i lobbyen.",
     "lobbyGeneral": "Sig hej, stil et spørgsmål, eller fortæl hvad du arbejder på. Beskeder bliver her i en uge.",
     "lobbyIntroductions": "Hvem er du, og hvad bringer dig her? Hele lobbyen kan læse det i 7 dage.",
     "lobbyFeedback": "Hvad ville gøre TinyFloor bedre for dit team? Vi læser hver besked her.",
     "introduceYourself": "Præsenter dig selv",
-    "starterIntro": "Hej, jeg er ny her 👋"
+    "starterIntro": "Hej, jeg er ny her 👋",
+    "lobbyDmIntro": "Kun mellem jer to og gemmes aldrig: det forsvinder, når en af jer forlader lobbyen.",
+    "notHere": "Personen har forladt lobbyen, så beskeden blev ikke sendt.",
+    "gone": "{name} forlod lobbyen, og samtalen forsvandt med.",
+    "edited": "redigeret",
+    "edit": "Rediger",
+    "delete": "Slet",
+    "deleteConfirm": "Slet?",
+    "save": "Gem",
+    "cancel": "Annuller"
   },
   "proximity": {
     "videoCall": "Videoopkald",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Du forbliver logget ind her. Alle andre steder bliver du logget ud.",
       "cancel": "Annullér",
       "faceNote": "Dit ansigt tegnes ud fra din konto, ens på hver skærm. Intet uploades eller gemmes.",
-      "themeNote": "System følger din enhed. Valget gemmes i denne browser."
+      "themeNote": "System følger din enhed. Valget gemmes i denne browser.",
+      "link": "Dit link",
+      "linkPlaceholder": "dinhjemmeside.dk",
+      "linkNote": "Vises, når nogen åbner din profil fra chatten.",
+      "google": "Google",
+      "googleNote": "Log også ind med Google.",
+      "connectGoogle": "Forbind Google",
+      "googleConnected": "Forbundet"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "For mange forsøg. Vent et par minutter, og prøv så igen.",
       "not_found": "Det blev ikke fundet. Det er måske slettet.",
       "network": "TinyFloor kan ikke nås. Tjek din forbindelse, og prøv igen.",
-      "generic": "Noget gik galt. Prøv igen."
+      "generic": "Noget gik galt. Prøv igen.",
+      "bad_link": "Det ligner ikke en webadresse.",
+      "google_taken": "Den Google-konto er allerede forbundet med en anden TinyFloor-konto.",
+      "google_failed": "Det lykkedes ikke med Google. Prøv igen."
     },
     "people": {
       "title": "Folk",

@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useFormatter, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, SmilePlus } from "lucide-react";
+import { ArrowDown, Check, Copy, Pencil, SmilePlus, Trash2 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { ChatImage } from "@shared/chat";
 import { Face } from "@/components/ui/Face";
@@ -18,6 +18,8 @@ export interface Line {
   at: number;
   image?: ChatImage;
   reactions?: Record<string, string[]>;
+  /** When it was last edited, if it was. */
+  edited?: number;
 }
 
 const QUICK = ["👍", "❤️", "😂", "🎉", "👀", "✅"];
@@ -38,6 +40,8 @@ export function Conversation({
   onOlder,
   firstUnread,
   onReact,
+  onEdit,
+  onDelete,
   personCard,
 }: {
   lines: Line[];
@@ -49,6 +53,9 @@ export function Conversation({
   /** The first message you had not read when you opened this. */
   firstUnread?: string | null;
   onReact?: (line: Line, emoji: string, on: boolean) => void;
+  /** Where your own messages can be changed (the lobby): change one, or take it back. */
+  onEdit?: (line: Line, body: string) => void;
+  onDelete?: (line: Line) => void;
   /** Wraps a face or a name so pressing it shows who that is. */
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
 }) {
@@ -130,6 +137,8 @@ export function Conversation({
                     grouped={grouped && line.id !== firstUnread}
                     me={me}
                     onReact={onReact}
+                    onEdit={line.author === me ? onEdit : undefined}
+                    onDelete={line.author === me ? onDelete : undefined}
                     personCard={personCard}
                   />
                 </Fragment>
@@ -222,17 +231,23 @@ function Message({
   grouped,
   me,
   onReact,
+  onEdit,
+  onDelete,
   personCard,
 }: {
   line: Line;
   grouped: boolean;
   me: string;
   onReact?: (line: Line, emoji: string, on: boolean) => void;
+  onEdit?: (line: Line, body: string) => void;
+  onDelete?: (line: Line) => void;
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
 }) {
   const t = useTranslations("chat");
   const format = useFormatter();
   const [copied, setCopied] = useState(false);
+  const [editing, setEditing] = useState<string | null>(null);
+  const [confirming, setConfirming] = useState(false);
   const time = format.dateTime(new Date(line.at), { hour: "numeric", minute: "2-digit" });
   const card = (trigger: ReactNode) => (personCard ? personCard(line.author, line.authorName, trigger) : trigger);
   const reactions = Object.entries(line.reactions ?? {});
@@ -269,10 +284,46 @@ function Message({
             <span className="text-[11.5px] tabular-nums text-faint">{time}</span>
           </div>
         )}
-        {line.body && (
-          <p dir="auto" className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
-            {line.body}
-          </p>
+        {editing !== null ? (
+          <form
+            className="mt-0.5"
+            onSubmit={(event) => {
+              event.preventDefault();
+              const body = editing.trim();
+              if (body && body !== line.body) onEdit?.(line, body);
+              setEditing(null);
+            }}
+          >
+            <textarea
+              autoFocus
+              value={editing}
+              rows={Math.min(6, editing.split("\n").length)}
+              onChange={(event) => setEditing(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") setEditing(null);
+                if (event.key === "Enter" && !event.shiftKey) {
+                  event.preventDefault();
+                  event.currentTarget.form?.requestSubmit();
+                }
+              }}
+              className="w-full resize-none rounded-xl border border-border bg-card px-3 py-2 text-[16px] leading-[1.45] text-foreground outline-none focus:border-foreground/35 md:text-[14px]"
+            />
+            <div className="mt-1.5 flex gap-1.5">
+              <button type="submit" className="h-7 cursor-pointer rounded-full bg-foreground px-3 text-[12px] font-medium text-background">
+                {t("save")}
+              </button>
+              <button type="button" onClick={() => setEditing(null)} className="h-7 cursor-pointer rounded-full px-3 text-[12px] text-muted-foreground hover:bg-muted">
+                {t("cancel")}
+              </button>
+            </div>
+          </form>
+        ) : (
+          line.body && (
+            <p dir="auto" className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
+              {line.body}
+              {line.edited && <span className="ms-1.5 text-[11px] text-faint">({t("edited")})</span>}
+            </p>
+          )
         )}
         {line.image && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -328,6 +379,39 @@ function Message({
         {onReact && (
           <MoreReactions onPick={(emoji) => onReact(line, emoji, !line.reactions?.[emoji]?.includes(me))} label={t("react")} />
         )}
+        {onEdit && editing === null && (
+          <button
+            type="button"
+            aria-label={t("edit")}
+            title={t("edit")}
+            onClick={() => setEditing(line.body)}
+            className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <Pencil className="size-3.5" />
+          </button>
+        )}
+        {onDelete &&
+          (confirming ? (
+            <button
+              type="button"
+              onClick={() => onDelete(line)}
+              onBlur={() => setConfirming(false)}
+              autoFocus
+              className="flex h-7 cursor-pointer items-center rounded-lg bg-destructive px-2 text-[12px] font-medium text-white"
+            >
+              {t("deleteConfirm")}
+            </button>
+          ) : (
+            <button
+              type="button"
+              aria-label={t("delete")}
+              title={t("delete")}
+              onClick={() => setConfirming(true)}
+              className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-destructive"
+            >
+              <Trash2 className="size-3.5" />
+            </button>
+          ))}
         <button
           type="button"
           aria-label={t("copy")}

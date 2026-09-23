@@ -283,14 +283,23 @@
     "sayHello": "Dizer olá a todos",
     "actions": "Ações",
     "walkOver": "Ir até lá",
-    "lobbyAlone": "Mensagens diretas vêm com um escritório só seu. Aqui, diga oi em um canal.",
+    "lobbyAlone": "Ainda não há mais ninguém. Quando alguém entrar, você pode escrever para a pessoa aqui, só entre vocês dois.",
     "dropHere": "Solte para compartilhar em {channel}",
     "dropLobby": "Imagens são compartilhadas nos escritórios, não no lobby.",
     "lobbyGeneral": "Diga oi, faça uma pergunta ou conte no que está trabalhando. As mensagens ficam aqui por uma semana.",
     "lobbyIntroductions": "Quem é você e o que te traz aqui? Todo o lobby pode ler por 7 dias.",
     "lobbyFeedback": "O que tornaria o TinyFloor melhor para sua equipe? Lemos cada mensagem aqui.",
     "introduceYourself": "Apresente-se",
-    "starterIntro": "Oi, sou novo por aqui 👋"
+    "starterIntro": "Oi, sou novo por aqui 👋",
+    "lobbyDmIntro": "Só entre vocês dois e nunca é salvo: some quando qualquer um sair do lobby.",
+    "notHere": "A pessoa saiu do lobby, então isso não foi enviado.",
+    "gone": "{name} saiu do lobby, e esta conversa foi junto.",
+    "edited": "editada",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "deleteConfirm": "Excluir?",
+    "save": "Salvar",
+    "cancel": "Cancelar"
   },
   "proximity": {
     "videoCall": "Chamada de vídeo",
@@ -960,7 +969,14 @@
       "signsOutOthers": "Você continua conectado aqui. Em todos os outros lugares, a sessão será encerrada.",
       "cancel": "Cancelar",
       "faceNote": "Seu rosto é desenhado a partir da sua conta, igual em todas as telas. Nada é enviado nem guardado.",
-      "themeNote": "Sistema segue seu dispositivo. A escolha fica neste navegador."
+      "themeNote": "Sistema segue seu dispositivo. A escolha fica neste navegador.",
+      "link": "Seu link",
+      "linkPlaceholder": "seusite.com",
+      "linkNote": "Aparece quando alguém abre seu perfil pelo chat.",
+      "google": "Google",
+      "googleNote": "Entre também com o Google.",
+      "connectGoogle": "Conectar Google",
+      "googleConnected": "Conectado"
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "Muitas tentativas. Espere alguns minutos e tente de novo.",
       "not_found": "Não foi encontrado. Pode ter sido excluído.",
       "network": "Não foi possível conectar ao TinyFloor. Verifique sua conexão e tente de novo.",
-      "generic": "Algo deu errado. Tente de novo."
+      "generic": "Algo deu errado. Tente de novo.",
+      "bad_link": "Isso não parece um endereço web.",
+      "google_taken": "Essa conta do Google já está conectada a outra conta do TinyFloor.",
+      "google_failed": "Não deu certo com o Google. Tente de novo."
     },
     "people": {
       "title": "Pessoas",

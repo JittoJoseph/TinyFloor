@@ -283,14 +283,23 @@
     "sayHello": "みんなにあいさつ",
     "actions": "アクション",
     "walkOver": "歩いていく",
-    "lobbyAlone": "ダイレクトメッセージは自分のオフィスで使えます。ここではチャンネルで挨拶しましょう。",
+    "lobbyAlone": "まだ誰もいません。誰かが入ってきたら、ここから二人だけでメッセージを送れます。",
     "dropHere": "ドロップして{channel}で共有",
     "dropLobby": "画像はロビーではなく、オフィスで共有できます。",
     "lobbyGeneral": "挨拶や質問、いま取り組んでいることをどうぞ。メッセージは1週間残ります。",
     "lobbyIntroductions": "あなたは誰で、何をしに来ましたか？ロビーの全員が7日間読めます。",
     "lobbyFeedback": "TinyFloorがあなたのチームにもっと役立つには？ここのメッセージはすべて読んでいます。",
     "introduceYourself": "自己紹介する",
-    "starterIntro": "はじめまして、新しく来ました 👋"
+    "starterIntro": "はじめまして、新しく来ました 👋",
+    "lobbyDmIntro": "二人だけのやりとりで、保存されません。どちらかがロビーを出ると消えます。",
+    "notHere": "相手がロビーを出たため、送信されませんでした。",
+    "gone": "{name} がロビーを出たため、この会話も消えました。",
+    "edited": "編集済み",
+    "edit": "編集",
+    "delete": "削除",
+    "deleteConfirm": "削除しますか？",
+    "save": "保存",
+    "cancel": "キャンセル"
   },
   "proximity": {
     "videoCall": "ビデオ通話",
@@ -960,7 +969,14 @@
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
       "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
-      "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。"
+      "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。",
+      "link": "リンク",
+      "linkPlaceholder": "yourwebsite.com",
+      "linkNote": "チャットからプロフィールを開いた人に表示されます。",
+      "google": "Google",
+      "googleNote": "Google でもログインできます。",
+      "connectGoogle": "Google と連携",
+      "googleConnected": "連携済み"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
@@ -994,7 +1010,10 @@
       "too_many_attempts": "試行回数が多すぎます。数分待ってからもう一度お試しください。",
       "not_found": "見つかりませんでした。削除された可能性があります。",
       "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
-      "generic": "問題が発生しました。もう一度お試しください。"
+      "generic": "問題が発生しました。もう一度お試しください。",
+      "bad_link": "ウェブアドレスではないようです。",
+      "google_taken": "その Google アカウントは別の TinyFloor アカウントと連携済みです。",
+      "google_failed": "Google での処理に失敗しました。もう一度お試しください。"
     },
     "people": {
       "title": "メンバー",

@@ -6,7 +6,8 @@
 //
 // public/floor.webp: the whole map as the app draws it, at its own pixels.
 // public/og/*.jpg: the social card for each page, from /og-render. The home
-// page and the lobby get one per language; the other pages get an English
+// page, the lobby and invites (member invites, guest links, an office's own
+// links) get one per language; the other pages get an English
 // one, and `neutral` stands in for them in the other languages.
 import { writeFile } from "node:fs/promises";
 const { chromium } = await import(
@@ -63,7 +64,7 @@ const page = await browser.newPage({
   viewport: { width: 1536, height: 1024 },
   deviceScaleFactor: 1,
 });
-// ONLY=floor,home,lobby,pages,neutral redraws just those; all of them by default.
+// ONLY=floor,home,lobby,invite,pages,neutral redraws just those; all of them by default.
 const only = process.env.ONLY?.split(",");
 const wants = (part) => !only || only.includes(part);
 
@@ -119,6 +120,7 @@ const langs = process.env.LANGS?.split(",") ?? LOCALES;
 for (const locale of LOCALES.filter((code) => langs.includes(code))) {
   if (wants("home")) await card(locale, "home", `home-${locale}.jpg`);
   if (wants("lobby")) await card(locale, "lobby", `lobby-${locale}.jpg`);
+  if (wants("invite")) await card(locale, "invite", `invite-${locale}.jpg`);
 }
 if (wants("pages")) for (const slug of LANDINGS) await card("en", slug, `${slug}.jpg`);
 if (wants("neutral")) await card("en", "neutral", "neutral.jpg");

@@ -66,6 +66,10 @@
         "a": "TinyFloor on virtuaalitoimisto, jossa liikut kävellen. Tiimisi näkyy pikselitaidehahmoina yhteisessä 2D-kerroksessa, ja video- tai äänipuhelu alkaa, kun asetut jonkun viereen, eikä silloin, kun napsautat palaverilinkkiä."
       },
       {
+        "q": "Mikä on virtuaalitoimisto?",
+        "a": "Virtuaalitoimisto on verkossa oleva tila, jossa etätiimi työskentelee yhdessä kuin samassa rakennuksessa. TinyFloorissa se on 2D-kerros, jossa on työpöytiä, neuvotteluhuone ja oma työhuone, ja jossa näet, kuka on paikalla, ja aloitat keskustelun kävelemällä jonkun luo."
+      },
+      {
         "q": "Pitääkö minun asentaa jotain?",
         "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiililaitteilla. Avaa huoneen linkki, ja olet toimistossa."
       },
@@ -74,24 +78,32 @@
         "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Paketit isommille tiimeille tulossa pian."
       },
       {
+        "q": "Onko TinyFloor ilmainen vaihtoehto Gatherille?",
+        "a": "On. Gatherin tavoin TinyFloor on virtuaalitoimisto, jossa tiimisi liikkuu 2D-kartalla ja juttelee tulemalla lähelle. TinyFloor on ilmainen enintään 3 hengelle, toimii selaimessa ilman asennusta ja päästää vieraat sisään ilman tiliä."
+      },
+      {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
         "a": "Julkiseen aulaan ei tarvita. Sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Työtilan huoneet ovat yksityisiä: tiimiläiset kirjautuvat ilmaisella tilillä, ja vierailijat tulevat sisään vieraslinkillä."
       },
       {
-        "q": "Miten videopuhelut toimivat?",
-        "a": "Puhelu niiden kanssa, joiden luo kävelet, kulkee WebRTC:llä Cloudflaren välitysverkon kautta, joten se yhdistyy samalla tavalla missä tahansa verkossa, toimistolla tai kotona. Se pysyy yhdistettynä, kunnes joku lopettaa puhelun tai poistuu huoneesta, joten poistuminen paikalta ei katkaise sitä. Neuvottelupöydät välittävät ryhmäpuhelut mediapalvelimen kautta: istu liittyäksesi, nouse lähteäksesi."
+        "q": "Miten läheisyyteen perustuva videochat toimii?",
+        "a": "Kävele jonkun luo, niin puhelupainikkeet ilmestyvät hänen viereensä; napauta yhtä aloittaaksesi video- tai äänipuhelun. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
       },
       {
         "q": "Onko kamerani päällä koko ajan, kun olen huoneessa?",
         "a": "Ei. Kamera ja mikrofoni avataan vain puhelua varten ja vapautetaan heti, kun puhelu päättyy."
       },
       {
+        "q": "Onko TinyFloor yksityinen ja turvallinen?",
+        "a": "Kerros on vain sen jäsenille ja heidän sisään päästämilleen vieraille, eikä mikään sen sisällä ole julkista tai hakukoneiden indeksoimaa. WebRTC salaa puhelut siirron aikana, ja kamerasi ja mikrofonisi ovat päällä vain puhelun ajan."
+      },
+      {
         "q": "Voinko käyttää TinyFlooriä puhelimella?",
         "a": "Kyllä. Kosketuslaitteilla liikut näytön ohjaussauvalla, ja puhelun säätimet mukautuvat pienempään näyttöön."
       },
       {
-        "q": "Miten tämä eroaa tavallisesta videopuhelusta?",
-        "a": "Tavallinen puhelu laittaa kaikki samaan ruudukkoon palaverin loppuun asti. TinyFloor-huone on auki koko päivän, joten näet, kuka on paikalla, voit siirtyä keskustelusta toiseen ja jutella niiden kanssa, joiden luo kävelet."
+        "q": "Miten TinyFloor eroaa Zoomista tai Google Meetistä?",
+        "a": "Zoom ja Google Meet laittavat kaikki samaan ruudukkoon kokouksen loppuun asti. TinyFloor-toimisto on auki koko päivän: näet, kuka on paikalla, siirryt keskustelusta toiseen ja juttelet sen kanssa, jonka luo kävelet, ilman aikataulutusta."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
       "menu": "Valikko",
       "teams": "Tiimeille",
-      "teamTitle": "Tehty pienille tiimeille",
+      "teamTitle": "Tehty etätiimeille",
       "teamBody": "Ilmainen enintään 3 hengelle, isommat paketit tulossa.",
       "cases": {
         "virtualOffice": "Paikka etätiimillesi",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Kaikki tapahtuu kerroksessa.",
-      "muted": "Niin kuin toimistossakin.",
+      "title": "Virtuaalitoimisto, joka toimii kuin oikea.",
+      "muted": "Ilman yhtäkään kokouslinkkiä.",
+      "lead": "TinyFloor tuo etätiimisi samaan kerrokseen selaimessa. Näe, kuka on paikalla, kävele juttelemaan, istukaa yhdessä kokouksiin ja sulje ovi, kun haluat keskittyä.",
+      "labels": {
+        "walk": "Läheisyyschat",
+        "meet": "Neuvotteluhuoneet",
+        "door": "Älä häiritse",
+        "lounge": "Taukotila"
+      },
       "door": {
         "title": "Sulje ovi.",
         "body": "Merkitse itsesi kiireiseksi ja ota oma työhuone. Muut näkevät, että keskityt, ennen kuin tulevat luoksesi, ja chat odottaa sinua.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Valmiina",
-      "muted": "ennen kuin kahvi ehtii jäähtyä.",
+      "title": "Perusta virtuaalitoimisto minuutissa.",
+      "muted": "Ei latauksia, ei luottokorttia.",
       "make": {
         "title": "Luo toimistosi.",
         "body": "Anna sille nimi ja valitse hahmo. Se on valmis minuutissa."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} tuli sisään"
     },
     "more": {
-      "title": "Kaikki, mitä pieni tiimi tarvitsee,",
-      "muted": "yhdessä kerroksessa.",
+      "title": "Kaikki mitä etätiimisi tarvitsee,",
+      "muted": "yhdessä virtuaalitoimistossa.",
       "items": {
         "screen": {
           "title": "Näytön jako",

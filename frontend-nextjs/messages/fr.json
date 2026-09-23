@@ -66,6 +66,10 @@
         "a": "TinyFloor est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
       },
       {
+        "q": "Qu'est-ce qu'un bureau virtuel ?",
+        "a": "Un bureau virtuel est un espace en ligne où une équipe à distance travaille ensemble comme si elle partageait les mêmes locaux. Dans TinyFloor, c'est un étage en 2D avec des bureaux, une salle de réunion et un bureau privé, où vous voyez qui est là et lancez une conversation en allant vers quelqu'un."
+      },
+      {
         "q": "Dois-je installer quelque chose ?",
         "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur comme sur mobile. Ouvrez un lien de salle et vous êtes dans le bureau."
       },
@@ -74,24 +78,32 @@
         "a": "Oui. Le hall public est gratuit pour tous, tout comme un bureau jusqu'à 3 personnes. Des offres pour les équipes plus grandes arrivent bientôt."
       },
       {
+        "q": "TinyFloor est-il une alternative gratuite à Gather ?",
+        "a": "Oui. Comme Gather, TinyFloor est un bureau virtuel où votre équipe se déplace sur une carte 2D et se parle en se rapprochant. TinyFloor est gratuit jusqu'à 3 personnes, fonctionne dans le navigateur sans rien installer et accueille les invités sans compte."
+      },
+      {
         "q": "Faut-il un compte pour rejoindre une salle ?",
         "a": "Pas pour le hall public : tout le monde peut y entrer en invité avec un simple nom. Les salles d’un espace de travail sont privées : les membres de l’équipe se connectent avec un compte gratuit, et les visiteurs entrent avec un lien invité."
       },
       {
-        "q": "Comment fonctionnent les appels vidéo ?",
-        "a": "Un appel avec les personnes que vous rejoignez passe par WebRTC via le réseau relais de Cloudflare : il se connecte de la même façon sur n'importe quel réseau, au bureau comme à la maison. Il reste connecté jusqu'à ce que quelqu'un raccroche ou quitte la salle, donc s'éloigner ne le coupe pas. Les tables de réunion font passer les appels de groupe par un serveur média : asseyez-vous pour rejoindre, levez-vous pour partir."
+        "q": "Comment fonctionne le chat vidéo de proximité ?",
+        "a": "Approchez-vous de quelqu'un et les boutons d'appel apparaissent à côté de lui ; touchez-en un pour lancer un appel vidéo ou audio. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
       },
       {
         "q": "Ma caméra est-elle allumée tout le temps dans une salle ?",
         "a": "Non. La caméra et le micro ne sont ouverts que pendant un appel et libérés dès qu’il se termine."
       },
       {
+        "q": "TinyFloor est-il privé et sécurisé ?",
+        "a": "Un étage n'est accessible qu'à ses membres et aux invités qu'ils font entrer, et rien à l'intérieur n'est public ni indexé par les moteurs de recherche. Les appels sont chiffrés en transit par WebRTC, et votre caméra et votre micro ne sont actifs que pendant un appel."
+      },
+      {
         "q": "Puis-je utiliser TinyFloor sur un téléphone ?",
         "a": "Oui. Sur les appareils tactiles, vous vous déplacez avec un joystick à l’écran, et les commandes d’appel s’adaptent au petit écran."
       },
       {
-        "q": "En quoi est-ce différent d’un appel vidéo classique ?",
-        "a": "Un appel classique met tout le monde dans une grille jusqu’à la fin de la réunion. Une salle TinyFloor reste ouverte toute la journée : vous voyez qui est là, passez d’une conversation à l’autre et parlez aux personnes vers qui vous allez."
+        "q": "En quoi TinyFloor est-il différent de Zoom ou Google Meet ?",
+        "a": "Zoom et Google Meet placent tout le monde dans une grille jusqu'à la fin de la réunion. Un bureau TinyFloor reste ouvert toute la journée : vous voyez qui est là, passez d'une conversation à l'autre et parlez à qui vous rejoignez, sans planifier d'appel."
       }
     ]
   },
@@ -1167,7 +1179,7 @@
       "lobbyBody": "Promenez-vous sur un vrai étage avant de créer le vôtre. Aucun compte requis.",
       "menu": "Menu",
       "teams": "Pour les équipes",
-      "teamTitle": "Pensé pour les petites équipes",
+      "teamTitle": "Pensé pour les équipes à distance",
       "teamBody": "Gratuit jusqu'à 3 personnes, des offres plus grandes arrivent.",
       "cases": {
         "virtualOffice": "Un lieu pour votre équipe à distance",
@@ -1224,8 +1236,15 @@
       }
     },
     "moments": {
-      "title": "Tout se passe sur l'étage.",
-      "muted": "Comme dans un bureau.",
+      "title": "Un bureau virtuel qui fonctionne comme un vrai.",
+      "muted": "Sans un seul lien de réunion.",
+      "lead": "TinyFloor réunit votre équipe à distance sur un même étage, dans le navigateur. Voyez qui est là, allez parler à quelqu'un, asseyez-vous ensemble pour les réunions et fermez la porte quand vous devez vous concentrer.",
+      "labels": {
+        "walk": "Chat de proximité",
+        "meet": "Salles de réunion",
+        "door": "Ne pas déranger",
+        "lounge": "Salle de pause"
+      },
       "door": {
         "title": "Fermez la porte.",
         "body": "Passez en occupé et prenez le bureau privé. Les autres voient que vous êtes concentré avant de venir, et le chat vous attend.",
@@ -1238,8 +1257,8 @@
       }
     },
     "steps": {
-      "title": "Prêt à démarrer",
-      "muted": "avant que votre café refroidisse.",
+      "title": "Créez un bureau virtuel en une minute.",
+      "muted": "Rien à télécharger, pas de carte bancaire.",
       "make": {
         "title": "Créez votre bureau.",
         "body": "Donnez-lui un nom et choisissez un personnage. Il est prêt en une minute."
@@ -1256,8 +1275,8 @@
       "walkedIn": "{name} est entré"
     },
     "more": {
-      "title": "Tout ce dont une petite équipe a besoin,",
-      "muted": "sur un seul étage.",
+      "title": "Tout ce dont votre équipe à distance a besoin,",
+      "muted": "dans un seul bureau virtuel.",
       "items": {
         "screen": {
           "title": "Partage d'écran",

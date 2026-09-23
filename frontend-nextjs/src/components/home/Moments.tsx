@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Copy, Headphones, Link2, Music2 } from "lucide-react";
+import { Check, Coffee, Copy, DoorClosed, Footprints, Headphones, Link2, Music2, Presentation } from "lucide-react";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { FloorScene } from "@/components/floor/FloorScene";
@@ -37,7 +37,7 @@ const KEYFRAMES =
   "@media (prefers-reduced-motion:reduce){.m-still,.m-still *{animation:none!important}}";
 
 function WalkOver({ you, labels, className }: { you: string; labels: { video: string; audio: string; message: string }; className?: string }) {
-  const { jack, olivia, lily } = PEOPLE;
+  const { jack, olivia } = PEOPLE;
   return (
     <FloorScene
       view={[29, 5, 14, 10]}
@@ -45,8 +45,7 @@ function WalkOver({ you, labels, className }: { you: string; labels: { video: st
         { ...jack, at: [35, 10], face: "right", status: "available" },
         { ...olivia, at: [38, 10], face: "left", status: "available" },
       ]}
-      sitting={[{ ...lily, chair: [34, 13], status: "busy" }]}
-      walking={[{ character: "Ash", name: you, status: "available", path: [[32, 11], [36, 11, STOP]], faces: { 1: "up" } }]}
+      walking={[{ character: "Ash", name: you, status: "available", path: [[33, 11], [37, 11, STOP]], faces: { 1: "up" } }]}
       className={className}
       over={
         <div className="m-still absolute inset-x-0 bottom-4 flex justify-center" style={{ animation: `m-bar ${LOOP.toFixed(2)}s linear infinite` }}>
@@ -57,87 +56,143 @@ function WalkOver({ you, labels, className }: { you: string; labels: { video: st
   );
 }
 
-function Card({ id, title, muted, body, children, className }: { id?: string; title: string; muted?: string; body: string; children: ReactNode; className?: string }) {
+type Kind = "walk" | "meet" | "door" | "lounge";
+
+/** Each moment's piece of the real floor, with the app's own chip or bar over it. */
+export function MomentScene({ kind, className }: { kind: Kind; className?: string }) {
+  const t = useTranslations("home");
+  if (kind === "walk") {
+    return (
+      <WalkOver
+        you={t("preview.you")}
+        labels={{ video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") }}
+        className={className}
+      />
+    );
+  }
+  if (kind === "meet") {
+    return (
+      <FloorScene
+        view={[1, 3, 13, 10]}
+        sitting={[
+          { name: "Ava", character: "Amelia", chair: [4, 11], status: "in_call" },
+          { name: "Leo", character: "Adam", chair: [6, 8], status: "in_call" },
+          { name: "Zoe", character: "Lucy", chair: [8, 11], status: "in_call" },
+          { name: "Ben", character: "Bob", chair: [4, 8], status: "in_call" },
+        ]}
+        className={className}
+        over={
+          <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5 [--face-ring:var(--ui-card)]">
+            {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
+              <span
+                key={name}
+                className={cn("flex aspect-video w-11 items-center justify-center rounded-[9px] sm:w-14 bg-card shadow-lg ring-2", index === 1 ? "ring-brand" : "ring-card/80")}
+              >
+                <Face seed={`${name.toLowerCase()}-desk`} size={18} />
+              </span>
+            ))}
+          </div>
+        }
+      />
+    );
+  }
+  if (kind === "door") {
+    return (
+      <FloorScene
+        view={[1, 19, 13, 9]}
+        sitting={[{ ...PEOPLE.noah, chair: [7, 24], status: "busy" }]}
+        className={className}
+        over={
+          <span className={cn(CHIP, "absolute start-3 top-3")}>
+            <Headphones className="size-3.5 text-destructive" />
+            {t("moments.door.chip", { name: PEOPLE.noah.name })}
+          </span>
+        }
+      />
+    );
+  }
   return (
-    <article id={id} className={cn("flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-border/60 bg-foreground/[0.035]", className)}>
-      <div className="px-7 pt-7 sm:px-8 sm:pt-8">
-        <h3 className="text-balance text-[21px] font-semibold leading-[1.2] tracking-[-0.02em]">
-          {title}
-          {muted && <span className="text-muted-foreground/80"> {muted}</span>}
-        </h3>
-        <p className="mt-2.5 max-w-[34rem] text-pretty text-[15px] leading-relaxed text-muted-foreground">{body}</p>
-      </div>
-      <div className="mt-6 flex-1 p-2 pt-0">{children}</div>
-    </article>
+    <FloorScene
+      view={[33, 1, 14, 9]}
+      standing={[
+        { ...PEOPLE.lily, at: [38, 4], face: "right", status: "away" },
+        { ...PEOPLE.ryan, at: [40, 4], face: "left", status: "away" },
+      ]}
+      walking={[{ ...PEOPLE.grace, status: "available", path: [[45, 6, 1.5], [42, 6], [42, 5, 2.5]], faces: { 2: "up" }, speed: 1.8 }]}
+      className={className}
+      over={
+        <span className={cn(CHIP, "absolute start-3 top-3")}>
+          <Music2 className="size-3.5 text-brand" />
+          {t("moments.lounge.chip")} · Slow Stride
+        </span>
+      }
+    />
   );
 }
 
-/** What happens on the floor, four moments as a bento: walking over, a meeting, heads-down, a break. */
-export function Moments() {
+const ICONS: Record<Kind, ReactNode> = {
+  walk: <Footprints />,
+  meet: <Presentation />,
+  door: <DoorClosed />,
+  lounge: <Coffee />,
+};
+
+function useMoments() {
   const t = useTranslations("home");
-  const labels = { video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") };
-  const scene = "h-[260px] w-full rounded-[22px] sm:h-[300px]";
+  return [
+    { kind: "walk", id: undefined, label: t("moments.labels.walk"), title: t("features.proximity.title"), body: t("features.proximity.body") },
+    { kind: "meet", id: "meetings", label: t("moments.labels.meet"), title: t("features.meetings.title"), body: t("features.meetings.body") },
+    { kind: "door", id: undefined, label: t("moments.labels.door"), title: t("moments.door.title"), body: t("moments.door.body") },
+    { kind: "lounge", id: undefined, label: t("moments.labels.lounge"), title: t("moments.lounge.title"), body: t("moments.lounge.body") },
+  ] as const;
+}
+
+function Label({ kind, children }: { kind: Kind; children: ReactNode }) {
+  return (
+    <span className={cn(APP, "flex items-center gap-1.5 text-[12.5px] font-medium text-brand [&_svg]:size-3.5")}>
+      {ICONS[kind]}
+      {children}
+    </span>
+  );
+}
+
+/** The section's head: the claim on one side, the plain answer on the other. */
+function Head() {
+  const t = useTranslations("home");
+  return (
+    <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
+      <Heading title={t("moments.title")} muted={t("moments.muted")} block />
+      <p className="max-w-[34rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("moments.lead")}</p>
+    </div>
+  );
+}
+
+/**
+ * What happens on the floor, as four moments of an ordinary day: two by two,
+ * each a piece of the real floor with the app's own chip or bar over it, then
+ * what it's called, what it is and how it works.
+ */
+export function Moments() {
+  const moments = useMoments();
   return (
     <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
       <style>{KEYFRAMES}</style>
-      <Heading title={t("moments.title")} muted={t("moments.muted")} block className="max-w-[24ch]" />
-      <div className="mt-12 grid gap-3 lg:grid-cols-5">
-        <Card className="lg:col-span-3" title={t("features.proximity.title")} muted={t("features.proximity.muted")} body={t("features.proximity.body")}>
-          <WalkOver you={t("preview.you")} labels={labels} className={scene} />
-        </Card>
-        <Card id="meetings" className="scroll-mt-24 lg:col-span-2" title={t("features.meetings.title")} muted={t("features.meetings.muted")} body={t("features.meetings.body")}>
-          <FloorScene
-            view={[1, 3, 13, 10]}
-            sitting={[
-              { name: "Ava", character: "Amelia", chair: [4, 11], status: "in_call" },
-              { name: "Leo", character: "Adam", chair: [6, 8], status: "in_call" },
-              { name: "Zoe", character: "Lucy", chair: [8, 11], status: "in_call" },
-              { name: "Ben", character: "Bob", chair: [4, 8], status: "in_call" },
-            ]}
-            className={scene}
-            over={
-              <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5 [--face-ring:var(--ui-card)]">
-                {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
-                  <span
-                    key={name}
-                    className={cn("flex aspect-video w-16 items-center justify-center rounded-[9px] bg-card shadow-lg ring-2", index === 1 ? "ring-brand" : "ring-card/80")}
-                  >
-                    <Face seed={`${name.toLowerCase()}-desk`} size={20} />
-                  </span>
-                ))}
-              </div>
-            }
-          />
-        </Card>
-        <Card className="lg:col-span-2" title={t("moments.door.title")} body={t("moments.door.body")}>
-          <FloorScene
-            view={[1, 19, 13, 9]}
-            sitting={[{ ...PEOPLE.noah, chair: [7, 24], status: "busy" }]}
-            className={scene}
-            over={
-              <span className={cn(CHIP, "absolute start-3 top-3")}>
-                <Headphones className="size-3.5 text-destructive" />
-                {t("moments.door.chip", { name: PEOPLE.noah.name })}
-              </span>
-            }
-          />
-        </Card>
-        <Card className="lg:col-span-3" title={t("moments.lounge.title")} body={t("moments.lounge.body")}>
-          <FloorScene
-            view={[33, 1, 14, 9]}
-            standing={[
-              { ...PEOPLE.lily, at: [38, 4], face: "right", status: "away" },
-              { ...PEOPLE.ryan, at: [40, 4], face: "left", status: "away" },
-            ]}
-            className={scene}
-            over={
-              <span className={cn(CHIP, "absolute start-3 top-3")}>
-                <Music2 className="size-3.5 text-brand" />
-                {t("moments.lounge.chip")} · Slow Stride
-              </span>
-            }
-          />
-        </Card>
+      <Head />
+      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-14">
+        {moments.map((one) => (
+          <article
+            key={one.kind}
+            id={one.id}
+            className="grid min-w-0 scroll-mt-24 grid-rows-[auto_1fr] overflow-hidden rounded-[28px] border border-border bg-card p-2 transition-[border-color,box-shadow] duration-300 hover:border-border-strong hover:shadow-[0_24px_60px_-36px_rgb(0_0_0/0.35)]"
+          >
+            <MomentScene kind={one.kind} className="aspect-[16/9] w-full rounded-[22px]" />
+            <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6">
+              <Label kind={one.kind}>{one.label}</Label>
+              <h3 className="mt-2.5 text-balance text-[21px] font-semibold leading-[1.2] tracking-[-0.02em]">{one.title}</h3>
+              <p className="mt-2 max-w-[32rem] text-pretty text-[15px] leading-relaxed text-muted-foreground">{one.body}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

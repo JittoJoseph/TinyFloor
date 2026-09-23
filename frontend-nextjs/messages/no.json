@@ -1223,6 +1223,38 @@
         "body": "Inviter kolleger på e-post, eller send en gjestelenke til en kunde eller kandidat. De velger et navn og en figur og står i etasjen, uten konto."
       }
     },
+    "moments": {
+      "title": "Alt skjer på etasjen.",
+      "muted": "Akkurat som på et kontor.",
+      "door": {
+        "title": "Lukk døren.",
+        "body": "Sett deg som opptatt og ta det private kontoret. Andre ser at du jobber konsentrert før de kommer bort, og chatten venter på deg.",
+        "chip": "{name} er opptatt · konsentrert"
+      },
+      "lounge": {
+        "title": "Ta en pause.",
+        "body": "Sofaen, høyttaleren som spiller rommets musikk, og folkene du ville truffet ved kaffemaskinen.",
+        "chip": "Spilles nå"
+      }
+    },
+    "steps": {
+      "title": "I gang",
+      "muted": "før kaffen blir kald.",
+      "make": {
+        "title": "Lag kontoret ditt.",
+        "body": "Gi det et navn og velg en figur. Det er klart på et minutt."
+      },
+      "invite": {
+        "title": "Send lenken til teamet.",
+        "body": "Inviter kolleger på e-post, eller del en gjestelenke med hvem som helst."
+      },
+      "walk": {
+        "title": "Gå inn.",
+        "body": "Alle havner på samme etasje. Gå bort til den du trenger."
+      },
+      "joined": "{count} ble med i dag",
+      "walkedIn": "{name} kom inn"
+    },
     "more": {
       "title": "Alt et lite team trenger,",
       "muted": "i én etasje.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Én etasje for hele dagen,",
       "muted": "fra det første hei til den siste samtalen."
-    },
-    "tour": {
-      "title": "En dag på etasjen.",
-      "muted": "Hvert rom er der av en grunn.",
-      "hall": {
-        "title": "Se hvem som er her.",
-        "body": "Alle er på etasjen: ved en pult, på farten eller i et møte. Ett blikk forteller deg hvem som er her, hvem som er opptatt og hvem som jobber konsentrert."
-      },
-      "office": {
-        "title": "Lukk døren.",
-        "body": "Sett deg som opptatt og ta det private kontoret. Andre ser at du jobber konsentrert før de kommer bort, og chatten venter på deg.",
-        "chip": "{name} er opptatt · konsentrert"
-      },
-      "lounge": {
-        "title": "Ta en pause.",
-        "body": "Sofaen, høyttaleren som spiller rommets musikk, og folkene du ville truffet ved kaffemaskinen.",
-        "chip": "Spilles nå"
-      }
     },
     "vignettes": {
       "sharing": "Deler",

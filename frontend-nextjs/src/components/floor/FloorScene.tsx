@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { PixelAvatar, Nameplate, type AvatarDirection } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
+import { CHAIRS } from "./grid";
 
 /**
  * The real floor, drawn for the website: the map the app loads, rendered once
@@ -35,13 +36,13 @@ export interface Stander extends Someone {
 
 /**
  * Someone sitting on one of the map's chairs, given as the chair object's
- * tile (its left edge and its bottom, as Tiled stores it). A chair facing down
- * sits behind its desk, so `tucked` hides the legs the desk would cover.
+ * tile (its left edge and its bottom, as Tiled stores it). They face the way
+ * the chair does, as in the app: a chair facing down is behind its desk, so
+ * the desk hides their legs; a chair facing up has its back to us, drawn over
+ * them, with their name under it.
  */
 export interface Sitter extends Someone {
   chair: Tile;
-  face: Face;
-  tucked?: boolean;
 }
 
 /**
@@ -78,7 +79,6 @@ export function FloorScene({
   children,
   style,
   playable,
-  glide = false,
   over,
 }: {
   /** The part of the map in view, in tiles: [left, top, width, height]. It covers the box, cropping whichever side is long. */
@@ -96,13 +96,13 @@ export function FloorScene({
   style?: CSSProperties;
   /** The floor can be walked on (PlayableYou is among the children): it takes focus for the arrow keys, and this names it. */
   playable?: string;
-  /** Pan and zoom smoothly when the view changes, like the app's camera. */
-  glide?: boolean;
 }) {
   const [vx, vy, vw, vh] = view;
   const cx = vx + vw / 2;
   const cy = vy + vh / 2;
   const walks = walking.map((walker, index) => walk(walker, index));
+  // The floor's width that covers the box with the view: a tile is the larger of box/view on either axis.
+  const width = `max(100cqw * ${MAP.width / vw}, 100cqh * ${MAP.width / vh})`;
 
   return (
     <div
@@ -116,13 +116,12 @@ export function FloorScene({
     >
       <div
         aria-hidden={playable ? undefined : true}
-        className={cn(
-          "absolute left-1/2 top-1/2 aspect-[3/2] [container-type:inline-size]",
-          glide && "transition-[width,translate] duration-[1400ms] ease-[cubic-bezier(0.65,0,0.2,1)] motion-reduce:transition-none",
-        )}
+        className="absolute aspect-[3/2] [container-type:inline-size]"
         style={{
-          width: `max(calc(100cqw * ${MAP.width / vw}), calc(100cqh * ${MAP.width / vh}))`,
-          translate: `-${pct(cx, MAP.width)} -${pct(cy, MAP.height)}`,
+          width,
+          // Centred on the view, but never past the map's edge, like the app's camera bounds.
+          left: `clamp(calc(100cqw - ${width}), calc(50cqw - ${width} * ${(cx / MAP.width).toFixed(5)}), 0px)`,
+          top: `clamp(calc(100cqh - ${width} * ${MAP.height / MAP.width}), calc(50cqh - ${width} * ${(cy / MAP.width).toFixed(5)}), 0px)`,
           ["--tile" as string]: `calc(100cqw / ${MAP.width})`,
           direction: "ltr",
         }}
@@ -144,7 +143,7 @@ export function FloorScene({
 
         {/* Back to front, so whoever stands lower on the floor is drawn over whoever stands behind them. */}
         {[
-          ...sitting.map((one) => ({ y: one.chair[1] + SEAT_DY[one.face], node: <Seated key={`s${one.chair}`} {...one} /> })),
+          ...sitting.map((one) => ({ y: one.chair[1], node: <Seated key={`s${one.chair}`} {...one} /> })),
           ...standing.map((one) => ({ y: feet(one.at).y, node: <Standing key={`t${one.at}${one.character}`} {...one} /> })),
           ...walks.map((one) => ({ y: one.y, node: one.node })),
         ]
@@ -184,23 +183,48 @@ function Standing({ character, name, status, at, face = "down", running }: Stand
   );
 }
 
-function Seated({ character, name, status, chair, face, tucked = false }: Sitter) {
+function Seated({ character, name, status, chair }: Sitter) {
+  const { frame, face } = CHAIRS[`${chair[0]},${chair[1]}`] ?? { frame: 1, face: "down" as const };
   const x = chair[0] + 0.5;
   const y = chair[1] + SEAT_DY[face];
   return (
-    <div className="absolute" style={{ left: pct(x, MAP.width), top: pct(y, MAP.height) }}>
-      <span
-        className="absolute left-0 top-0 aspect-square -translate-x-1/2 -translate-y-full bg-no-repeat [image-rendering:pixelated]"
-        style={{
-          width: `calc(${TILE} * 2)`,
-          backgroundImage: `url(/characters/${character}.png)`,
-          backgroundSize: "5200% 100%",
-          backgroundPositionX: `${((SIT_FRAME[face] / 51) * 100).toFixed(4)}%`,
-          clipPath: tucked ? "inset(0 0 34% 0)" : undefined,
-        }}
-      />
-      <Plate name={name} status={status} />
-    </div>
+    <>
+      <div className="absolute" style={{ left: pct(x, MAP.width), top: pct(y, MAP.height) }}>
+        <span
+          className="absolute left-0 top-0 aspect-square -translate-x-1/2 -translate-y-full bg-no-repeat [image-rendering:pixelated]"
+          style={{
+            width: `calc(${TILE} * 2)`,
+            backgroundImage: `url(/characters/${character}.png)`,
+            backgroundSize: "5200% 100%",
+            backgroundPositionX: `${((SIT_FRAME[face] / 51) * 100).toFixed(4)}%`,
+            // Behind a desk: the desk covers everything below the waist.
+            clipPath: face === "down" ? "inset(0 0 34% 0)" : undefined,
+          }}
+        />
+        {face !== "up" && <Plate name={name} status={status} />}
+      </div>
+      {face === "up" && (
+        <div className="absolute" style={{ left: pct(chair[0], MAP.width), top: pct(chair[1] - 2, MAP.height) }}>
+          {/* The chair's back, over them. */}
+          <span
+            className="absolute left-0 top-0 block bg-no-repeat [image-rendering:pixelated]"
+            style={{
+              width: TILE,
+              height: `calc(${TILE} * 2)`,
+              backgroundImage: "url(/tilesets/items/chair.png)",
+              backgroundSize: "100% 2300%",
+              backgroundPositionY: `${((frame / 22) * 100).toFixed(4)}%`,
+            }}
+          />
+          {/* Their name under the chair, where the app puts it for someone with their back to us. */}
+          {name && (
+            <span className="absolute left-[calc(var(--tile)*0.5)] top-[calc(var(--tile)*2)]">
+              <Nameplate name={name} status={status} size={TILE} offset={`calc(${TILE} * -0.85)`} />
+            </span>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 

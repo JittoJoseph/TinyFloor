@@ -1,14 +1,13 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Clock3, Globe2, Headphones, LockKeyhole, MonitorSmartphone, Music2 } from "lucide-react";
+import { Check, Clock3, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { EVERYONE, PEOPLE } from "@/components/floor/scenes";
-import { NearbyBar } from "@/components/floor/PlayableYou";
-import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Heading, INK, LobbyPill, MarketingShell, ProductPreview } from "./Blocks";
-import { Tour, type Stop } from "./Tour";
+import { EVERYONE } from "@/components/floor/scenes";
+import { CJK_HEADLINE, COLUMN, Actions, DayCard, Faq, Heading, INK, LobbyPill, MarketingShell, ProductPreview, STONE } from "./Blocks";
+import { Moments, Steps } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
@@ -29,9 +28,6 @@ import {
 /** What's in TinyFloor, the ones the service runs on, named the way Cloudflare names them. */
 const STACK = ["Workers", "Durable Objects", "D1", "Realtime SFU", "TURN"];
 
-/** Everyone on the tour's floor. */
-const ON_FLOOR = (EVERYONE.sitting?.length ?? 0) + (EVERYONE.standing?.length ?? 0) + (EVERYONE.walking?.length ?? 0);
-
 /**
  * The home page, in the app's own design system and theme, built on the real
  * floor: the map the app loads, with people on it. The hero's floor is yours
@@ -44,8 +40,9 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   return (
     <MarketingShell>
       <Hero />
-      <Walkthrough />
+      <Moments />
       <Everything />
+      <Steps />
       <Trust />
       <Plans />
       <Faq title={<>{t("faq.title")} <span className="text-muted-foreground/80">{t("faq.muted")}</span></>} items={faqs} />
@@ -74,91 +71,6 @@ function Hero() {
         <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
       </div>
       <ProductPreview className="mt-14 sm:mt-20" />
-    </section>
-  );
-}
-
-const APP_CHIP =
-  "flex h-8 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card/95 px-3 font-(family-name:--font-app) text-[12px] font-medium text-foreground shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]";
-
-/** A day on the floor, room by room: the camera moves to each as its words scroll by. */
-function Walkthrough() {
-  const t = useTranslations("home");
-  const labels = { video: t("preview.video"), audio: t("preview.audio"), message: t("preview.message") };
-  const stops: Stop[] = [
-    {
-      key: "hall",
-      view: [15, 1, 32, 22],
-      title: t("tour.hall.title"),
-      body: t("tour.hall.body"),
-      overlay: (
-        <span className={cn(APP_CHIP, "absolute start-3 top-3")}>
-          <span className="size-1.5 rounded-full bg-ok" />
-          {t("preview.office")}
-          <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={16} max={3} />
-          <span className="tabular-nums text-muted-foreground">{ON_FLOOR}</span>
-        </span>
-      ),
-    },
-    {
-      key: "proximity",
-      view: [30, 5, 14, 10],
-      title: t("features.proximity.title"),
-      body: t("features.proximity.body"),
-      overlay: (
-        <div className="absolute inset-x-0 bottom-4 flex justify-center">
-          <NearbyBar name={PEOPLE.olivia.name} seed={PEOPLE.olivia.id} labels={labels} />
-        </div>
-      ),
-    },
-    {
-      key: "meetings",
-      view: [1, 2, 13, 13],
-      title: t("features.meetings.title"),
-      body: t("features.meetings.body"),
-      overlay: (
-        <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5 [--face-ring:var(--ui-card)]">
-          {["Ava", "Leo", "Zoe", "Ben"].map((name, index) => (
-            <span
-              key={name}
-              className={cn("relative flex aspect-video w-[4.5rem] items-center justify-center rounded-[10px] bg-card shadow-lg ring-2 sm:w-20", index === 1 ? "ring-brand" : "ring-card/80")}
-            >
-              <Face seed={`${name.toLowerCase()}-desk`} size={24} />
-              <span className="absolute bottom-1 start-1 rounded-full bg-card/90 px-1.5 font-(family-name:--font-app) text-[9px] font-semibold">{name}</span>
-            </span>
-          ))}
-        </div>
-      ),
-    },
-    {
-      key: "office",
-      view: [1, 17, 13, 14],
-      title: t("tour.office.title"),
-      body: t("tour.office.body"),
-      overlay: (
-        <span className={cn(APP_CHIP, "absolute start-3 top-3")}>
-          <Headphones className="size-3.5 text-destructive" />
-          {t("tour.office.chip", { name: PEOPLE.noah.name })}
-        </span>
-      ),
-    },
-    {
-      key: "lounge",
-      view: [32, 1, 15, 11],
-      title: t("tour.lounge.title"),
-      body: t("tour.lounge.body"),
-      overlay: (
-        <span className={cn(APP_CHIP, "absolute start-3 top-3")}>
-          <Music2 className="size-3.5 text-brand" />
-          {t("tour.lounge.chip")} · Slow Stride
-        </span>
-      ),
-    },
-  ];
-  return (
-    <section id="floor" className={cn(COLUMN, "scroll-mt-20 pt-24 sm:pt-36")}>
-      <Heading title={t("tour.title")} muted={t("tour.muted")} block className="max-w-[24ch]" />
-      <Tour stops={stops} you={t("preview.you")} className="mt-8 lg:mt-0" />
     </section>
   );
 }
@@ -260,69 +172,57 @@ function Trust() {
   );
 }
 
-/**
- * One plan, and the desks it buys: three seats taken at a desk block on the
- * real floor, the fourth chair still empty for the plans to come.
- */
 function Plans() {
   const t = useTranslations("home.plans");
   const items = t.raw("free.items") as string[];
-  const { emma, jack, olivia } = PEOPLE;
   return (
     <section id="plans" className={cn(COLUMN, "scroll-mt-20 pb-20 sm:pb-28")}>
       <div className="flex flex-col items-center text-center">
         <Heading title={t("title")} muted={t("muted")} />
         <p className="mt-4 text-[16px] text-muted-foreground">{t("note")}</p>
       </div>
-      <div className="mx-auto mt-12 grid max-w-[1040px] overflow-hidden rounded-[30px] border border-border bg-card lg:grid-cols-[1fr_1.1fr]">
-        <div className="p-7 sm:p-10">
-          <p className="text-[19px] font-semibold">{t("free.name")}</p>
-          <p className="mt-4 flex flex-wrap items-baseline gap-x-2.5">
-            <span className="text-[60px] font-semibold leading-none tracking-[-0.04em]">{t("free.price")}</span>
+      <div className="mx-auto mt-12 grid max-w-[980px] gap-2 rounded-[30px] bg-foreground/[0.045] p-2 lg:grid-cols-[1.25fr_1fr]">
+        <div className="rounded-[24px] border border-border bg-card p-6 sm:p-9 [--face-ring:var(--ui-card)]">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-[19px] font-semibold">{t("free.name")}</p>
+            <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={30} max={3} />
+          </div>
+          <p className="mt-5 flex items-baseline gap-2.5">
+            <span className="text-[56px] font-semibold leading-none tracking-[-0.04em]">{t("free.price")}</span>
             <span className="text-[16px] text-muted-foreground">{t("free.per")}</span>
           </p>
           <Link href="/create" className={cn(INK, "mt-8 w-full")}>
             {t("free.cta")}
           </Link>
-          <ul className="mt-8 grid gap-3">
+          <ul className="mt-7 flex flex-wrap gap-1.5 border-t border-border pt-6">
             {items.map((item) => (
-              <li key={item} className="flex items-center gap-3 text-[15px]">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-ok/15 text-ok">
-                  <Check className="size-3" strokeWidth={3} />
-                </span>
+              <li key={item} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground/[0.05] pe-3 ps-2.5 text-[13.5px]">
+                <Check className="size-3.5 shrink-0 text-ok" strokeWidth={2.75} />
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div className="flex flex-col border-t border-border bg-foreground/[0.03] lg:border-s lg:border-t-0">
-          <FloorScene
-            view={[17.5, 5, 13, 8]}
-            sitting={[
-              { ...emma, chair: [20, 11], face: "up", status: "available" },
-              { ...jack, chair: [26, 11], face: "up", status: "available" },
-              { ...olivia, chair: [20, 8], face: "down", tucked: true, status: "available" },
-            ]}
-            className="aspect-[16/10] w-full"
-          />
-          <div className="p-7 sm:p-10">
-            <p className="flex flex-wrap items-center gap-2.5 text-[17px] font-semibold">
-              {t("soon.name")}
-              <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[12.5px] font-semibold text-brand">{t("soon.badge")}</span>
-            </p>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{t("soon.body")}</p>
-            <ul className="mt-5 flex flex-wrap gap-1.5">
-              {(t.raw("soon.items") as string[]).map((item) => (
-                <li
-                  key={item}
-                  className="inline-flex h-8 items-center gap-1.5 rounded-full border border-dashed border-border-strong pe-3 ps-2.5 text-[13.5px] text-foreground/75"
-                >
-                  <Clock3 className="size-3.5 shrink-0 text-muted-foreground" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-col p-6 sm:p-9">
+          <p className="flex flex-wrap items-center gap-2.5 text-[19px] font-semibold">
+            {t("soon.name")}
+            <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[12.5px] font-semibold text-brand">{t("soon.badge")}</span>
+          </p>
+          <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">{t("soon.body")}</p>
+          <ul className="mt-6 flex flex-wrap gap-1.5">
+            {(t.raw("soon.items") as string[]).map((item) => (
+              <li
+                key={item}
+                className="inline-flex h-8 items-center gap-1.5 rounded-full border border-dashed border-border-strong pe-3 ps-2.5 text-[13.5px] text-foreground/75"
+              >
+                <Clock3 className="size-3.5 shrink-0 text-muted-foreground" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <Link href="/lobby" className={cn(STONE, "mt-9 w-full lg:mt-auto")}>
+            {t("soon.cta")}
+          </Link>
         </div>
       </div>
     </section>

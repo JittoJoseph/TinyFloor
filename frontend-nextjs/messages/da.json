@@ -1223,6 +1223,38 @@
         "body": "Inviter kolleger via e-mail, eller send et gæstelink til en kunde eller kandidat. De vælger et navn og en figur og står på etagen, uden konto."
       }
     },
+    "moments": {
+      "title": "Alt sker på etagen.",
+      "muted": "Ligesom på et kontor.",
+      "door": {
+        "title": "Luk døren.",
+        "body": "Sæt dig som optaget og tag privatkontoret. Andre kan se, at du er fordybet, før de kommer forbi, og chatten venter på dig.",
+        "chip": "{name} er optaget · fordybet"
+      },
+      "lounge": {
+        "title": "Hold en pause.",
+        "body": "Sofaen, højttaleren med rummets musik og de folk, du ville møde ved kaffemaskinen.",
+        "chip": "Spiller nu"
+      }
+    },
+    "steps": {
+      "title": "Klar til brug",
+      "muted": "før kaffen bliver kold.",
+      "make": {
+        "title": "Lav dit kontor.",
+        "body": "Giv det et navn og vælg en figur. Det er klar på et minut."
+      },
+      "invite": {
+        "title": "Send linket til dit team.",
+        "body": "Inviter kolleger via e-mail, eller del et gæstelink med alle andre."
+      },
+      "walk": {
+        "title": "Gå ind.",
+        "body": "Alle lander på samme etage. Gå hen til den, du har brug for."
+      },
+      "joined": "{count} kom til i dag",
+      "walkedIn": "{name} kom ind"
+    },
     "more": {
       "title": "Alt hvad et lille team har brug for,",
       "muted": "på én etage.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Én etage til hele dagen,",
       "muted": "fra det første hej til det sidste opkald."
-    },
-    "tour": {
-      "title": "En dag på etagen.",
-      "muted": "Hvert rum er der af en grund.",
-      "hall": {
-        "title": "Se hvem der er her.",
-        "body": "Alle er på etagen: ved et skrivebord, på farten eller til møde. Ét blik fortæller dig, hvem der er her, hvem der har travlt, og hvem der er fordybet."
-      },
-      "office": {
-        "title": "Luk døren.",
-        "body": "Sæt dig som optaget og tag privatkontoret. Andre kan se, at du er fordybet, før de kommer forbi, og chatten venter på dig.",
-        "chip": "{name} er optaget · fordybet"
-      },
-      "lounge": {
-        "title": "Hold en pause.",
-        "body": "Sofaen, højttaleren med rummets musik og de folk, du ville møde ved kaffemaskinen.",
-        "chip": "Spiller nu"
-      }
     },
     "vignettes": {
       "sharing": "Deler",

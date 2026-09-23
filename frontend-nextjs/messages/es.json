@@ -1223,6 +1223,38 @@
         "body": "Invita a tu equipo por correo o envía un enlace de invitado a un cliente o candidato. Elige un nombre y un personaje y ya está en la planta, sin cuenta."
       }
     },
+    "moments": {
+      "title": "Todo pasa en la planta.",
+      "muted": "Como pasaría en una oficina.",
+      "door": {
+        "title": "Cierra la puerta.",
+        "body": "Ponte como ocupado y usa el despacho privado. Los demás ven que estás concentrado antes de acercarse, y el chat te espera.",
+        "chip": "{name} está ocupado · concentrado"
+      },
+      "lounge": {
+        "title": "Tómate un respiro.",
+        "body": "El sofá, el altavoz con la música de la sala y la gente con la que coincidirías en la máquina de café.",
+        "chip": "Sonando"
+      }
+    },
+    "steps": {
+      "title": "En marcha",
+      "muted": "antes de que se enfríe el café.",
+      "make": {
+        "title": "Crea tu oficina.",
+        "body": "Ponle un nombre y elige un personaje. Está lista en un minuto."
+      },
+      "invite": {
+        "title": "Envía el enlace a tu equipo.",
+        "body": "Invita a tus compañeros por correo o comparte un enlace de invitado con cualquiera."
+      },
+      "walk": {
+        "title": "Entra.",
+        "body": "Todos llegan a la misma planta. Acércate a quien necesites."
+      },
+      "joined": "{count} se unieron hoy",
+      "walkedIn": "{name} ha entrado"
+    },
     "more": {
       "title": "Todo lo que un equipo pequeño necesita,",
       "muted": "en una sola planta.",
@@ -1380,24 +1412,6 @@
     "days": {
       "title": "Una planta para todo el día,",
       "muted": "del primer hola a la última llamada."
-    },
-    "tour": {
-      "title": "Un día en la planta.",
-      "muted": "Cada sala tiene su motivo.",
-      "hall": {
-        "title": "Mira quién está.",
-        "body": "Todo el mundo está en la planta: en su mesa, de un lado a otro o en una reunión. De un vistazo sabes quién está, quién está ocupado y quién está concentrado."
-      },
-      "office": {
-        "title": "Cierra la puerta.",
-        "body": "Ponte como ocupado y usa el despacho privado. Los demás ven que estás concentrado antes de acercarse, y el chat te espera.",
-        "chip": "{name} está ocupado · concentrado"
-      },
-      "lounge": {
-        "title": "Tómate un respiro.",
-        "body": "El sofá, el altavoz con la música de la sala y la gente con la que coincidirías en la máquina de café.",
-        "chip": "Sonando"
-      }
     },
     "vignettes": {
       "sharing": "Compartiendo",

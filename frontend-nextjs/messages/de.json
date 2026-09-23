@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Teammitglied einladen",
       "inviteTeammateNote": "Sie kommen über einen Link rein",
       "video": "Videoanruf",
-      "audio": "Sprachanruf",
-      "you": "Du",
-      "clickToWalk": "Klick irgendwohin, um zu laufen",
-      "playable": "Die Etage zum Ausprobieren: Klick irgendwohin, um dorthin zu laufen, oder nutze die Pfeiltasten"
+      "audio": "Sprachanruf"
     },
     "footer": {
       "tagline": "Ein virtuelles Büro, in dem du herumläufst.",

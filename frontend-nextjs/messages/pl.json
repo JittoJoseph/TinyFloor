@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Zaproś osobę z zespołu",
       "inviteTeammateNote": "Dołącza przez link",
       "video": "Rozmowa wideo",
-      "audio": "Rozmowa głosowa",
-      "you": "Ty",
-      "clickToWalk": "Kliknij gdziekolwiek, aby iść",
-      "playable": "Piętro do wypróbowania: kliknij gdziekolwiek, aby tam pójść, albo użyj strzałek"
+      "audio": "Rozmowa głosowa"
     },
     "footer": {
       "tagline": "Wirtualne biuro, po którym chodzisz.",

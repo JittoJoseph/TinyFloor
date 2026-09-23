@@ -4,9 +4,9 @@ the app loads (public/tilesets/office-map.tmj). Run it again if the map changes:
 
     python scripts/floor-data.py
 
-Writes src/components/floor/grid.ts:
-- WALKABLE, the tiles you can stand on, the way the app's NavGrid decides it
-  (a tile is blocked when its 16px core touches a collider).
+Prints the tiles you can stand on, the way the app's NavGrid decides it (a
+tile is blocked when its 16px core touches a collider), for planning where
+people walk in a scene. Writes src/components/floor/grid.ts:
 - CHAIRS, every chair with the way it faces and what the app draws over
   whoever sits in it: the game sorts sprites by their base, so a desk hides
   the legs of someone facing us and a chair's back hides someone facing away.
@@ -104,20 +104,12 @@ for index, (gid, tall) in enumerate(pieces):
     atlas.paste(cut(gid, tall), (index * T, 0))
 atlas.save(PUBLIC / "floor-pieces.webp", format="WEBP", lossless=True, method=6, quality=100)
 
-walkable = "\n".join(f'  "{row}",' for row in rows)
+# Where you can stand, "." to walk on and "#" blocked, to plan where people walk in a scene.
+print("\n".join(f"{y:>2} {row}" for y, row in enumerate(rows)))
+
 chair_rows = "\n".join(entries)
 (ROOT / "src" / "components" / "floor" / "grid.ts").write_text(
     f'''// Written by scripts/floor-data.py from the map. Run it again rather than editing this by hand.
-
-/**
- * Where you can stand on the floor, one character a tile: "." to walk on, "#"
- * a wall or furniture, as the app's NavGrid works it out from the colliders.
- */
-const WALKABLE = [
-{walkable}
-];
-
-export const walkable = (x: number, y: number) => WALKABLE[y]?.[x] === ".";
 
 /** How many pieces are in /floor-pieces.webp, one to a 32 by 64 cell. */
 export const PIECES = {len(pieces)};

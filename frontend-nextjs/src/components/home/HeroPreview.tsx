@@ -10,8 +10,11 @@ const DWELL_MS = 6500;
 
 /**
  * The hero's look inside the app. The four views, frames and all, are rendered
- * on the server and sent as markup; this only chooses which one shows. It moves on by itself
- * (not with reduced motion, and not while off screen) until a tab is pressed.
+ * on the server and sent as markup; this only chooses which one shows. It moves
+ * on by itself until a tab or the rail is pressed: a line under each tab fills
+ * while the view shows, and the next one comes when it's full. The fill is a
+ * CSS animation, so it holds still with everything else while off screen, and
+ * doesn't run at all with reduced motion.
  */
 export function HeroPreview({
   labels,
@@ -47,31 +50,11 @@ export function HeroPreview({
     return () => watch.disconnect();
   }, []);
 
-  /** Fills the active tab's line over the dwell, with the Web Animations API rather than a stylesheet. */
-  const fill = (line: HTMLSpanElement | null) => {
-    line?.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: DWELL_MS, fill: "forwards" });
-  };
-
-  useEffect(() => {
-    if (picked || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let visible = true;
-    const watch = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
-    if (box.current) watch.observe(box.current);
-    const timer = setInterval(() => {
-      if (visible && document.visibilityState === "visible") {
-        setView((current) => VIEWS[(VIEWS.indexOf(current) + 1) % VIEWS.length]);
-      }
-    }, DWELL_MS);
-    return () => {
-      clearInterval(timer);
-      watch.disconnect();
-    };
-  }, [picked]);
-
   return (
     <div
       ref={box}
       data-paused={offscreen || undefined}
+      style={{ ["--dwell" as string]: `${DWELL_MS}ms` }}
       className="relative rounded-[26px] border border-border bg-muted/60 p-1.5 sm:p-2 [&[data-paused]_*]:[animation-play-state:paused]"
     >
       <span id="meetings" aria-hidden className="absolute -top-24" />
@@ -96,28 +79,30 @@ export function HeroPreview({
             )}
           >
             {labels[one]}
-            {/* How long until the next view, while it is still moving on by itself. */}
-            {view === one && !picked && (
-              <span
-                aria-hidden
-                key={one}
-                ref={fill}
-                className="absolute inset-x-5 bottom-1 h-[2px] origin-left scale-x-0 rounded-full bg-foreground/15 motion-reduce:hidden rtl:origin-right"
-              />
+            {/* Every tab's track while the views move on by themselves; the showing one fills, and moves on when full. */}
+            {!picked && (
+              <span aria-hidden className="absolute inset-x-4 bottom-1 h-[2px] overflow-hidden rounded-full bg-foreground/10 motion-reduce:hidden sm:inset-x-6">
+                {view === one && (
+                  <span
+                    key={one}
+                    className="block h-full origin-left animate-[hero-fill_var(--dwell)_linear_forwards] rounded-full bg-foreground/55 rtl:origin-right"
+                    onAnimationEnd={() => setView(VIEWS[(VIEWS.indexOf(one) + 1) % VIEWS.length])}
+                  />
+                )}
+              </span>
             )}
           </button>
         ))}
       </div>
-      {/* Walking the floor, or any touch on a panel, keeps it where it is. */}
       <div
         className="mt-1.5 sm:mt-2"
-        onPointerDown={() => setPicked(true)}
-        onKeyDown={() => setPicked(true)}
         onClick={(event) => {
-          // The rail inside each view is the app's own way between them.
+          // The rail inside each view is the app's own way between them, and like the tabs, a press there stays put.
           const rail = (event.target as HTMLElement).closest<HTMLElement>("[data-view]");
           const next = rail?.dataset.view as PreviewView | undefined;
-          if (next && VIEWS.includes(next)) setView(next);
+          if (!next || !VIEWS.includes(next)) return;
+          setPicked(true);
+          setView(next);
         }}
       >
         {VIEWS.map((one) => (

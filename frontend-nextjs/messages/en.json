@@ -1350,10 +1350,7 @@
       "inviteTeammate": "Invite a teammate",
       "inviteTeammateNote": "They join with a link",
       "video": "Video call",
-      "audio": "Voice call",
-      "you": "You",
-      "clickToWalk": "Click anywhere to walk",
-      "playable": "The floor, to try: click anywhere to walk there, or use the arrow keys"
+      "audio": "Voice call"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",

@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Inviter en kollega",
       "inviteTeammateNote": "De kommer ind med et link",
       "video": "Videoopkald",
-      "audio": "Taleopkald",
-      "you": "Dig",
-      "clickToWalk": "Klik hvor som helst for at gå",
-      "playable": "Etagen til at prøve: klik hvor som helst for at gå derhen, eller brug piletasterne"
+      "audio": "Taleopkald"
     },
     "footer": {
       "tagline": "Et virtuelt kontor, du går rundt i.",

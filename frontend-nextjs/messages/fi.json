@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Kutsu tiimiläinen",
       "inviteTeammateNote": "Hän liittyy linkillä",
       "video": "Videopuhelu",
-      "audio": "Äänipuhelu",
-      "you": "Sinä",
-      "clickToWalk": "Klikkaa mihin tahansa kävelläksesi",
-      "playable": "Kerros kokeiltavaksi: klikkaa mihin tahansa kävelläksesi sinne, tai käytä nuolinäppäimiä"
+      "audio": "Äänipuhelu"
     },
     "footer": {
       "tagline": "Virtuaalitoimisto, jossa kävelet ympäriinsä.",

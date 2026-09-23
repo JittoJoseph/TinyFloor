@@ -147,7 +147,7 @@ export function HomeNav() {
         </div>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
-          <HomeNavActions signIn={t("nav.signIn")} start={t("nav.start")} open={t("nav.open")} />
+          <HomeNavActions signIn={t("nav.signIn")} lobby={t("hero.secondary")} open={t("nav.open")} />
           <MobileMenu label={t("nav.menu")}>
             <p className="px-1 text-[11.5px] font-semibold text-faint">{t("footer.product")}</p>
             <ul className="mt-1 grid gap-0.5">

@@ -1355,10 +1355,7 @@
       "inviteTeammate": "팀원 초대",
       "inviteTeammateNote": "링크로 들어와요",
       "video": "영상 통화",
-      "audio": "음성 통화",
-      "you": "나",
-      "clickToWalk": "아무 곳이나 클릭해 걸어 보세요",
-      "playable": "직접 걸어 보는 층: 아무 곳이나 클릭하면 그곳으로 걸어가고, 화살표 키로도 움직일 수 있습니다"
+      "audio": "음성 통화"
     },
     "footer": {
       "tagline": "걸어 다니는 가상 오피스.",

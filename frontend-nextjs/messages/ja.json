@@ -1355,10 +1355,7 @@
       "inviteTeammate": "メンバーを招待",
       "inviteTeammateNote": "リンクから参加できます",
       "video": "ビデオ通話",
-      "audio": "音声通話",
-      "you": "あなた",
-      "clickToWalk": "どこかをクリックして歩く",
-      "playable": "試せるフロア：どこかをクリックするとそこまで歩きます。矢印キーでも動けます"
+      "audio": "音声通話"
     },
     "footer": {
       "tagline": "歩き回れるバーチャルオフィス。",

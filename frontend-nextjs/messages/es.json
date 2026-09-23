@@ -1355,10 +1355,7 @@
       "inviteTeammate": "Invitar a un compañero",
       "inviteTeammateNote": "Entran con un enlace",
       "video": "Videollamada",
-      "audio": "Llamada de voz",
-      "you": "Tú",
-      "clickToWalk": "Haz clic en cualquier sitio para caminar",
-      "playable": "La planta, para probar: haz clic en cualquier sitio para ir allí, o usa las flechas"
+      "audio": "Llamada de voz"
     },
     "footer": {
       "tagline": "Una oficina virtual por la que caminas.",

@@ -47,7 +47,16 @@ export async function createGuest(
   return { user: { id: userId, email: null, displayName, character, isGuest: true, sessionId }, cookie };
 }
 
-/** A new session for the user, as a cookie. Only the token's hash is stored. */
+/**
+ * The country Cloudflare places a connection in, as ISO 3166 letters. Unknown
+ * ("XX") and Tor ("T1") come back as nothing.
+ */
+export function countryOf(request: Request): string | null {
+  const code = (request.cf as { country?: string } | undefined)?.country;
+  return code && /^[A-Z]{2}$/.test(code) && code !== "XX" && code !== "T1" ? code : null;
+}
+
+/** A new session for the user, as a cookie. Only the token's hash is stored. The user's country is noted with it. */
 export async function createSession(
   env: Env,
   request: Request,
@@ -57,11 +66,12 @@ export async function createSession(
   const now = Date.now();
   const token = randomToken();
   const sessionId = await hashToken(token);
-  await env.DB.prepare(
-    "INSERT INTO sessions (id, user_id, created_at, expires_at, last_seen_at, user_agent) VALUES (?, ?, ?, ?, ?, ?)",
-  )
-    .bind(sessionId, userId, now, now + lifetimeMs, now, request.headers.get("User-Agent")?.slice(0, 200) ?? null)
-    .run();
+  await env.DB.batch([
+    env.DB.prepare(
+      "INSERT INTO sessions (id, user_id, created_at, expires_at, last_seen_at, user_agent) VALUES (?, ?, ?, ?, ?, ?)",
+    ).bind(sessionId, userId, now, now + lifetimeMs, now, request.headers.get("User-Agent")?.slice(0, 200) ?? null),
+    env.DB.prepare("UPDATE users SET country = COALESCE(?, country) WHERE id = ?").bind(countryOf(request), userId),
+  ]);
   return { sessionId, cookie: sessionCookie(env, token, lifetimeMs / 1000) };
 }
 
@@ -85,7 +95,11 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     ctx.waitUntil(
       env.DB.batch([
         env.DB.prepare("UPDATE sessions SET last_seen_at = ? WHERE id = ?").bind(now, id),
-        env.DB.prepare("UPDATE users SET last_active_at = ? WHERE id = ?").bind(now, row.user_id),
+        env.DB.prepare("UPDATE users SET last_active_at = ?, country = COALESCE(?, country) WHERE id = ?").bind(
+          now,
+          countryOf(request),
+          row.user_id,
+        ),
       ]),
     );
   }

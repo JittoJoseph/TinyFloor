@@ -18,6 +18,9 @@
   "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
   // Per-IP limit on sign-up, sign-in and guest creation (src/limits.ts).
+  // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
+  // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
+  // ADMIN_EMAILS, the comma-separated accounts that can open /admin.
   "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }],
   "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime", "entrypoint": "RealtimeAdmin" }],
   "d1_databases": [

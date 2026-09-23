@@ -1,3 +1,4 @@
+import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
@@ -18,6 +19,7 @@ googleRoutes(router);
 officeRoutes(router);
 floorRoutes(router);
 callRoutes(router);
+adminRoutes(router);
 
 export default {
   async fetch(request, env, ctx) {

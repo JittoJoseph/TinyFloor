@@ -34,7 +34,7 @@ import { emphasised } from "@/lib/words";
 import {
   CJK_HEADLINE,
   COLUMN,
-  Actions,
+  HeroAsk,
   Faq,
   Final,
   Heading,
@@ -75,11 +75,9 @@ const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
  */
 export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
-  const th = await getTranslations("home");
   const copy = t.raw(`pages.${page.key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
   const path = `/${page.slug}`;
   const icons = POINT_ICONS[page.key];
-  const points = th.raw("hero.points") as string[];
 
   return (
     <MarketingShell path={path}>
@@ -93,22 +91,21 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         })}
       />
 
-      <section className={cn(COLUMN, "pt-16 sm:pt-24")}>
-        <div className="mx-auto flex max-w-[50rem] flex-col items-center text-center">
+      <section className={cn(COLUMN, "pt-9 sm:pt-24")}>
+        <div className="mx-auto flex max-w-[50rem] flex-col items-start text-start sm:items-center sm:text-center">
           <span className="inline-flex h-8 items-center rounded-full border border-border bg-card px-3.5 text-[13px] text-muted-foreground">
             {t(`pages.${page.key}.label`)}
           </span>
           <h1
             className={cn(
-              "mt-7 text-balance hyphens-auto text-[40px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[58px] lg:text-[66px]",
+              "mt-5 text-balance hyphens-auto text-[38px] font-semibold leading-[1.04] tracking-[-0.035em] sm:mt-7 sm:text-[58px] lg:text-[66px]",
               CJK_HEADLINE,
             )}
           >
             {emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "text-brand")}
           </h1>
-          <p className="mt-6 max-w-[38rem] text-pretty text-[17px] leading-relaxed text-muted-foreground sm:text-[19px]">{copy.subtitle}</p>
-          <Actions className="mt-10" />
-          <p className="mt-5 text-[13.5px] text-faint">{points.join(" · ")}</p>
+          <p className="mt-4 max-w-[38rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[19px]">{copy.subtitle}</p>
+          <HeroAsk />
         </div>
         <ProductPreview className="mt-16 sm:mt-20" />
       </section>

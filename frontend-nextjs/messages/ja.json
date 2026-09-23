@@ -90,6 +90,8 @@
     "tabSignIn": "ログイン",
     "tabSignUp": "アカウント作成",
     "chooseMode": "ログインまたはアカウント作成",
+    "continueWithGoogle": "Google で続ける",
+    "or": "または",
     "signInTitle": "おかえりなさい",
     "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
     "signUpTitle": "アカウントを作成",
@@ -128,7 +130,10 @@
       "name_required": "ほかの人に表示される名前を入力してください。",
       "turnstile": "人間であることを確認できませんでした。もう一度お試しください。",
       "network": "TinyFloor に接続できません。接続を確認してもう一度お試しください。",
-      "generic": "問題が発生しました。もう一度お試しください。"
+      "generic": "問題が発生しました。もう一度お試しください。",
+      "google_failed": "Google でのログインに失敗しました。もう一度お試しください。",
+      "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
+      "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
     },
     "asideReady": "{office} はもうすぐ完成です",
     "asideTitle": "チームまで、フロアひとつ",
@@ -1156,7 +1161,8 @@
         "インストール不要",
         "Cloudflare 上で動作"
       ],
-      "lobbyCta": "入ってみる"
+      "lobbyCta": "入ってみる",
+      "noAccount": "アカウント不要"
     },
     "features": {
       "proximity": {

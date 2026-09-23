@@ -90,6 +90,8 @@
     "tabSignIn": "로그인",
     "tabSignUp": "계정 만들기",
     "chooseMode": "로그인하거나 계정 만들기",
+    "continueWithGoogle": "Google로 계속하기",
+    "or": "또는",
     "signInTitle": "다시 오신 것을 환영해요",
     "signInSubtitle": "로그인하고 팀 오피스로 돌아가세요.",
     "signUpTitle": "계정 만들기",
@@ -128,7 +130,10 @@
       "name_required": "다른 사람에게 보일 이름을 정해 주세요.",
       "turnstile": "사람인지 확인하지 못했어요. 다시 시도해 주세요.",
       "network": "TinyFloor에 연결할 수 없어요. 연결 상태를 확인하고 다시 시도해 주세요.",
-      "generic": "문제가 생겼어요. 다시 시도해 주세요."
+      "generic": "문제가 생겼어요. 다시 시도해 주세요.",
+      "google_failed": "Google 로그인이 완료되지 않았어요. 다시 시도해 주세요.",
+      "google_unverified": "먼저 Google에서 이메일을 인증한 뒤 다시 시도해 주세요.",
+      "google_mismatch": "이 이메일은 다른 Google 계정에 연결되어 있어요."
     },
     "asideReady": "{office}이(가) 거의 준비됐어요",
     "asideTitle": "팀이 한 층 거리에",
@@ -1156,7 +1161,8 @@
         "설치할 것 없음",
         "Cloudflare 위에서 작동"
       ],
-      "lobbyCta": "들어가기"
+      "lobbyCta": "들어가기",
+      "noAccount": "계정 없이 바로"
     },
     "features": {
       "proximity": {

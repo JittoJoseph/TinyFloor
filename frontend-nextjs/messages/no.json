@@ -90,6 +90,8 @@
     "tabSignIn": "Logg inn",
     "tabSignUp": "Opprett konto",
     "chooseMode": "Logg inn eller opprett en konto",
+    "continueWithGoogle": "Fortsett med Google",
+    "or": "eller",
     "signInTitle": "Velkommen tilbake",
     "signInSubtitle": "Logg inn for å komme tilbake til teamets kontor.",
     "signUpTitle": "Opprett kontoen din",
@@ -128,7 +130,10 @@
       "name_required": "Velg et navn som andre ser.",
       "turnstile": "Vi klarte ikke å bekrefte at du er et menneske. Prøv igjen.",
       "network": "Får ikke kontakt med TinyFloor. Sjekk tilkoblingen og prøv igjen.",
-      "generic": "Noe gikk galt. Prøv igjen."
+      "generic": "Noe gikk galt. Prøv igjen.",
+      "google_failed": "Innloggingen med Google gikk ikke gjennom. Prøv igjen.",
+      "google_unverified": "Bekreft e-postadressen din hos Google først, og prøv så igjen.",
+      "google_mismatch": "Denne e-postadressen er knyttet til en annen Google-konto."
     },
     "asideReady": "{office} er nesten klart",
     "asideTitle": "Teamet ditt, én etasje unna",
@@ -1156,7 +1161,8 @@
         "Ingenting å installere",
         "Kjører på Cloudflare"
       ],
-      "lobbyCta": "Gå inn"
+      "lobbyCta": "Gå inn",
+      "noAccount": "Ingen konto nødvendig"
     },
     "features": {
       "proximity": {

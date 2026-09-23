@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
+import { ArrowRight, ChevronRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ import { PeoplePreview } from "./previews/PeoplePreview";
 import { MeetingPreview } from "./previews/MeetingPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
 import { FloorScene } from "@/components/floor/FloorScene";
-import { EVERYONE } from "@/components/floor/scenes";
+import { EVERYONE, LOBBY } from "@/components/floor/scenes";
 
 /*
  * The pieces every marketing page is built from: the page shell, headings,
@@ -110,6 +110,50 @@ export function Actions({ className }: { className?: string }) {
         {t("nav.start")}
       </Link>
     </div>
+  );
+}
+
+/**
+ * A hero's ask. On a wide screen, the two ways in as pills. On a phone, the
+ * lobby itself: a live patch of floor you tap to walk into, with nothing to
+ * sign up for, and making an office as a quieter link under it.
+ */
+export function HeroAsk() {
+  const t = useTranslations("home");
+  const points = t.raw("hero.points") as string[];
+  return (
+    <>
+      <Actions className="mt-10 hidden sm:flex" />
+      <Link href="/lobby" className="group mt-7 block w-full overflow-hidden rounded-[30px] bg-foreground/[0.06] p-1.5 text-start sm:hidden">
+        <FloorScene
+          {...LOBBY}
+          priority
+          className="h-64 rounded-[24px]"
+          over={
+            <span className="absolute start-3 top-3 flex h-7 items-center gap-1.5 rounded-full bg-card/95 pe-2.5 ps-2 font-(family-name:--font-app) text-[11.5px] font-medium text-foreground shadow-float">
+              <span className="relative flex size-2">
+                <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 motion-reduce:hidden" />
+                <span className="relative size-2 rounded-full bg-ok" />
+              </span>
+              {t("nav.lobbyTitle")}
+            </span>
+          }
+        />
+        <span className="flex items-center gap-3 px-2.5 pb-1 pt-2.5 [--face-ring:var(--ui-muted)]">
+          <FaceStack seeds={CAST.slice(0, 3).map((one) => one.id)} size={24} max={3} />
+          <span className="min-w-0 flex-1 text-[13.5px] leading-snug text-muted-foreground">{t("hero.noAccount")}</span>
+          <span className="flex h-11 items-center gap-1.5 rounded-full bg-foreground pe-4 ps-5 text-[15px] font-medium text-background transition-transform group-active:scale-[0.97]">
+            {t("hero.lobbyCta")}
+            <ArrowRight className="size-4 rtl:rotate-180" />
+          </span>
+        </span>
+      </Link>
+      <Link href="/create" className="mt-6 flex items-center gap-1 self-center text-[15px] font-medium sm:hidden">
+        {t("nav.start")}
+        <ChevronRight className="size-4 text-muted-foreground rtl:rotate-180" />
+      </Link>
+      <p className="mt-3 self-center text-center text-[12.5px] text-faint sm:mt-5 sm:text-[13.5px]">{points.join(" · ")}</p>
+    </>
   );
 }
 

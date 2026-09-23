@@ -90,6 +90,8 @@
     "tabSignIn": "Sign in",
     "tabSignUp": "Create account",
     "chooseMode": "Sign in or create an account",
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
@@ -128,7 +130,10 @@
       "name_required": "Pick a name people will see.",
       "turnstile": "We couldn't check that you're human. Try again.",
       "network": "Can't reach TinyFloor. Check your connection and try again.",
-      "generic": "Something went wrong. Try again."
+      "generic": "Something went wrong. Try again.",
+      "google_failed": "Google sign-in didn't go through. Try again.",
+      "google_unverified": "Verify your email with Google first, then try again.",
+      "google_mismatch": "This email is linked to a different Google account."
     },
     "asideReady": "{office} is almost ready",
     "asideTitle": "Your team, one floor away",
@@ -1156,7 +1161,8 @@
         "Nothing to install",
         "Runs on Cloudflare"
       ],
-      "lobbyCta": "Walk in"
+      "lobbyCta": "Walk in",
+      "noAccount": "No account needed"
     },
     "features": {
       "proximity": {

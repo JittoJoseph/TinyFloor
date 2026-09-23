@@ -90,6 +90,8 @@
     "tabSignIn": "تسجيل الدخول",
     "tabSignUp": "إنشاء حساب",
     "chooseMode": "سجّل الدخول أو أنشئ حسابًا",
+    "continueWithGoogle": "المتابعة باستخدام Google",
+    "or": "أو",
     "signInTitle": "مرحبًا بعودتك",
     "signInSubtitle": "سجّل الدخول للعودة إلى مكتب فريقك.",
     "signUpTitle": "أنشئ حسابك",
@@ -128,7 +130,10 @@
       "name_required": "اختر اسمًا يراه الآخرون.",
       "turnstile": "تعذّر التحقق من أنك إنسان. حاول مرة أخرى.",
       "network": "تعذّر الوصول إلى TinyFloor. تحقق من اتصالك وحاول مرة أخرى.",
-      "generic": "حدث خطأ ما. حاول مرة أخرى."
+      "generic": "حدث خطأ ما. حاول مرة أخرى.",
+      "google_failed": "لم يكتمل تسجيل الدخول باستخدام Google. حاول مرة أخرى.",
+      "google_unverified": "تحقّق من بريدك الإلكتروني لدى Google أولًا، ثم حاول مرة أخرى.",
+      "google_mismatch": "هذا البريد الإلكتروني مرتبط بحساب Google آخر."
     },
     "asideReady": "{office} جاهز تقريبًا",
     "asideTitle": "فريقك على بُعد طابق واحد",
@@ -1156,7 +1161,8 @@
         "لا شيء لتثبيته",
         "يعمل على Cloudflare"
       ],
-      "lobbyCta": "ادخل"
+      "lobbyCta": "ادخل",
+      "noAccount": "دون الحاجة إلى حساب"
     },
     "features": {
       "proximity": {

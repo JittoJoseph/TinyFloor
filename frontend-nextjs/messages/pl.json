@@ -1383,7 +1383,29 @@
       "vs": "vs {name}",
       "theme": "Motyw",
       "language": "Język",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "O nas",
+      "privacy": "Prywatność",
+      "terms": "Regulamin"
     }
+  },
+  "legal": {
+    "englishOnly": "Ta strona jest po angielsku."
+  },
+  "about": {
+    "meta": {
+      "title": "O TinyFloor",
+      "description": "TinyFloor to wirtualne biuro, po którym się chodzi, stworzone przez Jitto Josepha. Dlaczego powstało, kto je tworzy i jak się z nami skontaktować."
+    },
+    "eyebrow": "O nas",
+    "title": "Praca zdalna straciła korytarz. Budujemy go na nowo.",
+    "p1": "Praca osobno sprzyja skupieniu, ale po cichu zabrała drobne chwile: szybkie pytanie przy czyimś biurku, cześć w przelocie, widok tego, kto jest na miejscu. Rozmowy wideo dobrze sprawdzają się na spotkaniach. Z każdej innej rozmowy zrobiły termin w kalendarzu.",
+    "p2": "TinyFloor to piętro zamiast linku. Twój zespół chodzi po wspólnym biurze w stylu pixel art, a podejście do kogoś to sposób na rozpoczęcie rozmowy. Usiądź przy stole i jesteś na spotkaniu. Odejdź i znów robi się cicho.",
+    "p3": "Działa w przeglądarce w sieci Cloudflare, w 18 językach, bez instalowania czegokolwiek, i jest darmowe dla małych zespołów.",
+    "founderTitle": "Tworzy je Jitto Joseph",
+    "founderBody": "Projektuję i buduję TinyFloor, od pikselowego piętra po serwery, na których działa. Masz pomysł, problem albo chcesz się po prostu przywitać? Chętnie się odezwę.",
+    "website": "Strona",
+    "elsewhere": "TinyFloor w sieci",
+    "contact": "Napisz do nas"
   }
 }

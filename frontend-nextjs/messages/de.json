@@ -1383,7 +1383,29 @@
       "vs": "vs. {name}",
       "theme": "Darstellung",
       "language": "Sprache",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "Über uns",
+      "privacy": "Datenschutz",
+      "terms": "AGB"
     }
+  },
+  "legal": {
+    "englishOnly": "Diese Seite ist auf Englisch."
+  },
+  "about": {
+    "meta": {
+      "title": "Über TinyFloor",
+      "description": "TinyFloor ist ein virtuelles Büro zum Herumlaufen, gebaut von Jitto Joseph. Warum es das gibt, wer es macht und wie du uns erreichst."
+    },
+    "eyebrow": "Über uns",
+    "title": "Remote-Arbeit hat den Flur verloren. Wir bauen ihn wieder auf.",
+    "p1": "Getrennt zu arbeiten ist gut für die Konzentration, aber es hat die kleinen Momente still mitgenommen: die kurze Frage am Schreibtisch, das Hallo im Vorbeigehen, zu sehen, wer da ist. Videocalls sind gut für Meetings. Sie haben jedes andere Gespräch zu einem Termin gemacht.",
+    "p2": "TinyFloor ist eine Etage statt eines Links. Dein Team läuft durch ein gemeinsames Pixel-Art-Büro, und wer zu jemandem hingeht, fängt an zu reden. Setz dich an einen Tisch, und du bist im Meeting. Geh weg, und es ist wieder ruhig.",
+    "p3": "Es läuft im Browser auf dem Netzwerk von Cloudflare, in 18 Sprachen, ohne Installation, und für kleine Teams kostenlos.",
+    "founderTitle": "Gebaut von Jitto Joseph",
+    "founderBody": "Ich gestalte und baue TinyFloor, von der Pixel-Etage bis zu den Servern, auf denen sie läuft. Wenn du eine Idee, ein Problem hast oder einfach Hallo sagen willst, freue ich mich von dir zu hören.",
+    "website": "Website",
+    "elsewhere": "TinyFloor im Netz",
+    "contact": "Schreib uns"
   }
 }

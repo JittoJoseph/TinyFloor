@@ -60,7 +60,10 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
     {
       title: t("resources"),
       links: [
+        { label: t("about"), href: "/about" },
         { label: t("faq"), href: "/#faq" },
+        { label: t("privacy"), href: "/privacy" },
+        { label: t("terms"), href: "/terms" },
         { label: t("credits"), href: "/credits.txt" },
       ],
     },

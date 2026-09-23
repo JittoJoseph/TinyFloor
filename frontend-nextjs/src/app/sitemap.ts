@@ -11,6 +11,7 @@ const routes: Array<{
 }> = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/lobby', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/about', changeFrequency: 'monthly', priority: 0.5 },
   ...LANDINGS.map(({ slug }) => ({
     path: `/${slug}`,
     changeFrequency: 'monthly' as const,
@@ -24,11 +25,15 @@ const absolute = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;
 // own head, and a lastmod that changes on every request would only teach
 // crawlers to ignore it, so the sitemap stays a plain list of URLs.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.flatMap((route) =>
-    localeCodes.map((locale) => ({
-      url: absolute(localePath(locale, route.path)),
-      changeFrequency: route.changeFrequency,
-      priority: route.priority,
-    })),
-  );
+  return [
+    ...routes.flatMap((route) =>
+      localeCodes.map((locale) => ({
+        url: absolute(localePath(locale, route.path)),
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+      })),
+    ),
+    // The legal pages are in English only; the other languages' copies point here.
+    ...['/privacy', '/terms'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
+  ];
 }

@@ -14,7 +14,12 @@ export function AppTheme({ children }: { children?: ReactNode }) {
   const { reduceMotion } = usePrefs();
   useLayoutEffect(() => {
     applyTheme();
-    return clearTheme;
+    // Microsoft Clarity, which the site uses for its own pages, hides everything inside the app: names, chat, offices.
+    document.body.setAttribute("data-clarity-mask", "true");
+    return () => {
+      clearTheme();
+      document.body.removeAttribute("data-clarity-mask");
+    };
   }, []);
   return <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>{children}</MotionConfig>;
 }

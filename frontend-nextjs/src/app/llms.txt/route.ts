@@ -11,6 +11,7 @@ export async function GET() {
   const pages: Array<[string, string, string]> = [
     ["TinyFloor", "/", t("landing.description")],
     [t("metadata.lobbyTitle"), "/lobby", t("metadata.lobbyDescription")],
+    [t("about.meta.title"), "/about", t("about.meta.description")],
     ...LANDINGS.map(({ key, slug }): [string, string, string] => [
       t(`landings.pages.${key}.meta.title`),
       `/${slug}`,

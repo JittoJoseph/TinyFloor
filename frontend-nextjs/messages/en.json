@@ -1378,12 +1378,34 @@
       "vs": "vs {name}",
       "theme": "Theme",
       "language": "Language",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "About",
+      "privacy": "Privacy",
+      "terms": "Terms"
     },
     "cases": {
       "title": "One floor,",
       "muted": "many ways to use it.",
       "body": "Teams make it their office. Friends make it a study room. Teachers hold office hours in it. Pick yours."
     }
+  },
+  "legal": {
+    "englishOnly": "This page is in English."
+  },
+  "about": {
+    "meta": {
+      "title": "About TinyFloor",
+      "description": "TinyFloor is a virtual office you walk around in, made by Jitto Joseph. Why it exists, who makes it and how to get in touch."
+    },
+    "eyebrow": "About",
+    "title": "Remote work lost the hallway. We're building it back.",
+    "p1": "Working apart is great for focus, but it quietly took away the small moments: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls handle meetings well. They made every other conversation a scheduled one.",
+    "p2": "TinyFloor is a floor instead of a link. Your team walks around a shared pixel-art office, and walking up to someone is how you start talking. Sit at a table and you're in a meeting. Walk away and it's quiet again.",
+    "p3": "It runs in the browser on Cloudflare's network, in 18 languages, with nothing to install, and it's free for small teams.",
+    "founderTitle": "Made by Jitto Joseph",
+    "founderBody": "I design and build TinyFloor, from the pixel floor to the servers it runs on. If you have an idea, a problem or just want to say hello, I'd love to hear from you.",
+    "website": "Website",
+    "elsewhere": "TinyFloor elsewhere",
+    "contact": "Write to us"
   }
 }

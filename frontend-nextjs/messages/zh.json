@@ -1383,7 +1383,29 @@
       "vs": "对比 {name}",
       "theme": "主题",
       "language": "语言",
-      "rights": "© {year} TinyFloor"
+      "rights": "© {year} TinyFloor",
+      "about": "关于",
+      "privacy": "隐私",
+      "terms": "条款"
     }
+  },
+  "legal": {
+    "englishOnly": "此页面为英文。"
+  },
+  "about": {
+    "meta": {
+      "title": "关于 TinyFloor",
+      "description": "TinyFloor 是一个可以四处走动的虚拟办公室，由 Jitto Joseph 打造。了解它为何存在、由谁制作以及如何联系我们。"
+    },
+    "eyebrow": "关于",
+    "title": "远程办公丢掉了走廊，我们正在把它找回来。",
+    "p1": "分开工作有助于专注，却悄悄带走了那些小时刻：在同事桌边问个小问题，路过时打声招呼，看看谁在。视频会议很适合开会，却把其他所有对话都变成了预约。",
+    "p2": "TinyFloor 是一层楼，而不是一个链接。你的团队在共享的像素风办公室里走动，走到某人身边就能开始交谈。坐到桌边就是开会，走开就又安静了。",
+    "p3": "它在浏览器中运行，基于 Cloudflare 的网络，支持 18 种语言，无需安装，小团队免费。",
+    "founderTitle": "由 Jitto Joseph 打造",
+    "founderBody": "从像素楼层到运行它的服务器，TinyFloor 的设计和开发都由我来完成。如果你有想法、遇到问题，或只是想打个招呼，都很欢迎来信。",
+    "website": "个人网站",
+    "elsewhere": "TinyFloor 的其他平台",
+    "contact": "联系我们"
   }
 }

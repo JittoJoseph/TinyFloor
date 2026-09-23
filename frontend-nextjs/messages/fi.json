@@ -10,7 +10,6 @@
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
     "dashboardTitle": "Hallintapaneeli",
-    "roomTitle": "Aktiivinen huone",
     "notFoundTitle": "Sivua ei löytynyt",
     "lobbyTitle": "Aula",
     "lobbyDescription": "Tule vieraana TinyFloorin ilmaiseen, avoimeen aulaan. Valitse hahmo, tapaa ihmisiä ja kokeile lähietäisyyden videopuheluita selaimessa.",
@@ -26,17 +25,12 @@
     "close": "Sulje",
     "guest": "Vieras",
     "you": "Sinä",
-    "justNow": "juuri nyt",
     "unknown": "Tuntematon",
-    "peopleCount": "{count, plural, one {# henkilö} other {# henkilöä}}",
     "dashboard": "Hallintapaneeli",
-    "questions": "Kysymykset",
     "signOut": "Kirjaudu ulos",
     "visitLobby": "Käy aulassa",
     "lobby": "Aula",
     "signIn": "Kirjaudu",
-    "rooms": "Huoneet",
-    "offices": "Toimistosi",
     "account": "Tili",
     "createOffice": "Luo toimisto",
     "plansSoon": "Isompi tiimi? Useamman paikan paketit tulossa pian."
@@ -159,11 +153,6 @@
     "visitLobby": "Käy aulassa",
     "invitedAsGuest": "Sinut on kutsuttu vieraaksi."
   },
-  "userMenu": {
-    "manageProfile": "Hallitse profiilia",
-    "visitingAsGuest": "Vierailet vieraana",
-    "keepYourName": "Säilytä nimi ja hahmo"
-  },
   "room": {
     "connecting": "Yhdistetään...",
     "leave": "Poistu",
@@ -225,7 +214,6 @@
     "stopSharing": "Lopeta jakaminen",
     "muteSpeaker": "Mykistä kaiutin",
     "unmuteSpeaker": "Poista kaiuttimen mykistys",
-    "openChat": "Avaa chat",
     "settings": "Asetukset",
     "leaveCall": "Poistu puhelusta",
     "leaveMeeting": "Poistu kokouksesta"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Edellinen hahmo",
     "next": "Seuraava hahmo",
-    "select": "Valitse {name}",
-    "keyHint": "Käytä nuolinäppäimiä ← →"
+    "select": "Valitse {name}"
   },
   "notFound": {
     "title": "Tätä huonetta ei ole kartalla.",
@@ -409,7 +396,6 @@
     "home": "Takaisin aulaan"
   },
   "landings": {
-    "tryIt": "Astu julkiseen toimistoon",
     "create": "Luo huone",
     "free": "Ilmainen, selaimessa, ilman tiliä.",
     "compare": "Vertailut",
@@ -980,7 +966,6 @@
       "passwordRule": "Vähintään 8 merkkiä",
       "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
       "cancel": "Peruuta",
-      "pageTitle": "Tilisi",
       "faceNote": "Kasvosi piirretään tilisi perusteella, samanlaisina joka näytöllä. Mitään ei ladata eikä tallenneta.",
       "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Liityt nimellä {name} ({email})",
       "createAccount": "Luo tili",
       "signIn": "Minulla on tili",
-      "needAccount": "Työtilaan liittyminen vaatii tilin. Se vie minuutin.",
       "readyToJoin": "Se olen minä",
       "accountKeeps": "Tili muistaa nimen {name} ja hahmosi ensi kertaa varten.",
       "you": "Sinä"
@@ -1079,7 +1063,6 @@
     "continue": "Jatka",
     "create": "Luo toimisto",
     "creating": "Valmistellaan",
-    "firstRoom": "Pääkerros",
     "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
     "accountNext": "Seuraavaksi: tee tili, niin toimisto on valmis.",
     "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan."
@@ -1134,7 +1117,6 @@
     "subtitle": "Toimistosi ja kuka on nyt missäkin kerroksessa.",
     "onFloor": "{count, plural, =0 {Ei ketään kerroksella} other {# kerroksella}}",
     "newOffice": "Uusi toimisto",
-    "newOfficeBody": "Kolme henkilöä ilmaiseksi. Kerros, chat ja puhelut.",
     "lobby": "Julkinen aula",
     "lobbyBody": "Poikkea ja tapaa, kuka paikalla on.",
     "emptyTitle": "Aloita ensimmäinen toimistosi",
@@ -1158,7 +1140,6 @@
         "people": "Läsnäolo",
         "guests": "Vieraat"
       },
-      "everyOffice": "Jokaisessa toimistossa",
       "lobbyTitle": "Aula on auki",
       "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
       "menu": "Valikko",
@@ -1189,19 +1170,14 @@
         "Ei mitään asennettavaa",
         "Toimii Cloudflaren päällä"
       ],
-      "lobbyLine": "Julkinen aula on auki juuri nyt. Tiliä ei tarvita.",
       "lobbyCta": "Astu sisään"
     },
     "features": {
       "proximity": {
-        "title": "Kävele juttelemaan.",
-        "muted": "Ei linkkejä, ei aikatauluja.",
-        "body": "Mene jonkun lähelle, niin puhelu on yhden napautuksen päässä. Kävele pois, niin kerros hiljenee taas, kuin pistäytyisit kollegan pöydän luona."
+        "muted": "Ei linkkejä, ei aikatauluja."
       },
       "meetings": {
-        "title": "Istu palaveriin.",
-        "muted": "Nouse lähteäksesi.",
-        "body": "Ryhmäpuhelut käydään pöydän ääressä. Kaikki pöydän ääressä istuvat ovat mukana, kamerat pysyvät kevyinä pienoiskuvina ja kuka tahansa voi jakaa näyttönsä."
+        "muted": "Nouse lähteäksesi."
       },
       "chat": {
         "title": "Keskustelut, jotka säilyvät.",
@@ -1279,28 +1255,22 @@
       "muted": "yhdessä virtuaalitoimistossa.",
       "items": {
         "screen": {
-          "title": "Näytön jako",
-          "body": "Jaa ikkuna missä tahansa puhelussa tai palaverissa."
+          "title": "Näytön jako"
         },
         "whiteboard": {
-          "title": "Valkotaulu",
-          "body": "Luonnostelkaa yhdessä toimiston seinällä."
+          "title": "Valkotaulu"
         },
         "music": {
-          "title": "Musiikki",
-          "body": "Laita soimaan kappale kaikille huoneessa."
+          "title": "Musiikki"
         },
         "noise": {
-          "title": "Kohinanpoisto",
-          "body": "Valinnainen tekoäly laitteellasi poistaa näppäimistön ja taustapuheen."
+          "title": "Kohinanpoisto"
         },
         "mobile": {
-          "title": "Puhelimella",
-          "body": "Ohjain, joka ilmestyy peukalosi alle."
+          "title": "Puhelimella"
         },
         "languages": {
-          "title": "18 kieltä",
-          "body": "Englannista ja espanjasta japaniin ja arabiaan."
+          "title": "18 kieltä"
         }
       },
       "also": "Myös joka kerroksessa"
@@ -1420,10 +1390,6 @@
       "theme": "Teema",
       "language": "Kieli",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Yksi kerros koko päiväksi,",
-      "muted": "ensimmäisestä moikkauksesta viimeiseen puheluun."
     }
   }
 }

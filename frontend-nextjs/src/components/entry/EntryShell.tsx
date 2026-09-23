@@ -105,5 +105,3 @@ export const Field: React.FC<{
 export const inputClass =
   "w-full h-12 px-4 rounded-xl bg-background border border-border text-[16px] sm:text-[15px] text-foreground placeholder:text-faint outline-none transition-[border-color,box-shadow] duration-200 focus:border-foreground/35 focus:ring-4 focus:ring-foreground/[0.06]";
 
-export const primaryButtonClass =
-  "cursor-pointer w-full h-12 rounded-full bg-foreground text-background font-medium text-[14px] transition-[background-color,transform,opacity] duration-200 hover:bg-foreground/90 active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 flex items-center justify-center gap-2";

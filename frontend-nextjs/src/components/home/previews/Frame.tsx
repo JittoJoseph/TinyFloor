@@ -17,7 +17,7 @@ export const CAST = [
 ] as const;
 
 /** The stand-in office's mark. */
-export const OFFICE_SEED = "northwind-7";
+const OFFICE_SEED = "northwind-7";
 
 const RAIL: Array<{ view: PreviewView; icon: typeof MapTrifoldIcon }> = [
   { view: "floor", icon: MapTrifoldIcon },

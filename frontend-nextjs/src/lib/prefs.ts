@@ -26,7 +26,7 @@ export interface Prefs {
   batterySaver: boolean;
 }
 
-export const DEFAULT_PREFS: Prefs = {
+const DEFAULT_PREFS: Prefs = {
   noiseSuppression: true,
   echoCancellation: true,
   enhancedNoise: false,

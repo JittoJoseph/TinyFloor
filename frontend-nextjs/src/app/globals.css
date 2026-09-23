@@ -77,10 +77,6 @@ body {
   background: var(--background);
 }
 
-.pixel-antialiased {
-  image-rendering: pixelated;
-}
-
 /* Pixel art canvas rendering */
 .pixel-art {
   image-rendering: pixelated;

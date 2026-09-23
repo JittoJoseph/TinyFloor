@@ -10,7 +10,6 @@
     "authTitle": "Entrar",
     "authDescription": "Entre no TinyFloor para manter seu nome, seu personagem e uma lista das suas salas.",
     "dashboardTitle": "Painel",
-    "roomTitle": "Sala ativa",
     "notFoundTitle": "Página não encontrada",
     "lobbyTitle": "O lobby",
     "lobbyDescription": "Entre como convidado no lobby público e gratuito do TinyFloor. Escolha um personagem, conheça pessoas e experimente chamadas de vídeo por proximidade no navegador.",
@@ -26,17 +25,12 @@
     "close": "Fechar",
     "guest": "Convidado",
     "you": "Você",
-    "justNow": "agora mesmo",
     "unknown": "Desconhecido",
-    "peopleCount": "{count, plural, one {# pessoa} other {# pessoas}}",
     "dashboard": "Painel",
-    "questions": "Perguntas",
     "signOut": "Sair",
     "visitLobby": "Visitar o lobby",
     "lobby": "Lobby",
     "signIn": "Entrar",
-    "rooms": "Salas",
-    "offices": "Seus escritórios",
     "account": "Conta",
     "createOffice": "Criar um escritório",
     "plansSoon": "Equipe maior? Planos com mais vagas chegam em breve."
@@ -159,11 +153,6 @@
     "visitLobby": "Visitar o lobby",
     "invitedAsGuest": "Você foi convidado a entrar como convidado."
   },
-  "userMenu": {
-    "manageProfile": "Gerenciar perfil",
-    "visitingAsGuest": "Visitando como convidado",
-    "keepYourName": "Mantenha seu nome e personagem"
-  },
   "room": {
     "connecting": "Conectando...",
     "leave": "Sair",
@@ -225,7 +214,6 @@
     "stopSharing": "Parar de compartilhar",
     "muteSpeaker": "Silenciar alto-falante",
     "unmuteSpeaker": "Ativar alto-falante",
-    "openChat": "Abrir chat",
     "settings": "Configurações",
     "leaveCall": "Sair da chamada",
     "leaveMeeting": "Sair da reunião"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Personagem anterior",
     "next": "Próximo personagem",
-    "select": "Selecionar {name}",
-    "keyHint": "Use as setas ← →"
+    "select": "Selecionar {name}"
   },
   "notFound": {
     "title": "Esta sala não está no mapa.",
@@ -409,7 +396,6 @@
     "home": "Voltar ao saguão"
   },
   "landings": {
-    "tryIt": "Entrar no escritório público",
     "create": "Criar uma sala",
     "free": "Grátis, no navegador, sem conta.",
     "compare": "Comparações",
@@ -980,7 +966,6 @@
       "passwordRule": "Pelo menos 8 caracteres",
       "signsOutOthers": "Você continua conectado aqui. Em todos os outros lugares, a sessão será encerrada.",
       "cancel": "Cancelar",
-      "pageTitle": "Sua conta",
       "faceNote": "Seu rosto é desenhado a partir da sua conta, igual em todas as telas. Nada é enviado nem guardado.",
       "themeNote": "Sistema segue seu dispositivo. A escolha fica neste navegador."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Entrando como {name} ({email})",
       "createAccount": "Criar uma conta",
       "signIn": "Já tenho conta",
-      "needAccount": "Você precisa de uma conta para entrar em um espaço de trabalho. Leva um minuto.",
       "readyToJoin": "Sou eu",
       "accountKeeps": "Uma conta guarda {name} e seu personagem para a próxima vez.",
       "you": "Você"
@@ -1079,7 +1063,6 @@
     "continue": "Continuar",
     "create": "Criar escritório",
     "creating": "Preparando tudo",
-    "firstRoom": "Andar principal",
     "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
     "accountNext": "Depois: crie uma conta e o escritório fica pronto.",
     "justLooking": "Só dando uma olhada? <link>Entre no escritório público</link>."
@@ -1134,7 +1117,6 @@
     "subtitle": "Seus escritórios, e quem está em cada andar agora.",
     "onFloor": "{count, plural, =0 {Ninguém no andar} other {# no andar}}",
     "newOffice": "Novo escritório",
-    "newOfficeBody": "Três pessoas grátis. Um andar, chat e chamadas.",
     "lobby": "O saguão público",
     "lobbyBody": "Passe por lá e conheça quem estiver.",
     "emptyTitle": "Comece seu primeiro escritório",
@@ -1158,7 +1140,6 @@
         "people": "Presença",
         "guests": "Convidados"
       },
-      "everyOffice": "Em todo escritório",
       "lobbyTitle": "O lobby está aberto",
       "lobbyBody": "Ande por um andar de verdade antes de criar o seu. Sem precisar de conta.",
       "menu": "Menu",
@@ -1189,19 +1170,14 @@
         "Nada para instalar",
         "Roda na Cloudflare"
       ],
-      "lobbyLine": "O lobby público está aberto agora. Sem precisar de conta.",
       "lobbyCta": "Entrar"
     },
     "features": {
       "proximity": {
-        "title": "Chegue perto para conversar.",
-        "muted": "Sem links, sem agenda.",
-        "body": "Chegue perto de alguém e a chamada está a um toque. Afaste-se e o andar volta ao silêncio, como passar na mesa de um colega."
+        "muted": "Sem links, sem agenda."
       },
       "meetings": {
-        "title": "Sente-se para a reunião.",
-        "muted": "Levante-se para sair.",
-        "body": "Chamadas em grupo acontecem numa mesa. Quem se senta entra, as câmeras ficam leves como miniaturas e qualquer um pode compartilhar a tela."
+        "muted": "Levante-se para sair."
       },
       "chat": {
         "title": "Conversas que ficam.",
@@ -1279,28 +1255,22 @@
       "muted": "em um só escritório virtual.",
       "items": {
         "screen": {
-          "title": "Compartilhamento de tela",
-          "body": "Compartilhe uma janela em qualquer chamada ou reunião."
+          "title": "Compartilhamento de tela"
         },
         "whiteboard": {
-          "title": "Quadro branco",
-          "body": "Desenhem juntos na parede do escritório."
+          "title": "Quadro branco"
         },
         "music": {
-          "title": "Música",
-          "body": "Coloque uma música para todos na sala."
+          "title": "Música"
         },
         "noise": {
-          "title": "Remoção de ruído",
-          "body": "Uma IA opcional no seu aparelho tira teclado e conversas ao fundo."
+          "title": "Remoção de ruído"
         },
         "mobile": {
-          "title": "No celular",
-          "body": "Um joystick que aparece sob o seu polegar."
+          "title": "No celular"
         },
         "languages": {
-          "title": "18 idiomas",
-          "body": "De English e Español a 日本語 e العربية."
+          "title": "18 idiomas"
         }
       },
       "also": "Também em todo andar"
@@ -1420,10 +1390,6 @@
       "theme": "Tema",
       "language": "Idioma",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Um andar para o dia todo,",
-      "muted": "do primeiro oi à última chamada."
     }
   }
 }

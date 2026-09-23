@@ -10,7 +10,6 @@
     "authTitle": "Anmelden",
     "authDescription": "Melde dich bei TinyFloor an, um deinen Namen, deinen Charakter und eine Liste deiner Räume zu behalten.",
     "dashboardTitle": "Dashboard",
-    "roomTitle": "Aktiver Raum",
     "notFoundTitle": "Seite nicht gefunden",
     "lobbyTitle": "Die Lobby",
     "lobbyDescription": "Betritt die kostenlose öffentliche Lobby von TinyFloor als Gast. Such dir eine Figur aus, triff Leute und probiere Videoanrufe per Nähe direkt im Browser.",
@@ -26,17 +25,12 @@
     "close": "Schließen",
     "guest": "Gast",
     "you": "Du",
-    "justNow": "gerade eben",
     "unknown": "Unbekannt",
-    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
     "dashboard": "Dashboard",
-    "questions": "Fragen",
     "signOut": "Abmelden",
     "visitLobby": "Lobby besuchen",
     "lobby": "Lobby",
     "signIn": "Anmelden",
-    "rooms": "Räume",
-    "offices": "Deine Büros",
     "account": "Konto",
     "createOffice": "Büro erstellen",
     "plansSoon": "Größeres Team? Pläne mit mehr Plätzen kommen bald."
@@ -159,11 +153,6 @@
     "visitLobby": "Lobby besuchen",
     "invitedAsGuest": "Du bist als Gast eingeladen."
   },
-  "userMenu": {
-    "manageProfile": "Profil verwalten",
-    "visitingAsGuest": "Als Gast unterwegs",
-    "keepYourName": "Behalte Name und Figur"
-  },
   "room": {
     "connecting": "Verbinde...",
     "leave": "Verlassen",
@@ -225,7 +214,6 @@
     "stopSharing": "Freigabe beenden",
     "muteSpeaker": "Lautsprecher stummschalten",
     "unmuteSpeaker": "Lautsprecher einschalten",
-    "openChat": "Chat öffnen",
     "settings": "Einstellungen",
     "leaveCall": "Anruf verlassen",
     "leaveMeeting": "Meeting verlassen"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Vorheriger Charakter",
     "next": "Nächster Charakter",
-    "select": "{name} auswählen",
-    "keyHint": "Pfeiltasten ← → verwenden"
+    "select": "{name} auswählen"
   },
   "notFound": {
     "title": "Dieser Raum ist nicht auf der Karte.",
@@ -409,7 +396,6 @@
     "home": "Zurück zur Lobby"
   },
   "landings": {
-    "tryIt": "Ins öffentliche Büro gehen",
     "create": "Raum erstellen",
     "free": "Kostenlos, im Browser, ohne Konto.",
     "compare": "Vergleiche",
@@ -980,7 +966,6 @@
       "passwordRule": "Mindestens 8 Zeichen",
       "signsOutOthers": "Hier bleibst du angemeldet. Überall sonst wirst du abgemeldet.",
       "cancel": "Abbrechen",
-      "pageTitle": "Dein Konto",
       "faceNote": "Dein Gesicht entsteht aus deinem Konto, auf jedem Bildschirm gleich. Nichts wird hochgeladen oder gespeichert.",
       "themeNote": "System folgt deinem Gerät. Die Wahl wird in diesem Browser gespeichert."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Du trittst bei als {name} ({email})",
       "createAccount": "Konto erstellen",
       "signIn": "Ich habe ein Konto",
-      "needAccount": "Um einem Workspace beizutreten, brauchst du ein Konto. Das dauert nur eine Minute.",
       "readyToJoin": "Das bin ich",
       "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
       "you": "Du"
@@ -1079,7 +1063,6 @@
     "continue": "Weiter",
     "create": "Büro erstellen",
     "creating": "Wird eingerichtet",
-    "firstRoom": "Hauptetage",
     "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
     "accountNext": "Als Nächstes: ein Konto, dann ist das Büro fertig.",
     "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen."
@@ -1134,7 +1117,6 @@
     "subtitle": "Deine Büros und wer gerade auf welcher Fläche ist.",
     "onFloor": "{count, plural, =0 {Niemand auf der Fläche} other {# auf der Fläche}}",
     "newOffice": "Neues Büro",
-    "newOfficeBody": "Drei Personen kostenlos. Fläche, Chat und Anrufe.",
     "lobby": "Die öffentliche Lobby",
     "lobbyBody": "Schau vorbei und triff, wer gerade da ist.",
     "emptyTitle": "Starte dein erstes Büro",
@@ -1158,7 +1140,6 @@
         "people": "Anwesenheit",
         "guests": "Gäste"
       },
-      "everyOffice": "In jedem Büro",
       "lobbyTitle": "Die Lobby ist offen",
       "lobbyBody": "Lauf über eine echte Fläche, bevor du deine eigene einrichtest. Kein Konto nötig.",
       "menu": "Menü",
@@ -1189,19 +1170,14 @@
         "Nichts zu installieren",
         "Läuft auf Cloudflare"
       ],
-      "lobbyLine": "Die öffentliche Lobby ist gerade offen. Kein Konto nötig.",
       "lobbyCta": "Reingehen"
     },
     "features": {
       "proximity": {
-        "title": "Geh hin und rede.",
-        "muted": "Keine Links, keine Termine.",
-        "body": "Geh nah an jemanden heran, und ein Anruf ist nur einen Tipp entfernt. Geh weiter, und auf der Fläche wird es wieder ruhig, so wie beim kurzen Vorbeischauen am Schreibtisch."
+        "muted": "Keine Links, keine Termine."
       },
       "meetings": {
-        "title": "Setz dich zum Meeting.",
-        "muted": "Steh auf, um zu gehen.",
-        "body": "Gruppengespräche finden an einem Tisch statt. Alle, die dort sitzen, sind dabei, Kameras bleiben als Vorschaubilder leicht, und jeder kann seinen Bildschirm teilen."
+        "muted": "Steh auf, um zu gehen."
       },
       "chat": {
         "title": "Gespräche, die bleiben.",
@@ -1279,28 +1255,22 @@
       "muted": "in einem virtuellen Büro.",
       "items": {
         "screen": {
-          "title": "Bildschirm teilen",
-          "body": "Teile ein Fenster in jedem Anruf und Meeting."
+          "title": "Bildschirm teilen"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Skizziert gemeinsam an der Bürowand."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Musik",
-          "body": "Leg einen Song für alle im Raum auf."
+          "title": "Musik"
         },
         "noise": {
-          "title": "Geräuschentfernung",
-          "body": "Optionale KI auf deinem Gerät entfernt Tastatur und Gerede."
+          "title": "Geräuschentfernung"
         },
         "mobile": {
-          "title": "Auf dem Handy",
-          "body": "Ein Joystick, der unter deinem Daumen erscheint."
+          "title": "Auf dem Handy"
         },
         "languages": {
-          "title": "18 Sprachen",
-          "body": "Von English und Español bis 日本語 und العربية."
+          "title": "18 Sprachen"
         }
       },
       "also": "Auf jeder Etage dabei"
@@ -1420,10 +1390,6 @@
       "theme": "Darstellung",
       "language": "Sprache",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Eine Fläche für den ganzen Tag,",
-      "muted": "vom ersten Hallo bis zum letzten Call."
     }
   }
 }

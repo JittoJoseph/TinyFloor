@@ -6,7 +6,7 @@ export const THEME_KEY = "tf-theme";
  * The first part of every route that wears the app's theme, after the locale:
  * the app itself, and the marketing pages. The home page ("/") does too.
  */
-export const APP_SECTIONS = [
+const APP_SECTIONS = [
   "dashboard",
   "office",
   "lobby",

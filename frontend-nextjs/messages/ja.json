@@ -10,7 +10,6 @@
     "authTitle": "ログイン",
     "authDescription": "TinyFloor にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
     "dashboardTitle": "ダッシュボード",
-    "roomTitle": "アクティブなルーム",
     "notFoundTitle": "ページが見つかりません",
     "lobbyTitle": "ロビー",
     "lobbyDescription": "TinyFloor の無料の公開ロビーにゲストとして入れます。キャラクターを選んで、人に会い、ブラウザで近くの人とビデオ通話を試しましょう。",
@@ -26,17 +25,12 @@
     "close": "閉じる",
     "guest": "ゲスト",
     "you": "あなた",
-    "justNow": "たった今",
     "unknown": "不明",
-    "peopleCount": "{count, plural, other {# 人}}",
     "dashboard": "ダッシュボード",
-    "questions": "よくある質問",
     "signOut": "ログアウト",
     "visitLobby": "ロビーに行く",
     "lobby": "ロビー",
     "signIn": "ログイン",
-    "rooms": "ルーム",
-    "offices": "あなたのオフィス",
     "account": "アカウント",
     "createOffice": "オフィスを作る",
     "plansSoon": "もっと大きなチームには、席数の多いプランをまもなく用意します。"
@@ -159,11 +153,6 @@
     "visitLobby": "ロビーに行く",
     "invitedAsGuest": "ゲストとして招待されています。"
   },
-  "userMenu": {
-    "manageProfile": "プロフィールを管理",
-    "visitingAsGuest": "ゲストとして参加中",
-    "keepYourName": "名前とキャラクターを引き継ぐ"
-  },
   "room": {
     "connecting": "接続中...",
     "leave": "退出",
@@ -225,7 +214,6 @@
     "stopSharing": "共有を停止",
     "muteSpeaker": "スピーカーをミュート",
     "unmuteSpeaker": "スピーカーのミュートを解除",
-    "openChat": "チャットを開く",
     "settings": "設定",
     "leaveCall": "通話から退出",
     "leaveMeeting": "ミーティングを退出"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "前のキャラクター",
     "next": "次のキャラクター",
-    "select": "{name} を選択",
-    "keyHint": "← → キーを使います"
+    "select": "{name} を選択"
   },
   "notFound": {
     "title": "このルームは地図にありません。",
@@ -409,7 +396,6 @@
     "home": "ロビーに戻る"
   },
   "landings": {
-    "tryIt": "公開オフィスに入る",
     "create": "ルームを作成",
     "free": "無料、ブラウザで、アカウント不要。",
     "compare": "比較",
@@ -980,7 +966,6 @@
       "passwordRule": "8文字以上",
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
-      "pageTitle": "アカウント",
       "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
       "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。"
     },
@@ -995,7 +980,6 @@
       "joiningAs": "{name}（{email}）として参加します",
       "createAccount": "アカウントを作成",
       "signIn": "アカウントを持っています",
-      "needAccount": "ワークスペースに参加するにはアカウントが必要です。1 分で作れます。",
       "readyToJoin": "これで参加",
       "accountKeeps": "アカウントがあれば、{name} とキャラクターを次回も使えます。",
       "you": "あなた"
@@ -1079,7 +1063,6 @@
     "continue": "次へ",
     "create": "オフィスを作る",
     "creating": "準備しています",
-    "firstRoom": "メインフロア",
     "freePlan": "3人まで無料。カード不要です。",
     "accountNext": "次はアカウント作成。それでオフィスの準備は完了です。",
     "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。"
@@ -1134,7 +1117,6 @@
     "subtitle": "あなたのオフィスと、いま各フロアにいる人。",
     "onFloor": "{count, plural, =0 {フロアに誰もいません} other {フロアに#人}}",
     "newOffice": "新しいオフィス",
-    "newOfficeBody": "3人まで無料。フロア、チャット、通話。",
     "lobby": "公開ロビー",
     "lobbyBody": "ふらっと立ち寄って、いる人と会いましょう。",
     "emptyTitle": "最初のオフィスをつくる",
@@ -1158,7 +1140,6 @@
         "people": "在席状況",
         "guests": "ゲスト"
       },
-      "everyOffice": "すべてのオフィスに",
       "lobbyTitle": "ロビーは開いています",
       "lobbyBody": "自分のオフィスを作る前に、本物のフロアを歩いてみましょう。アカウントは不要です。",
       "menu": "メニュー",
@@ -1189,19 +1170,14 @@
         "インストール不要",
         "Cloudflare 上で動作"
       ],
-      "lobbyLine": "公開ロビーは今すぐ入れます。アカウントは不要です。",
       "lobbyCta": "入ってみる"
     },
     "features": {
       "proximity": {
-        "title": "歩いていって話そう。",
-        "muted": "リンクも予定調整も要りません。",
-        "body": "誰かに近づけば、通話はワンタップ。離れればフロアはまた静かに。デスクにちょっと立ち寄る感覚です。"
+        "muted": "リンクも予定調整も要りません。"
       },
       "meetings": {
-        "title": "座って会議。",
-        "muted": "立てば退出。",
-        "body": "グループ通話はテーブルで。座った人が参加し、カメラはサムネイルで軽く、誰でも画面を共有できます。"
+        "muted": "立てば退出。"
       },
       "chat": {
         "title": "残り続ける会話。",
@@ -1279,28 +1255,22 @@
       "muted": "一つのバーチャルオフィスに。",
       "items": {
         "screen": {
-          "title": "画面共有",
-          "body": "どの通話やミーティングでもウィンドウを共有。"
+          "title": "画面共有"
         },
         "whiteboard": {
-          "title": "ホワイトボード",
-          "body": "オフィスの壁にみんなで描き込み。"
+          "title": "ホワイトボード"
         },
         "music": {
-          "title": "音楽",
-          "body": "部屋のみんなに曲を流せます。"
+          "title": "音楽"
         },
         "noise": {
-          "title": "ノイズ除去",
-          "body": "端末上で動く任意のAIが、キーボード音や話し声を取り除きます。"
+          "title": "ノイズ除去"
         },
         "mobile": {
-          "title": "スマホで",
-          "body": "親指の下に現れるジョイスティック。"
+          "title": "スマホで"
         },
         "languages": {
-          "title": "18言語",
-          "body": "English や Español から 日本語、العربية まで。"
+          "title": "18言語"
         }
       },
       "also": "どのフロアにも"
@@ -1420,10 +1390,6 @@
       "theme": "テーマ",
       "language": "言語",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "一日じゅう、ひとつのフロアで。",
-      "muted": "最初のあいさつから最後の通話まで。"
     }
   }
 }

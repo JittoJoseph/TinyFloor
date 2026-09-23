@@ -10,7 +10,6 @@
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "dashboardTitle": "Dashboard",
-    "roomTitle": "Actieve ruimte",
     "notFoundTitle": "Pagina niet gevonden",
     "lobbyTitle": "De lobby",
     "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
@@ -26,17 +25,12 @@
     "close": "Sluiten",
     "guest": "Gast",
     "you": "Jij",
-    "justNow": "zojuist",
     "unknown": "Onbekend",
-    "peopleCount": "{count, plural, one {# persoon} other {# mensen}}",
     "dashboard": "Dashboard",
-    "questions": "Vragen",
     "signOut": "Uitloggen",
     "visitLobby": "Bezoek de lobby",
     "lobby": "Lobby",
     "signIn": "Inloggen",
-    "rooms": "Ruimtes",
-    "offices": "Je kantoren",
     "account": "Account",
     "createOffice": "Kantoor maken",
     "plansSoon": "Groter team? Abonnementen met meer plekken komen binnenkort."
@@ -159,11 +153,6 @@
     "visitLobby": "Bezoek de lobby",
     "invitedAsGuest": "Je bent uitgenodigd als gast."
   },
-  "userMenu": {
-    "manageProfile": "Profiel beheren",
-    "visitingAsGuest": "Op bezoek als gast",
-    "keepYourName": "Houd je naam en personage"
-  },
   "room": {
     "connecting": "Verbinden...",
     "leave": "Verlaten",
@@ -225,7 +214,6 @@
     "stopSharing": "Delen stoppen",
     "muteSpeaker": "Luidspreker dempen",
     "unmuteSpeaker": "Luidspreker aanzetten",
-    "openChat": "Chat openen",
     "settings": "Instellingen",
     "leaveCall": "Gesprek verlaten",
     "leaveMeeting": "Vergadering verlaten"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Vorig personage",
     "next": "Volgend personage",
-    "select": "{name} selecteren",
-    "keyHint": "Gebruik de pijltjestoetsen ← →"
+    "select": "{name} selecteren"
   },
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
@@ -409,7 +396,6 @@
     "home": "Terug naar de lobby"
   },
   "landings": {
-    "tryIt": "Naar het openbare kantoor",
     "create": "Ruimte maken",
     "free": "Gratis, in de browser, zonder account.",
     "compare": "Vergelijkingen",
@@ -980,7 +966,6 @@
       "passwordRule": "Minstens 8 tekens",
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
-      "pageTitle": "Je account",
       "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
       "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Je doet mee als {name} ({email})",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
-      "needAccount": "Je hebt een account nodig om lid te worden van een werkruimte. Dat duurt een minuut.",
       "readyToJoin": "Dat ben ik",
       "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
       "you": "Jij"
@@ -1079,7 +1063,6 @@
     "continue": "Verder",
     "create": "Kantoor maken",
     "creating": "Wordt klaargezet",
-    "firstRoom": "Hoofdverdieping",
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
     "accountNext": "Daarna: maak een account en je kantoor staat klaar.",
     "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>."
@@ -1134,7 +1117,6 @@
     "subtitle": "Je kantoren, en wie er nu op elke vloer is.",
     "onFloor": "{count, plural, =0 {Niemand op de vloer} other {# op de vloer}}",
     "newOffice": "Nieuw kantoor",
-    "newOfficeBody": "Drie mensen gratis. Een vloer, chat en bellen.",
     "lobby": "De openbare lobby",
     "lobbyBody": "Loop binnen en ontmoet wie er is.",
     "emptyTitle": "Begin je eerste kantoor",
@@ -1158,7 +1140,6 @@
         "people": "Aanwezigheid",
         "guests": "Gasten"
       },
-      "everyOffice": "In elk kantoor",
       "lobbyTitle": "De lobby is open",
       "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
       "menu": "Menu",
@@ -1189,19 +1170,14 @@
         "Niets te installeren",
         "Draait op Cloudflare"
       ],
-      "lobbyLine": "De openbare lobby is nu open. Geen account nodig.",
       "lobbyCta": "Loop binnen"
     },
     "features": {
       "proximity": {
-        "title": "Loop erheen om te praten.",
-        "muted": "Geen links, geen planning.",
-        "body": "Kom dicht bij iemand en een gesprek is één tik verwijderd. Loop verder en de vloer wordt weer stil, zoals even langs iemands bureau lopen."
+        "muted": "Geen links, geen planning."
       },
       "meetings": {
-        "title": "Ga zitten om te vergaderen.",
-        "muted": "Sta op om te gaan.",
-        "body": "Groepsgesprekken gebeuren aan een tafel. Wie daar zit, doet mee, camera's blijven licht als miniaturen en iedereen kan zijn scherm delen."
+        "muted": "Sta op om te gaan."
       },
       "chat": {
         "title": "Gesprekken die blijven.",
@@ -1279,28 +1255,22 @@
       "muted": "in één virtueel kantoor.",
       "items": {
         "screen": {
-          "title": "Scherm delen",
-          "body": "Deel een venster in elk gesprek of elke meeting."
+          "title": "Scherm delen"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Schets samen op de muur van het kantoor."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Muziek",
-          "body": "Zet een nummer op voor iedereen in de ruimte."
+          "title": "Muziek"
         },
         "noise": {
-          "title": "Ruisverwijdering",
-          "body": "Optionele AI op je apparaat haalt toetsenborden en geklets weg."
+          "title": "Ruisverwijdering"
         },
         "mobile": {
-          "title": "Op je telefoon",
-          "body": "Een joystick die onder je duim verschijnt."
+          "title": "Op je telefoon"
         },
         "languages": {
-          "title": "18 talen",
-          "body": "Van English en Español tot 日本語 en العربية."
+          "title": "18 talen"
         }
       },
       "also": "Ook op elke verdieping"
@@ -1420,10 +1390,6 @@
       "theme": "Thema",
       "language": "Taal",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Eén verdieping voor de hele dag,",
-      "muted": "van het eerste hallo tot het laatste gesprek."
     }
   }
 }

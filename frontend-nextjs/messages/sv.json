@@ -10,7 +10,6 @@
     "authTitle": "Logga in",
     "authDescription": "Logga in på TinyFloor för att behålla ditt namn, din karaktär och en lista över dina rum.",
     "dashboardTitle": "Översikt",
-    "roomTitle": "Aktivt rum",
     "notFoundTitle": "Sidan hittades inte",
     "lobbyTitle": "Lobbyn",
     "lobbyDescription": "Gå in i TinyFloors kostnadsfria, öppna lobby som gäst. Välj en figur, träffa folk och testa videosamtal på nära håll i webbläsaren.",
@@ -26,17 +25,12 @@
     "close": "Stäng",
     "guest": "Gäst",
     "you": "Du",
-    "justNow": "nyss",
     "unknown": "Okänt",
-    "peopleCount": "{count, plural, one {# person} other {# personer}}",
     "dashboard": "Översikt",
-    "questions": "Frågor",
     "signOut": "Logga ut",
     "visitLobby": "Besök lobbyn",
     "lobby": "Lobby",
     "signIn": "Logga in",
-    "rooms": "Rum",
-    "offices": "Dina kontor",
     "account": "Konto",
     "createOffice": "Skapa ett kontor",
     "plansSoon": "Större team? Planer med fler platser kommer snart."
@@ -159,11 +153,6 @@
     "visitLobby": "Besök lobbyn",
     "invitedAsGuest": "Du är inbjuden som gäst."
   },
-  "userMenu": {
-    "manageProfile": "Hantera profil",
-    "visitingAsGuest": "Besöker som gäst",
-    "keepYourName": "Behåll namn och figur"
-  },
   "room": {
     "connecting": "Ansluter...",
     "leave": "Lämna",
@@ -225,7 +214,6 @@
     "stopSharing": "Sluta dela",
     "muteSpeaker": "Stäng av högtalaren",
     "unmuteSpeaker": "Slå på högtalaren",
-    "openChat": "Öppna chatten",
     "settings": "Inställningar",
     "leaveCall": "Lämna samtalet",
     "leaveMeeting": "Lämna mötet"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Föregående karaktär",
     "next": "Nästa karaktär",
-    "select": "Välj {name}",
-    "keyHint": "Använd piltangenterna ← →"
+    "select": "Välj {name}"
   },
   "notFound": {
     "title": "Det här rummet finns inte på kartan.",
@@ -409,7 +396,6 @@
     "home": "Tillbaka till lobbyn"
   },
   "landings": {
-    "tryIt": "Gå in på det öppna kontoret",
     "create": "Skapa ett rum",
     "free": "Gratis, i webbläsaren, utan konto.",
     "compare": "Jämförelser",
@@ -980,7 +966,6 @@
       "passwordRule": "Minst 8 tecken",
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
       "cancel": "Avbryt",
-      "pageTitle": "Ditt konto",
       "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant på varje skärm. Inget laddas upp eller sparas.",
       "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Du går med som {name} ({email})",
       "createAccount": "Skapa ett konto",
       "signIn": "Jag har ett konto",
-      "needAccount": "Du behöver ett konto för att gå med i en arbetsyta. Det tar en minut.",
       "readyToJoin": "Det är jag",
       "accountKeeps": "Ett konto sparar {name} och din karaktär till nästa gång.",
       "you": "Du"
@@ -1079,7 +1063,6 @@
     "continue": "Vidare",
     "create": "Skapa kontor",
     "creating": "Gör i ordning",
-    "firstRoom": "Huvudplanet",
     "freePlan": "Gratis för upp till 3 personer. Inget kort.",
     "accountNext": "Sedan: skapa ett konto, så är kontoret klart.",
     "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället."
@@ -1134,7 +1117,6 @@
     "subtitle": "Dina kontor, och vem som är på varje golv just nu.",
     "onFloor": "{count, plural, =0 {Ingen på golvet} other {# på golvet}}",
     "newOffice": "Nytt kontor",
-    "newOfficeBody": "Tre personer gratis. Ett golv, chatt och samtal.",
     "lobby": "Den offentliga lobbyn",
     "lobbyBody": "Titta in och träffa den som är där.",
     "emptyTitle": "Starta ditt första kontor",
@@ -1158,7 +1140,6 @@
         "people": "Närvaro",
         "guests": "Gäster"
       },
-      "everyOffice": "I varje kontor",
       "lobbyTitle": "Lobbyn är öppen",
       "lobbyBody": "Gå runt på ett riktigt våningsplan innan du skapar ditt eget. Inget konto behövs.",
       "menu": "Meny",
@@ -1189,19 +1170,14 @@
         "Inget att installera",
         "Körs på Cloudflare"
       ],
-      "lobbyLine": "Den offentliga lobbyn är öppen just nu. Inget konto behövs.",
       "lobbyCta": "Gå in"
     },
     "features": {
       "proximity": {
-        "title": "Gå fram och prata.",
-        "muted": "Inga länkar, ingen bokning.",
-        "body": "Gå nära någon så är samtalet ett tryck bort. Gå därifrån så blir det tyst på planet igen, precis som när man tittar förbi någons skrivbord."
+        "muted": "Inga länkar, ingen bokning."
       },
       "meetings": {
-        "title": "Sätt dig för att mötas.",
-        "muted": "Res dig för att gå.",
-        "body": "Gruppsamtal sker vid ett bord. Alla som sitter där är med, kamerorna är lätta som miniatyrer och vem som helst kan dela sin skärm."
+        "muted": "Res dig för att gå."
       },
       "chat": {
         "title": "Samtal som finns kvar.",
@@ -1279,28 +1255,22 @@
       "muted": "i ett virtuellt kontor.",
       "items": {
         "screen": {
-          "title": "Skärmdelning",
-          "body": "Dela ett fönster i alla samtal och möten."
+          "title": "Skärmdelning"
         },
         "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Skissa tillsammans på kontorets vägg."
+          "title": "Whiteboard"
         },
         "music": {
-          "title": "Musik",
-          "body": "Sätt på en låt för alla i rummet."
+          "title": "Musik"
         },
         "noise": {
-          "title": "Brusborttagning",
-          "body": "Valfri AI på din enhet tar bort tangentbord och prat."
+          "title": "Brusborttagning"
         },
         "mobile": {
-          "title": "På mobilen",
-          "body": "En joystick som dyker upp under tummen."
+          "title": "På mobilen"
         },
         "languages": {
-          "title": "18 språk",
-          "body": "Från English och Español till 日本語 och العربية."
+          "title": "18 språk"
         }
       },
       "also": "Finns också på varje våning"
@@ -1420,10 +1390,6 @@
       "theme": "Tema",
       "language": "Språk",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Ett våningsplan för hela dagen,",
-      "muted": "från första hej till sista samtalet."
     }
   }
 }

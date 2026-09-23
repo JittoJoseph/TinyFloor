@@ -10,7 +10,6 @@
     "authTitle": "Connexion",
     "authDescription": "Connectez-vous à TinyFloor pour garder votre nom, votre personnage et la liste de vos salles.",
     "dashboardTitle": "Tableau de bord",
-    "roomTitle": "Salle active",
     "notFoundTitle": "Page introuvable",
     "lobbyTitle": "Le hall",
     "lobbyDescription": "Entrez en tant qu’invité dans le hall public et gratuit de TinyFloor. Choisissez un personnage, rencontrez du monde et essayez les appels vidéo de proximité dans votre navigateur.",
@@ -26,17 +25,12 @@
     "close": "Fermer",
     "guest": "Invité",
     "you": "Vous",
-    "justNow": "à l’instant",
     "unknown": "Inconnu",
-    "peopleCount": "{count, plural, one {# personne} other {# personnes}}",
     "dashboard": "Tableau de bord",
-    "questions": "Questions",
     "signOut": "Se déconnecter",
     "visitLobby": "Visiter le hall",
     "lobby": "Hall",
     "signIn": "Se connecter",
-    "rooms": "Salles",
-    "offices": "Vos bureaux",
     "account": "Compte",
     "createOffice": "Créer un bureau",
     "plansSoon": "Une équipe plus grande ? Des offres avec plus de places arrivent bientôt."
@@ -159,11 +153,6 @@
     "visitLobby": "Visiter le hall",
     "invitedAsGuest": "Vous êtes invité à entrer en tant qu’invité."
   },
-  "userMenu": {
-    "manageProfile": "Gérer le profil",
-    "visitingAsGuest": "En visite en tant qu’invité",
-    "keepYourName": "Gardez votre nom et votre personnage"
-  },
   "room": {
     "connecting": "Connexion...",
     "leave": "Quitter",
@@ -225,7 +214,6 @@
     "stopSharing": "Arrêter le partage",
     "muteSpeaker": "Couper le haut-parleur",
     "unmuteSpeaker": "Activer le haut-parleur",
-    "openChat": "Ouvrir le chat",
     "settings": "Paramètres",
     "leaveCall": "Quitter l’appel",
     "leaveMeeting": "Quitter la réunion"
@@ -400,8 +388,7 @@
   "characters": {
     "previous": "Personnage précédent",
     "next": "Personnage suivant",
-    "select": "Sélectionner {name}",
-    "keyHint": "Utilisez les flèches ← →"
+    "select": "Sélectionner {name}"
   },
   "notFound": {
     "title": "Cette salle n’est pas sur la carte.",
@@ -409,7 +396,6 @@
     "home": "Retour au hall"
   },
   "landings": {
-    "tryIt": "Entrer dans le bureau public",
     "create": "Créer une salle",
     "free": "Gratuit, dans le navigateur, sans compte.",
     "compare": "Comparatifs",
@@ -980,7 +966,6 @@
       "passwordRule": "Au moins 8 caractères",
       "signsOutOthers": "Vous restez connecté ici. Partout ailleurs, vous serez déconnecté.",
       "cancel": "Annuler",
-      "pageTitle": "Votre compte",
       "faceNote": "Votre visage est dessiné à partir de votre compte, le même sur chaque écran. Rien n'est envoyé ni stocké.",
       "themeNote": "Système suit votre appareil. Le choix est gardé dans ce navigateur."
     },
@@ -995,7 +980,6 @@
       "joiningAs": "Vous rejoignez en tant que {name} ({email})",
       "createAccount": "Créer un compte",
       "signIn": "J’ai un compte",
-      "needAccount": "Il faut un compte pour rejoindre un espace de travail. Cela prend une minute.",
       "readyToJoin": "C’est moi",
       "accountKeeps": "Un compte garde {name} et votre personnage pour la prochaine fois.",
       "you": "Vous"
@@ -1079,7 +1063,6 @@
     "continue": "Continuer",
     "create": "Créer le bureau",
     "creating": "Préparation",
-    "firstRoom": "Étage principal",
     "freePlan": "Gratuit jusqu’à 3 personnes. Sans carte.",
     "accountNext": "Ensuite : créez un compte, et votre bureau est prêt.",
     "justLooking": "Juste un coup d’œil ? <link>Entrez dans le bureau public</link> plutôt."
@@ -1134,7 +1117,6 @@
     "subtitle": "Vos bureaux, et qui est sur chaque étage en ce moment.",
     "onFloor": "{count, plural, =0 {Personne sur l'étage} other {# sur l'étage}}",
     "newOffice": "Nouveau bureau",
-    "newOfficeBody": "Trois personnes gratuites. Un étage, le chat et les appels.",
     "lobby": "Le hall public",
     "lobbyBody": "Passez et rencontrez qui est là.",
     "emptyTitle": "Créez votre premier bureau",
@@ -1158,7 +1140,6 @@
         "people": "Présence",
         "guests": "Invités"
       },
-      "everyOffice": "Dans chaque bureau",
       "lobbyTitle": "Le hall est ouvert",
       "lobbyBody": "Promenez-vous sur un vrai étage avant de créer le vôtre. Aucun compte requis.",
       "menu": "Menu",
@@ -1189,19 +1170,14 @@
         "Rien à installer",
         "Fonctionne sur Cloudflare"
       ],
-      "lobbyLine": "Le hall public est ouvert en ce moment. Aucun compte requis.",
       "lobbyCta": "Entrer"
     },
     "features": {
       "proximity": {
-        "title": "Approchez-vous pour parler.",
-        "muted": "Sans lien, sans planning.",
-        "body": "Approchez-vous de quelqu'un et un appel est à un toucher. Éloignez-vous et l'étage redevient calme, comme quand on passe voir un collègue à son bureau."
+        "muted": "Sans lien, sans planning."
       },
       "meetings": {
-        "title": "Asseyez-vous pour une réunion.",
-        "muted": "Levez-vous pour partir.",
-        "body": "Les appels de groupe se font autour d'une table. Tous ceux qui y sont assis rejoignent l'appel, les caméras restent légères en miniatures, et chacun peut partager son écran."
+        "muted": "Levez-vous pour partir."
       },
       "chat": {
         "title": "Des conversations qui restent.",
@@ -1279,28 +1255,22 @@
       "muted": "dans un seul bureau virtuel.",
       "items": {
         "screen": {
-          "title": "Partage d'écran",
-          "body": "Partagez une fenêtre dans n'importe quel appel ou réunion."
+          "title": "Partage d'écran"
         },
         "whiteboard": {
-          "title": "Tableau blanc",
-          "body": "Dessinez ensemble sur le mur du bureau."
+          "title": "Tableau blanc"
         },
         "music": {
-          "title": "Musique",
-          "body": "Lancez un morceau pour tout le monde dans la pièce."
+          "title": "Musique"
         },
         "noise": {
-          "title": "Suppression du bruit",
-          "body": "Une IA optionnelle sur votre appareil retire clavier et bavardages."
+          "title": "Suppression du bruit"
         },
         "mobile": {
-          "title": "Sur votre téléphone",
-          "body": "Un joystick qui apparaît sous votre pouce."
+          "title": "Sur votre téléphone"
         },
         "languages": {
-          "title": "18 langues",
-          "body": "De English et Español à 日本語 et العربية."
+          "title": "18 langues"
         }
       },
       "also": "Aussi sur chaque étage"
@@ -1420,10 +1390,6 @@
       "theme": "Thème",
       "language": "Langue",
       "rights": "© {year} TinyFloor"
-    },
-    "days": {
-      "title": "Un étage pour toute la journée,",
-      "muted": "du premier bonjour au dernier appel."
     }
   }
 }

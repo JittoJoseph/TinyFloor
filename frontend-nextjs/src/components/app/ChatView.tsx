@@ -479,7 +479,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-export function Row({
+function Row({
   href,
   onClick,
   active,
@@ -589,7 +589,7 @@ function NewChannel({ onMade, trigger }: { onMade: (id: string) => void; trigger
 }
 
 /** Who someone is, from a face or a name anywhere in chat. */
-export function PersonCard({
+function PersonCard({
   id,
   name,
   detail,

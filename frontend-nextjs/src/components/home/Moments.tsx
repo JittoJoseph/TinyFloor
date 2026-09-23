@@ -26,7 +26,7 @@ const CHIP = cn(
 
 const KEYFRAMES =
   // The other way: the messages piling up one after another.
-  "@keyframes m-pile{0%,4%{opacity:0;translate:0 10px}10%,92%{opacity:1;translate:0 0}98%,100%{opacity:0}}" +
+  "@keyframes m-pile{0%,3%{opacity:0;translate:0 10px}8%,93%{opacity:1;translate:0 0}98%,100%{opacity:0}}" +
   "@keyframes m-type{0%{width:0}45%,100%{width:var(--chars)}}" +
   "@keyframes m-swap{0%,55%{opacity:1}60%,92%{opacity:0}100%{opacity:1}}" +
   "@keyframes m-toast{0%,30%{opacity:0;translate:0 -6px}38%,85%{opacity:1;translate:0 0}93%,100%{opacity:0;translate:0 -6px}}" +
@@ -83,16 +83,16 @@ export function Moments() {
         <Heading title={t("title")} muted={t("muted")} />
         <p className="max-w-[30rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("body")}</p>
       </div>
-      <div className="mt-12 grid gap-3 lg:mt-14 lg:grid-cols-2">
+      <div className="mt-12 grid grid-cols-1 gap-3 lg:mt-14 lg:grid-cols-2">
         {/* The way it usually goes. */}
         <div className="flex flex-col rounded-[28px] bg-muted/60 p-6 sm:p-8">
           <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-muted-foreground")}>{t("before.label")}</p>
-          <ol className="mt-6 grid gap-2">
+          <ol className="mt-6 grid grid-cols-1 gap-2">
             {notices.map((one, index) => (
               <li
                 key={one.title}
                 className={cn(APP, "flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-[0_1px_2px_rgb(0_0_0/0.04)]")}
-                style={{ animation: `m-pile 10s ease-out ${index * 0.9}s infinite both` }}
+                style={{ animation: `m-pile 10s ease-out ${index * 0.35}s infinite both` }}
               >
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-4">{NOTICE_ICONS[index]}</span>
                 <span className="min-w-0 flex-1">
@@ -103,7 +103,7 @@ export function Moments() {
               </li>
             ))}
           </ol>
-          <p className="mt-auto flex items-center gap-2 text-pretty pt-8 text-[15px] text-muted-foreground">
+          <p className="mt-auto flex items-center gap-2 text-balance pt-8 text-[15px] text-muted-foreground">
             <Clock3 className="size-4 shrink-0" />
             {t("before.result")}
           </p>
@@ -114,7 +114,7 @@ export function Moments() {
           <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-brand")}>{t("after.label")}</p>
           {/* The real floor, zoomed out: you walk along the desks to Jack's, and a click on the bar beside him starts the call. */}
           <FloorScene
-            view={[25, 8.5, 19, 11]}
+            view={[24, 8.5, 19, 11]}
             className="mt-6 h-[260px] rounded-[20px] sm:h-[288px]"
             sitting={[
               { ...PEOPLE.jack, chair: [34, 16], status: "available" },

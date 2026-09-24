@@ -977,15 +977,14 @@
       "googleConnected": "Koblet til",
       "sections": {
         "profile": "Profil",
-        "character": "Figur",
         "signin": "Innlogging",
         "appearance": "Utseende"
       },
       "profileNote": "Navnet og lenken din, uansett hvor du går inn.",
-      "preview": "Dette ser andre",
-      "noLink": "Ingen lenke ennå",
       "password": "Passord",
-      "passwordSet": "Logg inn med e-post og passord."
+      "passwordSet": "Logg inn med e-post og passord.",
+      "faceNote": "Ansiktet ditt tegnes ut fra kontoen din, likt overalt. Ingenting lastes opp.",
+      "signOutNote": "Logg ut av TinyFloor i denne nettleseren."
     },
     "invite": {
       "invalidTitle": "Invitasjonen virker ikke",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nytt kontor",
-    "lobby": "Den offentlige lobbyen",
-    "lobbyBody": "Stikk innom og møt dem som er der.",
     "emptyTitle": "Start ditt første kontor",
     "emptyBody": "Et kontor er et gulv teamet ditt går rundt på, med chat og samtaler innebygd. Tre medlemmer er gratis.",
     "walkIn": "Gå inn",
     "home": "Hjem",
-    "editProfile": "Rediger profil",
     "yourOffices": "Kontorene dine",
     "invite": "Inviter folk",
-    "officeSettings": "Kontorinnstillinger",
-    "firstIn": "Ingen er her ennå. Gå inn og bli den første.",
-    "notIn": "{count} ikke her",
-    "inviteTeam": "Inviter teamet ditt",
-    "makeOffice": "Lag kontoret ditt"
+    "firstIn": "Ingen er her akkurat nå. De som går inn, vises her.",
+    "makeOffice": "Lag kontoret ditt",
+    "inNow": "{count, plural, =0 {Ingen her} other {# her nå}}",
+    "inOffice": "På kontoret",
+    "team": "Team",
+    "seats": "{used} av {seats} plasser",
+    "manage": "Administrer",
+    "seeAll": "Se alle",
+    "lobbyNote": "Lyst til å møte nye folk? Stikk innom den åpne lobbyen"
   },
   "home": {
     "nav": {

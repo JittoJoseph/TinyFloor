@@ -977,15 +977,14 @@
       "googleConnected": "Yhdistetty",
       "sections": {
         "profile": "Profiili",
-        "character": "Hahmo",
         "signin": "Kirjautuminen",
         "appearance": "Ulkoasu"
       },
       "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
-      "preview": "Mitä muut näkevät",
-      "noLink": "Ei vielä linkkiä",
       "password": "Salasana",
-      "passwordSet": "Kirjaudu sähköpostilla ja salasanalla."
+      "passwordSet": "Kirjaudu sähköpostilla ja salasanalla.",
+      "faceNote": "Kasvosi piirretään tilistäsi, samanlaisina kaikkialla. Mitään ei ladata.",
+      "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa."
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",
-    "lobby": "Julkinen aula",
-    "lobbyBody": "Poikkea ja tapaa, kuka paikalla on.",
     "emptyTitle": "Aloita ensimmäinen toimistosi",
     "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi.",
     "walkIn": "Kävele sisään",
     "home": "Koti",
-    "editProfile": "Muokkaa profiilia",
     "yourOffices": "Toimistosi",
     "invite": "Kutsu ihmisiä",
-    "officeSettings": "Toimiston asetukset",
-    "firstIn": "Ketään ei ole vielä paikalla. Astu sisään ensimmäisenä.",
-    "notIn": "{count} poissa",
-    "inviteTeam": "Kutsu tiimisi",
-    "makeOffice": "Tee toimistosi"
+    "firstIn": "Ketään ei ole nyt paikalla. Sisään tulevat näkyvät tässä.",
+    "makeOffice": "Tee toimistosi",
+    "inNow": "{count, plural, =0 {Ei ketään} other {# paikalla}}",
+    "inOffice": "Toimistolla",
+    "team": "Tiimi",
+    "seats": "{used}/{seats} paikkaa",
+    "manage": "Hallitse",
+    "seeAll": "Näytä kaikki",
+    "lobbyNote": "Haluatko tavata uusia ihmisiä? Poikkea julkiseen aulaan"
   },
   "home": {
     "nav": {

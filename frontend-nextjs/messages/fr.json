@@ -977,15 +977,14 @@
       "googleConnected": "Associé",
       "sections": {
         "profile": "Profil",
-        "character": "Personnage",
         "signin": "Connexion",
         "appearance": "Apparence"
       },
       "profileNote": "Votre nom et votre lien, partout où vous entrez.",
-      "preview": "Ce que les autres voient",
-      "noLink": "Pas encore de lien",
       "password": "Mot de passe",
-      "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe."
+      "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe.",
+      "faceNote": "Votre visage est dessiné à partir de votre compte, le même partout. Rien n’est envoyé.",
+      "signOutNote": "Déconnectez-vous de TinyFloor dans ce navigateur."
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nouveau bureau",
-    "lobby": "Le hall public",
-    "lobbyBody": "Passez et rencontrez qui est là.",
     "emptyTitle": "Créez votre premier bureau",
     "emptyBody": "Un bureau est un étage où votre équipe se promène, avec chat et appels intégrés. Trois membres sont gratuits.",
     "walkIn": "Entrer",
     "home": "Accueil",
-    "editProfile": "Modifier le profil",
     "yourOffices": "Vos bureaux",
     "invite": "Inviter des gens",
-    "officeSettings": "Réglages du bureau",
-    "firstIn": "Personne pour l’instant. Entrez, vous serez le premier.",
-    "notIn": "{count} absents",
-    "inviteTeam": "Invitez votre équipe",
-    "makeOffice": "Créer votre bureau"
+    "firstIn": "Personne pour l’instant. Quand quelqu’un entre, il apparaît ici.",
+    "makeOffice": "Créer votre bureau",
+    "inNow": "{count, plural, =0 {Personne} other {# présents}}",
+    "inOffice": "Au bureau",
+    "team": "Équipe",
+    "seats": "{used} sur {seats} places",
+    "manage": "Gérer",
+    "seeAll": "Voir tout le monde",
+    "lobbyNote": "Envie de rencontrer du monde ? Passez par le hall public"
   },
   "home": {
     "nav": {

@@ -977,15 +977,14 @@
       "googleConnected": "Conectado",
       "sections": {
         "profile": "Perfil",
-        "character": "Personagem",
         "signin": "Iniciar sessão",
         "appearance": "Aparência"
       },
       "profileNote": "O seu nome e o seu link, onde quer que entre.",
-      "preview": "O que os outros veem",
-      "noLink": "Ainda sem link",
       "password": "Palavra-passe",
-      "passwordSet": "Inicie sessão com o seu email e palavra-passe."
+      "passwordSet": "Inicie sessão com o seu email e palavra-passe.",
+      "faceNote": "O seu rosto é desenhado a partir da sua conta, igual em todo o lado. Nada é carregado.",
+      "signOutNote": "Termine a sessão no TinyFloor neste navegador."
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Novo escritório",
-    "lobby": "O saguão público",
-    "lobbyBody": "Passe por lá e conheça quem estiver.",
     "emptyTitle": "Comece seu primeiro escritório",
     "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis.",
     "walkIn": "Entrar",
     "home": "Início",
-    "editProfile": "Editar perfil",
     "yourOffices": "Os seus escritórios",
     "invite": "Convidar pessoas",
-    "officeSettings": "Definições do escritório",
-    "firstIn": "Ainda não há ninguém. Entre e seja o primeiro.",
-    "notIn": "{count} fora",
-    "inviteTeam": "Convide a sua equipa",
-    "makeOffice": "Crie o seu escritório"
+    "firstIn": "Não está ninguém agora. Quem entrar aparece aqui.",
+    "makeOffice": "Crie o seu escritório",
+    "inNow": "{count, plural, =0 {Ninguém} other {# agora}}",
+    "inOffice": "No escritório",
+    "team": "Equipa",
+    "seats": "{used} de {seats} lugares",
+    "manage": "Gerir",
+    "seeAll": "Ver todos",
+    "lobbyNote": "Quer conhecer pessoas novas? Passe pelo átrio público"
   },
   "home": {
     "nav": {

@@ -6,6 +6,7 @@ import { VT323, Nunito, Caveat, Geist } from "next/font/google";
 import "./globals.css";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localeDirection } from "@/lib/i18n/routing";
@@ -116,7 +117,10 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            {children}
+            <GoogleOneTap />
+          </AuthProvider>
         </NextIntlClientProvider>
         <GoogleAnalytics />
         <ClarityAnalytics />

@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Sign in",
-    "tabSignUp": "Create account",
-    "chooseMode": "Sign in or create an account",
     "continueWithGoogle": "Continue with Google",
     "or": "or",
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
-    "signUpSubtitle": "Your name, your email, a password. That's all it takes.",
-    "name": "Your name",
-    "namePlaceholder": "How people will see you",
+    "signUpSubtitle": "An email and a password is all it takes.",
     "email": "Email",
     "emailPlaceholder": "you@company.com",
     "password": "Password",
@@ -115,7 +110,6 @@
     "createOne": "Create an account",
     "haveAccount": "Already have an account?",
     "signInInstead": "Sign in instead",
-    "guestCarryOver": "You're visiting as {name}. Your name comes with you.",
     "continueGuest": "Just looking? Visit the lobby as a guest",
     "errors": {
       "wrong_credentials": "That email and password don't match. Try again.",
@@ -134,11 +128,7 @@
       "google_failed": "Google sign-in didn't go through. Try again.",
       "google_unverified": "Verify your email with Google first, then try again.",
       "google_mismatch": "This email is linked to a different Google account."
-    },
-    "asideReady": "{office} is almost ready",
-    "asideTitle": "Your team, one floor away",
-    "asideSignIn": "Welcome back to the floor",
-    "asideBody": "Walk up to someone to talk. Channels and messages stay."
+    }
   },
   "entry": {
     "yourName": "Your name",
@@ -150,7 +140,9 @@
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
     "copyInvite": "Copy invite link",
     "continue": "Continue",
-    "walkingInAs": "Walking in as {name}"
+    "walkingInAs": "Walking in as {name}",
+    "introTitle": "Before you walk in",
+    "introSubtitle": "What should people call you, and who will you be on the floor?"
   },
   "join": {
     "unavailableTitle": "That door does not open.",

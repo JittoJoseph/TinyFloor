@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "تسجيل الدخول",
-    "tabSignUp": "إنشاء حساب",
-    "chooseMode": "سجّل الدخول أو أنشئ حسابًا",
     "continueWithGoogle": "المتابعة باستخدام Google",
     "or": "أو",
     "signInTitle": "مرحبًا بعودتك",
     "signInSubtitle": "سجّل الدخول للعودة إلى مكتب فريقك.",
     "signUpTitle": "أنشئ حسابك",
-    "signUpSubtitle": "اسمك وبريدك وكلمة مرور. هذا كل شيء.",
-    "name": "اسمك",
-    "namePlaceholder": "الاسم الذي يراه الآخرون",
+    "signUpSubtitle": "كل ما تحتاجه بريد إلكتروني وكلمة مرور.",
     "email": "البريد الإلكتروني",
     "emailPlaceholder": "you@company.com",
     "password": "كلمة المرور",
@@ -115,7 +110,6 @@
     "createOne": "أنشئ حسابًا",
     "haveAccount": "لديك حساب بالفعل؟",
     "signInInstead": "سجّل الدخول بدلًا من ذلك",
-    "guestCarryOver": "أنت زائر باسم {name}. اسمك يأتي معك.",
     "continueGuest": "تتصفح فقط؟ زر الردهة كضيف",
     "errors": {
       "wrong_credentials": "البريد الإلكتروني وكلمة المرور غير متطابقين. حاول مرة أخرى.",
@@ -134,11 +128,7 @@
       "google_failed": "لم يكتمل تسجيل الدخول باستخدام Google. حاول مرة أخرى.",
       "google_unverified": "تحقّق من بريدك الإلكتروني لدى Google أولًا، ثم حاول مرة أخرى.",
       "google_mismatch": "هذا البريد الإلكتروني مرتبط بحساب Google آخر."
-    },
-    "asideReady": "{office} جاهز تقريبًا",
-    "asideTitle": "فريقك على بُعد طابق واحد",
-    "asideSignIn": "مرحبًا بعودتك إلى الطابق",
-    "asideBody": "امشِ إلى أحدهم لتتحدث. تبقى القنوات والرسائل."
+    }
   },
   "entry": {
     "yourName": "اسمك",
@@ -150,7 +140,9 @@
     "guestNote": "ستدخل كضيف. <link>سجّل الدخول</link> لاستخدام حسابك.",
     "copyInvite": "نسخ رابط الدعوة",
     "continue": "متابعة",
-    "walkingInAs": "تدخل باسم {name}"
+    "walkingInAs": "تدخل باسم {name}",
+    "introTitle": "قبل أن تدخل",
+    "introSubtitle": "بمَ يناديك الآخرون، ومن ستكون في الطابق؟"
   },
   "join": {
     "unavailableTitle": "هذا الباب لا يُفتح.",

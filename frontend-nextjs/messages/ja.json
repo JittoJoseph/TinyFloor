@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "ログイン",
-    "tabSignUp": "アカウント作成",
-    "chooseMode": "ログインまたはアカウント作成",
     "continueWithGoogle": "Google で続ける",
     "or": "または",
     "signInTitle": "おかえりなさい",
     "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
     "signUpTitle": "アカウントを作成",
-    "signUpSubtitle": "名前、メール、パスワード。それだけです。",
-    "name": "名前",
-    "namePlaceholder": "ほかの人に表示される名前",
+    "signUpSubtitle": "必要なのはメールアドレスとパスワードだけです。",
     "email": "メールアドレス",
     "emailPlaceholder": "you@company.com",
     "password": "パスワード",
@@ -115,7 +110,6 @@
     "createOne": "アカウントを作成",
     "haveAccount": "すでにアカウントをお持ちですか？",
     "signInInstead": "ログインする",
-    "guestCarryOver": "{name} として来ています。その名前はそのまま使えます。",
     "continueGuest": "見てみるだけ？ゲストとしてロビーに入る",
     "errors": {
       "wrong_credentials": "メールアドレスとパスワードが一致しません。もう一度お試しください。",
@@ -134,11 +128,7 @@
       "google_failed": "Google でのログインに失敗しました。もう一度お試しください。",
       "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
       "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
-    },
-    "asideReady": "{office} はもうすぐ完成です",
-    "asideTitle": "チームまで、フロアひとつ",
-    "asideSignIn": "おかえりなさい",
-    "asideBody": "話したい人のところへ歩いていくだけ。チャンネルとメッセージは残ります。"
+    }
   },
   "entry": {
     "yourName": "あなたの名前",
@@ -150,7 +140,9 @@
     "guestNote": "ゲストとして入ります。<link>ログイン</link>するとアカウントを使えます。",
     "copyInvite": "招待リンクをコピー",
     "continue": "次へ",
-    "walkingInAs": "{name} として入ります"
+    "walkingInAs": "{name} として入ります",
+    "introTitle": "入る前に",
+    "introSubtitle": "なんと呼ばれたいですか？フロアではどのキャラクターにしますか？"
   },
   "join": {
     "unavailableTitle": "このドアは開きません。",

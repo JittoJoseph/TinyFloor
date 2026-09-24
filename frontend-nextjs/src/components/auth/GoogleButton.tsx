@@ -11,7 +11,7 @@ import { Loader2 } from "lucide-react";
  * for each language. Shown only when a client ID is configured.
  */
 
-const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+export const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 const SCRIPT = "https://accounts.google.com/gsi/client";
 
 type CodeClient = { requestCode: () => void };
@@ -24,22 +24,37 @@ type OAuth2 = {
     error_callback?: (error: { type: string }) => void;
   }) => CodeClient;
 };
+/** One Tap: the account chooser Google shows in the corner, answering with a signed ID token. */
+export type GoogleId = {
+  initialize: (config: {
+    client_id: string;
+    callback: (response: { credential?: string }) => void;
+    auto_select?: boolean;
+    cancel_on_tap_outside?: boolean;
+    context?: "signin" | "signup" | "use";
+    itp_support?: boolean;
+    use_fedcm_for_prompt?: boolean;
+  }) => void;
+  prompt: () => void;
+  cancel: () => void;
+};
+type GoogleAccounts = { oauth2: OAuth2; id: GoogleId };
 
 declare global {
   interface Window {
-    google?: { accounts?: { oauth2?: OAuth2 } };
+    google?: { accounts?: GoogleAccounts };
   }
 }
 
-let loading: Promise<OAuth2> | null = null;
+let loading: Promise<GoogleAccounts> | null = null;
 
-/** Loads Google's script once, the first time a button needs it. */
-function loadGoogle(): Promise<OAuth2> {
-  loading ??= new Promise<OAuth2>((resolve, reject) => {
+/** Loads Google's script once, the first time a button or One Tap needs it. */
+export function loadGoogle(): Promise<GoogleAccounts> {
+  loading ??= new Promise<GoogleAccounts>((resolve, reject) => {
     const script = document.createElement("script");
     script.src = SCRIPT;
     script.async = true;
-    script.onload = () => (window.google?.accounts?.oauth2 ? resolve(window.google.accounts.oauth2) : reject(new Error("gsi")));
+    script.onload = () => (window.google?.accounts?.oauth2 ? resolve(window.google.accounts) : reject(new Error("gsi")));
     script.onerror = () => {
       loading = null; // the next button can try again
       reject(new Error("gsi"));
@@ -76,7 +91,7 @@ export function GoogleButton({
     if (!CLIENT_ID) return;
     let cancelled = false;
     loadGoogle().then(
-      (oauth2) => {
+      ({ oauth2 }) => {
         if (cancelled) return;
         client.current = oauth2.initCodeClient({
           client_id: CLIENT_ID,

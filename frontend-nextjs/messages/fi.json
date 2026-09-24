@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Kirjaudu",
-    "tabSignUp": "Luo tili",
-    "chooseMode": "Kirjaudu sisään tai luo tili",
     "continueWithGoogle": "Jatka Googlella",
     "or": "tai",
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
-    "signUpSubtitle": "Nimesi, sähköpostisi ja salasana. Siinä kaikki.",
-    "name": "Nimesi",
-    "namePlaceholder": "Näin muut näkevät sinut",
+    "signUpSubtitle": "Tarvitaan vain sähköposti ja salasana.",
     "email": "Sähköposti",
     "emailPlaceholder": "sina@yritys.fi",
     "password": "Salasana",
@@ -115,7 +110,6 @@
     "createOne": "Luo tili",
     "haveAccount": "Onko sinulla jo tili?",
     "signInInstead": "Kirjaudu sen sijaan",
-    "guestCarryOver": "Olet vierailulla nimellä {name}. Nimesi tulee mukaan.",
     "continueGuest": "Katseletko vain? Vieraile aulassa vieraana",
     "errors": {
       "wrong_credentials": "Sähköposti ja salasana eivät täsmää. Yritä uudelleen.",
@@ -134,11 +128,7 @@
       "google_failed": "Kirjautuminen Googlella ei onnistunut. Yritä uudelleen.",
       "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
       "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
-    },
-    "asideReady": "{office} on melkein valmis",
-    "asideTitle": "Tiimisi, yhden kerroksen päässä",
-    "asideSignIn": "Tervetuloa takaisin kerrokseen",
-    "asideBody": "Kävele jonkun luo juttelemaan. Kanavat ja viestit säilyvät."
+    }
   },
   "entry": {
     "yourName": "Nimesi",
@@ -150,7 +140,9 @@
     "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
     "copyInvite": "Kopioi kutsulinkki",
     "continue": "Jatka",
-    "walkingInAs": "Astut sisään nimellä {name}"
+    "walkingInAs": "Astut sisään nimellä {name}",
+    "introTitle": "Ennen kuin astut sisään",
+    "introSubtitle": "Millä nimellä muut kutsuvat sinua, ja kuka olet kerroksessa?"
   },
   "join": {
     "unavailableTitle": "Tämä ovi ei aukea.",

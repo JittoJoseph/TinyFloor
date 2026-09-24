@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Logg inn",
-    "tabSignUp": "Opprett konto",
-    "chooseMode": "Logg inn eller opprett en konto",
     "continueWithGoogle": "Fortsett med Google",
     "or": "eller",
     "signInTitle": "Velkommen tilbake",
     "signInSubtitle": "Logg inn for å komme tilbake til teamets kontor.",
     "signUpTitle": "Opprett kontoen din",
-    "signUpSubtitle": "Navnet ditt, e-posten din, et passord. Ikke mer.",
-    "name": "Navnet ditt",
-    "namePlaceholder": "Slik ser andre deg",
+    "signUpSubtitle": "En e-post og et passord er alt som trengs.",
     "email": "E-post",
     "emailPlaceholder": "deg@firma.no",
     "password": "Passord",
@@ -115,7 +110,6 @@
     "createOne": "Opprett en konto",
     "haveAccount": "Har du allerede en konto?",
     "signInInstead": "Logg inn i stedet",
-    "guestCarryOver": "Du er på besøk som {name}. Navnet ditt blir med.",
     "continueGuest": "Vil du bare se deg rundt? Besøk lobbyen som gjest",
     "errors": {
       "wrong_credentials": "E-post og passord stemmer ikke. Prøv igjen.",
@@ -134,11 +128,7 @@
       "google_failed": "Innloggingen med Google gikk ikke gjennom. Prøv igjen.",
       "google_unverified": "Bekreft e-postadressen din hos Google først, og prøv så igjen.",
       "google_mismatch": "Denne e-postadressen er knyttet til en annen Google-konto."
-    },
-    "asideReady": "{office} er nesten klart",
-    "asideTitle": "Teamet ditt, én etasje unna",
-    "asideSignIn": "Velkommen tilbake til etasjen",
-    "asideBody": "Gå bort til noen for å snakke. Kanaler og meldinger blir værende."
+    }
   },
   "entry": {
     "yourName": "Navnet ditt",
@@ -150,7 +140,9 @@
     "guestNote": "Du går inn som gjest. <link>Logg inn</link> for å bruke kontoen din.",
     "copyInvite": "Kopier invitasjonslenke",
     "continue": "Videre",
-    "walkingInAs": "Du går inn som {name}"
+    "walkingInAs": "Du går inn som {name}",
+    "introTitle": "Før du går inn",
+    "introSubtitle": "Hva skal andre kalle deg, og hvem er du på etasjen?"
   },
   "join": {
     "unavailableTitle": "Den døren åpner seg ikke.",

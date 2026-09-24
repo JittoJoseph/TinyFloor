@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Log ind",
-    "tabSignUp": "Opret konto",
-    "chooseMode": "Log ind eller opret en konto",
     "continueWithGoogle": "Fortsæt med Google",
     "or": "eller",
     "signInTitle": "Velkommen tilbage",
     "signInSubtitle": "Log ind for at komme tilbage til dit teams kontor.",
     "signUpTitle": "Opret din konto",
-    "signUpSubtitle": "Dit navn, din e-mail, en adgangskode. Mere skal der ikke til.",
-    "name": "Dit navn",
-    "namePlaceholder": "Sådan ser andre dig",
+    "signUpSubtitle": "En e-mail og en adgangskode er alt, der skal til.",
     "email": "E-mail",
     "emailPlaceholder": "dig@firma.dk",
     "password": "Adgangskode",
@@ -115,7 +110,6 @@
     "createOne": "Opret en konto",
     "haveAccount": "Har du allerede en konto?",
     "signInInstead": "Log ind i stedet",
-    "guestCarryOver": "Du er på besøg som {name}. Dit navn følger med.",
     "continueGuest": "Vil du bare kigge? Besøg lobbyen som gæst",
     "errors": {
       "wrong_credentials": "E-mail og adgangskode passer ikke sammen. Prøv igen.",
@@ -134,11 +128,7 @@
       "google_failed": "Login med Google gik ikke igennem. Prøv igen.",
       "google_unverified": "Bekræft først din e-mail hos Google, og prøv så igen.",
       "google_mismatch": "Denne e-mail er knyttet til en anden Google-konto."
-    },
-    "asideReady": "{office} er næsten klar",
-    "asideTitle": "Dit team, én etage væk",
-    "asideSignIn": "Velkommen tilbage på etagen",
-    "asideBody": "Gå hen til nogen for at snakke. Kanaler og beskeder bliver."
+    }
   },
   "entry": {
     "yourName": "Dit navn",
@@ -150,7 +140,9 @@
     "guestNote": "Du går ind som gæst. <link>Log ind</link> for at bruge din konto.",
     "copyInvite": "Kopiér invitationslink",
     "continue": "Videre",
-    "walkingInAs": "Går ind som {name}"
+    "walkingInAs": "Går ind som {name}",
+    "introTitle": "Før du går ind",
+    "introSubtitle": "Hvad skal andre kalde dig, og hvem er du på etagen?"
   },
   "join": {
     "unavailableTitle": "Den dør kan ikke åbnes.",

@@ -133,7 +133,9 @@ export function FloorScene({
           height={MAP.height * TILE_PX}
           alt=""
           draggable={false}
-          loading={priority ? "eager" : "lazy"}
+          // Every scene draws this same small file, so it is fetched once; lazy would
+          // save nothing, and inside a scrolling panel the browser may never load it.
+          loading="eager"
           fetchPriority={priority ? "high" : "auto"}
           decoding="async"
           className="absolute inset-0 size-full select-none [image-rendering:pixelated]"

@@ -901,14 +901,6 @@
         "messages": "Privéberichten",
         "guests": "Gastlinks"
       },
-      "channels": {
-        "general": "algemeen",
-        "projects": "projecten",
-        "random": "overig"
-      },
-      "freeSeat": "Vrije plek",
-      "you": "Jij",
-      "teammate": "Teamgenoot",
       "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Terug naar je kantoren"
   },
   "create": {
-    "eyebrow": "Je eigen kantoor",
     "title": "Geef je kantoor een naam",
-    "subtitle": "Dit ziet je team. Je kunt het later aanpassen.",
+    "subtitle": "Dit ziet je team elke dag bovenaan de balk.",
     "nameLabel": "Naam van het kantoor",
     "namePlaceholder": "Acme Studio",
-    "continue": "Verder",
-    "create": "Kantoor maken",
+    "create": "Mijn kantoor maken",
     "creating": "Wordt klaargezet",
     "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
-    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>.",
-    "steps": [
-      "Geef een naam",
-      "Maak een account",
-      "Loop binnen"
-    ],
-    "asideTitle": "Je kantoor, klaar in een minuut",
-    "asideBody": "Een eigen verdieping voor je team, met chat en vergadertafels. Gratis voor maximaal 3 mensen."
+    "makeNamed": "{name} maken",
+    "seatsFree": "1 van 3 leden · Gratis",
+    "firstIn": "{name}, als eerste binnen",
+    "continue": "Verder"
   },
   "shell": {
     "floor": "Vloer",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",
-    "emptyTitle": "Begin je eerste kantoor",
-    "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis.",
     "walkIn": "Naar binnen",
     "home": "Home",
     "yourOffices": "Je kantoren",
     "invite": "Mensen uitnodigen",
     "firstIn": "Er is nu niemand. Wie binnenloopt, verschijnt hier.",
-    "makeOffice": "Maak je kantoor",
     "inNow": "{count, plural, =0 {Niemand binnen} other {# nu binnen}}",
     "inOffice": "Op kantoor",
     "team": "Team",
     "seats": "{used} van {seats} plekken",
     "manage": "Beheren",
     "seeAll": "Iedereen bekijken",
-    "lobbyNote": "Zin om nieuwe mensen te ontmoeten? Loop de openbare lobby binnen",
-    "anotherOffice": "Nog een team? Maak een nieuw kantoor"
+    "lobbyNote": "Of loop de openbare lobby binnen en ontmoet mensen",
+    "anotherOffice": "Nog een team? Maak een nieuw kantoor",
+    "welcome": "Welkom, {name}",
+    "welcomeAnonymous": "Welkom",
+    "welcomeBody": "Drie stappen en je team heeft een eigen verdieping.",
+    "stepName": "Geef je kantoor een naam",
+    "makeIt": "Maken",
+    "stepInvite": "Nodig je team uit",
+    "stepInviteBody": "Een link per persoon, of één voor gasten.",
+    "stepWalk": "Samen naar binnen",
+    "stepWalkBody": "Loop naar iemand toe om te praten. Kanalen en berichten blijven.",
+    "invited": "Ben je uitgenodigd?",
+    "invitedBody": "Plak de link die je team je stuurde.",
+    "invitePlaceholder": "Plak een uitnodigingslink",
+    "join": "Meedoen",
+    "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link."
   },
   "home": {
     "nav": {

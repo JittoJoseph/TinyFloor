@@ -901,14 +901,6 @@
         "messages": "Yksityisviestit",
         "guests": "Vieraslinkit"
       },
-      "channels": {
-        "general": "yleinen",
-        "projects": "projektit",
-        "random": "sekalaiset"
-      },
-      "freeSeat": "Vapaa paikka",
-      "you": "Sinä",
-      "teammate": "Tiimiläinen",
       "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Takaisin toimistoihisi"
   },
   "create": {
-    "eyebrow": "Oma toimistosi",
     "title": "Nimeä toimistosi",
-    "subtitle": "Tämän tiimisi näkee. Voit muuttaa sen myöhemmin.",
+    "subtitle": "Tämän tiimisi näkee joka päivä palkin yläosassa.",
     "nameLabel": "Toimiston nimi",
     "namePlaceholder": "Acme Studio",
-    "continue": "Jatka",
-    "create": "Luo toimisto",
+    "create": "Tee toimistoni",
     "creating": "Valmistellaan",
     "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
-    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan.",
-    "steps": [
-      "Nimeä",
-      "Luo tili",
-      "Astu sisään"
-    ],
-    "asideTitle": "Toimistosi valmiina minuutissa",
-    "asideBody": "Oma kerros tiimillesi, chatin ja kokouspöytien kanssa. Ilmainen enintään 3 hengelle."
+    "makeNamed": "Tee {name}",
+    "seatsFree": "1/3 jäsentä · Ilmainen",
+    "firstIn": "{name}, ensimmäisenä sisällä",
+    "continue": "Jatka"
   },
   "shell": {
     "floor": "Kerros",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",
-    "emptyTitle": "Aloita ensimmäinen toimistosi",
-    "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi.",
     "walkIn": "Kävele sisään",
     "home": "Koti",
     "yourOffices": "Toimistosi",
     "invite": "Kutsu ihmisiä",
     "firstIn": "Ketään ei ole nyt paikalla. Sisään tulevat näkyvät tässä.",
-    "makeOffice": "Tee toimistosi",
     "inNow": "{count, plural, =0 {Ei ketään} other {# paikalla}}",
     "inOffice": "Toimistolla",
     "team": "Tiimi",
     "seats": "{used}/{seats} paikkaa",
     "manage": "Hallitse",
     "seeAll": "Näytä kaikki",
-    "lobbyNote": "Haluatko tavata uusia ihmisiä? Poikkea julkiseen aulaan",
-    "anotherOffice": "Toinen tiimi? Tee uusi toimisto"
+    "lobbyNote": "Tai poikkea julkiseen aulaan tapaamaan ihmisiä",
+    "anotherOffice": "Toinen tiimi? Tee uusi toimisto",
+    "welcome": "Tervetuloa, {name}",
+    "welcomeAnonymous": "Tervetuloa",
+    "welcomeBody": "Kolme vaihetta, ja tiimilläsi on oma kerros.",
+    "stepName": "Nimeä toimistosi",
+    "makeIt": "Tee se",
+    "stepInvite": "Kutsu tiimisi",
+    "stepInviteBody": "Linkki jokaiselle tai yksi vieraille.",
+    "stepWalk": "Astukaa sisään yhdessä",
+    "stepWalkBody": "Kävele jonkun luo juttelemaan. Kanavat ja viestit säilyvät.",
+    "invited": "Saitko kutsun?",
+    "invitedBody": "Liitä linkki, jonka tiimisi lähetti.",
+    "invitePlaceholder": "Liitä kutsulinkki",
+    "join": "Liity",
+    "badLink": "Tuo ei näytä kutsulinkiltä. Liitä koko linkki."
   },
   "home": {
     "nav": {

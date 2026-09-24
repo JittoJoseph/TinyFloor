@@ -901,14 +901,6 @@
         "messages": "Direktemeldinger",
         "guests": "Gjestelenker"
       },
-      "channels": {
-        "general": "generelt",
-        "projects": "prosjekter",
-        "random": "tilfeldig"
-      },
-      "freeSeat": "Ledig plass",
-      "you": "Deg",
-      "teammate": "Kollega",
       "bringThem": "{count, plural, one {Ta med personen du møtte her} other {Ta med de # personene du møtte her}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Tilbake til kontorene dine"
   },
   "create": {
-    "eyebrow": "Ditt eget kontor",
     "title": "Gi kontoret et navn",
-    "subtitle": "Dette ser teamet ditt. Du kan endre det senere.",
+    "subtitle": "Det er dette teamet ditt ser øverst i feltet hver dag.",
     "nameLabel": "Navn på kontoret",
     "namePlaceholder": "Acme Studio",
-    "continue": "Videre",
-    "create": "Opprett kontor",
+    "create": "Lag kontoret mitt",
     "creating": "Gjør det klart",
     "freePlan": "Gratis for opptil 3 personer. Uten kort.",
-    "justLooking": "Bare ser? <link>Gå inn på det offentlige kontoret</link> i stedet.",
-    "steps": [
-      "Gi navn",
-      "Lag konto",
-      "Gå inn"
-    ],
-    "asideTitle": "Kontoret ditt, klart på et minutt",
-    "asideBody": "En egen etasje for teamet ditt, med chat og møtebord. Gratis for opptil 3 personer."
+    "makeNamed": "Lag {name}",
+    "seatsFree": "1 av 3 medlemmer · Gratis",
+    "firstIn": "{name}, den første inne",
+    "continue": "Videre"
   },
   "shell": {
     "floor": "Gulvet",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Nytt kontor",
-    "emptyTitle": "Start ditt første kontor",
-    "emptyBody": "Et kontor er et gulv teamet ditt går rundt på, med chat og samtaler innebygd. Tre medlemmer er gratis.",
     "walkIn": "Gå inn",
     "home": "Hjem",
     "yourOffices": "Kontorene dine",
     "invite": "Inviter folk",
     "firstIn": "Ingen er her akkurat nå. De som går inn, vises her.",
-    "makeOffice": "Lag kontoret ditt",
     "inNow": "{count, plural, =0 {Ingen her} other {# her nå}}",
     "inOffice": "På kontoret",
     "team": "Team",
     "seats": "{used} av {seats} plasser",
     "manage": "Administrer",
     "seeAll": "Se alle",
-    "lobbyNote": "Lyst til å møte nye folk? Stikk innom den åpne lobbyen",
-    "anotherOffice": "Et team til? Lag et nytt kontor"
+    "lobbyNote": "Eller stikk innom den åpne lobbyen og møt folk",
+    "anotherOffice": "Et team til? Lag et nytt kontor",
+    "welcome": "Velkommen, {name}",
+    "welcomeAnonymous": "Velkommen",
+    "welcomeBody": "Tre steg, så har teamet ditt sin egen etasje.",
+    "stepName": "Gi kontoret ditt et navn",
+    "makeIt": "Lag det",
+    "stepInvite": "Inviter teamet ditt",
+    "stepInviteBody": "En lenke per person, eller én for gjester.",
+    "stepWalk": "Gå inn sammen",
+    "stepWalkBody": "Gå bort til noen for å snakke. Kanaler og meldinger blir.",
+    "invited": "Har du blitt invitert?",
+    "invitedBody": "Lim inn lenken teamet ditt sendte deg.",
+    "invitePlaceholder": "Lim inn en invitasjonslenke",
+    "join": "Bli med",
+    "badLink": "Det ser ikke ut som en invitasjonslenke. Lim inn hele lenken."
   },
   "home": {
     "nav": {

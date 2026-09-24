@@ -901,14 +901,6 @@
         "messages": "Direktmeddelanden",
         "guests": "Gästlänkar"
       },
-      "channels": {
-        "general": "allmänt",
-        "projects": "projekt",
-        "random": "blandat"
-      },
-      "freeSeat": "Ledig plats",
-      "you": "Du",
-      "teammate": "Kollega",
       "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {
-    "eyebrow": "Ditt eget kontor",
     "title": "Ge kontoret ett namn",
-    "subtitle": "Det här ser ditt team. Du kan ändra det sen.",
+    "subtitle": "Det här ser ditt team högst upp i fältet varje dag.",
     "nameLabel": "Kontorets namn",
     "namePlaceholder": "Acme Studio",
-    "continue": "Vidare",
-    "create": "Skapa kontor",
+    "create": "Skapa mitt kontor",
     "creating": "Gör i ordning",
     "freePlan": "Gratis för upp till 3 personer. Inget kort.",
-    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället.",
-    "steps": [
-      "Namnge",
-      "Skapa konto",
-      "Gå in"
-    ],
-    "asideTitle": "Ditt kontor, klart på en minut",
-    "asideBody": "En egen våning för ditt team, med chatt och mötesbord. Gratis för upp till 3 personer."
+    "makeNamed": "Skapa {name}",
+    "seatsFree": "1 av 3 medlemmar · Gratis",
+    "firstIn": "{name}, först på plats",
+    "continue": "Vidare"
   },
   "shell": {
     "floor": "Golvet",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Nytt kontor",
-    "emptyTitle": "Starta ditt första kontor",
-    "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
     "walkIn": "Gå in",
     "home": "Hem",
     "yourOffices": "Dina kontor",
     "invite": "Bjud in folk",
     "firstIn": "Ingen är här just nu. Den som går in syns här.",
-    "makeOffice": "Skapa ditt kontor",
     "inNow": "{count, plural, =0 {Ingen här} other {# här nu}}",
     "inOffice": "På kontoret",
     "team": "Team",
     "seats": "{used} av {seats} platser",
     "manage": "Hantera",
     "seeAll": "Visa alla",
-    "lobbyNote": "Vill du träffa nya människor? Titta in i den öppna lobbyn",
-    "anotherOffice": "Ett till team? Skapa ett nytt kontor"
+    "lobbyNote": "Eller titta in i den öppna lobbyn och träffa folk",
+    "anotherOffice": "Ett till team? Skapa ett nytt kontor",
+    "welcome": "Välkommen, {name}",
+    "welcomeAnonymous": "Välkommen",
+    "welcomeBody": "Tre steg så har ditt team en egen våning.",
+    "stepName": "Namnge ditt kontor",
+    "makeIt": "Skapa",
+    "stepInvite": "Bjud in ditt team",
+    "stepInviteBody": "En länk per person, eller en för gäster.",
+    "stepWalk": "Gå in tillsammans",
+    "stepWalkBody": "Gå fram till någon för att prata. Kanaler och meddelanden finns kvar.",
+    "invited": "Har du blivit inbjuden?",
+    "invitedBody": "Klistra in länken ditt team skickade.",
+    "invitePlaceholder": "Klistra in en inbjudningslänk",
+    "join": "Gå med",
+    "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken."
   },
   "home": {
     "nav": {

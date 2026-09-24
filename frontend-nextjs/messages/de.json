@@ -901,14 +901,6 @@
         "messages": "Direktnachrichten",
         "guests": "Gastlinks"
       },
-      "channels": {
-        "general": "allgemein",
-        "projects": "projekte",
-        "random": "zufall"
-      },
-      "freeSeat": "Freier Platz",
-      "you": "Du",
-      "teammate": "Teammitglied",
       "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Zurück zu deinen Büros"
   },
   "create": {
-    "eyebrow": "Dein eigenes Büro",
     "title": "Benenne dein Büro",
-    "subtitle": "Das sieht dein Team. Du kannst es später ändern.",
+    "subtitle": "Das sieht dein Team jeden Tag oben in der Leiste.",
     "nameLabel": "Name des Büros",
     "namePlaceholder": "Acme Studio",
-    "continue": "Weiter",
-    "create": "Büro erstellen",
+    "create": "Mein Büro einrichten",
     "creating": "Wird eingerichtet",
     "freePlan": "Kostenlos für bis zu 3 Personen. Ohne Karte.",
-    "justLooking": "Nur schauen? <link>Geh ins öffentliche Büro</link> stattdessen.",
-    "steps": [
-      "Benennen",
-      "Konto erstellen",
-      "Reingehen"
-    ],
-    "asideTitle": "Dein Büro, fertig in einer Minute",
-    "asideBody": "Eine eigene Etage für dein Team, mit Chat und Besprechungstischen. Kostenlos für bis zu 3 Personen."
+    "makeNamed": "{name} einrichten",
+    "seatsFree": "1 von 3 Mitgliedern · Kostenlos",
+    "firstIn": "{name}, als Erste:r drin",
+    "continue": "Weiter"
   },
   "shell": {
     "floor": "Fläche",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Neues Büro",
-    "emptyTitle": "Starte dein erstes Büro",
-    "emptyBody": "Ein Büro ist eine Fläche, auf der dein Team herumläuft, mit Chat und Anrufen. Drei Mitglieder sind kostenlos.",
     "walkIn": "Reingehen",
     "home": "Start",
     "yourOffices": "Deine Büros",
     "invite": "Leute einladen",
     "firstIn": "Gerade ist niemand da. Wer reinkommt, erscheint hier.",
-    "makeOffice": "Büro einrichten",
     "inNow": "{count, plural, =0 {Niemand da} other {# gerade da}}",
     "inOffice": "Im Büro",
     "team": "Team",
     "seats": "{used} von {seats} Plätzen",
     "manage": "Verwalten",
     "seeAll": "Alle ansehen",
-    "lobbyNote": "Lust, neue Leute zu treffen? Schau in der öffentlichen Lobby vorbei",
-    "anotherOffice": "Noch ein Team? Neues Büro einrichten"
+    "lobbyNote": "Oder schau in der öffentlichen Lobby vorbei und lerne Leute kennen",
+    "anotherOffice": "Noch ein Team? Neues Büro einrichten",
+    "welcome": "Willkommen, {name}",
+    "welcomeAnonymous": "Willkommen",
+    "welcomeBody": "Drei Schritte, und dein Team hat eine eigene Etage.",
+    "stepName": "Benenne dein Büro",
+    "makeIt": "Einrichten",
+    "stepInvite": "Lade dein Team ein",
+    "stepInviteBody": "Ein Link pro Person oder einer für Gäste.",
+    "stepWalk": "Gemeinsam reingehen",
+    "stepWalkBody": "Geh zu jemandem hin, um zu reden. Kanäle und Nachrichten bleiben.",
+    "invited": "Wurdest du eingeladen?",
+    "invitedBody": "Füge den Link ein, den dein Team dir geschickt hat.",
+    "invitePlaceholder": "Einladungslink einfügen",
+    "join": "Beitreten",
+    "badLink": "Das sieht nicht nach einem Einladungslink aus. Füge den ganzen Link ein."
   },
   "home": {
     "nav": {

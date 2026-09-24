@@ -901,14 +901,6 @@
         "messages": "Mensajes directos",
         "guests": "Enlaces de invitado"
       },
-      "channels": {
-        "general": "general",
-        "projects": "proyectos",
-        "random": "varios"
-      },
-      "freeSeat": "Puesto libre",
-      "you": "Tú",
-      "teammate": "Compañero",
       "bringThem": "{count, plural, one {Trae a la persona que conociste aquí} other {Trae a las # personas que conociste aquí}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Volver a tus oficinas"
   },
   "create": {
-    "eyebrow": "Tu propia oficina",
     "title": "Ponle nombre a tu oficina",
-    "subtitle": "Es lo que verá tu equipo. Puedes cambiarlo luego.",
+    "subtitle": "Es lo que tu equipo verá cada día arriba de la barra.",
     "nameLabel": "Nombre de la oficina",
     "namePlaceholder": "Acme Studio",
-    "continue": "Continuar",
-    "create": "Crear oficina",
+    "create": "Crear mi oficina",
     "creating": "Preparándola",
     "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
-    "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor.",
-    "steps": [
-      "Ponle nombre",
-      "Crea una cuenta",
-      "Entra"
-    ],
-    "asideTitle": "Tu oficina, lista en un minuto",
-    "asideBody": "Una planta propia para tu equipo, con chat y mesas de reunión. Gratis hasta 3 personas."
+    "makeNamed": "Crear {name}",
+    "seatsFree": "1 de 3 miembros · Gratis",
+    "firstIn": "{name}, el primero en entrar",
+    "continue": "Continuar"
   },
   "shell": {
     "floor": "Planta",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Nueva oficina",
-    "emptyTitle": "Crea tu primera oficina",
-    "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis.",
     "walkIn": "Entrar",
     "home": "Inicio",
     "yourOffices": "Tus oficinas",
     "invite": "Invitar a gente",
     "firstIn": "Ahora no hay nadie. Cuando alguien entre, aparecerá aquí.",
-    "makeOffice": "Crea tu oficina",
     "inNow": "{count, plural, =0 {No hay nadie} other {# ahora}}",
     "inOffice": "En la oficina",
     "team": "Equipo",
     "seats": "{used} de {seats} plazas",
     "manage": "Gestionar",
     "seeAll": "Ver a todos",
-    "lobbyNote": "¿Quieres conocer gente nueva? Pásate por el vestíbulo público",
-    "anotherOffice": "¿Otro equipo? Crea una oficina nueva"
+    "lobbyNote": "O pásate por el vestíbulo público y conoce gente",
+    "anotherOffice": "¿Otro equipo? Crea una oficina nueva",
+    "welcome": "Hola, {name}",
+    "welcomeAnonymous": "Te damos la bienvenida",
+    "welcomeBody": "Tres pasos y tu equipo tendrá su propia planta.",
+    "stepName": "Ponle nombre a tu oficina",
+    "makeIt": "Crearla",
+    "stepInvite": "Invita a tu equipo",
+    "stepInviteBody": "Un enlace por persona, o uno para invitados.",
+    "stepWalk": "Entrad juntos",
+    "stepWalkBody": "Acércate a alguien para hablar. Canales y mensajes se quedan.",
+    "invited": "¿Te han invitado?",
+    "invitedBody": "Pega el enlace que te envió tu equipo.",
+    "invitePlaceholder": "Pega un enlace de invitación",
+    "join": "Unirme",
+    "badLink": "Eso no parece un enlace de invitación. Pega el enlace completo."
   },
   "home": {
     "nav": {

@@ -1,11 +1,12 @@
 import { realtime } from "./access";
-import { HttpError, json } from "./http";
+import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { requireAccount } from "./session";
 
 /**
  * The admin view: who has signed up and when they were last around, where
- * they come from, and every office with its members. Read only. Open to the
+ * they come from, and every office with its members, all read only; and the
+ * lobby's chat, where the admin can change or take down any message. Open to the
  * accounts named in ADMIN_EMAILS, and only once Google has vouched for the
  * address, since a password sign-up proves nothing about owning it. Anyone
  * else is told there is nothing here.
@@ -124,5 +125,37 @@ export function adminRoutes(router: Router): void {
         offices: offices.map((office) => ({ ...office, here: here[office.id] ?? 0, members: byOffice.get(office.id) ?? [] })),
         more: offices.length === PAGE,
       });
+    })
+
+    .add("GET", "/v1/admin/lobby-chat", async ({ request, env, ctx }) => {
+      await requireAdmin(env, request, ctx);
+      const url = new URL(request.url);
+      const before = Number(url.searchParams.get("before"));
+      const page = await realtime(env).lobbyChat(url.searchParams.get("channel") ?? "", before > 0 ? before : undefined);
+      return json(page, { headers: { "Cache-Control": "no-store" } });
+    })
+
+    .add("PATCH", "/v1/admin/lobby-chat/:seq", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const { body } = await readJson(request);
+      if (typeof body !== "string" || !body.trim()) throw new HttpError(400, "empty_message", "A message needs some text");
+      if (!(await realtime(env).moderateLobbyChat(messageSeq(params.seq), { body }))) {
+        throw new HttpError(404, "message_gone", "That message is gone");
+      }
+      return json({ ok: true });
+    })
+
+    .add("DELETE", "/v1/admin/lobby-chat/:seq", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      if (!(await realtime(env).moderateLobbyChat(messageSeq(params.seq), { remove: true }))) {
+        throw new HttpError(404, "message_gone", "That message is gone");
+      }
+      return json({ ok: true });
     });
+}
+
+function messageSeq(value: string): number {
+  const seq = Number(value);
+  if (!Number.isSafeInteger(seq) || seq <= 0) throw new HttpError(400, "bad_message", "No such message");
+  return seq;
 }

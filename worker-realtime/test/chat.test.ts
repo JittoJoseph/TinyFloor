@@ -270,7 +270,7 @@ describe("lobby chat", () => {
     expect((await ada.next("chat_error")).code).toBe("not_here");
   });
 
-  it("lets people edit and delete what they said in the lobby, and only that", async () => {
+  it("lets people edit and unsend what they said in the lobby, and only that", async () => {
     const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-edit-ada-${sequence++}`, name: "Ada" });
     const bo = await ChatClient.open(LOBBY_CHAT, { id: `lobby-edit-bo-${sequence++}`, name: "Bo" });
     await ada.next("chat_ready");
@@ -293,22 +293,70 @@ describe("lobby chat", () => {
     expect(page.messages.find((one) => one.seq === seq)).toMatchObject({ body: "hello", edited: edited.edited });
 
     ada.send({ t: "chat_delete", seq });
-    expect(await bo.next("chat_deleted")).toMatchObject({ seq, channel: "general" });
+    expect(await bo.next("chat_deleted")).toMatchObject({ seq, channel: "general", by: ada.userId });
     await runInDurableObject(env.CHAT.getByName(LOBBY_CHAT), async (_chat, state) => {
       expect(state.storage.sql.exec("SELECT 1 FROM messages WHERE seq = ?", seq).toArray()).toHaveLength(0);
     });
   });
 
-  it("keeps editing to the lobby", async () => {
+  it("lets people edit and unsend in an office too, in channels and direct messages", async () => {
     const office = `office-edit-${sequence++}`;
     const ada = await ChatClient.open(office, { id: `edit-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(office, { id: `edit-bo-${sequence++}`, name: "Bo" });
     await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
     ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "first" });
     const { seq } = (await ada.next("chat_new")).message;
     ada.send({ t: "chat_edit", seq, body: "second" });
+    expect(await bo.next("chat_edited")).toMatchObject({ seq, body: "second", by: ada.userId });
     ada.send({ t: "chat_history", channel: GENERAL_CHANNEL });
-    const page = await ada.next("chat_page");
-    expect(page.messages.find((one) => one.seq === seq)?.body).toBe("first");
+    expect((await ada.next("chat_page")).messages.find((one) => one.seq === seq)?.body).toBe("second");
+
+    const dm = dmChannelId(ada.userId, bo.userId);
+    bo.send({ t: "chat_send", channel: dm, body: "psst" });
+    const secret = (await bo.next("chat_new")).message.seq;
+    await ada.next("chat_new");
+    bo.send({ t: "chat_delete", seq: secret });
+    expect(await ada.next("chat_deleted")).toMatchObject({ seq: secret, channel: dm, by: bo.userId });
+  });
+
+  it("passes changes to a lobby direct message between its two people, marked with who made them", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dmedit-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dmedit-bo-${sequence++}`, name: "Bo" });
+    const cy = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dmedit-cy-${sequence++}`, name: "Cy" });
+    await Promise.all([ada.next("chat_ready"), bo.next("chat_ready"), cy.next("chat_ready")]);
+    const channel = dmChannelId(ada.userId, bo.userId);
+
+    ada.send({ t: "chat_send", channel, body: "helo" });
+    const { seq } = (await bo.next("chat_new")).message;
+    ada.send({ t: "chat_edit", seq, body: "hello", channel });
+    expect(await bo.next("chat_edited")).toMatchObject({ seq, channel, body: "hello", by: ada.userId });
+    ada.send({ t: "chat_delete", seq, channel });
+    expect(await bo.next("chat_deleted")).toMatchObject({ seq, channel, by: ada.userId });
+
+    // Someone outside the pair can't reach into it.
+    cy.send({ t: "chat_delete", seq, channel });
+    await expect(bo.next("chat_deleted", 300)).rejects.toThrow();
+  });
+
+  it("lets TinyFloor's admin read the lobby's channels, and change or take down what's there", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-mod-ada-${sequence++}`, name: "Ada" });
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: "feedback", body: "something rude" });
+    const { seq } = (await ada.next("chat_new")).message;
+
+    const stub = env.CHAT.getByName(LOBBY_CHAT);
+    const page = await stub.moderationPage("feedback");
+    expect(page.channel).toBe("feedback");
+    expect(page.channels.map((one) => one.id)).toEqual([...LOBBY_CHANNELS]);
+    expect(page.messages.at(-1)).toMatchObject({ seq, body: "something rude" });
+
+    expect(await stub.moderate(seq, { body: "[removed by a moderator]" })).toBe(true);
+    expect(await ada.next("chat_edited")).toMatchObject({ seq, body: "[removed by a moderator]", by: "moderator" });
+    expect(await stub.moderate(seq, { remove: true })).toBe(true);
+    expect(await ada.next("chat_deleted")).toMatchObject({ seq, by: "moderator" });
+    expect(await stub.moderate(seq, { remove: true })).toBe(false);
   });
 
   it("forgets messages older than a week, once a day", async () => {

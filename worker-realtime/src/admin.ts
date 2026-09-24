@@ -1,5 +1,12 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
-import { LOBBY_COPY_CAPACITY, type LobbyPeople, type RealtimeAdminApi, type Whereabouts } from "../../shared-protocol/src";
+import {
+  LOBBY_CHAT,
+  LOBBY_COPY_CAPACITY,
+  type LobbyChatPage,
+  type LobbyPeople,
+  type RealtimeAdminApi,
+  type Whereabouts,
+} from "../../shared-protocol/src";
 import { Reporter } from "./discord";
 import { lobbyCopy } from "./lobby";
 
@@ -44,6 +51,14 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
       for (const one of people) if (faces.length < FACES) faces.push(one);
     }
     return { here, faces };
+  }
+
+  async lobbyChat(channel: string, before?: number): Promise<LobbyChatPage> {
+    return this.env.CHAT.getByName(LOBBY_CHAT).moderationPage(channel, before);
+  }
+
+  async moderateLobbyChat(seq: number, change: { body: string } | { remove: true }): Promise<boolean> {
+    return this.env.CHAT.getByName(LOBBY_CHAT).moderate(seq, change);
   }
 
   /** A new office, for the team's Discord. The webhook lives here, with the lobby's. */

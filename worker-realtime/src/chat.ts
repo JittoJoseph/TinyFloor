@@ -10,6 +10,7 @@ import {
   LOBBY_CHAT,
   LOBBY_RETENTION_DAYS,
   HEARTBEAT_PONG,
+  MODERATOR,
   cleanChannelName,
   dmChannelId,
   dmMembers,
@@ -19,6 +20,7 @@ import {
   type ChatImage,
   type ChatMessage,
   type ChatServerMessage,
+  type LobbyChatPage,
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { TICKET_HEADER } from "./headers";
@@ -69,8 +71,8 @@ const LOBBY_FLAG = "lobby";
  *
  * The public lobby has one of these too, named "lobby", shared by every copy
  * of its floor. There the channels are fixed, guests may post under the name
- * they walked in with, people can edit and delete what they said, there are no
- * new channels or images, and an alarm once a day forgets anything older than
+ * they walked in with, there are no new channels or images, TinyFloor's admin
+ * can change or take down any message, and an alarm once a day forgets anything older than
  * a week. Its direct messages are passed from one socket to the other and
  * never written down, so they last as long as both people stay.
  */
@@ -191,9 +193,9 @@ export class Chat extends DurableObject<Env> {
       case "chat_dm":
         return this.openDm(socket, me, message.userId, now);
       case "chat_edit":
-        return this.edit(me, message.seq, message.body, now);
+        return this.edit(me, message.seq, message.body, message.channel, now);
       case "chat_delete":
-        return this.remove(me, message.seq);
+        return this.remove(me, message.seq, message.channel);
     }
   }
 
@@ -333,28 +335,89 @@ export class Chat extends DurableObject<Env> {
     this.deliver(channel, { t: "chat_new", message });
   }
 
-  /** In the lobby, the author can change what they said. */
-  private edit(me: Attachment, seq: number, body: unknown, now: number): void {
+  /** Anyone can change what they said, anywhere they can still post. */
+  private edit(me: Attachment, seq: number, body: unknown, channel: unknown, now: number): void {
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
-    const row = this.ownMessage(me, seq);
-    if (!row || !text) return;
-    this.sql.exec("UPDATE messages SET body = ?, edited_at = ? WHERE seq = ?", text, now, seq);
-    this.deliver(row.channel, { t: "chat_edited", seq, channel: row.channel, body: text, edited: now });
-  }
-
-  /** In the lobby, the author can take back what they said. */
-  private remove(me: Attachment, seq: number): void {
+    if (!text || !Number.isFinite(seq)) return;
+    const change = { t: "chat_edited", seq, body: text, edited: now, by: me.userId } as const;
+    if (seq < 0) return this.passChange(me, channel, (dm) => ({ ...change, channel: dm }));
     const row = this.ownMessage(me, seq);
     if (!row) return;
+    this.sql.exec("UPDATE messages SET body = ?, edited_at = ? WHERE seq = ?", text, now, seq);
+    this.deliver(row.channel, { ...change, channel: row.channel });
+  }
+
+  /** And take it back: unsent, it goes for everyone. */
+  private remove(me: Attachment, seq: number, channel: unknown): void {
+    if (!Number.isFinite(seq)) return;
+    if (seq < 0) return this.passChange(me, channel, (dm) => ({ t: "chat_deleted", seq, channel: dm, by: me.userId }));
+    const row = this.ownMessage(me, seq);
+    if (!row) return;
+    this.drop(seq, row.channel, me.userId);
+  }
+
+  private drop(seq: number, channel: string, by: string): void {
     this.sql.exec("DELETE FROM reactions WHERE seq = ?", seq);
     this.sql.exec("DELETE FROM messages WHERE seq = ?", seq);
-    this.deliver(row.channel, { t: "chat_deleted", seq, channel: row.channel });
+    this.deliver(channel, { t: "chat_deleted", seq, channel, by });
   }
 
   private ownMessage(me: Attachment, seq: number): { channel: string } | null {
-    if (!this.lobby || !Number.isFinite(seq)) return null;
     const row = this.sql.exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ?", seq).toArray()[0];
-    return row && row.author === me.userId ? { channel: String(row.channel) } : null;
+    if (!row || row.author !== me.userId || !this.mayPost(me.userId, String(row.channel))) return null;
+    return { channel: String(row.channel) };
+  }
+
+  /**
+   * A change to a lobby direct message, which was never written down: passed to
+   * the two people like the message was. Nothing here can say who wrote it, so
+   * it carries who sent the change, and clients only apply it to that person's line.
+   */
+  private passChange(me: Attachment, channel: unknown, message: (dm: string) => ChatServerMessage): void {
+    if (!this.lobby || typeof channel !== "string" || !dmMembers(channel)?.includes(me.userId)) return;
+    this.deliver(channel, message(channel));
+  }
+
+  // -- for the admin page, through tinyfloor-api ---------------------------
+
+  /** The lobby's channels, and a page of one of them. */
+  async moderationPage(channel: string, before?: number): Promise<LobbyChatPage> {
+    const counts = new Map(
+      this.sql
+        .exec<{ channel: string; n: number; last: number }>("SELECT channel, COUNT(*) AS n, MAX(at) AS last FROM messages GROUP BY channel")
+        .toArray()
+        .map((row) => [String(row.channel), { messages: Number(row.n), lastAt: Number(row.last) }]),
+    );
+    const channels = LOBBY_CHANNELS.map((id) => ({ id, ...(counts.get(id) ?? { messages: 0, lastAt: null }) }));
+    const open = (LOBBY_CHANNELS as readonly string[]).includes(channel) ? channel : LOBBY_CHANNELS[0];
+    const rows = this.sql
+      .exec<MessageRow>(
+        `SELECT seq, channel, author, author_name, body, image, at, edited_at FROM messages
+         WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
+        open,
+        before ?? Number.MAX_SAFE_INTEGER,
+        CHAT_PAGE + 1,
+      )
+      .toArray();
+    const page = rows.slice(0, CHAT_PAGE).reverse();
+    return { channels, channel: open, messages: page.map((row) => toMessage(row)), more: rows.length > CHAT_PAGE };
+  }
+
+  /** Changes or takes down any message; everyone connected sees it happen. */
+  async moderate(seq: number, change: { body: string } | { remove: true }): Promise<boolean> {
+    const row = this.sql.exec<{ channel: string }>("SELECT channel FROM messages WHERE seq = ?", seq).toArray()[0];
+    if (!row) return false;
+    const channel = String(row.channel);
+    if ("remove" in change) {
+      this.drop(seq, channel, MODERATOR);
+      return true;
+    }
+    const text = typeof change.body === "string" ? change.body.trim().slice(0, CHAT_BODY_MAX) : "";
+    if (!text) return false;
+    const now = Date.now();
+    this.sql.exec("UPDATE messages SET body = ?, edited_at = ? WHERE seq = ?", text, now, seq);
+    this.deliver(channel, { t: "chat_edited", seq, channel, body: text, edited: now, by: MODERATOR });
+    return true;
   }
 
   /** The lobby forgets: once a day, anything older than a week goes. */

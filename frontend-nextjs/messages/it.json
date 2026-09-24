@@ -948,7 +948,6 @@
       "danger": "Lasciare o chiudere"
     },
     "profile": {
-      "title": "Il tuo profilo",
       "changePassword": "Cambia password",
       "setPassword": "Imposta una password",
       "setPasswordDescription": "Aggiungi una password per accedere anche con la tua email, non solo con Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "Almeno 8 caratteri",
       "signsOutOthers": "Resterai connesso qui. Ovunque altrove verrai disconnesso.",
       "cancel": "Annulla",
-      "faceNote": "Il tuo volto nasce dal tuo account, uguale su ogni schermo. Niente viene caricato o salvato.",
       "themeNote": "Sistema segue il tuo dispositivo. La scelta resta in questo browser.",
       "link": "Il tuo link",
       "linkPlaceholder": "iltuosito.it",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Accedi anche con Google.",
       "connectGoogle": "Collega Google",
-      "googleConnected": "Collegato"
+      "googleConnected": "Collegato",
+      "sections": {
+        "profile": "Profilo",
+        "character": "Personaggio",
+        "signin": "Accesso",
+        "appearance": "Aspetto"
+      },
+      "profileNote": "Il tuo nome e il tuo link, ovunque entri.",
+      "preview": "Cosa vedono gli altri",
+      "noLink": "Ancora nessun link",
+      "password": "Password",
+      "passwordSet": "Accedi con email e password."
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",
@@ -1128,17 +1137,21 @@
     "leave": "Esci"
   },
   "dashboard": {
-    "morning": "Buongiorno, {name}",
-    "afternoon": "Buon pomeriggio, {name}",
-    "evening": "Buonasera, {name}",
-    "subtitle": "I tuoi uffici e chi c'è ora su ogni piano.",
-    "onFloor": "{count, plural, =0 {Nessuno sul piano} other {# sul piano}}",
     "newOffice": "Nuovo ufficio",
     "lobby": "La hall pubblica",
     "lobbyBody": "Passa e incontra chi c'è.",
     "emptyTitle": "Crea il tuo primo ufficio",
     "emptyBody": "Un ufficio è un piano in cui il tuo team si muove, con chat e chiamate incluse. Tre membri sono gratis.",
-    "walkIn": "Entra"
+    "walkIn": "Entra",
+    "home": "Home",
+    "editProfile": "Modifica profilo",
+    "yourOffices": "I tuoi uffici",
+    "invite": "Invita persone",
+    "officeSettings": "Impostazioni dell’ufficio",
+    "firstIn": "Non c’è ancora nessuno. Entra e sarai il primo.",
+    "notIn": "{count} non ci sono",
+    "inviteTeam": "Invita il tuo team",
+    "makeOffice": "Crea il tuo ufficio"
   },
   "home": {
     "nav": {

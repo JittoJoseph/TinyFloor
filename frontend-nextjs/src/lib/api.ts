@@ -2,9 +2,9 @@
  * The TinyFloor API (tinyfloor-api). Sessions are an HttpOnly cookie the browser
  * sends by itself, so nothing about signing in is kept in JavaScript.
  */
-import type { LobbyChatPage } from "@shared/admin";
+import type { LobbyChatPage, PresentPerson } from "@shared/admin";
 
-export type { LobbyChatPage };
+export type { LobbyChatPage, PresentPerson };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
 
 export class ApiError extends Error {
@@ -51,9 +51,11 @@ export interface OfficeSummary {
   members: number;
   role: OfficeRole;
   /** A few members, for faces on the dashboard (only from /v1/me). */
-  faces?: Array<{ id: string; name: string }>;
+  faces?: Array<{ id: string; name: string; character: string }>;
   /** Who is on the floor right now (only from /v1/me). */
   here?: number;
+  /** Who is on the floor right now, as they look (only from /v1/me). */
+  inNow?: PresentPerson[];
 }
 
 export interface Office extends OfficeSummary {

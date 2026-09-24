@@ -948,7 +948,6 @@
       "danger": "Sair ou fechar"
     },
     "profile": {
-      "title": "Seu perfil",
       "changePassword": "Alterar senha",
       "setPassword": "Criar uma senha",
       "setPasswordDescription": "Adicione uma senha para entrar também com seu e-mail, não só com o Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "Pelo menos 8 caracteres",
       "signsOutOthers": "Você continua conectado aqui. Em todos os outros lugares, a sessão será encerrada.",
       "cancel": "Cancelar",
-      "faceNote": "Seu rosto é desenhado a partir da sua conta, igual em todas as telas. Nada é enviado nem guardado.",
       "themeNote": "Sistema segue seu dispositivo. A escolha fica neste navegador.",
       "link": "Seu link",
       "linkPlaceholder": "seusite.com",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Entre também com o Google.",
       "connectGoogle": "Conectar Google",
-      "googleConnected": "Conectado"
+      "googleConnected": "Conectado",
+      "sections": {
+        "profile": "Perfil",
+        "character": "Personagem",
+        "signin": "Iniciar sessão",
+        "appearance": "Aparência"
+      },
+      "profileNote": "O seu nome e o seu link, onde quer que entre.",
+      "preview": "O que os outros veem",
+      "noLink": "Ainda sem link",
+      "password": "Palavra-passe",
+      "passwordSet": "Inicie sessão com o seu email e palavra-passe."
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",
@@ -1128,17 +1137,21 @@
     "leave": "Sair"
   },
   "dashboard": {
-    "morning": "Bom dia, {name}",
-    "afternoon": "Boa tarde, {name}",
-    "evening": "Boa noite, {name}",
-    "subtitle": "Seus escritórios, e quem está em cada andar agora.",
-    "onFloor": "{count, plural, =0 {Ninguém no andar} other {# no andar}}",
     "newOffice": "Novo escritório",
     "lobby": "O saguão público",
     "lobbyBody": "Passe por lá e conheça quem estiver.",
     "emptyTitle": "Comece seu primeiro escritório",
     "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis.",
-    "walkIn": "Entrar"
+    "walkIn": "Entrar",
+    "home": "Início",
+    "editProfile": "Editar perfil",
+    "yourOffices": "Os seus escritórios",
+    "invite": "Convidar pessoas",
+    "officeSettings": "Definições do escritório",
+    "firstIn": "Ainda não há ninguém. Entre e seja o primeiro.",
+    "notIn": "{count} fora",
+    "inviteTeam": "Convide a sua equipa",
+    "makeOffice": "Crie o seu escritório"
   },
   "home": {
     "nav": {

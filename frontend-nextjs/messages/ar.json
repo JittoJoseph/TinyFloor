@@ -948,7 +948,6 @@
       "danger": "المغادرة أو الإغلاق"
     },
     "profile": {
-      "title": "ملفك الشخصي",
       "changePassword": "تغيير كلمة المرور",
       "setPassword": "تعيين كلمة مرور",
       "setPasswordDescription": "أضف كلمة مرور لتسجّل الدخول ببريدك الإلكتروني أيضًا، وليس بـ Google فقط.",
@@ -968,7 +967,6 @@
       "passwordRule": "8 أحرف على الأقل",
       "signsOutOthers": "ستبقى مسجّل الدخول هنا، وسيتم تسجيل خروجك من كل مكان آخر.",
       "cancel": "إلغاء",
-      "faceNote": "وجهك مرسوم من حسابك، وهو نفسه على كل شاشة. لا يُرفع شيء ولا يُحفظ.",
       "themeNote": "«النظام» يتبع جهازك. يُحفظ اختيارك في هذا المتصفح.",
       "link": "رابطك",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "سجّل الدخول باستخدام Google أيضًا.",
       "connectGoogle": "ربط Google",
-      "googleConnected": "مرتبط"
+      "googleConnected": "مرتبط",
+      "sections": {
+        "profile": "الملف الشخصي",
+        "character": "الشخصية",
+        "signin": "تسجيل الدخول",
+        "appearance": "المظهر"
+      },
+      "profileNote": "اسمك ورابطك، أينما دخلت.",
+      "preview": "ما يراه الآخرون",
+      "noLink": "لا يوجد رابط بعد",
+      "password": "كلمة المرور",
+      "passwordSet": "سجّل الدخول ببريدك الإلكتروني وكلمة المرور."
     },
     "invite": {
       "invalidTitle": "هذه الدعوة لا تعمل",
@@ -1128,17 +1137,21 @@
     "leave": "غادر"
   },
   "dashboard": {
-    "morning": "صباح الخير يا {name}",
-    "afternoon": "مساء الخير يا {name}",
-    "evening": "مساء الخير يا {name}",
-    "subtitle": "مكاتبك، ومن في كل طابق الآن.",
-    "onFloor": "{count, plural, =0 {لا أحد في الطابق} other {# في الطابق}}",
     "newOffice": "مكتب جديد",
     "lobby": "الردهة العامة",
     "lobbyBody": "مرّ والتقِ بمن هناك.",
     "emptyTitle": "ابدأ مكتبك الأول",
     "emptyBody": "المكتب طابق يتجول فيه فريقك، مع دردشة ومكالمات مدمجة. ثلاثة أعضاء مجانًا.",
-    "walkIn": "ادخل"
+    "walkIn": "ادخل",
+    "home": "الرئيسية",
+    "editProfile": "تعديل الملف الشخصي",
+    "yourOffices": "مكاتبك",
+    "invite": "دعوة أشخاص",
+    "officeSettings": "إعدادات المكتب",
+    "firstIn": "لا أحد هنا بعد. ادخل وكن أول الحاضرين.",
+    "notIn": "غير موجودين: {count}",
+    "inviteTeam": "ادعُ فريقك",
+    "makeOffice": "أنشئ مكتبك"
   },
   "home": {
     "nav": {

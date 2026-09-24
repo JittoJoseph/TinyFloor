@@ -80,6 +80,7 @@ export function FloorScene({
   style,
   over,
   glide = false,
+  period,
 }: {
   /** The part of the map in view, in tiles: [left, top, width, height]. It covers the box, cropping whichever side is long. */
   view: [number, number, number, number];
@@ -96,11 +97,17 @@ export function FloorScene({
   style?: CSSProperties;
   /** Pan smoothly to a new view, the way the app's camera follows you: keep the views the same size and only the pan moves. */
   glide?: boolean;
+  /**
+   * Seconds the whole scene repeats in: each walk is eased a little faster or
+   * slower so it goes round a whole number of times in it. Recording a scene
+   * this long (see scripts/scenes.mjs) then loops without a seam.
+   */
+  period?: number;
 }) {
   const [vx, vy, vw, vh] = view;
   const cx = vx + vw / 2;
   const cy = vy + vh / 2;
-  const walks = walking.map((walker, index) => walk(walker, index));
+  const walks = walking.map((walker, index) => walk(walker, index, period));
   // The floor's width that covers the box with the view: a tile is the larger of box/view on either axis.
   const width = `max(100cqw * ${MAP.width / vw}, 100cqh * ${MAP.width / vh})`;
 
@@ -241,7 +248,7 @@ type State = `${"run" | "idle"}-${Face}`;
  * and one track per sprite (running or standing, each way they face) that
  * shows it only while it is the one in use.
  */
-function walk(walker: Walker, index: number) {
+function walk(walker: Walker, index: number, period?: number) {
   const { character, name, status, faces = {}, speed = 2.2, offset = 0 } = walker;
   const stops = walker.path.map(([x, y, pause]) => ({ x, y, pause: pause ?? 0 }));
   if (stops.length > 1 && (stops[0].x !== stops.at(-1)!.x || stops[0].y !== stops.at(-1)!.y)) {
@@ -273,7 +280,13 @@ function walk(walker: Walker, index: number) {
     }
   }
 
-  const total = legs.reduce((sum, leg) => sum + leg.seconds, 0) || 1;
+  let total = legs.reduce((sum, leg) => sum + leg.seconds, 0) || 1;
+  if (period) {
+    // Round the loop to a whole share of the period, and stretch every leg to match.
+    const fit = period / Math.max(1, Math.round(period / total));
+    for (const leg of legs) leg.seconds *= fit / total;
+    total = fit;
+  }
   const id = `fw${hash(`${character}${JSON.stringify(walker.path)}${index}`)}`;
   const start = feet([stops[0].x, stops[0].y]);
 

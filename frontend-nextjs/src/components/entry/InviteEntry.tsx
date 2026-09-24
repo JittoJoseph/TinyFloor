@@ -96,8 +96,6 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     }
   };
 
-  const you = step === "name" && !trimmed ? undefined : { character, name: trimmed || t("you"), running: step !== "name" };
-
   if (state === "loading" || isLoading) {
     return (
       <EntryShell backHref="/">
@@ -122,7 +120,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const back = invitePath(token);
 
   return (
-    <EntryShell backHref="/" you={you}>
+    <EntryShell backHref="/">
       <div className="entry-rise">
         <EntryHeader
           mark={<OfficeMark officeId={invite.officeId} />}

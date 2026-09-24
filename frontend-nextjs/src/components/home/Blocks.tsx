@@ -15,8 +15,7 @@ import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
 import { MeetingPreview } from "./previews/MeetingPreview";
 import { NetworkGlobe } from "./previews/NetworkGlobe";
-import { FloorScene } from "@/components/floor/FloorScene";
-import { EVERYONE, LOBBY } from "@/components/floor/scenes";
+import { SceneMedia } from "@/components/floor/SceneMedia";
 
 /*
  * The pieces every marketing page is built from: the page shell, headings,
@@ -133,8 +132,8 @@ export function HeroAsk() {
     <>
       <Actions className="mt-10 hidden sm:flex" />
       <Link href="/lobby" className="group mt-7 block w-full overflow-hidden rounded-[30px] bg-foreground/[0.06] p-1.5 text-start sm:hidden">
-        <FloorScene
-          {...LOBBY}
+        <SceneMedia
+          name="lobby"
           priority
           className="h-64 rounded-[24px]"
           over={
@@ -405,7 +404,7 @@ export function Final() {
           </div>
         </div>
         <div className="relative min-h-[320px] p-3 lg:ps-0">
-          <FloorScene {...EVERYONE} view={[15, 1, 24, 18]} className="absolute inset-3 rounded-[22px] lg:start-0" />
+          <SceneMedia name="everyone" className="absolute inset-3 rounded-[22px] lg:start-0" />
         </div>
       </div>
     </section>

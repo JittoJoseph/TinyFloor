@@ -4,37 +4,28 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { FloorScene } from "@/components/floor/FloorScene";
+import { SceneMedia } from "@/components/floor/SceneMedia";
 import { Logo } from "@/components/app/AppShell";
 import { cn } from "@/lib/utils";
 import { AutoHeight } from "./AutoHeight";
 
-/** Who you'll be on the floor, standing in the office behind the door. */
-export interface Arrival {
-  character: string;
-  name?: string;
-  running?: boolean;
-}
-
 /**
- * Every door: the office behind it, dimmed and soft, and one raised panel in
- * front with the place and what it asks. The office is scenery, never
- * something to click, so it sits under a veil and takes no pointer. On a phone
- * the panel rests at the bottom like a sheet, with the office showing above.
+ * Every door: the office behind it, a plain picture of the floor with people
+ * at their desks, and one raised panel in front with the place and what it
+ * asks. The picture is scenery, never something to click. On a phone the
+ * panel rests at the bottom like a sheet, with the office showing above.
  */
 export const EntryShell: React.FC<{
   backHref?: string;
   backLabel?: string;
-  /** You, in the office behind; left out, the office is just its people. */
-  you?: Arrival;
   children: React.ReactNode;
-}> = ({ backHref = "/", backLabel, you, children }) => {
+}> = ({ backHref = "/", backLabel, children }) => {
   const t = useTranslations("common");
   const back = backLabel ?? t("back");
 
   return (
     <div className="relative flex min-h-dvh w-full flex-col bg-rail [--face-ring:var(--ui-card)]">
-      <Backdrop you={you} />
+      <SceneMedia name="door" priority pixelated className="fixed inset-0" />
       <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1100px] items-center justify-between px-3 sm:px-6">
         <Link
           href={backHref}
@@ -61,31 +52,6 @@ export const EntryShell: React.FC<{
     </div>
   );
 };
-
-/** The office behind the door: people at their desks, a couple walking about, and you among them. */
-function Backdrop({ you }: { you?: Arrival }) {
-  return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 select-none">
-      <FloorScene
-        view={[14, 4, 30, 21]}
-        priority
-        sitting={[
-          { character: "Lucy", chair: [26, 8], name: "Olivia", status: "busy" },
-          { character: "Alex", chair: [20, 11], name: "Ryan", status: "available" },
-          { character: "Ash", chair: [34, 13], name: "Grace", status: "available" },
-        ]}
-        walking={[
-          { character: "Bob", name: "Sam", status: "available", speed: 1.6, path: [[38, 19, 2], [30, 19, 1.5], [30, 22, 2], [38, 22]] },
-          { character: "Molly", name: "Lily", status: "away", speed: 1.4, offset: 3, path: [[18, 15, 2.5], [25, 15, 1], [25, 17, 2], [18, 17]] },
-        ]}
-        standing={you ? [{ ...you, at: [33, 17] }] : []}
-        className="h-full w-full"
-      />
-      <div className="absolute inset-0 bg-rail/65 backdrop-blur-[3px] sm:bg-rail/72" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_15%,var(--ui-rail)_82%)]" />
-    </div>
-  );
-}
 
 /**
  * The top of a door's panel: the place's mark, a line above its name, a

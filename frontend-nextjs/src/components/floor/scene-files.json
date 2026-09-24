@@ -1,0 +1,56 @@
+{
+  "hall": {
+    "width": 1536,
+    "height": 960,
+    "loop": true,
+    "hash": "3c52622226"
+  },
+  "lobby": {
+    "width": 896,
+    "height": 832,
+    "loop": true,
+    "hash": "616ffc7d48"
+  },
+  "meeting": {
+    "width": 1152,
+    "height": 672,
+    "loop": false,
+    "hash": "370f547f77"
+  },
+  "everyone": {
+    "width": 1152,
+    "height": 864,
+    "loop": true,
+    "hash": "e61b800821"
+  },
+  "walk-over": {
+    "width": 1040,
+    "height": 576,
+    "loop": true,
+    "hash": "4b40a80418"
+  },
+  "walk-in": {
+    "width": 748,
+    "height": 440,
+    "loop": true,
+    "hash": "b2e4e94084"
+  },
+  "guest": {
+    "width": 660,
+    "height": 340,
+    "loop": true,
+    "hash": "101c789edf"
+  },
+  "door": {
+    "width": 960,
+    "height": 672,
+    "loop": false,
+    "hash": "8fe5781a6a"
+  },
+  "lost": {
+    "width": 832,
+    "height": 640,
+    "loop": false,
+    "hash": "88ca226e42"
+  }
+}

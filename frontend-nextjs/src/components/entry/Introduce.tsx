@@ -49,7 +49,6 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-      you={{ character: picked, name: typed || tc("you"), running: onCharacterStep }}
     >
       <div className="entry-rise">
         <EntryHeader title={t("introTitle")} subtitle={t("introSubtitle")} />

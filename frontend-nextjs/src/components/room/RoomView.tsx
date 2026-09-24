@@ -288,7 +288,6 @@ function RoomEnded({
     <EntryShell
       backHref={leaveHref}
       backLabel={t("back")}
-      you={{ character }}
     >
       <div className="entry-rise">
         <EntryHeader

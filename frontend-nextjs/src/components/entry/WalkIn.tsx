@@ -101,7 +101,6 @@ export function WalkIn({
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-      you={{ character, name: trimmed || tc("you"), running: onCharacterStep }}
     >
       <div className="entry-rise">
         <EntryHeader

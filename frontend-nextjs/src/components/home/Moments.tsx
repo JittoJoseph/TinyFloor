@@ -6,6 +6,7 @@ import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";
 import { FloorScene, OnFloor } from "@/components/floor/FloorScene";
+import { SceneMedia } from "@/components/floor/SceneMedia";
 import { NearbyBar } from "@/components/floor/NearbyBar";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { COLUMN, Heading, SWIPE, SWIPE_ITEM } from "./Blocks";
@@ -39,12 +40,13 @@ const KEYFRAMES =
  * there is timed on the same loop.
  */
 const WAIT = 1;
-const STAY = 7.5;
 const SPEED = 3;
 const FROM: [number, number] = [28, 15];
 const TO: [number, number] = [32, 15];
 const GO = (TO[0] - FROM[0]) / SPEED;
-const LOOP = WAIT + GO * 2 + STAY;
+/** Twelve seconds, a whole number of the sprites' 3s cycle, so its recording loops without a seam. */
+const LOOP = 12;
+const STAY = LOOP - WAIT - GO * 2;
 /** A moment this many seconds after you arrive, as a point in the loop. */
 const beat = (seconds: number) => `${((seconds / LOOP) * 100).toFixed(2)}%`;
 
@@ -73,12 +75,10 @@ const NOTICE_ICONS: ReactNode[] = [<MessageSquare key="m" />, <CalendarDays key=
  */
 export function Moments() {
   const t = useTranslations("home.versus");
-  const tp = useTranslations("home.preview");
-  const { emma, jack } = PEOPLE;
   const notices = t.raw("before.items") as Array<{ title: string; body: string }>;
   return (
     <section id="floor" className={cn(COLUMN, "m-still scroll-mt-20 pt-24 sm:pt-36")}>
-      <style>{KEYFRAMES + CALL_KEYFRAMES}</style>
+      <style>{KEYFRAMES}</style>
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
         <Heading title={t("title")} muted={t("muted")} />
         <p className="max-w-[30rem] text-pretty text-[16.5px] leading-relaxed text-muted-foreground lg:pb-1.5">{t("body")}</p>
@@ -113,68 +113,7 @@ export function Moments() {
         <div className="flex flex-col overflow-hidden rounded-[28px] border border-border bg-card p-6 sm:p-8">
           <p className={cn(APP, "text-[12px] font-medium uppercase tracking-[0.08em] text-brand")}>{t("after.label")}</p>
           {/* The real floor, zoomed out: you walk along the desks to Jack's, and a click on the bar beside him starts the call. */}
-          <FloorScene
-            view={[24, 8.5, 19, 11]}
-            className="mt-6 h-[260px] rounded-[20px] sm:h-[288px]"
-            sitting={[
-              { ...PEOPLE.jack, chair: [34, 16], status: "available" },
-              { ...PEOPLE.noah, chair: [34, 13], status: "busy" },
-              { ...PEOPLE.sam, chair: [40, 13], status: "busy" },
-              { ...PEOPLE.grace, chair: [40, 16], status: "away" },
-            ]}
-            walking={[
-              {
-                ...emma,
-                name: t("after.you"),
-                status: "available",
-                speed: SPEED,
-                path: [
-                  [TO[0], TO[1], STAY],
-                  [FROM[0], FROM[1], WAIT],
-                ],
-                faces: { 0: "right", 1: "right" },
-              },
-              { ...PEOPLE.olivia, status: "available", path: [[31, 9, 2], [44, 9, 3]], speed: 1.6, offset: 4 },
-            ]}
-            over={
-              <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center gap-2 px-3 [--face-ring:var(--ui-card)]">
-                {[
-                  { seed: emma.id, name: t("after.you"), talks: "mc-you" },
-                  { seed: jack.id, name: jack.name, talks: "mc-them" },
-                ].map((card, index) => (
-                  <div
-                    key={card.seed}
-                    className={cn(APP, "relative aspect-video w-[min(40%,10.5rem)] overflow-hidden rounded-xl bg-card shadow-lg ring-2 ring-card/80")}
-                    style={{ animation: loop("mc-card", "ease-out", index * 0.08) }}
-                  >
-                    <span className={cn("absolute inset-0 rounded-[inherit] border-2 border-brand", index === 0 && "motion-reduce:hidden")} style={{ animation: loop(card.talks, "linear") }} />
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <Face seed={card.seed} size={34} />
-                    </span>
-                    <span className="absolute bottom-1.5 start-1.5 rounded-full bg-card/90 px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm">{card.name}</span>
-                  </div>
-                ))}
-              </div>
-            }
-          >
-            <OnFloor at={[TO[0] + 0.5, TO[1] + 0.85]}>
-              <div className="mt-[calc(var(--tile)*0.95)] motion-reduce:hidden" style={{ animation: loop("mc-bar", "ease-out") }}>
-                <NearbyBar
-                  name={jack.name}
-                  seed={jack.id}
-                  labels={{ video: tp("video"), audio: tp("audio"), message: tp("message") }}
-                  call={
-                    <span className="absolute left-1/2 top-1/2 motion-reduce:hidden" style={{ animation: loop("mc-hand") }}>
-                      <span className="absolute -left-4 -top-4 size-8 rounded-full border-2 border-brand" style={{ animation: loop("mc-ring", "ease-out") }} />
-                      <svg width="18" height="22" viewBox="0 0 22 26" className="absolute -left-[2px] -top-[2px] origin-[2px_2px] drop-shadow-[0_2px_2px_rgb(0_0_0/0.4)]" style={{ animation: loop("mc-press", "linear") }}>
-                        <path d="M2 2 L2 21 L7 16.5 L10.5 24 L13.8 22.6 L10.4 15.2 L17 15.2 Z" fill="#fff" stroke="#111" strokeWidth="1.6" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                  }
-                />
-              </div>
-            </OnFloor>
-          </FloorScene>
+          <SceneMedia name="walk-over" className="mt-6 h-[260px] rounded-[20px] sm:h-[288px]" />
           <p className="mt-auto flex items-center gap-2 text-pretty pt-8 text-[15px] text-foreground">
             <Footprints className="size-4 shrink-0 text-brand" />
             {t("after.result")}
@@ -184,6 +123,107 @@ export function Moments() {
     </section>
   );
 }
+
+/**
+ * The floor side of the question: you walk along the desks to Jack's, the bar
+ * beside him comes up, a click on it starts the call, and the call's cards
+ * drop in along the top. Everything is timed on the same 12s loop.
+ */
+export function AfterScene({ className }: { className?: string }) {
+  const t = useTranslations("home.versus");
+  const tp = useTranslations("home.preview");
+  const { emma, jack } = PEOPLE;
+  return (
+    <>
+      <style>{CALL_KEYFRAMES}</style>
+      <FloorScene
+        view={[24, 8.5, 19, 11]}
+        period={LOOP}
+        className={className}
+        sitting={[
+          { ...PEOPLE.jack, chair: [34, 16], status: "available" },
+          { ...PEOPLE.noah, chair: [34, 13], status: "busy" },
+          { ...PEOPLE.sam, chair: [40, 13], status: "busy" },
+          { ...PEOPLE.grace, chair: [40, 16], status: "away" },
+        ]}
+        walking={[
+          {
+            ...emma,
+            name: t("after.you"),
+            status: "available",
+            speed: SPEED,
+            path: [
+              [TO[0], TO[1], STAY],
+              [FROM[0], FROM[1], WAIT],
+            ],
+            faces: { 0: "right", 1: "right" },
+          },
+          { ...PEOPLE.olivia, status: "available", path: [[31, 9, 2], [44, 9, 3]], speed: 1.6, offset: 4 },
+        ]}
+        over={
+          <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center gap-2 px-3 [--face-ring:var(--ui-card)]">
+            {[
+              { seed: emma.id, name: t("after.you"), talks: "mc-you" },
+              { seed: jack.id, name: jack.name, talks: "mc-them" },
+            ].map((card, index) => (
+              <div
+                key={card.seed}
+                className={cn(APP, "relative aspect-video w-[min(40%,10.5rem)] overflow-hidden rounded-xl bg-card shadow-lg ring-2 ring-card/80")}
+                style={{ animation: loop("mc-card", "ease-out", index * 0.08) }}
+              >
+                <span className={cn("absolute inset-0 rounded-[inherit] border-2 border-brand", index === 0 && "motion-reduce:hidden")} style={{ animation: loop(card.talks, "linear") }} />
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <Face seed={card.seed} size={34} />
+                </span>
+                <span className="absolute bottom-1.5 start-1.5 rounded-full bg-card/90 px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm">{card.name}</span>
+              </div>
+            ))}
+          </div>
+        }
+      >
+        <OnFloor at={[TO[0] + 0.5, TO[1] + 0.85]}>
+          <div className="mt-[calc(var(--tile)*0.95)] motion-reduce:hidden" style={{ animation: loop("mc-bar", "ease-out") }}>
+            <NearbyBar
+              name={jack.name}
+              seed={jack.id}
+              labels={{ video: tp("video"), audio: tp("audio"), message: tp("message") }}
+              call={
+                <span className="absolute left-1/2 top-1/2 motion-reduce:hidden" style={{ animation: loop("mc-hand") }}>
+                  <span className="absolute -left-4 -top-4 size-8 rounded-full border-2 border-brand" style={{ animation: loop("mc-ring", "ease-out") }} />
+                  <svg width="18" height="22" viewBox="0 0 22 26" className="absolute -left-[2px] -top-[2px] origin-[2px_2px] drop-shadow-[0_2px_2px_rgb(0_0_0/0.4)]" style={{ animation: loop("mc-press", "linear") }}>
+                    <path d="M2 2 L2 21 L7 16.5 L10.5 24 L13.8 22.6 L10.4 15.2 L17 15.2 Z" fill="#fff" stroke="#111" strokeWidth="1.6" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              }
+            />
+          </div>
+        </OnFloor>
+      </FloorScene>
+    </>
+  );
+}
+
+/** The third step: someone walking in on the first day, past two already there. */
+export const STEP_WALK = {
+  view: [15, 8, 17, 10] as [number, number, number, number],
+  standing: [
+    { ...PEOPLE.sam, at: [24, 14] as [number, number], face: "left" as const, status: "available" },
+    { ...PEOPLE.olivia, at: [25, 13] as [number, number], face: "down" as const, status: "busy" },
+  ],
+  walking: [
+    {
+      ...PEOPLE.emma,
+      status: "available",
+      path: [
+        [17, 14, 2.4],
+        [22, 14, 3],
+        [22, 12, 1.5],
+        [17, 12],
+      ] as Array<[number, number, number?]>,
+      faces: { 1: "right" as const },
+    },
+  ],
+};
 
 const CASE_ICONS: Partial<Record<LandingKey, ReactNode>> = {
   virtualOffice: <Building2 />,
@@ -323,25 +363,8 @@ export function Steps() {
     {
       key: "walk",
       art: (
-        <FloorScene
-          view={[15, 8, 17, 10]}
-          standing={[
-            { ...PEOPLE.sam, at: [24, 14], face: "left", status: "available" },
-            { ...PEOPLE.olivia, at: [25, 13], face: "down", status: "busy" },
-          ]}
-          walking={[
-            {
-              ...PEOPLE.emma,
-              status: "available",
-              path: [
-                [17, 14, 2.4],
-                [22, 14, 3],
-                [22, 12, 1.5],
-                [17, 12],
-              ],
-              faces: { 1: "right" },
-            },
-          ]}
+        <SceneMedia
+          name="walk-in"
           className="h-full w-full"
           over={
             <span

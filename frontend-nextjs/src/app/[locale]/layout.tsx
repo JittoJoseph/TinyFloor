@@ -21,6 +21,13 @@ export function generateStaticParams() {
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
+/** The messages the browser needs on every page: none of the site's own scripts read any beyond these. */
+const SHARED = ["common", "languageSwitcher"];
+
+function pick(messages: Record<string, unknown>, keys: string[]) {
+  return Object.fromEntries(keys.filter((key) => key in messages).map((key) => [key, messages[key]]));
+}
+
 export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale: locale as Locale, namespace: "metadata" });
@@ -88,7 +95,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   setRequestLocale(locale);
-  const messages = await getMessages();
+  // Only what every page's own scripts read. The site's pages are put
+  // together on the server, which has every message; the app screens get the
+  // rest from (app)/layout. The whole set is some 50KB a page otherwise.
+  const messages = pick(await getMessages(), SHARED);
 
   return (
     // The app routes set their theme on <html> before React loads (lib/theme-script.ts).

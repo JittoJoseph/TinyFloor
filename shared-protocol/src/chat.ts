@@ -23,6 +23,8 @@ export const CHANNEL_NAME_MAX = 32;
  */
 export const LOBBY_CHAT = "lobby";
 export const LOBBY_CHANNELS = ["general", "introductions", "feedback"] as const;
+/** Who a change was made by when TinyFloor's admin made it, rather than the author. */
+export const MODERATOR = "moderator";
 export const LOBBY_RETENTION_DAYS = 7;
 /** Kept per channel, oldest trimmed by the nightly job. */
 export const CHANNEL_HISTORY_MAX = 5000;
@@ -76,8 +78,9 @@ export type ChatClientMessage =
   | { t: "chat_channel"; name: string }
   | { t: "chat_dm"; userId: string }
   /** The lobby only: change or take back something you said. */
-  | { t: "chat_edit"; seq: number; body: string }
-  | { t: "chat_delete"; seq: number };
+  // `channel` is only needed for a lobby direct message, which isn't stored anywhere to look it up.
+  | { t: "chat_edit"; seq: number; body: string; channel?: string }
+  | { t: "chat_delete"; seq: number; channel?: string };
 
 /** What the chat object sends down. */
 export type ChatServerMessage =
@@ -86,8 +89,10 @@ export type ChatServerMessage =
   | { t: "chat_page"; channel: string; messages: ChatMessage[]; more: boolean }
   | { t: "chat_reacted"; seq: number; channel: string; emoji: string; by: string; on: boolean }
   | { t: "chat_channel"; channel: ChannelSummary }
-  | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number }
-  | { t: "chat_deleted"; seq: number; channel: string }
+  // `by` is who changed it: its author, or MODERATOR. A lobby direct message was never stored, so
+  // the server can't check it; clients apply a change to one only when `by` is its author.
+  | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string }
+  | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }
   | { t: "chat_error"; code: string };

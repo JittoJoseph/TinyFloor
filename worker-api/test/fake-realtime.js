@@ -23,6 +23,14 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async removeMember(officeId, userId) {
     calls.push(["removeMember", officeId, userId]);
   }
+  async lobbyChat(channel, before) {
+    calls.push(["lobbyChat", channel, before]);
+    return { channels: [{ id: "general", messages: 1, lastAt: 1 }], channel: "general", messages: [], more: false };
+  }
+  async moderateLobbyChat(seq, change) {
+    calls.push(["moderateLobbyChat", seq, change]);
+    return seq !== 404;
+  }
   async officeCreated(event) {
     calls.push(["officeCreated", event.office, event.owner]);
   }

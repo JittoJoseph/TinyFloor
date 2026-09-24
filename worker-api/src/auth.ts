@@ -50,8 +50,9 @@ export function authRoutes(router: Router): void {
       const current = await currentUser(env, request, ctx);
       // A guest who signs up keeps their name and character unless they chose new ones.
       const upgrading = current?.isGuest ? current : null;
-      const displayName = cleanDisplayName(body.displayName) || upgrading?.displayName || "";
-      if (!displayName) throw new HttpError(400, "name_required", "Pick a name", "displayName");
+      // Only an email and a password are asked for: the name people see and the character are asked at
+      // the first door, so until then the name is made from the address.
+      const displayName = cleanDisplayName(body.displayName) || upgrading?.displayName || nameFromEmail(email);
       const character = isCharacter(body.character) ? body.character : (upgrading?.character ?? DEFAULT_CHARACTER);
       await verifyTurnstile(env, request, body.turnstileToken);
 
@@ -81,7 +82,8 @@ export function authRoutes(router: Router): void {
       }
 
       const { sessionId, cookie } = await createSession(env, request, userId, ACCOUNT_SESSION_MS);
-      const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, sessionId };
+      // A guest who signs up was introduced at the door they came in by.
+      const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, introduced: !!upgrading, sessionId };
       return json({ user: publicUser(user) }, { status: 201, headers: { "Set-Cookie": cookie } });
     })
 
@@ -98,10 +100,21 @@ export function authRoutes(router: Router): void {
       }
 
       const account = await env.DB.prepare(
-        "SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link FROM users WHERE email = ? AND is_guest = 0",
+        `SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link,
+                introduced_at IS NOT NULL AS introduced
+           FROM users WHERE email = ? AND is_guest = 0`,
       )
         .bind(email)
-        .first<{ id: string; email: string; password_hash: string | null; display_name: string; character: string; has_google: number; link: string | null }>();
+        .first<{
+          id: string;
+          email: string;
+          password_hash: string | null;
+          display_name: string;
+          character: string;
+          has_google: number;
+          link: string | null;
+          introduced: number;
+        }>();
 
       const emailGuard = guard(env, `email:${email}`);
       const verdict = await emailGuard.verify(password.slice(0, 256), account?.password_hash ?? null);
@@ -142,6 +155,7 @@ export function authRoutes(router: Router): void {
         hasPassword: true,
         hasGoogle: found.has_google === 1,
         link: found.link,
+        introduced: found.introduced === 1,
         sessionId,
       };
       return json({ user: publicUser(user) }, { headers: { "Set-Cookie": cookie } });
@@ -232,11 +246,15 @@ export function authRoutes(router: Router): void {
       const character = (body.character as string | undefined) ?? user.character;
       // A link is for accounts; a guest's profile lasts a week.
       const link = body.link === undefined || user.isGuest ? (user.link ?? null) : cleanLink(body.link);
+      // Said at their first door: who they are, and who they walk in as.
+      const introduced = user.introduced || body.introduced === true;
 
-      await env.DB.prepare("UPDATE users SET display_name = ?, character = ?, link = ? WHERE id = ?")
-        .bind(displayName, character, link, user.id)
+      await env.DB.prepare(
+        "UPDATE users SET display_name = ?, character = ?, link = ?, introduced_at = CASE WHEN ? THEN COALESCE(introduced_at, ?) ELSE introduced_at END WHERE id = ?",
+      )
+        .bind(displayName, character, link, introduced ? 1 : 0, Date.now(), user.id)
         .run();
-      return json({ user: publicUser({ ...user, displayName, character, link }) });
+      return json({ user: publicUser({ ...user, displayName, character, link, introduced }) });
     })
 
     // Someone's profile, for whoever they share a floor or a chat with: their name and their link.
@@ -306,5 +324,17 @@ export function publicUser(user: User) {
     password: !!user.hasPassword,
     google: !!user.hasGoogle,
     link: user.link ?? null,
+    // Guests always are: they said who they are at the door.
+    introduced: user.isGuest || user.introduced !== false,
   };
+}
+
+/** A name to go by until someone says theirs: "jitto.joseph67@…" is Jitto Joseph. */
+export function nameFromEmail(email: string): string {
+  const words = email
+    .split("@")[0]
+    .split(/[._+\-\d]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  return cleanDisplayName(words.join(" ")) || cleanDisplayName(email.split("@")[0]) || "New here";
 }

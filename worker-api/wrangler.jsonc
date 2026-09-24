@@ -33,7 +33,9 @@
   ],
   // The preview system: the same code with its own database, so anything tried
   // on preview.tinyfloor.com never touches real accounts or offices. TURN and
-  // the SFU are the same services; only the credentials differ.
+  // the SFU are the same services; only the credentials differ. Every push to dev
+  // that touches worker-api/ or shared-protocol/ deploys it (the tinyfloor-api-preview
+  // Workers Builds project runs `pnpm run deploy:preview`, migrations first).
   "env": {
     "preview": {
       "name": "tinyfloor-api-preview",

@@ -36,12 +36,12 @@ const buttonClass = {
 };
 
 /**
- * Home, in the panel: your office, since most people have one. Who is in it
- * now and where they sit, your team, and the way in. With a few offices the
- * header switches between them; with none, it shows how to make one.
+ * Home: your office, since most people have one. Who is in it now and where
+ * they sit, your team, and the way in. With a few offices a switcher picks
+ * between them; with none, it shows how to make one.
  */
-export function HomeView() {
-  const t = useTranslations("dashboard");
+/** Your offices, and the one on show: picked, or else the one with the most people in it (the first, when nobody is in). */
+export function useMyOffices() {
   const [offices, setOffices] = useState<OfficeSummary[] | null>(null);
   const [picked, setPicked] = useState<string | null>(null);
 
@@ -56,35 +56,42 @@ export function HomeView() {
     };
   }, []);
 
-  // Until one is picked, the office with the most people in it (the first, when nobody is in).
   const busiest = offices?.reduce<OfficeSummary | undefined>((best, one) => (!best || (one.here ?? 0) > (best.here ?? 0) ? one : best), undefined);
   const office = offices?.find((one) => one.id === picked) ?? busiest;
+  return { offices, office, pick: setPicked };
+}
+
+export function HomeView() {
+  const t = useTranslations("dashboard");
+  const { offices, office, pick } = useMyOffices();
+  const several = !!offices && offices.length > 1;
 
   return (
-    <div className="absolute inset-0 z-[60] flex flex-col bg-card">
-      <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4 sm:px-6">
-        {offices && offices.length > 1 && office ? (
-          <OfficeMenu offices={offices} office={office} onPick={setPicked} />
-        ) : (
-          <h1 className="text-[15px] font-semibold text-foreground">{t("home")}</h1>
-        )}
-        {!!offices?.length && (
+    <>
+      {several && office && (
+        <div className="mb-8 flex items-center gap-2">
+          <OfficeMenu offices={offices} office={office} onPick={pick} />
           <Link href="/create" className={cn(buttonClass.quiet, "ms-auto")}>
             <Plus className="size-3.5" />
             {t("newOffice")}
           </Link>
-        )}
-      </header>
-      <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
-          {!offices ? <Loading /> : office ? <Overview key={office.id} office={office} /> : <NoOffice />}
         </div>
-      </div>
-    </div>
+      )}
+      {!offices ? <Loading /> : office ? <Overview key={office.id} office={office} /> : <NoOffice />}
+      {offices?.length === 1 && (
+        <Link
+          href="/create"
+          className="mt-2 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <Plus className="size-3.5" />
+          {t("anotherOffice")}
+        </Link>
+      )}
+    </>
   );
 }
 
-function OfficeMenu({ offices, office, onPick }: { offices: OfficeSummary[]; office: OfficeSummary; onPick: (id: string) => void }) {
+export function OfficeMenu({ offices, office, onPick }: { offices: OfficeSummary[]; office: OfficeSummary; onPick: (id: string) => void }) {
   const t = useTranslations("dashboard");
   const router = useRouter();
   return (
@@ -125,7 +132,7 @@ function OfficeMenu({ offices, office, onPick }: { offices: OfficeSummary[]; off
 }
 
 /** One office at a glance: the way in, its floor with whoever is in, and its people. */
-function Overview({ office }: { office: OfficeSummary }) {
+export function Overview({ office }: { office: OfficeSummary }) {
   const t = useTranslations("dashboard");
   const ts = useTranslations("shell");
   const tRoles = useTranslations("office.roles");
@@ -267,7 +274,7 @@ function PersonRow({
 }
 
 /** No office yet: what one is, the way to make one, and the lobby in the meantime. */
-function NoOffice() {
+export function NoOffice() {
   const t = useTranslations("dashboard");
   return (
     <>
@@ -293,7 +300,7 @@ function NoOffice() {
   );
 }
 
-function Loading() {
+export function Loading() {
   return (
     <div aria-hidden>
       <div className="flex items-center gap-4">

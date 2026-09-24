@@ -1143,7 +1143,8 @@
     "seats": "{used} af {seats} pladser",
     "manage": "Administrer",
     "seeAll": "Se alle",
-    "lobbyNote": "Vil du møde nye mennesker? Kig forbi den åbne lobby"
+    "lobbyNote": "Vil du møde nye mennesker? Kig forbi den åbne lobby",
+    "anotherOffice": "Et team mere? Lav et nyt kontor"
   },
   "home": {
     "nav": {

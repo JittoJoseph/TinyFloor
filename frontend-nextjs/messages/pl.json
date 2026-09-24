@@ -1143,7 +1143,8 @@
     "seats": "{used} z {seats} miejsc",
     "manage": "Zarządzaj",
     "seeAll": "Zobacz wszystkich",
-    "lobbyNote": "Chcesz poznać nowych ludzi? Zajrzyj do otwartego lobby"
+    "lobbyNote": "Chcesz poznać nowych ludzi? Zajrzyj do otwartego lobby",
+    "anotherOffice": "Kolejny zespół? Załóż nowe biuro"
   },
   "home": {
     "nav": {

@@ -1143,7 +1143,8 @@
     "seats": "{seats}席中{used}席",
     "manage": "管理",
     "seeAll": "全員を見る",
-    "lobbyNote": "新しい人に会いたいときは、公開ロビーへどうぞ"
+    "lobbyNote": "新しい人に会いたいときは、公開ロビーへどうぞ",
+    "anotherOffice": "別のチームも？新しいオフィスをつくる"
   },
   "home": {
     "nav": {

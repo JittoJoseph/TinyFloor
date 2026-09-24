@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { Loader } from "@/components/motion/loader";
-import { HomeShell } from "@/components/app/HomeShell";
+import { HomeFrame } from "@/components/app/HomeFrame";
 import { AccountView } from "@/components/account/AccountView";
 
 /** Your account, beside home in the same frame. */
@@ -25,8 +25,8 @@ export default function AccountPage() {
     );
   }
   return (
-    <HomeShell active="account">
+    <HomeFrame active="account">
       <AccountView />
-    </HomeShell>
+    </HomeFrame>
   );
 }

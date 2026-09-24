@@ -1143,7 +1143,8 @@
     "seats": "{used} av {seats} platser",
     "manage": "Hantera",
     "seeAll": "Visa alla",
-    "lobbyNote": "Vill du träffa nya människor? Titta in i den öppna lobbyn"
+    "lobbyNote": "Vill du träffa nya människor? Titta in i den öppna lobbyn",
+    "anotherOffice": "Ett till team? Skapa ett nytt kontor"
   },
   "home": {
     "nav": {

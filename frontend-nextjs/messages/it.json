@@ -1143,7 +1143,8 @@
     "seats": "{used} di {seats} posti",
     "manage": "Gestisci",
     "seeAll": "Vedi tutti",
-    "lobbyNote": "Vuoi conoscere gente nuova? Passa dalla hall pubblica"
+    "lobbyNote": "Vuoi conoscere gente nuova? Passa dalla hall pubblica",
+    "anotherOffice": "Un altro team? Crea un nuovo ufficio"
   },
   "home": {
     "nav": {

@@ -967,7 +967,6 @@
       "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
       "passwordSet": "Log in met je e-mail en wachtwoord.",
-      "faceNote": "Je gezicht wordt getekend vanuit je account, overal hetzelfde. Er wordt niets geüpload.",
       "signOutNote": "Log uit bij TinyFloor in deze browser."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
     "makeTitle": "Laten we je kantoor maken",
     "yourNewOffice": "Je nieuwe kantoor",
-    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen."
+    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen.",
+    "otherWays": "Andere manieren om binnen te komen",
+    "lobbyBody": "Loop binnen en ontmoet mensen.",
+    "yourAccount": "Je account"
   },
   "home": {
     "nav": {

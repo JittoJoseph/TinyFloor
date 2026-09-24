@@ -967,7 +967,6 @@
       "profileNote": "Twoje imię i link, gdziekolwiek wejdziesz.",
       "password": "Hasło",
       "passwordSet": "Logujesz się e-mailem i hasłem.",
-      "faceNote": "Twoja twarz jest rysowana na podstawie konta, wszędzie taka sama. Nic nie jest przesyłane.",
       "signOutNote": "Wyloguj się z TinyFloor w tej przeglądarce."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "To nie wygląda na link z zaproszeniem. Wklej cały link.",
     "makeTitle": "Stwórzmy twoje biuro",
     "yourNewOffice": "Twoje nowe biuro",
-    "freeRename": "Za darmo dla maks. 3 osób. Nazwę możesz zmienić w każdej chwili."
+    "freeRename": "Za darmo dla maks. 3 osób. Nazwę możesz zmienić w każdej chwili.",
+    "otherWays": "Inne sposoby wejścia",
+    "lobbyBody": "Wpadnij i poznaj ludzi.",
+    "yourAccount": "Twoje konto"
   },
   "home": {
     "nav": {

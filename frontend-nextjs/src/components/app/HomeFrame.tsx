@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { DoorOpen } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 import { lobbyPath } from "@/lib/links";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
   const t = useTranslations("dashboard");
   const ts = useTranslations("shell");
   const reduce = useReducedMotion();
+  const { user } = useAuth();
   const lobby = { href: lobbyPath, label: ts("publicLobby") };
   const tabs = [
     { key: "home", href: "/dashboard", label: t("home") },
@@ -29,7 +31,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
   ] as const;
 
   return (
-    <div className="min-h-dvh bg-rail [--face-ring:var(--ui-rail)]">
+    <div data-ground="rail" className="min-h-dvh bg-rail [--face-ring:var(--ui-rail)]">
       <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
         {/* The page fades out under the floating bar instead of cutting off at it. */}
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-rail from-40% to-transparent" />
@@ -67,7 +69,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
             {lobby.label}
           </Link>
           <LanguageMenu />
-          <YouMenu onFloor={false} bar leave={lobby} />
+          {user ? <YouMenu onFloor={false} bar leave={lobby} /> : <span aria-hidden className="size-[34px] shrink-0 animate-pulse rounded-full bg-foreground/[0.07]" />}
         </nav>
       </header>
       <main className="mx-auto w-full max-w-3xl px-4 pb-24 pt-28 [--group-bg:var(--ui-card)] [--group-shadow:0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-28px_rgb(0_0_0/0.45)] sm:px-6 sm:pt-32">{children}</main>

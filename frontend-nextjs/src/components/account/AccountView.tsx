@@ -13,7 +13,7 @@ import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
-import { Face } from "@/components/ui/Face";
+import { LitFace } from "@/components/ui/LitFace";
 import { CharacterPicker } from "@/components/entry/CharacterPicker";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
@@ -35,7 +35,7 @@ const SECTIONS: Section[] = ["profile", "signin", "appearance"];
  */
 export function AccountView() {
   const t = useTranslations("office.profile");
-  const ts = useTranslations("shell");
+  const td = useTranslations("dashboard");
   const reduce = useReducedMotion();
   const [section, setSection] = useState<Section>("profile");
 
@@ -54,40 +54,56 @@ export function AccountView() {
     window.history.replaceState(null, "", url);
   };
 
+  const { user } = useAuth();
+  if (!user) return null;
+
   return (
-    <>
-      <h1 className="text-[22px] font-semibold tracking-tight text-foreground">{ts("account")}</h1>
-      <div role="tablist" className="-mx-4 mt-4 flex gap-1 overflow-x-auto border-b border-border px-4 [scrollbar-width:none] sm:mx-0 sm:px-0">
-        {SECTIONS.map((one) => (
-          <button
-            key={one}
-            type="button"
-            role="tab"
-            aria-selected={section === one}
-            onClick={() => open(one)}
-            className={cn(
-              "relative flex h-10 shrink-0 cursor-pointer items-center gap-2 px-3 text-[13.5px] transition-colors [&_svg]:size-4",
-              section === one ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {ICONS[one]}
-            {t(`sections.${one}`)}
-            {section === one && (
-              <motion.span
-                layoutId="account-tab"
-                transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-                className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-foreground"
-              />
-            )}
-          </button>
-        ))}
+    <div className="mx-auto max-w-[640px]">
+      {/* You, the way everyone else sees you: centered where there is room, beside your name on a phone. */}
+      <div className="flex items-center gap-4 sm:flex-col sm:gap-0 sm:text-center">
+        <LitFace seed={user.id} size={80} phone={60} />
+        <div className="min-w-0 sm:mt-7">
+          <p className="text-[13px] font-medium text-muted-foreground">{td("yourAccount")}</p>
+          <h1 className="truncate text-[24px] font-semibold leading-tight tracking-[-0.02em] text-foreground sm:mt-0.5 sm:text-[30px] sm:tracking-[-0.025em]">
+            {user.displayName}
+          </h1>
+          {user.email && <p className="truncate text-[13.5px] text-muted-foreground">{user.email}</p>}
+        </div>
       </div>
-      <div role="tabpanel" className="mt-8">
+
+      <div className="mt-8 flex sm:justify-center">
+        <div role="tablist" className="grid w-full grid-cols-3 gap-1 rounded-full border border-border bg-card/60 p-1 sm:w-auto">
+          {SECTIONS.map((one) => (
+            <button
+              key={one}
+              type="button"
+              role="tab"
+              aria-selected={section === one}
+              onClick={() => open(one)}
+              className={cn(
+                "relative flex h-9 min-w-0 cursor-pointer items-center justify-center gap-2 rounded-full px-3 text-[13.5px] transition-colors sm:px-4 [&_svg]:size-4",
+                section === one ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {section === one && (
+                <motion.span
+                  layoutId="account-tab"
+                  transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
+                  className="absolute inset-0 rounded-full bg-foreground/[0.08]"
+                />
+              )}
+              <span className="relative hidden sm:inline-flex">{ICONS[one]}</span>
+              <span className="relative truncate">{t(`sections.${one}`)}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <div role="tabpanel" className="mt-10">
         {section === "profile" && <Profile />}
         {section === "signin" && <SignIn />}
         {section === "appearance" && <General />}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -160,14 +176,7 @@ export function Profile() {
     <>
       <Group title={t("sections.profile")} note={t("profileNote")}>
         <form onSubmit={save}>
-          <div className="flex items-center gap-4 px-4 py-4">
-            <Face seed={user.id} size={44} />
-            <div className="min-w-0">
-              <p className="truncate text-[14px] font-medium text-foreground">{currentName.trim() || user.displayName}</p>
-              <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("faceNote")}</p>
-            </div>
-          </div>
-          <div className="border-t border-border">
+          <div>
             <FieldRow id="profile-name" title={t("name")}>
               <input
                 id="profile-name"

@@ -967,7 +967,6 @@
       "profileNote": "어디에 들어가든 보이는 이름과 링크예요.",
       "password": "비밀번호",
       "passwordSet": "이메일과 비밀번호로 로그인해요.",
-      "faceNote": "얼굴은 계정을 바탕으로 그려지며 어디서나 같아요. 업로드되는 것은 없어요.",
       "signOutNote": "이 브라우저에서 TinyFloor 로그아웃"
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "초대 링크가 아닌 것 같아요. 링크 전체를 붙여넣으세요.",
     "makeTitle": "오피스를 만들어 봐요",
     "yourNewOffice": "새 오피스",
-    "freeRename": "3명까지 무료. 이름은 언제든 바꿀 수 있어요."
+    "freeRename": "3명까지 무료. 이름은 언제든 바꿀 수 있어요.",
+    "otherWays": "다른 방법으로 들어가기",
+    "lobbyBody": "들러서 사람들을 만나 보세요.",
+    "yourAccount": "내 계정"
   },
   "home": {
     "nav": {

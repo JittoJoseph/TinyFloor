@@ -967,7 +967,6 @@
       "profileNote": "Ditt namn och din länk, var du än går in.",
       "password": "Lösenord",
       "passwordSet": "Logga in med din e-post och ditt lösenord.",
-      "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant överallt. Inget laddas upp.",
       "signOutNote": "Logga ut från TinyFloor i den här webbläsaren."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken.",
     "makeTitle": "Nu gör vi ditt kontor",
     "yourNewOffice": "Ditt nya kontor",
-    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst."
+    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst.",
+    "otherWays": "Andra vägar in",
+    "lobbyBody": "Titta in och träffa folk.",
+    "yourAccount": "Ditt konto"
   },
   "home": {
     "nav": {

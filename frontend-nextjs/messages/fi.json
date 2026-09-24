@@ -967,7 +967,6 @@
       "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
       "password": "Salasana",
       "passwordSet": "Kirjaudu sähköpostilla ja salasanalla.",
-      "faceNote": "Kasvosi piirretään tilistäsi, samanlaisina kaikkialla. Mitään ei ladata.",
       "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "Tuo ei näytä kutsulinkiltä. Liitä koko linkki.",
     "makeTitle": "Tehdään toimistosi",
     "yourNewOffice": "Uusi toimistosi",
-    "freeRename": "Ilmainen enintään 3 hengelle. Voit vaihtaa nimen milloin vain."
+    "freeRename": "Ilmainen enintään 3 hengelle. Voit vaihtaa nimen milloin vain.",
+    "otherWays": "Muita tapoja sisään",
+    "lobbyBody": "Poikkea ja tapaa ihmisiä.",
+    "yourAccount": "Tilisi"
   },
   "home": {
     "nav": {

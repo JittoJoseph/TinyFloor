@@ -967,7 +967,6 @@
       "profileNote": "Your name and link, wherever you walk in.",
       "password": "Password",
       "passwordSet": "Sign in with your email and password.",
-      "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded.",
       "signOutNote": "Sign out of TinyFloor in this browser."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "That doesn't look like an invite link. Paste the whole link.",
     "makeTitle": "Let's make your office",
     "yourNewOffice": "Your new office",
-    "freeRename": "Free for up to 3 people. You can rename it any time."
+    "freeRename": "Free for up to 3 people. You can rename it any time.",
+    "otherWays": "Other ways in",
+    "lobbyBody": "Drop in and meet people.",
+    "yourAccount": "Your account"
   },
   "home": {
     "nav": {

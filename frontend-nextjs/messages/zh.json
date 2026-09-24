@@ -967,7 +967,6 @@
       "profileNote": "你的名字和链接，走到哪里都一样。",
       "password": "密码",
       "passwordSet": "用邮箱和密码登录。",
-      "faceNote": "你的头像由账户生成，在每个页面都一样。不会上传任何内容。",
       "signOutNote": "在此浏览器中退出 TinyFloor。"
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "这看起来不是邀请链接。请粘贴完整链接。",
     "makeTitle": "来创建你的办公室",
     "yourNewOffice": "你的新办公室",
-    "freeRename": "最多 3 人免费。名称随时可以修改。"
+    "freeRename": "最多 3 人免费。名称随时可以修改。",
+    "otherWays": "其他进入方式",
+    "lobbyBody": "进来认识新朋友。",
+    "yourAccount": "你的账户"
   },
   "home": {
     "nav": {

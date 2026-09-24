@@ -967,7 +967,6 @@
       "profileNote": "Tu nombre y tu enlace, entres donde entres.",
       "password": "Contraseña",
       "passwordSet": "Inicia sesión con tu correo y contraseña.",
-      "faceNote": "Tu cara se dibuja a partir de tu cuenta, igual en todas las pantallas. No se sube nada.",
       "signOutNote": "Cierra sesión en TinyFloor en este navegador."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "Eso no parece un enlace de invitación. Pega el enlace completo.",
     "makeTitle": "Vamos a crear tu oficina",
     "yourNewOffice": "Tu nueva oficina",
-    "freeRename": "Gratis hasta 3 personas. Puedes cambiarle el nombre cuando quieras."
+    "freeRename": "Gratis hasta 3 personas. Puedes cambiarle el nombre cuando quieras.",
+    "otherWays": "Otras formas de entrar",
+    "lobbyBody": "Pásate y conoce gente.",
+    "yourAccount": "Tu cuenta"
   },
   "home": {
     "nav": {

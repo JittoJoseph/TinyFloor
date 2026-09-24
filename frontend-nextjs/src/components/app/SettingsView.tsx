@@ -125,17 +125,24 @@ export function SettingsView() {
 }
 
 /** A group of settings on one card, the way every settings page reads. */
-function Group({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
+export function Group({ title, note, action, children }: { title: string; note?: string; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="mb-8">
-      <h3 className="text-[13px] font-semibold text-foreground">{title}</h3>
-      {note && <p className="mt-0.5 text-[12.5px] text-muted-foreground">{note}</p>}
-      <div className="mt-3 divide-y divide-border rounded-2xl border border-border bg-background">{children}</div>
+      <div className="flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h3 className="text-[13px] font-semibold text-foreground">{title}</h3>
+          {note && <p className="mt-0.5 text-[12.5px] text-muted-foreground">{note}</p>}
+        </div>
+        {action}
+      </div>
+      <div className="mt-3 divide-y divide-border rounded-2xl border border-border bg-background [--face-ring:var(--ui-background)]">
+        {children}
+      </div>
     </section>
   );
 }
 
-function Row({
+export function Row({
   title,
   description,
   control,
@@ -185,7 +192,8 @@ function Toggle({
   );
 }
 
-function General() {
+/** Theme and language: the same in an office's settings and on your account. */
+export function General() {
   const t = useTranslations("settings");
   const ts = useTranslations("shell");
   const theme = useTheme();

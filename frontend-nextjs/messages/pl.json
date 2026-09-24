@@ -977,15 +977,14 @@
       "googleConnected": "Połączono",
       "sections": {
         "profile": "Profil",
-        "character": "Postać",
         "signin": "Logowanie",
         "appearance": "Wygląd"
       },
       "profileNote": "Twoje imię i link, gdziekolwiek wejdziesz.",
-      "preview": "Co widzą inni",
-      "noLink": "Brak linku",
       "password": "Hasło",
-      "passwordSet": "Logujesz się e-mailem i hasłem."
+      "passwordSet": "Logujesz się e-mailem i hasłem.",
+      "faceNote": "Twoja twarz jest rysowana na podstawie konta, wszędzie taka sama. Nic nie jest przesyłane.",
+      "signOutNote": "Wyloguj się z TinyFloor w tej przeglądarce."
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nowe biuro",
-    "lobby": "Publiczne lobby",
-    "lobbyBody": "Wpadnij i poznaj tych, którzy są.",
     "emptyTitle": "Załóż swoje pierwsze biuro",
     "emptyBody": "Biuro to piętro, po którym chodzi twój zespół, z czatem i rozmowami. Trzech członków za darmo.",
     "walkIn": "Wejdź",
     "home": "Start",
-    "editProfile": "Edytuj profil",
     "yourOffices": "Twoje biura",
     "invite": "Zaproś ludzi",
-    "officeSettings": "Ustawienia biura",
-    "firstIn": "Jeszcze nikogo nie ma. Wejdź jako pierwszy.",
-    "notIn": "Nieobecni: {count}",
-    "inviteTeam": "Zaproś swój zespół",
-    "makeOffice": "Załóż swoje biuro"
+    "firstIn": "Teraz nikogo nie ma. Kto wejdzie, pojawi się tutaj.",
+    "makeOffice": "Załóż swoje biuro",
+    "inNow": "{count, plural, =0 {Nikogo} other {Teraz: #}}",
+    "inOffice": "W biurze",
+    "team": "Zespół",
+    "seats": "{used} z {seats} miejsc",
+    "manage": "Zarządzaj",
+    "seeAll": "Zobacz wszystkich",
+    "lobbyNote": "Chcesz poznać nowych ludzi? Zajrzyj do otwartego lobby"
   },
   "home": {
     "nav": {

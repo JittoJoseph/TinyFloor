@@ -977,15 +977,14 @@
       "googleConnected": "Forbundet",
       "sections": {
         "profile": "Profil",
-        "character": "Figur",
         "signin": "Log ind",
         "appearance": "Udseende"
       },
       "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
-      "preview": "Det ser andre",
-      "noLink": "Intet link endnu",
       "password": "Adgangskode",
-      "passwordSet": "Log ind med din e-mail og adgangskode."
+      "passwordSet": "Log ind med din e-mail og adgangskode.",
+      "faceNote": "Dit ansigt tegnes ud fra din konto, ens overalt. Intet bliver uploadet.",
+      "signOutNote": "Log ud af TinyFloor i denne browser."
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nyt kontor",
-    "lobby": "Den offentlige lobby",
-    "lobbyBody": "Kig forbi og mød dem, der er der.",
     "emptyTitle": "Start dit første kontor",
     "emptyBody": "Et kontor er et gulv, dit team går rundt på, med chat og opkald indbygget. Tre medlemmer er gratis.",
     "walkIn": "Gå ind",
     "home": "Hjem",
-    "editProfile": "Rediger profil",
     "yourOffices": "Dine kontorer",
     "invite": "Inviter folk",
-    "officeSettings": "Kontorindstillinger",
-    "firstIn": "Ingen er her endnu. Gå ind og bliv den første.",
-    "notIn": "{count} ikke her",
-    "inviteTeam": "Inviter dit team",
-    "makeOffice": "Lav dit kontor"
+    "firstIn": "Der er ingen lige nu. Dem, der går ind, vises her.",
+    "makeOffice": "Lav dit kontor",
+    "inNow": "{count, plural, =0 {Ingen her} other {# her nu}}",
+    "inOffice": "På kontoret",
+    "team": "Team",
+    "seats": "{used} af {seats} pladser",
+    "manage": "Administrer",
+    "seeAll": "Se alle",
+    "lobbyNote": "Vil du møde nye mennesker? Kig forbi den åbne lobby"
   },
   "home": {
     "nav": {

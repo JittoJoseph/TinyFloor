@@ -977,15 +977,14 @@
       "googleConnected": "연결됨",
       "sections": {
         "profile": "프로필",
-        "character": "캐릭터",
         "signin": "로그인",
         "appearance": "화면"
       },
       "profileNote": "어디에 들어가든 보이는 이름과 링크예요.",
-      "preview": "다른 사람에게 보이는 모습",
-      "noLink": "아직 링크가 없어요",
       "password": "비밀번호",
-      "passwordSet": "이메일과 비밀번호로 로그인해요."
+      "passwordSet": "이메일과 비밀번호로 로그인해요.",
+      "faceNote": "얼굴은 계정을 바탕으로 그려지며 어디서나 같아요. 업로드되는 것은 없어요.",
+      "signOutNote": "이 브라우저에서 TinyFloor 로그아웃"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "새 사무실",
-    "lobby": "공개 로비",
-    "lobbyBody": "들러서 있는 사람들을 만나 보세요.",
     "emptyTitle": "첫 사무실 시작하기",
     "emptyBody": "사무실은 팀이 돌아다니는 하나의 층이고, 채팅과 통화가 들어 있어요. 멤버 3명까지 무료예요.",
     "walkIn": "들어가기",
     "home": "홈",
-    "editProfile": "프로필 편집",
     "yourOffices": "내 오피스",
     "invite": "사람 초대하기",
-    "officeSettings": "오피스 설정",
-    "firstIn": "아직 아무도 없어요. 가장 먼저 들어가 보세요.",
-    "notIn": "{count}명 부재",
-    "inviteTeam": "팀 초대하기",
-    "makeOffice": "오피스 만들기"
+    "firstIn": "지금은 아무도 없어요. 들어오는 사람이 여기에 표시돼요.",
+    "makeOffice": "오피스 만들기",
+    "inNow": "{count, plural, =0 {아무도 없음} other {지금 #명}}",
+    "inOffice": "오피스에 있는 사람",
+    "team": "팀",
+    "seats": "{seats}석 중 {used}석",
+    "manage": "관리",
+    "seeAll": "모두 보기",
+    "lobbyNote": "새로운 사람을 만나고 싶다면 공개 로비에 들러 보세요"
   },
   "home": {
     "nav": {

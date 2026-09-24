@@ -977,15 +977,14 @@
       "googleConnected": "Kopplat",
       "sections": {
         "profile": "Profil",
-        "character": "Karaktär",
         "signin": "Inloggning",
         "appearance": "Utseende"
       },
       "profileNote": "Ditt namn och din länk, var du än går in.",
-      "preview": "Det här ser andra",
-      "noLink": "Ingen länk än",
       "password": "Lösenord",
-      "passwordSet": "Logga in med din e-post och ditt lösenord."
+      "passwordSet": "Logga in med din e-post och ditt lösenord.",
+      "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant överallt. Inget laddas upp.",
+      "signOutNote": "Logga ut från TinyFloor i den här webbläsaren."
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nytt kontor",
-    "lobby": "Den offentliga lobbyn",
-    "lobbyBody": "Titta in och träffa den som är där.",
     "emptyTitle": "Starta ditt första kontor",
     "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
     "walkIn": "Gå in",
     "home": "Hem",
-    "editProfile": "Redigera profil",
     "yourOffices": "Dina kontor",
     "invite": "Bjud in folk",
-    "officeSettings": "Kontorsinställningar",
-    "firstIn": "Ingen är här än. Gå in och bli först.",
-    "notIn": "{count} inte här",
-    "inviteTeam": "Bjud in ditt team",
-    "makeOffice": "Skapa ditt kontor"
+    "firstIn": "Ingen är här just nu. Den som går in syns här.",
+    "makeOffice": "Skapa ditt kontor",
+    "inNow": "{count, plural, =0 {Ingen här} other {# här nu}}",
+    "inOffice": "På kontoret",
+    "team": "Team",
+    "seats": "{used} av {seats} platser",
+    "manage": "Hantera",
+    "seeAll": "Visa alla",
+    "lobbyNote": "Vill du träffa nya människor? Titta in i den öppna lobbyn"
   },
   "home": {
     "nav": {

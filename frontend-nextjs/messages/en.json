@@ -977,15 +977,14 @@
       "googleConnected": "Connected",
       "sections": {
         "profile": "Profile",
-        "character": "Character",
         "signin": "Signing in",
         "appearance": "Appearance"
       },
       "profileNote": "Your name and link, wherever you walk in.",
-      "preview": "What people see",
-      "noLink": "No link yet",
       "password": "Password",
-      "passwordSet": "Sign in with your email and password."
+      "passwordSet": "Sign in with your email and password.",
+      "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded.",
+      "signOutNote": "Sign out of TinyFloor in this browser."
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "New office",
-    "lobby": "The public lobby",
-    "lobbyBody": "Drop in and meet whoever is around.",
     "emptyTitle": "Start your first office",
     "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
     "walkIn": "Walk in",
     "home": "Home",
-    "editProfile": "Edit profile",
     "yourOffices": "Your offices",
     "invite": "Invite people",
-    "officeSettings": "Office settings",
-    "firstIn": "Nobody's in yet. Walk in and you'll be the first.",
-    "notIn": "{count} not in",
-    "inviteTeam": "Invite your team",
-    "makeOffice": "Make your office"
+    "firstIn": "Nobody's in right now. When someone walks in, they'll show up here.",
+    "makeOffice": "Make your office",
+    "inNow": "{count, plural, =0 {Nobody in} other {# in now}}",
+    "inOffice": "In the office",
+    "team": "Team",
+    "seats": "{used} of {seats} seats",
+    "manage": "Manage",
+    "seeAll": "See everyone",
+    "lobbyNote": "Want to meet new people? Drop into the public lobby"
   },
   "home": {
     "nav": {

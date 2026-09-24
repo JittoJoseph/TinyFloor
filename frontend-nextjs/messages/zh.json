@@ -977,15 +977,14 @@
       "googleConnected": "已关联",
       "sections": {
         "profile": "个人资料",
-        "character": "角色",
         "signin": "登录",
         "appearance": "外观"
       },
       "profileNote": "你的名字和链接，走到哪里都一样。",
-      "preview": "别人看到的样子",
-      "noLink": "还没有链接",
       "password": "密码",
-      "passwordSet": "用邮箱和密码登录。"
+      "passwordSet": "用邮箱和密码登录。",
+      "faceNote": "你的头像由账户生成，在每个页面都一样。不会上传任何内容。",
+      "signOutNote": "在此浏览器中退出 TinyFloor。"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "新建办公室",
-    "lobby": "公共大厅",
-    "lobbyBody": "随时来逛逛，认识在场的人。",
     "emptyTitle": "开启你的第一个办公室",
     "emptyBody": "办公室是团队走动的一层楼，内置聊天和通话。三名成员免费。",
     "walkIn": "走进去",
     "home": "首页",
-    "editProfile": "编辑个人资料",
     "yourOffices": "你的办公室",
     "invite": "邀请成员",
-    "officeSettings": "办公室设置",
-    "firstIn": "还没有人在。走进去，做第一个到的人。",
-    "notIn": "{count} 人不在",
-    "inviteTeam": "邀请你的团队",
-    "makeOffice": "创建你的办公室"
+    "firstIn": "现在没有人。有人进来时会显示在这里。",
+    "makeOffice": "创建你的办公室",
+    "inNow": "{count, plural, =0 {没有人} other {现在 # 人}}",
+    "inOffice": "在办公室的人",
+    "team": "团队",
+    "seats": "{used}/{seats} 个座位",
+    "manage": "管理",
+    "seeAll": "查看所有人",
+    "lobbyNote": "想认识新朋友？去公共大厅看看"
   },
   "home": {
     "nav": {

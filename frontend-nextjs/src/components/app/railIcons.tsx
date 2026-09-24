@@ -6,6 +6,9 @@ import { UsersThreeIcon } from "@phosphor-icons/react/dist/csr/UsersThree";
 import { BuildingsIcon } from "@phosphor-icons/react/dist/csr/Buildings";
 import { GearSixIcon } from "@phosphor-icons/react/dist/csr/GearSix";
 import { SignOutIcon } from "@phosphor-icons/react/dist/csr/SignOut";
+import { HouseIcon } from "@phosphor-icons/react/dist/csr/House";
+import { UserCircleIcon } from "@phosphor-icons/react/dist/csr/UserCircle";
+import { DoorOpenIcon } from "@phosphor-icons/react/dist/csr/DoorOpen";
 
 /**
  * The rail's icons: Phosphor, imported one file each so only these ship.
@@ -18,4 +21,7 @@ export const RailIcons = {
   office: <BuildingsIcon />,
   settings: <GearSixIcon />,
   leave: <SignOutIcon className="rtl:-scale-x-100" />,
+  home: <HouseIcon />,
+  account: <UserCircleIcon />,
+  lobby: <DoorOpenIcon className="rtl:-scale-x-100" />,
 };

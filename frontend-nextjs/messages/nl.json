@@ -977,15 +977,14 @@
       "googleConnected": "Gekoppeld",
       "sections": {
         "profile": "Profiel",
-        "character": "Personage",
         "signin": "Inloggen",
         "appearance": "Weergave"
       },
       "profileNote": "Je naam en link, waar je ook binnenloopt.",
-      "preview": "Wat anderen zien",
-      "noLink": "Nog geen link",
       "password": "Wachtwoord",
-      "passwordSet": "Log in met je e-mail en wachtwoord."
+      "passwordSet": "Log in met je e-mail en wachtwoord.",
+      "faceNote": "Je gezicht wordt getekend vanuit je account, overal hetzelfde. Er wordt niets geüpload.",
+      "signOutNote": "Log uit bij TinyFloor in deze browser."
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",
-    "lobby": "De openbare lobby",
-    "lobbyBody": "Loop binnen en ontmoet wie er is.",
     "emptyTitle": "Begin je eerste kantoor",
     "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis.",
     "walkIn": "Naar binnen",
     "home": "Home",
-    "editProfile": "Profiel bewerken",
     "yourOffices": "Je kantoren",
     "invite": "Mensen uitnodigen",
-    "officeSettings": "Kantoorinstellingen",
-    "firstIn": "Nog niemand binnen. Loop naar binnen en wees de eerste.",
-    "notIn": "{count} niet binnen",
-    "inviteTeam": "Nodig je team uit",
-    "makeOffice": "Maak je kantoor"
+    "firstIn": "Er is nu niemand. Wie binnenloopt, verschijnt hier.",
+    "makeOffice": "Maak je kantoor",
+    "inNow": "{count, plural, =0 {Niemand binnen} other {# nu binnen}}",
+    "inOffice": "Op kantoor",
+    "team": "Team",
+    "seats": "{used} van {seats} plekken",
+    "manage": "Beheren",
+    "seeAll": "Iedereen bekijken",
+    "lobbyNote": "Zin om nieuwe mensen te ontmoeten? Loop de openbare lobby binnen"
   },
   "home": {
     "nav": {

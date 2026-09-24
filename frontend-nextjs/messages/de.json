@@ -977,15 +977,14 @@
       "googleConnected": "Verbunden",
       "sections": {
         "profile": "Profil",
-        "character": "Figur",
         "signin": "Anmelden",
         "appearance": "Darstellung"
       },
       "profileNote": "Dein Name und dein Link, überall, wo du reingehst.",
-      "preview": "So sehen dich andere",
-      "noLink": "Noch kein Link",
       "password": "Passwort",
-      "passwordSet": "Melde dich mit E-Mail und Passwort an."
+      "passwordSet": "Melde dich mit E-Mail und Passwort an.",
+      "faceNote": "Dein Gesicht wird aus deinem Konto gezeichnet, überall gleich. Nichts wird hochgeladen.",
+      "signOutNote": "Melde dich in diesem Browser von TinyFloor ab."
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",
@@ -1138,20 +1137,21 @@
   },
   "dashboard": {
     "newOffice": "Neues Büro",
-    "lobby": "Die öffentliche Lobby",
-    "lobbyBody": "Schau vorbei und triff, wer gerade da ist.",
     "emptyTitle": "Starte dein erstes Büro",
     "emptyBody": "Ein Büro ist eine Fläche, auf der dein Team herumläuft, mit Chat und Anrufen. Drei Mitglieder sind kostenlos.",
     "walkIn": "Reingehen",
     "home": "Start",
-    "editProfile": "Profil bearbeiten",
     "yourOffices": "Deine Büros",
     "invite": "Leute einladen",
-    "officeSettings": "Büro-Einstellungen",
-    "firstIn": "Noch niemand da. Geh rein und sei die erste Person.",
-    "notIn": "{count} nicht da",
-    "inviteTeam": "Lade dein Team ein",
-    "makeOffice": "Büro einrichten"
+    "firstIn": "Gerade ist niemand da. Wer reinkommt, erscheint hier.",
+    "makeOffice": "Büro einrichten",
+    "inNow": "{count, plural, =0 {Niemand da} other {# gerade da}}",
+    "inOffice": "Im Büro",
+    "team": "Team",
+    "seats": "{used} von {seats} Plätzen",
+    "manage": "Verwalten",
+    "seeAll": "Alle ansehen",
+    "lobbyNote": "Lust, neue Leute zu treffen? Schau in der öffentlichen Lobby vorbei"
   },
   "home": {
     "nav": {

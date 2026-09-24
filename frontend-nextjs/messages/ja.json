@@ -901,14 +901,6 @@
         "messages": "ダイレクトメッセージ",
         "guests": "ゲストリンク"
       },
-      "channels": {
-        "general": "全体",
-        "projects": "プロジェクト",
-        "random": "雑談"
-      },
-      "freeSeat": "空き席",
-      "you": "あなた",
-      "teammate": "チームメイト",
       "bringThem": "{count, plural, other {ここで出会った#人を誘いましょう}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "オフィス一覧へ"
   },
   "create": {
-    "eyebrow": "自分のオフィス",
     "title": "オフィスに名前を付ける",
-    "subtitle": "チームに表示される名前です。あとから変えられます。",
+    "subtitle": "チームが毎日、レールのいちばん上で目にする名前です。",
     "nameLabel": "オフィス名",
     "namePlaceholder": "Acme Studio",
-    "continue": "次へ",
-    "create": "オフィスを作る",
+    "create": "オフィスをつくる",
     "creating": "準備しています",
     "freePlan": "3人まで無料。カード不要です。",
-    "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。",
-    "steps": [
-      "名前をつける",
-      "アカウントを作る",
-      "入ってみる"
-    ],
-    "asideTitle": "あなたのオフィスが1分で完成",
-    "asideBody": "チャットと会議テーブルのある、チーム専用のフロア。3人まで無料です。"
+    "makeNamed": "{name} をつくる",
+    "seatsFree": "メンバー 1/3 · 無料",
+    "firstIn": "{name}（最初のメンバー）",
+    "continue": "次へ"
   },
   "shell": {
     "floor": "フロア",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "新しいオフィス",
-    "emptyTitle": "最初のオフィスをつくる",
-    "emptyBody": "オフィスはチームが歩き回るひとつのフロアで、チャットと通話も付いています。メンバー3人まで無料です。",
     "walkIn": "入る",
     "home": "ホーム",
     "yourOffices": "あなたのオフィス",
     "invite": "メンバーを招待",
     "firstIn": "いまは誰もいません。入ってきた人がここに表示されます。",
-    "makeOffice": "オフィスをつくる",
     "inNow": "{count, plural, =0 {誰もいません} other {#人がいます}}",
     "inOffice": "オフィスにいる人",
     "team": "チーム",
     "seats": "{seats}席中{used}席",
     "manage": "管理",
     "seeAll": "全員を見る",
-    "lobbyNote": "新しい人に会いたいときは、公開ロビーへどうぞ",
-    "anotherOffice": "別のチームも？新しいオフィスをつくる"
+    "lobbyNote": "または公開ロビーに立ち寄って、新しい人に会いましょう",
+    "anotherOffice": "別のチームも？新しいオフィスをつくる",
+    "welcome": "ようこそ、{name}さん",
+    "welcomeAnonymous": "ようこそ",
+    "welcomeBody": "3 ステップで、チームだけのフロアができます。",
+    "stepName": "オフィスに名前をつける",
+    "makeIt": "つくる",
+    "stepInvite": "チームを招待する",
+    "stepInviteBody": "一人ひとりにリンクを、ゲストにはひとつのリンクを。",
+    "stepWalk": "みんなで入る",
+    "stepWalkBody": "話したい人のところへ歩いていくだけ。チャンネルとメッセージは残ります。",
+    "invited": "招待されましたか？",
+    "invitedBody": "チームから届いたリンクを貼り付けてください。",
+    "invitePlaceholder": "招待リンクを貼り付け",
+    "join": "参加",
+    "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。"
   },
   "home": {
     "nav": {

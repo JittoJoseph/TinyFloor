@@ -2,6 +2,7 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { api, type SessionUser } from "@/lib/api";
+import { readIdentity } from "@/lib/identity";
 
 interface AuthContextType {
   user: SessionUser | null;
@@ -61,6 +62,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       cancelled = true;
     };
   }, []);
+
+  // A new account in a browser that has walked in before (as a guest, say) is
+  // who it was then: that name and character are its introduction, so the
+  // first door doesn't ask again. They can change either on their account.
+  const introducing = !!user && !user.guest && user.introduced === false;
+  useEffect(() => {
+    if (!introducing) return;
+    const known = readIdentity();
+    if (!known.name.trim()) return;
+    let cancelled = false;
+    api.updateMe({ displayName: known.name.trim(), character: known.character, introduced: true }).then(
+      ({ user: next }) => !cancelled && setUser(next),
+      () => {},
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [introducing]);
 
   const value = useMemo<AuthContextType>(
     () => ({

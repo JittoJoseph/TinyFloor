@@ -901,14 +901,6 @@
         "messages": "Mensagens diretas",
         "guests": "Links de convidado"
       },
-      "channels": {
-        "general": "geral",
-        "projects": "projetos",
-        "random": "aleatorio"
-      },
-      "freeSeat": "Vaga livre",
-      "you": "Você",
-      "teammate": "Colega",
       "bringThem": "{count, plural, one {Traga a pessoa que você conheceu aqui} other {Traga as # pessoas que você conheceu aqui}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Voltar aos teus escritórios"
   },
   "create": {
-    "eyebrow": "Seu próprio escritório",
     "title": "Dê um nome ao seu escritório",
-    "subtitle": "É o que sua equipe vai ver. Dá para mudar depois.",
+    "subtitle": "É o que a sua equipa verá todos os dias no topo da barra.",
     "nameLabel": "Nome do escritório",
     "namePlaceholder": "Acme Studio",
-    "continue": "Continuar",
-    "create": "Criar escritório",
+    "create": "Criar o meu escritório",
     "creating": "Preparando tudo",
     "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
-    "justLooking": "Só dando uma olhada? <link>Entre no escritório público</link>.",
-    "steps": [
-      "Dê um nome",
-      "Crie uma conta",
-      "Entre"
-    ],
-    "asideTitle": "Seu escritório, pronto em um minuto",
-    "asideBody": "Um andar só da sua equipe, com chat e mesas de reunião. Grátis para até 3 pessoas."
+    "makeNamed": "Criar {name}",
+    "seatsFree": "1 de 3 membros · Grátis",
+    "firstIn": "{name}, o primeiro a entrar",
+    "continue": "Continuar"
   },
   "shell": {
     "floor": "Andar",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "Novo escritório",
-    "emptyTitle": "Comece seu primeiro escritório",
-    "emptyBody": "Um escritório é um andar por onde sua equipe circula, com chat e chamadas incluídos. Três membros são grátis.",
     "walkIn": "Entrar",
     "home": "Início",
     "yourOffices": "Os seus escritórios",
     "invite": "Convidar pessoas",
     "firstIn": "Não está ninguém agora. Quem entrar aparece aqui.",
-    "makeOffice": "Crie o seu escritório",
     "inNow": "{count, plural, =0 {Ninguém} other {# agora}}",
     "inOffice": "No escritório",
     "team": "Equipa",
     "seats": "{used} de {seats} lugares",
     "manage": "Gerir",
     "seeAll": "Ver todos",
-    "lobbyNote": "Quer conhecer pessoas novas? Passe pelo átrio público",
-    "anotherOffice": "Outra equipa? Crie um novo escritório"
+    "lobbyNote": "Ou passe pelo átrio público e conheça pessoas",
+    "anotherOffice": "Outra equipa? Crie um novo escritório",
+    "welcome": "Olá, {name}",
+    "welcomeAnonymous": "Bem-vindo",
+    "welcomeBody": "Três passos e a sua equipa tem um piso só seu.",
+    "stepName": "Dê um nome ao seu escritório",
+    "makeIt": "Criar",
+    "stepInvite": "Convide a sua equipa",
+    "stepInviteBody": "Um link por pessoa, ou um para convidados.",
+    "stepWalk": "Entrem juntos",
+    "stepWalkBody": "Aproxime-se de alguém para falar. Canais e mensagens ficam.",
+    "invited": "Foi convidado?",
+    "invitedBody": "Cole o link que a sua equipa lhe enviou.",
+    "invitePlaceholder": "Cole um link de convite",
+    "join": "Entrar",
+    "badLink": "Isso não parece um link de convite. Cole o link completo."
   },
   "home": {
     "nav": {

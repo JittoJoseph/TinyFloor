@@ -901,14 +901,6 @@
         "messages": "私信",
         "guests": "访客链接"
       },
-      "channels": {
-        "general": "综合",
-        "projects": "项目",
-        "random": "闲聊"
-      },
-      "freeSeat": "空位",
-      "you": "你",
-      "teammate": "队友",
       "bringThem": "{count, plural, other {带上你在这里认识的 # 个人}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "回到你的办公室"
   },
   "create": {
-    "eyebrow": "你自己的办公室",
     "title": "给办公室起个名字",
-    "subtitle": "这是团队会看到的名字，以后可以改。",
+    "subtitle": "这是团队每天在侧栏顶部看到的名字。",
     "nameLabel": "办公室名称",
     "namePlaceholder": "Acme Studio",
-    "continue": "继续",
-    "create": "创建办公室",
+    "create": "创建我的办公室",
     "creating": "正在准备",
     "freePlan": "3 人以内免费，无需银行卡。",
-    "justLooking": "只是看看？不如<link>走进公共办公室</link>。",
-    "steps": [
-      "起个名字",
-      "创建账号",
-      "走进去"
-    ],
-    "asideTitle": "你的办公室，一分钟就绪",
-    "asideBody": "团队专属的楼层，带聊天和会议桌。最多 3 人免费。"
+    "makeNamed": "创建 {name}",
+    "seatsFree": "1/3 名成员 · 免费",
+    "firstIn": "{name}，第一个进来的人",
+    "continue": "继续"
   },
   "shell": {
     "floor": "楼层",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "新建办公室",
-    "emptyTitle": "开启你的第一个办公室",
-    "emptyBody": "办公室是团队走动的一层楼，内置聊天和通话。三名成员免费。",
     "walkIn": "走进去",
     "home": "首页",
     "yourOffices": "你的办公室",
     "invite": "邀请成员",
     "firstIn": "现在没有人。有人进来时会显示在这里。",
-    "makeOffice": "创建你的办公室",
     "inNow": "{count, plural, =0 {没有人} other {现在 # 人}}",
     "inOffice": "在办公室的人",
     "team": "团队",
     "seats": "{used}/{seats} 个座位",
     "manage": "管理",
     "seeAll": "查看所有人",
-    "lobbyNote": "想认识新朋友？去公共大厅看看",
-    "anotherOffice": "还有别的团队？创建新的办公室"
+    "lobbyNote": "或者去公共大厅认识新朋友",
+    "anotherOffice": "还有别的团队？创建新的办公室",
+    "welcome": "欢迎，{name}",
+    "welcomeAnonymous": "欢迎",
+    "welcomeBody": "三步之后，你的团队就有了自己的楼层。",
+    "stepName": "为你的办公室命名",
+    "makeIt": "创建",
+    "stepInvite": "邀请你的团队",
+    "stepInviteBody": "每人一个链接，或给访客一个链接。",
+    "stepWalk": "一起走进去",
+    "stepWalkBody": "走到某人身边就能交谈。频道和消息都会保留。",
+    "invited": "收到邀请了吗？",
+    "invitedBody": "粘贴团队发给你的链接。",
+    "invitePlaceholder": "粘贴邀请链接",
+    "join": "加入",
+    "badLink": "这看起来不是邀请链接。请粘贴完整链接。"
   },
   "home": {
     "nav": {

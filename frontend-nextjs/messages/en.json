@@ -901,14 +901,6 @@
         "messages": "Direct messages",
         "guests": "Guest links"
       },
-      "channels": {
-        "general": "general",
-        "projects": "projects",
-        "random": "random"
-      },
-      "freeSeat": "Free seat",
-      "you": "You",
-      "teammate": "Teammate",
       "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}"
     }
   },
@@ -1066,23 +1058,17 @@
     "backToOffices": "Back to your offices"
   },
   "create": {
-    "eyebrow": "Your own office",
     "title": "Name your office",
-    "subtitle": "This is what your team will see. You can change it later.",
+    "subtitle": "It's what your team will see at the top of the rail, every day.",
     "nameLabel": "Office name",
     "namePlaceholder": "Acme Studio",
-    "continue": "Continue",
-    "create": "Create office",
+    "create": "Make my office",
     "creating": "Setting it up",
     "freePlan": "Free for up to 3 people. No card needed.",
-    "justLooking": "Just looking? <link>Walk into the public office</link> instead.",
-    "steps": [
-      "Name it",
-      "Make an account",
-      "Walk in"
-    ],
-    "asideTitle": "Your office, ready in a minute",
-    "asideBody": "A floor of its own for your team, with chat and meeting tables. Free for up to 3 people."
+    "makeNamed": "Make {name}",
+    "seatsFree": "1 of 3 members · Free",
+    "firstIn": "{name}, the first one in",
+    "continue": "Continue"
   },
   "shell": {
     "floor": "Floor",
@@ -1129,22 +1115,33 @@
   },
   "dashboard": {
     "newOffice": "New office",
-    "emptyTitle": "Start your first office",
-    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
     "walkIn": "Walk in",
     "home": "Home",
     "yourOffices": "Your offices",
     "invite": "Invite people",
     "firstIn": "Nobody's in right now. When someone walks in, they'll show up here.",
-    "makeOffice": "Make your office",
     "inNow": "{count, plural, =0 {Nobody in} other {# in now}}",
     "inOffice": "In the office",
     "team": "Team",
     "seats": "{used} of {seats} seats",
     "manage": "Manage",
     "seeAll": "See everyone",
-    "lobbyNote": "Want to meet new people? Drop into the public lobby",
-    "anotherOffice": "Starting another team? Make a new office"
+    "lobbyNote": "Or drop into the public lobby and meet people",
+    "anotherOffice": "Starting another team? Make a new office",
+    "welcome": "Welcome, {name}",
+    "welcomeAnonymous": "Welcome",
+    "welcomeBody": "Three steps and your team has a floor of its own.",
+    "stepName": "Name your office",
+    "makeIt": "Make it",
+    "stepInvite": "Invite your team",
+    "stepInviteBody": "A link for each person, or one for guests who visit.",
+    "stepWalk": "Walk in together",
+    "stepWalkBody": "Walk up to someone to talk. Channels and messages stay.",
+    "invited": "Were you invited?",
+    "invitedBody": "Paste the link your team sent you.",
+    "invitePlaceholder": "Paste an invite link",
+    "join": "Join",
+    "badLink": "That doesn't look like an invite link. Paste the whole link."
   },
   "home": {
     "nav": {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useId, useState, useSyncExternalStore } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Eye, EyeOff } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -8,12 +8,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
 import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
-import { pendingOffice } from "@/lib/pendingOffice";
 import { CenteredAuthLayout } from "./AuthLayout";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 import { GoogleButton, googleAvailable } from "./GoogleButton";
-import { OfficeSteps } from "./OfficeSteps";
 import { Agree } from "@/components/legal/Agree";
 
 export type AuthMode = "signin" | "signup";
@@ -52,7 +50,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
-  const office = useSyncExternalStore(noChange, pendingOffice, () => "");
   // Only an email and a password: the name people see and the character are
   // asked at the first door. A guest who signs up keeps the ones they chose.
 
@@ -206,9 +203,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
   return (
     <CenteredAuthLayout>
-      {/* On the way to making an office: the second of its three steps. */}
-      {office && <OfficeSteps at={1} className="mb-8 justify-center" />}
-
       <div className="text-center">
         <h1 className="text-[26px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
           {signingUp ? t("signUpTitle") : t("signInTitle")}
@@ -335,4 +329,3 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   );
 }
 
-const noChange = () => () => {};

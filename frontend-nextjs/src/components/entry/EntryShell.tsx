@@ -4,15 +4,28 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { SceneMedia } from "@/components/floor/SceneMedia";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { PEOPLE } from "@/components/floor/scenes";
 import { Logo } from "@/components/app/AppShell";
 import { cn } from "@/lib/utils";
 import { AutoHeight } from "./AutoHeight";
 
+const { olivia, ryan, grace, lily, jack, sam } = PEOPLE;
+const SITTING = [
+  { ...olivia, chair: [26, 8] as [number, number], status: "busy" },
+  { ...ryan, chair: [20, 11] as [number, number], status: "available" },
+  { ...grace, chair: [34, 13] as [number, number], status: "available" },
+  { ...lily, chair: [34, 16] as [number, number], status: "away" },
+];
+const STANDING = [
+  { ...jack, at: [36, 10] as [number, number], face: "right" as const, status: "available" },
+  { ...sam, at: [38, 10] as [number, number], face: "left" as const, status: "available" },
+];
+
 /**
- * Every door: the office behind it, a plain picture of the floor with people
- * at their desks, and one raised panel in front with the place and what it
- * asks. The picture is scenery, never something to click. On a phone the
+ * Every door: the office behind it, the plain floor with people at their
+ * desks, and one raised panel in front with the place and what it asks. The
+ * office is scenery, never something to click. On a phone the
  * panel rests at the bottom like a sheet, with the office showing above.
  */
 export const EntryShell: React.FC<{
@@ -25,7 +38,9 @@ export const EntryShell: React.FC<{
 
   return (
     <div className="relative flex min-h-dvh w-full flex-col bg-rail [--face-ring:var(--ui-card)]">
-      <SceneMedia name="door" priority pixelated className="fixed inset-0" />
+      <div aria-hidden className="pointer-events-none fixed inset-0 select-none">
+        <FloorScene view={[14, 4, 30, 21]} priority sitting={SITTING} standing={STANDING} className="size-full" />
+      </div>
       <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1100px] items-center justify-between px-3 sm:px-6">
         <Link
           href={backHref}

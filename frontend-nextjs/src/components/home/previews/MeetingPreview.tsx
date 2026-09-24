@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { LogOut, Mic, MicOff, MonitorUp, Video } from "lucide-react";
-import { SceneMedia } from "@/components/floor/SceneMedia";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { MEETING } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";
@@ -25,7 +26,7 @@ export function MeetingPreview() {
   return (
     <div className="relative h-full w-full overflow-hidden">
       {/* The meeting room's table, everyone sitting at it. */}
-      <SceneMedia name="meeting" className="absolute inset-0 h-full w-full" />
+      <FloorScene {...MEETING} view={[0, 2, 24, 14]} className="absolute inset-0 h-full w-full" />
 
       <div className="absolute inset-x-0 top-3 flex justify-center px-3 sm:top-4">
         <ul className="grid w-full max-w-[640px] grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5">

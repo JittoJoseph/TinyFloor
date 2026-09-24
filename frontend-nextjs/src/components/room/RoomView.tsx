@@ -134,7 +134,6 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
         <RoomEnded
           reason={ended}
           leaveHref={leaveHref}
-          character={user.character}
           onRetry={() => {
             setEnded(null);
             setAttempt((value) => value + 1);
@@ -265,12 +264,10 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
 function RoomEnded({
   reason,
   leaveHref,
-  character,
   onRetry,
 }: {
   reason: RoomEnd;
   leaveHref: string;
-  character: string;
   onRetry: () => void;
 }) {
   const t = useTranslations("room.ended");
@@ -285,10 +282,7 @@ function RoomEnded({
   const canRetry = reason === "full" || reason === "replaced";
 
   return (
-    <EntryShell
-      backHref={leaveHref}
-      backLabel={t("back")}
-    >
+    <EntryShell backHref={leaveHref} backLabel={t("back")}>
       <div className="entry-rise">
         <EntryHeader
           mark={

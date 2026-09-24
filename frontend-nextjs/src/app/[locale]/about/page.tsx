@@ -7,7 +7,8 @@ import { ORG_ID, pageGraph } from "@/lib/structured-data";
 import { SOCIALS } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { COLUMN, Final, MarketingShell } from "@/components/home/Blocks";
-import { SceneMedia } from "@/components/floor/SceneMedia";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { EVERYONE } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { cn } from "@/lib/utils";
@@ -55,7 +56,7 @@ export default async function AboutPage({ params }: Props) {
             <p>{t("p2")}</p>
             <p>{t("p3")}</p>
           </div>
-          <SceneMedia name="everyone" className="aspect-[4/3] w-full self-start rounded-[28px] border border-border" />
+          <FloorScene {...EVERYONE} view={[17, 2, 22, 16]} className="aspect-[4/3] w-full self-start rounded-[28px] border border-border" />
         </div>
 
         <div className="mt-16 grid gap-3 lg:grid-cols-[1.4fr_1fr]">

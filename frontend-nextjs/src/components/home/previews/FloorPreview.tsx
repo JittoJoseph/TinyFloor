@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Mic, MonitorUp, Settings2, Video } from "lucide-react";
 import { FaceStack } from "@/components/ui/Face";
-import { SceneMedia } from "@/components/floor/SceneMedia";
+import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, PEOPLE } from "@/components/floor/scenes";
 import { cn } from "@/lib/utils";
 
@@ -47,19 +47,19 @@ function Dock({ className }: { className?: string }) {
   );
 }
 
-const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0) + (HALL.walking?.length ?? 0);
+const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0);
 
 /**
  * The floor, as the app shows it: the real map with people at their desks,
- * chatting and walking around, the room's chip and the dock. `bare` is the
+ * chatting and about the hall, the room's chip and the dock. `bare` is the
  * floor alone, for a small window.
  */
 export function FloorPreview({ bare = false, priority = false, className }: { bare?: boolean; priority?: boolean; className?: string }) {
-  if (bare) return <SceneMedia name="hall" className={cn("h-full w-full", className)} />;
+  if (bare) return <FloorScene {...HALL} view={[16, 3, 22, 14]} className={cn("h-full w-full", className)} />;
 
   return (
-    <SceneMedia
-      name="hall"
+    <FloorScene
+      {...HALL}
       priority={priority}
       className={cn("absolute inset-0 h-full w-full", className)}
       over={

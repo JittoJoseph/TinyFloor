@@ -1058,16 +1058,8 @@
     "backToOffices": "Back to your offices"
   },
   "create": {
-    "title": "Name your office",
-    "subtitle": "It's what your team will see at the top of the rail, every day.",
     "nameLabel": "Office name",
-    "namePlaceholder": "Acme Studio",
-    "create": "Make my office",
     "creating": "Setting it up",
-    "freePlan": "Free for up to 3 people. No card needed.",
-    "makeNamed": "Make {name}",
-    "seatsFree": "1 of 3 members · Free",
-    "firstIn": "{name}, the first one in",
     "continue": "Continue"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Starting another team? Make a new office",
     "welcome": "Welcome, {name}",
     "welcomeAnonymous": "Welcome",
-    "welcomeBody": "Three steps and your team has a floor of its own.",
+    "welcomeBody": "One floor for your team, with channels and calls built in.",
     "stepName": "Name your office",
     "makeIt": "Make it",
-    "stepInvite": "Invite your team",
-    "stepInviteBody": "A link for each person, or one for guests who visit.",
-    "stepWalk": "Walk in together",
-    "stepWalkBody": "Walk up to someone to talk. Channels and messages stay.",
     "invited": "Were you invited?",
     "invitedBody": "Paste the link your team sent you.",
     "invitePlaceholder": "Paste an invite link",
     "join": "Join",
-    "badLink": "That doesn't look like an invite link. Paste the whole link."
+    "badLink": "That doesn't look like an invite link. Paste the whole link.",
+    "makeTitle": "Let's make your office",
+    "yourNewOffice": "Your new office",
+    "freeRename": "Free for up to 3 people. You can rename it any time."
   },
   "home": {
     "nav": {

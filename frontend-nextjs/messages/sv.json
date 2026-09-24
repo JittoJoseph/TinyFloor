@@ -1058,16 +1058,8 @@
     "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {
-    "title": "Ge kontoret ett namn",
-    "subtitle": "Det här ser ditt team högst upp i fältet varje dag.",
     "nameLabel": "Kontorets namn",
-    "namePlaceholder": "Acme Studio",
-    "create": "Skapa mitt kontor",
     "creating": "Gör i ordning",
-    "freePlan": "Gratis för upp till 3 personer. Inget kort.",
-    "makeNamed": "Skapa {name}",
-    "seatsFree": "1 av 3 medlemmar · Gratis",
-    "firstIn": "{name}, först på plats",
     "continue": "Vidare"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Ett till team? Skapa ett nytt kontor",
     "welcome": "Välkommen, {name}",
     "welcomeAnonymous": "Välkommen",
-    "welcomeBody": "Tre steg så har ditt team en egen våning.",
+    "welcomeBody": "En våning för ditt team, med kanaler och samtal inbyggda.",
     "stepName": "Namnge ditt kontor",
     "makeIt": "Skapa",
-    "stepInvite": "Bjud in ditt team",
-    "stepInviteBody": "En länk per person, eller en för gäster.",
-    "stepWalk": "Gå in tillsammans",
-    "stepWalkBody": "Gå fram till någon för att prata. Kanaler och meddelanden finns kvar.",
     "invited": "Har du blivit inbjuden?",
     "invitedBody": "Klistra in länken ditt team skickade.",
     "invitePlaceholder": "Klistra in en inbjudningslänk",
     "join": "Gå med",
-    "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken."
+    "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken.",
+    "makeTitle": "Nu gör vi ditt kontor",
+    "yourNewOffice": "Ditt nya kontor",
+    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst."
   },
   "home": {
     "nav": {

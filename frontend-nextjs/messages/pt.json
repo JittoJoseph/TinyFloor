@@ -1058,16 +1058,8 @@
     "backToOffices": "Voltar aos teus escritórios"
   },
   "create": {
-    "title": "Dê um nome ao seu escritório",
-    "subtitle": "É o que a sua equipa verá todos os dias no topo da barra.",
     "nameLabel": "Nome do escritório",
-    "namePlaceholder": "Acme Studio",
-    "create": "Criar o meu escritório",
     "creating": "Preparando tudo",
-    "freePlan": "Grátis para até 3 pessoas. Sem cartão.",
-    "makeNamed": "Criar {name}",
-    "seatsFree": "1 de 3 membros · Grátis",
-    "firstIn": "{name}, o primeiro a entrar",
     "continue": "Continuar"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Outra equipa? Crie um novo escritório",
     "welcome": "Olá, {name}",
     "welcomeAnonymous": "Bem-vindo",
-    "welcomeBody": "Três passos e a sua equipa tem um piso só seu.",
+    "welcomeBody": "Um andar para sua equipe, com canais e chamadas incluídos.",
     "stepName": "Dê um nome ao seu escritório",
     "makeIt": "Criar",
-    "stepInvite": "Convide a sua equipa",
-    "stepInviteBody": "Um link por pessoa, ou um para convidados.",
-    "stepWalk": "Entrem juntos",
-    "stepWalkBody": "Aproxime-se de alguém para falar. Canais e mensagens ficam.",
     "invited": "Foi convidado?",
     "invitedBody": "Cole o link que a sua equipa lhe enviou.",
     "invitePlaceholder": "Cole um link de convite",
     "join": "Entrar",
-    "badLink": "Isso não parece um link de convite. Cole o link completo."
+    "badLink": "Isso não parece um link de convite. Cole o link completo.",
+    "makeTitle": "Vamos criar seu escritório",
+    "yourNewOffice": "Seu novo escritório",
+    "freeRename": "Grátis para até 3 pessoas. Você pode mudar o nome quando quiser."
   },
   "home": {
     "nav": {

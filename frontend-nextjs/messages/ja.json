@@ -1058,16 +1058,8 @@
     "backToOffices": "オフィス一覧へ"
   },
   "create": {
-    "title": "オフィスに名前を付ける",
-    "subtitle": "チームが毎日、レールのいちばん上で目にする名前です。",
     "nameLabel": "オフィス名",
-    "namePlaceholder": "Acme Studio",
-    "create": "オフィスをつくる",
     "creating": "準備しています",
-    "freePlan": "3人まで無料。カード不要です。",
-    "makeNamed": "{name} をつくる",
-    "seatsFree": "メンバー 1/3 · 無料",
-    "firstIn": "{name}（最初のメンバー）",
     "continue": "次へ"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "別のチームも？新しいオフィスをつくる",
     "welcome": "ようこそ、{name}さん",
     "welcomeAnonymous": "ようこそ",
-    "welcomeBody": "3 ステップで、チームだけのフロアができます。",
+    "welcomeBody": "チームのためのフロア。チャンネルと通話つき。",
     "stepName": "オフィスに名前をつける",
     "makeIt": "つくる",
-    "stepInvite": "チームを招待する",
-    "stepInviteBody": "一人ひとりにリンクを、ゲストにはひとつのリンクを。",
-    "stepWalk": "みんなで入る",
-    "stepWalkBody": "話したい人のところへ歩いていくだけ。チャンネルとメッセージは残ります。",
     "invited": "招待されましたか？",
     "invitedBody": "チームから届いたリンクを貼り付けてください。",
     "invitePlaceholder": "招待リンクを貼り付け",
     "join": "参加",
-    "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。"
+    "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。",
+    "makeTitle": "オフィスをつくりましょう",
+    "yourNewOffice": "新しいオフィス",
+    "freeRename": "3人まで無料。名前はいつでも変えられます。"
   },
   "home": {
     "nav": {

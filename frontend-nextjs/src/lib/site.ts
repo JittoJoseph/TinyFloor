@@ -5,6 +5,7 @@ export const SITE_URL =
 export const SOCIALS = {
   linkedin: "https://www.linkedin.com/company/tinyfloor",
   x: "https://x.com/tinyflooroffice",
+  github: "https://github.com/JittoJoseph/TinyFloor",
 } as const;
 
 /** The company's handle on X, for link cards there. */

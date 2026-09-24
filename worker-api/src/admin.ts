@@ -28,6 +28,29 @@ async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
   return user;
 }
 
+/** The viewer's time zone, if it's one the runtime knows; otherwise UTC. */
+function zoneOf(value: string | null): string {
+  if (!value) return "UTC";
+  try {
+    new Intl.DateTimeFormat("en", { timeZone: value });
+    return value;
+  } catch {
+    return "UTC";
+  }
+}
+
+/** A moment's calendar day in a time zone, as YYYY-MM-DD. */
+function dayFormat(timeZone: string): (at: number) => string {
+  const format = new Intl.DateTimeFormat("en-CA", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" });
+  return (at) => format.format(at);
+}
+
+/** The last `count` calendar days in a time zone, ending today, oldest first. */
+function lastDays(now: number, timeZone: string, count: number): string[] {
+  const today = Date.parse(`${dayFormat(timeZone)(now)}T00:00:00Z`);
+  return Array.from({ length: count }, (_, at) => new Date(today - (count - 1 - at) * DAY_MS).toISOString().slice(0, 10));
+}
+
 /** A page cursor: the created_at of the last row shown, or now for the first page. */
 const cursor = (url: URL) => {
   const before = Number(url.searchParams.get("before"));
@@ -55,17 +78,21 @@ export function adminRoutes(router: Router): void {
           `SELECT country, COUNT(*) AS people FROM users
             WHERE country IS NOT NULL GROUP BY country ORDER BY people DESC LIMIT 20`,
         ),
-        env.DB.prepare(
-          `SELECT CAST((created_at - ?1) / 86400000 AS INTEGER) AS day, COUNT(*) AS people
-             FROM users WHERE is_guest = 0 AND created_at > ?1 GROUP BY day`,
-        ).bind(now - 30 * DAY_MS),
+        // A day's margin either side, so every calendar day in any time zone is whole.
+        env.DB.prepare(`SELECT created_at AS at FROM users WHERE is_guest = 0 AND created_at > ?1`).bind(now - 32 * DAY_MS),
       ]);
-      // Sign-ups on each of the last 30 days, oldest first, zeros included.
-      const signups = Array.from({ length: 30 }, () => 0);
-      for (const row of days.results as Array<{ day: number; people: number }>) {
-        if (row.day >= 0 && row.day < 30) signups[row.day] = row.people;
+      // Sign-ups on each of the last 30 calendar days where the viewer is, oldest
+      // first, zeros included; the days come back too, so labels match the bars.
+      const zone = zoneOf(new URL(request.url).searchParams.get("tz"));
+      const signupDays = lastDays(now, zone, 30);
+      const index = new Map(signupDays.map((day, at) => [day, at]));
+      const signups = signupDays.map(() => 0);
+      const dayIn = dayFormat(zone);
+      for (const row of days.results as Array<{ at: number }>) {
+        const at = index.get(dayIn(row.at));
+        if (at !== undefined) signups[at]++;
       }
-      return json({ counts: counts.results[0], countries: countries.results, signups });
+      return json({ counts: counts.results[0], countries: countries.results, signups, signupDays });
     })
 
     .add("GET", "/v1/admin/users", async ({ request, env, ctx }) => {
@@ -94,12 +121,22 @@ export function adminRoutes(router: Router): void {
       const url = new URL(request.url);
       const { results: offices } = await env.DB.prepare(
         `SELECT o.id, o.name, o.plan, o.seats, o.created_at AS createdAt,
-                u.display_name AS ownerName, u.email AS ownerEmail
+                u.id AS ownerId, u.display_name AS ownerName, u.email AS ownerEmail, u.country AS ownerCountry
            FROM offices o LEFT JOIN users u ON u.id = o.owner_id
           WHERE o.created_at < ?1 ORDER BY o.created_at DESC LIMIT ?2`,
       )
         .bind(cursor(url), PAGE)
-        .all<{ id: string; name: string; plan: string; seats: number; createdAt: number; ownerName: string | null; ownerEmail: string | null }>();
+        .all<{
+          id: string;
+          name: string;
+          plan: string;
+          seats: number;
+          createdAt: number;
+          ownerId: string | null;
+          ownerName: string | null;
+          ownerEmail: string | null;
+          ownerCountry: string | null;
+        }>();
       if (!offices.length) return json({ offices: [], more: false });
 
       const ids = offices.map((office) => office.id);

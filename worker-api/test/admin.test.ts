@@ -27,6 +27,18 @@ describe("admin", () => {
     expect(summary.body.counts.accounts).toBeGreaterThanOrEqual(2);
     expect(summary.body.signups).toHaveLength(30);
 
+    // Sign-ups land on the viewer's own calendar days, and today's are counted today.
+    type Days = { signups: number[]; signupDays: string[] };
+    const zone = "Pacific/Kiritimati";
+    const local = await call<Days>(boss, "GET", `/v1/admin/summary?tz=${encodeURIComponent(zone)}`);
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: zone, year: "numeric", month: "2-digit", day: "2-digit" }).format(Date.now());
+    expect(local.body.signupDays).toHaveLength(30);
+    expect(local.body.signupDays.at(-1)).toBe(today);
+    expect(local.body.signups.at(-1)).toBeGreaterThanOrEqual(2);
+    // A zone the runtime doesn't know counts in UTC.
+    const unknown = await call<Days>(boss, "GET", "/v1/admin/summary?tz=Nowhere%2FAtAll");
+    expect(unknown.body.signupDays.at(-1)).toBe(new Date().toISOString().slice(0, 10));
+
     const found = await call<{ users: Array<{ displayName: string; email: string }> }>(boss, "GET", "/v1/admin/users?q=priya.search");
     expect(found.body.users.map((one) => one.email)).toEqual(["priya.search@example.com"]);
     // LIKE's wildcards are taken literally.
@@ -39,13 +51,14 @@ describe("admin", () => {
     const boss = await admin();
     const owner = await makeUser("Owner");
     const made = await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Admin Test Office" });
-    const offices = await call<{ offices: Array<{ id: string; name: string; members: Array<{ displayName: string; role: string }> }> }>(
-      boss,
-      "GET",
-      "/v1/admin/offices",
-    );
+    await env.DB.prepare("UPDATE users SET country = 'NL' WHERE id = ?").bind(owner.id).run();
+    const offices = await call<{
+      offices: Array<{ id: string; name: string; ownerId: string; ownerCountry: string; members: Array<{ displayName: string; role: string }> }>;
+    }>(boss, "GET", "/v1/admin/offices");
     const office = offices.body.offices.find((one) => one.id === made.body.office.id);
     expect(office?.members).toEqual([expect.objectContaining({ displayName: "Owner", role: "admin" })]);
+    // The owner comes with where they are, for the list.
+    expect(office).toMatchObject({ ownerId: owner.id, ownerCountry: "NL" });
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 

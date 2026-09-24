@@ -113,8 +113,10 @@ export interface IceServers {
 export interface AdminSummary {
   counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle", number>;
   countries: Array<{ country: string; people: number }>;
-  /** Sign-ups on each of the last 30 days, oldest first. */
+  /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
+  /** Those days, as YYYY-MM-DD. */
+  signupDays: string[];
 }
 
 export interface AdminPerson {
@@ -136,8 +138,10 @@ export interface AdminOffice {
   plan: string;
   seats: number;
   createdAt: number;
+  ownerId: string | null;
   ownerName: string | null;
   ownerEmail: string | null;
+  ownerCountry: string | null;
   here: number;
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
@@ -196,7 +200,8 @@ export const api = {
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
 
   // The admin view
-  adminSummary: () => get<AdminSummary>("/admin/summary"),
+  adminSummary: () =>
+    get<AdminSummary>(`/admin/summary?${new URLSearchParams({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })}`),
   adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
     get<{ users: AdminPerson[]; more: boolean }>(
       `/admin/users?${new URLSearchParams({

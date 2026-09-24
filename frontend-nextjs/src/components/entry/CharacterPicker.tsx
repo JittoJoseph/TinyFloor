@@ -4,6 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { PixelAvatar } from "@/components/PixelAvatar";
+import { cn } from "@/lib/utils";
 
 export const CHARACTER_IDS = [
   "Adam",
@@ -19,14 +20,16 @@ export const CHARACTER_IDS = [
 export const CharacterPicker: React.FC<{
   value: string;
   onChange: (character: string) => void;
-}> = ({ value, onChange }) => {
+  /** More columns, where there is room for them. */
+  className?: string;
+}> = ({ value, onChange, className }) => {
   const t = useTranslations("entry");
 
   return (
   <div
     role="radiogroup"
     aria-label={t("character")}
-    className="grid grid-cols-4 gap-2"
+    className={cn("grid grid-cols-4 gap-2", className)}
   >
     {CHARACTER_IDS.map((character) => {
       const selected = value === character;

@@ -948,7 +948,6 @@
       "danger": "Leaving or closing"
     },
     "profile": {
-      "title": "Your profile",
       "changePassword": "Change password",
       "setPassword": "Set a password",
       "setPasswordDescription": "Add a password to sign in with your email as well as with Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "At least 8 characters",
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
-      "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
       "themeNote": "System follows your device. The choice is kept in this browser.",
       "link": "Your link",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Sign in with Google as well.",
       "connectGoogle": "Connect Google",
-      "googleConnected": "Connected"
+      "googleConnected": "Connected",
+      "sections": {
+        "profile": "Profile",
+        "character": "Character",
+        "signin": "Signing in",
+        "appearance": "Appearance"
+      },
+      "profileNote": "Your name and link, wherever you walk in.",
+      "preview": "What people see",
+      "noLink": "No link yet",
+      "password": "Password",
+      "passwordSet": "Sign in with your email and password."
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -1128,17 +1137,21 @@
     "leave": "Leave"
   },
   "dashboard": {
-    "morning": "Good morning, {name}",
-    "afternoon": "Good afternoon, {name}",
-    "evening": "Good evening, {name}",
-    "subtitle": "Your offices, and who is on each floor right now.",
-    "onFloor": "{count, plural, =0 {Nobody on the floor} one {# on the floor} other {# on the floor}}",
     "newOffice": "New office",
     "lobby": "The public lobby",
     "lobbyBody": "Drop in and meet whoever is around.",
     "emptyTitle": "Start your first office",
     "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
-    "walkIn": "Walk in"
+    "walkIn": "Walk in",
+    "home": "Home",
+    "editProfile": "Edit profile",
+    "yourOffices": "Your offices",
+    "invite": "Invite people",
+    "officeSettings": "Office settings",
+    "firstIn": "Nobody's in yet. Walk in and you'll be the first.",
+    "notIn": "{count} not in",
+    "inviteTeam": "Invite your team",
+    "makeOffice": "Make your office"
   },
   "home": {
     "nav": {

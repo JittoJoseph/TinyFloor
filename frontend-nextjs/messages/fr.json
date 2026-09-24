@@ -948,7 +948,6 @@
       "danger": "Quitter ou fermer"
     },
     "profile": {
-      "title": "Votre profil",
       "changePassword": "Changer le mot de passe",
       "setPassword": "Définir un mot de passe",
       "setPasswordDescription": "Ajoutez un mot de passe pour vous connecter aussi avec votre e-mail, pas seulement avec Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "Au moins 8 caractères",
       "signsOutOthers": "Vous restez connecté ici. Partout ailleurs, vous serez déconnecté.",
       "cancel": "Annuler",
-      "faceNote": "Votre visage est dessiné à partir de votre compte, le même sur chaque écran. Rien n'est envoyé ni stocké.",
       "themeNote": "Système suit votre appareil. Le choix est gardé dans ce navigateur.",
       "link": "Votre lien",
       "linkPlaceholder": "votresite.fr",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Connectez-vous aussi avec Google.",
       "connectGoogle": "Associer Google",
-      "googleConnected": "Associé"
+      "googleConnected": "Associé",
+      "sections": {
+        "profile": "Profil",
+        "character": "Personnage",
+        "signin": "Connexion",
+        "appearance": "Apparence"
+      },
+      "profileNote": "Votre nom et votre lien, partout où vous entrez.",
+      "preview": "Ce que les autres voient",
+      "noLink": "Pas encore de lien",
+      "password": "Mot de passe",
+      "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe."
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",
@@ -1128,17 +1137,21 @@
     "leave": "Quitter"
   },
   "dashboard": {
-    "morning": "Bonjour, {name}",
-    "afternoon": "Bon après-midi, {name}",
-    "evening": "Bonsoir, {name}",
-    "subtitle": "Vos bureaux, et qui est sur chaque étage en ce moment.",
-    "onFloor": "{count, plural, =0 {Personne sur l'étage} other {# sur l'étage}}",
     "newOffice": "Nouveau bureau",
     "lobby": "Le hall public",
     "lobbyBody": "Passez et rencontrez qui est là.",
     "emptyTitle": "Créez votre premier bureau",
     "emptyBody": "Un bureau est un étage où votre équipe se promène, avec chat et appels intégrés. Trois membres sont gratuits.",
-    "walkIn": "Entrer"
+    "walkIn": "Entrer",
+    "home": "Accueil",
+    "editProfile": "Modifier le profil",
+    "yourOffices": "Vos bureaux",
+    "invite": "Inviter des gens",
+    "officeSettings": "Réglages du bureau",
+    "firstIn": "Personne pour l’instant. Entrez, vous serez le premier.",
+    "notIn": "{count} absents",
+    "inviteTeam": "Invitez votre équipe",
+    "makeOffice": "Créer votre bureau"
   },
   "home": {
     "nav": {

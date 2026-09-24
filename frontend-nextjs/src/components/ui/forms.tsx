@@ -6,10 +6,11 @@ import { Loader2, X } from "lucide-react";
 
 const textClass = " text-foreground";
 
-export function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
+export function Card({ id, className = "", children }: { id?: string; className?: string; children: React.ReactNode }) {
   return (
     <section
-      className={`rounded-[1.25rem] border border-border bg-card p-5 sm:p-6 ${className}`}
+      id={id}
+      className={`scroll-mt-20 rounded-[1.25rem] border border-border bg-card p-5 sm:p-6 ${className}`}
     >
       {children}
     </section>

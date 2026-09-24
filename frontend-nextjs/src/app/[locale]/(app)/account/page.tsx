@@ -1,24 +1,41 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Monitor, Moon, Sun } from "lucide-react";
+import { KeyRound, LogOut, Shirt, SunMoon, UserRound } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
-import { AppTopBar } from "@/components/app/AppTopBar";
-import { AccountPanel, CharacterPanel, GooglePanel } from "@/components/account/AccountPanel";
-import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import { AppTopBar } from "@/components/app/AppTopBar";
+import { YouRail } from "@/components/account/YouRail";
+import {
+  ACCOUNT_SECTIONS,
+  AppearanceSection,
+  CharacterSection,
+  ProfileSection,
+  SignInSection,
+  type AccountSection,
+} from "@/components/account/AccountPanel";
 
-/** Your account, on its own page: who you are to everyone else, and how the app looks to you. */
+const ICONS: Record<AccountSection, React.ReactNode> = {
+  profile: <UserRound className="size-4" />,
+  character: <Shirt className="size-4" />,
+  signin: <KeyRound className="size-4" />,
+  appearance: <SunMoon className="size-4" />,
+};
+
+/**
+ * Your account, beside the same rail as home: who you are to everyone else,
+ * how you sign in, and how the app looks to you. The rail lists the sections
+ * and follows along as you scroll.
+ */
 export default function AccountPage() {
   const t = useTranslations("office.profile");
   const ts = useTranslations("shell");
   const router = useRouter();
-  const { user, isLoading } = useAuth();
-  const theme = useTheme();
+  const { user, isLoading, signOut } = useAuth();
   const signedIn = !isLoading && !!user && !user.guest;
+  const [current, setCurrent] = useState<AccountSection>("profile");
 
   useEffect(() => {
     if (!isLoading && !signedIn) {
@@ -26,59 +43,93 @@ export default function AccountPage() {
     }
   }, [isLoading, signedIn, router]);
 
-  const themes: Array<{ value: ThemeChoice; icon: React.ReactNode }> = [
-    { value: "system", icon: <Monitor className="size-4" /> },
-    { value: "light", icon: <Sun className="size-4" /> },
-    { value: "dark", icon: <Moon className="size-4" /> },
-  ];
+  // The section nearest the top of the screen is the one the rail marks.
+  useEffect(() => {
+    if (!signedIn) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const seen = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (seen) setCurrent(seen.target.id as AccountSection);
+      },
+      { rootMargin: "-80px 0px -55% 0px" },
+    );
+    for (const id of ACCOUNT_SECTIONS) {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    }
+    return () => observer.disconnect();
+  }, [signedIn]);
+
+  const leave = async () => {
+    await signOut();
+    router.replace("/");
+  };
 
   return (
     <div className="min-h-dvh w-full bg-background">
-      <AppTopBar />
-      <main className="mx-auto w-full max-w-3xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
-        {signedIn && user ? (
-          <>
-            <header className="mb-8 flex items-center gap-4">
-              <Face seed={user.id} size={64} />
-              <div className="min-w-0">
-                <h1 className="truncate text-[24px] font-semibold tracking-tight text-foreground">{user.displayName}</h1>
-                <p className="truncate text-[14px] text-muted-foreground">{user.email}</p>
-              </div>
-            </header>
-            <p className="-mt-4 mb-8 max-w-xl text-[13px] leading-relaxed text-muted-foreground">{t("faceNote")}</p>
+      <AppTopBar section="account" />
+      <main className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-5 px-4 pb-20 pt-5 sm:px-6 sm:pt-10 lg:grid-cols-[288px_minmax(0,1fr)] lg:gap-6">
+        <aside className="min-w-0 lg:sticky lg:top-20 lg:self-start">
+          <YouRail>
+            <nav className="hidden border-t border-border p-2 lg:block">
+              {ACCOUNT_SECTIONS.map((id) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  aria-current={current === id ? "true" : undefined}
+                  className={cn(
+                    "flex items-center gap-3 rounded-xl px-3 py-2 text-[13.5px] font-medium transition-colors",
+                    current === id ? "bg-muted text-foreground" : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+                  )}
+                >
+                  {ICONS[id]}
+                  {t(`sections.${id}`)}
+                </a>
+              ))}
+              <button
+                type="button"
+                onClick={leave}
+                className="mt-1 flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-[13.5px] font-medium text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+              >
+                <LogOut className="size-4" />
+                {ts("signOut")}
+              </button>
+            </nav>
+          </YouRail>
+          <nav className="-mx-4 mt-3 flex gap-1.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] lg:hidden">
+            {ACCOUNT_SECTIONS.map((id) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={cn(
+                  "flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-[13px] font-medium transition-colors",
+                  current === id ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground",
+                )}
+              >
+                {ICONS[id]}
+                {t(`sections.${id}`)}
+              </a>
+            ))}
+          </nav>
+        </aside>
 
-            <div className="space-y-4">
-              <AccountPanel />
-              <GooglePanel />
-              <CharacterPanel />
-
-              <section className="rounded-[1.25rem] border border-border bg-card p-5 sm:p-6">
-                <h2 className="text-[15px] font-semibold text-foreground">{ts("theme")}</h2>
-                <p className="mt-0.5 text-[13px] text-muted-foreground">{t("themeNote")}</p>
-                <div className="mt-4 grid max-w-sm grid-cols-3 gap-2">
-                  {themes.map((one) => (
-                    <button
-                      key={one.value}
-                      type="button"
-                      aria-pressed={theme === one.value}
-                      onClick={() => setTheme(one.value)}
-                      className={cn(
-                        "flex h-11 cursor-pointer items-center justify-center gap-2 rounded-xl border text-[13px] transition-colors",
-                        theme === one.value
-                          ? "border-foreground/25 bg-muted font-medium text-foreground"
-                          : "border-border text-muted-foreground hover:bg-muted hover:text-foreground",
-                      )}
-                    >
-                      {one.icon}
-                      {ts(`themes.${one.value}`)}
-                    </button>
-                  ))}
-                </div>
-              </section>
-            </div>
-          </>
+        {signedIn ? (
+          <div className="min-w-0 space-y-4">
+            <ProfileSection />
+            <CharacterSection />
+            <SignInSection />
+            <AppearanceSection />
+            <button
+              type="button"
+              onClick={leave}
+              className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full text-[14px] font-medium text-destructive transition-colors hover:bg-destructive/10 lg:hidden"
+            >
+              <LogOut className="size-4" />
+              {ts("signOut")}
+            </button>
+          </div>
         ) : (
-          <div className="h-52 animate-pulse rounded-[1.25rem] bg-muted" />
+          <div className="h-80 animate-pulse rounded-[1.25rem] bg-muted" />
         )}
       </main>
     </div>

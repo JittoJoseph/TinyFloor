@@ -948,7 +948,6 @@
       "danger": "Lämna eller stänga"
     },
     "profile": {
-      "title": "Din profil",
       "changePassword": "Byt lösenord",
       "setPassword": "Ange ett lösenord",
       "setPasswordDescription": "Lägg till ett lösenord för att logga in med din e-post också, inte bara med Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "Minst 8 tecken",
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
       "cancel": "Avbryt",
-      "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant på varje skärm. Inget laddas upp eller sparas.",
       "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren.",
       "link": "Din länk",
       "linkPlaceholder": "dinwebbplats.se",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Logga in med Google också.",
       "connectGoogle": "Koppla Google",
-      "googleConnected": "Kopplat"
+      "googleConnected": "Kopplat",
+      "sections": {
+        "profile": "Profil",
+        "character": "Karaktär",
+        "signin": "Inloggning",
+        "appearance": "Utseende"
+      },
+      "profileNote": "Ditt namn och din länk, var du än går in.",
+      "preview": "Det här ser andra",
+      "noLink": "Ingen länk än",
+      "password": "Lösenord",
+      "passwordSet": "Logga in med din e-post och ditt lösenord."
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -1128,17 +1137,21 @@
     "leave": "Lämna"
   },
   "dashboard": {
-    "morning": "God morgon, {name}",
-    "afternoon": "God eftermiddag, {name}",
-    "evening": "God kväll, {name}",
-    "subtitle": "Dina kontor, och vem som är på varje golv just nu.",
-    "onFloor": "{count, plural, =0 {Ingen på golvet} other {# på golvet}}",
     "newOffice": "Nytt kontor",
     "lobby": "Den offentliga lobbyn",
     "lobbyBody": "Titta in och träffa den som är där.",
     "emptyTitle": "Starta ditt första kontor",
     "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
-    "walkIn": "Gå in"
+    "walkIn": "Gå in",
+    "home": "Hem",
+    "editProfile": "Redigera profil",
+    "yourOffices": "Dina kontor",
+    "invite": "Bjud in folk",
+    "officeSettings": "Kontorsinställningar",
+    "firstIn": "Ingen är här än. Gå in och bli först.",
+    "notIn": "{count} inte här",
+    "inviteTeam": "Bjud in ditt team",
+    "makeOffice": "Skapa ditt kontor"
   },
   "home": {
     "nav": {

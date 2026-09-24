@@ -948,7 +948,6 @@
       "danger": "退出または閉鎖"
     },
     "profile": {
-      "title": "プロフィール",
       "changePassword": "パスワードを変更",
       "setPassword": "パスワードを設定",
       "setPasswordDescription": "Google に加えて、メールアドレスでもログインできるようにパスワードを追加します。",
@@ -968,7 +967,6 @@
       "passwordRule": "8文字以上",
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
-      "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
       "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。",
       "link": "リンク",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Google でもログインできます。",
       "connectGoogle": "Google と連携",
-      "googleConnected": "連携済み"
+      "googleConnected": "連携済み",
+      "sections": {
+        "profile": "プロフィール",
+        "character": "キャラクター",
+        "signin": "サインイン",
+        "appearance": "表示"
+      },
+      "profileNote": "どこに入っても表示される名前とリンク。",
+      "preview": "ほかの人からの見え方",
+      "noLink": "リンクはまだありません",
+      "password": "パスワード",
+      "passwordSet": "メールアドレスとパスワードでサインインします。"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
@@ -1128,17 +1137,21 @@
     "leave": "出る"
   },
   "dashboard": {
-    "morning": "おはようございます、{name}さん",
-    "afternoon": "こんにちは、{name}さん",
-    "evening": "こんばんは、{name}さん",
-    "subtitle": "あなたのオフィスと、いま各フロアにいる人。",
-    "onFloor": "{count, plural, =0 {フロアに誰もいません} other {フロアに#人}}",
     "newOffice": "新しいオフィス",
     "lobby": "公開ロビー",
     "lobbyBody": "ふらっと立ち寄って、いる人と会いましょう。",
     "emptyTitle": "最初のオフィスをつくる",
     "emptyBody": "オフィスはチームが歩き回るひとつのフロアで、チャットと通話も付いています。メンバー3人まで無料です。",
-    "walkIn": "入る"
+    "walkIn": "入る",
+    "home": "ホーム",
+    "editProfile": "プロフィールを編集",
+    "yourOffices": "あなたのオフィス",
+    "invite": "メンバーを招待",
+    "officeSettings": "オフィスの設定",
+    "firstIn": "まだ誰もいません。最初に入ってみましょう。",
+    "notIn": "{count}人は不在",
+    "inviteTeam": "チームを招待",
+    "makeOffice": "オフィスをつくる"
   },
   "home": {
     "nav": {

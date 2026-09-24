@@ -948,7 +948,6 @@
       "danger": "יציאה או סגירה"
     },
     "profile": {
-      "title": "הפרופיל שלכם",
       "changePassword": "שינוי סיסמה",
       "setPassword": "הגדרת סיסמה",
       "setPasswordDescription": "הוסיפו סיסמה כדי להתחבר גם עם האימייל, לא רק עם Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "לפחות 8 תווים",
       "signsOutOthers": "כאן תישארו מחוברים. בכל מקום אחר תנותקו.",
       "cancel": "ביטול",
-      "faceNote": "הפנים שלך נוצרות מהחשבון שלך, זהות בכל מסך. שום דבר לא מועלה ולא נשמר.",
       "themeNote": "״מערכת״ עוקב אחרי המכשיר שלך. הבחירה נשמרת בדפדפן הזה.",
       "link": "הקישור שלכם",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "התחברו גם עם Google.",
       "connectGoogle": "חיבור Google",
-      "googleConnected": "מחובר"
+      "googleConnected": "מחובר",
+      "sections": {
+        "profile": "פרופיל",
+        "character": "דמות",
+        "signin": "התחברות",
+        "appearance": "מראה"
+      },
+      "profileNote": "השם והקישור שלך, בכל מקום שנכנסים אליו.",
+      "preview": "מה אחרים רואים",
+      "noLink": "עדיין אין קישור",
+      "password": "סיסמה",
+      "passwordSet": "התחברות עם אימייל וסיסמה."
     },
     "invite": {
       "invalidTitle": "ההזמנה הזו לא עובדת",
@@ -1128,17 +1137,21 @@
     "leave": "לצאת"
   },
   "dashboard": {
-    "morning": "בוקר טוב, {name}",
-    "afternoon": "צהריים טובים, {name}",
-    "evening": "ערב טוב, {name}",
-    "subtitle": "המשרדים שלך, ומי נמצא עכשיו בכל קומה.",
-    "onFloor": "{count, plural, =0 {אין אף אחד בקומה} other {# בקומה}}",
     "newOffice": "משרד חדש",
     "lobby": "הלובי הציבורי",
     "lobbyBody": "קפצו לבקר ופגשו את מי שנמצא.",
     "emptyTitle": "פתחו את המשרד הראשון שלכם",
     "emptyBody": "משרד הוא קומה שהצוות שלך מסתובב בה, עם צ׳אט ושיחות מובנים. שלושה חברים בחינם.",
-    "walkIn": "להיכנס"
+    "walkIn": "להיכנס",
+    "home": "בית",
+    "editProfile": "עריכת פרופיל",
+    "yourOffices": "המשרדים שלך",
+    "invite": "הזמנת אנשים",
+    "officeSettings": "הגדרות המשרד",
+    "firstIn": "עוד אין כאן אף אחד. היכנסו והיו הראשונים.",
+    "notIn": "{count} לא כאן",
+    "inviteTeam": "הזמינו את הצוות",
+    "makeOffice": "הקימו משרד"
   },
   "home": {
     "nav": {

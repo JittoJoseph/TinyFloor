@@ -948,7 +948,6 @@
       "danger": "Forlad eller luk"
     },
     "profile": {
-      "title": "Din profil",
       "changePassword": "Skift adgangskode",
       "setPassword": "Vælg en adgangskode",
       "setPasswordDescription": "Tilføj en adgangskode, så du også kan logge ind med din e-mail og ikke kun med Google.",
@@ -968,7 +967,6 @@
       "passwordRule": "Mindst 8 tegn",
       "signsOutOthers": "Du forbliver logget ind her. Alle andre steder bliver du logget ud.",
       "cancel": "Annullér",
-      "faceNote": "Dit ansigt tegnes ud fra din konto, ens på hver skærm. Intet uploades eller gemmes.",
       "themeNote": "System følger din enhed. Valget gemmes i denne browser.",
       "link": "Dit link",
       "linkPlaceholder": "dinhjemmeside.dk",
@@ -976,7 +974,18 @@
       "google": "Google",
       "googleNote": "Log også ind med Google.",
       "connectGoogle": "Forbind Google",
-      "googleConnected": "Forbundet"
+      "googleConnected": "Forbundet",
+      "sections": {
+        "profile": "Profil",
+        "character": "Figur",
+        "signin": "Log ind",
+        "appearance": "Udseende"
+      },
+      "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
+      "preview": "Det ser andre",
+      "noLink": "Intet link endnu",
+      "password": "Adgangskode",
+      "passwordSet": "Log ind med din e-mail og adgangskode."
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",
@@ -1128,17 +1137,21 @@
     "leave": "Forlad"
   },
   "dashboard": {
-    "morning": "Godmorgen, {name}",
-    "afternoon": "God eftermiddag, {name}",
-    "evening": "Godaften, {name}",
-    "subtitle": "Dine kontorer, og hvem der er på hvert gulv lige nu.",
-    "onFloor": "{count, plural, =0 {Ingen på gulvet} other {# på gulvet}}",
     "newOffice": "Nyt kontor",
     "lobby": "Den offentlige lobby",
     "lobbyBody": "Kig forbi og mød dem, der er der.",
     "emptyTitle": "Start dit første kontor",
     "emptyBody": "Et kontor er et gulv, dit team går rundt på, med chat og opkald indbygget. Tre medlemmer er gratis.",
-    "walkIn": "Gå ind"
+    "walkIn": "Gå ind",
+    "home": "Hjem",
+    "editProfile": "Rediger profil",
+    "yourOffices": "Dine kontorer",
+    "invite": "Inviter folk",
+    "officeSettings": "Kontorindstillinger",
+    "firstIn": "Ingen er her endnu. Gå ind og bliv den første.",
+    "notIn": "{count} ikke her",
+    "inviteTeam": "Inviter dit team",
+    "makeOffice": "Lav dit kontor"
   },
   "home": {
     "nav": {

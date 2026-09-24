@@ -967,7 +967,6 @@
       "profileNote": "Navnet og lenken din, uansett hvor du går inn.",
       "password": "Passord",
       "passwordSet": "Logg inn med e-post og passord.",
-      "faceNote": "Ansiktet ditt tegnes ut fra kontoen din, likt overalt. Ingenting lastes opp.",
       "signOutNote": "Logg ut av TinyFloor i denne nettleseren."
     },
     "invite": {
@@ -1132,7 +1131,10 @@
     "badLink": "Det ser ikke ut som en invitasjonslenke. Lim inn hele lenken.",
     "makeTitle": "La oss lage kontoret ditt",
     "yourNewOffice": "Ditt nye kontor",
-    "freeRename": "Gratis for opptil 3 personer. Du kan endre navnet når som helst."
+    "freeRename": "Gratis for opptil 3 personer. Du kan endre navnet når som helst.",
+    "otherWays": "Andre veier inn",
+    "lobbyBody": "Stikk innom og møt folk.",
+    "yourAccount": "Kontoen din"
   },
   "home": {
     "nav": {

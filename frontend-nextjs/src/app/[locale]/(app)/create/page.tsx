@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { Loader } from "@/components/motion/loader";
 import { HomeFrame } from "@/components/app/HomeFrame";
+import { MakeSkeleton } from "@/components/app/HomeSkeletons";
 import { MakeOffice } from "@/components/app/CreateOffice";
 
 /**
@@ -25,9 +25,9 @@ export default function CreateOfficePage() {
 
   if (!signedIn) {
     return (
-      <div className="flex min-h-dvh items-center justify-center bg-rail text-muted-foreground">
-        <Loader variant="dots" size={20} />
-      </div>
+      <HomeFrame active={null}>
+        <MakeSkeleton />
+      </HomeFrame>
     );
   }
 

@@ -9,7 +9,8 @@ import { api } from "@/lib/api";
 import { officePath } from "@/lib/links";
 import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { Face } from "@/components/ui/Face";
+import { LitFace } from "@/components/ui/LitFace";
+import { cn } from "@/lib/utils";
 
 /**
  * Making an office, wherever it starts: a name, then straight onto its floor.
@@ -51,48 +52,34 @@ export function useCreateOffice() {
 }
 
 /**
- * Making an office, centered on the ground: its mark, lit softly in its own
- * colour, and the name written out large as they type, the way it will read
- * at the top of the rail. The mark's colour follows the name.
+ * Making an office: its mark, lit softly in its own colour, and the name
+ * written out large as they type, the way it will read at the top of the
+ * rail. Centered where there is room; on a phone it reads down one edge.
  */
 export function MakeOffice({ greeting, children }: { greeting: string; children?: ReactNode }) {
   const t = useTranslations("dashboard");
   const tc = useTranslations("create");
   const reduce = useReducedMotion();
   const { name, setName, typed, busy, error, create } = useCreateOffice();
-  const seed = typed.toLowerCase() || "your-office";
 
   return (
-    <div className="mx-auto flex min-h-[calc(100dvh-14rem)] max-w-[440px] flex-col items-center justify-center pb-6 text-center">
-      <div className="relative" aria-hidden>
-        <span className="pointer-events-none absolute inset-0 scale-150 opacity-40 blur-3xl dark:opacity-30">
-          <Face seed={seed} size={80} square />
-        </span>
-        <motion.span
-          key={seed}
-          initial={reduce ? false : { scale: 0.88, opacity: 0.6 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 520, damping: 28 }}
-          className="relative flex"
-        >
-          <Face seed={seed} size={80} square />
-        </motion.span>
-      </div>
+    <div className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6 sm:text-center">
+      <LitFace seed={typed.toLowerCase() || "your-office"} size={80} phone={60} square />
       <motion.p
         key={typed ? "named" : "greeting"}
         initial={reduce ? false : { opacity: 0, y: 3 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mt-9 text-[13px] font-medium text-muted-foreground"
+        className="mt-7 text-[13px] font-medium text-muted-foreground sm:mt-9"
       >
         {typed ? t("yourNewOffice") : greeting}
       </motion.p>
-      <h1 className="mt-1.5 w-full truncate text-[30px] font-semibold leading-tight tracking-[-0.025em] text-foreground sm:text-[34px]">
+      <h1 className="mt-1 line-clamp-2 w-full break-words text-[30px] font-semibold leading-[1.12] tracking-[-0.03em] text-foreground sm:mt-1.5 sm:line-clamp-1 sm:text-[34px] sm:leading-tight sm:tracking-[-0.025em]">
         {typed || t("makeTitle")}
       </h1>
-      <p className="mt-2.5 text-balance text-[14.5px] leading-relaxed text-muted-foreground">{t("welcomeBody")}</p>
+      <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground sm:text-balance sm:text-[14.5px]">{t("welcomeBody")}</p>
 
-      <form onSubmit={create} className="mt-8 w-full">
-        <div className="flex h-[52px] items-center gap-1 rounded-full border border-border bg-card p-1.5 ps-5 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-24px_rgb(0_0_0/0.5)] transition-[border-color] focus-within:border-foreground/25">
+      <form onSubmit={create} className="mt-7 w-full sm:mt-8">
+        <div className="flex h-14 items-center gap-1 rounded-full border border-border bg-card p-1.5 ps-5 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-24px_rgb(0_0_0/0.5)] transition-[border-color] focus-within:border-foreground/25 sm:h-[52px]">
           <label htmlFor="office-name" className="sr-only">
             {tc("nameLabel")}
           </label>
@@ -108,13 +95,13 @@ export function MakeOffice({ greeting, children }: { greeting: string; children?
           <button
             type="submit"
             disabled={!typed || busy}
-            className="flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
+            className="flex h-11 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[14px] font-medium text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-30 sm:h-10 sm:text-[13.5px]"
           >
             {busy ? tc("creating") : t("makeIt")}
             {!busy && <ArrowRight className="size-4 rtl:rotate-180" />}
           </button>
         </div>
-        {error ? <p className="mt-3 text-[12.5px] text-destructive">{error}</p> : <p className="mt-3 text-[12.5px] text-faint">{t("freeRename")}</p>}
+        <p className={cn("mt-3 ps-5 text-[12.5px] sm:ps-0", error ? "text-destructive" : "text-faint")}>{error || t("freeRename")}</p>
       </form>
       {children}
     </div>

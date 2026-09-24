@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { Loader } from "@/components/motion/loader";
 import { HomeFrame } from "@/components/app/HomeFrame";
+import { AccountSkeleton } from "@/components/app/HomeSkeletons";
 import { AccountView } from "@/components/account/AccountView";
 
 /** Your account, beside home in the same frame. */
@@ -19,9 +19,9 @@ export default function AccountPage() {
 
   if (!signedIn) {
     return (
-      <div className="flex min-h-dvh items-center justify-center bg-background text-muted-foreground">
-        <Loader variant="dots" size={20} />
-      </div>
+      <HomeFrame active="account">
+        <AccountSkeleton />
+      </HomeFrame>
     );
   }
   return (

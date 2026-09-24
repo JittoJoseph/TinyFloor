@@ -13,6 +13,7 @@ import { Face } from "@/components/ui/Face";
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { Group } from "./SettingsView";
 import { JoinByLink, MakeOffice } from "./CreateOffice";
+import { HomeSkeleton, rememberHomeShape } from "./HomeSkeletons";
 
 /** Desks near the middle of the big room, in the order people are drawn at them. */
 const DESKS: Array<[number, number]> = [
@@ -49,7 +50,11 @@ export function useMyOffices() {
   useEffect(() => {
     let cancelled = false;
     api.me().then(
-      ({ offices: mine }) => !cancelled && setOffices(mine ?? []),
+      ({ offices: mine }) => {
+        if (cancelled) return;
+        setOffices(mine ?? []);
+        rememberHomeShape(mine?.length ?? 0);
+      },
       () => !cancelled && setOffices([]),
     );
     return () => {
@@ -78,7 +83,7 @@ export function HomeView() {
           </Link>
         </div>
       )}
-      {!offices ? <Loading /> : office ? <Overview key={office.id} office={office} /> : <NoOffice />}
+      {!offices ? <HomeSkeleton /> : office ? <Overview key={office.id} office={office} /> : <NoOffice />}
       {offices?.length === 1 && (
         <Link
           href="/create"
@@ -276,40 +281,41 @@ function PersonRow({
 
 /**
  * No office yet, just after signing up: making one, right here. Someone who
- * was invited pastes the link instead, and the lobby is there meanwhile.
+ * was invited pastes the link instead, and the lobby is there meanwhile. On a
+ * phone those two are grouped as a list; wider, they sit quietly underneath.
  */
 export function NoOffice() {
   const t = useTranslations("dashboard");
+  const ts = useTranslations("shell");
   const { user } = useAuth();
 
   return (
     <MakeOffice greeting={user ? t("welcome", { name: user.displayName.split(" ")[0] }) : t("welcomeAnonymous")}>
-      <div className="mt-12 w-full">
-        <p className="mb-3 flex items-center gap-3 text-[12px] text-faint before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
-          {t("invited")}
-        </p>
-        <JoinByLink />
+      <p className="mb-2.5 mt-12 px-4 text-[12px] font-medium text-faint sm:hidden">{t("otherWays")}</p>
+      <div className="w-full divide-y divide-border overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-28px_rgb(0_0_0/0.45)] sm:mt-12 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none">
+        <div className="p-4 sm:p-0">
+          <p className="text-[14px] font-medium text-foreground sm:mb-3 sm:flex sm:items-center sm:gap-3 sm:text-[12px] sm:font-normal sm:text-faint sm:before:h-px sm:before:flex-1 sm:before:bg-border sm:after:h-px sm:after:flex-1 sm:after:bg-border">
+            {t("invited")}
+          </p>
+          <p className="mb-3 text-[12.5px] text-muted-foreground sm:hidden">{t("invitedBody")}</p>
+          <JoinByLink />
+        </div>
+        <Link
+          href={lobbyPath}
+          className="flex items-center gap-3 p-4 transition-colors active:bg-foreground/[0.03] sm:mx-auto sm:mt-9 sm:w-fit sm:gap-1.5 sm:p-0 sm:text-muted-foreground sm:hover:text-foreground"
+        >
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground sm:size-auto sm:border-0 sm:text-current">
+            <DoorOpen className="size-4 rtl:-scale-x-100" />
+          </span>
+          <span className="min-w-0 flex-1 text-start sm:hidden">
+            <span className="block text-[14px] font-medium text-foreground">{ts("publicLobby")}</span>
+            <span className="block text-[12.5px] text-muted-foreground">{t("lobbyBody")}</span>
+          </span>
+          <span className="hidden text-[13px] sm:inline">{t("lobbyNote")}</span>
+          <ChevronRight className="size-4 text-faint sm:hidden rtl:rotate-180" />
+          <ArrowRight className="hidden size-3.5 sm:block rtl:rotate-180" />
+        </Link>
       </div>
-      <Link href={lobbyPath} className="mt-9 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground">
-        <DoorOpen className="size-4 rtl:-scale-x-100" />
-        {t("lobbyNote")}
-        <ArrowRight className="size-3.5 rtl:rotate-180" />
-      </Link>
     </MakeOffice>
-  );
-}
-
-export function Loading() {
-  return (
-    <div aria-hidden>
-      <div className="flex items-center gap-4">
-        <span className="size-11 animate-pulse rounded-[30%] bg-muted" />
-        <span className="flex-1 space-y-2">
-          <span className="block h-4 w-44 animate-pulse rounded-full bg-muted" />
-          <span className="block h-3 w-28 animate-pulse rounded-full bg-muted" />
-        </span>
-      </div>
-      <div className="mt-6 h-44 animate-pulse rounded-2xl bg-muted sm:h-60" />
-    </div>
   );
 }

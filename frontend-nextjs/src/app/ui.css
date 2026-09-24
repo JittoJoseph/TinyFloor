@@ -93,27 +93,17 @@ html.app body {
   font-feature-settings: "cv11", "ss01";
 }
 
-html.app ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* Pages on the rail's ground (home, account): the page behind them is the
+   rail too, so the clear scrollbar track and an overscroll show the same. */
+html.app:has([data-ground="rail"]),
+html.app:has([data-ground="rail"]) body {
+  background-color: var(--ui-rail);
 }
-html.app ::-webkit-scrollbar-track,
-html.app ::-webkit-scrollbar-corner {
-  background: transparent;
-}
-html.app ::-webkit-scrollbar-thumb {
-  background: var(--ui-border);
-  border: 3px solid transparent;
-  background-clip: padding-box;
-  border-radius: 9999px;
-}
-html.app ::-webkit-scrollbar-thumb:hover {
-  background: var(--ui-faint);
-  background-clip: padding-box;
-  border: 3px solid transparent;
-}
-html.app * {
-  scrollbar-color: var(--ui-border) transparent;
+
+/* The scrollbar thumb, from the theme's own ink (see globals.css). */
+html.app {
+  --scrollbar-thumb: color-mix(in oklab, var(--ui-foreground) 18%, transparent);
+  --scrollbar-thumb-hover: color-mix(in oklab, var(--ui-foreground) 32%, transparent);
 }
 
 /* Keyboard focus: one quiet ring everywhere, instead of the browser's blue. A

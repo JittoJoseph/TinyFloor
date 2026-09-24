@@ -1058,16 +1058,8 @@
     "backToOffices": "回到你的办公室"
   },
   "create": {
-    "title": "给办公室起个名字",
-    "subtitle": "这是团队每天在侧栏顶部看到的名字。",
     "nameLabel": "办公室名称",
-    "namePlaceholder": "Acme Studio",
-    "create": "创建我的办公室",
     "creating": "正在准备",
-    "freePlan": "3 人以内免费，无需银行卡。",
-    "makeNamed": "创建 {name}",
-    "seatsFree": "1/3 名成员 · 免费",
-    "firstIn": "{name}，第一个进来的人",
     "continue": "继续"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "还有别的团队？创建新的办公室",
     "welcome": "欢迎，{name}",
     "welcomeAnonymous": "欢迎",
-    "welcomeBody": "三步之后，你的团队就有了自己的楼层。",
+    "welcomeBody": "给团队的一层楼，频道和通话都已内置。",
     "stepName": "为你的办公室命名",
     "makeIt": "创建",
-    "stepInvite": "邀请你的团队",
-    "stepInviteBody": "每人一个链接，或给访客一个链接。",
-    "stepWalk": "一起走进去",
-    "stepWalkBody": "走到某人身边就能交谈。频道和消息都会保留。",
     "invited": "收到邀请了吗？",
     "invitedBody": "粘贴团队发给你的链接。",
     "invitePlaceholder": "粘贴邀请链接",
     "join": "加入",
-    "badLink": "这看起来不是邀请链接。请粘贴完整链接。"
+    "badLink": "这看起来不是邀请链接。请粘贴完整链接。",
+    "makeTitle": "来创建你的办公室",
+    "yourNewOffice": "你的新办公室",
+    "freeRename": "最多 3 人免费。名称随时可以修改。"
   },
   "home": {
     "nav": {

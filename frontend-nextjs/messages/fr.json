@@ -1058,16 +1058,8 @@
     "backToOffices": "Retour à vos bureaux"
   },
   "create": {
-    "title": "Nommez votre bureau",
-    "subtitle": "C’est ce que votre équipe verra chaque jour en haut de la barre.",
     "nameLabel": "Nom du bureau",
-    "namePlaceholder": "Acme Studio",
-    "create": "Créer mon bureau",
     "creating": "Préparation",
-    "freePlan": "Gratuit jusqu’à 3 personnes. Sans carte.",
-    "makeNamed": "Créer {name}",
-    "seatsFree": "1 membre sur 3 · Gratuit",
-    "firstIn": "{name}, le premier arrivé",
     "continue": "Continuer"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Une autre équipe ? Créer un nouveau bureau",
     "welcome": "Bienvenue, {name}",
     "welcomeAnonymous": "Bienvenue",
-    "welcomeBody": "Trois étapes et votre équipe a son propre étage.",
+    "welcomeBody": "Un étage pour votre équipe, avec canaux et appels intégrés.",
     "stepName": "Nommez votre bureau",
     "makeIt": "Le créer",
-    "stepInvite": "Invitez votre équipe",
-    "stepInviteBody": "Un lien par personne, ou un pour les invités.",
-    "stepWalk": "Entrez ensemble",
-    "stepWalkBody": "Approchez-vous de quelqu’un pour parler. Canaux et messages restent.",
     "invited": "Vous avez été invité ?",
     "invitedBody": "Collez le lien que votre équipe vous a envoyé.",
     "invitePlaceholder": "Collez un lien d’invitation",
     "join": "Rejoindre",
-    "badLink": "Ce n’est pas un lien d’invitation. Collez le lien complet."
+    "badLink": "Ce n’est pas un lien d’invitation. Collez le lien complet.",
+    "makeTitle": "Créons votre bureau",
+    "yourNewOffice": "Votre nouveau bureau",
+    "freeRename": "Gratuit jusqu'à 3 personnes. Vous pourrez le renommer à tout moment."
   },
   "home": {
     "nav": {

@@ -1,16 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Link2 } from "lucide-react";
+import { ArrowRight, Link2 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
-import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { officePath } from "@/lib/links";
 import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { cn } from "@/lib/utils";
 import { Face } from "@/components/ui/Face";
 
 /**
@@ -53,64 +51,72 @@ export function useCreateOffice() {
 }
 
 /**
- * The name, typed straight into the office as the app will show it: its mark
- * (coloured by the name), its seats, and you, its first admin. The same card
- * as the office switcher's, so what they make is what they'll see.
+ * Making an office, centered on the ground: its mark, lit softly in its own
+ * colour, and the name written out large as they type, the way it will read
+ * at the top of the rail. The mark's colour follows the name.
  */
-export function OfficeNameCard({
-  name,
-  onName,
-  autoFocus,
-  className,
-}: {
-  name: string;
-  onName: (value: string) => void;
-  autoFocus?: boolean;
-  className?: string;
-}) {
-  const t = useTranslations("create");
-  const tRoles = useTranslations("office.roles");
-  const { user } = useAuth();
+export function MakeOffice({ greeting, children }: { greeting: string; children?: ReactNode }) {
+  const t = useTranslations("dashboard");
+  const tc = useTranslations("create");
   const reduce = useReducedMotion();
-  const seed = name.trim().toLowerCase() || "your-office";
+  const { name, setName, typed, busy, error, create } = useCreateOffice();
+  const seed = typed.toLowerCase() || "your-office";
 
   return (
-    <div className={cn("rounded-[20px] border border-border bg-background p-1.5 text-start [--face-ring:var(--ui-background)]", className)}>
-      <label className="flex cursor-text items-center gap-3 px-3 py-2.5">
+    <div className="mx-auto flex min-h-[calc(100dvh-14rem)] max-w-[440px] flex-col items-center justify-center pb-6 text-center">
+      <div className="relative" aria-hidden>
+        <span className="pointer-events-none absolute inset-0 scale-150 opacity-40 blur-3xl dark:opacity-30">
+          <Face seed={seed} size={80} square />
+        </span>
         <motion.span
           key={seed}
-          initial={reduce ? false : { scale: 0.85, opacity: 0.5 }}
+          initial={reduce ? false : { scale: 0.88, opacity: 0.6 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 520, damping: 28 }}
-          className="flex shrink-0"
-          aria-hidden
+          className="relative flex"
         >
-          <Face seed={seed} size={40} square />
+          <Face seed={seed} size={80} square />
         </motion.span>
-        <span className="min-w-0 flex-1">
-          <span className="sr-only">{t("nameLabel")}</span>
+      </div>
+      <motion.p
+        key={typed ? "named" : "greeting"}
+        initial={reduce ? false : { opacity: 0, y: 3 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mt-9 text-[13px] font-medium text-muted-foreground"
+      >
+        {typed ? t("yourNewOffice") : greeting}
+      </motion.p>
+      <h1 className="mt-1.5 w-full truncate text-[30px] font-semibold leading-tight tracking-[-0.025em] text-foreground sm:text-[34px]">
+        {typed || t("makeTitle")}
+      </h1>
+      <p className="mt-2.5 text-balance text-[14.5px] leading-relaxed text-muted-foreground">{t("welcomeBody")}</p>
+
+      <form onSubmit={create} className="mt-8 w-full">
+        <div className="flex h-[52px] items-center gap-1 rounded-full border border-border bg-card p-1.5 ps-5 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-24px_rgb(0_0_0/0.5)] transition-[border-color] focus-within:border-foreground/25">
+          <label htmlFor="office-name" className="sr-only">
+            {tc("nameLabel")}
+          </label>
           <input
+            id="office-name"
             value={name}
-            onChange={(event) => onName(event.target.value)}
-            placeholder={t("namePlaceholder")}
+            onChange={(event) => setName(event.target.value)}
+            placeholder={t("stepName")}
             maxLength={48}
-            autoFocus={autoFocus}
             autoComplete="organization"
-            className="w-full bg-transparent text-[16.5px] font-semibold text-foreground outline-none placeholder:font-normal placeholder:text-faint"
+            className="h-full min-w-0 flex-1 bg-transparent text-[16px] text-foreground outline-none placeholder:text-faint sm:text-[15px]"
           />
-          <span className="block text-[12.5px] text-muted-foreground">{t("seatsFree")}</span>
-        </span>
-      </label>
-      {user && (
-        <>
-          <div className="mx-3 border-t border-border" />
-          <div className="flex items-center gap-2.5 px-3 py-2.5 text-[12.5px] text-muted-foreground">
-            <Face seed={user.id} size={20} />
-            <span className="min-w-0 flex-1 truncate">{t("firstIn", { name: user.displayName })}</span>
-            <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium">{tRoles("admin")}</span>
-          </div>
-        </>
-      )}
+          <button
+            type="submit"
+            disabled={!typed || busy}
+            className="flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            {busy ? tc("creating") : t("makeIt")}
+            {!busy && <ArrowRight className="size-4 rtl:rotate-180" />}
+          </button>
+        </div>
+        {error ? <p className="mt-3 text-[12.5px] text-destructive">{error}</p> : <p className="mt-3 text-[12.5px] text-faint">{t("freeRename")}</p>}
+      </form>
+      {children}
     </div>
   );
 }
@@ -134,8 +140,8 @@ export function JoinByLink() {
 
   return (
     <form onSubmit={join}>
-      <div className="flex h-11 items-center gap-1 rounded-full border border-border bg-background p-1 ps-4 transition-colors focus-within:border-foreground/35">
-        <Link2 className="size-4 shrink-0 text-muted-foreground" />
+      <div className="flex h-11 items-center gap-1 rounded-full border border-border p-1 ps-4 transition-colors focus-within:border-foreground/25">
+        <Link2 className="size-4 shrink-0 text-faint" />
         <label className="sr-only" htmlFor="invite-link">
           {t("invitePlaceholder")}
         </label>
@@ -155,7 +161,7 @@ export function JoinByLink() {
         <button
           type="submit"
           disabled={!link.trim()}
-          className="h-9 shrink-0 cursor-pointer rounded-full border border-border bg-card px-4 text-[13px] font-medium text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-9 shrink-0 cursor-pointer rounded-full px-4 text-[13px] font-medium text-foreground transition-colors hover:bg-foreground/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t("join")}
         </button>

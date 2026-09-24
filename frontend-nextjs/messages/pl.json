@@ -1058,16 +1058,8 @@
     "backToOffices": "Wróć do swoich biur"
   },
   "create": {
-    "title": "Nazwij swoje biuro",
-    "subtitle": "To zobaczy twój zespół codziennie na górze paska.",
     "nameLabel": "Nazwa biura",
-    "namePlaceholder": "Acme Studio",
-    "create": "Załóż moje biuro",
     "creating": "Przygotowujemy je",
-    "freePlan": "Za darmo do 3 osób. Bez karty.",
-    "makeNamed": "Załóż {name}",
-    "seatsFree": "1 z 3 członków · Za darmo",
-    "firstIn": "{name}, pierwsza osoba w środku",
     "continue": "Dalej"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Kolejny zespół? Załóż nowe biuro",
     "welcome": "Witaj, {name}",
     "welcomeAnonymous": "Witaj",
-    "welcomeBody": "Trzy kroki i twój zespół ma własne piętro.",
+    "welcomeBody": "Jedno piętro dla twojego zespołu, z kanałami i rozmowami.",
     "stepName": "Nazwij swoje biuro",
     "makeIt": "Załóż je",
-    "stepInvite": "Zaproś swój zespół",
-    "stepInviteBody": "Link dla każdej osoby albo jeden dla gości.",
-    "stepWalk": "Wejdźcie razem",
-    "stepWalkBody": "Podejdź do kogoś, aby porozmawiać. Kanały i wiadomości zostają.",
     "invited": "Masz zaproszenie?",
     "invitedBody": "Wklej link, który wysłał ci zespół.",
     "invitePlaceholder": "Wklej link z zaproszeniem",
     "join": "Dołącz",
-    "badLink": "To nie wygląda na link z zaproszeniem. Wklej cały link."
+    "badLink": "To nie wygląda na link z zaproszeniem. Wklej cały link.",
+    "makeTitle": "Stwórzmy twoje biuro",
+    "yourNewOffice": "Twoje nowe biuro",
+    "freeRename": "Za darmo dla maks. 3 osób. Nazwę możesz zmienić w każdej chwili."
   },
   "home": {
     "nav": {

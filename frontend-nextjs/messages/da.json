@@ -1058,16 +1058,8 @@
     "backToOffices": "Tilbage til dine kontorer"
   },
   "create": {
-    "title": "Giv dit kontor et navn",
-    "subtitle": "Det er det, dit team ser øverst i bjælken hver dag.",
     "nameLabel": "Kontorets navn",
-    "namePlaceholder": "Acme Studio",
-    "create": "Lav mit kontor",
     "creating": "Gør det klar",
-    "freePlan": "Gratis for op til 3 personer. Intet kort.",
-    "makeNamed": "Lav {name}",
-    "seatsFree": "1 af 3 medlemmer · Gratis",
-    "firstIn": "{name}, den første inde",
     "continue": "Videre"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Et team mere? Lav et nyt kontor",
     "welcome": "Velkommen, {name}",
     "welcomeAnonymous": "Velkommen",
-    "welcomeBody": "Tre trin, og dit team har sin egen etage.",
+    "welcomeBody": "Én etage til dit team, med kanaler og opkald indbygget.",
     "stepName": "Navngiv dit kontor",
     "makeIt": "Lav det",
-    "stepInvite": "Inviter dit team",
-    "stepInviteBody": "Et link pr. person eller ét til gæster.",
-    "stepWalk": "Gå ind sammen",
-    "stepWalkBody": "Gå hen til nogen for at snakke. Kanaler og beskeder bliver.",
     "invited": "Er du blevet inviteret?",
     "invitedBody": "Indsæt linket, dit team sendte dig.",
     "invitePlaceholder": "Indsæt et invitationslink",
     "join": "Deltag",
-    "badLink": "Det ligner ikke et invitationslink. Indsæt hele linket."
+    "badLink": "Det ligner ikke et invitationslink. Indsæt hele linket.",
+    "makeTitle": "Lad os lave dit kontor",
+    "yourNewOffice": "Dit nye kontor",
+    "freeRename": "Gratis for op til 3 personer. Du kan altid omdøbe det."
   },
   "home": {
     "nav": {

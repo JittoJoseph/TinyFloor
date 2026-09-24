@@ -1058,16 +1058,8 @@
     "backToOffices": "Terug naar je kantoren"
   },
   "create": {
-    "title": "Geef je kantoor een naam",
-    "subtitle": "Dit ziet je team elke dag bovenaan de balk.",
     "nameLabel": "Naam van het kantoor",
-    "namePlaceholder": "Acme Studio",
-    "create": "Mijn kantoor maken",
     "creating": "Wordt klaargezet",
-    "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
-    "makeNamed": "{name} maken",
-    "seatsFree": "1 van 3 leden · Gratis",
-    "firstIn": "{name}, als eerste binnen",
     "continue": "Verder"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Nog een team? Maak een nieuw kantoor",
     "welcome": "Welkom, {name}",
     "welcomeAnonymous": "Welkom",
-    "welcomeBody": "Drie stappen en je team heeft een eigen verdieping.",
+    "welcomeBody": "Eén verdieping voor je team, met kanalen en gesprekken ingebouwd.",
     "stepName": "Geef je kantoor een naam",
     "makeIt": "Maken",
-    "stepInvite": "Nodig je team uit",
-    "stepInviteBody": "Een link per persoon, of één voor gasten.",
-    "stepWalk": "Samen naar binnen",
-    "stepWalkBody": "Loop naar iemand toe om te praten. Kanalen en berichten blijven.",
     "invited": "Ben je uitgenodigd?",
     "invitedBody": "Plak de link die je team je stuurde.",
     "invitePlaceholder": "Plak een uitnodigingslink",
     "join": "Meedoen",
-    "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link."
+    "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
+    "makeTitle": "Laten we je kantoor maken",
+    "yourNewOffice": "Je nieuwe kantoor",
+    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen."
   },
   "home": {
     "nav": {

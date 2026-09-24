@@ -12,7 +12,7 @@ import { FloorScene, type Sitter } from "@/components/floor/FloorScene";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { Group } from "./SettingsView";
-import { JoinByLink, OfficeNameCard, useCreateOffice } from "./CreateOffice";
+import { JoinByLink, MakeOffice } from "./CreateOffice";
 
 /** Desks near the middle of the big room, in the order people are drawn at them. */
 const DESKS: Array<[number, number]> = [
@@ -275,76 +275,27 @@ function PersonRow({
 }
 
 /**
- * No office yet, just after signing up: three steps to a floor of their own,
- * the first one right here. Someone who was invited pastes the link instead,
- * and the lobby is there in the meantime.
+ * No office yet, just after signing up: making one, right here. Someone who
+ * was invited pastes the link instead, and the lobby is there meanwhile.
  */
 export function NoOffice() {
   const t = useTranslations("dashboard");
-  const tc = useTranslations("create");
   const { user } = useAuth();
-  const { name, setName, typed, busy, error, create } = useCreateOffice();
-  const later = [
-    { title: t("stepInvite"), body: t("stepInviteBody") },
-    { title: t("stepWalk"), body: t("stepWalkBody") },
-  ];
 
   return (
-    <>
-      <h1 className="text-[28px] font-semibold tracking-[-0.02em] text-foreground">
-        {user ? t("welcome", { name: user.displayName.split(" ")[0] }) : t("welcomeAnonymous")}
-      </h1>
-      <p className="mt-1.5 text-[14.5px] text-muted-foreground">{t("welcomeBody")}</p>
-
-      <ol className="mt-8 space-y-3">
-        <li className="rounded-[22px] border border-border bg-card p-4 sm:p-5">
-          <div className="flex items-center gap-3">
-            <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-foreground text-[12px] font-semibold text-background">1</span>
-            <h2 className="text-[15px] font-semibold text-foreground">{t("stepName")}</h2>
-          </div>
-          <form onSubmit={create} className="mt-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-            <OfficeNameCard name={name} onName={setName} />
-            <button
-              type="submit"
-              disabled={!typed || busy}
-              className="inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              {busy ? tc("creating") : t("makeIt")}
-              {!busy && <ArrowRight className="size-4 rtl:rotate-180" />}
-            </button>
-          </form>
-          {error && <p className="mt-3 text-[13px] text-destructive">{error}</p>}
-          <p className="mt-3 text-[12.5px] text-muted-foreground">{tc("freePlan")}</p>
-        </li>
-        {later.map((step, index) => (
-          <li key={step.title} className="flex items-start gap-3 rounded-[22px] border border-border px-4 py-4 sm:px-5">
-            <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border text-[12px] font-semibold text-muted-foreground">
-              {index + 2}
-            </span>
-            <div className="min-w-0 flex-1">
-              <h2 className="text-[15px] font-semibold text-muted-foreground">{step.title}</h2>
-              <p className="mt-0.5 text-[13px] text-faint">{step.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:items-center">
-        <div>
-          <p className="text-[14px] font-medium text-foreground">{t("invited")}</p>
-          <p className="mt-0.5 text-[13px] text-muted-foreground">{t("invitedBody")}</p>
-        </div>
+    <MakeOffice greeting={user ? t("welcome", { name: user.displayName.split(" ")[0] }) : t("welcomeAnonymous")}>
+      <div className="mt-12 w-full">
+        <p className="mb-3 flex items-center gap-3 text-[12px] text-faint before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+          {t("invited")}
+        </p>
         <JoinByLink />
       </div>
-
-      <div className="mt-10 border-t border-border pt-6">
-        <Link href={lobbyPath} className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground">
-          <DoorOpen className="size-4 rtl:-scale-x-100" />
-          {t("lobbyNote")}
-          <ChevronRight className="size-3.5 rtl:rotate-180" />
-        </Link>
-      </div>
-    </>
+      <Link href={lobbyPath} className="mt-9 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground">
+        <DoorOpen className="size-4 rtl:-scale-x-100" />
+        {t("lobbyNote")}
+        <ArrowRight className="size-3.5 rtl:rotate-180" />
+      </Link>
+    </MakeOffice>
   );
 }
 

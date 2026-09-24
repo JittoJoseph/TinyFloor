@@ -1058,16 +1058,8 @@
     "backToOffices": "Tilbake til kontorene dine"
   },
   "create": {
-    "title": "Gi kontoret et navn",
-    "subtitle": "Det er dette teamet ditt ser øverst i feltet hver dag.",
     "nameLabel": "Navn på kontoret",
-    "namePlaceholder": "Acme Studio",
-    "create": "Lag kontoret mitt",
     "creating": "Gjør det klart",
-    "freePlan": "Gratis for opptil 3 personer. Uten kort.",
-    "makeNamed": "Lag {name}",
-    "seatsFree": "1 av 3 medlemmer · Gratis",
-    "firstIn": "{name}, den første inne",
     "continue": "Videre"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "Et team til? Lag et nytt kontor",
     "welcome": "Velkommen, {name}",
     "welcomeAnonymous": "Velkommen",
-    "welcomeBody": "Tre steg, så har teamet ditt sin egen etasje.",
+    "welcomeBody": "Én etasje for teamet ditt, med kanaler og samtaler innebygd.",
     "stepName": "Gi kontoret ditt et navn",
     "makeIt": "Lag det",
-    "stepInvite": "Inviter teamet ditt",
-    "stepInviteBody": "En lenke per person, eller én for gjester.",
-    "stepWalk": "Gå inn sammen",
-    "stepWalkBody": "Gå bort til noen for å snakke. Kanaler og meldinger blir.",
     "invited": "Har du blitt invitert?",
     "invitedBody": "Lim inn lenken teamet ditt sendte deg.",
     "invitePlaceholder": "Lim inn en invitasjonslenke",
     "join": "Bli med",
-    "badLink": "Det ser ikke ut som en invitasjonslenke. Lim inn hele lenken."
+    "badLink": "Det ser ikke ut som en invitasjonslenke. Lim inn hele lenken.",
+    "makeTitle": "La oss lage kontoret ditt",
+    "yourNewOffice": "Ditt nye kontor",
+    "freeRename": "Gratis for opptil 3 personer. Du kan endre navnet når som helst."
   },
   "home": {
     "nav": {

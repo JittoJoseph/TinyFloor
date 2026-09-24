@@ -135,7 +135,8 @@ export function Group({ title, note, action, children }: { title: string; note?:
         </div>
         {action}
       </div>
-      <div className="mt-3 divide-y divide-border rounded-2xl border border-border bg-background [--face-ring:var(--ui-background)]">
+      {/* Inside a place's panel it sits in; on Home's ground the frame raises it into a panel of its own. */}
+      <div className="mt-3 divide-y divide-border rounded-2xl border border-border bg-[var(--group-bg,var(--ui-background))] shadow-[var(--group-shadow,none)] [--face-ring:var(--group-bg,var(--ui-background))]">
         {children}
       </div>
     </section>

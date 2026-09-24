@@ -1058,16 +1058,8 @@
     "backToOffices": "Volver a tus oficinas"
   },
   "create": {
-    "title": "Ponle nombre a tu oficina",
-    "subtitle": "Es lo que tu equipo verá cada día arriba de la barra.",
     "nameLabel": "Nombre de la oficina",
-    "namePlaceholder": "Acme Studio",
-    "create": "Crear mi oficina",
     "creating": "Preparándola",
-    "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
-    "makeNamed": "Crear {name}",
-    "seatsFree": "1 de 3 miembros · Gratis",
-    "firstIn": "{name}, el primero en entrar",
     "continue": "Continuar"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "¿Otro equipo? Crea una oficina nueva",
     "welcome": "Hola, {name}",
     "welcomeAnonymous": "Te damos la bienvenida",
-    "welcomeBody": "Tres pasos y tu equipo tendrá su propia planta.",
+    "welcomeBody": "Una planta para tu equipo, con canales y llamadas incluidos.",
     "stepName": "Ponle nombre a tu oficina",
     "makeIt": "Crearla",
-    "stepInvite": "Invita a tu equipo",
-    "stepInviteBody": "Un enlace por persona, o uno para invitados.",
-    "stepWalk": "Entrad juntos",
-    "stepWalkBody": "Acércate a alguien para hablar. Canales y mensajes se quedan.",
     "invited": "¿Te han invitado?",
     "invitedBody": "Pega el enlace que te envió tu equipo.",
     "invitePlaceholder": "Pega un enlace de invitación",
     "join": "Unirme",
-    "badLink": "Eso no parece un enlace de invitación. Pega el enlace completo."
+    "badLink": "Eso no parece un enlace de invitación. Pega el enlace completo.",
+    "makeTitle": "Vamos a crear tu oficina",
+    "yourNewOffice": "Tu nueva oficina",
+    "freeRename": "Gratis hasta 3 personas. Puedes cambiarle el nombre cuando quieras."
   },
   "home": {
     "nav": {

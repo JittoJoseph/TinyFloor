@@ -1058,16 +1058,8 @@
     "backToOffices": "내 오피스로"
   },
   "create": {
-    "title": "오피스 이름 정하기",
-    "subtitle": "팀이 매일 레일 맨 위에서 보게 될 이름이에요.",
     "nameLabel": "오피스 이름",
-    "namePlaceholder": "Acme Studio",
-    "create": "내 오피스 만들기",
     "creating": "준비하는 중",
-    "freePlan": "3명까지 무료예요. 카드도 필요 없어요.",
-    "makeNamed": "{name} 만들기",
-    "seatsFree": "멤버 1/3 · 무료",
-    "firstIn": "{name}, 첫 번째 멤버",
     "continue": "계속"
   },
   "shell": {
@@ -1130,18 +1122,17 @@
     "anotherOffice": "다른 팀도 있나요? 새 오피스 만들기",
     "welcome": "환영해요, {name}님",
     "welcomeAnonymous": "환영해요",
-    "welcomeBody": "세 단계면 팀만의 층이 생겨요.",
+    "welcomeBody": "팀을 위한 한 층, 채널과 통화가 함께해요.",
     "stepName": "오피스 이름 정하기",
     "makeIt": "만들기",
-    "stepInvite": "팀 초대하기",
-    "stepInviteBody": "한 사람에 하나씩, 또는 게스트용 링크 하나.",
-    "stepWalk": "함께 들어가기",
-    "stepWalkBody": "이야기하고 싶은 사람에게 걸어가면 돼요. 채널과 메시지는 남아요.",
     "invited": "초대받으셨나요?",
     "invitedBody": "팀이 보낸 링크를 붙여넣으세요.",
     "invitePlaceholder": "초대 링크 붙여넣기",
     "join": "참여",
-    "badLink": "초대 링크가 아닌 것 같아요. 링크 전체를 붙여넣으세요."
+    "badLink": "초대 링크가 아닌 것 같아요. 링크 전체를 붙여넣으세요.",
+    "makeTitle": "오피스를 만들어 봐요",
+    "yourNewOffice": "새 오피스",
+    "freeRename": "3명까지 무료. 이름은 언제든 바꿀 수 있어요."
   },
   "home": {
     "nav": {

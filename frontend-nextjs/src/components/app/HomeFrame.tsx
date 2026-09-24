@@ -29,11 +29,11 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
   ] as const;
 
   return (
-    <div className="min-h-dvh bg-background">
+    <div className="min-h-dvh bg-rail [--face-ring:var(--ui-rail)]">
       <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
         {/* The page fades out under the floating bar instead of cutting off at it. */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-background from-40% to-transparent" />
-        <nav className="mx-auto flex h-14 max-w-[880px] items-center gap-0.5 rounded-full border border-border/80 bg-background/85 pe-2 ps-3 shadow-[0_8px_24px_-10px_rgb(0_0_0/0.18)] backdrop-blur-xl sm:gap-1 sm:ps-4">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-rail from-40% to-transparent" />
+        <nav className="mx-auto flex h-14 max-w-[880px] items-center gap-0.5 rounded-full border border-border bg-card/85 pe-2 ps-3 shadow-[0_8px_24px_-10px_rgb(0_0_0/0.3)] [--face-ring:var(--ui-card)] backdrop-blur-xl sm:gap-1 sm:ps-4">
           <Link href="/dashboard" aria-label="TinyFloor" className="me-1.5 inline-flex shrink-0 items-center gap-2 text-[15px] font-semibold tracking-tight text-foreground sm:me-2">
             <Logo size={26} />
             <span className="hidden sm:inline">TinyFloor</span>
@@ -52,7 +52,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
                 <motion.span
                   layoutId="home-tab"
                   transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-                  className="absolute inset-0 rounded-full bg-foreground/[0.07]"
+                  className="absolute inset-0 rounded-full bg-foreground/[0.08]"
                 />
               )}
               <span className="relative">{tab.label}</span>
@@ -70,7 +70,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
           <YouMenu onFloor={false} bar leave={lobby} />
         </nav>
       </header>
-      <main className="mx-auto w-full max-w-3xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32">{children}</main>
+      <main className="mx-auto w-full max-w-3xl px-4 pb-24 pt-28 [--group-bg:var(--ui-card)] [--group-shadow:0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-28px_rgb(0_0_0/0.45)] sm:px-6 sm:pt-32">{children}</main>
     </div>
   );
 }

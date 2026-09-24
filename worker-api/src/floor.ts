@@ -11,7 +11,7 @@ import { floorCapacity, realtime, requireOffice } from "./access";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
-import { requireUser, type User } from "./session";
+import { noteCountry, requireUser, type User } from "./session";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 /** How stale the lobby door's head count may be. */
@@ -58,6 +58,7 @@ export function floorRoutes(router: Router): void {
     .add("POST", "/v1/offices/:id/ticket", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
+      noteCountry(env, request, ctx, user);
       return json(await ticketFor(env, user, office.id, office.role, floorCapacity(office.seats)));
     })
 
@@ -84,6 +85,7 @@ export function floorRoutes(router: Router): void {
     .add("POST", "/v1/guest-links/:token/ticket", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const link = await findGuestLink(env, params.token);
+      noteCountry(env, request, ctx, user);
       const cap = floorCapacity(link.seats);
       // A member who follows a guest link is still a member, and isn't tied to the link.
       const membership = await env.DB.prepare("SELECT role FROM memberships WHERE office_id = ? AND user_id = ?")
@@ -95,6 +97,7 @@ export function floorRoutes(router: Router): void {
 
     .add("POST", "/v1/lobby/ticket", async ({ request, env, ctx }) => {
       const user = await requireUser(env, request, ctx);
+      noteCountry(env, request, ctx, user);
       return json(await ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY));
     })
 

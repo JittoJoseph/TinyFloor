@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it, vi } from "vitest";
-import { call, makeUser, SITE } from "./helpers";
+import { call, fakeRealtime, makeUser, SITE } from "./helpers";
 
 /** An account with the admin address, verified the way Google verifies it, or not. */
 async function admin(verified = true) {
@@ -49,25 +49,57 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("notes the country a session starts from, and nothing for an unknown one", async () => {
+  it("notes the country someone walks onto a floor from, not the one they signed up from", async () => {
     const realFetch = globalThis.fetch;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) =>
       String(input instanceof Request ? input.url : input).startsWith("https://challenges.cloudflare.com/")
         ? Response.json({ success: true })
         : realFetch(input, init),
     );
-    const guest = async (country: string, ip: string) => {
-      const response = await exports.default.fetch("https://api.tinyfloor.com/v1/auth/guest", {
+    const response = await exports.default.fetch("https://api.tinyfloor.com/v1/auth/guest", {
+      method: "POST",
+      headers: { Origin: SITE, "Content-Type": "application/json", "CF-Connecting-IP": "10.8.0.1" },
+      body: JSON.stringify({ name: "Kai", character: "Bob", turnstileToken: "t" }),
+      cf: { country: "DE" },
+    } as RequestInit);
+    vi.restoreAllMocks();
+    const { user } = (await response.json()) as { user: { id: string } };
+    const cookie = response.headers.get("Set-Cookie")!.split(";")[0];
+    const countryNow = async () =>
+      (await env.DB.prepare("SELECT country FROM users WHERE id = ?").bind(user.id).first<{ country: string | null }>())?.country;
+    expect(await countryNow()).toBeNull();
+
+    const walkIn = (country: string) =>
+      exports.default.fetch("https://api.tinyfloor.com/v1/lobby/ticket", {
         method: "POST",
-        headers: { Origin: SITE, "Content-Type": "application/json", "CF-Connecting-IP": ip },
-        body: JSON.stringify({ name: "Kai", character: "Bob", turnstileToken: "t" }),
+        headers: { Origin: SITE, "Content-Type": "application/json", Cookie: cookie },
+        body: "{}",
         cf: { country },
       } as RequestInit);
-      const { user } = (await response.json()) as { user: { id: string } };
-      return env.DB.prepare("SELECT country FROM users WHERE id = ?").bind(user.id).first<{ country: string | null }>();
-    };
-    expect((await guest("DE", "10.8.0.1"))?.country).toBe("DE");
-    expect((await guest("T1", "10.8.0.2"))?.country).toBeNull();
-    vi.restoreAllMocks();
+    expect((await walkIn("IN")).status).toBe(200);
+    expect(await countryNow()).toBe("IN");
+    // Unknown and Tor leave the last one where it was.
+    await walkIn("T1");
+    expect(await countryNow()).toBe("IN");
+  });
+
+  it("reads the lobby's chat, and changes or takes down messages in it, for the admin only", async () => {
+    const boss = await admin();
+    const someone = await makeUser("Someone Else");
+    expect((await call(someone, "DELETE", "/v1/admin/lobby-chat/5")).status).toBe(404);
+
+    const page = await call<{ channel: string }>(boss, "GET", "/v1/admin/lobby-chat?channel=general&before=10");
+    expect(page.status).toBe(200);
+    expect(page.body.channel).toBe("general");
+    expect((await call(boss, "PATCH", "/v1/admin/lobby-chat/5", { body: "kinder words" })).status).toBe(200);
+    expect((await call(boss, "PATCH", "/v1/admin/lobby-chat/5", { body: "  " })).status).toBe(400);
+    expect((await call(boss, "DELETE", "/v1/admin/lobby-chat/5")).status).toBe(200);
+    expect((await call(boss, "DELETE", "/v1/admin/lobby-chat/404")).status).toBe(404);
+    expect((await call(boss, "DELETE", "/v1/admin/lobby-chat/nope")).status).toBe(400);
+    const calls = await fakeRealtime().calls();
+    expect(calls).toContainEqual(["lobbyChat", "general", 10]);
+    expect(calls).toContainEqual(["moderateLobbyChat", 5, { body: "kinder words" }]);
+    expect(calls).toContainEqual(["moderateLobbyChat", 5, { remove: true }]);
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 });

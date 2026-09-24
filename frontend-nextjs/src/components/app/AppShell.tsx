@@ -56,8 +56,8 @@ export function AppShell({
   destinations: ShellDestination[];
   /** Settings sit at the foot of the rail, above you; on a phone they are in your menu. */
   settings?: ShellDestination;
-  /** The way out, above settings: back to your offices, or home for a guest. It can bring its own icon. */
-  leave?: { href: string; label: string; icon?: ReactNode };
+  /** The way out, above settings: back to your offices, or home for a guest. */
+  leave?: { href: string; label: string };
   /** The bottom of the rail: you, and your menu. */
   you: ReactNode;
   floor: ReactNode;
@@ -82,7 +82,7 @@ export function AppShell({
           <div className="mt-auto flex w-full flex-col items-center gap-2">
             {leave && (
               <RailItem
-                destination={{ key: "leave", href: leave.href, label: leave.label, icon: leave.icon ?? RailIcons.leave, active: false }}
+                destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
                 indicator={indicator}
                 quiet
               />

@@ -1143,7 +1143,8 @@
     "seats": "{seats}석 중 {used}석",
     "manage": "관리",
     "seeAll": "모두 보기",
-    "lobbyNote": "새로운 사람을 만나고 싶다면 공개 로비에 들러 보세요"
+    "lobbyNote": "새로운 사람을 만나고 싶다면 공개 로비에 들러 보세요",
+    "anotherOffice": "다른 팀도 있나요? 새 오피스 만들기"
   },
   "home": {
     "nav": {

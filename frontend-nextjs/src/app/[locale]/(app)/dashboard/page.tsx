@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { Loader } from "@/components/motion/loader";
-import { HomeShell } from "@/components/app/HomeShell";
+import { HomeFrame } from "@/components/app/HomeFrame";
 import { HomeView } from "@/components/app/HomeView";
 
 /** Home: your office, in the same frame as the office itself. */
@@ -25,8 +25,8 @@ export default function DashboardPage() {
     );
   }
   return (
-    <HomeShell active="home">
+    <HomeFrame active="home">
       <HomeView />
-    </HomeShell>
+    </HomeFrame>
   );
 }

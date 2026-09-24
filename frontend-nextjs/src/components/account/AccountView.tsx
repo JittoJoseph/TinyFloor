@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, Check, ChevronRight, Eye, EyeOff, KeyRound, Palette, UserRound } from "lucide-react";
+import { Check, Eye, EyeOff, KeyRound, Palette, UserRound } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -14,10 +14,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { Face } from "@/components/ui/Face";
-import { IconButton } from "@/components/ui/IconButton";
 import { CharacterPicker } from "@/components/entry/CharacterPicker";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
-import { ShellView } from "@/components/app/AppShell";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
 type Section = "profile" | "signin" | "appearance";
@@ -28,84 +26,68 @@ const ICONS: Record<Section, ReactNode> = {
   appearance: <Palette />,
 };
 
+const SECTIONS: Section[] = ["profile", "signin", "appearance"];
+
 /**
- * Your account, in the shell the way an office's settings are: the sections
- * in the column, one open beside it. On a phone, the column, then the section
- * with a way back.
+ * Your account: who you are to everyone else, how you sign in, and how the
+ * app looks to you, one section at a time under its title. The section is in
+ * the address, so a link can open the right one.
  */
 export function AccountView() {
   const t = useTranslations("office.profile");
   const ts = useTranslations("shell");
-  const { user } = useAuth();
   const reduce = useReducedMotion();
   const [section, setSection] = useState<Section>("profile");
-  const [picked, setPicked] = useState(false);
-  if (!user) return null;
 
-  const item = (one: Section) => (
-    <button
-      key={one}
-      type="button"
-      onClick={() => {
-        setSection(one);
-        setPicked(true);
-      }}
-      aria-current={section === one ? "page" : undefined}
-      className={cn(
-        "relative flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-start text-[13.5px] transition-colors [&_svg]:size-4",
-        section === one ? "text-foreground" : "text-muted-foreground hover:bg-foreground/[0.05] hover:text-foreground",
-      )}
-    >
-      {section === one && (
-        <motion.span
-          layoutId="account-row"
-          transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-          className="absolute inset-0 rounded-lg bg-muted"
-        />
-      )}
-      <span className="relative">{ICONS[one]}</span>
-      <span className="relative flex-1">{t(`sections.${one}`)}</span>
-      <ChevronRight className="relative size-3.5 text-faint md:hidden rtl:rotate-180" />
-    </button>
-  );
+  // Read once the page is in the browser, so the first render matches the server's.
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get("section") as Section | null;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (wanted && SECTIONS.includes(wanted)) setSection(wanted);
+  }, []);
+
+  const open = (next: Section) => {
+    setSection(next);
+    const url = new URL(window.location.href);
+    if (next === "profile") url.searchParams.delete("section");
+    else url.searchParams.set("section", next);
+    window.history.replaceState(null, "", url);
+  };
 
   return (
-    <ShellView
-      showDetail={picked}
-      column={
-        <>
-          <header className="flex h-14 shrink-0 items-center px-4">
-            <h2 className="truncate text-[15px] font-semibold tracking-tight text-foreground">{ts("account")}</h2>
-          </header>
-          <div className="flex items-center gap-3 px-4 pb-4">
-            <Face seed={user.id} size={36} />
-            <div className="min-w-0">
-              <p className="truncate text-[13.5px] font-medium text-foreground">{user.displayName}</p>
-              {user.email && <p className="truncate text-[12px] text-muted-foreground">{user.email}</p>}
-            </div>
-          </div>
-          <nav className="flex flex-col gap-px px-2 pb-3">{(["profile", "signin", "appearance"] as const).map(item)}</nav>
-        </>
-      }
-    >
-      <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-3 sm:px-6">
-        <IconButton
-          label={ts("back")}
-          size="sm"
-          className="md:hidden"
-          onClick={() => setPicked(false)}
-          icon={<ArrowLeft className="rtl:rotate-180" />}
-        />
-        <span className="text-[15px] font-semibold text-foreground">{t(`sections.${section}`)}</span>
-      </header>
-      <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6 sm:px-8">
-          {section === "profile" && <Profile />}
-          {section === "signin" && <SignIn />}
-          {section === "appearance" && <General />}
-        </div>
+    <>
+      <h1 className="text-[22px] font-semibold tracking-tight text-foreground">{ts("account")}</h1>
+      <div role="tablist" className="-mx-4 mt-4 flex gap-1 overflow-x-auto border-b border-border px-4 [scrollbar-width:none] sm:mx-0 sm:px-0">
+        {SECTIONS.map((one) => (
+          <button
+            key={one}
+            type="button"
+            role="tab"
+            aria-selected={section === one}
+            onClick={() => open(one)}
+            className={cn(
+              "relative flex h-10 shrink-0 cursor-pointer items-center gap-2 px-3 text-[13.5px] transition-colors [&_svg]:size-4",
+              section === one ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            {ICONS[one]}
+            {t(`sections.${one}`)}
+            {section === one && (
+              <motion.span
+                layoutId="account-tab"
+                transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
+                className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-foreground"
+              />
+            )}
+          </button>
+        ))}
       </div>
-    </ShellView>
+      <div role="tabpanel" className="mt-8">
+        {section === "profile" && <Profile />}
+        {section === "signin" && <SignIn />}
+        {section === "appearance" && <General />}
+      </div>
+    </>
   );
 }
 
@@ -128,7 +110,7 @@ const field =
   "h-9 w-full rounded-lg border border-border bg-card px-3 text-[16px] text-foreground outline-none transition-[border-color,box-shadow] placeholder:text-faint focus:border-foreground/35 focus:ring-4 focus:ring-foreground/[0.06] sm:text-[13.5px]";
 
 /** Who you are to everyone else: your name, your link, and who you walk in as. */
-function Profile() {
+export function Profile() {
   const t = useTranslations("office.profile");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
@@ -236,7 +218,7 @@ function Profile() {
 }
 
 /** The ways into your account, and the way out of it. */
-function SignIn() {
+export function SignIn() {
   const t = useTranslations("office.profile");
   const ts = useTranslations("shell");
   const router = useRouter();

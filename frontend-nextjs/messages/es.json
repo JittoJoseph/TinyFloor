@@ -1143,7 +1143,8 @@
     "seats": "{used} de {seats} plazas",
     "manage": "Gestionar",
     "seeAll": "Ver a todos",
-    "lobbyNote": "¿Quieres conocer gente nueva? Pásate por el vestíbulo público"
+    "lobbyNote": "¿Quieres conocer gente nueva? Pásate por el vestíbulo público",
+    "anotherOffice": "¿Otro equipo? Crea una oficina nueva"
   },
   "home": {
     "nav": {

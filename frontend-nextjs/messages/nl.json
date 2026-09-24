@@ -1143,7 +1143,8 @@
     "seats": "{used} van {seats} plekken",
     "manage": "Beheren",
     "seeAll": "Iedereen bekijken",
-    "lobbyNote": "Zin om nieuwe mensen te ontmoeten? Loop de openbare lobby binnen"
+    "lobbyNote": "Zin om nieuwe mensen te ontmoeten? Loop de openbare lobby binnen",
+    "anotherOffice": "Nog een team? Maak een nieuw kantoor"
   },
   "home": {
     "nav": {

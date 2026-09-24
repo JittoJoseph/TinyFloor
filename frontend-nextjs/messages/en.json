@@ -1143,7 +1143,8 @@
     "seats": "{used} of {seats} seats",
     "manage": "Manage",
     "seeAll": "See everyone",
-    "lobbyNote": "Want to meet new people? Drop into the public lobby"
+    "lobbyNote": "Want to meet new people? Drop into the public lobby",
+    "anotherOffice": "Starting another team? Make a new office"
   },
   "home": {
     "nav": {

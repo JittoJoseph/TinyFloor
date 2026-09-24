@@ -1,4 +1,4 @@
-import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter } from "../../shared-protocol/src";
+import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter, type PresentPerson } from "../../shared-protocol/src";
 import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
@@ -50,8 +50,9 @@ export function authRoutes(router: Router): void {
       const current = await currentUser(env, request, ctx);
       // A guest who signs up keeps their name and character unless they chose new ones.
       const upgrading = current?.isGuest ? current : null;
-      const displayName = cleanDisplayName(body.displayName) || upgrading?.displayName || "";
-      if (!displayName) throw new HttpError(400, "name_required", "Pick a name", "displayName");
+      // Only an email and a password are asked for: the name people see and the character are asked at
+      // the first door, so until then the name is made from the address.
+      const displayName = cleanDisplayName(body.displayName) || upgrading?.displayName || nameFromEmail(email);
       const character = isCharacter(body.character) ? body.character : (upgrading?.character ?? DEFAULT_CHARACTER);
       await verifyTurnstile(env, request, body.turnstileToken);
 
@@ -81,7 +82,8 @@ export function authRoutes(router: Router): void {
       }
 
       const { sessionId, cookie } = await createSession(env, request, userId, ACCOUNT_SESSION_MS);
-      const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, sessionId };
+      // A guest who signs up was introduced at the door they came in by.
+      const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, introduced: !!upgrading, sessionId };
       return json({ user: publicUser(user) }, { status: 201, headers: { "Set-Cookie": cookie } });
     })
 
@@ -98,10 +100,21 @@ export function authRoutes(router: Router): void {
       }
 
       const account = await env.DB.prepare(
-        "SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link FROM users WHERE email = ? AND is_guest = 0",
+        `SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link,
+                introduced_at IS NOT NULL AS introduced
+           FROM users WHERE email = ? AND is_guest = 0`,
       )
         .bind(email)
-        .first<{ id: string; email: string; password_hash: string | null; display_name: string; character: string; has_google: number; link: string | null }>();
+        .first<{
+          id: string;
+          email: string;
+          password_hash: string | null;
+          display_name: string;
+          character: string;
+          has_google: number;
+          link: string | null;
+          introduced: number;
+        }>();
 
       const emailGuard = guard(env, `email:${email}`);
       const verdict = await emailGuard.verify(password.slice(0, 256), account?.password_hash ?? null);
@@ -142,6 +155,7 @@ export function authRoutes(router: Router): void {
         hasPassword: true,
         hasGoogle: found.has_google === 1,
         link: found.link,
+        introduced: found.introduced === 1,
         sessionId,
       };
       return json({ user: publicUser(user) }, { headers: { "Set-Cookie": cookie } });
@@ -192,22 +206,22 @@ export function authRoutes(router: Router): void {
       if (!results.length) return json({ user: publicUser(user), offices: [] });
 
       // A few faces per office for the dashboard, and who is on each floor now.
-      const [faces, here] = await Promise.all([
+      const [faces, inNow] = await Promise.all([
         env.DB.prepare(
-          `SELECT m.office_id, u.id, u.display_name FROM memberships m JOIN users u ON u.id = m.user_id
+          `SELECT m.office_id, u.id, u.display_name, u.character FROM memberships m JOIN users u ON u.id = m.user_id
            WHERE m.office_id IN (SELECT office_id FROM memberships WHERE user_id = ?)
            ORDER BY m.joined_at`,
         )
           .bind(user.id)
-          .all<{ office_id: string; id: string; display_name: string }>(),
+          .all<{ office_id: string; id: string; display_name: string; character: string }>(),
         realtime(env)
-          .presenceCounts(results.map((office) => office.id))
-          .catch(() => ({}) as Record<string, number>),
+          .officePresence(results.map((office) => office.id))
+          .catch(() => ({}) as Record<string, PresentPerson[]>),
       ]);
-      const byOffice = new Map<string, { id: string; name: string }[]>();
+      const byOffice = new Map<string, { id: string; name: string; character: string }[]>();
       for (const row of faces.results) {
         const list = byOffice.get(row.office_id) ?? [];
-        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name });
+        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name, character: row.character });
         byOffice.set(row.office_id, list);
       }
       return json({
@@ -215,7 +229,8 @@ export function authRoutes(router: Router): void {
         offices: results.map((office) => ({
           ...office,
           faces: byOffice.get(office.id) ?? [],
-          here: here[office.id] ?? 0,
+          here: inNow[office.id]?.length ?? 0,
+          inNow: inNow[office.id] ?? [],
         })),
       });
     })
@@ -231,11 +246,15 @@ export function authRoutes(router: Router): void {
       const character = (body.character as string | undefined) ?? user.character;
       // A link is for accounts; a guest's profile lasts a week.
       const link = body.link === undefined || user.isGuest ? (user.link ?? null) : cleanLink(body.link);
+      // Said at their first door: who they are, and who they walk in as.
+      const introduced = user.introduced || body.introduced === true;
 
-      await env.DB.prepare("UPDATE users SET display_name = ?, character = ?, link = ? WHERE id = ?")
-        .bind(displayName, character, link, user.id)
+      await env.DB.prepare(
+        "UPDATE users SET display_name = ?, character = ?, link = ?, introduced_at = CASE WHEN ? THEN COALESCE(introduced_at, ?) ELSE introduced_at END WHERE id = ?",
+      )
+        .bind(displayName, character, link, introduced ? 1 : 0, Date.now(), user.id)
         .run();
-      return json({ user: publicUser({ ...user, displayName, character, link }) });
+      return json({ user: publicUser({ ...user, displayName, character, link, introduced }) });
     })
 
     // Someone's profile, for whoever they share a floor or a chat with: their name and their link.
@@ -305,5 +324,17 @@ export function publicUser(user: User) {
     password: !!user.hasPassword,
     google: !!user.hasGoogle,
     link: user.link ?? null,
+    // Guests always are: they said who they are at the door.
+    introduced: user.isGuest || user.introduced !== false,
   };
+}
+
+/** A name to go by until someone says theirs: "jitto.joseph67@…" is Jitto Joseph. */
+export function nameFromEmail(email: string): string {
+  const words = email
+    .split("@")[0]
+    .split(/[._+\-\d]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  return cleanDisplayName(words.join(" ")) || cleanDisplayName(email.split("@")[0]) || "New here";
 }

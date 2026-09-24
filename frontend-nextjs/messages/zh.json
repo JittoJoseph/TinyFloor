@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "登录",
-    "tabSignUp": "创建账号",
-    "chooseMode": "登录或创建账号",
     "continueWithGoogle": "使用 Google 继续",
     "or": "或",
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
-    "signUpSubtitle": "名字、邮箱、密码，就这些。",
-    "name": "你的名字",
-    "namePlaceholder": "别人看到的名字",
+    "signUpSubtitle": "只需要一个邮箱和一个密码。",
     "email": "邮箱",
     "emailPlaceholder": "you@company.com",
     "password": "密码",
@@ -115,7 +110,6 @@
     "createOne": "创建账号",
     "haveAccount": "已经有账号了？",
     "signInInstead": "去登录",
-    "guestCarryOver": "你正以 {name} 的身份来访，这个名字会一起带过去。",
     "continueGuest": "只是看看？以访客身份进入大厅",
     "errors": {
       "wrong_credentials": "邮箱和密码不匹配，请重试。",
@@ -134,11 +128,7 @@
       "google_failed": "Google 登录未成功，请重试。",
       "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
       "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
-    },
-    "asideReady": "{office} 快准备好了",
-    "asideTitle": "你的团队，只隔一层楼",
-    "asideSignIn": "欢迎回到楼层",
-    "asideBody": "走过去就能聊。频道和消息都会保留。"
+    }
   },
   "entry": {
     "yourName": "你的名字",
@@ -150,7 +140,9 @@
     "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
     "copyInvite": "复制邀请链接",
     "continue": "继续",
-    "walkingInAs": "以 {name} 的身份进入"
+    "walkingInAs": "以 {name} 的身份进入",
+    "introTitle": "进门之前",
+    "introSubtitle": "大家该怎么称呼你？你在楼层里是哪个角色？"
   },
   "join": {
     "unavailableTitle": "这扇门打不开。",
@@ -296,8 +288,8 @@
     "gone": "{name} 离开了大厅，这段对话也随之消失。",
     "edited": "已编辑",
     "edit": "编辑",
-    "delete": "删除",
-    "deleteConfirm": "删除？",
+    "delete": "撤回",
+    "deleteConfirm": "撤回这条消息？",
     "save": "保存",
     "cancel": "取消"
   },
@@ -909,14 +901,6 @@
         "messages": "私信",
         "guests": "访客链接"
       },
-      "channels": {
-        "general": "综合",
-        "projects": "项目",
-        "random": "闲聊"
-      },
-      "freeSeat": "空位",
-      "you": "你",
-      "teammate": "队友",
       "bringThem": "{count, plural, other {带上你在这里认识的 # 个人}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "离开或关闭"
     },
     "profile": {
-      "title": "你的资料",
       "changePassword": "修改密码",
       "setPassword": "设置密码",
       "setPasswordDescription": "添加密码后，除了 Google，也可以用邮箱登录。",
@@ -968,7 +951,6 @@
       "passwordRule": "至少 8 个字符",
       "signsOutOthers": "你会在这里保持登录，其他地方都会退出登录。",
       "cancel": "取消",
-      "faceNote": "你的头像根据你的账号生成，在每个屏幕上都一样。不会上传或保存任何内容。",
       "themeNote": "“系统”跟随你的设备。选择会保存在此浏览器中。",
       "link": "你的链接",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "也可以用 Google 登录。",
       "connectGoogle": "关联 Google",
-      "googleConnected": "已关联"
+      "googleConnected": "已关联",
+      "sections": {
+        "profile": "个人资料",
+        "signin": "登录",
+        "appearance": "外观"
+      },
+      "profileNote": "你的名字和链接，走到哪里都一样。",
+      "password": "密码",
+      "passwordSet": "用邮箱和密码登录。",
+      "signOutNote": "在此浏览器中退出 TinyFloor。"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -1066,23 +1057,9 @@
     "backToOffices": "回到你的办公室"
   },
   "create": {
-    "eyebrow": "你自己的办公室",
-    "title": "给办公室起个名字",
-    "subtitle": "这是团队会看到的名字，以后可以改。",
     "nameLabel": "办公室名称",
-    "namePlaceholder": "Acme Studio",
-    "continue": "继续",
-    "create": "创建办公室",
     "creating": "正在准备",
-    "freePlan": "3 人以内免费，无需银行卡。",
-    "justLooking": "只是看看？不如<link>走进公共办公室</link>。",
-    "steps": [
-      "起个名字",
-      "创建账号",
-      "走进去"
-    ],
-    "asideTitle": "你的办公室，一分钟就绪",
-    "asideBody": "团队专属的楼层，带聊天和会议桌。最多 3 人免费。"
+    "continue": "继续"
   },
   "shell": {
     "floor": "楼层",
@@ -1128,17 +1105,36 @@
     "leave": "离开"
   },
   "dashboard": {
-    "morning": "早上好，{name}",
-    "afternoon": "下午好，{name}",
-    "evening": "晚上好，{name}",
-    "subtitle": "你的办公室，以及此刻每层楼上的人。",
-    "onFloor": "{count, plural, =0 {楼层上没有人} other {楼层上有 # 人}}",
     "newOffice": "新建办公室",
-    "lobby": "公共大厅",
-    "lobbyBody": "随时来逛逛，认识在场的人。",
-    "emptyTitle": "开启你的第一个办公室",
-    "emptyBody": "办公室是团队走动的一层楼，内置聊天和通话。三名成员免费。",
-    "walkIn": "走进去"
+    "walkIn": "走进去",
+    "home": "首页",
+    "yourOffices": "你的办公室",
+    "invite": "邀请成员",
+    "firstIn": "现在没有人。有人进来时会显示在这里。",
+    "inNow": "{count, plural, =0 {没有人} other {现在 # 人}}",
+    "inOffice": "在办公室的人",
+    "team": "团队",
+    "seats": "{used}/{seats} 个座位",
+    "manage": "管理",
+    "seeAll": "查看所有人",
+    "lobbyNote": "或者去公共大厅认识新朋友",
+    "anotherOffice": "还有别的团队？创建新的办公室",
+    "welcome": "欢迎，{name}",
+    "welcomeAnonymous": "欢迎",
+    "welcomeBody": "给团队的一层楼，频道和通话都已内置。",
+    "stepName": "为你的办公室命名",
+    "makeIt": "创建",
+    "invited": "收到邀请了吗？",
+    "invitedBody": "粘贴团队发给你的链接。",
+    "invitePlaceholder": "粘贴邀请链接",
+    "join": "加入",
+    "badLink": "这看起来不是邀请链接。请粘贴完整链接。",
+    "makeTitle": "来创建你的办公室",
+    "yourNewOffice": "你的新办公室",
+    "freeRename": "最多 3 人免费。名称随时可以修改。",
+    "otherWays": "其他进入方式",
+    "lobbyBody": "进来认识新朋友。",
+    "yourAccount": "你的账户"
   },
   "home": {
     "nav": {

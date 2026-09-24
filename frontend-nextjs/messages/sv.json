@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Logga in",
-    "tabSignUp": "Skapa konto",
-    "chooseMode": "Logga in eller skapa ett konto",
     "continueWithGoogle": "Fortsätt med Google",
     "or": "eller",
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
-    "signUpSubtitle": "Ditt namn, din e-post, ett lösenord. Mer är det inte.",
-    "name": "Ditt namn",
-    "namePlaceholder": "Så ser andra dig",
+    "signUpSubtitle": "En e-postadress och ett lösenord, mer behövs inte.",
     "email": "E-post",
     "emailPlaceholder": "du@foretag.se",
     "password": "Lösenord",
@@ -115,7 +110,6 @@
     "createOne": "Skapa ett konto",
     "haveAccount": "Har du redan ett konto?",
     "signInInstead": "Logga in i stället",
-    "guestCarryOver": "Du är på besök som {name}. Ditt namn följer med.",
     "continueGuest": "Vill du bara titta? Besök lobbyn som gäst",
     "errors": {
       "wrong_credentials": "E-post och lösenord stämmer inte. Försök igen.",
@@ -134,11 +128,7 @@
       "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
       "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
       "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
-    },
-    "asideReady": "{office} är nästan klart",
-    "asideTitle": "Ditt team, ett plan bort",
-    "asideSignIn": "Välkommen tillbaka till planet",
-    "asideBody": "Gå fram till någon för att prata. Kanaler och meddelanden finns kvar."
+    }
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -150,7 +140,9 @@
     "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
-    "walkingInAs": "Du går in som {name}"
+    "walkingInAs": "Du går in som {name}",
+    "introTitle": "Innan du går in",
+    "introSubtitle": "Vad ska andra kalla dig, och vem är du på våningen?"
   },
   "join": {
     "unavailableTitle": "Den dörren går inte att öppna.",
@@ -296,8 +288,8 @@
     "gone": "{name} lämnade lobbyn, och samtalet försvann med.",
     "edited": "redigerat",
     "edit": "Redigera",
-    "delete": "Radera",
-    "deleteConfirm": "Radera?",
+    "delete": "Ångra",
+    "deleteConfirm": "Ångra skickat?",
     "save": "Spara",
     "cancel": "Avbryt"
   },
@@ -909,14 +901,6 @@
         "messages": "Direktmeddelanden",
         "guests": "Gästlänkar"
       },
-      "channels": {
-        "general": "allmänt",
-        "projects": "projekt",
-        "random": "blandat"
-      },
-      "freeSeat": "Ledig plats",
-      "you": "Du",
-      "teammate": "Kollega",
       "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Lämna eller stänga"
     },
     "profile": {
-      "title": "Din profil",
       "changePassword": "Byt lösenord",
       "setPassword": "Ange ett lösenord",
       "setPasswordDescription": "Lägg till ett lösenord för att logga in med din e-post också, inte bara med Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "Minst 8 tecken",
       "signsOutOthers": "Du förblir inloggad här. Överallt annars loggas du ut.",
       "cancel": "Avbryt",
-      "faceNote": "Ditt ansikte ritas utifrån ditt konto, likadant på varje skärm. Inget laddas upp eller sparas.",
       "themeNote": "System följer din enhet. Valet sparas i den här webbläsaren.",
       "link": "Din länk",
       "linkPlaceholder": "dinwebbplats.se",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Logga in med Google också.",
       "connectGoogle": "Koppla Google",
-      "googleConnected": "Kopplat"
+      "googleConnected": "Kopplat",
+      "sections": {
+        "profile": "Profil",
+        "signin": "Inloggning",
+        "appearance": "Utseende"
+      },
+      "profileNote": "Ditt namn och din länk, var du än går in.",
+      "password": "Lösenord",
+      "passwordSet": "Logga in med din e-post och ditt lösenord.",
+      "signOutNote": "Logga ut från TinyFloor i den här webbläsaren."
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {
-    "eyebrow": "Ditt eget kontor",
-    "title": "Ge kontoret ett namn",
-    "subtitle": "Det här ser ditt team. Du kan ändra det sen.",
     "nameLabel": "Kontorets namn",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Vidare",
-    "create": "Skapa kontor",
     "creating": "Gör i ordning",
-    "freePlan": "Gratis för upp till 3 personer. Inget kort.",
-    "justLooking": "Bara tittar? <link>Gå in på det offentliga kontoret</link> i stället.",
-    "steps": [
-      "Namnge",
-      "Skapa konto",
-      "Gå in"
-    ],
-    "asideTitle": "Ditt kontor, klart på en minut",
-    "asideBody": "En egen våning för ditt team, med chatt och mötesbord. Gratis för upp till 3 personer."
+    "continue": "Vidare"
   },
   "shell": {
     "floor": "Golvet",
@@ -1128,17 +1105,36 @@
     "leave": "Lämna"
   },
   "dashboard": {
-    "morning": "God morgon, {name}",
-    "afternoon": "God eftermiddag, {name}",
-    "evening": "God kväll, {name}",
-    "subtitle": "Dina kontor, och vem som är på varje golv just nu.",
-    "onFloor": "{count, plural, =0 {Ingen på golvet} other {# på golvet}}",
     "newOffice": "Nytt kontor",
-    "lobby": "Den offentliga lobbyn",
-    "lobbyBody": "Titta in och träffa den som är där.",
-    "emptyTitle": "Starta ditt första kontor",
-    "emptyBody": "Ett kontor är ett golv som ditt team går runt på, med chatt och samtal inbyggt. Tre medlemmar är gratis.",
-    "walkIn": "Gå in"
+    "walkIn": "Gå in",
+    "home": "Hem",
+    "yourOffices": "Dina kontor",
+    "invite": "Bjud in folk",
+    "firstIn": "Ingen är här just nu. Den som går in syns här.",
+    "inNow": "{count, plural, =0 {Ingen här} other {# här nu}}",
+    "inOffice": "På kontoret",
+    "team": "Team",
+    "seats": "{used} av {seats} platser",
+    "manage": "Hantera",
+    "seeAll": "Visa alla",
+    "lobbyNote": "Eller titta in i den öppna lobbyn och träffa folk",
+    "anotherOffice": "Ett till team? Skapa ett nytt kontor",
+    "welcome": "Välkommen, {name}",
+    "welcomeAnonymous": "Välkommen",
+    "welcomeBody": "En våning för ditt team, med kanaler och samtal inbyggda.",
+    "stepName": "Namnge ditt kontor",
+    "makeIt": "Skapa",
+    "invited": "Har du blivit inbjuden?",
+    "invitedBody": "Klistra in länken ditt team skickade.",
+    "invitePlaceholder": "Klistra in en inbjudningslänk",
+    "join": "Gå med",
+    "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken.",
+    "makeTitle": "Nu gör vi ditt kontor",
+    "yourNewOffice": "Ditt nya kontor",
+    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst.",
+    "otherWays": "Andra vägar in",
+    "lobbyBody": "Titta in och träffa folk.",
+    "yourAccount": "Ditt konto"
   },
   "home": {
     "nav": {

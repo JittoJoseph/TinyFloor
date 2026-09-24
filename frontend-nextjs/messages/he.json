@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "התחברות",
-    "tabSignUp": "יצירת חשבון",
-    "chooseMode": "התחברות או יצירת חשבון",
     "continueWithGoogle": "המשך עם Google",
     "or": "או",
     "signInTitle": "טוב לראות אותך שוב",
     "signInSubtitle": "התחברו כדי לחזור למשרד של הצוות.",
     "signUpTitle": "יצירת חשבון",
-    "signUpSubtitle": "השם שלכם, האימייל וסיסמה. זה הכול.",
-    "name": "השם שלך",
-    "namePlaceholder": "השם שאחרים יראו",
+    "signUpSubtitle": "כל מה שצריך זה אימייל וסיסמה.",
     "email": "אימייל",
     "emailPlaceholder": "you@company.com",
     "password": "סיסמה",
@@ -115,7 +110,6 @@
     "createOne": "יצירת חשבון",
     "haveAccount": "כבר יש לך חשבון?",
     "signInInstead": "להתחבר במקום",
-    "guestCarryOver": "אתם מבקרים בשם {name}. השם מגיע איתכם.",
     "continueGuest": "רק מסתכלים? היכנסו ללובי כאורחים",
     "errors": {
       "wrong_credentials": "האימייל והסיסמה לא תואמים. נסו שוב.",
@@ -134,11 +128,7 @@
       "google_failed": "ההתחברות עם Google לא הצליחה. נסו שוב.",
       "google_unverified": "אמתו קודם את האימייל שלכם ב-Google, ואז נסו שוב.",
       "google_mismatch": "האימייל הזה מקושר לחשבון Google אחר."
-    },
-    "asideReady": "{office} כמעט מוכן",
-    "asideTitle": "הצוות שלך, קומה אחת מכאן",
-    "asideSignIn": "ברוך שובך לקומה",
-    "asideBody": "ניגשים למישהו כדי לדבר. הערוצים וההודעות נשארים."
+    }
   },
   "entry": {
     "yourName": "השם שלך",
@@ -150,7 +140,9 @@
     "guestNote": "נכנסים כאורחים. <link>התחברו</link> כדי להשתמש בחשבון שלכם.",
     "copyInvite": "העתקת קישור הזמנה",
     "continue": "המשך",
-    "walkingInAs": "נכנסים בשם {name}"
+    "walkingInAs": "נכנסים בשם {name}",
+    "introTitle": "לפני שנכנסים",
+    "introSubtitle": "איך לקרוא לך, ומי תהיו בקומה?"
   },
   "join": {
     "unavailableTitle": "הדלת הזו לא נפתחת.",
@@ -296,8 +288,8 @@
     "gone": "{name} יצא מהלובי, והשיחה הזו נעלמה איתו.",
     "edited": "נערך",
     "edit": "עריכה",
-    "delete": "מחיקה",
-    "deleteConfirm": "למחוק?",
+    "delete": "ביטול שליחה",
+    "deleteConfirm": "לבטל את השליחה?",
     "save": "שמירה",
     "cancel": "ביטול"
   },
@@ -909,14 +901,6 @@
         "messages": "הודעות ישירות",
         "guests": "קישורי אורח"
       },
-      "channels": {
-        "general": "כללי",
-        "projects": "פרויקטים",
-        "random": "שונות"
-      },
-      "freeSeat": "מקום פנוי",
-      "you": "את/ה",
-      "teammate": "חבר/ת צוות",
       "bringThem": "{count, plural, one {להביא את מי שפגשת כאן} other {להביא את # האנשים שפגשת כאן}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "יציאה או סגירה"
     },
     "profile": {
-      "title": "הפרופיל שלכם",
       "changePassword": "שינוי סיסמה",
       "setPassword": "הגדרת סיסמה",
       "setPasswordDescription": "הוסיפו סיסמה כדי להתחבר גם עם האימייל, לא רק עם Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "לפחות 8 תווים",
       "signsOutOthers": "כאן תישארו מחוברים. בכל מקום אחר תנותקו.",
       "cancel": "ביטול",
-      "faceNote": "הפנים שלך נוצרות מהחשבון שלך, זהות בכל מסך. שום דבר לא מועלה ולא נשמר.",
       "themeNote": "״מערכת״ עוקב אחרי המכשיר שלך. הבחירה נשמרת בדפדפן הזה.",
       "link": "הקישור שלכם",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "התחברו גם עם Google.",
       "connectGoogle": "חיבור Google",
-      "googleConnected": "מחובר"
+      "googleConnected": "מחובר",
+      "sections": {
+        "profile": "פרופיל",
+        "signin": "התחברות",
+        "appearance": "מראה"
+      },
+      "profileNote": "השם והקישור שלך, בכל מקום שנכנסים אליו.",
+      "password": "סיסמה",
+      "passwordSet": "התחברות עם אימייל וסיסמה.",
+      "signOutNote": "התנתקות מ-TinyFloor בדפדפן הזה."
     },
     "invite": {
       "invalidTitle": "ההזמנה הזו לא עובדת",
@@ -1066,23 +1057,9 @@
     "backToOffices": "חזרה למשרדים שלך"
   },
   "create": {
-    "eyebrow": "משרד משלכם",
-    "title": "תנו שם למשרד",
-    "subtitle": "זה מה שהצוות יראה. אפשר לשנות אחר כך.",
     "nameLabel": "שם המשרד",
-    "namePlaceholder": "Acme Studio",
-    "continue": "המשך",
-    "create": "יצירת משרד",
     "creating": "מכינים אותו",
-    "freePlan": "חינם עד 3 אנשים. בלי כרטיס.",
-    "justLooking": "רק מסתכלים? <link>היכנסו למשרד הציבורי</link> במקום.",
-    "steps": [
-      "תנו שם",
-      "צרו חשבון",
-      "היכנסו"
-    ],
-    "asideTitle": "המשרד שלכם, מוכן בדקה",
-    "asideBody": "קומה משלכם לצוות, עם צ'אט ושולחנות פגישה. חינם עד 3 אנשים."
+    "continue": "המשך"
   },
   "shell": {
     "floor": "קומה",
@@ -1128,17 +1105,36 @@
     "leave": "לצאת"
   },
   "dashboard": {
-    "morning": "בוקר טוב, {name}",
-    "afternoon": "צהריים טובים, {name}",
-    "evening": "ערב טוב, {name}",
-    "subtitle": "המשרדים שלך, ומי נמצא עכשיו בכל קומה.",
-    "onFloor": "{count, plural, =0 {אין אף אחד בקומה} other {# בקומה}}",
     "newOffice": "משרד חדש",
-    "lobby": "הלובי הציבורי",
-    "lobbyBody": "קפצו לבקר ופגשו את מי שנמצא.",
-    "emptyTitle": "פתחו את המשרד הראשון שלכם",
-    "emptyBody": "משרד הוא קומה שהצוות שלך מסתובב בה, עם צ׳אט ושיחות מובנים. שלושה חברים בחינם.",
-    "walkIn": "להיכנס"
+    "walkIn": "להיכנס",
+    "home": "בית",
+    "yourOffices": "המשרדים שלך",
+    "invite": "הזמנת אנשים",
+    "firstIn": "אין כאן אף אחד כרגע. מי שייכנס יופיע כאן.",
+    "inNow": "{count, plural, =0 {אין אף אחד} other {# כאן עכשיו}}",
+    "inOffice": "במשרד",
+    "team": "צוות",
+    "seats": "{used} מתוך {seats} מקומות",
+    "manage": "ניהול",
+    "seeAll": "לכל האנשים",
+    "lobbyNote": "או קפצו ללובי הציבורי והכירו אנשים",
+    "anotherOffice": "צוות נוסף? הקימו משרד חדש",
+    "welcome": "ברוכים הבאים, {name}",
+    "welcomeAnonymous": "ברוכים הבאים",
+    "welcomeBody": "קומה אחת לצוות, עם ערוצים ושיחות מובנים.",
+    "stepName": "תנו שם למשרד",
+    "makeIt": "הקמה",
+    "invited": "קיבלתם הזמנה?",
+    "invitedBody": "הדביקו את הקישור שהצוות שלח.",
+    "invitePlaceholder": "הדביקו קישור הזמנה",
+    "join": "הצטרפות",
+    "badLink": "זה לא נראה כמו קישור הזמנה. הדביקו את הקישור המלא.",
+    "makeTitle": "בואו ניצור את המשרד שלכם",
+    "yourNewOffice": "המשרד החדש שלכם",
+    "freeRename": "חינם לעד 3 אנשים. אפשר לשנות את השם בכל עת.",
+    "otherWays": "דרכים אחרות להיכנס",
+    "lobbyBody": "קפצו לפגוש אנשים.",
+    "yourAccount": "החשבון שלכם"
   },
   "home": {
     "nav": {

@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "ログイン",
-    "tabSignUp": "アカウント作成",
-    "chooseMode": "ログインまたはアカウント作成",
     "continueWithGoogle": "Google で続ける",
     "or": "または",
     "signInTitle": "おかえりなさい",
     "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
     "signUpTitle": "アカウントを作成",
-    "signUpSubtitle": "名前、メール、パスワード。それだけです。",
-    "name": "名前",
-    "namePlaceholder": "ほかの人に表示される名前",
+    "signUpSubtitle": "必要なのはメールアドレスとパスワードだけです。",
     "email": "メールアドレス",
     "emailPlaceholder": "you@company.com",
     "password": "パスワード",
@@ -115,7 +110,6 @@
     "createOne": "アカウントを作成",
     "haveAccount": "すでにアカウントをお持ちですか？",
     "signInInstead": "ログインする",
-    "guestCarryOver": "{name} として来ています。その名前はそのまま使えます。",
     "continueGuest": "見てみるだけ？ゲストとしてロビーに入る",
     "errors": {
       "wrong_credentials": "メールアドレスとパスワードが一致しません。もう一度お試しください。",
@@ -134,11 +128,7 @@
       "google_failed": "Google でのログインに失敗しました。もう一度お試しください。",
       "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
       "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
-    },
-    "asideReady": "{office} はもうすぐ完成です",
-    "asideTitle": "チームまで、フロアひとつ",
-    "asideSignIn": "おかえりなさい",
-    "asideBody": "話したい人のところへ歩いていくだけ。チャンネルとメッセージは残ります。"
+    }
   },
   "entry": {
     "yourName": "あなたの名前",
@@ -150,7 +140,9 @@
     "guestNote": "ゲストとして入ります。<link>ログイン</link>するとアカウントを使えます。",
     "copyInvite": "招待リンクをコピー",
     "continue": "次へ",
-    "walkingInAs": "{name} として入ります"
+    "walkingInAs": "{name} として入ります",
+    "introTitle": "入る前に",
+    "introSubtitle": "なんと呼ばれたいですか？フロアではどのキャラクターにしますか？"
   },
   "join": {
     "unavailableTitle": "このドアは開きません。",
@@ -296,8 +288,8 @@
     "gone": "{name} がロビーを出たため、この会話も消えました。",
     "edited": "編集済み",
     "edit": "編集",
-    "delete": "削除",
-    "deleteConfirm": "削除しますか？",
+    "delete": "送信取消",
+    "deleteConfirm": "送信を取り消しますか？",
     "save": "保存",
     "cancel": "キャンセル"
   },
@@ -909,14 +901,6 @@
         "messages": "ダイレクトメッセージ",
         "guests": "ゲストリンク"
       },
-      "channels": {
-        "general": "全体",
-        "projects": "プロジェクト",
-        "random": "雑談"
-      },
-      "freeSeat": "空き席",
-      "you": "あなた",
-      "teammate": "チームメイト",
       "bringThem": "{count, plural, other {ここで出会った#人を誘いましょう}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "退出または閉鎖"
     },
     "profile": {
-      "title": "プロフィール",
       "changePassword": "パスワードを変更",
       "setPassword": "パスワードを設定",
       "setPasswordDescription": "Google に加えて、メールアドレスでもログインできるようにパスワードを追加します。",
@@ -968,7 +951,6 @@
       "passwordRule": "8文字以上",
       "signsOutOthers": "この端末ではログインしたままです。ほかの場所ではすべてログアウトされます。",
       "cancel": "キャンセル",
-      "faceNote": "あなたの顔はアカウントから描かれ、どの画面でも同じです。アップロードも保存もされません。",
       "themeNote": "「システム」は端末の設定に従います。選択はこのブラウザに保存されます。",
       "link": "リンク",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Google でもログインできます。",
       "connectGoogle": "Google と連携",
-      "googleConnected": "連携済み"
+      "googleConnected": "連携済み",
+      "sections": {
+        "profile": "プロフィール",
+        "signin": "サインイン",
+        "appearance": "表示"
+      },
+      "profileNote": "どこに入っても表示される名前とリンク。",
+      "password": "パスワード",
+      "passwordSet": "メールアドレスとパスワードでサインインします。",
+      "signOutNote": "このブラウザで TinyFloor からサインアウトします。"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
@@ -1066,23 +1057,9 @@
     "backToOffices": "オフィス一覧へ"
   },
   "create": {
-    "eyebrow": "自分のオフィス",
-    "title": "オフィスに名前を付ける",
-    "subtitle": "チームに表示される名前です。あとから変えられます。",
     "nameLabel": "オフィス名",
-    "namePlaceholder": "Acme Studio",
-    "continue": "次へ",
-    "create": "オフィスを作る",
     "creating": "準備しています",
-    "freePlan": "3人まで無料。カード不要です。",
-    "justLooking": "見てみるだけですか？ <link>公開オフィスに入る</link>のはどうでしょう。",
-    "steps": [
-      "名前をつける",
-      "アカウントを作る",
-      "入ってみる"
-    ],
-    "asideTitle": "あなたのオフィスが1分で完成",
-    "asideBody": "チャットと会議テーブルのある、チーム専用のフロア。3人まで無料です。"
+    "continue": "次へ"
   },
   "shell": {
     "floor": "フロア",
@@ -1128,17 +1105,36 @@
     "leave": "出る"
   },
   "dashboard": {
-    "morning": "おはようございます、{name}さん",
-    "afternoon": "こんにちは、{name}さん",
-    "evening": "こんばんは、{name}さん",
-    "subtitle": "あなたのオフィスと、いま各フロアにいる人。",
-    "onFloor": "{count, plural, =0 {フロアに誰もいません} other {フロアに#人}}",
     "newOffice": "新しいオフィス",
-    "lobby": "公開ロビー",
-    "lobbyBody": "ふらっと立ち寄って、いる人と会いましょう。",
-    "emptyTitle": "最初のオフィスをつくる",
-    "emptyBody": "オフィスはチームが歩き回るひとつのフロアで、チャットと通話も付いています。メンバー3人まで無料です。",
-    "walkIn": "入る"
+    "walkIn": "入る",
+    "home": "ホーム",
+    "yourOffices": "あなたのオフィス",
+    "invite": "メンバーを招待",
+    "firstIn": "いまは誰もいません。入ってきた人がここに表示されます。",
+    "inNow": "{count, plural, =0 {誰もいません} other {#人がいます}}",
+    "inOffice": "オフィスにいる人",
+    "team": "チーム",
+    "seats": "{seats}席中{used}席",
+    "manage": "管理",
+    "seeAll": "全員を見る",
+    "lobbyNote": "または公開ロビーに立ち寄って、新しい人に会いましょう",
+    "anotherOffice": "別のチームも？新しいオフィスをつくる",
+    "welcome": "ようこそ、{name}さん",
+    "welcomeAnonymous": "ようこそ",
+    "welcomeBody": "チームのためのフロア。チャンネルと通話つき。",
+    "stepName": "オフィスに名前をつける",
+    "makeIt": "つくる",
+    "invited": "招待されましたか？",
+    "invitedBody": "チームから届いたリンクを貼り付けてください。",
+    "invitePlaceholder": "招待リンクを貼り付け",
+    "join": "参加",
+    "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。",
+    "makeTitle": "オフィスをつくりましょう",
+    "yourNewOffice": "新しいオフィス",
+    "freeRename": "3人まで無料。名前はいつでも変えられます。",
+    "otherWays": "ほかの入りかた",
+    "lobbyBody": "立ち寄って人に会いましょう。",
+    "yourAccount": "あなたのアカウント"
   },
   "home": {
     "nav": {

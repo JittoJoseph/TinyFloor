@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Sign in",
-    "tabSignUp": "Create account",
-    "chooseMode": "Sign in or create an account",
     "continueWithGoogle": "Continue with Google",
     "or": "or",
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
-    "signUpSubtitle": "Your name, your email, a password. That's all it takes.",
-    "name": "Your name",
-    "namePlaceholder": "How people will see you",
+    "signUpSubtitle": "An email and a password is all it takes.",
     "email": "Email",
     "emailPlaceholder": "you@company.com",
     "password": "Password",
@@ -115,7 +110,6 @@
     "createOne": "Create an account",
     "haveAccount": "Already have an account?",
     "signInInstead": "Sign in instead",
-    "guestCarryOver": "You're visiting as {name}. Your name comes with you.",
     "continueGuest": "Just looking? Visit the lobby as a guest",
     "errors": {
       "wrong_credentials": "That email and password don't match. Try again.",
@@ -134,11 +128,7 @@
       "google_failed": "Google sign-in didn't go through. Try again.",
       "google_unverified": "Verify your email with Google first, then try again.",
       "google_mismatch": "This email is linked to a different Google account."
-    },
-    "asideReady": "{office} is almost ready",
-    "asideTitle": "Your team, one floor away",
-    "asideSignIn": "Welcome back to the floor",
-    "asideBody": "Walk up to someone to talk. Channels and messages stay."
+    }
   },
   "entry": {
     "yourName": "Your name",
@@ -150,7 +140,9 @@
     "guestNote": "Walking in as a guest. <link>Sign in</link> to use your account.",
     "copyInvite": "Copy invite link",
     "continue": "Continue",
-    "walkingInAs": "Walking in as {name}"
+    "walkingInAs": "Walking in as {name}",
+    "introTitle": "Before you walk in",
+    "introSubtitle": "What should people call you, and who will you be on the floor?"
   },
   "join": {
     "unavailableTitle": "That door does not open.",
@@ -296,8 +288,8 @@
     "gone": "{name} left the lobby, and this conversation went with them.",
     "edited": "edited",
     "edit": "Edit",
-    "delete": "Delete",
-    "deleteConfirm": "Delete?",
+    "delete": "Unsend",
+    "deleteConfirm": "Unsend?",
     "save": "Save",
     "cancel": "Cancel"
   },
@@ -909,14 +901,6 @@
         "messages": "Direct messages",
         "guests": "Guest links"
       },
-      "channels": {
-        "general": "general",
-        "projects": "projects",
-        "random": "random"
-      },
-      "freeSeat": "Free seat",
-      "you": "You",
-      "teammate": "Teammate",
       "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Leaving or closing"
     },
     "profile": {
-      "title": "Your profile",
       "changePassword": "Change password",
       "setPassword": "Set a password",
       "setPasswordDescription": "Add a password to sign in with your email as well as with Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "At least 8 characters",
       "signsOutOthers": "You'll stay signed in here. Everywhere else will be signed out.",
       "cancel": "Cancel",
-      "faceNote": "Your face is drawn from your account, the same on every screen. Nothing is uploaded or stored.",
       "themeNote": "System follows your device. The choice is kept in this browser.",
       "link": "Your link",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Sign in with Google as well.",
       "connectGoogle": "Connect Google",
-      "googleConnected": "Connected"
+      "googleConnected": "Connected",
+      "sections": {
+        "profile": "Profile",
+        "signin": "Signing in",
+        "appearance": "Appearance"
+      },
+      "profileNote": "Your name and link, wherever you walk in.",
+      "password": "Password",
+      "passwordSet": "Sign in with your email and password.",
+      "signOutNote": "Sign out of TinyFloor in this browser."
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Back to your offices"
   },
   "create": {
-    "eyebrow": "Your own office",
-    "title": "Name your office",
-    "subtitle": "This is what your team will see. You can change it later.",
     "nameLabel": "Office name",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Continue",
-    "create": "Create office",
     "creating": "Setting it up",
-    "freePlan": "Free for up to 3 people. No card needed.",
-    "justLooking": "Just looking? <link>Walk into the public office</link> instead.",
-    "steps": [
-      "Name it",
-      "Make an account",
-      "Walk in"
-    ],
-    "asideTitle": "Your office, ready in a minute",
-    "asideBody": "A floor of its own for your team, with chat and meeting tables. Free for up to 3 people."
+    "continue": "Continue"
   },
   "shell": {
     "floor": "Floor",
@@ -1128,17 +1105,36 @@
     "leave": "Leave"
   },
   "dashboard": {
-    "morning": "Good morning, {name}",
-    "afternoon": "Good afternoon, {name}",
-    "evening": "Good evening, {name}",
-    "subtitle": "Your offices, and who is on each floor right now.",
-    "onFloor": "{count, plural, =0 {Nobody on the floor} one {# on the floor} other {# on the floor}}",
     "newOffice": "New office",
-    "lobby": "The public lobby",
-    "lobbyBody": "Drop in and meet whoever is around.",
-    "emptyTitle": "Start your first office",
-    "emptyBody": "An office is one floor your team walks around, with chat and calls built in. Three members are free.",
-    "walkIn": "Walk in"
+    "walkIn": "Walk in",
+    "home": "Home",
+    "yourOffices": "Your offices",
+    "invite": "Invite people",
+    "firstIn": "Nobody's in right now. When someone walks in, they'll show up here.",
+    "inNow": "{count, plural, =0 {Nobody in} other {# in now}}",
+    "inOffice": "In the office",
+    "team": "Team",
+    "seats": "{used} of {seats} seats",
+    "manage": "Manage",
+    "seeAll": "See everyone",
+    "lobbyNote": "Or drop into the public lobby and meet people",
+    "anotherOffice": "Starting another team? Make a new office",
+    "welcome": "Welcome, {name}",
+    "welcomeAnonymous": "Welcome",
+    "welcomeBody": "One floor for your team, with channels and calls built in.",
+    "stepName": "Name your office",
+    "makeIt": "Make it",
+    "invited": "Were you invited?",
+    "invitedBody": "Paste the link your team sent you.",
+    "invitePlaceholder": "Paste an invite link",
+    "join": "Join",
+    "badLink": "That doesn't look like an invite link. Paste the whole link.",
+    "makeTitle": "Let's make your office",
+    "yourNewOffice": "Your new office",
+    "freeRename": "Free for up to 3 people. You can rename it any time.",
+    "otherWays": "Other ways in",
+    "lobbyBody": "Drop in and meet people.",
+    "yourAccount": "Your account"
   },
   "home": {
     "nav": {

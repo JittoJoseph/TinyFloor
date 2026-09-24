@@ -8,6 +8,14 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async presenceCounts(roomIds) {
     return Object.fromEntries(roomIds.map((id) => [id, people[id] ?? 0]));
   }
+  async officePresence(officeIds) {
+    return Object.fromEntries(
+      officeIds.map((id) => [
+        id,
+        Array.from({ length: people[id] ?? 0 }, (_, index) => ({ id: `here-${index}`, name: `Here ${index}`, character: "Bob", status: "available" })),
+      ]),
+    );
+  }
   async lobbyPeople() {
     return { here: people.lobby ?? 0, faces: [] };
   }
@@ -22,6 +30,14 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   }
   async removeMember(officeId, userId) {
     calls.push(["removeMember", officeId, userId]);
+  }
+  async lobbyChat(channel, before) {
+    calls.push(["lobbyChat", channel, before]);
+    return { channels: [{ id: "general", messages: 1, lastAt: 1 }], channel: "general", messages: [], more: false };
+  }
+  async moderateLobbyChat(seq, change) {
+    calls.push(["moderateLobbyChat", seq, change]);
+    return seq !== 404;
   }
   async officeCreated(event) {
     calls.push(["officeCreated", event.office, event.owner]);

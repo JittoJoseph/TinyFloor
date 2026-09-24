@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Kirjaudu",
-    "tabSignUp": "Luo tili",
-    "chooseMode": "Kirjaudu sisään tai luo tili",
     "continueWithGoogle": "Jatka Googlella",
     "or": "tai",
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
-    "signUpSubtitle": "Nimesi, sähköpostisi ja salasana. Siinä kaikki.",
-    "name": "Nimesi",
-    "namePlaceholder": "Näin muut näkevät sinut",
+    "signUpSubtitle": "Tarvitaan vain sähköposti ja salasana.",
     "email": "Sähköposti",
     "emailPlaceholder": "sina@yritys.fi",
     "password": "Salasana",
@@ -115,7 +110,6 @@
     "createOne": "Luo tili",
     "haveAccount": "Onko sinulla jo tili?",
     "signInInstead": "Kirjaudu sen sijaan",
-    "guestCarryOver": "Olet vierailulla nimellä {name}. Nimesi tulee mukaan.",
     "continueGuest": "Katseletko vain? Vieraile aulassa vieraana",
     "errors": {
       "wrong_credentials": "Sähköposti ja salasana eivät täsmää. Yritä uudelleen.",
@@ -134,11 +128,7 @@
       "google_failed": "Kirjautuminen Googlella ei onnistunut. Yritä uudelleen.",
       "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
       "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
-    },
-    "asideReady": "{office} on melkein valmis",
-    "asideTitle": "Tiimisi, yhden kerroksen päässä",
-    "asideSignIn": "Tervetuloa takaisin kerrokseen",
-    "asideBody": "Kävele jonkun luo juttelemaan. Kanavat ja viestit säilyvät."
+    }
   },
   "entry": {
     "yourName": "Nimesi",
@@ -150,7 +140,9 @@
     "guestNote": "Tulet vieraana. <link>Kirjaudu</link> käyttääksesi tiliäsi.",
     "copyInvite": "Kopioi kutsulinkki",
     "continue": "Jatka",
-    "walkingInAs": "Astut sisään nimellä {name}"
+    "walkingInAs": "Astut sisään nimellä {name}",
+    "introTitle": "Ennen kuin astut sisään",
+    "introSubtitle": "Millä nimellä muut kutsuvat sinua, ja kuka olet kerroksessa?"
   },
   "join": {
     "unavailableTitle": "Tämä ovi ei aukea.",
@@ -296,8 +288,8 @@
     "gone": "{name} poistui aulasta, ja keskustelu lähti mukana.",
     "edited": "muokattu",
     "edit": "Muokkaa",
-    "delete": "Poista",
-    "deleteConfirm": "Poistetaanko?",
+    "delete": "Peru lähetys",
+    "deleteConfirm": "Peru lähetys?",
     "save": "Tallenna",
     "cancel": "Peruuta"
   },
@@ -909,14 +901,6 @@
         "messages": "Yksityisviestit",
         "guests": "Vieraslinkit"
       },
-      "channels": {
-        "general": "yleinen",
-        "projects": "projektit",
-        "random": "sekalaiset"
-      },
-      "freeSeat": "Vapaa paikka",
-      "you": "Sinä",
-      "teammate": "Tiimiläinen",
       "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Poistuminen tai sulkeminen"
     },
     "profile": {
-      "title": "Profiilisi",
       "changePassword": "Vaihda salasana",
       "setPassword": "Aseta salasana",
       "setPasswordDescription": "Lisää salasana, niin voit kirjautua myös sähköpostillasi etkä vain Googlella.",
@@ -968,7 +951,6 @@
       "passwordRule": "Vähintään 8 merkkiä",
       "signsOutOthers": "Pysyt kirjautuneena täällä. Kaikkialla muualla sinut kirjataan ulos.",
       "cancel": "Peruuta",
-      "faceNote": "Kasvosi piirretään tilisi perusteella, samanlaisina joka näytöllä. Mitään ei ladata eikä tallenneta.",
       "themeNote": "Järjestelmä seuraa laitettasi. Valinta tallennetaan tähän selaimeen.",
       "link": "Linkkisi",
       "linkPlaceholder": "verkkosivusi.fi",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Kirjaudu myös Googlella.",
       "connectGoogle": "Yhdistä Google",
-      "googleConnected": "Yhdistetty"
+      "googleConnected": "Yhdistetty",
+      "sections": {
+        "profile": "Profiili",
+        "signin": "Kirjautuminen",
+        "appearance": "Ulkoasu"
+      },
+      "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
+      "password": "Salasana",
+      "passwordSet": "Kirjaudu sähköpostilla ja salasanalla.",
+      "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa."
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Takaisin toimistoihisi"
   },
   "create": {
-    "eyebrow": "Oma toimistosi",
-    "title": "Nimeä toimistosi",
-    "subtitle": "Tämän tiimisi näkee. Voit muuttaa sen myöhemmin.",
     "nameLabel": "Toimiston nimi",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Jatka",
-    "create": "Luo toimisto",
     "creating": "Valmistellaan",
-    "freePlan": "Ilmainen enintään 3 hengelle. Ei korttia.",
-    "justLooking": "Katselet vain? <link>Astu julkiseen toimistoon</link> sen sijaan.",
-    "steps": [
-      "Nimeä",
-      "Luo tili",
-      "Astu sisään"
-    ],
-    "asideTitle": "Toimistosi valmiina minuutissa",
-    "asideBody": "Oma kerros tiimillesi, chatin ja kokouspöytien kanssa. Ilmainen enintään 3 hengelle."
+    "continue": "Jatka"
   },
   "shell": {
     "floor": "Kerros",
@@ -1128,17 +1105,36 @@
     "leave": "Poistu"
   },
   "dashboard": {
-    "morning": "Huomenta, {name}",
-    "afternoon": "Hyvää iltapäivää, {name}",
-    "evening": "Hyvää iltaa, {name}",
-    "subtitle": "Toimistosi ja kuka on nyt missäkin kerroksessa.",
-    "onFloor": "{count, plural, =0 {Ei ketään kerroksella} other {# kerroksella}}",
     "newOffice": "Uusi toimisto",
-    "lobby": "Julkinen aula",
-    "lobbyBody": "Poikkea ja tapaa, kuka paikalla on.",
-    "emptyTitle": "Aloita ensimmäinen toimistosi",
-    "emptyBody": "Toimisto on kerros, jolla tiimisi liikkuu, ja siinä on chat ja puhelut. Kolme jäsentä on ilmaiseksi.",
-    "walkIn": "Kävele sisään"
+    "walkIn": "Kävele sisään",
+    "home": "Koti",
+    "yourOffices": "Toimistosi",
+    "invite": "Kutsu ihmisiä",
+    "firstIn": "Ketään ei ole nyt paikalla. Sisään tulevat näkyvät tässä.",
+    "inNow": "{count, plural, =0 {Ei ketään} other {# paikalla}}",
+    "inOffice": "Toimistolla",
+    "team": "Tiimi",
+    "seats": "{used}/{seats} paikkaa",
+    "manage": "Hallitse",
+    "seeAll": "Näytä kaikki",
+    "lobbyNote": "Tai poikkea julkiseen aulaan tapaamaan ihmisiä",
+    "anotherOffice": "Toinen tiimi? Tee uusi toimisto",
+    "welcome": "Tervetuloa, {name}",
+    "welcomeAnonymous": "Tervetuloa",
+    "welcomeBody": "Yksi kerros tiimillesi, kanavat ja puhelut mukana.",
+    "stepName": "Nimeä toimistosi",
+    "makeIt": "Tee se",
+    "invited": "Saitko kutsun?",
+    "invitedBody": "Liitä linkki, jonka tiimisi lähetti.",
+    "invitePlaceholder": "Liitä kutsulinkki",
+    "join": "Liity",
+    "badLink": "Tuo ei näytä kutsulinkiltä. Liitä koko linkki.",
+    "makeTitle": "Tehdään toimistosi",
+    "yourNewOffice": "Uusi toimistosi",
+    "freeRename": "Ilmainen enintään 3 hengelle. Voit vaihtaa nimen milloin vain.",
+    "otherWays": "Muita tapoja sisään",
+    "lobbyBody": "Poikkea ja tapaa ihmisiä.",
+    "yourAccount": "Tilisi"
   },
   "home": {
     "nav": {

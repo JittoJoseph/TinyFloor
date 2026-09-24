@@ -2,6 +2,9 @@
  * The TinyFloor API (tinyfloor-api). Sessions are an HttpOnly cookie the browser
  * sends by itself, so nothing about signing in is kept in JavaScript.
  */
+import type { LobbyChatPage, PresentPerson } from "@shared/admin";
+
+export type { LobbyChatPage, PresentPerson };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
 
 export class ApiError extends Error {
@@ -28,6 +31,8 @@ export interface SessionUser {
   google?: boolean;
   /** The link on their profile. */
   link?: string | null;
+  /** Has said who they are on the floor. A new account hasn't, until its first door. */
+  introduced?: boolean;
 }
 
 /** Someone's profile, as the people they chat with see it. */
@@ -48,9 +53,11 @@ export interface OfficeSummary {
   members: number;
   role: OfficeRole;
   /** A few members, for faces on the dashboard (only from /v1/me). */
-  faces?: Array<{ id: string; name: string }>;
+  faces?: Array<{ id: string; name: string; character: string }>;
   /** Who is on the floor right now (only from /v1/me). */
   here?: number;
+  /** Who is on the floor right now, as they look (only from /v1/me). */
+  inNow?: PresentPerson[];
 }
 
 export interface Office extends OfficeSummary {
@@ -170,18 +177,19 @@ const id = encodeURIComponent;
 export const api = {
   // Signing in
   session: () => get<{ user: SessionUser | null }>("/session"),
-  signUp: (body: { email: string; password: string; displayName: string; character: string; turnstileToken: string }) =>
+  signUp: (body: { email: string; password: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
-  signInWithGoogle: (code: string) => post<{ user: SessionUser; created: boolean }>("/auth/google", { code }),
+  /** The popup's one-time code, or One Tap's signed ID token. */
+  signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
-  updateMe: (body: { displayName?: string; character?: string; link?: string }) => patch<{ user: SessionUser }>("/me", body),
+  updateMe: (body: { displayName?: string; character?: string; link?: string; introduced?: boolean }) => patch<{ user: SessionUser }>("/me", body),
   /** Connects a Google account to the signed-in account, with the code from Google's popup. */
   connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
   person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
@@ -199,6 +207,10 @@ export const api = {
     ),
   adminOffices: (before?: number) =>
     get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
+  adminLobbyChat: (channel: string, before?: number) =>
+    get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
+  adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),
+  adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

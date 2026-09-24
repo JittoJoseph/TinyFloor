@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Se connecter",
-    "tabSignUp": "Créer un compte",
-    "chooseMode": "Se connecter ou créer un compte",
     "continueWithGoogle": "Continuer avec Google",
     "or": "ou",
     "signInTitle": "Bon retour",
     "signInSubtitle": "Connectez-vous pour retrouver le bureau de votre équipe.",
     "signUpTitle": "Créez votre compte",
-    "signUpSubtitle": "Votre nom, votre e-mail, un mot de passe. C’est tout.",
-    "name": "Votre nom",
-    "namePlaceholder": "Ce que les autres verront",
+    "signUpSubtitle": "Une adresse e-mail et un mot de passe, c’est tout.",
     "email": "E-mail",
     "emailPlaceholder": "vous@entreprise.fr",
     "password": "Mot de passe",
@@ -115,7 +110,6 @@
     "createOne": "Créer un compte",
     "haveAccount": "Vous avez déjà un compte ?",
     "signInInstead": "Se connecter plutôt",
-    "guestCarryOver": "Vous êtes de passage en tant que {name}. Votre nom vous suit.",
     "continueGuest": "Simple curiosité ? Visitez le hall en tant qu’invité",
     "errors": {
       "wrong_credentials": "L’e-mail et le mot de passe ne correspondent pas. Réessayez.",
@@ -134,11 +128,7 @@
       "google_failed": "La connexion avec Google n'a pas abouti. Réessayez.",
       "google_unverified": "Validez d'abord votre adresse e-mail auprès de Google, puis réessayez.",
       "google_mismatch": "Cette adresse e-mail est liée à un autre compte Google."
-    },
-    "asideReady": "{office} est presque prêt",
-    "asideTitle": "Votre équipe, à un étage près",
-    "asideSignIn": "Bon retour sur l'étage",
-    "asideBody": "Approchez-vous de quelqu'un pour parler. Les canaux et les messages restent."
+    }
   },
   "entry": {
     "yourName": "Votre nom",
@@ -150,7 +140,9 @@
     "guestNote": "Vous entrez en tant qu’invité. <link>Connectez-vous</link> pour utiliser votre compte.",
     "copyInvite": "Copier le lien d’invitation",
     "continue": "Continuer",
-    "walkingInAs": "Vous entrez en tant que {name}"
+    "walkingInAs": "Vous entrez en tant que {name}",
+    "introTitle": "Avant d’entrer",
+    "introSubtitle": "Comment voulez-vous qu’on vous appelle, et qui serez-vous sur l’étage ?"
   },
   "join": {
     "unavailableTitle": "Cette porte ne s’ouvre pas.",
@@ -296,8 +288,8 @@
     "gone": "{name} a quitté le hall, et cette conversation est partie avec.",
     "edited": "modifié",
     "edit": "Modifier",
-    "delete": "Supprimer",
-    "deleteConfirm": "Supprimer ?",
+    "delete": "Retirer",
+    "deleteConfirm": "Retirer ?",
     "save": "Enregistrer",
     "cancel": "Annuler"
   },
@@ -909,14 +901,6 @@
         "messages": "Messages privés",
         "guests": "Liens invités"
       },
-      "channels": {
-        "general": "general",
-        "projects": "projets",
-        "random": "divers"
-      },
-      "freeSeat": "Place libre",
-      "you": "Vous",
-      "teammate": "Collègue",
       "bringThem": "{count, plural, one {Emmenez la personne rencontrée ici} other {Emmenez les # personnes rencontrées ici}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Quitter ou fermer"
     },
     "profile": {
-      "title": "Votre profil",
       "changePassword": "Changer le mot de passe",
       "setPassword": "Définir un mot de passe",
       "setPasswordDescription": "Ajoutez un mot de passe pour vous connecter aussi avec votre e-mail, pas seulement avec Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "Au moins 8 caractères",
       "signsOutOthers": "Vous restez connecté ici. Partout ailleurs, vous serez déconnecté.",
       "cancel": "Annuler",
-      "faceNote": "Votre visage est dessiné à partir de votre compte, le même sur chaque écran. Rien n'est envoyé ni stocké.",
       "themeNote": "Système suit votre appareil. Le choix est gardé dans ce navigateur.",
       "link": "Votre lien",
       "linkPlaceholder": "votresite.fr",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Connectez-vous aussi avec Google.",
       "connectGoogle": "Associer Google",
-      "googleConnected": "Associé"
+      "googleConnected": "Associé",
+      "sections": {
+        "profile": "Profil",
+        "signin": "Connexion",
+        "appearance": "Apparence"
+      },
+      "profileNote": "Votre nom et votre lien, partout où vous entrez.",
+      "password": "Mot de passe",
+      "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe.",
+      "signOutNote": "Déconnectez-vous de TinyFloor dans ce navigateur."
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Retour à vos bureaux"
   },
   "create": {
-    "eyebrow": "Votre propre bureau",
-    "title": "Nommez votre bureau",
-    "subtitle": "C’est ce que votre équipe verra. Vous pourrez le changer plus tard.",
     "nameLabel": "Nom du bureau",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Continuer",
-    "create": "Créer le bureau",
     "creating": "Préparation",
-    "freePlan": "Gratuit jusqu’à 3 personnes. Sans carte.",
-    "justLooking": "Juste un coup d’œil ? <link>Entrez dans le bureau public</link> plutôt.",
-    "steps": [
-      "Le nommer",
-      "Créer un compte",
-      "Entrer"
-    ],
-    "asideTitle": "Votre bureau, prêt en une minute",
-    "asideBody": "Un étage rien qu'à votre équipe, avec chat et tables de réunion. Gratuit jusqu'à 3 personnes."
+    "continue": "Continuer"
   },
   "shell": {
     "floor": "Étage",
@@ -1128,17 +1105,36 @@
     "leave": "Quitter"
   },
   "dashboard": {
-    "morning": "Bonjour, {name}",
-    "afternoon": "Bon après-midi, {name}",
-    "evening": "Bonsoir, {name}",
-    "subtitle": "Vos bureaux, et qui est sur chaque étage en ce moment.",
-    "onFloor": "{count, plural, =0 {Personne sur l'étage} other {# sur l'étage}}",
     "newOffice": "Nouveau bureau",
-    "lobby": "Le hall public",
-    "lobbyBody": "Passez et rencontrez qui est là.",
-    "emptyTitle": "Créez votre premier bureau",
-    "emptyBody": "Un bureau est un étage où votre équipe se promène, avec chat et appels intégrés. Trois membres sont gratuits.",
-    "walkIn": "Entrer"
+    "walkIn": "Entrer",
+    "home": "Accueil",
+    "yourOffices": "Vos bureaux",
+    "invite": "Inviter des gens",
+    "firstIn": "Personne pour l’instant. Quand quelqu’un entre, il apparaît ici.",
+    "inNow": "{count, plural, =0 {Personne} other {# présents}}",
+    "inOffice": "Au bureau",
+    "team": "Équipe",
+    "seats": "{used} sur {seats} places",
+    "manage": "Gérer",
+    "seeAll": "Voir tout le monde",
+    "lobbyNote": "Ou passez par le hall public pour rencontrer du monde",
+    "anotherOffice": "Une autre équipe ? Créer un nouveau bureau",
+    "welcome": "Bienvenue, {name}",
+    "welcomeAnonymous": "Bienvenue",
+    "welcomeBody": "Un étage pour votre équipe, avec canaux et appels intégrés.",
+    "stepName": "Nommez votre bureau",
+    "makeIt": "Le créer",
+    "invited": "Vous avez été invité ?",
+    "invitedBody": "Collez le lien que votre équipe vous a envoyé.",
+    "invitePlaceholder": "Collez un lien d’invitation",
+    "join": "Rejoindre",
+    "badLink": "Ce n’est pas un lien d’invitation. Collez le lien complet.",
+    "makeTitle": "Créons votre bureau",
+    "yourNewOffice": "Votre nouveau bureau",
+    "freeRename": "Gratuit jusqu'à 3 personnes. Vous pourrez le renommer à tout moment.",
+    "otherWays": "Autres façons d'entrer",
+    "lobbyBody": "Passez rencontrer du monde.",
+    "yourAccount": "Votre compte"
   },
   "home": {
     "nav": {

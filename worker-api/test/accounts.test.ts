@@ -41,11 +41,35 @@ async function post(path: string, body: unknown, cookie?: string, ip = freshIp()
   };
 }
 
-async function signUp(email = uniqueEmail(), password = "correct horse", extra: Record<string, unknown> = {}) {
-  return post("/v1/auth/signup", { email, password, displayName: "Ava", character: "Lucy", turnstileToken: "t", ...extra });
+async function signUp(email = uniqueEmail(), password = "correct horse", extra: Record<string, unknown> = {}, cookie?: string) {
+  return post("/v1/auth/signup", { email, password, displayName: "Ava", character: "Lucy", turnstileToken: "t", ...extra }, cookie);
 }
 
 describe("sign up", () => {
+  it("needs only an email and a password, and asks the rest at the first door", async () => {
+    const email = `jitto.joseph67.${Date.now()}${sequence++}@example.com`;
+    const result = await post("/v1/auth/signup", { email, password: "correct horse", turnstileToken: "t" });
+    expect(result.status).toBe(201);
+    expect(result.body.user).toMatchObject({ displayName: "Jitto Joseph", introduced: false });
+
+    // At their first door they say who they are, and from then on they are.
+    const me = { id: result.body.user.id, cookie: result.cookie! };
+    const named = await call(me, "PATCH", "/v1/me", { displayName: "Jitto", character: "Bob", introduced: true });
+    expect(named.body.user).toMatchObject({ displayName: "Jitto", character: "Bob", introduced: true });
+    const session = await call(me, "GET", "/v1/session");
+    expect(session.body.user).toMatchObject({ introduced: true });
+    // Changing a name later doesn't undo it.
+    const renamed = await call(me, "PATCH", "/v1/me", { displayName: "J" });
+    expect(renamed.body.user).toMatchObject({ introduced: true });
+  });
+
+  it("counts a guest who signs up as introduced, since they chose at the door", async () => {
+    const guest = await post("/v1/auth/guest", { name: "Gus", character: "Dan", turnstileToken: "t" });
+    expect(guest.body.user).toMatchObject({ introduced: true });
+    const result = await signUp(uniqueEmail(), "correct horse", { displayName: undefined, character: undefined }, guest.cookie);
+    expect(result.body.user).toMatchObject({ displayName: "Gus", character: "Dan", introduced: true });
+  });
+
   it("creates an account with a 30-day session and stores only a bcrypt hash", async () => {
     const email = uniqueEmail();
     const result = await signUp(`  ${email.toUpperCase()} `);
@@ -65,9 +89,8 @@ describe("sign up", () => {
     expect((await signUp("not-an-email")).body.error).toMatchObject({ code: "bad_email", field: "email" });
     expect((await signUp(uniqueEmail(), "short")).body.error).toMatchObject({ code: "password_too_short", field: "password" });
     expect((await signUp(uniqueEmail(), "x".repeat(73))).body.error).toMatchObject({ code: "password_too_long" });
-    expect((await signUp(uniqueEmail(), "correct horse", { displayName: "  " })).body.error).toMatchObject({
-      field: "displayName",
-    });
+    // A blank name isn't an error any more: the name is asked at the first door.
+    expect((await signUp(uniqueEmail(), "correct horse", { displayName: "  " })).status).toBe(201);
   });
 
   it("refuses an email that already has an account", async () => {

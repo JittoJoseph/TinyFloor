@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "تسجيل الدخول",
-    "tabSignUp": "إنشاء حساب",
-    "chooseMode": "سجّل الدخول أو أنشئ حسابًا",
     "continueWithGoogle": "المتابعة باستخدام Google",
     "or": "أو",
     "signInTitle": "مرحبًا بعودتك",
     "signInSubtitle": "سجّل الدخول للعودة إلى مكتب فريقك.",
     "signUpTitle": "أنشئ حسابك",
-    "signUpSubtitle": "اسمك وبريدك وكلمة مرور. هذا كل شيء.",
-    "name": "اسمك",
-    "namePlaceholder": "الاسم الذي يراه الآخرون",
+    "signUpSubtitle": "كل ما تحتاجه بريد إلكتروني وكلمة مرور.",
     "email": "البريد الإلكتروني",
     "emailPlaceholder": "you@company.com",
     "password": "كلمة المرور",
@@ -115,7 +110,6 @@
     "createOne": "أنشئ حسابًا",
     "haveAccount": "لديك حساب بالفعل؟",
     "signInInstead": "سجّل الدخول بدلًا من ذلك",
-    "guestCarryOver": "أنت زائر باسم {name}. اسمك يأتي معك.",
     "continueGuest": "تتصفح فقط؟ زر الردهة كضيف",
     "errors": {
       "wrong_credentials": "البريد الإلكتروني وكلمة المرور غير متطابقين. حاول مرة أخرى.",
@@ -134,11 +128,7 @@
       "google_failed": "لم يكتمل تسجيل الدخول باستخدام Google. حاول مرة أخرى.",
       "google_unverified": "تحقّق من بريدك الإلكتروني لدى Google أولًا، ثم حاول مرة أخرى.",
       "google_mismatch": "هذا البريد الإلكتروني مرتبط بحساب Google آخر."
-    },
-    "asideReady": "{office} جاهز تقريبًا",
-    "asideTitle": "فريقك على بُعد طابق واحد",
-    "asideSignIn": "مرحبًا بعودتك إلى الطابق",
-    "asideBody": "امشِ إلى أحدهم لتتحدث. تبقى القنوات والرسائل."
+    }
   },
   "entry": {
     "yourName": "اسمك",
@@ -150,7 +140,9 @@
     "guestNote": "ستدخل كضيف. <link>سجّل الدخول</link> لاستخدام حسابك.",
     "copyInvite": "نسخ رابط الدعوة",
     "continue": "متابعة",
-    "walkingInAs": "تدخل باسم {name}"
+    "walkingInAs": "تدخل باسم {name}",
+    "introTitle": "قبل أن تدخل",
+    "introSubtitle": "بمَ يناديك الآخرون، ومن ستكون في الطابق؟"
   },
   "join": {
     "unavailableTitle": "هذا الباب لا يُفتح.",
@@ -296,8 +288,8 @@
     "gone": "غادر {name} الردهة، وذهبت هذه المحادثة معه.",
     "edited": "معدّلة",
     "edit": "تعديل",
-    "delete": "حذف",
-    "deleteConfirm": "حذف؟",
+    "delete": "إلغاء الإرسال",
+    "deleteConfirm": "إلغاء الإرسال؟",
     "save": "حفظ",
     "cancel": "إلغاء"
   },
@@ -909,14 +901,6 @@
         "messages": "رسائل مباشرة",
         "guests": "روابط الضيوف"
       },
-      "channels": {
-        "general": "عام",
-        "projects": "مشاريع",
-        "random": "متفرقات"
-      },
-      "freeSeat": "مقعد شاغر",
-      "you": "أنت",
-      "teammate": "زميل",
       "bringThem": "{count, plural, one {اصطحب الشخص الذي قابلته هنا} two {اصطحب الشخصين اللذين قابلتهما هنا} few {اصطحب الأشخاص الـ# الذين قابلتهم هنا} many {اصطحب الـ# شخصًا الذين قابلتهم هنا} other {اصطحب الـ# شخص الذين قابلتهم هنا}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "المغادرة أو الإغلاق"
     },
     "profile": {
-      "title": "ملفك الشخصي",
       "changePassword": "تغيير كلمة المرور",
       "setPassword": "تعيين كلمة مرور",
       "setPasswordDescription": "أضف كلمة مرور لتسجّل الدخول ببريدك الإلكتروني أيضًا، وليس بـ Google فقط.",
@@ -968,7 +951,6 @@
       "passwordRule": "8 أحرف على الأقل",
       "signsOutOthers": "ستبقى مسجّل الدخول هنا، وسيتم تسجيل خروجك من كل مكان آخر.",
       "cancel": "إلغاء",
-      "faceNote": "وجهك مرسوم من حسابك، وهو نفسه على كل شاشة. لا يُرفع شيء ولا يُحفظ.",
       "themeNote": "«النظام» يتبع جهازك. يُحفظ اختيارك في هذا المتصفح.",
       "link": "رابطك",
       "linkPlaceholder": "yourwebsite.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "سجّل الدخول باستخدام Google أيضًا.",
       "connectGoogle": "ربط Google",
-      "googleConnected": "مرتبط"
+      "googleConnected": "مرتبط",
+      "sections": {
+        "profile": "الملف الشخصي",
+        "signin": "تسجيل الدخول",
+        "appearance": "المظهر"
+      },
+      "profileNote": "اسمك ورابطك، أينما دخلت.",
+      "password": "كلمة المرور",
+      "passwordSet": "سجّل الدخول ببريدك الإلكتروني وكلمة المرور.",
+      "signOutNote": "سجّل الخروج من TinyFloor في هذا المتصفح."
     },
     "invite": {
       "invalidTitle": "هذه الدعوة لا تعمل",
@@ -1066,23 +1057,9 @@
     "backToOffices": "العودة إلى مكاتبك"
   },
   "create": {
-    "eyebrow": "مكتبك الخاص",
-    "title": "سمِّ مكتبك",
-    "subtitle": "هذا ما سيراه فريقك، ويمكن تغييره لاحقًا.",
     "nameLabel": "اسم المكتب",
-    "namePlaceholder": "Acme Studio",
-    "continue": "متابعة",
-    "create": "إنشاء المكتب",
     "creating": "نُجهّزه الآن",
-    "freePlan": "مجاني حتى 3 أشخاص. بلا بطاقة.",
-    "justLooking": "تتصفح فقط؟ <link>ادخل المكتب العام</link> بدلًا من ذلك.",
-    "steps": [
-      "سمِّه",
-      "أنشئ حسابًا",
-      "ادخل"
-    ],
-    "asideTitle": "مكتبك جاهز في دقيقة",
-    "asideBody": "طابق خاص بفريقك، مع دردشة وطاولات اجتماعات. مجاني حتى 3 أشخاص."
+    "continue": "متابعة"
   },
   "shell": {
     "floor": "الطابق",
@@ -1128,17 +1105,36 @@
     "leave": "غادر"
   },
   "dashboard": {
-    "morning": "صباح الخير يا {name}",
-    "afternoon": "مساء الخير يا {name}",
-    "evening": "مساء الخير يا {name}",
-    "subtitle": "مكاتبك، ومن في كل طابق الآن.",
-    "onFloor": "{count, plural, =0 {لا أحد في الطابق} other {# في الطابق}}",
     "newOffice": "مكتب جديد",
-    "lobby": "الردهة العامة",
-    "lobbyBody": "مرّ والتقِ بمن هناك.",
-    "emptyTitle": "ابدأ مكتبك الأول",
-    "emptyBody": "المكتب طابق يتجول فيه فريقك، مع دردشة ومكالمات مدمجة. ثلاثة أعضاء مجانًا.",
-    "walkIn": "ادخل"
+    "walkIn": "ادخل",
+    "home": "الرئيسية",
+    "yourOffices": "مكاتبك",
+    "invite": "دعوة أشخاص",
+    "firstIn": "لا أحد هنا الآن. من يدخل سيظهر هنا.",
+    "inNow": "{count, plural, =0 {لا أحد} other {الآن: #}}",
+    "inOffice": "في المكتب",
+    "team": "الفريق",
+    "seats": "{used} من {seats} مقاعد",
+    "manage": "إدارة",
+    "seeAll": "عرض الجميع",
+    "lobbyNote": "أو مرّ على الردهة العامة وتعرّف على أشخاص",
+    "anotherOffice": "فريق آخر؟ أنشئ مكتبًا جديدًا",
+    "welcome": "أهلًا، {name}",
+    "welcomeAnonymous": "أهلًا بك",
+    "welcomeBody": "طابق واحد لفريقك، فيه القنوات والمكالمات.",
+    "stepName": "سمِّ مكتبك",
+    "makeIt": "أنشئه",
+    "invited": "هل تلقيت دعوة؟",
+    "invitedBody": "الصق الرابط الذي أرسله فريقك.",
+    "invitePlaceholder": "الصق رابط دعوة",
+    "join": "انضم",
+    "badLink": "لا يبدو هذا رابط دعوة. الصق الرابط كاملًا.",
+    "makeTitle": "لنصنع مكتبك",
+    "yourNewOffice": "مكتبك الجديد",
+    "freeRename": "مجاني لما يصل إلى 3 أشخاص. يمكنك تغيير الاسم في أي وقت.",
+    "otherWays": "طرق أخرى للدخول",
+    "lobbyBody": "ادخل وتعرّف على الناس.",
+    "yourAccount": "حسابك"
   },
   "home": {
     "nav": {

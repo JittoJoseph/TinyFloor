@@ -2,6 +2,7 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { api, type SessionUser } from "@/lib/api";
+import { readIdentity } from "@/lib/identity";
 
 interface AuthContextType {
   user: SessionUser | null;
@@ -12,17 +13,11 @@ interface AuthContextType {
   /** Signed in with an account (not a guest). */
   hasAccount: boolean;
   signIn: (email: string, password: string) => Promise<SessionUser>;
-  signInWithGoogle: (code: string) => Promise<SessionUser>;
-  signUp: (details: {
-    email: string;
-    password: string;
-    displayName: string;
-    character: string;
-    turnstileToken: string;
-  }) => Promise<SessionUser>;
+  signInWithGoogle: (from: { code: string } | { credential: string }) => Promise<SessionUser>;
+  signUp: (details: { email: string; password: string; turnstileToken: string }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
-  updateProfile: (changes: { displayName?: string; character?: string; link?: string }) => Promise<SessionUser>;
+  updateProfile: (changes: { displayName?: string; character?: string; link?: string; introduced?: boolean }) => Promise<SessionUser>;
   refresh: () => Promise<void>;
 }
 
@@ -68,6 +63,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  // A new account in a browser that has walked in before (as a guest, say) is
+  // who it was then: that name and character are its introduction, so the
+  // first door doesn't ask again. They can change either on their account.
+  const introducing = !!user && !user.guest && user.introduced === false;
+  useEffect(() => {
+    if (!introducing) return;
+    const known = readIdentity();
+    if (!known.name.trim()) return;
+    let cancelled = false;
+    api.updateMe({ displayName: known.name.trim(), character: known.character, introduced: true }).then(
+      ({ user: next }) => !cancelled && setUser(next),
+      () => {},
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [introducing]);
+
   const value = useMemo<AuthContextType>(
     () => ({
       user,
@@ -80,8 +93,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(next);
         return next;
       },
-      signInWithGoogle: async (code) => {
-        const { user: next } = await api.signInWithGoogle(code);
+      signInWithGoogle: async (from) => {
+        const { user: next } = await api.signInWithGoogle(from);
         setUser(next);
         return next;
       },

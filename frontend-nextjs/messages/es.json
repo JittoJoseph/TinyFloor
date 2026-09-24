@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Iniciar sesión",
-    "tabSignUp": "Crear cuenta",
-    "chooseMode": "Inicia sesión o crea una cuenta",
     "continueWithGoogle": "Continuar con Google",
     "or": "o",
     "signInTitle": "Hola de nuevo",
     "signInSubtitle": "Inicia sesión para volver a la oficina de tu equipo.",
     "signUpTitle": "Crea tu cuenta",
-    "signUpSubtitle": "Tu nombre, tu email y una contraseña. Nada más.",
-    "name": "Tu nombre",
-    "namePlaceholder": "Cómo te verán los demás",
+    "signUpSubtitle": "Solo hace falta un correo y una contraseña.",
     "email": "Correo electrónico",
     "emailPlaceholder": "tu@empresa.com",
     "password": "Contraseña",
@@ -115,7 +110,6 @@
     "createOne": "Crea una cuenta",
     "haveAccount": "¿Ya tienes cuenta?",
     "signInInstead": "Inicia sesión",
-    "guestCarryOver": "Estás de visita como {name}. Tu nombre te acompaña.",
     "continueGuest": "¿Solo quieres mirar? Visita el lobby como invitado",
     "errors": {
       "wrong_credentials": "El correo y la contraseña no coinciden. Inténtalo de nuevo.",
@@ -134,11 +128,7 @@
       "google_failed": "No se pudo iniciar sesión con Google. Inténtalo de nuevo.",
       "google_unverified": "Primero verifica tu correo con Google y vuelve a intentarlo.",
       "google_mismatch": "Este correo está vinculado a otra cuenta de Google."
-    },
-    "asideReady": "{office} está casi lista",
-    "asideTitle": "Tu equipo, a una planta de distancia",
-    "asideSignIn": "Bienvenido de nuevo a la planta",
-    "asideBody": "Acércate a alguien para hablar. Los canales y los mensajes se quedan."
+    }
   },
   "entry": {
     "yourName": "Tu nombre",
@@ -150,7 +140,9 @@
     "guestNote": "Entras como invitado. <link>Inicia sesión</link> para usar tu cuenta.",
     "copyInvite": "Copiar enlace de invitación",
     "continue": "Continuar",
-    "walkingInAs": "Entras como {name}"
+    "walkingInAs": "Entras como {name}",
+    "introTitle": "Antes de entrar",
+    "introSubtitle": "¿Cómo quieres que te llamen y quién serás en la planta?"
   },
   "join": {
     "unavailableTitle": "Esa puerta no se abre.",
@@ -296,8 +288,8 @@
     "gone": "{name} salió del vestíbulo y esta conversación se fue con ella.",
     "edited": "editado",
     "edit": "Editar",
-    "delete": "Eliminar",
-    "deleteConfirm": "¿Eliminar?",
+    "delete": "Anular envío",
+    "deleteConfirm": "¿Anular envío?",
     "save": "Guardar",
     "cancel": "Cancelar"
   },
@@ -909,14 +901,6 @@
         "messages": "Mensajes directos",
         "guests": "Enlaces de invitado"
       },
-      "channels": {
-        "general": "general",
-        "projects": "proyectos",
-        "random": "varios"
-      },
-      "freeSeat": "Puesto libre",
-      "you": "Tú",
-      "teammate": "Compañero",
       "bringThem": "{count, plural, one {Trae a la persona que conociste aquí} other {Trae a las # personas que conociste aquí}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Salir o cerrar"
     },
     "profile": {
-      "title": "Tu perfil",
       "changePassword": "Cambiar contraseña",
       "setPassword": "Crear una contraseña",
       "setPasswordDescription": "Añade una contraseña para entrar también con tu correo, no solo con Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "Al menos 8 caracteres",
       "signsOutOthers": "Seguirás con la sesión iniciada aquí. En todos los demás sitios se cerrará.",
       "cancel": "Cancelar",
-      "faceNote": "Tu cara se dibuja a partir de tu cuenta, igual en cada pantalla. No se sube ni se guarda nada.",
       "themeNote": "Sistema sigue a tu dispositivo. La elección se guarda en este navegador.",
       "link": "Tu enlace",
       "linkPlaceholder": "tusitio.com",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Entra también con Google.",
       "connectGoogle": "Conectar Google",
-      "googleConnected": "Conectado"
+      "googleConnected": "Conectado",
+      "sections": {
+        "profile": "Perfil",
+        "signin": "Inicio de sesión",
+        "appearance": "Apariencia"
+      },
+      "profileNote": "Tu nombre y tu enlace, entres donde entres.",
+      "password": "Contraseña",
+      "passwordSet": "Inicia sesión con tu correo y contraseña.",
+      "signOutNote": "Cierra sesión en TinyFloor en este navegador."
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Volver a tus oficinas"
   },
   "create": {
-    "eyebrow": "Tu propia oficina",
-    "title": "Ponle nombre a tu oficina",
-    "subtitle": "Es lo que verá tu equipo. Puedes cambiarlo luego.",
     "nameLabel": "Nombre de la oficina",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Continuar",
-    "create": "Crear oficina",
     "creating": "Preparándola",
-    "freePlan": "Gratis hasta 3 personas. Sin tarjeta.",
-    "justLooking": "¿Solo mirando? <link>Entra en la oficina pública</link> mejor.",
-    "steps": [
-      "Ponle nombre",
-      "Crea una cuenta",
-      "Entra"
-    ],
-    "asideTitle": "Tu oficina, lista en un minuto",
-    "asideBody": "Una planta propia para tu equipo, con chat y mesas de reunión. Gratis hasta 3 personas."
+    "continue": "Continuar"
   },
   "shell": {
     "floor": "Planta",
@@ -1128,17 +1105,36 @@
     "leave": "Salir"
   },
   "dashboard": {
-    "morning": "Buenos días, {name}",
-    "afternoon": "Buenas tardes, {name}",
-    "evening": "Buenas noches, {name}",
-    "subtitle": "Tus oficinas y quién está en cada planta ahora mismo.",
-    "onFloor": "{count, plural, =0 {Nadie en la planta} other {# en la planta}}",
     "newOffice": "Nueva oficina",
-    "lobby": "El vestíbulo público",
-    "lobbyBody": "Pásate y conoce a quien esté.",
-    "emptyTitle": "Crea tu primera oficina",
-    "emptyBody": "Una oficina es una planta por la que se mueve tu equipo, con chat y llamadas incluidos. Tres miembros son gratis.",
-    "walkIn": "Entrar"
+    "walkIn": "Entrar",
+    "home": "Inicio",
+    "yourOffices": "Tus oficinas",
+    "invite": "Invitar a gente",
+    "firstIn": "Ahora no hay nadie. Cuando alguien entre, aparecerá aquí.",
+    "inNow": "{count, plural, =0 {No hay nadie} other {# ahora}}",
+    "inOffice": "En la oficina",
+    "team": "Equipo",
+    "seats": "{used} de {seats} plazas",
+    "manage": "Gestionar",
+    "seeAll": "Ver a todos",
+    "lobbyNote": "O pásate por el vestíbulo público y conoce gente",
+    "anotherOffice": "¿Otro equipo? Crea una oficina nueva",
+    "welcome": "Hola, {name}",
+    "welcomeAnonymous": "Te damos la bienvenida",
+    "welcomeBody": "Una planta para tu equipo, con canales y llamadas incluidos.",
+    "stepName": "Ponle nombre a tu oficina",
+    "makeIt": "Crearla",
+    "invited": "¿Te han invitado?",
+    "invitedBody": "Pega el enlace que te envió tu equipo.",
+    "invitePlaceholder": "Pega un enlace de invitación",
+    "join": "Unirme",
+    "badLink": "Eso no parece un enlace de invitación. Pega el enlace completo.",
+    "makeTitle": "Vamos a crear tu oficina",
+    "yourNewOffice": "Tu nueva oficina",
+    "freeRename": "Gratis hasta 3 personas. Puedes cambiarle el nombre cuando quieras.",
+    "otherWays": "Otras formas de entrar",
+    "lobbyBody": "Pásate y conoce gente.",
+    "yourAccount": "Tu cuenta"
   },
   "home": {
     "nav": {

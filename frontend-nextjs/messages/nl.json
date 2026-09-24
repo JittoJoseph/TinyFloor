@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Inloggen",
-    "tabSignUp": "Account maken",
-    "chooseMode": "Log in of maak een account",
     "continueWithGoogle": "Doorgaan met Google",
     "or": "of",
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
-    "signUpSubtitle": "Je naam, je e-mail, een wachtwoord. Meer is het niet.",
-    "name": "Je naam",
-    "namePlaceholder": "Zo zien anderen je",
+    "signUpSubtitle": "Een e-mailadres en een wachtwoord, meer is het niet.",
     "email": "E-mail",
     "emailPlaceholder": "jij@bedrijf.nl",
     "password": "Wachtwoord",
@@ -115,7 +110,6 @@
     "createOne": "Maak een account",
     "haveAccount": "Heb je al een account?",
     "signInInstead": "Log in",
-    "guestCarryOver": "Je bent op bezoek als {name}. Je naam gaat mee.",
     "continueGuest": "Even rondkijken? Bezoek de lobby als gast",
     "errors": {
       "wrong_credentials": "Dat e-mailadres en wachtwoord passen niet bij elkaar. Probeer het opnieuw.",
@@ -134,11 +128,7 @@
       "google_failed": "Inloggen met Google is niet gelukt. Probeer het opnieuw.",
       "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
       "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
-    },
-    "asideReady": "{office} is bijna klaar",
-    "asideTitle": "Je team, één vloer verderop",
-    "asideSignIn": "Welkom terug op de vloer",
-    "asideBody": "Loop naar iemand toe om te praten. Kanalen en berichten blijven."
+    }
   },
   "entry": {
     "yourName": "Je naam",
@@ -150,7 +140,9 @@
     "guestNote": "Je komt binnen als gast. <link>Log in</link> om je account te gebruiken.",
     "copyInvite": "Uitnodigingslink kopiëren",
     "continue": "Verder",
-    "walkingInAs": "Je loopt binnen als {name}"
+    "walkingInAs": "Je loopt binnen als {name}",
+    "introTitle": "Voordat je binnenloopt",
+    "introSubtitle": "Hoe moeten anderen je noemen, en wie ben je op de verdieping?"
   },
   "join": {
     "unavailableTitle": "Die deur gaat niet open.",
@@ -296,8 +288,8 @@
     "gone": "{name} heeft de lobby verlaten en dit gesprek is mee verdwenen.",
     "edited": "bewerkt",
     "edit": "Bewerken",
-    "delete": "Verwijderen",
-    "deleteConfirm": "Verwijderen?",
+    "delete": "Intrekken",
+    "deleteConfirm": "Intrekken?",
     "save": "Opslaan",
     "cancel": "Annuleren"
   },
@@ -909,14 +901,6 @@
         "messages": "Privéberichten",
         "guests": "Gastlinks"
       },
-      "channels": {
-        "general": "algemeen",
-        "projects": "projecten",
-        "random": "overig"
-      },
-      "freeSeat": "Vrije plek",
-      "you": "Jij",
-      "teammate": "Teamgenoot",
       "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Verlaten of sluiten"
     },
     "profile": {
-      "title": "Je profiel",
       "changePassword": "Wachtwoord wijzigen",
       "setPassword": "Wachtwoord instellen",
       "setPasswordDescription": "Stel een wachtwoord in om ook met je e-mailadres in te loggen, niet alleen met Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "Minstens 8 tekens",
       "signsOutOthers": "Hier blijf je ingelogd. Overal anders word je uitgelogd.",
       "cancel": "Annuleren",
-      "faceNote": "Je gezicht wordt getekend op basis van je account, op elk scherm hetzelfde. Er wordt niets geüpload of bewaard.",
       "themeNote": "Systeem volgt je apparaat. De keuze wordt in deze browser bewaard.",
       "link": "Je link",
       "linkPlaceholder": "jouwwebsite.nl",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Log ook in met Google.",
       "connectGoogle": "Google koppelen",
-      "googleConnected": "Gekoppeld"
+      "googleConnected": "Gekoppeld",
+      "sections": {
+        "profile": "Profiel",
+        "signin": "Inloggen",
+        "appearance": "Weergave"
+      },
+      "profileNote": "Je naam en link, waar je ook binnenloopt.",
+      "password": "Wachtwoord",
+      "passwordSet": "Log in met je e-mail en wachtwoord.",
+      "signOutNote": "Log uit bij TinyFloor in deze browser."
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Terug naar je kantoren"
   },
   "create": {
-    "eyebrow": "Je eigen kantoor",
-    "title": "Geef je kantoor een naam",
-    "subtitle": "Dit ziet je team. Je kunt het later aanpassen.",
     "nameLabel": "Naam van het kantoor",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Verder",
-    "create": "Kantoor maken",
     "creating": "Wordt klaargezet",
-    "freePlan": "Gratis tot 3 personen. Geen kaart nodig.",
-    "justLooking": "Even rondkijken? <link>Loop het openbare kantoor binnen</link>.",
-    "steps": [
-      "Geef een naam",
-      "Maak een account",
-      "Loop binnen"
-    ],
-    "asideTitle": "Je kantoor, klaar in een minuut",
-    "asideBody": "Een eigen verdieping voor je team, met chat en vergadertafels. Gratis voor maximaal 3 mensen."
+    "continue": "Verder"
   },
   "shell": {
     "floor": "Vloer",
@@ -1128,17 +1105,36 @@
     "leave": "Verlaten"
   },
   "dashboard": {
-    "morning": "Goedemorgen, {name}",
-    "afternoon": "Goedemiddag, {name}",
-    "evening": "Goedenavond, {name}",
-    "subtitle": "Je kantoren, en wie er nu op elke vloer is.",
-    "onFloor": "{count, plural, =0 {Niemand op de vloer} other {# op de vloer}}",
     "newOffice": "Nieuw kantoor",
-    "lobby": "De openbare lobby",
-    "lobbyBody": "Loop binnen en ontmoet wie er is.",
-    "emptyTitle": "Begin je eerste kantoor",
-    "emptyBody": "Een kantoor is een vloer waar je team rondloopt, met chat en bellen erin. Drie leden zijn gratis.",
-    "walkIn": "Naar binnen"
+    "walkIn": "Naar binnen",
+    "home": "Home",
+    "yourOffices": "Je kantoren",
+    "invite": "Mensen uitnodigen",
+    "firstIn": "Er is nu niemand. Wie binnenloopt, verschijnt hier.",
+    "inNow": "{count, plural, =0 {Niemand binnen} other {# nu binnen}}",
+    "inOffice": "Op kantoor",
+    "team": "Team",
+    "seats": "{used} van {seats} plekken",
+    "manage": "Beheren",
+    "seeAll": "Iedereen bekijken",
+    "lobbyNote": "Of loop de openbare lobby binnen en ontmoet mensen",
+    "anotherOffice": "Nog een team? Maak een nieuw kantoor",
+    "welcome": "Welkom, {name}",
+    "welcomeAnonymous": "Welkom",
+    "welcomeBody": "Eén verdieping voor je team, met kanalen en gesprekken ingebouwd.",
+    "stepName": "Geef je kantoor een naam",
+    "makeIt": "Maken",
+    "invited": "Ben je uitgenodigd?",
+    "invitedBody": "Plak de link die je team je stuurde.",
+    "invitePlaceholder": "Plak een uitnodigingslink",
+    "join": "Meedoen",
+    "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
+    "makeTitle": "Laten we je kantoor maken",
+    "yourNewOffice": "Je nieuwe kantoor",
+    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen.",
+    "otherWays": "Andere manieren om binnen te komen",
+    "lobbyBody": "Loop binnen en ontmoet mensen.",
+    "yourAccount": "Je account"
   },
   "home": {
     "nav": {

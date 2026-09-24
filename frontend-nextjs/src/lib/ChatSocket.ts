@@ -137,13 +137,16 @@ class ChatSocket {
     this.send({ t: "chat_react", seq, emoji, on });
   }
 
-  /** The lobby only: change or take back something you said. */
-  edit(seq: number, body: string) {
-    this.send({ t: "chat_edit", seq, body });
+  /**
+   * Change or unsend something you said. A lobby direct message (below zero)
+   * was never stored, so it says which conversation it is in.
+   */
+  edit(seq: number, body: string, channel: string) {
+    this.send({ t: "chat_edit", seq, body, ...(seq < 0 ? { channel } : {}) });
   }
 
-  remove(seq: number) {
-    this.send({ t: "chat_delete", seq });
+  remove(seq: number, channel: string) {
+    this.send({ t: "chat_delete", seq, ...(seq < 0 ? { channel } : {}) });
   }
 
   makeChannel(name: string) {
@@ -291,8 +294,13 @@ class ChatSocket {
       }
       case "chat_edited":
       case "chat_deleted": {
+        // The server checked a stored message's author; a passing one it can't, so its author must be who changed it.
         const history = (this.state.history[message.channel] ?? []).flatMap((one) =>
-          one.seq !== message.seq ? [one] : message.t === "chat_deleted" ? [] : [{ ...one, body: message.body, edited: message.edited }],
+          one.seq !== message.seq || (one.seq < 0 && one.author !== message.by)
+            ? [one]
+            : message.t === "chat_deleted"
+              ? []
+              : [{ ...one, body: message.body, edited: message.edited }],
         );
         this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
         break;

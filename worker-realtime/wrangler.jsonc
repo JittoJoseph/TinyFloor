@@ -31,7 +31,9 @@
       "migrations_dir": "../worker-api/migrations"
     }
   ],
-  // The rooms of the preview system, with the preview database behind them.
+  // The rooms of the preview system, with the preview database behind them. Every
+  // push to dev that touches worker-realtime/ or shared-protocol/ deploys them (the
+  // tinyfloor-realtime-preview Workers Builds project runs `pnpm run deploy:preview`).
   "env": {
     "preview": {
       "name": "tinyfloor-realtime-preview",

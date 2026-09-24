@@ -23,6 +23,10 @@ export interface User {
   hasGoogle?: boolean;
   /** The link on their profile. */
   link?: string | null;
+  /** Has said who they are on the floor: a name and a character, at their first door. */
+  introduced?: boolean;
+  /** The country they last walked onto a floor from (see noteCountry). */
+  country?: string | null;
   /** The hashed id of the session this request came with. */
   sessionId: string;
 }
@@ -36,6 +40,8 @@ interface SessionRow {
   has_password: number;
   has_google: number;
   link: string | null;
+  introduced: number;
+  country: string | null;
   last_seen_at: number;
 }
 
@@ -48,9 +54,10 @@ export async function createGuest(
   const now = Date.now();
   const userId = crypto.randomUUID();
   await env.DB.prepare(
-    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at) VALUES (?, ?, ?, 1, ?, ?)",
+    // A guest chose their name and character at the door, so they are introduced already.
+    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at, introduced_at) VALUES (?, ?, ?, 1, ?, ?, ?)",
   )
-    .bind(userId, displayName, character, now, now)
+    .bind(userId, displayName, character, now, now, now)
     .run();
   const { sessionId, cookie } = await createSession(env, request, userId, GUEST_SESSION_MS);
   return { user: { id: userId, email: null, displayName, character, isGuest: true, sessionId }, cookie };
@@ -65,7 +72,18 @@ export function countryOf(request: Request): string | null {
   return code && /^[A-Z]{2}$/.test(code) && code !== "XX" && code !== "T1" ? code : null;
 }
 
-/** A new session for the user, as a cookie. Only the token's hash is stored. The user's country is noted with it. */
+/**
+ * Notes the country someone walks onto a floor from, for the admin view. The
+ * session read already brought the stored one, so this costs nothing unless
+ * it changed: then one write, after the response.
+ */
+export function noteCountry(env: Env, request: Request, ctx: ExecutionContext, user: User): void {
+  const country = countryOf(request);
+  if (!country || country === user.country) return;
+  ctx.waitUntil(env.DB.prepare("UPDATE users SET country = ? WHERE id = ?").bind(country, user.id).run());
+}
+
+/** A new session for the user, as a cookie. Only the token's hash is stored. */
 export async function createSession(
   env: Env,
   request: Request,
@@ -75,12 +93,11 @@ export async function createSession(
   const now = Date.now();
   const token = randomToken();
   const sessionId = await hashToken(token);
-  await env.DB.batch([
-    env.DB.prepare(
-      "INSERT INTO sessions (id, user_id, created_at, expires_at, last_seen_at, user_agent) VALUES (?, ?, ?, ?, ?, ?)",
-    ).bind(sessionId, userId, now, now + lifetimeMs, now, request.headers.get("User-Agent")?.slice(0, 200) ?? null),
-    env.DB.prepare("UPDATE users SET country = COALESCE(?, country) WHERE id = ?").bind(countryOf(request), userId),
-  ]);
+  await env.DB.prepare(
+    "INSERT INTO sessions (id, user_id, created_at, expires_at, last_seen_at, user_agent) VALUES (?, ?, ?, ?, ?, ?)",
+  )
+    .bind(sessionId, userId, now, now + lifetimeMs, now, request.headers.get("User-Agent")?.slice(0, 200) ?? null)
+    .run();
   return { sessionId, cookie: sessionCookie(env, token, lifetimeMs / 1000) };
 }
 
@@ -93,7 +110,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const id = await hashToken(token);
   const row = await env.DB.prepare(
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
-            u.google_sub IS NOT NULL AS has_google, u.link
+            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -105,11 +122,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     ctx.waitUntil(
       env.DB.batch([
         env.DB.prepare("UPDATE sessions SET last_seen_at = ? WHERE id = ?").bind(now, id),
-        env.DB.prepare("UPDATE users SET last_active_at = ?, country = COALESCE(?, country) WHERE id = ?").bind(
-          now,
-          countryOf(request),
-          row.user_id,
-        ),
+        env.DB.prepare("UPDATE users SET last_active_at = ? WHERE id = ?").bind(now, row.user_id),
       ]),
     );
   }
@@ -123,6 +136,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     hasPassword: row.has_password === 1,
     hasGoogle: row.has_google === 1,
     link: row.link,
+    introduced: row.introduced === 1,
+    country: row.country,
     sessionId: id,
   };
 }

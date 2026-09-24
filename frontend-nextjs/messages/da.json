@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Log ind",
-    "tabSignUp": "Opret konto",
-    "chooseMode": "Log ind eller opret en konto",
     "continueWithGoogle": "Fortsæt med Google",
     "or": "eller",
     "signInTitle": "Velkommen tilbage",
     "signInSubtitle": "Log ind for at komme tilbage til dit teams kontor.",
     "signUpTitle": "Opret din konto",
-    "signUpSubtitle": "Dit navn, din e-mail, en adgangskode. Mere skal der ikke til.",
-    "name": "Dit navn",
-    "namePlaceholder": "Sådan ser andre dig",
+    "signUpSubtitle": "En e-mail og en adgangskode er alt, der skal til.",
     "email": "E-mail",
     "emailPlaceholder": "dig@firma.dk",
     "password": "Adgangskode",
@@ -115,7 +110,6 @@
     "createOne": "Opret en konto",
     "haveAccount": "Har du allerede en konto?",
     "signInInstead": "Log ind i stedet",
-    "guestCarryOver": "Du er på besøg som {name}. Dit navn følger med.",
     "continueGuest": "Vil du bare kigge? Besøg lobbyen som gæst",
     "errors": {
       "wrong_credentials": "E-mail og adgangskode passer ikke sammen. Prøv igen.",
@@ -134,11 +128,7 @@
       "google_failed": "Login med Google gik ikke igennem. Prøv igen.",
       "google_unverified": "Bekræft først din e-mail hos Google, og prøv så igen.",
       "google_mismatch": "Denne e-mail er knyttet til en anden Google-konto."
-    },
-    "asideReady": "{office} er næsten klar",
-    "asideTitle": "Dit team, én etage væk",
-    "asideSignIn": "Velkommen tilbage på etagen",
-    "asideBody": "Gå hen til nogen for at snakke. Kanaler og beskeder bliver."
+    }
   },
   "entry": {
     "yourName": "Dit navn",
@@ -150,7 +140,9 @@
     "guestNote": "Du går ind som gæst. <link>Log ind</link> for at bruge din konto.",
     "copyInvite": "Kopiér invitationslink",
     "continue": "Videre",
-    "walkingInAs": "Går ind som {name}"
+    "walkingInAs": "Går ind som {name}",
+    "introTitle": "Før du går ind",
+    "introSubtitle": "Hvad skal andre kalde dig, og hvem er du på etagen?"
   },
   "join": {
     "unavailableTitle": "Den dør kan ikke åbnes.",
@@ -296,8 +288,8 @@
     "gone": "{name} forlod lobbyen, og samtalen forsvandt med.",
     "edited": "redigeret",
     "edit": "Rediger",
-    "delete": "Slet",
-    "deleteConfirm": "Slet?",
+    "delete": "Fortryd",
+    "deleteConfirm": "Fortryd afsendelse?",
     "save": "Gem",
     "cancel": "Annuller"
   },
@@ -909,14 +901,6 @@
         "messages": "Direkte beskeder",
         "guests": "Gæstelinks"
       },
-      "channels": {
-        "general": "generelt",
-        "projects": "projekter",
-        "random": "tilfældigt"
-      },
-      "freeSeat": "Ledig plads",
-      "you": "Dig",
-      "teammate": "Kollega",
       "bringThem": "{count, plural, one {Tag den person med, du mødte her} other {Tag de # personer med, du mødte her}}"
     }
   },
@@ -948,7 +932,6 @@
       "danger": "Forlad eller luk"
     },
     "profile": {
-      "title": "Din profil",
       "changePassword": "Skift adgangskode",
       "setPassword": "Vælg en adgangskode",
       "setPasswordDescription": "Tilføj en adgangskode, så du også kan logge ind med din e-mail og ikke kun med Google.",
@@ -968,7 +951,6 @@
       "passwordRule": "Mindst 8 tegn",
       "signsOutOthers": "Du forbliver logget ind her. Alle andre steder bliver du logget ud.",
       "cancel": "Annullér",
-      "faceNote": "Dit ansigt tegnes ud fra din konto, ens på hver skærm. Intet uploades eller gemmes.",
       "themeNote": "System følger din enhed. Valget gemmes i denne browser.",
       "link": "Dit link",
       "linkPlaceholder": "dinhjemmeside.dk",
@@ -976,7 +958,16 @@
       "google": "Google",
       "googleNote": "Log også ind med Google.",
       "connectGoogle": "Forbind Google",
-      "googleConnected": "Forbundet"
+      "googleConnected": "Forbundet",
+      "sections": {
+        "profile": "Profil",
+        "signin": "Log ind",
+        "appearance": "Udseende"
+      },
+      "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
+      "password": "Adgangskode",
+      "passwordSet": "Log ind med din e-mail og adgangskode.",
+      "signOutNote": "Log ud af TinyFloor i denne browser."
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",
@@ -1066,23 +1057,9 @@
     "backToOffices": "Tilbage til dine kontorer"
   },
   "create": {
-    "eyebrow": "Dit eget kontor",
-    "title": "Giv dit kontor et navn",
-    "subtitle": "Det er det, dit team ser. Du kan ændre det senere.",
     "nameLabel": "Kontorets navn",
-    "namePlaceholder": "Acme Studio",
-    "continue": "Videre",
-    "create": "Opret kontor",
     "creating": "Gør det klar",
-    "freePlan": "Gratis for op til 3 personer. Intet kort.",
-    "justLooking": "Kigger du bare? <link>Gå ind på det offentlige kontor</link> i stedet.",
-    "steps": [
-      "Navngiv",
-      "Opret konto",
-      "Gå ind"
-    ],
-    "asideTitle": "Dit kontor, klar på et minut",
-    "asideBody": "En etage for sig selv til dit team, med chat og mødeborde. Gratis for op til 3 personer."
+    "continue": "Videre"
   },
   "shell": {
     "floor": "Gulvet",
@@ -1128,17 +1105,36 @@
     "leave": "Forlad"
   },
   "dashboard": {
-    "morning": "Godmorgen, {name}",
-    "afternoon": "God eftermiddag, {name}",
-    "evening": "Godaften, {name}",
-    "subtitle": "Dine kontorer, og hvem der er på hvert gulv lige nu.",
-    "onFloor": "{count, plural, =0 {Ingen på gulvet} other {# på gulvet}}",
     "newOffice": "Nyt kontor",
-    "lobby": "Den offentlige lobby",
-    "lobbyBody": "Kig forbi og mød dem, der er der.",
-    "emptyTitle": "Start dit første kontor",
-    "emptyBody": "Et kontor er et gulv, dit team går rundt på, med chat og opkald indbygget. Tre medlemmer er gratis.",
-    "walkIn": "Gå ind"
+    "walkIn": "Gå ind",
+    "home": "Hjem",
+    "yourOffices": "Dine kontorer",
+    "invite": "Inviter folk",
+    "firstIn": "Der er ingen lige nu. Dem, der går ind, vises her.",
+    "inNow": "{count, plural, =0 {Ingen her} other {# her nu}}",
+    "inOffice": "På kontoret",
+    "team": "Team",
+    "seats": "{used} af {seats} pladser",
+    "manage": "Administrer",
+    "seeAll": "Se alle",
+    "lobbyNote": "Eller kig forbi den åbne lobby og mød folk",
+    "anotherOffice": "Et team mere? Lav et nyt kontor",
+    "welcome": "Velkommen, {name}",
+    "welcomeAnonymous": "Velkommen",
+    "welcomeBody": "Én etage til dit team, med kanaler og opkald indbygget.",
+    "stepName": "Navngiv dit kontor",
+    "makeIt": "Lav det",
+    "invited": "Er du blevet inviteret?",
+    "invitedBody": "Indsæt linket, dit team sendte dig.",
+    "invitePlaceholder": "Indsæt et invitationslink",
+    "join": "Deltag",
+    "badLink": "Det ligner ikke et invitationslink. Indsæt hele linket.",
+    "makeTitle": "Lad os lave dit kontor",
+    "yourNewOffice": "Dit nye kontor",
+    "freeRename": "Gratis for op til 3 personer. Du kan altid omdøbe det.",
+    "otherWays": "Andre veje ind",
+    "lobbyBody": "Kig forbi og mød folk.",
+    "yourAccount": "Din konto"
   },
   "home": {
     "nav": {

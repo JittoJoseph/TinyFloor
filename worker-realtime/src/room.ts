@@ -13,6 +13,7 @@ import {
   type MusicState,
   type PlayerState,
   type PresenceStatus,
+  type PresentPerson,
   type RoomRole,
   type RoomTicket,
   type MediaFlags,
@@ -117,15 +118,15 @@ export class Room extends DurableObject<Env> {
     return this.present().length;
   }
 
-  /** Who is here, once each, for a door that shows faces before you walk in. */
-  presentPeople(limit = 8): Array<{ id: string; name: string }> {
-    const seen = new Map<string, string>();
+  /** Who is here, once each, for a door or a dashboard that shows them before you walk in. */
+  presentPeople(limit = 8): PresentPerson[] {
+    const seen = new Map<string, PresentPerson>();
     for (const socket of this.present()) {
-      const { userId, name } = this.attachmentOf(socket);
-      if (!seen.has(userId)) seen.set(userId, name);
+      const { userId, name, character, status } = this.attachmentOf(socket);
+      if (!seen.has(userId)) seen.set(userId, { id: userId, name, character, status });
       if (seen.size >= limit) break;
     }
-    return [...seen].map(([id, name]) => ({ id, name }));
+    return [...seen.values()];
   }
 
   private attachmentOf(socket: WebSocket): Attachment {

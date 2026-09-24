@@ -50,7 +50,7 @@ describe("offices", () => {
     expect(await fakeRealtime().calls()).toContainEqual(["officeCreated", "Harbour", "Ines"]);
   });
 
-  it("gives the dashboard a few faces per office and who is on each floor", async () => {
+  it("gives the dashboard a few faces per office, and who is on each floor as they look", async () => {
     const olive = await makeUser("Olive");
     const officeId = await officeOf(olive, "Faces");
     await fakeRealtime().setPeople(officeId, 1);
@@ -61,8 +61,9 @@ describe("offices", () => {
       "/v1/me",
     );
     expect(me.body.offices.find((office) => office.id === officeId)).toMatchObject({
-      faces: [{ id: olive.id, name: "Olive" }],
+      faces: [{ id: olive.id, name: "Olive", character: "Adam" }],
       here: 1,
+      inNow: [{ id: "here-0", name: "Here 0", character: "Bob", status: "available" }],
     });
   });
 

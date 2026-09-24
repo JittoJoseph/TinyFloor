@@ -6,6 +6,24 @@ import { SITE_URL } from "@/lib/site";
 const handleI18nRouting = createMiddleware(routing);
 const SITE = new URL(SITE_URL);
 
+/**
+ * What bots scan every site for: server-side scripts and configs (`.php`,
+ * `.env`, `.git`), WordPress, CGI and admin tools, and paths we don't serve
+ * at all (`/api`, the filesystem). None of it exists here.
+ */
+const PROBE =
+  /(^|\/)\.(?!well-known\/)[^/]|\.(php\d?|phtml|asp|aspx|jsp|cgi|pl|env|ini|cfg|conf|bak|old|swp|sql|sqlite|db|log|ya?ml|toml|sh|py|rb)(\/|$)|^\/(wp-[^/]*|wordpress|cgi-bin|vendor|phpmyadmin|pma|api|var|etc|proc|boaform|actuator|autodiscover|owa|ecp|remote|solr|console|_ignition|telescope)(\/|$)/i;
+
+/** A file under a locale prefix: `/sv/credits.txt`. */
+const LOCALE_FILE = new RegExp(`^/(?:${routing.locales.join("|")})/([^/]+\\.[a-z0-9]+)$`, "i");
+
+function notFound() {
+  return new NextResponse("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600", "X-Robots-Tag": "noindex" },
+  });
+}
+
 // Kept as `middleware.ts` rather than Next 16's `proxy.ts`: OpenNext on
 // Cloudflare Workers does not run the Node.js proxy yet.
 export function middleware(request: NextRequest) {
@@ -17,6 +35,14 @@ export function middleware(request: NextRequest) {
   if (process.env.NODE_ENV === "production" && host !== SITE.hostname) {
     return NextResponse.redirect(new URL(`${pathname}${search}`, SITE), 301);
   }
+
+  // Scanners probing for WordPress, PHP, dotfiles and the like: a plain 404,
+  // without rendering a page, since there is nothing here for them.
+  if (PROBE.test(pathname)) return notFound();
+
+  // Files carry no locale: `/sv/credits.txt` is `/credits.txt`.
+  const prefixed = pathname.match(LOCALE_FILE);
+  if (prefixed) return NextResponse.redirect(new URL(`/${prefixed[1]}${search}`, request.url), 308);
 
   // Files (sitemap.xml, robots.txt, sprites, music) carry no locale.
   if (/\.[^/]+$/.test(pathname)) return NextResponse.next();

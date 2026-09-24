@@ -1,37 +1,112 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { localeDirection, routing } from "@/lib/i18n/routing";
-import { HtmlLangSync } from "@/components/HtmlLangSync";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { localeDirection, routing, type Locale } from "@/lib/i18n/routing";
+import { SITE_URL, X_HANDLE } from "@/lib/site";
+import { THEME_SCRIPT } from "@/lib/theme-script";
+import { ogLocale, socialImage } from "@/lib/seo";
+import { siteGraph } from "@/lib/structured-data";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
+import { ClarityAnalytics } from "@/components/ClarityAnalytics";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { JsonLd } from "@/components/JsonLd";
 import { LocalTimeZone } from "@/components/LocalTimeZone";
+import { fontVariables } from "../fonts";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "metadata" });
+  const title = t("title");
+  const description = t("description");
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: title,
+      template: "%s | TinyFloor",
+    },
+    description,
+    keywords: t("keywords").split(/\s*[,،、，]\s*/),
+    authors: [{ name: "Jitto Joseph" }],
+    creator: "Jitto Joseph",
+    openGraph: {
+      title,
+      description,
+      url: SITE_URL,
+      siteName: "TinyFloor",
+      images: [
+        {
+          url: socialImage(locale, "/"),
+          width: 1200,
+          height: 630,
+          type: "image/jpeg",
+          alt: t("ogAlt"),
+        },
+      ],
+      locale: ogLocale(locale),
+      type: "website",
+    },
+    twitter: {
+      site: X_HANDLE,
+      card: "summary_large_image",
+      title,
+      description,
+      images: [{ url: socialImage(locale, "/"), alt: t("ogAlt") }],
+    },
+    applicationName: "TinyFloor",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
+
+/**
+ * The document for every page: its language from the URL, so each page is
+ * rendered once when the site is built and then served as a file (see the
+ * root layout for why it lives here).
+ */
+export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   setRequestLocale(locale);
-
-  // The provider sits inside the `[locale]` segment, not only in the root
-  // layout, so it re-renders when the locale changes. The root layout does not
-  // re-render on a client-side switch and would keep the old messages.
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      <HtmlLangSync lang={locale} dir={localeDirection(locale)} />
-      <LocalTimeZone>{children}</LocalTimeZone>
-    </NextIntlClientProvider>
+    // The app routes set their theme on <html> before React loads (lib/theme-script.ts).
+    <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${fontVariables} antialiased`}>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <JsonLd schema={siteGraph()} />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <LocalTimeZone>
+            <AuthProvider>
+              {children}
+              <GoogleOneTap />
+            </AuthProvider>
+          </LocalTimeZone>
+        </NextIntlClientProvider>
+        <GoogleAnalytics />
+        <ClarityAnalytics />
+      </body>
+    </html>
   );
 }

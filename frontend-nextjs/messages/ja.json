@@ -296,8 +296,8 @@
     "gone": "{name} がロビーを出たため、この会話も消えました。",
     "edited": "編集済み",
     "edit": "編集",
-    "delete": "削除",
-    "deleteConfirm": "削除しますか？",
+    "delete": "送信取消",
+    "deleteConfirm": "送信を取り消しますか？",
     "save": "保存",
     "cancel": "キャンセル"
   },

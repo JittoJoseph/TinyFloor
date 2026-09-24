@@ -296,8 +296,8 @@
     "gone": "{name} saiu do lobby, e esta conversa foi junto.",
     "edited": "editada",
     "edit": "Editar",
-    "delete": "Excluir",
-    "deleteConfirm": "Excluir?",
+    "delete": "Cancelar envio",
+    "deleteConfirm": "Cancelar envio?",
     "save": "Salvar",
     "cancel": "Cancelar"
   },

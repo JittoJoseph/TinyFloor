@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Pencil, Search, Trash2 } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type AdminOffice, type AdminPerson, type AdminSummary } from "@/lib/api";
+import { api, ApiError, type AdminOffice, type AdminPerson, type AdminSummary, type LobbyChatPage } from "@/lib/api";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
@@ -13,17 +13,19 @@ import { cn } from "@/lib/utils";
 
 /*
  * The admin view, for the team: how many people there are and how many came
- * back, where they come from, who they are, and every office with its members.
- * Read only. The API answers only the admin accounts; everyone else gets a
+ * back, where they come from, who they are, and every office with its members,
+ * all read only; and the lobby's chat, where a message can be changed or taken
+ * down. The API answers only the admin accounts; everyone else gets a
  * plain "nothing here". In English: it's a tool for the team, not a page.
  */
 
-type Tab = "overview" | "people" | "guests" | "offices";
+type Tab = "overview" | "people" | "guests" | "offices" | "lobby";
 const TABS: Array<{ key: Tab; label: string }> = [
   { key: "overview", label: "Overview" },
   { key: "people", label: "People" },
   { key: "guests", label: "Guests" },
   { key: "offices", label: "Offices" },
+  { key: "lobby", label: "Lobby chat" },
 ];
 
 export default function AdminPage() {
@@ -81,6 +83,7 @@ export default function AdminPage() {
               {tab === "people" && <People key="people" guests={false} />}
               {tab === "guests" && <People key="guests" guests />}
               {tab === "offices" && <Offices />}
+              {tab === "lobby" && <LobbyChat />}
             </div>
           </>
         )}
@@ -399,6 +402,226 @@ function Offices() {
         </div>
       )}
     </section>
+  );
+}
+
+/* ---------- Lobby chat ---------- */
+
+type LobbyMessage = LobbyChatPage["messages"][number];
+
+/** The lobby's channels as they are now. Any message can be changed or taken down, and people see it at once. */
+function LobbyChat() {
+  const [channel, setChannel] = useState("general");
+  const [page, setPage] = useState<LobbyChatPage | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  const load = useCallback(async (open: string, before?: number) => {
+    setBusy(true);
+    setError("");
+    try {
+      const next = await api.adminLobbyChat(open, before);
+      // Older messages go above the ones already shown.
+      setPage((current) => (before && current ? { ...next, messages: [...next.messages, ...current.messages] } : next));
+    } catch {
+      setError("Couldn't load the lobby's chat.");
+    } finally {
+      setBusy(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Each channel's newest page, when it's picked.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    load(channel);
+  }, [load, channel]);
+
+  const change = (seq: number, next: LobbyMessage | null) =>
+    setPage(
+      (current) =>
+        current && {
+          ...current,
+          channels: next ? current.channels : current.channels.map((one) => (one.id === current.channel ? { ...one, messages: one.messages - 1 } : one)),
+          messages: next ? current.messages.map((one) => (one.seq === seq ? next : one)) : current.messages.filter((one) => one.seq !== seq),
+        },
+    );
+
+  return (
+    <section>
+      <div className="flex gap-1.5 overflow-x-auto [scrollbar-width:none]">
+        {(page?.channels ?? [{ id: channel, messages: 0, lastAt: null }]).map((one) => (
+          <button
+            key={one.id}
+            type="button"
+            onClick={() => setChannel(one.id)}
+            className={cn(
+              "flex h-9 shrink-0 cursor-pointer items-center gap-2 rounded-full border px-3.5 text-[13px] font-medium transition-colors",
+              one.id === channel ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground hover:border-border-strong",
+            )}
+          >
+            #{one.id}
+            <span className={cn("tabular-nums", one.id === channel ? "text-background/60" : "text-muted-foreground")}>{one.messages}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
+        {page === null ? (
+          <div className="flex justify-center py-16 text-muted-foreground">
+            <Loader variant="dots" size={18} />
+          </div>
+        ) : page.messages.length === 0 ? (
+          <p className="py-16 text-center text-[13px] text-muted-foreground">Nothing in #{page.channel} this week.</p>
+        ) : (
+          <>
+            {page.more && (
+              <div className="flex justify-center border-b border-border py-2.5">
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => load(channel, page.messages[0]?.seq)}
+                  className="h-8 cursor-pointer rounded-full bg-muted px-4 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-50"
+                >
+                  {busy ? "Loading" : "Show older"}
+                </button>
+              </div>
+            )}
+            <ol className="divide-y divide-border">
+              {page.messages.map((message) => (
+                <ModeratedMessage key={message.seq} message={message} onChange={(next) => change(message.seq, next)} />
+              ))}
+            </ol>
+          </>
+        )}
+      </div>
+      {error && <p className="mt-3 text-[13px] text-destructive">{error}</p>}
+    </section>
+  );
+}
+
+function ModeratedMessage({ message, onChange }: { message: LobbyMessage; onChange: (next: LobbyMessage | null) => void }) {
+  const [editing, setEditing] = useState<string | null>(null);
+  const [confirming, setConfirming] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  const run = async (work: () => Promise<void>) => {
+    setBusy(true);
+    setError("");
+    try {
+      await work();
+    } catch (err) {
+      // Already gone: its author unsent it, or its week ran out.
+      if (err instanceof ApiError && err.status === 404) onChange(null);
+      else setError("That didn't go through. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const save = () =>
+    run(async () => {
+      const body = (editing ?? "").trim();
+      if (body && body !== message.body) {
+        await api.adminEditLobbyMessage(message.seq, body);
+        onChange({ ...message, body, edited: Date.now() });
+      }
+      setEditing(null);
+    });
+
+  const takeDown = () =>
+    run(async () => {
+      await api.adminDeleteLobbyMessage(message.seq);
+      onChange(null);
+    });
+
+  return (
+    <li className="group flex gap-3 px-4 py-3 [--face-ring:var(--ui-card)]">
+      <Face seed={message.author} size={30} />
+      <div className="min-w-0 flex-1">
+        <p className="flex flex-wrap items-baseline gap-x-2 text-[12.5px]">
+          <span className="font-semibold text-foreground">{message.authorName}</span>
+          <span className="text-muted-foreground">
+            <When at={message.at} />
+          </span>
+          {message.edited && <span className="text-faint">(edited)</span>}
+        </p>
+        {editing !== null ? (
+          <form
+            className="mt-1.5"
+            onSubmit={(event) => {
+              event.preventDefault();
+              save();
+            }}
+          >
+            <textarea
+              autoFocus
+              value={editing}
+              rows={Math.min(6, Math.max(2, editing.split("\n").length))}
+              onChange={(event) => setEditing(event.target.value)}
+              onKeyDown={(event) => event.key === "Escape" && setEditing(null)}
+              className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-[16px] outline-none focus:border-foreground/35 sm:text-[13.5px]"
+            />
+            <div className="mt-1.5 flex gap-1.5">
+              <button
+                type="submit"
+                disabled={busy}
+                className="h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background disabled:opacity-50"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                onClick={() => setEditing(null)}
+                className="h-8 cursor-pointer rounded-full px-3.5 text-[12.5px] text-muted-foreground hover:bg-muted"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        ) : (
+          <p dir="auto" className="mt-0.5 whitespace-pre-wrap break-words text-[13.5px] leading-[1.45] text-foreground/90">
+            {message.body}
+          </p>
+        )}
+        {error && <p className="mt-1 text-[12px] text-destructive">{error}</p>}
+      </div>
+      {editing === null && (
+        <div className="flex shrink-0 items-start gap-1 transition-opacity sm:opacity-0 sm:group-focus-within:opacity-100 sm:group-hover:opacity-100">
+          <button
+            type="button"
+            aria-label="Edit"
+            title="Edit"
+            onClick={() => setEditing(message.body)}
+            className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <Pencil className="size-3.5" />
+          </button>
+          {confirming ? (
+            <button
+              type="button"
+              autoFocus
+              disabled={busy}
+              onBlur={() => setConfirming(false)}
+              onClick={takeDown}
+              className="h-8 cursor-pointer rounded-lg bg-destructive px-2.5 text-[12px] font-medium text-white disabled:opacity-50"
+            >
+              Take down
+            </button>
+          ) : (
+            <button
+              type="button"
+              aria-label="Take down"
+              title="Take down"
+              onClick={() => setConfirming(true)}
+              className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-destructive"
+            >
+              <Trash2 className="size-3.5" />
+            </button>
+          )}
+        </div>
+      )}
+    </li>
   );
 }
 

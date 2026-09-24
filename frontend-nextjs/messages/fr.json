@@ -296,8 +296,8 @@
     "gone": "{name} a quitté le hall, et cette conversation est partie avec.",
     "edited": "modifié",
     "edit": "Modifier",
-    "delete": "Supprimer",
-    "deleteConfirm": "Supprimer ?",
+    "delete": "Retirer",
+    "deleteConfirm": "Retirer ?",
     "save": "Enregistrer",
     "cancel": "Annuler"
   },

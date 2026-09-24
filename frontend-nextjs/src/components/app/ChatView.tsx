@@ -21,11 +21,12 @@ import {
   Users,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, type ChannelSummary } from "@shared/chat";
+import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
 import { api, type PersonProfile } from "@/lib/api";
 import { useChat } from "@/lib/useChat";
+import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus, walkToPerson } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
 import { Face, FaceStack, type Presence } from "@/components/ui/Face";
@@ -42,9 +43,9 @@ import { Composer } from "./chat/Composer";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
- * office and in the lobby. In the lobby you can edit and delete what you said,
- * direct messages last only while both of you are there, and what only an
- * office can do (making channels, images) is all here and asks for an office.
+ * office and in the lobby. Anyone can edit and unsend what they said. In the
+ * lobby direct messages last only while both of you are there, and what only
+ * an office can do (making channels, images) is all here and asks for an office.
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -53,6 +54,7 @@ export function ChatView({ channel }: { channel?: string }) {
   const place = usePlace();
   const lobby = place.kind === "lobby";
   const state = useChat();
+  const { user } = useAuth();
   const floor = useFloorStatus();
   const [jump, setJump] = useState(false);
   const [note, setNote] = useState<string | null>(null);
@@ -60,7 +62,9 @@ export function ChatView({ channel }: { channel?: string }) {
   const noteTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const open = channel ?? GENERAL_CHANNEL;
-  const me = state.me;
+  // Who you are is known from your session before the chat has connected, so a
+  // direct message opened in that first moment still has both its people.
+  const me = user?.id ?? state.me;
   const people = place.people;
   const personById = useMemo(() => new Map(people.map((one) => [one.id, one])), [people]);
   const summary = state.channels.find((one) => one.id === open);
@@ -85,6 +89,11 @@ export function ChatView({ channel }: { channel?: string }) {
     if (state.ready && !state.history[open]) chat.older(open);
   }, [state.ready, state.history, open]);
   useEffect(() => () => clearTimeout(noteTimer.current), []);
+  // A direct message's address with someone missing from it goes nowhere: back to the start.
+  const broken = isDm(open) && !pair;
+  useEffect(() => {
+    if (broken) router.replace(place.paths.chat());
+  }, [broken, router, place.paths]);
 
   const say = (text: string) => {
     clearTimeout(noteTimer.current);
@@ -360,8 +369,8 @@ export function ChatView({ channel }: { channel?: string }) {
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
           onReact={(line, emoji, on) => chat.react(Number(line.id), emoji, on)}
-          onEdit={lobby && !pair ? (line, body) => chat.edit(Number(line.id), body) : undefined}
-          onDelete={lobby && !pair ? (line) => chat.remove(Number(line.id)) : undefined}
+          onEdit={(line, body) => chat.edit(Number(line.id), body, open)}
+          onDelete={(line) => chat.remove(Number(line.id), open)}
           personCard={personCard}
           intro={
             pair && other ? (

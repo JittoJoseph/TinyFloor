@@ -296,8 +296,8 @@
     "gone": "{name} 离开了大厅，这段对话也随之消失。",
     "edited": "已编辑",
     "edit": "编辑",
-    "delete": "删除",
-    "deleteConfirm": "删除？",
+    "delete": "撤回",
+    "deleteConfirm": "撤回这条消息？",
     "save": "保存",
     "cancel": "取消"
   },

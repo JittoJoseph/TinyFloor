@@ -296,8 +296,8 @@
     "gone": "{name} lämnade lobbyn, och samtalet försvann med.",
     "edited": "redigerat",
     "edit": "Redigera",
-    "delete": "Radera",
-    "deleteConfirm": "Radera?",
+    "delete": "Ångra",
+    "deleteConfirm": "Ångra skickat?",
     "save": "Spara",
     "cancel": "Avbryt"
   },

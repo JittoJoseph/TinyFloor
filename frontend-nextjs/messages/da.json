@@ -296,8 +296,8 @@
     "gone": "{name} forlod lobbyen, og samtalen forsvandt med.",
     "edited": "redigeret",
     "edit": "Rediger",
-    "delete": "Slet",
-    "deleteConfirm": "Slet?",
+    "delete": "Fortryd",
+    "deleteConfirm": "Fortryd afsendelse?",
     "save": "Gem",
     "cancel": "Annuller"
   },

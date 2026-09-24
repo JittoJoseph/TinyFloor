@@ -296,8 +296,8 @@
     "gone": "{name} hat die Lobby verlassen, und dieses Gespräch ist mitgegangen.",
     "edited": "bearbeitet",
     "edit": "Bearbeiten",
-    "delete": "Löschen",
-    "deleteConfirm": "Löschen?",
+    "delete": "Zurückziehen",
+    "deleteConfirm": "Zurückziehen?",
     "save": "Speichern",
     "cancel": "Abbrechen"
   },

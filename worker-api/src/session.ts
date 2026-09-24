@@ -23,6 +23,8 @@ export interface User {
   hasGoogle?: boolean;
   /** The link on their profile. */
   link?: string | null;
+  /** Has said who they are on the floor: a name and a character, at their first door. */
+  introduced?: boolean;
   /** The country they last walked onto a floor from (see noteCountry). */
   country?: string | null;
   /** The hashed id of the session this request came with. */
@@ -38,6 +40,7 @@ interface SessionRow {
   has_password: number;
   has_google: number;
   link: string | null;
+  introduced: number;
   country: string | null;
   last_seen_at: number;
 }
@@ -51,9 +54,10 @@ export async function createGuest(
   const now = Date.now();
   const userId = crypto.randomUUID();
   await env.DB.prepare(
-    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at) VALUES (?, ?, ?, 1, ?, ?)",
+    // A guest chose their name and character at the door, so they are introduced already.
+    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at, introduced_at) VALUES (?, ?, ?, 1, ?, ?, ?)",
   )
-    .bind(userId, displayName, character, now, now)
+    .bind(userId, displayName, character, now, now, now)
     .run();
   const { sessionId, cookie } = await createSession(env, request, userId, GUEST_SESSION_MS);
   return { user: { id: userId, email: null, displayName, character, isGuest: true, sessionId }, cookie };
@@ -106,7 +110,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const id = await hashToken(token);
   const row = await env.DB.prepare(
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
-            u.google_sub IS NOT NULL AS has_google, u.link, u.country
+            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -132,6 +136,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     hasPassword: row.has_password === 1,
     hasGoogle: row.has_google === 1,
     link: row.link,
+    introduced: row.introduced === 1,
     country: row.country,
     sessionId: id,
   };

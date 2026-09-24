@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Accedi",
-    "tabSignUp": "Crea account",
-    "chooseMode": "Accedi o crea un account",
     "continueWithGoogle": "Continua con Google",
     "or": "oppure",
     "signInTitle": "Bentornato",
     "signInSubtitle": "Accedi per tornare nell'ufficio del tuo team.",
     "signUpTitle": "Crea il tuo account",
-    "signUpSubtitle": "Il tuo nome, la tua email, una password. Tutto qui.",
-    "name": "Il tuo nome",
-    "namePlaceholder": "Come ti vedranno gli altri",
+    "signUpSubtitle": "Bastano un’email e una password.",
     "email": "Email",
     "emailPlaceholder": "tu@azienda.it",
     "password": "Password",
@@ -115,7 +110,6 @@
     "createOne": "Crea un account",
     "haveAccount": "Hai già un account?",
     "signInInstead": "Accedi invece",
-    "guestCarryOver": "Sei in visita come {name}. Il tuo nome viene con te.",
     "continueGuest": "Vuoi solo dare un'occhiata? Visita la lobby come ospite",
     "errors": {
       "wrong_credentials": "Email e password non corrispondono. Riprova.",
@@ -134,11 +128,7 @@
       "google_failed": "L'accesso con Google non è andato a buon fine. Riprova.",
       "google_unverified": "Prima verifica la tua email con Google, poi riprova.",
       "google_mismatch": "Questa email è collegata a un altro account Google."
-    },
-    "asideReady": "{office} è quasi pronto",
-    "asideTitle": "Il tuo team, a un piano di distanza",
-    "asideSignIn": "Bentornato sul piano",
-    "asideBody": "Avvicinati a qualcuno per parlare. Canali e messaggi restano."
+    }
   },
   "entry": {
     "yourName": "Il tuo nome",
@@ -150,7 +140,9 @@
     "guestNote": "Entri come ospite. <link>Accedi</link> per usare il tuo account.",
     "copyInvite": "Copia link di invito",
     "continue": "Continua",
-    "walkingInAs": "Entri come {name}"
+    "walkingInAs": "Entri come {name}",
+    "introTitle": "Prima di entrare",
+    "introSubtitle": "Come vuoi che ti chiamino, e chi sarai sul piano?"
   },
   "join": {
     "unavailableTitle": "Questa porta non si apre.",

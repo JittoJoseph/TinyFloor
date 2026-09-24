@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Anmelden",
-    "tabSignUp": "Konto erstellen",
-    "chooseMode": "Anmelden oder Konto erstellen",
     "continueWithGoogle": "Weiter mit Google",
     "or": "oder",
     "signInTitle": "Willkommen zurück",
     "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
     "signUpTitle": "Konto erstellen",
-    "signUpSubtitle": "Dein Name, deine E-Mail, ein Passwort. Mehr braucht es nicht.",
-    "name": "Dein Name",
-    "namePlaceholder": "So sehen dich andere",
+    "signUpSubtitle": "Eine E-Mail und ein Passwort, mehr braucht es nicht.",
     "email": "E-Mail",
     "emailPlaceholder": "du@firma.de",
     "password": "Passwort",
@@ -115,7 +110,6 @@
     "createOne": "Konto erstellen",
     "haveAccount": "Du hast schon ein Konto?",
     "signInInstead": "Stattdessen anmelden",
-    "guestCarryOver": "Du bist als {name} hier. Dein Name kommt mit.",
     "continueGuest": "Nur mal schauen? Besuche die Lobby als Gast",
     "errors": {
       "wrong_credentials": "E-Mail und Passwort passen nicht zusammen. Versuch es noch einmal.",
@@ -134,11 +128,7 @@
       "google_failed": "Die Anmeldung mit Google hat nicht geklappt. Versuch es noch einmal.",
       "google_unverified": "Bestätige zuerst deine E-Mail-Adresse bei Google und versuch es dann noch einmal.",
       "google_mismatch": "Diese E-Mail-Adresse ist mit einem anderen Google-Konto verknüpft."
-    },
-    "asideReady": "{office} ist fast fertig",
-    "asideTitle": "Dein Team, nur eine Fläche entfernt",
-    "asideSignIn": "Willkommen zurück auf der Fläche",
-    "asideBody": "Geh zu jemandem hin, um zu reden. Kanäle und Nachrichten bleiben."
+    }
   },
   "entry": {
     "yourName": "Dein Name",
@@ -150,7 +140,9 @@
     "guestNote": "Du kommst als Gast. <link>Melde dich an</link>, um dein Konto zu nutzen.",
     "copyInvite": "Einladungslink kopieren",
     "continue": "Weiter",
-    "walkingInAs": "Du kommst als {name} rein"
+    "walkingInAs": "Du kommst als {name} rein",
+    "introTitle": "Bevor du reingehst",
+    "introSubtitle": "Wie sollen dich die anderen nennen, und wer bist du auf der Etage?"
   },
   "join": {
     "unavailableTitle": "Diese Tür geht nicht auf.",

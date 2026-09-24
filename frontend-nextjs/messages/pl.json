@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Zaloguj się",
-    "tabSignUp": "Utwórz konto",
-    "chooseMode": "Zaloguj się lub utwórz konto",
     "continueWithGoogle": "Kontynuuj z Google",
     "or": "lub",
     "signInTitle": "Witaj ponownie",
     "signInSubtitle": "Zaloguj się, aby wrócić do biura swojego zespołu.",
     "signUpTitle": "Utwórz konto",
-    "signUpSubtitle": "Twoje imię, e-mail i hasło. Tyle wystarczy.",
-    "name": "Twoje imię",
-    "namePlaceholder": "Tak zobaczą Cię inni",
+    "signUpSubtitle": "Wystarczy e-mail i hasło.",
     "email": "E-mail",
     "emailPlaceholder": "ty@firma.pl",
     "password": "Hasło",
@@ -115,7 +110,6 @@
     "createOne": "Utwórz konto",
     "haveAccount": "Masz już konto?",
     "signInInstead": "Zaloguj się",
-    "guestCarryOver": "Jesteś tu jako {name}. Twoje imię idzie z tobą.",
     "continueGuest": "Tylko się rozglądasz? Odwiedź lobby jako gość",
     "errors": {
       "wrong_credentials": "E-mail i hasło nie pasują do siebie. Spróbuj ponownie.",
@@ -134,11 +128,7 @@
       "google_failed": "Logowanie przez Google się nie udało. Spróbuj ponownie.",
       "google_unverified": "Najpierw potwierdź adres e-mail w Google, a potem spróbuj ponownie.",
       "google_mismatch": "Ten adres e-mail jest powiązany z innym kontem Google."
-    },
-    "asideReady": "{office} jest prawie gotowe",
-    "asideTitle": "Twój zespół, jedno piętro stąd",
-    "asideSignIn": "Witaj z powrotem na piętrze",
-    "asideBody": "Podejdź do kogoś, żeby porozmawiać. Kanały i wiadomości zostają."
+    }
   },
   "entry": {
     "yourName": "Twoje imię",
@@ -150,7 +140,9 @@
     "guestNote": "Wchodzisz jako gość. <link>Zaloguj się</link>, aby użyć swojego konta.",
     "copyInvite": "Kopiuj link z zaproszeniem",
     "continue": "Dalej",
-    "walkingInAs": "Wchodzisz jako {name}"
+    "walkingInAs": "Wchodzisz jako {name}",
+    "introTitle": "Zanim wejdziesz",
+    "introSubtitle": "Jak mają cię nazywać inni i kim będziesz na piętrze?"
   },
   "join": {
     "unavailableTitle": "Te drzwi się nie otwierają.",

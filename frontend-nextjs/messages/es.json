@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Iniciar sesión",
-    "tabSignUp": "Crear cuenta",
-    "chooseMode": "Inicia sesión o crea una cuenta",
     "continueWithGoogle": "Continuar con Google",
     "or": "o",
     "signInTitle": "Hola de nuevo",
     "signInSubtitle": "Inicia sesión para volver a la oficina de tu equipo.",
     "signUpTitle": "Crea tu cuenta",
-    "signUpSubtitle": "Tu nombre, tu email y una contraseña. Nada más.",
-    "name": "Tu nombre",
-    "namePlaceholder": "Cómo te verán los demás",
+    "signUpSubtitle": "Solo hace falta un correo y una contraseña.",
     "email": "Correo electrónico",
     "emailPlaceholder": "tu@empresa.com",
     "password": "Contraseña",
@@ -115,7 +110,6 @@
     "createOne": "Crea una cuenta",
     "haveAccount": "¿Ya tienes cuenta?",
     "signInInstead": "Inicia sesión",
-    "guestCarryOver": "Estás de visita como {name}. Tu nombre te acompaña.",
     "continueGuest": "¿Solo quieres mirar? Visita el lobby como invitado",
     "errors": {
       "wrong_credentials": "El correo y la contraseña no coinciden. Inténtalo de nuevo.",
@@ -134,11 +128,7 @@
       "google_failed": "No se pudo iniciar sesión con Google. Inténtalo de nuevo.",
       "google_unverified": "Primero verifica tu correo con Google y vuelve a intentarlo.",
       "google_mismatch": "Este correo está vinculado a otra cuenta de Google."
-    },
-    "asideReady": "{office} está casi lista",
-    "asideTitle": "Tu equipo, a una planta de distancia",
-    "asideSignIn": "Bienvenido de nuevo a la planta",
-    "asideBody": "Acércate a alguien para hablar. Los canales y los mensajes se quedan."
+    }
   },
   "entry": {
     "yourName": "Tu nombre",
@@ -150,7 +140,9 @@
     "guestNote": "Entras como invitado. <link>Inicia sesión</link> para usar tu cuenta.",
     "copyInvite": "Copiar enlace de invitación",
     "continue": "Continuar",
-    "walkingInAs": "Entras como {name}"
+    "walkingInAs": "Entras como {name}",
+    "introTitle": "Antes de entrar",
+    "introSubtitle": "¿Cómo quieres que te llamen y quién serás en la planta?"
   },
   "join": {
     "unavailableTitle": "Esa puerta no se abre.",

@@ -14,6 +14,7 @@ import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
+import { Introduce } from "@/components/entry/Introduce";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Dialog } from "@/components/ui/Dialog";
 import { FaceStack } from "@/components/ui/Face";
@@ -42,8 +43,9 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const { unread } = useChat();
   const everyone = useFloor();
 
-  // Anyone with a session already has a name and a character, so the door is only for someone new.
-  const inside = !!user;
+  // Anyone with a session already has a name and a character, so the door is only for someone new;
+  // a new account first says who it is (see Introduce below).
+  const inside = !!user && (user.guest || user.introduced !== false);
 
   // Who is inside, for the door.
   useEffect(() => {
@@ -80,6 +82,9 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   }, [user, router]);
 
   const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
+
+  // A new account says who it is at its first door.
+  if (user && !user.guest && user.introduced === false) return <Introduce backHref="/" />;
 
   if (!inside || !user) {
     return (

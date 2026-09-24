@@ -8,11 +8,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
 import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
-import { OfficePreview } from "@/components/app/OfficePreview";
-import { Face } from "@/components/ui/Face";
 import { pendingOffice } from "@/lib/pendingOffice";
-import { AuthLayout } from "./AuthLayout";
-import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
+import { CenteredAuthLayout } from "./AuthLayout";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 import { GoogleButton, googleAvailable } from "./GoogleButton";
@@ -22,7 +19,7 @@ import { Agree } from "@/components/legal/Agree";
 export type AuthMode = "signin" | "signup";
 
 const PASSWORD_MIN_LENGTH = 8;
-type FieldName = "displayName" | "email" | "password";
+type FieldName = "email" | "password";
 
 /** Only paths on this site, so a crafted link can't bounce someone elsewhere after signing in. */
 export function safeRedirect(value: string | null): string {
@@ -44,7 +41,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const ids = useId();
 
   const [mode, setMode] = useState<AuthMode>(initialMode);
-  const [displayName, setDisplayName] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -57,13 +53,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
   const signingUp = mode === "signup";
   const office = useSyncExternalStore(noChange, pendingOffice, () => "");
-  // A guest's name carries over into the account they create, and so does a
-  // name typed at a door on the way here. The character isn't asked for: it
-  // belongs to walking into a space, not to making an account.
-  const guest = user?.guest ? user : null;
-  const remembered = isLoading ? { name: "", character: "Adam" } : readIdentity();
-  const name = displayName ?? guest?.displayName ?? remembered.name;
-  const validCharacter = cleanCharacter(guest?.character ?? remembered.character);
+  // Only an email and a password: the name people see and the character are
+  // asked at the first door. A guest who signs up keeps the ones they chose.
 
   // Already signed in with an account (or just did): carry on.
   useEffect(() => {
@@ -84,7 +75,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
   const validate = (): Partial<Record<FieldName, string>> => {
     const errors: Partial<Record<FieldName, string>> = {};
-    if (signingUp && !name.trim()) errors.displayName = t("errors.name_required");
     if (!email.trim()) errors.email = t("errors.email_required");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) errors.email = t("errors.bad_email");
     if (!password) errors.password = t("errors.password_required");
@@ -137,7 +127,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
       password_too_short: t("errors.password_too_short"),
       password_too_long: t("errors.password_too_long"),
       password_blank: t("errors.password_blank"),
-      name_required: t("errors.name_required"),
       google_failed: t("errors.google_failed"),
       google_unverified: t("errors.google_unverified"),
       google_mismatch: t("errors.google_mismatch"),
@@ -145,7 +134,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     };
     const message = code.startsWith("turnstile") ? t("errors.turnstile") : (messages[code] ?? t("errors.generic"));
 
-    if (field && ["displayName", "email", "password"].includes(field)) {
+    if (field && ["email", "password"].includes(field)) {
       setFieldErrors({ [field]: message });
       focusField(field);
     } else {
@@ -164,7 +153,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
     const errors = validate();
     setFieldErrors(errors);
-    const first = (["displayName", "email", "password"] as FieldName[]).find((field) => errors[field]);
+    const first = (["email", "password"] as FieldName[]).find((field) => errors[field]);
     if (first) {
       focusField(first);
       return;
@@ -178,14 +167,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           setFormError(t("errors.turnstile"));
           return;
         }
-        await signUp({
-          email: email.trim(),
-          password,
-          displayName: name.trim(),
-          character: validCharacter,
-          turnstileToken: token,
-        });
-        saveIdentity({ name: name.trim(), character: validCharacter });
+        await signUp({ email: email.trim(), password, turnstileToken: token });
       } else {
         await signIn(email.trim(), password);
       }
@@ -203,7 +185,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     setFormError(null);
     setGoogling(true);
     try {
-      await signInWithGoogle(code);
+      await signInWithGoogle({ code });
     } catch (error) {
       explain(error);
     } finally {
@@ -223,62 +205,26 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const passwordLongEnough = password.length >= PASSWORD_MIN_LENGTH;
 
   return (
-    <AuthLayout
-      aside={
-        <AuthAside
-          signingUp={signingUp}
-          person={{ id: guest?.id ?? `name:${name.trim().toLowerCase()}`, name: (signingUp ? name.trim() : guest?.displayName) || "" }}
-        />
-      }
-    >
-      <div className="entry-rise">
-        {/* On the way to making an office: the second of its three steps. */}
-        {office && <OfficeSteps at={1} className="mb-6" />}
-        {/* Two ways in, one panel. Switching keeps what was typed. */}
-        <div
-          role="tablist"
-          aria-label={t("chooseMode")}
-          className="relative mb-8 grid h-10 grid-cols-2 rounded-full bg-muted p-1"
-        >
-          <span
-            aria-hidden
-            className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-card shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-              signingUp ? "translate-x-full rtl:-translate-x-full" : "translate-x-0"
-            } start-1`}
-          />
-          {(["signin", "signup"] as AuthMode[]).map((option) => (
-            <button
-              key={option}
-              type="button"
-              role="tab"
-              aria-selected={mode === option}
-              onClick={() => switchMode(option)}
-              className={`relative h-8 cursor-pointer rounded-full text-[13px] font-medium transition-colors duration-200 ${
-                mode === option ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {option === "signin" ? t("tabSignIn") : t("tabSignUp")}
-            </button>
-          ))}
-        </div>
+    <CenteredAuthLayout>
+      {/* On the way to making an office: the second of its three steps. */}
+      {office && <OfficeSteps at={1} className="mb-8 justify-center" />}
 
-        <h1 className="mb-1.5 text-[28px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
+      <div className="text-center">
+        <h1 className="text-[26px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
           {signingUp ? t("signUpTitle") : t("signInTitle")}
         </h1>
-        <p className="mb-7 text-[14px] leading-relaxed text-muted-foreground">
-          {signingUp ? t("signUpSubtitle") : t("signInSubtitle")}
-        </p>
+        <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{signingUp ? t("signUpSubtitle") : t("signInSubtitle")}</p>
+      </div>
 
-        {signingUp && guest && (
-          <p className="mb-6 flex items-center gap-3 rounded-2xl bg-muted/70 p-3 text-[13px] leading-snug text-muted-foreground [--face-ring:var(--ui-muted)]">
-            <Face seed={guest.id} size={32} />
-            <span className="min-w-0">{t("guestCarryOver", { name: guest.displayName })}</span>
-          </p>
-        )}
-
+      <div className="mt-8">
         {googleAvailable && (
           <>
-            <GoogleButton label={t("continueWithGoogle")} busy={googling} onCode={withGoogle} onError={() => setFormError(t("errors.google_failed"))} />
+            <GoogleButton
+              label={t("continueWithGoogle")}
+              busy={googling}
+              onCode={withGoogle}
+              onError={() => setFormError(t("errors.google_failed"))}
+            />
             <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
               {t("or")}
             </p>
@@ -286,27 +232,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         )}
 
         <form onSubmit={submit} noValidate className="space-y-4">
-          {signingUp && (
-            <Field label={t("name")} htmlFor={`${ids}-displayName`}>
-              <input
-                id={`${ids}-displayName`}
-                type="text"
-                autoComplete="nickname"
-                value={name}
-                onChange={(event) => {
-                  setDisplayName(event.target.value);
-                  edited("displayName");
-                }}
-                placeholder={t("namePlaceholder")}
-                maxLength={32}
-                aria-invalid={"displayName" in fieldErrors}
-                aria-describedby={describedBy("displayName")}
-                className={fieldClass("displayName")}
-              />
-              <FieldError id={`${ids}-displayName-error`} message={fieldErrors.displayName} />
-            </Field>
-          )}
-
           <Field label={t("email")} htmlFor={`${ids}-email`}>
             <input
               id={`${ids}-email`}
@@ -315,7 +240,6 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               autoComplete={signingUp ? "email" : "username"}
               autoCapitalize="none"
               spellCheck={false}
-              autoFocus={!signingUp}
               value={email}
               onChange={(event) => {
                 setEmail(event.target.value);
@@ -355,7 +279,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                 aria-pressed={showPassword}
                 className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
               </button>
             </div>
             <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
@@ -371,7 +295,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                   passwordLongEnough ? "text-ok" : "text-muted-foreground"
                 }`}
               >
-                <Check className={`w-3.5 h-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
+                <Check className={`size-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
                 {t("passwordRule")}
               </p>
             )}
@@ -381,68 +305,34 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
           {formError && <ErrorNote>{formError}</ErrorNote>}
 
-          <ActionButton
-            type="submit"
-            busy={submitting}
-            busyLabel={signingUp ? t("creatingAccount") : t("signingIn")}
-            className="!mt-6"
-          >
+          <ActionButton type="submit" busy={submitting} busyLabel={signingUp ? t("creatingAccount") : t("signingIn")} className="!mt-6">
             {signingUp ? t("createAccount") : t("signIn")}
           </ActionButton>
         </form>
 
-        {signingUp && <Agree className="mt-4" />}
-
-        <p className="mt-7 text-center text-[13px] text-foreground">
-          <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
-          <button
-            type="button"
-            onClick={() => switchMode(signingUp ? "signin" : "signup")}
-            className="cursor-pointer font-semibold underline-offset-2 hover:underline"
-          >
-            {signingUp ? t("signInInstead") : t("createOne")}
-          </button>
-        </p>
-
-        {!user && (
-          <p className="text-[12px] text-center mt-3">
-            <Link
-              href="/lobby"
-              className="cursor-pointer text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
-            >
-              {t("continueGuest")}
-            </Link>
-          </p>
-        )}
+        {signingUp && <Agree className="mt-4 text-center" />}
       </div>
-    </AuthLayout>
+
+      <p className="mt-8 text-center text-[13.5px] text-foreground">
+        <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
+        <button
+          type="button"
+          onClick={() => switchMode(signingUp ? "signin" : "signup")}
+          className="cursor-pointer font-medium underline-offset-2 hover:underline"
+        >
+          {signingUp ? t("signInInstead") : t("createOne")}
+        </button>
+      </p>
+
+      {!user && (
+        <p className="mt-3 text-center text-[12.5px]">
+          <Link href="/lobby" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">
+            {t("continueGuest")}
+          </Link>
+        </p>
+      )}
+    </CenteredAuthLayout>
   );
 }
 
 const noChange = () => () => {};
-
-/**
- * The right half: the office being signed up for. A name typed at "make an
- * office" waits in this browser, so the preview wears it.
- */
-function AuthAside({ signingUp, person }: { signingUp: boolean; person: { id: string; name: string } }) {
-  const t = useTranslations("auth");
-  const tOffice = useTranslations("lobby.yourOffice");
-  const office = useSyncExternalStore(noChange, pendingOffice, () => "");
-  return (
-    <div className="w-full max-w-[620px]">
-      <p className="text-[13px] font-medium text-muted-foreground">TinyFloor</p>
-      <h2 className="mt-1.5 max-w-md text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">
-        {office && signingUp ? t("asideReady", { office }) : signingUp ? t("asideTitle") : t("asideSignIn")}
-      </h2>
-      <p className="mt-2 max-w-md text-[14px] leading-relaxed text-muted-foreground">{t("asideBody")}</p>
-      <OfficePreview
-        className="mt-8"
-        name={office || tOffice("placeholderName")}
-        typed={!!office}
-        others={[]}
-        person={person.name ? person : null}
-      />
-    </div>
-  );
-}

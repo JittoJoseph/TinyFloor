@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "התחברות",
-    "tabSignUp": "יצירת חשבון",
-    "chooseMode": "התחברות או יצירת חשבון",
     "continueWithGoogle": "המשך עם Google",
     "or": "או",
     "signInTitle": "טוב לראות אותך שוב",
     "signInSubtitle": "התחברו כדי לחזור למשרד של הצוות.",
     "signUpTitle": "יצירת חשבון",
-    "signUpSubtitle": "השם שלכם, האימייל וסיסמה. זה הכול.",
-    "name": "השם שלך",
-    "namePlaceholder": "השם שאחרים יראו",
+    "signUpSubtitle": "כל מה שצריך זה אימייל וסיסמה.",
     "email": "אימייל",
     "emailPlaceholder": "you@company.com",
     "password": "סיסמה",
@@ -115,7 +110,6 @@
     "createOne": "יצירת חשבון",
     "haveAccount": "כבר יש לך חשבון?",
     "signInInstead": "להתחבר במקום",
-    "guestCarryOver": "אתם מבקרים בשם {name}. השם מגיע איתכם.",
     "continueGuest": "רק מסתכלים? היכנסו ללובי כאורחים",
     "errors": {
       "wrong_credentials": "האימייל והסיסמה לא תואמים. נסו שוב.",
@@ -134,11 +128,7 @@
       "google_failed": "ההתחברות עם Google לא הצליחה. נסו שוב.",
       "google_unverified": "אמתו קודם את האימייל שלכם ב-Google, ואז נסו שוב.",
       "google_mismatch": "האימייל הזה מקושר לחשבון Google אחר."
-    },
-    "asideReady": "{office} כמעט מוכן",
-    "asideTitle": "הצוות שלך, קומה אחת מכאן",
-    "asideSignIn": "ברוך שובך לקומה",
-    "asideBody": "ניגשים למישהו כדי לדבר. הערוצים וההודעות נשארים."
+    }
   },
   "entry": {
     "yourName": "השם שלך",
@@ -150,7 +140,9 @@
     "guestNote": "נכנסים כאורחים. <link>התחברו</link> כדי להשתמש בחשבון שלכם.",
     "copyInvite": "העתקת קישור הזמנה",
     "continue": "המשך",
-    "walkingInAs": "נכנסים בשם {name}"
+    "walkingInAs": "נכנסים בשם {name}",
+    "introTitle": "לפני שנכנסים",
+    "introSubtitle": "איך לקרוא לך, ומי תהיו בקומה?"
   },
   "join": {
     "unavailableTitle": "הדלת הזו לא נפתחת.",

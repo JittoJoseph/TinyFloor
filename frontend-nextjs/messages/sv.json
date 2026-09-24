@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Logga in",
-    "tabSignUp": "Skapa konto",
-    "chooseMode": "Logga in eller skapa ett konto",
     "continueWithGoogle": "Fortsätt med Google",
     "or": "eller",
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
-    "signUpSubtitle": "Ditt namn, din e-post, ett lösenord. Mer är det inte.",
-    "name": "Ditt namn",
-    "namePlaceholder": "Så ser andra dig",
+    "signUpSubtitle": "En e-postadress och ett lösenord, mer behövs inte.",
     "email": "E-post",
     "emailPlaceholder": "du@foretag.se",
     "password": "Lösenord",
@@ -115,7 +110,6 @@
     "createOne": "Skapa ett konto",
     "haveAccount": "Har du redan ett konto?",
     "signInInstead": "Logga in i stället",
-    "guestCarryOver": "Du är på besök som {name}. Ditt namn följer med.",
     "continueGuest": "Vill du bara titta? Besök lobbyn som gäst",
     "errors": {
       "wrong_credentials": "E-post och lösenord stämmer inte. Försök igen.",
@@ -134,11 +128,7 @@
       "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
       "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
       "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
-    },
-    "asideReady": "{office} är nästan klart",
-    "asideTitle": "Ditt team, ett plan bort",
-    "asideSignIn": "Välkommen tillbaka till planet",
-    "asideBody": "Gå fram till någon för att prata. Kanaler och meddelanden finns kvar."
+    }
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -150,7 +140,9 @@
     "guestNote": "Du går in som gäst. <link>Logga in</link> för att använda ditt konto.",
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
-    "walkingInAs": "Du går in som {name}"
+    "walkingInAs": "Du går in som {name}",
+    "introTitle": "Innan du går in",
+    "introSubtitle": "Vad ska andra kalla dig, och vem är du på våningen?"
   },
   "join": {
     "unavailableTitle": "Den dörren går inte att öppna.",

@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "登录",
-    "tabSignUp": "创建账号",
-    "chooseMode": "登录或创建账号",
     "continueWithGoogle": "使用 Google 继续",
     "or": "或",
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
-    "signUpSubtitle": "名字、邮箱、密码，就这些。",
-    "name": "你的名字",
-    "namePlaceholder": "别人看到的名字",
+    "signUpSubtitle": "只需要一个邮箱和一个密码。",
     "email": "邮箱",
     "emailPlaceholder": "you@company.com",
     "password": "密码",
@@ -115,7 +110,6 @@
     "createOne": "创建账号",
     "haveAccount": "已经有账号了？",
     "signInInstead": "去登录",
-    "guestCarryOver": "你正以 {name} 的身份来访，这个名字会一起带过去。",
     "continueGuest": "只是看看？以访客身份进入大厅",
     "errors": {
       "wrong_credentials": "邮箱和密码不匹配，请重试。",
@@ -134,11 +128,7 @@
       "google_failed": "Google 登录未成功，请重试。",
       "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
       "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
-    },
-    "asideReady": "{office} 快准备好了",
-    "asideTitle": "你的团队，只隔一层楼",
-    "asideSignIn": "欢迎回到楼层",
-    "asideBody": "走过去就能聊。频道和消息都会保留。"
+    }
   },
   "entry": {
     "yourName": "你的名字",
@@ -150,7 +140,9 @@
     "guestNote": "你将以访客身份进入。<link>登录</link>即可使用你的账号。",
     "copyInvite": "复制邀请链接",
     "continue": "继续",
-    "walkingInAs": "以 {name} 的身份进入"
+    "walkingInAs": "以 {name} 的身份进入",
+    "introTitle": "进门之前",
+    "introSubtitle": "大家该怎么称呼你？你在楼层里是哪个角色？"
   },
   "join": {
     "unavailableTitle": "这扇门打不开。",

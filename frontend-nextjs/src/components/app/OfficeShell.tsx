@@ -11,6 +11,7 @@ import { officeChatPath, officePath, officePeoplePath, officeSettingsPath } from
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor } from "@/lib/floor";
+import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { Loader } from "@/components/motion/loader";
 import { AppShell } from "./AppShell";
@@ -120,6 +121,9 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
       </div>
     );
   }
+
+  // A new account says who it is at its first door, before its office opens.
+  if (user && user.introduced === false) return <Introduce />;
 
   if (!office || !user) {
     return (

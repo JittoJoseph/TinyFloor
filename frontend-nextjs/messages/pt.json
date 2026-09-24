@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Entrar",
-    "tabSignUp": "Criar conta",
-    "chooseMode": "Entre ou crie uma conta",
     "continueWithGoogle": "Continuar com o Google",
     "or": "ou",
     "signInTitle": "Que bom te ver de novo",
     "signInSubtitle": "Entre para voltar ao escritório da sua equipe.",
     "signUpTitle": "Crie sua conta",
-    "signUpSubtitle": "Seu nome, seu e-mail e uma senha. Só isso.",
-    "name": "Seu nome",
-    "namePlaceholder": "Como as pessoas vão te ver",
+    "signUpSubtitle": "Só precisa de um email e de uma palavra-passe.",
     "email": "E-mail",
     "emailPlaceholder": "voce@empresa.com",
     "password": "Senha",
@@ -115,7 +110,6 @@
     "createOne": "Criar uma conta",
     "haveAccount": "Já tem uma conta?",
     "signInInstead": "Entrar",
-    "guestCarryOver": "Você está de visita como {name}. Seu nome vai junto.",
     "continueGuest": "Só dando uma olhada? Visite o lobby como convidado",
     "errors": {
       "wrong_credentials": "O e-mail e a senha não conferem. Tente de novo.",
@@ -134,11 +128,7 @@
       "google_failed": "Não foi possível entrar com o Google. Tente de novo.",
       "google_unverified": "Verifique primeiro seu e-mail com o Google e tente de novo.",
       "google_mismatch": "Este e-mail está vinculado a outra conta do Google."
-    },
-    "asideReady": "{office} está quase pronto",
-    "asideTitle": "Sua equipe, a um andar de distância",
-    "asideSignIn": "Bem-vindo de volta ao andar",
-    "asideBody": "Vá até alguém para conversar. Canais e mensagens ficam."
+    }
   },
   "entry": {
     "yourName": "Seu nome",
@@ -150,7 +140,9 @@
     "guestNote": "Entrando como convidado. <link>Entre</link> para usar sua conta.",
     "copyInvite": "Copiar link de convite",
     "continue": "Continuar",
-    "walkingInAs": "Entrando como {name}"
+    "walkingInAs": "Entrando como {name}",
+    "introTitle": "Antes de entrar",
+    "introSubtitle": "Como quer que o chamem, e quem vai ser no piso?"
   },
   "join": {
     "unavailableTitle": "Essa porta não abre.",

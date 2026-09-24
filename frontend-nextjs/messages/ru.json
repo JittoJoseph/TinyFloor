@@ -87,17 +87,12 @@
     ]
   },
   "auth": {
-    "tabSignIn": "Войти",
-    "tabSignUp": "Создать аккаунт",
-    "chooseMode": "Войдите или создайте аккаунт",
     "continueWithGoogle": "Продолжить с Google",
     "or": "или",
     "signInTitle": "С возвращением",
     "signInSubtitle": "Войдите, чтобы вернуться в офис своей команды.",
     "signUpTitle": "Создайте аккаунт",
-    "signUpSubtitle": "Имя, почта и пароль. Это всё.",
-    "name": "Ваше имя",
-    "namePlaceholder": "Так вас увидят другие",
+    "signUpSubtitle": "Нужны только почта и пароль.",
     "email": "Эл. почта",
     "emailPlaceholder": "vy@kompaniya.ru",
     "password": "Пароль",
@@ -115,7 +110,6 @@
     "createOne": "Создайте аккаунт",
     "haveAccount": "Уже есть аккаунт?",
     "signInInstead": "Войти",
-    "guestCarryOver": "Вы здесь как {name}. Имя перейдёт с вами.",
     "continueGuest": "Просто посмотреть? Загляните в лобби как гость",
     "errors": {
       "wrong_credentials": "Эл. почта и пароль не совпадают. Попробуйте ещё раз.",
@@ -134,11 +128,7 @@
       "google_failed": "Не удалось войти через Google. Попробуйте ещё раз.",
       "google_unverified": "Сначала подтвердите адрес почты в Google, затем попробуйте ещё раз.",
       "google_mismatch": "Этот адрес почты привязан к другому аккаунту Google."
-    },
-    "asideReady": "{office} почти готов",
-    "asideTitle": "Ваша команда — в одном этаже от вас",
-    "asideSignIn": "С возвращением на этаж",
-    "asideBody": "Подойдите к кому-нибудь, чтобы поговорить. Каналы и сообщения сохраняются."
+    }
   },
   "entry": {
     "yourName": "Ваше имя",
@@ -150,7 +140,9 @@
     "guestNote": "Вы входите как гость. <link>Войдите</link>, чтобы использовать свой аккаунт.",
     "copyInvite": "Копировать ссылку-приглашение",
     "continue": "Дальше",
-    "walkingInAs": "Вы заходите как {name}"
+    "walkingInAs": "Вы заходите как {name}",
+    "introTitle": "Прежде чем войти",
+    "introSubtitle": "Как вас называть и кем вы будете на этаже?"
   },
   "join": {
     "unavailableTitle": "Эта дверь не открывается.",

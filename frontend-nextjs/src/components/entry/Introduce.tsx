@@ -6,8 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { ActionButton } from "@/components/ui/Action";
-import { EntryShell } from "./EntryShell";
-import { EntryPreview } from "./EntryPreview";
+import { EntryHeader, EntryShell } from "./EntryShell";
 import { CharacterStep, NameStep } from "./IdentitySteps";
 import { ErrorNote } from "./ErrorNote";
 
@@ -50,14 +49,12 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-      preview={<EntryPreview occupants={[{ character: picked, name: typed || tc("you"), running: onCharacterStep }]} />}
+      you={{ character: picked, name: typed || tc("you"), running: onCharacterStep }}
     >
       <div className="entry-rise">
-        <h1 className="text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground">{t("introTitle")}</h1>
-        <p className="mt-1.5 text-[14px] leading-relaxed text-muted-foreground">{t("introSubtitle")}</p>
+        <EntryHeader title={t("introTitle")} subtitle={t("introSubtitle")} />
 
         <form
-          className="mt-6"
           onSubmit={(event) => {
             event.preventDefault();
             if (onCharacterStep) void walkIn();

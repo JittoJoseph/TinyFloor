@@ -982,7 +982,9 @@
       "signIn": "Ich habe ein Konto",
       "readyToJoin": "Das bin ich",
       "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
-      "you": "Du"
+      "you": "Du",
+      "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}",
+      "change": "Ändern"
     },
     "errors": {
       "member_limit": "Der Workspace ist in seinem aktuellen Plan voll.",

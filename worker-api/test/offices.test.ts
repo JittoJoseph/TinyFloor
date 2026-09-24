@@ -155,7 +155,7 @@ describe("seats", () => {
     const token = (await invite(olive, id)).token;
     expect(
       (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${token}`)).body.invite,
-    ).toMatchObject({ officeName: "Snug", full: false });
+    ).toMatchObject({ officeId: id, officeName: "Snug", members: 1, full: false });
 
     await join(await makeUser("A"), (await invite(olive, id)).token);
     await join(await makeUser("B"), (await invite(olive, id)).token);
@@ -285,7 +285,7 @@ describe("guest links", () => {
   it("previews the office and lets a guest in, tied to the link", async () => {
     const { id, link } = await officeWithLink();
     const preview = await call(null, "GET", `/v1/guest-links/${link.token}`);
-    expect(preview.body.guestLink).toEqual({ officeName: "Agency" });
+    expect(preview.body.guestLink).toEqual({ officeId: id, officeName: "Agency" });
 
     const guest = await makeUser("Gus", { guest: true });
     const { body } = await call<{ ticket: string }>(guest, "POST", `/v1/guest-links/${link.token}/ticket`);

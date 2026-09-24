@@ -6,9 +6,9 @@ import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
-import { EntryShell } from "./EntryShell";
+import { EntryHeader, EntryShell } from "./EntryShell";
+import { CopyLink } from "./DoorParts";
 import { ActionButton } from "@/components/ui/Action";
-import { EntryPreview } from "./EntryPreview";
 import { CharacterStep, NameStep } from "./IdentitySteps";
 import { ErrorNote } from "./ErrorNote";
 import { Turnstile, useTurnstileToken } from "@/components/auth/Turnstile";
@@ -20,6 +20,7 @@ import { Agree } from "@/components/legal/Agree";
  * character on their account.
  */
 export function WalkIn({
+  mark,
   eyebrow,
   title,
   subtitle,
@@ -28,6 +29,8 @@ export function WalkIn({
   onReady,
   detail,
 }: {
+  /** The place's mark, beside its name. */
+  mark?: React.ReactNode;
   eyebrow?: string;
   title: string;
   subtitle?: string;
@@ -98,27 +101,19 @@ export function WalkIn({
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-      preview={
-        <EntryPreview
-          inviteLink={sharePath}
-          occupants={[
-            {
-              character,
-              name: trimmed || tc("you"),
-              running: onCharacterStep,
-            },
-          ]}
-        />
-      }
+      you={{ character, name: trimmed || tc("you"), running: onCharacterStep }}
     >
       <div className="entry-rise">
-        {eyebrow && <p className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{eyebrow}</p>}
-        <h1 className="break-words text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground">{title}</h1>
-        {subtitle && <p className="mt-1.5 text-[14px] leading-relaxed text-muted-foreground">{subtitle}</p>}
-        {detail && <div className="mt-3">{detail}</div>}
+        <EntryHeader
+          mark={mark}
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
+          detail={detail}
+          action={sharePath && <CopyLink path={sharePath} />}
+        />
 
         <form
-          className="mt-6"
           onSubmit={(event) => {
             event.preventDefault();
             if (onCharacterStep) void walkIn();
@@ -172,7 +167,7 @@ export function WalkIn({
               link: (chunks) => (
                 <Link
                   href={`/auth?${new URLSearchParams({ redirect: pathname })}`}
-                  className="underline underline-offset-2 hover:opacity-100"
+                  className="font-medium text-foreground underline-offset-2 hover:underline"
                 >
                   {chunks}
                 </Link>

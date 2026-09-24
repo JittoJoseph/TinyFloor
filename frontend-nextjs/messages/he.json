@@ -982,7 +982,9 @@
       "signIn": "יש לי חשבון",
       "readyToJoin": "זה אני",
       "accountKeeps": "חשבון שומר את {name} ואת הדמות לפעם הבאה.",
-      "you": "אתם"
+      "you": "אתם",
+      "members": "{count, plural, one {חבר אחד} other {# חברים}}",
+      "change": "שינוי"
     },
     "errors": {
       "member_limit": "סביבת העבודה מלאה בתוכנית הנוכחית.",

@@ -14,6 +14,8 @@ import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
+import { EntryDetail } from "@/components/entry/EntryShell";
+import { LobbyMark as LobbyDoorMark } from "@/components/entry/DoorParts";
 import { Introduce } from "@/components/entry/Introduce";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Dialog } from "@/components/ui/Dialog";
@@ -94,18 +96,22 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         subtitle={t("subtitle")}
         sharePath={lobbyPath}
         onReady={() => {}}
+        mark={<LobbyDoorMark />}
         detail={
           door && (
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 ps-1 pe-3 [--face-ring:var(--ui-background)]">
-              {door.faces.length > 0 ? (
-                <FaceStack seeds={door.faces.map((one) => one.id)} size={22} max={4} />
-              ) : (
-                <span className="flex size-[22px] items-center justify-center rounded-full bg-muted">
-                  <span className="size-1.5 rounded-full bg-ok" />
-                </span>
-              )}
-              <span className="text-[12.5px] text-muted-foreground">{t("door", { here: door.here })}</span>
-            </span>
+            <EntryDetail
+              lead={
+                door.faces.length > 0 ? (
+                  <FaceStack seeds={door.faces.map((one) => one.id)} size={22} max={4} />
+                ) : (
+                  <span className="flex size-[22px] items-center justify-center rounded-full bg-muted">
+                    <span className="size-1.5 rounded-full bg-ok" />
+                  </span>
+                )
+              }
+            >
+              {t("door", { here: door.here })}
+            </EntryDetail>
           )
         }
       />

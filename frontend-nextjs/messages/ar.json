@@ -982,7 +982,9 @@
       "signIn": "لدي حساب",
       "readyToJoin": "هذا أنا",
       "accountKeeps": "الحساب يحفظ {name} وشخصيتك للمرة القادمة.",
-      "you": "أنت"
+      "you": "أنت",
+      "members": "{count, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}",
+      "change": "تغيير"
     },
     "errors": {
       "member_limit": "مساحة العمل ممتلئة في خطتها الحالية.",

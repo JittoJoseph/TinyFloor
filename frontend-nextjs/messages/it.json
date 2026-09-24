@@ -982,7 +982,9 @@
       "signIn": "Ho un account",
       "readyToJoin": "Sono io",
       "accountKeeps": "Un account tiene {name} e il tuo personaggio per la prossima volta.",
-      "you": "Tu"
+      "you": "Tu",
+      "members": "{count, plural, one {# membro} other {# membri}}",
+      "change": "Cambia"
     },
     "errors": {
       "member_limit": "Il workspace è completo con il piano attuale.",

@@ -982,7 +982,9 @@
       "signIn": "Ik heb een account",
       "readyToJoin": "Dat ben ik",
       "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
-      "you": "Jij"
+      "you": "Jij",
+      "members": "{count, plural, one {# lid} other {# leden}}",
+      "change": "Wijzigen"
     },
     "errors": {
       "member_limit": "De werkruimte is vol met het huidige abonnement.",

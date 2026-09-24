@@ -236,7 +236,7 @@ export const api = {
   revokeInvite: (officeId: string, inviteId: string) =>
     del<{ ok: true }>(`/offices/${id(officeId)}/invites/${id(inviteId)}`),
   invitePreview: (token: string) =>
-    get<{ invite: { officeName: string; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
+    get<{ invite: { officeId: string; officeName: string; members: number; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
       `/invites/${id(token)}`,
     ),
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
@@ -246,7 +246,7 @@ export const api = {
     post<{ guestLink: GuestLink & { token: string } }>(`/offices/${id(officeId)}/guest-links`, { expiresIn }),
   revokeGuestLink: (officeId: string, linkId: string) =>
     del<{ ok: true }>(`/offices/${id(officeId)}/guest-links/${id(linkId)}`),
-  guestLinkPreview: (token: string) => get<{ guestLink: { officeName: string } }>(`/guest-links/${id(token)}`),
+  guestLinkPreview: (token: string) => get<{ guestLink: { officeId: string; officeName: string } }>(`/guest-links/${id(token)}`),
 
   // Walking in, chatting, calling
   officeTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/ticket`),

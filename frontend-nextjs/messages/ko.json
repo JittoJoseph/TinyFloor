@@ -982,7 +982,9 @@
       "signIn": "계정이 있어요",
       "readyToJoin": "저예요",
       "accountKeeps": "계정을 만들면 {name}과 캐릭터가 다음에도 그대로예요.",
-      "you": "나"
+      "you": "나",
+      "members": "멤버 {count}명",
+      "change": "변경"
     },
     "errors": {
       "member_limit": "현재 요금제에서 워크스페이스가 꽉 찼어요.",

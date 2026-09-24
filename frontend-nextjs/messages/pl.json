@@ -982,7 +982,9 @@
       "signIn": "Mam konto",
       "readyToJoin": "To ja",
       "accountKeeps": "Konto zapamięta {name} i twoją postać na następny raz.",
-      "you": "Ty"
+      "you": "Ty",
+      "members": "{count, plural, one {# członek} few {# członków} many {# członków} other {# członka}}",
+      "change": "Zmień"
     },
     "errors": {
       "member_limit": "Obszar roboczy jest pełny w obecnym planie.",

@@ -982,7 +982,9 @@
       "signIn": "J’ai un compte",
       "readyToJoin": "C’est moi",
       "accountKeeps": "Un compte garde {name} et votre personnage pour la prochaine fois.",
-      "you": "Vous"
+      "you": "Vous",
+      "members": "{count, plural, one {# membre} other {# membres}}",
+      "change": "Modifier"
     },
     "errors": {
       "member_limit": "L’espace de travail est complet avec son offre actuelle.",

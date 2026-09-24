@@ -982,7 +982,9 @@
       "signIn": "我已有账号",
       "readyToJoin": "就是我",
       "accountKeeps": "有账号就能记住 {name} 和你的角色，下次接着用。",
-      "you": "你"
+      "you": "你",
+      "members": "{count} 位成员",
+      "change": "更改"
     },
     "errors": {
       "member_limit": "当前套餐下工作区已满。",

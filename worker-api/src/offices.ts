@@ -179,7 +179,10 @@ export function officeRoutes(router: Router): void {
       const used = await seatsUsed(env, invite.office_id);
       return json({
         invite: {
+          // The office's id seeds its mark, so the door shows the mark the office has inside.
+          officeId: invite.office_id,
           officeName: invite.office_name,
+          members: used,
           invitedBy: invite.inviter_name,
           role: invite.role,
           expiresAt: invite.expires_at,

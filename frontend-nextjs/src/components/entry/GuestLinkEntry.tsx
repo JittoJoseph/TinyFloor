@@ -9,7 +9,8 @@ import { api } from "@/lib/api";
 import { EntryShell } from "./EntryShell";
 import { EntryProblem } from "./EntryProblem";
 import { ActionLink } from "@/components/ui/Action";
-import { EntryPreview } from "./EntryPreview";
+import { OfficeMark } from "./DoorParts";
+import { DoorSkeleton } from "./InviteEntry";
 import { WalkIn } from "./WalkIn";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell, Logo } from "@/components/app/AppShell";
@@ -19,6 +20,7 @@ import { PlaceProvider, type Place } from "@/components/app/place";
 import { useSearchParams } from "next/navigation";
 
 export interface GuestLinkPreview {
+  officeId: string;
   officeName: string;
 }
 
@@ -95,20 +97,15 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
 
   if (state === "loading") {
     return (
-      <EntryShell preview={<EntryPreview occupants={[]} />}>
-        <div className="space-y-4">
-          <div className="h-3 w-20 rounded-full bg-muted animate-pulse" />
-          <div className="h-7 w-2/3 rounded-lg bg-muted animate-pulse" />
-          <div className="h-13 w-full rounded-xl bg-muted animate-pulse" />
-          <div className="h-24 w-full rounded-xl bg-muted animate-pulse" />
-        </div>
+      <EntryShell>
+        <DoorSkeleton />
       </EntryShell>
     );
   }
 
   if (state === "invalid" || !preview) {
     return (
-      <EntryShell preview={<EntryPreview occupants={[]} />}>
+      <EntryShell>
         <EntryProblem title={t("unavailableTitle")} body={t("linkUnavailable")}>
           <ActionLink href="/lobby">{t("visitLobby")}</ActionLink>
           <ActionLink href="/create" tone="secondary" icon={null}>
@@ -121,6 +118,7 @@ export function GuestLinkEntry({ token, initialPreview }: { token: string; initi
 
   return (
     <WalkIn
+      mark={<OfficeMark officeId={preview.officeId} />}
       title={preview.officeName}
       subtitle={t("invitedAsGuest")}
       onReady={() => setWalkedIn(true)}

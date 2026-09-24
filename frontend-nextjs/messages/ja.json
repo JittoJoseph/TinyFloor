@@ -982,7 +982,9 @@
       "signIn": "アカウントを持っています",
       "readyToJoin": "これで参加",
       "accountKeeps": "アカウントがあれば、{name} とキャラクターを次回も使えます。",
-      "you": "あなた"
+      "you": "あなた",
+      "members": "メンバー {count} 人",
+      "change": "変更"
     },
     "errors": {
       "member_limit": "現在のプランではワークスペースが満員です。",

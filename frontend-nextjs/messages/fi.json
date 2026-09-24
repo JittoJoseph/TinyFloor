@@ -982,7 +982,9 @@
       "signIn": "Minulla on tili",
       "readyToJoin": "Se olen minä",
       "accountKeeps": "Tili muistaa nimen {name} ja hahmosi ensi kertaa varten.",
-      "you": "Sinä"
+      "you": "Sinä",
+      "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+      "change": "Vaihda"
     },
     "errors": {
       "member_limit": "Työtila on täynnä nykyisellä paketilla.",

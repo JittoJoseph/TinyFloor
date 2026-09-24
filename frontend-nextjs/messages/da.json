@@ -982,7 +982,9 @@
       "signIn": "Jeg har en konto",
       "readyToJoin": "Det er mig",
       "accountKeeps": "En konto gemmer {name} og din figur til næste gang.",
-      "you": "Dig"
+      "you": "Dig",
+      "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+      "change": "Skift"
     },
     "errors": {
       "member_limit": "Arbejdsområdet er fyldt med det nuværende abonnement.",

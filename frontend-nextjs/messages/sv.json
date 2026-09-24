@@ -982,7 +982,9 @@
       "signIn": "Jag har ett konto",
       "readyToJoin": "Det är jag",
       "accountKeeps": "Ett konto sparar {name} och din karaktär till nästa gång.",
-      "you": "Du"
+      "you": "Du",
+      "members": "{count, plural, one {# medlem} other {# medlemmar}}",
+      "change": "Ändra"
     },
     "errors": {
       "member_limit": "Arbetsytan är full med nuvarande plan.",

@@ -51,7 +51,7 @@ export function floorRoutes(router: Router): void {
 
     .add("GET", "/v1/guest-links/:token", async ({ env, params }) => {
       const link = await findGuestLink(env, params.token);
-      return json({ guestLink: { officeName: link.office_name } });
+      return json({ guestLink: { officeId: link.office_id, officeName: link.office_name } });
     })
 
     // Walking into your own office.

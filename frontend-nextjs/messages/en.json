@@ -982,7 +982,9 @@
       "signIn": "I have an account",
       "readyToJoin": "That's me",
       "accountKeeps": "An account keeps {name} and your character for next time.",
-      "you": "You"
+      "you": "You",
+      "members": "{count, plural, one {# member} other {# members}}",
+      "change": "Change"
     },
     "errors": {
       "member_limit": "The workspace is full on its current plan.",

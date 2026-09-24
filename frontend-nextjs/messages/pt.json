@@ -982,7 +982,9 @@
       "signIn": "Já tenho conta",
       "readyToJoin": "Sou eu",
       "accountKeeps": "Uma conta guarda {name} e seu personagem para a próxima vez.",
-      "you": "Você"
+      "you": "Você",
+      "members": "{count, plural, one {# membro} other {# membros}}",
+      "change": "Alterar"
     },
     "errors": {
       "member_limit": "O espaço de trabalho está cheio no plano atual.",

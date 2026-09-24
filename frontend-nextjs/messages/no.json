@@ -982,7 +982,9 @@
       "signIn": "Jeg har en konto",
       "readyToJoin": "Det er meg",
       "accountKeeps": "En konto husker {name} og figuren din til neste gang.",
-      "you": "Du"
+      "you": "Du",
+      "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+      "change": "Endre"
     },
     "errors": {
       "member_limit": "Arbeidsområdet er fullt med nåværende plan.",

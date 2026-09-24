@@ -296,8 +296,8 @@
     "gone": "{name} poistui aulasta, ja keskustelu lähti mukana.",
     "edited": "muokattu",
     "edit": "Muokkaa",
-    "delete": "Poista",
-    "deleteConfirm": "Poistetaanko?",
+    "delete": "Peru lähetys",
+    "deleteConfirm": "Peru lähetys?",
     "save": "Tallenna",
     "cancel": "Peruuta"
   },

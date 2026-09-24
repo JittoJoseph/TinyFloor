@@ -296,8 +296,8 @@
     "gone": "{name} salió del vestíbulo y esta conversación se fue con ella.",
     "edited": "editado",
     "edit": "Editar",
-    "delete": "Eliminar",
-    "deleteConfirm": "¿Eliminar?",
+    "delete": "Anular envío",
+    "deleteConfirm": "¿Anular envío?",
     "save": "Guardar",
     "cancel": "Cancelar"
   },

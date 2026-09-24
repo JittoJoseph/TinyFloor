@@ -296,8 +296,8 @@
     "gone": "{name} 님이 로비를 나가서 이 대화도 사라졌어요.",
     "edited": "수정됨",
     "edit": "수정",
-    "delete": "삭제",
-    "deleteConfirm": "삭제할까요?",
+    "delete": "전송 취소",
+    "deleteConfirm": "전송을 취소할까요?",
     "save": "저장",
     "cancel": "취소"
   },

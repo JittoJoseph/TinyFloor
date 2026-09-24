@@ -296,8 +296,8 @@
     "gone": "{name} wyszedł z lobby i ta rozmowa zniknęła razem z nim.",
     "edited": "edytowano",
     "edit": "Edytuj",
-    "delete": "Usuń",
-    "deleteConfirm": "Usunąć?",
+    "delete": "Cofnij wysłanie",
+    "deleteConfirm": "Cofnąć wysłanie?",
     "save": "Zapisz",
     "cancel": "Anuluj"
   },

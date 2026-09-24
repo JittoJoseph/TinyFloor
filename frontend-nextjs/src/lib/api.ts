@@ -2,6 +2,9 @@
  * The TinyFloor API (tinyfloor-api). Sessions are an HttpOnly cookie the browser
  * sends by itself, so nothing about signing in is kept in JavaScript.
  */
+import type { LobbyChatPage } from "@shared/admin";
+
+export type { LobbyChatPage };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
 
 export class ApiError extends Error {
@@ -199,6 +202,10 @@ export const api = {
     ),
   adminOffices: (before?: number) =>
     get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
+  adminLobbyChat: (channel: string, before?: number) =>
+    get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
+  adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),
+  adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

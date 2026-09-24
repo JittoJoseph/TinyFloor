@@ -1,53 +1,100 @@
-# TinyFloor
+<p align="center">
+  <a href="https://www.tinyfloor.com">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/readme/logo-dark.svg">
+      <img src=".github/readme/logo-light.svg" width="64" height="64" alt="TinyFloor">
+    </picture>
+  </a>
+</p>
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-www.tinyfloor.com-007acc)](https://www.tinyfloor.com/)
+<h1 align="center">TinyFloor</h1>
 
-[![Backend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=backend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
-[![Frontend Build](https://img.shields.io/github/checks-status/JittoJoseph/SpacialMeet/master?label=frontend)](https://github.com/JittoJoseph/SpacialMeet/deployments)
-[![Health Check](https://img.shields.io/website?url=https://www.tinyfloor.com&label=health)](https://www.tinyfloor.com)
+<p align="center">
+  <b>The open-source virtual office your team can walk around in.</b><br>
+  Walk up to someone to talk. Pull up a chair to meet. Nothing to install.
+</p>
 
-A lightweight, top-down 2D virtual office experience for real-time presence and communication.
+<p align="center">
+  <a href="https://www.tinyfloor.com"><b>Website</b></a> ·
+  <a href="https://www.tinyfloor.com/lobby"><b>Walk into the lobby</b></a> ·
+  <a href="https://www.tinyfloor.com/create"><b>Make an office</b></a> ·
+  <a href="#questions"><b>Questions</b></a>
+</p>
 
-## Overview
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-1a1a18" alt="License: AGPL-3.0"></a>
+  <img src="https://img.shields.io/badge/runs%20on-Cloudflare-ff5a1f" alt="Runs on Cloudflare">
+  <img src="https://img.shields.io/badge/languages-18-1a1a18" alt="18 languages">
+</p>
 
-TinyFloor creates immersive virtual office environments where team members can interact naturally through proximity-based communication. Walk around pixel-art office spaces, engage in real-time conversations when near colleagues, and collaborate in shared digital rooms with persistent user profiles and customizable avatars.
+<p align="center">
+  <a href="https://www.tinyfloor.com/lobby">
+    <picture>
+      <source srcset=".github/readme/tour.avif" type="image/avif">
+      <img src=".github/readme/tour.gif" width="100%" alt="TinyFloor virtual office: a team chat, then walking up to a teammate to start a proximity video call">
+    </picture>
+  </a>
+</p>
+
+## A virtual office for remote teams
+
+Remote work lost the hallway: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls turned every one of those into a scheduled meeting.
+
+TinyFloor is a 2D virtual office in your browser. Your team walks around a shared pixel-art floor as characters, and **proximity video chat** does the rest: walk up to someone to talk, sit at a table to meet, stand up when you're done. The office stays open all day, so remote work feels like working side by side again.
 
 ## Features
 
-- **Real-time Multiplayer Presence**: See colleagues moving around shared office maps in real-time with smooth animations
-- **Proximity-Based Communication**: Voice, video, and text chat automatically activate when users are nearby, with automatic call termination when moving apart
-- **Multiple Rooms**: Create public or private rooms with customizable settings, passwords, and media permissions
-- **Avatar Customization**: Choose from various character appearances, outfits, and accessories for personalized presence
-- **User Authentication**: Secure login system with persistent user profiles stored in MongoDB
-- **Pixel Art Aesthetic**: Nostalgic 2D graphics inspired by classic office environments with tile-based movement
-- **Cross-Platform Support**: Works on desktop and mobile browsers with WebRTC calls
+<table>
+  <tr>
+    <td width="33%"><img src=".github/readme/walk-up.webp" alt="Proximity video call between two teammates in the virtual office"></td>
+    <td width="33%"><img src=".github/readme/chat.webp" alt="Team chat with channels, messages and reactions"></td>
+    <td width="33%"><img src=".github/readme/people.webp" alt="Presence: who is on the floor, busy or in a call"></td>
+  </tr>
+  <tr>
+    <td><b>Proximity video calls</b><br>Walk up to a teammate and one tap starts video or voice.</td>
+    <td><b>Team chat</b><br>Channels, direct messages and reactions that stay.</td>
+    <td><b>Presence</b><br>See who's in, busy or in a call, then walk right over.</td>
+  </tr>
+</table>
 
-## Project Structure
+- **Meeting tables** for group video calls with screen sharing. Sit down to join, stand up to leave.
+- **Guest links** let clients and candidates in with a name and a character, no account needed.
+- **Whiteboard and room music** for the moments between calls.
+- **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
+- **Private offices** for your team, and a public lobby anyone can walk into.
 
-This monorepo contains:
+## Made for
 
-- `apps/frontend-nextjs/`: Next.js frontend with Phaser.js for 2D game rendering, real-time interactions, and WebRTC handling
-- `apps/backend-springboot/`: Spring Boot backend handling WebSocket connections, user authentication, room management, and MongoDB persistence
+- **[Virtual office](https://www.tinyfloor.com/virtual-office)**: one room your remote team keeps open all day.
+- **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: work side by side online and take breaks together.
+- **[Online study room](https://www.tinyfloor.com/online-study-room)**: study with friends, focus quietly, talk when you need a break.
+- **[Virtual classroom](https://www.tinyfloor.com/virtual-classroom)**: office hours, tutoring and small classes.
+- **[Proximity chat](https://www.tinyfloor.com/proximity-chat)**: talk to whoever you walk up to, like in a real room.
 
-## Tech Stack
+## An open-source alternative
 
-- **Frontend**: Next.js, React, TypeScript, Phaser.js, Tailwind CSS
-- **Backend**: Spring Boot, Java, WebSocket, MongoDB
-- **Real-time Communication**: WebRTC audio/video through Cloudflare Realtime (TURN relay for one-to-one calls, SFU for group meetings), WebSocket for signaling and game state
-- **Database**: MongoDB for user profiles, room metadata, and persistent data
-- **Deployment**: Cloudflare Workers (frontend), Railway (backend)
+Looking for an open-source alternative to [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative) or [Wonder](https://www.tinyfloor.com/wonder-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, meeting tables, screen sharing and chat.
 
-## Localization
+## Questions
 
-The frontend is translated into 18 languages with [next-intl](https://next-intl.dev): English (source), German, French, Spanish, Italian, Dutch, Swedish, Danish, Norwegian, Finnish, Portuguese, Polish, Japanese, Korean, Chinese, Russian, Hebrew and Arabic (the last two render right-to-left).
+### How does proximity video chat work?
 
-- **Messages** live in `frontend-nextjs/messages/<locale>.json`. Every locale is deep-merged over `en.json`, so a missing key falls back to English instead of rendering blank.
-- **Routing**: all pages sit under `src/app/[locale]`. English is served unprefixed (`/rooms`), other languages are prefixed (`/de/rooms`). `src/proxy.ts` detects the language from the cookie, then `Accept-Language`, so a shared `/join?roomId=…` link opens in the recipient's language.
-- **Config**: `src/lib/i18n/routing.ts` is the source of truth for the locale list and text direction; `request.ts` loads messages; `navigation.ts` exports the locale-aware `Link` and router hooks to use instead of `next/link` and `next/navigation`.
-- **In code**: `useTranslations()` in components, `getTranslations()` in metadata. Phaser canvas labels are passed in through `src/lib/sceneText.ts`.
-- **SEO**: `src/lib/seo.ts` emits the canonical URL and hreflang alternates for each page, and `sitemap.ts` lists every route in every locale.
-- **Adding a language**: add it to `routing.ts`, add its Open Graph code in `seo.ts`, and create `messages/<code>.json`.
+Walk up to someone and call buttons appear next to them. Tap one to start video or voice. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network.
 
-## Getting Started
+### Do I need to install anything?
 
-TinyFloor requires Node.js 18+, Java 17+, Maven 3.6+, and MongoDB. The application consists of a Next.js frontend and Spring Boot backend that communicate via WebSocket and REST APIs for real-time multiplayer functionality.
+No. TinyFloor runs in any modern browser on desktop and mobile. Open a link and you're in the office.
+
+### How is it different from Zoom or Google Meet?
+
+Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around and talk to whoever you walk over to, without scheduling a call.
+
+### Is it private?
+
+An office is only for its members and the guests they let in. Nothing inside it is public or indexed, and calls are encrypted in transit.
+
+## Open source
+
+TinyFloor is open source under the [GNU AGPL v3.0](LICENSE) and runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](frontend-nextjs/public/credits.txt), [ASSETS.md](ASSETS.md)).
+
+Questions or ideas? Write to [support@tinyfloor.com](mailto:support@tinyfloor.com).

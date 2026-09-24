@@ -14,6 +14,10 @@ import { EntryPreview } from "@/components/entry/EntryPreview";
 import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { useErrorMessage } from "@/lib/useErrorMessage";
+import { posthogLog } from "@/lib/posthog-log";
+import posthog from "posthog-js";
+
+const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
 
 export interface InvitePreview {
   officeName: string;
@@ -80,6 +84,8 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       // Walk in as the character they picked on the way here.
       if (user && character !== user.character) await updateProfile({ character }).catch(() => undefined);
       const { officeId } = await api.acceptInvite(token);
+      if (posthogConfigured) posthog.capture("office_invite_accepted", { invite_role: invite?.role ?? "member" });
+      posthogLog.info("Office invitation acceptance completed");
       router.push(officePath(officeId));
     } catch (err) {
       setError(explain(err));

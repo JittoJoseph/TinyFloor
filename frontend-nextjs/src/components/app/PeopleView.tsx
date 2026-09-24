@@ -22,6 +22,9 @@ import { useOffice } from "./OfficeShell";
 import { usePlace } from "./place";
 import { MemberCard } from "./MemberCard";
 import { Link } from "@/lib/i18n/navigation";
+import posthog from "posthog-js";
+
+const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
 
 /** People: an office's members and who can come in, or who is in the lobby now. */
 export function PeopleView() {
@@ -89,6 +92,7 @@ function OfficePeople() {
   const invite = () =>
     run(async () => {
       const { invite: made } = await api.createInvite(office.id, { role: "member" });
+      if (posthogConfigured) posthog.capture("office_invite_created", { invite_role: "member" });
       await share(invitePath(made.token), "invite");
       setTab("invitations");
     });

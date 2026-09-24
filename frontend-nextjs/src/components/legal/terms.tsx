@@ -19,7 +19,7 @@ export const termsSections: LegalSection[] = [
     body: (
       <>
         <p>
-          TinyFloor (&quot;TinyFloor&quot;, &quot;we&quot;, &quot;us&quot;) is run by Jitto Joseph, an individual based in India. These Terms of
+          TinyFloor (&quot;TinyFloor&quot;, &quot;we&quot;, &quot;us&quot;) is run by Jitto Joseph, an individual. These Terms of
           Service (&quot;Terms&quot;) apply when you use tinyfloor.com and the TinyFloor service, whether with an account or as a guest. By
           using TinyFloor you agree to them. If you don&apos;t agree, please don&apos;t use it.
         </p>
@@ -199,7 +199,7 @@ export const termsSections: LegalSection[] = [
         <p>
           To the extent the law allows, we are not liable for any indirect, incidental, special or consequential loss, or for lost profits, data
           or goodwill, arising from your use of TinyFloor. Our total liability to you for any claim about TinyFloor is limited to the greater of
-          the amount you paid us in the 12 months before the claim and 1,000 Indian rupees.
+          the amount you paid us in the 12 months before the claim and 10 US dollars.
         </p>
         <p>
           Nothing in these Terms limits liability that the law does not allow to be limited, such as for fraud, or for death or personal injury
@@ -223,9 +223,9 @@ export const termsSections: LegalSection[] = [
     title: "The law that applies",
     body: (
       <p>
-        These Terms are governed by the laws of India. Any dispute about them or about TinyFloor will be decided by the courts of India, except
-        that, if you are a consumer, you may also bring proceedings in the courts where you live and keep the protection of that country&apos;s
-        mandatory laws. Before going to court, please write to us, and we will try to sort it out together.
+        These Terms are governed by the laws of the place where TinyFloor&apos;s operator is based, and any dispute about them or about TinyFloor
+        will be decided by the courts there, except that, if you are a consumer, you may also bring proceedings in the courts where you live
+        and keep the protection of that country&apos;s mandatory laws. Before going to court, please write to us, and we will try to sort it out together.
       </p>
     ),
   },

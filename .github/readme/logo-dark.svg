@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" role="img" aria-label="TinyFloor">
+  <rect width="72" height="72" rx="21.6" fill="#ededeb"/>
+  <g transform="translate(18 18) scale(2.25)" shape-rendering="crispEdges">
+    <rect x="1" y="1" width="6" height="6" fill="#0f0f10"/>
+    <rect x="9" y="1" width="6" height="6" fill="#0f0f10" opacity="0.45"/>
+    <rect x="1" y="9" width="6" height="6" fill="#0f0f10" opacity="0.45"/>
+    <rect x="9" y="9" width="6" height="6" fill="#ff6b35"/>
+  </g>
+</svg>

@@ -22,8 +22,7 @@ export const privacySections: LegalSection[] = [
       <>
         <p>
           TinyFloor (&quot;TinyFloor&quot;, &quot;we&quot;, &quot;us&quot;) is a virtual office you use in your browser at tinyfloor.com. It is run
-          by Jitto Joseph, an individual based in India, who is the controller of the personal data described here (the &quot;data
-          fiduciary&quot; under India&apos;s Digital Personal Data Protection Act, 2023).
+          by Jitto Joseph, an individual, who is the controller of the personal data described here.
         </p>
         <p>
           For anything about this policy or your data, write to <Mail />.
@@ -143,7 +142,6 @@ export const privacySections: LegalSection[] = [
             <strong>Legal obligation:</strong> where the law requires us to keep or disclose something.
           </li>
         </ul>
-        <p>Under India&apos;s DPDP Act, we process your personal data for the purposes above, with your consent or for legitimate uses the Act allows.</p>
       </>
     ),
   },
@@ -256,7 +254,7 @@ export const privacySections: LegalSection[] = [
         </p>
         <p>
           If you are unhappy with how we handle your data, please tell us first so we can put it right. You can also complain to your local
-          data protection authority, or in India to the Data Protection Board of India.
+          data protection authority.
         </p>
       </>
     ),
@@ -267,7 +265,7 @@ export const privacySections: LegalSection[] = [
     body: (
       <p>
         TinyFloor runs on Cloudflare&apos;s global network, so your data may be processed in countries other than your own, including the United
-        States and India. Where the law requires it, these transfers rely on appropriate safeguards, such as the standard contractual clauses
+        States. Where the law requires it, these transfers rely on appropriate safeguards, such as the standard contractual clauses
         our providers offer.
       </p>
     ),

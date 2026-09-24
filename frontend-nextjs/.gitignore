@@ -30,9 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env
-.env.local
+# env files: every value lives in the Workers' build variables, never in git.
+.env*
+!.env.example
 
 # vercel
 .vercel

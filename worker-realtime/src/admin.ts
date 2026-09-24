@@ -4,6 +4,7 @@ import {
   LOBBY_COPY_CAPACITY,
   type LobbyChatPage,
   type LobbyPeople,
+  type PresentPerson,
   type RealtimeAdminApi,
   type Whereabouts,
 } from "../../shared-protocol/src";
@@ -22,6 +23,12 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
   async presenceCounts(roomIds: string[]): Promise<Record<string, number>> {
     const counts = await Promise.all(roomIds.map((id) => this.env.ROOM.getByName(id).presenceCount()));
     return Object.fromEntries(roomIds.map((id, index) => [id, counts[index]]));
+  }
+
+  /** Who is in each office, a dozen at most each: enough for faces and names on the dashboard. */
+  async officePresence(officeIds: string[]): Promise<Record<string, PresentPerson[]>> {
+    const people = await Promise.all(officeIds.map((id) => this.env.ROOM.getByName(id).presentPeople(12)));
+    return Object.fromEntries(officeIds.map((id, index) => [id, people[index]]));
   }
 
   async closeRoom(roomId: string): Promise<void> {
@@ -48,7 +55,7 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
       const people = await this.env.ROOM.getByName(lobbyCopy(number)).presentPeople(LOBBY_COPY_CAPACITY);
       empty = people.length ? 0 : empty + 1;
       here += people.length;
-      for (const one of people) if (faces.length < FACES) faces.push(one);
+      for (const one of people) if (faces.length < FACES) faces.push({ id: one.id, name: one.name });
     }
     return { here, faces };
   }

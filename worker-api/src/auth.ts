@@ -1,4 +1,4 @@
-import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter } from "../../shared-protocol/src";
+import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter, type PresentPerson } from "../../shared-protocol/src";
 import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
@@ -192,22 +192,22 @@ export function authRoutes(router: Router): void {
       if (!results.length) return json({ user: publicUser(user), offices: [] });
 
       // A few faces per office for the dashboard, and who is on each floor now.
-      const [faces, here] = await Promise.all([
+      const [faces, inNow] = await Promise.all([
         env.DB.prepare(
-          `SELECT m.office_id, u.id, u.display_name FROM memberships m JOIN users u ON u.id = m.user_id
+          `SELECT m.office_id, u.id, u.display_name, u.character FROM memberships m JOIN users u ON u.id = m.user_id
            WHERE m.office_id IN (SELECT office_id FROM memberships WHERE user_id = ?)
            ORDER BY m.joined_at`,
         )
           .bind(user.id)
-          .all<{ office_id: string; id: string; display_name: string }>(),
+          .all<{ office_id: string; id: string; display_name: string; character: string }>(),
         realtime(env)
-          .presenceCounts(results.map((office) => office.id))
-          .catch(() => ({}) as Record<string, number>),
+          .officePresence(results.map((office) => office.id))
+          .catch(() => ({}) as Record<string, PresentPerson[]>),
       ]);
-      const byOffice = new Map<string, { id: string; name: string }[]>();
+      const byOffice = new Map<string, { id: string; name: string; character: string }[]>();
       for (const row of faces.results) {
         const list = byOffice.get(row.office_id) ?? [];
-        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name });
+        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name, character: row.character });
         byOffice.set(row.office_id, list);
       }
       return json({
@@ -215,7 +215,8 @@ export function authRoutes(router: Router): void {
         offices: results.map((office) => ({
           ...office,
           faces: byOffice.get(office.id) ?? [],
-          here: here[office.id] ?? 0,
+          here: inNow[office.id]?.length ?? 0,
+          inNow: inNow[office.id] ?? [],
         })),
       });
     })

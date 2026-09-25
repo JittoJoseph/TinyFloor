@@ -282,8 +282,10 @@ function RoomEnded({
   const canRetry = reason === "full" || reason === "replaced";
 
   return (
-    <EntryShell backHref={leaveHref} backLabel={t("back")}>
-      <div className="entry-rise">
+    <EntryShell
+      backHref={leaveHref}
+      backLabel={t("back")}
+      header={
         <EntryHeader
           mark={
             <span className="flex size-12 items-center justify-center rounded-[30%] bg-warn/15 text-warn">
@@ -293,14 +295,15 @@ function RoomEnded({
           title={copy[reason].title}
           subtitle={copy[reason].body}
         />
-        {reason === "signedOut" ? (
-          <ActionLink href="/auth">{t("signIn")}</ActionLink>
-        ) : canRetry ? (
-          <ActionButton onClick={onRetry}>{reason === "replaced" ? t("useHere") : t("tryAgain")}</ActionButton>
-        ) : (
-          <ActionLink href={leaveHref}>{t("back")}</ActionLink>
-        )}
-      </div>
+      }
+    >
+      {reason === "signedOut" ? (
+        <ActionLink href="/auth">{t("signIn")}</ActionLink>
+      ) : canRetry ? (
+        <ActionButton onClick={onRetry}>{reason === "replaced" ? t("useHere") : t("tryAgain")}</ActionButton>
+      ) : (
+        <ActionLink href={leaveHref}>{t("back")}</ActionLink>
+      )}
     </EntryShell>
   );
 }

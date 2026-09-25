@@ -101,8 +101,7 @@ export function WalkIn({
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-    >
-      <div className="entry-rise">
+      header={
         <EntryHeader
           mark={mark}
           eyebrow={eyebrow}
@@ -111,70 +110,70 @@ export function WalkIn({
           detail={detail}
           action={sharePath && <CopyLink path={sharePath} />}
         />
-
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (onCharacterStep) void walkIn();
-            else if (trimmed) {
-              setWentBack(false);
-              setOnCharacterStep(true);
-            }
-          }}
-        >
-          <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
-            {onCharacterStep ? (
-              <CharacterStep
-                name={trimmed}
-                character={character}
-                onCharacter={setCharacter}
-                onBack={() => {
-                  setWentBack(true);
-                  setOnCharacterStep(false);
-                }}
-              />
-            ) : (
-              <NameStep name={name} onName={setName} />
-            )}
-          </div>
-
-          {onCharacterStep && !isLoading && (
-            <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
+      }
+    >
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (onCharacterStep) void walkIn();
+          else if (trimmed) {
+            setWentBack(false);
+            setOnCharacterStep(true);
+          }
+        }}
+      >
+        <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
+          {onCharacterStep ? (
+            <CharacterStep
+              name={trimmed}
+              character={character}
+              onCharacter={setCharacter}
+              onBack={() => {
+                setWentBack(true);
+                setOnCharacterStep(false);
+              }}
+            />
+          ) : (
+            <NameStep name={name} onName={setName} />
           )}
+        </div>
 
-          {error && (
-            <div className="mt-4">
-              <ErrorNote>{error}</ErrorNote>
-            </div>
-          )}
-
-          <ActionButton
-            type="submit"
-            disabled={!trimmed || isLoading}
-            busy={busy}
-            busyLabel={t("openingDoor")}
-            className="mt-5"
-          >
-            {onCharacterStep ? t("walkIn") : t("continue")}
-          </ActionButton>
-        </form>
-        {onCharacterStep && <Agree className="mt-4" />}
-
-        {!isLoading && (
-          <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
-            {t.rich("guestNote", {
-              link: (chunks) => (
-                <Link
-                  href={`/auth?${new URLSearchParams({ redirect: pathname })}`}
-                  className="font-medium text-foreground underline-offset-2 hover:underline"
-                >
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
+        {onCharacterStep && !isLoading && (
+          <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
         )}
-      </div>
+
+        {error && (
+          <div className="mt-4">
+            <ErrorNote>{error}</ErrorNote>
+          </div>
+        )}
+
+        <ActionButton
+          type="submit"
+          disabled={!trimmed || isLoading}
+          busy={busy}
+          busyLabel={t("openingDoor")}
+          className="mt-5"
+        >
+          {onCharacterStep ? t("walkIn") : t("continue")}
+        </ActionButton>
+      </form>
+      {onCharacterStep && <Agree className="mt-4" />}
+
+      {!isLoading && (
+        <p className="mt-5 text-center text-[12.5px] text-muted-foreground">
+          {t.rich("guestNote", {
+            link: (chunks) => (
+              <Link
+                href={`/auth?${new URLSearchParams({ redirect: pathname })}`}
+                className="font-medium text-foreground underline-offset-2 hover:underline"
+              >
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
+      )}
     </EntryShell>
   );
 }

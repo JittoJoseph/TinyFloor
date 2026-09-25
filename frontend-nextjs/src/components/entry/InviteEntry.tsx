@@ -96,7 +96,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
   if (state === "loading" || isLoading) {
     return (
-      <EntryShell backHref="/">
+      <EntryShell backHref="/" header={<DoorHeaderSkeleton />}>
         <DoorSkeleton />
       </EntryShell>
     );
@@ -104,22 +104,21 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
   if (state === "invalid" || !invite) {
     return (
-      <EntryShell backHref="/">
-        <EntryProblem title={t("invalidTitle")} body={t("invalid")}>
-          <ActionLink href="/">{t("home")}</ActionLink>
-          <ActionLink href="/create" tone="secondary" icon={null}>
-            {tc("createOffice")}
-          </ActionLink>
-        </EntryProblem>
-      </EntryShell>
+      <EntryProblem backHref="/" title={t("invalidTitle")} body={t("invalid")}>
+        <ActionLink href="/">{t("home")}</ActionLink>
+        <ActionLink href="/create" tone="secondary" icon={null}>
+          {tc("createOffice")}
+        </ActionLink>
+      </EntryProblem>
     );
   }
 
   const back = invitePath(token);
 
   return (
-    <EntryShell backHref="/">
-      <div className="entry-rise">
+    <EntryShell
+      backHref="/"
+      header={
         <EntryHeader
           mark={<OfficeMark officeId={invite.officeId} />}
           eyebrow={t("eyebrow", { name: invite.invitedBy })}
@@ -139,108 +138,115 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             )
           }
         />
+      }
+    >
+      {error && (
+        <div className="mb-4">
+          <ErrorNote>{error}</ErrorNote>
+        </div>
+      )}
 
-        {error && (
+      {step === "account" && account ? (
+        <>
           <div className="mb-4">
-            <ErrorNote>{error}</ErrorNote>
+            <YouSummary name={user.displayName} character={character} />
           </div>
-        )}
-
-        {step === "account" && account ? (
-          <>
-            <div className="mb-4">
-              <YouSummary name={user.displayName} character={character} />
-            </div>
-            <ActionButton onClick={join} busy={busy}>
-              {t("join", { office: invite.officeName })}
-            </ActionButton>
-            <p className="mt-4 text-center text-[12.5px] text-muted-foreground">
-              {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
-            </p>
-          </>
-        ) : step === "account" ? (
-          <div className="space-y-2.5">
-            <div className="mb-4">
-              <YouSummary
+          <ActionButton onClick={join} busy={busy}>
+            {t("join", { office: invite.officeName })}
+          </ActionButton>
+          <p className="mt-4 text-center text-[12.5px] text-muted-foreground">
+            {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
+          </p>
+        </>
+      ) : step === "account" ? (
+        <div className="space-y-2.5">
+          <div className="mb-4">
+            <YouSummary
+              name={trimmed}
+              character={character}
+              changeLabel={t("change")}
+              onChange={() => {
+                setWentBack(true);
+                setStep("character");
+              }}
+            />
+          </div>
+          <ActionLink
+            href={`/auth?${new URLSearchParams({ mode: "signup", redirect: back })}`}
+            onClick={() => saveIdentity({ name: trimmed, character })}
+          >
+            {t("createAccount")}
+          </ActionLink>
+          <ActionLink
+            href={`/auth?${new URLSearchParams({ redirect: back })}`}
+            tone="secondary"
+            icon={null}
+            onClick={() => saveIdentity({ name: trimmed, character })}
+          >
+            {t("signIn")}
+          </ActionLink>
+          <p className="pt-2 text-center text-[12.5px] text-muted-foreground">
+            {t("accountKeeps", { name: trimmed })}
+          </p>
+        </div>
+      ) : (
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            setWentBack(false);
+            if (step === "name" && trimmed) setStep("character");
+            else if (step === "character") {
+              saveIdentity({ name: trimmed, character });
+              setStep("account");
+            }
+          }}
+        >
+          <div key={step} className="entry-step" data-back={wentBack}>
+            {step === "name" ? (
+              <NameStep name={name} onName={setName} />
+            ) : (
+              <CharacterStep
                 name={trimmed}
                 character={character}
-                changeLabel={t("change")}
-                onChange={() => {
+                onCharacter={setCharacter}
+                onBack={() => {
                   setWentBack(true);
-                  setStep("character");
+                  setStep("name");
                 }}
               />
-            </div>
-            <ActionLink
-              href={`/auth?${new URLSearchParams({ mode: "signup", redirect: back })}`}
-              onClick={() => saveIdentity({ name: trimmed, character })}
-            >
-              {t("createAccount")}
-            </ActionLink>
-            <ActionLink
-              href={`/auth?${new URLSearchParams({ redirect: back })}`}
-              tone="secondary"
-              icon={null}
-              onClick={() => saveIdentity({ name: trimmed, character })}
-            >
-              {t("signIn")}
-            </ActionLink>
-            <p className="pt-2 text-center text-[12.5px] text-muted-foreground">
-              {t("accountKeeps", { name: trimmed })}
-            </p>
+            )}
           </div>
-        ) : (
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setWentBack(false);
-              if (step === "name" && trimmed) setStep("character");
-              else if (step === "character") {
-                saveIdentity({ name: trimmed, character });
-                setStep("account");
-              }
-            }}
-          >
-            <div key={step} className="entry-step" data-back={wentBack}>
-              {step === "name" ? (
-                <NameStep name={name} onName={setName} />
-              ) : (
-                <CharacterStep
-                  name={trimmed}
-                  character={character}
-                  onCharacter={setCharacter}
-                  onBack={() => {
-                    setWentBack(true);
-                    setStep("name");
-                  }}
-                />
-              )}
-            </div>
-            <ActionButton type="submit" disabled={!trimmed} className="mt-5">
-              {step === "name" ? tEntry("continue") : t("readyToJoin")}
-            </ActionButton>
-          </form>
-        )}
-      </div>
+          <ActionButton type="submit" disabled={!trimmed} className="mt-5">
+            {step === "name" ? tEntry("continue") : t("readyToJoin")}
+          </ActionButton>
+        </form>
+      )}
     </EntryShell>
   );
 }
 
-/** The panel's shape while the door looks itself up. */
-export function DoorSkeleton() {
+/** The door's own shape while it looks itself up: the place, on the bezel. */
+export function DoorHeaderSkeleton() {
   return (
     <div aria-hidden>
       <div className="flex items-center gap-3.5">
-        <span className="size-12 animate-pulse rounded-[30%] bg-foreground/[0.07]" />
+        <span className="size-12 animate-pulse rounded-[30%] bg-foreground/[0.08]" />
         <span className="flex-1 space-y-2">
-          <span className="block h-3 w-24 animate-pulse rounded-full bg-foreground/[0.07]" />
-          <span className="block h-5 w-40 animate-pulse rounded-full bg-foreground/[0.07]" />
+          <span className="block h-3 w-24 animate-pulse rounded-full bg-foreground/[0.08]" />
+          <span className="block h-5 w-40 animate-pulse rounded-full bg-foreground/[0.08]" />
         </span>
       </div>
-      <span className="mt-4 block h-3.5 w-3/4 animate-pulse rounded-full bg-foreground/[0.07]" />
-      <div className="-mx-5 my-5 h-px bg-border sm:-mx-6" />
+      <span className="mt-4 block h-3.5 w-3/4 animate-pulse rounded-full bg-foreground/[0.08]" />
+    </div>
+  );
+}
+
+/** And what it will ask, in the panel. */
+export function DoorSkeleton() {
+  return (
+    <div aria-hidden>
       <span className="block h-3 w-20 animate-pulse rounded-full bg-foreground/[0.07]" />
-      <span className="mt-2 block h-12 w-full rounded-full border border-border" />
+      <span className="mt-2 block h-12 w-full rounded-full bg-rail" />
       <span className="mt-4 block h-11 w-full animate-pulse rounded-full bg-foreground/[0.07]" />
     </div>
   );

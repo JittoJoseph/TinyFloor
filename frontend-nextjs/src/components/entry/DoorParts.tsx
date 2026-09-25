@@ -64,8 +64,8 @@ export function CopyLink({ path }: { path: string }) {
 /** You as you'll walk in: your character, your name, and a way back to change it. */
 export function YouSummary({ name, character, onChange, changeLabel }: { name: string; character: string; onChange?: () => void; changeLabel?: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-border bg-background py-2 pe-3.5 ps-2">
-      <span className="relative block size-11 shrink-0 overflow-hidden rounded-xl bg-muted/60" style={{ containerType: "size" }} aria-hidden>
+    <div className="flex items-center gap-3 rounded-2xl bg-rail py-2 pe-3.5 ps-2">
+      <span className="relative block size-11 shrink-0 overflow-hidden rounded-xl bg-card" style={{ containerType: "size" }} aria-hidden>
         <PixelAvatar character={character} width="62cqw" style={{ left: "50%", top: "92%" }} />
       </span>
       <div className="min-w-0 flex-1">

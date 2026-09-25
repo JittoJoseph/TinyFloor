@@ -49,47 +49,46 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
     <EntryShell
       backHref={backHref}
       backLabel={tc("back")}
-    >
-      <div className="entry-rise">
+      header={
         <EntryHeader title={t("introTitle")} subtitle={t("introSubtitle")} />
-
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (onCharacterStep) void walkIn();
-            else if (typed) {
-              setWentBack(false);
-              setOnCharacterStep(true);
-            }
-          }}
-        >
-          <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
-            {onCharacterStep ? (
-              <CharacterStep
-                name={typed}
-                character={picked}
-                onCharacter={setCharacter}
-                onBack={() => {
-                  setWentBack(true);
-                  setOnCharacterStep(false);
-                }}
-              />
-            ) : (
-              <NameStep name={name ?? user.displayName} onName={setName} />
-            )}
-          </div>
-
-          {error && (
-            <div className="mt-4">
-              <ErrorNote>{error}</ErrorNote>
-            </div>
+      }
+    >
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (onCharacterStep) void walkIn();
+          else if (typed) {
+            setWentBack(false);
+            setOnCharacterStep(true);
+          }
+        }}
+      >
+        <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
+          {onCharacterStep ? (
+            <CharacterStep
+              name={typed}
+              character={picked}
+              onCharacter={setCharacter}
+              onBack={() => {
+                setWentBack(true);
+                setOnCharacterStep(false);
+              }}
+            />
+          ) : (
+            <NameStep name={name ?? user.displayName} onName={setName} />
           )}
+        </div>
 
-          <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")} className="mt-5">
-            {onCharacterStep ? t("walkIn") : t("continue")}
-          </ActionButton>
-        </form>
-      </div>
+        {error && (
+          <div className="mt-4">
+            <ErrorNote>{error}</ErrorNote>
+          </div>
+        )}
+
+        <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")} className="mt-5">
+          {onCharacterStep ? t("walkIn") : t("continue")}
+        </ActionButton>
+      </form>
     </EntryShell>
   );
 }

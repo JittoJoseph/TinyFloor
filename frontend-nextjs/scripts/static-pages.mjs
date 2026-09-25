@@ -1,8 +1,10 @@
-// After `opennextjs-cloudflare build`: every page built ahead of time, as a
-// plain HTML file the worker can hand out without starting Next (see
-// cf-worker.mjs). Next serves a built page by reading its cache entry (the
-// page and its RSC payload, 1MB and more), parsing and hashing it on every
-// request; the file is streamed as is, so a visit costs a millisecond or so.
+// After `opennextjs-cloudflare build`: every page built ahead of time, as
+// plain files the worker can hand out without starting Next (see
+// cf-worker.mjs): the page's HTML, its RSC payload (what the app fetches to
+// navigate to it) and the segments of that payload it prefetches. Next serves
+// a built page by reading its cache entry (all of those together, 1MB and
+// more), parsing and hashing it on every request; the files are streamed as
+// they are, so a request costs a millisecond or so.
 //
 // Only pages Next answers with a 200 are copied; a built redirect or 404 keeps
 // going through Next. The files go under /cdn-cgi, which only the worker can
@@ -21,7 +23,18 @@ const SKIP = new Set(["missing"]);
 
 const { routes } = JSON.parse(await readFile(join(root, ".next/prerender-manifest.json"), "utf8"));
 
-/** Each page's address and a hash of it, which the worker sends as its ETag. */
+async function copy(from, to) {
+  const content = await readFile(join(app, from));
+  await mkdir(dirname(join(out, to)), { recursive: true });
+  await writeFile(join(out, to), content);
+  return content;
+}
+
+/**
+ * Each page by address (`/de/about`): the ETag of its HTML, the headers Next
+ * sends with it (how long the app may keep it, for one), and the segments of
+ * its payload there are files for.
+ */
 const pages = {};
 for (const [route, entry] of Object.entries(routes)) {
   // Pages under a locale (/de/about), not Next's internals or metadata files.
@@ -30,11 +43,20 @@ for (const [route, entry] of Object.entries(routes)) {
   if (SKIP.has(rest[0])) continue;
   const meta = JSON.parse(await readFile(join(app, `${route}.meta`), "utf8").catch(() => "{}"));
   if (meta.status && meta.status !== 200) continue;
-  const html = await readFile(join(app, `${route}.html`));
-  const target = join(out, `${route}.html`);
-  await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, html);
-  pages[route] = `"${createHash("sha1").update(html).digest("base64url").slice(0, 16)}"`;
+
+  const html = await copy(`${route}.html`, `${route}.html`);
+  await copy(`${route}.rsc`, `${route}.rsc`);
+  const segments = [];
+  for (const segment of meta.segmentPaths ?? []) {
+    await copy(`${route}.segments${segment}.segment.rsc`, `${route}.segments${segment}.segment.rsc`);
+    segments.push(segment);
+  }
+  pages[route] = {
+    etag: `"${createHash("sha1").update(html).digest("base64url").slice(0, 16)}"`,
+    // Without the cache tags, which only Next's own cache reads.
+    headers: Object.fromEntries(Object.entries(meta.headers ?? {}).filter(([name]) => name !== "x-next-cache-tags")),
+    segments,
+  };
 }
 
 const site = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com");

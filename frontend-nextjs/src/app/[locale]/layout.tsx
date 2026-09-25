@@ -7,12 +7,9 @@ import { SITE_URL, X_HANDLE } from "@/lib/site";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { ogLocale, socialImage } from "@/lib/seo";
 import { siteGraph } from "@/lib/structured-data";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
-import { LocalTimeZone } from "@/components/LocalTimeZone";
 import { fontVariables } from "../fonts";
 
 export function generateStaticParams() {
@@ -107,12 +104,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <LocalTimeZone>
-            <AuthProvider>
-              {children}
-              <GoogleOneTap />
-            </AuthProvider>
-          </LocalTimeZone>
+          {children}
         </NextIntlClientProvider>
         <GoogleAnalytics />
         <ClarityAnalytics />

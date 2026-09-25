@@ -23,16 +23,22 @@ function stream(seed: string) {
   };
 }
 
-const cache = new Map<string, string>();
-
 /** Coral, orange, green, teal, cyan, blue, indigo, violet, pink (OKLCH hue). */
 const BASE_HUES = [16, 48, 148, 176, 208, 242, 268, 300, 342];
 
 /** Hues where a darker shade reads as olive or brown. */
 const muddy = (h: number) => ((h % 360) + 360) % 360 > 72 && ((h % 360) + 360) % 360 < 132;
 
-/** The layered gradients for one seed: three blooms over a base, and a highlight. */
-export function faceBackground(seed: string): string {
+/** One seed's orb as numbers: three hues, where each bloom sits (in %), and the base's angle. */
+interface Tones {
+  hues: [number, number, number];
+  at: [number, number, number, number, number, number];
+  angle: number;
+}
+
+const cache = new Map<string, Tones>();
+
+function tones(seed: string): Tones {
   const hit = cache.get(seed);
   if (hit) return hit;
 
@@ -49,27 +55,50 @@ export function faceBackground(seed: string): string {
   const second = hue + side * spread;
   const nudge = hue - side * between(14, 30);
   const third = muddy(nudge) ? hue : nudge;
-  // OKLCH keeps every hue at the same brightness, so no face shouts louder.
-  const color = (h: number, l: number, c: number) => `oklch(${l} ${c} ${Math.round((h + 360) % 360)})`;
+  const wrap = (h: number) => Math.round((h + 360) % 360);
 
-  const x1 = between(14, 40);
-  const y1 = between(10, 36);
-  const x2 = between(60, 88);
-  const y2 = between(62, 90);
-  const x3 = between(18, 82);
-  const y3 = between(50, 84);
+  const at = [between(14, 40), between(10, 36), between(60, 88), between(62, 90), between(18, 82), between(50, 84)].map(Math.round);
+  const found: Tones = {
+    hues: [wrap(hue), wrap(second), wrap(third)],
+    at: at as Tones["at"],
+    angle: Math.round(between(115, 165)),
+  };
+  cache.set(seed, found);
+  return found;
+}
 
-  const background = [
+/**
+ * The layered gradients for one seed: three blooms over a base, and a
+ * highlight. OKLCH keeps every hue at the same brightness, so no face shouts
+ * louder. The same recipe is `.face-orb` in globals.css, which a Face uses so
+ * a page of faces carries only their numbers.
+ */
+export function faceBackground(seed: string): string {
+  const { hues, at, angle } = tones(seed);
+  const [h1, h2, h3] = hues;
+  return [
     // The light catching the top of a sphere.
     `radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.38) 0%, rgb(255 255 255 / 0) 36%)`,
-    `radial-gradient(circle at ${x1}% ${y1}%, ${color(hue, 0.8, 0.17)} 0%, transparent 60%)`,
-    `radial-gradient(circle at ${x2}% ${y2}%, ${color(second, 0.6, 0.22)} 0%, transparent 64%)`,
-    `radial-gradient(circle at ${x3}% ${y3}%, ${color(third, 0.7, 0.2)} 0%, transparent 56%)`,
-    `linear-gradient(${Math.round(between(115, 165))}deg in oklch, ${color(hue, 0.74, 0.19)}, ${color(second, 0.56, 0.21)})`,
+    `radial-gradient(circle at ${at[0]}% ${at[1]}%, oklch(0.8 0.17 ${h1}) 0%, transparent 60%)`,
+    `radial-gradient(circle at ${at[2]}% ${at[3]}%, oklch(0.6 0.22 ${h2}) 0%, transparent 64%)`,
+    `radial-gradient(circle at ${at[4]}% ${at[5]}%, oklch(0.7 0.2 ${h3}) 0%, transparent 56%)`,
+    `linear-gradient(${angle}deg in oklch, oklch(0.74 0.19 ${h1}), oklch(0.56 0.21 ${h2}))`,
   ].join(", ");
+}
 
-  cache.set(seed, background);
-  return background;
+/** A face's numbers, for `.face-orb`. */
+function faceVars(seed: string, size: number): CSSProperties {
+  const { hues, at, angle } = tones(seed);
+  return {
+    "--fs": `${size}px`,
+    "--f1": hues[0],
+    "--f2": hues[1],
+    "--f3": hues[2],
+    "--p1": `${at[0]}% ${at[1]}%`,
+    "--p2": `${at[2]}% ${at[3]}%`,
+    "--p3": `${at[4]}% ${at[5]}%`,
+    "--fa": `${angle}deg`,
+  } as CSSProperties;
 }
 
 /** Where someone is: on the floor and free, busy, away, or in a call. Null is not here. */
@@ -100,20 +129,11 @@ export const Face = memo(function Face({
   className?: string;
   title?: string;
 }) {
-  const style: CSSProperties = {
-    width: size,
-    height: size,
-    backgroundImage: faceBackground(seed),
-    // The shadow scales with the orb, so small ones stay crisp and big ones round.
-    boxShadow: `inset ${-size * 0.06}px ${-size * 0.08}px ${size * 0.18}px rgb(0 0 0 / 0.22), inset ${
-      size * 0.04
-    }px ${size * 0.05}px ${size * 0.12}px rgb(255 255 255 / 0.28)`,
-  };
   const dot = Math.max(8, Math.round(size * 0.3));
 
   return (
     <span className={cn("relative inline-flex shrink-0 align-middle", className)} title={title} aria-hidden={title ? undefined : true}>
-      <span className={cn("block", square ? "rounded-[30%]" : "rounded-full")} style={style} />
+      <span className={cn("face-orb block", square ? "rounded-[30%]" : "rounded-full")} style={faceVars(seed, size)} />
       {presence && (
         <span
           className={cn("absolute rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]", PRESENCE[presence])}

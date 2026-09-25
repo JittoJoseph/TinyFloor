@@ -1,9 +1,10 @@
-"use client";
+import { ChannelChat } from "@/components/app/ChannelChat";
 
-import { use } from "react";
-import { ChatView } from "@/components/app/ChatView";
+/** Built once, as `_`, for every conversation; the conversation is read from the address. */
+export function generateStaticParams() {
+  return [{ channel: "_" }];
+}
 
-export default function LobbyChannelPage({ params }: { params: Promise<{ channel: string }> }) {
-  const { channel } = use(params);
-  return <ChatView channel={decodeURIComponent(channel)} />;
+export default function ChannelPage() {
+  return <ChannelChat />;
 }

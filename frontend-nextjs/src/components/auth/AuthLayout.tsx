@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
-import { Logo } from "@/components/app/AppShell";
+import { Logo } from "@/components/app/Logo";
 
 /**
  * Signing in and up: the form on its own, in the middle of the page, the way

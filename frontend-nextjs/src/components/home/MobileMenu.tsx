@@ -2,12 +2,11 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 /**
  * The nav on a phone: one button that opens a sheet of the same links under
- * the bar. The links are rendered on the server; this only opens and closes
- * the sheet, and closes it again when one of them is followed.
+ * the bar. The links come from the server with the page, and are drawn when
+ * the sheet opens; it closes again when one of them is followed.
  */
 export function MobileMenu({ label, children }: { label: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -30,13 +29,14 @@ export function MobileMenu({ label, children }: { label: string; children: React
       >
         {open ? <X className="size-[18px]" /> : <Menu className="size-[18px]" />}
       </button>
-      <div
-        hidden={!open}
-        onClick={(event) => (event.target as HTMLElement).closest("a") && setOpen(false)}
-        className={cn("absolute inset-x-3 top-full mt-1 max-h-[calc(100dvh-5rem)] overflow-y-auto rounded-[22px] border border-border bg-card p-5 shadow-float")}
-      >
-        {children}
-      </div>
+      {open && (
+        <div
+          onClick={(event) => (event.target as HTMLElement).closest("a") && setOpen(false)}
+          className="absolute inset-x-3 top-full mt-1 max-h-[calc(100dvh-5rem)] overflow-y-auto rounded-[22px] border border-border bg-card p-5 shadow-float"
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 }

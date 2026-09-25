@@ -13,11 +13,11 @@ import { useChat } from "@/lib/useChat";
 import { clearFloor } from "@/lib/floor";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
-import { Loader } from "@/components/motion/loader";
 import { AppShell } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { OfficeSwitcher } from "./OfficeSwitcher";
 import { PlaceProvider, type Place } from "./place";
+import { Entering } from "./Entering";
 import { ChatNudges } from "./ChatNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
@@ -47,8 +47,22 @@ export function useOffice(): OfficeContext {
   return value;
 }
 
-/** An office: the shell with the floor inside it. Members walk straight in as the character on their account. */
-export function OfficeShell({ officeId, children }: { officeId: string; children: React.ReactNode }) {
+/**
+ * An office: the shell with the floor inside it. Which office is read from the
+ * address, since one page serves them all, and the shell is keyed by it, so
+ * moving to another office starts at its door.
+ */
+export function OfficeShell({ children }: { children: React.ReactNode }) {
+  const officeId = decodeURIComponent(usePathname().match(/\/office\/([^/]+)/)?.[1] ?? "");
+  return (
+    <Office key={officeId} officeId={officeId}>
+      {children}
+    </Office>
+  );
+}
+
+/** Members walk straight in as the character on their account. */
+function Office({ officeId, children }: { officeId: string; children: React.ReactNode }) {
   const t = useTranslations("office");
   const ts = useTranslations("shell");
   const router = useRouter();
@@ -128,15 +142,9 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   }
 
   // A new account says who it is at its first door, before its office opens.
-  if (user && user.introduced === false) return <Introduce />;
+  if (!isLoading && user && user.introduced === false) return <Introduce />;
 
-  if (!read || !office || !user) {
-    return (
-      <div className="flex min-h-dvh items-center justify-center bg-background text-muted-foreground">
-        <Loader variant="dots" size={20} />
-      </div>
-    );
-  }
+  if (!read || !office || !user) return <Entering />;
 
   const floor = officePath(office.id);
   const chatPath = officeChatPath(office.id);

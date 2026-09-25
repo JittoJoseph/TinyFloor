@@ -229,6 +229,23 @@ body {
   }
 }
 
+/* A person's face (components/ui/Face.tsx, faceBackground): three blooms over
+   a base and a highlight, with a shadow that scales with the orb so small ones
+   stay crisp and big ones round. Each face sets only its numbers. */
+.face-orb {
+  width: var(--fs);
+  height: var(--fs);
+  background-image:
+    radial-gradient(circle at 30% 22%, rgb(255 255 255 / 0.38) 0%, rgb(255 255 255 / 0) 36%),
+    radial-gradient(circle at var(--p1), oklch(0.8 0.17 var(--f1)) 0%, transparent 60%),
+    radial-gradient(circle at var(--p2), oklch(0.6 0.22 var(--f2)) 0%, transparent 64%),
+    radial-gradient(circle at var(--p3), oklch(0.7 0.2 var(--f3)) 0%, transparent 56%),
+    linear-gradient(var(--fa) in oklch, oklch(0.74 0.19 var(--f1)), oklch(0.56 0.21 var(--f2)));
+  box-shadow:
+    inset calc(var(--fs) * -0.06) calc(var(--fs) * -0.08) calc(var(--fs) * 0.18) rgb(0 0 0 / 0.22),
+    inset calc(var(--fs) * 0.04) calc(var(--fs) * 0.05) calc(var(--fs) * 0.12) rgb(255 255 255 / 0.28);
+}
+
 @keyframes entry-rise {
   from {
     opacity: 0;
@@ -242,6 +259,18 @@ body {
 
 .entry-rise {
   animation: entry-rise 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Before the session is known: the door for someone new, and for someone this
+   browser remembers, a quiet "coming in" instead (lib/session-hint.ts). */
+.when-known {
+  display: none;
+}
+.known .when-known {
+  display: flex;
+}
+.known .when-new {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

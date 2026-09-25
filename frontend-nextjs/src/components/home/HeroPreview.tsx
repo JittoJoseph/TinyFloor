@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useSettled } from "@/lib/hooks/use-settled";
 import type { PreviewView } from "./previews/Frame";
 
 const VIEWS: PreviewView[] = ["floor", "chat", "people", "meeting"];
@@ -10,7 +11,8 @@ const DWELL_MS = 6500;
 
 /**
  * The hero's look inside the app. The four views, frames and all, are rendered
- * on the server and sent as markup; this only chooses which one shows. It moves
+ * on the server; the first is in the page's markup and the rest are drawn once
+ * the page has settled, and this chooses which one shows. It moves
  * on by itself: a line under each tab fills while the view shows, and the next
  * one comes when it's full. Pressing a tab or the rail shows that view and
  * carries on from it. The fill is a
@@ -29,6 +31,8 @@ export function HeroPreview({
   const [view, setView] = useState<PreviewView>("floor");
   const [offscreen, setOffscreen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  // Only the view that shows first is in the page's markup; the others are drawn once it has settled.
+  const settled = useSettled();
 
   // The nav's "Meetings" links here: arriving by it opens the meeting view.
   useEffect(() => {
@@ -106,7 +110,7 @@ export function HeroPreview({
             hidden={view !== one}
             className="transition-[opacity,translate] duration-300 ease-out starting:translate-y-1 starting:opacity-0 motion-reduce:transition-none"
           >
-            {panels[one]}
+            {(one === view || settled) && panels[one]}
           </div>
         ))}
       </div>

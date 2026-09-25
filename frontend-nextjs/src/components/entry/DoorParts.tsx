@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Check, Link2 } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
 import { LitFace } from "@/components/ui/LitFace";
-import { Logo } from "@/components/app/AppShell";
+import { Logo } from "@/components/app/Logo";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { shareUrl } from "@/lib/links";
 

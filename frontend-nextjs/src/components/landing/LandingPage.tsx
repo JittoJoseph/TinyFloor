@@ -28,7 +28,7 @@ import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
-import { Logo } from "@/components/app/AppShell";
+import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import {

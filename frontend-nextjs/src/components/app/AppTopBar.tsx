@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/lib/i18n/navigation";
-import { Logo } from "./AppShell";
+import { Logo } from "./Logo";
 import { LanguageMenu } from "./LanguageMenu";
 import { YouMenu } from "./YouMenu";
 

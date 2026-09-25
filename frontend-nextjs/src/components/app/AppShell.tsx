@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
+import { Logo } from "./Logo";
 import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
@@ -277,20 +278,4 @@ export function ShellView({
   );
 }
 
-/** The mark for the lobby and anywhere the product speaks for itself: a floor tile, from above. */
-export function Logo({ size = 36, className }: { size?: number; className?: string }) {
-  return (
-    <span
-      className={cn("inline-flex items-center justify-center rounded-[30%] bg-foreground text-background", className)}
-      style={{ width: size, height: size }}
-      aria-hidden
-    >
-      <svg viewBox="0 0 16 16" width={size * 0.5} height={size * 0.5} shapeRendering="crispEdges">
-        <rect x="1" y="1" width="6" height="6" fill="currentColor" />
-        <rect x="9" y="1" width="6" height="6" fill="currentColor" opacity="0.45" />
-        <rect x="1" y="9" width="6" height="6" fill="currentColor" opacity="0.45" />
-        <rect x="9" y="9" width="6" height="6" fill="var(--ui-brand)" />
-      </svg>
-    </span>
-  );
-}
+export { Logo };

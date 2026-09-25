@@ -7,7 +7,7 @@ import { Dock, DockSeparator } from "@/components/motion/dock";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { setMyStatus } from "@/lib/floor";
+import { setInCall } from "@/lib/floor";
 import { useRouter } from "@/lib/i18n/navigation";
 
 /**
@@ -25,12 +25,12 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
   // Phones and some browsers cannot share a screen, so the button only exists where it works.
   const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
 
-  // Everyone sees "in a call" while you are in one, and "available" after.
+  // Everyone sees "in a call" while you are in one, and your own status again after.
   const wasInCall = useRef(inCall);
   useEffect(() => {
     if (wasInCall.current === inCall) return;
     wasInCall.current = inCall;
-    setMyStatus(inCall ? "in_call" : "available");
+    setInCall(inCall);
   }, [inCall]);
 
   return (

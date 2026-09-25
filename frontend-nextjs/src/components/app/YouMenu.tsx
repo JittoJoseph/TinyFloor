@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
-const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn" };
+const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
 
 /**
  * You, at the bottom of the rail: your face with your status on it, and one
@@ -83,7 +83,16 @@ export function YouMenu({
         <>
           <MenuSeparator />
           <MenuLabel>{t("status")}</MenuLabel>
-          {STATUSES.map((one) => (
+          {status === "in_call" ? (
+            // A call sets it, and ending the call gives yours back: nothing to pick until then.
+            <div className="flex items-start gap-2.5 px-2.5 py-2">
+              <span className={cn("mt-[5px] size-2 shrink-0 rounded-full", STATUS_DOT.in_call)} />
+              <span className="min-w-0">
+                <span className="block text-[13px] font-medium text-foreground">{tStatus("in_call.label")}</span>
+                <span className="block text-[12px] text-muted-foreground">{tStatus("in_call.description")}</span>
+              </span>
+            </div>
+          ) : STATUSES.map((one) => (
             <MenuItem
               key={one}
               checked={status === one}

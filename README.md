@@ -58,7 +58,7 @@ TinyFloor is a 2D virtual office in your browser. Your team walks around a share
 </table>
 
 - **Meeting tables** for group video calls with screen sharing. Sit down to join, stand up to leave.
-- **Guest links** let clients and candidates in with a name and a character, no account needed.
+- **Invite links** bring teammates in: they pick a name and a character and join with a free account.
 - **Whiteboard and room music** for the moments between calls.
 - **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
 - **Private offices** for your team, and a public lobby anyone can walk into.
@@ -91,7 +91,7 @@ Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor offic
 
 ### Is it private?
 
-An office is only for its members and the guests they let in. Nothing inside it is public or indexed, and calls are encrypted in transit.
+An office is only for its members. Nothing inside it is public or indexed, and calls are encrypted in transit.
 
 ## Open source
 

@@ -14,8 +14,6 @@ export interface RoomTicket {
   role: RoomRole;
   cap: number;
   exp: number;
-  /** The guest link this ticket came from, so revoking the link removes its guests. */
-  link?: string;
 }
 
 export const TICKET_LIFETIME_MS = 60_000;

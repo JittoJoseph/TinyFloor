@@ -80,7 +80,6 @@ export function PeoplePreview({ count = 5, narrow = false, mini = false }: { cou
         {[
           { label: tp("members"), count: count, on: true },
           { label: tp("invitations"), count: 1 },
-          { label: tp("guests"), count: 1 },
         ].map((tab) => (
           <span
             key={tab.label}

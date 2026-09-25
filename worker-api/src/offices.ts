@@ -1,6 +1,5 @@
 import {
   cleanName,
-  floorCapacity,
   realtime,
   requireOffice,
   seatsUsed,
@@ -52,16 +51,6 @@ export function officeRoutes(router: Router): void {
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
 
-    // What a link to the office shows when it's pasted in a chat: its name and
-    // how many are in it, no more. The id is the link's own secret, as a token is.
-    .add("GET", "/v1/offices/:id/card", async ({ env, params }) => {
-      const office = await env.DB.prepare("SELECT id, name FROM offices WHERE id = ?")
-        .bind(params.id)
-        .first<{ id: string; name: string }>();
-      if (!office) throw new HttpError(404, "office_not_found", "No such office");
-      return json({ office: { id: office.id, name: office.name, members: await seatsUsed(env, office.id) } });
-    })
-
     .add("PATCH", "/v1/offices/:id", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);
@@ -78,7 +67,7 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
-      // Members, invites and guest links go with it (ON DELETE CASCADE), and so do its floor and chat.
+      // Members and invites go with it (ON DELETE CASCADE), and so do its floor and chat.
       await env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id).run();
       await realtime(env).forgetOffice(params.id);
       return json({ ok: true });
@@ -89,13 +78,12 @@ export function officeRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       const admin = office.role === "admin";
-      const [members, invites, guestLinks, people] = await Promise.all([
+      const [members, invites, people] = await Promise.all([
         membersOf(env, params.id),
         admin ? invitesOf(env, params.id) : [],
-        admin ? guestLinksOf(env, params.id) : [],
         headcount(env, params.id),
       ]);
-      return json({ office: officeJson(office, members.length), members, invites, guestLinks, people });
+      return json({ office: officeJson(office, members.length), members, invites, people });
     })
 
     .add("PATCH", "/v1/offices/:id/members/:userId", async ({ request, env, ctx, params }) => {
@@ -274,17 +262,6 @@ export async function invitesOf(env: Env, officeId: string) {
   }));
 }
 
-/** Guest links that have not expired or been revoked. */
-export async function guestLinksOf(env: Env, officeId: string) {
-  const { results } = await env.DB.prepare(
-    `SELECT id, created_at, expires_at FROM guest_links
-     WHERE office_id = ? AND revoked_at IS NULL AND expires_at > ? ORDER BY created_at DESC`,
-  )
-    .bind(officeId, Date.now())
-    .all<{ id: string; created_at: number; expires_at: number }>();
-  return results.map((row) => ({ id: row.id, createdAt: row.created_at, expiresAt: row.expires_at }));
-}
-
 /** Everyone in an office, oldest member first. */
 export async function membersOf(env: Env, officeId: string) {
   const { results } = await env.DB.prepare(
@@ -326,7 +303,6 @@ export function officeJson(office: Office, members: number) {
     plan: office.plan,
     seats: office.seats,
     members,
-    capacity: floorCapacity(office.seats),
     role: office.role,
     owner: office.ownerId,
   };

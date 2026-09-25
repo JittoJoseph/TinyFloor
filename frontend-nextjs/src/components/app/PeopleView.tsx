@@ -3,12 +3,12 @@
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { ArrowRight, Check, Link2, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
+import { ArrowRight, Check, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type GuestLink, type Invite, type OfficeOverview } from "@/lib/api";
-import { guestLinkPath, invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
+import { api, ApiError, type Invite, type OfficeOverview } from "@/lib/api";
+import { invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
@@ -81,12 +81,6 @@ function OfficePeople() {
   const full = used >= office.seats;
   const expires = (at: number) => t("expires", { date: format.dateTime(new Date(at), { dateStyle: "medium" }) });
 
-  const newGuestLink = () =>
-    run(async () => {
-      const { guestLink } = await api.createGuestLink(office.id, "7d");
-      await share(guestLinkPath(guestLink.token), "guest");
-    });
-
   const invite = () =>
     run(async () => {
       const { invite: made } = await api.createInvite(office.id, { role: "member" });
@@ -139,11 +133,6 @@ function OfficePeople() {
             {admin && (
               <TabsTrigger value="invitations">
                 {t("invitations")} <TabCount value={data?.invites.length ?? 0} />
-              </TabsTrigger>
-            )}
-            {admin && (
-              <TabsTrigger value="guests">
-                {t("guests")} <TabCount value={data?.guestLinks.length ?? 0} />
               </TabsTrigger>
             )}
           </TabsList>
@@ -250,45 +239,6 @@ function OfficePeople() {
             </TabsContent>
           )}
 
-          {admin && (
-            <TabsContent value="guests" className="mt-5">
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <p className="max-w-2xl text-[13px] text-muted-foreground">{t("guestsNote")}</p>
-                {!!data?.guestLinks.length && <Button
-                  variant="secondary"
-                  size="sm"
-                  disabled={busy}
-                  className="h-9 gap-2 px-3.5 text-[13px]"
-                  onClick={newGuestLink}
-                >
-                  {copied === "guest" ? <Check className="size-4" /> : <Link2 className="size-4" />}
-                  {copied === "guest" ? t("copied") : t("newGuestLink")}
-                </Button>}
-              </div>
-              <LinkList
-                empty={
-                  <Empty
-                    icon={<Link2 />}
-                    title={t("noGuestLinks")}
-                    body={t("noGuestLinksBody")}
-                    actions={
-                      <Chip solid icon={<Link2 />} onClick={newGuestLink}>
-                        {t("newGuestLink")}
-                      </Chip>
-                    }
-                  />
-                }
-                items={(data?.guestLinks ?? []).map((one: GuestLink) => ({
-                  id: one.id,
-                  icon: <Link2 className="size-4" />,
-                  title: t("guestLink"),
-                  detail: expires(one.expiresAt),
-                  onRevoke: () => run(() => api.revokeGuestLink(office.id, one.id).then()),
-                }))}
-                revoke={t("revoke")}
-              />
-            </TabsContent>
-          )}
         </Tabs>
       </div>
     </div>

@@ -7,8 +7,6 @@
     "joinTitle": "Gå med i rummet",
     "joinRoomTitle": "Gå med i {office}",
     "joinRoomDescription": "Du är inbjuden till {office} på TinyFloor, ett virtuellt kontor du går runt i. Öppna länken, välj en figur och gå in.",
-    "officeTitle": "{office} på TinyFloor",
-    "officeDescription": "{office} på TinyFloor, ett virtuellt kontor du går runt i. Öppna länken för att gå in.",
     "authTitle": "Logga in",
     "authDescription": "Logga in på TinyFloor för att behålla ditt namn, din karaktär och en lista över dina rum.",
     "createTitle": "Skapa ditt kontor",
@@ -76,11 +74,11 @@
       },
       {
         "q": "Behöver jag ett konto för att gå med i ett rum?",
-        "a": "Inte för den offentliga lobbyn. Där kan vem som helst gå in som gäst med bara ett namn. Rum i en arbetsyta är privata: kollegor loggar in med ett gratis konto och besökare kommer in via en gästlänk."
+        "a": "Inte för den öppna lobbyn: där kan vem som helst gå in som gäst med bara ett namn. Ett kontor är privat: kollegor går med via en inbjudan, med ett gratiskonto."
       },
       {
         "q": "Är TinyFloor privat och säkert?",
-        "a": "En våning är bara för sina medlemmar och de gäster de släpper in, och inget där inne är offentligt eller indexeras av sökmotorer. Samtal krypteras under överföringen av WebRTC, och din kamera och mikrofon är bara på under ett samtal."
+        "a": "En våning är bara för sina medlemmar, och inget där inne är offentligt eller indexeras av sökmotorer. Samtal krypteras under överföringen av WebRTC, och din kamera och mikrofon är bara på under ett samtal."
       },
       {
         "q": "Hur skiljer sig TinyFloor från Zoom eller Google Meet?",
@@ -146,12 +144,6 @@
     "introTitle": "Innan du går in",
     "introSubtitle": "Vad ska andra kalla dig, och vem är du på våningen?"
   },
-  "join": {
-    "unavailableTitle": "Den dörren går inte att öppna.",
-    "linkUnavailable": "Den här gästlänken har gått ut eller stängts av. Be den som skickade den om en ny.",
-    "visitLobby": "Besök lobbyn",
-    "invitedAsGuest": "Du är inbjuden som gäst."
-  },
   "room": {
     "connecting": "Ansluter...",
     "leave": "Lämna",
@@ -166,7 +158,7 @@
       "closedTitle": "Rummet är stängt",
       "closed": "Ägaren har stängt det här kontoret.",
       "revokedTitle": "Din åtkomst har upphört",
-      "revoked": "Gästlänken du kom in med har stängts av.",
+      "revoked": "Du är inte längre medlem i det här kontoret.",
       "signedOutTitle": "Du är utloggad",
       "signedOut": "Logga in igen för att gå in.",
       "notFoundTitle": "Rummet hittades inte",
@@ -443,8 +435,8 @@
             "body": "Allt fungerar i webbläsaren, på datorn och i mobilen. Dela en länk så är teamet inne på några sekunder."
           },
           {
-            "title": "Gäster går rakt in",
-            "body": "Kollegor kommer in med ett gratis konto, och alla andra kan komma in via en gästlänk med bara ett namn."
+            "title": "En länk för att gå med",
+            "body": "Skicka en inbjudningslänk. Kollegor väljer namn och figur, skapar ett gratiskonto och går in."
           }
         ],
         "them": {
@@ -486,8 +478,8 @@
             "body": "Bjud in alla. Rummen rymmer 20 personer samtidigt, och du kan öppna fler rum när du behöver."
           },
           {
-            "title": "Ingen veckogräns för gäster",
-            "body": "Kumospace ger gratisgäster 4 timmar i veckan. I TinyFloor går en gäst med med ett namn och stannar så länge den vill."
+            "title": "Prova innan du registrerar dig",
+            "body": "Gå in i TinyFloors öppna lobby med bara ett namn och prova våningen innan du skapar ett kontor."
           },
           {
             "title": "Gjort för mobilen också",
@@ -511,7 +503,7 @@
           },
           {
             "q": "Behöver mina kollegor ett konto?",
-            "a": "Kollegor använder ett gratis konto, så era rum hålls privata. Alla andra kan komma in som gäst med bara ett namn, via en gästlänk eller den offentliga lobbyn."
+            "a": "Ja, ett gratiskonto, som håller ditt kontor privat för teamet. Vill man se sig om först kan vem som helst gå in i den öppna lobbyn med bara ett namn."
           },
           {
             "q": "Fungerar TinyFloor i mobilen?",
@@ -628,7 +620,7 @@
           },
           {
             "title": "Fortfarande i webbläsaren",
-            "body": "Öppna en länk, välj en figur och du är inne. Gäster behöver inget konto."
+            "body": "Öppna en inbjudningslänk, välj en figur och du är inne. Den öppna lobbyn kräver inget konto alls."
           },
           {
             "title": "Gratis och öppet hela dagen",
@@ -765,7 +757,7 @@
           },
           {
             "q": "Är det gratis för studenter?",
-            "a": "Ja. TinyFloor är gratis för en liten grupp, och vänner kan komma in via en gästlänk utan konto."
+            "a": "Ja. TinyFloor är gratis för en liten grupp. Skicka en inbjudningslänk till dina vänner så går de med med ett gratiskonto."
           },
           {
             "q": "Kan vi lyssna på musik medan vi pluggar?",
@@ -810,7 +802,7 @@
           },
           {
             "q": "Kan jag hålla klassrummet privat?",
-            "a": "Ja. Rum i en arbetsyta är privata. Dela en gästlänk med klassen och stäng av den när ni är klara."
+            "a": "Ja. Ett kontor är privat för sina medlemmar. Bjud in klassen med en länk och ta bort folk från kontoret när kursen är slut."
           },
           {
             "q": "Är det gratis för lärare?",
@@ -882,7 +874,7 @@
       },
       "invites": {
         "title": "Inbjudningar ingår i ett kontor",
-        "body": "Bjud in ditt team via e-post eller släpp in en gäst med en länk, i ditt eget kontor."
+        "body": "Bjud in ditt team via e-post eller med en länk, i ett eget kontor."
       },
       "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
       "go": "Skapa mitt kontor",
@@ -901,7 +893,7 @@
         "private": "Ett privat plan",
         "channels": "Kanaler som finns kvar",
         "messages": "Direktmeddelanden",
-        "guests": "Gästlänkar"
+        "invites": "Inbjudningslänkar"
       },
       "bringThem": "{count, plural, one {Ta med personen du träffade här} other {Ta med de # personerna du träffade här}}"
     }
@@ -1014,16 +1006,12 @@
       "title": "Personer",
       "members": "Medlemmar",
       "invitations": "Väntande inbjudningar",
-      "guests": "Gäster",
-      "guestsNote": "En gäst kommer in via en länk. Det kostar ingen plats och de kan inte bjuda in någon.",
       "invite": "Bjud in",
       "seats": "{used} av {seats} platser",
       "seatsFull": "Alla platser är tagna.",
       "seatsFree": "Det finns plats kvar.",
       "onFloorNow": "{count} på våningen nu",
       "noInvitations": "Inga väntande inbjudningar",
-      "noGuestLinks": "Inga gästlänkar",
-      "newGuestLink": "Skapa gästlänk",
       "copied": "Kopierad",
       "revoke": "Återkalla",
       "remove": "Ta bort",
@@ -1046,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# plats kvar – bjud in någon} other {# platser kvar – bjud in någon}}",
       "seatsNote": "En plats är en medlem. Den som går frigör sin; att vara offline gör det inte.",
       "invitationsNote": "En inbjudan tar ingen plats. Den som tackar ja först får en, så länge det finns en ledig.",
-      "guestLink": "Gästlänk",
       "noInvitationsBody": "Bjud in någon – länken väntar här tills den accepteras eller går ut.",
-      "noGuestLinksBody": "Med en gästlänk kan en kund eller kandidat besöka golvet utan att ta en plats.",
       "allSeatsTaken": "Alla platser är tagna",
       "allSeatsTakenBody": "Den som går frigör en plats. Kontor med fler platser kommer snart.",
       "yourProfile": "Din profil",
@@ -1154,7 +1140,7 @@
         "meetings": "Mötesbord",
         "chat": "Chatt",
         "people": "Närvaro",
-        "guests": "Gäster"
+        "invites": "Inbjudningar"
       },
       "lobbyTitle": "Lobbyn är öppen",
       "lobbyBody": "Gå runt på ett riktigt våningsplan innan du skapar ditt eget. Inget konto behövs.",
@@ -1206,10 +1192,10 @@
         "muted": "Och gå direkt dit.",
         "body": "Se vem som är på planet, vem som är upptagen och vem som är i ett samtal. Tryck på Gå dit så hittar din figur vägen själv."
       },
-      "guests": {
-        "title": "Släpp in vem som helst.",
+      "invites": {
+        "title": "Ta in ditt team.",
         "muted": "Med en länk.",
-        "body": "Bjud in kollegor via e-post, eller skicka en gästlänk till en kund eller kandidat. De väljer ett namn och en figur och står på planet, utan konto."
+        "body": "Skicka en inbjudningslänk eller bjud in via e-post. De väljer ett namn och en figur, skapar ett gratiskonto och är på våningen."
       }
     },
     "versus": {
@@ -1253,7 +1239,7 @@
       },
       "invite": {
         "title": "Skicka länken till teamet.",
-        "body": "Bjud in kollegor via e-post, eller dela en gästlänk med vem som helst."
+        "body": "Bjud in kollegor via e-post, eller skicka dem en inbjudningslänk."
       },
       "walk": {
         "title": "Gå in.",
@@ -1297,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Privat från grunden",
-          "body": "Ett kontorsplan är bara för dess medlemmar och gästerna de släpper in. Inget är offentligt och inget indexeras."
+          "body": "Ett kontorsplan är bara för dess medlemmar. Inget är offentligt och inget indexeras."
         },
         "network": {
           "title": "På Cloudflares nätverk",
@@ -1324,7 +1310,7 @@
           "Närhetssamtal och mötesbord",
           "Skärmdelning",
           "Kanaler och direktmeddelanden",
-          "Gästlänkar för besökare"
+          "Inbjudningslänkar för teamet"
         ]
       },
       "soon": {
@@ -1365,12 +1351,11 @@
       "available": "Tillgänglig",
       "busy": "Upptagen",
       "away": "Borta",
-      "guestLink": "Gästlänk",
-      "guestNote": "Alla med den här länken kan hälsa på som gäst.",
+      "inviteLink": "Inbjudningslänk",
+      "inviteNote": "Alla med den här länken kan gå med, med ett gratiskonto.",
       "copy": "Kopiera",
       "invite": "Bjud in",
       "people": "Personer",
-      "guestArrived": "kom in som gäst",
       "roles": {
         "design": "Design",
         "engineering": "Utveckling",
@@ -1382,11 +1367,11 @@
       "directMessages": "Direktmeddelanden",
       "today": "I dag",
       "typing": "{name} skriver…",
-      "guest": "Gäst",
       "inviteTeammate": "Bjud in en kollega",
       "inviteTeammateNote": "De kommer in med en länk",
       "video": "Videosamtal",
-      "audio": "Röstsamtal"
+      "audio": "Röstsamtal",
+      "joined": "gick med i kontoret"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",

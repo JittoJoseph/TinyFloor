@@ -61,8 +61,6 @@ export interface OfficeSummary {
 }
 
 export interface Office extends OfficeSummary {
-  /** How many people fit on the floor at once: members plus room for guests. */
-  capacity: number;
   /** Who holds the subscription. */
   owner: string;
 }
@@ -84,17 +82,10 @@ export interface Invite {
   expiresAt: number;
 }
 
-export interface GuestLink {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
-}
-
 export interface OfficeOverview {
   office: Office;
   members: Member[];
   invites: Invite[];
-  guestLinks: GuestLink[];
   /** How many people are on the floor right now. */
   people: number;
 }
@@ -185,7 +176,6 @@ export const api = {
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
-  /** The popup's one-time code. */
   signInWithGoogle: (from: { code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
@@ -241,17 +231,9 @@ export const api = {
     ),
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
 
-  // Guest links
-  createGuestLink: (officeId: string, expiresIn: "1d" | "7d" | "30d") =>
-    post<{ guestLink: GuestLink & { token: string } }>(`/offices/${id(officeId)}/guest-links`, { expiresIn }),
-  revokeGuestLink: (officeId: string, linkId: string) =>
-    del<{ ok: true }>(`/offices/${id(officeId)}/guest-links/${id(linkId)}`),
-  guestLinkPreview: (token: string) => get<{ guestLink: { officeId: string; officeName: string } }>(`/guest-links/${id(token)}`),
-
   // Walking in, chatting, calling
   officeTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/ticket`),
   chatTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/chat-ticket`),
-  guestLinkTicket: (token: string) => post<RoomTicket>(`/guest-links/${id(token)}/ticket`),
   lobbyTicket: () => post<RoomTicket>("/lobby/ticket"),
   lobbyChatTicket: () => post<RoomTicket>("/lobby/chat-ticket"),
   /** Who is in the public lobby right now, for its door. */

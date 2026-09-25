@@ -7,8 +7,6 @@
     "joinTitle": "Dołącz do pokoju",
     "joinRoomTitle": "Dołącz do {office}",
     "joinRoomDescription": "Masz zaproszenie do pokoju {office} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, wybierz postać i wejdź.",
-    "officeTitle": "{office} w TinyFloor",
-    "officeDescription": "{office} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, aby wejść.",
     "authTitle": "Zaloguj się",
     "authDescription": "Zaloguj się do TinyFloor, aby zachować swoje imię, postać i listę pokoi.",
     "createTitle": "Utwórz biuro",
@@ -76,11 +74,11 @@
       },
       {
         "q": "Czy potrzebuję konta, żeby dołączyć do pokoju?",
-        "a": "Do publicznego lobby nie. Tam każdy może wejść jako gość, podając tylko imię. Pokoje w obszarze roboczym są prywatne: członkowie zespołu logują się darmowym kontem, a odwiedzający wchodzą przez link dla gości."
+        "a": "Nie do publicznego lobby: tam każdy może wejść jako gość z samym imieniem. Biuro jest prywatne: członkowie zespołu dołączają z zaproszenia, z darmowym kontem."
       },
       {
         "q": "Czy TinyFloor jest prywatny i bezpieczny?",
-        "a": "Piętro jest tylko dla jego członków i gości, których wpuszczą, a nic w środku nie jest publiczne ani indeksowane przez wyszukiwarki. Połączenia są szyfrowane w trakcie przesyłania przez WebRTC, a kamera i mikrofon działają tylko podczas rozmowy."
+        "a": "Piętro jest tylko dla jego członków, a nic w środku nie jest publiczne ani indeksowane przez wyszukiwarki. Połączenia są szyfrowane w trakcie przesyłania przez WebRTC, a kamera i mikrofon działają tylko podczas rozmowy."
       },
       {
         "q": "Czym TinyFloor różni się od Zooma czy Google Meet?",
@@ -146,12 +144,6 @@
     "introTitle": "Zanim wejdziesz",
     "introSubtitle": "Jak mają cię nazywać inni i kim będziesz na piętrze?"
   },
-  "join": {
-    "unavailableTitle": "Te drzwi się nie otwierają.",
-    "linkUnavailable": "Ten link dla gości wygasł lub został wyłączony. Poproś osobę, która go wysłała, o nowy.",
-    "visitLobby": "Odwiedź lobby",
-    "invitedAsGuest": "Masz zaproszenie jako gość."
-  },
   "room": {
     "connecting": "Łączenie...",
     "leave": "Wyjdź",
@@ -166,7 +158,7 @@
       "closedTitle": "Ten pokój jest zamknięty",
       "closed": "Właściciel zamknął to biuro.",
       "revokedTitle": "Twój dostęp wygasł",
-      "revoked": "Link dla gości, którym wszedłeś, został wyłączony.",
+      "revoked": "Nie jesteś już członkiem tego biura.",
       "signedOutTitle": "Wylogowano Cię",
       "signedOut": "Zaloguj się ponownie, aby wejść.",
       "notFoundTitle": "Nie znaleziono pokoju",
@@ -443,8 +435,8 @@
             "body": "Wszystko działa w przeglądarce, na komputerze i telefonie. Udostępnij link, a zespół wejdzie w kilka sekund."
           },
           {
-            "title": "Goście wchodzą od razu",
-            "body": "Członkowie zespołu wchodzą z darmowym kontem, a wszyscy inni przez link dla gości, podając tylko imię."
+            "title": "Jeden link, by dołączyć",
+            "body": "Wyślij link z zaproszeniem. Członkowie zespołu wybierają imię i postać, zakładają darmowe konto i wchodzą."
           }
         ],
         "them": {
@@ -486,8 +478,8 @@
             "body": "Zaproś wszystkich. Pokoje mieszczą 20 osób jednocześnie, a kolejne możesz otworzyć, kiedy chcesz."
           },
           {
-            "title": "Bez tygodniowego limitu dla gości",
-            "body": "Kumospace daje darmowym gościom 4 godziny tygodniowo. W TinyFloor gość dołącza z imieniem i zostaje, jak długo chce."
+            "title": "Wypróbuj przed rejestracją",
+            "body": "Wejdź do publicznego lobby TinyFloor z samym imieniem i wypróbuj piętro, zanim założysz biuro."
           },
           {
             "title": "Stworzone też na telefon",
@@ -511,7 +503,7 @@
           },
           {
             "q": "Czy moi współpracownicy potrzebują konta?",
-            "a": "Członkowie zespołu używają darmowego konta, dzięki czemu wasze pokoje są prywatne. Każdy inny może wejść jako gość, podając tylko imię, przez link dla gości albo publiczne lobby."
+            "a": "Tak, darmowego, dzięki któremu biuro jest prywatne dla zespołu. Żeby najpierw się rozejrzeć, każdy może wejść do publicznego lobby z samym imieniem."
           },
           {
             "q": "Czy TinyFloor działa na telefonie?",
@@ -628,7 +620,7 @@
           },
           {
             "title": "Wciąż w przeglądarce",
-            "body": "Otwórz link, wybierz postać i jesteś w środku. Goście nie potrzebują konta."
+            "body": "Otwórz link z zaproszeniem, wybierz postać i jesteś w środku. Publiczne lobby nie wymaga żadnego konta."
           },
           {
             "title": "Za darmo i otwarte cały dzień",
@@ -765,7 +757,7 @@
           },
           {
             "q": "Czy to jest darmowe dla uczniów i studentów?",
-            "a": "Tak. TinyFloor jest darmowy dla małej grupy, a znajomi mogą wejść przez link dla gości bez konta."
+            "a": "Tak. TinyFloor jest darmowy dla małej grupy. Wyślij znajomym link z zaproszeniem, a dołączą z darmowym kontem."
           },
           {
             "q": "Czy możemy słuchać muzyki podczas nauki?",
@@ -810,7 +802,7 @@
           },
           {
             "q": "Czy mogę zachować klasę jako prywatną?",
-            "a": "Tak. Pokoje w obszarze roboczym są prywatne. Udostępnij klasie link dla gości i wyłącz go, gdy skończycie."
+            "a": "Tak. Biuro jest prywatne dla jego członków. Zaproś klasę linkiem i usuń osoby z biura po zakończeniu kursu."
           },
           {
             "q": "Czy to jest darmowe dla nauczycieli?",
@@ -882,7 +874,7 @@
       },
       "invites": {
         "title": "Zaproszenia są częścią biura",
-        "body": "Zaproś zespół e-mailem albo wpuść gościa przez link, we własnym biurze."
+        "body": "Zaproś zespół mailem albo linkiem, we własnym biurze."
       },
       "free": "Utworzenie biura zajmuje minutę i jest darmowe dla maksymalnie 3 osób.",
       "go": "Utwórz moje biuro",
@@ -901,7 +893,7 @@
         "private": "Prywatne piętro",
         "channels": "Kanały, które zostają",
         "messages": "Wiadomości prywatne",
-        "guests": "Linki dla gości"
+        "invites": "Linki z zaproszeniem"
       },
       "bringThem": "{count, plural, one {Zabierz osobę poznaną tutaj} few {Zabierz # osoby poznane tutaj} many {Zabierz # osób poznanych tutaj} other {Zabierz # osoby poznane tutaj}}"
     }
@@ -1014,16 +1006,12 @@
       "title": "Ludzie",
       "members": "Członkowie",
       "invitations": "Oczekujące zaproszenia",
-      "guests": "Goście",
-      "guestsNote": "Gość wchodzi przez link. Nie zajmuje miejsca i nikogo nie zaprosi.",
       "invite": "Zaproś",
       "seats": "{used} z {seats} miejsc",
       "seatsFull": "Wszystkie miejsca zajęte.",
       "seatsFree": "Jest jeszcze miejsce.",
       "onFloorNow": "{count} na piętrze teraz",
       "noInvitations": "Brak oczekujących zaproszeń",
-      "noGuestLinks": "Brak linków dla gości",
-      "newGuestLink": "Utwórz link dla gości",
       "copied": "Skopiowano",
       "revoke": "Cofnij",
       "remove": "Usuń",
@@ -1046,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {Zostało # miejsce — zaproś kogoś} few {Zostały # miejsca — zaproś kogoś} many {Zostało # miejsc — zaproś kogoś} other {Zostało # miejsca — zaproś kogoś}}",
       "seatsNote": "Miejsce to członek. Kto odchodzi, zwalnia swoje; bycie offline nie.",
       "invitationsNote": "Zaproszenie nie zajmuje miejsca. Kto pierwszy przyjmie, ten je dostaje, póki jest wolne.",
-      "guestLink": "Link dla gościa",
       "noInvitationsBody": "Zaproś kogoś — link poczeka tu, aż zostanie przyjęty lub wygaśnie.",
-      "noGuestLinksBody": "Link dla gościa pozwala klientowi lub kandydatowi odwiedzić piętro bez zajmowania miejsca.",
       "allSeatsTaken": "Wszystkie miejsca są zajęte",
       "allSeatsTakenBody": "Kto odchodzi, zwalnia miejsce. Biura z większą liczbą miejsc już wkrótce.",
       "yourProfile": "Twój profil",
@@ -1154,7 +1140,7 @@
         "meetings": "Stoły konferencyjne",
         "chat": "Czat",
         "people": "Obecność",
-        "guests": "Goście"
+        "invites": "Zaproszenia"
       },
       "lobbyTitle": "Lobby jest otwarte",
       "lobbyBody": "Przejdź się po prawdziwym piętrze, zanim założysz własne. Bez konta.",
@@ -1206,10 +1192,10 @@
         "muted": "I podejdź prosto do niego.",
         "body": "Zobacz, kto jest na piętrze, kto jest zajęty, a kto w rozmowie. Dotknij Podejdź, a twoja postać sama znajdzie drogę."
       },
-      "guests": {
-        "title": "Wpuść każdego.",
+      "invites": {
+        "title": "Wprowadź swój zespół.",
         "muted": "Jednym linkiem.",
-        "body": "Zaproś współpracowników e-mailem albo wyślij link gościa do klienta lub kandydata. Wybierają imię i postać i są na piętrze, bez konta."
+        "body": "Wyślij link z zaproszeniem albo zaproś mailem. Wybierają imię i postać, zakładają darmowe konto i są na piętrze."
       }
     },
     "versus": {
@@ -1253,7 +1239,7 @@
       },
       "invite": {
         "title": "Wyślij link zespołowi.",
-        "body": "Zaproś współpracowników mailem albo udostępnij link gościa komukolwiek."
+        "body": "Zaproś członków zespołu mailem albo wyślij im link z zaproszeniem."
       },
       "walk": {
         "title": "Wejdź.",
@@ -1297,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Prywatne od podstaw",
-          "body": "Piętro biura jest tylko dla członków i gości, których wpuszczą. Nic nie jest publiczne i nic nie jest indeksowane."
+          "body": "Piętro biura jest tylko dla jego członków. Nic nie jest publiczne i nic nie jest indeksowane."
         },
         "network": {
           "title": "W sieci Cloudflare",
@@ -1324,7 +1310,7 @@
           "Rozmowy w pobliżu i stoły konferencyjne",
           "Udostępnianie ekranu",
           "Kanały i wiadomości prywatne",
-          "Linki gościa dla odwiedzających"
+          "Linki z zaproszeniem dla zespołu"
         ]
       },
       "soon": {
@@ -1365,12 +1351,11 @@
       "available": "Dostępny",
       "busy": "Zajęty",
       "away": "Nieobecny",
-      "guestLink": "Link gościa",
-      "guestNote": "Każdy z tym linkiem może wejść jako gość.",
+      "inviteLink": "Link z zaproszeniem",
+      "inviteNote": "Każdy z tym linkiem może dołączyć, z darmowym kontem.",
       "copy": "Kopiuj",
       "invite": "Zaproś",
       "people": "Ludzie",
-      "guestArrived": "weszła jako gość",
       "roles": {
         "design": "Design",
         "engineering": "Inżynieria",
@@ -1382,11 +1367,11 @@
       "directMessages": "Wiadomości prywatne",
       "today": "Dzisiaj",
       "typing": "{name} pisze…",
-      "guest": "Gość",
       "inviteTeammate": "Zaproś osobę z zespołu",
       "inviteTeammateNote": "Dołącza przez link",
       "video": "Rozmowa wideo",
-      "audio": "Rozmowa głosowa"
+      "audio": "Rozmowa głosowa",
+      "joined": "dołączył(a) do biura"
     },
     "footer": {
       "tagline": "Wirtualne biuro, po którym chodzisz.",

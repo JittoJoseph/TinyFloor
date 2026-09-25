@@ -27,11 +27,6 @@ describe("daily retention", () => {
            ('inv-live', ?1, ?7, 'member', ?3, 0, ?4, NULL)`,
       ).bind(office, crypto.randomUUID(), owner.id, now + 5 * DAY, now - 31 * DAY, crypto.randomUUID(), crypto.randomUUID()),
       env.DB.prepare(
-        `INSERT INTO guest_links (id, office_id, token_hash, created_by, created_at, expires_at, revoked_at) VALUES
-           ('link-old', ?6, ?1, ?2, 0, ?3, ?4),
-           ('link-live', ?6, ?5, ?2, 0, ?3, NULL)`,
-      ).bind(crypto.randomUUID(), owner.id, now + DAY, now - 31 * DAY, crypto.randomUUID(), office),
-      env.DB.prepare(
         "INSERT INTO usage_daily (day, office_id, peak_people) VALUES ('2020-01-01', ?1, 1), (?2, ?1, 1)",
       ).bind(office, new Date(now).toISOString().slice(0, 10)),
     ]);
@@ -44,15 +39,13 @@ describe("daily retention", () => {
     expect(await exists("invites", "inv-old-used")).toBe(false);
     expect(await exists("invites", "inv-old-expired")).toBe(false);
     expect(await exists("invites", "inv-live")).toBe(true);
-    expect(await exists("guest_links", "link-old")).toBe(false);
-    expect(await exists("guest_links", "link-live")).toBe(true);
     const usage = await env.DB.prepare("SELECT day FROM usage_daily WHERE office_id = ?").bind(office).all<{ day: string }>();
     expect(usage.results.map((row) => row.day)).toEqual([new Date(now).toISOString().slice(0, 10)]);
 
-    expect(report).toMatchObject({ guests: 1, invites: 2, guestLinks: 1, usage: 1 });
+    expect(report).toMatchObject({ guests: 1, invites: 2, usage: 1 });
     expect(report.sessions).toBeGreaterThanOrEqual(1);
 
     // Running again finds nothing left to do.
-    expect(await runRetention(env, now)).toMatchObject({ guests: 0, invites: 0, guestLinks: 0, usage: 0 });
+    expect(await runRetention(env, now)).toMatchObject({ guests: 0, invites: 0, usage: 0 });
   });
 });

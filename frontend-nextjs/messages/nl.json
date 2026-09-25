@@ -7,8 +7,6 @@
     "joinTitle": "Ruimte binnengaan",
     "joinRoomTitle": "Doe mee met {office}",
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
-    "officeTitle": "{office} op TinyFloor",
-    "officeDescription": "{office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link om binnen te lopen.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "createTitle": "Maak je kantoor",
@@ -76,11 +74,11 @@
       },
       {
         "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
-        "a": "Voor de openbare lobby niet. Daar kan iedereen als gast binnenlopen met alleen een naam. Ruimtes in een werkruimte zijn privé: teamleden loggen in met een gratis account en bezoekers komen binnen via een gastlink."
+        "a": "Niet voor de openbare lobby: daar kan iedereen als gast binnenlopen met alleen een naam. Een kantoor is privé: teamgenoten komen erbij via een uitnodiging, met een gratis account."
       },
       {
         "q": "Is TinyFloor privé en veilig?",
-        "a": "Een verdieping is alleen voor de leden en de gasten die zij binnenlaten, en niets daarbinnen is openbaar of wordt door zoekmachines geïndexeerd. Gesprekken zijn onderweg versleuteld door WebRTC, en je camera en microfoon staan alleen aan tijdens een gesprek."
+        "a": "Een verdieping is alleen voor de leden, en niets daarbinnen is openbaar of wordt door zoekmachines geïndexeerd. Gesprekken zijn onderweg versleuteld door WebRTC, en je camera en microfoon staan alleen aan tijdens een gesprek."
       },
       {
         "q": "Hoe verschilt TinyFloor van Zoom of Google Meet?",
@@ -146,12 +144,6 @@
     "introTitle": "Voordat je binnenloopt",
     "introSubtitle": "Hoe moeten anderen je noemen, en wie ben je op de verdieping?"
   },
-  "join": {
-    "unavailableTitle": "Die deur gaat niet open.",
-    "linkUnavailable": "Deze gastlink is verlopen of uitgezet. Vraag degene die hem stuurde om een nieuwe.",
-    "visitLobby": "Bezoek de lobby",
-    "invitedAsGuest": "Je bent uitgenodigd als gast."
-  },
   "room": {
     "connecting": "Verbinden...",
     "leave": "Verlaten",
@@ -166,7 +158,7 @@
       "closedTitle": "Deze ruimte is gesloten",
       "closed": "De eigenaar heeft dit kantoor gesloten.",
       "revokedTitle": "Je toegang is beëindigd",
-      "revoked": "De gastlink waarmee je binnenkwam, is uitgezet.",
+      "revoked": "Je bent geen lid meer van dit kantoor.",
       "signedOutTitle": "Je bent uitgelogd",
       "signedOut": "Log opnieuw in om weer binnen te gaan.",
       "notFoundTitle": "Ruimte niet gevonden",
@@ -443,8 +435,8 @@
             "body": "Alles werkt in de browser, op desktop en mobiel. Deel een link en je team is binnen enkele seconden binnen."
           },
           {
-            "title": "Gasten lopen zo naar binnen",
-            "body": "Teamleden komen binnen met een gratis account, en iedereen anders via een gastlink met alleen een naam."
+            "title": "Eén link om mee te doen",
+            "body": "Stuur een uitnodigingslink. Teamgenoten kiezen een naam en een personage, maken een gratis account en lopen binnen."
           }
         ],
         "them": {
@@ -486,8 +478,8 @@
             "body": "Nodig iedereen uit. Ruimtes bieden plek aan 20 mensen tegelijk, en je kunt altijd meer ruimtes openen."
           },
           {
-            "title": "Geen wekelijkse gastenlimiet",
-            "body": "Kumospace geeft gratis gasten 4 uur per week. In TinyFloor doet een gast mee met een naam en blijft zo lang als hij wil."
+            "title": "Probeer het voor je je aanmeldt",
+            "body": "Loop met alleen een naam de openbare lobby van TinyFloor binnen en probeer de verdieping voordat je een kantoor maakt."
           },
           {
             "title": "Ook gemaakt voor je telefoon",
@@ -511,7 +503,7 @@
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
-            "a": "Teamleden gebruiken een gratis account, zo blijven jullie ruimtes privé. Iedereen anders kan als gast binnenkomen met alleen een naam, via een gastlink of de openbare lobby."
+            "a": "Ja, een gratis account, zodat je kantoor privé blijft voor je team. Wie eerst wil rondkijken, loopt met alleen een naam de openbare lobby binnen."
           },
           {
             "q": "Werkt TinyFloor op een telefoon?",
@@ -628,7 +620,7 @@
           },
           {
             "title": "Nog steeds in de browser",
-            "body": "Open een link, kies een personage en je bent binnen. Gasten hebben geen account nodig."
+            "body": "Open een uitnodigingslink, kies een personage en je bent binnen. Voor de openbare lobby heb je helemaal geen account nodig."
           },
           {
             "title": "Gratis en de hele dag open",
@@ -765,7 +757,7 @@
           },
           {
             "q": "Is het gratis voor studenten?",
-            "a": "Ja. TinyFloor is gratis voor een kleine groep, en vrienden kunnen zonder account binnenkomen via een gastlink."
+            "a": "Ja. TinyFloor is gratis voor een kleine groep. Stuur je vrienden een uitnodigingslink en ze doen mee met een gratis account."
           },
           {
             "q": "Kunnen we muziek luisteren tijdens het studeren?",
@@ -810,7 +802,7 @@
           },
           {
             "q": "Kan ik het klaslokaal privé houden?",
-            "a": "Ja. Ruimtes in een werkruimte zijn privé. Deel een gastlink met je klas en zet hem uit als jullie klaar zijn."
+            "a": "Ja. Een kantoor is privé voor de leden. Nodig je klas uit met een link en haal mensen uit het kantoor als de cursus voorbij is."
           },
           {
             "q": "Is het gratis voor docenten?",
@@ -882,7 +874,7 @@
       },
       "invites": {
         "title": "Uitnodigingen horen bij een kantoor",
-        "body": "Nodig je team uit per e-mail of laat een gast binnen met een link, in je eigen kantoor."
+        "body": "Nodig je team uit per e-mail of met een link, in een eigen kantoor."
       },
       "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
       "go": "Maak mijn kantoor",
@@ -901,7 +893,7 @@
         "private": "Een privévloer",
         "channels": "Kanalen die blijven",
         "messages": "Privéberichten",
-        "guests": "Gastlinks"
+        "invites": "Uitnodigingslinks"
       },
       "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}"
     }
@@ -1014,16 +1006,12 @@
       "title": "Mensen",
       "members": "Leden",
       "invitations": "Openstaande uitnodigingen",
-      "guests": "Gasten",
-      "guestsNote": "Een gast komt binnen via een link. Dat kost geen plek en hij kan niemand uitnodigen.",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
       "seatsFree": "Er is nog plek.",
       "onFloorNow": "{count} nu op de vloer",
       "noInvitations": "Geen openstaande uitnodigingen",
-      "noGuestLinks": "Geen gastlinks",
-      "newGuestLink": "Gastlink maken",
       "copied": "Gekopieerd",
       "revoke": "Intrekken",
       "remove": "Verwijderen",
@@ -1046,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# plek vrij — nodig iemand uit} other {# plekken vrij — nodig iemand uit}}",
       "seatsNote": "Een plek is een lid. Wie vertrekt geeft die vrij; offline zijn niet.",
       "invitationsNote": "Een uitnodiging houdt geen plek bezet. Wie het eerst accepteert krijgt er een, zolang er een vrij is.",
-      "guestLink": "Gastlink",
       "noInvitationsBody": "Nodig iemand uit; de link wacht hier tot die wordt geaccepteerd of verloopt.",
-      "noGuestLinksBody": "Met een gastlink bezoekt een klant of kandidaat de vloer, zonder een plek in te nemen.",
       "allSeatsTaken": "Alle plekken zijn bezet",
       "allSeatsTakenBody": "Wie vertrekt, maakt een plek vrij. Kantoren met meer plekken komen eraan.",
       "yourProfile": "Je profiel",
@@ -1154,7 +1140,7 @@
         "meetings": "Vergadertafels",
         "chat": "Chat",
         "people": "Aanwezigheid",
-        "guests": "Gasten"
+        "invites": "Uitnodigingen"
       },
       "lobbyTitle": "De lobby is open",
       "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
@@ -1206,10 +1192,10 @@
         "muted": "En loop er meteen heen.",
         "body": "Zie wie er op de vloer is, wie bezig is en wie in gesprek. Tik op Loop erheen en je poppetje vindt zelf de weg."
       },
-      "guests": {
-        "title": "Laat iedereen binnen.",
+      "invites": {
+        "title": "Haal je team binnen.",
         "muted": "Met één link.",
-        "body": "Nodig teamgenoten uit per e-mail, of stuur een gastlink naar een klant of kandidaat. Die kiest een naam en een poppetje en staat op de vloer, zonder account."
+        "body": "Stuur een uitnodigingslink of nodig uit per e-mail. Ze kiezen een naam en een personage, maken een gratis account en staan op de verdieping."
       }
     },
     "versus": {
@@ -1253,7 +1239,7 @@
       },
       "invite": {
         "title": "Stuur je team de link.",
-        "body": "Nodig collega's uit per e-mail, of deel een gastlink met iedereen."
+        "body": "Nodig teamgenoten uit per e-mail, of stuur ze een uitnodigingslink."
       },
       "walk": {
         "title": "Loop binnen.",
@@ -1297,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Privé vanaf het begin",
-          "body": "Een kantoorvloer is alleen voor de leden en de gasten die zij binnenlaten. Niets is openbaar en niets wordt geïndexeerd."
+          "body": "Een kantoorvloer is alleen voor de leden. Niets is openbaar en niets wordt geïndexeerd."
         },
         "network": {
           "title": "Op het netwerk van Cloudflare",
@@ -1324,7 +1310,7 @@
           "Gesprekken op afstand en vergadertafels",
           "Scherm delen",
           "Kanalen en privéberichten",
-          "Gastlinks voor bezoek"
+          "Uitnodigingslinks voor je team"
         ]
       },
       "soon": {
@@ -1365,12 +1351,11 @@
       "available": "Beschikbaar",
       "busy": "Bezig",
       "away": "Weg",
-      "guestLink": "Gastlink",
-      "guestNote": "Iedereen met deze link kan als gast langskomen.",
+      "inviteLink": "Uitnodigingslink",
+      "inviteNote": "Iedereen met deze link kan meedoen, met een gratis account.",
       "copy": "Kopiëren",
       "invite": "Uitnodigen",
       "people": "Mensen",
-      "guestArrived": "kwam binnen als gast",
       "roles": {
         "design": "Design",
         "engineering": "Engineering",
@@ -1382,11 +1367,11 @@
       "directMessages": "Privéberichten",
       "today": "Vandaag",
       "typing": "{name} typt…",
-      "guest": "Gast",
       "inviteTeammate": "Teamgenoot uitnodigen",
       "inviteTeammateNote": "Ze komen binnen met een link",
       "video": "Videogesprek",
-      "audio": "Spraakgesprek"
+      "audio": "Spraakgesprek",
+      "joined": "is bij het kantoor gekomen"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",

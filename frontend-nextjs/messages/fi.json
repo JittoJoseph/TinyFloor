@@ -7,8 +7,6 @@
     "joinTitle": "Liity huoneeseen",
     "joinRoomTitle": "Liity huoneeseen {office}",
     "joinRoomDescription": "Sinut on kutsuttu huoneeseen {office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
-    "officeTitle": "{office} TinyFloorissa",
-    "officeDescription": "{office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki ja astu sisään.",
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
     "createTitle": "Luo toimistosi",
@@ -76,11 +74,11 @@
       },
       {
         "q": "Tarvitsenko tilin liittyäkseni huoneeseen?",
-        "a": "Julkiseen aulaan ei tarvita. Sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Työtilan huoneet ovat yksityisiä: tiimiläiset kirjautuvat ilmaisella tilillä, ja vierailijat tulevat sisään vieraslinkillä."
+        "a": "Ei julkiseen aulaan: sinne kuka tahansa voi tulla vieraana pelkällä nimellä. Toimisto on yksityinen: tiimiläiset liittyvät kutsulla ja ilmaisella tilillä."
       },
       {
         "q": "Onko TinyFloor yksityinen ja turvallinen?",
-        "a": "Kerros on vain sen jäsenille ja heidän sisään päästämilleen vieraille, eikä mikään sen sisällä ole julkista tai hakukoneiden indeksoimaa. WebRTC salaa puhelut siirron aikana, ja kamerasi ja mikrofonisi ovat päällä vain puhelun ajan."
+        "a": "Kerros on vain sen jäsenille, eikä mikään sen sisällä ole julkista tai hakukoneiden indeksoimaa. WebRTC salaa puhelut siirron aikana, ja kamerasi ja mikrofonisi ovat päällä vain puhelun ajan."
       },
       {
         "q": "Miten TinyFloor eroaa Zoomista tai Google Meetistä?",
@@ -146,12 +144,6 @@
     "introTitle": "Ennen kuin astut sisään",
     "introSubtitle": "Millä nimellä muut kutsuvat sinua, ja kuka olet kerroksessa?"
   },
-  "join": {
-    "unavailableTitle": "Tämä ovi ei aukea.",
-    "linkUnavailable": "Tämä vieraslinkki on vanhentunut tai poistettu käytöstä. Pyydä lähettäjältä uusi.",
-    "visitLobby": "Käy aulassa",
-    "invitedAsGuest": "Sinut on kutsuttu vieraaksi."
-  },
   "room": {
     "connecting": "Yhdistetään...",
     "leave": "Poistu",
@@ -166,7 +158,7 @@
       "closedTitle": "Huone on suljettu",
       "closed": "Omistaja sulki tämän toimiston.",
       "revokedTitle": "Pääsysi päättyi",
-      "revoked": "Vieraslinkki, jolla tulit, poistettiin käytöstä.",
+      "revoked": "Et ole enää tämän toimiston jäsen.",
       "signedOutTitle": "Olet kirjautunut ulos",
       "signedOut": "Kirjaudu uudelleen palataksesi sisään.",
       "notFoundTitle": "Huonetta ei löytynyt",
@@ -443,8 +435,8 @@
             "body": "Kaikki toimii selaimessa tietokoneella ja puhelimella. Jaa linkki, niin tiimisi on sisällä sekunneissa."
           },
           {
-            "title": "Vieraat pääsevät suoraan sisään",
-            "body": "Tiimiläiset tulevat sisään ilmaisella tilillä, ja kuka tahansa muu vieraslinkillä pelkällä nimellä."
+            "title": "Yksi linkki liittymiseen",
+            "body": "Lähetä kutsulinkki. Tiimiläiset valitsevat nimen ja hahmon, luovat ilmaisen tilin ja astuvat sisään."
           }
         ],
         "them": {
@@ -486,8 +478,8 @@
             "body": "Kutsu kaikki. Huoneisiin mahtuu kerralla 20 henkeä, ja voit avata lisää huoneita aina tarvittaessa."
           },
           {
-            "title": "Ei viikoittaista vierasrajaa",
-            "body": "Kumospace antaa ilmaisille vieraille 4 tuntia viikossa. TinyFloorissä vieras liittyy nimellä ja viipyy niin kauan kuin haluaa."
+            "title": "Kokeile ennen rekisteröitymistä",
+            "body": "Astu TinyFloorin julkiseen aulaan pelkällä nimellä ja kokeile kerrosta ennen kuin luot toimiston."
           },
           {
             "title": "Tehty myös puhelimelle",
@@ -511,7 +503,7 @@
           },
           {
             "q": "Tarvitsevatko tiimikaverini tilin?",
-            "a": "Tiimiläiset käyttävät ilmaista tiliä, joten huoneenne pysyvät yksityisinä. Kuka tahansa muu voi tulla vieraana pelkällä nimellä, vieraslinkillä tai julkisen aulan kautta."
+            "a": "Kyllä, ilmaisen, jolloin toimistosi pysyy tiimisi omana. Jos haluaa ensin katsella, kuka tahansa voi astua julkiseen aulaan pelkällä nimellä."
           },
           {
             "q": "Toimiiko TinyFloor puhelimella?",
@@ -628,7 +620,7 @@
           },
           {
             "title": "Yhä selaimessa",
-            "body": "Avaa linkki, valitse hahmo ja olet sisällä. Vieraat eivät tarvitse tiliä."
+            "body": "Avaa kutsulinkki, valitse hahmo, ja olet sisällä. Julkiseen aulaan ei tarvita tiliä lainkaan."
           },
           {
             "title": "Ilmainen ja auki koko päivän",
@@ -765,7 +757,7 @@
           },
           {
             "q": "Onko se ilmainen opiskelijoille?",
-            "a": "Kyllä. TinyFloor on ilmainen pienelle ryhmälle, ja ystävät pääsevät sisään vieraslinkillä ilman tiliä."
+            "a": "Kyllä. TinyFloor on ilmainen pienelle ryhmälle. Lähetä kavereillesi kutsulinkki, niin he liittyvät ilmaisella tilillä."
           },
           {
             "q": "Voimmeko kuunnella musiikkia opiskellessa?",
@@ -810,7 +802,7 @@
           },
           {
             "q": "Voinko pitää luokan yksityisenä?",
-            "a": "Kyllä. Työtilan huoneet ovat yksityisiä. Jaa vieraslinkki luokallesi ja poista se käytöstä, kun olette valmiita."
+            "a": "Kyllä. Toimisto on vain sen jäsenille. Kutsu luokkasi linkillä ja poista osallistujat toimistosta kurssin päätyttyä."
           },
           {
             "q": "Onko se ilmainen opettajille?",
@@ -882,7 +874,7 @@
       },
       "invites": {
         "title": "Kutsut kuuluvat toimistoon",
-        "body": "Kutsu tiimisi sähköpostilla tai päästä vieras sisään linkillä omassa toimistossasi."
+        "body": "Kutsu tiimisi sähköpostilla tai linkillä omaan toimistoon."
       },
       "free": "Toimiston luominen vie minuutin, ja se on ilmainen enintään 3 hengelle.",
       "go": "Luo toimistoni",
@@ -901,7 +893,7 @@
         "private": "Yksityinen kerros",
         "channels": "Kanavat, jotka säilyvät",
         "messages": "Yksityisviestit",
-        "guests": "Vieraslinkit"
+        "invites": "Kutsulinkit"
       },
       "bringThem": "{count, plural, one {Ota mukaan täällä tapaamasi ihminen} other {Ota mukaan täällä tapaamasi # ihmistä}}"
     }
@@ -1014,16 +1006,12 @@
       "title": "Ihmiset",
       "members": "Jäsenet",
       "invitations": "Odottavat kutsut",
-      "guests": "Vieraat",
-      "guestsNote": "Vieras tulee sisään linkillä. Hän ei vie paikkaa eikä voi kutsua ketään.",
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
       "seatsFree": "Tilaa on vielä.",
       "onFloorNow": "{count} kerroksessa nyt",
       "noInvitations": "Ei avoimia kutsuja",
-      "noGuestLinks": "Ei vieraslinkkejä",
-      "newGuestLink": "Luo vieraslinkki",
       "copied": "Kopioitu",
       "revoke": "Peru",
       "remove": "Poista",
@@ -1046,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# paikka vapaana – kutsu joku} other {# paikkaa vapaana – kutsu joku}}",
       "seatsNote": "Paikka on jäsen. Lähtijä vapauttaa omansa; offline-tila ei.",
       "invitationsNote": "Kutsu ei varaa paikkaa. Ensimmäinen hyväksyjä saa paikan, jos vapaita on.",
-      "guestLink": "Vieraslinkki",
       "noInvitationsBody": "Kutsu joku – linkki odottaa täällä, kunnes se hyväksytään tai vanhenee.",
-      "noGuestLinksBody": "Vieraslinkillä asiakas tai hakija voi käydä kerroksella viemättä paikkaa.",
       "allSeatsTaken": "Kaikki paikat on varattu",
       "allSeatsTakenBody": "Lähtijä vapauttaa paikan. Toimistoja, joissa on enemmän paikkoja, on tulossa.",
       "yourProfile": "Profiilisi",
@@ -1154,7 +1140,7 @@
         "meetings": "Neuvottelupöydät",
         "chat": "Chat",
         "people": "Läsnäolo",
-        "guests": "Vieraat"
+        "invites": "Kutsut"
       },
       "lobbyTitle": "Aula on auki",
       "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
@@ -1206,10 +1192,10 @@
         "muted": "Ja kävele suoraan luo.",
         "body": "Näe, kuka on kerroksessa, kuka on kiireinen ja kuka puhelussa. Napauta Kävele luo, niin hahmosi löytää tien itse."
       },
-      "guests": {
-        "title": "Päästä kuka tahansa sisään.",
+      "invites": {
+        "title": "Tuo tiimisi sisään.",
         "muted": "Yhdellä linkillä.",
-        "body": "Kutsu tiimiläisiä sähköpostilla tai lähetä vieraslinkki asiakkaalle tai hakijalle. He valitsevat nimen ja hahmon ja ovat kerroksessa, ilman tiliä."
+        "body": "Lähetä kutsulinkki tai kutsu sähköpostilla. He valitsevat nimen ja hahmon, luovat ilmaisen tilin ja ovat kerroksessa."
       }
     },
     "versus": {
@@ -1253,7 +1239,7 @@
       },
       "invite": {
         "title": "Lähetä linkki tiimillesi.",
-        "body": "Kutsu kollegat sähköpostilla tai jaa vieraslinkki kenelle tahansa."
+        "body": "Kutsu tiimiläiset sähköpostilla tai lähetä heille kutsulinkki."
       },
       "walk": {
         "title": "Astu sisään.",
@@ -1297,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Yksityinen lähtökohtaisesti",
-          "body": "Toimistokerros on vain sen jäsenille ja heidän päästämilleen vieraille. Mikään ei ole julkista, eikä mitään indeksoida."
+          "body": "Toimistokerros on vain sen jäsenille. Mikään ei ole julkista, eikä mitään indeksoida."
         },
         "network": {
           "title": "Cloudflaren verkossa",
@@ -1324,7 +1310,7 @@
           "Läheisyyspuhelut ja neuvottelupöydät",
           "Näytön jako",
           "Kanavat ja yksityisviestit",
-          "Vieraslinkit vierailijoille"
+          "Kutsulinkit tiimillesi"
         ]
       },
       "soon": {
@@ -1365,12 +1351,11 @@
       "available": "Tavoitettavissa",
       "busy": "Kiireinen",
       "away": "Poissa",
-      "guestLink": "Vieraslinkki",
-      "guestNote": "Kuka tahansa tällä linkillä voi vierailla vieraana.",
+      "inviteLink": "Kutsulinkki",
+      "inviteNote": "Kuka tahansa tämän linkin saanut voi liittyä ilmaisella tilillä.",
       "copy": "Kopioi",
       "invite": "Kutsu",
       "people": "Ihmiset",
-      "guestArrived": "tuli sisään vieraana",
       "roles": {
         "design": "Design",
         "engineering": "Kehitys",
@@ -1382,11 +1367,11 @@
       "directMessages": "Yksityisviestit",
       "today": "Tänään",
       "typing": "{name} kirjoittaa…",
-      "guest": "Vieras",
       "inviteTeammate": "Kutsu tiimiläinen",
       "inviteTeammateNote": "Hän liittyy linkillä",
       "video": "Videopuhelu",
-      "audio": "Äänipuhelu"
+      "audio": "Äänipuhelu",
+      "joined": "liittyi toimistoon"
     },
     "footer": {
       "tagline": "Virtuaalitoimisto, jossa kävelet ympäriinsä.",

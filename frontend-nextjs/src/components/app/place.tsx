@@ -20,8 +20,7 @@ export interface PlacePerson {
 export type OfficeFeature = "channels" | "directMessages" | "attachments" | "invites";
 
 export interface Place {
-  /** A visit is someone in on a guest link: the floor and their own settings, nothing else. */
-  kind: "office" | "lobby" | "visit";
+  kind: "office" | "lobby";
   /** The office's id, or "lobby". */
   id: string;
   name: string;

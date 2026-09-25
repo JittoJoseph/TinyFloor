@@ -240,14 +240,14 @@ export function Steps() {
         >
           <span className="flex items-center gap-1.5 text-[12px] font-semibold text-foreground">
             <Link2 className="size-3.5 text-muted-foreground" />
-            {t("home.preview.guestLink")}
+            {t("home.preview.inviteLink")}
           </span>
           <span className="flex h-10 items-center gap-2 rounded-full border border-border bg-card pe-1 ps-3.5">
             <span
               dir="ltr"
               className="min-w-0 flex-1 truncate text-[12px] text-muted-foreground"
             >
-              tinyfloor.com/join/x7k2q
+              tinyfloor.com/invite/x7k2q
             </span>
             <span className="flex h-8 items-center gap-1 rounded-full bg-foreground px-3 text-[11.5px] font-medium text-background">
               <span className="relative size-3">

@@ -33,7 +33,7 @@ const FEATURES = [
   { key: "meetings", hash: "meetings", icon: <Presentation /> },
   { key: "chat", hash: "chat", icon: <MessagesSquare /> },
   { key: "people", hash: "people", icon: <UsersRound /> },
-  { key: "guests", hash: "guests", icon: <Link2 /> },
+  { key: "invites", hash: "invites", icon: <Link2 /> },
 ] as const;
 
 /** An icon for each use case page. */

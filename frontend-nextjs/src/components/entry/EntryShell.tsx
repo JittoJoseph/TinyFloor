@@ -9,39 +9,40 @@ import { cn } from "@/lib/utils";
 import { AutoHeight } from "./AutoHeight";
 
 /**
- * Every door: one raised panel with the place and what it asks, on the app
- * shell's own rail. On a phone the panel rests at the bottom like a sheet.
+ * Every door, built like the app's shell: a black bezel, the way the rail
+ * frames the view, with the place written on it in light type (its header
+ * wears the dark theme in either theme), and what the door asks in a panel
+ * set into it. On a phone it rests at the bottom like a sheet.
  */
 export const EntryShell: React.FC<{
   backHref?: string;
   backLabel?: string;
+  /** The place: its mark, name and a line about it (an EntryHeader), on the bezel. */
+  header?: React.ReactNode;
   children: React.ReactNode;
-}> = ({ backHref = "/", backLabel, children }) => {
+}> = ({ backHref = "/", backLabel, header, children }) => {
   const t = useTranslations("common");
   const back = backLabel ?? t("back");
 
   return (
-    <div className="relative flex min-h-dvh w-full flex-col bg-rail [--face-ring:var(--ui-card)]">
+    <div className="relative flex min-h-dvh w-full flex-col bg-rail">
       <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1100px] items-center justify-between px-3 sm:px-6">
-        <Link
-          href={backHref}
-          className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 text-[13px] font-medium text-muted-foreground backdrop-blur-md transition-colors hover:text-foreground"
-        >
+        <Link href={backHref} className={chip}>
           <ArrowLeft className="size-4 rtl:rotate-180" />
           {back}
         </Link>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 py-1 pe-3 ps-1 text-[14px] font-semibold tracking-tight text-foreground backdrop-blur-md"
-        >
+        <Link href="/" className={cn(chip, "ps-1 font-semibold tracking-tight text-[#f2f2ef] dark:text-foreground")}>
           <Logo size={26} />
           TinyFloor
         </Link>
       </header>
       <main className="relative mx-auto flex w-full max-w-[448px] flex-1 flex-col justify-end px-3 pb-3 sm:justify-center sm:px-4 sm:pb-16">
-        <div className="rounded-[22px] border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_60px_-32px_rgb(0_0_0/0.5)]">
+        <div className="rounded-[30px] bg-[#09090a] p-1.5 shadow-[0_30px_70px_-34px_rgb(0_0_0/0.6)] dark:bg-black dark:shadow-[0_0_0_1px_rgb(255_255_255/0.07),0_30px_70px_-34px_rgb(0_0_0/0.8)]">
           <AutoHeight>
-            <div className="p-5 sm:p-6">{children}</div>
+            {header && <div className="entry-rise dark px-3.5 pb-4 pt-3.5 text-foreground [--face-ring:#09090a] sm:px-[18px] sm:pt-[18px]">{header}</div>}
+            <div className="rounded-[24px] bg-card p-5 [--face-ring:var(--ui-card)] sm:p-6">
+              <div className="entry-rise">{children}</div>
+            </div>
           </AutoHeight>
         </div>
       </main>
@@ -49,11 +50,14 @@ export const EntryShell: React.FC<{
   );
 };
 
+/** The two ways out above the door, black like its bezel: back where you came from, and home. */
+const chip =
+  "inline-flex h-9 items-center gap-1.5 rounded-full bg-[#09090a] px-3 text-[13px] font-medium text-[#bdbdb6] transition-colors hover:text-[#f2f2ef] dark:bg-[#161617] dark:text-muted-foreground dark:hover:text-foreground";
+
 /**
- * The top of a door's panel: the place's mark, a line above its name, a
+ * The top of a door, on its bezel: the place's mark, a line above its name, a
  * sentence about it, and anything that says who is in there. An action (a
- * link to copy, say) sits opposite the name. A rule separates it from what
- * the door asks.
+ * link to copy, say) sits opposite the name.
  */
 export function EntryHeader({
   mark,
@@ -78,13 +82,12 @@ export function EntryHeader({
         {mark && <div className="shrink-0">{mark}</div>}
         <div className={cn("min-w-0 flex-1", mark && !eyebrow && "self-center")}>
           {eyebrow && <p className="text-[12.5px] font-medium text-muted-foreground">{eyebrow}</p>}
-          <h1 className="break-words text-[24px] font-semibold leading-tight tracking-[-0.02em] text-foreground">{title}</h1>
+          <h1 className="break-words text-[27px] font-bold leading-tight tracking-[-0.03em] text-foreground">{title}</h1>
         </div>
         {action && <div className="-me-1.5 -mt-0.5 shrink-0">{action}</div>}
       </div>
       {subtitle && <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">{subtitle}</p>}
       {detail && <div className="mt-3.5">{detail}</div>}
-      <div className="-mx-5 my-5 h-px bg-border sm:-mx-6" />
     </div>
   );
 }
@@ -133,4 +136,4 @@ export const inputClass =
 
 /** The door's own field: a pill, like the one that names an office. */
 export const pillInputClass =
-  "h-12 w-full rounded-full border border-border bg-background px-5 text-[16px] text-foreground outline-none transition-[border-color] placeholder:text-faint focus:border-foreground/25 sm:text-[15px]";
+  "h-12 w-full rounded-full border border-transparent bg-rail px-5 text-[16px] text-foreground outline-none transition-[border-color] placeholder:text-faint focus:border-foreground/15 sm:text-[15px]";

@@ -16,11 +16,12 @@ import {
 } from "lucide-react";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
-import { Logo } from "@/components/app/AppShell";
+import { Logo } from "@/components/app/Logo";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { HomeNavActions } from "./HomeNavActions";
 import { MobileMenu } from "./MobileMenu";
+import { Later } from "./Later";
 import { ScrollHeader } from "./ScrollHeader";
 import { CAST } from "./previews/Frame";
 import { FloorPreview } from "./previews/FloorPreview";
@@ -52,7 +53,8 @@ const COMPARE = LANDINGS.filter((page) => page.group === "compare");
  * The site's nav. At the top of a page it lies flat; once the page moves it
  * floats (ScrollHeader). Two menus open on hover or focus: the product, and
  * who it's for, which leads on to the use case and comparison pages. The
- * menus are CSS only; a phone gets one sheet with the same links.
+ * menus open with CSS alone, and are drawn once the page has settled; a phone
+ * gets one sheet with the same links.
  */
 export function HomeNav() {
   const t = useTranslations("home");
@@ -194,7 +196,9 @@ function Menu({ label, className, children }: { label: string; className?: strin
           className,
         )}
       >
-        <div className="rounded-[20px] border border-border bg-card p-1.5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.25)]">{children}</div>
+        <div className="rounded-[20px] border border-border bg-card p-1.5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.25)]">
+          <Later>{children}</Later>
+        </div>
       </div>
     </div>
   );

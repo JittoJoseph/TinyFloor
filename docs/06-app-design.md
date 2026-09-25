@@ -137,8 +137,9 @@ The map gets the whole view. Floating chrome only:
   the people panel;
 - top right, **Invite** — in the public lobby only; an office invites from
   People, where the chip's people list also points;
-- bottom centre, the dock: mic, camera, and — only in a call — screen share,
-  speaker and hang up; then devices.
+- bottom centre, the dock: the mic, then settings. In a call it adds the
+  camera and screen share (off until you switch them on, and quiet while off:
+  filled when on, never red when off), the speaker and hanging up.
 
 The floor has no separate chat, in an office or in the lobby: the rail's Chat
 is the chat, and a new message shows as a toast over the floor that opens it.
@@ -165,7 +166,8 @@ is the chat, and a new message shows as a toast over the floor that opens it.
 
 Seats as a meter (`2 of 3 seats`), **Invite** as the primary action, then tabs:
 *Members* as a grid of cards (face, name, role, email, where they are, Message,
-admin menu), *Invitations*, *Guest links*.
+admin menu), and *Invitations*. An office is its members' alone: nobody visits
+on a link, and an invite link makes a member.
 
 ### Dashboard
 
@@ -173,11 +175,65 @@ A greeting, then office cards: the floor thumbnail with a live "3 on the floor"
 pill, name, members' faces, seats used, your role. A card to create an office
 and one for the public lobby. The same top bar and menu as everywhere else.
 
-### Doors and forms
+### Calls
 
-Sign-in, the door (name, character, mic and camera), invitations, creating an
-office: one centred panel on the canvas, the pixel preview as its header, the
-same inputs and buttons as the app.
+A call is a conversation, the way Slack's huddles are: it starts with voice,
+and the camera and a shared screen are there to switch on when there is
+something to see. Nothing about video is limited; it is simply never on by
+itself.
+
+- **Walking up to someone** shows their card beside them: face with presence,
+  name, how they are (Available, Busy…), a quiet *Message*, and one bold
+  **Call** pill with a phone. Already talking to them, the pill becomes a small
+  green *On your call*.
+- **The camera starts off in every call** and turns off when the call ends; it
+  is not remembered. The microphone is. Only someone who switches their camera
+  on sends video, and only while it is on. Meeting tables work the same way.
+- **While nobody shows anything, a call is a strip** at the top of the floor:
+  each person's face and name, an orange ring while they speak, a mic-off
+  mark. The video cards (16:9, click to enlarge) appear only once a camera or
+  a screen is on.
+- **The ring, on both ends,** is in the bezel (below), laid over every view so
+  it finds you in chat or settings too, and never blocking what you were doing:
+  - *Being called*: the caller's face with a green pulse and "Calling you" on
+    the bezel, their name in bold, and **Decline** and a green **Answer** set in
+    the panel. Top centre on a desktop, a sheet from the bottom on a phone.
+    Escape declines. Answering from another view keeps you there; the call
+    band in the presence dock has the camera, screen and hang up.
+  - *Calling*: a bezel pill with their face (a soft ripple), "Calling…" and
+    their name, and a red hang up, at the top centre, where the strip appears
+    once they pick up (under the floor's chips on a phone).
+  - *How it ended*, for a moment, in the same pill: **Declined**, **Busy right
+    now** or **No answer** to the caller; **Missed call** with **Message** to
+    whoever missed it.
+
+### Doors, rings and the bezel
+
+The app's bold surface is its shell's: a black bezel, the way the rail frames
+the view, with a panel set into it. beUI's own blocks do the same (a tray with
+a card inset in it, surfaces told apart by fill rather than borders), and it is
+what keeps a form from looking like every other form. The classes live in
+`components/ui/bezel.ts`.
+
+- **The bezel** is near-black (`#09090a`) in both themes, pure black with a
+  hairline white ring in dark. Radius 30px for a door, 28px for a ring card,
+  full for a pill; 6px of it shows around the panel.
+- **What sits on the bezel** (the place's mark, name and blurb; the caller)
+  wears the dark theme in either theme (`onBezel` puts `dark` on it), so every
+  token already reads as light on black. Titles are bold (27px on a door,
+  20px on a ring), chips keep their own look.
+- **The panel** is the theme's card, 24px radius on a door (22px on a ring),
+  holding what the place asks: fields, the character grid, the buttons. No rule
+  between the header and the panel; the panel's edge is the rule.
+- **Fields are wells:** filled with the rail's colour, no border, a faint
+  outline on focus. Your character card is a well too.
+- **Around a door:** the rail's colour, plain, and the two ways out (Back and
+  TinyFloor) as black chips in light, the panel's grey in dark. On a phone the
+  door rests at the bottom as a sheet; its height animates between steps.
+- Every door (the lobby, an invitation, the first introduction, a room that
+  ended, a link that doesn't work, a door still looking itself up) is
+  `EntryShell` with an `EntryHeader` on the bezel and its body in the panel.
+  Sign-in and creating an office are the other forms, in the app's frame.
 
 ## Motion budget
 
@@ -228,8 +284,8 @@ differs from the plan, or adds to it:
 - **Walk to.** A person on the floor has *Walk to* on their card in People and
   in chat: the view switches to the floor and your character pathfinds to
   them, the same way a click on a tile does.
-- **Guests on a guest link** get the shell with the floor and their own
-  settings: an office's chat and people are its members'.
+- **Guests are the public lobby's alone.** An office is for its members; an
+  invitation makes someone a member, once they have an account.
 - **The presence dock** (under every column) follows Discord's: a call band
   when you are in one (who with, camera, screen, hang up), then you, your
   status, microphone, speaker and settings, on the rail's colour. Pressing
@@ -260,8 +316,8 @@ differs from the plan, or adds to it:
   built on beUI's stateful button: it springs when pressed and morphs into a
   spinner while it waits, instead of swapping words.
 - **Nothing is ever just empty.** Where there is no data yet, the screen says
-  what will be there and offers the action that fills it: invite someone, make
-  a guest link, say the first thing in a channel, greet someone you have never
+  what will be there and offers the action that fills it: invite someone, say
+  the first thing in a channel, greet someone you have never
   written to. Being alone on the floor shows your face beside empty places.
 - **A reload keeps you inside.** Walking through a door is remembered for the
   tab, so refreshing lands you back on the floor; leaving through the app

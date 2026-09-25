@@ -85,6 +85,23 @@ export function setMyStatus(status: PlayerStatus) {
   mineListeners.forEach((listener) => listener());
 }
 
+/** What you had set before a call made you "in a call", to go back to after it. */
+let beforeCall: PlayerStatus | null = null;
+
+/**
+ * A call starting or ending: everyone sees "in a call" while it lasts, and
+ * whatever you had before once it's over. Your own choices wait until then.
+ */
+export function setInCall(inCall: boolean) {
+  if (inCall) {
+    if (mine !== "in_call") beforeCall = mine;
+    setMyStatus("in_call");
+  } else if (mine === "in_call") {
+    setMyStatus(beforeCall ?? "available");
+    beforeCall = null;
+  }
+}
+
 export function useMyStatus(): PlayerStatus {
   return useSyncExternalStore(
     (listener) => {

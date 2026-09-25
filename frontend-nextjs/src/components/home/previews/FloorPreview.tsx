@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Mic, MonitorUp, Settings2, Video } from "lucide-react";
+import { Mic, Settings2 } from "lucide-react";
 import { FaceStack } from "@/components/ui/Face";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, PEOPLE } from "@/components/floor/scenes";
@@ -27,18 +27,13 @@ function RoomChip({ count, className }: { count: number; className?: string }) {
   );
 }
 
-/** The dock along the bottom: mic, camera (off), screen, settings. */
+/** The dock along the bottom, between calls: the mic, and settings. */
 function Dock({ className }: { className?: string }) {
   return (
     <span className={cn("pointer-events-none flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-float ", className)}>
-      {[Mic, Video, MonitorUp].map((Icon, index) => (
-        <span
-          key={index}
-          className={cn("flex size-7 items-center justify-center rounded-full", index === 1 ? "bg-destructive/12 text-destructive" : "text-foreground")}
-        >
-          <Icon className="size-3.5" />
-        </span>
-      ))}
+      <span className="flex size-7 items-center justify-center rounded-full bg-muted text-foreground">
+        <Mic className="size-3.5" />
+      </span>
       <span className="mx-0.5 h-4 w-px bg-border" />
       <span className="flex size-7 items-center justify-center rounded-full text-muted-foreground">
         <Settings2 className="size-3.5" />

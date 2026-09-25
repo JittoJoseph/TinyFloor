@@ -305,10 +305,10 @@ export default function RoomTutorial({
         </div>
 
         <div
-          className="absolute left-[70px] top-3"
+          className="absolute left-[58px] top-3"
           style={{ animation: "tutorial-bar-in 4.8s ease-in-out infinite" }}
         >
-          <div className="relative">
+          <div className="relative origin-top-left scale-[0.9]">
             <ProximityActions
               player={{
                 id: GUIDE_ID,
@@ -321,7 +321,7 @@ export default function RoomTutorial({
             />
             <span
               className="absolute flex items-center justify-center pointer-events-none"
-              style={{ left: 44, top: 8 }}
+              style={{ right: 30, top: 10 }}
             >
               <Ripple animation="tutorial-tap-ripple 4.8s ease-out infinite" />
               <span className="absolute translate-x-3 translate-y-3">

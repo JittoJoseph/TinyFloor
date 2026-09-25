@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Hva er TinyFloor?",
-        "a": "TinyFloor er et virtuelt kontor du går rundt i. Teamet ditt vises som pikselfigurer i en felles 2D-etasje, og en video- eller talesamtale starter når du stiller deg ved siden av noen, ikke når du klikker på en møtelenke."
+        "a": "TinyFloor er et virtuelt kontor du går rundt i. Teamet ditt vises som pikselfigurer i en felles 2D-etasje, og en samtale starter når du stiller deg ved siden av noen, ikke når du klikker på en møtelenke."
       },
       {
         "q": "Hvordan fungerer nærhetsbasert videochat?",
-        "a": "Gå bort til noen, så dukker samtaleknappene opp ved siden av dem; trykk på en for å starte en video- eller taleanrop. Samtaler går over WebRTC gjennom Cloudflares nettverk, så de kobler til på ethvert kontor- eller hjemmenettverk, og de varer til noen legger på. Møtebord bærer gruppesamtaler: sett deg for å bli med, reis deg for å gå."
+        "a": "Gå bort til noen, så dukker en samtaleknapp opp ved siden av dem. Ett trykk starter samtalen, og når dere snakker, kan du slå på kameraet eller dele skjermen. Samtaler går over WebRTC gjennom Cloudflares nettverk, så de kobler til på ethvert kontor- eller hjemmenettverk, og de varer til noen legger på. Møtebord bærer gruppesamtaler: sett deg for å bli med, reis deg for å gå."
       },
       {
         "q": "Er TinyFloor gratis?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Inviter noen"
   },
   "call": {
-    "incomingVideo": "Innkommende videosamtale...",
-    "incomingAudio": "Innkommende taleanrop...",
+    "incoming": "Ringer deg",
+    "onCall": "I samtalen",
     "decline": "Avslå",
     "accept": "Godta",
     "tutorial": "Opplæringssamtale",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Tilkoblingen mislyktes",
       "unsupported": "Denne nettleseren har ikke tilgang til medieenheter",
-      "media": "Kamera eller mikrofon er ikke tilgjengelig",
+      "media": "Mikrofonen er ikke tilgjengelig",
       "camera": "Kameraet er ikke tilgjengelig"
-    }
+    },
+    "outcome": {
+      "declined": "Avvist",
+      "busy": "Opptatt akkurat nå",
+      "unanswered": "Ikke svar",
+      "missed": "Tapt anrop"
+    },
+    "dismiss": "Lukk"
   },
   "controls": {
     "status": "Status: {status}",
@@ -288,8 +295,8 @@
     "cancel": "Avbryt"
   },
   "proximity": {
-    "videoCall": "Videosamtale",
-    "audioCall": "Taleanrop"
+    "call": "Ring",
+    "onCall": "I samtale med deg"
   },
   "jukebox": {
     "title": "Romhøyttaler",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Gå bort for å prate",
-            "body": "Gå nær en kollega for å starte en video- eller lydsamtale. Ved møtebordet er alle i den samme samtalen."
+            "body": "Gå nær en kollega for å starte en samtale. Ved møtebordet er alle i den samme samtalen."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "Hvordan starter samtaler i TinyFloor?",
-            "a": "Gå bort til en kollega, så dukker samtalelinjen opp. Ett trykk starter video eller lyd. Ved møtebordet blir alle som setter seg med i den samme samtalen."
+            "a": "Gå bort til en kollega, så dukker samtalekortet opp. Ett trykk starter samtalen. Ved møtebordet blir alle som setter seg med i den samme samtalen."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Nærhetschat",
         "meta": {
           "title": "Gratis videochat etter nærhet i nettleseren",
-          "description": "Nærhetschat for team og venner: gå med figuren din bort til noen for å starte en video- eller lydsamtale. Gratis, i nettleseren, uten nedlasting."
+          "description": "Nærhetschat for team og venner: gå med figuren din bort til noen for å starte en samtale. Gratis, i nettleseren, uten nedlasting."
         },
         "title": "<em>Nærhetschat</em> som starter når du går bort.",
         "subtitle": "I TinyFloor avgjør hvor du står hvem du prater med. Gå bort til noen for å ringe, sett deg ved bordet for å prate i gruppe, og gå videre når du er ferdig.",
         "points": [
           {
             "title": "Nærhet starter samtalen",
-            "body": "Still deg ved siden av en kollega, så dukker en samtalelinje opp. Ett trykk åpner video eller lyd."
+            "body": "Still deg ved siden av en kollega, så dukker et samtalekort opp. Ett trykk starter samtalen."
           },
           {
             "title": "Grupper ved bordet",
@@ -1369,8 +1376,7 @@
       "typing": "{name} skriver…",
       "inviteTeammate": "Inviter en kollega",
       "inviteTeammateNote": "De kommer inn med en lenke",
-      "video": "Videosamtale",
-      "audio": "Taleanrop",
+      "call": "Ring",
       "joined": "ble med i kontoret"
     },
     "footer": {

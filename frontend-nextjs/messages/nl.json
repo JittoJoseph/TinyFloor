@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Wat is TinyFloor?",
-        "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een video- of spraakgesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
+        "a": "TinyFloor is een virtueel kantoor waar je in rondloopt. Je team verschijnt als pixel-art personages op een gedeelde 2D-verdieping, en een gesprek begint wanneer je naast iemand gaat staan, niet wanneer je op een vergaderlink klikt."
       },
       {
         "q": "Hoe werkt proximity-videochat?",
-        "a": "Loop naar iemand toe en de belknoppen verschijnen naast diegene; tik er een aan om een video- of spraakgesprek te starten. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
+        "a": "Loop naar iemand toe en er verschijnt een belknop naast diegene. Eén tik start het gesprek, en tijdens het praten kun je je camera aanzetten of je scherm delen. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
       },
       {
         "q": "Is TinyFloor gratis?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Iemand uitnodigen"
   },
   "call": {
-    "incomingVideo": "Inkomend videogesprek...",
-    "incomingAudio": "Inkomend spraakgesprek...",
+    "incoming": "Belt je",
+    "onCall": "In gesprek",
     "decline": "Weigeren",
     "accept": "Accepteren",
     "tutorial": "Tutorialgesprek",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Verbinding mislukt",
       "unsupported": "Deze browser heeft geen toegang tot mediaapparaten",
-      "media": "Camera of microfoon niet beschikbaar",
+      "media": "Microfoon niet beschikbaar",
       "camera": "Camera niet beschikbaar"
-    }
+    },
+    "outcome": {
+      "declined": "Geweigerd",
+      "busy": "Nu even bezet",
+      "unanswered": "Geen antwoord",
+      "missed": "Gemist gesprek"
+    },
+    "dismiss": "Sluiten"
   },
   "controls": {
     "status": "Status: {status}",
@@ -288,8 +295,8 @@
     "cancel": "Annuleren"
   },
   "proximity": {
-    "videoCall": "Videogesprek",
-    "audioCall": "Spraakgesprek"
+    "call": "Bellen",
+    "onCall": "In gesprek met jou"
   },
   "jukebox": {
     "title": "Ruimtespeaker",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Loop erheen om te praten",
-            "body": "Ga dicht bij een collega staan om een video- of spraakgesprek te starten. Aan de vergadertafel zit iedereen in één gesprek."
+            "body": "Ga dicht bij een collega staan om een gesprek te starten. Aan de vergadertafel zit iedereen in één gesprek."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "Hoe starten gesprekken in TinyFloor?",
-            "a": "Loop naar een collega en de gespreksbalk verschijnt. Eén tik start video of spraak. Aan de vergadertafel zit iedereen die gaat zitten in hetzelfde gesprek."
+            "a": "Loop naar een collega en de belkaart verschijnt. Eén tik start het gesprek. Aan de vergadertafel zit iedereen die gaat zitten in hetzelfde gesprek."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Proximity chat",
         "meta": {
           "title": "Gratis proximity videochat in de browser",
-          "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een video- of spraakgesprek te starten. Gratis, in de browser, zonder download."
+          "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een gesprek te starten. Gratis, in de browser, zonder download."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
         "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, ga aan tafel zitten om als groep te praten en loop verder als je klaar bent.",
         "points": [
           {
             "title": "Dichtbij komen start het gesprek",
-            "body": "Ga naast een collega staan en er verschijnt een gespreksbalk. Eén tik opent video of spraak."
+            "body": "Ga naast een collega staan en er verschijnt een belkaart. Eén tik start het gesprek."
           },
           {
             "title": "Groepen aan tafel",
@@ -1369,8 +1376,7 @@
       "typing": "{name} typt…",
       "inviteTeammate": "Teamgenoot uitnodigen",
       "inviteTeammateNote": "Ze komen binnen met een link",
-      "video": "Videogesprek",
-      "audio": "Spraakgesprek",
+      "call": "Bellen",
       "joined": "is bij het kantoor gekomen"
     },
     "footer": {

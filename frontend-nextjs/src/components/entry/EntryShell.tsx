@@ -7,6 +7,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { Logo } from "@/components/app/AppShell";
 import { cn } from "@/lib/utils";
 import { AutoHeight } from "./AutoHeight";
+import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
 
 /**
  * Every door, built like the app's shell: a black bezel, the way the rail
@@ -37,10 +38,10 @@ export const EntryShell: React.FC<{
         </Link>
       </header>
       <main className="relative mx-auto flex w-full max-w-[448px] flex-1 flex-col justify-end px-3 pb-3 sm:justify-center sm:px-4 sm:pb-16">
-        <div className="rounded-[30px] bg-[#09090a] p-1.5 shadow-[0_30px_70px_-34px_rgb(0_0_0/0.6)] dark:bg-black dark:shadow-[0_0_0_1px_rgb(255_255_255/0.07),0_30px_70px_-34px_rgb(0_0_0/0.8)]">
+        <div className={cn(bezel, "rounded-[30px] p-1.5")}>
           <AutoHeight>
-            {header && <div className="entry-rise dark px-3.5 pb-4 pt-3.5 text-foreground [--face-ring:#09090a] sm:px-[18px] sm:pt-[18px]">{header}</div>}
-            <div className="rounded-[24px] bg-card p-5 [--face-ring:var(--ui-card)] sm:p-6">
+            {header && <div className={cn(onBezel, "entry-rise px-3.5 pb-4 pt-3.5 sm:px-[18px] sm:pt-[18px]")}>{header}</div>}
+            <div className={cn(bezelPanel, "rounded-[24px] p-5 sm:p-6")}>
               <div className="entry-rise">{children}</div>
             </div>
           </AutoHeight>

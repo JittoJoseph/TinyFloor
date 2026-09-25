@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Mikä TinyFloor on?",
-        "a": "TinyFloor on virtuaalitoimisto, jossa liikut kävellen. Tiimisi näkyy pikselitaidehahmoina yhteisessä 2D-kerroksessa, ja video- tai äänipuhelu alkaa, kun asetut jonkun viereen, eikä silloin, kun napsautat palaverilinkkiä."
+        "a": "TinyFloor on virtuaalitoimisto, jossa liikut kävellen. Tiimisi näkyy pikselitaidehahmoina yhteisessä 2D-kerroksessa, ja puhelu alkaa, kun asetut jonkun viereen, eikä silloin, kun napsautat palaverilinkkiä."
       },
       {
         "q": "Miten läheisyyteen perustuva videochat toimii?",
-        "a": "Kävele jonkun luo, niin puhelupainikkeet ilmestyvät hänen viereensä; napauta yhtä aloittaaksesi video- tai äänipuhelun. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
+        "a": "Kävele jonkun luo, niin puhelupainike ilmestyy hänen viereensä. Napautus aloittaa puhelun, ja puhuessanne voit laittaa kameran päälle tai jakaa näyttösi. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
       },
       {
         "q": "Onko TinyFloor ilmainen?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Kutsu joku"
   },
   "call": {
-    "incomingVideo": "Saapuva videopuhelu...",
-    "incomingAudio": "Saapuva äänipuhelu...",
+    "incoming": "Soittaa sinulle",
+    "onCall": "Puhelussa",
     "decline": "Hylkää",
     "accept": "Vastaa",
     "tutorial": "Opastuspuhelu",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Yhteys epäonnistui",
       "unsupported": "Tämä selain ei pääse medialaitteisiin",
-      "media": "Kamera tai mikrofoni ei ole käytettävissä",
+      "media": "Mikrofoni ei ole käytettävissä",
       "camera": "Kamera ei ole käytettävissä"
-    }
+    },
+    "outcome": {
+      "declined": "Hylätty",
+      "busy": "Varattu juuri nyt",
+      "unanswered": "Ei vastausta",
+      "missed": "Vastaamaton puhelu"
+    },
+    "dismiss": "Sulje"
   },
   "controls": {
     "status": "Tila: {status}",
@@ -288,8 +295,8 @@
     "cancel": "Peruuta"
   },
   "proximity": {
-    "videoCall": "Videopuhelu",
-    "audioCall": "Äänipuhelu"
+    "call": "Soita",
+    "onCall": "Puhelussa kanssasi"
   },
   "jukebox": {
     "title": "Huoneen kaiutin",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Kävele juttelemaan",
-            "body": "Mene lähelle kollegaa aloittaaksesi video- tai äänipuhelun. Neuvottelupöydässä kaikki ovat samassa puhelussa."
+            "body": "Mene lähelle kollegaa aloittaaksesi puhelun. Neuvottelupöydässä kaikki ovat samassa puhelussa."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "Miten puhelut alkavat TinyFloorissä?",
-            "a": "Kävele kollegan luo, niin puhelupalkki ilmestyy. Yksi napautus aloittaa videon tai äänen. Neuvottelupöydässä kaikki istuutuvat liittyvät samaan puheluun."
+            "a": "Kävele kollegan luo, niin puhelukortti ilmestyy. Yksi napautus aloittaa puhelun. Neuvottelupöydässä kaikki istuutuvat liittyvät samaan puheluun."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Lähichat",
         "meta": {
           "title": "Ilmainen videolähichat selaimessa",
-          "description": "Lähichat tiimeille ja ystäville: kävele hahmollasi jonkun luo aloittaaksesi video- tai äänipuhelun. Ilmainen, selaimessa, ei latauksia."
+          "description": "Lähichat tiimeille ja ystäville: kävele hahmollasi jonkun luo aloittaaksesi puhelun. Ilmainen, selaimessa, ei latauksia."
         },
         "title": "<em>Lähichat</em>, joka alkaa, kun kävelet luo.",
         "subtitle": "TinyFloorissä sijaintisi ratkaisee, kenen kanssa puhut. Kävele jonkun luo soittaaksesi, istu pöytään puhumaan ryhmänä ja jatka matkaa, kun olet valmis.",
         "points": [
           {
             "title": "Lähelle meneminen aloittaa sen",
-            "body": "Asetu kollegan viereen, niin puhelupalkki ilmestyy. Yksi napautus avaa videon tai äänen."
+            "body": "Asetu kollegan viereen, niin puhelukortti ilmestyy. Yksi napautus aloittaa puhelun."
           },
           {
             "title": "Ryhmät pöydän ääressä",
@@ -1369,8 +1376,7 @@
       "typing": "{name} kirjoittaa…",
       "inviteTeammate": "Kutsu tiimiläinen",
       "inviteTeammateNote": "Hän liittyy linkillä",
-      "video": "Videopuhelu",
-      "audio": "Äänipuhelu",
+      "call": "Soita",
       "joined": "liittyi toimistoon"
     },
     "footer": {

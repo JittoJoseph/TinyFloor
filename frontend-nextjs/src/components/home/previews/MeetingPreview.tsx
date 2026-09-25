@@ -49,8 +49,12 @@ export function MeetingPreview() {
       </div>
 
       <span className="absolute bottom-3 start-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-card p-1 shadow-float  rtl:translate-x-1/2">
+        {/* As the dock has it at a table: the mic on, the camera and a screen there to switch on. */}
         {[Mic, Video, MonitorUp].map((Icon, index) => (
-          <span key={index} className="flex size-7 items-center justify-center rounded-full text-foreground">
+          <span
+            key={index}
+            className={cn("flex size-7 items-center justify-center rounded-full", index === 0 ? "bg-muted text-foreground" : "text-muted-foreground")}
+          >
             <Icon className="size-3.5" />
           </span>
         ))}

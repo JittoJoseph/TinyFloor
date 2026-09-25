@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "¿Qué es TinyFloor?",
-        "a": "TinyFloor es una oficina virtual que puedes recorrer. Tu equipo aparece como personajes pixel art en una planta 2D compartida, y una llamada de vídeo o voz empieza cuando te colocas junto a alguien, no cuando haces clic en un enlace de reunión."
+        "a": "TinyFloor es una oficina virtual que puedes recorrer. Tu equipo aparece como personajes pixel art en una planta 2D compartida, y una llamada empieza cuando te colocas junto a alguien, no cuando haces clic en un enlace de reunión."
       },
       {
         "q": "¿Cómo funciona el videochat de proximidad?",
-        "a": "Acércate a alguien y aparecerán los botones de llamada a su lado; toca uno para empezar una videollamada o una llamada de voz. Las llamadas van por WebRTC a través de la red de Cloudflare, así que conectan en cualquier red de oficina o de casa, y siguen activas hasta que alguien cuelga. Las mesas de reunión llevan las llamadas en grupo: siéntate para unirte y levántate para salir."
+        "a": "Acércate a alguien y aparecerá un botón de llamada a su lado. Un toque empieza la llamada y, ya hablando, puedes encender tu cámara o compartir tu pantalla. Las llamadas van por WebRTC a través de la red de Cloudflare, así que conectan en cualquier red de oficina o de casa, y siguen activas hasta que alguien cuelga. Las mesas de reunión llevan las llamadas en grupo: siéntate para unirte y levántate para salir."
       },
       {
         "q": "¿TinyFloor es gratis?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Invitar a alguien"
   },
   "call": {
-    "incomingVideo": "Videollamada entrante...",
-    "incomingAudio": "Llamada de voz entrante...",
+    "incoming": "Te está llamando",
+    "onCall": "En la llamada",
     "decline": "Rechazar",
     "accept": "Aceptar",
     "tutorial": "Llamada del tutorial",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Error de conexión",
       "unsupported": "Este navegador no puede acceder a los dispositivos multimedia",
-      "media": "Cámara o micrófono no disponibles",
+      "media": "Micrófono no disponible",
       "camera": "Cámara no disponible"
-    }
+    },
+    "outcome": {
+      "declined": "Rechazada",
+      "busy": "Ocupado ahora mismo",
+      "unanswered": "Sin respuesta",
+      "missed": "Llamada perdida"
+    },
+    "dismiss": "Cerrar"
   },
   "controls": {
     "status": "Estado: {status}",
@@ -288,8 +295,8 @@
     "cancel": "Cancelar"
   },
   "proximity": {
-    "videoCall": "Videollamada",
-    "audioCall": "Llamada de voz"
+    "call": "Llamar",
+    "onCall": "En llamada contigo"
   },
   "jukebox": {
     "title": "Altavoz de la sala",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Acércate para hablar",
-            "body": "Acércate a un compañero para empezar una videollamada o llamada de voz. En la mesa de reuniones, todos entran en la misma llamada."
+            "body": "Acércate a un compañero para empezar una llamada. En la mesa de reuniones, todos entran en la misma llamada."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "¿Cómo empiezan las llamadas en TinyFloor?",
-            "a": "Acércate a un compañero y aparece su barra de llamada. Un toque empieza vídeo o voz. En la mesa de reuniones, todos los que se sientan entran en la misma llamada."
+            "a": "Acércate a un compañero y aparece su tarjeta de llamada. Un toque empieza la llamada. En la mesa de reuniones, todos los que se sientan entran en la misma llamada."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Chat de proximidad",
         "meta": {
           "title": "Videochat de proximidad gratis en el navegador",
-          "description": "Chat de proximidad para equipos y amigos: acerca tu personaje a alguien para empezar una videollamada o llamada de voz. Gratis, en el navegador, sin descargas."
+          "description": "Chat de proximidad para equipos y amigos: acerca tu personaje a alguien para empezar una llamada. Gratis, en el navegador, sin descargas."
         },
         "title": "<em>Chat de proximidad</em> que empieza cuando te acercas.",
         "subtitle": "En TinyFloor, donde estás decide con quién hablas. Acércate a alguien para llamarle, siéntate en la mesa para hablar en grupo y sigue tu camino cuando termines.",
         "points": [
           {
             "title": "Acercarte lo empieza",
-            "body": "Ponte al lado de un compañero y aparece una barra de llamada. Un toque abre vídeo o voz."
+            "body": "Ponte al lado de un compañero y aparece una tarjeta de llamada. Un toque empieza la llamada."
           },
           {
             "title": "Grupos en la mesa",
@@ -1369,8 +1376,7 @@
       "typing": "{name} está escribiendo…",
       "inviteTeammate": "Invitar a un compañero",
       "inviteTeammateNote": "Entran con un enlace",
-      "video": "Videollamada",
-      "audio": "Llamada de voz",
+      "call": "Llamar",
       "joined": "se ha unido a la oficina"
     },
     "footer": {

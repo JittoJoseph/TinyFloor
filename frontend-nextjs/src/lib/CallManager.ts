@@ -26,6 +26,16 @@ import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";
 
+/**
+ * How a ring ended without a call, said for a moment afterwards: to the caller
+ * (turned down, busy, or no answer) and to whoever was rung and missed it.
+ */
+export interface CallOutcome {
+  id: string;
+  name: string;
+  kind: "declined" | "busy" | "unanswered" | "missed";
+}
+
 export interface CallPeer {
   id: string;
   name: string;
@@ -38,7 +48,7 @@ export interface CallPeer {
 }
 
 export interface CallSnapshot {
-  incoming: { id: string; name: string; video: boolean } | null;
+  incoming: { id: string; name: string } | null;
   outgoing: { id: string; name: string } | null;
   peers: CallPeer[];
   localStream: MediaStream | null;
@@ -48,6 +58,7 @@ export interface CallSnapshot {
   speakerEnabled: boolean;
   meeting: string | null;
   error: CallError | null;
+  outcome: CallOutcome | null;
 }
 
 interface Signal {
@@ -113,20 +124,18 @@ const SCREEN_SLOT = 2;
 
 const PREFS_KEY = "spacialMeetCallPrefs";
 
-function loadPreferences() {
+/** Whether your microphone was on last time. The camera is not remembered: every call starts without it. */
+function micPreference() {
   try {
-    const raw = localStorage.getItem(PREFS_KEY);
-    if (!raw) return { mic: true, camera: true };
-    const parsed = JSON.parse(raw);
-    return { mic: parsed.mic !== false, camera: parsed.camera !== false };
+    return JSON.parse(localStorage.getItem(PREFS_KEY) ?? "{}").mic !== false;
   } catch {
-    return { mic: true, camera: true };
+    return true;
   }
 }
 
-function savePreferences(mic: boolean, camera: boolean) {
+function saveMicPreference(mic: boolean) {
   try {
-    localStorage.setItem(PREFS_KEY, JSON.stringify({ mic, camera }));
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ mic }));
   } catch {}
 }
 
@@ -137,17 +146,20 @@ const EMPTY: CallSnapshot = {
   localStream: null,
   screenStream: null,
   micEnabled: true,
-  cameraEnabled: true,
+  cameraEnabled: false,
   speakerEnabled: true,
   meeting: null,
   error: null,
+  outcome: null,
 };
 
-const PREFS = loadPreferences();
+const MIC_ON = typeof window === "undefined" ? true : micPreference();
 
 /**
  * Proximity calls are one WebRTC connection per pair, always through the TURN
- * relay (see RELAY_ONLY). Every connection has one side that offers,
+ * relay (see RELAY_ONLY). A call is a conversation: it starts with voice, and
+ * the camera and a shared screen are there to switch on, never on by
+ * themselves, so only whoever switches one on sends video. Every connection has one side that offers,
  * the caller or whoever was added last, and the other only answers, so two
  * offers never cross. Each carries a fixed mic, camera and screen slot, and
  * turning any of them on or off swaps what is in the slot instead of
@@ -162,12 +174,14 @@ class CallManager {
   private rawMic: MediaStreamTrack | null = null;
   private filter: FilteredMic | null = null;
   private screen: MediaStream | null = null;
-  private incoming: { id: string; name: string; video: boolean } | null = null;
-  private outgoing: { id: string; name: string; video: boolean } | null = null;
-  private micEnabled = PREFS.mic;
-  private cameraEnabled = PREFS.camera;
+  private incoming: { id: string; name: string } | null = null;
+  private outgoing: { id: string; name: string } | null = null;
+  private micEnabled = MIC_ON;
+  private cameraEnabled = false;
   private meeting: string | null = null;
   private error: CallError | null = null;
+  private outcome: CallOutcome | null = null;
+  private outcomeTimer?: ReturnType<typeof setTimeout>;
   private ringTimer?: ReturnType<typeof setTimeout>;
   /** Cloudflare TURN credentials, fetched on the floor; empty until they arrive. */
   private iceServers: RTCIceServer[] = [];
@@ -176,8 +190,7 @@ class CallManager {
   private listeners = new Set<() => void>();
   private snap: CallSnapshot = {
     ...EMPTY,
-    micEnabled: PREFS.mic,
-    cameraEnabled: PREFS.camera,
+    micEnabled: MIC_ON,
     speakerEnabled: !isSpeakerMuted(),
   };
 
@@ -230,25 +243,29 @@ class CallManager {
     return this.peers.has(id);
   }
 
-  /** Calling someone while already on a call brings them into it. */
-  invite(id: string, name: string, video: boolean) {
+  /** Calls someone, with voice. Calling someone while already on a call brings them into it. */
+  invite(id: string, name: string) {
     if (this.busy() || this.peers.has(id)) return;
     if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
 
     this.error = null;
-    this.outgoing = { id, name, video };
+    this.outcome = null;
+    this.outgoing = { id, name };
     loopSound("ring");
 
     if (id === GUIDE_ID) {
-      this.ring(() => this.answerAsGuide(video), GUIDE_ANSWER_DELAY);
+      this.ring(() => this.answerAsGuide(), GUIDE_ANSWER_DELAY);
     } else {
-      this.send("invite", id, { video, group: this.peers.size > 0 });
-      this.ring(() => this.cancel());
+      this.send("invite", id, { group: this.peers.size > 0 });
+      this.ring(() => {
+        this.tell({ id, name, kind: "unanswered" });
+        this.cancel();
+      });
     }
     this.emit();
   }
 
-  private async answerAsGuide(video: boolean) {
+  private async answerAsGuide() {
     if (this.outgoing?.id !== GUIDE_ID) return;
 
     stopSound("ring");
@@ -259,7 +276,7 @@ class CallManager {
       stream: new MediaStream(),
       connected: true,
       mic: true,
-      camera: true,
+      camera: false,
       screen: false,
       screenStream: null,
       wants: { ...LOW },
@@ -267,7 +284,7 @@ class CallManager {
     playSound("connect");
     this.emit();
 
-    await this.openMedia(video);
+    await this.openMedia();
     this.emit();
   }
 
@@ -284,16 +301,31 @@ class CallManager {
     this.introduce(call.id);
     this.emit();
 
-    await this.startCall(call.id, call.video);
+    await this.startCall(call.id);
   }
 
-  decline() {
+  /** Turns the ring down; left to ring out, it counts as missed on both ends. */
+  decline(reason: "declined" | "missed" = "declined") {
     if (!this.incoming) return;
     this.clearRing();
     stopSound("ring");
-    this.send("decline", this.incoming.id, { reason: "declined" });
+    this.send("decline", this.incoming.id, { reason });
+    if (reason === "missed") this.tell({ ...this.incoming, kind: "missed" });
     this.incoming = null;
     this.emit();
+  }
+
+  /** Puts the last word on the screen for a moment, then takes it away. */
+  dismissOutcome() {
+    clearTimeout(this.outcomeTimer);
+    this.outcome = null;
+    this.emit();
+  }
+
+  private tell(outcome: CallOutcome) {
+    clearTimeout(this.outcomeTimer);
+    this.outcome = outcome;
+    this.outcomeTimer = setTimeout(() => this.dismissOutcome(), outcome.kind === "missed" ? 9000 : 3500);
   }
 
   cancel() {
@@ -322,7 +354,10 @@ class CallManager {
 
   dropPeer(id: string) {
     if (this.incoming?.id === id) {
+      // They gave up before we answered.
       this.clearRing();
+      stopSound("ring");
+      this.tell({ ...this.incoming, kind: "missed" });
       this.incoming = null;
     }
     if (this.outgoing?.id === id) {
@@ -340,7 +375,7 @@ class CallManager {
 
     switch (kind) {
       case "invite":
-        this.onInvite(from, fromName, !!payload.video, !!payload.group);
+        this.onInvite(from, fromName, !!payload.group);
         break;
       case "add":
         this.onAdd(from, payload);
@@ -349,7 +384,11 @@ class CallManager {
         void this.onAccept(from);
         break;
       case "decline":
-        if (this.outgoing?.id === from) this.cancelOutgoing();
+        if (this.outgoing?.id === from) {
+          const kind = payload.reason === "busy" ? "busy" : payload.reason === "missed" ? "unanswered" : "declined";
+          this.tell({ ...this.outgoing, kind });
+          this.cancelOutgoing();
+        }
         break;
       case "signal":
         void this.onSignal(from, payload.signal as Signal);
@@ -424,13 +463,15 @@ class CallManager {
   setMic(enabled: boolean) {
     this.micEnabled = enabled;
     this.local?.getAudioTracks().forEach((track) => (track.enabled = enabled));
-    savePreferences(enabled, this.cameraEnabled);
+    saveMicPreference(enabled);
     this.shareMedia();
     this.emit();
   }
 
+  /** Your camera, on the call you are in: there is nothing to turn on outside one. */
   async setCamera(enabled: boolean) {
-    if (enabled && this.local && !this.local.getVideoTracks().length) {
+    if (!this.local) return;
+    if (enabled && !this.local.getVideoTracks().length) {
       if (!(await this.addCamera())) return this.emit();
     } else if (!enabled && this.local) {
       this.local.getVideoTracks().forEach((track) => {
@@ -440,7 +481,6 @@ class CallManager {
     }
 
     this.cameraEnabled = enabled;
-    savePreferences(this.micEnabled, enabled);
     this.shareTracks();
   }
 
@@ -508,14 +548,14 @@ class CallManager {
     playSound("connect");
     this.emit();
 
-    const opened = await this.openMedia(true);
+    const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
     sfu.publishLocal(opened ? this.local : null, this.flags());
     this.emit();
   }
 
-  private async startCall(id: string, video: boolean) {
-    if (await this.openMedia(video)) this.shareTracks();
+  private async startCall(id: string) {
+    if (await this.openMedia()) this.shareTracks();
     else this.hangUp(id);
   }
 
@@ -598,14 +638,15 @@ class CallManager {
     this.emit();
   }
 
-  private onInvite(id: string, name: string, video: boolean, group: boolean) {
+  private onInvite(id: string, name: string, group: boolean) {
     if (this.busy() || (group && this.peers.size)) {
       this.send("decline", id, { reason: "busy" });
       return;
     }
     this.error = null;
-    this.incoming = { id, name: name || "Someone", video };
-    this.ring(() => this.decline());
+    this.outcome = null;
+    this.incoming = { id, name: name || "Someone" };
+    this.ring(() => this.decline("missed"));
     loopSound("ring");
     this.emit();
   }
@@ -622,7 +663,7 @@ class CallManager {
     this.introduce(id);
     this.emit();
 
-    await this.startCall(id, call.video);
+    await this.startCall(id);
   }
 
   private cancelOutgoing() {
@@ -647,7 +688,7 @@ class CallManager {
       stream: new MediaStream(),
       connected: false,
       mic: true,
-      camera: true,
+      camera: false,
       screen: false,
       screenStream: null,
       wants: { ...LOW },
@@ -740,9 +781,9 @@ class CallManager {
     if (!this.peers.size && !this.meeting) this.releaseMedia();
   }
 
-  private async openMedia(video: boolean): Promise<boolean> {
-    const wantsCamera = video && this.cameraEnabled;
-    if (this.local) return wantsCamera ? this.addCamera() : true;
+  /** The microphone, for a call starting. The camera joins only when it is switched on (addCamera). */
+  private async openMedia(): Promise<boolean> {
+    if (this.local) return true;
 
     if (!navigator.mediaDevices?.getUserMedia) {
       this.error = "unsupported";
@@ -755,10 +796,6 @@ class CallManager {
         audio: {
           ...audioConstraints(),
           deviceId: deviceConstraint(devices.audio),
-        },
-        video: wantsCamera && {
-          ...CAMERA_CAPTURE,
-          deviceId: deviceConstraint(devices.video),
         },
       });
       await this.filterVoice();
@@ -815,7 +852,9 @@ class CallManager {
     ]);
   }
 
+  /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
+    this.cameraEnabled = false;
     this.filter?.stop();
     this.rawMic?.stop();
     this.filter = null;
@@ -890,6 +929,7 @@ class CallManager {
       speakerEnabled: !isSpeakerMuted(),
       meeting: this.meeting,
       error: this.error,
+      outcome: this.outcome,
     };
     this.listeners.forEach((listener) => listener());
   }

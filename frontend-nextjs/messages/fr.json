@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Qu’est-ce que TinyFloor ?",
-        "a": "TinyFloor est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel vidéo ou audio démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
+        "a": "TinyFloor est un bureau virtuel dans lequel on se promène. Votre équipe apparaît sous forme de personnages en pixel art sur un étage 2D partagé, et un appel démarre quand vous vous placez à côté de quelqu’un, et non quand vous cliquez sur un lien de réunion."
       },
       {
         "q": "Comment fonctionne le chat vidéo de proximité ?",
-        "a": "Approchez-vous de quelqu'un et les boutons d'appel apparaissent à côté de lui ; touchez-en un pour lancer un appel vidéo ou audio. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
+        "a": "Approchez-vous de quelqu'un et un bouton d'appel apparaît à côté de lui. Un geste lance l'appel, et une fois en conversation vous pouvez activer votre caméra ou partager votre écran. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
       },
       {
         "q": "TinyFloor est-il gratuit ?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Inviter quelqu'un"
   },
   "call": {
-    "incomingVideo": "Appel vidéo entrant...",
-    "incomingAudio": "Appel audio entrant...",
+    "incoming": "Vous appelle",
+    "onCall": "En appel",
     "decline": "Refuser",
     "accept": "Accepter",
     "tutorial": "Appel du tutoriel",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Échec de la connexion",
       "unsupported": "Ce navigateur ne peut pas accéder aux périphériques multimédias",
-      "media": "Caméra ou micro indisponible",
+      "media": "Micro indisponible",
       "camera": "Caméra indisponible"
-    }
+    },
+    "outcome": {
+      "declined": "Refusé",
+      "busy": "Occupé pour le moment",
+      "unanswered": "Pas de réponse",
+      "missed": "Appel manqué"
+    },
+    "dismiss": "Fermer"
   },
   "controls": {
     "status": "Statut : {status}",
@@ -288,8 +295,8 @@
     "cancel": "Annuler"
   },
   "proximity": {
-    "videoCall": "Appel vidéo",
-    "audioCall": "Appel audio"
+    "call": "Appeler",
+    "onCall": "En appel avec vous"
   },
   "jukebox": {
     "title": "Enceinte de la salle",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Approchez-vous pour parler",
-            "body": "Approchez-vous d’un collègue pour lancer un appel vidéo ou audio. À la table de réunion, tout le monde rejoint le même appel."
+            "body": "Approchez-vous d’un collègue pour lancer un appel. À la table de réunion, tout le monde rejoint le même appel."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "Comment démarrent les appels dans TinyFloor ?",
-            "a": "Approchez-vous d’un collègue et sa barre d’appel apparaît. Un geste lance la vidéo ou l’audio. À la table de réunion, tous ceux qui s’assoient rejoignent le même appel."
+            "a": "Approchez-vous d’un collègue et sa carte d’appel apparaît. Un geste lance l’appel. À la table de réunion, tous ceux qui s’assoient rejoignent le même appel."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Chat de proximité",
         "meta": {
           "title": "Chat vidéo de proximité gratuit dans le navigateur",
-          "description": "Un chat de proximité pour équipes et amis : approchez votre personnage de quelqu’un pour lancer un appel vidéo ou audio. Gratuit, dans le navigateur, sans téléchargement."
+          "description": "Un chat de proximité pour équipes et amis : approchez votre personnage de quelqu’un pour lancer un appel. Gratuit, dans le navigateur, sans téléchargement."
         },
         "title": "Un <em>chat de proximité</em> qui démarre quand vous vous approchez.",
         "subtitle": "Dans TinyFloor, là où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, asseyez-vous à la table pour parler en groupe, et repartez quand vous avez fini.",
         "points": [
           {
             "title": "S’approcher lance la conversation",
-            "body": "Placez-vous à côté d’un collègue et une barre d’appel apparaît. Un geste ouvre la vidéo ou l’audio."
+            "body": "Placez-vous à côté d’un collègue et une carte d’appel apparaît. Un geste lance l’appel."
           },
           {
             "title": "Les groupes à la table",
@@ -1369,8 +1376,7 @@
       "typing": "{name} écrit…",
       "inviteTeammate": "Inviter un coéquipier",
       "inviteTeammateNote": "Il suffit d'un lien pour entrer",
-      "video": "Appel vidéo",
-      "audio": "Appel audio",
+      "call": "Appeler",
       "joined": "a rejoint le bureau"
     },
     "footer": {

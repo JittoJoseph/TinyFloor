@@ -2,18 +2,20 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings2, Video, VideoOff, Volume2, VolumeX } from "lucide-react";
+import { Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings2, Video, Volume2, VolumeX } from "lucide-react";
 import { Dock, DockSeparator } from "@/components/motion/dock";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { setMyStatus } from "@/lib/floor";
+import { setInCall } from "@/lib/floor";
 import { useRouter } from "@/lib/i18n/navigation";
 
 /**
- * The dock along the bottom of the floor: your microphone and camera, always;
- * screen, speaker and hanging up only while you are in a call; and devices.
- * Status and chat live in the rail, so the dock stays short on a phone.
+ * The dock along the bottom of the floor: your microphone, always. In a call,
+ * the camera and your screen are there to switch on when there is something
+ * to see, then the speaker and hanging up. A call is a conversation first, so
+ * neither starts on, and off is how they rest, not a warning. Status and chat
+ * live in the rail, so the dock stays short on a phone.
  */
 export default function ControlBar({ settingsHref }: { settingsHref?: string }) {
   const router = useRouter();
@@ -23,12 +25,12 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
   // Phones and some browsers cannot share a screen, so the button only exists where it works.
   const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
 
-  // Everyone sees "in a call" while you are in one, and "available" after.
+  // Everyone sees "in a call" while you are in one, and your own status again after.
   const wasInCall = useRef(inCall);
   useEffect(() => {
     if (wasInCall.current === inCall) return;
     wasInCall.current = inCall;
-    setMyStatus(inCall ? "in_call" : "available");
+    setInCall(inCall);
   }, [inCall]);
 
   return (
@@ -42,17 +44,17 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
           onClick={() => callManager.setMic(!micEnabled)}
           icon={micEnabled ? <Mic /> : <MicOff />}
         />
-        <IconButton
-          label={cameraEnabled ? t("cameraOff") : t("cameraOn")}
-          tone={cameraEnabled ? "soft" : "off"}
-          size="lg"
-          aria-pressed={!cameraEnabled}
-          onClick={() => callManager.setCamera(!cameraEnabled)}
-          icon={cameraEnabled ? <Video /> : <VideoOff />}
-        />
 
         {inCall && (
           <>
+            <IconButton
+              label={cameraEnabled ? t("cameraOff") : t("cameraOn")}
+              tone={cameraEnabled ? "solid" : "ghost"}
+              size="lg"
+              aria-pressed={cameraEnabled}
+              onClick={() => callManager.setCamera(!cameraEnabled)}
+              icon={<Video />}
+            />
             {canShareScreen && (
               <IconButton
                 label={screenStream ? t("stopSharing") : t("shareScreen")}

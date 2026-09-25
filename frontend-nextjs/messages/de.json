@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Was ist TinyFloor?",
-        "a": "TinyFloor ist ein virtuelles Büro, in dem du herumläufst. Dein Team erscheint als Pixel-Art-Figuren auf einer gemeinsamen 2D-Etage, und ein Video- oder Sprachanruf startet, wenn du dich neben jemanden stellst – nicht, wenn du auf einen Meeting-Link klickst."
+        "a": "TinyFloor ist ein virtuelles Büro, in dem du herumläufst. Dein Team erscheint als Pixel-Art-Figuren auf einer gemeinsamen 2D-Etage, und ein Anruf startet, wenn du dich neben jemanden stellst – nicht, wenn du auf einen Meeting-Link klickst."
       },
       {
         "q": "Wie funktioniert Proximity-Videochat?",
-        "a": "Geh zu jemandem, und neben der Person erscheinen die Anruf-Buttons; tipp einen an, um einen Video- oder Sprachanruf zu starten. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
+        "a": "Geh zu jemandem, und neben der Person erscheint ein Anruf-Button. Ein Tipp startet den Anruf, und im Gespräch kannst du deine Kamera einschalten oder deinen Bildschirm teilen. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
       },
       {
         "q": "Ist TinyFloor kostenlos?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Jemanden einladen"
   },
   "call": {
-    "incomingVideo": "Eingehender Videoanruf...",
-    "incomingAudio": "Eingehender Sprachanruf...",
+    "incoming": "Ruft dich an",
+    "onCall": "Im Gespräch",
     "decline": "Ablehnen",
     "accept": "Annehmen",
     "tutorial": "Tutorial-Anruf",
@@ -191,9 +191,16 @@
     "errors": {
       "connection": "Verbindung fehlgeschlagen",
       "unsupported": "Dieser Browser kann nicht auf Mediengeräte zugreifen",
-      "media": "Kamera oder Mikrofon nicht verfügbar",
+      "media": "Mikrofon nicht verfügbar",
       "camera": "Kamera nicht verfügbar"
-    }
+    },
+    "outcome": {
+      "declined": "Abgelehnt",
+      "busy": "Gerade beschäftigt",
+      "unanswered": "Keine Antwort",
+      "missed": "Verpasster Anruf"
+    },
+    "dismiss": "Schließen"
   },
   "controls": {
     "status": "Status: {status}",
@@ -288,8 +295,8 @@
     "cancel": "Abbrechen"
   },
   "proximity": {
-    "videoCall": "Videoanruf",
-    "audioCall": "Sprachanruf"
+    "call": "Anrufen",
+    "onCall": "Im Gespräch mit dir"
   },
   "jukebox": {
     "title": "Raumlautsprecher",
@@ -530,7 +537,7 @@
           },
           {
             "title": "Hingehen und reden",
-            "body": "Geh nah an eine Kollegin oder einen Kollegen heran, um einen Video- oder Sprachanruf zu starten. Am Besprechungstisch sind alle in einem Anruf."
+            "body": "Geh nah an eine Kollegin oder einen Kollegen heran, um einen Anruf zu starten. Am Besprechungstisch sind alle in einem Anruf."
           }
         ],
         "them": {
@@ -601,7 +608,7 @@
           },
           {
             "q": "Wie starten Anrufe in TinyFloor?",
-            "a": "Geh zu einer Kollegin oder einem Kollegen und die Anrufleiste erscheint. Ein Tipp startet Video oder Sprache. Am Besprechungstisch sind alle, die sich hinsetzen, im selben Anruf."
+            "a": "Geh zu einer Kollegin oder einem Kollegen und die Anrufkarte erscheint. Ein Tipp startet den Anruf. Am Besprechungstisch sind alle, die sich hinsetzen, im selben Anruf."
           }
         ]
       },
@@ -814,14 +821,14 @@
         "label": "Proximity-Chat",
         "meta": {
           "title": "Kostenloser Proximity-Videochat im Browser",
-          "description": "Proximity-Chat für Teams und Freunde: Geh mit deiner Figur zu jemandem, um einen Video- oder Sprachanruf zu starten. Kostenlos, im Browser, ohne Download."
+          "description": "Proximity-Chat für Teams und Freunde: Geh mit deiner Figur zu jemandem, um einen Anruf zu starten. Kostenlos, im Browser, ohne Download."
         },
         "title": "<em>Proximity-Chat</em>, der beginnt, wenn du hingehst.",
         "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh zu jemandem, um anzurufen, setz dich an den Tisch, um als Gruppe zu reden, und geh weiter, wenn du fertig bist.",
         "points": [
           {
             "title": "Nähe startet das Gespräch",
-            "body": "Stell dich neben eine Kollegin oder einen Kollegen und eine Anrufleiste erscheint. Ein Tipp öffnet Video oder Sprache."
+            "body": "Stell dich neben eine Kollegin oder einen Kollegen und eine Anrufkarte erscheint. Ein Tipp startet den Anruf."
           },
           {
             "title": "Gruppen am Tisch",
@@ -1369,8 +1376,7 @@
       "typing": "{name} schreibt…",
       "inviteTeammate": "Teammitglied einladen",
       "inviteTeammateNote": "Sie kommen über einen Link rein",
-      "video": "Videoanruf",
-      "audio": "Sprachanruf",
+      "call": "Anrufen",
       "joined": "ist dem Büro beigetreten"
     },
     "footer": {

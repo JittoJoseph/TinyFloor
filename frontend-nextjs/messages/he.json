@@ -7,6 +7,8 @@
     "joinTitle": "הצטרפות לחדר",
     "joinRoomTitle": "הצטרפות אל {office}",
     "joinRoomDescription": "הוזמנת אל {office} ב-TinyFloor, משרד וירטואלי שמסתובבים בו. פותחים את הקישור, בוחרים דמות ונכנסים.",
+    "officeTitle": "{office} ב-TinyFloor",
+    "officeDescription": "{office} ב-TinyFloor, משרד וירטואלי שמסתובבים בו. פותחים את הקישור ונכנסים.",
     "authTitle": "התחברות",
     "authDescription": "התחברות ל־TinyFloor שומרת את השם, הדמות ורשימת החדרים שלך.",
     "createTitle": "צרו משרד",

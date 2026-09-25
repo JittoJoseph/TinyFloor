@@ -7,6 +7,8 @@
     "joinTitle": "ルームに参加",
     "joinRoomTitle": "{office} に参加",
     "joinRoomDescription": "TinyFloor の {office} に招待されています。歩き回れるバーチャルオフィスです。リンクを開いてキャラクターを選び、入室しましょう。",
+    "officeTitle": "TinyFloor の {office}",
+    "officeDescription": "TinyFloor の {office}。歩き回れるバーチャルオフィスです。リンクを開いて入室しましょう。",
     "authTitle": "ログイン",
     "authDescription": "TinyFloor にログインすると、名前、キャラクター、ルームの一覧を保存できます。",
     "createTitle": "オフィスを作る",

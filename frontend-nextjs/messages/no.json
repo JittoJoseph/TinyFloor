@@ -7,6 +7,8 @@
     "joinTitle": "Bli med i rommet",
     "joinRoomTitle": "Bli med i {office}",
     "joinRoomDescription": "Du er invitert til {office} på TinyFloor, et virtuelt kontor du går rundt i. Åpne lenken, velg en figur og gå inn.",
+    "officeTitle": "{office} på TinyFloor",
+    "officeDescription": "{office} på TinyFloor, et virtuelt kontor du går rundt i. Åpne lenken for å gå inn.",
     "authTitle": "Logg inn",
     "authDescription": "Logg inn på TinyFloor for å beholde navnet ditt, figuren din og en liste over rommene dine.",
     "createTitle": "Lag kontoret ditt",

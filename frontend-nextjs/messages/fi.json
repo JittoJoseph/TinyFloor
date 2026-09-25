@@ -7,6 +7,8 @@
     "joinTitle": "Liity huoneeseen",
     "joinRoomTitle": "Liity huoneeseen {office}",
     "joinRoomDescription": "Sinut on kutsuttu huoneeseen {office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",
+    "officeTitle": "{office} TinyFloorissa",
+    "officeDescription": "{office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki ja astu sisään.",
     "authTitle": "Kirjaudu sisään",
     "authDescription": "Kirjaudu TinyFlooriin, niin nimesi, hahmosi ja huonelistasi säilyvät.",
     "createTitle": "Luo toimistosi",

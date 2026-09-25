@@ -7,6 +7,8 @@
     "joinTitle": "방 참여",
     "joinRoomTitle": "{office} 참여하기",
     "joinRoomDescription": "TinyFloor의 {office}에 초대되었습니다. 걸어 다니는 가상 오피스예요. 링크를 열고 캐릭터를 골라 들어오세요.",
+    "officeTitle": "TinyFloor의 {office}",
+    "officeDescription": "TinyFloor의 {office}. 걸어 다니는 가상 오피스예요. 링크를 열고 들어오세요.",
     "authTitle": "로그인",
     "authDescription": "TinyFloor에 로그인하면 이름, 캐릭터, 방 목록을 저장할 수 있어요.",
     "createTitle": "오피스 만들기",

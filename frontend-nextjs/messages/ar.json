@@ -7,6 +7,8 @@
     "joinTitle": "الانضمام إلى الغرفة",
     "joinRoomTitle": "انضم إلى {office}",
     "joinRoomDescription": "أنت مدعو إلى {office} على TinyFloor، مكتب افتراضي تتجول فيه. افتح الرابط واختر شخصية وادخل.",
+    "officeTitle": "{office} على TinyFloor",
+    "officeDescription": "{office} على TinyFloor، مكتب افتراضي تتجول فيه. افتح الرابط للدخول.",
     "authTitle": "تسجيل الدخول",
     "authDescription": "سجّل الدخول إلى TinyFloor للاحتفاظ باسمك وشخصيتك وقائمة غرفك.",
     "createTitle": "أنشئ مكتبك",

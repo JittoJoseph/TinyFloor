@@ -7,6 +7,8 @@
     "joinTitle": "Войти в комнату",
     "joinRoomTitle": "Войти в {office}",
     "joinRoomDescription": "Вас пригласили в комнату {office} в TinyFloor, виртуальный офис, по которому можно ходить. Откройте ссылку, выберите персонажа и заходите.",
+    "officeTitle": "{office} в TinyFloor",
+    "officeDescription": "{office} в TinyFloor, виртуальный офис, по которому можно ходить. Откройте ссылку, чтобы войти.",
     "authTitle": "Вход",
     "authDescription": "Войдите в TinyFloor, чтобы сохранить имя, персонажа и список ваших комнат.",
     "createTitle": "Создать офис",

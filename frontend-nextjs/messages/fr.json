@@ -7,6 +7,8 @@
     "joinTitle": "Rejoindre la salle",
     "joinRoomTitle": "Rejoindre {office}",
     "joinRoomDescription": "Vous êtes invité dans {office} sur TinyFloor, un bureau virtuel où l’on se déplace. Ouvrez le lien, choisissez un personnage et entrez.",
+    "officeTitle": "{office} sur TinyFloor",
+    "officeDescription": "{office} sur TinyFloor, un bureau virtuel où l’on se déplace. Ouvrez le lien pour entrer.",
     "authTitle": "Connexion",
     "authDescription": "Connectez-vous à TinyFloor pour garder votre nom, votre personnage et la liste de vos salles.",
     "createTitle": "Créer votre bureau",

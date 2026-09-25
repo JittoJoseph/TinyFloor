@@ -7,6 +7,8 @@
     "joinTitle": "Ruimte binnengaan",
     "joinRoomTitle": "Doe mee met {office}",
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
+    "officeTitle": "{office} op TinyFloor",
+    "officeDescription": "{office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link om binnen te lopen.",
     "authTitle": "Inloggen",
     "authDescription": "Log in bij TinyFloor om je naam, je personage en een lijst van je ruimtes te bewaren.",
     "createTitle": "Maak je kantoor",

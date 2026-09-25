@@ -52,6 +52,16 @@ export function officeRoutes(router: Router): void {
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
 
+    // What a link to the office shows when it's pasted in a chat: its name and
+    // how many are in it, no more. The id is the link's own secret, as a token is.
+    .add("GET", "/v1/offices/:id/card", async ({ env, params }) => {
+      const office = await env.DB.prepare("SELECT id, name FROM offices WHERE id = ?")
+        .bind(params.id)
+        .first<{ id: string; name: string }>();
+      if (!office) throw new HttpError(404, "office_not_found", "No such office");
+      return json({ office: { id: office.id, name: office.name, members: await seatsUsed(env, office.id) } });
+    })
+
     .add("PATCH", "/v1/offices/:id", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);

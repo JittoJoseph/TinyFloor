@@ -7,6 +7,8 @@
     "joinTitle": "加入房间",
     "joinRoomTitle": "加入 {office}",
     "joinRoomDescription": "你受邀加入 TinyFloor 上的 {office}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",
+    "officeTitle": "TinyFloor 上的 {office}",
+    "officeDescription": "TinyFloor 上的 {office}，一个可以走动的虚拟办公室。打开链接即可进入。",
     "authTitle": "登录",
     "authDescription": "登录 TinyFloor，保留你的名字、角色和房间列表。",
     "createTitle": "创建办公室",

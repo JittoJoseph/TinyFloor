@@ -193,7 +193,14 @@
       "unsupported": "Denne browser kan ikke få adgang til medieenheder",
       "media": "Mikrofonen er ikke tilgængelig",
       "camera": "Kameraet er ikke tilgængeligt"
-    }
+    },
+    "outcome": {
+      "declined": "Afvist",
+      "busy": "Optaget lige nu",
+      "unanswered": "Intet svar",
+      "missed": "Ubesvaret opkald"
+    },
+    "dismiss": "Luk"
   },
   "controls": {
     "status": "Status: {status}",

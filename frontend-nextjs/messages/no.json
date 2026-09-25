@@ -193,7 +193,14 @@
       "unsupported": "Denne nettleseren har ikke tilgang til medieenheter",
       "media": "Mikrofonen er ikke tilgjengelig",
       "camera": "Kameraet er ikke tilgjengelig"
-    }
+    },
+    "outcome": {
+      "declined": "Avvist",
+      "busy": "Opptatt akkurat nå",
+      "unanswered": "Ikke svar",
+      "missed": "Tapt anrop"
+    },
+    "dismiss": "Lukk"
   },
   "controls": {
     "status": "Status: {status}",

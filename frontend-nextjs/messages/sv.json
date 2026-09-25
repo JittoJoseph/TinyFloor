@@ -193,7 +193,14 @@
       "unsupported": "Den här webbläsaren kan inte komma åt medieenheter",
       "media": "Mikrofonen är inte tillgänglig",
       "camera": "Kameran är inte tillgänglig"
-    }
+    },
+    "outcome": {
+      "declined": "Avvisat",
+      "busy": "Upptagen just nu",
+      "unanswered": "Inget svar",
+      "missed": "Missat samtal"
+    },
+    "dismiss": "Stäng"
   },
   "controls": {
     "status": "Status: {status}",

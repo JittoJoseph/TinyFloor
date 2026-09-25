@@ -26,6 +26,16 @@ import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";
 
+/**
+ * How a ring ended without a call, said for a moment afterwards: to the caller
+ * (turned down, busy, or no answer) and to whoever was rung and missed it.
+ */
+export interface CallOutcome {
+  id: string;
+  name: string;
+  kind: "declined" | "busy" | "unanswered" | "missed";
+}
+
 export interface CallPeer {
   id: string;
   name: string;
@@ -48,6 +58,7 @@ export interface CallSnapshot {
   speakerEnabled: boolean;
   meeting: string | null;
   error: CallError | null;
+  outcome: CallOutcome | null;
 }
 
 interface Signal {
@@ -139,6 +150,7 @@ const EMPTY: CallSnapshot = {
   speakerEnabled: true,
   meeting: null,
   error: null,
+  outcome: null,
 };
 
 const MIC_ON = typeof window === "undefined" ? true : micPreference();
@@ -168,6 +180,8 @@ class CallManager {
   private cameraEnabled = false;
   private meeting: string | null = null;
   private error: CallError | null = null;
+  private outcome: CallOutcome | null = null;
+  private outcomeTimer?: ReturnType<typeof setTimeout>;
   private ringTimer?: ReturnType<typeof setTimeout>;
   /** Cloudflare TURN credentials, fetched on the floor; empty until they arrive. */
   private iceServers: RTCIceServer[] = [];
@@ -235,6 +249,7 @@ class CallManager {
     if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
 
     this.error = null;
+    this.outcome = null;
     this.outgoing = { id, name };
     loopSound("ring");
 
@@ -242,7 +257,10 @@ class CallManager {
       this.ring(() => this.answerAsGuide(), GUIDE_ANSWER_DELAY);
     } else {
       this.send("invite", id, { group: this.peers.size > 0 });
-      this.ring(() => this.cancel());
+      this.ring(() => {
+        this.tell({ id, name, kind: "unanswered" });
+        this.cancel();
+      });
     }
     this.emit();
   }
@@ -286,13 +304,28 @@ class CallManager {
     await this.startCall(call.id);
   }
 
-  decline() {
+  /** Turns the ring down; left to ring out, it counts as missed on both ends. */
+  decline(reason: "declined" | "missed" = "declined") {
     if (!this.incoming) return;
     this.clearRing();
     stopSound("ring");
-    this.send("decline", this.incoming.id, { reason: "declined" });
+    this.send("decline", this.incoming.id, { reason });
+    if (reason === "missed") this.tell({ ...this.incoming, kind: "missed" });
     this.incoming = null;
     this.emit();
+  }
+
+  /** Puts the last word on the screen for a moment, then takes it away. */
+  dismissOutcome() {
+    clearTimeout(this.outcomeTimer);
+    this.outcome = null;
+    this.emit();
+  }
+
+  private tell(outcome: CallOutcome) {
+    clearTimeout(this.outcomeTimer);
+    this.outcome = outcome;
+    this.outcomeTimer = setTimeout(() => this.dismissOutcome(), outcome.kind === "missed" ? 9000 : 3500);
   }
 
   cancel() {
@@ -321,7 +354,10 @@ class CallManager {
 
   dropPeer(id: string) {
     if (this.incoming?.id === id) {
+      // They gave up before we answered.
       this.clearRing();
+      stopSound("ring");
+      this.tell({ ...this.incoming, kind: "missed" });
       this.incoming = null;
     }
     if (this.outgoing?.id === id) {
@@ -348,7 +384,11 @@ class CallManager {
         void this.onAccept(from);
         break;
       case "decline":
-        if (this.outgoing?.id === from) this.cancelOutgoing();
+        if (this.outgoing?.id === from) {
+          const kind = payload.reason === "busy" ? "busy" : payload.reason === "missed" ? "unanswered" : "declined";
+          this.tell({ ...this.outgoing, kind });
+          this.cancelOutgoing();
+        }
         break;
       case "signal":
         void this.onSignal(from, payload.signal as Signal);
@@ -604,8 +644,9 @@ class CallManager {
       return;
     }
     this.error = null;
+    this.outcome = null;
     this.incoming = { id, name: name || "Someone" };
-    this.ring(() => this.decline());
+    this.ring(() => this.decline("missed"));
     loopSound("ring");
     this.emit();
   }
@@ -888,6 +929,7 @@ class CallManager {
       speakerEnabled: !isSpeakerMuted(),
       meeting: this.meeting,
       error: this.error,
+      outcome: this.outcome,
     };
     this.listeners.forEach((listener) => listener());
   }

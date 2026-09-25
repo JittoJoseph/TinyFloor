@@ -193,7 +193,14 @@
       "unsupported": "此浏览器无法访问媒体设备",
       "media": "麦克风不可用",
       "camera": "摄像头不可用"
-    }
+    },
+    "outcome": {
+      "declined": "已拒绝",
+      "busy": "对方正忙",
+      "unanswered": "无人接听",
+      "missed": "未接来电"
+    },
+    "dismiss": "关闭"
   },
   "controls": {
     "status": "状态：{status}",

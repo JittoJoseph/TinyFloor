@@ -193,7 +193,14 @@
       "unsupported": "Ta przeglądarka nie ma dostępu do urządzeń multimedialnych",
       "media": "Mikrofon niedostępny",
       "camera": "Kamera jest niedostępna"
-    }
+    },
+    "outcome": {
+      "declined": "Odrzucono",
+      "busy": "Teraz zajęty",
+      "unanswered": "Brak odpowiedzi",
+      "missed": "Nieodebrane połączenie"
+    },
+    "dismiss": "Zamknij"
   },
   "controls": {
     "status": "Status: {status}",

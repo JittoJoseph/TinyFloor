@@ -193,7 +193,14 @@
       "unsupported": "Este navegador não consegue acessar dispositivos de mídia",
       "media": "Microfone indisponível",
       "camera": "Câmera indisponível"
-    }
+    },
+    "outcome": {
+      "declined": "Recusada",
+      "busy": "Ocupado agora",
+      "unanswered": "Sem resposta",
+      "missed": "Chamada perdida"
+    },
+    "dismiss": "Fechar"
   },
   "controls": {
     "status": "Status: {status}",

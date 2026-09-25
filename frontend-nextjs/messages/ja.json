@@ -193,7 +193,14 @@
       "unsupported": "このブラウザではメディアデバイスにアクセスできません",
       "media": "マイクを使用できません",
       "camera": "カメラを使用できません"
-    }
+    },
+    "outcome": {
+      "declined": "拒否されました",
+      "busy": "今は取り込み中です",
+      "unanswered": "応答がありません",
+      "missed": "不在着信"
+    },
+    "dismiss": "閉じる"
   },
   "controls": {
     "status": "ステータス: {status}",

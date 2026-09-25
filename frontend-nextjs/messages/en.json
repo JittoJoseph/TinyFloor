@@ -179,7 +179,7 @@
     "incoming": "Calling you",
     "onCall": "On the call",
     "decline": "Decline",
-    "accept": "Accept",
+    "accept": "Answer",
     "tutorial": "Tutorial call",
     "calling": "Calling...",
     "cancel": "Cancel call",
@@ -193,7 +193,14 @@
       "unsupported": "This browser cannot access media devices",
       "media": "Microphone unavailable",
       "camera": "Camera unavailable"
-    }
+    },
+    "outcome": {
+      "declined": "Declined",
+      "busy": "Busy right now",
+      "unanswered": "No answer",
+      "missed": "Missed call"
+    },
+    "dismiss": "Dismiss"
   },
   "controls": {
     "status": "Status: {status}",

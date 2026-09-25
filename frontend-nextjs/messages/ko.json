@@ -193,7 +193,14 @@
       "unsupported": "이 브라우저는 미디어 장치에 접근할 수 없어요",
       "media": "마이크를 사용할 수 없어요",
       "camera": "카메라를 사용할 수 없어요"
-    }
+    },
+    "outcome": {
+      "declined": "거절됨",
+      "busy": "지금은 바빠요",
+      "unanswered": "응답 없음",
+      "missed": "부재중 통화"
+    },
+    "dismiss": "닫기"
   },
   "controls": {
     "status": "상태: {status}",

@@ -193,7 +193,14 @@
       "unsupported": "Questo browser non può accedere ai dispositivi multimediali",
       "media": "Microfono non disponibile",
       "camera": "Fotocamera non disponibile"
-    }
+    },
+    "outcome": {
+      "declined": "Rifiutata",
+      "busy": "Occupato in questo momento",
+      "unanswered": "Nessuna risposta",
+      "missed": "Chiamata persa"
+    },
+    "dismiss": "Chiudi"
   },
   "controls": {
     "status": "Stato: {status}",

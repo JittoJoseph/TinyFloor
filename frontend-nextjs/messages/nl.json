@@ -193,7 +193,14 @@
       "unsupported": "Deze browser heeft geen toegang tot mediaapparaten",
       "media": "Microfoon niet beschikbaar",
       "camera": "Camera niet beschikbaar"
-    }
+    },
+    "outcome": {
+      "declined": "Geweigerd",
+      "busy": "Nu even bezet",
+      "unanswered": "Geen antwoord",
+      "missed": "Gemist gesprek"
+    },
+    "dismiss": "Sluiten"
   },
   "controls": {
     "status": "Status: {status}",

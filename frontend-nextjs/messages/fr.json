@@ -193,7 +193,14 @@
       "unsupported": "Ce navigateur ne peut pas accéder aux périphériques multimédias",
       "media": "Micro indisponible",
       "camera": "Caméra indisponible"
-    }
+    },
+    "outcome": {
+      "declined": "Refusé",
+      "busy": "Occupé pour le moment",
+      "unanswered": "Pas de réponse",
+      "missed": "Appel manqué"
+    },
+    "dismiss": "Fermer"
   },
   "controls": {
     "status": "Statut : {status}",

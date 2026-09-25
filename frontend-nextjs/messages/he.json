@@ -193,7 +193,14 @@
       "unsupported": "לדפדפן הזה אין גישה להתקני מדיה",
       "media": "המיקרופון לא זמין",
       "camera": "המצלמה לא זמינה"
-    }
+    },
+    "outcome": {
+      "declined": "נדחתה",
+      "busy": "עסוק כרגע",
+      "unanswered": "אין מענה",
+      "missed": "שיחה שלא נענתה"
+    },
+    "dismiss": "סגירה"
   },
   "controls": {
     "status": "סטטוס: {status}",

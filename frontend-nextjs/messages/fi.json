@@ -193,7 +193,14 @@
       "unsupported": "Tämä selain ei pääse medialaitteisiin",
       "media": "Mikrofoni ei ole käytettävissä",
       "camera": "Kamera ei ole käytettävissä"
-    }
+    },
+    "outcome": {
+      "declined": "Hylätty",
+      "busy": "Varattu juuri nyt",
+      "unanswered": "Ei vastausta",
+      "missed": "Vastaamaton puhelu"
+    },
+    "dismiss": "Sulje"
   },
   "controls": {
     "status": "Tila: {status}",

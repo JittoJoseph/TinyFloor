@@ -193,7 +193,14 @@
       "unsupported": "Dieser Browser kann nicht auf Mediengeräte zugreifen",
       "media": "Mikrofon nicht verfügbar",
       "camera": "Kamera nicht verfügbar"
-    }
+    },
+    "outcome": {
+      "declined": "Abgelehnt",
+      "busy": "Gerade beschäftigt",
+      "unanswered": "Keine Antwort",
+      "missed": "Verpasster Anruf"
+    },
+    "dismiss": "Schließen"
   },
   "controls": {
     "status": "Status: {status}",

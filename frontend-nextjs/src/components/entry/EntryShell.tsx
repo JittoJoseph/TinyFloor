@@ -10,9 +10,7 @@ import { AutoHeight } from "./AutoHeight";
 
 /**
  * Every door: one raised panel with the place and what it asks, on the app
- * shell's own rail, lit softly from behind the panel: near black in the dark
- * theme, a white glow in the light one. On a phone the panel rests at the
- * bottom like a sheet.
+ * shell's own rail. On a phone the panel rests at the bottom like a sheet.
  */
 export const EntryShell: React.FC<{
   backHref?: string;
@@ -24,7 +22,6 @@ export const EntryShell: React.FC<{
 
   return (
     <div className="relative flex min-h-dvh w-full flex-col bg-rail [--face-ring:var(--ui-card)]">
-      <div aria-hidden className="door-light pointer-events-none fixed inset-0" />
       <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1100px] items-center justify-between px-3 sm:px-6">
         <Link
           href={backHref}

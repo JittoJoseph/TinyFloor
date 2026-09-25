@@ -6,9 +6,11 @@ const vt323 = VT323({
   weight: "400",
 });
 
+// Only the Latin file is preloaded; the page's text in other scripts (a
+// Russian page, a name with accents) fetches its own file when it's needed.
 const nunito = Nunito({
   variable: "--font-body",
-  subsets: ["latin", "latin-ext", "cyrillic"],
+  subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
 });
 

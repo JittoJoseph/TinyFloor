@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "What is TinyFloor?",
-        "a": "TinyFloor is a virtual office you walk around in. Your team appears as pixel-art characters on a shared 2D floor, and a video or voice call starts when you stand next to someone instead of when you click a meeting link."
+        "a": "TinyFloor is a virtual office you walk around in. Your team appears as pixel-art characters on a shared 2D floor, and a call starts when you stand next to someone instead of when you click a meeting link."
       },
       {
         "q": "How does proximity video chat work?",
-        "a": "Walk up to someone and the call buttons appear next to them; tap one to start a video or voice call. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. Meeting tables carry group calls: sit down to join, stand up to leave."
+        "a": "Walk up to someone and a call button appears next to them. A tap starts a call, and once you're talking you can turn on your camera or share your screen. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. Meeting tables carry group calls: sit down to join, stand up to leave."
       },
       {
         "q": "Is TinyFloor free?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Invite someone"
   },
   "call": {
-    "incomingVideo": "Incoming video call...",
-    "incomingAudio": "Incoming audio call...",
+    "incoming": "Calling you",
+    "onCall": "On the call",
     "decline": "Decline",
     "accept": "Accept",
     "tutorial": "Tutorial call",
@@ -191,7 +191,7 @@
     "errors": {
       "connection": "Connection failed",
       "unsupported": "This browser cannot access media devices",
-      "media": "Camera or microphone unavailable",
+      "media": "Microphone unavailable",
       "camera": "Camera unavailable"
     }
   },
@@ -288,8 +288,8 @@
     "cancel": "Cancel"
   },
   "proximity": {
-    "videoCall": "Video call",
-    "audioCall": "Audio call"
+    "call": "Call",
+    "onCall": "On your call"
   },
   "jukebox": {
     "title": "Room speaker",
@@ -530,7 +530,7 @@
           },
           {
             "title": "Walk over to talk",
-            "body": "Get close to a teammate to start a video or voice call. Sit at the meeting table and everyone there joins one call."
+            "body": "Get close to a teammate to start a call. Sit at the meeting table and everyone there joins one call."
           }
         ],
         "them": {
@@ -601,7 +601,7 @@
           },
           {
             "q": "How do calls start in TinyFloor?",
-            "a": "Walk up to a teammate and their call bar appears. One tap starts video or voice. At the meeting table, everyone who sits down joins the same call."
+            "a": "Walk up to a teammate and their call card appears. One tap starts a call. At the meeting table, everyone who sits down joins the same call."
           }
         ]
       },
@@ -814,14 +814,14 @@
         "label": "Proximity chat",
         "meta": {
           "title": "Free Proximity Video Chat in the Browser",
-          "description": "Proximity chat for teams and friends: walk your character up to someone to start a video or voice call. Free, in the browser, no download."
+          "description": "Proximity chat for teams and friends: walk your character up to someone to start a call. Free, in the browser, no download."
         },
         "title": "<em>Proximity chat</em> that starts when you walk over.",
         "subtitle": "In TinyFloor, where you stand decides who you talk to. Walk up to someone to call them, sit at the table to talk as a group, and walk on when you are done.",
         "points": [
           {
             "title": "Getting close starts it",
-            "body": "Stand next to a teammate and a call bar appears. One tap opens video or voice."
+            "body": "Stand next to a teammate and a call card appears. One tap starts a call."
           },
           {
             "title": "Groups at the table",
@@ -1364,8 +1364,7 @@
       "typing": "{name} is typing…",
       "inviteTeammate": "Invite a teammate",
       "inviteTeammateNote": "They join with a link",
-      "video": "Video call",
-      "audio": "Voice call",
+      "call": "Call",
       "joined": "joined the office"
     },
     "footer": {

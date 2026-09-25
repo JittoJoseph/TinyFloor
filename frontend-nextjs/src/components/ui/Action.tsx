@@ -21,7 +21,7 @@ const TONE: Record<Tone, string> = {
 };
 
 const BASE =
-  "group h-11 w-full gap-2 rounded-full px-5 text-[14px] font-medium tracking-[-0.005em] outline-none transition-colors focus-visible:ring-4 focus-visible:ring-foreground/15";
+  "group h-11 w-full cursor-pointer gap-2 rounded-full px-5 text-[14px] font-medium tracking-[-0.005em] outline-none transition-colors focus-visible:ring-4 focus-visible:ring-foreground/15";
 
 export const ActionButton = forwardRef<
   HTMLButtonElement,

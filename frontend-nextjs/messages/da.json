@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Hvad er TinyFloor?",
-        "a": "TinyFloor er et virtuelt kontor, som du går rundt i. Dit team vises som pixelart-figurer på en fælles 2D-etage, og et video- eller taleopkald starter, når du stiller dig ved siden af nogen, i stedet for når du klikker på et mødelink."
+        "a": "TinyFloor er et virtuelt kontor, som du går rundt i. Dit team vises som pixelart-figurer på en fælles 2D-etage, og et opkald starter, når du stiller dig ved siden af nogen, i stedet for når du klikker på et mødelink."
       },
       {
         "q": "Hvordan virker nærhedsbaseret videochat?",
-        "a": "Gå hen til nogen, så dukker opkaldsknapperne op ved siden af dem; tryk på en for at starte et video- eller taleopkald. Opkald kører over WebRTC gennem Cloudflares netværk, så de forbinder på ethvert kontor- eller hjemmenetværk, og de holder, indtil nogen lægger på. Mødeborde bærer gruppeopkald: sæt dig for at deltage, rejs dig for at gå."
+        "a": "Gå hen til nogen, så dukker en opkaldsknap op ved siden af dem. Et tryk starter opkaldet, og når I taler, kan du tænde kameraet eller dele din skærm. Opkald kører over WebRTC gennem Cloudflares netværk, så de forbinder på ethvert kontor- eller hjemmenetværk, og de holder, indtil nogen lægger på. Mødeborde bærer gruppeopkald: sæt dig for at deltage, rejs dig for at gå."
       },
       {
         "q": "Er TinyFloor gratis?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Invitér nogen"
   },
   "call": {
-    "incomingVideo": "Indgående videoopkald...",
-    "incomingAudio": "Indgående taleopkald...",
+    "incoming": "Ringer til dig",
+    "onCall": "I opkaldet",
     "decline": "Afvis",
     "accept": "Accepter",
     "tutorial": "Introduktionsopkald",
@@ -191,7 +191,7 @@
     "errors": {
       "connection": "Forbindelsen mislykkedes",
       "unsupported": "Denne browser kan ikke få adgang til medieenheder",
-      "media": "Kamera eller mikrofon er ikke tilgængelig",
+      "media": "Mikrofonen er ikke tilgængelig",
       "camera": "Kameraet er ikke tilgængeligt"
     }
   },
@@ -288,8 +288,8 @@
     "cancel": "Annuller"
   },
   "proximity": {
-    "videoCall": "Videoopkald",
-    "audioCall": "Taleopkald"
+    "call": "Ring op",
+    "onCall": "I opkald med dig"
   },
   "jukebox": {
     "title": "Rummets højttaler",
@@ -530,7 +530,7 @@
           },
           {
             "title": "Gå hen for at snakke",
-            "body": "Gå tæt på en kollega for at starte et video- eller lydopkald. Ved mødebordet er alle i det samme opkald."
+            "body": "Gå tæt på en kollega for at starte et opkald. Ved mødebordet er alle i det samme opkald."
           }
         ],
         "them": {
@@ -601,7 +601,7 @@
           },
           {
             "q": "Hvordan starter opkald i TinyFloor?",
-            "a": "Gå hen til en kollega, så dukker opkaldsbjælken op. Et tryk starter video eller lyd. Ved mødebordet kommer alle, der sætter sig, med i det samme opkald."
+            "a": "Gå hen til en kollega, så dukker opkaldskortet op. Et tryk starter opkaldet. Ved mødebordet kommer alle, der sætter sig, med i det samme opkald."
           }
         ]
       },
@@ -814,14 +814,14 @@
         "label": "Nærhedschat",
         "meta": {
           "title": "Gratis videochat efter nærhed i browseren",
-          "description": "Nærhedschat til teams og venner: gå med din figur hen til nogen for at starte et video- eller lydopkald. Gratis, i browseren, uden download."
+          "description": "Nærhedschat til teams og venner: gå med din figur hen til nogen for at starte et opkald. Gratis, i browseren, uden download."
         },
         "title": "<em>Nærhedschat</em>, der starter, når du går hen.",
         "subtitle": "I TinyFloor afgør, hvor du står, hvem du snakker med. Gå hen til nogen for at ringe, sæt dig ved bordet for at snakke i gruppe, og gå videre, når du er færdig.",
         "points": [
           {
             "title": "Nærhed starter samtalen",
-            "body": "Stil dig ved siden af en kollega, så dukker en opkaldsbjælke op. Et tryk åbner video eller lyd."
+            "body": "Stil dig ved siden af en kollega, så dukker et opkaldskort op. Et tryk starter opkaldet."
           },
           {
             "title": "Grupper ved bordet",
@@ -1369,8 +1369,7 @@
       "typing": "{name} skriver…",
       "inviteTeammate": "Inviter en kollega",
       "inviteTeammateNote": "De kommer ind med et link",
-      "video": "Videoopkald",
-      "audio": "Taleopkald",
+      "call": "Ring op",
       "joined": "er kommet med i kontoret"
     },
     "footer": {

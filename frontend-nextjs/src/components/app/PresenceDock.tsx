@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video, VideoOff } from "lucide-react";
+import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
@@ -61,9 +61,10 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
                 onLabel={tControls("cameraOff")}
                 offLabel={tControls("cameraOn")}
                 onIcon={<Video />}
-                offIcon={<VideoOff />}
+                offIcon={<Video />}
                 onClick={() => callManager.setCamera(!cameraEnabled)}
                 wide
+                highlight
               />
               {canShareScreen && (
                 <PanelToggle
@@ -155,7 +156,7 @@ function PanelToggle({
   offIcon: React.ReactNode;
   onClick: () => void;
   wide?: boolean;
-  /** On means something is happening (a shared screen), so on is the loud state. */
+  /** On means something is happening (a camera, a shared screen), so on is the loud state and off is how it rests. */
   highlight?: boolean;
 }) {
   return (

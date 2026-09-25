@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
@@ -9,6 +9,7 @@ import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
+import { Face } from "@/components/ui/Face";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
 
@@ -152,6 +153,26 @@ export default function CallCards() {
 
   if (!meeting && !peers.length) return null;
 
+  // Until someone shows something (a camera, a screen), a call is voices: a
+  // strip of who is on it, not a wall of cards.
+  const showing = tiles.some((tile) => tile.screen || (tile.camera && !!tile.stream?.getVideoTracks().length));
+  if (!showing) {
+    return (
+      <div className="pointer-events-none absolute inset-x-0 top-16 z-40 flex justify-center px-3 sm:top-[4.75rem]">
+        <ul aria-label={t("onCall")} className="pointer-events-auto flex max-w-full flex-wrap justify-center gap-1.5">
+          {tiles.map((tile) => (
+            <CallChip
+              key={tile.key}
+              tile={tile}
+              muted={!!tile.self || !speakerEnabled}
+              micOff={t("micOff")}
+            />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <div
       className={`absolute inset-x-0 top-16 sm:top-[4.75rem] z-40 px-3 sm:px-4 pointer-events-none ${
@@ -186,6 +207,33 @@ export default function CallCards() {
         ))}
       </div>
     </div>
+  );
+}
+
+/**
+ * Someone on a voice call: their face, their name, and a ring while they
+ * speak. Their voice plays from an audio element of its own.
+ */
+function CallChip({ tile, muted, micOff }: { tile: Tile; muted: boolean; micOff: string }) {
+  const speaking = useSpeaking(tile.stream, tile.mic && tile.connected);
+  const audio = useRef<HTMLAudioElement>(null);
+  useEffect(() => {
+    if (audio.current && audio.current.srcObject !== tile.stream) audio.current.srcObject = tile.stream;
+  }, [tile.stream]);
+  return (
+    <li className="flex h-11 items-center gap-2 rounded-full border border-border bg-card/92 py-1 pe-3.5 ps-1 shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]">
+      {!tile.self && <audio ref={audio} autoPlay muted={muted} />}
+      <span
+        className={`flex shrink-0 rounded-full ring-2 ring-offset-2 ring-offset-card transition-shadow duration-200 ${
+          speaking ? "ring-brand" : "ring-transparent"
+        } ${tile.connected ? "" : "opacity-50"}`}
+      >
+        <Face seed={tile.id ?? tile.key} size={34} />
+      </span>
+      <span className="max-w-[9rem] truncate text-[13px] font-semibold text-foreground">{tile.name}</span>
+      {tile.badge && <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{tile.badge}</span>}
+      {!tile.mic && <MicOff className="size-3.5 shrink-0 text-brand" aria-label={micOff} />}
+    </li>
   );
 }
 

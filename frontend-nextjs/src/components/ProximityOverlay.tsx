@@ -9,8 +9,8 @@ import {
 
 const GAP = 22;
 const PADDING = 12;
-/** How wide the bar ends up, so it can be kept on the screen before it paints. */
-const BAR_WIDTH = { pointer: 164, touch: 196 };
+/** About how wide the card ends up with a long name, so it can be kept on the screen before it paints. */
+const BAR_WIDTH = { pointer: 300, touch: 350 };
 
 export default function ProximityOverlay() {
   const [nearbyPlayers, setNearbyPlayers] = useState<NearbyPlayer[]>([]);

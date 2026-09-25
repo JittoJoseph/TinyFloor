@@ -58,11 +58,11 @@
     "items": [
       {
         "q": "Czym jest TinyFloor?",
-        "a": "TinyFloor to wirtualne biuro, po którym chodzisz. Twój zespół pojawia się jako postacie w stylu pixel art na wspólnym piętrze 2D, a rozmowa wideo lub głosowa zaczyna się, gdy staniesz obok kogoś, a nie gdy klikniesz link do spotkania."
+        "a": "TinyFloor to wirtualne biuro, po którym chodzisz. Twój zespół pojawia się jako postacie w stylu pixel art na wspólnym piętrze 2D, a rozmowa zaczyna się, gdy staniesz obok kogoś, a nie gdy klikniesz link do spotkania."
       },
       {
         "q": "Jak działa czat wideo zbliżeniowy?",
-        "a": "Podejdź do kogoś, a obok tej osoby pojawią się przyciski połączenia; stuknij jeden, aby rozpocząć rozmowę wideo lub głosową. Połączenia idą przez WebRTC w sieci Cloudflare, więc łączą się w każdej sieci biurowej i domowej, i trwają, dopóki ktoś się nie rozłączy. Przy stołach konferencyjnych odbywają się rozmowy grupowe: usiądź, aby dołączyć, wstań, aby wyjść."
+        "a": "Podejdź do kogoś, a obok tej osoby pojawi się przycisk połączenia. Jedno stuknięcie zaczyna rozmowę, a w jej trakcie możesz włączyć kamerę albo udostępnić ekran. Połączenia idą przez WebRTC w sieci Cloudflare, więc łączą się w każdej sieci biurowej i domowej, i trwają, dopóki ktoś się nie rozłączy. Przy stołach konferencyjnych odbywają się rozmowy grupowe: usiądź, aby dołączyć, wstań, aby wyjść."
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
@@ -176,8 +176,8 @@
     "inviteSomeone": "Zaproś kogoś"
   },
   "call": {
-    "incomingVideo": "Przychodząca rozmowa wideo...",
-    "incomingAudio": "Przychodząca rozmowa głosowa...",
+    "incoming": "Dzwoni do ciebie",
+    "onCall": "W rozmowie",
     "decline": "Odrzuć",
     "accept": "Odbierz",
     "tutorial": "Rozmowa samouczka",
@@ -191,7 +191,7 @@
     "errors": {
       "connection": "Nie udało się połączyć",
       "unsupported": "Ta przeglądarka nie ma dostępu do urządzeń multimedialnych",
-      "media": "Kamera lub mikrofon są niedostępne",
+      "media": "Mikrofon niedostępny",
       "camera": "Kamera jest niedostępna"
     }
   },
@@ -288,8 +288,8 @@
     "cancel": "Anuluj"
   },
   "proximity": {
-    "videoCall": "Rozmowa wideo",
-    "audioCall": "Rozmowa głosowa"
+    "call": "Zadzwoń",
+    "onCall": "Rozmawiacie"
   },
   "jukebox": {
     "title": "Głośnik pokoju",
@@ -530,7 +530,7 @@
           },
           {
             "title": "Podejdź, żeby porozmawiać",
-            "body": "Podejdź do współpracownika, żeby zacząć rozmowę wideo lub głosową. Przy stole konferencyjnym wszyscy są w jednej rozmowie."
+            "body": "Podejdź do współpracownika, żeby zacząć rozmowę. Przy stole konferencyjnym wszyscy są w jednej rozmowie."
           }
         ],
         "them": {
@@ -601,7 +601,7 @@
           },
           {
             "q": "Jak zaczynają się rozmowy w TinyFloor?",
-            "a": "Podejdź do współpracownika, a pojawi się jego pasek rozmowy. Jedno dotknięcie włącza wideo lub głos. Przy stole konferencyjnym wszyscy, którzy usiądą, są w tej samej rozmowie."
+            "a": "Podejdź do współpracownika, a pojawi się jego karta rozmowy. Jedno dotknięcie zaczyna rozmowę. Przy stole konferencyjnym wszyscy, którzy usiądą, są w tej samej rozmowie."
           }
         ]
       },
@@ -814,14 +814,14 @@
         "label": "Czat zbliżeniowy",
         "meta": {
           "title": "Darmowy czat wideo z bliska w przeglądarce",
-          "description": "Czat zbliżeniowy dla zespołów i znajomych: podejdź swoją postacią do kogoś, żeby zacząć rozmowę wideo lub głosową. Za darmo, w przeglądarce, bez pobierania."
+          "description": "Czat zbliżeniowy dla zespołów i znajomych: podejdź swoją postacią do kogoś, żeby zacząć rozmowę. Za darmo, w przeglądarce, bez pobierania."
         },
         "title": "<em>Czat zbliżeniowy</em>, który zaczyna się, gdy podchodzisz.",
         "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, usiądź przy stole, żeby porozmawiać w grupie, i idź dalej, gdy skończysz.",
         "points": [
           {
             "title": "Bliskość zaczyna rozmowę",
-            "body": "Stań obok współpracownika, a pojawi się pasek rozmowy. Jedno dotknięcie włącza wideo lub głos."
+            "body": "Stań obok współpracownika, a pojawi się karta rozmowy. Jedno dotknięcie zaczyna rozmowę."
           },
           {
             "title": "Grupy przy stole",
@@ -1369,8 +1369,7 @@
       "typing": "{name} pisze…",
       "inviteTeammate": "Zaproś osobę z zespołu",
       "inviteTeammateNote": "Dołącza przez link",
-      "video": "Rozmowa wideo",
-      "audio": "Rozmowa głosowa",
+      "call": "Zadzwoń",
       "joined": "dołączył(a) do biura"
     },
     "footer": {

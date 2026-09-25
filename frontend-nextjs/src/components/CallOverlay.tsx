@@ -1,10 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Phone, Video, X, Check } from "lucide-react";
+import { Phone, X } from "lucide-react";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import CallCards from "./CallCards";
+import { Face } from "@/components/ui/Face";
 import { RoomIconButton, surface, label, quietLabel } from "./room/ui";
 
 /** The ring, the wait and the "that didn't work", all in the same language. */
@@ -19,15 +20,17 @@ export default function CallOverlay() {
       {incoming && (
         <div className="fixed inset-0 z-[75] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-card rounded-3xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] border border-border p-7 w-[min(20rem,100%)] text-center">
-            <span className="w-16 h-16 rounded-full bg-foreground/[0.06] text-foreground flex items-center justify-center mx-auto mb-4 animate-pulse">
-              {incoming.video ? <Video className="w-7 h-7" /> : <Phone className="w-7 h-7" />}
+            <span className="relative mx-auto mb-4 flex size-16 items-center justify-center [--face-ring:var(--ui-card)]">
+              <span className="absolute inset-0 animate-ping rounded-full bg-ok/25" />
+              <Face seed={incoming.id} size={64} />
+              <span className="absolute -bottom-0.5 -end-0.5 flex size-6 items-center justify-center rounded-full bg-ok text-white ring-2 ring-card">
+                <Phone className="size-3" strokeWidth={2.5} />
+              </span>
             </span>
             <h2 className="text-xl font-semibold text-foreground truncate">
               {incoming.name}
             </h2>
-            <p className={`${quietLabel} mt-1 mb-6`}>
-              {incoming.video ? t("incomingVideo") : t("incomingAudio")}
-            </p>
+            <p className={`${quietLabel} mt-1 mb-6`}>{t("incoming")}</p>
 
             <div className="flex gap-3">
               <button
@@ -41,9 +44,9 @@ export default function CallOverlay() {
               <button
                 type="button"
                 onClick={() => callManager.accept()}
-                className={`cursor-pointer flex-1 h-11 rounded-full bg-foreground text-white hover:bg-foreground/90 shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 ${label}`}
+                className={`cursor-pointer flex-1 h-11 rounded-full bg-ok text-white hover:bg-ok/90 shadow-sm transition-colors duration-150 flex items-center justify-center gap-2 ${label}`}
               >
-                <Check className="w-4 h-4" />
+                <Phone className="w-4 h-4" />
                 {t("accept")}
               </button>
             </div>
@@ -64,8 +67,9 @@ export default function CallOverlay() {
 
         {outgoing && (
           <div className={`${surface} pointer-events-auto rounded-full ps-2 pe-2 py-2 flex items-center gap-2.5`}>
-            <span className="w-9 h-9 rounded-full bg-foreground/[0.06] flex items-center justify-center font-semibold text-sm text-foreground animate-pulse shrink-0">
-              {outgoing.name.charAt(0).toUpperCase()}
+            <span className="relative flex size-9 shrink-0 items-center justify-center">
+              <span className="absolute inset-0 animate-ping rounded-full bg-foreground/10" />
+              <Face seed={outgoing.id} size={36} />
             </span>
             <span className="min-w-0 max-w-[9rem] pe-1">
               <span className={`block ${label} text-foreground truncate`}>{outgoing.name}</span>

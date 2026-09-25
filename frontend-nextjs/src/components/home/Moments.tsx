@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Bell, BookOpen, Building2, CalendarDays, Check, Clock3, Coffee, Copy, Footprints, GraduationCap, Link2, MessageSquare, Radio, Video } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { PEOPLE } from "@/components/floor/scenes";

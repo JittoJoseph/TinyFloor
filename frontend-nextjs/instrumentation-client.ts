@@ -1,4 +1,4 @@
-import posthog from "posthog-js";
+import { startAnalytics } from "@/lib/analytics";
 
 const posthogProjectToken = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
@@ -16,10 +16,6 @@ if (!posthogProjectToken) {
     );
   }
 } else {
-  posthog.init(posthogProjectToken, {
-    api_host: posthogHost,
-    defaults: "2026-01-30",
-    capture_exceptions: true,
-    debug: process.env.NODE_ENV === "development",
-  });
+  // Set up in src/lib/analytics.ts, once the page has settled.
+  startAnalytics();
 }

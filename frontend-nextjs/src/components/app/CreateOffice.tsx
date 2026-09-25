@@ -12,9 +12,7 @@ import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
 import { cn } from "@/lib/utils";
 import { posthogLog } from "@/lib/posthog-log";
-import posthog from "posthog-js";
-
-const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
+import { withPostHog } from "@/lib/analytics";
 
 /**
  * Making an office, wherever it starts: a name, then straight onto its floor.
@@ -43,7 +41,7 @@ export function useCreateOffice() {
     setError("");
     try {
       const { office } = await api.createOffice(typed);
-      if (posthogConfigured) posthog.capture("office_created");
+      withPostHog((posthog) => posthog.capture("office_created"));
       posthogLog.info("Office creation completed");
       forgetOffice();
       // The office is its floor, so there is nothing else to set up.

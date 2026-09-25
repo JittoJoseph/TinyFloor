@@ -1,4 +1,4 @@
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
 export const TERMS_UPDATED = "24 September 2026";

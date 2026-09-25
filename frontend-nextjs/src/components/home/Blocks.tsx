@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ChevronRight, Globe2, LockKeyhole, MonitorSmartphone } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { wholeWords } from "@/lib/words";

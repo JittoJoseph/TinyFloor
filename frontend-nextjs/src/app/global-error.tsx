@@ -1,10 +1,8 @@
 "use client";
 
 import NextError from "next/error";
-import posthog from "posthog-js";
+import { withPostHog } from "@/lib/analytics";
 import { useEffect } from "react";
-
-const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
 
 export default function GlobalError({
   error,
@@ -14,7 +12,7 @@ export default function GlobalError({
   reset: () => void;
 }>) {
   useEffect(() => {
-    if (posthogConfigured) posthog.captureException(error);
+    withPostHog((posthog) => posthog.captureException(error));
   }, [error]);
 
   return (

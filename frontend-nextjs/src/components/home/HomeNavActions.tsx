@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { useAuth } from "@/contexts/AuthContext";
 
 /**

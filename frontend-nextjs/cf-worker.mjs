@@ -9,6 +9,9 @@
 // to it, or a segment of that as it prefetches) comes straight from the
 // assets instead, the same way OpenNext's cache would serve it.
 //
+// Every office is one page, built for an office called `_` and handed out for
+// all of them (SHARED_PAGES); so is every conversation.
+//
 // Everything else still goes to Next, unchanged: other methods, the old
 // addresses (which redirect), an unprefixed address a reader of another
 // language would be sent on from, and every page rendered per request.
@@ -23,6 +26,17 @@ const LOCALES = new Set(manifest.locales);
 const DEFAULT_LOCALE = "en";
 /** Languages the browser may name another way than we do. */
 const ALIASES = { nb: "no", nn: "no", iw: "he" };
+/**
+ * Pages built once for every office and every conversation, under `_`: the
+ * address says which, and the page reads it in the browser. Their payloads
+ * name `_` too, so the app's router sees one page throughout and never
+ * rebuilds the shell as you move around an office.
+ */
+const SHARED_PAGES = [
+  [/^(\/[a-z]{2}\/office\/)[^/]+\/chat\/[^/]+$/, "$1_/chat/_"],
+  [/^(\/[a-z]{2}\/office\/)[^/]+(\/(?:chat|people|settings))?$/, "$1_$2"],
+  [/^(\/[a-z]{2}\/lobby\/chat\/)[^/]+$/, "$1_"],
+];
 /** The request headers Next's pages vary on, so a cache never mixes a page with its data. */
 const VARY = "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch";
 
@@ -62,6 +76,8 @@ function builtFile(request) {
     if (wantedLocale(request) !== DEFAULT_LOCALE) return null;
     route = path === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${path}`;
   }
+  const shared = SHARED_PAGES.find(([pattern]) => pattern.test(route));
+  if (shared) route = route.replace(...shared);
   const page = PAGES.get(route);
   if (!page) return null;
   if (!data) return { route, page, file: `${route}.html` };

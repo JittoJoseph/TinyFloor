@@ -1,6 +1,9 @@
 /**
  * A dotted globe with a few lit points joined by arcs: Cloudflare's network,
  * drawn once on the server as plain SVG. Nothing here runs in the browser.
+ * The dots are a file (public/globe-dots.svg, from scripts/globe-dots.mjs)
+ * laid on as a mask, so they take the text colour without some 360 circles in
+ * the page; the arcs and the cities are drawn here.
  */
 
 const R = 150;
@@ -19,19 +22,6 @@ function project(latDeg: number, lonDeg: number) {
 }
 
 const round = (value: number) => Math.round(value * 10) / 10;
-
-const DOTS = (() => {
-  const dots: Array<{ x: number; y: number; r: number; o: number }> = [];
-  for (let lat = -78; lat <= 78; lat += 7.8) {
-    const count = Math.max(6, Math.round(46 * Math.cos((lat * Math.PI) / 180)));
-    for (let i = 0; i < count; i++) {
-      const point = project(lat, (360 / count) * i);
-      if (point.z <= 0.04) continue;
-      dots.push({ x: round(point.x), y: round(point.y), r: round(0.7 + point.z * 1.1), o: round(0.18 + point.z * 0.55) });
-    }
-  }
-  return dots;
-})();
 
 /** Roughly where some of the network's cities sit, as latitude and longitude. */
 const CITIES: Array<[number, number]> = [
@@ -88,12 +78,11 @@ function arc(from: [number, number], to: [number, number]) {
 export function NetworkGlobe({ className }: { className?: string }) {
   return (
     <svg viewBox="-170 -170 340 340" className={className} aria-hidden>
+      <mask id="globe-dots" maskUnits="userSpaceOnUse" x="-170" y="-170" width="340" height="340">
+        <image href="/globe-dots.svg" x="-170" y="-170" width="340" height="340" />
+      </mask>
       <circle r={R} fill="none" stroke="currentColor" strokeOpacity="0.12" />
-      <g fill="currentColor">
-        {DOTS.map((dot, index) => (
-          <circle key={index} cx={dot.x} cy={dot.y} r={dot.r} opacity={dot.o} />
-        ))}
-      </g>
+      <rect x="-170" y="-170" width="340" height="340" fill="currentColor" mask="url(#globe-dots)" />
       <g fill="none" stroke="var(--ui-brand)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
         {LINKS.filter(([a, b]) => lit(a) && lit(b)).map(([a, b]) => (
           <path key={`${a}-${b}`} d={arc(CITIES[a], CITIES[b])} opacity="0.8" />

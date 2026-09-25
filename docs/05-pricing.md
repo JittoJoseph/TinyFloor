@@ -1,5 +1,8 @@
 # 05. Pricing
 
+> The tiers and fair-use numbers are settled in
+> [08-pricing-decision.md](08-pricing-decision.md); billing in [09-billing.md](09-billing.md).
+
 A proposal, with the arithmetic from `04-costs.md` behind it. Nothing here is
 built yet; payments come after the model is agreed.
 

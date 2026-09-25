@@ -44,7 +44,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
       <NearbyBar
         name={PEOPLE.olivia.name}
         seed={PEOPLE.olivia.id}
-        labels={{ video: t("home.preview.video"), audio: t("home.preview.audio"), message: t("home.preview.message") }}
+        labels={{ call: t("home.preview.call"), message: t("home.preview.message") }}
       />
     );
   return (

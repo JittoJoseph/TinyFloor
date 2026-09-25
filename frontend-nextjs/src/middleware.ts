@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
+import { LANDINGS } from "@/lib/landings";
 import { SITE_URL } from "@/lib/site";
 
 const handleI18nRouting = createMiddleware(routing);
@@ -16,6 +17,22 @@ const PROBE =
 
 /** A file under a locale prefix: `/sv/credits.txt`. */
 const LOCALE_FILE = new RegExp(`^/(?:${routing.locales.join("|")})/([^/]+\\.[a-z0-9]+)$`, "i");
+
+/**
+ * Every address the site has a page for, after its locale prefix. Anything
+ * else is sent to the 404 page built ahead of time (app/[locale]/missing), so
+ * a stray address costs a file read, not a render. Keep in step with app/[locale].
+ */
+const PAGES = [
+  "",
+  ...LANDINGS.map((page) => page.slug),
+  "about|people|privacy|terms|rooms|account|admin|auth|create|dashboard|map-render|og-render|video-demo",
+  "lobby(/(chat(/[^/]+)?|people|settings|your-office))?",
+  "join(/[^/]+)?",
+  "invite/[^/]+",
+  "office/[^/]+(/(chat(/[^/]+)?|people|settings))?",
+];
+const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.filter(Boolean).join("|")}))?/?$`);
 
 function notFound() {
   return new NextResponse("Not found", {
@@ -46,6 +63,15 @@ export function middleware(request: NextRequest) {
 
   // Files (sitemap.xml, robots.txt, sprites, music) carry no locale.
   if (/\.[^/]+$/.test(pathname)) return NextResponse.next();
+
+  // An address with no page: the prebuilt 404 in the reader's language (the
+  // prefix, else the one they picked before), with a 404 status.
+  if (!PAGE.test(pathname)) {
+    const prefix = pathname.split("/")[1];
+    const picked = request.cookies.get("NEXT_LOCALE")?.value;
+    const locale = [prefix, picked].find((one) => one && (routing.locales as readonly string[]).includes(one)) ?? routing.defaultLocale;
+    return NextResponse.rewrite(new URL(`/${locale}/missing${search}`, request.url), { status: 404 });
+  }
 
   // Detect the locale (cookie → Accept-Language → default) and redirect or
   // rewrite `/path` to its locale.

@@ -3,7 +3,7 @@ import { ChevronDown, Globe } from "lucide-react";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
 import { LANDINGS } from "@/lib/landings";
-import { Logo } from "@/components/app/AppShell";
+import { Logo } from "@/components/app/Logo";
 import { SOCIALS } from "@/lib/site";
 import { ThemeSwitch } from "./ThemeSwitch";
 

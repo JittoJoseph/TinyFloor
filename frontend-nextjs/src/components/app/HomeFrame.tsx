@@ -9,7 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { lobbyPath } from "@/lib/links";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
-import { Logo } from "./AppShell";
+import { Logo } from "./Logo";
 import { LanguageMenu } from "./LanguageMenu";
 import { YouMenu } from "./YouMenu";
 

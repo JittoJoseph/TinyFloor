@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { AudioLines, Check, Clock3, Languages, MonitorUp, Music2, PenLine, Smartphone } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { wholeWords } from "@/lib/words";
@@ -10,7 +10,7 @@ import { Moments, Steps, UseCases } from "./Moments";
 import { CAST, Frame } from "./previews/Frame";
 import { ChatPreview } from "./previews/ChatPreview";
 import { PeoplePreview } from "./previews/PeoplePreview";
-import { GuestPreview } from "./previews/GuestPreview";
+import { InvitePreview } from "./previews/InvitePreview";
 
 /**
  * The home page, in the app's own design system and theme, built on the real
@@ -62,7 +62,7 @@ function Hero() {
 /** The rest of the app: three cards with the app doing it, then the smaller things in one quiet line. */
 function Everything() {
   const t = useTranslations("home");
-  const card = (key: "chat" | "people" | "guests") => ({
+  const card = (key: "chat" | "people" | "invites") => ({
     title: t(`features.${key}.title`),
     muted: t(`features.${key}.muted`),
     body: t(`features.${key}.body`),
@@ -89,9 +89,9 @@ function Everything() {
             <PeoplePreview mini />
           </Frame>
         </DayCard>
-        <DayCard id="guests" className={SWIPE_ITEM} {...card("guests")}>
+        <DayCard id="invites" className={SWIPE_ITEM} {...card("invites")}>
           <Frame active="people" rail={false} className="h-full">
-            <GuestPreview />
+            <InvitePreview />
           </Frame>
         </DayCard>
       </div>

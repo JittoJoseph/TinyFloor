@@ -50,18 +50,18 @@ describe("offices", () => {
     expect(await fakeRealtime().calls()).toContainEqual(["officeCreated", "Harbour", "Ines"]);
   });
 
-  it("gives the dashboard a few faces per office, and who is on each floor as they look", async () => {
+  it("gives the dashboard each office's team, and who is on each floor as they look", async () => {
     const olive = await makeUser("Olive");
     const officeId = await officeOf(olive, "Faces");
     await fakeRealtime().setPeople(officeId, 1);
 
-    const me = await call<{ offices: Array<{ id: string; faces: { id: string; name: string }[]; here: number }> }>(
+    const me = await call<{ offices: Array<{ id: string; team: { id: string; displayName: string; role: string }[]; here: number }> }>(
       olive,
       "GET",
       "/v1/me",
     );
     expect(me.body.offices.find((office) => office.id === officeId)).toMatchObject({
-      faces: [{ id: olive.id, name: "Olive", character: "Adam" }],
+      team: [{ id: olive.id, displayName: "Olive", role: "admin" }],
       here: 1,
       inNow: [{ id: "here-0", name: "Here 0", character: "Bob", status: "available" }],
     });
@@ -74,14 +74,14 @@ describe("offices", () => {
     const stranger = await makeUser("Sam");
 
     const { status, body } = await call<{
-      office: { name: string; members: number; role: string; capacity: number };
+      office: { name: string; members: number; role: string; seats: number };
       members: { displayName: string }[];
       invites: unknown[];
       people: number;
     }>(olive, "GET", `/v1/offices/${officeId}/overview`);
 
     expect(status).toBe(200);
-    expect(body.office).toMatchObject({ name: "Overview", members: 1, role: "admin", capacity: 8 });
+    expect(body.office).toMatchObject({ name: "Overview", members: 1, role: "admin", seats: 3 });
     expect(body.members.map((member) => member.displayName)).toEqual(["Olive"]);
     expect(body.people).toBe(2);
 
@@ -155,7 +155,7 @@ describe("seats", () => {
     const token = (await invite(olive, id)).token;
     expect(
       (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${token}`)).body.invite,
-    ).toMatchObject({ officeName: "Snug", full: false });
+    ).toMatchObject({ officeId: id, officeName: "Snug", members: 1, full: false });
 
     await join(await makeUser("A"), (await invite(olive, id)).token);
     await join(await makeUser("B"), (await invite(olive, id)).token);
@@ -254,7 +254,7 @@ describe("walking in", () => {
       room: id,
       sub: olive.id,
       role: "admin",
-      cap: 8,
+      cap: 3,
     });
     expect((await call(await makeUser("Otto"), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
   });
@@ -270,48 +270,13 @@ describe("walking in", () => {
   });
 });
 
-describe("guest links", () => {
-  async function officeWithLink() {
+describe("office floors", () => {
+  it("let in members only: a guest, or anyone else, is turned away", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive, "Agency");
-    const link = (
-      await call<{ guestLink: { id: string; token: string } }>(olive, "POST", `/v1/offices/${id}/guest-links`, {
-        expiresIn: "1d",
-      })
-    ).body.guestLink;
-    return { olive, id, link };
-  }
-
-  it("previews the office and lets a guest in, tied to the link", async () => {
-    const { id, link } = await officeWithLink();
-    const preview = await call(null, "GET", `/v1/guest-links/${link.token}`);
-    expect(preview.body.guestLink).toEqual({ officeName: "Agency" });
-
-    const guest = await makeUser("Gus", { guest: true });
-    const { body } = await call<{ ticket: string }>(guest, "POST", `/v1/guest-links/${link.token}/ticket`);
-    expect(await verifyTicket(body.ticket, env.TICKET_SECRET)).toMatchObject({
-      room: id,
-      role: "guest",
-      link: link.id,
-    });
-  });
-
-  it("lets a member through a guest link keep their own role", async () => {
-    const { olive, link } = await officeWithLink();
-    const { body } = await call<{ ticket: string }>(olive, "POST", `/v1/guest-links/${link.token}/ticket`);
-    const claims = await verifyTicket(body.ticket, env.TICKET_SECRET);
-    expect(claims?.role).toBe("admin");
-    expect(claims?.link).toBeUndefined();
-  });
-
-  it("revoking a link stops new tickets and removes its guests", async () => {
-    const { olive, id, link } = await officeWithLink();
-    expect((await call(olive, "DELETE", `/v1/offices/${id}/guest-links/${link.id}`)).status).toBe(200);
-    expect(await fakeRealtime().calls()).toContainEqual(["revokeGuestLink", id, link.id]);
-
-    const guest = await makeUser("Gus", { guest: true });
-    expect((await call(guest, "POST", `/v1/guest-links/${link.token}/ticket`)).status).toBe(404);
-    const overview = await call<{ guestLinks: unknown[] }>(olive, "GET", `/v1/offices/${id}/overview`);
-    expect(overview.body.guestLinks).toEqual([]);
+    expect((await call(await makeUser("Gus", { guest: true }), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
+    expect((await call(await makeUser("Otto"), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
+    const { body } = await call<{ ticket: string }>(olive, "POST", `/v1/offices/${id}/ticket`);
+    expect(await verifyTicket(body.ticket, env.TICKET_SECRET)).toMatchObject({ room: id, role: "admin", cap: 3 });
   });
 });

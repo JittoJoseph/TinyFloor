@@ -74,11 +74,11 @@
       },
       {
         "q": "Preciso de uma conta para entrar em uma sala?",
-        "a": "Para o lobby público, não. Qualquer pessoa pode entrar como convidada só com um nome. As salas de um espaço de trabalho são privadas: a equipe entra com uma conta grátis e os visitantes, com um link de convidado."
+        "a": "Não para o lobby público: lá qualquer pessoa pode entrar como convidado só com um nome. Um escritório é privado: os colegas entram por convite, com uma conta gratuita."
       },
       {
         "q": "O TinyFloor é privado e seguro?",
-        "a": "Um andar é só para seus membros e os convidados que eles deixam entrar, e nada lá dentro é público ou indexado por buscadores. As chamadas são criptografadas em trânsito pelo WebRTC, e sua câmera e seu microfone só ficam ligados durante uma chamada."
+        "a": "Um andar é só para seus membros, e nada lá dentro é público ou indexado por buscadores. As chamadas são criptografadas em trânsito pelo WebRTC, e sua câmera e seu microfone só ficam ligados durante uma chamada."
       },
       {
         "q": "Qual a diferença entre o TinyFloor e o Zoom ou o Google Meet?",
@@ -144,12 +144,6 @@
     "introTitle": "Antes de entrar",
     "introSubtitle": "Como quer que o chamem, e quem vai ser no piso?"
   },
-  "join": {
-    "unavailableTitle": "Essa porta não abre.",
-    "linkUnavailable": "Este link de convidado expirou ou foi desativado. Peça um novo a quem enviou.",
-    "visitLobby": "Visitar o lobby",
-    "invitedAsGuest": "Você foi convidado a entrar como convidado."
-  },
   "room": {
     "connecting": "Conectando...",
     "leave": "Sair",
@@ -164,7 +158,7 @@
       "closedTitle": "Esta sala está fechada",
       "closed": "O dono fechou este escritório.",
       "revokedTitle": "Seu acesso terminou",
-      "revoked": "O link de convidado que você usou foi desativado.",
+      "revoked": "Você não é mais membro deste escritório.",
       "signedOutTitle": "Você saiu da conta",
       "signedOut": "Entre de novo para voltar.",
       "notFoundTitle": "Sala não encontrada",
@@ -441,8 +435,8 @@
             "body": "Tudo funciona no navegador, no computador e no celular. Compartilhe um link e sua equipe entra em segundos."
           },
           {
-            "title": "Convidados entram direto",
-            "body": "A equipe entra com uma conta grátis, e qualquer outra pessoa pode entrar com um link de convidado e só um nome."
+            "title": "Um link para entrar",
+            "body": "Envie um link de convite. Os colegas escolhem nome e personagem, criam uma conta gratuita e entram."
           }
         ],
         "them": {
@@ -484,8 +478,8 @@
             "body": "Convide todo mundo. As salas comportam 20 pessoas ao mesmo tempo, e você pode abrir mais salas quando precisar."
           },
           {
-            "title": "Sem limite semanal para convidados",
-            "body": "O Kumospace dá 4 horas por semana aos convidados gratuitos. No TinyFloor, um convidado entra com um nome e fica o tempo que quiser."
+            "title": "Experimente antes de se cadastrar",
+            "body": "Entre no lobby público do TinyFloor só com um nome e experimente o andar antes de criar um escritório."
           },
           {
             "title": "Feito também para o celular",
@@ -509,7 +503,7 @@
           },
           {
             "q": "Meus colegas precisam de conta?",
-            "a": "A equipe usa uma conta grátis, o que mantém suas salas privadas. Qualquer outra pessoa pode entrar como convidada só com um nome, por um link de convidado ou pelo lobby público."
+            "a": "Sim, uma gratuita, que mantém seu escritório privado para a equipe. Para dar uma olhada antes, qualquer pessoa pode entrar no lobby público só com um nome."
           },
           {
             "q": "O TinyFloor funciona no celular?",
@@ -626,7 +620,7 @@
           },
           {
             "title": "Continua no navegador",
-            "body": "Abra um link, escolha um personagem e pronto. Convidados não precisam de conta."
+            "body": "Abra um link de convite, escolha um personagem e pronto. O lobby público não precisa de conta nenhuma."
           },
           {
             "title": "Grátis e aberto o dia todo",
@@ -763,7 +757,7 @@
           },
           {
             "q": "É grátis para estudantes?",
-            "a": "Sim. O TinyFloor é grátis para um grupo pequeno, e seus amigos podem entrar com um link de convidado sem conta."
+            "a": "Sim. O TinyFloor é gratuito para um grupo pequeno. Envie um link de convite aos seus amigos e eles entram com uma conta gratuita."
           },
           {
             "q": "Podemos ouvir música enquanto estudamos?",
@@ -808,7 +802,7 @@
           },
           {
             "q": "Posso deixar a sala privada?",
-            "a": "Sim. As salas de um espaço de trabalho são privadas. Compartilhe um link de convidado com a turma e desative-o quando terminarem."
+            "a": "Sim. Um escritório é privado para seus membros. Convide sua turma com um link e remova as pessoas do escritório quando o curso terminar."
           },
           {
             "q": "É grátis para professores?",
@@ -880,7 +874,7 @@
       },
       "invites": {
         "title": "Convites vêm com um escritório",
-        "body": "Convide sua equipe por e-mail ou deixe um convidado entrar com um link, no seu próprio escritório."
+        "body": "Convide sua equipe por e-mail ou com um link, em um escritório só seu."
       },
       "free": "Criar um escritório leva um minuto e é grátis para até 3 pessoas.",
       "go": "Criar meu escritório",
@@ -899,7 +893,7 @@
         "private": "Um andar privado",
         "channels": "Canais que ficam",
         "messages": "Mensagens diretas",
-        "guests": "Links de convidado"
+        "invites": "Links de convite"
       },
       "bringThem": "{count, plural, one {Traga a pessoa que você conheceu aqui} other {Traga as # pessoas que você conheceu aqui}}"
     }
@@ -982,7 +976,9 @@
       "signIn": "Já tenho conta",
       "readyToJoin": "Sou eu",
       "accountKeeps": "Uma conta guarda {name} e seu personagem para a próxima vez.",
-      "you": "Você"
+      "you": "Você",
+      "members": "{count, plural, one {# membro} other {# membros}}",
+      "change": "Alterar"
     },
     "errors": {
       "member_limit": "O espaço de trabalho está cheio no plano atual.",
@@ -1010,16 +1006,12 @@
       "title": "Pessoas",
       "members": "Membros",
       "invitations": "Convites pendentes",
-      "guests": "Convidados",
-      "guestsNote": "Um convidado entra por um link. Não ocupa lugar e não pode convidar ninguém.",
       "invite": "Convidar",
       "seats": "{used} de {seats} lugares",
       "seatsFull": "Já não há lugares.",
       "seatsFree": "Ainda há espaço.",
       "onFloorNow": "{count} no piso agora",
       "noInvitations": "Nenhum convite pendente",
-      "noGuestLinks": "Nenhum link de convidado",
-      "newGuestLink": "Criar link de convidado",
       "copied": "Copiado",
       "revoke": "Revogar",
       "remove": "Remover",
@@ -1042,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# lugar livre — convide alguém} other {# lugares livres — convide alguém}}",
       "seatsNote": "Um lugar é um membro. Quem sai libera o seu; ficar offline, não.",
       "invitationsNote": "Um convite não ocupa lugar. Quem aceitar primeiro fica com um, enquanto houver.",
-      "guestLink": "Link de convidado",
       "noInvitationsBody": "Convide alguém: o link espera aqui até ser aceito ou expirar.",
-      "noGuestLinksBody": "Um link de convidado permite que um cliente ou candidato visite o andar sem ocupar lugar.",
       "allSeatsTaken": "Todos os lugares estão ocupados",
       "allSeatsTakenBody": "Quem sai libera um lugar. Escritórios com mais lugares estão chegando.",
       "yourProfile": "Seu perfil",
@@ -1144,14 +1134,13 @@
       "lobby": "Lobby",
       "signIn": "Entrar",
       "start": "Criar seu escritório",
-      "open": "Abrir TinyFloor",
       "main": "Navegação principal",
       "items": {
         "proximity": "Chamadas por proximidade",
         "meetings": "Mesas de reunião",
         "chat": "Chat",
         "people": "Presença",
-        "guests": "Convidados"
+        "invites": "Convites"
       },
       "lobbyTitle": "O lobby está aberto",
       "lobbyBody": "Ande por um andar de verdade antes de criar o seu. Sem precisar de conta.",
@@ -1203,10 +1192,10 @@
         "muted": "E vá direto até lá.",
         "body": "Veja quem está no andar, quem está ocupado e quem está em chamada. Toque em Ir até e seu personagem encontra o caminho sozinho."
       },
-      "guests": {
-        "title": "Deixe qualquer um entrar.",
+      "invites": {
+        "title": "Traga sua equipe.",
         "muted": "Com um único link.",
-        "body": "Convide colegas por e-mail ou mande um link de convidado para um cliente ou candidato. Eles escolhem um nome e um personagem e já estão no andar, sem conta."
+        "body": "Envie um link de convite ou convide por e-mail. Eles escolhem um nome e um personagem, criam uma conta gratuita e já estão no andar."
       }
     },
     "versus": {
@@ -1250,7 +1239,7 @@
       },
       "invite": {
         "title": "Envie o link para sua equipe.",
-        "body": "Convide colegas por e-mail ou compartilhe um link de convidado com qualquer pessoa."
+        "body": "Convide colegas por e-mail ou envie a eles um link de convite."
       },
       "walk": {
         "title": "Entre.",
@@ -1294,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Privado por padrão",
-          "body": "Um andar de escritório é só para os membros e os convidados que eles deixam entrar. Nada é público e nada é indexado."
+          "body": "Um andar de escritório é só para os membros. Nada é público e nada é indexado."
         },
         "network": {
           "title": "Na rede da Cloudflare",
@@ -1321,7 +1310,7 @@
           "Chamadas por proximidade e mesas de reunião",
           "Compartilhamento de tela",
           "Canais e mensagens diretas",
-          "Links de convidado para visitas"
+          "Links de convite para sua equipe"
         ]
       },
       "soon": {
@@ -1362,12 +1351,11 @@
       "available": "Disponível",
       "busy": "Ocupado",
       "away": "Ausente",
-      "guestLink": "Link de convidado",
-      "guestNote": "Quem tiver este link pode entrar como convidado.",
+      "inviteLink": "Link de convite",
+      "inviteNote": "Qualquer pessoa com este link pode entrar, com uma conta gratuita.",
       "copy": "Copiar",
       "invite": "Convidar",
       "people": "Pessoas",
-      "guestArrived": "entrou como convidada",
       "roles": {
         "design": "Design",
         "engineering": "Engenharia",
@@ -1379,11 +1367,11 @@
       "directMessages": "Mensagens diretas",
       "today": "Hoje",
       "typing": "{name} está digitando…",
-      "guest": "Convidado",
       "inviteTeammate": "Convidar um colega",
       "inviteTeammateNote": "Entram com um link",
       "video": "Chamada de vídeo",
-      "audio": "Chamada de voz"
+      "audio": "Chamada de voz",
+      "joined": "entrou no escritório"
     },
     "footer": {
       "tagline": "Um escritório virtual por onde você anda.",

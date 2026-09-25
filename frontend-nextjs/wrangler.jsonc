@@ -1,7 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tinyfloor",
-  "main": ".open-next/worker.js",
+  // OpenNext's worker behind a front door that serves built pages as files (cf-worker.mjs).
+  "main": "cf-worker.mjs",
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {

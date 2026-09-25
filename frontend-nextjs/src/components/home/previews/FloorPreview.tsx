@@ -47,11 +47,11 @@ function Dock({ className }: { className?: string }) {
   );
 }
 
-const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0) + (HALL.walking?.length ?? 0);
+const PEOPLE_IN_HALL = (HALL.standing?.length ?? 0) + (HALL.sitting?.length ?? 0);
 
 /**
  * The floor, as the app shows it: the real map with people at their desks,
- * chatting and walking around, the room's chip and the dock. `bare` is the
+ * chatting and about the hall, the room's chip and the dock. `bare` is the
  * floor alone, for a small window.
  */
 export function FloorPreview({ bare = false, priority = false, className }: { bare?: boolean; priority?: boolean; className?: string }) {

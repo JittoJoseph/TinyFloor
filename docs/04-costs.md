@@ -1,5 +1,8 @@
 # 04. What it costs to run
 
+> Updated in [08-pricing-decision.md](08-pricing-decision.md): the free 1,000 GB
+> is shared by TURN and the SFU, and the meeting table seats six.
+
 Measured on 21 September 2026 from our own tables and the Cloudflare dashboard,
 after four days of real use (two people, the public lobby, proximity calls on
 the 20th and a meeting-table call on the 19th).

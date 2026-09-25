@@ -24,7 +24,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";

@@ -3,9 +3,6 @@ import { HttpError } from "./http";
 
 export type OfficeRole = "admin" | "member";
 
-/** How many guests an office can hold on top of its members. */
-export const GUEST_HEADROOM = 5;
-
 export interface Office {
   id: string;
   name: string;
@@ -56,9 +53,6 @@ export async function seatsUsed(env: Env, officeId: string): Promise<number> {
     .first<{ n: number }>();
   return row?.n ?? 0;
 }
-
-/** How many people fit on the floor at once: every member, plus room for guests. */
-export const floorCapacity = (seats: number) => seats + GUEST_HEADROOM;
 
 export function realtime(env: Env): RealtimeAdminApi {
   return env.REALTIME as unknown as RealtimeAdminApi;

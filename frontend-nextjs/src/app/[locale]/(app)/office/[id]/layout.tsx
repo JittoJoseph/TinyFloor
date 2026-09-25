@@ -5,8 +5,8 @@ import { pageMetadata } from "@/lib/seo";
 import { officePath } from "@/lib/links";
 import { OfficeShell } from "@/components/app/OfficeShell";
 
-// Private to the office's members, so nothing here belongs in a search index;
-// a link to it pasted in a chat unfurls with the invitation card.
+// Private to the office's members: nothing here belongs in a search index,
+// and nothing about the office is said before someone signed in opens it.
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { locale, id } = await params;
   return pageMetadata({ locale, path: officePath(id), noindex: true });

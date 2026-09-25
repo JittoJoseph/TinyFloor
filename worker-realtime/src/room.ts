@@ -61,7 +61,6 @@ interface Attachment {
   meeting: string | null;
   /** When this person sat down at their meeting table, for usage totals. */
   meetingSince: number | null;
-  link: string | null;
   /** This person's SFU session and the tracks they publish, while at a meeting table. */
   media: { sessionId: string; tracks: { mid: string; kind: MediaKind }[] } | null;
   /** What this person says is on at their table: mic, camera, screen. */
@@ -176,19 +175,6 @@ export class Room extends DurableObject<Env> {
     if (room) await this.headcountChanged(room);
   }
 
-  /** A guest link was revoked: whoever came in through it leaves. */
-  async disconnectLink(linkId: string): Promise<void> {
-    let room: string | null = null;
-    for (const socket of this.present()) {
-      const attachment = this.attachmentOf(socket);
-      if (attachment.link !== linkId) continue;
-      this.depart(attachment);
-      this.closeQuietly(socket, CloseCode.AccessRevoked, "access_revoked", attachment);
-      room = attachment.room;
-    }
-    if (room) await this.headcountChanged(room);
-  }
-
   async fetch(request: Request): Promise<Response> {
     const ticket = JSON.parse(request.headers.get(TICKET_HEADER) ?? "null") as RoomTicket | null;
     const room = request.headers.get(ROOM_HEADER);
@@ -226,7 +212,6 @@ export class Room extends DurableObject<Env> {
       seat: null,
       meeting: null,
       meetingSince: null,
-      link: ticket.link ?? null,
       media: null,
       flags: null,
       joinedAt: now,

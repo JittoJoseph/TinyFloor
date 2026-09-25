@@ -74,11 +74,11 @@
       },
       {
         "q": "Faut-il un compte pour rejoindre une salle ?",
-        "a": "Pas pour le hall public : tout le monde peut y entrer en invité avec un simple nom. Les salles d’un espace de travail sont privées : les membres de l’équipe se connectent avec un compte gratuit, et les visiteurs entrent avec un lien invité."
+        "a": "Pas pour le hall public : n'importe qui peut y entrer comme invité avec un simple nom. Un bureau est privé : vos coéquipiers le rejoignent sur invitation, avec un compte gratuit."
       },
       {
         "q": "TinyFloor est-il privé et sécurisé ?",
-        "a": "Un étage n'est accessible qu'à ses membres et aux invités qu'ils font entrer, et rien à l'intérieur n'est public ni indexé par les moteurs de recherche. Les appels sont chiffrés en transit par WebRTC, et votre caméra et votre micro ne sont actifs que pendant un appel."
+        "a": "Un étage n'est accessible qu'à ses membres, et rien à l'intérieur n'est public ni indexé par les moteurs de recherche. Les appels sont chiffrés en transit par WebRTC, et votre caméra et votre micro ne sont actifs que pendant un appel."
       },
       {
         "q": "En quoi TinyFloor est-il différent de Zoom ou Google Meet ?",
@@ -144,12 +144,6 @@
     "introTitle": "Avant d’entrer",
     "introSubtitle": "Comment voulez-vous qu’on vous appelle, et qui serez-vous sur l’étage ?"
   },
-  "join": {
-    "unavailableTitle": "Cette porte ne s’ouvre pas.",
-    "linkUnavailable": "Ce lien invité a expiré ou a été désactivé. Demandez-en un nouveau à la personne qui vous l’a envoyé.",
-    "visitLobby": "Visiter le hall",
-    "invitedAsGuest": "Vous êtes invité à entrer en tant qu’invité."
-  },
   "room": {
     "connecting": "Connexion...",
     "leave": "Quitter",
@@ -164,7 +158,7 @@
       "closedTitle": "Cette salle est fermée",
       "closed": "Son propriétaire a fermé ce bureau.",
       "revokedTitle": "Votre accès a pris fin",
-      "revoked": "Le lien invité avec lequel vous êtes entré a été désactivé.",
+      "revoked": "Vous n'êtes plus membre de ce bureau.",
       "signedOutTitle": "Vous êtes déconnecté",
       "signedOut": "Reconnectez-vous pour revenir.",
       "notFoundTitle": "Salle introuvable",
@@ -441,8 +435,8 @@
             "body": "Tout fonctionne dans le navigateur, sur ordinateur et sur mobile. Partagez un lien et votre équipe entre en quelques secondes."
           },
           {
-            "title": "Les invités entrent directement",
-            "body": "Les membres de l’équipe entrent avec un compte gratuit, et n’importe qui d’autre peut entrer avec un lien invité et un simple nom."
+            "title": "Un lien pour rejoindre",
+            "body": "Envoyez un lien d'invitation. Vos coéquipiers choisissent un nom et un personnage, créent un compte gratuit et entrent."
           }
         ],
         "them": {
@@ -484,8 +478,8 @@
             "body": "Invitez tout le monde. Les salles accueillent 20 personnes à la fois, et vous pouvez en ouvrir d’autres quand vous voulez."
           },
           {
-            "title": "Pas de limite hebdomadaire pour les invités",
-            "body": "Kumospace donne 4 heures par semaine aux invités gratuits. Dans TinyFloor, un invité rejoint avec un nom et reste aussi longtemps qu’il le souhaite."
+            "title": "Essayez avant de vous inscrire",
+            "body": "Entrez dans le hall public de TinyFloor avec un simple nom et essayez l'étage avant de créer un bureau."
           },
           {
             "title": "Pensé aussi pour le mobile",
@@ -509,7 +503,7 @@
           },
           {
             "q": "Mes collègues ont-ils besoin d’un compte ?",
-            "a": "Les membres de l’équipe utilisent un compte gratuit, ce qui garde vos salles privées. N’importe qui d’autre peut entrer en invité avec un simple nom, via un lien invité ou le hall public."
+            "a": "Oui, un compte gratuit, qui réserve votre bureau à votre équipe. Pour jeter un œil avant, n'importe qui peut entrer dans le hall public avec un simple nom."
           },
           {
             "q": "TinyFloor fonctionne-t-il sur téléphone ?",
@@ -626,7 +620,7 @@
           },
           {
             "title": "Toujours dans le navigateur",
-            "body": "Ouvrez un lien, choisissez un personnage, et vous y êtes. Les invités n’ont pas besoin de compte."
+            "body": "Ouvrez un lien d'invitation, choisissez un personnage, et vous y êtes. Le hall public ne demande aucun compte."
           },
           {
             "title": "Gratuit et ouvert toute la journée",
@@ -763,7 +757,7 @@
           },
           {
             "q": "Est-ce gratuit pour les étudiants ?",
-            "a": "Oui. TinyFloor est gratuit pour un petit groupe, et vos amis peuvent entrer avec un lien invité, sans compte."
+            "a": "Oui. TinyFloor est gratuit pour un petit groupe. Envoyez un lien d'invitation à vos amis : ils rejoignent avec un compte gratuit."
           },
           {
             "q": "Peut-on écouter de la musique en étudiant ?",
@@ -808,7 +802,7 @@
           },
           {
             "q": "Puis-je garder la classe privée ?",
-            "a": "Oui. Les salles d’un espace de travail sont privées. Partagez un lien invité avec votre classe et désactivez-le quand vous avez fini."
+            "a": "Oui. Un bureau est réservé à ses membres. Invitez votre classe avec un lien, et retirez les participants du bureau à la fin du cours."
           },
           {
             "q": "Est-ce gratuit pour les enseignants ?",
@@ -880,7 +874,7 @@
       },
       "invites": {
         "title": "Les invitations viennent avec un bureau",
-        "body": "Invitez votre équipe par e-mail, ou faites entrer un invité avec un lien, dans votre propre bureau."
+        "body": "Invitez votre équipe par e-mail ou avec un lien, dans votre propre bureau."
       },
       "free": "Créer un bureau prend une minute et c'est gratuit jusqu'à 3 personnes.",
       "go": "Créer mon bureau",
@@ -899,7 +893,7 @@
         "private": "Un étage privé",
         "channels": "Des canaux qui restent",
         "messages": "Messages privés",
-        "guests": "Liens invités"
+        "invites": "Liens d'invitation"
       },
       "bringThem": "{count, plural, one {Emmenez la personne rencontrée ici} other {Emmenez les # personnes rencontrées ici}}"
     }
@@ -982,7 +976,9 @@
       "signIn": "J’ai un compte",
       "readyToJoin": "C’est moi",
       "accountKeeps": "Un compte garde {name} et votre personnage pour la prochaine fois.",
-      "you": "Vous"
+      "you": "Vous",
+      "members": "{count, plural, one {# membre} other {# membres}}",
+      "change": "Modifier"
     },
     "errors": {
       "member_limit": "L’espace de travail est complet avec son offre actuelle.",
@@ -1010,16 +1006,12 @@
       "title": "Personnes",
       "members": "Membres",
       "invitations": "Invitations en attente",
-      "guests": "Invités",
-      "guestsNote": "Un invité entre avec un lien. Il ne prend pas de place et ne peut inviter personne.",
       "invite": "Inviter",
       "seats": "{used} places sur {seats}",
       "seatsFull": "Toutes les places sont prises.",
       "seatsFree": "Il reste de la place.",
       "onFloorNow": "{count} à l'étage en ce moment",
       "noInvitations": "Aucune invitation en attente",
-      "noGuestLinks": "Aucun lien invité",
-      "newGuestLink": "Créer un lien invité",
       "copied": "Copié",
       "revoke": "Révoquer",
       "remove": "Retirer",
@@ -1042,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# place libre — invitez quelqu'un} other {# places libres — invitez quelqu'un}}",
       "seatsNote": "Une place, c'est un membre. Partir libère la sienne ; être hors ligne, non.",
       "invitationsNote": "Une invitation ne réserve aucune place. Le premier qui accepte en prend une, tant qu'il en reste.",
-      "guestLink": "Lien invité",
       "noInvitationsBody": "Invitez quelqu'un : le lien attend ici jusqu'à ce qu'il soit accepté ou expire.",
-      "noGuestLinksBody": "Un lien invité permet à un client ou à un candidat de visiter l'étage, sans prendre de place.",
       "allSeatsTaken": "Toutes les places sont prises",
       "allSeatsTakenBody": "Un départ libère une place. Des bureaux avec plus de places arrivent bientôt.",
       "yourProfile": "Votre profil",
@@ -1144,14 +1134,13 @@
       "lobby": "Hall",
       "signIn": "Se connecter",
       "start": "Créer votre bureau",
-      "open": "Ouvrir TinyFloor",
       "main": "Navigation principale",
       "items": {
         "proximity": "Appels de proximité",
         "meetings": "Tables de réunion",
         "chat": "Chat",
         "people": "Présence",
-        "guests": "Invités"
+        "invites": "Invitations"
       },
       "lobbyTitle": "Le hall est ouvert",
       "lobbyBody": "Promenez-vous sur un vrai étage avant de créer le vôtre. Aucun compte requis.",
@@ -1203,10 +1192,10 @@
         "muted": "Puis allez-y directement.",
         "body": "Voyez qui est sur l'étage, qui est occupé et qui est en appel. Touchez Y aller, et votre personnage trouve son chemin tout seul."
       },
-      "guests": {
-        "title": "Laissez entrer n'importe qui.",
+      "invites": {
+        "title": "Faites entrer votre équipe.",
         "muted": "Avec un seul lien.",
-        "body": "Invitez vos collègues par e-mail, ou envoyez un lien invité à un client ou un candidat. Il choisit un nom et un personnage, et le voilà sur l'étage, sans compte."
+        "body": "Envoyez un lien d'invitation, ou invitez par e-mail. Ils choisissent un nom et un personnage, créent un compte gratuit, et les voilà sur l'étage."
       }
     },
     "versus": {
@@ -1250,7 +1239,7 @@
       },
       "invite": {
         "title": "Envoyez le lien à votre équipe.",
-        "body": "Invitez vos collègues par e-mail, ou partagez un lien invité avec n'importe qui."
+        "body": "Invitez vos coéquipiers par e-mail, ou envoyez-leur un lien d'invitation."
       },
       "walk": {
         "title": "Entrez.",
@@ -1294,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Privé par conception",
-          "body": "Un étage de bureau n'est ouvert qu'à ses membres et aux invités qu'ils laissent entrer. Rien n'est public, rien n'est indexé."
+          "body": "Un étage de bureau n'est ouvert qu'à ses membres. Rien n'est public, rien n'est indexé."
         },
         "network": {
           "title": "Sur le réseau de Cloudflare",
@@ -1321,7 +1310,7 @@
           "Appels de proximité et tables de réunion",
           "Partage d'écran",
           "Canaux et messages privés",
-          "Liens invités pour les visiteurs"
+          "Des liens d'invitation pour votre équipe"
         ]
       },
       "soon": {
@@ -1362,12 +1351,11 @@
       "available": "Disponible",
       "busy": "Occupé",
       "away": "Absent",
-      "guestLink": "Lien invité",
-      "guestNote": "Toute personne ayant ce lien peut venir en invité.",
+      "inviteLink": "Lien d'invitation",
+      "inviteNote": "Toute personne ayant ce lien peut rejoindre, avec un compte gratuit.",
       "copy": "Copier",
       "invite": "Inviter",
       "people": "Personnes",
-      "guestArrived": "est entré(e) en invité",
       "roles": {
         "design": "Design",
         "engineering": "Ingénierie",
@@ -1379,11 +1367,11 @@
       "directMessages": "Messages privés",
       "today": "Aujourd'hui",
       "typing": "{name} écrit…",
-      "guest": "Invité",
       "inviteTeammate": "Inviter un coéquipier",
       "inviteTeammateNote": "Il suffit d'un lien pour entrer",
       "video": "Appel vidéo",
-      "audio": "Appel audio"
+      "audio": "Appel audio",
+      "joined": "a rejoint le bureau"
     },
     "footer": {
       "tagline": "Un bureau virtuel où l'on se déplace.",

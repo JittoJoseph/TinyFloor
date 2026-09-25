@@ -1,12 +1,10 @@
 "use client";
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import posthog from "posthog-js";
+import { analyticsConfigured, withPostHog } from "@/lib/analytics";
 import { api, type SessionUser } from "@/lib/api";
 import { readIdentity } from "@/lib/identity";
 import { posthogLog } from "@/lib/posthog-log";
-
-const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
 
 interface AuthContextType {
   user: SessionUser | null;
@@ -17,7 +15,7 @@ interface AuthContextType {
   /** Signed in with an account (not a guest). */
   hasAccount: boolean;
   signIn: (email: string, password: string) => Promise<SessionUser>;
-  signInWithGoogle: (from: { code: string } | { credential: string }) => Promise<SessionUser>;
+  signInWithGoogle: (from: { code: string }) => Promise<SessionUser>;
   signUp: (details: { email: string; password: string; turnstileToken: string }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
@@ -71,11 +69,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Keep PostHog's persisted browser identity in sync with the authenticated
   // session. This runs after initial session restoration as well as sign-in.
   useEffect(() => {
-    if (!posthogConfigured) return;
+    if (!analyticsConfigured) return;
 
     if (!user) {
       if (identifiedUserId.current) {
-        posthog.reset();
+        withPostHog((posthog) => posthog.reset());
         identifiedUserId.current = null;
       }
       return;
@@ -83,13 +81,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (identifiedUserId.current === user.id) return;
 
-    if (identifiedUserId.current) posthog.reset();
+    if (identifiedUserId.current) withPostHog((posthog) => posthog.reset());
 
-    posthog.identify(user.id, {
+    const traits = {
       ...(user.email ? { email: user.email } : {}),
       name: user.displayName,
       guest: user.guest,
-    });
+    };
+    withPostHog((posthog) => posthog.identify(user.id, traits));
     identifiedUserId.current = user.id;
   }, [user]);
 
@@ -121,33 +120,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signIn: async (email, password) => {
         const { user: next } = await api.signIn({ email, password });
         setUser(next);
-        if (posthogConfigured) posthog.capture("account_signed_in", { sign_in_method: "password" });
+        withPostHog((posthog) => posthog.capture("account_signed_in", { sign_in_method: "password" }));
         posthogLog.info("Account sign-in completed");
         return next;
       },
       signInWithGoogle: async (from) => {
         const { user: next } = await api.signInWithGoogle(from);
         setUser(next);
-        if (posthogConfigured) posthog.capture("account_signed_in", { sign_in_method: "google" });
+        withPostHog((posthog) => posthog.capture("account_signed_in", { sign_in_method: "google" }));
         return next;
       },
       signUp: async (details) => {
         const { user: next } = await api.signUp(details);
         setUser(next);
-        if (posthogConfigured) posthog.capture("account_signed_up");
+        withPostHog((posthog) => posthog.capture("account_signed_up"));
         return next;
       },
       continueAsGuest: async (details) => {
         const { user: next } = await api.continueAsGuest(details);
         setUser(next);
-        if (posthogConfigured) posthog.capture("guest_session_started");
+        withPostHog((posthog) => posthog.capture("guest_session_started"));
         return next;
       },
       signOut: async () => {
         try {
           await api.signOut();
         } finally {
-          if (posthogConfigured) posthog.reset();
+          withPostHog((posthog) => posthog.reset());
           identifiedUserId.current = null;
           setUser(null);
         }

@@ -14,7 +14,7 @@ import {
   Radio,
   UsersRound,
 } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { Logo } from "@/components/app/AppShell";
 import { Face } from "@/components/ui/Face";
@@ -33,7 +33,7 @@ const FEATURES = [
   { key: "meetings", hash: "meetings", icon: <Presentation /> },
   { key: "chat", hash: "chat", icon: <MessagesSquare /> },
   { key: "people", hash: "people", icon: <UsersRound /> },
-  { key: "guests", hash: "guests", icon: <Link2 /> },
+  { key: "invites", hash: "invites", icon: <Link2 /> },
 ] as const;
 
 /** An icon for each use case page. */
@@ -147,7 +147,7 @@ export function HomeNav() {
         </div>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
-          <HomeNavActions signIn={t("nav.signIn")} start={t("nav.start")} open={t("nav.open")} />
+          <HomeNavActions signIn={t("nav.signIn")} start={t("nav.start")} />
           <MobileMenu label={t("nav.menu")}>
             <p className="px-1 text-[11.5px] font-semibold text-faint">{t("footer.product")}</p>
             <ul className="mt-1 grid gap-0.5">

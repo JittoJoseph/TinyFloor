@@ -13,7 +13,7 @@ const [emma, jack, olivia, sam] = CAST;
  * meeting room, everyone at it as a card along the top (faces while cameras
  * are off, a ring on whoever is talking), and the bar that leaves the meeting.
  */
-export function MeetingPreview({ close = false }: { close?: boolean }) {
+export function MeetingPreview() {
   const tc = useTranslations("common");
   const tb = useTranslations("controls");
   const cards = [
@@ -26,10 +26,10 @@ export function MeetingPreview({ close = false }: { close?: boolean }) {
   return (
     <div className="relative h-full w-full overflow-hidden">
       {/* The meeting room's table, everyone sitting at it. */}
-      <FloorScene {...MEETING} view={close ? [1, 3, 14, 10] : [0, 2, 24, 14]} className="absolute inset-0 h-full w-full" />
+      <FloorScene {...MEETING} view={[0, 2, 24, 14]} className="absolute inset-0 h-full w-full" />
 
       <div className="absolute inset-x-0 top-3 flex justify-center px-3 sm:top-4">
-        <ul className={cn("grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5", close ? "max-w-[360px] sm:gap-2" : "max-w-[640px]")}>
+        <ul className="grid w-full max-w-[640px] grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5">
           {cards.map(({ person, you, speaking, muted }) => (
             <li
               key={person.id}
@@ -38,7 +38,7 @@ export function MeetingPreview({ close = false }: { close?: boolean }) {
                 speaking ? "ring-brand" : "ring-card/80",
               )}
             >
-              <Face seed={person.id} size={close ? 28 : 36} />
+              <Face seed={person.id} size={36} />
               <span className="absolute bottom-1.5 start-1.5 flex max-w-[calc(100%-0.75rem)] items-center gap-1 rounded-full bg-card px-2 py-0.5 text-[10.5px] font-semibold text-foreground shadow-sm">
                 {muted && <MicOff className="size-3 shrink-0 text-brand" />}
                 <span className="truncate">{you ? tc("you") : person.name}</span>

@@ -6,20 +6,15 @@ import type { Router } from "./router";
 import { ACCOUNT_SESSION_MS, createSession, currentUser, endSession, requireAccount, type User } from "./session";
 
 /**
- * Signing in with Google, two ways. The button opens Google's consent popup
- * (Google Identity Services' code flow) and sends us the one-time code, which
- * we trade for the person's ID token with our client secret. One Tap, the
- * account chooser Google shows in the corner, hands the page a signed ID token
- * directly, and we check its signature against Google's published keys. Either
- * way we then sign them in, link Google to the account that already has their
- * email, or make them one.
+ * Signing in with Google. The button opens Google's consent popup (Google
+ * Identity Services' code flow) and sends us the one-time code, which we trade
+ * for the person's ID token with our client secret. We then sign them in, link
+ * Google to the account that already has their email, or make them one.
  */
 
 /** The redirect URI Google records for a popup code flow, whichever page opened it. */
 const REDIRECT_URI = "postmessage";
 const ISSUERS = ["accounts.google.com", "https://accounts.google.com"];
-/** Google's keys for the ID tokens it signs, rotated every few weeks. */
-const CERTS = "https://www.googleapis.com/oauth2/v3/certs";
 
 interface GoogleIdentity {
   sub: string;
@@ -68,13 +63,8 @@ export function googleRoutes(router: Router): void {
       throw new HttpError(503, "google_unavailable", "Google sign-in isn't set up here");
     }
     const body = await readJson(request);
-    const google =
-      typeof body.credential === "string" && body.credential
-        ? await verifyIdToken(env, body.credential)
-        : typeof body.code === "string" && body.code
-          ? await identify(env, body.code)
-          : null;
-    if (!google) throw new HttpError(400, "code_required", "Sign in with Google again");
+    if (typeof body.code !== "string" || !body.code) throw new HttpError(400, "code_required", "Sign in with Google again");
+    const google = await identify(env, body.code);
 
     const current = await currentUser(env, request, ctx);
     const columns =
@@ -174,36 +164,6 @@ async function identify(env: Env, code: string): Promise<GoogleIdentity> {
   if (!response.ok || !tokens?.id_token) throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
 
   return fromClaims(env, readClaims(tokens.id_token));
-}
-
-/**
- * One Tap's ID token came through the browser, so unlike the code flow's it
- * is only believed once its signature checks out against Google's keys.
- */
-async function verifyIdToken(env: Env, token: string): Promise<GoogleIdentity> {
-  const [head, payload, signature] = token.split(".");
-  const header = decodePart(head ?? "") as { alg?: string; kid?: string } | null;
-  if (!header || header.alg !== "RS256" || typeof header.kid !== "string" || !payload || !signature) {
-    throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
-  }
-  const key = await googleKey(header.kid);
-  const valid = await crypto.subtle.verify(
-    "RSASSA-PKCS1-v1_5",
-    key,
-    bytes(signature),
-    new TextEncoder().encode(`${head}.${payload}`),
-  );
-  if (!valid) throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
-  return fromClaims(env, readClaims(token));
-}
-
-/** The key Google signed with. Its key list is fetched through the edge cache, as Google's headers allow. */
-async function googleKey(kid: string): Promise<CryptoKey> {
-  const response = await fetch(CERTS, { cf: { cacheTtl: 3600, cacheEverything: true } });
-  const list = (await response.json().catch(() => null)) as { keys?: Array<JsonWebKey & { kid?: string }> } | null;
-  const jwk = list?.keys?.find((one) => one.kid === kid);
-  if (!response.ok || !jwk) throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
-  return crypto.subtle.importKey("jwk", jwk, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
 }
 
 /** Who the token was issued to, by whom and until when, and that Google has checked the address. */

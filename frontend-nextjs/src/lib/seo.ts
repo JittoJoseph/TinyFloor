@@ -45,14 +45,14 @@ export function localePath(locale: string, path: string): string {
 
 /**
  * A page's social card (scripts/pictures.mjs draws them): the home page, the
- * lobby and invitations (member invites, guest links and an office's own
- * links) have one in every language; the other marketing pages have an
+ * lobby and invitations (and an office's own links) have one in every
+ * language; the other marketing pages have an
  * English one, and a card without words stands in for them elsewhere.
  */
 export function socialImage(locale: string, path: string): string {
   const code = localeCodes.includes(locale as Locale) ? locale : defaultLocale;
   if (path === "/lobby" || path.startsWith("/lobby/")) return `/og/lobby-${code}.jpg`;
-  if (/^\/(invite|join|office)\//.test(path)) return `/og/invite-${code}.jpg`;
+  if (/^\/(invite|office)\//.test(path)) return `/og/invite-${code}.jpg`;
   const slug = path.slice(1);
   if (slug && LANDINGS.some((page) => page.slug === slug)) return code === "en" ? `/og/${slug}.jpg` : "/og/neutral.jpg";
   return `/og/home-${code}.jpg`;

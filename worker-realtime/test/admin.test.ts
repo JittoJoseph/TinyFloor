@@ -17,22 +17,6 @@ describe("realtime admin", () => {
     expect(await admin.presenceCounts([busy, empty])).toEqual({ [busy]: 2, [empty]: 0 });
   });
 
-  it("removes only the guests who came in through a revoked link", async () => {
-    const room = uniqueRoom();
-    const member = await Client.open(room);
-    await member.next("welcome");
-    const guest = await Client.open(room, { role: "guest", link: "link-1" });
-    const guestId = (await guest.next("welcome")).self.id;
-    const other = await Client.open(room, { role: "guest", link: "link-2" });
-    await other.next("welcome");
-
-    await admin.revokeGuestLink(room, "link-1");
-
-    expect(await guest.closed()).toBe(CloseCode.AccessRevoked);
-    expect((await member.next("player_left")).id).toBe(guestId);
-    expect(await admin.presenceCounts([room])).toEqual({ [room]: 2 });
-  });
-
   it("closes a deleted room for everyone", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room);

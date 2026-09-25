@@ -74,11 +74,11 @@
       },
       {
         "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
-        "a": "Für die öffentliche Lobby nicht. Dort kann jeder als Gast mit nur einem Namen hereinkommen. Räume in einem Workspace sind privat: Teammitglieder melden sich mit einem kostenlosen Konto an, Besucher kommen über einen Gastlink."
+        "a": "Nicht für die öffentliche Lobby: Dort kann jeder mit nur einem Namen als Gast hereinkommen. Ein Büro ist privat: Teammitglieder kommen über eine Einladung dazu, mit einem kostenlosen Konto."
       },
       {
         "q": "Ist TinyFloor privat und sicher?",
-        "a": "Eine Büroetage ist nur für ihre Mitglieder und die Gäste, die sie hereinlassen. Nichts darin ist öffentlich oder wird von Suchmaschinen indexiert. Anrufe sind per WebRTC bei der Übertragung verschlüsselt, und Kamera und Mikrofon sind nur während eines Anrufs an."
+        "a": "Eine Büroetage ist nur für ihre Mitglieder. Nichts darin ist öffentlich oder wird von Suchmaschinen indexiert. Anrufe sind per WebRTC bei der Übertragung verschlüsselt, und Kamera und Mikrofon sind nur während eines Anrufs an."
       },
       {
         "q": "Was unterscheidet TinyFloor von Zoom oder Google Meet?",
@@ -144,12 +144,6 @@
     "introTitle": "Bevor du reingehst",
     "introSubtitle": "Wie sollen dich die anderen nennen, und wer bist du auf der Etage?"
   },
-  "join": {
-    "unavailableTitle": "Diese Tür geht nicht auf.",
-    "linkUnavailable": "Dieser Gastlink ist abgelaufen oder wurde deaktiviert. Bitte die Person, die ihn geschickt hat, um einen neuen.",
-    "visitLobby": "Lobby besuchen",
-    "invitedAsGuest": "Du bist als Gast eingeladen."
-  },
   "room": {
     "connecting": "Verbinde...",
     "leave": "Verlassen",
@@ -164,7 +158,7 @@
       "closedTitle": "Dieser Raum ist geschlossen",
       "closed": "Die Inhaberin hat dieses Büro geschlossen.",
       "revokedTitle": "Dein Zugang ist beendet",
-      "revoked": "Der Gastlink, mit dem du gekommen bist, wurde deaktiviert.",
+      "revoked": "Du bist kein Mitglied dieses Büros mehr.",
       "signedOutTitle": "Du bist abgemeldet",
       "signedOut": "Melde dich erneut an, um wieder hineinzugehen.",
       "notFoundTitle": "Raum nicht gefunden",
@@ -441,8 +435,8 @@
             "body": "Alles läuft im Browser, am Computer und auf dem Handy. Teile einen Link und dein Team ist in Sekunden drin."
           },
           {
-            "title": "Gäste kommen direkt rein",
-            "body": "Teammitglieder kommen mit einem kostenlosen Konto, alle anderen über einen Gastlink mit nur einem Namen."
+            "title": "Ein Link zum Beitreten",
+            "body": "Schick einen Einladungslink. Teammitglieder wählen Namen und Figur, legen ein kostenloses Konto an und kommen rein."
           }
         ],
         "them": {
@@ -484,8 +478,8 @@
             "body": "Lade alle ein. Räume fassen 20 Personen gleichzeitig, und du kannst jederzeit weitere Räume öffnen."
           },
           {
-            "title": "Kein wöchentliches Gästelimit",
-            "body": "Bei Kumospace haben kostenlose Gäste 4 Stunden pro Woche. In TinyFloor tritt ein Gast mit einem Namen bei und bleibt, so lange er will."
+            "title": "Erst ausprobieren, dann anmelden",
+            "body": "Geh mit nur einem Namen in die öffentliche Lobby von TinyFloor und probier die Etage aus, bevor du ein Büro anlegst."
           },
           {
             "title": "Auch fürs Handy gemacht",
@@ -509,7 +503,7 @@
           },
           {
             "q": "Brauchen meine Teammitglieder ein Konto?",
-            "a": "Teammitglieder nutzen ein kostenloses Konto, so bleiben eure Räume privat. Alle anderen kommen als Gast mit nur einem Namen herein, über einen Gastlink oder die öffentliche Lobby."
+            "a": "Ja, ein kostenloses, damit dein Büro nur für dein Team ist. Wer sich erst umsehen will, kommt mit nur einem Namen in die öffentliche Lobby."
           },
           {
             "q": "Funktioniert TinyFloor auf dem Handy?",
@@ -626,7 +620,7 @@
           },
           {
             "title": "Weiter im Browser",
-            "body": "Link öffnen, Figur wählen, und du bist drin. Gäste brauchen kein Konto."
+            "body": "Einladungslink öffnen, Figur wählen, und du bist drin. Für die öffentliche Lobby brauchst du gar kein Konto."
           },
           {
             "title": "Kostenlos und den ganzen Tag offen",
@@ -763,7 +757,7 @@
           },
           {
             "q": "Ist es für Studierende kostenlos?",
-            "a": "Ja. TinyFloor ist für eine kleine Gruppe kostenlos, und Freunde kommen über einen Gastlink auch ohne Konto herein."
+            "a": "Ja. TinyFloor ist für eine kleine Gruppe kostenlos. Schick deinen Freunden einen Einladungslink, und sie kommen mit einem kostenlosen Konto dazu."
           },
           {
             "q": "Können wir beim Lernen Musik hören?",
@@ -808,7 +802,7 @@
           },
           {
             "q": "Kann ich das Klassenzimmer privat halten?",
-            "a": "Ja. Räume in einem Workspace sind privat. Teile einen Gastlink mit deiner Klasse und schalte ihn ab, wenn ihr fertig seid."
+            "a": "Ja. Ein Büro ist nur für seine Mitglieder. Lade deine Klasse mit einem Link ein und entferne die Leute aus dem Büro, wenn der Kurs vorbei ist."
           },
           {
             "q": "Ist es für Lehrkräfte kostenlos?",
@@ -880,7 +874,7 @@
       },
       "invites": {
         "title": "Einladungen gibt es mit einem Büro",
-        "body": "Lade dein Team per E-Mail ein oder lass Gäste mit einem Link herein – in deinem eigenen Büro."
+        "body": "Lade dein Team per E-Mail oder mit einem Link ein, in einem eigenen Büro."
       },
       "free": "Ein Büro ist in einer Minute eingerichtet und für bis zu 3 Personen kostenlos.",
       "go": "Mein Büro einrichten",
@@ -899,7 +893,7 @@
         "private": "Eine private Fläche",
         "channels": "Kanäle, die bleiben",
         "messages": "Direktnachrichten",
-        "guests": "Gastlinks"
+        "invites": "Einladungslinks"
       },
       "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}"
     }
@@ -982,7 +976,9 @@
       "signIn": "Ich habe ein Konto",
       "readyToJoin": "Das bin ich",
       "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
-      "you": "Du"
+      "you": "Du",
+      "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}",
+      "change": "Ändern"
     },
     "errors": {
       "member_limit": "Der Workspace ist in seinem aktuellen Plan voll.",
@@ -1010,16 +1006,12 @@
       "title": "Leute",
       "members": "Mitglieder",
       "invitations": "Offene Einladungen",
-      "guests": "Gäste",
-      "guestsNote": "Ein Gast kommt über einen Link herein. Das kostet keinen Platz, und er kann niemanden einladen.",
       "invite": "Einladen",
       "seats": "{used} von {seats} Plätzen",
       "seatsFull": "Alle Plätze sind belegt.",
       "seatsFree": "Es ist noch Platz.",
       "onFloorNow": "{count} gerade auf der Etage",
       "noInvitations": "Keine offenen Einladungen",
-      "noGuestLinks": "Keine Gastlinks",
-      "newGuestLink": "Gastlink erstellen",
       "copied": "Kopiert",
       "revoke": "Widerrufen",
       "remove": "Entfernen",
@@ -1042,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# Platz frei – lade jemanden ein} other {# Plätze frei – lade jemanden ein}}",
       "seatsNote": "Ein Platz ist ein Mitglied. Wer geht, gibt seinen frei; offline sein nicht.",
       "invitationsNote": "Eine Einladung belegt keinen Platz. Wer zuerst annimmt, bekommt einen, solange einer frei ist.",
-      "guestLink": "Gastlink",
       "noInvitationsBody": "Lade jemanden ein – der Link wartet hier, bis er angenommen wird oder abläuft.",
-      "noGuestLinksBody": "Mit einem Gastlink besucht eine Kundin oder ein Bewerber die Fläche, ohne einen Platz zu belegen.",
       "allSeatsTaken": "Alle Plätze sind belegt",
       "allSeatsTakenBody": "Wer geht, gibt einen Platz frei. Büros mit mehr Plätzen kommen bald.",
       "yourProfile": "Dein Profil",
@@ -1144,14 +1134,13 @@
       "lobby": "Lobby",
       "signIn": "Anmelden",
       "start": "Büro einrichten",
-      "open": "TinyFloor öffnen",
       "main": "Hauptnavigation",
       "items": {
         "proximity": "Nähe-Anrufe",
         "meetings": "Besprechungstische",
         "chat": "Chat",
         "people": "Anwesenheit",
-        "guests": "Gäste"
+        "invites": "Einladungen"
       },
       "lobbyTitle": "Die Lobby ist offen",
       "lobbyBody": "Lauf über eine echte Fläche, bevor du deine eigene einrichtest. Kein Konto nötig.",
@@ -1203,10 +1192,10 @@
         "muted": "Und geh direkt hin.",
         "body": "Sieh, wer auf der Fläche ist, wer beschäftigt ist und wer im Anruf. Tipp auf Hingehen, und deine Figur findet selbst den Weg."
       },
-      "guests": {
-        "title": "Lass jeden herein.",
+      "invites": {
+        "title": "Hol dein Team rein.",
         "muted": "Mit einem Link.",
-        "body": "Lade Teammitglieder per E-Mail ein oder schick einen Gastlink an Kundschaft oder Bewerbende. Sie wählen einen Namen und eine Figur und stehen auf der Fläche, ganz ohne Konto."
+        "body": "Schick einen Einladungslink oder lade per E-Mail ein. Sie wählen einen Namen und eine Figur, legen ein kostenloses Konto an und sind auf der Etage."
       }
     },
     "versus": {
@@ -1250,7 +1239,7 @@
       },
       "invite": {
         "title": "Schick deinem Team den Link.",
-        "body": "Lade dein Team per E-Mail ein oder teile einen Gastlink mit allen anderen."
+        "body": "Lade Teammitglieder per E-Mail ein oder schick ihnen einen Einladungslink."
       },
       "walk": {
         "title": "Komm rein.",
@@ -1294,7 +1283,7 @@
       "items": {
         "private": {
           "title": "Privat von Grund auf",
-          "body": "Eine Bürofläche gehört nur ihren Mitgliedern und den Gästen, die sie hereinlassen. Nichts ist öffentlich, nichts wird indexiert."
+          "body": "Eine Bürofläche gehört nur ihren Mitgliedern. Nichts ist öffentlich, nichts wird indexiert."
         },
         "network": {
           "title": "Im Netz von Cloudflare",
@@ -1321,7 +1310,7 @@
           "Nähe-Anrufe und Besprechungstische",
           "Bildschirm teilen",
           "Kanäle und Direktnachrichten",
-          "Gastlinks für Besuch"
+          "Einladungslinks für dein Team"
         ]
       },
       "soon": {
@@ -1362,12 +1351,11 @@
       "available": "Verfügbar",
       "busy": "Beschäftigt",
       "away": "Abwesend",
-      "guestLink": "Gastlink",
-      "guestNote": "Wer diesen Link hat, kann als Gast vorbeischauen.",
+      "inviteLink": "Einladungslink",
+      "inviteNote": "Alle mit diesem Link können beitreten, mit einem kostenlosen Konto.",
       "copy": "Kopieren",
       "invite": "Einladen",
       "people": "Personen",
-      "guestArrived": "ist als Gast hereingekommen",
       "roles": {
         "design": "Design",
         "engineering": "Entwicklung",
@@ -1379,11 +1367,11 @@
       "directMessages": "Direktnachrichten",
       "today": "Heute",
       "typing": "{name} schreibt…",
-      "guest": "Gast",
       "inviteTeammate": "Teammitglied einladen",
       "inviteTeammateNote": "Sie kommen über einen Link rein",
       "video": "Videoanruf",
-      "audio": "Sprachanruf"
+      "audio": "Sprachanruf",
+      "joined": "ist dem Büro beigetreten"
     },
     "footer": {
       "tagline": "Ein virtuelles Büro, in dem du herumläufst.",

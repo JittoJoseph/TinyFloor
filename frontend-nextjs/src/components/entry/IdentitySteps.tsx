@@ -3,7 +3,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
-import { Field, inputClass } from "./EntryShell";
+import { Field, pillInputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
 
 /**
@@ -25,7 +25,7 @@ export const NameStep: React.FC<{
         value={name}
         onChange={(event) => onName(event.target.value)}
         placeholder={t("namePlaceholder")}
-        className={inputClass}
+        className={pillInputClass}
         maxLength={30}
         autoFocus
         autoComplete="nickname"
@@ -45,15 +45,13 @@ export const CharacterStep: React.FC<{
 
   return (
     <div>
-      <div className="flex items-baseline justify-between gap-3 mb-2.5">
-        <p className="text-[11px] font-semibold text-muted-foreground">
-          {t("character")}
-        </p>
+      <div className="mb-2.5 flex items-center justify-between gap-3">
+        <p className="text-[12.5px] font-medium text-muted-foreground">{t("character")}</p>
         {onBack && (
           <button
             type="button"
             onClick={onBack}
-            className="cursor-pointer inline-flex items-center gap-1 text-[12px] text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex min-w-0 cursor-pointer items-center gap-1 text-[12.5px] text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" />
             {t("walkingInAs", { name })}

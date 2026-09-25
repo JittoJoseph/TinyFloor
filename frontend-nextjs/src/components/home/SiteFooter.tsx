@@ -1,6 +1,6 @@
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, Globe } from "lucide-react";
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
 import { LANDINGS } from "@/lib/landings";
 import { Logo } from "@/components/app/AppShell";

@@ -39,10 +39,6 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     await Promise.all([this.env.ROOM.getByName(officeId).forget(), this.env.CHAT.getByName(officeId).forget()]);
   }
 
-  async revokeGuestLink(roomId: string, linkId: string): Promise<void> {
-    await this.env.ROOM.getByName(roomId).disconnectLink(linkId);
-  }
-
   /**
    * The lobby's door: the copies in order, until two in a row are empty (a
    * copy can empty out while the next still has people). Normally two calls.

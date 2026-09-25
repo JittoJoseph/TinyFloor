@@ -148,7 +148,7 @@ export async function requireUser(env: Env, request: Request, ctx: ExecutionCont
   return user;
 }
 
-/** Workspaces are for accounts; guests only visit the lobby and guest-link rooms. */
+/** Offices are for accounts; guests only visit the lobby. */
 export async function requireAccount(env: Env, request: Request, ctx: ExecutionContext): Promise<User> {
   const user = await requireUser(env, request, ctx);
   if (user.isGuest) throw new HttpError(403, "account_required", "Sign in with an account first");

@@ -6,7 +6,6 @@ export interface RetentionReport {
   sessions: number;
   guests: number;
   invites: number;
-  guestLinks: number;
   usage: number;
 }
 
@@ -39,14 +38,6 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(now - 30 * DAY_MS)
     .run();
 
-  const guestLinks = await env.DB.prepare(
-    `DELETE FROM guest_links WHERE id IN (
-       SELECT id FROM guest_links WHERE MIN(expires_at, COALESCE(revoked_at, expires_at)) < ?1
-        LIMIT ${BATCH})`,
-  )
-    .bind(now - 30 * DAY_MS)
-    .run();
-
   // Chat trims itself as it writes, so there is nothing to do for it here.
   const cutoff = new Date(now);
   cutoff.setUTCMonth(cutoff.getUTCMonth() - 13);
@@ -58,7 +49,6 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     sessions: deleted(sessions),
     guests: deleted(guests),
     invites: deleted(invites),
-    guestLinks: deleted(guestLinks),
     usage: deleted(usage),
   };
 }

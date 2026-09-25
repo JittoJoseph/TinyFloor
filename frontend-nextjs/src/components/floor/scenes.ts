@@ -1,8 +1,10 @@
 import { CAST } from "@/components/home/previews/Frame";
-import type { Sitter, Stander, Walker } from "./FloorScene";
+import type { Sitter, Stander } from "./FloorScene";
 
 /*
- * The floor's everyday moments, placed on the real map in tiles. The map's
+ * The floor's everyday moments, placed on the real map in tiles. Everyone
+ * holds their spot, idling the way characters do in the app: a scene that
+ * holds still costs the browser next to nothing to draw. The map's
  * rooms: the meeting room top left (table at 3-9 by 7-9), a private office
  * under it, the open hall to the right with four rows of desks, and a lounge
  * in the hall's top right with the sofa and the speaker.
@@ -14,11 +16,11 @@ const grace = { id: "grace-9", name: "Grace", character: "Alex" };
 
 export const PEOPLE = { emma, jack, olivia, sam, lily, noah, ryan, grace };
 
-type Scene = { view: [number, number, number, number]; standing?: Stander[]; sitting?: Sitter[]; walking?: Walker[] };
+type Scene = { view: [number, number, number, number]; standing?: Stander[]; sitting?: Sitter[] };
 
 const person = ({ name, character }: { name: string; character: string }) => ({ name, character });
 
-/** The hall on an ordinary day: a few at their desks, two chatting in the aisle, the rest on the move. */
+/** The hall on an ordinary day: a few at their desks, two chatting in the aisle, a couple more about. */
 export const HALL: Scene = {
   view: [15, 3, 32, 20],
   sitting: [
@@ -30,10 +32,8 @@ export const HALL: Scene = {
   standing: [
     { ...person(jack), at: [36, 10], face: "right", status: "available" },
     { ...person(olivia), at: [38, 10], face: "left", status: "available" },
-  ],
-  walking: [
-    { ...person(emma), status: "available", path: [[16, 11, 1.5], [30, 11], [30, 5, 2], [16, 5]], offset: 3 },
-    { ...person(ryan), status: "available", path: [[31, 17, 2], [44, 17], [44, 21, 1.2], [31, 21]], offset: 1 },
+    { ...person(emma), at: [22, 5], face: "down", status: "available" },
+    { ...person(ryan), at: [43, 21], face: "left", status: "available" },
   ],
 };
 
@@ -67,11 +67,9 @@ export const EVERYONE: Scene = {
     { ...person(olivia), at: [38, 10], face: "left", status: "available" },
     { ...person(lily), at: [38, 4], face: "right", status: "away" },
     { ...person(ryan), at: [40, 4], face: "left", status: "away" },
-  ],
-  walking: [
-    { ...person(emma), status: "available", path: [[16, 11, 1.5], [30, 11], [30, 6, 2], [16, 6]], offset: 3 },
-    { name: "Kai", character: "Ash", status: "available", path: [[31, 18, 2], [44, 18], [44, 21, 1.2], [31, 21]], offset: 1 },
-    { name: "Nora", character: "Alex", status: "available", path: [[16, 24, 1], [16, 27], [30, 27, 2.5], [30, 24]], offset: 5 },
+    { ...person(emma), at: [22, 6], face: "down", status: "available" },
+    { name: "Kai", character: "Ash", at: [43, 21], face: "left", status: "available" },
+    { name: "Nora", character: "Alex", at: [18, 27], face: "right", status: "available" },
   ],
 };
 
@@ -86,9 +84,7 @@ export const LOBBY: Scene = {
   standing: [
     { ...person(jack), at: [28, 14], face: "right", status: "available" },
     { ...person(olivia), at: [30, 14], face: "left", status: "available" },
-  ],
-  walking: [
-    { ...person(emma), status: "available", path: [[30, 10, 1.5], [37, 10, 2]], speed: 1.8 },
-    { ...person(ryan), status: "available", path: [[36, 18, 1], [25, 18, 2]], speed: 2, offset: 2 },
+    { ...person(emma), at: [31, 10], face: "down", status: "available" },
+    { ...person(ryan), at: [26, 18], face: "right", status: "available" },
   ],
 };

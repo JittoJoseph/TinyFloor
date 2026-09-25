@@ -1,7 +1,7 @@
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "24 September 2026";
+export const TERMS_UPDATED = "25 September 2026";
 
 export const termsSummary = (
   <p>
@@ -47,8 +47,8 @@ export const termsSections: LegalSection[] = [
         <li>Give a real email address when you make an account, and keep your password to yourself. You are responsible for what happens on your account.</li>
         <li>If you think someone else has used your account, change your password and write to <Mail />.</li>
         <li>
-          Guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their last visit; to keep
-          your name and your offices, make an account.
+          In the public lobby, guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their
+          last visit; to keep your name and join offices, make an account.
         </li>
         <li>Don&apos;t pretend to be someone else, and don&apos;t pick a name meant to mislead people.</li>
       </ul>
@@ -56,12 +56,12 @@ export const termsSections: LegalSection[] = [
   },
   {
     id: "offices",
-    title: "Offices, members and guests",
+    title: "Offices and members",
     body: (
       <ul>
         <li>
-          Whoever makes an office owns it. Its admins decide who is a member, can invite people and can hand out guest links. Anyone with a
-          guest link can visit that office&apos;s floor until the link expires or is revoked, so share links with care.
+          Whoever makes an office owns it. Its admins decide who is a member and can invite people, by email or with an invite link. Anyone
+          with an invite link can join the office with an account until the link expires, is used up or is revoked, so share links with care.
         </li>
         <li>The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.</li>
         <li>

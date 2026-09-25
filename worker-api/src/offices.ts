@@ -1,6 +1,5 @@
 import {
   cleanName,
-  floorCapacity,
   realtime,
   requireOffice,
   seatsUsed,
@@ -68,7 +67,7 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
-      // Members, invites and guest links go with it (ON DELETE CASCADE), and so do its floor and chat.
+      // Members and invites go with it (ON DELETE CASCADE), and so do its floor and chat.
       await env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id).run();
       await realtime(env).forgetOffice(params.id);
       return json({ ok: true });
@@ -79,13 +78,12 @@ export function officeRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       const admin = office.role === "admin";
-      const [members, invites, guestLinks, people] = await Promise.all([
+      const [members, invites, people] = await Promise.all([
         membersOf(env, params.id),
         admin ? invitesOf(env, params.id) : [],
-        admin ? guestLinksOf(env, params.id) : [],
         headcount(env, params.id),
       ]);
-      return json({ office: officeJson(office, members.length), members, invites, guestLinks, people });
+      return json({ office: officeJson(office, members.length), members, invites, people });
     })
 
     .add("PATCH", "/v1/offices/:id/members/:userId", async ({ request, env, ctx, params }) => {
@@ -179,7 +177,10 @@ export function officeRoutes(router: Router): void {
       const used = await seatsUsed(env, invite.office_id);
       return json({
         invite: {
+          // The office's id seeds its mark, so the door shows the mark the office has inside.
+          officeId: invite.office_id,
           officeName: invite.office_name,
+          members: used,
           invitedBy: invite.inviter_name,
           role: invite.role,
           expiresAt: invite.expires_at,
@@ -261,17 +262,6 @@ export async function invitesOf(env: Env, officeId: string) {
   }));
 }
 
-/** Guest links that have not expired or been revoked. */
-export async function guestLinksOf(env: Env, officeId: string) {
-  const { results } = await env.DB.prepare(
-    `SELECT id, created_at, expires_at FROM guest_links
-     WHERE office_id = ? AND revoked_at IS NULL AND expires_at > ? ORDER BY created_at DESC`,
-  )
-    .bind(officeId, Date.now())
-    .all<{ id: string; created_at: number; expires_at: number }>();
-  return results.map((row) => ({ id: row.id, createdAt: row.created_at, expiresAt: row.expires_at }));
-}
-
 /** Everyone in an office, oldest member first. */
 export async function membersOf(env: Env, officeId: string) {
   const { results } = await env.DB.prepare(
@@ -313,7 +303,6 @@ export function officeJson(office: Office, members: number) {
     plan: office.plan,
     seats: office.seats,
     members,
-    capacity: floorCapacity(office.seats),
     role: office.role,
     owner: office.ownerId,
   };

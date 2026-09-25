@@ -7,20 +7,21 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
-import { EntryShell } from "@/components/entry/EntryShell";
+import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
+import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
+import { Users } from "lucide-react";
 import { EntryProblem } from "@/components/entry/EntryProblem";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
-import { EntryPreview } from "@/components/entry/EntryPreview";
 import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { posthogLog } from "@/lib/posthog-log";
-import posthog from "posthog-js";
-
-const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
+import { withPostHog } from "@/lib/analytics";
 
 export interface InvitePreview {
+  officeId: string;
   officeName: string;
+  members: number;
   invitedBy: string;
   role: string;
   expiresAt: number;
@@ -84,7 +85,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       // Walk in as the character they picked on the way here.
       if (user && character !== user.character) await updateProfile({ character }).catch(() => undefined);
       const { officeId } = await api.acceptInvite(token);
-      if (posthogConfigured) posthog.capture("office_invite_accepted", { invite_role: invite?.role ?? "member" });
+      withPostHog((posthog) => posthog.capture("office_invite_accepted", { invite_role: invite?.role ?? "member" }));
       posthogLog.info("Office invitation acceptance completed");
       router.push(officePath(officeId));
     } catch (err) {
@@ -93,31 +94,17 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     }
   };
 
-  const preview = (
-    <EntryPreview
-      occupants={
-        step === "name" && !trimmed
-          ? []
-          : [{ character, name: trimmed || t("you"), running: step !== "name" }]
-      }
-    />
-  );
-
   if (state === "loading" || isLoading) {
     return (
-      <EntryShell backHref="/" preview={preview}>
-        <div className="space-y-4">
-          <div className="h-3 w-24 rounded-full bg-muted animate-pulse" />
-          <div className="h-7 w-2/3 rounded-lg bg-muted animate-pulse" />
-          <div className="h-14 w-full rounded-full bg-muted animate-pulse" />
-        </div>
+      <EntryShell backHref="/">
+        <DoorSkeleton />
       </EntryShell>
     );
   }
 
   if (state === "invalid" || !invite) {
     return (
-      <EntryShell backHref="/" preview={preview}>
+      <EntryShell backHref="/">
         <EntryProblem title={t("invalidTitle")} body={t("invalid")}>
           <ActionLink href="/">{t("home")}</ActionLink>
           <ActionLink href="/create" tone="secondary" icon={null}>
@@ -131,15 +118,27 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const back = invitePath(token);
 
   return (
-    <EntryShell backHref="/" preview={preview}>
+    <EntryShell backHref="/">
       <div className="entry-rise">
-        <p className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{t("eyebrow", { name: invite.invitedBy })}</p>
-        <h1 className="break-words text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground">
-          {invite.officeName}
-        </h1>
-        <p className="mb-6 mt-1.5 text-[14px] text-muted-foreground">
-          {invite.role === "admin" ? t("asAdmin") : t("asMember")}
-        </p>
+        <EntryHeader
+          mark={<OfficeMark officeId={invite.officeId} />}
+          eyebrow={t("eyebrow", { name: invite.invitedBy })}
+          title={invite.officeName}
+          subtitle={invite.role === "admin" ? t("asAdmin") : t("asMember")}
+          detail={
+            invite.members > 0 && (
+              <EntryDetail
+                lead={
+                  <span className="flex size-[22px] items-center justify-center rounded-full bg-muted text-muted-foreground">
+                    <Users className="size-3" />
+                  </span>
+                }
+              >
+                {t("members", { count: invite.members })}
+              </EntryDetail>
+            )
+          }
+        />
 
         {error && (
           <div className="mb-4">
@@ -149,15 +148,29 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
         {step === "account" && account ? (
           <>
+            <div className="mb-4">
+              <YouSummary name={user.displayName} character={character} />
+            </div>
             <ActionButton onClick={join} busy={busy}>
               {t("join", { office: invite.officeName })}
             </ActionButton>
-            <p className="text-center text-[12px] text-muted-foreground mt-4">
+            <p className="mt-4 text-center text-[12.5px] text-muted-foreground">
               {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
             </p>
           </>
         ) : step === "account" ? (
-          <div className="space-y-3">
+          <div className="space-y-2.5">
+            <div className="mb-4">
+              <YouSummary
+                name={trimmed}
+                character={character}
+                changeLabel={t("change")}
+                onChange={() => {
+                  setWentBack(true);
+                  setStep("character");
+                }}
+              />
+            </div>
             <ActionLink
               href={`/auth?${new URLSearchParams({ mode: "signup", redirect: back })}`}
               onClick={() => saveIdentity({ name: trimmed, character })}
@@ -172,7 +185,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
             >
               {t("signIn")}
             </ActionLink>
-            <p className="text-center text-[12px] text-muted-foreground pt-1">
+            <p className="pt-2 text-center text-[12.5px] text-muted-foreground">
               {t("accountKeeps", { name: trimmed })}
             </p>
           </div>
@@ -210,5 +223,25 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         )}
       </div>
     </EntryShell>
+  );
+}
+
+/** The panel's shape while the door looks itself up. */
+export function DoorSkeleton() {
+  return (
+    <div aria-hidden>
+      <div className="flex items-center gap-3.5">
+        <span className="size-12 animate-pulse rounded-[30%] bg-foreground/[0.07]" />
+        <span className="flex-1 space-y-2">
+          <span className="block h-3 w-24 animate-pulse rounded-full bg-foreground/[0.07]" />
+          <span className="block h-5 w-40 animate-pulse rounded-full bg-foreground/[0.07]" />
+        </span>
+      </div>
+      <span className="mt-4 block h-3.5 w-3/4 animate-pulse rounded-full bg-foreground/[0.07]" />
+      <div className="-mx-5 my-5 h-px bg-border sm:-mx-6" />
+      <span className="block h-3 w-20 animate-pulse rounded-full bg-foreground/[0.07]" />
+      <span className="mt-2 block h-12 w-full rounded-full border border-border" />
+      <span className="mt-4 block h-11 w-full animate-pulse rounded-full bg-foreground/[0.07]" />
+    </div>
   );
 }

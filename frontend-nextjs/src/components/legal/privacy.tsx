@@ -1,7 +1,7 @@
-import { Link } from "@/lib/i18n/navigation";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "24 September 2026";
+export const PRIVACY_UPDATED = "25 September 2026";
 
 export const privacySummary = (
   <>
@@ -49,7 +49,7 @@ export const privacySections: LegalSection[] = [
           <li>The character you pick, which is saved on your account.</li>
         </ul>
 
-        <h3>When you visit as a guest</h3>
+        <h3>When you visit the lobby as a guest</h3>
         <p>The name and character you choose. Guests don&apos;t give an email address.</p>
 
         <h3>While you use TinyFloor</h3>
@@ -59,8 +59,8 @@ export const privacySections: LegalSection[] = [
             expires, when it was last used, and the first 200 characters of your browser&apos;s user agent.
           </li>
           <li>
-            <strong>Offices:</strong> each office&apos;s name, its members and their roles, invitations (including the email address an
-            invitation was sent to) and guest links.
+            <strong>Offices:</strong> each office&apos;s name, its members and their roles, and invitations (including the email
+            address an invitation was sent to).
           </li>
           <li>
             <strong>Chat:</strong> the messages and reactions you post, and how far you have read in each channel. Messages are visible to the
@@ -224,11 +224,11 @@ export const privacySections: LegalSection[] = [
             <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Lobby chat</strong> is deleted after a week.
           </li>
           <li>
-            <strong>Offices:</strong> when an office is deleted, its members, invitations, guest links, chat, whiteboard and music are deleted
+            <strong>Offices:</strong> when an office is deleted, its members, invitations, chat, whiteboard and music are deleted
             with it.
           </li>
           <li>
-            <strong>Invitations and guest links:</strong> deleted 30 days after they expire, are used or are revoked.
+            <strong>Invitations:</strong> deleted 30 days after they expire, are used or are revoked.
           </li>
           <li>
             <strong>Usage totals:</strong> kept for 13 months.

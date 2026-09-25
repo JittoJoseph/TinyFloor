@@ -74,11 +74,11 @@
       },
       {
         "q": "Do I need an account to join a room?",
-        "a": "Not for the public lobby. Anyone can walk in there as a guest with just a name. Rooms in a workspace are private: teammates sign in with a free account, and visitors come in through a guest link."
+        "a": "Not for the public lobby: anyone can walk in there as a guest with just a name. An office is private: teammates join through an invite, with a free account."
       },
       {
         "q": "Is TinyFloor private and secure?",
-        "a": "An office floor is only for its members and the guests they let in, and nothing inside it is public or indexed by search engines. Calls are encrypted in transit by WebRTC, and your camera and microphone are only on during a call."
+        "a": "An office floor is only for its members, and nothing inside it is public or indexed by search engines. Calls are encrypted in transit by WebRTC, and your camera and microphone are only on during a call."
       },
       {
         "q": "How is TinyFloor different from Zoom or Google Meet?",
@@ -144,12 +144,6 @@
     "introTitle": "Before you walk in",
     "introSubtitle": "What should people call you, and who will you be on the floor?"
   },
-  "join": {
-    "unavailableTitle": "That door does not open.",
-    "linkUnavailable": "This guest link has expired or been turned off. Ask whoever sent it for a new one.",
-    "visitLobby": "Visit the lobby",
-    "invitedAsGuest": "You're invited in as a guest."
-  },
   "room": {
     "connecting": "Connecting...",
     "leave": "Leave",
@@ -164,7 +158,7 @@
       "closedTitle": "This room is closed",
       "closed": "Its owner closed this office.",
       "revokedTitle": "Your access ended",
-      "revoked": "The guest link you came in with was turned off.",
+      "revoked": "You're no longer a member of this office.",
       "signedOutTitle": "You're signed out",
       "signedOut": "Sign in again to walk back in.",
       "notFoundTitle": "Room not found",
@@ -441,8 +435,8 @@
             "body": "Everything runs in the browser on desktop and mobile. Share a link and your team is inside in seconds."
           },
           {
-            "title": "Guests walk straight in",
-            "body": "Teammates join with a free account, and anyone else can come in through a guest link with just a name."
+            "title": "One link to join",
+            "body": "Send an invite link. Teammates pick a name and a character, make a free account and walk in."
           }
         ],
         "them": {
@@ -484,8 +478,8 @@
             "body": "Invite everyone. Rooms hold 20 people at a time, and you can open more rooms whenever you need them."
           },
           {
-            "title": "No weekly guest limit",
-            "body": "Kumospace gives free guests 4 hours a week. In TinyFloor a guest joins with a name and stays as long as they like."
+            "title": "Try it before you sign up",
+            "body": "Walk into TinyFloor's public lobby with just a name and try the floor before you make an office."
           },
           {
             "title": "Made for phones too",
@@ -509,7 +503,7 @@
           },
           {
             "q": "Do my teammates need an account?",
-            "a": "Teammates use a free account, which keeps your rooms private to your team. Anyone else can join as a guest with just a name, through a guest link or the public lobby."
+            "a": "Yes, a free one, which keeps your office private to your team. To look around first, anyone can walk into the public lobby with just a name."
           },
           {
             "q": "Does TinyFloor work on phones?",
@@ -626,7 +620,7 @@
           },
           {
             "title": "Still in the browser",
-            "body": "Open a link, pick a character, and you are in. Guests do not need an account."
+            "body": "Open an invite link, pick a character, and you are in. The public lobby needs no account at all."
           },
           {
             "title": "Free and open all day",
@@ -763,7 +757,7 @@
           },
           {
             "q": "Is it free for students?",
-            "a": "Yes. TinyFloor is free for a small group, and friends can join through a guest link without an account."
+            "a": "Yes. TinyFloor is free for a small group. Send your friends an invite link and they join with a free account."
           },
           {
             "q": "Can we play music while we study?",
@@ -808,7 +802,7 @@
           },
           {
             "q": "Can I keep the classroom private?",
-            "a": "Yes. Rooms in a workspace are private. Share a guest link with your class, and turn it off when you are done."
+            "a": "Yes. An office is private to its members. Invite your class with a link, and remove people from the office when the course ends."
           },
           {
             "q": "Is it free for teachers?",
@@ -880,7 +874,7 @@
       },
       "invites": {
         "title": "Invites come with an office",
-        "body": "Invite your team by email, or let a guest in with a link, in an office of your own."
+        "body": "Invite your team by email or with a link, in an office of your own."
       },
       "free": "Making an office takes a minute and is free for up to 3 people.",
       "go": "Make my office",
@@ -899,7 +893,7 @@
         "private": "A private floor",
         "channels": "Channels that stay",
         "messages": "Direct messages",
-        "guests": "Guest links"
+        "invites": "Invite links"
       },
       "bringThem": "{count, plural, one {Bring the person you met here} other {Bring the # people you met here}}"
     }
@@ -982,7 +976,9 @@
       "signIn": "I have an account",
       "readyToJoin": "That's me",
       "accountKeeps": "An account keeps {name} and your character for next time.",
-      "you": "You"
+      "you": "You",
+      "members": "{count, plural, one {# member} other {# members}}",
+      "change": "Change"
     },
     "errors": {
       "member_limit": "The workspace is full on its current plan.",
@@ -1010,16 +1006,12 @@
       "title": "People",
       "members": "Members",
       "invitations": "Pending invites",
-      "guests": "Guests",
-      "guestsNote": "A guest walks in on a link. They take no seat and cannot invite anyone.",
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
       "seatsFree": "There is room for more.",
       "onFloorNow": "{count} on the floor now",
       "noInvitations": "No invitations out",
-      "noGuestLinks": "No guest links",
-      "newGuestLink": "Create guest link",
       "copied": "Copied",
       "revoke": "Revoke",
       "remove": "Remove",
@@ -1042,9 +1034,7 @@
       "seatsLeft": "{count, plural, one {# seat left — invite someone} other {# seats left — invite someone}}",
       "seatsNote": "A seat is a member. Someone leaving frees theirs; being offline does not.",
       "invitationsNote": "An invitation holds no seat. Whoever accepts first takes one, while there is one free.",
-      "guestLink": "Guest link",
       "noInvitationsBody": "Invite someone and the link waits here until they accept or it runs out.",
-      "noGuestLinksBody": "A guest link lets a client or a candidate visit the floor, without taking a seat.",
       "allSeatsTaken": "Every seat is taken",
       "allSeatsTakenBody": "Someone leaving frees a seat. Offices with more seats are coming.",
       "yourProfile": "Your profile",
@@ -1144,14 +1134,13 @@
       "lobby": "Lobby",
       "signIn": "Sign in",
       "start": "Make your office",
-      "open": "Open TinyFloor",
       "main": "Main",
       "items": {
         "proximity": "Proximity calls",
         "meetings": "Meeting tables",
         "chat": "Chat",
         "people": "Presence",
-        "guests": "Guests"
+        "invites": "Invites"
       },
       "lobbyTitle": "The lobby is open",
       "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
@@ -1203,10 +1192,10 @@
         "muted": "Then walk right over.",
         "body": "See who is on the floor, who is busy and who is in a call. Tap Walk to, and your character finds its own way there."
       },
-      "guests": {
-        "title": "Let anyone in.",
+      "invites": {
+        "title": "Bring your team in.",
         "muted": "With one link.",
-        "body": "Invite teammates by email, or send a guest link to a client or a candidate. They pick a name and a character and they're on the floor, no account needed."
+        "body": "Send an invite link, or invite by email. They pick a name and a character, make a free account, and they're on the floor."
       }
     },
     "versus": {
@@ -1250,7 +1239,7 @@
       },
       "invite": {
         "title": "Send your team the link.",
-        "body": "Invite teammates by email, or share a guest link with anyone else."
+        "body": "Invite teammates by email, or send them an invite link."
       },
       "walk": {
         "title": "Walk in.",
@@ -1289,7 +1278,7 @@
       "items": {
         "private": {
           "title": "Private by design",
-          "body": "An office floor is only for its members and the guests they let in. Nothing is public, and nothing is indexed."
+          "body": "An office floor is only for its members. Nothing is public, and nothing is indexed."
         },
         "network": {
           "title": "On Cloudflare's network",
@@ -1316,7 +1305,7 @@
           "Proximity calls and meeting tables",
           "Screen sharing",
           "Channels and direct messages",
-          "Guest links for visitors"
+          "Invite links for your team"
         ]
       },
       "soon": {
@@ -1357,12 +1346,11 @@
       "available": "Available",
       "busy": "Busy",
       "away": "Away",
-      "guestLink": "Guest link",
-      "guestNote": "Anyone with this link can visit as a guest.",
+      "inviteLink": "Invite link",
+      "inviteNote": "Anyone with this link can join, with a free account.",
       "copy": "Copy",
       "invite": "Invite",
       "people": "People",
-      "guestArrived": "walked in as a guest",
       "roles": {
         "design": "Design",
         "engineering": "Engineering",
@@ -1374,11 +1362,11 @@
       "directMessages": "Direct messages",
       "today": "Today",
       "typing": "{name} is typing…",
-      "guest": "Guest",
       "inviteTeammate": "Invite a teammate",
       "inviteTeammateNote": "They join with a link",
       "video": "Video call",
-      "audio": "Voice call"
+      "audio": "Voice call",
+      "joined": "joined the office"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",

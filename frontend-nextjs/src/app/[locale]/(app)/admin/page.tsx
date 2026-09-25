@@ -95,7 +95,7 @@ export default function AdminPage() {
 /* ---------- Overview ---------- */
 
 function Overview({ summary }: { summary: AdminSummary }) {
-  const { counts, countries, signups } = summary;
+  const { counts, countries, signups, signupDays } = summary;
   const tiles: Array<{ label: string; value: number; note?: string }> = [
     { label: "Accounts", value: counts.accounts, note: `${counts.withGoogle} with Google` },
     { label: "Active today", value: counts.activeDay },
@@ -116,7 +116,7 @@ function Overview({ summary }: { summary: AdminSummary }) {
         ))}
       </div>
       <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr]">
-        <Signups days={signups} />
+        <Signups days={signups} dates={signupDays} />
         <Countries countries={countries} />
       </div>
     </div>
@@ -124,14 +124,14 @@ function Overview({ summary }: { summary: AdminSummary }) {
 }
 
 /** Sign-ups a day over the last 30 days: one bar a day, the day and count on hover. */
-function Signups({ days }: { days: number[] }) {
+function Signups({ days, dates }: { days: number[]; dates: string[] }) {
   const locale = useLocale();
-  const now = useOpenedAt();
   const [hover, setHover] = useState<number | null>(null);
   const top = Math.max(1, ...days);
   const total = days.reduce((sum, day) => sum + day, 0);
-  const dayOf = (index: number) => new Date(now - (29 - index) * 86_400_000);
-  const label = (index: number) => dayOf(index).toLocaleDateString(locale, { month: "short", day: "numeric" });
+  // Each bar is a calendar day where you are (the server counted them that way), written as that date.
+  const label = (index: number) =>
+    new Date(`${dates[index]}T12:00:00Z`).toLocaleDateString(locale, { month: "short", day: "numeric", timeZone: "UTC" });
   return (
     <section className="rounded-2xl border border-border bg-card p-4 sm:p-5">
       <div className="flex items-baseline justify-between gap-3">
@@ -343,54 +343,26 @@ function Offices() {
   if (offices.length === 0) return <p className="py-16 text-center text-[13px] text-muted-foreground">No offices yet.</p>;
 
   return (
-    <section className="grid grid-cols-1 gap-2">
-      {offices.map((office) => (
-        <details key={office.id} className="group rounded-2xl border border-border bg-card open:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
-          <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden [--face-ring:var(--ui-card)]">
-            <Face seed={office.name.toLowerCase()} size={36} square />
-            <span className="min-w-0 flex-1">
-              <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                <span className="truncate text-[14.5px] font-semibold">{office.name}</span>
-                <Badge>{office.plan}</Badge>
-                {office.here > 0 && (
-                  <span className="inline-flex items-center gap-1 text-[12px] text-ok">
-                    <span className="size-1.5 rounded-full bg-ok" />
-                    {office.here} on the floor
-                  </span>
-                )}
-              </span>
-              <span className="mt-0.5 block truncate text-[12.5px] text-muted-foreground">
-                {office.members.length} of {office.seats} seats · made <When at={office.createdAt} /> by {office.ownerName ?? "someone gone"}
-                {office.ownerEmail ? ` (${office.ownerEmail})` : ""}
-              </span>
-            </span>
-            <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
-          </summary>
-          <ul className="border-t border-border px-4 py-2">
-            {office.members.map((member) => (
-              <li key={member.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 [--face-ring:var(--ui-card)]">
-                <Face seed={member.id} size={26} />
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[13.5px] font-medium">{member.displayName}</span>
-                  {member.email && <span className="block truncate text-[12px] text-muted-foreground">{member.email}</span>}
-                </span>
-                <Badge>{member.role}</Badge>
-                <span className="w-full text-[12px] text-muted-foreground sm:w-auto">
-                  {member.country && (
-                    <>
-                      <Country code={member.country} />
-                      {" · "}
-                    </>
-                  )}
-                  last around <When at={member.lastActiveAt} />
-                </span>
-              </li>
-            ))}
-          </ul>
-        </details>
-      ))}
+    <section>
+      <div className="overflow-hidden rounded-2xl border border-border bg-card [--face-ring:var(--ui-card)]">
+        {/* A table on a wide screen, a list of cards on a phone. */}
+        <div className={cn("hidden gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid", OFFICE_COLUMNS)}>
+          <span>Office</span>
+          <span>Owner</span>
+          <span>Owner&apos;s country</span>
+          <span>Seats</span>
+          <span>On the floor</span>
+          <span>Made</span>
+          <span />
+        </div>
+        <ul>
+          {offices.map((office) => (
+            <OfficeRow key={office.id} office={office} />
+          ))}
+        </ul>
+      </div>
       {more && (
-        <div className="mt-2 flex justify-center">
+        <div className="mt-4 flex justify-center">
           <button
             type="button"
             disabled={busy}
@@ -402,6 +374,127 @@ function Offices() {
         </div>
       )}
     </section>
+  );
+}
+
+const OFFICE_COLUMNS =
+  "md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.7fr)_minmax(0,1.1fr)_minmax(0,0.8fr)_minmax(0,0.8fr)_minmax(0,0.9fr)_1.75rem]";
+const MEMBER_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,0.8fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]";
+
+/** One office: its row, and its members beneath it when opened. */
+function OfficeRow({ office }: { office: AdminOffice }) {
+  const [open, setOpen] = useState(false);
+  const used = office.members.length;
+  return (
+    <li className="border-b border-border last:border-0">
+      <button
+        type="button"
+        data-office-toggle
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+        className={cn(
+          "grid w-full cursor-pointer grid-cols-[auto_1fr] gap-x-3 gap-y-1 px-4 py-3 text-start transition-colors hover:bg-foreground/[0.025] md:items-center md:gap-4",
+          OFFICE_COLUMNS,
+          open && "bg-foreground/[0.025]",
+        )}
+      >
+        <span className="col-span-2 flex min-w-0 items-center gap-3 md:col-span-1">
+          <Face seed={office.name.toLowerCase()} size={32} square />
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-[14px] font-medium">{office.name}</span>
+            <span className="block text-[12px] text-muted-foreground">{office.plan.charAt(0).toUpperCase() + office.plan.slice(1)} plan</span>
+          </span>
+          <ChevronDown className={cn("size-4 shrink-0 text-muted-foreground transition-transform md:hidden", open && "rotate-180")} />
+        </span>
+        <Cell label="Owner">
+          {office.ownerId ? (
+            <span className="flex min-w-0 items-center gap-2">
+              <Face seed={office.ownerId} size={22} />
+              <span className="min-w-0">
+                <span className="block truncate text-[13.5px]">{office.ownerName}</span>
+                {office.ownerEmail && <span className="block truncate text-[12px] text-muted-foreground">{office.ownerEmail}</span>}
+              </span>
+            </span>
+          ) : (
+            <span className="text-muted-foreground">Gone</span>
+          )}
+        </Cell>
+        <Cell label="Owner's country">
+          {office.ownerCountry ? <Country code={office.ownerCountry} /> : <span className="text-muted-foreground">Unknown</span>}
+        </Cell>
+        <Cell label="Seats">
+          <Seats used={used} seats={office.seats} />
+        </Cell>
+        <Cell label="On the floor">
+          {office.here > 0 ? (
+            <span className="inline-flex items-center gap-1.5 tabular-nums text-ok">
+              <span className="size-1.5 rounded-full bg-ok" />
+              {office.here}
+            </span>
+          ) : (
+            <span className="text-muted-foreground">Nobody</span>
+          )}
+        </Cell>
+        <Cell label="Made">
+          <When at={office.createdAt} />
+        </Cell>
+        <span className="hidden justify-end md:flex">
+          <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
+        </span>
+      </button>
+
+      {open && (
+        <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
+          {/* The same inset as the rows below (their padding and border), so each heading sits over its column. */}
+          <div className={cn("hidden gap-4 px-[13px] py-2 text-[11.5px] font-medium text-muted-foreground md:grid", MEMBER_COLUMNS)}>
+            <span>Member</span>
+            <span>Role</span>
+            <span>Country</span>
+            <span>Joined</span>
+            <span>Last around</span>
+          </div>
+          <ul className="divide-y divide-border rounded-xl border border-border bg-card">
+            {office.members.map((member) => (
+              <li key={member.id} className={cn("grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 px-3 py-2.5 md:items-center md:gap-4", MEMBER_COLUMNS)}>
+                <span className="col-span-2 flex min-w-0 items-center gap-2.5 md:col-span-1">
+                  <Face seed={member.id} size={26} />
+                  <span className="min-w-0">
+                    <span className="block truncate text-[13.5px] font-medium">{member.displayName}</span>
+                    {member.email && <span className="block truncate text-[12px] text-muted-foreground">{member.email}</span>}
+                  </span>
+                </span>
+                <Cell label="Role">
+                  <Badge>{member.role}</Badge>
+                </Cell>
+                <Cell label="Country">{member.country ? <Country code={member.country} /> : <span className="text-muted-foreground">Unknown</span>}</Cell>
+                <Cell label="Joined">
+                  <When at={member.joinedAt} />
+                </Cell>
+                <Cell label="Last around">
+                  <When at={member.lastActiveAt} />
+                </Cell>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </li>
+  );
+}
+
+/** Seats taken out of the office's seats, with a small meter that warms up as it fills. */
+function Seats({ used, seats }: { used: number; seats: number }) {
+  const share = seats > 0 ? Math.min(1, used / seats) : 0;
+  return (
+    <span className="inline-flex items-center gap-2.5">
+      <span className="tabular-nums">
+        {used}
+        <span className="text-muted-foreground"> / {seats}</span>
+      </span>
+      <span className="h-1 w-10 overflow-hidden rounded-full bg-muted" aria-hidden>
+        <span className={cn("block h-full rounded-full", share >= 1 ? "bg-brand" : "bg-foreground/60")} style={{ width: `${share * 100}%` }} />
+      </span>
+    </span>
   );
 }
 

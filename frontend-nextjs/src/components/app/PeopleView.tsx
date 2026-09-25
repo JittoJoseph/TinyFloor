@@ -1,14 +1,14 @@
 "use client";
 
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { ArrowRight, Check, Link2, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
+import { ArrowRight, Check, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type GuestLink, type Invite, type OfficeOverview } from "@/lib/api";
-import { guestLinkPath, invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
+import { api, ApiError, type Invite } from "@/lib/api";
+import { invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
@@ -22,9 +22,7 @@ import { useOffice } from "./OfficeShell";
 import { usePlace } from "./place";
 import { MemberCard } from "./MemberCard";
 import { Link } from "@/lib/i18n/navigation";
-import posthog from "posthog-js";
-
-const posthogConfigured = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST);
+import { withPostHog } from "@/lib/analytics";
 
 /** People: an office's members and who can come in, or who is in the lobby now. */
 export function PeopleView() {
@@ -38,30 +36,25 @@ function OfficePeople() {
   const format = useFormatter();
   const router = useRouter();
   const { user } = useAuth();
-  const { office, refresh } = useOffice();
+  const { office, overview: data, readAt, refresh } = useOffice();
   const floor = useFloorStatus();
-  const [data, setData] = useState<OfficeOverview | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
   const [tab, setTab] = useState("members");
 
-  const load = useCallback(async () => setData(await api.overview(office.id)), [office.id]);
-
+  // The shell read the office when it opened; coming back to People later reads it again.
   useEffect(() => {
-    let cancelled = false;
-    api.overview(office.id).then((found) => !cancelled && setData(found));
-    return () => {
-      cancelled = true;
-    };
-  }, [office.id]);
+    if (Date.now() - readAt > 30_000) void refresh().catch(() => {});
+    // Only on arrival: after that, whatever changes here refreshes it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const run = async (action: () => Promise<void>) => {
     setBusy(true);
     setError(null);
     try {
       await action();
-      await load();
       await refresh();
     } catch (problem) {
       setError(problem instanceof ApiError ? problem.message : t("wrong"));
@@ -78,21 +71,15 @@ function OfficePeople() {
   };
 
   const admin = office.role === "admin";
-  const members = data?.members ?? [];
-  const used = data?.members.length ?? office.members;
+  const members = data.members;
+  const used = data.members.length;
   const full = used >= office.seats;
   const expires = (at: number) => t("expires", { date: format.dateTime(new Date(at), { dateStyle: "medium" }) });
-
-  const newGuestLink = () =>
-    run(async () => {
-      const { guestLink } = await api.createGuestLink(office.id, "7d");
-      await share(guestLinkPath(guestLink.token), "guest");
-    });
 
   const invite = () =>
     run(async () => {
       const { invite: made } = await api.createInvite(office.id, { role: "member" });
-      if (posthogConfigured) posthog.capture("office_invite_created", { invite_role: "member" });
+      withPostHog((posthog) => posthog.capture("office_invite_created", { invite_role: "member" }));
       await share(invitePath(made.token), "invite");
       setTab("invitations");
     });
@@ -140,12 +127,7 @@ function OfficePeople() {
             </TabsTrigger>
             {admin && (
               <TabsTrigger value="invitations">
-                {t("invitations")} <TabCount value={data?.invites.length ?? 0} />
-              </TabsTrigger>
-            )}
-            {admin && (
-              <TabsTrigger value="guests">
-                {t("guests")} <TabCount value={data?.guestLinks.length ?? 0} />
+                {t("invitations")} <TabCount value={data.invites.length} />
               </TabsTrigger>
             )}
           </TabsList>
@@ -240,7 +222,7 @@ function OfficePeople() {
                     }
                   />
                 }
-                items={(data?.invites ?? []).map((one: Invite) => ({
+                items={data.invites.map((one: Invite) => ({
                   id: one.id,
                   icon: <UserPlus className="size-4" />,
                   title: one.email ?? t("anyoneWithLink"),
@@ -252,45 +234,6 @@ function OfficePeople() {
             </TabsContent>
           )}
 
-          {admin && (
-            <TabsContent value="guests" className="mt-5">
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <p className="max-w-2xl text-[13px] text-muted-foreground">{t("guestsNote")}</p>
-                {!!data?.guestLinks.length && <Button
-                  variant="secondary"
-                  size="sm"
-                  disabled={busy}
-                  className="h-9 gap-2 px-3.5 text-[13px]"
-                  onClick={newGuestLink}
-                >
-                  {copied === "guest" ? <Check className="size-4" /> : <Link2 className="size-4" />}
-                  {copied === "guest" ? t("copied") : t("newGuestLink")}
-                </Button>}
-              </div>
-              <LinkList
-                empty={
-                  <Empty
-                    icon={<Link2 />}
-                    title={t("noGuestLinks")}
-                    body={t("noGuestLinksBody")}
-                    actions={
-                      <Chip solid icon={<Link2 />} onClick={newGuestLink}>
-                        {t("newGuestLink")}
-                      </Chip>
-                    }
-                  />
-                }
-                items={(data?.guestLinks ?? []).map((one: GuestLink) => ({
-                  id: one.id,
-                  icon: <Link2 className="size-4" />,
-                  title: t("guestLink"),
-                  detail: expires(one.expiresAt),
-                  onRevoke: () => run(() => api.revokeGuestLink(office.id, one.id).then()),
-                }))}
-                revoke={t("revoke")}
-              />
-            </TabsContent>
-          )}
         </Tabs>
       </div>
     </div>

@@ -21,8 +21,6 @@ export const officeChatPath = (officeId: string, channel?: string) =>
 export const officePeoplePath = (officeId: string) => `${officePath(officeId)}/people`;
 export const officeSettingsPath = (officeId: string) => `${officePath(officeId)}/settings`;
 
-/** A guest link into an office. */
-export const guestLinkPath = (token: string) => `/join/${encodeURIComponent(token)}`;
 
 /** An invitation to become a member of an office. */
 export const invitePath = (token: string) => `/invite/${encodeURIComponent(token)}`;

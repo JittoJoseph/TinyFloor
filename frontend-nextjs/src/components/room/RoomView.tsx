@@ -13,9 +13,8 @@ import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
 import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
-import { EntryShell } from "@/components/entry/EntryShell";
+import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
-import { EntryPreview } from "@/components/entry/EntryPreview";
 import { Button } from "@/components/motion/button/base";
 import { Loader } from "@/components/motion/loader";
 import { Face, FaceStack } from "@/components/ui/Face";
@@ -135,7 +134,6 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
         <RoomEnded
           reason={ended}
           leaveHref={leaveHref}
-          character={user.character}
           onRetry={() => {
             setEnded(null);
             setAttempt((value) => value + 1);
@@ -266,12 +264,10 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
 function RoomEnded({
   reason,
   leaveHref,
-  character,
   onRetry,
 }: {
   reason: RoomEnd;
   leaveHref: string;
-  character: string;
   onRetry: () => void;
 }) {
   const t = useTranslations("room.ended");
@@ -286,17 +282,17 @@ function RoomEnded({
   const canRetry = reason === "full" || reason === "replaced";
 
   return (
-    <EntryShell
-      backHref={leaveHref}
-      backLabel={t("back")}
-      preview={<EntryPreview occupants={[{ character }]} />}
-    >
+    <EntryShell backHref={leaveHref} backLabel={t("back")}>
       <div className="entry-rise">
-        <span className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-warn/15 text-warn">
-          <AlertCircle className="size-5" />
-        </span>
-        <h1 className="mb-2 text-[1.6rem] font-semibold tracking-tight text-foreground">{copy[reason].title}</h1>
-        <p className="mb-6 text-[14px] text-muted-foreground">{copy[reason].body}</p>
+        <EntryHeader
+          mark={
+            <span className="flex size-12 items-center justify-center rounded-[30%] bg-warn/15 text-warn">
+              <AlertCircle className="size-5" />
+            </span>
+          }
+          title={copy[reason].title}
+          subtitle={copy[reason].body}
+        />
         {reason === "signedOut" ? (
           <ActionLink href="/auth">{t("signIn")}</ActionLink>
         ) : canRetry ? (

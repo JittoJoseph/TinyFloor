@@ -20,8 +20,6 @@ const PASSWORD_MIN_LENGTH = 8;
 const PASSWORD_MAX_BYTES = 72;
 /** Sign-in attempts allowed from one IP address per 15 minutes, across all emails. */
 const ATTEMPTS_PER_IP = 30;
-/** Faces shown on each office card on the dashboard. */
-const FACES_PER_OFFICE = 5;
 
 export function authRoutes(router: Router): void {
   router
@@ -205,30 +203,30 @@ export function authRoutes(router: Router): void {
         .all<{ id: string; name: string; plan: string; seats: number; role: string; members: number }>();
       if (!results.length) return json({ user: publicUser(user), offices: [] });
 
-      // A few faces per office for the dashboard, and who is on each floor now.
-      const [faces, inNow] = await Promise.all([
+      // Each office's team for the dashboard, oldest member first, and who is on each floor now.
+      const [team, inNow] = await Promise.all([
         env.DB.prepare(
-          `SELECT m.office_id, u.id, u.display_name, u.character FROM memberships m JOIN users u ON u.id = m.user_id
+          `SELECT m.office_id, u.id, u.display_name, m.role FROM memberships m JOIN users u ON u.id = m.user_id
            WHERE m.office_id IN (SELECT office_id FROM memberships WHERE user_id = ?)
            ORDER BY m.joined_at`,
         )
           .bind(user.id)
-          .all<{ office_id: string; id: string; display_name: string; character: string }>(),
+          .all<{ office_id: string; id: string; display_name: string; role: string }>(),
         realtime(env)
           .officePresence(results.map((office) => office.id))
           .catch(() => ({}) as Record<string, PresentPerson[]>),
       ]);
-      const byOffice = new Map<string, { id: string; name: string; character: string }[]>();
-      for (const row of faces.results) {
+      const byOffice = new Map<string, { id: string; displayName: string; role: string }[]>();
+      for (const row of team.results) {
         const list = byOffice.get(row.office_id) ?? [];
-        if (list.length < FACES_PER_OFFICE) list.push({ id: row.id, name: row.display_name, character: row.character });
+        list.push({ id: row.id, displayName: row.display_name, role: row.role });
         byOffice.set(row.office_id, list);
       }
       return json({
         user: publicUser(user),
         offices: results.map((office) => ({
           ...office,
-          faces: byOffice.get(office.id) ?? [],
+          team: byOffice.get(office.id) ?? [],
           here: inNow[office.id]?.length ?? 0,
           inNow: inNow[office.id] ?? [],
         })),

@@ -35,11 +35,11 @@ export function YourOfficeView() {
     router.push(account ? "/create" : `/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
   };
 
-  const perks: Array<{ icon: ReactNode; key: "private" | "channels" | "messages" | "guests" }> = [
+  const perks: Array<{ icon: ReactNode; key: "private" | "channels" | "messages" | "invites" }> = [
     { icon: <DoorClosed />, key: "private" },
     { icon: <Hash />, key: "channels" },
     { icon: <MessagesSquare />, key: "messages" },
-    { icon: <Link2 />, key: "guests" },
+    { icon: <Link2 />, key: "invites" },
   ];
 
   return (

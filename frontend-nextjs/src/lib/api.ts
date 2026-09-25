@@ -52,8 +52,8 @@ export interface OfficeSummary {
   seats: number;
   members: number;
   role: OfficeRole;
-  /** A few members, for faces on the dashboard (only from /v1/me). */
-  faces?: Array<{ id: string; name: string; character: string }>;
+  /** Everyone in the office, oldest member first, for the dashboard (only from /v1/me). */
+  team?: Array<{ id: string; displayName: string; role: OfficeRole }>;
   /** Who is on the floor right now (only from /v1/me). */
   here?: number;
   /** Who is on the floor right now, as they look (only from /v1/me). */
@@ -61,8 +61,6 @@ export interface OfficeSummary {
 }
 
 export interface Office extends OfficeSummary {
-  /** How many people fit on the floor at once: members plus room for guests. */
-  capacity: number;
   /** Who holds the subscription. */
   owner: string;
 }
@@ -84,17 +82,10 @@ export interface Invite {
   expiresAt: number;
 }
 
-export interface GuestLink {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
-}
-
 export interface OfficeOverview {
   office: Office;
   members: Member[];
   invites: Invite[];
-  guestLinks: GuestLink[];
   /** How many people are on the floor right now. */
   people: number;
 }
@@ -113,8 +104,10 @@ export interface IceServers {
 export interface AdminSummary {
   counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle", number>;
   countries: Array<{ country: string; people: number }>;
-  /** Sign-ups on each of the last 30 days, oldest first. */
+  /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
+  /** Those days, as YYYY-MM-DD. */
+  signupDays: string[];
 }
 
 export interface AdminPerson {
@@ -136,8 +129,10 @@ export interface AdminOffice {
   plan: string;
   seats: number;
   createdAt: number;
+  ownerId: string | null;
   ownerName: string | null;
   ownerEmail: string | null;
+  ownerCountry: string | null;
   here: number;
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
@@ -181,8 +176,7 @@ export const api = {
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
-  /** The popup's one-time code, or One Tap's signed ID token. */
-  signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
+  signInWithGoogle: (from: { code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
@@ -196,7 +190,8 @@ export const api = {
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
 
   // The admin view
-  adminSummary: () => get<AdminSummary>("/admin/summary"),
+  adminSummary: () =>
+    get<AdminSummary>(`/admin/summary?${new URLSearchParams({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })}`),
   adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
     get<{ users: AdminPerson[]; more: boolean }>(
       `/admin/users?${new URLSearchParams({
@@ -231,22 +226,14 @@ export const api = {
   revokeInvite: (officeId: string, inviteId: string) =>
     del<{ ok: true }>(`/offices/${id(officeId)}/invites/${id(inviteId)}`),
   invitePreview: (token: string) =>
-    get<{ invite: { officeName: string; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
+    get<{ invite: { officeId: string; officeName: string; members: number; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
       `/invites/${id(token)}`,
     ),
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
 
-  // Guest links
-  createGuestLink: (officeId: string, expiresIn: "1d" | "7d" | "30d") =>
-    post<{ guestLink: GuestLink & { token: string } }>(`/offices/${id(officeId)}/guest-links`, { expiresIn }),
-  revokeGuestLink: (officeId: string, linkId: string) =>
-    del<{ ok: true }>(`/offices/${id(officeId)}/guest-links/${id(linkId)}`),
-  guestLinkPreview: (token: string) => get<{ guestLink: { officeName: string } }>(`/guest-links/${id(token)}`),
-
   // Walking in, chatting, calling
   officeTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/ticket`),
   chatTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/chat-ticket`),
-  guestLinkTicket: (token: string) => post<RoomTicket>(`/guest-links/${id(token)}/ticket`),
   lobbyTicket: () => post<RoomTicket>("/lobby/ticket"),
   lobbyChatTicket: () => post<RoomTicket>("/lobby/chat-ticket"),
   /** Who is in the public lobby right now, for its door. */

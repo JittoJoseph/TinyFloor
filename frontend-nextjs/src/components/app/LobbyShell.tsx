@@ -28,6 +28,7 @@ import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { ChatNudges } from "./ChatNudges";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
+import { Entering } from "./Entering";
 
 /**
  * The free public lobby: the door, then the same shell an office has — floor,
@@ -39,7 +40,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const ts = useTranslations("shell");
   const pathname = usePathname();
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   const [asked, setAsked] = useState<OfficeFeature | null>(null);
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
@@ -86,10 +87,10 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
 
   // A new account says who it is at its first door.
-  if (user && !user.guest && user.introduced === false) return <Introduce backHref="/" />;
+  if (!isLoading && user && !user.guest && user.introduced === false) return <Introduce backHref="/" />;
 
   if (!inside || !user) {
-    return (
+    const walkIn = (
       <WalkIn
         eyebrow={t("eyebrow")}
         title={t("title")}
@@ -115,6 +116,13 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
           )
         }
       />
+    );
+    // The page is built with the door; someone this browser knows is let in instead of shown it.
+    return (
+      <>
+        <div className={isLoading ? "when-new" : undefined}>{walkIn}</div>
+        {isLoading && <Entering className="when-known" />}
+      </>
     );
   }
 

@@ -244,6 +244,18 @@ body {
   animation: entry-rise 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Before the session is known: the door for someone new, and for someone this
+   browser remembers, a quiet "coming in" instead (lib/session-hint.ts). */
+.when-known {
+  display: none;
+}
+.known .when-known {
+  display: flex;
+}
+.known .when-new {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .entry-rise {
     animation: none;

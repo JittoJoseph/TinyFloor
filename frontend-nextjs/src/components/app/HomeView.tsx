@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { ArrowRight, ChevronDown, ChevronRight, DoorOpen, Plus, Settings, UserPlus } from "lucide-react";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, type Member, type OfficeSummary } from "@/lib/api";
+import { api, type OfficeSummary } from "@/lib/api";
 import { lobbyPath, officePath, officePeoplePath } from "@/lib/links";
 import { cn } from "@/lib/utils";
 import { FloorScene, type Sitter } from "@/components/floor/FloorScene";
@@ -144,21 +144,10 @@ export function Overview({ office }: { office: OfficeSummary }) {
   const tRoles = useTranslations("office.roles");
   const tStatus = useTranslations("status");
   const { user } = useAuth();
-  const [team, setTeam] = useState<Member[] | null>(null);
+  const team = office.team ?? [];
   const admin = office.role === "admin";
   const inNow = office.inNow ?? [];
   const here = new Map(inNow.map((one) => [one.id, one.status]));
-
-  useEffect(() => {
-    let cancelled = false;
-    api.overview(office.id).then(
-      ({ members }) => !cancelled && setTeam(members),
-      () => !cancelled && setTeam([]),
-    );
-    return () => {
-      cancelled = true;
-    };
-  }, [office.id]);
 
   const sitting: Sitter[] = inNow.slice(0, DESKS.length).map((one, index) => ({
     character: one.character,
@@ -226,19 +215,12 @@ export function Overview({ office }: { office: OfficeSummary }) {
             </Link>
           }
         >
-          {!team
-            ? Array.from({ length: Math.min(office.members, 3) }, (_, index) => (
-                <div key={index} className="flex h-12 items-center gap-3 px-4">
-                  <span className="size-[26px] animate-pulse rounded-full bg-muted" />
-                  <span className="h-3 w-32 animate-pulse rounded-full bg-muted" />
-                </div>
-              ))
-            : team.slice(0, TEAM_SHOWN).map((member) => (
-                <PersonRow key={member.id} id={member.id} name={member.displayName} you={member.id === user?.id} presence={here.get(member.id) ?? null}>
-                  <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{tRoles(member.role)}</span>
-                </PersonRow>
-              ))}
-          {!!team && team.length > TEAM_SHOWN && (
+          {team.slice(0, TEAM_SHOWN).map((member) => (
+            <PersonRow key={member.id} id={member.id} name={member.displayName} you={member.id === user?.id} presence={here.get(member.id) ?? null}>
+              <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{tRoles(member.role)}</span>
+            </PersonRow>
+          ))}
+          {team.length > TEAM_SHOWN && (
             <Link
               href={officePeoplePath(office.id)}
               className="flex h-11 items-center gap-1 px-4 text-[13px] text-muted-foreground transition-colors hover:text-foreground"

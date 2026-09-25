@@ -1,13 +1,13 @@
 "use client";
 
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { ArrowRight, Check, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Invite, type OfficeOverview } from "@/lib/api";
+import { api, ApiError, type Invite } from "@/lib/api";
 import { invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
@@ -36,30 +36,25 @@ function OfficePeople() {
   const format = useFormatter();
   const router = useRouter();
   const { user } = useAuth();
-  const { office, refresh } = useOffice();
+  const { office, overview: data, readAt, refresh } = useOffice();
   const floor = useFloorStatus();
-  const [data, setData] = useState<OfficeOverview | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
   const [tab, setTab] = useState("members");
 
-  const load = useCallback(async () => setData(await api.overview(office.id)), [office.id]);
-
+  // The shell read the office when it opened; coming back to People later reads it again.
   useEffect(() => {
-    let cancelled = false;
-    api.overview(office.id).then((found) => !cancelled && setData(found));
-    return () => {
-      cancelled = true;
-    };
-  }, [office.id]);
+    if (Date.now() - readAt > 30_000) void refresh().catch(() => {});
+    // Only on arrival: after that, whatever changes here refreshes it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const run = async (action: () => Promise<void>) => {
     setBusy(true);
     setError(null);
     try {
       await action();
-      await load();
       await refresh();
     } catch (problem) {
       setError(problem instanceof ApiError ? problem.message : t("wrong"));
@@ -76,8 +71,8 @@ function OfficePeople() {
   };
 
   const admin = office.role === "admin";
-  const members = data?.members ?? [];
-  const used = data?.members.length ?? office.members;
+  const members = data.members;
+  const used = data.members.length;
   const full = used >= office.seats;
   const expires = (at: number) => t("expires", { date: format.dateTime(new Date(at), { dateStyle: "medium" }) });
 
@@ -132,7 +127,7 @@ function OfficePeople() {
             </TabsTrigger>
             {admin && (
               <TabsTrigger value="invitations">
-                {t("invitations")} <TabCount value={data?.invites.length ?? 0} />
+                {t("invitations")} <TabCount value={data.invites.length} />
               </TabsTrigger>
             )}
           </TabsList>
@@ -227,7 +222,7 @@ function OfficePeople() {
                     }
                   />
                 }
-                items={(data?.invites ?? []).map((one: Invite) => ({
+                items={data.invites.map((one: Invite) => ({
                   id: one.id,
                   icon: <UserPlus className="size-4" />,
                   title: one.email ?? t("anyoneWithLink"),

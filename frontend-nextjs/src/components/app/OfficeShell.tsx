@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Member, type Office } from "@/lib/api";
+import { api, ApiError, type Member, type Office, type OfficeOverview } from "@/lib/api";
 import { officeChatPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
@@ -26,7 +26,11 @@ interface OfficeContext {
   office: Office;
   /** Everyone in the office, for chat's direct messages and the People view. */
   members: Member[];
-  /** Re-reads the office and its members after something changed them. */
+  /** The office as the People view shows it: members, invitations, who is on the floor. */
+  overview: OfficeOverview;
+  /** When `overview` was read, so a view can tell whether it's worth reading again. */
+  readAt: number;
+  /** Re-reads the office after something changed it. */
   refresh: () => Promise<void>;
 }
 
@@ -50,15 +54,17 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const router = useRouter();
   const pathname = usePathname();
   const { user, isLoading } = useAuth();
-  const [office, setOffice] = useState<Office | null>(null);
-  const [members, setMembers] = useState<Member[]>([]);
+  // The office and everyone in it, read once here for every screen in the shell.
+  const [read, setRead] = useState<{ overview: OfficeOverview; at: number } | null>(null);
   const [gone, setGone] = useState(false);
   const { unread } = useChat();
+  const overview = read?.overview ?? null;
+  const office = overview?.office ?? null;
+  const members = overview?.members ?? [];
 
   const refresh = useCallback(async () => {
     const found = await api.overview(officeId);
-    setOffice(found.office);
-    setMembers(found.members);
+    setRead({ overview: found, at: Date.now() });
   }, [officeId]);
 
   useEffect(() => {
@@ -72,8 +78,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
       .overview(officeId)
       .then((found) => {
         if (cancelled) return;
-        setOffice(found.office);
-        setMembers(found.members);
+        setRead({ overview: found, at: Date.now() });
       })
       .catch((error) => {
         if (!cancelled && error instanceof ApiError && error.status === 404) setGone(true);
@@ -125,7 +130,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   // A new account says who it is at its first door, before its office opens.
   if (user && user.introduced === false) return <Introduce />;
 
-  if (!office || !user) {
+  if (!read || !office || !user) {
     return (
       <div className="flex min-h-dvh items-center justify-center bg-background text-muted-foreground">
         <Loader variant="dots" size={20} />
@@ -163,7 +168,7 @@ export function OfficeShell({ officeId, children }: { officeId: string; children
   const leave = { href: "/dashboard", label: ts("leaveOffice") };
 
   return (
-    <Context.Provider value={{ office, members, refresh }}>
+    <Context.Provider value={{ office, members, overview: read.overview, readAt: read.at, refresh }}>
       <PlaceProvider value={place}>
         <AppShell
           mark={<OfficeSwitcher office={office} />}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { DoorOpen, LayoutGrid, Plus } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
@@ -16,17 +16,18 @@ export function OfficeSwitcher({ office }: { office: Office }) {
   const router = useRouter();
   const wide = useWide();
   const [offices, setOffices] = useState<OfficeSummary[]>([]);
+  const asked = useRef(false);
 
-  useEffect(() => {
-    let cancelled = false;
+  // Your other offices appear only in the menu, so they're fetched once it's
+  // reached for, not every time an office opens.
+  const load = () => {
+    if (asked.current) return;
+    asked.current = true;
     api.me().then(
-      ({ offices: mine }) => !cancelled && setOffices(mine),
-      () => {},
+      ({ offices: mine }) => setOffices(mine),
+      () => (asked.current = false),
     );
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  };
 
   const others = offices.filter((one) => one.id !== office.id);
 
@@ -41,6 +42,9 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           type="button"
           aria-label={t("switchOffice")}
           title={office.name}
+          onPointerEnter={load}
+          onFocus={load}
+          onPointerDown={load}
           className="cursor-pointer rounded-[30%] outline-none transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring/60"
         >
           <Face seed={office.id} size={40} square />

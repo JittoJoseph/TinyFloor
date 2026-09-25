@@ -52,8 +52,8 @@ export interface OfficeSummary {
   seats: number;
   members: number;
   role: OfficeRole;
-  /** A few members, for faces on the dashboard (only from /v1/me). */
-  faces?: Array<{ id: string; name: string; character: string }>;
+  /** Everyone in the office, oldest member first, for the dashboard (only from /v1/me). */
+  team?: Array<{ id: string; displayName: string; role: OfficeRole }>;
   /** Who is on the floor right now (only from /v1/me). */
   here?: number;
   /** Who is on the floor right now, as they look (only from /v1/me). */

@@ -16,7 +16,8 @@ import next from "./.open-next/worker.js";
 
 export { BucketCachePurge, DOQueueHandler, DOShardedTagCache } from "./.open-next/worker.js";
 
-const PAGES = new Set(manifest.pages);
+/** Each built page's address (`/de/about`) and its ETag. */
+const PAGES = new Map(Object.entries(manifest.pages));
 const LOCALES = new Set(manifest.locales);
 const DEFAULT_LOCALE = "en";
 /** Languages the browser may name another way than we do. */
@@ -28,19 +29,21 @@ const worker = {
   async fetch(request, env, ctx) {
     const route = builtPage(request);
     if (route) {
-      const file = await env.ASSETS.fetch(new URL(`/cdn-cgi/_pages${route}.html`, request.url), {
-        method: request.method,
-        headers: pick(request.headers, ["if-none-match", "if-modified-since"]),
+      const etag = PAGES.get(route);
+      const headers = new Headers({
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        etag,
+        vary: VARY,
+        "x-served-by": "static-page",
       });
-      if (file.status === 200 || file.status === 304) {
-        const headers = new Headers(file.headers);
-        headers.set("content-type", "text/html; charset=utf-8");
-        headers.set("cache-control", "public, max-age=0, must-revalidate");
-        headers.set("vary", VARY);
-        headers.set("x-served-by", "static-page");
-        setCountry(request, headers);
-        return new Response(file.body, { status: file.status, headers });
+      setCountry(request, headers);
+      // The browser has this page already: say so, without reading it.
+      if (request.headers.get("if-none-match")?.split(/\s*,\s*/).includes(etag)) {
+        return new Response(null, { status: 304, headers });
       }
+      const file = await env.ASSETS.fetch(new URL(`/cdn-cgi/_pages${route}.html`, request.url), { method: request.method });
+      if (file.ok) return new Response(file.body, { status: 200, headers });
       await file.body?.cancel();
     }
     return next.fetch(request, env, ctx);
@@ -100,15 +103,6 @@ function wantedLocale(request) {
 function cookie(request, name) {
   const match = (request.headers.get("cookie") ?? "").match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : null;
-}
-
-function pick(headers, names) {
-  const picked = new Headers();
-  for (const name of names) {
-    const value = headers.get(name);
-    if (value) picked.set(name, value);
-  }
-  return picked;
 }
 
 /** The reader's country as a cookie, as the middleware sets it: a hint for the language menu's order. */

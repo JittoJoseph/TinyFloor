@@ -7,7 +7,8 @@
 // Only pages Next answers with a 200 are copied; a built redirect or 404 keeps
 // going through Next. The files go under /cdn-cgi, which only the worker can
 // read, so they are never served at a second address.
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,7 +21,8 @@ const SKIP = new Set(["missing"]);
 
 const { routes } = JSON.parse(await readFile(join(root, ".next/prerender-manifest.json"), "utf8"));
 
-const pages = [];
+/** Each page's address and a hash of it, which the worker sends as its ETag. */
+const pages = {};
 for (const [route, entry] of Object.entries(routes)) {
   // Pages under a locale (/de/about), not Next's internals or metadata files.
   const [, locale, ...rest] = route.split("/");
@@ -28,13 +30,15 @@ for (const [route, entry] of Object.entries(routes)) {
   if (SKIP.has(rest[0])) continue;
   const meta = JSON.parse(await readFile(join(app, `${route}.meta`), "utf8").catch(() => "{}"));
   if (meta.status && meta.status !== 200) continue;
+  const html = await readFile(join(app, `${route}.html`));
   const target = join(out, `${route}.html`);
   await mkdir(dirname(target), { recursive: true });
-  await copyFile(join(app, `${route}.html`), target);
-  pages.push(route);
+  await writeFile(target, html);
+  pages[route] = `"${createHash("sha1").update(html).digest("base64url").slice(0, 16)}"`;
 }
 
 const site = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com");
-const locales = [...new Set(pages.map((page) => page.split("/")[1]))];
-await writeFile(join(root, ".open-next/static-pages.json"), `${JSON.stringify({ host: site.hostname, locales, pages: pages.sort() })}\n`);
-console.log(`static pages: ${pages.length} built pages served as files, for ${site.hostname}`);
+const paths = Object.keys(pages).sort();
+const locales = [...new Set(paths.map((path) => path.split("/")[1]))];
+await writeFile(join(root, ".open-next/static-pages.json"), `${JSON.stringify({ host: site.hostname, locales, pages })}\n`);
+console.log(`static pages: ${paths.length} built pages served as files, for ${site.hostname}`);

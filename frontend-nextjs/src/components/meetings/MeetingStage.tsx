@@ -48,8 +48,8 @@ function useBox<T extends HTMLElement>() {
 /**
  * Inside a meeting: the people in it, the speakers' video, a shared screen
  * when there is one, and the controls. Only the four most recent speakers'
- * cameras are received (meetingStage); everyone else is their character,
- * which costs nothing to show.
+ * cameras are received (meetingStage); everyone else is their face, which
+ * costs nothing to show.
  */
 export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office: string }) {
   const t = useTranslations("meetings");
@@ -94,7 +94,6 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
         key={member.id}
         id={member.id}
         name={member.name}
-        character={member.character}
         video={video}
         speaking={member.speaking}
         micOff={!!peer && !peer.mic}
@@ -141,7 +140,6 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
             <MeetingTile
               id={`${sharer.id}-screen`}
               name={t("screenOf", { name: sharerName })}
-              character=""
               video={sharer.screenStream}
               speaking={false}
               micOff={false}
@@ -174,7 +172,6 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
             <MeetingTile
               id={me.id}
               name={t("you")}
-              character={me.character}
               video={cameraEnabled ? localStream : null}
               speaking={me.speaking}
               micOff={!micEnabled}
@@ -239,19 +236,16 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
   );
 }
 
-/** Alone in a meeting: nothing of yours is sent until someone joins, and the way to bring them. */
+/** Alone in a meeting: the way to bring people in. */
 function Alone({ onInvite }: { onInvite: () => void }) {
   const t = useTranslations("meetings");
   return (
-    <div className="flex size-full items-center justify-center">
-      <div className="max-w-sm px-6 text-center">
-        <p className="text-[17px] font-semibold text-foreground">{t("aloneTitle")}</p>
-        <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
-        <Button size="sm" className="mt-4 h-10 gap-2 px-4 text-[13px]" onClick={onInvite}>
-          <UserPlus className="size-4" />
-          {t("invite")}
-        </Button>
-      </div>
+    <div className="flex size-full flex-col items-center justify-center gap-4 text-center">
+      <p className="text-[15px] font-medium text-muted-foreground">{t("aloneTitle")}</p>
+      <Button size="sm" variant="secondary" className="h-10 gap-2 px-4 text-[13px]" onClick={onInvite}>
+        <UserPlus className="size-4" />
+        {t("invite")}
+      </Button>
     </div>
   );
 }

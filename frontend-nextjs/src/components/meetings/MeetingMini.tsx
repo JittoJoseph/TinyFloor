@@ -42,7 +42,6 @@ export function MeetingMini() {
         <MeetingTile
           id={shown.id}
           name={shown.name}
-          character={shown.character}
           video={onCamera && peer?.cameraOn ? peer.camera : null}
           speaking={shown.speaking}
           micOff={!!peer && !peer.mic}

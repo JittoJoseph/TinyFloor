@@ -16,6 +16,10 @@ stay in TinyFloor, and are cheap because of what each person is sent.
   prompt offers the main meeting, and any others going on.
 - **Walking out of the room while in a meeting leaves it**, with "You walked
   out of the meeting · Rejoin".
+- **People are their faces:** a tile without a camera is a plain card with
+  the person's orb in the middle, ringed in orange while they talk. The
+  lobby shows who is in each meeting the same way, and the main meeting's
+  empty places while nobody is.
 - On the floor while in a meeting, a **small card** shows whoever is talking
   and leads back to the stage.
 - The rail's Meetings icon shows **how many are in meetings** (green), and a
@@ -35,7 +39,7 @@ every rule is about what each person is **sent**:
 
 | Rule | Where |
 |---|---|
-| Only the **4 most recent speakers'** cameras are received (2 on a phone); everyone else is their character, which costs nothing | `lib/meetingStage.ts` |
+| Only the **4 most recent speakers'** cameras are received (2 on a phone); everyone else is their face, which costs nothing | `lib/meetingStage.ts` |
 | Each camera is sent in three layers (720p 800k, 360p 300k, 180p 120k); a viewer gets only what its tile needs: one speaker high, two medium, more: the latest medium and the rest low | `lib/media.ts`, `meetingStage.ts` |
 | On the floor or another view: **one small** video. Tab in the background: **none**, voices only | `CallManager.refreshStage` |
 | **Nothing is sent while you are alone** in a meeting, and a muted mic sends nothing (the slot is emptied, not a silent track) | `SfuMeeting.fillSlots` |

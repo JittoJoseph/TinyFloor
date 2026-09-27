@@ -11,7 +11,7 @@ import { useCall } from "@/lib/useCall";
 import { useInMeetingRoom, useMeetings } from "@/lib/meetings";
 import { usePlace } from "@/components/app/place";
 import { FaceStack } from "@/components/ui/Face";
-import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
+import { bezel, onBezel } from "@/components/ui/bezel";
 import { SPRING_PANEL } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { useMeetingName } from "./hooks";
@@ -59,6 +59,20 @@ function useRise() {
   };
 }
 
+/**
+ * The meeting worth offering: the busiest one going, the main one first
+ * among equals; while none is, the main one, to start.
+ */
+function offered(meetings: MeetingInfo[]): MeetingInfo {
+  const going = meetings
+    .filter((one) => one.members.length > 0)
+    .sort((a, b) => b.members.length - a.members.length || Number(b.id === MAIN_MEETING) - Number(a.id === MAIN_MEETING));
+  return (
+    going[0] ??
+    meetings.find((one) => one.id === MAIN_MEETING) ?? { id: MAIN_MEETING, name: null, by: null, startedAt: null, members: [] }
+  );
+}
+
 function OfficePrompt({ onClose }: { onClose: () => void }) {
   const t = useTranslations("meetings");
   const rise = useRise();
@@ -66,68 +80,48 @@ function OfficePrompt({ onClose }: { onClose: () => void }) {
   const place = usePlace();
   const { meetings } = useMeetings();
   const nameOf = useMeetingName();
-  const main: MeetingInfo = meetings.find((one) => one.id === MAIN_MEETING) ?? {
-    id: MAIN_MEETING,
-    name: null,
-    by: null,
-    startedAt: null,
-    members: [],
-  };
-  const others = meetings.filter((one) => one.id !== MAIN_MEETING);
+  const meeting = offered(meetings);
+  const live = meeting.members.length > 0;
 
-  const join = (id: string) => {
+  const join = () => {
     if (place.paths.meetings) router.push(place.paths.meetings);
-    callManager.joinMeeting(id);
-  };
-
-  const row = (one: MeetingInfo, first: boolean) => {
-    const live = one.members.length > 0;
-    return (
-      <div key={one.id} className={cn("flex items-center gap-3 px-2 py-1.5", !first && "border-t border-border")}>
-        {live ? (
-          <FaceStack seeds={one.members.map((member) => member.id)} size={26} max={3} />
-        ) : (
-          <span className="flex size-[26px] items-center justify-center rounded-full bg-muted text-muted-foreground">
-            <Video className="size-3.5" />
-          </span>
-        )}
-        <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[13.5px] font-semibold text-foreground">{nameOf(one, place.name)}</p>
-          <p className="truncate text-[12px] text-muted-foreground">
-            {live ? t("people", { count: one.members.length }) : t("quiet")}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={() => join(one.id)}
-          className={cn(
-            "inline-flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3.5 text-[13px] font-semibold outline-none transition-[background-color,transform] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-ring/60",
-            live ? "bg-ok text-white hover:bg-ok/90" : "bg-foreground text-background hover:bg-foreground/85",
-          )}
-        >
-          {live ? t("join") : t("start")}
-        </button>
-      </div>
-    );
+    callManager.joinMeeting(meeting.id);
   };
 
   return (
-    <motion.div {...rise} role="dialog" aria-label={t("roomTitle")} className={cn(bezel, "pointer-events-auto w-full max-w-[24rem] rounded-[26px] p-1.5")}>
-      <div className={cn(onBezel, "flex items-center gap-2 px-3 pb-2 pt-1.5")}>
-        <p className="flex-1 text-[12.5px] font-medium text-muted-foreground">{t("roomTitle")}</p>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label={t("notNow")}
-          title={t("notNow")}
-          className="flex size-7 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
-        >
-          <X className="size-3.5" />
-        </button>
-      </div>
-      <div className={cn(bezelPanel, "rounded-[20px] p-1.5")}>
-        {[main, ...others].map((one, index) => row(one, index === 0))}
-      </div>
+    <motion.div
+      {...rise}
+      role="dialog"
+      aria-label={nameOf(meeting, place.name)}
+      className={cn(bezel, onBezel, "pointer-events-auto flex max-w-full items-center gap-2.5 rounded-full p-1.5")}
+    >
+      {live ? (
+        <FaceStack seeds={meeting.members.map((member) => member.id)} size={30} max={3} />
+      ) : (
+        <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-white/10 text-muted-foreground">
+          <Video className="size-3.5" />
+        </span>
+      )}
+      <p className="min-w-0 truncate text-[13.5px] font-semibold text-foreground">{nameOf(meeting, place.name)}</p>
+      <button
+        type="button"
+        onClick={join}
+        className={cn(
+          "ms-1 inline-flex h-[30px] shrink-0 cursor-pointer items-center rounded-full px-3.5 text-[13px] font-semibold outline-none transition-[background-color,transform] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-ring/60",
+          live ? "bg-ok text-white hover:bg-ok/90" : "bg-foreground text-background hover:bg-foreground/85",
+        )}
+      >
+        {live ? t("join") : t("start")}
+      </button>
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label={t("notNow")}
+        title={t("notNow")}
+        className="flex size-[30px] shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-white/10 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
+      >
+        <X className="size-3.5" />
+      </button>
     </motion.div>
   );
 }
@@ -138,12 +132,12 @@ function LobbyPrompt({ onClose }: { onClose: () => void }) {
   const rise = useRise();
   const place = usePlace();
   return (
-    <motion.div {...rise} role="dialog" aria-label={t("roomTitle")} className={cn(bezel, onBezel, "pointer-events-auto flex w-full max-w-[24rem] items-center gap-3 rounded-full p-1.5 ps-4")}>
-      <p className="min-w-0 flex-1 text-[13px] leading-snug text-foreground">{t("lobbyRoom")}</p>
+    <motion.div {...rise} role="dialog" aria-label={t("roomTitle")} className={cn(bezel, onBezel, "pointer-events-auto flex max-w-full items-center gap-2.5 rounded-full p-1.5 ps-4")}>
+      <p className="min-w-0 text-[13px] leading-snug text-foreground">{t("lobbyRoom")}</p>
       {place.paths.yourOffice && (
         <Link
           href={place.paths.yourOffice}
-          className="inline-flex h-9 shrink-0 items-center rounded-full bg-foreground px-3.5 text-[13px] font-semibold text-background outline-none transition-colors hover:bg-foreground/85 focus-visible:ring-2 focus-visible:ring-ring/60"
+          className="inline-flex h-[30px] shrink-0 items-center rounded-full bg-foreground px-3.5 text-[13px] font-semibold text-background outline-none transition-colors hover:bg-foreground/85 focus-visible:ring-2 focus-visible:ring-ring/60"
         >
           {t("getOffice")}
         </Link>
@@ -152,9 +146,9 @@ function LobbyPrompt({ onClose }: { onClose: () => void }) {
         type="button"
         onClick={onClose}
         aria-label={t("notNow")}
-        className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-foreground/10 hover:text-foreground"
+        className="flex size-[30px] shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-white/10 hover:text-foreground"
       >
-        <X className="size-4" />
+        <X className="size-3.5" />
       </button>
     </motion.div>
   );

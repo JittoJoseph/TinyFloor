@@ -105,7 +105,6 @@ export function NewMeetingDialog({ open, onClose, onStarted }: { open: boolean; 
       open={open}
       onClose={onClose}
       title={t("newTitle")}
-      description={t("newBody")}
       closeLabel={tc("close")}
       footer={
         <>
@@ -155,7 +154,6 @@ export function InviteDialog({ open, onClose, meeting }: { open: boolean; onClos
       open={open}
       onClose={onClose}
       title={t("inviteTitle")}
-      description={t("inviteBody")}
       closeLabel={tc("close")}
       footer={
         <>

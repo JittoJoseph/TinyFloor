@@ -102,3 +102,37 @@ export function saveDevices(devices: DevicePreferences) {
 export function deviceConstraint(id?: string) {
   return id ? { exact: id } : undefined;
 }
+
+/**
+ * The relay's UDP addresses only. Offered TCP and TLS too, Chrome often
+ * settles on TCP, where one late packet holds up every one behind it: speech
+ * arrives up to a second late and in pieces. UDP comes first; the rest is the
+ * fallback for networks that block it (relayFallback).
+ */
+export function udpRelay(servers: RTCIceServer[]): RTCIceServer[] {
+  return servers.flatMap((server) => {
+    const urls = ([] as string[]).concat(server.urls);
+    if (!urls.some((url) => url.startsWith("turn"))) return [server];
+    const udp = urls.filter((url) => url.startsWith("turn:") && url.includes("transport=udp"));
+    return udp.length ? [{ ...server, urls: udp }] : [];
+  });
+}
+
+/**
+ * Audio sent with redundancy (RED, RFC 2198): every packet also carries the
+ * one before, so a packet lost on the way is heard anyway instead of being
+ * papered over. It doubles the voice to about 60 kbps, a few hundredths of a
+ * gigabyte an hour, which is nothing next to video. Browsers without it just
+ * send Opus.
+ */
+export function preferRedundantAudio(transceiver: RTCRtpTransceiver) {
+  const codecs = typeof RTCRtpReceiver !== "undefined" ? RTCRtpReceiver.getCapabilities?.("audio")?.codecs : undefined;
+  if (!codecs || !transceiver.setCodecPreferences) return;
+  const isRed = (codec: RTCRtpCodec) => codec.mimeType.toLowerCase() === "audio/red";
+  if (!codecs.some(isRed)) return;
+  try {
+    transceiver.setCodecPreferences([...codecs.filter(isRed), ...codecs.filter((codec) => !isRed(codec))]);
+  } catch {
+    // An older browser that lists RED but won't take it first: Opus alone.
+  }
+}

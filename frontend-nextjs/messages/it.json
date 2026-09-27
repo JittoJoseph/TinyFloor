@@ -366,7 +366,7 @@
     "batterySaver": "Risparmio batteria",
     "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
     "enhancedNoise": "Riduzione del rumore più forte",
-    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Parte dalla prossima chiamata e consuma un po' più di batteria.",
+    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Consuma un po' più di batteria.",
     "experimental": "Sperimentale"
   },
   "tutorial": {

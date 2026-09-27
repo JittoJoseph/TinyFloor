@@ -15,7 +15,9 @@ import {
   deviceConstraint,
   savedDevices,
   screenTooSmallForDetail,
+  preferRedundantAudio,
   sendAtQuality,
+  udpRelay,
 } from "./media";
 import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
 import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingStage";
@@ -94,6 +96,8 @@ interface Signal {
   media?: { mic: boolean; camera: boolean; screen?: boolean };
   /** The quality the other side's cards can show, so we send no more than that. */
   want?: Record<VideoKind, VideoQuality>;
+  /** The answerer's relay needs TCP or TLS: the offerer gathers again. */
+  restart?: boolean;
 }
 
 interface PeerEntry extends CallPeer {
@@ -101,6 +105,12 @@ interface PeerEntry extends CallPeer {
   /** What they asked us for, and what we last asked them for. */
   wants: Record<VideoKind, VideoQuality>;
   asked?: string;
+  offerer?: boolean;
+  /** The relay gave us a UDP address, so UDP isn't blocked on our side. */
+  gathered?: boolean;
+  /** Offered the relay's TCP and TLS addresses too, once UDP didn't connect. */
+  widened?: boolean;
+  fallback?: ReturnType<typeof setTimeout>;
 }
 
 /** Which card is enlarged, and so the only one worth sending in high quality. */
@@ -133,6 +143,10 @@ type MeetingMessage = Extract<
 >;
 
 const RELAY_ONLY: RTCIceTransportPolicy = "relay";
+/** No UDP address from the relay by now: this network blocks UDP, so TCP and TLS join. */
+const UDP_GRACE_MS = 3500;
+/** A UDP address but still no connection by now: the other end may be the one blocked. */
+const UDP_SLOW_MS = 10_000;
 /** Credentials are refreshed this long before they expire. */
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
@@ -195,7 +209,8 @@ const MIC_ON = typeof window === "undefined" ? true : micPreference();
 
 /**
  * A call is two people, on one WebRTC connection through the TURN relay (see
- * RELAY_ONLY). It starts with voice, and the camera and a shared screen are
+ * RELAY_ONLY), over UDP unless the network blocks it (widenRelay), with the
+ * voice sent redundantly so a lost packet isn't heard (preferRedundantAudio). It starts with voice, and the camera and a shared screen are
  * there to switch on, never on by themselves. One side offers and the other
  * answers, so two offers never cross. The connection carries a fixed mic,
  * camera and screen slot, and switching any of them swaps what is in the slot
@@ -213,6 +228,9 @@ class CallManager {
   /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
   private rawMic: MediaStreamTrack | null = null;
   private filter: FilteredMic | null = null;
+  /** Voice settings being applied to an open call, one change after another. */
+  private voiceChange: Promise<void> = Promise.resolve();
+  private voiceApplied = "";
   private screen: MediaStream | null = null;
   private incoming: { id: string; name: string } | null = null;
   private outgoing: { id: string; name: string } | null = null;
@@ -256,16 +274,9 @@ class CallManager {
       });
       // A tab in the background shows nothing, so it receives no video.
       document.addEventListener("visibilitychange", () => this.refreshStage());
-      // Noise suppression and echo cancellation switched in settings reach the
-      // microphone that is already open, not only the next call's.
+      // Voice settings reach the call that is already open, not only the next.
       onPrefsChange(() => {
-        const wanted = audioConstraints();
-        const mics = this.rawMic
-          ? [this.rawMic]
-          : (this.local?.getAudioTracks() ?? []);
-        mics.forEach(
-          (track) => void track.applyConstraints(wanted).catch(() => {}),
-        );
+        this.voiceChange = this.voiceChange.then(() => this.applyVoicePrefs());
       });
     }
   }
@@ -851,7 +862,7 @@ class CallManager {
     if (existing) return existing;
 
     const pc = new RTCPeerConnection({
-      iceServers: this.iceServers,
+      iceServers: udpRelay(this.iceServers),
       iceTransportPolicy: RELAY_ONLY,
     });
     const peer: PeerEntry = {
@@ -865,10 +876,26 @@ class CallManager {
       screen: false,
       screenStream: null,
       wants: { ...LOW },
+      offerer,
     };
     this.peers.set(id, peer);
+    // Once both ends have agreed, UDP gets its chance, counted from there so
+    // a microphone prompt on the other end isn't taken for a blocked network.
+    // Without a UDP address of our own it is blocked here; with one, a slow
+    // start is given longer before TCP and TLS join.
+    pc.onsignalingstatechange = () => {
+      if (pc.signalingState !== "stable" || !pc.remoteDescription || peer.fallback) return;
+      peer.fallback = setTimeout(() => {
+        if (peer.connected) return;
+        if (!peer.gathered) return this.widenRelay(peer);
+        peer.fallback = setTimeout(() => {
+          if (!peer.connected) this.widenRelay(peer);
+        }, UDP_SLOW_MS - UDP_GRACE_MS);
+      }, UDP_GRACE_MS);
+    };
 
     pc.onicecandidate = ({ candidate }) => {
+      if (candidate?.type === "relay") peer.gathered = true;
       if (candidate)
         this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
     };
@@ -886,7 +913,7 @@ class CallManager {
       const connected = pc.connectionState === "connected";
       if (connected && !peer.connected) playSound("connect");
       peer.connected = connected;
-      if (pc.connectionState === "failed") pc.restartIce();
+      if (pc.connectionState === "failed") this.widenRelay(peer);
       this.emit();
     };
 
@@ -903,9 +930,27 @@ class CallManager {
       SLOTS.forEach((kind) =>
         pc.addTransceiver(kind, { direction: "sendrecv" }),
       );
+      preferRedundantAudio(pc.getTransceivers()[0]);
     }
 
     return peer;
+  }
+
+  /**
+   * UDP didn't connect, or the connection failed: the relay's TCP and TLS
+   * addresses join, for networks that block UDP, and the connection gathers
+   * again. Only the offerer can restart it, so the answerer asks; either end
+   * can be on TCP while the other stays on UDP.
+   */
+  private widenRelay(peer: PeerEntry) {
+    const pc = peer.pc;
+    if (!pc || pc.signalingState === "closed") return;
+    if (!peer.widened && this.iceServers.length) {
+      peer.widened = true;
+      pc.setConfiguration({ iceServers: this.iceServers, iceTransportPolicy: RELAY_ONLY });
+    }
+    if (peer.offerer) pc.restartIce();
+    else this.send("signal", peer.id, { signal: { restart: true } });
   }
 
   private async onSignal(from: string, signal: Signal) {
@@ -914,7 +959,9 @@ class CallManager {
     if (!peer || !pc || !signal) return;
 
     try {
-      if (signal.want) {
+      if (signal.restart) {
+        if (peer.offerer) pc.restartIce();
+      } else if (signal.want) {
         peer.wants = {
           camera: signal.want.camera ?? "low",
           screen: signal.want.screen ?? "low",
@@ -930,6 +977,7 @@ class CallManager {
       } else if (signal.sdp) {
         await pc.setRemoteDescription(signal.sdp);
         if (signal.sdp.type === "offer") {
+          preferRedundantAudio(pc.getTransceivers()[0]);
           this.syncTracks(peer);
           await pc.setLocalDescription();
           this.send("signal", from, { signal: { sdp: pc.localDescription! } });
@@ -946,6 +994,7 @@ class CallManager {
     const peer = this.peers.get(id);
     if (!peer) return;
 
+    clearTimeout(peer.fallback);
     peer.pc?.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
@@ -972,8 +1021,9 @@ class CallManager {
         },
       });
       await this.filterVoice();
+      this.voiceApplied = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
       this.local
-        .getAudioTracks()
+        ?.getAudioTracks()
         .forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
@@ -1025,6 +1075,48 @@ class CallManager {
     ]);
   }
 
+  /**
+   * The voice settings, on a call already open. Chrome won't change its own
+   * processing on a microphone that is open, so the microphone opens again
+   * with the new settings (and stronger noise removal, if it is on), the call
+   * swaps to it, and the old one stops. Other settings don't touch the voice.
+   */
+  private async applyVoicePrefs() {
+    const key = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+    if (key === this.voiceApplied) return;
+    this.voiceApplied = key;
+    const local = this.local;
+    if (!local?.getAudioTracks().length) return;
+
+    // The old microphone stops first: while it is open, Chrome gives a new
+    // one the same processing, whatever it asks for. A moment of silence.
+    this.filter?.stop();
+    this.rawMic?.stop();
+    local.getAudioTracks().forEach((track) => track.stop());
+    this.filter = null;
+    this.rawMic = null;
+    let fresh: MediaStream;
+    try {
+      fresh = await navigator.mediaDevices.getUserMedia({
+        audio: { ...audioConstraints(), deviceId: deviceConstraint(savedDevices().audio) },
+      });
+    } catch {
+      fresh = new MediaStream();
+    }
+    // The call ended while the microphone opened: it isn't needed.
+    if (this.local !== local) {
+      fresh.getTracks().forEach((track) => track.stop());
+      return;
+    }
+    this.local = new MediaStream([...fresh.getAudioTracks(), ...local.getVideoTracks()]);
+    if (!fresh.getAudioTracks().length) this.error = "media";
+    await this.filterVoice();
+    if (!this.local) return;
+    this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
+    this.listenForVoice();
+    this.shareTracks();
+  }
+
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
@@ -1050,7 +1142,7 @@ class CallManager {
       if (first) {
         for (const peer of this.peers.values()) {
           peer.pc?.setConfiguration({
-            iceServers,
+            iceServers: peer.widened ? iceServers : udpRelay(iceServers),
             iceTransportPolicy: RELAY_ONLY,
           });
           peer.pc?.restartIce();

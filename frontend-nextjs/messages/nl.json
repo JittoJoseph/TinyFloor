@@ -366,7 +366,7 @@
     "batterySaver": "Batterijbesparing",
     "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt.",
     "enhancedNoise": "Sterkere ruisonderdrukking",
-    "enhancedNoiseNote": "Een klein AI-model op je apparaat haalt toetsenborden, honden en geklets weg. Werkt vanaf je volgende gesprek en kost iets meer batterij.",
+    "enhancedNoiseNote": "Een klein AI-model op je apparaat haalt toetsenborden, honden en geklets weg. Kost iets meer batterij.",
     "experimental": "Experimenteel"
   },
   "tutorial": {

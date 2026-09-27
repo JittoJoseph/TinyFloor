@@ -366,7 +366,7 @@
     "batterySaver": "Batterisparer",
     "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind.",
     "enhancedNoise": "Stærkere støjfjernelse",
-    "enhancedNoiseNote": "En lille AI-model på din enhed fjerner tastatur, hunde og snak i baggrunden. Gælder fra dit næste opkald og bruger lidt mere batteri.",
+    "enhancedNoiseNote": "En lille AI-model på din enhed fjerner tastatur, hunde og snak i baggrunden. Bruger lidt mere batteri.",
     "experimental": "Eksperimentel"
   },
   "tutorial": {

@@ -366,7 +366,7 @@
     "batterySaver": "Oszczędzanie baterii",
     "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia.",
     "enhancedNoise": "Silniejsze usuwanie szumów",
-    "enhancedNoiseNote": "Mały model AI na twoim urządzeniu usuwa klawiaturę, psy i rozmowy w tle. Działa od następnej rozmowy i zużywa trochę więcej baterii.",
+    "enhancedNoiseNote": "Mały model AI na twoim urządzeniu usuwa klawiaturę, psy i rozmowy w tle. Zużywa trochę więcej baterii.",
     "experimental": "Eksperymentalne"
   },
   "tutorial": {

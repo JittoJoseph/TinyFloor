@@ -14,6 +14,9 @@ const WORKLET = "/noise/rnnoise-worklet.js";
 const WASM = "/noise/rnnoise.wasm";
 const WASM_SIMD = "/noise/rnnoise_simd.wasm";
 
+/** How much the cleaned voice is lifted (+6 dB). */
+const LIFT = 2;
+
 /** RNNoise is trained for 48 kHz; the graph runs at that rate whatever the mic. */
 const SAMPLE_RATE = 48_000;
 
@@ -44,8 +47,24 @@ export async function filterMic(mic: MediaStreamTrack): Promise<FilteredMic | nu
 
     const source = context.createMediaStreamSource(new MediaStream([mic]));
     const node = new RnnoiseWorkletNode(context, { maxChannels: 1, wasmBinary });
+    // The browser's gain works on the voice before the noise comes out, so the
+    // voice leaves quieter than with the browser's own suppression (about
+    // 7 dB). A plain lift puts it back, voice and what little noise is left
+    // alike; a limiter just under full scale only keeps a shout from clipping.
+    // (A compressor would lift the quiet gaps between words, noise and all.)
+    const level = context.createDynamicsCompressor();
+    level.threshold.value = -6;
+    level.knee.value = 0;
+    level.ratio.value = 20;
+    level.attack.value = 0.002;
+    level.release.value = 0.1;
+    const lift = context.createGain();
+    lift.gain.value = LIFT;
+    // A voice is one channel; left to itself the destination makes it stereo.
     const out = context.createMediaStreamDestination();
-    source.connect(node).connect(out);
+    out.channelCount = 1;
+    out.channelCountMode = "explicit";
+    source.connect(node).connect(lift).connect(level).connect(out);
 
     const track = out.stream.getAudioTracks()[0];
     const ctx = context;
@@ -55,6 +74,8 @@ export async function filterMic(mic: MediaStreamTrack): Promise<FilteredMic | nu
         track.stop();
         source.disconnect();
         node.disconnect();
+        level.disconnect();
+        lift.disconnect();
         node.destroy();
         void ctx.close().catch(() => {});
       },

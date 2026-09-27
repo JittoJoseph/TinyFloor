@@ -366,7 +366,7 @@
     "batterySaver": "Virransäästö",
     "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla.",
     "enhancedNoise": "Tehokkaampi kohinanpoisto",
-    "enhancedNoiseNote": "Pieni tekoälymalli laitteellasi poistaa näppäimistön, koirat ja taustapuheen. Toimii seuraavasta puhelusta alkaen ja kuluttaa hieman enemmän akkua.",
+    "enhancedNoiseNote": "Pieni tekoälymalli laitteellasi poistaa näppäimistön, koirat ja taustapuheen. Kuluttaa hieman enemmän akkua.",
     "experimental": "Kokeellinen"
   },
   "tutorial": {

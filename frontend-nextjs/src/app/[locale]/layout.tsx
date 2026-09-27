@@ -10,7 +10,6 @@ import { siteGraph } from "@/lib/structured-data";
 import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
-import { fontVariables } from "../fonts";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -100,7 +99,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     // The app routes set their theme on <html> before React loads (lib/theme-script.ts).
     <html lang={locale} dir={localeDirection(locale)} className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${fontVariables} antialiased`}>
+      <body className="antialiased">
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <JsonLd schema={siteGraph()} />
         <NextIntlClientProvider locale={locale} messages={messages}>

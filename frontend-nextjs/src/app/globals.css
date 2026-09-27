@@ -1,5 +1,18 @@
 @import "tailwindcss";
 @import "./ui.css";
+@import "./fonts.css";
+
+/*
+ * The faces by role, set on <body> the way next/font used to set them, so the
+ * theme's variables below and ui.css read them unchanged. The files are the
+ * site's own (fonts.css, from scripts/fetch-fonts.mjs): the build fetches
+ * nothing.
+ */
+body {
+  --font-app: "Geist";
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "VT323", ui-monospace, monospace;
+}
 
 @theme {
   --font-pixel: var(--font-pixel);

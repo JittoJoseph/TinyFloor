@@ -30,7 +30,7 @@ const PAGES = [
   "lobby(/(chat(/[^/]+)?|people|settings|your-office))?",
   "join",
   "invite/[^/]+",
-  "office/[^/]+(/(chat(/[^/]+)?|people|settings))?",
+  "office/[^/]+(/(chat(/[^/]+)?|people|meetings|settings))?",
 ];
 const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.filter(Boolean).join("|")}))?/?$`);
 

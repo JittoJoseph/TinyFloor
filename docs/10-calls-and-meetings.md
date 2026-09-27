@@ -1,7 +1,9 @@
 # 10. Calls and meetings: talk on our side, meet on Google's
 
-Researched on 25 September 2026. A plan, nothing built. If it lands, most of the
-fair-use section in `08-pricing-decision.md` goes away.
+> Decided on 27 September 2026: meetings stay in TinyFloor, made cheap by
+> receiving only the speakers' video (see [12-meetings.md](12-meetings.md)).
+> The Google Meet integration was built, tried on preview and taken out. What
+> follows is the research that led there.
 
 ## What changed our mind
 

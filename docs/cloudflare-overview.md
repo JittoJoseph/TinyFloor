@@ -54,6 +54,15 @@ You ──── WebRTC ────► Cloudflare TURN ◄──── WebRTC �
   worked (firewalls, NATs, mobile networks), and the relay carried nearly every
   call anyway. Relaying from the start means one path, faster setup, and calls
   that behave the same on any office or home network.
+- **UDP first.** Offered every relay address, Chrome often settles on TCP,
+  where one late packet holds up the rest: measured on 28 Sep, voice arrived
+  up to a second late with a fifth of it patched over. Calls now offer only
+  the relay's UDP addresses; TCP and TLS join after 3.5 s without a UDP
+  address of our own, or 10 s without a connection (`widenRelay`).
+- **Voice sent with redundancy (RED).** Each packet carries the one before,
+  so a lost packet is heard anyway: in the same tests the audible gaps fell
+  from 8–9 in half a minute to 0–1. It costs ~30 kbps more, about 0.03 GB per
+  call-hour.
 
 **2. Sit at a meeting table (group): Cloudflare Realtime SFU.**
 

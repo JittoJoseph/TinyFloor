@@ -15,9 +15,14 @@ import {
   deviceConstraint,
   savedDevices,
   screenTooSmallForDetail,
+  preferRedundantAudio,
   sendAtQuality,
+  udpRelay,
 } from "./media";
-import { SfuMeeting } from "./SfuMeeting";
+import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
+import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingStage";
+import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
+import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { GUIDE_ID } from "./tutorial";
 import { sceneText } from "./sceneText";
@@ -47,10 +52,34 @@ export interface CallPeer {
   screenStream: MediaStream | null;
 }
 
+/** Someone asking you into their meeting. */
+export interface MeetingInvite {
+  from: string;
+  fromName: string;
+  meeting: string;
+  name: string | null;
+}
+
+/** Something to say about your meeting for a moment: you walked out of the room, or it had ended. */
+export interface MeetingNotice {
+  kind: "walked_out" | "ended";
+  meeting: string;
+}
+
 export interface CallSnapshot {
   incoming: { id: string; name: string } | null;
   outgoing: { id: string; name: string } | null;
+  /** Who you are on a one-to-one call with (a call is two people; more is a meeting). */
   peers: CallPeer[];
+  /** Everyone else in your meeting, with their voice and, when shown, their video. */
+  meetingPeers: MeetingPeer[];
+  /** Whose video the meeting shows right now, and whose screen. */
+  stage: Stage;
+  /** A meeting you were just asked into. */
+  invite: MeetingInvite | null;
+  notice: MeetingNotice | null;
+  /** Whether you are the only one in your meeting, so nothing you do is being sent. */
+  alone: boolean;
   localStream: MediaStream | null;
   screenStream: MediaStream | null;
   micEnabled: boolean;
@@ -67,6 +96,8 @@ interface Signal {
   media?: { mic: boolean; camera: boolean; screen?: boolean };
   /** The quality the other side's cards can show, so we send no more than that. */
   want?: Record<VideoKind, VideoQuality>;
+  /** The answerer's relay needs TCP or TLS: the offerer gathers again. */
+  restart?: boolean;
 }
 
 interface PeerEntry extends CallPeer {
@@ -74,6 +105,12 @@ interface PeerEntry extends CallPeer {
   /** What they asked us for, and what we last asked them for. */
   wants: Record<VideoKind, VideoQuality>;
   asked?: string;
+  offerer?: boolean;
+  /** The relay gave us a UDP address, so UDP isn't blocked on our side. */
+  gathered?: boolean;
+  /** Offered the relay's TCP and TLS addresses too, once UDP didn't connect. */
+  widened?: boolean;
+  fallback?: ReturnType<typeof setTimeout>;
 }
 
 /** Which card is enlarged, and so the only one worth sending in high quality. */
@@ -97,14 +134,24 @@ type MeetingMessage = Extract<
       | "meeting_joined"
       | "meeting_member_joined"
       | "meeting_member_left"
+      | "meetings"
+      | "speaking"
+      | "meeting_invited"
+      | "meeting_error"
       | "sfu";
   }
 >;
 
 const RELAY_ONLY: RTCIceTransportPolicy = "relay";
+/** No UDP address from the relay by now: this network blocks UDP, so TCP and TLS join. */
+const UDP_GRACE_MS = 3500;
+/** A UDP address but still no connection by now: the other end may be the one blocked. */
+const UDP_SLOW_MS = 10_000;
 /** Credentials are refreshed this long before they expire. */
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
+/** How long a meeting invitation waits for an answer. */
+const INVITE_TIMEOUT = 30000;
 const GUIDE_ANSWER_DELAY = 1600;
 /** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
 function audioConstraints() {
@@ -143,6 +190,11 @@ const EMPTY: CallSnapshot = {
   incoming: null,
   outgoing: null,
   peers: [],
+  meetingPeers: [],
+  stage: EMPTY_STAGE,
+  invite: null,
+  notice: null,
+  alone: true,
   localStream: null,
   screenStream: null,
   micEnabled: true,
@@ -156,14 +208,17 @@ const EMPTY: CallSnapshot = {
 const MIC_ON = typeof window === "undefined" ? true : micPreference();
 
 /**
- * Proximity calls are one WebRTC connection per pair, always through the TURN
- * relay (see RELAY_ONLY). A call is a conversation: it starts with voice, and
- * the camera and a shared screen are there to switch on, never on by
- * themselves, so only whoever switches one on sends video. Every connection has one side that offers,
- * the caller or whoever was added last, and the other only answers, so two
- * offers never cross. Each carries a fixed mic, camera and screen slot, and
- * turning any of them on or off swaps what is in the slot instead of
- * renegotiating. Meeting tables go through the SFU instead (SfuMeeting).
+ * A call is two people, on one WebRTC connection through the TURN relay (see
+ * RELAY_ONLY), over UDP unless the network blocks it (widenRelay), with the
+ * voice sent redundantly so a lost packet isn't heard (preferRedundantAudio). It starts with voice, and the camera and a shared screen are
+ * there to switch on, never on by themselves. One side offers and the other
+ * answers, so two offers never cross. The connection carries a fixed mic,
+ * camera and screen slot, and switching any of them swaps what is in the slot
+ * instead of renegotiating.
+ *
+ * Three or more people is a meeting: the room's, through the SFU (SfuMeeting),
+ * with only the speakers' video received (meetingStage) and your talking
+ * reported so everyone can see who speaks (VoiceActivity).
  */
 class CallManager {
   private ws: RoomSocket | null = null;
@@ -173,12 +228,23 @@ class CallManager {
   /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
   private rawMic: MediaStreamTrack | null = null;
   private filter: FilteredMic | null = null;
+  /** Voice settings being applied to an open call, one change after another. */
+  private voiceChange: Promise<void> = Promise.resolve();
+  private voiceApplied = "";
   private screen: MediaStream | null = null;
   private incoming: { id: string; name: string } | null = null;
   private outgoing: { id: string; name: string } | null = null;
   private micEnabled = MIC_ON;
   private cameraEnabled = false;
   private meeting: string | null = null;
+  /** Whose video the meeting shows, and where it is being looked at. */
+  private stage: Stage = EMPTY_STAGE;
+  private stageMode: StageMode = "mini";
+  private invitation: MeetingInvite | null = null;
+  private inviteTimer?: ReturnType<typeof setTimeout>;
+  private notice: MeetingNotice | null = null;
+  private noticeTimer?: ReturnType<typeof setTimeout>;
+  private readonly voice = new VoiceActivity((on) => this.ws?.send({ t: "speaking", on }));
   private error: CallError | null = null;
   private outcome: CallOutcome | null = null;
   private outcomeTimer?: ReturnType<typeof setTimeout>;
@@ -196,21 +262,21 @@ class CallManager {
 
   constructor() {
     onSpeakerChange(() => this.emit());
+    // Who is talking changes whose video is worth receiving.
+    subscribeMeetings(() => {
+      if (this.sfu) this.refreshStage();
+    });
     // A phone turned sideways, or a window resized past the phone width.
     if (typeof window !== "undefined") {
-      window
-        .matchMedia("(max-width: 767px)")
-        .addEventListener("change", () => this.shareQuality());
-      // Noise suppression and echo cancellation switched in settings reach the
-      // microphone that is already open, not only the next call's.
+      window.matchMedia("(max-width: 767px)").addEventListener("change", () => {
+        this.shareQuality();
+        this.refreshStage();
+      });
+      // A tab in the background shows nothing, so it receives no video.
+      document.addEventListener("visibilitychange", () => this.refreshStage());
+      // Voice settings reach the call that is already open, not only the next.
       onPrefsChange(() => {
-        const wanted = audioConstraints();
-        const mics = this.rawMic
-          ? [this.rawMic]
-          : (this.local?.getAudioTracks() ?? []);
-        mics.forEach(
-          (track) => void track.applyConstraints(wanted).catch(() => {}),
-        );
+        this.voiceChange = this.voiceChange.then(() => this.applyVoicePrefs());
       });
     }
   }
@@ -221,7 +287,7 @@ class CallManager {
   }
 
   detach() {
-    this.leaveMeeting();
+    this.leaveMeeting(false);
     this.hangUp();
     stopSound("ring");
     clearTimeout(this.iceTimer);
@@ -243,9 +309,9 @@ class CallManager {
     return this.peers.has(id);
   }
 
-  /** Calls someone, with voice. Calling someone while already on a call brings them into it. */
+  /** Calls someone, with voice. A call is two people: a third makes it a meeting (startMeeting). */
   invite(id: string, name: string) {
-    if (this.busy() || this.peers.has(id)) return;
+    if (this.busy() || this.peers.size) return;
     if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
 
     this.error = null;
@@ -256,7 +322,7 @@ class CallManager {
     if (id === GUIDE_ID) {
       this.ring(() => this.answerAsGuide(), GUIDE_ANSWER_DELAY);
     } else {
-      this.send("invite", id, { group: this.peers.size > 0 });
+      this.send("invite", id);
       this.ring(() => {
         this.tell({ id, name, kind: "unanswered" });
         this.cancel();
@@ -298,7 +364,6 @@ class CallManager {
 
     this.createPeer(call.id, call.name, false);
     this.send("accept", call.id);
-    this.introduce(call.id);
     this.emit();
 
     await this.startCall(call.id);
@@ -375,10 +440,7 @@ class CallManager {
 
     switch (kind) {
       case "invite":
-        this.onInvite(from, fromName, !!payload.group);
-        break;
-      case "add":
-        this.onAdd(from, payload);
+        this.onInvite(from, fromName);
         break;
       case "accept":
         void this.onAccept(from);
@@ -399,11 +461,11 @@ class CallManager {
     }
   }
 
-  /** Sitting at a meeting table: the call runs through the SFU. */
+  /** What the room says about meetings: yours through the SFU, everyone's for the lists. */
   handleMeeting(message: MeetingMessage) {
     switch (message.t) {
       case "meeting_joined":
-        void this.joinMeeting(message.meeting, message.members);
+        void this.enterMeeting(message.meeting, message.members);
         break;
       case "meeting_member_joined":
         this.sfu?.addMember(message.id, message.name);
@@ -411,19 +473,148 @@ class CallManager {
       case "meeting_member_left":
         this.sfu?.removeMember(message.id);
         break;
+      case "meetings":
+        setMeetings(message.meetings);
+        // An invitation to a meeting that has since ended goes with it.
+        if (this.invitation && !message.meetings.some((meeting) => meeting.id === this.invitation?.meeting)) this.dismissInvite();
+        break;
+      case "speaking":
+        setSpeaking(message.id, message.on);
+        break;
+      case "meeting_invited":
+        this.onMeetingInvite(message);
+        break;
+      case "meeting_error":
+        if (message.code === "not_found") this.tellMeeting({ kind: "ended", meeting: "" });
+        break;
       case "sfu":
         this.sfu?.handle(message);
         break;
     }
   }
 
-  leaveMeeting() {
+  /** The id of the meeting you are in, if any. */
+  currentMeeting(): string | null {
+    return this.meeting;
+  }
+
+  /**
+   * Joins a meeting: the room answers with `meeting_joined`, which opens the
+   * media and walks you into the meeting room. A one-to-one call ends first.
+   */
+  joinMeeting(id: string) {
+    if (!this.ws || this.meeting === id) return;
+    this.dismissInvite();
+    if (this.peers.size) this.hangUp();
+    this.ws.send({ t: "meeting_join", meeting: id });
+  }
+
+  /** Starts a meeting of your own, asking these people in: a call becoming a meeting asks its other half. */
+  startMeeting(name: string, invite: string[] = []) {
+    if (!this.ws) return;
+    const everyone = new Set([...invite, ...[...this.peers.keys()].filter((id) => id !== GUIDE_ID)]);
+    if (this.peers.size) this.hangUp();
+    this.ws.send({ t: "meeting_start", name, invite: [...everyone] });
+  }
+
+  inviteToMeeting(ids: string[]) {
+    if (!this.meeting || !ids.length) return;
+    this.ws?.send({ t: "meeting_invite", to: ids });
+  }
+
+  acceptInvite() {
+    const invitation = this.invitation;
+    if (invitation) this.joinMeeting(invitation.meeting);
+  }
+
+  dismissInvite() {
+    clearTimeout(this.inviteTimer);
+    if (!this.invitation) return;
+    this.invitation = null;
+    stopSound("ring");
+    this.emit();
+  }
+
+  dismissNotice() {
+    clearTimeout(this.noticeTimer);
+    this.notice = null;
+    this.emit();
+  }
+
+  /** Walked out of the meeting room while in a meeting: that is leaving it. */
+  walkedOut() {
+    const meeting = this.meeting;
+    if (!meeting) return;
+    this.leaveMeeting();
+    this.tellMeeting({ kind: "walked_out", meeting });
+  }
+
+  /** Out of your meeting: the room is told unless it already let you go. */
+  leaveMeeting(tell = true) {
     if (!this.meeting) return;
+    if (tell) this.ws?.send({ t: "meeting_leave" });
     this.meeting = null;
+    this.voice.stop();
     this.sfu?.close();
     this.sfu = null;
+    this.stage = EMPTY_STAGE;
     this.releaseMedia();
     playSound("end");
+    this.emit();
+  }
+
+  /**
+   * Back after a reconnect: the room has forgotten your meeting, so rejoin it
+   * if it is still going (the main one always is).
+   */
+  rejoinMeeting() {
+    const meeting = this.meeting;
+    if (!meeting) return;
+    this.leaveMeeting(false);
+    if (meetingsState().meetings.some((one) => one.id === meeting)) this.ws?.send({ t: "meeting_join", meeting });
+    else this.tellMeeting({ kind: "ended", meeting });
+  }
+
+  /** Where the meeting is being looked at: the Meetings page, the floor, or a phone. */
+  setStageMode(mode: Exclude<StageMode, "hidden">) {
+    if (mode === this.stageMode) return;
+    this.stageMode = mode;
+    this.refreshStage();
+  }
+
+  /** Whose video to receive now, and how sharp; the SFU is asked for exactly that. */
+  private refreshStage() {
+    const sfu = this.sfu;
+    if (!sfu) return;
+    const hidden = typeof document !== "undefined" && document.visibilityState === "hidden";
+    const mode: StageMode = hidden ? "hidden" : this.stageMode === "stage" && screenTooSmallForDetail() ? "phone" : this.stageMode;
+    const stage = chooseStage({ peers: sfu.peerList, spokeAt: meetingsState().spokeAt, mode, previous: this.stage });
+    const same =
+      stage.screen === this.stage.screen &&
+      stage.videos.length === this.stage.videos.length &&
+      stage.videos.every((video, index) => {
+        const before = this.stage.videos[index];
+        return before && before.userId === video.userId && before.kind === video.kind && before.quality === video.quality;
+      });
+    this.stage = stage;
+    if (same) return;
+    sfu.want(stage.videos);
+    this.emit();
+  }
+
+  private onMeetingInvite(invite: MeetingInvite) {
+    if (this.meeting === invite.meeting || this.incoming || this.outgoing) return;
+    this.invitation = invite;
+    clearTimeout(this.inviteTimer);
+    this.inviteTimer = setTimeout(() => this.dismissInvite(), INVITE_TIMEOUT);
+    loopSound("ring");
+    this.emit();
+  }
+
+  private tellMeeting(notice: MeetingNotice) {
+    clearTimeout(this.noticeTimer);
+    this.notice = notice;
+    this.noticeTimer = setTimeout(() => this.dismissNotice(), 8000);
     this.emit();
   }
 
@@ -438,7 +629,7 @@ class CallManager {
     this.shareQuality();
   }
 
-  /** Asks the SFU, and each peer we talk to directly, for what our cards can show. */
+  /** Asks the person on the call for what our cards can show. */
   private shareQuality() {
     const wanted = (id: string, kind: VideoKind): VideoQuality =>
       this.focus?.id === id &&
@@ -447,7 +638,6 @@ class CallManager {
         ? "high"
         : "low";
 
-    this.sfu?.setQuality(wanted);
     this.peers.forEach((peer) => {
       const want = {
         camera: wanted(peer.id, "camera"),
@@ -465,7 +655,14 @@ class CallManager {
     this.local?.getAudioTracks().forEach((track) => (track.enabled = enabled));
     saveMicPreference(enabled);
     this.shareMedia();
+    this.listenForVoice();
     this.emit();
+  }
+
+  /** Your talking is reported only in a meeting, with someone to hear it and your mic on. */
+  private listenForVoice() {
+    const track = this.meeting && this.micEnabled && this.sfu && !this.sfu.alone ? (this.local?.getAudioTracks()[0] ?? null) : null;
+    this.voice.listen(track);
   }
 
   /** Your camera, on the call you are in: there is nothing to turn on outside one. */
@@ -532,25 +729,39 @@ class CallManager {
     this.emit();
   }
 
-  private async joinMeeting(name: string, members: MeetingMember[]) {
+  /** The room let you into a meeting: media opens, and your character walks into the meeting room. */
+  private async enterMeeting(id: string, members: MeetingMember[]) {
+    const moving = this.meeting !== null;
     this.hangUp();
     this.sfu?.close();
-    this.meeting = name;
+    this.voice.stop();
+    this.meeting = id;
+    this.stage = EMPTY_STAGE;
     this.error = null;
+    this.dismissInvite();
+    this.dismissNotice();
     // Ready straight away, so it hears who is already sharing while media opens.
     const sfu = new SfuMeeting(
       (message) => this.ws?.send({ t: "sfu", ...message }),
-      () => this.emit(),
+      () => {
+        if (this.sfu !== sfu) return;
+        this.listenForVoice();
+        this.refreshStage();
+        this.emit();
+      },
       this.iceServers,
     );
     this.sfu = sfu;
     members.forEach((member) => sfu.addMember(member.id, member.name));
-    playSound("connect");
+    if (!moving) playSound("connect");
+    window.dispatchEvent(new Event(WALK_TO_MEETING_EVENT));
     this.emit();
 
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
     sfu.publishLocal(opened ? this.local : null, this.flags());
+    this.listenForVoice();
+    this.refreshStage();
     this.emit();
   }
 
@@ -612,34 +823,8 @@ class CallManager {
     );
   }
 
-  /**
-   * Whoever already has others on the call introduces the newcomer to each of
-   * them, and the newcomer offers. Two calls never merge, so only one side ever
-   * has anyone to introduce.
-   */
-  private introduce(id: string) {
-    this.peers.forEach((peer) => {
-      if (peer.id === id || !peer.pc) return;
-      this.send("add", peer.id, { id, offer: false });
-      this.send("add", id, { id: peer.id, offer: true });
-    });
-  }
-
-  /** Only someone we are already talking to can add people to our call. */
-  private onAdd(from: string, data: Record<string, unknown>) {
-    if (this.meeting || !this.peers.has(from) || typeof data.id !== "string")
-      return;
-    const peer = this.createPeer(
-      data.id,
-      String(data.name || "Someone"),
-      !!data.offer,
-    );
-    if (this.local) this.syncTracks(peer);
-    this.emit();
-  }
-
-  private onInvite(id: string, name: string, group: boolean) {
-    if (this.busy() || (group && this.peers.size)) {
+  private onInvite(id: string, name: string) {
+    if (this.busy() || this.peers.size) {
       this.send("decline", id, { reason: "busy" });
       return;
     }
@@ -660,7 +845,6 @@ class CallManager {
     this.outgoing = null;
 
     this.createPeer(id, call.name, true);
-    this.introduce(id);
     this.emit();
 
     await this.startCall(id);
@@ -678,7 +862,7 @@ class CallManager {
     if (existing) return existing;
 
     const pc = new RTCPeerConnection({
-      iceServers: this.iceServers,
+      iceServers: udpRelay(this.iceServers),
       iceTransportPolicy: RELAY_ONLY,
     });
     const peer: PeerEntry = {
@@ -692,10 +876,26 @@ class CallManager {
       screen: false,
       screenStream: null,
       wants: { ...LOW },
+      offerer,
     };
     this.peers.set(id, peer);
+    // Once both ends have agreed, UDP gets its chance, counted from there so
+    // a microphone prompt on the other end isn't taken for a blocked network.
+    // Without a UDP address of our own it is blocked here; with one, a slow
+    // start is given longer before TCP and TLS join.
+    pc.onsignalingstatechange = () => {
+      if (pc.signalingState !== "stable" || !pc.remoteDescription || peer.fallback) return;
+      peer.fallback = setTimeout(() => {
+        if (peer.connected) return;
+        if (!peer.gathered) return this.widenRelay(peer);
+        peer.fallback = setTimeout(() => {
+          if (!peer.connected) this.widenRelay(peer);
+        }, UDP_SLOW_MS - UDP_GRACE_MS);
+      }, UDP_GRACE_MS);
+    };
 
     pc.onicecandidate = ({ candidate }) => {
+      if (candidate?.type === "relay") peer.gathered = true;
       if (candidate)
         this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
     };
@@ -713,7 +913,7 @@ class CallManager {
       const connected = pc.connectionState === "connected";
       if (connected && !peer.connected) playSound("connect");
       peer.connected = connected;
-      if (pc.connectionState === "failed") pc.restartIce();
+      if (pc.connectionState === "failed") this.widenRelay(peer);
       this.emit();
     };
 
@@ -730,9 +930,27 @@ class CallManager {
       SLOTS.forEach((kind) =>
         pc.addTransceiver(kind, { direction: "sendrecv" }),
       );
+      preferRedundantAudio(pc.getTransceivers()[0]);
     }
 
     return peer;
+  }
+
+  /**
+   * UDP didn't connect, or the connection failed: the relay's TCP and TLS
+   * addresses join, for networks that block UDP, and the connection gathers
+   * again. Only the offerer can restart it, so the answerer asks; either end
+   * can be on TCP while the other stays on UDP.
+   */
+  private widenRelay(peer: PeerEntry) {
+    const pc = peer.pc;
+    if (!pc || pc.signalingState === "closed") return;
+    if (!peer.widened && this.iceServers.length) {
+      peer.widened = true;
+      pc.setConfiguration({ iceServers: this.iceServers, iceTransportPolicy: RELAY_ONLY });
+    }
+    if (peer.offerer) pc.restartIce();
+    else this.send("signal", peer.id, { signal: { restart: true } });
   }
 
   private async onSignal(from: string, signal: Signal) {
@@ -741,7 +959,9 @@ class CallManager {
     if (!peer || !pc || !signal) return;
 
     try {
-      if (signal.want) {
+      if (signal.restart) {
+        if (peer.offerer) pc.restartIce();
+      } else if (signal.want) {
         peer.wants = {
           camera: signal.want.camera ?? "low",
           screen: signal.want.screen ?? "low",
@@ -757,6 +977,7 @@ class CallManager {
       } else if (signal.sdp) {
         await pc.setRemoteDescription(signal.sdp);
         if (signal.sdp.type === "offer") {
+          preferRedundantAudio(pc.getTransceivers()[0]);
           this.syncTracks(peer);
           await pc.setLocalDescription();
           this.send("signal", from, { signal: { sdp: pc.localDescription! } });
@@ -773,6 +994,7 @@ class CallManager {
     const peer = this.peers.get(id);
     if (!peer) return;
 
+    clearTimeout(peer.fallback);
     peer.pc?.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
@@ -799,8 +1021,9 @@ class CallManager {
         },
       });
       await this.filterVoice();
+      this.voiceApplied = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
       this.local
-        .getAudioTracks()
+        ?.getAudioTracks()
         .forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
@@ -852,6 +1075,48 @@ class CallManager {
     ]);
   }
 
+  /**
+   * The voice settings, on a call already open. Chrome won't change its own
+   * processing on a microphone that is open, so the microphone opens again
+   * with the new settings (and stronger noise removal, if it is on), the call
+   * swaps to it, and the old one stops. Other settings don't touch the voice.
+   */
+  private async applyVoicePrefs() {
+    const key = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+    if (key === this.voiceApplied) return;
+    this.voiceApplied = key;
+    const local = this.local;
+    if (!local?.getAudioTracks().length) return;
+
+    // The old microphone stops first: while it is open, Chrome gives a new
+    // one the same processing, whatever it asks for. A moment of silence.
+    this.filter?.stop();
+    this.rawMic?.stop();
+    local.getAudioTracks().forEach((track) => track.stop());
+    this.filter = null;
+    this.rawMic = null;
+    let fresh: MediaStream;
+    try {
+      fresh = await navigator.mediaDevices.getUserMedia({
+        audio: { ...audioConstraints(), deviceId: deviceConstraint(savedDevices().audio) },
+      });
+    } catch {
+      fresh = new MediaStream();
+    }
+    // The call ended while the microphone opened: it isn't needed.
+    if (this.local !== local) {
+      fresh.getTracks().forEach((track) => track.stop());
+      return;
+    }
+    this.local = new MediaStream([...fresh.getAudioTracks(), ...local.getVideoTracks()]);
+    if (!fresh.getAudioTracks().length) this.error = "media";
+    await this.filterVoice();
+    if (!this.local) return;
+    this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
+    this.listenForVoice();
+    this.shareTracks();
+  }
+
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
@@ -877,7 +1142,7 @@ class CallManager {
       if (first) {
         for (const peer of this.peers.values()) {
           peer.pc?.setConfiguration({
-            iceServers,
+            iceServers: peer.widened ? iceServers : udpRelay(iceServers),
             iceTransportPolicy: RELAY_ONLY,
           });
           peer.pc?.restartIce();
@@ -912,9 +1177,7 @@ class CallManager {
   }
 
   private emit() {
-    const peers = this.sfu
-      ? this.sfu.peerList
-      : [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined }));
+    const peers = [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined }));
     this.snap = {
       incoming: this.incoming,
       outgoing: this.outgoing && {
@@ -922,6 +1185,11 @@ class CallManager {
         name: this.outgoing.name,
       },
       peers,
+      meetingPeers: this.sfu?.peerList ?? [],
+      stage: this.stage,
+      invite: this.invitation,
+      notice: this.notice,
+      alone: this.sfu?.alone ?? true,
       localStream: this.local,
       screenStream: this.screen,
       micEnabled: this.micEnabled,

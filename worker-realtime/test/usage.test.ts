@@ -36,7 +36,7 @@ describe("usage totals", () => {
     await ava.next("welcome");
     const ben = await Client.open(room);
     await ben.next("welcome");
-    ben.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table-a" });
+    ben.send({ t: "meeting_join", meeting: "main" });
     await ben.next("meeting_joined");
     await backdate(room, 10, 4);
 

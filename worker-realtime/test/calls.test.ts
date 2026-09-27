@@ -33,7 +33,7 @@ describe("peer-to-peer call signalling", () => {
   });
 });
 
-describe("meeting tables through the SFU", () => {
+describe("meetings through the SFU", () => {
   let sfuRequests: { method: string; path: string; body: Record<string, unknown> | null }[];
 
   beforeEach(() => {
@@ -65,9 +65,9 @@ describe("meeting tables through the SFU", () => {
 
   async function seated() {
     const { ava, avaId, ben, benId } = await pair();
-    ava.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table" });
+    ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
-    ben.send({ t: "sit", seat: 2, x: 12, y: 10, meeting: "table" });
+    ben.send({ t: "meeting_join", meeting: "main" });
     await ben.next("meeting_joined");
     return { ava, avaId, ben, benId };
   }
@@ -128,13 +128,13 @@ describe("meeting tables through the SFU", () => {
     }, { timeout: 5000 });
   });
 
-  it("won't let someone watch a table they aren't at", async () => {
+  it("won't let someone watch a meeting they aren't in", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { name: "Ava" });
     const avaId = (await ava.next("welcome")).self.id;
     const eve = await Client.open(room, { name: "Eve" });
     await eve.next("welcome");
-    ava.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table" });
+    ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
     ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "camera" }] });
     await ava.next("sfu");
@@ -142,25 +142,25 @@ describe("meeting tables through the SFU", () => {
     eve.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera" }] });
     expect(await eve.next("sfu")).toEqual({ t: "sfu", op: "error", code: "not_in_meeting" });
 
-    eve.send({ t: "sit", seat: 5, x: 12, y: 10, meeting: "other-table" });
+    eve.send({ t: "meeting_start", name: "Other" });
     await eve.next("meeting_joined");
     eve.messages.length = 0;
     eve.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera" }] });
     expect(await eve.next("sfu")).toEqual({ t: "sfu", op: "error", code: "no_tracks" });
   });
 
-  it("tells a newcomer what is already published at the table", async () => {
+  it("tells a newcomer what is already published in the meeting", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { name: "Ava" });
     const avaId = (await ava.next("welcome")).self.id;
-    ava.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table" });
+    ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
     ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
     await ava.next("sfu");
 
     const ben = await Client.open(room, { name: "Ben" });
     await ben.next("welcome");
-    ben.send({ t: "sit", seat: 2, x: 12, y: 10, meeting: "table" });
+    ben.send({ t: "meeting_join", meeting: "main" });
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: avaId, kinds: ["mic"] });
   });
 
@@ -168,11 +168,11 @@ describe("meeting tables through the SFU", () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { name: "Ava" });
     const avaId = (await ava.next("welcome")).self.id;
-    ava.send({ t: "sit", seat: 1, x: 11, y: 10, meeting: "table" });
+    ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
     const ben = await Client.open(room, { name: "Ben" });
     await ben.next("welcome");
-    ben.send({ t: "sit", seat: 2, x: 12, y: 10, meeting: "table" });
+    ben.send({ t: "meeting_join", meeting: "main" });
     await ben.next("meeting_joined");
 
     ava.send({ t: "sfu", op: "media", mic: true, camera: false, screen: false });
@@ -180,11 +180,11 @@ describe("meeting tables through the SFU", () => {
 
     const cara = await Client.open(room, { name: "Cara" });
     await cara.next("welcome");
-    cara.send({ t: "sit", seat: 3, x: 13, y: 10, meeting: "table" });
+    cara.send({ t: "meeting_join", meeting: "main" });
     expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "media", userId: avaId, mic: true, camera: false, screen: false });
   });
 
-  it("closes a member's tracks when they leave the table", async () => {
+  it("closes a member's tracks when they leave the meeting", async () => {
     const { ava, avaId, ben } = await seated();
     ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "screen" }] });
     await ben.next("sfu");
@@ -194,7 +194,7 @@ describe("meeting tables through the SFU", () => {
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "untracks", userId: avaId, kinds: ["screen"] });
     ben.messages.length = 0;
 
-    ava.send({ t: "stand", x: 11, y: 11 });
+    ava.send({ t: "meeting_leave" });
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "gone", userId: avaId });
     await settle();
     const closes = sfuRequests.filter((request) => request.path.endsWith("/tracks/close"));
@@ -203,4 +203,54 @@ describe("meeting tables through the SFU", () => {
       { tracks: [{ mid: "0" }], force: true },
     ]);
   });
+
+  it("sends the middle layer when a viewer asks for medium", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "camera" }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "medium" }] });
+    await ben.next("sfu");
+    const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
+    expect((subscribe?.body?.tracks as { simulcast: { preferredRid: string } }[])[0].simulcast.preferredRid).toBe("m");
+  });
+
+  it("caps how much video one person is sent at once", async () => {
+    const room = uniqueRoom();
+    const viewer = await Client.open(room, { name: "Viewer" });
+    await viewer.next("welcome");
+    viewer.send({ t: "meeting_join", meeting: "main" });
+    await viewer.next("meeting_joined");
+
+    const cameras: string[] = [];
+    for (let index = 0; index < 8; index++) {
+      const someone = await Client.open(room, { name: `Cam ${index}` });
+      cameras.push((await someone.next("welcome")).self.id);
+      someone.send({ t: "meeting_join", meeting: "main" });
+      await someone.next("meeting_joined");
+      someone.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "camera" }, { mid: "1", kind: "mic" }] });
+      await someone.next("sfu");
+    }
+    await settle();
+    viewer.messages.length = 0;
+
+    viewer.send({
+      t: "sfu",
+      op: "subscribe",
+      tracks: cameras.flatMap((userId) => [
+        { userId, kind: "camera" as const, quality: "low" as const },
+        { userId, kind: "mic" as const },
+      ]),
+    });
+    const offer = await viewer.next("sfu");
+    expect(offer).toMatchObject({ op: "offer" });
+    const sent = (offer as { tracks: { kind: string }[] }).tracks;
+    expect(sent.filter((track) => track.kind === "camera")).toHaveLength(6);
+    expect(sent.filter((track) => track.kind === "mic")).toHaveLength(8);
+
+    viewer.messages.length = 0;
+    viewer.send({ t: "sfu", op: "subscribe", tracks: [{ userId: cameras[7], kind: "camera", quality: "low" }] });
+    expect(await viewer.next("sfu")).toEqual({ t: "sfu", op: "error", code: "too_much_video" });
+  });
 });
+

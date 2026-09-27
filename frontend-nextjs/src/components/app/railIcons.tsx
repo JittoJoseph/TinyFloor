@@ -3,6 +3,7 @@
 import { MapTrifoldIcon } from "@phosphor-icons/react/dist/csr/MapTrifold";
 import { ChatsCircleIcon } from "@phosphor-icons/react/dist/csr/ChatsCircle";
 import { UsersThreeIcon } from "@phosphor-icons/react/dist/csr/UsersThree";
+import { VideoCameraIcon } from "@phosphor-icons/react/dist/csr/VideoCamera";
 import { BuildingsIcon } from "@phosphor-icons/react/dist/csr/Buildings";
 import { GearSixIcon } from "@phosphor-icons/react/dist/csr/GearSix";
 import { SignOutIcon } from "@phosphor-icons/react/dist/csr/SignOut";
@@ -15,6 +16,7 @@ export const RailIcons = {
   floor: <MapTrifoldIcon />,
   chat: <ChatsCircleIcon />,
   people: <UsersThreeIcon />,
+  meetings: <VideoCameraIcon />,
   office: <BuildingsIcon />,
   settings: <GearSixIcon />,
   leave: <SignOutIcon className="rtl:-scale-x-100" />,

@@ -151,7 +151,8 @@ export default function CallCards() {
     return () => window.removeEventListener("keydown", onKey);
   }, [focusedTile]);
 
-  if (!meeting && !peers.length) return null;
+  // A meeting has its own stage and card (components/meetings); these are a call's.
+  if (meeting || !peers.length) return null;
 
   // Until someone shows something (a camera, a screen), a call is voices: a
   // strip of who is on it, not a wall of cards.

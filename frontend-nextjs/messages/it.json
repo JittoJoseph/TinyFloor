@@ -62,7 +62,7 @@
       },
       {
         "q": "Come funziona la videochat di prossimità?",
-        "a": "Avvicinati a qualcuno e accanto a lui compare un pulsante di chiamata. Un tocco avvia la chiamata e, mentre parlate, puoi accendere la fotocamera o condividere lo schermo. Le chiamate passano via WebRTC attraverso la rete di Cloudflare, quindi si collegano su qualsiasi rete di ufficio o di casa, e restano attive finché qualcuno non chiude. I tavoli riunioni gestiscono le chiamate di gruppo: siediti per entrare, alzati per uscire."
+        "a": "Avvicinati a qualcuno e accanto a lui compare un pulsante di chiamata. Un tocco avvia la chiamata e, mentre parlate, puoi accendere la fotocamera o condividere lo schermo. Le chiamate passano per WebRTC sulla rete di Cloudflare, quindi si collegano da qualsiasi rete, in ufficio o a casa, e restano attive finché qualcuno non riattacca. Per un gruppo, entra in una riunione e il tuo personaggio va nella sala riunioni."
       },
       {
         "q": "TinyFloor è gratuito?",
@@ -366,7 +366,7 @@
     "batterySaver": "Risparmio batteria",
     "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
     "enhancedNoise": "Riduzione del rumore più forte",
-    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Parte dalla prossima chiamata e consuma un po' più di batteria.",
+    "enhancedNoiseNote": "Un piccolo modello di IA sul tuo dispositivo toglie tastiere, cani e chiacchiere. Consuma un po' più di batteria.",
     "experimental": "Sperimentale"
   },
   "tutorial": {
@@ -459,7 +459,7 @@
           },
           {
             "q": "Cosa ha Gather che TinyFloor non ha?",
-            "a": "Gather aggiunge note delle riunioni con l’IA e la personalizzazione dell’ufficio. TinyFloor si concentra sull’essenziale: muoversi, chiamate di prossimità, condivisione dello schermo, un tavolo riunioni, chat, una lavagna e musica nella stanza."
+            "a": "Gather aggiunge note delle riunioni con l’IA e la personalizzazione dell’ufficio. TinyFloor si concentra sull’essenziale: muoversi, chiamate di prossimità, condivisione dello schermo, una sala riunioni, chat, una lavagna e musica nella stanza."
           },
           {
             "q": "Posso portare il mio team da Gather a TinyFloor?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Avvicinati per parlare",
-            "body": "Avvicinati a un collega per avviare una chiamata. Al tavolo riunioni tutti entrano nella stessa chiamata."
+            "body": "Avvicinati a un collega per avviare una chiamata. Per un gruppo, entra in una riunione e tutti vanno nella sala riunioni."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Nessuna mappa da costruire",
-            "body": "Ogni stanza ha un piano ufficio, un tavolo riunioni, una lavagna e un altoparlante. Crea una stanza ed entra."
+            "body": "Ogni stanza ha un piano ufficio, una sala riunioni, una lavagna e un altoparlante. Crea una stanza ed entra."
           },
           {
             "title": "Niente da ospitare",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Come iniziano le chiamate in TinyFloor?",
-            "a": "Avvicinati a un collega e compare la sua scheda di chiamata. Un tocco avvia la chiamata. Al tavolo riunioni, tutti quelli che si siedono entrano nella stessa chiamata."
+            "a": "Avvicinati a un collega e compare la sua scheda di chiamata. Un tocco avvia la chiamata. Per un gruppo, entra in una riunione e il tuo personaggio va nella sala riunioni."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "In cosa TinyFloor è diverso da Wonder?",
-            "a": "Wonder usava cerchi su una superficie piatta ed era pensato per gli eventi. TinyFloor è un ufficio in cui ti muovi, con scrivanie, un tavolo riunioni, una lavagna e musica, pensato per gruppi che si incontrano spesso."
+            "a": "Wonder usava cerchi su una superficie piatta ed era pensato per gli eventi. TinyFloor è un ufficio in cui ti muovi, con scrivanie, una sala riunioni, una lavagna e musica, pensato per gruppi che si incontrano spesso."
           },
           {
             "q": "Quante persone possono entrare?",
@@ -660,7 +660,7 @@
           "description": "Un ufficio virtuale gratuito nel browser. Vedi chi c’è, avvicinati per parlare con videochiamate di prossimità e tieni una stanza aperta per il tuo team da remoto."
         },
         "title": "Un <em>ufficio virtuale</em> gratuito per team da remoto.",
-        "subtitle": "Dai al tuo team un posto dove stare durante il giorno. Vedi chi c’è, avvicinati per una domanda veloce e siediti al tavolo riunioni quando è ora di parlare.",
+        "subtitle": "Dai al tuo team un posto dove stare durante la giornata. Vedi chi c’è, passa per una domanda veloce ed entra nella sala riunioni quando è ora di parlare.",
         "points": [
           {
             "title": "Vedi chi c’è",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Un tavolo per le riunioni",
-            "body": "Siediti al tavolo riunioni e tutti lì entrano nella stessa chiamata, con una scheda per ogni persona."
+            "body": "Entra in una riunione e il tuo personaggio va nella sala riunioni. Solo chi parla è in video, con una scheda per ognuno."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Studia con gli amici in un’aula studio online gratuita. Sedetevi insieme in una stanza in pixel art, concentratevi e parlate quando serve una pausa."
         },
         "title": "Un’<em>aula studio online</em> per te e i tuoi amici.",
-        "subtitle": "Crea una stanza per il tuo gruppo di studio, condividi un link e sedetevi insieme mentre lavorate. Discutete un esercizio al tavolo, poi tornate a studiare.",
+        "subtitle": "Crea una stanza per il tuo gruppo di studio, condividi un link e state insieme mentre lavorate. Risolvete un problema nella sala riunioni e poi tornate al lavoro.",
         "points": [
           {
             "title": "Silenziosa di default",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Un tavolo per il lavoro di gruppo",
-            "body": "Sedetevi al tavolo riunioni per parlare in gruppo, poi alzatevi per tornare a studiare da soli."
+            "body": "Entra in una riunione per parlare in gruppo, poi esci dalla sala riunioni per tornare a studiare da solo."
           },
           {
             "title": "Una lavagna per gli esercizi",
@@ -780,18 +780,18 @@
         "label": "Aula virtuale",
         "meta": {
           "title": "Aula virtuale gratuita per il ricevimento",
-          "description": "Fai ricevimento, ripetizioni e piccole lezioni in un’aula virtuale gratuita. Gli studenti si avvicinano per parlare, i gruppi si riuniscono al tavolo e tutti condividono una lavagna."
+          "description": "Ricevimento, ripetizioni e piccole lezioni in un’aula virtuale gratuita. Gli studenti si avvicinano per parlare, i gruppi si riuniscono nella sala riunioni e tutti condividono una lavagna."
         },
         "title": "Un’<em>aula virtuale</em> in cui gli studenti si muovono.",
-        "subtitle": "Fai ricevimento, ripetizioni o una piccola lezione in una stanza in cui gli studenti possono muoversi. Si avvicinano quando hanno una domanda, e i gruppi parlano al tavolo.",
+        "subtitle": "Tieni ricevimento, ripetizioni o una piccola lezione in una stanza in cui gli studenti possono muoversi. Si avvicinano quando hanno una domanda e i gruppi parlano nella sala riunioni.",
         "points": [
           {
             "title": "Un ricevimento che scorre",
             "body": "Gli studenti vedono quando sei libero e si avvicinano per chiedere. Nessuno aspetta in sala d’attesa."
           },
           {
-            "title": "Piccoli gruppi al tavolo",
-            "body": "Fino a sei persone si siedono al tavolo riunioni e condividono una chiamata, con una scheda per ogni persona."
+            "title": "Piccoli gruppi nella sala riunioni",
+            "body": "Avvia una riunione e il gruppo entra insieme nella sala riunioni, con una scheda per ogni persona."
           },
           {
             "title": "Una lavagna condivisa",
@@ -824,15 +824,15 @@
           "description": "Chat di prossimità per team e amici: avvicina il tuo personaggio a qualcuno per avviare una chiamata. Gratis, nel browser, senza download."
         },
         "title": "Una <em>chat di prossimità</em> che parte quando ti avvicini.",
-        "subtitle": "In TinyFloor, dove ti trovi decide con chi parli. Avvicinati a qualcuno per chiamarlo, siediti al tavolo per parlare in gruppo e prosegui quando hai finito.",
+        "subtitle": "In TinyFloor, dove ti trovi decide con chi parli. Avvicinati a qualcuno per chiamarlo, entra in una riunione per parlare in gruppo e prosegui quando hai finito.",
         "points": [
           {
             "title": "Avvicinarsi la avvia",
             "body": "Mettiti accanto a un collega e compare una scheda di chiamata. Un tocco avvia la chiamata."
           },
           {
-            "title": "Gruppi al tavolo",
-            "body": "Siediti al tavolo riunioni ed entri nella chiamata con tutti quelli seduti lì."
+            "title": "Gruppi nella sala riunioni",
+            "body": "Entra in una riunione e il tuo personaggio va nella sala riunioni, insieme a tutti gli altri."
           },
           {
             "title": "Funziona su qualsiasi rete",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Possono parlare più di due persone?",
-            "a": "Sì. Chiama qualcuno che è già in chiamata per unirti, oppure siediti al tavolo riunioni per parlare in gruppo."
+            "a": "Una chiamata è in due. Avvicinati a una terza persona e trasformala in una riunione, oppure entra nella riunione dell’ufficio per parlare in gruppo."
           },
           {
             "q": "È gratis?",
@@ -1058,10 +1058,49 @@
     "creating": "Lo stiamo preparando",
     "continue": "Continua"
   },
+  "meetings": {
+    "title": "Riunioni",
+    "new": "Nuova riunione",
+    "plus": "+{count}",
+    "join": "Partecipa",
+    "mainName": "Riunione di {office}",
+    "byName": "Riunione di {name}",
+    "people": "{count, plural, one {# persona} other {# persone}}",
+    "invite": "Invita",
+    "screenOf": "Schermo di {name}",
+    "you": "Tu",
+    "more": "+{count} altri",
+    "leave": "Esci",
+    "aloneTitle": "Sei il primo qui",
+    "aloneShort": "In attesa degli altri",
+    "open": "Apri la riunione",
+    "nobodyToAsk": "Al momento nessun altro dell'ufficio è sul piano.",
+    "inAnotherMeeting": "In una riunione",
+    "newTitle": "Nuova riunione",
+    "nameLabel": "Nome",
+    "namePlaceholder": "Revisione del design",
+    "askLabel": "Invita persone",
+    "start": "Avvia",
+    "startAndAsk": "{count, plural, one {Avvia e invita # persona} other {Avvia e invita # persone}}",
+    "inviteTitle": "Invita persone",
+    "ask": "{count, plural, =0 {Invita} one {Invita # persona} other {Invita # persone}}",
+    "roomTitle": "Sei nella sala riunioni",
+    "notNow": "Non ora",
+    "lobbyRoom": "Le riunioni si fanno nel tuo ufficio.",
+    "getOffice": "Crea un ufficio",
+    "invitedTo": "Ti invita a {name}",
+    "invited": "Ti invita a una riunione",
+    "walkedOut": "Sei uscito dalla riunione",
+    "ended": "Quella riunione è finita",
+    "rejoin": "Rientra",
+    "makeMeeting": "Riunione",
+    "makeMeetingHint": "Una chiamata è in due: avvia una riunione per voi tre"
+  },
   "shell": {
     "floor": "Piano",
     "chat": "Chat",
     "people": "Persone",
+    "meetings": "Riunioni",
     "you": "Tu",
     "guest": "Ospite",
     "status": "Stato",
@@ -1144,7 +1183,7 @@
       "main": "Navigazione principale",
       "items": {
         "proximity": "Chiamate di prossimità",
-        "meetings": "Tavoli riunione",
+        "meetings": "Riunioni",
         "chat": "Chat",
         "people": "Presenza",
         "invites": "Inviti"
@@ -1166,7 +1205,7 @@
     },
     "hero": {
       "title": "Un ufficio virtuale in cui il tuo team può camminare.",
-      "body": "Per i team da remoto a cui manca lavorare fianco a fianco. Vedi chi c'è, passa con una domanda veloce e prendi una sedia quando è ora della riunione, senza programmare una sola chiamata.",
+      "body": "Per i team da remoto a cui manca lavorare fianco a fianco. Vedi chi c’è, passa per una domanda veloce ed entra nella sala riunioni quando è ora di riunirsi, senza programmare nemmeno una chiamata.",
       "secondary": "Entra nella lobby",
       "previewLabel": "Uno sguardo dentro TinyFloor",
       "tabs": {
@@ -1319,7 +1358,7 @@
     "eyebrow": "Chi siamo",
     "title": "Il lavoro da remoto ha perso il corridoio. Lo stiamo ricostruendo.",
     "p1": "Lavorare a distanza aiuta la concentrazione, ma ha portato via in silenzio i piccoli momenti: la domanda veloce alla scrivania di qualcuno, il saluto di passaggio, vedere chi c'è. Le videochiamate vanno bene per le riunioni. Hanno trasformato ogni altra conversazione in un appuntamento.",
-    "p2": "TinyFloor è un piano invece di un link. Il tuo team cammina in un ufficio condiviso in pixel art, e avvicinarsi a qualcuno è il modo per iniziare a parlare. Siediti a un tavolo e sei in riunione. Allontanati e torna il silenzio.",
+    "p2": "TinyFloor è un piano invece di un link. Il tuo team si muove in un ufficio condiviso in pixel art, e avvicinarsi a qualcuno è il modo in cui si inizia a parlare. Entra in una riunione e vai nella sala riunioni. Esci e torna la calma.",
     "p3": "Funziona nel browser sulla rete di Cloudflare, in 18 lingue, senza nulla da installare, ed è gratis per i team piccoli.",
     "founderTitle": "Creato da Jitto Joseph",
     "founderBody": "Progetto e costruisco TinyFloor, dal piano in pixel ai server su cui gira. Se hai un'idea, un problema o vuoi solo salutare, mi farà piacere sentirti.",
@@ -1362,8 +1401,8 @@
         "body": "Avvicinati a qualcuno e chiamalo con un clic. Allontanati e la chiamata finisce."
       },
       "sit": {
-        "title": "Prendi una sedia",
-        "body": "La sala riunioni è in fondo al corridoio. Siediti e sei nella riunione."
+        "title": "Entra nella sala riunioni",
+        "body": "La sala riunioni è in fondo al corridoio. Entra nella riunione e il tuo personaggio ci va; esci e l’hai lasciata."
       }
     },
     "more": {

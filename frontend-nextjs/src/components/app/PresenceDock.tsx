@@ -11,6 +11,7 @@ import { Face, FaceStack } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
 import { cn } from "@/lib/utils";
+import { useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { useDockHoldsYou } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 
@@ -29,6 +30,8 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
   const status = useMyStatus();
   useDockHoldsYou();
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
+  const myMeeting = useMyMeeting();
+  const nameOf = useMeetingName();
   if (!user) return null;
   const inCall = peers.length > 0 || !!meeting;
   const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
@@ -43,14 +46,14 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[12.5px] font-semibold text-ok">{meeting ? t("inMeeting") : t("inCall")}</p>
                 <p className="truncate text-[11.5px] text-muted-foreground">
-                  {peers.length ? peers.map((peer) => peer.name).join(", ") : place}
+                  {peers.length ? peers.map((peer) => peer.name).join(", ") : myMeeting ? nameOf(myMeeting, place) : place}
                 </p>
               </div>
               <IconButton
                 size="sm"
                 tone="ghost"
                 label={meeting ? tControls("leaveMeeting") : tControls("leaveCall")}
-                onClick={() => (meeting ? window.dispatchEvent(new Event("leaveMeeting")) : callManager.hangUp())}
+                onClick={() => (meeting ? callManager.leaveMeeting() : callManager.hangUp())}
                 icon={<PhoneOff />}
                 className="text-destructive hover:bg-destructive/10 hover:text-destructive [&_svg]:size-4"
               />

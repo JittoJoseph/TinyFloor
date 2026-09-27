@@ -62,7 +62,7 @@
       },
       {
         "q": "Hvordan fungerer nærhetsbasert videochat?",
-        "a": "Gå bort til noen, så dukker en samtaleknapp opp ved siden av dem. Ett trykk starter samtalen, og når dere snakker, kan du slå på kameraet eller dele skjermen. Samtaler går over WebRTC gjennom Cloudflares nettverk, så de kobler til på ethvert kontor- eller hjemmenettverk, og de varer til noen legger på. Møtebord bærer gruppesamtaler: sett deg for å bli med, reis deg for å gå."
+        "a": "Gå bort til noen, så dukker en anropsknapp opp ved siden av dem. Ett trykk starter samtalen, og når dere snakker, kan du slå på kameraet eller dele skjermen. Samtaler går over WebRTC gjennom Cloudflares nettverk, så de fungerer på alle kontor- og hjemmenettverk og varer til noen legger på. For en gruppe blir du med i et møte, og figuren din går inn i møterommet."
       },
       {
         "q": "Er TinyFloor gratis?",
@@ -366,7 +366,7 @@
     "batterySaver": "Batterisparing",
     "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn.",
     "enhancedNoise": "Sterkere støyfjerning",
-    "enhancedNoiseNote": "En liten AI-modell på enheten din fjerner tastatur, hunder og prat i bakgrunnen. Gjelder fra neste samtale og bruker litt mer batteri.",
+    "enhancedNoiseNote": "En liten AI-modell på enheten din fjerner tastatur, hunder og prat i bakgrunnen. Bruker litt mer batteri.",
     "experimental": "Eksperimentell"
   },
   "tutorial": {
@@ -459,7 +459,7 @@
           },
           {
             "q": "Hva har Gather som TinyFloor ikke har?",
-            "a": "Gather legger til AI-møtenotater og tilpasning av kontoret. TinyFloor fokuserer på det viktigste: å gå rundt, samtaler når man står nær, skjermdeling, et møtebord, chat, en tavle og musikk i rommet."
+            "a": "Gather legger til AI-møtenotater og tilpasning av kontoret. TinyFloor fokuserer på det viktigste: å gå rundt, samtaler når man står nær, skjermdeling, et møterom, chat, en tavle og musikk i rommet."
           },
           {
             "q": "Kan jeg flytte teamet mitt fra Gather til TinyFloor?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Gå bort for å prate",
-            "body": "Gå nær en kollega for å starte en samtale. Ved møtebordet er alle i den samme samtalen."
+            "body": "Gå nær en kollega for å starte en samtale. For en gruppe blir dere med i et møte, og alle går inn i møterommet."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Ingen kart å bygge",
-            "body": "Hvert rom har et kontorgulv, et møtebord, en tavle og en høyttaler. Opprett et rom og gå inn."
+            "body": "Hvert rom har et kontorgulv, et møterom, en tavle og en høyttaler. Opprett et rom og gå inn."
           },
           {
             "title": "Ingenting å drifte",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Hvordan starter samtaler i TinyFloor?",
-            "a": "Gå bort til en kollega, så dukker samtalekortet opp. Ett trykk starter samtalen. Ved møtebordet blir alle som setter seg med i den samme samtalen."
+            "a": "Gå bort til en kollega, så dukker samtalekortet deres opp. Ett trykk starter samtalen. For en gruppe blir du med i et møte, og figuren din går inn i møterommet."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Hvordan skiller TinyFloor seg fra Wonder?",
-            "a": "Wonder brukte sirkler på en flat flate og var laget for arrangementer. TinyFloor er et kontor du går rundt i, med pulter, et møtebord, en tavle og musikk, laget for grupper som møtes jevnlig."
+            "a": "Wonder brukte sirkler på en flat flate og var laget for arrangementer. TinyFloor er et kontor du går rundt i, med pulter, et møterom, en tavle og musikk, laget for grupper som møtes jevnlig."
           },
           {
             "q": "Hvor mange kan bli med?",
@@ -660,7 +660,7 @@
           "description": "Et gratis virtuelt kontor i nettleseren. Se hvem som er der, gå bort for en videosamtale, og hold ett rom åpent for fjernteamet ditt."
         },
         "title": "Et gratis <em>virtuelt kontor</em> for fjernteam.",
-        "subtitle": "Gi teamet et sted å være i løpet av dagen. Se hvem som er der, gå bort med et raskt spørsmål, og sett deg ved møtebordet når det er tid for å prate.",
+        "subtitle": "Gi teamet ditt et sted å være i løpet av dagen. Se hvem som er her, gå bort med et raskt spørsmål, og gå inn i møterommet når det er tid for å snakke.",
         "points": [
           {
             "title": "Se hvem som er inne",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Et bord for møter",
-            "body": "Sett deg ved møtebordet, så er alle der i den samme samtalen, med et kort for hver person."
+            "body": "Bli med i et møte, så går figuren din inn i møterommet. Bare de som snakker er på video, med et kort for alle."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Studer med venner i et gratis studierom på nett. Sitt sammen i et rom i pikselgrafikk, fokuser og prat når dere trenger en pause. Ingenting å laste ned."
         },
         "title": "Et <em>studierom på nett</em> for deg og vennene dine.",
-        "subtitle": "Opprett et rom for studiegruppen, del én lenke og sitt sammen mens dere jobber. Prat gjennom en oppgave ved bordet, og fortsett så.",
+        "subtitle": "Lag et rom for studiegruppen din, del én lenke og sitt sammen mens dere jobber. Snakk gjennom et problem i møterommet, og fortsett så.",
         "points": [
           {
             "title": "Stille som standard",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Et bord for gruppearbeid",
-            "body": "Sett dere ved møtebordet for å prate i gruppe, og reis dere for å studere hver for dere igjen."
+            "body": "Bli med i et møte for å snakke som gruppe, og gå ut av møterommet for å studere videre på egen hånd."
           },
           {
             "title": "En tavle for oppgaver",
@@ -780,18 +780,18 @@
         "label": "Virtuelt klasserom",
         "meta": {
           "title": "Gratis virtuelt klasserom for veiledning",
-          "description": "Hold veiledning, leksehjelp og små timer i et gratis virtuelt klasserom. Elever går bort for å prate, grupper møtes ved bordet, og alle deler en tavle."
+          "description": "Kontortid, leksehjelp og små klasser i et gratis virtuelt klasserom. Elever går bort for å snakke, grupper møtes i møterommet, og alle deler en tavle."
         },
         "title": "Et <em>virtuelt klasserom</em> der elevene går rundt.",
-        "subtitle": "Hold veiledning, leksehjelp eller en liten time i et rom der elevene kan bevege seg. De går bort når de har et spørsmål, og grupper prater ved bordet.",
+        "subtitle": "Ha kontortid, leksehjelp eller en liten klasse i et rom elevene kan bevege seg rundt i. De kommer bort når de har et spørsmål, og grupper snakker i møterommet.",
         "points": [
           {
             "title": "Veiledning uten kø",
             "body": "Elevene ser når du er ledig og går bort for å spørre. Ingen sitter i et venterom."
           },
           {
-            "title": "Små grupper ved bordet",
-            "body": "Opptil seks personer sitter ved møtebordet og deler én samtale, med et kort for hver person."
+            "title": "Små grupper i møterommet",
+            "body": "Start et møte, så går gruppen inn i møterommet sammen, med et kort for hver person."
           },
           {
             "title": "En felles tavle",
@@ -824,15 +824,15 @@
           "description": "Nærhetschat for team og venner: gå med figuren din bort til noen for å starte en samtale. Gratis, i nettleseren, uten nedlasting."
         },
         "title": "<em>Nærhetschat</em> som starter når du går bort.",
-        "subtitle": "I TinyFloor avgjør hvor du står hvem du prater med. Gå bort til noen for å ringe, sett deg ved bordet for å prate i gruppe, og gå videre når du er ferdig.",
+        "subtitle": "I TinyFloor avgjør hvor du står hvem du snakker med. Gå bort til noen for å ringe dem, bli med i et møte for å snakke som gruppe, og gå videre når dere er ferdige.",
         "points": [
           {
             "title": "Nærhet starter samtalen",
             "body": "Still deg ved siden av en kollega, så dukker et samtalekort opp. Ett trykk starter samtalen."
           },
           {
-            "title": "Grupper ved bordet",
-            "body": "Sett deg ved møtebordet, så er du med i samtalen med alle som sitter der."
+            "title": "Grupper i møterommet",
+            "body": "Bli med i et møte, så går figuren din inn i møterommet, sammen med alle andre."
           },
           {
             "title": "Fungerer på alle nettverk",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Kan flere enn to prate?",
-            "a": "Ja. Ring noen som allerede er i en samtale for å bli med, eller sett deg ved møtebordet for å prate i gruppe."
+            "a": "En samtale er to personer. Gå bort til en tredje og gjør det til et møte, eller bli med i kontorets møte for å snakke som gruppe."
           },
           {
             "q": "Er det gratis?",
@@ -1058,10 +1058,49 @@
     "creating": "Gjør det klart",
     "continue": "Videre"
   },
+  "meetings": {
+    "title": "Møter",
+    "new": "Nytt møte",
+    "plus": "+{count}",
+    "join": "Bli med",
+    "mainName": "Møtet til {office}",
+    "byName": "Møtet til {name}",
+    "people": "{count, plural, one {# person} other {# personer}}",
+    "invite": "Inviter",
+    "screenOf": "Skjermen til {name}",
+    "you": "Deg",
+    "more": "+{count} til",
+    "leave": "Forlat",
+    "aloneTitle": "Du er den første her",
+    "aloneShort": "Venter på andre",
+    "open": "Åpne møtet",
+    "nobodyToAsk": "Ingen andre fra kontoret er på gulvet nå.",
+    "inAnotherMeeting": "I et møte",
+    "newTitle": "Nytt møte",
+    "nameLabel": "Navn",
+    "namePlaceholder": "Designgjennomgang",
+    "askLabel": "Inviter folk",
+    "start": "Start",
+    "startAndAsk": "{count, plural, one {Start og inviter # person} other {Start og inviter # personer}}",
+    "inviteTitle": "Inviter folk",
+    "ask": "{count, plural, =0 {Inviter} one {Inviter # person} other {Inviter # personer}}",
+    "roomTitle": "Du er i møterommet",
+    "notNow": "Ikke nå",
+    "lobbyRoom": "Møter skjer på ditt eget kontor.",
+    "getOffice": "Lag et kontor",
+    "invitedTo": "Inviterer deg til {name}",
+    "invited": "Inviterer deg til et møte",
+    "walkedOut": "Du gikk ut av møtet",
+    "ended": "Det møtet er slutt",
+    "rejoin": "Bli med igjen",
+    "makeMeeting": "Møte",
+    "makeMeetingHint": "En samtale er to personer: start et møte for dere tre"
+  },
   "shell": {
     "floor": "Gulvet",
     "chat": "Chat",
     "people": "Folk",
+    "meetings": "Møter",
     "you": "Deg",
     "guest": "Gjest",
     "status": "Status",
@@ -1144,7 +1183,7 @@
       "main": "Hovednavigasjon",
       "items": {
         "proximity": "Nærhetssamtaler",
-        "meetings": "Møtebord",
+        "meetings": "Møter",
         "chat": "Chat",
         "people": "Tilstedeværelse",
         "invites": "Invitasjoner"
@@ -1166,7 +1205,7 @@
     },
     "hero": {
       "title": "Et virtuelt kontor teamet ditt kan gå rundt i.",
-      "body": "For fjernteam som savner å jobbe side om side. Se hvem som er her, stikk innom med et raskt spørsmål, og finn en stol når det er tid for møte, uten å planlegge en eneste samtale.",
+      "body": "For fjernteam som savner å jobbe side om side. Se hvem som er her, stikk innom med et raskt spørsmål, og gå inn i møterommet når det er tid for møte, uten å planlegge en eneste samtale.",
       "secondary": "Gå inn i lobbyen",
       "previewLabel": "En titt inn i TinyFloor",
       "tabs": {
@@ -1319,7 +1358,7 @@
     "eyebrow": "Om oss",
     "title": "Fjernarbeid mistet gangen. Vi bygger den opp igjen.",
     "p1": "Å jobbe hver for seg er bra for fokus, men det tok stille bort de små øyeblikkene: det raske spørsmålet ved noens pult, hei-et i forbifarten, å se hvem som er der. Videosamtaler fungerer bra for møter. De gjorde alle andre samtaler til en avtale.",
-    "p2": "TinyFloor er en etasje i stedet for en lenke. Teamet ditt går rundt i et felles kontor i pikselgrafikk, og å gå bort til noen er måten man begynner å snakke på. Sett deg ved et bord, og du er i et møte. Gå derfra, og det blir stille igjen.",
+    "p2": "TinyFloor er en etasje i stedet for en lenke. Teamet ditt går rundt på et delt kontor i pikselkunst, og å gå bort til noen er måten man begynner å snakke på. Bli med i et møte, så går du inn i møterommet. Gå ut, så er det stille igjen.",
     "p3": "Det kjører i nettleseren på Cloudflares nettverk, på 18 språk, uten noe å installere, og det er gratis for små team.",
     "founderTitle": "Laget av Jitto Joseph",
     "founderBody": "Jeg designer og bygger TinyFloor, fra pikseletasjen til serverne den kjører på. Har du en idé, et problem eller vil bare si hei, hører jeg gjerne fra deg.",
@@ -1362,8 +1401,8 @@
         "body": "Gå bort til noen og ring med ett klikk. Gå vekk, og samtalen avsluttes."
       },
       "sit": {
-        "title": "Ta en stol",
-        "body": "Møterommet er nede i gangen. Sett deg, og du er med i møtet."
+        "title": "Gå inn i møterommet",
+        "body": "Møterommet er lenger ned i gangen. Bli med i møtet, så går figuren din inn; gå ut, så har du forlatt det."
       }
     },
     "more": {

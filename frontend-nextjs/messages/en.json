@@ -62,7 +62,7 @@
       },
       {
         "q": "How does proximity video chat work?",
-        "a": "Walk up to someone and a call button appears next to them. A tap starts a call, and once you're talking you can turn on your camera or share your screen. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. Meeting tables carry group calls: sit down to join, stand up to leave."
+        "a": "Walk up to someone and a call button appears next to them. A tap starts a call, and once you're talking you can turn on your camera or share your screen. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. For a group, join a meeting and your character walks into the meeting room."
       },
       {
         "q": "Is TinyFloor free?",
@@ -366,7 +366,7 @@
     "batterySaver": "Battery saver",
     "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in.",
     "enhancedNoise": "Stronger noise removal",
-    "enhancedNoiseNote": "A small AI model on your device takes out keyboards, dogs and chatter. Starts with your next call and uses a little more battery.",
+    "enhancedNoiseNote": "A small AI model on your device takes out keyboards, dogs and chatter. Uses a little more battery.",
     "experimental": "Experimental"
   },
   "tutorial": {
@@ -459,7 +459,7 @@
           },
           {
             "q": "What does Gather have that TinyFloor does not?",
-            "a": "Gather adds AI meeting notes and office customization. TinyFloor focuses on the core: walking around, proximity calls, screen sharing, a meeting table, chat, a whiteboard and room music."
+            "a": "Gather adds AI meeting notes and office customization. TinyFloor focuses on the core: walking around, proximity calls, screen sharing, a meeting room, chat, a whiteboard and room music."
           },
           {
             "q": "Can I move my team from Gather to TinyFloor?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Walk over to talk",
-            "body": "Get close to a teammate to start a call. Sit at the meeting table and everyone there joins one call."
+            "body": "Get close to a teammate to start a call. For a group, join a meeting and everyone walks into the meeting room."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "No map to build",
-            "body": "Every room comes with an office floor, a meeting table, a whiteboard and a speaker. Create a room and walk in."
+            "body": "Every room comes with an office floor, a meeting room, a whiteboard and a speaker. Create a room and walk in."
           },
           {
             "title": "Nothing to host",
@@ -608,7 +608,7 @@
           },
           {
             "q": "How do calls start in TinyFloor?",
-            "a": "Walk up to a teammate and their call card appears. One tap starts a call. At the meeting table, everyone who sits down joins the same call."
+            "a": "Walk up to a teammate and their call card appears. One tap starts a call. For a group, join a meeting and your character walks into the meeting room."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "How is TinyFloor different from Wonder?",
-            "a": "Wonder used circles on a flat canvas and was made for events. TinyFloor is a walkable office with desks, a meeting table, a whiteboard and music, made for groups that meet regularly."
+            "a": "Wonder used circles on a flat canvas and was made for events. TinyFloor is a walkable office with desks, a meeting room, a whiteboard and music, made for groups that meet regularly."
           },
           {
             "q": "How many people can join?",
@@ -660,7 +660,7 @@
           "description": "A free virtual office in your browser. See who is around, walk over to talk with proximity video calls, and keep one room open for your remote team."
         },
         "title": "A free <em>virtual office</em> for remote teams.",
-        "subtitle": "Give your team a place to be during the day. See who is around, walk over to ask a quick question, and sit at the meeting table when it is time to talk.",
+        "subtitle": "Give your team a place to be during the day. See who is around, walk over to ask a quick question, and step into the meeting room when it is time to talk.",
         "points": [
           {
             "title": "See who is in",
@@ -672,7 +672,7 @@
           },
           {
             "title": "A table for meetings",
-            "body": "Sit at the meeting table and everyone there joins one call, with a card for each person."
+            "body": "Join a meeting and your character walks into the meeting room. Only the people talking are on camera, with a card for everyone."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Study with friends in a free online study room. Sit together in a pixel-art room, focus quietly, and talk when you need a break. No download needed."
         },
         "title": "An <em>online study room</em> for you and your friends.",
-        "subtitle": "Make a room for your study group, share one link, and sit together while you work. Talk a problem through at the table, then get back to it.",
+        "subtitle": "Make a room for your study group, share one link, and sit together while you work. Talk a problem through in the meeting room, then get back to it.",
         "points": [
           {
             "title": "Quiet by default",
@@ -750,7 +750,7 @@
           },
           {
             "title": "A table for group work",
-            "body": "Sit at the meeting table to talk as a group, then stand up to go back to studying on your own."
+            "body": "Join a meeting to talk as a group, then walk out of the meeting room to go back to studying on your own."
           },
           {
             "title": "A whiteboard for problems",
@@ -780,18 +780,18 @@
         "label": "Virtual classroom",
         "meta": {
           "title": "Free Virtual Classroom for Office Hours",
-          "description": "Run office hours, tutoring and small classes in a free virtual classroom. Students walk up to talk, groups meet at the table, and everyone shares a whiteboard."
+          "description": "Run office hours, tutoring and small classes in a free virtual classroom. Students walk up to talk, groups meet in the meeting room, and everyone shares a whiteboard."
         },
         "title": "A <em>virtual classroom</em> students can walk around.",
-        "subtitle": "Hold office hours, tutoring or a small class in a room students can move around in. They walk up when they have a question, and groups talk at the table.",
+        "subtitle": "Hold office hours, tutoring or a small class in a room students can move around in. They walk up when they have a question, and groups talk in the meeting room.",
         "points": [
           {
             "title": "Office hours that flow",
             "body": "Students see when you are free and walk over to ask. Nobody sits in a waiting room."
           },
           {
-            "title": "Small groups at the table",
-            "body": "Up to six people sit at the meeting table and share one call, with a card for each person."
+            "title": "Small groups in the meeting room",
+            "body": "Start a meeting and the group walks into the meeting room together, with a card for each person."
           },
           {
             "title": "A shared whiteboard",
@@ -824,15 +824,15 @@
           "description": "Proximity chat for teams and friends: walk your character up to someone to start a call. Free, in the browser, no download."
         },
         "title": "<em>Proximity chat</em> that starts when you walk over.",
-        "subtitle": "In TinyFloor, where you stand decides who you talk to. Walk up to someone to call them, sit at the table to talk as a group, and walk on when you are done.",
+        "subtitle": "In TinyFloor, where you stand decides who you talk to. Walk up to someone to call them, join a meeting to talk as a group, and walk on when you are done.",
         "points": [
           {
             "title": "Getting close starts it",
             "body": "Stand next to a teammate and a call card appears. One tap starts a call."
           },
           {
-            "title": "Groups at the table",
-            "body": "Sit at the meeting table and you join the call with everyone sitting there."
+            "title": "Groups in the meeting room",
+            "body": "Join a meeting and your character walks into the meeting room, with everyone else in it."
           },
           {
             "title": "Works on any network",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Can more than two people talk?",
-            "a": "Yes. Call someone who is already on a call to join them, or sit at the meeting table to talk as a group."
+            "a": "A call is two people. Walk up to a third and make it a meeting, or join the office's meeting to talk as a group."
           },
           {
             "q": "Is it free?",
@@ -1058,10 +1058,49 @@
     "creating": "Setting it up",
     "continue": "Continue"
   },
+  "meetings": {
+    "title": "Meetings",
+    "new": "New meeting",
+    "plus": "+{count}",
+    "join": "Join",
+    "mainName": "{office} meeting",
+    "byName": "{name}'s meeting",
+    "people": "{count, plural, one {# person} other {# people}}",
+    "invite": "Invite",
+    "screenOf": "{name}'s screen",
+    "you": "You",
+    "more": "+{count} more",
+    "leave": "Leave",
+    "aloneTitle": "You're the first one here",
+    "aloneShort": "Waiting for others to join",
+    "open": "Open the meeting",
+    "nobodyToAsk": "Nobody else from the office is on the floor right now.",
+    "inAnotherMeeting": "In a meeting",
+    "newTitle": "New meeting",
+    "nameLabel": "Name",
+    "namePlaceholder": "Design review",
+    "askLabel": "Ask people in",
+    "start": "Start",
+    "startAndAsk": "{count, plural, one {Start and ask # person} other {Start and ask # people}}",
+    "inviteTitle": "Ask people in",
+    "ask": "{count, plural, =0 {Ask} one {Ask # person} other {Ask # people}}",
+    "roomTitle": "You're in the meeting room",
+    "notNow": "Not now",
+    "lobbyRoom": "Meetings happen in your own office.",
+    "getOffice": "Make an office",
+    "invitedTo": "Asks you to join {name}",
+    "invited": "Asks you into a meeting",
+    "walkedOut": "You walked out of the meeting",
+    "ended": "That meeting has ended",
+    "rejoin": "Rejoin",
+    "makeMeeting": "Meeting",
+    "makeMeetingHint": "A call is two people: start a meeting for the three of you"
+  },
   "shell": {
     "floor": "Floor",
     "chat": "Chat",
     "people": "People",
+    "meetings": "Meetings",
     "you": "You",
     "guest": "Guest",
     "status": "Status",
@@ -1144,7 +1183,7 @@
       "main": "Main",
       "items": {
         "proximity": "Proximity calls",
-        "meetings": "Meeting tables",
+        "meetings": "Meetings",
         "chat": "Chat",
         "people": "Presence",
         "invites": "Invites"
@@ -1166,7 +1205,7 @@
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",
-      "body": "For remote teams who miss working side by side. See who's around, drop by with a quick question, and pull up a chair when it's time to meet, without scheduling a single call.",
+      "body": "For remote teams who miss working side by side. See who's around, drop by with a quick question, and step into the meeting room when it's time to meet, without scheduling a single call.",
       "secondary": "Walk into the lobby",
       "previewLabel": "A look inside TinyFloor",
       "tabs": {
@@ -1319,7 +1358,7 @@
     "eyebrow": "About",
     "title": "Remote work lost the hallway. We're building it back.",
     "p1": "Working apart is great for focus, but it quietly took away the small moments: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls handle meetings well. They made every other conversation a scheduled one.",
-    "p2": "TinyFloor is a floor instead of a link. Your team walks around a shared pixel-art office, and walking up to someone is how you start talking. Sit at a table and you're in a meeting. Walk away and it's quiet again.",
+    "p2": "TinyFloor is a floor instead of a link. Your team walks around a shared pixel-art office, and walking up to someone is how you start talking. Join a meeting and you walk into the meeting room. Walk out and it's quiet again.",
     "p3": "It runs in the browser on Cloudflare's network, in 18 languages, with nothing to install, and it's free for small teams.",
     "founderTitle": "Made by Jitto Joseph",
     "founderBody": "I design and build TinyFloor, from the pixel floor to the servers it runs on. If you have an idea, a problem or just want to say hello, I'd love to hear from you.",
@@ -1362,8 +1401,8 @@
         "body": "Walk up to someone and call them in one click. Walk away and the call ends."
       },
       "sit": {
-        "title": "Pull up a chair",
-        "body": "The meeting room is down the hall. Take a seat and you're in the meeting."
+        "title": "Step into the meeting room",
+        "body": "The meeting room is down the hall. Join the meeting and your character walks in; walk out and you've left."
       }
     },
     "more": {

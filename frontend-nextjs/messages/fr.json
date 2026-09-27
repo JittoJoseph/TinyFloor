@@ -62,7 +62,7 @@
       },
       {
         "q": "Comment fonctionne le chat vidéo de proximité ?",
-        "a": "Approchez-vous de quelqu'un et un bouton d'appel apparaît à côté de lui. Un geste lance l'appel, et une fois en conversation vous pouvez activer votre caméra ou partager votre écran. Les appels passent par WebRTC via le réseau de Cloudflare, ils se connectent donc sur n'importe quel réseau de bureau ou domestique, et restent actifs jusqu'à ce que quelqu'un raccroche. Les tables de réunion accueillent les appels de groupe : asseyez-vous pour rejoindre, levez-vous pour partir."
+        "a": "Approchez-vous de quelqu’un et un bouton d’appel apparaît à côté de lui. Un clic lance l’appel, et une fois que vous parlez, vous pouvez allumer votre caméra ou partager votre écran. Les appels passent par WebRTC sur le réseau de Cloudflare : ils se connectent sur n’importe quel réseau, au bureau ou à la maison, et durent jusqu’à ce que quelqu’un raccroche. Pour un groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
       },
       {
         "q": "TinyFloor est-il gratuit ?",
@@ -366,7 +366,7 @@
     "batterySaver": "Économie de batterie",
     "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée.",
     "enhancedNoise": "Suppression du bruit renforcée",
-    "enhancedNoiseNote": "Un petit modèle d'IA sur votre appareil retire clavier, chiens et bavardages. Prend effet au prochain appel et consomme un peu plus de batterie.",
+    "enhancedNoiseNote": "Un petit modèle d'IA sur votre appareil retire clavier, chiens et bavardages. Consomme un peu plus de batterie.",
     "experimental": "Expérimental"
   },
   "tutorial": {
@@ -459,7 +459,7 @@
           },
           {
             "q": "Qu’est-ce que Gather propose et que TinyFloor n’a pas ?",
-            "a": "Gather ajoute des notes de réunion par IA et la personnalisation du bureau. TinyFloor se concentre sur l’essentiel : se déplacer, les appels de proximité, le partage d’écran, une table de réunion, le chat, un tableau blanc et la musique de la salle."
+            "a": "Gather ajoute des notes de réunion par IA et la personnalisation du bureau. TinyFloor se concentre sur l’essentiel : se déplacer, les appels de proximité, le partage d’écran, une salle de réunion, le chat, un tableau blanc et la musique de la salle."
           },
           {
             "q": "Puis-je faire passer mon équipe de Gather à TinyFloor ?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Approchez-vous pour parler",
-            "body": "Approchez-vous d’un collègue pour lancer un appel. À la table de réunion, tout le monde rejoint le même appel."
+            "body": "Approchez-vous d’un collègue pour lancer un appel. Pour un groupe, rejoignez une réunion et tout le monde entre dans la salle de réunion."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Aucune carte à construire",
-            "body": "Chaque salle a un plateau de bureau, une table de réunion, un tableau blanc et une enceinte. Créez une salle et entrez."
+            "body": "Chaque salle a un plateau de bureau, une salle de réunion, un tableau blanc et une enceinte. Créez une salle et entrez."
           },
           {
             "title": "Rien à héberger",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Comment démarrent les appels dans TinyFloor ?",
-            "a": "Approchez-vous d’un collègue et sa carte d’appel apparaît. Un geste lance l’appel. À la table de réunion, tous ceux qui s’assoient rejoignent le même appel."
+            "a": "Approchez-vous d’un collègue et sa carte d’appel apparaît. Un clic lance l’appel. Pour un groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "En quoi TinyFloor diffère-t-il de Wonder ?",
-            "a": "Wonder utilisait des cercles sur une surface plane et était pensé pour les événements. TinyFloor est un bureau où l’on se déplace, avec des postes de travail, une table de réunion, un tableau blanc et de la musique, pensé pour les groupes qui se retrouvent régulièrement."
+            "a": "Wonder utilisait des cercles sur une surface plane et était pensé pour les événements. TinyFloor est un bureau où l’on se déplace, avec des postes de travail, une salle de réunion, un tableau blanc et de la musique, pensé pour les groupes qui se retrouvent régulièrement."
           },
           {
             "q": "Combien de personnes peuvent rejoindre ?",
@@ -660,7 +660,7 @@
           "description": "Un bureau virtuel gratuit dans votre navigateur. Voyez qui est là, approchez-vous pour parler en appel vidéo de proximité, et gardez une salle ouverte pour votre équipe à distance."
         },
         "title": "Un <em>bureau virtuel</em> gratuit pour les équipes à distance.",
-        "subtitle": "Donnez à votre équipe un lieu où être pendant la journée. Voyez qui est là, allez poser une question rapide, et installez-vous à la table de réunion quand il est temps de parler.",
+        "subtitle": "Donnez à votre équipe un endroit où être pendant la journée. Voyez qui est là, passez poser une question rapide et entrez dans la salle de réunion quand il est temps de parler.",
         "points": [
           {
             "title": "Voir qui est là",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Une table pour les réunions",
-            "body": "Asseyez-vous à la table de réunion et tout le monde rejoint le même appel, avec une vignette par personne."
+            "body": "Rejoignez une réunion et votre personnage entre dans la salle de réunion. Seules les personnes qui parlent sont en vidéo, avec une carte pour chacun."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Révisez avec vos amis dans une salle d’étude en ligne gratuite. Installez-vous ensemble dans une salle en pixel art, concentrez-vous et parlez quand vous faites une pause. Rien à télécharger."
         },
         "title": "Une <em>salle d’étude en ligne</em> pour vous et vos amis.",
-        "subtitle": "Créez une salle pour votre groupe d’étude, partagez un lien et travaillez ensemble. Discutez d’un exercice à la table, puis reprenez.",
+        "subtitle": "Créez une salle pour votre groupe d’étude, partagez un lien et installez-vous ensemble pour travailler. Réglez un problème dans la salle de réunion, puis reprenez.",
         "points": [
           {
             "title": "Calme par défaut",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Une table pour le travail en groupe",
-            "body": "Asseyez-vous à la table de réunion pour parler en groupe, puis levez-vous pour reprendre seul."
+            "body": "Rejoignez une réunion pour parler en groupe, puis sortez de la salle de réunion pour reprendre vos révisions seul."
           },
           {
             "title": "Un tableau blanc pour les exercices",
@@ -780,18 +780,18 @@
         "label": "Classe virtuelle",
         "meta": {
           "title": "Classe virtuelle gratuite pour les permanences",
-          "description": "Tenez des permanences, du tutorat et de petits cours dans une classe virtuelle gratuite. Les élèves s’approchent pour parler, les groupes se réunissent à la table et tout le monde partage un tableau blanc."
+          "description": "Permanences, tutorat et petits cours dans une salle de classe virtuelle gratuite. Les élèves s’approchent pour parler, les groupes se retrouvent dans la salle de réunion et tout le monde partage un tableau blanc."
         },
         "title": "Une <em>classe virtuelle</em> où les élèves se déplacent.",
-        "subtitle": "Tenez des permanences, du tutorat ou un petit cours dans une salle où les élèves peuvent se déplacer. Ils viennent vous voir quand ils ont une question, et les groupes discutent à la table.",
+        "subtitle": "Tenez des permanences, du tutorat ou un petit cours dans une salle où les élèves peuvent se déplacer. Ils s’approchent quand ils ont une question, et les groupes parlent dans la salle de réunion.",
         "points": [
           {
             "title": "Des permanences fluides",
             "body": "Les élèves voient quand vous êtes disponible et viennent poser leur question. Personne n’attend en salle d’attente."
           },
           {
-            "title": "Des petits groupes à la table",
-            "body": "Jusqu’à six personnes s’assoient à la table de réunion et partagent un appel, avec une vignette par personne."
+            "title": "Petits groupes dans la salle de réunion",
+            "body": "Lancez une réunion et le groupe entre ensemble dans la salle de réunion, avec une carte pour chaque personne."
           },
           {
             "title": "Un tableau blanc partagé",
@@ -824,15 +824,15 @@
           "description": "Un chat de proximité pour équipes et amis : approchez votre personnage de quelqu’un pour lancer un appel. Gratuit, dans le navigateur, sans téléchargement."
         },
         "title": "Un <em>chat de proximité</em> qui démarre quand vous vous approchez.",
-        "subtitle": "Dans TinyFloor, là où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, asseyez-vous à la table pour parler en groupe, et repartez quand vous avez fini.",
+        "subtitle": "Dans TinyFloor, l’endroit où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, rejoignez une réunion pour parler en groupe, et repartez quand vous avez fini.",
         "points": [
           {
             "title": "S’approcher lance la conversation",
             "body": "Placez-vous à côté d’un collègue et une carte d’appel apparaît. Un geste lance l’appel."
           },
           {
-            "title": "Les groupes à la table",
-            "body": "Asseyez-vous à la table de réunion et vous rejoignez l’appel de tous ceux qui y sont assis."
+            "title": "Les groupes dans la salle de réunion",
+            "body": "Rejoignez une réunion et votre personnage entre dans la salle de réunion, avec tous les autres."
           },
           {
             "title": "Fonctionne sur tout réseau",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Peut-on parler à plus de deux ?",
-            "a": "Oui. Appelez quelqu’un qui est déjà en appel pour le rejoindre, ou asseyez-vous à la table de réunion pour parler en groupe."
+            "a": "Un appel, c’est à deux. Approchez-vous d’une troisième personne et faites-en une réunion, ou rejoignez la réunion du bureau pour parler en groupe."
           },
           {
             "q": "Est-ce gratuit ?",
@@ -1058,10 +1058,49 @@
     "creating": "Préparation",
     "continue": "Continuer"
   },
+  "meetings": {
+    "title": "Réunions",
+    "new": "Nouvelle réunion",
+    "plus": "+{count}",
+    "join": "Rejoindre",
+    "mainName": "Réunion de {office}",
+    "byName": "Réunion de {name}",
+    "people": "{count, plural, one {# personne} other {# personnes}}",
+    "invite": "Inviter",
+    "screenOf": "Écran de {name}",
+    "you": "Vous",
+    "more": "+{count} de plus",
+    "leave": "Quitter",
+    "aloneTitle": "Vous êtes le premier ici",
+    "aloneShort": "En attente des autres",
+    "open": "Ouvrir la réunion",
+    "nobodyToAsk": "Personne d'autre du bureau n'est sur le plateau en ce moment.",
+    "inAnotherMeeting": "En réunion",
+    "newTitle": "Nouvelle réunion",
+    "nameLabel": "Nom",
+    "namePlaceholder": "Revue de design",
+    "askLabel": "Inviter des personnes",
+    "start": "Lancer",
+    "startAndAsk": "{count, plural, one {Lancer et inviter # personne} other {Lancer et inviter # personnes}}",
+    "inviteTitle": "Inviter des personnes",
+    "ask": "{count, plural, =0 {Inviter} one {Inviter # personne} other {Inviter # personnes}}",
+    "roomTitle": "Vous êtes dans la salle de réunion",
+    "notNow": "Pas maintenant",
+    "lobbyRoom": "Les réunions ont lieu dans votre propre bureau.",
+    "getOffice": "Créer un bureau",
+    "invitedTo": "Vous invite à {name}",
+    "invited": "Vous invite à une réunion",
+    "walkedOut": "Vous êtes sorti de la réunion",
+    "ended": "Cette réunion est terminée",
+    "rejoin": "Revenir",
+    "makeMeeting": "Réunion",
+    "makeMeetingHint": "Un appel, c'est à deux : lancez une réunion pour vous trois"
+  },
   "shell": {
     "floor": "Étage",
     "chat": "Chat",
     "people": "Personnes",
+    "meetings": "Réunions",
     "you": "Vous",
     "guest": "Invité",
     "status": "Statut",
@@ -1144,7 +1183,7 @@
       "main": "Navigation principale",
       "items": {
         "proximity": "Appels de proximité",
-        "meetings": "Tables de réunion",
+        "meetings": "Réunions",
         "chat": "Chat",
         "people": "Présence",
         "invites": "Invitations"
@@ -1166,7 +1205,7 @@
     },
     "hero": {
       "title": "Un bureau virtuel dans lequel votre équipe peut se promener.",
-      "body": "Pour les équipes à distance qui regrettent de travailler côte à côte. Voyez qui est là, passez poser une question rapide et prenez une chaise quand vient l'heure de la réunion, sans planifier un seul appel.",
+      "body": "Pour les équipes à distance à qui le travail côte à côte manque. Voyez qui est là, passez poser une petite question et entrez dans la salle de réunion quand il est temps de se réunir, sans planifier le moindre appel.",
       "secondary": "Entrer dans le hall",
       "previewLabel": "Un aperçu de TinyFloor",
       "tabs": {
@@ -1319,7 +1358,7 @@
     "eyebrow": "À propos",
     "title": "Le télétravail a perdu le couloir. Nous le reconstruisons.",
     "p1": "Travailler à distance aide à se concentrer, mais cela a discrètement effacé les petits moments : la question rapide au bureau d'un collègue, le bonjour en passant, voir qui est là. Les appels vidéo gèrent bien les réunions. Ils ont transformé toutes les autres conversations en rendez-vous.",
-    "p2": "TinyFloor est un étage plutôt qu'un lien. Votre équipe se promène dans un bureau en pixel art partagé, et s'approcher de quelqu'un suffit pour commencer à parler. Asseyez-vous à une table et vous êtes en réunion. Éloignez-vous et le calme revient.",
+    "p2": "TinyFloor est un plateau plutôt qu’un lien. Votre équipe se déplace dans un bureau partagé en pixel art, et s’approcher de quelqu’un, c’est commencer à parler. Rejoignez une réunion et vous entrez dans la salle de réunion. Sortez, et c’est de nouveau calme.",
     "p3": "Il fonctionne dans le navigateur sur le réseau de Cloudflare, en 18 langues, sans rien à installer, et il est gratuit pour les petites équipes.",
     "founderTitle": "Créé par Jitto Joseph",
     "founderBody": "Je conçois et développe TinyFloor, de l'étage en pixels jusqu'aux serveurs qui le font tourner. Une idée, un problème ou juste envie de dire bonjour ? J'aimerais beaucoup vous lire.",
@@ -1362,8 +1401,8 @@
         "body": "Approchez-vous de quelqu'un et appelez-le en un clic. Éloignez-vous et l'appel se termine."
       },
       "sit": {
-        "title": "Prendre une chaise",
-        "body": "La salle de réunion est au bout du couloir. Asseyez-vous et vous êtes en réunion."
+        "title": "Entrez dans la salle de réunion",
+        "body": "La salle de réunion est au bout du couloir. Rejoignez la réunion et votre personnage y entre ; sortez, et vous l’avez quittée."
       }
     },
     "more": {

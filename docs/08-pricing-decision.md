@@ -1,5 +1,10 @@
 # 08. Pricing: what others charge, what we cost, what we charge
 
+> The proximity rate was corrected on 25 Sep from a real 2 h 45 min call.
+> [10-calls-and-meetings.md](10-calls-and-meetings.md) moves group video to Google Meet and
+> makes calls audio-first. If that lands, the media costs below drop to cents
+> and the fair-use section goes.
+
 Checked on 24 September 2026. This replaces the numbers in `04-costs.md` and
 `05-pricing.md` where they disagree; the shape of `05` (flat tiers, membership
 is the seat) stands.
@@ -44,7 +49,7 @@ The two rates to plan against:
 | | Measured | Rate |
 |---|---|---|
 | Meeting table (SFU), per subscribed stream | 39.4 MB over 22 participant-min in a 2-person meeting | **~0.1 GB per stream-hour** (~230 kbps, camera + audio, thumbnail quality) |
-| Proximity call (TURN, always relayed) | 129.6 MB in the busiest hour, one 2-person call | **~0.13 GB per call-hour** |
+| Proximity call (TURN, always relayed) | 624 MB over a 2 h 45 min camera-on call in the lobby, 25 Sep | **~0.22 GB per call-hour** (~245 kbps each way) |
 
 Things `04-costs.md` had wrong or did not know:
 
@@ -70,14 +75,14 @@ A busy office, per month (22 working days):
 
 | Office | Proximity | Table | Total egress | At $0.05/GB |
 |---|---|---|---|---|
-| 3 members | 6 GB | 13 GB | ~20 GB | **$1.00** |
-| 10 members | 21 GB | 66 GB | ~87 GB | **$4.35** |
-| 25 members | 53 GB | 165 GB | ~218 GB | **$10.90** |
-| 50 members | 105 GB | 330 GB | ~435 GB | **$21.75** |
+| 3 members | 11 GB | 13 GB | ~24 GB | **$1.20** |
+| 10 members | 36 GB | 66 GB | ~102 GB | **$5.10** |
+| 25 members | 91 GB | 165 GB | ~256 GB | **$12.80** |
+| 50 members | 182 GB | 330 GB | ~512 GB | **$25.60** |
 
-About **$0.45 per member per month at the busy end**, and half that for a
-normal week. The free 1 TB covers about a dozen busy ten-person offices, or
-twenty-odd normal ones, before we pay anything for media.
+About **$0.50 per member per month at the busy end**, and half that for a
+normal week. The free 1 TB covers about ten busy ten-person offices, or
+twenty normal ones, before we pay anything for media.
 
 The ceiling for one office is the table running all day with cameras on
 (3 GB × 8 h × 22 d ≈ 530 GB, **~$26**) plus everyone paired up all day. That
@@ -124,12 +129,12 @@ Per full office per month, at the busy end, after the payment provider's cut
 
 | Tier | Price | Media | Fees | Left |
 |---|---|---|---|---|
-| Team (10) | $19 | $4.35 | $1.45 | **$13.20** (69%) |
-| Office (25) | $39 | $10.90 | $2.45 | **$25.65** (66%) |
-| Floor (50) | $69 | $21.75 | $3.95 | **$43.30** (63%) |
+| Team (10) | $19 | $5.10 | $1.45 | **$12.45** (66%) |
+| Office (25) | $39 | $12.80 | $2.45 | **$23.75** (61%) |
+| Floor (50) | $69 | $25.60 | $3.95 | **$39.45** (57%) |
 
 Fixed costs are about $10 a month (Workers paid, domain). One paying office
-covers them. $1,000 a month in margin is ~75 Team offices.
+covers them. $1,000 a month in margin is ~80 Team offices.
 
 There is room to go higher. At $29 / $59 / $99 we would still be 45–90% under
 everyone, so if the $19 tier sells easily, raise it for new offices rather than

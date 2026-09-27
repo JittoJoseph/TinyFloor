@@ -56,14 +56,14 @@ const COMPARE = LANDINGS.filter((page) => page.group === "compare");
  * menus open with CSS alone, and are drawn once the page has settled; a phone
  * gets one sheet with the same links.
  */
-export function HomeNav() {
+export function HomeNav({ fade = true }: { fade?: boolean }) {
   const t = useTranslations("home");
   const tl = useTranslations("landings");
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
 
   return (
-    <ScrollHeader>
+    <ScrollHeader fade={fade}>
       <nav
         aria-label={t("nav.main")}
         className={cn(
@@ -149,7 +149,7 @@ export function HomeNav() {
         </div>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
-          <HomeNavActions signIn={t("nav.signIn")} start={t("nav.start")} />
+          <HomeNavActions signIn={t("nav.signIn")} start={t("nav.getStarted")} />
           <MobileMenu label={t("nav.menu")}>
             <p className="px-1 text-[11.5px] font-semibold text-faint">{t("footer.product")}</p>
             <ul className="mt-1 grid gap-0.5">

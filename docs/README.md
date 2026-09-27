@@ -32,6 +32,7 @@ What has already shipped is described by the code and by git history, not here.
 | [07-services.md](07-services.md) | Each Worker, Durable Object and service, and whether it earns its place |
 | [08-pricing-decision.md](08-pricing-decision.md) | Competitors' prices, measured costs at scale, the tiers we chose |
 | [09-billing.md](09-billing.md) | Who takes the money (Paddle, as an individual in India) and how billing is built |
+| [10-calls-and-meetings.md](10-calls-and-meetings.md) | Audio-first calls on the floor, group meetings in Google Meet |
 | [research/gather.md](research/gather.md) | Gather, looked at properly: what to take and what to leave |
 
 ## Order

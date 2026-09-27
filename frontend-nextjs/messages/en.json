@@ -1161,7 +1161,8 @@
         "onlineStudyRoom": "Study together with friends",
         "virtualClassroom": "Office hours and small classes",
         "proximityChat": "Talk to whoever you walk up to"
-      }
+      },
+      "getStarted": "Get started"
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",
@@ -1203,38 +1204,6 @@
         "title": "Bring your team in.",
         "muted": "With one link.",
         "body": "Send an invite link, or invite by email. They pick a name and a character, make a free account, and they're on the floor."
-      }
-    },
-    "versus": {
-      "title": "A quick question",
-      "muted": "shouldn't need a calendar invite.",
-      "body": "In most remote teams, asking takes a message, an invite and a meeting link. In a virtual office you walk over, the way you would at work.",
-      "before": {
-        "label": "Without a floor",
-        "items": [
-          {
-            "title": "Jack, got 5 minutes today?",
-            "body": "Sent 9:41 · Seen"
-          },
-          {
-            "title": "Quick sync",
-            "body": "Tomorrow, 10:30 to 11:00 · Invite from Jack"
-          },
-          {
-            "title": "Join the video call",
-            "body": "Waiting for the host to let you in"
-          },
-          {
-            "title": "Can you hop on a call?",
-            "body": "3 unread messages"
-          }
-        ],
-        "result": "A day later: a 30-minute meeting for a 2-minute question."
-      },
-      "after": {
-        "label": "On TinyFloor",
-        "you": "You",
-        "result": "Walk over, ask, walk back. Two minutes."
       }
     },
     "steps": {
@@ -1279,63 +1248,6 @@
         }
       },
       "also": "Also on every floor"
-    },
-    "trust": {
-      "title": "Built to be trusted.",
-      "items": {
-        "private": {
-          "title": "Private by design",
-          "body": "An office floor is only for its members. Nothing is public, and nothing is indexed."
-        },
-        "network": {
-          "title": "On Cloudflare's network",
-          "body": "Pages, chat and calls run on Cloudflare's global network, close to wherever your team is, and connect on any office or home network."
-        },
-        "install": {
-          "title": "Nothing to install",
-          "body": "It's a web page. On a desktop, a laptop or a phone, it opens the same way, and it's always the latest version."
-        }
-      },
-      "muted": "Private, close to your team, and nothing to install.",
-      "stack": "What it runs on"
-    },
-    "plans": {
-      "title": "Start free.",
-      "muted": "Grow when you're ready.",
-      "free": {
-        "name": "Free",
-        "price": "$0",
-        "per": "for up to 3 people",
-        "cta": "Make your office",
-        "items": [
-          "A private floor for your team",
-          "Proximity calls and meeting tables",
-          "Screen sharing",
-          "Channels and direct messages",
-          "Invite links for your team"
-        ]
-      },
-      "soon": {
-        "name": "Bigger plans",
-        "badge": "Coming soon",
-        "body": "For teams that outgrow three seats. Start free today, and your office carries over when they arrive.",
-        "cta": "Try the lobby first",
-        "items": [
-          "More seats for bigger teams",
-          "Images and files in chat",
-          "More meeting time"
-        ]
-      },
-      "note": "No card needed. Your office is ready in a minute."
-    },
-    "faq": {
-      "title": "Questions,",
-      "muted": "answered.",
-      "note": "Still wondering about something? The public lobby is open to anyone, so you can walk in and see for yourself."
-    },
-    "final": {
-      "title": "Give your team a floor to share.",
-      "body": "Make an office in a minute and send your team the link. Or walk into the public lobby and see how it feels first."
     },
     "preview": {
       "office": "Northwind",
@@ -1393,11 +1305,6 @@
       "about": "About",
       "privacy": "Privacy",
       "terms": "Terms"
-    },
-    "cases": {
-      "title": "One floor,",
-      "muted": "many ways to use it.",
-      "body": "Teams make it their office. Friends make it a study room. Teachers hold office hours in it. Pick yours."
     }
   },
   "legal": {
@@ -1419,5 +1326,126 @@
     "website": "Website",
     "elsewhere": "TinyFloor elsewhere",
     "contact": "Write to us"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Sign in",
+      "getStarted": "Get started",
+      "menu": "Menu",
+      "main": "Main"
+    },
+    "hero": {
+      "title": "Your remote team,",
+      "muted": "on one floor.",
+      "body": "A small virtual office in the browser. See who's in, walk over to talk, and get back to work. Nothing to schedule, nothing to install.",
+      "cta": "Make your office",
+      "lobby": "Walk into the lobby",
+      "note": "Free for up to 3 people · No card needed",
+      "film": "TinyFloor: a message comes in, the chat opens, then a call with the teammate beside you"
+    },
+    "floor": {
+      "eyebrow": "On the floor",
+      "title": "Talk the way you would",
+      "muted": "if you sat together.",
+      "body": "A quick question takes a walk, not a calendar invite. The rest of the day stays quiet.",
+      "seen": {
+        "title": "See who's in",
+        "body": "Everyone has a desk and a status. You can tell who's heads down before you ask."
+      },
+      "walk": {
+        "title": "Walk over to talk",
+        "body": "Walk up to someone and call them in one click. Walk away and the call ends."
+      },
+      "sit": {
+        "title": "Pull up a chair",
+        "body": "The meeting room is down the hall. Take a seat and you're in the meeting."
+      }
+    },
+    "more": {
+      "eyebrow": "Everything else",
+      "title": "What a small team needs.",
+      "muted": "Nothing it doesn't.",
+      "items": {
+        "chat": {
+          "title": "Channels and messages",
+          "body": "Chat that stays, beside the floor. Catch up from your phone."
+        },
+        "screen": {
+          "title": "Screen sharing",
+          "body": "Share a window with whoever you're talking to, in one click."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "A shared board on the wall, for the sketch that explains it."
+        },
+        "music": {
+          "title": "Music",
+          "body": "A jukebox in the lounge, for the hours that need one."
+        },
+        "noise": {
+          "title": "Noise removal",
+          "body": "Keyboards and cafés stay out of the call."
+        },
+        "devices": {
+          "title": "On any device",
+          "body": "It's a web page. Laptop or phone, it opens the same way."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "Priced by the office,",
+      "muted": "not by the person.",
+      "body": "Start free. Guests never count toward your people.",
+      "soon": "Coming soon",
+      "forever": "forever",
+      "month": "a month",
+      "people": "Up to {count} people",
+      "free": {
+        "name": "Free",
+        "body": "The whole product, for a small studio or a pair of founders.",
+        "items": [
+          "A private floor",
+          "Calls and meetings",
+          "Channels and messages",
+          "Guests on a link"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "body": "One price for the whole office, however many of the ten you fill.",
+        "items": [
+          "Everything in Free",
+          "Images and files in chat",
+          "As many guest links as you like",
+          "Yearly: two months free"
+        ]
+      },
+      "office": {
+        "name": "Office",
+        "body": "For the team that has outgrown one row of desks.",
+        "items": [
+          "Everything in Team",
+          "Room for 25 members",
+          "Priority support",
+          "Bigger? Talk to us"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Questions,",
+      "muted": "answered.",
+      "more": "Still wondering? <lobby>Walk into the lobby</lobby> and see for yourself."
+    },
+    "closing": {
+      "title": "Give your team",
+      "muted": "a floor to share.",
+      "note": "Free for up to 3 people · Runs on Cloudflare"
+    }
   }
 }

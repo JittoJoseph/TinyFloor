@@ -1,6 +1,10 @@
 import { cn } from "@/lib/utils";
 
-/** The mark for the lobby and anywhere the product speaks for itself: a floor tile, from above. */
+/**
+ * The mark for the lobby and anywhere the product speaks for itself: a floor
+ * tile, from above. The four squares inside are rounded in the same proportion
+ * as the tile itself (30% of their side), so inside and outside agree.
+ */
 export function Logo({ size = 36, className }: { size?: number; className?: string }) {
   return (
     <span
@@ -8,11 +12,11 @@ export function Logo({ size = 36, className }: { size?: number; className?: stri
       style={{ width: size, height: size }}
       aria-hidden
     >
-      <svg viewBox="0 0 16 16" width={size * 0.5} height={size * 0.5} shapeRendering="crispEdges">
-        <rect x="1" y="1" width="6" height="6" fill="currentColor" />
-        <rect x="9" y="1" width="6" height="6" fill="currentColor" opacity="0.45" />
-        <rect x="1" y="9" width="6" height="6" fill="currentColor" opacity="0.45" />
-        <rect x="9" y="9" width="6" height="6" fill="var(--ui-brand)" />
+      <svg viewBox="0 0 16 16" width={size * 0.5} height={size * 0.5}>
+        <rect x="1" y="1" width="6" height="6" rx="1.8" fill="currentColor" />
+        <rect x="9" y="1" width="6" height="6" rx="1.8" fill="currentColor" opacity="0.45" />
+        <rect x="1" y="9" width="6" height="6" rx="1.8" fill="currentColor" opacity="0.45" />
+        <rect x="9" y="9" width="6" height="6" rx="1.8" fill="var(--ui-brand)" />
       </svg>
     </span>
   );

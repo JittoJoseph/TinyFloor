@@ -6,10 +6,8 @@
     }
   </style>
   <rect class="tile" width="32" height="32" rx="9.6"/>
-  <g shape-rendering="crispEdges">
-    <rect class="ink" x="7" y="7" width="8" height="8"/>
-    <rect class="ink" x="17" y="7" width="8" height="8" opacity="0.45"/>
-    <rect class="ink" x="7" y="17" width="8" height="8" opacity="0.45"/>
-    <rect class="brand" x="17" y="17" width="8" height="8"/>
-  </g>
+  <rect class="ink" x="7" y="7" width="8" height="8" rx="2.4"/>
+  <rect class="ink" x="17" y="7" width="8" height="8" rx="2.4" opacity="0.45"/>
+  <rect class="ink" x="7" y="17" width="8" height="8" rx="2.4" opacity="0.45"/>
+  <rect class="brand" x="17" y="17" width="8" height="8" rx="2.4"/>
 </svg>

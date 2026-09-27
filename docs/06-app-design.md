@@ -2,7 +2,7 @@
 
 Everything a signed-in person or a lobby visitor sees — the dashboard, the door,
 the office shell, the floor's chrome, chat, people, settings, sign-in — moves to
-one design system. The landing pages keep theirs for now.
+one design system, and so does the marketing site (see "The home page").
 
 The current look (warm grey Braun panels, Nunito, letter avatars, rows that run
 the width of the screen) reads as a prototype. The goal is a product that feels
@@ -43,8 +43,8 @@ one of them needs only `motion`, `clsx`, `tailwind-merge` and `lucide-react`.
 
 Components land in `src/components/motion/` exactly as the registry ships them,
 restyled onto our tokens. Our own composites (avatar, person chip, shell) live
-in `src/components/ui/` and `src/components/app/`. The landing pages import none
-of it, so they carry none of the weight.
+in `src/components/ui/` and `src/components/app/`. The marketing pages import none
+of `motion`, so they carry none of its weight.
 
 ## Tokens
 
@@ -75,8 +75,8 @@ panels; `xl` for inputs.
 
 `system` by default, `light` and `dark` by choice, stored in `localStorage`
 (`tf-theme`). A four-line script in the app layout sets the class before first
-paint, so there is no flash. The choice lives in the avatar menu. Only the app
-routes apply it; the landing pages stay light until they get the same treatment.
+paint, so there is no flash. The choice lives in the avatar menu, and in the
+marketing pages' footer.
 
 ## People have faces, and we store none of them
 
@@ -325,33 +325,33 @@ differs from the plan, or adds to it:
 
 ## The home page
 
-Every marketing page (the home page and the use case and comparison pages in
-`components/landing`) is built from the same pieces in `components/home/Blocks.tsx`:
-the page shell, headings, the two ways in, the product preview, the questions
-and the last ask. Styling is Tailwind utilities only; there is no page CSS. It uses the same tokens and the
-same theme as the app: system by default, light or dark from its footer, set
-before first paint by the root layout's script (which now covers "/").
+Every marketing page (the home page, the use case and comparison pages in
+`components/landing`, About, Privacy and Terms) is built from the same pieces
+in `components/home/Blocks.tsx`: the shell (the site's nav, the footer), the
+hero, the two ways in, the floor's three moments, the notes, the plans, the
+questions and the last ask. Same tokens and theme as the app, and the app's
+face, Geist.
 
-- **Its own face.** The page's words are set in Nunito; the previews keep the
-  app's face, so they read as the app. The app's own
-  routes never change font.
-- **Built around previews.** The hero is the app's shell in miniature with four
-  tabs (floor, chat, people, a meeting), and each feature row shows the app
-  doing that one thing. The previews are server-rendered markup drawn with the
-  app's own pieces (faces, the office art and walking characters, the bar you
-  get beside someone, call cards, member cards); none of them are screenshots,
-  so they follow the theme and every language.
-- **Honest.** No invented customers, logos, reviews or numbers. The trust
-  section names the Cloudflare services TinyFloor actually runs on, and the
-  plans say only what is true today; bigger plans are "coming soon" with no
-  price or date.
-- **Light.** The only scripts are the hero's tab switcher, the nav's signed-in
-  check and the footer's theme switch. The FAQ is native `<details>` that
-  slides open where the browser can animate to `auto`; the globe is SVG
-  computed on the server; the language list is plain links.
-- **Layout from the references:** Gleap for the nav (two menus that open into
-  a wide panel with a dark card on the right), the centred hero and two-tone
-  headlines; ElevenLabs for the hero's tabbed product panel on a plain tray;
-  a bento of cards whose previews run off their bottom edge for the product
-  itself; a light Cloudflare touch (one ruled sheet with corner marks) for
-  everything else, and for the network card; ClickUp for the footer.
+- **Quiet.** One statement per section, set large in the regular weight,
+  centred, with plenty of room. The second half of a headline is a quieter grey,
+  never a colour.
+- **No borders.** Surfaces are told apart by fill, the way the door is: muted
+  cards, the bezel's black for the one dark section and the featured plan,
+  tables whose rows are fills with the canvas between them.
+- **The app, running.** Under the hero is a 13-second film of the real app in
+  its dark theme (`public/hero/`, about 440 KB AV1 with an H.264 fallback and a
+  75 KB poster). Nobody walks; everyone idles, so it compresses well and never
+  stutters. It is recorded frame by frame from `/video-demo?cut=readme`.
+  It is paused off screen and held on the poster for reduced motion.
+- **The two ways in** are one joined control: ink for making an office, stone
+  for the lobby. The nav's own ask is Get started.
+- **The last ask** is a loose arc of office squircles over a plain canvas, after
+  Gleap's.
+- **Anchors the nav links to** are on the sections: #floor, #people,
+  #meetings, #chat, #invites, #plans, #faq.
+- **Honest.** No invented customers, logos or numbers. The paid plans show
+  their prices marked Coming soon until billing exists.
+- **Light.** Server-rendered; the scripts are the nav's, the theme switch and
+  the film. The FAQ is native `<details>`, and the page's questions are also its
+  FAQPage schema. The copy is in `homepage.*` in every language.
+

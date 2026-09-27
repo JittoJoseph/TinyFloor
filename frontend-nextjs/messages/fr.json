@@ -1161,7 +1161,8 @@
         "onlineStudyRoom": "Étudiez avec vos amis",
         "virtualClassroom": "Permanences et petits cours",
         "proximityChat": "Parlez à qui vous rejoignez"
-      }
+      },
+      "getStarted": "Commencer"
     },
     "hero": {
       "title": "Un bureau virtuel dans lequel votre équipe peut se promener.",
@@ -1205,38 +1206,6 @@
         "body": "Envoyez un lien d'invitation, ou invitez par e-mail. Ils choisissent un nom et un personnage, créent un compte gratuit, et les voilà sur l'étage."
       }
     },
-    "versus": {
-      "title": "Une petite question",
-      "muted": "ne devrait pas demander une invitation.",
-      "body": "Dans la plupart des équipes à distance, poser une question demande un message, une invitation et un lien de réunion. Dans un bureau virtuel, vous allez voir la personne, comme au travail.",
-      "before": {
-        "label": "Sans étage",
-        "items": [
-          {
-            "title": "Jack, tu as 5 minutes aujourd'hui ?",
-            "body": "Envoyé 9:41 · Vu"
-          },
-          {
-            "title": "Point rapide",
-            "body": "Demain, 10:30 à 11:00 · Invitation de Jack"
-          },
-          {
-            "title": "Rejoindre l'appel vidéo",
-            "body": "En attente que l'hôte vous fasse entrer"
-          },
-          {
-            "title": "Tu peux passer en appel ?",
-            "body": "3 messages non lus"
-          }
-        ],
-        "result": "Un jour plus tard : une réunion de 30 minutes pour une question de 2 minutes."
-      },
-      "after": {
-        "label": "Sur TinyFloor",
-        "you": "Vous",
-        "result": "Aller voir, demander, revenir. Deux minutes."
-      }
-    },
     "steps": {
       "title": "Créez un bureau virtuel en une minute.",
       "muted": "Rien à télécharger, pas de carte bancaire.",
@@ -1254,11 +1223,6 @@
       },
       "joined": "{count} arrivés aujourd'hui",
       "walkedIn": "{name} est entré"
-    },
-    "cases": {
-      "title": "Un seul étage,",
-      "muted": "mille façons de s'en servir.",
-      "body": "Les équipes en font leur bureau. Les amis, une salle d'étude. Les enseignants y tiennent leurs permanences. À vous de choisir."
     },
     "more": {
       "title": "Tout ce dont votre équipe à distance a besoin,",
@@ -1284,63 +1248,6 @@
         }
       },
       "also": "Aussi sur chaque étage"
-    },
-    "trust": {
-      "title": "Conçu pour la confiance.",
-      "items": {
-        "private": {
-          "title": "Privé par conception",
-          "body": "Un étage de bureau n'est ouvert qu'à ses membres. Rien n'est public, rien n'est indexé."
-        },
-        "network": {
-          "title": "Sur le réseau de Cloudflare",
-          "body": "Pages, chat et appels passent par le réseau mondial de Cloudflare, au plus près de votre équipe, et se connectent sur n'importe quel réseau, au bureau ou à la maison."
-        },
-        "install": {
-          "title": "Rien à installer",
-          "body": "C'est une page web. Sur un ordinateur, un portable ou un téléphone, elle s'ouvre de la même façon, et c'est toujours la dernière version."
-        }
-      },
-      "muted": "Privé, proche de votre équipe, et rien à installer.",
-      "stack": "Ce qui le fait tourner"
-    },
-    "plans": {
-      "title": "Commencez gratuitement.",
-      "muted": "Grandissez quand vous êtes prêts.",
-      "free": {
-        "name": "Gratuit",
-        "price": "$0",
-        "per": "jusqu'à 3 personnes",
-        "cta": "Créer votre bureau",
-        "items": [
-          "Un étage privé pour votre équipe",
-          "Appels de proximité et tables de réunion",
-          "Partage d'écran",
-          "Canaux et messages privés",
-          "Des liens d'invitation pour votre équipe"
-        ]
-      },
-      "soon": {
-        "name": "Offres plus grandes",
-        "badge": "Bientôt",
-        "body": "Pour les équipes qui dépassent trois places. Commencez gratuitement aujourd'hui, votre bureau sera conservé à leur arrivée.",
-        "cta": "Essayer d'abord le hall",
-        "items": [
-          "Plus de places pour les grandes équipes",
-          "Images et fichiers dans le chat",
-          "Plus de temps de réunion"
-        ]
-      },
-      "note": "Aucune carte requise. Votre bureau est prêt en une minute."
-    },
-    "faq": {
-      "title": "Vos questions,",
-      "muted": "nos réponses.",
-      "note": "Encore une question ? Le hall public est ouvert à tous : entrez et voyez par vous-même."
-    },
-    "final": {
-      "title": "Offrez à votre équipe un étage à partager.",
-      "body": "Créez un bureau en une minute et envoyez le lien à votre équipe. Ou entrez d'abord dans le hall public pour voir ce que ça donne."
     },
     "preview": {
       "office": "Northwind",
@@ -1419,5 +1326,126 @@
     "website": "Site web",
     "elsewhere": "TinyFloor ailleurs",
     "contact": "Nous écrire"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Produit",
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Se connecter",
+      "getStarted": "Commencer",
+      "menu": "Menu",
+      "main": "Principal"
+    },
+    "hero": {
+      "title": "Votre équipe à distance,",
+      "muted": "sur un seul étage.",
+      "body": "Un petit bureau virtuel dans le navigateur. Voyez qui est là, allez parler, puis retournez au travail. Rien à planifier, rien à installer.",
+      "cta": "Créer votre bureau",
+      "lobby": "Entrer dans le lobby",
+      "note": "Gratuit jusqu'à 3 personnes · Sans carte bancaire",
+      "film": "TinyFloor : un message arrive, le chat s'ouvre, puis un appel avec le collègue à côté de vous"
+    },
+    "floor": {
+      "eyebrow": "Sur l'étage",
+      "title": "Parlez comme vous le feriez",
+      "muted": "si vous étiez côte à côte.",
+      "body": "Une petite question se règle en quelques pas, pas avec une invitation. Le reste de la journée reste calme.",
+      "seen": {
+        "title": "Voir qui est là",
+        "body": "Chacun a un bureau et un statut. Vous savez qui est concentré avant de demander."
+      },
+      "walk": {
+        "title": "Aller parler",
+        "body": "Approchez-vous de quelqu'un et appelez-le en un clic. Éloignez-vous et l'appel se termine."
+      },
+      "sit": {
+        "title": "Prendre une chaise",
+        "body": "La salle de réunion est au bout du couloir. Asseyez-vous et vous êtes en réunion."
+      }
+    },
+    "more": {
+      "eyebrow": "Tout le reste",
+      "title": "Ce dont une petite équipe a besoin.",
+      "muted": "Rien de plus.",
+      "items": {
+        "chat": {
+          "title": "Canaux et messages",
+          "body": "Un chat qui reste, à côté de l'étage. Rattrapez-vous depuis votre téléphone."
+        },
+        "screen": {
+          "title": "Partage d'écran",
+          "body": "Partagez une fenêtre avec votre interlocuteur, en un clic."
+        },
+        "whiteboard": {
+          "title": "Tableau blanc",
+          "body": "Un tableau partagé au mur, pour le croquis qui explique tout."
+        },
+        "music": {
+          "title": "Musique",
+          "body": "Un jukebox dans le salon, pour les heures qui en ont besoin."
+        },
+        "noise": {
+          "title": "Suppression du bruit",
+          "body": "Claviers et cafés restent hors de l'appel."
+        },
+        "devices": {
+          "title": "Sur tous les appareils",
+          "body": "C'est une page web. Ordinateur ou téléphone, elle s'ouvre pareil."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Tarifs",
+      "title": "Tarifé au bureau,",
+      "muted": "pas à la personne.",
+      "body": "Commencez gratuitement. Les invités ne comptent jamais.",
+      "soon": "Bientôt",
+      "forever": "pour toujours",
+      "month": "par mois",
+      "people": "Jusqu'à {count} personnes",
+      "free": {
+        "name": "Free",
+        "body": "Tout le produit, pour un petit studio ou deux fondateurs.",
+        "items": [
+          "Un étage privé",
+          "Appels et réunions",
+          "Canaux et messages",
+          "Invités par lien"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "body": "Un seul prix pour tout le bureau, quel que soit le nombre de places occupées sur dix.",
+        "items": [
+          "Tout ce qu'offre Free",
+          "Images et fichiers dans le chat",
+          "Autant de liens invités que vous voulez",
+          "À l'année : deux mois offerts"
+        ]
+      },
+      "office": {
+        "name": "Office",
+        "body": "Pour l'équipe qui a dépassé une rangée de bureaux.",
+        "items": [
+          "Tout ce qu'offre Team",
+          "De la place pour 25 membres",
+          "Support prioritaire",
+          "Plus grand ? Parlons-en"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Vos questions,",
+      "muted": "nos réponses.",
+      "more": "Encore un doute ? <lobby>Entrez dans le lobby</lobby> et voyez par vous-même."
+    },
+    "closing": {
+      "title": "Offrez à votre équipe",
+      "muted": "un étage à partager.",
+      "note": "Gratuit jusqu'à 3 personnes · Fonctionne sur Cloudflare"
+    }
   }
 }

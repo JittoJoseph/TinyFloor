@@ -1161,7 +1161,8 @@
         "onlineStudyRoom": "Gemeinsam mit Freunden lernen",
         "virtualClassroom": "Sprechstunden und kleine Kurse",
         "proximityChat": "Sprich mit dem, zu dem du gehst"
-      }
+      },
+      "getStarted": "Loslegen"
     },
     "hero": {
       "title": "Ein virtuelles Büro, durch das dein Team laufen kann.",
@@ -1205,38 +1206,6 @@
         "body": "Schick einen Einladungslink oder lade per E-Mail ein. Sie wählen einen Namen und eine Figur, legen ein kostenloses Konto an und sind auf der Etage."
       }
     },
-    "versus": {
-      "title": "Eine kurze Frage",
-      "muted": "braucht keine Kalendereinladung.",
-      "body": "In den meisten Remote-Teams braucht eine Frage eine Nachricht, eine Einladung und einen Meeting-Link. In einem virtuellen Büro gehst du einfach rüber, wie bei der Arbeit.",
-      "before": {
-        "label": "Ohne Etage",
-        "items": [
-          {
-            "title": "Jack, hast du heute 5 Minuten?",
-            "body": "Gesendet 9:41 · Gesehen"
-          },
-          {
-            "title": "Kurzer Abgleich",
-            "body": "Morgen, 10:30 bis 11:00 · Einladung von Jack"
-          },
-          {
-            "title": "Dem Videoanruf beitreten",
-            "body": "Warte, bis der Host dich reinlässt"
-          },
-          {
-            "title": "Kannst du kurz in einen Call?",
-            "body": "3 ungelesene Nachrichten"
-          }
-        ],
-        "result": "Einen Tag später: ein 30-Minuten-Meeting für eine 2-Minuten-Frage."
-      },
-      "after": {
-        "label": "Auf TinyFloor",
-        "you": "Du",
-        "result": "Rübergehen, fragen, zurückgehen. Zwei Minuten."
-      }
-    },
     "steps": {
       "title": "Richte in einer Minute ein virtuelles Büro ein.",
       "muted": "Kein Download, keine Kreditkarte.",
@@ -1254,11 +1223,6 @@
       },
       "joined": "{count} heute dazugekommen",
       "walkedIn": "{name} ist reingekommen"
-    },
-    "cases": {
-      "title": "Eine Etage,",
-      "muted": "viele Möglichkeiten.",
-      "body": "Teams machen sie zu ihrem Büro. Freunde zu ihrem Lernraum. Lehrkräfte halten darin Sprechstunden. Such dir deins aus."
     },
     "more": {
       "title": "Alles, was dein Remote-Team braucht,",
@@ -1284,63 +1248,6 @@
         }
       },
       "also": "Auf jeder Etage dabei"
-    },
-    "trust": {
-      "title": "Gebaut für Vertrauen.",
-      "items": {
-        "private": {
-          "title": "Privat von Grund auf",
-          "body": "Eine Bürofläche gehört nur ihren Mitgliedern. Nichts ist öffentlich, nichts wird indexiert."
-        },
-        "network": {
-          "title": "Im Netz von Cloudflare",
-          "body": "Seiten, Chat und Anrufe laufen im globalen Netz von Cloudflare, nah an deinem Team, und verbinden sich in jedem Büro- oder Heimnetz."
-        },
-        "install": {
-          "title": "Nichts zu installieren",
-          "body": "Es ist eine Webseite. Auf Desktop, Laptop oder Handy öffnet sie sich gleich, und sie ist immer auf dem neuesten Stand."
-        }
-      },
-      "muted": "Privat, nah an deinem Team und nichts zu installieren.",
-      "stack": "Worauf es läuft"
-    },
-    "plans": {
-      "title": "Starte kostenlos.",
-      "muted": "Wachse, wenn du bereit bist.",
-      "free": {
-        "name": "Kostenlos",
-        "price": "$0",
-        "per": "für bis zu 3 Personen",
-        "cta": "Büro einrichten",
-        "items": [
-          "Eine private Fläche für dein Team",
-          "Nähe-Anrufe und Besprechungstische",
-          "Bildschirm teilen",
-          "Kanäle und Direktnachrichten",
-          "Einladungslinks für dein Team"
-        ]
-      },
-      "soon": {
-        "name": "Größere Pläne",
-        "badge": "Bald verfügbar",
-        "body": "Für Teams, die über drei Plätze hinauswachsen. Starte heute kostenlos, dein Büro bleibt erhalten, wenn sie kommen.",
-        "cta": "Erst die Lobby ausprobieren",
-        "items": [
-          "Mehr Plätze für größere Teams",
-          "Bilder und Dateien im Chat",
-          "Mehr Meeting-Zeit"
-        ]
-      },
-      "note": "Keine Karte nötig. Dein Büro steht in einer Minute."
-    },
-    "faq": {
-      "title": "Fragen,",
-      "muted": "beantwortet.",
-      "note": "Noch Fragen? Die öffentliche Lobby ist für alle offen, also geh rein und sieh selbst."
-    },
-    "final": {
-      "title": "Gib deinem Team eine gemeinsame Etage.",
-      "body": "Richte in einer Minute ein Büro ein und schick deinem Team den Link. Oder geh zuerst in die öffentliche Lobby und schau, wie es sich anfühlt."
     },
     "preview": {
       "office": "Northwind",
@@ -1419,5 +1326,126 @@
     "website": "Website",
     "elsewhere": "TinyFloor im Netz",
     "contact": "Schreib uns"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Produkt",
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Anmelden",
+      "getStarted": "Loslegen",
+      "menu": "Menü",
+      "main": "Hauptmenü"
+    },
+    "hero": {
+      "title": "Dein Remote-Team,",
+      "muted": "auf einer Etage.",
+      "body": "Ein kleines virtuelles Büro im Browser. Sieh, wer da ist, geh rüber zum Reden und arbeite weiter. Nichts zu planen, nichts zu installieren.",
+      "cta": "Büro erstellen",
+      "lobby": "Lobby betreten",
+      "note": "Kostenlos für bis zu 3 Personen · Keine Karte nötig",
+      "film": "TinyFloor: Eine Nachricht kommt an, der Chat öffnet sich, dann ein Anruf mit der Kollegin nebenan"
+    },
+    "floor": {
+      "eyebrow": "Auf der Etage",
+      "title": "Sprecht miteinander,",
+      "muted": "als säßet ihr zusammen.",
+      "body": "Eine kurze Frage braucht einen Gang, keine Kalendereinladung. Der Rest des Tages bleibt ruhig.",
+      "seen": {
+        "title": "Sieh, wer da ist",
+        "body": "Alle haben einen Schreibtisch und einen Status. Du siehst, wer konzentriert arbeitet, bevor du fragst."
+      },
+      "walk": {
+        "title": "Hingehen und reden",
+        "body": "Geh zu jemandem und ruf mit einem Klick an. Geh weg, und der Anruf endet."
+      },
+      "sit": {
+        "title": "Setz dich dazu",
+        "body": "Der Besprechungsraum ist den Flur runter. Nimm Platz, und du bist im Meeting."
+      }
+    },
+    "more": {
+      "eyebrow": "Alles Weitere",
+      "title": "Was ein kleines Team braucht.",
+      "muted": "Nichts, was es nicht braucht.",
+      "items": {
+        "chat": {
+          "title": "Kanäle und Nachrichten",
+          "body": "Ein Chat, der bleibt, neben der Etage. Vom Handy aus aufholen."
+        },
+        "screen": {
+          "title": "Bildschirm teilen",
+          "body": "Teile ein Fenster mit deinem Gegenüber, mit einem Klick."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Eine gemeinsame Tafel an der Wand, für die Skizze, die es erklärt."
+        },
+        "music": {
+          "title": "Musik",
+          "body": "Eine Jukebox in der Lounge, für die Stunden, die eine brauchen."
+        },
+        "noise": {
+          "title": "Rauschunterdrückung",
+          "body": "Tastaturen und Cafés bleiben aus dem Anruf draußen."
+        },
+        "devices": {
+          "title": "Auf jedem Gerät",
+          "body": "Es ist eine Webseite. Laptop oder Handy, sie öffnet sich gleich."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Preise",
+      "title": "Bezahlt wird pro Büro,",
+      "muted": "nicht pro Person.",
+      "body": "Starte kostenlos. Gäste zählen nie zu deinen Personen.",
+      "soon": "Demnächst",
+      "forever": "für immer",
+      "month": "pro Monat",
+      "people": "Bis zu {count} Personen",
+      "free": {
+        "name": "Free",
+        "body": "Das ganze Produkt, für ein kleines Studio oder ein Gründerduo.",
+        "items": [
+          "Eine private Etage",
+          "Anrufe und Meetings",
+          "Kanäle und Nachrichten",
+          "Gäste per Link"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "body": "Ein Preis für das ganze Büro, egal wie viele der zehn Plätze belegt sind.",
+        "items": [
+          "Alles aus Free",
+          "Bilder und Dateien im Chat",
+          "Beliebig viele Gastlinks",
+          "Jährlich: zwei Monate gratis"
+        ]
+      },
+      "office": {
+        "name": "Office",
+        "body": "Für das Team, dem eine Schreibtischreihe zu klein geworden ist.",
+        "items": [
+          "Alles aus Team",
+          "Platz für 25 Mitglieder",
+          "Bevorzugter Support",
+          "Größer? Sprich uns an"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Fragen,",
+      "muted": "beantwortet.",
+      "more": "Noch unsicher? <lobby>Betritt die Lobby</lobby> und sieh selbst."
+    },
+    "closing": {
+      "title": "Gib deinem Team",
+      "muted": "eine gemeinsame Etage.",
+      "note": "Kostenlos für bis zu 3 Personen · Läuft auf Cloudflare"
+    }
   }
 }

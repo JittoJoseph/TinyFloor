@@ -1161,7 +1161,8 @@
         "onlineStudyRoom": "Samen studeren met vrienden",
         "virtualClassroom": "Spreekuren en kleine klassen",
         "proximityChat": "Praat met wie je tegenkomt"
-      }
+      },
+      "getStarted": "Aan de slag"
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
@@ -1205,38 +1206,6 @@
         "body": "Stuur een uitnodigingslink of nodig uit per e-mail. Ze kiezen een naam en een personage, maken een gratis account en staan op de verdieping."
       }
     },
-    "versus": {
-      "title": "Een korte vraag",
-      "muted": "hoort geen agenda-uitnodiging nodig te hebben.",
-      "body": "In de meeste remote teams kost een vraag een bericht, een uitnodiging en een vergaderlink. In een virtueel kantoor loop je erheen, zoals op kantoor.",
-      "before": {
-        "label": "Zonder verdieping",
-        "items": [
-          {
-            "title": "Jack, heb je vandaag 5 minuten?",
-            "body": "Verstuurd 9:41 · Gezien"
-          },
-          {
-            "title": "Korte afstemming",
-            "body": "Morgen, 10:30 tot 11:00 · Uitnodiging van Jack"
-          },
-          {
-            "title": "Deelnemen aan videogesprek",
-            "body": "Wachten tot de host je binnenlaat"
-          },
-          {
-            "title": "Kun je even bellen?",
-            "body": "3 ongelezen berichten"
-          }
-        ],
-        "result": "Een dag later: een meeting van 30 minuten voor een vraag van 2."
-      },
-      "after": {
-        "label": "Op TinyFloor",
-        "you": "Jij",
-        "result": "Erheen lopen, vragen, teruglopen. Twee minuten."
-      }
-    },
     "steps": {
       "title": "Zet in een minuut een virtueel kantoor op.",
       "muted": "Geen downloads, geen creditcard.",
@@ -1254,11 +1223,6 @@
       },
       "joined": "{count} vandaag binnengekomen",
       "walkedIn": "{name} kwam binnen"
-    },
-    "cases": {
-      "title": "Eén verdieping,",
-      "muted": "veel manieren om hem te gebruiken.",
-      "body": "Teams maken er hun kantoor van. Vrienden een studieruimte. Docenten houden er spreekuur. Kies de jouwe."
     },
     "more": {
       "title": "Alles wat je remote team nodig heeft,",
@@ -1284,63 +1248,6 @@
         }
       },
       "also": "Ook op elke verdieping"
-    },
-    "trust": {
-      "title": "Gebouwd op vertrouwen.",
-      "items": {
-        "private": {
-          "title": "Privé vanaf het begin",
-          "body": "Een kantoorvloer is alleen voor de leden. Niets is openbaar en niets wordt geïndexeerd."
-        },
-        "network": {
-          "title": "Op het netwerk van Cloudflare",
-          "body": "Pagina's, chat en gesprekken draaien op het wereldwijde netwerk van Cloudflare, dicht bij je team, en verbinden op elk kantoor- of thuisnetwerk."
-        },
-        "install": {
-          "title": "Niets te installeren",
-          "body": "Het is een webpagina. Op desktop, laptop of telefoon opent hij hetzelfde, en het is altijd de nieuwste versie."
-        }
-      },
-      "muted": "Privé, dicht bij je team en niets te installeren.",
-      "stack": "Waar het op draait"
-    },
-    "plans": {
-      "title": "Begin gratis.",
-      "muted": "Groei wanneer je er klaar voor bent.",
-      "free": {
-        "name": "Gratis",
-        "price": "$0",
-        "per": "tot 3 mensen",
-        "cta": "Maak je kantoor",
-        "items": [
-          "Een privévloer voor je team",
-          "Gesprekken op afstand en vergadertafels",
-          "Scherm delen",
-          "Kanalen en privéberichten",
-          "Uitnodigingslinks voor je team"
-        ]
-      },
-      "soon": {
-        "name": "Grotere abonnementen",
-        "badge": "Binnenkort",
-        "body": "Voor teams die groter worden dan drie plekken. Begin vandaag gratis, je kantoor blijft als ze er zijn.",
-        "cta": "Probeer eerst de lobby",
-        "items": [
-          "Meer plekken voor grotere teams",
-          "Afbeeldingen en bestanden in de chat",
-          "Meer vergadertijd"
-        ]
-      },
-      "note": "Geen creditcard nodig. Je kantoor staat binnen een minuut klaar."
-    },
-    "faq": {
-      "title": "Vragen,",
-      "muted": "beantwoord.",
-      "note": "Vraag je je nog iets af? De openbare lobby is voor iedereen open, dus loop binnen en zie het zelf."
-    },
-    "final": {
-      "title": "Geef je team een verdieping om te delen.",
-      "body": "Maak in een minuut een kantoor en stuur je team de link. Of loop eerst de openbare lobby in en kijk hoe het voelt."
     },
     "preview": {
       "office": "Northwind",
@@ -1419,5 +1326,126 @@
     "website": "Website",
     "elsewhere": "TinyFloor elders",
     "contact": "Schrijf ons"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Product",
+      "features": "Functies",
+      "pricing": "Prijzen",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Inloggen",
+      "getStarted": "Aan de slag",
+      "menu": "Menu",
+      "main": "Hoofdmenu"
+    },
+    "hero": {
+      "title": "Je remote team,",
+      "muted": "op één verdieping.",
+      "body": "Een klein virtueel kantoor in de browser. Zie wie er is, loop langs om te praten en ga weer aan het werk. Niets te plannen, niets te installeren.",
+      "cta": "Maak je kantoor",
+      "lobby": "Loop de lobby in",
+      "note": "Gratis voor maximaal 3 mensen · Geen creditcard nodig",
+      "film": "TinyFloor: er komt een bericht binnen, de chat opent, daarna een gesprek met de collega naast je"
+    },
+    "floor": {
+      "eyebrow": "Op de verdieping",
+      "title": "Praat zoals je zou doen",
+      "muted": "als je naast elkaar zat.",
+      "body": "Een snelle vraag is een wandelingetje, geen agenda-uitnodiging. De rest van de dag blijft rustig.",
+      "seen": {
+        "title": "Zie wie er is",
+        "body": "Iedereen heeft een bureau en een status. Je ziet wie geconcentreerd werkt voordat je iets vraagt."
+      },
+      "walk": {
+        "title": "Loop langs om te praten",
+        "body": "Loop naar iemand toe en bel met één klik. Loop weg en het gesprek stopt."
+      },
+      "sit": {
+        "title": "Schuif aan",
+        "body": "De vergaderruimte is verderop in de gang. Ga zitten en je bent in de vergadering."
+      }
+    },
+    "more": {
+      "eyebrow": "Al het andere",
+      "title": "Wat een klein team nodig heeft.",
+      "muted": "Niets meer dan dat.",
+      "items": {
+        "chat": {
+          "title": "Kanalen en berichten",
+          "body": "Chat die blijft, naast de verdieping. Lees bij op je telefoon."
+        },
+        "screen": {
+          "title": "Scherm delen",
+          "body": "Deel een venster met je gesprekspartner, met één klik."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "Een gedeeld bord aan de muur, voor de schets die het uitlegt."
+        },
+        "music": {
+          "title": "Muziek",
+          "body": "Een jukebox in de lounge, voor de uren die er een nodig hebben."
+        },
+        "noise": {
+          "title": "Ruisonderdrukking",
+          "body": "Toetsenborden en cafés blijven buiten het gesprek."
+        },
+        "devices": {
+          "title": "Op elk apparaat",
+          "body": "Het is een webpagina. Laptop of telefoon, hij opent hetzelfde."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Prijzen",
+      "title": "Prijs per kantoor,",
+      "muted": "niet per persoon.",
+      "body": "Begin gratis. Gasten tellen nooit mee.",
+      "soon": "Binnenkort",
+      "forever": "voor altijd",
+      "month": "per maand",
+      "people": "Tot {count} mensen",
+      "free": {
+        "name": "Free",
+        "body": "Het hele product, voor een kleine studio of twee oprichters.",
+        "items": [
+          "Een eigen verdieping",
+          "Gesprekken en vergaderingen",
+          "Kanalen en berichten",
+          "Gasten via een link"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
+        "items": [
+          "Alles van Free",
+          "Afbeeldingen en bestanden in de chat",
+          "Zoveel gastlinks als je wilt",
+          "Jaarlijks: twee maanden gratis"
+        ]
+      },
+      "office": {
+        "name": "Office",
+        "body": "Voor het team dat één rij bureaus is ontgroeid.",
+        "items": [
+          "Alles van Team",
+          "Ruimte voor 25 leden",
+          "Voorrang bij support",
+          "Groter? Neem contact op"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Vragen,",
+      "muted": "beantwoord.",
+      "more": "Twijfel je nog? <lobby>Loop de lobby in</lobby> en zie het zelf."
+    },
+    "closing": {
+      "title": "Geef je team",
+      "muted": "een verdieping om te delen.",
+      "note": "Gratis voor maximaal 3 mensen · Draait op Cloudflare"
+    }
   }
 }

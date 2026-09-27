@@ -8,10 +8,12 @@ import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, MessagesSquare, Plus, Us
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { lobbyChatPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettingsPath } from "@/lib/links";
+import { lobbyChatPath, lobbyMeetingsPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
+import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
+import { useCall } from "@/lib/useCall";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import { EntryDetail } from "@/components/entry/EntryShell";
@@ -45,6 +47,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
   const everyone = useFloor();
+  const { meetings } = useMeetings();
+  const { meeting: myMeeting } = useCall();
 
   // Anyone with a session already has a name and a character, so the door is only for someone new;
   // a new account first says who it is (see Introduce below).
@@ -70,6 +74,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
     return () => {
       chat.disconnect();
       clearFloor();
+      clearMeetings();
     };
   }, [inside]);
 
@@ -129,6 +134,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
   const onChat = on(lobbyChatPath());
   const onPeople = on(lobbyPeoplePath);
+  const onMeetings = on(lobbyMeetingsPath);
   const onSettings = on(lobbySettingsPath);
   const onOffice = on(lobbyOfficePath);
 
@@ -143,6 +149,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
       chat: lobbyChatPath,
       people: lobbyPeoplePath,
       settings: lobbySettingsPath,
+      meetings: lobbyMeetingsPath,
       yourOffice: lobbyOfficePath,
     },
     sharePath: lobbyPath,
@@ -161,9 +168,19 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
             href: lobbyPath,
             label: ts("floor"),
             icon: RailIcons.floor,
-            active: !onChat && !onPeople && !onSettings && !onOffice,
+            active: !onChat && !onPeople && !onMeetings && !onSettings && !onOffice,
           },
           { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+          {
+            key: "meetings",
+            href: lobbyMeetingsPath,
+            label: ts("meetings"),
+            icon: RailIcons.meetings,
+            active: onMeetings,
+            // Green while a meeting is on: how many are in them, and a ring when you are.
+            live: peopleInMeetings(meetings) || undefined,
+            joined: !!myMeeting,
+          },
           { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: RailIcons.people, active: onPeople },
           { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: RailIcons.office, active: onOffice, dot: !onOffice },
         ]}

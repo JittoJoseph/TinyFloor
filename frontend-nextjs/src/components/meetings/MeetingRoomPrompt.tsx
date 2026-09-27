@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Video, X } from "lucide-react";
 import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
-import { useRouter, Link } from "@/lib/i18n/navigation";
+import { useRouter } from "@/lib/i18n/navigation";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useInMeetingRoom, useMeetings } from "@/lib/meetings";
@@ -18,14 +18,12 @@ import { useMeetingName } from "./hooks";
 
 /**
  * Walking into the meeting room yourself doesn't put you in a meeting: it
- * offers one, the way a door with voices behind it does. The office's main
- * meeting first, and any others going on; in the lobby, where there are no
- * meetings, it says where they are.
+ * offers one, the way a door with voices behind it does: the busiest going,
+ * or the main one to start. The same in an office and in the lobby.
  */
 export function MeetingRoomPrompt() {
   const inRoom = useInMeetingRoom();
   const { meeting } = useCall();
-  const place = usePlace();
   // Closed once, it stays closed until you walk out and back in.
   const [closedFor, setClosedFor] = useState(false);
   const [wasInRoom, setWasInRoom] = useState(inRoom);
@@ -38,12 +36,7 @@ export function MeetingRoomPrompt() {
   return (
     <div className="pointer-events-none absolute inset-x-0 top-16 z-40 flex justify-center px-3 sm:top-4">
       <AnimatePresence>
-        {open &&
-          (place.kind === "office" ? (
-            <OfficePrompt key="office" onClose={() => setClosedFor(true)} />
-          ) : (
-            <LobbyPrompt key="lobby" onClose={() => setClosedFor(true)} />
-          ))}
+        {open && <RoomPrompt key="room" onClose={() => setClosedFor(true)} />}
       </AnimatePresence>
     </div>
   );
@@ -73,7 +66,7 @@ function offered(meetings: MeetingInfo[]): MeetingInfo {
   );
 }
 
-function OfficePrompt({ onClose }: { onClose: () => void }) {
+function RoomPrompt({ onClose }: { onClose: () => void }) {
   const t = useTranslations("meetings");
   const rise = useRise();
   const router = useRouter();
@@ -119,34 +112,6 @@ function OfficePrompt({ onClose }: { onClose: () => void }) {
         aria-label={t("notNow")}
         title={t("notNow")}
         className="flex size-[30px] shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-white/10 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
-      >
-        <X className="size-3.5" />
-      </button>
-    </motion.div>
-  );
-}
-
-/** In the lobby the meeting room is only a room: meetings come with an office of your own. */
-function LobbyPrompt({ onClose }: { onClose: () => void }) {
-  const t = useTranslations("meetings");
-  const rise = useRise();
-  const place = usePlace();
-  return (
-    <motion.div {...rise} role="dialog" aria-label={t("roomTitle")} className={cn(bezel, onBezel, "pointer-events-auto flex max-w-full items-center gap-2.5 rounded-full p-1.5 ps-4")}>
-      <p className="min-w-0 text-[13px] leading-snug text-foreground">{t("lobbyRoom")}</p>
-      {place.paths.yourOffice && (
-        <Link
-          href={place.paths.yourOffice}
-          className="inline-flex h-[30px] shrink-0 items-center rounded-full bg-foreground px-3.5 text-[13px] font-semibold text-background outline-none transition-colors hover:bg-foreground/85 focus-visible:ring-2 focus-visible:ring-ring/60"
-        >
-          {t("getOffice")}
-        </Link>
-      )}
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label={t("notNow")}
-        className="flex size-[30px] shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-white/10 hover:text-foreground"
       >
         <X className="size-3.5" />
       </button>

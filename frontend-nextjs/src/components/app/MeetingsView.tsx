@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
-import { useOffice } from "./OfficeShell";
+import { usePlace } from "./place";
 
 /** Faces the main meeting shows before the rest become "+n". */
 const MOST_FACES = 8;
@@ -21,18 +21,18 @@ const MOST_FACES = 8;
 const EMPTY_PLACES = 5;
 
 /**
- * Meetings, on the rail (docs/12-meetings.md). The office's main meeting is
+ * Meetings, on the rail (docs/12-meetings.md), in an office or the lobby. The main meeting is
  * always here to drop into, with anyone else's beside it; joining one walks
  * your character into the meeting room, and the meeting itself happens on
  * this page. Inside one, the page is the meeting's stage.
  */
 export function MeetingsView() {
-  const { office } = useOffice();
+  const place = usePlace();
   const mine = useMyMeeting();
   const { meeting } = useCall();
   // Just joined, before the room's list has caught up: the stage waits a beat.
-  if (meeting && mine) return <MeetingStage meeting={mine} office={office.name} />;
-  return <MeetingsLobby office={office.name} />;
+  if (meeting && mine) return <MeetingStage meeting={mine} office={place.name} />;
+  return <MeetingsLobby office={place.name} />;
 }
 
 function MeetingsLobby({ office }: { office: string }) {

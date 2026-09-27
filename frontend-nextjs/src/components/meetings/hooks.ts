@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
 import { useCall } from "@/lib/useCall";
 import { useMeetings } from "@/lib/meetings";
+import { usePlace } from "@/components/app/place";
 
 /** The meeting you are in, as the room lists it, if you are in one. */
 export function useMyMeeting(): MeetingInfo | null {
@@ -13,11 +14,12 @@ export function useMyMeeting(): MeetingInfo | null {
   return (meeting && meetings.find((one) => one.id === meeting)) || null;
 }
 
-/** A meeting's name as people see it: the office's for the main one, its own or its starter's for others. */
+/** A meeting's name as people see it: the office's (or the lobby's) for the main one, its own or its starter's for others. */
 export function useMeetingName() {
   const t = useTranslations("meetings");
+  const { kind } = usePlace();
   return (meeting: Pick<MeetingInfo, "id" | "name" | "by"> | null, office: string) => {
-    if (!meeting || meeting.id === MAIN_MEETING) return t("mainName", { office });
+    if (!meeting || meeting.id === MAIN_MEETING) return kind === "lobby" ? t("lobbyName") : t("mainName", { office });
     return meeting.name ?? t("byName", { name: meeting.by ?? "" });
   };
 }

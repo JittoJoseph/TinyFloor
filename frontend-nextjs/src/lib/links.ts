@@ -11,6 +11,7 @@ export const lobbyChatPath = (channel?: string) =>
   channel ? `${lobbyPath}/chat/${encodeURIComponent(channel)}` : `${lobbyPath}/chat`;
 export const lobbyPeoplePath = `${lobbyPath}/people`;
 export const lobbySettingsPath = `${lobbyPath}/settings`;
+export const lobbyMeetingsPath = `${lobbyPath}/meetings`;
 /** The lobby's page about getting a floor of your own. */
 export const lobbyOfficePath = `${lobbyPath}/your-office`;
 

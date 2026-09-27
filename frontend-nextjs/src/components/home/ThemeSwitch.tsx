@@ -11,10 +11,10 @@ const CHOICES: Array<{ value: ThemeChoice; icon: typeof Sun }> = [
 ];
 
 /** System, light or dark: the same choice the app keeps, from the footer. */
-export function ThemeSwitch({ label, names }: { label: string; names: Record<ThemeChoice, string> }) {
+export function ThemeSwitch({ label, names, className }: { label: string; names: Record<ThemeChoice, string>; className?: string }) {
   const theme = useTheme();
   return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-full border border-border bg-card p-0.5">
+    <div role="radiogroup" aria-label={label} className={cn("inline-flex rounded-full border border-border bg-card p-0.5", className)}>
       {CHOICES.map(({ value, icon: Icon }) => (
         <button
           key={value}

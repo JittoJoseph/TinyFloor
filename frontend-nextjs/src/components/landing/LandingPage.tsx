@@ -31,20 +31,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
-import {
-  CJK_HEADLINE,
-  COLUMN,
-  HeroAsk,
-  Faq,
-  Final,
-  Heading,
-  MarketingShell,
-  ProductPreview,
-  RuledSheet,
-  Trust,
-  quiet,
-} from "@/components/home/Blocks";
-import { Moments, Steps } from "@/components/home/Moments";
+import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Notes, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
 
 interface LandingCopy {
   subtitle: string;
@@ -68,10 +55,10 @@ const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
 };
 
 /**
- * One page written for a search, in the site's design: the pitch over the
- * product itself, three reasons, a side-by-side table on comparison pages,
- * then the home page's quick question, three steps and trust, the questions
- * people ask, where to go next, and the last ask.
+ * One page written for a search, in the home page's design: its own pitch over
+ * the app running, its three reasons as notes, a side-by-side table on
+ * comparison pages, the floor's three moments, the questions people ask,
+ * where to go next, and the last ask.
  */
 export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
@@ -91,28 +78,16 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         })}
       />
 
-      <section className={cn(COLUMN, "pt-9 sm:pt-24")}>
-        <div className="mx-auto flex max-w-[50rem] flex-col items-start text-start sm:items-center sm:text-center">
-          <span className="inline-flex h-8 items-center rounded-full border border-border bg-card px-3.5 text-[13px] text-muted-foreground">
-            {t(`pages.${page.key}.label`)}
-          </span>
-          <h1
-            className={cn(
-              "mt-5 text-balance hyphens-auto text-[38px] font-semibold leading-[1.04] tracking-[-0.035em] sm:mt-7 sm:text-[58px] lg:text-[66px]",
-              CJK_HEADLINE,
-            )}
-          >
-            {emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "text-brand")}
-          </h1>
-          <p className="mt-4 max-w-[38rem] text-pretty text-[15.5px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[19px]">{copy.subtitle}</p>
-          <HeroAsk />
-        </div>
-        <ProductPreview className="mt-16 sm:mt-20" />
-      </section>
+      <Hero
+        size="page"
+        eyebrow={t(`pages.${page.key}.label`)}
+        title={emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "")}
+        body={copy.subtitle}
+      />
 
-      <section className={cn(COLUMN, "pt-24 sm:pt-32")}>
-        <RuledSheet
-          columns={3}
+      <section className={cn(COLUMN, "pt-28 sm:pt-36")}>
+        <Notes
+          className="sm:grid-cols-3"
           items={copy.points.map((point, index) => {
             const Icon = icons[index % icons.length];
             return { icon: <Icon />, title: point.title, body: point.body };
@@ -122,26 +97,24 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
       {page.competitor && copy.them && <Compare name={page.competitor} them={copy.them} t={t} />}
 
-      <Moments />
-      <div id="how-it-works" className="scroll-mt-24 pt-24 sm:pt-32">
-        <Steps />
+      <FloorMoments className="mt-28 sm:mt-40" />
+
+      <div className="pt-28 sm:pt-40">
+        <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
       </div>
-      <Trust />
 
-      <Faq title={t.rich("faqTitle", { em: quiet })} items={copy.faq} />
-
-      <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
-        <Heading title={t.rich("relatedTitle", { em: quiet })} />
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
+      <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
+        <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("relatedTitle", { em: quiet })}</h2>
+        <div className="mx-auto mt-12 grid max-w-[880px] gap-10 md:grid-cols-2">
           {LANDING_GROUPS.map((group) => (
             <nav key={group} aria-label={t(group)}>
-              <p className="text-[13px] font-semibold text-faint">{t(group)}</p>
-              <ul className="mt-3 grid gap-2">
+              <p className="px-1 text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{t(group)}</p>
+              <ul className="mt-4 grid gap-2">
                 {LANDINGS.filter((other) => other.group === group && other.key !== page.key).map((other) => (
                   <li key={other.slug}>
                     <Link
                       href={`/${other.slug}`}
-                      className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3.5 text-[15px] transition-[border-color,background-color] hover:border-border-strong hover:bg-foreground/[0.03]"
+                      className="group flex items-center justify-between gap-3 rounded-[18px] bg-muted/80 px-5 py-4 text-[15px] transition-colors hover:bg-muted"
                     >
                       {t(`pages.${other.key}.label`)}
                       <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
@@ -154,66 +127,62 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         </div>
       </section>
 
-      <Final />
+      <Closing />
     </MarketingShell>
   );
 }
 
 type Translate = Awaited<ReturnType<typeof getTranslations<"landings">>>;
 
-/** TinyFloor and the other product, row by row: a table on wide screens, a list on a phone. */
+/**
+ * TinyFloor and the other product, row by row: a table on wide screens, a
+ * list on a phone. No rules: the rows are fills with the canvas showing
+ * between them, and TinyFloor's column is a shade darker.
+ */
 function Compare({ name, them, t }: { name: string; them: NonNullable<LandingCopy["them"]>; t: Translate }) {
   return (
-    <section className={cn(COLUMN, "pt-24 sm:pt-32")}>
-      <Heading title={t.rich("compareTitle", { name, em: quiet })} className="max-w-[22ch]" />
-      <div className="mt-12 hidden overflow-hidden rounded-[24px] border border-border bg-card sm:block">
-        <table className="w-full table-fixed border-collapse">
-          <thead>
-            <tr className="border-b border-border">
-              <td className="w-[28%] px-6 py-5" />
-              <th scope="col" className="bg-brand/[0.05] px-6 py-5 text-start">
-                <span className="inline-flex items-center gap-2 text-[16px] font-semibold">
-                  <Logo size={22} />
-                  TinyFloor
-                </span>
-              </th>
-              <th scope="col" className="px-6 py-5 text-start text-[16px] font-semibold text-muted-foreground">
-                {name}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARE_ROWS.map((row) => (
-              <tr key={row} className="border-b border-border last:border-0">
-                <th scope="row" className="px-6 py-5 text-start align-top text-[15px] font-normal text-muted-foreground">
-                  {t(`rows.${row}`)}
-                </th>
-                <td className="bg-brand/[0.05] px-6 py-5 align-top text-[15px] font-semibold leading-snug">{t(`us.${row}`)}</td>
-                <td className="px-6 py-5 align-top text-[15px] leading-snug text-muted-foreground">{them[row]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <dl className="mt-10 overflow-hidden rounded-[20px] border border-border bg-card sm:hidden">
-        <div className="grid grid-cols-2 border-b border-border text-[14px] font-semibold">
-          <span className="flex items-center gap-2 bg-brand/[0.05] px-4 py-3.5">
-            <Logo size={18} />
+    <section className={cn(COLUMN, "pt-28 sm:pt-40")}>
+      <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[22ch] text-center")}>{t.rich("compareTitle", { name, em: quiet })}</h2>
+
+      <div className="mx-auto mt-14 hidden max-w-[960px] overflow-hidden rounded-[24px] sm:block">
+        <div className="grid grid-cols-[28%_1fr_1fr] gap-px bg-background">
+          <span className="bg-foreground/[0.035] px-6 py-5" />
+          <span className="flex items-center gap-2 bg-foreground/[0.075] px-6 py-5 text-[16px] font-semibold">
+            <Logo size={22} />
             TinyFloor
           </span>
-          <span className="px-4 py-3.5 text-muted-foreground">{name}</span>
+          <span className="bg-foreground/[0.035] px-6 py-5 text-[16px] font-semibold text-muted-foreground">{name}</span>
+          {COMPARE_ROWS.map((row) => (
+            <div key={row} className="contents">
+              <span className="bg-foreground/[0.035] px-6 py-5 text-[15px] text-muted-foreground">{t(`rows.${row}`)}</span>
+              <span className="bg-foreground/[0.075] px-6 py-5 text-[15px] font-medium leading-snug">{t(`us.${row}`)}</span>
+              <span className="bg-foreground/[0.035] px-6 py-5 text-[15px] leading-snug text-muted-foreground">{them[row]}</span>
+            </div>
+          ))}
         </div>
+      </div>
+
+      <dl className="mt-12 grid gap-2 sm:hidden">
         {COMPARE_ROWS.map((row) => (
-          <div key={row} className="border-b border-border last:border-0">
-            <dt className="px-4 pb-1 pt-3.5 text-[12.5px] text-muted-foreground">{t(`rows.${row}`)}</dt>
-            <dd className="grid grid-cols-2 text-[14px] leading-snug">
-              <span className="px-4 pb-3.5 pt-1 font-semibold">{t(`us.${row}`)}</span>
-              <span className="px-4 pb-3.5 pt-1 text-muted-foreground">{them[row]}</span>
+          <div key={row} className="rounded-[18px] bg-muted/80 p-4">
+            <dt className="text-[12.5px] text-muted-foreground">{t(`rows.${row}`)}</dt>
+            <dd className="mt-2 grid grid-cols-2 gap-3 text-[14px] leading-snug">
+              <span>
+                <span className="mb-1 flex items-center gap-1.5 text-[12px] font-semibold">
+                  <Logo size={14} />
+                  TinyFloor
+                </span>
+                <span className="font-medium">{t(`us.${row}`)}</span>
+              </span>
+              <span className="text-muted-foreground">
+                <span className="mb-1 block text-[12px] font-semibold">{name}</span>
+                {them[row]}
+              </span>
             </dd>
           </div>
         ))}
       </dl>
-      <p className="mt-4 px-1 text-[13px] text-faint">{t("checked", { name })}</p>
+      <p className="mx-auto mt-4 max-w-[960px] px-1 text-[13px] text-faint">{t("checked", { name })}</p>
     </section>
   );
 }

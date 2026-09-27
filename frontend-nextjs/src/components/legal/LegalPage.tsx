@@ -35,11 +35,11 @@ export function LegalPage({
 }) {
   return (
     <MarketingShell path={path}>
-      <article lang="en" dir="ltr" className={cn(COLUMN, "pb-24 pt-12 sm:pt-20")}>
+      <article lang="en" dir="ltr" className={cn(COLUMN, "pb-28 pt-32 sm:pb-40 sm:pt-44")}>
         {note && <p className="mb-6 inline-flex rounded-full bg-muted px-3 py-1 text-[13px] text-muted-foreground">{note}</p>}
-        <h1 className="text-[36px] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-[52px]">{title}</h1>
+        <h1 className="text-[40px] font-normal leading-[1.04] tracking-[-0.045em] sm:text-[60px]">{title}</h1>
         <p className="mt-3 text-[14px] text-muted-foreground">Last updated {updated}</p>
-        <div className="mt-8 max-w-[44rem] rounded-2xl border border-border bg-card p-5 text-[15.5px] leading-relaxed sm:p-6">{summary}</div>
+        <div className="mt-8 max-w-[44rem] rounded-[20px] bg-muted/80 p-5 text-[15.5px] leading-relaxed sm:p-6">{summary}</div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[14rem_minmax(0,44rem)] lg:gap-16">
           <nav aria-label="Contents" className="hidden lg:block">
@@ -56,7 +56,7 @@ export function LegalPage({
           </nav>
           <div className="min-w-0">
             {sections.map((section, index) => (
-              <section key={section.id} id={section.id} className="scroll-mt-28 border-t border-border py-8 first:border-t-0 first:pt-0">
+              <section key={section.id} id={section.id} className="scroll-mt-28 py-8 first:pt-0">
                 <h2 className="text-[21px] font-semibold tracking-tight">
                   <span className="me-2 tabular-nums text-faint">{index + 1}.</span>
                   {section.title}

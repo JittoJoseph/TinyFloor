@@ -1161,7 +1161,8 @@
         "onlineStudyRoom": "Studér sammen med venner",
         "virtualClassroom": "Konsultationstid og små hold",
         "proximityChat": "Tal med den, du går hen til"
-      }
+      },
+      "getStarted": "Kom i gang"
     },
     "hero": {
       "title": "Et virtuelt kontor, dit team kan gå rundt i.",
@@ -1205,38 +1206,6 @@
         "body": "Send et invitationslink, eller invitér via e-mail. De vælger et navn og en figur, opretter en gratis konto og er på etagen."
       }
     },
-    "versus": {
-      "title": "Et hurtigt spørgsmål",
-      "muted": "burde ikke kræve en kalenderinvitation.",
-      "body": "I de fleste remote-teams kræver et spørgsmål en besked, en invitation og et mødelink. I et virtuelt kontor går du bare hen, som på arbejdet.",
-      "before": {
-        "label": "Uden etage",
-        "items": [
-          {
-            "title": "Jack, har du 5 minutter i dag?",
-            "body": "Sendt 9:41 · Set"
-          },
-          {
-            "title": "Hurtigt statusmøde",
-            "body": "I morgen, 10:30 til 11:00 · Invitation fra Jack"
-          },
-          {
-            "title": "Deltag i videoopkaldet",
-            "body": "Venter på at værten lukker dig ind"
-          },
-          {
-            "title": "Kan du hoppe på et opkald?",
-            "body": "3 ulæste beskeder"
-          }
-        ],
-        "result": "En dag senere: et møde på 30 minutter for et spørgsmål på 2."
-      },
-      "after": {
-        "label": "På TinyFloor",
-        "you": "Dig",
-        "result": "Gå hen, spørg, gå tilbage. To minutter."
-      }
-    },
     "steps": {
       "title": "Opret et virtuelt kontor på et minut.",
       "muted": "Ingen downloads, intet kreditkort.",
@@ -1254,11 +1223,6 @@
       },
       "joined": "{count} kom til i dag",
       "walkedIn": "{name} kom ind"
-    },
-    "cases": {
-      "title": "Én etage,",
-      "muted": "mange måder at bruge den på.",
-      "body": "Teams gør den til deres kontor. Venner til et læserum. Lærere holder træffetid i den. Vælg din."
     },
     "more": {
       "title": "Alt hvad dit remote-team har brug for,",
@@ -1284,63 +1248,6 @@
         }
       },
       "also": "Også på hver etage"
-    },
-    "trust": {
-      "title": "Bygget til at være troværdigt.",
-      "items": {
-        "private": {
-          "title": "Privat fra starten",
-          "body": "En kontoretage er kun for medlemmerne. Intet er offentligt, og intet bliver indekseret."
-        },
-        "network": {
-          "title": "På Cloudflares netværk",
-          "body": "Sider, chat og opkald kører på Cloudflares globale netværk, tæt på dit team, og forbinder på ethvert kontor- eller hjemmenetværk."
-        },
-        "install": {
-          "title": "Intet at installere",
-          "body": "Det er en webside. På computer, laptop eller telefon åbner den på samme måde, og den er altid den nyeste version."
-        }
-      },
-      "muted": "Privat, tæt på dit team og intet at installere.",
-      "stack": "Det kører på"
-    },
-    "plans": {
-      "title": "Start gratis.",
-      "muted": "Vokser når I er klar.",
-      "free": {
-        "name": "Gratis",
-        "price": "$0",
-        "per": "for op til 3 personer",
-        "cta": "Lav dit kontor",
-        "items": [
-          "En privat etage til dit team",
-          "Nærhedsopkald og mødeborde",
-          "Skærmdeling",
-          "Kanaler og direkte beskeder",
-          "Invitationslinks til dit team"
-        ]
-      },
-      "soon": {
-        "name": "Større abonnementer",
-        "badge": "Kommer snart",
-        "body": "Til teams, der vokser ud af tre pladser. Start gratis i dag, dit kontor bliver, når de kommer.",
-        "cta": "Prøv lobbyen først",
-        "items": [
-          "Flere pladser til større teams",
-          "Billeder og filer i chatten",
-          "Mere mødetid"
-        ]
-      },
-      "note": "Intet kort nødvendigt. Dit kontor er klar på et minut."
-    },
-    "faq": {
-      "title": "Spørgsmål,",
-      "muted": "besvaret.",
-      "note": "Undrer du dig stadig over noget? Den offentlige lobby er åben for alle, så du kan gå ind og se selv."
-    },
-    "final": {
-      "title": "Giv dit team en etage at dele.",
-      "body": "Lav et kontor på et minut, og send linket til dit team. Eller gå først ind i den offentlige lobby og se, hvordan det føles."
     },
     "preview": {
       "office": "Northwind",
@@ -1419,5 +1326,126 @@
     "website": "Hjemmeside",
     "elsewhere": "TinyFloor andre steder",
     "contact": "Skriv til os"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Produkt",
+      "features": "Funktioner",
+      "pricing": "Priser",
+      "faq": "FAQ",
+      "lobby": "Lobby",
+      "signIn": "Log ind",
+      "getStarted": "Kom i gang",
+      "menu": "Menu",
+      "main": "Hovedmenu"
+    },
+    "hero": {
+      "title": "Dit fjernteam,",
+      "muted": "på én etage.",
+      "body": "Et lille virtuelt kontor i browseren. Se hvem der er her, gå hen og snak, og kom tilbage til arbejdet. Intet at planlægge, intet at installere.",
+      "cta": "Opret dit kontor",
+      "lobby": "Gå ind i lobbyen",
+      "note": "Gratis for op til 3 personer · Intet kort nødvendigt",
+      "film": "TinyFloor: en besked kommer ind, chatten åbner, og så et opkald med kollegaen ved siden af dig"
+    },
+    "floor": {
+      "eyebrow": "På etagen",
+      "title": "Snak, som I ville",
+      "muted": "hvis I sad sammen.",
+      "body": "Et hurtigt spørgsmål er en gåtur, ikke en kalenderinvitation. Resten af dagen forbliver rolig.",
+      "seen": {
+        "title": "Se hvem der er her",
+        "body": "Alle har et skrivebord og en status. Du kan se, hvem der er fordybet, før du spørger."
+      },
+      "walk": {
+        "title": "Gå hen og snak",
+        "body": "Gå hen til nogen og ring op med ét klik. Gå væk, og opkaldet slutter."
+      },
+      "sit": {
+        "title": "Find en stol",
+        "body": "Mødelokalet er nede ad gangen. Sæt dig, og du er med i mødet."
+      }
+    },
+    "more": {
+      "eyebrow": "Alt det andet",
+      "title": "Det et lille team har brug for.",
+      "muted": "Intet mere.",
+      "items": {
+        "chat": {
+          "title": "Kanaler og beskeder",
+          "body": "Chat der bliver, ved siden af etagen. Følg med fra telefonen."
+        },
+        "screen": {
+          "title": "Skærmdeling",
+          "body": "Del et vindue med den, du taler med, med ét klik."
+        },
+        "whiteboard": {
+          "title": "Whiteboard",
+          "body": "En delt tavle på væggen, til skitsen der forklarer det."
+        },
+        "music": {
+          "title": "Musik",
+          "body": "En jukebox i loungen, til de timer der trænger til en."
+        },
+        "noise": {
+          "title": "Støjfjernelse",
+          "body": "Tastaturer og caféer holdes ude af opkaldet."
+        },
+        "devices": {
+          "title": "På alle enheder",
+          "body": "Det er en webside. Computer eller telefon, den åbner på samme måde."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Priser",
+      "title": "Pris pr. kontor,",
+      "muted": "ikke pr. person.",
+      "body": "Start gratis. Gæster tæller aldrig med.",
+      "soon": "Kommer snart",
+      "forever": "for altid",
+      "month": "om måneden",
+      "people": "Op til {count} personer",
+      "free": {
+        "name": "Free",
+        "body": "Hele produktet, til et lille studie eller to stiftere.",
+        "items": [
+          "En privat etage",
+          "Opkald og møder",
+          "Kanaler og beskeder",
+          "Gæster via link"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "body": "Én pris for hele kontoret, uanset hvor mange af de ti pladser du fylder.",
+        "items": [
+          "Alt i Free",
+          "Billeder og filer i chatten",
+          "Så mange gæstelinks du vil",
+          "Årligt: to måneder gratis"
+        ]
+      },
+      "office": {
+        "name": "Office",
+        "body": "Til teamet, der er vokset ud af én række skriveborde.",
+        "items": [
+          "Alt i Team",
+          "Plads til 25 medlemmer",
+          "Prioriteret support",
+          "Større? Skriv til os"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Spørgsmål,",
+      "muted": "besvaret.",
+      "more": "Stadig i tvivl? <lobby>Gå ind i lobbyen</lobby> og se selv."
+    },
+    "closing": {
+      "title": "Giv dit team",
+      "muted": "en etage at dele.",
+      "note": "Gratis for op til 3 personer · Kører på Cloudflare"
+    }
   }
 }

@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ORG_ID, pageGraph } from "@/lib/structured-data";
 import { SOCIALS } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
-import { COLUMN, Final, MarketingShell } from "@/components/home/Blocks";
+import { COLUMN, Closing, EYEBROW, MarketingShell } from "@/components/home/Blocks";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { EVERYONE } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const LINK =
-  "inline-flex h-10 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-[14px] font-medium transition-colors hover:border-border-strong hover:bg-foreground/[0.03]";
+  "inline-flex h-10 items-center gap-1.5 rounded-full bg-foreground/[0.06] px-4 text-[14px] font-medium transition-colors hover:bg-foreground/[0.1]";
 
 /** Why TinyFloor exists and who makes it, with the ways to reach both. */
 export default async function AboutPage({ params }: Props) {
@@ -47,23 +47,23 @@ export default async function AboutPage({ params }: Props) {
           mainEntity: ORG_ID,
         })}
       />
-      <section className={cn(COLUMN, "pb-20 pt-12 sm:pb-28 sm:pt-20")}>
-        <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-brand">{t("eyebrow")}</p>
-        <h1 className="mt-4 max-w-[18ch] text-balance text-[38px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-[58px]">{t("title")}</h1>
+      <section className={cn(COLUMN, "pb-28 pt-32 sm:pb-40 sm:pt-44")}>
+        <p className={EYEBROW}>{t("eyebrow")}</p>
+        <h1 className="mt-5 max-w-[18ch] text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] sm:text-[64px]">{t("title")}</h1>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           <div className="grid content-start gap-5 text-pretty text-[17px] leading-relaxed text-foreground/80 sm:text-[18px]">
             <p>{t("p1")}</p>
             <p>{t("p2")}</p>
             <p>{t("p3")}</p>
           </div>
-          <FloorScene {...EVERYONE} view={[17, 2, 22, 16]} className="aspect-[4/3] w-full self-start rounded-[28px] border border-border" />
+          <FloorScene {...EVERYONE} view={[17, 2, 22, 16]} className="aspect-[4/3] w-full self-start rounded-[28px]" />
         </div>
 
         <div className="mt-16 grid gap-3 lg:grid-cols-[1.4fr_1fr]">
-          <div className="flex flex-col gap-5 rounded-[28px] border border-border bg-card p-6 sm:flex-row sm:p-8 [--face-ring:var(--ui-card)]">
+          <div className="flex flex-col gap-5 rounded-[28px] bg-muted/80 p-6 sm:flex-row sm:p-8 [--face-ring:var(--ui-muted)]">
             <Face seed="jitto-joseph" size={72} className="shrink-0" />
             <div className="min-w-0">
-              <h2 className="text-[22px] font-semibold tracking-tight">{t("founderTitle")}</h2>
+              <h2 className="text-[22px] font-medium tracking-[-0.02em]">{t("founderTitle")}</h2>
               <p className="mt-2 text-pretty text-[15.5px] leading-relaxed text-muted-foreground">{t("founderBody")}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {FOUNDER.map((link) => (
@@ -75,7 +75,7 @@ export default async function AboutPage({ params }: Props) {
               </div>
             </div>
           </div>
-          <div className="flex flex-col rounded-[28px] bg-foreground/[0.045] p-6 sm:p-8">
+          <div className="flex flex-col rounded-[28px] bg-muted/80 p-6 sm:p-8">
             <h2 className="text-[17px] font-semibold tracking-tight">{t("elsewhere")}</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className={LINK}>
@@ -95,7 +95,7 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
-      <Final />
+      <Closing />
     </MarketingShell>
   );
 }

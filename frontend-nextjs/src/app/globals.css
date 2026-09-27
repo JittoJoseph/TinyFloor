@@ -4,7 +4,6 @@
 @theme {
   --font-pixel: var(--font-pixel);
   --font-body: var(--font-body);
-  --font-hand: var(--font-hand);
 
   /* Dieter Rams Braun Palette */
   --color-braun-bg: #e8e8e3; /* Warm off-white hardware body */

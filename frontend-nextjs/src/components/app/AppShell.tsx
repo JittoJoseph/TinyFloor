@@ -37,8 +37,6 @@ export interface ShellDestination {
   dot?: boolean;
   /** Something happening now, in green: how many are in a meeting. */
   live?: number;
-  /** You are part of what is happening: the icon is ringed in green. */
-  joined?: boolean;
 }
 
 /**
@@ -138,7 +136,7 @@ function RailItem({
   quiet?: boolean;
 }) {
   const reduce = useReducedMotion();
-  const { href, label, icon, active, badge, dot, live, joined } = destination;
+  const { href, label, icon, active, badge, dot, live } = destination;
   const link = (
     <Link
       href={href}
@@ -171,7 +169,6 @@ function RailItem({
         )}
         {dot && !badge && <span className="absolute end-1 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
         {!!live && !badge && <LiveBadge count={live} />}
-        {joined && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[12px] ring-2 ring-ok" />}
       </span>
       {!quiet && (
         <span
@@ -196,7 +193,7 @@ function RailItem({
 
 function BarItem({ destination, indicator }: { destination: ShellDestination; indicator: string }) {
   const reduce = useReducedMotion();
-  const { href, label, icon, active, badge, dot, live, joined } = destination;
+  const { href, label, icon, active, badge, dot, live } = destination;
   return (
     <Link
       href={href}
@@ -221,7 +218,6 @@ function BarItem({ destination, indicator }: { destination: ShellDestination; in
         )}
         {dot && !badge && <span className="absolute end-3 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
         {!!live && !badge && <LiveBadge count={live} bar />}
-        {joined && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-ok" />}
       </span>
       <span className={cn("text-[11px] leading-none", active ? "font-semibold text-foreground" : "text-muted-foreground")}>
         {label}
@@ -230,7 +226,7 @@ function BarItem({ destination, indicator }: { destination: ShellDestination; in
   );
 }
 
-/** How many are in a meeting right now: green, with a slow pulse, so it reads as live rather than unread. */
+/** How many are in a meeting right now: green, so it reads as live rather than unread. */
 function LiveBadge({ count, bar }: { count: number; bar?: boolean }) {
   return (
     <span
@@ -239,8 +235,7 @@ function LiveBadge({ count, bar }: { count: number; bar?: boolean }) {
         bar ? "end-1.5 -top-0.5" : "-end-1.5 -top-1.5",
       )}
     >
-      <span className="absolute inset-0 animate-ping rounded-full bg-ok/50 [animation-duration:2.4s] motion-reduce:hidden" aria-hidden />
-      <span className="relative">{count > 99 ? "99+" : count}</span>
+      {count > 99 ? "99+" : count}
     </span>
   );
 }

@@ -35,7 +35,7 @@ export interface Place {
     chat: (channel?: string) => string;
     people: string;
     settings: string;
-    /** An office's Meetings page; the lobby has no meetings. */
+    /** The Meetings page, in an office and in the lobby alike. */
     meetings?: string;
     /** The lobby's page about getting an office of your own. */
     yourOffice?: string;

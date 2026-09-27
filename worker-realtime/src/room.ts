@@ -475,11 +475,6 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "stood", id: me.userId }, undefined, me.userId);
   }
 
-  /** A meeting is only for offices: the public lobby is free and open, and video there has nobody to pay for it. */
-  private meetingsAllowed(room: string): boolean {
-    return lobbyCopyNumber(room) === null;
-  }
-
   private meetingError(socket: WebSocket, code: MeetingErrorCode): void {
     send(socket, { t: "meeting_error", code });
   }
@@ -487,7 +482,6 @@ export class Room extends DurableObject<Env> {
   /** Joining the main meeting, or one someone started. Any other meeting is left first. */
   private joinMeeting(socket: WebSocket, me: Attachment, meeting: unknown): void {
     if (!this.takeAction(me)) return;
-    if (!this.meetingsAllowed(me.room)) return this.meetingError(socket, "offices_only");
     if (typeof meeting !== "string" || !MEETING_ID.test(meeting)) return this.meetingError(socket, "not_found");
     if (me.meeting === meeting) return;
     if (meeting !== MAIN_MEETING && !this.meetingRow(meeting)) return this.meetingError(socket, "not_found");
@@ -497,7 +491,6 @@ export class Room extends DurableObject<Env> {
   /** Someone starts a meeting of their own, joins it, and asks people in. */
   private startMeeting(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "meeting_start" }>): void {
     if (!this.takeAction(me)) return;
-    if (!this.meetingsAllowed(me.room)) return this.meetingError(socket, "offices_only");
     const id = `m-${randomId(8)}`;
     this.ctx.storage.sql.exec(
       "INSERT INTO meetings (id, name, by_name, created_at) VALUES (?, ?, ?, ?)",
@@ -596,7 +589,6 @@ export class Room extends DurableObject<Env> {
    * started, oldest first. One nobody is in any more is gone for good.
    */
   private meetingsOf(room: string): MeetingInfo[] {
-    if (!this.meetingsAllowed(room)) return [];
     const members = new Map<string, MeetingInfo["members"]>();
     for (const socket of this.present()) {
       const them = this.attachmentOf(socket);
@@ -631,7 +623,6 @@ export class Room extends DurableObject<Env> {
 
   /** Everyone in the room gets the meetings whole: small, and never out of step. */
   private announceMeetings(room: string): void {
-    if (!this.meetingsAllowed(room)) return;
     this.broadcast({ t: "meetings", meetings: this.meetingsOf(room) });
   }
 

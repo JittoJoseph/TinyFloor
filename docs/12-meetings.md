@@ -28,8 +28,10 @@ stay in TinyFloor, and are cheap because of what each person is sent.
   **Meeting**: a meeting for the three of you, the other two asked in.
   Someone on a call can't be rung.
 - Chairs are only chairs. The table's tag says how many are in meetings.
-- The public lobby has no meetings; its meeting room says meetings come with
-  an office.
+- **Every place has meetings, the public lobby too:** each lobby copy has its
+  own "Lobby meeting" and whatever anyone starts there, with the same limits.
+  Nobody pays for the lobby, so its meeting minutes are ours; they show in the
+  SFU numbers like any other.
 
 ## Where the money goes, and what stops it
 

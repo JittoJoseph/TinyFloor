@@ -60,7 +60,7 @@ export interface MeetingInfo {
 }
 
 /** Why the room turned a meeting request down. */
-export type MeetingErrorCode = "not_found" | "offices_only";
+export type MeetingErrorCode = "not_found";
 
 export interface BoardStroke {
   id: string;

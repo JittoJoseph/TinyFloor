@@ -27,7 +27,7 @@ const PAGES = [
   "",
   ...LANDINGS.map((page) => page.slug),
   "about|people|privacy|terms|rooms|account|admin|auth|create|dashboard|map-render|og-render|video-demo",
-  "lobby(/(chat(/[^/]+)?|people|settings|your-office))?",
+  "lobby(/(chat(/[^/]+)?|people|meetings|settings|your-office))?",
   "join",
   "invite/[^/]+",
   "office/[^/]+(/(chat(/[^/]+)?|people|meetings|settings))?",

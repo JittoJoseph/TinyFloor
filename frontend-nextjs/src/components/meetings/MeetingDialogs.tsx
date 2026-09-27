@@ -12,7 +12,7 @@ import { meetingOf, useMeetings } from "@/lib/meetings";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
 import { cn } from "@/lib/utils";
-import { useOffice } from "@/components/app/OfficeShell";
+import { usePlace } from "@/components/app/place";
 
 /**
  * Who you can ask into a meeting: your office's people who are on the floor
@@ -29,7 +29,8 @@ function PeoplePicker({
   exclude?: string;
 }) {
   const t = useTranslations("meetings");
-  const { members } = useOffice();
+  // An office's members, or in the lobby whoever is on its floor.
+  const { people: members } = usePlace();
   const { user } = useAuth();
   const floor = useFloor();
   const { meetings } = useMeetings();

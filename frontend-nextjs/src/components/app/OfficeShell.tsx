@@ -11,7 +11,6 @@ import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, offic
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
-import { useCall } from "@/lib/useCall";
 import { clearFloor } from "@/lib/floor";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
@@ -75,7 +74,6 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const [gone, setGone] = useState(false);
   const { unread } = useChat();
   const { meetings: meetingList } = useMeetings();
-  const { meeting: myMeeting } = useCall();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
@@ -197,10 +195,9 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
               label: ts("meetings"),
               icon: RailIcons.meetings,
               active: onMeetings,
-              // Green while a meeting is on: how many are in them, and a ring when you are.
+              // Green while a meeting is on: how many are in them.
               live: peopleInMeetings(meetingList) || undefined,
-              joined: !!myMeeting,
-            },
+              },
             { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
           ]}
           settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}

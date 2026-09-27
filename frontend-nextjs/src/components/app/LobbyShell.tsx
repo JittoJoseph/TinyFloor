@@ -13,7 +13,6 @@ import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor, useFloor } from "@/lib/floor";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
-import { useCall } from "@/lib/useCall";
 import { RoomView } from "@/components/room/RoomView";
 import { WalkIn } from "@/components/entry/WalkIn";
 import { EntryDetail } from "@/components/entry/EntryShell";
@@ -48,7 +47,6 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const { unread } = useChat();
   const everyone = useFloor();
   const { meetings } = useMeetings();
-  const { meeting: myMeeting } = useCall();
 
   // Anyone with a session already has a name and a character, so the door is only for someone new;
   // a new account first says who it is (see Introduce below).
@@ -177,9 +175,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
             label: ts("meetings"),
             icon: RailIcons.meetings,
             active: onMeetings,
-            // Green while a meeting is on: how many are in them, and a ring when you are.
+            // Green while a meeting is on: how many are in them.
             live: peopleInMeetings(meetings) || undefined,
-            joined: !!myMeeting,
           },
           { key: "people", href: lobbyPeoplePath, label: ts("people"), icon: RailIcons.people, active: onPeople },
           { key: "office", href: lobbyOfficePath, label: ts("yourOffice"), icon: RailIcons.office, active: onOffice, dot: !onOffice },

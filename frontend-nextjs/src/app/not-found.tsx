@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { fontVariables } from "./fonts";
 
 /**
  * A path outside any locale that isn't a file we have (a missing asset, say).
@@ -9,7 +8,7 @@ import { fontVariables } from "./fonts";
 export default function GlobalNotFound() {
   return (
     <html lang="en">
-      <body className={`${fontVariables} antialiased`}>
+      <body className="antialiased">
         <main className="flex min-h-dvh items-center justify-center bg-background px-6 font-(family-name:--font-body) text-foreground">
           <div className="max-w-sm text-center">
             <p className="text-[13px] font-semibold text-muted-foreground">404</p>

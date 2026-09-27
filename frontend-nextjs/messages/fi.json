@@ -62,7 +62,7 @@
       },
       {
         "q": "Miten läheisyyteen perustuva videochat toimii?",
-        "a": "Kävele jonkun luo, niin puhelupainike ilmestyy hänen viereensä. Napautus aloittaa puhelun, ja puhuessanne voit laittaa kameran päälle tai jakaa näyttösi. Puhelut kulkevat WebRTC:n kautta Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja pysyvät päällä, kunnes joku lopettaa. Neuvottelupöydissä käydään ryhmäpuhelut: istu liittyäksesi, nouse poistuaksesi."
+        "a": "Kävele jonkun luo, niin hänen viereensä ilmestyy soittopainike. Yksi napautus aloittaa puhelun, ja kun puhutte, voit laittaa kameran päälle tai jakaa näyttösi. Puhelut kulkevat WebRTC:llä Cloudflaren verkon kautta, joten ne toimivat missä tahansa toimisto- tai kotiverkossa ja pysyvät auki, kunnes joku lopettaa. Ryhmänä liityt kokoukseen, ja hahmosi kävelee kokoushuoneeseen."
       },
       {
         "q": "Onko TinyFloor ilmainen?",
@@ -459,7 +459,7 @@
           },
           {
             "q": "Mitä Gatherissa on, mitä TinyFloorissä ei ole?",
-            "a": "Gather tarjoaa lisäksi tekoälyn kokousmuistiinpanot ja toimiston muokkauksen. TinyFloor keskittyy olennaiseen: liikkumiseen, lähipuheluihin, näytön jakamiseen, neuvottelupöytään, chattiin, valkotauluun ja huoneen musiikkiin."
+            "a": "Gather tarjoaa lisäksi tekoälyn kokousmuistiinpanot ja toimiston muokkauksen. TinyFloor keskittyy olennaiseen: liikkumiseen, lähipuheluihin, näytön jakamiseen, neuvotteluhuoneeseen, chattiin, valkotauluun ja huoneen musiikkiin."
           },
           {
             "q": "Voinko siirtää tiimini Gatherista TinyFlooriin?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Kävele juttelemaan",
-            "body": "Mene lähelle kollegaa aloittaaksesi puhelun. Neuvottelupöydässä kaikki ovat samassa puhelussa."
+            "body": "Mene lähelle kollegaa aloittaaksesi puhelun. Ryhmänä liitytte kokoukseen, ja kaikki kävelevät kokoushuoneeseen."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Ei rakennettavaa karttaa",
-            "body": "Jokaisessa huoneessa on toimistokerros, neuvottelupöytä, valkotaulu ja kaiutin. Luo huone ja astu sisään."
+            "body": "Jokaisessa huoneessa on toimistokerros, neuvotteluhuone, valkotaulu ja kaiutin. Luo huone ja astu sisään."
           },
           {
             "title": "Ei ylläpidettävää",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Miten puhelut alkavat TinyFloorissä?",
-            "a": "Kävele kollegan luo, niin puhelukortti ilmestyy. Yksi napautus aloittaa puhelun. Neuvottelupöydässä kaikki istuutuvat liittyvät samaan puheluun."
+            "a": "Kävele kollegan luo, niin hänen puhelukorttinsa ilmestyy. Yksi napautus aloittaa puhelun. Ryhmänä liityt kokoukseen, ja hahmosi kävelee kokoushuoneeseen."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Miten TinyFloor eroaa Wonderista?",
-            "a": "Wonder käytti ympyröitä tasaisella pinnalla ja oli tehty tapahtumiin. TinyFloor on toimisto, jossa kävellään, ja siinä on työpisteet, neuvottelupöytä, valkotaulu ja musiikkia. Se on tehty ryhmille, jotka tapaavat säännöllisesti."
+            "a": "Wonder käytti ympyröitä tasaisella pinnalla ja oli tehty tapahtumiin. TinyFloor on toimisto, jossa kävellään, ja siinä on työpisteet, neuvotteluhuone, valkotaulu ja musiikkia. Se on tehty ryhmille, jotka tapaavat säännöllisesti."
           },
           {
             "q": "Montako henkeä voi liittyä?",
@@ -660,7 +660,7 @@
           "description": "Ilmainen virtuaalitoimisto selaimessa. Näe kuka on paikalla, kävele juttelemaan videopuhelulla ja pidä yksi huone auki etätiimillesi."
         },
         "title": "Ilmainen <em>virtuaalitoimisto</em> etätiimeille.",
-        "subtitle": "Anna tiimillesi paikka, jossa olla päivän aikana. Näe kuka on paikalla, kävele kysymään nopea kysymys ja istu neuvottelupöytään, kun on aika puhua.",
+        "subtitle": "Anna tiimillesi paikka, jossa olla päivän aikana. Näe, kuka on paikalla, käy kysymässä nopea kysymys ja astu kokoushuoneeseen, kun on aika puhua.",
         "points": [
           {
             "title": "Näe kuka on paikalla",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Pöytä palavereille",
-            "body": "Istu neuvottelupöytään, niin kaikki siellä ovat samassa puhelussa, ja jokaisella on oma korttinsa."
+            "body": "Liity kokoukseen, niin hahmosi kävelee kokoushuoneeseen. Vain puhujat näkyvät videolla, ja jokaisella on oma korttinsa."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Opiskele ystävien kanssa ilmaisessa verkko-opiskeluhuoneessa. Istukaa yhdessä pikselitaiteisessa huoneessa, keskittykää ja jutelkaa tauolla. Ei ladattavaa."
         },
         "title": "<em>Verkko-opiskeluhuone</em> sinulle ja ystävillesi.",
-        "subtitle": "Luo huone opintoryhmällesi, jaa yksi linkki ja istukaa yhdessä opiskellessanne. Käykää tehtävä läpi pöydän ääressä ja jatkakaa sitten.",
+        "subtitle": "Tee huone opintoryhmällesi, jaa yksi linkki ja istukaa yhdessä työskennellessänne. Käykää ongelma läpi kokoushuoneessa ja jatkakaa sitten.",
         "points": [
           {
             "title": "Oletuksena hiljainen",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Pöytä ryhmätyölle",
-            "body": "Istukaa neuvottelupöytään puhumaan ryhmänä ja nouskaa jatkamaan opiskelua itseksenne."
+            "body": "Liity kokoukseen puhuaksesi ryhmänä ja kävele ulos kokoushuoneesta jatkaaksesi opiskelua yksin."
           },
           {
             "title": "Valkotaulu tehtäville",
@@ -780,18 +780,18 @@
         "label": "Virtuaaliluokka",
         "meta": {
           "title": "Ilmainen virtuaaliluokka vastaanottoaikoihin",
-          "description": "Pidä vastaanottoaikoja, tukiopetusta ja pieniä tunteja ilmaisessa virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat pöydän ääreen ja kaikki jakavat valkotaulun."
+          "description": "Vastaanottoaikoja, tukiopetusta ja pieniä tunteja ilmaisessa virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat kokoushuoneeseen ja kaikilla on yhteinen valkotaulu."
         },
         "title": "<em>Virtuaaliluokka</em>, jossa opiskelijat liikkuvat.",
-        "subtitle": "Pidä vastaanottoaikoja, tukiopetusta tai pieni tunti huoneessa, jossa opiskelijat voivat liikkua. He tulevat luoksesi kysymään, ja ryhmät juttelevat pöydän ääressä.",
+        "subtitle": "Pidä vastaanottoaikaa, tukiopetusta tai pieni tunti huoneessa, jossa opiskelijat voivat liikkua. He tulevat luoksesi kysymään, ja ryhmät puhuvat kokoushuoneessa.",
         "points": [
           {
             "title": "Sujuvat vastaanottoajat",
             "body": "Opiskelijat näkevät, milloin olet vapaana, ja tulevat kysymään. Kukaan ei istu odotushuoneessa."
           },
           {
-            "title": "Pienet ryhmät pöydän ääressä",
-            "body": "Enintään kuusi henkeä istuu neuvottelupöydässä ja jakaa yhden puhelun, jokaisella oma korttinsa."
+            "title": "Pienryhmät kokoushuoneessa",
+            "body": "Aloita kokous, niin ryhmä kävelee yhdessä kokoushuoneeseen, ja jokaisella on oma korttinsa."
           },
           {
             "title": "Yhteinen valkotaulu",
@@ -824,15 +824,15 @@
           "description": "Lähichat tiimeille ja ystäville: kävele hahmollasi jonkun luo aloittaaksesi puhelun. Ilmainen, selaimessa, ei latauksia."
         },
         "title": "<em>Lähichat</em>, joka alkaa, kun kävelet luo.",
-        "subtitle": "TinyFloorissä sijaintisi ratkaisee, kenen kanssa puhut. Kävele jonkun luo soittaaksesi, istu pöytään puhumaan ryhmänä ja jatka matkaa, kun olet valmis.",
+        "subtitle": "TinyFloorissa se, missä seisot, ratkaisee kenen kanssa puhut. Kävele jonkun luo soittaaksesi, liity kokoukseen puhuaksesi ryhmänä ja jatka matkaa, kun olette valmiita.",
         "points": [
           {
             "title": "Lähelle meneminen aloittaa sen",
             "body": "Asetu kollegan viereen, niin puhelukortti ilmestyy. Yksi napautus aloittaa puhelun."
           },
           {
-            "title": "Ryhmät pöydän ääressä",
-            "body": "Istu neuvottelupöytään, niin liityt puheluun kaikkien siellä istuvien kanssa."
+            "title": "Ryhmät kokoushuoneessa",
+            "body": "Liity kokoukseen, niin hahmosi kävelee kokoushuoneeseen kaikkien muiden luo."
           },
           {
             "title": "Toimii missä tahansa verkossa",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Voiko useampi kuin kaksi puhua?",
-            "a": "Kyllä. Soita jollekulle, joka on jo puhelussa, liittyäksesi mukaan, tai istu neuvottelupöytään puhumaan ryhmänä."
+            "a": "Puhelu on kahden kesken. Kävele kolmannen luo ja tee siitä kokous, tai liity toimiston kokoukseen puhuaksesi ryhmänä."
           },
           {
             "q": "Onko se ilmainen?",
@@ -1009,59 +1009,6 @@
       "google_taken": "Tämä Google-tili on jo yhdistetty toiseen TinyFloor-tiliin.",
       "google_failed": "Google ei onnistunut. Yritä uudelleen."
     },
-    "meetings": {
-      "title": "Kokoukset",
-      "subtitle": "Toimiston {office} kokoushuone on Google Meet. Se avautuu omaan välilehteensä, ja kaikki täällä näkevät, kuka siellä on.",
-      "room": "Kokoushuone",
-      "join": "Liity kokoukseen",
-      "copy": "Kopioi linkki",
-      "copied": "Kopioitu",
-      "copyFailed": "Linkkiä ei voitu kopioida. Valitse se ja kopioi itse.",
-      "madeBy": "Luonut {name}",
-      "madeByYou": "Sinun luomasi",
-      "inNow": "Kokouksessa nyt",
-      "nobody": "Kokouksessa ei ole ketään.",
-      "cantSee": "Emme näe juuri nyt, kuka kokouksessa on.",
-      "creatorGone": "Huoneen luonut henkilö on lähtenyt toimistosta, joten emme näe, kuka siellä on. Linkki toimii edelleen.",
-      "yourPermissionGone": "Peruit TinyFloorin Google Meet -luvan, joten emme näe, kuka huoneessa on.",
-      "creatorPermissionGone": "{name} perui TinyFloorin Google Meet -luvan, joten emme näe, kuka huoneessa on. Linkki toimii edelleen.",
-      "guest": "vieras",
-      "phone": "puhelin",
-      "unnamed": "Joku",
-      "noRoomTitle": "Ei vielä kokoushuonetta",
-      "noRoomAdmin": "Luo Google Meet -huone toimistolle {office}. Se luodaan Google-tililläsi, ja kaikki täällä voivat liittyä siihen tältä sivulta.",
-      "noRoomAdminPermission": "Google kysyy, saako TinyFloor luoda Meet-huoneita puolestasi.",
-      "noRoomMember": "Ylläpitäjä voi luoda toimiston {office} kokoushuoneen, Google Meetin, johon kaikki täällä voivat liittyä.",
-      "create": "Luo Google Meet -huone",
-      "creating": "Luodaan huonetta…",
-      "replace": "Luo uusi huone",
-      "remove": "Poista huone",
-      "replaceTitle": "Luodaanko uusi kokoushuone?",
-      "replaceBody": "Uusi Google Meet -huone, joka luodaan Google-tililläsi, korvaa tämän. Vanha linkki toimii edelleen niille, joilla se on.",
-      "replaceIt": "Luo uusi huone",
-      "removeTitle": "Poistetaanko kokoushuone?",
-      "removeBody": "Sitä ei enää näytetä täällä. Meet-linkki toimii edelleen niille, joilla se on.",
-      "removeIt": "Poista",
-      "loadFailed": "Kokoushuonetta ei voitu ladata.",
-      "retry": "Yritä uudelleen",
-      "needPermission": "TinyFloor tarvitsee lupasi Google Meet -huoneiden luomiseen. Salli Google Meet jatkaaksesi.",
-      "notTicked": "Google Meetin ruutua ei ollut valittu. Salli Google Meet uudelleen ja valitse ruutu tällä kertaa.",
-      "askAgain": "Google tarvitsee suostumuksesi vielä kerran. Salli Google Meet uudelleen.",
-      "declined": "Google Meetiä ei sallittu, joten huonetta ei luotu.",
-      "googleFailed": "Google ei onnistunut. Yritä uudelleen.",
-      "googleBusy": "Google Meet on ruuhkautunut. Yritä uudelleen minuutin päästä.",
-      "googleBlocked": "Googlen kirjautumisikkuna ei auennut. Salli ponnahdusikkunat tälle sivustolle ja yritä uudelleen.",
-      "meetFailed": "Google Meet ei luonut huonetta. Yritä uudelleen.",
-      "unavailable": "Google Meetiä ei ole vielä otettu käyttöön täällä.",
-      "offline": "TinyFlooriin ei saada yhteyttä. Tarkista yhteys ja yritä uudelleen.",
-      "yourGoogle": "Google Meet -lupa:",
-      "allowedAs": "sallittu, tilillä {email}",
-      "notAllowed": "ei sallittu",
-      "allow": "Salli Google Meet",
-      "revoke": "Peru lupa",
-      "permissionNote": "TinyFloor käyttää sitä vain kokoushuoneiden luomiseen ja nähdäkseen, kuka sen luomissa huoneissa on. Se ei näe muita kokouksiasi, kalenteriasi eikä mitään muuta Google-tililläsi.",
-      "wrong": "Jokin meni pieleen. Yritä uudelleen."
-    },
     "people": {
       "title": "Ihmiset",
       "members": "Jäsenet",
@@ -1110,6 +1057,56 @@
     "nameLabel": "Toimiston nimi",
     "creating": "Valmistellaan",
     "continue": "Jatka"
+  },
+  "meetings": {
+    "title": "Kokoukset",
+    "subtitle": "Liity kokoukseen, niin hahmosi kävelee kokoushuoneeseen. Kokous pidetään täällä.",
+    "new": "Uusi kokous",
+    "others": "Muut kokoukset",
+    "walkHint": "Kun liityt, hahmosi kävelee kokoushuoneeseen ja kaikki näkevät sinun menevän. Kun kävelet ulos huoneesta, poistut kokouksesta.",
+    "liveFor": "Käynnissä · {time}",
+    "quiet": "Ei vielä ketään",
+    "plus": "+{count}",
+    "mainBody": "Aina auki. Kuka tahansa toimistosta voi tulla mukaan milloin vain.",
+    "join": "Liity",
+    "startMain": "Aloita kokous",
+    "nobodyIn": "Kukaan ei ole paikalla nyt. Liity, niin koko toimisto näkee, että kokous on käynnissä.",
+    "mainName": "Toimiston {office} kokous",
+    "byName": "Käyttäjän {name} kokous",
+    "people": "{count, plural, one {# henkilö} other {# henkilöä}}",
+    "invite": "Kutsu",
+    "screenOf": "Käyttäjän {name} näyttö",
+    "you": "Sinä",
+    "more": "+{count} muuta",
+    "leave": "Poistu",
+    "aloneTitle": "Olet täällä ensimmäisenä",
+    "aloneBody": "Sinulta ei lähetetä mitään, ennen kuin joku liittyy. Kutsu ihmisiä tai odota, että he tulevat.",
+    "aloneShort": "Odotetaan muita",
+    "open": "Avaa kokous",
+    "nobodyToAsk": "Ketään muuta toimistosta ei ole nyt kerroksessa. Ihmisten täytyy olla paikalla kuullakseen kutsusi.",
+    "inAnotherMeeting": "Kokouksessa",
+    "newTitle": "Uusi kokous",
+    "newBody": "Oma kokous niin kauan kuin joku on siinä. Koko toimisto näkee sen ja voi liittyä.",
+    "nameLabel": "Nimi",
+    "namePlaceholder": "Suunnittelukatselmus",
+    "askLabel": "Kutsu ihmisiä",
+    "start": "Aloita",
+    "startAndAsk": "{count, plural, one {Aloita ja kutsu # henkilö} other {Aloita ja kutsu # henkilöä}}",
+    "inviteTitle": "Kutsu ihmisiä",
+    "inviteBody": "He saavat kutsun liittyä, missä tahansa toimistossa he ovatkin.",
+    "ask": "{count, plural, =0 {Kutsu} one {Kutsu # henkilö} other {Kutsu # henkilöä}}",
+    "roomTitle": "Olet kokoushuoneessa",
+    "notNow": "Ei nyt",
+    "lobbyRoom": "Kokoukset pidetään omassa toimistossasi.",
+    "getOffice": "Luo toimisto",
+    "invitedTo": "Kutsuu sinut kokoukseen {name}",
+    "invited": "Kutsuu sinut kokoukseen",
+    "walkedOut": "Kävelit ulos kokouksesta",
+    "ended": "Se kokous on päättynyt",
+    "rejoin": "Liity uudelleen",
+    "startedBy": "Aloittaja: {name}",
+    "makeMeeting": "Kokous",
+    "makeMeetingHint": "Puhelu on kahden kesken: aloita kokous teille kolmelle"
   },
   "shell": {
     "floor": "Kerros",
@@ -1198,7 +1195,7 @@
       "main": "Päänavigaatio",
       "items": {
         "proximity": "Läheisyyspuhelut",
-        "meetings": "Neuvottelupöydät",
+        "meetings": "Kokoukset",
         "chat": "Chat",
         "people": "Läsnäolo",
         "invites": "Kutsut"
@@ -1220,7 +1217,7 @@
     },
     "hero": {
       "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",
-      "body": "Etätiimeille, jotka kaipaavat työskentelyä vierekkäin. Näe, kuka on paikalla, poikkea kysymään nopeasti ja vedä tuoli pöytään, kun on palaverin aika, ilman yhtäkään sovittua puhelua.",
+      "body": "Etätiimeille, jotka kaipaavat työskentelyä vierekkäin. Näe, kuka on paikalla, käy kysymässä nopea kysymys ja astu kokoushuoneeseen, kun on aika kokoontua, varaamatta ainuttakaan puhelua.",
       "secondary": "Astu aulaan",
       "previewLabel": "Kurkistus TinyFlooriin",
       "tabs": {
@@ -1373,7 +1370,7 @@
     "eyebrow": "Tietoa meistä",
     "title": "Etätyö menetti käytävän. Rakennamme sen takaisin.",
     "p1": "Erillään työskentely auttaa keskittymään, mutta se vei hiljaa pienet hetket: nopean kysymyksen jonkun työpöydän ääressä, ohimennen sanotun moikan, näkymän siihen, kuka on paikalla. Videopuhelut hoitavat kokoukset hyvin. Ne tekivät kaikista muista keskusteluista sovittuja tapaamisia.",
-    "p2": "TinyFloor on kerros linkin sijaan. Tiimisi kävelee yhteisessä pikselitaidetoimistossa, ja jonkun luo käveleminen on tapa aloittaa keskustelu. Istu pöydän ääreen, niin olet kokouksessa. Kävele pois, niin on taas hiljaista.",
+    "p2": "TinyFloor on kerros eikä linkki. Tiimisi kävelee yhteisessä pikseligrafiikkatoimistossa, ja jonkun luo käveleminen on tapa aloittaa puhuminen. Liity kokoukseen, niin kävelet kokoushuoneeseen. Kävele ulos, niin on taas hiljaista.",
     "p3": "Se toimii selaimessa Cloudflaren verkossa, 18 kielellä, ilman asennuksia, ja se on ilmainen pienille tiimeille.",
     "founderTitle": "Tekijä: Jitto Joseph",
     "founderBody": "Suunnittelen ja rakennan TinyFlooria pikselikerroksesta palvelimiin, joilla se pyörii. Jos sinulla on idea, ongelma tai haluat vain tervehtiä, kuulen sinusta mielelläni.",
@@ -1416,8 +1413,8 @@
         "body": "Kävele jonkun luo ja soita yhdellä klikkauksella. Kävele pois, niin puhelu päättyy."
       },
       "sit": {
-        "title": "Ota tuoli",
-        "body": "Neuvotteluhuone on käytävän päässä. Istu alas, niin olet palaverissa."
+        "title": "Astu kokoushuoneeseen",
+        "body": "Kokoushuone on käytävän päässä. Liity kokoukseen, niin hahmosi kävelee sisään; kävele ulos, niin olet poistunut."
       }
     },
     "more": {

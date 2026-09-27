@@ -9,6 +9,7 @@ import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
+import { setMeetings } from "./meetings";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -27,6 +28,9 @@ export class MessageHandler {
         this.welcome(message.self, message.players);
         jukebox.handleMusic(message.music);
         whiteboard.sync();
+        setMeetings(message.meetings ?? []);
+        // Back after a reconnect: the room forgot your meeting, so rejoin it.
+        callManager.rejoinMeeting();
         break;
       case "player_joined":
         if (message.player.id === this.playerId) return;
@@ -61,6 +65,10 @@ export class MessageHandler {
       case "meeting_joined":
       case "meeting_member_joined":
       case "meeting_member_left":
+      case "meetings":
+      case "speaking":
+      case "meeting_invited":
+      case "meeting_error":
       case "sfu":
         callManager.handleMeeting(message);
         break;

@@ -4,7 +4,6 @@ import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { floorRoutes } from "./floor";
 import { googleRoutes } from "./google";
-import { meetRoutes } from "./meet";
 import { officeRoutes } from "./offices";
 import { runRetention } from "./retention";
 import { Router } from "./router";
@@ -17,7 +16,6 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
 });
 authRoutes(router);
 googleRoutes(router);
-meetRoutes(router);
 officeRoutes(router);
 floorRoutes(router);
 callRoutes(router);

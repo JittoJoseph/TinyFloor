@@ -27,6 +27,41 @@ export interface MeetingMember {
   name: string;
 }
 
+/**
+ * Every office has one meeting that is always there to join, and anyone can
+ * start more; those last only while someone is in them. Meetings belong to the
+ * room, not to a table: joining one walks you into the meeting room.
+ */
+export const MAIN_MEETING = "main";
+export const MEETING_NAME_MAX = 40;
+/** Ad hoc meetings are named `m-` and eight letters or digits. */
+export const MEETING_ID = /^(main|m-[a-z0-9]{8})$/;
+
+/** Someone in a meeting, as everyone in the room sees it. */
+export interface MeetingPerson {
+  id: string;
+  name: string;
+  character: string;
+  /** When they joined, in server milliseconds. */
+  since: number;
+  speaking: boolean;
+}
+
+/** A meeting as the room lists it: the main one always, others while anyone is in them. */
+export interface MeetingInfo {
+  id: string;
+  /** Null for the main meeting, and for one started without a name. */
+  name: string | null;
+  /** Who started it; null for the main meeting. */
+  by: string | null;
+  /** When the first person still in it joined; null when it's empty. */
+  startedAt: number | null;
+  members: MeetingPerson[];
+}
+
+/** Why the room turned a meeting request down. */
+export type MeetingErrorCode = "not_found" | "offices_only";
+
 export interface BoardStroke {
   id: string;
   color: string;
@@ -54,12 +89,13 @@ export const MEDIA_KINDS = ["mic", "camera", "screen"] as const;
 export type MediaKind = (typeof MEDIA_KINDS)[number];
 
 /**
- * Video is sent in two qualities at once: `high` for the card someone has
- * enlarged, `low` for the small cards and for phones, where nothing is big
- * enough to tell the difference. Cameras and shared screens both use them, and
- * so do peer-to-peer calls, where the sender turns its own camera down instead.
+ * Meeting cameras are sent in three qualities at once and each viewer is sent
+ * only the one its tile needs: `high` for a speaker filling the stage,
+ * `medium` for two or three side by side, `low` for small tiles, the floor and
+ * phones. Shared screens have `high` and `low`. Peer-to-peer calls turn the
+ * sender's one encoding down instead.
  */
-export const VIDEO_QUALITIES = ["high", "low"] as const;
+export const VIDEO_QUALITIES = ["high", "medium", "low"] as const;
 export type VideoQuality = (typeof VIDEO_QUALITIES)[number];
 export type VideoKind = Exclude<MediaKind, "mic">;
 
@@ -99,7 +135,7 @@ export type ClientMessage =
    */
   | { t: "move"; x: number; y: number; d?: number }
   | { t: "walk_to"; x: number; y: number }
-  | { t: "sit"; seat: number; x: number; y: number; meeting?: string }
+  | { t: "sit"; seat: number; x: number; y: number }
   | { t: "stand"; x: number; y: number }
   | { t: "status"; status: PresenceStatus }
   | { t: "board_sync" }
@@ -107,10 +143,19 @@ export type ClientMessage =
   | { t: "board_clear" }
   | { t: "music_set"; track: number; playing: boolean; offset: number }
   | { t: "call"; kind: CallKind; to: string; data?: unknown }
+  /** Join a meeting: the main one, or one someone started. Leaves any other first. */
+  | { t: "meeting_join"; meeting: string }
+  /** Start a meeting of your own and join it, asking these people in. */
+  | { t: "meeting_start"; name?: string; invite?: string[] }
+  | { t: "meeting_leave" }
+  /** Ask people into the meeting you are in. */
+  | { t: "meeting_invite"; to: string[] }
+  /** Whether you are talking, while in a meeting; sent when it changes. */
+  | { t: "speaking"; on: boolean }
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
-  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState }
+  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState; meetings: MeetingInfo[] }
   | { t: "player_joined"; player: PlayerState }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number; d?: number }
@@ -122,6 +167,11 @@ export type ServerMessage =
   | { t: "meeting_joined"; meeting: string; members: MeetingMember[] }
   | ({ t: "meeting_member_joined" } & MeetingMember)
   | { t: "meeting_member_left"; id: string }
+  /** The meetings in the room, whole, whenever anyone joins, leaves or starts one. */
+  | { t: "meetings"; meetings: MeetingInfo[] }
+  | { t: "speaking"; id: string; on: boolean }
+  | { t: "meeting_invited"; from: string; fromName: string; meeting: string; name: string | null }
+  | { t: "meeting_error"; code: MeetingErrorCode }
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)

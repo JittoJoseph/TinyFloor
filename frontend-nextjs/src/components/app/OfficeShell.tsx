@@ -10,6 +10,8 @@ import { api, ApiError, type Member, type Office, type OfficeOverview } from "@/
 import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
+import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
+import { useCall } from "@/lib/useCall";
 import { clearFloor } from "@/lib/floor";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
@@ -72,6 +74,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const [read, setRead] = useState<{ overview: OfficeOverview; at: number } | null>(null);
   const [gone, setGone] = useState(false);
   const { unread } = useChat();
+  const { meetings: meetingList } = useMeetings();
+  const { meeting: myMeeting } = useCall();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
@@ -110,6 +114,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     return () => {
       chat.disconnect();
       clearFloor();
+      clearMeetings();
     };
   }, [office?.id]);
 
@@ -170,6 +175,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       chat: (channel) => officeChatPath(office.id, channel),
       people,
       settings: settingsPath,
+      meetings,
     },
     sharePath: floor,
     officesOnly: () => {},
@@ -185,7 +191,16 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
           destinations={[
             { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
             { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
-            { key: "meetings", href: meetings, label: ts("meetings"), icon: RailIcons.meetings, active: onMeetings },
+            {
+              key: "meetings",
+              href: meetings,
+              label: ts("meetings"),
+              icon: RailIcons.meetings,
+              active: onMeetings,
+              // Green while a meeting is on: how many are in them, and a ring when you are.
+              live: peopleInMeetings(meetingList) || undefined,
+              joined: !!myMeeting,
+            },
             { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
           ]}
           settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}

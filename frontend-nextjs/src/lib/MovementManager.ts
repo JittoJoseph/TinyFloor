@@ -187,8 +187,9 @@ export class MovementManager {
    * the room works the same with a mouse or a finger. Steering or clicking the
    * floor on the way drops the errand.
    */
-  goTo(worldX: number, worldY: number, arrive: () => void) {
-    if (!this.inputEnabled || !this.unfreeze()) return;
+  goTo(worldX: number, worldY: number, arrive: () => void, force = false) {
+    // `force`: an errand the app sends you on (walking into a meeting), even while typing.
+    if ((!force && !this.inputEnabled) || !this.unfreeze()) return;
 
     const goal = pixelToTile(worldX, worldY);
     const here = pixelToTile(this.player.x, this.player.y);

@@ -4,12 +4,23 @@ import { simulcastEncodings } from "./media";
 export interface MeetingPeer {
   id: string;
   name: string;
-  stream: MediaStream;
+  /** Their voice. Everyone's is received: audio is cheap, and muted mics send nothing. */
+  audio: MediaStream | null;
+  /** Their camera, only while we are receiving it (see `want`). */
+  camera: MediaStream | null;
   screenStream: MediaStream | null;
   connected: boolean;
+  /** What they have on, as they announce it. */
   mic: boolean;
-  camera: boolean;
+  cameraOn: boolean;
   screen: boolean;
+}
+
+/** One video we want to receive, and how sharp. */
+export interface VideoWant {
+  userId: string;
+  kind: VideoKind;
+  quality: VideoQuality;
 }
 
 interface PeerMedia extends MeetingPeer {
@@ -18,8 +29,10 @@ interface PeerMedia extends MeetingPeer {
   /** Our receiving transceivers for their tracks, by kind. */
   mids: Partial<Record<MediaKind, string>>;
   tracks: Partial<Record<MediaKind, MediaStreamTrack>>;
-  /** The quality we asked for, per video kind. */
+  /** The quality we asked for, per video kind we receive. */
   quality: Partial<Record<VideoKind, VideoQuality>>;
+  /** Asked for and not answered yet, so it isn't asked for twice. */
+  pending: Set<MediaKind>;
 }
 
 type Waiter = { op: "published" | "offer"; resolve: (message: SfuServerMessage) => void; reject: (error: Error) => void };
@@ -27,9 +40,15 @@ type Waiter = { op: "published" | "offer"; resolve: (message: SfuServerMessage) 
 const RESPONSE_TIMEOUT_MS = 15_000;
 
 /**
- * Meeting-table media through Cloudflare's SFU, brokered by the room. One peer
- * connection sends our mic, and our camera and screen in both qualities, and
- * receives everyone else's. Negotiation steps run one at a time.
+ * A meeting's media through Cloudflare's SFU, brokered by the room. One peer
+ * connection sends our mic, our camera in three qualities and a shared screen,
+ * and receives the others. Egress is the bill, so:
+ *
+ * - everyone's mic is received, and only the video the stage shows (`want`);
+ * - nothing is sent while we are alone, or while our mic is muted;
+ * - the SFU forwards each viewer only the quality its tile needs.
+ *
+ * Negotiation steps run one at a time.
  */
 export class SfuMeeting {
   private readonly pc: RTCPeerConnection;
@@ -38,10 +57,11 @@ export class SfuMeeting {
   private mic?: RTCRtpTransceiver;
   private camera?: RTCRtpTransceiver;
   private screen?: RTCRtpTransceiver;
+  private local: MediaStream | null = null;
+  private flags: MediaFlags = { mic: false, camera: false, screen: false };
+  private wanted: VideoWant[] = [];
   private chain: Promise<unknown> = Promise.resolve();
   private waiter: Waiter | null = null;
-  /** What each card can show; set by the call cards through CallManager. */
-  private wanted: (userId: string, kind: VideoKind) => VideoQuality = () => "low";
   private closed = false;
 
   constructor(
@@ -59,33 +79,39 @@ export class SfuMeeting {
   }
 
   get peerList(): MeetingPeer[] {
-    return [...this.peers.values()].map(({ id, name, stream, screenStream, connected, mic, camera, screen }) => ({
+    return [...this.peers.values()].map(({ id, name, audio, camera, screenStream, connected, mic, cameraOn, screen }) => ({
       id,
       name,
-      stream,
+      audio,
+      camera,
       screenStream,
       connected,
       mic,
-      camera,
+      cameraOn,
       screen,
     }));
   }
 
+  /** Whether anyone else is in the meeting: until someone is, nothing is worth sending. */
+  get alone(): boolean {
+    return this.peers.size === 0;
+  }
+
   /**
-   * Publishes our mic and camera slots, even if either is off for now. Called
-   * once media has opened; watching the others can start before that.
+   * Opens our mic and camera slots, empty until there is someone to hear and
+   * see them. Called once media has opened; receiving can start before that.
    */
   publishLocal(local: MediaStream | null, flags: MediaFlags) {
     if (this.mic) return;
-    this.mic = this.pc.addTransceiver(local?.getAudioTracks()[0] ?? "audio", { direction: "sendonly" });
-    this.camera = this.pc.addTransceiver(local?.getVideoTracks()[0] ?? "video", {
-      direction: "sendonly",
-      sendEncodings: simulcastEncodings("camera"),
-    });
+    this.local = local;
+    this.flags = flags;
+    this.mic = this.pc.addTransceiver("audio", { direction: "sendonly" });
+    this.camera = this.pc.addTransceiver("video", { direction: "sendonly", sendEncodings: simulcastEncodings("camera") });
     this.publish([
       { transceiver: this.mic, kind: "mic" },
       { transceiver: this.camera, kind: "camera" },
     ]);
+    this.fillSlots();
     this.send({ op: "media", ...flags });
   }
 
@@ -94,17 +120,20 @@ export class SfuMeeting {
     this.peers.set(id, {
       id,
       name,
-      stream: new MediaStream(),
+      audio: null,
+      camera: null,
       screenStream: null,
       connected: false,
       mic: false,
-      camera: false,
+      cameraOn: false,
       screen: false,
       published: new Set(),
       mids: {},
       tracks: {},
       quality: {},
+      pending: new Set(),
     });
+    this.fillSlots();
     this.changed();
   }
 
@@ -115,6 +144,7 @@ export class SfuMeeting {
     if (mids.length) this.send({ op: "unsubscribe", mids });
     mids.forEach((mid) => this.byMid.delete(mid));
     this.peers.delete(id);
+    this.fillSlots();
     this.changed();
   }
 
@@ -142,9 +172,11 @@ export class SfuMeeting {
       case "tracks": {
         const peer = this.peers.get(message.userId);
         if (!peer) return;
-        const fresh = message.kinds.filter((kind) => !peer.published.has(kind) || !peer.mids[kind]);
         message.kinds.forEach((kind) => peer.published.add(kind));
-        if (fresh.length) this.subscribe(peer, fresh);
+        // Voices always; video only when the stage asks for it.
+        if (message.kinds.includes("mic") && !peer.mids.mic && !peer.pending.has("mic")) this.subscribe([{ peer, kind: "mic" }]);
+        this.reconcile();
+        this.changed();
         break;
       }
       case "untracks": {
@@ -154,9 +186,13 @@ export class SfuMeeting {
         message.kinds.forEach((kind) => {
           peer.published.delete(kind);
           const mid = peer.mids[kind];
-          if (mid) mids.push(mid);
+          if (mid) {
+            mids.push(mid);
+            this.byMid.delete(mid);
+          }
           delete peer.mids[kind];
           delete peer.tracks[kind];
+          if (kind !== "mic") delete peer.quality[kind];
         });
         if (mids.length) this.send({ op: "unsubscribe", mids });
         this.rebuild(peer);
@@ -166,7 +202,7 @@ export class SfuMeeting {
         const peer = this.peers.get(message.userId);
         if (!peer) return;
         peer.mic = message.mic;
-        peer.camera = message.camera;
+        peer.cameraOn = message.camera;
         peer.screen = message.screen;
         this.changed();
         break;
@@ -177,11 +213,26 @@ export class SfuMeeting {
     }
   }
 
-  /** Mic or camera switched on or off: swap what's in the slot, no renegotiation. */
+  /** Mic or camera switched on or off, or the local stream changed: what fills the slots follows. */
   updateLocal(local: MediaStream | null, flags: MediaFlags) {
-    void this.mic?.sender.replaceTrack(local?.getAudioTracks()[0] ?? null).catch(() => {});
-    void this.camera?.sender.replaceTrack(local?.getVideoTracks()[0] ?? null).catch(() => {});
+    this.local = local;
+    this.flags = flags;
+    this.fillSlots();
     this.send({ op: "media", ...flags });
+  }
+
+  /**
+   * The slots carry our voice and camera only when someone else is here to
+   * receive them, and the mic only while it is on: an empty slot sends nothing
+   * at all, where a muted track would still send silence.
+   */
+  private fillSlots() {
+    if (!this.mic || !this.camera) return;
+    const company = !this.alone;
+    const voice = company && this.flags.mic ? (this.local?.getAudioTracks()[0] ?? null) : null;
+    const face = company && this.flags.camera ? (this.local?.getVideoTracks()[0] ?? null) : null;
+    if (this.mic.sender.track !== voice) void this.mic.sender.replaceTrack(voice).catch(() => {});
+    if (this.camera.sender.track !== face) void this.camera.sender.replaceTrack(face).catch(() => {});
   }
 
   /** Starting a screen share publishes it as a new track; stopping it closes the track. */
@@ -197,18 +248,50 @@ export class SfuMeeting {
     }
   }
 
-  /** Asks the SFU for the quality each card can show, when it changes. */
-  setQuality(wanted: (userId: string, kind: VideoKind) => VideoQuality) {
-    this.wanted = wanted;
-    this.peers.forEach((peer) => {
-      (["camera", "screen"] as const).forEach((kind) => {
+  /**
+   * The video the stage shows, and how sharp: everything else is let go.
+   * Letting go comes first, so the room's cap on video is never crossed on the way.
+   */
+  want(videos: VideoWant[]) {
+    this.wanted = videos;
+    this.reconcile();
+  }
+
+  private reconcile() {
+    if (this.closed) return;
+    const wanted = new Map(this.wanted.map((video) => [`${video.userId}:${video.kind}`, video]));
+
+    const drop: string[] = [];
+    for (const peer of this.peers.values()) {
+      for (const kind of ["camera", "screen"] as const) {
         const mid = peer.mids[kind];
-        const quality = wanted(peer.id, kind);
-        if (!mid || peer.quality[kind] === quality) return;
-        peer.quality[kind] = quality;
-        this.send({ op: "quality", userId: peer.id, kind, mid, quality });
-      });
-    });
+        if (!mid || wanted.has(`${peer.id}:${kind}`)) continue;
+        drop.push(mid);
+        this.byMid.delete(mid);
+        delete peer.mids[kind];
+        delete peer.tracks[kind];
+        delete peer.quality[kind];
+        this.rebuild(peer, false);
+      }
+    }
+    if (drop.length) this.send({ op: "unsubscribe", mids: drop });
+
+    const add: { peer: PeerMedia; kind: MediaKind; quality: VideoQuality }[] = [];
+    for (const video of wanted.values()) {
+      const peer = this.peers.get(video.userId);
+      if (!peer || !peer.published.has(video.kind)) continue;
+      const mid = peer.mids[video.kind];
+      if (mid) {
+        if (peer.quality[video.kind] !== video.quality) {
+          peer.quality[video.kind] = video.quality;
+          this.send({ op: "quality", userId: peer.id, kind: video.kind, mid, quality: video.quality });
+        }
+      } else if (!peer.pending.has(video.kind)) {
+        add.push({ peer, kind: video.kind, quality: video.quality });
+      }
+    }
+    if (add.length) this.subscribe(add);
+    if (drop.length) this.changed();
   }
 
   close() {
@@ -233,19 +316,27 @@ export class SfuMeeting {
     });
   }
 
-  private subscribe(peer: PeerMedia, kinds: MediaKind[]) {
+  private subscribe(items: { peer: PeerMedia; kind: MediaKind; quality?: VideoQuality }[]) {
+    items.forEach(({ peer, kind }) => peer.pending.add(kind));
     this.enqueue(async () => {
-      if (!this.peers.has(peer.id)) return;
+      const still = items.filter(({ peer }) => this.peers.has(peer.id));
+      const clear = () => items.forEach(({ peer, kind }) => peer.pending.delete(kind));
+      if (!still.length) return clear();
       const offered = this.wait("offer");
       this.send({
         op: "subscribe",
-        tracks: kinds.map((kind) => ({
+        tracks: still.map(({ peer, kind, quality }) => ({
           userId: peer.id,
           kind,
-          ...(kind === "mic" ? {} : { quality: (peer.quality[kind] = this.wanted(peer.id, kind)) }),
+          ...(kind === "mic" ? {} : { quality: (peer.quality[kind as VideoKind] = quality ?? "low") }),
         })),
       });
-      const offer = await offered;
+      let offer: SfuServerMessage;
+      try {
+        offer = await offered;
+      } finally {
+        clear();
+      }
       if (offer.op !== "offer") return;
       offer.tracks.forEach(({ userId, kind, mid }) => {
         if (!mid) return;
@@ -254,6 +345,8 @@ export class SfuMeeting {
         if (target) target.mids[kind] = mid;
       });
       if (offer.sdp) await this.answer(offer.sdp);
+      // The stage may have moved on while this was being answered.
+      this.reconcile();
     });
   }
 
@@ -273,10 +366,11 @@ export class SfuMeeting {
   }
 
   /** New stream objects, so the video and audio elements pick up the change. */
-  private rebuild(peer: PeerMedia) {
-    peer.stream = new MediaStream([peer.tracks.mic, peer.tracks.camera].filter(Boolean) as MediaStreamTrack[]);
+  private rebuild(peer: PeerMedia, announce = true) {
+    peer.audio = peer.tracks.mic ? new MediaStream([peer.tracks.mic]) : null;
+    peer.camera = peer.tracks.camera ? new MediaStream([peer.tracks.camera]) : null;
     peer.screenStream = peer.tracks.screen ? new MediaStream([peer.tracks.screen]) : null;
-    this.changed();
+    if (announce) this.changed();
   }
 
   private enqueue(task: () => Promise<void>) {

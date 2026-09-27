@@ -2,7 +2,9 @@
 
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import { MessageSquare, Phone } from "lucide-react";
+import { MessageSquare, Phone, Users } from "lucide-react";
+import { useRouter } from "@/lib/i18n/navigation";
+import { usePlace } from "@/components/app/place";
 import { RoomIconButton, surface } from "./room/ui";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -28,8 +30,10 @@ const STATUSES = new Set(["available", "busy", "away", "in_call"]);
 /**
  * The card beside someone you have walked up to: who they are and how they
  * are, a message, and the call. A call starts with voice, like stopping by a
- * desk; the camera is in the dock once you're talking. Touch gets the bigger
- * sizes, since a fingertip needs more room than a cursor.
+ * desk; the camera is in the dock once you're talking. A call is two people:
+ * already on one, walking up to a third offers a meeting for the three of
+ * you instead. Touch gets the bigger sizes, since a fingertip needs more room
+ * than a cursor.
  */
 export const ProximityActions = memo(function ProximityActions({
   player,
@@ -41,8 +45,15 @@ export const ProximityActions = memo(function ProximityActions({
   const t = useTranslations("proximity");
   const tShell = useTranslations("shell");
   const tStatus = useTranslations("status");
+  const tMeetings = useTranslations("meetings");
+  const router = useRouter();
+  const place = usePlace();
   const { peers } = useCall();
   const onCall = peers.some((peer) => peer.id === player.id);
+  // Already talking to someone else: a third person makes it a meeting, in offices.
+  const meetingPath = place.paths.meetings;
+  const asMeeting = !onCall && peers.length > 0 && !!meetingPath;
+  const busy = !onCall && player.status === "in_call";
   const status = STATUSES.has(player.status) ? tStatus(`${player.status as "available"}.label`) : null;
 
   return (
@@ -63,7 +74,23 @@ export const ProximityActions = memo(function ProximityActions({
         icon={<MessageSquare className={touch ? "size-[17px]" : "size-[14px]"} />}
       />
 
-      {onCall ? (
+      {asMeeting ? (
+        <button
+          type="button"
+          onClick={() => {
+            router.push(meetingPath!);
+            callManager.startMeeting("", [player.id]);
+          }}
+          title={tMeetings("makeMeetingHint")}
+          className={cn(
+            "inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-ok font-semibold text-white outline-none transition-[background-color,transform] duration-150 hover:bg-ok/90 focus-visible:ring-2 focus-visible:ring-ok/50 active:scale-[0.97]",
+            touch ? "h-10 px-4 text-[14px]" : "h-8 px-3.5 text-[12.5px]",
+          )}
+        >
+          <Users className={touch ? "size-4" : "size-3.5"} strokeWidth={2.25} />
+          {tMeetings("makeMeeting")}
+        </button>
+      ) : busy || peers.length > 0 ? null : onCall ? (
         <span
           className={cn(
             "inline-flex shrink-0 items-center gap-1.5 rounded-full bg-ok/12 font-semibold text-ok",

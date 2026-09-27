@@ -62,7 +62,7 @@
       },
       {
         "q": "Jak działa czat wideo zbliżeniowy?",
-        "a": "Podejdź do kogoś, a obok tej osoby pojawi się przycisk połączenia. Jedno stuknięcie zaczyna rozmowę, a w jej trakcie możesz włączyć kamerę albo udostępnić ekran. Połączenia idą przez WebRTC w sieci Cloudflare, więc łączą się w każdej sieci biurowej i domowej, i trwają, dopóki ktoś się nie rozłączy. Przy stołach konferencyjnych odbywają się rozmowy grupowe: usiądź, aby dołączyć, wstań, aby wyjść."
+        "a": "Podejdź do kogoś, a obok tej osoby pojawi się przycisk połączenia. Jedno kliknięcie rozpoczyna rozmowę, a w trakcie możesz włączyć kamerę lub udostępnić ekran. Rozmowy idą przez WebRTC w sieci Cloudflare, więc działają w każdej sieci biurowej i domowej i trwają, dopóki ktoś się nie rozłączy. W grupie dołącz do spotkania, a twoja postać pójdzie do sali spotkań."
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
@@ -459,7 +459,7 @@
           },
           {
             "q": "Co ma Gather, czego nie ma TinyFloor?",
-            "a": "Gather dodaje notatki ze spotkań tworzone przez AI i personalizację biura. TinyFloor skupia się na podstawach: chodzeniu, rozmowach z bliska, udostępnianiu ekranu, stole konferencyjnym, czacie, tablicy i muzyce w pokoju."
+            "a": "Gather dodaje notatki ze spotkań tworzone przez AI i personalizację biura. TinyFloor skupia się na podstawach: chodzeniu, rozmowach z bliska, udostępnianiu ekranu, sali spotkań, czacie, tablicy i muzyce w pokoju."
           },
           {
             "q": "Czy mogę przenieść zespół z Gather do TinyFloor?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Podejdź, żeby porozmawiać",
-            "body": "Podejdź do współpracownika, żeby zacząć rozmowę. Przy stole konferencyjnym wszyscy są w jednej rozmowie."
+            "body": "Podejdź blisko do kogoś z zespołu, żeby zacząć rozmowę. W grupie dołączcie do spotkania, a wszyscy pójdą do sali spotkań."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Bez budowania mapy",
-            "body": "Każdy pokój ma piętro biura, stół konferencyjny, tablicę i głośnik. Utwórz pokój i wejdź."
+            "body": "Każdy pokój ma piętro biura, salę spotkań, tablicę i głośnik. Utwórz pokój i wejdź."
           },
           {
             "title": "Nic do hostowania",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Jak zaczynają się rozmowy w TinyFloor?",
-            "a": "Podejdź do współpracownika, a pojawi się jego karta rozmowy. Jedno dotknięcie zaczyna rozmowę. Przy stole konferencyjnym wszyscy, którzy usiądą, są w tej samej rozmowie."
+            "a": "Podejdź do kogoś z zespołu, a pojawi się karta połączenia. Jedno kliknięcie rozpoczyna rozmowę. W grupie dołącz do spotkania, a twoja postać pójdzie do sali spotkań."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Czym TinyFloor różni się od Wonder?",
-            "a": "Wonder używał kręgów na płaskiej planszy i był stworzony z myślą o wydarzeniach. TinyFloor to biuro, po którym się chodzi, z biurkami, stołem konferencyjnym, tablicą i muzyką, stworzone dla grup, które spotykają się regularnie."
+            "a": "Wonder używał kręgów na płaskiej planszy i był stworzony z myślą o wydarzeniach. TinyFloor to biuro, po którym się chodzi, z biurkami, salą spotkań, tablicą i muzyką, stworzone dla grup, które spotykają się regularnie."
           },
           {
             "q": "Ile osób może dołączyć?",
@@ -660,7 +660,7 @@
           "description": "Darmowe wirtualne biuro w przeglądarce. Zobacz, kto jest obecny, podejdź, żeby porozmawiać przez wideo, i trzymaj jeden pokój otwarty dla zespołu na odległość."
         },
         "title": "Darmowe <em>wirtualne biuro</em> dla zespołów na odległość.",
-        "subtitle": "Daj zespołowi miejsce, w którym może być w ciągu dnia. Zobacz, kto jest obecny, podejdź z szybkim pytaniem i usiądź przy stole konferencyjnym, gdy czas porozmawiać.",
+        "subtitle": "Daj zespołowi miejsce, w którym może być w ciągu dnia. Zobacz, kto jest, podejdź z szybkim pytaniem i wejdź do sali spotkań, gdy przyjdzie czas na rozmowę.",
         "points": [
           {
             "title": "Zobacz, kto jest obecny",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Stół na spotkania",
-            "body": "Usiądź przy stole konferencyjnym, a wszyscy przy nim będą w jednej rozmowie, z kafelkiem dla każdej osoby."
+            "body": "Dołącz do spotkania, a twoja postać pójdzie do sali spotkań. Na wideo są tylko osoby, które mówią, a każdy ma swoją kartę."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Ucz się ze znajomymi w darmowym pokoju do nauki online. Siedźcie razem w pokoju w stylu pixel art, skupcie się i rozmawiajcie w przerwach. Bez pobierania."
         },
         "title": "<em>Pokój do nauki online</em> dla Ciebie i znajomych.",
-        "subtitle": "Utwórz pokój dla grupy do nauki, udostępnij jeden link i siedźcie razem podczas pracy. Omówcie zadanie przy stole i wracajcie do nauki.",
+        "subtitle": "Utwórz pokój dla swojej grupy, udostępnij jeden link i siedźcie razem przy pracy. Omówcie problem w sali spotkań, a potem wróćcie do nauki.",
         "points": [
           {
             "title": "Domyślnie cicho",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Stół do pracy w grupie",
-            "body": "Usiądźcie przy stole konferencyjnym, żeby porozmawiać w grupie, i wstańcie, żeby wrócić do samodzielnej nauki."
+            "body": "Dołącz do spotkania, żeby porozmawiać w grupie, a potem wyjdź z sali spotkań, by uczyć się dalej samodzielnie."
           },
           {
             "title": "Tablica do zadań",
@@ -780,18 +780,18 @@
         "label": "Wirtualna klasa",
         "meta": {
           "title": "Darmowa wirtualna klasa na konsultacje",
-          "description": "Prowadź konsultacje, korepetycje i małe zajęcia w darmowej wirtualnej klasie. Uczniowie podchodzą, żeby porozmawiać, grupy spotykają się przy stole, a wszyscy korzystają z jednej tablicy."
+          "description": "Konsultacje, korepetycje i małe zajęcia w darmowej wirtualnej klasie. Uczniowie podchodzą, żeby porozmawiać, grupy spotykają się w sali spotkań, a wszyscy dzielą jedną tablicę."
         },
         "title": "<em>Wirtualna klasa</em>, po której uczniowie chodzą.",
-        "subtitle": "Prowadź konsultacje, korepetycje albo małe zajęcia w pokoju, po którym uczniowie mogą się poruszać. Podchodzą, gdy mają pytanie, a grupy rozmawiają przy stole.",
+        "subtitle": "Prowadź konsultacje, korepetycje lub małe zajęcia w pokoju, po którym uczniowie mogą chodzić. Podchodzą, gdy mają pytanie, a grupy rozmawiają w sali spotkań.",
         "points": [
           {
             "title": "Płynne konsultacje",
             "body": "Uczniowie widzą, kiedy masz czas, i podchodzą z pytaniem. Nikt nie czeka w poczekalni."
           },
           {
-            "title": "Małe grupy przy stole",
-            "body": "Do sześciu osób siada przy stole konferencyjnym i dzieli jedną rozmowę, z kafelkiem dla każdej osoby."
+            "title": "Małe grupy w sali spotkań",
+            "body": "Rozpocznij spotkanie, a grupa razem wejdzie do sali spotkań, z kartą dla każdej osoby."
           },
           {
             "title": "Wspólna tablica",
@@ -824,15 +824,15 @@
           "description": "Czat zbliżeniowy dla zespołów i znajomych: podejdź swoją postacią do kogoś, żeby zacząć rozmowę. Za darmo, w przeglądarce, bez pobierania."
         },
         "title": "<em>Czat zbliżeniowy</em>, który zaczyna się, gdy podchodzisz.",
-        "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, usiądź przy stole, żeby porozmawiać w grupie, i idź dalej, gdy skończysz.",
+        "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, dołącz do spotkania, żeby porozmawiać w grupie, i idź dalej, gdy skończycie.",
         "points": [
           {
             "title": "Bliskość zaczyna rozmowę",
             "body": "Stań obok współpracownika, a pojawi się karta rozmowy. Jedno dotknięcie zaczyna rozmowę."
           },
           {
-            "title": "Grupy przy stole",
-            "body": "Usiądź przy stole konferencyjnym, a dołączysz do rozmowy ze wszystkimi, którzy tam siedzą."
+            "title": "Grupy w sali spotkań",
+            "body": "Dołącz do spotkania, a twoja postać wejdzie do sali spotkań, do wszystkich pozostałych."
           },
           {
             "title": "Działa w każdej sieci",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Czy może rozmawiać więcej niż dwie osoby?",
-            "a": "Tak. Zadzwoń do kogoś, kto już jest w rozmowie, żeby dołączyć, albo usiądź przy stole konferencyjnym, żeby porozmawiać w grupie."
+            "a": "Rozmowa to dwie osoby. Podejdź do trzeciej i zamień ją w spotkanie albo dołącz do spotkania biura, żeby porozmawiać w grupie."
           },
           {
             "q": "Czy to jest darmowe?",
@@ -1009,59 +1009,6 @@
       "google_taken": "To konto Google jest już połączone z innym kontem TinyFloor.",
       "google_failed": "Nie udało się z Google. Spróbuj ponownie."
     },
-    "meetings": {
-      "title": "Spotkania",
-      "subtitle": "Sala spotkań biura {office} to Google Meet. Otwiera się w osobnej karcie, a wszyscy tutaj widzą, kto w niej jest.",
-      "room": "Sala spotkań",
-      "join": "Dołącz do spotkania",
-      "copy": "Kopiuj link",
-      "copied": "Skopiowano",
-      "copyFailed": "Nie udało się skopiować linku. Zaznacz go i skopiuj samodzielnie.",
-      "madeBy": "Utworzona przez: {name}",
-      "madeByYou": "Utworzona przez ciebie",
-      "inNow": "Teraz na spotkaniu",
-      "nobody": "Nikogo nie ma na spotkaniu.",
-      "cantSee": "W tej chwili nie widzimy, kto jest na spotkaniu.",
-      "creatorGone": "Osoba, która utworzyła tę salę, opuściła biuro, więc nie widzimy, kto w niej jest. Link nadal działa.",
-      "yourPermissionGone": "Cofnięto uprawnienie Google Meet dla TinyFloor, więc nie widzimy, kto jest w sali.",
-      "creatorPermissionGone": "{name} cofnął(-ęła) uprawnienie Google Meet dla TinyFloor, więc nie widzimy, kto jest w sali. Link nadal działa.",
-      "guest": "gość",
-      "phone": "telefon",
-      "unnamed": "Ktoś",
-      "noRoomTitle": "Nie ma jeszcze sali spotkań",
-      "noRoomAdmin": "Utwórz salę Google Meet dla biura {office}. Zostanie utworzona na twoim koncie Google, a każdy tutaj może do niej dołączyć z tej strony.",
-      "noRoomAdminPermission": "Google zapyta, czy TinyFloor może tworzyć sale Meet w twoim imieniu.",
-      "noRoomMember": "Administrator może utworzyć salę spotkań biura {office}, czyli Google Meet, do którego każdy tutaj może dołączyć.",
-      "create": "Utwórz salę Google Meet",
-      "creating": "Tworzenie sali…",
-      "replace": "Utwórz nową salę",
-      "remove": "Usuń salę",
-      "replaceTitle": "Utworzyć nową salę spotkań?",
-      "replaceBody": "Nowa sala Google Meet, utworzona na twoim koncie Google, zastąpi tę. Stary link nadal działa dla osób, które go mają.",
-      "replaceIt": "Utwórz nową salę",
-      "removeTitle": "Usunąć salę spotkań?",
-      "removeBody": "Nie będzie już tu wyświetlana. Link do Meet nadal działa dla osób, które go mają.",
-      "removeIt": "Usuń",
-      "loadFailed": "Nie udało się wczytać sali spotkań.",
-      "retry": "Spróbuj ponownie",
-      "needPermission": "TinyFloor potrzebuje twojej zgody, aby tworzyć sale Google Meet. Zezwól na Google Meet, aby kontynuować.",
-      "notTicked": "Pole Google Meet nie było zaznaczone. Zezwól ponownie na Google Meet i tym razem je zaznacz.",
-      "askAgain": "Google potrzebuje twojej zgody jeszcze raz. Zezwól ponownie na Google Meet.",
-      "declined": "Nie zezwolono na Google Meet, więc sala nie została utworzona.",
-      "googleFailed": "Google nie odpowiedział poprawnie. Spróbuj ponownie.",
-      "googleBusy": "Google Meet jest przeciążony. Spróbuj ponownie za minutę.",
-      "googleBlocked": "Nie udało się otworzyć okna logowania Google. Zezwól na wyskakujące okienka dla tej witryny i spróbuj ponownie.",
-      "meetFailed": "Google Meet nie utworzył sali. Spróbuj ponownie.",
-      "unavailable": "Google Meet nie jest tu jeszcze skonfigurowany.",
-      "offline": "Nie można połączyć się z TinyFloor. Sprawdź połączenie i spróbuj ponownie.",
-      "yourGoogle": "Uprawnienie Google Meet:",
-      "allowedAs": "udzielone, jako {email}",
-      "notAllowed": "nieudzielone",
-      "allow": "Zezwól na Google Meet",
-      "revoke": "Cofnij",
-      "permissionNote": "TinyFloor używa go tylko do tworzenia sal spotkań i sprawdzania, kto jest w utworzonych przez niego salach. Nie widzi twoich innych spotkań, kalendarza ani niczego innego na twoim koncie Google.",
-      "wrong": "Coś poszło nie tak. Spróbuj ponownie."
-    },
     "people": {
       "title": "Ludzie",
       "members": "Członkowie",
@@ -1110,6 +1057,56 @@
     "nameLabel": "Nazwa biura",
     "creating": "Przygotowujemy je",
     "continue": "Dalej"
+  },
+  "meetings": {
+    "title": "Spotkania",
+    "subtitle": "Dołącz do spotkania, a twoja postać pójdzie do sali spotkań. Samo spotkanie odbywa się tutaj.",
+    "new": "Nowe spotkanie",
+    "others": "Inne spotkania",
+    "walkHint": "Gdy dołączasz, twoja postać idzie do sali spotkań i wszyscy widzą, jak idziesz. Wyjdź z sali, a opuścisz spotkanie.",
+    "liveFor": "Na żywo · {time}",
+    "quiet": "Jeszcze nikogo",
+    "plus": "+{count}",
+    "mainBody": "Zawsze otwarte. Każdy w biurze może wpaść w dowolnej chwili.",
+    "join": "Dołącz",
+    "startMain": "Rozpocznij spotkanie",
+    "nobodyIn": "Teraz nikogo nie ma. Dołącz, a całe biuro zobaczy, że trwa.",
+    "mainName": "Spotkanie {office}",
+    "byName": "Spotkanie: {name}",
+    "people": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
+    "invite": "Zaproś",
+    "screenOf": "Ekran: {name}",
+    "you": "Ty",
+    "more": "+{count} więcej",
+    "leave": "Wyjdź",
+    "aloneTitle": "Jesteś tu pierwszy",
+    "aloneBody": "Nic od ciebie nie jest wysyłane, dopóki ktoś nie dołączy. Zaproś ludzi albo poczekaj, aż wpadną.",
+    "aloneShort": "Czekamy na innych",
+    "open": "Otwórz spotkanie",
+    "nobodyToAsk": "Nikogo innego z biura nie ma teraz na piętrze. Ludzie muszą tu być, żeby usłyszeć zaproszenie.",
+    "inAnotherMeeting": "Na spotkaniu",
+    "newTitle": "Nowe spotkanie",
+    "newBody": "Twoje własne spotkanie, dopóki ktoś w nim jest. Całe biuro może je zobaczyć i dołączyć.",
+    "nameLabel": "Nazwa",
+    "namePlaceholder": "Przegląd projektu",
+    "askLabel": "Zaproś ludzi",
+    "start": "Rozpocznij",
+    "startAndAsk": "{count, plural, one {Rozpocznij i zaproś # osobę} few {Rozpocznij i zaproś # osoby} many {Rozpocznij i zaproś # osób} other {Rozpocznij i zaproś # osoby}}",
+    "inviteTitle": "Zaproś ludzi",
+    "inviteBody": "Dostaną połączenie z zaproszeniem, gdziekolwiek są w biurze.",
+    "ask": "{count, plural, =0 {Zaproś} one {Zaproś # osobę} few {Zaproś # osoby} many {Zaproś # osób} other {Zaproś # osoby}}",
+    "roomTitle": "Jesteś w sali spotkań",
+    "notNow": "Nie teraz",
+    "lobbyRoom": "Spotkania odbywają się w twoim własnym biurze.",
+    "getOffice": "Utwórz biuro",
+    "invitedTo": "Zaprasza cię na: {name}",
+    "invited": "Zaprasza cię na spotkanie",
+    "walkedOut": "Wyszedłeś ze spotkania",
+    "ended": "To spotkanie się skończyło",
+    "rejoin": "Dołącz ponownie",
+    "startedBy": "Rozpoczął(-ęła): {name}",
+    "makeMeeting": "Spotkanie",
+    "makeMeetingHint": "Rozmowa to dwie osoby: rozpocznij spotkanie dla waszej trójki"
   },
   "shell": {
     "floor": "Piętro",
@@ -1198,7 +1195,7 @@
       "main": "Nawigacja główna",
       "items": {
         "proximity": "Rozmowy w pobliżu",
-        "meetings": "Stoły konferencyjne",
+        "meetings": "Spotkania",
         "chat": "Czat",
         "people": "Obecność",
         "invites": "Zaproszenia"
@@ -1220,7 +1217,7 @@
     },
     "hero": {
       "title": "Wirtualne biuro, po którym twój zespół może chodzić.",
-      "body": "Dla zespołów zdalnych, którym brakuje pracy ramię w ramię. Zobacz, kto jest na miejscu, wpadnij z szybkim pytaniem i przysuń krzesło, gdy przychodzi pora spotkania, bez planowania ani jednej rozmowy.",
+      "body": "Dla zespołów zdalnych, którym brakuje pracy ramię w ramię. Zobacz, kto jest, wpadnij z szybkim pytaniem i wejdź do sali spotkań, gdy czas się spotkać, bez planowania ani jednej rozmowy.",
       "secondary": "Wejdź do lobby",
       "previewLabel": "Zajrzyj do TinyFloor",
       "tabs": {
@@ -1373,7 +1370,7 @@
     "eyebrow": "O nas",
     "title": "Praca zdalna straciła korytarz. Budujemy go na nowo.",
     "p1": "Praca osobno sprzyja skupieniu, ale po cichu zabrała drobne chwile: szybkie pytanie przy czyimś biurku, cześć w przelocie, widok tego, kto jest na miejscu. Rozmowy wideo dobrze sprawdzają się na spotkaniach. Z każdej innej rozmowy zrobiły termin w kalendarzu.",
-    "p2": "TinyFloor to piętro zamiast linku. Twój zespół chodzi po wspólnym biurze w stylu pixel art, a podejście do kogoś to sposób na rozpoczęcie rozmowy. Usiądź przy stole i jesteś na spotkaniu. Odejdź i znów robi się cicho.",
+    "p2": "TinyFloor to piętro zamiast linku. Twój zespół chodzi po wspólnym biurze w pixel arcie, a podejście do kogoś to sposób na rozpoczęcie rozmowy. Dołącz do spotkania, a wejdziesz do sali spotkań. Wyjdź, a znów jest cicho.",
     "p3": "Działa w przeglądarce w sieci Cloudflare, w 18 językach, bez instalowania czegokolwiek, i jest darmowe dla małych zespołów.",
     "founderTitle": "Tworzy je Jitto Joseph",
     "founderBody": "Projektuję i buduję TinyFloor, od pikselowego piętra po serwery, na których działa. Masz pomysł, problem albo chcesz się po prostu przywitać? Chętnie się odezwę.",
@@ -1416,8 +1413,8 @@
         "body": "Podejdź do kogoś i zadzwoń jednym kliknięciem. Odejdź, a rozmowa się kończy."
       },
       "sit": {
-        "title": "Przysuń krzesło",
-        "body": "Sala spotkań jest na końcu korytarza. Usiądź i już jesteś na spotkaniu."
+        "title": "Wejdź do sali spotkań",
+        "body": "Sala spotkań jest na końcu korytarza. Dołącz do spotkania, a twoja postać wejdzie do środka; wyjdź, a opuścisz je."
       }
     },
     "more": {

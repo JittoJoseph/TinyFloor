@@ -11,6 +11,9 @@ import { Joystick } from "./Joystick";
 import ProximityOverlay from "@/components/ProximityOverlay";
 import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
+import { MeetingAudio } from "@/components/meetings/MeetingAudio";
+import { MeetingMini } from "@/components/meetings/MeetingMini";
+import { MeetingRoomPrompt } from "@/components/meetings/MeetingRoomPrompt";
 import JukeboxPanel from "@/components/JukeboxPanel";
 import RoomTutorial from "@/components/RoomTutorial";
 import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
@@ -249,6 +252,9 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
       <Joystick />
       <ProximityOverlay />
       <CallOverlay />
+      <MeetingRoomPrompt />
+      <MeetingMini />
+      <MeetingAudio />
       <WhiteboardOverlay />
       <JukeboxPanel />
 

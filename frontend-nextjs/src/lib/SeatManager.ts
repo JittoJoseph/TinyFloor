@@ -3,8 +3,8 @@ import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
 import type { RoomSocket } from "./RoomSocket";
-import { callManager } from "./CallManager";
 import type { GoTo } from "./Interactable";
+import { meetingsState, peopleInMeetings, subscribeMeetings } from "./meetings";
 import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "./types";
@@ -31,7 +31,7 @@ const IDLE = 0x9ca3af;
 const PROMPT_DEPTH = 99000;
 const SELF = "self";
 
-/** Chairs in this map zone put whoever sits down into the table's call. */
+/** The meeting room's zone: its table carries a tag saying whether a meeting is on. */
 const MEETING_ZONE = "meeting";
 
 export interface SeatPose {
@@ -67,7 +67,7 @@ export class SeatManager {
   private keyboard: boolean;
   private onSitChange?: (seated: boolean) => void;
   private goTo?: GoTo;
-  private onMeetingChange?: (people: ReadonlySet<string> | null) => void;
+  private unsubscribe?: () => void;
 
   constructor(
     scene: Phaser.Scene,
@@ -88,7 +88,7 @@ export class SeatManager {
     this.prompt.container.setDepth(PROMPT_DEPTH).setVisible(false);
 
     // a tag in the middle of the meeting table, so anyone walking past can see
-    // whether a call is on
+    // whether a meeting is on, and how many are in it
     if (table && this.seats.some((seat) => seat.zone === MEETING_ZONE)) {
       this.tag = new SceneLabel(
         scene,
@@ -98,7 +98,8 @@ export class SeatManager {
         true,
       );
       this.tag.container.setDepth(table.y + table.height + 1);
-      this.changed();
+      this.showMeetings();
+      this.unsubscribe = subscribeMeetings(() => this.showMeetings());
     }
 
     this.seats.forEach((seat) => {
@@ -123,26 +124,14 @@ export class SeatManager {
     scene.input.keyboard?.on("keydown-E", () => !typingElsewhere() && this.toggle());
   }
 
-  attach(
-    ws: RoomSocket,
-    onSitChange: (seated: boolean) => void,
-    goTo: GoTo,
-    onMeetingChange: (people: ReadonlySet<string> | null) => void,
-  ) {
+  attach(ws: RoomSocket, onSitChange: (seated: boolean) => void, goTo: GoTo) {
     this.ws = ws;
     this.onSitChange = onSitChange;
     this.goTo = goTo;
-    this.onMeetingChange = onMeetingChange;
   }
 
   seatedDirection(): CardinalDirection | undefined {
     return this.seated?.direction;
-  }
-
-  /** Whether someone, or us when no id is given, sits at the meeting table. */
-  inMeeting(id?: string): boolean {
-    const seat = id ? this.seats.find((s) => s.occupant === id) : this.seated;
-    return seat?.zone === MEETING_ZONE;
   }
 
   toggle() {
@@ -184,14 +173,10 @@ export class SeatManager {
     this.changed();
   }
 
-  /**
-   * After a reconnect the room has forgotten where we sat, so sit down again,
-   * which also rejoins the table's call.
-   */
+  /** After a reconnect the room has forgotten where we sat, so sit down again. */
   resit() {
     const seat = this.seated;
     if (!seat) return;
-    if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();
     this.seated = undefined;
     seat.occupant = undefined;
     this.sit(seat);
@@ -202,27 +187,19 @@ export class SeatManager {
     this.stand();
   }
 
-  /**
-   * Keeps the table tag's count current, and while we are at the table tells
-   * the scene who else is, since the cards carry their names then.
-   */
   private changed() {
     this.dirty = true;
-    const people = this.seats
-      .filter((seat) => seat.zone === MEETING_ZONE && seat.occupant)
-      .map((seat) => seat.occupant!);
+  }
+
+  /** The table's tag: "Meeting", and how many are in meetings when any are on. */
+  private showMeetings() {
+    const people = peopleInMeetings(meetingsState().meetings);
     const label = sceneText().meeting;
-    this.tag
-      ?.setText(people.length ? `${label} · ${people.length}` : label)
-      .setDot(people.length ? HIGHLIGHT : IDLE);
-    this.onMeetingChange?.(
-      this.seated?.zone === MEETING_ZONE ? new Set(people) : null,
-    );
+    this.tag?.setText(people ? `${label} · ${people}` : label).setDot(people ? HIGHLIGHT : IDLE);
   }
 
   private sit(seat: Seat) {
     const pose = this.poseFor(seat);
-    const meeting = seat.zone === MEETING_ZONE;
     this.seated = seat;
     seat.occupant = SELF;
 
@@ -237,18 +214,9 @@ export class SeatManager {
     this.changed();
 
     const tile = pixelToTile(seat.x, seat.y);
-    this.ws?.send({
-      t: "sit",
-      seat: seat.id,
-      x: tile.tileX,
-      y: tile.tileY,
-      ...(meeting ? { meeting: MEETING_ZONE } : {}),
-    });
+    this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
     this.ring.clear();
-    // at the meeting table the call is the focus, and E still gets you up
-    this.prompt
-      .setText(sceneText().stand)
-      .container.setVisible(this.keyboard && !meeting);
+    this.prompt.setText(sceneText().stand).container.setVisible(this.keyboard);
   }
 
   private stand() {
@@ -270,7 +238,6 @@ export class SeatManager {
     this.onSitChange?.(false);
     this.changed();
 
-    if (seat.zone === MEETING_ZONE) callManager.leaveMeeting();
     const tile = pixelToTile(pose.standX, pose.standY);
     this.ws?.send({ t: "stand", x: tile.tileX, y: tile.tileY });
     this.prompt.container.setVisible(false);
@@ -327,14 +294,11 @@ export class SeatManager {
     );
     this.ring.lineStyle(2, HIGHLIGHT, 0.9);
     this.ring.strokeRoundedRect(best.x - 17, best.baseY - 44, 34, 46, 6);
-    this.prompt
-      .setText(
-        best.zone === MEETING_ZONE ? sceneText().joinMeeting : sceneText().sit,
-      )
-      .container.setVisible(this.keyboard);
+    this.prompt.setText(sceneText().sit).container.setVisible(this.keyboard);
   }
 
   destroy() {
+    this.unsubscribe?.();
     this.scene.input.keyboard?.off("keydown-E");
     this.hitAreas.forEach((zone) => zone.destroy());
     this.ring.destroy();

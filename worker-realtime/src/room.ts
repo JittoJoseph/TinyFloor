@@ -8,7 +8,12 @@ import {
   HEARTBEAT_PONG,
   PRESENCE_STATUSES,
   isInsideMap,
+  MAIN_MEETING,
+  MEETING_ID,
+  MEETING_NAME_MAX,
   type ClientMessage,
+  type MeetingErrorCode,
+  type MeetingInfo,
   type MeetingMember,
   type MusicState,
   type PlayerState,
@@ -35,7 +40,10 @@ const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
 /** How often, at most, the room looks for sockets that stopped answering. */
 const SWEEP_EVERY_MS = 10_000;
-const MEETING_ID = /^[a-z0-9-]{1,32}$/;
+/** Video a person may be sent at once in a meeting: the four speakers they see, a screen, and one to swap in. */
+const MAX_VIDEO_SUBSCRIPTIONS = 6;
+/** How many people one invitation can ask in. */
+const MAX_INVITES = 20;
 
 /** Per-socket limits. Kept in the attachment, so they survive hibernation. */
 const LIMITS = {
@@ -44,6 +52,8 @@ const LIMITS = {
   actionsPerSecond: 4,
   drawsPerSecond: 30,
   sfuOpsPerSecond: 10,
+  // Talking starts and stops a few times a second at most; the client holds it longer.
+  speakingPerSecond: 4,
   messagesPerSecond: 60,
 };
 
@@ -59,11 +69,20 @@ interface Attachment {
   status: PresenceStatus;
   seat: number | null;
   meeting: string | null;
-  /** When this person sat down at their meeting table, for usage totals. */
+  /** When this person joined their meeting, for usage totals and the meeting's clock. */
   meetingSince: number | null;
-  /** This person's SFU session and the tracks they publish, while at a meeting table. */
-  media: { sessionId: string; tracks: { mid: string; kind: MediaKind }[] } | null;
-  /** What this person says is on at their table: mic, camera, screen. */
+  /** Whether they are talking in their meeting right now. */
+  speaking: boolean;
+  /**
+   * This person's SFU session while in a meeting: the tracks they publish, and
+   * the ones they are sent (by our side's mid), so the room can cap their video.
+   */
+  media: {
+    sessionId: string;
+    tracks: { mid: string; kind: MediaKind }[];
+    subs?: { mid: string; userId: string; kind: MediaKind }[];
+  } | null;
+  /** What this person says is on in their meeting: mic, camera, screen. */
   flags: MediaFlags | null;
   joinedAt: number;
   lastSeenAt: number;
@@ -74,6 +93,7 @@ interface Attachment {
   actions: number;
   draws: number;
   sfuOps: number;
+  speakingOps?: number;
   messages: number;
 }
 
@@ -109,6 +129,10 @@ export class Room extends DurableObject<Env> {
 
   private createTables(): void {
     this.ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS room_state (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
+    // Meetings someone started. The main meeting has no row: it is always there.
+    this.ctx.storage.sql.exec(
+      "CREATE TABLE IF NOT EXISTS meetings (id TEXT PRIMARY KEY, name TEXT, by_name TEXT, created_at INTEGER NOT NULL)",
+    );
     this.board = new Board(this.ctx.storage.sql);
     this.usage = new Usage(this.ctx.storage.sql, this.env.DB);
   }
@@ -212,6 +236,7 @@ export class Room extends DurableObject<Env> {
       seat: null,
       meeting: null,
       meetingSince: null,
+      speaking: false,
       media: null,
       flags: null,
       joinedAt: now,
@@ -230,7 +255,13 @@ export class Room extends DurableObject<Env> {
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     this.remember(server, attachment);
 
-    send(server, { t: "welcome", self: playerState(attachment), players: others, music: this.music() });
+    send(server, {
+      t: "welcome",
+      self: playerState(attachment),
+      players: others,
+      music: this.music(),
+      meetings: this.meetingsOf(room),
+    });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
     await this.headcountChanged(room);
@@ -287,6 +318,21 @@ export class Room extends DurableObject<Env> {
       case "call":
         this.relayCall(socket, me, message);
         break;
+      case "meeting_join":
+        this.joinMeeting(socket, me, message.meeting);
+        break;
+      case "meeting_start":
+        this.startMeeting(socket, me, message);
+        break;
+      case "meeting_leave":
+        if (this.takeAction(me)) this.leaveMeeting(me);
+        break;
+      case "meeting_invite":
+        this.invite(me, message.to);
+        break;
+      case "speaking":
+        this.setSpeaking(me, message.on);
+        break;
       case "sfu":
         // SFU calls wait on the network, and other messages from this person may
         // be handled meanwhile, so save first and let the handler re-read.
@@ -342,9 +388,8 @@ export class Room extends DurableObject<Env> {
 
   private sit(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "sit" }>): void {
     if (!this.takeAction(me)) return;
-    const { seat, x, y, meeting } = message;
+    const { seat, x, y } = message;
     if (!Number.isInteger(seat) || seat < 0 || seat > 9999 || !isInsideMap(x, y)) return;
-    if (meeting !== undefined && (typeof meeting !== "string" || !MEETING_ID.test(meeting))) return;
 
     const taken = this.present().some((other) => {
       const them = this.attachmentOf(other);
@@ -360,22 +405,6 @@ export class Room extends DurableObject<Env> {
     me.x = x;
     me.y = y;
     this.broadcast({ t: "sat", id: me.userId, seat, x, y }, socket);
-
-    if (meeting) {
-      const members = this.meetingMembers(meeting).map((other) => memberOf(this.attachmentOf(other)));
-      me.meeting = meeting;
-      me.meetingSince = Date.now();
-      send(socket, { t: "meeting_joined", meeting, members });
-      this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
-      for (const other of this.meetingMembers(meeting)) {
-        const them = this.attachmentOf(other);
-        if (them.userId === me.userId) continue;
-        if (them.media?.tracks.length) {
-          sendSfu(socket, { op: "tracks", userId: them.userId, kinds: them.media.tracks.map((track) => track.kind) });
-        }
-        if (them.flags) sendSfu(socket, { op: "media", userId: them.userId, ...them.flags });
-      }
-    }
   }
 
   private stand(me: Attachment, x: number, y: number): void {
@@ -439,20 +468,102 @@ export class Room extends DurableObject<Env> {
     return me.actions <= LIMITS.actionsPerSecond;
   }
 
-  /** Getting up from a chair, by standing or by walking off, also leaves its table's meeting. */
+  /** Getting up from a chair, by standing or by walking off. Chairs have nothing to do with meetings. */
   private leaveSeat(me: Attachment): void {
     if (me.seat === null) return;
-    this.leaveMeeting(me);
     me.seat = null;
     this.broadcast({ t: "stood", id: me.userId }, undefined, me.userId);
   }
 
-  /** Leaving a table also stops the person's SFU tracks, so nobody keeps receiving them. */
-  private leaveMeeting(me: Attachment): void {
+  /** A meeting is only for offices: the public lobby is free and open, and video there has nobody to pay for it. */
+  private meetingsAllowed(room: string): boolean {
+    return lobbyCopyNumber(room) === null;
+  }
+
+  private meetingError(socket: WebSocket, code: MeetingErrorCode): void {
+    send(socket, { t: "meeting_error", code });
+  }
+
+  /** Joining the main meeting, or one someone started. Any other meeting is left first. */
+  private joinMeeting(socket: WebSocket, me: Attachment, meeting: unknown): void {
+    if (!this.takeAction(me)) return;
+    if (!this.meetingsAllowed(me.room)) return this.meetingError(socket, "offices_only");
+    if (typeof meeting !== "string" || !MEETING_ID.test(meeting)) return this.meetingError(socket, "not_found");
+    if (me.meeting === meeting) return;
+    if (meeting !== MAIN_MEETING && !this.meetingRow(meeting)) return this.meetingError(socket, "not_found");
+    this.enterMeeting(socket, me, meeting);
+  }
+
+  /** Someone starts a meeting of their own, joins it, and asks people in. */
+  private startMeeting(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "meeting_start" }>): void {
+    if (!this.takeAction(me)) return;
+    if (!this.meetingsAllowed(me.room)) return this.meetingError(socket, "offices_only");
+    const id = `m-${randomId(8)}`;
+    this.ctx.storage.sql.exec(
+      "INSERT INTO meetings (id, name, by_name, created_at) VALUES (?, ?, ?, ?)",
+      id,
+      cleanMeetingName(message.name),
+      me.name,
+      Date.now(),
+    );
+    this.enterMeeting(socket, me, id);
+    this.invite(me, message.invite, false);
+  }
+
+  private enterMeeting(socket: WebSocket, me: Attachment, meeting: string): void {
+    // Out of the old meeting quietly: the list goes out once, with both changes.
+    this.leaveMeeting(me, false);
+    const members = this.meetingMembers(meeting).map((other) => memberOf(this.attachmentOf(other)));
+    me.meeting = meeting;
+    me.meetingSince = Date.now();
+    me.speaking = false;
+    this.remember(socket, me);
+    send(socket, { t: "meeting_joined", meeting, members });
+    this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
+    for (const other of this.meetingMembers(meeting)) {
+      const them = this.attachmentOf(other);
+      if (them.userId === me.userId) continue;
+      if (them.media?.tracks.length) {
+        sendSfu(socket, { op: "tracks", userId: them.userId, kinds: them.media.tracks.map((track) => track.kind) });
+      }
+      if (them.flags) sendSfu(socket, { op: "media", userId: them.userId, ...them.flags });
+    }
+    this.announceMeetings(me.room);
+  }
+
+  /** Asks people into the meeting you are in: each hears who, and which meeting. */
+  private invite(me: Attachment, to: unknown, counted = true): void {
+    if (counted && !this.takeAction(me)) return;
+    if (!me.meeting || !Array.isArray(to)) return;
+    const name = me.meeting === MAIN_MEETING ? null : (this.meetingRow(me.meeting)?.name ?? null);
+    const text = JSON.stringify({ t: "meeting_invited", from: me.userId, fromName: me.name, meeting: me.meeting, name });
+    const asked = new Set(to.filter((id): id is string => typeof id === "string" && id !== me.userId).slice(0, MAX_INVITES));
+    for (const id of asked) {
+      for (const target of this.ctx.getWebSockets(userTag(id))) {
+        const them = this.attachmentOf(target);
+        if (!them.leaving && them.meeting !== me.meeting) sendText(target, text);
+      }
+    }
+  }
+
+  /** Talking or not, in a meeting: everyone in the room hears it, so the meeting shows who is talking to anyone looking. */
+  private setSpeaking(me: Attachment, on: unknown): void {
+    me.speakingOps = (me.speakingOps ?? 0) + 1;
+    if (me.speakingOps > LIMITS.speakingPerSecond || !me.meeting || typeof on !== "boolean" || me.speaking === on) return;
+    me.speaking = on;
+    this.broadcast({ t: "speaking", id: me.userId, on });
+  }
+
+  /**
+   * Out of a meeting: their tracks stop, so nobody keeps receiving them, and
+   * whoever was watching them is no longer counted as doing so.
+   */
+  private leaveMeeting(me: Attachment, announce = true): void {
     if (me.meeting === null) return;
     const meeting = me.meeting;
     me.meeting = null;
     me.flags = null;
+    me.speaking = false;
     if (me.meetingSince !== null) {
       const now = Date.now();
       this.usage.stayed(0, now - me.meetingSince, 0, now);
@@ -464,7 +575,64 @@ export class Room extends DurableObject<Env> {
       this.ctx.waitUntil(this.sfuApi.closeTracks(sessionId, tracks.map((track) => track.mid)).catch(() => undefined));
       this.broadcastToMeeting(meeting, { t: "sfu", op: "gone", userId: me.userId }, me.userId);
     }
+    for (const socket of this.meetingMembers(meeting)) {
+      const them = this.attachmentOf(socket);
+      if (!them.media?.subs?.some((sub) => sub.userId === me.userId)) continue;
+      them.media.subs = them.media.subs.filter((sub) => sub.userId !== me.userId);
+      this.remember(socket, them);
+    }
     this.broadcastToMeeting(meeting, { t: "meeting_member_left", id: me.userId }, me.userId);
+    if (announce) this.announceMeetings(me.room);
+  }
+
+  private meetingRow(id: string): { name: string | null; by_name: string | null } | undefined {
+    return this.ctx.storage.sql
+      .exec<{ name: string | null; by_name: string | null }>("SELECT name, by_name FROM meetings WHERE id = ?", id)
+      .toArray()[0];
+  }
+
+  /**
+   * The meetings in this room: the main one always, then the ones people
+   * started, oldest first. One nobody is in any more is gone for good.
+   */
+  private meetingsOf(room: string): MeetingInfo[] {
+    if (!this.meetingsAllowed(room)) return [];
+    const members = new Map<string, MeetingInfo["members"]>();
+    for (const socket of this.present()) {
+      const them = this.attachmentOf(socket);
+      if (!them.meeting) continue;
+      const list = members.get(them.meeting) ?? [];
+      if (!list.some((one) => one.id === them.userId)) {
+        list.push({
+          id: them.userId,
+          name: them.name,
+          character: them.character,
+          since: them.meetingSince ?? 0,
+          speaking: them.speaking,
+        });
+      }
+      members.set(them.meeting, list);
+    }
+    const info = (id: string, name: string | null, by: string | null): MeetingInfo => {
+      const list = (members.get(id) ?? []).sort((a, b) => a.since - b.since);
+      return { id, name, by, startedAt: list[0]?.since ?? null, members: list };
+    };
+
+    const started = this.ctx.storage.sql
+      .exec<{ id: string; name: string | null; by_name: string | null }>("SELECT id, name, by_name FROM meetings ORDER BY created_at")
+      .toArray();
+    const empty = started.filter((row) => !members.has(row.id));
+    for (const row of empty) this.ctx.storage.sql.exec("DELETE FROM meetings WHERE id = ?", row.id);
+    return [
+      info(MAIN_MEETING, null, null),
+      ...started.filter((row) => members.has(row.id)).map((row) => info(row.id, row.name, row.by_name)),
+    ];
+  }
+
+  /** Everyone in the room gets the meetings whole: small, and never out of step. */
+  private announceMeetings(room: string): void {
+    if (!this.meetingsAllowed(room)) return;
+    this.broadcast({ t: "meetings", meetings: this.meetingsOf(room) });
   }
 
   /**
@@ -492,7 +660,7 @@ export class Room extends DurableObject<Env> {
     for (const target of targets) sendText(target, relayed);
   }
 
-  /** Meeting-table media through the SFU. The room decides who may publish and watch what. */
+  /** Meeting media through the SFU. The room decides who may publish and watch what, and how much. */
   private async sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
     const me = this.attachmentOf(socket);
     const meeting = me.meeting;
@@ -509,6 +677,8 @@ export class Room extends DurableObject<Env> {
         case "unsubscribe": {
           const mids = stringList(message.mids, 20);
           if (!mids || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
+          me.media.subs = (me.media.subs ?? []).filter((sub) => !mids.includes(sub.mid));
+          this.remember(socket, me);
           return await this.sfuApi.closeTracks(me.media.sessionId, mids);
         }
         case "answer":
@@ -605,13 +775,27 @@ export class Room extends DurableObject<Env> {
         },
       });
     }
-    if (!found.length) return sendSfu(socket, { op: "error", code: "no_tracks" });
+    // Video is what costs: past the cap, the extra cameras and screens are left out.
+    let room = MAX_VIDEO_SUBSCRIPTIONS - (me.media?.subs ?? []).filter((sub) => sub.kind !== "mic").length;
+    const allowed = found.filter((item) => item.kind === "mic" || room-- > 0);
+    if (!allowed.length) return sendSfu(socket, { op: "error", code: found.length ? "too_much_video" : "no_tracks" });
+    found.length = 0;
+    found.push(...allowed);
 
     const sessionId = await this.sessionFor(socket);
     const result = await this.sfuApi.newTracks(
       sessionId,
       found.map((item) => item.track),
     );
+    const subscriber = this.attachmentOf(socket);
+    if (subscriber.media) {
+      const added = found.flatMap((item, index) => {
+        const mid = result.tracks?.[index]?.mid;
+        return mid ? [{ mid, userId: item.userId, kind: item.kind }] : [];
+      });
+      subscriber.media.subs = [...(subscriber.media.subs ?? []), ...added];
+      this.remember(socket, subscriber);
+    }
     sendSfu(socket, {
       op: "offer",
       sdp: result.requiresImmediateRenegotiation ? (result.sessionDescription?.sdp ?? "") : "",
@@ -686,6 +870,7 @@ export class Room extends DurableObject<Env> {
       me.actions = 0;
       me.draws = 0;
       me.sfuOps = 0;
+      me.speakingOps = 0;
       me.messages = 0;
     }
     me.messages++;
@@ -818,10 +1003,12 @@ function sendSfu(socket: WebSocket, message: SfuServerMessage): void {
   send(socket, { t: "sfu", ...message });
 }
 
+const LAYER: Record<VideoQuality, string> = { high: "h", medium: "m", low: "l" };
+
 /** Which simulcast layer to forward: the quality asked for, or low when it isn't one. */
 function simulcast(quality: unknown): NonNullable<SfuTrack["simulcast"]> {
   return {
-    preferredRid: quality === ("high" satisfies VideoQuality) ? "h" : "l",
+    preferredRid: VIDEO_QUALITIES.includes(quality as VideoQuality) ? LAYER[quality as VideoQuality] : "l",
     priorityOrdering: "asciibetical",
     ridNotAvailable: "asciibetical",
   };
@@ -830,6 +1017,24 @@ function simulcast(quality: unknown): NonNullable<SfuTrack["simulcast"]> {
 function stringList(value: unknown, max: number): string[] | null {
   if (!Array.isArray(value) || value.length === 0 || value.length > max) return null;
   return value.every((item) => typeof item === "string") ? (value as string[]) : null;
+}
+
+/** A meeting's name as typed: no control characters, single spaces, trimmed; null when nothing is left. */
+function cleanMeetingName(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const name = value
+    .replace(/[\p{Cc}\p{Cf}]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, MEETING_NAME_MAX)
+    .trim();
+  return name || null;
+}
+
+function randomId(length: number): string {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const bytes = crypto.getRandomValues(new Uint8Array(length));
+  return Array.from(bytes, (byte) => alphabet[byte % alphabet.length]).join("");
 }
 
 function memberOf(attachment: Attachment): MeetingMember {

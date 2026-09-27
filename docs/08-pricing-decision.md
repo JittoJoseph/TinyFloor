@@ -142,6 +142,10 @@ cutting a free tier later.
 
 ### Fair use
 
+> Dropped: meetings now receive only the speakers' video, so a daily hour of
+> standup costs a few dollars a month even for 25 people ([12-meetings.md](12-meetings.md)).
+> Nothing is metered.
+
 Only the table can run away with money, so the allowance is on table video:
 
 | Tier | Table video included |

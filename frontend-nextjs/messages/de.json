@@ -62,7 +62,7 @@
       },
       {
         "q": "Wie funktioniert Proximity-Videochat?",
-        "a": "Geh zu jemandem, und neben der Person erscheint ein Anruf-Button. Ein Tipp startet den Anruf, und im Gespräch kannst du deine Kamera einschalten oder deinen Bildschirm teilen. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, verbinden sich also in jedem Büro- oder Heimnetz, und bleiben bestehen, bis jemand auflegt. An Besprechungstischen laufen Gruppenanrufe: hinsetzen zum Beitreten, aufstehen zum Verlassen."
+        "a": "Geh auf jemanden zu, und neben der Person erscheint ein Anruf-Button. Ein Tipp startet den Anruf, und sobald ihr sprecht, kannst du deine Kamera einschalten oder deinen Bildschirm teilen. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, funktionieren also in jedem Büro- oder Heimnetz und bleiben bestehen, bis jemand auflegt. Für eine Gruppe tritt einem Meeting bei, und deine Figur geht in den Meetingraum."
       },
       {
         "q": "Ist TinyFloor kostenlos?",
@@ -459,7 +459,7 @@
           },
           {
             "q": "Was hat Gather, was TinyFloor nicht hat?",
-            "a": "Gather bietet zusätzlich KI-Meetingnotizen und anpassbare Büros. TinyFloor konzentriert sich auf das Wesentliche: herumlaufen, Anrufe in der Nähe, Bildschirmfreigabe, einen Besprechungstisch, Chat, ein Whiteboard und Musik im Raum."
+            "a": "Gather bietet zusätzlich KI-Meetingnotizen und anpassbare Büros. TinyFloor konzentriert sich auf das Wesentliche: herumlaufen, Anrufe in der Nähe, Bildschirmfreigabe, einen Besprechungsraum, Chat, ein Whiteboard und Musik im Raum."
           },
           {
             "q": "Kann ich mein Team von Gather zu TinyFloor holen?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Hingehen und reden",
-            "body": "Geh nah an eine Kollegin oder einen Kollegen heran, um einen Anruf zu starten. Am Besprechungstisch sind alle in einem Anruf."
+            "body": "Geh nah an jemanden heran, um einen Anruf zu starten. Für eine Gruppe tritt einem Meeting bei, und alle gehen in den Meetingraum."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Keine Karte zu bauen",
-            "body": "Jeder Raum hat eine Büroetage, einen Besprechungstisch, ein Whiteboard und einen Lautsprecher. Raum erstellen und reingehen."
+            "body": "Jeder Raum hat eine Büroetage, einen Besprechungsraum, ein Whiteboard und einen Lautsprecher. Raum erstellen und reingehen."
           },
           {
             "title": "Nichts zu hosten",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Wie starten Anrufe in TinyFloor?",
-            "a": "Geh zu einer Kollegin oder einem Kollegen und die Anrufkarte erscheint. Ein Tipp startet den Anruf. Am Besprechungstisch sind alle, die sich hinsetzen, im selben Anruf."
+            "a": "Geh auf jemanden zu, und die Anrufkarte erscheint. Ein Tipp startet den Anruf. Für eine Gruppe tritt einem Meeting bei, und deine Figur geht in den Meetingraum."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Wie unterscheidet sich TinyFloor von Wonder?",
-            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Besprechungstisch, einem Whiteboard und Musik, gemacht für Gruppen, die sich regelmäßig treffen."
+            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Besprechungsraum, einem Whiteboard und Musik, gemacht für Gruppen, die sich regelmäßig treffen."
           },
           {
             "q": "Wie viele Personen können beitreten?",
@@ -660,7 +660,7 @@
           "description": "Ein kostenloses virtuelles Büro im Browser. Sieh, wer da ist, geh für ein Gespräch mit Videoanruf hin und lass einen Raum für dein Remote-Team offen."
         },
         "title": "Ein kostenloses <em>virtuelles Büro</em> für Remote-Teams.",
-        "subtitle": "Gib deinem Team einen Ort für den Tag. Sieh, wer da ist, geh für eine kurze Frage hin und setz dich an den Besprechungstisch, wenn es Zeit zum Reden ist.",
+        "subtitle": "Gib deinem Team einen Ort für den Arbeitstag. Sieh, wer da ist, geh für eine kurze Frage rüber und geh in den Meetingraum, wenn es Zeit zum Reden ist.",
         "points": [
           {
             "title": "Sehen, wer da ist",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Ein Tisch für Meetings",
-            "body": "Setz dich an den Besprechungstisch und alle dort sind in einem Anruf, mit einer Kachel für jede Person."
+            "body": "Tritt einem Meeting bei, und deine Figur geht in den Meetingraum. Nur wer spricht, ist auf Video zu sehen, mit einer Karte für alle."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Lern mit Freunden in einem kostenlosen Online-Lernraum. Sitzt zusammen in einem Pixel-Art-Raum, konzentriert euch und redet, wenn ihr eine Pause braucht."
         },
         "title": "Ein <em>Online-Lernraum</em> für dich und deine Freunde.",
-        "subtitle": "Erstelle einen Raum für deine Lerngruppe, teile einen Link und sitzt beim Arbeiten zusammen. Besprecht eine Aufgabe am Tisch und macht dann weiter.",
+        "subtitle": "Erstelle einen Raum für deine Lerngruppe, teile einen Link und sitzt zusammen, während ihr arbeitet. Besprecht ein Problem im Meetingraum und macht dann weiter.",
         "points": [
           {
             "title": "Standardmäßig ruhig",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Ein Tisch für Gruppenarbeit",
-            "body": "Setzt euch an den Besprechungstisch, um als Gruppe zu reden, und steht auf, um allein weiterzulernen."
+            "body": "Tritt einem Meeting bei, um als Gruppe zu reden, und geh aus dem Meetingraum, um allein weiterzulernen."
           },
           {
             "title": "Ein Whiteboard für Aufgaben",
@@ -780,18 +780,18 @@
         "label": "Virtuelles Klassenzimmer",
         "meta": {
           "title": "Kostenloses virtuelles Klassenzimmer",
-          "description": "Halte Sprechstunden, Nachhilfe und kleine Kurse in einem kostenlosen virtuellen Klassenzimmer. Lernende gehen zum Reden hin, Gruppen treffen sich am Tisch und alle teilen ein Whiteboard."
+          "description": "Sprechstunden, Nachhilfe und kleine Kurse in einem kostenlosen virtuellen Klassenzimmer. Lernende gehen zum Reden hin, Gruppen treffen sich im Meetingraum, und alle teilen ein Whiteboard."
         },
         "title": "Ein <em>virtuelles Klassenzimmer</em> zum Herumlaufen.",
-        "subtitle": "Halte Sprechstunden, Nachhilfe oder einen kleinen Kurs in einem Raum, in dem sich Lernende bewegen können. Sie kommen zu dir, wenn sie eine Frage haben, und Gruppen reden am Tisch.",
+        "subtitle": "Halte Sprechstunden, Nachhilfe oder einen kleinen Kurs in einem Raum, in dem sich Lernende bewegen können. Sie kommen vorbei, wenn sie eine Frage haben, und Gruppen reden im Meetingraum.",
         "points": [
           {
             "title": "Sprechstunden ohne Stau",
             "body": "Lernende sehen, wann du Zeit hast, und kommen mit ihrer Frage vorbei. Niemand sitzt in einem Warteraum."
           },
           {
-            "title": "Kleine Gruppen am Tisch",
-            "body": "Bis zu sechs Personen sitzen am Besprechungstisch und teilen einen Anruf, mit einer Kachel für jede Person."
+            "title": "Kleine Gruppen im Meetingraum",
+            "body": "Starte ein Meeting, und die Gruppe geht gemeinsam in den Meetingraum, mit einer Karte für jede Person."
           },
           {
             "title": "Ein gemeinsames Whiteboard",
@@ -824,15 +824,15 @@
           "description": "Proximity-Chat für Teams und Freunde: Geh mit deiner Figur zu jemandem, um einen Anruf zu starten. Kostenlos, im Browser, ohne Download."
         },
         "title": "<em>Proximity-Chat</em>, der beginnt, wenn du hingehst.",
-        "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh zu jemandem, um anzurufen, setz dich an den Tisch, um als Gruppe zu reden, und geh weiter, wenn du fertig bist.",
+        "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh auf jemanden zu, um anzurufen, tritt einem Meeting bei, um als Gruppe zu reden, und geh weiter, wenn ihr fertig seid.",
         "points": [
           {
             "title": "Nähe startet das Gespräch",
             "body": "Stell dich neben eine Kollegin oder einen Kollegen und eine Anrufkarte erscheint. Ein Tipp startet den Anruf."
           },
           {
-            "title": "Gruppen am Tisch",
-            "body": "Setz dich an den Besprechungstisch und du bist im Anruf mit allen, die dort sitzen."
+            "title": "Gruppen im Meetingraum",
+            "body": "Tritt einem Meeting bei, und deine Figur geht in den Meetingraum, zu allen anderen."
           },
           {
             "title": "Funktioniert in jedem Netz",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Können mehr als zwei Personen reden?",
-            "a": "Ja. Ruf jemanden an, der schon in einem Anruf ist, um dazuzukommen, oder setz dich an den Besprechungstisch, um als Gruppe zu reden."
+            "a": "Ein Anruf ist zu zweit. Geh auf eine dritte Person zu und mach ein Meeting daraus, oder tritt dem Meeting des Büros bei, um als Gruppe zu reden."
           },
           {
             "q": "Ist es kostenlos?",
@@ -1009,59 +1009,6 @@
       "google_taken": "Dieses Google-Konto ist schon mit einem anderen TinyFloor-Konto verbunden.",
       "google_failed": "Das hat mit Google nicht geklappt. Versuch es noch einmal."
     },
-    "meetings": {
-      "title": "Meetings",
-      "subtitle": "Der Meetingraum von {office} ist ein Google Meet. Er öffnet sich in einem eigenen Tab, und alle hier sehen, wer drin ist.",
-      "room": "Meetingraum",
-      "join": "Am Meeting teilnehmen",
-      "copy": "Link kopieren",
-      "copied": "Kopiert",
-      "copyFailed": "Der Link ließ sich nicht kopieren. Markiere ihn und kopiere ihn selbst.",
-      "madeBy": "Erstellt von {name}",
-      "madeByYou": "Von dir erstellt",
-      "inNow": "Gerade im Meeting",
-      "nobody": "Niemand ist im Meeting.",
-      "cantSee": "Wir können gerade nicht sehen, wer im Meeting ist.",
-      "creatorGone": "Wer diesen Raum erstellt hat, ist nicht mehr im Büro, deshalb sehen wir nicht, wer drin ist. Der Link funktioniert weiterhin.",
-      "yourPermissionGone": "Du hast TinyFloor die Google-Meet-Berechtigung entzogen, deshalb sehen wir nicht, wer im Raum ist.",
-      "creatorPermissionGone": "{name} hat TinyFloor die Google-Meet-Berechtigung entzogen, deshalb sehen wir nicht, wer im Raum ist. Der Link funktioniert weiterhin.",
-      "guest": "Gast",
-      "phone": "Telefon",
-      "unnamed": "Jemand",
-      "noRoomTitle": "Noch kein Meetingraum",
-      "noRoomAdmin": "Erstelle einen Google-Meet-Raum für {office}. Er wird mit deinem Google-Konto erstellt, und alle hier können ihm von dieser Seite aus beitreten.",
-      "noRoomAdminPermission": "Google fragt dich, ob TinyFloor Meet-Räume für dich erstellen darf.",
-      "noRoomMember": "Ein Admin kann den Meetingraum von {office} erstellen, ein Google Meet, dem alle hier beitreten können.",
-      "create": "Google-Meet-Raum erstellen",
-      "creating": "Raum wird erstellt…",
-      "replace": "Neuen Raum erstellen",
-      "remove": "Raum entfernen",
-      "replaceTitle": "Neuen Meetingraum erstellen?",
-      "replaceBody": "Ein neuer Google-Meet-Raum, erstellt mit deinem Google-Konto, ersetzt diesen hier. Der alte Link funktioniert weiter für alle, die ihn haben.",
-      "replaceIt": "Neuen Raum erstellen",
-      "removeTitle": "Meetingraum entfernen?",
-      "removeBody": "Er wird hier nicht mehr angezeigt. Der Meet-Link funktioniert weiter für alle, die ihn haben.",
-      "removeIt": "Entfernen",
-      "loadFailed": "Der Meetingraum konnte nicht geladen werden.",
-      "retry": "Erneut versuchen",
-      "needPermission": "TinyFloor braucht deine Erlaubnis, um Google-Meet-Räume zu erstellen. Erlaube Google Meet, um fortzufahren.",
-      "notTicked": "Das Kästchen für Google Meet war nicht angehakt. Erlaube Google Meet noch einmal und hake es diesmal an.",
-      "askAgain": "Google braucht noch einmal deine Zustimmung. Erlaube Google Meet erneut.",
-      "declined": "Google Meet wurde nicht erlaubt, deshalb wurde der Raum nicht erstellt.",
-      "googleFailed": "Google hat nicht geklappt. Versuch es noch einmal.",
-      "googleBusy": "Google Meet ist gerade ausgelastet. Versuch es in einer Minute noch einmal.",
-      "googleBlocked": "Das Anmeldefenster von Google konnte sich nicht öffnen. Erlaube Pop-ups für diese Seite und versuch es noch einmal.",
-      "meetFailed": "Google Meet hat den Raum nicht erstellt. Versuch es noch einmal.",
-      "unavailable": "Google Meet ist hier noch nicht eingerichtet.",
-      "offline": "TinyFloor ist nicht erreichbar. Prüfe deine Verbindung und versuch es noch einmal.",
-      "yourGoogle": "Google-Meet-Berechtigung:",
-      "allowedAs": "erlaubt, als {email}",
-      "notAllowed": "nicht erlaubt",
-      "allow": "Google Meet erlauben",
-      "revoke": "Zurücknehmen",
-      "permissionNote": "TinyFloor nutzt sie nur, um Meetingräume zu erstellen und zu sehen, wer in den Räumen ist, die es erstellt hat. Deine anderen Meetings, deinen Kalender und alles andere in deinem Google-Konto sieht es nicht.",
-      "wrong": "Etwas ist schiefgelaufen. Versuch es noch einmal."
-    },
     "people": {
       "title": "Leute",
       "members": "Mitglieder",
@@ -1110,6 +1057,56 @@
     "nameLabel": "Name des Büros",
     "creating": "Wird eingerichtet",
     "continue": "Weiter"
+  },
+  "meetings": {
+    "title": "Meetings",
+    "subtitle": "Tritt einem Meeting bei, und deine Figur geht in den Meetingraum. Das Meeting findet hier statt.",
+    "new": "Neues Meeting",
+    "others": "Weitere Meetings",
+    "walkHint": "Wenn du beitrittst, geht deine Figur in den Meetingraum, und alle sehen dich gehen. Verlässt du den Raum, verlässt du das Meeting.",
+    "liveFor": "Live · {time}",
+    "quiet": "Noch niemand drin",
+    "plus": "+{count}",
+    "mainBody": "Immer offen. Alle im Büro können jederzeit dazukommen.",
+    "join": "Beitreten",
+    "startMain": "Meeting starten",
+    "nobodyIn": "Gerade ist niemand drin. Tritt bei, und alle im Büro sehen, dass es läuft.",
+    "mainName": "Meeting von {office}",
+    "byName": "Meeting von {name}",
+    "people": "{count, plural, one {# Person} other {# Personen}}",
+    "invite": "Einladen",
+    "screenOf": "Bildschirm von {name}",
+    "you": "Du",
+    "more": "+{count} weitere",
+    "leave": "Verlassen",
+    "aloneTitle": "Du bist als Erstes hier",
+    "aloneBody": "Von dir wird nichts gesendet, bis jemand beitritt. Lade Leute ein oder warte, bis sie vorbeikommen.",
+    "aloneShort": "Warten auf andere",
+    "open": "Meeting öffnen",
+    "nobodyToAsk": "Gerade ist sonst niemand aus dem Büro auf der Fläche. Leute müssen hier sein, um deine Einladung zu hören.",
+    "inAnotherMeeting": "In einem Meeting",
+    "newTitle": "Neues Meeting",
+    "newBody": "Ein eigenes Meeting, solange jemand drin ist. Alle im Büro sehen es und können beitreten.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Design-Review",
+    "askLabel": "Leute einladen",
+    "start": "Starten",
+    "startAndAsk": "{count, plural, one {Starten und # Person einladen} other {Starten und # Personen einladen}}",
+    "inviteTitle": "Leute einladen",
+    "inviteBody": "Sie bekommen einen Anruf zum Beitreten, egal wo sie im Büro sind.",
+    "ask": "{count, plural, =0 {Einladen} one {# Person einladen} other {# Personen einladen}}",
+    "roomTitle": "Du bist im Meetingraum",
+    "notNow": "Nicht jetzt",
+    "lobbyRoom": "Meetings gibt es in deinem eigenen Büro.",
+    "getOffice": "Büro erstellen",
+    "invitedTo": "Lädt dich zu {name} ein",
+    "invited": "Lädt dich zu einem Meeting ein",
+    "walkedOut": "Du hast das Meeting verlassen",
+    "ended": "Dieses Meeting ist vorbei",
+    "rejoin": "Wieder beitreten",
+    "startedBy": "Gestartet von {name}",
+    "makeMeeting": "Meeting",
+    "makeMeetingHint": "Ein Anruf ist zu zweit: Starte ein Meeting für euch drei"
   },
   "shell": {
     "floor": "Fläche",
@@ -1198,7 +1195,7 @@
       "main": "Hauptnavigation",
       "items": {
         "proximity": "Nähe-Anrufe",
-        "meetings": "Besprechungstische",
+        "meetings": "Meetings",
         "chat": "Chat",
         "people": "Anwesenheit",
         "invites": "Einladungen"
@@ -1220,7 +1217,7 @@
     },
     "hero": {
       "title": "Ein virtuelles Büro, durch das dein Team laufen kann.",
-      "body": "Für Remote-Teams, denen das Arbeiten Seite an Seite fehlt. Sieh, wer da ist, komm kurz mit einer Frage vorbei und setz dich an den Tisch, wenn es Zeit für ein Meeting ist, ohne einen einzigen Termin zu planen.",
+      "body": "Für Remote-Teams, die das Arbeiten Seite an Seite vermissen. Sieh, wer da ist, schau für eine kurze Frage vorbei und geh in den Meetingraum, wenn es Zeit für ein Meeting ist, ohne einen einzigen Termin zu planen.",
       "secondary": "In die Lobby gehen",
       "previewLabel": "Ein Blick in TinyFloor",
       "tabs": {
@@ -1373,7 +1370,7 @@
     "eyebrow": "Über uns",
     "title": "Remote-Arbeit hat den Flur verloren. Wir bauen ihn wieder auf.",
     "p1": "Getrennt zu arbeiten ist gut für die Konzentration, aber es hat die kleinen Momente still mitgenommen: die kurze Frage am Schreibtisch, das Hallo im Vorbeigehen, zu sehen, wer da ist. Videocalls sind gut für Meetings. Sie haben jedes andere Gespräch zu einem Termin gemacht.",
-    "p2": "TinyFloor ist eine Etage statt eines Links. Dein Team läuft durch ein gemeinsames Pixel-Art-Büro, und wer zu jemandem hingeht, fängt an zu reden. Setz dich an einen Tisch, und du bist im Meeting. Geh weg, und es ist wieder ruhig.",
+    "p2": "TinyFloor ist eine Etage statt eines Links. Dein Team läuft durch ein gemeinsames Pixel-Art-Büro, und wer auf jemanden zugeht, fängt an zu reden. Tritt einem Meeting bei, und du gehst in den Meetingraum. Geh hinaus, und es ist wieder ruhig.",
     "p3": "Es läuft im Browser auf dem Netzwerk von Cloudflare, in 18 Sprachen, ohne Installation, und für kleine Teams kostenlos.",
     "founderTitle": "Gebaut von Jitto Joseph",
     "founderBody": "Ich gestalte und baue TinyFloor, von der Pixel-Etage bis zu den Servern, auf denen sie läuft. Wenn du eine Idee, ein Problem hast oder einfach Hallo sagen willst, freue ich mich von dir zu hören.",
@@ -1416,8 +1413,8 @@
         "body": "Geh zu jemandem und ruf mit einem Klick an. Geh weg, und der Anruf endet."
       },
       "sit": {
-        "title": "Setz dich dazu",
-        "body": "Der Besprechungsraum ist den Flur runter. Nimm Platz, und du bist im Meeting."
+        "title": "Ab in den Meetingraum",
+        "body": "Der Meetingraum ist den Flur hinunter. Tritt dem Meeting bei, und deine Figur geht hinein; geh hinaus, und du hast es verlassen."
       }
     },
     "more": {

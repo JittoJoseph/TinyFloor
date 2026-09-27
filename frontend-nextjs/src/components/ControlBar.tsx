@@ -92,7 +92,7 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
               tone="danger"
               size="lg"
               className="w-14"
-              onClick={() => (meeting ? window.dispatchEvent(new Event("leaveMeeting")) : callManager.hangUp())}
+              onClick={() => (meeting ? callManager.leaveMeeting() : callManager.hangUp())}
               icon={<PhoneOff />}
             />
           </>

@@ -137,37 +137,6 @@ export interface AdminOffice {
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
 
-/** Whether someone has let TinyFloor make Google Meet rooms for them, and as which Google account. */
-export interface MeetGrant {
-  granted: boolean;
-  email: string | null;
-}
-
-/** An office's meeting room: a Google Meet space an admin made. */
-export interface MeetingRoom {
-  provider: "google_meet";
-  uri: string;
-  /** Who made it, and whether they are still in the office (their Google permission is what reads the room). */
-  createdBy: { id: string; displayName: string; here: boolean } | null;
-  createdAt: number;
-}
-
-export interface MeetingPerson {
-  name: string;
-  kind: "signed_in" | "guest" | "phone";
-  /** When they joined, as an ISO time. */
-  since: string;
-}
-
-/**
- * Who is in the room right now, as Google Meet sees it, or why we can't say:
- * whoever made the room left the office, took back their Google permission,
- * or Google didn't answer.
- */
-export type MeetingLive =
-  | { status: "live"; active: boolean; people: MeetingPerson[] }
-  | { status: "creator_gone" | "creator_permission" | "unavailable" };
-
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   let response: Response;
   try {
@@ -270,14 +239,4 @@ export const api = {
   /** Who is in the public lobby right now, for its door. */
   lobbyPeople: () => get<{ here: number; faces: Array<{ id: string; name: string }> }>("/lobby"),
   iceServers: () => post<IceServers>("/calls/ice-servers"),
-
-  // Meetings, in Google Meet
-  meeting: (officeId: string) =>
-    get<{ room: MeetingRoom | null; live: MeetingLive | null; google: MeetGrant }>(`/offices/${id(officeId)}/meeting`),
-  /** Makes the office's room as the signed-in admin; `replace` swaps out the one there is. 409 `meet_permission_needed` means: ask Google first. */
-  createMeeting: (officeId: string, replace = false) => post<{ room: MeetingRoom }>(`/offices/${id(officeId)}/meeting`, { replace }),
-  forgetMeeting: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}/meeting`),
-  /** The one-time code from Google's popup, asked for the Meet permission. */
-  allowMeet: (code: string) => post<{ google: MeetGrant }>("/me/google/meet", { code }),
-  disallowMeet: () => del<{ google: MeetGrant }>("/me/google/meet"),
 };

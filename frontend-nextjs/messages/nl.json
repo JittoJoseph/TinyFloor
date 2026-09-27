@@ -62,7 +62,7 @@
       },
       {
         "q": "Hoe werkt proximity-videochat?",
-        "a": "Loop naar iemand toe en er verschijnt een belknop naast diegene. Eén tik start het gesprek, en tijdens het praten kun je je camera aanzetten of je scherm delen. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk, en blijven actief tot iemand ophangt. Aan vergadertafels lopen groepsgesprekken: ga zitten om mee te doen, sta op om te vertrekken."
+        "a": "Loop naar iemand toe en naast diegene verschijnt een belknop. Eén tik start het gesprek, en zodra jullie praten kun je je camera aanzetten of je scherm delen. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze werken op elk kantoor- of thuisnetwerk en blijven staan tot iemand ophangt. Voor een groep doe je mee aan een meeting en loopt je poppetje naar de vergaderruimte."
       },
       {
         "q": "Is TinyFloor gratis?",
@@ -459,7 +459,7 @@
           },
           {
             "q": "Wat heeft Gather dat TinyFloor niet heeft?",
-            "a": "Gather voegt AI-vergadernotities en een aanpasbaar kantoor toe. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, scherm delen, een vergadertafel, chat, een whiteboard en muziek in de ruimte."
+            "a": "Gather voegt AI-vergadernotities en een aanpasbaar kantoor toe. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, scherm delen, een vergaderruimte, chat, een whiteboard en muziek in de ruimte."
           },
           {
             "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Loop erheen om te praten",
-            "body": "Ga dicht bij een collega staan om een gesprek te starten. Aan de vergadertafel zit iedereen in één gesprek."
+            "body": "Kom dicht bij een collega om een gesprek te starten. Voor een groep doe je mee aan een meeting en loopt iedereen naar de vergaderruimte."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Geen kaart om te bouwen",
-            "body": "Elke ruimte heeft een kantoorvloer, een vergadertafel, een whiteboard en een speaker. Maak een ruimte en loop naar binnen."
+            "body": "Elke ruimte heeft een kantoorvloer, een vergaderruimte, een whiteboard en een speaker. Maak een ruimte en loop naar binnen."
           },
           {
             "title": "Niets te hosten",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Hoe starten gesprekken in TinyFloor?",
-            "a": "Loop naar een collega en de belkaart verschijnt. Eén tik start het gesprek. Aan de vergadertafel zit iedereen die gaat zitten in hetzelfde gesprek."
+            "a": "Loop naar een collega toe en diens belkaart verschijnt. Eén tik start het gesprek. Voor een groep doe je mee aan een meeting en loopt je poppetje naar de vergaderruimte."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Hoe verschilt TinyFloor van Wonder?",
-            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergadertafel, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
+            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergaderruimte, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
           },
           {
             "q": "Hoeveel mensen kunnen meedoen?",
@@ -660,7 +660,7 @@
           "description": "Een gratis virtueel kantoor in je browser. Zie wie er is, loop erheen voor een videogesprek en houd één ruimte open voor je remote team."
         },
         "title": "Een gratis <em>virtueel kantoor</em> voor remote teams.",
-        "subtitle": "Geef je team overdag een plek om te zijn. Zie wie er is, loop erheen voor een snelle vraag en ga aan de vergadertafel zitten als het tijd is om te praten.",
+        "subtitle": "Geef je team een plek om overdag te zijn. Zie wie er is, loop langs voor een snelle vraag en stap de vergaderruimte in als het tijd is om te praten.",
         "points": [
           {
             "title": "Zie wie er is",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Een tafel voor vergaderingen",
-            "body": "Ga aan de vergadertafel zitten en iedereen daar zit in één gesprek, met een kaartje per persoon."
+            "body": "Doe mee aan een meeting en je poppetje loopt naar de vergaderruimte. Alleen wie praat staat op video, met een kaart voor iedereen."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Studeer met vrienden in een gratis online studieruimte. Zit samen in een pixel-art ruimte, concentreer je en praat als je pauze nodig hebt. Niets te downloaden."
         },
         "title": "Een <em>online studieruimte</em> voor jou en je vrienden.",
-        "subtitle": "Maak een ruimte voor je studiegroep, deel één link en zit samen terwijl je werkt. Bespreek een opgave aan tafel en ga daarna weer verder.",
+        "subtitle": "Maak een ruimte voor je studiegroep, deel één link en zit samen terwijl je werkt. Praat een probleem door in de vergaderruimte en ga dan weer verder.",
         "points": [
           {
             "title": "Standaard stil",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Een tafel voor groepswerk",
-            "body": "Ga aan de vergadertafel zitten om als groep te praten en sta op om weer alleen te studeren."
+            "body": "Doe mee aan een meeting om als groep te praten en loop de vergaderruimte uit om weer alleen verder te studeren."
           },
           {
             "title": "Een whiteboard voor opgaven",
@@ -780,18 +780,18 @@
         "label": "Virtueel klaslokaal",
         "meta": {
           "title": "Gratis virtueel klaslokaal voor spreekuren",
-          "description": "Houd spreekuren, bijles en kleine lessen in een gratis virtueel klaslokaal. Studenten lopen erheen om te praten, groepen komen samen aan tafel en iedereen deelt een whiteboard."
+          "description": "Spreekuren, bijles en kleine lessen in een gratis virtueel klaslokaal. Studenten lopen naar je toe om te praten, groepen komen samen in de vergaderruimte en iedereen deelt een whiteboard."
         },
         "title": "Een <em>virtueel klaslokaal</em> waar studenten rondlopen.",
-        "subtitle": "Houd spreekuren, bijles of een kleine les in een ruimte waar studenten kunnen rondlopen. Ze komen naar je toe als ze een vraag hebben, en groepen praten aan tafel.",
+        "subtitle": "Houd spreekuur, bijles of een kleine les in een ruimte waar studenten kunnen rondlopen. Ze komen naar je toe met een vraag, en groepen praten in de vergaderruimte.",
         "points": [
           {
             "title": "Spreekuren die doorlopen",
             "body": "Studenten zien wanneer je tijd hebt en lopen erheen om iets te vragen. Niemand zit in een wachtruimte."
           },
           {
-            "title": "Kleine groepen aan tafel",
-            "body": "Tot zes mensen zitten aan de vergadertafel en delen één gesprek, met een kaartje per persoon."
+            "title": "Kleine groepen in de vergaderruimte",
+            "body": "Start een meeting en de groep loopt samen de vergaderruimte in, met een kaart voor iedereen."
           },
           {
             "title": "Een gedeeld whiteboard",
@@ -824,15 +824,15 @@
           "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een gesprek te starten. Gratis, in de browser, zonder download."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
-        "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, ga aan tafel zitten om als groep te praten en loop verder als je klaar bent.",
+        "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, doe mee aan een meeting om als groep te praten en loop verder als je klaar bent.",
         "points": [
           {
             "title": "Dichtbij komen start het gesprek",
             "body": "Ga naast een collega staan en er verschijnt een belkaart. Eén tik start het gesprek."
           },
           {
-            "title": "Groepen aan tafel",
-            "body": "Ga aan de vergadertafel zitten en je doet mee aan het gesprek met iedereen die daar zit."
+            "title": "Groepen in de vergaderruimte",
+            "body": "Doe mee aan een meeting en je poppetje loopt naar de vergaderruimte, met iedereen erin."
           },
           {
             "title": "Werkt op elk netwerk",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Kunnen meer dan twee mensen praten?",
-            "a": "Ja. Bel iemand die al in een gesprek zit om mee te doen, of ga aan de vergadertafel zitten om als groep te praten."
+            "a": "Een gesprek is met z’n tweeën. Loop naar een derde toe en maak er een meeting van, of doe mee aan de meeting van het kantoor om als groep te praten."
           },
           {
             "q": "Is het gratis?",
@@ -1009,59 +1009,6 @@
       "google_taken": "Dat Google-account is al gekoppeld aan een ander TinyFloor-account.",
       "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw."
     },
-    "meetings": {
-      "title": "Meetings",
-      "subtitle": "De vergaderruimte van {office} is een Google Meet. Die opent in een eigen tabblad, en iedereen hier ziet wie erin zit.",
-      "room": "Vergaderruimte",
-      "join": "Deelnemen aan meeting",
-      "copy": "Link kopiëren",
-      "copied": "Gekopieerd",
-      "copyFailed": "De link kon niet worden gekopieerd. Selecteer hem en kopieer hem zelf.",
-      "madeBy": "Gemaakt door {name}",
-      "madeByYou": "Door jou gemaakt",
-      "inNow": "Nu in de meeting",
-      "nobody": "Niemand zit in de meeting.",
-      "cantSee": "We kunnen nu niet zien wie er in de meeting zit.",
-      "creatorGone": "Wie deze ruimte heeft gemaakt, is niet meer in het kantoor, dus we kunnen niet zien wie erin zit. De link werkt nog.",
-      "yourPermissionGone": "Je hebt TinyFloor de Google Meet-toestemming ontnomen, dus we kunnen niet zien wie er in de ruimte zit.",
-      "creatorPermissionGone": "{name} heeft TinyFloor de Google Meet-toestemming ontnomen, dus we kunnen niet zien wie er in de ruimte zit. De link werkt nog.",
-      "guest": "gast",
-      "phone": "telefoon",
-      "unnamed": "Iemand",
-      "noRoomTitle": "Nog geen vergaderruimte",
-      "noRoomAdmin": "Maak een Google Meet-ruimte voor {office}. Die wordt gemaakt met je Google-account, en iedereen hier kan via deze pagina deelnemen.",
-      "noRoomAdminPermission": "Google vraagt of TinyFloor Meet-ruimtes voor je mag maken.",
-      "noRoomMember": "Een beheerder kan de vergaderruimte van {office} maken, een Google Meet waar iedereen hier aan kan deelnemen.",
-      "create": "Google Meet-ruimte maken",
-      "creating": "Ruimte wordt gemaakt…",
-      "replace": "Nieuwe ruimte maken",
-      "remove": "Ruimte verwijderen",
-      "replaceTitle": "Nieuwe vergaderruimte maken?",
-      "replaceBody": "Een nieuwe Google Meet-ruimte, gemaakt met je Google-account, neemt de plaats van deze in. De oude link blijft werken voor wie hem heeft.",
-      "replaceIt": "Nieuwe ruimte maken",
-      "removeTitle": "Vergaderruimte verwijderen?",
-      "removeBody": "Hij wordt hier niet meer getoond. De Meet-link blijft werken voor wie hem heeft.",
-      "removeIt": "Verwijderen",
-      "loadFailed": "De vergaderruimte kon niet worden geladen.",
-      "retry": "Opnieuw proberen",
-      "needPermission": "TinyFloor heeft je toestemming nodig om Google Meet-ruimtes te maken. Sta Google Meet toe om verder te gaan.",
-      "notTicked": "Het vakje voor Google Meet was niet aangevinkt. Sta Google Meet opnieuw toe en vink het deze keer aan.",
-      "askAgain": "Google heeft nog één keer je toestemming nodig. Sta Google Meet opnieuw toe.",
-      "declined": "Google Meet is niet toegestaan, dus de ruimte is niet gemaakt.",
-      "googleFailed": "Google is niet gelukt. Probeer het opnieuw.",
-      "googleBusy": "Google Meet is druk. Probeer het over een minuut opnieuw.",
-      "googleBlocked": "Het inlogvenster van Google kon niet openen. Sta pop-ups toe voor deze site en probeer het opnieuw.",
-      "meetFailed": "Google Meet heeft de ruimte niet gemaakt. Probeer het opnieuw.",
-      "unavailable": "Google Meet is hier nog niet ingesteld.",
-      "offline": "TinyFloor is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
-      "yourGoogle": "Google Meet-toestemming:",
-      "allowedAs": "toegestaan, als {email}",
-      "notAllowed": "niet toegestaan",
-      "allow": "Google Meet toestaan",
-      "revoke": "Intrekken",
-      "permissionNote": "TinyFloor gebruikt die alleen om vergaderruimtes te maken en te zien wie er in de ruimtes zit die het heeft gemaakt. Je andere meetings, je agenda en al het andere in je Google-account ziet het niet.",
-      "wrong": "Er ging iets mis. Probeer het opnieuw."
-    },
     "people": {
       "title": "Mensen",
       "members": "Leden",
@@ -1110,6 +1057,56 @@
     "nameLabel": "Naam van het kantoor",
     "creating": "Wordt klaargezet",
     "continue": "Verder"
+  },
+  "meetings": {
+    "title": "Meetings",
+    "subtitle": "Doe mee aan een meeting en je poppetje loopt naar de vergaderruimte. De meeting gebeurt hier.",
+    "new": "Nieuwe meeting",
+    "others": "Andere meetings",
+    "walkHint": "Als je meedoet, loopt je poppetje naar de vergaderruimte en ziet iedereen je gaan. Loop je de ruimte uit, dan verlaat je de meeting.",
+    "liveFor": "Live · {time}",
+    "quiet": "Nog niemand",
+    "plus": "+{count}",
+    "mainBody": "Altijd open. Iedereen op kantoor kan altijd binnenlopen.",
+    "join": "Meedoen",
+    "startMain": "Meeting starten",
+    "nobodyIn": "Er is nu niemand. Doe mee, en iedereen op kantoor ziet dat hij bezig is.",
+    "mainName": "Meeting van {office}",
+    "byName": "Meeting van {name}",
+    "people": "{count, plural, one {# persoon} other {# personen}}",
+    "invite": "Uitnodigen",
+    "screenOf": "Scherm van {name}",
+    "you": "Jij",
+    "more": "+{count} meer",
+    "leave": "Verlaten",
+    "aloneTitle": "Jij bent hier als eerste",
+    "aloneBody": "Er wordt niets van jou verstuurd tot iemand meedoet. Nodig mensen uit of wacht tot ze langskomen.",
+    "aloneShort": "Wachten op anderen",
+    "open": "Meeting openen",
+    "nobodyToAsk": "Er is nu niemand anders van kantoor op de vloer. Mensen moeten hier zijn om je uitnodiging te horen.",
+    "inAnotherMeeting": "In een meeting",
+    "newTitle": "Nieuwe meeting",
+    "newBody": "Een eigen meeting, zolang er iemand in zit. Iedereen op kantoor kan hem zien en meedoen.",
+    "nameLabel": "Naam",
+    "namePlaceholder": "Ontwerpreview",
+    "askLabel": "Mensen uitnodigen",
+    "start": "Starten",
+    "startAndAsk": "{count, plural, one {Starten en # persoon uitnodigen} other {Starten en # personen uitnodigen}}",
+    "inviteTitle": "Mensen uitnodigen",
+    "inviteBody": "Ze krijgen een oproep om mee te doen, waar ze ook zijn op kantoor.",
+    "ask": "{count, plural, =0 {Uitnodigen} one {# persoon uitnodigen} other {# personen uitnodigen}}",
+    "roomTitle": "Je bent in de vergaderruimte",
+    "notNow": "Niet nu",
+    "lobbyRoom": "Meetings zijn in je eigen kantoor.",
+    "getOffice": "Kantoor maken",
+    "invitedTo": "Nodigt je uit voor {name}",
+    "invited": "Nodigt je uit voor een meeting",
+    "walkedOut": "Je bent de meeting uitgelopen",
+    "ended": "Die meeting is afgelopen",
+    "rejoin": "Opnieuw meedoen",
+    "startedBy": "Gestart door {name}",
+    "makeMeeting": "Meeting",
+    "makeMeetingHint": "Een gesprek is met z'n tweeën: start een meeting voor jullie drie"
   },
   "shell": {
     "floor": "Vloer",
@@ -1198,7 +1195,7 @@
       "main": "Hoofdnavigatie",
       "items": {
         "proximity": "Gesprekken van dichtbij",
-        "meetings": "Vergadertafels",
+        "meetings": "Meetings",
         "chat": "Chat",
         "people": "Aanwezigheid",
         "invites": "Uitnodigingen"
@@ -1220,7 +1217,7 @@
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
-      "body": "Voor remote teams die het missen om zij aan zij te werken. Zie wie er is, loop even langs met een snelle vraag en schuif aan tafel als het tijd is om te vergaderen, zonder ook maar één call in te plannen.",
+      "body": "Voor remote teams die het zij-aan-zij werken missen. Zie wie er is, loop langs met een snelle vraag en stap de vergaderruimte in als het tijd is om te vergaderen, zonder ook maar één gesprek in te plannen.",
       "secondary": "Loop de lobby in",
       "previewLabel": "Een kijkje in TinyFloor",
       "tabs": {
@@ -1373,7 +1370,7 @@
     "eyebrow": "Over ons",
     "title": "Op afstand werken verloor de gang. Wij bouwen hem terug.",
     "p1": "Apart werken is goed voor je focus, maar het nam ongemerkt de kleine momenten weg: de snelle vraag bij iemands bureau, het hallo in het voorbijgaan, zien wie er is. Videogesprekken werken goed voor vergaderingen. Ze maakten van elk ander gesprek een afspraak.",
-    "p2": "TinyFloor is een verdieping in plaats van een link. Je team loopt door een gedeeld pixel-art kantoor, en naar iemand toe lopen is hoe je begint te praten. Ga aan een tafel zitten en je zit in een vergadering. Loop weg en het is weer stil.",
+    "p2": "TinyFloor is een verdieping in plaats van een link. Je team loopt rond in een gedeeld kantoor in pixel art, en naar iemand toe lopen is hoe je begint te praten. Doe mee aan een meeting en je loopt de vergaderruimte in. Loop naar buiten en het is weer stil.",
     "p3": "Het draait in de browser op het netwerk van Cloudflare, in 18 talen, zonder iets te installeren, en het is gratis voor kleine teams.",
     "founderTitle": "Gemaakt door Jitto Joseph",
     "founderBody": "Ik ontwerp en bouw TinyFloor, van de pixelverdieping tot de servers waarop het draait. Heb je een idee, een probleem of wil je gewoon hallo zeggen? Ik hoor graag van je.",
@@ -1416,8 +1413,8 @@
         "body": "Loop naar iemand toe en bel met één klik. Loop weg en het gesprek stopt."
       },
       "sit": {
-        "title": "Schuif aan",
-        "body": "De vergaderruimte is verderop in de gang. Ga zitten en je bent in de vergadering."
+        "title": "Stap de vergaderruimte in",
+        "body": "De vergaderruimte is verderop in de gang. Doe mee aan de meeting en je poppetje loopt naar binnen; loop naar buiten en je bent weg."
       }
     },
     "more": {

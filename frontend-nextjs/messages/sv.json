@@ -62,7 +62,7 @@
       },
       {
         "q": "Hur fungerar närhetsbaserad videochatt?",
-        "a": "Gå fram till någon så visas en samtalsknapp bredvid personen. Ett tryck startar samtalet, och när ni pratar kan du slå på kameran eller dela skärmen. Samtalen går via WebRTC genom Cloudflares nätverk, så de ansluter på alla kontors- och hemnätverk, och de fortsätter tills någon lägger på. Mötesbord bär gruppsamtal: sätt dig för att gå med, res dig för att lämna."
+        "a": "Gå fram till någon så dyker en samtalsknapp upp bredvid dem. Ett tryck startar samtalet, och när ni pratar kan du slå på kameran eller dela skärmen. Samtal går över WebRTC genom Cloudflares nätverk, så de fungerar på alla kontors- och hemnätverk och håller tills någon lägger på. För en grupp går du med i ett möte, och din figur går in i mötesrummet."
       },
       {
         "q": "Är TinyFloor gratis?",
@@ -459,7 +459,7 @@
           },
           {
             "q": "Vad har Gather som TinyFloor inte har?",
-            "a": "Gather lägger till AI-mötesanteckningar och anpassning av kontoret. TinyFloor fokuserar på grunderna: gå runt, samtal när man står nära, skärmdelning, ett mötesbord, chatt, en whiteboard och musik i rummet."
+            "a": "Gather lägger till AI-mötesanteckningar och anpassning av kontoret. TinyFloor fokuserar på grunderna: gå runt, samtal när man står nära, skärmdelning, ett mötesrum, chatt, en whiteboard och musik i rummet."
           },
           {
             "q": "Kan jag flytta mitt team från Gather till TinyFloor?",
@@ -537,7 +537,7 @@
           },
           {
             "title": "Gå fram för att prata",
-            "body": "Gå nära en kollega för att starta ett samtal. Vid mötesbordet är alla i samma samtal."
+            "body": "Gå nära en kollega för att starta ett samtal. För en grupp går ni med i ett möte, och alla går in i mötesrummet."
           }
         ],
         "them": {
@@ -580,7 +580,7 @@
           },
           {
             "title": "Ingen karta att bygga",
-            "body": "Varje rum har ett kontorsgolv, ett mötesbord, en whiteboard och en högtalare. Skapa ett rum och gå in."
+            "body": "Varje rum har ett kontorsgolv, ett mötesrum, en whiteboard och en högtalare. Skapa ett rum och gå in."
           },
           {
             "title": "Inget att drifta",
@@ -608,7 +608,7 @@
           },
           {
             "q": "Hur startar samtal i TinyFloor?",
-            "a": "Gå fram till en kollega så visas samtalskortet. Ett tryck startar samtalet. Vid mötesbordet hamnar alla som sätter sig i samma samtal."
+            "a": "Gå fram till en kollega så dyker deras samtalskort upp. Ett tryck startar samtalet. För en grupp går du med i ett möte, och din figur går in i mötesrummet."
           }
         ]
       },
@@ -641,7 +641,7 @@
           },
           {
             "q": "Hur skiljer sig TinyFloor från Wonder?",
-            "a": "Wonder använde cirklar på en platt yta och var gjort för evenemang. TinyFloor är ett kontor du går runt i, med skrivbord, ett mötesbord, en whiteboard och musik, gjort för grupper som ses regelbundet."
+            "a": "Wonder använde cirklar på en platt yta och var gjort för evenemang. TinyFloor är ett kontor du går runt i, med skrivbord, ett mötesrum, en whiteboard och musik, gjort för grupper som ses regelbundet."
           },
           {
             "q": "Hur många kan gå med?",
@@ -660,7 +660,7 @@
           "description": "Ett gratis virtuellt kontor i webbläsaren. Se vem som är där, gå fram för ett videosamtal och ha ett rum öppet för ditt distansteam."
         },
         "title": "Ett gratis <em>virtuellt kontor</em> för distansteam.",
-        "subtitle": "Ge teamet en plats att vara på under dagen. Se vem som är där, gå fram med en snabb fråga och sätt dig vid mötesbordet när det är dags att prata.",
+        "subtitle": "Ge ditt team en plats att vara på under dagen. Se vilka som är här, gå över med en snabb fråga och gå in i mötesrummet när det är dags att prata.",
         "points": [
           {
             "title": "Se vem som är inne",
@@ -672,7 +672,7 @@
           },
           {
             "title": "Ett bord för möten",
-            "body": "Sätt dig vid mötesbordet så är alla där i samma samtal, med ett kort för varje person."
+            "body": "Gå med i ett möte så går din figur in i mötesrummet. Bara de som pratar syns på video, med ett kort för alla."
           }
         ],
         "faq": [
@@ -742,7 +742,7 @@
           "description": "Plugga med vänner i ett gratis studierum online. Sitt tillsammans i ett rum i pixelgrafik, fokusera och prata när ni behöver en paus. Inget att ladda ner."
         },
         "title": "Ett <em>studierum online</em> för dig och dina vänner.",
-        "subtitle": "Skapa ett rum för din studiegrupp, dela en länk och sitt tillsammans medan ni pluggar. Prata igenom en uppgift vid bordet och fortsätt sedan.",
+        "subtitle": "Skapa ett rum för din studiegrupp, dela en länk och sitt tillsammans medan ni jobbar. Prata igenom ett problem i mötesrummet och fortsätt sedan.",
         "points": [
           {
             "title": "Tyst från början",
@@ -750,7 +750,7 @@
           },
           {
             "title": "Ett bord för grupparbete",
-            "body": "Sätt er vid mötesbordet för att prata i grupp och res er för att plugga själva igen."
+            "body": "Gå med i ett möte för att prata som grupp, och gå ut ur mötesrummet för att plugga vidare på egen hand."
           },
           {
             "title": "En whiteboard för uppgifter",
@@ -780,18 +780,18 @@
         "label": "Virtuellt klassrum",
         "meta": {
           "title": "Gratis virtuellt klassrum för lärarhandledning",
-          "description": "Håll handledning, läxhjälp och små lektioner i ett gratis virtuellt klassrum. Elever går fram för att prata, grupper samlas vid bordet och alla delar en whiteboard."
+          "description": "Mottagningstider, läxhjälp och små klasser i ett gratis virtuellt klassrum. Elever går fram för att prata, grupper träffas i mötesrummet och alla delar en whiteboard."
         },
         "title": "Ett <em>virtuellt klassrum</em> där elever kan gå runt.",
-        "subtitle": "Håll handledning, läxhjälp eller en liten lektion i ett rum där elever kan röra sig. De går fram när de har en fråga, och grupper pratar vid bordet.",
+        "subtitle": "Håll mottagningstid, läxhjälp eller en liten klass i ett rum där eleverna kan röra sig. De går fram när de har en fråga, och grupper pratar i mötesrummet.",
         "points": [
           {
             "title": "Handledning utan kö",
             "body": "Eleverna ser när du är ledig och går fram för att fråga. Ingen sitter i ett väntrum."
           },
           {
-            "title": "Små grupper vid bordet",
-            "body": "Upp till sex personer sitter vid mötesbordet och delar ett samtal, med ett kort för varje person."
+            "title": "Små grupper i mötesrummet",
+            "body": "Starta ett möte så går gruppen in i mötesrummet tillsammans, med ett kort för varje person."
           },
           {
             "title": "En delad whiteboard",
@@ -824,15 +824,15 @@
           "description": "Närhetschatt för team och vänner: gå med din figur fram till någon för att starta ett samtal. Gratis, i webbläsaren, utan nedladdning."
         },
         "title": "<em>Närhetschatt</em> som börjar när du går fram.",
-        "subtitle": "I TinyFloor avgör var du står vem du pratar med. Gå fram till någon för att ringa, sätt dig vid bordet för att prata i grupp och gå vidare när du är klar.",
+        "subtitle": "I TinyFloor avgör var du står vem du pratar med. Gå fram till någon för att ringa, gå med i ett möte för att prata som grupp och gå vidare när ni är klara.",
         "points": [
           {
             "title": "Närhet startar samtalet",
             "body": "Ställ dig bredvid en kollega så visas ett samtalskort. Ett tryck startar samtalet."
           },
           {
-            "title": "Grupper vid bordet",
-            "body": "Sätt dig vid mötesbordet så är du med i samtalet med alla som sitter där."
+            "title": "Grupper i mötesrummet",
+            "body": "Gå med i ett möte så går din figur in i mötesrummet, med alla andra."
           },
           {
             "title": "Fungerar på alla nätverk",
@@ -850,7 +850,7 @@
           },
           {
             "q": "Kan fler än två prata?",
-            "a": "Ja. Ring någon som redan är i ett samtal för att gå med, eller sätt dig vid mötesbordet för att prata i grupp."
+            "a": "Ett samtal är två personer. Gå fram till en tredje och gör det till ett möte, eller gå med i kontorets möte för att prata som grupp."
           },
           {
             "q": "Är det gratis?",
@@ -1009,59 +1009,6 @@
       "google_taken": "Det Google-kontot är redan kopplat till ett annat TinyFloor-konto.",
       "google_failed": "Det gick inte med Google. Försök igen."
     },
-    "meetings": {
-      "title": "Möten",
-      "subtitle": "{office}s mötesrum är ett Google Meet. Det öppnas i en egen flik, och alla här kan se vem som är i det.",
-      "room": "Mötesrum",
-      "join": "Gå med i mötet",
-      "copy": "Kopiera länk",
-      "copied": "Kopierad",
-      "copyFailed": "Länken kunde inte kopieras. Markera den och kopiera den själv.",
-      "madeBy": "Skapat av {name}",
-      "madeByYou": "Skapat av dig",
-      "inNow": "I mötet nu",
-      "nobody": "Ingen är i mötet.",
-      "cantSee": "Vi kan inte se vem som är i mötet just nu.",
-      "creatorGone": "Den som skapade rummet har lämnat kontoret, så vi kan inte se vem som är i det. Länken fungerar fortfarande.",
-      "yourPermissionGone": "Du har dragit tillbaka TinyFloors Google Meet-behörighet, så vi kan inte se vem som är i rummet.",
-      "creatorPermissionGone": "{name} har dragit tillbaka TinyFloors Google Meet-behörighet, så vi kan inte se vem som är i rummet. Länken fungerar fortfarande.",
-      "guest": "gäst",
-      "phone": "telefon",
-      "unnamed": "Någon",
-      "noRoomTitle": "Inget mötesrum än",
-      "noRoomAdmin": "Skapa ett Google Meet-rum för {office}. Det skapas med ditt Google-konto, och alla här kan gå med från den här sidan.",
-      "noRoomAdminPermission": "Google frågar om TinyFloor får skapa Meet-rum åt dig.",
-      "noRoomMember": "En administratör kan skapa {office}s mötesrum, ett Google Meet som alla här kan gå med i.",
-      "create": "Skapa ett Google Meet-rum",
-      "creating": "Skapar rummet…",
-      "replace": "Skapa ett nytt rum",
-      "remove": "Ta bort rummet",
-      "replaceTitle": "Skapa ett nytt mötesrum?",
-      "replaceBody": "Ett nytt Google Meet-rum, skapat med ditt Google-konto, ersätter det här. Den gamla länken fungerar fortfarande för den som har den.",
-      "replaceIt": "Skapa ett nytt rum",
-      "removeTitle": "Ta bort mötesrummet?",
-      "removeBody": "Det visas inte här längre. Meet-länken fungerar fortfarande för den som har den.",
-      "removeIt": "Ta bort",
-      "loadFailed": "Mötesrummet kunde inte läsas in.",
-      "retry": "Försök igen",
-      "needPermission": "TinyFloor behöver din tillåtelse för att skapa Google Meet-rum. Tillåt Google Meet för att fortsätta.",
-      "notTicked": "Rutan för Google Meet var inte ikryssad. Tillåt Google Meet igen och kryssa i den den här gången.",
-      "askAgain": "Google behöver ditt godkännande en gång till. Tillåt Google Meet igen.",
-      "declined": "Google Meet tilläts inte, så rummet skapades inte.",
-      "googleFailed": "Google gick inte igenom. Försök igen.",
-      "googleBusy": "Google Meet är upptaget. Försök igen om en minut.",
-      "googleBlocked": "Googles inloggningsfönster kunde inte öppnas. Tillåt popup-fönster för den här webbplatsen och försök igen.",
-      "meetFailed": "Google Meet skapade inte rummet. Försök igen.",
-      "unavailable": "Google Meet är inte konfigurerat här än.",
-      "offline": "Det går inte att nå TinyFloor. Kontrollera anslutningen och försök igen.",
-      "yourGoogle": "Google Meet-behörighet:",
-      "allowedAs": "tillåten, som {email}",
-      "notAllowed": "inte tillåten",
-      "allow": "Tillåt Google Meet",
-      "revoke": "Dra tillbaka",
-      "permissionNote": "TinyFloor använder den bara för att skapa mötesrum och se vem som är i rummen det har skapat. Det kan inte se dina andra möten, din kalender eller något annat i ditt Google-konto.",
-      "wrong": "Något gick fel. Försök igen."
-    },
     "people": {
       "title": "Personer",
       "members": "Medlemmar",
@@ -1110,6 +1057,56 @@
     "nameLabel": "Kontorets namn",
     "creating": "Gör i ordning",
     "continue": "Vidare"
+  },
+  "meetings": {
+    "title": "Möten",
+    "subtitle": "Gå med i ett möte så går din figur in i mötesrummet. Själva mötet sker här.",
+    "new": "Nytt möte",
+    "others": "Andra möten",
+    "walkHint": "När du går med går din figur in i mötesrummet, och alla ser dig gå. Går du ut ur rummet lämnar du mötet.",
+    "liveFor": "Live · {time}",
+    "quiet": "Ingen än",
+    "plus": "+{count}",
+    "mainBody": "Alltid öppet. Alla på kontoret kan titta in när som helst.",
+    "join": "Gå med",
+    "startMain": "Starta mötet",
+    "nobodyIn": "Ingen är här just nu. Gå med, så ser alla på kontoret att det är igång.",
+    "mainName": "{office}s möte",
+    "byName": "{name}s möte",
+    "people": "{count, plural, one {# person} other {# personer}}",
+    "invite": "Bjud in",
+    "screenOf": "{name}s skärm",
+    "you": "Du",
+    "more": "+{count} till",
+    "leave": "Lämna",
+    "aloneTitle": "Du är först här",
+    "aloneBody": "Inget från dig skickas förrän någon går med. Bjud in folk eller vänta på att de tittar in.",
+    "aloneShort": "Väntar på andra",
+    "open": "Öppna mötet",
+    "nobodyToAsk": "Ingen annan från kontoret är på golvet just nu. Folk måste vara här för att höra din inbjudan.",
+    "inAnotherMeeting": "I ett möte",
+    "newTitle": "Nytt möte",
+    "newBody": "Ett eget möte, så länge någon är i det. Alla på kontoret kan se det och gå med.",
+    "nameLabel": "Namn",
+    "namePlaceholder": "Designgenomgång",
+    "askLabel": "Bjud in folk",
+    "start": "Starta",
+    "startAndAsk": "{count, plural, one {Starta och bjud in # person} other {Starta och bjud in # personer}}",
+    "inviteTitle": "Bjud in folk",
+    "inviteBody": "De får ett samtal om att gå med, var de än är på kontoret.",
+    "ask": "{count, plural, =0 {Bjud in} one {Bjud in # person} other {Bjud in # personer}}",
+    "roomTitle": "Du är i mötesrummet",
+    "notNow": "Inte nu",
+    "lobbyRoom": "Möten sker på ditt eget kontor.",
+    "getOffice": "Skapa ett kontor",
+    "invitedTo": "Bjuder in dig till {name}",
+    "invited": "Bjuder in dig till ett möte",
+    "walkedOut": "Du gick ut ur mötet",
+    "ended": "Det mötet har tagit slut",
+    "rejoin": "Gå med igen",
+    "startedBy": "Startat av {name}",
+    "makeMeeting": "Möte",
+    "makeMeetingHint": "Ett samtal är två personer: starta ett möte för er tre"
   },
   "shell": {
     "floor": "Golvet",
@@ -1198,7 +1195,7 @@
       "main": "Huvudnavigering",
       "items": {
         "proximity": "Närhetssamtal",
-        "meetings": "Mötesbord",
+        "meetings": "Möten",
         "chat": "Chatt",
         "people": "Närvaro",
         "invites": "Inbjudningar"
@@ -1220,7 +1217,7 @@
     },
     "hero": {
       "title": "Ett virtuellt kontor som ditt team kan gå runt i.",
-      "body": "För distansteam som saknar att jobba sida vid sida. Se vem som är här, titta förbi med en snabb fråga och dra fram en stol när det är dags för möte, utan att boka ett enda samtal.",
+      "body": "För distansteam som saknar att jobba sida vid sida. Se vilka som är här, titta förbi med en snabb fråga och gå in i mötesrummet när det är dags för möte, utan att boka ett enda samtal.",
       "secondary": "Gå in i lobbyn",
       "previewLabel": "En titt in i TinyFloor",
       "tabs": {
@@ -1373,7 +1370,7 @@
     "eyebrow": "Om oss",
     "title": "Distansarbetet tappade korridoren. Vi bygger tillbaka den.",
     "p1": "Att jobba på olika platser är bra för fokus, men det tog tyst bort de små stunderna: den snabba frågan vid någons skrivbord, hejet i förbifarten, att se vem som är där. Videosamtal fungerar bra för möten. De gjorde varje annat samtal till en bokning.",
-    "p2": "TinyFloor är en våning i stället för en länk. Ditt team går runt på ett delat kontor i pixelgrafik, och att gå fram till någon är hur man börjar prata. Sätt dig vid ett bord och du är i ett möte. Gå därifrån och det blir tyst igen.",
+    "p2": "TinyFloor är en våning i stället för en länk. Ditt team går runt på ett gemensamt kontor i pixelgrafik, och att gå fram till någon är hur man börjar prata. Gå med i ett möte så går du in i mötesrummet. Gå ut så är det tyst igen.",
     "p3": "Det körs i webbläsaren på Cloudflares nätverk, på 18 språk, utan något att installera, och det är gratis för små team.",
     "founderTitle": "Gjort av Jitto Joseph",
     "founderBody": "Jag designar och bygger TinyFloor, från pixelvåningen till servrarna den körs på. Har du en idé, ett problem eller vill bara säga hej? Hör gärna av dig.",
@@ -1416,8 +1413,8 @@
         "body": "Gå fram till någon och ring med ett klick. Gå därifrån och samtalet avslutas."
       },
       "sit": {
-        "title": "Dra fram en stol",
-        "body": "Mötesrummet ligger längre ner i korridoren. Sätt dig och du är med i mötet."
+        "title": "Gå in i mötesrummet",
+        "body": "Mötesrummet ligger längre ner i korridoren. Gå med i mötet så går din figur in; gå ut så har du lämnat det."
       }
     },
     "more": {

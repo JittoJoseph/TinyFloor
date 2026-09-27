@@ -18,6 +18,9 @@ import { jukebox } from "../lib/JukeboxManager";
 import { tutorialDone, setTouchInput } from "../lib/tutorial";
 import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "../lib/types";
+import { MEETING_ROOM_EVENT, meetingOf, WALK_TO_MEETING_EVENT } from "../lib/meetings";
+import { inZone, MEETING_ZONE, standingSpot } from "../lib/meetingRoom";
+import type { MapAnchor } from "../lib/MapManager";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -57,6 +60,12 @@ class GameScene extends Phaser.Scene {
   private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
   private windowListeners: Array<[string, EventListener]> = [];
+  /** The meeting room, and whether we stand in it. */
+  private meetingZone?: MapAnchor;
+  private insideRoom = false;
+  /** The meeting we are in, and whether we have reached the room since joining it. */
+  private trackedMeeting: string | null = null;
+  private reachedRoom = false;
 
   constructor(
     private name: string,
@@ -140,8 +149,8 @@ class GameScene extends Phaser.Scene {
       (seated) =>
         this.movementManager.setFrozen(seated, () => this.seatManager?.leave()),
       approach,
-      (people) => this.playerManager.hideNameTags(people),
     );
+    this.meetingZone = this.mapManager.getAnchors("Zones").find((zone) => zone.name === MEETING_ZONE);
 
     callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
@@ -165,13 +174,11 @@ class GameScene extends Phaser.Scene {
       );
     }
     // nobody calls into a meeting or out of one, or rings someone already on the line
-    const seats = this.seatManager;
     this.proximityManager = new ProximityManager(
       this,
       this.playerManager,
       this.player,
-      (id) =>
-        !seats.inMeeting() && !seats.inMeeting(id) && !callManager.isPeer(id),
+      (id) => !callManager.currentMeeting() && !meetingOf(id) && !callManager.isPeer(id),
     );
 
     this.messageHandler = new MessageHandler(
@@ -183,7 +190,8 @@ class GameScene extends Phaser.Scene {
       this.player,
     );
     this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
-    this.listen("leaveMeeting", () => this.seatManager?.leave());
+    // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
+    this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
 
     this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
@@ -237,6 +245,51 @@ class GameScene extends Phaser.Scene {
     this.playerManager.setTagScale(Math.max(1, (CAMERA_ZOOM * 0.9) / zoom));
   }
 
+  /** Walks to a free place in the meeting room, unless we are already standing in it. */
+  private walkIntoMeetingRoom() {
+    const zone = this.meetingZone;
+    if (!zone || inZone(zone, this.player.x, this.player.y)) return;
+    const taken: Array<{ tileX: number; tileY: number }> = [];
+    for (const [id] of this.playerManager.getPlayers()) {
+      if (id === this.playerId) continue;
+      const at = this.playerManager.positionOf(id);
+      if (at && inZone(zone, at.x, at.y)) taken.push(pixelToTile(at.x, at.y));
+    }
+    const spot = standingSpot({
+      zone,
+      table: this.mapManager.getAnchors("Table")[0],
+      nav: this.mapManager.getNavGrid(),
+      chairs: this.mapManager.getChairs(),
+      taken,
+      seed: this.playerId,
+    });
+    if (spot) this.movementManager.goTo(spot.x, spot.y, () => {}, true);
+  }
+
+  /**
+   * Whether we stand in the meeting room, told to the app when it changes (the
+   * join prompt shows then). In a meeting, walking out of the room once you
+   * have reached it is leaving the meeting.
+   */
+  private watchMeetingRoom() {
+    const inside = inZone(this.meetingZone, this.player.x, this.player.y);
+    if (inside !== this.insideRoom) {
+      this.insideRoom = inside;
+      window.dispatchEvent(new CustomEvent(MEETING_ROOM_EVENT, { detail: { inside } }));
+    }
+    const meeting = callManager.currentMeeting();
+    if (meeting !== this.trackedMeeting) {
+      this.trackedMeeting = meeting;
+      this.reachedRoom = inside;
+    }
+    if (!meeting) return;
+    if (inside) this.reachedRoom = true;
+    else if (this.reachedRoom) {
+      this.reachedRoom = false;
+      callManager.walkedOut();
+    }
+  }
+
   private listen(type: string, handler: (event: CustomEvent) => void) {
     const listener = handler as EventListener;
     this.windowListeners.push([type, listener]);
@@ -255,6 +308,7 @@ class GameScene extends Phaser.Scene {
       this.seatManager?.seatedDirection(),
     );
     this.proximityManager.update();
+    if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update();
     this.jukeboxObject?.update(time, delta);
   }

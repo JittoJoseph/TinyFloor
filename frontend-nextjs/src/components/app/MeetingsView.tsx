@@ -1,469 +1,188 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useFormatter, useNow, useTranslations } from "next-intl";
-import { Check, Copy, ExternalLink, Loader2, Phone, Video } from "lucide-react";
-import { api, ApiError, type MeetGrant, type MeetingLive, type MeetingPerson, type MeetingRoom } from "@/lib/api";
-import { useAuth } from "@/contexts/AuthContext";
-import { withPostHog } from "@/lib/analytics";
-import { CLIENT_ID, loadGoogle } from "@/components/auth/GoogleButton";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Footprints, Plus, Video } from "lucide-react";
+import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
+import { callManager } from "@/lib/CallManager";
+import { useCall } from "@/lib/useCall";
+import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
-import { Dialog } from "@/components/ui/Dialog";
-import { Empty } from "@/components/ui/Empty";
+import { PixelAvatar } from "@/components/PixelAvatar";
+import { faceBackground } from "@/components/ui/Face";
+import { cn } from "@/lib/utils";
+import { MeetingStage } from "@/components/meetings/MeetingStage";
+import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
+import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { useOffice } from "./OfficeShell";
 
-const MEET_SCOPE = "https://www.googleapis.com/auth/meetings.space.created";
-/** How often the view asks who is in the meeting, while it is on screen. */
-const POLL_MS = 15_000;
-/** Meet opens here, so a second Join brings the same tab back rather than another. */
-const MEET_TAB = "tinyfloor-meet";
-
-type OAuth2 = Awaited<ReturnType<typeof loadGoogle>>["oauth2"];
-type Meeting = Awaited<ReturnType<typeof api.meeting>>;
-
 /**
- * Meetings: the office's Google Meet room, and who is in it right now
- * (docs/10-calls-and-meetings.md). Meet can't be framed, so Join opens it in
- * its own tab. Making the room needs the admin's Google permission for Meet,
- * asked for here and only here; if it is missing, or Google took it back, the
- * same button asks again.
+ * Meetings, on the rail (docs/12-meetings.md). The office's main meeting is
+ * always here to drop into, with anyone else's beside it; joining one walks
+ * your character into the meeting room, and the meeting itself happens on
+ * this page. Inside one, the page is the meeting's stage.
  */
 export function MeetingsView() {
-  const t = useTranslations("office.meetings");
-  const tc = useTranslations("common");
   const { office } = useOffice();
-  const { user } = useAuth();
-  const admin = office.role === "admin";
+  const mine = useMyMeeting();
+  const { meeting } = useCall();
+  // Just joined, before the room's list has caught up: the stage waits a beat.
+  if (meeting && mine) return <MeetingStage meeting={mine} office={office.name} />;
+  return <MeetingsLobby office={office.name} />;
+}
 
-  const [room, setRoom] = useState<MeetingRoom | null>(null);
-  const [live, setLive] = useState<MeetingLive | null>(null);
-  const [google, setGoogle] = useState<MeetGrant>({ granted: false, email: null });
-  const [loaded, setLoaded] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [confirm, setConfirm] = useState<"remove" | "replace" | null>(null);
-
-  const show = useCallback((found: Meeting) => {
-    setRoom(found.room);
-    setLive(found.live);
-    setGoogle(found.google);
-    setLoaded(true);
-    setFailed(false);
-  }, []);
-  const read = useCallback(() => api.meeting(office.id).then(show), [office.id, show]);
-
-  // Read now, then keep "who's in it" fresh while the page is visible.
-  useEffect(() => {
-    let cancelled = false;
-    const load = () =>
-      api.meeting(office.id).then(
-        (found) => !cancelled && show(found),
-        () => {
-          if (cancelled) return;
-          setLoaded(true);
-          setFailed(true);
-        },
-      );
-    void load();
-    const timer = setInterval(() => document.visibilityState === "visible" && void load(), POLL_MS);
-    const onVisible = () => document.visibilityState === "visible" && void load();
-    document.addEventListener("visibilitychange", onVisible);
-    return () => {
-      cancelled = true;
-      clearInterval(timer);
-      document.removeEventListener("visibilitychange", onVisible);
-    };
-  }, [office.id, show]);
-
-  // Google's script, ready before anyone presses Allow: the popup has to open
-  // in the click itself, or the browser blocks it.
-  const oauth2 = useRef<OAuth2 | null>(null);
-  const [googleReady, setGoogleReady] = useState(false);
-  useEffect(() => {
-    if (!CLIENT_ID) return;
-    let cancelled = false;
-    loadGoogle().then(
-      (accounts) => {
-        if (cancelled) return;
-        oauth2.current = accounts.oauth2;
-        setGoogleReady(true);
-      },
-      () => {},
-    );
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const explain = useCallback(
-    (problem: unknown) => {
-      const code = problem instanceof ApiError ? problem.code : "";
-      const messages: Record<string, string> = {
-        meet_permission_needed: t("needPermission"),
-        meet_not_granted: t("notTicked"),
-        meet_permission_reset: t("askAgain"),
-        google_failed: t("googleFailed"),
-        google_busy: t("googleBusy"),
-        meet_failed: t("meetFailed"),
-        meet_unavailable: t("unavailable"),
-        network: t("offline"),
-      };
-      setError(messages[code] ?? t("wrong"));
-    },
-    [t],
-  );
-
-  const makeRoom = useCallback(
-    async (replace: boolean) => {
-      setBusy(true);
-      setError(null);
-      try {
-        const made = await api.createMeeting(office.id, replace);
-        setRoom(made.room);
-        withPostHog((posthog) => posthog.capture("meeting_room_created", { replaced: replace }));
-        await read().catch(() => {});
-      } catch (problem) {
-        explain(problem);
-        // The grant is gone: show the Allow button rather than a room we can't make.
-        if (problem instanceof ApiError && problem.code === "meet_permission_needed") setGoogle({ granted: false, email: null });
-      } finally {
-        setBusy(false);
-      }
-    },
-    [office.id, read, explain],
-  );
-
-  /**
-   * Google's popup, asking only for Meet on top of what they already agreed to.
-   * With the code, the API keeps the grant; then whatever was waiting on it runs.
-   * Called straight from a click, so the popup isn't blocked.
-   */
-  const askGoogle = (then?: () => Promise<void>) => {
-    if (!oauth2.current || !CLIENT_ID) return setError(t("googleBlocked"));
-    setError(null);
-    withPostHog((posthog) => posthog.capture("meet_permission_requested"));
-    oauth2.current
-      .initCodeClient({
-        client_id: CLIENT_ID,
-        scope: `openid email ${MEET_SCOPE}`,
-        ux_mode: "popup",
-        include_granted_scopes: true,
-        login_hint: google.email ?? user?.email ?? undefined,
-        callback: async (response) => {
-          if (!response.code) {
-            withPostHog((posthog) => posthog.capture("meet_permission_declined"));
-            return setError(t("declined"));
-          }
-          setBusy(true);
-          try {
-            const allowed = await api.allowMeet(response.code);
-            setGoogle(allowed.google);
-            withPostHog((posthog) => posthog.capture("meet_permission_granted"));
-            setBusy(false);
-            if (then) await then();
-            else await read().catch(() => {});
-          } catch (problem) {
-            setBusy(false);
-            explain(problem);
-          }
-        },
-        error_callback: (problem) => {
-          if (problem.type !== "popup_closed") setError(t("googleBlocked"));
-        },
-      })
-      .requestCode();
+function MeetingsLobby({ office }: { office: string }) {
+  const t = useTranslations("meetings");
+  const { meetings } = useMeetings();
+  const [starting, setStarting] = useState(false);
+  const main = meetings.find((one) => one.id === MAIN_MEETING) ?? {
+    id: MAIN_MEETING,
+    name: null,
+    by: null,
+    startedAt: null,
+    members: [],
   };
-
-  /** Make (or replace) the room; without a grant, one press asks Google first. */
-  const make = (replace: boolean) => (google.granted ? void makeRoom(replace) : askGoogle(() => makeRoom(replace)));
-
-  const join = () => {
-    if (!room) return;
-    withPostHog((posthog) => posthog.capture("meeting_joined"));
-    window.open(room.uri, MEET_TAB)?.focus();
-  };
-
-  const copy = async () => {
-    if (!room) return;
-    try {
-      await navigator.clipboard.writeText(room.uri);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setError(t("copyFailed"));
-    }
-  };
-
-  const remove = async () => {
-    setConfirm(null);
-    setBusy(true);
-    setError(null);
-    try {
-      await api.forgetMeeting(office.id);
-      setRoom(null);
-      setLive(null);
-    } catch (problem) {
-      explain(problem);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const revoke = async () => {
-    setBusy(true);
-    setError(null);
-    try {
-      setGoogle((await api.disallowMeet()).google);
-      withPostHog((posthog) => posthog.capture("meet_permission_revoked"));
-      await read().catch(() => {});
-    } catch (problem) {
-      explain(problem);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const madeIt = !!room?.createdBy && room.createdBy.id === user?.id;
-  const creatorName = room?.createdBy?.displayName ?? "";
+  const others = meetings.filter((one) => one.id !== MAIN_MEETING);
+  // An office always has its main meeting: none at all means the floor hasn't said yet.
+  const known = meetings.length > 0;
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
-      <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
-        <header>
-          <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-          <p className="mt-1 text-[14px] text-muted-foreground">{t("subtitle", { office: office.name })}</p>
+      <div className="mx-auto w-full max-w-4xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
+        <header className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
+            <p className="mt-1 text-[14px] text-muted-foreground">{t("subtitle")}</p>
+          </div>
+          <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 gap-2 px-4 text-[13px]">
+            <Plus className="size-4" />
+            {t("new")}
+          </Button>
         </header>
 
-        {error && (
-          <p role="alert" className="mt-4 text-[13px] text-destructive">
-            {error}
-          </p>
-        )}
+        <MainMeeting meeting={main} office={office} known={known} />
 
-        {!loaded ? (
-          <div className="mt-10 flex justify-center text-muted-foreground" aria-busy>
-            <Loader2 className="size-5 animate-spin" />
-          </div>
-        ) : failed && !room ? (
-          <Empty className="mt-6" icon={<Video />} title={t("loadFailed")} actions={
-            <Button size="sm" variant="secondary" onClick={() => void read().catch(() => setFailed(true))}>
-              {t("retry")}
-            </Button>
-          } />
-        ) : room ? (
-          <section className="mt-6 grid gap-3">
-            <div className="rounded-2xl border border-border bg-background p-5">
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <p className="text-[13px] font-medium text-muted-foreground">{t("room")}</p>
-                  <p className="mt-1 truncate text-[15px] font-semibold text-foreground">{room.uri.replace(/^https:\/\//, "")}</p>
-                  {room.createdBy && (
-                    <p className="mt-0.5 text-[12.5px] text-muted-foreground">
-                      {madeIt ? t("madeByYou") : t("madeBy", { name: creatorName })}
-                    </p>
-                  )}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Button size="md" variant="secondary" onClick={copy} className="h-10 gap-2 px-4 text-[13px]">
-                    {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-                    {copied ? t("copied") : t("copy")}
-                  </Button>
-                  <Button size="md" onClick={join} className="h-10 gap-2 px-4 text-[13px]">
-                    <Video className="size-4" />
-                    {t("join")}
-                    <ExternalLink className="size-3.5 opacity-70" aria-hidden />
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-background p-5" aria-live="polite">
-              <p className="text-[13px] font-medium text-muted-foreground">{t("inNow")}</p>
-              <LiveBody
-                live={live}
-                madeIt={madeIt}
-                creatorName={creatorName}
-                admin={admin}
-                busy={busy}
-                onAllow={() => askGoogle()}
-                onReplace={() => setConfirm("replace")}
-              />
-            </div>
-
-            {admin && (
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-[12.5px] text-muted-foreground">
-                <button type="button" disabled={busy} onClick={() => setConfirm("replace")} className="cursor-pointer hover:text-foreground hover:underline">
-                  {t("replace")}
-                </button>
-                <button type="button" disabled={busy} onClick={() => setConfirm("remove")} className="cursor-pointer hover:text-foreground hover:underline">
-                  {t("remove")}
-                </button>
-              </div>
-            )}
+        {others.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-[13px] font-medium text-muted-foreground">{t("others")}</h2>
+            <ul className="mt-3 grid gap-3 md:grid-cols-2">
+              {others.map((one) => (
+                <li key={one.id}>
+                  <OtherMeeting meeting={one} office={office} />
+                </li>
+              ))}
+            </ul>
           </section>
-        ) : (
-          <Empty
-            className="mt-6"
-            icon={<Video />}
-            title={t("noRoomTitle")}
-            body={
-              admin ? (
-                <>
-                  {t("noRoomAdmin", { office: office.name })} {!google.granted && t("noRoomAdminPermission")}
-                </>
-              ) : (
-                t("noRoomMember", { office: office.name })
-              )
-            }
-            actions={
-              admin ? (
-                <Button size="md" disabled={busy || (!google.granted && !googleReady)} onClick={() => make(false)} className="h-10 gap-2 px-4 text-[13px]">
-                  {busy ? <Loader2 className="size-4 animate-spin" /> : <Video className="size-4" />}
-                  {busy ? t("creating") : t("create")}
-                </Button>
-              ) : null
-            }
-          />
         )}
 
-        {loaded && (admin || google.granted) && (
-          <div className="mt-10 border-t border-border pt-4">
-            <div className="flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-muted-foreground">
-              <span>
-                <span className="font-medium text-foreground">{t("yourGoogle")}</span>{" "}
-                {google.granted ? t("allowedAs", { email: google.email ?? "" }) : t("notAllowed")}
-              </span>
-              {google.granted ? (
-                <button type="button" disabled={busy} onClick={revoke} className="cursor-pointer hover:text-foreground hover:underline">
-                  {t("revoke")}
-                </button>
-              ) : (
-                <button type="button" disabled={busy || !googleReady} onClick={() => askGoogle()} className="cursor-pointer hover:text-foreground hover:underline">
-                  {t("allow")}
-                </button>
-              )}
-            </div>
-            <p className="mt-1.5 text-[12px] leading-relaxed text-muted-foreground">{t("permissionNote")}</p>
-          </div>
-        )}
+        <p className="mt-8 flex items-start gap-2.5 text-[12.5px] leading-relaxed text-muted-foreground">
+          <Footprints className="mt-0.5 size-4 shrink-0" aria-hidden />
+          {t("walkHint")}
+        </p>
       </div>
 
-      <Dialog
-        open={confirm !== null}
-        onClose={() => setConfirm(null)}
-        title={confirm === "replace" ? t("replaceTitle") : t("removeTitle")}
-        description={confirm === "replace" ? t("replaceBody") : t("removeBody")}
-        closeLabel={tc("close")}
-        footer={
-          <>
-            <Button variant="ghost" size="sm" className="h-9 px-3" onClick={() => setConfirm(null)}>
-              {tc("cancel")}
-            </Button>
-            {confirm === "replace" ? (
-              <Button
-                size="sm"
-                disabled={busy || (!google.granted && !googleReady)}
-                className="h-9 px-4"
-                onClick={() => {
-                  setConfirm(null);
-                  make(true);
-                }}
-              >
-                {t("replaceIt")}
-              </Button>
-            ) : (
-              <Button size="sm" disabled={busy} className="h-9 bg-destructive px-4 text-white hover:bg-destructive/90" onClick={remove}>
-                {t("removeIt")}
-              </Button>
-            )}
-          </>
-        }
-      />
+      <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />
     </div>
   );
 }
 
-/** Who is in the meeting, or why we can't tell and what would fix it. */
-function LiveBody({
-  live,
-  madeIt,
-  creatorName,
-  admin,
-  busy,
-  onAllow,
-  onReplace,
-}: {
-  live: MeetingLive | null;
-  madeIt: boolean;
-  creatorName: string;
-  admin: boolean;
-  busy: boolean;
-  onAllow: () => void;
-  onReplace: () => void;
-}) {
-  const t = useTranslations("office.meetings");
-  const note = (text: string, action?: React.ReactNode) => (
-    <div className="mt-2 flex flex-wrap items-center gap-3">
-      <p className="text-[13.5px] text-muted-foreground">{text}</p>
-      {action}
-    </div>
-  );
-
-  if (!live || live.status === "unavailable") return note(t("cantSee"));
-  if (live.status === "creator_gone") {
-    return note(
-      t("creatorGone"),
-      admin && (
-        <Button size="sm" variant="secondary" disabled={busy} onClick={onReplace}>
-          {t("replace")}
-        </Button>
-      ),
-    );
-  }
-  if (live.status === "creator_permission") {
-    if (madeIt) {
-      return note(
-        t("yourPermissionGone"),
-        <Button size="sm" variant="secondary" disabled={busy} onClick={onAllow}>
-          {t("allow")}
-        </Button>,
-      );
-    }
-    return note(
-      t("creatorPermissionGone", { name: creatorName }),
-      admin && (
-        <Button size="sm" variant="secondary" disabled={busy} onClick={onReplace}>
-          {t("replace")}
-        </Button>
-      ),
-    );
-  }
-  if (live.status !== "live") return note(t("cantSee"));
-  if (live.people.length === 0) return note(t("nobody"));
+/** How long a meeting has been going, or that nobody is in it. */
+function Status({ meeting }: { meeting: MeetingInfo }) {
+  const t = useTranslations("meetings");
+  const elapsed = useElapsed(meeting.startedAt);
+  const live = meeting.members.length > 0;
   return (
-    <ul className="mt-3 flex flex-wrap gap-2">
-      {live.people.map((person, index) => (
-        <Person key={`${person.name}-${person.since}-${index}`} person={person} />
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-semibold tabular-nums",
+        live ? "bg-ok/12 text-ok" : "bg-muted text-muted-foreground",
+      )}
+    >
+      <span className={cn("size-1.5 rounded-full", live ? "animate-pulse bg-ok" : "bg-faint")} aria-hidden />
+      {live ? t("liveFor", { time: clock(elapsed) }) : t("quiet")}
+    </span>
+  );
+}
+
+/** Who is in a meeting, as their characters, lit while they talk. */
+function Attendees({ meeting, max, size }: { meeting: MeetingInfo; max: number; size: "lg" | "sm" }) {
+  const t = useTranslations("meetings");
+  const shown = meeting.members.slice(0, max);
+  const extra = meeting.members.length - shown.length;
+  return (
+    <ul className="flex flex-wrap items-end gap-2">
+      {shown.map((member) => (
+        <li key={member.id} className="flex flex-col items-center gap-1.5">
+          <span
+            className={cn(
+              "relative overflow-hidden rounded-2xl ring-2 transition-shadow duration-200",
+              size === "lg" ? "size-16" : "size-11",
+              member.speaking ? "ring-brand" : "ring-transparent",
+            )}
+          >
+            <span className="absolute inset-0 opacity-30" style={{ backgroundImage: faceBackground(member.id) }} />
+            <PixelAvatar character={member.character} width={size === "lg" ? 40 : 28} style={{ left: "50%", top: "112%" }} />
+          </span>
+          {size === "lg" && <span className="max-w-16 truncate text-[11.5px] font-medium text-muted-foreground">{member.name}</span>}
+        </li>
       ))}
+      {extra > 0 && (
+        <li className={cn("flex items-center justify-center rounded-2xl bg-muted text-[12px] font-semibold text-muted-foreground", size === "lg" ? "mb-6 size-16" : "size-11")}>
+          {t("plus", { count: extra })}
+        </li>
+      )}
     </ul>
   );
 }
 
-function Person({ person }: { person: MeetingPerson }) {
-  const t = useTranslations("office.meetings");
-  const format = useFormatter();
-  const now = useNow({ updateInterval: 30_000 });
-  const since = person.since ? new Date(person.since) : null;
+function MainMeeting({ meeting, office, known }: { meeting: MeetingInfo; office: string; known: boolean }) {
+  const t = useTranslations("meetings");
+  const nameOf = useMeetingName();
+  const live = meeting.members.length > 0;
   return (
-    <li className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-[13px] text-foreground">
-      {person.kind === "phone" && <Phone className="size-3.5 text-muted-foreground" aria-hidden />}
-      <span className="max-w-[16rem] truncate">{person.name || t("unnamed")}</span>
-      {person.kind !== "signed_in" && <span className="text-[11.5px] text-muted-foreground">{t(person.kind === "guest" ? "guest" : "phone")}</span>}
-      {since && !Number.isNaN(since.getTime()) && (
-        <span className="text-[11.5px] text-muted-foreground">· {format.relativeTime(since, now)}</span>
-      )}
-    </li>
+    <section className="mt-6 overflow-hidden rounded-3xl border border-border bg-background">
+      <div className="flex flex-wrap items-start justify-between gap-4 p-5 sm:p-6">
+        <div className="min-w-0">
+          {known ? <Status meeting={meeting} /> : <span className="block h-[26px] w-24 animate-pulse rounded-full bg-muted" />}
+          <h2 className="mt-3 text-[20px] font-semibold tracking-tight text-foreground">{nameOf(meeting, office)}</h2>
+          <p className="mt-1 text-[13.5px] text-muted-foreground">{t("mainBody")}</p>
+        </div>
+        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-11 gap-2 px-5 text-[14px]">
+          <Video className="size-4" />
+          {live ? t("join") : t("startMain")}
+        </Button>
+      </div>
+      <div className="border-t border-border bg-card/50 px-5 py-4 sm:px-6">
+        {!known ? (
+          <span className="block h-9 w-2/3 animate-pulse rounded-xl bg-muted" />
+        ) : live ? (
+          <Attendees meeting={meeting} max={10} size="lg" />
+        ) : (
+          <p className="py-2 text-[13px] text-muted-foreground">{t("nobodyIn")}</p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function OtherMeeting({ meeting, office }: { meeting: MeetingInfo; office: string }) {
+  const t = useTranslations("meetings");
+  const nameOf = useMeetingName();
+  return (
+    <div className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-background p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate text-[15px] font-semibold text-foreground">{nameOf(meeting, office)}</p>
+          {meeting.name && meeting.by && <p className="truncate text-[12.5px] text-muted-foreground">{t("startedBy", { name: meeting.by })}</p>}
+          <div className="mt-2">
+            <Status meeting={meeting} />
+          </div>
+        </div>
+        <Button size="sm" variant="secondary" onClick={() => callManager.joinMeeting(meeting.id)} className="h-9 px-3.5 text-[13px]">
+          {t("join")}
+        </Button>
+      </div>
+      <Attendees meeting={meeting} max={6} size="sm" />
+    </div>
   );
 }

@@ -34,7 +34,7 @@ const ALIASES = { nb: "no", nn: "no", iw: "he" };
  */
 const SHARED_PAGES = [
   [/^(\/[a-z]{2}\/office\/)[^/]+\/chat\/[^/]+$/, "$1_/chat/_"],
-  [/^(\/[a-z]{2}\/office\/)[^/]+(\/(?:chat|people|settings))?$/, "$1_$2"],
+  [/^(\/[a-z]{2}\/office\/)[^/]+(\/(?:chat|people|meetings|settings))?$/, "$1_$2"],
   [/^(\/[a-z]{2}\/lobby\/chat\/)[^/]+$/, "$1_"],
 ];
 /** The request headers Next's pages vary on, so a cache never mixes a page with its data. */

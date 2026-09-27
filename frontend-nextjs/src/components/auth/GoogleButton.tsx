@@ -11,7 +11,7 @@ import { Loader2 } from "lucide-react";
  * for each language. Shown only when a client ID is configured.
  */
 
-const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+export const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 const SCRIPT = "https://accounts.google.com/gsi/client";
 
 type CodeClient = { requestCode: () => void };
@@ -20,6 +20,10 @@ type OAuth2 = {
     client_id: string;
     scope: string;
     ux_mode: "popup";
+    /** Keep what they already agreed to, and add this scope to it. */
+    include_granted_scopes?: boolean;
+    /** The Google account to suggest in the popup. */
+    login_hint?: string;
     callback: (response: { code?: string; error?: string }) => void;
     error_callback?: (error: { type: string }) => void;
   }) => CodeClient;
@@ -35,7 +39,7 @@ declare global {
 let loading: Promise<GoogleAccounts> | null = null;
 
 /** Loads Google's script once, the first time a button needs it. */
-function loadGoogle(): Promise<GoogleAccounts> {
+export function loadGoogle(): Promise<GoogleAccounts> {
   loading ??= new Promise<GoogleAccounts>((resolve, reject) => {
     const script = document.createElement("script");
     script.src = SCRIPT;

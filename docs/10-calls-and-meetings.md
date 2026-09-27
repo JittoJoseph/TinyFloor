@@ -1,6 +1,8 @@
 # 10. Calls and meetings: talk on our side, meet on Google's
 
-Researched on 25 September 2026. A plan, nothing built. If it lands, most of the
+Researched on 25 September 2026. The Meetings view with Google Meet is built
+(`11-google-meet-verification.md`); the audio-first floor and the table changes
+below are still a plan. If it lands, most of the
 fair-use section in `08-pricing-decision.md` goes away.
 
 ## What changed our mind

@@ -16,7 +16,7 @@ import { ACCOUNT_SESSION_MS, createSession, currentUser, endSession, requireAcco
 const REDIRECT_URI = "postmessage";
 const ISSUERS = ["accounts.google.com", "https://accounts.google.com"];
 
-interface GoogleIdentity {
+export interface GoogleIdentity {
   sub: string;
   email: string;
   name: string;
@@ -163,7 +163,12 @@ async function identify(env: Env, code: string): Promise<GoogleIdentity> {
   const tokens = (await response.json().catch(() => null)) as { id_token?: string } | null;
   if (!response.ok || !tokens?.id_token) throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
 
-  return fromClaims(env, readClaims(tokens.id_token));
+  return identityOf(env, tokens.id_token);
+}
+
+/** Whose Google account an ID token from our own code exchange is, checked as `identify` checks it. */
+export function identityOf(env: Env, idToken: string): GoogleIdentity {
+  return fromClaims(env, readClaims(idToken));
 }
 
 /** Who the token was issued to, by whom and until when, and that Google has checked the address. */

@@ -1,14 +1,16 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "25 September 2026";
+export const PRIVACY_UPDATED = "27 September 2026";
 
 export const privacySummary = (
   <>
     <p>
       TinyFloor keeps what it needs to run your office and nothing more. We don&apos;t sell your data, we don&apos;t show ads, and calls
-      aren&apos;t recorded. Passwords and session tokens are stored only as hashes. Our website uses Google Analytics and Microsoft Clarity
-      to understand how it&apos;s used. Write to <Mail /> for a copy of your data or to have it deleted.
+      aren&apos;t recorded. Passwords and session tokens are stored only as hashes. If an office admin connects Google Meet, we use that
+      permission only to make the office&apos;s meeting room and show who is in it, and it can be taken back at any time. Our website uses
+      Google Analytics and Microsoft Clarity to understand how it&apos;s used. Write to <Mail /> for a copy of your data or to have it
+      deleted.
     </p>
   </>
 );
@@ -89,6 +91,14 @@ export const privacySections: LegalSection[] = [
           isn&apos;t possible or for group meetings. We don&apos;t record, store or listen to calls, and neither does anything we run.
         </p>
 
+        <h3>Google Meet, if an office admin connects it</h3>
+        <p>
+          An office&apos;s meeting room can be a Google Meet. An admin who chooses this gives TinyFloor permission, through Google, to create
+          Meet rooms for them. What we receive and keep because of it is set out in <a href="#google">Google user data</a> below. Meetings
+          themselves take place in Google Meet, under Google&apos;s terms and privacy policy; TinyFloor doesn&apos;t record them or receive
+          their audio, video, chat or recordings.
+        </p>
+
         <h3>Security</h3>
         <p>
           To stop abuse we process your IP address briefly: to limit how many sign-ups and sign-ins can come from one address, to lock out
@@ -104,7 +114,10 @@ export const privacySections: LegalSection[] = [
     body: (
       <>
         <ul>
-          <li>To run TinyFloor: to sign you in, show you on the floor with your name and character, connect calls and keep your office&apos;s chat.</li>
+          <li>
+            To run TinyFloor: to sign you in, show you on the floor with your name and character, connect calls, keep your office&apos;s chat
+            and, where an admin has connected Google Meet, make the office&apos;s meeting room and show who is in it.
+          </li>
           <li>To keep it safe: to prevent spam, fake accounts and attacks, and to enforce our <Link href="/terms">Terms</Link>.</li>
           <li>
             To understand and improve it: to see how many people sign up and come back, where they come from by country, and how the website
@@ -118,6 +131,98 @@ export const privacySections: LegalSection[] = [
           connection. It lets us see the service being used as it happens. Lobby chat and what happens inside offices are not sent.
         </p>
         <p>We don&apos;t sell personal data, we don&apos;t use it for advertising, and we don&apos;t build profiles of you for anyone else.</p>
+      </>
+    ),
+  },
+  {
+    id: "google",
+    title: "Google user data",
+    body: (
+      <>
+        <p>
+          This section covers the data TinyFloor receives from Google APIs when an office admin connects Google Meet. It applies in addition
+          to the rest of this policy.
+        </p>
+
+        <h3>What we access</h3>
+        <p>
+          TinyFloor asks Google for one permission beyond signing in: <strong>&quot;Create, edit and see information about your Google Meet
+          conferences created by the app&quot;</strong> (<code>meetings.space.created</code>). It is asked for only when an admin chooses to
+          make a Google Meet room, never at sign-in. With it we receive:
+        </p>
+        <ul>
+          <li>
+            An access token and a refresh token that let TinyFloor act for that Google account within this permission, and the Google
+            account&apos;s email address and ID, so we can show which Google account is connected.
+          </li>
+          <li>For each Meet room TinyFloor creates: the room&apos;s ID and its meeting link.</li>
+          <li>
+            While a meeting is running in one of those rooms: the display names of the people in it (as Google Meet shows them), whether each
+            joined signed in to Google, as a guest or by phone, and when they joined.
+          </li>
+        </ul>
+        <p>
+          This permission reaches only Meet rooms that TinyFloor created. TinyFloor can&apos;t see the admin&apos;s other meetings, calendar,
+          contacts, email, files or anything else in their Google account, and it never receives meeting audio, video, chat, recordings or
+          transcripts.
+        </p>
+
+        <h3>How we use it</h3>
+        <ul>
+          <li>To create the office&apos;s meeting room in Google Meet when an admin asks for one.</li>
+          <li>To show the office&apos;s members, on the office&apos;s Meetings page, who is in the meeting right now.</li>
+          <li>To show the admin which Google account is connected, and to let them take the permission back.</li>
+        </ul>
+        <p>
+          We use Google user data for nothing else. We don&apos;t sell it, use it for advertising, use it to build profiles, or use it to
+          develop, improve or train artificial intelligence or machine learning models. People at TinyFloor don&apos;t read it, except with
+          your agreement for a specific support request, where it&apos;s needed for security or to investigate abuse, or where the law
+          requires it.
+        </p>
+
+        <h3>Who sees it and who we share it with</h3>
+        <p>
+          The meeting link and the names of the people in the meeting are shown only to members of the office the room belongs to. The
+          connected Google account&apos;s email address is shown only to the person who connected it. We don&apos;t transfer Google user data
+          to anyone else, except to Cloudflare, which hosts TinyFloor and processes it on our behalf, or where the law requires it.
+        </p>
+
+        <h3>How we store and protect it</h3>
+        <p>
+          The access and refresh tokens are encrypted with AES-256-GCM before they are stored, with a key kept apart from the database, and are
+          sent only to Google over encrypted connections. The names of the people in a meeting aren&apos;t stored: they are read from Google
+          when a member opens the Meetings page and held in a short-lived cache for at most 15 seconds, so that many members looking at once don&apos;t
+          each ask Google.
+        </p>
+
+        <h3>Keeping it, and deleting it</h3>
+        <ul>
+          <li>
+            The tokens and the connected account&apos;s email are kept until you take the permission back. You can do that at any time on
+            your office&apos;s Meetings page (&quot;Take it back&quot;), which deletes them from TinyFloor at once and revokes them at Google,
+            or in your Google account at{" "}
+            <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">
+              myaccount.google.com/permissions
+            </a>
+            , after which TinyFloor deletes them the next time it tries to use them. They are also deleted when your account is deleted.
+          </li>
+          <li>
+            A meeting room&apos;s ID and link are kept until an admin removes the room or the office is deleted. The Meet room itself stays in
+            the admin&apos;s Google account, under Google&apos;s control.
+          </li>
+          <li>
+            To have any of it deleted, you can also write to <Mail />.
+          </li>
+        </ul>
+
+        <h3>Limited Use</h3>
+        <p>
+          TinyFloor&apos;s use and transfer to any other app of information received from Google APIs will adhere to the{" "}
+          <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">
+            Google API Services User Data Policy
+          </a>
+          , including the Limited Use requirements.
+        </p>
       </>
     ),
   },
@@ -156,7 +261,8 @@ export const privacySections: LegalSection[] = [
             <strong>Cloudflare</strong> hosts the website, the database and the real-time servers, relays calls and runs Turnstile.
           </li>
           <li>
-            <strong>Google</strong> signs you in, if you choose Google, and provides Google Analytics.
+            <strong>Google</strong> signs you in, if you choose Google, runs Google Meet meeting rooms, if an office admin connects it, and
+            provides Google Analytics.
           </li>
           <li>
             <strong>Microsoft</strong> provides Clarity, which shows us how people use our pages.
@@ -232,6 +338,14 @@ export const privacySections: LegalSection[] = [
           </li>
           <li>
             <strong>Usage totals:</strong> kept for 13 months.
+          </li>
+          <li>
+            <strong>Google Meet permission:</strong> until you take it back or your account is deleted. See{" "}
+            <a href="#google">Google user data</a>.
+          </li>
+          <li>
+            <strong>Meeting rooms:</strong> an office&apos;s meeting link and room ID are kept until an admin removes the room or the office is
+            deleted.
           </li>
         </ul>
         <p>Our database provider keeps point-in-time backups, so deleted data can remain in them for up to 30 days before it is gone for good.</p>

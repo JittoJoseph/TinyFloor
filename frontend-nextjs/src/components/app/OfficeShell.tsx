@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type Member, type Office, type OfficeOverview } from "@/lib/api";
-import { officeChatPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
+import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearFloor } from "@/lib/floor";
@@ -149,10 +149,12 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const floor = officePath(office.id);
   const chatPath = officeChatPath(office.id);
   const people = officePeoplePath(office.id);
+  const meetings = officeMeetingsPath(office.id);
   const settingsPath = officeSettingsPath(office.id);
   const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
   const onChat = on(chatPath);
   const onPeople = on(people);
+  const onMeetings = on(meetings);
   const onSettings = on(settingsPath);
 
   const place: Place = {
@@ -181,8 +183,9 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
         <AppShell
           mark={<OfficeSwitcher office={office} />}
           destinations={[
-            { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onSettings },
+            { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
             { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+            { key: "meetings", href: meetings, label: ts("meetings"), icon: RailIcons.meetings, active: onMeetings },
             { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
           ]}
           settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}

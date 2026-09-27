@@ -187,19 +187,10 @@ export class PlayerManager {
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
+    // The colour says it; the dot holds still, in a call like any other status.
     tag.setDot(statusColorValue(status));
     this.scene.tweens.killTweensOf(tag.dot);
     tag.dot.setAlpha(1);
-    if (status === "in_call") {
-      this.scene.tweens.add({
-        targets: tag.dot,
-        alpha: 0.5,
-        duration: 500,
-        ease: "Sine.easeInOut",
-        yoyo: true,
-        repeat: -1,
-      });
-    }
   }
 
   /**

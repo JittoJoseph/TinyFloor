@@ -54,7 +54,8 @@ def mark(size, *, rounded=True, inner=0.5, pad=0.0):
         y0 = round(left + y * unit)
         x1 = round(left + (x + 6) * unit) - 1
         y1 = round(left + (y + 6) * unit) - 1
-        draw.rectangle((x0, y0, x1, y1), fill=color)
+        # Rounded like the tile around them: 30% of their own side.
+        draw.rounded_rectangle((x0, y0, x1, y1), radius=round((x1 - x0) * RADIUS), fill=color)
 
     return image.resize((size, size), Image.LANCZOS)
 
@@ -69,12 +70,10 @@ def svg():
     }
   </style>
   <rect class="tile" width="32" height="32" rx="9.6"/>
-  <g shape-rendering="crispEdges">
-    <rect class="ink" x="7" y="7" width="8" height="8"/>
-    <rect class="ink" x="17" y="7" width="8" height="8" opacity="0.45"/>
-    <rect class="ink" x="7" y="17" width="8" height="8" opacity="0.45"/>
-    <rect class="brand" x="17" y="17" width="8" height="8"/>
-  </g>
+  <rect class="ink" x="7" y="7" width="8" height="8" rx="2.4"/>
+  <rect class="ink" x="17" y="7" width="8" height="8" rx="2.4" opacity="0.45"/>
+  <rect class="ink" x="7" y="17" width="8" height="8" rx="2.4" opacity="0.45"/>
+  <rect class="brand" x="17" y="17" width="8" height="8" rx="2.4"/>
 </svg>
 """
 

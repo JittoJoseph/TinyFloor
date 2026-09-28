@@ -1521,5 +1521,57 @@
     "topPlan": "Du hast unseren größten Tarif. Brauchst du Platz für mehr als {count} Personen? Schreib uns, wir richten es ein.",
     "moveDown": "Zu {plan} wechseln",
     "usageOf": "{used} von {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Preise: Ein Preis für das ganze Büro",
+      "description": "TinyFloor ist für bis zu 3 Personen kostenlos. Plus kostet $19 im Monat für 10 Personen und Pro $49 im Monat für 25, pro Büro berechnet, nicht pro Person."
+    },
+    "title": "Ein Preis für das ganze Büro.",
+    "muted": "Nicht einer pro Person.",
+    "body": "Starte kostenlos mit bis zu 3 Personen und steig um, wenn dein Team wächst.",
+    "seats": {
+      "title": "Zehn Personen,",
+      "muted": "eine kleine Rechnung.",
+      "body": "Was ein Team aus 10 Personen im Monat zahlt.",
+      "perSeat": "Tools pro Nutzer zu {price} pro Person",
+      "ours": "TinyFloor Plus, für das ganze Büro"
+    },
+    "table": {
+      "title": "Jeder Plan,",
+      "muted": "alle Funktionen.",
+      "people": "Personen",
+      "hours": "Meeting-Stunden im Monat",
+      "hoursNote": "Nur Gruppen-Meetings",
+      "calls": "Anrufe zu zweit",
+      "callsNote": "Werden nie gezählt"
+    },
+    "notes": {
+      "title": "Gut zu wissen.",
+      "cancel": {
+        "title": "Jederzeit kündbar",
+        "body": "Dein Plan läuft bis zum Ende des bezahlten Zeitraums, dann wechselt das Büro zu Free. Nichts wird gelöscht."
+      },
+      "refund": {
+        "title": "14 Tage Rückerstattung",
+        "body": "Melde dich innerhalb von 14 Tagen nach einer Zahlung und du bekommst alles zurück."
+      },
+      "change": {
+        "title": "Plan jederzeit wechseln",
+        "body": "Ein Wechsel nach oben oder unten gilt sofort, und Paddle berechnet oder erstattet die Differenz."
+      },
+      "hours": {
+        "title": "Wenn die Stunden aufgebraucht sind",
+        "body": "Meetings laufen bis zum 1. nur mit Ton weiter. Anrufe zu zweit funktionieren wie gewohnt."
+      },
+      "tax": {
+        "title": "Steuern an der Kasse",
+        "body": "Die Preise sind in US-Dollar. Paddle, unser Wiederverkäufer, schlägt beim Bezahlen die Umsatz- oder Mehrwertsteuer auf."
+      },
+      "bigger": {
+        "title": "Mehr als 25 Personen?",
+        "body": "Gib jedem Team ein eigenes Büro oder schreib an {email}, dann sprechen wir darüber."
+      }
+    }
   }
 }

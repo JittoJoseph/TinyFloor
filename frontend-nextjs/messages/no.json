@@ -1521,5 +1521,57 @@
     "topPlan": "Du er på vår største plan. Trenger du plass til flere enn {count}? Skriv til oss, så ordner vi det.",
     "moveDown": "Bytt til {plan}",
     "usageOf": "{used} av {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Priser: Én pris for hele kontoret",
+      "description": "TinyFloor er gratis for opptil 3 personer. Plus koster $19 i måneden for 10 personer og Pro $49 i måneden for 25, priset per kontor, ikke per person."
+    },
+    "title": "Én pris for hele kontoret.",
+    "muted": "Ikke én per person.",
+    "body": "Start gratis med opptil 3 personer, og gå opp når teamet vokser.",
+    "seats": {
+      "title": "Ti personer,",
+      "muted": "én liten regning.",
+      "body": "Hva et team på 10 betaler hver måned.",
+      "perSeat": "Verktøy per bruker til {price} per person",
+      "ours": "TinyFloor Plus, for hele kontoret"
+    },
+    "table": {
+      "title": "Hver plan,",
+      "muted": "alle funksjoner.",
+      "people": "Personer",
+      "hours": "Møtetimer i måneden",
+      "hoursNote": "Kun gruppemøter",
+      "calls": "Samtaler mellom to personer",
+      "callsNote": "Telles aldri"
+    },
+    "notes": {
+      "title": "Greit å vite.",
+      "cancel": {
+        "title": "Si opp når som helst",
+        "body": "Planen varer ut perioden du har betalt for, og deretter går kontoret over til Free. Ingenting slettes."
+      },
+      "refund": {
+        "title": "14 dagers refusjon",
+        "body": "Spør innen 14 dager etter en betaling, så får du alt tilbake."
+      },
+      "change": {
+        "title": "Bytt plan når som helst",
+        "body": "Å gå opp eller ned gjelder med en gang, og Paddle belaster eller krediterer differansen."
+      },
+      "hours": {
+        "title": "Når timene er brukt opp",
+        "body": "Møter fortsetter med bare lyd til den 1. Samtaler mellom to personer fungerer som vanlig."
+      },
+      "tax": {
+        "title": "Mva. ved betaling",
+        "body": "Prisene er i amerikanske dollar. Paddle, vår forhandler, legger til eventuell mva. eller salgsskatt når du betaler."
+      },
+      "bigger": {
+        "title": "Flere enn 25 personer?",
+        "body": "Gi hvert team sitt eget kontor, eller skriv til {email}, så tar vi en prat."
+      }
+    }
   }
 }

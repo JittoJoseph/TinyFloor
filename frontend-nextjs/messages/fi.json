@@ -1521,5 +1521,57 @@
     "topPlan": "Sinulla on suurin pakettimme. Tarvitsetko tilaa yli {count} hengelle? Kirjoita meille, niin järjestämme sen.",
     "moveDown": "Vaihda {plan}-pakettiin",
     "usageOf": "{used}/{total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Hinnoittelu: yksi hinta koko toimistolle",
+      "description": "TinyFloor on ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, hinnoiteltuna toimistoa eikä henkeä kohden."
+    },
+    "title": "Yksi hinta koko toimistolle.",
+    "muted": "Ei henkeä kohden.",
+    "body": "Aloita ilmaiseksi enintään 3 hengellä ja siirry isompaan, kun tiimisi kasvaa.",
+    "seats": {
+      "title": "Kymmenen henkeä,",
+      "muted": "yksi pieni lasku.",
+      "body": "Mitä 10 hengen tiimi maksaa kuukaudessa.",
+      "perSeat": "Käyttäjäkohtaiset työkalut, {price} hengeltä",
+      "ours": "TinyFloor Plus, koko toimistolle"
+    },
+    "table": {
+      "title": "Jokainen paketti,",
+      "muted": "kaikki ominaisuudet.",
+      "people": "Henkeä",
+      "hours": "Kokoustunnit kuussa",
+      "hoursNote": "Vain ryhmäkokoukset",
+      "calls": "Kahden hengen puhelut",
+      "callsNote": "Ei lasketa koskaan"
+    },
+    "notes": {
+      "title": "Hyvä tietää.",
+      "cancel": {
+        "title": "Peru milloin vain",
+        "body": "Pakettisi on voimassa maksetun jakson loppuun, minkä jälkeen toimisto siirtyy Free-pakettiin. Mitään ei poisteta."
+      },
+      "refund": {
+        "title": "14 päivän palautus",
+        "body": "Pyydä 14 päivän kuluessa mistä tahansa maksusta, niin saat kaiken takaisin."
+      },
+      "change": {
+        "title": "Vaihda pakettia milloin vain",
+        "body": "Siirto ylös tai alas tulee voimaan heti, ja Paddle veloittaa tai hyvittää erotuksen."
+      },
+      "hours": {
+        "title": "Kun tunnit loppuvat",
+        "body": "Kokoukset jatkuvat pelkällä äänellä kuun 1. päivään asti. Kahden hengen puhelut toimivat normaalisti."
+      },
+      "tax": {
+        "title": "Verot kassalla",
+        "body": "Hinnat ovat Yhdysvaltain dollareina. Jälleenmyyjämme Paddle lisää mahdollisen arvonlisä- tai myyntiveron maksaessasi."
+      },
+      "bigger": {
+        "title": "Yli 25 henkeä?",
+        "body": "Anna jokaiselle tiimille oma toimisto tai kirjoita osoitteeseen {email}, niin jutellaan."
+      }
+    }
   }
 }

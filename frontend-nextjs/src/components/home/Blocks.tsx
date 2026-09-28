@@ -266,6 +266,17 @@ export function Everything() {
  */
 export function Plans() {
   const t = useTranslations("homepage.pricing");
+  return (
+    <section id="plans" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
+      <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
+      <PlanCards className="mt-12 sm:mt-20" />
+    </section>
+  );
+}
+
+/** The three cards and the line under them, for the home page's plans and the pricing page. */
+export function PlanCards({ className }: { className?: string }) {
+  const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
   const plans: Array<{ key: "free" | "plus" | "pro"; price: number; people: number; featured?: boolean }> = [
     { key: "free", price: 0, people: 3 },
@@ -275,9 +286,8 @@ export function Plans() {
   const action = "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
 
   return (
-    <section id="plans" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
-      <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
-      <div className="mx-auto mt-12 grid max-w-[480px] gap-3 sm:mt-20 lg:max-w-[1000px] lg:grid-cols-3 lg:items-center">
+    <div className={className}>
+      <div className="mx-auto grid max-w-[480px] gap-3 lg:max-w-[1000px] lg:grid-cols-3 lg:items-center">
         {plans.map((plan) => {
           const featured = plan.featured;
           const name = t(`${plan.key}.name`);
@@ -326,7 +336,7 @@ export function Plans() {
       <p className="mx-auto mt-8 max-w-[34rem] text-balance text-center text-[13px] leading-relaxed text-muted-foreground">
         {t("note")} {t("tax")}
       </p>
-    </section>
+    </div>
   );
 }
 

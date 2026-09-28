@@ -1521,5 +1521,57 @@
     "topPlan": "Tienes nuestro plan más grande. ¿Necesitas sitio para más de {count} personas? Escríbenos y lo preparamos.",
     "moveDown": "Cambiar a {plan}",
     "usageOf": "{used} de {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Precios: un solo precio para toda la oficina",
+      "description": "TinyFloor es gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, con precio por oficina, no por persona."
+    },
+    "title": "Un solo precio para toda la oficina.",
+    "muted": "No uno por persona.",
+    "body": "Empieza gratis con hasta 3 personas y sube de plan cuando tu equipo crezca.",
+    "seats": {
+      "title": "Diez personas,",
+      "muted": "una sola factura pequeña.",
+      "body": "Lo que paga cada mes un equipo de 10.",
+      "perSeat": "Herramientas por usuario a {price} por persona",
+      "ours": "TinyFloor Plus, para toda la oficina"
+    },
+    "table": {
+      "title": "Cada plan,",
+      "muted": "todas las funciones.",
+      "people": "Personas",
+      "hours": "Horas de reunión al mes",
+      "hoursNote": "Solo reuniones de grupo",
+      "calls": "Llamadas entre dos personas",
+      "callsNote": "Nunca se cuentan"
+    },
+    "notes": {
+      "title": "Conviene saber.",
+      "cancel": {
+        "title": "Cancela cuando quieras",
+        "body": "Tu plan dura hasta el final de lo que pagaste y luego la oficina pasa a Free. No se borra nada."
+      },
+      "refund": {
+        "title": "Reembolso en 14 días",
+        "body": "Pídelo en los 14 días siguientes a cualquier pago y te lo devolvemos entero."
+      },
+      "change": {
+        "title": "Cambia de plan cuando quieras",
+        "body": "Subir o bajar de plan se aplica al momento, y Paddle cobra o abona la diferencia."
+      },
+      "hours": {
+        "title": "Cuando se acaban las horas",
+        "body": "Las reuniones siguen solo con voz hasta el día 1. Las llamadas entre dos personas funcionan como siempre."
+      },
+      "tax": {
+        "title": "Impuestos al pagar",
+        "body": "Los precios están en dólares estadounidenses. Paddle, nuestro revendedor, añade el IVA o impuesto sobre las ventas al pagar."
+      },
+      "bigger": {
+        "title": "¿Más de 25 personas?",
+        "body": "Dale a cada equipo su propia oficina, o escribe a {email} y lo hablamos."
+      }
+    }
   }
 }

@@ -33,6 +33,7 @@ const ELSEWHERE = [
  */
 export function SiteFooter({ path = "/" }: { path?: string }) {
   const t = useTranslations("home.footer");
+  const tn = useTranslations("home.nav");
   const tl = useTranslations("landings");
   const ts = useTranslations("shell");
   const locale = useLocale();
@@ -43,6 +44,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
       title: t("product"),
       links: [
         { label: t("makeOffice"), href: "/create" },
+        { label: tn("pricing"), href: "/pricing" },
         { label: t("lobby"), href: "/lobby" },
         { label: t("signIn"), href: "/auth" },
         { label: t("dashboard"), href: "/dashboard" },

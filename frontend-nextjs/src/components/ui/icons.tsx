@@ -59,6 +59,7 @@ import {
   Message01Icon,
   Mic01Icon,
   MicOff01Icon,
+  MoneyReceive02Icon,
   Moon02Icon,
   MoreHorizontalIcon,
   Mortarboard01Icon,
@@ -203,6 +204,7 @@ export const Play = icon(PlayIcon, "Play");
 export const Plus = icon(PlusSignIcon, "Plus");
 export const Presentation = icon(Presentation01Icon, "Presentation");
 export const Radio = icon(Wifi01Icon, "Radio");
+export const Refund = icon(MoneyReceive02Icon, "Refund");
 export const RotateCcw = icon(RotateLeft01Icon, "RotateCcw");
 export const Search = icon(Search01Icon, "Search");
 export const ServerOff = icon(ServerOffIcon, "ServerOff");

@@ -46,6 +46,21 @@ the site now says so everywhere:
 Keep new copy to the same line: offices for teams, joined by invite, paid per
 office. Nothing about meeting new people.
 
+## The pricing page
+
+`/pricing` has the nav's Pricing link and is in the footer and sitemap. It is
+short on purpose, five parts that each take one look:
+
+1. **The plans**, the same cards as the home page.
+2. **Ten people, one small bill**: what a team of 10 pays a month with per-seat
+   tools at $8 and $16 a person, against Plus at $19, as bars.
+3. **Every plan, every feature**: a table where only people and meeting hours
+   differ and the rest is ticks.
+4. **Good to know**: six one-line notes on cancelling, the 14-day refund,
+   changing plans, running out of hours, tax, and teams over 25. They must
+   match the terms and refund policy.
+5. The closing ask.
+
 ## Signing up
 
 1. **Sign in, Google first.** Google is one tap and gives us a verified email

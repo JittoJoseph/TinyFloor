@@ -1521,5 +1521,57 @@
     "topPlan": "Masz nasz największy plan. Potrzebujesz miejsca dla więcej niż {count} osób? Napisz do nas, przygotujemy to.",
     "moveDown": "Przejdź na {plan}",
     "usageOf": "{used} z {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Cennik: jedna cena za całe biuro",
+      "description": "TinyFloor jest darmowy do 3 osób. Plus kosztuje $19 miesięcznie za 10 osób, a Pro $49 miesięcznie za 25, z ceną za biuro, a nie za osobę."
+    },
+    "title": "Jedna cena za całe biuro.",
+    "muted": "Nie za każdą osobę.",
+    "body": "Zacznij za darmo z maksymalnie 3 osobami i przejdź wyżej, gdy zespół urośnie.",
+    "seats": {
+      "title": "Dziesięć osób,",
+      "muted": "jeden mały rachunek.",
+      "body": "Ile co miesiąc płaci zespół 10 osób.",
+      "perSeat": "Narzędzia za {price} od osoby",
+      "ours": "TinyFloor Plus, za całe biuro"
+    },
+    "table": {
+      "title": "Każdy plan,",
+      "muted": "wszystkie funkcje.",
+      "people": "Osoby",
+      "hours": "Godziny spotkań miesięcznie",
+      "hoursNote": "Tylko spotkania grupowe",
+      "calls": "Rozmowy we dwoje",
+      "callsNote": "Nigdy nie są liczone"
+    },
+    "notes": {
+      "title": "Warto wiedzieć.",
+      "cancel": {
+        "title": "Rezygnuj w dowolnej chwili",
+        "body": "Plan działa do końca opłaconego okresu, potem biuro przechodzi na Free. Nic nie jest usuwane."
+      },
+      "refund": {
+        "title": "Zwrot w ciągu 14 dni",
+        "body": "Poproś w ciągu 14 dni od dowolnej płatności, a oddamy całą kwotę."
+      },
+      "change": {
+        "title": "Zmieniaj plan w dowolnej chwili",
+        "body": "Zmiana w górę lub w dół działa od razu, a Paddle pobiera lub zwraca różnicę."
+      },
+      "hours": {
+        "title": "Gdy skończą się godziny",
+        "body": "Spotkania trwają dalej tylko z dźwiękiem do 1. dnia miesiąca. Rozmowy we dwoje działają jak zwykle."
+      },
+      "tax": {
+        "title": "Podatek przy płatności",
+        "body": "Ceny są w dolarach amerykańskich. Paddle, nasz sprzedawca, dolicza VAT lub podatek od sprzedaży przy płatności."
+      },
+      "bigger": {
+        "title": "Ponad 25 osób?",
+        "body": "Daj każdemu zespołowi osobne biuro albo napisz na {email}, a porozmawiamy."
+      }
+    }
   }
 }

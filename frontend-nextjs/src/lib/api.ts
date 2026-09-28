@@ -128,17 +128,35 @@ export interface AdminOffice {
   plan: string;
   seats: number;
   createdAt: number;
-  ownerId: string | null;
-  ownerName: string | null;
-  ownerEmail: string | null;
-  ownerCountry: string | null;
+  /** How many people are in it. */
+  members: number;
+  /** When anyone in it was last around; null for an office nobody is in. */
+  lastActiveAt: number | null;
   /** The Paddle subscription's status while it holds the plan (active, trialing, past_due); null when nothing is paid. */
   billing: string | null;
   cancelAt: number | null;
   /** Meeting seconds used this month. */
   meetingSeconds: number;
   here: number;
-  members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
+}
+
+/** Someone in an office, as the admin view shows them when it's opened. */
+export interface AdminMember {
+  id: string;
+  displayName: string;
+  email: string | null;
+  role: OfficeRole;
+  joinedAt: number;
+  lastActiveAt: number;
+  country: string | null;
+  owner: number;
+}
+
+/** A page of a list in the admin view. */
+export interface AdminPage {
+  page: number;
+  pageSize: number;
+  total: number;
 }
 
 export type PlanId = "free" | "plus" | "pro";
@@ -248,16 +266,19 @@ export const api = {
   // The admin view
   adminSummary: () =>
     get<AdminSummary>(`/admin/summary?${new URLSearchParams({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })}`),
-  adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
-    get<{ users: AdminPerson[]; more: boolean }>(
+  adminPeople: (params: { q?: string; guests?: boolean; page?: number }) =>
+    get<AdminPage & { users: AdminPerson[] }>(
       `/admin/users?${new URLSearchParams({
         ...(params.q ? { q: params.q } : {}),
         ...(params.guests ? { guests: "1" } : {}),
-        ...(params.before ? { before: String(params.before) } : {}),
+        ...(params.page ? { page: String(params.page) } : {}),
       })}`,
     ),
-  adminOffices: (before?: number) =>
-    get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
+  adminOffices: (params: { q?: string; page?: number }) =>
+    get<AdminPage & { offices: AdminOffice[] }>(
+      `/admin/offices?${new URLSearchParams({ ...(params.q ? { q: params.q } : {}), ...(params.page ? { page: String(params.page) } : {}) })}`,
+    ),
+  adminOfficeMembers: (officeId: string) => get<{ members: AdminMember[] }>(`/admin/offices/${id(officeId)}/members`),
   adminLobbyChat: (channel: string, before?: number) =>
     get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
   adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),

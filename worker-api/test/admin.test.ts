@@ -47,18 +47,32 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("lists offices with their members", async () => {
+  it("lists offices a page at a time, most recently active first, and their people when opened", async () => {
     const boss = await admin();
     const owner = await makeUser("Owner");
-    const made = await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Admin Test Office" });
-    await env.DB.prepare("UPDATE users SET country = 'NL' WHERE id = ?").bind(owner.id).run();
-    const offices = await call<{
-      offices: Array<{ id: string; name: string; ownerId: string; ownerCountry: string; members: Array<{ displayName: string; role: string }> }>;
-    }>(boss, "GET", "/v1/admin/offices");
-    const office = offices.body.offices.find((one) => one.id === made.body.office.id);
-    expect(office?.members).toEqual([expect.objectContaining({ displayName: "Owner", role: "admin" })]);
-    // The owner comes with where they are, for the list.
-    expect(office).toMatchObject({ ownerId: owner.id, ownerCountry: "NL" });
+    const quiet = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Paging Quiet" })).body.office.id;
+    const busy = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Paging Busy" })).body.office.id;
+    const later = await makeUser("Later");
+    const { code } = (await call<{ code: string }>(owner, "GET", `/v1/offices/${busy}/invite`)).body;
+    await call(later, "POST", `/v1/invites/${code}/accept`);
+    await env.DB.prepare("UPDATE users SET last_active_at = ?, country = 'NL' WHERE id = ?").bind(Date.now() + 60_000, later.id).run();
+
+    type Page = { offices: Array<{ id: string; members: number }>; total: number; page: number; pageSize: number };
+    const found = await call<Page>(boss, "GET", "/v1/admin/offices?q=paging");
+    expect(found.body.total).toBe(2);
+    expect(found.body.offices.map((one) => [one.id, one.members])).toEqual([
+      [busy, 2],
+      [quiet, 1],
+    ]);
+    expect((await call<Page>(boss, "GET", "/v1/admin/offices?q=paging&page=1")).body.offices).toEqual([]);
+
+    const people = await call<{ members: Array<{ id: string; owner: number; country: string | null }> }>(boss, "GET", `/v1/admin/offices/${busy}/members`);
+    // The owner first, then whoever was around most recently.
+    expect(people.body.members.map((one) => [one.id, one.owner])).toEqual([
+      [owner.id, 1],
+      [later.id, 0],
+    ]);
+    expect((await call(owner, "GET", `/v1/admin/offices/${busy}/members`)).status).toBe(404);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
@@ -134,7 +148,7 @@ describe("admin", () => {
     expect(summary.body.plans.given).toBeGreaterThanOrEqual(1);
     expect(summary.body.meetingSeconds).toBeGreaterThanOrEqual(0);
 
-    const offices = await call<{ offices: Array<{ id: string; billing: string | null }> }>(boss, "GET", "/v1/admin/offices");
+    const offices = await call<{ offices: Array<{ id: string; billing: string | null }> }>(boss, "GET", "/v1/admin/offices?q=co");
     expect(offices.body.offices.find((one) => one.id === paid)?.billing).toBe("past_due");
     expect(offices.body.offices.find((one) => one.id === given)?.billing).toBeNull();
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();

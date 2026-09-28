@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type AdminOffice, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
+import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
 import { usePlans } from "@/lib/billing";
 import { Dialog } from "@/components/ui/Dialog";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -231,32 +231,33 @@ function Countries({ countries }: { countries: AdminSummary["countries"] }) {
 function People({ guests }: { guests: boolean }) {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(0);
   const [people, setPeople] = useState<AdminPerson[] | null>(null);
-  const [more, setMore] = useState(false);
+  const [paging, setPaging] = useState<AdminPage | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // The search runs once typing pauses.
+  // The search runs once typing pauses, from its first page.
   useEffect(() => {
-    const timer = setTimeout(() => setSearch(query.trim()), 250);
+    const timer = setTimeout(() => {
+      setSearch(query.trim());
+      setPage(0);
+    }, 250);
     return () => clearTimeout(timer);
   }, [query]);
 
-  const load = useCallback(
-    async (before?: number) => {
-      setBusy(true);
-      try {
-        const page = await api.adminPeople({ q: search, guests, before });
-        setPeople((current) => (before ? [...(current ?? []), ...page.users] : page.users));
-        setMore(page.more);
-      } finally {
-        setBusy(false);
-      }
-    },
-    [search, guests],
-  );
+  const load = useCallback(async () => {
+    setBusy(true);
+    try {
+      const found = await api.adminPeople({ q: search, guests, page });
+      setPeople(found.users);
+      setPaging(found);
+    } finally {
+      setBusy(false);
+    }
+  }, [search, guests, page]);
 
   useEffect(() => {
-    // Reset the list to the first page of the new search.
+    // The page asked for, whenever the search or the page changes.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
   }, [load]);
@@ -323,18 +324,7 @@ function People({ guests }: { guests: boolean }) {
         </div>
       )}
 
-      {more && people && (
-        <div className="mt-4 flex justify-center">
-          <button
-            type="button"
-            disabled={busy}
-            onClick={() => load(people.at(-1)?.createdAt)}
-            className="h-10 cursor-pointer rounded-full bg-muted px-5 text-[13.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-50"
-          >
-            {busy ? "Loading" : "Show more"}
-          </button>
-        </div>
-      )}
+      {paging && <Pager paging={paging} busy={busy} onPage={setPage} />}
     </section>
   );
 }
@@ -477,79 +467,118 @@ function Cell({ label, children }: { label: string; children: React.ReactNode })
 /* ---------- Offices ---------- */
 
 function Offices() {
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(0);
   const [offices, setOffices] = useState<AdminOffice[] | null>(null);
-  const [more, setMore] = useState(false);
+  const [paging, setPaging] = useState<AdminPage | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const load = useCallback(async (before?: number) => {
+  // The search runs once typing pauses, from its first page.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearch(query.trim());
+      setPage(0);
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  const load = useCallback(async () => {
     setBusy(true);
     try {
-      const page = await api.adminOffices(before);
-      setOffices((current) => (before ? [...(current ?? []), ...page.offices] : page.offices));
-      setMore(page.more);
+      const found = await api.adminOffices({ q: search, page });
+      setOffices(found.offices);
+      setPaging(found);
     } finally {
       setBusy(false);
     }
-  }, []);
+  }, [search, page]);
 
   useEffect(() => {
-    // The first page, once.
+    // The page asked for, whenever the search or the page changes.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
   }, [load]);
 
-  if (offices === null) {
-    return (
-      <div className="flex justify-center py-16 text-muted-foreground">
-        <Loader variant="dots" size={18} />
-      </div>
-    );
-  }
-  if (offices.length === 0) return <p className="py-16 text-center text-[13px] text-muted-foreground">No offices yet.</p>;
-
   return (
     <section>
-      <div className="overflow-hidden rounded-2xl border border-border bg-card [--face-ring:var(--ui-card)]">
-        {/* A table on a wide screen, a list of cards on a phone. */}
-        <div className={cn("hidden gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid", OFFICE_COLUMNS)}>
-          <span>Office</span>
-          <span>Owner</span>
-          <span>Meeting hours</span>
-          <span>Seats</span>
-          <span>On the floor</span>
-          <span>Made</span>
-          <span />
+      <label className="relative block max-w-sm">
+        <Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search by office name"
+          className="h-10 w-full rounded-full border border-border bg-card pe-4 ps-9 text-[14px] outline-none focus:border-border-strong"
+        />
+      </label>
+
+      {offices === null ? (
+        <div className="flex justify-center py-16 text-muted-foreground">
+          <Loader variant="dots" size={18} />
         </div>
-        <ul>
-          {offices.map((office) => (
-            <OfficeRow key={office.id} office={office} onChanged={() => load()} />
-          ))}
-        </ul>
-      </div>
-      {more && (
-        <div className="mt-4 flex justify-center">
-          <button
-            type="button"
-            disabled={busy}
-            onClick={() => load(offices.at(-1)?.createdAt)}
-            className="h-10 cursor-pointer rounded-full bg-muted px-5 text-[13.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-50"
-          >
-            {busy ? "Loading" : "Show more"}
-          </button>
+      ) : offices.length === 0 ? (
+        <p className="py-16 text-center text-[13px] text-muted-foreground">{search ? "No office matches." : "No offices yet."}</p>
+      ) : (
+        <div className={cn("mt-4 overflow-hidden rounded-2xl border border-border bg-card [--face-ring:var(--ui-card)]", busy && "opacity-60")}>
+          {/* A table on a wide screen, a list of cards on a phone. */}
+          <div className={cn("hidden gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid", OFFICE_COLUMNS)}>
+            <span>Office</span>
+            <span>Seats</span>
+            <span>Meeting hours</span>
+            <span>On the floor</span>
+            <span>Last active</span>
+            <span />
+          </div>
+          <ul>
+            {offices.map((office) => (
+              <OfficeRow key={office.id} office={office} onChanged={load} />
+            ))}
+          </ul>
         </div>
       )}
+      {paging && <Pager paging={paging} busy={busy} onPage={setPage} />}
     </section>
   );
 }
 
-const OFFICE_COLUMNS =
-  "md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.7fr)_minmax(0,1.1fr)_minmax(0,0.8fr)_minmax(0,0.8fr)_minmax(0,0.9fr)_1.75rem]";
+/** Which rows of how many, and the way to the pages either side. */
+function Pager({ paging, busy, onPage }: { paging: AdminPage; busy: boolean; onPage: (page: number) => void }) {
+  const pages = Math.max(1, Math.ceil(paging.total / paging.pageSize));
+  if (paging.total <= paging.pageSize) return null;
+  const from = paging.page * paging.pageSize + 1;
+  const to = Math.min(paging.total, from + paging.pageSize - 1);
+  const go = (page: number) => {
+    onPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const button =
+    "h-9 cursor-pointer rounded-full bg-muted px-4 text-[13px] font-medium transition-colors hover:bg-foreground/[0.08] disabled:cursor-default disabled:opacity-40";
+  return (
+    <div className="mt-4 flex items-center justify-between gap-3">
+      <p className="text-[12.5px] tabular-nums text-muted-foreground">
+        {from.toLocaleString()}–{to.toLocaleString()} of {paging.total.toLocaleString()}
+      </p>
+      <div className="flex items-center gap-2">
+        <button type="button" className={button} disabled={busy || paging.page === 0} onClick={() => go(paging.page - 1)}>
+          Previous
+        </button>
+        <span className="text-[12.5px] tabular-nums text-muted-foreground">
+          {paging.page + 1} / {pages}
+        </span>
+        <button type="button" className={button} disabled={busy || paging.page + 1 >= pages} onClick={() => go(paging.page + 1)}>
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const OFFICE_COLUMNS = "md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1fr)_1.75rem]";
 const MEMBER_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,0.8fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]";
 
-/** One office: its row, and its members beneath it when opened. */
+/** One office: its row, and, opened, its people (read then) and the way to manage it. */
 function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
   const [open, setOpen] = useState(false);
-  const used = office.members.length;
   const allowance = usePlans()?.plans.find((plan) => plan.id === office.plan)?.meetingHours;
   return (
     <li className="border-b border-border last:border-0">
@@ -565,7 +594,7 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
         )}
       >
         <span className="col-span-2 flex min-w-0 items-center gap-3 md:col-span-1">
-          <Face seed={office.name.toLowerCase()} size={32} square />
+          <Face seed={office.id} size={32} square />
           <span className="min-w-0 flex-1">
             <span className="block truncate text-[14px] font-medium">{office.name}</span>
             <span className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
@@ -575,27 +604,14 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
           </span>
           <ChevronDown className={cn("size-4 shrink-0 text-muted-foreground transition-transform md:hidden", open && "rotate-180")} />
         </span>
-        <Cell label="Owner">
-          {office.ownerId ? (
-            <span className="flex min-w-0 items-center gap-2">
-              <Face seed={office.ownerId} size={22} />
-              <span className="min-w-0">
-                <span className="block truncate text-[13.5px]">{office.ownerName}</span>
-                {office.ownerEmail && <span className="block truncate text-[12px] text-muted-foreground">{office.ownerEmail}</span>}
-              </span>
-            </span>
-          ) : (
-            <span className="text-muted-foreground">Gone</span>
-          )}
+        <Cell label="Seats">
+          <Seats used={office.members} seats={office.seats} />
         </Cell>
         <Cell label="Meeting hours">
           <span className="tabular-nums">
             {hours(office.meetingSeconds)}
             {allowance !== undefined && <span className="text-muted-foreground"> / {allowance} h</span>}
           </span>
-        </Cell>
-        <Cell label="Seats">
-          <Seats used={used} seats={office.seats} />
         </Cell>
         <Cell label="On the floor">
           {office.here > 0 ? (
@@ -607,50 +623,103 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
             <span className="text-muted-foreground">Nobody</span>
           )}
         </Cell>
-        <Cell label="Made">
-          <When at={office.createdAt} />
-        </Cell>
+        <Cell label="Last active">{office.lastActiveAt ? <When at={office.lastActiveAt} /> : <span className="text-muted-foreground">Never</span>}</Cell>
         <span className="hidden justify-end md:flex">
           <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
         </span>
       </button>
 
-      {open && (
-        <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
-          <OfficeActions office={office} onChanged={onChanged} />
-          {/* The same inset as the rows below (their padding and border), so each heading sits over its column. */}
-          <div className={cn("hidden gap-4 px-[13px] py-2 text-[11.5px] font-medium text-muted-foreground md:grid", MEMBER_COLUMNS)}>
-            <span>Member</span>
-            <span>Role</span>
-            <span>Country</span>
-            <span>Joined</span>
-            <span>Last around</span>
-          </div>
-          <ul className="divide-y divide-border rounded-xl border border-border bg-card">
-            {office.members.map((member) => (
-              <li key={member.id} className={cn("grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 px-3 py-2.5 md:items-center md:gap-4", MEMBER_COLUMNS)}>
-                <span className="col-span-2 flex min-w-0 items-center gap-2.5 md:col-span-1">
-                  <Face seed={member.id} size={26} />
-                  <span className="min-w-0">
-                    <span className="block truncate text-[13.5px] font-medium">{member.displayName}</span>
-                    {member.email && <span className="block truncate text-[12px] text-muted-foreground">{member.email}</span>}
+      {open && <OfficePeople office={office} onChanged={onChanged} />}
+    </li>
+  );
+}
+
+/**
+ * An office opened: its people, read now and not with the list, with the
+ * rows' own shape standing in while they come; and, tucked in a menu, the
+ * things that change it.
+ */
+function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+  const [members, setMembers] = useState<AdminMember[] | null>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    api.adminOfficeMembers(office.id).then(
+      (found) => !cancelled && setMembers(found.members),
+      () => !cancelled && setFailed(true),
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [office.id]);
+
+  return (
+    <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
+      <div className="flex items-center justify-between gap-3 py-2">
+        <p className="text-[12px] text-muted-foreground">
+          Made <When at={office.createdAt} />
+          {office.billing ? " · Paid through Paddle" : office.plan !== "free" ? " · Plan given without payment" : ""}
+        </p>
+        <OfficeManage office={office} onChanged={onChanged} />
+      </div>
+      {/* The same inset as the rows below (their padding and border), so each heading sits over its column. */}
+      <div className={cn("hidden gap-4 px-[13px] py-2 text-[11.5px] font-medium text-muted-foreground md:grid", MEMBER_COLUMNS)}>
+        <span>Member</span>
+        <span>Role</span>
+        <span>Country</span>
+        <span>Joined</span>
+        <span>Last around</span>
+      </div>
+      {failed ? (
+        <p className="rounded-xl border border-border bg-card px-3 py-4 text-center text-[12.5px] text-muted-foreground">Couldn&apos;t read its people.</p>
+      ) : (
+        <ul className="divide-y divide-border rounded-xl border border-border bg-card">
+          {members === null
+            ? Array.from({ length: Math.min(Math.max(office.members, 1), 4) }, (_, index) => <MemberSkeleton key={index} />)
+            : members.map((member) => (
+                <li key={member.id} className={cn("grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 px-3 py-2.5 md:items-center md:gap-4", MEMBER_COLUMNS)}>
+                  <span className="col-span-2 flex min-w-0 items-center gap-2.5 md:col-span-1">
+                    <Face seed={member.id} size={26} />
+                    <span className="min-w-0">
+                      <span className="block truncate text-[13.5px] font-medium">{member.displayName}</span>
+                      {member.email && <span className="block truncate text-[12px] text-muted-foreground">{member.email}</span>}
+                    </span>
                   </span>
-                </span>
-                <Cell label="Role">
-                  <Badge>{member.role}</Badge>
-                </Cell>
-                <Cell label="Country">{member.country ? <Country code={member.country} /> : <span className="text-muted-foreground">Unknown</span>}</Cell>
-                <Cell label="Joined">
-                  <When at={member.joinedAt} />
-                </Cell>
-                <Cell label="Last around">
-                  <When at={member.lastActiveAt} />
-                </Cell>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  <Cell label="Role">
+                    <Badge>{member.owner ? "owner" : member.role}</Badge>
+                  </Cell>
+                  <Cell label="Country">{member.country ? <Country code={member.country} /> : <span className="text-muted-foreground">Unknown</span>}</Cell>
+                  <Cell label="Joined">
+                    <When at={member.joinedAt} />
+                  </Cell>
+                  <Cell label="Last around">
+                    <When at={member.lastActiveAt} />
+                  </Cell>
+                </li>
+              ))}
+        </ul>
       )}
+    </div>
+  );
+}
+
+/** A member row's shape while the office's people are read. */
+function MemberSkeleton() {
+  const bone = "block animate-pulse rounded-full bg-foreground/[0.07]";
+  return (
+    <li aria-hidden className={cn("grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 px-3 py-3 md:items-center md:gap-4", MEMBER_COLUMNS)}>
+      <span className="col-span-2 flex items-center gap-2.5 md:col-span-1">
+        <span className="size-[26px] shrink-0 animate-pulse rounded-full bg-foreground/[0.07]" />
+        <span className="flex-1 space-y-1.5">
+          <span className={cn(bone, "h-3 w-28")} />
+          <span className={cn(bone, "h-2.5 w-40")} />
+        </span>
+      </span>
+      <span className={cn(bone, "hidden h-4 w-14 md:block")} />
+      <span className={cn(bone, "hidden h-3 w-20 md:block")} />
+      <span className={cn(bone, "hidden h-3 w-16 md:block")} />
+      <span className={cn(bone, "hidden h-3 w-16 md:block")} />
     </li>
   );
 }
@@ -665,21 +734,30 @@ function PlanState({ office }: { office: AdminOffice }) {
 }
 
 /**
- * What can be done to an office by hand: rename it, give it a plan without
- * payment (not while it pays through Paddle, where its admins change it), or
- * close it (a plan that still renews has to be cancelled first).
+ * The things that change an office, kept out of the way on purpose: behind a
+ * menu, and the two that matter (a plan without payment, closing it) only
+ * once the office's name has been typed out. A plan can't be given while the
+ * office pays through Paddle, and a plan that still renews has to be
+ * cancelled before the office can close.
  */
-function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
-  const [asking, setAsking] = useState<"rename" | "close" | null>(null);
+function OfficeManage({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+  const [asking, setAsking] = useState<"rename" | "plan" | "close" | null>(null);
   const [name, setName] = useState(office.name);
+  const [plan, setPlan] = useState<PlanId>(office.plan as PlanId);
+  const [typed, setTyped] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const paid = !!office.billing;
+  const confirmed = typed.trim() === office.name;
 
-  const close = () => {
-    setAsking(null);
+  const ask = (what: "rename" | "plan" | "close") => {
+    setName(office.name);
+    setPlan(office.plan as PlanId);
+    setTyped("");
     setError(null);
+    setAsking(what);
   };
+  const close = () => setAsking(null);
   const run = async (action: () => Promise<unknown>) => {
     setBusy(true);
     setError(null);
@@ -694,43 +772,47 @@ function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: 
     }
   };
 
-  return (
-    <div className="flex flex-wrap items-center gap-2 py-2.5">
-      <div role="radiogroup" aria-label="Plan" className="flex h-9 items-center rounded-full bg-muted p-1" title={paid ? "Pays through Paddle: its admins change the plan" : undefined}>
-        {(["free", "plus", "pro"] as PlanId[]).map((plan) => (
-          <button
-            key={plan}
-            type="button"
-            role="radio"
-            aria-checked={office.plan === plan}
-            disabled={busy || paid || office.plan === plan}
-            onClick={() => run(() => api.adminUpdateOffice(office.id, { plan }))}
-            className={cn(
-              "h-7 rounded-full px-3 text-[12.5px] font-medium transition-colors disabled:cursor-default",
-              office.plan === plan ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)]" : "cursor-pointer text-muted-foreground enabled:hover:text-foreground",
-              paid && office.plan !== plan && "opacity-40",
-            )}
-          >
-            {planName(plan)}
-          </button>
-        ))}
-      </div>
-      {(paid || office.plan !== "free") && (
-        <span className="text-[12px] text-muted-foreground">{paid ? "Paid through Paddle" : "Given without payment"}</span>
-      )}
-      <span className="ms-auto flex gap-1.5">
-        <button type="button" onClick={() => setAsking("rename")} className="h-8 cursor-pointer rounded-full px-3 text-[12.5px] font-medium hover:bg-muted">
-          Rename
-        </button>
-        <button
-          type="button"
-          onClick={() => setAsking("close")}
-          className="h-8 cursor-pointer rounded-full px-3 text-[12.5px] font-medium text-destructive hover:bg-destructive/10"
-        >
-          Close office
-        </button>
+  const typeToConfirm = (
+    <label className="mt-4 block">
+      <span className="text-[12.5px] text-muted-foreground">
+        Type <span className="font-semibold text-foreground">{office.name}</span> to confirm
       </span>
-      {error && !asking && <p className="w-full text-[12.5px] text-destructive">{error}</p>}
+      <input
+        value={typed}
+        onChange={(event) => setTyped(event.target.value)}
+        autoComplete="off"
+        spellCheck={false}
+        className="mt-1.5 h-10 w-full rounded-xl border border-border bg-background px-3 text-[14px] outline-none focus:border-border-strong"
+      />
+    </label>
+  );
+
+  return (
+    <>
+      <Menu
+        align="end"
+        width={220}
+        trigger={
+          <button
+            type="button"
+            aria-label={`Manage ${office.name}`}
+            className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <MoreHorizontal className="size-4" />
+          </button>
+        }
+      >
+        <MenuItem icon={<Pencil />} onSelect={() => ask("rename")}>
+          Rename
+        </MenuItem>
+        <MenuItem disabled={paid} onSelect={() => ask("plan")} hint={paid ? "Pays through Paddle" : undefined}>
+          Change plan without payment
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem danger icon={<Trash2 />} onSelect={() => ask("close")}>
+          Close office
+        </MenuItem>
+      </Menu>
 
       <Dialog
         open={asking === "rename"}
@@ -740,7 +822,7 @@ function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: 
         footer={
           <>
             <DialogButton onClick={close}>Cancel</DialogButton>
-            <DialogButton solid disabled={busy || !name.trim()} onClick={() => run(() => api.adminUpdateOffice(office.id, { name }))}>
+            <DialogButton solid disabled={busy || !name.trim() || name.trim() === office.name} onClick={() => run(() => api.adminUpdateOffice(office.id, { name }))}>
               Save
             </DialogButton>
           </>
@@ -756,6 +838,43 @@ function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: 
       </Dialog>
 
       <Dialog
+        open={asking === "plan"}
+        onClose={close}
+        title="Change plan without payment"
+        description="The office gets the plan's seats and meeting hours at once, and nobody is charged. Use it for friends, partners and support cases."
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton solid disabled={busy || !confirmed || plan === office.plan} onClick={() => run(() => api.adminUpdateOffice(office.id, { plan }))}>
+              Change plan
+            </DialogButton>
+          </>
+        }
+      >
+        <div role="radiogroup" aria-label="Plan" className="flex h-10 items-center rounded-full bg-muted p-1">
+          {(["free", "plus", "pro"] as PlanId[]).map((one) => (
+            <button
+              key={one}
+              type="button"
+              role="radio"
+              aria-checked={plan === one}
+              onClick={() => setPlan(one)}
+              className={cn(
+                "h-8 flex-1 cursor-pointer rounded-full text-[13px] font-medium transition-colors",
+                plan === one ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)]" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {planName(one)}
+              {office.plan === one && <span className="text-muted-foreground"> · now</span>}
+            </button>
+          ))}
+        </div>
+        {typeToConfirm}
+        {error && <p className="mt-2 text-[12.5px] text-destructive">{error}</p>}
+      </Dialog>
+
+      <Dialog
         open={asking === "close"}
         onClose={close}
         title={`Close ${office.name}?`}
@@ -764,15 +883,16 @@ function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: 
         footer={
           <>
             <DialogButton onClick={close}>Cancel</DialogButton>
-            <DialogButton danger disabled={busy} onClick={() => run(() => api.adminDeleteOffice(office.id))}>
+            <DialogButton danger disabled={busy || !confirmed} onClick={() => run(() => api.adminDeleteOffice(office.id))}>
               Close office
             </DialogButton>
           </>
         }
       >
-        {error && <p className="text-[12.5px] text-destructive">{error}</p>}
+        {typeToConfirm}
+        {error && <p className="mt-2 text-[12.5px] text-destructive">{error}</p>}
       </Dialog>
-    </div>
+    </>
   );
 }
 

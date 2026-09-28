@@ -1214,11 +1214,8 @@
         "invites": "Zaproszenia"
       },
       "lobbyTitle": "Lobby jest otwarte",
-      "lobbyBody": "Przejdź się po prawdziwym piętrze, zanim założysz własne. Bez konta.",
       "menu": "Menu",
       "teams": "Dla zespołów",
-      "teamTitle": "Stworzone dla zespołów zdalnych",
-      "teamBody": "Za darmo dla maksymalnie 3 osób, większe plany są w drodze.",
       "cases": {
         "virtualOffice": "Miejsce dla twojego zespołu zdalnego",
         "virtualCoworking": "Pracuj w skupieniu obok innych",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Konsultacje i małe grupy",
         "proximityChat": "Rozmawiaj z tym, do kogo podejdziesz"
       },
-      "getStarted": "Zacznij"
+      "getStarted": "Zacznij",
+      "lobbyLine": "Pochodź po prawdziwym piętrze. Bez konta."
     },
     "hero": {
       "title": "Wirtualne biuro, po którym twój zespół może chodzić.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
       "muted": "nie za osobę.",
-      "body": "Zacznij za darmo. Każdy plan ma wszystko; większe mieszczą więcej osób i więcej godzin spotkań.",
+      "body": "Zacznij za darmo. Przejdź wyżej, gdy zespół urośnie.",
       "soon": "Wkrótce",
       "forever": "na zawsze",
       "month": "miesięcznie",
       "people": "Do {count} osób",
       "free": {
-        "name": "Free",
-        "body": "Cały produkt, dla małego studia albo dwóch założycieli.",
-        "items": [
-          "Prywatne piętro",
-          "Rozmowy i spotkania",
-          "Czat, obrazy i pliki",
-          "Wszystkie funkcje, bez okresu próbnego"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Jedna cena za całe biuro, niezależnie od tego, ile z dziesięciu miejsc zajmiesz.",
-        "items": [
-          "Wszystko z Free",
-          "Miejsce dla 10 członków",
-          "Sześć razy więcej godzin spotkań"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "Dla zespołu, który wyrósł z jednego rzędu biurek.",
-        "items": [
-          "Wszystko z Plus",
-          "Miejsce dla 25 członków",
-          "Dwa razy więcej godzin niż w Plus",
-          "Większy zespół? Napisz do nas"
-        ]
+        "name": "Pro"
       },
-      "hours": "Godziny spotkań: {count} miesięcznie",
-      "tax": "Ceny miesięczne, bez podatku."
+      "tax": "Ceny miesięczne, bez podatku.",
+      "perPerson": "{price} za osobę",
+      "freeLine": "Bez karty",
+      "choose": "Wybierz {plan}",
+      "note": "Każdy plan ma wszystkie funkcje. Rozmowy nigdy się nie liczą; spotkania grupowe mają 5, 30 lub 60 godzin miesięcznie."
     },
     "faq": {
       "title": "Pytania",

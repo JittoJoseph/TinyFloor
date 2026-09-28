@@ -1214,11 +1214,8 @@
         "invites": "Invites"
       },
       "lobbyTitle": "The lobby is open",
-      "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
       "menu": "Menu",
       "teams": "For teams",
-      "teamTitle": "Made for remote teams",
-      "teamBody": "Free for up to 3 people, with bigger plans on the way.",
       "cases": {
         "virtualOffice": "A place for your remote team to be",
         "virtualCoworking": "Work alongside others, heads down",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Office hours and small classes",
         "proximityChat": "Talk to whoever you walk up to"
       },
-      "getStarted": "Get started"
+      "getStarted": "Get started",
+      "lobbyLine": "Walk around a real floor. No account needed."
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
       "muted": "not by the person.",
-      "body": "Start free. Every plan has everything; the bigger ones hold more people and more meeting hours.",
+      "body": "Start free. Move up when your team grows.",
       "soon": "Coming soon",
       "forever": "forever",
       "month": "a month",
       "people": "Up to {count} people",
       "free": {
-        "name": "Free",
-        "body": "The whole product, for a small studio or a pair of founders.",
-        "items": [
-          "A private floor",
-          "Calls and meetings",
-          "Chat, images and files",
-          "Every feature, no trial"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "One price for the whole office, however many of the ten you fill.",
-        "items": [
-          "Everything in Free",
-          "Room for 10 members",
-          "Six times the meeting hours"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "For the team that has outgrown one row of desks.",
-        "items": [
-          "Everything in Plus",
-          "Room for 25 members",
-          "Twice the meeting hours of Plus",
-          "Bigger? Talk to us"
-        ]
+        "name": "Pro"
       },
-      "hours": "{count} meeting hours a month",
-      "tax": "Prices are monthly and don't include tax."
+      "tax": "Prices are monthly and don't include tax.",
+      "perPerson": "{price} a person",
+      "freeLine": "No card needed",
+      "choose": "Choose {plan}",
+      "note": "Every plan has every feature. Calls are never counted; group meetings get 5, 30 or 60 hours a month."
     },
     "faq": {
       "title": "Questions,",

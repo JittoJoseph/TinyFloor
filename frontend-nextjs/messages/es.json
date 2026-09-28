@@ -1214,11 +1214,8 @@
         "invites": "Invitaciones"
       },
       "lobbyTitle": "El lobby está abierto",
-      "lobbyBody": "Recorre una planta de verdad antes de crear la tuya. Sin cuenta.",
       "menu": "Menú",
       "teams": "Para equipos",
-      "teamTitle": "Pensado para equipos remotos",
-      "teamBody": "Gratis para hasta 3 personas, con planes más grandes en camino.",
       "cases": {
         "virtualOffice": "Un lugar para tu equipo remoto",
         "virtualCoworking": "Trabaja concentrado junto a otros",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Tutorías y clases pequeñas",
         "proximityChat": "Habla con quien tengas al lado"
       },
-      "getStarted": "Empezar"
+      "getStarted": "Empezar",
+      "lobbyLine": "Pasea por una planta real. Sin cuenta."
     },
     "hero": {
       "title": "Una oficina virtual por la que tu equipo puede caminar.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Precios",
       "title": "Precio por oficina,",
       "muted": "no por persona.",
-      "body": "Empieza gratis. Todos los planes lo tienen todo; los mayores admiten más personas y más horas de reunión.",
+      "body": "Empieza gratis. Sube de plan cuando tu equipo crezca.",
       "soon": "Próximamente",
       "forever": "para siempre",
       "month": "al mes",
       "people": "Hasta {count} personas",
       "free": {
-        "name": "Free",
-        "body": "Todo el producto, para un estudio pequeño o dos fundadores.",
-        "items": [
-          "Una planta privada",
-          "Llamadas y reuniones",
-          "Chat, imágenes y archivos",
-          "Todas las funciones, sin prueba"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Un solo precio para toda la oficina, ocupes los diez puestos o no.",
-        "items": [
-          "Todo lo de Free",
-          "Espacio para 10 miembros",
-          "Seis veces más horas de reunión"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "Para el equipo que ya no cabe en una fila de escritorios.",
-        "items": [
-          "Todo lo de Plus",
-          "Espacio para 25 miembros",
-          "El doble de horas que Plus",
-          "¿Más grande? Escríbenos"
-        ]
+        "name": "Pro"
       },
-      "hours": "{count} horas de reunión al mes",
-      "tax": "Precios mensuales, sin impuestos."
+      "tax": "Precios mensuales, sin impuestos.",
+      "perPerson": "{price} por persona",
+      "freeLine": "Sin tarjeta",
+      "choose": "Elegir {plan}",
+      "note": "Todos los planes tienen todas las funciones. Las llamadas nunca se cuentan; las reuniones de grupo tienen 5, 30 o 60 horas al mes."
     },
     "faq": {
       "title": "Preguntas,",

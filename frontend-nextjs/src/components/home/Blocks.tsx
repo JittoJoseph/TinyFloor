@@ -9,6 +9,7 @@ import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
+import { PlanAction } from "./PlanAction";
 import { SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "./SiteTheme";
 
@@ -39,7 +40,7 @@ export const STONE = cn(PILL, "bg-foreground/[0.06] text-foreground hover:bg-for
 export const EYEBROW = "text-[12px] font-medium uppercase tracking-[0.16em] text-faint";
 
 /** A section heading: the claim, then its quieter second half. */
-export const H2 = "text-balance text-[32px] font-normal leading-[1.06] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[52px] sm:leading-[1.04]";
+export const H2 = "text-balance text-[30px] font-normal leading-[1.08] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[52px] sm:leading-[1.04]";
 
 /** The sentence under a heading. */
 export const LEAD = "text-pretty text-[16.5px] leading-[1.6] text-muted-foreground sm:text-[18px]";
@@ -171,19 +172,28 @@ export function FloorMoments({ className }: { className?: string }) {
   ];
 
   return (
-    <section id="floor" className={cn(ANCHOR, "px-3 sm:px-4", className)}>
-      <div className={cn(STAGE, "rounded-[28px] py-20 sm:rounded-[44px] sm:py-28")}>
+    <section id="floor" className={cn(ANCHOR, "sm:px-4", className)}>
+      {/* A band from edge to edge on a phone, so the cards get the whole width; a rounded panel wider. */}
+      <div className={cn(STAGE, "py-16 sm:rounded-[44px] sm:py-28")}>
         <div className={COLUMN}>
           <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
-          <div className="mt-14 grid gap-3 sm:mt-20 lg:grid-cols-3">
+          {/*
+            On a phone the three moments are a row to swipe through, each card
+            most of the screen wide with the next one peeking in; wider, a stack
+            of rows, then three across.
+          */}
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-20 sm:grid sm:snap-none sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
             {moments.map((one, i) => (
               <article
                 key={one.key}
                 id={one.id}
-                className={cn(ANCHOR, "rounded-[26px] bg-white/[0.05] p-1.5 sm:grid sm:grid-cols-[1.15fr_1fr] sm:items-center sm:gap-2 lg:block")}
+                className={cn(
+                  ANCHOR,
+                  "w-[84%] shrink-0 snap-start rounded-[24px] bg-white/[0.05] p-1.5 sm:grid sm:w-auto sm:grid-cols-[1.15fr_1fr] sm:items-center sm:gap-2 sm:rounded-[26px] lg:block",
+                )}
               >
-                <div className="overflow-hidden rounded-[20px]">{one.scene}</div>
-                <div className="px-4 pb-5 pt-5 sm:px-5 sm:py-4 lg:pb-5 lg:pt-5">
+                <div className="overflow-hidden rounded-[18px] sm:rounded-[20px]">{one.scene}</div>
+                <div className="px-3.5 pb-4 pt-4 sm:px-5 sm:py-4 lg:pb-5 lg:pt-5">
                   <p className="text-[12px] tabular-nums text-faint">0{i + 1}</p>
                   <h3 className="mt-2 text-[17px] font-semibold tracking-[-0.01em]">{t(`${one.key}.title`)}</h3>
                   <p className="mt-2 text-[14.5px] leading-[1.6] text-muted-foreground">{t(`${one.key}.body`)}</p>
@@ -244,69 +254,74 @@ export function Everything() {
 }
 
 /**
- * Three plans, priced by how many people the office holds and how many meeting
- * hours it has (docs/14), with everything on each. The one in the middle stands on the bezel's black.
+ * Three plans, priced by the office and not the person (docs/14, docs/15). A
+ * card says only what differs: the price, how many people, what that comes to
+ * a person, and the way in. What every plan has is the section above; the
+ * meeting hours and tax sit in one quiet line under the cards. The middle one
+ * stands on the bezel's black. On a phone each card is a compact row.
  */
 export function Plans() {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
-  const plans: Array<{
-    key: "free" | "plus" | "pro";
-    price: string;
-    per: string;
-    people: number;
-    hours: number;
-    soon?: boolean;
-    featured?: boolean;
-  }> = [
-    { key: "free", price: "$0", per: t("forever"), people: 3, hours: 5 },
-    { key: "plus", price: "$19", per: t("month"), people: 10, hours: 30, soon: true, featured: true },
-    { key: "pro", price: "$49", per: t("month"), people: 25, hours: 60, soon: true },
+  const plans: Array<{ key: "free" | "plus" | "pro"; price: number; people: number; featured?: boolean }> = [
+    { key: "free", price: 0, people: 3 },
+    { key: "plus", price: 19, people: 10, featured: true },
+    { key: "pro", price: 49, people: 25 },
   ];
+  const action = "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
 
   return (
     <section id="plans" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
       <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
-      <div className="mx-auto mt-14 grid max-w-[460px] items-stretch gap-3 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-        {plans.map((plan) => (
-          <div
-            key={plan.key}
-            className={cn("flex flex-col rounded-[28px] p-7 sm:p-8", plan.featured ? cn(STAGE, "lg:-my-3 lg:py-11") : "bg-muted/80")}
-          >
-            <div className="flex h-7 items-center justify-between gap-3">
-              <p className="text-[15px] font-semibold">{t(`${plan.key}.name`)}</p>
-              {plan.soon && (
-                <span className="rounded-full bg-foreground/[0.07] px-2.5 py-1 text-[11.5px] font-medium text-muted-foreground">{t("soon")}</span>
+      <div className="mx-auto mt-12 grid max-w-[480px] gap-3 sm:mt-20 lg:max-w-[1000px] lg:grid-cols-3 lg:items-center">
+        {plans.map((plan) => {
+          const featured = plan.featured;
+          const name = t(`${plan.key}.name`);
+          return (
+            <div
+              key={plan.key}
+              className={cn(
+                "flex flex-col rounded-[26px] p-5 sm:p-7",
+                featured ? cn(STAGE, "lg:py-10") : "bg-muted/80",
               )}
+            >
+              <div className="flex items-start justify-between gap-4 lg:flex-col lg:gap-7">
+                <div>
+                  <p className="text-[15px] font-semibold">{name}</p>
+                  <p className="mt-1 text-[13.5px] text-muted-foreground">{t("people", { count: plan.people })}</p>
+                </div>
+                <div className="text-end lg:text-start">
+                  <p className="flex items-baseline justify-end gap-1.5 lg:justify-start">
+                    <span className="text-[34px] font-semibold leading-none tracking-[-0.04em] lg:text-[48px]">${plan.price}</span>
+                    <span className="text-[13.5px] text-muted-foreground">{plan.price ? t("month") : t("forever")}</span>
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] text-muted-foreground lg:mt-2">
+                    {plan.price ? t("perPerson", { price: `$${(plan.price / plan.people).toFixed(2)}` }) : t("freeLine")}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-5 lg:mt-9">
+                {plan.key === "free" ? (
+                  <Link href="/create" className={cn(action, "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]")}>
+                    {th("cta")}
+                  </Link>
+                ) : (
+                  <PlanAction
+                    plan={plan.key}
+                    choose={t("choose", { plan: name })}
+                    soon={t("soon")}
+                    className={cn(action, "bg-foreground text-background hover:bg-foreground/85")}
+                    soonClassName={cn(action, "bg-foreground/[0.07] text-muted-foreground")}
+                  />
+                )}
+              </div>
             </div>
-            <p className="mt-8 flex items-baseline gap-2">
-              <span className="text-[48px] font-semibold leading-none tracking-[-0.04em]">{plan.price}</span>
-              <span className="text-[14.5px] text-muted-foreground">{plan.per}</span>
-            </p>
-            <p className="mt-3 text-[13.5px] font-medium text-foreground/80">{t("people", { count: plan.people })}</p>
-            <p className="mt-1 text-[13.5px] text-muted-foreground">{t("hours", { count: plan.hours })}</p>
-            <p className="mt-5 text-[14.5px] leading-[1.6] text-muted-foreground">{t(`${plan.key}.body`)}</p>
-            <ul className="mt-8 flex flex-col gap-3 text-[14.5px]">
-              {(t.raw(`${plan.key}.items`) as string[]).map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="size-1.5 shrink-0 rounded-full bg-foreground/25" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-auto pt-9">
-              {plan.soon ? (
-                <span className={cn(STONE, "pointer-events-none w-full text-muted-foreground")}>{t("soon")}</span>
-              ) : (
-                <Link href="/create" className={cn(INK, "w-full")}>
-                  {th("cta")}
-                </Link>
-              )}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-      <p className="mt-8 text-center text-[13px] text-muted-foreground">{t("tax")}</p>
+      <p className="mx-auto mt-8 max-w-[34rem] text-balance text-center text-[13px] leading-relaxed text-muted-foreground">
+        {t("note")} {t("tax")}
+      </p>
     </section>
   );
 }

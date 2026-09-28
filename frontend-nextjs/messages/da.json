@@ -1214,11 +1214,8 @@
         "invites": "Invitationer"
       },
       "lobbyTitle": "Lobbyen er åben",
-      "lobbyBody": "Gå rundt på en rigtig etage, før du laver din egen. Ingen konto nødvendig.",
       "menu": "Menu",
       "teams": "Til teams",
-      "teamTitle": "Lavet til remote-teams",
-      "teamBody": "Gratis for op til 3 personer, større planer er på vej.",
       "cases": {
         "virtualOffice": "Et sted for dit fjernteam",
         "virtualCoworking": "Arbejd fokuseret sammen med andre",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Konsultationstid og små hold",
         "proximityChat": "Tal med den, du går hen til"
       },
-      "getStarted": "Kom i gang"
+      "getStarted": "Kom i gang",
+      "lobbyLine": "Gå rundt på en rigtig etage. Ingen konto."
     },
     "hero": {
       "title": "Et virtuelt kontor, dit team kan gå rundt i.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
       "muted": "ikke pr. person.",
-      "body": "Start gratis. Alle planer har det hele; de større har plads til flere og flere mødetimer.",
+      "body": "Start gratis. Skift op, når dit team vokser.",
       "soon": "Kommer snart",
       "forever": "for altid",
       "month": "om måneden",
       "people": "Op til {count} personer",
       "free": {
-        "name": "Free",
-        "body": "Hele produktet, til et lille studie eller to stiftere.",
-        "items": [
-          "En privat etage",
-          "Opkald og møder",
-          "Chat, billeder og filer",
-          "Alle funktioner, ingen prøveperiode"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Én pris for hele kontoret, uanset hvor mange af de ti pladser du fylder.",
-        "items": [
-          "Alt i Gratis",
-          "Plads til 10 medlemmer",
-          "Seks gange så mange mødetimer"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "Til teamet, der er vokset ud af én række skriveborde.",
-        "items": [
-          "Alt i Plus",
-          "Plads til 25 medlemmer",
-          "Dobbelt så mange timer som Plus",
-          "Større? Skriv til os"
-        ]
+        "name": "Pro"
       },
-      "hours": "{count} mødetimer om måneden",
-      "tax": "Priserne er månedlige og uden moms."
+      "tax": "Priserne er månedlige og uden moms.",
+      "perPerson": "{price} pr. person",
+      "freeLine": "Intet kort nødvendigt",
+      "choose": "Vælg {plan}",
+      "note": "Alle planer har alle funktioner. Opkald tælles aldrig; gruppemøder får 5, 30 eller 60 timer om måneden."
     },
     "faq": {
       "title": "Spørgsmål,",

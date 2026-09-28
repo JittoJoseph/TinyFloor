@@ -6,6 +6,7 @@ import {
   Building2,
   ChevronDown,
   Coffee,
+  DoorOpen,
   Footprints,
   GraduationCap,
   Link2,
@@ -17,14 +18,11 @@ import {
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { Logo } from "@/components/app/Logo";
-import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { HomeNavActions } from "./HomeNavActions";
-import { MobileMenu } from "./MobileMenu";
+import { MobileMenu, MobileSection } from "./MobileMenu";
 import { Later } from "./Later";
 import { ScrollHeader } from "./ScrollHeader";
-import { CAST } from "./previews/Frame";
-import { FloorPreview } from "./previews/FloorPreview";
 
 export const COLUMN = "mx-auto w-full max-w-[1200px] px-5 sm:px-8";
 
@@ -51,16 +49,18 @@ const COMPARE = LANDINGS.filter((page) => page.group === "compare");
 
 /**
  * The site's nav. At the top of a page it lies flat; once the page moves it
- * floats (ScrollHeader). Two menus open on hover or focus: the product, and
- * who it's for, which leads on to the use case and comparison pages. The
- * menus open with CSS alone, and are drawn once the page has settled; a phone
- * gets one sheet with the same links.
+ * floats (ScrollHeader). Wider screens get two small menus that open on hover
+ * or focus, each a two-column list: the product, and who it's for with the
+ * comparisons under it. A phone gets one full-screen menu with the same links
+ * in sections, and the two ways in at the bottom where a thumb is.
  */
 export function HomeNav({ fade = true }: { fade?: boolean }) {
   const t = useTranslations("home");
   const tl = useTranslations("landings");
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
+  const compareLabel = (page: (typeof COMPARE)[number]) =>
+    page.competitor ? t("footer.vs", { name: page.competitor }) : tl(`pages.${page.key}.label`);
 
   return (
     <ScrollHeader fade={fade}>
@@ -80,95 +80,96 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
         </Link>
 
         <div className="hidden items-center md:flex">
-          <Menu label={t("footer.product")} className="w-[600px]">
-            <div className="grid grid-cols-[1fr_216px] gap-1.5">
-              <ul className="grid content-start gap-0.5 p-1">
-                {FEATURES.map((item) => (
-                  <MenuItem
-                    key={item.key}
-                    href={`/#${item.hash}`}
-                    icon={item.icon}
-                    title={t(`nav.items.${item.key}`)}
-                    line={t(`features.${item.key}.muted`)}
-                  />
-                ))}
-              </ul>
-              <div className="flex flex-col rounded-[14px] bg-[#111113] p-3.5 text-white dark:bg-white/[0.05] dark:ring-1 dark:ring-inset dark:ring-white/10">
-                <p className="text-[13.5px] font-semibold">{t("nav.lobbyTitle")}</p>
-                <p className="mt-1 text-[12px] leading-snug text-white/55">{t("nav.lobbyBody")}</p>
-                <div className="relative mt-3 min-h-[120px] flex-1 overflow-hidden rounded-lg border border-white/10 font-(family-name:--font-app)">
-                  <FloorPreview bare />
-                </div>
+          <Menu label={t("footer.product")}>
+            <ul className="grid grid-cols-2 gap-0.5">
+              {FEATURES.map((item) => (
+                <MenuItem
+                  key={item.key}
+                  href={`/#${item.hash}`}
+                  icon={item.icon}
+                  title={t(`nav.items.${item.key}`)}
+                  line={t(`features.${item.key}.muted`)}
+                />
+              ))}
+              <MenuItem href="/lobby" icon={<DoorOpen className="rtl:-scale-x-100" />} title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} accent />
+            </ul>
+          </Menu>
+
+          <Menu label={t("nav.teams")}>
+            <ul className="grid grid-cols-2 gap-0.5">
+              {USE_CASES.map((page) => (
+                <MenuItem
+                  key={page.slug}
+                  href={`/${page.slug}`}
+                  icon={CASE_ICONS[page.key]}
+                  title={tl(`pages.${page.key}.label`)}
+                  line={t(`nav.cases.${page.key as "virtualOffice"}`)}
+                />
+              ))}
+            </ul>
+            <div className="mt-1.5 flex flex-wrap items-center gap-1.5 rounded-[14px] bg-foreground/[0.035] px-3 py-2.5">
+              <span className="me-1 text-[12px] font-medium text-faint">{t("footer.compare")}</span>
+              {COMPARE.map((page) => (
                 <Link
-                  href="/lobby"
-                  className="group/cta mt-3 inline-flex h-8 w-fit items-center gap-1 rounded-full bg-white px-3 text-[12.5px] text-[#111113] transition-colors hover:bg-white/85"
+                  key={page.slug}
+                  href={`/${page.slug}`}
+                  className="inline-flex h-7 items-center rounded-full bg-background px-2.5 text-[12.5px] text-foreground/75 shadow-[0_0_0_1px_var(--ui-border)] transition-colors hover:text-foreground"
                 >
-                  {t("hero.lobbyCta")}
-                  <ArrowRight className="size-3.5 transition-transform group-hover/cta:translate-x-0.5 rtl:rotate-180" />
+                  {compareLabel(page)}
                 </Link>
-              </div>
+              ))}
             </div>
           </Menu>
 
-          <Menu label={t("nav.teams")} className="w-[660px]">
-            <div className="grid grid-cols-[1fr_230px] gap-1.5">
-              <div className="p-1">
-                <ul className="grid gap-0.5">
-                  {USE_CASES.map((page) => (
-                    <MenuItem
-                      key={page.slug}
-                      href={`/${page.slug}`}
-                      icon={CASE_ICONS[page.key]}
-                      title={tl(`pages.${page.key}.label`)}
-                      line={t(`nav.cases.${page.key as "virtualOffice"}`)}
-                    />
-                  ))}
-                </ul>
-                <div className="mx-2 mt-2 border-t border-border pt-3">
-                  <p className="text-[11.5px] font-semibold text-faint">{t("footer.compare")}</p>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {COMPARE.map((page) => (
-                      <li key={page.slug}>
-                        <Link
-                          href={`/${page.slug}`}
-                          className="inline-flex h-7 items-center rounded-full bg-foreground/[0.05] px-2.5 text-[12.5px] text-foreground/75 transition-colors hover:bg-foreground/[0.09] hover:text-foreground"
-                        >
-                          {page.competitor ? t("footer.vs", { name: page.competitor }) : tl(`pages.${page.key}.label`)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <TeamCard title={t("nav.teamTitle")} body={t("nav.teamBody")} cta={t("nav.start")} />
-            </div>
-          </Menu>
-
-          <Link href="/#plans" className={plain}>{t("nav.pricing")}</Link>
-          <Link href="/#faq" className={plain}>{t("nav.faq")}</Link>
+          <Link href="/#plans" className={plain}>
+            {t("nav.pricing")}
+          </Link>
+          <Link href="/#faq" className={plain}>
+            {t("nav.faq")}
+          </Link>
         </div>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
           <HomeNavActions signIn={t("nav.signIn")} start={t("nav.getStarted")} />
-          <MobileMenu label={t("nav.menu")}>
-            <p className="px-1 text-[11.5px] font-semibold text-faint">{t("footer.product")}</p>
-            <ul className="mt-1 grid gap-0.5">
+          <MobileMenu
+            label={t("nav.menu")}
+            actions={
+              <>
+                <Link
+                  href="/create"
+                  className="flex h-12 w-full items-center justify-center rounded-full bg-foreground text-[15px] font-medium text-background active:scale-[0.98]"
+                >
+                  {t("nav.start")}
+                </Link>
+                <Link
+                  href="/auth"
+                  className="flex h-12 w-full items-center justify-center rounded-full bg-foreground/[0.07] text-[15px] font-medium text-foreground active:scale-[0.98]"
+                >
+                  {t("nav.signIn")}
+                </Link>
+              </>
+            }
+          >
+            <MobileSection title={t("footer.product")} open>
               {FEATURES.map((item) => (
-                <MenuItem key={item.key} href={`/#${item.hash}`} icon={item.icon} title={t(`nav.items.${item.key}`)} />
+                <MobileItem key={item.key} href={`/#${item.hash}`} icon={item.icon} title={t(`nav.items.${item.key}`)} />
               ))}
-            </ul>
-            <p className="mt-4 px-1 text-[11.5px] font-semibold text-faint">{t("nav.teams")}</p>
-            <ul className="mt-1 grid gap-0.5">
+            </MobileSection>
+            <MobileSection title={t("nav.teams")}>
               {USE_CASES.map((page) => (
-                <MenuItem key={page.slug} href={`/${page.slug}`} icon={CASE_ICONS[page.key]} title={tl(`pages.${page.key}.label`)} />
+                <MobileItem key={page.slug} href={`/${page.slug}`} icon={CASE_ICONS[page.key]} title={tl(`pages.${page.key}.label`)} />
               ))}
-            </ul>
-            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-border px-1 pt-4 text-[14.5px] text-foreground/75">
-              <li><Link href="/#plans">{t("nav.pricing")}</Link></li>
-              <li><Link href="/#faq">{t("nav.faq")}</Link></li>
-              <li><Link href="/lobby">{t("nav.lobby")}</Link></li>
-              <li><Link href="/auth">{t("nav.signIn")}</Link></li>
-            </ul>
+            </MobileSection>
+            <MobileSection title={t("footer.compare")}>
+              {COMPARE.map((page) => (
+                <MobileItem key={page.slug} href={`/${page.slug}`} title={compareLabel(page)} />
+              ))}
+            </MobileSection>
+            <div className="divide-y divide-border border-t border-border">
+              <MobileLink href="/#plans">{t("nav.pricing")}</MobileLink>
+              <MobileLink href="/#faq">{t("nav.faq")}</MobileLink>
+              <MobileLink href="/lobby">{t("nav.lobby")}</MobileLink>
+            </div>
           </MobileMenu>
         </div>
       </nav>
@@ -176,8 +177,12 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
   );
 }
 
-/** A nav item that opens a panel under itself while it's hovered or focused. */
-function Menu({ label, className, children }: { label: string; className?: string; children: ReactNode }) {
+/**
+ * A nav item that opens a small panel under itself while it's hovered or
+ * focused. Opening is immediate; closing waits a moment, so moving the pointer
+ * down to the panel never loses it.
+ */
+function Menu({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="group/menu relative">
       <button
@@ -190,13 +195,13 @@ function Menu({ label, className, children }: { label: string; className?: strin
       </button>
       <div
         className={cn(
-          "invisible absolute start-1/2 top-full -translate-x-1/2 translate-y-1 pt-3 opacity-0 transition-[opacity,visibility,translate] duration-200 ease-out rtl:translate-x-1/2",
-          "group-focus-within/menu:visible group-focus-within/menu:translate-y-0 group-focus-within/menu:opacity-100",
-          "group-hover/menu:visible group-hover/menu:translate-y-0 group-hover/menu:opacity-100",
-          className,
+          "invisible absolute start-1/2 top-full w-[540px] -translate-x-1/2 pt-2.5 opacity-0 rtl:translate-x-1/2",
+          "translate-y-1 scale-[0.98] transition-[opacity,visibility,translate,scale] delay-100 duration-200 ease-out [transform-origin:top_center]",
+          "group-focus-within/menu:visible group-focus-within/menu:translate-y-0 group-focus-within/menu:scale-100 group-focus-within/menu:opacity-100 group-focus-within/menu:delay-0",
+          "group-hover/menu:visible group-hover/menu:translate-y-0 group-hover/menu:scale-100 group-hover/menu:opacity-100 group-hover/menu:delay-0",
         )}
       >
-        <div className="rounded-[20px] border border-border bg-card p-1.5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.25)]">
+        <div className="rounded-[20px] border border-border bg-card p-1.5 shadow-[0_24px_60px_-24px_rgb(0_0_0/0.3),0_2px_6px_-2px_rgb(0_0_0/0.08)]">
           <Later>{children}</Later>
         </div>
       </div>
@@ -204,63 +209,53 @@ function Menu({ label, className, children }: { label: string; className?: strin
   );
 }
 
-/**
- * One row in a menu: an icon tile that takes the brand colour on hover, the
- * name, an optional line under it, and an arrow that slides in.
- */
-function MenuItem({ href, icon, title, line }: { href: string; icon: ReactNode; title: string; line?: string }) {
+/** One entry in a menu: an icon tile, the name, and a line under it. The lobby wears the brand colour. */
+function MenuItem({ href, icon, title, line, accent }: { href: string; icon: ReactNode; title: string; line?: string; accent?: boolean }) {
   return (
     <li>
       <Link
         href={href}
-        className="group/item flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-foreground/[0.045] focus-visible:bg-foreground/[0.045]"
+        className="group/item flex items-start gap-3 rounded-[14px] p-2.5 transition-colors hover:bg-foreground/[0.045] focus-visible:bg-foreground/[0.045]"
       >
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-border bg-background text-foreground/75 transition-colors duration-200 group-hover/item:border-brand/25 group-hover/item:bg-brand/10 group-hover/item:text-brand [&_svg]:size-4">
+        <span
+          className={cn(
+            "flex size-8 shrink-0 items-center justify-center rounded-[10px] transition-colors duration-200 [&_svg]:size-4",
+            accent ? "bg-brand/12 text-brand" : "bg-foreground/[0.06] text-foreground/75 group-hover/item:bg-brand/10 group-hover/item:text-brand",
+          )}
+        >
           {icon}
         </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[14px] font-semibold leading-tight">{title}</span>
-          {line && <span className="mt-0.5 block truncate text-[12.5px] text-muted-foreground">{line}</span>}
+        <span className="min-w-0 flex-1 pt-px">
+          <span className="flex items-center gap-1 text-[13.5px] font-semibold leading-tight">
+            {title}
+            <ArrowRight className="size-3 -translate-x-1 text-muted-foreground opacity-0 transition-[opacity,translate] duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100 rtl:rotate-180 rtl:translate-x-1" />
+          </span>
+          {line && <span className="mt-0.5 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>}
         </span>
-        <ArrowRight className="size-3.5 shrink-0 -translate-x-1 text-muted-foreground opacity-0 transition-[opacity,translate] duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100 rtl:rotate-180 rtl:translate-x-1" />
       </Link>
     </li>
   );
 }
 
-/** The menu's team card: a small roster of the people on your floor, and the way to make one. */
-function TeamCard({ title, body, cta }: { title: string; body: string; cta: string }) {
-  const t = useTranslations("home.preview");
-  const roster = [
-    { person: CAST[0], status: "available" as const },
-    { person: CAST[1], status: "busy" as const },
-    { person: CAST[2], status: "away" as const },
-    { person: CAST[3], status: "available" as const },
-  ];
+/** A row in the phone menu: big enough to tap, an icon when it has one. */
+function MobileItem({ href, icon, title }: { href: string; icon?: ReactNode; title: string }) {
   return (
-    <div className="group/team flex flex-col rounded-[14px] bg-foreground/[0.045] p-3 [--face-ring:var(--ui-card)]">
-      <ul className="grid gap-1 font-(family-name:--font-app)">
-        {roster.map(({ person, status }, index) => (
-          <li
-            key={person.id}
-            style={{ transitionDelay: `${index * 40}ms` }}
-            className="flex items-center gap-2 rounded-lg bg-card px-2 py-1.5 shadow-[0_0_0_1px_var(--ui-border)] transition-transform duration-300 ease-out group-hover/team:translate-x-1 rtl:group-hover/team:-translate-x-1"
-          >
-            <Face seed={person.id} size={24} presence={status} />
-            <span className="flex-1 truncate text-[12.5px] font-semibold">{person.name}</span>
-            <span className="text-[11px] text-muted-foreground">{t(status)}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-auto px-1 pt-4 text-[14px] font-semibold">{title}</p>
-      <p className="mt-1 px-1 text-[12.5px] leading-snug text-muted-foreground">{body}</p>
-      <Link
-        href="/create"
-        className="group/cta mx-1 mt-3 inline-flex h-8 w-fit items-center gap-1 rounded-full bg-foreground px-3 text-[12.5px] text-background transition-colors hover:bg-foreground/85"
-      >
-        {cta}
-        <ArrowRight className="size-3.5 transition-transform group-hover/cta:translate-x-0.5 rtl:rotate-180" />
+    <li>
+      <Link href={href} className="flex h-12 items-center gap-3 rounded-2xl px-2 text-[15px] text-foreground active:bg-foreground/[0.05]">
+        {icon && (
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-foreground/[0.06] text-foreground/75 [&_svg]:size-4">{icon}</span>
+        )}
+        <span className={cn("flex-1 truncate", !icon && "ps-1")}>{title}</span>
       </Link>
-    </div>
+    </li>
+  );
+}
+
+function MobileLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link href={href} className="flex h-14 items-center justify-between px-1 text-[16px] font-medium text-foreground">
+      {children}
+      <ArrowRight className="size-4 text-faint rtl:rotate-180" />
+    </Link>
   );
 }

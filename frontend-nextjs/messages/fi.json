@@ -1214,11 +1214,8 @@
         "invites": "Kutsut"
       },
       "lobbyTitle": "Aula on auki",
-      "lobbyBody": "Kävele oikeassa kerroksessa ennen kuin teet omasi. Tiliä ei tarvita.",
       "menu": "Valikko",
       "teams": "Tiimeille",
-      "teamTitle": "Tehty etätiimeille",
-      "teamBody": "Ilmainen enintään 3 hengelle, isommat paketit tulossa.",
       "cases": {
         "virtualOffice": "Paikka etätiimillesi",
         "virtualCoworking": "Keskity töihin muiden seurassa",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Vastaanotot ja pienet ryhmät",
         "proximityChat": "Juttele sen kanssa, jonka luo kävelet"
       },
-      "getStarted": "Aloita"
+      "getStarted": "Aloita",
+      "lobbyLine": "Kävele oikeassa kerroksessa. Ei tiliä."
     },
     "hero": {
       "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
       "muted": "ei henkilöltä.",
-      "body": "Aloita ilmaiseksi. Joka paketissa on kaikki; isommissa on tilaa useammalle ja enemmän kokoustunteja.",
+      "body": "Aloita ilmaiseksi. Vaihda isompaan, kun tiimi kasvaa.",
       "soon": "Tulossa",
       "forever": "ikuisesti",
       "month": "kuukaudessa",
       "people": "Enintään {count} henkeä",
       "free": {
-        "name": "Free",
-        "body": "Koko tuote pienelle studiolle tai kahdelle perustajalle.",
-        "items": [
-          "Oma yksityinen kerros",
-          "Puhelut ja kokoukset",
-          "Chat, kuvat ja tiedostot",
-          "Kaikki ominaisuudet, ei kokeilujaksoa"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Yksi hinta koko toimistolle, täytitpä kymmenestä paikasta kuinka monta tahansa.",
-        "items": [
-          "Kaikki Freen ominaisuudet",
-          "Tilaa 10 jäsenelle",
-          "Kuusi kertaa enemmän kokoustunteja"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "Tiimille, jolle yksi pöytärivi on käynyt pieneksi.",
-        "items": [
-          "Kaikki Plusin ominaisuudet",
-          "Tilaa 25 jäsenelle",
-          "Kaksi kertaa Plusin tunnit",
-          "Isompi tarve? Ota yhteyttä"
-        ]
+        "name": "Pro"
       },
-      "hours": "Kokoustunteja {count} kuussa",
-      "tax": "Hinnat ovat kuukausihintoja ilman veroja."
+      "tax": "Hinnat ovat kuukausihintoja ilman veroja.",
+      "perPerson": "{price} / henkilö",
+      "freeLine": "Ei korttia",
+      "choose": "Valitse {plan}",
+      "note": "Joka paketissa on kaikki ominaisuudet. Puheluita ei lasketa; ryhmäkokouksiin on 5, 30 tai 60 tuntia kuussa."
     },
     "faq": {
       "title": "Kysymyksiä",

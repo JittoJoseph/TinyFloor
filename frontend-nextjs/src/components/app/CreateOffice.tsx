@@ -59,6 +59,12 @@ export function CreateOfficeFlow() {
   const [office, setOffice] = useState<Office | null>(null);
   const [size, setSize] = useState<TeamSize | null>(null);
   const [chosen, setChosen] = useState<Exclude<PlanId, "free"> | null>(null);
+  // Chosen on the pricing page (/create?plan=pro): picked here too, whatever size they say.
+  const [asked] = useState<Exclude<PlanId, "free"> | null>(() => {
+    if (typeof window === "undefined") return null;
+    const asked = new URLSearchParams(window.location.search).get("plan");
+    return asked === "plus" || asked === "pro" ? asked : null;
+  });
   const [showIncluded, setShowIncluded] = useState(false);
   const includedList = useRef<HTMLUListElement>(null);
   const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
@@ -74,7 +80,7 @@ export function CreateOfficeFlow() {
   const typed = name.trim();
   const steps: Step[] = selling ? ["name", "size", "plan"] : ["name"];
   const recommended = SIZES.find((one) => one.id === size)?.plan ?? "plus";
-  const plan = chosen ?? recommended;
+  const plan = chosen ?? asked ?? recommended;
   const paid = catalog?.plans.filter((one): one is Plan & { id: "plus" | "pro" } => one.id !== "free") ?? [];
   const picked = paid.find((one) => one.id === plan);
   const free = catalog?.plans.find((one) => one.id === "free");

@@ -1214,11 +1214,8 @@
         "invites": "Inbjudningar"
       },
       "lobbyTitle": "Lobbyn är öppen",
-      "lobbyBody": "Gå runt på ett riktigt våningsplan innan du skapar ditt eget. Inget konto behövs.",
       "menu": "Meny",
       "teams": "För team",
-      "teamTitle": "Gjort för distansteam",
-      "teamBody": "Gratis för upp till 3 personer, större planer är på väg.",
       "cases": {
         "virtualOffice": "En plats för ditt distansteam",
         "virtualCoworking": "Jobba fokuserat bland andra",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Mottagningstider och små klasser",
         "proximityChat": "Prata med den du går fram till"
       },
-      "getStarted": "Kom igång"
+      "getStarted": "Kom igång",
+      "lobbyLine": "Gå runt på en riktig våning. Inget konto."
     },
     "hero": {
       "title": "Ett virtuellt kontor som ditt team kan gå runt i.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Priser",
       "title": "Pris per kontor,",
       "muted": "inte per person.",
-      "body": "Börja gratis. Alla planer har allt; de större rymmer fler och fler mötestimmar.",
+      "body": "Börja gratis. Byt upp när teamet växer.",
       "soon": "Kommer snart",
       "forever": "för alltid",
       "month": "i månaden",
       "people": "Upp till {count} personer",
       "free": {
-        "name": "Free",
-        "body": "Hela produkten, för en liten studio eller två grundare.",
-        "items": [
-          "En privat våning",
-          "Samtal och möten",
-          "Chatt, bilder och filer",
-          "Alla funktioner, ingen provperiod"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Ett pris för hela kontoret, hur många av de tio platserna du än fyller.",
-        "items": [
-          "Allt i Free",
-          "Plats för 10 medlemmar",
-          "Sex gånger så många mötestimmar"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "För teamet som har vuxit ur en rad skrivbord.",
-        "items": [
-          "Allt i Plus",
-          "Plats för 25 medlemmar",
-          "Dubbelt så många timmar som Plus",
-          "Större? Hör av dig"
-        ]
+        "name": "Pro"
       },
-      "hours": "{count} mötestimmar i månaden",
-      "tax": "Priserna är per månad, exklusive moms."
+      "tax": "Priserna är per månad, exklusive moms.",
+      "perPerson": "{price} per person",
+      "freeLine": "Inget kort behövs",
+      "choose": "Välj {plan}",
+      "note": "Alla planer har alla funktioner. Samtal räknas aldrig; gruppmöten får 5, 30 eller 60 timmar i månaden."
     },
     "faq": {
       "title": "Frågor,",

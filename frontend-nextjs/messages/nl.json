@@ -1214,11 +1214,8 @@
         "invites": "Uitnodigingen"
       },
       "lobbyTitle": "De lobby is open",
-      "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
       "menu": "Menu",
       "teams": "Voor teams",
-      "teamTitle": "Gemaakt voor remote teams",
-      "teamBody": "Gratis voor maximaal 3 mensen, grotere abonnementen komen eraan.",
       "cases": {
         "virtualOffice": "Een plek voor je remote team",
         "virtualCoworking": "Geconcentreerd werken naast anderen",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "Spreekuren en kleine klassen",
         "proximityChat": "Praat met wie je tegenkomt"
       },
-      "getStarted": "Aan de slag"
+      "getStarted": "Aan de slag",
+      "lobbyLine": "Loop rond op een echte vloer. Geen account nodig."
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
@@ -1467,42 +1465,25 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Begin gratis. Elk abonnement heeft alles; de grotere hebben plek voor meer mensen en meer vergaderuren.",
+      "body": "Begin gratis. Stap over als je team groeit.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
       "people": "Tot {count} mensen",
       "free": {
-        "name": "Free",
-        "body": "Het hele product, voor een kleine studio of twee oprichters.",
-        "items": [
-          "Een eigen vloer",
-          "Gesprekken en vergaderingen",
-          "Chat, afbeeldingen en bestanden",
-          "Alle functies, geen proefperiode"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
-        "items": [
-          "Alles uit Free",
-          "Plek voor 10 leden",
-          "Zes keer zoveel vergaderuren"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "Voor het team dat één rij bureaus is ontgroeid.",
-        "items": [
-          "Alles uit Plus",
-          "Plek voor 25 leden",
-          "Twee keer zoveel uren als Plus",
-          "Groter? Neem contact op"
-        ]
+        "name": "Pro"
       },
-      "hours": "{count} vergaderuren per maand",
-      "tax": "Prijzen per maand, exclusief btw."
+      "tax": "Prijzen per maand, exclusief btw.",
+      "perPerson": "{price} per persoon",
+      "freeLine": "Geen kaart nodig",
+      "choose": "Kies {plan}",
+      "note": "Elk abonnement heeft alle functies. Gesprekken tellen nooit mee; groepsvergaderingen krijgen 5, 30 of 60 uur per maand."
     },
     "faq": {
       "title": "Vragen,",

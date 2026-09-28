@@ -1214,11 +1214,8 @@
         "invites": "邀请"
       },
       "lobbyTitle": "大厅正开放",
-      "lobbyBody": "先在真实的楼层里走走，再建自己的办公室。无需账号。",
       "menu": "菜单",
       "teams": "团队方案",
-      "teamTitle": "为远程团队打造",
-      "teamBody": "最多 3 人免费，更大的方案即将推出。",
       "cases": {
         "virtualOffice": "远程团队的共同空间",
         "virtualCoworking": "在大家身边专注工作",
@@ -1226,7 +1223,8 @@
         "virtualClassroom": "答疑时间和小班课",
         "proximityChat": "走近谁就和谁聊"
       },
-      "getStarted": "开始使用"
+      "getStarted": "开始使用",
+      "lobbyLine": "逛逛真实的楼层，无需账号。"
     },
     "hero": {
       "title": "一个团队可以四处走动的虚拟办公室。",
@@ -1467,42 +1465,25 @@
       "eyebrow": "价格",
       "title": "按办公室计价，",
       "muted": "而不是按人头。",
-      "body": "免费开始。每个方案功能齐全；更大的方案容纳更多人和更多会议时长。",
+      "body": "免费开始，团队壮大后再升级。",
       "soon": "即将推出",
       "forever": "永久",
       "month": "/月",
       "people": "最多 {count} 人",
       "free": {
-        "name": "Free",
-        "body": "完整的产品，适合小工作室或两位创始人。",
-        "items": [
-          "私密楼层",
-          "通话与会议",
-          "聊天、图片和文件",
-          "全部功能，无需试用"
-        ]
+        "name": "Free"
       },
       "plus": {
-        "name": "Plus",
-        "body": "整个办公室一个价格，十个席位用多少都一样。",
-        "items": [
-          "Free 的全部功能",
-          "可容纳 10 名成员",
-          "6 倍会议时长"
-        ]
+        "name": "Plus"
       },
       "pro": {
-        "name": "Pro",
-        "body": "适合一排工位已经坐不下的团队。",
-        "items": [
-          "Plus 的全部功能",
-          "可容纳 25 名成员",
-          "Plus 的 2 倍会议时长",
-          "团队更大？联系我们"
-        ]
+        "name": "Pro"
       },
-      "hours": "每月 {count} 小时会议时长",
-      "tax": "价格为月付，不含税。"
+      "tax": "价格为月付，不含税。",
+      "perPerson": "每人 {price}",
+      "freeLine": "无需信用卡",
+      "choose": "选择 {plan}",
+      "note": "每个方案功能齐全。通话从不计时；团队会议每月 5、30 或 60 小时。"
     },
     "faq": {
       "title": "常见问题，",

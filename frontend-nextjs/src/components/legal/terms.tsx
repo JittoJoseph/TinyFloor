@@ -64,10 +64,13 @@ export const termsSections: LegalSection[] = [
           Whoever makes an office owns it. Its admins decide who is a member and can invite people, by email or with an invite link. Anyone
           with an invite link can join the office with an account until the link expires, is used up or is revoked, so share links with care.
         </li>
-        <li>The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.</li>
         <li>
-          Each office has a plan, which sets how many members it can hold: up to 3 on the free plan, more on the paid plans below. Guests in
-          the public lobby, and people invited but not yet joined, don&apos;t count.
+          The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.
+          An office on a paid plan that still renews has to cancel the plan first; deleting the office then ends the plan straight away.
+        </li>
+        <li>
+          Each office has a plan, which sets how many members it can hold and how many meeting hours it has each month: 3 members and 5
+          hours on the free plan, more on the paid plans below. People invited but not yet joined don&apos;t count.
         </li>
       </ul>
     ),
@@ -87,13 +90,19 @@ export const termsSections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>What you pay for.</strong> A paid plan lets an office hold more members. Every plan, the free one included, has every
-            feature. The plans, their prices and their member limits are on our <Link href="/#plans">pricing</Link>, and are shown again
-            before you pay.
+            <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours. Every plan, the
+            free one included, has every feature. The plans, their prices, member limits and meeting hours are on our{" "}
+            <Link href="/#plans">pricing</Link>, and are shown again before you pay.
           </li>
           <li>
-            <strong>Billing.</strong> Plans are billed in advance, monthly or yearly, and renew automatically at the end of each period until
-            you cancel. Prices don&apos;t include tax; Paddle adds sales tax or VAT where it applies.
+            <strong>Meeting hours.</strong> An office&apos;s meeting hours are the time its meetings have two or more people in them, added up
+            over each calendar month (UTC). Calls between two people on the floor don&apos;t count. Once an office has used its hours, its
+            meetings carry on with voice only until the 1st of the next month, or until it moves to a bigger plan. Unused hours don&apos;t carry
+            over. Meetings in the public lobby have their own daily allowance.
+          </li>
+          <li>
+            <strong>Billing.</strong> Plans are billed monthly, in advance, and renew automatically at the end of each month until you cancel.
+            Prices don&apos;t include tax; Paddle adds sales tax or VAT where it applies.
           </li>
           <li>
             <strong>Who manages it.</strong> An office&apos;s admins can choose, change and cancel its plan. The plan belongs to the office,

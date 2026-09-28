@@ -23,10 +23,7 @@ export default defineConfig(async () => ({
           PADDLE_CLIENT_TOKEN: "test_client_token",
           PADDLE_API_KEY: "test-paddle-key",
           PADDLE_WEBHOOK_SECRET: "pdl_ntfset_test",
-          PADDLE_PRICES: JSON.stringify({
-            team: { month: "pri_team_month", year: "pri_team_year" },
-            business: { month: "pri_business_month", year: "pri_business_year" },
-          }),
+          PADDLE_PRICES: JSON.stringify({ team: "pri_team_month", business: "pri_business_month" }),
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
         workers: [

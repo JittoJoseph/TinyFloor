@@ -6,6 +6,7 @@ import {
   type Office,
   type OfficeRole,
 } from "./access";
+import { endBillingForClosing } from "./billing";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
@@ -67,8 +68,13 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
+      // A paid plan is cancelled first, on purpose (docs/14); closing then stops it for good.
+      await endBillingForClosing(env, params.id);
       // Members and invites go with it (ON DELETE CASCADE), and so do its floor and chat.
-      await env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id).run();
+      await env.DB.batch([
+        env.DB.prepare("DELETE FROM usage_monthly WHERE office_id = ?").bind(params.id),
+        env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id),
+      ]);
       await realtime(env).forgetOffice(params.id);
       return json({ ok: true });
     })

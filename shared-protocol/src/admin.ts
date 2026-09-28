@@ -17,6 +17,8 @@ export interface RealtimeAdminApi {
   lobbyChat(channel: string, before?: number): Promise<LobbyChatPage>;
   /** Changes or takes down a message in the lobby's chat. False when it is already gone. */
   moderateLobbyChat(seq: number, change: { body: string } | { remove: true }): Promise<boolean>;
+  /** An office's plan changed: its meeting hours a month, so a bigger plan lifts a pause at once. */
+  setMeetingAllowance(officeId: string, hours: number): Promise<void>;
   /** A new office: the team hears about it on Discord. */
   officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void>;
 }

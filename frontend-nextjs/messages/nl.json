@@ -66,7 +66,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Grotere kantoren kosten $ 19 per maand voor 10 mensen en $ 49 voor 25."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor tot 3 mensen ook, met 5 vergaderuren per maand. Grotere kantoren kosten $19 per maand voor 10 mensen en 30 vergaderuren, of $49 voor 25 mensen en 60 uur."
       },
       {
         "q": "Moet ik iets installeren?",
@@ -933,7 +933,8 @@
       "leave": "Dit kantoor verlaten",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "plan": "{plan} · {used} van {seats} plekken",
-      "danger": "Verlaten of sluiten"
+      "danger": "Verlaten of sluiten",
+      "cancelPlanFirst": "Zeg eerst het abonnement van dit kantoor op onder Abonnement en facturering. Daarna kan het dicht."
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -1095,7 +1096,15 @@
     "ended": "Die meeting is afgelopen",
     "rejoin": "Opnieuw meedoen",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "Een gesprek is met z'n tweeën: start een meeting voor jullie drie"
+    "makeMeetingHint": "Een gesprek is met z'n tweeën: start een meeting voor jullie drie",
+    "hours": {
+      "usedMonth": "{used} van {allowance} vergaderuren gebruikt deze maand",
+      "usedToday": "{used} van {allowance} vergaderuren gebruikt vandaag",
+      "more": "Meer uren",
+      "paused": "Video gepauzeerd",
+      "pausedMonth": "alleen geluid tot {date}",
+      "pausedToday": "alleen geluid tot morgen"
+    }
   },
   "shell": {
     "floor": "Vloer",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Begin gratis. Elk abonnement heeft alles, en gasten tellen nooit mee.",
+      "body": "Begin gratis. Elk abonnement heeft alles; de grotere hebben plek voor meer mensen en meer vergaderuren.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
@@ -1452,31 +1461,33 @@
         "name": "Free",
         "body": "Het hele product, voor een kleine studio of twee oprichters.",
         "items": [
-          "Een eigen verdieping",
+          "Een eigen vloer",
           "Gesprekken en vergaderingen",
           "Chat, afbeeldingen en bestanden",
-          "Gasten via een link"
+          "Alle functies, geen proefperiode"
         ]
       },
       "team": {
         "name": "Team",
         "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
         "items": [
-          "Alles van Free",
-          "Ruimte voor 10 leden",
-          "Jaarlijks: twee maanden gratis"
+          "Alles uit Free",
+          "Plek voor 10 leden",
+          "Zes keer zoveel vergaderuren"
         ]
       },
       "business": {
         "name": "Business",
         "body": "Voor het team dat één rij bureaus is ontgroeid.",
         "items": [
-          "Alles van Team",
-          "Ruimte voor 25 leden",
-          "Voorrang bij support",
+          "Alles uit Team",
+          "Plek voor 25 leden",
+          "Twee keer zoveel uren als Team",
           "Groter? Neem contact op"
         ]
-      }
+      },
+      "hours": "{count} vergaderuren per maand",
+      "tax": "Prijzen per maand, exclusief btw."
     },
     "faq": {
       "title": "Vragen,",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "Dit kantoor zit op",
     "members": "{used} van {seats} leden",
-    "freeNote": "Gratis voor maximaal {seats} leden, met alle functies.",
-    "renews": "Verlengt op {date} · {price} {per}",
+    "freeNote": "Gratis, met alle functies.",
+    "renews": "Verlengt op {date}",
     "ends": "Eindigt op {date}, daarna het gratis abonnement",
     "perMonth": "per maand",
-    "perYear": "per jaar",
     "pastDue": "De laatste betaling is niet gelukt. Paddle probeert het opnieuw; werk de kaart bij om het abonnement te houden.",
     "updateCard": "Kaart bijwerken",
     "keep": "Dit abonnement houden",
     "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",
     "settingUpSlow": "Betaling ontvangen. Het abonnement kan een minuut nodig hebben; vernieuw als het er nog niet is.",
     "plans": "Abonnementen",
-    "billedEvery": "Facturering",
-    "monthly": "Maandelijks",
-    "yearly": "Jaarlijks",
-    "twoFree": "2 maanden gratis",
     "currentPlan": "Huidig abonnement",
     "cancel": "Abonnement opzeggen",
     "tooMany": "Meer leden dan erin passen",
-    "toYearly": "Jaarlijks betalen",
-    "toMonthly": "Maandelijks betalen",
     "switch": "Wisselen",
     "choose": "Kiezen",
     "upTo": "Tot {count} leden",
-    "fine": "Prijzen zijn exclusief belasting. Betalingen lopen via Paddle, onze wederverkoper. Vraag binnen 14 dagen na een betaling een volledige terugbetaling.",
-    "invoices": "Betalingen en facturen",
+    "fine": "Prijzen zijn per maand, in Amerikaanse dollars, exclusief btw. Betalingen lopen via Paddle, onze wederverkoper. Vraag binnen 14 dagen na een betaling om alles terug te krijgen.",
     "adminsOnly": "Alleen beheerders van het kantoor kunnen het abonnement wijzigen.",
     "switchTitle": "Overstappen naar {plan}?",
     "switchBody": "Paddle rekent het verschil voor de rest van de periode meteen af of crediteert het. Niemand op de vloer merkt er iets van.",
     "cancelTitle": "Abonnement opzeggen?",
-    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar gratis. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer zijn.",
-    "cancelBodyNow": "Het kantoor gaat aan het eind van de periode terug naar gratis. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer zijn.",
+    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
+    "cancelBodyNow": "Aan het eind van deze periode gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
     "moreSeats": "Meer plekken",
+    "membersLabel": "Leden",
+    "hoursLabel": "Vergaderuren",
+    "hours": "{used} van {allowance} u",
+    "hoursResets": "Begint opnieuw op {date}",
+    "hoursUsedUp": "De vergaderuren van deze maand zijn op: vergaderingen zijn tot {date} alleen met geluid. Een groter abonnement brengt video meteen terug.",
+    "from": "Vanaf {date}",
+    "hoursAMonth": "{count} vergaderuren per maand",
+    "hoursExplained": "Vergaderuren tellen de tijd dat er twee of meer mensen in een vergadering zijn. Gesprekken met z'n tweeën op de vloer tellen nooit mee. Zijn ze op, dan gaan vergaderingen tot de 1e verder met geluid.",
+    "payment": "Betaling",
+    "cardUnknown": "Kaart opgeslagen bij Paddle",
+    "card": "Kaart",
+    "cardEnding": "{brand} eindigend op {last4}",
+    "expires": "Verloopt {date}",
+    "update": "Wijzigen",
+    "nextCharge": "Volgende afschrijving",
+    "chargeOn": "{amount} op {date}",
+    "noneAfter": "Geen, het abonnement stopt op {date}",
+    "history": "Betalingsgeschiedenis",
+    "noPayments": "Nog geen betalingen.",
+    "planPayment": "{plan}-abonnement",
+    "invoice": "Factuur downloaden",
+    "status": {
+      "refunded": "Terugbetaald",
+      "partly_refunded": "Deels terugbetaald",
+      "failed": "Mislukt",
+      "due": "Openstaand"
+    },
     "errors": {
       "tooManyMembers": "Dit kantoor heeft meer leden dan dat abonnement toelaat. Verwijder er eerst een paar.",
       "hasSubscription": "Dit kantoor heeft al een abonnement. Wijzig het in plaats daarvan.",

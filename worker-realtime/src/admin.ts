@@ -64,6 +64,10 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     return this.env.CHAT.getByName(LOBBY_CHAT).moderate(seq, change);
   }
 
+  async setMeetingAllowance(officeId: string, hours: number): Promise<void> {
+    await this.env.ROOM.getByName(officeId).setMeetingAllowance(officeId, hours);
+  }
+
   /** A new office, for the team's Discord. The webhook lives here, with the lobby's. */
   async officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void> {
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "office_created", ...event });

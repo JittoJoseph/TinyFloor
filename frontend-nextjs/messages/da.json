@@ -66,7 +66,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Den offentlige lobby er gratis for alle, og det er et kontor til op til 3 personer også. Større kontorer koster 19 $ om måneden for 10 personer og 49 $ for 25."
+        "a": "Ja. Den offentlige lobby er gratis for alle, og det samme er et kontor til op til 3 personer med 5 mødetimer om måneden. Større kontorer koster $19 om måneden for 10 personer og 30 mødetimer, eller $49 for 25 personer og 60 timer."
       },
       {
         "q": "Skal jeg installere noget?",
@@ -933,7 +933,8 @@
       "leave": "Forlad dette kontor",
       "wrong": "Det virkede ikke. Prøv igen.",
       "plan": "{plan} · {used} af {seats} pladser",
-      "danger": "Forlad eller luk"
+      "danger": "Forlad eller luk",
+      "cancelPlanFirst": "Opsig først kontorets plan under Plan og betaling. Så kan det lukkes."
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -1095,7 +1096,15 @@
     "ended": "Det møde er slut",
     "rejoin": "Deltag igen",
     "makeMeeting": "Møde",
-    "makeMeetingHint": "Et opkald er to personer: start et møde for jer tre"
+    "makeMeetingHint": "Et opkald er to personer: start et møde for jer tre",
+    "hours": {
+      "usedMonth": "{used} af {allowance} mødetimer brugt denne måned",
+      "usedToday": "{used} af {allowance} mødetimer brugt i dag",
+      "more": "Flere timer",
+      "paused": "Video sat på pause",
+      "pausedMonth": "kun lyd indtil {date}",
+      "pausedToday": "kun lyd indtil i morgen"
+    }
   },
   "shell": {
     "floor": "Gulvet",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
       "muted": "ikke pr. person.",
-      "body": "Start gratis. Alle planer har alt, og gæster tæller aldrig med.",
+      "body": "Start gratis. Alle planer har det hele; de større har plads til flere og flere mødetimer.",
       "soon": "Kommer snart",
       "forever": "for altid",
       "month": "om måneden",
@@ -1455,16 +1464,16 @@
           "En privat etage",
           "Opkald og møder",
           "Chat, billeder og filer",
-          "Gæster via link"
+          "Alle funktioner, ingen prøveperiode"
         ]
       },
       "team": {
         "name": "Team",
         "body": "Én pris for hele kontoret, uanset hvor mange af de ti pladser du fylder.",
         "items": [
-          "Alt i Free",
+          "Alt i Gratis",
           "Plads til 10 medlemmer",
-          "Årligt: to måneder gratis"
+          "Seks gange så mange mødetimer"
         ]
       },
       "business": {
@@ -1473,10 +1482,12 @@
         "items": [
           "Alt i Team",
           "Plads til 25 medlemmer",
-          "Prioriteret support",
+          "Dobbelt så mange timer som Team",
           "Større? Skriv til os"
         ]
-      }
+      },
+      "hours": "{count} mødetimer om måneden",
+      "tax": "Priserne er månedlige og uden moms."
     },
     "faq": {
       "title": "Spørgsmål,",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "Dette kontor er på",
     "members": "{used} af {seats} medlemmer",
-    "freeNote": "Gratis for op til {seats} medlemmer, med alle funktioner.",
-    "renews": "Fornyes {date} · {price} {per}",
+    "freeNote": "Gratis, med alle funktioner.",
+    "renews": "Fornyes {date}",
     "ends": "Slutter {date}, derefter gratisplanen",
     "perMonth": "om måneden",
-    "perYear": "om året",
     "pastDue": "Den seneste betaling gik ikke igennem. Paddle prøver kortet igen; opdater det for at beholde planen.",
     "updateCard": "Opdater kort",
     "keep": "Behold denne plan",
     "settingUp": "Betaling modtaget. Planen sættes op…",
     "settingUpSlow": "Betaling modtaget. Planen kan tage et minut om at vise sig; genindlæs, hvis den ikke er der.",
     "plans": "Planer",
-    "billedEvery": "Betaling",
-    "monthly": "Månedligt",
-    "yearly": "Årligt",
-    "twoFree": "2 måneder gratis",
     "currentPlan": "Nuværende plan",
     "cancel": "Opsig plan",
     "tooMany": "Flere medlemmer, end den har plads til",
-    "toYearly": "Betal årligt",
-    "toMonthly": "Betal månedligt",
     "switch": "Skift",
     "choose": "Vælg",
     "upTo": "Op til {count} medlemmer",
-    "fine": "Priserne er uden moms. Betalinger håndteres af Paddle, vores forhandler. Spørg inden for 14 dage efter en betaling for at få alt refunderet.",
-    "invoices": "Betalinger og fakturaer",
+    "fine": "Priserne er månedlige, i amerikanske dollar, og uden moms. Betalinger håndteres af Paddle, vores forhandler. Spørg inden for 14 dage efter en betaling for at få det hele refunderet.",
     "adminsOnly": "Kun kontorets administratorer kan ændre planen.",
     "switchTitle": "Skift til {plan}?",
     "switchBody": "Paddle opkræver eller krediterer forskellen for resten af perioden med det samme. Ingen på gulvet mærker noget.",
     "cancelTitle": "Opsig planen?",
-    "cancelBody": "Planen kører til {date}, derefter går kontoret tilbage til gratisplanen. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på gulvet ad gangen.",
-    "cancelBodyNow": "Kontoret går tilbage til gratisplanen ved periodens udløb. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på gulvet ad gangen.",
+    "cancelBody": "Planen kører til {date}, derefter går kontoret tilbage til gratisplanen: 3 medlemmer og 5 mødetimer om måneden. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på etagen ad gangen.",
+    "cancelBodyNow": "Kontoret går tilbage til gratisplanen ved periodens udløb: 3 medlemmer og 5 mødetimer om måneden. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på etagen ad gangen.",
     "moreSeats": "Få flere pladser",
+    "membersLabel": "Medlemmer",
+    "hoursLabel": "Mødetimer",
+    "hours": "{used} af {allowance} t",
+    "hoursResets": "Nulstilles {date}",
+    "hoursUsedUp": "Denne måneds mødetimer er brugt: møder er kun med lyd indtil {date}. En større plan giver video tilbage nu.",
+    "from": "Fra {date}",
+    "hoursAMonth": "{count} mødetimer om måneden",
+    "hoursExplained": "Mødetimer tæller den tid, et møde har to eller flere personer. Opkald mellem to personer på etagen tæller aldrig. Når de er brugt, fortsætter møder med lyd indtil den 1.",
+    "payment": "Betaling",
+    "cardUnknown": "Kort gemt hos Paddle",
+    "card": "Kort",
+    "cardEnding": "{brand} der slutter på {last4}",
+    "expires": "Udløber {date}",
+    "update": "Opdater",
+    "nextCharge": "Næste betaling",
+    "chargeOn": "{amount} den {date}",
+    "noneAfter": "Ingen, planen slutter {date}",
+    "history": "Betalingshistorik",
+    "noPayments": "Ingen betalinger endnu.",
+    "planPayment": "{plan}-plan",
+    "invoice": "Hent faktura",
+    "status": {
+      "refunded": "Refunderet",
+      "partly_refunded": "Delvist refunderet",
+      "failed": "Mislykket",
+      "due": "Forfalden"
+    },
     "errors": {
       "tooManyMembers": "Kontoret har flere medlemmer, end den plan har plads til. Fjern nogle først.",
       "hasSubscription": "Kontoret har allerede en plan. Skift den i stedet.",

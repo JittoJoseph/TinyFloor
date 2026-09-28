@@ -62,6 +62,26 @@ export interface MeetingInfo {
 /** Why the room turned a meeting request down. */
 export type MeetingErrorCode = "not_found";
 
+/**
+ * Meeting hours (docs/14): the time a meeting has two or more people in it,
+ * pooled across the place's meetings for the period. Past the allowance,
+ * meetings carry on with voice only until the period resets.
+ */
+export interface MeetingUsage {
+  /** Seconds used this period, as of when this was sent. */
+  used: number;
+  /** Seconds included in the period; null where there is no limit. */
+  allowance: number | null;
+  /** Meetings counting right now: `used` grows by this many seconds a second. */
+  live: number;
+  /** An office's allowance is monthly; a lobby copy's, daily. */
+  period: "month" | "day";
+  /** When `used` goes back to zero. */
+  resetsAt: number;
+  /** Video is paused in meetings until the reset (or a bigger plan). */
+  paused: boolean;
+}
+
 export interface BoardStroke {
   id: string;
   color: string;
@@ -155,7 +175,7 @@ export type ClientMessage =
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
-  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState; meetings: MeetingInfo[] }
+  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState; meetings: MeetingInfo[]; usage: MeetingUsage }
   | { t: "player_joined"; player: PlayerState }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number; d?: number }
@@ -169,6 +189,7 @@ export type ServerMessage =
   | { t: "meeting_member_left"; id: string }
   /** The meetings in the room, whole, whenever anyone joins, leaves or starts one. */
   | { t: "meetings"; meetings: MeetingInfo[] }
+  | { t: "meeting_usage"; usage: MeetingUsage }
   | { t: "speaking"; id: string; on: boolean }
   | { t: "meeting_invited"; from: string; fromName: string; meeting: string; name: string | null }
   | { t: "meeting_error"; code: MeetingErrorCode }

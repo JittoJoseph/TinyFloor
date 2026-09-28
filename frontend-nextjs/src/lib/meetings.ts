@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
+import { MAIN_MEETING, type MeetingInfo, type MeetingUsage } from "@shared/messages";
 
 /**
  * The office's meetings as the room tells them: the main one always, others
@@ -13,9 +13,13 @@ interface MeetingsState {
   meetings: MeetingInfo[];
   /** When each person last started or stopped talking, for choosing whose video to show. */
   spokeAt: ReadonlyMap<string, number>;
+  /** The place's meeting hours this period (docs/14), as the room last said. */
+  usage: MeetingUsage | null;
+  /** When it said so, for counting on from there. */
+  usageAt: number;
 }
 
-const EMPTY: MeetingsState = { meetings: [], spokeAt: new Map() };
+const EMPTY: MeetingsState = { meetings: [], spokeAt: new Map(), usage: null, usageAt: 0 };
 let state: MeetingsState = EMPTY;
 const listeners = new Set<() => void>();
 
@@ -31,7 +35,12 @@ export function setMeetings(meetings: MeetingInfo[]) {
   for (const meeting of meetings) {
     for (const member of meeting.members) if (member.speaking) spokeAt.set(member.id, now);
   }
-  set({ meetings, spokeAt });
+  set({ ...state, meetings, spokeAt });
+}
+
+/** The meeting hours, on arriving and whenever a meeting starts or stops counting. */
+export function setMeetingUsage(usage: MeetingUsage) {
+  set({ ...state, usage, usageAt: Date.now() });
 }
 
 /** Someone started or stopped talking in their meeting. */
@@ -43,7 +52,7 @@ export function setSpeaking(id: string, on: boolean) {
   );
   const spokeAt = new Map(state.spokeAt);
   spokeAt.set(id, Date.now());
-  set({ meetings, spokeAt });
+  set({ ...state, meetings, spokeAt });
 }
 
 /** The floor has gone: nothing is known about its meetings. */

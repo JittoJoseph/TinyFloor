@@ -60,6 +60,8 @@ export class SfuMeeting {
   private local: MediaStream | null = null;
   private flags: MediaFlags = { mic: false, camera: false, screen: false };
   private wanted: VideoWant[] = [];
+  /** Past the meeting hours: no video either way, voices only (docs/14). */
+  private videoPaused = false;
   private chain: Promise<unknown> = Promise.resolve();
   private waiter: Waiter | null = null;
   private closed = false;
@@ -230,7 +232,7 @@ export class SfuMeeting {
     if (!this.mic || !this.camera) return;
     const company = !this.alone;
     const voice = company && this.flags.mic ? (this.local?.getAudioTracks()[0] ?? null) : null;
-    const face = company && this.flags.camera ? (this.local?.getVideoTracks()[0] ?? null) : null;
+    const face = company && this.flags.camera && !this.videoPaused ? (this.local?.getVideoTracks()[0] ?? null) : null;
     if (this.mic.sender.track !== voice) void this.mic.sender.replaceTrack(voice).catch(() => {});
     if (this.camera.sender.track !== face) void this.camera.sender.replaceTrack(face).catch(() => {});
   }
@@ -257,9 +259,17 @@ export class SfuMeeting {
     this.reconcile();
   }
 
+  /** The room paused video, or lifted the pause: our camera and everyone's video follow. */
+  pauseVideo(paused: boolean) {
+    if (this.videoPaused === paused) return;
+    this.videoPaused = paused;
+    this.fillSlots();
+    this.reconcile();
+  }
+
   private reconcile() {
     if (this.closed) return;
-    const wanted = new Map(this.wanted.map((video) => [`${video.userId}:${video.kind}`, video]));
+    const wanted = new Map((this.videoPaused ? [] : this.wanted).map((video) => [`${video.userId}:${video.kind}`, video]));
 
     const drop: string[] = [];
     for (const peer of this.peers.values()) {

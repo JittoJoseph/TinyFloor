@@ -446,7 +446,9 @@ function OfficeSection() {
     try {
       await action();
     } catch (problem) {
-      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+      // A paid plan is cancelled first, on purpose, from the plan section (docs/14).
+      if (problem instanceof ApiError && problem.code === "cancel_plan_first") setError(t("cancelPlanFirst"));
+      else setError(problem instanceof ApiError ? problem.message : t("wrong"));
     } finally {
       setBusy(false);
     }

@@ -224,6 +224,8 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
+  /** The place is past its meeting hours: meetings are voice only (docs/14). */
+  private videoPaused = false;
   private local: MediaStream | null = null;
   /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
   private rawMic: MediaStreamTrack | null = null;
@@ -582,6 +584,14 @@ class CallManager {
     this.refreshStage();
   }
 
+  /** From the room: past the meeting hours, or back within them. */
+  setVideoPaused(paused: boolean) {
+    if (this.videoPaused === paused) return;
+    this.videoPaused = paused;
+    this.sfu?.pauseVideo(paused);
+    this.emit();
+  }
+
   /** Whose video to receive now, and how sharp; the SFU is asked for exactly that. */
   private refreshStage() {
     const sfu = this.sfu;
@@ -752,6 +762,7 @@ class CallManager {
       this.iceServers,
     );
     this.sfu = sfu;
+    sfu.pauseVideo(this.videoPaused);
     members.forEach((member) => sfu.addMember(member.id, member.name));
     if (!moving) playSound("connect");
     window.dispatchEvent(new Event(WALK_TO_MEETING_EVENT));

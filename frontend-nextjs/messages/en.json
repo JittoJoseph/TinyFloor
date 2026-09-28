@@ -66,7 +66,7 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Bigger offices are $19 a month for 10 people and $49 for 25."
+        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people, with 5 meeting hours a month. Bigger offices are $19 a month for 10 people and 30 meeting hours, or $49 for 25 people and 60 hours."
       },
       {
         "q": "Do I need to install anything?",
@@ -933,7 +933,8 @@
       "leave": "Leave this office",
       "wrong": "That didn't work. Try again.",
       "plan": "{plan} · {used} of {seats} seats",
-      "danger": "Leaving or closing"
+      "danger": "Leaving or closing",
+      "cancelPlanFirst": "Cancel this office's plan first, in Plan and billing. Then it can be closed."
     },
     "profile": {
       "changePassword": "Change password",
@@ -1095,7 +1096,15 @@
     "ended": "That meeting has ended",
     "rejoin": "Rejoin",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "A call is two people: start a meeting for the three of you"
+    "makeMeetingHint": "A call is two people: start a meeting for the three of you",
+    "hours": {
+      "usedMonth": "{used} of {allowance} meeting hours used this month",
+      "usedToday": "{used} of {allowance} meeting hours used today",
+      "more": "More hours",
+      "paused": "Video paused",
+      "pausedMonth": "voice only until {date}",
+      "pausedToday": "voice only until tomorrow"
+    }
   },
   "shell": {
     "floor": "Floor",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
       "muted": "not by the person.",
-      "body": "Start free. Every plan has everything, and guests never count.",
+      "body": "Start free. Every plan has everything; the bigger ones hold more people and more meeting hours.",
       "soon": "Coming soon",
       "forever": "forever",
       "month": "a month",
@@ -1455,7 +1464,7 @@
           "A private floor",
           "Calls and meetings",
           "Chat, images and files",
-          "Guests on a link"
+          "Every feature, no trial"
         ]
       },
       "team": {
@@ -1464,7 +1473,7 @@
         "items": [
           "Everything in Free",
           "Room for 10 members",
-          "Yearly: two months free"
+          "Six times the meeting hours"
         ]
       },
       "business": {
@@ -1473,10 +1482,12 @@
         "items": [
           "Everything in Team",
           "Room for 25 members",
-          "Priority support",
+          "Twice Team's meeting hours",
           "Bigger? Talk to us"
         ]
-      }
+      },
+      "hours": "{count} meeting hours a month",
+      "tax": "Prices are monthly and don't include tax."
     },
     "faq": {
       "title": "Questions,",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "This office is on",
     "members": "{used} of {seats} members",
-    "freeNote": "Free for up to {seats} members, with every feature.",
-    "renews": "Renews on {date} · {price} {per}",
+    "freeNote": "Free, with every feature.",
+    "renews": "Renews on {date}",
     "ends": "Ends on {date}, then the free plan",
     "perMonth": "a month",
-    "perYear": "a year",
     "pastDue": "The last payment didn't go through. Paddle will try the card again; update it to keep the plan.",
     "updateCard": "Update card",
     "keep": "Keep this plan",
     "settingUp": "Payment received. Setting up the plan…",
     "settingUpSlow": "Payment received. The plan can take a minute to show; refresh if it hasn't.",
     "plans": "Plans",
-    "billedEvery": "Billed",
-    "monthly": "Monthly",
-    "yearly": "Yearly",
-    "twoFree": "2 months free",
     "currentPlan": "Current plan",
     "cancel": "Cancel plan",
     "tooMany": "More members than this holds",
-    "toYearly": "Pay yearly",
-    "toMonthly": "Pay monthly",
     "switch": "Switch",
     "choose": "Choose",
     "upTo": "Up to {count} members",
-    "fine": "Prices don't include tax. Payments are handled by Paddle, our reseller. Ask within 14 days of a payment for a full refund.",
-    "invoices": "Payments and invoices",
+    "fine": "Prices are monthly, in US dollars, and don't include tax. Payments are handled by Paddle, our reseller. Ask within 14 days of a payment for a full refund.",
     "adminsOnly": "Only an office's admins can change its plan.",
     "switchTitle": "Switch to {plan}?",
     "switchBody": "Paddle charges or credits the difference for the time left in this period, straight away. Nobody on the floor notices a thing.",
     "cancelTitle": "Cancel the plan?",
-    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan. Nobody is removed, but no one new can join and only 3 can be on the floor at once.",
-    "cancelBodyNow": "The office goes back to the free plan at the end of this period. Nobody is removed, but no one new can join and only 3 can be on the floor at once.",
+    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
+    "cancelBodyNow": "The office goes back to the free plan at the end of this period: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
     "moreSeats": "Get more seats",
+    "membersLabel": "Members",
+    "hoursLabel": "Meeting hours",
+    "hours": "{used} of {allowance} h",
+    "hoursResets": "Resets {date}",
+    "hoursUsedUp": "This month's meeting hours are used: meetings are voice only until {date}. A bigger plan brings video back now.",
+    "from": "From {date}",
+    "hoursAMonth": "{count} meeting hours a month",
+    "hoursExplained": "Meeting hours count the time a meeting has two or more people in it. Calls between two people on the floor never count. Past them, meetings carry on with voice until the 1st.",
+    "payment": "Payment",
+    "cardUnknown": "Card on file with Paddle",
+    "card": "Card",
+    "cardEnding": "{brand} ending in {last4}",
+    "expires": "Expires {date}",
+    "update": "Update",
+    "nextCharge": "Next charge",
+    "chargeOn": "{amount} on {date}",
+    "noneAfter": "None, the plan ends {date}",
+    "history": "Billing history",
+    "noPayments": "No payments yet.",
+    "planPayment": "{plan} plan",
+    "invoice": "Download invoice",
+    "status": {
+      "refunded": "Refunded",
+      "partly_refunded": "Partly refunded",
+      "failed": "Failed",
+      "due": "Due"
+    },
     "errors": {
       "tooManyMembers": "This office has more members than that plan holds. Remove some first.",
       "hasSubscription": "This office already has a plan. Switch it instead.",

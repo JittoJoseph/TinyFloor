@@ -66,7 +66,7 @@
       },
       {
         "q": "TinyFloor è gratuito?",
-        "a": "Sì. La lobby pubblica è gratuita per tutti, così come un ufficio fino a 3 persone. Gli uffici più grandi costano 19 $ al mese per 10 persone e 49 $ per 25."
+        "a": "Sì. La lobby pubblica è gratis per tutti, così come un ufficio fino a 3 persone, con 5 ore di riunione al mese. Gli uffici più grandi costano $19 al mese per 10 persone e 30 ore di riunione, o $49 per 25 persone e 60 ore."
       },
       {
         "q": "Devo installare qualcosa?",
@@ -933,7 +933,8 @@
       "leave": "Lascia questo ufficio",
       "wrong": "Non ha funzionato. Riprova.",
       "plan": "{plan} · {used} di {seats} posti",
-      "danger": "Lasciare o chiudere"
+      "danger": "Lasciare o chiudere",
+      "cancelPlanFirst": "Annulla prima il piano di questo ufficio in Piano e fatturazione. Poi potrai chiuderlo."
     },
     "profile": {
       "changePassword": "Cambia password",
@@ -1095,7 +1096,15 @@
     "ended": "Quella riunione è finita",
     "rejoin": "Rientra",
     "makeMeeting": "Riunione",
-    "makeMeetingHint": "Una chiamata è in due: avvia una riunione per voi tre"
+    "makeMeetingHint": "Una chiamata è in due: avvia una riunione per voi tre",
+    "hours": {
+      "usedMonth": "{used} di {allowance} ore di riunione usate questo mese",
+      "usedToday": "{used} di {allowance} ore di riunione usate oggi",
+      "more": "Più ore",
+      "paused": "Video in pausa",
+      "pausedMonth": "solo audio fino al {date}",
+      "pausedToday": "solo audio fino a domani"
+    }
   },
   "shell": {
     "floor": "Piano",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Prezzi",
       "title": "Si paga per ufficio,",
       "muted": "non per persona.",
-      "body": "Inizia gratis. Ogni piano include tutto, e gli ospiti non contano mai.",
+      "body": "Inizia gratis. Ogni piano ha tutto; i più grandi hanno posto per più persone e più ore di riunione.",
       "soon": "In arrivo",
       "forever": "per sempre",
       "month": "al mese",
@@ -1455,28 +1464,30 @@
           "Un piano privato",
           "Chiamate e riunioni",
           "Chat, immagini e file",
-          "Ospiti con un link"
+          "Tutte le funzioni, senza prova"
         ]
       },
       "team": {
         "name": "Team",
         "body": "Un solo prezzo per tutto l'ufficio, comunque riempi i dieci posti.",
         "items": [
-          "Tutto di Free",
-          "Spazio per 10 membri",
-          "Annuale: due mesi gratis"
+          "Tutto quello di Free",
+          "Posto per 10 membri",
+          "Sei volte le ore di riunione"
         ]
       },
       "business": {
         "name": "Business",
         "body": "Per il team che ha superato una fila di scrivanie.",
         "items": [
-          "Tutto di Team",
-          "Spazio per 25 membri",
-          "Supporto prioritario",
-          "Più grande? Parliamone"
+          "Tutto quello di Team",
+          "Posto per 25 membri",
+          "Il doppio delle ore di Team",
+          "Più grandi? Scrivici"
         ]
-      }
+      },
+      "hours": "{count} ore di riunione al mese",
+      "tax": "Prezzi mensili, tasse escluse."
     },
     "faq": {
       "title": "Domande,",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "Questo ufficio è su",
     "members": "{used} di {seats} membri",
-    "freeNote": "Gratis fino a {seats} membri, con tutte le funzioni.",
-    "renews": "Si rinnova il {date} · {price} {per}",
+    "freeNote": "Gratis, con tutte le funzioni.",
+    "renews": "Si rinnova il {date}",
     "ends": "Termina il {date}, poi il piano gratuito",
     "perMonth": "al mese",
-    "perYear": "all'anno",
     "pastDue": "L'ultimo pagamento non è andato a buon fine. Paddle riproverà la carta; aggiornala per mantenere il piano.",
     "updateCard": "Aggiorna carta",
     "keep": "Mantieni questo piano",
     "settingUp": "Pagamento ricevuto. Attivazione del piano…",
     "settingUpSlow": "Pagamento ricevuto. Il piano può metterci un minuto a comparire; ricarica se non lo vedi.",
     "plans": "Piani",
-    "billedEvery": "Fatturazione",
-    "monthly": "Mensile",
-    "yearly": "Annuale",
-    "twoFree": "2 mesi gratis",
     "currentPlan": "Piano attuale",
     "cancel": "Annulla piano",
     "tooMany": "Più membri di quanti ne ospita",
-    "toYearly": "Paga annualmente",
-    "toMonthly": "Paga mensilmente",
     "switch": "Cambia",
     "choose": "Scegli",
     "upTo": "Fino a {count} membri",
-    "fine": "I prezzi non includono le tasse. I pagamenti sono gestiti da Paddle, il nostro rivenditore. Chiedi il rimborso completo entro 14 giorni da un pagamento.",
-    "invoices": "Pagamenti e fatture",
+    "fine": "I prezzi sono mensili, in dollari USA, tasse escluse. I pagamenti sono gestiti da Paddle, il nostro rivenditore. Chiedi entro 14 giorni da un pagamento per un rimborso completo.",
     "adminsOnly": "Solo gli amministratori dell'ufficio possono cambiarne il piano.",
     "switchTitle": "Passare a {plan}?",
     "switchBody": "Paddle addebita o accredita subito la differenza per il resto del periodo. Nessuno sul piano se ne accorge.",
     "cancelTitle": "Annullare il piano?",
-    "cancelBody": "Il piano resta attivo fino al {date}, poi l'ufficio torna al piano gratuito. Nessuno viene rimosso, ma nessun nuovo membro può unirsi e solo 3 possono stare sul piano insieme.",
-    "cancelBodyNow": "L'ufficio torna al piano gratuito alla fine del periodo. Nessuno viene rimosso, ma nessun nuovo membro può unirsi e solo 3 possono stare sul piano insieme.",
+    "cancelBody": "Il piano dura fino al {date}, poi l'ufficio torna al piano gratuito: 3 membri e 5 ore di riunione al mese. Nessuno viene rimosso, ma nessun altro può entrare e solo 3 possono stare sul piano insieme.",
+    "cancelBodyNow": "L'ufficio torna al piano gratuito alla fine di questo periodo: 3 membri e 5 ore di riunione al mese. Nessuno viene rimosso, ma nessun altro può entrare e solo 3 possono stare sul piano insieme.",
     "moreSeats": "Ottieni più posti",
+    "membersLabel": "Membri",
+    "hoursLabel": "Ore di riunione",
+    "hours": "{used} di {allowance} h",
+    "hoursResets": "Si azzera il {date}",
+    "hoursUsedUp": "Le ore di riunione di questo mese sono finite: le riunioni sono solo audio fino al {date}. Un piano più grande riporta subito il video.",
+    "from": "Dal {date}",
+    "hoursAMonth": "{count} ore di riunione al mese",
+    "hoursExplained": "Le ore di riunione contano il tempo in cui una riunione ha due o più persone. Le chiamate a due sul piano non contano mai. Finite le ore, le riunioni continuano in audio fino al 1°.",
+    "payment": "Pagamento",
+    "cardUnknown": "Carta salvata su Paddle",
+    "card": "Carta",
+    "cardEnding": "{brand} che termina con {last4}",
+    "expires": "Scade {date}",
+    "update": "Aggiorna",
+    "nextCharge": "Prossimo addebito",
+    "chargeOn": "{amount} il {date}",
+    "noneAfter": "Nessuno, il piano termina il {date}",
+    "history": "Cronologia dei pagamenti",
+    "noPayments": "Ancora nessun pagamento.",
+    "planPayment": "Piano {plan}",
+    "invoice": "Scarica fattura",
+    "status": {
+      "refunded": "Rimborsato",
+      "partly_refunded": "Rimborsato in parte",
+      "failed": "Non riuscito",
+      "due": "Da pagare"
+    },
     "errors": {
       "tooManyMembers": "Questo ufficio ha più membri di quanti ne ospiti quel piano. Rimuovine prima qualcuno.",
       "hasSubscription": "Questo ufficio ha già un piano. Cambialo invece.",

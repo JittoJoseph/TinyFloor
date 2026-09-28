@@ -138,13 +138,13 @@ export interface AdminOffice {
 }
 
 export type PlanId = "free" | "team" | "business";
-export type BillingInterval = "month" | "year";
-
 export interface Plan {
   id: PlanId;
   seats: number;
-  /** US cents before tax; null for the free plan. */
-  prices: Record<BillingInterval, number> | null;
+  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  meetingHours: number;
+  /** US cents a month before tax; null for the free plan. */
+  price: number | null;
 }
 
 /** The plans, and — where paid plans are on — what Paddle.js needs to open a checkout. */
@@ -158,15 +158,35 @@ export interface OfficeBilling {
   plan: PlanId;
   seats: number;
   members: number;
+  meetingHours: number;
+  /** Meeting seconds used this month (UTC), and when the count starts again. */
+  usage: { seconds: number; resetsAt: number };
   subscription: {
     plan: PlanId;
-    interval: BillingInterval;
     /** active, trialing, past_due (a card being retried) or paused. */
     status: string;
     renewsAt: number | null;
     /** Set once it's cancelled: the plan runs until then. */
     endsAt: number | null;
   } | null;
+}
+
+export interface Payment {
+  id: string;
+  at: number;
+  plan: PlanId | null;
+  /** In the currency's smallest unit, tax included. */
+  amount: number;
+  currency: string;
+  status: "paid" | "refunded" | "partly_refunded" | "failed" | "due";
+  invoice: boolean;
+}
+
+/** The slower half of the billing page, from Paddle. */
+export interface BillingDetails {
+  nextCharge: { at: number; amount: number; currency: string } | null;
+  card: { brand: string; last4: string; expires: string | null } | null;
+  history: Payment[];
 }
 
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
@@ -251,16 +271,19 @@ export const api = {
   plans: () => get<Plans>("/plans"),
   billing: (officeId: string) => get<OfficeBilling>(`/offices/${id(officeId)}/billing`),
   /** A checkout made by the API for this office, to open in Paddle.js. */
-  checkout: (officeId: string, plan: PlanId, interval: BillingInterval) =>
-    post<{ transactionId: string; email: string | null }>(`/offices/${id(officeId)}/billing/checkout`, { plan, interval }),
+  billingDetails: (officeId: string) => get<BillingDetails>(`/offices/${id(officeId)}/billing/details`),
+  /** A payment's invoice PDF: the link lasts an hour. */
+  invoice: (officeId: string, paymentId: string) => get<{ url: string }>(`/offices/${id(officeId)}/billing/invoices/${id(paymentId)}`),
+  /** A checkout for a new card on this office's plan only. */
+  paymentMethod: (officeId: string) => post<{ transactionId: string }>(`/offices/${id(officeId)}/billing/payment-method`),
+  checkout: (officeId: string, plan: PlanId) =>
+    post<{ transactionId: string; email: string | null }>(`/offices/${id(officeId)}/billing/checkout`, { plan }),
   /** After paying: the plan from Paddle's record of that checkout, without waiting for the webhook. */
   syncCheckout: (officeId: string, transactionId: string) =>
     post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { transactionId }),
-  changePlan: (officeId: string, plan: PlanId, interval: BillingInterval) =>
-    post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan, interval }),
+  changePlan: (officeId: string, plan: PlanId) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan }),
   cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
   resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
-  billingPortal: (officeId: string) => post<{ url: string }>(`/offices/${id(officeId)}/billing/portal`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>
     patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),
   removeMember: (officeId: string, userId: string) =>

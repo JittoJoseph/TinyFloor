@@ -28,7 +28,7 @@ export const refundsSections: LegalSection[] = [
     title: "Cancelling",
     body: (
       <ul>
-        <li>Paid plans renew automatically, monthly or yearly, until you cancel.</li>
+        <li>Paid plans renew automatically every month until you cancel.</li>
         <li>
           An office&apos;s admins can cancel at any time from the office&apos;s billing settings, or through the link in any Paddle receipt.
         </li>
@@ -45,7 +45,7 @@ export const refundsSections: LegalSection[] = [
     body: (
       <ul>
         <li>
-          <strong>Within 14 days of any payment</strong>, monthly or yearly, first or renewal: ask and we refund it in full, no reasons needed.
+          <strong>Within 14 days of any payment</strong>, first or renewal: ask and we refund it in full, no reasons needed.
         </li>
         <li>
           <strong>After 14 days</strong>, payments aren&apos;t refunded for the time left in the period, and the plan simply runs until the

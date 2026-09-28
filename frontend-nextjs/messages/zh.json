@@ -66,7 +66,7 @@
       },
       {
         "q": "TinyFloor 免费吗？",
-        "a": "是的。公共大厅对所有人免费，最多 3 人的办公室也免费。更大的办公室 10 人每月 19 美元，25 人每月 49 美元。"
+        "a": "是的。公共大厅对所有人免费，3 人以内的办公室也免费，每月含 5 小时会议时长。更大的办公室为每月 $19（10 人、30 小时会议时长），或每月 $49（25 人、60 小时）。"
       },
       {
         "q": "需要安装什么吗？",
@@ -933,7 +933,8 @@
       "leave": "离开此办公室",
       "wrong": "没有成功，请再试一次。",
       "plan": "{plan} · {used}/{seats} 个席位",
-      "danger": "离开或关闭"
+      "danger": "离开或关闭",
+      "cancelPlanFirst": "请先在「方案与账单」中取消此办公室的方案，然后才能关闭。"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -1095,7 +1096,15 @@
     "ended": "那个会议已结束",
     "rejoin": "重新加入",
     "makeMeeting": "会议",
-    "makeMeetingHint": "通话只限两人：为你们三人开始一个会议"
+    "makeMeetingHint": "通话只限两人：为你们三人开始一个会议",
+    "hours": {
+      "usedMonth": "本月已用会议时长 {used} / {allowance} 小时",
+      "usedToday": "今日已用会议时长 {used} / {allowance} 小时",
+      "more": "更多时长",
+      "paused": "视频已暂停",
+      "pausedMonth": "{date} 前仅限语音",
+      "pausedToday": "明天前仅限语音"
+    }
   },
   "shell": {
     "floor": "楼层",
@@ -1443,7 +1452,7 @@
       "eyebrow": "价格",
       "title": "按办公室计价，",
       "muted": "而不是按人头。",
-      "body": "免费开始。每个方案都包含全部功能，访客从不计入人数。",
+      "body": "免费开始。每个方案功能齐全；更大的方案容纳更多人和更多会议时长。",
       "soon": "即将推出",
       "forever": "永久",
       "month": "/月",
@@ -1452,10 +1461,10 @@
         "name": "Free",
         "body": "完整的产品，适合小工作室或两位创始人。",
         "items": [
-          "专属楼层",
+          "私密楼层",
           "通话与会议",
           "聊天、图片和文件",
-          "通过链接邀请访客"
+          "全部功能，无需试用"
         ]
       },
       "team": {
@@ -1464,7 +1473,7 @@
         "items": [
           "Free 的全部功能",
           "可容纳 10 名成员",
-          "按年付费：赠送两个月"
+          "6 倍会议时长"
         ]
       },
       "business": {
@@ -1473,10 +1482,12 @@
         "items": [
           "Team 的全部功能",
           "可容纳 25 名成员",
-          "优先支持",
-          "规模更大？联系我们"
+          "Team 的 2 倍会议时长",
+          "团队更大？联系我们"
         ]
-      }
+      },
+      "hours": "每月 {count} 小时会议时长",
+      "tax": "价格为月付，不含税。"
     },
     "faq": {
       "title": "常见问题，",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "此办公室当前方案",
     "members": "{used}/{seats} 名成员",
-    "freeNote": "最多 {seats} 名成员免费，包含全部功能。",
-    "renews": "{date} 续订 · {price}{per}",
+    "freeNote": "免费，包含全部功能。",
+    "renews": "{date} 续订",
     "ends": "{date} 结束，之后为免费方案",
     "perMonth": "/月",
-    "perYear": "/年",
     "pastDue": "上次付款未成功。Paddle 会再次尝试扣款；请更新银行卡以保留方案。",
     "updateCard": "更新银行卡",
     "keep": "保留此方案",
     "settingUp": "已收到付款，正在启用方案…",
     "settingUpSlow": "已收到付款。方案可能需要一分钟才会显示；如未显示请刷新页面。",
     "plans": "方案",
-    "billedEvery": "计费",
-    "monthly": "按月",
-    "yearly": "按年",
-    "twoFree": "赠送 2 个月",
     "currentPlan": "当前方案",
     "cancel": "取消方案",
     "tooMany": "成员数超过此方案上限",
-    "toYearly": "改为按年付费",
-    "toMonthly": "改为按月付费",
     "switch": "切换",
     "choose": "选择",
     "upTo": "最多 {count} 名成员",
-    "fine": "价格不含税。付款由我们的经销商 Paddle 处理。付款后 14 天内申请可全额退款。",
-    "invoices": "付款与发票",
+    "fine": "价格为月付，以美元计，不含税。付款由我们的经销商 Paddle 处理。付款后 14 天内申请可全额退款。",
     "adminsOnly": "只有办公室管理员可以更改方案。",
     "switchTitle": "切换到 {plan}？",
     "switchBody": "Paddle 会立即按本期剩余时间收取或退还差价。楼层上的人不会有任何感觉。",
     "cancelTitle": "取消方案？",
-    "cancelBody": "方案有效期至 {date}，之后办公室恢复为免费方案。不会移除任何人，但无法加入新成员，楼层上同时最多 3 人。",
-    "cancelBodyNow": "本期结束后办公室恢复为免费方案。不会移除任何人，但无法加入新成员，楼层上同时最多 3 人。",
+    "cancelBody": "方案持续到 {date}，之后办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
+    "cancelBodyNow": "本期结束时，办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
     "moreSeats": "获取更多席位",
+    "membersLabel": "成员",
+    "hoursLabel": "会议时长",
+    "hours": "{used} / {allowance} 小时",
+    "hoursResets": "{date} 重置",
+    "hoursUsedUp": "本月会议时长已用完：{date} 前会议仅限语音。升级方案可立即恢复视频。",
+    "from": "{date} 起",
+    "hoursAMonth": "每月 {count} 小时会议时长",
+    "hoursExplained": "会议时长计算会议中有两人或以上的时间。楼层上的两人通话从不计入。用完后，会议将以语音继续，直到下月 1 日。",
+    "payment": "付款",
+    "cardUnknown": "已在 Paddle 保存的卡",
+    "card": "卡",
+    "cardEnding": "{brand}（尾号 {last4}）",
+    "expires": "有效期至 {date}",
+    "update": "更新",
+    "nextCharge": "下次扣款",
+    "chargeOn": "{date} 扣款 {amount}",
+    "noneAfter": "无，方案于 {date} 结束",
+    "history": "账单记录",
+    "noPayments": "暂无付款。",
+    "planPayment": "{plan} 方案",
+    "invoice": "下载发票",
+    "status": {
+      "refunded": "已退款",
+      "partly_refunded": "部分退款",
+      "failed": "失败",
+      "due": "待支付"
+    },
     "errors": {
       "tooManyMembers": "此办公室的成员数超过该方案上限，请先移除部分成员。",
       "hasSubscription": "此办公室已有方案，请改为切换。",

@@ -66,7 +66,7 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Größere Büros kosten 19 $ im Monat für 10 Personen und 49 $ für 25."
+        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen mit 5 Meeting-Stunden im Monat. Größere Büros kosten $19 im Monat für 10 Personen und 30 Meeting-Stunden oder $49 für 25 Personen und 60 Stunden."
       },
       {
         "q": "Muss ich etwas installieren?",
@@ -933,7 +933,8 @@
       "leave": "Dieses Büro verlassen",
       "wrong": "Das hat nicht geklappt. Versuch es nochmal.",
       "plan": "{plan} · {used} von {seats} Plätzen",
-      "danger": "Verlassen oder schließen"
+      "danger": "Verlassen oder schließen",
+      "cancelPlanFirst": "Kündige zuerst den Tarif dieses Büros unter Tarif und Abrechnung. Danach kann es geschlossen werden."
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -1095,7 +1096,15 @@
     "ended": "Dieses Meeting ist vorbei",
     "rejoin": "Wieder beitreten",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "Ein Anruf ist zu zweit: Starte ein Meeting für euch drei"
+    "makeMeetingHint": "Ein Anruf ist zu zweit: Starte ein Meeting für euch drei",
+    "hours": {
+      "usedMonth": "{used} von {allowance} Meeting-Stunden in diesem Monat genutzt",
+      "usedToday": "{used} von {allowance} Meeting-Stunden heute genutzt",
+      "more": "Mehr Stunden",
+      "paused": "Video pausiert",
+      "pausedMonth": "nur Ton bis {date}",
+      "pausedToday": "nur Ton bis morgen"
+    }
   },
   "shell": {
     "floor": "Fläche",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Preise",
       "title": "Bezahlt wird pro Büro,",
       "muted": "nicht pro Person.",
-      "body": "Starte kostenlos. Jeder Tarif hat alles, und Gäste zählen nie mit.",
+      "body": "Starte kostenlos. Jeder Tarif hat alles; die größeren haben Platz für mehr Leute und mehr Meeting-Stunden.",
       "soon": "Demnächst",
       "forever": "für immer",
       "month": "pro Monat",
@@ -1455,7 +1464,7 @@
           "Eine private Etage",
           "Anrufe und Meetings",
           "Chat, Bilder und Dateien",
-          "Gäste per Link"
+          "Alle Funktionen, ohne Testphase"
         ]
       },
       "team": {
@@ -1464,7 +1473,7 @@
         "items": [
           "Alles aus Free",
           "Platz für 10 Mitglieder",
-          "Jährlich: zwei Monate gratis"
+          "Sechsmal so viele Meeting-Stunden"
         ]
       },
       "business": {
@@ -1473,10 +1482,12 @@
         "items": [
           "Alles aus Team",
           "Platz für 25 Mitglieder",
-          "Bevorzugter Support",
-          "Größer? Sprich uns an"
+          "Doppelt so viele Stunden wie Team",
+          "Größer? Sprich mit uns"
         ]
-      }
+      },
+      "hours": "{count} Meeting-Stunden im Monat",
+      "tax": "Monatspreise, zuzüglich Steuern."
     },
     "faq": {
       "title": "Fragen,",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "Dieses Büro hat",
     "members": "{used} von {seats} Mitgliedern",
-    "freeNote": "Kostenlos für bis zu {seats} Mitglieder, mit allen Funktionen.",
-    "renews": "Verlängert sich am {date} · {price} {per}",
+    "freeNote": "Kostenlos, mit allen Funktionen.",
+    "renews": "Verlängert sich am {date}",
     "ends": "Endet am {date}, danach der kostenlose Tarif",
     "perMonth": "im Monat",
-    "perYear": "im Jahr",
     "pastDue": "Die letzte Zahlung ist nicht durchgegangen. Paddle versucht es erneut; aktualisiere die Karte, um den Tarif zu behalten.",
     "updateCard": "Karte aktualisieren",
     "keep": "Tarif behalten",
     "settingUp": "Zahlung erhalten. Der Tarif wird eingerichtet…",
     "settingUpSlow": "Zahlung erhalten. Der Tarif kann eine Minute brauchen; lade neu, falls er noch fehlt.",
     "plans": "Tarife",
-    "billedEvery": "Abrechnung",
-    "monthly": "Monatlich",
-    "yearly": "Jährlich",
-    "twoFree": "2 Monate gratis",
     "currentPlan": "Aktueller Tarif",
     "cancel": "Tarif kündigen",
     "tooMany": "Mehr Mitglieder, als er fasst",
-    "toYearly": "Jährlich zahlen",
-    "toMonthly": "Monatlich zahlen",
     "switch": "Wechseln",
     "choose": "Auswählen",
     "upTo": "Bis zu {count} Mitglieder",
-    "fine": "Die Preise verstehen sich ohne Steuern. Zahlungen wickelt Paddle ab, unser Wiederverkäufer. Innerhalb von 14 Tagen nach einer Zahlung gibt es auf Wunsch alles zurück.",
-    "invoices": "Zahlungen und Rechnungen",
+    "fine": "Die Preise gelten monatlich, in US-Dollar, zuzüglich Steuern. Zahlungen wickelt Paddle ab, unser Wiederverkäufer. Innerhalb von 14 Tagen nach einer Zahlung erstatten wir auf Anfrage alles.",
     "adminsOnly": "Nur die Admins des Büros können den Tarif ändern.",
     "switchTitle": "Zu {plan} wechseln?",
     "switchBody": "Paddle berechnet oder erstattet die Differenz für den Rest des Zeitraums sofort. Auf der Fläche merkt niemand etwas.",
     "cancelTitle": "Tarif kündigen?",
-    "cancelBody": "Der Tarif läuft bis zum {date}, danach gilt wieder der kostenlose Tarif. Niemand wird entfernt, aber niemand Neues kann beitreten und nur 3 können gleichzeitig auf der Fläche sein.",
-    "cancelBodyNow": "Das Büro wechselt am Ende des Zeitraums zum kostenlosen Tarif. Niemand wird entfernt, aber niemand Neues kann beitreten und nur 3 können gleichzeitig auf der Fläche sein.",
+    "cancelBody": "Der Tarif läuft bis zum {date}, danach ist das Büro wieder im kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
+    "cancelBodyNow": "Das Büro wechselt am Ende dieses Zeitraums in den kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
     "moreSeats": "Mehr Plätze holen",
+    "membersLabel": "Mitglieder",
+    "hoursLabel": "Meeting-Stunden",
+    "hours": "{used} von {allowance} Std.",
+    "hoursResets": "Neu ab {date}",
+    "hoursUsedUp": "Die Meeting-Stunden dieses Monats sind aufgebraucht: Meetings laufen bis {date} nur mit Ton. Ein größerer Tarif bringt Video sofort zurück.",
+    "from": "Ab {date}",
+    "hoursAMonth": "{count} Meeting-Stunden im Monat",
+    "hoursExplained": "Meeting-Stunden zählen die Zeit, in der zwei oder mehr Personen in einem Meeting sind. Anrufe zu zweit auf der Etage zählen nie. Danach laufen Meetings bis zum 1. mit Ton weiter.",
+    "payment": "Zahlung",
+    "cardUnknown": "Karte bei Paddle hinterlegt",
+    "card": "Karte",
+    "cardEnding": "{brand} mit Endziffern {last4}",
+    "expires": "Gültig bis {date}",
+    "update": "Ändern",
+    "nextCharge": "Nächste Abbuchung",
+    "chargeOn": "{amount} am {date}",
+    "noneAfter": "Keine, der Tarif endet am {date}",
+    "history": "Zahlungsverlauf",
+    "noPayments": "Noch keine Zahlungen.",
+    "planPayment": "Tarif {plan}",
+    "invoice": "Rechnung herunterladen",
+    "status": {
+      "refunded": "Erstattet",
+      "partly_refunded": "Teilweise erstattet",
+      "failed": "Fehlgeschlagen",
+      "due": "Fällig"
+    },
     "errors": {
       "tooManyMembers": "Dieses Büro hat mehr Mitglieder, als der Tarif fasst. Entferne zuerst einige.",
       "hasSubscription": "Dieses Büro hat schon einen Tarif. Wechsle ihn stattdessen.",

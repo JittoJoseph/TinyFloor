@@ -66,7 +66,7 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Isommat toimistot maksavat 19 $ kuukaudessa 10 hengelle ja 49 $ 25 hengelle."
+        "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle ja 5 kokoustunnilla kuussa. Isommat toimistot maksavat $19 kuussa 10 hengelle ja 30 kokoustunnille tai $49 25 hengelle ja 60 tunnille."
       },
       {
         "q": "Pitääkö minun asentaa jotain?",
@@ -933,7 +933,8 @@
       "leave": "Poistu tästä toimistosta",
       "wrong": "Ei onnistunut. Yritä uudelleen.",
       "plan": "{plan} · {used}/{seats} paikkaa",
-      "danger": "Poistuminen tai sulkeminen"
+      "danger": "Poistuminen tai sulkeminen",
+      "cancelPlanFirst": "Peru ensin toimiston paketti kohdassa Paketti ja laskutus. Sen jälkeen toimiston voi sulkea."
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -1095,7 +1096,15 @@
     "ended": "Se kokous on päättynyt",
     "rejoin": "Liity uudelleen",
     "makeMeeting": "Kokous",
-    "makeMeetingHint": "Puhelu on kahden kesken: aloita kokous teille kolmelle"
+    "makeMeetingHint": "Puhelu on kahden kesken: aloita kokous teille kolmelle",
+    "hours": {
+      "usedMonth": "Kokoustunnit tässä kuussa: {used}/{allowance}",
+      "usedToday": "Kokoustunnit tänään: {used}/{allowance}",
+      "more": "Lisää tunteja",
+      "paused": "Video tauolla",
+      "pausedMonth": "vain ääni {date} asti",
+      "pausedToday": "vain ääni huomiseen asti"
+    }
   },
   "shell": {
     "floor": "Kerros",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
       "muted": "ei henkilöltä.",
-      "body": "Aloita ilmaiseksi. Jokaisessa paketissa on kaikki, eikä vieraita koskaan lasketa.",
+      "body": "Aloita ilmaiseksi. Joka paketissa on kaikki; isommissa on tilaa useammalle ja enemmän kokoustunteja.",
       "soon": "Tulossa",
       "forever": "ikuisesti",
       "month": "kuukaudessa",
@@ -1453,30 +1462,32 @@
         "body": "Koko tuote pienelle studiolle tai kahdelle perustajalle.",
         "items": [
           "Oma yksityinen kerros",
-          "Puhelut ja palaverit",
+          "Puhelut ja kokoukset",
           "Chat, kuvat ja tiedostot",
-          "Vieraat linkillä"
+          "Kaikki ominaisuudet, ei kokeilujaksoa"
         ]
       },
       "team": {
         "name": "Team",
         "body": "Yksi hinta koko toimistolle, täytitpä kymmenestä paikasta kuinka monta tahansa.",
         "items": [
-          "Kaikki Freestä",
+          "Kaikki Freen ominaisuudet",
           "Tilaa 10 jäsenelle",
-          "Vuosittain: kaksi kuukautta ilmaiseksi"
+          "Kuusi kertaa enemmän kokoustunteja"
         ]
       },
       "business": {
         "name": "Business",
         "body": "Tiimille, jolle yksi pöytärivi on käynyt pieneksi.",
         "items": [
-          "Kaikki Teamista",
+          "Kaikki Teamin ominaisuudet",
           "Tilaa 25 jäsenelle",
-          "Etusijatuki",
-          "Isompi? Ota yhteyttä"
+          "Kaksi kertaa Teamin tunnit",
+          "Isompi tarve? Ota yhteyttä"
         ]
-      }
+      },
+      "hours": "Kokoustunteja {count} kuussa",
+      "tax": "Hinnat ovat kuukausihintoja ilman veroja."
     },
     "faq": {
       "title": "Kysymyksiä",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "Tämän toimiston paketti",
     "members": "{used}/{seats} jäsentä",
-    "freeNote": "Ilmainen enintään {seats} jäsenelle, kaikilla ominaisuuksilla.",
-    "renews": "Uusiutuu {date} · {price} {per}",
+    "freeNote": "Ilmainen, kaikilla ominaisuuksilla.",
+    "renews": "Uusiutuu {date}",
     "ends": "Päättyy {date}, sitten ilmainen paketti",
     "perMonth": "kuukaudessa",
-    "perYear": "vuodessa",
     "pastDue": "Viimeisin maksu ei mennyt läpi. Paddle yrittää korttia uudelleen; päivitä se, jotta paketti säilyy.",
     "updateCard": "Päivitä kortti",
     "keep": "Pidä tämä paketti",
     "settingUp": "Maksu vastaanotettu. Pakettia otetaan käyttöön…",
     "settingUpSlow": "Maksu vastaanotettu. Paketin näkymiseen voi mennä minuutti; päivitä sivu, jos sitä ei näy.",
     "plans": "Paketit",
-    "billedEvery": "Laskutus",
-    "monthly": "Kuukausittain",
-    "yearly": "Vuosittain",
-    "twoFree": "2 kk ilmaiseksi",
     "currentPlan": "Nykyinen paketti",
     "cancel": "Peru paketti",
     "tooMany": "Enemmän jäseniä kuin mahtuu",
-    "toYearly": "Maksa vuosittain",
-    "toMonthly": "Maksa kuukausittain",
     "switch": "Vaihda",
     "choose": "Valitse",
     "upTo": "Enintään {count} jäsentä",
-    "fine": "Hinnat eivät sisällä veroja. Maksut hoitaa jälleenmyyjämme Paddle. Pyydä täysi hyvitys 14 päivän kuluessa maksusta.",
-    "invoices": "Maksut ja laskut",
+    "fine": "Hinnat ovat kuukausihintoja Yhdysvaltain dollareina ilman veroja. Maksut hoitaa Paddle, jälleenmyyjämme. Pyydä täysi hyvitys 14 päivän sisällä maksusta.",
     "adminsOnly": "Vain toimiston ylläpitäjät voivat vaihtaa pakettia.",
     "switchTitle": "Vaihdetaanko pakettiin {plan}?",
     "switchBody": "Paddle veloittaa tai hyvittää erotuksen jakson jäljellä olevalta ajalta heti. Kerroksessa kukaan ei huomaa mitään.",
     "cancelTitle": "Perutaanko paketti?",
-    "cancelBody": "Paketti on voimassa {date} asti, sitten toimisto palaa ilmaiseen pakettiin. Ketään ei poisteta, mutta uusia ei voi liittyä ja kerroksessa voi olla vain 3 kerrallaan.",
-    "cancelBodyNow": "Toimisto palaa ilmaiseen pakettiin jakson lopussa. Ketään ei poisteta, mutta uusia ei voi liittyä ja kerroksessa voi olla vain 3 kerrallaan.",
+    "cancelBody": "Paketti on voimassa {date} asti, sitten toimisto palaa ilmaiseen pakettiin: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
+    "cancelBodyNow": "Toimisto palaa ilmaiseen pakettiin tämän jakson lopussa: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
     "moreSeats": "Hanki lisää paikkoja",
+    "membersLabel": "Jäsenet",
+    "hoursLabel": "Kokoustunnit",
+    "hours": "{used}/{allowance} h",
+    "hoursResets": "Nollautuu {date}",
+    "hoursUsedUp": "Tämän kuun kokoustunnit on käytetty: kokoukset ovat vain äänellä {date} asti. Isompi paketti tuo videon takaisin heti.",
+    "from": "{date} alkaen",
+    "hoursAMonth": "Kokoustunteja {count} kuussa",
+    "hoursExplained": "Kokoustunnit laskevat ajan, jolloin kokouksessa on kaksi tai useampi ihminen. Kahden hengen puhelut kerroksessa eivät koskaan laske. Kun tunnit loppuvat, kokoukset jatkuvat äänellä kuun 1. päivään asti.",
+    "payment": "Maksu",
+    "cardUnknown": "Kortti tallennettu Paddleen",
+    "card": "Kortti",
+    "cardEnding": "{brand}, loppuu {last4}",
+    "expires": "Vanhenee {date}",
+    "update": "Päivitä",
+    "nextCharge": "Seuraava veloitus",
+    "chargeOn": "{amount} {date}",
+    "noneAfter": "Ei ole, paketti päättyy {date}",
+    "history": "Laskutushistoria",
+    "noPayments": "Ei vielä maksuja.",
+    "planPayment": "{plan}-paketti",
+    "invoice": "Lataa lasku",
+    "status": {
+      "refunded": "Hyvitetty",
+      "partly_refunded": "Osittain hyvitetty",
+      "failed": "Epäonnistui",
+      "due": "Erääntynyt"
+    },
     "errors": {
       "tooManyMembers": "Toimistossa on enemmän jäseniä kuin pakettiin mahtuu. Poista ensin joitakin.",
       "hasSubscription": "Toimistolla on jo paketti. Vaihda se sen sijaan.",

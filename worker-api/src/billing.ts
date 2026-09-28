@@ -1,33 +1,38 @@
-import { requireOffice, seatsUsed, type Office } from "./access";
+import { realtime, requireOffice, seatsUsed, type Office } from "./access";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { requireUser } from "./session";
 
 /**
  * Paid plans, sold through Paddle as the merchant of record (docs/09-billing.md,
- * docs/13). An office's plan and seats change in one place only: here, from a
- * subscription Paddle vouches for, either in a signed webhook or in the reply
- * to a request this worker made itself.
+ * docs/14). A plan is how many people an office holds and how many meeting
+ * hours a month it includes. An office's plan changes in one place only: here,
+ * from a subscription Paddle vouches for, either in a signed webhook or in the
+ * reply to a request this worker made itself.
  */
 
 export type PlanId = "free" | "team" | "business";
-export type Interval = "month" | "year";
 
-interface Plan {
+export interface Plan {
   id: PlanId;
   seats: number;
-  /** Prices in US cents, before tax. The free plan has none. */
-  prices: Record<Interval, number> | null;
+  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  meetingHours: number;
+  /** US cents a month, before tax; null for the free plan. Monthly only. */
+  price: number | null;
 }
 
 export const PLANS: Plan[] = [
-  { id: "free", seats: 3, prices: null },
-  { id: "team", seats: 10, prices: { month: 1900, year: 19000 } },
-  { id: "business", seats: 25, prices: { month: 4900, year: 49000 } },
+  { id: "free", seats: 3, meetingHours: 5, price: null },
+  { id: "team", seats: 10, meetingHours: 30, price: 1900 },
+  { id: "business", seats: 25, meetingHours: 60, price: 4900 },
 ];
 
 const FREE = PLANS[0];
-const planById = (id: string) => PLANS.find((plan) => plan.id === id);
+export const planById = (id: string) => PLANS.find((plan) => plan.id === id);
+
+/** An office's meeting hours a month, from its plan. */
+export const meetingHoursOf = (plan: string) => (planById(plan) ?? FREE).meetingHours;
 
 /** Subscriptions in these states hold their plan; a card being retried still counts. */
 const HOLDS_PLAN = new Set(["active", "trialing", "past_due"]);
@@ -35,7 +40,10 @@ const HOLDS_PLAN = new Set(["active", "trialing", "past_due"]);
 /** How old a webhook's signature may be. Retries are signed afresh, and replays are deduplicated anyway. */
 const SIGNATURE_TOLERANCE_S = 300;
 
-type PriceIds = Partial<Record<Exclude<PlanId, "free">, Record<Interval, string>>>;
+/** How many past payments the billing page lists. */
+const HISTORY = 24;
+
+type PriceIds = Partial<Record<Exclude<PlanId, "free">, string>>;
 
 interface BillingConfig {
   environment: "sandbox" | "production";
@@ -44,9 +52,10 @@ interface BillingConfig {
 }
 
 /**
- * Billing is on where Paddle is configured: the price IDs, the client-side token
- * and the API key. The live system has none until Paddle has verified the
- * account, so it keeps saying "coming soon" while preview sells against the sandbox.
+ * Billing is on where Paddle is configured: the monthly price IDs, the
+ * client-side token and the API key. The live system has none until Paddle has
+ * verified the account, so it keeps saying "coming soon" while preview sells
+ * against the sandbox.
  */
 function config(env: Env): BillingConfig | null {
   if (!env.PADDLE_PRICES || !env.PADDLE_CLIENT_TOKEN || !env.PADDLE_API_KEY) return null;
@@ -69,32 +78,21 @@ function requireConfig(env: Env): BillingConfig {
   return found;
 }
 
-function priceFor(billing: BillingConfig, plan: PlanId, interval: Interval): string {
-  const id = plan === "free" ? undefined : billing.prices[plan]?.[interval];
+function priceFor(billing: BillingConfig, plan: PlanId): string {
+  const id = plan === "free" ? undefined : billing.prices[plan];
   if (!id) throw new HttpError(400, "bad_plan", "No such plan");
   return id;
 }
 
-/** Which plan and interval a Paddle price stands for, or null for a price that isn't ours. */
-function planForPrice(billing: BillingConfig, priceId: string): { plan: Plan; interval: Interval } | null {
-  for (const [id, byInterval] of Object.entries(billing.prices)) {
-    for (const interval of ["month", "year"] as const) {
-      if (byInterval?.[interval] === priceId) {
-        const plan = planById(id);
-        if (plan) return { plan, interval };
-      }
-    }
-  }
-  return null;
+/** Which plan a Paddle price stands for, or null for a price that isn't ours. */
+function planForPrice(billing: BillingConfig, priceId: string): Plan | null {
+  const found = Object.entries(billing.prices).find(([, id]) => id === priceId);
+  return found ? (planById(found[0]) ?? null) : null;
 }
 
-function readPlan(body: Record<string, unknown>): { plan: PlanId; interval: Interval } {
-  const plan = body.plan;
-  const interval = body.interval;
-  if ((plan !== "team" && plan !== "business") || (interval !== "month" && interval !== "year")) {
-    throw new HttpError(400, "bad_plan", "Pick a plan and how often to pay");
-  }
-  return { plan, interval };
+function readPlan(body: Record<string, unknown>): Exclude<PlanId, "free"> {
+  if (body.plan !== "team" && body.plan !== "business") throw new HttpError(400, "bad_plan", "Pick a plan");
+  return body.plan;
 }
 
 // ---- Paddle's API -----------------------------------------------------------
@@ -106,9 +104,27 @@ export interface PaddleSubscription {
   customer_id: string;
   custom_data?: { office_id?: string } | null;
   updated_at: string;
+  next_billed_at?: string | null;
   current_billing_period?: { ends_at: string } | null;
   scheduled_change?: { action: string; effective_at: string } | null;
   items: Array<{ price: { id: string } }>;
+  next_transaction?: { details?: { totals?: { grand_total?: string; currency_code?: string } } } | null;
+}
+
+interface PaddleTransaction {
+  id: string;
+  status: string;
+  subscription_id: string | null;
+  custom_data?: { office_id?: string } | null;
+  created_at: string;
+  billed_at: string | null;
+  items?: Array<{ price?: { id: string } }>;
+  details?: { totals?: { grand_total?: string; currency_code?: string } };
+  adjustments_totals?: { breakdown?: { refund?: string } } | null;
+  payments?: Array<{
+    status: string;
+    method_details?: { type?: string; card?: { type?: string; last4?: string; expiry_month?: number; expiry_year?: number } | null } | null;
+  }>;
 }
 
 async function paddle<T>(env: Env, method: string, path: string, body?: unknown): Promise<T> {
@@ -139,7 +155,6 @@ interface SubscriptionRow {
   provider_subscription_id: string | null;
   plan: string;
   status: string;
-  billing_interval: string | null;
   current_period_end: number | null;
   cancel_at: number | null;
   changed_at: number;
@@ -147,8 +162,7 @@ interface SubscriptionRow {
 
 async function subscriptionOf(env: Env, officeId: string): Promise<SubscriptionRow | null> {
   return env.DB.prepare(
-    `SELECT office_id, provider_customer_id, provider_subscription_id, plan, status, billing_interval,
-            current_period_end, cancel_at, changed_at
+    `SELECT office_id, provider_customer_id, provider_subscription_id, plan, status, current_period_end, cancel_at, changed_at
      FROM subscriptions WHERE office_id = ?`,
   )
     .bind(officeId)
@@ -205,14 +219,14 @@ export async function applySubscription(env: Env, sub: PaddleSubscription): Prom
     console.warn("billing: subscription on a price that isn't ours", sub.id);
     return false;
   }
-  const plan = holds ? priced.plan : FREE;
+  const plan = holds ? priced : FREE;
   const cancelAt = sub.scheduled_change?.action === "cancel" ? time(sub.scheduled_change.effective_at) : null;
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status,
          current_period_end, price_id, billing_interval, cancel_at, changed_at, updated_at)
-       VALUES (?, 'paddle', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       VALUES (?, 'paddle', ?, ?, ?, ?, ?, ?, 'month', ?, ?, ?)
        ON CONFLICT (office_id) DO UPDATE SET
          provider_customer_id = excluded.provider_customer_id,
          provider_subscription_id = excluded.provider_subscription_id,
@@ -223,38 +237,150 @@ export async function applySubscription(env: Env, sub: PaddleSubscription): Prom
       officeId,
       sub.customer_id,
       sub.id,
-      priced.plan.id,
+      priced.id,
       sub.status,
       time(sub.current_billing_period?.ends_at),
       sub.items[0].price.id,
-      priced.interval,
       cancelAt,
       changedAt,
       Date.now(),
     ),
     env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId),
   ]);
+  // The room's meeting hours follow the plan straight away: a bigger plan lifts a pause.
+  await realtime(env)
+    .setMeetingAllowance(officeId, plan.meetingHours)
+    .catch((error) => console.error("billing: couldn't tell the room", officeId, error));
   return true;
 }
 
-/** What the office's billing settings show. */
+/** This calendar month (UTC), as the rooms count meeting hours. */
+function thisMonth(now = Date.now()) {
+  const date = new Date(now);
+  return {
+    key: date.toISOString().slice(0, 7),
+    resetsAt: Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1),
+  };
+}
+
+/** Meeting seconds the office has used this month, as its room last wrote them. */
+export async function meetingSecondsThisMonth(env: Env, officeId: string): Promise<number> {
+  const row = await env.DB.prepare("SELECT meeting_seconds FROM usage_monthly WHERE office_id = ? AND period = ?")
+    .bind(officeId, thisMonth().key)
+    .first<{ meeting_seconds: number }>();
+  return row?.meeting_seconds ?? 0;
+}
+
+/** What the office's billing settings show, from our own records: no call to Paddle. */
 async function billingJson(env: Env, office: Office) {
-  const [row, members] = await Promise.all([subscriptionOf(env, office.id), seatsUsed(env, office.id)]);
+  const [row, members, seconds] = await Promise.all([
+    subscriptionOf(env, office.id),
+    seatsUsed(env, office.id),
+    meetingSecondsThisMonth(env, office.id),
+  ]);
   const live = row && row.provider_subscription_id && row.status !== "canceled";
   return {
     plan: office.plan,
     seats: office.seats,
     members,
+    meetingHours: meetingHoursOf(office.plan),
+    usage: { seconds, resetsAt: thisMonth().resetsAt },
     subscription: live
       ? {
           plan: row.plan,
-          interval: row.billing_interval,
           status: row.status,
           renewsAt: row.cancel_at ? null : row.current_period_end,
           endsAt: row.cancel_at,
         }
       : null,
   };
+}
+
+/** What a payment was, for the history: a payment, a refund, or one that didn't go through. */
+function paymentStatus(txn: PaddleTransaction): "paid" | "refunded" | "partly_refunded" | "failed" | "due" {
+  const total = Number(txn.details?.totals?.grand_total ?? 0);
+  const refunded = Number(txn.adjustments_totals?.breakdown?.refund ?? 0);
+  if (refunded > 0) return refunded >= total ? "refunded" : "partly_refunded";
+  if (txn.status === "past_due") return "failed";
+  if (txn.status === "completed" || txn.status === "paid") return "paid";
+  return "due";
+}
+
+/**
+ * The page's slower half, from Paddle: the next charge with its tax, the card
+ * on file, and the office's past payments with their invoices.
+ */
+async function detailsJson(env: Env, office: Office) {
+  const billing = requireConfig(env);
+  const row = await subscriptionOf(env, office.id);
+  if (!row?.provider_customer_id) return { nextCharge: null, card: null, history: [] };
+
+  const [sub, transactions] = await Promise.all([
+    row.provider_subscription_id && HOLDS_PLAN.has(row.status)
+      ? paddle<PaddleSubscription>(env, "GET", `/subscriptions/${row.provider_subscription_id}?include=next_transaction`).catch(() => null)
+      : Promise.resolve(null),
+    paddle<PaddleTransaction[]>(
+      env,
+      "GET",
+      `/transactions?${new URLSearchParams({
+        customer_id: row.provider_customer_id,
+        status: "completed,paid,past_due",
+        order_by: "created_at[DESC]",
+        per_page: String(HISTORY),
+        include: "adjustments_totals",
+      })}`,
+    ),
+  ]);
+  // A payer's transactions for other offices stay theirs; card updates cost nothing and aren't payments.
+  const mine = transactions.filter(
+    (txn) =>
+      (txn.custom_data?.office_id === office.id || (txn.subscription_id !== null && txn.subscription_id === row.provider_subscription_id)) &&
+      Number(txn.details?.totals?.grand_total ?? 0) > 0,
+  );
+
+  const totals = sub?.next_transaction?.details?.totals;
+  const nextCharge =
+    sub && !sub.scheduled_change && sub.next_billed_at && totals?.grand_total
+      ? { at: Date.parse(sub.next_billed_at), amount: Number(totals.grand_total), currency: totals.currency_code ?? "USD" }
+      : null;
+
+  const paidWith = mine.flatMap((txn) => txn.payments ?? []).find((payment) => payment.status === "captured" && payment.method_details);
+  const card = paidWith?.method_details?.card
+    ? {
+        brand: paidWith.method_details.card.type ?? "card",
+        last4: paidWith.method_details.card.last4 ?? "",
+        expires: paidWith.method_details.card.expiry_month
+          ? `${String(paidWith.method_details.card.expiry_month).padStart(2, "0")}/${String(paidWith.method_details.card.expiry_year ?? "").slice(-2)}`
+          : null,
+      }
+    : paidWith?.method_details?.type
+      ? { brand: paidWith.method_details.type, last4: "", expires: null }
+      : null;
+
+  return {
+    nextCharge,
+    card,
+    history: mine.map((txn) => ({
+      id: txn.id,
+      at: Date.parse(txn.billed_at ?? txn.created_at),
+      plan: planForPrice(billing, txn.items?.[0]?.price?.id ?? "")?.id ?? null,
+      amount: Number(txn.details?.totals?.grand_total ?? 0),
+      currency: txn.details?.totals?.currency_code ?? "USD",
+      status: paymentStatus(txn),
+      invoice: txn.status === "completed" || txn.status === "paid",
+    })),
+  };
+}
+
+/**
+ * Before an office is closed. A plan still renewing has to be cancelled first
+ * (docs/14); one already cancelled ends now, so closing stops every charge.
+ */
+export async function endBillingForClosing(env: Env, officeId: string): Promise<void> {
+  const live = await liveSubscription(env, officeId);
+  if (!live?.provider_subscription_id) return;
+  if (!live.cancel_at) throw new HttpError(409, "cancel_plan_first", "Cancel this office's plan before closing it");
+  await paddle(env, "POST", `/subscriptions/${live.provider_subscription_id}/cancel`, { effective_from: "immediately" });
 }
 
 // ---- Webhooks ---------------------------------------------------------------
@@ -312,11 +438,21 @@ async function webhook(env: Env, request: Request): Promise<Response> {
   return json({ ok: true });
 }
 
+const TXN = /^txn_[a-z\d]{26}$/;
+
+/** A transaction of this office's, straight from Paddle; anything else is "no such". */
+async function officeTransaction(env: Env, officeId: string, transactionId: unknown): Promise<PaddleTransaction> {
+  if (typeof transactionId !== "string" || !TXN.test(transactionId)) throw new HttpError(400, "bad_transaction", "No such payment");
+  const txn = await paddle<PaddleTransaction>(env, "GET", `/transactions/${transactionId}`);
+  if (txn.custom_data?.office_id !== officeId) throw new HttpError(404, "bad_transaction", "No such payment");
+  return txn;
+}
+
 // ---- Routes -----------------------------------------------------------------
 
 export function billingRoutes(router: Router): void {
   router
-    // The plans, with prices, and what the site needs to open Paddle's checkout.
+    // The plans, with prices and hours, and what the site needs to open Paddle's checkout.
     .add("GET", "/v1/plans", async ({ env }) => {
       const billing = config(env);
       return json({
@@ -331,18 +467,33 @@ export function billingRoutes(router: Router): void {
       return json(await billingJson(env, office));
     })
 
+    .add("GET", "/v1/offices/:id/billing/details", async ({ request, env, ctx, params }) => {
+      const user = await requireUser(env, request, ctx);
+      const office = await requireOffice(env, params.id, user.id, ["admin"]);
+      return json(await detailsJson(env, office));
+    })
+
+    // A payment's invoice: a PDF link from Paddle that lasts an hour.
+    .add("GET", "/v1/offices/:id/billing/invoices/:txn", async ({ request, env, ctx, params }) => {
+      const user = await requireUser(env, request, ctx);
+      const office = await requireOffice(env, params.id, user.id, ["admin"]);
+      const txn = await officeTransaction(env, office.id, params.txn);
+      const invoice = await paddle<{ url: string }>(env, "GET", `/transactions/${txn.id}/invoice`);
+      return json({ url: invoice.url });
+    })
+
     // A checkout for a free office, made here so the office it's for can't be forged.
     .add("POST", "/v1/offices/:id/billing/checkout", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
       const billing = requireConfig(env);
-      const { plan, interval } = readPlan(await readJson(request));
+      const plan = readPlan(await readJson(request));
       if (await liveSubscription(env, office.id)) {
         throw new HttpError(409, "has_subscription", "This office already has a plan; change it instead");
       }
       const earlier = await subscriptionOf(env, office.id);
       const transaction = await paddle<{ id: string }>(env, "POST", "/transactions", {
-        items: [{ price_id: priceFor(billing, plan, interval), quantity: 1 }],
+        items: [{ price_id: priceFor(billing, plan), quantity: 1 }],
         custom_data: { office_id: office.id },
         ...(earlier?.provider_customer_id ? { customer_id: earlier.provider_customer_id } : {}),
       });
@@ -354,28 +505,19 @@ export function billingRoutes(router: Router): void {
     .add("POST", "/v1/offices/:id/billing/sync", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const { transactionId } = await readJson(request);
-      if (typeof transactionId !== "string" || !/^txn_[a-z\d]{26}$/.test(transactionId)) {
-        throw new HttpError(400, "bad_transaction", "No such checkout");
-      }
-      const transaction = await paddle<{ subscription_id: string | null; custom_data?: { office_id?: string } | null }>(
-        env,
-        "GET",
-        `/transactions/${transactionId}`,
-      );
-      if (transaction.custom_data?.office_id !== office.id) throw new HttpError(404, "bad_transaction", "No such checkout");
-      if (transaction.subscription_id) {
-        await applySubscription(env, await paddle<PaddleSubscription>(env, "GET", `/subscriptions/${transaction.subscription_id}`));
+      const txn = await officeTransaction(env, office.id, (await readJson(request)).transactionId);
+      if (txn.subscription_id) {
+        await applySubscription(env, await paddle<PaddleSubscription>(env, "GET", `/subscriptions/${txn.subscription_id}`));
       }
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 
-    // Up or down a plan, or between monthly and yearly, paid or credited for the time left.
+    // Up or down a plan, paid or credited for the time left.
     .add("POST", "/v1/offices/:id/billing/change", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
       const billing = requireConfig(env);
-      const { plan, interval } = readPlan(await readJson(request));
+      const plan = readPlan(await readJson(request));
       const target = planById(plan)!;
       const members = await seatsUsed(env, office.id);
       if (members > target.seats) {
@@ -383,7 +525,7 @@ export function billingRoutes(router: Router): void {
       }
       const live = await requireLive(env, office.id);
       const sub = await paddle<PaddleSubscription>(env, "PATCH", `/subscriptions/${live.provider_subscription_id}`, {
-        items: [{ price_id: priceFor(billing, plan, interval), quantity: 1 }],
+        items: [{ price_id: priceFor(billing, plan), quantity: 1 }],
         proration_billing_mode: "prorated_immediately",
       });
       await applySubscription(env, sub);
@@ -414,19 +556,15 @@ export function billingRoutes(router: Router): void {
       return json(await billingJson(env, office));
     })
 
-    // Paddle's own pages for the card, invoices and receipts, signed in already.
-    .add("POST", "/v1/offices/:id/billing/portal", async ({ request, env, ctx, params }) => {
+    // A new card for this office's plan only: a zero-amount checkout from Paddle,
+    // opened over the page like any other. No customer portal, which would show
+    // the payer's other subscriptions to whoever opened it.
+    .add("POST", "/v1/offices/:id/billing/payment-method", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const row = await subscriptionOf(env, office.id);
-      if (!row?.provider_customer_id) throw new HttpError(409, "no_subscription", "This office has never had a paid plan");
-      const session = await paddle<{ urls: { general: { overview: string } } }>(
-        env,
-        "POST",
-        `/customers/${row.provider_customer_id}/portal-sessions`,
-        row.provider_subscription_id ? { subscription_ids: [row.provider_subscription_id] } : {},
-      );
-      return json({ url: session.urls.general.overview });
+      const live = await requireLive(env, office.id);
+      const txn = await paddle<{ id: string }>(env, "GET", `/subscriptions/${live.provider_subscription_id}/update-payment-method-transaction`);
+      return json({ transactionId: txn.id });
     })
 
     .add("POST", "/v1/billing/webhook", async ({ env, request }) => webhook(env, request));

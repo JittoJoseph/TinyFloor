@@ -66,7 +66,7 @@
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
-        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak biuro dla maksymalnie 3 osób. Większe biura kosztują 19 $ miesięcznie za 10 osób i 49 $ za 25."
+        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak biuro do 3 osób z 5 godzinami spotkań miesięcznie. Większe biura kosztują $19 miesięcznie za 10 osób i 30 godzin spotkań albo $49 za 25 osób i 60 godzin."
       },
       {
         "q": "Czy muszę coś instalować?",
@@ -933,7 +933,8 @@
       "leave": "Opuść to biuro",
       "wrong": "Nie udało się. Spróbuj ponownie.",
       "plan": "{plan} · {used} z {seats} miejsc",
-      "danger": "Opuszczanie lub zamykanie"
+      "danger": "Opuszczanie lub zamykanie",
+      "cancelPlanFirst": "Najpierw anuluj plan tego biura w sekcji Plan i płatności. Potem można je zamknąć."
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -1095,7 +1096,15 @@
     "ended": "To spotkanie się skończyło",
     "rejoin": "Dołącz ponownie",
     "makeMeeting": "Spotkanie",
-    "makeMeetingHint": "Rozmowa to dwie osoby: rozpocznij spotkanie dla waszej trójki"
+    "makeMeetingHint": "Rozmowa to dwie osoby: rozpocznij spotkanie dla waszej trójki",
+    "hours": {
+      "usedMonth": "Godziny spotkań w tym miesiącu: {used} z {allowance}",
+      "usedToday": "Godziny spotkań dzisiaj: {used} z {allowance}",
+      "more": "Więcej godzin",
+      "paused": "Wideo wstrzymane",
+      "pausedMonth": "tylko głos do {date}",
+      "pausedToday": "tylko głos do jutra"
+    }
   },
   "shell": {
     "floor": "Piętro",
@@ -1443,7 +1452,7 @@
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
       "muted": "nie za osobę.",
-      "body": "Zacznij za darmo. Każdy plan ma wszystko, a goście nigdy się nie liczą.",
+      "body": "Zacznij za darmo. Każdy plan ma wszystko; większe mieszczą więcej osób i więcej godzin spotkań.",
       "soon": "Wkrótce",
       "forever": "na zawsze",
       "month": "miesięcznie",
@@ -1455,7 +1464,7 @@
           "Prywatne piętro",
           "Rozmowy i spotkania",
           "Czat, obrazy i pliki",
-          "Goście przez link"
+          "Wszystkie funkcje, bez okresu próbnego"
         ]
       },
       "team": {
@@ -1464,7 +1473,7 @@
         "items": [
           "Wszystko z Free",
           "Miejsce dla 10 członków",
-          "Rocznie: dwa miesiące gratis"
+          "Sześć razy więcej godzin spotkań"
         ]
       },
       "business": {
@@ -1473,10 +1482,12 @@
         "items": [
           "Wszystko z Team",
           "Miejsce dla 25 członków",
-          "Priorytetowe wsparcie",
-          "Większy? Napisz do nas"
+          "Dwa razy więcej godzin niż w Team",
+          "Większy zespół? Napisz do nas"
         ]
-      }
+      },
+      "hours": "Godziny spotkań: {count} miesięcznie",
+      "tax": "Ceny miesięczne, bez podatku."
     },
     "faq": {
       "title": "Pytania",
@@ -1492,38 +1503,57 @@
   "billing": {
     "current": "To biuro jest na planie",
     "members": "{used} z {seats} członków",
-    "freeNote": "Za darmo dla maksymalnie {seats} członków, ze wszystkimi funkcjami.",
-    "renews": "Odnawia się {date} · {price} {per}",
+    "freeNote": "Za darmo, ze wszystkimi funkcjami.",
+    "renews": "Odnawia się {date}",
     "ends": "Kończy się {date}, potem plan darmowy",
     "perMonth": "miesięcznie",
-    "perYear": "rocznie",
     "pastDue": "Ostatnia płatność nie przeszła. Paddle spróbuje ponownie; zaktualizuj kartę, aby zachować plan.",
     "updateCard": "Zaktualizuj kartę",
     "keep": "Zachowaj ten plan",
     "settingUp": "Płatność otrzymana. Konfigurujemy plan…",
     "settingUpSlow": "Płatność otrzymana. Plan może pojawić się dopiero po minucie; odśwież, jeśli go nie widać.",
     "plans": "Plany",
-    "billedEvery": "Rozliczenie",
-    "monthly": "Miesięcznie",
-    "yearly": "Rocznie",
-    "twoFree": "2 miesiące gratis",
     "currentPlan": "Obecny plan",
     "cancel": "Anuluj plan",
     "tooMany": "Więcej członków, niż mieści",
-    "toYearly": "Płać rocznie",
-    "toMonthly": "Płać miesięcznie",
     "switch": "Zmień",
     "choose": "Wybierz",
     "upTo": "Do {count} członków",
-    "fine": "Ceny nie zawierają podatku. Płatności obsługuje Paddle, nasz sprzedawca. Poproś o pełny zwrot w ciągu 14 dni od płatności.",
-    "invoices": "Płatności i faktury",
+    "fine": "Ceny są miesięczne, w dolarach amerykańskich, bez podatku. Płatności obsługuje Paddle, nasz sprzedawca. Poproś w ciągu 14 dni od płatności o pełny zwrot.",
     "adminsOnly": "Tylko administratorzy biura mogą zmienić jego plan.",
     "switchTitle": "Zmienić na {plan}?",
     "switchBody": "Paddle od razu pobierze lub zwróci różnicę za resztę okresu. Nikt na piętrze niczego nie zauważy.",
     "cancelTitle": "Anulować plan?",
-    "cancelBody": "Plan działa do {date}, potem biuro wraca do planu darmowego. Nikt nie zostanie usunięty, ale nikt nowy nie dołączy, a na piętrze mogą być naraz tylko 3 osoby.",
-    "cancelBodyNow": "Biuro wróci do planu darmowego na koniec okresu. Nikt nie zostanie usunięty, ale nikt nowy nie dołączy, a na piętrze mogą być naraz tylko 3 osoby.",
+    "cancelBody": "Plan działa do {date}, potem biuro wraca do planu darmowego: 3 członków i 5 godzin spotkań miesięcznie. Nikt nie zostaje usunięty, ale nikt nowy nie może dołączyć i tylko 3 osoby mogą być naraz na piętrze.",
+    "cancelBodyNow": "Na koniec tego okresu biuro wraca do planu darmowego: 3 członków i 5 godzin spotkań miesięcznie. Nikt nie zostaje usunięty, ale nikt nowy nie może dołączyć i tylko 3 osoby mogą być naraz na piętrze.",
     "moreSeats": "Więcej miejsc",
+    "membersLabel": "Członkowie",
+    "hoursLabel": "Godziny spotkań",
+    "hours": "{used} z {allowance} godz.",
+    "hoursResets": "Odnawia się {date}",
+    "hoursUsedUp": "Godziny spotkań w tym miesiącu zostały wykorzystane: do {date} spotkania są tylko głosowe. Większy plan od razu przywraca wideo.",
+    "from": "Od {date}",
+    "hoursAMonth": "Godziny spotkań: {count} miesięcznie",
+    "hoursExplained": "Godziny spotkań liczą czas, gdy w spotkaniu są co najmniej dwie osoby. Rozmowy we dwoje na piętrze nigdy się nie liczą. Po ich wykorzystaniu spotkania trwają dalej z samym głosem do 1. dnia miesiąca.",
+    "payment": "Płatność",
+    "cardUnknown": "Karta zapisana w Paddle",
+    "card": "Karta",
+    "cardEnding": "{brand} kończąca się na {last4}",
+    "expires": "Ważna do {date}",
+    "update": "Zmień",
+    "nextCharge": "Następna płatność",
+    "chargeOn": "{amount}, {date}",
+    "noneAfter": "Brak, plan kończy się {date}",
+    "history": "Historia płatności",
+    "noPayments": "Brak płatności.",
+    "planPayment": "Plan {plan}",
+    "invoice": "Pobierz fakturę",
+    "status": {
+      "refunded": "Zwrócono",
+      "partly_refunded": "Zwrócono częściowo",
+      "failed": "Nieudana",
+      "due": "Do zapłaty"
+    },
     "errors": {
       "tooManyMembers": "To biuro ma więcej członków, niż mieści ten plan. Najpierw kogoś usuń.",
       "hasSubscription": "To biuro ma już plan. Zmień go zamiast tego.",

@@ -244,14 +244,25 @@ export function Everything() {
   );
 }
 
-/** Three plans, priced by how many people the office holds, with everything on each. The one in the middle stands on the bezel's black. */
+/**
+ * Three plans, priced by how many people the office holds and how many meeting
+ * hours it has (docs/14), with everything on each. The one in the middle stands on the bezel's black.
+ */
 export function Plans() {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
-  const plans: Array<{ key: "free" | "team" | "business"; price: string; per: string; people: number; soon?: boolean; featured?: boolean }> = [
-    { key: "free", price: "$0", per: t("forever"), people: 3 },
-    { key: "team", price: "$19", per: t("month"), people: 10, soon: true, featured: true },
-    { key: "business", price: "$49", per: t("month"), people: 25, soon: true },
+  const plans: Array<{
+    key: "free" | "team" | "business";
+    price: string;
+    per: string;
+    people: number;
+    hours: number;
+    soon?: boolean;
+    featured?: boolean;
+  }> = [
+    { key: "free", price: "$0", per: t("forever"), people: 3, hours: 5 },
+    { key: "team", price: "$19", per: t("month"), people: 10, hours: 30, soon: true, featured: true },
+    { key: "business", price: "$49", per: t("month"), people: 25, hours: 60, soon: true },
   ];
 
   return (
@@ -274,6 +285,7 @@ export function Plans() {
               <span className="text-[14.5px] text-muted-foreground">{plan.per}</span>
             </p>
             <p className="mt-3 text-[13.5px] font-medium text-foreground/80">{t("people", { count: plan.people })}</p>
+            <p className="mt-1 text-[13.5px] text-muted-foreground">{t("hours", { count: plan.hours })}</p>
             <p className="mt-5 text-[14.5px] leading-[1.6] text-muted-foreground">{t(`${plan.key}.body`)}</p>
             <ul className="mt-8 flex flex-col gap-3 text-[14.5px]">
               {(t.raw(`${plan.key}.items`) as string[]).map((item) => (
@@ -295,6 +307,7 @@ export function Plans() {
           </div>
         ))}
       </div>
+      <p className="mt-8 text-center text-[13px] text-muted-foreground">{t("tax")}</p>
     </section>
   );
 }

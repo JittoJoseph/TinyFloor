@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, Video } from "lucide-react";
+import { Plus, Video } from "@/components/ui/icons";
 import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";

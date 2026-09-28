@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { VideoOff } from "lucide-react";
+import { VideoOff } from "@/components/ui/icons";
 import type { MeetingUsage } from "@shared/messages";
 import { useMeetings } from "@/lib/meetings";
 import { usePlans } from "@/lib/billing";

@@ -2,7 +2,7 @@
 // beui.dev/components/blocks/command-palette
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Search, type LucideIcon } from "lucide-react";
+import { Search, type AppIcon } from "@/components/ui/icons";
 import {
   type ReactNode,
   useCallback,
@@ -27,7 +27,7 @@ export type CommandItem = {
   group?: string;
   hint?: string;
   keywords?: string[];
-  icon?: LucideIcon;
+  icon?: AppIcon;
   badge?: ReactNode;
   /** Something to lead the row instead of an icon: a person's face. */
   visual?: ReactNode;

@@ -2,7 +2,7 @@
 
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import { MessageSquare, Phone, Users } from "lucide-react";
+import { MessageSquare, Phone, Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
 import { RoomIconButton, surface } from "./room/ui";

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, LayoutGrid, Plus } from "lucide-react";
+import { DoorOpen, LayoutGrid, Plus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
 import { officePath } from "@/lib/links";

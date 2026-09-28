@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, Smartphone } from "lucide-react";
+import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, Smartphone } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, MEETING } from "@/components/floor/scenes";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
 import { PlanAction } from "./PlanAction";
+import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "./SiteTheme";
 
@@ -63,10 +64,12 @@ export const quiet = (chunks: ReactNode) => <span className="text-muted-foregrou
  * footer with its language links pointing at `path`. The nav floats without
  * a fade behind it, since pages have dark panels it passes over.
  */
-export function MarketingShell({ path = "/", children }: { path?: string; children: ReactNode }) {
+export function MarketingShell({ path = "/", oneTap = false, children }: { path?: string; oneTap?: boolean; children: ReactNode }) {
   return (
     <div className="min-h-dvh overflow-x-clip bg-background font-sans text-foreground antialiased">
       <SiteTheme />
+      {/* Google's account chooser for people without an account yet, on the pages meant to win them. */}
+      {oneTap && <GoogleOneTap />}
       <HomeNav fade={false} />
       <main>{children}</main>
       <SiteFooter path={path} />

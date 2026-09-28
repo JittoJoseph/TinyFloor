@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { DoorOpen, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "lucide-react";
+import { DoorOpen, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";

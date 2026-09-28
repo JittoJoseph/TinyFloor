@@ -1,4 +1,4 @@
-import { MessageSquare, Phone } from "lucide-react";
+import { MessageSquare, Phone } from "@/components/ui/icons";
 import { Face } from "@/components/ui/Face";
 
 /** The app's card beside someone you've walked up to, as the site draws it: who, a message, and the call. */

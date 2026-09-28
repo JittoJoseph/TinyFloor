@@ -6,6 +6,7 @@ import { api, type SessionUser } from "@/lib/api";
 import { readIdentity } from "@/lib/identity";
 import { posthogLog } from "@/lib/posthog-log";
 import { recallSession, rememberSession } from "@/lib/session-hint";
+import { rememberAccount } from "@/lib/accountHint";
 
 interface AuthContextType {
   user: SessionUser | null;
@@ -17,7 +18,7 @@ interface AuthContextType {
   /** Signed in with an account (not a guest). */
   hasAccount: boolean;
   signIn: (email: string, password: string) => Promise<SessionUser>;
-  signInWithGoogle: (from: { code: string }) => Promise<SessionUser>;
+  signInWithGoogle: (from: { code: string } | { credential: string }) => Promise<SessionUser>;
   signUp: (details: { email: string; password: string; turnstileToken: string }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
@@ -35,7 +36,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useLayoutEffect(recallSession, []);
   useEffect(() => {
-    if (!isLoading) rememberSession(!!user);
+    if (isLoading) return;
+    rememberSession(!!user);
+    // An account's, not a guest's: the site's pages keep One Tap away from it (components/auth/GoogleOneTap).
+    rememberAccount(!!user && !user.guest);
   }, [isLoading, user]);
 
   // Offline or the API is down: treated as signed out, and pages that need a

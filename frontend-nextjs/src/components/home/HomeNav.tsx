@@ -14,7 +14,7 @@ import {
   Presentation,
   Radio,
   UsersRound,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { LANDINGS, type LandingKey } from "@/lib/landings";
 import { Logo } from "@/components/app/Logo";

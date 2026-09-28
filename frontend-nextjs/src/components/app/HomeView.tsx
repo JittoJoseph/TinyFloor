@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, ChevronDown, ChevronRight, DoorOpen, Plus, Settings, UserPlus } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight, DoorOpen, Plus, Settings, UserPlus } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type OfficeSummary } from "@/lib/api";

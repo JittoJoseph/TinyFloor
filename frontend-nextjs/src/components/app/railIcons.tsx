@@ -1,23 +1,17 @@
 "use client";
 
-import { MapTrifoldIcon } from "@phosphor-icons/react/dist/csr/MapTrifold";
-import { ChatsCircleIcon } from "@phosphor-icons/react/dist/csr/ChatsCircle";
-import { UsersThreeIcon } from "@phosphor-icons/react/dist/csr/UsersThree";
-import { VideoCameraIcon } from "@phosphor-icons/react/dist/csr/VideoCamera";
-import { BuildingsIcon } from "@phosphor-icons/react/dist/csr/Buildings";
-import { GearSixIcon } from "@phosphor-icons/react/dist/csr/GearSix";
-import { SignOutIcon } from "@phosphor-icons/react/dist/csr/SignOut";
+import { Chats, Floor, Gear, Meetings, Office, People, SignOut } from "@/components/ui/icons";
 
 /**
- * The rail's icons: Phosphor, imported one file each so only these ship.
- * The rail draws them outlined, and filled where you are (see AppShell's Icon).
+ * The rail's icons, from the app's one pack (components/ui/icons). The rail
+ * draws them with a heavier stroke where you are (see AppShell's Icon).
  */
 export const RailIcons = {
-  floor: <MapTrifoldIcon />,
-  chat: <ChatsCircleIcon />,
-  people: <UsersThreeIcon />,
-  meetings: <VideoCameraIcon />,
-  office: <BuildingsIcon />,
-  settings: <GearSixIcon />,
-  leave: <SignOutIcon className="rtl:-scale-x-100" />,
+  floor: <Floor />,
+  chat: <Chats />,
+  people: <People />,
+  meetings: <Meetings />,
+  office: <Office />,
+  settings: <Gear />,
+  leave: <SignOut className="rtl:-scale-x-100" />,
 };

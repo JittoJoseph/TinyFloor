@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "lucide-react";
+import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";

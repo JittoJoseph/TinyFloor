@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { LogOut, MessageSquare, Phone, PhoneMissed, PhoneOff, Video, X } from "lucide-react";
+import { LogOut, MessageSquare, Phone, PhoneMissed, PhoneOff, Video, X } from "@/components/ui/icons";
 import { callManager, type CallOutcome, type MeetingInvite, type MeetingNotice } from "@/lib/CallManager";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";

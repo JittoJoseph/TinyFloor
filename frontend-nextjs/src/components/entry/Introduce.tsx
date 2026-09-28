@@ -13,8 +13,9 @@ import { YouMark } from "./DoorParts";
 
 /**
  * A new account's first door (docs/15): the name people will see, then who
- * they'll be on the floor, one at a time. Signing up only asked for Google or
- * an email, so the name starts as the one we guessed and is theirs to change.
+ * they'll be on the floor, one at a time. Someone who signed up with Google
+ * finds their Google name filled in and still presses Continue (or changes
+ * it); someone who used an email types it.
  */
 export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
   const t = useTranslations("entry");
@@ -28,7 +29,10 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
   const [error, setError] = useState("");
   if (!user) return null;
 
-  const typed = (name ?? user.displayName).trim();
+  // Google gave us their name, so it's there to confirm; an email sign-up only
+  // gave an address, so they type it (what we guessed from it isn't a name).
+  const suggested = user.google ? user.displayName : "";
+  const typed = (name ?? suggested).trim();
   const picked = cleanCharacter(character ?? user.character);
 
   const finish = async () => {
@@ -84,7 +88,7 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
           }
         >
           {step === "name" ? (
-            <NameQuestion name={name ?? user.displayName} onName={setName} />
+            <NameQuestion name={name ?? suggested} onName={setName} />
           ) : (
             <CharacterQuestion character={picked} onCharacter={setCharacter} />
           )}

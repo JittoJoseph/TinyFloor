@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Unlink } from "lucide-react";
+import { Unlink } from "@/components/ui/icons";
 import { EntryHeader, EntryShell } from "./EntryShell";
 
 /** A door that does not open: what happened, and the one place to go instead. */

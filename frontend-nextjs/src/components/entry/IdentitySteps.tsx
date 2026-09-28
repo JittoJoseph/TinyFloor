@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "@/components/ui/icons";
 import { Field, pillInputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
 import { StepTitle } from "./DoorSteps";

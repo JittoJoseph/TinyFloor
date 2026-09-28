@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Link2 } from "lucide-react";
+import { Check, Link2 } from "@/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { LitFace } from "@/components/ui/LitFace";
 import { Logo } from "@/components/app/Logo";

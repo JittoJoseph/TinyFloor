@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, Mic, Monitor, Moon, SlidersHorizontal, Sun, Video } from "lucide-react";
+import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, Mic, Monitor, Moon, SlidersHorizontal, Sun, Video } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";

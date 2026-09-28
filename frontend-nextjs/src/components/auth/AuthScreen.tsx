@@ -2,7 +2,7 @@
 
 import React, { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Eye, EyeOff } from "lucide-react";
+import { Check, Eye, EyeOff } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/lib/i18n/navigation";
-import { AlertCircle, Check, UserPlus } from "lucide-react";
+import { AlertCircle, Check, UserPlus } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import ControlBar from "@/components/ControlBar";
 import { Joystick } from "./Joystick";

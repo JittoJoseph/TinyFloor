@@ -3,7 +3,7 @@
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Shield, ShieldOff, UserMinus, UserPlus } from "lucide-react";
+import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen } from "lucide-react";
+import { DoorOpen } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";

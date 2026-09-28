@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Pause, Play, SkipBack, SkipForward, Volume2, X } from "lucide-react";
+import { Pause, Play, SkipBack, SkipForward, Volume2, X } from "@/components/ui/icons";
 import { jukebox, TRACKS } from "@/lib/JukeboxManager";
 
 const control =

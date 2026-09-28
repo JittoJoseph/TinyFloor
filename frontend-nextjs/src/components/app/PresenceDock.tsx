@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video } from "lucide-react";
+import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video } from "@/components/ui/icons";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";

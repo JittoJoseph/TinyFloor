@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Users } from "lucide-react";
+import { Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
@@ -74,7 +74,9 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const account = !!user && !user.guest;
   const introduced = account && user.introduced !== false;
   const step: Step = !account ? "account" : introduced ? "join" : identity;
-  const name = (typedName ?? user?.displayName ?? "").trim();
+  // Google's name to confirm, for a Google account; an email sign-up types it.
+  const suggested = user?.google ? user.displayName : "";
+  const name = (typedName ?? suggested).trim();
   const character = cleanCharacter(pickedCharacter ?? user?.character ?? "Adam");
 
   /** Into the office, then home, where it is waiting with a way to walk in. */
@@ -213,7 +215,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
               <Agree className="mt-5 text-[12px]" />
             </>
           )}
-          {step === "name" && <NameQuestion name={typedName ?? user?.displayName ?? ""} onName={setTypedName} />}
+          {step === "name" && <NameQuestion name={typedName ?? suggested} onName={setTypedName} />}
           {step === "character" && <CharacterQuestion character={character} onCharacter={setPickedCharacter} />}
           {step === "join" && user && (
             <>

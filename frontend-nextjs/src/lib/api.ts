@@ -250,7 +250,8 @@ export const api = {
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
-  signInWithGoogle: (from: { code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
+  /** Google's popup code (the button), or One Tap's signed ID token. */
+  signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),

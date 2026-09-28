@@ -1,7 +1,7 @@
 "use client";
 // beui.dev/components/motion/center-morph-modal
 
-import { X } from "lucide-react";
+import { X } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   cloneElement,

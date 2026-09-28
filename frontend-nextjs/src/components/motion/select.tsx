@@ -1,7 +1,7 @@
 "use client";
 // beui.dev/components/motion/select
 
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown } from "@/components/ui/icons";
 import {
   motion,
   type Transition,

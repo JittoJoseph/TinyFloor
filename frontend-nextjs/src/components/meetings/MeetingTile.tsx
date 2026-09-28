@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useRef, type CSSProperties } from "react";
-import { MicOff, MonitorUp } from "lucide-react";
+import { MicOff, MonitorUp } from "@/components/ui/icons";
 import { faceBackground } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Eraser, Pencil, Trash2, X } from "lucide-react";
+import { Eraser, Pencil, Trash2, X } from "@/components/ui/icons";
 import { whiteboard, Stroke } from "@/lib/WhiteboardManager";
 import { RoomIconButton, Divider, label } from "@/components/room/ui";
 

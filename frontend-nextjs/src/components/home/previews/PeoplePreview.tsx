@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Footprints, MessageSquare, UserPlus } from "lucide-react";
+import { Footprints, MessageSquare, UserPlus } from "@/components/ui/icons";
 import { Face, FaceStack, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { CAST } from "./Frame";

@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
 import { LANDINGS } from "@/lib/landings";

@@ -10,7 +10,7 @@ import { Closing, Everything, FloorMoments, Hero, MarketingShell, Plans, Questio
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const t = useTranslations("homepage.hero");
   return (
-    <MarketingShell>
+    <MarketingShell oneTap>
       <Hero
         title={
           <>

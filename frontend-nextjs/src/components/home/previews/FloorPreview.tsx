@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Mic, Settings2 } from "lucide-react";
+import { Mic, Settings2 } from "@/components/ui/icons";
 import { FaceStack } from "@/components/ui/Face";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, PEOPLE } from "@/components/floor/scenes";

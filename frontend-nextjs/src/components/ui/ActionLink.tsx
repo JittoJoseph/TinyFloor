@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/ui/icons";
 import { Link } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { Check, ChevronDown, Link2 } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Check, Info, Link2 } from "@/components/ui/icons";
+import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type Office, type Plan, type PlanId } from "@/lib/api";
@@ -12,6 +12,7 @@ import { officePath } from "@/lib/links";
 import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
+import { Dialog } from "@/components/ui/Dialog";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryHeader, EntryShell, pillInputClass } from "@/components/entry/EntryShell";
@@ -44,6 +45,7 @@ type Step = "name" | "size" | "plan";
 export function CreateOfficeFlow() {
   const t = useTranslations("create");
   const tEntry = useTranslations("entry");
+  const tc = useTranslations("common");
   const locale = useLocale();
   const format = useFormatter();
   const router = useRouter();
@@ -66,7 +68,6 @@ export function CreateOfficeFlow() {
     return asked === "plus" || asked === "pro" ? asked : null;
   });
   const [showIncluded, setShowIncluded] = useState(false);
-  const includedList = useRef<HTMLUListElement>(null);
   const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
   const [error, setError] = useState("");
 
@@ -267,7 +268,13 @@ export function CreateOfficeFlow() {
           {step === "plan" && (
             <>
               <StepTitle title={t("planTitle", { office: typed })} body={t("planBody")} />
-              <div role="radiogroup" aria-label={t("planTitle", { office: typed })} className="grid grid-cols-2 gap-2">
+              {/*
+                The plans as two rows, one choice each: the name, how many
+                people, the price and what that is a person. Nothing here grows
+                or opens, so the step never scrolls; what every plan includes
+                opens over the door instead.
+              */}
+              <div role="radiogroup" aria-label={t("planTitle", { office: typed })} className="grid grid-cols-[minmax(0,1fr)] gap-2">
                 {paid.map((one) => {
                   const on = plan === one.id;
                   const fits = SIZES.find((option) => option.id === size)?.plan !== "pro" || one.id === "pro";
@@ -279,66 +286,73 @@ export function CreateOfficeFlow() {
                       aria-checked={on}
                       onClick={() => setChosen(one.id)}
                       className={cn(
-                        "relative flex cursor-pointer flex-col items-start rounded-2xl border p-3.5 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring sm:p-4",
+                        "flex w-full min-w-0 cursor-pointer items-center gap-3 rounded-2xl border px-3.5 py-3 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-ring sm:px-4",
                         on ? "border-foreground bg-foreground/[0.04]" : "border-border hover:border-foreground/30",
                       )}
                     >
-                      <span className="flex h-6 items-center gap-2 pe-6">
-                        <span className="text-[15px] font-semibold text-foreground">{NAMES[one.id]}</span>
-                        {one.id === recommended && (
-                          <span className="truncate rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">{t("recommended")}</span>
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "flex size-5 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors",
+                          on ? "border-foreground bg-foreground" : "border-border-strong",
                         )}
+                      >
+                        {on && <span className="size-2 rounded-full bg-background" />}
                       </span>
-                      <span className="mt-1 flex items-baseline gap-1">
-                        <span className="text-[24px] font-semibold tracking-tight text-foreground">{dollars(one.price ?? 0)}</span>
-                        <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center gap-2">
+                          <span className="text-[15px] font-semibold text-foreground">{NAMES[one.id]}</span>
+                          {one.id === recommended && (
+                            <span className="truncate rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">{t("recommended")}</span>
+                          )}
+                        </span>
+                        <span className={cn("mt-0.5 block truncate text-[12.5px]", fits ? "text-muted-foreground" : "text-warn")}>
+                          {t("upTo", { count: one.seats })}
+                        </span>
                       </span>
-                      <span className={cn("mt-2 text-[13px]", fits ? "text-foreground" : "text-warn")}>{t("upTo", { count: one.seats })}</span>
-                      <span className="text-[12px] text-muted-foreground">{t("perPerson", { price: perPerson(one) })}</span>
-                      {on && <Tick />}
+                      <span className="shrink-0 text-end">
+                        <span className="flex items-baseline justify-end gap-0.5">
+                          <span className="text-[19px] font-semibold tracking-tight text-foreground">{dollars(one.price ?? 0)}</span>
+                          <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
+                        </span>
+                        <span className="block text-[11.5px] text-muted-foreground">{t("perPerson", { price: perPerson(one) })}</span>
+                      </span>
                     </button>
                   );
                 })}
               </div>
-              {size === "large" && <p className="mt-3 text-[12.5px] text-muted-foreground">{t("bigger")}</p>}
-
-              {/* What every plan has, and the meeting hours, for whoever wants to know; closed at first. */}
               <button
                 type="button"
-                aria-expanded={showIncluded}
-                onClick={() => setShowIncluded((open) => !open)}
-                className="mt-3 inline-flex cursor-pointer items-center gap-1 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                onClick={() => setShowIncluded(true)}
+                className="mt-3 inline-flex cursor-pointer items-center gap-1.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
+                <Info className="size-3.5" />
                 {t("included")}
-                <ChevronDown className={cn("size-3.5 transition-transform", showIncluded && "rotate-180")} />
               </button>
-              <AnimatePresence initial={false}>
-                {showIncluded && picked && (
-                  <motion.ul
-                    // Opened below the cards, it scrolls itself into sight inside the door.
-                    onAnimationComplete={(definition) =>
-                      (definition as { height?: unknown }).height === "auto" && includedList.current?.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" })
-                    }
-                    ref={includedList}
-                    initial={reduce ? false : { height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={reduce ? undefined : { height: 0, opacity: 0 }}
-                    className="overflow-hidden text-[12.5px] text-muted-foreground"
-                  >
-                    {[
-                      t("includedCalls"),
-                      t("includedChat"),
-                      t("includedMeetings", { hours: picked.meetingHours }),
-                      t("includedCancel"),
-                    ].map((line) => (
-                      <li key={line} className="flex items-start gap-2 pt-1.5">
-                        <Check className="mt-0.5 size-3.5 shrink-0 text-ok" />
-                        {line}
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
+              <Dialog
+                open={showIncluded}
+                onClose={() => setShowIncluded(false)}
+                title={t("included")}
+                closeLabel={tc("close")}
+              >
+                <ul className="space-y-2.5 text-[13.5px] text-foreground">
+                  {[
+                    t("includedCalls"),
+                    t("includedChat"),
+                    t("includedMeetingsBoth", {
+                      plus: paid.find((one) => one.id === "plus")?.meetingHours ?? 30,
+                      pro: paid.find((one) => one.id === "pro")?.meetingHours ?? 60,
+                    }),
+                    t("includedCancel"),
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2.5">
+                      <Check className="mt-0.5 size-4 shrink-0 text-ok" />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+                {size === "large" && <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">{t("bigger")}</p>}
+              </Dialog>
             </>
           )}
 

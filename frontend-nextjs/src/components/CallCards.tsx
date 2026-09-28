@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
-import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
+import { Maximize2, MicOff, Minimize2, MonitorUp } from "@/components/ui/icons";
 import { useCall } from "@/lib/useCall";
 import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";

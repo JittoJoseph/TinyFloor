@@ -12,13 +12,13 @@ import {
   ImagePlus,
   ExternalLink,
   Lock,
-  Map as MapIcon,
+  MapIcon,
   MessageSquare,
   Plus,
   Search,
   SquarePen,
   UserPlus,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";

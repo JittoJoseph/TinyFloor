@@ -43,6 +43,25 @@ products' names.
 Someone who already walked in as a guest in this browser keeps the name and
 character they chose then, and skips step 2.
 
+## Google One Tap, without the worker bill
+
+The home page and the landing pages show Google One Tap to anyone who hasn't
+signed in to an account in this browser. It costs our worker nothing until
+someone chooses an account:
+
+- **Whether to show it** comes from the browser alone (a hint saved when an
+  account signs in), never from asking the API who is signed in. That was
+  one worker request per landing view, which is why the first One Tap was
+  removed.
+- **Google's script** loads a few seconds after the page settles, from
+  Google, so it never slows the first paint.
+- **The chooser** answers with an ID token signed by Google. The API checks
+  its signature against Google's keys, fetched through the edge cache. That
+  one request is the sign-in itself.
+
+The name step starts with the Google name for a Google account, still waiting
+for Continue; an email sign-up types it.
+
 ## The invite link
 
 Each office has **one link**, the same for everyone in it, good for as many
@@ -104,6 +123,21 @@ Three steps in one door, each asking one thing:
 
 Where paid plans aren't on yet (production, until Paddle approves the
 account), naming the office is the only step.
+
+## Plan and billing, once they pay
+
+An office's settings don't show every plan again. Like Claude Code's usage
+page, they show where the office is, and one way up:
+
+- **Where it is:** the plan, its price and next charge, and two meters,
+  members and meeting hours (with the reset date). The hours meter turns amber
+  at 80%.
+- **One way up:** only the plan above this one, with what it adds next to
+  what the office has now ("25 people, now 10"), and a reason in one line:
+  every seat taken, most meeting hours used, or just room to grow. The top
+  plan gets a line about writing to us instead.
+- **Then** the card, the next charge, the billing history, and, quietly at
+  the end, moving down a plan or cancelling.
 
 ## Rules every door follows
 

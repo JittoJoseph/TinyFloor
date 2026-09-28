@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { COLUMN, MarketingShell } from "@/components/home/Blocks";
 import { cn } from "@/lib/utils";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
-/** The contact address for anything about privacy, data or these terms. */
-export const SUPPORT_EMAIL = "support@tinyfloor.com";
+export { SUPPORT_EMAIL };
 
 /** Sections of a legal page, each with a heading and an anchor for the contents list. */
 export interface LegalSection {

@@ -8,5 +8,8 @@ export const SOCIALS = {
   github: "https://github.com/JittoJoseph/TinyFloor",
 } as const;
 
+/** Where people write to us: support, privacy, billing and refunds alike. */
+export const SUPPORT_EMAIL = "support@tinyfloor.com";
+
 /** The company's handle on X, for link cards there. */
 export const X_HANDLE = "@tinyflooroffice";

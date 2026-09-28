@@ -3,7 +3,7 @@ import { ChevronDown, Globe } from "lucide-react";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
 import { LANDINGS } from "@/lib/landings";
-import { SOCIALS } from "@/lib/site";
+import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
 import { ThemeSwitch } from "./ThemeSwitch";
 
@@ -63,6 +63,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
       title: t("resources"),
       links: [
         { label: t("about"), href: "/about" },
+        { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
         { label: t("faq"), href: "/#faq" },
         { label: t("privacy"), href: "/privacy" },
         { label: t("terms"), href: "/terms" },
@@ -89,9 +90,16 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
               <ul className="mt-4 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-[14px] text-muted-foreground transition-colors hover:text-foreground">
-                      {link.label}
-                    </Link>
+                    {/* A mail address isn't a page: no locale in front of it. */}
+                    {link.href.startsWith("mailto:") ? (
+                      <a href={link.href} className="text-[14px] text-muted-foreground transition-colors hover:text-foreground">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-[14px] text-muted-foreground transition-colors hover:text-foreground">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

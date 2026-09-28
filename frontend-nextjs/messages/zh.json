@@ -1521,5 +1521,57 @@
     "topPlan": "你已在使用最大的方案。需要容纳超过 {count} 人？联系我们，我们来安排。",
     "moveDown": "改为 {plan}",
     "usageOf": "{used} / {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "价格：整个办公室一个价",
+      "description": "TinyFloor 最多 3 人免费。Plus 每月 $19，可容纳 10 人；Pro 每月 $49，可容纳 25 人。按办公室收费，不按人头。"
+    },
+    "title": "整个办公室，一个价格。",
+    "muted": "不按人头收费。",
+    "body": "最多 3 人免费起步，团队壮大后再升级。",
+    "seats": {
+      "title": "十个人，",
+      "muted": "一张小账单。",
+      "body": "一个 10 人团队每月的费用。",
+      "perSeat": "按人收费的工具，每人 {price}",
+      "ours": "TinyFloor Plus，整个办公室"
+    },
+    "table": {
+      "title": "每个套餐，",
+      "muted": "功能全都有。",
+      "people": "人数",
+      "hours": "每月会议时长（小时）",
+      "hoursNote": "仅限多人会议",
+      "calls": "两人通话",
+      "callsNote": "不计入时长"
+    },
+    "notes": {
+      "title": "须知。",
+      "cancel": {
+        "title": "随时取消",
+        "body": "套餐会持续到已付费周期结束，之后办公室转为 Free。不会删除任何内容。"
+      },
+      "refund": {
+        "title": "14 天退款",
+        "body": "任何一笔付款后 14 天内申请，即可全额退款。"
+      },
+      "change": {
+        "title": "随时更换套餐",
+        "body": "升级或降级立即生效，差额由 Paddle 补收或退回。"
+      },
+      "hours": {
+        "title": "时长用完后",
+        "body": "会议在下月 1 日前只能语音进行。两人通话照常可用。"
+      },
+      "tax": {
+        "title": "结账时计税",
+        "body": "价格以美元计。我们的经销商 Paddle 会在付款时加收相应的销售税或增值税。"
+      },
+      "bigger": {
+        "title": "超过 25 人？",
+        "body": "给每个团队各开一个办公室，或写信到 {email} 与我们联系。"
+      }
+    }
   }
 }

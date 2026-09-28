@@ -119,7 +119,7 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
             </div>
           </Menu>
 
-          <Link href="/#plans" className={plain}>
+          <Link href="/pricing" className={plain}>
             {t("nav.pricing")}
           </Link>
           <Link href="/#faq" className={plain}>
@@ -164,7 +164,7 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
               ))}
             </MobileSection>
             <div className="divide-y divide-border border-t border-border">
-              <MobileLink href="/#plans">{t("nav.pricing")}</MobileLink>
+              <MobileLink href="/pricing">{t("nav.pricing")}</MobileLink>
               <MobileLink href="/#faq">{t("nav.faq")}</MobileLink>
               <MobileLink href="/lobby">{t("nav.lobby")}</MobileLink>
             </div>

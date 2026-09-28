@@ -1521,5 +1521,57 @@
     "topPlan": "You're on our biggest plan. Need room for more than {count} people? Write to us and we'll set it up.",
     "moveDown": "Move to {plan}",
     "usageOf": "{used} of {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Pricing: One Price for the Whole Office",
+      "description": "TinyFloor is free for up to 3 people. Plus is $19 a month for 10 people and Pro is $49 a month for 25, priced by the office, not the person."
+    },
+    "title": "One price for the whole office.",
+    "muted": "Not one per person.",
+    "body": "Start free with up to 3 people, and move up when your team grows.",
+    "seats": {
+      "title": "Ten people,",
+      "muted": "one small bill.",
+      "body": "What a team of 10 pays each month.",
+      "perSeat": "Per-seat tools at {price} a person",
+      "ours": "TinyFloor Plus, for the whole office"
+    },
+    "table": {
+      "title": "Every plan,",
+      "muted": "every feature.",
+      "people": "People",
+      "hours": "Meeting hours a month",
+      "hoursNote": "Group meetings only",
+      "calls": "Calls between two people",
+      "callsNote": "Never counted"
+    },
+    "notes": {
+      "title": "Good to know.",
+      "cancel": {
+        "title": "Cancel any time",
+        "body": "Your plan runs to the end of what you paid for, then the office moves to Free. Nothing is deleted."
+      },
+      "refund": {
+        "title": "14-day refunds",
+        "body": "Ask within 14 days of any payment and you get all of it back."
+      },
+      "change": {
+        "title": "Change plans any time",
+        "body": "Moving up or down takes effect at once, and Paddle charges or credits the difference."
+      },
+      "hours": {
+        "title": "When the hours run out",
+        "body": "Meetings carry on with voice only until the 1st. Calls between two people keep working as usual."
+      },
+      "tax": {
+        "title": "Tax at checkout",
+        "body": "Prices are in US dollars. Paddle, our reseller, adds any sales tax or VAT when you pay."
+      },
+      "bigger": {
+        "title": "More than 25 people?",
+        "body": "Give each team an office of its own, or write to {email} and we'll talk."
+      }
+    }
   }
 }

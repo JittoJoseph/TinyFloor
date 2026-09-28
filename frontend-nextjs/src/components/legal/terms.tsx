@@ -92,7 +92,7 @@ export const termsSections: LegalSection[] = [
           <li>
             <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours. Every plan, the
             free one included, has every feature. The plans, their prices, member limits and meeting hours are on our{" "}
-            <Link href="/#plans">pricing</Link>, and are shown again before you pay.
+            <Link href="/pricing">pricing</Link>, and are shown again before you pay.
           </li>
           <li>
             <strong>Meeting hours.</strong> An office&apos;s meeting hours are the time its meetings have two or more people in them, added up

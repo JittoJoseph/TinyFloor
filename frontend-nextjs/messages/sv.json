@@ -1521,5 +1521,57 @@
     "topPlan": "Du har vår största plan. Behöver du plats för fler än {count}? Skriv till oss så ordnar vi det.",
     "moveDown": "Byt till {plan}",
     "usageOf": "{used} av {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Priser: Ett pris för hela kontoret",
+      "description": "TinyFloor är gratis för upp till 3 personer. Plus kostar $19 i månaden för 10 personer och Pro $49 i månaden för 25, prissatt per kontor, inte per person."
+    },
+    "title": "Ett pris för hela kontoret.",
+    "muted": "Inte ett per person.",
+    "body": "Börja gratis med upp till 3 personer och gå upp när teamet växer.",
+    "seats": {
+      "title": "Tio personer,",
+      "muted": "en liten räkning.",
+      "body": "Vad ett team på 10 betalar varje månad.",
+      "perSeat": "Verktyg per användare för {price} per person",
+      "ours": "TinyFloor Plus, för hela kontoret"
+    },
+    "table": {
+      "title": "Varje plan,",
+      "muted": "alla funktioner.",
+      "people": "Personer",
+      "hours": "Mötestimmar i månaden",
+      "hoursNote": "Endast gruppmöten",
+      "calls": "Samtal mellan två personer",
+      "callsNote": "Räknas aldrig"
+    },
+    "notes": {
+      "title": "Bra att veta.",
+      "cancel": {
+        "title": "Avsluta när du vill",
+        "body": "Planen gäller till slutet av perioden du har betalat för, sedan går kontoret över till Free. Inget raderas."
+      },
+      "refund": {
+        "title": "14 dagars återbetalning",
+        "body": "Hör av dig inom 14 dagar efter en betalning så får du tillbaka allt."
+      },
+      "change": {
+        "title": "Byt plan när du vill",
+        "body": "Att gå upp eller ner gäller direkt, och Paddle debiterar eller krediterar mellanskillnaden."
+      },
+      "hours": {
+        "title": "När timmarna är slut",
+        "body": "Möten fortsätter med bara ljud fram till den 1:a. Samtal mellan två personer fungerar som vanligt."
+      },
+      "tax": {
+        "title": "Moms i kassan",
+        "body": "Priserna är i amerikanska dollar. Paddle, vår återförsäljare, lägger på moms eller försäljningsskatt när du betalar."
+      },
+      "bigger": {
+        "title": "Fler än 25 personer?",
+        "body": "Ge varje team ett eget kontor, eller skriv till {email} så pratar vi."
+      }
+    }
   }
 }

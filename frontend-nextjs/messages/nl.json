@@ -1521,5 +1521,57 @@
     "topPlan": "Je zit op ons grootste abonnement. Ruimte nodig voor meer dan {count} mensen? Schrijf ons, dan regelen we het.",
     "moveDown": "Overstappen naar {plan}",
     "usageOf": "{used} van {total}"
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Prijzen: één prijs voor het hele kantoor",
+      "description": "TinyFloor is gratis tot 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, geprijsd per kantoor, niet per persoon."
+    },
+    "title": "Eén prijs voor het hele kantoor.",
+    "muted": "Niet één per persoon.",
+    "body": "Begin gratis met maximaal 3 mensen en stap over als je team groeit.",
+    "seats": {
+      "title": "Tien mensen,",
+      "muted": "één kleine rekening.",
+      "body": "Wat een team van 10 elke maand betaalt.",
+      "perSeat": "Tools per gebruiker à {price} per persoon",
+      "ours": "TinyFloor Plus, voor het hele kantoor"
+    },
+    "table": {
+      "title": "Elk abonnement,",
+      "muted": "alle functies.",
+      "people": "Mensen",
+      "hours": "Vergaderuren per maand",
+      "hoursNote": "Alleen groepsvergaderingen",
+      "calls": "Gesprekken met z'n tweeën",
+      "callsNote": "Tellen nooit mee"
+    },
+    "notes": {
+      "title": "Goed om te weten.",
+      "cancel": {
+        "title": "Altijd opzegbaar",
+        "body": "Je abonnement loopt tot het einde van de betaalde periode, daarna gaat het kantoor naar Free. Er wordt niets verwijderd."
+      },
+      "refund": {
+        "title": "14 dagen geld terug",
+        "body": "Vraag het binnen 14 dagen na een betaling en je krijgt alles terug."
+      },
+      "change": {
+        "title": "Altijd van abonnement wisselen",
+        "body": "Omhoog of omlaag gaat meteen in, en Paddle rekent het verschil af of crediteert het."
+      },
+      "hours": {
+        "title": "Als de uren op zijn",
+        "body": "Vergaderingen gaan tot de 1e verder met alleen geluid. Gesprekken met z'n tweeën werken gewoon."
+      },
+      "tax": {
+        "title": "Btw bij het afrekenen",
+        "body": "Prijzen zijn in Amerikaanse dollars. Paddle, onze wederverkoper, rekent bij het betalen eventuele btw of omzetbelasting."
+      },
+      "bigger": {
+        "title": "Meer dan 25 mensen?",
+        "body": "Geef elk team een eigen kantoor, of mail {email} en we praten erover."
+      }
+    }
   }
 }

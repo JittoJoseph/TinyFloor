@@ -99,6 +99,14 @@ export interface AdminSummary {
   signups: number[];
   /** Those days, as YYYY-MM-DD. */
   signupDays: string[];
+  plans: {
+    /** Offices paying through Paddle, by plan. */
+    paid: Record<string, number>;
+    /** Offices on a paid plan given by hand, without payment. */
+    given: number;
+  };
+  /** Meeting seconds used this month across every office. */
+  meetingSeconds: number;
 }
 
 export interface AdminPerson {
@@ -124,6 +132,11 @@ export interface AdminOffice {
   ownerName: string | null;
   ownerEmail: string | null;
   ownerCountry: string | null;
+  /** The Paddle subscription's status while it holds the plan (active, trialing, past_due); null when nothing is paid. */
+  billing: string | null;
+  cancelAt: number | null;
+  /** Meeting seconds used this month. */
+  meetingSeconds: number;
   here: number;
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
@@ -249,6 +262,10 @@ export const api = {
     get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
   adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),
   adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
+  adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
+  adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
+  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

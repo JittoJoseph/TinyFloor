@@ -35,7 +35,7 @@ export const planById = (id: string) => PLANS.find((plan) => plan.id === id);
 export const meetingHoursOf = (plan: string) => (planById(plan) ?? FREE).meetingHours;
 
 /** Subscriptions in these states hold their plan; a card being retried still counts. */
-const HOLDS_PLAN = new Set(["active", "trialing", "past_due"]);
+export const HOLDS_PLAN = new Set(["active", "trialing", "past_due"]);
 
 /** How old a webhook's signature may be. Retries are signed afresh, and replays are deduplicated anyway. */
 const SIGNATURE_TOLERANCE_S = 300;
@@ -170,7 +170,7 @@ async function subscriptionOf(env: Env, officeId: string): Promise<SubscriptionR
 }
 
 /** The office's live subscription: one that still holds a plan. */
-async function liveSubscription(env: Env, officeId: string): Promise<SubscriptionRow | null> {
+export async function liveSubscription(env: Env, officeId: string): Promise<SubscriptionRow | null> {
   const row = await subscriptionOf(env, officeId);
   return row && row.provider_subscription_id && HOLDS_PLAN.has(row.status) ? row : null;
 }
@@ -255,7 +255,7 @@ export async function applySubscription(env: Env, sub: PaddleSubscription): Prom
 }
 
 /** This calendar month (UTC), as the rooms count meeting hours. */
-function thisMonth(now = Date.now()) {
+export function thisMonth(now = Date.now()) {
   const date = new Date(now);
   return {
     key: date.toISOString().slice(0, 7),
@@ -370,6 +370,23 @@ async function detailsJson(env: Env, office: Office) {
       invoice: txn.status === "completed" || txn.status === "paid",
     })),
   };
+}
+
+/**
+ * A plan given by hand, from the admin view: no payment, no Paddle. Only for an
+ * office that isn't paying through Paddle, so the two never disagree; a paid
+ * plan is changed or cancelled the way its admins would.
+ */
+export async function givePlan(env: Env, officeId: string, planId: string): Promise<void> {
+  const plan = planById(planId);
+  if (!plan) throw new HttpError(400, "bad_plan", "No such plan");
+  if (await liveSubscription(env, officeId)) {
+    throw new HttpError(409, "has_subscription", "This office pays through Paddle; change its plan there");
+  }
+  await env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId).run();
+  await realtime(env)
+    .setMeetingAllowance(officeId, plan.meetingHours)
+    .catch((error) => console.error("admin: couldn't tell the room", officeId, error));
 }
 
 /**

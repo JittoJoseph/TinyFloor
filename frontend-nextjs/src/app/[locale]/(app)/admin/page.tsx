@@ -2,10 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, Pencil, Search, Trash2 } from "lucide-react";
+import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type AdminOffice, type AdminPerson, type AdminSummary, type LobbyChatPage } from "@/lib/api";
+import { api, ApiError, type AdminOffice, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
+import { usePlans } from "@/lib/billing";
+import { Dialog } from "@/components/ui/Dialog";
+import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
@@ -13,10 +16,13 @@ import { cn } from "@/lib/utils";
 
 /*
  * The admin view, for the team: how many people there are and how many came
- * back, where they come from, who they are, and every office with its members,
- * all read only; and the lobby's chat, where a message can be changed or taken
- * down. The API answers only the admin accounts; everyone else gets a
- * plain "nothing here". In English: it's a tool for the team, not a page.
+ * back, where they come from, how many offices pay and how many meeting
+ * hours are used; who everyone is, and every office with its members. A few
+ * things can be done by hand: rename or delete an account, rename or close an
+ * office, give an office a plan without payment, and change or take down a
+ * message in the lobby's chat. The API answers only the admin accounts;
+ * everyone else gets a plain "nothing here". In English: it's a tool for the
+ * team, not a page.
  */
 
 type Tab = "overview" | "people" | "guests" | "offices" | "lobby";
@@ -115,10 +121,41 @@ function Overview({ summary }: { summary: AdminSummary }) {
           </div>
         ))}
       </div>
+      <Business summary={summary} />
       <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr]">
         <Signups days={signups} dates={signupDays} />
         <Countries countries={countries} />
       </div>
+    </div>
+  );
+}
+
+const PLAN_NAMES: Record<string, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+const planName = (plan: string) => PLAN_NAMES[plan] ?? plan;
+const hours = (seconds: number) => (seconds / 3600).toLocaleString(undefined, { maximumFractionDigits: seconds < 36_000 ? 1 : 0 });
+
+/**
+ * Just enough about plans to act on: how many offices pay, on which plan,
+ * how many have a plan given by hand, and this month's meeting hours.
+ * Revenue, failed payments and cancellations are in Paddle's own dashboard.
+ */
+function Business({ summary }: { summary: AdminSummary }) {
+  const { plans, meetingSeconds } = summary;
+  const paying = Object.values(plans.paid).reduce((sum, count) => sum + count, 0);
+  const tiles = [
+    { label: "Paying offices", value: paying.toLocaleString(), note: `Plus ${plans.paid.plus ?? 0} · Pro ${plans.paid.pro ?? 0}` },
+    { label: "Given plans", value: plans.given.toLocaleString(), note: "Paid plan, no payment" },
+    { label: "Meeting hours", value: hours(meetingSeconds), note: "All offices, this month" },
+  ];
+  return (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      {tiles.map((tile) => (
+        <div key={tile.label} className="rounded-2xl border border-border bg-card p-4">
+          <p className="text-[12.5px] text-muted-foreground">{tile.label}</p>
+          <p className="mt-1 text-[26px] font-semibold tabular-nums tracking-tight">{tile.value}</p>
+          <p className="mt-0.5 text-[12px] text-muted-foreground">{tile.note}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -245,22 +282,23 @@ function People({ guests }: { guests: boolean }) {
       ) : (
         <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
           {/* A table on a wide screen, a list of cards on a phone. */}
-          <div className="hidden grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid">
+          <div className={cn("hidden gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid", PERSON_COLUMNS)}>
             <span>Person</span>
             <span>Country</span>
             <span>Joined</span>
             <span>Last around</span>
             <span>{guests ? "" : "Offices"}</span>
+            <span />
           </div>
           <ul>
             {people.map((person) => (
               <li
                 key={person.id}
-                className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-b border-border px-4 py-3 last:border-0 md:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.9fr)] md:items-center md:gap-4"
+                className={cn("grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-b border-border px-4 py-3 last:border-0 md:items-center md:gap-4", PERSON_COLUMNS)}
               >
                 <span className="col-span-2 flex min-w-0 items-center gap-3 md:col-span-1 [--face-ring:var(--ui-card)]">
                   <Face seed={person.id} size={32} />
-                  <span className="min-w-0">
+                  <span className="min-w-0 flex-1">
                     <span className="flex items-center gap-1.5 truncate text-[14px] font-medium">
                       {person.displayName}
                       {!!person.google && <Badge>Google</Badge>}
@@ -276,6 +314,9 @@ function People({ guests }: { guests: boolean }) {
                   <When at={person.lastActiveAt} />
                 </Cell>
                 <Cell label={guests ? "" : "Offices"}>{guests ? null : <span className="tabular-nums">{person.offices}</span>}</Cell>
+                <span className="col-span-2 flex justify-end md:col-span-1">
+                  {!guests && <PersonActions person={person} onChanged={() => load()} />}
+                </span>
               </li>
             ))}
           </ul>
@@ -295,6 +336,130 @@ function People({ guests }: { guests: boolean }) {
         </div>
       )}
     </section>
+  );
+}
+
+const PERSON_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.9fr)_2rem]";
+
+/** Rename an account, or delete it. Deleting explains what happens to the offices it owns. */
+function PersonActions({ person, onChanged }: { person: AdminPerson; onChanged: () => void }) {
+  const [asking, setAsking] = useState<"rename" | "delete" | null>(null);
+  const [name, setName] = useState(person.displayName);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const close = () => {
+    setAsking(null);
+    setError(null);
+  };
+  const run = async (action: () => Promise<unknown>) => {
+    setBusy(true);
+    setError(null);
+    try {
+      await action();
+      close();
+      onChanged();
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : "That didn't work.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <>
+      <Menu
+        align="end"
+        width={200}
+        trigger={
+          <button
+            type="button"
+            aria-label={`More for ${person.displayName}`}
+            className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <MoreHorizontal className="size-4" />
+          </button>
+        }
+      >
+        <MenuItem icon={<Pencil />} onSelect={() => setAsking("rename")}>
+          Rename
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem danger icon={<Trash2 />} onSelect={() => setAsking("delete")}>
+          Delete account
+        </MenuItem>
+      </Menu>
+
+      <Dialog
+        open={asking === "rename"}
+        onClose={close}
+        title="Rename"
+        description={person.email ?? undefined}
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton solid disabled={busy || !name.trim()} onClick={() => run(() => api.adminRenamePerson(person.id, name))}>
+              Save
+            </DialogButton>
+          </>
+        }
+      >
+        <input
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={30}
+          className="h-10 w-full rounded-xl border border-border bg-background px-3 text-[14px] outline-none focus:border-border-strong"
+        />
+        {error && <p className="mt-2 text-[12.5px] text-destructive">{error}</p>}
+      </Dialog>
+
+      <Dialog
+        open={asking === "delete"}
+        onClose={close}
+        title={`Delete ${person.displayName}?`}
+        description="Their sign-in, sessions and memberships go now. Offices they own pass to their longest-standing admin or member; an office with nobody else in it closes. An office on a paid plan that still renews has to be cancelled first. This can't be undone."
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton danger disabled={busy} onClick={() => run(() => api.adminDeletePerson(person.id))}>
+              Delete account
+            </DialogButton>
+          </>
+        }
+      >
+        {error && <p className="text-[12.5px] text-destructive">{error}</p>}
+      </Dialog>
+    </>
+  );
+}
+
+function DialogButton({
+  children,
+  onClick,
+  disabled,
+  solid,
+  danger,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  disabled?: boolean;
+  solid?: boolean;
+  danger?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={cn(
+        "h-10 cursor-pointer rounded-full px-4 text-[13.5px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+        danger ? "bg-destructive text-white hover:bg-destructive/90" : solid ? "bg-foreground text-background hover:bg-foreground/85" : "hover:bg-muted",
+      )}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -349,7 +514,7 @@ function Offices() {
         <div className={cn("hidden gap-4 border-b border-border px-4 py-2.5 text-[12px] font-medium text-muted-foreground md:grid", OFFICE_COLUMNS)}>
           <span>Office</span>
           <span>Owner</span>
-          <span>Owner&apos;s country</span>
+          <span>Meeting hours</span>
           <span>Seats</span>
           <span>On the floor</span>
           <span>Made</span>
@@ -357,7 +522,7 @@ function Offices() {
         </div>
         <ul>
           {offices.map((office) => (
-            <OfficeRow key={office.id} office={office} />
+            <OfficeRow key={office.id} office={office} onChanged={() => load()} />
           ))}
         </ul>
       </div>
@@ -382,9 +547,10 @@ const OFFICE_COLUMNS =
 const MEMBER_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,0.8fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]";
 
 /** One office: its row, and its members beneath it when opened. */
-function OfficeRow({ office }: { office: AdminOffice }) {
+function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
   const [open, setOpen] = useState(false);
   const used = office.members.length;
+  const allowance = usePlans()?.plans.find((plan) => plan.id === office.plan)?.meetingHours;
   return (
     <li className="border-b border-border last:border-0">
       <button
@@ -402,7 +568,10 @@ function OfficeRow({ office }: { office: AdminOffice }) {
           <Face seed={office.name.toLowerCase()} size={32} square />
           <span className="min-w-0 flex-1">
             <span className="block truncate text-[14px] font-medium">{office.name}</span>
-            <span className="block text-[12px] text-muted-foreground">{office.plan.charAt(0).toUpperCase() + office.plan.slice(1)} plan</span>
+            <span className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
+              {planName(office.plan)}
+              <PlanState office={office} />
+            </span>
           </span>
           <ChevronDown className={cn("size-4 shrink-0 text-muted-foreground transition-transform md:hidden", open && "rotate-180")} />
         </span>
@@ -419,8 +588,11 @@ function OfficeRow({ office }: { office: AdminOffice }) {
             <span className="text-muted-foreground">Gone</span>
           )}
         </Cell>
-        <Cell label="Owner's country">
-          {office.ownerCountry ? <Country code={office.ownerCountry} /> : <span className="text-muted-foreground">Unknown</span>}
+        <Cell label="Meeting hours">
+          <span className="tabular-nums">
+            {hours(office.meetingSeconds)}
+            {allowance !== undefined && <span className="text-muted-foreground"> / {allowance} h</span>}
+          </span>
         </Cell>
         <Cell label="Seats">
           <Seats used={used} seats={office.seats} />
@@ -445,6 +617,7 @@ function OfficeRow({ office }: { office: AdminOffice }) {
 
       {open && (
         <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
+          <OfficeActions office={office} onChanged={onChanged} />
           {/* The same inset as the rows below (their padding and border), so each heading sits over its column. */}
           <div className={cn("hidden gap-4 px-[13px] py-2 text-[11.5px] font-medium text-muted-foreground md:grid", MEMBER_COLUMNS)}>
             <span>Member</span>
@@ -479,6 +652,127 @@ function OfficeRow({ office }: { office: AdminOffice }) {
         </div>
       )}
     </li>
+  );
+}
+
+/** How the office has its plan: paid through Paddle (and whether that's in trouble), or given by hand. */
+function PlanState({ office }: { office: AdminOffice }) {
+  if (office.billing === "past_due") return <Badge>card failed</Badge>;
+  if (office.billing && office.cancelAt) return <Badge>cancelling</Badge>;
+  if (office.billing) return <Badge>paid</Badge>;
+  if (office.plan !== "free") return <Badge>given</Badge>;
+  return null;
+}
+
+/**
+ * What can be done to an office by hand: rename it, give it a plan without
+ * payment (not while it pays through Paddle, where its admins change it), or
+ * close it (a plan that still renews has to be cancelled first).
+ */
+function OfficeActions({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+  const [asking, setAsking] = useState<"rename" | "close" | null>(null);
+  const [name, setName] = useState(office.name);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const paid = !!office.billing;
+
+  const close = () => {
+    setAsking(null);
+    setError(null);
+  };
+  const run = async (action: () => Promise<unknown>) => {
+    setBusy(true);
+    setError(null);
+    try {
+      await action();
+      close();
+      onChanged();
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : "That didn't work.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 py-2.5">
+      <div role="radiogroup" aria-label="Plan" className="flex h-9 items-center rounded-full bg-muted p-1" title={paid ? "Pays through Paddle: its admins change the plan" : undefined}>
+        {(["free", "plus", "pro"] as PlanId[]).map((plan) => (
+          <button
+            key={plan}
+            type="button"
+            role="radio"
+            aria-checked={office.plan === plan}
+            disabled={busy || paid || office.plan === plan}
+            onClick={() => run(() => api.adminUpdateOffice(office.id, { plan }))}
+            className={cn(
+              "h-7 rounded-full px-3 text-[12.5px] font-medium transition-colors disabled:cursor-default",
+              office.plan === plan ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)]" : "cursor-pointer text-muted-foreground enabled:hover:text-foreground",
+              paid && office.plan !== plan && "opacity-40",
+            )}
+          >
+            {planName(plan)}
+          </button>
+        ))}
+      </div>
+      {(paid || office.plan !== "free") && (
+        <span className="text-[12px] text-muted-foreground">{paid ? "Paid through Paddle" : "Given without payment"}</span>
+      )}
+      <span className="ms-auto flex gap-1.5">
+        <button type="button" onClick={() => setAsking("rename")} className="h-8 cursor-pointer rounded-full px-3 text-[12.5px] font-medium hover:bg-muted">
+          Rename
+        </button>
+        <button
+          type="button"
+          onClick={() => setAsking("close")}
+          className="h-8 cursor-pointer rounded-full px-3 text-[12.5px] font-medium text-destructive hover:bg-destructive/10"
+        >
+          Close office
+        </button>
+      </span>
+      {error && !asking && <p className="w-full text-[12.5px] text-destructive">{error}</p>}
+
+      <Dialog
+        open={asking === "rename"}
+        onClose={close}
+        title="Rename office"
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton solid disabled={busy || !name.trim()} onClick={() => run(() => api.adminUpdateOffice(office.id, { name }))}>
+              Save
+            </DialogButton>
+          </>
+        }
+      >
+        <input
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={48}
+          className="h-10 w-full rounded-xl border border-border bg-background px-3 text-[14px] outline-none focus:border-border-strong"
+        />
+        {error && <p className="mt-2 text-[12.5px] text-destructive">{error}</p>}
+      </Dialog>
+
+      <Dialog
+        open={asking === "close"}
+        onClose={close}
+        title={`Close ${office.name}?`}
+        description="Its floor, chat, members and invite link go now, for everyone in it. A plan that still renews has to be cancelled first; one already cancelled ends straight away. This can't be undone."
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton danger disabled={busy} onClick={() => run(() => api.adminDeleteOffice(office.id))}>
+              Close office
+            </DialogButton>
+          </>
+        }
+      >
+        {error && <p className="text-[12.5px] text-destructive">{error}</p>}
+      </Dialog>
+    </div>
   );
 }
 

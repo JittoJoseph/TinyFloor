@@ -115,4 +115,98 @@ describe("admin", () => {
     expect(calls).toContainEqual(["moderateLobbyChat", 5, { remove: true }]);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
+
+  it("counts paying offices and plans given by hand", async () => {
+    const boss = await admin();
+    const owner = await makeUser("Money Owner");
+    const paid = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Paying Co" })).body.office.id;
+    const given = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Given Co" })).body.office.id;
+    await env.DB.batch([
+      env.DB.prepare("UPDATE offices SET plan = 'plus', seats = 10 WHERE id = ?").bind(paid),
+      env.DB.prepare(
+        `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status, changed_at, updated_at)
+         VALUES (?, 'paddle', 'ctm_money', ?, 'plus', 'past_due', 0, 0)`,
+      ).bind(paid, `sub_money_${paid}`),
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(given),
+    ]);
+    const summary = await call<{ plans: { paid: Record<string, number>; given: number }; meetingSeconds: number }>(boss, "GET", "/v1/admin/summary");
+    expect(summary.body.plans.paid.plus).toBeGreaterThanOrEqual(1);
+    expect(summary.body.plans.given).toBeGreaterThanOrEqual(1);
+    expect(summary.body.meetingSeconds).toBeGreaterThanOrEqual(0);
+
+    const offices = await call<{ offices: Array<{ id: string; billing: string | null }> }>(boss, "GET", "/v1/admin/offices");
+    expect(offices.body.offices.find((one) => one.id === paid)?.billing).toBe("past_due");
+    expect(offices.body.offices.find((one) => one.id === given)?.billing).toBeNull();
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
+
+  it("gives an office a plan without payment, but never one that pays through Paddle", async () => {
+    const boss = await admin();
+    const owner = await makeUser("Gift Owner");
+    const id = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Gift Co" })).body.office.id;
+    expect((await call(owner, "PATCH", `/v1/admin/offices/${id}`, { plan: "pro" })).status).toBe(404);
+
+    expect((await call(boss, "PATCH", `/v1/admin/offices/${id}`, { plan: "pro", name: "Gift Studio" })).status).toBe(200);
+    const row = await env.DB.prepare("SELECT name, plan, seats FROM offices WHERE id = ?").bind(id).first();
+    expect(row).toEqual({ name: "Gift Studio", plan: "pro", seats: 25 });
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", id, 60]);
+    expect((await call(boss, "PATCH", `/v1/admin/offices/${id}`, { plan: "gold" })).status).toBe(400);
+
+    await env.DB.prepare(
+      `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
+       VALUES (?, 'paddle', ?, 'plus', 'active', 0, 0)`,
+    )
+      .bind(id, `sub_gift_${id}`)
+      .run();
+    const refused = await call<{ error: { code: string } }>(boss, "PATCH", `/v1/admin/offices/${id}`, { plan: "free" });
+    expect(refused.status).toBe(409);
+    expect(refused.body.error.code).toBe("has_subscription");
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
+
+  it("renames and deletes accounts, handing their offices on or closing empty ones", async () => {
+    const boss = await admin();
+    const leaving = await makeUser("Leaving");
+    const stays = await makeUser("Stays");
+    const shared = (await call<{ office: { id: string } }>(leaving, "POST", "/v1/offices", { name: "Shared" })).body.office.id;
+    const alone = (await call<{ office: { id: string } }>(leaving, "POST", "/v1/offices", { name: "Alone" })).body.office.id;
+    const { code } = (await call<{ code: string }>(leaving, "GET", `/v1/offices/${shared}/invite`)).body;
+    await call(stays, "POST", `/v1/invites/${code}/accept`);
+
+    expect((await call(boss, "PATCH", `/v1/admin/users/${stays.id}`, { displayName: "  Stays Here " })).status).toBe(200);
+    expect((await env.DB.prepare("SELECT display_name FROM users WHERE id = ?").bind(stays.id).first())?.display_name).toBe("Stays Here");
+    expect((await call(boss, "DELETE", `/v1/admin/users/${boss.id}`)).status).toBe(400);
+    expect((await call(stays, "DELETE", `/v1/admin/users/${leaving.id}`)).status).toBe(404);
+
+    const gone = await call<{ handedOver: string[]; closed: string[] }>(boss, "DELETE", `/v1/admin/users/${leaving.id}`);
+    expect(gone.status).toBe(200);
+    expect(gone.body).toMatchObject({ handedOver: [shared], closed: [alone] });
+    expect(await env.DB.prepare("SELECT id FROM users WHERE id = ?").bind(leaving.id).first()).toBeNull();
+    expect(await env.DB.prepare("SELECT owner_id FROM offices WHERE id = ?").bind(shared).first()).toEqual({ owner_id: stays.id });
+    expect(await env.DB.prepare("SELECT role FROM memberships WHERE office_id = ? AND user_id = ?").bind(shared, stays.id).first()).toEqual({ role: "admin" });
+    expect(await env.DB.prepare("SELECT id FROM offices WHERE id = ?").bind(alone).first()).toBeNull();
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
+
+  it("won't delete someone who owns an office whose plan still renews", async () => {
+    const boss = await admin();
+    const payer = await makeUser("Payer");
+    const id = (await call<{ office: { id: string } }>(payer, "POST", "/v1/offices", { name: "Paid Up" })).body.office.id;
+    await env.DB.prepare(
+      `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
+       VALUES (?, 'paddle', ?, 'plus', 'active', 0, 0)`,
+    )
+      .bind(id, `sub_payer_${id}`)
+      .run();
+    const refused = await call<{ error: { code: string } }>(boss, "DELETE", `/v1/admin/users/${payer.id}`);
+    expect(refused.status).toBe(409);
+    expect(refused.body.error.code).toBe("owns_paid_office");
+    expect((await call(boss, "DELETE", `/v1/admin/offices/${id}`)).status).toBe(409);
+    expect(await env.DB.prepare("SELECT id FROM users WHERE id = ?").bind(payer.id).first()).not.toBeNull();
+
+    const free = (await call<{ office: { id: string } }>(payer, "POST", "/v1/offices", { name: "Free One" })).body.office.id;
+    expect((await call(boss, "DELETE", `/v1/admin/offices/${free}`)).status).toBe(200);
+    expect(await fakeRealtime().calls()).toContainEqual(["forgetOffice", free]);
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
 });

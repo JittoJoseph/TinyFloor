@@ -71,14 +71,7 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
-      // A paid plan is cancelled first, on purpose (docs/14); closing then stops it for good.
-      await endBillingForClosing(env, params.id);
-      // Members and invites go with it (ON DELETE CASCADE), and so do its floor and chat.
-      await env.DB.batch([
-        env.DB.prepare("DELETE FROM usage_monthly WHERE office_id = ?").bind(params.id),
-        env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id),
-      ]);
-      await realtime(env).forgetOffice(params.id);
+      await closeOffice(env, params.id);
       return json({ ok: true });
     })
 
@@ -247,6 +240,20 @@ async function findInvite(env: Env, token: string): Promise<InviteRow> {
 async function inviteCodeOf(env: Env, officeId: string): Promise<string> {
   const row = await env.DB.prepare("SELECT invite_code FROM offices WHERE id = ?").bind(officeId).first<{ invite_code: string }>();
   return row!.invite_code;
+}
+
+/**
+ * An office goes, with its members, invites, floor and chat. A paid plan is
+ * cancelled first, on purpose (docs/14); closing then stops it for good.
+ */
+export async function closeOffice(env: Env, officeId: string): Promise<void> {
+  await endBillingForClosing(env, officeId);
+  // Members and invites go with it (ON DELETE CASCADE).
+  await env.DB.batch([
+    env.DB.prepare("DELETE FROM usage_monthly WHERE office_id = ?").bind(officeId),
+    env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(officeId),
+  ]);
+  await realtime(env).forgetOffice(officeId);
 }
 
 /** Everyone in an office, oldest member first. */

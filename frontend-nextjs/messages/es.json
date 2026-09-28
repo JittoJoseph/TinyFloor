@@ -180,7 +180,6 @@
     "onCall": "En la llamada",
     "decline": "Rechazar",
     "accept": "Aceptar",
-    "tutorial": "Llamada del tutorial",
     "calling": "Llamando...",
     "cancel": "Cancelar llamada",
     "micOff": "Micrófono desactivado",
@@ -367,22 +366,7 @@
     "batterySaver": "Ahorro de batería",
     "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres."
   },
-  "tutorial": {
-    "walk": "Muévete con W A S D",
-    "walkTouch": "Arrastra el joystick para caminar",
-    "click": "O haz clic en cualquier sitio para ir directamente",
-    "clickTouch": "O toca cualquier sitio para ir directamente",
-    "approach": "Acércate a alguien para llamar o chatear",
-    "invite": "Invita a alguien con este enlace, o ya está todo listo",
-    "copy": "Copiar",
-    "copied": "Copiado",
-    "linkHint": "Quien tenga el enlace entra en esta sala",
-    "done": "Listo",
-    "skip": "Omitir",
-    "next": "Siguiente"
-  },
   "scene": {
-    "guide": "Guía",
     "sit": "Pulsa E para sentarte",
     "stand": "Pulsa E para levantarte",
     "joinMeeting": "Pulsa E para unirte",

@@ -32,7 +32,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   // a reason to tear down the scene and its WebSocket.
   const applySceneText = useEffectEvent(() =>
     setSceneText({
-      guide: t("guide"),
       sit: t("sit"),
       stand: t("stand"),
       meeting: t("meeting"),

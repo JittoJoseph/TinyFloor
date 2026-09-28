@@ -23,8 +23,6 @@ import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingS
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
-import { GUIDE_ID } from "./tutorial";
-import { sceneText } from "./sceneText";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 
 // Error codes, not copy: the call overlay turns them into translated text.
@@ -151,7 +149,6 @@ const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
 /** How long a meeting invitation waits for an answer. */
 const INVITE_TIMEOUT = 30000;
-const GUIDE_ANSWER_DELAY = 1600;
 /** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
 function audioConstraints() {
   const { echoCancellation, noiseSuppression } = prefs();
@@ -304,46 +301,18 @@ class CallManager {
 
   /** Calls someone, with voice. A call is two people: a third makes it a meeting (startMeeting). */
   invite(id: string, name: string) {
-    if (this.busy() || this.peers.size) return;
-    if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
+    if (this.busy() || this.peers.size || !this.ws) return;
 
     this.error = null;
     this.outcome = null;
     this.outgoing = { id, name };
     loopSound("ring");
 
-    if (id === GUIDE_ID) {
-      this.ring(() => this.answerAsGuide(), GUIDE_ANSWER_DELAY);
-    } else {
-      this.send("invite", id);
-      this.ring(() => {
-        this.tell({ id, name, kind: "unanswered" });
-        this.cancel();
-      });
-    }
-    this.emit();
-  }
-
-  private async answerAsGuide() {
-    if (this.outgoing?.id !== GUIDE_ID) return;
-
-    stopSound("ring");
-    this.outgoing = null;
-    this.peers.set(GUIDE_ID, {
-      id: GUIDE_ID,
-      name: sceneText().guide,
-      stream: new MediaStream(),
-      connected: true,
-      mic: true,
-      camera: false,
-      screen: false,
-      screenStream: null,
-      wants: { ...LOW },
+    this.send("invite", id);
+    this.ring(() => {
+      this.tell({ id, name, kind: "unanswered" });
+      this.cancel();
     });
-    playSound("connect");
-    this.emit();
-
-    await this.openMedia();
     this.emit();
   }
 
@@ -390,9 +359,7 @@ class CallManager {
     if (!this.outgoing) return;
     this.clearRing();
     stopSound("ring");
-    if (this.outgoing.id !== GUIDE_ID) {
-      this.send("end", this.outgoing.id);
-    }
+    this.send("end", this.outgoing.id);
     this.outgoing = null;
     this.emit();
   }
@@ -400,7 +367,7 @@ class CallManager {
   hangUp(id?: string) {
     const targets = id ? [id] : [...this.peers.keys()];
     targets.forEach((peerId) => {
-      if (peerId !== GUIDE_ID) this.send("end", peerId);
+      this.send("end", peerId);
       this.closePeer(peerId);
     });
     if (!id) {
@@ -505,7 +472,7 @@ class CallManager {
   /** Starts a meeting of your own, asking these people in: a call becoming a meeting asks its other half. */
   startMeeting(name: string, invite: string[] = []) {
     if (!this.ws) return;
-    const everyone = new Set([...invite, ...[...this.peers.keys()].filter((id) => id !== GUIDE_ID)]);
+    const everyone = new Set([...invite, ...this.peers.keys()]);
     if (this.peers.size) this.hangUp();
     this.ws.send({ t: "meeting_start", name, invite: [...everyone] });
   }
@@ -815,14 +782,9 @@ class CallManager {
     if (!to) this.sfu?.updateLocal(this.local, media);
   }
 
-  /** Mid meeting, mid ring or on the tutorial call, nobody else gets through. */
+  /** Mid meeting or mid ring, nobody else gets through. */
   private busy() {
-    return !!(
-      this.meeting ||
-      this.incoming ||
-      this.outgoing ||
-      this.peers.has(GUIDE_ID)
-    );
+    return !!(this.meeting || this.incoming || this.outgoing);
   }
 
   private onInvite(id: string, name: string) {

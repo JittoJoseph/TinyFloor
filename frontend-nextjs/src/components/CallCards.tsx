@@ -7,7 +7,6 @@ import { Maximize2, MicOff, Minimize2, MonitorUp } from "lucide-react";
 import { useCall } from "@/lib/useCall";
 import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
-import { GUIDE_ID } from "@/lib/tutorial";
 import { CallStream } from "./CallStream";
 import { Face } from "@/components/ui/Face";
 import { useAuth } from "@/contexts/AuthContext";
@@ -24,7 +23,6 @@ interface Tile {
   camera: boolean;
   connected: boolean;
   self?: boolean;
-  badge?: string;
 }
 
 /** Rows each headcount wraps into: two cards a row on phones, three from sm up. */
@@ -114,7 +112,6 @@ export default function CallCards() {
         mic: peer.mic,
         camera: peer.camera,
         connected: peer.connected,
-        badge: peer.id === GUIDE_ID ? t("tutorial") : undefined,
       },
       ...(peer.screen && peer.screenStream
         ? [
@@ -232,7 +229,6 @@ function CallChip({ tile, muted, micOff }: { tile: Tile; muted: boolean; micOff:
         <Face seed={tile.id ?? tile.key} size={34} />
       </span>
       <span className="max-w-[9rem] truncate text-[13px] font-semibold text-foreground">{tile.name}</span>
-      {tile.badge && <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{tile.badge}</span>}
       {!tile.mic && <MicOff className="size-3.5 shrink-0 text-brand" aria-label={micOff} />}
     </li>
   );
@@ -292,11 +288,6 @@ function CallCard({
         <div className="absolute inset-0 bg-card flex items-center justify-center">
           <div className="w-5 h-5 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
         </div>
-      )}
-      {tile.badge && (
-        <span className="absolute top-2 start-2 rounded-full bg-card/90 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm">
-          {tile.badge}
-        </span>
       )}
       <span
         aria-hidden="true"

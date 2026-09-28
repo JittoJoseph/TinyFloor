@@ -180,7 +180,6 @@
     "onCall": "I samtalet",
     "decline": "Avvisa",
     "accept": "Svara",
-    "tutorial": "Introduktionssamtal",
     "calling": "Ringer...",
     "cancel": "Avbryt samtal",
     "micOff": "Mikrofon av",
@@ -367,22 +366,7 @@
     "batterySaver": "Batterisparläge",
     "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in."
   },
-  "tutorial": {
-    "walk": "Gå runt med W A S D",
-    "walkTouch": "Dra joysticken för att gå",
-    "click": "Eller klicka var som helst för att gå dit direkt",
-    "clickTouch": "Eller tryck var som helst för att gå dit direkt",
-    "approach": "Gå nära någon för att ringa eller chatta",
-    "invite": "Bjud in någon med den här länken, eller så är du klar",
-    "copy": "Kopiera",
-    "copied": "Kopierat",
-    "linkHint": "Alla med länken hamnar i det här rummet",
-    "done": "Klar",
-    "skip": "Hoppa över",
-    "next": "Nästa"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "Tryck E för att sätta dig",
     "stand": "Tryck E för att resa dig",
     "joinMeeting": "Tryck E för att gå med",

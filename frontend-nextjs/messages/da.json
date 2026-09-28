@@ -180,7 +180,6 @@
     "onCall": "I opkaldet",
     "decline": "Afvis",
     "accept": "Accepter",
-    "tutorial": "Introduktionsopkald",
     "calling": "Ringer op...",
     "cancel": "Annuller opkald",
     "micOff": "Mikrofon slået fra",
@@ -367,22 +366,7 @@
     "batterySaver": "Batterisparer",
     "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind."
   },
-  "tutorial": {
-    "walk": "Gå rundt med W A S D",
-    "walkTouch": "Træk i joysticket for at gå",
-    "click": "Eller klik hvor som helst for at gå direkte derhen",
-    "clickTouch": "Eller tryk hvor som helst for at gå direkte derhen",
-    "approach": "Gå tæt på nogen for at ringe eller chatte",
-    "invite": "Inviter nogen med dette link, eller så er du klar",
-    "copy": "Kopiér",
-    "copied": "Kopieret",
-    "linkHint": "Alle med linket lander i dette rum",
-    "done": "Færdig",
-    "skip": "Spring over",
-    "next": "Næste"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "Tryk på E for at sætte dig",
     "stand": "Tryk på E for at rejse dig",
     "joinMeeting": "Tryk på E for at deltage",

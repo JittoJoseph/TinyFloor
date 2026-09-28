@@ -180,7 +180,6 @@
     "onCall": "通话中",
     "decline": "拒绝",
     "accept": "接听",
-    "tutorial": "教程通话",
     "calling": "呼叫中...",
     "cancel": "取消通话",
     "micOff": "麦克风已关闭",
@@ -367,22 +366,7 @@
     "batterySaver": "省电模式",
     "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。"
   },
-  "tutorial": {
-    "walk": "用 W A S D 四处走动",
-    "walkTouch": "拖动摇杆来行走",
-    "click": "或者点击任意位置直接走过去",
-    "clickTouch": "或者轻点任意位置直接走过去",
-    "approach": "靠近某人即可通话或聊天",
-    "invite": "用这个链接邀请别人，或者你已经准备好了",
-    "copy": "复制",
-    "copied": "已复制",
-    "linkHint": "拿到链接的人都会进入这个房间",
-    "done": "完成",
-    "skip": "跳过",
-    "next": "下一步"
-  },
   "scene": {
-    "guide": "向导",
     "sit": "按 E 坐下",
     "stand": "按 E 起身",
     "joinMeeting": "按 E 加入",

@@ -180,7 +180,6 @@
     "onCall": "통화 중",
     "decline": "거절",
     "accept": "수락",
-    "tutorial": "튜토리얼 통화",
     "calling": "전화 거는 중...",
     "cancel": "통화 취소",
     "micOff": "마이크 꺼짐",
@@ -367,22 +366,7 @@
     "batterySaver": "배터리 절약",
     "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요."
   },
-  "tutorial": {
-    "walk": "W A S D 키로 돌아다니세요",
-    "walkTouch": "조이스틱을 드래그해서 걸어요",
-    "click": "아니면 아무 곳이나 클릭해서 바로 이동하세요",
-    "clickTouch": "아니면 아무 곳이나 탭해서 바로 이동하세요",
-    "approach": "누군가에게 가까이 가면 통화하거나 채팅할 수 있어요",
-    "invite": "이 링크로 누군가를 초대하거나, 이제 준비 완료예요",
-    "copy": "복사",
-    "copied": "복사됨",
-    "linkHint": "링크가 있는 사람은 누구나 이 방에 들어와요",
-    "done": "완료",
-    "skip": "건너뛰기",
-    "next": "다음"
-  },
   "scene": {
-    "guide": "가이드",
     "sit": "E 키로 앉기",
     "stand": "E 키로 일어서기",
     "joinMeeting": "E 키로 참여",

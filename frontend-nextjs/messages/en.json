@@ -180,7 +180,6 @@
     "onCall": "On the call",
     "decline": "Decline",
     "accept": "Answer",
-    "tutorial": "Tutorial call",
     "calling": "Calling...",
     "cancel": "Cancel call",
     "micOff": "Microphone off",
@@ -367,22 +366,7 @@
     "batterySaver": "Battery saver",
     "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
   },
-  "tutorial": {
-    "walk": "Walk around with W A S D",
-    "walkTouch": "Drag the joystick to walk",
-    "click": "Or click anywhere to walk straight there",
-    "clickTouch": "Or tap anywhere to walk straight there",
-    "approach": "Step close to someone to call or chat",
-    "invite": "Invite someone with this link, or you are all set",
-    "copy": "Copy",
-    "copied": "Copied",
-    "linkHint": "Anyone with the link lands in this room",
-    "done": "Done",
-    "skip": "Skip",
-    "next": "Next"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "Press E to sit",
     "stand": "Press E to stand",
     "joinMeeting": "Press E to join",

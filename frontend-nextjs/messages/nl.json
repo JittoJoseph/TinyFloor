@@ -180,7 +180,6 @@
     "onCall": "In gesprek",
     "decline": "Weigeren",
     "accept": "Accepteren",
-    "tutorial": "Tutorialgesprek",
     "calling": "Bellen...",
     "cancel": "Gesprek annuleren",
     "micOff": "Microfoon uit",
@@ -367,22 +366,7 @@
     "batterySaver": "Batterijbesparing",
     "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt."
   },
-  "tutorial": {
-    "walk": "Loop rond met W A S D",
-    "walkTouch": "Sleep de joystick om te lopen",
-    "click": "Of klik ergens om er direct naartoe te lopen",
-    "clickTouch": "Of tik ergens om er direct naartoe te lopen",
-    "approach": "Ga dicht bij iemand staan om te bellen of te chatten",
-    "invite": "Nodig iemand uit met deze link, of je bent klaar",
-    "copy": "Kopiëren",
-    "copied": "Gekopieerd",
-    "linkHint": "Iedereen met de link komt in deze ruimte",
-    "done": "Klaar",
-    "skip": "Overslaan",
-    "next": "Volgende"
-  },
   "scene": {
-    "guide": "Gids",
     "sit": "Druk op E om te zitten",
     "stand": "Druk op E om op te staan",
     "joinMeeting": "Druk op E om mee te doen",

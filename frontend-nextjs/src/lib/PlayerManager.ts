@@ -11,7 +11,6 @@ import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "./types";
-import { GUIDE_ID } from "./tutorial";
 import { statusColorValue } from "./status";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import type { PlayerStatus } from "./types";
@@ -456,9 +455,7 @@ export class PlayerManager {
   }
 
   getPlayerList(): Array<{ id: string; name: string; status: PlayerStatus }> {
-    return [...this.nameTags]
-      .filter(([id]) => id !== GUIDE_ID)
-      .map(([id, tag]) => ({ id, name: tag.text, status: this.playerStates.get(id)?.status ?? "available" }));
+    return [...this.nameTags].map(([id, tag]) => ({ id, name: tag.text, status: this.playerStates.get(id)?.status ?? "available" }));
   }
 
   destroy() {

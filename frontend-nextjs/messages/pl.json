@@ -180,7 +180,6 @@
     "onCall": "W rozmowie",
     "decline": "Odrzuć",
     "accept": "Odbierz",
-    "tutorial": "Rozmowa samouczka",
     "calling": "Dzwonienie...",
     "cancel": "Anuluj połączenie",
     "micOff": "Mikrofon wyłączony",
@@ -367,22 +366,7 @@
     "batterySaver": "Oszczędzanie baterii",
     "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia."
   },
-  "tutorial": {
-    "walk": "Chodź, używając W A S D",
-    "walkTouch": "Przeciągnij joystick, aby iść",
-    "click": "Albo kliknij w dowolne miejsce, aby tam przejść",
-    "clickTouch": "Albo dotknij dowolnego miejsca, aby tam przejść",
-    "approach": "Podejdź do kogoś, aby zadzwonić lub pogadać",
-    "invite": "Zaproś kogoś tym linkiem albo wszystko gotowe",
-    "copy": "Kopiuj",
-    "copied": "Skopiowano",
-    "linkHint": "Każdy z linkiem trafi do tego pokoju",
-    "done": "Gotowe",
-    "skip": "Pomiń",
-    "next": "Dalej"
-  },
   "scene": {
-    "guide": "Przewodnik",
     "sit": "Naciśnij E, aby usiąść",
     "stand": "Naciśnij E, aby wstać",
     "joinMeeting": "Naciśnij E, aby dołączyć",

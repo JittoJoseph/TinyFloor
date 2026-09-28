@@ -15,7 +15,6 @@ import { MeetingAudio } from "@/components/meetings/MeetingAudio";
 import { MeetingMini } from "@/components/meetings/MeetingMini";
 import { MeetingRoomPrompt } from "@/components/meetings/MeetingRoomPrompt";
 import JukeboxPanel from "@/components/JukeboxPanel";
-import RoomTutorial from "@/components/RoomTutorial";
 import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { Button } from "@/components/motion/button/base";
@@ -29,7 +28,6 @@ import { useFloor } from "@/lib/floor";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
-import { TUTORIAL_FINISHED_EVENT, tutorialDone } from "@/lib/tutorial";
 
 function Connecting() {
   const t = useTranslations("room");
@@ -73,7 +71,6 @@ export interface RoomViewProps {
 export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveHref, settingsHref }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
-  const [tutorialActive, setTutorialActive] = useState(() => !tutorialDone());
   const [reconnecting, setReconnecting] = useState(false);
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -116,16 +113,13 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
   }, [inviteHref, router, sharePath, title, t]);
 
   useEffect(() => {
-    const onTutorialFinished = () => setTutorialActive(false);
     const onConnection = (event: Event) =>
       setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
     const onEnded = (event: Event) => setEnded((event as CustomEvent<{ reason: RoomEnd }>).detail.reason);
 
-    window.addEventListener(TUTORIAL_FINISHED_EVENT, onTutorialFinished);
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
     window.addEventListener(ROOM_ENDED_EVENT, onEnded);
     return () => {
-      window.removeEventListener(TUTORIAL_FINISHED_EVENT, onTutorialFinished);
       window.removeEventListener(ROOM_CONNECTION_EVENT, onConnection);
       window.removeEventListener(ROOM_ENDED_EVENT, onEnded);
     };
@@ -156,12 +150,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
         ticketFor={ticketFor}
       />
 
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4",
-          tutorialActive && "hidden md:flex",
-        )}
-      >
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4">
         {/* Where you are and who is with you. Pressing it lists them. */}
         <div ref={peopleBox} className="pointer-events-auto relative">
           <button
@@ -258,11 +247,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
       <WhiteboardOverlay />
       <JukeboxPanel />
 
-      <RoomTutorial name={user.displayName} character={user.character} sharePath={sharePath} />
-
-      <div className={tutorialActive ? "hidden md:block" : undefined}>
-        <ControlBar settingsHref={settingsHref} />
-      </div>
+      <ControlBar settingsHref={settingsHref} />
     </div>
   );
 }

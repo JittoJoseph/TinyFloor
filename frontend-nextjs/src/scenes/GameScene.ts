@@ -10,12 +10,11 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { MessageHandler } from "../lib/MessageHandler";
-import { TutorialGuide } from "../lib/TutorialGuide";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
 import { JukeboxObject } from "../lib/JukeboxObject";
 import { jukebox } from "../lib/JukeboxManager";
-import { tutorialDone, setTouchInput } from "../lib/tutorial";
+import { setTouchInput } from "../lib/input";
 import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "../lib/types";
 import { MEETING_ROOM_EVENT, meetingOf, WALK_TO_MEETING_EVENT } from "../lib/meetings";
@@ -30,7 +29,6 @@ const MIN_TILES_SHORT = 15;
 const MIN_TILES_LONG = 24;
 /** ...but never so far that people and their names get too small to read. */
 const MIN_ZOOM = 0.62;
-const NARROW_WIDTH = 768;
 
 /**
  * The camera's zoom for a floor this size. A big screen gets the usual close
@@ -55,7 +53,6 @@ class GameScene extends Phaser.Scene {
   private movementManager!: MovementManager;
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
-  private tutorialGuide?: TutorialGuide;
   private whiteboardObject?: WhiteboardObject;
   private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
@@ -96,9 +93,7 @@ class GameScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
 
-    const keepCentered =
-      !tutorialDone() && this.cameras.main.width < NARROW_WIDTH;
-    const spawnTile = this.mapManager.getRandomSpawnTile(keepCentered);
+    const spawnTile = this.mapManager.getRandomSpawnTile();
     const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
     // A reconnect puts you back where you were standing, not at the spawn tile.
@@ -212,15 +207,6 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
     });
-    if (!tutorialDone()) {
-      this.tutorialGuide = new TutorialGuide(
-        this,
-        this.playerManager,
-        nav,
-        this.player,
-      );
-    }
-
     this.listen("chatFocused", () =>
       this.movementManager.setInputEnabled(false),
     );
@@ -329,7 +315,6 @@ class GameScene extends Phaser.Scene {
     jukebox.detach();
     this.jukeboxObject?.destroy();
     this.seatManager?.destroy();
-    this.tutorialGuide?.destroy();
   }
 }
 

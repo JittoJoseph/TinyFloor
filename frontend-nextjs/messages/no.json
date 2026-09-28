@@ -180,7 +180,6 @@
     "onCall": "I samtalen",
     "decline": "Avslå",
     "accept": "Godta",
-    "tutorial": "Opplæringssamtale",
     "calling": "Ringer...",
     "cancel": "Avbryt samtale",
     "micOff": "Mikrofon av",
@@ -367,22 +366,7 @@
     "batterySaver": "Batterisparing",
     "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn."
   },
-  "tutorial": {
-    "walk": "Gå rundt med W A S D",
-    "walkTouch": "Dra i styrespaken for å gå",
-    "click": "Eller klikk hvor som helst for å gå rett dit",
-    "clickTouch": "Eller trykk hvor som helst for å gå rett dit",
-    "approach": "Gå nær noen for å ringe eller chatte",
-    "invite": "Inviter noen med denne lenken, eller så er du klar",
-    "copy": "Kopier",
-    "copied": "Kopiert",
-    "linkHint": "Alle med lenken havner i dette rommet",
-    "done": "Ferdig",
-    "skip": "Hopp over",
-    "next": "Neste"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "Trykk E for å sette deg",
     "stand": "Trykk E for å reise deg",
     "joinMeeting": "Trykk E for å bli med",

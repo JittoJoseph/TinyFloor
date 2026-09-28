@@ -180,7 +180,6 @@
     "onCall": "Puhelussa",
     "decline": "Hylkää",
     "accept": "Vastaa",
-    "tutorial": "Opastuspuhelu",
     "calling": "Soitetaan...",
     "cancel": "Peru puhelu",
     "micOff": "Mikrofoni pois",
@@ -367,22 +366,7 @@
     "batterySaver": "Virransäästö",
     "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla."
   },
-  "tutorial": {
-    "walk": "Kävele näppäimillä W A S D",
-    "walkTouch": "Vedä ohjaussauvaa kävelläksesi",
-    "click": "Tai napsauta mihin tahansa kävelläksesi suoraan sinne",
-    "clickTouch": "Tai napauta mihin tahansa kävelläksesi suoraan sinne",
-    "approach": "Mene jonkun lähelle soittaaksesi tai jutellaksesi",
-    "invite": "Kutsu joku tällä linkillä, tai olet valmis",
-    "copy": "Kopioi",
-    "copied": "Kopioitu",
-    "linkHint": "Kaikki linkin saaneet päätyvät tähän huoneeseen",
-    "done": "Valmis",
-    "skip": "Ohita",
-    "next": "Seuraava"
-  },
   "scene": {
-    "guide": "Opas",
     "sit": "Paina E istuaksesi",
     "stand": "Paina E noustaksesi",
     "joinMeeting": "Paina E liittyäksesi",

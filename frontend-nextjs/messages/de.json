@@ -180,7 +180,6 @@
     "onCall": "Im Gespräch",
     "decline": "Ablehnen",
     "accept": "Annehmen",
-    "tutorial": "Tutorial-Anruf",
     "calling": "Anruf läuft...",
     "cancel": "Anruf abbrechen",
     "micOff": "Mikrofon aus",
@@ -367,22 +366,7 @@
     "batterySaver": "Energiesparmodus",
     "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
   },
-  "tutorial": {
-    "walk": "Lauf mit W A S D herum",
-    "walkTouch": "Zieh den Joystick, um zu laufen",
-    "click": "Oder klick irgendwohin, um direkt dorthin zu laufen",
-    "clickTouch": "Oder tippe irgendwohin, um direkt dorthin zu laufen",
-    "approach": "Geh nah an jemanden heran, um anzurufen oder zu chatten",
-    "invite": "Lade jemanden mit diesem Link ein, oder du bist startklar",
-    "copy": "Kopieren",
-    "copied": "Kopiert",
-    "linkHint": "Alle mit dem Link landen in diesem Raum",
-    "done": "Fertig",
-    "skip": "Überspringen",
-    "next": "Weiter"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "E drücken zum Hinsetzen",
     "stand": "E drücken zum Aufstehen",
     "joinMeeting": "E drücken zum Beitreten",

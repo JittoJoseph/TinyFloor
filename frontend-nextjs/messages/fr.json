@@ -180,7 +180,6 @@
     "onCall": "En appel",
     "decline": "Refuser",
     "accept": "Accepter",
-    "tutorial": "Appel du tutoriel",
     "calling": "Appel en cours...",
     "cancel": "Annuler l’appel",
     "micOff": "Micro coupé",
@@ -367,22 +366,7 @@
     "batterySaver": "Économie de batterie",
     "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée."
   },
-  "tutorial": {
-    "walk": "Déplacez-vous avec W A S D",
-    "walkTouch": "Faites glisser le joystick pour marcher",
-    "click": "Ou cliquez n’importe où pour y aller directement",
-    "clickTouch": "Ou touchez n’importe où pour y aller directement",
-    "approach": "Approchez-vous de quelqu’un pour appeler ou discuter",
-    "invite": "Invitez quelqu’un avec ce lien, ou c’est tout bon",
-    "copy": "Copier",
-    "copied": "Copié",
-    "linkHint": "Toute personne ayant le lien arrive dans cette salle",
-    "done": "Terminé",
-    "skip": "Passer",
-    "next": "Suivant"
-  },
   "scene": {
-    "guide": "Guide",
     "sit": "Appuyez sur E pour vous asseoir",
     "stand": "Appuyez sur E pour vous lever",
     "joinMeeting": "Appuyez sur E pour rejoindre",

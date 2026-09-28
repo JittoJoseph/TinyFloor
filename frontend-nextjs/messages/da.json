@@ -3,7 +3,7 @@
     "title": "TinyFloor – Et virtuelt kontor, du kan gå rundt i",
     "description": "TinyFloor er et gratis virtuelt kontor i din browser. Gå rundt på en pixelart-etage med dit team, og start et videoopkald bare ved at stille dig ved siden af nogen.",
     "ogAlt": "Et TinyFloor-rum: en 16-bit kontoretage med skriveborde og kolleger",
-    "keywords": "virtuelt kontor, fjernarbejde, spatial chat, online samarbejde, virtuel arbejdsplads, metaverse-kontor, nærhedschat, nærhedsvideochat, virtuelt kontorfællesskab, videoopkald i browseren",
+    "keywords": "virtuelt kontor, fjernarbejde, spatial chat, online samarbejde, virtuel arbejdsplads, nærhedschat, nærhedsvideochat, virtuelt kontorfællesskab, videoopkald i browseren",
     "joinTitle": "Deltag i rummet",
     "joinRoomTitle": "Deltag i {office}",
     "joinRoomDescription": "Du er inviteret til {office} på TinyFloor, et virtuelt kontor, du går rundt i. Åbn linket, vælg en figur og gå ind.",
@@ -12,8 +12,8 @@
     "createTitle": "Lav dit kontor",
     "dashboardTitle": "Oversigt",
     "notFoundTitle": "Siden blev ikke fundet",
-    "lobbyTitle": "Lobbyen",
-    "lobbyDescription": "Gå ind i TinyFloors gratis, åbne lobby som gæst. Vælg en figur, mød folk, og prøv videoopkald på nært hold i din browser.",
+    "lobbyTitle": "Demokontoret",
+    "lobbyDescription": "Prøv TinyFloors demokontor i din browser. Vælg en figur, gå rundt, og prøv et nærhedsopkald, før du laver et kontor til dit team.",
     "inviteTitle": "Bliv en del af {office} på TinyFloor",
     "inviteFallbackTitle": "Du er inviteret til TinyFloor",
     "inviteDescription": "Vær med i {office} på TinyFloor, et virtuelt kontor, du kan gå rundt i."
@@ -29,8 +29,8 @@
     "unknown": "Ukendt",
     "dashboard": "Oversigt",
     "signOut": "Log ud",
-    "visitLobby": "Besøg lobbyen",
-    "lobby": "Lobby",
+    "visitLobby": "Prøv demokontoret",
+    "lobby": "Demokontor",
     "signIn": "Log ind",
     "account": "Konto",
     "createOffice": "Opret et kontor",
@@ -43,7 +43,7 @@
     "noResults": "Ingen sprog fundet"
   },
   "landing": {
-    "description": "Et virtuelt kontor, der ligner et spil. Gå rundt på en pixelart-etage med dit team, og start et videoopkald bare ved at stille dig ved siden af nogen.",
+    "description": "Et virtuelt kontor til remote teams, i browseren. Gå rundt på en pixel-art-etage med dit team, og start et videoopkald bare ved at stille dig ved siden af nogen.",
     "features": [
       "Video- og taleopkald på nært hold",
       "Skærmdeling i opkald og møder",
@@ -66,15 +66,15 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Den offentlige lobby er gratis for alle, og det samme er et kontor til op til 3 personer med 5 mødetimer om måneden. Større kontorer koster $19 om måneden for 10 personer og 30 mødetimer, eller $49 for 25 personer og 60 timer."
+        "a": "Ja, for et kontor til op til 3 personer med 5 mødetimer om måneden. Større kontorer koster $19 om måneden for 10 personer og 30 mødetimer, eller $49 for 25 personer og 60 timer."
       },
       {
         "q": "Skal jeg installere noget?",
-        "a": "Nej. TinyFloor kører i browseren på computer og mobil. Åbn et link til et rum, så er du inde på kontoret."
+        "a": "Nej. TinyFloor kører i browseren på computer og mobil. Åbn dit kontors link, og du er inde."
       },
       {
-        "q": "Skal jeg have en konto for at deltage i et rum?",
-        "a": "Ikke til den offentlige lobby: der kan alle gå ind som gæst med bare et navn. Et kontor er privat: kolleger kommer med via en invitation og en gratis konto."
+        "q": "Skal jeg have en konto for at komme ind i et kontor?",
+        "a": "Ja, en gratis en. Et kontor er privat: kollegerne kommer ind via dets invitationslink og logger ind med Google eller e-mail. Vil du se dig omkring først, kræver demokontoret kun et navn."
       },
       {
         "q": "Er TinyFloor privat og sikkert?",
@@ -110,7 +110,7 @@
     "createOne": "Opret en konto",
     "haveAccount": "Har du allerede en konto?",
     "signInInstead": "Log ind i stedet",
-    "continueGuest": "Vil du bare kigge? Besøg lobbyen som gæst",
+    "continueGuest": "Kigger du bare? Prøv demokontoret",
     "errors": {
       "wrong_credentials": "E-mail og adgangskode passer ikke sammen. Prøv igen.",
       "too_many_attempts": "For mange forsøg. Vent et par minutter, og prøv så igen.",
@@ -283,15 +283,12 @@
     "walkOver": "Gå derhen",
     "lobbyAlone": "Der er ingen andre her endnu. Når nogen kommer ind, kan du skrive til dem her, kun mellem jer to.",
     "dropHere": "Slip for at dele i {channel}",
-    "dropLobby": "Billeder deles i kontorer, ikke i lobbyen.",
-    "lobbyGeneral": "Sig hej, stil et spørgsmål, eller fortæl hvad du arbejder på. Beskeder bliver her i en uge.",
-    "lobbyIntroductions": "Hvem er du, og hvad bringer dig her? Hele lobbyen kan læse det i 7 dage.",
+    "dropLobby": "Billeder kan deles i dit eget kontor, ikke her.",
+    "lobbyGeneral": "Stil et spørgsmål om TinyFloor, eller prøv chatten. Beskeder bliver her i en uge.",
     "lobbyFeedback": "Hvad ville gøre TinyFloor bedre for dit team? Vi læser hver besked her.",
-    "introduceYourself": "Præsenter dig selv",
-    "starterIntro": "Hej, jeg er ny her 👋",
-    "lobbyDmIntro": "Kun mellem jer to og gemmes aldrig: det forsvinder, når en af jer forlader lobbyen.",
-    "notHere": "Personen har forladt lobbyen, så beskeden blev ikke sendt.",
-    "gone": "{name} forlod lobbyen, og samtalen forsvandt med.",
+    "lobbyDmIntro": "Kun mellem jer to og gemmes aldrig: det forsvinder, når en af jer forlader demokontoret.",
+    "notHere": "Personen har forladt demokontoret, så beskeden blev ikke sendt.",
+    "gone": "{name} forlod demokontoret, og samtalen forsvandt med.",
     "edited": "redigeret",
     "edit": "Rediger",
     "delete": "Fortryd",
@@ -388,11 +385,11 @@
   "notFound": {
     "title": "Dette rum er ikke på kortet.",
     "body": "Siden, du leder efter, findes ikke eller er flyttet.",
-    "home": "Tilbage til lobbyen"
+    "home": "Tilbage til forsiden"
   },
   "landings": {
-    "create": "Opret et rum",
-    "free": "Gratis, i browseren, uden konto.",
+    "create": "Lav dit kontor",
+    "free": "Gratis for op til 3 personer · Intet kort nødvendigt",
     "compare": "Sammenligninger",
     "useCases": "Anvendelser",
     "compareTitle": "TinyFloor og {name}, <em>side om side.</em>",
@@ -423,7 +420,7 @@
         "points": [
           {
             "title": "Ingen prøveperiode der løber ud",
-            "body": "Gather giver dig 30 dage, før du betaler. TinyFloor har ingen prøveperiode, for der er intet at opgradere til."
+            "body": "Gather giver dig 30 dage, før du skal betale. TinyFloors gratisplan har ingen slutdato: op til 3 personer, så længe du vil."
           },
           {
             "title": "Intet at installere",
@@ -451,11 +448,11 @@
           },
           {
             "q": "Kan jeg flytte mit team fra Gather til TinyFloor?",
-            "a": "Ja. Opret et arbejdsområde, inviter dit team med ét link, og alle går ind. Der er ingen data at flytte og intet at installere."
+            "a": "Ja. Lav et kontor, inviter dit team med ét link, og alle går ind. Der er ingen data at flytte og intet at installere."
           },
           {
-            "q": "Hvor mange kan være i et TinyFloor-rum?",
-            "a": "Et rum har plads til op til 20 personer ad gangen, og du kan åbne så mange rum, som du har brug for."
+            "q": "Hvor mange kan der være i et TinyFloor-kontor?",
+            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
           }
         ]
       },
@@ -470,11 +467,11 @@
         "points": [
           {
             "title": "Ingen grænse på 5 medlemmer",
-            "body": "Inviter alle. Rummene har plads til 20 personer ad gangen, og du kan åbne flere rum, når du har brug for det."
+            "body": "Inviter hele dit team: op til 10 personer på Plus og 25 på Pro, til én pris pr. kontor, ikke pr. person."
           },
           {
             "title": "Prøv det, før du tilmelder dig",
-            "body": "Gå ind i TinyFloors offentlige lobby med bare et navn, og prøv etagen, før du opretter et kontor."
+            "body": "Prøv TinyFloors demokontor med bare et navn, og gå rundt, før du laver dit eget."
           },
           {
             "title": "Lavet til mobilen også",
@@ -498,7 +495,7 @@
           },
           {
             "q": "Skal mine kolleger have en konto?",
-            "a": "Ja, en gratis konto, som holder dit kontor privat for dit team. Vil man kigge sig omkring først, kan alle gå ind i den offentlige lobby med bare et navn."
+            "a": "Ja, en gratis en, som holder dit kontor privat for dit team. Vil du se dig omkring først, så prøv demokontoret med bare et navn."
           },
           {
             "q": "Virker TinyFloor på mobilen?",
@@ -521,7 +518,7 @@
           },
           {
             "title": "Et kontor, ikke et event",
-            "body": "Rummene slutter ikke, når et møde gør. Det samme link virker i morgen, og folk kigger forbi, når de har tid."
+            "body": "Kontoret er stadig åbent, når et møde slutter. Dit team kommer tilbage til den samme etage i morgen."
           },
           {
             "title": "Gå hen for at snakke",
@@ -541,7 +538,7 @@
           },
           {
             "q": "Er TinyFloor godt til virtuelle events?",
-            "a": "TinyFloor er lavet til grupper, der mødes hver dag. Rummene har plads til 20 personer ad gangen, så det passer bedre til teamkontorer, studiegrupper og små sammenkomster end til store events."
+            "a": "TinyFloor er lavet til teams, der arbejder sammen hver dag. Et kontor har plads til op til 25 personer, så det passer bedre til små teams end til store events."
           },
           {
             "q": "Hvad har SpatialChat, som TinyFloor ikke har?",
@@ -556,7 +553,7 @@
       "workadventure": {
         "label": "Alternativ til WorkAdventure",
         "meta": {
-          "title": "Alternativ til WorkAdventure med rum til 20",
+          "title": "WorkAdventure-alternativ til teams på op til 25",
           "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et virtuelt kontor i pixel art med videoopkald, når man står tæt, gratis for 3 personer og 19 $ om måneden for 10."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plads til at vokse.",
@@ -568,7 +565,7 @@
           },
           {
             "title": "Intet kort at bygge",
-            "body": "Hvert rum har et kontorgulv, et mødelokale, en whiteboard og en højttaler. Opret et rum og gå ind."
+            "body": "Hvert kontor har en etage, et mødelokale, en whiteboard og en højttaler. Lav et kontor, og gå ind."
           },
           {
             "title": "Intet at hoste",
@@ -588,11 +585,11 @@
           },
           {
             "q": "Kan jeg tilpasse kortet i TinyFloor?",
-            "a": "Ikke endnu. Alle rum bruger det samme kontorgulv. I WorkAdventure kan du designe dine egne kort, hvilket passer til teams, der vil have deres egen verden."
+            "a": "Ikke endnu. Alle kontorer bruger den samme etage. WorkAdventure lader dig designe dine egne kort, hvilket passer til teams, der vil have deres egen verden."
           },
           {
             "q": "Skal jeg drive en server?",
-            "a": "Nej. TinyFloor hostes for dig. Opret et arbejdsområde i browseren, og inviter dit team."
+            "a": "Nej. TinyFloor hostes for dig. Lav et kontor i browseren, og inviter dit team."
           },
           {
             "q": "Hvordan starter opkald i TinyFloor?",
@@ -604,7 +601,7 @@
         "label": "Alternativ til Wonder",
         "meta": {
           "title": "Alternativ til Wonder.me: gå hen og snak",
-          "description": "Wonder.me lukkede i 2023. TinyFloor er et gratis sted i browseren, hvor du flytter en figur og starter et videoopkald ved at gå hen til andre."
+          "description": "Wonder.me lukkede i 2023. TinyFloor er et virtuelt kontor til remote teams, hvor du flytter en figur og starter et videoopkald ved at gå hen til en kollega."
         },
         "title": "Savner du <em>Wonder?</em>",
         "subtitle": "Wonder.me lukkede i april 2023. TinyFloor beholder det, der fik det til at fungere, at gå rundt og snakke med dem, du går hen til, på et kontorgulv i pixel art.",
@@ -615,11 +612,11 @@
           },
           {
             "title": "Stadig i browseren",
-            "body": "Åbn et invitationslink, vælg en figur, og du er inde. Den offentlige lobby kræver slet ingen konto."
+            "body": "Åbn dit kontors invitationslink, vælg en figur, og du er inde. Vil du se dig omkring først, kræver demokontoret ingen konto."
           },
           {
-            "title": "Gratis og åbent hele dagen",
-            "body": "Ingen planer og ingen tidsgrænser. Hold et rum åbent for et team, en klasse eller et fast træf."
+            "title": "Åbent hele dagen",
+            "body": "Der er ingen tidsgrænser på noget abonnement, heller ikke det gratis. Hold kontoret åbent, så længe dit team arbejder."
           }
         ],
         "faq": [
@@ -629,15 +626,15 @@
           },
           {
             "q": "Hvordan adskiller TinyFloor sig fra Wonder?",
-            "a": "Wonder brugte cirkler på en flad flade og var lavet til events. TinyFloor er et kontor, du går rundt i, med skriveborde, et mødelokale, en whiteboard og musik, lavet til grupper, der mødes jævnligt."
+            "a": "Wonder brugte cirkler på et fladt lærred og var lavet til events. TinyFloor er et kontor, du kan gå rundt i, med skriveborde, et mødelokale, en whiteboard og musik, lavet til teams, der arbejder sammen hver dag."
           },
           {
             "q": "Hvor mange kan deltage?",
-            "a": "Et rum har plads til op til 20 personer ad gangen, og du kan åbne så mange rum, som du har brug for."
+            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
           },
           {
             "q": "Er TinyFloor gratis?",
-            "a": "Ja, for et kontor til op til 3 personer, og den offentlige lobby er gratis for alle. At gå rundt, chatte og ringe er med i alle planer."
+            "a": "Ja, for et kontor med op til 3 personer. At gå rundt, chatte og ringe er med i alle abonnementer."
           }
         ]
       },
@@ -674,7 +671,7 @@
           },
           {
             "q": "Hvor mange kan bruge ét kontor?",
-            "a": "Et rum har plads til op til 20 personer ad gangen. Større teams kan åbne et rum pr. team."
+            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro. En større virksomhed kan lave et kontor til hvert team."
           },
           {
             "q": "Erstatter det videoopkald?",
@@ -685,19 +682,19 @@
       "virtualCoworking": {
         "label": "Virtuel coworking",
         "meta": {
-          "title": "Gratis virtuel coworking online",
-          "description": "Cowork online med venner eller fremmede i et gratis kontor i pixel art. Arbejd side om side, hold pauser sammen og snak, når I har lyst."
+          "title": "Virtuelt coworking-space til remote teams",
+          "description": "Et virtuelt coworking-space til dit remote team. Arbejd side om side på en pixel-art-etage, se hvem der er her, og snak, når I har brug for det. Gratis for op til 3 personer."
         },
-        "title": "<em>Virtuel coworking</em>, der føles som et delt skrivebord.",
-        "subtitle": "Det er lettere at arbejde alene med folk omkring sig. Sæt dig på et fælles kontor, kom i gang med arbejdet, og gå hen til nogen, når du vil holde pause.",
+        "title": "<em>Virtuelt coworking</em> til dit remote team.",
+        "subtitle": "Hjemmearbejde er lettere med teamet omkring dig. Del én kontoretage, pas dit arbejde, og gå over til en kollega, når du har brug for det.",
         "points": [
           {
             "title": "Selskab uden opkald",
-            "body": "Du ser andre arbejde uden at være på kamera. Opkald starter først, når nogen går hen."
+            "body": "Se dine kolleger arbejde uden at være på kamera. Et opkald starter først, når nogen går over til dig."
           },
           {
-            "title": "Et åbent rum, når som helst",
-            "body": "Det åbne kontor er altid åbent. Eller opret et arbejdsområde til din egen coworking-gruppe, og inviter dem."
+            "title": "Jeres egen etage",
+            "body": "Et kontor er privat for dit team. Inviter alle med ét link, og det er åbent, når de er."
           },
           {
             "title": "Sæt din status",
@@ -707,60 +704,19 @@
         "faq": [
           {
             "q": "Hvad er virtuel coworking?",
-            "a": "Virtuel coworking betyder at arbejde online sammen med andre, så det føles mindre ensomt. Mange har lettere ved at fokusere, når andre arbejder i nærheden."
+            "a": "Virtuelt coworking betyder at arbejde online sammen med dit team, så fjernarbejde føles mindre isoleret. Mange har lettere ved at fokusere, når kollegerne arbejder i nærheden."
           },
           {
             "q": "Skal jeg være på kamera?",
             "a": "Nej. Dit kamera og din mikrofon er slukket, indtil du deltager i et opkald."
           },
           {
-            "q": "Kan jeg cowork'e med fremmede?",
-            "a": "Ja. Det åbne kontor er åbent for alle. Til en privat gruppe opretter du et arbejdsområde: dets rum er kun åbne for dem, du inviterer."
+            "q": "Hvem kan komme ind på vores kontor?",
+            "a": "Kun dit team. Et kontor er privat: folk kommer ind via dets invitationslink med en konto, og en administrator kan fjerne hvem som helst."
           },
           {
             "q": "Er der en tidsgrænse?",
             "a": "Nej. Bliv så længe du vil."
-          }
-        ]
-      },
-      "onlineStudyRoom": {
-        "label": "Online læserum",
-        "meta": {
-          "title": "Gratis online læserum til at læse med venner",
-          "description": "Læs med venner i et gratis online læserum. Sid sammen i et rum i pixel art, fokuser og snak, når I har brug for en pause. Intet at downloade."
-        },
-        "title": "Et <em>online læserum</em> til dig og dine venner.",
-        "subtitle": "Opret et rum til din læsegruppe, del ét link, og sid sammen, mens I arbejder. Snak et problem igennem i mødelokalet, og fortsæt så.",
-        "points": [
-          {
-            "title": "Stille fra start",
-            "body": "Ingen hører dig, før du starter et opkald, så rummet forbliver fokuseret."
-          },
-          {
-            "title": "Et bord til gruppearbejde",
-            "body": "Deltag i et møde for at tale som gruppe, og gå ud af mødelokalet for at læse videre alene."
-          },
-          {
-            "title": "En whiteboard til opgaver",
-            "body": "Gå hen til whiteboarden for at skitsere en idé eller løse et spørgsmål sammen."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hvordan opretter jeg et læserum?",
-            "a": "Opret et arbejdsområde, tilføj et rum, og inviter dine venner med ét link. Kun dem, du inviterer, kan gå ind."
-          },
-          {
-            "q": "Er det gratis for studerende?",
-            "a": "Ja. TinyFloor er gratis for en lille gruppe. Send dine venner et invitationslink, så kommer de med en gratis konto."
-          },
-          {
-            "q": "Kan vi høre musik, mens vi læser?",
-            "a": "Ja. Gå hen til højttaleren i rummet for at spille musik, som alle i rummet hører."
-          },
-          {
-            "q": "Virker det på mobilen?",
-            "a": "Ja. Det kører i mobilbrowsere med et joystick på skærmen."
           }
         ]
       },
@@ -789,11 +745,11 @@
         "faq": [
           {
             "q": "Hvor mange elever kan deltage?",
-            "a": "Et rum har plads til op til 20 personer ad gangen, hvilket passer til små klasser, lektiehjælpsgrupper og træffetid."
+            "a": "Et kontor har plads til op til 25 personer på Pro, hvilket passer til små hold, lektiehjælp og kontortid."
           },
           {
             "q": "Skal eleverne have en konto?",
-            "a": "Nej. Eleverne deltager via et link med bare et navn."
+            "a": "Ja, en gratis en. Eleverne kommer ind via holdets invitationslink og logger ind med Google eller e-mail."
           },
           {
             "q": "Kan jeg holde klasseværelset privat?",
@@ -801,7 +757,7 @@
           },
           {
             "q": "Er det gratis for lærere?",
-            "a": "Ja, for op til 3 personer pr. kontor, og den offentlige lobby er gratis for alle. En klasse på op til 25 koster 49 $ om måneden."
+            "a": "Ja, for op til 3 personer pr. kontor. Et hold på op til 10 koster 19 $ om måneden, og op til 25 koster 49 $."
           }
         ]
       },
@@ -809,7 +765,7 @@
         "label": "Nærhedschat",
         "meta": {
           "title": "Gratis videochat efter nærhed i browseren",
-          "description": "Nærhedschat til teams og venner: gå med din figur hen til nogen for at starte et opkald. Gratis, i browseren, uden download."
+          "description": "Nærhedschat til remote teams: gå din figur hen til en kollega for at starte et opkald. Gratis for små teams, i browseren, uden download."
         },
         "title": "<em>Nærhedschat</em>, der starter, når du går hen.",
         "subtitle": "I TinyFloor afgør det, hvor du står, hvem du taler med. Gå hen til nogen for at ringe til dem, deltag i et møde for at tale som gruppe, og gå videre, når I er færdige.",
@@ -842,17 +798,17 @@
           },
           {
             "q": "Er det gratis?",
-            "a": "Ja. Den offentlige lobby er gratis for alle, og et kontor er gratis for op til 3 personer, i browseren på computer og mobil."
+            "a": "Ja, for et kontor med op til 3 personer, i browseren på computer og mobil."
           }
         ]
       }
     }
   },
   "lobby": {
-    "eyebrow": "Åben for alle",
-    "title": "Lobbyen",
-    "subtitle": "Alle kan kigge ind. Sig hvem du er, vælg en figur, og gå ind.",
-    "peopleSubtitle": "Alle, der er i lobbyen lige nu. Den, der har linket, kan komme ind.",
+    "eyebrow": "Prøv TinyFloor",
+    "title": "Demokontoret",
+    "subtitle": "Gå rundt i et rigtigt TinyFloor-kontor, før du laver et til dit team. Vælg et navn og en figur for at starte.",
+    "peopleSubtitle": "Alle i demokontoret lige nu.",
     "door": "{here, plural, =0 {Ingen herinde endnu, bliv den første} one {# person herinde nu} other {# personer herinde nu}}",
     "officesOnly": {
       "channels": {
@@ -889,8 +845,7 @@
         "channels": "Kanaler der bliver",
         "messages": "Direkte beskeder",
         "invites": "Invitationslinks"
-      },
-      "bringThem": "{count, plural, one {Tag den person med, du mødte her} other {Tag de # personer med, du mødte her}}"
+      }
     }
   },
   "office": {
@@ -931,7 +886,7 @@
       "saved": "Gemt",
       "save": "Gem",
       "character": "Figur",
-      "characterNote": "Den du går ind som, i lobbyen og på hvert kontor.",
+      "characterNote": "Den du går ind som, på hvert kontor.",
       "passwordTitle": "Skift din adgangskode",
       "passwordDescription": "Skriv din nuværende adgangskode, og vælg derefter en ny.",
       "passwordChanged": "Din adgangskode er ændret.",
@@ -985,8 +940,8 @@
       "fullBody": "Alle pladser er taget. Bed den, der sendte linket, om at gøre plads eller skifte til en større plan."
     },
     "errors": {
-      "member_limit": "Arbejdsområdet er fyldt med det nuværende abonnement.",
-      "not_allowed": "Din rolle i arbejdsområdet må ikke gøre det.",
+      "member_limit": "Kontoret er fyldt med det nuværende abonnement.",
+      "not_allowed": "Din rolle på kontoret må ikke gøre det.",
       "owner_cannot_leave": "Ejeren skal overdrage ejerskabet, før vedkommende forlader det.",
       "owner_role": "Ejerrollen ændres kun ved at overdrage ejerskabet.",
       "bad_capacity": "Vælg mellem 2 og 20 personer.",
@@ -1086,7 +1041,7 @@
     "plus": "+{count}",
     "join": "Deltag",
     "mainName": "{office}s møde",
-    "lobbyName": "Lobbymøde",
+    "lobbyName": "Demomøde",
     "byName": "{name}s møde",
     "people": "{count, plural, one {# person} other {# personer}}",
     "invite": "Inviter",
@@ -1147,7 +1102,7 @@
     "membersOf": "{used} af {seats} medlemmer",
     "switchTo": "Dine andre kontorer",
     "newOffice": "Nyt kontor",
-    "publicLobby": "Offentlig lobby",
+    "publicLobby": "Demokontor",
     "reply": "Svar",
     "backToFloor": "Tilbage til gulvet",
     "onTheFloor": "Du er på gulvet",
@@ -1155,7 +1110,7 @@
     "onFloorShort": "På gulvet",
     "notOnFloor": "Ikke på gulvet",
     "message": "Besked",
-    "leaveLobby": "Forlad lobbyen",
+    "leaveLobby": "Forlad demokontoret",
     "hereNow": "Her nu",
     "settings": "Indstillinger",
     "inCall": "I et opkald",
@@ -1181,7 +1136,7 @@
     "seats": "{used} af {seats} pladser",
     "manage": "Administrer",
     "seeAll": "Se alle",
-    "lobbyNote": "Eller kig forbi den åbne lobby og mød folk",
+    "lobbyNote": "Eller prøv demokontoret først",
     "anotherOffice": "Et team mere? Lav et nyt kontor",
     "welcome": "Velkommen, {name}",
     "welcomeAnonymous": "Velkommen",
@@ -1193,7 +1148,7 @@
     "badLink": "Det ligner ikke et invitationslink. Indsæt hele linket.",
     "makeTitle": "Lad os lave dit kontor",
     "otherWays": "Andre veje ind",
-    "lobbyBody": "Kig forbi og mød folk.",
+    "lobbyBody": "Gå rundt, og se, hvordan et kontor fungerer.",
     "yourAccount": "Din konto",
     "createOffice": "Opret dit kontor"
   },
@@ -1202,7 +1157,7 @@
       "features": "Funktioner",
       "pricing": "Priser",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Log ind",
       "start": "Lav dit kontor",
       "main": "Hovednavigation",
@@ -1213,23 +1168,22 @@
         "people": "Tilstedeværelse",
         "invites": "Invitationer"
       },
-      "lobbyTitle": "Lobbyen er åben",
+      "lobbyTitle": "Prøv demokontoret",
       "menu": "Menu",
       "teams": "Til teams",
       "cases": {
         "virtualOffice": "Et sted for dit fjernteam",
-        "virtualCoworking": "Arbejd fokuseret sammen med andre",
-        "onlineStudyRoom": "Studér sammen med venner",
+        "virtualCoworking": "Fokustimer sammen med dit team",
         "virtualClassroom": "Konsultationstid og små hold",
         "proximityChat": "Tal med den, du går hen til"
       },
       "getStarted": "Kom i gang",
-      "lobbyLine": "Gå rundt på en rigtig etage. Ingen konto."
+      "lobbyLine": "Se, hvordan et kontor fungerer. Ingen konto nødvendig."
     },
     "hero": {
       "title": "Et virtuelt kontor, dit team kan gå rundt i.",
       "body": "Til fjernteams, der savner at arbejde side om side. Se hvem der er her, kig forbi med et hurtigt spørgsmål, og gå ind i mødelokalet, når det er tid til møde, uden at planlægge et eneste opkald.",
-      "secondary": "Gå ind i lobbyen",
+      "secondary": "Prøv demokontoret",
       "previewLabel": "Et kig ind i TinyFloor",
       "tabs": {
         "floor": "Etage",
@@ -1242,7 +1196,7 @@
         "Intet at installere",
         "Kører på Cloudflare"
       ],
-      "lobbyCta": "Gå ind",
+      "lobbyCta": "Prøv demoen",
       "noAccount": "Ingen konto nødvendig"
     },
     "features": {
@@ -1355,7 +1309,7 @@
       "compare": "Sammenlign",
       "resources": "Ressourcer",
       "makeOffice": "Lav et kontor",
-      "lobby": "Offentlig lobby",
+      "lobby": "Demokontor",
       "signIn": "Log ind",
       "dashboard": "Dine kontorer",
       "faq": "FAQ",
@@ -1397,7 +1351,7 @@
       "features": "Funktioner",
       "pricing": "Priser",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Log ind",
       "getStarted": "Kom i gang",
       "menu": "Menu",
@@ -1408,7 +1362,7 @@
       "muted": "på én etage.",
       "body": "Et lille virtuelt kontor i browseren. Se hvem der er her, gå hen og snak, og kom tilbage til arbejdet. Intet at planlægge, intet at installere.",
       "cta": "Opret dit kontor",
-      "lobby": "Gå ind i lobbyen",
+      "lobby": "Prøv demokontoret",
       "note": "Gratis for op til 3 personer · Intet kort nødvendigt",
       "film": "TinyFloor: en besked kommer ind, chatten åbner, og så et opkald med kollegaen ved siden af dig"
     },
@@ -1488,7 +1442,7 @@
     "faq": {
       "title": "Spørgsmål,",
       "muted": "besvaret.",
-      "more": "Stadig i tvivl? <lobby>Gå ind i lobbyen</lobby> og se selv."
+      "more": "Stadig i tvivl? <lobby>Prøv demokontoret</lobby>, og se selv."
     },
     "closing": {
       "title": "Giv dit team",

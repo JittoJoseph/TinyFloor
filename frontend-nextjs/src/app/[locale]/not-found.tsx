@@ -24,7 +24,7 @@ export default async function LocaleNotFound() {
         <div className="px-2 pb-2 pt-5">
           <h1 className="mb-1.5 text-[1.6rem] font-semibold leading-tight tracking-tight text-foreground">{t("title")}</h1>
           <p className="mb-6 text-[14px] leading-relaxed text-muted-foreground">{t("body")}</p>
-          <ActionLink href="/lobby">{t("home")}</ActionLink>
+          <ActionLink href="/">{t("home")}</ActionLink>
         </div>
       </div>
     </main>

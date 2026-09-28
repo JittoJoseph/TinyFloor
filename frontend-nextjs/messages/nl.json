@@ -3,7 +3,7 @@
     "title": "TinyFloor - Een virtueel kantoor waar je rondloopt",
     "description": "TinyFloor is een gratis virtueel kantoor in je browser. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "ogAlt": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
-    "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, metaverse-kantoor, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
+    "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
     "joinTitle": "Ruimte binnengaan",
     "joinRoomTitle": "Doe mee met {office}",
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",
@@ -12,8 +12,8 @@
     "createTitle": "Maak je kantoor",
     "dashboardTitle": "Dashboard",
     "notFoundTitle": "Pagina niet gevonden",
-    "lobbyTitle": "De lobby",
-    "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
+    "lobbyTitle": "Het demokantoor",
+    "lobbyDescription": "Probeer het demokantoor van TinyFloor in je browser. Kies een personage, loop rond en probeer een nabijheidsgesprek voordat je een kantoor voor je team maakt.",
     "inviteTitle": "Doe mee met {office} op TinyFloor",
     "inviteFallbackTitle": "Je bent uitgenodigd voor TinyFloor",
     "inviteDescription": "Doe mee met {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
@@ -29,8 +29,8 @@
     "unknown": "Onbekend",
     "dashboard": "Dashboard",
     "signOut": "Uitloggen",
-    "visitLobby": "Bezoek de lobby",
-    "lobby": "Lobby",
+    "visitLobby": "Probeer het demokantoor",
+    "lobby": "Demokantoor",
     "signIn": "Inloggen",
     "account": "Account",
     "createOffice": "Kantoor maken",
@@ -43,7 +43,7 @@
     "noResults": "Geen talen gevonden"
   },
   "landing": {
-    "description": "Een virtueel kantoor dat eruitziet als een game. Loop met je team rond op een pixel-art verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
+    "description": "Een virtueel kantoor voor remote teams, in de browser. Loop met je team over een pixelart-verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
     "features": [
       "Video- en spraakgesprekken op nabijheid",
       "Scherm delen in gesprekken en vergaderingen",
@@ -66,15 +66,15 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor tot 3 mensen ook, met 5 vergaderuren per maand. Grotere kantoren kosten $19 per maand voor 10 mensen en 30 vergaderuren, of $49 voor 25 mensen en 60 uur."
+        "a": "Ja, voor een kantoor tot 3 mensen, met 5 vergaderuren per maand. Grotere kantoren kosten $19 per maand voor 10 mensen en 30 vergaderuren, of $49 voor 25 mensen en 60 uur."
       },
       {
         "q": "Moet ik iets installeren?",
-        "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Open een link naar een ruimte en je bent in het kantoor."
+        "a": "Nee. TinyFloor draait in de browser op desktop en mobiel. Open de link van je kantoor en je bent binnen."
       },
       {
-        "q": "Heb ik een account nodig om een ruimte binnen te gaan?",
-        "a": "Niet voor de openbare lobby: daar kan iedereen als gast binnenlopen met alleen een naam. Een kantoor is privé: teamgenoten komen erbij via een uitnodiging, met een gratis account."
+        "q": "Heb ik een account nodig om bij een kantoor te komen?",
+        "a": "Ja, een gratis account. Een kantoor is privé: teamgenoten komen binnen via de uitnodigingslink en loggen in met Google of e-mail. Wil je eerst rondkijken, dan heeft het demokantoor alleen een naam nodig."
       },
       {
         "q": "Is TinyFloor privé en veilig?",
@@ -110,7 +110,7 @@
     "createOne": "Maak een account",
     "haveAccount": "Heb je al een account?",
     "signInInstead": "Log in",
-    "continueGuest": "Even rondkijken? Bezoek de lobby als gast",
+    "continueGuest": "Even rondkijken? Probeer het demokantoor",
     "errors": {
       "wrong_credentials": "Dat e-mailadres en wachtwoord passen niet bij elkaar. Probeer het opnieuw.",
       "too_many_attempts": "Te veel pogingen. Wacht een paar minuten en probeer het dan opnieuw.",
@@ -283,15 +283,12 @@
     "walkOver": "Loop erheen",
     "lobbyAlone": "Er is nog niemand anders. Zodra iemand binnenkomt, kun je hier met diegene praten, alleen tussen jullie twee.",
     "dropHere": "Loslaten om te delen in {channel}",
-    "dropLobby": "Afbeeldingen deel je in kantoren, niet in de lobby.",
-    "lobbyGeneral": "Zeg hallo, stel een vraag of vertel waar je aan werkt. Berichten blijven hier een week staan.",
-    "lobbyIntroductions": "Wie ben je, en wat brengt je hier? De hele lobby kan het 7 dagen lezen.",
+    "dropLobby": "Afbeeldingen deel je in je eigen kantoor, niet hier.",
+    "lobbyGeneral": "Stel een vraag over TinyFloor of probeer de chat. Berichten blijven hier een week staan.",
     "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
-    "introduceYourself": "Stel jezelf voor",
-    "starterIntro": "Hoi, ik ben nieuw hier 👋",
-    "lobbyDmIntro": "Alleen tussen jullie twee en nooit bewaard: het verdwijnt zodra een van jullie de lobby verlaat.",
-    "notHere": "Die persoon heeft de lobby verlaten, dus dit is niet verstuurd.",
-    "gone": "{name} heeft de lobby verlaten en dit gesprek is mee verdwenen.",
+    "lobbyDmIntro": "Alleen tussen jullie twee en nooit bewaard: het verdwijnt zodra een van jullie het demokantoor verlaat.",
+    "notHere": "Die persoon heeft het demokantoor verlaten, dus dit is niet verstuurd.",
+    "gone": "{name} heeft het demokantoor verlaten en dit gesprek is mee verdwenen.",
     "edited": "bewerkt",
     "edit": "Bewerken",
     "delete": "Intrekken",
@@ -388,11 +385,11 @@
   "notFound": {
     "title": "Deze ruimte staat niet op de kaart.",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
-    "home": "Terug naar de lobby"
+    "home": "Terug naar de startpagina"
   },
   "landings": {
-    "create": "Ruimte maken",
-    "free": "Gratis, in de browser, zonder account.",
+    "create": "Maak je kantoor",
+    "free": "Gratis voor maximaal 3 mensen · Geen creditcard nodig",
     "compare": "Vergelijkingen",
     "useCases": "Toepassingen",
     "compareTitle": "TinyFloor en {name}, <em>naast elkaar.</em>",
@@ -423,7 +420,7 @@
         "points": [
           {
             "title": "Geen proefperiode die afloopt",
-            "body": "Gather geeft je 30 dagen voordat je betaalt. TinyFloor heeft geen proefperiode, want er is niets om naar te upgraden."
+            "body": "Gather geeft je 30 dagen voordat je betaalt. Het gratis abonnement van TinyFloor heeft geen einddatum: tot 3 mensen, zo lang als je wilt."
           },
           {
             "title": "Niets te installeren",
@@ -451,11 +448,11 @@
           },
           {
             "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
-            "a": "Ja. Maak een werkruimte, nodig je team uit met één link en iedereen loopt binnen. Er zijn geen gegevens over te zetten en niets te installeren."
+            "a": "Ja. Maak een kantoor, nodig je team uit met één link en iedereen loopt binnen. Er zijn geen gegevens te migreren en niets te installeren."
           },
           {
-            "q": "Hoeveel mensen passen er in een TinyFloor-ruimte?",
-            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
+            "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
+            "a": "Tot 3 mensen met Free, 10 met Plus en 25 met Pro, en je kunt zoveel kantoren maken als je nodig hebt."
           }
         ]
       },
@@ -470,11 +467,11 @@
         "points": [
           {
             "title": "Geen limiet van 5 leden",
-            "body": "Nodig iedereen uit. Ruimtes bieden plek aan 20 mensen tegelijk, en je kunt altijd meer ruimtes openen."
+            "body": "Nodig je hele team uit: tot 10 mensen met Plus en 25 met Pro, voor één prijs per kantoor, niet per persoon."
           },
           {
             "title": "Probeer het voor je je aanmeldt",
-            "body": "Loop met alleen een naam de openbare lobby van TinyFloor binnen en probeer de verdieping voordat je een kantoor maakt."
+            "body": "Probeer het demokantoor van TinyFloor met alleen een naam en loop rond voordat je je eigen kantoor maakt."
           },
           {
             "title": "Ook gemaakt voor je telefoon",
@@ -498,7 +495,7 @@
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
-            "a": "Ja, een gratis account, zodat je kantoor privé blijft voor je team. Wie eerst wil rondkijken, loopt met alleen een naam de openbare lobby binnen."
+            "a": "Ja, een gratis account, zodat je kantoor privé blijft voor je team. Wil je eerst rondkijken, probeer dan het demokantoor met alleen een naam."
           },
           {
             "q": "Werkt TinyFloor op een telefoon?",
@@ -521,7 +518,7 @@
           },
           {
             "title": "Een kantoor, geen evenement",
-            "body": "Ruimtes stoppen niet als een vergadering afloopt. Dezelfde link werkt morgen nog, en mensen lopen binnen als ze tijd hebben."
+            "body": "Het kantoor blijft open als een vergadering afloopt. Je team komt morgen terug op dezelfde verdieping."
           },
           {
             "title": "Loop erheen om te praten",
@@ -541,7 +538,7 @@
           },
           {
             "q": "Is TinyFloor geschikt voor virtuele evenementen?",
-            "a": "TinyFloor is gemaakt voor groepen die elke dag samenkomen. Ruimtes bieden plek aan 20 mensen tegelijk, dus het past beter bij teamkantoren, studiegroepen en kleine meetups dan bij grote evenementen."
+            "a": "TinyFloor is gemaakt voor teams die elke dag samenwerken. Een kantoor biedt plaats aan maximaal 25 mensen, dus het past beter bij kleine teams dan bij grote evenementen."
           },
           {
             "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
@@ -556,7 +553,7 @@
       "workadventure": {
         "label": "WorkAdventure-alternatief",
         "meta": {
-          "title": "WorkAdventure-alternatief met ruimtes voor 20",
+          "title": "WorkAdventure-alternatief voor teams tot 25 mensen",
           "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, gratis voor 3 mensen en $ 19 per maand voor 10."
         },
         "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
@@ -568,7 +565,7 @@
           },
           {
             "title": "Geen kaart om te bouwen",
-            "body": "Elke ruimte heeft een kantoorvloer, een vergaderruimte, een whiteboard en een speaker. Maak een ruimte en loop naar binnen."
+            "body": "Elk kantoor heeft een verdieping, een vergaderruimte, een whiteboard en een speaker. Maak een kantoor en loop naar binnen."
           },
           {
             "title": "Niets te hosten",
@@ -588,11 +585,11 @@
           },
           {
             "q": "Kan ik de kaart in TinyFloor aanpassen?",
-            "a": "Nog niet. Elke ruimte gebruikt dezelfde kantoorvloer. Met WorkAdventure ontwerp je je eigen kaarten, wat past bij teams die een eigen wereld willen."
+            "a": "Nog niet. Elk kantoor gebruikt dezelfde verdieping. Met WorkAdventure ontwerp je je eigen kaarten, handig voor teams die een eigen wereld willen."
           },
           {
             "q": "Moet ik een server draaien?",
-            "a": "Nee. TinyFloor wordt voor je gehost. Maak een werkruimte in de browser en nodig je team uit."
+            "a": "Nee. TinyFloor wordt voor je gehost. Maak een kantoor in de browser en nodig je team uit."
           },
           {
             "q": "Hoe starten gesprekken in TinyFloor?",
@@ -604,7 +601,7 @@
         "label": "Wonder-alternatief",
         "meta": {
           "title": "Wonder.me-alternatief: loop erheen en praat",
-          "description": "Wonder.me stopte in 2023. TinyFloor is een gratis plek in de browser waar je een personage beweegt en een videogesprek start door naar mensen toe te lopen."
+          "description": "Wonder.me stopte in 2023. TinyFloor is een virtueel kantoor voor remote teams waar je een personage beweegt en een videogesprek start door naar een teamgenoot te lopen."
         },
         "title": "Mis je <em>Wonder?</em>",
         "subtitle": "Wonder.me stopte in april 2023. TinyFloor houdt vast aan wat het goed maakte, rondlopen en praten met wie je tegenkomt, op een pixel-art kantoorvloer.",
@@ -615,11 +612,11 @@
           },
           {
             "title": "Nog steeds in de browser",
-            "body": "Open een uitnodigingslink, kies een personage en je bent binnen. Voor de openbare lobby heb je helemaal geen account nodig."
+            "body": "Open de uitnodigingslink van je kantoor, kies een personage en je bent binnen. Wil je eerst rondkijken, dan heeft het demokantoor geen account nodig."
           },
           {
-            "title": "Gratis en de hele dag open",
-            "body": "Geen abonnementen en geen tijdslimieten. Houd een ruimte open voor een team, een klas of een vaste meetup."
+            "title": "De hele dag open",
+            "body": "Geen enkel abonnement heeft een tijdslimiet, het gratis abonnement ook niet. Houd je kantoor open zolang je team werkt."
           }
         ],
         "faq": [
@@ -629,15 +626,15 @@
           },
           {
             "q": "Hoe verschilt TinyFloor van Wonder?",
-            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergaderruimte, een whiteboard en muziek, gemaakt voor groepen die regelmatig samenkomen."
+            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergaderruimte, een whiteboard en muziek, gemaakt voor teams die elke dag samenwerken."
           },
           {
             "q": "Hoeveel mensen kunnen meedoen?",
-            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, en je kunt zoveel ruimtes openen als je nodig hebt."
+            "a": "Tot 3 mensen met Free, 10 met Plus en 25 met Pro, en je kunt zoveel kantoren maken als je nodig hebt."
           },
           {
             "q": "Is TinyFloor gratis?",
-            "a": "Ja, voor een kantoor met maximaal 3 mensen, en de openbare lobby is gratis voor iedereen. Rondlopen, chatten en bellen zitten in elk abonnement."
+            "a": "Ja, voor een kantoor tot 3 mensen. Rondlopen, chatten en bellen zitten in elk abonnement."
           }
         ]
       },
@@ -674,7 +671,7 @@
           },
           {
             "q": "Hoeveel mensen kunnen één kantoor gebruiken?",
-            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk. Grotere teams kunnen per team een ruimte openen."
+            "a": "Tot 3 mensen met Free, 10 met Plus en 25 met Pro. Een groter bedrijf kan voor elk team een kantoor maken."
           },
           {
             "q": "Vervangt het videogesprekken?",
@@ -685,19 +682,19 @@
       "virtualCoworking": {
         "label": "Virtueel coworken",
         "meta": {
-          "title": "Gratis virtuele coworkingplek online",
-          "description": "Cowork online met vrienden of onbekenden in een gratis pixel-art kantoor. Werk naast elkaar, neem samen pauze en praat wanneer je wilt."
+          "title": "Virtuele coworkingruimte voor remote teams",
+          "description": "Een virtuele coworkingruimte voor je remote team. Werk zij aan zij op een pixelart-verdieping, zie wie er is en praat wanneer het nodig is. Gratis tot 3 mensen."
         },
-        "title": "<em>Virtueel coworken</em> dat voelt als een gedeeld bureau.",
-        "subtitle": "Alleen werken gaat makkelijker met mensen om je heen. Zit in een gedeeld kantoor, ga aan de slag en loop naar iemand toe als je pauze wilt.",
+        "title": "<em>Virtueel coworken</em> voor je remote team.",
+        "subtitle": "Thuiswerken gaat makkelijker met je team in de buurt. Deel één kantoorverdieping, werk door en loop naar iemand toe als je die nodig hebt.",
         "points": [
           {
             "title": "Gezelschap zonder gesprekken",
-            "body": "Je ziet anderen werken zonder in beeld te zijn. Gesprekken starten pas als iemand erheen loopt."
+            "body": "Zie je teamgenoten aan het werk zonder in beeld te zijn. Een gesprek begint pas als iemand naar je toe loopt."
           },
           {
-            "title": "Een open ruimte, altijd",
-            "body": "Het openbare kantoor is altijd open. Of maak een werkruimte voor je eigen coworkinggroep en nodig ze uit."
+            "title": "Een eigen verdieping voor je team",
+            "body": "Een kantoor is privé voor je team. Nodig iedereen uit met één link, en het is open wanneer zij er zijn."
           },
           {
             "title": "Stel je status in",
@@ -707,60 +704,19 @@
         "faq": [
           {
             "q": "Wat is virtueel coworken?",
-            "a": "Virtueel coworken betekent online naast anderen werken, zodat het minder eenzaam voelt. Veel mensen concentreren zich makkelijker als anderen in de buurt werken."
+            "a": "Virtueel coworken betekent online naast je team werken, zodat remote werken minder eenzaam voelt. Veel mensen kunnen zich beter concentreren als hun teamgenoten in de buurt werken."
           },
           {
             "q": "Moet ik in beeld zijn?",
             "a": "Nee. Je camera en microfoon blijven uit tot je aan een gesprek meedoet."
           },
           {
-            "q": "Kan ik met onbekenden coworken?",
-            "a": "Ja. Het openbare kantoor is open voor iedereen. Voor een privégroep maak je een werkruimte: de ruimtes daarin zijn alleen open voor wie je uitnodigt."
+            "q": "Wie kan ons kantoor binnenlopen?",
+            "a": "Alleen je team. Een kantoor is privé: je komt binnen via de uitnodigingslink met een account, en een beheerder kan iedereen verwijderen."
           },
           {
             "q": "Is er een tijdslimiet?",
             "a": "Nee. Blijf zo lang als je wilt."
-          }
-        ]
-      },
-      "onlineStudyRoom": {
-        "label": "Online studieruimte",
-        "meta": {
-          "title": "Gratis online studieruimte om samen te studeren",
-          "description": "Studeer met vrienden in een gratis online studieruimte. Zit samen in een pixel-art ruimte, concentreer je en praat als je pauze nodig hebt. Niets te downloaden."
-        },
-        "title": "Een <em>online studieruimte</em> voor jou en je vrienden.",
-        "subtitle": "Maak een ruimte voor je studiegroep, deel één link en zit samen terwijl je werkt. Praat een probleem door in de vergaderruimte en ga dan weer verder.",
-        "points": [
-          {
-            "title": "Standaard stil",
-            "body": "Niemand hoort je tot je een gesprek start, dus de ruimte blijft geconcentreerd."
-          },
-          {
-            "title": "Een tafel voor groepswerk",
-            "body": "Doe mee aan een meeting om als groep te praten en loop de vergaderruimte uit om weer alleen verder te studeren."
-          },
-          {
-            "title": "Een whiteboard voor opgaven",
-            "body": "Loop naar het whiteboard om een idee te schetsen of samen een vraag uit te werken."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hoe maak ik een studieruimte?",
-            "a": "Maak een werkruimte, voeg een ruimte toe en nodig je vrienden uit met één link. Alleen wie je uitnodigt kan binnenlopen."
-          },
-          {
-            "q": "Is het gratis voor studenten?",
-            "a": "Ja. TinyFloor is gratis voor een kleine groep. Stuur je vrienden een uitnodigingslink en ze doen mee met een gratis account."
-          },
-          {
-            "q": "Kunnen we muziek luisteren tijdens het studeren?",
-            "a": "Ja. Loop naar de speaker in de ruimte om muziek af te spelen die iedereen in de ruimte hoort."
-          },
-          {
-            "q": "Werkt het op een telefoon?",
-            "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm."
           }
         ]
       },
@@ -789,11 +745,11 @@
         "faq": [
           {
             "q": "Hoeveel studenten kunnen meedoen?",
-            "a": "Een ruimte biedt plek aan maximaal 20 mensen tegelijk, wat past bij kleine klassen, bijlesgroepen en spreekuren."
+            "a": "Een kantoor biedt met Pro plaats aan maximaal 25 mensen, handig voor kleine klassen, bijlesgroepen en spreekuren."
           },
           {
             "q": "Hebben studenten een account nodig?",
-            "a": "Nee. Studenten doen mee via een link met alleen een naam."
+            "a": "Ja, een gratis account. Studenten komen binnen via de uitnodigingslink van de klas en loggen in met Google of e-mail."
           },
           {
             "q": "Kan ik het klaslokaal privé houden?",
@@ -801,7 +757,7 @@
           },
           {
             "q": "Is het gratis voor docenten?",
-            "a": "Ja, voor maximaal 3 mensen per kantoor, en de openbare lobby is gratis voor iedereen. Een klas van maximaal 25 kost $ 49 per maand."
+            "a": "Ja, voor maximaal 3 mensen per kantoor. Een klas van maximaal 10 kost $ 19 per maand, tot 25 kost $ 49."
           }
         ]
       },
@@ -809,7 +765,7 @@
         "label": "Proximity chat",
         "meta": {
           "title": "Gratis proximity videochat in de browser",
-          "description": "Proximity chat voor teams en vrienden: loop met je personage naar iemand toe om een gesprek te starten. Gratis, in de browser, zonder download."
+          "description": "Nabijheidschat voor remote teams: loop met je personage naar een teamgenoot om een gesprek te starten. Gratis voor kleine teams, in de browser, zonder download."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
         "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, doe mee aan een meeting om als groep te praten en loop verder als je klaar bent.",
@@ -842,17 +798,17 @@
           },
           {
             "q": "Is het gratis?",
-            "a": "Ja. De openbare lobby is gratis voor iedereen en een kantoor is gratis voor maximaal 3 mensen, in de browser op desktop en mobiel."
+            "a": "Ja, voor een kantoor tot 3 mensen, in de browser op desktop en mobiel."
           }
         ]
       }
     }
   },
   "lobby": {
-    "eyebrow": "Open voor iedereen",
-    "title": "De lobby",
-    "subtitle": "Iedereen mag binnenlopen. Zeg wie je bent, kies een personage en loop binnen.",
-    "peopleSubtitle": "Iedereen die nu in de lobby is. Wie de link heeft, kan binnenlopen.",
+    "eyebrow": "Probeer TinyFloor",
+    "title": "Het demokantoor",
+    "subtitle": "Loop rond in een echt TinyFloor-kantoor voordat je er een voor je team maakt. Kies een naam en een personage om te beginnen.",
+    "peopleSubtitle": "Iedereen die nu in het demokantoor is.",
     "door": "{here, plural, =0 {Nog niemand binnen, wees de eerste} one {# persoon nu binnen} other {# mensen nu binnen}}",
     "officesOnly": {
       "channels": {
@@ -889,8 +845,7 @@
         "channels": "Kanalen die blijven",
         "messages": "Privéberichten",
         "invites": "Uitnodigingslinks"
-      },
-      "bringThem": "{count, plural, one {Neem de persoon mee die je hier ontmoette} other {Neem de # mensen mee die je hier ontmoette}}"
+      }
     }
   },
   "office": {
@@ -931,7 +886,7 @@
       "saved": "Opgeslagen",
       "save": "Opslaan",
       "character": "Personage",
-      "characterNote": "Wie je bent als je binnenloopt, in de lobby en in elk kantoor.",
+      "characterNote": "Wie je bent als je binnenloopt, in elk kantoor.",
       "passwordTitle": "Wijzig je wachtwoord",
       "passwordDescription": "Vul je huidige wachtwoord in en kies daarna een nieuw.",
       "passwordChanged": "Je wachtwoord is gewijzigd.",
@@ -985,8 +940,8 @@
       "fullBody": "Alle plekken zijn bezet. Vraag wie de link stuurde om ruimte te maken of een groter abonnement te nemen."
     },
     "errors": {
-      "member_limit": "De werkruimte is vol met het huidige abonnement.",
-      "not_allowed": "Je rol in deze werkruimte mag dat niet.",
+      "member_limit": "Het kantoor is vol met het huidige abonnement.",
+      "not_allowed": "Je rol in dit kantoor mag dat niet.",
       "owner_cannot_leave": "De eigenaar moet het eigendom overdragen voordat die vertrekt.",
       "owner_role": "De rol van eigenaar verandert alleen door het eigendom over te dragen.",
       "bad_capacity": "Kies tussen 2 en 20 mensen.",
@@ -1086,7 +1041,7 @@
     "plus": "+{count}",
     "join": "Meedoen",
     "mainName": "Meeting van {office}",
-    "lobbyName": "Lobbyvergadering",
+    "lobbyName": "Demovergadering",
     "byName": "Meeting van {name}",
     "people": "{count, plural, one {# persoon} other {# personen}}",
     "invite": "Uitnodigen",
@@ -1147,7 +1102,7 @@
     "membersOf": "{used} van {seats} leden",
     "switchTo": "Je andere kantoren",
     "newOffice": "Nieuw kantoor",
-    "publicLobby": "Openbare lobby",
+    "publicLobby": "Demokantoor",
     "reply": "Beantwoorden",
     "backToFloor": "Terug naar de vloer",
     "onTheFloor": "Je bent op de vloer",
@@ -1155,7 +1110,7 @@
     "onFloorShort": "Op de vloer",
     "notOnFloor": "Niet op de vloer",
     "message": "Bericht",
-    "leaveLobby": "Lobby verlaten",
+    "leaveLobby": "Verlaat het demokantoor",
     "hereNow": "Nu hier",
     "settings": "Instellingen",
     "inCall": "In gesprek",
@@ -1181,7 +1136,7 @@
     "seats": "{used} van {seats} plekken",
     "manage": "Beheren",
     "seeAll": "Iedereen bekijken",
-    "lobbyNote": "Of loop de openbare lobby binnen en ontmoet mensen",
+    "lobbyNote": "Of probeer eerst het demokantoor",
     "anotherOffice": "Nog een team? Maak een nieuw kantoor",
     "welcome": "Welkom, {name}",
     "welcomeAnonymous": "Welkom",
@@ -1193,7 +1148,7 @@
     "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
     "makeTitle": "Laten we je kantoor maken",
     "otherWays": "Andere manieren om binnen te komen",
-    "lobbyBody": "Loop binnen en ontmoet mensen.",
+    "lobbyBody": "Loop rond en zie hoe een kantoor werkt.",
     "yourAccount": "Je account",
     "createOffice": "Maak je kantoor"
   },
@@ -1202,7 +1157,7 @@
       "features": "Functies",
       "pricing": "Prijzen",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Inloggen",
       "start": "Maak je kantoor",
       "main": "Hoofdnavigatie",
@@ -1213,23 +1168,22 @@
         "people": "Aanwezigheid",
         "invites": "Uitnodigingen"
       },
-      "lobbyTitle": "De lobby is open",
+      "lobbyTitle": "Probeer het demokantoor",
       "menu": "Menu",
       "teams": "Voor teams",
       "cases": {
         "virtualOffice": "Een plek voor je remote team",
-        "virtualCoworking": "Geconcentreerd werken naast anderen",
-        "onlineStudyRoom": "Samen studeren met vrienden",
+        "virtualCoworking": "Gefocust werken met je team",
         "virtualClassroom": "Spreekuren en kleine klassen",
         "proximityChat": "Praat met wie je tegenkomt"
       },
       "getStarted": "Aan de slag",
-      "lobbyLine": "Loop rond op een echte vloer. Geen account nodig."
+      "lobbyLine": "Zie hoe een kantoor werkt. Geen account nodig."
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
       "body": "Voor remote teams die het zij-aan-zij werken missen. Zie wie er is, loop langs met een snelle vraag en stap de vergaderruimte in als het tijd is om te vergaderen, zonder ook maar één gesprek in te plannen.",
-      "secondary": "Loop de lobby in",
+      "secondary": "Probeer het demokantoor",
       "previewLabel": "Een kijkje in TinyFloor",
       "tabs": {
         "floor": "Vloer",
@@ -1242,7 +1196,7 @@
         "Niets te installeren",
         "Draait op Cloudflare"
       ],
-      "lobbyCta": "Loop binnen",
+      "lobbyCta": "Probeer de demo",
       "noAccount": "Geen account nodig"
     },
     "features": {
@@ -1355,7 +1309,7 @@
       "compare": "Vergelijken",
       "resources": "Hulpbronnen",
       "makeOffice": "Maak een kantoor",
-      "lobby": "Openbare lobby",
+      "lobby": "Demokantoor",
       "signIn": "Inloggen",
       "dashboard": "Je kantoren",
       "faq": "FAQ",
@@ -1397,7 +1351,7 @@
       "features": "Functies",
       "pricing": "Prijzen",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Inloggen",
       "getStarted": "Aan de slag",
       "menu": "Menu",
@@ -1408,7 +1362,7 @@
       "muted": "op één verdieping.",
       "body": "Een klein virtueel kantoor in de browser. Zie wie er is, loop langs om te praten en ga weer aan het werk. Niets te plannen, niets te installeren.",
       "cta": "Maak je kantoor",
-      "lobby": "Loop de lobby in",
+      "lobby": "Probeer het demokantoor",
       "note": "Gratis voor maximaal 3 mensen · Geen creditcard nodig",
       "film": "TinyFloor: er komt een bericht binnen, de chat opent, daarna een gesprek met de collega naast je"
     },
@@ -1488,7 +1442,7 @@
     "faq": {
       "title": "Vragen,",
       "muted": "beantwoord.",
-      "more": "Twijfel je nog? <lobby>Loop de lobby in</lobby> en zie het zelf."
+      "more": "Nog twijfels? <lobby>Probeer het demokantoor</lobby> en zie het zelf."
     },
     "closing": {
       "title": "Geef je team",

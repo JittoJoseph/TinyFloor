@@ -216,9 +216,9 @@ describe("lobby chat", () => {
     const other = await ChatClient.open(LOBBY_CHAT, { id: `guest-${sequence++}`, name: "Tomas" }, "guest");
     await other.next("chat_ready");
     const text = `hello lobby ${sequence++}`;
-    guest.send({ t: "chat_send", channel: "introductions", body: text });
+    guest.send({ t: "chat_send", channel: "feedback", body: text });
     const seen = await other.next("chat_new");
-    expect(seen.message).toMatchObject({ channel: "introductions", authorName: "Mara", body: text });
+    expect(seen.message).toMatchObject({ channel: "feedback", authorName: "Mara", body: text });
   });
 
   it("keeps what an office adds for offices: no channels, no images, no other channel names", async () => {

@@ -3,7 +3,7 @@
     "title": "TinyFloor – Ein virtuelles Büro zum Herumlaufen",
     "description": "TinyFloor ist ein kostenloses virtuelles Büro im Browser. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
     "ogAlt": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern",
-    "keywords": "virtuelles Büro, Remote-Arbeit, räumlicher Chat, Online-Zusammenarbeit, virtueller Arbeitsplatz, Metaverse-Büro, Proximity-Chat, Proximity-Videochat, virtueller Coworking-Space, Videoanrufe im Browser",
+    "keywords": "virtuelles Büro, Remote-Arbeit, räumlicher Chat, Online-Zusammenarbeit, virtueller Arbeitsplatz, Proximity-Chat, Proximity-Videochat, virtueller Coworking-Space, Videoanrufe im Browser",
     "joinTitle": "Raum betreten",
     "joinRoomTitle": "{office} beitreten",
     "joinRoomDescription": "Du bist in {office} auf TinyFloor eingeladen, einem virtuellen Büro zum Herumlaufen. Öffne den Link, wähle eine Figur und komm rein.",
@@ -12,8 +12,8 @@
     "createTitle": "Büro einrichten",
     "dashboardTitle": "Dashboard",
     "notFoundTitle": "Seite nicht gefunden",
-    "lobbyTitle": "Die Lobby",
-    "lobbyDescription": "Betritt die kostenlose öffentliche Lobby von TinyFloor als Gast. Such dir eine Figur aus, triff Leute und probiere Videoanrufe per Nähe direkt im Browser.",
+    "lobbyTitle": "Das Demo-Büro",
+    "lobbyDescription": "Probiere das Demo-Büro von TinyFloor im Browser aus. Wähle eine Figur, lauf herum und teste einen Nähe-Anruf, bevor du ein Büro für dein Team erstellst.",
     "inviteTitle": "Tritt {office} auf TinyFloor bei",
     "inviteFallbackTitle": "Du bist zu TinyFloor eingeladen",
     "inviteDescription": "Tritt {office} auf TinyFloor bei, einem virtuellen Büro zum Herumlaufen."
@@ -29,8 +29,8 @@
     "unknown": "Unbekannt",
     "dashboard": "Dashboard",
     "signOut": "Abmelden",
-    "visitLobby": "Lobby besuchen",
-    "lobby": "Lobby",
+    "visitLobby": "Demo-Büro ausprobieren",
+    "lobby": "Demo-Büro",
     "signIn": "Anmelden",
     "account": "Konto",
     "createOffice": "Büro erstellen",
@@ -43,7 +43,7 @@
     "noResults": "Keine Sprachen gefunden"
   },
   "landing": {
-    "description": "Ein virtuelles Büro, das aussieht wie ein Spiel. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
+    "description": "Ein virtuelles Büro für Remote-Teams, direkt im Browser. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
     "features": [
       "Video- und Sprachanrufe in der Nähe",
       "Bildschirmfreigabe in Anrufen und Meetings",
@@ -66,15 +66,15 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen mit 5 Meeting-Stunden im Monat. Größere Büros kosten $19 im Monat für 10 Personen und 30 Meeting-Stunden oder $49 für 25 Personen und 60 Stunden."
+        "a": "Ja, für ein Büro mit bis zu 3 Personen und 5 Meeting-Stunden im Monat. Größere Büros kosten $19 im Monat für 10 Personen und 30 Meeting-Stunden oder $49 für 25 Personen und 60 Stunden."
       },
       {
         "q": "Muss ich etwas installieren?",
-        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Mobilgeräten. Öffne einen Raumlink und du bist im Büro."
+        "a": "Nein. TinyFloor läuft im Browser auf Desktop und Handy. Öffne den Link deines Büros, und du bist drin."
       },
       {
-        "q": "Brauche ich ein Konto, um einem Raum beizutreten?",
-        "a": "Nicht für die öffentliche Lobby: Dort kann jeder mit nur einem Namen als Gast hereinkommen. Ein Büro ist privat: Teammitglieder kommen über eine Einladung dazu, mit einem kostenlosen Konto."
+        "q": "Brauche ich ein Konto, um einem Büro beizutreten?",
+        "a": "Ja, ein kostenloses. Ein Büro ist privat: Teammitglieder kommen über seinen Einladungslink und melden sich mit Google oder E-Mail an. Um dich erst umzusehen, braucht das Demo-Büro nur einen Namen."
       },
       {
         "q": "Ist TinyFloor privat und sicher?",
@@ -110,7 +110,7 @@
     "createOne": "Konto erstellen",
     "haveAccount": "Du hast schon ein Konto?",
     "signInInstead": "Stattdessen anmelden",
-    "continueGuest": "Nur mal schauen? Besuche die Lobby als Gast",
+    "continueGuest": "Nur mal schauen? Probier das Demo-Büro aus",
     "errors": {
       "wrong_credentials": "E-Mail und Passwort passen nicht zusammen. Versuch es noch einmal.",
       "too_many_attempts": "Zu viele Versuche. Warte ein paar Minuten und versuch es dann erneut.",
@@ -283,15 +283,12 @@
     "walkOver": "Hingehen",
     "lobbyAlone": "Noch ist niemand sonst hier. Sobald jemand hereinkommt, kannst du ihm hier schreiben, nur zwischen euch beiden.",
     "dropHere": "Ablegen, um in {channel} zu teilen",
-    "dropLobby": "Bilder teilst du in Büros, nicht in der Lobby.",
-    "lobbyGeneral": "Sag Hallo, stell eine Frage oder erzähl, woran du arbeitest. Nachrichten bleiben eine Woche hier.",
-    "lobbyIntroductions": "Wer bist du, und was führt dich her? Alle in der Lobby können es 7 Tage lang lesen.",
+    "dropLobby": "Bilder kannst du in deinem eigenen Büro teilen, nicht hier.",
+    "lobbyGeneral": "Stell eine Frage zu TinyFloor oder probier den Chat aus. Nachrichten bleiben eine Woche lang hier.",
     "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
-    "introduceYourself": "Stell dich vor",
-    "starterIntro": "Hallo, ich bin neu hier 👋",
-    "lobbyDmIntro": "Nur zwischen euch beiden und nie gespeichert: Es verschwindet, sobald einer von euch die Lobby verlässt.",
-    "notHere": "Die Person hat die Lobby verlassen, daher wurde das nicht gesendet.",
-    "gone": "{name} hat die Lobby verlassen, und dieses Gespräch ist mitgegangen.",
+    "lobbyDmIntro": "Nur zwischen euch beiden und nie gespeichert: Es verschwindet, sobald einer von euch das Demo-Büro verlässt.",
+    "notHere": "Die Person hat das Demo-Büro verlassen, daher wurde das nicht gesendet.",
+    "gone": "{name} hat das Demo-Büro verlassen, und dieses Gespräch ist mitgegangen.",
     "edited": "bearbeitet",
     "edit": "Bearbeiten",
     "delete": "Zurückziehen",
@@ -388,11 +385,11 @@
   "notFound": {
     "title": "Dieser Raum ist nicht auf der Karte.",
     "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
-    "home": "Zurück zur Lobby"
+    "home": "Zurück zur Startseite"
   },
   "landings": {
-    "create": "Raum erstellen",
-    "free": "Kostenlos, im Browser, ohne Konto.",
+    "create": "Büro einrichten",
+    "free": "Kostenlos für bis zu 3 Personen · Keine Karte nötig",
     "compare": "Vergleiche",
     "useCases": "Einsatzbereiche",
     "compareTitle": "TinyFloor und {name} <em>im Vergleich.</em>",
@@ -423,7 +420,7 @@
         "points": [
           {
             "title": "Keine Testphase, die abläuft",
-            "body": "Bei Gather hast du 30 Tage, bevor du zahlst. TinyFloor hat keine Testphase, weil es nichts gibt, auf das du upgraden müsstest."
+            "body": "Bei Gather hast du 30 Tage, bevor du zahlst. Der kostenlose Plan von TinyFloor endet nie: bis zu 3 Personen, so lange du willst."
           },
           {
             "title": "Nichts zu installieren",
@@ -451,11 +448,11 @@
           },
           {
             "q": "Kann ich mein Team von Gather zu TinyFloor holen?",
-            "a": "Ja. Erstelle einen Workspace, lade dein Team mit einem Link ein, und alle kommen herein. Es gibt keine Daten zu übertragen und nichts zu installieren."
+            "a": "Ja. Erstelle ein Büro, lade dein Team mit einem Link ein, und alle kommen rein. Es gibt keine Daten zu migrieren und nichts zu installieren."
           },
           {
-            "q": "Wie viele Personen passen in einen TinyFloor-Raum?",
-            "a": "Ein Raum fasst bis zu 20 Personen gleichzeitig, und du kannst so viele Räume öffnen, wie du brauchst."
+            "q": "Wie viele Personen passen in ein TinyFloor-Büro?",
+            "a": "Bis zu 3 Personen mit Free, 10 mit Plus und 25 mit Pro, und du kannst so viele Büros erstellen, wie du brauchst."
           }
         ]
       },
@@ -470,11 +467,11 @@
         "points": [
           {
             "title": "Keine Grenze von 5 Mitgliedern",
-            "body": "Lade alle ein. Räume fassen 20 Personen gleichzeitig, und du kannst jederzeit weitere Räume öffnen."
+            "body": "Lade dein ganzes Team ein: bis zu 10 Personen mit Plus und 25 mit Pro, zu einem Preis pro Büro, nicht pro Person."
           },
           {
             "title": "Erst ausprobieren, dann anmelden",
-            "body": "Geh mit nur einem Namen in die öffentliche Lobby von TinyFloor und probier die Etage aus, bevor du ein Büro anlegst."
+            "body": "Probiere das Demo-Büro von TinyFloor nur mit einem Namen aus und sieh dich um, bevor du dein eigenes erstellst."
           },
           {
             "title": "Auch fürs Handy gemacht",
@@ -498,7 +495,7 @@
           },
           {
             "q": "Brauchen meine Teammitglieder ein Konto?",
-            "a": "Ja, ein kostenloses, damit dein Büro nur für dein Team ist. Wer sich erst umsehen will, kommt mit nur einem Namen in die öffentliche Lobby."
+            "a": "Ja, ein kostenloses, damit dein Büro nur für dein Team ist. Um dich erst umzusehen, probier das Demo-Büro nur mit einem Namen aus."
           },
           {
             "q": "Funktioniert TinyFloor auf dem Handy?",
@@ -521,7 +518,7 @@
           },
           {
             "title": "Ein Büro, kein Event",
-            "body": "Räume enden nicht mit einem Meeting. Derselbe Link funktioniert morgen noch, und Leute schauen vorbei, wenn sie Zeit haben."
+            "body": "Das Büro bleibt offen, wenn ein Meeting endet. Dein Team kommt morgen auf dieselbe Etage zurück."
           },
           {
             "title": "Hingehen und reden",
@@ -541,7 +538,7 @@
           },
           {
             "q": "Eignet sich TinyFloor für virtuelle Events?",
-            "a": "TinyFloor ist für Gruppen gemacht, die sich jeden Tag treffen. Räume fassen 20 Personen gleichzeitig, deshalb passt es eher zu Teambüros, Lerngruppen und kleinen Treffen als zu großen Events."
+            "a": "TinyFloor ist für Teams gemacht, die jeden Tag zusammenarbeiten. Ein Büro fasst bis zu 25 Personen, es passt also eher zu kleinen Teams als zu großen Events."
           },
           {
             "q": "Was hat SpatialChat, was TinyFloor nicht hat?",
@@ -556,7 +553,7 @@
       "workadventure": {
         "label": "WorkAdventure-Alternative",
         "meta": {
-          "title": "WorkAdventure-Alternative mit Räumen für 20",
+          "title": "WorkAdventure-Alternative für Teams bis 25 Personen",
           "description": "Der kostenlose Tarif von WorkAdventure erlaubt 10 Personen gleichzeitig. TinyFloor ist ein virtuelles Pixel-Art-Büro mit Videoanrufen in der Nähe, kostenlos für 3 Personen und 19 $ im Monat für 10."
         },
         "title": "Eine <em>WorkAdventure-Alternative</em> mit Platz zum Wachsen.",
@@ -568,7 +565,7 @@
           },
           {
             "title": "Keine Karte zu bauen",
-            "body": "Jeder Raum hat eine Büroetage, einen Besprechungsraum, ein Whiteboard und einen Lautsprecher. Raum erstellen und reingehen."
+            "body": "Jedes Büro hat eine Etage, einen Meetingraum, ein Whiteboard und einen Lautsprecher. Erstelle ein Büro und geh hinein."
           },
           {
             "title": "Nichts zu hosten",
@@ -588,11 +585,11 @@
           },
           {
             "q": "Kann ich die Karte in TinyFloor anpassen?",
-            "a": "Noch nicht. Jeder Raum nutzt dieselbe Büroetage. Bei WorkAdventure kannst du eigene Karten gestalten, was zu Teams passt, die eine eigene Welt wollen."
+            "a": "Noch nicht. Jedes Büro nutzt dieselbe Etage. Bei WorkAdventure kannst du eigene Karten gestalten, das passt zu Teams, die eine eigene Welt wollen."
           },
           {
             "q": "Muss ich einen Server betreiben?",
-            "a": "Nein. TinyFloor wird für dich betrieben. Erstelle einen Workspace im Browser und lade dein Team ein."
+            "a": "Nein. TinyFloor wird für dich gehostet. Erstelle ein Büro im Browser und lade dein Team ein."
           },
           {
             "q": "Wie starten Anrufe in TinyFloor?",
@@ -604,7 +601,7 @@
         "label": "Wonder-Alternative",
         "meta": {
           "title": "Wonder.me-Alternative: hingehen und reden",
-          "description": "Wonder.me wurde 2023 eingestellt. TinyFloor ist ein kostenloser Ort im Browser, an dem du eine Figur bewegst und einen Videoanruf startest, indem du zu anderen gehst."
+          "description": "Wonder.me wurde 2023 eingestellt. TinyFloor ist ein virtuelles Büro für Remote-Teams, in dem du eine Figur bewegst und einen Videoanruf startest, indem du zu einer Kollegin oder einem Kollegen gehst."
         },
         "title": "Du vermisst <em>Wonder?</em>",
         "subtitle": "Wonder.me wurde im April 2023 eingestellt. TinyFloor behält, was es ausgemacht hat, herumlaufen und mit denen reden, zu denen du gehst, auf einer Pixel-Art-Büroetage.",
@@ -615,11 +612,11 @@
           },
           {
             "title": "Weiter im Browser",
-            "body": "Einladungslink öffnen, Figur wählen, und du bist drin. Für die öffentliche Lobby brauchst du gar kein Konto."
+            "body": "Öffne den Einladungslink deines Büros, wähle eine Figur, und du bist drin. Um dich erst umzusehen, braucht das Demo-Büro kein Konto."
           },
           {
-            "title": "Kostenlos und den ganzen Tag offen",
-            "body": "Keine Tarife und keine Zeitlimits. Lass einen Raum für ein Team, eine Klasse oder ein regelmäßiges Treffen offen."
+            "title": "Den ganzen Tag offen",
+            "body": "In keinem Plan gibt es ein Zeitlimit, auch nicht im kostenlosen. Lass dein Büro offen, solange dein Team arbeitet."
           }
         ],
         "faq": [
@@ -629,15 +626,15 @@
           },
           {
             "q": "Wie unterscheidet sich TinyFloor von Wonder?",
-            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Besprechungsraum, einem Whiteboard und Musik, gemacht für Gruppen, die sich regelmäßig treffen."
+            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Meetingraum, einem Whiteboard und Musik, gemacht für Teams, die jeden Tag zusammenarbeiten."
           },
           {
             "q": "Wie viele Personen können beitreten?",
-            "a": "Ein Raum fasst bis zu 20 Personen gleichzeitig, und du kannst so viele Räume öffnen, wie du brauchst."
+            "a": "Bis zu 3 Personen mit Free, 10 mit Plus und 25 mit Pro, und du kannst so viele Büros erstellen, wie du brauchst."
           },
           {
             "q": "Ist TinyFloor kostenlos?",
-            "a": "Ja, für ein Büro mit bis zu 3 Personen, und die öffentliche Lobby ist für alle kostenlos. Herumlaufen, chatten und telefonieren sind in jedem Tarif enthalten."
+            "a": "Ja, für ein Büro mit bis zu 3 Personen. Herumlaufen, Chatten und Anrufen sind in jedem Plan enthalten."
           }
         ]
       },
@@ -674,7 +671,7 @@
           },
           {
             "q": "Wie viele Personen können ein Büro nutzen?",
-            "a": "Ein Raum fasst bis zu 20 Personen gleichzeitig. Größere Teams können für jedes Team einen Raum öffnen."
+            "a": "Bis zu 3 Personen mit Free, 10 mit Plus und 25 mit Pro. Größere Firmen können für jedes Team ein eigenes Büro erstellen."
           },
           {
             "q": "Ersetzt es Videoanrufe?",
@@ -685,19 +682,19 @@
       "virtualCoworking": {
         "label": "Virtuelles Coworking",
         "meta": {
-          "title": "Kostenloser virtueller Coworking-Space online",
-          "description": "Arbeite online mit Freunden oder Fremden in einem kostenlosen Pixel-Art-Büro. Arbeitet nebeneinander, macht zusammen Pause und redet, wenn ihr wollt."
+          "title": "Virtueller Coworking-Space für Remote-Teams",
+          "description": "Ein virtueller Coworking-Space für dein Remote-Team. Arbeitet Seite an Seite auf einer Pixel-Art-Etage, seht, wer da ist, und redet, wenn ihr es braucht. Kostenlos für bis zu 3 Personen."
         },
-        "title": "<em>Virtuelles Coworking</em>, das sich wie ein geteilter Schreibtisch anfühlt.",
-        "subtitle": "Allein arbeitet es sich leichter, wenn andere da sind. Setz dich in ein gemeinsames Büro, mach deine Arbeit und geh zu jemandem, wenn du eine Pause brauchst.",
+        "title": "<em>Virtuelles Coworking</em> für dein Remote-Team.",
+        "subtitle": "Im Homeoffice arbeitet es sich leichter, wenn dein Team in der Nähe ist. Teilt euch eine Büroetage, macht eure Arbeit und geht rüber, wenn ihr jemanden braucht.",
         "points": [
           {
             "title": "Gesellschaft ohne Anrufe",
-            "body": "Du siehst andere arbeiten, ohne vor der Kamera zu sein. Anrufe starten erst, wenn jemand herkommt."
+            "body": "Sieh deine Kolleginnen und Kollegen arbeiten, ohne vor der Kamera zu sitzen. Ein Anruf startet erst, wenn jemand rüberkommt."
           },
           {
-            "title": "Ein offener Raum, jederzeit",
-            "body": "Das öffentliche Büro ist immer offen. Oder erstelle einen Workspace für deine eigene Coworking-Gruppe und lade sie ein."
+            "title": "Die eigene Etage deines Teams",
+            "body": "Ein Büro gehört nur deinem Team. Lade alle mit einem Link ein, und es ist offen, wann immer sie da sind."
           },
           {
             "title": "Status setzen",
@@ -707,60 +704,19 @@
         "faq": [
           {
             "q": "Was ist virtuelles Coworking?",
-            "a": "Virtuelles Coworking heißt, online neben anderen zu arbeiten, damit es sich weniger einsam anfühlt. Vielen fällt es leichter, sich zu konzentrieren, wenn andere in der Nähe arbeiten."
+            "a": "Virtuelles Coworking heißt, online neben deinem Team zu arbeiten, damit sich Remote-Arbeit weniger isoliert anfühlt. Vielen fällt das Konzentrieren leichter, wenn Kolleginnen und Kollegen in der Nähe arbeiten."
           },
           {
             "q": "Muss ich vor der Kamera sein?",
             "a": "Nein. Kamera und Mikrofon bleiben aus, bis du einem Anruf beitrittst."
           },
           {
-            "q": "Kann ich mit Fremden coworken?",
-            "a": "Ja. Das öffentliche Büro ist für alle offen. Für eine private Gruppe erstellst du einen Workspace: Seine Räume sind nur für die Leute offen, die du einlädst."
+            "q": "Wer kann unser Büro betreten?",
+            "a": "Nur dein Team. Ein Büro ist privat: Man tritt über seinen Einladungslink mit einem Konto bei, und Admins können jeden entfernen."
           },
           {
             "q": "Gibt es ein Zeitlimit?",
             "a": "Nein. Bleib, so lange du willst."
-          }
-        ]
-      },
-      "onlineStudyRoom": {
-        "label": "Online-Lernraum",
-        "meta": {
-          "title": "Kostenloser Online-Lernraum für Lerngruppen",
-          "description": "Lern mit Freunden in einem kostenlosen Online-Lernraum. Sitzt zusammen in einem Pixel-Art-Raum, konzentriert euch und redet, wenn ihr eine Pause braucht."
-        },
-        "title": "Ein <em>Online-Lernraum</em> für dich und deine Freunde.",
-        "subtitle": "Erstelle einen Raum für deine Lerngruppe, teile einen Link und sitzt zusammen, während ihr arbeitet. Besprecht ein Problem im Meetingraum und macht dann weiter.",
-        "points": [
-          {
-            "title": "Standardmäßig ruhig",
-            "body": "Niemand hört dich, bis du einen Anruf startest, also bleibt der Raum konzentriert."
-          },
-          {
-            "title": "Ein Tisch für Gruppenarbeit",
-            "body": "Tritt einem Meeting bei, um als Gruppe zu reden, und geh aus dem Meetingraum, um allein weiterzulernen."
-          },
-          {
-            "title": "Ein Whiteboard für Aufgaben",
-            "body": "Geh zum Whiteboard, um eine Idee zu skizzieren oder gemeinsam eine Aufgabe zu lösen."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Wie erstelle ich einen Lernraum?",
-            "a": "Erstelle einen Workspace, füge einen Raum hinzu und lade deine Freunde mit einem Link ein. Nur wer eingeladen ist, kommt herein."
-          },
-          {
-            "q": "Ist es für Studierende kostenlos?",
-            "a": "Ja. TinyFloor ist für eine kleine Gruppe kostenlos. Schick deinen Freunden einen Einladungslink, und sie kommen mit einem kostenlosen Konto dazu."
-          },
-          {
-            "q": "Können wir beim Lernen Musik hören?",
-            "a": "Ja. Geh zum Lautsprecher im Raum, um Musik abzuspielen, die alle im Raum hören."
-          },
-          {
-            "q": "Funktioniert es auf dem Handy?",
-            "a": "Ja. Es läuft im mobilen Browser mit einem Joystick auf dem Bildschirm."
           }
         ]
       },
@@ -789,11 +745,11 @@
         "faq": [
           {
             "q": "Wie viele Lernende können beitreten?",
-            "a": "Ein Raum fasst bis zu 20 Personen gleichzeitig, das passt zu kleinen Kursen, Nachhilfegruppen und Sprechstunden."
+            "a": "Ein Büro fasst mit Pro bis zu 25 Personen, das passt zu kleinen Kursen, Nachhilfegruppen und Sprechstunden."
           },
           {
             "q": "Brauchen Lernende ein Konto?",
-            "a": "Nein. Sie treten über einen Link nur mit einem Namen bei."
+            "a": "Ja, ein kostenloses. Schülerinnen und Schüler kommen über den Einladungslink der Klasse und melden sich mit Google oder E-Mail an."
           },
           {
             "q": "Kann ich das Klassenzimmer privat halten?",
@@ -801,7 +757,7 @@
           },
           {
             "q": "Ist es für Lehrkräfte kostenlos?",
-            "a": "Ja, für bis zu 3 Personen pro Büro, und die öffentliche Lobby ist für alle kostenlos. Eine Klasse mit bis zu 25 kostet 49 $ im Monat."
+            "a": "Ja, für bis zu 3 Personen pro Büro. Eine Klasse mit bis zu 10 kostet 19 $ im Monat, mit bis zu 25 kostet sie 49 $."
           }
         ]
       },
@@ -809,7 +765,7 @@
         "label": "Proximity-Chat",
         "meta": {
           "title": "Kostenloser Proximity-Videochat im Browser",
-          "description": "Proximity-Chat für Teams und Freunde: Geh mit deiner Figur zu jemandem, um einen Anruf zu starten. Kostenlos, im Browser, ohne Download."
+          "description": "Proximity-Chat für Remote-Teams: Geh mit deiner Figur zu einer Kollegin oder einem Kollegen, um einen Anruf zu starten. Kostenlos für kleine Teams, im Browser, ohne Download."
         },
         "title": "<em>Proximity-Chat</em>, der beginnt, wenn du hingehst.",
         "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh auf jemanden zu, um anzurufen, tritt einem Meeting bei, um als Gruppe zu reden, und geh weiter, wenn ihr fertig seid.",
@@ -842,17 +798,17 @@
           },
           {
             "q": "Ist es kostenlos?",
-            "a": "Ja. Die öffentliche Lobby ist für alle kostenlos und ein Büro für bis zu 3 Personen auch, im Browser am Computer und auf dem Handy."
+            "a": "Ja, für ein Büro mit bis zu 3 Personen, im Browser auf Desktop und Handy."
           }
         ]
       }
     }
   },
   "lobby": {
-    "eyebrow": "Offen für alle",
-    "title": "Die Lobby",
-    "subtitle": "Jeder kann vorbeischauen. Sag, wer du bist, wähle einen Charakter und komm rein.",
-    "peopleSubtitle": "Alle, die gerade in der Lobby sind. Wer den Link hat, kann hereinkommen.",
+    "eyebrow": "TinyFloor ausprobieren",
+    "title": "Das Demo-Büro",
+    "subtitle": "Lauf durch ein echtes TinyFloor-Büro, bevor du eins für dein Team erstellst. Wähle einen Namen und eine Figur, um loszulegen.",
+    "peopleSubtitle": "Alle, die gerade im Demo-Büro sind.",
     "door": "{here, plural, =0 {Noch niemand drin – sei als Erstes da} one {# Person gerade drin} other {# Personen gerade drin}}",
     "officesOnly": {
       "channels": {
@@ -889,8 +845,7 @@
         "channels": "Kanäle, die bleiben",
         "messages": "Direktnachrichten",
         "invites": "Einladungslinks"
-      },
-      "bringThem": "{count, plural, one {Nimm die Person mit, die du hier getroffen hast} other {Nimm die # Personen mit, die du hier getroffen hast}}"
+      }
     }
   },
   "office": {
@@ -931,7 +886,7 @@
       "saved": "Gespeichert",
       "save": "Speichern",
       "character": "Figur",
-      "characterNote": "So trittst du auf, in der Lobby und in jedem Büro.",
+      "characterNote": "So trittst du auf, in jedem Büro.",
       "passwordTitle": "Passwort ändern",
       "passwordDescription": "Gib dein aktuelles Passwort ein und wähle dann ein neues.",
       "passwordChanged": "Dein Passwort wurde geändert.",
@@ -985,8 +940,8 @@
       "fullBody": "Alle Plätze sind belegt. Bitte die Person, die dir den Link geschickt hat, Platz zu machen oder einen größeren Tarif zu wählen."
     },
     "errors": {
-      "member_limit": "Der Workspace ist in seinem aktuellen Plan voll.",
-      "not_allowed": "Deine Rolle in diesem Workspace darf das nicht.",
+      "member_limit": "Das Büro ist in seinem aktuellen Plan voll.",
+      "not_allowed": "Deine Rolle in diesem Büro darf das nicht.",
       "owner_cannot_leave": "Die Inhaberschaft muss vor dem Verlassen übertragen werden.",
       "owner_role": "Die Rolle der Inhaberperson ändert sich nur durch Übertragen der Inhaberschaft.",
       "bad_capacity": "Wähle zwischen 2 und 20 Personen.",
@@ -1086,7 +1041,7 @@
     "plus": "+{count}",
     "join": "Beitreten",
     "mainName": "Meeting von {office}",
-    "lobbyName": "Lobby-Meeting",
+    "lobbyName": "Demo-Meeting",
     "byName": "Meeting von {name}",
     "people": "{count, plural, one {# Person} other {# Personen}}",
     "invite": "Einladen",
@@ -1147,7 +1102,7 @@
     "membersOf": "{used} von {seats} Mitgliedern",
     "switchTo": "Deine anderen Büros",
     "newOffice": "Neues Büro",
-    "publicLobby": "Öffentliche Lobby",
+    "publicLobby": "Demo-Büro",
     "reply": "Antworten",
     "backToFloor": "Zurück auf die Fläche",
     "onTheFloor": "Du bist auf der Fläche",
@@ -1155,7 +1110,7 @@
     "onFloorShort": "Auf der Fläche",
     "notOnFloor": "Nicht auf der Fläche",
     "message": "Nachricht",
-    "leaveLobby": "Lobby verlassen",
+    "leaveLobby": "Demo-Büro verlassen",
     "hereNow": "Gerade hier",
     "settings": "Einstellungen",
     "inCall": "Im Anruf",
@@ -1181,7 +1136,7 @@
     "seats": "{used} von {seats} Plätzen",
     "manage": "Verwalten",
     "seeAll": "Alle ansehen",
-    "lobbyNote": "Oder schau in der öffentlichen Lobby vorbei und lerne Leute kennen",
+    "lobbyNote": "Oder probier zuerst das Demo-Büro aus",
     "anotherOffice": "Noch ein Team? Neues Büro einrichten",
     "welcome": "Willkommen, {name}",
     "welcomeAnonymous": "Willkommen",
@@ -1193,7 +1148,7 @@
     "badLink": "Das sieht nicht nach einem Einladungslink aus. Füge den ganzen Link ein.",
     "makeTitle": "Lass uns dein Büro einrichten",
     "otherWays": "Andere Wege hinein",
-    "lobbyBody": "Schau vorbei und triff Leute.",
+    "lobbyBody": "Lauf herum und sieh, wie ein Büro funktioniert.",
     "yourAccount": "Dein Konto",
     "createOffice": "Erstelle dein Büro"
   },
@@ -1202,7 +1157,7 @@
       "features": "Funktionen",
       "pricing": "Preise",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Anmelden",
       "start": "Büro einrichten",
       "main": "Hauptnavigation",
@@ -1213,23 +1168,22 @@
         "people": "Anwesenheit",
         "invites": "Einladungen"
       },
-      "lobbyTitle": "Die Lobby ist offen",
+      "lobbyTitle": "Demo-Büro ausprobieren",
       "menu": "Menü",
       "teams": "Für Teams",
       "cases": {
         "virtualOffice": "Ein Ort für dein Remote-Team",
-        "virtualCoworking": "Neben anderen konzentriert arbeiten",
-        "onlineStudyRoom": "Gemeinsam mit Freunden lernen",
+        "virtualCoworking": "Konzentriert arbeiten, mit deinem Team",
         "virtualClassroom": "Sprechstunden und kleine Kurse",
         "proximityChat": "Sprich mit dem, zu dem du gehst"
       },
       "getStarted": "Loslegen",
-      "lobbyLine": "Lauf über eine echte Etage. Ohne Konto."
+      "lobbyLine": "Sieh dir an, wie ein Büro funktioniert. Kein Konto nötig."
     },
     "hero": {
       "title": "Ein virtuelles Büro, durch das dein Team laufen kann.",
       "body": "Für Remote-Teams, die das Arbeiten Seite an Seite vermissen. Sieh, wer da ist, schau für eine kurze Frage vorbei und geh in den Meetingraum, wenn es Zeit für ein Meeting ist, ohne einen einzigen Termin zu planen.",
-      "secondary": "In die Lobby gehen",
+      "secondary": "Demo-Büro ausprobieren",
       "previewLabel": "Ein Blick in TinyFloor",
       "tabs": {
         "floor": "Fläche",
@@ -1242,7 +1196,7 @@
         "Nichts zu installieren",
         "Läuft auf Cloudflare"
       ],
-      "lobbyCta": "Reingehen",
+      "lobbyCta": "Demo ausprobieren",
       "noAccount": "Kein Konto nötig"
     },
     "features": {
@@ -1355,7 +1309,7 @@
       "compare": "Vergleiche",
       "resources": "Ressourcen",
       "makeOffice": "Büro einrichten",
-      "lobby": "Öffentliche Lobby",
+      "lobby": "Demo-Büro",
       "signIn": "Anmelden",
       "dashboard": "Deine Büros",
       "faq": "FAQ",
@@ -1397,7 +1351,7 @@
       "features": "Funktionen",
       "pricing": "Preise",
       "faq": "FAQ",
-      "lobby": "Lobby",
+      "lobby": "Demo",
       "signIn": "Anmelden",
       "getStarted": "Loslegen",
       "menu": "Menü",
@@ -1408,7 +1362,7 @@
       "muted": "auf einer Etage.",
       "body": "Ein kleines virtuelles Büro im Browser. Sieh, wer da ist, geh rüber zum Reden und arbeite weiter. Nichts zu planen, nichts zu installieren.",
       "cta": "Büro erstellen",
-      "lobby": "Lobby betreten",
+      "lobby": "Demo-Büro ausprobieren",
       "note": "Kostenlos für bis zu 3 Personen · Keine Karte nötig",
       "film": "TinyFloor: Eine Nachricht kommt an, der Chat öffnet sich, dann ein Anruf mit der Kollegin nebenan"
     },
@@ -1488,7 +1442,7 @@
     "faq": {
       "title": "Fragen,",
       "muted": "beantwortet.",
-      "more": "Noch unsicher? <lobby>Betritt die Lobby</lobby> und sieh selbst."
+      "more": "Noch unsicher? <lobby>Probier das Demo-Büro aus</lobby> und sieh selbst."
     },
     "closing": {
       "title": "Gib deinem Team",

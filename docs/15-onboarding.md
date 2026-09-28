@@ -28,6 +28,24 @@ Plus below Pro is the order people already know (ChatGPT, Google, Apple).
 ids changed too (`plus`, `pro`; migration 0011), and so did the Paddle
 products' names.
 
+## Sold to teams, and the demo office
+
+Paddle declined the first application on 29 September 2026, reading the site
+as "Personal Websites/Social Networking". The copy had invited that: a public
+lobby to "meet people", coworking "with friends or strangers", a study room
+for friends, and an #introductions channel. The product is team software, so
+the site now says so everywhere:
+
+- The public lobby is **the demo office**: a place to try TinyFloor before
+  making an office, not a place to meet people. The route stays `/lobby`.
+- Its chat has #general and #feedback only; #introductions is gone.
+- The online study room page is gone (it redirects to the virtual office
+  page), and virtual coworking is written for remote teams.
+- Comparison pages give seats per plan instead of the old "a room holds 20".
+
+Keep new copy to the same line: offices for teams, joined by invite, paid per
+office. Nothing about meeting new people.
+
 ## Signing up
 
 1. **Sign in, Google first.** Google is one tap and gives us a verified email

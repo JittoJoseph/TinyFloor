@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "28 September 2026";
+export const TERMS_UPDATED = "29 September 2026";
 
 export const termsSummary = (
   <p>
@@ -48,7 +48,7 @@ export const termsSections: LegalSection[] = [
         <li>Give a real email address when you make an account, and keep your password to yourself. You are responsible for what happens on your account.</li>
         <li>If you think someone else has used your account, change your password and write to <Mail />.</li>
         <li>
-          In the public lobby, guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their
+          In the demo office, guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their
           last visit; to keep your name and join offices, make an account.
         </li>
         <li>Don&apos;t pretend to be someone else, and don&apos;t pick a name meant to mislead people.</li>
@@ -98,7 +98,7 @@ export const termsSections: LegalSection[] = [
             <strong>Meeting hours.</strong> An office&apos;s meeting hours are the time its meetings have two or more people in them, added up
             over each calendar month (UTC). Calls between two people on the floor don&apos;t count. Once an office has used its hours, its
             meetings carry on with voice only until the 1st of the next month, or until it moves to a bigger plan. Unused hours don&apos;t carry
-            over. Meetings in the public lobby have their own daily allowance.
+            over. Meetings in the demo office have their own daily allowance.
           </li>
           <li>
             <strong>Billing.</strong> Plans are billed monthly, in advance, and renew automatically at the end of each month until you cancel.
@@ -135,11 +135,12 @@ export const termsSections: LegalSection[] = [
   },
   {
     id: "lobby",
-    title: "The public lobby",
+    title: "The demo office",
     body: (
       <p>
-        The lobby is open to anyone. What you say and do there is seen by whoever else is there, so don&apos;t share anything private. Lobby
-        chat is deleted after a week. We may remove messages or people from the lobby to keep it pleasant.
+        The demo office is a shared place to try TinyFloor before making an office of your own, and anyone can walk in. What you say and do
+        there is seen by whoever else is there, so don&apos;t share anything private. Its chat is deleted after a week. We may remove messages
+        or people from the demo office to keep it pleasant.
       </p>
     ),
   },
@@ -234,7 +235,7 @@ export const termsSections: LegalSection[] = [
           You can stop using TinyFloor whenever you like, and ask us to delete your account by writing to <Mail />.
         </p>
         <p>
-          We may suspend or close an account, remove someone from an office or the lobby, or block access, if someone breaks these Terms, puts
+          We may suspend or close an account, remove someone from an office or the demo office, or block access, if someone breaks these Terms, puts
           other people or TinyFloor at risk, or if the law requires it. Where it&apos;s reasonable, we will tell you why and give you a chance to
           respond.
         </p>

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   ArrowRight,
-  BookOpen,
   Building2,
   ChevronDown,
   Coffee,
@@ -39,7 +38,6 @@ const FEATURES = [
 const CASE_ICONS: Partial<Record<LandingKey, ReactNode>> = {
   virtualOffice: <Building2 />,
   virtualCoworking: <Coffee />,
-  onlineStudyRoom: <BookOpen />,
   virtualClassroom: <GraduationCap />,
   proximityChat: <Radio />,
 };

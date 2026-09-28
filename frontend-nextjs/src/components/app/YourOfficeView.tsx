@@ -6,24 +6,21 @@ import { ArrowRight, Check, DoorClosed, Hash, Link2, MessagesSquare } from "@/co
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { useFloor } from "@/lib/floor";
 import { rememberOffice } from "@/lib/pendingOffice";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { Face } from "@/components/ui/Face";
 import { PlansSoon } from "@/components/ui/PlansSoon";
 
 /**
  * The lobby's reason to exist, on one screen: name an office and go make it.
- * Its mark takes the name's colour as it is typed, and if people are here
- * with you, it says you can bring them. One ask, making an office; paying can wait.
+ * Its mark takes the name's colour as it is typed. One ask, making an office;
+ * paying can wait.
  */
 export function YourOfficeView() {
   const t = useTranslations("lobby.yourOffice");
   const router = useRouter();
   const { user } = useAuth();
-  const everyone = useFloor();
   const [name, setName] = useState("");
   const reduce = useReducedMotion();
-  const others = everyone.filter((one) => one.id !== user?.id);
   const account = !!user && !user.guest;
   const typed = name.trim();
 
@@ -91,13 +88,6 @@ export function YourOfficeView() {
           {t("free")}
         </p>
         <PlansSoon className="mt-1 justify-center" />
-
-        {others.length > 0 && (
-          <p className="mx-auto mt-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-background py-1 pe-3.5 ps-1 text-[12.5px] text-muted-foreground [--face-ring:var(--ui-background)]">
-            <FaceStack seeds={others.map((one) => one.id)} size={22} max={4} />
-            {t("bringThem", { count: others.length })}
-          </p>
-        )}
 
         <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
           {perks.map((perk) => (

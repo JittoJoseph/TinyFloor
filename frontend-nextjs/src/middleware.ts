@@ -26,7 +26,7 @@ const LOCALE_FILE = new RegExp(`^/(?:${routing.locales.join("|")})/([^/]+\\.[a-z
 const PAGES = [
   "",
   ...LANDINGS.map((page) => page.slug),
-  "about|people|privacy|terms|refunds|rooms|account|admin|auth|create|dashboard|map-render|og-render|video-demo",
+  "about|people|privacy|terms|refunds|rooms|online-study-room|account|admin|auth|create|dashboard|map-render|og-render|video-demo",
   "lobby(/(chat(/[^/]+)?|people|meetings|settings|your-office))?",
   "join",
   "invite/[^/]+",

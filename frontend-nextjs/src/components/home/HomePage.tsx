@@ -20,7 +20,7 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
         }
         body={t("body")}
       />
-      <FloorMoments className="mt-28 sm:mt-40" />
+      <FloorMoments className="mt-20 sm:mt-40" />
       <Everything />
       <Plans />
       <Questions items={faqs} />

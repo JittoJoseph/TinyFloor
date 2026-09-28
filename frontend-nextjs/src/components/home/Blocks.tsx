@@ -112,16 +112,17 @@ export function Hero({
         <p className="mt-5 text-[13px] text-faint">{t("note")}</p>
       </div>
 
-      <div className={cn(COLUMN, "mt-16 sm:mt-24")}>
+      <div className="mx-auto mt-14 w-full max-w-[1120px] px-3 sm:mt-24 sm:px-8">
         {/*
           The app, whole: its dark shell is the window's own frame, so nothing
           goes around it but a shadow (and, on the dark page, the faintest edge
-          so the shell doesn't sink into it). On a phone the frame is squarer
-          and centred on the floor, so the people stay readable.
+          so the shell doesn't sink into it). It keeps the recording's own
+          16:9 at every width, so nothing is ever cropped; on a phone it takes
+          nearly the whole width to stay as large as it can.
         */}
         <HeroFilm
           label={t("film")}
-          className="aspect-[4/3] rounded-[18px] object-[40%_50%] shadow-[0_1px_2px_rgb(0_0_0/0.1),0_30px_80px_-24px_rgb(0_0_0/0.45)] sm:aspect-[16/9] sm:rounded-[22px] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_30px_80px_-24px_rgb(0_0_0/0.9)]"
+          className="rounded-[12px] shadow-[0_1px_2px_rgb(0_0_0/0.1),0_20px_50px_-20px_rgb(0_0_0/0.45)] min-[400px]:rounded-[14px] sm:rounded-[22px] sm:shadow-[0_1px_2px_rgb(0_0_0/0.1),0_30px_80px_-24px_rgb(0_0_0/0.45)] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_30px_80px_-24px_rgb(0_0_0/0.9)]"
         />
       </div>
     </section>
@@ -131,7 +132,7 @@ export function Hero({
 /** The two ways in as one control: ink for making an office, a quiet stone for looking around first. */
 export function Joined({ className }: { className?: string }) {
   const t = useTranslations("homepage.hero");
-  const half = "inline-flex h-12 items-center gap-2 px-4 text-[15px] font-medium transition-colors min-[400px]:px-6";
+  const half = "inline-flex h-12 items-center gap-2 whitespace-nowrap px-3.5 text-[14px] font-medium transition-colors min-[400px]:px-6 min-[400px]:text-[15px]";
   return (
     <div className={cn("inline-flex", className)}>
       <Link href="/create" className={cn(half, "rounded-s-full bg-foreground text-background hover:bg-foreground/85")}>

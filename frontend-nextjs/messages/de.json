@@ -332,7 +332,8 @@
       "media": "Audio und Video",
       "notifications": "Benachrichtigungen",
       "accessibility": "Barrierefreiheit",
-      "office": "Büro"
+      "office": "Büro",
+      "plan": "Tarif und Abrechnung"
     },
     "appearance": "Darstellung",
     "themeNote": "„System“ folgt deinem Gerät.",
@@ -912,7 +913,9 @@
       "free": "Kostenloser Plan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Inhaber",
@@ -1484,6 +1487,47 @@
       "title": "Gib deinem Team",
       "muted": "eine gemeinsame Etage.",
       "note": "Kostenlos für bis zu 3 Personen · Läuft auf Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "Dieses Büro hat",
+    "members": "{used} von {seats} Mitgliedern",
+    "freeNote": "Kostenlos für bis zu {seats} Mitglieder, mit allen Funktionen.",
+    "renews": "Verlängert sich am {date} · {price} {per}",
+    "ends": "Endet am {date}, danach der kostenlose Tarif",
+    "perMonth": "im Monat",
+    "perYear": "im Jahr",
+    "pastDue": "Die letzte Zahlung ist nicht durchgegangen. Paddle versucht es erneut; aktualisiere die Karte, um den Tarif zu behalten.",
+    "updateCard": "Karte aktualisieren",
+    "keep": "Tarif behalten",
+    "settingUp": "Zahlung erhalten. Der Tarif wird eingerichtet…",
+    "settingUpSlow": "Zahlung erhalten. Der Tarif kann eine Minute brauchen; lade neu, falls er noch fehlt.",
+    "plans": "Tarife",
+    "billedEvery": "Abrechnung",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "twoFree": "2 Monate gratis",
+    "currentPlan": "Aktueller Tarif",
+    "cancel": "Tarif kündigen",
+    "tooMany": "Mehr Mitglieder, als er fasst",
+    "toYearly": "Jährlich zahlen",
+    "toMonthly": "Monatlich zahlen",
+    "switch": "Wechseln",
+    "choose": "Auswählen",
+    "upTo": "Bis zu {count} Mitglieder",
+    "fine": "Die Preise verstehen sich ohne Steuern. Zahlungen wickelt Paddle ab, unser Wiederverkäufer. Innerhalb von 14 Tagen nach einer Zahlung gibt es auf Wunsch alles zurück.",
+    "invoices": "Zahlungen und Rechnungen",
+    "adminsOnly": "Nur die Admins des Büros können den Tarif ändern.",
+    "switchTitle": "Zu {plan} wechseln?",
+    "switchBody": "Paddle berechnet oder erstattet die Differenz für den Rest des Zeitraums sofort. Auf der Fläche merkt niemand etwas.",
+    "cancelTitle": "Tarif kündigen?",
+    "cancelBody": "Der Tarif läuft bis zum {date}, danach gilt wieder der kostenlose Tarif. Niemand wird entfernt, aber niemand Neues kann beitreten und nur 3 können gleichzeitig auf der Fläche sein.",
+    "cancelBodyNow": "Das Büro wechselt am Ende des Zeitraums zum kostenlosen Tarif. Niemand wird entfernt, aber niemand Neues kann beitreten und nur 3 können gleichzeitig auf der Fläche sein.",
+    "moreSeats": "Mehr Plätze holen",
+    "errors": {
+      "tooManyMembers": "Dieses Büro hat mehr Mitglieder, als der Tarif fasst. Entferne zuerst einige.",
+      "hasSubscription": "Dieses Büro hat schon einen Tarif. Wechsle ihn stattdessen.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal."
     }
   }
 }

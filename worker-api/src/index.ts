@@ -1,5 +1,6 @@
 import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
+import { billingRoutes } from "./billing";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { floorRoutes } from "./floor";
@@ -10,6 +11,8 @@ import { Router } from "./router";
 
 export { PasswordGuard } from "./password-guard";
 
+const WEBHOOK_PATH = "/v1/billing/webhook";
+
 const router = new Router().add("GET", "/v1/health", async ({ env }) => {
   const database = await env.DB.prepare("SELECT 1 AS ok").first<{ ok: number }>();
   return json({ service: "tinyfloor-api", ok: true, database: database?.ok === 1 });
@@ -19,6 +22,7 @@ googleRoutes(router);
 officeRoutes(router);
 floorRoutes(router);
 callRoutes(router);
+billingRoutes(router);
 adminRoutes(router);
 
 export default {
@@ -28,8 +32,10 @@ export default {
 
     let response: Response;
     try {
-      if (request.method !== "GET") assertSafeWrite(request, origin);
-      const match = router.match(request.method, new URL(request.url).pathname);
+      const { pathname } = new URL(request.url);
+      // Paddle's webhook is the one write that doesn't come from the site: its signature is its proof.
+      if (request.method !== "GET" && pathname !== WEBHOOK_PATH) assertSafeWrite(request, origin);
+      const match = router.match(request.method, pathname);
       if (!match) throw new HttpError(404, "not_found", "No such endpoint");
       response = await match.handler({ request, env, ctx, params: match.params });
     } catch (error) {

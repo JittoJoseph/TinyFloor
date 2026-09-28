@@ -18,6 +18,15 @@ export default defineConfig(async () => ({
           REALTIME_URL: "ws://localhost:8788",
           TURN_KEY_ID: "test-turn-key",
           TURN_KEY_API_TOKEN: "test-turn-token",
+          // Billing against a Paddle that the tests stand in for (test/billing.test.ts).
+          PADDLE_ENV: "sandbox",
+          PADDLE_CLIENT_TOKEN: "test_client_token",
+          PADDLE_API_KEY: "test-paddle-key",
+          PADDLE_WEBHOOK_SECRET: "pdl_ntfset_test",
+          PADDLE_PRICES: JSON.stringify({
+            team: { month: "pri_team_month", year: "pri_team_year" },
+            business: { month: "pri_business_month", year: "pri_business_year" },
+          }),
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
         workers: [

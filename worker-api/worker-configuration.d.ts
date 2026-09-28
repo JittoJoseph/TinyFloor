@@ -15,6 +15,12 @@ interface __BaseEnv_Env {
 	REALTIME_URL: string;
 	TURN_KEY_ID: string;
 	TURN_KEY_API_TOKEN: string;
+	/** Paddle (src/billing.ts). Billing is off wherever PADDLE_PRICES is missing. */
+	PADDLE_ENV?: string;
+	PADDLE_CLIENT_TOKEN?: string;
+	PADDLE_PRICES?: string;
+	PADDLE_API_KEY?: string;
+	PADDLE_WEBHOOK_SECRET?: string;
 	PASSWORD_GUARD: DurableObjectNamespace<import("./src/index").PasswordGuard>;
 	REALTIME: Service /* entrypoint RealtimeAdmin from tinyfloor-realtime-preview */ | Service /* entrypoint RealtimeAdmin from tinyfloor-realtime */;
 }

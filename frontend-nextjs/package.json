@@ -21,6 +21,7 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",
     "@opennextjs/cloudflare": "1.20.6",
+    "@paddle/paddle-js": "1.6.5",
     "@phosphor-icons/react": "^2.1.10",
     "@sapphi-red/web-noise-suppressor": "^0.4.1",
     "clsx": "^2.1.1",

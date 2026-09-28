@@ -137,6 +137,38 @@ export interface AdminOffice {
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
 
+export type PlanId = "free" | "team" | "business";
+export type BillingInterval = "month" | "year";
+
+export interface Plan {
+  id: PlanId;
+  seats: number;
+  /** US cents before tax; null for the free plan. */
+  prices: Record<BillingInterval, number> | null;
+}
+
+/** The plans, and — where paid plans are on — what Paddle.js needs to open a checkout. */
+export interface Plans {
+  plans: Plan[];
+  billing: { environment: "sandbox" | "production"; clientToken: string } | null;
+}
+
+/** An office's plan, as its admins see it in settings. */
+export interface OfficeBilling {
+  plan: PlanId;
+  seats: number;
+  members: number;
+  subscription: {
+    plan: PlanId;
+    interval: BillingInterval;
+    /** active, trialing, past_due (a card being retried) or paused. */
+    status: string;
+    renewsAt: number | null;
+    /** Set once it's cancelled: the plan runs until then. */
+    endsAt: number | null;
+  } | null;
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   let response: Response;
   try {
@@ -214,6 +246,21 @@ export const api = {
   overview: (officeId: string) => get<OfficeOverview>(`/offices/${id(officeId)}/overview`),
   renameOffice: (officeId: string, name: string) => patch<{ office: Office }>(`/offices/${id(officeId)}`, { name }),
   closeOffice: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}`),
+
+  // Paid plans (worker-api/src/billing.ts)
+  plans: () => get<Plans>("/plans"),
+  billing: (officeId: string) => get<OfficeBilling>(`/offices/${id(officeId)}/billing`),
+  /** A checkout made by the API for this office, to open in Paddle.js. */
+  checkout: (officeId: string, plan: PlanId, interval: BillingInterval) =>
+    post<{ transactionId: string; email: string | null }>(`/offices/${id(officeId)}/billing/checkout`, { plan, interval }),
+  /** After paying: the plan from Paddle's record of that checkout, without waiting for the webhook. */
+  syncCheckout: (officeId: string, transactionId: string) =>
+    post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { transactionId }),
+  changePlan: (officeId: string, plan: PlanId, interval: BillingInterval) =>
+    post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan, interval }),
+  cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
+  resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
+  billingPortal: (officeId: string) => post<{ url: string }>(`/offices/${id(officeId)}/billing/portal`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>
     patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),
   removeMember: (officeId: string, userId: string) =>

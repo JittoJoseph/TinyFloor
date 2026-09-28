@@ -332,7 +332,8 @@
       "media": "Dźwięk i wideo",
       "notifications": "Powiadomienia",
       "accessibility": "Dostępność",
-      "office": "Biuro"
+      "office": "Biuro",
+      "plan": "Plan i płatności"
     },
     "appearance": "Wygląd",
     "themeNote": "„Systemowy” podąża za urządzeniem.",
@@ -912,7 +913,9 @@
       "free": "Plan darmowy",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Właściciel",
@@ -1484,6 +1487,47 @@
       "title": "Daj swojemu zespołowi",
       "muted": "wspólne piętro.",
       "note": "Za darmo dla maksymalnie 3 osób · Działa na Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "To biuro jest na planie",
+    "members": "{used} z {seats} członków",
+    "freeNote": "Za darmo dla maksymalnie {seats} członków, ze wszystkimi funkcjami.",
+    "renews": "Odnawia się {date} · {price} {per}",
+    "ends": "Kończy się {date}, potem plan darmowy",
+    "perMonth": "miesięcznie",
+    "perYear": "rocznie",
+    "pastDue": "Ostatnia płatność nie przeszła. Paddle spróbuje ponownie; zaktualizuj kartę, aby zachować plan.",
+    "updateCard": "Zaktualizuj kartę",
+    "keep": "Zachowaj ten plan",
+    "settingUp": "Płatność otrzymana. Konfigurujemy plan…",
+    "settingUpSlow": "Płatność otrzymana. Plan może pojawić się dopiero po minucie; odśwież, jeśli go nie widać.",
+    "plans": "Plany",
+    "billedEvery": "Rozliczenie",
+    "monthly": "Miesięcznie",
+    "yearly": "Rocznie",
+    "twoFree": "2 miesiące gratis",
+    "currentPlan": "Obecny plan",
+    "cancel": "Anuluj plan",
+    "tooMany": "Więcej członków, niż mieści",
+    "toYearly": "Płać rocznie",
+    "toMonthly": "Płać miesięcznie",
+    "switch": "Zmień",
+    "choose": "Wybierz",
+    "upTo": "Do {count} członków",
+    "fine": "Ceny nie zawierają podatku. Płatności obsługuje Paddle, nasz sprzedawca. Poproś o pełny zwrot w ciągu 14 dni od płatności.",
+    "invoices": "Płatności i faktury",
+    "adminsOnly": "Tylko administratorzy biura mogą zmienić jego plan.",
+    "switchTitle": "Zmienić na {plan}?",
+    "switchBody": "Paddle od razu pobierze lub zwróci różnicę za resztę okresu. Nikt na piętrze niczego nie zauważy.",
+    "cancelTitle": "Anulować plan?",
+    "cancelBody": "Plan działa do {date}, potem biuro wraca do planu darmowego. Nikt nie zostanie usunięty, ale nikt nowy nie dołączy, a na piętrze mogą być naraz tylko 3 osoby.",
+    "cancelBodyNow": "Biuro wróci do planu darmowego na koniec okresu. Nikt nie zostanie usunięty, ale nikt nowy nie dołączy, a na piętrze mogą być naraz tylko 3 osoby.",
+    "moreSeats": "Więcej miejsc",
+    "errors": {
+      "tooManyMembers": "To biuro ma więcej członków, niż mieści ten plan. Najpierw kogoś usuń.",
+      "hasSubscription": "To biuro ma już plan. Zmień go zamiast tego.",
+      "failed": "Nie udało się. Spróbuj ponownie."
     }
   }
 }

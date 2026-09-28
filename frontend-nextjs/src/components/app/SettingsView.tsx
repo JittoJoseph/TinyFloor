@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, Headphones, Mic, Monitor, Moon, SlidersHorizontal, Sun, Video } from "lucide-react";
+import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, Mic, Monitor, Moon, SlidersHorizontal, Sun, Video } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
@@ -23,8 +23,9 @@ import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { usePlace } from "./place";
 import { useOfficeMaybe } from "./OfficeShell";
+import { PlanSection } from "./PlanSection";
 
-type Section = "general" | "media" | "notifications" | "accessibility" | "office";
+type Section = "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
 
 const ICONS: Record<Section, ReactNode> = {
   general: <SlidersHorizontal />,
@@ -32,6 +33,7 @@ const ICONS: Record<Section, ReactNode> = {
   notifications: <Bell />,
   accessibility: <Accessibility />,
   office: <Building2 />,
+  plan: <CreditCard />,
 };
 
 /**
@@ -43,12 +45,16 @@ export function SettingsView() {
   const t = useTranslations("settings");
   const ts = useTranslations("shell");
   const place = usePlace();
-  const [section, setSection] = useState<Section>("general");
-  const [picked, setPicked] = useState(false);
+  // "Get more seats" and the like link straight to the plan: …/settings#plan.
+  const toPlan = useSyncExternalStore(subscribeHash, () => window.location.hash === "#plan", () => false) && place.kind === "office";
+  const [chosen, setSection] = useState<Section | null>(null);
+  const [pickedByHand, setPicked] = useState<boolean | null>(null);
+  const section = chosen ?? (toPlan ? "plan" : "general");
+  const picked = pickedByHand ?? toPlan;
   const reduce = useReducedMotion();
 
   const yours: Section[] = ["general", "media", "notifications", "accessibility"];
-  const office: Section[] = place.kind === "office" ? ["office"] : [];
+  const office: Section[] = place.kind === "office" ? ["office", "plan"] : [];
 
   const choose = (one: Section) => {
     setSection(one);
@@ -118,10 +124,16 @@ export function SettingsView() {
           {section === "notifications" && <Notifications />}
           {section === "accessibility" && <AccessibilitySection />}
           {section === "office" && <OfficeSection />}
+          {section === "plan" && <PlanSection />}
         </div>
       </div>
     </ShellView>
   );
+}
+
+function subscribeHash(listener: () => void) {
+  window.addEventListener("hashchange", listener);
+  return () => window.removeEventListener("hashchange", listener);
 }
 
 /** A group of settings on one card, the way every settings page reads. */

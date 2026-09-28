@@ -332,7 +332,8 @@
       "media": "Audio et vidéo",
       "notifications": "Notifications",
       "accessibility": "Accessibilité",
-      "office": "Bureau"
+      "office": "Bureau",
+      "plan": "Offre et facturation"
     },
     "appearance": "Apparence",
     "themeNote": "« Système » suit votre appareil.",
@@ -912,7 +913,9 @@
       "free": "Offre gratuite",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Propriétaire",
@@ -1484,6 +1487,47 @@
       "title": "Offrez à votre équipe",
       "muted": "un étage à partager.",
       "note": "Gratuit jusqu'à 3 personnes · Fonctionne sur Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "Ce bureau est sur",
+    "members": "{used} membres sur {seats}",
+    "freeNote": "Gratuit jusqu'à {seats} membres, avec toutes les fonctionnalités.",
+    "renews": "Renouvellement le {date} · {price} {per}",
+    "ends": "Se termine le {date}, puis l'offre gratuite",
+    "perMonth": "par mois",
+    "perYear": "par an",
+    "pastDue": "Le dernier paiement n'est pas passé. Paddle réessaiera la carte ; mettez-la à jour pour garder l'offre.",
+    "updateCard": "Mettre à jour la carte",
+    "keep": "Garder cette offre",
+    "settingUp": "Paiement reçu. Mise en place de l'offre…",
+    "settingUpSlow": "Paiement reçu. L'offre peut mettre une minute à apparaître ; actualisez si besoin.",
+    "plans": "Offres",
+    "billedEvery": "Facturation",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "twoFree": "2 mois offerts",
+    "currentPlan": "Offre actuelle",
+    "cancel": "Annuler l'offre",
+    "tooMany": "Plus de membres qu'elle n'en accueille",
+    "toYearly": "Payer à l'année",
+    "toMonthly": "Payer au mois",
+    "switch": "Changer",
+    "choose": "Choisir",
+    "upTo": "Jusqu'à {count} membres",
+    "fine": "Les prix s'entendent hors taxes. Les paiements sont gérés par Paddle, notre revendeur. Demandez un remboursement complet dans les 14 jours suivant un paiement.",
+    "invoices": "Paiements et factures",
+    "adminsOnly": "Seuls les administrateurs du bureau peuvent changer son offre.",
+    "switchTitle": "Passer à {plan} ?",
+    "switchBody": "Paddle facture ou crédite aussitôt la différence pour le reste de la période. Personne sur le plateau ne remarque rien.",
+    "cancelTitle": "Annuler l'offre ?",
+    "cancelBody": "L'offre reste active jusqu'au {date}, puis le bureau revient à l'offre gratuite. Personne n'est retiré, mais personne de nouveau ne peut rejoindre et seuls 3 peuvent être sur le plateau à la fois.",
+    "cancelBodyNow": "Le bureau revient à l'offre gratuite à la fin de la période. Personne n'est retiré, mais personne de nouveau ne peut rejoindre et seuls 3 peuvent être sur le plateau à la fois.",
+    "moreSeats": "Obtenir plus de places",
+    "errors": {
+      "tooManyMembers": "Ce bureau compte plus de membres que cette offre n'en accueille. Retirez-en d'abord.",
+      "hasSubscription": "Ce bureau a déjà une offre. Changez-la plutôt.",
+      "failed": "Ça n'a pas marché. Réessayez."
     }
   }
 }

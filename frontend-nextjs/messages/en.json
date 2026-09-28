@@ -332,7 +332,8 @@
       "media": "Audio and video",
       "notifications": "Notifications",
       "accessibility": "Accessibility",
-      "office": "Office"
+      "office": "Office",
+      "plan": "Plan and billing"
     },
     "appearance": "Appearance",
     "themeNote": "System follows your device.",
@@ -912,7 +913,9 @@
       "free": "Free plan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Owner",
@@ -1484,6 +1487,47 @@
       "title": "Give your team",
       "muted": "a floor to share.",
       "note": "Free for up to 3 people · Runs on Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "This office is on",
+    "members": "{used} of {seats} members",
+    "freeNote": "Free for up to {seats} members, with every feature.",
+    "renews": "Renews on {date} · {price} {per}",
+    "ends": "Ends on {date}, then the free plan",
+    "perMonth": "a month",
+    "perYear": "a year",
+    "pastDue": "The last payment didn't go through. Paddle will try the card again; update it to keep the plan.",
+    "updateCard": "Update card",
+    "keep": "Keep this plan",
+    "settingUp": "Payment received. Setting up the plan…",
+    "settingUpSlow": "Payment received. The plan can take a minute to show; refresh if it hasn't.",
+    "plans": "Plans",
+    "billedEvery": "Billed",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "twoFree": "2 months free",
+    "currentPlan": "Current plan",
+    "cancel": "Cancel plan",
+    "tooMany": "More members than this holds",
+    "toYearly": "Pay yearly",
+    "toMonthly": "Pay monthly",
+    "switch": "Switch",
+    "choose": "Choose",
+    "upTo": "Up to {count} members",
+    "fine": "Prices don't include tax. Payments are handled by Paddle, our reseller. Ask within 14 days of a payment for a full refund.",
+    "invoices": "Payments and invoices",
+    "adminsOnly": "Only an office's admins can change its plan.",
+    "switchTitle": "Switch to {plan}?",
+    "switchBody": "Paddle charges or credits the difference for the time left in this period, straight away. Nobody on the floor notices a thing.",
+    "cancelTitle": "Cancel the plan?",
+    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan. Nobody is removed, but no one new can join and only 3 can be on the floor at once.",
+    "cancelBodyNow": "The office goes back to the free plan at the end of this period. Nobody is removed, but no one new can join and only 3 can be on the floor at once.",
+    "moreSeats": "Get more seats",
+    "errors": {
+      "tooManyMembers": "This office has more members than that plan holds. Remove some first.",
+      "hasSubscription": "This office already has a plan. Switch it instead.",
+      "failed": "That didn't work. Try again."
     }
   }
 }

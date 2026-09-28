@@ -332,7 +332,8 @@
       "media": "音频和视频",
       "notifications": "通知",
       "accessibility": "无障碍",
-      "office": "办公室"
+      "office": "办公室",
+      "plan": "方案与账单"
     },
     "appearance": "外观",
     "themeNote": "“系统”会跟随你的设备。",
@@ -912,7 +913,9 @@
       "free": "免费版",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "所有者",
@@ -1484,6 +1487,47 @@
       "title": "给你的团队",
       "muted": "一层共享的楼。",
       "note": "最多 3 人免费 · 运行在 Cloudflare 上"
+    }
+  },
+  "billing": {
+    "current": "此办公室当前方案",
+    "members": "{used}/{seats} 名成员",
+    "freeNote": "最多 {seats} 名成员免费，包含全部功能。",
+    "renews": "{date} 续订 · {price}{per}",
+    "ends": "{date} 结束，之后为免费方案",
+    "perMonth": "/月",
+    "perYear": "/年",
+    "pastDue": "上次付款未成功。Paddle 会再次尝试扣款；请更新银行卡以保留方案。",
+    "updateCard": "更新银行卡",
+    "keep": "保留此方案",
+    "settingUp": "已收到付款，正在启用方案…",
+    "settingUpSlow": "已收到付款。方案可能需要一分钟才会显示；如未显示请刷新页面。",
+    "plans": "方案",
+    "billedEvery": "计费",
+    "monthly": "按月",
+    "yearly": "按年",
+    "twoFree": "赠送 2 个月",
+    "currentPlan": "当前方案",
+    "cancel": "取消方案",
+    "tooMany": "成员数超过此方案上限",
+    "toYearly": "改为按年付费",
+    "toMonthly": "改为按月付费",
+    "switch": "切换",
+    "choose": "选择",
+    "upTo": "最多 {count} 名成员",
+    "fine": "价格不含税。付款由我们的经销商 Paddle 处理。付款后 14 天内申请可全额退款。",
+    "invoices": "付款与发票",
+    "adminsOnly": "只有办公室管理员可以更改方案。",
+    "switchTitle": "切换到 {plan}？",
+    "switchBody": "Paddle 会立即按本期剩余时间收取或退还差价。楼层上的人不会有任何感觉。",
+    "cancelTitle": "取消方案？",
+    "cancelBody": "方案有效期至 {date}，之后办公室恢复为免费方案。不会移除任何人，但无法加入新成员，楼层上同时最多 3 人。",
+    "cancelBodyNow": "本期结束后办公室恢复为免费方案。不会移除任何人，但无法加入新成员，楼层上同时最多 3 人。",
+    "moreSeats": "获取更多席位",
+    "errors": {
+      "tooManyMembers": "此办公室的成员数超过该方案上限，请先移除部分成员。",
+      "hasSubscription": "此办公室已有方案，请改为切换。",
+      "failed": "操作失败，请重试。"
     }
   }
 }

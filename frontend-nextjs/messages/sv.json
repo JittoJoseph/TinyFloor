@@ -332,7 +332,8 @@
       "media": "Ljud och video",
       "notifications": "Aviseringar",
       "accessibility": "Tillgänglighet",
-      "office": "Kontor"
+      "office": "Kontor",
+      "plan": "Plan och betalning"
     },
     "appearance": "Utseende",
     "themeNote": "”System” följer din enhet.",
@@ -912,7 +913,9 @@
       "free": "Gratisplan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Ägare",
@@ -1484,6 +1487,47 @@
       "title": "Ge ditt team",
       "muted": "ett plan att dela.",
       "note": "Gratis för upp till 3 personer · Körs på Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "Det här kontoret har",
+    "members": "{used} av {seats} medlemmar",
+    "freeNote": "Gratis för upp till {seats} medlemmar, med alla funktioner.",
+    "renews": "Förnyas {date} · {price} {per}",
+    "ends": "Slutar {date}, sedan gratisplanen",
+    "perMonth": "i månaden",
+    "perYear": "om året",
+    "pastDue": "Den senaste betalningen gick inte igenom. Paddle försöker igen; uppdatera kortet för att behålla planen.",
+    "updateCard": "Uppdatera kort",
+    "keep": "Behåll planen",
+    "settingUp": "Betalningen har tagits emot. Planen aktiveras…",
+    "settingUpSlow": "Betalningen har tagits emot. Det kan ta en minut innan planen syns; ladda om om den inte gör det.",
+    "plans": "Planer",
+    "billedEvery": "Fakturering",
+    "monthly": "Månadsvis",
+    "yearly": "Årsvis",
+    "twoFree": "2 månader gratis",
+    "currentPlan": "Nuvarande plan",
+    "cancel": "Säg upp planen",
+    "tooMany": "Fler medlemmar än den rymmer",
+    "toYearly": "Betala årsvis",
+    "toMonthly": "Betala månadsvis",
+    "switch": "Byt",
+    "choose": "Välj",
+    "upTo": "Upp till {count} medlemmar",
+    "fine": "Priserna är exklusive moms. Betalningar hanteras av Paddle, vår återförsäljare. Begär full återbetalning inom 14 dagar efter en betalning.",
+    "invoices": "Betalningar och fakturor",
+    "adminsOnly": "Bara kontorets administratörer kan ändra planen.",
+    "switchTitle": "Byta till {plan}?",
+    "switchBody": "Paddle debiterar eller krediterar mellanskillnaden för resten av perioden direkt. Ingen på golvet märker något.",
+    "cancelTitle": "Säga upp planen?",
+    "cancelBody": "Planen gäller till {date}, sedan går kontoret tillbaka till gratisplanen. Ingen tas bort, men ingen ny kan gå med och bara 3 kan vara på golvet samtidigt.",
+    "cancelBodyNow": "Kontoret går tillbaka till gratisplanen när perioden är slut. Ingen tas bort, men ingen ny kan gå med och bara 3 kan vara på golvet samtidigt.",
+    "moreSeats": "Fler platser",
+    "errors": {
+      "tooManyMembers": "Kontoret har fler medlemmar än planen rymmer. Ta bort några först.",
+      "hasSubscription": "Kontoret har redan en plan. Byt den i stället.",
+      "failed": "Det fungerade inte. Försök igen."
     }
   }
 }

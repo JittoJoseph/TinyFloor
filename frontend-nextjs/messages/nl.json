@@ -332,7 +332,8 @@
       "media": "Audio en video",
       "notifications": "Meldingen",
       "accessibility": "Toegankelijkheid",
-      "office": "Kantoor"
+      "office": "Kantoor",
+      "plan": "Abonnement en facturering"
     },
     "appearance": "Weergave",
     "themeNote": "'Systeem' volgt je apparaat.",
@@ -912,7 +913,9 @@
       "free": "Gratis abonnement",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Eigenaar",
@@ -1484,6 +1487,47 @@
       "title": "Geef je team",
       "muted": "een verdieping om te delen.",
       "note": "Gratis voor maximaal 3 mensen · Draait op Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "Dit kantoor zit op",
+    "members": "{used} van {seats} leden",
+    "freeNote": "Gratis voor maximaal {seats} leden, met alle functies.",
+    "renews": "Verlengt op {date} · {price} {per}",
+    "ends": "Eindigt op {date}, daarna het gratis abonnement",
+    "perMonth": "per maand",
+    "perYear": "per jaar",
+    "pastDue": "De laatste betaling is niet gelukt. Paddle probeert het opnieuw; werk de kaart bij om het abonnement te houden.",
+    "updateCard": "Kaart bijwerken",
+    "keep": "Dit abonnement houden",
+    "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",
+    "settingUpSlow": "Betaling ontvangen. Het abonnement kan een minuut nodig hebben; vernieuw als het er nog niet is.",
+    "plans": "Abonnementen",
+    "billedEvery": "Facturering",
+    "monthly": "Maandelijks",
+    "yearly": "Jaarlijks",
+    "twoFree": "2 maanden gratis",
+    "currentPlan": "Huidig abonnement",
+    "cancel": "Abonnement opzeggen",
+    "tooMany": "Meer leden dan erin passen",
+    "toYearly": "Jaarlijks betalen",
+    "toMonthly": "Maandelijks betalen",
+    "switch": "Wisselen",
+    "choose": "Kiezen",
+    "upTo": "Tot {count} leden",
+    "fine": "Prijzen zijn exclusief belasting. Betalingen lopen via Paddle, onze wederverkoper. Vraag binnen 14 dagen na een betaling een volledige terugbetaling.",
+    "invoices": "Betalingen en facturen",
+    "adminsOnly": "Alleen beheerders van het kantoor kunnen het abonnement wijzigen.",
+    "switchTitle": "Overstappen naar {plan}?",
+    "switchBody": "Paddle rekent het verschil voor de rest van de periode meteen af of crediteert het. Niemand op de vloer merkt er iets van.",
+    "cancelTitle": "Abonnement opzeggen?",
+    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar gratis. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer zijn.",
+    "cancelBodyNow": "Het kantoor gaat aan het eind van de periode terug naar gratis. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer zijn.",
+    "moreSeats": "Meer plekken",
+    "errors": {
+      "tooManyMembers": "Dit kantoor heeft meer leden dan dat abonnement toelaat. Verwijder er eerst een paar.",
+      "hasSubscription": "Dit kantoor heeft al een abonnement. Wijzig het in plaats daarvan.",
+      "failed": "Dat is niet gelukt. Probeer het opnieuw."
     }
   }
 }

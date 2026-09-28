@@ -332,7 +332,8 @@
       "media": "Ääni ja video",
       "notifications": "Ilmoitukset",
       "accessibility": "Saavutettavuus",
-      "office": "Toimisto"
+      "office": "Toimisto",
+      "plan": "Paketti ja laskutus"
     },
     "appearance": "Ulkoasu",
     "themeNote": "”Järjestelmä” seuraa laitettasi.",
@@ -912,7 +913,9 @@
       "free": "Ilmainen paketti",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Omistaja",
@@ -1484,6 +1487,47 @@
       "title": "Anna tiimillesi",
       "muted": "yhteinen kerros.",
       "note": "Ilmainen enintään 3 hengelle · Toimii Cloudflaressa"
+    }
+  },
+  "billing": {
+    "current": "Tämän toimiston paketti",
+    "members": "{used}/{seats} jäsentä",
+    "freeNote": "Ilmainen enintään {seats} jäsenelle, kaikilla ominaisuuksilla.",
+    "renews": "Uusiutuu {date} · {price} {per}",
+    "ends": "Päättyy {date}, sitten ilmainen paketti",
+    "perMonth": "kuukaudessa",
+    "perYear": "vuodessa",
+    "pastDue": "Viimeisin maksu ei mennyt läpi. Paddle yrittää korttia uudelleen; päivitä se, jotta paketti säilyy.",
+    "updateCard": "Päivitä kortti",
+    "keep": "Pidä tämä paketti",
+    "settingUp": "Maksu vastaanotettu. Pakettia otetaan käyttöön…",
+    "settingUpSlow": "Maksu vastaanotettu. Paketin näkymiseen voi mennä minuutti; päivitä sivu, jos sitä ei näy.",
+    "plans": "Paketit",
+    "billedEvery": "Laskutus",
+    "monthly": "Kuukausittain",
+    "yearly": "Vuosittain",
+    "twoFree": "2 kk ilmaiseksi",
+    "currentPlan": "Nykyinen paketti",
+    "cancel": "Peru paketti",
+    "tooMany": "Enemmän jäseniä kuin mahtuu",
+    "toYearly": "Maksa vuosittain",
+    "toMonthly": "Maksa kuukausittain",
+    "switch": "Vaihda",
+    "choose": "Valitse",
+    "upTo": "Enintään {count} jäsentä",
+    "fine": "Hinnat eivät sisällä veroja. Maksut hoitaa jälleenmyyjämme Paddle. Pyydä täysi hyvitys 14 päivän kuluessa maksusta.",
+    "invoices": "Maksut ja laskut",
+    "adminsOnly": "Vain toimiston ylläpitäjät voivat vaihtaa pakettia.",
+    "switchTitle": "Vaihdetaanko pakettiin {plan}?",
+    "switchBody": "Paddle veloittaa tai hyvittää erotuksen jakson jäljellä olevalta ajalta heti. Kerroksessa kukaan ei huomaa mitään.",
+    "cancelTitle": "Perutaanko paketti?",
+    "cancelBody": "Paketti on voimassa {date} asti, sitten toimisto palaa ilmaiseen pakettiin. Ketään ei poisteta, mutta uusia ei voi liittyä ja kerroksessa voi olla vain 3 kerrallaan.",
+    "cancelBodyNow": "Toimisto palaa ilmaiseen pakettiin jakson lopussa. Ketään ei poisteta, mutta uusia ei voi liittyä ja kerroksessa voi olla vain 3 kerrallaan.",
+    "moreSeats": "Hanki lisää paikkoja",
+    "errors": {
+      "tooManyMembers": "Toimistossa on enemmän jäseniä kuin pakettiin mahtuu. Poista ensin joitakin.",
+      "hasSubscription": "Toimistolla on jo paketti. Vaihda se sen sijaan.",
+      "failed": "Se ei onnistunut. Yritä uudelleen."
     }
   }
 }

@@ -332,7 +332,8 @@
       "media": "Audio y vídeo",
       "notifications": "Notificaciones",
       "accessibility": "Accesibilidad",
-      "office": "Oficina"
+      "office": "Oficina",
+      "plan": "Plan y facturación"
     },
     "appearance": "Apariencia",
     "themeNote": "«Sistema» sigue a tu dispositivo.",
@@ -912,7 +913,9 @@
       "free": "Plan gratuito",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "Propietario",
@@ -1484,6 +1487,47 @@
       "title": "Dale a tu equipo",
       "muted": "una planta que compartir.",
       "note": "Gratis para hasta 3 personas · Funciona en Cloudflare"
+    }
+  },
+  "billing": {
+    "current": "Esta oficina está en",
+    "members": "{used} de {seats} miembros",
+    "freeNote": "Gratis para hasta {seats} miembros, con todas las funciones.",
+    "renews": "Se renueva el {date} · {price} {per}",
+    "ends": "Termina el {date}, y luego el plan gratuito",
+    "perMonth": "al mes",
+    "perYear": "al año",
+    "pastDue": "El último pago no se completó. Paddle volverá a intentar el cobro; actualiza la tarjeta para conservar el plan.",
+    "updateCard": "Actualizar tarjeta",
+    "keep": "Conservar este plan",
+    "settingUp": "Pago recibido. Activando el plan…",
+    "settingUpSlow": "Pago recibido. El plan puede tardar un minuto en aparecer; recarga si no se ve.",
+    "plans": "Planes",
+    "billedEvery": "Facturación",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "twoFree": "2 meses gratis",
+    "currentPlan": "Plan actual",
+    "cancel": "Cancelar plan",
+    "tooMany": "Más miembros de los que admite",
+    "toYearly": "Pagar anualmente",
+    "toMonthly": "Pagar mensualmente",
+    "switch": "Cambiar",
+    "choose": "Elegir",
+    "upTo": "Hasta {count} miembros",
+    "fine": "Los precios no incluyen impuestos. Paddle, nuestro revendedor, gestiona los pagos. Pide el reembolso completo dentro de los 14 días posteriores a un pago.",
+    "invoices": "Pagos y facturas",
+    "adminsOnly": "Solo los administradores de la oficina pueden cambiar su plan.",
+    "switchTitle": "¿Cambiar a {plan}?",
+    "switchBody": "Paddle cobra o abona la diferencia por el tiempo que queda del periodo, al momento. Nadie en la planta nota nada.",
+    "cancelTitle": "¿Cancelar el plan?",
+    "cancelBody": "El plan sigue hasta el {date}; después, la oficina vuelve al plan gratuito. No se elimina a nadie, pero nadie nuevo podrá unirse y solo 3 podrán estar en la planta a la vez.",
+    "cancelBodyNow": "La oficina vuelve al plan gratuito al final de este periodo. No se elimina a nadie, pero nadie nuevo podrá unirse y solo 3 podrán estar en la planta a la vez.",
+    "moreSeats": "Conseguir más puestos",
+    "errors": {
+      "tooManyMembers": "Esta oficina tiene más miembros de los que admite ese plan. Quita algunos primero.",
+      "hasSubscription": "Esta oficina ya tiene un plan. Cámbialo en su lugar.",
+      "failed": "No ha funcionado. Inténtalo de nuevo."
     }
   }
 }

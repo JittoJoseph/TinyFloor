@@ -23,6 +23,7 @@ import { usePlace } from "./place";
 import { MemberCard } from "./MemberCard";
 import { Link } from "@/lib/i18n/navigation";
 import { withPostHog } from "@/lib/analytics";
+import { usePlans } from "@/lib/billing";
 
 /** People: an office's members and who can come in, or who is in the lobby now. */
 export function PeopleView() {
@@ -182,14 +183,7 @@ function OfficePeople() {
                   />
                 );
               })}
-              {admin && full && (
-                <li>
-                  <div className="flex h-full min-h-[132px] flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border-strong px-4 text-center">
-                    <p className="text-[13.5px] font-medium text-foreground">{t("allSeatsTaken")}</p>
-                    <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("allSeatsTakenBody")}</p>
-                  </div>
-                </li>
-              )}
+              {admin && full && <OfficeFull />}
               {admin && !full && (
                 <li>
                   <button
@@ -451,5 +445,33 @@ function LobbyPeople() {
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * Every seat taken, as its admins see it: where paid plans are on, the way to
+ * more seats; until then, that more are coming.
+ */
+function OfficeFull() {
+  const t = useTranslations("office.people");
+  const settingsPath = usePlace().paths.settings;
+  const tb = useTranslations("billing");
+  const plans = usePlans();
+  return (
+    <li>
+      <div className="flex h-full min-h-[132px] flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border-strong px-4 text-center">
+        <p className="text-[13.5px] font-medium text-foreground">{t("allSeatsTaken")}</p>
+        {plans?.billing ? (
+          <Link
+            href={`${settingsPath}#plan`}
+            className="mt-1.5 inline-flex h-9 items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+          >
+            {tb("moreSeats")}
+          </Link>
+        ) : (
+          <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("allSeatsTakenBody")}</p>
+        )}
+      </div>
+    </li>
   );
 }

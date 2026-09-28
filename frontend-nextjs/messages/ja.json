@@ -332,7 +332,8 @@
       "media": "音声とビデオ",
       "notifications": "通知",
       "accessibility": "アクセシビリティ",
-      "office": "オフィス"
+      "office": "オフィス",
+      "plan": "プランと請求"
     },
     "appearance": "外観",
     "themeNote": "「システム」はデバイスの設定に従います。",
@@ -912,7 +913,9 @@
       "free": "無料プラン",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "team": "Team",
+      "business": "Business"
     },
     "roles": {
       "owner": "オーナー",
@@ -1484,6 +1487,47 @@
       "title": "チームに、",
       "muted": "みんなのフロアを。",
       "note": "3人まで無料 · Cloudflare上で動作"
+    }
+  },
+  "billing": {
+    "current": "このオフィスのプラン",
+    "members": "メンバー {used}/{seats} 人",
+    "freeNote": "{seats} 人まで無料、すべての機能つき。",
+    "renews": "{date} に更新 · {price}{per}",
+    "ends": "{date} に終了し、その後は無料プラン",
+    "perMonth": "/月",
+    "perYear": "/年",
+    "pastDue": "前回の支払いが完了しませんでした。Paddle が再試行します。プランを維持するにはカードを更新してください。",
+    "updateCard": "カードを更新",
+    "keep": "このプランを続ける",
+    "settingUp": "お支払いを受け付けました。プランを準備しています…",
+    "settingUpSlow": "お支払いを受け付けました。プランの反映に 1 分ほどかかる場合があります。表示されない場合は再読み込みしてください。",
+    "plans": "プラン",
+    "billedEvery": "請求",
+    "monthly": "月払い",
+    "yearly": "年払い",
+    "twoFree": "2か月無料",
+    "currentPlan": "現在のプラン",
+    "cancel": "プランを解約",
+    "tooMany": "メンバーが上限を超えています",
+    "toYearly": "年払いにする",
+    "toMonthly": "月払いにする",
+    "switch": "変更する",
+    "choose": "選ぶ",
+    "upTo": "最大 {count} 人",
+    "fine": "価格は税抜きです。支払いは販売代理店の Paddle が処理します。支払いから 14 日以内なら全額返金できます。",
+    "invoices": "支払いと請求書",
+    "adminsOnly": "プランを変更できるのはオフィスの管理者だけです。",
+    "switchTitle": "{plan} に変更しますか？",
+    "switchBody": "今期間の残りの差額は Paddle がすぐに請求または返金します。フロアの誰にも影響はありません。",
+    "cancelTitle": "プランを解約しますか？",
+    "cancelBody": "{date} までプランが続き、その後オフィスは無料プランに戻ります。誰も削除されませんが、新しいメンバーは参加できず、フロアに同時にいられるのは 3 人までになります。",
+    "cancelBodyNow": "期間の終わりにオフィスは無料プランに戻ります。誰も削除されませんが、新しいメンバーは参加できず、フロアに同時にいられるのは 3 人までになります。",
+    "moreSeats": "席を増やす",
+    "errors": {
+      "tooManyMembers": "このオフィスのメンバー数がそのプランの上限を超えています。先にメンバーを減らしてください。",
+      "hasSubscription": "このオフィスにはすでにプランがあります。変更してください。",
+      "failed": "うまくいきませんでした。もう一度お試しください。"
     }
   }
 }

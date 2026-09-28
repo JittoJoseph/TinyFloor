@@ -66,7 +66,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Den offentlige lobby er gratis for alle, og det er et kontor til op til 3 personer også. Abonnementer til større teams kommer snart."
+        "a": "Ja. Den offentlige lobby er gratis for alle, og det er et kontor til op til 3 personer også. Større kontorer koster 19 $ om måneden for 10 personer og 49 $ for 25."
       },
       {
         "q": "Skal jeg installere noget?",
@@ -416,8 +416,8 @@
       "screenShare": "Skærmdeling"
     },
     "us": {
-      "price": "Gratis",
-      "freePlan": "Alt, uden tidsgrænse. Rummene har plads til 20 personer.",
+      "price": "Gratis for 3 personer, 19 $ om måneden for 10",
+      "freePlan": "Alt, uden tidsgrænse, for op til 3 personer.",
       "browser": "Ja, intet at installere",
       "screenShare": "Ja, i opkald og møder"
     },
@@ -431,7 +431,7 @@
           "description": "Leder du efter et gratis alternativ til Gather? TinyFloor er et virtuelt kontor i pixel art med videoopkald, når man står tæt på hinanden."
         },
         "title": "Et gratis <em>alternativ til Gather.</em>",
-        "subtitle": "Gather har fjernet sin gratisplan og tager nu betaling pr. medlem. TinyFloor beholder den samme idé, et kontor du går rundt og snakker i, og forbliver gratis.",
+        "subtitle": "Gather har fjernet sin gratisplan og tager nu betaling pr. medlem. TinyFloor beholder den samme idé, et kontor man går rundt og taler i, gratis for op til 3 personer og derefter én pris for hele kontoret.",
         "points": [
           {
             "title": "Ingen prøveperiode der løber ud",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "Er Gather stadig gratis?",
-            "a": "Nej. Gather har ikke længere en permanent gratisplan. Der er en prøveperiode på 30 dage, og derefter starter Essential-planen ved 12 $ pr. medlem om måneden. TinyFloor er gratis."
+            "a": "Nej. Gather har ikke længere en permanent gratisplan. Der er en prøveperiode på 30 dage, og derefter starter Essential-planen ved 12 $ pr. medlem om måneden. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
           },
           {
             "q": "Hvad har Gather, som TinyFloor ikke har?",
@@ -478,7 +478,7 @@
           "description": "Kumospaces gratisplan stopper ved 5 medlemmer. TinyFloor er et gratis virtuelt kontor i pixel art med videoopkald, når man står tæt, åbent for hele dit team i browseren."
         },
         "title": "Et <em>alternativ til Kumospace</em> for hele teamet.",
-        "subtitle": "Kumospaces gratisplan har plads til 5 medlemmer på én etage. TinyFloor har ingen medlemsgrænse og ingen betalt plan, så hele teamet kan flytte ind.",
+        "subtitle": "Kumospaces gratisplan har plads til 5 medlemmer på én etage. TinyFloor er gratis for 3 og derefter én pris for hele kontoret: 19 $ om måneden for op til 10.",
         "points": [
           {
             "title": "Ingen grænse på 5 medlemmer",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "Er Kumospace gratis?",
-            "a": "Kumospace har en gratisplan for op til 5 registrerede medlemmer, med én etage og gæster begrænset til 4 timer om ugen. Business-planen starter ved 16 $ pr. bruger om måneden. TinyFloor er gratis for alle."
+            "a": "Kumospace har en gratisplan for op til 5 registrerede medlemmer, med én etage og gæster begrænset til 4 timer om ugen. Business-planen starter ved 16 $ pr. bruger om måneden. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
           },
           {
             "q": "Hvad har Kumospace, som TinyFloor ikke har?",
-            "a": "Kumospaces betalte planer tilføjer optagelse og ubegrænset chathistorik. TinyFloor optager ikke opkald endnu, men skærmdeling, chat og opkald er gratis for alle."
+            "a": "Kumospaces betalte planer tilføjer optagelse og ubegrænset chathistorik. TinyFloor optager ikke opkald endnu, men skærmdeling, chat og opkald er med i alle planer, også den gratis."
           },
           {
             "q": "Skal mine kolleger have en konto?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "Er SpatialChat gratis?",
-            "a": "SpatialChat har en gratisplan med op til 2 timers møder om dagen for op til 12 deltagere. Betalte muligheder er et Day Pass til 5 $ pr. bruger og Business-planer fra 399 $ om måneden. TinyFloor er gratis uden daglig grænse."
+            "a": "SpatialChat har en gratisplan med op til 2 timers møder om dagen for op til 12 deltagere. Betalte muligheder er et Day Pass til 5 $ pr. bruger og Business-planer fra 399 $ om måneden. TinyFloor har ingen daglig grænse på nogen plan, heller ikke den gratis."
           },
           {
             "q": "Er TinyFloor godt til virtuelle events?",
@@ -569,14 +569,14 @@
         "label": "Alternativ til WorkAdventure",
         "meta": {
           "title": "Alternativ til WorkAdventure med rum til 20",
-          "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et gratis virtuelt kontor i pixel art med videoopkald, når man står tæt, og rum til 20."
+          "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et virtuelt kontor i pixel art med videoopkald, når man står tæt, gratis for 3 personer og 19 $ om måneden for 10."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plads til at vokse.",
-        "subtitle": "WorkAdventure er også et kontor i pixel art, og gratisplanen har plads til 10 personer ad gangen. TinyFloors rum har plads til 20, og der er ingen betalt plan at skifte til.",
+        "subtitle": "WorkAdventure er også et kontor i pixel art, og gratisplanen har plads til 10 personer ad gangen. TinyFloor er gratis for 3 personer og derefter én fast pris, ikke en pris pr. person.",
         "points": [
           {
             "title": "Dobbelt så meget plads",
-            "body": "Et gratis WorkAdventure-kort har plads til 10 personer ad gangen. Et TinyFloor-rum har plads til 20, og du kan åbne så mange rum, du vil."
+            "body": "Et gratis WorkAdventure-kort har plads til 10 personer ad gangen. Et TinyFloor-kontor har plads til op til 25 medlemmer, og du kan åbne så mange kontorer, du vil."
           },
           {
             "title": "Intet kort at bygge",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "Er WorkAdventure gratis?",
-            "a": "WorkAdventure har en gratisplan for op til 10 samtidige brugere. Business-planen starter ved 8 € pr. bruger om måneden, og eventpriser ved 4 € pr. bruger pr. dag. TinyFloor er gratis."
+            "a": "WorkAdventure har en gratisplan for op til 10 samtidige brugere. Business-planen starter ved 8 € pr. bruger om måneden, og eventpriser ved 4 € pr. bruger pr. dag. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
           },
           {
             "q": "Kan jeg tilpasse kortet i TinyFloor?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "Er TinyFloor gratis?",
-            "a": "Ja. At oprette rum, gå rundt, chatte og ringe er gratis."
+            "a": "Ja, for et kontor til op til 3 personer, og den offentlige lobby er gratis for alle. At gå rundt, chatte og ringe er med i alle planer."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "Er det gratis?",
-            "a": "Ja. TinyFloor er gratis, uden prøveperiode og uden pris pr. plads."
+            "a": "Ja, for op til 3 personer. Derefter er det én pris for hele kontoret, 19 $ om måneden for op til 10, uden prøveperiode og uden pris pr. plads."
           },
           {
             "q": "Hvor mange kan bruge ét kontor?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "Er det gratis for lærere?",
-            "a": "Ja. TinyFloor er gratis og har ingen betalt plan."
+            "a": "Ja, for op til 3 personer pr. kontor, og den offentlige lobby er gratis for alle. En klasse på op til 25 koster 49 $ om måneden."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "Er det gratis?",
-            "a": "Ja. TinyFloor er gratis i browseren, på computer og mobil."
+            "a": "Ja. Den offentlige lobby er gratis for alle, og et kontor er gratis for op til 3 personer, i browseren på computer og mobil."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "Om os",
       "privacy": "Privatliv",
-      "terms": "Vilkår"
+      "terms": "Vilkår",
+      "refunds": "Refundering"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
       "muted": "ikke pr. person.",
-      "body": "Start gratis. Gæster tæller aldrig med.",
+      "body": "Start gratis. Alle planer har alt, og gæster tæller aldrig med.",
       "soon": "Kommer snart",
       "forever": "for altid",
       "month": "om måneden",
@@ -1449,7 +1450,7 @@
         "items": [
           "En privat etage",
           "Opkald og møder",
-          "Kanaler og beskeder",
+          "Chat, billeder og filer",
           "Gæster via link"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Én pris for hele kontoret, uanset hvor mange af de ti pladser du fylder.",
         "items": [
           "Alt i Free",
-          "Billeder og filer i chatten",
-          "Så mange gæstelinks du vil",
+          "Plads til 10 medlemmer",
           "Årligt: to måneder gratis"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Til teamet, der er vokset ud af én række skriveborde.",
         "items": [
           "Alt i Team",

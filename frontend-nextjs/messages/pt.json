@@ -66,7 +66,7 @@
       },
       {
         "q": "O TinyFloor é gratuito?",
-        "a": "Sim. O lobby público é gratuito para todos, assim como um escritório para até 3 pessoas. Planos para equipes maiores chegam em breve."
+        "a": "Sim. O lobby público é gratuito para todos, assim como um escritório para até 3 pessoas. Escritórios maiores custam US$ 19 por mês para 10 pessoas e US$ 49 para 25."
       },
       {
         "q": "Preciso instalar alguma coisa?",
@@ -416,8 +416,8 @@
       "screenShare": "Compartilhamento de tela"
     },
     "us": {
-      "price": "Grátis",
-      "freePlan": "Tudo, sem limite de tempo. As salas comportam 20 pessoas.",
+      "price": "Grátis para 3 pessoas, US$ 19 por mês para 10",
+      "freePlan": "Tudo, sem limite de tempo, para até 3 pessoas.",
       "browser": "Sim, sem instalar nada",
       "screenShare": "Sim, em chamadas e reuniões"
     },
@@ -431,7 +431,7 @@
           "description": "Procurando uma alternativa gratuita ao Gather? TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade."
         },
         "title": "Uma <em>alternativa gratuita ao Gather.</em>",
-        "subtitle": "O Gather acabou com o plano gratuito e agora cobra por membro. O TinyFloor mantém a mesma ideia, um escritório onde você anda e conversa, e continua grátis.",
+        "subtitle": "O Gather acabou com o plano gratuito e agora cobra por membro. O TinyFloor mantém a mesma ideia, um escritório por onde você anda e conversa, grátis para até 3 pessoas e depois um só preço para o escritório inteiro.",
         "points": [
           {
             "title": "Sem contagem regressiva",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "O Gather ainda é grátis?",
-            "a": "Não. O Gather não tem mais um plano gratuito permanente. Ele oferece um teste de 30 dias e depois o plano Essential começa em US$ 12 por membro por mês. O TinyFloor é grátis."
+            "a": "Não. O Gather não tem mais um plano gratuito permanente. Ele oferece um teste de 30 dias e depois o plano Essential começa em US$ 12 por membro por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
           },
           {
             "q": "O que o Gather tem que o TinyFloor não tem?",
@@ -478,7 +478,7 @@
           "description": "O plano gratuito do Kumospace para em 5 membros. O TinyFloor é um escritório virtual gratuito em pixel art com chamadas de vídeo por proximidade, aberto para toda a equipe no navegador."
         },
         "title": "Uma <em>alternativa ao Kumospace</em> para toda a equipe.",
-        "subtitle": "O plano gratuito do Kumospace comporta 5 membros em um andar. O TinyFloor não tem limite de membros nem plano pago, então a equipe inteira pode se mudar.",
+        "subtitle": "O plano gratuito do Kumospace comporta 5 membros em um andar. O TinyFloor é grátis para 3, e depois um só preço para o escritório inteiro: US$ 19 por mês para até 10.",
         "points": [
           {
             "title": "Sem limite de 5 membros",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "O Kumospace é grátis?",
-            "a": "O Kumospace tem um plano gratuito para até 5 membros registrados, com um andar e convidados limitados a 4 horas por semana. O plano Business começa em US$ 16 por usuário por mês. O TinyFloor é grátis para todos."
+            "a": "O Kumospace tem um plano gratuito para até 5 membros registrados, com um andar e convidados limitados a 4 horas por semana. O plano Business começa em US$ 16 por usuário por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
           },
           {
             "q": "O que o Kumospace tem que o TinyFloor não tem?",
-            "a": "Os planos pagos do Kumospace adicionam gravação e histórico de chat ilimitado. O TinyFloor ainda não grava chamadas, mas compartilhamento de tela, chat e chamadas são grátis para todos."
+            "a": "Os planos pagos do Kumospace adicionam gravação e histórico de chat ilimitado. O TinyFloor ainda não grava chamadas, mas compartilhamento de tela, chat e chamadas estão em todos os planos, inclusive no grátis."
           },
           {
             "q": "Meus colegas precisam de conta?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "O SpatialChat é grátis?",
-            "a": "O SpatialChat tem um plano gratuito com até 2 horas de reuniões por dia para até 12 participantes. As opções pagas incluem um Day Pass de US$ 5 por usuário e planos Business a partir de US$ 399 por mês. O TinyFloor é grátis e sem limite diário."
+            "a": "O SpatialChat tem um plano gratuito com até 2 horas de reuniões por dia para até 12 participantes. As opções pagas incluem um Day Pass de US$ 5 por usuário e planos Business a partir de US$ 399 por mês. O TinyFloor não tem limite diário em nenhum plano, nem no grátis."
           },
           {
             "q": "O TinyFloor serve para eventos virtuais?",
@@ -569,14 +569,14 @@
         "label": "Alternativa ao WorkAdventure",
         "meta": {
           "title": "Alternativa ao WorkAdventure com salas para 20",
-          "description": "O plano gratuito do WorkAdventure permite 10 pessoas ao mesmo tempo. O TinyFloor é um escritório virtual gratuito em pixel art com chamadas de vídeo por proximidade e salas para 20."
+          "description": "O plano gratuito do WorkAdventure permite 10 pessoas ao mesmo tempo. O TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade, grátis para 3 pessoas e US$ 19 por mês para 10."
         },
         "title": "Uma <em>alternativa ao WorkAdventure</em> com espaço para crescer.",
-        "subtitle": "O WorkAdventure também é um escritório em pixel art, e o plano gratuito comporta 10 pessoas ao mesmo tempo. As salas do TinyFloor comportam 20, e não há plano pago para contratar.",
+        "subtitle": "O WorkAdventure também é um escritório em pixel art, e o plano gratuito comporta 10 pessoas ao mesmo tempo. O TinyFloor é grátis para 3 pessoas e depois tem um preço fixo, não um preço por pessoa.",
         "points": [
           {
             "title": "O dobro de espaço",
-            "body": "Um mapa gratuito do WorkAdventure comporta 10 pessoas ao mesmo tempo. Uma sala do TinyFloor comporta 20, e você pode abrir quantas salas quiser."
+            "body": "Um mapa gratuito do WorkAdventure comporta 10 pessoas ao mesmo tempo. Um escritório do TinyFloor comporta até 25 membros, e você pode abrir quantos escritórios quiser."
           },
           {
             "title": "Nenhum mapa para montar",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "O WorkAdventure é grátis?",
-            "a": "O WorkAdventure tem um plano gratuito para até 10 usuários simultâneos. O plano Business começa em 8 € por usuário por mês, e os preços para eventos em 4 € por usuário por dia. O TinyFloor é grátis."
+            "a": "O WorkAdventure tem um plano gratuito para até 10 usuários simultâneos. O plano Business começa em 8 € por usuário por mês, e os preços para eventos em 4 € por usuário por dia. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
           },
           {
             "q": "Posso personalizar o mapa no TinyFloor?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "O TinyFloor é grátis?",
-            "a": "Sim. Criar salas, andar pelo espaço, conversar no chat e fazer chamadas é grátis."
+            "a": "Sim, para um escritório de até 3 pessoas, e o lobby público é gratuito para todos. Andar pelo espaço, conversar no chat e fazer chamadas estão em todos os planos."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "É grátis?",
-            "a": "Sim. O TinyFloor é grátis, sem período de teste e sem preço por usuário."
+            "a": "Sim, para até 3 pessoas. Depois é um só preço para o escritório inteiro, US$ 19 por mês para até 10, sem período de teste e sem preço por usuário."
           },
           {
             "q": "Quantas pessoas podem usar um escritório?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "É grátis para professores?",
-            "a": "Sim. O TinyFloor é grátis e não tem plano pago."
+            "a": "Sim, para até 3 pessoas por escritório, e o lobby público é gratuito para todos. Uma turma de até 25 custa US$ 49 por mês."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "É grátis?",
-            "a": "Sim. O TinyFloor é grátis no navegador, no computador e no celular."
+            "a": "Sim. O lobby público é gratuito para todos e um escritório é grátis para até 3 pessoas, no navegador do computador e do celular."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "Sobre",
       "privacy": "Privacidade",
-      "terms": "Termos"
+      "terms": "Termos",
+      "refunds": "Reembolsos"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Preços",
       "title": "Preço por escritório,",
       "muted": "não por pessoa.",
-      "body": "Comece grátis. Convidados nunca contam.",
+      "body": "Comece grátis. Todos os planos têm tudo, e convidados nunca contam.",
       "soon": "Em breve",
       "forever": "para sempre",
       "month": "por mês",
@@ -1449,7 +1450,7 @@
         "items": [
           "Um andar privado",
           "Chamadas e reuniões",
-          "Canais e mensagens",
+          "Chat, imagens e arquivos",
           "Convidados por link"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Um só preço para o escritório todo, não importa quantos dos dez lugares você ocupe.",
         "items": [
           "Tudo do Free",
-          "Imagens e arquivos no chat",
-          "Quantos links de convidado quiser",
+          "Espaço para 10 membros",
           "Anual: dois meses grátis"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Para a equipe que já não cabe em uma fileira de mesas.",
         "items": [
           "Tudo do Team",

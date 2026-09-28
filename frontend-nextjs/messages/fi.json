@@ -66,7 +66,7 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Paketit isommille tiimeille tulossa pian."
+        "a": "Kyllä. Julkinen aula on kaikille ilmainen, samoin toimisto enintään 3 hengelle. Isommat toimistot maksavat 19 $ kuukaudessa 10 hengelle ja 49 $ 25 hengelle."
       },
       {
         "q": "Pitääkö minun asentaa jotain?",
@@ -416,8 +416,8 @@
       "screenShare": "Näytön jakaminen"
     },
     "us": {
-      "price": "Ilmainen",
-      "freePlan": "Kaikki, ilman aikarajaa. Huoneisiin mahtuu 20 henkeä.",
+      "price": "Ilmainen 3 hengelle, 19 $ kuukaudessa 10 hengelle",
+      "freePlan": "Kaikki, ilman aikarajaa, enintään 3 hengelle.",
       "browser": "Kyllä, ei asennettavaa",
       "screenShare": "Kyllä, puheluissa ja kokouksissa"
     },
@@ -431,7 +431,7 @@
           "description": "Etsitkö ilmaista Gather-vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista."
         },
         "title": "Ilmainen <em>Gather-vaihtoehto.</em>",
-        "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. TinyFloor säilyttää saman idean, toimiston jossa kävellään ja jutellaan, ja pysyy ilmaisena.",
+        "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. TinyFloor säilyttää saman idean, toimiston jossa liikutaan ja jutellaan: ilmainen enintään 3 hengelle ja sen jälkeen yksi hinta koko toimistolle.",
         "points": [
           {
             "title": "Ei päättyvää kokeilujaksoa",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "Onko Gather yhä ilmainen?",
-            "a": "Ei. Gatherilla ei ole enää pysyvää ilmaista pakettia. Tarjolla on 30 päivän kokeilu, jonka jälkeen Essential-paketti maksaa alkaen 12 $ jäseneltä kuukaudessa. TinyFloor on ilmainen."
+            "a": "Ei. Gatherilla ei ole enää pysyvää ilmaista pakettia. Tarjolla on 30 päivän kokeilu, jonka jälkeen Essential-paketti maksaa alkaen 12 $ jäseneltä kuukaudessa. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 19 $ kuukaudessa enintään 10 hengelle."
           },
           {
             "q": "Mitä Gatherissa on, mitä TinyFloorissä ei ole?",
@@ -478,7 +478,7 @@
           "description": "Kumospacen ilmainen paketti loppuu 5 jäseneen. TinyFloor on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, avoin koko tiimillesi selaimessa."
         },
         "title": "<em>Kumospace-vaihtoehto</em> koko tiimille.",
-        "subtitle": "Kumospacen ilmaiseen pakettiin mahtuu 5 jäsentä yhteen kerrokseen. TinyFloorissä ei ole jäsenrajaa eikä maksullista pakettia, joten koko tiimi voi muuttaa sisään.",
+        "subtitle": "Kumospacen ilmaiseen pakettiin mahtuu 5 jäsentä yhteen kerrokseen. TinyFloor on ilmainen 3 hengelle, ja sen jälkeen koko toimistolla on yksi hinta: 19 $ kuukaudessa enintään 10 hengelle.",
         "points": [
           {
             "title": "Ei 5 jäsenen rajaa",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "Onko Kumospace ilmainen?",
-            "a": "Kumospacella on ilmainen paketti enintään 5 rekisteröityneelle jäsenelle, yksi kerros ja vieraille 4 tuntia viikossa. Business-paketti alkaa 16 $ käyttäjältä kuukaudessa. TinyFloor on kaikille ilmainen."
+            "a": "Kumospacella on ilmainen paketti enintään 5 rekisteröityneelle jäsenelle, yksi kerros ja vieraille 4 tuntia viikossa. Business-paketti alkaa 16 $ käyttäjältä kuukaudessa. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 19 $ kuukaudessa enintään 10 hengelle."
           },
           {
             "q": "Mitä Kumospacessa on, mitä TinyFloorissä ei ole?",
-            "a": "Kumospacen maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. TinyFloor ei vielä tallenna puheluita, mutta näytön jakaminen, chat ja puhelut ovat kaikille ilmaisia."
+            "a": "Kumospacen maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. TinyFloor ei vielä tallenna puheluita, mutta näytön jakaminen, chat ja puhelut kuuluvat jokaiseen pakettiin, myös ilmaiseen."
           },
           {
             "q": "Tarvitsevatko tiimikaverini tilin?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "Onko SpatialChat ilmainen?",
-            "a": "SpatialChatilla on ilmainen paketti, jossa voi pitää kokouksia enintään 2 tuntia päivässä enintään 12 osallistujalle. Maksullisia vaihtoehtoja ovat 5 $ Day Pass käyttäjältä ja Business-paketit alkaen 399 $ kuukaudessa. TinyFloor on ilmainen ilman päivärajaa."
+            "a": "SpatialChatilla on ilmainen paketti, jossa voi pitää kokouksia enintään 2 tuntia päivässä enintään 12 osallistujalle. Maksullisia vaihtoehtoja ovat 5 $ Day Pass käyttäjältä ja Business-paketit alkaen 399 $ kuukaudessa. TinyFloorissa ei ole päivärajaa missään paketissa, ei ilmaisessakaan."
           },
           {
             "q": "Sopiiko TinyFloor virtuaalitapahtumiin?",
@@ -569,14 +569,14 @@
         "label": "WorkAdventure-vaihtoehto",
         "meta": {
           "title": "WorkAdventure-vaihtoehto 20 hengen huoneilla",
-          "description": "WorkAdventuren ilmainen paketti sallii 10 henkeä kerralla. TinyFloor on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla ja 20 hengen huoneilla."
+          "description": "WorkAdventuren ilmainen paketti sallii 10 henkeä kerralla. TinyFloor on pikselitaiteinen virtuaalitoimisto lähipuheluilla, ilmainen 3 hengelle ja 19 $ kuukaudessa 10 hengelle."
         },
         "title": "<em>WorkAdventure-vaihtoehto</em>, jossa on tilaa kasvaa.",
-        "subtitle": "WorkAdventure on myös pikselitaiteinen toimisto, ja sen ilmaiseen pakettiin mahtuu 10 henkeä kerralla. TinyFloorin huoneisiin mahtuu 20, eikä maksullista pakettia tarvitse ottaa.",
+        "subtitle": "WorkAdventure on myös pikselitaiteinen toimisto, ja sen ilmaiseen pakettiin mahtuu 10 henkeä kerralla. TinyFloor on ilmainen 3 hengelle ja sen jälkeen kiinteähintainen, ei henkilökohtaista hintaa.",
         "points": [
           {
             "title": "Tuplasti tilaa",
-            "body": "Ilmaiseen WorkAdventure-karttaan mahtuu 10 henkeä kerralla. TinyFloor-huoneeseen mahtuu 20, ja voit avata niin monta huonetta kuin haluat."
+            "body": "Ilmaiseen WorkAdventure-karttaan mahtuu 10 henkeä kerralla. TinyFloor-toimistoon mahtuu enintään 25 jäsentä, ja voit avata niin monta toimistoa kuin haluat."
           },
           {
             "title": "Ei rakennettavaa karttaa",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "Onko WorkAdventure ilmainen?",
-            "a": "WorkAdventurella on ilmainen paketti enintään 10 samanaikaiselle käyttäjälle. Business-paketti alkaa 8 € käyttäjältä kuukaudessa, ja tapahtumahinnat 4 € käyttäjältä päivässä. TinyFloor on ilmainen."
+            "a": "WorkAdventurella on ilmainen paketti enintään 10 samanaikaiselle käyttäjälle. Business-paketti alkaa 8 € käyttäjältä kuukaudessa, ja tapahtumahinnat 4 € käyttäjältä päivässä. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 19 $ kuukaudessa enintään 10 hengelle."
           },
           {
             "q": "Voinko muokata karttaa TinyFloorissä?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "Onko TinyFloor ilmainen?",
-            "a": "Kyllä. Huoneiden luominen, liikkuminen, chattailu ja soittaminen ovat ilmaisia."
+            "a": "Kyllä, enintään 3 hengen toimistolle, ja julkinen aula on kaikille ilmainen. Liikkuminen, chattailu ja soittaminen kuuluvat jokaiseen pakettiin."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "Onko se ilmainen?",
-            "a": "Kyllä. TinyFloor on ilmainen, ilman kokeilujaksoa ja käyttäjäkohtaista hintaa."
+            "a": "Kyllä, enintään 3 hengelle. Sen jälkeen koko toimistolla on yksi hinta, 19 $ kuukaudessa enintään 10 hengelle, ilman kokeilujaksoa ja käyttäjäkohtaista hintaa."
           },
           {
             "q": "Montako henkeä voi käyttää yhtä toimistoa?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "Onko se ilmainen opettajille?",
-            "a": "Kyllä. TinyFloor on ilmainen, eikä siinä ole maksullista pakettia."
+            "a": "Kyllä, enintään 3 hengelle toimistoa kohden, ja julkinen aula on kaikille ilmainen. Enintään 25 hengen luokka maksaa 49 $ kuukaudessa."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "Onko se ilmainen?",
-            "a": "Kyllä. TinyFloor on ilmainen selaimessa tietokoneella ja puhelimella."
+            "a": "Kyllä. Julkinen aula on kaikille ilmainen ja toimisto on ilmainen enintään 3 hengelle, selaimessa tietokoneella ja puhelimella."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "Tietoa meistä",
       "privacy": "Tietosuoja",
-      "terms": "Käyttöehdot"
+      "terms": "Käyttöehdot",
+      "refunds": "Palautukset"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
       "muted": "ei henkilöltä.",
-      "body": "Aloita ilmaiseksi. Vieraita ei koskaan lasketa.",
+      "body": "Aloita ilmaiseksi. Jokaisessa paketissa on kaikki, eikä vieraita koskaan lasketa.",
       "soon": "Tulossa",
       "forever": "ikuisesti",
       "month": "kuukaudessa",
@@ -1449,7 +1450,7 @@
         "items": [
           "Oma yksityinen kerros",
           "Puhelut ja palaverit",
-          "Kanavat ja viestit",
+          "Chat, kuvat ja tiedostot",
           "Vieraat linkillä"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Yksi hinta koko toimistolle, täytitpä kymmenestä paikasta kuinka monta tahansa.",
         "items": [
           "Kaikki Freestä",
-          "Kuvat ja tiedostot chatissa",
-          "Niin monta vieraslinkkiä kuin haluat",
+          "Tilaa 10 jäsenelle",
           "Vuosittain: kaksi kuukautta ilmaiseksi"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Tiimille, jolle yksi pöytärivi on käynyt pieneksi.",
         "items": [
           "Kaikki Teamista",

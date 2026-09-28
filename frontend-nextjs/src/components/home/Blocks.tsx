@@ -244,14 +244,14 @@ export function Everything() {
   );
 }
 
-/** Three offices, priced by how many people they hold. The one in the middle stands on the bezel's black. */
+/** Three plans, priced by how many people the office holds, with everything on each. The one in the middle stands on the bezel's black. */
 export function Plans() {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
-  const plans: Array<{ key: "free" | "team" | "office"; price: string; per: string; people: number; soon?: boolean; featured?: boolean }> = [
+  const plans: Array<{ key: "free" | "team" | "business"; price: string; per: string; people: number; soon?: boolean; featured?: boolean }> = [
     { key: "free", price: "$0", per: t("forever"), people: 3 },
     { key: "team", price: "$19", per: t("month"), people: 10, soon: true, featured: true },
-    { key: "office", price: "$39", per: t("month"), people: 25, soon: true },
+    { key: "business", price: "$49", per: t("month"), people: 25, soon: true },
   ];
 
   return (

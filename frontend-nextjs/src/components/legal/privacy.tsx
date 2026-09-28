@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "25 September 2026";
+export const PRIVACY_UPDATED = "28 September 2026";
 
 export const privacySummary = (
   <>
@@ -95,6 +95,13 @@ export const privacySections: LegalSection[] = [
           repeated wrong passwords for a short time, and for Cloudflare Turnstile, which checks that sign-ups and new guests aren&apos;t bots.
           These counters clear themselves within minutes.
         </p>
+
+        <h3>When you pay for a plan</h3>
+        <p>
+          Paddle, our reseller, takes the payment and keeps your card or payment details; we never see them. From Paddle we receive what we
+          need to run the plan: the name and email address of whoever paid, the country, which office the plan is for, the plan, its status and
+          renewal date, and the IDs Paddle uses for the customer and the subscription.
+        </p>
       </>
     ),
   },
@@ -164,6 +171,14 @@ export const privacySections: LegalSection[] = [
           <li>
             <strong>Discord</strong> carries the team notes described above.
           </li>
+          <li>
+            <strong>Paddle</strong> sells paid plans as the merchant of record: it takes payments, charges tax, sends receipts and handles
+            refunds, under its own{" "}
+            <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">
+              privacy notice
+            </a>
+            .
+          </li>
         </ul>
         <p>
           Other people in TinyFloor see what the service shows them: your name, character and status in the offices you are in and in the
@@ -232,6 +247,10 @@ export const privacySections: LegalSection[] = [
           </li>
           <li>
             <strong>Usage totals:</strong> kept for 13 months.
+          </li>
+          <li>
+            <strong>Billing records:</strong> kept while the plan runs and afterwards for as long as tax and accounting law requires, usually
+            8 years. Paddle keeps its own records under its own policy.
           </li>
         </ul>
         <p>Our database provider keeps point-in-time backups, so deleted data can remain in them for up to 30 days before it is gone for good.</p>

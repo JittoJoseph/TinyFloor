@@ -34,6 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
     ),
     // The legal pages are in English only; the other languages' copies point here.
-    ...['/privacy', '/terms'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
+    ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
   ];
 }

@@ -20,7 +20,6 @@ import {
   UserPlus,
   Users,
   Video,
-  VolumeX,
   Zap,
   type AppIcon,
 } from "@/components/ui/icons";
@@ -49,7 +48,6 @@ const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
   wonder: [Footprints, Globe, Sun],
   virtualOffice: [Eye, Zap, Video],
   virtualCoworking: [Coffee, DoorOpen, Radio],
-  onlineStudyRoom: [VolumeX, Users, PenLine],
   virtualClassroom: [GraduationCap, Users, PenLine],
   proximityChat: [Footprints, Users, ShieldCheck],
 };

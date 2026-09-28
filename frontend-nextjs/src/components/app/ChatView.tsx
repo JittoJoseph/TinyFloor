@@ -405,9 +405,9 @@ export function ChatView({ channel }: { channel?: string }) {
                       <Chip
                         solid
                         icon={<Hand />}
-                        onClick={() => chat.say(open, t(open === "introductions" ? "starterIntro" : "starterHello"))}
+                        onClick={() => chat.say(open, t("starterHello"))}
                       >
-                        {open === "introductions" ? t("introduceYourself") : t("sayHello")}
+                        {t("sayHello")}
                       </Chip>
                       <Chip icon={<UserPlus />} onClick={() => router.push(place.paths.people)}>
                         {t("invitePeople")}
@@ -445,7 +445,6 @@ export function ChatView({ channel }: { channel?: string }) {
 
   function introFor(id: string) {
     if (lobby) {
-      if (id === "introductions") return t("lobbyIntroductions");
       if (id === "feedback") return t("lobbyFeedback");
       return t("lobbyGeneral");
     }

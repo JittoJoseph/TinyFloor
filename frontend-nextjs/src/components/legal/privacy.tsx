@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "28 September 2026";
+export const PRIVACY_UPDATED = "29 September 2026";
 
 export const privacySummary = (
   <>
@@ -49,7 +49,7 @@ export const privacySections: LegalSection[] = [
           <li>The character you pick, which is saved on your account.</li>
         </ul>
 
-        <h3>When you visit the lobby as a guest</h3>
+        <h3>When you try the demo office as a guest</h3>
         <p>The name and character you choose. Guests don&apos;t give an email address.</p>
 
         <h3>While you use TinyFloor</h3>
@@ -63,7 +63,7 @@ export const privacySections: LegalSection[] = [
           </li>
           <li>
             <strong>Chat:</strong> the messages and reactions you post, and how far you have read in each channel. Messages are visible to the
-            people in that office, or in the public lobby for lobby chat.
+            people in that office, or to everyone in the demo office for its chat.
           </li>
           <li>
             <strong>The floor:</strong> what is drawn on an office&apos;s whiteboard and the music that is playing, so they are still there when
@@ -119,9 +119,9 @@ export const privacySections: LegalSection[] = [
           <li>To reply when you write to us, and to tell you about important changes to the service or these policies.</li>
         </ul>
         <p>
-          When someone walks into the public lobby, or makes a new office, a short note goes to our team&apos;s private Discord channel: the
+          When someone walks into the demo office, or makes a new office, a short note goes to our team&apos;s private Discord channel: the
           person&apos;s name and character, or the office&apos;s name and who made it, with the approximate city, region and country of the
-          connection. It lets us see the service being used as it happens. Lobby chat and what happens inside offices are not sent.
+          connection. It lets us see the service being used as it happens. Demo office chat and what happens inside offices are not sent.
         </p>
         <p>We don&apos;t sell personal data, we don&apos;t use it for advertising, and we don&apos;t build profiles of you for anyone else.</p>
       </>
@@ -181,7 +181,7 @@ export const privacySections: LegalSection[] = [
         </ul>
         <p>
           Other people in TinyFloor see what the service shows them: your name, character and status in the offices you are in and in the
-          public lobby, and the messages you post there. An office&apos;s members can see its member list, including email addresses of
+          demo office, and the messages you post there. An office&apos;s members can see its member list, including email addresses of
           members and of people invited.
         </p>
         <p>
@@ -204,7 +204,7 @@ export const privacySections: LegalSection[] = [
           <li>
             <strong>Analytics cookies:</strong> Google Analytics and Microsoft Clarity set their own cookies to count visits and to understand
             how our pages are used. Clarity records interactions such as clicks, scrolling and mouse movement, and masks what is typed into
-            fields. Inside TinyFloor itself (your offices, the lobby, chat and your account) it is set to hide everything on the screen, so
+            fields. Inside TinyFloor itself (your offices, the demo office, chat and your account) it is set to hide everything on the screen, so
             names and messages are never recorded.
           </li>
           <li>
@@ -235,7 +235,7 @@ export const privacySections: LegalSection[] = [
             <strong>Sessions:</strong> deleted once they expire.
           </li>
           <li>
-            <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Lobby chat</strong> is deleted after a week.
+            <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Demo office chat</strong> is deleted after a week.
           </li>
           <li>
             <strong>Offices:</strong> when an office is deleted, its members, invitations, chat, whiteboard and music are deleted

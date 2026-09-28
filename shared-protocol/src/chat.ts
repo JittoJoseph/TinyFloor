@@ -22,7 +22,7 @@ export const CHANNEL_NAME_MAX = 32;
  * the lobby shows them and says so.
  */
 export const LOBBY_CHAT = "lobby";
-export const LOBBY_CHANNELS = ["general", "introductions", "feedback"] as const;
+export const LOBBY_CHANNELS = ["general", "feedback"] as const;
 /** Who a change was made by when TinyFloor's admin made it, rather than the author. */
 export const MODERATOR = "moderator";
 export const LOBBY_RETENTION_DAYS = 7;

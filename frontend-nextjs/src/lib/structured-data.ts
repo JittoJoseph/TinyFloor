@@ -127,7 +127,8 @@ export function appNode(
     screenshot: `${SITE_URL}${socialImage(locale, "/")}`,
     isAccessibleForFree: true,
     featureList: features,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    // Free for 3, Team $19 for 10, Business $49 for 25 (docs/13).
+    offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "49", priceCurrency: "USD", offerCount: 3 },
     publisher: { "@id": ORG_ID },
   };
 }

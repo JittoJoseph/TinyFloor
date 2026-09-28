@@ -1,13 +1,14 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "25 September 2026";
+export const TERMS_UPDATED = "28 September 2026";
 
 export const termsSummary = (
   <p>
     These terms are the agreement between you and TinyFloor. In short: use TinyFloor lawfully and kindly, you keep what you create, we
-    keep the service running as well as we can but can&apos;t promise it never goes down, and either of us can end things at any time.
-    How we handle your data is in our <Link href="/privacy">Privacy Policy</Link>.
+    keep the service running as well as we can but can&apos;t promise it never goes down, and either of us can end things at any time. Paid
+    plans are sold by Paddle, our reseller, renew until you cancel, and can be refunded within 14 days. How we handle your data is in our{" "}
+    <Link href="/privacy">Privacy Policy</Link>.
   </p>
 );
 
@@ -65,10 +66,62 @@ export const termsSections: LegalSection[] = [
         </li>
         <li>The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.</li>
         <li>
-          The free plan is for up to 3 people per office. We may introduce paid plans with more; if we do, they will come with their own terms
-          and prices, shown before you pay, and nothing you use for free will start costing money without your agreement.
+          Each office has a plan, which sets how many members it can hold: up to 3 on the free plan, more on the paid plans below. Guests in
+          the public lobby, and people invited but not yet joined, don&apos;t count.
         </li>
       </ul>
+    ),
+  },
+  {
+    id: "billing",
+    title: "Paid plans and billing",
+    body: (
+      <>
+        <p>
+          Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle
+          provides all customer service inquiries and handles returns. When you buy a plan, you also agree to Paddle&apos;s{" "}
+          <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener noreferrer">
+            Buyer Terms
+          </a>
+          .
+        </p>
+        <ul>
+          <li>
+            <strong>What you pay for.</strong> A paid plan lets an office hold more members. Every plan, the free one included, has every
+            feature. The plans, their prices and their member limits are on our <Link href="/#plans">pricing</Link>, and are shown again
+            before you pay.
+          </li>
+          <li>
+            <strong>Billing.</strong> Plans are billed in advance, monthly or yearly, and renew automatically at the end of each period until
+            you cancel. Prices don&apos;t include tax; Paddle adds sales tax or VAT where it applies.
+          </li>
+          <li>
+            <strong>Who manages it.</strong> An office&apos;s admins can choose, change and cancel its plan. The plan belongs to the office,
+            not to the person who paid.
+          </li>
+          <li>
+            <strong>Cancelling.</strong> You can cancel at any time. The office keeps its plan until the end of the period already paid for,
+            then goes back to the free plan. Nothing is deleted.
+          </li>
+          <li>
+            <strong>More members than the plan holds.</strong> If an office ends up with more members than its plan allows, for example after
+            cancelling, nobody is removed, but no one new can join, and we may limit use of the floor until members are removed or a bigger
+            plan is chosen.
+          </li>
+          <li>
+            <strong>Failed payments.</strong> If a renewal can&apos;t be charged, Paddle tries again over the following days. If it still
+            can&apos;t, the plan ends and the office goes back to the free plan.
+          </li>
+          <li>
+            <strong>Price changes.</strong> We will tell an office&apos;s admins at least 30 days before a new price applies to its next
+            renewal, so there is time to cancel first.
+          </li>
+          <li>
+            <strong>Refunds.</strong> Ask within 14 days of any payment and it is refunded in full. The details are in our{" "}
+            <Link href="/refunds">Refund Policy</Link>.
+          </li>
+        </ul>
+      </>
     ),
   },
   {

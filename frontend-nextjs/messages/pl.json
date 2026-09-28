@@ -66,7 +66,7 @@
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
-        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak biuro dla maksymalnie 3 osób. Plany dla większych zespołów już wkrótce."
+        "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, podobnie jak biuro dla maksymalnie 3 osób. Większe biura kosztują 19 $ miesięcznie za 10 osób i 49 $ za 25."
       },
       {
         "q": "Czy muszę coś instalować?",
@@ -416,8 +416,8 @@
       "screenShare": "Udostępnianie ekranu"
     },
     "us": {
-      "price": "Za darmo",
-      "freePlan": "Wszystko, bez limitu czasu. Pokoje mieszczą 20 osób.",
+      "price": "Za darmo dla 3 osób, 19 $ miesięcznie za 10",
+      "freePlan": "Wszystko, bez limitu czasu, dla maksymalnie 3 osób.",
       "browser": "Tak, nic do instalowania",
       "screenShare": "Tak, w rozmowach i spotkaniach"
     },
@@ -431,7 +431,7 @@
           "description": "Szukasz darmowej alternatywy dla Gather? TinyFloor to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś."
         },
         "title": "Darmowa <em>alternatywa dla Gather.</em>",
-        "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. TinyFloor zachowuje ten sam pomysł, biuro, po którym się chodzi i w którym się rozmawia, i pozostaje darmowy.",
+        "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. TinyFloor zachowuje ten sam pomysł, biuro, po którym się chodzi i rozmawia, za darmo dla maksymalnie 3 osób, a potem jedna cena za całe biuro.",
         "points": [
           {
             "title": "Bez odliczania okresu próbnego",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "Czy Gather jest nadal darmowy?",
-            "a": "Nie. Gather nie ma już stałego darmowego planu. Oferuje 30-dniowy okres próbny, a potem plan Essential kosztuje od 12 $ za członka miesięcznie. TinyFloor jest darmowy."
+            "a": "Nie. Gather nie ma już stałego darmowego planu. Oferuje 30-dniowy okres próbny, a potem plan Essential kosztuje od 12 $ za członka miesięcznie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 19 $ miesięcznie za maksymalnie 10."
           },
           {
             "q": "Co ma Gather, czego nie ma TinyFloor?",
@@ -478,7 +478,7 @@
           "description": "Darmowy plan Kumospace kończy się na 5 członkach. TinyFloor to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska, otwarte dla całego zespołu w przeglądarce."
         },
         "title": "<em>Alternatywa dla Kumospace</em> dla całego zespołu.",
-        "subtitle": "Darmowy plan Kumospace mieści 5 członków na jednym piętrze. TinyFloor nie ma limitu członków ani płatnego planu, więc cały zespół może się wprowadzić.",
+        "subtitle": "Darmowy plan Kumospace mieści 5 członków na jednym piętrze. TinyFloor jest darmowy dla 3 osób, a potem jedna cena za całe biuro: 19 $ miesięcznie za maksymalnie 10.",
         "points": [
           {
             "title": "Bez limitu 5 członków",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "Czy Kumospace jest darmowy?",
-            "a": "Kumospace ma darmowy plan dla maksymalnie 5 zarejestrowanych członków, z jednym piętrem i gośćmi ograniczonymi do 4 godzin tygodniowo. Plan Business kosztuje od 16 $ za użytkownika miesięcznie. TinyFloor jest darmowy dla wszystkich."
+            "a": "Kumospace ma darmowy plan dla maksymalnie 5 zarejestrowanych członków, z jednym piętrem i gośćmi ograniczonymi do 4 godzin tygodniowo. Plan Business kosztuje od 16 $ za użytkownika miesięcznie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 19 $ miesięcznie za maksymalnie 10."
           },
           {
             "q": "Co ma Kumospace, czego nie ma TinyFloor?",
-            "a": "Płatne plany Kumospace dodają nagrywanie i nieograniczoną historię czatu. TinyFloor jeszcze nie nagrywa rozmów, ale udostępnianie ekranu, czat i rozmowy są darmowe dla wszystkich."
+            "a": "Płatne plany Kumospace dodają nagrywanie i nieograniczoną historię czatu. TinyFloor nie nagrywa jeszcze rozmów, ale udostępnianie ekranu, czat i rozmowy są w każdym planie, także w darmowym."
           },
           {
             "q": "Czy moi współpracownicy potrzebują konta?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "Czy SpatialChat jest darmowy?",
-            "a": "SpatialChat ma darmowy plan z maksymalnie 2 godzinami spotkań dziennie dla maksymalnie 12 uczestników. Płatne opcje to Day Pass za 5 $ za użytkownika i plany Business od 399 $ miesięcznie. TinyFloor jest darmowy i bez dziennego limitu."
+            "a": "SpatialChat ma darmowy plan z maksymalnie 2 godzinami spotkań dziennie dla maksymalnie 12 uczestników. Płatne opcje to Day Pass za 5 $ za użytkownika i plany Business od 399 $ miesięcznie. TinyFloor nie ma dziennego limitu w żadnym planie, także w darmowym."
           },
           {
             "q": "Czy TinyFloor nadaje się do wydarzeń online?",
@@ -569,14 +569,14 @@
         "label": "Alternatywa dla WorkAdventure",
         "meta": {
           "title": "Alternatywa dla WorkAdventure z pokojami na 20 osób",
-          "description": "Darmowy plan WorkAdventure pozwala na 10 osób jednocześnie. TinyFloor to darmowe wirtualne biuro w stylu pixel art z rozmowami wideo z bliska i pokojami na 20 osób."
+          "description": "Darmowy plan WorkAdventure pozwala na 10 osób jednocześnie. TinyFloor to wirtualne biuro w stylu pixel art z rozmowami wideo z bliska, darmowe dla 3 osób i za 19 $ miesięcznie dla 10."
         },
         "title": "<em>Alternatywa dla WorkAdventure</em> z miejscem na rozwój.",
-        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. Pokoje TinyFloor mieszczą 20 osób i nie ma płatnego planu, na który trzeba przejść.",
+        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. TinyFloor jest darmowy dla 3 osób, a potem ma jedną stałą cenę, a nie cenę za osobę.",
         "points": [
           {
             "title": "Dwa razy więcej miejsca",
-            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Pokój TinyFloor mieści 20, a pokoi możesz otworzyć, ile chcesz."
+            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Biuro TinyFloor mieści do 25 członków, a biur możesz otworzyć, ile chcesz."
           },
           {
             "title": "Bez budowania mapy",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "Czy WorkAdventure jest darmowy?",
-            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. TinyFloor jest darmowy."
+            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 19 $ miesięcznie za maksymalnie 10."
           },
           {
             "q": "Czy mogę dostosować mapę w TinyFloor?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "Czy TinyFloor jest darmowy?",
-            "a": "Tak. Tworzenie pokoi, chodzenie, czat i rozmowy są darmowe."
+            "a": "Tak, dla biura do 3 osób, a publiczne lobby jest darmowe dla wszystkich. Chodzenie, czat i rozmowy są w każdym planie."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "Czy to jest darmowe?",
-            "a": "Tak. TinyFloor jest darmowy, bez okresu próbnego i bez opłat za miejsce."
+            "a": "Tak, dla maksymalnie 3 osób. Potem jest jedna cena za całe biuro, 19 $ miesięcznie za maksymalnie 10, bez okresu próbnego i bez opłat za miejsce."
           },
           {
             "q": "Ile osób może korzystać z jednego biura?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "Czy to jest darmowe dla nauczycieli?",
-            "a": "Tak. TinyFloor jest darmowy i nie ma płatnego planu."
+            "a": "Tak, dla maksymalnie 3 osób na biuro, a publiczne lobby jest darmowe dla wszystkich. Klasa do 25 osób kosztuje 49 $ miesięcznie."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "Czy to jest darmowe?",
-            "a": "Tak. TinyFloor jest darmowy w przeglądarce, na komputerze i telefonie."
+            "a": "Tak. Publiczne lobby jest darmowe dla wszystkich, a biuro jest darmowe dla maksymalnie 3 osób, w przeglądarce na komputerze i telefonie."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "O nas",
       "privacy": "Prywatność",
-      "terms": "Regulamin"
+      "terms": "Regulamin",
+      "refunds": "Zwroty"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
       "muted": "nie za osobę.",
-      "body": "Zacznij za darmo. Goście nigdy się nie liczą.",
+      "body": "Zacznij za darmo. Każdy plan ma wszystko, a goście nigdy się nie liczą.",
       "soon": "Wkrótce",
       "forever": "na zawsze",
       "month": "miesięcznie",
@@ -1449,7 +1450,7 @@
         "items": [
           "Prywatne piętro",
           "Rozmowy i spotkania",
-          "Kanały i wiadomości",
+          "Czat, obrazy i pliki",
           "Goście przez link"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Jedna cena za całe biuro, niezależnie od tego, ile z dziesięciu miejsc zajmiesz.",
         "items": [
           "Wszystko z Free",
-          "Obrazy i pliki na czacie",
-          "Dowolnie wiele linków dla gości",
+          "Miejsce dla 10 członków",
           "Rocznie: dwa miesiące gratis"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Dla zespołu, który wyrósł z jednego rzędu biurek.",
         "items": [
           "Wszystko z Team",

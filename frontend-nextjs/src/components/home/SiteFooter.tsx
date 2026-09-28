@@ -66,6 +66,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
         { label: t("faq"), href: "/#faq" },
         { label: t("privacy"), href: "/privacy" },
         { label: t("terms"), href: "/terms" },
+        { label: t("refunds"), href: "/refunds" },
         { label: t("credits"), href: "/credits.txt" },
       ],
     },

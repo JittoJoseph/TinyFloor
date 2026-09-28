@@ -66,7 +66,7 @@
       },
       {
         "q": "TinyFloor est-il gratuit ?",
-        "a": "Oui. Le hall public est gratuit pour tous, tout comme un bureau jusqu'à 3 personnes. Des offres pour les équipes plus grandes arrivent bientôt."
+        "a": "Oui. Le hall public est gratuit pour tous, tout comme un bureau jusqu'à 3 personnes. Les bureaux plus grands coûtent 19 $ par mois pour 10 personnes et 49 $ pour 25."
       },
       {
         "q": "Dois-je installer quelque chose ?",
@@ -416,8 +416,8 @@
       "screenShare": "Partage d’écran"
     },
     "us": {
-      "price": "Gratuit",
-      "freePlan": "Tout, sans limite de temps. Les salles accueillent 20 personnes.",
+      "price": "Gratuit pour 3 personnes, 19 $ par mois pour 10",
+      "freePlan": "Tout, sans limite de temps, jusqu'à 3 personnes.",
       "browser": "Oui, rien à installer",
       "screenShare": "Oui, dans les appels et les réunions"
     },
@@ -431,7 +431,7 @@
           "description": "Vous cherchez une alternative gratuite à Gather ? TinyFloor est un bureau virtuel en pixel art avec des appels vidéo de proximité."
         },
         "title": "Une <em>alternative gratuite à Gather.</em>",
-        "subtitle": "Gather a supprimé son offre gratuite et facture désormais par membre. TinyFloor garde la même idée, un bureau où l’on se déplace et où l’on discute, et reste gratuit.",
+        "subtitle": "Gather a supprimé son offre gratuite et facture désormais par membre. TinyFloor garde la même idée, un bureau où l'on se déplace et où l'on parle, gratuit jusqu'à 3 personnes, puis un seul prix pour tout le bureau.",
         "points": [
           {
             "title": "Pas de compte à rebours",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "Gather est-il encore gratuit ?",
-            "a": "Non. Gather n’a plus d’offre gratuite permanente. Il propose un essai de 30 jours, puis l’offre Essential commence à 12 $ par membre par mois. TinyFloor est gratuit."
+            "a": "Non. Gather n’a plus d’offre gratuite permanente. Il propose un essai de 30 jours, puis l’offre Essential commence à 12 $ par membre par mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 19 $ par mois jusqu'à 10."
           },
           {
             "q": "Qu’est-ce que Gather propose et que TinyFloor n’a pas ?",
@@ -478,7 +478,7 @@
           "description": "L’offre gratuite de Kumospace s’arrête à 5 membres. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité, ouvert à toute votre équipe dans le navigateur."
         },
         "title": "Une <em>alternative à Kumospace</em> pour toute l’équipe.",
-        "subtitle": "L’offre gratuite de Kumospace accueille 5 membres sur un seul étage. TinyFloor n’a pas de limite de membres ni d’offre payante, toute l’équipe peut donc s’installer.",
+        "subtitle": "L’offre gratuite de Kumospace accueille 5 membres sur un seul étage. TinyFloor est gratuit pour 3, puis un seul prix pour tout le bureau : 19 $ par mois jusqu'à 10.",
         "points": [
           {
             "title": "Pas de limite à 5 membres",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "Kumospace est-il gratuit ?",
-            "a": "Kumospace a une offre gratuite pour 5 membres inscrits au maximum, avec un étage et des invités limités à 4 heures par semaine. L’offre Business commence à 16 $ par utilisateur par mois. TinyFloor est gratuit pour tout le monde."
+            "a": "Kumospace a une offre gratuite pour 5 membres inscrits au maximum, avec un étage et des invités limités à 4 heures par semaine. L’offre Business commence à 16 $ par utilisateur par mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 19 $ par mois jusqu'à 10."
           },
           {
             "q": "Qu’est-ce que Kumospace propose et que TinyFloor n’a pas ?",
-            "a": "Les offres payantes de Kumospace ajoutent l’enregistrement et un historique de chat illimité. TinyFloor n’enregistre pas encore les appels, mais le partage d’écran, le chat et les appels sont gratuits pour tous."
+            "a": "Les offres payantes de Kumospace ajoutent l’enregistrement et un historique de chat illimité. TinyFloor n'enregistre pas encore les appels, mais le partage d'écran, le chat et les appels sont inclus dans chaque offre, y compris la gratuite."
           },
           {
             "q": "Mes collègues ont-ils besoin d’un compte ?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "SpatialChat est-il gratuit ?",
-            "a": "SpatialChat a une offre gratuite avec jusqu’à 2 heures de réunion par jour pour 12 participants au maximum. Les options payantes incluent un Day Pass à 5 $ par utilisateur et des offres Business à partir de 399 $ par mois. TinyFloor est gratuit, sans limite quotidienne."
+            "a": "SpatialChat a une offre gratuite avec jusqu’à 2 heures de réunion par jour pour 12 participants au maximum. Les options payantes incluent un Day Pass à 5 $ par utilisateur et des offres Business à partir de 399 $ par mois. TinyFloor n'a aucune limite quotidienne, quelle que soit l'offre, gratuite comprise."
           },
           {
             "q": "TinyFloor convient-il aux événements virtuels ?",
@@ -569,14 +569,14 @@
         "label": "Alternative à WorkAdventure",
         "meta": {
           "title": "Alternative à WorkAdventure avec des salles de 20",
-          "description": "L’offre gratuite de WorkAdventure permet 10 personnes à la fois. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité et des salles de 20 personnes."
+          "description": "L’offre gratuite de WorkAdventure permet 10 personnes à la fois. TinyFloor est un bureau virtuel en pixel art avec des appels vidéo de proximité, gratuit pour 3 personnes et 19 $ par mois pour 10."
         },
         "title": "Une <em>alternative à WorkAdventure</em> qui laisse de la place.",
-        "subtitle": "WorkAdventure est aussi un bureau en pixel art, et son offre gratuite accueille 10 personnes à la fois. Les salles TinyFloor en accueillent 20, sans offre payante à prendre ensuite.",
+        "subtitle": "WorkAdventure est aussi un bureau en pixel art, et son offre gratuite accueille 10 personnes à la fois. TinyFloor est gratuit pour 3 personnes, puis à prix fixe, pas un prix par personne.",
         "points": [
           {
             "title": "Deux fois plus de place",
-            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Une salle TinyFloor en accueille 20, et vous pouvez ouvrir autant de salles que vous voulez."
+            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Un bureau TinyFloor accueille jusqu'à 25 membres, et vous pouvez ouvrir autant de bureaux que vous voulez."
           },
           {
             "title": "Aucune carte à construire",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "WorkAdventure est-il gratuit ?",
-            "a": "WorkAdventure a une offre gratuite pour 10 utilisateurs simultanés au maximum. L’offre Business commence à 8 € par utilisateur par mois, et les tarifs événements à 4 € par utilisateur par jour. TinyFloor est gratuit."
+            "a": "WorkAdventure a une offre gratuite pour 10 utilisateurs simultanés au maximum. L’offre Business commence à 8 € par utilisateur par mois, et les tarifs événements à 4 € par utilisateur par jour. TinyFloor est gratuit jusqu'à 3 personnes et coûte 19 $ par mois jusqu'à 10."
           },
           {
             "q": "Puis-je personnaliser la carte dans TinyFloor ?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "TinyFloor est-il gratuit ?",
-            "a": "Oui. Créer des salles, se déplacer, discuter et appeler sont gratuits."
+            "a": "Oui, pour un bureau jusqu'à 3 personnes, et le hall public est gratuit pour tous. Se déplacer, discuter et appeler sont inclus dans chaque offre."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "Est-ce gratuit ?",
-            "a": "Oui. TinyFloor est gratuit, sans essai et sans prix par siège."
+            "a": "Oui, jusqu'à 3 personnes. Ensuite, c'est un seul prix pour tout le bureau, 19 $ par mois jusqu'à 10, sans essai et sans prix par siège."
           },
           {
             "q": "Combien de personnes peuvent utiliser un bureau ?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "Est-ce gratuit pour les enseignants ?",
-            "a": "Oui. TinyFloor est gratuit, sans offre payante."
+            "a": "Oui, jusqu'à 3 personnes par bureau, et le hall public est gratuit pour tous. Une classe jusqu'à 25 coûte 49 $ par mois."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "Est-ce gratuit ?",
-            "a": "Oui. TinyFloor est gratuit dans le navigateur, sur ordinateur et sur mobile."
+            "a": "Oui. Le hall public est gratuit pour tous et un bureau est gratuit jusqu'à 3 personnes, dans le navigateur sur ordinateur et sur mobile."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "À propos",
       "privacy": "Confidentialité",
-      "terms": "Conditions"
+      "terms": "Conditions",
+      "refunds": "Remboursements"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Tarifs",
       "title": "Tarifé au bureau,",
       "muted": "pas à la personne.",
-      "body": "Commencez gratuitement. Les invités ne comptent jamais.",
+      "body": "Commencez gratuitement. Chaque offre inclut tout, et les invités ne comptent jamais.",
       "soon": "Bientôt",
       "forever": "pour toujours",
       "month": "par mois",
@@ -1449,7 +1450,7 @@
         "items": [
           "Un étage privé",
           "Appels et réunions",
-          "Canaux et messages",
+          "Chat, images et fichiers",
           "Invités par lien"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Un seul prix pour tout le bureau, quel que soit le nombre de places occupées sur dix.",
         "items": [
           "Tout ce qu'offre Free",
-          "Images et fichiers dans le chat",
-          "Autant de liens invités que vous voulez",
+          "De la place pour 10 membres",
           "À l'année : deux mois offerts"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Pour l'équipe qui a dépassé une rangée de bureaux.",
         "items": [
           "Tout ce qu'offre Team",

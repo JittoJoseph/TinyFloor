@@ -66,7 +66,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Abonnementen voor grotere teams komen binnenkort."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Grotere kantoren kosten $ 19 per maand voor 10 mensen en $ 49 voor 25."
       },
       {
         "q": "Moet ik iets installeren?",
@@ -416,8 +416,8 @@
       "screenShare": "Scherm delen"
     },
     "us": {
-      "price": "Gratis",
-      "freePlan": "Alles, zonder tijdslimiet. Ruimtes bieden plek aan 20 mensen.",
+      "price": "Gratis voor 3 mensen, $ 19 per maand voor 10",
+      "freePlan": "Alles, zonder tijdslimiet, voor maximaal 3 mensen.",
       "browser": "Ja, niets te installeren",
       "screenShare": "Ja, in gesprekken en vergaderingen"
     },
@@ -431,7 +431,7 @@
           "description": "Op zoek naar een gratis Gather-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid."
         },
         "title": "Een gratis <em>Gather-alternatief.</em>",
-        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee, een kantoor waar je rondloopt en praat, en blijft gratis.",
+        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee aan, een kantoor waar je rondloopt en praat, gratis voor maximaal 3 mensen en daarna één prijs voor het hele kantoor.",
         "points": [
           {
             "title": "Geen proefperiode die afloopt",
@@ -455,7 +455,7 @@
         "faq": [
           {
             "q": "Is Gather nog gratis?",
-            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. TinyFloor is gratis."
+            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. TinyFloor is gratis voor maximaal 3 mensen en kost $ 19 per maand voor maximaal 10."
           },
           {
             "q": "Wat heeft Gather dat TinyFloor niet heeft?",
@@ -478,7 +478,7 @@
           "description": "Het gratis abonnement van Kumospace stopt bij 5 leden. TinyFloor is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, open voor je hele team in de browser."
         },
         "title": "Een <em>Kumospace-alternatief</em> voor het hele team.",
-        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. TinyFloor heeft geen ledenlimiet en geen betaald abonnement, dus het hele team kan erin.",
+        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. TinyFloor is gratis voor 3, daarna één prijs voor het hele kantoor: $ 19 per maand voor maximaal 10.",
         "points": [
           {
             "title": "Geen limiet van 5 leden",
@@ -502,11 +502,11 @@
         "faq": [
           {
             "q": "Is Kumospace gratis?",
-            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. TinyFloor is gratis voor iedereen."
+            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. TinyFloor is gratis voor maximaal 3 mensen en kost $ 19 per maand voor maximaal 10."
           },
           {
             "q": "Wat heeft Kumospace dat TinyFloor niet heeft?",
-            "a": "De betaalde abonnementen van Kumospace voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor neemt gesprekken nog niet op, maar scherm delen, chat en bellen zijn gratis voor iedereen."
+            "a": "De betaalde abonnementen van Kumospace voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor neemt gesprekken nog niet op, maar scherm delen, chat en bellen zitten in elk abonnement, ook het gratis abonnement."
           },
           {
             "q": "Hebben mijn teamgenoten een account nodig?",
@@ -549,7 +549,7 @@
         "faq": [
           {
             "q": "Is SpatialChat gratis?",
-            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. TinyFloor is gratis en zonder daglimiet."
+            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. TinyFloor heeft op geen enkel abonnement een daglimiet, ook niet op het gratis abonnement."
           },
           {
             "q": "Is TinyFloor geschikt voor virtuele evenementen?",
@@ -569,14 +569,14 @@
         "label": "WorkAdventure-alternatief",
         "meta": {
           "title": "WorkAdventure-alternatief met ruimtes voor 20",
-          "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. TinyFloor is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid en ruimtes voor 20."
+          "description": "Het gratis abonnement van WorkAdventure staat 10 mensen tegelijk toe. TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, gratis voor 3 mensen en $ 19 per maand voor 10."
         },
         "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
-        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. Ruimtes in TinyFloor bieden plek aan 20, en er is geen betaald abonnement om naar over te stappen.",
+        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. TinyFloor is gratis voor 3 mensen en daarna één vaste prijs, geen prijs per persoon.",
         "points": [
           {
             "title": "Twee keer zoveel plek",
-            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een TinyFloor-ruimte biedt plek aan 20, en je kunt zoveel ruimtes openen als je wilt."
+            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een TinyFloor-kantoor biedt plek aan maximaal 25 leden, en je kunt zoveel kantoren openen als je wilt."
           },
           {
             "title": "Geen kaart om te bouwen",
@@ -596,7 +596,7 @@
         "faq": [
           {
             "q": "Is WorkAdventure gratis?",
-            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. TinyFloor is gratis."
+            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. TinyFloor is gratis voor maximaal 3 mensen en kost $ 19 per maand voor maximaal 10."
           },
           {
             "q": "Kan ik de kaart in TinyFloor aanpassen?",
@@ -649,7 +649,7 @@
           },
           {
             "q": "Is TinyFloor gratis?",
-            "a": "Ja. Ruimtes maken, rondlopen, chatten en bellen is gratis."
+            "a": "Ja, voor een kantoor met maximaal 3 mensen, en de openbare lobby is gratis voor iedereen. Rondlopen, chatten en bellen zitten in elk abonnement."
           }
         ]
       },
@@ -682,7 +682,7 @@
           },
           {
             "q": "Is het gratis?",
-            "a": "Ja. TinyFloor is gratis, zonder proefperiode en zonder prijs per plek."
+            "a": "Ja, voor maximaal 3 mensen. Daarna is het één prijs voor het hele kantoor, $ 19 per maand voor maximaal 10, zonder proefperiode en zonder prijs per plek."
           },
           {
             "q": "Hoeveel mensen kunnen één kantoor gebruiken?",
@@ -813,7 +813,7 @@
           },
           {
             "q": "Is het gratis voor docenten?",
-            "a": "Ja. TinyFloor is gratis, zonder betaald abonnement."
+            "a": "Ja, voor maximaal 3 mensen per kantoor, en de openbare lobby is gratis voor iedereen. Een klas van maximaal 25 kost $ 49 per maand."
           }
         ]
       },
@@ -854,7 +854,7 @@
           },
           {
             "q": "Is het gratis?",
-            "a": "Ja. TinyFloor is gratis in de browser, op desktop en mobiel."
+            "a": "Ja. De openbare lobby is gratis voor iedereen en een kantoor is gratis voor maximaal 3 mensen, in de browser op desktop en mobiel."
           }
         ]
       }
@@ -1341,7 +1341,8 @@
       "rights": "© {year} TinyFloor",
       "about": "Over ons",
       "privacy": "Privacy",
-      "terms": "Voorwaarden"
+      "terms": "Voorwaarden",
+      "refunds": "Terugbetalingen"
     }
   },
   "legal": {
@@ -1438,7 +1439,7 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Begin gratis. Gasten tellen nooit mee.",
+      "body": "Begin gratis. Elk abonnement heeft alles, en gasten tellen nooit mee.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
@@ -1449,7 +1450,7 @@
         "items": [
           "Een eigen verdieping",
           "Gesprekken en vergaderingen",
-          "Kanalen en berichten",
+          "Chat, afbeeldingen en bestanden",
           "Gasten via een link"
         ]
       },
@@ -1458,13 +1459,12 @@
         "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
         "items": [
           "Alles van Free",
-          "Afbeeldingen en bestanden in de chat",
-          "Zoveel gastlinks als je wilt",
+          "Ruimte voor 10 leden",
           "Jaarlijks: twee maanden gratis"
         ]
       },
-      "office": {
-        "name": "Office",
+      "business": {
+        "name": "Business",
         "body": "Voor het team dat één rij bureaus is ontgroeid.",
         "items": [
           "Alles van Team",

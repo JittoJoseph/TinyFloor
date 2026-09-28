@@ -16,7 +16,7 @@
     "lobbyDescription": "Tule vieraana TinyFloorin ilmaiseen, avoimeen aulaan. Valitse hahmo, tapaa ihmisiä ja kokeile lähietäisyyden videopuheluita selaimessa.",
     "inviteTitle": "Liity työtilaan {office} TinyFloorissa",
     "inviteFallbackTitle": "Sinut on kutsuttu TinyFlooriin",
-    "inviteDescription": "{name} kutsui sinut työtilaan {office} TinyFloorissa, virtuaaliseen toimistoon, jossa voi kävellä."
+    "inviteDescription": "Liity toimistoon {office} TinyFloorissa, virtuaalitoimistossa, jossa voit kävellä."
   },
   "common": {
     "loading": "Ladataan...",
@@ -92,7 +92,7 @@
     "signInTitle": "Tervetuloa takaisin",
     "signInSubtitle": "Kirjaudu sisään palataksesi tiimisi toimistoon.",
     "signUpTitle": "Luo tilisi",
-    "signUpSubtitle": "Tarvitaan vain sähköposti ja salasana.",
+    "signUpSubtitle": "Google on nopein, tai käytä sähköpostiasi.",
     "email": "Sähköposti",
     "emailPlaceholder": "sina@yritys.fi",
     "password": "Salasana",
@@ -128,7 +128,8 @@
       "google_failed": "Kirjautuminen Googlella ei onnistunut. Yritä uudelleen.",
       "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
       "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
-    }
+    },
+    "continueWithEmail": "Jatka sähköpostilla"
   },
   "entry": {
     "yourName": "Nimesi",
@@ -141,8 +142,13 @@
     "copyInvite": "Kopioi kutsulinkki",
     "continue": "Jatka",
     "walkingInAs": "Astut sisään nimellä {name}",
-    "introTitle": "Ennen kuin astut sisään",
-    "introSubtitle": "Millä nimellä muut kutsuvat sinua, ja kuka olet kerroksessa?"
+    "introTitle": "Tervetuloa",
+    "introEyebrow": "Tervetuloa TinyFlooriin",
+    "nameTitle": "Millä nimellä sinua kutsutaan?",
+    "nameBody": "Näkyy hahmossasi ja chatissa.",
+    "characterTitle": "Valitse hahmosi",
+    "characterBody": "Tämä olet sinä kerroksessa.",
+    "thatsMe": "Tämä olen minä"
   },
   "room": {
     "connecting": "Yhdistetään...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "Kutsut kuuluvat toimistoon",
-        "body": "Kutsu tiimisi sähköpostilla tai linkillä omaan toimistoon."
+        "body": "Kutsu tiimisi yhdellä linkillä omaan toimistoon."
       },
       "free": "Toimiston luominen vie minuutin, ja se on ilmainen enintään 3 hengelle.",
       "go": "Luo toimistoni",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Omistaja",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",
-      "invalid": "Se on ehkä vanhentunut, jo käytetty tai poistettu käytöstä. Pyydä uusi.",
+      "invalid": "Se on ehkä vaihdettu, tai toimisto on suljettu. Pyydä uusi linkki.",
       "home": "Etusivulle",
-      "eyebrow": "{name} kutsui sinut",
-      "asAdmin": "Sinut on kutsuttu ylläpitäjäksi.",
-      "asMember": "Sinut on kutsuttu tiimiin.",
+      "eyebrow": "Sinut on kutsuttu",
       "join": "Liity työtilaan {office}",
-      "joiningAs": "Liityt nimellä {name} ({email})",
+      "joiningAs": "Liityt käyttäjänä {email}.",
       "createAccount": "Luo tili",
       "signIn": "Minulla on tili",
-      "readyToJoin": "Se olen minä",
-      "accountKeeps": "Tili muistaa nimen {name} ja hahmosi ensi kertaa varten.",
-      "you": "Sinä",
       "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
-      "change": "Vaihda"
+      "change": "Etkö se ole sinä?",
+      "accountTitle": "Ota paikkasi",
+      "accountBody": "Kirjaudu liittyäksesi. Se vie hetken.",
+      "perkFloor": "Kävele jonkun luo juttelemaan, kuin oikeassa toimistossa",
+      "perkTalk": "Puhelut alkavat, kun olette vierekkäin",
+      "perkChat": "Kanavat ja viestit, jotka säilyvät",
+      "useEmail": "Käytä sähköpostia",
+      "joining": "Liitytään",
+      "joinTitle": "Olet valmis liittymään",
+      "joinBody": "Toimisto odottaa etusivullasi valmiina.",
+      "fullTitle": "Toimisto on täynnä",
+      "fullBody": "Kaikki paikat on varattu. Pyydä linkin lähettäjää tekemään tilaa tai vaihtamaan isompaan pakettiin."
     },
     "errors": {
       "member_limit": "Työtila on täynnä nykyisellä paketilla.",
@@ -981,7 +993,7 @@
       "name_required": "Anna ensin nimi.",
       "bad_email": "Tämä ei näytä sähköpostiosoitteelta.",
       "invite_used": "Tämä kutsu on jo käytetty.",
-      "invite_invalid": "Tämä kutsu on vanhentunut tai poistettu käytöstä.",
+      "invite_invalid": "Tämä kutsulinkki on vaihdettu tai ei enää toimi.",
       "wrong_account": "Tämä kutsu on toiselle sähköpostiosoitteelle. Kirjaudu sillä tilillä.",
       "wrong_password": "Nykyinen salasanasi on väärä.",
       "password_too_short": "Käytä vähintään 8 merkkiä.",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "Ihmiset",
       "members": "Jäsenet",
-      "invitations": "Odottavat kutsut",
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
       "seatsFree": "Tilaa on vielä.",
       "onFloorNow": "{count} kerroksessa nyt",
-      "noInvitations": "Ei avoimia kutsuja",
       "copied": "Kopioitu",
-      "revoke": "Peru",
       "remove": "Poista",
       "leave": "Poistu",
       "makeAdmin": "Tee ylläpitäjäksi",
@@ -1017,21 +1026,23 @@
       "admin": "Ylläpitäjä",
       "member": "Jäsen",
       "noEmail": "Ei sähköpostia",
-      "expires": "Vanhenee {date}",
-      "anyoneWithLink": "Kuka tahansa linkin saanut",
       "wrong": "Ei onnistunut. Yritä uudelleen.",
       "subtitle": "Kaikki toimistossa {office} ja kuka pääsee sisään.",
       "linkCopied": "Kutsulinkki kopioitu",
       "nobodyOnFloor": "Ei vielä muita.",
       "seatsLeft": "{count, plural, one {# paikka vapaana – kutsu joku} other {# paikkaa vapaana – kutsu joku}}",
       "seatsNote": "Paikka on jäsen. Lähtijä vapauttaa omansa; offline-tila ei.",
-      "invitationsNote": "Kutsu ei varaa paikkaa. Ensimmäinen hyväksyjä saa paikan, jos vapaita on.",
-      "noInvitationsBody": "Kutsu joku – linkki odottaa täällä, kunnes se hyväksytään tai vanhenee.",
       "allSeatsTaken": "Kaikki paikat on varattu",
       "allSeatsTakenBody": "Lähtijä vapauttaa paikan. Toimistoja, joissa on enemmän paikkoja, on tulossa.",
       "yourProfile": "Profiilisi",
       "ownOfficeTitle": "Tällainen kerros tiimillesi?",
-      "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle."
+      "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle.",
+      "linkTitle": "Kutsulinkki",
+      "linkBody": "Kuka tahansa linkin saanut voi liittyä tilillä, kun paikkoja on vapaana.",
+      "copy": "Kopioi",
+      "resetLink": "Vaihda linkki",
+      "resetTitle": "Vaihdetaanko kutsulinkki?",
+      "resetBody": "Nykyinen linkki lakkaa toimimasta heti, ja uusi korvaa sen. Kaikki toimistossa jo olevat pysyvät."
     },
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "Toimiston nimi",
     "creating": "Valmistellaan",
-    "continue": "Jatka"
+    "continue": "Jatka",
+    "eyebrow": "Uusi toimisto",
+    "untitled": "Toimistosi",
+    "nameTitle": "Mikä tiimisi nimi on?",
+    "nameBody": "Tämän nimen kaikki näkevät tullessaan sisään.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Voit nimetä sen uudelleen milloin vain.",
+    "createIt": "Luo toimisto",
+    "sizeTitle": "Kuinka moni täällä työskentelee?",
+    "sizeBody": "Laske kaikki, jotka haluat kutsua, itsesi mukaan lukien.",
+    "people": "henkeä",
+    "planTitle": "Valitse paketti toimistolle {office}",
+    "planBody": "Vaihda tai peru milloin vain.",
+    "recommended": "Sopivin",
+    "perMonth": "/kk",
+    "upTo": "Enintään {count} henkeä",
+    "perPerson": "{price} / henkilö",
+    "bigger": "Yli 25 henkeä? Aloita Prolla ja kirjoita meille, niin teemme tilaa.",
+    "included": "Mitä sisältyy",
+    "includedCalls": "Puhelut vierelle kävellen, ei koskaan laskettu",
+    "includedChat": "Chat, kanavat ja tiedostot",
+    "includedMeetings": "Ryhmäkokoukset videolla, {hours} tuntia kuussa",
+    "includedCancel": "Peru milloin vain; hyvitys 14 päivän sisällä",
+    "getPlan": "Ota {plan} · {price}/kk",
+    "openingCheckout": "Avataan kassa",
+    "freeInstead": "Tai aloita Freella, enintään {count} henkeä",
+    "freeTooSmall": "Aloita Freella · vain {count} voi liittyä"
   },
   "meetings": {
     "title": "Kokoukset",
@@ -1149,19 +1186,16 @@
     "welcome": "Tervetuloa, {name}",
     "welcomeAnonymous": "Tervetuloa",
     "welcomeBody": "Yksi kerros tiimillesi, kanavat ja puhelut mukana.",
-    "stepName": "Nimeä toimistosi",
-    "makeIt": "Tee se",
     "invited": "Saitko kutsun?",
     "invitedBody": "Liitä linkki, jonka tiimisi lähetti.",
     "invitePlaceholder": "Liitä kutsulinkki",
     "join": "Liity",
     "badLink": "Tuo ei näytä kutsulinkiltä. Liitä koko linkki.",
     "makeTitle": "Tehdään toimistosi",
-    "yourNewOffice": "Uusi toimistosi",
-    "freeRename": "Ilmainen enintään 3 hengelle. Voit vaihtaa nimen milloin vain.",
     "otherWays": "Muita tapoja sisään",
     "lobbyBody": "Poikkea ja tapaa ihmisiä.",
-    "yourAccount": "Tilisi"
+    "yourAccount": "Tilisi",
+    "createOffice": "Luo toimistosi"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "Tuo tiimisi sisään.",
         "muted": "Yhdellä linkillä.",
-        "body": "Lähetä kutsulinkki tai kutsu sähköpostilla. He valitsevat nimen ja hahmon, luovat ilmaisen tilin ja ovat kerroksessa."
+        "body": "Jaa toimistosi linkki. He luovat ilmaisen tilin, valitsevat nimen ja hahmon, ja ovat kerroksessa."
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "Lähetä linkki tiimillesi.",
-        "body": "Kutsu tiimiläiset sähköpostilla tai lähetä heille kutsulinkki."
+        "body": "Lähetä tiimillesi toimistosi linkki."
       },
       "walk": {
         "title": "Astu sisään.",
@@ -1448,8 +1482,8 @@
           "Kaikki ominaisuudet, ei kokeilujaksoa"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "Yksi hinta koko toimistolle, täytitpä kymmenestä paikasta kuinka monta tahansa.",
         "items": [
           "Kaikki Freen ominaisuudet",
@@ -1457,13 +1491,13 @@
           "Kuusi kertaa enemmän kokoustunteja"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "Tiimille, jolle yksi pöytärivi on käynyt pieneksi.",
         "items": [
-          "Kaikki Teamin ominaisuudet",
+          "Kaikki Plusin ominaisuudet",
           "Tilaa 25 jäsenelle",
-          "Kaksi kertaa Teamin tunnit",
+          "Kaksi kertaa Plusin tunnit",
           "Isompi tarve? Ota yhteyttä"
         ]
       },

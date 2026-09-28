@@ -61,6 +61,15 @@ export function CopyLink({ path }: { path: string }) {
   );
 }
 
+/** You, as the mark at the top of a door: your character standing in a lit tile. */
+export function YouMark({ character }: { character: string }) {
+  return (
+    <span className="relative block size-12 overflow-hidden rounded-[30%] bg-foreground/[0.08]" style={{ containerType: "size" }} aria-hidden>
+      <PixelAvatar character={character} width="50cqw" style={{ left: "50%", top: "90%" }} />
+    </span>
+  );
+}
+
 /** You as you'll walk in: your character, your name, and a way back to change it. */
 export function YouSummary({ name, character, onChange, changeLabel }: { name: string; character: string; onChange?: () => void; changeLabel?: string }) {
   return (

@@ -16,7 +16,7 @@
     "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
     "inviteTitle": "Doe mee met {office} op TinyFloor",
     "inviteFallbackTitle": "Je bent uitgenodigd voor TinyFloor",
-    "inviteDescription": "{name} heeft je uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
+    "inviteDescription": "Doe mee met {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
   },
   "common": {
     "loading": "Laden...",
@@ -92,7 +92,7 @@
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
-    "signUpSubtitle": "Een e-mailadres en een wachtwoord, meer is het niet.",
+    "signUpSubtitle": "Met Google gaat het snelst, of gebruik je e-mail.",
     "email": "E-mail",
     "emailPlaceholder": "jij@bedrijf.nl",
     "password": "Wachtwoord",
@@ -128,7 +128,8 @@
       "google_failed": "Inloggen met Google is niet gelukt. Probeer het opnieuw.",
       "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
       "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
-    }
+    },
+    "continueWithEmail": "Doorgaan met e-mail"
   },
   "entry": {
     "yourName": "Je naam",
@@ -141,8 +142,13 @@
     "copyInvite": "Uitnodigingslink kopiëren",
     "continue": "Verder",
     "walkingInAs": "Je loopt binnen als {name}",
-    "introTitle": "Voordat je binnenloopt",
-    "introSubtitle": "Hoe moeten anderen je noemen, en wie ben je op de verdieping?"
+    "introTitle": "Welkom",
+    "introEyebrow": "Welkom bij TinyFloor",
+    "nameTitle": "Hoe mogen mensen je noemen?",
+    "nameBody": "Staat bij je personage en in de chat.",
+    "characterTitle": "Kies je personage",
+    "characterBody": "Dit ben jij op de vloer.",
+    "thatsMe": "Dat ben ik"
   },
   "room": {
     "connecting": "Verbinden...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "Uitnodigingen horen bij een kantoor",
-        "body": "Nodig je team uit per e-mail of met een link, in een eigen kantoor."
+        "body": "Nodig je team uit met één link, in een eigen kantoor."
       },
       "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
       "go": "Maak mijn kantoor",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Eigenaar",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
-      "invalid": "Misschien is hij verlopen, al gebruikt of uitgezet. Vraag om een nieuwe.",
+      "invalid": "Misschien is hij vernieuwd, of is het kantoor gesloten. Vraag om een nieuwe link.",
       "home": "Naar de startpagina",
-      "eyebrow": "{name} heeft je uitgenodigd",
-      "asAdmin": "Je bent uitgenodigd als beheerder.",
-      "asMember": "Je bent uitgenodigd voor het team.",
+      "eyebrow": "Je bent uitgenodigd voor",
       "join": "Meedoen met {office}",
-      "joiningAs": "Je doet mee als {name} ({email})",
+      "joiningAs": "Je doet mee als {email}.",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
-      "readyToJoin": "Dat ben ik",
-      "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
-      "you": "Jij",
       "members": "{count, plural, one {# lid} other {# leden}}",
-      "change": "Wijzigen"
+      "change": "Niet jij?",
+      "accountTitle": "Neem je plek in",
+      "accountBody": "Log in om mee te doen. Het duurt een paar seconden.",
+      "perkFloor": "Loop naar iemand toe om te praten, zoals in een echt kantoor",
+      "perkTalk": "Spraakgesprekken beginnen als je naast elkaar staat",
+      "perkChat": "Kanalen en berichten die blijven",
+      "useEmail": "Liever met e-mail",
+      "joining": "Bezig met aanmelden",
+      "joinTitle": "Je kunt meedoen",
+      "joinBody": "Het kantoor staat klaar op je startpagina.",
+      "fullTitle": "Dit kantoor is vol",
+      "fullBody": "Alle plekken zijn bezet. Vraag wie de link stuurde om ruimte te maken of een groter abonnement te nemen."
     },
     "errors": {
       "member_limit": "De werkruimte is vol met het huidige abonnement.",
@@ -981,7 +993,7 @@
       "name_required": "Geef het eerst een naam.",
       "bad_email": "Dat lijkt geen e-mailadres.",
       "invite_used": "Deze uitnodiging is al gebruikt.",
-      "invite_invalid": "Deze uitnodiging is verlopen of uitgezet.",
+      "invite_invalid": "Deze uitnodigingslink is vernieuwd of werkt niet meer.",
       "wrong_account": "Deze uitnodiging is voor een ander e-mailadres. Log in met dat account.",
       "wrong_password": "Je huidige wachtwoord klopt niet.",
       "password_too_short": "Gebruik minstens 8 tekens.",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "Mensen",
       "members": "Leden",
-      "invitations": "Openstaande uitnodigingen",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
       "seatsFree": "Er is nog plek.",
       "onFloorNow": "{count} nu op de vloer",
-      "noInvitations": "Geen openstaande uitnodigingen",
       "copied": "Gekopieerd",
-      "revoke": "Intrekken",
       "remove": "Verwijderen",
       "leave": "Verlaten",
       "makeAdmin": "Beheerder maken",
@@ -1017,21 +1026,23 @@
       "admin": "Beheerder",
       "member": "Lid",
       "noEmail": "Geen e-mail",
-      "expires": "Verloopt op {date}",
-      "anyoneWithLink": "Iedereen met de link",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
       "linkCopied": "Uitnodigingslink gekopieerd",
       "nobodyOnFloor": "Nog niemand anders.",
       "seatsLeft": "{count, plural, one {# plek vrij — nodig iemand uit} other {# plekken vrij — nodig iemand uit}}",
       "seatsNote": "Een plek is een lid. Wie vertrekt geeft die vrij; offline zijn niet.",
-      "invitationsNote": "Een uitnodiging houdt geen plek bezet. Wie het eerst accepteert krijgt er een, zolang er een vrij is.",
-      "noInvitationsBody": "Nodig iemand uit; de link wacht hier tot die wordt geaccepteerd of verloopt.",
       "allSeatsTaken": "Alle plekken zijn bezet",
       "allSeatsTakenBody": "Wie vertrekt, maakt een plek vrij. Kantoren met meer plekken komen eraan.",
       "yourProfile": "Je profiel",
       "ownOfficeTitle": "Een vloer als deze voor je team?",
-      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen."
+      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen.",
+      "linkTitle": "Uitnodigingslink",
+      "linkBody": "Iedereen met deze link kan meedoen met een account, zolang er plek is.",
+      "copy": "Kopiëren",
+      "resetLink": "Link vernieuwen",
+      "resetTitle": "Uitnodigingslink vernieuwen?",
+      "resetBody": "De huidige link werkt meteen niet meer en een nieuwe neemt het over. Wie al in het kantoor zit, blijft."
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "Naam van het kantoor",
     "creating": "Wordt klaargezet",
-    "continue": "Verder"
+    "continue": "Verder",
+    "eyebrow": "Nieuw kantoor",
+    "untitled": "Je kantoor",
+    "nameTitle": "Hoe heet je team?",
+    "nameBody": "Deze naam ziet iedereen die binnenkomt.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Je kunt de naam altijd wijzigen.",
+    "createIt": "Kantoor maken",
+    "sizeTitle": "Hoeveel mensen gaan hier werken?",
+    "sizeBody": "Tel iedereen die je wilt uitnodigen, jezelf meegeteld.",
+    "people": "mensen",
+    "planTitle": "Kies een abonnement voor {office}",
+    "planBody": "Altijd te wijzigen of op te zeggen.",
+    "recommended": "Past het best",
+    "perMonth": "/maand",
+    "upTo": "Tot {count} mensen",
+    "perPerson": "{price} per persoon",
+    "bigger": "Meer dan 25? Begin met Pro en schrijf ons: we maken ruimte.",
+    "included": "Wat zit erin",
+    "includedCalls": "Spraakgesprekken als je langsloopt, nooit geteld",
+    "includedChat": "Chat, kanalen en bestanden",
+    "includedMeetings": "Groepsvergaderingen met video, {hours} uur per maand",
+    "includedCancel": "Altijd opzegbaar; binnen 14 dagen geld terug",
+    "getPlan": "Neem {plan} · {price}/maand",
+    "openingCheckout": "Afrekenen wordt geopend",
+    "freeInstead": "Of begin met Free, tot {count} mensen",
+    "freeTooSmall": "Begin met Free · maar {count} mensen kunnen meedoen"
   },
   "meetings": {
     "title": "Meetings",
@@ -1149,19 +1186,16 @@
     "welcome": "Welkom, {name}",
     "welcomeAnonymous": "Welkom",
     "welcomeBody": "Eén verdieping voor je team, met kanalen en gesprekken ingebouwd.",
-    "stepName": "Geef je kantoor een naam",
-    "makeIt": "Maken",
     "invited": "Ben je uitgenodigd?",
     "invitedBody": "Plak de link die je team je stuurde.",
     "invitePlaceholder": "Plak een uitnodigingslink",
     "join": "Meedoen",
     "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
     "makeTitle": "Laten we je kantoor maken",
-    "yourNewOffice": "Je nieuwe kantoor",
-    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen.",
     "otherWays": "Andere manieren om binnen te komen",
     "lobbyBody": "Loop binnen en ontmoet mensen.",
-    "yourAccount": "Je account"
+    "yourAccount": "Je account",
+    "createOffice": "Maak je kantoor"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "Haal je team binnen.",
         "muted": "Met één link.",
-        "body": "Stuur een uitnodigingslink of nodig uit per e-mail. Ze kiezen een naam en een personage, maken een gratis account en staan op de verdieping."
+        "body": "Deel de link van je kantoor. Ze maken een gratis account, kiezen een naam en personage, en staan op de vloer."
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "Stuur je team de link.",
-        "body": "Nodig teamgenoten uit per e-mail, of stuur ze een uitnodigingslink."
+        "body": "Stuur je teamgenoten de link van je kantoor."
       },
       "walk": {
         "title": "Loop binnen.",
@@ -1448,8 +1482,8 @@
           "Alle functies, geen proefperiode"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
         "items": [
           "Alles uit Free",
@@ -1457,13 +1491,13 @@
           "Zes keer zoveel vergaderuren"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "Voor het team dat één rij bureaus is ontgroeid.",
         "items": [
-          "Alles uit Team",
+          "Alles uit Plus",
           "Plek voor 25 leden",
-          "Twee keer zoveel uren als Team",
+          "Twee keer zoveel uren als Plus",
           "Groter? Neem contact op"
         ]
       },

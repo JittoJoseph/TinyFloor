@@ -74,18 +74,9 @@ export interface Member {
   joinedAt: number;
 }
 
-export interface Invite {
-  id: string;
-  email: string | null;
-  role: OfficeRole;
-  createdAt: number;
-  expiresAt: number;
-}
-
 export interface OfficeOverview {
   office: Office;
   members: Member[];
-  invites: Invite[];
   /** How many people are on the floor right now. */
   people: number;
 }
@@ -137,7 +128,7 @@ export interface AdminOffice {
   members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
 }
 
-export type PlanId = "free" | "team" | "business";
+export type PlanId = "free" | "plus" | "pro";
 export interface Plan {
   id: PlanId;
   seats: number;
@@ -290,15 +281,11 @@ export const api = {
     del<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`),
   handOver: (officeId: string, userId: string) => post<{ ok: true }>(`/offices/${id(officeId)}/transfer`, { userId }),
 
-  // Invitations
-  createInvite: (officeId: string, body: { role: OfficeRole; email?: string }) =>
-    post<{ invite: Invite & { token: string } }>(`/offices/${id(officeId)}/invites`, body),
-  revokeInvite: (officeId: string, inviteId: string) =>
-    del<{ ok: true }>(`/offices/${id(officeId)}/invites/${id(inviteId)}`),
+  // The office's one invite link (lib/inviteLink.ts)
+  inviteLink: (officeId: string) => get<{ code: string }>(`/offices/${id(officeId)}/invite`),
+  resetInviteLink: (officeId: string) => post<{ code: string }>(`/offices/${id(officeId)}/invite/reset`),
   invitePreview: (token: string) =>
-    get<{ invite: { officeId: string; officeName: string; members: number; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
-      `/invites/${id(token)}`,
-    ),
+    get<{ invite: { officeId: string; officeName: string; members: number; role: OfficeRole; full: boolean } }>(`/invites/${id(token)}`),
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
 
   // Walking in, chatting, calling

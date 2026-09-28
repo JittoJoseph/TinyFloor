@@ -16,7 +16,7 @@
     "lobbyDescription": "Gå in i TinyFloors kostnadsfria, öppna lobby som gäst. Välj en figur, träffa folk och testa videosamtal på nära håll i webbläsaren.",
     "inviteTitle": "Gå med i {office} på TinyFloor",
     "inviteFallbackTitle": "Du är inbjuden till TinyFloor",
-    "inviteDescription": "{name} har bjudit in dig till {office} på TinyFloor, ett virtuellt kontor du kan gå runt i."
+    "inviteDescription": "Gå med i {office} på TinyFloor, ett virtuellt kontor du kan gå runt i."
   },
   "common": {
     "loading": "Laddar...",
@@ -92,7 +92,7 @@
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
-    "signUpSubtitle": "En e-postadress och ett lösenord, mer behövs inte.",
+    "signUpSubtitle": "Google går snabbast, eller använd din e-post.",
     "email": "E-post",
     "emailPlaceholder": "du@foretag.se",
     "password": "Lösenord",
@@ -128,7 +128,8 @@
       "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
       "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
       "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
-    }
+    },
+    "continueWithEmail": "Fortsätt med e-post"
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -141,8 +142,13 @@
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
     "walkingInAs": "Du går in som {name}",
-    "introTitle": "Innan du går in",
-    "introSubtitle": "Vad ska andra kalla dig, och vem är du på våningen?"
+    "introTitle": "Välkommen",
+    "introEyebrow": "Välkommen till TinyFloor",
+    "nameTitle": "Vad ska folk kalla dig?",
+    "nameBody": "Visas på din figur och i chatten.",
+    "characterTitle": "Välj din figur",
+    "characterBody": "Det här är du på våningen.",
+    "thatsMe": "Det är jag"
   },
   "room": {
     "connecting": "Ansluter...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "Inbjudningar ingår i ett kontor",
-        "body": "Bjud in ditt team via e-post eller med en länk, i ett eget kontor."
+        "body": "Bjud in ditt team med en länk, i ett eget kontor."
       },
       "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
       "go": "Skapa mitt kontor",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Ägare",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
-      "invalid": "Den kan ha gått ut, redan använts eller stängts av. Be om en ny.",
+      "invalid": "Den kan ha återställts, eller så har kontoret stängts. Be om en ny länk.",
       "home": "Till startsidan",
-      "eyebrow": "{name} har bjudit in dig",
-      "asAdmin": "Du är inbjuden som admin.",
-      "asMember": "Du är inbjuden till teamet.",
+      "eyebrow": "Du är inbjuden till",
       "join": "Gå med i {office}",
-      "joiningAs": "Du går med som {name} ({email})",
+      "joiningAs": "Du går med som {email}.",
       "createAccount": "Skapa ett konto",
       "signIn": "Jag har ett konto",
-      "readyToJoin": "Det är jag",
-      "accountKeeps": "Ett konto sparar {name} och din karaktär till nästa gång.",
-      "you": "Du",
       "members": "{count, plural, one {# medlem} other {# medlemmar}}",
-      "change": "Ändra"
+      "change": "Inte du?",
+      "accountTitle": "Ta din plats",
+      "accountBody": "Logga in för att gå med. Det tar några sekunder.",
+      "perkFloor": "Gå fram till någon för att prata, som på ett riktigt kontor",
+      "perkTalk": "Röstsamtal startar när ni står bredvid varandra",
+      "perkChat": "Kanaler och meddelanden som stannar",
+      "useEmail": "Använd e-post i stället",
+      "joining": "Går med",
+      "joinTitle": "Du är redo att gå med",
+      "joinBody": "Kontoret väntar på din startsida, redo att gå in i.",
+      "fullTitle": "Kontoret är fullt",
+      "fullBody": "Alla platser är tagna. Be den som skickade länken att göra plats eller byta till en större plan."
     },
     "errors": {
       "member_limit": "Arbetsytan är full med nuvarande plan.",
@@ -981,7 +993,7 @@
       "name_required": "Ge det ett namn först.",
       "bad_email": "Det ser inte ut som en e-postadress.",
       "invite_used": "Inbjudan har redan använts.",
-      "invite_invalid": "Inbjudan har gått ut eller stängts av.",
+      "invite_invalid": "Den här inbjudningslänken har återställts eller fungerar inte längre.",
       "wrong_account": "Inbjudan gäller en annan e-postadress. Logga in med det kontot.",
       "wrong_password": "Ditt nuvarande lösenord är fel.",
       "password_too_short": "Använd minst 8 tecken.",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "Personer",
       "members": "Medlemmar",
-      "invitations": "Väntande inbjudningar",
       "invite": "Bjud in",
       "seats": "{used} av {seats} platser",
       "seatsFull": "Alla platser är tagna.",
       "seatsFree": "Det finns plats kvar.",
       "onFloorNow": "{count} på våningen nu",
-      "noInvitations": "Inga väntande inbjudningar",
       "copied": "Kopierad",
-      "revoke": "Återkalla",
       "remove": "Ta bort",
       "leave": "Lämna",
       "makeAdmin": "Gör till admin",
@@ -1017,21 +1026,23 @@
       "admin": "Admin",
       "member": "Medlem",
       "noEmail": "Ingen e-post",
-      "expires": "Går ut {date}",
-      "anyoneWithLink": "Alla med länken",
       "wrong": "Det gick inte. Försök igen.",
       "subtitle": "Alla i {office}, och vem som får komma in.",
       "linkCopied": "Inbjudningslänk kopierad",
       "nobodyOnFloor": "Ingen annan än.",
       "seatsLeft": "{count, plural, one {# plats kvar – bjud in någon} other {# platser kvar – bjud in någon}}",
       "seatsNote": "En plats är en medlem. Den som går frigör sin; att vara offline gör det inte.",
-      "invitationsNote": "En inbjudan tar ingen plats. Den som tackar ja först får en, så länge det finns en ledig.",
-      "noInvitationsBody": "Bjud in någon – länken väntar här tills den accepteras eller går ut.",
       "allSeatsTaken": "Alla platser är tagna",
       "allSeatsTakenBody": "Den som går frigör en plats. Kontor med fler platser kommer snart.",
       "yourProfile": "Din profil",
       "ownOfficeTitle": "Ett plan som det här för ditt team?",
-      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer."
+      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer.",
+      "linkTitle": "Inbjudningslänk",
+      "linkBody": "Alla med länken kan gå med med ett konto, så länge det finns en ledig plats.",
+      "copy": "Kopiera",
+      "resetLink": "Återställ länk",
+      "resetTitle": "Återställa inbjudningslänken?",
+      "resetBody": "Den nuvarande länken slutar fungera direkt och en ny tar över. Alla som redan är med stannar."
     },
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "Kontorets namn",
     "creating": "Gör i ordning",
-    "continue": "Vidare"
+    "continue": "Vidare",
+    "eyebrow": "Nytt kontor",
+    "untitled": "Ditt kontor",
+    "nameTitle": "Vad heter ditt team?",
+    "nameBody": "Det här namnet ser alla som kommer in.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Du kan byta namn när som helst.",
+    "createIt": "Skapa kontor",
+    "sizeTitle": "Hur många ska jobba här?",
+    "sizeBody": "Räkna alla du vill bjuda in, dig själv inräknad.",
+    "people": "personer",
+    "planTitle": "Välj en plan för {office}",
+    "planBody": "Byt eller säg upp när som helst.",
+    "recommended": "Passar bäst",
+    "perMonth": "/mån",
+    "upTo": "Upp till {count} personer",
+    "perPerson": "{price} per person",
+    "bigger": "Fler än 25? Börja med Pro och skriv till oss, så gör vi plats.",
+    "included": "Vad som ingår",
+    "includedCalls": "Röstsamtal när ni möts, räknas aldrig",
+    "includedChat": "Chatt, kanaler och filer",
+    "includedMeetings": "Gruppmöten med video, {hours} timmar i månaden",
+    "includedCancel": "Säg upp när som helst; återbetalning inom 14 dagar",
+    "getPlan": "Skaffa {plan} · {price}/mån",
+    "openingCheckout": "Öppnar kassan",
+    "freeInstead": "Eller börja med Free, upp till {count} personer",
+    "freeTooSmall": "Börja med Free · bara {count} kan gå med"
   },
   "meetings": {
     "title": "Möten",
@@ -1149,19 +1186,16 @@
     "welcome": "Välkommen, {name}",
     "welcomeAnonymous": "Välkommen",
     "welcomeBody": "En våning för ditt team, med kanaler och samtal inbyggda.",
-    "stepName": "Namnge ditt kontor",
-    "makeIt": "Skapa",
     "invited": "Har du blivit inbjuden?",
     "invitedBody": "Klistra in länken ditt team skickade.",
     "invitePlaceholder": "Klistra in en inbjudningslänk",
     "join": "Gå med",
     "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken.",
     "makeTitle": "Nu gör vi ditt kontor",
-    "yourNewOffice": "Ditt nya kontor",
-    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst.",
     "otherWays": "Andra vägar in",
     "lobbyBody": "Titta in och träffa folk.",
-    "yourAccount": "Ditt konto"
+    "yourAccount": "Ditt konto",
+    "createOffice": "Skapa ditt kontor"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "Ta in ditt team.",
         "muted": "Med en länk.",
-        "body": "Skicka en inbjudningslänk eller bjud in via e-post. De väljer ett namn och en figur, skapar ett gratiskonto och är på våningen."
+        "body": "Dela ditt kontors länk. De skapar ett gratis konto, väljer namn och figur, och är på våningen."
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "Skicka länken till teamet.",
-        "body": "Bjud in kollegor via e-post, eller skicka dem en inbjudningslänk."
+        "body": "Skicka ditt kontors länk till teamet."
       },
       "walk": {
         "title": "Gå in.",
@@ -1448,8 +1482,8 @@
           "Alla funktioner, ingen provperiod"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "Ett pris för hela kontoret, hur många av de tio platserna du än fyller.",
         "items": [
           "Allt i Free",
@@ -1457,13 +1491,13 @@
           "Sex gånger så många mötestimmar"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "För teamet som har vuxit ur en rad skrivbord.",
         "items": [
-          "Allt i Team",
+          "Allt i Plus",
           "Plats för 25 medlemmar",
-          "Dubbelt så många timmar som Team",
+          "Dubbelt så många timmar som Plus",
           "Större? Hör av dig"
         ]
       },

@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /** Plan names stay in English everywhere, like on the pricing page. */
-const NAMES: Record<PlanId, string> = { free: "Free", team: "Team", business: "Business" };
+const NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
 
 type Asking = { kind: "switch"; plan: Plan } | { kind: "cancel" } | null;
 

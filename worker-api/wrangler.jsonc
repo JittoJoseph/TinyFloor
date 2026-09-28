@@ -53,7 +53,7 @@
         // secrets. The live system has none of these yet, so billing is off there.
         "PADDLE_ENV": "sandbox",
         "PADDLE_CLIENT_TOKEN": "test_4ed348cc09ff782ef94572163bf",
-        "PADDLE_PRICES": "{\"team\":\"pri_01m3kcx9ffg4gtchefr77ke5nk\",\"business\":\"pri_01m3kd4kf3a3547dnr863hrev4\"}"
+        "PADDLE_PRICES": "{\"plus\":\"pri_01m3kcx9ffg4gtchefr77ke5nk\",\"pro\":\"pri_01m3kd4kf3a3547dnr863hrev4\"}"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],

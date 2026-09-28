@@ -16,7 +16,7 @@
     "lobbyDescription": "TinyFloor の無料の公開ロビーにゲストとして入れます。キャラクターを選んで、人に会い、ブラウザで近くの人とビデオ通話を試しましょう。",
     "inviteTitle": "TinyFloor の {office} に参加",
     "inviteFallbackTitle": "TinyFloor に招待されています",
-    "inviteDescription": "{name} さんが、歩き回れるバーチャルオフィス TinyFloor の {office} に招待しています。"
+    "inviteDescription": "TinyFloor の {office} に参加しよう。歩き回れるバーチャルオフィスです。"
   },
   "common": {
     "loading": "読み込み中...",
@@ -92,7 +92,7 @@
     "signInTitle": "おかえりなさい",
     "signInSubtitle": "ログインしてチームのオフィスに戻りましょう。",
     "signUpTitle": "アカウントを作成",
-    "signUpSubtitle": "必要なのはメールアドレスとパスワードだけです。",
+    "signUpSubtitle": "Google がいちばん速いです。メールでも作れます。",
     "email": "メールアドレス",
     "emailPlaceholder": "you@company.com",
     "password": "パスワード",
@@ -128,7 +128,8 @@
       "google_failed": "Google でのログインに失敗しました。もう一度お試しください。",
       "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
       "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
-    }
+    },
+    "continueWithEmail": "メールで続ける"
   },
   "entry": {
     "yourName": "あなたの名前",
@@ -141,8 +142,13 @@
     "copyInvite": "招待リンクをコピー",
     "continue": "次へ",
     "walkingInAs": "{name} として入ります",
-    "introTitle": "入る前に",
-    "introSubtitle": "なんと呼ばれたいですか？フロアではどのキャラクターにしますか？"
+    "introTitle": "ようこそ",
+    "introEyebrow": "TinyFloor へようこそ",
+    "nameTitle": "何と呼ばれたいですか？",
+    "nameBody": "キャラクターとチャットに表示されます。",
+    "characterTitle": "キャラクターを選ぼう",
+    "characterBody": "フロアでのあなたです。",
+    "thatsMe": "これにする"
   },
   "room": {
     "connecting": "接続中...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "招待はオフィスで使えます",
-        "body": "自分のオフィスなら、メールやリンクでチームを招待できます。"
+        "body": "自分のオフィスなら、リンクひとつでチームを招待できます。"
       },
       "free": "オフィスは1分で作れて、3人まで無料です。",
       "go": "オフィスを作る",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "オーナー",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "この招待は使えません",
-      "invalid": "期限切れ、使用済み、または無効になっている可能性があります。新しい招待を頼んでください。",
+      "invalid": "リセットされたか、オフィスが閉じられた可能性があります。新しいリンクをもらってください。",
       "home": "ホームへ",
-      "eyebrow": "{name} さんからの招待",
-      "asAdmin": "管理者として招待されています。",
-      "asMember": "チームへの参加に招待されています。",
+      "eyebrow": "招待されています",
       "join": "{office} に参加",
-      "joiningAs": "{name}（{email}）として参加します",
+      "joiningAs": "{email} として参加します。",
       "createAccount": "アカウントを作成",
       "signIn": "アカウントを持っています",
-      "readyToJoin": "これで参加",
-      "accountKeeps": "アカウントがあれば、{name} とキャラクターを次回も使えます。",
-      "you": "あなた",
       "members": "メンバー {count} 人",
-      "change": "変更"
+      "change": "別のアカウント？",
+      "accountTitle": "席に着こう",
+      "accountBody": "サインインして参加しましょう。数秒で終わります。",
+      "perkFloor": "本物のオフィスのように、歩いて行って話しかけられます",
+      "perkTalk": "隣にいると音声通話が始まります",
+      "perkChat": "残るチャンネルとメッセージ",
+      "useEmail": "メールアドレスを使う",
+      "joining": "参加しています",
+      "joinTitle": "参加の準備ができました",
+      "joinBody": "オフィスはホームに表示され、すぐに入れます。",
+      "fullTitle": "このオフィスは満員です",
+      "fullBody": "席がすべて埋まっています。リンクを送った人に、席を空けるか上位プランにしてもらいましょう。"
     },
     "errors": {
       "member_limit": "現在のプランではワークスペースが満員です。",
@@ -981,7 +993,7 @@
       "name_required": "先に名前を入れてください。",
       "bad_email": "メールアドレスの形式ではないようです。",
       "invite_used": "この招待はすでに使われています。",
-      "invite_invalid": "この招待は期限切れか、無効になっています。",
+      "invite_invalid": "この招待リンクはリセットされたか、使えなくなっています。",
       "wrong_account": "この招待は別のメールアドレス宛てです。そのアカウントでログインしてください。",
       "wrong_password": "現在のパスワードが正しくありません。",
       "password_too_short": "8文字以上にしてください。",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "メンバー",
       "members": "メンバー",
-      "invitations": "保留中の招待",
       "invite": "招待",
       "seats": "{seats} 席中 {used} 席",
       "seatsFull": "席はすべて埋まっています。",
       "seatsFree": "まだ空きがあります。",
       "onFloorNow": "いまフロアに {count} 人",
-      "noInvitations": "保留中の招待はありません",
       "copied": "コピーしました",
-      "revoke": "取り消す",
       "remove": "外す",
       "leave": "抜ける",
       "makeAdmin": "管理者にする",
@@ -1017,21 +1026,23 @@
       "admin": "管理者",
       "member": "メンバー",
       "noEmail": "メールなし",
-      "expires": "{date} に期限切れ",
-      "anyoneWithLink": "リンクを持つだれでも",
       "wrong": "うまくいきませんでした。もう一度お試しください。",
       "subtitle": "{office}の全員と、入れる人。",
       "linkCopied": "招待リンクをコピーしました",
       "nobodyOnFloor": "ほかにはまだ誰もいません。",
       "seatsLeft": "{count, plural, other {空き#席 — 誰かを招待しましょう}}",
       "seatsNote": "1席は1人のメンバーです。抜けると席が空きます。オフラインでは空きません。",
-      "invitationsNote": "招待は席を取りません。空きがあれば、最初に承諾した人が席を得ます。",
-      "noInvitationsBody": "招待すると、承諾されるか期限が切れるまでリンクがここに残ります。",
       "allSeatsTaken": "すべての席が埋まっています",
       "allSeatsTakenBody": "誰かが抜けると席が空きます。席の多いオフィスは近日提供予定です。",
       "yourProfile": "あなたのプロフィール",
       "ownOfficeTitle": "こんなフロアをあなたのチームにも？",
-      "ownOfficeBody": "1分で自分のオフィスを作れます。3人まで無料。"
+      "ownOfficeBody": "1分で自分のオフィスを作れます。3人まで無料。",
+      "linkTitle": "招待リンク",
+      "linkBody": "このリンクがあれば、空き席がある限りアカウントで誰でも参加できます。",
+      "copy": "コピー",
+      "resetLink": "リンクをリセット",
+      "resetTitle": "招待リンクをリセットしますか？",
+      "resetBody": "今のリンクはすぐに使えなくなり、新しいリンクに置き換わります。すでにオフィスにいる人はそのままです。"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "オフィス名",
     "creating": "準備しています",
-    "continue": "次へ"
+    "continue": "次へ",
+    "eyebrow": "新しいオフィス",
+    "untitled": "あなたのオフィス",
+    "nameTitle": "チーム名は？",
+    "nameBody": "入ってきた人全員に表示される名前です。",
+    "namePlaceholder": "Acme スタジオ",
+    "renameLater": "名前はいつでも変えられます。",
+    "createIt": "オフィスを作成",
+    "sizeTitle": "何人で使いますか？",
+    "sizeBody": "招待したい人を、あなたも含めて数えてください。",
+    "people": "人",
+    "planTitle": "{office} のプランを選ぼう",
+    "planBody": "いつでも変更・解約できます。",
+    "recommended": "おすすめ",
+    "perMonth": "/月",
+    "upTo": "最大 {count} 人",
+    "perPerson": "1 人あたり {price}",
+    "bigger": "25 人以上ですか？まず Pro で始めて、ご連絡ください。枠を広げます。",
+    "included": "含まれるもの",
+    "includedCalls": "近づいて始まる音声通話は時間に含まれません",
+    "includedChat": "チャット、チャンネル、ファイル",
+    "includedMeetings": "ビデオ付きグループミーティング 月 {hours} 時間",
+    "includedCancel": "いつでも解約可能、14 日以内なら返金",
+    "getPlan": "{plan} にする · {price}/月",
+    "openingCheckout": "お支払いを開いています",
+    "freeInstead": "または Free で始める（{count} 人まで）",
+    "freeTooSmall": "Free で始める · 参加できるのは {count} 人まで"
   },
   "meetings": {
     "title": "ミーティング",
@@ -1149,19 +1186,16 @@
     "welcome": "ようこそ、{name}さん",
     "welcomeAnonymous": "ようこそ",
     "welcomeBody": "チームのためのフロア。チャンネルと通話つき。",
-    "stepName": "オフィスに名前をつける",
-    "makeIt": "つくる",
     "invited": "招待されましたか？",
     "invitedBody": "チームから届いたリンクを貼り付けてください。",
     "invitePlaceholder": "招待リンクを貼り付け",
     "join": "参加",
     "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。",
     "makeTitle": "オフィスをつくりましょう",
-    "yourNewOffice": "新しいオフィス",
-    "freeRename": "3人まで無料。名前はいつでも変えられます。",
     "otherWays": "ほかの入りかた",
     "lobbyBody": "立ち寄って人に会いましょう。",
-    "yourAccount": "あなたのアカウント"
+    "yourAccount": "あなたのアカウント",
+    "createOffice": "オフィスを作る"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "チームを招き入れる。",
         "muted": "リンクひとつで。",
-        "body": "招待リンクを送るか、メールで招待。名前とキャラクターを選び、無料アカウントを作れば、もうフロアにいます。"
+        "body": "オフィスのリンクを共有するだけ。無料アカウントを作り、名前とキャラクターを選べば、もうフロアにいます。"
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "チームにリンクを送る。",
-        "body": "チームメイトをメールで招待するか、招待リンクを送りましょう。"
+        "body": "チームメイトにオフィスのリンクを送りましょう。"
       },
       "walk": {
         "title": "入ってみる。",
@@ -1448,8 +1482,8 @@
           "すべての機能、試用期間なし"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "10席のうち何席使っても、オフィス全体でひとつの料金。",
         "items": [
           "Free のすべて",
@@ -1457,13 +1491,13 @@
           "ミーティング時間が 6 倍"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "デスク一列では収まらなくなったチームに。",
         "items": [
-          "Team のすべて",
+          "Plus のすべて",
           "メンバー 25 人まで",
-          "Team の 2 倍のミーティング時間",
+          "Plus の 2 倍のミーティング時間",
           "もっと大きく？ご相談ください"
         ]
       },

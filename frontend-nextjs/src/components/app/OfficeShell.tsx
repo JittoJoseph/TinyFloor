@@ -12,6 +12,7 @@ import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
+import { useInviteLink } from "@/lib/inviteLink";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell } from "./AppShell";
@@ -72,6 +73,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   // The office and everyone in it, read once here for every screen in the shell.
   const [read, setRead] = useState<{ overview: OfficeOverview; at: number } | null>(null);
   const [gone, setGone] = useState(false);
+  // Invite on the floor shares the office's one link; until it has loaded, it opens People.
+  const inviteLink = useInviteLink(read ? officeId : undefined);
   const { unread } = useChat();
   const { meetings: meetingList } = useMeetings();
   const overview = read?.overview ?? null;
@@ -175,7 +178,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       settings: settingsPath,
       meetings,
     },
-    sharePath: floor,
+    sharePath: inviteLink ?? floor,
     officesOnly: () => {},
   };
 
@@ -209,8 +212,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                 title={office.name}
                 user={user}
                 ticketFor={() => api.officeTicket(office.id)}
-                sharePath={floor}
-                inviteHref={people}
+                sharePath={inviteLink ?? undefined}
+                inviteHref={inviteLink ? undefined : people}
                 leaveHref="/dashboard"
                 settingsHref={settingsPath}
               />

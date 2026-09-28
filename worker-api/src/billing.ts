@@ -11,7 +11,7 @@ import { requireUser } from "./session";
  * reply to a request this worker made itself.
  */
 
-export type PlanId = "free" | "team" | "business";
+export type PlanId = "free" | "plus" | "pro";
 
 export interface Plan {
   id: PlanId;
@@ -24,8 +24,8 @@ export interface Plan {
 
 export const PLANS: Plan[] = [
   { id: "free", seats: 3, meetingHours: 5, price: null },
-  { id: "team", seats: 10, meetingHours: 30, price: 1900 },
-  { id: "business", seats: 25, meetingHours: 60, price: 4900 },
+  { id: "plus", seats: 10, meetingHours: 30, price: 1900 },
+  { id: "pro", seats: 25, meetingHours: 60, price: 4900 },
 ];
 
 const FREE = PLANS[0];
@@ -91,7 +91,7 @@ function planForPrice(billing: BillingConfig, priceId: string): Plan | null {
 }
 
 function readPlan(body: Record<string, unknown>): Exclude<PlanId, "free"> {
-  if (body.plan !== "team" && body.plan !== "business") throw new HttpError(400, "bad_plan", "Pick a plan");
+  if (body.plan !== "plus" && body.plan !== "pro") throw new HttpError(400, "bad_plan", "Pick a plan");
   return body.plan;
 }
 

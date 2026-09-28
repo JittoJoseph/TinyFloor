@@ -61,8 +61,8 @@ export const termsSections: LegalSection[] = [
     body: (
       <ul>
         <li>
-          Whoever makes an office owns it. Its admins decide who is a member and can invite people, by email or with an invite link. Anyone
-          with an invite link can join the office with an account until the link expires, is used up or is revoked, so share links with care.
+          Whoever makes an office owns it. Each office has one invite link, which anyone in it can share. Anyone with the link can join the
+          office with an account while there is a free seat, until an admin resets it, so share it with care. Admins decide who stays a member.
         </li>
         <li>
           The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.

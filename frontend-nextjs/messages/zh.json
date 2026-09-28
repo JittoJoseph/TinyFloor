@@ -16,7 +16,7 @@
     "lobbyDescription": "以访客身份进入 TinyFloor 免费的公共大厅。选一个角色，认识新朋友，在浏览器里体验走近就能开的视频通话。",
     "inviteTitle": "加入 TinyFloor 上的 {office}",
     "inviteFallbackTitle": "你收到了 TinyFloor 的邀请",
-    "inviteDescription": "{name} 邀请你加入 TinyFloor 上的 {office}，这是一间可以四处走动的虚拟办公室。"
+    "inviteDescription": "加入 TinyFloor 上的 {office}，一个可以走动的虚拟办公室。"
   },
   "common": {
     "loading": "加载中...",
@@ -92,7 +92,7 @@
     "signInTitle": "欢迎回来",
     "signInSubtitle": "登录后回到你们团队的办公室。",
     "signUpTitle": "创建你的账号",
-    "signUpSubtitle": "只需要一个邮箱和一个密码。",
+    "signUpSubtitle": "用 Google 最快，也可以用邮箱。",
     "email": "邮箱",
     "emailPlaceholder": "you@company.com",
     "password": "密码",
@@ -128,7 +128,8 @@
       "google_failed": "Google 登录未成功，请重试。",
       "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
       "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
-    }
+    },
+    "continueWithEmail": "使用邮箱继续"
   },
   "entry": {
     "yourName": "你的名字",
@@ -141,8 +142,13 @@
     "copyInvite": "复制邀请链接",
     "continue": "继续",
     "walkingInAs": "以 {name} 的身份进入",
-    "introTitle": "进门之前",
-    "introSubtitle": "大家该怎么称呼你？你在楼层里是哪个角色？"
+    "introTitle": "欢迎",
+    "introEyebrow": "欢迎来到 TinyFloor",
+    "nameTitle": "大家怎么称呼你？",
+    "nameBody": "显示在你的角色和聊天中。",
+    "characterTitle": "选择你的角色",
+    "characterBody": "这就是你在楼层上的样子。",
+    "thatsMe": "就是我"
   },
   "room": {
     "connecting": "连接中...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "邀请属于办公室",
-        "body": "在你自己的办公室里，通过邮件或链接邀请团队。"
+        "body": "在你自己的办公室里，用一个链接邀请团队。"
       },
       "free": "创建办公室只需一分钟，最多 3 人免费。",
       "go": "创建我的办公室",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "所有者",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
-      "invalid": "它可能已过期、已被使用或已关闭。请要一个新的。",
+      "invalid": "链接可能已被重置，或办公室已关闭。请索取新链接。",
       "home": "回到首页",
-      "eyebrow": "{name} 邀请了你",
-      "asAdmin": "你被邀请以管理员身份加入。",
-      "asMember": "你被邀请加入团队。",
+      "eyebrow": "你受邀加入",
       "join": "加入 {office}",
-      "joiningAs": "将以 {name}（{email}）的身份加入",
+      "joiningAs": "以 {email} 身份加入。",
       "createAccount": "创建账号",
       "signIn": "我已有账号",
-      "readyToJoin": "就是我",
-      "accountKeeps": "有账号就能记住 {name} 和你的角色，下次接着用。",
-      "you": "你",
       "members": "{count} 位成员",
-      "change": "更改"
+      "change": "不是你？",
+      "accountTitle": "就座吧",
+      "accountBody": "登录即可加入，只需几秒。",
+      "perkFloor": "像在真实办公室一样，走过去就能聊",
+      "perkTalk": "靠近彼此时语音通话自动开始",
+      "perkChat": "会保留的频道和消息",
+      "useEmail": "改用邮箱",
+      "joining": "正在加入",
+      "joinTitle": "可以加入了",
+      "joinBody": "办公室会出现在你的主页上，随时可以进入。",
+      "fullTitle": "这个办公室已满",
+      "fullBody": "座位已满。请发送链接的人腾出位置，或升级到更大的方案。"
     },
     "errors": {
       "member_limit": "当前套餐下工作区已满。",
@@ -981,7 +993,7 @@
       "name_required": "请先取个名字。",
       "bad_email": "这看起来不像邮箱地址。",
       "invite_used": "这个邀请已经被使用过了。",
-      "invite_invalid": "这个邀请已过期或已关闭。",
+      "invite_invalid": "此邀请链接已被重置或已失效。",
       "wrong_account": "这个邀请是发给另一个邮箱的。请用那个账号登录。",
       "wrong_password": "当前密码不正确。",
       "password_too_short": "请至少使用 8 个字符。",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "成员",
       "members": "成员",
-      "invitations": "待接受的邀请",
       "invite": "邀请",
       "seats": "{seats} 个席位中的 {used} 个",
       "seatsFull": "席位已满。",
       "seatsFree": "还有空位。",
       "onFloorNow": "现在楼层里有 {count} 人",
-      "noInvitations": "没有待处理的邀请",
       "copied": "已复制",
-      "revoke": "撤销",
       "remove": "移除",
       "leave": "退出",
       "makeAdmin": "设为管理员",
@@ -1017,21 +1026,23 @@
       "admin": "管理员",
       "member": "成员",
       "noEmail": "没有邮箱",
-      "expires": "{date} 过期",
-      "anyoneWithLink": "任何拿到链接的人",
       "wrong": "没有成功，请再试一次。",
       "subtitle": "{office} 的所有人，以及谁可以进来。",
       "linkCopied": "邀请链接已复制",
       "nobodyOnFloor": "还没有其他人。",
       "seatsLeft": "{count, plural, other {还剩 # 个席位——邀请个人吧}}",
       "seatsNote": "一个席位就是一名成员。有人离开就会空出席位，离线则不会。",
-      "invitationsNote": "邀请不占席位。只要还有空位，最先接受的人就能得到一个。",
-      "noInvitationsBody": "邀请某人后，链接会留在这里，直到被接受或过期。",
       "allSeatsTaken": "席位已满",
       "allSeatsTakenBody": "有人离开就会空出席位。更多席位的办公室即将推出。",
       "yourProfile": "你的资料",
       "ownOfficeTitle": "想给你的团队也来一层这样的楼吗？",
-      "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。"
+      "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。",
+      "linkTitle": "邀请链接",
+      "linkBody": "有此链接的人都可以用账号加入，只要还有空位。",
+      "copy": "复制",
+      "resetLink": "重置链接",
+      "resetTitle": "要重置邀请链接吗？",
+      "resetBody": "当前链接会立即失效，由新链接替代。已在办公室的人不受影响。"
     },
     "office": "办公室",
     "goneTitle": "这个办公室不在了",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "办公室名称",
     "creating": "正在准备",
-    "continue": "继续"
+    "continue": "继续",
+    "eyebrow": "新办公室",
+    "untitled": "你的办公室",
+    "nameTitle": "你的团队叫什么？",
+    "nameBody": "这是大家进来时看到的名字。",
+    "namePlaceholder": "Acme 工作室",
+    "renameLater": "随时可以改名。",
+    "createIt": "创建办公室",
+    "sizeTitle": "会有多少人在这里工作？",
+    "sizeBody": "把想邀请的人都算上，包括你自己。",
+    "people": "人",
+    "planTitle": "为 {office} 选择方案",
+    "planBody": "可随时更改或取消。",
+    "recommended": "最合适",
+    "perMonth": "/月",
+    "upTo": "最多 {count} 人",
+    "perPerson": "每人 {price}",
+    "bigger": "超过 25 人？先选 Pro 并联系我们，我们来扩容。",
+    "included": "包含内容",
+    "includedCalls": "走近即通话，从不计时",
+    "includedChat": "聊天、频道和文件",
+    "includedMeetings": "每月 {hours} 小时视频会议",
+    "includedCancel": "随时取消；14 天内可退款",
+    "getPlan": "选择 {plan} · {price}/月",
+    "openingCheckout": "正在打开付款",
+    "freeInstead": "或从 Free 开始，最多 {count} 人",
+    "freeTooSmall": "改用 Free · 只能容纳 {count} 人"
   },
   "meetings": {
     "title": "会议",
@@ -1149,19 +1186,16 @@
     "welcome": "欢迎，{name}",
     "welcomeAnonymous": "欢迎",
     "welcomeBody": "给团队的一层楼，频道和通话都已内置。",
-    "stepName": "为你的办公室命名",
-    "makeIt": "创建",
     "invited": "收到邀请了吗？",
     "invitedBody": "粘贴团队发给你的链接。",
     "invitePlaceholder": "粘贴邀请链接",
     "join": "加入",
     "badLink": "这看起来不是邀请链接。请粘贴完整链接。",
     "makeTitle": "来创建你的办公室",
-    "yourNewOffice": "你的新办公室",
-    "freeRename": "最多 3 人免费。名称随时可以修改。",
     "otherWays": "其他进入方式",
     "lobbyBody": "进来认识新朋友。",
-    "yourAccount": "你的账户"
+    "yourAccount": "你的账户",
+    "createOffice": "创建你的办公室"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "把团队带进来。",
         "muted": "只需一个链接。",
-        "body": "发送邀请链接，或通过邮件邀请。他们选好名字和角色，注册一个免费账号，就已经在楼层上了。"
+        "body": "分享你的办公室链接。对方创建免费账号，选好名字和角色，就进入楼层了。"
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "把链接发给团队。",
-        "body": "通过邮件邀请队友，或把邀请链接发给他们。"
+        "body": "把办公室链接发给队友。"
       },
       "walk": {
         "title": "走进来。",
@@ -1448,8 +1482,8 @@
           "全部功能，无需试用"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "整个办公室一个价格，十个席位用多少都一样。",
         "items": [
           "Free 的全部功能",
@@ -1457,13 +1491,13 @@
           "6 倍会议时长"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "适合一排工位已经坐不下的团队。",
         "items": [
-          "Team 的全部功能",
+          "Plus 的全部功能",
           "可容纳 25 名成员",
-          "Team 的 2 倍会议时长",
+          "Plus 的 2 倍会议时长",
           "团队更大？联系我们"
         ]
       },

@@ -16,7 +16,7 @@
     "lobbyDescription": "Entrez en tant qu’invité dans le hall public et gratuit de TinyFloor. Choisissez un personnage, rencontrez du monde et essayez les appels vidéo de proximité dans votre navigateur.",
     "inviteTitle": "Rejoignez {office} sur TinyFloor",
     "inviteFallbackTitle": "Vous êtes invité sur TinyFloor",
-    "inviteDescription": "{name} vous invite dans {office} sur TinyFloor, un bureau virtuel dans lequel on se déplace."
+    "inviteDescription": "Rejoins {office} sur TinyFloor, un bureau virtuel où l'on se déplace."
   },
   "common": {
     "loading": "Chargement...",
@@ -92,7 +92,7 @@
     "signInTitle": "Bon retour",
     "signInSubtitle": "Connectez-vous pour retrouver le bureau de votre équipe.",
     "signUpTitle": "Créez votre compte",
-    "signUpSubtitle": "Une adresse e-mail et un mot de passe, c’est tout.",
+    "signUpSubtitle": "Google est le plus rapide, ou utilise ton e-mail.",
     "email": "E-mail",
     "emailPlaceholder": "vous@entreprise.fr",
     "password": "Mot de passe",
@@ -128,7 +128,8 @@
       "google_failed": "La connexion avec Google n'a pas abouti. Réessayez.",
       "google_unverified": "Validez d'abord votre adresse e-mail auprès de Google, puis réessayez.",
       "google_mismatch": "Cette adresse e-mail est liée à un autre compte Google."
-    }
+    },
+    "continueWithEmail": "Continuer avec l'e-mail"
   },
   "entry": {
     "yourName": "Votre nom",
@@ -141,8 +142,13 @@
     "copyInvite": "Copier le lien d’invitation",
     "continue": "Continuer",
     "walkingInAs": "Vous entrez en tant que {name}",
-    "introTitle": "Avant d’entrer",
-    "introSubtitle": "Comment voulez-vous qu’on vous appelle, et qui serez-vous sur l’étage ?"
+    "introTitle": "Bienvenue",
+    "introEyebrow": "Bienvenue sur TinyFloor",
+    "nameTitle": "Comment veux-tu qu'on t'appelle ?",
+    "nameBody": "Affiché sur ton personnage et dans le chat.",
+    "characterTitle": "Choisis ton personnage",
+    "characterBody": "C'est toi sur l'étage.",
+    "thatsMe": "C'est moi"
   },
   "room": {
     "connecting": "Connexion...",
@@ -863,7 +869,7 @@
       },
       "invites": {
         "title": "Les invitations viennent avec un bureau",
-        "body": "Invitez votre équipe par e-mail ou avec un lien, dans votre propre bureau."
+        "body": "Invite ton équipe avec un seul lien, dans un bureau à toi."
       },
       "free": "Créer un bureau prend une minute et c'est gratuit jusqu'à 3 personnes.",
       "go": "Créer mon bureau",
@@ -895,8 +901,8 @@
       "team10": "Team 10",
       "team25": "Team 25",
       "team50": "Team 50",
-      "team": "Team",
-      "business": "Business"
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Propriétaire",
@@ -957,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",
-      "invalid": "Elle a peut-être expiré, déjà servi ou été désactivée. Demandez-en une nouvelle.",
+      "invalid": "Il a peut-être été réinitialisé, ou le bureau a fermé. Demande un nouveau lien.",
       "home": "Accueil",
-      "eyebrow": "{name} vous a invité",
-      "asAdmin": "Vous êtes invité à rejoindre en tant qu’admin.",
-      "asMember": "Vous êtes invité à rejoindre l’équipe.",
+      "eyebrow": "Tu es invité·e à",
       "join": "Rejoindre {office}",
-      "joiningAs": "Vous rejoignez en tant que {name} ({email})",
+      "joiningAs": "Tu rejoins en tant que {email}.",
       "createAccount": "Créer un compte",
       "signIn": "J’ai un compte",
-      "readyToJoin": "C’est moi",
-      "accountKeeps": "Un compte garde {name} et votre personnage pour la prochaine fois.",
-      "you": "Vous",
       "members": "{count, plural, one {# membre} other {# membres}}",
-      "change": "Modifier"
+      "change": "Ce n'est pas toi ?",
+      "accountTitle": "Prends ta place",
+      "accountBody": "Connecte-toi pour rejoindre. Ça prend quelques secondes.",
+      "perkFloor": "Va voir quelqu'un pour parler, comme dans un vrai bureau",
+      "perkTalk": "Les appels vocaux démarrent quand vous êtes côte à côte",
+      "perkChat": "Des canaux et des messages qui restent",
+      "useEmail": "Utiliser plutôt l'e-mail",
+      "joining": "Arrivée en cours",
+      "joinTitle": "Tu es prêt·e à rejoindre",
+      "joinBody": "Le bureau t'attendra sur ta page d'accueil, prêt à t'accueillir.",
+      "fullTitle": "Ce bureau est complet",
+      "fullBody": "Toutes les places sont prises. Demande à la personne qui t'a envoyé le lien de faire de la place ou de passer à une offre plus grande."
     },
     "errors": {
       "member_limit": "L’espace de travail est complet avec son offre actuelle.",
@@ -981,7 +993,7 @@
       "name_required": "Donnez-lui d’abord un nom.",
       "bad_email": "Cela ne ressemble pas à une adresse e-mail.",
       "invite_used": "Cette invitation a déjà été utilisée.",
-      "invite_invalid": "Cette invitation a expiré ou a été désactivée.",
+      "invite_invalid": "Ce lien d'invitation a été réinitialisé ou ne fonctionne plus.",
       "wrong_account": "Cette invitation est destinée à une autre adresse e-mail. Connectez-vous avec ce compte.",
       "wrong_password": "Votre mot de passe actuel est incorrect.",
       "password_too_short": "Utilisez au moins 8 caractères.",
@@ -997,15 +1009,12 @@
     "people": {
       "title": "Personnes",
       "members": "Membres",
-      "invitations": "Invitations en attente",
       "invite": "Inviter",
       "seats": "{used} places sur {seats}",
       "seatsFull": "Toutes les places sont prises.",
       "seatsFree": "Il reste de la place.",
       "onFloorNow": "{count} à l'étage en ce moment",
-      "noInvitations": "Aucune invitation en attente",
       "copied": "Copié",
-      "revoke": "Révoquer",
       "remove": "Retirer",
       "leave": "Quitter",
       "makeAdmin": "Passer admin",
@@ -1017,21 +1026,23 @@
       "admin": "Admin",
       "member": "Membre",
       "noEmail": "Sans e-mail",
-      "expires": "Expire le {date}",
-      "anyoneWithLink": "Toute personne ayant le lien",
       "wrong": "Ça n'a pas marché. Réessayez.",
       "subtitle": "Tout le monde dans {office}, et qui peut entrer.",
       "linkCopied": "Lien d'invitation copié",
       "nobodyOnFloor": "Personne d'autre pour l'instant.",
       "seatsLeft": "{count, plural, one {# place libre — invitez quelqu'un} other {# places libres — invitez quelqu'un}}",
       "seatsNote": "Une place, c'est un membre. Partir libère la sienne ; être hors ligne, non.",
-      "invitationsNote": "Une invitation ne réserve aucune place. Le premier qui accepte en prend une, tant qu'il en reste.",
-      "noInvitationsBody": "Invitez quelqu'un : le lien attend ici jusqu'à ce qu'il soit accepté ou expire.",
       "allSeatsTaken": "Toutes les places sont prises",
       "allSeatsTakenBody": "Un départ libère une place. Des bureaux avec plus de places arrivent bientôt.",
       "yourProfile": "Votre profil",
       "ownOfficeTitle": "Un étage comme celui-ci pour votre équipe ?",
-      "ownOfficeBody": "Créez votre bureau en une minute. Gratuit jusqu'à 3 personnes."
+      "ownOfficeBody": "Créez votre bureau en une minute. Gratuit jusqu'à 3 personnes.",
+      "linkTitle": "Lien d'invitation",
+      "linkBody": "Toute personne ayant ce lien peut rejoindre avec un compte, tant qu'il reste une place.",
+      "copy": "Copier",
+      "resetLink": "Réinitialiser le lien",
+      "resetTitle": "Réinitialiser le lien d'invitation ?",
+      "resetBody": "Le lien actuel cesse de fonctionner tout de suite et un nouveau le remplace. Les personnes déjà dans le bureau restent."
     },
     "office": "Bureau",
     "goneTitle": "Ce bureau n'existe plus",
@@ -1041,7 +1052,33 @@
   "create": {
     "nameLabel": "Nom du bureau",
     "creating": "Préparation",
-    "continue": "Continuer"
+    "continue": "Continuer",
+    "eyebrow": "Nouveau bureau",
+    "untitled": "Ton bureau",
+    "nameTitle": "Comment s'appelle ton équipe ?",
+    "nameBody": "C'est le nom que tout le monde voit en entrant.",
+    "namePlaceholder": "Studio Acme",
+    "renameLater": "Tu peux le renommer à tout moment.",
+    "createIt": "Créer le bureau",
+    "sizeTitle": "Combien de personnes travailleront ici ?",
+    "sizeBody": "Compte tous ceux que tu veux inviter, toi compris.",
+    "people": "personnes",
+    "planTitle": "Choisis une offre pour {office}",
+    "planBody": "Change ou résilie à tout moment.",
+    "recommended": "Le plus adapté",
+    "perMonth": "/mois",
+    "upTo": "Jusqu'à {count} personnes",
+    "perPerson": "{price} par personne",
+    "bigger": "Plus de 25 ? Commence avec Pro et écris-nous : on fera de la place.",
+    "included": "Ce qui est inclus",
+    "includedCalls": "Appels vocaux en passant, jamais décomptés",
+    "includedChat": "Chat, canaux et fichiers",
+    "includedMeetings": "Réunions de groupe en vidéo, {hours} heures par mois",
+    "includedCancel": "Résiliable à tout moment ; remboursement sous 14 jours",
+    "getPlan": "Prendre {plan} · {price}/mois",
+    "openingCheckout": "Ouverture du paiement",
+    "freeInstead": "Ou commence avec Free, jusqu'à {count} personnes",
+    "freeTooSmall": "Commencer avec Free · seules {count} personnes pourront rejoindre"
   },
   "meetings": {
     "title": "Réunions",
@@ -1149,19 +1186,16 @@
     "welcome": "Bienvenue, {name}",
     "welcomeAnonymous": "Bienvenue",
     "welcomeBody": "Un étage pour votre équipe, avec canaux et appels intégrés.",
-    "stepName": "Nommez votre bureau",
-    "makeIt": "Le créer",
     "invited": "Vous avez été invité ?",
     "invitedBody": "Collez le lien que votre équipe vous a envoyé.",
     "invitePlaceholder": "Collez un lien d’invitation",
     "join": "Rejoindre",
     "badLink": "Ce n’est pas un lien d’invitation. Collez le lien complet.",
     "makeTitle": "Créons votre bureau",
-    "yourNewOffice": "Votre nouveau bureau",
-    "freeRename": "Gratuit jusqu'à 3 personnes. Vous pourrez le renommer à tout moment.",
     "otherWays": "Autres façons d'entrer",
     "lobbyBody": "Passez rencontrer du monde.",
-    "yourAccount": "Votre compte"
+    "yourAccount": "Votre compte",
+    "createOffice": "Crée ton bureau"
   },
   "home": {
     "nav": {
@@ -1233,7 +1267,7 @@
       "invites": {
         "title": "Faites entrer votre équipe.",
         "muted": "Avec un seul lien.",
-        "body": "Envoyez un lien d'invitation, ou invitez par e-mail. Ils choisissent un nom et un personnage, créent un compte gratuit, et les voilà sur l'étage."
+        "body": "Partage le lien de ton bureau. Ils créent un compte gratuit, choisissent un nom et un personnage, et les voilà sur l'étage."
       }
     },
     "steps": {
@@ -1245,7 +1279,7 @@
       },
       "invite": {
         "title": "Envoyez le lien à votre équipe.",
-        "body": "Invitez vos coéquipiers par e-mail, ou envoyez-leur un lien d'invitation."
+        "body": "Envoie le lien de ton bureau à ton équipe."
       },
       "walk": {
         "title": "Entrez.",
@@ -1448,8 +1482,8 @@
           "Toutes les fonctionnalités, sans essai"
         ]
       },
-      "team": {
-        "name": "Team",
+      "plus": {
+        "name": "Plus",
         "body": "Un seul prix pour tout le bureau, quel que soit le nombre de places occupées sur dix.",
         "items": [
           "Tout ce qu'il y a dans Free",
@@ -1457,13 +1491,13 @@
           "Six fois plus d'heures de réunion"
         ]
       },
-      "business": {
-        "name": "Business",
+      "pro": {
+        "name": "Pro",
         "body": "Pour l'équipe qui a dépassé une rangée de bureaux.",
         "items": [
-          "Tout ce qu'il y a dans Team",
+          "Tout ce qu'il y a dans Plus",
           "De la place pour 25 membres",
-          "Deux fois les heures de Team",
+          "Deux fois les heures de Plus",
           "Plus grand ? Parlons-en"
         ]
       },

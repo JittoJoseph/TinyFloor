@@ -79,7 +79,6 @@ export function PeoplePreview({ count = 5, narrow = false, mini = false }: { cou
       <div className={cn("mt-3 gap-4 border-b border-border text-[11.5px] font-medium", narrow ? "hidden" : "flex")}>
         {[
           { label: tp("members"), count: count, on: true },
-          { label: tp("invitations"), count: 1 },
         ].map((tab) => (
           <span
             key={tab.label}

@@ -2,17 +2,18 @@
 
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useEffect, useState, type ReactNode } from "react";
-import { useFormatter, useTranslations } from "next-intl";
-import { ArrowRight, Check, Send, MoreHorizontal, Shield, ShieldOff, UserMinus, UserPlus, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Shield, ShieldOff, UserMinus, UserPlus } from "lucide-react";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Invite } from "@/lib/api";
-import { invitePath, lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
+import { api, ApiError } from "@/lib/api";
+import { lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
+import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
+import { Dialog } from "@/components/ui/Dialog";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -31,18 +32,16 @@ export function PeopleView() {
   return place.kind === "office" ? <OfficePeople /> : <LobbyPeople />;
 }
 
-/** Who is in the office, who has been asked, and who can be let in as a guest. */
+/** Who is in the office, and the one link that brings more people in. */
 function OfficePeople() {
   const t = useTranslations("office.people");
-  const format = useFormatter();
   const router = useRouter();
   const { user } = useAuth();
   const { office, overview: data, readAt, refresh } = useOffice();
   const floor = useFloorStatus();
-  const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
-  const [tab, setTab] = useState("members");
+  const link = useInviteLink(office.id);
 
   // The shell read the office when it opened; coming back to People later reads it again.
   useEffect(() => {
@@ -52,15 +51,12 @@ function OfficePeople() {
   }, []);
 
   const run = async (action: () => Promise<void>) => {
-    setBusy(true);
     setError(null);
     try {
       await action();
       await refresh();
     } catch (problem) {
       setError(problem instanceof ApiError ? problem.message : t("wrong"));
-    } finally {
-      setBusy(false);
     }
   };
 
@@ -75,15 +71,13 @@ function OfficePeople() {
   const members = data.members;
   const used = data.members.length;
   const full = used >= office.seats;
-  const expires = (at: number) => t("expires", { date: format.dateTime(new Date(at), { dateStyle: "medium" }) });
 
-  const invite = () =>
-    run(async () => {
-      const { invite: made } = await api.createInvite(office.id, { role: "member" });
-      withPostHog((posthog) => posthog.capture("office_invite_created", { invite_role: "member" }));
-      await share(invitePath(made.token), "invite");
-      setTab("invitations");
-    });
+  // The same link every time: on a phone the share sheet, on a desktop the clipboard.
+  const invite = () => {
+    if (!link) return;
+    withPostHog((posthog) => posthog.capture("office_invite_shared"));
+    void share(link, "invite");
+  };
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
@@ -93,12 +87,10 @@ function OfficePeople() {
             <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
             <p className="mt-1 text-[14px] text-muted-foreground">{t("subtitle", { office: office.name })}</p>
           </div>
-          {admin && (
-            <Button size="md" disabled={busy} onClick={invite} className="h-10 gap-2 px-4 text-[13px]">
-              {copied === "invite" ? <Check className="size-4" /> : <UserPlus className="size-4" />}
-              {copied === "invite" ? t("linkCopied") : t("invite")}
-            </Button>
-          )}
+          <Button size="md" disabled={!link} onClick={invite} className="h-10 gap-2 px-4 text-[13px]">
+            {copied === "invite" ? <Check className="size-4" /> : <UserPlus className="size-4" />}
+            {copied === "invite" ? t("linkCopied") : t("invite")}
+          </Button>
         </header>
 
         <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,20rem)_1fr]">
@@ -109,11 +101,9 @@ function OfficePeople() {
             status={floor}
             empty={t("nobodyOnFloor")}
             action={
-              admin ? (
-                <Chip icon={<UserPlus />} onClick={invite}>
-                  {t("invite")}
-                </Chip>
-              ) : null
+              <Chip icon={<UserPlus />} onClick={invite}>
+                {t("invite")}
+              </Chip>
             }
             title={t("onFloorNow", { count: members.filter((one) => floor.has(one.id)).length })}
           />
@@ -121,124 +111,78 @@ function OfficePeople() {
 
         {error && <p className="mt-4 text-[13px] text-destructive">{error}</p>}
 
-        <Tabs value={tab} onValueChange={setTab} variant="underline" className="mt-8">
-          <TabsList className="w-full gap-2">
-            <TabsTrigger value="members">
-              {t("members")} <TabCount value={members.length} />
-            </TabsTrigger>
-            {admin && (
-              <TabsTrigger value="invitations">
-                {t("invitations")} <TabCount value={data.invites.length} />
-              </TabsTrigger>
-            )}
-          </TabsList>
+        <InviteLink link={link} admin={admin} officeId={office.id} onShare={invite} copied={copied === "invite"} />
 
-          <TabsContent value="members" className="mt-5">
-            <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {members.map((member) => {
-                const isMe = member.id === user?.id;
-                const owner = member.id === office.owner;
-                return (
-                  <MemberCard
-                    key={member.id}
-                    id={member.id}
-                    name={member.displayName}
-                    detail={member.email ?? t("noEmail")}
-                    presence={floor.get(member.id) ?? null}
-                    role={owner ? t("owner") : t(member.role)}
-                    joinedAt={member.joinedAt}
-                    isMe={isMe}
-                    onProfile={() => router.push("/account")}
-                    onMessage={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
-                    onWalk={() => {
-                      router.push(officePath(office.id));
-                      walkToPerson(member.id);
-                    }}
-                    menu={
-                      admin && !owner ? (
-                        <Menu
-                          align="end"
-                          width={208}
-                          trigger={<IconButton label={t("more")} size="sm" icon={<MoreHorizontal />} bare />}
-                        >
-                          <MenuItem
-                            icon={member.role === "admin" ? <ShieldOff /> : <Shield />}
-                            onSelect={() =>
-                              run(() => api.setRole(office.id, member.id, member.role === "admin" ? "member" : "admin").then())
-                            }
-                          >
-                            {member.role === "admin" ? t("makeMember") : t("makeAdmin")}
-                          </MenuItem>
-                          <MenuSeparator />
-                          <MenuItem
-                            danger
-                            icon={<UserMinus />}
-                            onSelect={() => run(() => api.removeMember(office.id, member.id).then())}
-                          >
-                            {isMe ? t("leave") : t("remove")}
-                          </MenuItem>
-                        </Menu>
-                      ) : undefined
-                    }
-                  />
-                );
-              })}
-              {admin && full && <OfficeFull />}
-              {admin && !full && (
-                <li>
-                  <button
-                    type="button"
-                    onClick={invite}
-                    disabled={busy}
-                    className="flex h-full min-h-[132px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border-strong text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  >
-                    <UserPlus className="size-5" />
-                    {t("seatsLeft", { count: office.seats - used })}
-                  </button>
-                </li>
-              )}
-            </ul>
-          </TabsContent>
-
-          {admin && (
-            <TabsContent value="invitations" className="mt-5">
-              <p className="mb-4 max-w-2xl text-[13px] text-muted-foreground">{t("invitationsNote")}</p>
-              <LinkList
-                empty={
-                  <Empty
-                    icon={<Send />}
-                    title={t("noInvitations")}
-                    body={t("noInvitationsBody")}
-                    actions={
-                      <Chip solid icon={<UserPlus />} onClick={invite}>
-                        {t("invite")}
-                      </Chip>
-                    }
-                  />
+        <h2 className="mb-4 mt-10 flex items-baseline gap-2 text-[15px] font-semibold text-foreground">
+          {t("members")}
+          <span className="text-[13px] font-normal tabular-nums text-muted-foreground">{members.length}</span>
+        </h2>
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {members.map((member) => {
+            const isMe = member.id === user?.id;
+            const owner = member.id === office.owner;
+            return (
+              <MemberCard
+                key={member.id}
+                id={member.id}
+                name={member.displayName}
+                detail={member.email ?? t("noEmail")}
+                presence={floor.get(member.id) ?? null}
+                role={owner ? t("owner") : t(member.role)}
+                joinedAt={member.joinedAt}
+                isMe={isMe}
+                onProfile={() => router.push("/account")}
+                onMessage={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
+                onWalk={() => {
+                  router.push(officePath(office.id));
+                  walkToPerson(member.id);
+                }}
+                menu={
+                  admin && !owner ? (
+                    <Menu
+                      align="end"
+                      width={208}
+                      trigger={<IconButton label={t("more")} size="sm" icon={<MoreHorizontal />} bare />}
+                    >
+                      <MenuItem
+                        icon={member.role === "admin" ? <ShieldOff /> : <Shield />}
+                        onSelect={() =>
+                          run(() => api.setRole(office.id, member.id, member.role === "admin" ? "member" : "admin").then())
+                        }
+                      >
+                        {member.role === "admin" ? t("makeMember") : t("makeAdmin")}
+                      </MenuItem>
+                      <MenuSeparator />
+                      <MenuItem
+                        danger
+                        icon={<UserMinus />}
+                        onSelect={() => run(() => api.removeMember(office.id, member.id).then())}
+                      >
+                        {isMe ? t("leave") : t("remove")}
+                      </MenuItem>
+                    </Menu>
+                  ) : undefined
                 }
-                items={data.invites.map((one: Invite) => ({
-                  id: one.id,
-                  icon: <UserPlus className="size-4" />,
-                  title: one.email ?? t("anyoneWithLink"),
-                  detail: expires(one.expiresAt),
-                  onRevoke: () => run(() => api.revokeInvite(office.id, one.id).then()),
-                }))}
-                revoke={t("revoke")}
               />
-            </TabsContent>
+            );
+          })}
+          {admin && full && <OfficeFull />}
+          {admin && !full && (
+            <li>
+              <button
+                type="button"
+                onClick={invite}
+                disabled={!link}
+                className="flex h-full min-h-[132px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border-strong text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <UserPlus className="size-5" />
+                {t("seatsLeft", { count: office.seats - used })}
+              </button>
+            </li>
           )}
-
-        </Tabs>
+        </ul>
       </div>
     </div>
-  );
-}
-
-function TabCount({ value }: { value: number }) {
-  return (
-    <span className="ms-1.5 rounded-full bg-muted px-1.5 text-[11px] font-medium leading-[18px] tabular-nums text-muted-foreground">
-      {value}
-    </span>
   );
 }
 
@@ -311,34 +255,6 @@ function OnTheFloor({
         </div>
       )}
     </div>
-  );
-}
-
-function LinkList({
-  items,
-  empty,
-  revoke,
-}: {
-  items: Array<{ id: string; icon: ReactNode; title: string; detail: string; onRevoke: () => void }>;
-  empty: ReactNode;
-  revoke: string;
-}) {
-  if (!items.length) return <>{empty}</>;
-  return (
-    <ul className="grid gap-2 sm:grid-cols-2">
-      {items.map((item) => (
-        <li key={item.id} className="flex items-center gap-3 rounded-2xl border border-border bg-background p-3 ps-3.5">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
-            {item.icon}
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block truncate text-[13.5px] font-medium text-foreground">{item.title}</span>
-            <span className="block truncate text-[12px] text-muted-foreground">{item.detail}</span>
-          </span>
-          <IconButton label={revoke} size="sm" icon={<X />} onClick={item.onRevoke} />
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -452,6 +368,90 @@ function LobbyPeople() {
  * Every seat taken, as its admins see it: where paid plans are on, the way to
  * more seats; until then, that more are coming.
  */
+/**
+ * The office's invite link, written out: anyone in the office can copy or
+ * share it, and an admin can reset it if it went somewhere it shouldn't.
+ */
+function InviteLink({
+  link,
+  admin,
+  officeId,
+  onShare,
+  copied,
+}: {
+  link: string | null;
+  admin: boolean;
+  officeId: string;
+  onShare: () => void;
+  copied: boolean;
+}) {
+  const t = useTranslations("office.people");
+  const tc = useTranslations("common");
+  const [confirming, setConfirming] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const shown = link ? shareUrl(link).replace(/^https?:\/\//, "") : null;
+
+  const reset = async () => {
+    setResetting(true);
+    try {
+      await resetInviteLink(officeId);
+      setConfirming(false);
+    } finally {
+      setResetting(false);
+    }
+  };
+
+  return (
+    <section className="mt-3 rounded-2xl border border-border bg-background p-4">
+      <div className="flex items-center gap-3">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
+          <Link2 className="size-4" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[14px] font-semibold text-foreground">{t("linkTitle")}</p>
+          <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("linkBody")}</p>
+        </div>
+      </div>
+      <div className="mt-3.5 flex items-center gap-2">
+        <div className="flex h-10 min-w-0 flex-1 items-center rounded-full bg-muted px-4">
+          {shown ? (
+            <span className="truncate text-[13px] text-foreground" dir="ltr">
+              {shown}
+            </span>
+          ) : (
+            <span className="h-3 w-48 animate-pulse rounded-full bg-foreground/[0.08]" />
+          )}
+        </div>
+        <Button size="sm" variant="secondary" disabled={!link} onClick={onShare} className="h-10 shrink-0 gap-1.5 px-4 text-[13px]">
+          {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+          {copied ? t("copied") : t("copy")}
+        </Button>
+        {admin && (
+          <IconButton label={t("resetLink")} size="md" icon={<RotateCcw />} onClick={() => setConfirming(true)} disabled={!link} />
+        )}
+      </div>
+
+      <Dialog
+        open={confirming}
+        onClose={() => setConfirming(false)}
+        title={t("resetTitle")}
+        description={t("resetBody")}
+        closeLabel={tc("close")}
+        footer={
+          <>
+            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setConfirming(false)}>
+              {tc("cancel")}
+            </Button>
+            <Button size="sm" className="h-10 px-5" disabled={resetting} onClick={reset}>
+              {t("resetLink")}
+            </Button>
+          </>
+        }
+      />
+    </section>
+  );
+}
+
 function OfficeFull() {
   const t = useTranslations("office.people");
   const settingsPath = usePlace().paths.settings;

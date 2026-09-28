@@ -2,62 +2,58 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Users } from "lucide-react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
-import { invitePath, officePath } from "@/lib/links";
+import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
+import { invitePath } from "@/lib/links";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
-import { Users } from "lucide-react";
 import { EntryProblem } from "@/components/entry/EntryProblem";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
-import { CharacterStep, NameStep } from "@/components/entry/IdentitySteps";
-import { ErrorNote } from "@/components/entry/ErrorNote";
+import { CharacterQuestion, NameQuestion } from "@/components/entry/IdentitySteps";
+import { DoorSteps, QuietChoice, StepDots, StepError, StepTitle } from "@/components/entry/DoorSteps";
+import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { Agree } from "@/components/legal/Agree";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { posthogLog } from "@/lib/posthog-log";
 import { withPostHog } from "@/lib/analytics";
+import { Link } from "@/lib/i18n/navigation";
 
 export interface InvitePreview {
   officeId: string;
   officeName: string;
   members: number;
-  invitedBy: string;
   role: string;
-  expiresAt: number;
+  full?: boolean;
 }
 
+type Step = "account" | "name" | "character" | "join";
+
 /**
- * An invitation to a space. Anyone can say who they'll be first, name then
- * character; the account is only asked for at the last step, and what they
- * picked waits in this browser until they have one.
+ * An office's invite link (docs/15). An account first, with Google if they
+ * like; then, for someone new, their name and their character, one at a time;
+ * and then they are in: the office is joined and waiting on their dashboard.
+ * Someone who already has an account and a character joins with one press.
  */
 export function InviteEntry({ token, initialPreview }: { token: string; initialPreview: InvitePreview | null }) {
   const t = useTranslations("office.invite");
   const tc = useTranslations("common");
   const tEntry = useTranslations("entry");
+  const tAuth = useTranslations("auth");
   const router = useRouter();
   const explain = useErrorMessage();
-  const { user, isLoading, updateProfile } = useAuth();
+  const { user, isLoading, updateProfile, signInWithGoogle } = useAuth();
   const [invite, setInvite] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
-  const [reached, setReached] = useState<"name" | "character" | "account" | null>(null);
-  // Which way the last step change went, so the new step slides in from there.
+  const [identity, setIdentity] = useState<"name" | "character">("name");
   const [wentBack, setWentBack] = useState(false);
   const [typedName, setTypedName] = useState<string | null>(null);
   const [pickedCharacter, setPickedCharacter] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [googling, setGoogling] = useState(false);
   const [error, setError] = useState("");
-
-  const account = !!user && !user.guest;
-  const saved = isLoading ? { name: "", character: "Adam" } : readIdentity();
-  const name = typedName ?? user?.displayName ?? saved.name;
-  const character = cleanCharacter(pickedCharacter ?? user?.character ?? saved.character);
-  // Signed in already: who they'll be is known, so only the last step is left.
-  const step = reached ?? (account ? "account" : "name");
-  const setName = setTypedName;
-  const setCharacter = setPickedCharacter;
-  const setStep = setReached;
 
   useEffect(() => {
     if (initialPreview) return;
@@ -75,22 +71,40 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     };
   }, [initialPreview, token]);
 
-  const trimmed = name.trim();
+  const account = !!user && !user.guest;
+  const introduced = account && user.introduced !== false;
+  const step: Step = !account ? "account" : introduced ? "join" : identity;
+  const name = (typedName ?? user?.displayName ?? "").trim();
+  const character = cleanCharacter(pickedCharacter ?? user?.character ?? "Adam");
 
+  /** Into the office, then home, where it is waiting with a way to walk in. */
   const join = async () => {
     setBusy(true);
     setError("");
     try {
-      saveIdentity({ name: trimmed, character });
-      // Walk in as the character they picked on the way here.
-      if (user && character !== user.character) await updateProfile({ character }).catch(() => undefined);
+      if (!introduced) {
+        await updateProfile({ displayName: name, character, introduced: true });
+        saveIdentity({ name, character });
+      }
       const { officeId } = await api.acceptInvite(token);
-      withPostHog((posthog) => posthog.capture("office_invite_accepted", { invite_role: invite?.role ?? "member" }));
+      withPostHog((posthog) => posthog.capture("office_invite_accepted"));
       posthogLog.info("Office invitation acceptance completed");
-      router.push(officePath(officeId));
+      router.replace(`/dashboard?${new URLSearchParams({ office: officeId })}`);
     } catch (err) {
       setError(explain(err));
       setBusy(false);
+    }
+  };
+
+  const withGoogle = async (code: string) => {
+    setError("");
+    setGoogling(true);
+    try {
+      await signInWithGoogle({ code });
+    } catch {
+      setError(tAuth("errors.google_failed"));
+    } finally {
+      setGoogling(false);
     }
   };
 
@@ -113,7 +127,16 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     );
   }
 
-  const back = invitePath(token);
+  const here = invitePath(token);
+  const emailHref = `/auth?${new URLSearchParams({ mode: "signup", redirect: here })}`;
+  // The dots count what is left for this person: new people have three steps, others one.
+  const steps: Step[] = account && introduced ? ["join"] : ["account", "name", "character"];
+  const full = !!invite.full;
+
+  const back = () => {
+    setWentBack(true);
+    setIdentity("name");
+  };
 
   return (
     <EntryShell
@@ -121,9 +144,9 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       header={
         <EntryHeader
           mark={<OfficeMark officeId={invite.officeId} />}
-          eyebrow={t("eyebrow", { name: invite.invitedBy })}
+          eyebrow={t("eyebrow")}
           title={invite.officeName}
-          subtitle={invite.role === "admin" ? t("asAdmin") : t("asMember")}
+          action={steps.length > 1 ? <StepDots at={steps.indexOf(step)} of={steps.length} /> : undefined}
           detail={
             invite.members > 0 && (
               <EntryDetail
@@ -140,87 +163,74 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         />
       }
     >
-      {error && (
-        <div className="mb-4">
-          <ErrorNote>{error}</ErrorNote>
-        </div>
-      )}
-
-      {step === "account" && account ? (
-        <>
-          <div className="mb-4">
-            <YouSummary name={user.displayName} character={character} />
-          </div>
-          <ActionButton onClick={join} busy={busy}>
-            {t("join", { office: invite.officeName })}
-          </ActionButton>
-          <p className="mt-4 text-center text-[12.5px] text-muted-foreground">
-            {t("joiningAs", { name: user.displayName, email: user.email ?? "" })}
-          </p>
-        </>
-      ) : step === "account" ? (
-        <div className="space-y-2.5">
-          <div className="mb-4">
-            <YouSummary
-              name={trimmed}
-              character={character}
-              changeLabel={t("change")}
-              onChange={() => {
-                setWentBack(true);
-                setStep("character");
-              }}
-            />
-          </div>
-          <ActionLink
-            href={`/auth?${new URLSearchParams({ mode: "signup", redirect: back })}`}
-            onClick={() => saveIdentity({ name: trimmed, character })}
-          >
-            {t("createAccount")}
-          </ActionLink>
-          <ActionLink
-            href={`/auth?${new URLSearchParams({ redirect: back })}`}
-            tone="secondary"
-            icon={null}
-            onClick={() => saveIdentity({ name: trimmed, character })}
-          >
-            {t("signIn")}
-          </ActionLink>
-          <p className="pt-2 text-center text-[12.5px] text-muted-foreground">
-            {t("accountKeeps", { name: trimmed })}
-          </p>
-        </div>
-      ) : (
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            setWentBack(false);
-            if (step === "name" && trimmed) setStep("character");
-            else if (step === "character") {
-              saveIdentity({ name: trimmed, character });
-              setStep("account");
-            }
-          }}
-        >
-          <div key={step} className="entry-step" data-back={wentBack}>
-            {step === "name" ? (
-              <NameStep name={name} onName={setName} />
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (full) return;
+          setWentBack(false);
+          if (step === "name" && name) setIdentity("character");
+          else if (step === "character" || step === "join") void join();
+        }}
+      >
+        <DoorSteps
+          step={step}
+          back={wentBack}
+          onBack={step === "character" ? back : undefined}
+          action={
+            step === "account" ? (
+              googleAvailable ? (
+                <GoogleButton label={tAuth("continueWithGoogle")} busy={googling} onCode={withGoogle} onError={() => setError(tAuth("errors.google_failed"))} />
+              ) : (
+                <ActionLink href={emailHref}>{t("createAccount")}</ActionLink>
+              )
             ) : (
-              <CharacterStep
-                name={trimmed}
-                character={character}
-                onCharacter={setCharacter}
-                onBack={() => {
-                  setWentBack(true);
-                  setStep("name");
-                }}
-              />
-            )}
-          </div>
-          <ActionButton type="submit" disabled={!trimmed} className="mt-5">
-            {step === "name" ? tEntry("continue") : t("readyToJoin")}
-          </ActionButton>
-        </form>
-      )}
+              <ActionButton type="submit" disabled={full || (step === "name" && !name)} busy={busy} busyLabel={t("joining")}>
+                {step === "name" ? tEntry("continue") : t("join", { office: invite.officeName })}
+              </ActionButton>
+            )
+          }
+          secondary={
+            step === "account" ? (
+              googleAvailable ? (
+                <QuietChoice href={emailHref}>{t("useEmail")}</QuietChoice>
+              ) : (
+                <QuietChoice href={`/auth?${new URLSearchParams({ redirect: here })}`}>{t("signIn")}</QuietChoice>
+              )
+            ) : null
+          }
+        >
+          {step === "account" && (
+            <>
+              <StepTitle title={t("accountTitle")} body={t("accountBody")} />
+              <ul className="space-y-2.5 text-[13.5px] text-muted-foreground">
+                {(["perkFloor", "perkTalk", "perkChat"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2.5">
+                    <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/30" />
+                    {t(key)}
+                  </li>
+                ))}
+              </ul>
+              <Agree className="mt-5 text-[12px]" />
+            </>
+          )}
+          {step === "name" && <NameQuestion name={typedName ?? user?.displayName ?? ""} onName={setTypedName} />}
+          {step === "character" && <CharacterQuestion character={character} onCharacter={setPickedCharacter} />}
+          {step === "join" && user && (
+            <>
+              <StepTitle title={full ? t("fullTitle") : t("joinTitle")} body={full ? t("fullBody") : t("joinBody")} />
+              <YouSummary name={user.displayName} character={character} />
+              <p className="mt-3 text-[12.5px] text-muted-foreground">
+                {t("joiningAs", { email: user.email ?? user.displayName })}{" "}
+                <Link href="/account" className="underline-offset-2 hover:text-foreground hover:underline">
+                  {t("change")}
+                </Link>
+              </p>
+            </>
+          )}
+          {full && step !== "join" && step !== "account" && <StepError>{t("fullBody")}</StepError>}
+          {error && <StepError>{error}</StepError>}
+        </DoorSteps>
+      </form>
     </EntryShell>
   );
 }

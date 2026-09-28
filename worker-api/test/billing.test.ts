@@ -32,7 +32,7 @@ function subscription(officeId: string, overrides: Record<string, unknown> = {})
     updated_at: new Date(Date.now() + events * 1000).toISOString(),
     current_billing_period: { starts_at: "2026-09-28T00:00:00Z", ends_at: "2026-10-28T00:00:00Z" },
     scheduled_change: null,
-    items: [{ price: { id: "pri_team_month" }, quantity: 1 }],
+    items: [{ price: { id: "pri_plus_month" }, quantity: 1 }],
     ...overrides,
   };
 }
@@ -81,8 +81,8 @@ describe("billing", () => {
     expect(status).toBe(200);
     expect(body.plans.map((plan) => [plan.id, plan.seats, plan.meetingHours, plan.price])).toEqual([
       ["free", 3, 5, null],
-      ["team", 10, 30, 1900],
-      ["business", 25, 60, 4900],
+      ["plus", 10, 30, 1900],
+      ["pro", 25, 60, 4900],
     ]);
     expect(body.billing).toEqual({ environment: "sandbox", clientToken: "test_client_token" });
   });
@@ -92,11 +92,11 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     const calls = paddleApi(() => ({ id: "txn_1" }));
 
-    const { status, body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "team" });
+    const { status, body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" });
     expect(status).toBe(200);
     expect(body).toMatchObject({ transactionId: "txn_1" });
     expect(calls).toEqual([
-      { method: "POST", path: "/transactions", body: { items: [{ price_id: "pri_team_month", quantity: 1 }], custom_data: { office_id: officeId } } },
+      { method: "POST", path: "/transactions", body: { items: [{ price_id: "pri_plus_month", quantity: 1 }], custom_data: { office_id: officeId } } },
     ]);
   });
 
@@ -109,7 +109,7 @@ describe("billing", () => {
       .run();
     paddleApi(() => ({ id: "txn_1" }));
 
-    expect((await call(bo, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "team" })).status).toBe(403);
+    expect((await call(bo, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" })).status).toBe(403);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "free" })).status).toBe(400);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "enterprise" })).status).toBe(400);
   });
@@ -120,10 +120,10 @@ describe("billing", () => {
 
     const { status } = await deliver("subscription.created", subscription(officeId));
     expect(status).toBe(200);
-    expect(await officeRow(officeId)).toEqual({ plan: "team", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
 
     const billing = await call<{ subscription: Record<string, unknown>; meetingHours: number }>(ada, "GET", `/v1/offices/${officeId}/billing`);
-    expect(billing.body.subscription).toMatchObject({ plan: "team", status: "active", renewsAt: Date.parse("2026-10-28T00:00:00Z") });
+    expect(billing.body.subscription).toMatchObject({ plan: "plus", status: "active", renewsAt: Date.parse("2026-10-28T00:00:00Z") });
     expect(billing.body.meetingHours).toBe(30);
     // The room hears the plan's hours straight away, so a pause lifts without waiting for a new ticket.
     expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 30]);
@@ -165,13 +165,13 @@ describe("billing", () => {
   it("applies each event once, and never lets an older one undo a newer", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const newer = subscription(officeId, { items: [{ price: { id: "pri_business_month" } }], updated_at: "2026-09-28T12:00:00Z" });
+    const newer = subscription(officeId, { items: [{ price: { id: "pri_pro_month" } }], updated_at: "2026-09-28T12:00:00Z" });
     const older = subscription(officeId, { updated_at: "2026-09-28T11:00:00Z" });
 
     await deliver("subscription.updated", newer, { eventId: "evt_same" });
     expect((await deliver("subscription.updated", newer, { eventId: "evt_same" })).body).toMatchObject({ duplicate: true });
     await deliver("subscription.updated", older);
-    expect(await officeRow(officeId)).toEqual({ plan: "business", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
 
   it("keeps the plan while a card is retried, and goes back to free once it's cancelled", async () => {
@@ -179,7 +179,7 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     await deliver("subscription.created", subscription(officeId));
     await deliver("subscription.past_due", subscription(officeId, { status: "past_due" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "team", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
 
     await deliver("subscription.canceled", subscription(officeId, { status: "canceled" }));
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
@@ -192,9 +192,9 @@ describe("billing", () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     await deliver("subscription.created", subscription(officeId, { id: `old_${officeId}` }));
-    await deliver("subscription.created", subscription(officeId, { id: `new_${officeId}`, items: [{ price: { id: "pri_business_month" } }] }));
+    await deliver("subscription.created", subscription(officeId, { id: `new_${officeId}`, items: [{ price: { id: "pri_pro_month" } }] }));
     await deliver("subscription.canceled", subscription(officeId, { id: `old_${officeId}`, status: "canceled" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "business", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
 
   it("won't sell a second plan to an office that has one", async () => {
@@ -202,7 +202,7 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     await deliver("subscription.created", subscription(officeId));
     paddleApi(() => ({ id: "txn_2" }));
-    const { status, body } = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "business" });
+    const { status, body } = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "pro" });
     expect(status).toBe(409);
     expect(body.error.code).toBe("has_subscription");
   });
@@ -216,18 +216,18 @@ describe("billing", () => {
       subscription(officeId, { items: [{ price: { id: (body as { items: Array<{ price_id: string }> }).items[0].price_id } }], updated_at: new Date(Date.now() + 60_000).toISOString() }),
     );
     const { status, body } = await call<{ plan: string; seats: number; meetingHours: number }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, {
-      plan: "business",
+      plan: "pro",
     });
     expect(status).toBe(200);
-    expect(body).toMatchObject({ plan: "business", seats: 25, meetingHours: 60 });
+    expect(body).toMatchObject({ plan: "pro", seats: 25, meetingHours: 60 });
     expect(calls[0]).toEqual({
       method: "PATCH",
       path: `/subscriptions/sub_${officeId}`,
-      body: { items: [{ price_id: "pri_business_month", quantity: 1 }], proration_billing_mode: "prorated_immediately" },
+      body: { items: [{ price_id: "pri_pro_month", quantity: 1 }], proration_billing_mode: "prorated_immediately" },
     });
 
     await addMembers(officeId, 10); // 11 members now
-    const tooSmall = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, { plan: "team" });
+    const tooSmall = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, { plan: "plus" });
     expect(tooSmall.status).toBe(409);
     expect(tooSmall.body.error.code).toBe("too_many_members");
   });
@@ -240,7 +240,7 @@ describe("billing", () => {
 
     paddleApi(() => subscription(officeId, { scheduled_change: { action: "cancel", effective_at: "2026-10-28T00:00:00Z" }, updated_at: later() }));
     const cancelled = await call<{ plan: string; subscription: Record<string, unknown> }>(ada, "POST", `/v1/offices/${officeId}/billing/cancel`);
-    expect(cancelled.body.plan).toBe("team");
+    expect(cancelled.body.plan).toBe("plus");
     expect(cancelled.body.subscription).toMatchObject({ endsAt: Date.parse("2026-10-28T00:00:00Z"), renewsAt: null });
 
     vi.restoreAllMocks();
@@ -258,7 +258,7 @@ describe("billing", () => {
     );
     const { status, body } = await call<{ plan: string; seats: number }>(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { transactionId: txn });
     expect(status).toBe(200);
-    expect(body).toMatchObject({ plan: "team", seats: 10 });
+    expect(body).toMatchObject({ plan: "plus", seats: 10 });
   });
 
   it("won't sync a checkout that was for another office", async () => {
@@ -294,7 +294,7 @@ describe("billing", () => {
       custom_data: { office_id: office },
       created_at: "2026-09-28T10:00:00Z",
       billed_at: "2026-09-28T10:00:00Z",
-      items: [{ price: { id: "pri_team_month" } }],
+      items: [{ price: { id: "pri_plus_month" } }],
       details: { totals: { grand_total: "2280", currency_code: "USD" } },
       adjustments_totals: null,
       payments: [{ status: "captured", method_details: { type: "card", card: { type: "visa", last4: "4242", expiry_month: 3, expiry_year: 2029 } } }],
@@ -323,8 +323,8 @@ describe("billing", () => {
     expect(body.nextCharge).toEqual({ at: Date.parse("2026-10-28T00:00:00Z"), amount: 2280, currency: "USD" });
     expect(body.card).toEqual({ brand: "visa", last4: "4242", expires: "03/29" });
     expect(body.history.map((row) => [row.id, row.status, row.plan, row.invoice])).toEqual([
-      ["txn_refunded", "refunded", "team", true],
-      ["txn_first", "paid", "team", true],
+      ["txn_refunded", "refunded", "plus", true],
+      ["txn_first", "paid", "plus", true],
     ]);
     expect(calls.find((one) => one.path === "/transactions")?.query).toContain("customer_id=ctm_1");
   });

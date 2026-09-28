@@ -21,6 +21,7 @@ code and by git history, not here.
 | [08-pricing-decision.md](08-pricing-decision.md) | Competitors' prices, measured costs at scale, the first tiers |
 | [09-billing.md](09-billing.md) | Who takes the money (Paddle, as an individual in India) and how billing is built |
 | [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours: the numbers, and what happens past them |
+| [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
 
 ## Others
 

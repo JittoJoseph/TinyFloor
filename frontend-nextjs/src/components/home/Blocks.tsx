@@ -251,7 +251,7 @@ export function Plans() {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
   const plans: Array<{
-    key: "free" | "team" | "business";
+    key: "free" | "plus" | "pro";
     price: string;
     per: string;
     people: number;
@@ -260,8 +260,8 @@ export function Plans() {
     featured?: boolean;
   }> = [
     { key: "free", price: "$0", per: t("forever"), people: 3, hours: 5 },
-    { key: "team", price: "$19", per: t("month"), people: 10, hours: 30, soon: true, featured: true },
-    { key: "business", price: "$49", per: t("month"), people: 25, hours: 60, soon: true },
+    { key: "plus", price: "$19", per: t("month"), people: 10, hours: 30, soon: true, featured: true },
+    { key: "pro", price: "$49", per: t("month"), people: 25, hours: 60, soon: true },
   ];
 
   return (

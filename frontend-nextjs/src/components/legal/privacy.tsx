@@ -59,8 +59,7 @@ export const privacySections: LegalSection[] = [
             expires, when it was last used, and the first 200 characters of your browser&apos;s user agent.
           </li>
           <li>
-            <strong>Offices:</strong> each office&apos;s name, its members and their roles, and invitations (including the email
-            address an invitation was sent to).
+            <strong>Offices:</strong> each office&apos;s name, its members and their roles, and its invite link.
           </li>
           <li>
             <strong>Chat:</strong> the messages and reactions you post, and how far you have read in each channel. Messages are visible to the
@@ -243,7 +242,7 @@ export const privacySections: LegalSection[] = [
             with it.
           </li>
           <li>
-            <strong>Invitations:</strong> deleted 30 days after they expire, are used or are revoked.
+            <strong>Invite links:</strong> an office&apos;s link is deleted with the office, and replaced whenever an admin resets it.
           </li>
           <li>
             <strong>Usage totals:</strong> kept for 13 months.
@@ -294,8 +293,8 @@ export const privacySections: LegalSection[] = [
     title: "Security",
     body: (
       <p>
-        Everything travels over encrypted connections. Passwords are hashed with bcrypt, session tokens and invitation links are stored only as
-        hashes, and sign-ins are rate limited. Access to the service&apos;s data is limited to the people who run it. No system is perfectly
+        Everything travels over encrypted connections. Passwords are hashed with bcrypt, session tokens are stored only as hashes,
+        and sign-ins are rate limited. An office&apos;s invite link is kept so its members can see and share it again. Access to the service&apos;s data is limited to the people who run it. No system is perfectly
         secure, and if a breach ever affects your data we will tell you and the authorities as the law requires.
       </p>
     ),

@@ -38,15 +38,15 @@ The plans, monthly only:
 | Plan | Price | People | Meeting hours a month | Worst case left | Typical left |
 |---|---|---|---|---|---|
 | Free | $0 | 3 | 5 | −$0.37 | −$0.23 |
-| Team | $19 | 10 | 30 | $12.30 (65%) | $15.27 (80%) |
-| Business | $49 | 25 | 60 | $20.94 (43%) | $35.75 (73%) |
+| Plus | $19 | 10 | 30 | $12.30 (65%) | $15.27 (80%) |
+| Pro | $49 | 25 | 60 | $20.94 (43%) | $35.75 (73%) |
 | Bigger | talk to us | | | | |
 
-- Team's 30 hours is a daily standup with room to spare. Keeping half the price
+- Plus's 30 hours is a daily standup with room to spare. Keeping half the price
   even in the worst case would allow ~50; 30 leaves the margin to cover free
   offices.
-- A 5-person team meeting 2 hours every working day uses ~44 hours: Business,
-  though its seats would fit Team. That's the Linear dynamic, on purpose.
+- A 5-person team meeting 2 hours every working day uses ~44 hours: Pro,
+  though its seats would fit Plus. That's the Linear dynamic, on purpose.
 - Free's 5 hours is enough to try meetings properly and to feel the wall.
 
 ## When the hours run out

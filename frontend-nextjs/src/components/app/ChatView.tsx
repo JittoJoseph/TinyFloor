@@ -18,7 +18,6 @@ import {
   Search,
   SquarePen,
   UserPlus,
-  Users,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
@@ -111,7 +110,6 @@ export function ChatView({ channel }: { channel?: string }) {
   const channels = state.channels.filter((one) => one.kind === "channel");
   const dms = useDirectMessages(people, state.channels, me);
   const presenceOf = (id: string): Presence => floor.get(id) ?? null;
-  const canInvite = lobby || place.role === "admin";
 
   const lines: Line[] = (history ?? []).map((message) => ({
     id: String(message.seq),
@@ -181,9 +179,9 @@ export function ChatView({ channel }: { channel?: string }) {
     },
     {
       id: "go-people",
-      label: canInvite ? t("invitePeople") : ts("people"),
+      label: t("invitePeople"),
       group: t("actions"),
-      icon: canInvite ? UserPlus : Users,
+      icon: UserPlus,
       onSelect: () => router.push(place.paths.people),
     },
   ];
@@ -265,25 +263,21 @@ export function ChatView({ channel }: { channel?: string }) {
                   <p className="text-[12.5px] leading-relaxed text-muted-foreground">
                     {lobby ? t("lobbyAlone") : t("aloneHere")}
                   </p>
-                  {canInvite && (
-                    <Link
-                      href={place.paths.people}
-                      className="mt-2.5 inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground px-3 text-[12.5px] font-medium text-background"
-                    >
-                      <UserPlus className="size-3.5" />
-                      {t("invitePeople")}
-                    </Link>
-                  )}
-                </div>
-              ) : (
-                canInvite && (
-                  <Link href={place.paths.people} className={addRowClass}>
-                    <span className={addIconClass}>
-                      <UserPlus className="size-3.5" />
-                    </span>
+                  <Link
+                    href={place.paths.people}
+                    className="mt-2.5 inline-flex h-8 items-center gap-1.5 rounded-full bg-foreground px-3 text-[12.5px] font-medium text-background"
+                  >
+                    <UserPlus className="size-3.5" />
                     {t("invitePeople")}
                   </Link>
-                )
+                </div>
+              ) : (
+                <Link href={place.paths.people} className={addRowClass}>
+                  <span className={addIconClass}>
+                    <UserPlus className="size-3.5" />
+                  </span>
+                  {t("invitePeople")}
+                </Link>
               )}
             </Section>
           </nav>
@@ -415,11 +409,9 @@ export function ChatView({ channel }: { channel?: string }) {
                       >
                         {open === "introductions" ? t("introduceYourself") : t("sayHello")}
                       </Chip>
-                      {canInvite && (
-                        <Chip icon={<UserPlus />} onClick={() => router.push(place.paths.people)}>
-                          {t("invitePeople")}
-                        </Chip>
-                      )}
+                      <Chip icon={<UserPlus />} onClick={() => router.push(place.paths.people)}>
+                        {t("invitePeople")}
+                      </Chip>
                     </>
                   )
                 }

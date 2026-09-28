@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Field, pillInputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
+import { StepTitle } from "./DoorSteps";
 
 /**
  * Walking in is two small steps instead of one busy form: your name, then who
@@ -60,5 +61,43 @@ export const CharacterStep: React.FC<{
       </div>
       <CharacterPicker value={character} onChange={onCharacter} />
     </div>
+  );
+};
+
+/** The name step of a door that asks one thing at a time (DoorSteps): the question, then the field. */
+export const NameQuestion: React.FC<{ name: string; onName: (value: string) => void }> = ({ name, onName }) => {
+  const t = useTranslations("entry");
+  return (
+    <>
+      <StepTitle title={t("nameTitle")} body={t("nameBody")} />
+      <label htmlFor="identity-name" className="sr-only">
+        {t("yourName")}
+      </label>
+      <input
+        id="identity-name"
+        type="text"
+        value={name}
+        onChange={(event) => onName(event.target.value)}
+        placeholder={t("namePlaceholder")}
+        className={pillInputClass}
+        maxLength={30}
+        autoFocus
+        autoComplete="nickname"
+      />
+    </>
+  );
+};
+
+/** And the character step: who they'll be on the floor. */
+export const CharacterQuestion: React.FC<{ character: string; onCharacter: (value: string) => void }> = ({
+  character,
+  onCharacter,
+}) => {
+  const t = useTranslations("entry");
+  return (
+    <>
+      <StepTitle title={t("characterTitle")} body={t("characterBody")} />
+      <CharacterPicker value={character} onChange={onCharacter} />
+    </>
   );
 };

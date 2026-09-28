@@ -365,10 +365,7 @@
     "reduceMotionNote": "Færre animationer i hele appen.",
     "performance": "Ydeevne",
     "batterySaver": "Batterisparer",
-    "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind.",
-    "enhancedNoise": "Stærkere støjfjernelse",
-    "enhancedNoiseNote": "En lille AI-model på din enhed fjerner tastatur, hunde og snak i baggrunden. Bruger lidt mere batteri.",
-    "experimental": "Eksperimentel"
+    "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind."
   },
   "tutorial": {
     "walk": "Gå rundt med W A S D",

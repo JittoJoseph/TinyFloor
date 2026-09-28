@@ -19,7 +19,7 @@
     { "tag": "v1", "new_sqlite_classes": ["Room", "LobbyRouter"] },
     { "tag": "v2", "renamed_classes": [{ "from": "LobbyRouter", "to": "Presence" }] },
     { "tag": "v3", "new_sqlite_classes": ["Chat"] },
-    // Rooms count their own people now; see docs/07-services.md.
+    // Rooms count their own people now.
     { "tag": "v4", "deleted_classes": ["Presence"] }
   ],
   // Only usage_daily is written from here; the schema belongs to tinyfloor-api.

@@ -2,7 +2,7 @@ import { memo, type CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * A person's face, drawn from their id and nothing else (docs/06-app-design.md).
+ * A person's face, drawn from their id and nothing else.
  * No upload, no stored colour: the same id makes the same orb on every screen,
  * so everyone sees everyone the same way and there is nothing to keep or delete.
  */

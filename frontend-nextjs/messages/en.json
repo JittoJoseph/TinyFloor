@@ -365,10 +365,7 @@
     "reduceMotionNote": "Fewer animations across the app.",
     "performance": "Performance",
     "batterySaver": "Battery saver",
-    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in.",
-    "enhancedNoise": "Stronger noise removal",
-    "enhancedNoiseNote": "A small AI model on your device takes out keyboards, dogs and chatter. Uses a little more battery.",
-    "experimental": "Experimental"
+    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
   },
   "tutorial": {
     "walk": "Walk around with W A S D",

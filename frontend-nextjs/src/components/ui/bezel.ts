@@ -1,7 +1,6 @@
 /**
  * The app's bold surface, taken from its shell: a black bezel, the way the
- * rail frames the view, with a panel set into it (docs/06-app-design.md,
- * "Doors and rings"). Whatever sits on the bezel itself wears the dark theme
+ * rail frames the view, with a panel set into it. Whatever sits on the bezel itself wears the dark theme
  * in either theme (`onBezel`), so every token reads as light on black.
  */
 export const bezel =

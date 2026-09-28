@@ -1,5 +1,4 @@
 import { onPrefsChange, prefs } from "./prefs";
-import type { FilteredMic } from "./noiseFilter";
 import type {
   CallKind,
   MediaFlags,
@@ -155,13 +154,8 @@ const INVITE_TIMEOUT = 30000;
 const GUIDE_ANSWER_DELAY = 1600;
 /** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
 function audioConstraints() {
-  const { echoCancellation, noiseSuppression, enhancedNoise } = prefs();
-  // With RNNoise on, the browser's own suppression would only fight it.
-  return {
-    echoCancellation,
-    noiseSuppression: noiseSuppression && !enhancedNoise,
-    autoGainControl: true,
-  };
+  const { echoCancellation, noiseSuppression } = prefs();
+  return { echoCancellation, noiseSuppression, autoGainControl: true };
 }
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
@@ -227,9 +221,6 @@ class CallManager {
   /** The place is past its meeting hours: meetings are voice only (docs/14). */
   private videoPaused = false;
   private local: MediaStream | null = null;
-  /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
-  private rawMic: MediaStreamTrack | null = null;
-  private filter: FilteredMic | null = null;
   /** Voice settings being applied to an open call, one change after another. */
   private voiceChange: Promise<void> = Promise.resolve();
   private voiceApplied = "";
@@ -1031,8 +1022,7 @@ class CallManager {
           deviceId: deviceConstraint(devices.audio),
         },
       });
-      await this.filterVoice();
-      this.voiceApplied = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+      this.voiceApplied = JSON.stringify(audioConstraints());
       this.local
         ?.getAudioTracks()
         .forEach((track) => (track.enabled = this.micEnabled));
@@ -1065,35 +1055,12 @@ class CallManager {
   }
 
   /**
-   * Stronger noise removal, when it is switched on: the call sends RNNoise's
-   * output instead of the microphone. Loaded only here, so nobody who leaves
-   * it off downloads it; if it fails, the plain microphone is used.
-   */
-  private async filterVoice() {
-    const mic = this.local?.getAudioTracks()[0];
-    if (!mic || !prefs().enhancedNoise) return;
-    const { filterMic } = await import("./noiseFilter");
-    const filter = await filterMic(mic);
-    if (!filter || !this.local) {
-      filter?.stop();
-      return;
-    }
-    this.filter = filter;
-    this.rawMic = mic;
-    this.local = new MediaStream([
-      filter.track,
-      ...this.local.getVideoTracks(),
-    ]);
-  }
-
-  /**
    * The voice settings, on a call already open. Chrome won't change its own
    * processing on a microphone that is open, so the microphone opens again
-   * with the new settings (and stronger noise removal, if it is on), the call
-   * swaps to it, and the old one stops. Other settings don't touch the voice.
+   * with the new settings, the call swaps to it, and the old one stops. Other settings don't touch the voice.
    */
   private async applyVoicePrefs() {
-    const key = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+    const key = JSON.stringify(audioConstraints());
     if (key === this.voiceApplied) return;
     this.voiceApplied = key;
     const local = this.local;
@@ -1101,11 +1068,7 @@ class CallManager {
 
     // The old microphone stops first: while it is open, Chrome gives a new
     // one the same processing, whatever it asks for. A moment of silence.
-    this.filter?.stop();
-    this.rawMic?.stop();
     local.getAudioTracks().forEach((track) => track.stop());
-    this.filter = null;
-    this.rawMic = null;
     let fresh: MediaStream;
     try {
       fresh = await navigator.mediaDevices.getUserMedia({
@@ -1121,8 +1084,6 @@ class CallManager {
     }
     this.local = new MediaStream([...fresh.getAudioTracks(), ...local.getVideoTracks()]);
     if (!fresh.getAudioTracks().length) this.error = "media";
-    await this.filterVoice();
-    if (!this.local) return;
     this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
     this.listenForVoice();
     this.shareTracks();
@@ -1131,10 +1092,6 @@ class CallManager {
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
-    this.filter?.stop();
-    this.rawMic?.stop();
-    this.filter = null;
-    this.rawMic = null;
     this.local?.getTracks().forEach((track) => track.stop());
     this.screen?.getTracks().forEach((track) => track.stop());
     this.local = null;

@@ -13,8 +13,7 @@ import { SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "./SiteTheme";
 
 /*
- * The pieces every marketing page is built from (docs/06-app-design.md, "The
- * home page"): the shell, the hero, the two ways in, the floor's moments, the
+ * The pieces every marketing page is built from: the shell, the hero, the two ways in, the floor's moments, the
  * smaller things, the plans, the questions and the last ask. No borders:
  * surfaces are told apart by their fill, the way the app's door does it.
  * Headlines are set in the regular weight. Server-rendered throughout; the

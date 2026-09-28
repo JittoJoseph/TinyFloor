@@ -40,8 +40,8 @@ export interface ShellDestination {
 }
 
 /**
- * The frame every place in the app sits in — an office or the public lobby
- * (docs/06-app-design.md). A rail that never moves, and one panel filling the
+ * The frame every place in the app sits in — an office or the public lobby.
+ * A rail that never moves, and one panel filling the
  * rest: the floor, with whichever view you opened laid over it. The floor is
  * never unmounted, so your socket, call and position survive reading a message.
  */

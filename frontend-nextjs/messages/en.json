@@ -16,7 +16,7 @@
     "lobbyDescription": "Walk into TinyFloor's free public lobby as a guest. Pick a character, meet people, and try proximity video calls in your browser.",
     "inviteTitle": "Join {office} on TinyFloor",
     "inviteFallbackTitle": "You're invited to TinyFloor",
-    "inviteDescription": "{name} invited you to {office} on TinyFloor, a virtual office you walk around in."
+    "inviteDescription": "Join {office} on TinyFloor, a virtual office you walk around in."
   },
   "common": {
     "loading": "Loading...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people. Bigger offices are $19 a month for 10 people and $49 for 25."
+        "a": "Yes. The public lobby is free for everyone, and so is an office for up to 3 people, with 5 meeting hours a month. Bigger offices are $19 a month for 10 people and 30 meeting hours, or $49 for 25 people and 60 hours."
       },
       {
         "q": "Do I need to install anything?",
@@ -92,7 +92,7 @@
     "signInTitle": "Welcome back",
     "signInSubtitle": "Sign in to get back to your team's office.",
     "signUpTitle": "Create your account",
-    "signUpSubtitle": "An email and a password is all it takes.",
+    "signUpSubtitle": "Google is quickest, or use your email.",
     "email": "Email",
     "emailPlaceholder": "you@company.com",
     "password": "Password",
@@ -128,7 +128,8 @@
       "google_failed": "Google sign-in didn't go through. Try again.",
       "google_unverified": "Verify your email with Google first, then try again.",
       "google_mismatch": "This email is linked to a different Google account."
-    }
+    },
+    "continueWithEmail": "Continue with email"
   },
   "entry": {
     "yourName": "Your name",
@@ -141,8 +142,13 @@
     "copyInvite": "Copy invite link",
     "continue": "Continue",
     "walkingInAs": "Walking in as {name}",
-    "introTitle": "Before you walk in",
-    "introSubtitle": "What should people call you, and who will you be on the floor?"
+    "introTitle": "Welcome",
+    "introEyebrow": "Welcome to TinyFloor",
+    "nameTitle": "What should people call you?",
+    "nameBody": "Shown on your character and in chat.",
+    "characterTitle": "Pick your character",
+    "characterBody": "This is you on the floor.",
+    "thatsMe": "That's me"
   },
   "room": {
     "connecting": "Connecting...",
@@ -180,7 +186,6 @@
     "onCall": "On the call",
     "decline": "Decline",
     "accept": "Answer",
-    "tutorial": "Tutorial call",
     "calling": "Calling...",
     "cancel": "Cancel call",
     "micOff": "Microphone off",
@@ -332,7 +337,8 @@
       "media": "Audio and video",
       "notifications": "Notifications",
       "accessibility": "Accessibility",
-      "office": "Office"
+      "office": "Office",
+      "plan": "Plan and billing"
     },
     "appearance": "Appearance",
     "themeNote": "System follows your device.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "Fewer animations across the app.",
     "performance": "Performance",
     "batterySaver": "Battery saver",
-    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in.",
-    "enhancedNoise": "Stronger noise removal",
-    "enhancedNoiseNote": "A small AI model on your device takes out keyboards, dogs and chatter. Uses a little more battery.",
-    "experimental": "Experimental"
-  },
-  "tutorial": {
-    "walk": "Walk around with W A S D",
-    "walkTouch": "Drag the joystick to walk",
-    "click": "Or click anywhere to walk straight there",
-    "clickTouch": "Or tap anywhere to walk straight there",
-    "approach": "Step close to someone to call or chat",
-    "invite": "Invite someone with this link, or you are all set",
-    "copy": "Copy",
-    "copied": "Copied",
-    "linkHint": "Anyone with the link lands in this room",
-    "done": "Done",
-    "skip": "Skip",
-    "next": "Next"
+    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
   },
   "scene": {
-    "guide": "Guide",
     "sit": "Press E to sit",
     "stand": "Press E to stand",
     "joinMeeting": "Press E to join",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "Invites come with an office",
-        "body": "Invite your team by email or with a link, in an office of your own."
+        "body": "Invite your team with one link, in an office of your own."
       },
       "free": "Making an office takes a minute and is free for up to 3 people.",
       "go": "Make my office",
@@ -912,7 +900,9 @@
       "free": "Free plan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Owner",
@@ -930,7 +920,8 @@
       "leave": "Leave this office",
       "wrong": "That didn't work. Try again.",
       "plan": "{plan} · {used} of {seats} seats",
-      "danger": "Leaving or closing"
+      "danger": "Leaving or closing",
+      "cancelPlanFirst": "Cancel this office's plan first, in Plan and billing. Then it can be closed."
     },
     "profile": {
       "changePassword": "Change password",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",
-      "invalid": "It may have expired, been used already, or been turned off. Ask for a new one.",
+      "invalid": "It may have been reset, or the office has closed. Ask for a new link.",
       "home": "Go home",
-      "eyebrow": "{name} invited you",
-      "asAdmin": "You're invited to join as an admin.",
-      "asMember": "You're invited to join the team.",
+      "eyebrow": "You're invited to",
       "join": "Join {office}",
-      "joiningAs": "Joining as {name} ({email})",
+      "joiningAs": "Joining as {email}.",
       "createAccount": "Create an account",
       "signIn": "I have an account",
-      "readyToJoin": "That's me",
-      "accountKeeps": "An account keeps {name} and your character for next time.",
-      "you": "You",
       "members": "{count, plural, one {# member} other {# members}}",
-      "change": "Change"
+      "change": "Not you?",
+      "accountTitle": "Take your seat",
+      "accountBody": "Sign in to join. It takes a few seconds.",
+      "perkFloor": "Walk over to someone to talk, like in a real office",
+      "perkTalk": "Voice calls start when you're next to each other",
+      "perkChat": "Channels and messages that stay",
+      "useEmail": "Use email instead",
+      "joining": "Joining",
+      "joinTitle": "You're ready to join",
+      "joinBody": "The office will be waiting on your home page, ready to walk in.",
+      "fullTitle": "This office is full",
+      "fullBody": "Every seat is taken. Ask whoever sent the link to make room, or to move to a bigger plan."
     },
     "errors": {
       "member_limit": "The workspace is full on its current plan.",
@@ -996,7 +993,7 @@
       "name_required": "Give it a name first.",
       "bad_email": "That doesn't look like an email address.",
       "invite_used": "This invite has already been used.",
-      "invite_invalid": "This invite has expired or been turned off.",
+      "invite_invalid": "This invite link has been reset or no longer works.",
       "wrong_account": "This invite is for a different email address. Sign in with that account.",
       "wrong_password": "Your current password is incorrect.",
       "password_too_short": "Use at least 8 characters.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "People",
       "members": "Members",
-      "invitations": "Pending invites",
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
       "seatsFree": "There is room for more.",
       "onFloorNow": "{count} on the floor now",
-      "noInvitations": "No invitations out",
       "copied": "Copied",
-      "revoke": "Revoke",
       "remove": "Remove",
       "leave": "Leave",
       "makeAdmin": "Make admin",
@@ -1032,21 +1026,23 @@
       "admin": "Admin",
       "member": "Member",
       "noEmail": "No email",
-      "expires": "Expires {date}",
-      "anyoneWithLink": "Anyone with the link",
       "wrong": "That didn't work. Try again.",
       "subtitle": "Everyone in {office}, and who can come in.",
       "linkCopied": "Invite link copied",
       "nobodyOnFloor": "Nobody else yet.",
       "seatsLeft": "{count, plural, one {# seat left — invite someone} other {# seats left — invite someone}}",
       "seatsNote": "A seat is a member. Someone leaving frees theirs; being offline does not.",
-      "invitationsNote": "An invitation holds no seat. Whoever accepts first takes one, while there is one free.",
-      "noInvitationsBody": "Invite someone and the link waits here until they accept or it runs out.",
       "allSeatsTaken": "Every seat is taken",
       "allSeatsTakenBody": "Someone leaving frees a seat. Offices with more seats are coming.",
       "yourProfile": "Your profile",
       "ownOfficeTitle": "Want a floor like this for your team?",
-      "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people."
+      "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people.",
+      "linkTitle": "Invite link",
+      "linkBody": "Anyone with this link can join with an account, while there's a free seat.",
+      "copy": "Copy",
+      "resetLink": "Reset link",
+      "resetTitle": "Reset the invite link?",
+      "resetBody": "The current link stops working straight away and a new one takes its place. Everyone already in the office stays."
     },
     "office": "Office",
     "goneTitle": "This office is gone",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "Office name",
     "creating": "Setting it up",
-    "continue": "Continue"
+    "continue": "Continue",
+    "eyebrow": "New office",
+    "untitled": "Your office",
+    "nameTitle": "What's your team called?",
+    "nameBody": "This is the name everyone sees when they walk in.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "You can rename it any time.",
+    "createIt": "Create office",
+    "sizeTitle": "How many people will work here?",
+    "sizeBody": "Count everyone you'd like to invite, you included.",
+    "people": "people",
+    "planTitle": "Pick a plan for {office}",
+    "planBody": "Change or cancel any time.",
+    "recommended": "Best fit",
+    "perMonth": "/month",
+    "upTo": "Up to {count} people",
+    "perPerson": "{price} a person",
+    "bigger": "More than 25 of you? Start with Pro and write to us: we'll make room.",
+    "included": "What's included",
+    "includedCalls": "Walk-up voice calls, never counted",
+    "includedChat": "Chat, channels and files",
+    "includedCancel": "Cancel any time; refunds within 14 days",
+    "getPlan": "Get {plan} · {price}/month",
+    "openingCheckout": "Opening checkout",
+    "freeInstead": "Or start on Free, for up to {count} people",
+    "freeTooSmall": "Start on Free instead · only {count} people can join",
+    "includedMeetingsBoth": "Group meetings with video: {plus} hours a month on Plus, {pro} on Pro"
   },
   "meetings": {
     "title": "Meetings",
@@ -1092,7 +1114,15 @@
     "ended": "That meeting has ended",
     "rejoin": "Rejoin",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "A call is two people: start a meeting for the three of you"
+    "makeMeetingHint": "A call is two people: start a meeting for the three of you",
+    "hours": {
+      "usedMonth": "{used} of {allowance} meeting hours used this month",
+      "usedToday": "{used} of {allowance} meeting hours used today",
+      "more": "More hours",
+      "paused": "Video paused",
+      "pausedMonth": "voice only until {date}",
+      "pausedToday": "voice only until tomorrow"
+    }
   },
   "shell": {
     "floor": "Floor",
@@ -1156,19 +1186,16 @@
     "welcome": "Welcome, {name}",
     "welcomeAnonymous": "Welcome",
     "welcomeBody": "One floor for your team, with channels and calls built in.",
-    "stepName": "Name your office",
-    "makeIt": "Make it",
     "invited": "Were you invited?",
     "invitedBody": "Paste the link your team sent you.",
     "invitePlaceholder": "Paste an invite link",
     "join": "Join",
     "badLink": "That doesn't look like an invite link. Paste the whole link.",
     "makeTitle": "Let's make your office",
-    "yourNewOffice": "Your new office",
-    "freeRename": "Free for up to 3 people. You can rename it any time.",
     "otherWays": "Other ways in",
     "lobbyBody": "Drop in and meet people.",
-    "yourAccount": "Your account"
+    "yourAccount": "Your account",
+    "createOffice": "Create your office"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "Invites"
       },
       "lobbyTitle": "The lobby is open",
-      "lobbyBody": "Walk around a real floor before you make your own. No account needed.",
       "menu": "Menu",
       "teams": "For teams",
-      "teamTitle": "Made for remote teams",
-      "teamBody": "Free for up to 3 people, with bigger plans on the way.",
       "cases": {
         "virtualOffice": "A place for your remote team to be",
         "virtualCoworking": "Work alongside others, heads down",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "Office hours and small classes",
         "proximityChat": "Talk to whoever you walk up to"
       },
-      "getStarted": "Get started"
+      "getStarted": "Get started",
+      "lobbyLine": "Walk around a real floor. No account needed."
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "Bring your team in.",
         "muted": "With one link.",
-        "body": "Send an invite link, or invite by email. They pick a name and a character, make a free account, and they're on the floor."
+        "body": "Share your office's link. They make a free account, pick a name and a character, and they're on the floor."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "Send your team the link.",
-        "body": "Invite teammates by email, or send them an invite link."
+        "body": "Send your teammates your office's link."
       },
       "walk": {
         "title": "Walk in.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
       "muted": "not by the person.",
-      "body": "Start free. Every plan has everything, and guests never count.",
+      "body": "Start free. Move up when your team grows.",
       "soon": "Coming soon",
       "forever": "forever",
       "month": "a month",
       "people": "Up to {count} people",
       "free": {
-        "name": "Free",
-        "body": "The whole product, for a small studio or a pair of founders.",
-        "items": [
-          "A private floor",
-          "Calls and meetings",
-          "Chat, images and files",
-          "Guests on a link"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "One price for the whole office, however many of the ten you fill.",
-        "items": [
-          "Everything in Free",
-          "Room for 10 members",
-          "Yearly: two months free"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "For the team that has outgrown one row of desks.",
-        "items": [
-          "Everything in Team",
-          "Room for 25 members",
-          "Priority support",
-          "Bigger? Talk to us"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Prices are monthly and don't include tax.",
+      "perPerson": "{price} a person",
+      "freeLine": "No card needed",
+      "choose": "Choose {plan}",
+      "note": "Every plan has every feature. Calls are never counted; group meetings get 5, 30 or 60 hours a month."
     },
     "faq": {
       "title": "Questions,",
@@ -1485,5 +1495,77 @@
       "muted": "a floor to share.",
       "note": "Free for up to 3 people · Runs on Cloudflare"
     }
+  },
+  "billing": {
+    "current": "This office is on",
+    "members": "{used} of {seats} members",
+    "freeNote": "Free, with every feature.",
+    "renews": "Renews on {date}",
+    "ends": "Ends on {date}, then the free plan",
+    "perMonth": "a month",
+    "pastDue": "The last payment didn't go through. Paddle will try the card again; update it to keep the plan.",
+    "updateCard": "Update card",
+    "keep": "Keep this plan",
+    "settingUp": "Payment received. Setting up the plan…",
+    "settingUpSlow": "Payment received. The plan can take a minute to show; refresh if it hasn't.",
+    "cancel": "Cancel plan",
+    "switch": "Switch",
+    "fine": "Prices are monthly, in US dollars, and don't include tax. Payments are handled by Paddle, our reseller. Ask within 14 days of a payment for a full refund.",
+    "adminsOnly": "Only an office's admins can change its plan.",
+    "switchTitle": "Switch to {plan}?",
+    "switchBody": "Paddle charges or credits the difference for the time left in this period, straight away. Nobody on the floor notices a thing.",
+    "cancelTitle": "Cancel the plan?",
+    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
+    "cancelBodyNow": "The office goes back to the free plan at the end of this period: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
+    "moreSeats": "Get more seats",
+    "membersLabel": "Members",
+    "hoursLabel": "Meeting hours",
+    "hours": "{used} of {allowance} h",
+    "hoursResets": "Resets {date}",
+    "hoursUsedUp": "This month's meeting hours are used: meetings are voice only until {date}. A bigger plan brings video back now.",
+    "hoursExplained": "Meeting hours count the time a meeting has two or more people in it. Calls between two people on the floor never count. Past them, meetings carry on with voice until the 1st.",
+    "payment": "Payment",
+    "cardUnknown": "Card on file with Paddle",
+    "card": "Card",
+    "cardEnding": "{brand} ending in {last4}",
+    "expires": "Expires {date}",
+    "update": "Update",
+    "nextCharge": "Next charge",
+    "chargeOn": "{amount} on {date}",
+    "noneAfter": "None, the plan ends {date}",
+    "history": "Billing history",
+    "noPayments": "No payments yet.",
+    "planPayment": "{plan} plan",
+    "invoice": "Download invoice",
+    "status": {
+      "refunded": "Refunded",
+      "partly_refunded": "Partly refunded",
+      "failed": "Failed",
+      "due": "Due"
+    },
+    "errors": {
+      "tooManyMembers": "This office has more members than that plan holds. Remove some first.",
+      "hasSubscription": "This office already has a plan. Switch it instead.",
+      "failed": "That didn't work. Try again."
+    },
+    "pillPastDue": "Card failed",
+    "pillEnding": "Ending",
+    "nextChargeLine": "Next charge {amount} on {date}",
+    "endingNote": "The plan ends on {date}. Keep it and nothing changes.",
+    "seatsFree": "{count, plural, one {# seat free} other {# seats free}}",
+    "seatsFull": "Every seat is taken",
+    "upgradeFull": "Every seat is taken",
+    "upgradeHours": "Most of this month's meeting hours are used",
+    "upgradeRoom": "Room to grow",
+    "upgradeFree": "For a bigger team",
+    "upgradeTitle": "Move up to {plan}",
+    "gainPeople": "{count} people",
+    "gainHours": "{count} meeting hours",
+    "gainNow": "now {value}",
+    "upgradeButton": "Upgrade to {plan} · {price}/month",
+    "orPlan": "Or {plan}, for up to {count} people · {price}/month",
+    "topPlan": "You're on our biggest plan. Need room for more than {count} people? Write to us and we'll set it up.",
+    "moveDown": "Move to {plan}",
+    "usageOf": "{used} of {total}"
   }
 }

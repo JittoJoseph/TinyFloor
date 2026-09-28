@@ -1,7 +1,7 @@
 "use client";
 // beui.dev/components/motion/tabs
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
 import { cancelFrame, frame, motion, MotionConfig, useReducedMotion, type Transition } from "motion/react";
 import {
   createContext,

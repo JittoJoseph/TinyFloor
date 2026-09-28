@@ -1,20 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
-import { useTranslations } from "next-intl";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { HomeFrame } from "@/components/app/HomeFrame";
-import { MakeSkeleton } from "@/components/app/HomeSkeletons";
-import { MakeOffice } from "@/components/app/CreateOffice";
+import { CreateOfficeFlow } from "@/components/app/CreateOffice";
+import { Introduce } from "@/components/entry/Introduce";
+import { DoorHeaderSkeleton, DoorSkeleton } from "@/components/entry/InviteEntry";
+import { EntryShell } from "@/components/entry/EntryShell";
 
 /**
- * Making an office: the name, typed straight into the office as the app will
- * show it, then its floor. It needs an account to own it, so someone signed
- * out signs in (or up) first and comes straight back here.
+ * Making an office (docs/15): a door that asks its name, who it's for and its
+ * plan. It needs an account to own it, so someone signed out signs in (or up)
+ * first and comes straight back here; someone new says who they are first.
  */
 export default function CreateOfficePage() {
-  const td = useTranslations("dashboard");
   const router = useRouter();
   const { user, isLoading } = useAuth();
   const signedIn = !isLoading && !!user && !user.guest;
@@ -25,15 +24,11 @@ export default function CreateOfficePage() {
 
   if (!signedIn) {
     return (
-      <HomeFrame active={null}>
-        <MakeSkeleton />
-      </HomeFrame>
+      <EntryShell backHref="/dashboard" header={<DoorHeaderSkeleton />}>
+        <DoorSkeleton />
+      </EntryShell>
     );
   }
-
-  return (
-    <HomeFrame active={null}>
-      <MakeOffice greeting={td("newOffice")} />
-    </HomeFrame>
-  );
+  if (user.introduced === false) return <Introduce backHref="/dashboard" />;
+  return <CreateOfficeFlow />;
 }

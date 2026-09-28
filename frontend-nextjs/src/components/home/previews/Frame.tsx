@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ChatsCircleIcon, GearSixIcon, MapTrifoldIcon, UsersThreeIcon } from "@phosphor-icons/react/dist/ssr";
+import { Chats, Floor, Gear, People, type AppIcon } from "@/components/ui/icons";
 import { Face } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 
@@ -19,10 +19,10 @@ export const CAST = [
 /** The stand-in office's mark. */
 const OFFICE_SEED = "northwind-7";
 
-const RAIL: Array<{ view: PreviewView; icon: typeof MapTrifoldIcon }> = [
-  { view: "floor", icon: MapTrifoldIcon },
-  { view: "chat", icon: ChatsCircleIcon },
-  { view: "people", icon: UsersThreeIcon },
+const RAIL: Array<{ view: PreviewView; icon: AppIcon }> = [
+  { view: "floor", icon: Floor },
+  { view: "chat", icon: Chats },
+  { view: "people", icon: People },
 ];
 
 /**
@@ -70,12 +70,12 @@ export function Frame({
                 )}
               >
                 {on && <span className="absolute -start-2.5 h-5 w-[3px] rounded-e-full bg-foreground" />}
-                <Icon size={19} weight={on ? "fill" : "regular"} />
+                <Icon size={19} strokeWidth={on ? 2.2 : 1.8} />
               </button>
             );
           })}
           <span className="mt-auto flex size-9 items-center justify-center text-muted-foreground">
-            <GearSixIcon size={18} />
+            <Gear size={18} />
           </span>
           <Face seed={CAST[0].id} size={28} presence="available" />
         </div>

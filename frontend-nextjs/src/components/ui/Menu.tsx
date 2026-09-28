@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactElement, type ReactNode } from "react";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/icons";
 import { MorphPopover, MorphPopoverContent, MorphPopoverTrigger } from "@/components/motion/popover-morph";
 import { cn } from "@/lib/utils";
 

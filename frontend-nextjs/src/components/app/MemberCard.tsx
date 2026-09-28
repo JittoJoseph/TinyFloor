@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Footprints, Lock, MessageSquare, UserRound } from "lucide-react";
+import { Footprints, Lock, MessageSquare, UserRound } from "@/components/ui/icons";
 import { Face, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 

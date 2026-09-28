@@ -39,6 +39,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
     calls.push(["moderateLobbyChat", seq, change]);
     return seq !== 404;
   }
+  async setMeetingAllowance(officeId, hours) {
+    calls.push(["setMeetingAllowance", officeId, hours]);
+  }
   async officeCreated(event) {
     calls.push(["officeCreated", event.office, event.owner]);
   }

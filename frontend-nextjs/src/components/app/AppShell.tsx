@@ -1,5 +1,6 @@
 "use client";
 
+import { ICON_STROKE } from "@/components/ui/icons";
 import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
@@ -40,8 +41,8 @@ export interface ShellDestination {
 }
 
 /**
- * The frame every place in the app sits in — an office or the public lobby
- * (docs/06-app-design.md). A rail that never moves, and one panel filling the
+ * The frame every place in the app sits in — an office or the public lobby.
+ * A rail that never moves, and one panel filling the
  * rest: the floor, with whichever view you opened laid over it. The floor is
  * never unmounted, so your socket, call and position survive reading a message.
  */
@@ -241,14 +242,14 @@ function LiveBadge({ count, bar }: { count: number; bar?: boolean }) {
 }
 
 /**
- * A rail icon: outlined, and filled where you are, with a small spring as it
- * fills. Phosphor icons take a weight; anything else is drawn as it is.
+ * A rail icon: drawn lighter, and with a heavier stroke where you are, with
+ * a small spring as it changes.
  */
 function Icon({ icon, active }: { icon: ReactNode; active: boolean }) {
   const reduce = useReducedMotion();
   if (!isValidElement(icon)) return <>{icon}</>;
-  const drawn = cloneElement(icon as ReactElement<{ weight?: string; size?: number }>, {
-    weight: active ? "fill" : "regular",
+  const drawn = cloneElement(icon as ReactElement<{ strokeWidth?: number; size?: number }>, {
+    strokeWidth: active ? 2.2 : ICON_STROKE,
     size: 22,
   });
   return (

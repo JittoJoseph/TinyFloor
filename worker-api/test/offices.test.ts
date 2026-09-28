@@ -9,14 +9,10 @@ async function officeOf(admin: TestUser, name = "Studio") {
   return body.office.id;
 }
 
-async function invite(by: TestUser, officeId: string, extra: Record<string, unknown> = {}) {
-  const { status, body } = await call<{ invite: { id: string; token: string } }>(
-    by,
-    "POST",
-    `/v1/offices/${officeId}/invites`,
-    extra,
-  );
-  return { status, ...body.invite };
+/** The office's one invite link, as anyone in it gets it. */
+async function inviteCode(by: TestUser, officeId: string) {
+  const { status, body } = await call<{ code: string }>(by, "GET", `/v1/offices/${officeId}/invite`);
+  return { status, code: body.code };
 }
 
 async function join(user: TestUser, token: string) {
@@ -67,7 +63,7 @@ describe("offices", () => {
     });
   });
 
-  it("hands the People view the office, its members and its invitations at once", async () => {
+  it("hands the People view the office and its members at once", async () => {
     const olive = await makeUser("Olive");
     const officeId = await officeOf(olive, "Overview");
     await fakeRealtime().setPeople(officeId, 2);
@@ -76,7 +72,6 @@ describe("offices", () => {
     const { status, body } = await call<{
       office: { name: string; members: number; role: string; seats: number };
       members: { displayName: string }[];
-      invites: unknown[];
       people: number;
     }>(olive, "GET", `/v1/offices/${officeId}/overview`);
 
@@ -114,19 +109,14 @@ describe("offices", () => {
 });
 
 describe("seats", () => {
-  it("counts members, not invitations, and refuses the one that would overfill it", async () => {
+  it("counts members, and refuses the one that would overfill the office", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive);
+    const { code } = await inviteCode(olive, id);
 
-    // Three invitations against three seats is fine: an invitation holds nothing.
-    const first = await invite(olive, id);
-    const second = await invite(olive, id);
-    const third = await invite(olive, id);
-    expect([first.status, second.status, third.status]).toEqual([201, 201, 201]);
-
-    expect((await join(await makeUser("A"), first.token)).status).toBe(200);
-    expect((await join(await makeUser("B"), second.token)).status).toBe(200);
-    const refused = await join(await makeUser("C"), third.token);
+    expect((await join(await makeUser("A"), code)).status).toBe(200);
+    expect((await join(await makeUser("B"), code)).status).toBe(200);
+    const refused = await join(await makeUser("C"), code);
     expect(refused.status).toBe(409);
     expect(refused.body).toMatchObject({ error: { code: "office_full" } });
   });
@@ -137,79 +127,94 @@ describe("seats", () => {
     const bo = await makeUser("Bo");
     const cy = await makeUser("Cy");
     const id = await officeOf(olive);
-    await join(ada, (await invite(olive, id)).token);
-    await join(bo, (await invite(olive, id)).token);
+    const { code } = await inviteCode(olive, id);
+    await join(ada, code);
+    await join(bo, code);
 
     // Full at 3/3.
-    expect((await join(cy, (await invite(olive, id)).token)).status).toBe(409);
+    expect((await join(cy, code)).status).toBe(409);
 
     expect((await call(bo, "DELETE", `/v1/offices/${id}/members/${bo.id}`)).status).toBe(200);
     expect(await fakeRealtime().calls()).toContainEqual(["removeMember", id, bo.id]);
 
-    expect((await join(cy, (await invite(olive, id)).token)).status).toBe(200);
+    expect((await join(cy, code)).status).toBe(200);
   });
 
-  it("tells an invitation preview when the office is full", async () => {
+  it("tells the link's preview when the office is full", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive, "Snug");
-    const token = (await invite(olive, id)).token;
+    const { code } = await inviteCode(olive, id);
     expect(
-      (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${token}`)).body.invite,
-    ).toMatchObject({ officeId: id, officeName: "Snug", members: 1, full: false });
+      (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${code}`)).body.invite,
+    ).toMatchObject({ officeId: id, officeName: "Snug", members: 1, role: "member", full: false });
 
-    await join(await makeUser("A"), (await invite(olive, id)).token);
-    await join(await makeUser("B"), (await invite(olive, id)).token);
-    expect((await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${token}`)).body.invite.full).toBe(true);
+    await join(await makeUser("A"), code);
+    await join(await makeUser("B"), code);
+    expect((await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${code}`)).body.invite.full).toBe(true);
   });
 });
 
-describe("invitations and members", () => {
-  it("lets someone join through an invitation, once", async () => {
+describe("the invite link and members", () => {
+  it("is one link per office, the same for everyone in it, and good for many people", async () => {
     const olive = await makeUser("Olive");
     const mia = await makeUser("Mia");
     const max = await makeUser("Max");
+    const outsider = await makeUser("Otto");
     const id = await officeOf(olive);
-    const { token } = await invite(olive, id);
 
-    const preview = await call(null, "GET", `/v1/invites/${token}`);
-    expect(preview.body.invite).toMatchObject({ officeName: "Studio", invitedBy: "Olive", role: "member" });
+    const first = await inviteCode(olive, id);
+    expect(first.status).toBe(200);
+    expect(first.code).toMatch(/^[\w-]{22}$/);
+    expect((await inviteCode(olive, id)).code).toBe(first.code);
+    expect((await inviteCode(outsider, id)).status).toBe(404);
 
-    expect((await join(mia, token)).status).toBe(200);
-    expect((await join(max, token)).status).toBe(404);
+    expect((await join(mia, first.code)).status).toBe(200);
+    // A member shares the very same link.
+    expect((await inviteCode(mia, id)).code).toBe(first.code);
+    expect((await join(max, first.code)).status).toBe(200);
+    // Opening it again changes nothing.
+    expect((await join(mia, first.code)).status).toBe(200);
 
-    const overview = await call<{ members: { displayName: string; role: string }[] }>(
-      mia,
-      "GET",
-      `/v1/offices/${id}/overview`,
-    );
+    const overview = await call<{ members: { displayName: string; role: string }[] }>(mia, "GET", `/v1/offices/${id}/overview`);
     expect(overview.body.members.map((m) => [m.displayName, m.role])).toEqual([
       ["Olive", "admin"],
       ["Mia", "member"],
+      ["Max", "member"],
     ]);
   });
 
-  it("only lets the named email accept an email invitation", async () => {
+  it("is for accounts: a guest can't join an office with it", async () => {
     const olive = await makeUser("Olive");
-    const right = await makeUser("Rita", { email: "rita@example.com" });
-    const wrong = await makeUser("Wes");
+    const guest = await makeUser("Gus", { guest: true });
     const id = await officeOf(olive);
-    const { token } = await invite(olive, id, { email: "Rita@Example.com" });
-
-    expect((await join(wrong, token)).status).toBe(403);
-    expect((await join(right, token)).status).toBe(200);
+    const { code } = await inviteCode(olive, id);
+    expect((await join(guest, code)).status).toBe(403);
   });
 
-  it("keeps invitations and role changes to admins", async () => {
+  it("can be reset by an admin, and the old link stops working", async () => {
     const olive = await makeUser("Olive");
     const mia = await makeUser("Mia");
     const id = await officeOf(olive);
-    await join(mia, (await invite(olive, id)).token);
+    const old = (await inviteCode(olive, id)).code;
+    await join(mia, old);
 
-    expect((await invite(mia, id)).status).toBe(403);
+    expect((await call(mia, "POST", `/v1/offices/${id}/invite/reset`)).status).toBe(403);
+    const reset = await call<{ code: string }>(olive, "POST", `/v1/offices/${id}/invite/reset`);
+    expect(reset.status).toBe(200);
+    expect(reset.body.code).not.toBe(old);
+    expect((await call(null, "GET", `/v1/invites/${old}`)).status).toBe(404);
+    expect((await join(await makeUser("Late"), old)).status).toBe(404);
+    expect((await inviteCode(mia, id)).code).toBe(reset.body.code);
+  });
+
+  it("keeps role changes to admins", async () => {
+    const olive = await makeUser("Olive");
+    const mia = await makeUser("Mia");
+    const id = await officeOf(olive);
+    await join(mia, (await inviteCode(olive, id)).code);
+
     expect((await call(mia, "PATCH", `/v1/offices/${id}/members/${mia.id}`, { role: "admin" })).status).toBe(403);
     expect((await call(olive, "PATCH", `/v1/offices/${id}/members/${mia.id}`, { role: "admin" })).status).toBe(200);
-    // Now an admin, Mia can invite.
-    expect((await invite(mia, id)).status).toBe(201);
   });
 
   it("lets members leave, admins remove members, and keeps the owner in place", async () => {
@@ -217,8 +222,10 @@ describe("invitations and members", () => {
     const ada = await makeUser("Ada");
     const mo = await makeUser("Mo");
     const id = await officeOf(olive);
-    await join(ada, (await invite(olive, id, { role: "admin" })).token);
-    await join(mo, (await invite(olive, id)).token);
+    const { code } = await inviteCode(olive, id);
+    await join(ada, code);
+    await join(mo, code);
+    await call(olive, "PATCH", `/v1/offices/${id}/members/${ada.id}`, { role: "admin" });
 
     expect((await call(mo, "DELETE", `/v1/offices/${id}/members/${ada.id}`)).status).toBe(403);
     expect((await call(ada, "DELETE", `/v1/offices/${id}/members/${olive.id}`)).status).toBe(400);
@@ -231,7 +238,7 @@ describe("invitations and members", () => {
     const olive = await makeUser("Olive");
     const mia = await makeUser("Mia");
     const id = await officeOf(olive);
-    await join(mia, (await invite(olive, id)).token);
+    await join(mia, (await inviteCode(olive, id)).code);
 
     expect((await call(mia, "POST", `/v1/offices/${id}/transfer`, { userId: olive.id })).status).toBe(403);
     expect((await call(olive, "POST", `/v1/offices/${id}/transfer`, { userId: mia.id })).status).toBe(200);

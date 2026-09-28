@@ -8,6 +8,7 @@ import {
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { realtime, requireOffice } from "./access";
+import { meetingHoursOf } from "./billing";
 import { json } from "./http";
 import type { Router } from "./router";
 import { noteCountry, requireUser, type User } from "./session";
@@ -23,7 +24,7 @@ export function floorRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       noteCountry(env, request, ctx, user);
-      return json(await ticketFor(env, user, office.id, office.role, office.seats));
+      return json(await ticketFor(env, user, office.id, office.role, office.seats, meetingHoursOf(office.plan)));
     })
 
     // The office's chat is its own object, so it gets its own ticket.
@@ -95,6 +96,8 @@ async function ticketFor(
   room: string,
   role: RoomRole,
   cap: number,
+  /** An office's meeting hours a month, from its plan; lobby copies keep their own. */
+  hours?: number,
 ): Promise<{ ticket: string; url: string }> {
   const claims: RoomTicket = {
     v: 1,
@@ -104,6 +107,7 @@ async function ticketFor(
     character: user.character,
     role,
     cap,
+    ...(hours === undefined ? {} : { hours }),
     exp: Date.now() + TICKET_LIFETIME_MS,
   };
   const path = room === LOBBY_ROOM ? LOBBY_ROOM : `rooms/${room}`;

@@ -13,7 +13,12 @@
     "SESSION_COOKIE": "tf_session",
     "REALTIME_URL": "wss://realtime.tinyfloor.com",
     // Google sign-in's OAuth client (public); its secret is GOOGLE_CLIENT_SECRET.
-    "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
+    "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com",
+    // Paid plans against Paddle's live account (src/billing.ts). Billing stays
+    // off until the secrets PADDLE_API_KEY and PADDLE_WEBHOOK_SECRET are set too.
+    "PADDLE_ENV": "production",
+    "PADDLE_CLIENT_TOKEN": "live_55102c832ba8a095d641248119f",
+    "PADDLE_PRICES": "{\"plus\":\"pri_01m3mk0jr1pdasbhgzad26dww5\",\"pro\":\"pri_01m3mk0k34tpeb6s2f8dtjy79a\"}"
   },
   "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
@@ -47,7 +52,13 @@
         "COOKIE_DOMAIN": "",
         "SESSION_COOKIE": "tf_preview_session",
         "REALTIME_URL": "wss://realtime-preview.tinyfloor.com",
-        "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com"
+        "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com",
+        // Paid plans against Paddle's sandbox (src/billing.ts): the client-side
+        // token is public by design; PADDLE_API_KEY and PADDLE_WEBHOOK_SECRET are
+        // secrets.
+        "PADDLE_ENV": "sandbox",
+        "PADDLE_CLIENT_TOKEN": "test_4ed348cc09ff782ef94572163bf",
+        "PADDLE_PRICES": "{\"plus\":\"pri_01m3kcx9ffg4gtchefr77ke5nk\",\"pro\":\"pri_01m3kd4kf3a3547dnr863hrev4\"}"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],

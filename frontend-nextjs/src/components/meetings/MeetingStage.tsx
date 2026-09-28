@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, UserPlus, Video, VideoOff } from "lucide-react";
+import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, UserPlus, Video, VideoOff } from "@/components/ui/icons";
 import type { MeetingInfo, MeetingPerson } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { MeetingTile } from "./MeetingTile";
 import { InviteDialog } from "./MeetingDialogs";
 import { clock, useElapsed, useMeetingName } from "./hooks";
+import { VideoPausedNote } from "./MeetingHours";
 
 const GAP = 12;
 /** Tiles the stage shows before the rest fold into "+ n more". */
@@ -133,6 +134,7 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
           <span className="hidden sm:inline">{t("invite")}</span>
         </Button>
       </header>
+      <VideoPausedNote compact className="mx-auto mb-2 w-fit max-w-[calc(100%-1.5rem)]" />
 
       <div ref={areaRef} className="relative min-h-0 flex-1 mx-3 mb-2 sm:mx-6">
         {sharer ? (

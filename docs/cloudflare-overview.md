@@ -79,8 +79,7 @@ Each person ──sends one stream──► Cloudflare SFU ──forwards──�
   This one rule keeps group calls affordable.
 
 **Extras that cost nothing:** echo cancellation and noise suppression run in
-the browser. An optional *stronger noise removal* (the RNNoise model, running
-on the user's device) can be switched on in Settings. No audio is ever sent to a server for processing.
+the browser. No audio is ever sent to a server for processing.
 
 ## What it costs
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Video, X } from "lucide-react";
+import { Video, X } from "@/components/ui/icons";
 import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
 import { useRouter } from "@/lib/i18n/navigation";
 import { callManager } from "@/lib/CallManager";

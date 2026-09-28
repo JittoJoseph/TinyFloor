@@ -33,6 +33,7 @@ import { Board, parseStroke } from "./board";
 import { Reporter } from "./discord";
 import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby";
+import { MeetingClock } from "./meeting-clock";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 import { Usage } from "./usage";
 
@@ -118,6 +119,8 @@ export class Room extends DurableObject<Env> {
   private readonly reporter: Reporter;
   private readonly sfuApi: SfuApi;
   private usage!: Usage;
+  /** Meeting hours, made once the room knows whether it is an office or a lobby copy. */
+  private clockCache: MeetingClock | null = null;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -183,6 +186,7 @@ export class Room extends DurableObject<Env> {
     await this.disconnectAll();
     // Pending usage was handed to D1 as everyone left, so nothing is lost here.
     await this.ctx.storage.deleteAll();
+    this.clockCache = null;
     this.createTables();
   }
 
@@ -251,6 +255,8 @@ export class Room extends DurableObject<Env> {
     };
 
     const others = this.present().map((socket) => playerState(this.attachmentOf(socket)));
+    this.nameRoom(room);
+    if (typeof ticket.hours === "number" && this.clock()?.setAllowance(ticket.hours)) this.clockChanged(room, now);
 
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     this.remember(server, attachment);
@@ -261,6 +267,7 @@ export class Room extends DurableObject<Env> {
       players: others,
       music: this.music(),
       meetings: this.meetingsOf(room),
+      usage: this.clock()!.usage(now),
     });
     this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
@@ -522,6 +529,7 @@ export class Room extends DurableObject<Env> {
       if (them.flags) sendSfu(socket, { op: "media", userId: them.userId, ...them.flags });
     }
     this.announceMeetings(me.room);
+    this.meetingCounted(me.room, meeting);
   }
 
   /** Asks people into the meeting you are in: each hears who, and which meeting. */
@@ -557,6 +565,7 @@ export class Room extends DurableObject<Env> {
     me.meeting = null;
     me.flags = null;
     me.speaking = false;
+    this.meetingCounted(me.room, meeting);
     if (me.meetingSince !== null) {
       const now = Date.now();
       this.usage.stayed(0, now - me.meetingSince, 0, now);
@@ -668,9 +677,12 @@ export class Room extends DurableObject<Env> {
         case "unsubscribe": {
           const mids = stringList(message.mids, 20);
           if (!mids || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
+          // Only tracks still open: the room may have closed some already (video paused).
+          const open = mids.filter((mid) => (me.media?.subs ?? []).some((sub) => sub.mid === mid));
           me.media.subs = (me.media.subs ?? []).filter((sub) => !mids.includes(sub.mid));
           this.remember(socket, me);
-          return await this.sfuApi.closeTracks(me.media.sessionId, mids);
+          if (!open.length) return;
+          return await this.sfuApi.closeTracks(me.media.sessionId, open);
         }
         case "answer":
           if (typeof message.sdp !== "string" || !me.media) return sendSfu(socket, { op: "error", code: "bad_request" });
@@ -765,6 +777,13 @@ export class Room extends DurableObject<Env> {
           ...(kind === "mic" ? {} : { simulcast: simulcast(want.quality) }),
         },
       });
+    }
+    // Past the meeting hours, meetings are voice only until the period resets (docs/14).
+    if (this.clock()?.usage(Date.now()).paused) {
+      const voices = found.filter((item) => item.kind === "mic");
+      if (!voices.length) return sendSfu(socket, { op: "error", code: found.length ? "video_paused" : "no_tracks" });
+      found.length = 0;
+      found.push(...voices);
     }
     // Video is what costs: past the cap, the extra cameras and screens are left out.
     let room = MAX_VIDEO_SUBSCRIPTIONS - (me.media?.subs ?? []).filter((sub) => sub.kind !== "mic").length;
@@ -917,6 +936,98 @@ export class Room extends DurableObject<Env> {
   private depart(attachment: Attachment): void {
     this.leaveMeeting(attachment);
     this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
+  }
+
+  private nameRoom(room: string): void {
+    this.ctx.storage.sql.exec("INSERT OR IGNORE INTO room_state (key, value) VALUES ('name', ?)", room);
+  }
+
+  private roomName(): string | null {
+    return this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'name'").toArray()[0]?.value ?? null;
+  }
+
+  /** Meeting hours: monthly for an office, daily for a lobby copy (docs/14). */
+  private clock(): MeetingClock | null {
+    if (this.clockCache) return this.clockCache;
+    const room = this.roomName();
+    if (!room) return null;
+    this.clockCache = new MeetingClock(this.ctx.storage.sql, lobbyCopyNumber(room) === null ? "month" : "day");
+    return this.clockCache;
+  }
+
+  /** Someone joined or left a meeting: it may have started or stopped counting. */
+  private meetingCounted(room: string, meeting: string): void {
+    const clock = this.clock();
+    const now = Date.now();
+    if (clock?.update(meeting, this.meetingMembers(meeting).length, now)) this.clockChanged(room, now);
+  }
+
+  /**
+   * After the clock moved on: everyone hears the new total, video pauses the
+   * moment the allowance is gone, the room wakes when it next needs to, and an
+   * office's total is copied to D1 for its billing page.
+   */
+  private clockChanged(room: string, now: number): void {
+    const clock = this.clock();
+    if (!clock) return;
+    const usage = clock.usage(now);
+    const wasPaused =
+      this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'paused'").toArray()[0]?.value === "1";
+    if (usage.paused !== wasPaused) {
+      this.ctx.storage.sql.exec(
+        "INSERT INTO room_state (key, value) VALUES ('paused', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+        usage.paused ? "1" : "0",
+      );
+      if (usage.paused) this.pauseVideo();
+    }
+    this.broadcast({ t: "meeting_usage", usage });
+    const wake = clock.nextWake(now);
+    if (wake !== null) this.ctx.waitUntil(this.ctx.storage.setAlarm(wake));
+    if (usage.period === "month") this.ctx.waitUntil(this.writeClock(room, now));
+  }
+
+  /** The allowance ran out: every meeting stops receiving cameras and screens; voices carry on. */
+  private pauseVideo(): void {
+    for (const socket of this.present()) {
+      const them = this.attachmentOf(socket);
+      const video = (them.media?.subs ?? []).filter((sub) => sub.kind !== "mic");
+      if (!them.media || !video.length) continue;
+      them.media.subs = (them.media.subs ?? []).filter((sub) => sub.kind === "mic");
+      this.remember(socket, them);
+      this.ctx.waitUntil(this.sfuApi.closeTracks(them.media.sessionId, video.map((sub) => sub.mid)).catch(() => undefined));
+    }
+  }
+
+  /** The office's hours this month, for the API to show; a missed write is caught up by the next. */
+  private async writeClock(room: string, now: number): Promise<void> {
+    const clock = this.clock();
+    if (!clock) return;
+    clock.settle(now);
+    const { key, seconds } = clock.periodTotal(now);
+    await this.env.DB.prepare(
+      `INSERT INTO usage_monthly (office_id, period, meeting_seconds, updated_at) VALUES (?, ?, ?, ?)
+       ON CONFLICT (office_id, period) DO UPDATE SET meeting_seconds = excluded.meeting_seconds, updated_at = excluded.updated_at`,
+    )
+      .bind(room, key, seconds, now)
+      .run()
+      .catch((error) => console.error("meeting hours write failed", room, error));
+  }
+
+  /** Woken by the clock: settle up, and pause video if the allowance just ran out. */
+  async alarm(): Promise<void> {
+    const room = this.roomName();
+    const clock = this.clock();
+    if (!room || !clock) return;
+    const now = Date.now();
+    clock.settle(now);
+    this.clockChanged(room, now);
+  }
+
+  /** The office's plan changed (from the API): its hours take effect straight away. */
+  async setMeetingAllowance(officeId: string, hours: number): Promise<void> {
+    this.nameRoom(officeId);
+    const clock = this.clock();
+    if (clock?.setAllowance(hours)) this.clockChanged(officeId, Date.now());
   }
 
   /** After people arrive or leave: usage totals are written when due. */

@@ -16,7 +16,7 @@
     "lobbyDescription": "Betritt die kostenlose öffentliche Lobby von TinyFloor als Gast. Such dir eine Figur aus, triff Leute und probiere Videoanrufe per Nähe direkt im Browser.",
     "inviteTitle": "Tritt {office} auf TinyFloor bei",
     "inviteFallbackTitle": "Du bist zu TinyFloor eingeladen",
-    "inviteDescription": "{name} hat dich zu {office} auf TinyFloor eingeladen, einem virtuellen Büro, durch das du laufen kannst."
+    "inviteDescription": "Tritt {office} auf TinyFloor bei, einem virtuellen Büro zum Herumlaufen."
   },
   "common": {
     "loading": "Wird geladen...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "Ist TinyFloor kostenlos?",
-        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen. Größere Büros kosten 19 $ im Monat für 10 Personen und 49 $ für 25."
+        "a": "Ja. Die öffentliche Lobby ist für alle kostenlos, ebenso ein Büro für bis zu 3 Personen mit 5 Meeting-Stunden im Monat. Größere Büros kosten $19 im Monat für 10 Personen und 30 Meeting-Stunden oder $49 für 25 Personen und 60 Stunden."
       },
       {
         "q": "Muss ich etwas installieren?",
@@ -92,7 +92,7 @@
     "signInTitle": "Willkommen zurück",
     "signInSubtitle": "Melde dich an, um zurück ins Büro deines Teams zu kommen.",
     "signUpTitle": "Konto erstellen",
-    "signUpSubtitle": "Eine E-Mail und ein Passwort, mehr braucht es nicht.",
+    "signUpSubtitle": "Mit Google geht's am schnellsten, oder nimm deine E-Mail.",
     "email": "E-Mail",
     "emailPlaceholder": "du@firma.de",
     "password": "Passwort",
@@ -128,7 +128,8 @@
       "google_failed": "Die Anmeldung mit Google hat nicht geklappt. Versuch es noch einmal.",
       "google_unverified": "Bestätige zuerst deine E-Mail-Adresse bei Google und versuch es dann noch einmal.",
       "google_mismatch": "Diese E-Mail-Adresse ist mit einem anderen Google-Konto verknüpft."
-    }
+    },
+    "continueWithEmail": "Weiter mit E-Mail"
   },
   "entry": {
     "yourName": "Dein Name",
@@ -141,8 +142,13 @@
     "copyInvite": "Einladungslink kopieren",
     "continue": "Weiter",
     "walkingInAs": "Du kommst als {name} rein",
-    "introTitle": "Bevor du reingehst",
-    "introSubtitle": "Wie sollen dich die anderen nennen, und wer bist du auf der Etage?"
+    "introTitle": "Willkommen",
+    "introEyebrow": "Willkommen bei TinyFloor",
+    "nameTitle": "Wie sollen dich andere nennen?",
+    "nameBody": "Steht an deinem Charakter und im Chat.",
+    "characterTitle": "Wähle deinen Charakter",
+    "characterBody": "Das bist du auf der Etage.",
+    "thatsMe": "Das bin ich"
   },
   "room": {
     "connecting": "Verbinde...",
@@ -180,7 +186,6 @@
     "onCall": "Im Gespräch",
     "decline": "Ablehnen",
     "accept": "Annehmen",
-    "tutorial": "Tutorial-Anruf",
     "calling": "Anruf läuft...",
     "cancel": "Anruf abbrechen",
     "micOff": "Mikrofon aus",
@@ -332,7 +337,8 @@
       "media": "Audio und Video",
       "notifications": "Benachrichtigungen",
       "accessibility": "Barrierefreiheit",
-      "office": "Büro"
+      "office": "Büro",
+      "plan": "Tarif und Abrechnung"
     },
     "appearance": "Darstellung",
     "themeNote": "„System“ folgt deinem Gerät.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "Weniger Animationen in der ganzen App.",
     "performance": "Leistung",
     "batterySaver": "Energiesparmodus",
-    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten.",
-    "enhancedNoise": "Stärkere Geräuschunterdrückung",
-    "enhancedNoiseNote": "Ein kleines KI-Modell auf deinem Gerät entfernt Tastatur, Hunde und Gespräche im Hintergrund. Braucht etwas mehr Akku.",
-    "experimental": "Experimentell"
-  },
-  "tutorial": {
-    "walk": "Lauf mit W A S D herum",
-    "walkTouch": "Zieh den Joystick, um zu laufen",
-    "click": "Oder klick irgendwohin, um direkt dorthin zu laufen",
-    "clickTouch": "Oder tippe irgendwohin, um direkt dorthin zu laufen",
-    "approach": "Geh nah an jemanden heran, um anzurufen oder zu chatten",
-    "invite": "Lade jemanden mit diesem Link ein, oder du bist startklar",
-    "copy": "Kopieren",
-    "copied": "Kopiert",
-    "linkHint": "Alle mit dem Link landen in diesem Raum",
-    "done": "Fertig",
-    "skip": "Überspringen",
-    "next": "Weiter"
+    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
   },
   "scene": {
-    "guide": "Guide",
     "sit": "E drücken zum Hinsetzen",
     "stand": "E drücken zum Aufstehen",
     "joinMeeting": "E drücken zum Beitreten",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "Einladungen gibt es mit einem Büro",
-        "body": "Lade dein Team per E-Mail oder mit einem Link ein, in einem eigenen Büro."
+        "body": "Lade dein Team mit einem Link ein, in einem eigenen Büro."
       },
       "free": "Ein Büro ist in einer Minute eingerichtet und für bis zu 3 Personen kostenlos.",
       "go": "Mein Büro einrichten",
@@ -912,7 +900,9 @@
       "free": "Kostenloser Plan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Inhaber",
@@ -930,7 +920,8 @@
       "leave": "Dieses Büro verlassen",
       "wrong": "Das hat nicht geklappt. Versuch es nochmal.",
       "plan": "{plan} · {used} von {seats} Plätzen",
-      "danger": "Verlassen oder schließen"
+      "danger": "Verlassen oder schließen",
+      "cancelPlanFirst": "Kündige zuerst den Tarif dieses Büros unter Tarif und Abrechnung. Danach kann es geschlossen werden."
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",
-      "invalid": "Sie ist vielleicht abgelaufen, wurde schon benutzt oder deaktiviert. Bitte um eine neue.",
+      "invalid": "Er wurde vielleicht zurückgesetzt, oder das Büro gibt es nicht mehr. Bitte um einen neuen Link.",
       "home": "Zur Startseite",
-      "eyebrow": "{name} hat dich eingeladen",
-      "asAdmin": "Du bist als Admin eingeladen.",
-      "asMember": "Du bist eingeladen, dem Team beizutreten.",
+      "eyebrow": "Du bist eingeladen zu",
       "join": "{office} beitreten",
-      "joiningAs": "Du trittst bei als {name} ({email})",
+      "joiningAs": "Du trittst bei als {email}.",
       "createAccount": "Konto erstellen",
       "signIn": "Ich habe ein Konto",
-      "readyToJoin": "Das bin ich",
-      "accountKeeps": "Ein Konto merkt sich {name} und deinen Charakter für nächstes Mal.",
-      "you": "Du",
       "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}",
-      "change": "Ändern"
+      "change": "Nicht du?",
+      "accountTitle": "Nimm Platz",
+      "accountBody": "Melde dich an, um beizutreten. Das dauert nur Sekunden.",
+      "perkFloor": "Geh zu jemandem hin, um zu reden, wie in einem echten Büro",
+      "perkTalk": "Sprachanrufe starten, sobald ihr nebeneinander steht",
+      "perkChat": "Channels und Nachrichten, die bleiben",
+      "useEmail": "Lieber mit E-Mail",
+      "joining": "Tritt bei",
+      "joinTitle": "Du kannst beitreten",
+      "joinBody": "Das Büro wartet auf deiner Startseite, bereit zum Eintreten.",
+      "fullTitle": "Dieses Büro ist voll",
+      "fullBody": "Alle Plätze sind belegt. Bitte die Person, die dir den Link geschickt hat, Platz zu machen oder einen größeren Tarif zu wählen."
     },
     "errors": {
       "member_limit": "Der Workspace ist in seinem aktuellen Plan voll.",
@@ -996,7 +993,7 @@
       "name_required": "Gib zuerst einen Namen ein.",
       "bad_email": "Das sieht nicht wie eine E-Mail-Adresse aus.",
       "invite_used": "Diese Einladung wurde schon benutzt.",
-      "invite_invalid": "Diese Einladung ist abgelaufen oder wurde deaktiviert.",
+      "invite_invalid": "Dieser Einladungslink wurde zurückgesetzt oder funktioniert nicht mehr.",
       "wrong_account": "Diese Einladung gilt für eine andere E-Mail-Adresse. Melde dich mit diesem Konto an.",
       "wrong_password": "Dein aktuelles Passwort ist falsch.",
       "password_too_short": "Verwende mindestens 8 Zeichen.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "Leute",
       "members": "Mitglieder",
-      "invitations": "Offene Einladungen",
       "invite": "Einladen",
       "seats": "{used} von {seats} Plätzen",
       "seatsFull": "Alle Plätze sind belegt.",
       "seatsFree": "Es ist noch Platz.",
       "onFloorNow": "{count} gerade auf der Etage",
-      "noInvitations": "Keine offenen Einladungen",
       "copied": "Kopiert",
-      "revoke": "Widerrufen",
       "remove": "Entfernen",
       "leave": "Verlassen",
       "makeAdmin": "Zum Admin machen",
@@ -1032,21 +1026,23 @@
       "admin": "Admin",
       "member": "Mitglied",
       "noEmail": "Keine E-Mail",
-      "expires": "Läuft ab am {date}",
-      "anyoneWithLink": "Alle mit dem Link",
       "wrong": "Das hat nicht geklappt. Versuch es nochmal.",
       "subtitle": "Alle in {office} und wer hereinkommen kann.",
       "linkCopied": "Einladungslink kopiert",
       "nobodyOnFloor": "Sonst noch niemand.",
       "seatsLeft": "{count, plural, one {# Platz frei – lade jemanden ein} other {# Plätze frei – lade jemanden ein}}",
       "seatsNote": "Ein Platz ist ein Mitglied. Wer geht, gibt seinen frei; offline sein nicht.",
-      "invitationsNote": "Eine Einladung belegt keinen Platz. Wer zuerst annimmt, bekommt einen, solange einer frei ist.",
-      "noInvitationsBody": "Lade jemanden ein – der Link wartet hier, bis er angenommen wird oder abläuft.",
       "allSeatsTaken": "Alle Plätze sind belegt",
       "allSeatsTakenBody": "Wer geht, gibt einen Platz frei. Büros mit mehr Plätzen kommen bald.",
       "yourProfile": "Dein Profil",
       "ownOfficeTitle": "Eine Fläche wie diese für dein Team?",
-      "ownOfficeBody": "Richte in einer Minute dein eigenes Büro ein. Kostenlos für bis zu 3 Personen."
+      "ownOfficeBody": "Richte in einer Minute dein eigenes Büro ein. Kostenlos für bis zu 3 Personen.",
+      "linkTitle": "Einladungslink",
+      "linkBody": "Alle mit diesem Link können mit einem Konto beitreten, solange ein Platz frei ist.",
+      "copy": "Kopieren",
+      "resetLink": "Link zurücksetzen",
+      "resetTitle": "Einladungslink zurücksetzen?",
+      "resetBody": "Der aktuelle Link funktioniert sofort nicht mehr, ein neuer ersetzt ihn. Wer schon im Büro ist, bleibt."
     },
     "office": "Büro",
     "goneTitle": "Dieses Büro gibt es nicht mehr",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "Name des Büros",
     "creating": "Wird eingerichtet",
-    "continue": "Weiter"
+    "continue": "Weiter",
+    "eyebrow": "Neues Büro",
+    "untitled": "Dein Büro",
+    "nameTitle": "Wie heißt dein Team?",
+    "nameBody": "Diesen Namen sehen alle, die reinkommen.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Du kannst es jederzeit umbenennen.",
+    "createIt": "Büro erstellen",
+    "sizeTitle": "Wie viele Leute arbeiten hier?",
+    "sizeBody": "Zähl alle, die du einladen willst, dich mitgezählt.",
+    "people": "Personen",
+    "planTitle": "Wähle einen Tarif für {office}",
+    "planBody": "Jederzeit wechseln oder kündigen.",
+    "recommended": "Passt am besten",
+    "perMonth": "/Monat",
+    "upTo": "Bis zu {count} Personen",
+    "perPerson": "{price} pro Person",
+    "bigger": "Mehr als 25? Starte mit Pro und schreib uns, wir machen Platz.",
+    "included": "Was drin ist",
+    "includedCalls": "Sprachanrufe beim Hingehen, werden nie gezählt",
+    "includedChat": "Chat, Channels und Dateien",
+    "includedCancel": "Jederzeit kündbar; Erstattung innerhalb von 14 Tagen",
+    "getPlan": "{plan} holen · {price}/Monat",
+    "openingCheckout": "Kasse wird geöffnet",
+    "freeInstead": "Oder starte mit Free, für bis zu {count} Personen",
+    "freeTooSmall": "Lieber mit Free starten · nur {count} können beitreten",
+    "includedMeetingsBoth": "Gruppen-Meetings mit Video: {plus} Stunden im Monat bei Plus, {pro} bei Pro"
   },
   "meetings": {
     "title": "Meetings",
@@ -1092,7 +1114,15 @@
     "ended": "Dieses Meeting ist vorbei",
     "rejoin": "Wieder beitreten",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "Ein Anruf ist zu zweit: Starte ein Meeting für euch drei"
+    "makeMeetingHint": "Ein Anruf ist zu zweit: Starte ein Meeting für euch drei",
+    "hours": {
+      "usedMonth": "{used} von {allowance} Meeting-Stunden in diesem Monat genutzt",
+      "usedToday": "{used} von {allowance} Meeting-Stunden heute genutzt",
+      "more": "Mehr Stunden",
+      "paused": "Video pausiert",
+      "pausedMonth": "nur Ton bis {date}",
+      "pausedToday": "nur Ton bis morgen"
+    }
   },
   "shell": {
     "floor": "Fläche",
@@ -1156,19 +1186,16 @@
     "welcome": "Willkommen, {name}",
     "welcomeAnonymous": "Willkommen",
     "welcomeBody": "Eine Etage für dein Team, mit Channels und Anrufen.",
-    "stepName": "Benenne dein Büro",
-    "makeIt": "Einrichten",
     "invited": "Wurdest du eingeladen?",
     "invitedBody": "Füge den Link ein, den dein Team dir geschickt hat.",
     "invitePlaceholder": "Einladungslink einfügen",
     "join": "Beitreten",
     "badLink": "Das sieht nicht nach einem Einladungslink aus. Füge den ganzen Link ein.",
     "makeTitle": "Lass uns dein Büro einrichten",
-    "yourNewOffice": "Dein neues Büro",
-    "freeRename": "Kostenlos für bis zu 3 Personen. Du kannst es jederzeit umbenennen.",
     "otherWays": "Andere Wege hinein",
     "lobbyBody": "Schau vorbei und triff Leute.",
-    "yourAccount": "Dein Konto"
+    "yourAccount": "Dein Konto",
+    "createOffice": "Erstelle dein Büro"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "Einladungen"
       },
       "lobbyTitle": "Die Lobby ist offen",
-      "lobbyBody": "Lauf über eine echte Fläche, bevor du deine eigene einrichtest. Kein Konto nötig.",
       "menu": "Menü",
       "teams": "Für Teams",
-      "teamTitle": "Gemacht für Remote-Teams",
-      "teamBody": "Kostenlos für bis zu 3 Personen, größere Pläne sind unterwegs.",
       "cases": {
         "virtualOffice": "Ein Ort für dein Remote-Team",
         "virtualCoworking": "Neben anderen konzentriert arbeiten",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "Sprechstunden und kleine Kurse",
         "proximityChat": "Sprich mit dem, zu dem du gehst"
       },
-      "getStarted": "Loslegen"
+      "getStarted": "Loslegen",
+      "lobbyLine": "Lauf über eine echte Etage. Ohne Konto."
     },
     "hero": {
       "title": "Ein virtuelles Büro, durch das dein Team laufen kann.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "Hol dein Team rein.",
         "muted": "Mit einem Link.",
-        "body": "Schick einen Einladungslink oder lade per E-Mail ein. Sie wählen einen Namen und eine Figur, legen ein kostenloses Konto an und sind auf der Etage."
+        "body": "Teile den Link deines Büros. Sie legen ein kostenloses Konto an, wählen Namen und Figur und sind auf der Etage."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "Schick deinem Team den Link.",
-        "body": "Lade Teammitglieder per E-Mail ein oder schick ihnen einen Einladungslink."
+        "body": "Schick deinem Team den Link deines Büros."
       },
       "walk": {
         "title": "Komm rein.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "Preise",
       "title": "Bezahlt wird pro Büro,",
       "muted": "nicht pro Person.",
-      "body": "Starte kostenlos. Jeder Tarif hat alles, und Gäste zählen nie mit.",
+      "body": "Starte kostenlos. Steig um, wenn dein Team wächst.",
       "soon": "Demnächst",
       "forever": "für immer",
       "month": "pro Monat",
       "people": "Bis zu {count} Personen",
       "free": {
-        "name": "Free",
-        "body": "Das ganze Produkt, für ein kleines Studio oder ein Gründerduo.",
-        "items": [
-          "Eine private Etage",
-          "Anrufe und Meetings",
-          "Chat, Bilder und Dateien",
-          "Gäste per Link"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "Ein Preis für das ganze Büro, egal wie viele der zehn Plätze belegt sind.",
-        "items": [
-          "Alles aus Free",
-          "Platz für 10 Mitglieder",
-          "Jährlich: zwei Monate gratis"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "Für das Team, dem eine Schreibtischreihe zu klein geworden ist.",
-        "items": [
-          "Alles aus Team",
-          "Platz für 25 Mitglieder",
-          "Bevorzugter Support",
-          "Größer? Sprich uns an"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Monatspreise, zuzüglich Steuern.",
+      "perPerson": "{price} pro Person",
+      "freeLine": "Keine Karte nötig",
+      "choose": "{plan} wählen",
+      "note": "Jeder Tarif hat alle Funktionen. Anrufe zählen nie; Gruppen-Meetings haben 5, 30 oder 60 Stunden im Monat."
     },
     "faq": {
       "title": "Fragen,",
@@ -1485,5 +1495,77 @@
       "muted": "eine gemeinsame Etage.",
       "note": "Kostenlos für bis zu 3 Personen · Läuft auf Cloudflare"
     }
+  },
+  "billing": {
+    "current": "Dieses Büro hat",
+    "members": "{used} von {seats} Mitgliedern",
+    "freeNote": "Kostenlos, mit allen Funktionen.",
+    "renews": "Verlängert sich am {date}",
+    "ends": "Endet am {date}, danach der kostenlose Tarif",
+    "perMonth": "im Monat",
+    "pastDue": "Die letzte Zahlung ist nicht durchgegangen. Paddle versucht es erneut; aktualisiere die Karte, um den Tarif zu behalten.",
+    "updateCard": "Karte aktualisieren",
+    "keep": "Tarif behalten",
+    "settingUp": "Zahlung erhalten. Der Tarif wird eingerichtet…",
+    "settingUpSlow": "Zahlung erhalten. Der Tarif kann eine Minute brauchen; lade neu, falls er noch fehlt.",
+    "cancel": "Tarif kündigen",
+    "switch": "Wechseln",
+    "fine": "Die Preise gelten monatlich, in US-Dollar, zuzüglich Steuern. Zahlungen wickelt Paddle ab, unser Wiederverkäufer. Innerhalb von 14 Tagen nach einer Zahlung erstatten wir auf Anfrage alles.",
+    "adminsOnly": "Nur die Admins des Büros können den Tarif ändern.",
+    "switchTitle": "Zu {plan} wechseln?",
+    "switchBody": "Paddle berechnet oder erstattet die Differenz für den Rest des Zeitraums sofort. Auf der Fläche merkt niemand etwas.",
+    "cancelTitle": "Tarif kündigen?",
+    "cancelBody": "Der Tarif läuft bis zum {date}, danach ist das Büro wieder im kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
+    "cancelBodyNow": "Das Büro wechselt am Ende dieses Zeitraums in den kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
+    "moreSeats": "Mehr Plätze holen",
+    "membersLabel": "Mitglieder",
+    "hoursLabel": "Meeting-Stunden",
+    "hours": "{used} von {allowance} Std.",
+    "hoursResets": "Neu ab {date}",
+    "hoursUsedUp": "Die Meeting-Stunden dieses Monats sind aufgebraucht: Meetings laufen bis {date} nur mit Ton. Ein größerer Tarif bringt Video sofort zurück.",
+    "hoursExplained": "Meeting-Stunden zählen die Zeit, in der zwei oder mehr Personen in einem Meeting sind. Anrufe zu zweit auf der Etage zählen nie. Danach laufen Meetings bis zum 1. mit Ton weiter.",
+    "payment": "Zahlung",
+    "cardUnknown": "Karte bei Paddle hinterlegt",
+    "card": "Karte",
+    "cardEnding": "{brand} mit Endziffern {last4}",
+    "expires": "Gültig bis {date}",
+    "update": "Ändern",
+    "nextCharge": "Nächste Abbuchung",
+    "chargeOn": "{amount} am {date}",
+    "noneAfter": "Keine, der Tarif endet am {date}",
+    "history": "Zahlungsverlauf",
+    "noPayments": "Noch keine Zahlungen.",
+    "planPayment": "Tarif {plan}",
+    "invoice": "Rechnung herunterladen",
+    "status": {
+      "refunded": "Erstattet",
+      "partly_refunded": "Teilweise erstattet",
+      "failed": "Fehlgeschlagen",
+      "due": "Fällig"
+    },
+    "errors": {
+      "tooManyMembers": "Dieses Büro hat mehr Mitglieder, als der Tarif fasst. Entferne zuerst einige.",
+      "hasSubscription": "Dieses Büro hat schon einen Tarif. Wechsle ihn stattdessen.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal."
+    },
+    "pillPastDue": "Karte abgelehnt",
+    "pillEnding": "Endet",
+    "nextChargeLine": "Nächste Abbuchung {amount} am {date}",
+    "endingNote": "Der Tarif endet am {date}. Behalte ihn, und nichts ändert sich.",
+    "seatsFree": "{count, plural, one {# Platz frei} other {# Plätze frei}}",
+    "seatsFull": "Alle Plätze sind belegt",
+    "upgradeFull": "Alle Plätze sind belegt",
+    "upgradeHours": "Die meisten Meeting-Stunden dieses Monats sind verbraucht",
+    "upgradeRoom": "Platz zum Wachsen",
+    "upgradeFree": "Für ein größeres Team",
+    "upgradeTitle": "Steig auf {plan} um",
+    "gainPeople": "{count} Personen",
+    "gainHours": "{count} Meeting-Stunden",
+    "gainNow": "jetzt {value}",
+    "upgradeButton": "Auf {plan} upgraden · {price}/Monat",
+    "orPlan": "Oder {plan} für bis zu {count} Personen · {price}/Monat",
+    "topPlan": "Du hast unseren größten Tarif. Brauchst du Platz für mehr als {count} Personen? Schreib uns, wir richten es ein.",
+    "moveDown": "Zu {plan} wechseln",
+    "usageOf": "{used} von {total}"
   }
 }

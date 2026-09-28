@@ -16,7 +16,7 @@
     "lobbyDescription": "TinyFloor의 무료 공개 로비에 게스트로 들어가 보세요. 캐릭터를 고르고, 사람들을 만나고, 브라우저에서 근거리 영상 통화를 해 보세요.",
     "inviteTitle": "TinyFloor의 {office}에 참여하세요",
     "inviteFallbackTitle": "TinyFloor에 초대받았어요",
-    "inviteDescription": "{name} 님이 걸어 다닐 수 있는 가상 오피스 TinyFloor의 {office}에 초대했어요."
+    "inviteDescription": "TinyFloor의 {office}에 참여하세요. 돌아다닐 수 있는 가상 오피스예요."
   },
   "common": {
     "loading": "불러오는 중...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "TinyFloor는 무료인가요?",
-        "a": "네. 공개 로비는 누구에게나 무료이고, 3명까지의 오피스도 무료예요. 더 큰 오피스는 10명에 월 19달러, 25명에 월 49달러예요."
+        "a": "네. 공개 로비는 누구나 무료이고, 3명까지의 오피스도 무료예요(회의 시간 월 5시간). 더 큰 오피스는 10명·회의 30시간에 월 $19, 25명·60시간에 월 $49예요."
       },
       {
         "q": "무언가를 설치해야 하나요?",
@@ -92,7 +92,7 @@
     "signInTitle": "다시 오신 것을 환영해요",
     "signInSubtitle": "로그인하고 팀 오피스로 돌아가세요.",
     "signUpTitle": "계정 만들기",
-    "signUpSubtitle": "이메일과 비밀번호만 있으면 돼요.",
+    "signUpSubtitle": "Google이 가장 빨라요. 이메일로도 가능해요.",
     "email": "이메일",
     "emailPlaceholder": "you@company.com",
     "password": "비밀번호",
@@ -128,7 +128,8 @@
       "google_failed": "Google 로그인이 완료되지 않았어요. 다시 시도해 주세요.",
       "google_unverified": "먼저 Google에서 이메일을 인증한 뒤 다시 시도해 주세요.",
       "google_mismatch": "이 이메일은 다른 Google 계정에 연결되어 있어요."
-    }
+    },
+    "continueWithEmail": "이메일로 계속하기"
   },
   "entry": {
     "yourName": "이름",
@@ -141,8 +142,13 @@
     "copyInvite": "초대 링크 복사",
     "continue": "계속",
     "walkingInAs": "{name}(으)로 입장",
-    "introTitle": "들어가기 전에",
-    "introSubtitle": "다른 사람들이 뭐라고 부르면 될까요? 층에서는 어떤 모습일까요?"
+    "introTitle": "환영해요",
+    "introEyebrow": "TinyFloor에 오신 걸 환영해요",
+    "nameTitle": "뭐라고 불러 드릴까요?",
+    "nameBody": "캐릭터와 채팅에 표시돼요.",
+    "characterTitle": "캐릭터를 골라 주세요",
+    "characterBody": "층에서의 내 모습이에요.",
+    "thatsMe": "이걸로 할게요"
   },
   "room": {
     "connecting": "연결 중...",
@@ -180,7 +186,6 @@
     "onCall": "통화 중",
     "decline": "거절",
     "accept": "수락",
-    "tutorial": "튜토리얼 통화",
     "calling": "전화 거는 중...",
     "cancel": "통화 취소",
     "micOff": "마이크 꺼짐",
@@ -332,7 +337,8 @@
       "media": "오디오 및 비디오",
       "notifications": "알림",
       "accessibility": "접근성",
-      "office": "오피스"
+      "office": "오피스",
+      "plan": "요금제 및 결제"
     },
     "appearance": "화면",
     "themeNote": "'시스템'은 기기 설정을 따라요.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "앱 전체의 애니메이션을 줄여요.",
     "performance": "성능",
     "batterySaver": "배터리 절약",
-    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요.",
-    "enhancedNoise": "더 강한 소음 제거",
-    "enhancedNoiseNote": "기기 안의 작은 AI 모델이 키보드 소리, 개 짖는 소리, 주변 대화를 없애요. 배터리를 조금 더 써요.",
-    "experimental": "실험 기능"
-  },
-  "tutorial": {
-    "walk": "W A S D 키로 돌아다니세요",
-    "walkTouch": "조이스틱을 드래그해서 걸어요",
-    "click": "아니면 아무 곳이나 클릭해서 바로 이동하세요",
-    "clickTouch": "아니면 아무 곳이나 탭해서 바로 이동하세요",
-    "approach": "누군가에게 가까이 가면 통화하거나 채팅할 수 있어요",
-    "invite": "이 링크로 누군가를 초대하거나, 이제 준비 완료예요",
-    "copy": "복사",
-    "copied": "복사됨",
-    "linkHint": "링크가 있는 사람은 누구나 이 방에 들어와요",
-    "done": "완료",
-    "skip": "건너뛰기",
-    "next": "다음"
+    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요."
   },
   "scene": {
-    "guide": "가이드",
     "sit": "E 키로 앉기",
     "stand": "E 키로 일어서기",
     "joinMeeting": "E 키로 참여",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "초대는 오피스에서 쓸 수 있어요",
-        "body": "내 오피스에서 이메일이나 링크로 팀을 초대하세요."
+        "body": "내 오피스에서는 링크 하나로 팀을 초대할 수 있어요."
       },
       "free": "오피스는 1분이면 만들 수 있고, 3명까지 무료예요.",
       "go": "내 오피스 만들기",
@@ -912,7 +900,9 @@
       "free": "무료 요금제",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "소유자",
@@ -930,7 +920,8 @@
       "leave": "이 사무실 나가기",
       "wrong": "실패했습니다. 다시 시도해 주세요.",
       "plan": "{plan} · 자리 {seats}개 중 {used}개",
-      "danger": "나가기 또는 닫기"
+      "danger": "나가기 또는 닫기",
+      "cancelPlanFirst": "먼저 '요금제 및 결제'에서 이 오피스의 요금제를 해지하세요. 그다음 닫을 수 있어요."
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",
-      "invalid": "만료되었거나, 이미 사용되었거나, 꺼졌을 수 있어요. 새 초대를 요청하세요.",
+      "invalid": "링크가 재설정되었거나 오피스가 닫혔을 수 있어요. 새 링크를 요청하세요.",
       "home": "홈으로",
-      "eyebrow": "{name} 님의 초대",
-      "asAdmin": "관리자로 초대받았어요.",
-      "asMember": "팀에 초대받았어요.",
+      "eyebrow": "초대받았어요",
       "join": "{office}에 참여",
-      "joiningAs": "{name}({email})(으)로 참여해요",
+      "joiningAs": "{email}(으)로 참여해요.",
       "createAccount": "계정 만들기",
       "signIn": "계정이 있어요",
-      "readyToJoin": "저예요",
-      "accountKeeps": "계정을 만들면 {name}과 캐릭터가 다음에도 그대로예요.",
-      "you": "나",
       "members": "멤버 {count}명",
-      "change": "변경"
+      "change": "본인이 아닌가요?",
+      "accountTitle": "자리에 앉아 보세요",
+      "accountBody": "로그인하고 참여하세요. 몇 초면 돼요.",
+      "perkFloor": "진짜 사무실처럼 다가가서 이야기해요",
+      "perkTalk": "옆에 있으면 음성 통화가 시작돼요",
+      "perkChat": "남아 있는 채널과 메시지",
+      "useEmail": "이메일로 계속하기",
+      "joining": "참여하는 중",
+      "joinTitle": "참여할 준비가 됐어요",
+      "joinBody": "오피스가 홈에서 기다리고 있을 거예요. 바로 들어갈 수 있어요.",
+      "fullTitle": "이 오피스는 자리가 다 찼어요",
+      "fullBody": "자리가 모두 찼어요. 링크를 보낸 사람에게 자리를 비우거나 더 큰 요금제로 바꿔 달라고 요청하세요."
     },
     "errors": {
       "member_limit": "현재 요금제에서 워크스페이스가 꽉 찼어요.",
@@ -996,7 +993,7 @@
       "name_required": "먼저 이름을 정해 주세요.",
       "bad_email": "이메일 주소 형식이 아닌 것 같아요.",
       "invite_used": "이미 사용된 초대예요.",
-      "invite_invalid": "만료되었거나 꺼진 초대예요.",
+      "invite_invalid": "이 초대 링크는 재설정되었거나 더 이상 작동하지 않아요.",
       "wrong_account": "다른 이메일 주소로 보낸 초대예요. 그 계정으로 로그인하세요.",
       "wrong_password": "현재 비밀번호가 올바르지 않아요.",
       "password_too_short": "8자 이상 입력해 주세요.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "사람들",
       "members": "멤버",
-      "invitations": "대기 중인 초대",
       "invite": "초대",
       "seats": "{seats}석 중 {used}석",
       "seatsFull": "자리가 모두 찼습니다.",
       "seatsFree": "아직 자리가 있습니다.",
       "onFloorNow": "지금 플로어에 {count}명",
-      "noInvitations": "대기 중인 초대 없음",
       "copied": "복사됨",
-      "revoke": "취소하기",
       "remove": "내보내기",
       "leave": "나가기",
       "makeAdmin": "관리자로 변경",
@@ -1032,21 +1026,23 @@
       "admin": "관리자",
       "member": "멤버",
       "noEmail": "이메일 없음",
-      "expires": "{date}에 만료",
-      "anyoneWithLink": "링크가 있는 누구나",
       "wrong": "실패했습니다. 다시 시도해 주세요.",
       "subtitle": "{office}의 모든 사람과 들어올 수 있는 사람.",
       "linkCopied": "초대 링크를 복사했어요",
       "nobodyOnFloor": "아직 다른 사람이 없어요.",
       "seatsLeft": "{count, plural, other {#자리 남음 — 누군가를 초대하세요}}",
       "seatsNote": "자리 하나는 멤버 한 명이에요. 떠나면 자리가 비고, 오프라인은 비지 않아요.",
-      "invitationsNote": "초대는 자리를 차지하지 않아요. 빈자리가 있으면 먼저 수락한 사람이 가져가요.",
-      "noInvitationsBody": "누군가를 초대하면 수락되거나 만료될 때까지 링크가 여기 남아요.",
       "allSeatsTaken": "모든 자리가 찼어요",
       "allSeatsTakenBody": "누군가 떠나면 자리가 비어요. 자리가 더 많은 사무실이 곧 나와요.",
       "yourProfile": "내 프로필",
       "ownOfficeTitle": "이런 층을 우리 팀에도?",
-      "ownOfficeBody": "1분 만에 내 오피스를 만드세요. 3명까지 무료."
+      "ownOfficeBody": "1분 만에 내 오피스를 만드세요. 3명까지 무료.",
+      "linkTitle": "초대 링크",
+      "linkBody": "이 링크가 있는 사람은 빈자리가 있는 동안 계정으로 참여할 수 있어요.",
+      "copy": "복사",
+      "resetLink": "링크 재설정",
+      "resetTitle": "초대 링크를 재설정할까요?",
+      "resetBody": "지금 링크는 바로 작동을 멈추고 새 링크로 바뀌어요. 이미 오피스에 있는 사람은 그대로예요."
     },
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "오피스 이름",
     "creating": "준비하는 중",
-    "continue": "계속"
+    "continue": "계속",
+    "eyebrow": "새 오피스",
+    "untitled": "내 오피스",
+    "nameTitle": "팀 이름이 뭐예요?",
+    "nameBody": "들어오는 모든 사람이 보게 될 이름이에요.",
+    "namePlaceholder": "Acme 스튜디오",
+    "renameLater": "이름은 언제든 바꿀 수 있어요.",
+    "createIt": "오피스 만들기",
+    "sizeTitle": "몇 명이 함께 일하나요?",
+    "sizeBody": "초대하고 싶은 사람을 나를 포함해 세어 보세요.",
+    "people": "명",
+    "planTitle": "{office}의 요금제를 골라 주세요",
+    "planBody": "언제든 바꾸거나 해지할 수 있어요.",
+    "recommended": "추천",
+    "perMonth": "/월",
+    "upTo": "최대 {count}명",
+    "perPerson": "1인당 {price}",
+    "bigger": "25명이 넘나요? Pro로 시작하고 연락 주세요. 자리를 늘려 드릴게요.",
+    "included": "포함된 기능",
+    "includedCalls": "다가가서 하는 음성 통화는 시간에 포함되지 않아요",
+    "includedChat": "채팅, 채널, 파일",
+    "includedCancel": "언제든 해지, 14일 이내 환불",
+    "getPlan": "{plan} 시작 · 월 {price}",
+    "openingCheckout": "결제를 여는 중",
+    "freeInstead": "또는 Free로 시작하기 (최대 {count}명)",
+    "freeTooSmall": "Free로 시작하기 · {count}명만 참여할 수 있어요",
+    "includedMeetingsBoth": "영상 그룹 회의: Plus는 월 {plus}시간, Pro는 {pro}시간"
   },
   "meetings": {
     "title": "회의",
@@ -1092,7 +1114,15 @@
     "ended": "그 회의는 끝났어요",
     "rejoin": "다시 참여",
     "makeMeeting": "회의",
-    "makeMeetingHint": "통화는 두 명까지예요. 세 명이서 회의를 시작하세요"
+    "makeMeetingHint": "통화는 두 명까지예요. 세 명이서 회의를 시작하세요",
+    "hours": {
+      "usedMonth": "이번 달 회의 시간 {used} / {allowance}시간 사용",
+      "usedToday": "오늘 회의 시간 {used} / {allowance}시간 사용",
+      "more": "시간 늘리기",
+      "paused": "영상 일시 중지됨",
+      "pausedMonth": "{date}까지 음성만",
+      "pausedToday": "내일까지 음성만"
+    }
   },
   "shell": {
     "floor": "층",
@@ -1156,19 +1186,16 @@
     "welcome": "환영해요, {name}님",
     "welcomeAnonymous": "환영해요",
     "welcomeBody": "팀을 위한 한 층, 채널과 통화가 함께해요.",
-    "stepName": "오피스 이름 정하기",
-    "makeIt": "만들기",
     "invited": "초대받으셨나요?",
     "invitedBody": "팀이 보낸 링크를 붙여넣으세요.",
     "invitePlaceholder": "초대 링크 붙여넣기",
     "join": "참여",
     "badLink": "초대 링크가 아닌 것 같아요. 링크 전체를 붙여넣으세요.",
     "makeTitle": "오피스를 만들어 봐요",
-    "yourNewOffice": "새 오피스",
-    "freeRename": "3명까지 무료. 이름은 언제든 바꿀 수 있어요.",
     "otherWays": "다른 방법으로 들어가기",
     "lobbyBody": "들러서 사람들을 만나 보세요.",
-    "yourAccount": "내 계정"
+    "yourAccount": "내 계정",
+    "createOffice": "오피스 만들기"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "초대"
       },
       "lobbyTitle": "로비가 열려 있어요",
-      "lobbyBody": "내 오피스를 만들기 전에 실제 층을 걸어 보세요. 계정은 필요 없어요.",
       "menu": "메뉴",
       "teams": "팀을 위해",
-      "teamTitle": "원격 팀을 위해 만들었습니다",
-      "teamBody": "3명까지 무료, 더 큰 요금제도 곧 나와요.",
       "cases": {
         "virtualOffice": "원격 팀이 머무는 곳",
         "virtualCoworking": "다른 사람들 곁에서 집중해서 일하기",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "상담 시간과 소규모 수업",
         "proximityChat": "다가간 사람과 바로 대화"
       },
-      "getStarted": "시작하기"
+      "getStarted": "시작하기",
+      "lobbyLine": "실제 층을 돌아다녀 보세요. 계정 없이도 돼요."
     },
     "hero": {
       "title": "팀이 걸어 다닐 수 있는 가상 오피스.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "팀을 데려오세요.",
         "muted": "링크 하나로.",
-        "body": "초대 링크를 보내거나 이메일로 초대하세요. 이름과 캐릭터를 고르고 무료 계정을 만들면 바로 층에 들어와요."
+        "body": "오피스 링크를 공유하세요. 무료 계정을 만들고 이름과 캐릭터를 고르면 바로 층에 들어와요."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "팀에 링크를 보내세요.",
-        "body": "팀원을 이메일로 초대하거나 초대 링크를 보내세요."
+        "body": "팀원들에게 오피스 링크를 보내세요."
       },
       "walk": {
         "title": "들어가 보세요.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "요금",
       "title": "요금은 오피스 단위,",
       "muted": "사람 단위가 아닙니다.",
-      "body": "무료로 시작하세요. 모든 요금제에 모든 기능이 있고, 게스트는 인원에 포함되지 않습니다.",
+      "body": "무료로 시작하고, 팀이 커지면 올리세요.",
       "soon": "출시 예정",
       "forever": "평생",
       "month": "/월",
       "people": "최대 {count}명",
       "free": {
-        "name": "Free",
-        "body": "작은 스튜디오나 두 명의 창업자를 위한 전체 기능.",
-        "items": [
-          "전용 층",
-          "통화와 미팅",
-          "채팅, 이미지, 파일",
-          "링크로 게스트 초대"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "10자리 중 몇 자리를 채우든 오피스 전체에 하나의 요금.",
-        "items": [
-          "Free의 모든 것",
-          "10명까지 참여",
-          "연간 결제 시 두 달 무료"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "책상 한 줄로는 부족해진 팀을 위해.",
-        "items": [
-          "Team의 모든 것",
-          "25명까지 참여",
-          "우선 지원",
-          "더 큰 규모? 문의하세요"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "가격은 월 요금이며 세금 별도입니다.",
+      "perPerson": "1인당 {price}",
+      "freeLine": "카드 불필요",
+      "choose": "{plan} 선택",
+      "note": "모든 요금제에 모든 기능이 있어요. 통화는 세지 않고, 그룹 회의는 월 5·30·60시간이에요."
     },
     "faq": {
       "title": "자주 묻는 질문과",
@@ -1485,5 +1495,77 @@
       "muted": "함께 쓰는 층을.",
       "note": "3명까지 무료 · Cloudflare에서 실행"
     }
+  },
+  "billing": {
+    "current": "이 오피스의 요금제",
+    "members": "멤버 {used}/{seats}명",
+    "freeNote": "무료, 모든 기능 포함.",
+    "renews": "{date}에 갱신",
+    "ends": "{date}에 종료되고 이후 무료 요금제",
+    "perMonth": "/월",
+    "pastDue": "지난 결제가 처리되지 않았어요. Paddle이 다시 시도합니다. 요금제를 유지하려면 카드를 업데이트하세요.",
+    "updateCard": "카드 업데이트",
+    "keep": "이 요금제 유지",
+    "settingUp": "결제가 완료됐어요. 요금제를 준비하고 있어요…",
+    "settingUpSlow": "결제가 완료됐어요. 요금제가 표시되기까지 1분쯤 걸릴 수 있어요. 보이지 않으면 새로고침하세요.",
+    "cancel": "요금제 해지",
+    "switch": "변경",
+    "fine": "가격은 월 요금이며 미국 달러 기준, 세금 별도입니다. 결제는 리셀러인 Paddle이 처리해요. 결제 후 14일 이내에 요청하면 전액 환불해 드려요.",
+    "adminsOnly": "오피스 관리자만 요금제를 변경할 수 있어요.",
+    "switchTitle": "{plan}(으)로 변경할까요?",
+    "switchBody": "남은 기간에 대한 차액은 Paddle이 즉시 청구하거나 환불해요. 층에 있는 누구도 알아차리지 못해요.",
+    "cancelTitle": "요금제를 해지할까요?",
+    "cancelBody": "요금제는 {date}까지 유지되고, 그 후 오피스는 무료 요금제(멤버 3명, 회의 시간 월 5시간)로 돌아가요. 아무도 제거되지 않지만 새로운 사람은 참여할 수 없고, 층에는 동시에 3명만 있을 수 있어요.",
+    "cancelBodyNow": "이번 기간이 끝나면 오피스는 무료 요금제(멤버 3명, 회의 시간 월 5시간)로 돌아가요. 아무도 제거되지 않지만 새로운 사람은 참여할 수 없고, 층에는 동시에 3명만 있을 수 있어요.",
+    "moreSeats": "좌석 늘리기",
+    "membersLabel": "멤버",
+    "hoursLabel": "회의 시간",
+    "hours": "{used} / {allowance}시간",
+    "hoursResets": "{date}에 초기화",
+    "hoursUsedUp": "이번 달 회의 시간을 모두 사용했어요. {date}까지 회의는 음성으로만 진행돼요. 더 큰 요금제로 바꾸면 바로 영상이 돌아와요.",
+    "hoursExplained": "회의 시간은 회의에 두 명 이상이 있는 시간을 셉니다. 층에서 두 사람이 하는 통화는 세지 않아요. 다 쓰면 1일까지 회의는 음성으로 이어져요.",
+    "payment": "결제",
+    "cardUnknown": "Paddle에 등록된 카드",
+    "card": "카드",
+    "cardEnding": "{brand} (끝자리 {last4})",
+    "expires": "만료 {date}",
+    "update": "변경",
+    "nextCharge": "다음 결제",
+    "chargeOn": "{date}에 {amount}",
+    "noneAfter": "없음, {date}에 요금제 종료",
+    "history": "결제 내역",
+    "noPayments": "아직 결제 내역이 없어요.",
+    "planPayment": "{plan} 요금제",
+    "invoice": "인보이스 다운로드",
+    "status": {
+      "refunded": "환불됨",
+      "partly_refunded": "부분 환불",
+      "failed": "실패",
+      "due": "결제 예정"
+    },
+    "errors": {
+      "tooManyMembers": "이 오피스의 멤버가 해당 요금제 한도보다 많아요. 먼저 일부를 제거하세요.",
+      "hasSubscription": "이 오피스에는 이미 요금제가 있어요. 대신 변경하세요.",
+      "failed": "잘 되지 않았어요. 다시 시도하세요."
+    },
+    "pillPastDue": "카드 결제 실패",
+    "pillEnding": "종료 예정",
+    "nextChargeLine": "다음 결제 {date} · {amount}",
+    "endingNote": "요금제가 {date}에 끝나요. 유지하면 아무것도 바뀌지 않아요.",
+    "seatsFree": "{count}자리 남음",
+    "seatsFull": "자리가 모두 찼어요",
+    "upgradeFull": "자리가 모두 찼어요",
+    "upgradeHours": "이번 달 회의 시간을 대부분 사용했어요",
+    "upgradeRoom": "성장할 여유",
+    "upgradeFree": "더 큰 팀을 위해",
+    "upgradeTitle": "{plan}로 올리기",
+    "gainPeople": "{count}명",
+    "gainHours": "회의 {count}시간",
+    "gainNow": "현재 {value}",
+    "upgradeButton": "{plan}로 업그레이드 · 월 {price}",
+    "orPlan": "또는 {plan} (최대 {count}명) · 월 {price}",
+    "topPlan": "가장 큰 요금제를 쓰고 있어요. {count}명보다 많이 필요하면 연락 주세요. 준비해 드릴게요.",
+    "moveDown": "{plan}로 변경",
+    "usageOf": "{used} / {total}"
   }
 }

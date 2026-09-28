@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useCall } from "@/lib/useCall";
 import { usePlace } from "@/components/app/place";

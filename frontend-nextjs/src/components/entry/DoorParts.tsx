@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Link2 } from "lucide-react";
+import { Check, Link2 } from "@/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { LitFace } from "@/components/ui/LitFace";
 import { Logo } from "@/components/app/Logo";
@@ -58,6 +58,15 @@ export function CopyLink({ path }: { path: string }) {
       side="bottom"
       onClick={copy}
     />
+  );
+}
+
+/** You, as the mark at the top of a door: your character standing in a lit tile. */
+export function YouMark({ character }: { character: string }) {
+  return (
+    <span className="relative block size-12 overflow-hidden rounded-[30%] bg-foreground/[0.08]" style={{ containerType: "size" }} aria-hidden>
+      <PixelAvatar character={character} width="50cqw" style={{ left: "50%", top: "90%" }} />
+    </span>
   );
 }
 

@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: invitePath(token),
     title: invite ? t("inviteTitle", { office: invite.officeName }) : t("inviteFallbackTitle"),
     description: invite
-      ? t("inviteDescription", { office: invite.officeName, name: invite.invitedBy })
+      ? t("inviteDescription", { office: invite.officeName })
       : t("description"),
     imageAlt: t("ogAlt"),
     noindex: true,

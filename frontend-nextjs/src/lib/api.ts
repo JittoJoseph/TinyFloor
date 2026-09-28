@@ -74,18 +74,9 @@ export interface Member {
   joinedAt: number;
 }
 
-export interface Invite {
-  id: string;
-  email: string | null;
-  role: OfficeRole;
-  createdAt: number;
-  expiresAt: number;
-}
-
 export interface OfficeOverview {
   office: Office;
   members: Member[];
-  invites: Invite[];
   /** How many people are on the floor right now. */
   people: number;
 }
@@ -108,6 +99,14 @@ export interface AdminSummary {
   signups: number[];
   /** Those days, as YYYY-MM-DD. */
   signupDays: string[];
+  plans: {
+    /** Offices paying through Paddle, by plan. */
+    paid: Record<string, number>;
+    /** Offices on a paid plan given by hand, without payment. */
+    given: number;
+  };
+  /** Meeting seconds used this month across every office. */
+  meetingSeconds: number;
 }
 
 export interface AdminPerson {
@@ -129,12 +128,87 @@ export interface AdminOffice {
   plan: string;
   seats: number;
   createdAt: number;
-  ownerId: string | null;
-  ownerName: string | null;
-  ownerEmail: string | null;
-  ownerCountry: string | null;
+  /** How many people are in it. */
+  members: number;
+  /** When anyone in it was last around; null for an office nobody is in. */
+  lastActiveAt: number | null;
+  /** The Paddle subscription's status while it holds the plan (active, trialing, past_due); null when nothing is paid. */
+  billing: string | null;
+  cancelAt: number | null;
+  /** Meeting seconds used this month. */
+  meetingSeconds: number;
   here: number;
-  members: Array<{ id: string; displayName: string; email: string | null; role: OfficeRole; joinedAt: number; lastActiveAt: number; country: string | null }>;
+}
+
+/** Someone in an office, as the admin view shows them when it's opened. */
+export interface AdminMember {
+  id: string;
+  displayName: string;
+  email: string | null;
+  role: OfficeRole;
+  joinedAt: number;
+  lastActiveAt: number;
+  country: string | null;
+  owner: number;
+}
+
+/** A page of a list in the admin view. */
+export interface AdminPage {
+  page: number;
+  pageSize: number;
+  total: number;
+}
+
+export type PlanId = "free" | "plus" | "pro";
+export interface Plan {
+  id: PlanId;
+  seats: number;
+  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  meetingHours: number;
+  /** US cents a month before tax; null for the free plan. */
+  price: number | null;
+}
+
+/** The plans, and — where paid plans are on — what Paddle.js needs to open a checkout. */
+export interface Plans {
+  plans: Plan[];
+  billing: { environment: "sandbox" | "production"; clientToken: string } | null;
+}
+
+/** An office's plan, as its admins see it in settings. */
+export interface OfficeBilling {
+  plan: PlanId;
+  seats: number;
+  members: number;
+  meetingHours: number;
+  /** Meeting seconds used this month (UTC), and when the count starts again. */
+  usage: { seconds: number; resetsAt: number };
+  subscription: {
+    plan: PlanId;
+    /** active, trialing, past_due (a card being retried) or paused. */
+    status: string;
+    renewsAt: number | null;
+    /** Set once it's cancelled: the plan runs until then. */
+    endsAt: number | null;
+  } | null;
+}
+
+export interface Payment {
+  id: string;
+  at: number;
+  plan: PlanId | null;
+  /** In the currency's smallest unit, tax included. */
+  amount: number;
+  currency: string;
+  status: "paid" | "refunded" | "partly_refunded" | "failed" | "due";
+  invoice: boolean;
+}
+
+/** The slower half of the billing page, from Paddle. */
+export interface BillingDetails {
+  nextCharge: { at: number; amount: number; currency: string } | null;
+  card: { brand: string; last4: string; expires: string | null } | null;
+  history: Payment[];
 }
 
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
@@ -176,7 +250,8 @@ export const api = {
     post<{ user: SessionUser }>("/auth/signup", body),
   signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
-  signInWithGoogle: (from: { code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
+  /** Google's popup code (the button), or One Tap's signed ID token. */
+  signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
@@ -192,20 +267,27 @@ export const api = {
   // The admin view
   adminSummary: () =>
     get<AdminSummary>(`/admin/summary?${new URLSearchParams({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })}`),
-  adminPeople: (params: { q?: string; guests?: boolean; before?: number }) =>
-    get<{ users: AdminPerson[]; more: boolean }>(
+  adminPeople: (params: { q?: string; guests?: boolean; page?: number }) =>
+    get<AdminPage & { users: AdminPerson[] }>(
       `/admin/users?${new URLSearchParams({
         ...(params.q ? { q: params.q } : {}),
         ...(params.guests ? { guests: "1" } : {}),
-        ...(params.before ? { before: String(params.before) } : {}),
+        ...(params.page ? { page: String(params.page) } : {}),
       })}`,
     ),
-  adminOffices: (before?: number) =>
-    get<{ offices: AdminOffice[]; more: boolean }>(`/admin/offices${before ? `?before=${before}` : ""}`),
+  adminOffices: (params: { q?: string; page?: number }) =>
+    get<AdminPage & { offices: AdminOffice[] }>(
+      `/admin/offices?${new URLSearchParams({ ...(params.q ? { q: params.q } : {}), ...(params.page ? { page: String(params.page) } : {}) })}`,
+    ),
+  adminOfficeMembers: (officeId: string) => get<{ members: AdminMember[] }>(`/admin/offices/${id(officeId)}/members`),
   adminLobbyChat: (channel: string, before?: number) =>
     get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
   adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),
   adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
+  adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
+  adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
+  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),
@@ -214,21 +296,35 @@ export const api = {
   overview: (officeId: string) => get<OfficeOverview>(`/offices/${id(officeId)}/overview`),
   renameOffice: (officeId: string, name: string) => patch<{ office: Office }>(`/offices/${id(officeId)}`, { name }),
   closeOffice: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}`),
+
+  // Paid plans (worker-api/src/billing.ts)
+  plans: () => get<Plans>("/plans"),
+  billing: (officeId: string) => get<OfficeBilling>(`/offices/${id(officeId)}/billing`),
+  /** A checkout made by the API for this office, to open in Paddle.js. */
+  billingDetails: (officeId: string) => get<BillingDetails>(`/offices/${id(officeId)}/billing/details`),
+  /** A payment's invoice PDF: the link lasts an hour. */
+  invoice: (officeId: string, paymentId: string) => get<{ url: string }>(`/offices/${id(officeId)}/billing/invoices/${id(paymentId)}`),
+  /** A checkout for a new card on this office's plan only. */
+  paymentMethod: (officeId: string) => post<{ transactionId: string }>(`/offices/${id(officeId)}/billing/payment-method`),
+  checkout: (officeId: string, plan: PlanId) =>
+    post<{ transactionId: string; email: string | null }>(`/offices/${id(officeId)}/billing/checkout`, { plan }),
+  /** After paying: the plan from Paddle's record of that checkout, without waiting for the webhook. */
+  syncCheckout: (officeId: string, transactionId: string) =>
+    post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { transactionId }),
+  changePlan: (officeId: string, plan: PlanId) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan }),
+  cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
+  resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>
     patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),
   removeMember: (officeId: string, userId: string) =>
     del<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`),
   handOver: (officeId: string, userId: string) => post<{ ok: true }>(`/offices/${id(officeId)}/transfer`, { userId }),
 
-  // Invitations
-  createInvite: (officeId: string, body: { role: OfficeRole; email?: string }) =>
-    post<{ invite: Invite & { token: string } }>(`/offices/${id(officeId)}/invites`, body),
-  revokeInvite: (officeId: string, inviteId: string) =>
-    del<{ ok: true }>(`/offices/${id(officeId)}/invites/${id(inviteId)}`),
+  // The office's one invite link (lib/inviteLink.ts)
+  inviteLink: (officeId: string) => get<{ code: string }>(`/offices/${id(officeId)}/invite`),
+  resetInviteLink: (officeId: string) => post<{ code: string }>(`/offices/${id(officeId)}/invite/reset`),
   invitePreview: (token: string) =>
-    get<{ invite: { officeId: string; officeName: string; members: number; invitedBy: string; role: OfficeRole; expiresAt: number; full: boolean } }>(
-      `/invites/${id(token)}`,
-    ),
+    get<{ invite: { officeId: string; officeName: string; members: number; role: OfficeRole; full: boolean } }>(`/invites/${id(token)}`),
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
 
   // Walking in, chatting, calling

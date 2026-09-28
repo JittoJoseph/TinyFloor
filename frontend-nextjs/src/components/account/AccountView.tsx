@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Eye, EyeOff, KeyRound, Palette, UserRound } from "lucide-react";
+import { Check, Eye, EyeOff, KeyRound, Palette, UserRound } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";

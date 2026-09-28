@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "@/components/ui/icons";
 import type { Locale } from "@/lib/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { ORG_ID, pageGraph } from "@/lib/structured-data";

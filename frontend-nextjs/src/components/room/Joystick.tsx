@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { setJoystick } from "@/lib/joystick";
-import { INPUT_MODE_EVENT, isTouchInput } from "@/lib/tutorial";
+import { INPUT_MODE_EVENT, isTouchInput } from "@/lib/input";
 import { capturePointer, releasePointer, TOUCH_GESTURE_CLASS } from "@/lib/touch";
 import { cn } from "@/lib/utils";
 

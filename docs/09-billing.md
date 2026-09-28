@@ -94,10 +94,13 @@ D1 since `0001`.
 
 | Route | Who | Does |
 |---|---|---|
-| `GET /v1/plans` | anyone | tiers, member limits, prices, table-video allowance. The one source |
-| `POST /v1/offices/:id/billing/checkout` `{tier, interval}` | admin | creates a Paddle transaction with `custom_data.office_id`, returns its id for Paddle.js |
-| `POST /v1/offices/:id/billing/change` `{tier, interval}` | admin | upgrade or downgrade an existing subscription. **Refuses a downgrade below the current member count** |
-| `POST /v1/offices/:id/billing/portal` | admin | Paddle customer-portal session URL (card, invoices, cancel) |
+| `GET /v1/plans` | anyone | plans, member limits, meeting hours, monthly prices. The one source |
+| `GET /v1/offices/:id/billing` | admin | plan, members, meeting hours used this month, subscription status |
+| `GET /v1/offices/:id/billing/details` | admin | next charge, card, this office's payments (from Paddle) |
+| `GET /v1/offices/:id/billing/invoices/:txn` | admin | an invoice PDF link for one of this office's payments |
+| `POST /v1/offices/:id/billing/checkout` `{plan}` | admin | creates a Paddle transaction with `custom_data.office_id`, returns its id for Paddle.js |
+| `POST /v1/offices/:id/billing/change` `{plan}` | admin | upgrade or downgrade an existing subscription. **Refuses a downgrade below the current member count** |
+| `POST /v1/offices/:id/billing/payment-method` | admin | the subscription's update-payment-method transaction, opened in Paddle.js |
 | `POST /v1/billing/webhook` | Paddle | verifies the signature, applies the event |
 
 The webhook is the only writer of `offices.plan`, `offices.seats` and
@@ -113,8 +116,9 @@ The webhook is the only writer of `offices.plan`, `offices.seats` and
 5. `canceled` → at period end, plan back to `free`, seats back to 3. Nobody is
    removed.
 
-Plan changes go through our `change` route, not the portal, so the member-count
-check cannot be skipped. Turn plan switching off in Paddle's portal.
+Plan changes go through our `change` route, so the member-count check cannot be
+skipped. There is no customer portal: it would show the payer's other
+subscriptions to whichever admin opened it (docs/14). Monthly only.
 
 Secrets (`wrangler secret put`): `PADDLE_API_KEY`, `PADDLE_WEBHOOK_SECRET`.
 Preview uses Paddle's sandbox and its own keys, live uses live, the same split
@@ -127,8 +131,8 @@ as TURN.
 - The upgrade moment in `05-pricing.md`: the fourth person's accept fails with
   `office_full`, and the admin's People view opens the upgrade dialog in place.
 - Paddle.js loaded only on the pricing page and the dialog.
-- Billing lives in office settings: current tier, members used, next charge,
-  "Manage billing" → portal.
+- Billing lives in office settings: plan, members and meeting hours, next
+  charge, card, billing history with invoices (docs/14).
 
 ### Order
 

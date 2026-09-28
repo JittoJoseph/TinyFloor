@@ -8,8 +8,8 @@ import {
   Info,
   LoaderCircle,
   X,
-  type LucideIcon,
-} from "lucide-react";
+  type AppIcon,
+} from "@/components/ui/icons";
 import {
   AnimatePresence,
   motion,
@@ -105,7 +105,7 @@ const CONTENT_TRANSITION = {
   ease: EASE_OUT,
 } as const;
 
-const STATUS_ICON: Record<ToastStatus, LucideIcon> = {
+const STATUS_ICON: Record<ToastStatus, AppIcon> = {
   neutral: Bell,
   info: Info,
   loading: LoaderCircle,

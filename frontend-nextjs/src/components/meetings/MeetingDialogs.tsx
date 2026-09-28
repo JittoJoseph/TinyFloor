@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/icons";
 import { MEETING_NAME_MAX } from "@shared/messages";
 import { Dialog } from "@/components/ui/Dialog";
 import { Button } from "@/components/motion/button/base";

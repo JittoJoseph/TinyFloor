@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useFormatter, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, Pencil, SmilePlus, Trash2 } from "lucide-react";
+import { ArrowDown, Check, Copy, Pencil, SmilePlus, Trash2 } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { ChatImage } from "@shared/chat";
 import { Face } from "@/components/ui/Face";

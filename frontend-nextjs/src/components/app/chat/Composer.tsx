@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUp, ImagePlus, Smile } from "lucide-react";
+import { ArrowUp, ImagePlus, Smile } from "@/components/ui/icons";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
 import { cn } from "@/lib/utils";

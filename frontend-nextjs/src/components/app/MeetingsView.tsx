@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, Video } from "lucide-react";
+import { Plus, Video } from "@/components/ui/icons";
 import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
+import { MeetingHoursLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
 import { usePlace } from "./place";
 
 /** Faces the main meeting shows before the rest become "+n". */
@@ -61,6 +62,7 @@ function MeetingsLobby({ office }: { office: string }) {
           </Button>
         </header>
 
+        <VideoPausedNote className="mt-6 w-fit max-w-full" />
         <MainMeeting meeting={main} office={office} known={known} />
 
         {others.length > 0 && (
@@ -72,6 +74,8 @@ function MeetingsLobby({ office }: { office: string }) {
             ))}
           </ul>
         )}
+
+        <MeetingHoursLine className="mt-8" />
       </div>
 
       <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />

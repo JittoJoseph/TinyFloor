@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings2, Video, Volume2, VolumeX } from "lucide-react";
+import { Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings2, Video, Volume2, VolumeX } from "@/components/ui/icons";
 import { Dock, DockSeparator } from "@/components/motion/dock";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";

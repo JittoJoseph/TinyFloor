@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/icons";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
 

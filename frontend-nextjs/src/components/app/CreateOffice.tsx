@@ -1,32 +1,77 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import { ArrowRight, Link2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
+import { Check, Info, Link2 } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
-import { api } from "@/lib/api";
+import { useAuth } from "@/contexts/AuthContext";
+import { api, type Office, type Plan, type PlanId } from "@/lib/api";
+import { dollars, openCheckout, usePlans, waitForPlan } from "@/lib/billing";
 import { officePath } from "@/lib/links";
 import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
+import { Dialog } from "@/components/ui/Dialog";
+import { FloorScene } from "@/components/floor/FloorScene";
+import { ActionButton } from "@/components/ui/Action";
+import { EntryHeader, EntryShell, pillInputClass } from "@/components/entry/EntryShell";
+import { DoorSteps, QuietChoice, StepDots, StepError, StepTitle } from "@/components/entry/DoorSteps";
 import { cn } from "@/lib/utils";
 import { posthogLog } from "@/lib/posthog-log";
 import { withPostHog } from "@/lib/analytics";
 
+/** How many people will work there, in the words of the question. */
+type TeamSize = "few" | "small" | "medium" | "large";
+const SIZES: Array<{ id: TeamSize; label: string; plan: Exclude<PlanId, "free"> }> = [
+  { id: "few", label: "2–3", plan: "plus" },
+  { id: "small", label: "4–10", plan: "plus" },
+  { id: "medium", label: "11–25", plan: "pro" },
+  { id: "large", label: "26+", plan: "pro" },
+];
+
+/** Plan names stay in English everywhere, like on the pricing page. */
+const NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+
+type Step = "name" | "size" | "plan";
+
 /**
- * Making an office, wherever it starts: a name, then straight onto its floor.
- * A name typed in the lobby before signing up is waiting here, filled in, for
- * them to confirm; it is never made on its own.
+ * Making an office (docs/15): its name, how many people it is for, and the
+ * plan that fits them, paid for right here or left for later on the free
+ * plan. The office is made as soon as it has a name, so the rest is only a
+ * question of its plan, and leaving at any point still leaves an office.
+ * Where paid plans aren't on yet, naming it is all there is.
  */
-export function useCreateOffice() {
+export function CreateOfficeFlow() {
+  const t = useTranslations("create");
+  const tEntry = useTranslations("entry");
+  const tc = useTranslations("common");
+  const locale = useLocale();
+  const format = useFormatter();
   const router = useRouter();
   const explain = useErrorMessage();
+  const reduce = useReducedMotion();
+  const { user } = useAuth();
+  const catalog = usePlans();
+  const selling = !!catalog?.billing;
+
+  const [step, setStep] = useState<Step>("name");
+  const [wentBack, setWentBack] = useState(false);
   const [name, setName] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [office, setOffice] = useState<Office | null>(null);
+  const [size, setSize] = useState<TeamSize | null>(null);
+  const [chosen, setChosen] = useState<Exclude<PlanId, "free"> | null>(null);
+  // Chosen on the pricing page (/create?plan=pro): picked here too, whatever size they say.
+  const [asked] = useState<Exclude<PlanId, "free"> | null>(() => {
+    if (typeof window === "undefined") return null;
+    const asked = new URLSearchParams(window.location.search).get("plan");
+    return asked === "plus" || asked === "pro" ? asked : null;
+  });
+  const [showIncluded, setShowIncluded] = useState(false);
+  const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
   const [error, setError] = useState("");
 
-  // Read once the page is in the browser, so the first render matches the server's.
+  // A name typed in the lobby before signing up waits here, read once the page is in the browser.
   useEffect(() => {
     const waiting = pendingOffice();
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -34,85 +79,299 @@ export function useCreateOffice() {
   }, []);
 
   const typed = name.trim();
-  const create = async (event?: React.FormEvent) => {
-    event?.preventDefault();
+  const steps: Step[] = selling ? ["name", "size", "plan"] : ["name"];
+  const recommended = SIZES.find((one) => one.id === size)?.plan ?? "plus";
+  const plan = chosen ?? asked ?? recommended;
+  const paid = catalog?.plans.filter((one): one is Plan & { id: "plus" | "pro" } => one.id !== "free") ?? [];
+  const picked = paid.find((one) => one.id === plan);
+  const free = catalog?.plans.find((one) => one.id === "free");
+
+  const go = (next: Step, backwards = false) => {
+    setWentBack(backwards);
+    setError("");
+    setStep(next);
+  };
+
+  const walkIn = (id: string) => {
+    forgetOffice();
+    router.replace(officePath(id));
+  };
+
+  /** The name: the office is made now, or renamed if they came back to change it. */
+  const saveName = async () => {
     if (!typed || busy) return;
-    setBusy(true);
+    setBusy("name");
     setError("");
     try {
-      const { office } = await api.createOffice(typed);
-      withPostHog((posthog) => posthog.capture("office_created"));
-      posthogLog.info("Office creation completed");
-      forgetOffice();
-      // The office is its floor, so there is nothing else to set up.
-      router.replace(officePath(office.id));
+      let made = office;
+      if (!made) {
+        made = (await api.createOffice(typed)).office;
+        withPostHog((posthog) => posthog.capture("office_created"));
+        posthogLog.info("Office creation completed");
+        setOffice(made);
+      } else if (made.name !== typed) {
+        made = (await api.renameOffice(made.id, typed)).office;
+        setOffice(made);
+      }
+      if (!selling) return walkIn(made.id);
+      setBusy(null);
+      go("size");
     } catch (err) {
       setError(explain(err));
-      setBusy(false);
+      setBusy(null);
     }
   };
 
-  return { name, setName: (value: string) => setName(value), typed, busy, error, create };
-}
+  /** Paddle's checkout over the door; paid, the plan lands and they walk in. */
+  const pay = async () => {
+    if (!office || busy) return;
+    setBusy("pay");
+    setError("");
+    try {
+      const { transactionId, email } = await api.checkout(office.id, plan);
+      withPostHog((posthog) => posthog.capture("onboarding_checkout_opened", { plan }));
+      const done = await openCheckout({ transactionId, email, locale, dark: document.documentElement.classList.contains("dark") });
+      if (!done) return setBusy(null);
+      withPostHog((posthog) => posthog.capture("onboarding_plan_bought", { plan, size }));
+      await waitForPlan(office.id, transactionId, (now) => now === plan);
+      walkIn(office.id);
+    } catch (err) {
+      setError(explain(err));
+      setBusy(null);
+    }
+  };
 
-/**
- * Making an office: its mark, lit softly in its own colour, and the name
- * written out large as they type, the way it will read at the top of the
- * rail. Centered where there is room; on a phone it reads down one edge.
- */
-export function MakeOffice({ greeting, children }: { greeting: string; children?: ReactNode }) {
-  const t = useTranslations("dashboard");
-  const tc = useTranslations("create");
-  const reduce = useReducedMotion();
-  const { name, setName, typed, busy, error, create } = useCreateOffice();
+  const stayFree = () => {
+    if (!office) return;
+    withPostHog((posthog) => posthog.capture("onboarding_stayed_free", { size }));
+    setBusy("free");
+    walkIn(office.id);
+  };
+
+  const submit = () => {
+    if (step === "name") void saveName();
+    else if (step === "size" && size) go("plan");
+    else if (step === "plan") void pay();
+  };
+
+  const perPerson = (one: Plan) => format.number((one.price ?? 0) / 100 / one.seats, { style: "currency", currency: "USD" });
 
   return (
-    <div className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6 sm:text-center">
-      <LitFace seed={typed.toLowerCase() || "your-office"} size={80} phone={60} square />
-      <motion.p
-        key={typed ? "named" : "greeting"}
-        initial={reduce ? false : { opacity: 0, y: 3 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mt-7 text-[13px] font-medium text-muted-foreground sm:mt-9"
+    <EntryShell
+      backHref="/dashboard"
+      header={
+        <EntryHeader
+          mark={<LitFace seed={typed.toLowerCase() || user?.id || "your-office"} size={48} phone={44} square />}
+          eyebrow={t("eyebrow")}
+          title={
+            <motion.span key={typed ? "named" : "unnamed"} initial={reduce ? false : { opacity: 0.4 }} animate={{ opacity: 1 }} className="block truncate">
+              {typed || t("untitled")}
+            </motion.span>
+          }
+          action={steps.length > 1 ? <StepDots at={steps.indexOf(step)} of={steps.length} /> : undefined}
+        />
+      }
+    >
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          submit();
+        }}
       >
-        {typed ? t("yourNewOffice") : greeting}
-      </motion.p>
-      <h1 className="mt-1 line-clamp-2 w-full break-words text-[30px] font-semibold leading-[1.12] tracking-[-0.03em] text-foreground sm:mt-1.5 sm:line-clamp-1 sm:text-[34px] sm:leading-tight sm:tracking-[-0.025em]">
-        {typed || t("makeTitle")}
-      </h1>
-      <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground sm:text-balance sm:text-[14.5px]">{t("welcomeBody")}</p>
+        <DoorSteps
+          step={step}
+          back={wentBack}
+          onBack={step === "size" ? () => go("name", true) : step === "plan" ? () => go("size", true) : undefined}
+          action={
+            <ActionButton
+              type="submit"
+              disabled={(step === "name" && !typed) || (step === "size" && !size) || (step === "plan" && !picked) || busy === "free"}
+              busy={busy === "name" || busy === "pay"}
+              busyLabel={step === "plan" ? t("openingCheckout") : t("creating")}
+            >
+              {step === "plan" && picked
+                ? t("getPlan", { plan: NAMES[picked.id], price: dollars(picked.price ?? 0) })
+                : !selling
+                  ? t("createIt")
+                  : tEntry("continue")}
+            </ActionButton>
+          }
+          secondary={
+            step === "plan" && free ? (
+              <QuietChoice onClick={stayFree}>
+                {size === "few" || !size ? t("freeInstead", { count: free.seats }) : t("freeTooSmall", { count: free.seats })}
+              </QuietChoice>
+            ) : step === "name" ? (
+              <span className="text-[12.5px] text-faint">{t("renameLater")}</span>
+            ) : null
+          }
+        >
+          {step === "name" && (
+            <>
+              <StepTitle title={t("nameTitle")} body={t("nameBody")} />
+              <label htmlFor="office-name" className="sr-only">
+                {t("nameLabel")}
+              </label>
+              <input
+                id="office-name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder={t("namePlaceholder")}
+                maxLength={48}
+                autoFocus
+                autoComplete="organization"
+                className={pillInputClass}
+              />
+              {/* Their floor, with them already at a desk: what the name is for. */}
+              <div className="relative mt-4 h-[6.5rem] overflow-hidden rounded-2xl sm:mt-5 sm:h-[8.5rem] border border-border" aria-hidden>
+                <FloorScene
+                  view={[18, 4.2, 16, 8]}
+                  sitting={user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []}
+                  priority
+                  className="absolute inset-0"
+                />
+              </div>
+            </>
+          )}
 
-      <form onSubmit={create} className="mt-7 w-full sm:mt-8">
-        <div className="flex h-14 items-center gap-1 rounded-full border border-border bg-card p-1.5 ps-5 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-24px_rgb(0_0_0/0.5)] transition-[border-color] focus-within:border-foreground/25 sm:h-[52px]">
-          <label htmlFor="office-name" className="sr-only">
-            {tc("nameLabel")}
-          </label>
-          <input
-            id="office-name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            placeholder={t("stepName")}
-            maxLength={48}
-            autoComplete="organization"
-            className="h-full min-w-0 flex-1 bg-transparent text-[16px] text-foreground outline-none placeholder:text-faint sm:text-[15px]"
-          />
-          <button
-            type="submit"
-            disabled={!typed || busy}
-            className="flex h-11 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[14px] font-medium text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-30 sm:h-10 sm:text-[13.5px]"
-          >
-            {busy ? tc("creating") : t("makeIt")}
-            {!busy && <ArrowRight className="size-4 rtl:rotate-180" />}
-          </button>
-        </div>
-        <p className={cn("mt-3 ps-5 text-[12.5px] sm:ps-0", error ? "text-destructive" : "text-faint")}>{error || t("freeRename")}</p>
+          {step === "size" && (
+            <>
+              <StepTitle title={t("sizeTitle")} body={t("sizeBody")} />
+              <div role="radiogroup" aria-label={t("sizeTitle")} className="grid grid-cols-2 gap-2">
+                {SIZES.map((one) => {
+                  const on = size === one.id;
+                  return (
+                    <button
+                      key={one.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      onClick={() => {
+                        setSize(one.id);
+                        setChosen(null);
+                      }}
+                      className={cn(
+                        "relative flex h-[76px] cursor-pointer flex-col items-start justify-center rounded-2xl border px-4 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring",
+                        on ? "border-foreground bg-foreground/[0.04]" : "border-border hover:border-foreground/30",
+                      )}
+                    >
+                      <span className="text-[20px] font-semibold tabular-nums tracking-tight text-foreground">{one.label}</span>
+                      <span className="text-[12.5px] text-muted-foreground">{t("people")}</span>
+                      {on && <Tick />}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {step === "plan" && (
+            <>
+              <StepTitle title={t("planTitle", { office: typed })} body={t("planBody")} />
+              {/*
+                The plans as two rows, one choice each: the name, how many
+                people, the price and what that is a person. Nothing here grows
+                or opens, so the step never scrolls; what every plan includes
+                opens over the door instead.
+              */}
+              <div role="radiogroup" aria-label={t("planTitle", { office: typed })} className="grid grid-cols-[minmax(0,1fr)] gap-2">
+                {paid.map((one) => {
+                  const on = plan === one.id;
+                  const fits = SIZES.find((option) => option.id === size)?.plan !== "pro" || one.id === "pro";
+                  return (
+                    <button
+                      key={one.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      onClick={() => setChosen(one.id)}
+                      className={cn(
+                        "flex w-full min-w-0 cursor-pointer items-center gap-3 rounded-2xl border px-3.5 py-3 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-ring sm:px-4",
+                        on ? "border-foreground bg-foreground/[0.04]" : "border-border hover:border-foreground/30",
+                      )}
+                    >
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "flex size-5 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors",
+                          on ? "border-foreground bg-foreground" : "border-border-strong",
+                        )}
+                      >
+                        {on && <span className="size-2 rounded-full bg-background" />}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center gap-2">
+                          <span className="text-[15px] font-semibold text-foreground">{NAMES[one.id]}</span>
+                          {one.id === recommended && (
+                            <span className="truncate rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">{t("recommended")}</span>
+                          )}
+                        </span>
+                        <span className={cn("mt-0.5 block truncate text-[12.5px]", fits ? "text-muted-foreground" : "text-warn")}>
+                          {t("upTo", { count: one.seats })}
+                        </span>
+                      </span>
+                      <span className="shrink-0 text-end">
+                        <span className="flex items-baseline justify-end gap-0.5">
+                          <span className="text-[19px] font-semibold tracking-tight text-foreground">{dollars(one.price ?? 0)}</span>
+                          <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
+                        </span>
+                        <span className="block text-[11.5px] text-muted-foreground">{t("perPerson", { price: perPerson(one) })}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowIncluded(true)}
+                className="mt-3 inline-flex cursor-pointer items-center gap-1.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Info className="size-3.5" />
+                {t("included")}
+              </button>
+              <Dialog
+                open={showIncluded}
+                onClose={() => setShowIncluded(false)}
+                title={t("included")}
+                closeLabel={tc("close")}
+              >
+                <ul className="space-y-2.5 text-[13.5px] text-foreground">
+                  {[
+                    t("includedCalls"),
+                    t("includedChat"),
+                    t("includedMeetingsBoth", {
+                      plus: paid.find((one) => one.id === "plus")?.meetingHours ?? 30,
+                      pro: paid.find((one) => one.id === "pro")?.meetingHours ?? 60,
+                    }),
+                    t("includedCancel"),
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2.5">
+                      <Check className="mt-0.5 size-4 shrink-0 text-ok" />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+                {size === "large" && <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">{t("bigger")}</p>}
+              </Dialog>
+            </>
+          )}
+
+          {error && <StepError>{error}</StepError>}
+        </DoorSteps>
       </form>
-      {children}
-    </div>
+    </EntryShell>
   );
 }
 
-/** Pasting the link a team sent: it opens that invitation (or guest link) as if it had been clicked. */
+function Tick() {
+  return (
+    <span className="absolute end-2.5 top-2.5 flex size-[18px] items-center justify-center rounded-full bg-foreground text-background">
+      <Check className="size-3" strokeWidth={3} />
+    </span>
+  );
+}
+
+/** Pasting the link a team sent: it opens that office's invite as if it had been clicked. */
 export function JoinByLink() {
   const t = useTranslations("dashboard");
   const router = useRouter();
@@ -121,12 +380,12 @@ export function JoinByLink() {
 
   const join = (event: React.FormEvent) => {
     event.preventDefault();
-    const found = link.trim().match(/\/(invite|join)\/([^/?#\s]+)/);
+    const found = link.trim().match(/\/invite\/([^/?#\s]+)/);
     if (!found) {
       setError(t("badLink"));
       return;
     }
-    router.push(`/${found[1]}/${found[2]}`);
+    router.push(`/invite/${found[1]}`);
   };
 
   return (

@@ -1,5 +1,4 @@
 import { onPrefsChange, prefs } from "./prefs";
-import type { FilteredMic } from "./noiseFilter";
 import type {
   CallKind,
   MediaFlags,
@@ -24,8 +23,6 @@ import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingS
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
-import { GUIDE_ID } from "./tutorial";
-import { sceneText } from "./sceneText";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 
 // Error codes, not copy: the call overlay turns them into translated text.
@@ -152,16 +149,10 @@ const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
 /** How long a meeting invitation waits for an answer. */
 const INVITE_TIMEOUT = 30000;
-const GUIDE_ANSWER_DELAY = 1600;
 /** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
 function audioConstraints() {
-  const { echoCancellation, noiseSuppression, enhancedNoise } = prefs();
-  // With RNNoise on, the browser's own suppression would only fight it.
-  return {
-    echoCancellation,
-    noiseSuppression: noiseSuppression && !enhancedNoise,
-    autoGainControl: true,
-  };
+  const { echoCancellation, noiseSuppression } = prefs();
+  return { echoCancellation, noiseSuppression, autoGainControl: true };
 }
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
@@ -224,10 +215,9 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
+  /** The place is past its meeting hours: meetings are voice only (docs/14). */
+  private videoPaused = false;
   private local: MediaStream | null = null;
-  /** With stronger noise removal on: the microphone itself, and the filter the call hears instead. */
-  private rawMic: MediaStreamTrack | null = null;
-  private filter: FilteredMic | null = null;
   /** Voice settings being applied to an open call, one change after another. */
   private voiceChange: Promise<void> = Promise.resolve();
   private voiceApplied = "";
@@ -311,46 +301,18 @@ class CallManager {
 
   /** Calls someone, with voice. A call is two people: a third makes it a meeting (startMeeting). */
   invite(id: string, name: string) {
-    if (this.busy() || this.peers.size) return;
-    if (id === GUIDE_ID ? this.peers.size : !this.ws) return;
+    if (this.busy() || this.peers.size || !this.ws) return;
 
     this.error = null;
     this.outcome = null;
     this.outgoing = { id, name };
     loopSound("ring");
 
-    if (id === GUIDE_ID) {
-      this.ring(() => this.answerAsGuide(), GUIDE_ANSWER_DELAY);
-    } else {
-      this.send("invite", id);
-      this.ring(() => {
-        this.tell({ id, name, kind: "unanswered" });
-        this.cancel();
-      });
-    }
-    this.emit();
-  }
-
-  private async answerAsGuide() {
-    if (this.outgoing?.id !== GUIDE_ID) return;
-
-    stopSound("ring");
-    this.outgoing = null;
-    this.peers.set(GUIDE_ID, {
-      id: GUIDE_ID,
-      name: sceneText().guide,
-      stream: new MediaStream(),
-      connected: true,
-      mic: true,
-      camera: false,
-      screen: false,
-      screenStream: null,
-      wants: { ...LOW },
+    this.send("invite", id);
+    this.ring(() => {
+      this.tell({ id, name, kind: "unanswered" });
+      this.cancel();
     });
-    playSound("connect");
-    this.emit();
-
-    await this.openMedia();
     this.emit();
   }
 
@@ -397,9 +359,7 @@ class CallManager {
     if (!this.outgoing) return;
     this.clearRing();
     stopSound("ring");
-    if (this.outgoing.id !== GUIDE_ID) {
-      this.send("end", this.outgoing.id);
-    }
+    this.send("end", this.outgoing.id);
     this.outgoing = null;
     this.emit();
   }
@@ -407,7 +367,7 @@ class CallManager {
   hangUp(id?: string) {
     const targets = id ? [id] : [...this.peers.keys()];
     targets.forEach((peerId) => {
-      if (peerId !== GUIDE_ID) this.send("end", peerId);
+      this.send("end", peerId);
       this.closePeer(peerId);
     });
     if (!id) {
@@ -512,7 +472,7 @@ class CallManager {
   /** Starts a meeting of your own, asking these people in: a call becoming a meeting asks its other half. */
   startMeeting(name: string, invite: string[] = []) {
     if (!this.ws) return;
-    const everyone = new Set([...invite, ...[...this.peers.keys()].filter((id) => id !== GUIDE_ID)]);
+    const everyone = new Set([...invite, ...this.peers.keys()]);
     if (this.peers.size) this.hangUp();
     this.ws.send({ t: "meeting_start", name, invite: [...everyone] });
   }
@@ -580,6 +540,14 @@ class CallManager {
     if (mode === this.stageMode) return;
     this.stageMode = mode;
     this.refreshStage();
+  }
+
+  /** From the room: past the meeting hours, or back within them. */
+  setVideoPaused(paused: boolean) {
+    if (this.videoPaused === paused) return;
+    this.videoPaused = paused;
+    this.sfu?.pauseVideo(paused);
+    this.emit();
   }
 
   /** Whose video to receive now, and how sharp; the SFU is asked for exactly that. */
@@ -752,6 +720,7 @@ class CallManager {
       this.iceServers,
     );
     this.sfu = sfu;
+    sfu.pauseVideo(this.videoPaused);
     members.forEach((member) => sfu.addMember(member.id, member.name));
     if (!moving) playSound("connect");
     window.dispatchEvent(new Event(WALK_TO_MEETING_EVENT));
@@ -813,14 +782,9 @@ class CallManager {
     if (!to) this.sfu?.updateLocal(this.local, media);
   }
 
-  /** Mid meeting, mid ring or on the tutorial call, nobody else gets through. */
+  /** Mid meeting or mid ring, nobody else gets through. */
   private busy() {
-    return !!(
-      this.meeting ||
-      this.incoming ||
-      this.outgoing ||
-      this.peers.has(GUIDE_ID)
-    );
+    return !!(this.meeting || this.incoming || this.outgoing);
   }
 
   private onInvite(id: string, name: string) {
@@ -1020,8 +984,7 @@ class CallManager {
           deviceId: deviceConstraint(devices.audio),
         },
       });
-      await this.filterVoice();
-      this.voiceApplied = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+      this.voiceApplied = JSON.stringify(audioConstraints());
       this.local
         ?.getAudioTracks()
         .forEach((track) => (track.enabled = this.micEnabled));
@@ -1054,35 +1017,12 @@ class CallManager {
   }
 
   /**
-   * Stronger noise removal, when it is switched on: the call sends RNNoise's
-   * output instead of the microphone. Loaded only here, so nobody who leaves
-   * it off downloads it; if it fails, the plain microphone is used.
-   */
-  private async filterVoice() {
-    const mic = this.local?.getAudioTracks()[0];
-    if (!mic || !prefs().enhancedNoise) return;
-    const { filterMic } = await import("./noiseFilter");
-    const filter = await filterMic(mic);
-    if (!filter || !this.local) {
-      filter?.stop();
-      return;
-    }
-    this.filter = filter;
-    this.rawMic = mic;
-    this.local = new MediaStream([
-      filter.track,
-      ...this.local.getVideoTracks(),
-    ]);
-  }
-
-  /**
    * The voice settings, on a call already open. Chrome won't change its own
    * processing on a microphone that is open, so the microphone opens again
-   * with the new settings (and stronger noise removal, if it is on), the call
-   * swaps to it, and the old one stops. Other settings don't touch the voice.
+   * with the new settings, the call swaps to it, and the old one stops. Other settings don't touch the voice.
    */
   private async applyVoicePrefs() {
-    const key = JSON.stringify({ ...audioConstraints(), enhanced: prefs().enhancedNoise });
+    const key = JSON.stringify(audioConstraints());
     if (key === this.voiceApplied) return;
     this.voiceApplied = key;
     const local = this.local;
@@ -1090,11 +1030,7 @@ class CallManager {
 
     // The old microphone stops first: while it is open, Chrome gives a new
     // one the same processing, whatever it asks for. A moment of silence.
-    this.filter?.stop();
-    this.rawMic?.stop();
     local.getAudioTracks().forEach((track) => track.stop());
-    this.filter = null;
-    this.rawMic = null;
     let fresh: MediaStream;
     try {
       fresh = await navigator.mediaDevices.getUserMedia({
@@ -1110,8 +1046,6 @@ class CallManager {
     }
     this.local = new MediaStream([...fresh.getAudioTracks(), ...local.getVideoTracks()]);
     if (!fresh.getAudioTracks().length) this.error = "media";
-    await this.filterVoice();
-    if (!this.local) return;
     this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
     this.listenForVoice();
     this.shareTracks();
@@ -1120,10 +1054,6 @@ class CallManager {
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
-    this.filter?.stop();
-    this.rawMic?.stop();
-    this.filter = null;
-    this.rawMic = null;
     this.local?.getTracks().forEach((track) => track.stop());
     this.screen?.getTracks().forEach((track) => track.stop());
     this.local = null;

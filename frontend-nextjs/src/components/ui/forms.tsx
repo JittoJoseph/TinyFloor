@@ -2,7 +2,7 @@
 
 import React, { useEffect, useId, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Loader2, X } from "lucide-react";
+import { Loader2, X } from "@/components/ui/icons";
 
 const textClass = " text-foreground";
 

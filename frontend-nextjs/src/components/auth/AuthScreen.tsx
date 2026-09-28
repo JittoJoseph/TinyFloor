@@ -2,7 +2,7 @@
 
 import React, { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Eye, EyeOff } from "lucide-react";
+import { Check, Eye, EyeOff } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
@@ -47,6 +47,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [formError, setFormError] = useState<React.ReactNode>(null);
   const [submitting, setSubmitting] = useState(false);
   const [googling, setGoogling] = useState(false);
+  // Google is the way in we'd like most people to take (docs/15): the email form waits behind a button.
+  const [withEmail, setWithEmail] = useState(!googleAvailable);
   const turnstile = useTurnstileToken();
 
   const signingUp = mode === "signup";
@@ -222,87 +224,94 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
             <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
               {t("or")}
             </p>
+            {!withEmail && (
+              <ActionButton tone="secondary" icon={null} onClick={() => setWithEmail(true)}>
+                {t("continueWithEmail")}
+              </ActionButton>
+            )}
           </>
         )}
 
-        <form onSubmit={submit} noValidate className="space-y-4">
-          <Field label={t("email")} htmlFor={`${ids}-email`}>
-            <input
-              id={`${ids}-email`}
-              type="email"
-              inputMode="email"
-              autoComplete={signingUp ? "email" : "username"}
-              autoCapitalize="none"
-              spellCheck={false}
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-                edited("email");
-              }}
-              placeholder={t("emailPlaceholder")}
-              aria-invalid={"email" in fieldErrors}
-              aria-describedby={describedBy("email")}
-              className={fieldClass("email")}
-            />
-            <FieldError id={`${ids}-email-error`} message={fieldErrors.email} />
-          </Field>
-
-          <Field label={t("password")} htmlFor={`${ids}-password`}>
-            <div className="relative">
+        {withEmail && (
+          <form onSubmit={submit} noValidate className="space-y-4">
+            <Field label={t("email")} htmlFor={`${ids}-email`}>
               <input
-                id={`${ids}-password`}
-                type={showPassword ? "text" : "password"}
-                autoComplete={signingUp ? "new-password" : "current-password"}
-                value={password}
+                id={`${ids}-email`}
+                type="email"
+                inputMode="email"
+                autoComplete={signingUp ? "email" : "username"}
+                autoCapitalize="none"
+                spellCheck={false}
+                value={email}
                 onChange={(event) => {
-                  setPassword(event.target.value);
-                  edited("password");
+                  setEmail(event.target.value);
+                  edited("email");
                 }}
-                onKeyDown={trackCapsLock}
-                onKeyUp={trackCapsLock}
-                onBlur={() => setCapsLock(false)}
-                placeholder={signingUp ? t("newPasswordPlaceholder") : t("passwordPlaceholder")}
-                aria-invalid={"password" in fieldErrors}
-                aria-describedby={describedBy("password", signingUp ? `${ids}-password-rule` : undefined)}
-                className={`${fieldClass("password")} pe-12`}
+                placeholder={t("emailPlaceholder")}
+                aria-invalid={"email" in fieldErrors}
+                aria-describedby={describedBy("email")}
+                className={fieldClass("email")}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword((shown) => !shown)}
-                aria-label={showPassword ? t("hidePassword") : t("showPassword")}
-                aria-pressed={showPassword}
-                className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-              </button>
-            </div>
-            <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
-            {capsLock && (
-              <p className="mt-2 text-[12px] text-warn" role="status">
-                {t("capsLock")}
-              </p>
-            )}
-            {signingUp && !fieldErrors.password && (
-              <p
-                id={`${ids}-password-rule`}
-                className={`mt-2 flex items-center gap-1.5 text-[12px] transition-colors duration-200 ${
-                  passwordLongEnough ? "text-ok" : "text-muted-foreground"
-                }`}
-              >
-                <Check className={`size-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
-                {t("passwordRule")}
-              </p>
-            )}
-          </Field>
+              <FieldError id={`${ids}-email-error`} message={fieldErrors.email} />
+            </Field>
 
-          {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}
+            <Field label={t("password")} htmlFor={`${ids}-password`}>
+              <div className="relative">
+                <input
+                  id={`${ids}-password`}
+                  type={showPassword ? "text" : "password"}
+                  autoComplete={signingUp ? "new-password" : "current-password"}
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                    edited("password");
+                  }}
+                  onKeyDown={trackCapsLock}
+                  onKeyUp={trackCapsLock}
+                  onBlur={() => setCapsLock(false)}
+                  placeholder={signingUp ? t("newPasswordPlaceholder") : t("passwordPlaceholder")}
+                  aria-invalid={"password" in fieldErrors}
+                  aria-describedby={describedBy("password", signingUp ? `${ids}-password-rule` : undefined)}
+                  className={`${fieldClass("password")} pe-12`}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((shown) => !shown)}
+                  aria-label={showPassword ? t("hidePassword") : t("showPassword")}
+                  aria-pressed={showPassword}
+                  className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
+              <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
+              {capsLock && (
+                <p className="mt-2 text-[12px] text-warn" role="status">
+                  {t("capsLock")}
+                </p>
+              )}
+              {signingUp && !fieldErrors.password && (
+                <p
+                  id={`${ids}-password-rule`}
+                  className={`mt-2 flex items-center gap-1.5 text-[12px] transition-colors duration-200 ${
+                    passwordLongEnough ? "text-ok" : "text-muted-foreground"
+                  }`}
+                >
+                  <Check className={`size-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
+                  {t("passwordRule")}
+                </p>
+              )}
+            </Field>
 
-          {formError && <ErrorNote>{formError}</ErrorNote>}
+            {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}
 
-          <ActionButton type="submit" busy={submitting} busyLabel={signingUp ? t("creatingAccount") : t("signingIn")} className="!mt-6">
-            {signingUp ? t("createAccount") : t("signIn")}
-          </ActionButton>
-        </form>
+            {formError && <ErrorNote>{formError}</ErrorNote>}
+
+            <ActionButton type="submit" busy={submitting} busyLabel={signingUp ? t("creatingAccount") : t("signingIn")} className="!mt-6">
+              {signingUp ? t("createAccount") : t("signIn")}
+            </ActionButton>
+          </form>
+        )}
 
         {signingUp && <Agree className="mt-4 text-center" />}
       </div>

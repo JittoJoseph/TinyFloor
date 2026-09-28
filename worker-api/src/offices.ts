@@ -6,12 +6,16 @@ import {
   type Office,
   type OfficeRole,
 } from "./access";
+import { endBillingForClosing } from "./billing";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { requireAccount, requireUser } from "./session";
 
-const INVITE_LIFETIME_MS = 7 * 24 * 60 * 60 * 1000;
+/** An invite code: 16 random bytes, base64url, so the link stays short enough to paste anywhere. */
+function inviteCode(): string {
+  return randomToken().slice(0, 22);
+}
 
 export function officeRoutes(router: Router): void {
   router
@@ -67,9 +71,7 @@ export function officeRoutes(router: Router): void {
       if (office.ownerId !== user.id) {
         throw new HttpError(403, "not_owner", "Only the person who owns this office can close it");
       }
-      // Members and invites go with it (ON DELETE CASCADE), and so do its floor and chat.
-      await env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(params.id).run();
-      await realtime(env).forgetOffice(params.id);
+      await closeOffice(env, params.id);
       return json({ ok: true });
     })
 
@@ -78,12 +80,8 @@ export function officeRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       const admin = office.role === "admin";
-      const [members, invites, people] = await Promise.all([
-        membersOf(env, params.id),
-        admin ? invitesOf(env, params.id) : [],
-        headcount(env, params.id),
-      ]);
-      return json({ office: officeJson(office, members.length), members, invites, people });
+      const [members, people] = await Promise.all([membersOf(env, params.id), headcount(env, params.id)]);
+      return json({ office: officeJson(office, members.length), members, people });
     })
 
     .add("PATCH", "/v1/offices/:id/members/:userId", async ({ request, env, ctx, params }) => {
@@ -137,39 +135,23 @@ export function officeRoutes(router: Router): void {
       return json({ ok: true });
     })
 
-    .add("POST", "/v1/offices/:id/invites", async ({ request, env, ctx, params }) => {
+    // The office's one invite link, for anyone in it to share; made the first time it is asked for.
+    .add("GET", "/v1/offices/:id/invite", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
-      const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const body = await readJson(request);
-      const role = body.role ?? "member";
-      if (role !== "admin" && role !== "member") throw new HttpError(400, "bad_role", "Role is admin or member");
-      const email = typeof body.email === "string" && body.email.trim() ? body.email.trim().toLowerCase() : null;
-      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new HttpError(400, "bad_email", "Check the email");
-
-      // An invitation holds no seat, so it can be sent to a full office; it is
-      // accepting that is refused, and only while the office is still full.
-      const token = randomToken();
-      const id = crypto.randomUUID();
-      const now = Date.now();
-      await env.DB.prepare(
-        `INSERT INTO invites (id, office_id, token_hash, email, role, created_by, created_at, expires_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      )
-        .bind(id, params.id, await hashToken(token), email, role, user.id, now, now + INVITE_LIFETIME_MS)
+      await requireOffice(env, params.id, user.id);
+      await env.DB.prepare("UPDATE offices SET invite_code = ? WHERE id = ? AND invite_code IS NULL")
+        .bind(inviteCode(), params.id)
         .run();
-      return json(
-        { invite: { id, token, role, email, createdAt: now, expiresAt: now + INVITE_LIFETIME_MS }, office: office.id },
-        { status: 201 },
-      );
+      return json({ code: await inviteCodeOf(env, params.id) });
     })
 
-    .add("DELETE", "/v1/offices/:id/invites/:inviteId", async ({ request, env, ctx, params }) => {
+    // A link that went somewhere it shouldn't: the old one stops working, and a new one takes its place.
+    .add("POST", "/v1/offices/:id/invite/reset", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);
-      await env.DB.prepare("UPDATE invites SET revoked_at = ? WHERE id = ? AND office_id = ? AND revoked_at IS NULL")
-        .bind(Date.now(), params.inviteId, params.id)
-        .run();
-      return json({ ok: true });
+      const code = inviteCode();
+      await env.DB.prepare("UPDATE offices SET invite_code = ? WHERE id = ?").bind(code, params.id).run();
+      return json({ code });
     })
 
     .add("GET", "/v1/invites/:token", async ({ env, params }) => {
@@ -181,9 +163,7 @@ export function officeRoutes(router: Router): void {
           officeId: invite.office_id,
           officeName: invite.office_name,
           members: used,
-          invitedBy: invite.inviter_name,
           role: invite.role,
-          expiresAt: invite.expires_at,
           full: used >= invite.seats,
         },
       });
@@ -204,7 +184,14 @@ export function officeRoutes(router: Router): void {
           throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
         }
         const now = Date.now();
-        // The accepted_at check makes the invitation single-use even if two people accept at once.
+        if (!invite.id) {
+          // The office's link: anyone with it can take a free seat, as often as there are seats.
+          await env.DB.prepare("INSERT OR IGNORE INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)")
+            .bind(invite.office_id, user.id, now)
+            .run();
+          return json({ officeId: invite.office_id });
+        }
+        // An older, single-use invitation (made before the link): the accepted_at check keeps it single-use.
         const [claimed] = await env.DB.batch([
           env.DB.prepare("UPDATE invites SET accepted_at = ? WHERE id = ? AND accepted_at IS NULL").bind(now, invite.id),
           env.DB.prepare(
@@ -219,47 +206,54 @@ export function officeRoutes(router: Router): void {
 }
 
 interface InviteRow {
-  id: string;
+  /** Null for the office's own link; an id for an older single-use invitation. */
+  id: string | null;
   office_id: string;
   office_name: string;
   seats: number;
-  inviter_name: string;
   email: string | null;
   role: OfficeRole;
-  expires_at: number;
 }
 
+/**
+ * What a link opens: the office whose invite link it is, or, until they run
+ * out (a week at most), an older single-use invitation made before the link.
+ */
 async function findInvite(env: Env, token: string): Promise<InviteRow> {
+  const office = await env.DB.prepare("SELECT id, name, seats FROM offices WHERE invite_code = ?")
+    .bind(token)
+    .first<{ id: string; name: string; seats: number }>();
+  if (office) return { id: null, office_id: office.id, office_name: office.name, seats: office.seats, email: null, role: "member" };
+
   const invite = await env.DB.prepare(
-    `SELECT i.id, i.office_id, o.name AS office_name, o.seats, u.display_name AS inviter_name,
-            i.email, i.role, i.expires_at
+    `SELECT i.id, i.office_id, o.name AS office_name, o.seats, i.email, i.role
      FROM invites i
      JOIN offices o ON o.id = i.office_id
-     JOIN users u ON u.id = i.created_by
      WHERE i.token_hash = ? AND i.accepted_at IS NULL AND i.revoked_at IS NULL AND i.expires_at > ?`,
   )
     .bind(await hashToken(token), Date.now())
     .first<InviteRow>();
-  if (!invite) throw new HttpError(404, "invite_invalid", "This invitation has expired or been used");
+  if (!invite) throw new HttpError(404, "invite_invalid", "This invite link has been reset or no longer works");
   return invite;
 }
 
-/** Invitations that can still be used. */
-export async function invitesOf(env: Env, officeId: string) {
-  const { results } = await env.DB.prepare(
-    `SELECT id, email, role, created_at, expires_at FROM invites
-     WHERE office_id = ? AND accepted_at IS NULL AND revoked_at IS NULL AND expires_at > ?
-     ORDER BY created_at DESC`,
-  )
-    .bind(officeId, Date.now())
-    .all<{ id: string; email: string | null; role: string; created_at: number; expires_at: number }>();
-  return results.map((row) => ({
-    id: row.id,
-    email: row.email,
-    role: row.role,
-    createdAt: row.created_at,
-    expiresAt: row.expires_at,
-  }));
+async function inviteCodeOf(env: Env, officeId: string): Promise<string> {
+  const row = await env.DB.prepare("SELECT invite_code FROM offices WHERE id = ?").bind(officeId).first<{ invite_code: string }>();
+  return row!.invite_code;
+}
+
+/**
+ * An office goes, with its members, invites, floor and chat. A paid plan is
+ * cancelled first, on purpose (docs/14); closing then stops it for good.
+ */
+export async function closeOffice(env: Env, officeId: string): Promise<void> {
+  await endBillingForClosing(env, officeId);
+  // Members and invites go with it (ON DELETE CASCADE).
+  await env.DB.batch([
+    env.DB.prepare("DELETE FROM usage_monthly WHERE office_id = ?").bind(officeId),
+    env.DB.prepare("DELETE FROM offices WHERE id = ?").bind(officeId),
+  ]);
+  await realtime(env).forgetOffice(officeId);
 }
 
 /** Everyone in an office, oldest member first. */

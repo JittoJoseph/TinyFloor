@@ -7,31 +7,35 @@ import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryHeader, EntryShell } from "./EntryShell";
-import { CharacterStep, NameStep } from "./IdentitySteps";
-import { ErrorNote } from "./ErrorNote";
+import { DoorSteps, StepDots, StepError } from "./DoorSteps";
+import { NameQuestion, CharacterQuestion } from "./IdentitySteps";
+import { YouMark } from "./DoorParts";
 
 /**
- * A new account's first door: the name people will see and who they'll walk
- * in as, asked once, where it matters. Signing up only asked for an email (or
- * Google), so the name starts as the one we guessed and can be changed here.
+ * A new account's first door (docs/15): the name people will see, then who
+ * they'll be on the floor, one at a time. Someone who signed up with Google
+ * finds their Google name filled in and still presses Continue (or changes
+ * it); someone who used an email types it.
  */
 export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
   const t = useTranslations("entry");
-  const tc = useTranslations("common");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
   const [character, setCharacter] = useState<string | null>(null);
-  const [onCharacterStep, setOnCharacterStep] = useState(false);
+  const [step, setStep] = useState<"name" | "character">("name");
   const [wentBack, setWentBack] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   if (!user) return null;
 
-  const typed = (name ?? user.displayName).trim();
+  // Google gave us their name, so it's there to confirm; an email sign-up only
+  // gave an address, so they type it (what we guessed from it isn't a name).
+  const suggested = user.google ? user.displayName : "";
+  const typed = (name ?? suggested).trim();
   const picked = cleanCharacter(character ?? user.character);
 
-  const walkIn = async () => {
+  const finish = async () => {
     if (!typed || busy) return;
     setBusy(true);
     setError("");
@@ -40,7 +44,6 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
       saveIdentity({ name: typed, character: picked });
     } catch (err) {
       setError(explain(err));
-    } finally {
       setBusy(false);
     }
   };
@@ -48,46 +51,49 @@ export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
   return (
     <EntryShell
       backHref={backHref}
-      backLabel={tc("back")}
       header={
-        <EntryHeader title={t("introTitle")} subtitle={t("introSubtitle")} />
+        <EntryHeader
+          mark={<YouMark character={picked} />}
+          eyebrow={t("introEyebrow")}
+          title={typed || t("introTitle")}
+          action={<StepDots at={step === "name" ? 0 : 1} of={2} />}
+        />
       }
     >
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (onCharacterStep) void walkIn();
+          if (step === "character") void finish();
           else if (typed) {
             setWentBack(false);
-            setOnCharacterStep(true);
+            setStep("character");
           }
         }}
       >
-        <div key={onCharacterStep ? "character" : "name"} className="entry-step" data-back={wentBack}>
-          {onCharacterStep ? (
-            <CharacterStep
-              name={typed}
-              character={picked}
-              onCharacter={setCharacter}
-              onBack={() => {
-                setWentBack(true);
-                setOnCharacterStep(false);
-              }}
-            />
+        <DoorSteps
+          step={step}
+          back={wentBack}
+          onBack={
+            step === "character"
+              ? () => {
+                  setWentBack(true);
+                  setStep("name");
+                }
+              : undefined
+          }
+          action={
+            <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")}>
+              {step === "name" ? t("continue") : t("thatsMe")}
+            </ActionButton>
+          }
+        >
+          {step === "name" ? (
+            <NameQuestion name={name ?? suggested} onName={setName} />
           ) : (
-            <NameStep name={name ?? user.displayName} onName={setName} />
+            <CharacterQuestion character={picked} onCharacter={setCharacter} />
           )}
-        </div>
-
-        {error && (
-          <div className="mt-4">
-            <ErrorNote>{error}</ErrorNote>
-          </div>
-        )}
-
-        <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")} className="mt-5">
-          {onCharacterStep ? t("walkIn") : t("continue")}
-        </ActionButton>
+          {error && <StepError>{error}</StepError>}
+        </DoorSteps>
       </form>
     </EntryShell>
   );

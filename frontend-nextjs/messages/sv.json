@@ -16,7 +16,7 @@
     "lobbyDescription": "Gå in i TinyFloors kostnadsfria, öppna lobby som gäst. Välj en figur, träffa folk och testa videosamtal på nära håll i webbläsaren.",
     "inviteTitle": "Gå med i {office} på TinyFloor",
     "inviteFallbackTitle": "Du är inbjuden till TinyFloor",
-    "inviteDescription": "{name} har bjudit in dig till {office} på TinyFloor, ett virtuellt kontor du kan gå runt i."
+    "inviteDescription": "Gå med i {office} på TinyFloor, ett virtuellt kontor du kan gå runt i."
   },
   "common": {
     "loading": "Laddar...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "Är TinyFloor gratis?",
-        "a": "Ja. Den öppna lobbyn är gratis för alla, och ett kontor för upp till 3 personer också. Större kontor kostar 19 $ i månaden för 10 personer och 49 $ för 25."
+        "a": "Ja. Den offentliga lobbyn är gratis för alla, och det är även ett kontor för upp till 3 personer med 5 mötestimmar i månaden. Större kontor kostar $19 i månaden för 10 personer och 30 mötestimmar, eller $49 för 25 personer och 60 timmar."
       },
       {
         "q": "Behöver jag installera något?",
@@ -92,7 +92,7 @@
     "signInTitle": "Välkommen tillbaka",
     "signInSubtitle": "Logga in för att komma tillbaka till ditt teams kontor.",
     "signUpTitle": "Skapa ditt konto",
-    "signUpSubtitle": "En e-postadress och ett lösenord, mer behövs inte.",
+    "signUpSubtitle": "Google går snabbast, eller använd din e-post.",
     "email": "E-post",
     "emailPlaceholder": "du@foretag.se",
     "password": "Lösenord",
@@ -128,7 +128,8 @@
       "google_failed": "Inloggningen med Google gick inte igenom. Försök igen.",
       "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
       "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
-    }
+    },
+    "continueWithEmail": "Fortsätt med e-post"
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -141,8 +142,13 @@
     "copyInvite": "Kopiera inbjudningslänk",
     "continue": "Vidare",
     "walkingInAs": "Du går in som {name}",
-    "introTitle": "Innan du går in",
-    "introSubtitle": "Vad ska andra kalla dig, och vem är du på våningen?"
+    "introTitle": "Välkommen",
+    "introEyebrow": "Välkommen till TinyFloor",
+    "nameTitle": "Vad ska folk kalla dig?",
+    "nameBody": "Visas på din figur och i chatten.",
+    "characterTitle": "Välj din figur",
+    "characterBody": "Det här är du på våningen.",
+    "thatsMe": "Det är jag"
   },
   "room": {
     "connecting": "Ansluter...",
@@ -180,7 +186,6 @@
     "onCall": "I samtalet",
     "decline": "Avvisa",
     "accept": "Svara",
-    "tutorial": "Introduktionssamtal",
     "calling": "Ringer...",
     "cancel": "Avbryt samtal",
     "micOff": "Mikrofon av",
@@ -332,7 +337,8 @@
       "media": "Ljud och video",
       "notifications": "Aviseringar",
       "accessibility": "Tillgänglighet",
-      "office": "Kontor"
+      "office": "Kontor",
+      "plan": "Plan och betalning"
     },
     "appearance": "Utseende",
     "themeNote": "”System” följer din enhet.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "Färre animationer i hela appen.",
     "performance": "Prestanda",
     "batterySaver": "Batterisparläge",
-    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in.",
-    "enhancedNoise": "Starkare brusreducering",
-    "enhancedNoiseNote": "En liten AI-modell på din enhet tar bort tangentbord, hundar och prat i bakgrunden. Drar lite mer batteri.",
-    "experimental": "Experimentell"
-  },
-  "tutorial": {
-    "walk": "Gå runt med W A S D",
-    "walkTouch": "Dra joysticken för att gå",
-    "click": "Eller klicka var som helst för att gå dit direkt",
-    "clickTouch": "Eller tryck var som helst för att gå dit direkt",
-    "approach": "Gå nära någon för att ringa eller chatta",
-    "invite": "Bjud in någon med den här länken, eller så är du klar",
-    "copy": "Kopiera",
-    "copied": "Kopierat",
-    "linkHint": "Alla med länken hamnar i det här rummet",
-    "done": "Klar",
-    "skip": "Hoppa över",
-    "next": "Nästa"
+    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in."
   },
   "scene": {
-    "guide": "Guide",
     "sit": "Tryck E för att sätta dig",
     "stand": "Tryck E för att resa dig",
     "joinMeeting": "Tryck E för att gå med",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "Inbjudningar ingår i ett kontor",
-        "body": "Bjud in ditt team via e-post eller med en länk, i ett eget kontor."
+        "body": "Bjud in ditt team med en länk, i ett eget kontor."
       },
       "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
       "go": "Skapa mitt kontor",
@@ -912,7 +900,9 @@
       "free": "Gratisplan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Ägare",
@@ -930,7 +920,8 @@
       "leave": "Lämna det här kontoret",
       "wrong": "Det gick inte. Försök igen.",
       "plan": "{plan} · {used} av {seats} platser",
-      "danger": "Lämna eller stänga"
+      "danger": "Lämna eller stänga",
+      "cancelPlanFirst": "Säg först upp kontorets plan under Plan och betalning. Sedan kan det stängas."
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",
-      "invalid": "Den kan ha gått ut, redan använts eller stängts av. Be om en ny.",
+      "invalid": "Den kan ha återställts, eller så har kontoret stängts. Be om en ny länk.",
       "home": "Till startsidan",
-      "eyebrow": "{name} har bjudit in dig",
-      "asAdmin": "Du är inbjuden som admin.",
-      "asMember": "Du är inbjuden till teamet.",
+      "eyebrow": "Du är inbjuden till",
       "join": "Gå med i {office}",
-      "joiningAs": "Du går med som {name} ({email})",
+      "joiningAs": "Du går med som {email}.",
       "createAccount": "Skapa ett konto",
       "signIn": "Jag har ett konto",
-      "readyToJoin": "Det är jag",
-      "accountKeeps": "Ett konto sparar {name} och din karaktär till nästa gång.",
-      "you": "Du",
       "members": "{count, plural, one {# medlem} other {# medlemmar}}",
-      "change": "Ändra"
+      "change": "Inte du?",
+      "accountTitle": "Ta din plats",
+      "accountBody": "Logga in för att gå med. Det tar några sekunder.",
+      "perkFloor": "Gå fram till någon för att prata, som på ett riktigt kontor",
+      "perkTalk": "Röstsamtal startar när ni står bredvid varandra",
+      "perkChat": "Kanaler och meddelanden som stannar",
+      "useEmail": "Använd e-post i stället",
+      "joining": "Går med",
+      "joinTitle": "Du är redo att gå med",
+      "joinBody": "Kontoret väntar på din startsida, redo att gå in i.",
+      "fullTitle": "Kontoret är fullt",
+      "fullBody": "Alla platser är tagna. Be den som skickade länken att göra plats eller byta till en större plan."
     },
     "errors": {
       "member_limit": "Arbetsytan är full med nuvarande plan.",
@@ -996,7 +993,7 @@
       "name_required": "Ge det ett namn först.",
       "bad_email": "Det ser inte ut som en e-postadress.",
       "invite_used": "Inbjudan har redan använts.",
-      "invite_invalid": "Inbjudan har gått ut eller stängts av.",
+      "invite_invalid": "Den här inbjudningslänken har återställts eller fungerar inte längre.",
       "wrong_account": "Inbjudan gäller en annan e-postadress. Logga in med det kontot.",
       "wrong_password": "Ditt nuvarande lösenord är fel.",
       "password_too_short": "Använd minst 8 tecken.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "Personer",
       "members": "Medlemmar",
-      "invitations": "Väntande inbjudningar",
       "invite": "Bjud in",
       "seats": "{used} av {seats} platser",
       "seatsFull": "Alla platser är tagna.",
       "seatsFree": "Det finns plats kvar.",
       "onFloorNow": "{count} på våningen nu",
-      "noInvitations": "Inga väntande inbjudningar",
       "copied": "Kopierad",
-      "revoke": "Återkalla",
       "remove": "Ta bort",
       "leave": "Lämna",
       "makeAdmin": "Gör till admin",
@@ -1032,21 +1026,23 @@
       "admin": "Admin",
       "member": "Medlem",
       "noEmail": "Ingen e-post",
-      "expires": "Går ut {date}",
-      "anyoneWithLink": "Alla med länken",
       "wrong": "Det gick inte. Försök igen.",
       "subtitle": "Alla i {office}, och vem som får komma in.",
       "linkCopied": "Inbjudningslänk kopierad",
       "nobodyOnFloor": "Ingen annan än.",
       "seatsLeft": "{count, plural, one {# plats kvar – bjud in någon} other {# platser kvar – bjud in någon}}",
       "seatsNote": "En plats är en medlem. Den som går frigör sin; att vara offline gör det inte.",
-      "invitationsNote": "En inbjudan tar ingen plats. Den som tackar ja först får en, så länge det finns en ledig.",
-      "noInvitationsBody": "Bjud in någon – länken väntar här tills den accepteras eller går ut.",
       "allSeatsTaken": "Alla platser är tagna",
       "allSeatsTakenBody": "Den som går frigör en plats. Kontor med fler platser kommer snart.",
       "yourProfile": "Din profil",
       "ownOfficeTitle": "Ett plan som det här för ditt team?",
-      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer."
+      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer.",
+      "linkTitle": "Inbjudningslänk",
+      "linkBody": "Alla med länken kan gå med med ett konto, så länge det finns en ledig plats.",
+      "copy": "Kopiera",
+      "resetLink": "Återställ länk",
+      "resetTitle": "Återställa inbjudningslänken?",
+      "resetBody": "Den nuvarande länken slutar fungera direkt och en ny tar över. Alla som redan är med stannar."
     },
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "Kontorets namn",
     "creating": "Gör i ordning",
-    "continue": "Vidare"
+    "continue": "Vidare",
+    "eyebrow": "Nytt kontor",
+    "untitled": "Ditt kontor",
+    "nameTitle": "Vad heter ditt team?",
+    "nameBody": "Det här namnet ser alla som kommer in.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Du kan byta namn när som helst.",
+    "createIt": "Skapa kontor",
+    "sizeTitle": "Hur många ska jobba här?",
+    "sizeBody": "Räkna alla du vill bjuda in, dig själv inräknad.",
+    "people": "personer",
+    "planTitle": "Välj en plan för {office}",
+    "planBody": "Byt eller säg upp när som helst.",
+    "recommended": "Passar bäst",
+    "perMonth": "/mån",
+    "upTo": "Upp till {count} personer",
+    "perPerson": "{price} per person",
+    "bigger": "Fler än 25? Börja med Pro och skriv till oss, så gör vi plats.",
+    "included": "Vad som ingår",
+    "includedCalls": "Röstsamtal när ni möts, räknas aldrig",
+    "includedChat": "Chatt, kanaler och filer",
+    "includedCancel": "Säg upp när som helst; återbetalning inom 14 dagar",
+    "getPlan": "Skaffa {plan} · {price}/mån",
+    "openingCheckout": "Öppnar kassan",
+    "freeInstead": "Eller börja med Free, upp till {count} personer",
+    "freeTooSmall": "Börja med Free · bara {count} kan gå med",
+    "includedMeetingsBoth": "Gruppmöten med video: {plus} timmar i månaden på Plus, {pro} på Pro"
   },
   "meetings": {
     "title": "Möten",
@@ -1092,7 +1114,15 @@
     "ended": "Det mötet har tagit slut",
     "rejoin": "Gå med igen",
     "makeMeeting": "Möte",
-    "makeMeetingHint": "Ett samtal är två personer: starta ett möte för er tre"
+    "makeMeetingHint": "Ett samtal är två personer: starta ett möte för er tre",
+    "hours": {
+      "usedMonth": "{used} av {allowance} mötestimmar använda den här månaden",
+      "usedToday": "{used} av {allowance} mötestimmar använda i dag",
+      "more": "Fler timmar",
+      "paused": "Video pausad",
+      "pausedMonth": "bara ljud till {date}",
+      "pausedToday": "bara ljud till i morgon"
+    }
   },
   "shell": {
     "floor": "Golvet",
@@ -1156,19 +1186,16 @@
     "welcome": "Välkommen, {name}",
     "welcomeAnonymous": "Välkommen",
     "welcomeBody": "En våning för ditt team, med kanaler och samtal inbyggda.",
-    "stepName": "Namnge ditt kontor",
-    "makeIt": "Skapa",
     "invited": "Har du blivit inbjuden?",
     "invitedBody": "Klistra in länken ditt team skickade.",
     "invitePlaceholder": "Klistra in en inbjudningslänk",
     "join": "Gå med",
     "badLink": "Det ser inte ut som en inbjudningslänk. Klistra in hela länken.",
     "makeTitle": "Nu gör vi ditt kontor",
-    "yourNewOffice": "Ditt nya kontor",
-    "freeRename": "Gratis för upp till 3 personer. Du kan byta namn när som helst.",
     "otherWays": "Andra vägar in",
     "lobbyBody": "Titta in och träffa folk.",
-    "yourAccount": "Ditt konto"
+    "yourAccount": "Ditt konto",
+    "createOffice": "Skapa ditt kontor"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "Inbjudningar"
       },
       "lobbyTitle": "Lobbyn är öppen",
-      "lobbyBody": "Gå runt på ett riktigt våningsplan innan du skapar ditt eget. Inget konto behövs.",
       "menu": "Meny",
       "teams": "För team",
-      "teamTitle": "Gjort för distansteam",
-      "teamBody": "Gratis för upp till 3 personer, större planer är på väg.",
       "cases": {
         "virtualOffice": "En plats för ditt distansteam",
         "virtualCoworking": "Jobba fokuserat bland andra",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "Mottagningstider och små klasser",
         "proximityChat": "Prata med den du går fram till"
       },
-      "getStarted": "Kom igång"
+      "getStarted": "Kom igång",
+      "lobbyLine": "Gå runt på en riktig våning. Inget konto."
     },
     "hero": {
       "title": "Ett virtuellt kontor som ditt team kan gå runt i.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "Ta in ditt team.",
         "muted": "Med en länk.",
-        "body": "Skicka en inbjudningslänk eller bjud in via e-post. De väljer ett namn och en figur, skapar ett gratiskonto och är på våningen."
+        "body": "Dela ditt kontors länk. De skapar ett gratis konto, väljer namn och figur, och är på våningen."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "Skicka länken till teamet.",
-        "body": "Bjud in kollegor via e-post, eller skicka dem en inbjudningslänk."
+        "body": "Skicka ditt kontors länk till teamet."
       },
       "walk": {
         "title": "Gå in.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "Priser",
       "title": "Pris per kontor,",
       "muted": "inte per person.",
-      "body": "Börja gratis. Alla planer har allt, och gäster räknas aldrig.",
+      "body": "Börja gratis. Byt upp när teamet växer.",
       "soon": "Kommer snart",
       "forever": "för alltid",
       "month": "i månaden",
       "people": "Upp till {count} personer",
       "free": {
-        "name": "Free",
-        "body": "Hela produkten, för en liten studio eller två grundare.",
-        "items": [
-          "Ett privat plan",
-          "Samtal och möten",
-          "Chatt, bilder och filer",
-          "Gäster via länk"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "Ett pris för hela kontoret, hur många av de tio platserna du än fyller.",
-        "items": [
-          "Allt i Free",
-          "Plats för 10 medlemmar",
-          "Årsvis: två månader gratis"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "För teamet som har vuxit ur en rad skrivbord.",
-        "items": [
-          "Allt i Team",
-          "Plats för 25 medlemmar",
-          "Prioriterad support",
-          "Större? Hör av dig"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Priserna är per månad, exklusive moms.",
+      "perPerson": "{price} per person",
+      "freeLine": "Inget kort behövs",
+      "choose": "Välj {plan}",
+      "note": "Alla planer har alla funktioner. Samtal räknas aldrig; gruppmöten får 5, 30 eller 60 timmar i månaden."
     },
     "faq": {
       "title": "Frågor,",
@@ -1485,5 +1495,77 @@
       "muted": "ett plan att dela.",
       "note": "Gratis för upp till 3 personer · Körs på Cloudflare"
     }
+  },
+  "billing": {
+    "current": "Det här kontoret har",
+    "members": "{used} av {seats} medlemmar",
+    "freeNote": "Gratis, med alla funktioner.",
+    "renews": "Förnyas {date}",
+    "ends": "Slutar {date}, sedan gratisplanen",
+    "perMonth": "i månaden",
+    "pastDue": "Den senaste betalningen gick inte igenom. Paddle försöker igen; uppdatera kortet för att behålla planen.",
+    "updateCard": "Uppdatera kort",
+    "keep": "Behåll planen",
+    "settingUp": "Betalningen har tagits emot. Planen aktiveras…",
+    "settingUpSlow": "Betalningen har tagits emot. Det kan ta en minut innan planen syns; ladda om om den inte gör det.",
+    "cancel": "Säg upp planen",
+    "switch": "Byt",
+    "fine": "Priserna är per månad, i amerikanska dollar, exklusive moms. Betalningar hanteras av Paddle, vår återförsäljare. Be inom 14 dagar efter en betalning om full återbetalning.",
+    "adminsOnly": "Bara kontorets administratörer kan ändra planen.",
+    "switchTitle": "Byta till {plan}?",
+    "switchBody": "Paddle debiterar eller krediterar mellanskillnaden för resten av perioden direkt. Ingen på golvet märker något.",
+    "cancelTitle": "Säga upp planen?",
+    "cancelBody": "Planen gäller till {date}, sedan går kontoret tillbaka till gratisplanen: 3 medlemmar och 5 mötestimmar i månaden. Ingen tas bort, men ingen ny kan gå med, och bara 3 kan vara på våningen samtidigt.",
+    "cancelBodyNow": "Kontoret går tillbaka till gratisplanen i slutet av perioden: 3 medlemmar och 5 mötestimmar i månaden. Ingen tas bort, men ingen ny kan gå med, och bara 3 kan vara på våningen samtidigt.",
+    "moreSeats": "Fler platser",
+    "membersLabel": "Medlemmar",
+    "hoursLabel": "Mötestimmar",
+    "hours": "{used} av {allowance} h",
+    "hoursResets": "Nollställs {date}",
+    "hoursUsedUp": "Månadens mötestimmar är slut: möten är bara med ljud till {date}. En större plan ger tillbaka video direkt.",
+    "hoursExplained": "Mötestimmar räknar tiden ett möte har två eller fler personer. Samtal mellan två personer på våningen räknas aldrig. När de är slut fortsätter möten med ljud till den 1:a.",
+    "payment": "Betalning",
+    "cardUnknown": "Kort sparat hos Paddle",
+    "card": "Kort",
+    "cardEnding": "{brand} som slutar på {last4}",
+    "expires": "Går ut {date}",
+    "update": "Uppdatera",
+    "nextCharge": "Nästa dragning",
+    "chargeOn": "{amount} den {date}",
+    "noneAfter": "Ingen, planen slutar {date}",
+    "history": "Betalningshistorik",
+    "noPayments": "Inga betalningar än.",
+    "planPayment": "{plan}-plan",
+    "invoice": "Ladda ner faktura",
+    "status": {
+      "refunded": "Återbetald",
+      "partly_refunded": "Delvis återbetald",
+      "failed": "Misslyckades",
+      "due": "Förfallen"
+    },
+    "errors": {
+      "tooManyMembers": "Kontoret har fler medlemmar än planen rymmer. Ta bort några först.",
+      "hasSubscription": "Kontoret har redan en plan. Byt den i stället.",
+      "failed": "Det fungerade inte. Försök igen."
+    },
+    "pillPastDue": "Kortet nekades",
+    "pillEnding": "Avslutas",
+    "nextChargeLine": "Nästa dragning {amount} den {date}",
+    "endingNote": "Planen slutar {date}. Behåll den så ändras inget.",
+    "seatsFree": "{count, plural, one {# plats ledig} other {# platser lediga}}",
+    "seatsFull": "Alla platser är tagna",
+    "upgradeFull": "Alla platser är tagna",
+    "upgradeHours": "Det mesta av månadens mötestimmar är använt",
+    "upgradeRoom": "Utrymme att växa",
+    "upgradeFree": "För ett större team",
+    "upgradeTitle": "Byt upp till {plan}",
+    "gainPeople": "{count} personer",
+    "gainHours": "{count} mötestimmar",
+    "gainNow": "nu {value}",
+    "upgradeButton": "Uppgradera till {plan} · {price}/mån",
+    "orPlan": "Eller {plan}, upp till {count} personer · {price}/mån",
+    "topPlan": "Du har vår största plan. Behöver du plats för fler än {count}? Skriv till oss så ordnar vi det.",
+    "moveDown": "Byt till {plan}",
+    "usageOf": "{used} av {total}"
   }
 }

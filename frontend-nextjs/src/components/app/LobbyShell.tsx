@@ -4,7 +4,7 @@ import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, MessagesSquare, Plus, Users } from "lucide-react";
+import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, MessagesSquare, Plus, Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";

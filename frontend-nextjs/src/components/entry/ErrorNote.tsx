@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle } from "@/components/ui/icons";
 
 /** A short, calm way to say something went wrong at the door. */
 export const ErrorNote: React.FC<{ children: React.ReactNode }> = ({ children }) => (

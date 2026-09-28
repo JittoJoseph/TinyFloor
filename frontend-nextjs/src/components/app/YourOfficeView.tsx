@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, DoorClosed, Hash, Link2, MessagesSquare } from "lucide-react";
+import { ArrowRight, Check, DoorClosed, Hash, Link2, MessagesSquare } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";

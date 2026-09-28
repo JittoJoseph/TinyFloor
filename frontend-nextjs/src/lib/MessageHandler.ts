@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import type { PlayerState, ServerMessage } from "@shared/messages";
+import type { MeetingUsage, PlayerState, ServerMessage } from "@shared/messages";
 import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
@@ -9,7 +9,7 @@ import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "./types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
-import { setMeetings } from "./meetings";
+import { setMeetings, setMeetingUsage } from "./meetings";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -29,6 +29,7 @@ export class MessageHandler {
         jukebox.handleMusic(message.music);
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
+        if (message.usage) this.meetingUsage(message.usage);
         // Back after a reconnect: the room forgot your meeting, so rejoin it.
         callManager.rejoinMeeting();
         break;
@@ -72,6 +73,9 @@ export class MessageHandler {
       case "sfu":
         callManager.handleMeeting(message);
         break;
+      case "meeting_usage":
+        this.meetingUsage(message.usage);
+        break;
       case "call":
         callManager.handleCall(message);
         break;
@@ -91,6 +95,12 @@ export class MessageHandler {
         jukebox.handleMusic(message);
         break;
     }
+  }
+
+  /** Past the place's meeting hours, meetings go voice only until they reset (docs/14). */
+  private meetingUsage(usage: MeetingUsage) {
+    setMeetingUsage(usage);
+    callManager.setVideoPaused(usage.paused);
   }
 
   /** Arriving, or coming back after a reconnect: the room's word replaces whatever we had. */

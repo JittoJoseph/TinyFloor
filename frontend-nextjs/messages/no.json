@@ -16,7 +16,7 @@
     "lobbyDescription": "Gå inn i TinyFloors gratis, åpne lobby som gjest. Velg en figur, møt folk og prøv videosamtaler på nært hold i nettleseren.",
     "inviteTitle": "Bli med i {office} på TinyFloor",
     "inviteFallbackTitle": "Du er invitert til TinyFloor",
-    "inviteDescription": "{name} har invitert deg til {office} på TinyFloor, et virtuelt kontor du kan gå rundt i."
+    "inviteDescription": "Bli med i {office} på TinyFloor, et virtuelt kontor du kan gå rundt i."
   },
   "common": {
     "loading": "Laster inn...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja. Den åpne lobbyen er gratis for alle, og det samme er et kontor for opptil 3 personer. Større kontorer koster 19 $ i måneden for 10 personer og 49 $ for 25."
+        "a": "Ja. Den offentlige lobbyen er gratis for alle, og det samme er et kontor for opptil 3 personer med 5 møtetimer i måneden. Større kontorer koster $19 i måneden for 10 personer og 30 møtetimer, eller $49 for 25 personer og 60 timer."
       },
       {
         "q": "Må jeg installere noe?",
@@ -92,7 +92,7 @@
     "signInTitle": "Velkommen tilbake",
     "signInSubtitle": "Logg inn for å komme tilbake til teamets kontor.",
     "signUpTitle": "Opprett kontoen din",
-    "signUpSubtitle": "En e-post og et passord er alt som trengs.",
+    "signUpSubtitle": "Google er raskest, eller bruk e-posten din.",
     "email": "E-post",
     "emailPlaceholder": "deg@firma.no",
     "password": "Passord",
@@ -128,7 +128,8 @@
       "google_failed": "Innloggingen med Google gikk ikke gjennom. Prøv igjen.",
       "google_unverified": "Bekreft e-postadressen din hos Google først, og prøv så igjen.",
       "google_mismatch": "Denne e-postadressen er knyttet til en annen Google-konto."
-    }
+    },
+    "continueWithEmail": "Fortsett med e-post"
   },
   "entry": {
     "yourName": "Navnet ditt",
@@ -141,8 +142,13 @@
     "copyInvite": "Kopier invitasjonslenke",
     "continue": "Videre",
     "walkingInAs": "Du går inn som {name}",
-    "introTitle": "Før du går inn",
-    "introSubtitle": "Hva skal andre kalle deg, og hvem er du på etasjen?"
+    "introTitle": "Velkommen",
+    "introEyebrow": "Velkommen til TinyFloor",
+    "nameTitle": "Hva skal folk kalle deg?",
+    "nameBody": "Vises på figuren din og i chatten.",
+    "characterTitle": "Velg figuren din",
+    "characterBody": "Dette er deg på etasjen.",
+    "thatsMe": "Det er meg"
   },
   "room": {
     "connecting": "Kobler til...",
@@ -180,7 +186,6 @@
     "onCall": "I samtalen",
     "decline": "Avslå",
     "accept": "Godta",
-    "tutorial": "Opplæringssamtale",
     "calling": "Ringer...",
     "cancel": "Avbryt samtale",
     "micOff": "Mikrofon av",
@@ -332,7 +337,8 @@
       "media": "Lyd og video",
       "notifications": "Varsler",
       "accessibility": "Tilgjengelighet",
-      "office": "Kontor"
+      "office": "Kontor",
+      "plan": "Plan og betaling"
     },
     "appearance": "Utseende",
     "themeNote": "«System» følger enheten din.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "Færre animasjoner i hele appen.",
     "performance": "Ytelse",
     "batterySaver": "Batterisparing",
-    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn.",
-    "enhancedNoise": "Sterkere støyfjerning",
-    "enhancedNoiseNote": "En liten AI-modell på enheten din fjerner tastatur, hunder og prat i bakgrunnen. Bruker litt mer batteri.",
-    "experimental": "Eksperimentell"
-  },
-  "tutorial": {
-    "walk": "Gå rundt med W A S D",
-    "walkTouch": "Dra i styrespaken for å gå",
-    "click": "Eller klikk hvor som helst for å gå rett dit",
-    "clickTouch": "Eller trykk hvor som helst for å gå rett dit",
-    "approach": "Gå nær noen for å ringe eller chatte",
-    "invite": "Inviter noen med denne lenken, eller så er du klar",
-    "copy": "Kopier",
-    "copied": "Kopiert",
-    "linkHint": "Alle med lenken havner i dette rommet",
-    "done": "Ferdig",
-    "skip": "Hopp over",
-    "next": "Neste"
+    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn."
   },
   "scene": {
-    "guide": "Guide",
     "sit": "Trykk E for å sette deg",
     "stand": "Trykk E for å reise deg",
     "joinMeeting": "Trykk E for å bli med",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "Invitasjoner følger med et kontor",
-        "body": "Inviter teamet på e-post eller med en lenke, i ditt eget kontor."
+        "body": "Inviter teamet ditt med én lenke, i ditt eget kontor."
       },
       "free": "Et kontor lager du på ett minutt, og det er gratis for opptil 3 personer.",
       "go": "Lag mitt kontor",
@@ -912,7 +900,9 @@
       "free": "Gratisplan",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Eier",
@@ -930,7 +920,8 @@
       "leave": "Forlat dette kontoret",
       "wrong": "Det gikk ikke. Prøv igjen.",
       "plan": "{plan} · {used} av {seats} plasser",
-      "danger": "Forlate eller stenge"
+      "danger": "Forlate eller stenge",
+      "cancelPlanFirst": "Si først opp kontorets plan under Plan og betaling. Så kan det stenges."
     },
     "profile": {
       "changePassword": "Endre passord",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Invitasjonen virker ikke",
-      "invalid": "Den kan ha utløpt, allerede blitt brukt eller slått av. Be om en ny.",
+      "invalid": "Den kan være tilbakestilt, eller kontoret er stengt. Be om en ny lenke.",
       "home": "Til forsiden",
-      "eyebrow": "{name} har invitert deg",
-      "asAdmin": "Du er invitert som admin.",
-      "asMember": "Du er invitert til teamet.",
+      "eyebrow": "Du er invitert til",
       "join": "Bli med i {office}",
-      "joiningAs": "Du blir med som {name} ({email})",
+      "joiningAs": "Du blir med som {email}.",
       "createAccount": "Opprett en konto",
       "signIn": "Jeg har en konto",
-      "readyToJoin": "Det er meg",
-      "accountKeeps": "En konto husker {name} og figuren din til neste gang.",
-      "you": "Du",
       "members": "{count, plural, one {# medlem} other {# medlemmer}}",
-      "change": "Endre"
+      "change": "Ikke deg?",
+      "accountTitle": "Ta plassen din",
+      "accountBody": "Logg inn for å bli med. Det tar noen sekunder.",
+      "perkFloor": "Gå bort til noen for å snakke, som på et ekte kontor",
+      "perkTalk": "Taleanrop starter når dere står ved siden av hverandre",
+      "perkChat": "Kanaler og meldinger som blir",
+      "useEmail": "Bruk e-post i stedet",
+      "joining": "Blir med",
+      "joinTitle": "Du er klar til å bli med",
+      "joinBody": "Kontoret venter på startsiden din, klart til å gå inn i.",
+      "fullTitle": "Kontoret er fullt",
+      "fullBody": "Alle plassene er tatt. Be den som sendte lenken om å gjøre plass eller bytte til en større plan."
     },
     "errors": {
       "member_limit": "Arbeidsområdet er fullt med nåværende plan.",
@@ -996,7 +993,7 @@
       "name_required": "Gi det et navn først.",
       "bad_email": "Det ser ikke ut som en e-postadresse.",
       "invite_used": "Invitasjonen er allerede brukt.",
-      "invite_invalid": "Invitasjonen er utløpt eller slått av.",
+      "invite_invalid": "Denne invitasjonslenken er tilbakestilt eller virker ikke lenger.",
       "wrong_account": "Invitasjonen gjelder en annen e-postadresse. Logg inn med den kontoen.",
       "wrong_password": "Det nåværende passordet ditt er feil.",
       "password_too_short": "Bruk minst 8 tegn.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "Folk",
       "members": "Medlemmer",
-      "invitations": "Ventende invitasjoner",
       "invite": "Inviter",
       "seats": "{used} av {seats} plasser",
       "seatsFull": "Alle plassene er tatt.",
       "seatsFree": "Det er plass til flere.",
       "onFloorNow": "{count} på etasjen nå",
-      "noInvitations": "Ingen ventende invitasjoner",
       "copied": "Kopiert",
-      "revoke": "Trekk tilbake",
       "remove": "Fjern",
       "leave": "Forlat",
       "makeAdmin": "Gjør til admin",
@@ -1032,21 +1026,23 @@
       "admin": "Admin",
       "member": "Medlem",
       "noEmail": "Ingen e-post",
-      "expires": "Utløper {date}",
-      "anyoneWithLink": "Alle med lenken",
       "wrong": "Det gikk ikke. Prøv igjen.",
       "subtitle": "Alle i {office}, og hvem som kan komme inn.",
       "linkCopied": "Invitasjonslenke kopiert",
       "nobodyOnFloor": "Ingen andre ennå.",
       "seatsLeft": "{count, plural, one {# plass igjen – inviter noen} other {# plasser igjen – inviter noen}}",
       "seatsNote": "En plass er et medlem. Den som går, frigjør sin; å være frakoblet gjør ikke det.",
-      "invitationsNote": "En invitasjon tar ingen plass. Den som sier ja først, får en, så lenge det er en ledig.",
-      "noInvitationsBody": "Inviter noen – lenken venter her til den godtas eller går ut.",
       "allSeatsTaken": "Alle plassene er tatt",
       "allSeatsTakenBody": "Den som går, frigjør en plass. Kontorer med flere plasser kommer snart.",
       "yourProfile": "Profilen din",
       "ownOfficeTitle": "En etasje som denne for teamet ditt?",
-      "ownOfficeBody": "Lag ditt eget kontor på ett minutt. Gratis for opptil 3 personer."
+      "ownOfficeBody": "Lag ditt eget kontor på ett minutt. Gratis for opptil 3 personer.",
+      "linkTitle": "Invitasjonslenke",
+      "linkBody": "Alle med denne lenken kan bli med med en konto, så lenge det er en ledig plass.",
+      "copy": "Kopier",
+      "resetLink": "Tilbakestill lenke",
+      "resetTitle": "Tilbakestille invitasjonslenken?",
+      "resetBody": "Den nåværende lenken slutter å virke med en gang, og en ny tar over. Alle som allerede er i kontoret, blir."
     },
     "office": "Kontor",
     "goneTitle": "Dette kontoret finnes ikke lenger",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "Navn på kontoret",
     "creating": "Gjør det klart",
-    "continue": "Videre"
+    "continue": "Videre",
+    "eyebrow": "Nytt kontor",
+    "untitled": "Kontoret ditt",
+    "nameTitle": "Hva heter teamet ditt?",
+    "nameBody": "Dette er navnet alle ser når de går inn.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Du kan gi det nytt navn når som helst.",
+    "createIt": "Opprett kontor",
+    "sizeTitle": "Hvor mange skal jobbe her?",
+    "sizeBody": "Tell alle du vil invitere, deg selv medregnet.",
+    "people": "personer",
+    "planTitle": "Velg en plan for {office}",
+    "planBody": "Bytt eller si opp når som helst.",
+    "recommended": "Passer best",
+    "perMonth": "/mnd.",
+    "upTo": "Opptil {count} personer",
+    "perPerson": "{price} per person",
+    "bigger": "Flere enn 25? Start med Pro og skriv til oss, så lager vi plass.",
+    "included": "Hva som er inkludert",
+    "includedCalls": "Taleanrop når dere møtes, telles aldri",
+    "includedChat": "Chat, kanaler og filer",
+    "includedCancel": "Si opp når som helst; refusjon innen 14 dager",
+    "getPlan": "Få {plan} · {price}/mnd.",
+    "openingCheckout": "Åpner betaling",
+    "freeInstead": "Eller start på Free, opptil {count} personer",
+    "freeTooSmall": "Start på Free i stedet · bare {count} kan bli med",
+    "includedMeetingsBoth": "Gruppemøter med video: {plus} timer i måneden på Plus, {pro} på Pro"
   },
   "meetings": {
     "title": "Møter",
@@ -1092,7 +1114,15 @@
     "ended": "Det møtet er slutt",
     "rejoin": "Bli med igjen",
     "makeMeeting": "Møte",
-    "makeMeetingHint": "En samtale er to personer: start et møte for dere tre"
+    "makeMeetingHint": "En samtale er to personer: start et møte for dere tre",
+    "hours": {
+      "usedMonth": "{used} av {allowance} møtetimer brukt denne måneden",
+      "usedToday": "{used} av {allowance} møtetimer brukt i dag",
+      "more": "Flere timer",
+      "paused": "Video satt på pause",
+      "pausedMonth": "bare lyd til {date}",
+      "pausedToday": "bare lyd til i morgen"
+    }
   },
   "shell": {
     "floor": "Gulvet",
@@ -1156,19 +1186,16 @@
     "welcome": "Velkommen, {name}",
     "welcomeAnonymous": "Velkommen",
     "welcomeBody": "Én etasje for teamet ditt, med kanaler og samtaler innebygd.",
-    "stepName": "Gi kontoret ditt et navn",
-    "makeIt": "Lag det",
     "invited": "Har du blitt invitert?",
     "invitedBody": "Lim inn lenken teamet ditt sendte deg.",
     "invitePlaceholder": "Lim inn en invitasjonslenke",
     "join": "Bli med",
     "badLink": "Det ser ikke ut som en invitasjonslenke. Lim inn hele lenken.",
     "makeTitle": "La oss lage kontoret ditt",
-    "yourNewOffice": "Ditt nye kontor",
-    "freeRename": "Gratis for opptil 3 personer. Du kan endre navnet når som helst.",
     "otherWays": "Andre veier inn",
     "lobbyBody": "Stikk innom og møt folk.",
-    "yourAccount": "Kontoen din"
+    "yourAccount": "Kontoen din",
+    "createOffice": "Opprett kontoret ditt"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "Invitasjoner"
       },
       "lobbyTitle": "Lobbyen er åpen",
-      "lobbyBody": "Gå rundt på en ekte etasje før du lager din egen. Ingen konto nødvendig.",
       "menu": "Meny",
       "teams": "For team",
-      "teamTitle": "Laget for eksterne team",
-      "teamBody": "Gratis for opptil 3 personer, større planer er på vei.",
       "cases": {
         "virtualOffice": "Et sted for fjernteamet ditt",
         "virtualCoworking": "Jobb fokusert sammen med andre",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "Kontortid og små klasser",
         "proximityChat": "Snakk med den du går bort til"
       },
-      "getStarted": "Kom i gang"
+      "getStarted": "Kom i gang",
+      "lobbyLine": "Gå rundt på en ekte etasje. Ingen konto."
     },
     "hero": {
       "title": "Et virtuelt kontor teamet ditt kan gå rundt i.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "Ta med teamet inn.",
         "muted": "Med én lenke.",
-        "body": "Send en invitasjonslenke, eller inviter på e-post. De velger et navn og en figur, lager en gratis konto og er på etasjen."
+        "body": "Del lenken til kontoret ditt. De lager en gratis konto, velger navn og figur, og så er de på etasjen."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "Send lenken til teamet.",
-        "body": "Inviter kolleger på e-post, eller send dem en invitasjonslenke."
+        "body": "Send kontorlenken til teamet ditt."
       },
       "walk": {
         "title": "Gå inn.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "Priser",
       "title": "Pris per kontor,",
       "muted": "ikke per person.",
-      "body": "Start gratis. Alle planer har alt, og gjester teller aldri med.",
+      "body": "Start gratis. Bytt opp når teamet vokser.",
       "soon": "Kommer snart",
       "forever": "for alltid",
       "month": "i måneden",
       "people": "Opptil {count} personer",
       "free": {
-        "name": "Free",
-        "body": "Hele produktet, for et lite studio eller to gründere.",
-        "items": [
-          "En privat etasje",
-          "Samtaler og møter",
-          "Chat, bilder og filer",
-          "Gjester via lenke"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "Én pris for hele kontoret, uansett hvor mange av de ti plassene du fyller.",
-        "items": [
-          "Alt i Free",
-          "Plass til 10 medlemmer",
-          "Årlig: to måneder gratis"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "For teamet som har vokst ut av én rad med pulter.",
-        "items": [
-          "Alt i Team",
-          "Plass til 25 medlemmer",
-          "Prioritert støtte",
-          "Større? Snakk med oss"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Prisene er månedlige og uten mva.",
+      "perPerson": "{price} per person",
+      "freeLine": "Ingen kort nødvendig",
+      "choose": "Velg {plan}",
+      "note": "Alle planer har alle funksjoner. Samtaler telles aldri; gruppemøter får 5, 30 eller 60 timer i måneden."
     },
     "faq": {
       "title": "Spørsmål,",
@@ -1485,5 +1495,77 @@
       "muted": "en etasje å dele.",
       "note": "Gratis for opptil 3 personer · Kjører på Cloudflare"
     }
+  },
+  "billing": {
+    "current": "Dette kontoret er på",
+    "members": "{used} av {seats} medlemmer",
+    "freeNote": "Gratis, med alle funksjoner.",
+    "renews": "Fornyes {date}",
+    "ends": "Slutter {date}, deretter gratisplanen",
+    "perMonth": "i måneden",
+    "pastDue": "Den siste betalingen gikk ikke gjennom. Paddle prøver kortet igjen; oppdater det for å beholde planen.",
+    "updateCard": "Oppdater kort",
+    "keep": "Behold denne planen",
+    "settingUp": "Betaling mottatt. Planen settes opp…",
+    "settingUpSlow": "Betaling mottatt. Planen kan bruke et minutt på å vises; last inn på nytt hvis den ikke er der.",
+    "cancel": "Si opp planen",
+    "switch": "Bytt",
+    "fine": "Prisene er månedlige, i amerikanske dollar, og uten mva. Betalinger håndteres av Paddle, forhandleren vår. Spør innen 14 dager etter en betaling for full refusjon.",
+    "adminsOnly": "Bare kontorets administratorer kan endre planen.",
+    "switchTitle": "Bytte til {plan}?",
+    "switchBody": "Paddle belaster eller krediterer differansen for resten av perioden med en gang. Ingen på gulvet merker noe.",
+    "cancelTitle": "Si opp planen?",
+    "cancelBody": "Planen varer til {date}, så går kontoret tilbake til gratisplanen: 3 medlemmer og 5 møtetimer i måneden. Ingen fjernes, men ingen nye kan bli med, og bare 3 kan være på etasjen samtidig.",
+    "cancelBodyNow": "Kontoret går tilbake til gratisplanen ved slutten av perioden: 3 medlemmer og 5 møtetimer i måneden. Ingen fjernes, men ingen nye kan bli med, og bare 3 kan være på etasjen samtidig.",
+    "moreSeats": "Få flere plasser",
+    "membersLabel": "Medlemmer",
+    "hoursLabel": "Møtetimer",
+    "hours": "{used} av {allowance} t",
+    "hoursResets": "Nullstilles {date}",
+    "hoursUsedUp": "Månedens møtetimer er brukt opp: møter er bare med lyd til {date}. En større plan gir video tilbake nå.",
+    "hoursExplained": "Møtetimer teller tiden et møte har to eller flere personer. Samtaler mellom to personer på etasjen teller aldri. Når de er brukt opp, fortsetter møter med lyd til den 1.",
+    "payment": "Betaling",
+    "cardUnknown": "Kort lagret hos Paddle",
+    "card": "Kort",
+    "cardEnding": "{brand} som slutter på {last4}",
+    "expires": "Utløper {date}",
+    "update": "Oppdater",
+    "nextCharge": "Neste trekk",
+    "chargeOn": "{amount} den {date}",
+    "noneAfter": "Ingen, planen slutter {date}",
+    "history": "Betalingshistorikk",
+    "noPayments": "Ingen betalinger ennå.",
+    "planPayment": "{plan}-plan",
+    "invoice": "Last ned faktura",
+    "status": {
+      "refunded": "Refundert",
+      "partly_refunded": "Delvis refundert",
+      "failed": "Mislyktes",
+      "due": "Forfalt"
+    },
+    "errors": {
+      "tooManyMembers": "Kontoret har flere medlemmer enn den planen har plass til. Fjern noen først.",
+      "hasSubscription": "Kontoret har allerede en plan. Bytt den i stedet.",
+      "failed": "Det fungerte ikke. Prøv igjen."
+    },
+    "pillPastDue": "Kort avvist",
+    "pillEnding": "Avsluttes",
+    "nextChargeLine": "Neste trekk {amount} den {date}",
+    "endingNote": "Planen avsluttes {date}. Behold den, så endres ingenting.",
+    "seatsFree": "{count, plural, one {# plass ledig} other {# plasser ledige}}",
+    "seatsFull": "Alle plassene er tatt",
+    "upgradeFull": "Alle plassene er tatt",
+    "upgradeHours": "Det meste av månedens møtetimer er brukt",
+    "upgradeRoom": "Plass til å vokse",
+    "upgradeFree": "For et større team",
+    "upgradeTitle": "Bytt opp til {plan}",
+    "gainPeople": "{count} personer",
+    "gainHours": "{count} møtetimer",
+    "gainNow": "nå {value}",
+    "upgradeButton": "Oppgrader til {plan} · {price}/mnd.",
+    "orPlan": "Eller {plan}, opptil {count} personer · {price}/mnd.",
+    "topPlan": "Du er på vår største plan. Trenger du plass til flere enn {count}? Skriv til oss, så ordner vi det.",
+    "moveDown": "Bytt til {plan}",
+    "usageOf": "{used} av {total}"
   }
 }

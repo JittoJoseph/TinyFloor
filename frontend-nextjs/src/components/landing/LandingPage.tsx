@@ -9,7 +9,7 @@ import {
   Footprints,
   Globe,
   GraduationCap,
-  Map as MapIcon,
+  MapIcon,
   PenLine,
   Radio,
   ServerOff,
@@ -22,8 +22,8 @@ import {
   Video,
   VolumeX,
   Zap,
-  type LucideIcon,
-} from "lucide-react";
+  type AppIcon,
+} from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
@@ -41,7 +41,7 @@ interface LandingCopy {
 }
 
 /** An icon for each of a page's three reasons, in the order its copy lists them. */
-const POINT_ICONS: Record<LandingKey, [LucideIcon, LucideIcon, LucideIcon]> = {
+const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
   gather: [CalendarOff, Globe, UserPlus],
   kumospace: [Users, DoorOpen, Smartphone],
   spatialchat: [TimerOff, Building2, Footprints],
@@ -67,7 +67,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
   const icons = POINT_ICONS[page.key];
 
   return (
-    <MarketingShell path={path}>
+    <MarketingShell path={path} oneTap>
       <JsonLd
         schema={pageGraph({
           locale,

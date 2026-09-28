@@ -16,7 +16,7 @@
     "lobbyDescription": "Loop als gast de gratis openbare lobby van TinyFloor binnen. Kies een personage, ontmoet mensen en probeer videobellen op afstand in je browser.",
     "inviteTitle": "Doe mee met {office} op TinyFloor",
     "inviteFallbackTitle": "Je bent uitgenodigd voor TinyFloor",
-    "inviteDescription": "{name} heeft je uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
+    "inviteDescription": "Doe mee met {office} op TinyFloor, een virtueel kantoor waar je rondloopt."
   },
   "common": {
     "loading": "Laden...",
@@ -66,7 +66,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor voor maximaal 3 mensen ook. Grotere kantoren kosten $ 19 per maand voor 10 mensen en $ 49 voor 25."
+        "a": "Ja. De openbare lobby is gratis voor iedereen, en een kantoor tot 3 mensen ook, met 5 vergaderuren per maand. Grotere kantoren kosten $19 per maand voor 10 mensen en 30 vergaderuren, of $49 voor 25 mensen en 60 uur."
       },
       {
         "q": "Moet ik iets installeren?",
@@ -92,7 +92,7 @@
     "signInTitle": "Welkom terug",
     "signInSubtitle": "Log in om terug te gaan naar het kantoor van je team.",
     "signUpTitle": "Maak je account",
-    "signUpSubtitle": "Een e-mailadres en een wachtwoord, meer is het niet.",
+    "signUpSubtitle": "Met Google gaat het snelst, of gebruik je e-mail.",
     "email": "E-mail",
     "emailPlaceholder": "jij@bedrijf.nl",
     "password": "Wachtwoord",
@@ -128,7 +128,8 @@
       "google_failed": "Inloggen met Google is niet gelukt. Probeer het opnieuw.",
       "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
       "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
-    }
+    },
+    "continueWithEmail": "Doorgaan met e-mail"
   },
   "entry": {
     "yourName": "Je naam",
@@ -141,8 +142,13 @@
     "copyInvite": "Uitnodigingslink kopiëren",
     "continue": "Verder",
     "walkingInAs": "Je loopt binnen als {name}",
-    "introTitle": "Voordat je binnenloopt",
-    "introSubtitle": "Hoe moeten anderen je noemen, en wie ben je op de verdieping?"
+    "introTitle": "Welkom",
+    "introEyebrow": "Welkom bij TinyFloor",
+    "nameTitle": "Hoe mogen mensen je noemen?",
+    "nameBody": "Staat bij je personage en in de chat.",
+    "characterTitle": "Kies je personage",
+    "characterBody": "Dit ben jij op de vloer.",
+    "thatsMe": "Dat ben ik"
   },
   "room": {
     "connecting": "Verbinden...",
@@ -180,7 +186,6 @@
     "onCall": "In gesprek",
     "decline": "Weigeren",
     "accept": "Accepteren",
-    "tutorial": "Tutorialgesprek",
     "calling": "Bellen...",
     "cancel": "Gesprek annuleren",
     "micOff": "Microfoon uit",
@@ -332,7 +337,8 @@
       "media": "Audio en video",
       "notifications": "Meldingen",
       "accessibility": "Toegankelijkheid",
-      "office": "Kantoor"
+      "office": "Kantoor",
+      "plan": "Abonnement en facturering"
     },
     "appearance": "Weergave",
     "themeNote": "'Systeem' volgt je apparaat.",
@@ -364,27 +370,9 @@
     "reduceMotionNote": "Minder animaties in de hele app.",
     "performance": "Prestaties",
     "batterySaver": "Batterijbesparing",
-    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt.",
-    "enhancedNoise": "Sterkere ruisonderdrukking",
-    "enhancedNoiseNote": "Een klein AI-model op je apparaat haalt toetsenborden, honden en geklets weg. Kost iets meer batterij.",
-    "experimental": "Experimenteel"
-  },
-  "tutorial": {
-    "walk": "Loop rond met W A S D",
-    "walkTouch": "Sleep de joystick om te lopen",
-    "click": "Of klik ergens om er direct naartoe te lopen",
-    "clickTouch": "Of tik ergens om er direct naartoe te lopen",
-    "approach": "Ga dicht bij iemand staan om te bellen of te chatten",
-    "invite": "Nodig iemand uit met deze link, of je bent klaar",
-    "copy": "Kopiëren",
-    "copied": "Gekopieerd",
-    "linkHint": "Iedereen met de link komt in deze ruimte",
-    "done": "Klaar",
-    "skip": "Overslaan",
-    "next": "Volgende"
+    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt."
   },
   "scene": {
-    "guide": "Gids",
     "sit": "Druk op E om te zitten",
     "stand": "Druk op E om op te staan",
     "joinMeeting": "Druk op E om mee te doen",
@@ -881,7 +869,7 @@
       },
       "invites": {
         "title": "Uitnodigingen horen bij een kantoor",
-        "body": "Nodig je team uit per e-mail of met een link, in een eigen kantoor."
+        "body": "Nodig je team uit met één link, in een eigen kantoor."
       },
       "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
       "go": "Maak mijn kantoor",
@@ -912,7 +900,9 @@
       "free": "Gratis abonnement",
       "team10": "Team 10",
       "team25": "Team 25",
-      "team50": "Team 50"
+      "team50": "Team 50",
+      "plus": "Plus",
+      "pro": "Pro"
     },
     "roles": {
       "owner": "Eigenaar",
@@ -930,7 +920,8 @@
       "leave": "Dit kantoor verlaten",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "plan": "{plan} · {used} van {seats} plekken",
-      "danger": "Verlaten of sluiten"
+      "danger": "Verlaten of sluiten",
+      "cancelPlanFirst": "Zeg eerst het abonnement van dit kantoor op onder Abonnement en facturering. Daarna kan het dicht."
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -972,20 +963,26 @@
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
-      "invalid": "Misschien is hij verlopen, al gebruikt of uitgezet. Vraag om een nieuwe.",
+      "invalid": "Misschien is hij vernieuwd, of is het kantoor gesloten. Vraag om een nieuwe link.",
       "home": "Naar de startpagina",
-      "eyebrow": "{name} heeft je uitgenodigd",
-      "asAdmin": "Je bent uitgenodigd als beheerder.",
-      "asMember": "Je bent uitgenodigd voor het team.",
+      "eyebrow": "Je bent uitgenodigd voor",
       "join": "Meedoen met {office}",
-      "joiningAs": "Je doet mee als {name} ({email})",
+      "joiningAs": "Je doet mee als {email}.",
       "createAccount": "Account maken",
       "signIn": "Ik heb een account",
-      "readyToJoin": "Dat ben ik",
-      "accountKeeps": "Een account onthoudt {name} en je personage voor de volgende keer.",
-      "you": "Jij",
       "members": "{count, plural, one {# lid} other {# leden}}",
-      "change": "Wijzigen"
+      "change": "Niet jij?",
+      "accountTitle": "Neem je plek in",
+      "accountBody": "Log in om mee te doen. Het duurt een paar seconden.",
+      "perkFloor": "Loop naar iemand toe om te praten, zoals in een echt kantoor",
+      "perkTalk": "Spraakgesprekken beginnen als je naast elkaar staat",
+      "perkChat": "Kanalen en berichten die blijven",
+      "useEmail": "Liever met e-mail",
+      "joining": "Bezig met aanmelden",
+      "joinTitle": "Je kunt meedoen",
+      "joinBody": "Het kantoor staat klaar op je startpagina.",
+      "fullTitle": "Dit kantoor is vol",
+      "fullBody": "Alle plekken zijn bezet. Vraag wie de link stuurde om ruimte te maken of een groter abonnement te nemen."
     },
     "errors": {
       "member_limit": "De werkruimte is vol met het huidige abonnement.",
@@ -996,7 +993,7 @@
       "name_required": "Geef het eerst een naam.",
       "bad_email": "Dat lijkt geen e-mailadres.",
       "invite_used": "Deze uitnodiging is al gebruikt.",
-      "invite_invalid": "Deze uitnodiging is verlopen of uitgezet.",
+      "invite_invalid": "Deze uitnodigingslink is vernieuwd of werkt niet meer.",
       "wrong_account": "Deze uitnodiging is voor een ander e-mailadres. Log in met dat account.",
       "wrong_password": "Je huidige wachtwoord klopt niet.",
       "password_too_short": "Gebruik minstens 8 tekens.",
@@ -1012,15 +1009,12 @@
     "people": {
       "title": "Mensen",
       "members": "Leden",
-      "invitations": "Openstaande uitnodigingen",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
       "seatsFree": "Er is nog plek.",
       "onFloorNow": "{count} nu op de vloer",
-      "noInvitations": "Geen openstaande uitnodigingen",
       "copied": "Gekopieerd",
-      "revoke": "Intrekken",
       "remove": "Verwijderen",
       "leave": "Verlaten",
       "makeAdmin": "Beheerder maken",
@@ -1032,21 +1026,23 @@
       "admin": "Beheerder",
       "member": "Lid",
       "noEmail": "Geen e-mail",
-      "expires": "Verloopt op {date}",
-      "anyoneWithLink": "Iedereen met de link",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
       "linkCopied": "Uitnodigingslink gekopieerd",
       "nobodyOnFloor": "Nog niemand anders.",
       "seatsLeft": "{count, plural, one {# plek vrij — nodig iemand uit} other {# plekken vrij — nodig iemand uit}}",
       "seatsNote": "Een plek is een lid. Wie vertrekt geeft die vrij; offline zijn niet.",
-      "invitationsNote": "Een uitnodiging houdt geen plek bezet. Wie het eerst accepteert krijgt er een, zolang er een vrij is.",
-      "noInvitationsBody": "Nodig iemand uit; de link wacht hier tot die wordt geaccepteerd of verloopt.",
       "allSeatsTaken": "Alle plekken zijn bezet",
       "allSeatsTakenBody": "Wie vertrekt, maakt een plek vrij. Kantoren met meer plekken komen eraan.",
       "yourProfile": "Je profiel",
       "ownOfficeTitle": "Een vloer als deze voor je team?",
-      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen."
+      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen.",
+      "linkTitle": "Uitnodigingslink",
+      "linkBody": "Iedereen met deze link kan meedoen met een account, zolang er plek is.",
+      "copy": "Kopiëren",
+      "resetLink": "Link vernieuwen",
+      "resetTitle": "Uitnodigingslink vernieuwen?",
+      "resetBody": "De huidige link werkt meteen niet meer en een nieuwe neemt het over. Wie al in het kantoor zit, blijft."
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
@@ -1056,7 +1052,33 @@
   "create": {
     "nameLabel": "Naam van het kantoor",
     "creating": "Wordt klaargezet",
-    "continue": "Verder"
+    "continue": "Verder",
+    "eyebrow": "Nieuw kantoor",
+    "untitled": "Je kantoor",
+    "nameTitle": "Hoe heet je team?",
+    "nameBody": "Deze naam ziet iedereen die binnenkomt.",
+    "namePlaceholder": "Acme Studio",
+    "renameLater": "Je kunt de naam altijd wijzigen.",
+    "createIt": "Kantoor maken",
+    "sizeTitle": "Hoeveel mensen gaan hier werken?",
+    "sizeBody": "Tel iedereen die je wilt uitnodigen, jezelf meegeteld.",
+    "people": "mensen",
+    "planTitle": "Kies een abonnement voor {office}",
+    "planBody": "Altijd te wijzigen of op te zeggen.",
+    "recommended": "Past het best",
+    "perMonth": "/maand",
+    "upTo": "Tot {count} mensen",
+    "perPerson": "{price} per persoon",
+    "bigger": "Meer dan 25? Begin met Pro en schrijf ons: we maken ruimte.",
+    "included": "Wat zit erin",
+    "includedCalls": "Spraakgesprekken als je langsloopt, nooit geteld",
+    "includedChat": "Chat, kanalen en bestanden",
+    "includedCancel": "Altijd opzegbaar; binnen 14 dagen geld terug",
+    "getPlan": "Neem {plan} · {price}/maand",
+    "openingCheckout": "Afrekenen wordt geopend",
+    "freeInstead": "Of begin met Free, tot {count} mensen",
+    "freeTooSmall": "Begin met Free · maar {count} mensen kunnen meedoen",
+    "includedMeetingsBoth": "Groepsvergaderingen met video: {plus} uur per maand op Plus, {pro} op Pro"
   },
   "meetings": {
     "title": "Meetings",
@@ -1092,7 +1114,15 @@
     "ended": "Die meeting is afgelopen",
     "rejoin": "Opnieuw meedoen",
     "makeMeeting": "Meeting",
-    "makeMeetingHint": "Een gesprek is met z'n tweeën: start een meeting voor jullie drie"
+    "makeMeetingHint": "Een gesprek is met z'n tweeën: start een meeting voor jullie drie",
+    "hours": {
+      "usedMonth": "{used} van {allowance} vergaderuren gebruikt deze maand",
+      "usedToday": "{used} van {allowance} vergaderuren gebruikt vandaag",
+      "more": "Meer uren",
+      "paused": "Video gepauzeerd",
+      "pausedMonth": "alleen geluid tot {date}",
+      "pausedToday": "alleen geluid tot morgen"
+    }
   },
   "shell": {
     "floor": "Vloer",
@@ -1156,19 +1186,16 @@
     "welcome": "Welkom, {name}",
     "welcomeAnonymous": "Welkom",
     "welcomeBody": "Eén verdieping voor je team, met kanalen en gesprekken ingebouwd.",
-    "stepName": "Geef je kantoor een naam",
-    "makeIt": "Maken",
     "invited": "Ben je uitgenodigd?",
     "invitedBody": "Plak de link die je team je stuurde.",
     "invitePlaceholder": "Plak een uitnodigingslink",
     "join": "Meedoen",
     "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
     "makeTitle": "Laten we je kantoor maken",
-    "yourNewOffice": "Je nieuwe kantoor",
-    "freeRename": "Gratis voor maximaal 3 mensen. Je kunt de naam altijd wijzigen.",
     "otherWays": "Andere manieren om binnen te komen",
     "lobbyBody": "Loop binnen en ontmoet mensen.",
-    "yourAccount": "Je account"
+    "yourAccount": "Je account",
+    "createOffice": "Maak je kantoor"
   },
   "home": {
     "nav": {
@@ -1187,11 +1214,8 @@
         "invites": "Uitnodigingen"
       },
       "lobbyTitle": "De lobby is open",
-      "lobbyBody": "Loop over een echte verdieping voordat je je eigen maakt. Geen account nodig.",
       "menu": "Menu",
       "teams": "Voor teams",
-      "teamTitle": "Gemaakt voor remote teams",
-      "teamBody": "Gratis voor maximaal 3 mensen, grotere abonnementen komen eraan.",
       "cases": {
         "virtualOffice": "Een plek voor je remote team",
         "virtualCoworking": "Geconcentreerd werken naast anderen",
@@ -1199,7 +1223,8 @@
         "virtualClassroom": "Spreekuren en kleine klassen",
         "proximityChat": "Praat met wie je tegenkomt"
       },
-      "getStarted": "Aan de slag"
+      "getStarted": "Aan de slag",
+      "lobbyLine": "Loop rond op een echte vloer. Geen account nodig."
     },
     "hero": {
       "title": "Een virtueel kantoor waar je team doorheen kan lopen.",
@@ -1240,7 +1265,7 @@
       "invites": {
         "title": "Haal je team binnen.",
         "muted": "Met één link.",
-        "body": "Stuur een uitnodigingslink of nodig uit per e-mail. Ze kiezen een naam en een personage, maken een gratis account en staan op de verdieping."
+        "body": "Deel de link van je kantoor. Ze maken een gratis account, kiezen een naam en personage, en staan op de vloer."
       }
     },
     "steps": {
@@ -1252,7 +1277,7 @@
       },
       "invite": {
         "title": "Stuur je team de link.",
-        "body": "Nodig teamgenoten uit per e-mail, of stuur ze een uitnodigingslink."
+        "body": "Stuur je teamgenoten de link van je kantoor."
       },
       "walk": {
         "title": "Loop binnen.",
@@ -1440,40 +1465,25 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Begin gratis. Elk abonnement heeft alles, en gasten tellen nooit mee.",
+      "body": "Begin gratis. Stap over als je team groeit.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
       "people": "Tot {count} mensen",
       "free": {
-        "name": "Free",
-        "body": "Het hele product, voor een kleine studio of twee oprichters.",
-        "items": [
-          "Een eigen verdieping",
-          "Gesprekken en vergaderingen",
-          "Chat, afbeeldingen en bestanden",
-          "Gasten via een link"
-        ]
+        "name": "Free"
       },
-      "team": {
-        "name": "Team",
-        "body": "Eén prijs voor het hele kantoor, hoeveel van de tien plekken je ook vult.",
-        "items": [
-          "Alles van Free",
-          "Ruimte voor 10 leden",
-          "Jaarlijks: twee maanden gratis"
-        ]
+      "plus": {
+        "name": "Plus"
       },
-      "business": {
-        "name": "Business",
-        "body": "Voor het team dat één rij bureaus is ontgroeid.",
-        "items": [
-          "Alles van Team",
-          "Ruimte voor 25 leden",
-          "Voorrang bij support",
-          "Groter? Neem contact op"
-        ]
-      }
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Prijzen per maand, exclusief btw.",
+      "perPerson": "{price} per persoon",
+      "freeLine": "Geen kaart nodig",
+      "choose": "Kies {plan}",
+      "note": "Elk abonnement heeft alle functies. Gesprekken tellen nooit mee; groepsvergaderingen krijgen 5, 30 of 60 uur per maand."
     },
     "faq": {
       "title": "Vragen,",
@@ -1485,5 +1495,77 @@
       "muted": "een verdieping om te delen.",
       "note": "Gratis voor maximaal 3 mensen · Draait op Cloudflare"
     }
+  },
+  "billing": {
+    "current": "Dit kantoor zit op",
+    "members": "{used} van {seats} leden",
+    "freeNote": "Gratis, met alle functies.",
+    "renews": "Verlengt op {date}",
+    "ends": "Eindigt op {date}, daarna het gratis abonnement",
+    "perMonth": "per maand",
+    "pastDue": "De laatste betaling is niet gelukt. Paddle probeert het opnieuw; werk de kaart bij om het abonnement te houden.",
+    "updateCard": "Kaart bijwerken",
+    "keep": "Dit abonnement houden",
+    "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",
+    "settingUpSlow": "Betaling ontvangen. Het abonnement kan een minuut nodig hebben; vernieuw als het er nog niet is.",
+    "cancel": "Abonnement opzeggen",
+    "switch": "Wisselen",
+    "fine": "Prijzen zijn per maand, in Amerikaanse dollars, exclusief btw. Betalingen lopen via Paddle, onze wederverkoper. Vraag binnen 14 dagen na een betaling om alles terug te krijgen.",
+    "adminsOnly": "Alleen beheerders van het kantoor kunnen het abonnement wijzigen.",
+    "switchTitle": "Overstappen naar {plan}?",
+    "switchBody": "Paddle rekent het verschil voor de rest van de periode meteen af of crediteert het. Niemand op de vloer merkt er iets van.",
+    "cancelTitle": "Abonnement opzeggen?",
+    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
+    "cancelBodyNow": "Aan het eind van deze periode gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
+    "moreSeats": "Meer plekken",
+    "membersLabel": "Leden",
+    "hoursLabel": "Vergaderuren",
+    "hours": "{used} van {allowance} u",
+    "hoursResets": "Begint opnieuw op {date}",
+    "hoursUsedUp": "De vergaderuren van deze maand zijn op: vergaderingen zijn tot {date} alleen met geluid. Een groter abonnement brengt video meteen terug.",
+    "hoursExplained": "Vergaderuren tellen de tijd dat er twee of meer mensen in een vergadering zijn. Gesprekken met z'n tweeën op de vloer tellen nooit mee. Zijn ze op, dan gaan vergaderingen tot de 1e verder met geluid.",
+    "payment": "Betaling",
+    "cardUnknown": "Kaart opgeslagen bij Paddle",
+    "card": "Kaart",
+    "cardEnding": "{brand} eindigend op {last4}",
+    "expires": "Verloopt {date}",
+    "update": "Wijzigen",
+    "nextCharge": "Volgende afschrijving",
+    "chargeOn": "{amount} op {date}",
+    "noneAfter": "Geen, het abonnement stopt op {date}",
+    "history": "Betalingsgeschiedenis",
+    "noPayments": "Nog geen betalingen.",
+    "planPayment": "{plan}-abonnement",
+    "invoice": "Factuur downloaden",
+    "status": {
+      "refunded": "Terugbetaald",
+      "partly_refunded": "Deels terugbetaald",
+      "failed": "Mislukt",
+      "due": "Openstaand"
+    },
+    "errors": {
+      "tooManyMembers": "Dit kantoor heeft meer leden dan dat abonnement toelaat. Verwijder er eerst een paar.",
+      "hasSubscription": "Dit kantoor heeft al een abonnement. Wijzig het in plaats daarvan.",
+      "failed": "Dat is niet gelukt. Probeer het opnieuw."
+    },
+    "pillPastDue": "Kaart geweigerd",
+    "pillEnding": "Stopt",
+    "nextChargeLine": "Volgende afschrijving {amount} op {date}",
+    "endingNote": "Het abonnement stopt op {date}. Houd het en er verandert niets.",
+    "seatsFree": "{count, plural, one {# plek vrij} other {# plekken vrij}}",
+    "seatsFull": "Alle plekken zijn bezet",
+    "upgradeFull": "Alle plekken zijn bezet",
+    "upgradeHours": "De meeste vergaderuren van deze maand zijn op",
+    "upgradeRoom": "Ruimte om te groeien",
+    "upgradeFree": "Voor een groter team",
+    "upgradeTitle": "Stap over naar {plan}",
+    "gainPeople": "{count} mensen",
+    "gainHours": "{count} vergaderuren",
+    "gainNow": "nu {value}",
+    "upgradeButton": "Upgraden naar {plan} · {price}/maand",
+    "orPlan": "Of {plan}, tot {count} mensen · {price}/maand",
+    "topPlan": "Je zit op ons grootste abonnement. Ruimte nodig voor meer dan {count} mensen? Schrijf ons, dan regelen we het.",
+    "moveDown": "Overstappen naar {plan}",
+    "usageOf": "{used} van {total}"
   }
 }

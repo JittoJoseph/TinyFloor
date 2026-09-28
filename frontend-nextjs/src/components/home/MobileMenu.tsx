@@ -91,10 +91,14 @@ export function MobileMenu({ label, actions, children }: { label: string; action
   );
 }
 
-/** A section of the phone menu that folds open, the first one open to begin with. */
+/**
+ * A section of the phone menu that folds open, the first one open to begin
+ * with. The sections share a name, so the browser keeps one open at a time:
+ * opening another folds the last one away.
+ */
 export function MobileSection({ title, open = false, children }: { title: string; open?: boolean; children: ReactNode }) {
   return (
-    <details open={open} className="group/section border-b border-border py-1">
+    <details name="nav-section" open={open} className="group/section border-b border-border py-1">
       <summary className="flex h-14 cursor-pointer list-none items-center justify-between px-1 text-[16px] font-medium text-foreground [&::-webkit-details-marker]:hidden">
         {title}
         <ChevronDown className="size-4 text-faint transition-transform duration-200 group-open/section:rotate-180" />

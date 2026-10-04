@@ -6,3 +6,7 @@
 
 /credits.txt
   X-Robots-Tag: noindex
+
+/page-fingerprints.json
+  Cache-Control: no-cache
+  X-Robots-Tag: noindex

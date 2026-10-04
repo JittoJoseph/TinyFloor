@@ -9,6 +9,10 @@
 // Only pages Next answers with a 200 are copied; a built redirect or 404 keeps
 // going through Next. The files go under /cdn-cgi, which only the worker can
 // read, so they are never served at a second address.
+//
+// It also writes /page-fingerprints.json: a hash of what a search engine reads
+// on each page (title, meta tags, links, structured data, text), so the deploy
+// can tell IndexNow about the pages whose words changed (scripts/indexnow.mjs).
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
@@ -36,6 +40,8 @@ async function copy(from, to) {
  * its payload there are files for.
  */
 const pages = {};
+/** Each page's public address (`/about`, `/de/about`) and the hash of what a search engine reads there. */
+const fingerprints = {};
 for (const [route, entry] of Object.entries(routes)) {
   // Pages under a locale (/de/about), not Next's internals or metadata files.
   const [, locale, ...rest] = route.split("/");
@@ -57,6 +63,7 @@ for (const [route, entry] of Object.entries(routes)) {
     headers: Object.fromEntries(Object.entries(meta.headers ?? {}).filter(([name]) => name !== "x-next-cache-tags")),
     segments,
   };
+  fingerprints[publicPath(route)] = fingerprint(html.toString("utf8"));
 }
 
 const site = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com");
@@ -64,3 +71,34 @@ const paths = Object.keys(pages).sort();
 const locales = [...new Set(paths.map((path) => path.split("/")[1]))];
 await writeFile(join(root, ".open-next/static-pages.json"), `${JSON.stringify({ host: site.hostname, locales, pages })}\n`);
 console.log(`static pages: ${paths.length} built pages served as files, for ${site.hostname}`);
+
+await writeFile(
+  join(root, ".open-next/assets/page-fingerprints.json"),
+  `${JSON.stringify({ site: site.origin, pages: Object.fromEntries(Object.entries(fingerprints).sort()) })}\n`,
+);
+
+/** `/en/about` is served at `/about`, and `/en` at `/`. */
+function publicPath(route) {
+  if (route === "/en") return "/";
+  return route.startsWith("/en/") ? route.slice(3) : route;
+}
+
+/**
+ * What a crawler reads on a page, hashed: the title, meta tags, canonical and
+ * language links (Next may stream these into the body, so the whole page is
+ * searched), the structured data, and the body's text, links and image
+ * descriptions. Scripts, styles and asset names change on every build without
+ * the page changing, so they are left out.
+ */
+function fingerprint(html) {
+  const body = html.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? html;
+  const read = [
+    ...html.matchAll(/<title[^>]*>[\s\S]*?<\/title>|<meta\s[^>]*(?:name|property)=[^>]*>|<link\s[^>]*rel="(?:canonical|alternate)"[^>]*>/gi),
+  ].map(([tag]) => tag);
+  const structured = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)].map(([, json]) => json);
+  const visible = body.replace(/<(script|style|template|noscript)[^>]*>[\s\S]*?<\/\1>/gi, " ");
+  const links = [...visible.matchAll(/<a\s[^>]*href="([^"]*)"/gi)].map(([, href]) => href);
+  const alts = [...visible.matchAll(/\salt="([^"]*)"/gi)].map(([, alt]) => alt);
+  const text = visible.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return createHash("sha1").update(JSON.stringify([read, structured, links, alts, text])).digest("base64url").slice(0, 16);
+}

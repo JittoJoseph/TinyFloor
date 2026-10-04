@@ -1,58 +1,8 @@
-import { getTranslations } from "next-intl/server";
-import { locales } from "@/lib/i18n/routing";
-import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
-import { HUBS, LANDINGS, LANDING_GROUPS } from "@/lib/landings";
+import { llmsTxt, textResponse } from "@/lib/llms";
 
 export const dynamic = "force-static";
 
-/** A plain text guide to the site for AI assistants and answer engines, in English. */
+/** A map of the site for AI assistants and answer engines, in English (src/lib/llms.ts). */
 export async function GET() {
-  const t = await getTranslations({ locale: "en" });
-  const pages: Array<[string, string, string]> = [
-    ["TinyFloor", "/", t("landing.description")],
-    [t("pricingPage.meta.title"), "/pricing", t("pricingPage.meta.description")],
-    [t("metadata.lobbyTitle"), "/lobby", t("metadata.lobbyDescription")],
-    [t("about.meta.title"), "/about", t("about.meta.description")],
-    ...LANDING_GROUPS.map((group): [string, string, string] => [
-      t(`landings.hubs.${group}.meta.title`),
-      `/${HUBS[group]}`,
-      t(`landings.hubs.${group}.meta.description`),
-    ]),
-    ...LANDINGS.map(({ key, slug }): [string, string, string] => [
-      t(`landings.pages.${key}.meta.title`),
-      `/${slug}`,
-      t(`landings.pages.${key}.meta.description`),
-    ]),
-  ];
-  const faqs = t.raw("faq.items") as Array<{ q: string; a: string }>;
-
-  const body = [
-    "# TinyFloor",
-    "",
-    `> ${t("metadata.description")}`,
-    "",
-    "## Pages",
-    "",
-    ...pages.map(([title, path, note]) => `- [${title}](${absoluteUrl("en", path)}): ${note}`),
-    "",
-    "## Features",
-    "",
-    ...(t.raw("landing.features") as string[]).map((feature) => `- ${feature}`),
-    ...MORE_FEATURES.map((key) => `- ${t(`home.more.items.${key}.title`)}`),
-    "",
-    "## FAQ",
-    "",
-    ...faqs.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]),
-    "## Languages",
-    "",
-    ...locales.map(({ code, label }) => `- [${label}](${absoluteUrl(code, "/")})`),
-    "",
-  ].join("\n");
-
-  return new Response(body, {
-    headers: {
-      "content-type": "text/plain; charset=utf-8",
-      "cache-control": "public, max-age=3600",
-    },
-  });
+  return textResponse(await llmsTxt());
 }

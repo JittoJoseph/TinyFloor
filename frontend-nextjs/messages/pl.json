@@ -800,7 +800,8 @@
             "q": "Czy to jest darmowe?",
             "a": "Tak, dla biura do 3 osób, w przeglądarce na komputerze i telefonie."
           }
-        ]
+        ],
+        "line": "Podejdź i rozmawiaj, bez linku"
       },
       "sococo": {
         "label": "Alternatywa dla Sococo",
@@ -1595,6 +1596,246 @@
             "a": "Tak. Udostępnij ekran w rozmowie lub na spotkaniu i szkicujcie razem na tablicy."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Wirtualna sala spotkań",
+        "line": "Wejdź, by się spotkać, wyjdź, by odejść",
+        "meta": {
+          "title": "Wirtualna sala spotkań dla zespołów zdalnych",
+          "description": "Sala spotkań, do której zespół wchodzi sam: dołącz, a twoja postać zajmie miejsce przy stole. Kamery, udostępnianie ekranu i żadnego linku."
+        },
+        "title": "<em>Wirtualna sala spotkań</em> na końcu korytarza.",
+        "subtitle": "Każde biuro ma salę spotkań, która zawsze tam jest. Dołącz do spotkania, a twoja postać wejdzie do środka; wyjdź i już cię nie ma. Bez linków i poczekalni.",
+        "points": [
+          {
+            "title": "Zawsze otwarta",
+            "body": "Główne spotkanie jest zawsze dostępne na standupy i szybkie ustalenia. Każdy może zacząć kolejne i zaprosić ludzi."
+          },
+          {
+            "title": "Karta dla każdego",
+            "body": "Osoby bez kamery widać jako kartę, która rozświetla się, gdy mówią, więc sala nigdy nie wygląda na pustą."
+          },
+          {
+            "title": "Udostępnij ekran",
+            "body": "Udostępnij okno całej sali jednym kliknięciem, na demo, przeglądy i planowanie."
+          }
+        ],
+        "momentsTitle": "<em>Spotkanie</em> od początku do końca.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Dołącz",
+            "body": "Dołącz z listy spotkań, a twoja postać wejdzie do sali."
+          },
+          {
+            "label": "2",
+            "title": "Rozmawiaj",
+            "body": "Z kamerą lub bez, z udostępnianiem ekranu dla wszystkiego, co warto pokazać."
+          },
+          {
+            "label": "3",
+            "title": "Wyjdź",
+            "body": "Wyjdź z sali i już cię nie ma. Na piętrze znów jest cicho."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Ile osób może dołączyć do spotkania?",
+            "a": "Całe biuro: do 3 osób w Free, 10 w Plus i 25 w Pro."
+          },
+          {
+            "q": "Czy spotkania mają limit czasu?",
+            "a": "Brak limitu na spotkanie. Każdy plan zawiera godziny spotkań grupowych co miesiąc: 5 w Free, 30 w Plus i 60 w Pro."
+          },
+          {
+            "q": "Co się dzieje, gdy godziny się skończą?",
+            "a": "Spotkania trwają dalej tylko z dźwiękiem do 1. dnia miesiąca. Rozmowy dwóch osób nigdy nie są liczone."
+          },
+          {
+            "q": "Czy możemy mieć kilka spotkań naraz?",
+            "a": "Tak. Oprócz głównego spotkania każdy może zacząć kolejne z nazwą i zaprosić ludzi."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Czat zespołu",
+        "line": "Kanały i wiadomości, które zostają",
+        "meta": {
+          "title": "Czat zespołu obok twojego wirtualnego biura",
+          "description": "Kanały, wiadomości prywatne i reakcje, które zostają, tuż obok piętra twojego zespołu. Nadrabiaj z telefonu bez wchodzenia."
+        },
+        "title": "<em>Czat zespołu</em> tuż obok piętra.",
+        "subtitle": "Każde biuro ma własny czat z kanałami, wiadomościami prywatnymi i reakcjami. Wiadomości zostają, więc nadrobisz z telefonu bez wchodzenia.",
+        "points": [
+          {
+            "title": "Kanał na wszystko",
+            "body": "Utwórz kanał dla każdego projektu, klienta lub tematu i trzymaj rozmowę w jednym miejscu."
+          },
+          {
+            "title": "Wiadomości prywatne",
+            "body": "Pisz do każdego w biurze jeden na jeden i wróć do tego jutro."
+          },
+          {
+            "title": "Ciche powiadomienie",
+            "body": "Gdy ktoś napisze, dostajesz ciche powiadomienie na piętrze zamiast lawiny wyskakujących okien."
+          }
+        ],
+        "momentsTitle": "<em>Czat</em> przez cały dzień.",
+        "moments": [
+          {
+            "label": "Rano",
+            "title": "Nadrób",
+            "body": "Przeczytaj na telefonie, co cię ominęło, zanim wejdziesz."
+          },
+          {
+            "label": "W południe",
+            "title": "Udostępnij",
+            "body": "Wrzuć zrzut ekranu na kanał, żeby zobaczył go cały zespół."
+          },
+          {
+            "label": "Po południu",
+            "title": "Podejdź",
+            "body": "Gdy wątek się wydłuża, podejdź i omówcie to na głos."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czy czat zachowuje historię?",
+            "a": "Tak. Każdy kanał przechowuje 5000 najnowszych wiadomości, w każdym planie."
+          },
+          {
+            "q": "Czy mogę korzystać z czatu na telefonie?",
+            "a": "Tak. Otwórz TinyFloor w przeglądarce telefonu, by czytać i odpowiadać bez wchodzenia na piętro."
+          },
+          {
+            "q": "Czy możemy udostępniać obrazy?",
+            "a": "Tak. Wrzucaj zrzuty ekranu i zdjęcia na dowolny kanał lub w wiadomość prywatną."
+          },
+          {
+            "q": "Czy zastępuje Slacka?",
+            "a": "W małym zespole tak. Inni zostawiają Slacka do wiadomości, a TinyFloor używają do obecności, rozmów i spotkań."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Obecność zespołu",
+        "line": "Kto jest, kto zajęty, kto na rozmowie",
+        "meta": {
+          "title": "Obecność i statusy dla zespołów zdalnych",
+          "description": "Zobacz od razu, kto jest, kto jest zajęty i kto rozmawia, na jednym piętrze, i podejdź od razu. Obecność zespołu dla pracy zdalnej."
+        },
+        "title": "<em>Obecność zespołu</em> w jednym spojrzeniu.",
+        "subtitle": "Każdy ma biurko i status na piętrze. Widzisz, kto jest wolny, kto skupiony, a kto już rozmawia, zanim zapytasz.",
+        "points": [
+          {
+            "title": "Status, który coś znaczy",
+            "body": "Dostępny, zajęty lub nieobecny, ustawiany przez ciebie, żeby inni wiedzieli, kiedy poczekać."
+          },
+          {
+            "title": "Kto rozmawia",
+            "body": "Zobacz, kto już rozmawia albo jest na spotkaniu, bez przeszkadzania."
+          },
+          {
+            "title": "Podejdź",
+            "body": "Stuknij Podejdź obok dowolnej osoby, a twoja postać sama znajdzie drogę."
+          }
+        ],
+        "momentsTitle": "<em>Obecność</em> w trzech spojrzeniach.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Spójrz",
+            "body": "Otwórz piętro i zobacz, kto jest w pobliżu."
+          },
+          {
+            "label": "2",
+            "title": "Sprawdź",
+            "body": "Status powie ci, czy to dobry moment."
+          },
+          {
+            "label": "3",
+            "title": "Podejdź",
+            "body": "Stuknij Podejdź, a postać pójdzie do biurka tej osoby."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Jakie są statusy?",
+            "a": "Dostępny, zajęty i nieobecny. Twój status widać obok imienia na piętrze i na liście osób."
+          },
+          {
+            "q": "Czy TinyFloor śledzi aktywność?",
+            "a": "Nie. Pokazuje, kto jest na piętrze i jaki status wybrał. Nie raportuje niczyjej aktywności."
+          },
+          {
+            "q": "Czy mogę zobaczyć z telefonu, kto jest?",
+            "a": "Tak. Lista osób działa też w przeglądarce telefonu."
+          },
+          {
+            "q": "Ile to kosztuje?",
+            "a": "Za darmo dla maksymalnie 3 osób. Plus kosztuje 19 $ miesięcznie za 10 osób, a Pro 49 $ miesięcznie za 25, za całe biuro, nie za osobę."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Tablica online",
+        "line": "Wspólna tablica na ścianie",
+        "meta": {
+          "title": "Tablica online w wirtualnym biurze zespołu",
+          "description": "Wspólna tablica na ścianie wirtualnego biura, na szkic, który wszystko wyjaśnia. Zostaje, gdy ludzie wracają."
+        },
+        "title": "<em>Tablica online</em> na ścianie biura.",
+        "subtitle": "Podejdź do tablicy i rysuj. Całe biuro widzi tę samą tablicę, a to, co na niej jest, zostaje na następny raz.",
+        "points": [
+          {
+            "title": "Podejdź i rysuj",
+            "body": "Nie trzeba tworzyć tablicy ani udostępniać linku. Wisi na ścianie, gotowa, gdy ty jesteś."
+          },
+          {
+            "title": "Widzą ją wszyscy",
+            "body": "Całe biuro patrzy na tę samą tablicę, więc szkic tłumaczy się sam."
+          },
+          {
+            "title": "Zostaje",
+            "body": "To, co narysowane, jest zapisywane, więc schemat z poniedziałku jest tam jeszcze w piątek."
+          }
+        ],
+        "momentsTitle": "<em>Szkic</em>, który to wyjaśnia.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Podejdź",
+            "body": "Idź do tablicy na ścianie."
+          },
+          {
+            "label": "2",
+            "title": "Rysuj",
+            "body": "Naszkicuj przepływ, gdy o nim rozmawiacie."
+          },
+          {
+            "label": "3",
+            "title": "Zostaw",
+            "body": "Odejdź, a rysunek zostanie dla zespołu."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Czy tablica jest wspólna dla całego biura?",
+            "a": "Tak. Wszyscy w biurze widzą tę samą tablicę."
+          },
+          {
+            "q": "Czy możemy coś zmazać?",
+            "a": "Tak. Użyj gumki albo wyczyść całą tablicę, gdy skończycie."
+          },
+          {
+            "q": "Czy zastępuje Miro lub FigJam?",
+            "a": "Nie. Służy do szybkich szkiców podczas rozmowy. Do większej pracy zostańcie przy narzędziach do projektowania."
+          },
+          {
+            "q": "Czy jest w każdym planie?",
+            "a": "Tak. Każdy plan ma wszystkie funkcje, także darmowy."
+          }
+        ]
       }
     },
     "teams": "Zespoły",
@@ -1626,8 +1867,17 @@
         },
         "title": "Stworzone dla <em>zespołów takich jak twój.</em>",
         "body": "Każdy zespół korzysta z piętra trochę inaczej. Oto jak pasuje ono do twojego."
+      },
+      "features": {
+        "meta": {
+          "title": "Funkcje TinyFloor: rozmowy z bliska, spotkania, czat i więcej",
+          "description": "Wszystko w biurze TinyFloor: rozmowy po podejściu, sala spotkań, czat zespołu, obecność i wspólna tablica, w każdym planie."
+        },
+        "title": "Wszystko na <em>jednym piętrze.</em>",
+        "body": "Każdy plan ma wszystkie funkcje. Oto co jest na piętrze."
       }
-    }
+    },
+    "features": "Funkcje"
   },
   "lobby": {
     "eyebrow": "Wypróbuj TinyFloor",
@@ -1986,13 +2236,6 @@
       "signIn": "Zaloguj się",
       "start": "Utwórz biuro",
       "main": "Nawigacja główna",
-      "items": {
-        "proximity": "Rozmowy w pobliżu",
-        "meetings": "Spotkania",
-        "chat": "Czat",
-        "people": "Obecność",
-        "invites": "Zaproszenia"
-      },
       "lobbyTitle": "Wypróbuj biuro demo",
       "menu": "Menu",
       "teams": "Dla zespołów",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Wypróbuj demo",
       "noAccount": "Bez zakładania konta"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Bez linków, bez planowania."
-      },
-      "meetings": {
-        "muted": "Wstań, by wyjść."
-      },
-      "chat": {
-        "title": "Rozmowy, które zostają.",
-        "muted": "Kanały, wiadomości prywatne, reakcje.",
-        "body": "Każde biuro ma własny czat. Nadrabiaj z telefonu bez wchodzenia i dostań dyskretne powiadomienie na piętrze, gdy ktoś napisze."
-      },
-      "people": {
-        "title": "Wiedz, kto jest obok.",
-        "muted": "I podejdź prosto do niego.",
-        "body": "Zobacz, kto jest na piętrze, kto jest zajęty, a kto w rozmowie. Dotknij Podejdź, a twoja postać sama znajdzie drogę."
-      },
-      "invites": {
-        "title": "Wprowadź swój zespół.",
-        "muted": "Jednym linkiem.",
-        "body": "Udostępnij link do biura. Zakładają darmowe konto, wybierają imię i postać i już są na piętrze."
-      }
     },
     "steps": {
       "title": "Załóż wirtualne biuro w minutę.",

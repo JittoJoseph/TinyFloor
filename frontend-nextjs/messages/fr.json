@@ -800,7 +800,8 @@
             "q": "Est-ce gratuit ?",
             "a": "Oui, pour un bureau jusqu'à 3 personnes, dans le navigateur sur ordinateur et mobile."
           }
-        ]
+        ],
+        "line": "Approchez-vous pour parler, sans lien"
       },
       "sococo": {
         "label": "Alternative à Sococo",
@@ -1595,6 +1596,246 @@
             "a": "Oui. Partagez votre écran dans un appel ou une réunion, et dessinez ensemble sur le tableau blanc."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Salle de réunion virtuelle",
+        "line": "Entrez pour vous réunir, sortez pour partir",
+        "meta": {
+          "title": "Salle de réunion virtuelle pour équipes à distance",
+          "description": "Une salle de réunion où votre équipe entre à pied : rejoignez-la et votre personnage prend place à la table, avec caméras, partage d'écran et sans lien de réunion."
+        },
+        "title": "Une <em>salle de réunion virtuelle</em> au bout du couloir.",
+        "subtitle": "Chaque bureau a une salle de réunion toujours là. Rejoignez une réunion et votre personnage entre ; sortez et vous êtes parti. Pas de lien, pas de salle d'attente.",
+        "points": [
+          {
+            "title": "Toujours ouverte",
+            "body": "La réunion principale est toujours là pour les points du matin et les échanges rapides. Chacun peut en lancer une autre et inviter du monde."
+          },
+          {
+            "title": "Une carte pour chacun",
+            "body": "Les personnes sans caméra apparaissent comme une carte qui s'allume quand elles parlent, pour que la salle ne paraisse jamais vide."
+          },
+          {
+            "title": "Partagez votre écran",
+            "body": "Partagez une fenêtre avec la salle en un clic, pour les démos, les revues et la planification."
+          }
+        ],
+        "momentsTitle": "<em>Une réunion</em>, du début à la fin.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Rejoindre",
+            "body": "Rejoignez depuis la liste des réunions et votre personnage entre dans la salle."
+          },
+          {
+            "label": "2",
+            "title": "Parler",
+            "body": "Caméra allumée ou non, avec le partage d'écran pour tout ce qui vaut d'être montré."
+          },
+          {
+            "label": "3",
+            "title": "Sortir",
+            "body": "Sortez de la salle et vous êtes parti. L'étage redevient calme."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Combien de personnes peuvent rejoindre une réunion ?",
+            "a": "Tout le bureau : jusqu'à 3 personnes en Free, 10 en Plus et 25 en Pro."
+          },
+          {
+            "q": "Les réunions ont-elles une limite de durée ?",
+            "a": "Pas de limite par réunion. Chaque formule inclut des heures de réunion de groupe chaque mois : 5 en Free, 30 en Plus et 60 en Pro."
+          },
+          {
+            "q": "Que se passe-t-il quand les heures sont épuisées ?",
+            "a": "Les réunions continuent en audio seulement jusqu'au 1er du mois. Les appels à deux ne sont jamais comptés."
+          },
+          {
+            "q": "Peut-on avoir plusieurs réunions en même temps ?",
+            "a": "Oui. En plus de la réunion principale, chacun peut en lancer une autre avec un nom et inviter du monde."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Chat d'équipe",
+        "line": "Des canaux et des messages qui restent",
+        "meta": {
+          "title": "Chat d'équipe à côté de votre bureau virtuel",
+          "description": "Canaux, messages privés et réactions qui restent, juste à côté de l'étage de votre équipe. Rattrapez-vous depuis votre téléphone sans entrer."
+        },
+        "title": "Un <em>chat d'équipe</em> juste à côté de l'étage.",
+        "subtitle": "Chaque bureau a son propre chat avec canaux, messages privés et réactions. Les messages restent, vous pouvez donc vous rattraper depuis votre téléphone sans entrer.",
+        "points": [
+          {
+            "title": "Un canal pour tout",
+            "body": "Créez un canal par projet, client ou sujet, et gardez la conversation au même endroit."
+          },
+          {
+            "title": "Messages privés",
+            "body": "Écrivez à n'importe qui du bureau en tête-à-tête, et reprenez demain."
+          },
+          {
+            "title": "Un signal discret",
+            "body": "Quand quelqu'un écrit, vous recevez un signal discret sur l'étage plutôt qu'une avalanche de pop-ups."
+          }
+        ],
+        "momentsTitle": "<em>Le chat</em> au fil de la journée.",
+        "moments": [
+          {
+            "label": "Matin",
+            "title": "Se rattraper",
+            "body": "Lisez ce que vous avez manqué sur votre téléphone avant d'entrer."
+          },
+          {
+            "label": "Midi",
+            "title": "Partager",
+            "body": "Déposez une capture dans un canal pour que toute l'équipe la voie."
+          },
+          {
+            "label": "Après-midi",
+            "title": "Aller voir",
+            "body": "Quand un fil s'allonge, allez voir la personne et parlez-en."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Le chat garde-t-il l'historique ?",
+            "a": "Oui. Chaque canal garde ses 5 000 messages les plus récents, dans chaque formule."
+          },
+          {
+            "q": "Puis-je utiliser le chat sur mon téléphone ?",
+            "a": "Oui. Ouvrez TinyFloor dans le navigateur de votre téléphone pour lire et répondre, sans aller sur l'étage."
+          },
+          {
+            "q": "Peut-on partager des images ?",
+            "a": "Oui. Déposez captures et photos dans n'importe quel canal ou message privé."
+          },
+          {
+            "q": "Remplace-t-il Slack ?",
+            "a": "Pour une petite équipe, oui. D'autres gardent Slack pour les messages et utilisent TinyFloor pour la présence, les appels et les réunions."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Présence d'équipe",
+        "line": "Qui est là, occupé ou en appel",
+        "meta": {
+          "title": "Présence et statut d'équipe pour équipes à distance",
+          "description": "Voyez qui est là, qui est occupé et qui est en appel, d'un coup d'œil sur un étage, puis allez-y directement. La présence d'équipe pour le travail à distance."
+        },
+        "title": "La <em>présence d'équipe</em> d'un coup d'œil.",
+        "subtitle": "Chacun a un bureau et un statut sur l'étage. Vous voyez qui est libre, qui est concentré et qui est déjà en appel, avant de demander.",
+        "points": [
+          {
+            "title": "Un statut qui a du sens",
+            "body": "Disponible, occupé ou absent, choisi par vous, pour que les autres sachent quand attendre."
+          },
+          {
+            "title": "Qui est en appel",
+            "body": "Voyez qui parle déjà ou est en réunion, sans interrompre."
+          },
+          {
+            "title": "Aller vers",
+            "body": "Touchez Aller vers à côté de quelqu'un et votre personnage trouve son chemin tout seul."
+          }
+        ],
+        "momentsTitle": "<em>La présence</em> en trois regards.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Regarder",
+            "body": "Ouvrez l'étage et voyez qui est là."
+          },
+          {
+            "label": "2",
+            "title": "Vérifier",
+            "body": "Un statut vous dit si c'est le bon moment."
+          },
+          {
+            "label": "3",
+            "title": "Y aller",
+            "body": "Touchez Aller vers et votre personnage se dirige vers son bureau."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Quels statuts existe-t-il ?",
+            "a": "Disponible, occupé et absent. Votre statut s'affiche à côté de votre nom sur l'étage et dans la liste des personnes."
+          },
+          {
+            "q": "TinyFloor suit-il l'activité ?",
+            "a": "Non. Il montre qui est sur l'étage et le statut que chacun choisit. Il ne rend compte de l'activité de personne."
+          },
+          {
+            "q": "Puis-je voir qui est là depuis mon téléphone ?",
+            "a": "Oui. La liste des personnes fonctionne aussi dans le navigateur de votre téléphone."
+          },
+          {
+            "q": "Combien ça coûte ?",
+            "a": "Gratuit jusqu'à 3 personnes. Plus coûte 19 $ par mois pour 10 personnes et Pro 49 $ par mois pour 25, pour tout le bureau, pas par personne."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Tableau blanc en ligne",
+        "line": "Un tableau partagé au mur",
+        "meta": {
+          "title": "Tableau blanc en ligne dans le bureau virtuel de votre équipe",
+          "description": "Un tableau blanc partagé au mur de votre bureau virtuel, pour le croquis qui explique tout. Il reste là quand les gens reviennent."
+        },
+        "title": "Un <em>tableau blanc en ligne</em> au mur du bureau.",
+        "subtitle": "Approchez-vous du tableau et dessinez. Tout le bureau voit le même tableau, et ce qui est dessus reste pour la prochaine fois.",
+        "points": [
+          {
+            "title": "Approchez et dessinez",
+            "body": "Aucun tableau à créer, aucun lien à partager. Il est au mur, prêt quand vous l'êtes."
+          },
+          {
+            "title": "Tout le monde le voit",
+            "body": "Tout le bureau regarde le même tableau, donc un croquis parle de lui-même."
+          },
+          {
+            "title": "Il reste",
+            "body": "Ce qui est dessiné est conservé, le schéma du lundi est encore là vendredi."
+          }
+        ],
+        "momentsTitle": "<em>Un croquis</em> qui explique tout.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "S'approcher",
+            "body": "Allez au tableau blanc sur le mur."
+          },
+          {
+            "label": "2",
+            "title": "Dessiner",
+            "body": "Esquissez le flux pendant que vous en parlez."
+          },
+          {
+            "label": "3",
+            "title": "Le laisser",
+            "body": "Partez et le dessin reste pour l'équipe."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Le tableau blanc est-il partagé avec tout le bureau ?",
+            "a": "Oui. Tout le bureau voit le même tableau."
+          },
+          {
+            "q": "Peut-on effacer ?",
+            "a": "Oui. Utilisez la gomme, ou effacez tout le tableau quand vous avez fini."
+          },
+          {
+            "q": "Remplace-t-il Miro ou FigJam ?",
+            "a": "Non. Il sert aux croquis rapides pendant qu'on parle. Gardez vos outils de design pour le travail plus important."
+          },
+          {
+            "q": "Est-il dans chaque formule ?",
+            "a": "Oui. Chaque formule a toutes les fonctionnalités, la gratuite comprise."
+          }
+        ]
       }
     },
     "teams": "Équipes",
@@ -1626,8 +1867,17 @@
         },
         "title": "Fait pour <em>des équipes comme la vôtre.</em>",
         "body": "Chaque équipe utilise l'étage un peu différemment. Voici comment il s'adapte à la vôtre."
+      },
+      "features": {
+        "meta": {
+          "title": "Fonctionnalités TinyFloor : appels de proximité, réunions, chat et plus",
+          "description": "Tout ce qu'il y a dans un bureau TinyFloor : appels de proximité, salle de réunion, chat d'équipe, présence et tableau blanc partagé, dans chaque formule."
+        },
+        "title": "Tout sur <em>un seul étage.</em>",
+        "body": "Chaque formule a toutes les fonctionnalités. Voici ce qu'il y a sur l'étage."
       }
-    }
+    },
+    "features": "Fonctionnalités"
   },
   "lobby": {
     "eyebrow": "Essayez TinyFloor",
@@ -1986,13 +2236,6 @@
       "signIn": "Se connecter",
       "start": "Créer votre bureau",
       "main": "Navigation principale",
-      "items": {
-        "proximity": "Appels de proximité",
-        "meetings": "Réunions",
-        "chat": "Chat",
-        "people": "Présence",
-        "invites": "Invitations"
-      },
       "lobbyTitle": "Essayer le bureau de démo",
       "menu": "Menu",
       "teams": "Pour les équipes",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Essayer la démo",
       "noAccount": "Aucun compte requis"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Sans lien, sans planning."
-      },
-      "meetings": {
-        "muted": "Levez-vous pour partir."
-      },
-      "chat": {
-        "title": "Des conversations qui restent.",
-        "muted": "Canaux, messages privés, réactions.",
-        "body": "Chaque bureau a son propre chat. Rattrapez-vous depuis votre téléphone sans entrer, et recevez un discret rappel sur l'étage quand quelqu'un écrit."
-      },
-      "people": {
-        "title": "Voyez qui est là.",
-        "muted": "Puis allez-y directement.",
-        "body": "Voyez qui est sur l'étage, qui est occupé et qui est en appel. Touchez Y aller, et votre personnage trouve son chemin tout seul."
-      },
-      "invites": {
-        "title": "Faites entrer votre équipe.",
-        "muted": "Avec un seul lien.",
-        "body": "Partage le lien de ton bureau. Ils créent un compte gratuit, choisissent un nom et un personnage, et les voilà sur l'étage."
-      }
     },
     "steps": {
       "title": "Créez un bureau virtuel en une minute.",

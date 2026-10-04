@@ -800,7 +800,8 @@
             "q": "Is het gratis?",
             "a": "Ja, voor een kantoor tot 3 mensen, in de browser op desktop en mobiel."
           }
-        ]
+        ],
+        "line": "Loop erheen om te praten, zonder link"
       },
       "sococo": {
         "label": "Sococo-alternatief",
@@ -1595,6 +1596,246 @@
             "a": "Ja. Deel je scherm in een gesprek of vergadering en schets samen op het whiteboard."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Virtuele vergaderruimte",
+        "line": "Loop naar binnen om te vergaderen, loop weg om te gaan",
+        "meta": {
+          "title": "Virtuele vergaderruimte voor remote teams",
+          "description": "Een vergaderruimte waar je team naar binnen loopt: doe mee en je personage neemt plaats aan tafel, met camera's, schermdelen en zonder meetinglink."
+        },
+        "title": "Een <em>virtuele vergaderruimte</em> verderop in de gang.",
+        "subtitle": "Elk kantoor heeft een vergaderruimte die er altijd is. Doe mee aan een meeting en je personage loopt naar binnen; loop naar buiten en je bent weg. Geen links, geen wachtkamer.",
+        "points": [
+          {
+            "title": "Altijd open",
+            "body": "De hoofdmeeting is er altijd voor standups en snelle overleggen. Iedereen kan er nog een starten en mensen uitnodigen."
+          },
+          {
+            "title": "Een kaart voor iedereen",
+            "body": "Wie geen camera gebruikt, verschijnt als een kaart die oplicht bij het praten, zodat de ruimte nooit leeg lijkt."
+          },
+          {
+            "title": "Deel je scherm",
+            "body": "Deel met één klik een venster met de ruimte, voor demo's, reviews en planning."
+          }
+        ],
+        "momentsTitle": "<em>Een meeting</em>, van begin tot eind.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Meedoen",
+            "body": "Doe mee vanuit de lijst met meetings en je personage loopt de vergaderruimte in."
+          },
+          {
+            "label": "2",
+            "title": "Praten",
+            "body": "Camera aan of uit, met schermdelen voor alles wat het laten zien waard is."
+          },
+          {
+            "label": "3",
+            "title": "Weglopen",
+            "body": "Loop de ruimte uit en je bent weg. De verdieping is weer rustig."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hoeveel mensen kunnen meedoen aan een meeting?",
+            "a": "Iedereen in het kantoor: tot 3 mensen met Free, 10 met Plus en 25 met Pro."
+          },
+          {
+            "q": "Hebben meetings een tijdslimiet?",
+            "a": "Geen limiet per meeting. Elk abonnement bevat elke maand uren voor groepsmeetings: 5 met Free, 30 met Plus en 60 met Pro."
+          },
+          {
+            "q": "Wat gebeurt er als de uren op zijn?",
+            "a": "Meetings gaan alleen met geluid verder tot de 1e van de maand. Gesprekken tussen twee mensen tellen nooit mee."
+          },
+          {
+            "q": "Kunnen we meerdere meetings tegelijk hebben?",
+            "a": "Ja. Naast de hoofdmeeting kan iedereen er een starten met een naam en mensen uitnodigen."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Teamchat",
+        "line": "Kanalen en berichten die blijven",
+        "meta": {
+          "title": "Teamchat naast je virtuele kantoor",
+          "description": "Kanalen, directe berichten en reacties die blijven, vlak naast de verdieping van je team. Lees bij vanaf je telefoon zonder naar binnen te lopen."
+        },
+        "title": "<em>Teamchat</em> vlak naast de verdieping.",
+        "subtitle": "Elk kantoor heeft een eigen chat met kanalen, directe berichten en reacties. Berichten blijven, dus je leest bij vanaf je telefoon zonder naar binnen te lopen.",
+        "points": [
+          {
+            "title": "Een kanaal voor alles",
+            "body": "Maak een kanaal voor elk project, elke klant of elk onderwerp, en houd het gesprek op één plek."
+          },
+          {
+            "title": "Directe berichten",
+            "body": "Schrijf iedereen in je kantoor één op één, en ga morgen verder."
+          },
+          {
+            "title": "Een stil seintje",
+            "body": "Als iemand schrijft, krijg je een stil seintje op de verdieping in plaats van een stroom pop-ups."
+          }
+        ],
+        "momentsTitle": "<em>Chat</em> door de dag heen.",
+        "moments": [
+          {
+            "label": "Ochtend",
+            "title": "Bijlezen",
+            "body": "Lees op je telefoon wat je hebt gemist voordat je naar binnen loopt."
+          },
+          {
+            "label": "Middag",
+            "title": "Delen",
+            "body": "Zet een screenshot in een kanaal zodat het hele team het ziet."
+          },
+          {
+            "label": "Namiddag",
+            "title": "Erheen lopen",
+            "body": "Als een thread lang wordt, loop erheen en bespreek het."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Bewaart de chat de geschiedenis?",
+            "a": "Ja. Elk kanaal bewaart zijn 5.000 meest recente berichten, in elk abonnement."
+          },
+          {
+            "q": "Kan ik de chat op mijn telefoon gebruiken?",
+            "a": "Ja. Open TinyFloor in de browser van je telefoon om te lezen en te antwoorden, zonder de verdieping op te gaan."
+          },
+          {
+            "q": "Kunnen we afbeeldingen delen?",
+            "a": "Ja. Zet screenshots en foto's in elk kanaal of direct bericht."
+          },
+          {
+            "q": "Vervangt het Slack?",
+            "a": "Voor een klein team wel. Anderen houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en meetings."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Teamaanwezigheid",
+        "line": "Wie er is, bezig is of in gesprek",
+        "meta": {
+          "title": "Teamaanwezigheid en status voor remote teams",
+          "description": "Zie in één oogopslag wie er is, wie bezig is en wie in gesprek is, op één verdieping, en loop er meteen heen. Teamaanwezigheid voor remote teams."
+        },
+        "title": "<em>Teamaanwezigheid</em> in één oogopslag.",
+        "subtitle": "Iedereen heeft een bureau en een status op de verdieping. Je ziet wie vrij is, wie geconcentreerd werkt en wie al in gesprek is, voordat je het vraagt.",
+        "points": [
+          {
+            "title": "Een status die iets zegt",
+            "body": "Beschikbaar, bezig of afwezig, door jou ingesteld, zodat anderen weten wanneer ze moeten wachten."
+          },
+          {
+            "title": "Wie in gesprek is",
+            "body": "Zie wie al praat of in een meeting zit, zonder te storen."
+          },
+          {
+            "title": "Loop naar",
+            "body": "Tik op Loop naar bij iemand en je personage vindt zelf de weg."
+          }
+        ],
+        "momentsTitle": "<em>Aanwezigheid</em> in drie blikken.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Kijken",
+            "body": "Open de verdieping en zie wie er is."
+          },
+          {
+            "label": "2",
+            "title": "Checken",
+            "body": "Een status vertelt je of het nu een goed moment is."
+          },
+          {
+            "label": "3",
+            "title": "Erheen lopen",
+            "body": "Tik op Loop naar en je personage loopt naar het bureau."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Welke statussen zijn er?",
+            "a": "Beschikbaar, bezig en afwezig. Je status staat naast je naam op de verdieping en in de lijst met mensen."
+          },
+          {
+            "q": "Houdt TinyFloor activiteit bij?",
+            "a": "Nee. Het toont wie er op de verdieping is en welke status iemand kiest. Het rapporteert over niemands activiteit."
+          },
+          {
+            "q": "Kan ik vanaf mijn telefoon zien wie er is?",
+            "a": "Ja. De lijst met mensen werkt ook in de browser van je telefoon."
+          },
+          {
+            "q": "Wat kost het?",
+            "a": "Gratis voor maximaal 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, voor het hele kantoor, niet per persoon."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Online whiteboard",
+        "line": "Een gedeeld bord aan de muur",
+        "meta": {
+          "title": "Online whiteboard in het virtuele kantoor van je team",
+          "description": "Een gedeeld whiteboard aan de muur van je virtuele kantoor, voor de schets die het uitlegt. Het blijft hangen als mensen terugkomen."
+        },
+        "title": "Een <em>online whiteboard</em> aan de kantoormuur.",
+        "subtitle": "Loop naar het whiteboard en teken. Iedereen in het kantoor ziet hetzelfde bord, en wat erop staat blijft voor de volgende keer.",
+        "points": [
+          {
+            "title": "Loop erheen en teken",
+            "body": "Geen bord om aan te maken en geen link om te delen. Het hangt aan de muur, klaar als jij dat bent."
+          },
+          {
+            "title": "Iedereen ziet het",
+            "body": "Het hele kantoor kijkt naar hetzelfde bord, dus een schets spreekt voor zich."
+          },
+          {
+            "title": "Het blijft",
+            "body": "Wat getekend is blijft bewaard, dus het diagram van maandag staat er vrijdag nog."
+          }
+        ],
+        "momentsTitle": "<em>Een schets</em> die het uitlegt.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Erheen lopen",
+            "body": "Ga naar het whiteboard aan de muur."
+          },
+          {
+            "label": "2",
+            "title": "Tekenen",
+            "body": "Schets de flow terwijl je hem bespreekt."
+          },
+          {
+            "label": "3",
+            "title": "Laten staan",
+            "body": "Loop weg en de tekening blijft voor het team."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wordt het whiteboard met het hele kantoor gedeeld?",
+            "a": "Ja. Iedereen in het kantoor ziet hetzelfde bord."
+          },
+          {
+            "q": "Kunnen we dingen uitgummen?",
+            "a": "Ja. Gebruik de gum, of wis het hele bord als je klaar bent."
+          },
+          {
+            "q": "Vervangt het Miro of FigJam?",
+            "a": "Nee. Het is voor snelle schetsen tijdens het praten. Houd je designtools voor groter werk."
+          },
+          {
+            "q": "Zit het in elk abonnement?",
+            "a": "Ja. Elk abonnement heeft alle functies, ook het gratis abonnement."
+          }
+        ]
       }
     },
     "teams": "Teams",
@@ -1626,8 +1867,17 @@
         },
         "title": "Gemaakt voor <em>teams zoals het jouwe.</em>",
         "body": "Elk team gebruikt de verdieping een beetje anders. Zo past het bij het jouwe."
+      },
+      "features": {
+        "meta": {
+          "title": "TinyFloor-functies: nabijheidsgesprekken, meetings, chat en meer",
+          "description": "Alles in een TinyFloor-kantoor: gesprekken door erheen te lopen, een vergaderruimte, teamchat, aanwezigheid en een gedeeld whiteboard, in elk abonnement."
+        },
+        "title": "Alles op <em>één verdieping.</em>",
+        "body": "Elk abonnement heeft alle functies. Dit staat er op de verdieping."
       }
-    }
+    },
+    "features": "Functies"
   },
   "lobby": {
     "eyebrow": "Probeer TinyFloor",
@@ -1986,13 +2236,6 @@
       "signIn": "Inloggen",
       "start": "Maak je kantoor",
       "main": "Hoofdnavigatie",
-      "items": {
-        "proximity": "Gesprekken van dichtbij",
-        "meetings": "Meetings",
-        "chat": "Chat",
-        "people": "Aanwezigheid",
-        "invites": "Uitnodigingen"
-      },
       "lobbyTitle": "Probeer het demokantoor",
       "menu": "Menu",
       "teams": "Voor teams",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Probeer de demo",
       "noAccount": "Geen account nodig"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Geen links, geen planning."
-      },
-      "meetings": {
-        "muted": "Sta op om te gaan."
-      },
-      "chat": {
-        "title": "Gesprekken die blijven.",
-        "muted": "Kanalen, privéberichten, reacties.",
-        "body": "Elk kantoor heeft een eigen chat. Lees bij vanaf je telefoon zonder binnen te lopen, en krijg een rustige melding op de vloer als iemand schrijft."
-      },
-      "people": {
-        "title": "Weet wie er is.",
-        "muted": "En loop er meteen heen.",
-        "body": "Zie wie er op de vloer is, wie bezig is en wie in gesprek. Tik op Loop erheen en je poppetje vindt zelf de weg."
-      },
-      "invites": {
-        "title": "Haal je team binnen.",
-        "muted": "Met één link.",
-        "body": "Deel de link van je kantoor. Ze maken een gratis account, kiezen een naam en personage, en staan op de vloer."
-      }
     },
     "steps": {
       "title": "Zet in een minuut een virtueel kantoor op.",

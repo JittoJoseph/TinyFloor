@@ -41,7 +41,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
-import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Notes, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
+import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
 
 type Row = (typeof COMPARE_ROWS)[number];
 
@@ -50,7 +50,9 @@ interface LandingCopy {
   points: Array<{ title: string; body: string }>;
   /** The other product, row by row. A row it has no answer for is left out of the table. */
   them?: Partial<Record<Row, string>>;
-  /** Team and use-case pages: three moments of the day, each with a short label (a time, a size, a step). */
+  /** Feature pages: a few words for the nav's Product menu. */
+  line?: string;
+  /** Team, use-case and feature pages: three moments of the day, each with a short label (a time, a size, a step). */
   momentsTitle?: string;
   moments?: Array<{ label: string; title: string; body: string }>;
   faq: Array<{ q: string; a: string }>;
@@ -74,6 +76,10 @@ const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
   virtualCoworking: [Coffee, DoorOpen, Radio],
   virtualClassroom: [GraduationCap, Users, PenLine],
   proximityChat: [Footprints, Users, ShieldCheck],
+  meetingRoom: [DoorOpen, Users, MonitorUp],
+  teamChat: [Hash, MessagesSquare, Zap],
+  presence: [Eye, Radio, Footprints],
+  whiteboard: [PenLine, Users, CalendarOff],
   pairProgramming: [Zap, MonitorUp, UserPlus],
   standup: [Presentation, Eye, TimerOff],
   onboarding: [Link2, Users, Hand],
@@ -135,15 +141,12 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         body={copy.subtitle}
       />
 
-      <section className={cn(COLUMN, "pt-28 sm:pt-36")}>
-        <Notes
-          className="sm:grid-cols-3"
-          items={copy.points.map((point, index) => {
-            const Icon = icons[index % icons.length];
-            return { icon: <Icon />, title: point.title, body: point.body };
-          })}
-        />
-      </section>
+      <Points
+        items={copy.points.map((point, index) => {
+          const Icon = icons[index % icons.length];
+          return { icon: <Icon />, title: point.title, body: point.body };
+        })}
+      />
 
       {copy.moments && copy.momentsTitle && (
         <Moments title={emphasised(copy.momentsTitle, locale, "text-muted-foreground/75")} items={copy.moments} />
@@ -151,27 +154,28 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
       {others.length > 0 && <Compare title={compareTitle} note={note} others={others} t={t} />}
 
-      <FloorMoments className="mt-28 sm:mt-40" />
+      {/* The home page's three moments, for pages that have no day of their own to show. */}
+      {!copy.moments && <FloorMoments className={SECTION_GAP} />}
 
-      <div className="pt-28 sm:pt-40">
+      <div className={SECTION}>
         <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
       </div>
 
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("relatedTitle", { em: quiet })}</h2>
-        <div className="mx-auto mt-12 grid max-w-[1040px] gap-10 md:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* The page's own group first, then the others; each shows a few and leads to its index for the rest. */}
           {[page.group, ...LANDING_GROUPS.filter((group) => group !== page.group)].map((group) => (
             <nav key={group} aria-label={t(group)}>
               <p className="px-1 text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{t(group)}</p>
               <ul className="mt-4 grid gap-2">
                 {LANDINGS.filter((other) => other.group === group && other.key !== page.key)
-                  .slice(0, 4)
+                  .slice(0, 3)
                   .map((other) => (
                     <li key={other.slug}>
                       <Link
                         href={`/${other.slug}`}
-                        className="group flex items-center justify-between gap-3 rounded-[18px] bg-muted/80 px-5 py-4 text-[15px] transition-colors hover:bg-muted"
+                        className="group flex items-center justify-between gap-3 rounded-[16px] bg-muted/80 px-4 py-3.5 text-[14.5px] transition-colors hover:bg-muted"
                       >
                         {t(`pages.${other.key}.label`)}
                         <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
@@ -181,7 +185,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
                 <li>
                   <Link
                     href={`/${HUBS[group]}`}
-                    className="flex items-center gap-1.5 px-5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    className="flex items-center gap-1.5 px-4 py-2 text-[13.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("all")}
                     <ArrowRight className="size-3.5 rtl:rotate-180" />
@@ -200,17 +204,53 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
 type Translate = Awaited<ReturnType<typeof getTranslations<"landings">>>;
 
-/** Three moments on the floor, each under its own small label: a time, a team size, a step. */
+/** The gap above a section: the same rhythm on every page written for a search. */
+const SECTION_GAP = "mt-24 sm:mt-32";
+const SECTION = "pt-24 sm:pt-32";
+
+/**
+ * The page's three reasons, as cards under the hero: an icon, a short claim,
+ * a line or two. They carry the page's own argument, so they sit first.
+ */
+function Points({ items }: { items: Array<{ icon: ReactNode; title: string; body: string }> }) {
+  return (
+    <section className={cn(COLUMN, SECTION)}>
+      <ul className="mx-auto grid max-w-[1040px] gap-3 md:grid-cols-3">
+        {items.map((one) => (
+          <li key={one.title} className="flex flex-col rounded-[24px] bg-muted/80 p-6 sm:p-7">
+            <span className="flex size-11 items-center justify-center rounded-[14px] bg-background text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.06)] [&_svg]:size-5">
+              {one.icon}
+            </span>
+            <h3 className="mt-5 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
+            <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/**
+ * Three moments of the day as a timeline: a rail with a dot for each, its
+ * label (a time, a team size, a step) by the dot. Across on wide screens,
+ * down the side on a phone.
+ */
 function Moments({ title, items }: { title: ReactNode; items: NonNullable<LandingCopy["moments"]> }) {
   return (
-    <section className={cn(COLUMN, "pt-28 sm:pt-40")}>
+    <section className={cn(COLUMN, SECTION)}>
       <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[20ch] text-center")}>{title}</h2>
-      <ol className="mx-auto mt-12 grid max-w-[1000px] gap-3 sm:mt-16 lg:grid-cols-3">
+      <ol className="relative mx-auto mt-12 grid max-w-[1040px] gap-8 ps-8 sm:mt-16 md:grid-cols-3 md:gap-6 md:ps-0 md:pt-10">
+        {/* The rail: down the side on a phone, across the top on wider screens. */}
+        <span aria-hidden className="absolute bottom-2 start-[7px] top-2 w-0.5 rounded-full bg-foreground/10 md:inset-x-0 md:bottom-auto md:top-[6px] md:h-0.5 md:w-auto" />
         {items.map((one) => (
-          <li key={one.title} className="rounded-[24px] bg-muted/80 p-6 sm:p-7">
+          <li key={one.title} className="relative">
+            <span
+              aria-hidden
+              className="absolute -start-8 top-1 size-[15px] rounded-full border-[3px] border-background bg-brand shadow-[0_0_0_1px_var(--ui-border)] md:-top-10 md:start-0"
+            />
             <p className="text-[13px] font-medium tabular-nums text-brand">{one.label}</p>
-            <h3 className="mt-3 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
-            <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
+            <h3 className="mt-2 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
+            <p className="mt-2 max-w-[22rem] text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
           </li>
         ))}
       </ol>
@@ -237,7 +277,7 @@ function Compare({
 }) {
   const rows = COMPARE_ROWS.filter((row) => others.every((other) => other.them[row]));
   return (
-    <section className={cn(COLUMN, "pt-28 sm:pt-40")}>
+    <section className={cn(COLUMN, SECTION)}>
       <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[22ch] text-center")}>{title}</h2>
 
       <div className="mx-auto mt-14 hidden max-w-[960px] overflow-hidden rounded-[24px] sm:block">

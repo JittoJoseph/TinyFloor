@@ -70,7 +70,7 @@ export async function HubPage({ group, params }: { group: LandingGroup; params: 
                   {t(`pages.${page.key}.label`)}
                   <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
                 </span>
-                <span className="mt-2 line-clamp-3 text-[14.5px] leading-[1.55] text-muted-foreground">{t(`pages.${page.key}.meta.description`)}</span>
+                <span className="mt-2 text-[14.5px] leading-[1.55] text-muted-foreground">{t(`pages.${page.key}.meta.description`)}</span>
               </Link>
             </li>
           ))}

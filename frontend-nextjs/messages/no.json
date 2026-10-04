@@ -800,7 +800,8 @@
             "q": "Er det gratis?",
             "a": "Ja, for et kontor for opptil 3 personer, i nettleseren på datamaskin og mobil."
           }
-        ]
+        ],
+        "line": "Gå bort og snakk, uten lenke"
       },
       "sococo": {
         "label": "Sococo-alternativ",
@@ -1595,6 +1596,246 @@
             "a": "Ja. Del skjermen i en samtale eller et møte, og skisser sammen på tavlen."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Virtuelt møterom",
+        "line": "Gå inn for å møtes, gå ut for å forlate",
+        "meta": {
+          "title": "Virtuelt møterom for fjernteam",
+          "description": "Et møterom teamet går inn i: bli med, så setter figuren din seg ved bordet, med kameraer, skjermdeling og ingen møtelenke."
+        },
+        "title": "Et <em>virtuelt møterom</em> nede i gangen.",
+        "subtitle": "Hvert kontor har et møterom som alltid er der. Bli med i et møte, så går figuren din inn; gå ut, så har du forlatt det. Ingen lenker, ingen venterom.",
+        "points": [
+          {
+            "title": "Alltid åpent",
+            "body": "Hovedmøtet er alltid der for standups og raske avklaringer. Hvem som helst kan starte et til og be folk inn."
+          },
+          {
+            "title": "Et kort for alle",
+            "body": "De uten kamera vises som et kort som lyser opp når de snakker, så rommet ser aldri tomt ut."
+          },
+          {
+            "title": "Del skjermen",
+            "body": "Del et vindu med rommet med ett klikk, for demoer, gjennomganger og planlegging."
+          }
+        ],
+        "momentsTitle": "<em>Et møte</em>, fra start til slutt.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Bli med",
+            "body": "Bli med fra listen over møter, så går figuren din inn i møterommet."
+          },
+          {
+            "label": "2",
+            "title": "Snakk",
+            "body": "Kamera på eller av, med skjermdeling for alt som er verdt å vise."
+          },
+          {
+            "label": "3",
+            "title": "Gå ut",
+            "body": "Gå ut av rommet, så har du forlatt det. Etasjen er stille igjen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvor mange kan bli med i et møte?",
+            "a": "Alle på kontoret: opptil 3 personer på Free, 10 på Plus og 25 på Pro."
+          },
+          {
+            "q": "Har møter en tidsgrense?",
+            "a": "Ingen grense per møte. Hver plan har timer til gruppemøter hver måned: 5 på Free, 30 på Plus og 60 på Pro."
+          },
+          {
+            "q": "Hva skjer når timene er brukt opp?",
+            "a": "Møter fortsetter med bare lyd frem til den 1. i måneden. Samtaler mellom to personer telles aldri."
+          },
+          {
+            "q": "Kan vi ha flere møter samtidig?",
+            "a": "Ja. I tillegg til hovedmøtet kan hvem som helst starte et til med et navn og be folk inn."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Teamchat",
+        "line": "Kanaler og meldinger som blir værende",
+        "meta": {
+          "title": "Teamchat ved siden av det virtuelle kontoret",
+          "description": "Kanaler, direktemeldinger og reaksjoner som blir værende, rett ved siden av teamets etasje. Ta igjen fra mobilen uten å gå inn."
+        },
+        "title": "<em>Teamchat</em> rett ved siden av etasjen.",
+        "subtitle": "Hvert kontor har sin egen chat med kanaler, direktemeldinger og reaksjoner. Meldinger blir værende, så du kan ta igjen fra mobilen uten å gå inn.",
+        "points": [
+          {
+            "title": "En kanal for alt",
+            "body": "Lag en kanal for hvert prosjekt, hver kunde eller hvert tema, og hold samtalen på ett sted."
+          },
+          {
+            "title": "Direktemeldinger",
+            "body": "Skriv til hvem som helst på kontoret én til én, og fortsett i morgen."
+          },
+          {
+            "title": "Et stille dytt",
+            "body": "Når noen skriver, får du et stille dytt på etasjen i stedet for en strøm av popup-vinduer."
+          }
+        ],
+        "momentsTitle": "<em>Chat</em> gjennom dagen.",
+        "moments": [
+          {
+            "label": "Morgen",
+            "title": "Ta igjen",
+            "body": "Les det du gikk glipp av på mobilen før du går inn."
+          },
+          {
+            "label": "Midt på dagen",
+            "title": "Del det",
+            "body": "Slipp et skjermbilde i en kanal så hele teamet ser det."
+          },
+          {
+            "label": "Ettermiddag",
+            "title": "Gå bort",
+            "body": "Når en tråd blir lang, gå bort og snakk den gjennom."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Tar chatten vare på historikken?",
+            "a": "Ja. Hver kanal tar vare på sine 5 000 siste meldinger, i hver plan."
+          },
+          {
+            "q": "Kan jeg bruke chatten på mobilen?",
+            "a": "Ja. Åpne TinyFloor i mobilens nettleser for å lese og svare, uten å gå ut på etasjen."
+          },
+          {
+            "q": "Kan vi dele bilder?",
+            "a": "Ja. Slipp skjermbilder og bilder i hvilken som helst kanal eller direktemelding."
+          },
+          {
+            "q": "Erstatter den Slack?",
+            "a": "For et lite team kan den det. Andre beholder Slack for meldinger og bruker TinyFloor for tilstedeværelse, samtaler og møter."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Tilstedeværelse i teamet",
+        "line": "Hvem som er inne, opptatt eller i samtale",
+        "meta": {
+          "title": "Tilstedeværelse og status for fjernteam",
+          "description": "Se hvem som er inne, hvem som er opptatt og hvem som er i samtale, med et blikk på én etasje, og gå rett bort. Tilstedeværelse for fjernteam."
+        },
+        "title": "<em>Tilstedeværelse i teamet</em> med et blikk.",
+        "subtitle": "Alle har en pult og en status på etasjen. Du ser hvem som er ledig, hvem som fokuserer og hvem som allerede er i samtale, før du spør.",
+        "points": [
+          {
+            "title": "En status som betyr noe",
+            "body": "Tilgjengelig, opptatt eller borte, satt av deg, så andre vet når de skal vente."
+          },
+          {
+            "title": "Hvem som er i samtale",
+            "body": "Se hvem som allerede snakker eller er i et møte, uten å avbryte."
+          },
+          {
+            "title": "Gå til",
+            "body": "Trykk Gå til ved siden av noen, så finner figuren din veien selv."
+          }
+        ],
+        "momentsTitle": "<em>Tilstedeværelse</em> i tre blikk.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Se",
+            "body": "Åpne etasjen og se hvem som er der."
+          },
+          {
+            "label": "2",
+            "title": "Sjekk",
+            "body": "En status forteller deg om det passer nå."
+          },
+          {
+            "label": "3",
+            "title": "Gå bort",
+            "body": "Trykk Gå til, så går figuren din til pulten deres."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvilke statuser finnes?",
+            "a": "Tilgjengelig, opptatt og borte. Statusen din vises ved navnet ditt på etasjen og i listen over personer."
+          },
+          {
+            "q": "Sporer TinyFloor aktivitet?",
+            "a": "Nei. Det viser hvem som er på etasjen og statusen de velger. Det rapporterer ikke om noens aktivitet."
+          },
+          {
+            "q": "Kan jeg se hvem som er inne fra mobilen?",
+            "a": "Ja. Listen over personer fungerer også i mobilens nettleser."
+          },
+          {
+            "q": "Hva koster det?",
+            "a": "Gratis for opptil 3 personer. Plus koster 19 $ i måneden for 10 personer og Pro 49 $ i måneden for 25, for hele kontoret, ikke per person."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Nettbasert tavle",
+        "line": "En delt tavle på veggen",
+        "meta": {
+          "title": "Nettbasert tavle i teamets virtuelle kontor",
+          "description": "En delt tavle på veggen i det virtuelle kontoret, for skissen som forklarer det. Den blir hengende når folk kommer tilbake."
+        },
+        "title": "En <em>nettbasert tavle</em> på kontorveggen.",
+        "subtitle": "Gå bort til tavlen og tegn. Alle på kontoret ser den samme tavlen, og det som står på den blir værende til neste gang.",
+        "points": [
+          {
+            "title": "Gå bort og tegn",
+            "body": "Ingen tavle å opprette og ingen lenke å dele. Den henger på veggen, klar når du er det."
+          },
+          {
+            "title": "Alle ser den",
+            "body": "Hele kontoret ser på den samme tavlen, så en skisse forklarer seg selv."
+          },
+          {
+            "title": "Den blir værende",
+            "body": "Det som tegnes, lagres, så mandagens diagram er der fortsatt på fredag."
+          }
+        ],
+        "momentsTitle": "<em>En skisse</em> som forklarer det.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Gå bort",
+            "body": "Gå til tavlen på veggen."
+          },
+          {
+            "label": "2",
+            "title": "Tegn",
+            "body": "Skisser flyten mens dere snakker den gjennom."
+          },
+          {
+            "label": "3",
+            "title": "La den stå",
+            "body": "Gå bort, så blir tegningen værende for teamet."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Deles tavlen med hele kontoret?",
+            "a": "Ja. Alle på kontoret ser den samme tavlen."
+          },
+          {
+            "q": "Kan vi viske ut ting?",
+            "a": "Ja. Bruk viskelæret, eller tøm hele tavlen når dere er ferdige."
+          },
+          {
+            "q": "Erstatter den Miro eller FigJam?",
+            "a": "Nei. Den er for raske skisser mens dere snakker. Behold designverktøyene for større arbeid."
+          },
+          {
+            "q": "Finnes den i hver plan?",
+            "a": "Ja. Hver plan har alle funksjoner, også gratisplanen."
+          }
+        ]
       }
     },
     "teams": "Team",
@@ -1626,8 +1867,17 @@
         },
         "title": "Laget for <em>team som ditt.</em>",
         "body": "Hvert team bruker etasjen litt forskjellig. Slik passer den ditt."
+      },
+      "features": {
+        "meta": {
+          "title": "TinyFloor-funksjoner: nærhetssamtaler, møter, chat og mer",
+          "description": "Alt i et TinyFloor-kontor: samtaler når du går bort, et møterom, teamchat, tilstedeværelse og en delt tavle, i hver plan."
+        },
+        "title": "Alt på <em>én etasje.</em>",
+        "body": "Hver plan har alle funksjoner. Dette finnes på etasjen."
       }
-    }
+    },
+    "features": "Funksjoner"
   },
   "lobby": {
     "eyebrow": "Prøv TinyFloor",
@@ -1986,13 +2236,6 @@
       "signIn": "Logg inn",
       "start": "Lag kontoret ditt",
       "main": "Hovednavigasjon",
-      "items": {
-        "proximity": "Nærhetssamtaler",
-        "meetings": "Møter",
-        "chat": "Chat",
-        "people": "Tilstedeværelse",
-        "invites": "Invitasjoner"
-      },
       "lobbyTitle": "Prøv demokontoret",
       "menu": "Meny",
       "teams": "For team",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Prøv demoen",
       "noAccount": "Ingen konto nødvendig"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Ingen lenker, ingen planlegging."
-      },
-      "meetings": {
-        "muted": "Reis deg for å gå."
-      },
-      "chat": {
-        "title": "Samtaler som blir.",
-        "muted": "Kanaler, direktemeldinger, reaksjoner.",
-        "body": "Hvert kontor har sin egen chat. Les deg opp fra mobilen uten å gå inn, og få et diskret varsel i etasjen når noen skriver."
-      },
-      "people": {
-        "title": "Se hvem som er der.",
-        "muted": "Og gå rett bort.",
-        "body": "Se hvem som er i etasjen, hvem som er opptatt og hvem som er i en samtale. Trykk på Gå dit, så finner figuren din veien selv."
-      },
-      "invites": {
-        "title": "Ta med teamet inn.",
-        "muted": "Med én lenke.",
-        "body": "Del lenken til kontoret ditt. De lager en gratis konto, velger navn og figur, og så er de på etasjen."
-      }
     },
     "steps": {
       "title": "Sett opp et virtuelt kontor på ett minutt.",

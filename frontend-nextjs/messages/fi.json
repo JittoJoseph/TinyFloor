@@ -412,8 +412,8 @@
       "gather": {
         "label": "Gather-vaihtoehto",
         "meta": {
-          "title": "Ilmainen Gather-vaihtoehto selaimessa",
-          "description": "Etsitkö ilmaista Gather-vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista."
+          "title": "Ilmainen Gather Town -vaihtoehto selaimessa",
+          "description": "Etsitkö ilmaista Gather Town -vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista."
         },
         "title": "Ilmainen <em>Gather-vaihtoehto.</em>",
         "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. TinyFloor säilyttää saman idean, toimiston jossa liikutaan ja jutellaan: ilmainen enintään 3 hengelle ja sen jälkeen yksi hinta koko toimistolle.",
@@ -2610,6 +2610,730 @@
       "bigger": {
         "title": "Yli 25 henkeä?",
         "body": "Anna jokaiselle tiimille oma toimisto tai kirjoita osoitteeseen {email}, niin jutellaan."
+      }
+    }
+  },
+  "guides": {
+    "label": "Oppaat",
+    "eyebrow": "Opas",
+    "minutes": "{count} min lukuaika",
+    "updated": "Päivitetty {date}",
+    "by": "Kirjoittanut {name}",
+    "contents": "Tällä sivulla",
+    "faqTitle": "Usein kysytyt <em>kysymykset.</em>",
+    "moreTitle": "Lisää <em>oppaita.</em>",
+    "all": "Kaikki oppaat",
+    "fitCta": "Kokeile demotoimistoa",
+    "hub": {
+      "meta": {
+        "title": "Oppaat etätiimien vetäjille",
+        "description": "Käytännön oppaat etätiimejä vetäville: tiimiytyminen, pelit palavereihin, kulttuuri, viestintä ja miten lähichat toimii."
+      },
+      "title": "Oppaat <em>etätiimeille.</em>",
+      "body": "Käytännöllisiä, lyhyitä ja itse etätöitä tekevien kirjoittamia. Ota mikä auttaa, ohita loput."
+    },
+    "pages": {
+      "teamBuilding": {
+        "label": "Virtuaaliset tiimiytymisaktiviteetit",
+        "meta": {
+          "title": "20 virtuaalista tiimiytymisaktiviteettia, joista etätiimit pitävät",
+          "description": "20 virtuaalista tiimiytymisaktiviteettia ajan mukaan: 5 minuutin aloitukset, 30 minuutin pelit, kuukausittaiset tapahtumat ja ideat ilman palavereja."
+        },
+        "title": "Virtuaalista tiimiytymistä, <em>josta ihmiset oikeasti pitävät.</em>",
+        "intro": "Virtuaalinen tiimiytyminen epäonnistuu yleensä siksi, että se tuntuu taas yhdeltä palaverilta, johon on liimattu pelejä. Toimivat ideat ovat lyhyitä, vapaaehtoisia, helppoja järjestää ja antavat puheenaihetta jälkeenpäin. Tässä 20 aktiviteettia sen mukaan, paljonko sinulla on aikaa.",
+        "sections": [
+          {
+            "title": "Mikä saa sen toimimaan",
+            "body": [
+              "Ennen kuin valitset aktiviteetin, laita muoto kuntoon. Nämä viisi sääntöä ovat tärkeämpiä kuin pelin valinta."
+            ],
+            "items": [
+              {
+                "title": "Pidä se lyhyenä",
+                "body": "Kymmenen hyvää minuuttia voittaa tunnin, jota kukaan ei halunnut. Voitte aina tehdä sen uudestaan ensi viikolla."
+              },
+              {
+                "title": "Tee siitä vapaaehtoista",
+                "body": "Ihmiset osallistuvat siihen, mistä pitävät. Pakotettu hauskuus opettaa lähinnä pitämään kameran kiinni."
+              },
+              {
+                "title": "Työaikana",
+                "body": "Iltatapahtumat jättävät ulkopuolelle vanhemmat, muut aikavyöhykkeet ja kaikki, jotka tarvitsevat iltansa."
+              },
+              {
+                "title": "Anna kaikille tapa osallistua",
+                "body": "Sekoita aktiviteetteja puheliaille ja hiljaisemmille: piirtäminen, arvaaminen ja kirjoittaminen toimivat yhtä hyvin kuin puhuminen."
+              },
+              {
+                "title": "Toista sitä, mikä toimii",
+                "body": "Pieni viikoittainen rituaali tekee enemmän kuin iso tapahtuma kerran neljännesvuodessa."
+              }
+            ]
+          },
+          {
+            "title": "Viisi minuuttia palaverin alussa",
+            "body": [
+              "Ei valmistelua, mikä tahansa tiimin koko. Käytä yhtä aloittaaksesi päivittäispalaverin tai viikkopalaverin."
+            ],
+            "items": [
+              {
+                "title": "Kaksi totuutta ja yksi valhe",
+                "detail": "5 min · 3–12 henkeä",
+                "body": "Yksi kertoo itsestään kolme asiaa; muut arvaavat, mikä on keksitty. Kaksi tai kolme henkeä palaveria kohden riittää."
+              },
+              {
+                "title": "Yksi esine pöydältä",
+                "detail": "5 min · mikä tahansa koko",
+                "body": "Jokainen ottaa käden ulottuvilta esineen ja kertoo, miksi se on siinä. Helppoa kaikille, ja se kertoo paljon."
+              },
+              {
+                "title": "Kuulumiset yhdellä sanalla",
+                "detail": "2 min · mikä tahansa koko",
+                "body": "Jokainen kuvaa viikkoaan yhdellä sanalla. Palatkaa kiinnostaviin myöhemmin, ei nyt."
+              },
+              {
+                "title": "Tämä vai tuo",
+                "detail": "5 min · mikä tahansa koko",
+                "body": "Vetäjä lukee pareja (kahvi vai tee, tunturi vai meri, aamu- vai iltaihminen) ja kaikki vastaavat yhtä aikaa chattiin."
+              },
+              {
+                "title": "Viikon kuva",
+                "detail": "5 min · enintään 10 henkeä",
+                "body": "Jokainen jakaa puhelimestaan yhden kuvan viikoltaan. Selitystä ei tarvita, ellei halua antaa."
+              }
+            ]
+          },
+          {
+            "title": "Viidestätoista kolmeenkymmeneen minuuttiin",
+            "body": [
+              "Jotain kalenteriin viikon tai kahden välein, mieluiten perjantai-iltapäivälle."
+            ],
+            "items": [
+              {
+                "title": "Pictionary jaetulla taululla",
+                "detail": "20 min · 4–12 henkeä",
+                "body": "Yksi piirtää sanan taululle, jonka kaikki näkevät, ja muut huutelevat arvauksia. Lista työsanoja tuo lisänaurua."
+              },
+              {
+                "title": "Tiimivisa",
+                "detail": "30 min · 4–20 henkeä",
+                "body": "Kerää etukäteen jokaiselta yksi yllättävä fakta ja anna tiimin arvata, kenen se on."
+              },
+              {
+                "title": "Kenen kappale?",
+                "detail": "20 min · 4–15 henkeä",
+                "body": "Jokainen lähettää vetäjälle lempikappaleensa. Vetäjä soittaa jokaisesta muutaman sekunnin, ja tiimi arvaa, kenen se on."
+              },
+              {
+                "title": "Autio saari",
+                "detail": "15 min · 3–10 henkeä",
+                "body": "Jokainen valitsee kirjan, albumin ja ruoan, jotka ottaisi mukaan autiolle saarelle, ja tiimi väittelee niistä."
+              },
+              {
+                "title": "Näytä ja kerro",
+                "detail": "30 min · 3–10 henkeä",
+                "body": "Yksi tai kaksi ihmistä viikossa näyttää jotain, mitä he tekevät, kokkaavat, kasvattavat tai keräävät. Opitte toisistanne enemmän kuin missään pelissä."
+              }
+            ]
+          },
+          {
+            "title": "Tunti kerran kuukaudessa tai neljännesvuodessa",
+            "body": [
+              "Isommat tapahtumat vaativat vähän suunnittelua tai pienen budjetin. Järjestä niitä harvemmin ja kunnolla."
+            ],
+            "items": [
+              {
+                "title": "Verkkopakohuone",
+                "detail": "60 min · 4–8 per huone",
+                "body": "Useat yritykset järjestävät pakohuoneita pelinvetäjän kanssa videon kautta. Jaa isot tiimit huoneisiin ja vertailkaa aikoja lopuksi."
+              },
+              {
+                "title": "Kurssi tarvikepaketilla",
+                "detail": "60 min · mikä tahansa koko",
+                "body": "Ruoka-, kahvi- tai cocktailkurssi, jossa kaikki saavat kotiin samat ainekset. Tilaa ajoissa, jos tiimi on monessa maassa."
+              },
+              {
+                "title": "Peliturnaus",
+                "detail": "45 min · 4–30 henkeä",
+                "body": "Ilmaiset selainpelit kuten Gartic Phone, skribbl.io tai Codenames verkossa toimivat hyvin. Pelatkaa pienissä ryhmissä ja sitten finaali."
+              },
+              {
+                "title": "Rakennuspäivä",
+                "detail": "Puoli päivää · mikä tahansa koko",
+                "body": "Pienet tiimit rakentavat mitä haluavat, työhön liittyvää tai ei, ja esittelevät sen lopuksi. Se sekoittaa ihmisiä, jotka eivät koskaan tee töitä yhdessä."
+              },
+              {
+                "title": "Neljännesvuoden katsaus",
+                "detail": "60 min · mikä tahansa koko",
+                "body": "Katsokaa, mitä tiimi sai aikaan, ja jakakaa sitten hassuja palkintoja, joista kaikki äänestävät: paras bugi, paras pelastus, paras meemi."
+              }
+            ]
+          },
+          {
+            "title": "Täysin ilman palaveria",
+            "body": [
+              "Kaikki ei tarvitse puhelua. Nämä kulkevat viikon chat-kanavassa ja sopivat tiimeille eri aikavyöhykkeillä."
+            ],
+            "items": [
+              {
+                "title": "Kuvahaaste",
+                "detail": "1 viikko · mikä tahansa koko",
+                "body": "Teema joka viikko (näkymäsi, lounaasi, jotain sinistä) ja kanava, johon postata."
+              },
+              {
+                "title": "Kiitosketju",
+                "detail": "Jatkuva · mikä tahansa koko",
+                "body": "Paikka, jossa voi kiittää jotakuta julkisesti jostain konkreettisesta. Lukekaa parhaat kuun lopussa."
+              },
+              {
+                "title": "Reseptivaihto",
+                "detail": "1 viikko · mikä tahansa koko",
+                "body": "Jokainen jakaa yhden kotireseptin. Kootkaa ne jaettuun dokumenttiin: siitä tulee tiimin keittokirja."
+              },
+              {
+                "title": "Askelhaaste",
+                "detail": "2 viikkoa · mikä tahansa koko",
+                "body": "Kolmen hengen joukkueet laskevat päivittäiset askeleensa yhteen. Pidä se ystävällisenä ja anna kaikenlaisen liikkeen kelvata."
+              },
+              {
+                "title": "Kirja- tai podcastkerho",
+                "detail": "1 kuukausi · 3–10 henkeä",
+                "body": "Valitkaa jotain luettavaa tai kuunneltavaa, keskustelkaa ketjussa ja tavatkaa kerran lopuksi, jos haluatte."
+              }
+            ]
+          },
+          {
+            "title": "Tee siitä tapa, ei tapahtumaa",
+            "body": [
+              "Läheisimmät tiimit nojaavat harvoin isoihin tapahtumiin. Heillä on paljon pieniä, suunnittelemattomia hetkiä: sana ennen palaveria, kysymys joka muuttuu keskusteluksi, kappale jonka joku laittaa soimaan.",
+              "Toimistolla ne tapahtuvat itsestään. Etänä tarvitaan paikka, jossa ihmiset näkevät toisensa ja voivat poiketa ilman puhelun varaamista. Anna tiimillesi sellainen, niin yllä olevista aktiviteeteista tulee bonus eikä ainoa hetki, jolloin puhutaan."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Missä TinyFloor auttaa",
+          "body": "TinyFloor on virtuaalitoimisto, jossa tiimisi kävelee ympäriinsä. Ohita joku ja pysähdy juttelemaan, laita kappale soimaan loungen jukeboksista, piirrä taululle Pictionaryä varten tai tavatkaa kokoushuoneessa perjantain maljalle. Ilmainen enintään 3 hengelle, selaimessa."
+        },
+        "faq": [
+          {
+            "q": "Millaiset virtuaaliset tiimiytymisaktiviteetit sopivat pienelle tiimille?",
+            "a": "Lyhyet, joihin ei tarvita valmistelua: kaksi totuutta ja yksi valhe, yksi esine pöydältä, Pictionary jaetulla taululla tai kenen kappale. Pieni tiimi voi tehdä jotain joka viikko yhden ison neljännesvuositapahtuman sijaan."
+          },
+          {
+            "q": "Kuinka usein etätiimin pitäisi tiimiytyä?",
+            "a": "Viiden minuutin aloitus viikkopalaverissa ja jotain pidempää kerran kuukaudessa sopii useimmille tiimeille. Pieni viikoittainen rituaali tekee enemmän kuin harvinainen iso tapahtuma."
+          },
+          {
+            "q": "Miten virtuaalisesta tiimiytymisestä saa vähemmän kiusallista?",
+            "a": "Pidä se lyhyenä ja vapaaehtoisena, työaikana, selkeällä vetäjällä ja säännöillä, ja valitse aktiviteetteja, joissa hiljaisemmat voivat piirtää, arvata tai kirjoittaa esiintymisen sijaan."
+          },
+          {
+            "q": "Mitä ilmaisia työkaluja voimme käyttää?",
+            "a": "Gartic Phone, skribbl.io ja Codenames verkossa ovat ilmaisia selaimessa. Jaettu taulu riittää piirtopeleihin ja chat-kanava kaikkeen asynkroniseen. TinyFloor on ilmainen enintään 3 hengelle."
+          }
+        ]
+      },
+      "meetingGames": {
+        "label": "Pelit etäpalavereihin",
+        "meta": {
+          "title": "15 nopeaa peliä etäpalavereihin (enintään 5 minuuttia)",
+          "description": "15 nopeaa peliä etäpalavereihin ilman valmistelua: puhepelejä, arvauspelejä ja piirtopelejä, jotka mahtuvat viiteen minuuttiin."
+        },
+        "title": "Nopeat pelit <em>etäpalavereihin.</em>",
+        "intro": "Hyvä palaveripeli kestää viisi minuuttia, ei vaadi valmistelua ja toimii kamera päällä tai pois. Nämä 15 täyttävät sen, järjestettynä sen mukaan, millaista hauskaa ne ovat.",
+        "sections": [
+          {
+            "title": "Ennen kuin aloitatte",
+            "items": [
+              {
+                "title": "Valitse vetäjä",
+                "body": "Yksi selittää säännöt, pitää aikaa ja vie eteenpäin. Vaihtakaa vuoroa joka viikko."
+              },
+              {
+                "title": "Aseta ajastin",
+                "body": "Viisi minuuttia tarkoittaa viittä minuuttia. Kun lopetetaan vielä hauskassa kohdassa, ihmiset haluavat uudestaan."
+              },
+              {
+                "title": "Kenenkään ei tarvitse esiintyä",
+                "body": "Anna ihmisten ohittaa vuoronsa, vastata chattiin tai pelata kamera pois päältä."
+              }
+            ]
+          },
+          {
+            "title": "Puhepelit",
+            "items": [
+              {
+                "title": "Kumpi mieluummin",
+                "detail": "Ei valmistelua · mikä tahansa koko",
+                "body": "Vetäjä antaa valinnan kahdesta vaihtoehdosta, kaikki vastaavat yhdellä sanalla ja kaksi kertoo perustelunsa."
+              },
+              {
+                "title": "Kuumat mielipiteet",
+                "detail": "Ei valmistelua · 3–15 henkeä",
+                "body": "Joku jakaa miedon mielipiteen (ananas pizzassa, sarkaimet vai välilyönnit) ja kaikki pisteyttävät sen 1–10."
+              },
+              {
+                "title": "Ruusu, piikki, nuppu",
+                "detail": "Ei valmistelua · enintään 10 henkeä",
+                "body": "Jokainen kertoo jostain hyvästä, jostain vaikeasta ja jostain, mitä odottaa, yhdellä lauseella kustakin."
+              },
+              {
+                "title": "Sana kerrallaan -tarina",
+                "detail": "Ei valmistelua · 4–12 henkeä",
+                "body": "Vuorotellen jokainen lisää tarinaan yhden sanan. Se hajoaa nopeasti, ja siinä koko idea."
+              },
+              {
+                "title": "Onneksi, valitettavasti",
+                "detail": "Ei valmistelua · 4–12 henkeä",
+                "body": "Lisätkää vuorotellen tarinaan lause, vuorotellen hyvä ja huono uutinen."
+              }
+            ]
+          },
+          {
+            "title": "Arvauspelit",
+            "items": [
+              {
+                "title": "Kenen työpöytä?",
+                "detail": "Vähän valmistelua · 4–15 henkeä",
+                "body": "Jokainen lähettää vetäjälle etukäteen kuvan työpöydästään; tiimi arvaa, kenen mikäkin on."
+              },
+              {
+                "title": "Lemmikki- tai lapsuuskuva",
+                "detail": "Vähän valmistelua · 4–15 henkeä",
+                "body": "Sama idea lemmikkien tai jokaisen lapsuuskuvien kanssa. Aina suosikki."
+              },
+              {
+                "title": "Viikkoni emojeina",
+                "detail": "Ei valmistelua · mikä tahansa koko",
+                "body": "Jokainen postaa kolme emojia, jotka tiivistävät viikon; muut arvaavat tarinan."
+              },
+              {
+                "title": "Arvaa ääni",
+                "detail": "Vähän valmistelua · mikä tahansa koko",
+                "body": "Vetäjä soittaa lyhyitä arjen ääniä ja kaikki arvaavat, mitä ne ovat. Kodin äänet toimivat parhaiten."
+              },
+              {
+                "title": "Kaksikymmentä kysymystä",
+                "detail": "Ei valmistelua · 3–12 henkeä",
+                "body": "Yksi keksii jotain; muut kysyvät kyllä tai ei -kysymyksiä, kunnes joku arvaa."
+              }
+            ]
+          },
+          {
+            "title": "Piirto- ja näyttöpelit",
+            "items": [
+              {
+                "title": "Kolmenkymmenen sekunnin piirros",
+                "detail": "Ei valmistelua · 3–12 henkeä",
+                "body": "Anna sana, aseta 30 sekunnin ajastin, ja kaikki piirtävät sen yhtä aikaa jaetulle taululle."
+              },
+              {
+                "title": "Gartic Phone",
+                "detail": "Ei valmistelua · 4–30 henkeä",
+                "body": "Ilmainen selaimessa: rikkinäinen puhelin piirroksilla, jossa lauseesta tulee jotain aivan muuta."
+              },
+              {
+                "title": "skribbl.io",
+                "detail": "Ei valmistelua · 3–12 henkeä",
+                "body": "Ilmainen verkko-Pictionary yksityisellä huoneella. Lisää tiimin omia sanoja sisäpiirin vitseihin."
+              },
+              {
+                "title": "Kuudenkymmenen sekunnin etsintä",
+                "detail": "Ei valmistelua · mikä tahansa koko",
+                "body": "Nimeä esine (jotain punaista, jotain sinua vanhempaa) ja kaikki ryntäävät näyttämään sen kameralle."
+              },
+              {
+                "title": "Viiden kysymyksen visa",
+                "detail": "Vähän valmistelua · mikä tahansa koko",
+                "body": "Viisi nopeaa kysymystä viikosta, tuotteesta tai tiimistä. Vastaukset chattiin; nopein oikea voittaa."
+              }
+            ]
+          },
+          {
+            "title": "Näin onnistut",
+            "body": [
+              "Pelatkaa palaverin alussa, ei lopussa, kun kaikki ovat virkeitä eikä kenelläkään ole kiire. Pitäkää sama peli muutaman viikon, jottei kenenkään tarvitse opetella sääntöjä joka kerta, ja vaihtakaa sitten.",
+              "Jakakaa isot palaverit neljän–kuuden hengen ryhmiin. Pelit lakkaavat toimimasta, kun useimmat katsovat eivätkä pelaa."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Missä TinyFloor auttaa",
+          "body": "TinyFloorissa tiimisi kokoushuone on aina paikallaan: liity palaveriin ja hahmosi kävelee sisään, ilman lähetettävää linkkiä. Seinän jaettu taulu sopii piirtopeleihin, ja kerros pysyy auki jälkeenpäin niille, jotka haluavat jatkaa juttelua."
+        },
+        "faq": [
+          {
+            "q": "Mikä viiden minuutin peli sopii etäpalaveriin?",
+            "a": "Kumpi mieluummin, kuumat mielipiteet tai kolmenkymmenen sekunnin piirros jaetulle taululle. Ne eivät vaadi valmistelua ja toimivat kamera päällä tai pois."
+          },
+          {
+            "q": "Mitä eroa on jäänmurtajalla ja palaveripelillä?",
+            "a": "Jäänmurtaja saa ihmiset kertomaan itsestään, yleensä uuden ryhmän alussa. Palaveripeli on lyhyt hauska hetki tiimille, joka jo tuntee toisensa. Moni tämän listan peli toimii molempina."
+          },
+          {
+            "q": "Miten pelataan isossa etäpalaverissa?",
+            "a": "Jakautukaa neljän–kuuden hengen ryhmiin, antakaa jokaiselle ryhmälle sama peli ja muutama minuutti, ja kootkaa sitten kaikki jakamaan paras vastaus."
+          },
+          {
+            "q": "Tarvitsemmeko erityistä ohjelmaa?",
+            "a": "Ei. Useimmat toimivat missä tahansa videopuhelussa, jossa on chat. Gartic Phone ja skribbl.io ovat ilmaisia selaimessa, ja jaettu taulu riittää piirtopeleihin."
+          }
+        ]
+      },
+      "remoteCulture": {
+        "label": "Etätiimin kulttuuri",
+        "meta": {
+          "title": "Näin rakennat etätiimin kulttuuria: 9 toimivaa tapaa",
+          "description": "Näin rakennat kulttuuria etätiimiin: yhdeksän toimivaa arjen tapaa, mistä kannattaa luopua ja mistä näet, että se toimii."
+        },
+        "title": "Näin rakennat kulttuuria <em>etätiimiin.</em>",
+        "intro": "Kulttuuri on sitä, mitä ihmiset tekevät joka päivä, kun kukaan ei katso: miten he pyytävät apua, jakavat uutisia ja ovat eri mieltä. Etätiimi menettää pienet hetket, jotka muovaavat sitä toimistolla, joten sen on tehtävä niille tilaa tarkoituksella, kevyesti ja joka päivä.",
+        "sections": [
+          {
+            "title": "Mitä kulttuuri on ilman toimistoa",
+            "body": [
+              "Toimistolla paljon kulttuuria syntyy sattumalta. Kuulet, miten kokenut kollega hoitaa hankalan asiakkaan, näet kuka jää myöhään ennen julkaisua, syöt lounasta jonkun toisen tiimin kanssa.",
+              "Etätyö vie suurimman osan tästä. Jäljelle jää se, mitä ihmiset kirjoittavat, mitä he sanovat puheluissa ja mitä he päättävät tuoda näkyviin. Hyvä uutinen on, että kaikkea tätä voi muovata muutamalla selkeällä tavalla."
+            ]
+          },
+          {
+            "title": "Yhdeksän tapaa, jotka rakentavat sitä",
+            "items": [
+              {
+                "title": "Kirjaa päätökset",
+                "body": "Pidä yksi paikka, jossa päätökset ja niiden syyt ovat. Uudet oppivat lukemalla, miten tiimi ajattelee."
+              },
+              {
+                "title": "Julkiset kanavat oletuksena",
+                "body": "Kysy siellä, missä muut voivat nähdä ja oppia. Yksityisviestit ovat yksityisasioille."
+              },
+              {
+                "title": "Tee ihmisistä näkyviä",
+                "body": "Näytä, kuka on paikalla, kuka on kiireinen ja kuka ehtii jutella, jottei avun pyytäminen tunnu häiritsemiseltä."
+              },
+              {
+                "title": "Pidä paikka, jonne voi poiketa",
+                "body": "Aina auki oleva huone tai kiinteät ajat, joihin voi tulla varaamatta."
+              },
+              {
+                "title": "Pienet rituaalit",
+                "body": "Viikoittainen demo, perjantain onnistumisketju, viiden minuutin peli. Pieniä, säännöllisiä ja joka viikko samanlaisia."
+              },
+              {
+                "title": "Anna uusille kummi",
+                "body": "Perehdytyksen pitäisi olla ihminen, ei pelkkä dokumentti: joku, jolta kysyä tyhmät kysymykset ensimmäisenä kuukautena."
+              },
+              {
+                "title": "Juhli julkisesti",
+                "body": "Kiitä konkreettisista asioista siellä, missä koko tiimi näkee. Se näyttää, mitä tiimi arvostaa."
+              },
+              {
+                "title": "Suojele keskittymisaikaa",
+                "body": "Hyvä etäkulttuuri antaa ihmisten kadota tunneiksi. Tee ”kiireinen”-tilasta kunnioitettu, ei varoitusmerkki."
+              },
+              {
+                "title": "Tapaa kasvokkain, kun voit",
+                "body": "Kerran tai kahdesti vuodessa, jos budjetti sallii. Jokainen puhelu sen jälkeen on helpompi."
+              }
+            ]
+          },
+          {
+            "title": "Mistä kannattaa luopua",
+            "items": [
+              {
+                "title": "Pakotettu hauskuus",
+                "body": "Pakolliset sosiaaliset tapahtumat hankalina aikoina synnyttävät kaunaa, eivät läheisyyttä."
+              },
+              {
+                "title": "Kamera päällä kaikessa",
+                "body": "Video auttaa joissain keskusteluissa ja väsyttää kaikissa. Anna ihmisten valita."
+              },
+              {
+                "title": "Aktiivisuuden seuranta",
+                "body": "Näppäilyjen tai verkossaoloajan mittaaminen kertoo ihmisille, ettei heihin luoteta, ja luottamus on koko asian ydin."
+              },
+              {
+                "title": "Palaverit yhteyden tunteen vuoksi",
+                "body": "Päivittäinen koko porukan palaveri yhteenkuuluvuuden takia tuntuu yleensä velvollisuudelta. Anna ihmisille paikka, älä aikaa."
+              }
+            ]
+          },
+          {
+            "title": "Mistä näet, että se toimii",
+            "body": [
+              "Et löydä sitä kyselyn pisteistä. Etsi sen sijaan näitä:"
+            ],
+            "items": [
+              {
+                "title": "Uudet kysyvät julkisesti",
+                "body": "Se tarkoittaa, että he tuntevat olonsa turvalliseksi, vaikka eivät tiedä."
+              },
+              {
+                "title": "Ihmiset auttavat tiimirajojen yli",
+                "body": "Ilman tikettiä ja ilman, että esihenkilö pyytää."
+              },
+              {
+                "title": "Jutustelu syntyy itsestään",
+                "body": "Keskustelut alkavat ilman kalenterikutsua."
+              },
+              {
+                "title": "Ihmiset todella irrottautuvat",
+                "body": "He pitävät lomaa ja kirjautuvat ulos päivän päätteeksi."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Missä TinyFloor auttaa",
+          "body": "TinyFloor antaa etätiimille paikan olla yhdessä: kerroksen, jossa näet kuka on paikalla, asetat tilan ja kävelet sen luo, jolla on aikaa jutella. Se näyttää, kuka on paikalla ja minkä tilan hän valitsee, ei muuta: se ei seuraa kenenkään aktiivisuutta."
+        },
+        "faq": [
+          {
+            "q": "Voiko etätiimillä olla vahva kulttuuri?",
+            "a": "Voi, mutta se ei synny sattumalta. Tiimit, jotka kirjaavat päätökset, pitävät paikan johon voi poiketa, ylläpitävät pieniä rituaaleja ja juhlivat julkisesti, ovat usein tiiviimpiä kuin toimistotiimit."
+          },
+          {
+            "q": "Mikä on etäkulttuurin suurin haaste?",
+            "a": "Pienten, suunnittelemattomien hetkien katoaminen: ohimennen kuullut keskustelut, nopeat kysymykset, lounas uuden ihmisen kanssa. Etätiimi tarvitsee paikan, jossa niitä voi yhä tapahtua."
+          },
+          {
+            "q": "Miten uusi saadaan tuntemaan itsensä osaksi etätiimiä?",
+            "a": "Anna hänelle kummi, esittele hänet julkisella kanavalla, kutsu hänet tiimin rituaaleihin ensimmäisestä päivästä ja tee helpoksi nähdä, keneltä voi kysyä."
+          },
+          {
+            "q": "Miten kulttuuria rakennetaan aikavyöhykkeiden yli?",
+            "a": "Nojaa kirjoittamiseen ja asynkronisiin rituaaleihin, kuten viikoittaiseen ketjuun tai kuvahaasteeseen, ja löydä tunnin tai kahden päällekkäisyys reaaliaikaisille hetkille. Vuorottele palaveriaikoja, jotteivät samat ihmiset valvo aina myöhään."
+          }
+        ]
+      },
+      "remoteCommunication": {
+        "label": "Etätiimin viestintä",
+        "meta": {
+          "title": "Etätiimin viestintä: milloin kirjoittaa ja milloin puhua",
+          "description": "Käytännön opas etätiimin viestintään: milloin kirjoittaa, milloin puhua, yksinkertaiset tiimin säännöt ja ratkaisut yleisiin ongelmiin."
+        },
+        "title": "Etäviestintä: <em>milloin kirjoittaa, milloin puhua.</em>",
+        "intro": "Useimmat etätiimien viestintäongelmat johtuvat väärästä tavasta: pitkä ketju, jonka olisi pitänyt olla kahden minuutin puhelu, tai palaveri, joka olisi voinut olla viesti. Näin valitset, ja muutama yksinkertainen sääntö, joista tiimi voi sopia.",
+        "sections": [
+          {
+            "title": "Kirjoita, kun",
+            "items": [
+              {
+                "title": "Joku tarvitsee sitä myöhemmin",
+                "body": "Päätökset, ohjeet ja kaikki, mitä uusi ihminen etsii kolmen kuukauden päästä."
+              },
+              {
+                "title": "Se vaatii harkintaa",
+                "body": "Ehdotukset ja palaute paranevat, kun voi lukea kahdesti ja vastata, kun on valmis."
+              },
+              {
+                "title": "Ihmisiä on muilla aikavyöhykkeillä",
+                "body": "Kirjoittaminen antaa kaikkien osallistua omana työaikanaan."
+              },
+              {
+                "title": "Kyse on tilannepäivityksestä",
+                "body": "Minuutissa luettava vie palaverissa kymmenen."
+              }
+            ]
+          },
+          {
+            "title": "Puhu, kun",
+            "items": [
+              {
+                "title": "Ketjussa on yli kolme vastausta",
+                "body": "Jos edestakaisin jatkuu yhä, kahden minuutin puhe ratkaisee asian."
+              },
+              {
+                "title": "Joku on jumissa",
+                "body": "Kollegan auttaminen eteenpäin on keskeytyksen arvoista. Kävele luo, katsokaa yhdessä ja auta hänet liikkeelle."
+              },
+              {
+                "title": "Ilmassa on jännitettä",
+                "body": "Sävy katoaa tekstissä. Erimielisyydet ja vaikea palaute sujuvat paremmin ääneen."
+              },
+              {
+                "title": "Ideoitte",
+                "body": "Varhainen ideointi on nopeampaa keskustellen. Kirjatkaa päätökset jälkeenpäin."
+              }
+            ]
+          },
+          {
+            "title": "Yksinkertaiset säännöt tiimille",
+            "body": [
+              "Kirjoita ne kerran ja näytä uusille. Ne estävät suurimman osan kitkasta."
+            ],
+            "items": [
+              {
+                "title": "Vastausajat kanavittain",
+                "body": "Esimerkiksi: chat muutamassa tunnissa, sähköposti päivässä ja puhelu kaikkeen kiireelliseen."
+              },
+              {
+                "title": "Yksi koti päätöksille",
+                "body": "Kanava tai dokumentti, johon päätökset kirjataan, jotta ne eivät katoa yksityisviesteihin."
+              },
+              {
+                "title": "Tilalla on merkitys",
+                "body": "Kiireinen tarkoittaa, ettei häiritä, ellei ole kiire. Tavoitettavissa tarkoittaa, että saa tulla."
+              },
+              {
+                "title": "Jokainen puhelu päättyy kirjallisesti",
+                "body": "Kaksi riviä oikeaan kanavaan: mitä päätettiin ja kuka tekee mitä."
+              },
+              {
+                "title": "Ei asialistaa, ei palaveria",
+                "body": "Palaverin, jonka kutsussa ei ole tarkoitusta, voi jättää väliin."
+              }
+            ]
+          },
+          {
+            "title": "Yleiset ongelmat ja ratkaisut",
+            "items": [
+              {
+                "title": "Kaikki tuntuu kiireelliseltä",
+                "body": "Sopikaa, mikä on kiireellistä ja mitä kanavaa se käyttää. Muu voi odottaa vastausta."
+              },
+              {
+                "title": "Päätökset katoavat",
+                "body": "Siirrä ne yksityisviesteistä päätöskanavaan, joka kerta."
+              },
+              {
+                "title": "Liikaa palavereja",
+                "body": "Korvaa tilannepalaverit kirjallisilla päivityksillä ja säästä puhelut päätöksiin ja ongelmiin."
+              },
+              {
+                "title": "Ihmiset hiljenevät",
+                "body": "Hiljaiset ihmiset eivät usein halua häiritä. Tee näkyväksi, milloin joku ehtii, ja kysy kuulumisia kahden kesken."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Missä TinyFloor auttaa",
+          "body": "TinyFloor tuo kirjoittamisen ja puhumisen rinnakkain. Kanavat ja viestit pysyvät tiimichatissa; kun ketju venyy, näet onko henkilö vapaana ja kävelet juttelemaan. Tila näyttää, milloin joku keskittyy, joten kenenkään ei tarvitse arvailla."
+        },
+        "faq": [
+          {
+            "q": "Mitkä ovat parhaat viestintätyökalut etätiimeille?",
+            "a": "Useimmat tiimit tarvitsevat neljä asiaa: chatin nopeisiin viesteihin, paikan dokumenteille ja päätöksille, videopuhelut ja tavan nähdä, kuka on paikalla. Moni työkalu kattaa useamman; tärkeintä on sopia, mihin kutakin käytetään."
+          },
+          {
+            "q": "Pitäisikö etätiimin työskennellä synkronisesti vai asynkronisesti?",
+            "a": "Molemmin tavoin. Kirjoita oletuksena päivitykset ja päätökset, ja puhu reaaliajassa jumien avaamiseen, jännitteiden purkamiseen ja ideointiin. Useimmat tiimit tarvitsevat muutaman tunnin päällekkäisyyden päivässä reaaliaikaiselle osalle."
+          },
+          {
+            "q": "Miten välttää liian monta palaveria?",
+            "a": "Korvaa tilannepalaverit kirjallisilla päivityksillä, vaadi jokaiseen palaveriin asialista ja tee nopeista keskusteluista helppoja, jottei kukaan varaa palaveria kahden minuutin kysymykselle."
+          },
+          {
+            "q": "Miten viestiä aikavyöhykkeiden yli?",
+            "a": "Kirjoita oletuksena, kirjaa päätökset sinne, mistä kaikki ne löytävät, vuorottele reaaliaikaisten palaverien aikoja ja säästä päällekkäiset tunnit keskusteluille, jotka niitä tarvitsevat."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Mikä on lähichat?",
+        "meta": {
+          "title": "Mikä on lähichat? Näin se toimii peleissä ja töissä",
+          "description": "Mikä lähichat on, miten se toimii, mitkä pelit käyttävät sitä ja miten virtuaalitoimistot käyttävät sitä, jotta tiimit voivat puhua kävelemällä toistensa luo."
+        },
+        "title": "Mikä on <em>lähichat?</em>",
+        "intro": "Lähichatissa puhut lähelläsi olevien kanssa virtuaalisessa tilassa etkä kaikkien muiden. Se syntyi peleissä, joissa se herättää maailmat eloon, ja nyt virtuaalitoimistot antavat sen avulla tiimien puhua ilman palaverilinkkejä.",
+        "sections": [
+          {
+            "title": "Näin lähichat toimii",
+            "body": [
+              "Jokaisella on sijainti kartalla, pelimaailmassa tai toimiston kerroksessa. Sen sijaan että kaikki kuulisivat kaikki, tila päättää, kuka voi puhua: tule jonkun lähelle ja kuulette toisenne, kävele pois ja keskustelu loppuu.",
+              "Joissain versioissa äänet hiljenevät etäisyyden mukaan, kuten ääni huoneessa. Toisissa yhteys syntyy, kun seisot jonkun vieressä, kuten kävellessäsi kollegan pöydän luo."
+            ]
+          },
+          {
+            "title": "Lähichat peleissä",
+            "body": [
+              "Pelit käyttävät sitä tehdäkseen keskusteluista osan maailmaa. Muutama tunnettu esimerkki:"
+            ],
+            "items": [
+              {
+                "title": "Sosiaaliset päättelypelit",
+                "body": "Among Usin modit lisäsivät lähipuheen, joten kuulet vain lähellä olevat pelaajat ja voit kuiskia suunnitelmia."
+              },
+              {
+                "title": "Selviytymispelit",
+                "body": "Rust ja DayZ käyttävät lähipuhetta, joten vieraan kohtaaminen tarkoittaa oikeaa puhumista hänen kanssaan."
+              },
+              {
+                "title": "Yhteistyöpelit",
+                "body": "Lethal Companyssa kauas harhaileva joukkuetoveri kuuluu huonosti, ja siinä on puolet jännityksestä."
+              },
+              {
+                "title": "Hiekkalaatikkopelit",
+                "body": "Minecraft-palvelimet lisäävät lähipuheen modeilla, jotta jaettu maailma tuntuu oikealta paikalta."
+              }
+            ]
+          },
+          {
+            "title": "Lähichat töissä",
+            "body": [
+              "Virtuaalitoimistot käyttävät samaa ideaa etätiimeille. Tiimisi jakaa 2D-kerroksen, jokainen on hahmo, ja puhutte kävelemällä jonkun luo palaverilinkin lähettämisen sijaan.",
+              "Se tuo takaisin sen, minkä videopuhelut menettävät: näkee, kuka on paikalla, nopeat kysymykset ja sivukeskustelut. Kaksi voi jutella nurkassa muiden tehdessä töitä, kuten oikeassa toimistossa."
+            ]
+          },
+          {
+            "title": "Kaksi lähichatin tapaa",
+            "items": [
+              {
+                "title": "Aina päällä oleva tilaääni",
+                "body": "Ääni yhdistyy automaattisesti, kun olet jonkun lähellä, ja hiljenee etäisyyden mukaan. Se tuntuu eläväiseltä, mutta sinut voidaan kuulla ennen kuin haluat."
+              },
+              {
+                "title": "Kävele luo ja soita",
+                "body": "Kun kävelet jonkun luo, saat painikkeen soittaa, eikä mitään kuulu ennen kuin aloitat puhelun. Rauhallisempi ja sopii paremmin töihin."
+              }
+            ]
+          },
+          {
+            "title": "Hyvät ja huonot puolet",
+            "items": [
+              {
+                "title": "Ei palaverilinkkejä",
+                "body": "Puhuminen on yhtä helppoa kuin luo käveleminen, joten pienetkin kysymykset tulevat kysytyiksi."
+              },
+              {
+                "title": "Sivukeskustelut",
+                "body": "Samassa tilassa voi käydä useita keskusteluja yhtä aikaa."
+              },
+              {
+                "title": "Läsnäolo",
+                "body": "Näet, kuka on paikalla, ennen kuin häiritset ketään."
+              },
+              {
+                "title": "Se vaatii jaetun tilan",
+                "body": "Se toimii vain, jos tiimi pitää tilan auki töitä tehdessään."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Missä TinyFloor auttaa",
+          "body": "TinyFloor käyttää tapaa kävele luo ja soita: kävele hahmollasi kollegan luo, niin hänen viereensä ilmestyy soittopainike, eikä ketään kuulla vahingossa. Ryhmät tapaavat kokoushuoneessa. Se toimii selaimessa ja on ilmainen enintään 3 hengelle."
+        },
+        "faq": [
+          {
+            "q": "Mitä lähichat tarkoittaa?",
+            "a": "Että voit puhua virtuaalisessa tilassa vain lähelläsi olevien kanssa. Mene lähemmäs puhuaksesi; kävele pois, niin keskustelu loppuu."
+          },
+          {
+            "q": "Onko lähichat yksityinen?",
+            "a": "Vain lähelläsi olevat kuulevat sinut, mikä on yksityisempää kuin kanava, jossa kaikki ovat. Kävele luo ja soita -tavassa mitään ei kuulu ennen kuin aloitat puhelun."
+          },
+          {
+            "q": "Missä peleissä on lähichat?",
+            "a": "Rustissa, DayZ:ssa ja Lethal Companyssa se on sisäänrakennettuna, ja modit lisäävät sen peleihin kuten Among Us ja Minecraft."
+          },
+          {
+            "q": "Voiko lähichatia käyttää töissä?",
+            "a": "Voi. Virtuaalitoimistot kuten TinyFloor, Gather ja SpatialChat käyttävät sitä, jotta etätiimit voivat puhua kävelemällä toistensa luo puheluiden sopimisen sijaan."
+          }
+        ]
       }
     }
   }

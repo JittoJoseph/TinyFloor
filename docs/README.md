@@ -29,6 +29,7 @@ code and by git history, not here.
 |---|---|
 | [16-seo-pages.md](16-seo-pages.md) | Which pages we build for search, for whom, and what comes next |
 | [17-indexing.md](17-indexing.md) | IndexNow on every deploy, llms.txt and llms-full.txt |
+| [18-seo-research.md](18-seo-research.md) | What Search Console and Ahrefs say after the first pages, and what's next |
 
 ## Others
 

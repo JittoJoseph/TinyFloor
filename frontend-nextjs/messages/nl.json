@@ -412,8 +412,8 @@
       "gather": {
         "label": "Gather-alternatief",
         "meta": {
-          "title": "Gratis Gather-alternatief in je browser",
-          "description": "Op zoek naar een gratis Gather-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid."
+          "title": "Gratis Gather Town-alternatief in je browser",
+          "description": "Op zoek naar een gratis Gather Town-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid."
         },
         "title": "Een gratis <em>Gather-alternatief.</em>",
         "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee aan, een kantoor waar je rondloopt en praat, gratis voor maximaal 3 mensen en daarna één prijs voor het hele kantoor.",
@@ -2610,6 +2610,730 @@
       "bigger": {
         "title": "Meer dan 25 mensen?",
         "body": "Geef elk team een eigen kantoor, of mail {email} en we praten erover."
+      }
+    }
+  },
+  "guides": {
+    "label": "Gidsen",
+    "eyebrow": "Gids",
+    "minutes": "{count} min lezen",
+    "updated": "Bijgewerkt op {date}",
+    "by": "Door {name}",
+    "contents": "Op deze pagina",
+    "faqTitle": "Veelgestelde <em>vragen.</em>",
+    "moreTitle": "Meer <em>gidsen.</em>",
+    "all": "Alle gidsen",
+    "fitCta": "Probeer het demokantoor",
+    "hub": {
+      "meta": {
+        "title": "Gidsen voor leidinggevenden van remote teams",
+        "description": "Praktische gidsen voor wie remote teams leidt: teambuilding, spelletjes voor meetings, cultuur, communicatie en hoe proximity chat werkt."
+      },
+      "title": "Gidsen voor <em>remote teams.</em>",
+      "body": "Praktisch, kort en geschreven door mensen die zelf op afstand werken. Gebruik wat helpt, sla de rest over."
+    },
+    "pages": {
+      "teamBuilding": {
+        "label": "Virtuele teambuildingactiviteiten",
+        "meta": {
+          "title": "20 virtuele teambuildingactiviteiten waar remote teams van genieten",
+          "description": "20 virtuele teambuildingactiviteiten op tijd gesorteerd: starters van 5 minuten, spellen van 30 minuten, maandelijkse events en ideeën zonder meeting."
+        },
+        "title": "Virtuele teambuildingactiviteiten <em>waar mensen echt van genieten.</em>",
+        "intro": "Virtuele teambuilding mislukt meestal omdat het voelt als nog een meeting met spelletjes eraan vastgeplakt. Wat werkt, is kort, vrijwillig, makkelijk te organiseren en geeft mensen iets om achteraf over te praten. Hier zijn 20 activiteiten, gesorteerd op hoeveel tijd je hebt.",
+        "sections": [
+          {
+            "title": "Wat het laat werken",
+            "body": [
+              "Zet eerst de vorm goed neer, voordat je een activiteit kiest. Deze vijf regels zijn belangrijker dan welk spel je kiest."
+            ],
+            "items": [
+              {
+                "title": "Houd het kort",
+                "body": "Tien goede minuten zijn beter dan een uur waar niemand op zat te wachten. Volgende week kan het weer."
+              },
+              {
+                "title": "Maak het vrijwillig",
+                "body": "Mensen doen mee aan wat ze leuk vinden. Verplichte gezelligheid leert ze vooral hun camera uit te laten."
+              },
+              {
+                "title": "Tijdens werktijd",
+                "body": "Avondevents sluiten ouders, andere tijdzones en iedereen die zijn avond nodig heeft uit."
+              },
+              {
+                "title": "Geef iedereen een ingang",
+                "body": "Wissel activiteiten af voor praters en voor stillere mensen: tekenen, raden en schrijven werken net zo goed als praten."
+              },
+              {
+                "title": "Herhaal wat werkt",
+                "body": "Een klein wekelijks ritueel doet meer dan een groot event per kwartaal."
+              }
+            ]
+          },
+          {
+            "title": "Vijf minuten, aan het begin van een meeting",
+            "body": [
+              "Geen voorbereiding, elke teamgrootte. Gebruik er een om een standup of weekoverleg te openen."
+            ],
+            "items": [
+              {
+                "title": "Twee waarheden en een leugen",
+                "detail": "5 min · 3 tot 12 mensen",
+                "body": "Iemand noemt drie dingen over zichzelf; de anderen raden welke verzonnen is. Twee of drie mensen per meeting is genoeg."
+              },
+              {
+                "title": "Eén ding op je bureau",
+                "detail": "5 min · elke grootte",
+                "body": "Iedereen pakt iets binnen handbereik en vertelt waarom het daar ligt. Makkelijk voor iedereen, en het zegt veel."
+              },
+              {
+                "title": "Check-in in één woord",
+                "detail": "2 min · elke grootte",
+                "body": "Iedereen beschrijft zijn week in één woord. Ga later op de interessante in, niet nu."
+              },
+              {
+                "title": "Dit of dat",
+                "detail": "5 min · elke grootte",
+                "body": "De host leest paren voor (koffie of thee, bergen of zee, vroeg of laat) en iedereen antwoordt tegelijk in de chat."
+              },
+              {
+                "title": "Foto van de week",
+                "detail": "5 min · tot 10 mensen",
+                "body": "Iedereen deelt een foto van zijn week vanaf de telefoon. Uitleg hoeft niet, tenzij iemand die wil geven."
+              }
+            ]
+          },
+          {
+            "title": "Vijftien tot dertig minuten",
+            "body": [
+              "Iets om elke week of twee in de agenda te zetten, het liefst op vrijdagmiddag."
+            ],
+            "items": [
+              {
+                "title": "Pictionary op een gedeeld whiteboard",
+                "detail": "20 min · 4 tot 12 mensen",
+                "body": "Iemand tekent een woord op een whiteboard dat iedereen ziet, terwijl de rest gokt. Een lijst met werkwoorden zorgt voor extra lol."
+              },
+              {
+                "title": "Teamquiz",
+                "detail": "30 min · 4 tot 20 mensen",
+                "body": "Verzamel vooraf van iedereen één verrassend feitje en laat het team raden van wie het is."
+              },
+              {
+                "title": "Raad het nummer",
+                "detail": "20 min · 4 tot 15 mensen",
+                "body": "Iedereen stuurt de host een favoriet nummer. De host speelt een paar seconden van elk en het team raadt van wie het is."
+              },
+              {
+                "title": "Onbewoond eiland",
+                "detail": "15 min · 3 tot 10 mensen",
+                "body": "Iedereen noemt één boek, één album en één gerecht voor een onbewoond eiland, en het team discussieert erover."
+              },
+              {
+                "title": "Laten zien en vertellen",
+                "detail": "30 min · 3 tot 10 mensen",
+                "body": "Een of twee mensen per week laten iets zien dat ze maken, koken, kweken of verzamelen. Je leert elkaar beter kennen dan met welk spel ook."
+              }
+            ]
+          },
+          {
+            "title": "Een uur, één keer per maand of kwartaal",
+            "body": [
+              "Grotere events vragen wat planning of een klein budget. Doe ze minder vaak en maak er iets van."
+            ],
+            "items": [
+              {
+                "title": "Een online escaperoom",
+                "detail": "60 min · 4 tot 8 per kamer",
+                "body": "Verschillende bedrijven organiseren begeleide escaperooms via video. Verdeel grote teams over kamers en vergelijk aan het eind de tijden."
+              },
+              {
+                "title": "Een workshop met pakket",
+                "detail": "60 min · elke grootte",
+                "body": "Kook-, koffie- of cocktailworkshops waarbij iedereen thuis dezelfde ingrediënten krijgt. Bestel op tijd als je team in meerdere landen zit."
+              },
+              {
+                "title": "Een spellentoernooi",
+                "detail": "45 min · 4 tot 30 mensen",
+                "body": "Gratis browserspellen zoals Gartic Phone, skribbl.io of Codenames online werken goed. Speel in kleine groepen en daarna een finale."
+              },
+              {
+                "title": "Een bouwdag",
+                "detail": "Halve dag · elke grootte",
+                "body": "Kleine teams bouwen wat ze willen, voor het werk of niet, en laten het aan het eind zien. Het mengt mensen die nooit samenwerken."
+              },
+              {
+                "title": "Het kwartaal in vogelvlucht",
+                "detail": "60 min · elke grootte",
+                "body": "Kijk terug op wat het team heeft opgeleverd en deel daarna gekke prijzen uit waar iedereen op stemt: beste bug, beste redding, beste meme."
+              }
+            ]
+          },
+          {
+            "title": "Helemaal zonder meeting",
+            "body": [
+              "Niet alles heeft een call nodig. Deze lopen een week in een chatkanaal en passen bij teams verspreid over tijdzones."
+            ],
+            "items": [
+              {
+                "title": "Een fotochallenge",
+                "detail": "1 week · elke grootte",
+                "body": "Elke week een thema (je uitzicht, je lunch, iets blauws) en een kanaal om te posten."
+              },
+              {
+                "title": "Een bedank-thread",
+                "detail": "Doorlopend · elke grootte",
+                "body": "Eén plek om iemand publiek te bedanken voor iets concreets. Lees aan het eind van de maand de mooiste voor."
+              },
+              {
+                "title": "Een receptenruil",
+                "detail": "1 week · elke grootte",
+                "body": "Iedereen deelt een recept van thuis. Verzamel ze in een gedeeld document: het wordt het kookboek van het team."
+              },
+              {
+                "title": "Een stappenchallenge",
+                "detail": "2 weken · elke grootte",
+                "body": "Teams van drie tellen hun dagelijkse stappen op. Houd het vriendelijk en laat elke vorm van bewegen meetellen."
+              },
+              {
+                "title": "Een boeken- of podcastclub",
+                "detail": "1 maand · 3 tot 10 mensen",
+                "body": "Kies iets om te lezen of te luisteren, bespreek het in een thread en spreek aan het eind één keer af als mensen dat willen."
+              }
+            ]
+          },
+          {
+            "title": "Maak er een gewoonte van, geen event",
+            "body": [
+              "De teams die het dichtst bij elkaar staan, leunen zelden op grote events. Wat ze hebben, zijn veel kleine, ongeplande momenten: een kort woord voor een meeting, een vraag die een gesprek wordt, een nummer dat iemand opzet.",
+              "Op kantoor gebeurt dat vanzelf. Op afstand is er een plek nodig waar mensen elkaar zien en kunnen binnenlopen zonder een call te plannen. Geef je team die plek, en de activiteiten hierboven worden een extraatje in plaats van het enige moment dat mensen praten."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor is een virtueel kantoor waar je team rondloopt. Loop iemand tegen het lijf en blijf even kletsen, zet een nummer op de jukebox in de lounge, teken op het whiteboard voor Pictionary of spreek af in de vergaderruimte voor de vrijdagmiddagborrel. Gratis voor maximaal 3 mensen, in de browser."
+        },
+        "faq": [
+          {
+            "q": "Welke virtuele teambuildingactiviteiten passen bij kleine teams?",
+            "a": "Korte zonder voorbereiding: twee waarheden en een leugen, één ding op je bureau, Pictionary op een gedeeld whiteboard of raad het nummer. Kleine teams kunnen elke week iets doen in plaats van één groot event per kwartaal."
+          },
+          {
+            "q": "Hoe vaak moet een remote team aan teambuilding doen?",
+            "a": "Een starter van vijf minuten in het weekoverleg en eens per maand iets langers werkt voor de meeste teams. Een klein wekelijks ritueel doet meer dan een zeldzaam groot event."
+          },
+          {
+            "q": "Hoe maak je virtuele teambuilding minder ongemakkelijk?",
+            "a": "Houd het kort en vrijwillig, doe het tijdens werktijd, zorg voor een duidelijke host en regels en kies activiteiten waarbij stillere mensen kunnen tekenen, raden of schrijven in plaats van optreden."
+          },
+          {
+            "q": "Welke gratis tools kunnen we gebruiken?",
+            "a": "Gartic Phone, skribbl.io en Codenames online zijn gratis in de browser. Een gedeeld whiteboard dekt tekenspellen en een chatkanaal alles wat asynchroon is. TinyFloor is gratis voor maximaal 3 mensen."
+          }
+        ]
+      },
+      "meetingGames": {
+        "label": "Spelletjes voor online meetings",
+        "meta": {
+          "title": "15 snelle spelletjes voor online meetings (5 minuten of minder)",
+          "description": "15 snelle spelletjes voor online meetings zonder voorbereiding: praatspellen, raadspellen en tekenspellen die in vijf minuten passen."
+        },
+        "title": "Snelle spelletjes voor <em>online meetings.</em>",
+        "intro": "Een goed meetingspel duurt vijf minuten, heeft geen voorbereiding nodig en werkt met de camera aan of uit. Deze 15 doen dat, gesorteerd op het soort plezier.",
+        "sections": [
+          {
+            "title": "Voordat je begint",
+            "items": [
+              {
+                "title": "Kies een host",
+                "body": "Eén persoon legt de regels uit, bewaakt de tijd en houdt het tempo erin. Wissel elke week."
+              },
+              {
+                "title": "Zet een timer",
+                "body": "Vijf minuten is vijf minuten. Stoppen terwijl het nog leuk is, zorgt dat mensen het volgende keer weer willen."
+              },
+              {
+                "title": "Niemand hoeft op te treden",
+                "body": "Laat mensen passen, in de chat antwoorden of met de camera uit meespelen."
+              }
+            ]
+          },
+          {
+            "title": "Praatspellen",
+            "items": [
+              {
+                "title": "Wat heb je liever",
+                "detail": "Geen voorbereiding · elke grootte",
+                "body": "De host geeft een keuze tussen twee opties, iedereen antwoordt in één woord en twee mensen leggen hun keuze uit."
+              },
+              {
+                "title": "Stellingen",
+                "detail": "Geen voorbereiding · 3 tot 15 mensen",
+                "body": "Iemand deelt een milde mening (ananas op pizza, tabs boven spaties) en iedereen geeft een cijfer van 1 tot 10."
+              },
+              {
+                "title": "Roos, doorn, knop",
+                "detail": "Geen voorbereiding · tot 10 mensen",
+                "body": "Iedereen deelt iets goeds, iets lastigs en iets waar hij naar uitkijkt, elk in één zin."
+              },
+              {
+                "title": "Verhaal van één woord",
+                "detail": "Geen voorbereiding · 4 tot 12 mensen",
+                "body": "Om de beurt voegt iedereen één woord toe aan een verhaal. Het valt snel uit elkaar, en daar gaat het om."
+              },
+              {
+                "title": "Gelukkig, helaas",
+                "detail": "Geen voorbereiding · 4 tot 12 mensen",
+                "body": "Om de beurt voeg je een zin toe aan een verhaal, afwisselend goed en slecht nieuws."
+              }
+            ]
+          },
+          {
+            "title": "Raadspellen",
+            "items": [
+              {
+                "title": "Wiens bureau?",
+                "detail": "Weinig voorbereiding · 4 tot 15 mensen",
+                "body": "Iedereen stuurt vooraf een foto van zijn bureau naar de host; het team raadt wie bij welk bureau hoort."
+              },
+              {
+                "title": "Huisdier- of babyfoto raden",
+                "detail": "Weinig voorbereiding · 4 tot 15 mensen",
+                "body": "Hetzelfde idee met foto's van huisdieren of van iedereen als kind. Altijd een favoriet."
+              },
+              {
+                "title": "Mijn week in emoji",
+                "detail": "Geen voorbereiding · elke grootte",
+                "body": "Iedereen post drie emoji die zijn week samenvatten; de anderen raden het verhaal."
+              },
+              {
+                "title": "Raad het geluid",
+                "detail": "Weinig voorbereiding · elke grootte",
+                "body": "De host laat korte alledaagse geluiden horen en iedereen raadt wat het is. Geluiden van thuis werken het best."
+              },
+              {
+                "title": "Twintig vragen",
+                "detail": "Geen voorbereiding · 3 tot 12 mensen",
+                "body": "Iemand denkt aan iets; de anderen stellen ja-of-nee-vragen tot iemand het raadt."
+              }
+            ]
+          },
+          {
+            "title": "Teken- en schermspellen",
+            "items": [
+              {
+                "title": "Tekenen in dertig seconden",
+                "detail": "Geen voorbereiding · 3 tot 12 mensen",
+                "body": "Geef een woord, zet een timer van 30 seconden en iedereen tekent het tegelijk op een gedeeld whiteboard."
+              },
+              {
+                "title": "Gartic Phone",
+                "detail": "Geen voorbereiding · 4 tot 30 mensen",
+                "body": "Gratis in de browser: fluisterspel met tekeningen, waarbij een zin iets heel anders wordt."
+              },
+              {
+                "title": "skribbl.io",
+                "detail": "Geen voorbereiding · 3 tot 12 mensen",
+                "body": "Gratis online Pictionary met een privé-kamer. Voeg je eigen teamwoorden toe voor de interne grappen."
+              },
+              {
+                "title": "Speurtocht in zestig seconden",
+                "detail": "Geen voorbereiding · elke grootte",
+                "body": "Noem een voorwerp (iets roods, iets ouder dan jij) en iedereen rent om het voor de camera te houden."
+              },
+              {
+                "title": "Quiz van vijf vragen",
+                "detail": "Weinig voorbereiding · elke grootte",
+                "body": "Vijf snelle vragen over de week, het product of het team. Antwoorden in de chat; het snelste goede antwoord wint."
+              }
+            ]
+          },
+          {
+            "title": "Zo pak je het goed aan",
+            "body": [
+              "Speel aan het begin van de meeting, niet aan het eind, als iedereen fris is en niemand weg moet. Houd hetzelfde spel een paar weken aan zodat niemand steeds nieuwe regels hoeft te leren, en wissel dan.",
+              "Splits grote meetings op in groepjes van vier tot zes. Spellen werken niet meer als de meeste mensen kijken in plaats van meespelen."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "In TinyFloor is de vergaderruimte van je team er altijd: doe mee aan een meeting en je personage loopt naar binnen, zonder link te sturen. Het gedeelde whiteboard aan de muur werkt voor tekenspellen, en de verdieping blijft daarna open voor wie nog wil kletsen."
+        },
+        "faq": [
+          {
+            "q": "Wat is een goed spel van vijf minuten voor een online meeting?",
+            "a": "Wat heb je liever, stellingen of een tekening van dertig seconden op een gedeeld whiteboard. Ze vragen geen voorbereiding en werken met de camera aan of uit."
+          },
+          {
+            "q": "Wat is het verschil tussen een ijsbreker en een meetingspel?",
+            "a": "Een ijsbreker laat mensen over zichzelf praten, meestal aan het begin van een nieuwe groep. Een meetingspel is een kort pleziertje voor een team dat elkaar al kent. Veel van deze spellen werken als beide."
+          },
+          {
+            "q": "Hoe speel je spelletjes in een grote online meeting?",
+            "a": "Splits op in groepjes van vier tot zes, geef elke groep hetzelfde spel en een paar minuten en haal daarna iedereen terug om het beste antwoord te delen."
+          },
+          {
+            "q": "Hebben we speciale software nodig?",
+            "a": "Nee. De meeste werken in elke videocall met chat. Gartic Phone en skribbl.io zijn gratis in de browser, en een gedeeld whiteboard dekt de tekenspellen."
+          }
+        ]
+      },
+      "remoteCulture": {
+        "label": "Cultuur in remote teams",
+        "meta": {
+          "title": "Cultuur bouwen in een remote team: 9 gewoontes die werken",
+          "description": "Zo bouw je cultuur in een remote team: negen dagelijkse gewoontes die werken, waar je mee moet stoppen en hoe je ziet of het werkt."
+        },
+        "title": "Zo bouw je cultuur in een <em>remote team.</em>",
+        "intro": "Cultuur is wat mensen elke dag doen als niemand kijkt: hoe ze om hulp vragen, nieuws delen en het oneens zijn. Een remote team mist de kleine momenten die dat op kantoor vormen, dus moet het er bewust ruimte voor maken, licht en elke dag.",
+        "sections": [
+          {
+            "title": "Wat cultuur is zonder kantoor",
+            "body": [
+              "Op kantoor ontstaat veel cultuur toevallig. Je hoort hoe een ervaren collega een lastige klant aanpakt, ziet wie langer blijft voor een lancering, gaat lunchen met iemand van een ander team.",
+              "Op afstand valt het meeste daarvan weg. Wat overblijft, is wat mensen schrijven, wat ze zeggen in calls en wat ze zichtbaar maken. Het goede nieuws: dat alles kun je vormen met een paar duidelijke gewoontes."
+            ]
+          },
+          {
+            "title": "Negen gewoontes die het opbouwen",
+            "items": [
+              {
+                "title": "Schrijf besluiten op",
+                "body": "Houd één plek bij waar besluiten en hun redenen staan. Nieuwe mensen leren door te lezen hoe het team denkt."
+              },
+              {
+                "title": "Standaard publieke kanalen",
+                "body": "Stel vragen waar anderen kunnen meelezen en leren. Privéberichten zijn voor privézaken."
+              },
+              {
+                "title": "Maak mensen zichtbaar",
+                "body": "Laat zien wie er is, wie bezig is en wie tijd heeft om te praten, zodat hulp vragen niet voelt als storen."
+              },
+              {
+                "title": "Houd een plek om binnen te lopen",
+                "body": "Een altijd open ruimte of vaste spreekuren waar je zonder afspraak kunt verschijnen."
+              },
+              {
+                "title": "Kleine rituelen",
+                "body": "Een wekelijkse demo, een vrijdag-successen-thread, een spel van vijf minuten. Klein, regelmatig en elke week hetzelfde."
+              },
+              {
+                "title": "Geef nieuwe mensen een buddy",
+                "body": "Onboarding moet een persoon zijn, niet alleen een document: iemand voor de domme vragen in de eerste maand."
+              },
+              {
+                "title": "Vier het publiek",
+                "body": "Bedank mensen voor concrete dingen waar het hele team het ziet. Het laat zien wat het team belangrijk vindt."
+              },
+              {
+                "title": "Bescherm focustijd",
+                "body": "Een goede remote cultuur laat mensen uren onderduiken. Maak 'bezig' een gerespecteerde status, geen alarmsignaal."
+              },
+              {
+                "title": "Zie elkaar als het kan",
+                "body": "Een of twee keer per jaar, als het budget het toelaat. Elke call daarna gaat makkelijker."
+              }
+            ]
+          },
+          {
+            "title": "Waar je mee stopt",
+            "items": [
+              {
+                "title": "Verplichte gezelligheid",
+                "body": "Verplichte sociale events op onhandige tijden zorgen voor wrok, niet voor verbondenheid."
+              },
+              {
+                "title": "Camera altijd aan",
+                "body": "Video helpt bij sommige gesprekken en vermoeit bij allemaal. Laat mensen kiezen."
+              },
+              {
+                "title": "Activiteit bijhouden",
+                "body": "Toetsaanslagen of online tijd meten vertelt mensen dat ze niet vertrouwd worden, en vertrouwen is juist de kern."
+              },
+              {
+                "title": "Meetings om verbonden te blijven",
+                "body": "Een dagelijkse all-hands om je samen te voelen, voelt meestal als een klus. Geef mensen een plek in plaats van een tijdstip."
+              }
+            ]
+          },
+          {
+            "title": "Zo zie je dat het werkt",
+            "body": [
+              "Je vindt het niet in een enquêtescore. Let in plaats daarvan hierop:"
+            ],
+            "items": [
+              {
+                "title": "Nieuwe mensen vragen publiek",
+                "body": "Dat betekent dat ze zich veilig voelen als ze iets niet weten."
+              },
+              {
+                "title": "Mensen helpen over teams heen",
+                "body": "Zonder ticket en zonder dat een manager erom vraagt."
+              },
+              {
+                "title": "Kletspraat ontstaat vanzelf",
+                "body": "Gesprekken beginnen zonder agenda-uitnodiging."
+              },
+              {
+                "title": "Mensen schakelen echt uit",
+                "body": "Ze nemen vakantie en loggen aan het eind van de dag uit."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor geeft een remote team een plek om samen te zijn: een verdieping waar je ziet wie er is, een status zet en naar iemand loopt die tijd heeft. Het laat zien wie er is en welke status iemand kiest, meer niet: het houdt niemands activiteit bij."
+        },
+        "faq": [
+          {
+            "q": "Kan een remote team een sterke cultuur hebben?",
+            "a": "Ja, maar niet vanzelf. Teams die besluiten opschrijven, een plek hebben om binnen te lopen, kleine rituelen hebben en publiek vieren, zijn vaak hechter dan teams op kantoor."
+          },
+          {
+            "q": "Wat is de grootste uitdaging voor remote cultuur?",
+            "a": "Het verlies van de kleine, ongeplande momenten: opgevangen gesprekken, snelle vragen, lunch met iemand nieuws. Een remote team heeft een plek nodig waar die nog steeds kunnen gebeuren."
+          },
+          {
+            "q": "Hoe laat je nieuwe mensen zich deel voelen van een remote team?",
+            "a": "Geef ze een buddy, stel ze voor in een publiek kanaal, nodig ze vanaf dag één uit voor de rituelen van het team en maak makkelijk zichtbaar wie er is om iets te vragen."
+          },
+          {
+            "q": "Hoe bouw je cultuur over tijdzones heen?",
+            "a": "Leun op schrijven en asynchrone rituelen, zoals een wekelijkse thread of een fotochallenge, en zoek een of twee uur overlap voor live momenten. Wissel meetingtijden af zodat niet steeds dezelfden laat op moeten blijven."
+          }
+        ]
+      },
+      "remoteCommunication": {
+        "label": "Communicatie in remote teams",
+        "meta": {
+          "title": "Communicatie in remote teams: wanneer schrijven, wanneer praten",
+          "description": "Een praktische gids voor communicatie in remote teams: wanneer schrijven, wanneer praten, simpele teamregels en oplossingen voor veelvoorkomende problemen."
+        },
+        "title": "Communicatie op afstand: <em>wanneer schrijven, wanneer praten.</em>",
+        "intro": "De meeste communicatieproblemen in remote teams komen van de verkeerde vorm: een lange thread die een call van twee minuten had moeten zijn, of een meeting die een bericht had kunnen zijn. Zo kies je, plus een paar simpele regels om als team af te spreken.",
+        "sections": [
+          {
+            "title": "Schrijf het op als",
+            "items": [
+              {
+                "title": "Iemand het later nodig heeft",
+                "body": "Besluiten, handleidingen en alles waar een nieuw iemand over drie maanden naar zoekt."
+              },
+              {
+                "title": "Het denkwerk vraagt",
+                "body": "Voorstellen en feedback worden beter als mensen twee keer kunnen lezen en reageren als ze er klaar voor zijn."
+              },
+              {
+                "title": "Mensen in andere tijdzones zitten",
+                "body": "Schrijven laat iedereen meedoen in zijn eigen werktijd."
+              },
+              {
+                "title": "Het een statusupdate is",
+                "body": "Wat je in een minuut leest, kost in een meeting tien."
+              }
+            ]
+          },
+          {
+            "title": "Praat het door als",
+            "items": [
+              {
+                "title": "Een thread meer dan drie reacties heeft",
+                "body": "Gaat het nog heen en weer, dan regelen twee minuten praten het."
+              },
+              {
+                "title": "Iemand vastzit",
+                "body": "Een collega losmaken is een onderbreking waard. Loop erheen, kijk er samen naar en help hem verder."
+              },
+              {
+                "title": "Er spanning is",
+                "body": "Toon gaat verloren in tekst. Meningsverschillen en lastige feedback gaan beter hardop."
+              },
+              {
+                "title": "Je ideeën verkent",
+                "body": "Vroeg brainstormen gaat sneller in een gesprek. Schrijf daarna op wat jullie besloten hebben."
+              }
+            ]
+          },
+          {
+            "title": "Simpele regels om als team af te spreken",
+            "body": [
+              "Schrijf ze één keer op en wijs nieuwe mensen erop. Ze voorkomen de meeste wrijving."
+            ],
+            "items": [
+              {
+                "title": "Reactietijden per kanaal",
+                "body": "Bijvoorbeeld: chat binnen een paar uur, e-mail binnen een dag en bellen bij iets dringends."
+              },
+              {
+                "title": "Eén thuis voor besluiten",
+                "body": "Een kanaal of document waarin besluiten worden vastgelegd, zodat ze niet verdwijnen in privéberichten."
+              },
+              {
+                "title": "Status betekent iets",
+                "body": "Bezig betekent niet storen, tenzij het dringend is. Beschikbaar betekent dat je mag langskomen."
+              },
+              {
+                "title": "Elke call eindigt op schrift",
+                "body": "Twee regels in het juiste kanaal: wat er besloten is en wie wat doet."
+              },
+              {
+                "title": "Geen agenda, geen meeting",
+                "body": "Een meeting zonder doel in de uitnodiging mag je weigeren."
+              }
+            ]
+          },
+          {
+            "title": "Veelvoorkomende problemen en oplossingen",
+            "items": [
+              {
+                "title": "Alles voelt dringend",
+                "body": "Spreek af wat dringend betekent en welk kanaal erbij hoort. De rest kan wachten op een antwoord."
+              },
+              {
+                "title": "Besluiten raken zoek",
+                "body": "Haal ze uit privéberichten naar het besluitenkanaal, elke keer."
+              },
+              {
+                "title": "Te veel meetings",
+                "body": "Vervang statusmeetings door geschreven updates en bewaar calls voor besluiten en problemen."
+              },
+              {
+                "title": "Mensen worden stil",
+                "body": "Stille mensen willen vaak niet storen. Maak zichtbaar wanneer iemand tijd heeft en vraag het één op één."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor zet schrijven en praten naast elkaar. Kanalen en berichten blijven in de teamchat; wordt een thread lang, dan zie je of iemand vrij is en loop je erheen om te praten. Een status laat zien wanneer iemand geconcentreerd werkt, zodat niemand hoeft te gokken."
+        },
+        "faq": [
+          {
+            "q": "Wat zijn de beste communicatietools voor remote teams?",
+            "a": "De meeste teams hebben vier dingen nodig: een chat voor snelle berichten, een plek voor documenten en besluiten, videocalls en een manier om te zien wie er is. Veel tools doen meer dan één; het gaat erom af te spreken waar elk voor is."
+          },
+          {
+            "q": "Moeten remote teams synchroon of asynchroon werken?",
+            "a": "Allebei. Schrijf standaard voor updates en besluiten en praat live om iemand los te maken, spanning op te lossen en ideeën te verkennen. De meeste teams hebben een paar uur overlap per dag nodig voor het live deel."
+          },
+          {
+            "q": "Hoe voorkom je te veel meetings?",
+            "a": "Vervang statusmeetings door geschreven updates, vraag voor elke meeting een agenda en maak korte gesprekken makkelijk, zodat niemand een meeting plant voor een vraag van twee minuten."
+          },
+          {
+            "q": "Hoe communiceer je over tijdzones heen?",
+            "a": "Schrijf standaard, leg besluiten vast waar iedereen ze vindt, wissel de tijden van live meetings af en bewaar de overlap voor de gesprekken die het nodig hebben."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Wat is proximity chat?",
+        "meta": {
+          "title": "Wat is proximity chat? Zo werkt het in games en op het werk",
+          "description": "Wat proximity chat is, hoe het werkt, welke games het gebruiken en hoe virtuele kantoren het inzetten zodat teams praten door naar elkaar toe te lopen."
+        },
+        "title": "Wat is <em>proximity chat?</em>",
+        "intro": "Met proximity chat praat je met de mensen bij je in de buurt in een virtuele ruimte, en niet met iedereen. Het begon in games, waar het werelden tot leven brengt, en is nu hoe virtuele kantoren teams laten praten zonder meetinglinks.",
+        "sections": [
+          {
+            "title": "Zo werkt proximity chat",
+            "body": [
+              "Iedereen heeft een plek op een kaart, in een gamewereld of op een kantoorverdieping. In plaats van dat iedereen iedereen hoort, bepaalt de ruimte wie kan praten: kom dicht bij iemand en jullie horen elkaar, loop weg en het gesprek stopt.",
+              "Sommige versies laten stemmen zachter worden met de afstand, zoals geluid in een kamer. Andere verbinden je zodra je naast iemand staat, zoals wanneer je naar het bureau van een collega loopt."
+            ]
+          },
+          {
+            "title": "Proximity chat in games",
+            "body": [
+              "Games gebruiken het om gesprekken deel van de wereld te maken. Een paar bekende voorbeelden:"
+            ],
+            "items": [
+              {
+                "title": "Sociale deductiegames",
+                "body": "Mods voor Among Us voegden proximity chat toe, zodat je alleen spelers dichtbij hoort en plannen kunt fluisteren."
+              },
+              {
+                "title": "Survivalgames",
+                "body": "Rust en DayZ gebruiken proximity chat, dus een vreemde tegenkomen betekent echt met hem praten."
+              },
+              {
+                "title": "Co-opgames",
+                "body": "In Lethal Company wordt een teamgenoot die wegdwaalt slecht hoorbaar, en dat is de helft van de spanning."
+              },
+              {
+                "title": "Sandboxgames",
+                "body": "Minecraft-servers voegen proximity chat toe met mods, zodat een gedeelde wereld als een echte plek voelt."
+              }
+            ]
+          },
+          {
+            "title": "Proximity chat op het werk",
+            "body": [
+              "Virtuele kantoren gebruiken hetzelfde idee voor remote teams. Je team deelt een 2D-verdieping, iedereen is een personage en je praat door naar iemand toe te lopen in plaats van een meetinglink te sturen.",
+              "Het brengt terug wat videocalls kwijtraken: zien wie er is, snelle vragen en gesprekjes aan de zijlijn. Twee mensen kunnen in een hoek praten terwijl anderen werken, net als op een echt kantoor."
+            ]
+          },
+          {
+            "title": "Twee vormen van proximity chat",
+            "items": [
+              {
+                "title": "Altijd aan, ruimtelijk geluid",
+                "body": "Geluid verbindt automatisch als je dicht bij iemand bent en wordt zachter met de afstand. Het voelt levendig, maar je kunt gehoord worden voordat je dat wilt."
+              },
+              {
+                "title": "Erheen lopen en bellen",
+                "body": "Loop je naar iemand toe, dan krijg je een knop om te bellen, en niets is hoorbaar tot je de call start. Het is rustiger en past beter bij werk."
+              }
+            ]
+          },
+          {
+            "title": "Voor- en nadelen",
+            "items": [
+              {
+                "title": "Geen meetinglinks",
+                "body": "Praten is zo makkelijk als erheen lopen, dus kleine vragen worden ook gesteld."
+              },
+              {
+                "title": "Gesprekjes aan de zijlijn",
+                "body": "Meerdere gesprekken kunnen tegelijk in dezelfde ruimte plaatsvinden."
+              },
+              {
+                "title": "Aanwezigheid",
+                "body": "Je ziet wie er is voordat je iemand stoort."
+              },
+              {
+                "title": "Het vraagt een gedeelde ruimte",
+                "body": "Het werkt alleen als het team de ruimte open heeft tijdens het werken."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor gebruikt de vorm erheen lopen en bellen: loop met je personage naar een collega en naast hem verschijnt een belknop, zodat niemand per ongeluk gehoord wordt. Groepen komen samen in de vergaderruimte. Het draait in de browser en is gratis voor maximaal 3 mensen."
+        },
+        "faq": [
+          {
+            "q": "Wat betekent proximity chat?",
+            "a": "Dat je in een virtuele ruimte alleen kunt praten met mensen dicht bij je. Kom dichterbij om te praten; loop weg en het gesprek stopt."
+          },
+          {
+            "q": "Is proximity chat privé?",
+            "a": "Alleen mensen in je buurt horen je, en dat is privéer dan een kanaal waar iedereen in zit. Bij erheen lopen en bellen is niets hoorbaar tot je een call start."
+          },
+          {
+            "q": "Welke games hebben proximity chat?",
+            "a": "Rust, DayZ en Lethal Company hebben het ingebouwd, en mods voegen het toe aan games als Among Us en Minecraft."
+          },
+          {
+            "q": "Kun je proximity chat voor werk gebruiken?",
+            "a": "Ja. Virtuele kantoren zoals TinyFloor, Gather en SpatialChat gebruiken het zodat remote teams kunnen praten door naar elkaar toe te lopen in plaats van calls te plannen."
+          }
+        ]
       }
     }
   }

@@ -83,7 +83,7 @@ const page = await browser.newPage({
   viewport: { width: 1536, height: 1024 },
   deviceScaleFactor: 1,
 });
-// ONLY=floor,home,lobby,invite,pages,neutral redraws just those; all of them by default.
+// ONLY=floor,home,lobby,invite,pages,guides,neutral redraws just those; all of them by default.
 const only = process.env.ONLY?.split(",");
 const wants = (part) => !only || only.includes(part);
 
@@ -141,8 +141,17 @@ for (const locale of LOCALES.filter((code) => langs.includes(code))) {
   if (wants("lobby")) await card(locale, "lobby", `lobby-${locale}.jpg`);
   if (wants("invite")) await card(locale, "invite", `invite-${locale}.jpg`);
 }
-// SLUGS=a,b redraws just those pages.
+// The guides (src/lib/guides.ts), drawn as guide-<slug>.jpg.
+const GUIDES = [
+  "virtual-team-building-activities",
+  "games-for-virtual-meetings",
+  "how-to-build-remote-team-culture",
+  "remote-team-communication",
+  "what-is-proximity-chat",
+];
+// SLUGS=a,b redraws just those pages (and guides, as guide-<slug>).
 const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;
 if (wants("pages")) for (const slug of slugs) await card("en", slug, `${slug}.jpg`);
+if (wants("guides")) for (const slug of GUIDES) await card("en", `guide-${slug}`, `guide-${slug}.jpg`);
 if (wants("neutral")) await card("en", "neutral", "neutral.jpg");
 await browser.close();

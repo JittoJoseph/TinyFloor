@@ -31,7 +31,8 @@ Pages without a day of their own show the home page's floor moments instead.
 | X vs Y | `/<a>-vs-<b>` | Teams choosing between two virtual offices |
 | Teams | `/engineering-teams`, `/startups` | A team type, and its day on the floor |
 | Use cases | `/virtual-standup`, `/remote-onboarding` | One moment of the remote workday |
-| Indexes | `/features`, `/compare`, `/teams`, `/use-cases` | Every page of a type, linked from nav and footer |
+| Guides | `/guides/<topic>` | Remote team leads searching how to do something (docs/18) |
+| Indexes | `/features`, `/compare`, `/teams`, `/use-cases`, `/guides` | Every page of a type, linked from nav and footer |
 
 ## Built
 
@@ -49,10 +50,11 @@ Pages without a day of their own show the home page's floor moments instead.
 ## Nav and footer
 
 - Nav: Product (features with their lines, and the demo office), For teams
-  (teams and use cases side by side), Compare (every compare page), Pricing.
+  (teams and use cases side by side), Compare (every compare page), Pricing,
+  Guides.
   Each menu ends with a link to its index. On a phone the same groups fold.
-- Footer: Product, Teams, Use cases, Compare (first eight), Resources. Each
-  group column ends with "See all".
+- Footer: Product, Teams, Use cases, Compare (first eight), Resources (with
+  Guides). Each group column ends with "See all".
 - Both read `LANDINGS`, so a new page shows up in the nav, footer, sitemap and
   llms.txt without touching them.
 
@@ -62,8 +64,7 @@ Pages without a day of their own show the home page's floor moments instead.
 2. A "best virtual office software" page with an honest table.
 3. More teams: customer support, sales, product.
 4. More feature pages, starting with screen sharing.
-5. A few guides for remote team leads (team building on one floor, remote
-   communication), always tied to the product.
+5. More guides (docs/18).
 6. Connect tinyfloor.com to Search Console and plan from real queries.
 
 ## Rules for competitor pages

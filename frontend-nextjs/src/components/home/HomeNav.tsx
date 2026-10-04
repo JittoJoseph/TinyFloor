@@ -20,6 +20,7 @@ import {
   Zap,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
+import { GUIDES_PATH } from "@/lib/guides";
 import { HUBS, LANDINGS, type Landing, type LandingKey } from "@/lib/landings";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
@@ -66,6 +67,7 @@ const COMPARE = LANDINGS.filter((page) => page.group === "compare");
 export function HomeNav({ fade = true }: { fade?: boolean }) {
   const t = useTranslations("home");
   const tl = useTranslations("landings");
+  const tg = useTranslations("guides");
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
   const compareLabel = (page: Landing) => {
@@ -159,6 +161,9 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
           <Link href="/pricing" className={plain}>
             {t("nav.pricing")}
           </Link>
+          <Link href={GUIDES_PATH} className={plain}>
+            {tg("label")}
+          </Link>
         </div>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
@@ -206,6 +211,7 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
             </MobileSection>
             <div className="divide-y divide-border border-b border-border">
               <MobileLink href="/pricing">{t("nav.pricing")}</MobileLink>
+              <MobileLink href={GUIDES_PATH}>{tg("label")}</MobileLink>
               <MobileLink href="/#faq">{t("nav.faq")}</MobileLink>
             </div>
           </MobileMenu>

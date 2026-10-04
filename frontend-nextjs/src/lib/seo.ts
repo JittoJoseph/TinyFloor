@@ -3,6 +3,7 @@ import { X_HANDLE } from "@/lib/site";
 import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
+import { GUIDES } from "@/lib/guides";
 import { LANDINGS } from "@/lib/landings";
 
 const SITE_NAME = "TinyFloor";
@@ -46,7 +47,7 @@ export function localePath(locale: string, path: string): string {
 /**
  * A page's social card (scripts/pictures.mjs draws them): the home page, the
  * lobby and invitations (and an office's own links) have one in every
- * language; the other marketing pages have an
+ * language; the other marketing pages and the guides have an
  * English one, and a card without words stands in for them elsewhere.
  */
 export function socialImage(locale: string, path: string): string {
@@ -55,6 +56,8 @@ export function socialImage(locale: string, path: string): string {
   if (/^\/(invite|office)\//.test(path)) return `/og/invite-${code}.jpg`;
   const slug = path.slice(1);
   if (slug && LANDINGS.some((page) => page.slug === slug)) return code === "en" ? `/og/${slug}.jpg` : "/og/neutral.jpg";
+  const guide = path.match(/^\/guides\/([^/]+)$/)?.[1];
+  if (guide && GUIDES.some((one) => one.slug === guide)) return code === "en" ? `/og/guide-${guide}.jpg` : "/og/neutral.jpg";
   return `/og/home-${code}.jpg`;
 }
 

@@ -412,8 +412,8 @@
       "gather": {
         "label": "Alternatywa dla Gather",
         "meta": {
-          "title": "Darmowa alternatywa dla Gather w przeglądarce",
-          "description": "Szukasz darmowej alternatywy dla Gather? TinyFloor to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś."
+          "title": "Darmowa alternatywa dla Gather Town w przeglądarce",
+          "description": "Szukasz darmowej alternatywy dla Gather Town? TinyFloor to wirtualne biuro w stylu pixel art z rozmowami wideo, gdy stoisz blisko kogoś."
         },
         "title": "Darmowa <em>alternatywa dla Gather.</em>",
         "subtitle": "Gather zlikwidował darmowy plan i teraz pobiera opłatę za każdego członka. TinyFloor zachowuje ten sam pomysł, biuro, po którym się chodzi i rozmawia, za darmo dla maksymalnie 3 osób, a potem jedna cena za całe biuro.",
@@ -2610,6 +2610,730 @@
       "bigger": {
         "title": "Ponad 25 osób?",
         "body": "Daj każdemu zespołowi osobne biuro albo napisz na {email}, a porozmawiamy."
+      }
+    }
+  },
+  "guides": {
+    "label": "Poradniki",
+    "eyebrow": "Poradnik",
+    "minutes": "{count} min czytania",
+    "updated": "Zaktualizowano {date}",
+    "by": "Autor: {name}",
+    "contents": "Na tej stronie",
+    "faqTitle": "Częste <em>pytania.</em>",
+    "moreTitle": "Więcej <em>poradników.</em>",
+    "all": "Wszystkie poradniki",
+    "fitCta": "Wypróbuj biuro demo",
+    "hub": {
+      "meta": {
+        "title": "Poradniki dla liderów zespołów zdalnych",
+        "description": "Praktyczne poradniki dla osób prowadzących zespoły zdalne: integracja, gry na spotkania, kultura, komunikacja i jak działa czat zbliżeniowy."
+      },
+      "title": "Poradniki dla <em>zespołów zdalnych.</em>",
+      "body": "Praktyczne, krótkie i pisane przez ludzi, którzy sami pracują zdalnie. Bierz to, co pomaga, resztę pomiń."
+    },
+    "pages": {
+      "teamBuilding": {
+        "label": "Wirtualne zabawy integracyjne",
+        "meta": {
+          "title": "20 wirtualnych zabaw integracyjnych, które lubią zespoły zdalne",
+          "description": "20 wirtualnych zabaw integracyjnych według czasu: 5-minutowe rozgrzewki, 30-minutowe gry, comiesięczne wydarzenia i pomysły bez spotkań."
+        },
+        "title": "Wirtualne zabawy integracyjne, <em>które naprawdę się podobają.</em>",
+        "intro": "Wirtualna integracja zwykle zawodzi, bo wygląda jak kolejne spotkanie z doczepionymi grami. Działa to, co krótkie, dobrowolne, łatwe do zorganizowania i daje temat do rozmowy później. Oto 20 pomysłów ułożonych według tego, ile masz czasu.",
+        "sections": [
+          {
+            "title": "Co sprawia, że to działa",
+            "body": [
+              "Zanim wybierzesz zabawę, ustal formę. Te pięć zasad liczy się bardziej niż wybór gry."
+            ],
+            "items": [
+              {
+                "title": "Krótko",
+                "body": "Dziesięć dobrych minut jest lepsze niż godzina, której nikt nie chciał. Zawsze możesz powtórzyć za tydzień."
+              },
+              {
+                "title": "Dobrowolnie",
+                "body": "Ludzie przychodzą na to, co lubią. Obowiązkowa zabawa uczy głównie wyłączania kamery."
+              },
+              {
+                "title": "W godzinach pracy",
+                "body": "Wieczorne wydarzenia wykluczają rodziców, inne strefy czasowe i każdego, kto potrzebuje wieczoru dla siebie."
+              },
+              {
+                "title": "Daj każdemu sposób na udział",
+                "body": "Mieszaj zabawy dla gadułów i dla cichszych osób: rysowanie, zgadywanie i pisanie działają tak samo dobrze jak mówienie."
+              },
+              {
+                "title": "Powtarzaj to, co działa",
+                "body": "Mały cotygodniowy rytuał daje więcej niż duże wydarzenie raz na kwartał."
+              }
+            ]
+          },
+          {
+            "title": "Pięć minut na początku spotkania",
+            "body": [
+              "Bez przygotowań, dla zespołu dowolnej wielkości. Użyj jednej na start standupu albo cotygodniowego spotkania."
+            ],
+            "items": [
+              {
+                "title": "Dwie prawdy i kłamstwo",
+                "detail": "5 min · 3–12 osób",
+                "body": "Jedna osoba mówi trzy rzeczy o sobie, reszta zgaduje, która jest zmyślona. Dwie, trzy osoby na spotkanie wystarczą."
+              },
+              {
+                "title": "Jedna rzecz z biurka",
+                "detail": "5 min · dowolna liczba",
+                "body": "Każdy bierze przedmiot w zasięgu ręki i mówi, dlaczego tam leży. Łatwe dla każdego, a mówi dużo."
+              },
+              {
+                "title": "Check-in jednym słowem",
+                "detail": "2 min · dowolna liczba",
+                "body": "Każdy opisuje swój tydzień jednym słowem. Do ciekawych wróćcie później, nie teraz."
+              },
+              {
+                "title": "To czy tamto",
+                "detail": "5 min · dowolna liczba",
+                "body": "Prowadzący czyta pary (kawa czy herbata, góry czy morze, skowronek czy sowa), a wszyscy odpowiadają naraz na czacie."
+              },
+              {
+                "title": "Zdjęcie tygodnia",
+                "detail": "5 min · do 10 osób",
+                "body": "Każdy pokazuje z telefonu jedno zdjęcie ze swojego tygodnia. Wyjaśnienie tylko, jeśli ktoś chce."
+              }
+            ]
+          },
+          {
+            "title": "Od piętnastu do trzydziestu minut",
+            "body": [
+              "Coś do wpisania w kalendarz co tydzień lub dwa, najlepiej w piątek po południu."
+            ],
+            "items": [
+              {
+                "title": "Kalambury na wspólnej tablicy",
+                "detail": "20 min · 4–12 osób",
+                "body": "Jedna osoba rysuje hasło na tablicy, którą widzą wszyscy, reszta zgaduje. Lista słów z pracy dodaje śmiechu."
+              },
+              {
+                "title": "Quiz o zespole",
+                "detail": "30 min · 4–20 osób",
+                "body": "Zbierz wcześniej od każdego jeden zaskakujący fakt i niech zespół zgaduje, czyj jest."
+              },
+              {
+                "title": "Zgadnij, czyja piosenka",
+                "detail": "20 min · 4–15 osób",
+                "body": "Każdy wysyła prowadzącemu ulubioną piosenkę. Prowadzący puszcza po kilka sekund, a zespół zgaduje, czyja to."
+              },
+              {
+                "title": "Bezludna wyspa",
+                "detail": "15 min · 3–10 osób",
+                "body": "Każdy wybiera książkę, album i jedzenie na bezludną wyspę, a zespół się o to spiera."
+              },
+              {
+                "title": "Pokaż i opowiedz",
+                "detail": "30 min · 3–10 osób",
+                "body": "Jedna lub dwie osoby w tygodniu pokazują coś, co robią, gotują, hodują albo zbierają. Poznajecie się lepiej niż w każdej grze."
+              }
+            ]
+          },
+          {
+            "title": "Godzina raz w miesiącu lub kwartale",
+            "body": [
+              "Większe wydarzenia wymagają trochę planowania lub małego budżetu. Rób je rzadziej, ale porządnie."
+            ],
+            "items": [
+              {
+                "title": "Escape room online",
+                "detail": "60 min · 4–8 na pokój",
+                "body": "Kilka firm prowadzi escape roomy przez wideo. Podziel większe zespoły na pokoje i porównajcie czasy na koniec."
+              },
+              {
+                "title": "Warsztaty z zestawem",
+                "detail": "60 min · dowolna liczba",
+                "body": "Gotowanie, kawa lub koktajle, gdy każdy dostaje do domu te same składniki. Zamów wcześnie, jeśli zespół jest w kilku krajach."
+              },
+              {
+                "title": "Turniej gier",
+                "detail": "45 min · 4–30 osób",
+                "body": "Darmowe gry w przeglądarce, jak Gartic Phone, skribbl.io czy Codenames online, sprawdzają się świetnie. Grajcie w małych grupach, potem finał."
+              },
+              {
+                "title": "Dzień tworzenia",
+                "detail": "Pół dnia · dowolna liczba",
+                "body": "Małe zespoły budują, co chcą, związane z pracą lub nie, i pokazują to na koniec. Miesza ludzi, którzy nigdy nie pracują razem."
+              },
+              {
+                "title": "Podsumowanie kwartału",
+                "detail": "60 min · dowolna liczba",
+                "body": "Przypomnijcie sobie, co zespół dowiózł, a potem rozdajcie zabawne nagrody w głosowaniu: najlepszy bug, najlepszy ratunek, najlepszy mem."
+              }
+            ]
+          },
+          {
+            "title": "Bez żadnego spotkania",
+            "body": [
+              "Nie wszystko wymaga rozmowy. Te pomysły trwają tydzień na kanale czatu i pasują do zespołów w różnych strefach czasowych."
+            ],
+            "items": [
+              {
+                "title": "Wyzwanie fotograficzne",
+                "detail": "1 tydzień · dowolna liczba",
+                "body": "Temat na tydzień (widok z okna, twój obiad, coś niebieskiego) i kanał do wrzucania zdjęć."
+              },
+              {
+                "title": "Wątek podziękowań",
+                "detail": "Stale · dowolna liczba",
+                "body": "Miejsce, by publicznie podziękować komuś za coś konkretnego. Pod koniec miesiąca przeczytajcie najlepsze."
+              },
+              {
+                "title": "Wymiana przepisów",
+                "detail": "1 tydzień · dowolna liczba",
+                "body": "Każdy dzieli się jednym domowym przepisem. Zbierzcie je we wspólnym dokumencie: powstanie książka kucharska zespołu."
+              },
+              {
+                "title": "Wyzwanie krokowe",
+                "detail": "2 tygodnie · dowolna liczba",
+                "body": "Trzyosobowe drużyny sumują dzienne kroki. Niech będzie przyjaźnie i niech liczy się każdy rodzaj ruchu."
+              },
+              {
+                "title": "Klub książki lub podcastu",
+                "detail": "1 miesiąc · 3–10 osób",
+                "body": "Wybierzcie coś do przeczytania lub posłuchania, rozmawiajcie w wątku i spotkajcie się raz na koniec, jeśli chcecie."
+              }
+            ]
+          },
+          {
+            "title": "Nawyk, a nie wydarzenie",
+            "body": [
+              "Najbardziej zgrane zespoły rzadko polegają na dużych wydarzeniach. Mają za to wiele małych, nieplanowanych chwil: słowo przed spotkaniem, pytanie, które zmienia się w rozmowę, piosenkę, którą ktoś puścił.",
+              "W biurze dzieje się to samo z siebie. Zdalnie potrzebne jest miejsce, w którym ludzie się widzą i mogą wpaść bez umawiania rozmowy. Daj zespołowi takie miejsce, a powyższe zabawy staną się dodatkiem, a nie jedyną okazją do rozmowy."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Gdzie pasuje TinyFloor",
+          "body": "TinyFloor to wirtualne biuro, po którym chodzi twój zespół. Mijasz kogoś i zatrzymujesz się na pogawędkę, puszczasz piosenkę z szafy grającej w strefie relaksu, rysujesz na tablicy w kalambury albo spotykacie się w sali spotkań na piątkowy toast. Za darmo dla maksymalnie 3 osób, w przeglądarce."
+        },
+        "faq": [
+          {
+            "q": "Jakie wirtualne zabawy integracyjne pasują małym zespołom?",
+            "a": "Krótkie i bez przygotowań: dwie prawdy i kłamstwo, jedna rzecz z biurka, kalambury na wspólnej tablicy albo zgadnij, czyja piosenka. Mały zespół może robić coś co tydzień zamiast jednego dużego wydarzenia na kwartał."
+          },
+          {
+            "q": "Jak często zespół zdalny powinien się integrować?",
+            "a": "Pięciominutowa rozgrzewka na cotygodniowym spotkaniu i coś dłuższego raz w miesiącu pasuje większości zespołów. Mały cotygodniowy rytuał daje więcej niż rzadkie duże wydarzenie."
+          },
+          {
+            "q": "Jak sprawić, by wirtualna integracja była mniej niezręczna?",
+            "a": "Krótko i dobrowolnie, w godzinach pracy, z jasnym prowadzącym i zasadami. Wybieraj zabawy, w których cichsze osoby mogą rysować, zgadywać lub pisać zamiast występować."
+          },
+          {
+            "q": "Jakich darmowych narzędzi możemy użyć?",
+            "a": "Gartic Phone, skribbl.io i Codenames online są darmowe w przeglądarce. Do gier rysunkowych wystarczy wspólna tablica, a do wszystkiego, co asynchroniczne, kanał na czacie. TinyFloor jest darmowy dla maksymalnie 3 osób."
+          }
+        ]
+      },
+      "meetingGames": {
+        "label": "Gry na spotkania online",
+        "meta": {
+          "title": "15 szybkich gier na spotkania online (do 5 minut)",
+          "description": "15 szybkich gier na spotkania online bez przygotowań: gry słowne, zgadywanki i gry rysunkowe, które mieszczą się w pięciu minutach."
+        },
+        "title": "Szybkie gry na <em>spotkania online.</em>",
+        "intro": "Dobra gra na spotkanie trwa pięć minut, nie wymaga przygotowań i działa z kamerą włączoną lub wyłączoną. Te 15 właśnie takie są, ułożone według rodzaju zabawy.",
+        "sections": [
+          {
+            "title": "Zanim zaczniesz",
+            "items": [
+              {
+                "title": "Wybierz prowadzącego",
+                "body": "Jedna osoba tłumaczy zasady, pilnuje czasu i popycha grę dalej. Zmieniajcie się co tydzień."
+              },
+              {
+                "title": "Ustaw minutnik",
+                "body": "Pięć minut to pięć minut. Kończąc, gdy jest jeszcze zabawnie, sprawiasz, że ludzie chcą znowu."
+              },
+              {
+                "title": "Nikt nie musi występować",
+                "body": "Pozwól pasować, odpowiadać na czacie albo grać z wyłączoną kamerą."
+              }
+            ]
+          },
+          {
+            "title": "Gry słowne",
+            "items": [
+              {
+                "title": "Co wolisz",
+                "detail": "Bez przygotowań · dowolna liczba",
+                "body": "Prowadzący daje wybór między dwiema opcjami, wszyscy odpowiadają jednym słowem, a dwie osoby tłumaczą swój wybór."
+              },
+              {
+                "title": "Kontrowersyjne opinie",
+                "detail": "Bez przygotowań · 3–15 osób",
+                "body": "Ktoś dzieli się niewinną opinią (ananas na pizzy, taby czy spacje), a wszyscy oceniają ją od 1 do 10."
+              },
+              {
+                "title": "Róża, cierń, pąk",
+                "detail": "Bez przygotowań · do 10 osób",
+                "body": "Każdy mówi o czymś dobrym, czymś trudnym i czymś, na co czeka, po jednym zdaniu."
+              },
+              {
+                "title": "Historia po słowie",
+                "detail": "Bez przygotowań · 4–12 osób",
+                "body": "Po kolei każdy dodaje do historii jedno słowo. Szybko się sypie i o to chodzi."
+              },
+              {
+                "title": "Na szczęście, niestety",
+                "detail": "Bez przygotowań · 4–12 osób",
+                "body": "Na zmianę dodajecie do historii zdanie, przeplatając dobre i złe wiadomości."
+              }
+            ]
+          },
+          {
+            "title": "Zgadywanki",
+            "items": [
+              {
+                "title": "Czyje to biurko?",
+                "detail": "Mało przygotowań · 4–15 osób",
+                "body": "Każdy wysyła wcześniej zdjęcie swojego biurka, a zespół zgaduje, czyje jest czyje."
+              },
+              {
+                "title": "Zdjęcie zwierzaka lub z dzieciństwa",
+                "detail": "Mało przygotowań · 4–15 osób",
+                "body": "Ten sam pomysł ze zdjęciami zwierząt albo każdego jako dziecka. Zawsze hit."
+              },
+              {
+                "title": "Mój tydzień w emoji",
+                "detail": "Bez przygotowań · dowolna liczba",
+                "body": "Każdy wrzuca trzy emoji podsumowujące tydzień, a reszta zgaduje historię."
+              },
+              {
+                "title": "Zgadnij dźwięk",
+                "detail": "Mało przygotowań · dowolna liczba",
+                "body": "Prowadzący puszcza krótkie codzienne dźwięki, a wszyscy zgadują, co to. Najlepiej działają dźwięki z domu."
+              },
+              {
+                "title": "Dwadzieścia pytań",
+                "detail": "Bez przygotowań · 3–12 osób",
+                "body": "Jedna osoba myśli o czymś, reszta zadaje pytania tak lub nie, aż ktoś zgadnie."
+              }
+            ]
+          },
+          {
+            "title": "Gry rysunkowe i ekranowe",
+            "items": [
+              {
+                "title": "Rysunek w trzydzieści sekund",
+                "detail": "Bez przygotowań · 3–12 osób",
+                "body": "Podaj hasło, ustaw 30 sekund i wszyscy rysują je naraz na wspólnej tablicy."
+              },
+              {
+                "title": "Gartic Phone",
+                "detail": "Bez przygotowań · 4–30 osób",
+                "body": "Za darmo w przeglądarce: rysunkowy głuchy telefon, w którym zdanie zamienia się w coś zupełnie innego."
+              },
+              {
+                "title": "skribbl.io",
+                "detail": "Bez przygotowań · 3–12 osób",
+                "body": "Darmowe kalambury online z prywatnym pokojem. Dodaj własne słowa zespołu dla wewnętrznych żartów."
+              },
+              {
+                "title": "Poszukiwania w sześćdziesiąt sekund",
+                "detail": "Bez przygotowań · dowolna liczba",
+                "body": "Podaj przedmiot (coś czerwonego, coś starszego od ciebie), a wszyscy biegną pokazać go do kamery."
+              },
+              {
+                "title": "Quiz z pięciu pytań",
+                "detail": "Mało przygotowań · dowolna liczba",
+                "body": "Pięć szybkich pytań o tydzień, produkt albo zespół. Odpowiedzi na czacie; wygrywa najszybsza poprawna."
+              }
+            ]
+          },
+          {
+            "title": "Jak to dobrze poprowadzić",
+            "body": [
+              "Grajcie na początku spotkania, a nie na końcu, gdy wszyscy są wypoczęci i nikt nie musi uciekać. Trzymajcie jedną grę przez kilka tygodni, żeby nikt nie uczył się zasad za każdym razem, a potem zmieńcie.",
+              "Na dużych spotkaniach podzielcie się na grupy po cztery–sześć osób. Gra przestaje działać, gdy większość patrzy zamiast grać."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Gdzie pasuje TinyFloor",
+          "body": "W TinyFloor sala spotkań twojego zespołu jest zawsze na miejscu: dołącz do spotkania, a twoja postać do niej wejdzie, bez wysyłania linku. Wspólna tablica na ścianie nadaje się do gier rysunkowych, a piętro zostaje potem otwarte dla tych, którzy chcą jeszcze pogadać."
+        },
+        "faq": [
+          {
+            "q": "Jaka pięciominutowa gra pasuje na spotkanie online?",
+            "a": "Co wolisz, kontrowersyjne opinie albo rysunek w trzydzieści sekund na wspólnej tablicy. Nie wymagają przygotowań i działają z kamerą lub bez."
+          },
+          {
+            "q": "Czym różni się lodołamacz od gry na spotkanie?",
+            "a": "Lodołamacz pomaga ludziom opowiedzieć o sobie, zwykle na początku nowej grupy. Gra na spotkanie to krótka rozrywka dla zespołu, który już się zna. Wiele tych gier sprawdza się w obu rolach."
+          },
+          {
+            "q": "Jak grać na dużym spotkaniu online?",
+            "a": "Podzielcie się na grupy po cztery–sześć osób, dajcie każdej tę samą grę i kilka minut, a potem wróćcie razem i podzielcie się najlepszą odpowiedzią."
+          },
+          {
+            "q": "Czy potrzebujemy specjalnego programu?",
+            "a": "Nie. Większość działa w każdej rozmowie wideo z czatem. Gartic Phone i skribbl.io są darmowe w przeglądarce, a do gier rysunkowych wystarczy wspólna tablica."
+          }
+        ]
+      },
+      "remoteCulture": {
+        "label": "Kultura zespołu zdalnego",
+        "meta": {
+          "title": "Jak budować kulturę w zespole zdalnym: 9 nawyków, które działają",
+          "description": "Jak budować kulturę w zespole zdalnym: dziewięć codziennych nawyków, które działają, czego przestać robić i jak poznać, że to działa."
+        },
+        "title": "Jak budować kulturę w <em>zespole zdalnym.</em>",
+        "intro": "Kultura to to, co ludzie robią każdego dnia, gdy nikt nie patrzy: jak proszą o pomoc, dzielą się nowinami i się nie zgadzają. Zespół zdalny traci małe chwile, które kształtują ją w biurze, więc musi świadomie robić na nie miejsce, lekko i codziennie.",
+        "sections": [
+          {
+            "title": "Czym jest kultura bez biura",
+            "body": [
+              "W biurze wiele kultury rodzi się przypadkiem. Słyszysz, jak doświadczona koleżanka radzi sobie z trudnym klientem, widzisz, kto zostaje dłużej przed premierą, idziesz na lunch z kimś z innego zespołu.",
+              "Praca zdalna zabiera większość z tego. Zostaje to, co ludzie piszą, co mówią na rozmowach i co postanawiają pokazać. Dobra wiadomość: wszystko to można kształtować kilkoma jasnymi nawykami."
+            ]
+          },
+          {
+            "title": "Dziewięć nawyków, które ją budują",
+            "items": [
+              {
+                "title": "Zapisuj decyzje",
+                "body": "Miej jedno miejsce, gdzie są decyzje i ich powody. Nowe osoby uczą się, jak myśli zespół, czytając je."
+              },
+              {
+                "title": "Domyślnie kanały publiczne",
+                "body": "Zadawaj pytania tam, gdzie inni mogą zobaczyć i się uczyć. Wiadomości prywatne są do spraw prywatnych."
+              },
+              {
+                "title": "Spraw, by ludzie byli widoczni",
+                "body": "Pokazuj, kto jest, kto jest zajęty i kto może pogadać, żeby prośba o pomoc nie wydawała się przeszkadzaniem."
+              },
+              {
+                "title": "Miejsce, do którego można wpaść",
+                "body": "Zawsze otwarty pokój albo stałe godziny, na które można przyjść bez umawiania."
+              },
+              {
+                "title": "Małe rytuały",
+                "body": "Cotygodniowe demo, piątkowy wątek sukcesów, pięciominutowa gra. Małe, regularne i co tydzień takie same."
+              },
+              {
+                "title": "Opiekun dla nowych",
+                "body": "Onboarding powinien być człowiekiem, nie tylko dokumentem: kimś od głupich pytań w pierwszym miesiącu."
+              },
+              {
+                "title": "Chwal publicznie",
+                "body": "Dziękuj za konkretne rzeczy tam, gdzie widzi cały zespół. To pokazuje, co zespół ceni."
+              },
+              {
+                "title": "Chroń czas na skupienie",
+                "body": "Dobra kultura zdalna pozwala zniknąć na kilka godzin. Niech „zajęty” będzie szanowanym statusem, a nie sygnałem alarmowym."
+              },
+              {
+                "title": "Spotykajcie się na żywo, gdy się da",
+                "body": "Raz lub dwa razy w roku, jeśli budżet pozwala. Potem każda rozmowa idzie łatwiej."
+              }
+            ]
+          },
+          {
+            "title": "Czego przestać robić",
+            "items": [
+              {
+                "title": "Obowiązkowa zabawa",
+                "body": "Obowiązkowe wydarzenia o niewygodnych porach budzą niechęć, nie bliskość."
+              },
+              {
+                "title": "Kamera zawsze włączona",
+                "body": "Wideo pomaga w niektórych rozmowach i męczy we wszystkich. Daj ludziom wybór."
+              },
+              {
+                "title": "Śledzenie aktywności",
+                "body": "Liczenie naciśnięć klawiszy czy czasu online mówi ludziom, że im się nie ufa, a zaufanie jest tu najważniejsze."
+              },
+              {
+                "title": "Spotkania dla poczucia więzi",
+                "body": "Codzienne spotkanie wszystkich, by poczuć się razem, zwykle staje się obowiązkiem. Daj ludziom miejsce zamiast godziny."
+              }
+            ]
+          },
+          {
+            "title": "Jak poznać, że działa",
+            "body": [
+              "Nie zobaczysz tego w wyniku ankiety. Szukaj raczej tego:"
+            ],
+            "items": [
+              {
+                "title": "Nowi pytają publicznie",
+                "body": "To znaczy, że czują się bezpiecznie, gdy czegoś nie wiedzą."
+              },
+              {
+                "title": "Ludzie pomagają między zespołami",
+                "body": "Bez zgłoszenia i bez prośby menedżera."
+              },
+              {
+                "title": "Pogawędki pojawiają się same",
+                "body": "Rozmowy zaczynają się bez zaproszenia w kalendarzu."
+              },
+              {
+                "title": "Ludzie naprawdę odpoczywają",
+                "body": "Biorą urlop i wylogowują się pod koniec dnia."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Gdzie pasuje TinyFloor",
+          "body": "TinyFloor daje zespołowi zdalnemu miejsce, by być razem: piętro, na którym widać, kto jest, można ustawić status i podejść do kogoś, kto ma czas. Pokazuje, kto jest i jaki status wybrał, nic więcej: nie śledzi niczyjej aktywności."
+        },
+        "faq": [
+          {
+            "q": "Czy zespół zdalny może mieć silną kulturę?",
+            "a": "Tak, ale nie powstaje ona przypadkiem. Zespoły, które zapisują decyzje, mają miejsce, do którego można wpaść, dbają o małe rytuały i chwalą publicznie, często są bardziej zgrane niż zespoły w biurze."
+          },
+          {
+            "q": "Co jest największym wyzwaniem kultury zdalnej?",
+            "a": "Utrata małych, nieplanowanych chwil: zasłyszanych rozmów, szybkich pytań, lunchu z kimś nowym. Zespół zdalny potrzebuje miejsca, w którym wciąż mogą się zdarzać."
+          },
+          {
+            "q": "Jak sprawić, by nowa osoba poczuła się częścią zespołu zdalnego?",
+            "a": "Daj jej opiekuna, przedstaw ją na kanale publicznym, od pierwszego dnia zapraszaj na rytuały zespołu i ułatw zobaczenie, kogo można zapytać."
+          },
+          {
+            "q": "Jak budować kulturę w różnych strefach czasowych?",
+            "a": "Opieraj się na piśmie i asynchronicznych rytuałach, jak cotygodniowy wątek czy wyzwanie fotograficzne, a na chwile na żywo znajdź godzinę lub dwie wspólnego czasu. Zmieniaj godziny spotkań, żeby nie zawsze te same osoby siedziały do późna."
+          }
+        ]
+      },
+      "remoteCommunication": {
+        "label": "Komunikacja w zespole zdalnym",
+        "meta": {
+          "title": "Komunikacja w zespole zdalnym: kiedy pisać, a kiedy rozmawiać",
+          "description": "Praktyczny poradnik komunikacji w zespole zdalnym: kiedy pisać, kiedy rozmawiać, proste zasady zespołu i rozwiązania częstych problemów."
+        },
+        "title": "Komunikacja zdalna: <em>kiedy pisać, kiedy rozmawiać.</em>",
+        "intro": "Większość problemów z komunikacją w zespołach zdalnych bierze się z wyboru złego sposobu: długi wątek, który powinien być dwuminutową rozmową, albo spotkanie, które mogło być wiadomością. Oto jak wybierać, i kilka prostych zasad do ustalenia w zespole.",
+        "sections": [
+          {
+            "title": "Napisz, gdy",
+            "items": [
+              {
+                "title": "Ktoś będzie tego potrzebował później",
+                "body": "Decyzje, instrukcje i wszystko, czego nowa osoba będzie szukać za trzy miesiące."
+              },
+              {
+                "title": "Trzeba to przemyśleć",
+                "body": "Propozycje i opinie są lepsze, gdy można przeczytać dwa razy i odpowiedzieć, kiedy jest się gotowym."
+              },
+              {
+                "title": "Ludzie są w innych strefach czasowych",
+                "body": "Pisanie pozwala każdemu wziąć udział we własnych godzinach pracy."
+              },
+              {
+                "title": "To aktualizacja statusu",
+                "body": "To, co czyta się minutę, na spotkaniu zajmuje dziesięć."
+              }
+            ]
+          },
+          {
+            "title": "Porozmawiaj, gdy",
+            "items": [
+              {
+                "title": "Wątek ma ponad trzy odpowiedzi",
+                "body": "Jeśli wciąż trwa przerzucanie się, dwie minuty rozmowy to załatwią."
+              },
+              {
+                "title": "Ktoś utknął",
+                "body": "Odblokowanie kolegi jest warte przerwania. Podejdź, spójrzcie razem i pomóż mu ruszyć dalej."
+              },
+              {
+                "title": "Jest napięcie",
+                "body": "W tekście ginie ton. Spory i trudne opinie lepiej wypadają na głos."
+              },
+              {
+                "title": "Szukacie pomysłów",
+                "body": "Wczesna burza mózgów idzie szybciej w rozmowie. Potem zapiszcie, co ustaliliście."
+              }
+            ]
+          },
+          {
+            "title": "Proste zasady do ustalenia w zespole",
+            "body": [
+              "Zapisz je raz i pokazuj nowym osobom. Zapobiegają większości tarć."
+            ],
+            "items": [
+              {
+                "title": "Czas odpowiedzi dla kanału",
+                "body": "Na przykład: czat w ciągu kilku godzin, e-mail w ciągu dnia, a w pilnych sprawach telefon."
+              },
+              {
+                "title": "Jedno miejsce na decyzje",
+                "body": "Kanał lub dokument, w którym zapisuje się decyzje, żeby nie ginęły w prywatnych wiadomościach."
+              },
+              {
+                "title": "Status coś znaczy",
+                "body": "Zajęty to nie przeszkadzać, chyba że pilne. Dostępny to można podejść."
+              },
+              {
+                "title": "Każda rozmowa kończy się na piśmie",
+                "body": "Dwie linijki na właściwym kanale: co ustalono i kto co robi."
+              },
+              {
+                "title": "Bez agendy nie ma spotkania",
+                "body": "Spotkanie bez celu w zaproszeniu można odrzucić."
+              }
+            ]
+          },
+          {
+            "title": "Częste problemy i rozwiązania",
+            "items": [
+              {
+                "title": "Wszystko wydaje się pilne",
+                "body": "Ustalcie, co znaczy pilne i jakim kanałem idzie. Reszta może poczekać na odpowiedź."
+              },
+              {
+                "title": "Decyzje giną",
+                "body": "Za każdym razem przenoś je z prywatnych wiadomości na kanał decyzji."
+              },
+              {
+                "title": "Za dużo spotkań",
+                "body": "Zastąp spotkania statusowe pisemnymi aktualizacjami, a rozmowy zostaw na decyzje i problemy."
+              },
+              {
+                "title": "Ludzie milkną",
+                "body": "Ciche osoby często nie chcą przeszkadzać. Pokaż, kiedy ktoś ma czas, i porozmawiaj w cztery oczy."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Gdzie pasuje TinyFloor",
+          "body": "TinyFloor stawia pisanie i rozmowę obok siebie. Kanały i wiadomości zostają w czacie zespołu; gdy wątek się wydłuża, widzisz, czy ktoś ma czas, i podchodzisz porozmawiać. Status pokazuje, kiedy ktoś jest skupiony, więc nikt nie musi zgadywać."
+        },
+        "faq": [
+          {
+            "q": "Jakie narzędzia do komunikacji są najlepsze dla zespołów zdalnych?",
+            "a": "Większość zespołów potrzebuje czterech rzeczy: czatu do szybkich wiadomości, miejsca na dokumenty i decyzje, rozmów wideo i sposobu, by widzieć, kto jest. Wiele narzędzi łączy kilka z nich; ważne, by ustalić, do czego służy każde."
+          },
+          {
+            "q": "Czy zespół zdalny powinien pracować synchronicznie, czy asynchronicznie?",
+            "a": "Jedno i drugie. Domyślnie pisz aktualizacje i decyzje, a na żywo rozmawiaj, by odblokować, rozwiązać napięcia i szukać pomysłów. Większość zespołów potrzebuje kilku godzin wspólnego czasu dziennie na część na żywo."
+          },
+          {
+            "q": "Jak uniknąć zbyt wielu spotkań?",
+            "a": "Zastąp spotkania statusowe pisemnymi aktualizacjami, wymagaj agendy dla każdego spotkania i ułatw szybkie rozmowy, żeby nikt nie umawiał spotkania na dwuminutowe pytanie."
+          },
+          {
+            "q": "Jak komunikować się w różnych strefach czasowych?",
+            "a": "Domyślnie pisz, zapisuj decyzje tam, gdzie każdy je znajdzie, zmieniaj godziny spotkań na żywo, a wspólny czas zostaw na rozmowy, które go potrzebują."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Czym jest czat zbliżeniowy?",
+        "meta": {
+          "title": "Czym jest czat zbliżeniowy? Jak działa w grach i w pracy",
+          "description": "Czym jest czat zbliżeniowy, jak działa, jakie gry go używają i jak wirtualne biura dzięki niemu pozwalają zespołom rozmawiać po podejściu."
+        },
+        "title": "Czym jest <em>czat zbliżeniowy?</em>",
+        "intro": "Czat zbliżeniowy pozwala rozmawiać z osobami w pobliżu w wirtualnej przestrzeni, a nie ze wszystkimi naraz. Narodził się w grach, gdzie ożywia światy, a dziś dzięki niemu wirtualne biura pozwalają zespołom rozmawiać bez linków do spotkań.",
+        "sections": [
+          {
+            "title": "Jak działa czat zbliżeniowy",
+            "body": [
+              "Każdy ma pozycję na mapie, w świecie gry albo na piętrze biura. Zamiast tego, by wszyscy słyszeli wszystkich, przestrzeń decyduje, kto może mówić: podejdź do kogoś, a słyszycie się nawzajem, odejdź, a rozmowa się kończy.",
+              "W niektórych wersjach głosy cichną z odległością, jak dźwięk w pokoju. W innych łączy cię, gdy staniesz obok kogoś, tak jak podchodzisz do biurka kolegi."
+            ]
+          },
+          {
+            "title": "Czat zbliżeniowy w grach",
+            "body": [
+              "Gry używają go, by rozmowy stały się częścią świata. Kilka znanych przykładów:"
+            ],
+            "items": [
+              {
+                "title": "Gry dedukcyjne",
+                "body": "Mody do Among Us dodały głos zbliżeniowy: słyszysz tylko graczy w pobliżu i możesz szeptem ustalać plany."
+              },
+              {
+                "title": "Gry survivalowe",
+                "body": "Rust i DayZ używają głosu zbliżeniowego, więc spotkanie nieznajomego oznacza prawdziwą rozmowę."
+              },
+              {
+                "title": "Gry kooperacyjne",
+                "body": "W Lethal Company towarzysza, który się oddali, słychać coraz gorzej, i to połowa napięcia."
+              },
+              {
+                "title": "Gry sandboxowe",
+                "body": "Serwery Minecrafta dodają głos zbliżeniowy modami, żeby wspólny świat przypominał prawdziwe miejsce."
+              }
+            ]
+          },
+          {
+            "title": "Czat zbliżeniowy w pracy",
+            "body": [
+              "Wirtualne biura stosują ten sam pomysł w zespołach zdalnych. Zespół dzieli piętro 2D, każdy jest postacią, a rozmawiacie, podchodząc do kogoś zamiast wysyłać link do spotkania.",
+              "To przywraca, co tracą rozmowy wideo: widać, kto jest, szybkie pytania i rozmowy na boku. Dwie osoby mogą rozmawiać w kącie, gdy inni pracują, jak w prawdziwym biurze."
+            ]
+          },
+          {
+            "title": "Dwa rodzaje czatu zbliżeniowego",
+            "items": [
+              {
+                "title": "Zawsze włączony dźwięk przestrzenny",
+                "body": "Dźwięk łączy się sam, gdy jesteś blisko kogoś, i cichnie z odległością. To żywe, ale mogą cię usłyszeć, zanim zechcesz."
+              },
+              {
+                "title": "Podejdź i zadzwoń",
+                "body": "Gdy podchodzisz do kogoś, pojawia się przycisk połączenia, i nic nie słychać, dopóki nie zaczniesz rozmowy. Spokojniej i lepiej pasuje do pracy."
+              }
+            ]
+          },
+          {
+            "title": "Zalety i wady",
+            "items": [
+              {
+                "title": "Bez linków do spotkań",
+                "body": "Rozmowa jest tak prosta jak podejście, więc małe pytania też padają."
+              },
+              {
+                "title": "Rozmowy na boku",
+                "body": "W tej samej przestrzeni może toczyć się kilka rozmów naraz."
+              },
+              {
+                "title": "Obecność",
+                "body": "Widzisz, kto jest, zanim komuś przeszkodzisz."
+              },
+              {
+                "title": "Potrzebna wspólna przestrzeń",
+                "body": "Działa tylko wtedy, gdy zespół ma przestrzeń otwartą podczas pracy."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Gdzie pasuje TinyFloor",
+          "body": "TinyFloor używa stylu „podejdź i zadzwoń”: podprowadź swoją postać do kolegi, a obok niego pojawi się przycisk połączenia, więc nikt nie zostanie usłyszany przypadkiem. Grupy spotykają się w sali spotkań. Działa w przeglądarce i jest darmowy dla maksymalnie 3 osób."
+        },
+        "faq": [
+          {
+            "q": "Co oznacza czat zbliżeniowy?",
+            "a": "Że w wirtualnej przestrzeni możesz rozmawiać tylko z osobami w pobliżu. Podejdź bliżej, by porozmawiać; odejdź, a rozmowa się skończy."
+          },
+          {
+            "q": "Czy czat zbliżeniowy jest prywatny?",
+            "a": "Słyszą cię tylko osoby w pobliżu, co jest bardziej prywatne niż kanał, na którym są wszyscy. W stylu „podejdź i zadzwoń” nic nie słychać, dopóki nie zaczniesz rozmowy."
+          },
+          {
+            "q": "Które gry mają czat zbliżeniowy?",
+            "a": "Rust, DayZ i Lethal Company mają go wbudowanego, a mody dodają go do gier takich jak Among Us i Minecraft."
+          },
+          {
+            "q": "Czy czat zbliżeniowy nadaje się do pracy?",
+            "a": "Tak. Wirtualne biura, takie jak TinyFloor, Gather i SpatialChat, używają go, by zespoły zdalne rozmawiały, podchodząc do siebie, zamiast planować rozmowy."
+          }
+        ]
       }
     }
   }

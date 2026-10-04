@@ -3,6 +3,7 @@ import { SITE_URL } from '@/lib/site';
 import { localeCodes } from '@/lib/i18n/routing';
 import { localePath } from '@/lib/seo';
 import { HUBS, LANDINGS } from '@/lib/landings';
+import { GUIDES, GUIDES_PATH, guidePath } from '@/lib/guides';
 
 const routes: Array<{
   path: string;
@@ -19,6 +20,8 @@ const routes: Array<{
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   })),
+  { path: GUIDES_PATH, changeFrequency: 'weekly', priority: 0.6 },
+  ...GUIDES.map((guide) => ({ path: guidePath(guide), changeFrequency: 'monthly' as const, priority: 0.6 })),
 ];
 
 const absolute = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;

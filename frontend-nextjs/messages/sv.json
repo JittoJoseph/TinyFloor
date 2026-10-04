@@ -412,8 +412,8 @@
       "gather": {
         "label": "Alternativ till Gather",
         "meta": {
-          "title": "Gratis alternativ till Gather i webbläsaren",
-          "description": "Letar du efter ett gratis alternativ till Gather? TinyFloor är ett virtuellt kontor i pixelgrafik med videosamtal när man står nära varandra."
+          "title": "Gratis alternativ till Gather Town i webbläsaren",
+          "description": "Letar du efter ett gratis alternativ till Gather Town? TinyFloor är ett virtuellt kontor i pixelgrafik med videosamtal när man står nära varandra."
         },
         "title": "Ett gratis <em>alternativ till Gather.</em>",
         "subtitle": "Gather har tagit bort sin gratisplan och tar nu betalt per medlem. TinyFloor behåller samma idé, ett kontor man går runt och pratar i, gratis för upp till 3 personer och sedan ett pris för hela kontoret.",
@@ -2610,6 +2610,730 @@
       "bigger": {
         "title": "Fler än 25 personer?",
         "body": "Ge varje team ett eget kontor, eller skriv till {email} så pratar vi."
+      }
+    }
+  },
+  "guides": {
+    "label": "Guider",
+    "eyebrow": "Guide",
+    "minutes": "{count} min läsning",
+    "updated": "Uppdaterad {date}",
+    "by": "Av {name}",
+    "contents": "På den här sidan",
+    "faqTitle": "Vanliga <em>frågor.</em>",
+    "moreTitle": "Fler <em>guider.</em>",
+    "all": "Alla guider",
+    "fitCta": "Prova demokontoret",
+    "hub": {
+      "meta": {
+        "title": "Guider för dig som leder distansteam",
+        "description": "Praktiska guider för dig som leder distansteam: teambuilding, spel för möten, kultur, kommunikation och hur närhetschatt fungerar."
+      },
+      "title": "Guider för <em>distansteam.</em>",
+      "body": "Praktiska, korta och skrivna av folk som själva jobbar på distans. Ta det som hjälper och hoppa över resten."
+    },
+    "pages": {
+      "teamBuilding": {
+        "label": "Digitala teambuildingaktiviteter",
+        "meta": {
+          "title": "20 digitala teambuildingaktiviteter som distansteam gillar",
+          "description": "20 digitala teambuildingaktiviteter sorterade efter tid: 5-minutersstarter, 30-minutersspel, månatliga event och idéer helt utan möten."
+        },
+        "title": "Digitala teambuildingaktiviteter <em>som folk faktiskt gillar.</em>",
+        "intro": "Digital teambuilding misslyckas oftast för att det känns som ännu ett möte med spel påklistrade. Det som funkar är kort, frivilligt, lätt att ordna och ger folk något att prata om efteråt. Här är 20 aktiviteter sorterade efter hur mycket tid du har.",
+        "sections": [
+          {
+            "title": "Det som får det att funka",
+            "body": [
+              "Innan du väljer aktivitet, få formen rätt. De här fem reglerna betyder mer än vilket spel du väljer."
+            ],
+            "items": [
+              {
+                "title": "Håll det kort",
+                "body": "Tio bra minuter slår en timme som ingen ville ha. Ni kan alltid köra igen nästa vecka."
+              },
+              {
+                "title": "Gör det frivilligt",
+                "body": "Folk är med på det de gillar. Tvingat kul lär mest folk att hålla kameran avstängd."
+              },
+              {
+                "title": "Under arbetstid",
+                "body": "Kvällsevent utesluter föräldrar, andra tidszoner och alla som behöver sin kväll."
+              },
+              {
+                "title": "Ge alla en väg in",
+                "body": "Blanda aktiviteter för pratglada och för tystare personer: rita, gissa och skriva funkar lika bra som att prata."
+              },
+              {
+                "title": "Upprepa det som funkar",
+                "body": "En liten ritual varje vecka gör mer än ett stort event varje kvartal."
+              }
+            ]
+          },
+          {
+            "title": "Fem minuter i början av ett möte",
+            "body": [
+              "Inga förberedelser, vilken teamstorlek som helst. Använd en för att öppna ett standup eller veckomöte."
+            ],
+            "items": [
+              {
+                "title": "Två sanningar och en lögn",
+                "detail": "5 min · 3 till 12 personer",
+                "body": "En person säger tre saker om sig själv; de andra gissar vilken som är påhittad. Två eller tre personer per möte räcker."
+              },
+              {
+                "title": "En sak på skrivbordet",
+                "detail": "5 min · valfri storlek",
+                "body": "Alla tar en sak inom räckhåll och berättar varför den ligger där. Lätt för alla, och det säger mycket."
+              },
+              {
+                "title": "Incheckning med ett ord",
+                "detail": "2 min · valfri storlek",
+                "body": "Alla beskriver sin vecka med ett ord. Ta upp de intressanta senare, inte nu."
+              },
+              {
+                "title": "Det här eller det där",
+                "detail": "5 min · valfri storlek",
+                "body": "Värden läser upp par (kaffe eller te, fjäll eller hav, A- eller B-människa) och alla svarar samtidigt i chatten."
+              },
+              {
+                "title": "Veckans bild",
+                "detail": "5 min · upp till 10 personer",
+                "body": "Alla delar en bild från sin vecka från mobilen. Ingen förklaring behövs om man inte vill ge en."
+              }
+            ]
+          },
+          {
+            "title": "Femton till trettio minuter",
+            "body": [
+              "Något att lägga i kalendern varje eller varannan vecka, helst på fredagseftermiddagen."
+            ],
+            "items": [
+              {
+                "title": "Pictionary på en delad whiteboard",
+                "detail": "20 min · 4 till 12 personer",
+                "body": "En person ritar ett ord på en whiteboard som alla ser medan de andra gissar. En lista med jobbord ger extra skratt."
+              },
+              {
+                "title": "Teamquiz",
+                "detail": "30 min · 4 till 20 personer",
+                "body": "Samla in ett överraskande faktum från varje person i förväg och låt teamet gissa vems den är."
+              },
+              {
+                "title": "Gissa låten",
+                "detail": "20 min · 4 till 15 personer",
+                "body": "Alla skickar en favoritlåt till värden, som spelar några sekunder av varje; teamet gissar vems den är."
+              },
+              {
+                "title": "Öde ö",
+                "detail": "15 min · 3 till 10 personer",
+                "body": "Alla väljer en bok, ett album och en maträtt till en öde ö, och teamet diskuterar."
+              },
+              {
+                "title": "Visa och berätta",
+                "detail": "30 min · 3 till 10 personer",
+                "body": "En eller två personer i veckan visar något de gör, lagar, odlar eller samlar på. Ni lär känna varandra mer än i något spel."
+              }
+            ]
+          },
+          {
+            "title": "En timme, en gång i månaden eller kvartalet",
+            "body": [
+              "Större event kräver lite planering eller en liten budget. Gör dem mer sällan och gör dem ordentligt."
+            ],
+            "items": [
+              {
+                "title": "Ett digitalt escape room",
+                "detail": "60 min · 4 till 8 per rum",
+                "body": "Flera företag ordnar escape rooms med spelledare över video. Dela upp större team i rum och jämför tiderna till sist."
+              },
+              {
+                "title": "En kurs med kit",
+                "detail": "60 min · valfri storlek",
+                "body": "Mat-, kaffe- eller drinkkurser där alla får samma ingredienser hem. Beställ tidigt om teamet sitter i flera länder."
+              },
+              {
+                "title": "En spelturnering",
+                "detail": "45 min · 4 till 30 personer",
+                "body": "Gratis webbläsarspel som Gartic Phone, skribbl.io eller Codenames online funkar bra. Spela i små grupper och sedan en final."
+              },
+              {
+                "title": "En byggdag",
+                "detail": "Halvdag · valfri storlek",
+                "body": "Små team bygger vad de vill, jobbrelaterat eller inte, och visar upp det till sist. Det blandar folk som aldrig jobbar ihop."
+              },
+              {
+                "title": "Kvartalet i backspegeln",
+                "detail": "60 min · valfri storlek",
+                "body": "Titta tillbaka på vad teamet levererat och dela sedan ut fåniga priser som alla röstar om: bästa bugg, bästa räddning, bästa meme."
+              }
+            ]
+          },
+          {
+            "title": "Helt utan möte",
+            "body": [
+              "Allt behöver inte ett samtal. De här pågår en vecka i en chattkanal och passar team över flera tidszoner."
+            ],
+            "items": [
+              {
+                "title": "En fotoutmaning",
+                "detail": "1 vecka · valfri storlek",
+                "body": "Ett tema i veckan (din utsikt, din lunch, något blått) och en kanal att posta i."
+              },
+              {
+                "title": "En tack-tråd",
+                "detail": "Löpande · valfri storlek",
+                "body": "En plats för att tacka någon offentligt för något specifikt. Läs upp de bästa i slutet av månaden."
+              },
+              {
+                "title": "Ett receptbyte",
+                "detail": "1 vecka · valfri storlek",
+                "body": "Alla delar ett recept hemifrån. Samla dem i ett delat dokument: det blir teamets kokbok."
+              },
+              {
+                "title": "En stegutmaning",
+                "detail": "2 veckor · valfri storlek",
+                "body": "Lag om tre lägger ihop sina dagliga steg. Håll det vänligt och låt all slags rörelse räknas."
+              },
+              {
+                "title": "En bok- eller podcastklubb",
+                "detail": "1 månad · 3 till 10 personer",
+                "body": "Välj något att läsa eller lyssna på, diskutera i en tråd och ses en gång i slutet om folk vill."
+              }
+            ]
+          },
+          {
+            "title": "Gör det till en vana, inte ett event",
+            "body": [
+              "De team som står varandra närmast förlitar sig sällan på stora event. Det de har är massor av små, oplanerade stunder: ett ord före ett möte, en fråga som blir ett samtal, en låt någon sätter på.",
+              "På kontoret händer de av sig själva. På distans behövs en plats där folk ser varandra och kan titta förbi utan att boka ett samtal. Ge ditt team det, så blir aktiviteterna ovan en bonus i stället för det enda tillfället att prata."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor är ett virtuellt kontor som ditt team går runt i. Gå förbi någon och stanna för en pratstund, sätt på en låt i jukeboxen i loungen, rita på whiteboarden för Pictionary eller ses i mötesrummet för fredagsmys. Gratis för upp till 3 personer, i webbläsaren."
+        },
+        "faq": [
+          {
+            "q": "Vilka digitala teambuildingaktiviteter passar små team?",
+            "a": "Korta utan förberedelser: två sanningar och en lögn, en sak på skrivbordet, Pictionary på en delad whiteboard eller gissa låten. Små team kan göra något varje vecka i stället för ett stort event per kvartal."
+          },
+          {
+            "q": "Hur ofta bör ett distansteam ha teambuilding?",
+            "a": "En femminutersstart på veckomötet och något längre en gång i månaden passar de flesta team. En liten ritual varje vecka gör mer än ett stort event då och då."
+          },
+          {
+            "q": "Hur gör man digital teambuilding mindre pinsam?",
+            "a": "Håll det kort och frivilligt, under arbetstid, med en tydlig värd och tydliga regler, och välj aktiviteter där tystare personer kan rita, gissa eller skriva i stället för att uppträda."
+          },
+          {
+            "q": "Vilka gratisverktyg kan vi använda?",
+            "a": "Gartic Phone, skribbl.io och Codenames online är gratis i webbläsaren. En delad whiteboard räcker för ritspel och en chattkanal för allt asynkront. TinyFloor är gratis för upp till 3 personer."
+          }
+        ]
+      },
+      "meetingGames": {
+        "label": "Spel för digitala möten",
+        "meta": {
+          "title": "15 snabba spel för digitala möten (max 5 minuter)",
+          "description": "15 snabba spel för digitala möten utan förberedelser: pratspel, gissningsspel och ritspel som ryms på fem minuter."
+        },
+        "title": "Snabba spel för <em>digitala möten.</em>",
+        "intro": "Ett bra mötesspel tar fem minuter, kräver inga förberedelser och funkar med kameran på eller av. De här 15 gör det, sorterade efter vilken sorts kul de är.",
+        "sections": [
+          {
+            "title": "Innan ni börjar",
+            "items": [
+              {
+                "title": "Välj en värd",
+                "body": "En person förklarar reglerna, håller tiden och driver på. Byt varje vecka."
+              },
+              {
+                "title": "Ställ en timer",
+                "body": "Fem minuter betyder fem minuter. Att sluta medan det fortfarande är kul gör att folk vill igen."
+              },
+              {
+                "title": "Ingen behöver uppträda",
+                "body": "Låt folk stå över, svara i chatten eller spela med kameran av."
+              }
+            ]
+          },
+          {
+            "title": "Pratspel",
+            "items": [
+              {
+                "title": "Hellre eller",
+                "detail": "Inga förberedelser · valfri storlek",
+                "body": "Värden ger ett val mellan två alternativ, alla svarar med ett ord och två personer förklarar sitt val."
+              },
+              {
+                "title": "Heta åsikter",
+                "detail": "Inga förberedelser · 3 till 15 personer",
+                "body": "Någon delar en mild åsikt (ananas på pizza, tabbar eller mellanslag) och alla betygsätter den från 1 till 10."
+              },
+              {
+                "title": "Ros, tagg, knopp",
+                "detail": "Inga förberedelser · upp till 10 personer",
+                "body": "Alla delar något bra, något svårt och något de ser fram emot, en mening var."
+              },
+              {
+                "title": "Ett ord i taget",
+                "detail": "Inga förberedelser · 4 till 12 personer",
+                "body": "Laget runt lägger alla till ett ord i en berättelse. Den faller isär snabbt, och det är poängen."
+              },
+              {
+                "title": "Som tur var, tyvärr",
+                "detail": "Inga förberedelser · 4 till 12 personer",
+                "body": "Turas om att lägga till en mening i en berättelse, varannan gång en bra och varannan en dålig nyhet."
+              }
+            ]
+          },
+          {
+            "title": "Gissningsspel",
+            "items": [
+              {
+                "title": "Vems skrivbord?",
+                "detail": "Lite förberedelser · 4 till 15 personer",
+                "body": "Alla skickar en bild på sitt skrivbord till värden i förväg; teamet gissar vems som är vems."
+              },
+              {
+                "title": "Husdjurs- eller barndomsbild",
+                "detail": "Lite förberedelser · 4 till 15 personer",
+                "body": "Samma idé med bilder på husdjur eller på alla som barn. Alltid en favorit."
+              },
+              {
+                "title": "Min vecka i emoji",
+                "detail": "Inga förberedelser · valfri storlek",
+                "body": "Alla postar tre emoji som sammanfattar veckan; de andra gissar historien."
+              },
+              {
+                "title": "Gissa ljudet",
+                "detail": "Lite förberedelser · valfri storlek",
+                "body": "Värden spelar korta vardagsljud och alla gissar vad det är. Ljud hemifrån funkar bäst."
+              },
+              {
+                "title": "Tjugo frågor",
+                "detail": "Inga förberedelser · 3 till 12 personer",
+                "body": "En person tänker på något; de andra ställer ja-eller-nej-frågor tills någon gissar rätt."
+              }
+            ]
+          },
+          {
+            "title": "Rit- och skärmspel",
+            "items": [
+              {
+                "title": "Trettiosekundersteckning",
+                "detail": "Inga förberedelser · 3 till 12 personer",
+                "body": "Säg ett ord, ställ en timer på 30 sekunder och alla ritar det samtidigt på en delad whiteboard."
+              },
+              {
+                "title": "Gartic Phone",
+                "detail": "Inga förberedelser · 4 till 30 personer",
+                "body": "Gratis i webbläsaren: viskleken med teckningar, där en mening blir något helt annat."
+              },
+              {
+                "title": "skribbl.io",
+                "detail": "Inga förberedelser · 3 till 12 personer",
+                "body": "Gratis Pictionary online med privat rum. Lägg till egna teamord för interna skämt."
+              },
+              {
+                "title": "Sextiosekundersjakt",
+                "detail": "Inga förberedelser · valfri storlek",
+                "body": "Nämn ett föremål (något rött, något äldre än du) och alla springer för att visa det i kameran."
+              },
+              {
+                "title": "Quiz med fem frågor",
+                "detail": "Lite förberedelser · valfri storlek",
+                "body": "Fem snabba frågor om veckan, produkten eller teamet. Svar i chatten; snabbaste rätta svaret vinner."
+              }
+            ]
+          },
+          {
+            "title": "Så kör ni det bra",
+            "body": [
+              "Spela i början av mötet, inte i slutet, när alla är pigga och ingen måste rusa iväg. Kör samma spel några veckor så att ingen behöver lära sig regler varje gång, och byt sedan.",
+              "Dela upp stora möten i små grupper om fyra till sex. Spel slutar fungera när de flesta tittar i stället för att spela."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "I TinyFloor finns teamets mötesrum alltid där: gå med i ett möte så går din figur in, ingen länk att skicka. Den delade whiteboarden på väggen funkar för ritspel, och våningen är öppen efteråt för den som vill fortsätta snacka."
+        },
+        "faq": [
+          {
+            "q": "Vilket femminutersspel passar ett digitalt möte?",
+            "a": "Hellre eller, heta åsikter eller en trettiosekundersteckning på en delad whiteboard. De kräver inga förberedelser och funkar med kameran på eller av."
+          },
+          {
+            "q": "Vad är skillnaden mellan en isbrytare och ett mötesspel?",
+            "a": "En isbrytare får folk att prata om sig själva, oftast i början av en ny grupp. Ett mötesspel är lite snabb kul för ett team som redan känner varandra. Många av spelen här funkar som båda."
+          },
+          {
+            "q": "Hur spelar man i ett stort digitalt möte?",
+            "a": "Dela upp er i grupper om fyra till sex, ge varje grupp samma spel och några minuter, och samla sedan alla för att dela det bästa svaret."
+          },
+          {
+            "q": "Behöver vi någon särskild programvara?",
+            "a": "Nej. De flesta funkar i vilket videosamtal som helst med chatt. Gartic Phone och skribbl.io är gratis i webbläsaren, och en delad whiteboard räcker för ritspel."
+          }
+        ]
+      },
+      "remoteCulture": {
+        "label": "Kultur i distansteam",
+        "meta": {
+          "title": "Så bygger du kultur i ett distansteam: 9 vanor som funkar",
+          "description": "Så bygger du kultur i ett distansteam: nio vardagsvanor som funkar, vad du ska sluta med och hur du ser att det fungerar."
+        },
+        "title": "Så bygger du kultur i ett <em>distansteam.</em>",
+        "intro": "Kultur är vad folk gör varje dag när ingen tittar: hur de ber om hjälp, delar nyheter och säger emot. Ett distansteam förlorar de små stunderna som formar den på kontoret, så det måste ge dem plats med flit, lätt och varje dag.",
+        "sections": [
+          {
+            "title": "Vad kultur är utan kontor",
+            "body": [
+              "På kontoret uppstår mycket kultur av en slump. Du hör hur en erfaren kollega hanterar en svår kund, ser vem som stannar sent före en lansering, äter lunch med någon från ett annat team.",
+              "Distansarbete tar bort det mesta av det. Kvar blir det folk skriver, det de säger i samtal och det de väljer att göra synligt. Den goda nyheten är att allt det kan formas med några tydliga vanor."
+            ]
+          },
+          {
+            "title": "Nio vanor som bygger den",
+            "items": [
+              {
+                "title": "Skriv ner beslut",
+                "body": "Ha en plats där beslut och skälen bakom dem finns. Nya lär sig hur teamet tänker genom att läsa."
+              },
+              {
+                "title": "Öppna kanaler som standard",
+                "body": "Ställ frågor där andra kan se och lära sig. Privata meddelanden är för privata saker."
+              },
+              {
+                "title": "Gör folk synliga",
+                "body": "Visa vem som är där, vem som är upptagen och vem som har tid att prata, så att be om hjälp inte känns som att störa."
+              },
+              {
+                "title": "Ha en plats att titta förbi",
+                "body": "Ett rum som alltid är öppet eller fasta tider då man kan dyka upp utan att boka."
+              },
+              {
+                "title": "Små ritualer",
+                "body": "En veckodemo, en tråd med fredagens framsteg, ett femminutersspel. Små, regelbundna och likadana varje vecka."
+              },
+              {
+                "title": "Ge nya en fadder",
+                "body": "Onboarding ska vara en person, inte bara ett dokument: någon att fråga de fåniga frågorna den första månaden."
+              },
+              {
+                "title": "Fira offentligt",
+                "body": "Tacka för specifika saker där hela teamet ser det. Det visar vad teamet värdesätter."
+              },
+              {
+                "title": "Skydda fokustid",
+                "body": "En bra distanskultur låter folk försvinna i timmar. Gör ”upptagen” till en respekterad status, inte en varningssignal."
+              },
+              {
+                "title": "Ses på riktigt när det går",
+                "body": "En eller två gånger om året, om budgeten tillåter. Varje samtal efteråt blir lättare."
+              }
+            ]
+          },
+          {
+            "title": "Det du ska sluta med",
+            "items": [
+              {
+                "title": "Tvingat kul",
+                "body": "Obligatoriska sociala event på obekväma tider skapar irritation, inte närhet."
+              },
+              {
+                "title": "Kameran på för allt",
+                "body": "Video hjälper i vissa samtal och tröttar i alla. Låt folk välja."
+              },
+              {
+                "title": "Övervakning av aktivitet",
+                "body": "Att mäta tangenttryck eller tid online säger att folk inte är betrodda, och förtroende är hela poängen."
+              },
+              {
+                "title": "Möten för att känna sig nära",
+                "body": "Ett dagligt allmöte för att känna samhörighet känns oftast som en plikt. Ge folk en plats i stället för en tid."
+              }
+            ]
+          },
+          {
+            "title": "Så ser du att det funkar",
+            "body": [
+              "Du hittar det inte i ett enkätresultat. Leta efter det här i stället:"
+            ],
+            "items": [
+              {
+                "title": "Nya frågar offentligt",
+                "body": "Det betyder att de känner sig trygga i att inte veta."
+              },
+              {
+                "title": "Folk hjälper varandra över teamgränser",
+                "body": "Utan ärende och utan att en chef ber om det."
+              },
+              {
+                "title": "Småprat uppstår av sig självt",
+                "body": "Samtal börjar utan kalenderinbjudan."
+              },
+              {
+                "title": "Folk kopplar verkligen av",
+                "body": "De tar semester och loggar ut när dagen är slut."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor ger ett distansteam en plats att vara tillsammans: en våning där du ser vem som är där, sätter en status och går fram till den som har tid att prata. Den visar vem som är där och vilken status de väljer, inget mer: den övervakar ingens aktivitet."
+        },
+        "faq": [
+          {
+            "q": "Kan ett distansteam ha en stark kultur?",
+            "a": "Ja, men den uppstår inte av en slump. Team som skriver ner beslut, har en plats att titta förbi, håller små ritualer och firar offentligt är ofta mer sammansvetsade än team på kontor."
+          },
+          {
+            "q": "Vad är den största utmaningen för distanskultur?",
+            "a": "Att förlora de små oplanerade stunderna: överhörda samtal, snabba frågor, lunch med någon ny. Ett distansteam behöver en plats där de fortfarande kan hända."
+          },
+          {
+            "q": "Hur får man nya att känna sig som en del av ett distansteam?",
+            "a": "Ge dem en fadder, presentera dem i en öppen kanal, bjud in dem till teamets ritualer från första dagen och gör det lätt att se vem som finns att fråga."
+          },
+          {
+            "q": "Hur bygger man kultur över tidszoner?",
+            "a": "Luta dig mot skrift och asynkrona ritualer, som en veckotråd eller en fotoutmaning, och hitta en eller två timmars överlapp för det som sker live. Rotera mötestider så att inte samma personer alltid är uppe sent."
+          }
+        ]
+      },
+      "remoteCommunication": {
+        "label": "Kommunikation i distansteam",
+        "meta": {
+          "title": "Kommunikation i distansteam: när du ska skriva och när du ska prata",
+          "description": "En praktisk guide till kommunikation i distansteam: när du ska skriva, när du ska prata, enkla teamregler och lösningar på vanliga problem."
+        },
+        "title": "Kommunikation på distans: <em>när du ska skriva, när du ska prata.</em>",
+        "intro": "De flesta kommunikationsproblem i distansteam kommer av fel sätt: en lång tråd som borde ha varit ett tvåminuterssamtal, eller ett möte som kunde ha varit ett meddelande. Så här väljer du, och några enkla regler att komma överens om i teamet.",
+        "sections": [
+          {
+            "title": "Skriv när",
+            "items": [
+              {
+                "title": "Någon behöver det senare",
+                "body": "Beslut, instruktioner och allt en ny person letar efter om tre månader."
+              },
+              {
+                "title": "Det kräver eftertanke",
+                "body": "Förslag och feedback blir bättre när man kan läsa två gånger och svara när man är redo."
+              },
+              {
+                "title": "Folk sitter i andra tidszoner",
+                "body": "Skrift låter alla vara med på sina egna arbetstider."
+              },
+              {
+                "title": "Det är en statusuppdatering",
+                "body": "Det som läses på en minut tar tio på ett möte."
+              }
+            ]
+          },
+          {
+            "title": "Prata när",
+            "items": [
+              {
+                "title": "En tråd passerar tre svar",
+                "body": "Om det fortfarande går fram och tillbaka löser två minuters prat saken."
+              },
+              {
+                "title": "Någon har kört fast",
+                "body": "Att hjälpa loss en kollega är värt ett avbrott. Gå dit, titta på det tillsammans och få personen vidare."
+              },
+              {
+                "title": "Det finns spänningar",
+                "body": "Tonen försvinner i text. Oenighet och svår feedback går bättre muntligt."
+              },
+              {
+                "title": "Ni utforskar idéer",
+                "body": "Tidig brainstorming går snabbare i samtal. Skriv ner vad ni bestämt efteråt."
+              }
+            ]
+          },
+          {
+            "title": "Enkla regler att komma överens om",
+            "body": [
+              "Skriv ner dem en gång och visa nya. De förebygger det mesta av friktionen."
+            ],
+            "items": [
+              {
+                "title": "Svarstider per kanal",
+                "body": "Till exempel: chatt inom några timmar, mejl inom en dag och ett samtal för allt brådskande."
+              },
+              {
+                "title": "Ett hem för beslut",
+                "body": "En kanal eller ett dokument där beslut skrivs ner, så att de inte försvinner i privata meddelanden."
+              },
+              {
+                "title": "Status betyder något",
+                "body": "Upptagen betyder stör inte om det inte brådskar. Tillgänglig betyder att det går bra att komma förbi."
+              },
+              {
+                "title": "Varje samtal avslutas skriftligt",
+                "body": "Två rader i rätt kanal: vad som bestämdes och vem som gör vad."
+              },
+              {
+                "title": "Ingen agenda, inget möte",
+                "body": "Ett möte utan syfte i inbjudan går att tacka nej till."
+              }
+            ]
+          },
+          {
+            "title": "Vanliga problem och lösningar",
+            "items": [
+              {
+                "title": "Allt känns brådskande",
+                "body": "Kom överens om vad brådskande betyder och vilken kanal det går i. Resten kan vänta på svar."
+              },
+              {
+                "title": "Beslut försvinner",
+                "body": "Flytta dem från privata meddelanden till beslutskanalen, varje gång."
+              },
+              {
+                "title": "För många möten",
+                "body": "Ersätt statusmöten med skriftliga uppdateringar och spara samtalen till beslut och problem."
+              },
+              {
+                "title": "Folk blir tysta",
+                "body": "Tysta personer vill ofta inte störa. Gör det synligt när någon har tid och checka in på tu man hand."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor ställer skrift och tal sida vid sida. Kanaler och meddelanden finns kvar i teamchatten; när en tråd blir lång ser du om personen är ledig och går dit och pratar. En status visar när någon fokuserar, så ingen behöver gissa."
+        },
+        "faq": [
+          {
+            "q": "Vilka är de bästa kommunikationsverktygen för distansteam?",
+            "a": "De flesta team behöver fyra saker: en chatt för snabba meddelanden, en plats för dokument och beslut, videosamtal och ett sätt att se vem som är där. Många verktyg täcker mer än en sak; det viktiga är att komma överens om vad varje sak är till för."
+          },
+          {
+            "q": "Ska distansteam jobba synkront eller asynkront?",
+            "a": "Både och. Skriv som standard för uppdateringar och beslut, och prata live för att lösa upp knutar, spänningar och utforska idéer. De flesta team behöver några timmars överlapp om dagen för det som sker live."
+          },
+          {
+            "q": "Hur undviker man för många möten?",
+            "a": "Ersätt statusmöten med skriftliga uppdateringar, kräv agenda för varje möte och gör snabba samtal enkla, så att ingen bokar ett möte för en tvåminutersfråga."
+          },
+          {
+            "q": "Hur kommunicerar man över tidszoner?",
+            "a": "Skriv som standard, dokumentera beslut där alla hittar dem, rotera tiderna för livemöten och spara överlappet till de samtal som behöver det."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Vad är närhetschatt?",
+        "meta": {
+          "title": "Vad är närhetschatt? Så funkar det i spel och på jobbet",
+          "description": "Vad närhetschatt är, hur det funkar, vilka spel som använder det och hur virtuella kontor använder det så att team pratar genom att gå fram till varandra."
+        },
+        "title": "Vad är <em>närhetschatt?</em>",
+        "intro": "Med närhetschatt pratar du med dem som är nära dig i ett virtuellt rum, och inte med alla andra. Det började i spel, där det gör världar levande, och är nu hur virtuella kontor låter team prata utan möteslänkar.",
+        "sections": [
+          {
+            "title": "Så funkar närhetschatt",
+            "body": [
+              "Alla har en position på en karta, i en spelvärld eller på en kontorsvåning. I stället för att alla hör alla bestämmer rummet vem som kan prata: kom nära någon så hör ni varandra, gå därifrån så tar samtalet slut.",
+              "Vissa varianter låter röster tona bort med avståndet, som ljud i ett rum. Andra kopplar ihop er när du står bredvid någon, som när du går fram till en kollegas skrivbord."
+            ]
+          },
+          {
+            "title": "Närhetschatt i spel",
+            "body": [
+              "Spel använder det för att göra samtal till en del av världen. Några kända exempel:"
+            ],
+            "items": [
+              {
+                "title": "Sociala deduktionsspel",
+                "body": "Moddar till Among Us lade till närhetsröst, så att du bara hör spelarna nära dig och kan viska fram planer."
+              },
+              {
+                "title": "Överlevnadsspel",
+                "body": "Rust och DayZ använder närhetsröst, så att möta en främling betyder att faktiskt prata med hen."
+              },
+              {
+                "title": "Samarbetsspel",
+                "body": "I Lethal Company blir en lagkamrat som vandrar iväg svår att höra, och det är halva spänningen."
+              },
+              {
+                "title": "Sandlådespel",
+                "body": "Minecraft-servrar lägger till närhetsröst med moddar, så att en delad värld känns som en riktig plats."
+              }
+            ]
+          },
+          {
+            "title": "Närhetschatt på jobbet",
+            "body": [
+              "Virtuella kontor använder samma idé för distansteam. Ditt team delar en 2D-våning, alla är en figur och ni pratar genom att gå fram till någon i stället för att skicka en möteslänk.",
+              "Det ger tillbaka det videosamtal tappar: att se vem som är där, snabba frågor och sidosamtal. Två personer kan prata i ett hörn medan andra jobbar, som på ett riktigt kontor."
+            ]
+          },
+          {
+            "title": "Två sorters närhetschatt",
+            "items": [
+              {
+                "title": "Rumsljud som alltid är på",
+                "body": "Ljudet kopplas automatiskt när du är nära någon och tonar bort med avståndet. Det känns livligt, men du kan höras innan du vill."
+              },
+              {
+                "title": "Gå fram och ring",
+                "body": "Går du fram till någon får du en knapp för att ringa, och inget hörs förrän du startar samtalet. Lugnare och bättre för jobbet."
+              }
+            ]
+          },
+          {
+            "title": "För- och nackdelar",
+            "items": [
+              {
+                "title": "Inga möteslänkar",
+                "body": "Att prata är lika enkelt som att gå dit, så även små frågor blir ställda."
+              },
+              {
+                "title": "Sidosamtal",
+                "body": "Flera samtal kan pågå samtidigt i samma rum."
+              },
+              {
+                "title": "Närvaro",
+                "body": "Du ser vem som är där innan du stör någon."
+              },
+              {
+                "title": "Det kräver ett delat rum",
+                "body": "Det funkar bara om teamet har rummet öppet medan de jobbar."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor använder varianten gå fram och ring: gå med din figur fram till en kollega så dyker en ringknapp upp bredvid hen, så att ingen hörs av misstag. Grupper ses i mötesrummet. Det körs i webbläsaren och är gratis för upp till 3 personer."
+        },
+        "faq": [
+          {
+            "q": "Vad betyder närhetschatt?",
+            "a": "Att du bara kan prata med dem som är nära dig i ett virtuellt rum. Gå närmare för att prata; gå iväg så tar samtalet slut."
+          },
+          {
+            "q": "Är närhetschatt privat?",
+            "a": "Bara de nära dig hör dig, vilket är mer privat än en kanal där alla är med. Med gå fram och ring hörs inget förrän du startar ett samtal."
+          },
+          {
+            "q": "Vilka spel har närhetschatt?",
+            "a": "Rust, DayZ och Lethal Company har det inbyggt, och moddar lägger till det i spel som Among Us och Minecraft."
+          },
+          {
+            "q": "Kan man använda närhetschatt på jobbet?",
+            "a": "Ja. Virtuella kontor som TinyFloor, Gather och SpatialChat använder det så att distansteam kan prata genom att gå fram till varandra i stället för att boka samtal."
+          }
+        ]
       }
     }
   }

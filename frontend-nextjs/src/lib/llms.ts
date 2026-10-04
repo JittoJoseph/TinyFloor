@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/lib/i18n/routing";
 import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingGroup, type LandingKey } from "@/lib/landings";
+import { GUIDES, GUIDES_PATH, guidePath, type GuideCopy } from "@/lib/guides";
 import { PLANS } from "@/lib/plans";
 import { SUPPORT_EMAIL } from "@/lib/site";
 import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
@@ -61,11 +62,16 @@ async function common() {
     ...MORE_FEATURES.map((key) => text(`home.more.items.${key}.title`)),
   ];
   const faq = raw<Array<{ q: string; a: string }>>("faq.items");
-  return { text, raw, page, hub, pagesOf, product, features, faq };
+  const guide = (key: string) => raw<GuideCopy>(`guides.pages.${key}`);
+  const guides: Link[] = [
+    [text("guides.hub.meta.title"), GUIDES_PATH, text("guides.hub.meta.description")],
+    ...GUIDES.map((one): Link => [guide(one.key).meta.title, guidePath(one), guide(one.key).meta.description]),
+  ];
+  return { text, raw, page, hub, pagesOf, product, features, faq, guide, guides };
 }
 
 export async function llmsTxt(): Promise<string> {
-  const { text, page, hub, pagesOf, product, features, faq } = await common();
+  const { text, page, hub, pagesOf, product, features, faq, guides } = await common();
   return [
     "# TinyFloor",
     "",
@@ -84,6 +90,10 @@ export async function llmsTxt(): Promise<string> {
       ...list([hub(group), ...pagesOf(group).map(({ key, slug }): Link => [page(key).meta.title, `/${slug}`, page(key).meta.description])]),
       "",
     ]),
+    "## Guides",
+    "",
+    ...list(guides),
+    "",
     "## What's in every office",
     "",
     ...features.map((feature) => `- ${feature}`),
@@ -102,7 +112,7 @@ export async function llmsTxt(): Promise<string> {
 }
 
 export async function llmsFullTxt(): Promise<string> {
-  const { text, raw, page, pagesOf, features, faq } = await common();
+  const { text, raw, page, pagesOf, features, faq, guide } = await common();
 
   const plans = () => {
     const name = (key: string) => key[0].toUpperCase() + key.slice(1);
@@ -174,6 +184,34 @@ export async function llmsFullTxt(): Promise<string> {
     ];
   };
 
+  /** A guide, section by section; numbered items count on through the guide, as on the page. */
+  const guidePage = (key: string, path: string) => {
+    const copy = guide(key);
+    let number = 0;
+    return [
+      `### ${copy.meta.title}`,
+      "",
+      url(path),
+      "",
+      copy.intro,
+      "",
+      ...copy.sections.flatMap((section) => [
+        `#### ${section.title}`,
+        "",
+        ...(section.body ?? []).flatMap((paragraph) => [paragraph, ""]),
+        ...(section.items ?? []).map((item) =>
+          item.detail ? `${++number}. **${item.title}** (${item.detail}): ${item.body}` : `- **${item.title}:** ${item.body}`,
+        ),
+        ...(section.items ? [""] : []),
+      ]),
+      `#### ${copy.fit.title}`,
+      "",
+      copy.fit.body,
+      "",
+      ...copy.faq.flatMap(({ q, a }) => [`**${q}** ${a}`, ""]),
+    ];
+  };
+
   return [
     "# TinyFloor, the full text",
     "",
@@ -202,6 +240,11 @@ export async function llmsFullTxt(): Promise<string> {
       "",
       ...pagesOf(group).flatMap(landingPage),
     ]),
+    "## Guides",
+    "",
+    text("guides.hub.meta.description"),
+    "",
+    ...GUIDES.flatMap((one) => guidePage(one.key, guidePath(one))),
   ].join("\n");
 }
 

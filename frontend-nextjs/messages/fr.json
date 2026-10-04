@@ -641,10 +641,10 @@
       "virtualOffice": {
         "label": "Bureau virtuel",
         "meta": {
-          "title": "Bureau virtuel gratuit pour équipes à distance",
-          "description": "Un bureau virtuel gratuit dans votre navigateur. Voyez qui est là, approchez-vous pour parler en appel vidéo de proximité, et gardez une salle ouverte pour votre équipe à distance."
+          "title": "Bureau virtuel pour les équipes à distance",
+          "description": "Un bureau virtuel dans votre navigateur. Voyez qui est là, rejoignez quelqu'un pour un appel vidéo de proximité et gardez une pièce ouverte pour votre équipe à distance."
         },
-        "title": "Un <em>bureau virtuel</em> gratuit pour les équipes à distance.",
+        "title": "Un <em>bureau virtuel</em> pour les équipes à distance.",
         "subtitle": "Donnez à votre équipe un endroit où être pendant la journée. Voyez qui est là, passez poser une question rapide et entrez dans la salle de réunion quand il est temps de parler.",
         "points": [
           {
@@ -723,8 +723,8 @@
       "virtualClassroom": {
         "label": "Classe virtuelle",
         "meta": {
-          "title": "Classe virtuelle gratuite pour les permanences",
-          "description": "Permanences, tutorat et petits cours dans une salle de classe virtuelle gratuite. Les élèves s’approchent pour parler, les groupes se retrouvent dans la salle de réunion et tout le monde partage un tableau blanc."
+          "title": "Classe virtuelle pour les permanences et les petits groupes",
+          "description": "Organisez permanences, tutorat et petits cours dans une classe virtuelle. Les élèves s'approchent pour parler, les groupes se retrouvent en salle de réunion et tout le monde partage un tableau blanc."
         },
         "title": "Une <em>classe virtuelle</em> où les élèves se déplacent.",
         "subtitle": "Tenez des permanences, du tutorat ou un petit cours dans une salle où les élèves peuvent se déplacer. Ils s’approchent quand ils ont une question, et les groupes parlent dans la salle de réunion.",
@@ -764,7 +764,7 @@
       "proximityChat": {
         "label": "Chat de proximité",
         "meta": {
-          "title": "Chat vidéo de proximité gratuit dans le navigateur",
+          "title": "Chat vidéo de proximité pour les équipes à distance",
           "description": "Le chat de proximité pour les équipes à distance : approchez votre personnage d'un collègue pour lancer un appel. Gratuit pour les petites équipes, dans le navigateur, sans téléchargement."
         },
         "title": "Un <em>chat de proximité</em> qui démarre quand vous vous approchez.",
@@ -801,6 +801,831 @@
             "a": "Oui, pour un bureau jusqu'à 3 personnes, dans le navigateur sur ordinateur et mobile."
           }
         ]
+      },
+      "sococo": {
+        "label": "Alternative à Sococo",
+        "meta": {
+          "title": "Alternative à Sococo pour les petites équipes à distance",
+          "description": "Sococo commence à 10 places en formule annuelle. TinyFloor est un bureau virtuel dans le navigateur, gratuit pour 3 personnes et 19 $ par mois jusqu'à 10, facturé au mois."
+        },
+        "title": "Une <em>alternative à Sococo</em> sans minimum de 10 places.",
+        "subtitle": "Sococo vend des places à l'année, 10 au minimum. TinyFloor, c'est un prix mensuel pour tout le bureau, et une petite équipe peut commencer gratuitement.",
+        "points": [
+          {
+            "title": "Commencez à votre vraie taille",
+            "body": "Gratuit jusqu'à 3 personnes, puis 19 $ par mois jusqu'à 10. Pas de minimum de places ni de paiement annuel d'avance."
+          },
+          {
+            "title": "Un étage où se déplacer",
+            "body": "Votre équipe partage un même étage de bureau et commence à parler en se rejoignant."
+          },
+          {
+            "title": "Les appels ne consomment pas de minutes",
+            "body": "Sococo compte les minutes par place. Sur TinyFloor, les appels à deux ne sont jamais décomptés ; seules les réunions de groupe ont des heures mensuelles."
+          }
+        ],
+        "them": {
+          "price": "13,49 $ par place et par mois, facturé à l'année, 10 places minimum",
+          "freePlan": "Aucune, seulement un essai gratuit",
+          "screenShare": "Oui, plusieurs à la fois"
+        },
+        "faq": [
+          {
+            "q": "Combien coûte Sococo ?",
+            "a": "Sococo coûte 13,49 $ par place et par mois, facturé à l'année, avec un minimum de 10 places et 500 minutes par place et par mois. Sococo Unlimited coûte 24,99 $ par place avec un minimum de 100 places. TinyFloor est gratuit pour 3 personnes et coûte 19 $ par mois jusqu'à 10."
+          },
+          {
+            "q": "Existe-t-il une version gratuite de Sococo ?",
+            "a": "Sococo propose un essai gratuit plutôt qu'une offre gratuite. L'offre gratuite de TinyFloor n'a pas de date de fin, jusqu'à 3 personnes."
+          },
+          {
+            "q": "Qu'est-ce que Sococo a que TinyFloor n'a pas ?",
+            "a": "Sococo permet de choisir des plans d'étage et une décoration, et se connecte à Zoom, Webex, Google Meet et Microsoft Teams. TinyFloor garde un seul étage de bureau et gère ses propres appels et réunions."
+          },
+          {
+            "q": "Faut-il installer quelque chose ?",
+            "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile. Partagez le lien d'invitation de votre bureau et votre équipe entre."
+          }
+        ]
+      },
+      "ovice": {
+        "label": "Alternative à oVice",
+        "meta": {
+          "title": "Alternative à oVice pour les petites équipes",
+          "description": "oVice facture par espace ou à partir de 20 utilisateurs. TinyFloor est un bureau virtuel dans le navigateur pour les petites équipes : gratuit pour 3 personnes, 19 $ par mois pour 10 et 49 $ pour 25."
+        },
+        "title": "Une <em>alternative à oVice</em> à la taille des petites équipes.",
+        "subtitle": "oVice est conçu pour les entreprises et les communautés, avec des offres selon la taille de l'espace ou à partir de 20 utilisateurs. TinyFloor est fait pour les équipes de 2 à 25 personnes, avec un prix simple par bureau.",
+        "points": [
+          {
+            "title": "Des prix pour 3, 10 ou 25",
+            "body": "Gratuit jusqu'à 3 personnes, 19 $ par mois pour 10 et 49 $ pour 25. Aucune taille d'espace à calculer."
+          },
+          {
+            "title": "S'approcher et parler",
+            "body": "Comme sur oVice, vous allez vers quelqu'un pour parler. Les appels à deux ne sont jamais décomptés."
+          },
+          {
+            "title": "Un chat qui reste",
+            "body": "Chaque bureau a des canaux et des messages privés avec leur historique, à côté de l'étage et sur votre téléphone."
+          }
+        ],
+        "them": {
+          "price": "65 $ par mois et par espace, ou 16 $ par utilisateur dès 20 utilisateurs, facturé à l'année",
+          "freePlan": "Oui, sur une version préliminaire sans assistance",
+          "browser": "Oui, avec des applis pour ordinateur et mobile",
+          "screenShare": "Oui, plusieurs à la fois"
+        },
+        "faq": [
+          {
+            "q": "Combien coûte oVice ?",
+            "a": "oVice Entry-S coûte 65 $ par mois et par espace en facturation annuelle, ou 78 $ au mois, pour environ 10 membres réguliers. Business Starter coûte 16 $ par utilisateur et par mois dès 20 utilisateurs. TinyFloor coûte 19 $ par mois jusqu'à 10 personnes."
+          },
+          {
+            "q": "oVice a-t-il une offre gratuite ?",
+            "a": "Oui. Après l'essai de 14 jours, un espace passe à une offre gratuite qui tourne sur un environnement préliminaire, sans SLA ni assistance. L'offre gratuite de TinyFloor est le même produit que ses offres payantes, jusqu'à 3 personnes."
+          },
+          {
+            "q": "Qu'est-ce qu'oVice a que TinyFloor n'a pas ?",
+            "a": "oVice ajoute des agencements personnalisés, la transcription, l'enregistrement sur demande, l'intégration au calendrier et à Microsoft Teams, et des offres pour les événements. TinyFloor se concentre sur le bureau au quotidien : s'approcher, les réunions, le chat, un tableau blanc et la musique."
+          },
+          {
+            "q": "TinyFloor est-il disponible en japonais ?",
+            "a": "Oui. TinyFloor existe en 18 langues, dont le japonais et le coréen, et chaque personne peut choisir la sienne."
+          }
+        ]
+      },
+      "teamflow": {
+        "label": "Alternative à Teamflow",
+        "meta": {
+          "title": "Alternative à Teamflow qui fonctionne dans le navigateur",
+          "description": "Teamflow coûte 15 $ par personne et par mois avec des applis à installer. TinyFloor est un bureau virtuel dans le navigateur : gratuit pour 3 personnes, 19 $ par mois pour un bureau de 10."
+        },
+        "title": "Une <em>alternative à Teamflow</em> sans rien à télécharger.",
+        "subtitle": "Teamflow facture par personne et tourne comme une appli sur votre ordinateur. TinyFloor s'ouvre dans un onglet du navigateur, sur ordinateur ou téléphone, pour un seul prix par bureau.",
+        "points": [
+          {
+            "title": "Un prix pour le bureau",
+            "body": "L'offre Seed de Teamflow coûte 15 $ par personne. TinyFloor Plus coûte 19 $ par mois pour 10 personnes ensemble."
+          },
+          {
+            "title": "Pas de coupure à 45 minutes",
+            "body": "L'offre gratuite de Teamflow arrête les réunions après 45 minutes. Les réunions TinyFloor n'ont pas de limite par réunion ; chaque offre a des heures mensuelles pour les réunions de groupe."
+          },
+          {
+            "title": "Dans un onglet",
+            "body": "Aucune appli à installer ni à mettre à jour. Ouvrez le lien sur n'importe quel ordinateur ou téléphone et vous êtes sur l'étage."
+          }
+        ],
+        "them": {
+          "price": "15 $ par personne et par mois, facturé à l'année",
+          "freePlan": "Jusqu'à 5 personnes, avec des réunions de 45 minutes",
+          "browser": "Applis pour Mac et Windows, mobile en bêta",
+          "screenShare": "Oui, plusieurs à la fois"
+        },
+        "faq": [
+          {
+            "q": "Combien coûte Teamflow ?",
+            "a": "Teamflow est gratuit jusqu'à 5 personnes avec des réunions de 45 minutes. Seed coûte 15 $ et Business 25 $ par personne et par mois, facturés à l'année. TinyFloor est gratuit pour 3 personnes, puis 19 $ par mois jusqu'à 10."
+          },
+          {
+            "q": "TinyFloor a-t-il les intégrations d'applis de Teamflow ?",
+            "a": "Non. Teamflow intègre des applis comme Figma et Google Docs dans les réunions. TinyFloor s'en tient à la présence, aux appels, aux réunions, au chat, à un tableau blanc et au partage d'écran."
+          },
+          {
+            "q": "Mes collègues doivent-ils installer quelque chose ?",
+            "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile. Ils ouvrent le lien d'invitation de votre bureau et se connectent."
+          },
+          {
+            "q": "Combien de personnes peuvent rejoindre un bureau TinyFloor ?",
+            "a": "Jusqu'à 3 personnes avec Free, 10 avec Plus et 25 avec Pro, et vous pouvez créer autant de bureaux que nécessaire."
+          }
+        ]
+      },
+      "roam": {
+        "label": "Alternative à Roam",
+        "meta": {
+          "title": "Alternative à Roam pour les petites équipes à distance",
+          "description": "Roam est une appli à installer, facturée par membre actif. TinyFloor est un bureau virtuel dans le navigateur, gratuit pour 3 personnes et 19 $ par mois jusqu'à 10."
+        },
+        "title": "Une <em>alternative à Roam</em> qui s'ouvre dans le navigateur.",
+        "subtitle": "Roam regroupe un bureau virtuel, des outils d'IA et une appli à installer, facturés par membre. TinyFloor fait simplement la partie bureau : s'approcher, se réunir et discuter, pour un seul prix par équipe.",
+        "points": [
+          {
+            "title": "Juste le bureau",
+            "body": "Pas de suite à adopter. Un étage où vous voyez qui est là, allez parler à quelqu'un et entrez dans la salle de réunion."
+          },
+          {
+            "title": "Rien à installer",
+            "body": "TinyFloor fonctionne dans un onglet sur n'importe quel ordinateur ou téléphone, donc tout le monde peut rejoindre en quelques secondes."
+          },
+          {
+            "title": "Un prix par équipe",
+            "body": "Gratuit pour 3 personnes, 19 $ par mois pour 10 et 49 $ pour 25, quel que soit le nombre de personnes qui l'utilisent ce mois-là."
+          }
+        ],
+        "them": {
+          "price": "Un prix mensuel par membre actif",
+          "freePlan": "Aucune, seulement un essai de 14 jours",
+          "browser": "Appli à télécharger",
+          "screenShare": "Oui"
+        },
+        "faq": [
+          {
+            "q": "Comment Roam est-il facturé ?",
+            "a": "Roam facture un prix mensuel par membre actif pour tous ses produits, avec un essai gratuit de 14 jours et sans contrat annuel. TinyFloor est gratuit pour 3 personnes et coûte 19 $ par mois jusqu'à 10."
+          },
+          {
+            "q": "Qu'est-ce que Roam a que TinyFloor n'a pas ?",
+            "a": "Roam ajoute des notes de réunion par IA, un assistant IA, des webinaires, la planification et l'enregistrement d'écran. TinyFloor se concentre sur le bureau lui-même."
+          },
+          {
+            "q": "Des invités peuvent-ils rejoindre un bureau TinyFloor ?",
+            "a": "Les bureaux sont réservés aux membres : on les rejoint avec le lien d'invitation et un compte gratuit. Pour jeter un œil d'abord, tout le monde peut essayer le bureau de démo avec un simple nom."
+          },
+          {
+            "q": "TinyFloor fonctionne-t-il sur téléphone ?",
+            "a": "Oui. Il fonctionne dans les navigateurs mobiles avec un joystick à l'écran, sans rien à télécharger."
+          }
+        ]
+      },
+      "slackHuddles": {
+        "label": "Alternative aux huddles Slack",
+        "meta": {
+          "title": "Alternative aux huddles Slack : voyez qui est libre, puis allez-y",
+          "description": "Un huddle Slack est un appel à l'aveugle. TinyFloor montre d'abord qui est libre, puis vous allez lui parler. Un bureau virtuel à côté de Slack, gratuit pour 3 personnes."
+        },
+        "title": "Une <em>alternative aux huddles Slack</em> où vous voyez d'abord qui est libre.",
+        "subtitle": "Un huddle est un appel que l'on lance sans savoir si c'est le bon moment. Sur TinyFloor, vous voyez qui est là, qui est occupé et qui parle déjà, puis vous y allez.",
+        "points": [
+          {
+            "title": "Voir avant d'appeler",
+            "body": "Chacun a un statut et une place sur l'étage, donc vous savez qui est concentré avant de demander."
+          },
+          {
+            "title": "Des appels de groupe dans chaque offre",
+            "body": "Avec l'offre gratuite de Slack, les huddles sont à deux. Sur TinyFloor, chaque offre a des appels et des réunions de groupe."
+          },
+          {
+            "title": "Gardez Slack si vous voulez",
+            "body": "TinyFloor a son propre chat, mais beaucoup d'équipes gardent Slack pour les messages et utilisent l'étage pour parler."
+          }
+        ],
+        "them": {
+          "price": "Les huddles de groupe demandent Slack Pro, facturé par utilisateur",
+          "freePlan": "Slack Free n'a que les huddles à deux",
+          "browser": "Oui, avec des applis pour ordinateur et mobile",
+          "screenShare": "Oui"
+        },
+        "faq": [
+          {
+            "q": "Qu'est-ce qu'un huddle Slack ?",
+            "a": "Un huddle est un appel audio ou vidéo rapide dans Slack, lancé depuis un canal ou un message privé. Avec l'offre gratuite de Slack, les huddles sont à deux ; les huddles de groupe demandent une offre payante."
+          },
+          {
+            "q": "En quoi TinyFloor est-il différent d'un huddle ?",
+            "a": "Un huddle commence quand quelqu'un appelle. Sur TinyFloor, votre équipe est déjà réunie sur un étage : vous voyez qui est libre et vous y allez, et la salle de réunion est toujours là."
+          },
+          {
+            "q": "Puis-je utiliser TinyFloor avec Slack ?",
+            "a": "Oui. Ils ne sont pas reliés, mais beaucoup d'équipes gardent Slack pour les messages et utilisent TinyFloor pour la présence, les appels et les réunions."
+          },
+          {
+            "q": "Combien coûte TinyFloor ?",
+            "a": "Gratuit jusqu'à 3 personnes. Plus coûte 19 $ par mois pour 10 personnes et Pro 49 $ par mois pour 25, pour tout le bureau, pas par personne."
+          }
+        ]
+      },
+      "discord": {
+        "label": "Discord pour le travail",
+        "meta": {
+          "title": "Discord pour le travail ? Un bureau virtuel fait pour les équipes",
+          "description": "Des équipes utilisent les salons vocaux de Discord pour se sentir ensemble. TinyFloor donne à une équipe à distance la même liberté de passer voir quelqu'un, dans un bureau privé fait pour le travail."
+        },
+        "title": "Comme <em>Discord pour le travail</em>, fait pour votre équipe.",
+        "subtitle": "Les salons vocaux ont montré qu'être à un clic les uns des autres, ça marche. TinyFloor garde ce sentiment dans un bureau privé pour votre équipe, sans la communauté gaming autour.",
+        "points": [
+          {
+            "title": "Un bureau privé, pas un serveur",
+            "body": "Votre étage est réservé à votre équipe. On le rejoint avec votre lien d'invitation et un compte gratuit."
+          },
+          {
+            "title": "Voyez qui est libre",
+            "body": "Statuts, bureaux et qui est en appel, tout sur un même étage, pour que passer voir quelqu'un soit naturel."
+          },
+          {
+            "title": "Des réunions avec une salle",
+            "body": "Entrez dans la salle de réunion pour les appels de groupe avec partage d'écran, et sortez quand c'est fini."
+          }
+        ],
+        "them": {
+          "price": "Gratuit, avec Nitro en plus pour chaque personne",
+          "freePlan": "Oui",
+          "browser": "Oui, avec des applis pour ordinateur et mobile",
+          "screenShare": "Oui, dans les salons vocaux"
+        },
+        "faq": [
+          {
+            "q": "Peut-on utiliser Discord pour le travail ?",
+            "a": "Beaucoup d'équipes le font, pour ses salons vocaux. Mais Discord est fait pour les communautés et le jeu, alors les équipes de travail regrettent souvent de ne pas voir clairement qui est occupé, de ne pas avoir de salle de réunion ni d'espace rien qu'à elles."
+          },
+          {
+            "q": "TinyFloor est-il gratuit comme Discord ?",
+            "a": "Jusqu'à 3 personnes, oui. Les bureaux plus grands coûtent 19 $ par mois pour 10 personnes et 49 $ par mois pour 25."
+          },
+          {
+            "q": "TinyFloor a-t-il des salons vocaux ?",
+            "a": "Au lieu de salons, vous allez vers un collègue pour parler, ou vous rejoignez la salle de réunion en groupe. Les canaux texte et les messages privés sont à côté de l'étage."
+          },
+          {
+            "q": "Faut-il télécharger une appli ?",
+            "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile."
+          }
+        ]
+      },
+      "gatherVsKumospace": {
+        "label": "Gather vs Kumospace",
+        "meta": {
+          "title": "Gather vs Kumospace : prix, offres gratuites et une troisième option",
+          "description": "Gather vs Kumospace côte à côte : prix, offre gratuite, navigateur et partage d'écran, et comment TinyFloor se compare pour les petites équipes à distance."
+        },
+        "title": "<em>Gather vs Kumospace</em>, et une troisième option.",
+        "subtitle": "Les deux facturent par membre une fois l'offre gratuite dépassée. Si votre équipe est petite et veut un bureau simple, TinyFloor, c'est un seul prix pour tout l'étage.",
+        "points": [
+          {
+            "title": "Gather",
+            "body": "Un bureau en pixel art avec des notes de réunion par IA et de la personnalisation. Un essai de 30 jours, puis à partir de 12 $ par membre et par mois."
+          },
+          {
+            "title": "Kumospace",
+            "body": "Une offre gratuite jusqu'à 5 membres sur un étage, puis Business à partir de 16 $ par utilisateur et par mois."
+          },
+          {
+            "title": "TinyFloor",
+            "body": "Gratuit pour 3 personnes, puis 19 $ par mois jusqu'à 10 et 49 $ pour 25, pour tout le bureau."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Lequel est le moins cher, Gather ou Kumospace ?",
+            "a": "Pour une équipe de 10, Gather commence à environ 120 $ par mois et Kumospace Business à environ 160 $. Kumospace a une offre gratuite jusqu'à 5 membres ; Gather a un essai de 30 jours. TinyFloor Plus coûte 19 $ par mois pour tout le bureau."
+          },
+          {
+            "q": "Lequel est le mieux pour une petite équipe ?",
+            "a": "L'offre gratuite de Kumospace convient jusqu'à 5 personnes, et Gather convient aux équipes qui veulent plus de personnalisation. Si vous voulez un prix simple pour une équipe de jusqu'à 25 personnes, TinyFloor est fait pour ça."
+          },
+          {
+            "q": "Gather et Kumospace fonctionnent-ils dans le navigateur ?",
+            "a": "Les deux fonctionnent dans le navigateur, Gather avec une appli pour ordinateur et Kumospace avec des applis pour ordinateur et mobile. TinyFloor fonctionne uniquement dans le navigateur, sur ordinateur et mobile, donc il n'y a rien à installer."
+          },
+          {
+            "q": "Pourra-t-on passer à TinyFloor plus tard ?",
+            "a": "Oui. Il n'y a rien à migrer : créez un bureau, partagez le lien d'invitation, et votre équipe entre."
+          }
+        ]
+      },
+      "pairProgramming": {
+        "label": "Programmation en binôme à distance",
+        "meta": {
+          "title": "Programmation en binôme à distance dans un bureau virtuel",
+          "description": "Programmez en binôme à distance sans rien planifier : voyez qui est libre, allez-y, partagez votre écran et parlez-en. Gratuit pour les équipes de 3."
+        },
+        "title": "La <em>programmation en binôme à distance</em> qui commence en allant voir quelqu'un.",
+        "subtitle": "Le binôme marche mieux quand il est facile à lancer. Sur TinyFloor, vous voyez qui est libre, allez à son bureau, partagez votre écran et parlez, puis retournez à votre travail.",
+        "points": [
+          {
+            "title": "Débloqué en quelques minutes",
+            "body": "Bloqué sur quelque chose ? Allez voir la personne qui connaît le sujet. Un tap lance l'appel, sans lien à envoyer."
+          },
+          {
+            "title": "Partagez l'écran",
+            "body": "Activez le partage d'écran pendant l'appel pour parcourir ensemble du code, des logs ou un test qui échoue."
+          },
+          {
+            "title": "Ajoutez une troisième personne",
+            "body": "Allez voir quelqu'un d'autre pendant l'appel et transformez-le en réunion à trois."
+          }
+        ],
+        "momentsTitle": "<em>Une session en binôme,</em> du début à la fin.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Voyez qui est libre",
+            "body": "Les statuts et les bureaux montrent qui est concentré et qui est disponible pour une question."
+          },
+          {
+            "label": "2",
+            "title": "Allez-y et partagez",
+            "body": "Placez-vous à côté, touchez pour appeler et partagez votre écran."
+          },
+          {
+            "label": "3",
+            "title": "Revenez",
+            "body": "Raccrochez et vous êtes de retour à votre bureau. Rien à planifier, rien à ranger."
+          }
+        ],
+        "faq": [
+          {
+            "q": "De quoi ai-je besoin pour programmer en binôme à distance ?",
+            "a": "Un moyen de parler, un écran partagé et une façon simple de commencer. TinyFloor vous donne les trois dans le navigateur ; gardez votre éditeur et vos outils pour le code."
+          },
+          {
+            "q": "L'appel coupe-t-il si je m'éloigne ?",
+            "a": "Non. Un appel reste connecté jusqu'à ce que quelqu'un raccroche, donc vous pouvez vous déplacer en parlant."
+          },
+          {
+            "q": "Peut-on être plus de deux ?",
+            "a": "Oui. Allez voir un troisième collègue pendant l'appel et TinyFloor propose d'en faire une réunion à trois, ou utilisez la salle de réunion."
+          },
+          {
+            "q": "Est-ce gratuit ?",
+            "a": "Gratuit jusqu'à 3 personnes. Plus coûte 19 $ par mois pour 10 personnes et Pro 49 $ par mois pour 25, pour tout le bureau, pas par personne."
+          }
+        ]
+      },
+      "standup": {
+        "label": "Point quotidien virtuel",
+        "meta": {
+          "title": "Points quotidiens virtuels pour les équipes à distance",
+          "description": "Faites votre point quotidien dans un bureau virtuel : tout le monde entre dans la salle de réunion, parle, puis retourne à son bureau. Aucun lien de réunion à partager."
+        },
+        "title": "Un <em>point quotidien virtuel</em> où votre équipe se rend à pied.",
+        "subtitle": "Pas de lien d'agenda ni de salle d'attente. À l'heure du point, votre équipe entre dans la salle de réunion, dit sur quoi elle travaille, puis retourne au travail.",
+        "points": [
+          {
+            "title": "Toujours la même salle",
+            "body": "Chaque bureau a une réunion principale toujours ouverte, donc le point est à deux pas dans le couloir."
+          },
+          {
+            "title": "Voyez qui manque",
+            "body": "L'étage montre qui est là et qui est absent, pour savoir qui attendre."
+          },
+          {
+            "title": "Court par défaut",
+            "body": "Une fois fini, chacun sort de la salle et continue. Les suites se règlent au bureau de quelqu'un."
+          }
+        ],
+        "momentsTitle": "<em>Le point quotidien</em> en trois étapes.",
+        "moments": [
+          {
+            "label": "9:58",
+            "title": "Entrez",
+            "body": "Rejoignez la réunion principale et votre personnage entre dans la salle de réunion."
+          },
+          {
+            "label": "10:00",
+            "title": "Faites le point",
+            "body": "Caméra allumée ou non, avec le partage d'écran pour ce qui mérite d'être montré."
+          },
+          {
+            "label": "10:10",
+            "title": "Sortez",
+            "body": "Sortez de la salle pour partir. Les questions continuent au bureau de quelqu'un."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Comment animer un point quotidien virtuel ?",
+            "a": "Choisissez une heure, retrouvez-vous au même endroit chaque jour et faites court. Sur TinyFloor, la réunion principale est toujours là : chacun entre à l'heure et sort quand c'est fini."
+          },
+          {
+            "q": "Combien d'heures de réunion un point quotidien utilise-t-il ?",
+            "a": "Un point de 15 minutes chaque jour ouvré représente environ 5 heures par mois. Plus inclut 30 heures de réunions de groupe par mois et Pro 60."
+          },
+          {
+            "q": "Peut-on faire des points asynchrones à la place ?",
+            "a": "Oui. Beaucoup d'équipes publient leurs nouvelles dans un canal et gardent la salle de réunion pour les jours où il faut parler."
+          },
+          {
+            "q": "Faut-il allumer sa caméra ?",
+            "a": "Non. La caméra est facultative dans chaque réunion, et une personne sans caméra apparaît sous forme de carte qui s'allume quand elle parle."
+          }
+        ]
+      },
+      "onboarding": {
+        "label": "Intégration à distance",
+        "meta": {
+          "title": "Intégration à distance des nouvelles recrues dans un bureau virtuel",
+          "description": "Aidez les nouvelles recrues à trouver leur place à distance : dès le premier jour, elles voient l'équipe, savent à qui demander et vont lui demander."
+        },
+        "title": "Une <em>intégration à distance</em> où les nouveaux voient à qui demander.",
+        "subtitle": "Le plus dur quand on commence à distance, c'est de ne pas savoir qui est là, ni si l'on peut demander. Sur TinyFloor, l'équipe est juste là, et demander ne prend que quelques pas.",
+        "points": [
+          {
+            "title": "Un lien pour rejoindre",
+            "body": "Envoyez le lien d'invitation du bureau. Ils créent un compte gratuit, choisissent un nom et un personnage, et ils sont sur l'étage."
+          },
+          {
+            "title": "Rencontrez l'équipe",
+            "body": "Ils voient qui est qui, qui est occupé et qui est libre, sans liste de noms à retenir."
+          },
+          {
+            "title": "Des questions sans réunion",
+            "body": "Aller poser une question paraît aussi simple qu'au bureau, alors les nouveaux demandent plus tôt."
+          }
+        ],
+        "momentsTitle": "<em>Le premier jour</em> sur l'étage.",
+        "moments": [
+          {
+            "label": "Matin",
+            "title": "Entrer",
+            "body": "Ils ouvrent le lien d'invitation, choisissent un personnage et arrivent sur l'étage avec tout le monde."
+          },
+          {
+            "label": "Midi",
+            "title": "Rencontrer",
+            "body": "Un collègue leur fait faire le tour, et ils disent bonjour à quelques bureaux."
+          },
+          {
+            "label": "Après-midi",
+            "title": "Demander",
+            "body": "Quand ils bloquent, ils voient qui est libre et vont le voir."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Comment les nouvelles recrues rejoignent-elles ?",
+            "a": "Avec le lien d'invitation de votre bureau. Elles créent un compte gratuit, choisissent un nom et un personnage, et arrivent sur l'étage."
+          },
+          {
+            "q": "Une nouvelle recrue occupe-t-elle une place de l'offre ?",
+            "a": "Oui, toutes les personnes du bureau sont membres. Plus a de la place pour 10 personnes et Pro pour 25."
+          },
+          {
+            "q": "Les nouveaux peuvent-ils rattraper le chat ?",
+            "a": "Oui. Les canaux gardent leur historique, donc une nouvelle personne peut relire les conversations des canaux qu'elle rejoint."
+          },
+          {
+            "q": "Cela remplace-t-il nos documents d'intégration ?",
+            "a": "Non. Gardez vos documents et vos listes là où ils sont. TinyFloor facilite la partie humaine : qui est qui, et comment demander."
+          }
+        ]
+      },
+      "watercooler": {
+        "label": "Machine à café virtuelle",
+        "meta": {
+          "title": "Machine à café virtuelle pour les équipes à distance",
+          "description": "Les petites discussions qui manquent aux équipes à distance : croisez vos collègues sur l'étage, discutez au salon et mettez de la musique, dans un bureau virtuel pour votre équipe."
+        },
+        "title": "Une <em>machine à café virtuelle</em> qui fonctionne toute seule.",
+        "subtitle": "Les équipes à distance planifient des moments conviviaux parce que rien n'arrive par hasard. Sur un étage partagé, vous croisez des gens, voyez qui est là et vous arrêtez pour discuter.",
+        "points": [
+          {
+            "title": "Croiser des gens",
+            "body": "En passant entre les bureaux et les salles, vous croisez des collègues et pouvez vous arrêter un instant."
+          },
+          {
+            "title": "De la musique au salon",
+            "body": "Mettez un morceau dans le jukebox pour l'après-midi, pour tous ceux qui sont dans la pièce."
+          },
+          {
+            "title": "Aucune invitation d'agenda",
+            "body": "L'étage est ouvert toute la journée : une discussion commence quand vous voulez et se termine quand vous repartez."
+          }
+        ],
+        "momentsTitle": "<em>Les petits moments</em> sont de retour.",
+        "moments": [
+          {
+            "label": "Matin",
+            "title": "Dire bonjour",
+            "body": "Passez devant quelques bureaux en arrivant et dites bonjour."
+          },
+          {
+            "label": "Après-midi",
+            "title": "Mettre un morceau",
+            "body": "Lancez le jukebox du salon pour ceux qui sont là."
+          },
+          {
+            "label": "Vendredi",
+            "title": "Décompresser",
+            "body": "Retrouvez-vous dans la salle de réunion pour un verre et une discussion, caméra allumée ou non."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Qu'est-ce qu'une machine à café virtuelle ?",
+            "a": "Ce sont les discussions informelles que le bureau laisse à une équipe à distance : croiser des gens et parler de tout. Sur TinyFloor, cela se passe sur l'étage plutôt que dans un appel planifié."
+          },
+          {
+            "q": "Ces discussions utilisent-elles des heures de réunion ?",
+            "a": "Les discussions à deux ne comptent jamais. Seules les réunions de groupe comptent dans les heures mensuelles."
+          },
+          {
+            "q": "Peut-on écouter de la musique ensemble ?",
+            "a": "Oui. Approchez-vous de l'enceinte de la pièce pour lancer une musique que tout le monde dans la pièce entend."
+          },
+          {
+            "q": "Est-ce seulement pour les moments conviviaux ?",
+            "a": "Non. C'est sur ce même étage que votre équipe travaille toute la journée ; la machine à café, c'est juste le moment entre deux tâches."
+          }
+        ]
+      },
+      "engineering": {
+        "label": "Équipes d'ingénierie",
+        "meta": {
+          "title": "Bureau virtuel pour les équipes d'ingénierie à distance",
+          "description": "Un bureau virtuel pour les équipes d'ingénierie à distance : débloquez-vous vite, travaillez en binôme avec le partage d'écran, faites vos points quotidiens et protégez les moments de concentration."
+        },
+        "title": "Un bureau virtuel pour les <em>équipes d'ingénierie à distance.</em>",
+        "subtitle": "Les développeurs ont besoin de longues plages de concentration et de réponses rapides quand ils bloquent. TinyFloor offre les deux : calme par défaut, et un collègue à quelques pas.",
+        "points": [
+          {
+            "title": "Calme par défaut",
+            "body": "Personne ne vous entend tant que vous ne lancez pas d'appel. Passez en occupé et tout le monde sait qu'il faut attendre."
+          },
+          {
+            "title": "Débloqué vite",
+            "body": "Allez voir la personne qui connaît le code, partagez votre écran et réglez ça en quelques minutes."
+          },
+          {
+            "title": "Le point au bout du couloir",
+            "body": "La réunion principale est toujours là pour les points quotidiens, les incidents et les démos."
+          }
+        ],
+        "momentsTitle": "<em>Une journée</em> sur un étage d'ingénierie.",
+        "moments": [
+          {
+            "label": "10:00",
+            "title": "Point quotidien",
+            "body": "L'équipe entre dans la salle de réunion, parle dix minutes et ressort."
+          },
+          {
+            "label": "14:00",
+            "title": "Concentration",
+            "body": "Les statuts occupé gardent l'après-midi au calme."
+          },
+          {
+            "label": "16:30",
+            "title": "Déblocage",
+            "body": "Quelques pas, un écran partagé, et le bug est trouvé."
+          }
+        ],
+        "faq": [
+          {
+            "q": "TinyFloor se connecte-t-il à GitHub ou Jira ?",
+            "a": "Non. TinyFloor est l'endroit où l'on parle, pas celui où l'on suit le travail. Partagez votre écran pour regarder n'importe quoi ensemble."
+          },
+          {
+            "q": "Est-ce adapté à la programmation en binôme ?",
+            "a": "Oui. Allez voir un collègue, lancez un appel et partagez votre écran. Ajoutez une troisième personne et cela devient une réunion."
+          },
+          {
+            "q": "Quelle taille peut avoir une équipe d'ingénierie ?",
+            "a": "Jusqu'à 25 personnes dans un bureau avec Pro. Les plus grandes organisations peuvent donner un bureau à chaque équipe."
+          },
+          {
+            "q": "Peut-on garder Slack ?",
+            "a": "Oui. Beaucoup d'équipes gardent Slack pour les messages et utilisent TinyFloor pour la présence, les appels et les réunions."
+          }
+        ]
+      },
+      "design": {
+        "label": "Équipes de design",
+        "meta": {
+          "title": "Bureau virtuel pour les équipes de design à distance",
+          "description": "Un bureau virtuel pour les équipes de design à distance : des critiques rapides avec partage d'écran, un tableau blanc commun et une équipe que l'on voit, le tout dans le navigateur."
+        },
+        "title": "Un bureau virtuel pour les <em>équipes de design à distance.</em>",
+        "subtitle": "Le design progresse grâce à des retours rapides et honnêtes. Sur TinyFloor, une critique, c'est traverser l'étage, pas une invitation d'agenda.",
+        "points": [
+          {
+            "title": "Des critiques sans réservation",
+            "body": "Allez voir un designer, partagez votre écran et parlez du travail."
+          },
+          {
+            "title": "Esquissez-le",
+            "body": "Le tableau blanc au mur est là pour le dessin qui explique tout."
+          },
+          {
+            "title": "La concentration quand il faut",
+            "body": "Passez en occupé pour le travail de fond, et l'étage reste calme autour de vous."
+          }
+        ],
+        "momentsTitle": "<em>Une journée de design</em> sur l'étage.",
+        "moments": [
+          {
+            "label": "Matin",
+            "title": "Critique d'équipe",
+            "body": "Entrez dans la salle de réunion et partagez vos écrans à tour de rôle."
+          },
+          {
+            "label": "Midi",
+            "title": "Esquisse",
+            "body": "Travaillez un parcours ensemble sur le tableau blanc."
+          },
+          {
+            "label": "Après-midi",
+            "title": "Vérification rapide",
+            "body": "Allez voir un développeur pour vérifier un détail avant la mise en ligne."
+          }
+        ],
+        "faq": [
+          {
+            "q": "TinyFloor se connecte-t-il à Figma ?",
+            "a": "Non. Ouvrez Figma comme d'habitude et partagez votre écran dans un appel ou une réunion pour le regarder ensemble."
+          },
+          {
+            "q": "Le tableau blanc est-il partagé ?",
+            "a": "Oui. Tout le monde dans le bureau voit le même tableau, et ce qui est dessiné reste là pour le retour de chacun."
+          },
+          {
+            "q": "Combien cela coûte-t-il ?",
+            "a": "Gratuit jusqu'à 3 personnes. Plus coûte 19 $ par mois pour 10 personnes et Pro 49 $ par mois pour 25, pour tout le bureau, pas par personne."
+          },
+          {
+            "q": "Faut-il installer quelque chose ?",
+            "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile."
+          }
+        ]
+      },
+      "startups": {
+        "label": "Startups",
+        "meta": {
+          "title": "Bureau virtuel pour les startups à distance",
+          "description": "Un bureau virtuel pour les startups à distance : gardez la vitesse de ceux qui sont assis ensemble, pour un prix par bureau. Gratuit pour 3 personnes, 19 $ par mois pour 10."
+        },
+        "title": "Un bureau virtuel pour les <em>startups à distance.</em>",
+        "subtitle": "Les jeunes équipes vont vite parce que tout le monde est dans la même pièce. TinyFloor remet une startup à distance dans une seule pièce, pour un prix par bureau, pas par recrutement.",
+        "points": [
+          {
+            "title": "Gratuit tant que vous êtes fondateurs",
+            "body": "Gratuit jusqu'à 3 personnes, aussi longtemps que vous voulez."
+          },
+          {
+            "title": "Pas de frais par recrue",
+            "body": "19 $ par mois jusqu'à 10 personnes et 49 $ pour 25. Recruter quelqu'un n'ajoute pas de frais de place."
+          },
+          {
+            "title": "Décider en quelques minutes",
+            "body": "Voyez qui est là, allez-y et décidez, au lieu d'attendre la prochaine réunion."
+          }
+        ],
+        "momentsTitle": "<em>Grandir</em> sur un même étage.",
+        "moments": [
+          {
+            "label": "3 personnes",
+            "title": "Free",
+            "body": "Les fondateurs partagent un étage gratuitement, avec 5 heures de réunion par mois."
+          },
+          {
+            "label": "10 personnes",
+            "title": "Plus",
+            "body": "19 $ par mois pour tout le bureau, avec 30 heures de réunion."
+          },
+          {
+            "label": "25 personnes",
+            "title": "Pro",
+            "body": "49 $ par mois pour tout le bureau, avec 60 heures de réunion."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Combien coûte TinyFloor pour une startup ?",
+            "a": "Gratuit jusqu'à 3 personnes. Plus coûte 19 $ par mois pour 10 personnes et Pro 49 $ par mois pour 25, pour tout le bureau, pas par personne."
+          },
+          {
+            "q": "Peut-on résilier à tout moment ?",
+            "a": "Oui. Une offre payante court jusqu'à la fin de la période payée, puis le bureau repasse à Free. Rien n'est supprimé."
+          },
+          {
+            "q": "Que se passe-t-il au-delà de 25 personnes ?",
+            "a": "Donnez un bureau à chaque équipe, ou écrivez-nous et parlons-en."
+          },
+          {
+            "q": "Faut-il une installation informatique ?",
+            "a": "Non. Tout fonctionne dans le navigateur : envoyez le lien d'invitation et chacun se connecte avec Google ou son e-mail."
+          }
+        ]
+      },
+      "agencies": {
+        "label": "Agences",
+        "meta": {
+          "title": "Bureau virtuel pour les agences à distance",
+          "description": "Un bureau virtuel pour les agences à distance : voyez qui peut aider, relisez le travail ensemble sur un écran partagé et gardez l'esprit studio, où que chacun travaille."
+        },
+        "title": "Un bureau virtuel pour les <em>agences à distance.</em>",
+        "subtitle": "Une agence tourne grâce aux relectures rapides et au fait de savoir qui peut aider. TinyFloor donne à un studio à distance un étage où les deux se font sans lien de réunion.",
+        "points": [
+          {
+            "title": "Qui peut aider",
+            "body": "Les statuts montrent qui est plongé dans une échéance et qui peut jeter un œil."
+          },
+          {
+            "title": "Des relectures sur le moment",
+            "body": "Allez-y, partagez votre écran et obtenez un retour sur une maquette en quelques minutes."
+          },
+          {
+            "title": "Un canal par client",
+            "body": "Créez un canal pour chaque client ou projet, pour que chaque conversation reste au même endroit."
+          }
+        ],
+        "momentsTitle": "<em>Une journée de studio,</em> à distance.",
+        "moments": [
+          {
+            "label": "Matin",
+            "title": "Planifier la journée",
+            "body": "L'équipe se retrouve dans la salle de réunion pour se répartir le travail."
+          },
+          {
+            "label": "Après-midi",
+            "title": "Relecture rapide",
+            "body": "Une designer va voir la responsable et partage son écran pour un retour."
+          },
+          {
+            "label": "Soir",
+            "title": "Bilan",
+            "body": "Notes et liens vont dans le canal du client, pour le lendemain."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Nos clients peuvent-ils rejoindre notre bureau ?",
+            "a": "Les bureaux sont pour les membres, et tout le monde rejoint avec un compte gratuit via le lien d'invitation. Pour les appels clients, gardez l'outil de réunion que vos clients utilisent déjà."
+          },
+          {
+            "q": "Combien de personnes pouvons-nous avoir ?",
+            "a": "Jusqu'à 10 avec Plus et 25 avec Pro, pour un prix mensuel pour tout le bureau."
+          },
+          {
+            "q": "Des freelances peuvent-ils rejoindre ?",
+            "a": "Oui. Les freelances rejoignent comme tout le monde via le lien d'invitation, et vous pouvez les retirer du bureau à la fin d'un projet."
+          },
+          {
+            "q": "Est-ce adapté aux relectures créatives ?",
+            "a": "Oui. Partagez votre écran dans un appel ou une réunion, et dessinez ensemble sur le tableau blanc."
+          }
+        ]
+      }
+    },
+    "teams": "Équipes",
+    "all": "Tout voir",
+    "versusTitle": "{a}, {b} et TinyFloor, <em>côte à côte.</em>",
+    "checkedIn": "Les informations sur {name} viennent de son site, vérifiées en {date}.",
+    "checkedBothIn": "Les informations sur {a} et {b} viennent de leurs pages de tarifs, vérifiées en {date}.",
+    "hubs": {
+      "compare": {
+        "meta": {
+          "title": "Comparatifs et alternatives de bureaux virtuels",
+          "description": "Comment TinyFloor se compare à Gather, Kumospace, Sococo, oVice, Roam et aux outils où les équipes se parlent aujourd'hui, côte à côte."
+        },
+        "title": "Côte à côte, <em>honnêtement.</em>",
+        "body": "Comment TinyFloor se compare aux autres bureaux virtuels, et aux outils où votre équipe se parle aujourd'hui."
+      },
+      "useCases": {
+        "meta": {
+          "title": "Cas d'usage du bureau virtuel pour les équipes à distance",
+          "description": "Points quotidiens, programmation en binôme, intégration et les moments entre deux : comment les équipes à distance utilisent TinyFloor au fil de la journée."
+        },
+        "title": "Comment les équipes <em>utilisent l'étage.</em>",
+        "body": "Les moments d'une journée de travail à distance, et comment chacun fonctionne sur TinyFloor."
+      },
+      "teams": {
+        "meta": {
+          "title": "TinyFloor pour l'ingénierie, le design, les startups et les agences",
+          "description": "Un bureau virtuel pensé pour la façon dont votre équipe travaille : équipes d'ingénierie, équipes de design, startups et agences."
+        },
+        "title": "Fait pour <em>des équipes comme la vôtre.</em>",
+        "body": "Chaque équipe utilise l'étage un peu différemment. Voici comment il s'adapte à la vôtre."
       }
     }
   },
@@ -1171,12 +1996,6 @@
       "lobbyTitle": "Essayer le bureau de démo",
       "menu": "Menu",
       "teams": "Pour les équipes",
-      "cases": {
-        "virtualOffice": "Un lieu pour votre équipe à distance",
-        "virtualCoworking": "Des heures de concentration avec votre équipe",
-        "virtualClassroom": "Permanences et petits cours",
-        "proximityChat": "Parlez à qui vous rejoignez"
-      },
       "getStarted": "Commencer",
       "lobbyLine": "Découvrez comment fonctionne un bureau. Sans compte."
     },

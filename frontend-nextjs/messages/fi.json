@@ -641,10 +641,10 @@
       "virtualOffice": {
         "label": "Virtuaalitoimisto",
         "meta": {
-          "title": "Ilmainen virtuaalitoimisto etätiimeille",
-          "description": "Ilmainen virtuaalitoimisto selaimessa. Näe kuka on paikalla, kävele juttelemaan videopuhelulla ja pidä yksi huone auki etätiimillesi."
+          "title": "Virtuaalitoimisto etätiimeille",
+          "description": "Virtuaalitoimisto selaimessa. Näe, kuka on paikalla, kävele juttelemaan läheisyyteen perustuvalla videopuhelulla ja pidä yksi huone auki etätiimillesi."
         },
-        "title": "Ilmainen <em>virtuaalitoimisto</em> etätiimeille.",
+        "title": "<em>Virtuaalitoimisto</em> etätiimeille.",
         "subtitle": "Anna tiimillesi paikka, jossa olla päivän aikana. Näe, kuka on paikalla, käy kysymässä nopea kysymys ja astu kokoushuoneeseen, kun on aika puhua.",
         "points": [
           {
@@ -723,8 +723,8 @@
       "virtualClassroom": {
         "label": "Virtuaaliluokka",
         "meta": {
-          "title": "Ilmainen virtuaaliluokka vastaanottoaikoihin",
-          "description": "Vastaanottoaikoja, tukiopetusta ja pieniä tunteja ilmaisessa virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat kokoushuoneeseen ja kaikilla on yhteinen valkotaulu."
+          "title": "Virtuaaliluokka vastaanottoaikoihin ja pienryhmille",
+          "description": "Pidä vastaanottoaikoja, tukiopetusta ja pieniä tunteja virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat neuvotteluhuoneeseen ja taulu on kaikille yhteinen."
         },
         "title": "<em>Virtuaaliluokka</em>, jossa opiskelijat liikkuvat.",
         "subtitle": "Pidä vastaanottoaikaa, tukiopetusta tai pieni tunti huoneessa, jossa opiskelijat voivat liikkua. He tulevat luoksesi kysymään, ja ryhmät puhuvat kokoushuoneessa.",
@@ -764,7 +764,7 @@
       "proximityChat": {
         "label": "Lähichat",
         "meta": {
-          "title": "Ilmainen videolähichat selaimessa",
+          "title": "Läheisyyteen perustuva videochat etätiimeille",
           "description": "Läheisyyschat etätiimeille: kävele hahmollasi tiimiläisen luo aloittaaksesi puhelun. Ilmainen pienille tiimeille, selaimessa, ei latauksia."
         },
         "title": "<em>Lähichat</em>, joka alkaa, kun kävelet luo.",
@@ -801,6 +801,831 @@
             "a": "Kyllä, enintään 3 hengen toimistolle, selaimessa tietokoneella ja mobiilissa."
           }
         ]
+      },
+      "sococo": {
+        "label": "Sococo-vaihtoehto",
+        "meta": {
+          "title": "Sococo-vaihtoehto pienille etätiimeille",
+          "description": "Sococo alkaa 10 paikasta vuosisopimuksella. TinyFloor on virtuaalitoimisto selaimessa, ilmainen 3 hengelle ja $19 kuussa enintään 10 hengelle, kuukausilaskutuksella."
+        },
+        "title": "<em>Sococo-vaihtoehto</em> ilman 10 paikan minimiä.",
+        "subtitle": "Sococo myy paikkoja vuodeksi, vähintään 10. TinyFloorissa on yksi kuukausihinta koko toimistolle, ja pieni tiimi voi aloittaa ilmaiseksi.",
+        "points": [
+          {
+            "title": "Aloita oikeasta koostasi",
+            "body": "Ilmainen enintään 3 hengelle, sitten $19 kuussa enintään 10 hengelle. Ei paikkaminimiä eikä vuoden ennakkomaksua."
+          },
+          {
+            "title": "Kerros, jolla liikkua",
+            "body": "Tiimi jakaa yhden toimistokerroksen ja alkaa jutella kävelemällä toistensa luo."
+          },
+          {
+            "title": "Puhelut eivät kuluta minuutteja",
+            "body": "Sococo laskee minuutit paikkaa kohden. TinyFloorissa kahden hengen puheluita ei lasketa koskaan; kuukausitunnit on vain ryhmäkokouksilla."
+          }
+        ],
+        "them": {
+          "price": "$13,49 paikka kuussa, vuosilaskutus, vähintään 10 paikkaa",
+          "freePlan": "Ei, vain ilmainen kokeilu",
+          "screenShare": "Kyllä, useita kerralla"
+        },
+        "faq": [
+          {
+            "q": "Paljonko Sococo maksaa?",
+            "a": "Sococo maksaa $13,49 paikka kuussa vuosilaskutuksella, vähintään 10 paikkaa ja 500 minuuttia paikkaa kohden kuussa. Sococo Unlimited maksaa $24,99 paikka, vähintään 100 paikkaa. TinyFloor on ilmainen 3 hengelle ja maksaa $19 kuussa enintään 10 hengelle."
+          },
+          {
+            "q": "Onko Sococosta ilmaista versiota?",
+            "a": "Sococo tarjoaa ilmaisen kokeilun ilmaisen paketin sijaan. TinyFloorin ilmaisella paketilla ei ole päättymispäivää, enintään 3 hengelle."
+          },
+          {
+            "q": "Mitä Sococossa on, mitä TinyFloorissa ei ole?",
+            "a": "Sococossa voit valita pohjapiirroksia ja sisustuksen, ja se yhdistyy Zoomiin, Webexiin, Google Meetiin ja Microsoft Teamsiin. TinyFloorissa on yksi toimistokerros, ja puhelut ja kokoukset hoituvat sen sisällä."
+          },
+          {
+            "q": "Pitääkö minun asentaa jotain?",
+            "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiilissa. Jaa toimistosi kutsulinkki, niin tiimi tulee sisään."
+          }
+        ]
+      },
+      "ovice": {
+        "label": "oVice-vaihtoehto",
+        "meta": {
+          "title": "oVice-vaihtoehto pienille tiimeille",
+          "description": "oVice laskuttaa tilan mukaan tai 20 käyttäjästä alkaen. TinyFloor on selaimessa toimiva virtuaalitoimisto pienille tiimeille: ilmainen 3 hengelle, $19 kuussa 10 hengelle ja $49 25 hengelle."
+        },
+        "title": "<em>oVice-vaihtoehto</em> pienten tiimien kokoon.",
+        "subtitle": "oVice on tehty yrityksille ja yhteisöille, ja sen paketit perustuvat tilan kokoon tai alkavat 20 käyttäjästä. TinyFloor on tehty 2–25 hengen tiimeille, yhdellä yksinkertaisella hinnalla toimistoa kohden.",
+        "points": [
+          {
+            "title": "Hinnat 3, 10 tai 25 hengelle",
+            "body": "Ilmainen enintään 3 hengelle, $19 kuussa 10 hengelle ja $49 25 hengelle. Ei tilan kokoja laskettavaksi."
+          },
+          {
+            "title": "Kävele luo ja juttele",
+            "body": "Kuten oVicessa, menet jonkun luo jutellaksesi. Kahden hengen puheluita ei lasketa mihinkään."
+          },
+          {
+            "title": "Chat, joka säilyy",
+            "body": "Jokaisessa toimistossa on kanavat ja yksityisviestit historioineen, kerroksen vieressä ja puhelimessa."
+          }
+        ],
+        "them": {
+          "price": "$65 kuussa tilaa kohden tai $16 käyttäjältä 20 käyttäjästä alkaen, vuosilaskutus",
+          "freePlan": "Kyllä, esiversiossa ilman tukea",
+          "browser": "Kyllä, lisäksi sovellukset tietokoneelle ja mobiiliin",
+          "screenShare": "Kyllä, useita kerralla"
+        },
+        "faq": [
+          {
+            "q": "Paljonko oVice maksaa?",
+            "a": "oVice Entry-S maksaa $65 kuussa tilaa kohden vuosilaskutuksella tai $78 kuukausilaskutuksella, noin 10 vakituiselle jäsenelle. Business Starter maksaa $16 käyttäjältä kuussa 20 käyttäjästä alkaen. TinyFloor maksaa $19 kuussa enintään 10 hengelle."
+          },
+          {
+            "q": "Onko oVicella ilmaista pakettia?",
+            "a": "On. 14 päivän kokeilun jälkeen tila siirtyy ilmaiseen pakettiin, joka toimii esiversioympäristössä ilman SLA:ta tai tukea. TinyFloorin ilmainen paketti on sama tuote kuin maksulliset, enintään 3 hengelle."
+          },
+          {
+            "q": "Mitä oVicessa on, mitä TinyFloorissa ei ole?",
+            "a": "oVicessa on omat pohjat, litterointi, tallennus pyynnöstä, kalenteri- ja Microsoft Teams -integraatio sekä paketit tapahtumiin. TinyFloor keskittyy arjen toimistoon: luo kävelemiseen, kokouksiin, chattiin, tauluun ja musiikkiin."
+          },
+          {
+            "q": "Onko TinyFloor saatavilla japaniksi?",
+            "a": "On. TinyFloor toimii 18 kielellä, myös japaniksi ja koreaksi, ja jokainen voi valita oman kielensä."
+          }
+        ]
+      },
+      "teamflow": {
+        "label": "Teamflow-vaihtoehto",
+        "meta": {
+          "title": "Teamflow-vaihtoehto, joka toimii selaimessa",
+          "description": "Teamflow maksaa $15 henkeä kohden kuussa ja toimii tietokonesovelluksilla. TinyFloor on virtuaalitoimisto selaimessa: ilmainen 3 hengelle, $19 kuussa 10 hengen toimistolle."
+        },
+        "title": "<em>Teamflow-vaihtoehto</em> ilman mitään ladattavaa.",
+        "subtitle": "Teamflow laskuttaa henkeä kohden ja toimii sovelluksena tietokoneella. TinyFloor aukeaa selaimen välilehdessä, kannettavalla tai puhelimella, yhdellä hinnalla toimistoa kohden.",
+        "points": [
+          {
+            "title": "Yksi hinta toimistolle",
+            "body": "Teamflow'n Seed-paketti maksaa $15 henkeä kohden. TinyFloor Plus maksaa $19 kuussa enintään 10 hengelle yhteensä."
+          },
+          {
+            "title": "Ei katkea 45 minuutissa",
+            "body": "Teamflow'n ilmaisessa paketissa kokoukset päättyvät 45 minuutissa. TinyFloorin kokouksilla ei ole kokouskohtaista rajaa; jokaisessa paketissa on kuukausitunnit ryhmäkokouksille."
+          },
+          {
+            "title": "Selaimen välilehdessä",
+            "body": "Ei sovellusta asennettavaksi tai päivitettäväksi. Avaa linkki millä tahansa kannettavalla tai puhelimella, niin olet kerroksessa."
+          }
+        ],
+        "them": {
+          "price": "$15 henkeä kohden kuussa, vuosilaskutus",
+          "freePlan": "Enintään 5 henkeä, 45 minuutin kokoukset",
+          "browser": "Sovellukset Macille ja Windowsille, mobiili betana",
+          "screenShare": "Kyllä, useita kerralla"
+        },
+        "faq": [
+          {
+            "q": "Paljonko Teamflow maksaa?",
+            "a": "Teamflow on ilmainen enintään 5 hengelle 45 minuutin kokouksilla. Seed maksaa $15 ja Business $25 henkeä kohden kuussa vuosilaskutuksella. TinyFloor on ilmainen 3 hengelle, sitten $19 kuussa enintään 10 hengelle."
+          },
+          {
+            "q": "Onko TinyFloorissa Teamflow'n sovellusintegraatiot?",
+            "a": "Ei. Teamflow upottaa kokouksiin sovelluksia kuten Figman ja Google Docsin. TinyFloor pysyy läsnäolossa, puheluissa, kokouksissa, chatissa, taulussa ja näytön jakamisessa."
+          },
+          {
+            "q": "Pitääkö kollegoideni asentaa jotain?",
+            "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiilissa. He avaavat toimistosi kutsulinkin ja kirjautuvat."
+          },
+          {
+            "q": "Montako henkeä TinyFloor-toimistoon mahtuu?",
+            "a": "Enintään 3 henkeä Free-paketilla, 10 Plus-paketilla ja 25 Pro-paketilla, ja voit tehdä niin monta toimistoa kuin tarvitset."
+          }
+        ]
+      },
+      "roam": {
+        "label": "Roam-vaihtoehto",
+        "meta": {
+          "title": "Roam-vaihtoehto pienille etätiimeille",
+          "description": "Roam on tietokonesovellus, jonka hinta on aktiivista jäsentä kohden. TinyFloor on virtuaalitoimisto selaimessa, ilmainen 3 hengelle ja $19 kuussa enintään 10 hengelle."
+        },
+        "title": "<em>Roam-vaihtoehto</em>, joka aukeaa selaimessa.",
+        "subtitle": "Roam niputtaa virtuaalitoimiston, tekoälytyökalut ja tietokonesovelluksen, ja hinnoittelee jäsentä kohden. TinyFloor hoitaa toimisto-osan yksinkertaisesti: kävele luo, kokoonnu ja juttele, yhdellä hinnalla tiimiä kohden.",
+        "points": [
+          {
+            "title": "Vain toimisto",
+            "body": "Ei pakettia otettavaksi käyttöön. Kerros, jossa näet kuka on paikalla, kävelet juttelemaan ja astut neuvotteluhuoneeseen."
+          },
+          {
+            "title": "Ei mitään asennettavaa",
+            "body": "TinyFloor toimii selaimen välilehdessä millä tahansa kannettavalla tai puhelimella, joten kuka tahansa tiimistä pääsee mukaan sekunneissa."
+          },
+          {
+            "title": "Yksi hinta tiimiä kohden",
+            "body": "Ilmainen 3 hengelle, $19 kuussa 10 hengelle ja $49 25 hengelle, riippumatta siitä, moniko sitä sinä kuussa käyttää."
+          }
+        ],
+        "them": {
+          "price": "Kuukausihinta aktiivista jäsentä kohden",
+          "freePlan": "Ei, vain 14 päivän kokeilu",
+          "browser": "Ladattava tietokonesovellus",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Miten Roam on hinnoiteltu?",
+            "a": "Roam veloittaa kuukausihinnan aktiivista jäsentä kohden kaikista tuotteistaan, 14 päivän ilmaisella kokeilulla ja ilman vuosisopimusta. TinyFloor on ilmainen 3 hengelle ja maksaa $19 kuussa enintään 10 hengelle."
+          },
+          {
+            "q": "Mitä Roamissa on, mitä TinyFloorissa ei ole?",
+            "a": "Roamissa on tekoälyn kokousmuistiinpanot, tekoälyavustaja, webinaarit, aikataulutus ja näytön tallennus. TinyFloor keskittyy itse toimistoon."
+          },
+          {
+            "q": "Pääsevätkö vieraat TinyFloor-toimistoon?",
+            "a": "Toimistot ovat vain jäsenille: niihin liitytään kutsulinkillä ja ilmaisella tilillä. Jos haluat ensin katsella ympärillesi, kuka tahansa voi kokeilla demotoimistoa pelkällä nimellä."
+          },
+          {
+            "q": "Toimiiko TinyFloor puhelimella?",
+            "a": "Toimii. Se toimii mobiiliselaimissa näytön ohjaussauvalla, ilman ladattavaa."
+          }
+        ]
+      },
+      "slackHuddles": {
+        "label": "Vaihtoehto Slackin huddleille",
+        "meta": {
+          "title": "Vaihtoehto Slackin huddleille: katso kuka on vapaana ja kävele luo",
+          "description": "Slackin huddle on puhelu sokkona. TinyFloor näyttää ensin, kuka on vapaana, ja sitten kävelet juttelemaan. Virtuaalitoimisto Slackin rinnalla, ilmainen 3 hengelle."
+        },
+        "title": "<em>Vaihtoehto Slackin huddleille</em>, jossa näet ensin, kuka on vapaana.",
+        "subtitle": "Huddle on puhelu, jonka aloitat tietämättä, sopiiko hetki. TinyFloorissa näet, kuka on paikalla, kuka kiireinen ja kuka jo puhuu, ja vasta sitten menet luo.",
+        "points": [
+          {
+            "title": "Katso ennen kuin soitat",
+            "body": "Jokaisella on tila ja paikka kerroksessa, joten tiedät kuka keskittyy, ennen kuin kysyt."
+          },
+          {
+            "title": "Ryhmäpuhelut kaikissa paketeissa",
+            "body": "Slackin ilmaisessa paketissa huddlet ovat vain kahden kesken. TinyFloorin jokaisessa paketissa on puhelut ja ryhmäkokoukset."
+          },
+          {
+            "title": "Pidä Slack, jos haluat",
+            "body": "TinyFloorissa on oma chat, mutta moni tiimi pitää Slackin viesteihin ja puhuu kerroksessa."
+          }
+        ],
+        "them": {
+          "price": "Ryhmähuddlet vaativat Slack Pron, käyttäjäkohtainen hinta",
+          "freePlan": "Slack Freessä vain kahden hengen huddlet",
+          "browser": "Kyllä, lisäksi sovellukset tietokoneelle ja mobiiliin",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Mikä on Slackin huddle?",
+            "a": "Huddle on nopea ääni- tai videopuhelu Slackissa, joka aloitetaan kanavasta tai yksityisviestistä. Slackin ilmaisessa paketissa huddlet ovat kahden hengen välisiä; ryhmähuddlet vaativat maksullisen paketin."
+          },
+          {
+            "q": "Miten TinyFloor eroaa huddlesta?",
+            "a": "Huddle alkaa, kun joku soittaa. TinyFloorissa tiimi on jo yhdessä samassa kerroksessa, joten näet kuka on vapaana ja menet luo, ja neuvotteluhuone on aina olemassa."
+          },
+          {
+            "q": "Voinko käyttää TinyFlooria Slackin kanssa?",
+            "a": "Voit. Ne eivät ole yhteydessä toisiinsa, mutta moni tiimi pitää Slackin viesteihin ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+          },
+          {
+            "q": "Paljonko TinyFloor maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, koko toimistolle, ei henkeä kohden."
+          }
+        ]
+      },
+      "discord": {
+        "label": "Discord töihin",
+        "meta": {
+          "title": "Discord töihin? Tiimeille tehty virtuaalitoimisto",
+          "description": "Tiimit käyttävät Discordin puhekanavia tunteakseen olevansa yhdessä. TinyFloor antaa etätiimille saman tunteen, että voi poiketa toisen luona, yksityisessä toimistossa, joka on tehty työtä varten."
+        },
+        "title": "Kuin <em>Discord töihin</em>, tehty tiimillesi.",
+        "subtitle": "Puhekanavat osoittivat, että yhden klikkauksen päässä toisistaan oleminen toimii. TinyFloor säilyttää tuon tunteen tiimisi yksityisessä toimistossa, ilman ympäröivää peliyhteisöä.",
+        "points": [
+          {
+            "title": "Yksityinen toimisto, ei palvelin",
+            "body": "Kerroksesi on vain tiimillesi. Siihen liitytään kutsulinkilläsi ja ilmaisella tilillä."
+          },
+          {
+            "title": "Näe, kuka on vapaana",
+            "body": "Tilat, työpisteet ja kuka on puhelussa, kaikki samassa kerroksessa, joten poikkeaminen tuntuu luontevalta."
+          },
+          {
+            "title": "Kokoukset omassa huoneessa",
+            "body": "Astu neuvotteluhuoneeseen ryhmäpuheluihin näytön jakamisen kanssa ja kävele ulos, kun olette valmiita."
+          }
+        ],
+        "them": {
+          "price": "Ilmainen, Nitro maksaa erikseen henkeä kohden",
+          "freePlan": "Kyllä",
+          "browser": "Kyllä, lisäksi sovellukset tietokoneelle ja mobiiliin",
+          "screenShare": "Kyllä, puhekanavissa"
+        },
+        "faq": [
+          {
+            "q": "Voiko Discordia käyttää töissä?",
+            "a": "Moni tiimi käyttää, puhekanavien takia. Mutta Discord on tehty yhteisöille ja pelaamiseen, joten työtiimeiltä puuttuu usein selkeä tieto siitä, kuka on kiireinen, neuvotteluhuone ja paikka, joka on vain heidän."
+          },
+          {
+            "q": "Onko TinyFloor ilmainen kuten Discord?",
+            "a": "Enintään 3 hengelle kyllä. Isommat toimistot maksavat $19 kuussa 10 hengelle ja $49 kuussa 25 hengelle."
+          },
+          {
+            "q": "Onko TinyFloorissa puhekanavia?",
+            "a": "Kanavien sijaan kävelet kollegan luo juttelemaan tai menette ryhmänä neuvotteluhuoneeseen. Tekstikanavat ja yksityisviestit ovat kerroksen vieressä."
+          },
+          {
+            "q": "Pitääkö meidän ladata sovellus?",
+            "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiilissa."
+          }
+        ]
+      },
+      "gatherVsKumospace": {
+        "label": "Gather vs Kumospace",
+        "meta": {
+          "title": "Gather vs Kumospace: hinnat, ilmaiset paketit ja kolmas vaihtoehto",
+          "description": "Gather ja Kumospace rinnakkain: hinta, ilmainen paketti, selain ja näytön jakaminen, sekä miten TinyFloor vertautuu pienille etätiimeille."
+        },
+        "title": "<em>Gather vs Kumospace</em>, ja kolmas vaihtoehto.",
+        "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso ylittyy. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloorissa on yksi hinta koko kerrokselle.",
+        "points": [
+          {
+            "title": "Gather",
+            "body": "Pikseligrafiikkatoimisto, jossa on tekoälyn kokousmuistiinpanot ja muokattavuutta. 30 päivän kokeilu, sitten alkaen $12 jäseneltä kuussa."
+          },
+          {
+            "title": "Kumospace",
+            "body": "Ilmainen paketti enintään 5 jäsenelle yhdessä kerroksessa, sitten Business alkaen $16 käyttäjältä kuussa."
+          },
+          {
+            "title": "TinyFloor",
+            "body": "Ilmainen 3 hengelle, sitten $19 kuussa enintään 10 hengelle ja $49 25 hengelle, koko toimistolle."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kumpi on halvempi, Gather vai Kumospace?",
+            "a": "10 hengen tiimille Gather alkaa noin $120 kuussa ja Kumospace Business noin $160 kuussa. Kumospacessa on ilmainen paketti enintään 5 jäsenelle; Gatherissa on 30 päivän kokeilu. TinyFloor Plus maksaa $19 kuussa koko toimistolle."
+          },
+          {
+            "q": "Kumpi sopii paremmin pienelle tiimille?",
+            "a": "Kumospacen ilmainen paketti sopii enintään 5 hengelle, ja Gather sopii tiimeille, jotka haluavat muokata enemmän. Jos haluat yhden yksinkertaisen hinnan enintään 25 hengen tiimille, TinyFloor on tehty juuri siihen."
+          },
+          {
+            "q": "Toimivatko Gather ja Kumospace selaimessa?",
+            "a": "Molemmat toimivat selaimessa, Gather tietokonesovelluksen ja Kumospace tietokone- ja mobiilisovellusten kanssa. TinyFloor toimii vain selaimessa, tietokoneella ja mobiilissa, joten mitään ei tarvitse asentaa."
+          },
+          {
+            "q": "Voimmeko vaihtaa TinyFlooriin myöhemmin?",
+            "a": "Voitte. Siirrettävää ei ole: tee toimisto, jaa kutsulinkki, niin tiimi tulee sisään."
+          }
+        ]
+      },
+      "pairProgramming": {
+        "label": "Etäpariohjelmointi",
+        "meta": {
+          "title": "Etäpariohjelmointi virtuaalitoimistossa",
+          "description": "Ohjelmoikaa pareittain etänä ilman ajanvarausta: katso kuka on vapaana, kävele luo, jaa näyttö ja puhukaa asia läpi. Ilmainen 3 hengen tiimeille."
+        },
+        "title": "<em>Etäpariohjelmointi</em>, joka alkaa kävelemällä luo.",
+        "subtitle": "Pariohjelmointi toimii parhaiten, kun se on helppo aloittaa. TinyFloorissa näet kuka on vapaana, kävelet hänen työpisteelleen, jaat näytön ja juttelette, ja sitten palaat omiin töihisi.",
+        "points": [
+          {
+            "title": "Eteenpäin minuuteissa",
+            "body": "Jumissa? Kävele sen luo, joka tuntee asian. Yksi napautus aloittaa puhelun, linkkiä ei tarvitse lähettää."
+          },
+          {
+            "title": "Jaa näyttö",
+            "body": "Kytke näytön jakaminen päälle puhelussa ja käykää yhdessä läpi koodia, lokeja tai kaatuvaa testiä."
+          },
+          {
+            "title": "Ota kolmas mukaan",
+            "body": "Kävele puhelun aikana jonkun toisen luo ja tee siitä kolmen hengen kokous."
+          }
+        ],
+        "momentsTitle": "<em>Parisessio</em> alusta loppuun.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Katso kuka on vapaana",
+            "body": "Tilat ja työpisteet näyttävät, kuka keskittyy ja kuka on valmis vastaamaan kysymykseen."
+          },
+          {
+            "label": "2",
+            "title": "Kävele luo ja jaa",
+            "body": "Asetu viereen, napauta soittaaksesi ja jaa näyttösi."
+          },
+          {
+            "label": "3",
+            "title": "Kävele takaisin",
+            "body": "Lopeta puhelu, niin olet taas omalla työpisteelläsi. Ei mitään sovittavaa, ei mitään siivottavaa."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mitä tarvitsen etäpariohjelmointiin?",
+            "a": "Tavan puhua, jaetun näytön ja helpon tavan aloittaa. TinyFloor antaa kaikki kolme selaimessa; koodiin käytät omaa editoriasi ja työkalujasi."
+          },
+          {
+            "q": "Katkeaako puhelu, jos kävelen pois?",
+            "a": "Ei. Puhelu pysyy yhdistettynä, kunnes joku lopettaa sen, joten voit liikkua puhuessasi."
+          },
+          {
+            "q": "Voiko pareittain työskennellä useampi kuin kaksi?",
+            "a": "Voi. Kävele puhelun aikana kolmannen kollegan luo, niin TinyFloor ehdottaa kolmen hengen kokousta, tai käyttäkää neuvotteluhuonetta."
+          },
+          {
+            "q": "Onko se ilmainen?",
+            "a": "Ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, koko toimistolle, ei henkeä kohden."
+          }
+        ]
+      },
+      "standup": {
+        "label": "Virtuaalinen päiväpalaveri",
+        "meta": {
+          "title": "Virtuaaliset päiväpalaverit etätiimeille",
+          "description": "Pidä päivittäinen palaveri virtuaalitoimistossa: kaikki kävelevät neuvotteluhuoneeseen, puhuvat ja palaavat työpisteilleen. Kokouslinkkiä ei tarvitse jakaa."
+        },
+        "title": "<em>Virtuaalinen päiväpalaveri</em>, jonne tiimi kävelee.",
+        "subtitle": "Ei kalenterilinkkiä eikä odotushuonetta. Palaverin aikaan tiimi kävelee neuvotteluhuoneeseen, kertoo mitä tekee ja palaa töihin.",
+        "points": [
+          {
+            "title": "Aina sama huone",
+            "body": "Jokaisessa toimistossa on pääkokous, joka on aina auki, joten palaveri on käytävän päässä."
+          },
+          {
+            "title": "Näe kuka puuttuu",
+            "body": "Kerroksesta näkee, kuka on paikalla ja kuka poissa, joten tiedät ketä odottaa."
+          },
+          {
+            "title": "Lyhyt oletuksena",
+            "body": "Kun asiat on sanottu, kaikki kävelevät ulos ja jatkavat töitä. Jatkokysymykset hoidetaan jonkun työpisteellä."
+          }
+        ],
+        "momentsTitle": "<em>Päiväpalaveri</em> kolmessa vaiheessa.",
+        "moments": [
+          {
+            "label": "9:58",
+            "title": "Kävele sisään",
+            "body": "Liity pääkokoukseen, niin hahmosi kävelee neuvotteluhuoneeseen."
+          },
+          {
+            "label": "10:00",
+            "title": "Käykää läpi",
+            "body": "Kamera päällä tai pois, ja näytön jakaminen kaikelle, mikä kannattaa näyttää."
+          },
+          {
+            "label": "10:10",
+            "title": "Kävele ulos",
+            "body": "Kävele ulos huoneesta poistuaksesi. Kysymykset jatkuvat jonkun työpisteellä."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Miten virtuaalinen päiväpalaveri pidetään?",
+            "a": "Valitse aika, kokoontukaa joka päivä samassa paikassa ja pitäkää se lyhyenä. TinyFloorissa pääkokous on aina olemassa: kaikki kävelevät sisään sovittuun aikaan ja ulos, kun se on ohi."
+          },
+          {
+            "q": "Paljonko kokoustunteja päivittäinen palaveri kuluttaa?",
+            "a": "15 minuutin palaveri jokaisena työpäivänä on noin 5 tuntia kuussa. Plus sisältää 30 tuntia ryhmäkokouksia kuussa ja Pro 60."
+          },
+          {
+            "q": "Voimmeko pitää palaverit asynkronisesti?",
+            "a": "Voitte. Moni tiimi julkaisee päivitykset kanavalla ja käyttää neuvotteluhuonetta vain päivinä, jolloin pitää puhua."
+          },
+          {
+            "q": "Pitääkö kaikilla olla kamera päällä?",
+            "a": "Ei. Kamera on vapaaehtoinen jokaisessa kokouksessa, ja ilman kameraa oleva näkyy korttina, joka syttyy, kun hän puhuu."
+          }
+        ]
+      },
+      "onboarding": {
+        "label": "Etäperehdytys",
+        "meta": {
+          "title": "Uusien työntekijöiden etäperehdytys virtuaalitoimistossa",
+          "description": "Auta uusia työntekijöitä pääsemään sisään etänä: ensimmäisestä päivästä lähtien he näkevät tiimin, tietävät keneltä kysyä ja voivat kävellä kysymään."
+        },
+        "title": "<em>Etäperehdytys</em>, jossa uudet näkevät, keneltä kysyä.",
+        "subtitle": "Vaikeinta etänä aloittamisessa on se, ettei tiedä kuka on paikalla tai saako kysyä. TinyFloorissa tiimi on aivan siinä, ja kysymys on muutaman askeleen päässä.",
+        "points": [
+          {
+            "title": "Yksi linkki liittymiseen",
+            "body": "Lähetä toimiston kutsulinkki. He tekevät ilmaisen tilin, valitsevat nimen ja hahmon, ja ovat kerroksessa."
+          },
+          {
+            "title": "Tutustu tiimiin",
+            "body": "He näkevät kuka on kuka, kuka on kiireinen ja kuka vapaana, ilman opeteltavaa nimilistaa."
+          },
+          {
+            "title": "Kysymyksiä ilman kokousta",
+            "body": "Kysymään käveleminen tuntuu yhtä pieneltä kuin toimistolla, joten uudet kysyvät aiemmin."
+          }
+        ],
+        "momentsTitle": "<em>Ensimmäinen päivä</em> kerroksessa.",
+        "moments": [
+          {
+            "label": "Aamu",
+            "title": "Sisään",
+            "body": "He avaavat kutsulinkin, valitsevat hahmon ja saapuvat kerrokseen muiden luo."
+          },
+          {
+            "label": "Lounas",
+            "title": "Tutustu ihmisiin",
+            "body": "Kollega esittelee kerrosta, ja he tervehtivät muutamalla työpisteellä."
+          },
+          {
+            "label": "Iltapäivä",
+            "title": "Kysy vain",
+            "body": "Kun he juuttuvat, he näkevät kuka on vapaana ja kävelevät luo."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Miten uudet työntekijät liittyvät?",
+            "a": "Toimistosi kutsulinkillä. He tekevät ilmaisen tilin, valitsevat nimen ja hahmon ja saapuvat kerrokseen."
+          },
+          {
+            "q": "Viekö uusi työntekijä paikan paketista?",
+            "a": "Vie, kaikki toimiston ihmiset ovat jäseniä. Plusiin mahtuu 10 henkeä ja Prohon 25."
+          },
+          {
+            "q": "Voivatko uudet lukea vanhoja viestejä?",
+            "a": "Voivat. Kanavat säilyttävät historiansa, joten uusi henkilö voi lukea taaksepäin keskusteluja kanavilla, joihin hän liittyy."
+          },
+          {
+            "q": "Korvaako se perehdytysmateriaalimme?",
+            "a": "Ei. Pidä dokumentit ja tarkistuslistat siellä missä ne ovat. TinyFloor helpottaa ihmisten osuutta: kuka on kuka ja miten kysyä."
+          }
+        ]
+      },
+      "watercooler": {
+        "label": "Virtuaalinen kahvinurkka",
+        "meta": {
+          "title": "Virtuaalinen kahvinurkka etätiimeille",
+          "description": "Jutustelu, jota etätiimit kaipaavat: törmää kollegoihin kerroksessa, juttele loungessa ja soita musiikkia, tiimisi virtuaalitoimistossa."
+        },
+        "title": "<em>Virtuaalinen kahvinurkka</em>, joka syntyy itsestään.",
+        "subtitle": "Etätiimit varaavat aikaa yhdessäololle, koska mitään ei tapahdu sattumalta. Yhteisessä kerroksessa ohitat ihmisiä, näet kuka on paikalla ja pysähdyt juttelemaan.",
+        "points": [
+          {
+            "title": "Törmää ihmisiin",
+            "body": "Kulkiessasi työpisteiden ja huoneiden välillä ohitat kollegoita ja voit pysähtyä vaihtamaan sanan."
+          },
+          {
+            "title": "Musiikkia loungessa",
+            "body": "Laita jukeboksiin kappale iltapäiväksi, kaikille huoneessa oleville."
+          },
+          {
+            "title": "Ei kalenterikutsua",
+            "body": "Kerros on auki koko päivän, joten juttu alkaa kun haluat ja päättyy kun kävelet pois."
+          }
+        ],
+        "momentsTitle": "<em>Pienet hetket</em> ovat palanneet.",
+        "moments": [
+          {
+            "label": "Aamu",
+            "title": "Sano hei",
+            "body": "Kulje muutaman työpisteen ohi tullessasi ja toivota hyvää huomenta."
+          },
+          {
+            "label": "Iltapäivä",
+            "title": "Laita kappale soimaan",
+            "body": "Käynnistä loungen jukeboksi lähistöllä oleville."
+          },
+          {
+            "label": "Perjantai",
+            "title": "Rauhoitu",
+            "body": "Kokoontukaa neuvotteluhuoneeseen juomaan ja juttelemaan, kameralla tai ilman."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mikä on virtuaalinen kahvinurkka?",
+            "a": "Se on epävirallinen jutustelu, jota etätiimi kaipaa toimistolta: ihmisiin törmäämistä ja juttelua mistä tahansa. TinyFloorissa se tapahtuu kerroksessa sovitun puhelun sijaan."
+          },
+          {
+            "q": "Kuluttaako kahvinurkan jutustelu kokoustunteja?",
+            "a": "Kahden hengen keskusteluja ei lasketa koskaan. Kuukausitunteihin lasketaan vain ryhmäkokoukset."
+          },
+          {
+            "q": "Voimmeko kuunnella musiikkia yhdessä?",
+            "a": "Voitte. Kävele huoneen kaiuttimen luo soittaaksesi musiikkia, jonka kaikki huoneessa kuulevat."
+          },
+          {
+            "q": "Onko se vain yhdessäoloon?",
+            "a": "Ei. Samassa kerroksessa tiimi tekee töitä koko päivän; kahvinurkka on vain hetki tehtävien välissä."
+          }
+        ]
+      },
+      "engineering": {
+        "label": "Kehitystiimit",
+        "meta": {
+          "title": "Virtuaalitoimisto etäkehitystiimeille",
+          "description": "Virtuaalitoimisto etäkehitystiimeille: autakaa toisianne nopeasti eteenpäin, pariohjelmoikaa näytön jakamisella, pitäkää palaverit ja suojatkaa keskittymisaika."
+        },
+        "title": "Virtuaalitoimisto <em>etäkehitystiimeille.</em>",
+        "subtitle": "Kehittäjät tarvitsevat pitkiä keskittymisjaksoja ja nopeita vastauksia, kun he juuttuvat. TinyFloor antaa molemmat: hiljaista oletuksena ja kollega muutaman askeleen päässä.",
+        "points": [
+          {
+            "title": "Hiljaista oletuksena",
+            "body": "Kukaan ei kuule sinua, ennen kuin aloitat puhelun. Aseta tilaksi kiireinen, niin kaikki tietävät odottaa."
+          },
+          {
+            "title": "Nopeasti eteenpäin",
+            "body": "Kävele koodin tuntevan luo, jaa näyttö ja ratkaiskaa asia minuuteissa."
+          },
+          {
+            "title": "Palaveri käytävän päässä",
+            "body": "Pääkokous on aina olemassa palavereja, häiriöitä ja demoja varten."
+          }
+        ],
+        "momentsTitle": "<em>Päivä</em> kehittäjien kerroksessa.",
+        "moments": [
+          {
+            "label": "10:00",
+            "title": "Palaveri",
+            "body": "Tiimi kävelee neuvotteluhuoneeseen, puhuu kymmenen minuuttia ja kävelee ulos."
+          },
+          {
+            "label": "14:00",
+            "title": "Keskittyminen",
+            "body": "Kiireinen-tilat pitävät iltapäivän hiljaisena."
+          },
+          {
+            "label": "16:30",
+            "title": "Eteenpäin",
+            "body": "Muutama askel, jaettu näyttö ja bugi löytyy."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Yhdistyykö TinyFloor GitHubiin tai Jiraan?",
+            "a": "Ei. TinyFloor on paikka puhumiselle, ei työn seurannalle. Jaa näyttö katsoaksenne mitä tahansa yhdessä."
+          },
+          {
+            "q": "Sopiiko se pariohjelmointiin?",
+            "a": "Sopii. Kävele kollegan luo, aloita puhelu ja jaa näyttösi. Ota kolmas mukaan, niin siitä tulee kokous."
+          },
+          {
+            "q": "Kuinka iso kehitystiimi voi olla?",
+            "a": "Enintään 25 henkeä yhdessä toimistossa Pro-paketilla. Isommat organisaatiot voivat antaa jokaiselle tiimille oman toimiston."
+          },
+          {
+            "q": "Voimmeko pitää Slackin?",
+            "a": "Voitte. Moni tiimi pitää Slackin viesteihin ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+          }
+        ]
+      },
+      "design": {
+        "label": "Designtiimit",
+        "meta": {
+          "title": "Virtuaalitoimisto etädesigntiimeille",
+          "description": "Virtuaalitoimisto etädesigntiimeille: nopeat katselmoinnit näytön jakamisella, yhteinen taulu ja tiimi, jonka näet, kaikki selaimessa."
+        },
+        "title": "Virtuaalitoimisto <em>etädesigntiimeille.</em>",
+        "subtitle": "Design paranee nopealla ja rehellisellä palautteella. TinyFloorissa katselmointi on kävely kerroksen poikki, ei kalenterikutsu.",
+        "points": [
+          {
+            "title": "Katselmointi ilman varausta",
+            "body": "Kävele suunnittelijan luo, jaa näyttö ja käykää työ läpi."
+          },
+          {
+            "title": "Luonnostele",
+            "body": "Seinän taulu on sitä piirrosta varten, joka selittää kaiken."
+          },
+          {
+            "title": "Keskittymistä silloin kun sitä tarvitaan",
+            "body": "Aseta tilaksi kiireinen syvää työtä varten, niin kerros pysyy ympärilläsi hiljaisena."
+          }
+        ],
+        "momentsTitle": "<em>Designpäivä</em> kerroksessa.",
+        "moments": [
+          {
+            "label": "Aamu",
+            "title": "Tiimikatselmointi",
+            "body": "Kävelkää neuvotteluhuoneeseen ja jakakaa näytöt vuorotellen."
+          },
+          {
+            "label": "Lounas",
+            "title": "Luonnos",
+            "body": "Työstäkää yhdessä käyttäjäpolku taululla."
+          },
+          {
+            "label": "Iltapäivä",
+            "title": "Pikatarkistus",
+            "body": "Kävele kehittäjän luo tarkistamaan yksityiskohta ennen julkaisua."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Yhdistyykö TinyFloor Figmaan?",
+            "a": "Ei. Avaa Figma tavalliseen tapaan ja jaa näyttö puhelussa tai kokouksessa katsoaksenne sitä yhdessä."
+          },
+          {
+            "q": "Onko taulu yhteinen?",
+            "a": "On. Kaikki toimistossa näkevät saman taulun, ja piirretty jää paikalleen, kunnes ihmiset palaavat."
+          },
+          {
+            "q": "Paljonko se maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, koko toimistolle, ei henkeä kohden."
+          },
+          {
+            "q": "Pitääkö meidän asentaa jotain?",
+            "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiilissa."
+          }
+        ]
+      },
+      "startups": {
+        "label": "Startupit",
+        "meta": {
+          "title": "Virtuaalitoimisto etästartupeille",
+          "description": "Virtuaalitoimisto etästartupeille: pitäkää yhdessä istumisen vauhti, yhdellä hinnalla toimistoa kohden. Ilmainen 3 hengelle, $19 kuussa 10 hengelle."
+        },
+        "title": "Virtuaalitoimisto <em>etästartupeille.</em>",
+        "subtitle": "Varhaiset tiimit ovat nopeita, koska kaikki ovat samassa huoneessa. TinyFloor kokoaa etästartupin taas yhteen huoneeseen, hinnalla toimistoa kohden, ei rekrytointia kohden.",
+        "points": [
+          {
+            "title": "Ilmainen perustajavaiheessa",
+            "body": "Ilmainen enintään 3 hengelle, niin pitkään kuin haluatte."
+          },
+          {
+            "title": "Ei maksua rekrytointia kohden",
+            "body": "$19 kuussa enintään 10 hengelle ja $49 25 hengelle. Uuden ihmisen palkkaaminen ei lisää paikkamaksua."
+          },
+          {
+            "title": "Päätökset minuuteissa",
+            "body": "Katso kuka on paikalla, kävele luo ja päättäkää, sen sijaan että odotatte seuraavaa kokousta."
+          }
+        ],
+        "momentsTitle": "<em>Kasvaa</em> yhdessä kerroksessa.",
+        "moments": [
+          {
+            "label": "3 henkeä",
+            "title": "Free",
+            "body": "Perustajat jakavat kerroksen ilmaiseksi, 5 kokoustuntia kuussa."
+          },
+          {
+            "label": "10 henkeä",
+            "title": "Plus",
+            "body": "$19 kuussa koko toimistolle, 30 kokoustuntia."
+          },
+          {
+            "label": "25 henkeä",
+            "title": "Pro",
+            "body": "$49 kuussa koko toimistolle, 60 kokoustuntia."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Paljonko TinyFloor maksaa startupille?",
+            "a": "Ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, koko toimistolle, ei henkeä kohden."
+          },
+          {
+            "q": "Voimmeko perua milloin tahansa?",
+            "a": "Voitte. Maksullinen paketti on voimassa maksetun jakson loppuun, minkä jälkeen toimisto palaa Free-pakettiin. Mitään ei poisteta."
+          },
+          {
+            "q": "Mitä tapahtuu, kun meitä on yli 25?",
+            "a": "Antakaa jokaiselle tiimille oma toimisto, tai kirjoittakaa meille, niin jutellaan."
+          },
+          {
+            "q": "Tarvitsemmeko IT-asetuksia?",
+            "a": "Ette. Kaikki toimii selaimessa: lähetä kutsulinkki, niin jokainen kirjautuu Googlella tai sähköpostilla."
+          }
+        ]
+      },
+      "agencies": {
+        "label": "Toimistot",
+        "meta": {
+          "title": "Virtuaalitoimisto etänä toimiville toimistoille",
+          "description": "Virtuaalitoimisto etänä toimiville mainos- ja suunnittelutoimistoille: näe kuka voi auttaa, katselmoikaa työtä yhdessä jaetulla näytöllä ja säilyttäkää studiofiilis, missä kukin työskenteleekin."
+        },
+        "title": "Virtuaalitoimisto <em>etänä toimiville toimistoille.</em>",
+        "subtitle": "Toimisto pyörii nopeiden katselmointien ja sen varassa, että tietää kuka voi auttaa. TinyFloor antaa etästudiolle kerroksen, jossa molemmat tapahtuvat ilman kokouslinkkiä.",
+        "points": [
+          {
+            "title": "Kuka voi auttaa",
+            "body": "Tilat näyttävät, kuka on syvällä deadlinessa ja kuka ehtii vilkaista."
+          },
+          {
+            "title": "Katselmointi saman tien",
+            "body": "Kävele luo, jaa näyttö ja saat palautetta luonnoksesta muutamassa minuutissa."
+          },
+          {
+            "title": "Kanava asiakasta kohden",
+            "body": "Tee kanava jokaiselle asiakkaalle tai projektille, niin jokainen keskustelu pysyy yhdessä paikassa."
+          }
+        ],
+        "momentsTitle": "<em>Studiopäivä</em> etänä.",
+        "moments": [
+          {
+            "label": "Aamu",
+            "title": "Suunnittele päivä",
+            "body": "Tiimi kokoontuu neuvotteluhuoneeseen jakamaan työt."
+          },
+          {
+            "label": "Iltapäivä",
+            "title": "Nopea katselmointi",
+            "body": "Suunnittelija kävelee vetäjän luo ja jakaa näytön saadakseen palautetta."
+          },
+          {
+            "label": "Ilta",
+            "title": "Päätös",
+            "body": "Muistiinpanot ja linkit menevät asiakkaan kanavalle huomista varten."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Voivatko asiakkaat tulla toimistoomme?",
+            "a": "Toimistot ovat jäsenille, ja kaikki liittyvät ilmaisella tilillä kutsulinkin kautta. Asiakaspuheluihin käyttäkää kokoustyökalua, jota asiakkaanne jo käyttävät."
+          },
+          {
+            "q": "Montako meitä voi olla?",
+            "a": "Enintään 10 Plus-paketilla ja 25 Pro-paketilla, yhdellä kuukausihinnalla koko toimistolle."
+          },
+          {
+            "q": "Voivatko freelancerit liittyä?",
+            "a": "Voivat. Freelancerit liittyvät kutsulinkillä kuten muutkin, ja voit poistaa heidät toimistosta, kun projekti päättyy."
+          },
+          {
+            "q": "Sopiiko se luoviin katselmointeihin?",
+            "a": "Sopii. Jaa näyttö puhelussa tai kokouksessa ja luonnostelkaa yhdessä taululle."
+          }
+        ]
+      }
+    },
+    "teams": "Tiimit",
+    "all": "Näytä kaikki",
+    "versusTitle": "{a}, {b} ja TinyFloor <em>rinnakkain.</em>",
+    "checkedIn": "{name}: tiedot palvelun omilta sivuilta, tarkistettu {date}.",
+    "checkedBothIn": "{a} ja {b}: tiedot palveluiden hinnastosivuilta, tarkistettu {date}.",
+    "hubs": {
+      "compare": {
+        "meta": {
+          "title": "Virtuaalitoimistojen vertailut ja vaihtoehdot",
+          "description": "Miten TinyFloor vertautuu Gatheriin, Kumospaceen, Sococoon, oViceen, Roamiin ja työkaluihin, joissa tiimit nyt puhuvat, rinnakkain."
+        },
+        "title": "Rinnakkain, <em>rehellisesti.</em>",
+        "body": "Miten TinyFloor vertautuu muihin virtuaalitoimistoihin ja työkaluihin, joissa tiimisi nyt puhuu."
+      },
+      "useCases": {
+        "meta": {
+          "title": "Virtuaalitoimiston käyttötapoja etätiimeille",
+          "description": "Päivittäiset palaverit, pariohjelmointi, perehdytys ja hetket niiden välissä: näin etätiimit käyttävät TinyFlooria päivän mittaan."
+        },
+        "title": "Näin tiimit <em>käyttävät kerrosta.</em>",
+        "body": "Etätyöpäivän hetket ja se, miten kukin niistä toimii TinyFloorissa."
+      },
+      "teams": {
+        "meta": {
+          "title": "TinyFloor kehitys- ja designtiimeille, startupeille ja toimistoille",
+          "description": "Virtuaalitoimisto, joka sopii tiimisi tapaan tehdä töitä: kehitystiimeille, designtiimeille, startupeille ja toimistoille."
+        },
+        "title": "Tehty <em>kaltaisillesi tiimeille.</em>",
+        "body": "Jokainen tiimi käyttää kerrosta vähän eri tavalla. Näin se sopii teille."
       }
     }
   },
@@ -1171,12 +1996,6 @@
       "lobbyTitle": "Kokeile demotoimistoa",
       "menu": "Valikko",
       "teams": "Tiimeille",
-      "cases": {
-        "virtualOffice": "Paikka etätiimillesi",
-        "virtualCoworking": "Keskittymistä yhdessä tiimin kanssa",
-        "virtualClassroom": "Vastaanotot ja pienet ryhmät",
-        "proximityChat": "Juttele sen kanssa, jonka luo kävelet"
-      },
       "getStarted": "Aloita",
       "lobbyLine": "Katso, miten toimisto toimii. Tiliä ei tarvita."
     },

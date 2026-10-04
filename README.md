@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="https://www.tinyfloor.com"><b>Website</b></a> ·
-  <a href="https://www.tinyfloor.com/lobby"><b>Walk into the lobby</b></a> ·
+  <a href="https://www.tinyfloor.com/lobby"><b>Try the demo office</b></a> ·
   <a href="https://www.tinyfloor.com/create"><b>Make an office</b></a> ·
   <a href="#questions"><b>Questions</b></a>
 </p>
@@ -61,19 +61,19 @@ TinyFloor is a 2D virtual office in your browser. Your team walks around a share
 - **Invite links** bring teammates in: they pick a name and a character and join with a free account.
 - **Whiteboard and room music** for the moments between calls.
 - **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
-- **Private offices** for your team, and a public lobby anyone can walk into.
+- **Private offices** for your team, joined by invite, and a demo office to try it first.
 
 ## Made for
 
+- **[Engineering teams](https://www.tinyfloor.com/engineering-teams)**, **[design teams](https://www.tinyfloor.com/design-teams)**, **[startups](https://www.tinyfloor.com/startups)** and **[agencies](https://www.tinyfloor.com/agencies)**.
 - **[Virtual office](https://www.tinyfloor.com/virtual-office)**: one room your remote team keeps open all day.
-- **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: work side by side online and take breaks together.
-- **[Online study room](https://www.tinyfloor.com/online-study-room)**: study with friends, focus quietly, talk when you need a break.
+- **[Virtual standup](https://www.tinyfloor.com/virtual-standup)**, **[remote pair programming](https://www.tinyfloor.com/remote-pair-programming)** and **[remote onboarding](https://www.tinyfloor.com/remote-onboarding)**.
+- **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: heads-down hours with your team, and a **[virtual watercooler](https://www.tinyfloor.com/virtual-watercooler)** between them.
 - **[Virtual classroom](https://www.tinyfloor.com/virtual-classroom)**: office hours, tutoring and small classes.
-- **[Proximity chat](https://www.tinyfloor.com/proximity-chat)**: talk to whoever you walk up to, like in a real room.
 
 ## An open-source alternative
 
-Looking for an open-source alternative to [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative) or [Wonder](https://www.tinyfloor.com/wonder-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, meeting tables, screen sharing and chat.
+Looking for an open-source alternative to [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative) or [Wonder](https://www.tinyfloor.com/wonder-alternative), [Sococo](https://www.tinyfloor.com/sococo-alternative), [oVice](https://www.tinyfloor.com/ovice-alternative), [Roam](https://www.tinyfloor.com/roam-alternative) or [Teamflow](https://www.tinyfloor.com/teamflow-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, a meeting room, screen sharing and chat. [See every comparison](https://www.tinyfloor.com/compare).
 
 ## Questions
 

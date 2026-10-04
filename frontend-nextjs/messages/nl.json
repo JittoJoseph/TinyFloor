@@ -641,10 +641,10 @@
       "virtualOffice": {
         "label": "Virtueel kantoor",
         "meta": {
-          "title": "Gratis virtueel kantoor voor remote teams",
-          "description": "Een gratis virtueel kantoor in je browser. Zie wie er is, loop erheen voor een videogesprek en houd één ruimte open voor je remote team."
+          "title": "Virtueel kantoor voor remote teams",
+          "description": "Een virtueel kantoor in je browser. Zie wie er is, loop erheen voor een videogesprek op nabijheid en houd één ruimte open voor je remote team."
         },
-        "title": "Een gratis <em>virtueel kantoor</em> voor remote teams.",
+        "title": "Een <em>virtueel kantoor</em> voor remote teams.",
         "subtitle": "Geef je team een plek om overdag te zijn. Zie wie er is, loop langs voor een snelle vraag en stap de vergaderruimte in als het tijd is om te praten.",
         "points": [
           {
@@ -723,8 +723,8 @@
       "virtualClassroom": {
         "label": "Virtueel klaslokaal",
         "meta": {
-          "title": "Gratis virtueel klaslokaal voor spreekuren",
-          "description": "Spreekuren, bijles en kleine lessen in een gratis virtueel klaslokaal. Studenten lopen naar je toe om te praten, groepen komen samen in de vergaderruimte en iedereen deelt een whiteboard."
+          "title": "Virtueel klaslokaal voor spreekuren en kleine klassen",
+          "description": "Houd spreekuren, bijles en kleine lessen in een virtueel klaslokaal. Studenten lopen naar je toe om te praten, groepen komen samen in de vergaderruimte en iedereen deelt een whiteboard."
         },
         "title": "Een <em>virtueel klaslokaal</em> waar studenten rondlopen.",
         "subtitle": "Houd spreekuur, bijles of een kleine les in een ruimte waar studenten kunnen rondlopen. Ze komen naar je toe met een vraag, en groepen praten in de vergaderruimte.",
@@ -764,7 +764,7 @@
       "proximityChat": {
         "label": "Proximity chat",
         "meta": {
-          "title": "Gratis proximity videochat in de browser",
+          "title": "Videochat op nabijheid voor remote teams",
           "description": "Nabijheidschat voor remote teams: loop met je personage naar een teamgenoot om een gesprek te starten. Gratis voor kleine teams, in de browser, zonder download."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
@@ -801,6 +801,831 @@
             "a": "Ja, voor een kantoor tot 3 mensen, in de browser op desktop en mobiel."
           }
         ]
+      },
+      "sococo": {
+        "label": "Sococo-alternatief",
+        "meta": {
+          "title": "Sococo-alternatief voor kleine remote teams",
+          "description": "Sococo begint bij 10 plekken met een jaarabonnement. TinyFloor is een virtueel kantoor in de browser, gratis voor 3 mensen en $19 per maand voor maximaal 10, per maand betaald."
+        },
+        "title": "Een <em>Sococo-alternatief</em> zonder minimum van 10 plekken.",
+        "subtitle": "Sococo verkoopt plekken per jaar, minimaal 10. TinyFloor heeft één maandprijs voor het hele kantoor, en een klein team kan gratis beginnen.",
+        "points": [
+          {
+            "title": "Begin op je echte grootte",
+            "body": "Gratis voor maximaal 3 mensen, daarna $19 per maand voor maximaal 10. Geen minimum aantal plekken en geen jaarlijkse vooruitbetaling."
+          },
+          {
+            "title": "Een verdieping om rond te lopen",
+            "body": "Je team deelt één kantoorverdieping en begint te praten door naar elkaar toe te lopen."
+          },
+          {
+            "title": "Gesprekken kosten geen minuten",
+            "body": "Sococo telt minuten per plek. Op TinyFloor tellen gesprekken met z'n tweeën nooit mee; alleen groepsvergaderingen hebben uren per maand."
+          }
+        ],
+        "them": {
+          "price": "$13,49 per plek per maand, jaarlijks gefactureerd, minimaal 10 plekken",
+          "freePlan": "Geen, alleen een gratis proefperiode",
+          "screenShare": "Ja, meerdere tegelijk"
+        },
+        "faq": [
+          {
+            "q": "Wat kost Sococo?",
+            "a": "Sococo kost $13,49 per plek per maand, jaarlijks gefactureerd, met minimaal 10 plekken en 500 minuten per plek per maand. Sococo Unlimited kost $24,99 per plek met minimaal 100 plekken. TinyFloor is gratis voor 3 mensen en kost $19 per maand voor maximaal 10."
+          },
+          {
+            "q": "Is er een gratis versie van Sococo?",
+            "a": "Sococo biedt een gratis proefperiode in plaats van een gratis abonnement. Het gratis abonnement van TinyFloor heeft geen einddatum, voor maximaal 3 mensen."
+          },
+          {
+            "q": "Wat heeft Sococo dat TinyFloor niet heeft?",
+            "a": "Bij Sococo kies je plattegronden en inrichting, en het koppelt met Zoom, Webex, Google Meet en Microsoft Teams. TinyFloor houdt het bij één kantoorverdieping en regelt zijn eigen gesprekken en vergaderingen."
+          },
+          {
+            "q": "Moet ik iets installeren?",
+            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel. Deel de uitnodigingslink van je kantoor en je team loopt binnen."
+          }
+        ]
+      },
+      "ovice": {
+        "label": "oVice-alternatief",
+        "meta": {
+          "title": "oVice-alternatief voor kleine teams",
+          "description": "oVice rekent per ruimte of vanaf 20 gebruikers. TinyFloor is een virtueel kantoor in de browser voor kleine teams: gratis voor 3 mensen, $19 per maand voor 10 en $49 voor 25."
+        },
+        "title": "Een <em>oVice-alternatief</em> op maat van kleine teams.",
+        "subtitle": "oVice is gebouwd voor bedrijven en communities, met abonnementen per ruimtegrootte of vanaf 20 gebruikers. TinyFloor is gemaakt voor teams van 2 tot 25, met één eenvoudige prijs per kantoor.",
+        "points": [
+          {
+            "title": "Prijzen voor 3, 10 of 25",
+            "body": "Gratis voor maximaal 3 mensen, $19 per maand voor 10 en $49 voor 25. Geen ruimtegroottes om uit te rekenen."
+          },
+          {
+            "title": "Erheen lopen en praten",
+            "body": "Net als bij oVice loop je naar iemand toe om te praten. Gesprekken met z'n tweeën tellen nergens voor mee."
+          },
+          {
+            "title": "Chat die blijft",
+            "body": "Elk kantoor heeft kanalen en directe berichten met hun geschiedenis, naast de verdieping en op je telefoon."
+          }
+        ],
+        "them": {
+          "price": "$65 per maand per ruimte, of $16 per gebruiker vanaf 20 gebruikers, jaarlijks gefactureerd",
+          "freePlan": "Ja, op een voorlopige versie zonder ondersteuning",
+          "browser": "Ja, met desktop- en mobiele apps",
+          "screenShare": "Ja, meerdere tegelijk"
+        },
+        "faq": [
+          {
+            "q": "Wat kost oVice?",
+            "a": "oVice Entry-S kost $65 per maand per ruimte bij jaarlijkse betaling, of $78 per maand, voor ongeveer 10 vaste leden. Business Starter kost $16 per gebruiker per maand vanaf 20 gebruikers. TinyFloor kost $19 per maand voor maximaal 10 mensen."
+          },
+          {
+            "q": "Heeft oVice een gratis abonnement?",
+            "a": "Ja. Na de proefperiode van 14 dagen gaat een ruimte naar een gratis abonnement dat op een voorlopige omgeving draait, zonder SLA of ondersteuning. Het gratis abonnement van TinyFloor is hetzelfde product als de betaalde abonnementen, voor maximaal 3 mensen."
+          },
+          {
+            "q": "Wat heeft oVice dat TinyFloor niet heeft?",
+            "a": "oVice biedt eigen indelingen, transcriptie, opnemen op verzoek, koppeling met agenda en Microsoft Teams, en abonnementen voor evenementen. TinyFloor richt zich op het dagelijkse kantoor: erheen lopen, vergaderingen, chat, een whiteboard en muziek."
+          },
+          {
+            "q": "Is TinyFloor in het Japans beschikbaar?",
+            "a": "Ja. TinyFloor is er in 18 talen, waaronder Japans en Koreaans, en iedereen kan zijn eigen taal kiezen."
+          }
+        ]
+      },
+      "teamflow": {
+        "label": "Teamflow-alternatief",
+        "meta": {
+          "title": "Teamflow-alternatief dat in de browser draait",
+          "description": "Teamflow kost $15 per persoon per maand met desktop-apps. TinyFloor is een virtueel kantoor in de browser: gratis voor 3 mensen, $19 per maand voor een kantoor van 10."
+        },
+        "title": "Een <em>Teamflow-alternatief</em> zonder iets te downloaden.",
+        "subtitle": "Teamflow rekent per persoon en draait als app op je computer. TinyFloor opent in een browsertabblad, op een laptop of telefoon, voor één prijs per kantoor.",
+        "points": [
+          {
+            "title": "Eén prijs voor het kantoor",
+            "body": "Het Seed-abonnement van Teamflow kost $15 per persoon. TinyFloor Plus kost $19 per maand voor maximaal 10 mensen samen."
+          },
+          {
+            "title": "Geen stop na 45 minuten",
+            "body": "Het gratis abonnement van Teamflow stopt vergaderingen na 45 minuten. Vergaderingen op TinyFloor hebben geen limiet per vergadering; elk abonnement heeft uren per maand voor groepsvergaderingen."
+          },
+          {
+            "title": "In een browsertabblad",
+            "body": "Geen app om te installeren of bij te werken. Open de link op elke laptop of telefoon en je staat op de verdieping."
+          }
+        ],
+        "them": {
+          "price": "$15 per persoon per maand, jaarlijks gefactureerd",
+          "freePlan": "Tot 5 mensen, met vergaderingen van 45 minuten",
+          "browser": "Apps voor Mac en Windows, mobiel in bèta",
+          "screenShare": "Ja, meerdere tegelijk"
+        },
+        "faq": [
+          {
+            "q": "Wat kost Teamflow?",
+            "a": "Teamflow is gratis voor maximaal 5 mensen met vergaderingen van 45 minuten. Seed kost $15 en Business $25 per persoon per maand, jaarlijks gefactureerd. TinyFloor is gratis voor 3 mensen, daarna $19 per maand voor maximaal 10."
+          },
+          {
+            "q": "Heeft TinyFloor de app-koppelingen van Teamflow?",
+            "a": "Nee. Teamflow sluit apps als Figma en Google Docs in vergaderingen in. TinyFloor houdt het bij aanwezigheid, gesprekken, vergaderingen, chat, een whiteboard en schermdelen."
+          },
+          {
+            "q": "Moeten mijn collega's iets installeren?",
+            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel. Ze openen de uitnodigingslink van je kantoor en loggen in."
+          },
+          {
+            "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
+            "a": "Tot 3 mensen met Free, 10 met Plus en 25 met Pro, en je kunt zoveel kantoren maken als je nodig hebt."
+          }
+        ]
+      },
+      "roam": {
+        "label": "Roam-alternatief",
+        "meta": {
+          "title": "Roam-alternatief voor kleine remote teams",
+          "description": "Roam is een desktop-app met een prijs per actief lid. TinyFloor is een virtueel kantoor in de browser, gratis voor 3 mensen en $19 per maand voor maximaal 10."
+        },
+        "title": "Een <em>Roam-alternatief</em> dat in de browser opent.",
+        "subtitle": "Roam bundelt een virtueel kantoor met AI-tools en een desktop-app, met een prijs per lid. TinyFloor doet het kantoorgedeelte eenvoudig: erheen lopen, vergaderen en chatten, voor één prijs per team.",
+        "points": [
+          {
+            "title": "Alleen het kantoor",
+            "body": "Geen pakket om in te voeren. Een verdieping waar je ziet wie er is, erheen loopt om te praten en de vergaderruimte in stapt."
+          },
+          {
+            "title": "Niets te installeren",
+            "body": "TinyFloor draait in een browsertabblad op elke laptop of telefoon, dus iedereen in het team is er binnen seconden."
+          },
+          {
+            "title": "Eén prijs per team",
+            "body": "Gratis voor 3 mensen, $19 per maand voor 10 en $49 voor 25, hoeveel er die maand ook gebruik van maken."
+          }
+        ],
+        "them": {
+          "price": "Een maandprijs per actief lid",
+          "freePlan": "Geen, alleen een proefperiode van 14 dagen",
+          "browser": "Desktop-app om te downloaden",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Hoe rekent Roam?",
+            "a": "Roam rekent één maandprijs per actief lid voor al zijn producten, met een gratis proefperiode van 14 dagen en zonder jaarcontract. TinyFloor is gratis voor 3 mensen en kost $19 per maand voor maximaal 10."
+          },
+          {
+            "q": "Wat heeft Roam dat TinyFloor niet heeft?",
+            "a": "Roam biedt AI-vergadernotities, een AI-assistent, webinars, planning en schermopnames. TinyFloor richt zich op het kantoor zelf."
+          },
+          {
+            "q": "Kunnen gasten bij een TinyFloor-kantoor?",
+            "a": "Kantoren zijn alleen voor leden: je komt binnen met de uitnodigingslink en een gratis account. Wil je eerst rondkijken, dan kan iedereen het demokantoor proberen met alleen een naam."
+          },
+          {
+            "q": "Werkt TinyFloor op een telefoon?",
+            "a": "Ja. Het draait in mobiele browsers met een joystick op het scherm, zonder iets te downloaden."
+          }
+        ]
+      },
+      "slackHuddles": {
+        "label": "Alternatief voor Slack huddles",
+        "meta": {
+          "title": "Alternatief voor Slack huddles: zie wie vrij is en loop erheen",
+          "description": "Een Slack huddle is een gesprek in het wilde weg. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen om te praten. Een virtueel kantoor naast Slack, gratis voor 3 mensen."
+        },
+        "title": "Een <em>alternatief voor Slack huddles</em> waarbij je eerst ziet wie vrij is.",
+        "subtitle": "Een huddle is een gesprek dat je start zonder te weten of het uitkomt. Op TinyFloor zie je wie er is, wie bezig is en wie al praat, en dan loop je erheen.",
+        "points": [
+          {
+            "title": "Eerst kijken, dan bellen",
+            "body": "Iedereen heeft een status en een plek op de verdieping, dus je weet wie geconcentreerd werkt voordat je iets vraagt."
+          },
+          {
+            "title": "Groepsgesprekken in elk abonnement",
+            "body": "In het gratis abonnement van Slack zijn huddles met z'n tweeën. Op TinyFloor heeft elk abonnement gesprekken en groepsvergaderingen."
+          },
+          {
+            "title": "Houd Slack als je wilt",
+            "body": "TinyFloor heeft een eigen chat, maar veel teams houden Slack voor berichten en gebruiken de verdieping om te praten."
+          }
+        ],
+        "them": {
+          "price": "Groepshuddles vragen om Slack Pro, met een prijs per gebruiker",
+          "freePlan": "Slack Free heeft alleen huddles met z'n tweeën",
+          "browser": "Ja, met desktop- en mobiele apps",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Wat is een Slack huddle?",
+            "a": "Een huddle is een kort audio- of videogesprek in Slack, gestart vanuit een kanaal of een direct bericht. In het gratis abonnement van Slack zijn huddles tussen twee mensen; groepshuddles vragen om een betaald abonnement."
+          },
+          {
+            "q": "Wat is het verschil tussen TinyFloor en een huddle?",
+            "a": "Een huddle begint als iemand belt. Op TinyFloor is je team al samen op één verdieping, dus je ziet wie vrij is en loopt erheen, en de vergaderruimte is er altijd."
+          },
+          {
+            "q": "Kan ik TinyFloor samen met Slack gebruiken?",
+            "a": "Ja. Ze zijn niet aan elkaar gekoppeld, maar veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
+          },
+          {
+            "q": "Wat kost TinyFloor?",
+            "a": "Gratis voor maximaal 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, voor het hele kantoor, niet per persoon."
+          }
+        ]
+      },
+      "discord": {
+        "label": "Discord voor werk",
+        "meta": {
+          "title": "Discord voor werk? Een virtueel kantoor gemaakt voor teams",
+          "description": "Teams gebruiken spraakkanalen in Discord om zich samen te voelen. TinyFloor geeft een remote team datzelfde gevoel van even binnenlopen, in een privékantoor gemaakt voor werk."
+        },
+        "title": "Zoals <em>Discord voor werk</em>, gemaakt voor je team.",
+        "subtitle": "Spraakkanalen lieten zien dat het werkt om één klik van elkaar te zitten. TinyFloor houdt dat gevoel vast in een privékantoor voor je team, zonder de gamingcommunity eromheen.",
+        "points": [
+          {
+            "title": "Een privékantoor, geen server",
+            "body": "Je verdieping is alleen voor je team. Je komt binnen met je uitnodigingslink en een gratis account."
+          },
+          {
+            "title": "Zie wie vrij is",
+            "body": "Statussen, bureaus en wie er in gesprek is, allemaal op één verdieping, zodat even binnenlopen vanzelf gaat."
+          },
+          {
+            "title": "Vergaderingen met een ruimte",
+            "body": "Stap de vergaderruimte in voor groepsgesprekken met schermdelen, en loop naar buiten als je klaar bent."
+          }
+        ],
+        "them": {
+          "price": "Gratis, met Nitro extra per persoon",
+          "freePlan": "Ja",
+          "browser": "Ja, met desktop- en mobiele apps",
+          "screenShare": "Ja, in spraakkanalen"
+        },
+        "faq": [
+          {
+            "q": "Kun je Discord voor werk gebruiken?",
+            "a": "Veel teams doen dat, vanwege de spraakkanalen. Maar Discord is gemaakt voor communities en gaming, dus werkteams missen vaak een duidelijk beeld van wie bezig is, een vergaderruimte en een ruimte die alleen van hen is."
+          },
+          {
+            "q": "Is TinyFloor gratis zoals Discord?",
+            "a": "Voor maximaal 3 mensen, ja. Grotere kantoren kosten $19 per maand voor 10 mensen en $49 per maand voor 25."
+          },
+          {
+            "q": "Heeft TinyFloor spraakkanalen?",
+            "a": "In plaats van kanalen loop je naar een collega om te praten, of ga je als groep de vergaderruimte in. Tekstkanalen en directe berichten staan naast de verdieping."
+          },
+          {
+            "q": "Moeten we een app downloaden?",
+            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel."
+          }
+        ]
+      },
+      "gatherVsKumospace": {
+        "label": "Gather vs Kumospace",
+        "meta": {
+          "title": "Gather vs Kumospace: prijzen, gratis abonnementen en een derde optie",
+          "description": "Gather vs Kumospace naast elkaar: prijs, gratis abonnement, browser en schermdelen, en hoe TinyFloor zich verhoudt voor kleine remote teams."
+        },
+        "title": "<em>Gather vs Kumospace</em>, en een derde optie.",
+        "subtitle": "Beide rekenen per lid zodra je voorbij de gratis laag bent. Is je team klein en wil je een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
+        "points": [
+          {
+            "title": "Gather",
+            "body": "Een pixelart-kantoor met AI-vergadernotities en aanpassingen. Een proefperiode van 30 dagen, daarna vanaf $12 per lid per maand."
+          },
+          {
+            "title": "Kumospace",
+            "body": "Een gratis abonnement voor maximaal 5 leden op één verdieping, daarna Business vanaf $16 per gebruiker per maand."
+          },
+          {
+            "title": "TinyFloor",
+            "body": "Gratis voor 3 mensen, daarna $19 per maand voor maximaal 10 en $49 voor 25, voor het hele kantoor."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat is goedkoper, Gather of Kumospace?",
+            "a": "Voor een team van 10 begint Gather bij ongeveer $120 per maand en Kumospace Business bij ongeveer $160. Kumospace heeft een gratis abonnement voor maximaal 5 leden; Gather heeft een proefperiode van 30 dagen. TinyFloor Plus kost $19 per maand voor het hele kantoor."
+          },
+          {
+            "q": "Wat is beter voor een klein team?",
+            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen, en Gather past bij teams die meer willen aanpassen. Wil je één eenvoudige prijs voor een team van maximaal 25 mensen, dan is TinyFloor daarvoor gemaakt."
+          },
+          {
+            "q": "Draaien Gather en Kumospace in de browser?",
+            "a": "Beide draaien in de browser, Gather met een desktop-app en Kumospace met desktop- en mobiele apps. TinyFloor draait alleen in de browser, op desktop en mobiel, dus er is niets te installeren."
+          },
+          {
+            "q": "Kunnen we later overstappen naar TinyFloor?",
+            "a": "Ja. Er is niets te migreren: maak een kantoor, deel de uitnodigingslink, en je team loopt binnen."
+          }
+        ]
+      },
+      "pairProgramming": {
+        "label": "Remote pair programming",
+        "meta": {
+          "title": "Remote pair programming in een virtueel kantoor",
+          "description": "Programmeer op afstand in tweetallen zonder het te plannen: zie wie vrij is, loop erheen, deel je scherm en praat het door. Gratis voor teams van 3."
+        },
+        "title": "<em>Remote pair programming</em> dat begint met even erheen lopen.",
+        "subtitle": "Pairen werkt het best als het makkelijk begint. Op TinyFloor zie je wie vrij is, loop je naar het bureau, deel je je scherm en praat je, en daarna loop je terug naar je eigen werk.",
+        "points": [
+          {
+            "title": "In minuten verder",
+            "body": "Loop je ergens op vast? Loop naar wie het weet. Eén tik start het gesprek, zonder link te versturen."
+          },
+          {
+            "title": "Deel het scherm",
+            "body": "Zet schermdelen aan in het gesprek om samen door code, logs of een falende test te gaan."
+          },
+          {
+            "title": "Haal er een derde bij",
+            "body": "Loop tijdens het gesprek naar iemand anders en maak er een vergadering met z'n drieën van."
+          }
+        ],
+        "momentsTitle": "<em>Een pairsessie</em> van begin tot eind.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Zie wie vrij is",
+            "body": "Statussen en bureaus laten zien wie geconcentreerd werkt en wie open staat voor een vraag."
+          },
+          {
+            "label": "2",
+            "title": "Loop erheen en deel",
+            "body": "Ga ernaast staan, tik om te bellen en deel je scherm."
+          },
+          {
+            "label": "3",
+            "title": "Loop terug",
+            "body": "Hang op en je bent terug aan je bureau. Niets te plannen, niets op te ruimen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat heb ik nodig voor remote pair programming?",
+            "a": "Een manier om te praten, een gedeeld scherm en een makkelijke start. TinyFloor geeft je alle drie in de browser; voor de code gebruik je je eigen editor en tools."
+          },
+          {
+            "q": "Valt het gesprek weg als ik wegloop?",
+            "a": "Nee. Een gesprek blijft verbonden tot iemand ophangt, dus je kunt rondlopen terwijl je praat."
+          },
+          {
+            "q": "Kunnen meer dan twee mensen samen pairen?",
+            "a": "Ja. Loop tijdens het gesprek naar een derde collega en TinyFloor biedt aan er een vergadering met z'n drieën van te maken, of gebruik de vergaderruimte."
+          },
+          {
+            "q": "Is het gratis?",
+            "a": "Gratis voor maximaal 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, voor het hele kantoor, niet per persoon."
+          }
+        ]
+      },
+      "standup": {
+        "label": "Virtuele standup",
+        "meta": {
+          "title": "Virtuele standups voor remote teams",
+          "description": "Houd je dagelijkse standup in een virtueel kantoor: iedereen loopt de vergaderruimte in, praat en loopt terug naar zijn bureau. Geen vergaderlink om te delen."
+        },
+        "title": "Een <em>virtuele standup</em> waar je team naartoe loopt.",
+        "subtitle": "Geen agendalink en geen wachtkamer. Op standuptijd loopt je team de vergaderruimte in, vertelt waar het mee bezig is en loopt terug naar het werk.",
+        "points": [
+          {
+            "title": "Altijd dezelfde ruimte",
+            "body": "Elk kantoor heeft een hoofdvergadering die er altijd is, dus de standup is een stukje de gang door."
+          },
+          {
+            "title": "Zie wie er ontbreekt",
+            "body": "De verdieping laat zien wie er is en wie weg is, zodat je weet op wie je wacht."
+          },
+          {
+            "title": "Standaard kort",
+            "body": "Als het klaar is, loopt iedereen de ruimte uit en gaat verder. Vervolgvragen gebeuren aan iemands bureau."
+          }
+        ],
+        "momentsTitle": "<em>De standup</em> in drie stappen.",
+        "moments": [
+          {
+            "label": "9:58",
+            "title": "Naar binnen",
+            "body": "Neem deel aan de hoofdvergadering en je personage loopt de vergaderruimte in."
+          },
+          {
+            "label": "10:00",
+            "title": "Doorpraten",
+            "body": "Camera aan of uit, met schermdelen voor alles wat het laten zien waard is."
+          },
+          {
+            "label": "10:10",
+            "title": "Naar buiten",
+            "body": "Loop de ruimte uit om te vertrekken. Vragen gaan verder aan iemands bureau."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hoe houd ik een virtuele standup?",
+            "a": "Kies een tijd, kom elke dag op dezelfde plek samen en houd het kort. Op TinyFloor is de hoofdvergadering er altijd: iedereen loopt op tijd naar binnen en loopt naar buiten als het klaar is."
+          },
+          {
+            "q": "Hoeveel vergaderuren kost een dagelijkse standup?",
+            "a": "Een standup van 15 minuten elke werkdag is ongeveer 5 uur per maand. Plus bevat 30 uur groepsvergaderingen per maand en Pro 60."
+          },
+          {
+            "q": "Kunnen we ook asynchrone standups doen?",
+            "a": "Ja. Veel teams posten updates in een kanaal en bewaren de vergaderruimte voor de dagen waarop praten nodig is."
+          },
+          {
+            "q": "Moet iedereen zijn camera aanzetten?",
+            "a": "Nee. Camera's zijn in elke vergadering optioneel, en wie er geen gebruikt verschijnt als een kaart die oplicht als die persoon praat."
+          }
+        ]
+      },
+      "onboarding": {
+        "label": "Remote onboarding",
+        "meta": {
+          "title": "Remote onboarding van nieuwe medewerkers in een virtueel kantoor",
+          "description": "Help nieuwe medewerkers op afstand hun weg te vinden: vanaf de eerste dag zien ze het team, weten ze wie ze iets kunnen vragen en lopen ze erheen."
+        },
+        "title": "<em>Remote onboarding</em> waarbij nieuwe mensen zien wie ze iets kunnen vragen.",
+        "subtitle": "Het lastigste van op afstand beginnen is niet weten wie er is, of je iets mag vragen. Op TinyFloor is het team er gewoon, en een vraag is een paar stappen verderop.",
+        "points": [
+          {
+            "title": "Eén link om binnen te komen",
+            "body": "Stuur de uitnodigingslink van het kantoor. Ze maken een gratis account, kiezen een naam en een personage, en ze staan op de verdieping."
+          },
+          {
+            "title": "Leer het team kennen",
+            "body": "Ze zien wie wie is, wie bezig is en wie vrij is, zonder een lijst met namen uit het hoofd te leren."
+          },
+          {
+            "title": "Vragen zonder vergadering",
+            "body": "Even erheen lopen om iets te vragen voelt net zo klein als op kantoor, dus nieuwe mensen vragen eerder."
+          }
+        ],
+        "momentsTitle": "<em>Dag één</em> op de verdieping.",
+        "moments": [
+          {
+            "label": "Ochtend",
+            "title": "Binnenlopen",
+            "body": "Ze openen de uitnodigingslink, kiezen een personage en komen bij iedereen op de verdieping."
+          },
+          {
+            "label": "Middag",
+            "title": "Mensen ontmoeten",
+            "body": "Een collega leidt ze rond, en ze zeggen hallo bij een paar bureaus."
+          },
+          {
+            "label": "Namiddag",
+            "title": "Gewoon vragen",
+            "body": "Als ze vastlopen, zien ze wie vrij is en lopen ze erheen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hoe komen nieuwe medewerkers binnen?",
+            "a": "Met de uitnodigingslink van je kantoor. Ze maken een gratis account, kiezen een naam en een personage, en komen op de verdieping."
+          },
+          {
+            "q": "Neemt een nieuwe medewerker een plek in het abonnement?",
+            "a": "Ja, iedereen in het kantoor is lid. Plus heeft plek voor 10 mensen en Pro voor 25."
+          },
+          {
+            "q": "Kunnen nieuwe mensen de chat teruglezen?",
+            "a": "Ja. Kanalen bewaren hun geschiedenis, dus een nieuwe collega kan de gesprekken teruglezen in de kanalen waar die bij komt."
+          },
+          {
+            "q": "Vervangt het onze onboardingdocumenten?",
+            "a": "Nee. Houd je documenten en checklists waar ze zijn. TinyFloor maakt het menselijke deel makkelijker: wie wie is, en hoe je iets vraagt."
+          }
+        ]
+      },
+      "watercooler": {
+        "label": "Virtueel koffieapparaat",
+        "meta": {
+          "title": "Virtueel koffieapparaat voor remote teams",
+          "description": "Het praatje dat remote teams missen: kom collega's tegen op de verdieping, kletst in de lounge en zet muziek op, in een virtueel kantoor voor je team."
+        },
+        "title": "Een <em>virtueel koffieapparaat</em> dat vanzelf gebeurt.",
+        "subtitle": "Remote teams plannen sociale momenten omdat niets toevallig gebeurt. Op een gedeelde verdieping loop je langs mensen, zie je wie er is en blijf je even staan voor een praatje.",
+        "points": [
+          {
+            "title": "Mensen tegenkomen",
+            "body": "Als je tussen bureaus en ruimtes loopt, kom je collega's tegen en kun je even blijven staan."
+          },
+          {
+            "title": "Muziek in de lounge",
+            "body": "Zet een nummer op de jukebox voor de middag, voor iedereen in de ruimte."
+          },
+          {
+            "title": "Geen agenda-uitnodiging",
+            "body": "De verdieping is de hele dag open, dus een praatje begint wanneer jij wilt en eindigt als je doorloopt."
+          }
+        ],
+        "momentsTitle": "<em>De kleine momenten</em> zijn terug.",
+        "moments": [
+          {
+            "label": "Ochtend",
+            "title": "Hallo zeggen",
+            "body": "Loop op weg naar binnen langs een paar bureaus en zeg goedemorgen."
+          },
+          {
+            "label": "Middag",
+            "title": "Zet een nummer op",
+            "body": "Start de jukebox in de lounge voor wie er is."
+          },
+          {
+            "label": "Vrijdag",
+            "title": "Afsluiten",
+            "body": "Kom samen in de vergaderruimte voor een drankje en een praatje, met of zonder camera."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat is een virtueel koffieapparaat?",
+            "a": "Het is het informele praatje dat een remote team van kantoor mist: mensen tegenkomen en over van alles praten. Op TinyFloor gebeurt het op de verdieping in plaats van in een gepland gesprek."
+          },
+          {
+            "q": "Kosten deze praatjes vergaderuren?",
+            "a": "Gesprekken met z'n tweeën tellen nooit. Alleen groepsvergaderingen tellen mee voor de uren per maand."
+          },
+          {
+            "q": "Kunnen we samen muziek luisteren?",
+            "a": "Ja. Loop naar de speaker in de ruimte om muziek te spelen die iedereen in de ruimte hoort."
+          },
+          {
+            "q": "Is het alleen voor sociale momenten?",
+            "a": "Nee. Op dezelfde verdieping werkt je team de hele dag; het koffieapparaat is gewoon het stukje tussen de taken."
+          }
+        ]
+      },
+      "engineering": {
+        "label": "Engineeringteams",
+        "meta": {
+          "title": "Virtueel kantoor voor remote engineeringteams",
+          "description": "Een virtueel kantoor voor remote engineeringteams: help elkaar snel verder, pair met schermdelen, houd standups en bescherm de focustijd."
+        },
+        "title": "Een virtueel kantoor voor <em>remote engineeringteams.</em>",
+        "subtitle": "Developers hebben lange periodes van focus nodig en snelle antwoorden als ze vastlopen. TinyFloor geeft je allebei: standaard stil, en een collega op een paar stappen afstand.",
+        "points": [
+          {
+            "title": "Standaard stil",
+            "body": "Niemand hoort je tot je een gesprek start. Zet je status op bezig en iedereen weet dat ze moeten wachten."
+          },
+          {
+            "title": "Snel verder",
+            "body": "Loop naar wie de code kent, deel je scherm en los het in minuten op."
+          },
+          {
+            "title": "De standup verderop in de gang",
+            "body": "De hoofdvergadering is er altijd, voor standups, incidenten en demo's."
+          }
+        ],
+        "momentsTitle": "<em>Een dag</em> op een engineeringverdieping.",
+        "moments": [
+          {
+            "label": "10:00",
+            "title": "Standup",
+            "body": "Het team loopt de vergaderruimte in, praat tien minuten en loopt weer naar buiten."
+          },
+          {
+            "label": "14:00",
+            "title": "Focus",
+            "body": "Statussen op bezig houden de middag rustig."
+          },
+          {
+            "label": "16:30",
+            "title": "Verder",
+            "body": "Even erheen lopen, een gedeeld scherm, en de bug is gevonden."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Koppelt TinyFloor met GitHub of Jira?",
+            "a": "Nee. TinyFloor is waar je praat, niet waar het werk wordt bijgehouden. Deel je scherm om samen naar alles te kijken."
+          },
+          {
+            "q": "Is het geschikt voor pair programming?",
+            "a": "Ja. Loop naar een collega, start een gesprek en deel je scherm. Haal een derde erbij en het wordt een vergadering."
+          },
+          {
+            "q": "Hoe groot mag een engineeringteam zijn?",
+            "a": "Tot 25 mensen in één kantoor met Pro. Grotere organisaties kunnen elk team een eigen kantoor geven."
+          },
+          {
+            "q": "Kunnen we Slack houden?",
+            "a": "Ja. Veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
+          }
+        ]
+      },
+      "design": {
+        "label": "Designteams",
+        "meta": {
+          "title": "Virtueel kantoor voor remote designteams",
+          "description": "Een virtueel kantoor voor remote designteams: snelle feedbacksessies met schermdelen, een gedeeld whiteboard en een team dat je kunt zien, allemaal in de browser."
+        },
+        "title": "Een virtueel kantoor voor <em>remote designteams.</em>",
+        "subtitle": "Design wordt beter met snelle, eerlijke feedback. Op TinyFloor is een feedbacksessie even de verdieping oversteken, geen agenda-uitnodiging.",
+        "points": [
+          {
+            "title": "Feedback zonder afspraak",
+            "body": "Loop naar een designer, deel je scherm en praat over het werk."
+          },
+          {
+            "title": "Schets het",
+            "body": "Het whiteboard aan de muur is er voor de tekening die alles uitlegt."
+          },
+          {
+            "title": "Focus als het telt",
+            "body": "Zet je status op bezig voor diep werk, en de verdieping blijft om je heen rustig."
+          }
+        ],
+        "momentsTitle": "<em>Een designdag</em> op de verdieping.",
+        "moments": [
+          {
+            "label": "Ochtend",
+            "title": "Teamfeedback",
+            "body": "Loop de vergaderruimte in en deel om de beurt je scherm."
+          },
+          {
+            "label": "Middag",
+            "title": "Schetsen",
+            "body": "Werk samen een flow uit op het whiteboard."
+          },
+          {
+            "label": "Namiddag",
+            "title": "Snel checken",
+            "body": "Loop naar een developer om een detail te controleren voordat het live gaat."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Koppelt TinyFloor met Figma?",
+            "a": "Nee. Open Figma zoals altijd en deel je scherm in een gesprek of vergadering om er samen naar te kijken."
+          },
+          {
+            "q": "Is het whiteboard gedeeld?",
+            "a": "Ja. Iedereen in het kantoor ziet hetzelfde bord, en wat getekend is blijft staan voor als mensen terugkomen."
+          },
+          {
+            "q": "Wat kost het?",
+            "a": "Gratis voor maximaal 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, voor het hele kantoor, niet per persoon."
+          },
+          {
+            "q": "Moeten we iets installeren?",
+            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel."
+          }
+        ]
+      },
+      "startups": {
+        "label": "Startups",
+        "meta": {
+          "title": "Virtueel kantoor voor remote startups",
+          "description": "Een virtueel kantoor voor remote startups: houd de snelheid van samen zitten, voor één prijs per kantoor. Gratis voor 3 mensen, $19 per maand voor 10."
+        },
+        "title": "Een virtueel kantoor voor <em>remote startups.</em>",
+        "subtitle": "Jonge teams gaan snel omdat iedereen in dezelfde ruimte zit. TinyFloor zet een remote startup weer in één ruimte, voor één prijs per kantoor, niet per nieuwe collega.",
+        "points": [
+          {
+            "title": "Gratis zolang jullie de oprichters zijn",
+            "body": "Gratis voor maximaal 3 mensen, zo lang als je wilt."
+          },
+          {
+            "title": "Geen kosten per nieuwe collega",
+            "body": "$19 per maand voor maximaal 10 mensen en $49 voor 25. Iemand aannemen voegt geen kosten per plek toe."
+          },
+          {
+            "title": "Beslissen in minuten",
+            "body": "Zie wie er is, loop erheen en beslis, in plaats van te wachten op de volgende vergadering."
+          }
+        ],
+        "momentsTitle": "<em>Groeien</em> op één verdieping.",
+        "moments": [
+          {
+            "label": "3 mensen",
+            "title": "Free",
+            "body": "De oprichters delen gratis een verdieping, met 5 vergaderuren per maand."
+          },
+          {
+            "label": "10 mensen",
+            "title": "Plus",
+            "body": "$19 per maand voor het hele kantoor, met 30 vergaderuren."
+          },
+          {
+            "label": "25 mensen",
+            "title": "Pro",
+            "body": "$49 per maand voor het hele kantoor, met 60 vergaderuren."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wat kost TinyFloor voor een startup?",
+            "a": "Gratis voor maximaal 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, voor het hele kantoor, niet per persoon."
+          },
+          {
+            "q": "Kunnen we op elk moment opzeggen?",
+            "a": "Ja. Een betaald abonnement loopt tot het einde van de betaalde periode, daarna gaat het kantoor terug naar Free. Er wordt niets verwijderd."
+          },
+          {
+            "q": "Wat gebeurt er als we groter worden dan 25 mensen?",
+            "a": "Geef elk team een eigen kantoor, of mail ons en we praten erover."
+          },
+          {
+            "q": "Hebben we IT-inrichting nodig?",
+            "a": "Nee. Het draait in de browser: stuur de uitnodigingslink en iedereen logt in met Google of e-mail."
+          }
+        ]
+      },
+      "agencies": {
+        "label": "Bureaus",
+        "meta": {
+          "title": "Virtueel kantoor voor remote bureaus",
+          "description": "Een virtueel kantoor voor remote bureaus: zie wie kan helpen, bekijk werk samen op een gedeeld scherm en houd het studiogevoel vast, waar iedereen ook werkt."
+        },
+        "title": "Een virtueel kantoor voor <em>remote bureaus.</em>",
+        "subtitle": "Een bureau draait op snelle reviews en weten wie kan helpen. TinyFloor geeft een remote studio één verdieping waar allebei gebeuren zonder vergaderlink.",
+        "points": [
+          {
+            "title": "Wie kan helpen",
+            "body": "Statussen laten zien wie diep in een deadline zit en wie even kan meekijken."
+          },
+          {
+            "title": "Reviews ter plekke",
+            "body": "Loop erheen, deel je scherm en krijg binnen een paar minuten feedback op een concept."
+          },
+          {
+            "title": "Een kanaal per klant",
+            "body": "Maak een kanaal voor elke klant of elk project, zodat elk gesprek op één plek blijft."
+          }
+        ],
+        "momentsTitle": "<em>Een studiodag,</em> op afstand.",
+        "moments": [
+          {
+            "label": "Ochtend",
+            "title": "De dag plannen",
+            "body": "Het team komt samen in de vergaderruimte om het werk te verdelen."
+          },
+          {
+            "label": "Middag",
+            "title": "Snelle review",
+            "body": "Een designer loopt naar de lead en deelt een scherm voor feedback."
+          },
+          {
+            "label": "Avond",
+            "title": "Afronden",
+            "body": "Notities en links gaan in het kanaal van de klant, voor morgen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kunnen klanten bij ons kantoor?",
+            "a": "Kantoren zijn voor leden, en iedereen komt binnen met een gratis account via de uitnodigingslink. Gebruik voor klantgesprekken de vergadertool die je klanten al gebruiken."
+          },
+          {
+            "q": "Hoeveel mensen kunnen we hebben?",
+            "a": "Tot 10 met Plus en 25 met Pro, voor één maandprijs voor het hele kantoor."
+          },
+          {
+            "q": "Kunnen freelancers erbij?",
+            "a": "Ja. Freelancers komen net als iedereen binnen via de uitnodigingslink, en je kunt ze uit het kantoor halen als een project afloopt."
+          },
+          {
+            "q": "Werkt het voor creatieve reviews?",
+            "a": "Ja. Deel je scherm in een gesprek of vergadering en schets samen op het whiteboard."
+          }
+        ]
+      }
+    },
+    "teams": "Teams",
+    "all": "Alles bekijken",
+    "versusTitle": "{a}, {b} en TinyFloor, <em>naast elkaar.</em>",
+    "checkedIn": "De gegevens over {name} komen van de eigen website, gecontroleerd in {date}.",
+    "checkedBothIn": "De gegevens over {a} en {b} komen van hun prijspagina's, gecontroleerd in {date}.",
+    "hubs": {
+      "compare": {
+        "meta": {
+          "title": "Virtuele kantoren vergeleken en alternatieven",
+          "description": "Hoe TinyFloor zich verhoudt tot Gather, Kumospace, Sococo, oVice, Roam en de tools waarin teams vandaag praten, naast elkaar."
+        },
+        "title": "Naast elkaar, <em>eerlijk.</em>",
+        "body": "Hoe TinyFloor zich verhoudt tot andere virtuele kantoren, en tot de tools waarin je team vandaag praat."
+      },
+      "useCases": {
+        "meta": {
+          "title": "Toepassingen van een virtueel kantoor voor remote teams",
+          "description": "Standups, pair programming, onboarding en de momenten ertussen: hoe remote teams TinyFloor gedurende de dag gebruiken."
+        },
+        "title": "Hoe teams <em>de verdieping gebruiken.</em>",
+        "body": "De momenten van een remote werkdag, en hoe elk ervan werkt op TinyFloor."
+      },
+      "teams": {
+        "meta": {
+          "title": "TinyFloor voor engineering, design, startups en bureaus",
+          "description": "Een virtueel kantoor dat past bij hoe je team werkt: engineeringteams, designteams, startups en bureaus."
+        },
+        "title": "Gemaakt voor <em>teams zoals het jouwe.</em>",
+        "body": "Elk team gebruikt de verdieping een beetje anders. Zo past het bij het jouwe."
       }
     }
   },
@@ -1171,12 +1996,6 @@
       "lobbyTitle": "Probeer het demokantoor",
       "menu": "Menu",
       "teams": "Voor teams",
-      "cases": {
-        "virtualOffice": "Een plek voor je remote team",
-        "virtualCoworking": "Gefocust werken met je team",
-        "virtualClassroom": "Spreekuren en kleine klassen",
-        "proximityChat": "Praat met wie je tegenkomt"
-      },
       "getStarted": "Aan de slag",
       "lobbyLine": "Zie hoe een kantoor werkt. Geen account nodig."
     },

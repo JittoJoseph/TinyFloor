@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
@@ -9,8 +10,17 @@ import {
   Footprints,
   Globe,
   GraduationCap,
+  Hand,
+  Hash,
+  Link2,
+  Lock,
   MapIcon,
+  MessagesSquare,
+  MonitorUp,
+  Moon,
+  Music2,
   PenLine,
+  Presentation,
   Radio,
   ServerOff,
   ShieldCheck,
@@ -20,11 +30,12 @@ import {
   UserPlus,
   Users,
   Video,
+  VolumeX,
   Zap,
   type AppIcon,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { COMPARE_ROWS, LANDINGS, LANDING_GROUPS, type Landing, type LandingKey } from "@/lib/landings";
+import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
 import { faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/Logo";
@@ -32,10 +43,16 @@ import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Notes, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
 
+type Row = (typeof COMPARE_ROWS)[number];
+
 interface LandingCopy {
   subtitle: string;
   points: Array<{ title: string; body: string }>;
-  them?: Record<(typeof COMPARE_ROWS)[number], string>;
+  /** The other product, row by row. A row it has no answer for is left out of the table. */
+  them?: Partial<Record<Row, string>>;
+  /** Team and use-case pages: three moments of the day, each with a short label (a time, a size, a step). */
+  momentsTitle?: string;
+  moments?: Array<{ label: string; title: string; body: string }>;
   faq: Array<{ q: string; a: string }>;
 }
 
@@ -46,10 +63,25 @@ const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
   spatialchat: [TimerOff, Building2, Footprints],
   workadventure: [Users, MapIcon, ServerOff],
   wonder: [Footprints, Globe, Sun],
+  sococo: [Users, Footprints, TimerOff],
+  ovice: [Users, Footprints, MessagesSquare],
+  teamflow: [Users, TimerOff, Globe],
+  roam: [DoorOpen, Globe, Users],
+  slackHuddles: [Eye, Users, Hash],
+  discord: [Lock, Eye, Presentation],
+  gatherVsKumospace: [MapIcon, Users, Zap],
   virtualOffice: [Eye, Zap, Video],
   virtualCoworking: [Coffee, DoorOpen, Radio],
   virtualClassroom: [GraduationCap, Users, PenLine],
   proximityChat: [Footprints, Users, ShieldCheck],
+  pairProgramming: [Zap, MonitorUp, UserPlus],
+  standup: [Presentation, Eye, TimerOff],
+  onboarding: [Link2, Users, Hand],
+  watercooler: [Footprints, Music2, CalendarOff],
+  engineering: [VolumeX, Zap, Presentation],
+  design: [MonitorUp, PenLine, Moon],
+  startups: [Users, Building2, Zap],
+  agencies: [Eye, MonitorUp, Hash],
 };
 
 /**
@@ -60,9 +92,29 @@ const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
  */
 export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
-  const copy = t.raw(`pages.${page.key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
+  const copyOf = (key: LandingKey) => t.raw(`pages.${key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
+  const copy = copyOf(page.key);
   const path = `/${page.slug}`;
   const icons = POINT_ICONS[page.key];
+  const checked = page.checked
+    ? new Intl.DateTimeFormat(locale, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${page.checked}-01T00:00:00Z`))
+    : "";
+  // The products beside TinyFloor: the one this page is about, or both sides of an "X vs Y".
+  const others = page.versus
+    ? page.versus.map((key) => ({ name: landingByKey(key).competitor ?? "", them: copyOf(key).them ?? {} }))
+    : page.competitor && copy.them
+      ? [{ name: page.competitor, them: copy.them }]
+      : [];
+  const compareTitle =
+    others.length === 2
+      ? t.rich("versusTitle", { a: others[0].name, b: others[1].name, em: quiet })
+      : t.rich("compareTitle", { name: page.competitor ?? "", em: quiet });
+  const note =
+    others.length === 2
+      ? t("checkedBothIn", { a: others[0].name, b: others[1].name, date: checked })
+      : checked
+        ? t("checkedIn", { name: page.competitor ?? "", date: checked })
+        : t("checked", { name: page.competitor ?? "" });
 
   return (
     <MarketingShell path={path} oneTap>
@@ -93,7 +145,11 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         />
       </section>
 
-      {page.competitor && copy.them && <Compare name={page.competitor} them={copy.them} t={t} />}
+      {copy.moments && copy.momentsTitle && (
+        <Moments title={emphasised(copy.momentsTitle, locale, "text-muted-foreground/75")} items={copy.moments} />
+      )}
+
+      {others.length > 0 && <Compare title={compareTitle} note={note} others={others} t={t} />}
 
       <FloorMoments className="mt-28 sm:mt-40" />
 
@@ -103,22 +159,34 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("relatedTitle", { em: quiet })}</h2>
-        <div className="mx-auto mt-12 grid max-w-[880px] gap-10 md:grid-cols-2">
-          {LANDING_GROUPS.map((group) => (
+        <div className="mx-auto mt-12 grid max-w-[1040px] gap-10 md:grid-cols-3">
+          {/* The page's own group first, then the others; each shows a few and leads to its index for the rest. */}
+          {[page.group, ...LANDING_GROUPS.filter((group) => group !== page.group)].map((group) => (
             <nav key={group} aria-label={t(group)}>
               <p className="px-1 text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{t(group)}</p>
               <ul className="mt-4 grid gap-2">
-                {LANDINGS.filter((other) => other.group === group && other.key !== page.key).map((other) => (
-                  <li key={other.slug}>
-                    <Link
-                      href={`/${other.slug}`}
-                      className="group flex items-center justify-between gap-3 rounded-[18px] bg-muted/80 px-5 py-4 text-[15px] transition-colors hover:bg-muted"
-                    >
-                      {t(`pages.${other.key}.label`)}
-                      <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
-                    </Link>
-                  </li>
-                ))}
+                {LANDINGS.filter((other) => other.group === group && other.key !== page.key)
+                  .slice(0, 4)
+                  .map((other) => (
+                    <li key={other.slug}>
+                      <Link
+                        href={`/${other.slug}`}
+                        className="group flex items-center justify-between gap-3 rounded-[18px] bg-muted/80 px-5 py-4 text-[15px] transition-colors hover:bg-muted"
+                      >
+                        {t(`pages.${other.key}.label`)}
+                        <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
+                      </Link>
+                    </li>
+                  ))}
+                <li>
+                  <Link
+                    href={`/${HUBS[group]}`}
+                    className="flex items-center gap-1.5 px-5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {t("all")}
+                    <ArrowRight className="size-3.5 rtl:rotate-180" />
+                  </Link>
+                </li>
               </ul>
             </nav>
           ))}
@@ -132,55 +200,95 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
 type Translate = Awaited<ReturnType<typeof getTranslations<"landings">>>;
 
-/**
- * TinyFloor and the other product, row by row: a table on wide screens, a
- * list on a phone. No rules: the rows are fills with the canvas showing
- * between them, and TinyFloor's column is a shade darker.
- */
-function Compare({ name, them, t }: { name: string; them: NonNullable<LandingCopy["them"]>; t: Translate }) {
+/** Three moments on the floor, each under its own small label: a time, a team size, a step. */
+function Moments({ title, items }: { title: ReactNode; items: NonNullable<LandingCopy["moments"]> }) {
   return (
     <section className={cn(COLUMN, "pt-28 sm:pt-40")}>
-      <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[22ch] text-center")}>{t.rich("compareTitle", { name, em: quiet })}</h2>
+      <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[20ch] text-center")}>{title}</h2>
+      <ol className="mx-auto mt-12 grid max-w-[1000px] gap-3 sm:mt-16 lg:grid-cols-3">
+        {items.map((one) => (
+          <li key={one.title} className="rounded-[24px] bg-muted/80 p-6 sm:p-7">
+            <p className="text-[13px] font-medium tabular-nums text-brand">{one.label}</p>
+            <h3 className="mt-3 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
+            <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+/**
+ * TinyFloor and the other products, row by row: a table on wide screens, a
+ * list on a phone. No rules: the rows are fills with the canvas showing
+ * between them, and TinyFloor's column is a shade darker. A row shows only
+ * when every other product has an answer for it.
+ */
+function Compare({
+  title,
+  note,
+  others,
+  t,
+}: {
+  title: ReactNode;
+  note: string;
+  others: Array<{ name: string; them: Partial<Record<Row, string>> }>;
+  t: Translate;
+}) {
+  const rows = COMPARE_ROWS.filter((row) => others.every((other) => other.them[row]));
+  return (
+    <section className={cn(COLUMN, "pt-28 sm:pt-40")}>
+      <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[22ch] text-center")}>{title}</h2>
 
       <div className="mx-auto mt-14 hidden max-w-[960px] overflow-hidden rounded-[24px] sm:block">
-        <div className="grid grid-cols-[28%_1fr_1fr] gap-px bg-background">
+        <div className={cn("grid gap-px bg-background", others.length === 1 ? "grid-cols-[28%_1fr_1fr]" : "grid-cols-[22%_1fr_1fr_1fr]")}>
           <span className="bg-foreground/[0.035] px-6 py-5" />
           <span className="flex items-center gap-2 bg-foreground/[0.075] px-6 py-5 text-[16px] font-semibold">
             <Logo size={22} />
             TinyFloor
           </span>
-          <span className="bg-foreground/[0.035] px-6 py-5 text-[16px] font-semibold text-muted-foreground">{name}</span>
-          {COMPARE_ROWS.map((row) => (
+          {others.map((other) => (
+            <span key={other.name} className="bg-foreground/[0.035] px-6 py-5 text-[16px] font-semibold text-muted-foreground">
+              {other.name}
+            </span>
+          ))}
+          {rows.map((row) => (
             <div key={row} className="contents">
               <span className="bg-foreground/[0.035] px-6 py-5 text-[15px] text-muted-foreground">{t(`rows.${row}`)}</span>
               <span className="bg-foreground/[0.075] px-6 py-5 text-[15px] font-medium leading-snug">{t(`us.${row}`)}</span>
-              <span className="bg-foreground/[0.035] px-6 py-5 text-[15px] leading-snug text-muted-foreground">{them[row]}</span>
+              {others.map((other) => (
+                <span key={other.name} className="bg-foreground/[0.035] px-6 py-5 text-[15px] leading-snug text-muted-foreground">
+                  {other.them[row]}
+                </span>
+              ))}
             </div>
           ))}
         </div>
       </div>
 
       <dl className="mt-12 grid gap-2 sm:hidden">
-        {COMPARE_ROWS.map((row) => (
+        {rows.map((row) => (
           <div key={row} className="rounded-[18px] bg-muted/80 p-4">
             <dt className="text-[12.5px] text-muted-foreground">{t(`rows.${row}`)}</dt>
-            <dd className="mt-2 grid grid-cols-2 gap-3 text-[14px] leading-snug">
-              <span>
+            <dd className={cn("mt-2 grid gap-3 text-[14px] leading-snug", others.length === 1 ? "grid-cols-2" : "grid-cols-3")}>
+              <span className="min-w-0">
                 <span className="mb-1 flex items-center gap-1.5 text-[12px] font-semibold">
                   <Logo size={14} />
                   TinyFloor
                 </span>
                 <span className="font-medium">{t(`us.${row}`)}</span>
               </span>
-              <span className="text-muted-foreground">
-                <span className="mb-1 block text-[12px] font-semibold">{name}</span>
-                {them[row]}
-              </span>
+              {others.map((other) => (
+                <span key={other.name} className="min-w-0 text-muted-foreground">
+                  <span className="mb-1 block text-[12px] font-semibold">{other.name}</span>
+                  {other.them[row]}
+                </span>
+              ))}
             </dd>
           </div>
         ))}
       </dl>
-      <p className="mx-auto mt-4 max-w-[960px] px-1 text-[13px] text-faint">{t("checked", { name })}</p>
+      <p className="mx-auto mt-4 max-w-[960px] px-1 text-[13px] text-faint">{note}</p>
     </section>
   );
 }

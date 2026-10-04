@@ -27,7 +27,6 @@ export default async function LandingPage({ params }: Props) {
 
   return (
     <>
-      <link rel="preload" as="image" href="/hero/poster.webp" type="image/webp" fetchPriority="high" />
       <JsonLd
         schema={pageGraph({
           locale,

@@ -62,6 +62,7 @@ export function pageGraph({
   description,
   type = "WebPage",
   crumb = true,
+  parents = [],
   mainEntity,
   nodes = [],
 }: {
@@ -71,6 +72,8 @@ export function pageGraph({
   description?: string;
   type?: "WebPage" | "CollectionPage" | "AboutPage";
   crumb?: boolean;
+  /** Pages between home and this one in the breadcrumb, like a guide's index. */
+  parents?: Array<{ name: string; path: string }>;
   mainEntity?: string;
   nodes?: Schema[];
 }): Schema {
@@ -80,6 +83,7 @@ export function pageGraph({
     "@id": `${url}#breadcrumb`,
     itemListElement: [
       { name: NAME, item: absoluteUrl(locale, "/") },
+      ...parents.map((parent) => ({ name: parent.name, item: absoluteUrl(locale, parent.path) })),
       { name, item: url },
     ].map((entry, i) => ({ "@type": "ListItem", position: i + 1, ...entry })),
   };
@@ -129,6 +133,39 @@ export function appNode(
     featureList: features,
     // Free for 3, Plus $19 for 10, Pro $49 for 25 (docs/14).
     offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "49", priceCurrency: "USD", offerCount: 3 },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
+/** A guide as an article: its headline, who wrote it and when, in the page's language. */
+export function articleNode({
+  locale,
+  path,
+  headline,
+  description,
+  published,
+  updated,
+}: {
+  locale: string;
+  path: string;
+  headline: string;
+  description: string;
+  published: string;
+  updated: string;
+}): Schema {
+  const url = absoluteUrl(locale, path);
+  return {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline,
+    description,
+    url,
+    mainEntityOfPage: { "@id": `${url}#webpage` },
+    inLanguage: locale,
+    image: `${SITE_URL}${socialImage(locale, path)}`,
+    datePublished: published,
+    dateModified: updated,
+    author: { "@type": "Person", name: "Jitto Joseph", url: "https://www.jittojoseph.xyz" },
     publisher: { "@id": ORG_ID },
   };
 }

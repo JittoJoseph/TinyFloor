@@ -61,14 +61,9 @@ Their backlinks come the same way: other blogs link to useful guides.
    real links, and AI assistants cite them. This needs accounts, so it is a
    job for Jitto; the short description, features and prices are in
    llms-full.txt.
-2. **Guides for remote team leads, starting with team building.** A guides
-   section with real, useful pieces that use TinyFloor where it fits:
-   - Virtual team building activities (the 2,400 search, and the long tail)
-   - Games for virtual meetings, 5 minutes each
-   - How to build culture on a remote team
-   - Remote team communication: when to write, when to talk
-   - What is proximity chat (games and work)
-   One page type, one template like the search pages, translated the same way.
+2. **Guides for remote team leads.** Built: `/guides` and five guides in 18
+   languages (see below). Next ones: icebreaker questions for remote teams,
+   remote onboarding checklist, how to run a remote standup.
 3. **Buyer pages for competitors' pricing:** "Gather pricing" and "Kumospace
    pricing", explained honestly with what a team of 5, 10 and 25 pays, beside
    TinyFloor.
@@ -77,6 +72,27 @@ Their backlinks come the same way: other blogs link to useful guides.
    at one strong page.
 5. Wait for Google to read the new sitemap, then look at Search Console again
    in about four weeks, by page.
+
+## Guides
+
+`src/lib/guides.ts` lists them; copy is under `guides.pages.<key>` in the
+message files; `GuidePage` renders them in one reading column.
+
+- Built: virtual team building activities, games for virtual meetings, how
+  to build remote team culture, remote team communication, what is proximity
+  chat.
+- Each guide: a headline, an intro, sections of paragraphs and items, one
+  "where TinyFloor fits" box at the end with links to the product pages it
+  relates to, four questions, and the other guides. Items with a detail line
+  (time and group size) are numbered through the whole guide, so "20
+  activities" counts to 20.
+- Article, FAQPage and BreadcrumbList (Home, Guides, guide) structured data,
+  a byline and an updated date. Bump `updated` in `guides.ts` when a guide
+  changes, so the page and its schema say so.
+- Say only what the product does today. TinyFloor has no built-in games: the
+  guides name free browser games and say where the floor helps.
+- Social cards: `ONLY=guides node scripts/pictures.mjs` draws
+  `og/guide-<slug>.jpg`.
 
 ## Leave alone
 

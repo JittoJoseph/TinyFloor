@@ -32,11 +32,12 @@ under IndexNow there after a few hours.
 ## For AI assistants
 
 - `/llms.txt` (https://llmstxt.org): the site, one line a page, grouped as the
-  nav is: product, features, teams, use cases, compare. Then what's in every
-  office, the FAQ, and the other languages.
+  nav is: product, features, teams, use cases, compare, guides. Then what's in
+  every office, the FAQ, and the other languages.
 - `/llms-full.txt`: every marketing page's own words in English, with the plan
   table, billing notes, comparison tables with the month they were checked,
-  and every page's questions. An assistant can answer from this one file.
+  every guide in full, and every page's questions. An assistant can answer
+  from this one file.
 - Both are built from the message files and `LANDINGS` (`src/lib/llms.ts`),
   so a new page or a changed price shows up there with no extra work.
 - robots.txt lets every crawler in, AI crawlers included, except the app's

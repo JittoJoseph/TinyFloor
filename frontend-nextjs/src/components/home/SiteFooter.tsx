@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
+import { GUIDES_PATH } from "@/lib/guides";
 import { HUBS, LANDINGS, type LandingGroup } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
@@ -39,6 +40,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
   const t = useTranslations("home.footer");
   const tn = useTranslations("home.nav");
   const tl = useTranslations("landings");
+  const tg = useTranslations("guides");
   const ts = useTranslations("shell");
   const locale = useLocale();
   const current = locales.find((one) => one.code === locale) ?? locales[0];
@@ -70,6 +72,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
       title: t("resources"),
       links: [
         { label: tl("features"), href: `/${HUBS.features}` },
+        { label: tg("label"), href: GUIDES_PATH },
         { label: t("about"), href: "/about" },
         { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
         { label: t("faq"), href: "/#faq" },

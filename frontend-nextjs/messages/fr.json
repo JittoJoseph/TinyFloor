@@ -2612,5 +2612,729 @@
         "body": "Donnez à chaque équipe son propre bureau, ou écrivez à {email} et parlons-en."
       }
     }
+  },
+  "guides": {
+    "label": "Guides",
+    "eyebrow": "Guide",
+    "minutes": "{count} min de lecture",
+    "updated": "Mis à jour le {date}",
+    "by": "Par {name}",
+    "contents": "Sur cette page",
+    "faqTitle": "Questions <em>fréquentes.</em>",
+    "moreTitle": "D'autres <em>guides.</em>",
+    "all": "Tous les guides",
+    "fitCta": "Essayer le bureau de démo",
+    "hub": {
+      "meta": {
+        "title": "Guides pour les responsables d'équipes à distance",
+        "description": "Des guides pratiques pour ceux qui animent des équipes à distance : team building, jeux pour les réunions, culture, communication et fonctionnement du chat de proximité."
+      },
+      "title": "Guides pour les <em>équipes à distance.</em>",
+      "body": "Pratiques, courts et écrits par des gens qui travaillent à distance. Prenez ce qui vous aide, laissez le reste."
+    },
+    "pages": {
+      "teamBuilding": {
+        "label": "Activités de team building virtuel",
+        "meta": {
+          "title": "20 activités de team building virtuel qui plaisent aux équipes",
+          "description": "20 activités de team building virtuel classées par durée : lancements de 5 minutes, jeux de 30 minutes, événements mensuels et idées sans réunion."
+        },
+        "title": "Des activités de team building virtuel <em>qu'on aime vraiment.</em>",
+        "intro": "Le team building virtuel échoue souvent parce qu'il ressemble à une réunion de plus avec des jeux greffés dessus. Ce qui marche est court, facultatif, simple à organiser et donne de quoi parler ensuite. Voici 20 activités classées selon le temps dont vous disposez.",
+        "sections": [
+          {
+            "title": "Ce qui fait que ça marche",
+            "body": [
+              "Avant de choisir une activité, réglez le format. Ces cinq règles comptent plus que le jeu choisi."
+            ],
+            "items": [
+              {
+                "title": "Faites court",
+                "body": "Dix bonnes minutes valent mieux qu'une heure dont personne ne voulait. Vous pourrez recommencer la semaine suivante."
+              },
+              {
+                "title": "Rendez-le facultatif",
+                "body": "Les gens participent à ce qui leur plaît. Le fun obligatoire leur apprend surtout à couper la caméra."
+              },
+              {
+                "title": "Pendant les heures de travail",
+                "body": "Les soirées excluent les parents, les autres fuseaux horaires et tous ceux qui ont besoin de leur soirée."
+              },
+              {
+                "title": "Donnez une place à chacun",
+                "body": "Alternez les activités pour les bavards et pour les plus discrets : dessiner, deviner et écrire marchent aussi bien que parler."
+              },
+              {
+                "title": "Répétez ce qui marche",
+                "body": "Un petit rituel chaque semaine fait plus qu'un grand événement chaque trimestre."
+              }
+            ]
+          },
+          {
+            "title": "Cinq minutes, en début de réunion",
+            "body": [
+              "Sans préparation, quelle que soit la taille de l'équipe. Utilisez-en une pour ouvrir un point du matin ou une réunion hebdomadaire."
+            ],
+            "items": [
+              {
+                "title": "Deux vérités et un mensonge",
+                "detail": "5 min · 3 à 12 personnes",
+                "body": "Une personne dit trois choses sur elle ; les autres devinent laquelle est inventée. Deux ou trois personnes par réunion suffisent."
+              },
+              {
+                "title": "Un objet sur votre bureau",
+                "detail": "5 min · toute taille",
+                "body": "Chacun prend un objet à portée de main et explique pourquoi il est là. Facile pour tous, et ça en dit long."
+              },
+              {
+                "title": "Météo en un mot",
+                "detail": "2 min · toute taille",
+                "body": "Chacun décrit sa semaine en un mot. Revenez sur les plus intéressants plus tard, pas maintenant."
+              },
+              {
+                "title": "Plutôt ceci ou cela",
+                "detail": "5 min · toute taille",
+                "body": "L'animateur lit des paires (café ou thé, montagne ou mer, matin ou soir) et tout le monde répond en même temps dans le chat."
+              },
+              {
+                "title": "La photo de la semaine",
+                "detail": "5 min · jusqu'à 10 personnes",
+                "body": "Chacun partage une photo de sa semaine depuis son téléphone. Aucune explication nécessaire, sauf si on en a envie."
+              }
+            ]
+          },
+          {
+            "title": "Quinze à trente minutes",
+            "body": [
+              "De quoi bloquer un créneau toutes les une ou deux semaines, idéalement le vendredi après-midi."
+            ],
+            "items": [
+              {
+                "title": "Pictionary sur un tableau blanc partagé",
+                "detail": "20 min · 4 à 12 personnes",
+                "body": "Une personne dessine un mot sur un tableau que tout le monde voit pendant que les autres lancent des réponses. Une liste de mots du boulot ajoute des fous rires."
+              },
+              {
+                "title": "Quiz sur l'équipe",
+                "detail": "30 min · 4 à 20 personnes",
+                "body": "Récoltez à l'avance une anecdote surprenante par personne, puis faites deviner à qui elle appartient."
+              },
+              {
+                "title": "Devinez la chanson",
+                "detail": "20 min · 4 à 15 personnes",
+                "body": "Chacun envoie une chanson qu'il adore à l'animateur, qui en joue quelques secondes ; l'équipe devine à qui elle est."
+              },
+              {
+                "title": "L'île déserte",
+                "detail": "15 min · 3 à 10 personnes",
+                "body": "Chacun cite un livre, un album et un plat à emporter sur une île déserte, et l'équipe en débat."
+              },
+              {
+                "title": "Montrer et raconter",
+                "detail": "30 min · 3 à 10 personnes",
+                "body": "Une ou deux personnes par semaine montrent quelque chose qu'elles fabriquent, cuisinent, cultivent ou collectionnent. On apprend plus qu'avec n'importe quel jeu."
+              }
+            ]
+          },
+          {
+            "title": "Une heure, une fois par mois ou par trimestre",
+            "body": [
+              "Les grands événements demandent un peu d'organisation ou un petit budget. Faites-les moins souvent, mais bien."
+            ],
+            "items": [
+              {
+                "title": "Un escape game en ligne",
+                "detail": "60 min · 4 à 8 par salle",
+                "body": "Plusieurs sociétés proposent des escape games animés en visio. Répartissez les grandes équipes en salles et comparez les temps à la fin."
+              },
+              {
+                "title": "Un atelier avec kit",
+                "detail": "60 min · toute taille",
+                "body": "Cuisine, café ou cocktails, avec les mêmes ingrédients livrés chez chacun. Commandez tôt si l'équipe est dans plusieurs pays."
+              },
+              {
+                "title": "Un tournoi de jeux",
+                "detail": "45 min · 4 à 30 personnes",
+                "body": "Des jeux gratuits dans le navigateur comme Gartic Phone, skribbl.io ou Codenames en ligne marchent bien. Jouez en petits groupes, puis une finale."
+              },
+              {
+                "title": "Une journée de création",
+                "detail": "Une demi-journée · toute taille",
+                "body": "De petites équipes construisent ce qu'elles veulent, lié au travail ou non, et le présentent à la fin. On mélange des gens qui ne travaillent jamais ensemble."
+              },
+              {
+                "title": "Le bilan du trimestre",
+                "detail": "60 min · toute taille",
+                "body": "Revenez sur ce que l'équipe a livré, puis remettez des prix farfelus votés par tous : meilleur bug, meilleur sauvetage, meilleur mème."
+              }
+            ]
+          },
+          {
+            "title": "Sans aucune réunion",
+            "body": [
+              "Tout n'a pas besoin d'un appel. Ces idées se déroulent sur une semaine dans un canal de chat et conviennent aux équipes sur plusieurs fuseaux."
+            ],
+            "items": [
+              {
+                "title": "Un défi photo",
+                "detail": "1 semaine · toute taille",
+                "body": "Un thème par semaine (votre vue, votre déjeuner, quelque chose de bleu) et un canal où poster."
+              },
+              {
+                "title": "Un fil de remerciements",
+                "detail": "En continu · toute taille",
+                "body": "Un endroit pour remercier quelqu'un publiquement pour quelque chose de précis. Lisez les plus beaux en fin de mois."
+              },
+              {
+                "title": "Un échange de recettes",
+                "detail": "1 semaine · toute taille",
+                "body": "Chacun partage une recette de chez lui. Rassemblez-les dans un document partagé : il devient le livre de cuisine de l'équipe."
+              },
+              {
+                "title": "Un défi de pas",
+                "detail": "2 semaines · toute taille",
+                "body": "Des équipes de trois additionnent leurs pas quotidiens. Restez bienveillant et acceptez tout type de mouvement."
+              },
+              {
+                "title": "Un club de lecture ou de podcast",
+                "detail": "1 mois · 3 à 10 personnes",
+                "body": "Choisissez quelque chose à lire ou à écouter, discutez-en dans un fil et retrouvez-vous une fois à la fin si l'envie est là."
+              }
+            ]
+          },
+          {
+            "title": "Une habitude, pas un événement",
+            "body": [
+              "Les équipes les plus soudées comptent rarement sur les grands événements. Elles ont surtout plein de petits moments imprévus : un mot avant une réunion, une question qui devient une conversation, une chanson que quelqu'un lance.",
+              "Au bureau, cela arrive tout seul. À distance, il faut un lieu où l'on se voit et où l'on peut passer sans réserver d'appel. Donnez-le à votre équipe, et les activités ci-dessus deviennent un bonus plutôt que le seul moment où l'on se parle."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "La place de TinyFloor",
+          "body": "TinyFloor est un bureau virtuel où votre équipe se déplace. Croisez quelqu'un et arrêtez-vous pour discuter, lancez une chanson sur le juke-box du salon, dessinez sur le tableau blanc pour un Pictionary ou retrouvez-vous dans la salle de réunion pour l'apéro du vendredi. Gratuit jusqu'à 3 personnes, dans le navigateur."
+        },
+        "faq": [
+          {
+            "q": "Quelles activités de team building virtuel pour une petite équipe ?",
+            "a": "Des activités courtes sans préparation : deux vérités et un mensonge, un objet sur votre bureau, Pictionary sur un tableau blanc partagé ou devinez la chanson. Une petite équipe peut faire quelque chose chaque semaine plutôt qu'un grand événement par trimestre."
+          },
+          {
+            "q": "À quelle fréquence faire du team building à distance ?",
+            "a": "Un lancement de cinq minutes dans la réunion hebdomadaire et quelque chose de plus long une fois par mois conviennent à la plupart des équipes. Un petit rituel hebdomadaire fait plus qu'un grand événement rare."
+          },
+          {
+            "q": "Comment rendre le team building virtuel moins gênant ?",
+            "a": "Faites court et facultatif, pendant les heures de travail, avec un animateur et des règles claires, et choisissez des activités où les plus discrets peuvent dessiner, deviner ou écrire plutôt que se donner en spectacle."
+          },
+          {
+            "q": "Quels outils gratuits utiliser ?",
+            "a": "Gartic Phone, skribbl.io et Codenames en ligne sont gratuits dans le navigateur. Un tableau blanc partagé suffit pour les jeux de dessin, et un canal de chat pour tout ce qui est asynchrone. TinyFloor est gratuit jusqu'à 3 personnes."
+          }
+        ]
+      },
+      "meetingGames": {
+        "label": "Jeux pour réunions virtuelles",
+        "meta": {
+          "title": "15 jeux rapides pour réunions virtuelles (5 minutes maximum)",
+          "description": "15 jeux rapides pour réunions virtuelles sans préparation : jeux de parole, de devinettes et de dessin qui tiennent en cinq minutes."
+        },
+        "title": "Des jeux rapides pour <em>réunions virtuelles.</em>",
+        "intro": "Un bon jeu de réunion dure cinq minutes, ne demande aucune préparation et marche caméra allumée ou éteinte. Ces 15 jeux en sont, classés par type de plaisir.",
+        "sections": [
+          {
+            "title": "Avant de commencer",
+            "items": [
+              {
+                "title": "Choisissez un animateur",
+                "body": "Une personne explique les règles, tient le temps et fait avancer. Changez de rôle chaque semaine."
+              },
+              {
+                "title": "Lancez un minuteur",
+                "body": "Cinq minutes, c'est cinq minutes. S'arrêter pendant que c'est encore drôle donne envie de recommencer."
+              },
+              {
+                "title": "Personne n'est obligé de jouer",
+                "body": "Laissez les gens passer leur tour, répondre dans le chat ou jouer caméra éteinte."
+              }
+            ]
+          },
+          {
+            "title": "Jeux de parole",
+            "items": [
+              {
+                "title": "Tu préfères",
+                "detail": "Sans préparation · toute taille",
+                "body": "L'animateur propose un choix entre deux options, chacun répond en un mot, et deux personnes expliquent le leur."
+              },
+              {
+                "title": "Opinions tranchées",
+                "detail": "Sans préparation · 3 à 15 personnes",
+                "body": "Quelqu'un partage un avis léger (ananas sur la pizza, tabulations ou espaces) et chacun le note de 1 à 10."
+              },
+              {
+                "title": "Rose, épine, bourgeon",
+                "detail": "Sans préparation · jusqu'à 10 personnes",
+                "body": "Chacun partage une chose agréable, une chose difficile et une chose qu'il attend, en une phrase chacune."
+              },
+              {
+                "title": "L'histoire mot à mot",
+                "detail": "Sans préparation · 4 à 12 personnes",
+                "body": "Chacun à son tour ajoute un mot à une histoire. Elle part vite en vrille, c'est tout l'intérêt."
+              },
+              {
+                "title": "Heureusement, malheureusement",
+                "detail": "Sans préparation · 4 à 12 personnes",
+                "body": "À tour de rôle, ajoutez une phrase à une histoire, en alternant bonne et mauvaise nouvelle."
+              }
+            ]
+          },
+          {
+            "title": "Jeux de devinettes",
+            "items": [
+              {
+                "title": "À qui ce bureau ?",
+                "detail": "Peu de préparation · 4 à 15 personnes",
+                "body": "Chacun envoie à l'avance une photo de son bureau ; l'équipe devine qui est qui."
+              },
+              {
+                "title": "Photo d'animal ou d'enfance",
+                "detail": "Peu de préparation · 4 à 15 personnes",
+                "body": "Même principe avec des photos d'animaux ou de chacun enfant. Toujours un succès."
+              },
+              {
+                "title": "Ma semaine en emoji",
+                "detail": "Sans préparation · toute taille",
+                "body": "Chacun poste trois emoji qui résument sa semaine ; les autres devinent l'histoire."
+              },
+              {
+                "title": "Devinez le son",
+                "detail": "Peu de préparation · toute taille",
+                "body": "L'animateur joue de courts sons du quotidien et chacun devine ce que c'est. Les bruits de la maison marchent le mieux."
+              },
+              {
+                "title": "Vingt questions",
+                "detail": "Sans préparation · 3 à 12 personnes",
+                "body": "Une personne pense à quelque chose ; les autres posent des questions fermées jusqu'à trouver."
+              }
+            ]
+          },
+          {
+            "title": "Jeux de dessin et d'écran",
+            "items": [
+              {
+                "title": "Dessin en trente secondes",
+                "detail": "Sans préparation · 3 à 12 personnes",
+                "body": "Donnez un mot, lancez 30 secondes, et tout le monde le dessine en même temps sur un tableau blanc partagé."
+              },
+              {
+                "title": "Gartic Phone",
+                "detail": "Sans préparation · 4 à 30 personnes",
+                "body": "Gratuit dans le navigateur : un téléphone arabe dessiné où une phrase devient tout autre chose."
+              },
+              {
+                "title": "skribbl.io",
+                "detail": "Sans préparation · 3 à 12 personnes",
+                "body": "Pictionary en ligne gratuit avec salon privé. Ajoutez vos propres mots d'équipe pour les blagues internes."
+              },
+              {
+                "title": "Chasse au trésor en soixante secondes",
+                "detail": "Sans préparation · toute taille",
+                "body": "Nommez un objet (quelque chose de rouge, quelque chose de plus vieux que vous) et chacun court le montrer à la caméra."
+              },
+              {
+                "title": "Quiz en cinq questions",
+                "detail": "Peu de préparation · toute taille",
+                "body": "Cinq questions rapides sur la semaine, le produit ou l'équipe. Réponses dans le chat ; la plus rapide juste gagne."
+              }
+            ]
+          },
+          {
+            "title": "Bien l'animer",
+            "body": [
+              "Jouez en début de réunion, pas à la fin, quand chacun est frais et que personne ne doit filer. Gardez le même jeu quelques semaines pour que personne n'ait à réapprendre les règles, puis changez.",
+              "Pour les grandes réunions, faites de petits groupes de quatre à six. Un jeu ne marche plus quand la plupart regardent au lieu de jouer."
+            ]
+          }
+        ],
+        "fit": {
+          "title": "La place de TinyFloor",
+          "body": "Dans TinyFloor, la salle de réunion de votre équipe est toujours là : rejoignez une réunion et votre personnage y entre, sans lien à envoyer. Le tableau blanc partagé au mur sert aux jeux de dessin, et l'étage reste ouvert ensuite pour ceux qui veulent continuer à discuter."
+        },
+        "faq": [
+          {
+            "q": "Quel jeu de cinq minutes pour une réunion virtuelle ?",
+            "a": "Tu préfères, opinions tranchées ou un dessin en trente secondes sur un tableau blanc partagé. Aucune préparation, et ça marche caméra allumée ou éteinte."
+          },
+          {
+            "q": "Quelle différence entre un brise-glace et un jeu de réunion ?",
+            "a": "Un brise-glace pousse les gens à parler d'eux, souvent au début d'un nouveau groupe. Un jeu de réunion est un moment de détente pour une équipe qui se connaît déjà. Beaucoup de jeux ici font les deux."
+          },
+          {
+            "q": "Comment jouer dans une grande réunion virtuelle ?",
+            "a": "Faites des groupes de quatre à six, donnez à chacun le même jeu et quelques minutes, puis réunissez tout le monde pour partager la meilleure réponse."
+          },
+          {
+            "q": "Faut-il un logiciel particulier ?",
+            "a": "Non. La plupart marchent dans n'importe quel appel vidéo avec chat. Gartic Phone et skribbl.io sont gratuits dans le navigateur, et un tableau blanc partagé suffit pour les jeux de dessin."
+          }
+        ]
+      },
+      "remoteCulture": {
+        "label": "Culture d'équipe à distance",
+        "meta": {
+          "title": "Créer une culture d'équipe à distance : 9 habitudes qui marchent",
+          "description": "Comment créer une culture dans une équipe à distance : neuf habitudes du quotidien qui marchent, ce qu'il faut arrêter et comment savoir si ça fonctionne."
+        },
+        "title": "Créer une culture dans une <em>équipe à distance.</em>",
+        "intro": "La culture, c'est ce que les gens font chaque jour quand personne ne regarde : comment ils demandent de l'aide, partagent des nouvelles et expriment un désaccord. Une équipe à distance perd les petits moments qui la façonnent au bureau ; elle doit donc leur faire de la place, volontairement, légèrement et chaque jour.",
+        "sections": [
+          {
+            "title": "Ce qu'est la culture sans bureau",
+            "body": [
+              "Au bureau, beaucoup de culture se crée par hasard. On entend comment une collègue expérimentée gère un client difficile, on voit qui reste tard avant un lancement, on déjeune avec quelqu'un d'une autre équipe.",
+              "Le travail à distance supprime presque tout cela. Il reste ce que les gens écrivent, ce qu'ils disent en appel et ce qu'ils choisissent de rendre visible. La bonne nouvelle, c'est que tout cela se façonne avec quelques habitudes claires."
+            ]
+          },
+          {
+            "title": "Neuf habitudes qui la construisent",
+            "items": [
+              {
+                "title": "Écrivez les décisions",
+                "body": "Gardez un endroit où vivent les décisions et leurs raisons. Les nouveaux apprennent comment l'équipe pense en les lisant."
+              },
+              {
+                "title": "Privilégiez les canaux publics",
+                "body": "Posez vos questions là où d'autres peuvent voir et apprendre. Les messages privés sont pour les sujets privés."
+              },
+              {
+                "title": "Rendez les gens visibles",
+                "body": "Montrez qui est là, qui est occupé et qui est libre pour parler, pour que demander de l'aide ne ressemble pas à déranger."
+              },
+              {
+                "title": "Gardez un lieu où passer",
+                "body": "Une salle toujours ouverte ou des permanences où l'on peut venir sans rien réserver."
+              },
+              {
+                "title": "Ayez de petits rituels",
+                "body": "Une démo hebdomadaire, un fil des réussites du vendredi, un jeu de cinq minutes. Petits, réguliers et identiques chaque semaine."
+              },
+              {
+                "title": "Donnez un parrain aux nouveaux",
+                "body": "L'intégration doit être une personne, pas seulement un document : quelqu'un à qui poser les questions bêtes le premier mois."
+              },
+              {
+                "title": "Célébrez en public",
+                "body": "Remerciez pour des choses précises là où toute l'équipe le voit. Cela montre ce que l'équipe valorise."
+              },
+              {
+                "title": "Protégez le temps de concentration",
+                "body": "Une bonne culture à distance laisse les gens disparaître quelques heures. Faites d'« occupé » un statut respecté, pas un signal d'alerte."
+              },
+              {
+                "title": "Voyez-vous en vrai quand c'est possible",
+                "body": "Une ou deux fois par an, si le budget le permet. Chaque appel devient plus simple ensuite."
+              }
+            ]
+          },
+          {
+            "title": "Ce qu'il faut arrêter",
+            "items": [
+              {
+                "title": "Le fun obligatoire",
+                "body": "Les événements sociaux imposés à des heures pénibles créent de la rancœur, pas de la proximité."
+              },
+              {
+                "title": "La caméra allumée pour tout",
+                "body": "La vidéo aide pour certaines conversations et fatigue pour toutes. Laissez le choix."
+              },
+              {
+                "title": "La surveillance de l'activité",
+                "body": "Mesurer les frappes ou le temps en ligne dit aux gens qu'on ne leur fait pas confiance, alors que la confiance est l'essentiel."
+              },
+              {
+                "title": "Les réunions pour rester connectés",
+                "body": "Une réunion générale quotidienne pour se sentir ensemble devient vite une corvée. Donnez un lieu plutôt qu'un horaire."
+              }
+            ]
+          },
+          {
+            "title": "Comment savoir si ça marche",
+            "body": [
+              "Vous ne le verrez pas dans un score d'enquête. Cherchez plutôt ceci :"
+            ],
+            "items": [
+              {
+                "title": "Les nouveaux posent des questions en public",
+                "body": "Cela veut dire qu'ils se sentent en sécurité quand ils ne savent pas."
+              },
+              {
+                "title": "On s'entraide entre équipes",
+                "body": "Sans ticket et sans qu'un manager le demande."
+              },
+              {
+                "title": "Les discussions informelles arrivent seules",
+                "body": "Les conversations commencent sans invitation dans l'agenda."
+              },
+              {
+                "title": "Les gens décrochent vraiment",
+                "body": "Ils prennent des vacances et se déconnectent en fin de journée."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "La place de TinyFloor",
+          "body": "TinyFloor donne à une équipe à distance un lieu où être ensemble : un étage où l'on voit qui est là, où l'on choisit un statut et où l'on va parler à quelqu'un de libre. Il montre qui est présent et le statut choisi, rien de plus : il ne surveille l'activité de personne."
+        },
+        "faq": [
+          {
+            "q": "Une équipe à distance peut-elle avoir une culture forte ?",
+            "a": "Oui, mais pas par hasard. Les équipes qui écrivent leurs décisions, gardent un lieu où passer, ont de petits rituels et célèbrent en public sont souvent plus soudées que des équipes au bureau."
+          },
+          {
+            "q": "Quel est le plus grand défi de la culture à distance ?",
+            "a": "La perte des petits moments imprévus : conversations entendues, questions rapides, déjeuner avec quelqu'un de nouveau. Une équipe à distance a besoin d'un lieu où ils peuvent encore arriver."
+          },
+          {
+            "q": "Comment intégrer les nouveaux dans une équipe à distance ?",
+            "a": "Donnez-leur un parrain, présentez-les dans un canal public, invitez-les aux rituels de l'équipe dès le premier jour et rendez facile de voir qui est là pour répondre."
+          },
+          {
+            "q": "Comment créer une culture sur plusieurs fuseaux horaires ?",
+            "a": "Misez sur l'écrit et des rituels asynchrones, comme un fil hebdomadaire ou un défi photo, et trouvez une ou deux heures communes pour les moments en direct. Alternez les horaires pour que ce ne soient pas toujours les mêmes qui veillent."
+          }
+        ]
+      },
+      "remoteCommunication": {
+        "label": "Communication d'équipe à distance",
+        "meta": {
+          "title": "Communication à distance : quand écrire, quand parler",
+          "description": "Un guide pratique de la communication en équipe à distance : quand écrire, quand parler, des règles simples et des solutions aux problèmes courants."
+        },
+        "title": "Communication à distance : <em>quand écrire, quand parler.</em>",
+        "intro": "La plupart des problèmes de communication à distance viennent du mauvais canal : un long fil qui aurait dû être un appel de deux minutes, ou une réunion qui aurait pu être un message. Voici comment choisir, et quelques règles simples à convenir en équipe.",
+        "sections": [
+          {
+            "title": "Écrivez-le quand",
+            "items": [
+              {
+                "title": "Quelqu'un en aura besoin plus tard",
+                "body": "Décisions, procédures et tout ce qu'un nouveau cherchera dans trois mois."
+              },
+              {
+                "title": "Il faut réfléchir",
+                "body": "Les propositions et les retours s'améliorent quand on peut relire et répondre quand on est prêt."
+              },
+              {
+                "title": "On est sur d'autres fuseaux",
+                "body": "L'écrit permet à chacun de participer pendant ses propres heures."
+              },
+              {
+                "title": "C'est un point d'avancement",
+                "body": "Ce qui se lit en une minute en prend dix en réunion."
+              }
+            ]
+          },
+          {
+            "title": "Parlez-en quand",
+            "items": [
+              {
+                "title": "Un fil dépasse trois réponses",
+                "body": "Si ça fait encore des allers-retours, deux minutes de discussion régleront la question."
+              },
+              {
+                "title": "Quelqu'un est bloqué",
+                "body": "Débloquer un collègue vaut une interruption. Allez le voir, regardez ensemble et remettez-le en route."
+              },
+              {
+                "title": "Il y a des tensions",
+                "body": "Le ton se perd à l'écrit. Les désaccords et les retours difficiles passent mieux à l'oral."
+              },
+              {
+                "title": "Vous explorez des idées",
+                "body": "Le brainstorming est plus rapide en conversation. Notez ensuite ce que vous avez décidé."
+              }
+            ]
+          },
+          {
+            "title": "Des règles simples à convenir en équipe",
+            "body": [
+              "Écrivez-les une fois et montrez-les aux nouveaux. Elles évitent la plupart des frictions."
+            ],
+            "items": [
+              {
+                "title": "Délais de réponse par canal",
+                "body": "Par exemple : chat en quelques heures, e-mail dans la journée, et un appel pour tout ce qui est urgent."
+              },
+              {
+                "title": "Un seul endroit pour les décisions",
+                "body": "Un canal ou un document où elles sont notées, pour ne pas les perdre dans les messages privés."
+              },
+              {
+                "title": "Le statut a un sens",
+                "body": "Occupé veut dire ne pas déranger sauf urgence. Disponible veut dire qu'on peut passer."
+              },
+              {
+                "title": "Chaque appel se termine par écrit",
+                "body": "Deux lignes dans le bon canal : ce qui a été décidé et qui fait quoi."
+              },
+              {
+                "title": "Pas d'ordre du jour, pas de réunion",
+                "body": "Une réunion sans objectif écrit dans l'invitation peut être refusée."
+              }
+            ]
+          },
+          {
+            "title": "Problèmes courants et solutions",
+            "items": [
+              {
+                "title": "Tout semble urgent",
+                "body": "Mettez-vous d'accord sur ce qu'est l'urgence et son canal. Le reste peut attendre une réponse."
+              },
+              {
+                "title": "Les décisions se perdent",
+                "body": "Sortez-les des messages privés pour les mettre dans le canal des décisions, à chaque fois."
+              },
+              {
+                "title": "Trop de réunions",
+                "body": "Remplacez les points d'avancement par des mises à jour écrites et gardez les appels pour les décisions et les problèmes."
+              },
+              {
+                "title": "Certains se taisent",
+                "body": "Les plus discrets n'osent souvent pas interrompre. Rendez visible quand quelqu'un est libre et prenez des nouvelles en tête-à-tête."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "La place de TinyFloor",
+          "body": "TinyFloor met l'écrit et l'oral côte à côte. Les canaux et messages restent dans le chat de l'équipe ; quand un fil s'allonge, vous voyez si la personne est libre et vous allez lui parler. Un statut indique quand quelqu'un est concentré, pour que personne n'ait à deviner."
+        },
+        "faq": [
+          {
+            "q": "Quels outils de communication pour une équipe à distance ?",
+            "a": "La plupart des équipes ont besoin de quatre choses : un chat pour les messages rapides, un lieu pour les documents et décisions, des appels vidéo et un moyen de voir qui est là. Beaucoup d'outils en couvrent plusieurs ; l'important est de convenir de l'usage de chacun."
+          },
+          {
+            "q": "Faut-il travailler en synchrone ou en asynchrone ?",
+            "a": "Les deux. Écrivez par défaut pour les mises à jour et décisions, et parlez en direct pour débloquer, apaiser une tension ou explorer des idées. La plupart des équipes ont besoin de quelques heures communes par jour pour la partie en direct."
+          },
+          {
+            "q": "Comment éviter trop de réunions ?",
+            "a": "Remplacez les points d'avancement par de l'écrit, exigez un ordre du jour pour chaque réunion et facilitez les échanges rapides, pour qu'on ne réserve pas une réunion pour une question de deux minutes."
+          },
+          {
+            "q": "Comment communiquer sur plusieurs fuseaux horaires ?",
+            "a": "Écrivez par défaut, notez les décisions là où tout le monde les trouve, alternez les horaires des réunions et gardez les heures communes pour les conversations qui en ont besoin."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Qu'est-ce que le chat de proximité ?",
+        "meta": {
+          "title": "Qu'est-ce que le chat de proximité ? Dans les jeux et au travail",
+          "description": "Ce qu'est le chat de proximité, comment il fonctionne, quels jeux l'utilisent et comment les bureaux virtuels s'en servent pour parler en s'approchant."
+        },
+        "title": "Qu'est-ce que le <em>chat de proximité ?</em>",
+        "intro": "Le chat de proximité vous permet de parler aux personnes proches de vous dans un espace virtuel, et pas à tout le monde. Il vient des jeux, où il rend les mondes vivants, et c'est aujourd'hui ainsi que les bureaux virtuels permettent aux équipes de parler sans lien de réunion.",
+        "sections": [
+          {
+            "title": "Comment fonctionne le chat de proximité",
+            "body": [
+              "Chaque personne a une position sur une carte, dans un monde de jeu ou sur l'étage d'un bureau. Au lieu que tout le monde entende tout le monde, l'espace décide qui peut parler : approchez-vous de quelqu'un et vous vous entendez, éloignez-vous et la conversation s'arrête.",
+              "Certaines versions atténuent les voix avec la distance, comme le son dans une pièce. D'autres vous connectent une fois à côté de quelqu'un, comme quand on va au bureau d'un collègue."
+            ]
+          },
+          {
+            "title": "Le chat de proximité dans les jeux",
+            "body": [
+              "Les jeux l'utilisent pour intégrer les conversations au monde. Quelques exemples connus :"
+            ],
+            "items": [
+              {
+                "title": "Jeux de déduction sociale",
+                "body": "Des mods pour Among Us ont ajouté la voix de proximité : on n'entend que les joueurs proches et on peut chuchoter des plans."
+              },
+              {
+                "title": "Jeux de survie",
+                "body": "Rust et DayZ utilisent la voix de proximité : croiser un inconnu veut dire lui parler pour de vrai."
+              },
+              {
+                "title": "Jeux en coopération",
+                "body": "Dans Lethal Company, un coéquipier qui s'éloigne devient difficile à entendre, et c'est la moitié du suspense."
+              },
+              {
+                "title": "Jeux bac à sable",
+                "body": "Des serveurs Minecraft ajoutent la voix de proximité avec des mods, pour qu'un monde partagé ressemble à un vrai lieu."
+              }
+            ]
+          },
+          {
+            "title": "Le chat de proximité au travail",
+            "body": [
+              "Les bureaux virtuels reprennent l'idée pour les équipes à distance. Votre équipe partage un étage en 2D, chacun est un personnage, et l'on parle en s'approchant de quelqu'un au lieu d'envoyer un lien de réunion.",
+              "Cela rend ce que les appels vidéo font perdre : voir qui est là, les questions rapides et les conversations en aparté. Deux personnes peuvent parler dans un coin pendant que d'autres travaillent, comme dans un vrai bureau."
+            ]
+          },
+          {
+            "title": "Deux styles de chat de proximité",
+            "items": [
+              {
+                "title": "Audio spatial toujours actif",
+                "body": "Le son se connecte automatiquement quand vous êtes proche de quelqu'un et baisse avec la distance. C'est vivant, mais on peut vous entendre avant que vous ne le vouliez."
+              },
+              {
+                "title": "S'approcher et appeler",
+                "body": "En vous approchant, vous obtenez un bouton pour appeler, et rien ne s'entend avant que vous lanciez l'appel. C'est plus calme et mieux adapté au travail."
+              }
+            ]
+          },
+          {
+            "title": "Avantages et inconvénients",
+            "items": [
+              {
+                "title": "Pas de lien de réunion",
+                "body": "Parler est aussi simple que s'approcher, donc les petites questions se posent."
+              },
+              {
+                "title": "Conversations en aparté",
+                "body": "Plusieurs conversations peuvent avoir lieu en même temps dans le même espace."
+              },
+              {
+                "title": "Présence",
+                "body": "Vous voyez qui est là avant de déranger qui que ce soit."
+              },
+              {
+                "title": "Il faut un espace commun",
+                "body": "Cela ne marche que si l'équipe garde l'espace ouvert en travaillant."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "La place de TinyFloor",
+          "body": "TinyFloor utilise le style « s'approcher et appeler » : approchez votre personnage d'un collègue et un bouton d'appel apparaît à côté de lui, pour que personne ne soit entendu par accident. Les groupes se retrouvent dans la salle de réunion. Il fonctionne dans le navigateur et est gratuit jusqu'à 3 personnes."
+        },
+        "faq": [
+          {
+            "q": "Que signifie chat de proximité ?",
+            "a": "Que vous ne pouvez parler qu'aux personnes proches de vous dans un espace virtuel. Rapprochez-vous pour parler ; éloignez-vous et la conversation s'arrête."
+          },
+          {
+            "q": "Le chat de proximité est-il privé ?",
+            "a": "Seules les personnes proches vous entendent, ce qui est plus privé qu'un canal où tout le monde se trouve. Dans le style « s'approcher et appeler », rien ne s'entend avant que vous lanciez un appel."
+          },
+          {
+            "q": "Quels jeux ont un chat de proximité ?",
+            "a": "Rust, DayZ et Lethal Company l'intègrent, et des mods l'ajoutent à des jeux comme Among Us et Minecraft."
+          },
+          {
+            "q": "Peut-on utiliser le chat de proximité au travail ?",
+            "a": "Oui. Des bureaux virtuels comme TinyFloor, Gather et SpatialChat l'utilisent pour que les équipes à distance parlent en s'approchant au lieu de planifier des appels."
+          }
+        ]
+      }
+    }
   }
 }

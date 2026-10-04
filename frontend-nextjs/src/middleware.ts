@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
+import { GUIDES } from "@/lib/guides";
 import { LANDINGS } from "@/lib/landings";
 import { SITE_URL } from "@/lib/site";
 
@@ -26,6 +27,7 @@ const LOCALE_FILE = new RegExp(`^/(?:${routing.locales.join("|")})/([^/]+\\.[a-z
 const PAGES = [
   "",
   ...LANDINGS.map((page) => page.slug),
+  `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
   "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|online-study-room|account|admin|auth|create|dashboard|map-render|og-render|video-demo",
   "lobby(/(chat(/[^/]+)?|people|meetings|settings|your-office))?",
   "join",

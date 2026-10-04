@@ -23,6 +23,12 @@ code and by git history, not here.
 | [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours: the numbers, and what happens past them |
 | [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
 
+## Search
+
+| Document | What it covers |
+|---|---|
+| [16-seo-pages.md](16-seo-pages.md) | Which pages we build for search, for whom, and what comes next |
+
 ## Others
 
 | Document | What it covers |

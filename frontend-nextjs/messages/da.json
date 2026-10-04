@@ -641,10 +641,10 @@
       "virtualOffice": {
         "label": "Virtuelt kontor",
         "meta": {
-          "title": "Gratis virtuelt kontor til fjernteams",
-          "description": "Et gratis virtuelt kontor i browseren. Se hvem der er der, gå hen for et videoopkald, og hold ét rum åbent for dit fjernteam."
+          "title": "Virtuelt kontor til remote teams",
+          "description": "Et virtuelt kontor i browseren. Se, hvem der er her, gå hen og tal med videoopkald på nært hold, og hold ét rum åbent for dit remote team."
         },
-        "title": "Et gratis <em>virtuelt kontor</em> til fjernteams.",
+        "title": "Et <em>virtuelt kontor</em> til remote teams.",
         "subtitle": "Giv dit team et sted at være i løbet af dagen. Se hvem der er her, gå over med et hurtigt spørgsmål, og gå ind i mødelokalet, når det er tid til at tale.",
         "points": [
           {
@@ -723,8 +723,8 @@
       "virtualClassroom": {
         "label": "Virtuelt klasseværelse",
         "meta": {
-          "title": "Gratis virtuelt klasseværelse til træffetid",
-          "description": "Træffetider, lektiehjælp og små hold i et gratis virtuelt klasseværelse. Elever går hen for at tale, grupper mødes i mødelokalet, og alle deler en whiteboard."
+          "title": "Virtuelt klasselokale til kontortid og små hold",
+          "description": "Hold kontortid, lektiehjælp og små hold i et virtuelt klasselokale. Elever går hen for at tale, grupper mødes i mødelokalet, og alle deler en whiteboard."
         },
         "title": "Et <em>virtuelt klasseværelse</em>, hvor elever går rundt.",
         "subtitle": "Hold træffetid, lektiehjælp eller et lille hold i et rum, eleverne kan bevæge sig rundt i. De kommer hen, når de har et spørgsmål, og grupper taler i mødelokalet.",
@@ -764,7 +764,7 @@
       "proximityChat": {
         "label": "Nærhedschat",
         "meta": {
-          "title": "Gratis videochat efter nærhed i browseren",
+          "title": "Videochat på nært hold til remote teams",
           "description": "Nærhedschat til remote teams: gå din figur hen til en kollega for at starte et opkald. Gratis for små teams, i browseren, uden download."
         },
         "title": "<em>Nærhedschat</em>, der starter, når du går hen.",
@@ -801,6 +801,831 @@
             "a": "Ja, for et kontor med op til 3 personer, i browseren på computer og mobil."
           }
         ]
+      },
+      "sococo": {
+        "label": "Sococo-alternativ",
+        "meta": {
+          "title": "Sococo-alternativ til små remote teams",
+          "description": "Sococo starter ved 10 pladser med årsabonnement. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $19 om måneden for op til 10, med månedlig betaling."
+        },
+        "title": "Et <em>Sococo-alternativ</em> uden minimum på 10 pladser.",
+        "subtitle": "Sococo sælger pladser pr. år, mindst 10. TinyFloor har én månedspris for hele kontoret, og et lille team kan starte gratis.",
+        "points": [
+          {
+            "title": "Start i jeres rigtige størrelse",
+            "body": "Gratis for op til 3 personer, derefter $19 om måneden for op til 10. Intet minimum af pladser og ingen årlig forudbetaling."
+          },
+          {
+            "title": "En etage at gå rundt på",
+            "body": "Teamet deler én kontoretage og begynder at tale ved at gå hen til hinanden."
+          },
+          {
+            "title": "Opkald bruger ikke minutter",
+            "body": "Sococo tæller minutter pr. plads. På TinyFloor tæller opkald mellem to aldrig; kun gruppemøder har timer pr. måned."
+          }
+        ],
+        "them": {
+          "price": "$13,49 pr. plads om måneden, faktureres årligt, mindst 10 pladser",
+          "freePlan": "Ingen, kun en gratis prøveperiode",
+          "screenShare": "Ja, flere ad gangen"
+        },
+        "faq": [
+          {
+            "q": "Hvad koster Sococo?",
+            "a": "Sococo koster $13,49 pr. plads om måneden, faktureret årligt, med mindst 10 pladser og 500 minutter pr. plads om måneden. Sococo Unlimited koster $24,99 pr. plads med mindst 100 pladser. TinyFloor er gratis for 3 personer og koster $19 om måneden for op til 10."
+          },
+          {
+            "q": "Findes der en gratis version af Sococo?",
+            "a": "Sococo tilbyder en gratis prøveperiode i stedet for et gratis abonnement. TinyFloors gratis abonnement har ingen slutdato, for op til 3 personer."
+          },
+          {
+            "q": "Hvad har Sococo, som TinyFloor ikke har?",
+            "a": "I Sococo kan du vælge plantegninger og indretning, og det forbindes med Zoom, Webex, Google Meet og Microsoft Teams. TinyFloor har én kontoretage og står selv for opkald og møder."
+          },
+          {
+            "q": "Skal jeg installere noget?",
+            "a": "Nej. TinyFloor kører i browseren på computer og mobil. Del kontorets invitationslink, så går teamet ind."
+          }
+        ]
+      },
+      "ovice": {
+        "label": "oVice-alternativ",
+        "meta": {
+          "title": "oVice-alternativ til små teams",
+          "description": "oVice tager betaling pr. område eller fra 20 brugere. TinyFloor er et virtuelt kontor i browseren til små teams: gratis for 3 personer, $19 om måneden for 10 og $49 for 25."
+        },
+        "title": "Et <em>oVice-alternativ</em> i størrelse til små teams.",
+        "subtitle": "oVice er bygget til virksomheder og fællesskaber, med abonnementer efter områdets størrelse eller fra 20 brugere. TinyFloor er lavet til teams på 2 til 25, med én enkel pris pr. kontor.",
+        "points": [
+          {
+            "title": "Priser for 3, 10 eller 25",
+            "body": "Gratis for op til 3 personer, $19 om måneden for 10 og $49 for 25. Ingen områdestørrelser at regne på."
+          },
+          {
+            "title": "Gå hen og tal",
+            "body": "Som i oVice går du hen til nogen for at tale. Opkald mellem to tæller aldrig med nogen steder."
+          },
+          {
+            "title": "Chat, der bliver",
+            "body": "Hvert kontor har kanaler og direkte beskeder med historik, ved siden af etagen og på mobilen."
+          }
+        ],
+        "them": {
+          "price": "$65 om måneden pr. område, eller $16 pr. bruger fra 20 brugere, faktureres årligt",
+          "freePlan": "Ja, på en forhåndsversion uden support",
+          "browser": "Ja, med apps til computer og mobil",
+          "screenShare": "Ja, flere ad gangen"
+        },
+        "faq": [
+          {
+            "q": "Hvad koster oVice?",
+            "a": "oVice Entry-S koster $65 om måneden pr. område ved årlig betaling, eller $78 om måneden, til omkring 10 faste medlemmer. Business Starter koster $16 pr. bruger om måneden fra 20 brugere. TinyFloor koster $19 om måneden for op til 10 personer."
+          },
+          {
+            "q": "Har oVice et gratis abonnement?",
+            "a": "Ja. Efter prøveperioden på 14 dage går området over på et gratis abonnement, der kører i et forhåndsmiljø uden SLA eller support. TinyFloors gratis abonnement er det samme produkt som de betalte, for op til 3 personer."
+          },
+          {
+            "q": "Hvad har oVice, som TinyFloor ikke har?",
+            "a": "oVice har egne layouts, transskription, optagelse efter aftale, kobling til kalender og Microsoft Teams samt abonnementer til events. TinyFloor fokuserer på kontoret i hverdagen: gå hen, møder, chat, en whiteboard og musik."
+          },
+          {
+            "q": "Findes TinyFloor på japansk?",
+            "a": "Ja. TinyFloor findes på 18 sprog, herunder japansk og koreansk, og hver person kan vælge sit eget."
+          }
+        ]
+      },
+      "teamflow": {
+        "label": "Teamflow-alternativ",
+        "meta": {
+          "title": "Teamflow-alternativ, der kører i browseren",
+          "description": "Teamflow koster $15 pr. person om måneden med apps til computeren. TinyFloor er et virtuelt kontor i browseren: gratis for 3 personer, $19 om måneden for et kontor med 10."
+        },
+        "title": "Et <em>Teamflow-alternativ</em> uden noget at downloade.",
+        "subtitle": "Teamflow tager betaling pr. person og kører som en app på computeren. TinyFloor åbner i en browserfane, på laptop eller mobil, for én pris pr. kontor.",
+        "points": [
+          {
+            "title": "Én pris for kontoret",
+            "body": "Teamflows Seed-abonnement koster $15 pr. person. TinyFloor Plus koster $19 om måneden for op til 10 personer tilsammen."
+          },
+          {
+            "title": "Intet stop efter 45 minutter",
+            "body": "I Teamflows gratis abonnement slutter møder efter 45 minutter. Møder på TinyFloor har ingen grænse pr. møde; hvert abonnement har timer pr. måned til gruppemøder."
+          },
+          {
+            "title": "I en browserfane",
+            "body": "Ingen app at installere eller opdatere. Åbn linket på en hvilken som helst laptop eller mobil, så står du på etagen."
+          }
+        ],
+        "them": {
+          "price": "$15 pr. person om måneden, faktureres årligt",
+          "freePlan": "Op til 5 personer, med møder på 45 minutter",
+          "browser": "Apps til Mac og Windows, mobil i beta",
+          "screenShare": "Ja, flere ad gangen"
+        },
+        "faq": [
+          {
+            "q": "Hvad koster Teamflow?",
+            "a": "Teamflow er gratis for op til 5 personer med møder på 45 minutter. Seed koster $15 og Business $25 pr. person om måneden, faktureret årligt. TinyFloor er gratis for 3 personer, derefter $19 om måneden for op til 10."
+          },
+          {
+            "q": "Har TinyFloor Teamflows app-integrationer?",
+            "a": "Nej. Teamflow indlejrer apps som Figma og Google Docs i møder. TinyFloor holder sig til tilstedeværelse, opkald, møder, chat, en whiteboard og skærmdeling."
+          },
+          {
+            "q": "Skal mine kolleger installere noget?",
+            "a": "Nej. TinyFloor kører i browseren på computer og mobil. De åbner kontorets invitationslink og logger ind."
+          },
+          {
+            "q": "Hvor mange kan der være i et TinyFloor-kontor?",
+            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
+          }
+        ]
+      },
+      "roam": {
+        "label": "Roam-alternativ",
+        "meta": {
+          "title": "Roam-alternativ til små remote teams",
+          "description": "Roam er en app til computeren med pris pr. aktivt medlem. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $19 om måneden for op til 10."
+        },
+        "title": "Et <em>Roam-alternativ</em>, der åbner i browseren.",
+        "subtitle": "Roam samler et virtuelt kontor med AI-værktøjer og en app til computeren, med pris pr. medlem. TinyFloor gør kontordelen enkelt: gå hen, mødes og chatte, for én pris pr. team.",
+        "points": [
+          {
+            "title": "Kun kontoret",
+            "body": "Ingen pakke at indføre. En etage, hvor du ser, hvem der er her, går hen for at tale og går ind i mødelokalet."
+          },
+          {
+            "title": "Intet at installere",
+            "body": "TinyFloor kører i en browserfane på enhver laptop eller mobil, så alle på teamet er med på sekunder."
+          },
+          {
+            "title": "Én pris pr. team",
+            "body": "Gratis for 3 personer, $19 om måneden for 10 og $49 for 25, uanset hvor mange der bruger det den måned."
+          }
+        ],
+        "them": {
+          "price": "En månedspris pr. aktivt medlem",
+          "freePlan": "Ingen, kun en prøveperiode på 14 dage",
+          "browser": "App til computeren, skal downloades",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Hvordan prissætter Roam?",
+            "a": "Roam tager én månedspris pr. aktivt medlem for alle sine produkter, med en gratis prøveperiode på 14 dage og uden årsaftale. TinyFloor er gratis for 3 personer og koster $19 om måneden for op til 10."
+          },
+          {
+            "q": "Hvad har Roam, som TinyFloor ikke har?",
+            "a": "Roam har AI-mødenoter, en AI-assistent, webinarer, planlægning og skærmoptagelse. TinyFloor fokuserer på selve kontoret."
+          },
+          {
+            "q": "Kan gæster komme ind i et TinyFloor-kontor?",
+            "a": "Kontorer er kun for medlemmer: man kommer ind via invitationslinket og en gratis konto. Vil du se dig omkring først, kan alle prøve demokontoret med bare et navn."
+          },
+          {
+            "q": "Virker TinyFloor på mobilen?",
+            "a": "Ja. Det kører i mobile browsere med et joystick på skærmen, uden noget at downloade."
+          }
+        ]
+      },
+      "slackHuddles": {
+        "label": "Alternativ til Slack-huddles",
+        "meta": {
+          "title": "Alternativ til Slack-huddles: se, hvem der er ledig, og gå hen",
+          "description": "En Slack-huddle er et opkald i blinde. TinyFloor viser først, hvem der er ledig, og så går du hen og taler. Et virtuelt kontor ved siden af Slack, gratis for 3 personer."
+        },
+        "title": "Et <em>alternativ til Slack-huddles</em>, hvor du først ser, hvem der er ledig.",
+        "subtitle": "En huddle er et opkald, du starter uden at vide, om det passer. På TinyFloor ser du, hvem der er her, hvem der er optaget, og hvem der allerede taler, og så går du hen.",
+        "points": [
+          {
+            "title": "Se, før du ringer",
+            "body": "Alle har en status og en plads på etagen, så du ved, hvem der er fordybet, før du spørger."
+          },
+          {
+            "title": "Gruppeopkald i alle abonnementer",
+            "body": "I Slacks gratis abonnement er huddles kun for to. På TinyFloor har alle abonnementer opkald og gruppemøder."
+          },
+          {
+            "title": "Behold Slack, hvis du vil",
+            "body": "TinyFloor har sin egen chat, men mange teams beholder Slack til beskeder og bruger etagen til at tale."
+          }
+        ],
+        "them": {
+          "price": "Gruppehuddles kræver Slack Pro, pris pr. bruger",
+          "freePlan": "Slack Free har kun huddles for to",
+          "browser": "Ja, med apps til computer og mobil",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Hvad er en Slack-huddle?",
+            "a": "En huddle er et hurtigt lyd- eller videoopkald i Slack, startet fra en kanal eller en direkte besked. I Slacks gratis abonnement er huddles mellem to personer; gruppehuddles kræver et betalt abonnement."
+          },
+          {
+            "q": "Hvordan adskiller TinyFloor sig fra en huddle?",
+            "a": "En huddle starter, når nogen ringer. På TinyFloor er teamet allerede samlet på én etage, så du ser, hvem der er ledig, og går hen, og mødelokalet er der altid."
+          },
+          {
+            "q": "Kan jeg bruge TinyFloor sammen med Slack?",
+            "a": "Ja. De er ikke forbundet, men mange teams beholder Slack til beskeder og bruger TinyFloor til tilstedeværelse, opkald og møder."
+          },
+          {
+            "q": "Hvad koster TinyFloor?",
+            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+          }
+        ]
+      },
+      "discord": {
+        "label": "Discord til arbejde",
+        "meta": {
+          "title": "Discord til arbejde? Et virtuelt kontor lavet til teams",
+          "description": "Teams bruger talekanaler i Discord for at føle sig samlet. TinyFloor giver et remote team den samme følelse af at kunne kigge forbi, i et privat kontor lavet til arbejde."
+        },
+        "title": "Som <em>Discord til arbejde</em>, lavet til dit team.",
+        "subtitle": "Talekanalerne viste, at det virker at være ét klik fra hinanden. TinyFloor beholder den følelse i et privat kontor til dit team, uden gamingfællesskabet omkring.",
+        "points": [
+          {
+            "title": "Et privat kontor, ikke en server",
+            "body": "Din etage er kun for dit team. Man kommer ind via dit invitationslink og en gratis konto."
+          },
+          {
+            "title": "Se, hvem der er ledig",
+            "body": "Statusser, skriveborde og hvem der er i et opkald, alt på én etage, så det føles naturligt at kigge forbi."
+          },
+          {
+            "title": "Møder med et lokale",
+            "body": "Gå ind i mødelokalet til gruppeopkald med skærmdeling, og gå ud, når I er færdige."
+          }
+        ],
+        "them": {
+          "price": "Gratis, Nitro koster ekstra pr. person",
+          "freePlan": "Ja",
+          "browser": "Ja, med apps til computer og mobil",
+          "screenShare": "Ja, i talekanaler"
+        },
+        "faq": [
+          {
+            "q": "Kan man bruge Discord til arbejde?",
+            "a": "Mange teams gør det på grund af talekanalerne. Men Discord er lavet til fællesskaber og gaming, så arbejdsteams savner ofte et klart billede af, hvem der er optaget, et mødelokale og et sted, der kun er deres."
+          },
+          {
+            "q": "Er TinyFloor gratis ligesom Discord?",
+            "a": "For op til 3 personer, ja. Større kontorer koster $19 om måneden for 10 personer og $49 om måneden for 25."
+          },
+          {
+            "q": "Har TinyFloor talekanaler?",
+            "a": "I stedet for kanaler går du hen til en kollega for at tale, eller I går ind i mødelokalet som gruppe. Tekstkanaler og direkte beskeder ligger ved siden af etagen."
+          },
+          {
+            "q": "Skal vi downloade en app?",
+            "a": "Nej. TinyFloor kører i browseren på computer og mobil."
+          }
+        ]
+      },
+      "gatherVsKumospace": {
+        "label": "Gather vs Kumospace",
+        "meta": {
+          "title": "Gather vs Kumospace: priser, gratis abonnementer og et tredje alternativ",
+          "description": "Gather og Kumospace side om side: pris, gratis abonnement, browser og skærmdeling, og hvordan TinyFloor klarer sig til små remote teams."
+        },
+        "title": "<em>Gather vs Kumospace</em>, og et tredje alternativ.",
+        "subtitle": "Begge tager betaling pr. medlem, når I er forbi gratisniveauet. Hvis teamet er lille og vil have et enkelt kontor, har TinyFloor én pris for hele etagen.",
+        "points": [
+          {
+            "title": "Gather",
+            "body": "Et kontor i pixelkunst med AI-mødenoter og tilpasning. 30 dages prøveperiode, derefter fra $12 pr. medlem om måneden."
+          },
+          {
+            "title": "Kumospace",
+            "body": "Et gratis abonnement for op til 5 medlemmer på én etage, derefter Business fra $16 pr. bruger om måneden."
+          },
+          {
+            "title": "TinyFloor",
+            "body": "Gratis for 3 personer, derefter $19 om måneden for op til 10 og $49 for 25, for hele kontoret."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvad er billigst, Gather eller Kumospace?",
+            "a": "For et team på 10 starter Gather ved omkring $120 om måneden og Kumospace Business ved omkring $160. Kumospace har et gratis abonnement for op til 5 medlemmer; Gather har en prøveperiode på 30 dage. TinyFloor Plus koster $19 om måneden for hele kontoret."
+          },
+          {
+            "q": "Hvad passer bedst til et lille team?",
+            "a": "Kumospaces gratis abonnement passer til op til 5 personer, og Gather passer til teams, der vil tilpasse mere. Vil du have én enkel pris til et team på op til 25 personer, er TinyFloor lavet til netop det."
+          },
+          {
+            "q": "Kører Gather og Kumospace i browseren?",
+            "a": "Begge kører i browseren, Gather med en app til computeren og Kumospace med apps til computer og mobil. TinyFloor kører kun i browseren, på computer og mobil, så der er intet at installere."
+          },
+          {
+            "q": "Kan vi skifte til TinyFloor senere?",
+            "a": "Ja. Der er intet at flytte: lav et kontor, del invitationslinket, så går teamet ind."
+          }
+        ]
+      },
+      "pairProgramming": {
+        "label": "Parprogrammering på afstand",
+        "meta": {
+          "title": "Parprogrammering på afstand i et virtuelt kontor",
+          "description": "Parprogrammér på afstand uden at planlægge det: se, hvem der er ledig, gå hen, del skærmen, og tal det igennem. Gratis for teams på 3."
+        },
+        "title": "<em>Parprogrammering på afstand</em>, der starter med at gå hen.",
+        "subtitle": "Parprogrammering fungerer bedst, når det er nemt at starte. På TinyFloor ser du, hvem der er ledig, går hen til skrivebordet, deler skærmen og taler, og så går du tilbage til dit eget arbejde.",
+        "points": [
+          {
+            "title": "Videre på få minutter",
+            "body": "Sidder du fast? Gå hen til den, der kender det. Ét tryk starter opkaldet, uden noget link at sende."
+          },
+          {
+            "title": "Del skærmen",
+            "body": "Slå skærmdeling til i opkaldet for at gå kode, logs eller en fejlende test igennem sammen."
+          },
+          {
+            "title": "Tag en tredje med",
+            "body": "Gå hen til en anden under opkaldet, og gør det til et møde for tre."
+          }
+        ],
+        "momentsTitle": "<em>En parsession</em> fra start til slut.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Se, hvem der er ledig",
+            "body": "Statusser og skriveborde viser, hvem der er fordybet, og hvem der er åben for et spørgsmål."
+          },
+          {
+            "label": "2",
+            "title": "Gå hen og del",
+            "body": "Stil dig ved siden af, tryk for at ringe, og del skærmen."
+          },
+          {
+            "label": "3",
+            "title": "Gå tilbage",
+            "body": "Læg på, så er du tilbage ved dit skrivebord. Intet at planlægge, intet at rydde op."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvad har jeg brug for til parprogrammering på afstand?",
+            "a": "En måde at tale på, en delt skærm og en nem måde at starte på. TinyFloor giver dig alle tre i browseren; behold din egen editor og dine værktøjer til koden."
+          },
+          {
+            "q": "Afbrydes opkaldet, hvis jeg går væk?",
+            "a": "Nej. Et opkald forbliver forbundet, til nogen lægger på, så du kan bevæge dig, mens du taler."
+          },
+          {
+            "q": "Kan flere end to parprogrammere?",
+            "a": "Ja. Gå hen til en tredje kollega under opkaldet, så tilbyder TinyFloor at gøre det til et møde for tre, eller brug mødelokalet."
+          },
+          {
+            "q": "Er det gratis?",
+            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+          }
+        ]
+      },
+      "standup": {
+        "label": "Virtuel standup",
+        "meta": {
+          "title": "Virtuelle standups til remote teams",
+          "description": "Hold jeres daglige standup i et virtuelt kontor: alle går ind i mødelokalet, taler og går tilbage til deres skrivebord. Intet mødelink at dele."
+        },
+        "title": "En <em>virtuel standup</em>, som dit team går hen til.",
+        "subtitle": "Intet kalenderlink og intet venteværelse. Når det er tid til standup, går teamet ind i mødelokalet, fortæller, hvad de arbejder på, og går tilbage til arbejdet.",
+        "points": [
+          {
+            "title": "Altid det samme lokale",
+            "body": "Hvert kontor har et hovedmøde, der altid er der, så standuppen er en tur ned ad gangen."
+          },
+          {
+            "title": "Se, hvem der mangler",
+            "body": "Etagen viser, hvem der er her, og hvem der er væk, så du ved, hvem I venter på."
+          },
+          {
+            "title": "Kort som standard",
+            "body": "Når det er slut, går alle ud af lokalet og fortsætter. Opfølgning sker ved nogens skrivebord."
+          }
+        ],
+        "momentsTitle": "<em>Standup</em> i tre trin.",
+        "moments": [
+          {
+            "label": "9:58",
+            "title": "Gå ind",
+            "body": "Deltag i hovedmødet, så går din figur ind i mødelokalet."
+          },
+          {
+            "label": "10:00",
+            "title": "Tal det igennem",
+            "body": "Kamera til eller fra, med skærmdeling til det, der er værd at vise."
+          },
+          {
+            "label": "10:10",
+            "title": "Gå ud",
+            "body": "Gå ud af lokalet for at forlade mødet. Spørgsmål fortsætter ved nogens skrivebord."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvordan holder jeg en virtuel standup?",
+            "a": "Vælg et tidspunkt, mød hinanden samme sted hver dag, og hold det kort. På TinyFloor er hovedmødet altid der: alle går ind til tiden og går ud, når det er slut."
+          },
+          {
+            "q": "Hvor mange mødetimer bruger en daglig standup?",
+            "a": "En standup på 15 minutter hver arbejdsdag er omkring 5 timer om måneden. Plus har 30 timers gruppemøder om måneden og Pro 60."
+          },
+          {
+            "q": "Kan vi holde asynkrone standups i stedet?",
+            "a": "Ja. Mange teams lægger opdateringer i en kanal og gemmer mødelokalet til de dage, hvor der skal tales."
+          },
+          {
+            "q": "Skal alle have kameraet tændt?",
+            "a": "Nej. Kamera er valgfrit i alle møder, og den, der ikke bruger det, vises som et kort, der lyser op, når personen taler."
+          }
+        ]
+      },
+      "onboarding": {
+        "label": "Onboarding på afstand",
+        "meta": {
+          "title": "Onboarding på afstand af nye medarbejdere i et virtuelt kontor",
+          "description": "Hjælp nye medarbejdere godt i gang på afstand: fra første dag ser de teamet, ved, hvem de kan spørge, og går hen og spørger."
+        },
+        "title": "<em>Onboarding på afstand</em>, hvor nye kan se, hvem de kan spørge.",
+        "subtitle": "Det sværeste ved at starte på afstand er ikke at vide, hvem der er her, eller om det er i orden at spørge. På TinyFloor er teamet lige der, og et spørgsmål er kun få skridt væk.",
+        "points": [
+          {
+            "title": "Ét link for at komme ind",
+            "body": "Send kontorets invitationslink. De laver en gratis konto, vælger et navn og en figur og står på etagen."
+          },
+          {
+            "title": "Lær teamet at kende",
+            "body": "De ser, hvem der er hvem, hvem der er optaget, og hvem der er ledig, uden en navneliste at lære udenad."
+          },
+          {
+            "title": "Spørgsmål uden møde",
+            "body": "At gå hen og spørge føles lige så lille som på kontoret, så nye spørger tidligere."
+          }
+        ],
+        "momentsTitle": "<em>Første dag</em> på etagen.",
+        "moments": [
+          {
+            "label": "Morgen",
+            "title": "Gå ind",
+            "body": "De åbner invitationslinket, vælger en figur og lander på etagen sammen med alle."
+          },
+          {
+            "label": "Frokost",
+            "title": "Mød folk",
+            "body": "En kollega viser dem rundt, og de siger hej ved et par skriveborde."
+          },
+          {
+            "label": "Eftermiddag",
+            "title": "Bare spørg",
+            "body": "Når de sidder fast, ser de, hvem der er ledig, og går hen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvordan kommer nye medarbejdere ind?",
+            "a": "Med dit kontors invitationslink. De laver en gratis konto, vælger et navn og en figur og lander på etagen."
+          },
+          {
+            "q": "Optager en ny medarbejder en plads i abonnementet?",
+            "a": "Ja, alle på kontoret er medlemmer. Plus har plads til 10 personer og Pro til 25."
+          },
+          {
+            "q": "Kan nye læse op på chatten?",
+            "a": "Ja. Kanaler beholder deres historik, så en ny person kan læse tilbage i samtalerne i de kanaler, de kommer med i."
+          },
+          {
+            "q": "Erstatter det vores onboardingdokumenter?",
+            "a": "Nej. Behold dokumenter og tjeklister, hvor de er. TinyFloor gør den menneskelige del lettere: hvem der er hvem, og hvordan man spørger."
+          }
+        ]
+      },
+      "watercooler": {
+        "label": "Virtuel kaffeautomat",
+        "meta": {
+          "title": "Virtuel kaffeautomat til remote teams",
+          "description": "Den småsnak, remote teams savner: mød kolleger på etagen, snak i loungen, og sæt musik på, i et virtuelt kontor til dit team."
+        },
+        "title": "En <em>virtuel kaffeautomat</em>, der sker af sig selv.",
+        "subtitle": "Remote teams planlægger social tid, fordi intet sker tilfældigt. På en delt etage går du forbi folk, ser, hvem der er her, og stopper op til en snak.",
+        "points": [
+          {
+            "title": "Mød folk",
+            "body": "Når du går mellem skriveborde og lokaler, kommer du forbi kolleger og kan stoppe op for et ord."
+          },
+          {
+            "title": "Musik i loungen",
+            "body": "Sæt en sang på jukeboksen til eftermiddagen, for alle i rummet."
+          },
+          {
+            "title": "Ingen kalenderinvitation",
+            "body": "Etagen er åben hele dagen, så en snak starter, når du vil, og slutter, når du går videre."
+          }
+        ],
+        "momentsTitle": "<em>De små øjeblikke</em> er tilbage.",
+        "moments": [
+          {
+            "label": "Morgen",
+            "title": "Sig hej",
+            "body": "Gå forbi et par skriveborde på vej ind, og sig godmorgen."
+          },
+          {
+            "label": "Eftermiddag",
+            "title": "Sæt en sang på",
+            "body": "Start jukeboksen i loungen for dem, der er i nærheden."
+          },
+          {
+            "label": "Fredag",
+            "title": "Slap af",
+            "body": "Mød hinanden i mødelokalet til en drink og en snak, med eller uden kamera."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvad er en virtuel kaffeautomat?",
+            "a": "Det er den uformelle snak, et remote team savner fra kontoret: at løbe ind i folk og tale om hvad som helst. På TinyFloor sker den på etagen i stedet for i et planlagt opkald."
+          },
+          {
+            "q": "Bruger snakken ved kaffeautomaten mødetimer?",
+            "a": "Samtaler mellem to tæller aldrig. Kun gruppemøder tæller med i timerne pr. måned."
+          },
+          {
+            "q": "Kan vi høre musik sammen?",
+            "a": "Ja. Gå hen til højttaleren i rummet for at spille musik, som alle i rummet kan høre."
+          },
+          {
+            "q": "Er det kun til social tid?",
+            "a": "Nej. Teamet arbejder på den samme etage hele dagen; kaffeautomaten er bare tiden mellem opgaverne."
+          }
+        ]
+      },
+      "engineering": {
+        "label": "Udviklingsteams",
+        "meta": {
+          "title": "Virtuelt kontor til remote udviklingsteams",
+          "description": "Et virtuelt kontor til remote udviklingsteams: hjælp hinanden hurtigt videre, parprogrammér med skærmdeling, hold standups, og beskyt fokustiden."
+        },
+        "title": "Et virtuelt kontor til <em>remote udviklingsteams.</em>",
+        "subtitle": "Udviklere har brug for lange perioder med fokus og hurtige svar, når de sidder fast. TinyFloor giver begge dele: stille som standard og en kollega få skridt væk.",
+        "points": [
+          {
+            "title": "Stille som standard",
+            "body": "Ingen hører dig, før du starter et opkald. Sæt dig som optaget, så ved alle, at de skal vente."
+          },
+          {
+            "title": "Hurtigt videre",
+            "body": "Gå hen til den, der kender koden, del skærmen, og løs det på få minutter."
+          },
+          {
+            "title": "Standuppen nede ad gangen",
+            "body": "Hovedmødet er der altid, til standups, hændelser og demoer."
+          }
+        ],
+        "momentsTitle": "<em>En dag</em> på en udvikleretage.",
+        "moments": [
+          {
+            "label": "10:00",
+            "title": "Standup",
+            "body": "Teamet går ind i mødelokalet, taler i ti minutter og går ud."
+          },
+          {
+            "label": "14:00",
+            "title": "Fokus",
+            "body": "Optaget-statusser holder eftermiddagen stille."
+          },
+          {
+            "label": "16:30",
+            "title": "Videre",
+            "body": "En hurtig tur hen, en delt skærm, og fejlen er fundet."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kobler TinyFloor sig til GitHub eller Jira?",
+            "a": "Nej. TinyFloor er der, hvor I taler, ikke der, hvor arbejdet følges. Del skærmen for at se på hvad som helst sammen."
+          },
+          {
+            "q": "Passer det til parprogrammering?",
+            "a": "Ja. Gå hen til en kollega, start et opkald, og del skærmen. Tag en tredje med, så bliver det et møde."
+          },
+          {
+            "q": "Hvor stort kan et udviklingsteam være?",
+            "a": "Op til 25 personer på ét kontor med Pro. Større organisationer kan give hvert team sit eget kontor."
+          },
+          {
+            "q": "Kan vi beholde Slack?",
+            "a": "Ja. Mange teams beholder Slack til beskeder og bruger TinyFloor til tilstedeværelse, opkald og møder."
+          }
+        ]
+      },
+      "design": {
+        "label": "Designteams",
+        "meta": {
+          "title": "Virtuelt kontor til remote designteams",
+          "description": "Et virtuelt kontor til remote designteams: hurtige gennemgange med skærmdeling, en delt whiteboard og et team, du kan se, alt i browseren."
+        },
+        "title": "Et virtuelt kontor til <em>remote designteams.</em>",
+        "subtitle": "Design bliver bedre med hurtig og ærlig feedback. På TinyFloor er en gennemgang en tur over etagen, ikke en kalenderinvitation.",
+        "points": [
+          {
+            "title": "Gennemgang uden aftale",
+            "body": "Gå hen til en designer, del skærmen, og tal arbejdet igennem."
+          },
+          {
+            "title": "Skitsér det",
+            "body": "Whiteboarden på væggen er der til tegningen, der forklarer det hele."
+          },
+          {
+            "title": "Fokus, når det gælder",
+            "body": "Sæt dig som optaget til fordybet arbejde, så forbliver etagen stille omkring dig."
+          }
+        ],
+        "momentsTitle": "<em>En designdag</em> på etagen.",
+        "moments": [
+          {
+            "label": "Morgen",
+            "title": "Teamgennemgang",
+            "body": "Gå ind i mødelokalet, og del skærme på skift."
+          },
+          {
+            "label": "Frokost",
+            "title": "Skitse",
+            "body": "Arbejd jer igennem et flow sammen på whiteboarden."
+          },
+          {
+            "label": "Eftermiddag",
+            "title": "Hurtigt tjek",
+            "body": "Gå hen til en udvikler for at tjekke en detalje, før den går live."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kobler TinyFloor sig til Figma?",
+            "a": "Nej. Åbn Figma som altid, og del skærmen i et opkald eller et møde for at se på det sammen."
+          },
+          {
+            "q": "Er whiteboarden delt?",
+            "a": "Ja. Alle på kontoret ser den samme tavle, og det, der er tegnet, bliver der, til folk kommer tilbage."
+          },
+          {
+            "q": "Hvad koster det?",
+            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+          },
+          {
+            "q": "Skal vi installere noget?",
+            "a": "Nej. TinyFloor kører i browseren på computer og mobil."
+          }
+        ]
+      },
+      "startups": {
+        "label": "Startups",
+        "meta": {
+          "title": "Virtuelt kontor til remote startups",
+          "description": "Et virtuelt kontor til remote startups: behold farten fra at sidde sammen, for én pris pr. kontor. Gratis for 3 personer, $19 om måneden for 10."
+        },
+        "title": "Et virtuelt kontor til <em>remote startups.</em>",
+        "subtitle": "Tidlige teams er hurtige, fordi alle er i samme rum. TinyFloor samler en remote startup i ét rum igen, for én pris pr. kontor, ikke pr. ansættelse.",
+        "points": [
+          {
+            "title": "Gratis, mens I er stiftere",
+            "body": "Gratis for op til 3 personer, så længe I vil."
+          },
+          {
+            "title": "Intet gebyr pr. ansat",
+            "body": "$19 om måneden for op til 10 personer og $49 for 25. At ansætte nogen giver ikke et ekstra pladsgebyr."
+          },
+          {
+            "title": "Beslutninger på minutter",
+            "body": "Se, hvem der er her, gå hen, og beslut jer, i stedet for at vente på næste møde."
+          }
+        ],
+        "momentsTitle": "<em>Vokse</em> på én etage.",
+        "moments": [
+          {
+            "label": "3 personer",
+            "title": "Free",
+            "body": "Stifterne deler en etage gratis, med 5 mødetimer om måneden."
+          },
+          {
+            "label": "10 personer",
+            "title": "Plus",
+            "body": "$19 om måneden for hele kontoret, med 30 mødetimer."
+          },
+          {
+            "label": "25 personer",
+            "title": "Pro",
+            "body": "$49 om måneden for hele kontoret, med 60 mødetimer."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Hvad koster TinyFloor for en startup?",
+            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+          },
+          {
+            "q": "Kan vi opsige når som helst?",
+            "a": "Ja. Et betalt abonnement kører til udgangen af den periode, I har betalt for, og så går kontoret tilbage til Free. Intet bliver slettet."
+          },
+          {
+            "q": "Hvad sker der, når vi bliver flere end 25?",
+            "a": "Giv hvert team sit eget kontor, eller skriv til os, så tager vi en snak."
+          },
+          {
+            "q": "Har vi brug for noget IT-opsætning?",
+            "a": "Nej. Det kører i browseren: send invitationslinket, så logger alle ind med Google eller e-mail."
+          }
+        ]
+      },
+      "agencies": {
+        "label": "Bureauer",
+        "meta": {
+          "title": "Virtuelt kontor til remote bureauer",
+          "description": "Et virtuelt kontor til remote bureauer: se, hvem der kan hjælpe, gennemgå arbejde sammen på en delt skærm, og behold studiefølelsen, uanset hvor folk arbejder."
+        },
+        "title": "Et virtuelt kontor til <em>remote bureauer.</em>",
+        "subtitle": "Et bureau kører på hurtige gennemgange og på at vide, hvem der kan hjælpe. TinyFloor giver et remote studie én etage, hvor begge dele sker uden et mødelink.",
+        "points": [
+          {
+            "title": "Hvem kan hjælpe",
+            "body": "Statusser viser, hvem der er dybt inde i en deadline, og hvem der kan kigge med."
+          },
+          {
+            "title": "Gennemgang på stedet",
+            "body": "Gå hen, del skærmen, og få feedback på et udkast på få minutter."
+          },
+          {
+            "title": "Én kanal pr. kunde",
+            "body": "Lav en kanal til hver kunde eller hvert projekt, så hver samtale bliver ét sted."
+          }
+        ],
+        "momentsTitle": "<em>En studiedag</em> på afstand.",
+        "moments": [
+          {
+            "label": "Morgen",
+            "title": "Planlæg dagen",
+            "body": "Teamet mødes i mødelokalet for at fordele arbejdet."
+          },
+          {
+            "label": "Eftermiddag",
+            "title": "Hurtig gennemgang",
+            "body": "En designer går hen til den ansvarlige og deler skærmen for at få feedback."
+          },
+          {
+            "label": "Aften",
+            "title": "Afrunding",
+            "body": "Noter og links ryger i kundens kanal, til i morgen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kan kunder komme ind på vores kontor?",
+            "a": "Kontorer er for medlemmer, og alle kommer ind med en gratis konto via invitationslinket. Til kundeopkald beholder I det mødeværktøj, jeres kunder allerede bruger."
+          },
+          {
+            "q": "Hvor mange kan vi være?",
+            "a": "Op til 10 på Plus og 25 på Pro, for én månedspris for hele kontoret."
+          },
+          {
+            "q": "Kan freelancere være med?",
+            "a": "Ja. Freelancere kommer ind via invitationslinket som alle andre, og du kan fjerne dem fra kontoret, når et projekt slutter."
+          },
+          {
+            "q": "Virker det til kreative gennemgange?",
+            "a": "Ja. Del skærmen i et opkald eller et møde, og skitsér sammen på whiteboarden."
+          }
+        ]
+      }
+    },
+    "teams": "Teams",
+    "all": "Se alle",
+    "versusTitle": "{a}, {b} og TinyFloor <em>side om side.</em>",
+    "checkedIn": "Oplysningerne om {name} kommer fra deres eget website, tjekket i {date}.",
+    "checkedBothIn": "Oplysningerne om {a} og {b} kommer fra deres prissider, tjekket i {date}.",
+    "hubs": {
+      "compare": {
+        "meta": {
+          "title": "Sammenligninger og alternativer til virtuelle kontorer",
+          "description": "Hvordan TinyFloor klarer sig mod Gather, Kumospace, Sococo, oVice, Roam og de værktøjer, teams taler i i dag, side om side."
+        },
+        "title": "Side om side, <em>ærligt.</em>",
+        "body": "Hvordan TinyFloor klarer sig mod andre virtuelle kontorer, og mod de værktøjer, dit team taler i i dag."
+      },
+      "useCases": {
+        "meta": {
+          "title": "Brug af virtuelle kontorer i remote teams",
+          "description": "Standups, parprogrammering, onboarding og øjeblikkene ind imellem: sådan bruger remote teams TinyFloor i løbet af dagen."
+        },
+        "title": "Sådan <em>bruger teams etagen.</em>",
+        "body": "Øjeblikkene i en arbejdsdag på afstand, og hvordan hvert af dem fungerer på TinyFloor."
+      },
+      "teams": {
+        "meta": {
+          "title": "TinyFloor til udvikling, design, startups og bureauer",
+          "description": "Et virtuelt kontor, der passer til den måde, dit team arbejder på: til udviklingsteams, designteams, startups og bureauer."
+        },
+        "title": "Lavet til <em>teams som dit.</em>",
+        "body": "Hvert team bruger etagen lidt forskelligt. Sådan passer den til dit."
       }
     }
   },
@@ -1171,12 +1996,6 @@
       "lobbyTitle": "Prøv demokontoret",
       "menu": "Menu",
       "teams": "Til teams",
-      "cases": {
-        "virtualOffice": "Et sted for dit fjernteam",
-        "virtualCoworking": "Fokustimer sammen med dit team",
-        "virtualClassroom": "Konsultationstid og små hold",
-        "proximityChat": "Tal med den, du går hen til"
-      },
       "getStarted": "Kom i gang",
       "lobbyLine": "Se, hvordan et kontor fungerer. Ingen konto nødvendig."
     },

@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
-import { LANDINGS } from "@/lib/landings";
+import { HUBS, LANDINGS, LANDING_GROUPS } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
 import { ThemeSwitch } from "./ThemeSwitch";
@@ -50,17 +50,17 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
         { label: t("dashboard"), href: "/dashboard" },
       ],
     },
-    {
-      title: t("useCases"),
-      links: LANDINGS.filter((page) => page.group === "useCases").map((page) => ({ label: tl(`pages.${page.key}.label`), href: `/${page.slug}` })),
-    },
-    {
-      title: t("compare"),
-      links: LANDINGS.filter((page) => page.group === "compare").map((page) => ({
-        label: page.competitor ? t("vs", { name: page.competitor }) : tl(`pages.${page.key}.label`),
-        href: `/${page.slug}`,
-      })),
-    },
+    // Every page written for a search, by group, each group ending with its index.
+    ...LANDING_GROUPS.map((group) => ({
+      title: tl(group),
+      links: [
+        ...LANDINGS.filter((page) => page.group === group).map((page) => ({
+          label: page.competitor ? t("vs", { name: page.competitor }) : tl(`pages.${page.key}.label`),
+          href: `/${page.slug}`,
+        })),
+        { label: tl("all"), href: `/${HUBS[group]}` },
+      ],
+    })),
     {
       title: t("resources"),
       links: [
@@ -78,7 +78,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
   return (
     <footer className="pb-10 pt-20 sm:pt-28">
       <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-[1.2fr_repeat(5,1fr)]">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2.5 text-[16px] font-semibold tracking-[-0.02em]">
               <Logo size={28} />

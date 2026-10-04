@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/lib/i18n/routing";
 import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
-import { LANDINGS } from "@/lib/landings";
+import { HUBS, LANDINGS, LANDING_GROUPS } from "@/lib/landings";
 
 export const dynamic = "force-static";
 
@@ -13,6 +13,11 @@ export async function GET() {
     [t("pricingPage.meta.title"), "/pricing", t("pricingPage.meta.description")],
     [t("metadata.lobbyTitle"), "/lobby", t("metadata.lobbyDescription")],
     [t("about.meta.title"), "/about", t("about.meta.description")],
+    ...LANDING_GROUPS.map((group): [string, string, string] => [
+      t(`landings.hubs.${group}.meta.title`),
+      `/${HUBS[group]}`,
+      t(`landings.hubs.${group}.meta.description`),
+    ]),
     ...LANDINGS.map(({ key, slug }): [string, string, string] => [
       t(`landings.pages.${key}.meta.title`),
       `/${slug}`,

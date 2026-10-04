@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { localeCodes } from '@/lib/i18n/routing';
 import { localePath } from '@/lib/seo';
-import { LANDINGS } from '@/lib/landings';
+import { HUBS, LANDINGS } from '@/lib/landings';
 
 const routes: Array<{
   path: string;
@@ -11,6 +11,7 @@ const routes: Array<{
 }> = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/pricing', changeFrequency: 'monthly', priority: 0.9 },
+  ...Object.values(HUBS).map((slug) => ({ path: `/${slug}`, changeFrequency: 'weekly' as const, priority: 0.7 })),
   { path: '/lobby', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.5 },
   ...LANDINGS.map(({ slug }) => ({

@@ -37,15 +37,30 @@ const LOCALES = [
   "he",
   "ar",
 ];
+// Every page in src/lib/landings.ts.
 const LANDINGS = [
   "gather-alternative",
   "kumospace-alternative",
+  "sococo-alternative",
+  "ovice-alternative",
+  "roam-alternative",
+  "teamflow-alternative",
   "spatialchat-alternative",
   "workadventure-alternative",
   "wonder-alternative",
+  "slack-huddles-alternative",
+  "discord-for-work",
+  "gather-vs-kumospace",
+  "engineering-teams",
+  "design-teams",
+  "startups",
+  "agencies",
   "virtual-office",
+  "virtual-standup",
+  "remote-pair-programming",
+  "remote-onboarding",
+  "virtual-watercooler",
   "virtual-coworking",
-  "online-study-room",
   "virtual-classroom",
   "proximity-chat",
 ];
@@ -122,6 +137,8 @@ for (const locale of LOCALES.filter((code) => langs.includes(code))) {
   if (wants("lobby")) await card(locale, "lobby", `lobby-${locale}.jpg`);
   if (wants("invite")) await card(locale, "invite", `invite-${locale}.jpg`);
 }
-if (wants("pages")) for (const slug of LANDINGS) await card("en", slug, `${slug}.jpg`);
+// SLUGS=a,b redraws just those pages.
+const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;
+if (wants("pages")) for (const slug of slugs) await card("en", slug, `${slug}.jpg`);
 if (wants("neutral")) await card("en", "neutral", "neutral.jpg");
 await browser.close();

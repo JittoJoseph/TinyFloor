@@ -28,6 +28,7 @@ code and by git history, not here.
 | Document | What it covers |
 |---|---|
 | [16-seo-pages.md](16-seo-pages.md) | Which pages we build for search, for whom, and what comes next |
+| [17-indexing.md](17-indexing.md) | IndexNow on every deploy, llms.txt and llms-full.txt |
 
 ## Others
 

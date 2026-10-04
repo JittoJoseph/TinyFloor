@@ -2,14 +2,9 @@ import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Building2, CalendarOff, Check, CreditCard, Mic, Refund, SlidersHorizontal } from "@/components/ui/icons";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
+import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, STAGE } from "./Blocks";
-
-const PLANS = [
-  { key: "free", price: 0, people: 3, hours: 5 },
-  { key: "plus", price: 19, people: 10, hours: 30 },
-  { key: "pro", price: 49, people: 25, hours: 60 },
-] as const;
 
 /**
  * The pricing page (docs/15): the three plans up top, then three things that

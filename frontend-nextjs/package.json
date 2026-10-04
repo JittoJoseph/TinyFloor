@@ -12,7 +12,7 @@
     "preview": "pnpm run build:worker && opennextjs-cloudflare preview",
     "deploy:worker": "node ../tools/deploy.mjs worker:production worker:preview",
     "deploy:preview": "node ../tools/deploy.mjs worker:production worker:preview --preview",
-    "worker:production": "opennextjs-cloudflare deploy",
+    "worker:production": "node scripts/indexnow.mjs before && opennextjs-cloudflare deploy && node scripts/indexnow.mjs after",
     "worker:preview": "opennextjs-cloudflare deploy --env preview",
     "upload:worker": "opennextjs-cloudflare upload",
     "indexnow": "node scripts/indexnow.mjs",

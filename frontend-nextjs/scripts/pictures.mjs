@@ -63,6 +63,10 @@ const LANDINGS = [
   "virtual-coworking",
   "virtual-classroom",
   "proximity-chat",
+  "virtual-meeting-room",
+  "team-chat",
+  "team-presence",
+  "online-whiteboard",
 ];
 const out = (file) => new URL(`../public/${file}`, import.meta.url);
 

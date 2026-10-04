@@ -800,7 +800,8 @@
             "q": "Is it free?",
             "a": "Yes, for an office of up to 3 people, in the browser on desktop and mobile."
           }
-        ]
+        ],
+        "line": "Walk up to talk, no link"
       },
       "sococo": {
         "label": "Sococo alternative",
@@ -1595,6 +1596,246 @@
             "a": "Yes. Share your screen in a call or a meeting, and sketch on the whiteboard together."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Virtual meeting room",
+        "line": "Walk in to meet, walk out to leave",
+        "meta": {
+          "title": "Virtual Meeting Room for Remote Teams",
+          "description": "A meeting room your team walks into: join and your character takes a place at the table, with cameras, screen sharing and no meeting link."
+        },
+        "title": "A <em>virtual meeting room</em> down the hall.",
+        "subtitle": "Every office has a meeting room that's always there. Join a meeting and your character walks in; walk out and you've left. No links, no waiting room.",
+        "points": [
+          {
+            "title": "Always open",
+            "body": "The main meeting is always there for standups and quick syncs. Anyone can start another one and ask people in."
+          },
+          {
+            "title": "A card for everyone",
+            "body": "People without a camera show as a card that lights up when they talk, so the room never looks empty."
+          },
+          {
+            "title": "Share your screen",
+            "body": "Share a window with the room in one click, for demos, reviews and planning."
+          }
+        ],
+        "momentsTitle": "<em>A meeting,</em> start to finish.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Join",
+            "body": "Join from the list of meetings and your character walks into the meeting room."
+          },
+          {
+            "label": "2",
+            "title": "Talk",
+            "body": "Cameras on or off, with screen sharing for anything worth showing."
+          },
+          {
+            "label": "3",
+            "title": "Walk out",
+            "body": "Walk out of the room and you've left. The floor is quiet again."
+          }
+        ],
+        "faq": [
+          {
+            "q": "How many people can join a meeting?",
+            "a": "Everyone in the office: up to 3 people on Free, 10 on Plus and 25 on Pro."
+          },
+          {
+            "q": "Do meetings have a time limit?",
+            "a": "No limit per meeting. Each plan includes group meeting hours every month: 5 on Free, 30 on Plus and 60 on Pro."
+          },
+          {
+            "q": "What happens when the hours run out?",
+            "a": "Meetings carry on with voice only until the 1st of the month. Calls between two people are never counted."
+          },
+          {
+            "q": "Can we have more than one meeting at once?",
+            "a": "Yes. Besides the main meeting, anyone can start another with a name and ask people in."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Team chat",
+        "line": "Channels and messages that stay",
+        "meta": {
+          "title": "Team Chat Beside Your Virtual Office",
+          "description": "Channels, direct messages and reactions that stay, right beside your team's floor. Catch up from your phone without walking in."
+        },
+        "title": "<em>Team chat</em> that sits beside the floor.",
+        "subtitle": "Every office has its own chat with channels, direct messages and reactions. Messages stay, so you can catch up from your phone without walking in.",
+        "points": [
+          {
+            "title": "A channel for everything",
+            "body": "Make a channel for each project, client or topic, and keep the conversation in one place."
+          },
+          {
+            "title": "Direct messages",
+            "body": "Write to anyone in your office one to one, and pick it up again tomorrow."
+          },
+          {
+            "title": "A quiet nudge",
+            "body": "When someone writes, you get a quiet nudge on the floor instead of a stream of pop-ups."
+          }
+        ],
+        "momentsTitle": "<em>Chat</em> through the day.",
+        "moments": [
+          {
+            "label": "Morning",
+            "title": "Catch up",
+            "body": "Read what you missed on your phone before you walk in."
+          },
+          {
+            "label": "Midday",
+            "title": "Share it",
+            "body": "Drop a screenshot into a channel so the whole team sees it."
+          },
+          {
+            "label": "Afternoon",
+            "title": "Walk over",
+            "body": "When a thread gets long, walk over and talk it through."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Does the chat keep history?",
+            "a": "Yes. Each channel keeps its most recent 5,000 messages, on every plan."
+          },
+          {
+            "q": "Can I use the chat on my phone?",
+            "a": "Yes. Open TinyFloor in your phone's browser to read and reply, without walking onto the floor."
+          },
+          {
+            "q": "Can we share images?",
+            "a": "Yes. Drop screenshots and photos into any channel or direct message."
+          },
+          {
+            "q": "Does it replace Slack?",
+            "a": "For a small team it can. Others keep Slack for messages and use TinyFloor for presence, calls and meetings."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Team presence",
+        "line": "Who's in, busy or in a call",
+        "meta": {
+          "title": "Team Presence and Status for Remote Teams",
+          "description": "See who's in, who's busy and who's in a call, at a glance on one floor, then walk right over. Team presence for remote teams."
+        },
+        "title": "<em>Team presence</em> you can see at a glance.",
+        "subtitle": "Everyone has a desk and a status on the floor. You can tell who's free, who's heads down and who's already in a call, before you ask.",
+        "points": [
+          {
+            "title": "A status that means something",
+            "body": "Available, busy or away, set by you, so people know when to wait."
+          },
+          {
+            "title": "Who's in a call",
+            "body": "See who's already talking or in a meeting, without interrupting."
+          },
+          {
+            "title": "Walk to",
+            "body": "Tap Walk to next to anyone and your character finds its own way there."
+          }
+        ],
+        "momentsTitle": "<em>Presence</em> in three glances.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Look",
+            "body": "Open the floor and see who's around."
+          },
+          {
+            "label": "2",
+            "title": "Check",
+            "body": "A status tells you whether now is a good time."
+          },
+          {
+            "label": "3",
+            "title": "Walk over",
+            "body": "Tap Walk to and your character heads to their desk."
+          }
+        ],
+        "faq": [
+          {
+            "q": "What statuses are there?",
+            "a": "Available, busy and away. Your status shows next to your name on the floor and in the list of people."
+          },
+          {
+            "q": "Does TinyFloor track activity?",
+            "a": "No. It shows who's on the floor and the status they choose. It doesn't report on anyone's activity."
+          },
+          {
+            "q": "Can I see who's around from my phone?",
+            "a": "Yes. The list of people works in your phone's browser too."
+          },
+          {
+            "q": "How much does it cost?",
+            "a": "Free for up to 3 people. Plus is $19 a month for 10 people and Pro is $49 a month for 25, for the whole office, not per person."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Online whiteboard",
+        "line": "A shared board on the wall",
+        "meta": {
+          "title": "Online Whiteboard in Your Team's Virtual Office",
+          "description": "A shared whiteboard on the wall of your virtual office, for the sketch that explains it. It stays there when people come back."
+        },
+        "title": "An <em>online whiteboard</em> on the office wall.",
+        "subtitle": "Walk up to the whiteboard and draw. Everyone in the office sees the same board, and what's on it stays for next time.",
+        "points": [
+          {
+            "title": "Walk up and draw",
+            "body": "No board to create and no link to share. It's on the wall, ready when you are."
+          },
+          {
+            "title": "Everyone sees it",
+            "body": "The whole office looks at the same board, so a sketch explains itself."
+          },
+          {
+            "title": "It stays",
+            "body": "What's drawn is kept, so Monday's diagram is still there on Friday."
+          }
+        ],
+        "momentsTitle": "<em>A sketch</em> that explains it.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Walk up",
+            "body": "Go to the whiteboard on the wall."
+          },
+          {
+            "label": "2",
+            "title": "Draw",
+            "body": "Sketch the flow while you talk it through."
+          },
+          {
+            "label": "3",
+            "title": "Leave it",
+            "body": "Walk away and the drawing stays for the team."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Is the whiteboard shared with the whole office?",
+            "a": "Yes. Everyone in the office sees the same board."
+          },
+          {
+            "q": "Can we rub things out?",
+            "a": "Yes. Use the eraser, or clear the whole board when you are done."
+          },
+          {
+            "q": "Does it replace Miro or FigJam?",
+            "a": "No. It's for quick sketches while you talk. Keep your design tools for bigger work."
+          },
+          {
+            "q": "Is it on every plan?",
+            "a": "Yes. Every plan has every feature, the free one included."
+          }
+        ]
       }
     },
     "teams": "Teams",
@@ -1626,8 +1867,17 @@
         },
         "title": "Made for <em>teams like yours.</em>",
         "body": "Every team uses the floor a little differently. Here is how it fits yours."
+      },
+      "features": {
+        "meta": {
+          "title": "TinyFloor Features: Proximity Calls, Meetings, Chat and More",
+          "description": "Everything in a TinyFloor office: proximity calls, a meeting room, team chat, presence and a shared whiteboard, on every plan."
+        },
+        "title": "Everything on <em>one floor.</em>",
+        "body": "Every plan has every feature. Here is what's on the floor."
       }
-    }
+    },
+    "features": "Features"
   },
   "lobby": {
     "eyebrow": "Try TinyFloor",
@@ -1986,13 +2236,6 @@
       "signIn": "Sign in",
       "start": "Make your office",
       "main": "Main",
-      "items": {
-        "proximity": "Proximity calls",
-        "meetings": "Meetings",
-        "chat": "Chat",
-        "people": "Presence",
-        "invites": "Invites"
-      },
       "lobbyTitle": "Try the demo office",
       "menu": "Menu",
       "teams": "For teams",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Try the demo",
       "noAccount": "No account needed"
-    },
-    "features": {
-      "proximity": {
-        "muted": "No links, no scheduling."
-      },
-      "meetings": {
-        "muted": "Stand up to leave."
-      },
-      "chat": {
-        "title": "Conversations that stay.",
-        "muted": "Channels, direct messages, reactions.",
-        "body": "Every office has its own chat. Catch up from your phone without walking in, and get a quiet nudge on the floor when someone writes."
-      },
-      "people": {
-        "title": "Know who's around.",
-        "muted": "Then walk right over.",
-        "body": "See who is on the floor, who is busy and who is in a call. Tap Walk to, and your character finds its own way there."
-      },
-      "invites": {
-        "title": "Bring your team in.",
-        "muted": "With one link.",
-        "body": "Share your office's link. They make a free account, pick a name and a character, and they're on the floor."
-      }
     },
     "steps": {
       "title": "Set up a virtual office in a minute.",

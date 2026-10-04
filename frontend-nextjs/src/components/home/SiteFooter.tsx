@@ -1,8 +1,8 @@
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Globe } from "@/components/ui/icons";
+import { ArrowRight, ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
-import { HUBS, LANDINGS, LANDING_GROUPS } from "@/lib/landings";
+import { HUBS, LANDINGS, type LandingGroup } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
 import { ThemeSwitch } from "./ThemeSwitch";
@@ -26,10 +26,14 @@ const ELSEWHERE = [
   },
 ];
 
+/** How many comparisons the footer lists before leading to the rest. */
+const COMPARE_IN_FOOTER = 8;
+
 /**
- * The footer: the mark and one line, then every page in four columns, then a
- * single quiet row for the theme, the language and the fine print. Same links
- * as the site has today, so nothing a crawler knows goes missing.
+ * The footer: the mark and one line, then five columns (the product and its
+ * features, teams, use cases, comparisons, the company), then one quiet row
+ * for the theme, the language and the fine print. Every column but the last
+ * ends with its index, so each page a crawler should know is one hop away.
  */
 export function SiteFooter({ path = "/" }: { path?: string }) {
   const t = useTranslations("home.footer");
@@ -39,31 +43,33 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
   const locale = useLocale();
   const current = locales.find((one) => one.code === locale) ?? locales[0];
 
-  const columns = [
+  const pagesOf = (group: LandingGroup, limit = Infinity): Array<{ label: string; href: string; all?: boolean }> => [
+    ...LANDINGS.filter((page) => page.group === group)
+      .slice(0, limit)
+      .map((page) => ({
+        label: page.competitor || page.product ? t("vs", { name: (page.competitor ?? page.product)! }) : tl(`pages.${page.key}.label`),
+        href: `/${page.slug}`,
+      })),
+    { label: tl("all"), href: `/${HUBS[group]}`, all: true },
+  ];
+
+  const columns: Array<{ title: string; links: Array<{ label: string; href: string; all?: boolean }> }> = [
     {
       title: t("product"),
       links: [
-        { label: t("makeOffice"), href: "/create" },
+        ...pagesOf("features").filter((link) => !link.all),
         { label: tn("pricing"), href: "/pricing" },
         { label: t("lobby"), href: "/lobby" },
         { label: t("signIn"), href: "/auth" },
-        { label: t("dashboard"), href: "/dashboard" },
       ],
     },
-    // Every page written for a search, by group, each group ending with its index.
-    ...LANDING_GROUPS.map((group) => ({
-      title: tl(group),
-      links: [
-        ...LANDINGS.filter((page) => page.group === group).map((page) => ({
-          label: page.competitor ? t("vs", { name: page.competitor }) : tl(`pages.${page.key}.label`),
-          href: `/${page.slug}`,
-        })),
-        { label: tl("all"), href: `/${HUBS[group]}` },
-      ],
-    })),
+    { title: tl("teams"), links: pagesOf("teams") },
+    { title: tl("useCases"), links: pagesOf("useCases") },
+    { title: t("compare"), links: pagesOf("compare", COMPARE_IN_FOOTER) },
     {
       title: t("resources"),
       links: [
+        { label: tl("features"), href: `/${HUBS.features}` },
         { label: t("about"), href: "/about" },
         { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
         { label: t("faq"), href: "/#faq" },
@@ -75,17 +81,19 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
     },
   ];
 
+  const linkClass = "text-[14px] text-muted-foreground transition-colors hover:text-foreground";
   return (
-    <footer className="pb-10 pt-20 sm:pt-28">
+    <footer className="pb-10 pt-16 sm:pt-24">
       <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-[1.2fr_repeat(5,1fr)]">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5 text-[16px] font-semibold tracking-[-0.02em]">
-              <Logo size={28} />
-              TinyFloor
-            </Link>
-            <p className="mt-4 max-w-[15rem] text-[14px] leading-[1.6] text-muted-foreground">{t("tagline")}</p>
-          </div>
+        <div className="flex flex-col gap-4 border-t border-border pt-12 sm:flex-row sm:items-end sm:justify-between">
+          <Link href="/" className="inline-flex items-center gap-2.5 text-[16px] font-semibold tracking-[-0.02em]">
+            <Logo size={28} />
+            TinyFloor
+          </Link>
+          <p className="max-w-[22rem] text-[14px] leading-[1.6] text-muted-foreground sm:text-end">{t("tagline")}</p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
           {columns.map((column) => (
             <nav key={column.title} aria-label={column.title}>
               <p className="text-[13px] font-medium text-foreground">{column.title}</p>
@@ -94,12 +102,13 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
                   <li key={link.href}>
                     {/* A mail address isn't a page: no locale in front of it. */}
                     {link.href.startsWith("mailto:") ? (
-                      <a href={link.href} className="text-[14px] text-muted-foreground transition-colors hover:text-foreground">
+                      <a href={link.href} className={linkClass}>
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href} className="text-[14px] text-muted-foreground transition-colors hover:text-foreground">
+                      <Link href={link.href} className={link.all ? "inline-flex items-center gap-1 text-[13.5px] font-medium text-foreground/80 hover:text-foreground" : linkClass}>
                         {link.label}
+                        {link.all && <ArrowRight className="size-3 rtl:rotate-180" />}
                       </Link>
                     )}
                   </li>
@@ -109,7 +118,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
           ))}
         </div>
 
-        <div className="mt-20 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <p className="text-[13px] text-faint">{t("rights", { year: new Date().getFullYear() })}</p>
             <span className="flex items-center text-muted-foreground">

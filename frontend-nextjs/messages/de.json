@@ -800,7 +800,8 @@
             "q": "Ist es kostenlos?",
             "a": "Ja, für ein Büro mit bis zu 3 Personen, im Browser auf Desktop und Handy."
           }
-        ]
+        ],
+        "line": "Hingehen und reden, ohne Link"
       },
       "sococo": {
         "label": "Sococo-Alternative",
@@ -1595,6 +1596,246 @@
             "a": "Ja. Teile deinen Bildschirm in einem Anruf oder Meeting und skizziert gemeinsam am Whiteboard."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Virtueller Meetingraum",
+        "line": "Reingehen zum Treffen, rausgehen zum Verlassen",
+        "meta": {
+          "title": "Virtueller Meetingraum für Remote-Teams",
+          "description": "Ein Meetingraum, in den dein Team hineingeht: Tritt bei, und deine Figur nimmt am Tisch Platz, mit Kameras, Bildschirmfreigabe und ohne Meeting-Link."
+        },
+        "title": "Ein <em>virtueller Meetingraum</em> den Flur hinunter.",
+        "subtitle": "Jedes Büro hat einen Meetingraum, der immer da ist. Tritt einem Meeting bei, und deine Figur geht hinein; geh hinaus, und du hast es verlassen. Keine Links, kein Warteraum.",
+        "points": [
+          {
+            "title": "Immer offen",
+            "body": "Das Hauptmeeting ist immer da, für Standups und kurze Abstimmungen. Jeder kann ein weiteres starten und Leute dazuholen."
+          },
+          {
+            "title": "Eine Karte für alle",
+            "body": "Wer keine Kamera nutzt, erscheint als Karte, die aufleuchtet, wenn die Person spricht, damit der Raum nie leer wirkt."
+          },
+          {
+            "title": "Teile deinen Bildschirm",
+            "body": "Teile mit einem Klick ein Fenster mit dem Raum, für Demos, Reviews und Planung."
+          }
+        ],
+        "momentsTitle": "<em>Ein Meeting</em> von Anfang bis Ende.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Beitreten",
+            "body": "Tritt aus der Liste der Meetings bei, und deine Figur geht in den Meetingraum."
+          },
+          {
+            "label": "2",
+            "title": "Reden",
+            "body": "Kamera an oder aus, mit Bildschirmfreigabe für alles, was man zeigen sollte."
+          },
+          {
+            "label": "3",
+            "title": "Rausgehen",
+            "body": "Geh aus dem Raum, und du hast es verlassen. Auf der Etage ist es wieder ruhig."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wie viele Personen können an einem Meeting teilnehmen?",
+            "a": "Alle im Büro: bis zu 3 Personen mit Free, 10 mit Plus und 25 mit Pro."
+          },
+          {
+            "q": "Haben Meetings ein Zeitlimit?",
+            "a": "Kein Limit pro Meeting. Jeder Plan enthält jeden Monat Stunden für Gruppen-Meetings: 5 mit Free, 30 mit Plus und 60 mit Pro."
+          },
+          {
+            "q": "Was passiert, wenn die Stunden aufgebraucht sind?",
+            "a": "Meetings laufen bis zum 1. des Monats nur mit Ton weiter. Anrufe zu zweit werden nie gezählt."
+          },
+          {
+            "q": "Können mehrere Meetings gleichzeitig laufen?",
+            "a": "Ja. Neben dem Hauptmeeting kann jeder ein weiteres mit Namen starten und Leute dazuholen."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Team-Chat",
+        "line": "Kanäle und Nachrichten, die bleiben",
+        "meta": {
+          "title": "Team-Chat direkt neben deinem virtuellen Büro",
+          "description": "Kanäle, Direktnachrichten und Reaktionen, die bleiben, direkt neben der Etage deines Teams. Lies vom Handy aus nach, ohne hineinzugehen."
+        },
+        "title": "<em>Team-Chat</em> direkt neben der Etage.",
+        "subtitle": "Jedes Büro hat einen eigenen Chat mit Kanälen, Direktnachrichten und Reaktionen. Nachrichten bleiben, also kannst du vom Handy aus nachlesen, ohne hineinzugehen.",
+        "points": [
+          {
+            "title": "Ein Kanal für alles",
+            "body": "Erstelle einen Kanal für jedes Projekt, jeden Kunden oder jedes Thema, damit das Gespräch an einem Ort bleibt."
+          },
+          {
+            "title": "Direktnachrichten",
+            "body": "Schreib jeder Person im Büro direkt, und mach morgen dort weiter."
+          },
+          {
+            "title": "Ein leiser Hinweis",
+            "body": "Wenn jemand schreibt, bekommst du einen leisen Hinweis auf der Etage statt einer Flut von Pop-ups."
+          }
+        ],
+        "momentsTitle": "<em>Chat</em> über den Tag.",
+        "moments": [
+          {
+            "label": "Morgens",
+            "title": "Nachlesen",
+            "body": "Lies auf dem Handy, was du verpasst hast, bevor du hineingehst."
+          },
+          {
+            "label": "Mittags",
+            "title": "Teilen",
+            "body": "Leg einen Screenshot in einen Kanal, damit das ganze Team ihn sieht."
+          },
+          {
+            "label": "Nachmittags",
+            "title": "Hingehen",
+            "body": "Wenn ein Thread lang wird, geh hin und sprecht es durch."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Behält der Chat den Verlauf?",
+            "a": "Ja. Jeder Kanal behält seine letzten 5.000 Nachrichten, in jedem Plan."
+          },
+          {
+            "q": "Kann ich den Chat auf dem Handy nutzen?",
+            "a": "Ja. Öffne TinyFloor im Browser deines Handys, um zu lesen und zu antworten, ohne auf die Etage zu gehen."
+          },
+          {
+            "q": "Können wir Bilder teilen?",
+            "a": "Ja. Leg Screenshots und Fotos in jeden Kanal oder jede Direktnachricht."
+          },
+          {
+            "q": "Ersetzt er Slack?",
+            "a": "Für ein kleines Team kann er das. Andere behalten Slack für Nachrichten und nutzen TinyFloor für Präsenz, Anrufe und Meetings."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Team-Präsenz",
+        "line": "Wer da, beschäftigt oder im Anruf ist",
+        "meta": {
+          "title": "Team-Präsenz und Status für Remote-Teams",
+          "description": "Sieh auf einen Blick, wer da ist, wer beschäftigt ist und wer im Anruf ist, auf einer Etage, und geh direkt hin. Team-Präsenz für Remote-Teams."
+        },
+        "title": "<em>Team-Präsenz</em> auf einen Blick.",
+        "subtitle": "Alle haben einen Schreibtisch und einen Status auf der Etage. Du siehst, wer frei ist, wer konzentriert arbeitet und wer schon im Anruf ist, bevor du fragst.",
+        "points": [
+          {
+            "title": "Ein Status, der etwas bedeutet",
+            "body": "Verfügbar, beschäftigt oder abwesend, von dir gesetzt, damit andere wissen, wann sie warten sollten."
+          },
+          {
+            "title": "Wer im Anruf ist",
+            "body": "Sieh, wer schon redet oder in einem Meeting ist, ohne zu stören."
+          },
+          {
+            "title": "Hingehen",
+            "body": "Tippe bei jemandem auf Hingehen, und deine Figur findet selbst den Weg dorthin."
+          }
+        ],
+        "momentsTitle": "<em>Präsenz</em> in drei Blicken.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Schauen",
+            "body": "Öffne die Etage und sieh, wer da ist."
+          },
+          {
+            "label": "2",
+            "title": "Prüfen",
+            "body": "Ein Status zeigt dir, ob jetzt ein guter Moment ist."
+          },
+          {
+            "label": "3",
+            "title": "Hingehen",
+            "body": "Tippe auf Hingehen, und deine Figur geht zum Schreibtisch."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Welche Status gibt es?",
+            "a": "Verfügbar, beschäftigt und abwesend. Dein Status steht neben deinem Namen auf der Etage und in der Personenliste."
+          },
+          {
+            "q": "Erfasst TinyFloor Aktivitäten?",
+            "a": "Nein. Es zeigt, wer auf der Etage ist und welchen Status jemand wählt. Über die Aktivität von niemandem wird berichtet."
+          },
+          {
+            "q": "Kann ich vom Handy aus sehen, wer da ist?",
+            "a": "Ja. Die Personenliste funktioniert auch im Browser deines Handys."
+          },
+          {
+            "q": "Was kostet es?",
+            "a": "Kostenlos für bis zu 3 Personen. Plus kostet $19 im Monat für 10 Personen und Pro $49 im Monat für 25, für das ganze Büro, nicht pro Person."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Online-Whiteboard",
+        "line": "Ein gemeinsames Board an der Wand",
+        "meta": {
+          "title": "Online-Whiteboard im virtuellen Büro deines Teams",
+          "description": "Ein gemeinsames Whiteboard an der Wand deines virtuellen Büros, für die Skizze, die alles erklärt. Es bleibt, wenn die Leute zurückkommen."
+        },
+        "title": "Ein <em>Online-Whiteboard</em> an der Bürowand.",
+        "subtitle": "Geh zum Whiteboard und zeichne. Alle im Büro sehen dasselbe Board, und was darauf ist, bleibt fürs nächste Mal.",
+        "points": [
+          {
+            "title": "Hingehen und zeichnen",
+            "body": "Kein Board zu erstellen und kein Link zu teilen. Es hängt an der Wand und ist bereit, wenn du es bist."
+          },
+          {
+            "title": "Alle sehen es",
+            "body": "Das ganze Büro schaut auf dasselbe Board, also erklärt sich eine Skizze von selbst."
+          },
+          {
+            "title": "Es bleibt",
+            "body": "Was gezeichnet ist, bleibt erhalten, also ist das Diagramm vom Montag am Freitag noch da."
+          }
+        ],
+        "momentsTitle": "<em>Eine Skizze</em>, die es erklärt.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Hingehen",
+            "body": "Geh zum Whiteboard an der Wand."
+          },
+          {
+            "label": "2",
+            "title": "Zeichnen",
+            "body": "Skizziere den Ablauf, während ihr ihn durchsprecht."
+          },
+          {
+            "label": "3",
+            "title": "Stehen lassen",
+            "body": "Geh weg, und die Zeichnung bleibt fürs Team."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Ist das Whiteboard mit dem ganzen Büro geteilt?",
+            "a": "Ja. Alle im Büro sehen dasselbe Board."
+          },
+          {
+            "q": "Können wir etwas wegradieren?",
+            "a": "Ja. Nutze den Radierer, oder lösche das ganze Board, wenn ihr fertig seid."
+          },
+          {
+            "q": "Ersetzt es Miro oder FigJam?",
+            "a": "Nein. Es ist für schnelle Skizzen beim Reden. Für größere Arbeit bleibt ihr bei euren Design-Tools."
+          },
+          {
+            "q": "Gibt es das in jedem Plan?",
+            "a": "Ja. Jeder Plan hat alle Funktionen, auch der kostenlose."
+          }
+        ]
       }
     },
     "teams": "Teams",
@@ -1626,8 +1867,17 @@
         },
         "title": "Gemacht für <em>Teams wie deins.</em>",
         "body": "Jedes Team nutzt die Etage ein wenig anders. So passt sie zu deinem."
+      },
+      "features": {
+        "meta": {
+          "title": "TinyFloor-Funktionen: Anrufe in der Nähe, Meetings, Chat und mehr",
+          "description": "Alles in einem TinyFloor-Büro: Anrufe beim Hingehen, ein Meetingraum, Team-Chat, Präsenz und ein gemeinsames Whiteboard, in jedem Plan."
+        },
+        "title": "Alles auf <em>einer Etage.</em>",
+        "body": "Jeder Plan hat alle Funktionen. Das ist auf der Etage."
       }
-    }
+    },
+    "features": "Funktionen"
   },
   "lobby": {
     "eyebrow": "TinyFloor ausprobieren",
@@ -1986,13 +2236,6 @@
       "signIn": "Anmelden",
       "start": "Büro einrichten",
       "main": "Hauptnavigation",
-      "items": {
-        "proximity": "Nähe-Anrufe",
-        "meetings": "Meetings",
-        "chat": "Chat",
-        "people": "Anwesenheit",
-        "invites": "Einladungen"
-      },
       "lobbyTitle": "Demo-Büro ausprobieren",
       "menu": "Menü",
       "teams": "Für Teams",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Demo ausprobieren",
       "noAccount": "Kein Konto nötig"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Keine Links, keine Termine."
-      },
-      "meetings": {
-        "muted": "Steh auf, um zu gehen."
-      },
-      "chat": {
-        "title": "Gespräche, die bleiben.",
-        "muted": "Kanäle, Direktnachrichten, Reaktionen.",
-        "body": "Jedes Büro hat seinen eigenen Chat. Lies vom Handy aus nach, ohne reinzugehen, und bekomm einen leisen Hinweis auf der Fläche, wenn jemand schreibt."
-      },
-      "people": {
-        "title": "Sieh, wer da ist.",
-        "muted": "Und geh direkt hin.",
-        "body": "Sieh, wer auf der Fläche ist, wer beschäftigt ist und wer im Anruf. Tipp auf Hingehen, und deine Figur findet selbst den Weg."
-      },
-      "invites": {
-        "title": "Hol dein Team rein.",
-        "muted": "Mit einem Link.",
-        "body": "Teile den Link deines Büros. Sie legen ein kostenloses Konto an, wählen Namen und Figur und sind auf der Etage."
-      }
     },
     "steps": {
       "title": "Richte in einer Minute ein virtuelles Büro ein.",

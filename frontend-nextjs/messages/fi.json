@@ -800,7 +800,8 @@
             "q": "Onko se ilmainen?",
             "a": "Kyllä, enintään 3 hengen toimistolle, selaimessa tietokoneella ja mobiilissa."
           }
-        ]
+        ],
+        "line": "Kävele viereen ja puhu, ilman linkkiä"
       },
       "sococo": {
         "label": "Sococo-vaihtoehto",
@@ -1595,6 +1596,246 @@
             "a": "Sopii. Jaa näyttö puhelussa tai kokouksessa ja luonnostelkaa yhdessä taululle."
           }
         ]
+      },
+      "meetingRoom": {
+        "label": "Virtuaalinen kokoushuone",
+        "line": "Kävele sisään kokoukseen, ulos lähteäksesi",
+        "meta": {
+          "title": "Virtuaalinen kokoushuone etätiimeille",
+          "description": "Kokoushuone, johon tiimi kävelee sisään: liity, niin hahmosi istuu pöydän ääreen. Kamerat, näytön jako eikä kokouslinkkiä."
+        },
+        "title": "<em>Virtuaalinen kokoushuone</em> käytävän päässä.",
+        "subtitle": "Jokaisessa toimistossa on kokoushuone, joka on aina paikallaan. Liity kokoukseen, niin hahmosi kävelee sisään; kävele ulos, niin olet lähtenyt. Ei linkkejä, ei odotushuonetta.",
+        "points": [
+          {
+            "title": "Aina auki",
+            "body": "Pääkokous on aina paikalla päivittäisiä palavereja ja nopeita sopimisia varten. Kuka tahansa voi aloittaa toisen ja kutsua ihmisiä."
+          },
+          {
+            "title": "Kortti jokaiselle",
+            "body": "Kamerattomat näkyvät korttina, joka syttyy, kun he puhuvat, joten huone ei koskaan näytä tyhjältä."
+          },
+          {
+            "title": "Jaa näyttösi",
+            "body": "Jaa ikkuna huoneelle yhdellä klikkauksella, demoja, katselmointeja ja suunnittelua varten."
+          }
+        ],
+        "momentsTitle": "<em>Kokous</em> alusta loppuun.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Liity",
+            "body": "Liity kokousten listasta, niin hahmosi kävelee kokoushuoneeseen."
+          },
+          {
+            "label": "2",
+            "title": "Puhu",
+            "body": "Kamera päällä tai pois, ja näytön jako kaikelle, mikä kannattaa näyttää."
+          },
+          {
+            "label": "3",
+            "title": "Kävele ulos",
+            "body": "Kävele ulos huoneesta, niin olet lähtenyt. Kerros on taas hiljainen."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Kuinka moni voi liittyä kokoukseen?",
+            "a": "Koko toimisto: enintään 3 henkeä Freessä, 10 Plussassa ja 25 Prossa."
+          },
+          {
+            "q": "Onko kokouksilla aikarajaa?",
+            "a": "Ei rajaa per kokous. Jokaisessa paketissa on joka kuukausi tunteja ryhmäkokouksiin: 5 Freessä, 30 Plussassa ja 60 Prossa."
+          },
+          {
+            "q": "Mitä tapahtuu, kun tunnit loppuvat?",
+            "a": "Kokoukset jatkuvat pelkällä äänellä kuun 1. päivään asti. Kahden hengen puheluita ei koskaan lasketa."
+          },
+          {
+            "q": "Voiko meillä olla useampi kokous kerralla?",
+            "a": "Kyllä. Pääkokouksen lisäksi kuka tahansa voi aloittaa toisen nimellä ja kutsua ihmisiä."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Tiimichat",
+        "line": "Kanavat ja viestit, jotka säilyvät",
+        "meta": {
+          "title": "Tiimichat virtuaalitoimistosi vieressä",
+          "description": "Kanavat, yksityisviestit ja reaktiot, jotka säilyvät, aivan tiimisi kerroksen vieressä. Ota kiinni puhelimella menemättä sisään."
+        },
+        "title": "<em>Tiimichat</em> aivan kerroksen vieressä.",
+        "subtitle": "Jokaisella toimistolla on oma chat, jossa on kanavat, yksityisviestit ja reaktiot. Viestit säilyvät, joten voit ottaa kiinni puhelimella menemättä sisään.",
+        "points": [
+          {
+            "title": "Kanava kaikelle",
+            "body": "Tee kanava jokaiselle projektille, asiakkaalle tai aiheelle, ja pidä keskustelu yhdessä paikassa."
+          },
+          {
+            "title": "Yksityisviestit",
+            "body": "Kirjoita kenelle tahansa toimistossa kahden kesken, ja jatka huomenna."
+          },
+          {
+            "title": "Hiljainen tönäisy",
+            "body": "Kun joku kirjoittaa, saat hiljaisen tönäisyn kerroksessa ponnahdusikkunoiden tulvan sijaan."
+          }
+        ],
+        "momentsTitle": "<em>Chat</em> päivän mittaan.",
+        "moments": [
+          {
+            "label": "Aamu",
+            "title": "Ota kiinni",
+            "body": "Lue puhelimelta, mitä jäi välistä, ennen kuin menet sisään."
+          },
+          {
+            "label": "Keskipäivä",
+            "title": "Jaa se",
+            "body": "Pudota kuvakaappaus kanavalle, niin koko tiimi näkee sen."
+          },
+          {
+            "label": "Iltapäivä",
+            "title": "Kävele luo",
+            "body": "Kun ketju venyy, kävele luo ja puhukaa asia läpi."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Säilyykö chatin historia?",
+            "a": "Kyllä. Jokainen kanava säilyttää 5 000 uusinta viestiään, jokaisessa paketissa."
+          },
+          {
+            "q": "Voinko käyttää chattia puhelimella?",
+            "a": "Kyllä. Avaa TinyFloor puhelimen selaimessa lukeaksesi ja vastataksesi menemättä kerrokseen."
+          },
+          {
+            "q": "Voimmeko jakaa kuvia?",
+            "a": "Kyllä. Pudota kuvakaappauksia ja valokuvia mille tahansa kanavalle tai yksityisviestiin."
+          },
+          {
+            "q": "Korvaako se Slackin?",
+            "a": "Pienelle tiimille se voi. Toiset pitävät Slackin viesteille ja käyttävät TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Tiimin läsnäolo",
+        "line": "Kuka on paikalla, kiireinen tai puhelussa",
+        "meta": {
+          "title": "Tiimin läsnäolo ja tila etätiimeille",
+          "description": "Näe yhdellä silmäyksellä, kuka on paikalla, kuka on kiireinen ja kuka puhelussa, yhdessä kerroksessa, ja kävele suoraan luo. Läsnäolo etätiimeille."
+        },
+        "title": "<em>Tiimin läsnäolo</em> yhdellä silmäyksellä.",
+        "subtitle": "Jokaisella on pöytä ja tila kerroksessa. Näet, kuka on vapaa, kuka keskittyy ja kuka on jo puhelussa, ennen kuin kysyt.",
+        "points": [
+          {
+            "title": "Tila, jolla on merkitystä",
+            "body": "Tavoitettavissa, kiireinen tai poissa, itse asettamasi, jotta muut tietävät, milloin odottaa."
+          },
+          {
+            "title": "Kuka on puhelussa",
+            "body": "Näe, kuka jo puhuu tai on kokouksessa, keskeyttämättä."
+          },
+          {
+            "title": "Kävele luo",
+            "body": "Napauta Kävele luo kenen tahansa vieressä, niin hahmosi löytää tiensä itse."
+          }
+        ],
+        "momentsTitle": "<em>Läsnäolo</em> kolmella silmäyksellä.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Katso",
+            "body": "Avaa kerros ja katso, kuka on paikalla."
+          },
+          {
+            "label": "2",
+            "title": "Tarkista",
+            "body": "Tila kertoo, onko nyt hyvä hetki."
+          },
+          {
+            "label": "3",
+            "title": "Kävele luo",
+            "body": "Napauta Kävele luo, niin hahmosi suuntaa hänen pöytäänsä."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Mitä tiloja on?",
+            "a": "Tavoitettavissa, kiireinen ja poissa. Tilasi näkyy nimesi vieressä kerroksessa ja ihmisten listassa."
+          },
+          {
+            "q": "Seuraako TinyFloor toimintaa?",
+            "a": "Ei. Se näyttää, kuka on kerroksessa ja minkä tilan hän valitsee. Se ei raportoi kenenkään toiminnasta."
+          },
+          {
+            "q": "Näenkö puhelimelta, kuka on paikalla?",
+            "a": "Kyllä. Ihmisten lista toimii myös puhelimen selaimessa."
+          },
+          {
+            "q": "Paljonko se maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Plus maksaa 19 $ kuussa 10 hengelle ja Pro 49 $ kuussa 25 hengelle, koko toimistolle, ei per henkilö."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Verkkotaulu",
+        "line": "Jaettu taulu seinällä",
+        "meta": {
+          "title": "Verkkotaulu tiimisi virtuaalitoimistossa",
+          "description": "Jaettu taulu virtuaalitoimistosi seinällä, sitä luonnosta varten, joka selittää asian. Se on yhä siellä, kun ihmiset palaavat."
+        },
+        "title": "<em>Verkkotaulu</em> toimiston seinällä.",
+        "subtitle": "Kävele taulun luo ja piirrä. Kaikki toimistossa näkevät saman taulun, ja sen sisältö säilyy seuraavaan kertaan.",
+        "points": [
+          {
+            "title": "Kävele luo ja piirrä",
+            "body": "Ei taulua luotavaksi eikä linkkiä jaettavaksi. Se on seinällä valmiina, kun sinä olet."
+          },
+          {
+            "title": "Kaikki näkevät sen",
+            "body": "Koko toimisto katsoo samaa taulua, joten luonnos selittää itsensä."
+          },
+          {
+            "title": "Se säilyy",
+            "body": "Piirretty tallentuu, joten maanantain kaavio on yhä paikallaan perjantaina."
+          }
+        ],
+        "momentsTitle": "<em>Luonnos</em>, joka selittää sen.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Kävele luo",
+            "body": "Mene seinällä olevan taulun luo."
+          },
+          {
+            "label": "2",
+            "title": "Piirrä",
+            "body": "Luonnostele kulku samalla, kun puhutte sen läpi."
+          },
+          {
+            "label": "3",
+            "title": "Jätä se",
+            "body": "Kävele pois, niin piirros jää tiimille."
+          }
+        ],
+        "faq": [
+          {
+            "q": "Onko taulu jaettu koko toimiston kanssa?",
+            "a": "Kyllä. Kaikki toimistossa näkevät saman taulun."
+          },
+          {
+            "q": "Voimmeko pyyhkiä asioita pois?",
+            "a": "Kyllä. Käytä pyyhekumia, tai tyhjennä koko taulu, kun olette valmiita."
+          },
+          {
+            "q": "Korvaako se Miron tai FigJamin?",
+            "a": "Ei. Se on nopeisiin luonnoksiin puhuessa. Pidä suunnittelutyökalusi isompaa työtä varten."
+          },
+          {
+            "q": "Onko se jokaisessa paketissa?",
+            "a": "Kyllä. Jokaisessa paketissa on kaikki ominaisuudet, myös ilmaisessa."
+          }
+        ]
       }
     },
     "teams": "Tiimit",
@@ -1626,8 +1867,17 @@
         },
         "title": "Tehty <em>kaltaisillesi tiimeille.</em>",
         "body": "Jokainen tiimi käyttää kerrosta vähän eri tavalla. Näin se sopii teille."
+      },
+      "features": {
+        "meta": {
+          "title": "TinyFloorin ominaisuudet: lähipuhelut, kokoukset, chat ja muuta",
+          "description": "Kaikki TinyFloor-toimistossa: puhelut kävelemällä viereen, kokoushuone, tiimichat, läsnäolo ja jaettu taulu, jokaisessa paketissa."
+        },
+        "title": "Kaikki <em>yhdessä kerroksessa.</em>",
+        "body": "Jokaisessa paketissa on kaikki ominaisuudet. Tässä on, mitä kerroksessa on."
       }
-    }
+    },
+    "features": "Ominaisuudet"
   },
   "lobby": {
     "eyebrow": "Kokeile TinyFlooria",
@@ -1986,13 +2236,6 @@
       "signIn": "Kirjaudu",
       "start": "Luo toimistosi",
       "main": "Päänavigaatio",
-      "items": {
-        "proximity": "Läheisyyspuhelut",
-        "meetings": "Kokoukset",
-        "chat": "Chat",
-        "people": "Läsnäolo",
-        "invites": "Kutsut"
-      },
       "lobbyTitle": "Kokeile demotoimistoa",
       "menu": "Valikko",
       "teams": "Tiimeille",
@@ -2017,29 +2260,6 @@
       ],
       "lobbyCta": "Kokeile demoa",
       "noAccount": "Tiliä ei tarvita"
-    },
-    "features": {
-      "proximity": {
-        "muted": "Ei linkkejä, ei aikatauluja."
-      },
-      "meetings": {
-        "muted": "Nouse lähteäksesi."
-      },
-      "chat": {
-        "title": "Keskustelut, jotka säilyvät.",
-        "muted": "Kanavat, yksityisviestit, reaktiot.",
-        "body": "Jokaisella toimistolla on oma chat. Pysy kärryillä puhelimella kävelemättä sisään, ja saat hienovaraisen ilmoituksen kerrokseen, kun joku kirjoittaa."
-      },
-      "people": {
-        "title": "Tiedä, kuka on paikalla.",
-        "muted": "Ja kävele suoraan luo.",
-        "body": "Näe, kuka on kerroksessa, kuka on kiireinen ja kuka puhelussa. Napauta Kävele luo, niin hahmosi löytää tien itse."
-      },
-      "invites": {
-        "title": "Tuo tiimisi sisään.",
-        "muted": "Yhdellä linkillä.",
-        "body": "Jaa toimistosi linkki. He luovat ilmaisen tilin, valitsevat nimen ja hahmon, ja ovat kerroksessa."
-      }
     },
     "steps": {
       "title": "Perusta virtuaalitoimisto minuutissa.",

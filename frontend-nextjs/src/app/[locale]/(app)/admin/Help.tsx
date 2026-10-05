@@ -2,111 +2,141 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ExternalLink } from "@/components/ui/icons";
-import { api, type AdminHelpMessage, type AdminHelpThread, type AdminPage } from "@/lib/api";
+import { api, type AdminHelpMessage, type AdminHelpPlace, type AdminHelpTicket } from "@/lib/api";
 import { Face } from "@/components/ui/Face";
+import { Logo } from "@/components/app/Logo";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
 import { When } from "./when";
 
-type Show = "waiting" | "all";
+/** Read again while the tab is open, so new messages turn up without a reload. */
+const EVERY_MS = 20_000;
 
 /**
- * Help and feedback (docs/19), as the team sees it: each office's
- * conversation (and each demo office visitor's), with who said what, from
- * which page and browser, and a link to the recording. An answer turns up in
- * their Help and feedback as something new. Waiting on us: the last word is
- * theirs and it isn't marked done.
+ * Help and feedback (docs/19), as the team sees it: an inbox. Every office
+ * (and demo office visitor) with tickets, unread first; opening one shows
+ * its tickets, each a conversation with where every message came from, a
+ * reply, and closing it. A reply shows in their Chat as something new.
  */
-export function Help({ onWaiting }: { onWaiting: (count: number) => void }) {
-  const [show, setShow] = useState<Show>("waiting");
-  const [page, setPage] = useState(0);
-  const [list, setList] = useState<(AdminPage & { threads: AdminHelpThread[] }) | null>(null);
+export function Help({ onUnread }: { onUnread: (count: number) => void }) {
+  const [places, setPlaces] = useState<AdminHelpPlace[] | null>(null);
+  const [picked, setPicked] = useState<string | null>(null);
   const [error, setError] = useState("");
 
-  const load = useCallback(async () => {
-    setError("");
+  const loadPlaces = useCallback(async () => {
     try {
-      const next = await api.adminHelp({ show, page });
-      setList(next);
-      if (show === "waiting") onWaiting(next.total);
+      const { places: next } = await api.adminHelp();
+      setPlaces(next);
+      onUnread(next.reduce((sum, one) => sum + one.unread, 0));
+      setError("");
     } catch {
-      setError("Couldn't load the conversations.");
+      setError("Couldn't load Help and feedback.");
     }
-  }, [show, page, onWaiting]);
+  }, [onUnread]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    void load();
-  }, [load]);
+    void loadPlaces();
+    const timer = setInterval(() => document.visibilityState === "visible" && void loadPlaces(), EVERY_MS);
+    return () => clearInterval(timer);
+  }, [loadPlaces]);
 
-  const pages = list ? Math.ceil(list.total / list.pageSize) : 0;
+  const place = places?.find((one) => one.key === picked) ?? null;
+
+  if (places === null) {
+    return (
+      <div className="flex justify-center rounded-2xl border border-border bg-card py-16 text-muted-foreground">
+        {error ? <p className="text-[13px] text-destructive">{error}</p> : <Loader variant="dots" size={18} />}
+      </div>
+    );
+  }
+  if (places.length === 0) {
+    return <p className="rounded-2xl border border-border bg-card py-16 text-center text-[13px] text-muted-foreground">Nobody has raised anything yet.</p>;
+  }
 
   return (
-    <section>
-      <div className="flex gap-1.5">
-        {(
-          [
-            ["waiting", "Waiting on us"],
-            ["all", "All"],
-          ] as const
-        ).map(([key, label]) => (
-          <button
-            key={key}
-            type="button"
-            onClick={() => {
-              setShow(key);
-              setPage(0);
-              setList(null);
-            }}
-            className={cn(
-              "flex h-9 cursor-pointer items-center gap-2 rounded-full border px-3.5 text-[13px] font-medium transition-colors",
-              key === show ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground hover:border-border-strong",
-            )}
-          >
-            {label}
-            {key === show && list && <span className="tabular-nums text-background/60">{list.total}</span>}
-          </button>
+    <div className="grid gap-3 md:grid-cols-[18rem_minmax(0,1fr)]">
+      <ol className="h-fit overflow-hidden rounded-2xl border border-border bg-card [--face-ring:var(--ui-card)] md:sticky md:top-4">
+        {places.map((one) => (
+          <li key={one.key} className="border-b border-border last:border-b-0">
+            <button
+              type="button"
+              onClick={() => setPicked(one.key)}
+              className={cn("flex w-full cursor-pointer items-center gap-3 px-3.5 py-3 text-start transition-colors", one.key === picked ? "bg-muted" : "hover:bg-muted/60")}
+            >
+              <Face seed={one.officeId ?? one.key} size={30} square={!one.lobby} />
+              <span className="min-w-0 flex-1">
+                <span className={cn("block truncate text-[13.5px]", one.unread ? "font-semibold" : "font-medium")}>
+                  {one.lobby ? (one.visitor ?? "Visitor") : one.place}
+                </span>
+                <span className="block truncate text-[12px] text-muted-foreground">
+                  {one.lobby ? "Demo office · " : !one.officeId ? "Office closed · " : ""}
+                  {one.open ? `${one.open} open` : "All closed"} · <When at={one.lastAt} />
+                </span>
+              </span>
+              {one.unread > 0 && (
+                <span className="min-w-[20px] rounded-full bg-foreground px-1.5 text-center text-[11px] font-semibold leading-5 text-background tabular-nums">
+                  {one.unread}
+                </span>
+              )}
+            </button>
+          </li>
         ))}
-      </div>
+      </ol>
 
-      <div className="mt-4 space-y-3">
-        {list === null ? (
-          <div className="flex justify-center rounded-2xl border border-border bg-card py-16 text-muted-foreground">
-            <Loader variant="dots" size={18} />
-          </div>
-        ) : list.threads.length === 0 ? (
-          <p className="rounded-2xl border border-border bg-card py-16 text-center text-[13px] text-muted-foreground">
-            {show === "waiting" ? "Nobody's waiting. All caught up." : "Nobody has written yet."}
-          </p>
-        ) : (
-          list.threads.map((thread) => <Conversation key={thread.id} thread={thread} onChanged={load} />)
-        )}
-      </div>
-
-      {pages > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2 text-[13px]">
-          <button type="button" disabled={page === 0} onClick={() => setPage(page - 1)} className="h-8 cursor-pointer rounded-full bg-muted px-3.5 disabled:opacity-40">
-            Newer
-          </button>
-          <span className="tabular-nums text-muted-foreground">
-            {page + 1} of {pages}
-          </span>
-          <button type="button" disabled={page + 1 >= pages} onClick={() => setPage(page + 1)} className="h-8 cursor-pointer rounded-full bg-muted px-3.5 disabled:opacity-40">
-            Older
-          </button>
-        </div>
+      {place ? (
+        <Place key={place.key} place={place} onChanged={loadPlaces} />
+      ) : (
+        <p className="hidden rounded-2xl border border-border bg-card py-16 text-center text-[13px] text-muted-foreground md:block">
+          Pick an office to see its tickets.
+        </p>
       )}
-      {error && <p className="mt-3 text-[13px] text-destructive">{error}</p>}
-    </section>
+    </div>
   );
 }
 
-function Conversation({ thread, onChanged }: { thread: AdminHelpThread; onChanged: () => Promise<void> }) {
+/** One place's tickets, open first. Opening it counts as reading everything in it. */
+function Place({ place, onChanged }: { place: AdminHelpPlace; onChanged: () => Promise<void> }) {
+  const [tickets, setTickets] = useState<AdminHelpTicket[] | null>(null);
+
+  const load = useCallback(async () => {
+    const { tickets: next } = await api.adminHelpPlace(place.key);
+    setTickets(next);
+    if (next.some((one) => one.unread > 0)) {
+      await api.adminHelpRead(place.key);
+      await onChanged();
+    }
+  }, [place.key, onChanged]);
+
+  // Read again when something new comes in (the list notices first).
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void load().catch(() => undefined);
+  }, [load, place.lastAt]);
+
+  if (!tickets) {
+    return (
+      <div className="flex justify-center rounded-2xl border border-border bg-card py-16 text-muted-foreground">
+        <Loader variant="dots" size={18} />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      {tickets.map((ticket) => (
+        <Ticket key={ticket.id} ticket={ticket} onChanged={() => load().then(onChanged)} />
+      ))}
+    </div>
+  );
+}
+
+function Ticket({ ticket, onChanged }: { ticket: AdminHelpTicket; onChanged: () => Promise<void> }) {
   const [reply, setReply] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [shown, setShown] = useState(ticket.status === "open");
   const text = reply.trim();
-  const lobby = !thread.officeId && thread.place === "Demo office";
+  const closed = ticket.status === "closed";
 
   const run = async (work: () => Promise<unknown>) => {
     setBusy(true);
@@ -121,128 +151,123 @@ function Conversation({ thread, onChanged }: { thread: AdminHelpThread; onChange
       setBusy(false);
     }
   };
-  const answer = (done: boolean) =>
+  const answer = (close: boolean) =>
     run(async () => {
-      if (text) await api.adminHelpReply(thread.id, text);
-      if (done) await api.adminHelpStatus(thread.id, "done");
+      if (text) await api.adminHelpReply(ticket.id, text);
+      if (close) await api.adminHelpStatus(ticket.id, "closed");
     });
 
   return (
     <article className="overflow-hidden rounded-2xl border border-border bg-card [--face-ring:var(--ui-card)]">
-      <header className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-border px-4 py-3">
-        <Face seed={thread.officeId ?? thread.id} size={30} square={!lobby} />
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-[13.5px] font-semibold">
-            {thread.place}
-            {lobby && <span className="ms-2 font-normal text-muted-foreground">{thread.messages.find((one) => !one.team)?.name}</span>}
-            {!thread.officeId && !lobby && <span className="ms-2 font-normal text-faint">(office closed)</span>}
-          </p>
-          <p className="truncate text-[12px] text-muted-foreground">
-            Started <When at={thread.createdAt} /> · last <When at={thread.updatedAt} />
-          </p>
-        </div>
-        {thread.waiting && <span className="rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">Waiting on us</span>}
-        {thread.status === "done" && <span className="rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold text-ok">Done</span>}
-      </header>
+      <button
+        type="button"
+        onClick={() => setShown((was) => !was)}
+        className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-start hover:bg-muted/40"
+      >
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[14px] font-semibold">{ticket.title}</span>
+          <span className="block text-[12px] text-muted-foreground">
+            Opened <When at={ticket.createdAt} /> · {ticket.messages.length} {ticket.messages.length === 1 ? "message" : "messages"}
+          </span>
+        </span>
+        {ticket.unread > 0 && <span className="text-[11.5px] font-semibold text-foreground">{ticket.unread} new</span>}
+        <span className={cn("rounded-full px-2 py-0.5 text-[11px] font-medium", closed ? "bg-muted text-muted-foreground" : "bg-foreground/[0.07] text-foreground")}>
+          {closed ? "Closed" : "Open"}
+        </span>
+      </button>
 
-      <div className="space-y-3 p-4">
-        <ol className="space-y-2.5">
-          {thread.messages.map((message) => (
-            <Message key={message.id} message={message} />
-          ))}
-        </ol>
+      {shown && (
+        <div className="space-y-3 border-t border-border p-4">
+          <ol className="space-y-3">
+            {ticket.messages.map((message) => (
+              <Message key={message.id} message={message} fresh={!message.team && message.id > ticket.seenId} />
+            ))}
+          </ol>
 
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            void answer(false);
-          }}
-        >
-          <textarea
-            value={reply}
-            rows={Math.min(8, Math.max(2, reply.split("\n").length))}
-            onChange={(event) => setReply(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-                event.preventDefault();
-                void answer(false);
-              }
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              void answer(false);
             }}
-            placeholder={`Reply to ${lobby ? "them" : `everyone in ${thread.place}`}. Ctrl+Enter sends.`}
-            className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-[16px] outline-none focus:border-foreground/35 sm:text-[13.5px]"
-          />
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            <button type="submit" disabled={busy || !text} className="h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background disabled:opacity-40">
-              Reply
-            </button>
-            {thread.status === "open" ? (
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => void answer(true)}
-                className="h-8 cursor-pointer rounded-full bg-muted px-3.5 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-40"
-              >
-                {text ? "Reply and mark done" : "Mark done"}
+          >
+            <textarea
+              value={reply}
+              rows={Math.min(8, Math.max(2, reply.split("\n").length))}
+              onChange={(event) => setReply(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+                  event.preventDefault();
+                  void answer(false);
+                }
+              }}
+              placeholder={closed ? "Reply. They see it once, then it leaves their Chat." : "Reply. They see it in their Chat. Ctrl+Enter sends."}
+              className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-[16px] outline-none focus:border-foreground/35 sm:text-[13.5px]"
+            />
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              <button type="submit" disabled={busy || !text} className="h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background disabled:opacity-40">
+                Reply
               </button>
-            ) : (
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => void run(() => api.adminHelpStatus(thread.id, "open"))}
-                className="h-8 cursor-pointer rounded-full bg-muted px-3.5 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-40"
-              >
-                Not done
-              </button>
-            )}
-          </div>
-          {error && <p className="mt-1.5 text-[12px] text-destructive">{error}</p>}
-        </form>
-      </div>
+              {closed ? (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void run(() => api.adminHelpStatus(ticket.id, "open"))}
+                  className="h-8 cursor-pointer rounded-full bg-muted px-3.5 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-40"
+                >
+                  Reopen
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void answer(true)}
+                  className="h-8 cursor-pointer rounded-full bg-muted px-3.5 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-40"
+                >
+                  {text ? "Reply and close" : "Close issue"}
+                </button>
+              )}
+            </div>
+            {error && <p className="mt-1.5 text-[12px] text-destructive">{error}</p>}
+          </form>
+        </div>
+      )}
     </article>
   );
 }
 
-/** One message: the team's on the right; theirs with who wrote it and, under it, where from. */
-function Message({ message }: { message: AdminHelpMessage }) {
-  const context = [
-    message.userAgent && browserOf(message.userAgent),
-    message.screen,
-    message.locale,
-    message.country,
-  ].filter(Boolean);
+/** One message, as in Chat: who, when, what; under theirs, where it was written from. */
+function Message({ message, fresh }: { message: AdminHelpMessage; fresh: boolean }) {
+  const context = [message.userAgent && browserOf(message.userAgent), message.screen, message.locale, message.country].filter(Boolean);
   return (
-    <li className={cn("flex flex-col", message.team ? "items-end" : "items-start")}>
-      <p className="mb-1 px-1 text-[11.5px] text-muted-foreground">
-        <span className={cn("font-semibold", message.team ? "text-brand" : "text-foreground")}>{message.name}</span>
-        {message.email && (
-          <a href={`mailto:${message.email}`} className="ms-1.5 hover:text-foreground">
-            {message.email}
-          </a>
-        )}
-        {" · "}
-        <When at={message.at} />
-      </p>
-      <p
-        dir="auto"
-        className={cn(
-          "max-w-[85%] whitespace-pre-wrap break-words rounded-2xl px-3 py-2 text-[13.5px] leading-[1.5]",
-          message.team ? "bg-brand/[0.1]" : "bg-muted",
-        )}
-      >
-        {message.body}
-      </p>
-      {!message.team && (context.length > 0 || message.page || message.replay) && (
-        <p className="mt-1 flex max-w-[85%] flex-wrap items-center gap-x-2 gap-y-0.5 px-1 text-[11.5px] text-faint">
-          {context.length > 0 && <span title={message.userAgent ?? undefined}>{context.join(" · ")}</span>}
-          {message.page && <code className="break-all">{message.page}</code>}
-          {message.replay && (
-            <a href={message.replay} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium text-muted-foreground hover:text-foreground">
-              Recording
-              <ExternalLink className="size-3" />
+    <li className="flex gap-3">
+      {message.team ? <Logo size={30} className="shrink-0" /> : <Face seed={message.userId ?? message.name} size={30} />}
+      <div className="min-w-0 flex-1">
+        <p className="flex flex-wrap items-baseline gap-x-2 text-[12px] text-muted-foreground">
+          <span className="text-[13px] font-semibold text-foreground">{message.name}</span>
+          {message.email && (
+            <a href={`mailto:${message.email}`} className="hover:text-foreground">
+              {message.email}
             </a>
           )}
+          <When at={message.at} />
+          {fresh && <span className="font-semibold text-foreground">New</span>}
         </p>
-      )}
+        <p dir="auto" className="mt-0.5 whitespace-pre-wrap break-words text-[13.5px] leading-[1.5] text-foreground/90">
+          {message.body}
+        </p>
+        {!message.team && (context.length > 0 || message.page || message.replay) && (
+          <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11.5px] text-faint">
+            {context.length > 0 && <span title={message.userAgent ?? undefined}>{context.join(" · ")}</span>}
+            {message.page && <code className="break-all">{message.page}</code>}
+            {message.replay && (
+              <a href={message.replay} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium text-muted-foreground hover:text-foreground">
+                Recording
+                <ExternalLink className="size-3" />
+              </a>
+            )}
+          </p>
+        )}
+      </div>
     </li>
   );
 }

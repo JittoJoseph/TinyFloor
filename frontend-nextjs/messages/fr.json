@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Aide et avis",
-    "intro": "Quelque chose ne marche pas, ou une idée ? Dites-le à l'équipe TinyFloor, nous répondons ici.",
-    "officeSees": "Seules les personnes de {office} et l'équipe TinyFloor voient ceci.",
-    "lobbySees": "Seuls vous et l'équipe TinyFloor voyez ceci.",
+    "officeSees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans le Chat, que tout {office} peut suivre.",
+    "lobbySees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans votre Chat. Vous seul le voyez.",
     "placeholder": "Que s'est-il passé, et à quoi vous attendiez-vous ?",
     "context": "Nous ajoutons la page où vous êtes et votre navigateur, pour pouvoir regarder de près.",
     "send": "Envoyer",
     "sending": "Envoi",
     "error": "L'envoi n'a pas abouti. Réessayez.",
     "slowDown": "Vous avez envoyé beaucoup de messages dans l'heure. Réessayez un peu plus tard.",
+    "section": "Support TinyFloor",
+    "open": "Ouvert",
+    "closed": "Fermé",
     "message": "Écrire à l'équipe TinyFloor",
-    "team": "Équipe TinyFloor",
-    "you": "Vous",
-    "newReply": "Nouvelle réponse"
+    "closedNote": "L'équipe TinyFloor a fermé ce ticket. Toujours bloqué ? Écrivez-nous à nouveau depuis Aide et avis.",
+    "ticketOffice": "Tout {office} peut suivre ce ticket et y ajouter quelque chose. L'équipe TinyFloor répond ici.",
+    "ticketLobby": "Seuls vous et l'équipe TinyFloor voyez ceci. Nous répondons ici.",
+    "gone": "Ce ticket n'existe plus."
   },
   "dashboard": {
     "newOffice": "Nouveau bureau",

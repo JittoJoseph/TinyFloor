@@ -11,7 +11,7 @@ import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
-import { help, useHelp } from "@/lib/help";
+import { help } from "@/lib/help";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
@@ -46,7 +46,6 @@ export function YouMenu({
   const theme = useTheme();
   const status = useMyStatus();
   const wide = useWide();
-  const helpUnread = useHelp().conversation?.unread ?? 0;
   if (!user) return null;
   // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
   const helpHere = !wide && !bar;
@@ -68,11 +67,9 @@ export function YouMenu({
         panel ?? <button
           type="button"
           aria-label={t("you")}
-          className="relative cursor-pointer rounded-full outline-none transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring/60"
+          className="cursor-pointer rounded-full outline-none transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring/60"
         >
           <Face seed={user.id} size={34} presence={onFloor ? status : null} />
-          {/* On a phone Help and feedback is in here, so the team's answer shows on you. */}
-          {helpHere && helpUnread > 0 && <span className="absolute -end-0.5 -top-0.5 size-2.5 rounded-full bg-brand ring-2 ring-rail" />}
         </button>
       }
     >
@@ -155,15 +152,8 @@ export function YouMenu({
         </>
       )}
       {helpHere && (
-        <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
-          <span className="flex items-center gap-2">
-            {tHelp("title")}
-            {helpUnread > 0 && (
-              <span aria-label={tHelp("newReply")} className="min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums">
-                {helpUnread}
-              </span>
-            )}
-          </span>
+        <MenuItem icon={<HelpCircle />} onSelect={() => help.compose(true)}>
+          {tHelp("title")}
         </MenuItem>
       )}
       {leave && !wide && (

@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Pomoc i opinie",
-    "intro": "Coś nie działa albo masz pomysł? Napisz do zespołu TinyFloor, odpowiemy tutaj.",
-    "officeSees": "Widzą to tylko osoby z {office} i zespół TinyFloor.",
-    "lobbySees": "Widzisz to tylko Ty i zespół TinyFloor.",
+    "officeSees": "Trafia do zespołu TinyFloor i otwiera w Czacie zgłoszenie, które mogą śledzić wszyscy z {office}.",
+    "lobbySees": "Trafia do zespołu TinyFloor i otwiera zgłoszenie w Twoim Czacie. Widzisz je tylko Ty.",
     "placeholder": "Co się stało i czego się spodziewałeś?",
     "context": "Dołączamy stronę, na której jesteś, i Twoją przeglądarkę, żeby móc to sprawdzić.",
     "send": "Wyślij",
     "sending": "Wysyłanie",
     "error": "Nie udało się wysłać. Spróbuj ponownie.",
     "slowDown": "W ciągu ostatniej godziny wysłano dużo wiadomości. Spróbuj trochę później.",
+    "section": "Wsparcie TinyFloor",
+    "open": "Otwarte",
+    "closed": "Zamknięte",
     "message": "Wiadomość do zespołu TinyFloor",
-    "team": "Zespół TinyFloor",
-    "you": "Ty",
-    "newReply": "Nowa odpowiedź"
+    "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
+    "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
+    "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
+    "gone": "Tego zgłoszenia już nie ma."
   },
   "dashboard": {
     "newOffice": "Nowe biuro",

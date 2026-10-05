@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Hulp en feedback",
-    "intro": "Werkt er iets niet, of heb je een idee? Laat het het TinyFloor-team weten, we antwoorden hier.",
-    "officeSees": "Alleen mensen in {office} en het TinyFloor-team zien dit.",
-    "lobbySees": "Alleen jij en het TinyFloor-team zien dit.",
+    "officeSees": "Het gaat naar het TinyFloor-team en opent een ticket in Chat dat iedereen in {office} kan volgen.",
+    "lobbySees": "Het gaat naar het TinyFloor-team en opent een ticket in je Chat. Alleen jij ziet het.",
     "placeholder": "Wat gebeurde er, en wat verwachtte je?",
     "context": "We sturen de pagina waar je bent en je browser mee, zodat we het kunnen uitzoeken.",
     "send": "Versturen",
     "sending": "Wordt verstuurd",
     "error": "Dat is niet verstuurd. Probeer het opnieuw.",
     "slowDown": "Je hebt het afgelopen uur veel gestuurd. Probeer het straks opnieuw.",
+    "section": "TinyFloor-support",
+    "open": "Open",
+    "closed": "Gesloten",
     "message": "Bericht aan het TinyFloor-team",
-    "team": "TinyFloor-team",
-    "you": "Jij",
-    "newReply": "Nieuw antwoord"
+    "closedNote": "Het TinyFloor-team heeft dit gesloten. Loop je nog vast? Laat het ons opnieuw weten via Hulp en feedback.",
+    "ticketOffice": "Iedereen in {office} kan dit volgen en iets toevoegen. Het TinyFloor-team antwoordt hier.",
+    "ticketLobby": "Alleen jij en het TinyFloor-team zien dit. We antwoorden hier.",
+    "gone": "Dit ticket bestaat niet meer."
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",

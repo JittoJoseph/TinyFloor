@@ -46,9 +46,9 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(cutoff.toISOString().slice(0, 10))
     .run();
 
-  // Help and feedback: a conversation dealt with and quiet for a year.
+  // Help and feedback: tickets closed a year ago.
   const help = await env.DB.prepare(
-    `DELETE FROM help_threads WHERE id IN (SELECT id FROM help_threads WHERE status = 'done' AND updated_at < ?1 LIMIT ${BATCH})`,
+    `DELETE FROM help_tickets WHERE id IN (SELECT id FROM help_tickets WHERE status = 'closed' AND closed_at < ?1 LIMIT ${BATCH})`,
   )
     .bind(now - 365 * DAY_MS)
     .run();

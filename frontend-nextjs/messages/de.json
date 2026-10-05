@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Hilfe und Feedback",
-    "intro": "Funktioniert etwas nicht, oder hast du eine Idee? Sag es dem TinyFloor-Team, wir antworten hier.",
-    "officeSees": "Nur die Leute in {office} und das TinyFloor-Team sehen das.",
-    "lobbySees": "Nur du und das TinyFloor-Team sehen das.",
+    "officeSees": "Es geht an das TinyFloor-Team und öffnet ein Ticket im Chat, dem alle in {office} folgen können.",
+    "lobbySees": "Es geht an das TinyFloor-Team und öffnet ein Ticket in deinem Chat. Nur du siehst es.",
     "placeholder": "Was ist passiert, und was hast du erwartet?",
     "context": "Wir fügen die Seite, auf der du bist, und deinen Browser hinzu, damit wir der Sache nachgehen können.",
     "send": "Senden",
     "sending": "Wird gesendet",
     "error": "Das wurde nicht gesendet. Versuch es noch einmal.",
     "slowDown": "Du hast in der letzten Stunde viel gesendet. Versuch es etwas später wieder.",
+    "section": "TinyFloor-Support",
+    "open": "Offen",
+    "closed": "Geschlossen",
     "message": "Nachricht an das TinyFloor-Team",
-    "team": "TinyFloor-Team",
-    "you": "Du",
-    "newReply": "Neue Antwort"
+    "closedNote": "Das TinyFloor-Team hat das geschlossen. Hängst du noch fest? Schreib uns wieder über Hilfe und Feedback.",
+    "ticketOffice": "Alle in {office} können dem folgen und etwas ergänzen. Das TinyFloor-Team antwortet hier.",
+    "ticketLobby": "Nur du und das TinyFloor-Team sehen das. Wir antworten hier.",
+    "gone": "Dieses Ticket gibt es nicht mehr."
   },
   "dashboard": {
     "newOffice": "Neues Büro",

@@ -39,16 +39,21 @@ import { PresenceDock } from "./PresenceDock";
 import { usePlace, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
 import { Composer, focusComposer } from "./chat/Composer";
+import { HelpTicket } from "./HelpTicket";
+import { Logo } from "./Logo";
+import { help, ticketChannel, ticketOf, useHelp } from "@/lib/help";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
  * office and in the lobby. Anyone can edit and unsend what they said. In the
  * lobby direct messages last only while both of you are there, and what only
  * an office can do (making channels, images) is all here and asks for an office.
+ * Issues raised with the TinyFloor team sit at the bottom as tickets (docs/19).
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
   const ts = useTranslations("shell");
+  const th = useTranslations("help");
   const router = useRouter();
   const place = usePlace();
   const lobby = place.kind === "lobby";
@@ -61,6 +66,8 @@ export function ChatView({ channel }: { channel?: string }) {
   const noteTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const open = channel ?? GENERAL_CHANNEL;
+  const ticket = ticketOf(channel);
+  const { tickets } = useHelp();
   // Who you are is known from your session before the chat has connected, so a
   // direct message opened in that first moment still has both its people.
   const me = user?.id ?? state.me;
@@ -81,12 +88,19 @@ export function ChatView({ channel }: { channel?: string }) {
 
   // Reading a conversation marks it read, and asks for its history.
   useEffect(() => {
+    if (ticket) return;
     chat.watch(open);
     return () => chat.watch(null);
-  }, [open, state.ready]);
+  }, [open, ticket, state.ready]);
   useEffect(() => {
-    if (state.ready && !state.history[open]) chat.older(open);
-  }, [state.ready, state.history, open]);
+    if (!ticket && state.ready && !state.history[open]) chat.older(open);
+  }, [ticket, state.ready, state.history, open]);
+  // The tickets are read often while Chat is open, so the team's answers turn up here.
+  useEffect(() => {
+    void help.refresh(true);
+    const timer = setInterval(() => document.visibilityState === "visible" && void help.refresh(true), 15_000);
+    return () => clearInterval(timer);
+  }, []);
   useEffect(() => () => clearTimeout(noteTimer.current), []);
   // A direct message's address with someone missing from it goes nowhere: back to the start.
   const broken = isDm(open) && !pair;
@@ -280,6 +294,22 @@ export function ChatView({ channel }: { channel?: string }) {
                 </Link>
               )}
             </Section>
+
+            {!!tickets?.length && (
+              <Section title={th("section")}>
+                {tickets.map((one) => (
+                  <Row
+                    key={one.id}
+                    href={place.paths.chat(ticketChannel(one.id))}
+                    active={ticket === one.id}
+                    unread={one.unread}
+                    icon={<Logo size={18} />}
+                    label={one.title}
+                    trailing={one.status === "closed" ? <span className="text-[11px] text-faint">{th("closed")}</span> : undefined}
+                  />
+                ))}
+              </Section>
+            )}
           </nav>
 
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
@@ -287,7 +317,10 @@ export function ChatView({ channel }: { channel?: string }) {
         </>
       }
     >
-      {/* The whole conversation takes a dropped image, the way any chat does. */}
+      {ticket ? (
+        <HelpTicket id={ticket} />
+      ) : (
+      /* The whole conversation takes a dropped image, the way any chat does. */
       <div
         className="relative flex min-h-0 flex-1 flex-col"
         onDragEnter={(event) => event.dataTransfer.types.includes("Files") && setDragging(true)}
@@ -440,6 +473,7 @@ export function ChatView({ channel }: { channel?: string }) {
           </div>
         )}
       </div>
+      )}
     </ShellView>
   );
 

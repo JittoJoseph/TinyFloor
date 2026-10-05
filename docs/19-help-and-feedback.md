@@ -1,67 +1,82 @@
 # 19. Help and feedback
 
-A conversation between an office and the TinyFloor team, opened from inside
-the app. It runs on D1 tables and a few API routes. Clients poll for new
-messages. It needs no sockets or Durable Objects.
-
-## Who talks to whom
-
-- **An office has one conversation, shared by everyone in it.** Anyone there
-  can read it and add to it. The dialog says so: "Only people in {office} and
-  the TinyFloor team see this."
-- **In the demo office, each visitor has their own.** Strangers mix there, so
-  nobody sees anyone else's. Guests can write too.
+Issues raised with the TinyFloor team from inside the app, as tickets in
+Chat. It needs only D1 tables and a few API routes: there are no sockets and
+no Durable Objects, and clients ask for news now and then.
 
 ## For the people in the office
 
-- A quiet "?" sits at the foot of the rail, above leave and settings. On a
-  phone, it's "Help and feedback" in your menu. Nothing else in the office
-  mentions it: an office belongs to its team.
-- **Before anything is said,** the dialog is one roomy box. Enter is a new
-  line, and Ctrl or ⌘ with Enter sends.
-- **After that, it's a chat.** Messages show newest at the bottom: yours on
-  the right, the team's marked as the TinyFloor team, and teammates' with
-  their names. A small composer sits underneath; Enter sends and Shift+Enter
-  adds a new line.
-- **Unread.** Once you have taken part (written, or opened the dialog with a
-  conversation in it), new messages from the team or a teammate since you
-  last looked count as unread. The count shows on the "?". On a phone, it
-  shows on the menu item, with a dot on your face. People who never used it
-  get no count, so it stays out of their way. Opening the dialog reads them.
-- **Polling.** The conversation is read every 6 seconds while the dialog is
-  open, and every 2 minutes while it's closed. It's read again on coming back
-  to the tab, and only while the tab is in view.
+- **Raising an issue.** The "?" at the foot of the rail, above leave and
+  settings, opens a small card beside it. On a phone, "Help and feedback" in
+  your menu opens the card above the bottom bar.
+  - The card has no backdrop and opens at once.
+  - It has one box: Enter makes a new line, and Ctrl or ⌘ with Enter sends.
+  - Escape or a click elsewhere puts it away and keeps what you typed.
+- **Where the ticket goes.** Sending opens the new ticket in Chat, under
+  "TinyFloor support" at the bottom of the sidebar. The ticket is named after
+  the first line of what you wrote.
+- **What a ticket looks like.** It's an ordinary conversation:
+  - The team's answers sit under the TinyFloor mark, with no colour of their
+    own.
+  - The composer has no image or emoji buttons.
+  - The header shows Open or Closed.
+- **Who sees it.**
+  - In an office, everyone there sees the office's tickets in Chat and can add
+    to them. The card and the ticket both say so.
+  - In the demo office, where strangers mix, a ticket is its opener's alone.
+  - An office can have several tickets open at once.
+- **Unread.** Once you have opened a ticket, anything new in it from the team
+  or a teammate counts as unread. The count shows on the ticket in the
+  sidebar and adds to Chat's count on the rail. People who never opened a
+  ticket get no count for it.
+- **Closing.** When the team closes a ticket, it says so and takes no more
+  messages. It stays in Chat until you have read the last of it, then it goes.
+  To raise the problem again, open a new ticket.
+- **How often it's read.**
+  - An open ticket: every 5 seconds.
+  - The ticket list, while Chat is open: every 15 seconds.
+  - The ticket list, otherwise: every 2 minutes, and on coming back to the
+    tab.
+  - Nothing is read while the tab is out of view.
 - **Context.** Each message carries the page, the language, the screen size,
   the browser, the country, and a link to that moment in the PostHog
-  recording (when PostHog is on).
-- **Limit.** 30 messages an hour per person.
+  recording (when PostHog is on). Limit: 30 messages an hour per person.
 
 ## For the team
 
-- **Discord.** Every message from an office or a visitor goes to the team's
-  Discord, through the realtime worker's existing webhook (`helpMessage`,
-  like `officeCreated`). The embed has the office, who wrote it and from
-  where, the text (up to 1,500 characters), and a link to the admin page.
-- **Admin → Help.** It opens on "Waiting on us": open conversations where the
-  last word is theirs. The tab shows that count. "All" shows everything.
-  Each conversation shows who said what, their email, and the context under
-  each of their messages.
-- **Actions.** Reply (Ctrl+Enter), Reply and mark done, Mark done, or Not
-  done. Anything new from the office opens a conversation again.
-- **What's kept.** A conversation keeps its office's name and each writer's
-  name and email as they were. It outlives a closed office or a guest's
-  account. Conversations marked done and quiet for a year are deleted by the
-  daily clean-up.
+- **Discord.** Everything people write goes to the team's Discord, through
+  the realtime worker's existing webhook (`helpMessage`, like
+  `officeCreated`).
+  - A new ticket is "New in Help: {office}"; a reply in one is "Help:
+    {office}".
+  - Each post has who wrote it, from where, the text (up to 1,500 characters)
+    and a link to the admin page.
+- **Admin → Help is an inbox.**
+  - The left column lists every office with tickets. Demo office visitors are
+    listed by name, and offices that have since closed are listed too. Those
+    with unread messages come first, with their count, and the tab shows the
+    total.
+  - Picking an office shows its tickets, open ones first. Each ticket is a
+    conversation, with where each message came from and "New" on what you
+    hadn't read. Opening an office marks everything in it read.
+- **Answering.** Reply (Ctrl+Enter), Reply and close, Close issue, or Reopen.
+  A reply counts as unread in their Chat.
+- **What's kept.** A ticket keeps its office's name and each writer's name and
+  email as they were. It outlives a closed office or a guest's account. The
+  daily clean-up deletes tickets a year after they were closed.
 
 ## Where it lives
 
-- `worker-api/migrations/0014_help_threads.sql`: `help_threads`,
-  `help_messages` and `help_reads`. 0013 was the first version and only ever
-  held test data.
+- `worker-api/migrations/0015_help_tickets.sql`: `help_tickets`,
+  `help_messages` and `help_reads`. 0013 and 0014 were earlier versions and
+  only ever held test data.
 - `worker-api/src/help.ts`: `/v1/help` for the office side, and
   `/v1/admin/help` for the team.
 - `worker-realtime/src/discord.ts` and `admin.ts`: the Discord message.
-- `frontend-nextjs/src/lib/help.ts` holds the conversation and the unread
-  count. `components/app/HelpDialog.tsx` is the dialog. `AppShell` mounts the
-  dialog and the rail button, and `YouMenu` has the phone menu item.
-- `app/[locale]/(app)/admin/Help.tsx`: the admin tab.
+- In `frontend-nextjs/src`:
+  - `lib/help.ts`: the tickets, the one on screen, and the unread count.
+  - `components/app/HelpCompose.tsx`: the card. AppShell mounts it.
+  - `components/app/HelpTicket.tsx`: a ticket in Chat, built from Chat's own
+    `Conversation` and `Composer`.
+  - `ChatView`: the "TinyFloor support" section.
+  - `app/[locale]/(app)/admin/Help.tsx`: the inbox.

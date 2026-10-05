@@ -12,7 +12,7 @@ import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
 import { help, useHelp } from "@/lib/help";
-import { HelpDialog } from "./HelpDialog";
+import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
 
 /**
  * Whether the view on screen has a presence dock with you in it. When it does,
@@ -127,7 +127,7 @@ export function AppShell({
           <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
         </nav>
       </div>
-      <HelpDialog />
+      <HelpCompose />
     </DockContext.Provider>
   );
 }
@@ -198,21 +198,27 @@ function RailItem({
   );
 }
 
-/** Help and feedback, among the quiet things at the rail's foot; a count when the team has answered. */
+/** Help and feedback, among the quiet things at the rail's foot: it opens the box beside it. Answers come in Chat. */
 function HelpRailButton() {
   const t = useTranslations("help");
-  const unread = useHelp().conversation?.unread ?? 0;
-  const label = unread ? `${t("title")} · ${t("newReply")}` : t("title");
+  const { composing } = useHelp();
   return (
-    <Tooltip content={label} side="right" wrapperClassName="w-full">
-      <button type="button" aria-label={label} onClick={() => help.open()} className="group relative flex w-full cursor-pointer flex-col items-center outline-none">
-        <span className="relative flex size-10 items-center justify-center rounded-[12px] text-muted-foreground transition-[background-color,color,transform] duration-150 group-hover:bg-foreground/[0.06] group-hover:text-foreground group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95">
-          <Icon icon={<HelpCircle />} active={false} />
-          {unread > 0 && (
-            <span className="absolute -end-1.5 -top-1.5 min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums ring-2 ring-rail">
-              {unread > 99 ? "99+" : unread}
-            </span>
+    <Tooltip content={t("title")} side="right" wrapperClassName="w-full">
+      <button
+        type="button"
+        aria-label={t("title")}
+        aria-expanded={composing}
+        {...{ [HELP_TRIGGER]: "" }}
+        onClick={() => help.compose(!composing)}
+        className="group relative flex w-full cursor-pointer flex-col items-center outline-none"
+      >
+        <span
+          className={cn(
+            "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95",
+            composing ? "bg-foreground/[0.08] text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
           )}
+        >
+          <Icon icon={<HelpCircle />} active={composing} />
         </span>
       </button>
     </Tooltip>

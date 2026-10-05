@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Hjälp och feedback",
-    "intro": "Fungerar något inte, eller har du en idé? Berätta för TinyFloor-teamet, vi svarar här.",
-    "officeSees": "Bara personer i {office} och TinyFloor-teamet ser det här.",
-    "lobbySees": "Bara du och TinyFloor-teamet ser det här.",
+    "officeSees": "Det går till TinyFloor-teamet och öppnar ett ärende i Chatt som alla i {office} kan följa.",
+    "lobbySees": "Det går till TinyFloor-teamet och öppnar ett ärende i din Chatt. Bara du ser det.",
     "placeholder": "Vad hände, och vad förväntade du dig?",
     "context": "Vi skickar med sidan du är på och din webbläsare, så att vi kan titta på det.",
     "send": "Skicka",
     "sending": "Skickar",
     "error": "Det skickades inte. Försök igen.",
     "slowDown": "Du har skickat mycket den senaste timmen. Försök igen lite senare.",
+    "section": "TinyFloor-support",
+    "open": "Öppen",
+    "closed": "Stängd",
     "message": "Skriv till TinyFloor-teamet",
-    "team": "TinyFloor-teamet",
-    "you": "Du",
-    "newReply": "Nytt svar"
+    "closedNote": "TinyFloor-teamet har stängt det här. Fortfarande fast? Skriv till oss igen via Hjälp och feedback.",
+    "ticketOffice": "Alla i {office} kan följa det här och lägga till något. TinyFloor-teamet svarar här.",
+    "ticketLobby": "Bara du och TinyFloor-teamet ser det här. Vi svarar här.",
+    "gone": "Det här ärendet finns inte längre."
   },
   "dashboard": {
     "newOffice": "Nytt kontor",

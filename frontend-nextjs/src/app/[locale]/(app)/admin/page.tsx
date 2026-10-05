@@ -44,9 +44,9 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("overview");
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [denied, setDenied] = useState(false);
-  // The Help tab says how many are waiting on the team, and the count beside its name follows.
-  const helpWaiting = useCallback(
-    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, helpWaiting: count } }),
+  // The Help tab knows what's unread, and the count beside its name follows.
+  const helpUnread = useCallback(
+    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, helpUnread: count } }),
     [],
   );
 
@@ -89,9 +89,9 @@ export default function AdminPage() {
                     )}
                   >
                     {one.label}
-                    {one.key === "help" && summary.counts.helpWaiting > 0 && (
-                      <span className="ms-1.5 rounded-full bg-brand px-1.5 text-[11px] font-semibold tabular-nums text-brand-foreground">
-                        {summary.counts.helpWaiting}
+                    {one.key === "help" && summary.counts.helpUnread > 0 && (
+                      <span className="ms-1.5 rounded-full bg-foreground px-1.5 text-[11px] font-semibold tabular-nums text-background">
+                        {summary.counts.helpUnread}
                       </span>
                     )}
                   </button>
@@ -100,7 +100,7 @@ export default function AdminPage() {
             </div>
             <div className="mt-6">
               {tab === "overview" && <Overview summary={summary} />}
-              {tab === "help" && <Help onWaiting={helpWaiting} />}
+              {tab === "help" && <Help onUnread={helpUnread} />}
               {tab === "people" && <People key="people" guests={false} />}
               {tab === "guests" && <People key="guests" guests />}
               {tab === "offices" && <Offices />}

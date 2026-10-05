@@ -32,14 +32,17 @@ export function Composer({
   onFiles,
   note,
   maxLength = 4000,
+  attach = true,
 }: {
   placeholder: string;
   onSend: (text: string) => void;
   /** Images picked with the button; the view decides what can happen to them. */
-  onFiles: (files: File[]) => void;
+  onFiles?: (files: File[]) => void;
   /** Something the room said, like "slow down". */
   note?: string | null;
   maxLength?: number;
+  /** The image and emoji buttons; a ticket to the team has words only. */
+  attach?: boolean;
 }) {
   const t = useTranslations("chat");
   const [body, setBody] = useState("");
@@ -114,6 +117,8 @@ export function Composer({
         />
 
         <div className="flex items-center gap-0.5 px-2 pb-2">
+          {attach && (
+          <>
           <Tooltip content={t("attach")}>
             <button
               type="button"
@@ -131,7 +136,7 @@ export function Composer({
             multiple
             hidden
             onChange={(event) => {
-              onFiles([...(event.target.files ?? [])]);
+              onFiles?.([...(event.target.files ?? [])]);
               event.target.value = "";
             }}
           />
@@ -165,6 +170,8 @@ export function Composer({
               </span>
             )}
           </span>
+          </>
+          )}
 
           <span className="ms-auto me-2 hidden items-center gap-1 text-[11px] text-faint md:flex">
             <Kbd>⇧</Kbd>

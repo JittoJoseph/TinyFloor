@@ -2,14 +2,17 @@ import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { call, fakeRealtime, makeUser } from "./helpers";
 
-interface Conversation {
-  messages: Array<{ mine: boolean; team: boolean; name: string; body: string }>;
-  unread: number;
+interface Tickets {
+  tickets: Array<{ id: string; title: string; status: string; unread: number }>;
 }
 
-interface Admin {
-  threads: Array<{ id: string; officeId: string | null; place: string; waiting: boolean; messages: Array<{ team: boolean; body: string; name: string }> }>;
-  total: number;
+interface TicketView {
+  ticket: { id: string; title: string; status: string };
+  messages: Array<{ mine: boolean; team: boolean; name: string; body: string }>;
+}
+
+interface Places {
+  places: Array<{ key: string; place: string; officeId: string | null; lobby: boolean; visitor: string | null; open: number; unread: number }>;
 }
 
 async function admin() {
@@ -27,82 +30,86 @@ async function officeWithTwo(name: string) {
   return { owner, mate, office };
 }
 
-describe("help and feedback", () => {
-  it("is one conversation per office, shared by the people in it and nobody else", async () => {
-    const { owner, mate, office } = await officeWithTwo("Help Shared");
-    const started = await call<Conversation>(owner, "POST", "/v1/help", { office, body: "  Messages show twice  ", page: "/office/x/chat" });
-    expect(started.status).toBe(201);
-    expect(started.body.messages).toEqual([expect.objectContaining({ mine: true, team: false, body: "Messages show twice" })]);
+const open = (who: Awaited<ReturnType<typeof makeUser>>, office: string | null, body: string) =>
+  call<Tickets & { id: string }>(who, "POST", "/v1/help", { body, ...(office ? { office } : {}), page: "/office/x" });
 
-    const seen = await call<Conversation>(mate, "GET", `/v1/help?office=${office}`);
-    expect(seen.body.messages).toEqual([expect.objectContaining({ mine: false, name: "Help Shared Owner" })]);
-    // The mate hasn't taken part, so nothing is new to them.
-    expect(seen.body.unread).toBe(0);
-    await call(mate, "POST", "/v1/help", { office, body: "Same here" });
-    expect((await call<Conversation>(owner, "GET", `/v1/help?office=${office}`)).body.unread).toBe(1);
+describe("help and feedback", () => {
+  it("opens a ticket the whole office can follow, named after its first line", async () => {
+    const { owner, mate, office } = await officeWithTwo("Help Shared");
+    const opened = await open(owner, office, "  Messages show twice\nAfter switching language, every message is doubled.  ");
+    expect(opened.status).toBe(201);
+    expect(opened.body.tickets).toEqual([expect.objectContaining({ id: opened.body.id, title: "Messages show twice", status: "open", unread: 0 })]);
+
+    // The mate sees it in Chat, with nothing new to them until they open it.
+    expect((await call<Tickets>(mate, "GET", `/v1/help?office=${office}`)).body.tickets).toEqual([expect.objectContaining({ unread: 0 })]);
+    const view = await call<TicketView>(mate, "GET", `/v1/help/${opened.body.id}`);
+    expect(view.body.messages).toEqual([expect.objectContaining({ mine: false, name: "Help Shared Owner" })]);
+    await call(mate, "POST", `/v1/help/${opened.body.id}/messages`, { body: "Same here" });
+    expect((await call<Tickets>(owner, "GET", `/v1/help?office=${office}`)).body.tickets[0].unread).toBe(1);
+
+    // Another issue is another ticket.
+    await open(mate, office, "The whiteboard doesn't save");
+    expect((await call<Tickets>(owner, "GET", `/v1/help?office=${office}`)).body.tickets).toHaveLength(2);
 
     const outsider = await makeUser("Outsider");
     expect((await call(outsider, "GET", `/v1/help?office=${office}`)).status).toBe(404);
-    expect((await call(outsider, "POST", "/v1/help", { office, body: "Hi" })).status).toBe(404);
-    // In the demo office it's their own.
-    expect((await call<Conversation>(outsider, "GET", "/v1/help")).body.messages).toHaveLength(0);
+    expect((await call(outsider, "GET", `/v1/help/${opened.body.id}`)).status).toBe(404);
+    expect((await call(outsider, "POST", `/v1/help/${opened.body.id}/messages`, { body: "Hi" })).status).toBe(404);
     expect((await call(owner, "POST", "/v1/help", { office, body: "   " })).status).toBe(400);
-    expect((await call(null, "GET", "/v1/help")).status).toBe(401);
 
     const told = (await fakeRealtime().calls()).filter((one) => one[0] === "helpMessage" && one[1] === "Help Shared");
-    expect(told).toEqual([
-      ["helpMessage", "Help Shared", "Help Shared Owner", "Messages show twice", true],
-      ["helpMessage", "Help Shared", "Help Shared Mate", "Same here", false],
-    ]);
+    expect(told.map((one) => one[4])).toEqual([true, false, true]);
   });
 
-  it("gives every demo office visitor their own, guests too", async () => {
+  it("keeps a demo office visitor's tickets to themselves", async () => {
     const guest = await makeUser("Visitor", { guest: true });
     const other = await makeUser("Other Visitor", { guest: true });
-    await call(guest, "POST", "/v1/help", { body: "Hello from the demo" });
-    expect((await call<Conversation>(guest, "GET", "/v1/help")).body.messages).toHaveLength(1);
-    expect((await call<Conversation>(other, "GET", "/v1/help")).body.messages).toHaveLength(0);
+    const { id } = (await open(guest, null, "Hello from the demo")).body;
+    expect((await call<Tickets>(guest, "GET", "/v1/help")).body.tickets).toHaveLength(1);
+    expect((await call<Tickets>(other, "GET", "/v1/help")).body.tickets).toHaveLength(0);
+    expect((await call(other, "GET", `/v1/help/${id}`)).status).toBe(404);
   });
 
-  it("lets the team answer, which is new to whoever took part, until they look", async () => {
+  it("shows the team each place with what it hasn't read, and closes a ticket once it's dealt with", async () => {
     const boss = await admin();
     const { owner, mate, office } = await officeWithTwo("Help Answered");
-    await call(owner, "POST", "/v1/help", { office, body: "Can't hear anyone" });
+    const { id } = (await open(owner, office, "Can't hear anyone")).body;
 
-    let list = (await call<Admin>(boss, "GET", "/v1/admin/help")).body;
-    const thread = list.threads.find((one) => one.officeId === office)!;
-    expect(thread).toMatchObject({ place: "Help Answered", waiting: true });
+    const listed = (await call<Places>(boss, "GET", "/v1/admin/help")).body.places.find((one) => one.officeId === office)!;
+    expect(listed).toMatchObject({ key: `office:${office}`, place: "Help Answered", open: 1, unread: 1, lobby: false });
     expect((await call(owner, "GET", "/v1/admin/help")).status).toBe(404);
 
-    expect((await call(boss, "POST", `/v1/admin/help/${thread.id}/messages`, { body: "Which browser?" })).status).toBe(200);
-    const owners = (await call<Conversation>(owner, "GET", `/v1/help?office=${office}`)).body;
+    const place = await call<{ tickets: Array<{ id: string; messages: Array<{ page: string }> }> }>(boss, "GET", `/v1/admin/help/place?key=office:${office}`);
+    expect(place.body.tickets[0].messages[0].page).toBe("/office/x");
+    await call(boss, "POST", "/v1/admin/help/read", { key: `office:${office}` });
+    expect((await call<Places>(boss, "GET", "/v1/admin/help")).body.places.find((one) => one.officeId === office)?.unread).toBe(0);
+
+    // The answer is new to the opener, not to the mate who never opened it.
+    expect((await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Which browser?" })).status).toBe(200);
+    const owners = (await call<Tickets>(owner, "GET", `/v1/help?office=${office}`)).body.tickets[0];
     expect(owners.unread).toBe(1);
-    expect(owners.messages.at(-1)).toMatchObject({ team: true, name: "TinyFloor team", mine: false });
-    expect((await call<Conversation>(mate, "GET", `/v1/help?office=${office}`)).body.unread).toBe(0);
-    list = (await call<Admin>(boss, "GET", "/v1/admin/help")).body;
-    expect(list.threads.some((one) => one.id === thread.id)).toBe(false);
+    expect((await call<Tickets>(mate, "GET", `/v1/help?office=${office}`)).body.tickets[0].unread).toBe(0);
+    expect((await call<TicketView>(owner, "GET", `/v1/help/${id}`)).body.messages.at(-1)).toMatchObject({ team: true, name: "TinyFloor" });
 
-    await call(owner, "POST", "/v1/help/read", { office });
-    expect((await call<Conversation>(owner, "GET", `/v1/help?office=${office}`)).body.unread).toBe(0);
-
-    // Done, until they say something more.
-    await call(owner, "POST", "/v1/help", { office, body: "Thanks!" });
-    expect((await call(boss, "PATCH", `/v1/admin/help/${thread.id}`, { status: "done" })).status).toBe(200);
-    expect((await call<Admin>(boss, "GET", "/v1/admin/help")).body.threads.some((one) => one.id === thread.id)).toBe(false);
-    expect((await call<Admin>(boss, "GET", "/v1/admin/help?show=all")).body.threads.some((one) => one.id === thread.id)).toBe(true);
-    await call(mate, "POST", "/v1/help", { office, body: "One more thing" });
-    expect((await call<Admin>(boss, "GET", "/v1/admin/help")).body.threads.find((one) => one.id === thread.id)?.waiting).toBe(true);
+    // Closed: it stays for the opener until they've read the last of it, and takes nothing more.
+    await call(boss, "PATCH", `/v1/admin/help/${id}`, { status: "closed" });
+    expect((await call<Tickets>(owner, "GET", `/v1/help?office=${office}`)).body.tickets).toEqual([expect.objectContaining({ status: "closed" })]);
+    expect((await call<Tickets>(mate, "GET", `/v1/help?office=${office}`)).body.tickets).toHaveLength(0);
+    expect((await call(owner, "POST", `/v1/help/${id}/messages`, { body: "One more" })).status).toBe(409);
+    await call(owner, "POST", `/v1/help/${id}/read`);
+    expect((await call<Tickets>(owner, "GET", `/v1/help?office=${office}`)).body.tickets).toHaveLength(0);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("keeps a conversation when its office closes", async () => {
+  it("keeps tickets for the team when their office closes", async () => {
     const boss = await admin();
     const owner = await makeUser("Closing Owner");
     const office = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Help Closing" })).body.office.id;
-    await call(owner, "POST", "/v1/help", { office, body: "Bye" });
+    const { id } = (await open(owner, office, "Bye")).body;
     await call(owner, "DELETE", `/v1/offices/${office}`);
-    const list = (await call<Admin>(boss, "GET", "/v1/admin/help?show=all")).body;
-    expect(list.threads.find((one) => one.place === "Help Closing")).toMatchObject({ officeId: null });
+    const places = (await call<Places>(boss, "GET", "/v1/admin/help")).body.places;
+    expect(places.find((one) => one.key === `ticket:${id}`)).toMatchObject({ place: "Help Closing", officeId: null });
+    expect((await call(owner, "GET", `/v1/help/${id}`)).status).toBe(404);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 });

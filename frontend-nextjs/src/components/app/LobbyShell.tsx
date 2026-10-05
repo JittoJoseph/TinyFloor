@@ -11,6 +11,7 @@ import { api } from "@/lib/api";
 import { lobbyChatPath, lobbyMeetingsPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
+import { useHelp } from "@/lib/help";
 import { clearFloor, useFloor } from "@/lib/floor";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
 import { RoomView } from "@/components/room/RoomView";
@@ -45,6 +46,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const [asked, setAsked] = useState<OfficeFeature | null>(null);
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
+  // Help and feedback's tickets live in Chat, so what's new in them counts there too.
+  const { unread: helpUnread } = useHelp();
   const everyone = useFloor();
   const { meetings } = useMeetings();
 
@@ -168,7 +171,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
             icon: RailIcons.floor,
             active: !onChat && !onPeople && !onMeetings && !onSettings && !onOffice,
           },
-          { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+          { key: "chat", href: lobbyChatPath(), label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
           {
             key: "meetings",
             href: lobbyMeetingsPath,

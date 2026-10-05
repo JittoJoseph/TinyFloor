@@ -86,8 +86,8 @@ export function adminRoutes(router: Router): void {
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?3) AS newMonth,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle,
-             (SELECT COUNT(*) FROM help_threads t WHERE t.status = 'open'
-                AND (SELECT m.from_team FROM help_messages m WHERE m.thread_id = t.id ORDER BY m.id DESC LIMIT 1) = 0) AS helpWaiting`,
+             (SELECT COUNT(*) FROM help_messages m JOIN help_tickets t ON t.id = m.ticket_id
+               WHERE m.from_team = 0 AND m.id > t.team_seen_id) AS helpUnread`,
         ).bind(now - DAY_MS, now - 7 * DAY_MS, now - 30 * DAY_MS),
         env.DB.prepare(
           `SELECT country, COUNT(*) AS people FROM users

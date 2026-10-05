@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "ヘルプとフィードバック",
-    "intro": "うまく動かないことや、アイデアはありますか？TinyFloor チームにお知らせください。返信はここに届きます。",
-    "officeSees": "これを見られるのは {office} のメンバーと TinyFloor チームだけです。",
-    "lobbySees": "これを見られるのはあなたと TinyFloor チームだけです。",
+    "officeSees": "TinyFloor チームに届き、{office} の全員が見られるチケットがチャットに作られます。",
+    "lobbySees": "TinyFloor チームに届き、あなたのチャットにチケットが作られます。見られるのはあなただけです。",
     "placeholder": "何が起きて、本来はどうなるはずでしたか？",
     "context": "調査のため、開いているページとブラウザの情報を添えて送ります。",
     "send": "送信",
     "sending": "送信中",
     "error": "送信できませんでした。もう一度お試しください。",
     "slowDown": "この1時間に送った数が多すぎます。少し時間をおいてお試しください。",
+    "section": "TinyFloor サポート",
+    "open": "対応中",
+    "closed": "完了",
     "message": "TinyFloor チームにメッセージ",
-    "team": "TinyFloor チーム",
-    "you": "あなた",
-    "newReply": "新しい返信"
+    "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
+    "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
+    "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
+    "gone": "このチケットはもうありません。"
   },
   "dashboard": {
     "newOffice": "新しいオフィス",

@@ -2193,19 +2193,22 @@
   },
   "help": {
     "title": "Apua ja palautetta",
-    "intro": "Eikö jokin toimi, tai onko sinulla idea? Kerro TinyFloor-tiimille, vastaamme tänne.",
-    "officeSees": "Tämän näkevät vain {office}-toimiston ihmiset ja TinyFloor-tiimi.",
-    "lobbySees": "Tämän näet vain sinä ja TinyFloor-tiimi.",
+    "officeSees": "Se menee TinyFloor-tiimille ja avaa Chattiin tiketin, jota kaikki {office}-toimistossa voivat seurata.",
+    "lobbySees": "Se menee TinyFloor-tiimille ja avaa tiketin Chattiisi. Vain sinä näet sen.",
     "placeholder": "Mitä tapahtui, ja mitä odotit tapahtuvan?",
     "context": "Liitämme mukaan sivun, jolla olet, ja selaimesi, jotta voimme selvittää asian.",
     "send": "Lähetä",
     "sending": "Lähetetään",
     "error": "Lähetys ei onnistunut. Yritä uudelleen.",
     "slowDown": "Olet lähettänyt paljon viimeisen tunnin aikana. Yritä hetken päästä uudelleen.",
+    "section": "TinyFloor-tuki",
+    "open": "Avoin",
+    "closed": "Suljettu",
     "message": "Viesti TinyFloor-tiimille",
-    "team": "TinyFloor-tiimi",
-    "you": "Sinä",
-    "newReply": "Uusi vastaus"
+    "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
+    "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
+    "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
+    "gone": "Tätä tikettiä ei ole enää."
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",

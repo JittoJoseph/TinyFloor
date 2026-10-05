@@ -611,7 +611,9 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
             <span className="text-muted-foreground">Nobody</span>
           )}
         </Cell>
-        <Cell label="Last active">{office.lastActiveAt ? <When at={office.lastActiveAt} /> : <span className="text-muted-foreground">Never</span>}</Cell>
+        <Cell label="Last active">
+          {office.here > 0 ? <Now /> : office.lastActiveAt ? <When at={office.lastActiveAt} /> : <span className="text-muted-foreground">Never</span>}
+        </Cell>
         <span className="hidden justify-end md:flex">
           <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
         </span>
@@ -681,14 +683,22 @@ function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: (
                   <Cell label="Joined">
                     <When at={member.joinedAt} />
                   </Cell>
-                  <Cell label="Last around">
-                    <When at={member.lastActiveAt} />
-                  </Cell>
+                  <Cell label="Last around">{member.here ? <Now label="On the floor" /> : <When at={member.lastActiveAt} />}</Cell>
                 </li>
               ))}
         </ul>
       )}
     </div>
+  );
+}
+
+/** Someone on a floor right now, said in green rather than as a time. */
+function Now({ label = "Now" }: { label?: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 text-ok">
+      <span className="size-1.5 rounded-full bg-ok" />
+      {label}
+    </span>
   );
 }
 

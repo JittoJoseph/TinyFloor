@@ -175,20 +175,27 @@ export function adminRoutes(router: Router): void {
       });
     })
 
-    // One office's people, when it's opened in the list.
+    // One office's people, when it's opened in the list, and which of them are on its floor now.
     .add("GET", "/v1/admin/offices/:id/members", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
       const office = await env.DB.prepare("SELECT owner_id FROM offices WHERE id = ?").bind(params.id).first<{ owner_id: string }>();
       if (!office) throw new HttpError(404, "no_office", "No such office");
-      const { results } = await env.DB.prepare(
-        `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
-                u.last_active_at AS lastActiveAt, u.country, u.id = ?2 AS owner
-           FROM memberships m JOIN users u ON u.id = m.user_id
-          WHERE m.office_id = ?1 ORDER BY u.id = ?2 DESC, u.last_active_at DESC`,
-      )
-        .bind(params.id, office.owner_id)
-        .all();
-      return json({ members: results });
+      const [{ results }, present] = await Promise.all([
+        env.DB.prepare(
+          `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
+                  u.last_active_at AS lastActiveAt, u.country, u.id = ?2 AS owner
+             FROM memberships m JOIN users u ON u.id = m.user_id
+            WHERE m.office_id = ?1 ORDER BY u.id = ?2 DESC, u.last_active_at DESC`,
+        )
+          .bind(params.id, office.owner_id)
+          .all<{ id: string } & Record<string, unknown>>(),
+        // Who is on its floor right now, from the room itself.
+        realtime(env)
+          .officePresence([params.id])
+          .then((people) => new Set((people[params.id] ?? []).map((one) => one.id)))
+          .catch(() => new Set<string>()),
+      ]);
+      return json({ members: results.map((member) => ({ ...member, here: present.has(member.id) })) });
     })
 
     // An account's name, put right by hand.

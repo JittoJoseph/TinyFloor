@@ -150,6 +150,8 @@ export interface AdminMember {
   lastActiveAt: number;
   country: string | null;
   owner: number;
+  /** On the office's floor right now. */
+  here: boolean;
 }
 
 /** Help and feedback (docs/19): the open ticket with the TinyFloor team where you are. */

@@ -20,6 +20,8 @@ export interface Line {
   reactions?: Record<string, string[]>;
   /** When it was last edited, if it was. */
   edited?: number;
+  /** Drawn instead of the author's face: the TinyFloor mark on the team's answers in a ticket. */
+  mark?: ReactNode;
 }
 
 const QUICK = ["👍", "❤️", "😂", "🎉", "👀", "✅"];
@@ -261,9 +263,12 @@ function Message({
     >
       <div className="w-9 shrink-0">
         {grouped ? (
-          <span className="block pt-[3px] text-end text-[10.5px] tabular-nums text-faint opacity-0 group-hover:opacity-100">
+          // One line, wider than the face's column if it must: it reaches back into the padding, never under the text.
+          <span className="flex justify-end whitespace-nowrap pt-[3px] text-[10.5px] tabular-nums text-faint opacity-0 group-hover:opacity-100">
             {time}
           </span>
+        ) : line.mark ? (
+          line.mark
         ) : (
           card(
             <button type="button" className="cursor-pointer rounded-full" aria-label={line.authorName}>

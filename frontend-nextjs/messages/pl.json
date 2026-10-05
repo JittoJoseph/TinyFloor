@@ -1907,20 +1907,13 @@
       "notNow": "Nie teraz"
     },
     "yourOffice": {
-      "eyebrow": "Twoje własne biuro",
       "title": "Niech to piętro będzie twoje",
       "body": "Prywatne piętro dla twojego zespołu, na którym podchodzicie do siebie pogadać, z kanałami i wiadomościami, które zostają.",
       "nameLabel": "Nazwij swoje biuro",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Twoje biuro",
       "create": "Utwórz moje biuro",
-      "free": "Za darmo dla maksymalnie 3 osób. Bez karty.",
-      "perks": {
-        "private": "Prywatne piętro",
-        "channels": "Kanały, które zostają",
-        "messages": "Wiadomości prywatne",
-        "invites": "Linki z zaproszeniem"
-      }
+      "free": "Za darmo dla maksymalnie 3 osób. Bez karty."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Twój profil",
     "leaveOffice": "Wyjdź z biura",
     "leave": "Wyjdź"
+  },
+  "help": {
+    "title": "Pomoc i opinie",
+    "officeSees": "Trafia do zespołu TinyFloor i otwiera w Czacie zgłoszenie, które mogą śledzić wszyscy z {office}.",
+    "lobbySees": "Trafia do zespołu TinyFloor i otwiera zgłoszenie w Twoim Czacie. Widzisz je tylko Ty.",
+    "placeholder": "Co się stało i czego się spodziewałeś?",
+    "context": "Dołączamy stronę, na której jesteś, i Twoją przeglądarkę, żeby móc to sprawdzić.",
+    "send": "Wyślij",
+    "sending": "Wysyłanie",
+    "error": "Nie udało się wysłać. Spróbuj ponownie.",
+    "slowDown": "W ciągu ostatniej godziny wysłano dużo wiadomości. Spróbuj trochę później.",
+    "support": "Wsparcie TinyFloor",
+    "open": "Otwarte",
+    "closed": "Zamknięte",
+    "message": "Wiadomość do zespołu TinyFloor",
+    "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
+    "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
+    "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
+    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor."
   },
   "dashboard": {
     "newOffice": "Nowe biuro",

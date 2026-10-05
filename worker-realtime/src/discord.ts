@@ -5,11 +5,27 @@ const EVENTS_PER_MINUTE = 20;
 
 export type ReportEvent =
   | { kind: "lobby_join"; name: string; character: string; lobby: number; where: Whereabouts }
-  | { kind: "office_created"; office: string; owner: string; where: Whereabouts };
+  | { kind: "office_created"; office: string; owner: string; where: Whereabouts }
+  | HelpEvent;
+
+/** Someone wrote to the team through Help and feedback (worker-api/src/help.ts). */
+export interface HelpEvent {
+  kind: "help";
+  /** The office, or "Demo office". */
+  place: string;
+  name: string;
+  body: string;
+  /** The first message of the conversation. */
+  first: boolean;
+  /** The admin page, to answer from. */
+  link?: string;
+  where: Whereabouts;
+}
 
 /**
- * Tells the team's Discord about the two things worth seeing as they happen:
- * someone walking into the public lobby, and a new office. Events go straight
+ * Tells the team's Discord about what's worth seeing as it happens: someone
+ * walking into the public lobby, a new office, and anything said through
+ * Help and feedback. Events go straight
  * out; past the per-minute cap they're counted and mentioned on the next one.
  * The count lives in memory, so an object that hibernates starts a fresh
  * minute, which only happens when it's quiet anyway.
@@ -62,9 +78,23 @@ export function describeWhere(where: Whereabouts): string {
   return unique.join(", ") || "Somewhere unknown";
 }
 
+/** Discord allows 4096 characters in a description; a message rarely needs a tenth of that. */
+const clip = (text: string, max: number) => (text.length > max ? `${text.slice(0, max - 1)}…` : text);
+
 export function discordPayload(event: ReportEvent, skipped: number) {
   const embed =
-    event.kind === "lobby_join"
+    event.kind === "help"
+      ? {
+          title: clip(`${event.first ? "New in Help" : "Help"}: ${event.place}`, 250),
+          description: clip(event.body, 1500),
+          color: 15105570,
+          ...(event.link ? { url: event.link } : {}),
+          fields: [
+            { name: "From", value: clip(event.name, 100), inline: true },
+            { name: "Where", value: describeWhere(event.where), inline: true },
+          ],
+        }
+      : event.kind === "lobby_join"
       ? {
           title: `${event.name} walked into the lobby`,
           color: 5814783,

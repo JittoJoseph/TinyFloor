@@ -21,6 +21,8 @@ export interface RealtimeAdminApi {
   setMeetingAllowance(officeId: string, hours: number): Promise<void>;
   /** A new office: the team hears about it on Discord. */
   officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void>;
+  /** Someone wrote through Help and feedback: the team hears about it on Discord. */
+  helpMessage(event: { place: string; name: string; body: string; first: boolean; link?: string; where: Whereabouts }): Promise<void>;
 }
 
 /** Where a request came from, as far as Cloudflare can tell. */

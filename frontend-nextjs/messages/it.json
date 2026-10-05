@@ -1907,20 +1907,13 @@
       "notNow": "Non ora"
     },
     "yourOffice": {
-      "eyebrow": "Il tuo ufficio",
       "title": "Rendi tuo questo piano",
       "body": "Un piano privato per il tuo team, dove ci si avvicina per parlare, con canali e messaggi che restano.",
       "nameLabel": "Dai un nome al tuo ufficio",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Il tuo ufficio",
       "create": "Crea il mio ufficio",
-      "free": "Gratis fino a 3 persone. Nessuna carta richiesta.",
-      "perks": {
-        "private": "Un piano privato",
-        "channels": "Canali che restano",
-        "messages": "Messaggi diretti",
-        "invites": "Link d'invito"
-      }
+      "free": "Gratis fino a 3 persone. Nessuna carta richiesta."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Il tuo profilo",
     "leaveOffice": "Esci dall'ufficio",
     "leave": "Esci"
+  },
+  "help": {
+    "title": "Aiuto e feedback",
+    "officeSees": "Arriva al team di TinyFloor e apre un ticket nella Chat che tutti in {office} possono seguire.",
+    "lobbySees": "Arriva al team di TinyFloor e apre un ticket nella tua Chat. Lo vedi solo tu.",
+    "placeholder": "Cosa è successo, e cosa ti aspettavi?",
+    "context": "Aggiungiamo la pagina in cui sei e il tuo browser, così possiamo controllare.",
+    "send": "Invia",
+    "sending": "Invio in corso",
+    "error": "Non è stato inviato. Riprova.",
+    "slowDown": "Hai inviato molto nell'ultima ora. Riprova tra poco.",
+    "support": "Supporto TinyFloor",
+    "open": "Aperto",
+    "closed": "Chiuso",
+    "message": "Scrivi al team di TinyFloor",
+    "closedNote": "Il team di TinyFloor l'ha chiuso. Ancora bloccato? Scrivici di nuovo da Aiuto e feedback.",
+    "ticketOffice": "Tutti in {office} possono seguirlo e aggiungere qualcosa. Il team di TinyFloor risponde qui.",
+    "ticketLobby": "Lo vedete solo tu e il team di TinyFloor. Rispondiamo qui.",
+    "nothingOpen": "Al momento non c'è niente di aperto con il team di TinyFloor."
   },
   "dashboard": {
     "newOffice": "Nuovo ufficio",

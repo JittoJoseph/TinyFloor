@@ -44,6 +44,7 @@ import {
   HashtagIcon,
   HeadphoneMuteIcon,
   HeadphonesIcon,
+  HelpCircleIcon,
   ImageAdd01Icon,
   InformationCircleIcon,
   Key01Icon,
@@ -165,6 +166,7 @@ export const Hand = icon(WavingHand01Icon, "Hand");
 export const Hash = icon(HashtagIcon, "Hash");
 export const HeadphoneOff = icon(HeadphoneMuteIcon, "HeadphoneOff");
 export const Headphones = icon(HeadphonesIcon, "Headphones");
+export const HelpCircle = icon(HelpCircleIcon, "HelpCircle");
 export const ImagePlus = icon(ImageAdd01Icon, "ImagePlus");
 export const Info = icon(InformationCircleIcon, "Info");
 export const KeyRound = icon(Key01Icon, "KeyRound");

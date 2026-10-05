@@ -1,8 +1,9 @@
 "use client";
 
-import { ICON_STROKE } from "@/components/ui/icons";
+import { HelpCircle, ICON_STROKE } from "@/components/ui/icons";
 import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import { Logo } from "./Logo";
 import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
+import { help, useHelp } from "@/lib/help";
+import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
 
 /**
  * Whether the view on screen has a presence dock with you in it. When it does,
@@ -45,6 +48,7 @@ export interface ShellDestination {
  * A rail that never moves, and one panel filling the
  * rest: the floor, with whichever view you opened laid over it. The floor is
  * never unmounted, so your socket, call and position survive reading a message.
+ * Help and feedback sits quietly at the rail's foot (your menu, on a phone).
  */
 export function AppShell({
   mark,
@@ -84,6 +88,7 @@ export function AppShell({
             ))}
           </div>
           <div className="mt-auto flex w-full flex-col items-center gap-2">
+            <HelpRailButton />
             {leave && (
               <RailItem
                 destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
@@ -122,6 +127,7 @@ export function AppShell({
           <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
         </nav>
       </div>
+      <HelpCompose />
     </DockContext.Provider>
   );
 }
@@ -189,6 +195,33 @@ function RailItem({
     </Tooltip>
   ) : (
     link
+  );
+}
+
+/** Help and feedback, among the quiet things at the rail's foot: the box beside it, or the open ticket in Chat. */
+function HelpRailButton() {
+  const t = useTranslations("help");
+  const { composing } = useHelp();
+  return (
+    <Tooltip content={t("title")} side="right" wrapperClassName="w-full">
+      <button
+        type="button"
+        aria-label={t("title")}
+        aria-expanded={composing}
+        {...{ [HELP_TRIGGER]: "" }}
+        onClick={() => help.open()}
+        className="group relative flex w-full cursor-pointer flex-col items-center outline-none"
+      >
+        <span
+          className={cn(
+            "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95",
+            composing ? "bg-foreground/[0.08] text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+          )}
+        >
+          <Icon icon={<HelpCircle />} active={composing} />
+        </span>
+      </button>
+    </Tooltip>
   );
 }
 

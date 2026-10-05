@@ -12,7 +12,7 @@ import { requireAccount } from "./session";
  * paying offices and meeting hours; and a few things the team can do by hand:
  * rename or delete an account, rename or close an office, give an office a
  * plan without payment, and change or take down any message in the lobby's
- * chat. Plans themselves aren't configurable here: they live in code
+ * chat. Help and feedback has its own routes (help.ts). Plans themselves aren't configurable here: they live in code
  * (billing.ts) and in Paddle. Open to the accounts named in ADMIN_EMAILS, and
  * only once Google has vouched for the address, since a password sign-up
  * proves nothing about owning it. Anyone else is told there is nothing here.
@@ -22,7 +22,7 @@ const PAGE = 50;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LIVE = [...HOLDS_PLAN].map((status) => `'${status}'`).join(", ");
 
-async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
+export async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
   const user = await requireAccount(env, request, ctx);
   const allowed = (env.ADMIN_EMAILS ?? "")
     .split(",")
@@ -85,7 +85,9 @@ export function adminRoutes(router: Router): void {
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?2) AS activeWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?3) AS newMonth,
-             (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle`,
+             (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle,
+             (SELECT COUNT(*) FROM help_messages m JOIN help_tickets t ON t.id = m.ticket_id
+               WHERE m.from_team = 0 AND m.id > t.team_seen_id) AS helpUnread`,
         ).bind(now - DAY_MS, now - 7 * DAY_MS, now - 30 * DAY_MS),
         env.DB.prepare(
           `SELECT country, COUNT(*) AS people FROM users
@@ -173,20 +175,27 @@ export function adminRoutes(router: Router): void {
       });
     })
 
-    // One office's people, when it's opened in the list.
+    // One office's people, when it's opened in the list, and which of them are on its floor now.
     .add("GET", "/v1/admin/offices/:id/members", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
       const office = await env.DB.prepare("SELECT owner_id FROM offices WHERE id = ?").bind(params.id).first<{ owner_id: string }>();
       if (!office) throw new HttpError(404, "no_office", "No such office");
-      const { results } = await env.DB.prepare(
-        `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
-                u.last_active_at AS lastActiveAt, u.country, u.id = ?2 AS owner
-           FROM memberships m JOIN users u ON u.id = m.user_id
-          WHERE m.office_id = ?1 ORDER BY u.id = ?2 DESC, u.last_active_at DESC`,
-      )
-        .bind(params.id, office.owner_id)
-        .all();
-      return json({ members: results });
+      const [{ results }, present] = await Promise.all([
+        env.DB.prepare(
+          `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
+                  u.last_active_at AS lastActiveAt, u.country, u.id = ?2 AS owner
+             FROM memberships m JOIN users u ON u.id = m.user_id
+            WHERE m.office_id = ?1 ORDER BY u.id = ?2 DESC, u.last_active_at DESC`,
+        )
+          .bind(params.id, office.owner_id)
+          .all<{ id: string } & Record<string, unknown>>(),
+        // Who is on its floor right now, from the room itself.
+        realtime(env)
+          .officePresence([params.id])
+          .then((people) => new Set((people[params.id] ?? []).map((one) => one.id)))
+          .catch(() => new Set<string>()),
+      ]);
+      return json({ members: results.map((member) => ({ ...member, here: present.has(member.id) })) });
     })
 
     // An account's name, put right by hand.

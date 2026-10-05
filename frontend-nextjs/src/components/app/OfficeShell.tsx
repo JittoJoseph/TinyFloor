@@ -10,6 +10,7 @@ import { api, ApiError, type Member, type Office, type OfficeOverview } from "@/
 import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
+import { useHelp } from "@/lib/help";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
 import { useInviteLink } from "@/lib/inviteLink";
@@ -76,6 +77,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   // Invite on the floor shares the office's one link; until it has loaded, it opens People.
   const inviteLink = useInviteLink(read ? officeId : undefined);
   const { unread } = useChat();
+  // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
+  const helpUnread = useHelp().ticket?.unread ?? 0;
   const { meetings: meetingList } = useMeetings();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;
@@ -191,7 +194,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
           mark={<OfficeSwitcher office={office} />}
           destinations={[
             { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
-            { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread },
+            { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
             {
               key: "meetings",
               href: meetings,

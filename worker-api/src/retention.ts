@@ -7,6 +7,7 @@ export interface RetentionReport {
   guests: number;
   invites: number;
   usage: number;
+  help: number;
 }
 
 /** The daily clean-up. Each job is safe to run again. */
@@ -45,10 +46,18 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(cutoff.toISOString().slice(0, 10))
     .run();
 
+  // Help and feedback: tickets closed a year ago.
+  const help = await env.DB.prepare(
+    `DELETE FROM help_tickets WHERE id IN (SELECT id FROM help_tickets WHERE status = 'closed' AND closed_at < ?1 LIMIT ${BATCH})`,
+  )
+    .bind(now - 365 * DAY_MS)
+    .run();
+
   return {
     sessions: deleted(sessions),
     guests: deleted(guests),
     invites: deleted(invites),
     usage: deleted(usage),
+    help: deleted(help),
   };
 }

@@ -1907,20 +1907,13 @@
       "notNow": "Ei nyt"
     },
     "yourOffice": {
-      "eyebrow": "Oma toimisto",
       "title": "Tee tästä kerroksesta omanne",
       "body": "Yksityinen kerros tiimillesi: kävelette toistenne luo juttelemaan, ja kanavat ja viestit säilyvät.",
       "nameLabel": "Anna toimistollesi nimi",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Oma toimisto",
       "create": "Luo toimistoni",
-      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita.",
-      "perks": {
-        "private": "Yksityinen kerros",
-        "channels": "Kanavat, jotka säilyvät",
-        "messages": "Yksityisviestit",
-        "invites": "Kutsulinkit"
-      }
+      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Oma profiili",
     "leaveOffice": "Poistu toimistosta",
     "leave": "Poistu"
+  },
+  "help": {
+    "title": "Apua ja palautetta",
+    "officeSees": "Se menee TinyFloor-tiimille ja avaa Chattiin tiketin, jota kaikki {office}-toimistossa voivat seurata.",
+    "lobbySees": "Se menee TinyFloor-tiimille ja avaa tiketin Chattiisi. Vain sinä näet sen.",
+    "placeholder": "Mitä tapahtui, ja mitä odotit tapahtuvan?",
+    "context": "Liitämme mukaan sivun, jolla olet, ja selaimesi, jotta voimme selvittää asian.",
+    "send": "Lähetä",
+    "sending": "Lähetetään",
+    "error": "Lähetys ei onnistunut. Yritä uudelleen.",
+    "slowDown": "Olet lähettänyt paljon viimeisen tunnin aikana. Yritä hetken päästä uudelleen.",
+    "support": "TinyFloor-tuki",
+    "open": "Avoin",
+    "closed": "Suljettu",
+    "message": "Viesti TinyFloor-tiimille",
+    "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
+    "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
+    "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
+    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna."
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",

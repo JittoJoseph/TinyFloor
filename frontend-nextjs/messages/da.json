@@ -1907,20 +1907,13 @@
       "notNow": "Ikke nu"
     },
     "yourOffice": {
-      "eyebrow": "Dit eget kontor",
       "title": "Gør denne etage til jeres",
       "body": "En privat etage til dit team, hvor I går hen til hinanden for at snakke, med kanaler og beskeder der bliver.",
       "nameLabel": "Giv dit kontor et navn",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Dit kontor",
       "create": "Lav mit kontor",
-      "free": "Gratis for op til 3 personer. Intet kort nødvendigt.",
-      "perks": {
-        "private": "En privat etage",
-        "channels": "Kanaler der bliver",
-        "messages": "Direkte beskeder",
-        "invites": "Invitationslinks"
-      }
+      "free": "Gratis for op til 3 personer. Intet kort nødvendigt."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Din profil",
     "leaveOffice": "Forlad kontoret",
     "leave": "Forlad"
+  },
+  "help": {
+    "title": "Hjælp og feedback",
+    "officeSees": "Det går til TinyFloor-teamet og åbner en sag i Chat, som alle i {office} kan følge.",
+    "lobbySees": "Det går til TinyFloor-teamet og åbner en sag i din Chat. Kun du kan se den.",
+    "placeholder": "Hvad skete der, og hvad forventede du?",
+    "context": "Vi sender siden, du er på, og din browser med, så vi kan undersøge det.",
+    "send": "Send",
+    "sending": "Sender",
+    "error": "Det blev ikke sendt. Prøv igen.",
+    "slowDown": "Du har sendt meget den seneste time. Prøv igen lidt senere.",
+    "support": "TinyFloor-support",
+    "open": "Åben",
+    "closed": "Lukket",
+    "message": "Skriv til TinyFloor-teamet",
+    "closedNote": "TinyFloor-teamet har lukket den her. Sidder du stadig fast? Skriv til os igen fra Hjælp og feedback.",
+    "ticketOffice": "Alle i {office} kan følge den her og tilføje noget. TinyFloor-teamet svarer her.",
+    "ticketLobby": "Kun du og TinyFloor-teamet kan se dette. Vi svarer her.",
+    "nothingOpen": "Der er intet åbent hos TinyFloor-teamet lige nu."
   },
   "dashboard": {
     "newOffice": "Nyt kontor",

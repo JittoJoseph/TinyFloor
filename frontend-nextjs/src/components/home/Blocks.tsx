@@ -132,16 +132,22 @@ export function Hero({
   );
 }
 
-/** The two ways in as one control: ink for making an office, a quiet stone for looking around first. */
+/**
+ * The two ways in as one control: ink for making an office, a quiet stone for
+ * looking around first. On a phone they stack as two whole pills, since in
+ * Portuguese or Spanish the pair is wider than the screen; the text may wrap
+ * there rather than run off the edge.
+ */
 export function Joined({ className }: { className?: string }) {
   const t = useTranslations("homepage.hero");
-  const half = "inline-flex h-12 items-center gap-2 whitespace-nowrap px-3.5 text-[14px] font-medium transition-colors min-[400px]:px-6 min-[400px]:text-[15px]";
+  const half =
+    "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
-    <div className={cn("inline-flex", className)}>
-      <Link href="/create" className={cn(half, "rounded-s-full bg-foreground text-background hover:bg-foreground/85")}>
+    <div className={cn("flex w-full max-w-[22rem] flex-col gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
+      <Link href="/create" className={cn(half, "bg-foreground text-background hover:bg-foreground/85 sm:rounded-e-none")}>
         {t("cta")}
       </Link>
-      <Link href="/lobby" className={cn(half, "rounded-e-full bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14]")}>
+      <Link href="/lobby" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14] sm:rounded-s-none")}>
         {t("lobby")}
       </Link>
     </div>

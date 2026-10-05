@@ -1907,20 +1907,13 @@
       "notNow": "Ikke nå"
     },
     "yourOffice": {
-      "eyebrow": "Ditt eget kontor",
       "title": "Gjør denne etasjen til deres",
       "body": "En privat etasje for teamet ditt, der dere går bort til hverandre for å snakke, med kanaler og meldinger som blir værende.",
       "nameLabel": "Gi kontoret ditt et navn",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Ditt kontor",
       "create": "Lag mitt kontor",
-      "free": "Gratis for opptil 3 personer. Ikke noe kort.",
-      "perks": {
-        "private": "En privat etasje",
-        "channels": "Kanaler som blir værende",
-        "messages": "Direktemeldinger",
-        "invites": "Invitasjonslenker"
-      }
+      "free": "Gratis for opptil 3 personer. Ikke noe kort."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Din profil",
     "leaveOffice": "Forlat kontoret",
     "leave": "Forlat"
+  },
+  "help": {
+    "title": "Hjelp og tilbakemelding",
+    "officeSees": "Det går til TinyFloor-teamet og åpner en sak i Chat som alle i {office} kan følge.",
+    "lobbySees": "Det går til TinyFloor-teamet og åpner en sak i Chatten din. Bare du ser den.",
+    "placeholder": "Hva skjedde, og hva forventet du?",
+    "context": "Vi sender med siden du er på og nettleseren din, så vi kan se på det.",
+    "send": "Send",
+    "sending": "Sender",
+    "error": "Det ble ikke sendt. Prøv igjen.",
+    "slowDown": "Du har sendt mye den siste timen. Prøv igjen litt senere.",
+    "support": "TinyFloor-støtte",
+    "open": "Åpen",
+    "closed": "Lukket",
+    "message": "Skriv til TinyFloor-teamet",
+    "closedNote": "TinyFloor-teamet har lukket denne. Står du fortsatt fast? Skriv til oss igjen fra Hjelp og tilbakemelding.",
+    "ticketOffice": "Alle i {office} kan følge denne og legge til noe. TinyFloor-teamet svarer her.",
+    "ticketLobby": "Bare du og TinyFloor-teamet ser dette. Vi svarer her.",
+    "nothingOpen": "Ingenting er åpent hos TinyFloor-teamet akkurat nå."
   },
   "dashboard": {
     "newOffice": "Nytt kontor",

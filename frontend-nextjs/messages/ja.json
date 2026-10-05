@@ -1907,20 +1907,13 @@
       "notNow": "あとで"
     },
     "yourOffice": {
-      "eyebrow": "あなた専用のオフィス",
       "title": "このフロアを、あなたのものに",
       "body": "チームのためのプライベートなフロア。歩み寄って話せて、チャンネルとメッセージは残り続けます。",
       "nameLabel": "オフィスに名前を付ける",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "あなたのオフィス",
       "create": "オフィスを作る",
-      "free": "3人まで無料。カード不要。",
-      "perks": {
-        "private": "プライベートなフロア",
-        "channels": "残り続けるチャンネル",
-        "messages": "ダイレクトメッセージ",
-        "invites": "招待リンク"
-      }
+      "free": "3人まで無料。カード不要。"
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "プロフィール",
     "leaveOffice": "オフィスを出る",
     "leave": "出る"
+  },
+  "help": {
+    "title": "ヘルプとフィードバック",
+    "officeSees": "TinyFloor チームに届き、{office} の全員が見られるチケットがチャットに作られます。",
+    "lobbySees": "TinyFloor チームに届き、あなたのチャットにチケットが作られます。見られるのはあなただけです。",
+    "placeholder": "何が起きて、本来はどうなるはずでしたか？",
+    "context": "調査のため、開いているページとブラウザの情報を添えて送ります。",
+    "send": "送信",
+    "sending": "送信中",
+    "error": "送信できませんでした。もう一度お試しください。",
+    "slowDown": "この1時間に送った数が多すぎます。少し時間をおいてお試しください。",
+    "support": "TinyFloor サポート",
+    "open": "対応中",
+    "closed": "完了",
+    "message": "TinyFloor チームにメッセージ",
+    "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
+    "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
+    "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
+    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。"
   },
   "dashboard": {
     "newOffice": "新しいオフィス",

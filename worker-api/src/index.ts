@@ -5,6 +5,7 @@ import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { floorRoutes } from "./floor";
 import { googleRoutes } from "./google";
+import { helpRoutes } from "./help";
 import { officeRoutes } from "./offices";
 import { runRetention } from "./retention";
 import { Router } from "./router";
@@ -24,6 +25,7 @@ floorRoutes(router);
 callRoutes(router);
 billingRoutes(router);
 adminRoutes(router);
+helpRoutes(router);
 
 export default {
   async fetch(request, env, ctx) {

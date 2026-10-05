@@ -1907,20 +1907,13 @@
       "notNow": "Nicht jetzt"
     },
     "yourOffice": {
-      "eyebrow": "Dein eigenes Büro",
       "title": "Mach diese Fläche zu deiner",
       "body": "Eine private Fläche für dein Team, auf der ihr zum Reden einfach hingeht – mit Kanälen und Nachrichten, die bleiben.",
       "nameLabel": "Gib deinem Büro einen Namen",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Dein Büro",
       "create": "Mein Büro einrichten",
-      "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig.",
-      "perks": {
-        "private": "Eine private Fläche",
-        "channels": "Kanäle, die bleiben",
-        "messages": "Direktnachrichten",
-        "invites": "Einladungslinks"
-      }
+      "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Dein Profil",
     "leaveOffice": "Büro verlassen",
     "leave": "Verlassen"
+  },
+  "help": {
+    "title": "Hilfe und Feedback",
+    "officeSees": "Es geht an das TinyFloor-Team und öffnet ein Ticket im Chat, dem alle in {office} folgen können.",
+    "lobbySees": "Es geht an das TinyFloor-Team und öffnet ein Ticket in deinem Chat. Nur du siehst es.",
+    "placeholder": "Was ist passiert, und was hast du erwartet?",
+    "context": "Wir fügen die Seite, auf der du bist, und deinen Browser hinzu, damit wir der Sache nachgehen können.",
+    "send": "Senden",
+    "sending": "Wird gesendet",
+    "error": "Das wurde nicht gesendet. Versuch es noch einmal.",
+    "slowDown": "Du hast in der letzten Stunde viel gesendet. Versuch es etwas später wieder.",
+    "support": "TinyFloor-Support",
+    "open": "Offen",
+    "closed": "Geschlossen",
+    "message": "Nachricht an das TinyFloor-Team",
+    "closedNote": "Das TinyFloor-Team hat das geschlossen. Hängst du noch fest? Schreib uns wieder über Hilfe und Feedback.",
+    "ticketOffice": "Alle in {office} können dem folgen und etwas ergänzen. Das TinyFloor-Team antwortet hier.",
+    "ticketLobby": "Nur du und das TinyFloor-Team sehen das. Wir antworten hier.",
+    "nothingOpen": "Gerade ist nichts beim TinyFloor-Team offen."
   },
   "dashboard": {
     "newOffice": "Neues Büro",

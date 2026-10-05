@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { DoorOpen, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
+import { DoorOpen, HelpCircle, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -11,6 +11,7 @@ import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
+import { help } from "@/lib/help";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
@@ -38,6 +39,7 @@ export function YouMenu({
   leave?: { href: string; label: string };
 }) {
   const t = useTranslations("shell");
+  const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const router = useRouter();
   const { user, isGuest, signOut } = useAuth();
@@ -45,6 +47,8 @@ export function YouMenu({
   const status = useMyStatus();
   const wide = useWide();
   if (!user) return null;
+  // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
+  const helpHere = !wide && !bar;
 
   const themes: Array<{ value: ThemeChoice; icon: React.ReactNode }> = [
     { value: "system", icon: <Monitor /> },
@@ -146,6 +150,11 @@ export function YouMenu({
             {t("allOffices")}
           </MenuItem>
         </>
+      )}
+      {helpHere && (
+        <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
+          {tHelp("title")}
+        </MenuItem>
       )}
       {leave && !wide && (
         <>

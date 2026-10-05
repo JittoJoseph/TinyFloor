@@ -1907,20 +1907,13 @@
       "notNow": "以后再说"
     },
     "yourOffice": {
-      "eyebrow": "你自己的办公室",
       "title": "让这层楼属于你们",
       "body": "为你的团队准备的私密楼层：走过去就能聊，频道和消息都会保留。",
       "nameLabel": "给你的办公室起个名字",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "你的办公室",
       "create": "创建我的办公室",
-      "free": "最多 3 人免费，无需绑卡。",
-      "perks": {
-        "private": "私密楼层",
-        "channels": "会保留的频道",
-        "messages": "私信",
-        "invites": "邀请链接"
-      }
+      "free": "最多 3 人免费，无需绑卡。"
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "你的资料",
     "leaveOffice": "离开办公室",
     "leave": "离开"
+  },
+  "help": {
+    "title": "帮助与反馈",
+    "officeSees": "它会发给 TinyFloor 团队，并在聊天中开一个工单，{office} 的所有人都能看到。",
+    "lobbySees": "它会发给 TinyFloor 团队，并在你的聊天中开一个工单。只有你能看到。",
+    "placeholder": "发生了什么？你原本期望怎样？",
+    "context": "我们会附上你所在的页面和浏览器信息，方便排查。",
+    "send": "发送",
+    "sending": "正在发送",
+    "error": "没有发送成功，请再试一次。",
+    "slowDown": "过去一小时内发送得太多了，请稍后再试。",
+    "support": "TinyFloor 支持",
+    "open": "处理中",
+    "closed": "已关闭",
+    "message": "给 TinyFloor 团队发消息",
+    "closedNote": "TinyFloor 团队已关闭此工单。还有问题？请通过「帮助与反馈」再告诉我们。",
+    "ticketOffice": "{office} 的所有人都能查看并补充。TinyFloor 团队会在这里回复。",
+    "ticketLobby": "只有你和 TinyFloor 团队能看到这里。我们会在这里回复。",
+    "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。"
   },
   "dashboard": {
     "newOffice": "新建办公室",

@@ -1907,20 +1907,13 @@
       "notNow": "Agora não"
     },
     "yourOffice": {
-      "eyebrow": "Seu próprio escritório",
       "title": "Faça deste andar o seu",
       "body": "Um andar privado para sua equipe, onde vocês vão até alguém para conversar, com canais e mensagens que ficam.",
       "nameLabel": "Dê um nome ao seu escritório",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Seu escritório",
       "create": "Criar meu escritório",
-      "free": "Grátis para até 3 pessoas. Sem cartão.",
-      "perks": {
-        "private": "Um andar privado",
-        "channels": "Canais que ficam",
-        "messages": "Mensagens diretas",
-        "invites": "Links de convite"
-      }
+      "free": "Grátis para até 3 pessoas. Sem cartão."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Seu perfil",
     "leaveOffice": "Sair do escritório",
     "leave": "Sair"
+  },
+  "help": {
+    "title": "Ajuda e feedback",
+    "officeSees": "Vai para a equipe do TinyFloor e abre um ticket no Chat que todos em {office} podem acompanhar.",
+    "lobbySees": "Vai para a equipe do TinyFloor e abre um ticket no seu Chat. Só você vê.",
+    "placeholder": "O que aconteceu, e o que você esperava?",
+    "context": "Incluímos a página em que você está e o seu navegador, para podermos investigar.",
+    "send": "Enviar",
+    "sending": "Enviando",
+    "error": "Não foi enviado. Tente de novo.",
+    "slowDown": "Você enviou muito na última hora. Tente de novo daqui a pouco.",
+    "support": "Suporte TinyFloor",
+    "open": "Aberto",
+    "closed": "Fechado",
+    "message": "Mensagem para a equipe do TinyFloor",
+    "closedNote": "A equipe do TinyFloor fechou isto. Ainda com problema? Fale com a gente de novo em Ajuda e feedback.",
+    "ticketOffice": "Todos em {office} podem acompanhar e adicionar algo. A equipe do TinyFloor responde aqui.",
+    "ticketLobby": "Só você e a equipe do TinyFloor veem isto. Respondemos aqui.",
+    "nothingOpen": "Não há nada aberto com a equipe do TinyFloor agora."
   },
   "dashboard": {
     "newOffice": "Novo escritório",

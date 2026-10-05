@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "@/components/ui/icons";
+import { ChevronDown, MoreHorizontal, Pencil, RotateCcw, Search, Trash2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
@@ -13,21 +13,25 @@ import { AppTopBar } from "@/components/app/AppTopBar";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
+import { Help } from "./Help";
+import { DialogButton, When } from "./pieces";
 
 /*
  * The admin view, for the team: how many people there are and how many came
  * back, where they come from, how many offices pay and how many meeting
  * hours are used; who everyone is, and every office with its members. A few
- * things can be done by hand: rename or delete an account, rename or close an
- * office, give an office a plan without payment, and change or take down a
- * message in the lobby's chat. The API answers only the admin accounts;
+ * things can be done by hand: answer what people say through Help and
+ * feedback, rename or delete an account, rename or close an office, give
+ * an office a plan without payment, and change or take down a message in the
+ * lobby's chat. The API answers only the admin accounts;
  * everyone else gets a plain "nothing here". In English: it's a tool for the
  * team, not a page.
  */
 
-type Tab = "overview" | "people" | "guests" | "offices" | "lobby";
+type Tab = "overview" | "help" | "people" | "guests" | "offices" | "lobby";
 const TABS: Array<{ key: Tab; label: string }> = [
   { key: "overview", label: "Overview" },
+  { key: "help", label: "Help" },
   { key: "people", label: "People" },
   { key: "guests", label: "Guests" },
   { key: "offices", label: "Offices" },
@@ -40,6 +44,20 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("overview");
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [denied, setDenied] = useState(false);
+  // Refresh: the counts, and the tab on screen read again (its search, page and open office kept).
+  const [round, setRound] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const refresh = async () => {
+    setRefreshing(true);
+    setRound((was) => was + 1);
+    await api.adminSummary().then(setSummary, () => undefined);
+    setRefreshing(false);
+  };
+  // The Help tab knows what's unread, and the count beside its name follows.
+  const helpUnread = useCallback(
+    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, helpUnread: count } }),
+    [],
+  );
 
   useEffect(() => {
     if (isLoading) return;
@@ -64,8 +82,18 @@ export default function AdminPage() {
           </div>
         ) : (
           <>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <h1 className="text-[24px] font-semibold tracking-tight">Admin</h1>
+            <div className="flex flex-wrap items-end gap-4">
+              <h1 className="me-auto text-[24px] font-semibold tracking-tight">Admin</h1>
+              <button
+                type="button"
+                onClick={() => void refresh()}
+                disabled={refreshing}
+                aria-label="Refresh"
+                title="Refresh"
+                className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
+              >
+                <RotateCcw className={cn("size-4", refreshing && "animate-spin [animation-direction:reverse]")} />
+              </button>
               <div role="tablist" className="flex h-9 gap-0.5 overflow-x-auto rounded-full bg-muted p-1 [scrollbar-width:none]">
                 {TABS.map((one) => (
                   <button
@@ -80,16 +108,22 @@ export default function AdminPage() {
                     )}
                   >
                     {one.label}
+                    {one.key === "help" && summary.counts.helpUnread > 0 && (
+                      <span className="ms-1.5 rounded-full bg-foreground px-1.5 text-[11px] font-semibold tabular-nums text-background">
+                        {summary.counts.helpUnread}
+                      </span>
+                    )}
                   </button>
                 ))}
               </div>
             </div>
             <div className="mt-6">
               {tab === "overview" && <Overview summary={summary} />}
-              {tab === "people" && <People key="people" guests={false} />}
-              {tab === "guests" && <People key="guests" guests />}
-              {tab === "offices" && <Offices />}
-              {tab === "lobby" && <LobbyChat />}
+              {tab === "help" && <Help round={round} onUnread={helpUnread} />}
+              {tab === "people" && <People key="people" guests={false} round={round} />}
+              {tab === "guests" && <People key="guests" guests round={round} />}
+              {tab === "offices" && <Offices round={round} />}
+              {tab === "lobby" && <LobbyChat round={round} />}
             </div>
           </>
         )}
@@ -228,7 +262,7 @@ function Countries({ countries }: { countries: AdminSummary["countries"] }) {
 
 /* ---------- People ---------- */
 
-function People({ guests }: { guests: boolean }) {
+function People({ guests, round }: { guests: boolean; round: number }) {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
@@ -257,10 +291,10 @@ function People({ guests }: { guests: boolean }) {
   }, [search, guests, page]);
 
   useEffect(() => {
-    // The page asked for, whenever the search or the page changes.
+    // The page asked for, whenever the search or the page changes, or on Refresh.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, [load]);
+  }, [load, round]);
 
   return (
     <section>
@@ -425,33 +459,6 @@ function PersonActions({ person, onChanged }: { person: AdminPerson; onChanged: 
   );
 }
 
-function DialogButton({
-  children,
-  onClick,
-  disabled,
-  solid,
-  danger,
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-  disabled?: boolean;
-  solid?: boolean;
-  danger?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      className={cn(
-        "h-10 cursor-pointer rounded-full px-4 text-[13.5px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
-        danger ? "bg-destructive text-white hover:bg-destructive/90" : solid ? "bg-foreground text-background hover:bg-foreground/85" : "hover:bg-muted",
-      )}
-    >
-      {children}
-    </button>
-  );
-}
 
 /** A value with its label shown beside it on a phone, where there are no column headings. */
 function Cell({ label, children }: { label: string; children: React.ReactNode }) {
@@ -466,7 +473,7 @@ function Cell({ label, children }: { label: string; children: React.ReactNode })
 
 /* ---------- Offices ---------- */
 
-function Offices() {
+function Offices({ round }: { round: number }) {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
@@ -495,10 +502,10 @@ function Offices() {
   }, [search, page]);
 
   useEffect(() => {
-    // The page asked for, whenever the search or the page changes.
+    // The page asked for, whenever the search or the page changes, or on Refresh.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, [load]);
+  }, [load, round]);
 
   return (
     <section>
@@ -531,7 +538,7 @@ function Offices() {
           </div>
           <ul>
             {offices.map((office) => (
-              <OfficeRow key={office.id} office={office} onChanged={load} />
+              <OfficeRow key={office.id} office={office} round={round} onChanged={load} />
             ))}
           </ul>
         </div>
@@ -577,7 +584,7 @@ const OFFICE_COLUMNS = "md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_
 const MEMBER_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,0.8fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]";
 
 /** One office: its row, and, opened, its people (read then) and the way to manage it. */
-function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+function OfficeRow({ office, round, onChanged }: { office: AdminOffice; round: number; onChanged: () => void }) {
   const [open, setOpen] = useState(false);
   const allowance = usePlans()?.plans.find((plan) => plan.id === office.plan)?.meetingHours;
   return (
@@ -623,13 +630,15 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
             <span className="text-muted-foreground">Nobody</span>
           )}
         </Cell>
-        <Cell label="Last active">{office.lastActiveAt ? <When at={office.lastActiveAt} /> : <span className="text-muted-foreground">Never</span>}</Cell>
+        <Cell label="Last active">
+          {office.here > 0 ? <Now /> : office.lastActiveAt ? <When at={office.lastActiveAt} /> : <span className="text-muted-foreground">Never</span>}
+        </Cell>
         <span className="hidden justify-end md:flex">
           <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
         </span>
       </button>
 
-      {open && <OfficePeople office={office} onChanged={onChanged} />}
+      {open && <OfficePeople office={office} round={round} onChanged={onChanged} />}
     </li>
   );
 }
@@ -639,7 +648,7 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
  * rows' own shape standing in while they come; and, tucked in a menu, the
  * things that change it.
  */
-function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+function OfficePeople({ office, round, onChanged }: { office: AdminOffice; round: number; onChanged: () => void }) {
   const [members, setMembers] = useState<AdminMember[] | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -652,7 +661,7 @@ function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: (
     return () => {
       cancelled = true;
     };
-  }, [office.id]);
+  }, [office.id, round]);
 
   return (
     <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
@@ -693,14 +702,22 @@ function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: (
                   <Cell label="Joined">
                     <When at={member.joinedAt} />
                   </Cell>
-                  <Cell label="Last around">
-                    <When at={member.lastActiveAt} />
-                  </Cell>
+                  <Cell label="Last around">{member.here ? <Now label="On the floor" /> : <When at={member.lastActiveAt} />}</Cell>
                 </li>
               ))}
         </ul>
       )}
     </div>
+  );
+}
+
+/** Someone on a floor right now, said in green rather than as a time. */
+function Now({ label = "Now" }: { label?: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 text-ok">
+      <span className="size-1.5 rounded-full bg-ok" />
+      {label}
+    </span>
   );
 }
 
@@ -917,7 +934,7 @@ function Seats({ used, seats }: { used: number; seats: number }) {
 type LobbyMessage = LobbyChatPage["messages"][number];
 
 /** The lobby's channels as they are now. Any message can be changed or taken down, and people see it at once. */
-function LobbyChat() {
+function LobbyChat({ round }: { round: number }) {
   const [channel, setChannel] = useState("general");
   const [page, setPage] = useState<LobbyChatPage | null>(null);
   const [busy, setBusy] = useState(false);
@@ -941,7 +958,7 @@ function LobbyChat() {
     // Each channel's newest page, when it's picked.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load(channel);
-  }, [load, channel]);
+  }, [load, channel, round]);
 
   const change = (seq: number, next: LobbyMessage | null) =>
     setPage(
@@ -1134,11 +1151,6 @@ function ModeratedMessage({ message, onChange }: { message: LobbyMessage; onChan
 
 /* ---------- Small pieces ---------- */
 
-/** The time the view was opened, so "how long ago" holds still while it's read. */
-function useOpenedAt() {
-  return useState(() => Date.now())[0];
-}
-
 function Badge({ children }: { children: React.ReactNode }) {
   return <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium capitalize text-muted-foreground">{children}</span>;
 }
@@ -1161,22 +1173,4 @@ function Country({ code }: { code: string }) {
       <span className="truncate">{name}</span>
     </span>
   );
-}
-
-/** How long ago, in words, with the exact time on hover. */
-function When({ at }: { at: number }) {
-  const locale = useLocale();
-  const now = useOpenedAt();
-  const seconds = Math.round((at - now) / 1000);
-  const units: Array<[Intl.RelativeTimeFormatUnit, number]> = [
-    ["year", 31_536_000],
-    ["month", 2_592_000],
-    ["week", 604_800],
-    ["day", 86_400],
-    ["hour", 3_600],
-    ["minute", 60],
-  ];
-  const [unit, size] = units.find(([, span]) => Math.abs(seconds) >= span) ?? ["second", 1];
-  const text = Math.abs(seconds) < 60 ? "just now" : new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(Math.round(seconds / size), unit);
-  return <time dateTime={new Date(at).toISOString()} title={new Date(at).toLocaleString(locale)}>{text}</time>;
 }

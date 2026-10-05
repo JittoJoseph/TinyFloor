@@ -1907,20 +1907,13 @@
       "notNow": "Ahora no"
     },
     "yourOffice": {
-      "eyebrow": "Tu propia oficina",
       "title": "Haz tuya esta planta",
       "body": "Una planta privada para tu equipo, donde os acercáis a hablar, con canales y mensajes que se quedan.",
       "nameLabel": "Ponle nombre a tu oficina",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Tu oficina",
       "create": "Crear mi oficina",
-      "free": "Gratis hasta 3 personas. Sin tarjeta.",
-      "perks": {
-        "private": "Una planta privada",
-        "channels": "Canales que se quedan",
-        "messages": "Mensajes directos",
-        "invites": "Enlaces de invitación"
-      }
+      "free": "Gratis hasta 3 personas. Sin tarjeta."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Tu perfil",
     "leaveOffice": "Salir de la oficina",
     "leave": "Salir"
+  },
+  "help": {
+    "title": "Ayuda y comentarios",
+    "officeSees": "Va al equipo de TinyFloor y abre un ticket en el Chat que todos en {office} pueden seguir.",
+    "lobbySees": "Va al equipo de TinyFloor y abre un ticket en tu Chat. Solo tú lo ves.",
+    "placeholder": "¿Qué pasó y qué esperabas que pasara?",
+    "context": "Añadimos la página en la que estás y tu navegador, para poder revisarlo.",
+    "send": "Enviar",
+    "sending": "Enviando",
+    "error": "No se envió. Inténtalo de nuevo.",
+    "slowDown": "Has enviado mucho en la última hora. Inténtalo de nuevo un poco más tarde.",
+    "support": "Soporte de TinyFloor",
+    "open": "Abierto",
+    "closed": "Cerrado",
+    "message": "Escribe al equipo de TinyFloor",
+    "closedNote": "El equipo de TinyFloor cerró esto. ¿Sigues con el problema? Escríbenos de nuevo desde Ayuda y comentarios.",
+    "ticketOffice": "Todos en {office} pueden seguir esto y añadir algo. El equipo de TinyFloor responde aquí.",
+    "ticketLobby": "Solo tú y el equipo de TinyFloor veis esto. Respondemos aquí.",
+    "nothingOpen": "Ahora mismo no hay nada abierto con el equipo de TinyFloor."
   },
   "dashboard": {
     "newOffice": "Nueva oficina",

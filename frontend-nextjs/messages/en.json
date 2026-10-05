@@ -1907,20 +1907,13 @@
       "notNow": "Not now"
     },
     "yourOffice": {
-      "eyebrow": "Your own office",
       "title": "Make this floor yours",
       "body": "A private floor for your team, where you walk up to talk, with channels and messages that stay.",
       "nameLabel": "Name your office",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Your office",
       "create": "Make my office",
-      "free": "Free for up to 3 people. No card needed.",
-      "perks": {
-        "private": "A private floor",
-        "channels": "Channels that stay",
-        "messages": "Direct messages",
-        "invites": "Invite links"
-      }
+      "free": "Free for up to 3 people. No card needed."
     }
   },
   "office": {
@@ -2197,6 +2190,25 @@
     "yourProfile": "Your profile",
     "leaveOffice": "Leave the office",
     "leave": "Leave"
+  },
+  "help": {
+    "title": "Help and feedback",
+    "officeSees": "It goes to the TinyFloor team and opens a ticket in Chat that everyone in {office} can follow.",
+    "lobbySees": "It goes to the TinyFloor team and opens a ticket in your Chat. Only you can see it.",
+    "placeholder": "What happened, and what did you expect?",
+    "context": "We add the page you're on and your browser, so we can look into it.",
+    "send": "Send",
+    "sending": "Sending",
+    "error": "That didn't send. Try again.",
+    "slowDown": "You've sent a lot in the last hour. Try again a little later.",
+    "support": "TinyFloor support",
+    "open": "Open",
+    "closed": "Closed",
+    "message": "Message the TinyFloor team",
+    "closedNote": "The TinyFloor team closed this. Still stuck? Tell us again from Help and feedback.",
+    "ticketOffice": "Everyone in {office} can follow this and add to it. The TinyFloor team answers here.",
+    "ticketLobby": "Only you and the TinyFloor team see this. We answer here.",
+    "nothingOpen": "Nothing is open with the TinyFloor team right now."
   },
   "dashboard": {
     "newOffice": "New office",

@@ -93,7 +93,7 @@ export interface IceServers {
 
 /** The admin view (open only to the admin accounts). */
 export interface AdminSummary {
-  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle", number>;
+  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpUnread", number>;
   countries: Array<{ country: string; people: number }>;
   /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
@@ -150,6 +150,74 @@ export interface AdminMember {
   lastActiveAt: number;
   country: string | null;
   owner: number;
+  /** On the office's floor right now. */
+  here: boolean;
+}
+
+/** Help and feedback (docs/19): the open ticket with the TinyFloor team where you are. */
+export interface HelpTicket {
+  id: string;
+  /** New since you last had it on screen; nothing until you have. */
+  unread: number;
+}
+
+export interface HelpMessage {
+  id: number;
+  /** Who wrote it; null for the team. */
+  author: string | null;
+  mine: boolean;
+  team: boolean;
+  name: string;
+  body: string;
+  at: number;
+}
+
+export interface HelpTicketView {
+  id: string;
+  status: "open" | "closed";
+  messages: HelpMessage[];
+}
+
+/** A ticket in the admin view's list. */
+export interface AdminHelpTicket {
+  id: string;
+  /** The office's name then, or "Demo office". */
+  place: string;
+  officeId: string | null;
+  lobby: boolean;
+  /** Who opened it. */
+  name: string;
+  createdAt: number;
+  updatedAt: number;
+  closedAt: number | null;
+  /** Messages from them the team hasn't read. */
+  unread: number;
+  /** The latest message, shortened. */
+  last: string;
+}
+
+/** A ticket opened in the admin view: who opened it, from where, and everything said. */
+export interface AdminHelpDetail {
+  ticket: Omit<AdminHelpTicket, "updatedAt" | "unread" | "last"> & {
+    userId: string | null;
+    email: string | null;
+    page: string | null;
+    userAgent: string | null;
+    screen: string | null;
+    locale: string | null;
+    country: string | null;
+    replay: string | null;
+    status: "open" | "closed";
+  };
+  messages: HelpMessage[];
+}
+
+/** Where a ticket was opened from, for the team. */
+export interface HelpContext {
+  page: string;
+  locale: string;
+  screen: string;
+  replay?: string | null;
 }
 
 /** A page of a list in the admin view. */
@@ -288,6 +356,20 @@ export const api = {
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
   adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
+  adminHelp: (params: { status: "open" | "closed"; page?: number }) =>
+    get<AdminPage & { tickets: AdminHelpTicket[] }>(
+      `/admin/help?${new URLSearchParams({ status: params.status, ...(params.page ? { page: String(params.page) } : {}) })}`,
+    ),
+  adminHelpTicket: (ticketId: string) => get<AdminHelpDetail>(`/admin/help/${id(ticketId)}`),
+  adminHelpReply: (ticketId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/messages`, { body }),
+  adminHelpClose: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/close`),
+
+  // Help and feedback: the ticket with the team where you are (an office, or the demo office)
+  helpOpen: (office?: string) => get<{ ticket: HelpTicket | null }>(`/help${office ? `?${new URLSearchParams({ office })}` : ""}`),
+  /** Adds to the open ticket, or opens one. */
+  sayToHelp: (body: { body: string; office?: string } & Partial<HelpContext>) => post<{ id: string }>("/help", body),
+  /** A ticket on screen; reading it makes it read. */
+  helpTicket: (ticketId: string) => get<HelpTicketView>(`/help/${id(ticketId)}`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

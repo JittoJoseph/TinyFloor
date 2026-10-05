@@ -208,6 +208,17 @@ export class Chat extends DurableObject<Env> {
     if (!still) this.broadcast({ t: "chat_gone", userId: who.userId });
   }
 
+  /**
+   * Help and feedback's ticket changed: everyone here (or only `userId`, in
+   * the lobby) reads it again from the API. Nothing about it is said here.
+   */
+  async helpChanged(userId?: string): Promise<void> {
+    for (const socket of this.ctx.getWebSockets()) {
+      const who = this.attachmentOf(socket);
+      if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed" });
+    }
+  }
+
   /** Someone's membership ended: their sockets close and their DMs stay put. */
   async removeMember(userId: string): Promise<void> {
     for (const socket of this.ctx.getWebSockets()) {

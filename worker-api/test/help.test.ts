@@ -81,6 +81,8 @@ describe("help and feedback", () => {
 
     await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Which browser?" });
     expect((await openHere(owner, office)).body.ticket?.unread).toBe(1);
+    // The office's chat is told at once, so the count turns up without waiting for the next look.
+    expect(await fakeRealtime().calls()).toContainEqual(["helpChanged", office]);
     expect((await call<View>(owner, "GET", `/v1/help/${id}`)).body.messages.at(-1)).toMatchObject({ team: true, name: "TinyFloor" });
 
     expect((await call(boss, "POST", `/v1/admin/help/${id}/close`)).status).toBe(200);

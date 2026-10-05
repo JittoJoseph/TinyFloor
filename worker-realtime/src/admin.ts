@@ -73,6 +73,12 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "office_created", ...event });
   }
 
+  /** A Help and feedback ticket changed: the chat where it's followed says so, for its count. */
+  async helpChanged(place: { officeId: string } | { visitor: string }): Promise<void> {
+    if ("officeId" in place) await this.env.CHAT.getByName(place.officeId).helpChanged();
+    else await this.env.CHAT.getByName(LOBBY_CHAT).helpChanged(place.visitor);
+  }
+
   /** Someone wrote through Help and feedback: the team hears about it on Discord, with the lobby and new offices. */
   async helpMessage(event: Omit<HelpEvent, "kind">): Promise<void> {
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "help", ...event });

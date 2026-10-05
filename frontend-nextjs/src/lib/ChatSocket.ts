@@ -12,6 +12,7 @@ import {
 } from "@shared/chat";
 import type { RoomTicket } from "./api";
 import { playSound } from "./sounds";
+import { help } from "./help";
 
 const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
@@ -335,6 +336,9 @@ class ChatSocket {
         this.set({ ...this.state, channels, unread: total(channels) });
         break;
       }
+      case "help_changed":
+        help.changed();
+        break;
       case "chat_error":
         if (message.code === "slow_down") {
           this.set({ ...this.state, slowDown: true });

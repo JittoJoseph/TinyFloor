@@ -95,6 +95,8 @@ export type ChatServerMessage =
   | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }
+  /** Help and feedback's ticket changed (the team answered, or closed it): read it again from the API. */
+  | { t: "help_changed" }
   | { t: "chat_error"; code: string };
 
 /** The id of the direct-message channel between two people, whoever asks. */

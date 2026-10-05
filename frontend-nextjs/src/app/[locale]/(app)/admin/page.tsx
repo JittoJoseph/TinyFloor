@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, MoreHorizontal, Pencil, Search, Trash2 } from "@/components/ui/icons";
+import { ChevronDown, MoreHorizontal, Pencil, RotateCcw, Search, Trash2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
@@ -44,6 +44,15 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("overview");
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [denied, setDenied] = useState(false);
+  // Refresh: the counts, and the tab on screen read again (its search, page and open office kept).
+  const [round, setRound] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const refresh = async () => {
+    setRefreshing(true);
+    setRound((was) => was + 1);
+    await api.adminSummary().then(setSummary, () => undefined);
+    setRefreshing(false);
+  };
   // The Help tab knows what's unread, and the count beside its name follows.
   const helpUnread = useCallback(
     (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, helpUnread: count } }),
@@ -73,8 +82,18 @@ export default function AdminPage() {
           </div>
         ) : (
           <>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <h1 className="text-[24px] font-semibold tracking-tight">Admin</h1>
+            <div className="flex flex-wrap items-end gap-4">
+              <h1 className="me-auto text-[24px] font-semibold tracking-tight">Admin</h1>
+              <button
+                type="button"
+                onClick={() => void refresh()}
+                disabled={refreshing}
+                aria-label="Refresh"
+                title="Refresh"
+                className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
+              >
+                <RotateCcw className={cn("size-4", refreshing && "animate-spin [animation-direction:reverse]")} />
+              </button>
               <div role="tablist" className="flex h-9 gap-0.5 overflow-x-auto rounded-full bg-muted p-1 [scrollbar-width:none]">
                 {TABS.map((one) => (
                   <button
@@ -100,11 +119,11 @@ export default function AdminPage() {
             </div>
             <div className="mt-6">
               {tab === "overview" && <Overview summary={summary} />}
-              {tab === "help" && <Help onUnread={helpUnread} />}
-              {tab === "people" && <People key="people" guests={false} />}
-              {tab === "guests" && <People key="guests" guests />}
-              {tab === "offices" && <Offices />}
-              {tab === "lobby" && <LobbyChat />}
+              {tab === "help" && <Help round={round} onUnread={helpUnread} />}
+              {tab === "people" && <People key="people" guests={false} round={round} />}
+              {tab === "guests" && <People key="guests" guests round={round} />}
+              {tab === "offices" && <Offices round={round} />}
+              {tab === "lobby" && <LobbyChat round={round} />}
             </div>
           </>
         )}
@@ -243,7 +262,7 @@ function Countries({ countries }: { countries: AdminSummary["countries"] }) {
 
 /* ---------- People ---------- */
 
-function People({ guests }: { guests: boolean }) {
+function People({ guests, round }: { guests: boolean; round: number }) {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
@@ -272,10 +291,10 @@ function People({ guests }: { guests: boolean }) {
   }, [search, guests, page]);
 
   useEffect(() => {
-    // The page asked for, whenever the search or the page changes.
+    // The page asked for, whenever the search or the page changes, or on Refresh.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, [load]);
+  }, [load, round]);
 
   return (
     <section>
@@ -454,7 +473,7 @@ function Cell({ label, children }: { label: string; children: React.ReactNode })
 
 /* ---------- Offices ---------- */
 
-function Offices() {
+function Offices({ round }: { round: number }) {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
@@ -483,10 +502,10 @@ function Offices() {
   }, [search, page]);
 
   useEffect(() => {
-    // The page asked for, whenever the search or the page changes.
+    // The page asked for, whenever the search or the page changes, or on Refresh.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, [load]);
+  }, [load, round]);
 
   return (
     <section>
@@ -519,7 +538,7 @@ function Offices() {
           </div>
           <ul>
             {offices.map((office) => (
-              <OfficeRow key={office.id} office={office} onChanged={load} />
+              <OfficeRow key={office.id} office={office} round={round} onChanged={load} />
             ))}
           </ul>
         </div>
@@ -565,7 +584,7 @@ const OFFICE_COLUMNS = "md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_
 const MEMBER_COLUMNS = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,0.8fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]";
 
 /** One office: its row, and, opened, its people (read then) and the way to manage it. */
-function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+function OfficeRow({ office, round, onChanged }: { office: AdminOffice; round: number; onChanged: () => void }) {
   const [open, setOpen] = useState(false);
   const allowance = usePlans()?.plans.find((plan) => plan.id === office.plan)?.meetingHours;
   return (
@@ -619,7 +638,7 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
         </span>
       </button>
 
-      {open && <OfficePeople office={office} onChanged={onChanged} />}
+      {open && <OfficePeople office={office} round={round} onChanged={onChanged} />}
     </li>
   );
 }
@@ -629,7 +648,7 @@ function OfficeRow({ office, onChanged }: { office: AdminOffice; onChanged: () =
  * rows' own shape standing in while they come; and, tucked in a menu, the
  * things that change it.
  */
-function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
+function OfficePeople({ office, round, onChanged }: { office: AdminOffice; round: number; onChanged: () => void }) {
   const [members, setMembers] = useState<AdminMember[] | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -642,7 +661,7 @@ function OfficePeople({ office, onChanged }: { office: AdminOffice; onChanged: (
     return () => {
       cancelled = true;
     };
-  }, [office.id]);
+  }, [office.id, round]);
 
   return (
     <div className="border-t border-border bg-foreground/[0.015] px-4 pb-3 pt-1 md:ps-[60px]">
@@ -915,7 +934,7 @@ function Seats({ used, seats }: { used: number; seats: number }) {
 type LobbyMessage = LobbyChatPage["messages"][number];
 
 /** The lobby's channels as they are now. Any message can be changed or taken down, and people see it at once. */
-function LobbyChat() {
+function LobbyChat({ round }: { round: number }) {
   const [channel, setChannel] = useState("general");
   const [page, setPage] = useState<LobbyChatPage | null>(null);
   const [busy, setBusy] = useState(false);
@@ -939,7 +958,7 @@ function LobbyChat() {
     // Each channel's newest page, when it's picked.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     load(channel);
-  }, [load, channel]);
+  }, [load, channel, round]);
 
   const change = (seq: number, next: LobbyMessage | null) =>
     setPage(

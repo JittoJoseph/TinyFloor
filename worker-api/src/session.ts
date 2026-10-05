@@ -9,8 +9,12 @@ import { HttpError } from "./http";
 const sessionCookieName = (env: Env) => env.SESSION_COOKIE || "tf_session";
 const GUEST_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
 export const ACCOUNT_SESSION_MS = 30 * 24 * 60 * 60 * 1000;
-/** How stale "last active" may get: one small write, after the response, at most this often per session. */
-const LAST_SEEN_REFRESH_MS = 5 * 60 * 1000;
+/**
+ * How stale "last active" may get: one small write, after the response, at
+ * most this often per session. Who is on a floor right now comes from the
+ * rooms themselves, so this only needs to be roughly right.
+ */
+const LAST_SEEN_REFRESH_MS = 60 * 60 * 1000;
 
 export interface User {
   id: string;
@@ -102,7 +106,7 @@ export async function createSession(
   return { sessionId, cookie: sessionCookie(env, token, lifetimeMs / 1000) };
 }
 
-/** One D1 read per request; last_seen_at (and the account's last_active_at) is written at most every five minutes. */
+/** One D1 read per request; last_seen_at (and the account's last_active_at) is written at most once an hour. */
 export async function currentUser(env: Env, request: Request, ctx: ExecutionContext): Promise<User | null> {
   const token = readCookie(request, sessionCookieName(env));
   if (!token) return null;

@@ -23,7 +23,7 @@ const EVERY_MS = 20_000;
  * in their Chat as unread. Closing it, which takes it out of their Chat, is
  * kept in a menu and asks first.
  */
-export function Help({ onUnread }: { onUnread: (count: number) => void }) {
+export function Help({ round, onUnread }: { round: number; onUnread: (count: number) => void }) {
   const [status, setStatus] = useState<Status>("open");
   const [page, setPage] = useState(0);
   const [list, setList] = useState<(AdminPage & { tickets: AdminHelpTicket[] }) | null>(null);
@@ -46,7 +46,7 @@ export function Help({ onUnread }: { onUnread: (count: number) => void }) {
     void load();
     const timer = setInterval(() => document.visibilityState === "visible" && void load(), EVERY_MS);
     return () => clearInterval(timer);
-  }, [load]);
+  }, [load, round]);
 
   const show = (next: Status) => {
     setStatus(next);

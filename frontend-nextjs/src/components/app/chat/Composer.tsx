@@ -1,11 +1,19 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUp, ImagePlus, Smile } from "@/components/ui/icons";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
 import { cn } from "@/lib/utils";
+
+const FOCUS_EVENT = "tinyfloor:focus-composer";
+const pointing = () => window.matchMedia("(pointer: fine)").matches;
+
+/** Puts the cursor back in the open conversation's box: clicking the conversation you're already in. */
+export function focusComposer() {
+  window.dispatchEvent(new Event(FOCUS_EVENT));
+}
 
 const EMOJI = ["😀", "😂", "🙂", "😍", "🤔", "😅", "👍", "👏", "🙌", "🙏", "🎉", "🔥", "❤️", "👀", "✅", "☕"];
 
@@ -13,6 +21,10 @@ const EMOJI = ["😀", "😂", "🙂", "😍", "🤔", "😅", "👍", "👏", "
  * Where you write: a box that grows with what you type, Enter to send and
  * Shift+Enter for a new line. The image button is always there, so the shape
  * of the product is plain; where images are not included it says why.
+ * It is made again for each conversation, and takes the cursor when it is,
+ * so opening a channel or a person means you can type straight away; clicking
+ * the one already open does the same. Not on a touch screen, where that would
+ * throw the keyboard over the messages.
  */
 export function Composer({
   placeholder,
@@ -34,6 +46,13 @@ export function Composer({
   const picker = useRef<HTMLInputElement>(null);
   const [emoji, setEmoji] = useState(false);
   const box = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const focus = () => pointing() && box.current?.focus({ preventScroll: true });
+    focus();
+    window.addEventListener(FOCUS_EVENT, focus);
+    return () => window.removeEventListener(FOCUS_EVENT, focus);
+  }, []);
 
   const grow = (element: HTMLTextAreaElement) => {
     element.style.height = "auto";

@@ -38,7 +38,7 @@ import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { usePlace, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
-import { Composer } from "./chat/Composer";
+import { Composer, focusComposer } from "./chat/Composer";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -537,7 +537,7 @@ function Row({
     </>
   );
   return href ? (
-    <Link href={href} aria-current={active ? "page" : undefined} className={className}>
+    <Link href={href} aria-current={active ? "page" : undefined} onClick={active ? focusComposer : undefined} className={className}>
       {body}
     </Link>
   ) : (

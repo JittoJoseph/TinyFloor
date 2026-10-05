@@ -59,6 +59,13 @@ class ChatSocket {
   private place: string | null = null;
   private ticketFor: (() => Promise<RoomTicket>) | null = null;
   private stopped = true;
+  /**
+   * Bumped on every connect and disconnect. A ticket, socket or retry from an
+   * earlier one checks it and does nothing: the office remounts on a language
+   * switch, and the old socket's close used to open a second one beside the
+   * new, so every message came twice.
+   */
+  private generation = 0;
   private attempts = 0;
   private reconnectTimer?: ReturnType<typeof setTimeout>;
   private heartbeat?: ReturnType<typeof setInterval>;
@@ -87,11 +94,12 @@ class ChatSocket {
     this.ticketFor = ticketFor;
     this.stopped = false;
     this.attempts = 0;
-    void this.open();
+    void this.open(this.generation);
   }
 
   disconnect() {
     this.stopped = true;
+    this.generation++;
     clearTimeout(this.reconnectTimer);
     this.stopHeartbeat();
     this.ws?.close(1000, "left");
@@ -164,8 +172,9 @@ class ChatSocket {
     else this.queue.push(message);
   }
 
-  private async open() {
-    if (this.stopped || !this.ticketFor) return;
+  private async open(generation: number) {
+    const current = () => !this.stopped && generation === this.generation;
+    if (!current() || !this.ticketFor) return;
     let url: string;
     let ticket: string;
     try {
@@ -173,9 +182,9 @@ class ChatSocket {
       url = minted.url;
       ticket = minted.ticket;
     } catch {
-      return this.retry();
+      return this.retry(generation);
     }
-    if (this.stopped) return;
+    if (!current()) return;
 
     const socket = new WebSocket(`${url}?ticket=${encodeURIComponent(ticket)}`);
     this.ws = socket;
@@ -186,22 +195,23 @@ class ChatSocket {
       for (const message of this.queue.splice(0)) socket.send(JSON.stringify(message));
     };
     socket.onmessage = (event) => {
-      if (event.data === HEARTBEAT_PONG) return;
+      if (event.data === HEARTBEAT_PONG || this.ws !== socket) return;
       this.handle(JSON.parse(event.data as string) as ChatServerMessage);
     };
     socket.onclose = () => {
+      if (this.ws !== socket) return;
       this.stopHeartbeat();
-      if (this.ws === socket) this.ws = null;
-      this.retry();
+      this.ws = null;
+      this.retry(generation);
     };
     socket.onerror = () => socket.close();
   }
 
-  private retry() {
-    if (this.stopped) return;
+  private retry(generation: number) {
+    if (this.stopped || generation !== this.generation) return;
     const wait = Math.min(RECONNECT_BASE_MS * 2 ** this.attempts++, RECONNECT_MAX_MS);
     clearTimeout(this.reconnectTimer);
-    this.reconnectTimer = setTimeout(() => void this.open(), wait);
+    this.reconnectTimer = setTimeout(() => void this.open(generation), wait);
   }
 
   private startHeartbeat() {
@@ -225,6 +235,7 @@ class ChatSocket {
       }
       case "chat_new": {
         const { channel } = message.message;
+        if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
         const seen = this.watching === channel;
         const history = [...(this.state.history[channel] ?? []), message.message];
         const channels = withGeneral(

@@ -21,6 +21,12 @@ export interface RealtimeAdminApi {
   setMeetingAllowance(officeId: string, hours: number): Promise<void>;
   /** A new office: the team hears about it on Discord. */
   officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void>;
+  /**
+   * A Help and feedback ticket changed: the office's chat (or, for a demo
+   * office visitor's, their own sockets in the lobby's) is told to read it
+   * again, so its count turns up at once rather than on the next look.
+   */
+  helpChanged(place: { officeId: string } | { visitor: string }): Promise<void>;
   /** Someone wrote through Help and feedback: the team hears about it on Discord. */
   helpMessage(event: { place: string; name: string; body: string; first: boolean; link?: string; where: Whereabouts }): Promise<void>;
 }

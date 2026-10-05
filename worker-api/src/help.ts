@@ -67,6 +67,15 @@ async function ticketFor(env: Env, user: User, id: string): Promise<TicketRow> {
   return ticket;
 }
 
+/** An open ticket, for the team to answer or close. */
+async function openTicket(env: Env, id: string) {
+  const ticket = await env.DB.prepare("SELECT office_id, lobby, user_id FROM help_tickets WHERE id = ? AND status = 'open'")
+    .bind(id)
+    .first<{ office_id: string | null; lobby: number; user_id: string | null }>();
+  if (!ticket) throw new HttpError(404, "no_ticket", "No such open ticket");
+  return ticket;
+}
+
 /** Read to the latest message: this person has the ticket on screen, or just wrote in it. */
 const markRead = (env: Env, ticketId: string, userId: string) =>
   env.DB.prepare(
@@ -74,6 +83,12 @@ const markRead = (env: Env, ticketId: string, userId: string) =>
      SELECT ?1, ?2, COALESCE(MAX(id), 0) FROM help_messages WHERE ticket_id = ?1
      ON CONFLICT (ticket_id, user_id) DO UPDATE SET seen_id = excluded.seen_id`,
   ).bind(ticketId, userId);
+
+/** Where a ticket is followed is told it changed, so counts there turn up at once (after the response). */
+function changed(env: Env, ctx: ExecutionContext, ticket: { office_id: string | null; lobby: number; user_id: string | null }) {
+  const place = ticket.lobby ? (ticket.user_id ? { visitor: ticket.user_id } : null) : ticket.office_id ? { officeId: ticket.office_id } : null;
+  if (place) ctx.waitUntil(realtime(env).helpChanged(place).catch(() => undefined));
+}
 
 /** A ticket's messages, oldest first, the way both sides show them. */
 async function messagesOf(env: Env, ticketId: string, userId?: string) {
@@ -155,6 +170,8 @@ export function helpRoutes(router: Router): void {
         markRead(env, id, user.id),
       ]);
 
+      if (office) changed(env, ctx, { office_id: office.id, lobby: 0, user_id: user.id });
+
       const cf = request.cf as { city?: string; region?: string; country?: string } | undefined;
       const site = (env.SITE_ORIGINS ?? "").split(",")[0]?.trim();
       ctx.waitUntil(
@@ -235,27 +252,25 @@ export function helpRoutes(router: Router): void {
       await requireAdmin(env, request, ctx);
       const body = cleanBody((await readJson(request)).body);
       if (!body) throw new HttpError(400, "empty_message", "Write a reply");
+      const ticket = await openTicket(env, params.id);
       const now = Date.now();
-      const [, updated] = await env.DB.batch([
+      await env.DB.batch([
+        env.DB.prepare("INSERT INTO help_messages (ticket_id, from_team, name, body, created_at) VALUES (?, 1, ?, ?, ?)").bind(params.id, TEAM_NAME, body, now),
         env.DB.prepare(
-          "INSERT INTO help_messages (ticket_id, from_team, name, body, created_at) SELECT id, 1, ?2, ?3, ?4 FROM help_tickets WHERE id = ?1 AND status = 'open'",
-        ).bind(params.id, TEAM_NAME, body, now),
-        env.DB.prepare(
-          "UPDATE help_tickets SET updated_at = ?1, team_seen_id = (SELECT MAX(id) FROM help_messages WHERE ticket_id = ?2) WHERE id = ?2 AND status = 'open'",
+          "UPDATE help_tickets SET updated_at = ?1, team_seen_id = (SELECT MAX(id) FROM help_messages WHERE ticket_id = ?2) WHERE id = ?2",
         ).bind(now, params.id),
       ]);
-      if (!updated.meta.changes) throw new HttpError(404, "no_ticket", "No such open ticket");
+      changed(env, ctx, ticket);
       return json({ ok: true });
     })
 
     // Dealt with: it leaves their Chat, and their next message opens a new one.
     .add("POST", "/v1/admin/help/:id/close", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
+      const ticket = await openTicket(env, params.id);
       const now = Date.now();
-      const done = await env.DB.prepare("UPDATE help_tickets SET status = 'closed', closed_at = ?1, updated_at = ?1 WHERE id = ?2 AND status = 'open'")
-        .bind(now, params.id)
-        .run();
-      if (!done.meta.changes) throw new HttpError(404, "no_ticket", "No such open ticket");
+      await env.DB.prepare("UPDATE help_tickets SET status = 'closed', closed_at = ?1, updated_at = ?1 WHERE id = ?2").bind(now, params.id).run();
+      changed(env, ctx, ticket);
       return json({ ok: true });
     });
 }

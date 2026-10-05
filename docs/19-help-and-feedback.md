@@ -36,7 +36,15 @@ no Durable Objects, and clients ask for news now and then.
 - **Unread.** New messages from the team or a teammate count once you have
   had the ticket on screen. The count shows on the row and adds to Chat's
   count on the rail. Having the ticket on screen is what reads it.
-- **How often it's read.**
+- **Told at once.** When the team answers or closes a ticket, the API asks
+  the realtime worker (over the existing binding, `helpChanged`) to say
+  `help_changed` on the office's chat socket. For a demo office visitor, it
+  goes only to their own sockets in the lobby's chat. The message carries
+  nothing; the app reads the ticket again from the API, so the count shows
+  within a second, like office chat. A teammate writing in the ticket does
+  the same for the rest of the office.
+- **Read now and then as well,** in case that word was missed while the
+  socket was down.
   - The ticket on screen: every 5 seconds.
   - The open ticket, while Chat is open: every 15 seconds.
   - Otherwise: every 2 minutes, and on coming back to the tab.

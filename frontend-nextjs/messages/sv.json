@@ -1907,20 +1907,13 @@
       "notNow": "Inte nu"
     },
     "yourOffice": {
-      "eyebrow": "Ditt eget kontor",
       "title": "Gör det här planet till ditt",
       "body": "Ett privat plan för ditt team, där ni går fram till varandra för att prata, med kanaler och meddelanden som finns kvar.",
       "nameLabel": "Namnge ditt kontor",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Ditt kontor",
       "create": "Skapa mitt kontor",
-      "free": "Gratis för upp till 3 personer. Inget kort behövs.",
-      "perks": {
-        "private": "Ett privat plan",
-        "channels": "Kanaler som finns kvar",
-        "messages": "Direktmeddelanden",
-        "invites": "Inbjudningslänkar"
-      }
+      "free": "Gratis för upp till 3 personer. Inget kort behövs."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "Din profil",
     "leaveOffice": "Lämna kontoret",
     "leave": "Lämna"
+  },
+  "help": {
+    "title": "Hjälp och feedback",
+    "body": "Fungerar något inte, eller har du en idé? Berätta för TinyFloor-teamet. Bara vi ser det, inte ditt kontor, och vi svarar här.",
+    "placeholder": "Vad hände, och vad förväntade du dig?",
+    "context": "Vi skickar med sidan du är på och din webbläsare, så att vi kan titta på det.",
+    "send": "Skicka",
+    "sending": "Skickar",
+    "sent": "Tack, vi har fått det. Vårt svar dyker upp här.",
+    "error": "Det skickades inte. Försök igen.",
+    "slowDown": "Det är mycket för en dag. Försök igen i morgon.",
+    "yours": "Det du har skickat",
+    "open": "Öppen",
+    "closed": "Stängd",
+    "team": "TinyFloor-teamet",
+    "more": "Lägg till något",
+    "newReply": "Nytt svar"
   },
   "dashboard": {
     "newOffice": "Nytt kontor",

@@ -13,21 +13,25 @@ import { AppTopBar } from "@/components/app/AppTopBar";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
+import { Reports } from "./Reports";
+import { When } from "./when";
 
 /*
  * The admin view, for the team: how many people there are and how many came
  * back, where they come from, how many offices pay and how many meeting
  * hours are used; who everyone is, and every office with its members. A few
- * things can be done by hand: rename or delete an account, rename or close an
- * office, give an office a plan without payment, and change or take down a
- * message in the lobby's chat. The API answers only the admin accounts;
+ * things can be done by hand: answer and close what people sent through Help
+ * and feedback, rename or delete an account, rename or close an office, give
+ * an office a plan without payment, and change or take down a message in the
+ * lobby's chat. The API answers only the admin accounts;
  * everyone else gets a plain "nothing here". In English: it's a tool for the
  * team, not a page.
  */
 
-type Tab = "overview" | "people" | "guests" | "offices" | "lobby";
+type Tab = "overview" | "reports" | "people" | "guests" | "offices" | "lobby";
 const TABS: Array<{ key: Tab; label: string }> = [
   { key: "overview", label: "Overview" },
+  { key: "reports", label: "Reports" },
   { key: "people", label: "People" },
   { key: "guests", label: "Guests" },
   { key: "offices", label: "Offices" },
@@ -40,6 +44,11 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("overview");
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [denied, setDenied] = useState(false);
+  // The Reports tab says how many are open, and the count beside its name follows.
+  const openReports = useCallback(
+    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, openReports: count } }),
+    [],
+  );
 
   useEffect(() => {
     if (isLoading) return;
@@ -80,12 +89,20 @@ export default function AdminPage() {
                     )}
                   >
                     {one.label}
+                    {one.key === "reports" && summary.counts.openReports > 0 && (
+                      <span className="ms-1.5 rounded-full bg-brand px-1.5 text-[11px] font-semibold tabular-nums text-brand-foreground">
+                        {summary.counts.openReports}
+                      </span>
+                    )}
                   </button>
                 ))}
               </div>
             </div>
             <div className="mt-6">
               {tab === "overview" && <Overview summary={summary} />}
+              {tab === "reports" && (
+                <Reports onOpenCount={openReports} />
+              )}
               {tab === "people" && <People key="people" guests={false} />}
               {tab === "guests" && <People key="guests" guests />}
               {tab === "offices" && <Offices />}
@@ -1134,11 +1151,6 @@ function ModeratedMessage({ message, onChange }: { message: LobbyMessage; onChan
 
 /* ---------- Small pieces ---------- */
 
-/** The time the view was opened, so "how long ago" holds still while it's read. */
-function useOpenedAt() {
-  return useState(() => Date.now())[0];
-}
-
 function Badge({ children }: { children: React.ReactNode }) {
   return <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium capitalize text-muted-foreground">{children}</span>;
 }
@@ -1161,22 +1173,4 @@ function Country({ code }: { code: string }) {
       <span className="truncate">{name}</span>
     </span>
   );
-}
-
-/** How long ago, in words, with the exact time on hover. */
-function When({ at }: { at: number }) {
-  const locale = useLocale();
-  const now = useOpenedAt();
-  const seconds = Math.round((at - now) / 1000);
-  const units: Array<[Intl.RelativeTimeFormatUnit, number]> = [
-    ["year", 31_536_000],
-    ["month", 2_592_000],
-    ["week", 604_800],
-    ["day", 86_400],
-    ["hour", 3_600],
-    ["minute", 60],
-  ];
-  const [unit, size] = units.find(([, span]) => Math.abs(seconds) >= span) ?? ["second", 1];
-  const text = Math.abs(seconds) < 60 ? "just now" : new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(Math.round(seconds / size), unit);
-  return <time dateTime={new Date(at).toISOString()} title={new Date(at).toLocaleString(locale)}>{text}</time>;
 }

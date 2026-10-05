@@ -1907,20 +1907,13 @@
       "notNow": "나중에"
     },
     "yourOffice": {
-      "eyebrow": "나만의 오피스",
       "title": "이 층을 우리 것으로",
       "body": "팀을 위한 비공개 층. 다가가서 이야기하고, 채널과 메시지는 계속 남아요.",
       "nameLabel": "오피스 이름 정하기",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "내 오피스",
       "create": "내 오피스 만들기",
-      "free": "3명까지 무료. 카드 필요 없음.",
-      "perks": {
-        "private": "비공개 층",
-        "channels": "계속 남는 채널",
-        "messages": "다이렉트 메시지",
-        "invites": "초대 링크"
-      }
+      "free": "3명까지 무료. 카드 필요 없음."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "내 프로필",
     "leaveOffice": "오피스 나가기",
     "leave": "나가기"
+  },
+  "help": {
+    "title": "도움말 및 의견",
+    "body": "잘 안 되는 게 있거나 아이디어가 있나요? TinyFloor 팀에 알려 주세요. 오피스가 아니라 저희만 볼 수 있고, 답변은 여기에 남겨 드려요.",
+    "placeholder": "무슨 일이 있었고, 원래는 어떻게 될 거라고 생각했나요?",
+    "context": "확인할 수 있도록 지금 보고 있는 페이지와 브라우저 정보를 함께 보내요.",
+    "send": "보내기",
+    "sending": "보내는 중",
+    "sent": "고마워요, 잘 받았어요. 답변은 여기에 표시돼요.",
+    "error": "보내지 못했어요. 다시 시도해 주세요.",
+    "slowDown": "하루에 보내기엔 많아요. 내일 다시 시도해 주세요.",
+    "yours": "보낸 내용",
+    "open": "진행 중",
+    "closed": "완료",
+    "team": "TinyFloor 팀",
+    "more": "더 적기",
+    "newReply": "새 답변"
   },
   "dashboard": {
     "newOffice": "새 사무실",

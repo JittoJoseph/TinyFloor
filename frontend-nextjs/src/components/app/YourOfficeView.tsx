@@ -1,19 +1,18 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, DoorClosed, Hash, Link2, MessagesSquare } from "@/components/ui/icons";
+import { ArrowRight, Check } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { rememberOffice } from "@/lib/pendingOffice";
 import { Face } from "@/components/ui/Face";
-import { PlansSoon } from "@/components/ui/PlansSoon";
 
 /**
  * The lobby's reason to exist, on one screen: name an office and go make it.
- * Its mark takes the name's colour as it is typed. One ask, making an office;
- * paying can wait.
+ * Its mark takes the name's colour as it is typed. One ask, making an office,
+ * and nothing around it to read first; paying can wait.
  */
 export function YourOfficeView() {
   const t = useTranslations("lobby.yourOffice");
@@ -32,13 +31,6 @@ export function YourOfficeView() {
     router.push(account ? "/create" : `/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
   };
 
-  const perks: Array<{ icon: ReactNode; key: "private" | "channels" | "messages" | "invites" }> = [
-    { icon: <DoorClosed />, key: "private" },
-    { icon: <Hash />, key: "channels" },
-    { icon: <MessagesSquare />, key: "messages" },
-    { icon: <Link2 />, key: "invites" },
-  ];
-
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
       <div className="mx-auto flex min-h-full w-full max-w-[560px] flex-col justify-center px-5 py-12 text-center sm:px-8">
@@ -54,8 +46,7 @@ export function YourOfficeView() {
           <Face seed={typed.toLowerCase() || "your-office"} size={56} square />
         </motion.span>
 
-        <p className="mt-6 text-[12.5px] font-medium text-muted-foreground">{t("eyebrow")}</p>
-        <h1 className="mt-1.5 text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-[36px]">{t("title")}</h1>
+        <h1 className="mt-6 text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-[36px]">{t("title")}</h1>
         <p className="mx-auto mt-3 max-w-[27rem] text-[14.5px] leading-relaxed text-muted-foreground">{t("body")}</p>
 
         <form onSubmit={start} className="mx-auto mt-8 w-full max-w-[26rem] text-start">
@@ -87,16 +78,6 @@ export function YourOfficeView() {
           <Check className="size-3.5 text-ok" />
           {t("free")}
         </p>
-        <PlansSoon className="mt-1 justify-center" />
-
-        <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
-          {perks.map((perk) => (
-            <li key={perk.key} className="flex flex-col items-center gap-2 bg-card px-3 py-4 text-[12.5px] leading-snug text-foreground">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-4">{perk.icon}</span>
-              {t(`perks.${perk.key}`)}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

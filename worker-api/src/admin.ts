@@ -12,7 +12,7 @@ import { requireAccount } from "./session";
  * paying offices and meeting hours; and a few things the team can do by hand:
  * rename or delete an account, rename or close an office, give an office a
  * plan without payment, and change or take down any message in the lobby's
- * chat. Plans themselves aren't configurable here: they live in code
+ * chat. Help and feedback has its own routes (reports.ts). Plans themselves aren't configurable here: they live in code
  * (billing.ts) and in Paddle. Open to the accounts named in ADMIN_EMAILS, and
  * only once Google has vouched for the address, since a password sign-up
  * proves nothing about owning it. Anyone else is told there is nothing here.
@@ -22,7 +22,7 @@ const PAGE = 50;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LIVE = [...HOLDS_PLAN].map((status) => `'${status}'`).join(", ");
 
-async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
+export async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
   const user = await requireAccount(env, request, ctx);
   const allowed = (env.ADMIN_EMAILS ?? "")
     .split(",")
@@ -85,7 +85,8 @@ export function adminRoutes(router: Router): void {
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?2) AS activeWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?3) AS newMonth,
-             (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle`,
+             (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle,
+             (SELECT COUNT(*) FROM reports WHERE status = 'open') AS openReports`,
         ).bind(now - DAY_MS, now - 7 * DAY_MS, now - 30 * DAY_MS),
         env.DB.prepare(
           `SELECT country, COUNT(*) AS people FROM users

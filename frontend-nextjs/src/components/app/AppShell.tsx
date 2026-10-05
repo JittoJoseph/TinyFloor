@@ -1,8 +1,9 @@
 "use client";
 
-import { ICON_STROKE } from "@/components/ui/icons";
+import { HelpCircle, ICON_STROKE } from "@/components/ui/icons";
 import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import { Logo } from "./Logo";
 import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
+import { help, useHelp } from "@/lib/help";
+import { HelpDialog } from "./HelpDialog";
 
 /**
  * Whether the view on screen has a presence dock with you in it. When it does,
@@ -45,6 +48,7 @@ export interface ShellDestination {
  * A rail that never moves, and one panel filling the
  * rest: the floor, with whichever view you opened laid over it. The floor is
  * never unmounted, so your socket, call and position survive reading a message.
+ * Help and feedback sits quietly at the rail's foot (your menu, on a phone).
  */
 export function AppShell({
   mark,
@@ -84,6 +88,7 @@ export function AppShell({
             ))}
           </div>
           <div className="mt-auto flex w-full flex-col items-center gap-2">
+            <HelpRailButton />
             {leave && (
               <RailItem
                 destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
@@ -122,6 +127,7 @@ export function AppShell({
           <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
         </nav>
       </div>
+      <HelpDialog />
     </DockContext.Provider>
   );
 }
@@ -189,6 +195,24 @@ function RailItem({
     </Tooltip>
   ) : (
     link
+  );
+}
+
+/** Help and feedback, among the quiet things at the rail's foot; a dot when the team has replied. */
+function HelpRailButton() {
+  const t = useTranslations("help");
+  const { data } = useHelp();
+  const news = !!data?.unseen;
+  const label = news ? `${t("title")} · ${t("newReply")}` : t("title");
+  return (
+    <Tooltip content={label} side="right" wrapperClassName="w-full">
+      <button type="button" aria-label={label} onClick={() => help.open()} className="group relative flex w-full cursor-pointer flex-col items-center outline-none">
+        <span className="relative flex size-10 items-center justify-center rounded-[12px] text-muted-foreground transition-[background-color,color,transform] duration-150 group-hover:bg-foreground/[0.06] group-hover:text-foreground group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95">
+          <Icon icon={<HelpCircle />} active={false} />
+          {news && <span className="absolute end-1 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+        </span>
+      </button>
+    </Tooltip>
   );
 }
 

@@ -1907,20 +1907,13 @@
       "notNow": "Ei nyt"
     },
     "yourOffice": {
-      "eyebrow": "Oma toimisto",
       "title": "Tee tästä kerroksesta omanne",
       "body": "Yksityinen kerros tiimillesi: kävelette toistenne luo juttelemaan, ja kanavat ja viestit säilyvät.",
       "nameLabel": "Anna toimistollesi nimi",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Oma toimisto",
       "create": "Luo toimistoni",
-      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita.",
-      "perks": {
-        "private": "Yksityinen kerros",
-        "channels": "Kanavat, jotka säilyvät",
-        "messages": "Yksityisviestit",
-        "invites": "Kutsulinkit"
-      }
+      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "Oma profiili",
     "leaveOffice": "Poistu toimistosta",
     "leave": "Poistu"
+  },
+  "help": {
+    "title": "Apua ja palautetta",
+    "body": "Eikö jokin toimi, tai onko sinulla idea? Kerro TinyFloor-tiimille. Vain me näemme sen, ei toimistosi, ja vastaamme tänne.",
+    "placeholder": "Mitä tapahtui, ja mitä odotit tapahtuvan?",
+    "context": "Liitämme mukaan sivun, jolla olet, ja selaimesi, jotta voimme selvittää asian.",
+    "send": "Lähetä",
+    "sending": "Lähetetään",
+    "sent": "Kiitos, saimme sen. Vastauksemme näkyy täällä.",
+    "error": "Lähetys ei onnistunut. Yritä uudelleen.",
+    "slowDown": "Se on paljon yhdelle päivälle. Yritä uudelleen huomenna.",
+    "yours": "Lähettämäsi",
+    "open": "Avoin",
+    "closed": "Suljettu",
+    "team": "TinyFloor-tiimi",
+    "more": "Lisää jotain",
+    "newReply": "Uusi vastaus"
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",

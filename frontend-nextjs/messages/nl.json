@@ -1907,20 +1907,13 @@
       "notNow": "Niet nu"
     },
     "yourOffice": {
-      "eyebrow": "Je eigen kantoor",
       "title": "Maak deze vloer van jou",
       "body": "Een privévloer voor je team, waar je naar elkaar toe loopt om te praten, met kanalen en berichten die blijven.",
       "nameLabel": "Geef je kantoor een naam",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Jouw kantoor",
       "create": "Maak mijn kantoor",
-      "free": "Gratis tot 3 mensen. Geen kaart nodig.",
-      "perks": {
-        "private": "Een privévloer",
-        "channels": "Kanalen die blijven",
-        "messages": "Privéberichten",
-        "invites": "Uitnodigingslinks"
-      }
+      "free": "Gratis tot 3 mensen. Geen kaart nodig."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "Jouw profiel",
     "leaveOffice": "Kantoor verlaten",
     "leave": "Verlaten"
+  },
+  "help": {
+    "title": "Hulp en feedback",
+    "body": "Werkt er iets niet, of heb je een idee? Laat het het TinyFloor-team weten. Alleen wij zien het, niet je kantoor, en we antwoorden hier.",
+    "placeholder": "Wat gebeurde er, en wat verwachtte je?",
+    "context": "We sturen de pagina waar je bent en je browser mee, zodat we het kunnen uitzoeken.",
+    "send": "Versturen",
+    "sending": "Wordt verstuurd",
+    "sent": "Bedankt, we hebben het. Ons antwoord verschijnt hier.",
+    "error": "Dat is niet verstuurd. Probeer het opnieuw.",
+    "slowDown": "Dat is veel voor één dag. Probeer het morgen opnieuw.",
+    "yours": "Wat je hebt gestuurd",
+    "open": "Open",
+    "closed": "Gesloten",
+    "team": "TinyFloor-team",
+    "more": "Iets toevoegen",
+    "newReply": "Nieuw antwoord"
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",

@@ -1907,20 +1907,13 @@
       "notNow": "Ikke nå"
     },
     "yourOffice": {
-      "eyebrow": "Ditt eget kontor",
       "title": "Gjør denne etasjen til deres",
       "body": "En privat etasje for teamet ditt, der dere går bort til hverandre for å snakke, med kanaler og meldinger som blir værende.",
       "nameLabel": "Gi kontoret ditt et navn",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Ditt kontor",
       "create": "Lag mitt kontor",
-      "free": "Gratis for opptil 3 personer. Ikke noe kort.",
-      "perks": {
-        "private": "En privat etasje",
-        "channels": "Kanaler som blir værende",
-        "messages": "Direktemeldinger",
-        "invites": "Invitasjonslenker"
-      }
+      "free": "Gratis for opptil 3 personer. Ikke noe kort."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "Din profil",
     "leaveOffice": "Forlat kontoret",
     "leave": "Forlat"
+  },
+  "help": {
+    "title": "Hjelp og tilbakemelding",
+    "body": "Fungerer noe ikke, eller har du en idé? Si det til TinyFloor-teamet. Bare vi ser det, ikke kontoret ditt, og vi svarer her.",
+    "placeholder": "Hva skjedde, og hva forventet du?",
+    "context": "Vi sender med siden du er på og nettleseren din, så vi kan se på det.",
+    "send": "Send",
+    "sending": "Sender",
+    "sent": "Takk, vi har fått det. Svaret vårt dukker opp her.",
+    "error": "Det ble ikke sendt. Prøv igjen.",
+    "slowDown": "Det er mye for én dag. Prøv igjen i morgen.",
+    "yours": "Det du har sendt",
+    "open": "Åpen",
+    "closed": "Lukket",
+    "team": "TinyFloor-teamet",
+    "more": "Legg til mer",
+    "newReply": "Nytt svar"
   },
   "dashboard": {
     "newOffice": "Nytt kontor",

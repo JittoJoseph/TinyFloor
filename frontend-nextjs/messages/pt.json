@@ -1907,20 +1907,13 @@
       "notNow": "Agora não"
     },
     "yourOffice": {
-      "eyebrow": "Seu próprio escritório",
       "title": "Faça deste andar o seu",
       "body": "Um andar privado para sua equipe, onde vocês vão até alguém para conversar, com canais e mensagens que ficam.",
       "nameLabel": "Dê um nome ao seu escritório",
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Seu escritório",
       "create": "Criar meu escritório",
-      "free": "Grátis para até 3 pessoas. Sem cartão.",
-      "perks": {
-        "private": "Um andar privado",
-        "channels": "Canais que ficam",
-        "messages": "Mensagens diretas",
-        "invites": "Links de convite"
-      }
+      "free": "Grátis para até 3 pessoas. Sem cartão."
     }
   },
   "office": {
@@ -2197,6 +2190,23 @@
     "yourProfile": "Seu perfil",
     "leaveOffice": "Sair do escritório",
     "leave": "Sair"
+  },
+  "help": {
+    "title": "Ajuda e feedback",
+    "body": "Algo não está funcionando, ou tem uma ideia? Conte para a equipe do TinyFloor. Só nós vemos, não o seu escritório, e respondemos aqui.",
+    "placeholder": "O que aconteceu, e o que você esperava?",
+    "context": "Incluímos a página em que você está e o seu navegador, para podermos investigar.",
+    "send": "Enviar",
+    "sending": "Enviando",
+    "sent": "Obrigado, recebemos. Nossa resposta vai aparecer aqui.",
+    "error": "Não foi enviado. Tente de novo.",
+    "slowDown": "É muita coisa para um dia. Tente de novo amanhã.",
+    "yours": "O que você enviou",
+    "open": "Aberto",
+    "closed": "Fechado",
+    "team": "Equipe do TinyFloor",
+    "more": "Adicionar mais",
+    "newReply": "Nova resposta"
   },
   "dashboard": {
     "newOffice": "Novo escritório",

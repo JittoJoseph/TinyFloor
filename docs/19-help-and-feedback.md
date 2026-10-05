@@ -57,12 +57,12 @@ no Durable Objects, and clients ask for news now and then.
     tab shows the unread total.
   - **Picking a ticket** shows it beside the list. The header has who opened
     it, their email and when. It also shows, once, where the ticket was opened
-    from: the browser, the screen, the language, the country, the page, and a
-    PostHog button to the recording of that moment.
+    from: the browser, the screen, the language, the country, and a PostHog
+    button to the recording of that moment.
   - **Opening a ticket reads it.** What was new stays marked "New" while it's
     open.
-- **Answering.** Reply (Ctrl+Enter), Reply and close, or Close ticket. Closed
-  tickets are read-only.
+- **Answering.** Reply (Ctrl+Enter). Closing a ticket is out of the way, in
+  the "⋯" menu, and asks first. Closed tickets are read-only.
 - **What's kept.** A ticket keeps its office's name and its opener's name and
   email as they were, so it outlives a closed office or a guest's account. The
   daily clean-up deletes tickets a year after they were closed.
@@ -83,4 +83,4 @@ no Durable Objects, and clients ask for news now and then.
   - `components/app/HelpCompose.tsx`: the card, mounted by AppShell.
   - `components/app/HelpTicket.tsx`: the ticket in Chat (at
     `/chat/~support`), built from Chat's own `Conversation` and `Composer`.
-  - `app/[locale]/(app)/admin/Help.tsx`: the admin tab.
+  - `app/[locale]/(app)/admin/Help.tsx`: the admin tab; closing a ticket is in its "⋯" menu and asks first.

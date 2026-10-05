@@ -1,13 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ExternalLink } from "@/components/ui/icons";
+import { ExternalLink, MoreHorizontal, X } from "@/components/ui/icons";
 import { api, type AdminHelpDetail, type AdminHelpTicket, type AdminPage } from "@/lib/api";
 import { Face } from "@/components/ui/Face";
 import { Logo } from "@/components/app/Logo";
 import { Loader } from "@/components/motion/loader";
+import { Dialog } from "@/components/ui/Dialog";
+import { Menu, MenuItem } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
-import { When } from "./when";
+import { DialogButton, When } from "./pieces";
 
 type Status = "open" | "closed";
 /** Read again while the tab is open, so new messages turn up without a reload. */
@@ -16,9 +18,10 @@ const EVERY_MS = 20_000;
 /**
  * Help and feedback (docs/19), as the team sees it: open tickets (an
  * office has at most one) and closed ones, unread counts on each, and one
- * ticket at a time beside the list. Where it was opened from (page, browser,
- * the PostHog recording) is said once, at the top. A reply shows in their
- * Chat as unread; closing it takes it out of their Chat.
+ * ticket at a time beside the list. Where it was opened from (browser,
+ * language, the PostHog recording) is said once, at the top. A reply shows
+ * in their Chat as unread. Closing it, which takes it out of their Chat, is
+ * kept in a menu and asks first.
  */
 export function Help({ onUnread }: { onUnread: (count: number) => void }) {
   const [status, setStatus] = useState<Status>("open");
@@ -147,6 +150,7 @@ function Ticket({ id, unread, updatedAt, onChanged }: { id: string; unread: numb
   const [reply, setReply] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [closing, setClosing] = useState(false);
 
   // Read again when the list says something changed; reading it clears its count there.
   useEffect(() => {
@@ -188,11 +192,8 @@ function Ticket({ id, unread, updatedAt, onChanged }: { id: string; unread: numb
       setBusy(false);
     }
   };
-  const send = (close: boolean) =>
-    run(async () => {
-      if (text) await api.adminHelpReply(id, text);
-      if (close) await api.adminHelpClose(id);
-    });
+  const send = () => text && run(() => api.adminHelpReply(id, text));
+  const close = () => run(() => api.adminHelpClose(id)).then(() => setClosing(false));
   const theirs = messages.filter((one) => !one.team).slice(-fresh).map((one) => one.id);
   const where = [ticket.userAgent && browserOf(ticket.userAgent), ticket.screen, ticket.locale, ticket.country].filter(Boolean).join(" · ");
 
@@ -236,14 +237,48 @@ function Ticket({ id, unread, updatedAt, onChanged }: { id: string; unread: numb
               <ExternalLink className="size-3.5" />
             </a>
           )}
+          {open && (
+            <Menu
+              align="end"
+              width={180}
+              trigger={
+                <button
+                  type="button"
+                  aria-label="More"
+                  className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
+                  <MoreHorizontal className="size-4" />
+                </button>
+              }
+            >
+              <MenuItem danger icon={<X />} onSelect={() => setClosing(true)}>
+                Close ticket
+              </MenuItem>
+            </Menu>
+          )}
         </div>
-        {(where || ticket.page) && (
-          <p className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[11.5px] text-faint">
-            {where && <span title={ticket.userAgent ?? undefined}>{where}</span>}
-            {ticket.page && <code className="break-all">{ticket.page}</code>}
+        {where && (
+          <p className="mt-2 text-[11.5px] text-faint" title={ticket.userAgent ?? undefined}>
+            {where}
           </p>
         )}
       </header>
+
+      <Dialog
+        open={closing}
+        onClose={() => setClosing(false)}
+        title="Close this ticket?"
+        description={`It leaves ${ticket.lobby ? `${ticket.name}'s` : `${ticket.place}'s`} Chat, and the next message from there opens a new one. You can still read it under Closed.`}
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={() => setClosing(false)}>Cancel</DialogButton>
+            <DialogButton danger disabled={busy} onClick={() => void close()}>
+              Close ticket
+            </DialogButton>
+          </>
+        }
+      />
 
       <ol className="space-y-3.5 px-4 py-4">
         {messages.map((message) => (
@@ -268,7 +303,7 @@ function Ticket({ id, unread, updatedAt, onChanged }: { id: string; unread: numb
           className="border-t border-border p-4"
           onSubmit={(event) => {
             event.preventDefault();
-            void send(false);
+            void send();
           }}
         >
           <textarea
@@ -278,25 +313,15 @@ function Ticket({ id, unread, updatedAt, onChanged }: { id: string; unread: numb
             onKeyDown={(event) => {
               if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault();
-                void send(false);
+                void send();
               }
             }}
             placeholder={`Reply to ${ticket.lobby ? ticket.name : `everyone in ${ticket.place}`}. Ctrl+Enter sends.`}
             className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-[16px] outline-none focus:border-foreground/35 sm:text-[13.5px]"
           />
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            <button type="submit" disabled={busy || !text} className="h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background disabled:opacity-40">
-              Reply
-            </button>
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => void send(true)}
-              className="h-8 cursor-pointer rounded-full bg-muted px-3.5 text-[12.5px] font-medium hover:bg-foreground/[0.08] disabled:opacity-40"
-            >
-              {text ? "Reply and close" : "Close ticket"}
-            </button>
-          </div>
+          <button type="submit" disabled={busy || !text} className="mt-1.5 h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background disabled:opacity-40">
+            Reply
+          </button>
           {error && <p className="mt-1.5 text-[12px] text-destructive">{error}</p>}
         </form>
       )}

@@ -14,7 +14,7 @@ import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
 import { Help } from "./Help";
-import { When } from "./when";
+import { DialogButton, When } from "./pieces";
 
 /*
  * The admin view, for the team: how many people there are and how many came
@@ -440,33 +440,6 @@ function PersonActions({ person, onChanged }: { person: AdminPerson; onChanged: 
   );
 }
 
-function DialogButton({
-  children,
-  onClick,
-  disabled,
-  solid,
-  danger,
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-  disabled?: boolean;
-  solid?: boolean;
-  danger?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      className={cn(
-        "h-10 cursor-pointer rounded-full px-4 text-[13.5px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
-        danger ? "bg-destructive text-white hover:bg-destructive/90" : solid ? "bg-foreground text-background hover:bg-foreground/85" : "hover:bg-muted",
-      )}
-    >
-      {children}
-    </button>
-  );
-}
 
 /** A value with its label shown beside it on a phone, where there are no column headings. */
 function Cell({ label, children }: { label: string; children: React.ReactNode }) {

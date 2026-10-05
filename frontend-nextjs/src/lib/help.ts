@@ -1,27 +1,30 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { api, type Reports } from "./api";
+import { api, type HelpConversation } from "./api";
 
-/** Looked at again when you come back to the tab, but not more than once a minute. */
+/** Read again when you come back to the tab, but not more often than this. */
 const FRESH_MS = 60_000;
 
 interface HelpState {
   open: boolean;
-  /** Your reports, once read; null until then. */
-  data: Reports | null;
+  /** The conversation, once read; null until then. */
+  conversation: HelpConversation | null;
 }
 
-const EMPTY: HelpState = { open: false, data: null };
+const EMPTY: HelpState = { open: false, conversation: null };
 
 /**
  * Help and feedback (docs/19), shared by the rail's button, your menu on a
- * phone and the dialog itself: whether it's open, and your reports with how
- * many have a reply you haven't seen.
+ * phone and the dialog: whether it's open, and the conversation with the team
+ * for the place you're in, with how many messages are new to you. It is read
+ * by asking: often while the dialog is open, now and then while it isn't.
  */
 class Help {
   private state: HelpState = EMPTY;
   private listeners = new Set<() => void>();
+  /** The office whose conversation this is; undefined in the demo office. */
+  private office: string | undefined;
   private readAt = 0;
 
   subscribe = (listener: () => void) => {
@@ -32,51 +35,49 @@ class Help {
   getSnapshot = () => this.state;
   getServerSnapshot = () => EMPTY;
 
-  /** Reads your reports, unless they were read a moment ago. */
+  /** Walked into a place: its conversation, from the start. */
+  attach(office: string | undefined) {
+    this.office = office;
+    this.readAt = 0;
+    this.set(EMPTY);
+    void this.refresh(true);
+  }
+
+  /** Reads the conversation, unless it was read a moment ago. Open, what's new is seen at once. */
   async refresh(force = false) {
     if (!force && Date.now() - this.readAt < FRESH_MS) return;
     this.readAt = Date.now();
+    const office = this.office;
     try {
-      this.take(await api.reports());
+      const conversation = await api.help(office);
+      if (office !== this.office) return;
+      this.take(conversation);
     } catch {
       // Nothing to show is fine: the dialog still sends.
     }
   }
 
-  /** What the API said after a change: the list as it is now. */
-  take(data: Reports) {
-    this.set({ data });
+  /** What the API said: the conversation as it is now. */
+  take(conversation: HelpConversation) {
+    if (this.state.open && conversation.unread) {
+      api.helpRead(this.office).catch(() => undefined);
+      conversation = { ...conversation, unread: 0 };
+    }
+    this.set({ conversation });
   }
 
-  /**
-   * Opened: what was news is seen now. It stays marked while the dialog is
-   * open, so a reply can be found, and is let go of when it closes.
-   */
+  /** Something to the team; the conversation comes back with it. */
+  async say(body: string, context: { page: string; locale: string; screen: string; replay: string | null }) {
+    this.take(await api.sayToHelp({ body, ...(this.office ? { office: this.office } : {}), ...context }));
+  }
+
   open() {
     this.set({ open: true });
-    void this.refresh(true).then(() => {
-      if (!this.state.data?.unseen) return;
-      this.set({ data: { ...this.state.data, unseen: 0 } });
-      api.reportsSeen().catch(() => undefined);
-    });
+    void this.refresh(true);
   }
 
   close() {
-    const data = this.state.data;
-    this.set({
-      open: false,
-      // A closed report, now seen closed, goes; the rest stay, nothing new on them.
-      data: data && {
-        unseen: 0,
-        reports: data.reports.filter((one) => one.status === "open").map((one) => ({ ...one, news: false })),
-      },
-    });
-  }
-
-  /** Signed out or gone elsewhere: nothing of yours stays behind. */
-  forget() {
-    this.readAt = 0;
-    this.set(EMPTY);
+    this.set({ open: false });
   }
 
   private set(next: Partial<HelpState>) {

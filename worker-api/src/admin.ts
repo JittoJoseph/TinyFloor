@@ -12,7 +12,7 @@ import { requireAccount } from "./session";
  * paying offices and meeting hours; and a few things the team can do by hand:
  * rename or delete an account, rename or close an office, give an office a
  * plan without payment, and change or take down any message in the lobby's
- * chat. Help and feedback has its own routes (reports.ts). Plans themselves aren't configurable here: they live in code
+ * chat. Help and feedback has its own routes (help.ts). Plans themselves aren't configurable here: they live in code
  * (billing.ts) and in Paddle. Open to the accounts named in ADMIN_EMAILS, and
  * only once Google has vouched for the address, since a password sign-up
  * proves nothing about owning it. Anyone else is told there is nothing here.
@@ -86,7 +86,8 @@ export function adminRoutes(router: Router): void {
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?3) AS newMonth,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND google_sub IS NOT NULL) AS withGoogle,
-             (SELECT COUNT(*) FROM reports WHERE status = 'open') AS openReports`,
+             (SELECT COUNT(*) FROM help_threads t WHERE t.status = 'open'
+                AND (SELECT m.from_team FROM help_messages m WHERE m.thread_id = t.id ORDER BY m.id DESC LIMIT 1) = 0) AS helpWaiting`,
         ).bind(now - DAY_MS, now - 7 * DAY_MS, now - 30 * DAY_MS),
         env.DB.prepare(
           `SELECT country, COUNT(*) AS people FROM users

@@ -198,18 +198,21 @@ function RailItem({
   );
 }
 
-/** Help and feedback, among the quiet things at the rail's foot; a dot when the team has replied. */
+/** Help and feedback, among the quiet things at the rail's foot; a count when the team has answered. */
 function HelpRailButton() {
   const t = useTranslations("help");
-  const { data } = useHelp();
-  const news = !!data?.unseen;
-  const label = news ? `${t("title")} · ${t("newReply")}` : t("title");
+  const unread = useHelp().conversation?.unread ?? 0;
+  const label = unread ? `${t("title")} · ${t("newReply")}` : t("title");
   return (
     <Tooltip content={label} side="right" wrapperClassName="w-full">
       <button type="button" aria-label={label} onClick={() => help.open()} className="group relative flex w-full cursor-pointer flex-col items-center outline-none">
         <span className="relative flex size-10 items-center justify-center rounded-[12px] text-muted-foreground transition-[background-color,color,transform] duration-150 group-hover:bg-foreground/[0.06] group-hover:text-foreground group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95">
           <Icon icon={<HelpCircle />} active={false} />
-          {news && <span className="absolute end-1 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+          {unread > 0 && (
+            <span className="absolute -end-1.5 -top-1.5 min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums ring-2 ring-rail">
+              {unread > 99 ? "99+" : unread}
+            </span>
+          )}
         </span>
       </button>
     </Tooltip>

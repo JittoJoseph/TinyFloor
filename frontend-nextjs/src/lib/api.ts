@@ -93,7 +93,7 @@ export interface IceServers {
 
 /** The admin view (open only to the admin accounts). */
 export interface AdminSummary {
-  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "openReports", number>;
+  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpWaiting", number>;
   countries: Array<{ country: string; people: number }>;
   /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
@@ -152,54 +152,52 @@ export interface AdminMember {
   owner: number;
 }
 
-/** Help and feedback (docs/19): the report is its first message; the team's replies follow. */
-export interface ReportMessage {
+/** Help and feedback (docs/19): a message in the conversation with the TinyFloor team. */
+export interface HelpMessage {
   id: number;
-  fromTeam: boolean;
+  /** Yours, on the right. */
+  mine: boolean;
+  /** The TinyFloor team's. */
+  team: boolean;
+  name: string;
   body: string;
   at: number;
 }
 
-/** One of your reports, as Help and feedback shows it. */
-export interface Report {
-  id: string;
-  status: "open" | "closed";
-  /** The office it was sent from, or the demo office. */
-  place: string;
-  createdAt: number;
-  updatedAt: number;
-  /** A reply, or the report closed, since you last looked. */
-  news: boolean;
-  messages: ReportMessage[];
+/** The conversation as you see it: its latest messages, and how many came since you last looked. */
+export interface HelpConversation {
+  messages: HelpMessage[];
+  unread: number;
 }
 
-export interface Reports {
-  reports: Report[];
-  /** How many have news: the dot on the rail. */
-  unseen: number;
-}
-
-/** A report as the admin view shows it, with where it came from. */
-export interface AdminReport {
-  id: string;
+/** A message as the admin view shows it, with where it was written from. */
+export interface AdminHelpMessage {
+  id: number;
+  team: boolean;
   userId: string | null;
   name: string;
   email: string | null;
-  officeId: string | null;
-  place: string;
-  status: "open" | "closed";
+  body: string;
   page: string | null;
   locale: string | null;
   userAgent: string | null;
   screen: string | null;
   country: string | null;
   replay: string | null;
+  at: number;
+}
+
+export interface AdminHelpThread {
+  id: string;
+  /** Null for a demo office visitor's, or an office that has since closed. */
+  officeId: string | null;
+  place: string;
+  status: "open" | "done";
   createdAt: number;
   updatedAt: number;
-  closedAt: number | null;
-  /** The last word is the sender's: it's waiting on the team. */
+  /** The last word is theirs, and it isn't marked done: it's waiting on the team. */
   waiting: boolean;
-  messages: ReportMessage[];
+  messages: AdminHelpMessage[];
 }
 
 /** A page of a list in the admin view. */
@@ -338,19 +336,18 @@ export const api = {
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
   adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
-  adminReports: (params: { status: "open" | "closed"; page?: number }) =>
-    get<AdminPage & { reports: AdminReport[] }>(
-      `/admin/reports?${new URLSearchParams({ status: params.status, ...(params.page ? { page: String(params.page) } : {}) })}`,
+  adminHelp: (params: { show: "waiting" | "all"; page?: number }) =>
+    get<AdminPage & { threads: AdminHelpThread[] }>(
+      `/admin/help?${new URLSearchParams({ show: params.show, ...(params.page ? { page: String(params.page) } : {}) })}`,
     ),
-  adminReplyToReport: (reportId: string, body: string) => post<{ ok: true }>(`/admin/reports/${id(reportId)}/messages`, { body }),
-  adminSetReport: (reportId: string, status: "open" | "closed") => patch<{ ok: true }>(`/admin/reports/${id(reportId)}`, { status }),
+  adminHelpReply: (threadId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(threadId)}/messages`, { body }),
+  adminHelpStatus: (threadId: string, status: "open" | "done") => patch<{ ok: true }>(`/admin/help/${id(threadId)}`, { status }),
 
-  // Help and feedback: what you've told the team, and its replies
-  reports: () => get<Reports>("/reports"),
-  report: (body: { body: string; officeId?: string; page: string; locale: string; screen: string; replay?: string | null }) =>
-    post<Reports>("/reports", body),
-  addToReport: (reportId: string, body: string) => post<Reports>(`/reports/${id(reportId)}/messages`, { body }),
-  reportsSeen: () => post<{ ok: true }>("/reports/seen"),
+  // Help and feedback: your office's conversation with the team (yours alone, in the demo office)
+  help: (office?: string) => get<HelpConversation>(`/help${office ? `?${new URLSearchParams({ office })}` : ""}`),
+  sayToHelp: (body: { body: string; office?: string; page: string; locale: string; screen: string; replay?: string | null }) =>
+    post<HelpConversation>("/help", body),
+  helpRead: (office?: string) => post<{ ok: true }>("/help/read", office ? { office } : {}),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

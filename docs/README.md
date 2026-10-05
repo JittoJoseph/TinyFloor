@@ -22,7 +22,7 @@ code and by git history, not here.
 | [09-billing.md](09-billing.md) | Who takes the money (Paddle, as an individual in India) and how billing is built |
 | [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours: the numbers, and what happens past them |
 | [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
-| [19-help-and-feedback.md](19-help-and-feedback.md) | Reporting a problem from inside the app, and answering it from the admin view |
+| [19-help-and-feedback.md](19-help-and-feedback.md) | Each office's conversation with the team from inside the app, on Discord and in admin |
 
 ## Search
 

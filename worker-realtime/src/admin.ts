@@ -8,7 +8,7 @@ import {
   type RealtimeAdminApi,
   type Whereabouts,
 } from "../../shared-protocol/src";
-import { Reporter } from "./discord";
+import { Reporter, type HelpEvent } from "./discord";
 import { lobbyCopy } from "./lobby";
 
 /** Faces the lobby door shows. */
@@ -71,6 +71,11 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
   /** A new office, for the team's Discord. The webhook lives here, with the lobby's. */
   async officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void> {
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "office_created", ...event });
+  }
+
+  /** Someone wrote through Help and feedback: the team hears about it on Discord, with the lobby and new offices. */
+  async helpMessage(event: Omit<HelpEvent, "kind">): Promise<void> {
+    await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "help", ...event });
   }
 
   /** A membership ended: the floor and the office's chat both let go of them. */

@@ -45,6 +45,9 @@ export class RealtimeAdmin extends WorkerEntrypoint {
   async officeCreated(event) {
     calls.push(["officeCreated", event.office, event.owner]);
   }
+  async helpMessage(event) {
+    calls.push(["helpMessage", event.place, event.name, event.body, event.first]);
+  }
   // Test helpers.
   async setPeople(roomId, count) {
     people[roomId] = count;

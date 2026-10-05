@@ -13,25 +13,25 @@ import { AppTopBar } from "@/components/app/AppTopBar";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { cn } from "@/lib/utils";
-import { Reports } from "./Reports";
+import { Help } from "./Help";
 import { When } from "./when";
 
 /*
  * The admin view, for the team: how many people there are and how many came
  * back, where they come from, how many offices pay and how many meeting
  * hours are used; who everyone is, and every office with its members. A few
- * things can be done by hand: answer and close what people sent through Help
- * and feedback, rename or delete an account, rename or close an office, give
+ * things can be done by hand: answer what people say through Help and
+ * feedback, rename or delete an account, rename or close an office, give
  * an office a plan without payment, and change or take down a message in the
  * lobby's chat. The API answers only the admin accounts;
  * everyone else gets a plain "nothing here". In English: it's a tool for the
  * team, not a page.
  */
 
-type Tab = "overview" | "reports" | "people" | "guests" | "offices" | "lobby";
+type Tab = "overview" | "help" | "people" | "guests" | "offices" | "lobby";
 const TABS: Array<{ key: Tab; label: string }> = [
   { key: "overview", label: "Overview" },
-  { key: "reports", label: "Reports" },
+  { key: "help", label: "Help" },
   { key: "people", label: "People" },
   { key: "guests", label: "Guests" },
   { key: "offices", label: "Offices" },
@@ -44,9 +44,9 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("overview");
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [denied, setDenied] = useState(false);
-  // The Reports tab says how many are open, and the count beside its name follows.
-  const openReports = useCallback(
-    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, openReports: count } }),
+  // The Help tab says how many are waiting on the team, and the count beside its name follows.
+  const helpWaiting = useCallback(
+    (count: number) => setSummary((now) => now && { ...now, counts: { ...now.counts, helpWaiting: count } }),
     [],
   );
 
@@ -89,9 +89,9 @@ export default function AdminPage() {
                     )}
                   >
                     {one.label}
-                    {one.key === "reports" && summary.counts.openReports > 0 && (
+                    {one.key === "help" && summary.counts.helpWaiting > 0 && (
                       <span className="ms-1.5 rounded-full bg-brand px-1.5 text-[11px] font-semibold tabular-nums text-brand-foreground">
-                        {summary.counts.openReports}
+                        {summary.counts.helpWaiting}
                       </span>
                     )}
                   </button>
@@ -100,9 +100,7 @@ export default function AdminPage() {
             </div>
             <div className="mt-6">
               {tab === "overview" && <Overview summary={summary} />}
-              {tab === "reports" && (
-                <Reports onOpenCount={openReports} />
-              )}
+              {tab === "help" && <Help onWaiting={helpWaiting} />}
               {tab === "people" && <People key="people" guests={false} />}
               {tab === "guests" && <People key="guests" guests />}
               {tab === "offices" && <Offices />}

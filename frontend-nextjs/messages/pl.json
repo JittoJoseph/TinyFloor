@@ -2201,14 +2201,14 @@
     "sending": "Wysyłanie",
     "error": "Nie udało się wysłać. Spróbuj ponownie.",
     "slowDown": "W ciągu ostatniej godziny wysłano dużo wiadomości. Spróbuj trochę później.",
-    "section": "Wsparcie TinyFloor",
+    "support": "Wsparcie TinyFloor",
     "open": "Otwarte",
     "closed": "Zamknięte",
     "message": "Wiadomość do zespołu TinyFloor",
     "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
     "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
     "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
-    "gone": "Tego zgłoszenia już nie ma."
+    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor."
   },
   "dashboard": {
     "newOffice": "Nowe biuro",

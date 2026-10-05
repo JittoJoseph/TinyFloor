@@ -2201,14 +2201,14 @@
     "sending": "보내는 중",
     "error": "보내지 못했어요. 다시 시도해 주세요.",
     "slowDown": "지난 한 시간 동안 많이 보냈어요. 잠시 후에 다시 시도해 주세요.",
-    "section": "TinyFloor 지원",
+    "support": "TinyFloor 지원",
     "open": "진행 중",
     "closed": "종료",
     "message": "TinyFloor 팀에 메시지 보내기",
     "closedNote": "TinyFloor 팀이 이 티켓을 닫았어요. 아직 문제가 있다면 도움말 및 의견에서 다시 알려 주세요.",
     "ticketOffice": "{office}의 모든 사람이 보고 덧붙일 수 있어요. TinyFloor 팀이 여기에서 답해요.",
     "ticketLobby": "나와 TinyFloor 팀만 볼 수 있어요. 여기에서 답해 드려요.",
-    "gone": "이 티켓은 더 이상 없어요."
+    "nothingOpen": "지금은 TinyFloor 팀과 진행 중인 문의가 없어요."
   },
   "dashboard": {
     "newOffice": "새 사무실",

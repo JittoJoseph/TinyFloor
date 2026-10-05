@@ -46,8 +46,8 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   const [asked, setAsked] = useState<OfficeFeature | null>(null);
   const [door, setDoor] = useState<{ here: number; faces: Array<{ id: string; name: string }> } | null>(null);
   const { unread } = useChat();
-  // Help and feedback's tickets live in Chat, so what's new in them counts there too.
-  const { unread: helpUnread } = useHelp();
+  // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
+  const helpUnread = useHelp().ticket?.unread ?? 0;
   const everyone = useFloor();
   const { meetings } = useMeetings();
 

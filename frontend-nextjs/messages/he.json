@@ -2201,14 +2201,14 @@
     "sending": "שולחים",
     "error": "זה לא נשלח. נסו שוב.",
     "slowDown": "שלחתם הרבה בשעה האחרונה. נסו שוב עוד מעט.",
-    "section": "תמיכת TinyFloor",
+    "support": "תמיכת TinyFloor",
     "open": "פתוחה",
     "closed": "סגורה",
     "message": "הודעה לצוות של TinyFloor",
     "closedNote": "הצוות של TinyFloor סגר את הפנייה. עדיין תקועים? ספרו לנו שוב דרך עזרה ומשוב.",
     "ticketOffice": "כל מי שב-{office} יכול לעקוב ולהוסיף. הצוות של TinyFloor עונה כאן.",
     "ticketLobby": "רק אתם וצוות TinyFloor רואים את זה. אנחנו עונים כאן.",
-    "gone": "הפנייה הזו כבר לא קיימת."
+    "nothingOpen": "כרגע אין שום דבר פתוח מול הצוות של TinyFloor."
   },
   "dashboard": {
     "newOffice": "משרד חדש",

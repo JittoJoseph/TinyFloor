@@ -2201,14 +2201,14 @@
     "sending": "正在发送",
     "error": "没有发送成功，请再试一次。",
     "slowDown": "过去一小时内发送得太多了，请稍后再试。",
-    "section": "TinyFloor 支持",
+    "support": "TinyFloor 支持",
     "open": "处理中",
     "closed": "已关闭",
     "message": "给 TinyFloor 团队发消息",
     "closedNote": "TinyFloor 团队已关闭此工单。还有问题？请通过「帮助与反馈」再告诉我们。",
     "ticketOffice": "{office} 的所有人都能查看并补充。TinyFloor 团队会在这里回复。",
     "ticketLobby": "只有你和 TinyFloor 团队能看到这里。我们会在这里回复。",
-    "gone": "这个工单已经不在了。"
+    "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。"
   },
   "dashboard": {
     "newOffice": "新建办公室",

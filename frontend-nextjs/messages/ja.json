@@ -2201,14 +2201,14 @@
     "sending": "送信中",
     "error": "送信できませんでした。もう一度お試しください。",
     "slowDown": "この1時間に送った数が多すぎます。少し時間をおいてお試しください。",
-    "section": "TinyFloor サポート",
+    "support": "TinyFloor サポート",
     "open": "対応中",
     "closed": "完了",
     "message": "TinyFloor チームにメッセージ",
     "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
     "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
     "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
-    "gone": "このチケットはもうありません。"
+    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。"
   },
   "dashboard": {
     "newOffice": "新しいオフィス",

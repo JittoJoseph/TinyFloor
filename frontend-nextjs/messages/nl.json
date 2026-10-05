@@ -2201,14 +2201,14 @@
     "sending": "Wordt verstuurd",
     "error": "Dat is niet verstuurd. Probeer het opnieuw.",
     "slowDown": "Je hebt het afgelopen uur veel gestuurd. Probeer het straks opnieuw.",
-    "section": "TinyFloor-support",
+    "support": "TinyFloor-support",
     "open": "Open",
     "closed": "Gesloten",
     "message": "Bericht aan het TinyFloor-team",
     "closedNote": "Het TinyFloor-team heeft dit gesloten. Loop je nog vast? Laat het ons opnieuw weten via Hulp en feedback.",
     "ticketOffice": "Iedereen in {office} kan dit volgen en iets toevoegen. Het TinyFloor-team antwoordt hier.",
     "ticketLobby": "Alleen jij en het TinyFloor-team zien dit. We antwoorden hier.",
-    "gone": "Dit ticket bestaat niet meer."
+    "nothingOpen": "Er staat nu niets open bij het TinyFloor-team."
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",

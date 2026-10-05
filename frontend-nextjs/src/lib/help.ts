@@ -7,38 +7,34 @@ import { analyticsConfigured, withPostHog } from "./analytics";
 /** Read again when you come back to the tab, but not more often than this. */
 const FRESH_MS = 60_000;
 
-/** A ticket's address in Chat: `/chat/help-<id>`, beside channels and direct messages. */
-export const TICKET_PREFIX = "help-";
-export const ticketChannel = (id: string) => `${TICKET_PREFIX}${id}`;
-export const ticketOf = (channel: string | undefined) => (channel?.startsWith(TICKET_PREFIX) ? channel.slice(TICKET_PREFIX.length) : null);
+/** The ticket's place in Chat, `/chat/~support`. A channel's name can't hold "~", so it's never one. */
+export const SUPPORT_CHANNEL = "~support";
 
 interface HelpState {
-  /** The rail's box for a new issue is open. */
+  /** The rail's box for telling the team something is open. */
   composing: boolean;
-  /** The tickets where you are, once read; null until then. */
-  tickets: HelpTicket[] | null;
-  /** New messages across them: added to Chat's count on the rail. */
-  unread: number;
-  /** The ticket on screen in Chat. */
+  /** The open ticket where you are, if there is one. */
+  ticket: HelpTicket | null;
+  /** The ticket on screen in Chat; it stays, closed, if the team closes it while you're on it. */
   view: HelpTicketView | null;
 }
 
-const EMPTY: HelpState = { composing: false, tickets: null, unread: 0, view: null };
+const EMPTY: HelpState = { composing: false, ticket: null, view: null };
 
 /**
- * Help and feedback (docs/19): issues raised with the TinyFloor team. The
- * rail opens a box to raise one; each becomes a ticket in Chat, below the
- * direct messages, until the team closes it. Everything is read by asking:
- * often while a ticket is on screen, now and then otherwise.
+ * Help and feedback (docs/19): the ticket with the TinyFloor team where you
+ * are. With none open, the rail opens a box to start one; with one open, it
+ * opens the ticket in Chat. Read by asking: often while the ticket is on
+ * screen, now and then otherwise.
  */
 class Help {
   private state: HelpState = EMPTY;
   private listeners = new Set<() => void>();
-  /** The office whose tickets these are; undefined in the demo office. */
+  /** The office whose ticket this is; undefined in the demo office. */
   private office: string | undefined;
   private readAt = 0;
-  /** The ticket on screen: never unread, whatever a list read a moment earlier says. */
-  private viewing: string | null = null;
+  /** Opens the ticket in Chat; given by the place's shell, which knows the way. */
+  private toTicket: (() => void) | null = null;
 
   subscribe = (listener: () => void) => {
     this.listeners.add(listener);
@@ -48,7 +44,7 @@ class Help {
   getSnapshot = () => this.state;
   getServerSnapshot = () => EMPTY;
 
-  /** Walked into a place: its tickets, from the start. */
+  /** Walked into a place: its ticket, from the start. */
   attach(office: string | undefined) {
     this.office = office;
     this.readAt = 0;
@@ -56,16 +52,18 @@ class Help {
     void this.refresh(true);
   }
 
-  /** Reads the tickets, unless they were read a moment ago. */
+  /** Is a ticket open here, and is anything in it new? Skipped if asked a moment ago. */
   async refresh(force = false) {
     if (!force && Date.now() - this.readAt < FRESH_MS) return;
     this.readAt = Date.now();
     const office = this.office;
     try {
-      const { tickets } = await api.helpTickets(office);
-      if (office === this.office) this.list(tickets);
+      const { ticket } = await api.helpOpen(office);
+      if (office !== this.office) return;
+      // The one on screen is read as it's shown, whatever this says.
+      this.set({ ticket: ticket && ticket.id === this.state.view?.id ? { ...ticket, unread: 0 } : ticket });
     } catch {
-      // Nothing to show is fine: raising an issue still works.
+      // Nothing to show is fine: writing to the team still works.
     }
   }
 
@@ -73,54 +71,39 @@ class Help {
     this.set({ composing: open });
   }
 
-  /** A new issue; its ticket's id, to open it in Chat. */
-  async raise(body: string): Promise<string> {
-    const { id, tickets } = await api.openTicket({ body, ...(this.office ? { office: this.office } : {}), ...(await context()) });
-    this.list(tickets);
-    return id;
+  goToTicket(go: () => void) {
+    this.toTicket = go;
   }
 
-  /** The ticket on screen, read again: what's new in it is seen now. False when it isn't there for you. */
+  /** The rail's "?" or the phone menu: the open ticket in Chat, or the box to start one. */
+  open() {
+    if (!this.state.ticket || !this.toTicket) return this.compose(!this.state.composing);
+    this.compose(false);
+    this.toTicket();
+  }
+
+  /** Something for the team: added to the open ticket, or the start of one (which notes where it came from). */
+  async say(body: string) {
+    const { id } = await api.sayToHelp({ body, ...(this.office ? { office: this.office } : {}), ...(this.state.ticket ? {} : await context()) });
+    this.set({ ticket: { id, unread: 0 } });
+    if (this.state.view) await this.load(id);
+  }
+
+  /** The ticket on screen, read again (which reads it). False when it isn't there for you. */
   async load(id: string): Promise<boolean> {
-    this.viewing = id;
-    const before = this.state.view?.ticket.id === id ? this.state.view.messages.at(-1)?.id : undefined;
     try {
       const view = await api.helpTicket(id);
-      if (this.viewing !== id) return true;
-      this.set({ view });
-      if (view.messages.at(-1)?.id !== before && !view.messages.at(-1)?.mine) api.readTicket(id).catch(() => undefined);
+      this.set({ view, ticket: this.state.ticket?.id === id ? { ...this.state.ticket, unread: 0 } : this.state.ticket });
       return true;
     } catch (error) {
-      // Gone, or not ours, says the view; a dropped connection just waits for the next look.
+      // A dropped connection just waits for the next look.
       return !(error instanceof ApiError && error.status === 404);
     }
   }
 
-  /** Off screen: the next ticket starts empty rather than showing this one. */
+  /** Off screen: a ticket that was closed meanwhile goes with it. */
   leave() {
-    this.viewing = null;
     this.set({ view: null });
-  }
-
-  async say(id: string, body: string) {
-    try {
-      this.set({ view: await api.sayInTicket(id, { body, ...(await context()) }) });
-      void this.refresh(true);
-    } catch (error) {
-      // Closed while you were writing: show it closed.
-      if (error instanceof ApiError && error.status === 409) void this.load(id);
-      throw error;
-    }
-  }
-
-  private list(tickets: HelpTicket[]) {
-    const shown = tickets.map((one) => {
-      if (one.id !== this.viewing || !one.unread) return one;
-      // On screen but counted: it came in since the last look, so it's read now.
-      api.readTicket(one.id).catch(() => undefined);
-      return { ...one, unread: 0 };
-    });
-    this.set({ tickets: shown, unread: shown.reduce((sum, one) => sum + one.unread, 0) });
   }
 
   private set(next: Partial<HelpState>) {
@@ -135,7 +118,7 @@ export function useHelp(): HelpState {
   return useSyncExternalStore(help.subscribe, help.getSnapshot, help.getServerSnapshot);
 }
 
-/** Where a message was written from, so the team can look into it without asking. */
+/** Where it was written from, so the team can look into it without asking. */
 async function context(): Promise<HelpContext> {
   return {
     page: window.location.pathname,

@@ -2201,14 +2201,14 @@
     "sending": "Lähetetään",
     "error": "Lähetys ei onnistunut. Yritä uudelleen.",
     "slowDown": "Olet lähettänyt paljon viimeisen tunnin aikana. Yritä hetken päästä uudelleen.",
-    "section": "TinyFloor-tuki",
+    "support": "TinyFloor-tuki",
     "open": "Avoin",
     "closed": "Suljettu",
     "message": "Viesti TinyFloor-tiimille",
     "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
     "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
     "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
-    "gone": "Tätä tikettiä ei ole enää."
+    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna."
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",

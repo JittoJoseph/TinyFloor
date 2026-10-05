@@ -14,38 +14,38 @@ import { Logo } from "./Logo";
 import { usePlace } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
 import { Composer } from "./chat/Composer";
+import { HELP_TRIGGER } from "./HelpCompose";
 
-/** How often an open ticket is read again, so the team's answer turns up while you're on it. */
-const OPEN_EVERY_MS = 5_000;
+/** How often the ticket is read again, so the team's answer turns up while you're on it. */
+const EVERY_MS = 5_000;
 
 /**
- * A ticket in Chat (docs/19): the same conversation as a channel, with the
- * team's answers under the TinyFloor mark. Anyone who can see it can add to
- * it until the team closes it; then it says so and takes nothing more.
+ * TinyFloor support in Chat (docs/19): the ticket with the team, as the same
+ * conversation as a channel, with the team's answers under the TinyFloor
+ * mark. Anyone who can see it can add to it while it's open. Closed while
+ * you're on it, it says so; with none open, it offers to start one.
  */
-export function HelpTicket({ id }: { id: string }) {
+export function HelpTicket() {
   const t = useTranslations("help");
   const ts = useTranslations("shell");
   const router = useRouter();
   const place = usePlace();
   const { user } = useAuth();
-  const { view } = useHelp();
-  const [gone, setGone] = useState(false);
+  const { ticket, view } = useHelp();
   const [failed, setFailed] = useState<"error" | "slowDown" | null>(null);
-  const shown = view?.ticket.id === id ? view : null;
+  // The open ticket, or the one already on screen (which stays if it's closed meanwhile).
+  const id = view?.id ?? ticket?.id;
+  const closed = view?.status === "closed";
 
   useEffect(() => {
-    let live = true;
-    void help.load(id).then((found) => live && !found && setGone(true));
-    const timer = setInterval(() => document.visibilityState === "visible" && void help.load(id), OPEN_EVERY_MS);
-    return () => {
-      live = false;
-      clearInterval(timer);
-      help.leave();
-    };
-  }, [id]);
+    if (!id || closed) return;
+    void help.load(id);
+    const timer = setInterval(() => document.visibilityState === "visible" && void help.load(id), EVERY_MS);
+    return () => clearInterval(timer);
+  }, [id, closed]);
+  useEffect(() => () => help.leave(), []);
 
-  const lines: Line[] = (shown?.messages ?? []).map((message) => ({
+  const lines: Line[] = (view?.messages ?? []).map((message) => ({
     id: String(message.id),
     author: message.team ? "tinyfloor" : (message.author ?? `gone-${message.id}`),
     authorName: message.name,
@@ -53,7 +53,6 @@ export function HelpTicket({ id }: { id: string }) {
     at: message.at,
     ...(message.team ? { mark: <Logo size={36} /> } : {}),
   }));
-  const closed = shown?.ticket.status === "closed";
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
@@ -66,8 +65,8 @@ export function HelpTicket({ id }: { id: string }) {
           icon={<ArrowLeft className="rtl:rotate-180" />}
         />
         <Logo size={22} className="shrink-0" />
-        <span className="truncate text-[15px] font-semibold text-foreground">{shown?.ticket.title ?? t("section")}</span>
-        {shown && (
+        <span className="truncate text-[15px] font-semibold text-foreground">{t("support")}</span>
+        {view && (
           <span
             className={cn(
               "shrink-0 rounded-full px-2 py-0.5 text-[11.5px] font-medium",
@@ -79,25 +78,33 @@ export function HelpTicket({ id }: { id: string }) {
         )}
       </header>
 
-      {gone ? (
-        <div className="flex flex-1 items-center justify-center p-8 text-center">
-          <p className="max-w-sm text-[14px] leading-relaxed text-muted-foreground">{t("gone")}</p>
+      {!id ? (
+        <div className="flex flex-1 flex-col items-center justify-center gap-4 p-8 text-center">
+          <p className="max-w-sm text-[14px] leading-relaxed text-muted-foreground">{t("nothingOpen")}</p>
+          <button
+            type="button"
+            {...{ [HELP_TRIGGER]: "" }}
+            onClick={() => help.compose(true)}
+            className="h-9 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background"
+          >
+            {t("title")}
+          </button>
         </div>
-      ) : !shown ? (
+      ) : !view ? (
         <div className="flex flex-1 items-center justify-center text-muted-foreground">
           <Loader variant="dots" size={18} />
         </div>
       ) : (
         <>
           <Conversation
-            key={`ticket-${id}`}
+            key={`support-${view.id}`}
             lines={lines}
             me={user?.id ?? ""}
             more={false}
             intro={
               <ConversationIntro
                 mark={<Logo size={56} />}
-                title={shown.ticket.title}
+                title={t("support")}
                 body={place.kind === "office" ? t("ticketOffice", { office: place.name }) : t("ticketLobby")}
               />
             }
@@ -106,13 +113,13 @@ export function HelpTicket({ id }: { id: string }) {
             <p className="shrink-0 px-5 pb-5 pt-2 text-center text-[13px] text-muted-foreground sm:px-6">{t("closedNote")}</p>
           ) : (
             <Composer
-              key={`ticket-composer-${id}`}
+              key={`support-composer-${view.id}`}
               placeholder={t("message")}
               attach={false}
               note={failed ? t(failed) : null}
               onSend={(text) => {
                 setFailed(null);
-                help.say(id, text).catch((error) => setFailed(error instanceof ApiError && error.status === 429 ? "slowDown" : "error"));
+                help.say(text).catch((error) => setFailed(error instanceof ApiError && error.status === 429 ? "slowDown" : "error"));
               }}
             />
           )}

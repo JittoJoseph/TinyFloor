@@ -2201,14 +2201,14 @@
     "sending": "Enviando",
     "error": "Não foi enviado. Tente de novo.",
     "slowDown": "Você enviou muito na última hora. Tente de novo daqui a pouco.",
-    "section": "Suporte TinyFloor",
+    "support": "Suporte TinyFloor",
     "open": "Aberto",
     "closed": "Fechado",
     "message": "Mensagem para a equipe do TinyFloor",
     "closedNote": "A equipe do TinyFloor fechou isto. Ainda com problema? Fale com a gente de novo em Ajuda e feedback.",
     "ticketOffice": "Todos em {office} podem acompanhar e adicionar algo. A equipe do TinyFloor responde aqui.",
     "ticketLobby": "Só você e a equipe do TinyFloor veem isto. Respondemos aqui.",
-    "gone": "Este ticket não existe mais."
+    "nothingOpen": "Não há nada aberto com a equipe do TinyFloor agora."
   },
   "dashboard": {
     "newOffice": "Novo escritório",

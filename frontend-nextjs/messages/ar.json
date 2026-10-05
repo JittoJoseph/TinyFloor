@@ -2201,14 +2201,14 @@
     "sending": "جارٍ الإرسال",
     "error": "لم يُرسل. حاول مرة أخرى.",
     "slowDown": "أرسلت الكثير خلال الساعة الماضية. حاول مرة أخرى بعد قليل.",
-    "section": "دعم TinyFloor",
+    "support": "دعم TinyFloor",
     "open": "مفتوحة",
     "closed": "مغلقة",
     "message": "راسل فريق TinyFloor",
     "closedNote": "أغلق فريق TinyFloor هذه التذكرة. ما زالت المشكلة قائمة؟ أخبرنا مجددًا من المساعدة والملاحظات.",
     "ticketOffice": "يمكن لكل من في {office} متابعة هذا والإضافة إليه. يرد فريق TinyFloor هنا.",
     "ticketLobby": "لا يرى هذا إلا أنت وفريق TinyFloor. نرد هنا.",
-    "gone": "لم تعد هذه التذكرة موجودة."
+    "nothingOpen": "لا يوجد شيء مفتوح مع فريق TinyFloor الآن."
   },
   "dashboard": {
     "newOffice": "مكتب جديد",

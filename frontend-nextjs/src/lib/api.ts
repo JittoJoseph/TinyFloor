@@ -152,15 +152,10 @@ export interface AdminMember {
   owner: number;
 }
 
-/** Help and feedback (docs/19): an issue raised with the TinyFloor team, as it shows in Chat. */
+/** Help and feedback (docs/19): the open ticket with the TinyFloor team where you are. */
 export interface HelpTicket {
   id: string;
-  /** The first line of what was said. */
-  title: string;
-  status: "open" | "closed";
-  createdAt: number;
-  updatedAt: number;
-  /** New since you last opened it; nothing until you have. */
+  /** New since you last had it on screen; nothing until you have. */
   unread: number;
 }
 
@@ -176,56 +171,46 @@ export interface HelpMessage {
 }
 
 export interface HelpTicketView {
-  ticket: Pick<HelpTicket, "id" | "title" | "status" | "createdAt">;
+  id: string;
+  status: "open" | "closed";
   messages: HelpMessage[];
 }
 
-/** A place with tickets, in the admin view: an office, a demo office visitor, or a closed office's ticket. */
-export interface AdminHelpPlace {
-  key: string;
+/** A ticket in the admin view's list. */
+export interface AdminHelpTicket {
+  id: string;
+  /** The office's name then, or "Demo office". */
   place: string;
   officeId: string | null;
   lobby: boolean;
-  /** For a demo office visitor: their name. */
-  visitor: string | null;
-  open: number;
-  tickets: number;
-  /** Messages from them the team hasn't read. */
-  unread: number;
-  lastAt: number;
-}
-
-/** A message as the admin view shows it, with where it was written from. */
-export interface AdminHelpMessage {
-  id: number;
-  team: boolean;
-  userId: string | null;
+  /** Who opened it. */
   name: string;
-  email: string | null;
-  body: string;
-  page: string | null;
-  locale: string | null;
-  userAgent: string | null;
-  screen: string | null;
-  country: string | null;
-  replay: string | null;
-  at: number;
-}
-
-export interface AdminHelpTicket {
-  id: string;
-  title: string;
-  status: "open" | "closed";
   createdAt: number;
   updatedAt: number;
   closedAt: number | null;
-  /** The last message the team had read when it was opened. */
-  seenId: number;
+  /** Messages from them the team hasn't read. */
   unread: number;
-  messages: AdminHelpMessage[];
+  /** The latest message, shortened. */
+  last: string;
 }
 
-/** Where something said through Help and feedback was written from. */
+/** A ticket opened in the admin view: who opened it, from where, and everything said. */
+export interface AdminHelpDetail {
+  ticket: Omit<AdminHelpTicket, "updatedAt" | "unread" | "last"> & {
+    userId: string | null;
+    email: string | null;
+    page: string | null;
+    userAgent: string | null;
+    screen: string | null;
+    locale: string | null;
+    country: string | null;
+    replay: string | null;
+    status: "open" | "closed";
+  };
+  messages: HelpMessage[];
+}
+
+/** Where a ticket was opened from, for the team. */
 export interface HelpContext {
   page: string;
   locale: string;
@@ -369,18 +354,20 @@ export const api = {
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
   adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
-  adminHelp: () => get<{ places: AdminHelpPlace[] }>("/admin/help"),
-  adminHelpPlace: (key: string) => get<{ tickets: AdminHelpTicket[] }>(`/admin/help/place?${new URLSearchParams({ key })}`),
-  adminHelpRead: (key: string) => post<{ ok: true }>("/admin/help/read", { key }),
+  adminHelp: (params: { status: "open" | "closed"; page?: number }) =>
+    get<AdminPage & { tickets: AdminHelpTicket[] }>(
+      `/admin/help?${new URLSearchParams({ status: params.status, ...(params.page ? { page: String(params.page) } : {}) })}`,
+    ),
+  adminHelpTicket: (ticketId: string) => get<AdminHelpDetail>(`/admin/help/${id(ticketId)}`),
   adminHelpReply: (ticketId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/messages`, { body }),
-  adminHelpStatus: (ticketId: string, status: "open" | "closed") => patch<{ ok: true }>(`/admin/help/${id(ticketId)}`, { status }),
+  adminHelpClose: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/close`),
 
-  // Help and feedback: issues raised with the team, as tickets in Chat
-  helpTickets: (office?: string) => get<{ tickets: HelpTicket[] }>(`/help${office ? `?${new URLSearchParams({ office })}` : ""}`),
-  openTicket: (body: { body: string; office?: string } & HelpContext) => post<{ id: string; tickets: HelpTicket[] }>("/help", body),
+  // Help and feedback: the ticket with the team where you are (an office, or the demo office)
+  helpOpen: (office?: string) => get<{ ticket: HelpTicket | null }>(`/help${office ? `?${new URLSearchParams({ office })}` : ""}`),
+  /** Adds to the open ticket, or opens one. */
+  sayToHelp: (body: { body: string; office?: string } & Partial<HelpContext>) => post<{ id: string }>("/help", body),
+  /** A ticket on screen; reading it makes it read. */
   helpTicket: (ticketId: string) => get<HelpTicketView>(`/help/${id(ticketId)}`),
-  sayInTicket: (ticketId: string, body: { body: string } & HelpContext) => post<HelpTicketView>(`/help/${id(ticketId)}/messages`, body),
-  readTicket: (ticketId: string) => post<{ ok: true }>(`/help/${id(ticketId)}/read`),
 
   // Offices
   createOffice: (name: string) => post<{ office: Office }>("/offices", { name }),

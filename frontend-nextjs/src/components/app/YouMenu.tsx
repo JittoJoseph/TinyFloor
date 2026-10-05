@@ -152,7 +152,7 @@ export function YouMenu({
         </>
       )}
       {helpHere && (
-        <MenuItem icon={<HelpCircle />} onSelect={() => help.compose(true)}>
+        <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
           {tHelp("title")}
         </MenuItem>
       )}

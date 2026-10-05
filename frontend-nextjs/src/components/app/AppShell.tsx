@@ -198,7 +198,7 @@ function RailItem({
   );
 }
 
-/** Help and feedback, among the quiet things at the rail's foot: it opens the box beside it. Answers come in Chat. */
+/** Help and feedback, among the quiet things at the rail's foot: the box beside it, or the open ticket in Chat. */
 function HelpRailButton() {
   const t = useTranslations("help");
   const { composing } = useHelp();
@@ -209,7 +209,7 @@ function HelpRailButton() {
         aria-label={t("title")}
         aria-expanded={composing}
         {...{ [HELP_TRIGGER]: "" }}
-        onClick={() => help.compose(!composing)}
+        onClick={() => help.open()}
         className="group relative flex w-full cursor-pointer flex-col items-center outline-none"
       >
         <span

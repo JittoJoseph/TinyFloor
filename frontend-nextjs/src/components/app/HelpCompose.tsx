@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { X } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { ApiError } from "@/lib/api";
-import { help, ticketChannel, useHelp } from "@/lib/help";
+import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { usePlace } from "./place";
@@ -18,9 +18,9 @@ const BACKGROUND_EVERY_MS = 120_000;
 /**
  * Help and feedback's way in (docs/19): a small card beside the rail's "?"
  * (above the bar, on a phone), with no backdrop and nothing to wait for. One
- * box to say what's wrong; sending it opens the new ticket in Chat, where
- * the team answers. Also keeps the place's tickets fresh in the background,
- * for the count on Chat.
+ * box to say what's wrong; sending it opens the ticket in Chat, where the
+ * team answers. Also keeps the place's ticket fresh in the background, for
+ * the count on Chat.
  */
 export function HelpCompose() {
   const t = useTranslations("help");
@@ -36,6 +36,9 @@ export function HelpCompose() {
   const office = place.kind === "office" ? place.id : undefined;
 
   useEffect(() => help.attach(office), [office]);
+  // The rail's "?" and the phone menu: with a ticket open, it's in Chat.
+  const supportPath = place.paths.chat(SUPPORT_CHANNEL);
+  useEffect(() => help.goToTicket(() => router.push(supportPath)), [router, supportPath]);
 
   // Now and then, and on coming back to the tab, only while it's in view.
   useEffect(() => {
@@ -70,10 +73,10 @@ export function HelpCompose() {
     setBusy(true);
     setFailed(null);
     try {
-      const id = await help.raise(text);
+      await help.say(text);
       setBody("");
       help.compose(false);
-      router.push(place.paths.chat(ticketChannel(id)));
+      router.push(place.paths.chat(SUPPORT_CHANNEL));
     } catch (error) {
       setFailed(error instanceof ApiError && error.status === 429 ? "slowDown" : "error");
     } finally {

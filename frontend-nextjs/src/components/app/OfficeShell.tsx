@@ -77,8 +77,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   // Invite on the floor shares the office's one link; until it has loaded, it opens People.
   const inviteLink = useInviteLink(read ? officeId : undefined);
   const { unread } = useChat();
-  // Help and feedback's tickets live in Chat, so what's new in them counts there too.
-  const { unread: helpUnread } = useHelp();
+  // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
+  const helpUnread = useHelp().ticket?.unread ?? 0;
   const { meetings: meetingList } = useMeetings();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;

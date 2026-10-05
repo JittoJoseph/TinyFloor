@@ -41,14 +41,14 @@ import { Conversation, ConversationIntro, type Line } from "./chat/Conversation"
 import { Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "./Logo";
-import { help, ticketChannel, ticketOf, useHelp } from "@/lib/help";
+import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
  * office and in the lobby. Anyone can edit and unsend what they said. In the
  * lobby direct messages last only while both of you are there, and what only
  * an office can do (making channels, images) is all here and asks for an office.
- * Issues raised with the TinyFloor team sit at the bottom as tickets (docs/19).
+ * A ticket with the TinyFloor team, while one is open, sits at the very bottom (docs/19).
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -66,8 +66,8 @@ export function ChatView({ channel }: { channel?: string }) {
   const noteTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const open = channel ?? GENERAL_CHANNEL;
-  const ticket = ticketOf(channel);
-  const { tickets } = useHelp();
+  const support = open === SUPPORT_CHANNEL;
+  const { ticket, view: ticketView } = useHelp();
   // Who you are is known from your session before the chat has connected, so a
   // direct message opened in that first moment still has both its people.
   const me = user?.id ?? state.me;
@@ -88,14 +88,14 @@ export function ChatView({ channel }: { channel?: string }) {
 
   // Reading a conversation marks it read, and asks for its history.
   useEffect(() => {
-    if (ticket) return;
+    if (support) return;
     chat.watch(open);
     return () => chat.watch(null);
-  }, [open, ticket, state.ready]);
+  }, [open, support, state.ready]);
   useEffect(() => {
-    if (!ticket && state.ready && !state.history[open]) chat.older(open);
-  }, [ticket, state.ready, state.history, open]);
-  // The tickets are read often while Chat is open, so the team's answers turn up here.
+    if (!support && state.ready && !state.history[open]) chat.older(open);
+  }, [support, state.ready, state.history, open]);
+  // The ticket is read often while Chat is open, so the team's answers turn up here.
   useEffect(() => {
     void help.refresh(true);
     const timer = setInterval(() => document.visibilityState === "visible" && void help.refresh(true), 15_000);
@@ -294,31 +294,28 @@ export function ChatView({ channel }: { channel?: string }) {
                 </Link>
               )}
             </Section>
-
-            {!!tickets?.length && (
-              <Section title={th("section")}>
-                {tickets.map((one) => (
-                  <Row
-                    key={one.id}
-                    href={place.paths.chat(ticketChannel(one.id))}
-                    active={ticket === one.id}
-                    unread={one.unread}
-                    icon={<Logo size={18} />}
-                    label={one.title}
-                    trailing={one.status === "closed" ? <span className="text-[11px] text-faint">{th("closed")}</span> : undefined}
-                  />
-                ))}
-              </Section>
-            )}
           </nav>
+
+          {/* The ticket with the team stays out of the way, at the very bottom, while one is open. */}
+          {(ticket || (support && ticketView)) && (
+            <div className="shrink-0 border-t border-border px-2 py-2">
+              <Row
+                href={place.paths.chat(SUPPORT_CHANNEL)}
+                active={support}
+                unread={ticket?.unread ?? 0}
+                icon={<Logo size={18} />}
+                label={th("support")}
+              />
+            </div>
+          )}
 
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
           <CommandPalette items={items} open={jump} onOpenChange={setJump} placeholder={t("jumpTo")} emptyMessage={t("noMatch")} />
         </>
       }
     >
-      {ticket ? (
-        <HelpTicket id={ticket} />
+      {support ? (
+        <HelpTicket />
       ) : (
       /* The whole conversation takes a dropped image, the way any chat does. */
       <div

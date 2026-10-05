@@ -2201,14 +2201,14 @@
     "sending": "Skickar",
     "error": "Det skickades inte. Försök igen.",
     "slowDown": "Du har skickat mycket den senaste timmen. Försök igen lite senare.",
-    "section": "TinyFloor-support",
+    "support": "TinyFloor-support",
     "open": "Öppen",
     "closed": "Stängd",
     "message": "Skriv till TinyFloor-teamet",
     "closedNote": "TinyFloor-teamet har stängt det här. Fortfarande fast? Skriv till oss igen via Hjälp och feedback.",
     "ticketOffice": "Alla i {office} kan följa det här och lägga till något. TinyFloor-teamet svarar här.",
     "ticketLobby": "Bara du och TinyFloor-teamet ser det här. Vi svarar här.",
-    "gone": "Det här ärendet finns inte längre."
+    "nothingOpen": "Inget är öppet hos TinyFloor-teamet just nu."
   },
   "dashboard": {
     "newOffice": "Nytt kontor",

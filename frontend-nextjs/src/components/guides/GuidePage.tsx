@@ -5,12 +5,33 @@ import { GUIDES, GUIDES_PATH, guidePath, readingMinutes, type Guide, type GuideC
 import { landingByKey } from "@/lib/landings";
 import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
+import { AUTHOR } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
 
 /** The column a guide is read in: narrow enough for long lines of text to stay easy. */
 const READ = "mx-auto w-full max-w-[44rem]";
+
+/** "By Jitto Joseph" in the page's language, the name linking to LinkedIn wherever the language puts it. */
+function byline(text: string) {
+  const at = text.indexOf(AUTHOR.name);
+  if (at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <a
+        href={AUTHOR.linkedin}
+        target="_blank"
+        rel="author noopener noreferrer"
+        className="text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground"
+      >
+        {AUTHOR.name}
+      </a>
+      {text.slice(at + AUTHOR.name.length)}
+    </>
+  );
+}
 
 const dateIn = (locale: string, date: string) =>
   new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
@@ -73,7 +94,7 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
             </h1>
             <p className={cn(LEAD, "mt-7")}>{copy.intro}</p>
             <p className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-muted-foreground">
-              <span>{t("by", { name: "Jitto Joseph" })}</span>
+              <span>{byline(t("by", { name: AUTHOR.name }))}</span>
               <span aria-hidden>·</span>
               <span>{t("minutes", { count: minutes })}</span>
               <span aria-hidden>·</span>

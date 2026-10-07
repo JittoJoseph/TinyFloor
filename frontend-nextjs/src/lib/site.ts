@@ -8,6 +8,14 @@ export const SOCIALS = {
   github: "https://github.com/JittoJoseph/TinyFloor",
 } as const;
 
+/** Who writes the guides; the byline links to LinkedIn. */
+export const AUTHOR = {
+  name: "Jitto Joseph",
+  url: "https://www.jittojoseph.xyz",
+  linkedin: "https://www.linkedin.com/in/jittojoseph17/",
+  github: "https://github.com/JittoJoseph",
+} as const;
+
 /** Where people write to us: support, privacy, billing and refunds alike. */
 export const SUPPORT_EMAIL = "support@tinyfloor.com";
 

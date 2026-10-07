@@ -19,7 +19,7 @@ export interface Guide {
   pages: LandingKey[];
 }
 
-/** Guides for remote team leads (docs/18). Copy lives under `guides.pages.<key>`. */
+/** Guides for remote team leads (docs/18). Their words are in messages/guides/<locale>.json, keyed by `key` (lib/guide-copy). */
 export const GUIDES: Guide[] = [
   { slug: "virtual-team-building-activities", key: "teamBuilding", published: "2026-10-04", updated: "2026-10-04", pages: ["watercooler", "whiteboard", "virtualOffice"] },
   { slug: "games-for-virtual-meetings", key: "meetingGames", published: "2026-10-04", updated: "2026-10-04", pages: ["meetingRoom", "whiteboard", "standup"] },
@@ -38,7 +38,7 @@ export const guidePath = (guide: Guide) => `${GUIDES_PATH}/${guide.slug}`;
 
 export const guideBySlug = (slug: string) => GUIDES.find((guide) => guide.slug === slug);
 
-/** A guide's copy, as the message files hold it. */
+/** A guide's copy, as messages/guides/<locale>.json holds it. */
 export interface GuideCopy {
   label: string;
   meta: { title: string; description: string };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { GUIDES, GUIDES_PATH } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
 import { pageMetadata } from "@/lib/seo";
 import { pageGraph } from "@/lib/structured-data";
 import { emphasised } from "@/lib/words";
@@ -23,6 +24,7 @@ export async function GuidesHub({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
   const t = await getTranslations("guides");
+  const copies = await guideCopies(locale);
 
   return (
     <MarketingShell path={GUIDES_PATH}>
@@ -45,7 +47,7 @@ export async function GuidesHub({ params }: Props) {
         <ul className="mx-auto mt-14 grid max-w-[1040px] gap-3 sm:mt-20 md:grid-cols-2">
           {GUIDES.map((guide) => (
             <li key={guide.slug}>
-              <GuideCard guide={guide} title={t(`pages.${guide.key}.label`)} description={t(`pages.${guide.key}.meta.description`)} />
+              <GuideCard guide={guide} title={copies[guide.key].label} description={copies[guide.key].meta.description} />
             </li>
           ))}
         </ul>

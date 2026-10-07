@@ -1,17 +1,18 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, Smartphone } from "@/components/ui/icons";
+import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, License, Smartphone, SourceCode } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, MEETING } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
+import { SOCIALS } from "@/lib/site";
 import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
 import { PlanAction } from "./PlanAction";
 import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
-import { SiteFooter } from "./SiteFooter";
+import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "./SiteTheme";
 
 /*
@@ -350,6 +351,50 @@ export function PlanCards({ className }: { className?: string }) {
  * The questions people ask, as a plain list that opens without a script, and
  * a way to go and look. The page puts the same questions in its FAQPage schema.
  */
+/** The chips under the plans: the ask first, then what the code is. */
+const SOURCE_CHIP = "inline-flex h-10 items-center gap-2.5 rounded-[12px] ps-2.5 pe-3.5 text-[14.5px] font-medium tracking-[-0.01em] transition-colors";
+const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center rounded-[6px] shadow-[inset_0_-1px_0_rgb(0_0_0/0.18)]";
+
+/**
+ * The code is open, said as three small chips on a hairline: star it on
+ * GitHub, open source, the licence. It carries the #source anchor.
+ */
+export function OpenSource() {
+  const t = useTranslations("homepage.source");
+  const chips = [
+    { label: t("star"), href: SOCIALS.github, mark: <GitHubMark className="size-3.5" />, tint: "bg-foreground text-background", lead: true },
+    { label: t("open"), href: SOCIALS.github, mark: <SourceCode className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#2fbf71] text-white" },
+    { label: "AGPL-3.0", href: `${SOCIALS.github}/blob/master/LICENSE`, mark: <License className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#8b5cf6] text-white" },
+  ];
+  return (
+    <section id="source" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
+      <div className="relative flex justify-center">
+        <div aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-border" />
+        <ul className="relative flex flex-wrap justify-center gap-2 bg-background px-3 sm:gap-2.5 sm:px-5">
+          {chips.map((chip) => (
+            <li key={chip.label}>
+              <a
+                href={chip.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  SOURCE_CHIP,
+                  chip.lead
+                    ? "bg-card text-foreground shadow-[0_0_0_1px_var(--color-border),0_1px_2px_rgb(0_0_0/0.05)] hover:bg-card/70"
+                    : "bg-foreground/[0.05] text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground",
+                )}
+              >
+                <span className={cn(SOURCE_MARK, chip.tint)}>{chip.mark}</span>
+                <span dir="auto">{chip.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export function Questions({ items, title }: { items: Array<{ q: string; a: string }>; title?: ReactNode }) {
   const t = useTranslations("homepage.faq");
   return (

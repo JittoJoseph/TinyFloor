@@ -75,8 +75,11 @@ Their backlinks come the same way: other blogs link to useful guides.
 
 ## Guides
 
-`src/lib/guides.ts` lists them; copy is under `guides.pages.<key>` in the
-message files; `GuidePage` renders them in one reading column.
+`src/lib/guides.ts` lists them; their words are in
+`messages/guides/<locale>.json`, keyed by guide, and `lib/guide-copy.ts` reads
+them, so only the guide pages, their cards and llms.txt load them. The nav,
+footer and hub strings stay under `guides` in the main message files.
+`GuidePage` renders a guide in one reading column.
 
 - Built: virtual team building activities, games for virtual meetings, how
   to build remote team culture, remote team communication, what is proximity

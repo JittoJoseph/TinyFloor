@@ -52,6 +52,7 @@ import {
   Link01Icon,
   LinkSquare02Icon,
   Loading03Icon,
+  LicenseIcon,
   LockIcon,
   Logout01Icon,
   Mail01Icon,
@@ -87,6 +88,7 @@ import {
   SmartPhone01Icon,
   SmileIcon,
   SmilePlusIcon,
+  SourceCodeIcon,
   Sun03Icon,
   Tick02Icon,
   TimerOffIcon,
@@ -175,6 +177,7 @@ export const LayoutGrid = icon(GridViewIcon, "LayoutGrid");
 export const Link2 = icon(Link01Icon, "Link2");
 export const Loader2 = icon(Loading03Icon, "Loader2");
 export const LoaderCircle = icon(Loading03Icon, "LoaderCircle");
+export const License = icon(LicenseIcon, "License");
 export const Lock = icon(LockIcon, "Lock");
 export const LogOut = icon(Logout01Icon, "LogOut");
 export const Mail = icon(Mail01Icon, "Mail");
@@ -222,6 +225,7 @@ export const SlidersHorizontal = icon(SlidersHorizontalIcon, "SlidersHorizontal"
 export const Smartphone = icon(SmartPhone01Icon, "Smartphone");
 export const Smile = icon(SmileIcon, "Smile");
 export const SmilePlus = icon(SmilePlusIcon, "SmilePlus");
+export const SourceCode = icon(SourceCodeIcon, "SourceCode");
 export const SquarePen = icon(PencilEdit02Icon, "SquarePen");
 export const Sun = icon(Sun03Icon, "Sun");
 export const TimerOff = icon(TimerOffIcon, "TimerOff");

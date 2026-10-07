@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/lib/i18n/routing";
 import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingGroup, type LandingKey } from "@/lib/landings";
-import { GUIDES, GUIDES_PATH, guidePath, type GuideCopy } from "@/lib/guides";
+import { GUIDES, GUIDES_PATH, guidePath, type GuideKey } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
 import { PLANS } from "@/lib/plans";
 import { SUPPORT_EMAIL } from "@/lib/site";
 import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
@@ -62,7 +63,8 @@ async function common() {
     ...MORE_FEATURES.map((key) => text(`home.more.items.${key}.title`)),
   ];
   const faq = raw<Array<{ q: string; a: string }>>("faq.items");
-  const guide = (key: string) => raw<GuideCopy>(`guides.pages.${key}`);
+  const english = await guideCopies("en");
+  const guide = (key: GuideKey) => english[key];
   const guides: Link[] = [
     [text("guides.hub.meta.title"), GUIDES_PATH, text("guides.hub.meta.description")],
     ...GUIDES.map((one): Link => [guide(one.key).meta.title, guidePath(one), guide(one.key).meta.description]),
@@ -185,7 +187,7 @@ export async function llmsFullTxt(): Promise<string> {
   };
 
   /** A guide, section by section; numbered items count on through the guide, as on the page. */
-  const guidePage = (key: string, path: string) => {
+  const guidePage = (key: GuideKey, path: string) => {
     const copy = guide(key);
     let number = 0;
     return [

@@ -135,6 +135,42 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
                     </ul>
                   )
                 )}
+                {section.table && (
+                  <figure className="mt-8">
+                    {/* Wide on a phone: the table scrolls inside its card rather than the page. */}
+                    <div className="overflow-x-auto rounded-[20px] bg-muted/80">
+                      <table className="w-full min-w-[34rem] border-collapse text-start text-[14.5px] leading-[1.5]">
+                        <thead>
+                          <tr>
+                            {section.table.head.map((cell) => (
+                              <th key={cell} scope="col" className="px-4 pb-2.5 pt-4 text-start text-[12.5px] font-medium text-muted-foreground first:ps-5 last:pe-5">
+                                {cell}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row) => (
+                            <tr key={row[0]} className="border-t border-foreground/[0.06]">
+                              {row.map((cell, column) =>
+                                column === 0 ? (
+                                  <th key={column} scope="row" className="whitespace-nowrap px-4 py-3 text-start font-semibold text-foreground first:ps-5">
+                                    {cell}
+                                  </th>
+                                ) : (
+                                  <td key={column} className="px-4 py-3 text-foreground/80 last:pe-5">
+                                    {cell}
+                                  </td>
+                                ),
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {section.table.note && <figcaption className="mt-3 text-[13px] leading-[1.55] text-faint">{section.table.note}</figcaption>}
+                  </figure>
+                )}
               </section>
             ))}
 

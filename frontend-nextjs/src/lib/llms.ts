@@ -203,6 +203,15 @@ export async function llmsFullTxt(): Promise<string> {
           item.detail ? `${++number}. **${item.title}** (${item.detail}): ${item.body}` : `- **${item.title}:** ${item.body}`,
         ),
         ...(section.items ? [""] : []),
+        ...(section.table
+          ? [
+              `| ${section.table.head.join(" | ")} |`,
+              `|${section.table.head.map(() => "---").join("|")}|`,
+              ...section.table.rows.map((row) => `| ${row.join(" | ")} |`),
+              "",
+              ...(section.table.note ? [section.table.note, ""] : []),
+            ]
+          : []),
       ]),
       `#### ${copy.fit.title}`,
       "",

@@ -148,6 +148,8 @@ const GUIDES = [
   "how-to-build-remote-team-culture",
   "remote-team-communication",
   "what-is-proximity-chat",
+  "best-virtual-office-software",
+  "gather-pricing",
 ];
 // SLUGS=a,b redraws just those pages (and guides, as guide-<slug>).
 const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;

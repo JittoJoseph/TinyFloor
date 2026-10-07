@@ -2639,7 +2639,7 @@
     "hub": {
       "meta": {
         "title": "Guider för dig som leder distansteam",
-        "description": "Praktiska guider för dig som leder distansteam: teambuilding, spel för möten, kultur, kommunikation och hur närhetschatt fungerar."
+        "description": "Praktiska guider för dig som leder distansteam: teambuilding, lekar för möten, kultur, kommunikation, närhetschatt och hur du väljer programvara för virtuella kontor."
       },
       "title": "Guider för <em>distansteam.</em>",
       "body": "Praktiska, korta och skrivna av folk som själva jobbar på distans. Ta det som hjälper och hoppa över resten."
@@ -3344,6 +3344,379 @@
           {
             "q": "Kan man använda närhetschatt på jobbet?",
             "a": "Ja. Virtuella kontor som TinyFloor, Gather och SpatialChat använder det så att distansteam kan prata genom att gå fram till varandra i stället för att boka samtal."
+          }
+        ]
+      },
+      "bestVirtualOffice": {
+        "label": "Bästa programvaran för virtuellt kontor",
+        "meta": {
+          "title": "Bästa programvaran för virtuellt kontor 2026, ärligt jämförd",
+          "description": "Nio virtuella kontor för distansteam jämförda på pris, gratisplan och vad var och en är bäst på, med vad ett team på 10 betalar i månaden."
+        },
+        "title": "Bästa programvaran för virtuellt kontor <em>2026, ärligt jämförd.</em>",
+        "intro": "Ett virtuellt kontor ger ett distansteam en plats att vara på hela dagen: du ser vem som är där och pratar med någon genom att gå fram till hen, inte genom att skicka en länk. Här är de nio som är värda att titta på, vad de kostar och vilka de passar. Vi gör TinyFloor, så vi är inte neutrala; vi säger var varje produkt är bättre än vår, och varje pris kommer från produktens egen prissida, kontrollerad i oktober 2026.",
+        "sections": [
+          {
+            "title": "Vad ett virtuellt kontor är",
+            "body": [
+              "Ett virtuellt kontor är ett delat utrymme i 2D eller 3D där alla i teamet har en figur eller en videoruta. Utrymmet är öppet medan alla jobbar, så du ser med en blick vem som är där, vem som är upptagen och vem som sitter i samtal.",
+              "Samtal börjar som på ett kontor: du går fram till någon och pratar. De flesta virtuella kontor har också mötesrum, skärmdelning och chatt, så ett litet team kan vara där större delen av dagen."
+            ]
+          },
+          {
+            "title": "Så väljer du",
+            "items": [
+              {
+                "title": "Hur du betalar",
+                "body": "De flesta tar betalt per person och månad, och det växer med teamet. Några tar betalt per kontor eller per utrymme."
+              },
+              {
+                "title": "Gratisplanen",
+                "body": "Titta på gränserna: hur många personer, hur många timmar om dagen och hur länge ett möte får vara."
+              },
+              {
+                "title": "Webbläsare eller app",
+                "body": "Ett kontor i webbläsaren behöver inte installeras, vilket spelar roll för gäster och nyanställda. En datorapp kan kännas smidigare på din egen dator."
+              },
+              {
+                "title": "Hur ett samtal börjar",
+                "body": "Med spatialt ljud hörs du så fort du är nära. Med samtal när du går fram hörs ingenting förrän någon startar samtalet, vilket är lugnare att jobba i."
+              },
+              {
+                "title": "Vad du använder varje dag",
+                "body": "Samtal, ett mötesrum, chatt och skärmdelning är det de flesta team använder. Inspelningar, AI-anteckningar och kartredigerare hjälper vissa team och kostar oftast mer."
+              }
+            ]
+          },
+          {
+            "title": "De nio som är värda att titta på",
+            "items": [
+              {
+                "title": "TinyFloor",
+                "detail": "Gratis för 3 personer · 19 $ i månaden för 10, 49 $ för 25",
+                "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Inga inspelningar, AI-anteckningar eller kartredigerare, och ett kontor rymmer högst 25 personer."
+              },
+              {
+                "title": "Gather",
+                "detail": "Ingen gratisplan · 12 $ per medlem i månaden vid årsbetalning, 15 $ per månad",
+                "body": "Det mest kända virtuella kontoret och det mest kompletta: ett kontor du designar själv, inspelning och transkribering, integrationer med Google Calendar, GitHub och Spotify, och gäster. Slutade med gratisplanen 2025, så för ett litet team är det ett av de dyrare valen."
+              },
+              {
+                "title": "SoWork",
+                "detail": "Gratis för 10 medlemmar · Basic 5,40 $ per medlem i månaden vid årsbetalning",
+                "body": "Ett virtuellt kontor med mötesrum, teamchatt och kalenderintegration. Gratisplanen rymmer upp till 10 medlemmar men begränsar möten till 30 minuter och har inga inspelningar. Premium, för 12 $ per medlem i månaden vid årsbetalning, lägger till AI-sammanfattningar, obegränsade inspelningar och statistik."
+              },
+              {
+                "title": "Kumospace",
+                "detail": "Gratis för 5 medlemmar · Business 16 $ per användare i månaden",
+                "body": "Ett snyggt utrymme med spatialt ljud och appar för dator och telefon, populärt både för sociala evenemang och som kontor. Gratisplanen täcker 5 medlemmar och en våning. För ett team på 10 eller fler hör det till de dyraste."
+              },
+              {
+                "title": "WorkAdventure",
+                "detail": "Gratis för 10 personer samtidigt · Business 8 € per användare i månaden",
+                "body": "En värld i pixelkonst med öppen källkod som du kan driva själv, med kartor byggda i redigeraren Tiled. Passar tekniska team och evenemang som vill ha full kontroll. Att bygga en egen karta eller driva en egen server är riktigt arbete."
+              },
+              {
+                "title": "SpatialChat",
+                "detail": "Gratis 2 timmar om dagen för 12 · 5 $ per användare och dag, Business från 399 $ i månaden",
+                "body": "Rum med spatialt ljud och videobubblor, mycket använda för evenemang, lektioner och workshoppar. Gratisplanen passar enstaka pass; ett team som är där hela dagen behöver en Business-plan."
+              },
+              {
+                "title": "Roam",
+                "detail": "Ingen gratisplan · 19,50 $ per aktiv medlem i månaden",
+                "body": "En datorapp för Mac och Windows som kombinerar ett virtuellt kontor med möten, chatt, en AI-assistent och webbinarier. Du betalar bara för medlemmar som använder den under månaden. Det är en komplett arbetssvit, med prislapp därefter."
+              },
+              {
+                "title": "oVice",
+                "detail": "Gratisversion utan support · 65 $ i månaden per utrymme, vid årsbetalning",
+                "body": "Ett kontor i 2D med pris per utrymme: Entry-S passar runt 10 fasta medlemmar, och Business Starter kostar 16 $ per användare i månaden från 20 användare. Starkt i Japan och hos större företag. Gratisplanen körs på en förhandsversion utan support."
+              },
+              {
+                "title": "Sococo",
+                "detail": "Ingen gratisplan · 13,49 $ per plats i månaden, vid årsbetalning, minst 10 platser",
+                "body": "En planritning av rum sedd uppifrån i stället för figurer, med flera skärmdelningar samtidigt. Varje plats ingår med 500 mötesminuter i månaden. Byggt för företag som köper programvara per år."
+              }
+            ]
+          },
+          {
+            "title": "Vad ett team på 10 betalar i månaden",
+            "body": [
+              "Här är samma team på 10 personer på varje produkts billigaste plan som rymmer alla hela dagen."
+            ],
+            "table": {
+              "head": [
+                "Produkt",
+                "Hur du betalar",
+                "Gratisplan",
+                "10 personer, per månad"
+              ],
+              "rows": [
+                [
+                  "TinyFloor Plus",
+                  "Ett pris per kontor",
+                  "Upp till 3 personer",
+                  "19 $"
+                ],
+                [
+                  "SoWork Basic",
+                  "Per medlem, årsvis",
+                  "Upp till 10 medlemmar, möten på 30 minuter",
+                  "54 $"
+                ],
+                [
+                  "oVice Entry-S",
+                  "Per utrymme, årsvis",
+                  "Förhandsversion, utan support",
+                  "65 $"
+                ],
+                [
+                  "WorkAdventure Business",
+                  "Per användare",
+                  "Upp till 10 personer samtidigt",
+                  "80 €"
+                ],
+                [
+                  "Gather Essential",
+                  "Per medlem",
+                  "Ingen, 30 dagars provperiod",
+                  "120 $ årsvis, 150 $ månadsvis"
+                ],
+                [
+                  "Sococo",
+                  "Per plats, årsvis, minst 10",
+                  "Ingen, en provperiod",
+                  "134,90 $"
+                ],
+                [
+                  "Kumospace Business",
+                  "Per användare",
+                  "Upp till 5 medlemmar",
+                  "160 $"
+                ],
+                [
+                  "Roam",
+                  "Per aktiv medlem, månadsvis",
+                  "Ingen, 14 dagars provperiod",
+                  "195 $"
+                ],
+                [
+                  "SpatialChat",
+                  "Dagspass eller Business-plan",
+                  "2 timmar om dagen, upp till 12 personer",
+                  "50 $ om dagen med pass, Business från 399 $"
+                ]
+              ],
+              "note": "Priser utan moms, från varje produkts prissida i oktober 2026. En gratisplan som täcker hela teamet slår alla betalplaner: WorkAdventures täcker 10 personer samtidigt och SoWorks 10 medlemmar med möten på 30 minuter."
+            }
+          },
+          {
+            "title": "Vilken för vilket team",
+            "items": [
+              {
+                "title": "Ett litet team med liten budget",
+                "body": "TinyFloor, för 19 $ i månaden för upp till 10 personer, eller SoWorks gratisplan om möten på 30 minuter räcker."
+              },
+              {
+                "title": "Du vill ha inspelningar och AI-anteckningar",
+                "body": "Gather, SoWork Premium eller Roam."
+              },
+              {
+                "title": "Du vill designa ditt kontor eller ha evenemang",
+                "body": "Gather, WorkAdventure, Kumospace eller SpatialChat."
+              },
+              {
+                "title": "Du måste driva det själv",
+                "body": "WorkAdventure, som har öppen källkod och är byggt för att driftas själv."
+              },
+              {
+                "title": "Du föredrar en datorapp",
+                "body": "Roam, eller Gather och Kumospace, som har appar utöver webbläsaren."
+              },
+              {
+                "title": "Ett större företag",
+                "body": "Gather, Roam, oVice Business eller Sococo, som säljer till större team med årsavtal."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för team på 2 till 25 som vill ha ett kontor öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
+        },
+        "faq": [
+          {
+            "q": "Vilken är den bästa gratis programvaran för virtuellt kontor?",
+            "a": "Det beror på hur stort ditt team är. SoWorks gratisplan täcker 10 medlemmar med möten på 30 minuter, WorkAdventures 10 personer samtidigt, Kumospaces 5 medlemmar och TinyFloors 3 personer med alla funktioner."
+          },
+          {
+            "q": "Vilket är det billigaste virtuella kontoret för ett litet team?",
+            "a": "För ett team på 10 på en betalplan kostar TinyFloor Plus 19 $ i månaden för hela kontoret. Verktyg som tar betalt per person kostar 54 $ till 195 $ i månaden för samma team."
+          },
+          {
+            "q": "Är Gather fortfarande gratis?",
+            "a": "Nej. Gather slutade med gratisplanen 2025. Det finns en provperiod på 30 dagar, sedan kostar det 12 $ per medlem i månaden vid årsbetalning eller 15 $ per månad."
+          },
+          {
+            "q": "Behöver jag installera något?",
+            "a": "Inte för TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat eller oVice, som fungerar i webbläsaren. Roam är en datorapp, och Kumospace och Gather erbjuder också appar."
+          }
+        ]
+      },
+      "gatherPricing": {
+        "label": "Gathers priser",
+        "meta": {
+          "title": "Gathers priser 2026: vad ett team på 5, 10 eller 25 betalar",
+          "description": "Gather kostar 12 $ per medlem i månaden vid årsbetalning eller 15 $ per månad, utan gratisplan. Vad det blir för team på 5, 10, 25 och 50, och vad samma team betalar på andra håll."
+        },
+        "title": "Vad kostar <em>Gather?</em>",
+        "intro": "Sedan september 2025 tar Gather betalt för varje medlem och har ingen gratisplan. Här är vad det blir för ditt team, uträknat per storlek, och vad samma team betalar hos andra virtuella kontor. Priserna kommer från Gathers egna pris- och hjälpsidor, kontrollerade i oktober 2026.",
+        "sections": [
+          {
+            "title": "Gathers planer",
+            "body": [
+              "Gather har en plan för de flesta team, Essential, och en Custom-plan för stora organisationer."
+            ],
+            "items": [
+              {
+                "title": "Essential",
+                "body": "15 $ per medlem i månaden, eller 12 $ vid årsbetalning. Innehåller alla Gathers funktioner: ett eget virtuellt kontor, obegränsade möten och chatt, integrationer med Google Calendar, GitHub och Spotify, gäster, och inspelning och transkribering av möten med ett antal timmar i månaden."
+              },
+              {
+                "title": "Custom",
+                "body": "Pris via Gathers säljteam, för stora team som vill ha ledd introduktion och företagsfunktioner."
+              },
+              {
+                "title": "Gratis provperiod",
+                "body": "30 dagar gratis, sedan Essential. Det finns ingen permanent gratisplan."
+              }
+            ]
+          },
+          {
+            "title": "Vad Gather kostar per teamstorlek",
+            "table": {
+              "head": [
+                "Team",
+                "Månadsbetalning",
+                "Årsbetalning, per månad",
+                "Per år, årsbetalning"
+              ],
+              "rows": [
+                [
+                  "5 personer",
+                  "75 $",
+                  "60 $",
+                  "720 $"
+                ],
+                [
+                  "10 personer",
+                  "150 $",
+                  "120 $",
+                  "1 440 $"
+                ],
+                [
+                  "25 personer",
+                  "375 $",
+                  "300 $",
+                  "3 600 $"
+                ],
+                [
+                  "50 personer",
+                  "750 $",
+                  "600 $",
+                  "7 200 $"
+                ]
+              ],
+              "note": "Gather tar betalt för varje medlem, oavsett om hen kommer till kontoret den dagen eller inte. Priser utan moms."
+            }
+          },
+          {
+            "title": "Vad som ändrades 2025",
+            "body": [
+              "Den 15 september 2025 lanserade Gather Gather 2.0 och flyttade både den nya och den ursprungliga versionen till pris per medlem: 15 $ per medlem i månaden, eller 12 $ vid årsbetalning. Tidigare betalade team för hur många som var på kontoret samtidigt.",
+              "Gratisplanen försvann för båda versionerna. Team som redan betalade kunde låsa sitt gamla pris före bytet. För ett litet team som använde Gather gratis var det här ögonblicket det började kosta pengar."
+            ]
+          },
+          {
+            "title": "Samma team på andra håll",
+            "body": [
+              "Så här mycket betalar samma team i månaden hos andra virtuella kontor, på den billigaste planen som rymmer dem."
+            ],
+            "table": {
+              "head": [
+                "Team",
+                "Gather, årsvis",
+                "TinyFloor",
+                "SoWork Basic, årsvis",
+                "Kumospace Business"
+              ],
+              "rows": [
+                [
+                  "5 personer",
+                  "60 $",
+                  "19 $",
+                  "27 $",
+                  "Gratis (upp till 5 medlemmar)"
+                ],
+                [
+                  "10 personer",
+                  "120 $",
+                  "19 $",
+                  "54 $",
+                  "160 $"
+                ],
+                [
+                  "25 personer",
+                  "300 $",
+                  "49 $",
+                  "135 $",
+                  "400 $"
+                ]
+              ],
+              "note": "Från varje produkts prissida i oktober 2026, utan moms. SoWorks gratisplan täcker också upp till 10 medlemmar, med möten på högst 30 minuter, och WorkAdventures upp till 10 personer samtidigt."
+            }
+          },
+          {
+            "title": "När Gather är värt pengarna",
+            "items": [
+              {
+                "title": "Du vill designa ditt kontor",
+                "body": "I Gather bygger du våningar, rum och föremål. De flesta alternativ ger dig ett färdigt kontor."
+              },
+              {
+                "title": "Du behöver inspelningar och transkriberingar",
+                "body": "Essential har det, med ett antal timmar varje månad."
+              },
+              {
+                "title": "Din dag kretsar kring Google Calendar och GitHub",
+                "body": "Gathers integrationer visar din status och aktivitet på kontoret."
+              },
+              {
+                "title": "När det inte är det",
+                "body": "Om ditt team mest behöver se vem som är där, prata och ha möten, betalar du för funktioner du inte använder, varje månad, för varje person."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Där TinyFloor passar in",
+          "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor du går runt i och där du pratar genom att gå fram till någon, med mötesrum, chatt och skärmdelning. Det kostar 19 $ i månaden för upp till 10 personer och 49 $ för upp till 25, ett pris för hela kontoret, och är gratis för upp till 3. Det har inga inspelningar, ingen transkribering och ingen kontorsredigerare; om du är beroende av dem passar Gather bättre."
+        },
+        "faq": [
+          {
+            "q": "Vad kostar Gather?",
+            "a": "15 $ per medlem i månaden vid månadsbetalning, eller 12 $ per medlem i månaden vid årsbetalning, på Essential-planen. Större organisationer kan be om en Custom-plan."
+          },
+          {
+            "q": "Har Gather en gratisplan?",
+            "a": "Nej. Gather slutade med gratisplanen i september 2025. I stället finns en gratis provperiod på 30 dagar."
+          },
+          {
+            "q": "Vad kostar Gather för 10 personer?",
+            "a": "150 $ i månaden vid månadsbetalning, eller 120 $ i månaden vid årsbetalning (1 440 $ per år)."
+          },
+          {
+            "q": "Vilket är ett billigare alternativ till Gather?",
+            "a": "TinyFloor kostar 19 $ i månaden för upp till 10 personer och är gratis för upp till 3. SoWorks Basic-plan kostar 5,40 $ per medlem i månaden vid årsbetalning, och dess gratisplan täcker 10 medlemmar med möten på 30 minuter."
           }
         ]
       }

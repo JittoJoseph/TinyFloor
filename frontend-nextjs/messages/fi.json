@@ -2639,7 +2639,7 @@
     "hub": {
       "meta": {
         "title": "Oppaat etätiimien vetäjille",
-        "description": "Käytännön oppaat etätiimejä vetäville: tiimiytyminen, pelit palavereihin, kulttuuri, viestintä ja miten lähichat toimii."
+        "description": "Käytännön oppaita etätiimien vetäjille: tiimiytyminen, pelit palavereihin, kulttuuri, viestintä, läheisyyschat ja virtuaalitoimisto-ohjelmiston valinta."
       },
       "title": "Oppaat <em>etätiimeille.</em>",
       "body": "Käytännöllisiä, lyhyitä ja itse etätöitä tekevien kirjoittamia. Ota mikä auttaa, ohita loput."
@@ -3344,6 +3344,379 @@
           {
             "q": "Voiko lähichatia käyttää töissä?",
             "a": "Voi. Virtuaalitoimistot kuten TinyFloor, Gather ja SpatialChat käyttävät sitä, jotta etätiimit voivat puhua kävelemällä toistensa luo puheluiden sopimisen sijaan."
+          }
+        ]
+      },
+      "bestVirtualOffice": {
+        "label": "Paras virtuaalitoimisto-ohjelmisto",
+        "meta": {
+          "title": "Paras virtuaalitoimisto-ohjelmisto vuonna 2026, rehellisesti vertailtuna",
+          "description": "Yhdeksän virtuaalitoimistoa etätiimeille vertailtuna hinnan, ilmaisen paketin ja vahvuuksien mukaan, sekä mitä 10 hengen tiimi maksaa kuukaudessa."
+        },
+        "title": "Paras virtuaalitoimisto-ohjelmisto <em>vuonna 2026, rehellisesti vertailtuna.</em>",
+        "intro": "Virtuaalitoimisto antaa etätiimille paikan, jossa olla koko päivän: näet, kuka on paikalla, ja juttelet jonkun kanssa kävelemällä hänen luokseen etkä lähettämällä linkkiä. Tässä ovat yhdeksän katsomisen arvoista vaihtoehtoa, niiden hinnat ja kenelle kukin sopii. Me teemme TinyFlooria, joten emme ole puolueettomia; kerromme, missä kukin tuote on omaamme parempi, ja jokainen hinta on tuotteen omalta hintasivulta, tarkistettu lokakuussa 2026.",
+        "sections": [
+          {
+            "title": "Mikä virtuaalitoimisto on",
+            "body": [
+              "Virtuaalitoimisto on jaettu 2D- tai 3D-tila, jossa jokaisella tiimiläisellä on hahmo tai videoruutu. Tila on auki koko työpäivän, joten näet yhdellä silmäyksellä, kuka on paikalla, kenellä on kiire ja kuka on puhelussa.",
+              "Keskustelut alkavat kuin toimistolla: menet jonkun luo ja puhut. Useimmissa virtuaalitoimistoissa on myös neuvotteluhuoneita, näytön jako ja chat, joten pieni tiimi voi viettää siellä suurimman osan päivästä."
+            ]
+          },
+          {
+            "title": "Näin valitset",
+            "items": [
+              {
+                "title": "Miten maksat",
+                "body": "Useimmat laskuttavat henkeä kohden kuukaudessa, ja summa kasvaa tiimin mukana. Jotkut laskuttavat toimistoa tai tilaa kohden."
+              },
+              {
+                "title": "Ilmainen paketti",
+                "body": "Katso rajat: montako henkeä, montako tuntia päivässä ja kuinka pitkä palaveri saa olla."
+              },
+              {
+                "title": "Selain vai sovellus",
+                "body": "Selaimessa toimiva toimisto ei vaadi asennusta, mikä on tärkeää vieraille ja uusille työntekijöille. Työpöytäsovellus voi tuntua sujuvammalta omalla koneellasi."
+              },
+              {
+                "title": "Miten keskustelu alkaa",
+                "body": "Tilaäänessä sinut kuullaan heti, kun olet lähellä. Kun puhelu alkaa vasta luokse kävellessä, mitään ei kuulu ennen kuin joku aloittaa puhelun, ja siinä on rauhallisempi tehdä töitä."
+              },
+              {
+                "title": "Mitä käytät joka päivä",
+                "body": "Puhelut, neuvotteluhuone, chat ja näytön jako ovat sitä, mitä useimmat tiimit käyttävät. Tallenteet, tekoälymuistiinpanot ja karttaeditorit auttavat joitakin tiimejä ja maksavat yleensä enemmän."
+              }
+            ]
+          },
+          {
+            "title": "Yhdeksän katsomisen arvoista",
+            "items": [
+              {
+                "title": "TinyFloor",
+                "detail": "Ilmainen 3 hengelle · 19 $ kuukaudessa 10 hengelle, 49 $ 25 hengelle",
+                "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Ei tallenteita, tekoälymuistiinpanoja eikä karttaeditoria, ja toimistoon mahtuu enintään 25 henkeä."
+              },
+              {
+                "title": "Gather",
+                "detail": "Ei ilmaista pakettia · 12 $ jäseneltä kuukaudessa vuosilaskutuksella, 15 $ kuukausittain",
+                "body": "Tunnetuin virtuaalitoimisto ja kattavin: itse suunniteltava toimisto, tallennus ja litterointi, Google Calendar-, GitHub- ja Spotify-integraatiot sekä vieraat. Lopetti ilmaisen paketin vuonna 2025, joten pienelle tiimille se on kalliimpia vaihtoehtoja."
+              },
+              {
+                "title": "SoWork",
+                "detail": "Ilmainen 10 jäsenelle · Basic 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella",
+                "body": "Virtuaalitoimisto, jossa on neuvotteluhuoneet, tiimichat ja kalenteri-integraatio. Ilmaiseen pakettiin mahtuu enintään 10 jäsentä, mutta palaverit on rajattu 30 minuuttiin eikä tallenteita ole. Premium, 12 $ jäseneltä kuukaudessa vuosilaskutuksella, tuo tekoälyyhteenvedot, rajattomat tallenteet ja analytiikan."
+              },
+              {
+                "title": "Kumospace",
+                "detail": "Ilmainen 5 jäsenelle · Business 16 $ käyttäjältä kuukaudessa",
+                "body": "Viimeistelty tila, jossa on tilaääni sekä sovellukset tietokoneelle ja puhelimelle, suosittu sekä sosiaalisiin tapahtumiin että toimistona. Ilmainen paketti kattaa 5 jäsentä ja yhden kerroksen. Vähintään 10 hengen tiimille se on kalleimpia."
+              },
+              {
+                "title": "WorkAdventure",
+                "detail": "Ilmainen 10 hengelle yhtä aikaa · Business 8 € käyttäjältä kuukaudessa",
+                "body": "Avoimen lähdekoodin pikselitaidemaailma, jota voit ylläpitää itse ja jonka kartat tehdään Tiled-editorilla. Sopii teknisille tiimeille ja tapahtumille, jotka haluavat täyden hallinnan. Oman kartan rakentaminen tai oman palvelimen ylläpito on oikeaa työtä."
+              },
+              {
+                "title": "SpatialChat",
+                "detail": "Ilmainen 2 tuntia päivässä 12 hengelle · 5 $ käyttäjältä päivässä, Business alkaen 399 $ kuukaudessa",
+                "body": "Huoneita, joissa on tilaääni ja videokuplat, paljon käytössä tapahtumissa, opetuksessa ja työpajoissa. Ilmainen paketti sopii satunnaisiin sessioihin; koko päivän paikalla oleva tiimi tarvitsee Business-paketin."
+              },
+              {
+                "title": "Roam",
+                "detail": "Ei ilmaista pakettia · 19,50 $ aktiiviselta jäseneltä kuukaudessa",
+                "body": "Mac- ja Windows-työpöytäsovellus, joka yhdistää virtuaalitoimiston palavereihin, chattiin, tekoälyavustajaan ja webinaareihin. Maksat vain jäsenistä, jotka käyttävät sitä kuukauden aikana. Se on täysi työkalukokonaisuus, ja hinta on sen mukainen."
+              },
+              {
+                "title": "oVice",
+                "detail": "Ilmainen versio ilman tukea · 65 $ kuukaudessa tilaa kohden, vuosilaskutuksella",
+                "body": "2D-toimisto, jonka hinta määräytyy tilan mukaan: Entry-S sopii noin 10 vakituiselle jäsenelle, ja Business Starter maksaa 16 $ käyttäjältä kuukaudessa 20 käyttäjästä alkaen. Vahva Japanissa ja suuremmissa yrityksissä. Ilmainen paketti toimii esiversiolla ilman tukea."
+              },
+              {
+                "title": "Sococo",
+                "detail": "Ei ilmaista pakettia · 13,49 $ paikalta kuukaudessa, vuosilaskutuksella, vähintään 10 paikkaa",
+                "body": "Ylhäältä kuvattu huonepohjapiirros hahmojen sijaan, ja useita näytönjakoja yhtä aikaa. Jokaiseen paikkaan kuuluu 500 palaveriminuuttia kuukaudessa. Tehty yrityksille, jotka ostavat ohjelmistot vuodeksi kerrallaan."
+              }
+            ]
+          },
+          {
+            "title": "Mitä 10 hengen tiimi maksaa kuukaudessa",
+            "body": [
+              "Tässä sama 10 hengen tiimi kunkin tuotteen halvimmalla paketilla, johon kaikki mahtuvat koko päiväksi."
+            ],
+            "table": {
+              "head": [
+                "Tuote",
+                "Miten maksat",
+                "Ilmainen paketti",
+                "10 henkeä, kuukaudessa"
+              ],
+              "rows": [
+                [
+                  "TinyFloor Plus",
+                  "Yksi hinta toimistolle",
+                  "Enintään 3 henkeä",
+                  "19 $"
+                ],
+                [
+                  "SoWork Basic",
+                  "Jäseneltä, vuosittain",
+                  "Enintään 10 jäsentä, 30 minuutin palaverit",
+                  "54 $"
+                ],
+                [
+                  "oVice Entry-S",
+                  "Tilaa kohden, vuosittain",
+                  "Esiversio, ilman tukea",
+                  "65 $"
+                ],
+                [
+                  "WorkAdventure Business",
+                  "Käyttäjältä",
+                  "Enintään 10 henkeä yhtä aikaa",
+                  "80 €"
+                ],
+                [
+                  "Gather Essential",
+                  "Jäseneltä",
+                  "Ei, 30 päivän kokeilu",
+                  "120 $ vuosittain, 150 $ kuukausittain"
+                ],
+                [
+                  "Sococo",
+                  "Paikalta, vuosittain, vähintään 10",
+                  "Ei, kokeilu",
+                  "134,90 $"
+                ],
+                [
+                  "Kumospace Business",
+                  "Käyttäjältä",
+                  "Enintään 5 jäsentä",
+                  "160 $"
+                ],
+                [
+                  "Roam",
+                  "Aktiiviselta jäseneltä, kuukausittain",
+                  "Ei, 14 päivän kokeilu",
+                  "195 $"
+                ],
+                [
+                  "SpatialChat",
+                  "Päiväpassit tai Business-paketti",
+                  "2 tuntia päivässä, enintään 12 henkeä",
+                  "50 $ päivässä passeilla, Business alkaen 399 $"
+                ]
+              ],
+              "note": "Hinnat ilman veroja, kunkin tuotteen hintasivulta lokakuussa 2026. Ilmainen paketti, joka kattaa koko tiimisi, voittaa minkä tahansa maksullisen: WorkAdventuren paketti kattaa 10 henkeä yhtä aikaa ja SoWorkin 10 jäsentä 30 minuutin palavereilla."
+            }
+          },
+          {
+            "title": "Mikä millekin tiimille",
+            "items": [
+              {
+                "title": "Pieni tiimi ja pieni budjetti",
+                "body": "TinyFloor, 19 $ kuukaudessa enintään 10 hengelle, tai SoWorkin ilmainen paketti, jos 30 minuutin palaverit riittävät."
+              },
+              {
+                "title": "Haluat tallenteet ja tekoälymuistiinpanot",
+                "body": "Gather, SoWork Premium tai Roam."
+              },
+              {
+                "title": "Haluat suunnitella toimistosi tai järjestää tapahtumia",
+                "body": "Gather, WorkAdventure, Kumospace tai SpatialChat."
+              },
+              {
+                "title": "Sinun on ylläpidettävä sitä itse",
+                "body": "WorkAdventure, joka on avointa lähdekoodia ja tehty itse ylläpidettäväksi."
+              },
+              {
+                "title": "Pidät enemmän työpöytäsovelluksesta",
+                "body": "Roam, tai Gather ja Kumospace, joilla on sovellukset selaimen lisäksi."
+              },
+              {
+                "title": "Suurempi yritys",
+                "body": "Gather, Roam, oVice Business tai Sococo, jotka myyvät suuremmille tiimeille vuosisopimuksilla."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Mihin TinyFloor sopii",
+          "body": "TinyFloor on se yksinkertainen ja edullinen: selaimessa toimiva toimisto, jossa kävelet jonkun luo juttelemaan, ja jossa on neuvotteluhuone, chat ja näytön jako, yhdellä toimistokohtaisella hinnalla. Se on 2–25 hengen tiimeille, jotka haluavat toimiston auki koko päivän. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai itse suunnitellun kartan, Gather tai SoWork Premium palvelee paremmin. TinyFloor on ilmainen enintään 3 hengelle, joten voit kokeilla sitä ensin tiimisi kanssa."
+        },
+        "faq": [
+          {
+            "q": "Mikä on paras ilmainen virtuaalitoimisto-ohjelmisto?",
+            "a": "Se riippuu tiimisi koosta. SoWorkin ilmainen paketti kattaa 10 jäsentä 30 minuutin palavereilla, WorkAdventuren 10 henkeä yhtä aikaa, Kumospacen 5 jäsentä ja TinyFloorin 3 henkeä kaikilla ominaisuuksilla."
+          },
+          {
+            "q": "Mikä on halvin virtuaalitoimisto pienelle tiimille?",
+            "a": "10 hengen tiimille maksullisella paketilla TinyFloor Plus maksaa 19 $ kuukaudessa koko toimistolta. Henkeä kohden laskuttavat työkalut maksavat samalle tiimille 54–195 $ kuukaudessa."
+          },
+          {
+            "q": "Onko Gather yhä ilmainen?",
+            "a": "Ei. Gather lopetti ilmaisen paketin vuonna 2025. Tarjolla on 30 päivän kokeilu, jonka jälkeen hinta on 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausittain."
+          },
+          {
+            "q": "Pitääkö minun asentaa jotain?",
+            "a": "Ei TinyFlooria, Gatheria, SoWorkia, WorkAdventurea, SpatialChatia eikä oVicea varten, sillä ne toimivat selaimessa. Roam on työpöytäsovellus, ja myös Kumospacella ja Gatherilla on sovellukset."
+          }
+        ]
+      },
+      "gatherPricing": {
+        "label": "Gatherin hinnat",
+        "meta": {
+          "title": "Gatherin hinnat vuonna 2026: mitä 5, 10 tai 25 hengen tiimi maksaa",
+          "description": "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausittain, eikä ilmaista pakettia ole. Paljonko se on 5, 10, 25 ja 50 hengen tiimeille ja mitä sama tiimi maksaa muualla."
+        },
+        "title": "Paljonko <em>Gather maksaa?</em>",
+        "intro": "Syyskuusta 2025 lähtien Gather on laskuttanut jokaisesta jäsenestä, eikä ilmaista pakettia ole. Tässä on, mitä se tarkoittaa tiimillesi kokoon laskettuna, ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Hinnat ovat Gatherin omilta hinta- ja ohjesivuilta, tarkistettu lokakuussa 2026.",
+        "sections": [
+          {
+            "title": "Gatherin paketit",
+            "body": [
+              "Gatherilla on yksi paketti useimmille tiimeille, Essential, ja Custom-paketti suurille organisaatioille."
+            ],
+            "items": [
+              {
+                "title": "Essential",
+                "body": "15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Sisältää kaikki Gatherin ominaisuudet: muokattava virtuaalitoimisto, rajattomat palaverit ja chat, Google Calendar-, GitHub- ja Spotify-integraatiot, vieraat sekä palaverien tallennus ja litterointi kuukausittaisella tuntikiintiöllä."
+              },
+              {
+                "title": "Custom",
+                "body": "Hinta Gatherin myyntitiimiltä, suurille tiimeille, jotka haluavat ohjatun käyttöönoton ja yritysominaisuudet."
+              },
+              {
+                "title": "Ilmainen kokeilu",
+                "body": "30 päivää ilmaiseksi, sitten Essential. Pysyvää ilmaista pakettia ei ole."
+              }
+            ]
+          },
+          {
+            "title": "Paljonko Gather maksaa tiimin koon mukaan",
+            "table": {
+              "head": [
+                "Tiimi",
+                "Kuukausilaskutus",
+                "Vuosilaskutus, kuukaudessa",
+                "Vuodessa, vuosilaskutus"
+              ],
+              "rows": [
+                [
+                  "5 henkeä",
+                  "75 $",
+                  "60 $",
+                  "720 $"
+                ],
+                [
+                  "10 henkeä",
+                  "150 $",
+                  "120 $",
+                  "1 440 $"
+                ],
+                [
+                  "25 henkeä",
+                  "375 $",
+                  "300 $",
+                  "3 600 $"
+                ],
+                [
+                  "50 henkeä",
+                  "750 $",
+                  "600 $",
+                  "7 200 $"
+                ]
+              ],
+              "note": "Gather laskuttaa jokaisesta jäsenestä, tuli hän sinä päivänä toimistolle tai ei. Hinnat ilman veroja."
+            }
+          },
+          {
+            "title": "Mikä muuttui vuonna 2025",
+            "body": [
+              "Gather julkaisi 15. syyskuuta 2025 Gather 2.0:n ja siirsi sekä uuden että alkuperäisen version jäsenkohtaiseen hinnoitteluun: 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Aiemmin tiimit maksoivat sen mukaan, montako henkeä oli toimistolla yhtä aikaa.",
+              "Ilmainen paketti poistui molemmista versioista. Jo maksaneet tiimit saivat lukita vanhan hintansa ennen muutosta. Pienelle tiimille, joka käytti Gatheria ilmaiseksi, tämä oli hetki, jolloin se alkoi maksaa."
+            ]
+          },
+          {
+            "title": "Sama tiimi muualla",
+            "body": [
+              "Näin paljon samat tiimit maksavat kuukaudessa muissa virtuaalitoimistoissa halvimmalla paketilla, johon ne mahtuvat."
+            ],
+            "table": {
+              "head": [
+                "Tiimi",
+                "Gather, vuosittain",
+                "TinyFloor",
+                "SoWork Basic, vuosittain",
+                "Kumospace Business"
+              ],
+              "rows": [
+                [
+                  "5 henkeä",
+                  "60 $",
+                  "19 $",
+                  "27 $",
+                  "Ilmainen (enintään 5 jäsentä)"
+                ],
+                [
+                  "10 henkeä",
+                  "120 $",
+                  "19 $",
+                  "54 $",
+                  "160 $"
+                ],
+                [
+                  "25 henkeä",
+                  "300 $",
+                  "49 $",
+                  "135 $",
+                  "400 $"
+                ]
+              ],
+              "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. SoWorkin ilmainen paketti kattaa myös enintään 10 jäsentä, palaverit enintään 30 minuuttia, ja WorkAdventuren enintään 10 henkeä yhtä aikaa."
+            }
+          },
+          {
+            "title": "Milloin Gather kannattaa",
+            "items": [
+              {
+                "title": "Haluat suunnitella toimistosi",
+                "body": "Gatherissa rakennat kerrokset, huoneet ja esineet. Useimmat vaihtoehdot antavat valmiin toimiston."
+              },
+              {
+                "title": "Tarvitset tallenteita ja litterointeja",
+                "body": "Essential sisältää ne, tuntikiintiöllä joka kuukausi."
+              },
+              {
+                "title": "Päiväsi pyörii Google Calendarin ja GitHubin ympärillä",
+                "body": "Gatherin integraatiot näyttävät tilasi ja toimintasi toimistossa."
+              },
+              {
+                "title": "Milloin ei",
+                "body": "Jos tiimisi tarvitsee lähinnä nähdä, kuka on paikalla, jutella ja pitää palavereja, maksat ominaisuuksista, joita et käytä, joka kuukausi, jokaisesta hengestä."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Mihin TinyFloor sopii",
+          "body": "TinyFloor säilyttää Gatherin ytimen: toimiston, jossa liikut ja juttelet kävelemällä jonkun luo, ja jossa on neuvotteluhuone, chat ja näytön jako. Se maksaa 19 $ kuukaudessa enintään 10 hengelle ja 49 $ enintään 25 hengelle, yksi hinta koko toimistolle, ja on ilmainen enintään 3 hengelle. Siinä ei ole tallenteita, litterointia eikä toimistoeditoria; jos tarvitset niitä, Gather palvelee paremmin."
+        },
+        "faq": [
+          {
+            "q": "Paljonko Gather maksaa?",
+            "a": "15 $ jäseneltä kuukaudessa kuukausilaskutuksella tai 12 $ jäseneltä kuukaudessa vuosilaskutuksella Essential-paketissa. Suuremmat organisaatiot voivat pyytää Custom-pakettia."
+          },
+          {
+            "q": "Onko Gatherilla ilmaista pakettia?",
+            "a": "Ei. Gather lopetti ilmaisen paketin syyskuussa 2025. Sen sijaan tarjolla on 30 päivän ilmainen kokeilu."
+          },
+          {
+            "q": "Paljonko Gather maksaa 10 hengelle?",
+            "a": "150 $ kuukaudessa kuukausilaskutuksella tai 120 $ kuukaudessa vuosilaskutuksella (1 440 $ vuodessa)."
+          },
+          {
+            "q": "Mikä on Gatheria edullisempi vaihtoehto?",
+            "a": "TinyFloor maksaa 19 $ kuukaudessa enintään 10 hengelle ja on ilmainen enintään 3 hengelle. SoWorkin Basic-paketti maksaa 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella, ja sen ilmainen paketti kattaa 10 jäsentä 30 minuutin palavereilla."
           }
         ]
       }

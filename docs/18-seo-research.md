@@ -64,12 +64,12 @@ Their backlinks come the same way: other blogs link to useful guides.
 2. **Guides for remote team leads.** Built: `/guides` and five guides in 18
    languages (see below). Next ones: icebreaker questions for remote teams,
    remote onboarding checklist, how to run a remote standup.
-3. **Buyer pages for competitors' pricing:** "Gather pricing" and "Kumospace
-   pricing", explained honestly with what a team of 5, 10 and 25 pays, beside
-   TinyFloor.
-4. **"Best virtual office software"**, an honest comparison of the ones on the
-   compare pages, with the table. The many long variants of this query point
-   at one strong page.
+3. **Buyer pages for competitors' pricing.** Built: "Gather pricing", what a
+   team of 5, 10, 25 and 50 pays, beside TinyFloor, SoWork and Kumospace.
+   Next: "Kumospace pricing".
+4. **"Best virtual office software".** Built: nine products, honestly
+   compared, with what a team of 10 pays each month. The many long variants
+   of this query point at one strong page.
 5. Wait for Google to read the new sitemap, then look at Search Console again
    in about four weeks, by page.
 
@@ -80,7 +80,13 @@ message files; `GuidePage` renders them in one reading column.
 
 - Built: virtual team building activities, games for virtual meetings, how
   to build remote team culture, remote team communication, what is proximity
-  chat.
+  chat. For buyers: best virtual office software, Gather pricing.
+- A section can carry a `table` (header, rows, a note on where the numbers
+  come from). It scrolls sideways on phones, and llms-full.txt prints it as a
+  markdown table.
+- The buyer guides quote competitors' prices from their own pricing pages,
+  checked October 2026, and say where each one is better than TinyFloor.
+  Check those pages again every few months and bump `updated`.
 - Each guide: a headline, an intro, sections of paragraphs and items, one
   "where TinyFloor fits" box at the end with links to the product pages it
   relates to, four questions, and the other guides. Items with a detail line

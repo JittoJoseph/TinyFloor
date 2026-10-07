@@ -2490,6 +2490,15 @@
       "choose": "Wybierz {plan}",
       "note": "Każdy plan ma wszystkie funkcje. Rozmowy nigdy się nie liczą; spotkania grupowe mają 5, 30 lub 60 godzin miesięcznie."
     },
+    "source": {
+      "eyebrow": "Open source",
+      "title": "Tworzone otwarcie.",
+      "muted": "Każda linijka jest na GitHubie.",
+      "body": "Kod TinyFloor jest na GitHubie na licencji AGPL i to ten sam kod, na którym działa tinyfloor.com. Zobacz dokładnie, co dzieje się z twoimi rozmowami i wiadomościami. Jeśli spodoba ci się to, co znajdziesz, gwiazdka pomoże innym zespołom też to znaleźć.",
+      "star": "Daj gwiazdkę na GitHubie",
+      "license": "Licencja",
+      "built": "Zbudowane z"
+    },
     "faq": {
       "title": "Pytania",
       "muted": "i odpowiedzi.",

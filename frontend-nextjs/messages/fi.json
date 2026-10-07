@@ -2490,6 +2490,15 @@
       "choose": "Valitse {plan}",
       "note": "Joka paketissa on kaikki ominaisuudet. Puheluita ei lasketa; ryhmäkokouksiin on 5, 30 tai 60 tuntia kuussa."
     },
+    "source": {
+      "eyebrow": "Avoin lähdekoodi",
+      "title": "Rakennettu avoimesti.",
+      "muted": "Jokainen rivi on GitHubissa.",
+      "body": "TinyFloorin koodi on GitHubissa AGPL-lisenssillä, ja se on samaa koodia, jolla tinyfloor.com toimii. Näet tarkalleen, miten puhelujasi ja viestejäsi käsitellään. Jos pidät näkemästäsi, tähti auttaa muitakin tiimejä löytämään sen.",
+      "star": "Anna tähti GitHubissa",
+      "license": "Lisenssi",
+      "built": "Rakennettu näillä"
+    },
     "faq": {
       "title": "Kysymyksiä",
       "muted": "ja vastauksia.",

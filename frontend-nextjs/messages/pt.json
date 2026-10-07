@@ -2490,6 +2490,15 @@
       "choose": "Escolher {plan}",
       "note": "Todos os planos têm todos os recursos. Chamadas nunca são contadas; reuniões em grupo têm 5, 30 ou 60 horas por mês."
     },
+    "source": {
+      "eyebrow": "Código aberto",
+      "title": "Feito às claras.",
+      "muted": "Cada linha está no GitHub.",
+      "body": "O código do TinyFloor está no GitHub sob a AGPL, e é o mesmo código que roda o tinyfloor.com. Veja exatamente como suas chamadas e mensagens são tratadas. Se gostar do que encontrar, uma estrela ajuda outras equipes a encontrá-lo também.",
+      "star": "Dar uma estrela no GitHub",
+      "license": "Licença",
+      "built": "Feito com"
+    },
     "faq": {
       "title": "Perguntas,",
       "muted": "respondidas.",

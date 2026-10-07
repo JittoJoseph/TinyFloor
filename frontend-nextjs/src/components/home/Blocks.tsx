@@ -7,11 +7,12 @@ import { HALL, MEETING } from "@/components/floor/scenes";
 import { Face } from "@/components/ui/Face";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
+import { SOCIALS } from "@/lib/site";
 import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
 import { PlanAction } from "./PlanAction";
 import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
-import { SiteFooter } from "./SiteFooter";
+import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "./SiteTheme";
 
 /*
@@ -350,6 +351,68 @@ export function PlanCards({ className }: { className?: string }) {
  * The questions people ask, as a plain list that opens without a script, and
  * a way to go and look. The page puts the same questions in its FAQPage schema.
  */
+/**
+ * The code is open (AGPL), said on trust rather than numbers: what it means
+ * for a team, and one ask, a star. Beside it, the repo as a terminal would
+ * show it, on the bezel's black in the floor's pixel type. It carries the
+ * #source anchor.
+ */
+export function OpenSource() {
+  const t = useTranslations("homepage.source");
+  return (
+    <section id="source" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
+      <div className="grid items-center gap-10 rounded-[32px] bg-muted/80 p-6 min-[400px]:p-8 sm:p-12 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:p-14">
+        <div>
+          <p className={cn(EYEBROW, "mb-5")}>{t("eyebrow")}</p>
+          <h2 className={cn("text-balance text-[30px] font-normal leading-[1.08] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[44px] sm:leading-[1.04]", CJK_HEADLINE)}>
+            {t("title")}
+            <span className="block text-muted-foreground/75">{t("muted")}</span>
+          </h2>
+          <p className={cn(LEAD, "mt-6 max-w-[30rem]")}>{t("body")}</p>
+          <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className={cn(INK, "mt-8")}>
+            <GitHubMark className="size-[18px]" />
+            {t("star")}
+          </a>
+        </div>
+        <div className={cn(STAGE, "overflow-hidden rounded-[24px] shadow-[0_24px_60px_-28px_rgb(0_0_0/0.45)]")}>
+          <div dir="ltr" className="flex items-center gap-2.5 bg-white/[0.04] px-5 py-3.5 text-[13.5px] text-white/70">
+            <GitHubMark className="size-4 text-white" />
+            <span>
+              JittoJoseph / <span className="font-semibold text-white">TinyFloor</span>
+            </span>
+            <span className="ms-auto rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[11.5px] text-white/60">Public</span>
+          </div>
+          <div dir="ltr" className="px-5 py-6 font-pixel text-[19px] leading-[1.35] text-white/85 sm:px-6 sm:text-[21px]">
+            <p>
+              <span className="text-[#7ee2a8]">$</span> git clone \
+            </p>
+            <p className="ps-[2ch]">
+              https://github.com/
+              <wbr />
+              JittoJoseph/TinyFloor
+            </p>
+            <p className="text-white/45">Cloning into &apos;TinyFloor&apos;...</p>
+            <p>
+              <span className="text-[#7ee2a8]">$</span>{" "}
+              <span aria-hidden className="inline-block h-[0.95em] w-[0.55em] translate-y-[0.12em] animate-pulse bg-white/80 motion-reduce:animate-none" />
+            </p>
+          </div>
+          <dl className="grid gap-px bg-white/[0.06] text-[13.5px] sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+            <div className="bg-[#09090a] px-5 py-4 [:root.dark_&]:bg-[#18181a]">
+              <dt className="text-white/45">{t("license")}</dt>
+              <dd className="mt-1 text-white/90">AGPL-3.0</dd>
+            </div>
+            <div className="bg-[#09090a] px-5 py-4 [:root.dark_&]:bg-[#18181a]">
+              <dt className="text-white/45">{t("built")}</dt>
+              <dd dir="ltr" className="mt-1 text-white/90 rtl:text-end">Next.js · Cloudflare Workers · D1</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Questions({ items, title }: { items: Array<{ q: string; a: string }>; title?: ReactNode }) {
   const t = useTranslations("homepage.faq");
   return (

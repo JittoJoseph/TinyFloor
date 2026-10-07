@@ -2490,6 +2490,15 @@
       "choose": "Velg {plan}",
       "note": "Alle planer har alle funksjoner. Samtaler telles aldri; gruppemøter får 5, 30 eller 60 timer i måneden."
     },
+    "source": {
+      "eyebrow": "Åpen kildekode",
+      "title": "Bygget åpent.",
+      "muted": "Hver linje ligger på GitHub.",
+      "body": "Koden til TinyFloor ligger på GitHub under AGPL, og det er den samme koden som driver tinyfloor.com. Se nøyaktig hvordan samtalene og meldingene dine blir håndtert. Liker du det du finner, hjelper en stjerne andre team med å finne det også.",
+      "star": "Gi en stjerne på GitHub",
+      "license": "Lisens",
+      "built": "Bygget med"
+    },
     "faq": {
       "title": "Spørsmål,",
       "muted": "besvart.",

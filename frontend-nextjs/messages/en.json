@@ -2490,6 +2490,15 @@
       "choose": "Choose {plan}",
       "note": "Every plan has every feature. Calls are never counted; group meetings get 5, 30 or 60 hours a month."
     },
+    "source": {
+      "eyebrow": "Open source",
+      "title": "Built in the open.",
+      "muted": "Every line is on GitHub.",
+      "body": "TinyFloor's code is on GitHub under the AGPL, and it's the same code that runs tinyfloor.com. See exactly how your calls and messages are handled. If you like what you find, a star helps other teams find it too.",
+      "star": "Star on GitHub",
+      "license": "License",
+      "built": "Built with"
+    },
     "faq": {
       "title": "Questions,",
       "muted": "answered.",

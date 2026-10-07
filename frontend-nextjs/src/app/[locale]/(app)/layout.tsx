@@ -6,7 +6,7 @@ import { LocalTimeZone } from "@/components/LocalTimeZone";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 /** What only the site's pages say, all of it put together on the server. */
-const SITE_ONLY = new Set(["landings", "landing", "home", "faq", "about", "metadata", "notFound"]);
+const SITE_ONLY = new Set(["landings", "landing", "guides", "home", "faq", "about", "metadata", "notFound"]);
 
 /**
  * Every signed-in screen, the doors and the lobby: the app's theme and face,

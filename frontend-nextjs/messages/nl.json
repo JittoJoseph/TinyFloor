@@ -2639,7 +2639,7 @@
     "hub": {
       "meta": {
         "title": "Gidsen voor leidinggevenden van remote teams",
-        "description": "Praktische gidsen voor wie remote teams leidt: teambuilding, spelletjes voor meetings, cultuur, communicatie en hoe proximity chat werkt."
+        "description": "Praktische gidsen voor wie remote teams leidt: teambuilding, spellen voor vergaderingen, cultuur, communicatie, proximity chat en het kiezen van virtuele-kantoorsoftware."
       },
       "title": "Gidsen voor <em>remote teams.</em>",
       "body": "Praktisch, kort en geschreven door mensen die zelf op afstand werken. Gebruik wat helpt, sla de rest over."
@@ -3344,6 +3344,379 @@
           {
             "q": "Kun je proximity chat voor werk gebruiken?",
             "a": "Ja. Virtuele kantoren zoals TinyFloor, Gather en SpatialChat gebruiken het zodat remote teams kunnen praten door naar elkaar toe te lopen in plaats van calls te plannen."
+          }
+        ]
+      },
+      "bestVirtualOffice": {
+        "label": "Beste virtuele-kantoorsoftware",
+        "meta": {
+          "title": "De beste virtuele-kantoorsoftware in 2026, eerlijk vergeleken",
+          "description": "Negen virtuele kantoren voor remote teams vergeleken op prijs, gratis abonnement en waar elk het sterkst in is, met wat een team van 10 per maand betaalt."
+        },
+        "title": "De beste virtuele-kantoorsoftware <em>in 2026, eerlijk vergeleken.</em>",
+        "intro": "Een virtueel kantoor geeft een remote team een plek om de hele dag te zijn: je ziet wie er is en praat met iemand door naar diegene toe te lopen, niet door een link te sturen. Dit zijn de negen die de moeite waard zijn, wat ze kosten en voor wie ze zijn. Wij maken TinyFloor, dus we zijn niet neutraal; we zeggen waar elk product beter is dan het onze, en elke prijs komt van de eigen prijspagina van het product, gecontroleerd in oktober 2026.",
+        "sections": [
+          {
+            "title": "Wat een virtueel kantoor is",
+            "body": [
+              "Een virtueel kantoor is een gedeelde 2D- of 3D-ruimte waarin iedereen in het team een poppetje of een videovak heeft. De ruimte blijft open terwijl iedereen werkt, zodat je in één oogopslag ziet wie er is, wie bezig is en wie in gesprek is.",
+              "Gesprekken beginnen zoals op kantoor: je loopt naar iemand toe en praat. De meeste virtuele kantoren hebben ook vergaderruimtes, schermdelen en chat, zodat een klein team er het grootste deel van de dag kan doorbrengen."
+            ]
+          },
+          {
+            "title": "Zo kies je",
+            "items": [
+              {
+                "title": "Hoe je betaalt",
+                "body": "De meeste rekenen per persoon per maand, en dat loopt op als het team groeit. Sommige rekenen per kantoor of per ruimte."
+              },
+              {
+                "title": "Het gratis abonnement",
+                "body": "Kijk naar de grenzen: hoeveel mensen, hoeveel uur per dag en hoe lang een vergadering mag duren."
+              },
+              {
+                "title": "Browser of app",
+                "body": "Een kantoor in de browser hoef je niet te installeren, wat telt voor gasten en nieuwe collega's. Een desktopapp kan op je eigen computer soepeler aanvoelen."
+              },
+              {
+                "title": "Hoe een gesprek begint",
+                "body": "Met ruimtelijke audio hoort men je zodra je dichtbij bent. Met bellen-als-je-dichtbij-bent hoort niemand iets tot iemand het gesprek start, en dat werkt rustiger."
+              },
+              {
+                "title": "Wat je elke dag gebruikt",
+                "body": "Gesprekken, een vergaderruimte, chat en schermdelen gebruiken de meeste teams. Opnames, AI-notities en kaarteditors helpen sommige teams en kosten meestal meer."
+              }
+            ]
+          },
+          {
+            "title": "De negen die de moeite waard zijn",
+            "items": [
+              {
+                "title": "TinyFloor",
+                "detail": "Gratis voor 3 mensen · $ 19 per maand voor 10, $ 49 voor 25",
+                "body": "Een kantoor in pixelart in de browser, op computer en telefoon. Loop naar een collega om een videogesprek te starten, ga aan een tafel zitten om te vergaderen, met chatkanalen, schermdelen en een whiteboard. Eén prijs voor het hele kantoor, niet per persoon. Geen opnames, AI-notities of kaarteditor, en een kantoor heeft plek voor maximaal 25 mensen."
+              },
+              {
+                "title": "Gather",
+                "detail": "Geen gratis abonnement · $ 12 per lid per maand bij jaarbetaling, $ 15 per maand",
+                "body": "Het bekendste virtuele kantoor en het meest complete: een kantoor dat je zelf ontwerpt, opnemen en transcriberen, koppelingen met Google Calendar, GitHub en Spotify, en gasten. Stopte in 2025 met het gratis abonnement, dus voor een klein team is het een van de duurdere keuzes."
+              },
+              {
+                "title": "SoWork",
+                "detail": "Gratis voor 10 leden · Basic $ 5,40 per lid per maand bij jaarbetaling",
+                "body": "Een virtueel kantoor met vergaderruimtes, teamchat en een agendakoppeling. Het gratis abonnement heeft plek voor 10 leden, maar beperkt vergaderingen tot 30 minuten en heeft geen opnames. Premium, voor $ 12 per lid per maand bij jaarbetaling, voegt AI-samenvattingen, onbeperkte opnames en statistieken toe."
+              },
+              {
+                "title": "Kumospace",
+                "detail": "Gratis voor 5 leden · Business $ 16 per gebruiker per maand",
+                "body": "Een verzorgde ruimte met ruimtelijke audio en apps voor desktop en telefoon, populair voor sociale evenementen én als kantoor. Het gratis abonnement dekt 5 leden en één verdieping. Voor een team van 10 of meer is het een van de duurste."
+              },
+              {
+                "title": "WorkAdventure",
+                "detail": "Gratis voor 10 mensen tegelijk · Business € 8 per gebruiker per maand",
+                "body": "Een open-source wereld in pixelart die je zelf kunt hosten, met kaarten gebouwd in de Tiled-editor. Geschikt voor technische teams en evenementen die volledige controle willen. Een eigen kaart bouwen of je eigen server draaien is echt werk."
+              },
+              {
+                "title": "SpatialChat",
+                "detail": "Gratis 2 uur per dag voor 12 · $ 5 per gebruiker per dag, Business vanaf $ 399 per maand",
+                "body": "Ruimtes met ruimtelijke audio en videobubbels, veel gebruikt voor evenementen, lessen en workshops. Het gratis abonnement past bij losse sessies; een team dat er de hele dag zit, heeft een Business-abonnement nodig."
+              },
+              {
+                "title": "Roam",
+                "detail": "Geen gratis abonnement · $ 19,50 per actief lid per maand",
+                "body": "Een desktopapp voor Mac en Windows die een virtueel kantoor combineert met vergaderingen, chat, een AI-assistent en webinars. Je betaalt alleen voor leden die het die maand gebruiken. Het is een complete werksuite, met de prijs van een complete suite."
+              },
+              {
+                "title": "oVice",
+                "detail": "Gratis versie zonder support · $ 65 per maand per ruimte, bij jaarbetaling",
+                "body": "Een 2D-kantoor met prijzen per ruimte: Entry-S past bij ongeveer 10 vaste leden, en Business Starter kost $ 16 per gebruiker per maand vanaf 20 gebruikers. Sterk in Japan en bij grotere bedrijven. Het gratis abonnement draait op een previewversie zonder support."
+              },
+              {
+                "title": "Sococo",
+                "detail": "Geen gratis abonnement · $ 13,49 per plek per maand, bij jaarbetaling, minimaal 10 plekken",
+                "body": "Een plattegrond van kamers van bovenaf in plaats van poppetjes, met meerdere schermdelingen tegelijk. Elke plek bevat 500 vergaderminuten per maand. Gemaakt voor bedrijven die software per jaar inkopen."
+              }
+            ]
+          },
+          {
+            "title": "Wat een team van 10 per maand betaalt",
+            "body": [
+              "Hier is hetzelfde team van 10 mensen op het goedkoopste abonnement van elk product dat ze allemaal de hele dag plek biedt."
+            ],
+            "table": {
+              "head": [
+                "Product",
+                "Hoe je betaalt",
+                "Gratis abonnement",
+                "10 mensen, per maand"
+              ],
+              "rows": [
+                [
+                  "TinyFloor Plus",
+                  "Eén prijs per kantoor",
+                  "Tot 3 mensen",
+                  "$ 19"
+                ],
+                [
+                  "SoWork Basic",
+                  "Per lid, jaarlijks",
+                  "Tot 10 leden, vergaderingen van 30 minuten",
+                  "$ 54"
+                ],
+                [
+                  "oVice Entry-S",
+                  "Per ruimte, jaarlijks",
+                  "Previewversie, zonder support",
+                  "$ 65"
+                ],
+                [
+                  "WorkAdventure Business",
+                  "Per gebruiker",
+                  "Tot 10 mensen tegelijk",
+                  "€ 80"
+                ],
+                [
+                  "Gather Essential",
+                  "Per lid",
+                  "Geen, proefperiode van 30 dagen",
+                  "$ 120 jaarlijks, $ 150 maandelijks"
+                ],
+                [
+                  "Sococo",
+                  "Per plek, jaarlijks, minimaal 10",
+                  "Geen, een proefperiode",
+                  "$ 134,90"
+                ],
+                [
+                  "Kumospace Business",
+                  "Per gebruiker",
+                  "Tot 5 leden",
+                  "$ 160"
+                ],
+                [
+                  "Roam",
+                  "Per actief lid, maandelijks",
+                  "Geen, proefperiode van 14 dagen",
+                  "$ 195"
+                ],
+                [
+                  "SpatialChat",
+                  "Dagpassen of Business-abonnement",
+                  "2 uur per dag, tot 12 mensen",
+                  "$ 50 per dag met passen, Business vanaf $ 399"
+                ]
+              ],
+              "note": "Prijzen zonder belasting, van de prijspagina van elk product in oktober 2026. Een gratis abonnement dat je hele team dekt, verslaat elk betaald abonnement: dat van WorkAdventure dekt 10 mensen tegelijk, dat van SoWork 10 leden met vergaderingen van 30 minuten."
+            }
+          },
+          {
+            "title": "Welke voor welk team",
+            "items": [
+              {
+                "title": "Een klein team met een klein budget",
+                "body": "TinyFloor, voor $ 19 per maand tot 10 mensen, of het gratis abonnement van SoWork als vergaderingen van 30 minuten genoeg zijn."
+              },
+              {
+                "title": "Je wilt opnames en AI-notities",
+                "body": "Gather, SoWork Premium of Roam."
+              },
+              {
+                "title": "Je wilt je kantoor zelf ontwerpen of evenementen houden",
+                "body": "Gather, WorkAdventure, Kumospace of SpatialChat."
+              },
+              {
+                "title": "Je moet het zelf hosten",
+                "body": "WorkAdventure, dat open source is en gemaakt om zelf te hosten."
+              },
+              {
+                "title": "Je hebt liever een desktopapp",
+                "body": "Roam, of Gather en Kumospace, die naast de browser ook apps hebben."
+              },
+              {
+                "title": "Een groter bedrijf",
+                "body": "Gather, Roam, oVice Business of Sococo, die aan grotere teams verkopen met jaarcontracten."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor is de eenvoudige en goedkope: een kantoor in de browser waar je naar iemand toe loopt om te praten, met een vergaderruimte, chat en schermdelen, voor één prijs per kantoor. Het is voor teams van 2 tot 25 die de hele dag een kantoor open willen hebben. Heb je opnames, AI-notities of een zelf ontworpen kaart nodig, dan passen Gather of SoWork Premium beter. TinyFloor is gratis voor maximaal 3 mensen, dus je kunt het eerst met je team uitproberen."
+        },
+        "faq": [
+          {
+            "q": "Wat is de beste gratis virtuele-kantoorsoftware?",
+            "a": "Dat hangt af van de grootte van je team. Het gratis abonnement van SoWork dekt 10 leden met vergaderingen van 30 minuten, dat van WorkAdventure 10 mensen tegelijk, dat van Kumospace 5 leden en dat van TinyFloor 3 mensen met alle functies."
+          },
+          {
+            "q": "Wat is het goedkoopste virtuele kantoor voor een klein team?",
+            "a": "Voor een team van 10 op een betaald abonnement kost TinyFloor Plus $ 19 per maand voor het hele kantoor. Tools die per persoon rekenen, kosten voor hetzelfde team $ 54 tot $ 195 per maand."
+          },
+          {
+            "q": "Is Gather nog gratis?",
+            "a": "Nee. Gather stopte in 2025 met het gratis abonnement. Er is een proefperiode van 30 dagen, daarna kost het $ 12 per lid per maand bij jaarbetaling of $ 15 per maand."
+          },
+          {
+            "q": "Moet ik iets installeren?",
+            "a": "Niet voor TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat of oVice, die in de browser werken. Roam is een desktopapp, en Kumospace en Gather bieden ook apps."
+          }
+        ]
+      },
+      "gatherPricing": {
+        "label": "Prijzen van Gather",
+        "meta": {
+          "title": "Prijzen van Gather in 2026: wat een team van 5, 10 of 25 betaalt",
+          "description": "Gather kost $ 12 per lid per maand bij jaarbetaling of $ 15 per maand, zonder gratis abonnement. Wat dat is voor teams van 5, 10, 25 en 50, en wat hetzelfde team elders betaalt."
+        },
+        "title": "Wat kost <em>Gather?</em>",
+        "intro": "Sinds september 2025 rekent Gather voor elk lid en heeft het geen gratis abonnement. Hier zie je wat dat voor je team betekent, uitgerekend per teamgrootte, en wat hetzelfde team bij andere virtuele kantoren betaalt. De prijzen komen van Gathers eigen prijs- en helppagina's, gecontroleerd in oktober 2026.",
+        "sections": [
+          {
+            "title": "De abonnementen van Gather",
+            "body": [
+              "Gather heeft één abonnement voor de meeste teams, Essential, en een Custom-abonnement voor grote organisaties."
+            ],
+            "items": [
+              {
+                "title": "Essential",
+                "body": "$ 15 per lid per maand, of $ 12 bij jaarbetaling. Bevat alle functies van Gather: een eigen virtueel kantoor, onbeperkt vergaderen en chatten, koppelingen met Google Calendar, GitHub en Spotify, gasten, en vergaderingen opnemen en transcriberen met een maandelijks aantal uren."
+              },
+              {
+                "title": "Custom",
+                "body": "Prijs via het salesteam van Gather, voor grote teams die begeleide onboarding en enterprisefuncties willen."
+              },
+              {
+                "title": "Gratis proefperiode",
+                "body": "30 dagen gratis, daarna Essential. Er is geen blijvend gratis abonnement."
+              }
+            ]
+          },
+          {
+            "title": "Wat Gather kost per teamgrootte",
+            "table": {
+              "head": [
+                "Team",
+                "Maandelijks betaald",
+                "Jaarlijks betaald, per maand",
+                "Per jaar, jaarlijks betaald"
+              ],
+              "rows": [
+                [
+                  "5 mensen",
+                  "$ 75",
+                  "$ 60",
+                  "$ 720"
+                ],
+                [
+                  "10 mensen",
+                  "$ 150",
+                  "$ 120",
+                  "$ 1.440"
+                ],
+                [
+                  "25 mensen",
+                  "$ 375",
+                  "$ 300",
+                  "$ 3.600"
+                ],
+                [
+                  "50 mensen",
+                  "$ 750",
+                  "$ 600",
+                  "$ 7.200"
+                ]
+              ],
+              "note": "Gather rekent voor elk lid, of diegene die dag nu op kantoor komt of niet. Prijzen zonder belasting."
+            }
+          },
+          {
+            "title": "Wat er in 2025 veranderde",
+            "body": [
+              "Op 15 september 2025 bracht Gather Gather 2.0 uit en zette zowel de nieuwe als de oorspronkelijke versie over op prijzen per lid: $ 15 per lid per maand, of $ 12 bij jaarbetaling. Daarvoor betaalden teams voor het aantal mensen dat tegelijk op kantoor was.",
+              "Het gratis abonnement verdween voor beide versies. Teams die al betaalden, konden hun oude prijs vastzetten vóór de overstap. Voor een klein team dat Gather gratis gebruikte, was dit het moment dat het geld ging kosten."
+            ]
+          },
+          {
+            "title": "Hetzelfde team elders",
+            "body": [
+              "Dit betalen dezelfde teams per maand bij andere virtuele kantoren, op het goedkoopste abonnement dat ze plek biedt."
+            ],
+            "table": {
+              "head": [
+                "Team",
+                "Gather, jaarlijks",
+                "TinyFloor",
+                "SoWork Basic, jaarlijks",
+                "Kumospace Business"
+              ],
+              "rows": [
+                [
+                  "5 mensen",
+                  "$ 60",
+                  "$ 19",
+                  "$ 27",
+                  "Gratis (tot 5 leden)"
+                ],
+                [
+                  "10 mensen",
+                  "$ 120",
+                  "$ 19",
+                  "$ 54",
+                  "$ 160"
+                ],
+                [
+                  "25 mensen",
+                  "$ 300",
+                  "$ 49",
+                  "$ 135",
+                  "$ 400"
+                ]
+              ],
+              "note": "Van de prijspagina van elk product in oktober 2026, zonder belasting. Het gratis abonnement van SoWork dekt ook tot 10 leden, met vergaderingen van maximaal 30 minuten, en dat van WorkAdventure tot 10 mensen tegelijk."
+            }
+          },
+          {
+            "title": "Wanneer Gather het waard is",
+            "items": [
+              {
+                "title": "Je wilt je kantoor zelf ontwerpen",
+                "body": "Met Gather bouw je verdiepingen, kamers en objecten. De meeste alternatieven geven je een kant-en-klaar kantoor."
+              },
+              {
+                "title": "Je hebt opnames en transcripties nodig",
+                "body": "Essential bevat ze, met een aantal uren per maand."
+              },
+              {
+                "title": "Je dag draait om Google Calendar en GitHub",
+                "body": "De koppelingen van Gather tonen je status en activiteit op kantoor."
+              },
+              {
+                "title": "Wanneer niet",
+                "body": "Als je team vooral wil zien wie er is, wil praten en vergaderen, betaal je voor functies die je niet gebruikt, elke maand, voor elke persoon."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Waar TinyFloor past",
+          "body": "TinyFloor houdt de kern van wat Gather doet: een kantoor waar je rondloopt en praat door naar iemand toe te lopen, met een vergaderruimte, chat en schermdelen. Het kost $ 19 per maand tot 10 mensen en $ 49 tot 25, één prijs voor het hele kantoor, en is gratis tot 3. Het heeft geen opnames, transcriptie of kantooreditor; als je daarop leunt, past Gather beter."
+        },
+        "faq": [
+          {
+            "q": "Wat kost Gather?",
+            "a": "$ 15 per lid per maand bij maandelijkse betaling, of $ 12 per lid per maand bij jaarbetaling, op het Essential-abonnement. Grotere organisaties kunnen een Custom-abonnement aanvragen."
+          },
+          {
+            "q": "Heeft Gather een gratis abonnement?",
+            "a": "Nee. Gather stopte in september 2025 met het gratis abonnement. In plaats daarvan is er een gratis proefperiode van 30 dagen."
+          },
+          {
+            "q": "Wat kost Gather voor 10 mensen?",
+            "a": "$ 150 per maand bij maandelijkse betaling, of $ 120 per maand bij jaarbetaling ($ 1.440 per jaar)."
+          },
+          {
+            "q": "Wat is een goedkoper alternatief voor Gather?",
+            "a": "TinyFloor kost $ 19 per maand tot 10 mensen en is gratis tot 3. Het Basic-abonnement van SoWork kost $ 5,40 per lid per maand bij jaarbetaling, en het gratis abonnement dekt 10 leden met vergaderingen van 30 minuten."
           }
         ]
       }

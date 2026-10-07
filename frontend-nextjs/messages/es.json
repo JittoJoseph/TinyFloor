@@ -2639,7 +2639,7 @@
     "hub": {
       "meta": {
         "title": "Guías para líderes de equipos remotos",
-        "description": "Guías prácticas para quienes dirigen equipos remotos: team building, juegos para reuniones, cultura, comunicación y cómo funciona el chat por cercanía."
+        "description": "Guías prácticas para quienes dirigen equipos remotos: team building, juegos para reuniones, cultura, comunicación, chat de proximidad y cómo elegir software de oficina virtual."
       },
       "title": "Guías para <em>equipos remotos.</em>",
       "body": "Prácticas, breves y escritas por gente que trabaja en remoto. Usa lo que te sirva y salta el resto."
@@ -3344,6 +3344,379 @@
           {
             "q": "¿Se puede usar el chat por cercanía para trabajar?",
             "a": "Sí. Oficinas virtuales como TinyFloor, Gather y SpatialChat lo usan para que los equipos remotos hablen acercándose en lugar de programar llamadas."
+          }
+        ]
+      },
+      "bestVirtualOffice": {
+        "label": "Mejor software de oficina virtual",
+        "meta": {
+          "title": "Mejor software de oficina virtual en 2026, comparado con honestidad",
+          "description": "Nueve oficinas virtuales para equipos remotos comparadas por precio, plan gratuito y en qué destaca cada una, con lo que paga un equipo de 10 cada mes."
+        },
+        "title": "El mejor software de oficina virtual <em>en 2026, comparado con honestidad.</em>",
+        "intro": "Una oficina virtual le da a un equipo remoto un lugar donde estar todo el día: ves quién está y hablas con alguien acercándote, no mandando un enlace. Aquí tienes las nueve que vale la pena mirar, cuánto cuesta cada una y para quién es. Hacemos TinyFloor, así que no somos neutrales; decimos en qué es mejor cada producto que el nuestro, y cada precio sale de su propia página de precios, revisada en octubre de 2026.",
+        "sections": [
+          {
+            "title": "Qué es una oficina virtual",
+            "body": [
+              "Una oficina virtual es un espacio compartido en 2D o 3D donde cada persona del equipo tiene un personaje o un recuadro. El espacio sigue abierto mientras todos trabajan, así que ves de un vistazo quién está, quién está ocupado y quién está en una llamada.",
+              "Las conversaciones empiezan como en una oficina: te acercas a alguien y hablas. La mayoría de las oficinas virtuales también tienen salas de reuniones, pantalla compartida y chat, así que un equipo pequeño puede pasar ahí casi todo el día."
+            ]
+          },
+          {
+            "title": "Cómo elegir",
+            "items": [
+              {
+                "title": "Cómo se cobra",
+                "body": "La mayoría cobra cada mes por persona, y eso suma a medida que crece el equipo. Algunas cobran por oficina o por espacio."
+              },
+              {
+                "title": "El plan gratuito",
+                "body": "Mira los límites: cuántas personas, cuántas horas al día y cuánto puede durar una reunión."
+              },
+              {
+                "title": "Navegador o app",
+                "body": "Una oficina en el navegador no necesita instalar nada, lo que importa para invitados y personas nuevas. Una app de escritorio puede sentirse más fluida en tu propio ordenador."
+              },
+              {
+                "title": "Cómo empieza una conversación",
+                "body": "Con audio espacial te oyen en cuanto estás cerca. Con llamadas al acercarte no se oye nada hasta que alguien inicia la llamada, lo que es más tranquilo para trabajar."
+              },
+              {
+                "title": "Lo que usarás cada día",
+                "body": "Llamadas, una sala de reuniones, chat y pantalla compartida es lo que usan la mayoría de los equipos. Las grabaciones, las notas con IA y los editores de mapas sirven a algunos equipos y suelen costar más."
+              }
+            ]
+          },
+          {
+            "title": "Las nueve que vale la pena mirar",
+            "items": [
+              {
+                "title": "TinyFloor",
+                "detail": "Gratis para 3 personas · 19 $ al mes para 10, 49 $ para 25",
+                "body": "Una oficina en pixel art en el navegador, en ordenador y móvil. Acércate a un compañero para iniciar una videollamada, siéntate en una mesa para reunirte, con canales de chat, pantalla compartida y pizarra. Un solo precio para toda la oficina, no por persona. No tiene grabaciones, notas con IA ni editor de mapas, y cada oficina admite como máximo 25 personas."
+              },
+              {
+                "title": "Gather",
+                "detail": "Sin plan gratuito · 12 $ por miembro al mes con facturación anual, 15 $ mensual",
+                "body": "La oficina virtual más conocida y la más completa: una oficina que diseñas tú, grabación y transcripción, integraciones con Google Calendar, GitHub y Spotify, e invitados. Eliminó su plan gratuito en 2025, así que es de las opciones más caras para un equipo pequeño."
+              },
+              {
+                "title": "SoWork",
+                "detail": "Gratis para 10 miembros · Basic 5,40 $ por miembro al mes con facturación anual",
+                "body": "Una oficina virtual con salas de reuniones, chat de equipo e integración con el calendario. El plan gratuito admite hasta 10 miembros pero limita las reuniones a 30 minutos y no tiene grabaciones. Premium, a 12 $ por miembro al mes con facturación anual, añade resúmenes con IA, grabaciones ilimitadas y analíticas."
+              },
+              {
+                "title": "Kumospace",
+                "detail": "Gratis para 5 miembros · Business 16 $ por usuario al mes",
+                "body": "Un espacio cuidado con audio espacial y apps para escritorio y móvil, popular tanto para eventos sociales como para oficinas. El plan gratuito cubre 5 miembros y una planta. Para un equipo de 10 o más está entre los más caros."
+              },
+              {
+                "title": "WorkAdventure",
+                "detail": "Gratis para 10 personas a la vez · Business 8 € por usuario al mes",
+                "body": "Un mundo de código abierto en pixel art que puedes alojar tú mismo, con mapas que construyes en el editor Tiled. Bueno para equipos técnicos y eventos que quieren control total. Montar un mapa propio o tu propio servidor lleva trabajo de verdad."
+              },
+              {
+                "title": "SpatialChat",
+                "detail": "Gratis 2 horas al día para 12 · 5 $ por usuario al día, Business desde 399 $ al mes",
+                "body": "Salas con audio espacial y burbujas de vídeo, muy usadas para eventos, clases y talleres. El plan gratuito sirve para sesiones puntuales; un equipo que está todo el día necesita un plan Business."
+              },
+              {
+                "title": "Roam",
+                "detail": "Sin plan gratuito · 19,50 $ por miembro activo al mes",
+                "body": "Una app de escritorio para Mac y Windows que junta una oficina virtual con reuniones, chat, un asistente de IA y webinars. Solo pagas por los miembros que la usan ese mes. Es una suite de trabajo completa, con precio de suite completa."
+              },
+              {
+                "title": "oVice",
+                "detail": "Versión gratuita sin soporte · 65 $ al mes por espacio, con facturación anual",
+                "body": "Una oficina en 2D con precio por espacio: Entry-S sirve para unos 10 miembros habituales, y Business Starter cuesta 16 $ por usuario al mes a partir de 20 usuarios. Fuerte en Japón y en empresas grandes. El plan gratuito funciona sobre una versión preliminar sin soporte."
+              },
+              {
+                "title": "Sococo",
+                "detail": "Sin plan gratuito · 13,49 $ por puesto al mes, con facturación anual, mínimo 10 puestos",
+                "body": "Un plano de salas visto desde arriba en lugar de personajes, con varias pantallas compartidas a la vez. Cada puesto incluye 500 minutos de reunión al mes. Pensado para empresas que compran software por años."
+              }
+            ]
+          },
+          {
+            "title": "Lo que paga un equipo de 10 cada mes",
+            "body": [
+              "Este es el mismo equipo de 10 personas en el plan más barato de cada producto que les sirve todo el día."
+            ],
+            "table": {
+              "head": [
+                "Producto",
+                "Cómo se cobra",
+                "Plan gratuito",
+                "10 personas, al mes"
+              ],
+              "rows": [
+                [
+                  "TinyFloor Plus",
+                  "Un precio por oficina",
+                  "Hasta 3 personas",
+                  "19 $"
+                ],
+                [
+                  "SoWork Basic",
+                  "Por miembro, anual",
+                  "Hasta 10 miembros, reuniones de 30 minutos",
+                  "54 $"
+                ],
+                [
+                  "oVice Entry-S",
+                  "Por espacio, anual",
+                  "Versión preliminar, sin soporte",
+                  "65 $"
+                ],
+                [
+                  "WorkAdventure Business",
+                  "Por usuario",
+                  "Hasta 10 personas a la vez",
+                  "80 €"
+                ],
+                [
+                  "Gather Essential",
+                  "Por miembro",
+                  "Ninguno, prueba de 30 días",
+                  "120 $ anual, 150 $ mensual"
+                ],
+                [
+                  "Sococo",
+                  "Por puesto, anual, mínimo 10",
+                  "Ninguno, una prueba",
+                  "134,90 $"
+                ],
+                [
+                  "Kumospace Business",
+                  "Por usuario",
+                  "Hasta 5 miembros",
+                  "160 $"
+                ],
+                [
+                  "Roam",
+                  "Por miembro activo, mensual",
+                  "Ninguno, prueba de 14 días",
+                  "195 $"
+                ],
+                [
+                  "SpatialChat",
+                  "Pases de un día o plan Business",
+                  "2 horas al día, hasta 12 personas",
+                  "50 $ al día con pases, Business desde 399 $"
+                ]
+              ],
+              "note": "Precios sin impuestos, de la página de precios de cada producto en octubre de 2026. Un plan gratuito que cubra a todo tu equipo gana a cualquiera de pago: el de WorkAdventure cubre 10 personas a la vez, y el de SoWork 10 miembros con reuniones de 30 minutos."
+            }
+          },
+          {
+            "title": "Cuál para cada equipo",
+            "items": [
+              {
+                "title": "Un equipo pequeño con poco presupuesto",
+                "body": "TinyFloor, a 19 $ al mes para hasta 10 personas, o el plan gratuito de SoWork si te bastan reuniones de 30 minutos."
+              },
+              {
+                "title": "Quieres grabaciones y notas con IA",
+                "body": "Gather, SoWork Premium o Roam."
+              },
+              {
+                "title": "Quieres diseñar tu oficina u organizar eventos",
+                "body": "Gather, WorkAdventure, Kumospace o SpatialChat."
+              },
+              {
+                "title": "Necesitas alojarlo tú mismo",
+                "body": "WorkAdventure, que es de código abierto y está hecho para alojarse por tu cuenta."
+              },
+              {
+                "title": "Prefieres una app de escritorio",
+                "body": "Roam, o Gather y Kumospace, que tienen apps además del navegador."
+              },
+              {
+                "title": "Una empresa más grande",
+                "body": "Gather, Roam, oVice Business o Sococo, que venden a equipos grandes con contratos anuales."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Dónde encaja TinyFloor",
+          "body": "TinyFloor es la opción sencilla y económica: una oficina en el navegador donde te acercas para hablar, con sala de reuniones, chat y pantalla compartida, por un precio por oficina. Es para equipos de 2 a 25 que quieren una oficina abierta todo el día. Si necesitas grabaciones, notas con IA o un mapa que diseñes tú, Gather o SoWork Premium te irán mejor. TinyFloor es gratis para hasta 3 personas, así que puedes probarlo primero con tu equipo."
+        },
+        "faq": [
+          {
+            "q": "¿Cuál es el mejor software de oficina virtual gratis?",
+            "a": "Depende del tamaño de tu equipo. El plan gratuito de SoWork cubre 10 miembros con reuniones de 30 minutos, el de WorkAdventure 10 personas a la vez, el de Kumospace 5 miembros y el de TinyFloor 3 personas con todas las funciones."
+          },
+          {
+            "q": "¿Cuál es la oficina virtual más barata para un equipo pequeño?",
+            "a": "Para un equipo de 10 en un plan de pago, TinyFloor Plus cuesta 19 $ al mes por toda la oficina. Las herramientas que cobran por persona cuestan de 54 a 195 $ al mes para el mismo equipo."
+          },
+          {
+            "q": "¿Gather sigue siendo gratis?",
+            "a": "No. Gather eliminó su plan gratuito en 2025. Tiene una prueba de 30 días y después cuesta 12 $ por miembro al mes con facturación anual o 15 $ mensual."
+          },
+          {
+            "q": "¿Tengo que instalar algo?",
+            "a": "No para TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat u oVice, que funcionan en el navegador. Roam es una app de escritorio, y Kumospace y Gather también ofrecen apps."
+          }
+        ]
+      },
+      "gatherPricing": {
+        "label": "Precio de Gather",
+        "meta": {
+          "title": "Precio de Gather en 2026: lo que paga un equipo de 5, 10 o 25",
+          "description": "Gather cuesta 12 $ por miembro al mes con facturación anual o 15 $ mensual, sin plan gratuito. Lo que supone para equipos de 5, 10, 25 y 50, y lo que paga el mismo equipo en otras opciones."
+        },
+        "title": "¿Cuánto cuesta <em>Gather?</em>",
+        "intro": "Desde septiembre de 2025, Gather cobra por cada miembro y no tiene plan gratuito. Aquí tienes lo que supone para tu equipo, calculado por tamaño, y lo que paga el mismo equipo en otras oficinas virtuales. Los precios salen de las páginas de precios y de ayuda de Gather, revisadas en octubre de 2026.",
+        "sections": [
+          {
+            "title": "Los planes de Gather",
+            "body": [
+              "Gather tiene un plan para la mayoría de los equipos, Essential, y un plan Custom para organizaciones grandes."
+            ],
+            "items": [
+              {
+                "title": "Essential",
+                "body": "15 $ por miembro al mes, o 12 $ con facturación anual. Incluye todas las funciones de Gather: una oficina virtual personalizada, reuniones y chat ilimitados, integraciones con Google Calendar, GitHub y Spotify, invitados, y grabación y transcripción de reuniones con un cupo de horas al mes."
+              },
+              {
+                "title": "Custom",
+                "body": "Con precio del equipo de ventas de Gather, para equipos grandes que quieren una incorporación a medida y funciones empresariales."
+              },
+              {
+                "title": "Prueba gratuita",
+                "body": "30 días gratis y después Essential. No hay plan gratuito permanente."
+              }
+            ]
+          },
+          {
+            "title": "Lo que cuesta Gather según el tamaño del equipo",
+            "table": {
+              "head": [
+                "Equipo",
+                "Facturación mensual",
+                "Facturación anual, al mes",
+                "Al año, facturación anual"
+              ],
+              "rows": [
+                [
+                  "5 personas",
+                  "75 $",
+                  "60 $",
+                  "720 $"
+                ],
+                [
+                  "10 personas",
+                  "150 $",
+                  "120 $",
+                  "1.440 $"
+                ],
+                [
+                  "25 personas",
+                  "375 $",
+                  "300 $",
+                  "3.600 $"
+                ],
+                [
+                  "50 personas",
+                  "750 $",
+                  "600 $",
+                  "7.200 $"
+                ]
+              ],
+              "note": "Gather cobra por cada miembro, vaya o no a la oficina ese día. Precios sin impuestos."
+            }
+          },
+          {
+            "title": "Qué cambió en 2025",
+            "body": [
+              "El 15 de septiembre de 2025, Gather lanzó Gather 2.0 y pasó tanto la versión nueva como la original a un precio por miembro: 15 $ por miembro al mes, o 12 $ con facturación anual. Antes, los equipos pagaban según cuántas personas estaban en la oficina a la vez.",
+              "El plan gratuito terminó para las dos versiones. Los equipos que ya pagaban pudieron mantener su precio anterior antes del cambio. Para un equipo pequeño que usaba Gather gratis, ese fue el momento en que empezó a costar dinero."
+            ]
+          },
+          {
+            "title": "El mismo equipo en otras opciones",
+            "body": [
+              "Esto es lo que pagan los mismos equipos al mes en otras oficinas virtuales, con el plan más barato que les sirve."
+            ],
+            "table": {
+              "head": [
+                "Equipo",
+                "Gather, anual",
+                "TinyFloor",
+                "SoWork Basic, anual",
+                "Kumospace Business"
+              ],
+              "rows": [
+                [
+                  "5 personas",
+                  "60 $",
+                  "19 $",
+                  "27 $",
+                  "Gratis (hasta 5 miembros)"
+                ],
+                [
+                  "10 personas",
+                  "120 $",
+                  "19 $",
+                  "54 $",
+                  "160 $"
+                ],
+                [
+                  "25 personas",
+                  "300 $",
+                  "49 $",
+                  "135 $",
+                  "400 $"
+                ]
+              ],
+              "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos. El plan gratuito de SoWork también cubre hasta 10 miembros, con reuniones de 30 minutos como máximo, y el de WorkAdventure hasta 10 personas a la vez."
+            }
+          },
+          {
+            "title": "Cuándo vale la pena Gather",
+            "items": [
+              {
+                "title": "Quieres diseñar tu oficina",
+                "body": "Gather te deja organizar plantas, salas y objetos. La mayoría de las alternativas te dan una oficina ya hecha."
+              },
+              {
+                "title": "Necesitas grabaciones y transcripciones",
+                "body": "Essential las incluye, con un cupo de horas cada mes."
+              },
+              {
+                "title": "Tu día gira en torno a Google Calendar y GitHub",
+                "body": "Las integraciones de Gather muestran tu estado y tu actividad en la oficina."
+              },
+              {
+                "title": "Cuándo no",
+                "body": "Si tu equipo necesita sobre todo ver quién está, hablar y reunirse, pagas por funciones que no vas a usar, cada mes, por cada persona."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Dónde encaja TinyFloor",
+          "body": "TinyFloor mantiene lo esencial de lo que hace Gather: una oficina por la que te mueves y donde hablas acercándote a alguien, con sala de reuniones, chat y pantalla compartida. Cuesta 19 $ al mes para hasta 10 personas y 49 $ para hasta 25, un solo precio para toda la oficina, y es gratis para hasta 3. No tiene grabaciones, transcripción ni editor de oficina; si dependes de eso, Gather te irá mejor."
+        },
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta Gather?",
+            "a": "15 $ por miembro al mes con facturación mensual, o 12 $ por miembro al mes con facturación anual, en el plan Essential. Las organizaciones grandes pueden pedir un plan Custom."
+          },
+          {
+            "q": "¿Gather tiene plan gratuito?",
+            "a": "No. Gather eliminó su plan gratuito en septiembre de 2025. En su lugar ofrece una prueba gratuita de 30 días."
+          },
+          {
+            "q": "¿Cuánto cuesta Gather para 10 personas?",
+            "a": "150 $ al mes con facturación mensual, o 120 $ al mes con facturación anual (1.440 $ al año)."
+          },
+          {
+            "q": "¿Qué alternativa a Gather es más barata?",
+            "a": "TinyFloor cuesta 19 $ al mes para hasta 10 personas y es gratis para hasta 3. El plan Basic de SoWork cuesta 5,40 $ por miembro al mes con facturación anual, y su plan gratuito cubre 10 miembros con reuniones de 30 minutos."
           }
         ]
       }

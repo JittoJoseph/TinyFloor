@@ -5,12 +5,33 @@ import { GUIDES, GUIDES_PATH, guidePath, readingMinutes, type Guide, type GuideC
 import { landingByKey } from "@/lib/landings";
 import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
+import { AUTHOR } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
 
 /** The column a guide is read in: narrow enough for long lines of text to stay easy. */
 const READ = "mx-auto w-full max-w-[44rem]";
+
+/** "By Jitto Joseph" in the page's language, the name linking to LinkedIn wherever the language puts it. */
+function byline(text: string) {
+  const at = text.indexOf(AUTHOR.name);
+  if (at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <a
+        href={AUTHOR.linkedin}
+        target="_blank"
+        rel="author noopener noreferrer"
+        className="text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground"
+      >
+        {AUTHOR.name}
+      </a>
+      {text.slice(at + AUTHOR.name.length)}
+    </>
+  );
+}
 
 const dateIn = (locale: string, date: string) =>
   new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
@@ -73,7 +94,7 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
             </h1>
             <p className={cn(LEAD, "mt-7")}>{copy.intro}</p>
             <p className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-muted-foreground">
-              <span>{t("by", { name: "Jitto Joseph" })}</span>
+              <span>{byline(t("by", { name: AUTHOR.name }))}</span>
               <span aria-hidden>·</span>
               <span>{t("minutes", { count: minutes })}</span>
               <span aria-hidden>·</span>
@@ -134,6 +155,42 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
                       ))}
                     </ul>
                   )
+                )}
+                {section.table && (
+                  <figure className="mt-8">
+                    {/* Wide on a phone: the table scrolls inside its card rather than the page. */}
+                    <div className="overflow-x-auto rounded-[20px] bg-muted/80">
+                      <table className="w-full min-w-[34rem] border-collapse text-start text-[14.5px] leading-[1.5]">
+                        <thead>
+                          <tr>
+                            {section.table.head.map((cell) => (
+                              <th key={cell} scope="col" className="px-4 pb-2.5 pt-4 text-start text-[12.5px] font-medium text-muted-foreground first:ps-5 last:pe-5">
+                                {cell}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row) => (
+                            <tr key={row[0]} className="border-t border-foreground/[0.06]">
+                              {row.map((cell, column) =>
+                                column === 0 ? (
+                                  <th key={column} scope="row" className="whitespace-nowrap px-4 py-3 text-start font-semibold text-foreground first:ps-5">
+                                    {cell}
+                                  </th>
+                                ) : (
+                                  <td key={column} className="px-4 py-3 text-foreground/80 last:pe-5">
+                                    {cell}
+                                  </td>
+                                ),
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {section.table.note && <figcaption className="mt-3 text-[13px] leading-[1.55] text-faint">{section.table.note}</figcaption>}
+                  </figure>
                 )}
               </section>
             ))}

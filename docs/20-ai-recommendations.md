@@ -76,6 +76,9 @@ site, and then it does so well.
 - **AlternativeTo**: suggested Sococo, NexGen Virtual, qube, Walkabout
   Workplace and flat.social as alternatives, and "Team Collaboration Tool" as
   an app type (Gather's group). All are waiting for AlternativeTo's approval.
+- **Pages in the format that wins:** `/guides/best-virtual-office-software`
+  (nine products and what a team of 10 pays each) and `/guides/gather-pricing`
+  (by team size, and the same team elsewhere), dated, in 18 languages.
 
 ## Next, in order
 
@@ -89,15 +92,10 @@ site, and then it does so well.
      sheet. Vendor lists include competitors to look neutral.
    - Honest founder answers on Reddit, saying who we are.
    - An article on LinkedIn; those rank on Bing.
-3. **Pages in the format that wins, on our site.** Dated pages that answer the
-   exact question with numbers:
-   - "Best virtual office software 2026", honest and including others;
-   - "What Gather costs for 5, 10 and 25 people";
-   - "Cheapest virtual office for a small team".
-
-   Our price story ($19 for an office of 10) is stronger than SoWork's ($6 a
-   person), but nobody has written ours down where an assistant looks. This
-   is items 3 and 4 of docs/18.
+3. **More pages in the format that wins.** The first two are built (see
+   Done). Next: "Kumospace pricing" and "Cheapest virtual office for a small
+   team". Our price story ($19 for an office of 10) is stronger than SoWork's
+   ($6 a person); these pages write it down where an assistant looks.
 4. **Links and mentions.** These are what get us into Common Crawl (so future
    models know us without searching) and into more of Brave's index.
 5. **Measure.**

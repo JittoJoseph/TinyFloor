@@ -1,4 +1,4 @@
-import { SITE_URL, SOCIALS } from "@/lib/site";
+import { AUTHOR, SITE_URL, SOCIALS } from "@/lib/site";
 import { localeCodes } from "@/lib/i18n/routing";
 import { localePath, socialImage } from "@/lib/seo";
 
@@ -7,6 +7,14 @@ export type Schema = Record<string, unknown>;
 const NAME = "TinyFloor";
 export const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
+/** The founder, who also writes the guides: the same Person node as founder and as author. */
+const AUTHOR_NODE: Schema = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/#author`,
+  name: AUTHOR.name,
+  url: AUTHOR.url,
+  sameAs: [AUTHOR.linkedin, AUTHOR.github],
+};
 
 /** The home page's "also on every floor" items, named after the product's own features wherever those are listed. */
 export const MORE_FEATURES = ["whiteboard", "music", "noise", "mobile", "languages"] as const;
@@ -29,15 +37,7 @@ export function siteGraph(): Schema {
         url: SITE_URL,
         logo: `${SITE_URL}/icon-512.png`,
         sameAs: Object.values(SOCIALS),
-        founder: {
-          "@type": "Person",
-          name: "Jitto Joseph",
-          url: "https://www.jittojoseph.xyz",
-          sameAs: [
-            "https://github.com/JittoJoseph",
-            "https://www.linkedin.com/in/jittojoseph17/",
-          ],
-        },
+        founder: AUTHOR_NODE,
       },
       {
         "@type": "WebSite",
@@ -165,7 +165,7 @@ export function articleNode({
     image: `${SITE_URL}${socialImage(locale, path)}`,
     datePublished: published,
     dateModified: updated,
-    author: { "@type": "Person", name: "Jitto Joseph", url: "https://www.jittojoseph.xyz" },
+    author: AUTHOR_NODE,
     publisher: { "@id": ORG_ID },
   };
 }

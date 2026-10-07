@@ -2639,7 +2639,7 @@
     "hub": {
       "meta": {
         "title": "Ratgeber für Leitende von Remote-Teams",
-        "description": "Praktische Ratgeber für alle, die Remote-Teams führen: Teambuilding, Spiele für Meetings, Kultur, Kommunikation und wie Proximity-Chat funktioniert."
+        "description": "Praktische Guides für alle, die Remote-Teams führen: Teambuilding, Spiele für Meetings, Kultur, Kommunikation, Proximity Chat und die Wahl der richtigen Virtual-Office-Software."
       },
       "title": "Ratgeber für <em>Remote-Teams.</em>",
       "body": "Praktisch, kurz und von Leuten geschrieben, die selbst remote arbeiten. Nimm, was hilft, und lass den Rest."
@@ -3344,6 +3344,379 @@
           {
             "q": "Kann man Proximity-Chat für die Arbeit nutzen?",
             "a": "Ja. Virtuelle Büros wie TinyFloor, Gather und SpatialChat nutzen ihn, damit Remote-Teams reden können, indem sie zueinander gehen, statt Calls zu planen."
+          }
+        ]
+      },
+      "bestVirtualOffice": {
+        "label": "Die beste Virtual-Office-Software",
+        "meta": {
+          "title": "Die beste Virtual-Office-Software 2026, ehrlich verglichen",
+          "description": "Neun virtuelle Büros für Remote-Teams im Vergleich: Preis, Gratis-Tarif und wofür jedes am besten ist, mit dem, was ein Team von 10 im Monat zahlt."
+        },
+        "title": "Die beste Virtual-Office-Software <em>2026, ehrlich verglichen.</em>",
+        "intro": "Ein virtuelles Büro gibt einem Remote-Team einen Ort für den ganzen Tag: Du siehst, wer da ist, und sprichst Leute an, indem du zu ihnen gehst statt einen Link zu schicken. Hier sind die neun, die einen Blick wert sind, was jedes kostet und für wen es passt. Wir machen TinyFloor, wir sind also nicht neutral; wir sagen, wo jedes Produkt stärker ist als unseres, und jeder Preis stammt von der eigenen Preisseite des Anbieters, geprüft im Oktober 2026.",
+        "sections": [
+          {
+            "title": "Was ein virtuelles Büro ist",
+            "body": [
+              "Ein virtuelles Büro ist ein gemeinsamer 2D- oder 3D-Raum, in dem jede Person im Team eine Figur oder eine Kachel hat. Der Raum bleibt offen, während alle arbeiten, sodass du auf einen Blick siehst, wer da ist, wer beschäftigt ist und wer gerade telefoniert.",
+              "Gespräche beginnen wie in einem Büro: Du gehst zu jemandem hin und redest. Die meisten virtuellen Büros haben außerdem Meetingräume, Bildschirmfreigabe und Chat, sodass ein kleines Team dort den Großteil seines Tages verbringen kann."
+            ]
+          },
+          {
+            "title": "Worauf du achten solltest",
+            "items": [
+              {
+                "title": "Wie abgerechnet wird",
+                "body": "Die meisten berechnen jeden Monat pro Person, und das summiert sich, wenn das Team wächst. Einige berechnen stattdessen pro Büro oder pro Raum."
+              },
+              {
+                "title": "Der Gratis-Tarif",
+                "body": "Prüf die Grenzen: wie viele Personen, wie viele Stunden am Tag und wie lang ein Meeting dauern darf."
+              },
+              {
+                "title": "Browser oder App",
+                "body": "Ein Büro im Browser braucht keine Installation, was für Gäste und neue Leute zählt. Eine Desktop-App kann sich auf dem eigenen Rechner flüssiger anfühlen."
+              },
+              {
+                "title": "Wie ein Gespräch beginnt",
+                "body": "Mit Spatial Audio wirst du gehört, sobald du in der Nähe bist. Bei Anrufen durch Hingehen hört man nichts, bis jemand den Anruf startet, was für die Arbeit ruhiger ist."
+              },
+              {
+                "title": "Was du jeden Tag nutzt",
+                "body": "Anrufe, ein Meetingraum, Chat und Bildschirmfreigabe sind das, was die meisten Teams nutzen. Aufzeichnungen, KI-Notizen und Karteneditoren helfen manchen Teams und kosten meist mehr."
+              }
+            ]
+          },
+          {
+            "title": "Die neun, die einen Blick wert sind",
+            "items": [
+              {
+                "title": "TinyFloor",
+                "detail": "Gratis für 3 Personen · 19 $ im Monat für 10, 49 $ für 25",
+                "body": "Ein Pixel-Art-Büro im Browser, auf Desktop und Handy. Geh zu jemandem hin, um einen Videoanruf zu starten, setz dich an einen Tisch, um dich zu treffen, mit Chat-Kanälen, Bildschirmfreigabe und Whiteboard. Ein Preis für das ganze Büro, nicht pro Person. Es gibt keine Aufzeichnungen, keine KI-Notizen und keinen Karteneditor, und ein Büro fasst höchstens 25 Personen."
+              },
+              {
+                "title": "Gather",
+                "detail": "Kein Gratis-Tarif · 12 $ pro Mitglied im Monat bei jährlicher Abrechnung, 15 $ monatlich",
+                "body": "Das bekannteste virtuelle Büro, mit den meisten Funktionen: ein selbst gestaltetes Büro, Aufzeichnung und Transkription, Integrationen mit Google Calendar, GitHub und Spotify sowie Gäste. Den Gratis-Tarif hat es 2025 eingestellt, daher gehört es für ein kleines Team zu den teureren Optionen."
+              },
+              {
+                "title": "SoWork",
+                "detail": "Gratis für 10 Mitglieder · Basic 5,40 $ pro Mitglied im Monat bei jährlicher Abrechnung",
+                "body": "Ein virtuelles Büro mit Meetingräumen, Team-Chat und Kalender-Integration. Der Gratis-Tarif reicht für bis zu 10 Mitglieder, begrenzt Meetings aber auf 30 Minuten und hat keine Aufzeichnungen. Premium für 12 $ pro Mitglied im Monat bei jährlicher Abrechnung bringt KI-Zusammenfassungen, unbegrenzte Aufzeichnungen und Analysen."
+              },
+              {
+                "title": "Kumospace",
+                "detail": "Gratis für 5 Mitglieder · Business 16 $ pro Nutzer im Monat",
+                "body": "Ein ausgefeilter Raum mit Spatial Audio und Apps für Desktop und Handy, beliebt für gesellige Events wie für Büros. Der Gratis-Tarif deckt 5 Mitglieder und eine Etage ab. Für ein Team ab 10 Personen gehört es zu den teureren."
+              },
+              {
+                "title": "WorkAdventure",
+                "detail": "Gratis für 10 Personen gleichzeitig · Business 8 € pro Nutzer im Monat",
+                "body": "Eine Open-Source-Pixel-Art-Welt, die du selbst hosten kannst, mit Karten, die du im Tiled-Editor baust. Gut für technische Teams und Events, die volle Kontrolle wollen. Eine eigene Karte oder ein eigener Server macht echte Arbeit."
+              },
+              {
+                "title": "SpatialChat",
+                "detail": "Gratis 2 Stunden am Tag für 12 · 5 $ pro Nutzer und Tag, Business ab 399 $ im Monat",
+                "body": "Räume mit Spatial Audio und Video-Blasen, viel genutzt für Events, Kurse und Workshops. Der Gratis-Tarif reicht für gelegentliche Sitzungen; ein Team, das den ganzen Tag da ist, braucht einen Business-Tarif."
+              },
+              {
+                "title": "Roam",
+                "detail": "Kein Gratis-Tarif · 19,50 $ pro aktivem Mitglied im Monat",
+                "body": "Eine Desktop-App für Mac und Windows, die ein virtuelles Büro mit Meetings, Chat, einem KI-Assistenten und Webinaren bündelt. Du zahlst nur für Mitglieder, die es in dem Monat nutzen. Es ist eine komplette Arbeitsplatz-Suite mit dem Preis einer solchen."
+              },
+              {
+                "title": "oVice",
+                "detail": "Gratis-Version ohne Support · 65 $ im Monat pro Raum, jährliche Abrechnung",
+                "body": "Ein 2D-Büro mit Preis pro Raum: Entry-S passt für etwa 10 feste Mitglieder, und Business Starter kostet 16 $ pro Nutzer im Monat ab 20 Nutzern. Stark in Japan und bei größeren Unternehmen. Der Gratis-Tarif läuft auf einer Vorabversion ohne Support."
+              },
+              {
+                "title": "Sococo",
+                "detail": "Kein Gratis-Tarif · 13,49 $ pro Platz im Monat, jährliche Abrechnung, mindestens 10 Plätze",
+                "body": "Ein Grundriss aus Räumen von oben statt Figuren, mit mehreren Bildschirmfreigaben gleichzeitig. Jeder Platz enthält 500 Meeting-Minuten im Monat. Gemacht für Firmen, die Software im Jahresvertrag kaufen."
+              }
+            ]
+          },
+          {
+            "title": "Was ein Team von 10 im Monat zahlt",
+            "body": [
+              "Hier ist dasselbe Team von 10 Personen im günstigsten Tarif jedes Produkts, der für den ganzen Tag reicht."
+            ],
+            "table": {
+              "head": [
+                "Produkt",
+                "Abrechnung",
+                "Gratis-Tarif",
+                "10 Personen, im Monat"
+              ],
+              "rows": [
+                [
+                  "TinyFloor Plus",
+                  "Ein Preis pro Büro",
+                  "Bis zu 3 Personen",
+                  "19 $"
+                ],
+                [
+                  "SoWork Basic",
+                  "Pro Mitglied, jährlich",
+                  "Bis zu 10 Mitglieder, 30-Minuten-Meetings",
+                  "54 $"
+                ],
+                [
+                  "oVice Entry-S",
+                  "Pro Raum, jährlich",
+                  "Vorabversion, kein Support",
+                  "65 $"
+                ],
+                [
+                  "WorkAdventure Business",
+                  "Pro Nutzer",
+                  "Bis zu 10 Personen gleichzeitig",
+                  "80 €"
+                ],
+                [
+                  "Gather Essential",
+                  "Pro Mitglied",
+                  "Keiner, 30 Tage Testphase",
+                  "120 $ jährlich, 150 $ monatlich"
+                ],
+                [
+                  "Sococo",
+                  "Pro Platz, jährlich, mindestens 10",
+                  "Keiner, eine Testphase",
+                  "134,90 $"
+                ],
+                [
+                  "Kumospace Business",
+                  "Pro Nutzer",
+                  "Bis zu 5 Mitglieder",
+                  "160 $"
+                ],
+                [
+                  "Roam",
+                  "Pro aktivem Mitglied, monatlich",
+                  "Keiner, 14 Tage Testphase",
+                  "195 $"
+                ],
+                [
+                  "SpatialChat",
+                  "Tagespässe oder Business-Tarif",
+                  "2 Stunden am Tag, bis zu 12 Personen",
+                  "50 $ am Tag mit Tagespässen, Business ab 399 $"
+                ]
+              ],
+              "note": "Preise ohne Steuern, von der eigenen Preisseite jedes Produkts im Oktober 2026. Ein Gratis-Tarif, der für das ganze Team reicht, schlägt jeden bezahlten: Der von WorkAdventure deckt 10 Personen gleichzeitig ab, der von SoWork 10 Mitglieder mit 30-Minuten-Meetings."
+            }
+          },
+          {
+            "title": "Welches für welches Team",
+            "items": [
+              {
+                "title": "Ein kleines Team mit kleinem Budget",
+                "body": "TinyFloor für 19 $ im Monat für bis zu 10 Personen, oder der Gratis-Tarif von SoWork, wenn 30-Minuten-Meetings reichen."
+              },
+              {
+                "title": "Du willst Aufzeichnungen und KI-Notizen",
+                "body": "Gather, SoWork Premium oder Roam."
+              },
+              {
+                "title": "Du willst dein Büro selbst gestalten oder Events veranstalten",
+                "body": "Gather, WorkAdventure, Kumospace oder SpatialChat."
+              },
+              {
+                "title": "Du musst es selbst hosten",
+                "body": "WorkAdventure, das Open Source ist und fürs Selbsthosten gebaut wurde."
+              },
+              {
+                "title": "Du nutzt lieber eine Desktop-App",
+                "body": "Roam, oder Gather und Kumospace, die neben dem Browser auch Apps haben."
+              },
+              {
+                "title": "Ein größeres Unternehmen",
+                "body": "Gather, Roam, oVice Business oder Sococo, die an größere Teams mit Jahresverträgen verkaufen."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Wo TinyFloor passt",
+          "body": "TinyFloor ist das einfache, günstige: ein Büro im Browser, in dem du zum Reden hingehst, mit Meetingraum, Chat und Bildschirmfreigabe, für einen Preis pro Büro. Es ist für Teams von 2 bis 25, die ein Büro wollen, das den ganzen Tag offen bleibt. Wenn du Aufzeichnungen, KI-Notizen oder eine selbst gestaltete Karte brauchst, passen Gather oder SoWork Premium besser. TinyFloor ist für bis zu 3 Personen gratis, du kannst es also erst mit deinem Team ausprobieren."
+        },
+        "faq": [
+          {
+            "q": "Welche ist die beste kostenlose Virtual-Office-Software?",
+            "a": "Das hängt von der Größe deines Teams ab. Der Gratis-Tarif von SoWork deckt 10 Mitglieder mit 30-Minuten-Meetings ab, der von WorkAdventure 10 Personen gleichzeitig, der von Kumospace 5 Mitglieder und der von TinyFloor 3 Personen mit allen Funktionen."
+          },
+          {
+            "q": "Welches ist das günstigste virtuelle Büro für ein kleines Team?",
+            "a": "Für ein Team von 10 in einem bezahlten Tarif kostet TinyFloor Plus 19 $ im Monat für das ganze Büro. Tools mit Preis pro Person kosten für dasselbe Team 54 bis 195 $ im Monat."
+          },
+          {
+            "q": "Ist Gather noch kostenlos?",
+            "a": "Nein. Gather hat seinen Gratis-Tarif 2025 eingestellt. Es gibt eine 30-tägige Testphase, danach kostet es 12 $ pro Mitglied im Monat bei jährlicher Abrechnung oder 15 $ monatlich."
+          },
+          {
+            "q": "Muss ich etwas installieren?",
+            "a": "Nicht für TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat oder oVice, die im Browser laufen. Roam ist eine Desktop-App, und Kumospace und Gather bieten zusätzlich Apps an."
+          }
+        ]
+      },
+      "gatherPricing": {
+        "label": "Was Gather kostet",
+        "meta": {
+          "title": "Gather-Preise 2026: Was ein Team von 5, 10 oder 25 zahlt",
+          "description": "Gather kostet 12 $ pro Mitglied im Monat bei jährlicher Abrechnung oder 15 $ monatlich, ohne Gratis-Tarif. Was das für Teams von 5, 10, 25 und 50 bedeutet und was dasselbe Team anderswo zahlt."
+        },
+        "title": "Was kostet <em>Gather?</em>",
+        "intro": "Seit September 2025 berechnet Gather jedes Mitglied und hat keinen Gratis-Tarif. Hier siehst du, was das für dein Team bedeutet, nach Größe ausgerechnet, und was dasselbe Team in anderen virtuellen Büros zahlt. Die Preise stammen von Gathers eigenen Preis- und Hilfeseiten, geprüft im Oktober 2026.",
+        "sections": [
+          {
+            "title": "Die Tarife von Gather",
+            "body": [
+              "Gather hat einen Tarif für die meisten Teams, Essential, und einen Custom-Tarif für große Organisationen."
+            ],
+            "items": [
+              {
+                "title": "Essential",
+                "body": "15 $ pro Mitglied im Monat oder 12 $ bei jährlicher Abrechnung. Enthalten ist jede Gather-Funktion: ein selbst gestaltetes virtuelles Büro, unbegrenzte Meetings und Chat, Integrationen mit Google Calendar, GitHub und Spotify, Gäste sowie Meeting-Aufzeichnungen und Transkriptionen mit monatlichen Stundenkontingenten."
+              },
+              {
+                "title": "Custom",
+                "body": "Preis über das Vertriebsteam von Gather, für große Teams, die individuelles Onboarding und Enterprise-Funktionen wollen."
+              },
+              {
+                "title": "Kostenlose Testphase",
+                "body": "30 Tage gratis, danach Essential. Einen dauerhaften Gratis-Tarif gibt es nicht."
+              }
+            ]
+          },
+          {
+            "title": "Was Gather nach Teamgröße kostet",
+            "table": {
+              "head": [
+                "Team",
+                "Monatlich abgerechnet",
+                "Jährlich abgerechnet, pro Monat",
+                "Pro Jahr, jährlich abgerechnet"
+              ],
+              "rows": [
+                [
+                  "5 Personen",
+                  "75 $",
+                  "60 $",
+                  "720 $"
+                ],
+                [
+                  "10 Personen",
+                  "150 $",
+                  "120 $",
+                  "1.440 $"
+                ],
+                [
+                  "25 Personen",
+                  "375 $",
+                  "300 $",
+                  "3.600 $"
+                ],
+                [
+                  "50 Personen",
+                  "750 $",
+                  "600 $",
+                  "7.200 $"
+                ]
+              ],
+              "note": "Gather berechnet jedes Mitglied, egal ob es an dem Tag ins Büro kommt oder nicht. Preise ohne Steuern."
+            }
+          },
+          {
+            "title": "Was sich 2025 geändert hat",
+            "body": [
+              "Am 15. September 2025 hat Gather Gather 2.0 eingeführt und sowohl die neue als auch die ursprüngliche Version auf einen Preis pro Mitglied umgestellt: 15 $ pro Mitglied im Monat oder 12 $ bei jährlicher Abrechnung. Vorher zahlten Teams danach, wie viele Personen gleichzeitig im Büro waren.",
+              "Der Gratis-Tarif endete für beide Versionen. Teams, die schon zahlten, konnten sich ihren alten Preis vor der Umstellung sichern. Für ein kleines Team, das Gather gratis genutzt hatte, war das der Moment, ab dem es Geld kostete."
+            ]
+          },
+          {
+            "title": "Dasselbe Team anderswo",
+            "body": [
+              "So viel zahlen dieselben Teams im Monat in anderen virtuellen Büros, im günstigsten Tarif, der passt."
+            ],
+            "table": {
+              "head": [
+                "Team",
+                "Gather, jährlich abgerechnet",
+                "TinyFloor",
+                "SoWork Basic, jährlich abgerechnet",
+                "Kumospace Business"
+              ],
+              "rows": [
+                [
+                  "5 Personen",
+                  "60 $",
+                  "19 $",
+                  "27 $",
+                  "Gratis (bis zu 5 Mitglieder)"
+                ],
+                [
+                  "10 Personen",
+                  "120 $",
+                  "19 $",
+                  "54 $",
+                  "160 $"
+                ],
+                [
+                  "25 Personen",
+                  "300 $",
+                  "49 $",
+                  "135 $",
+                  "400 $"
+                ]
+              ],
+              "note": "Von der eigenen Preisseite jedes Produkts im Oktober 2026, ohne Steuern. Der Gratis-Tarif von SoWork deckt ebenfalls bis zu 10 Mitglieder ab, mit Meetings von höchstens 30 Minuten, und der von WorkAdventure bis zu 10 Personen gleichzeitig."
+            }
+          },
+          {
+            "title": "Wann sich Gather lohnt",
+            "items": [
+              {
+                "title": "Du willst dein Büro gestalten",
+                "body": "Bei Gather legst du Etagen, Räume und Objekte selbst an. Die meisten Alternativen geben dir ein fertiges Büro."
+              },
+              {
+                "title": "Du brauchst Aufzeichnungen und Transkripte",
+                "body": "Essential enthält sie, mit monatlichen Stundenkontingenten."
+              },
+              {
+                "title": "Dein Tag läuft über Google Calendar und GitHub",
+                "body": "Die Integrationen von Gather zeigen deinen Status und deine Aktivität im Büro."
+              },
+              {
+                "title": "Wann nicht",
+                "body": "Wenn dein Team vor allem sehen will, wer da ist, und reden und sich treffen will, zahlst du für Funktionen, die du nicht nutzt, jeden Monat, für jede Person."
+              }
+            ]
+          }
+        ],
+        "fit": {
+          "title": "Wo TinyFloor passt",
+          "body": "TinyFloor behält den Kern dessen, was Gather macht: ein Büro, in dem du herumläufst und redest, indem du zu jemandem hingehst, mit Meetingraum, Chat und Bildschirmfreigabe. Es kostet 19 $ im Monat für bis zu 10 Personen und 49 $ für bis zu 25, ein Preis für das ganze Büro, und für bis zu 3 ist es gratis. Es hat keine Aufzeichnungen, keine Transkription und keinen Büro-Editor; wenn du darauf angewiesen bist, passt Gather besser."
+        },
+        "faq": [
+          {
+            "q": "Wie viel kostet Gather?",
+            "a": "15 $ pro Mitglied im Monat bei monatlicher Abrechnung oder 12 $ pro Mitglied im Monat bei jährlicher Abrechnung, im Essential-Tarif. Größere Organisationen können einen Custom-Tarif anfragen."
+          },
+          {
+            "q": "Hat Gather einen Gratis-Tarif?",
+            "a": "Nein. Gather hat seinen Gratis-Tarif im September 2025 eingestellt. Stattdessen gibt es eine 30-tägige kostenlose Testphase."
+          },
+          {
+            "q": "Wie viel kostet Gather für 10 Personen?",
+            "a": "150 $ im Monat bei monatlicher Abrechnung oder 120 $ im Monat bei jährlicher Abrechnung (1.440 $ im Jahr)."
+          },
+          {
+            "q": "Was ist eine günstigere Alternative zu Gather?",
+            "a": "TinyFloor kostet 19 $ im Monat für bis zu 10 Personen und ist für bis zu 3 gratis. Der Basic-Tarif von SoWork kostet 5,40 $ pro Mitglied im Monat bei jährlicher Abrechnung, und sein Gratis-Tarif deckt 10 Mitglieder mit 30-Minuten-Meetings ab."
           }
         ]
       }

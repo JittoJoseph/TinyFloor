@@ -1,6 +1,13 @@
 import type { LandingKey } from "@/lib/landings";
 
-export type GuideKey = "teamBuilding" | "meetingGames" | "remoteCulture" | "remoteCommunication" | "proximityChat";
+export type GuideKey =
+  | "teamBuilding"
+  | "meetingGames"
+  | "remoteCulture"
+  | "remoteCommunication"
+  | "proximityChat"
+  | "bestVirtualOffice"
+  | "gatherPricing";
 
 export interface Guide {
   slug: string;
@@ -19,6 +26,9 @@ export const GUIDES: Guide[] = [
   { slug: "how-to-build-remote-team-culture", key: "remoteCulture", published: "2026-10-04", updated: "2026-10-04", pages: ["presence", "onboarding", "watercooler"] },
   { slug: "remote-team-communication", key: "remoteCommunication", published: "2026-10-04", updated: "2026-10-04", pages: ["teamChat", "presence", "slackHuddles"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-04", pages: ["proximityChat", "virtualOffice", "gather"] },
+  // Buyers comparing products and prices (docs/20). Competitors' prices are checked against their own pages; bump `updated` when they are.
+  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-07", pages: ["virtualOffice", "gather", "kumospace"] },
+  { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-07", pages: ["gather", "gatherVsKumospace", "virtualOffice"] },
 ];
 
 /** The guides' index, and the folder every guide sits in. */
@@ -38,6 +48,8 @@ export interface GuideCopy {
     title: string;
     body?: string[];
     items?: Array<{ title: string; detail?: string; body: string }>;
+    /** A comparison, like prices by team size: a header row, the rows, and where the numbers come from. */
+    table?: { head: string[]; rows: string[][]; note?: string };
   }>;
   fit: { title: string; body: string };
   faq: Array<{ q: string; a: string }>;
@@ -47,7 +59,12 @@ export interface GuideCopy {
 export function readingMinutes(copy: GuideCopy, locale: string): number {
   const text = [
     copy.intro,
-    ...copy.sections.flatMap((section) => [section.title, ...(section.body ?? []), ...(section.items ?? []).flatMap((item) => [item.title, item.body])]),
+    ...copy.sections.flatMap((section) => [
+      section.title,
+      ...(section.body ?? []),
+      ...(section.items ?? []).flatMap((item) => [item.title, item.body]),
+      ...(section.table?.rows.flat() ?? []),
+    ]),
     copy.fit.body,
     ...copy.faq.flatMap(({ q, a }) => [q, a]),
   ].join(" ");

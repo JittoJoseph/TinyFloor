@@ -10,14 +10,15 @@
 <h1 align="center">TinyFloor</h1>
 
 <p align="center">
-  <b>The open-source virtual office your team can walk around in.</b><br>
-  Walk up to someone to talk. Pull up a chair to meet. Nothing to install.
+  <b>The virtual office your team can walk around in.</b><br>
+  Walk up to someone to talk. Pull up a chair to meet. Free for up to 3 people.
 </p>
 
 <p align="center">
   <a href="https://www.tinyfloor.com"><b>Website</b></a> ·
   <a href="https://www.tinyfloor.com/lobby"><b>Try the demo office</b></a> ·
   <a href="https://www.tinyfloor.com/create"><b>Make an office</b></a> ·
+  <a href="#pricing"><b>Pricing</b></a> ·
   <a href="#questions"><b>Questions</b></a>
 </p>
 
@@ -41,6 +42,8 @@
 Remote work lost the hallway: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls turned every one of those into a scheduled meeting.
 
 TinyFloor is a 2D virtual office in your browser. Your team walks around a shared pixel-art floor as characters, and **proximity video chat** does the rest: walk up to someone to talk, sit at a table to meet, stand up when you're done. The office stays open all day, so remote work feels like working side by side again.
+
+It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite link, and you're working together. There's nothing to install or run. It's built for small teams, from 2 to 25 people.
 
 ## Features
 
@@ -71,9 +74,25 @@ TinyFloor is a 2D virtual office in your browser. Your team walks around a share
 - **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: heads-down hours with your team, and a **[virtual watercooler](https://www.tinyfloor.com/virtual-watercooler)** between them.
 - **[Virtual classroom](https://www.tinyfloor.com/virtual-classroom)**: office hours, tutoring and small classes.
 
-## An open-source alternative
+## Pricing
 
-Looking for an open-source alternative to [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative) or [Wonder](https://www.tinyfloor.com/wonder-alternative), [Sococo](https://www.tinyfloor.com/sococo-alternative), [oVice](https://www.tinyfloor.com/ovice-alternative), [Roam](https://www.tinyfloor.com/roam-alternative) or [Teamflow](https://www.tinyfloor.com/teamflow-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, a meeting room, screen sharing and chat. [See every comparison](https://www.tinyfloor.com/compare).
+One price for the whole office, not one per person. Every plan has every feature.
+
+| Plan | People | Price | Group meeting hours |
+|---|---|---|---|
+| **Free** | Up to 3 | $0, forever, no card | 5 a month |
+| **Plus** | Up to 10 | $19 a month ($1.90 a person) | 30 a month |
+| **Pro** | Up to 25 | $49 a month ($1.96 a person) | 60 a month |
+
+Calls between two people are never counted. Prices are in US dollars, before tax. [See the pricing page](https://www.tinyfloor.com/pricing).
+
+**What a team of 10 pays each month:** $19 on TinyFloor Plus, against $120 or more on a per-person tool like Gather, whose Essential plan starts at $12 per member per month.
+
+## Compared with other virtual offices
+
+Moving from [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative), [Wonder](https://www.tinyfloor.com/wonder-alternative), [Sococo](https://www.tinyfloor.com/sococo-alternative), [oVice](https://www.tinyfloor.com/ovice-alternative), [Roam](https://www.tinyfloor.com/roam-alternative) or [Teamflow](https://www.tinyfloor.com/teamflow-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, a meeting room, screen sharing and chat, for one flat price. Each link compares the two side by side, and there's [every comparison in one place](https://www.tinyfloor.com/compare).
+
+TinyFloor deliberately leaves things out: there are no custom map editors, recordings or AI meeting notes. If your team wants a simple office that stays open all day, that's what it does.
 
 ## Questions
 
@@ -93,8 +112,20 @@ Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor offic
 
 An office is only for its members. Nothing inside it is public or indexed, and calls are encrypted in transit.
 
+### Is TinyFloor free?
+
+Yes, for up to 3 people, with every feature and no card. Bigger teams move to Plus ($19 a month for up to 10 people) or Pro ($49 a month for up to 25).
+
+### Can I try it without signing up?
+
+Yes. The [demo office](https://www.tinyfloor.com/lobby) needs only a name. Making your own office takes a free account with Google or email.
+
+### Is it open source?
+
+Yes, under the AGPL v3.0. The code is here, and the hosted service at tinyfloor.com is how teams use it: it runs on Cloudflare's network, with calls, chat and storage taken care of.
+
 ## Open source
 
-TinyFloor is open source under the [GNU AGPL v3.0](LICENSE) and runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](frontend-nextjs/public/credits.txt), [ASSETS.md](ASSETS.md)).
+TinyFloor's code is open source under the [GNU AGPL v3.0](LICENSE). It runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](frontend-nextjs/public/credits.txt), [ASSETS.md](ASSETS.md)).
 
 Questions or ideas? Write to [support@tinyfloor.com](mailto:support@tinyfloor.com).

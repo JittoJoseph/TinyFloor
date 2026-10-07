@@ -2491,13 +2491,8 @@
       "note": "Alle planer har alle funktioner. Opkald tælles aldrig; gruppemøder får 5, 30 eller 60 timer om måneden."
     },
     "source": {
-      "eyebrow": "Open source",
-      "title": "Bygget i det åbne.",
-      "muted": "Hver linje ligger på GitHub.",
-      "body": "TinyFloors kode ligger på GitHub under AGPL, og det er den samme kode, der driver tinyfloor.com. Se præcis, hvordan dine opkald og beskeder bliver håndteret. Kan du lide det, du finder, hjælper en stjerne andre teams med at finde det.",
       "star": "Giv en stjerne på GitHub",
-      "license": "Licens",
-      "built": "Bygget med"
+      "open": "Open source"
     },
     "faq": {
       "title": "Spørgsmål,",

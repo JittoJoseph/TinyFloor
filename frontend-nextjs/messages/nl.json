@@ -2491,13 +2491,8 @@
       "note": "Elk abonnement heeft alle functies. Gesprekken tellen nooit mee; groepsvergaderingen krijgen 5, 30 of 60 uur per maand."
     },
     "source": {
-      "eyebrow": "Open source",
-      "title": "Open gebouwd.",
-      "muted": "Elke regel staat op GitHub.",
-      "body": "De code van TinyFloor staat op GitHub onder de AGPL, en het is dezelfde code die tinyfloor.com draait. Zie precies hoe je gesprekken en berichten worden behandeld. Bevalt wat je vindt, dan helpt een ster andere teams het ook te vinden.",
       "star": "Geef een ster op GitHub",
-      "license": "Licentie",
-      "built": "Gebouwd met"
+      "open": "Open source"
     },
     "faq": {
       "title": "Vragen,",

@@ -2491,13 +2491,8 @@
       "note": "Jeder Tarif hat alle Funktionen. Anrufe zählen nie; Gruppen-Meetings haben 5, 30 oder 60 Stunden im Monat."
     },
     "source": {
-      "eyebrow": "Open Source",
-      "title": "Offen entwickelt.",
-      "muted": "Jede Zeile liegt auf GitHub.",
-      "body": "Der Code von TinyFloor liegt unter der AGPL auf GitHub, und es ist derselbe Code, der tinyfloor.com betreibt. Sieh genau nach, wie mit deinen Anrufen und Nachrichten umgegangen wird. Wenn dir gefällt, was du findest, hilft ein Stern anderen Teams, es auch zu finden.",
       "star": "Auf GitHub einen Stern geben",
-      "license": "Lizenz",
-      "built": "Gebaut mit"
+      "open": "Open Source"
     },
     "faq": {
       "title": "Fragen,",

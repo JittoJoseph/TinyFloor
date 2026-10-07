@@ -2491,13 +2491,8 @@
       "note": "每个方案功能齐全。通话从不计时；团队会议每月 5、30 或 60 小时。"
     },
     "source": {
-      "eyebrow": "开源",
-      "title": "公开构建。",
-      "muted": "每一行代码都在 GitHub 上。",
-      "body": "TinyFloor 的代码以 AGPL 协议发布在 GitHub 上，和运行 tinyfloor.com 的是同一份代码。你可以亲眼看到通话和消息是怎么处理的。如果喜欢，点个 Star 能帮更多团队发现它。",
       "star": "在 GitHub 上点 Star",
-      "license": "许可协议",
-      "built": "技术栈"
+      "open": "开源"
     },
     "faq": {
       "title": "常见问题，",

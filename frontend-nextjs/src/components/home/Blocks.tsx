@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, Smartphone } from "@/components/ui/icons";
+import { AudioLines, Hash, MonitorUp, Music2, PenLine, Plus, License, Smartphone, SourceCode } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, MEETING } from "@/components/floor/scenes";
@@ -351,63 +351,45 @@ export function PlanCards({ className }: { className?: string }) {
  * The questions people ask, as a plain list that opens without a script, and
  * a way to go and look. The page puts the same questions in its FAQPage schema.
  */
+/** The chips under the plans: the ask first, then what the code is. */
+const SOURCE_CHIP = "inline-flex h-10 items-center gap-2.5 rounded-[12px] ps-2.5 pe-3.5 text-[14.5px] font-medium tracking-[-0.01em] transition-colors";
+const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center rounded-[6px] shadow-[inset_0_-1px_0_rgb(0_0_0/0.18)]";
+
 /**
- * The code is open (AGPL), said on trust rather than numbers: what it means
- * for a team, and one ask, a star. Beside it, the repo as a terminal would
- * show it, on the bezel's black in the floor's pixel type. It carries the
- * #source anchor.
+ * The code is open, said as three small chips on a hairline: star it on
+ * GitHub, open source, the licence. It carries the #source anchor.
  */
 export function OpenSource() {
   const t = useTranslations("homepage.source");
+  const chips = [
+    { label: t("star"), href: SOCIALS.github, mark: <GitHubMark className="size-3.5" />, tint: "bg-foreground text-background", lead: true },
+    { label: t("open"), href: SOCIALS.github, mark: <SourceCode className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#2fbf71] text-white" },
+    { label: "AGPL-3.0", href: `${SOCIALS.github}/blob/master/LICENSE`, mark: <License className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#8b5cf6] text-white" },
+  ];
   return (
     <section id="source" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
-      <div className="grid items-center gap-10 rounded-[32px] bg-muted/80 p-6 min-[400px]:p-8 sm:p-12 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:p-14">
-        <div>
-          <p className={cn(EYEBROW, "mb-5")}>{t("eyebrow")}</p>
-          <h2 className={cn("text-balance text-[30px] font-normal leading-[1.08] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[44px] sm:leading-[1.04]", CJK_HEADLINE)}>
-            {t("title")}
-            <span className="block text-muted-foreground/75">{t("muted")}</span>
-          </h2>
-          <p className={cn(LEAD, "mt-6 max-w-[30rem]")}>{t("body")}</p>
-          <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className={cn(INK, "mt-8")}>
-            <GitHubMark className="size-[18px]" />
-            {t("star")}
-          </a>
-        </div>
-        <div className={cn(STAGE, "overflow-hidden rounded-[24px] shadow-[0_24px_60px_-28px_rgb(0_0_0/0.45)]")}>
-          <div dir="ltr" className="flex items-center gap-2.5 bg-white/[0.04] px-5 py-3.5 text-[13.5px] text-white/70">
-            <GitHubMark className="size-4 text-white" />
-            <span>
-              JittoJoseph / <span className="font-semibold text-white">TinyFloor</span>
-            </span>
-            <span className="ms-auto rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[11.5px] text-white/60">Public</span>
-          </div>
-          <div dir="ltr" className="px-5 py-6 font-pixel text-[19px] leading-[1.35] text-white/85 sm:px-6 sm:text-[21px]">
-            <p>
-              <span className="text-[#7ee2a8]">$</span> git clone \
-            </p>
-            <p className="ps-[2ch]">
-              https://github.com/
-              <wbr />
-              JittoJoseph/TinyFloor
-            </p>
-            <p className="text-white/45">Cloning into &apos;TinyFloor&apos;...</p>
-            <p>
-              <span className="text-[#7ee2a8]">$</span>{" "}
-              <span aria-hidden className="inline-block h-[0.95em] w-[0.55em] translate-y-[0.12em] animate-pulse bg-white/80 motion-reduce:animate-none" />
-            </p>
-          </div>
-          <dl className="grid gap-px bg-white/[0.06] text-[13.5px] sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-            <div className="bg-[#09090a] px-5 py-4 [:root.dark_&]:bg-[#18181a]">
-              <dt className="text-white/45">{t("license")}</dt>
-              <dd className="mt-1 text-white/90">AGPL-3.0</dd>
-            </div>
-            <div className="bg-[#09090a] px-5 py-4 [:root.dark_&]:bg-[#18181a]">
-              <dt className="text-white/45">{t("built")}</dt>
-              <dd dir="ltr" className="mt-1 text-white/90 rtl:text-end">Next.js · Cloudflare Workers · D1</dd>
-            </div>
-          </dl>
-        </div>
+      <div className="relative flex justify-center">
+        <div aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-border" />
+        <ul className="relative flex flex-wrap justify-center gap-2 bg-background px-3 sm:gap-2.5 sm:px-5">
+          {chips.map((chip) => (
+            <li key={chip.label}>
+              <a
+                href={chip.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  SOURCE_CHIP,
+                  chip.lead
+                    ? "bg-card text-foreground shadow-[0_0_0_1px_var(--color-border),0_1px_2px_rgb(0_0_0/0.05)] hover:bg-card/70"
+                    : "bg-foreground/[0.05] text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground",
+                )}
+              >
+                <span className={cn(SOURCE_MARK, chip.tint)}>{chip.mark}</span>
+                <span dir="auto">{chip.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

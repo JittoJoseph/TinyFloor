@@ -2491,13 +2491,8 @@
       "note": "Chaque offre a toutes les fonctionnalités. Les appels ne sont jamais décomptés ; les réunions de groupe ont 5, 30 ou 60 heures par mois."
     },
     "source": {
-      "eyebrow": "Open source",
-      "title": "Développé au grand jour.",
-      "muted": "Chaque ligne est sur GitHub.",
-      "body": "Le code de TinyFloor est sur GitHub sous licence AGPL, et c'est le même code qui fait tourner tinyfloor.com. Voyez exactement comment vos appels et vos messages sont traités. Si ce que vous trouvez vous plaît, une étoile aide d'autres équipes à le découvrir.",
       "star": "Mettre une étoile sur GitHub",
-      "license": "Licence",
-      "built": "Construit avec"
+      "open": "Open source"
     },
     "faq": {
       "title": "Vos questions,",

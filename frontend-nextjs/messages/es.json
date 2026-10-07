@@ -2491,13 +2491,8 @@
       "note": "Todos los planes tienen todas las funciones. Las llamadas nunca se cuentan; las reuniones de grupo tienen 5, 30 o 60 horas al mes."
     },
     "source": {
-      "eyebrow": "Código abierto",
-      "title": "Hecho a la vista de todos.",
-      "muted": "Cada línea está en GitHub.",
-      "body": "El código de TinyFloor está en GitHub bajo la AGPL, y es el mismo código que hace funcionar tinyfloor.com. Mira exactamente cómo se tratan tus llamadas y mensajes. Si te gusta lo que encuentras, una estrella ayuda a que otros equipos lo descubran.",
       "star": "Dar una estrella en GitHub",
-      "license": "Licencia",
-      "built": "Hecho con"
+      "open": "Código abierto"
     },
     "faq": {
       "title": "Preguntas,",

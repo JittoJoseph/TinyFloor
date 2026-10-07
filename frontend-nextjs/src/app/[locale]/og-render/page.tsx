@@ -6,6 +6,7 @@ import { EVERYONE, PEOPLE } from "@/components/floor/scenes";
 import { NearbyBar } from "@/components/floor/NearbyBar";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { GUIDES } from "@/lib/guides";
+import { guideCopy } from "@/lib/guide-copy";
 import { LANDINGS } from "@/lib/landings";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
@@ -33,7 +34,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
           : page === "neutral"
             ? ""
             : guide
-              ? (t.raw(`guides.pages.${guide.key}.title` as "home.hero.title") as string)
+              ? (await guideCopy(locale, guide.key)).title
               : (t.raw(`landings.pages.${landing!.key}.title` as "home.hero.title") as string);
   const title = raw ? emphasised(String(raw), locale, "text-brand") : null;
   // An invite shows someone arriving; every other card, the bar beside someone you've walked up to.

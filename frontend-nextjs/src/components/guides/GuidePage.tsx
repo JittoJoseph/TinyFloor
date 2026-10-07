@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES, GUIDES_PATH, guidePath, readingMinutes, type Guide, type GuideCopy } from "@/lib/guides";
+import { GUIDES, GUIDES_PATH, guidePath, readingMinutes, type Guide } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
 import { landingByKey } from "@/lib/landings";
 import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
@@ -46,7 +47,8 @@ const dateIn = (locale: string, date: string) =>
 export async function GuidePage({ guide, locale }: { guide: Guide; locale: string }) {
   const t = await getTranslations("guides");
   const tl = await getTranslations("landings");
-  const copy = t.raw(`pages.${guide.key}` as Parameters<typeof t.raw>[0]) as GuideCopy;
+  const copies = await guideCopies(locale);
+  const copy = copies[guide.key];
   const path = guidePath(guide);
   const minutes = readingMinutes(copy, locale);
 
@@ -227,7 +229,7 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
             .slice(0, 4)
             .map((other) => (
               <li key={other.slug}>
-                <GuideCard guide={other} title={t(`pages.${other.key}.label`)} description={t(`pages.${other.key}.meta.description`)} />
+                <GuideCard guide={other} title={copies[other.key].label} description={copies[other.key].meta.description} />
               </li>
             ))}
         </ul>

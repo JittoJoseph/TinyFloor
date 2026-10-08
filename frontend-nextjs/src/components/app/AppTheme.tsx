@@ -14,11 +14,11 @@ export function AppTheme({ children }: { children?: ReactNode }) {
   const { reduceMotion } = usePrefs();
   useLayoutEffect(() => {
     applyTheme();
-    // Microsoft Clarity, which the site uses for its own pages, hides everything inside the app: names, chat, offices.
-    document.body.setAttribute("data-clarity-mask", "true");
+    // PostHog's recordings hide every word inside the app: names, chat, offices (lib/analytics).
+    document.body.setAttribute("data-ph-mask", "");
     return () => {
       clearTheme();
-      document.body.removeAttribute("data-clarity-mask");
+      document.body.removeAttribute("data-ph-mask");
     };
   }, []);
   return <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>{children}</MotionConfig>;

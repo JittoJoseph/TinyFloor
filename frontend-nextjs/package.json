@@ -21,7 +21,6 @@
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.3.5",
     "@hugeicons/react": "^1.1.10",
-    "@microsoft/clarity": "^1.0.2",
     "@opennextjs/cloudflare": "1.20.6",
     "@paddle/paddle-js": "1.6.5",
     "clsx": "^2.1.1",

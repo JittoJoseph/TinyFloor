@@ -1,14 +1,14 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "29 September 2026";
+export const PRIVACY_UPDATED = "8 October 2026";
 
 export const privacySummary = (
   <>
     <p>
       TinyFloor keeps what it needs to run your office and nothing more. We don&apos;t sell your data, we don&apos;t show ads, and calls
-      aren&apos;t recorded. Passwords and session tokens are stored only as hashes. Our website uses Google Analytics and Microsoft Clarity
-      to understand how it&apos;s used. Write to <Mail /> for a copy of your data or to have it deleted.
+      aren&apos;t recorded. Passwords and session tokens are stored only as hashes. We use Google Analytics and PostHog to
+      understand how TinyFloor is used. Write to <Mail /> for a copy of your data or to have it deleted.
     </p>
   </>
 );
@@ -165,7 +165,7 @@ export const privacySections: LegalSection[] = [
             <strong>Google</strong> signs you in, if you choose Google, and provides Google Analytics.
           </li>
           <li>
-            <strong>Microsoft</strong> provides Clarity, which shows us how people use our pages.
+            <strong>PostHog</strong> shows us how TinyFloor is used: which pages and features people use, and errors the app runs into.
           </li>
           <li>
             <strong>Discord</strong> carries the team notes described above.
@@ -202,10 +202,10 @@ export const privacySections: LegalSection[] = [
             scripts on the page. TinyFloor doesn&apos;t work without it.
           </li>
           <li>
-            <strong>Analytics cookies:</strong> Google Analytics and Microsoft Clarity set their own cookies to count visits and to understand
-            how our pages are used. Clarity records interactions such as clicks, scrolling and mouse movement, and masks what is typed into
-            fields. Inside TinyFloor itself (your offices, the demo office, chat and your account) it is set to hide everything on the screen, so
-            names and messages are never recorded.
+            <strong>Analytics:</strong> Google Analytics sets its own cookies to count visits, and PostHog keeps an ID in your browser so it
+            can tell visits apart. PostHog may record how a page is used, such as clicks and scrolling, without what is typed into fields.
+            Inside TinyFloor itself (your offices, the demo office, chat and your account) it hides every word on the screen, so names and
+            messages are never recorded.
           </li>
           <li>
             <strong>Turnstile:</strong> Cloudflare may use cookies or browser signals for its bot check.

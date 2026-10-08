@@ -18,6 +18,8 @@ function load() {
       api_host: host,
       defaults: "2026-01-30",
       capture_exceptions: true,
+      // Inside the app (AppTheme marks it) recordings show the layout, never the words: names, chat, offices.
+      session_recording: { maskTextSelector: "[data-ph-mask], [data-ph-mask] *" },
       debug: process.env.NODE_ENV === "development",
     });
     return posthog;

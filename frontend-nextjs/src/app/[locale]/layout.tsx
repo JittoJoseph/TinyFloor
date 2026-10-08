@@ -7,7 +7,6 @@ import { SITE_URL, X_HANDLE } from "@/lib/site";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { ogLocale, socialImage } from "@/lib/seo";
 import { siteGraph } from "@/lib/structured-data";
-import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -106,7 +105,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           {children}
         </NextIntlClientProvider>
         <GoogleAnalytics />
-        <ClarityAnalytics />
       </body>
     </html>
   );

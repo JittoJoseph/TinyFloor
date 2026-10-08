@@ -2,7 +2,7 @@ import json, os, sys
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUB = os.path.join(ROOT, "frontend-nextjs", "public")
+PUB = os.path.join(ROOT, "app-frontend", "public")
 
 def load_tilesets(m, base):
     sets = []

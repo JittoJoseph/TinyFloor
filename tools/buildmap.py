@@ -11,7 +11,7 @@ poster lands on the wall face instead of a tile or two out on the floor.
 import json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUB = os.path.join(ROOT, "frontend-nextjs", "public")
+PUB = os.path.join(ROOT, "app-frontend", "public")
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "office-map.original.tmj")
 DST = os.path.join(PUB, "tilesets", "office-map.tmj")
 

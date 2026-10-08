@@ -86,7 +86,7 @@ no Durable Objects, and clients ask for news now and then.
   - `GET /v1/help/:id`: reads a ticket.
   - `/v1/admin/help`: the team's routes.
 - `worker-realtime/src/discord.ts` and `admin.ts`: the Discord message.
-- In `frontend-nextjs/src`:
+- In `app-frontend/src`:
   - `lib/help.ts`: the open ticket, the one on screen, and its count.
   - `components/app/HelpCompose.tsx`: the card, mounted by AppShell.
   - `components/app/HelpTicket.tsx`: the ticket in Chat (at

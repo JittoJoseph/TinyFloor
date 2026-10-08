@@ -1,0 +1,5 @@
+/* Tailwind comes from this app's node_modules (web-shared has none), then the styles both sites share. */
+@import "tailwindcss";
+@import "../../../web-shared/src/app/shared.css";
+/* Tailwind scans this app's files; the components both sites share are there. */
+@source "../../../web-shared/src";

@@ -1,0 +1,10 @@
+packages:
+  - "."
+allowBuilds:
+  unrs-resolver: true
+  workerd: true
+  esbuild: true
+  sharp: true
+  "@parcel/watcher": false
+  "@swc/core": false
+  core-js: true

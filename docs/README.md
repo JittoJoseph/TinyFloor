@@ -9,6 +9,7 @@ code and by git history, not here.
 | Document | What it covers |
 |---|---|
 | [cloudflare-overview.md](cloudflare-overview.md) | Why Cloudflare, what TinyFloor runs on, and what it costs |
+| [21-two-sites.md](21-two-sites.md) | The marketing site and the app as two Workers, and how old links reach the app |
 | [04-costs.md](04-costs.md) | Measured usage, the prices we are charged, where money can go |
 | [10-calls-and-meetings.md](10-calls-and-meetings.md) | The research behind meetings: Slack, Meet, what calls cost |
 | [12-meetings.md](12-meetings.md) | Meetings as built, and why a daily standup costs cents |

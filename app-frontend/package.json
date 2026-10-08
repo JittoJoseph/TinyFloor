@@ -1,0 +1,46 @@
+{
+  "name": "app-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "node ../web-shared/scripts/fetch-assets.mjs && next dev --webpack -p 3001",
+    "build": "node ../web-shared/scripts/fetch-assets.mjs && next build --webpack",
+    "start": "next start",
+    "lint": "eslint",
+    "build:worker": "opennextjs-cloudflare build && node ../web-shared/scripts/static-pages.mjs --app",
+    "preview": "pnpm run build:worker && opennextjs-cloudflare preview",
+    "deploy:worker": "node ../tools/deploy.mjs worker:production worker:preview",
+    "deploy:preview": "node ../tools/deploy.mjs worker:production worker:preview --preview",
+    "worker:production": "opennextjs-cloudflare deploy",
+    "worker:preview": "opennextjs-cloudflare deploy --env preview",
+    "upload:worker": "opennextjs-cloudflare upload",
+    "assets": "node ../web-shared/scripts/fetch-assets.mjs"
+  },
+  "dependencies": {
+    "@hugeicons/core-free-icons": "^4.3.5",
+    "@hugeicons/react": "^1.1.10",
+    "@opennextjs/cloudflare": "1.20.6",
+    "@paddle/paddle-js": "1.6.5",
+    "clsx": "^2.1.1",
+    "motion": "^13.4.0",
+    "next": "^16.0.7",
+    "next-intl": "^4.14.2",
+    "phaser": "^3.90.0",
+    "posthog-js": "^1.407.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "4.131.1"
+  }
+}

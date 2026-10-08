@@ -54,8 +54,15 @@ __pycache__/
 
 # Licensed art from the Modern Interiors and Modern Office packs. It may be
 # used in this project but not redistributed, so it lives in R2 and is pulled
-# in at build time by frontend-nextjs/scripts/fetch-assets.mjs.
+# in at build time by web-shared/scripts/fetch-assets.mjs, which also copies
+# web-shared/public into each frontend (edit them there).
 /private-assets/
-/frontend-nextjs/public/characters/*.png
-/frontend-nextjs/public/tilesets/textures/
-/frontend-nextjs/public/tilesets/items/
+/*-frontend/public/characters/*.png
+/*-frontend/public/tilesets/textures/
+/*-frontend/public/tilesets/items/
+/*-frontend/public/fonts/
+/*-frontend/public/icon-*.png
+/*-frontend/public/credits.txt
+/*-frontend/public/floor.webp
+/*-frontend/public/floor-pieces.webp
+/*-frontend/public/_headers

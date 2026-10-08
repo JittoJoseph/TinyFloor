@@ -21,7 +21,8 @@ Cloudflare. There are no servers, containers or databases to look after anywhere
 
 | Piece | Cloudflare service | What it does |
 |---|---|---|
-| Website and app | Workers (Next.js via OpenNext) + static assets | Landing pages in 18 languages, and the app itself |
+| Website | Worker `tinyfloor` (Next.js via OpenNext) + static assets | www.tinyfloor.com: landing pages and guides in 18 languages |
+| App | Worker `tinyfloor-app` (Next.js via OpenNext) + static assets | app.tinyfloor.com: the lobby, offices, invitations, signing in ([21](21-two-sites.md)) |
 | API | Worker `tinyfloor-api` | Accounts, offices, invites, tickets that let you into a room or call |
 | Realtime | Worker `tinyfloor-realtime` + Durable Objects | Everything live: the floor and chat |
 | ↳ `Room` | Durable Object, one per office floor / lobby room | Who's where, movement, whiteboard, call signalling |

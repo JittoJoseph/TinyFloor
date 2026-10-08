@@ -126,6 +126,6 @@ Yes, under the AGPL v3.0. The code is here, and the hosted service at tinyfloor.
 
 ## Open source
 
-TinyFloor's code is open source under the [GNU AGPL v3.0](LICENSE). It runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](frontend-nextjs/public/credits.txt), [ASSETS.md](ASSETS.md)).
+TinyFloor's code is open source under the [GNU AGPL v3.0](LICENSE). It runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](web-shared/public/credits.txt), [ASSETS.md](ASSETS.md)).
 
 Questions or ideas? Write to [support@tinyfloor.com](mailto:support@tinyfloor.com).

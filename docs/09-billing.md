@@ -124,7 +124,7 @@ Secrets (`wrangler secret put`): `PADDLE_API_KEY`, `PADDLE_WEBHOOK_SECRET`.
 Preview uses Paddle's sandbox and its own keys, live uses live, the same split
 as TURN.
 
-### Frontend (`frontend-nextjs`)
+### Frontend (`app-frontend`, `marketing-frontend`, `web-shared`)
 
 - `usePlans()` from `/v1/plans`; the pricing page and the upgrade dialog render
   the same card from it.

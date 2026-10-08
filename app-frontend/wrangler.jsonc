@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tinyfloor-app",
+  // The app (app.tinyfloor.com): the lobby, offices, invitations, signing in.
+  // The marketing site is ../marketing-frontend, a Worker of its own (docs/21).
+  // OpenNext's worker behind a front door that serves built pages as files (cf-worker.mjs).
+  "main": "cf-worker.mjs",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tinyfloor-app"
+    }
+  ],
+  "routes": [
+    { "pattern": "app.tinyfloor.com", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  // app-preview.tinyfloor.com: the app built from dev, against the preview API.
+  "env": {
+    "preview": {
+      "name": "tinyfloor-app-preview",
+      "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "tinyfloor-app-preview" }],
+      "routes": [{ "pattern": "app-preview.tinyfloor.com", "custom_domain": true }],
+      "observability": { "enabled": true }
+    }
+  }
+}

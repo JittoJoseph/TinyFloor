@@ -1,0 +1,333 @@
+"use client";
+
+import { HelpCircle, ICON_STROKE } from "@/components/ui/icons";
+import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/i18n/navigation";
+import { SPRING_LAYOUT } from "@/lib/ease";
+import { cn } from "@/lib/utils";
+import { Logo } from "@/components/app/Logo";
+import { Tooltip } from "@/components/motion/tooltip";
+import { RailIcons } from "./railIcons";
+import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
+import { help, useHelp } from "@/lib/help";
+import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
+
+/**
+ * Whether the view on screen has a presence dock with you in it. When it does,
+ * the rail leaves you out, so your own face is never shown twice side by side.
+ */
+const DockContext = createContext<((shown: boolean) => void) | null>(null);
+
+/** Called by the presence dock: while it is mounted, it holds you. */
+export function useDockHoldsYou() {
+  const report = useContext(DockContext);
+  useEffect(() => {
+    if (!report) return;
+    report(true);
+    return () => report(false);
+  }, [report]);
+}
+
+export interface ShellDestination {
+  key: string;
+  href: string;
+  label: string;
+  icon: ReactNode;
+  active: boolean;
+  badge?: number;
+  /** A small dot instead of a count: something new to look at. */
+  dot?: boolean;
+  /** Something happening now, in green: how many are in a meeting. */
+  live?: number;
+}
+
+/**
+ * The frame every place in the app sits in — an office or the public lobby.
+ * A rail that never moves, and one panel filling the
+ * rest: the floor, with whichever view you opened laid over it. The floor is
+ * never unmounted, so your socket, call and position survive reading a message.
+ * Help and feedback sits quietly at the rail's foot (your menu, on a phone).
+ */
+export function AppShell({
+  mark,
+  destinations,
+  settings,
+  leave,
+  you,
+  floor,
+  children,
+}: {
+  /** The top of the rail: the office (a switcher) or the lobby. */
+  mark: ReactNode;
+  destinations: ShellDestination[];
+  /** Settings sit at the foot of the rail, above you; on a phone they are in your menu. */
+  settings?: ShellDestination;
+  /** The way out, above settings: back to your offices, or home for a guest. */
+  leave?: { href: string; label: string };
+  /** The bottom of the rail: you, and your menu. */
+  you: ReactNode;
+  floor: ReactNode;
+  children?: ReactNode;
+}) {
+  useDesktopSiteZoom();
+  const indicator = useId();
+  const reduce = useReducedMotion();
+  const [docks, setDocks] = useState(0);
+  const report = useCallback((shown: boolean) => setDocks((count) => count + (shown ? 1 : -1)), []);
+  return (
+    <DockContext.Provider value={report}>
+      <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
+        <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
+          <div className="mb-2">{mark}</div>
+          <span aria-hidden className="mb-2 h-px w-8 bg-border" />
+          <div className="flex w-full flex-col items-center gap-1.5">
+            {destinations.map((one) => (
+              <RailItem key={one.key} destination={one} indicator={indicator} />
+            ))}
+          </div>
+          <div className="mt-auto flex w-full flex-col items-center gap-2">
+            <HelpRailButton />
+            {leave && (
+              <RailItem
+                destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
+                indicator={indicator}
+                quiet
+              />
+            )}
+            {settings && <RailItem destination={settings} indicator={indicator} quiet />}
+            <AnimatePresence initial={false}>
+              {docks === 0 && (
+                <motion.div
+                  key="you"
+                  initial={reduce ? false : { opacity: 0, scale: 0.6, height: 0 }}
+                  animate={{ opacity: 1, scale: 1, height: "auto" }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6, height: 0 }}
+                  transition={SPRING_LAYOUT}
+                  className="pt-1"
+                >
+                  {you}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </nav>
+
+        <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
+          {floor}
+          {children}
+        </main>
+
+        {/* Phones: the same places along the bottom, where a thumb is. */}
+        <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
+          {destinations.map((one) => (
+            <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
+          ))}
+          <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
+        </nav>
+      </div>
+      <HelpCompose />
+    </DockContext.Provider>
+  );
+}
+
+function RailItem({
+  destination,
+  indicator,
+  quiet,
+}: {
+  destination: ShellDestination;
+  indicator: string;
+  /** Settings: no label under it, since it stands apart at the foot. */
+  quiet?: boolean;
+}) {
+  const reduce = useReducedMotion();
+  const { href, label, icon, active, badge, dot, live } = destination;
+  const link = (
+    <Link
+      href={href}
+      aria-label={label}
+      aria-current={active ? "page" : undefined}
+      className="group relative flex w-full cursor-pointer flex-col items-center gap-1 outline-none"
+    >
+      {/* The bar at the rail's edge that says where you are, gliding between places. */}
+      {active && (
+        <motion.span
+          layoutId={indicator}
+          transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
+          className="absolute start-0 top-1.5 h-7 w-[3px] rounded-e-full bg-foreground"
+        />
+      )}
+      <span
+        className={cn(
+          "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-active:scale-95",
+          "group-focus-visible:ring-2 group-focus-visible:ring-ring",
+          active
+            ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)] dark:bg-muted"
+            : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+        )}
+      >
+        <Icon icon={icon} active={active} />
+        {!!badge && (
+          <span className="absolute -end-1.5 -top-1.5 min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground tabular-nums ring-2 ring-rail">
+            {badge > 99 ? "99+" : badge}
+          </span>
+        )}
+        {dot && !badge && <span className="absolute end-1 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+        {!!live && !badge && <LiveBadge count={live} />}
+      </span>
+      {!quiet && (
+        <span
+          className={cn(
+            "max-w-full truncate px-1 text-[10.5px] leading-none tracking-tight transition-colors",
+            active ? "font-semibold text-foreground" : "text-muted-foreground group-hover:text-foreground",
+          )}
+        >
+          {label}
+        </span>
+      )}
+    </Link>
+  );
+  return quiet ? (
+    <Tooltip content={label} side="right" wrapperClassName="w-full">
+      {link}
+    </Tooltip>
+  ) : (
+    link
+  );
+}
+
+/** Help and feedback, among the quiet things at the rail's foot: the box beside it, or the open ticket in Chat. */
+function HelpRailButton() {
+  const t = useTranslations("help");
+  const { composing } = useHelp();
+  return (
+    <Tooltip content={t("title")} side="right" wrapperClassName="w-full">
+      <button
+        type="button"
+        aria-label={t("title")}
+        aria-expanded={composing}
+        {...{ [HELP_TRIGGER]: "" }}
+        onClick={() => help.open()}
+        className="group relative flex w-full cursor-pointer flex-col items-center outline-none"
+      >
+        <span
+          className={cn(
+            "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95",
+            composing ? "bg-foreground/[0.08] text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+          )}
+        >
+          <Icon icon={<HelpCircle />} active={composing} />
+        </span>
+      </button>
+    </Tooltip>
+  );
+}
+
+function BarItem({ destination, indicator }: { destination: ShellDestination; indicator: string }) {
+  const reduce = useReducedMotion();
+  const { href, label, icon, active, badge, dot, live } = destination;
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className="group flex min-w-14 flex-1 cursor-pointer flex-col items-center gap-1 py-0.5 outline-none"
+    >
+      <span className="relative flex h-8 w-14 items-center justify-center">
+        {active && (
+          <motion.span
+            layoutId={indicator}
+            transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
+            className="absolute inset-0 rounded-full bg-foreground/[0.08]"
+          />
+        )}
+        <span className={cn("relative", active ? "text-foreground" : "text-muted-foreground")}>
+          <Icon icon={icon} active={active} />
+        </span>
+        {!!badge && (
+          <span className="absolute end-1.5 -top-0.5 min-w-[17px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[17px] text-brand-foreground tabular-nums ring-2 ring-rail">
+            {badge > 99 ? "99+" : badge}
+          </span>
+        )}
+        {dot && !badge && <span className="absolute end-3 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
+        {!!live && !badge && <LiveBadge count={live} bar />}
+      </span>
+      <span className={cn("text-[11px] leading-none", active ? "font-semibold text-foreground" : "text-muted-foreground")}>
+        {label}
+      </span>
+    </Link>
+  );
+}
+
+/** How many are in a meeting right now: green, so it reads as live rather than unread. */
+function LiveBadge({ count, bar }: { count: number; bar?: boolean }) {
+  return (
+    <span
+      className={cn(
+        "absolute flex min-w-[18px] items-center justify-center gap-0.5 rounded-full bg-ok px-1 text-[10px] font-semibold leading-[18px] text-white tabular-nums ring-2 ring-rail",
+        bar ? "end-1.5 -top-0.5" : "-end-1.5 -top-1.5",
+      )}
+    >
+      {count > 99 ? "99+" : count}
+    </span>
+  );
+}
+
+/**
+ * A rail icon: drawn lighter, and with a heavier stroke where you are, with
+ * a small spring as it changes.
+ */
+function Icon({ icon, active }: { icon: ReactNode; active: boolean }) {
+  const reduce = useReducedMotion();
+  if (!isValidElement(icon)) return <>{icon}</>;
+  const drawn = cloneElement(icon as ReactElement<{ strokeWidth?: number; size?: number }>, {
+    strokeWidth: active ? 2.2 : ICON_STROKE,
+    size: 22,
+  });
+  return (
+    <motion.span
+      key={active ? "on" : "off"}
+      initial={reduce || !active ? false : { scale: 0.78 }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring", stiffness: 520, damping: 18, mass: 0.6 }}
+      className="flex transition-transform duration-200 group-hover:-translate-y-px group-active:translate-y-0"
+    >
+      {drawn}
+    </motion.span>
+  );
+}
+
+/**
+ * A view laid over the floor: its own column on the left, what you picked on
+ * the right. On a phone there is room for one: the column, or the detail with
+ * a way back.
+ */
+export function ShellView({
+  column,
+  children,
+  showDetail = false,
+  columnClassName,
+}: {
+  column: ReactNode;
+  children: ReactNode;
+  showDetail?: boolean;
+  columnClassName?: string;
+}) {
+  return (
+    <div className="absolute inset-0 z-[60] flex bg-card">
+      <aside
+        className={cn(
+          "w-full shrink-0 flex-col border-border bg-background md:w-[280px] md:border-e [--face-ring:var(--ui-background)]",
+          showDetail ? "hidden md:flex" : "flex",
+          columnClassName,
+        )}
+      >
+        {column}
+      </aside>
+      <section className={cn("min-w-0 flex-1 flex-col", showDetail ? "flex" : "hidden md:flex")}>{children}</section>
+    </div>
+  );
+}
+
+export { Logo };

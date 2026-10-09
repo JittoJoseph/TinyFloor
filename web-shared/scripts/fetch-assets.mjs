@@ -108,9 +108,13 @@ async function fetchFromR2(key) {
 // check the credentials a build will use.
 const forceRemote = process.argv.includes("--remote");
 const useLocal = !forceRemote && existsSync(localSource);
+// --only=characters/ takes just the files under those folders (comma separated):
+// the marketing site draws people, never the office's tiles.
+const only = process.argv.find((arg) => arg.startsWith("--only="))?.slice("--only=".length).split(",");
+const files = only ? manifest.files.filter((file) => only.some((prefix) => file.key.startsWith(prefix))) : manifest.files;
 let fetched = 0;
 
-for (const file of manifest.files) {
+for (const file of files) {
   const destination = path.join(root, "public", file.key);
   if (!forceRemote && existsSync(destination) && sha256(await readFile(destination)) === file.sha256)
     continue;
@@ -136,8 +140,8 @@ for (const file of manifest.files) {
 
 console.log(
   fetched
-    ? `assets: ${fetched} of ${manifest.files.length} written from ${
+    ? `assets: ${fetched} of ${files.length} written from ${
         useLocal ? "private-assets" : publicUrl ? "the bucket's public url" : `r2:${bucket}`
       }`
-    : `assets: all ${manifest.files.length} already in place`,
+    : `assets: all ${files.length} already in place`,
 );

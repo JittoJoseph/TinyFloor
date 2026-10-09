@@ -65,6 +65,30 @@ Locally: `pnpm dev` in `marketing-frontend` (port 3000) and in `app-frontend`
 (port 3001), with `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_APP_URL` pointing at
 each other (see `.env.example`).
 
+## What is shared, and how
+
+- **Pages both sites have** (the document and its metadata, the 404s, the
+  error page, the manifest) live in `web-shared/src/shell`. Each app's route
+  files are one or two lines that re-export them and say which site it is:
+  the app's `[locale]/layout.tsx` passes `APP_URL`, the site's `SITE_URL`, so
+  canonicals and language links name the right address.
+- **Components, lib code, translations and styles** live in `web-shared/src`
+  and `web-shared/messages`. `@/` looks in the app's own `src` first, then in
+  `web-shared/src`. Only files both apps use belong there; a file one app
+  uses lives in that app. The one deliberate override is
+  `lib/i18n/navigation.ts`: each app has its own, and the site's turns links to
+  app paths into links to the app.
+- **Config and the worker:** `web-shared/next-config.mjs` is the Next config
+  both build with (the app adds that its server leaves Phaser out), and
+  `web-shared/scripts/static-worker.mjs` is the worker in front of OpenNext (the
+  app adds its shared office pages and its noindex).
+- **Packages:** each app lists only what it uses. The site has no Phaser and
+  no Paddle (checkout is `app-frontend/src/lib/checkout.ts`; the plan list it
+  shows is shared).
+- **Public files:** `web-shared/public` is copied into each app's `public` at
+  build time. The licensed art comes from R2: the app gets all of it, the site
+  only the characters (`fetch-assets.mjs --only=characters/`).
+
 `web-shared` has no packages of its own. Before every dev server and build,
 `web-shared/node_modules` is linked to the building app's
 (`web-shared/scripts/link-modules.mjs`, run by `fetch-assets.mjs`), and webpack

@@ -17,9 +17,6 @@ importers:
       '@opennextjs/cloudflare':
         specifier: 1.20.6
         version: 1.20.6(next@16.3.4(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@20.19.43)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(supports-color@10.2.2)(wrangler@4.131.1(@types/node@20.19.43))
-      '@paddle/paddle-js':
-        specifier: 1.6.5
-        version: 1.6.5
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1158,9 +1155,6 @@ packages:
     peerDependenciesMeta:
       rclone.js:
         optional: true
-
-  '@paddle/paddle-js@1.6.5':
-    resolution: {integrity: sha512-uFRvptUzYRqRlqTU5XmfcZWC9BGVYpZNdANd3giJjZbJlHesnE4gn8PyjtYpesU1ar2ZGPuJxHvrrSIV9jjdVw==}
 
   '@parcel/watcher-android-arm64@2.6.0':
     resolution: {integrity: sha512-trgpLSCKRC/huFjXX/Smh+0sWe4+YtKfktIToiMl59ghz7z+qkH6kMvNnUbLyRs9N11t8l4svSCs1+5B3rOAhA==}
@@ -5015,8 +5009,6 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
-
-  '@paddle/paddle-js@1.6.5': {}
 
   '@parcel/watcher-android-arm64@2.6.0':
     optional: true

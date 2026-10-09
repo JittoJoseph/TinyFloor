@@ -5,9 +5,9 @@ import { APP_PATH } from "@/lib/site";
 import { AppAnchor } from "./AppAnchor";
 
 /**
- * The site's locale-aware navigation. It stands in for the shared one
- * (web-shared/src/lib/i18n/navigation.ts: "@/" finds this app's file first),
- * so every link on the site's pages, shared components' too, goes the same way.
+ * The site's locale-aware navigation. Each app has its own (the app's is plain);
+ * shared components import "@/lib/i18n/navigation" and get this one here, so
+ * every link on the site's pages, shared components' too, goes the same way.
  */
 const navigation = createNavigation(routing);
 export const { redirect, permanentRedirect, usePathname, useRouter } = navigation;

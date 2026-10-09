@@ -20,9 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*", "../web-shared/src/*"],
-      "@shared/*": ["../shared-protocol/src/*"],
-      // ../web-shared has no node_modules: its imports resolve in this app's.
-      "*": ["./node_modules/@types/*", "./node_modules/*"]
+      "@shared/*": ["../shared-protocol/src/*"]
     }
   },
   "include": [

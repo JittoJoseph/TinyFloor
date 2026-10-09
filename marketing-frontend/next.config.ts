@@ -22,15 +22,9 @@ const nextConfig: NextConfig = {
   // The floor only ever loads in the browser (ssr: false, or inside an effect),
   // so the server build leaves Phaser out instead of carrying 1.2MB it never runs.
   webpack: (config, { isServer }) => {
-    // Code in ../web-shared has no node_modules of its own: it uses this app's, so there is one React.
+    // Code in ../web-shared uses this app's packages (its node_modules is a link to this app's, made
+    // by fetch-assets.mjs); looking here first keeps it so while both dev servers run, so there is one React.
     config.resolve.modules = [path.join(process.cwd(), "node_modules"), "node_modules"];
-    // tsconfig's "*" path is there for TypeScript, for the same reason. Webpack must not use it: a
-    // package found as a folder loses its export conditions, and the server gets next-intl's client build.
-    for (const plugin of config.resolve.plugins ?? []) {
-      if (plugin && "jsConfigPlugin" in plugin && plugin.paths?.["*"]) {
-        plugin.paths = Object.fromEntries(Object.entries(plugin.paths).filter(([pattern]) => pattern !== "*"));
-      }
-    }
     if (isServer) config.resolve.alias = { ...config.resolve.alias, phaser: false };
     return config;
   },

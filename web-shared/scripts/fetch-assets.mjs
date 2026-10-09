@@ -6,7 +6,8 @@
  *   web-shared/public, which is where to change them;
  * - the licensed art, below.
  *
- * Both copies are ignored by git in each frontend.
+ * Both copies are ignored by git in each frontend. It also links
+ * web-shared/node_modules to this frontend's (link-modules.mjs).
  *
  * The Modern Interiors and Modern Office packs may be used in this project but
  * not redistributed, so their files live in an R2 bucket rather than in git.
@@ -21,6 +22,7 @@ import { createHash, createHmac } from "node:crypto";
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import "./link-modules.mjs";
 
 const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
 /** web-shared, where the manifest and the shared public files are. */

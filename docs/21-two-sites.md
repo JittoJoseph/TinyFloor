@@ -65,6 +65,10 @@ Locally: `pnpm dev` in `marketing-frontend` (port 3000) and in `app-frontend`
 (port 3001), with `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_APP_URL` pointing at
 each other (see `.env.example`).
 
-Neither folder has `node_modules` for `web-shared`: each app resolves the
-shared code's imports from its own (`tsconfig.json` paths and
-`resolve.modules` in `next.config.ts`), so there is one copy of React.
+`web-shared` has no packages of its own. Before every dev server and build,
+`web-shared/node_modules` is linked to the building app's
+(`web-shared/scripts/link-modules.mjs`, run by `fetch-assets.mjs`), and webpack
+looks in the app's own `node_modules` first, so there is one copy of React. Don't
+map bare imports through tsconfig `paths` instead: OpenNext's bundler reads
+those too, picks up the full `next` package and its native image library, and
+the worker fails to build.

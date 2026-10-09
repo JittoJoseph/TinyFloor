@@ -52,16 +52,13 @@ The session cookie is set by the API on `.tinyfloor.com`, so signing in on
 either part signs you in on both (on preview the cookie is the API host's, and
 both preview sites call the same API).
 
-Each site keeps its own language cookie (`NEXT_LOCALE`), and the reader's
-language crosses over without sharing it:
-
-- Links from the site to the app always carry the language prefix
-  (`/de/create`), and so does the redirect of an old app address on www when
-  the reader has picked a language there (a 307, since it differs by reader).
-- The app remembers the language a page was opened in, the same way
-  next-intl's middleware does, also for pages the worker serves as files
-  (`syncLocale` in `static-worker.mjs`). So someone who came over in German
-  still gets German when they later open app.tinyfloor.com without a prefix.
+Neither site ever picks a language for the reader: no redirects by browser
+language, no remembered choice. The address says it: `/pricing` is English,
+`/es/pricing` Spanish (`localeDetection: false` in `lib/i18n/routing.ts`).
+Every link keeps the language of the page it's on, including links between the
+two sites (`appHref` / `siteHref` in `lib/site.ts`), so a reader on a /es page
+only ever lands on /es pages. The language menu is the way to change it. Old
+app links on www keep whatever prefix they had.
 
 ## Builds
 

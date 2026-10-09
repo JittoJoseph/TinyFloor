@@ -45,15 +45,11 @@ export const routing = defineRouting({
   defaultLocale,
   // English is served unprefixed (`/rooms`); every other locale keeps its
   // prefix (`/de/rooms`). `/en/...` redirects to the unprefixed path, so there
-  // is no duplicate content. Unprefixed paths still locale-detect, so a shared
-  // `/join?roomId=…` link opens in the recipient's own language.
+  // is no duplicate content.
   localePrefix: "as-needed",
-  // Keep the picked locale for a year (next-intl otherwise writes a session
-  // cookie). `path: "/"` matters: on a prefixed page the client writer would
-  // scope the cookie to `/fr`, and a later switch back to English would never
-  // reach `/`, so the stale French cookie would keep winning.
-  localeCookie: {
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  },
+  // The address alone says the language: nobody is ever redirected to another
+  // one by their browser's language or a remembered pick. A page's links keep
+  // its language (on both sites), and the language menu is how to change it.
+  localeDetection: false,
+  localeCookie: false,
 });

@@ -22,8 +22,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`${pathname}${search}`, SITE_URL), 308);
   }
 
-  // Detect the locale (cookie → Accept-Language → default) and redirect or
-  // rewrite `/path` to its locale.
+  // `/path` is English and `/de/path` German: the address alone says the
+  // language (routing.ts), so nobody is redirected to another one.
   const response = withCountry(request, handleI18nRouting(request));
   // The lobby is open to everyone and worth finding; the rest is behind a sign-in.
   if (path !== "/lobby") response.headers.set("X-Robots-Tag", "noindex");

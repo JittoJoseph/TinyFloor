@@ -54,11 +54,10 @@ export function screen(request: NextRequest, home: URL): NextResponse | "file" |
   return null;
 }
 
-/** The reader's language for a page we route ourselves: the prefix, else the one they picked before. */
+/** The language of an address we route ourselves: its prefix, else English. */
 export function readerLocale(request: NextRequest): string {
   const prefix = request.nextUrl.pathname.split("/")[1];
-  const picked = request.cookies.get("NEXT_LOCALE")?.value;
-  return [prefix, picked].find((one) => one && (routing.locales as readonly string[]).includes(one)) ?? routing.defaultLocale;
+  return (routing.locales as readonly string[]).includes(prefix) ? prefix : routing.defaultLocale;
 }
 
 /**

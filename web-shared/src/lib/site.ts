@@ -1,3 +1,5 @@
+import { defaultLocale } from "@/lib/i18n/routing";
+
 /** The marketing site: the home page, pricing, guides, the legal pages. */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com";
@@ -14,12 +16,13 @@ export const APP_URL =
 export const APP_PATH = /^\/(account|admin|auth|create|dashboard|join|lobby|invite|office|map-render|video-demo)(\/|$)/;
 
 /**
- * A path on the other site, in a locale. The prefix is always written, even
- * for English: the other site has its own language cookie, and the prefix is
- * what tells it the reader's pick (it drops "/en" again with one redirect).
+ * A path on the other site in a locale, addressed the way that site serves it:
+ * English unprefixed, every other language with its prefix. The address alone
+ * picks the language, so a reader on a /es page lands on /es pages over there.
  */
 export function crossHref(base: string, locale: string, path: string): string {
   const [route, rest = ""] = path.split(/(?=[?#])/, 2);
+  if (locale === defaultLocale) return `${base}${route}${rest}`;
   return `${base}/${locale}${route === "/" ? "" : route}${rest}`;
 }
 export const appHref = (locale: string, path: string) => crossHref(APP_URL, locale, path);

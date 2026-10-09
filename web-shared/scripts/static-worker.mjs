@@ -11,12 +11,9 @@
 // instead, the same way OpenNext's cache would serve it.
 //
 // Everything else still goes to Next, unchanged: other methods, the old
-// addresses (which redirect), an unprefixed address a reader of another
-// language would be sent on from, and every page rendered per request.
+// addresses (which redirect), and every page rendered per request.
 
 const DEFAULT_LOCALE = "en";
-/** Languages the browser may name another way than we do. */
-const ALIASES = { nb: "no", nn: "no", iw: "he" };
 /** The request headers Next's pages vary on, so a cache never mixes a page with its data. */
 const VARY = "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch";
 
@@ -61,8 +58,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
       if (first === DEFAULT_LOCALE) return null;
       route = path;
     } else {
-      // Unprefixed is English, unless this reader would be sent to their own language.
-      if (wantedLocale(request, LOCALES) !== DEFAULT_LOCALE) return null;
+      // Unprefixed is English: the address alone says the language.
       route = path === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${path}`;
     }
     const shared = sharedPages.find(([pattern]) => pattern.test(route));
@@ -93,7 +89,6 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
       headers.set("content-type", "text/html; charset=utf-8");
       headers.set("etag", page.etag);
       setCountry(request, headers);
-      syncLocale(request, headers, route.split("/")[1], LOCALES);
       // The browser has this page already: say so, without reading it.
       if (request.headers.get("if-none-match")?.split(/\s*,\s*/).includes(page.etag)) {
         return new Response(null, { status: 304, headers });
@@ -106,47 +101,9 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
   }
 }
 
-/**
- * The language next-intl's middleware would pick for an unprefixed address:
- * the one the reader chose before (its cookie), else the first their browser
- * asks for that the site has. Anything unsure counts as another language, so
- * Next decides.
- */
-function wantedLocale(request, locales) {
-  const chosen = cookie(request, "NEXT_LOCALE");
-  if (chosen) return chosen;
-  const asked = (request.headers.get("accept-language") ?? "")
-    .split(",")
-    .map((part, index) => {
-      const [tag, ...params] = part.trim().split(";");
-      const q = Number(params.find((param) => param.trim().startsWith("q="))?.trim().slice(2) ?? 1);
-      return { base: tag.split("-")[0].toLowerCase(), q: Number.isNaN(q) ? 0 : q, index };
-    })
-    .filter((one) => one.base && one.base !== "*" && one.q > 0)
-    .sort((a, b) => b.q - a.q || a.index - b.index);
-  for (const { base } of asked) {
-    const code = ALIASES[base] ?? base;
-    if (locales.has(code)) return code;
-  }
-  return DEFAULT_LOCALE;
-}
-
 function cookie(request, name) {
   const match = (request.headers.get("cookie") ?? "").match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : null;
-}
-
-/**
- * The page's language, remembered for the reader's next visit, the way
- * next-intl's middleware does it (which pages served from here skip): when it
- * isn't what they'd be given anyway. Someone sent here from the other site in
- * their language keeps it when they come back to an address without one.
- */
-function syncLocale(request, headers, locale, locales) {
-  if ((request.headers.get("sec-fetch-dest") ?? "document") !== "document") return;
-  const chosen = cookie(request, "NEXT_LOCALE");
-  if (chosen ? chosen === locale : wantedLocale(request, locales) === locale) return;
-  headers.append("set-cookie", `NEXT_LOCALE=${locale}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`);
 }
 
 /** The reader's country as a cookie, as the middleware sets it: a hint for the language menu's order. */

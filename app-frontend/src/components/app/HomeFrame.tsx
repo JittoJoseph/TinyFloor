@@ -26,7 +26,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
   const { user } = useAuth();
   const lobby = { href: lobbyPath, label: ts("publicLobby") };
   const tabs = [
-    { key: "home", href: "/dashboard", label: t("home") },
+    { key: "home", href: "/", label: t("home") },
     { key: "account", href: "/account", label: ts("account") },
   ] as const;
 
@@ -36,7 +36,7 @@ export function HomeFrame({ active, children }: { active: "home" | "account" | n
         {/* The page fades out under the floating bar instead of cutting off at it. */}
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-rail from-40% to-transparent" />
         <nav className="mx-auto flex h-14 max-w-[880px] items-center gap-0.5 rounded-full border border-border bg-card/85 pe-2 ps-3 shadow-[0_8px_24px_-10px_rgb(0_0_0/0.3)] [--face-ring:var(--ui-card)] backdrop-blur-xl sm:gap-1 sm:ps-4">
-          <Link href="/dashboard" aria-label="TinyFloor" className="me-1.5 inline-flex shrink-0 items-center gap-2 text-[15px] font-semibold tracking-tight text-foreground sm:me-2">
+          <Link href="/" aria-label="TinyFloor" className="me-1.5 inline-flex shrink-0 items-center gap-2 text-[15px] font-semibold tracking-tight text-foreground sm:me-2">
             <Logo size={26} />
             <span className="hidden sm:inline">TinyFloor</span>
           </Link>

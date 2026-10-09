@@ -8,7 +8,7 @@ import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import { lobbyPath, officeChatPath, officePath, shareUrl } from "@/lib/links";
+import { lobbyPath, officeChatPath, officePath, officeSettingsPath, shareUrl } from "@/lib/links";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
@@ -131,7 +131,7 @@ function OfficePeople() {
                 role={owner ? t("owner") : t(member.role)}
                 joinedAt={member.joinedAt}
                 isMe={isMe}
-                onProfile={() => router.push("/account")}
+                onProfile={() => router.push(`${officeSettingsPath(office.id)}#profile`)}
                 onMessage={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
                 onWalk={() => {
                   router.push(officePath(office.id));
@@ -349,7 +349,7 @@ function LobbyPeople() {
                 name={one.name}
                 presence={one.status}
                 isMe={one.id === user?.id}
-                onProfile={user?.guest ? undefined : () => router.push("/account")}
+                onProfile={user?.guest ? undefined : () => router.push(`${place.paths.settings}#profile`)}
                 onMessage={user && one.id !== user.id ? () => router.push(place.paths.chat(dmChannelId(user.id, one.id))) : undefined}
                 onWalk={() => {
                   router.push(place.paths.floor);

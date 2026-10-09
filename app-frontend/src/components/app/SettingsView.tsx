@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, Mic, Monitor, Moon, SlidersHorizontal, Sun, Video } from "@/components/ui/icons";
+import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, SlidersHorizontal, Sun, UserRound, Video } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
@@ -24,10 +24,14 @@ import { PresenceDock } from "./PresenceDock";
 import { usePlace } from "./place";
 import { useOfficeMaybe } from "./OfficeShell";
 import { PlanSection } from "./PlanSection";
+import { Profile, SignIn } from "@/components/account/AccountView";
 
-type Section = "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
+type Section = "profile" | "signin" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
+const SECTIONS: Section[] = ["profile", "signin", "general", "media", "notifications", "accessibility", "office", "plan"];
 
 const ICONS: Record<Section, ReactNode> = {
+  profile: <UserRound />,
+  signin: <KeyRound />,
   general: <SlidersHorizontal />,
   media: <Headphones />,
   notifications: <Bell />,
@@ -37,24 +41,30 @@ const ICONS: Record<Section, ReactNode> = {
 };
 
 /**
- * Settings, in the shell like everything else: your own preferences, kept in
- * this browser, and — in an office — the office's own. Nothing here costs a
- * request to change except the office's name.
+ * Settings, in the shell like everything else: your account (who you are to
+ * everyone, how you sign in), your own preferences, kept in this browser, and
+ * — in an office — the office's own. A link opens a section by its name:
+ * …/settings#profile, …/settings#plan.
  */
 export function SettingsView() {
   const t = useTranslations("settings");
   const ts = useTranslations("shell");
+  const tp = useTranslations("office.profile");
   const place = usePlace();
-  // "Get more seats" and the like link straight to the plan: …/settings#plan.
-  const toPlan = useSyncExternalStore(subscribeHash, () => window.location.hash === "#plan", () => false) && place.kind === "office";
-  const [chosen, setSection] = useState<Section | null>(null);
-  const [pickedByHand, setPicked] = useState<boolean | null>(null);
-  const section = chosen ?? (toPlan ? "plan" : "general");
-  const picked = pickedByHand ?? toPlan;
-  const reduce = useReducedMotion();
-
+  const { user } = useAuth();
+  const account: Section[] = user && !user.guest ? ["profile", "signin"] : [];
   const yours: Section[] = ["general", "media", "notifications", "accessibility"];
   const office: Section[] = place.kind === "office" ? ["office", "plan"] : [];
+  const shown = [...account, ...yours, ...office];
+  // A link straight to a section ("Get more seats" → …/settings#plan, your profile → #profile).
+  const hashed = useSyncExternalStore(subscribeHash, () => window.location.hash.slice(1), () => "") as Section;
+  const linked = SECTIONS.includes(hashed) && shown.includes(hashed) ? hashed : null;
+  const [chosen, setSection] = useState<Section | null>(null);
+  const [pickedByHand, setPicked] = useState<boolean | null>(null);
+  const section = chosen ?? linked ?? "general";
+  const picked = pickedByHand ?? !!linked;
+  const reduce = useReducedMotion();
+  const label = (one: Section) => (one === "profile" || one === "signin" ? tp(`sections.${one}`) : t(`sections.${one}`));
 
   const choose = (one: Section) => {
     setSection(one);
@@ -80,7 +90,7 @@ export function SettingsView() {
         />
       )}
       <span className="relative">{ICONS[one]}</span>
-      <span className="relative flex-1">{t(`sections.${one}`)}</span>
+      <span className="relative flex-1">{label(one)}</span>
       <ChevronRight className="relative size-3.5 text-faint md:hidden rtl:rotate-180" />
     </button>
   );
@@ -94,6 +104,12 @@ export function SettingsView() {
             <h2 className="truncate text-[15px] font-semibold tracking-tight text-foreground">{ts("settings")}</h2>
           </header>
           <nav className="min-h-0 flex-1 overflow-y-auto px-2 pb-3">
+            {account.length > 0 && user && (
+              <>
+                <p className="truncate px-2.5 pb-1 pt-1 text-[12px] font-medium text-faint">{user.displayName}</p>
+                <div className="mb-3 flex flex-col gap-px">{account.map(item)}</div>
+              </>
+            )}
             <p className="px-2.5 pb-1 pt-1 text-[12px] font-medium text-faint">{t("preferences")}</p>
             <div className="flex flex-col gap-px">{yours.map(item)}</div>
             {office.length > 0 && (
@@ -115,10 +131,12 @@ export function SettingsView() {
           onClick={() => setPicked(false)}
           icon={<ArrowLeft className="rtl:rotate-180" />}
         />
-        <span className="text-[15px] font-semibold text-foreground">{t(`sections.${section}`)}</span>
+        <span className="text-[15px] font-semibold text-foreground">{label(section)}</span>
       </header>
       <div className="min-h-0 flex-1 overflow-y-auto">
         <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6 sm:px-8">
+          {section === "profile" && <Profile />}
+          {section === "signin" && <SignIn />}
           {section === "general" && <General />}
           {section === "media" && <Media />}
           {section === "notifications" && <Notifications />}
@@ -500,7 +518,7 @@ function OfficeSection() {
                     onClick={() =>
                       run(async () => {
                         await api.closeOffice(office.id);
-                        router.replace("/dashboard");
+                        router.replace("/");
                       })
                     }
                   >
@@ -532,7 +550,7 @@ function OfficeSection() {
                   onClick={() =>
                     run(async () => {
                       await api.removeMember(office.id, user!.id);
-                      router.replace("/dashboard");
+                      router.replace("/");
                     })
                   }
                 >

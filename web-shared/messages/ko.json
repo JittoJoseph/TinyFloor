@@ -64,7 +64,6 @@
     "devices": "마이크와 카메라",
     "makeAccount": "계정 만들기",
     "account": "계정",
-    "allOffices": "모든 사무실",
     "signOut": "로그아웃",
     "switchOffice": "사무실 전환",
     "membersOf": "멤버 {seats}명 중 {used}명",

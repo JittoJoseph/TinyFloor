@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, LayoutGrid, Plus } from "@/components/ui/icons";
+import { DoorOpen, Plus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
 import { officePath } from "@/lib/links";
@@ -73,7 +73,15 @@ export function OfficeSwitcher({ office }: { office: Office }) {
               icon={<Face seed={one.id} size={16} square />}
               onSelect={() => router.push(officePath(one.id))}
             >
-              {one.name}
+              <span className="flex w-full items-center gap-2">
+                <span className="min-w-0 flex-1 truncate">{one.name}</span>
+                {!!one.here && (
+                  <span className="flex items-center gap-1 text-[12px] tabular-nums text-muted-foreground">
+                    <span className="size-1.5 rounded-full bg-ok" />
+                    {one.here}
+                  </span>
+                )}
+              </span>
             </MenuItem>
           ))}
         </>
@@ -82,9 +90,6 @@ export function OfficeSwitcher({ office }: { office: Office }) {
       <MenuSeparator />
       <MenuItem icon={<Plus />} onSelect={() => router.push("/create")}>
         {t("newOffice")}
-      </MenuItem>
-      <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
-        {t("allOffices")}
       </MenuItem>
       <MenuItem icon={<DoorOpen />} onSelect={() => router.push("/lobby")}>
         {t("publicLobby")}

@@ -146,7 +146,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
           <h1 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{t("goneTitle")}</h1>
           <p className="mb-6 text-[14px] text-muted-foreground">{t("gone")}</p>
           <Link
-            href="/dashboard"
+            href="/"
             className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background"
           >
             {t("backToOffices")}
@@ -191,7 +191,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     officesOnly: () => {},
   };
 
-  const leave = { href: "/dashboard", label: ts("leaveOffice") };
+  // Out of the office, to its door (there is no dashboard): walk back in, or go to another.
+  const leave = { href: `/?${new URLSearchParams({ left: office.id })}`, label: ts("leaveOffice") };
 
   return (
     <Context.Provider value={{ office, members, overview: read.overview, readAt: read.at, refresh }}>
@@ -223,7 +224,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                 ticketFor={() => api.officeTicket(office.id)}
                 sharePath={inviteLink ?? undefined}
                 inviteHref={inviteLink ? undefined : people}
-                leaveHref="/dashboard"
+                leaveHref={leave.href}
                 settingsHref={settingsPath}
               />
               {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}

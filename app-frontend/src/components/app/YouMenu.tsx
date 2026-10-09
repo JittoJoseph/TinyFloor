@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { DoorOpen, HelpCircle, LayoutGrid, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
+import { DoorOpen, HelpCircle, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -145,11 +145,9 @@ export function YouMenu({
         </MenuItem>
       ) : (
         <>
-          <MenuItem icon={<UserRound />} onSelect={() => router.push("/account")}>
+          {/* In a place, your account is a section of its settings; outside one, its own page. */}
+          <MenuItem icon={<UserRound />} onSelect={() => router.push(settingsHref ? `${settingsHref}#profile` : "/account")}>
             {t("account")}
-          </MenuItem>
-          <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
-            {t("allOffices")}
           </MenuItem>
         </>
       )}

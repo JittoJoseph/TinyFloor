@@ -7,7 +7,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
-import { invitePath } from "@/lib/links";
+import { invitePath, officePath } from "@/lib/links";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
 import { EntryProblem } from "@/components/entry/EntryProblem";
@@ -91,7 +91,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       const { officeId } = await api.acceptInvite(token);
       withPostHog((posthog) => posthog.capture("office_invite_accepted"));
       posthogLog.info("Office invitation acceptance completed");
-      router.replace(`/dashboard?${new URLSearchParams({ office: officeId })}`);
+      router.replace(officePath(officeId));
     } catch (err) {
       setError(explain(err));
       setBusy(false);

@@ -17,7 +17,7 @@ import { YouMark } from "./DoorParts";
  * finds their Google name filled in and still presses Continue (or changes
  * it); someone who used an email types it.
  */
-export function Introduce({ backHref = "/dashboard" }: { backHref?: string }) {
+export function Introduce({ backHref = "/" }: { backHref?: string }) {
   const t = useTranslations("entry");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();

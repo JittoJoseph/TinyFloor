@@ -24,11 +24,11 @@ export default function CreateOfficePage() {
 
   if (!signedIn) {
     return (
-      <EntryShell backHref="/dashboard" header={<DoorHeaderSkeleton />}>
+      <EntryShell backHref="/" header={<DoorHeaderSkeleton />}>
         <DoorSkeleton />
       </EntryShell>
     );
   }
-  if (user.introduced === false) return <Introduce backHref="/dashboard" />;
+  if (user.introduced === false) return <Introduce backHref="/" />;
   return <CreateOfficeFlow />;
 }

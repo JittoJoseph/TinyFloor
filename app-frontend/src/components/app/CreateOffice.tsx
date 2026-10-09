@@ -159,7 +159,7 @@ export function CreateOfficeFlow() {
 
   return (
     <EntryShell
-      backHref="/dashboard"
+      backHref="/"
       header={
         <EntryHeader
           mark={<LitFace seed={typed.toLowerCase() || user?.id || "your-office"} size={48} phone={44} square />}

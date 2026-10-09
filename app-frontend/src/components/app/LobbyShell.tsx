@@ -4,7 +4,7 @@ import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LayoutGrid, LogOut, MessagesSquare, Plus, Users } from "@/components/ui/icons";
+import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Plus, Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
@@ -158,7 +158,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
     officesOnly: setAsked,
   };
 
-  const leave = { href: user.guest ? home : "/dashboard", label: ts("leaveLobby") };
+  const leave = { href: user.guest ? home : "/", label: ts("leaveLobby") };
 
   return (
     <PlaceProvider value={place}>
@@ -195,7 +195,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               user={user}
               ticketFor={api.lobbyTicket}
               sharePath={lobbyPath}
-              leaveHref={user.guest ? home : "/dashboard"}
+              leaveHref={user.guest ? home : "/"}
               settingsHref={lobbySettingsPath}
             />
             {!onChat && <ChatNudges chatPath={lobbyChatPath} />}
@@ -293,13 +293,8 @@ function LobbyMark() {
       <MenuItem icon={<Plus />} onSelect={() => router.push(lobbyOfficePath)}>
         {ts("yourOffice")}
       </MenuItem>
-      {!guest && (
-        <MenuItem icon={<LayoutGrid />} onSelect={() => router.push("/dashboard")}>
-          {ts("allOffices")}
-        </MenuItem>
-      )}
       <MenuSeparator />
-      <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => goTo(router, guest ? home : "/dashboard")}>
+      <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => goTo(router, guest ? home : "/")}>
         {ts("leaveLobby")}
       </MenuItem>
     </Menu>

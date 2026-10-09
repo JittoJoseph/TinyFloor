@@ -1,40 +1,11 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * What Home, your account and making an office look like while they load:
- * the same shapes in the same places, so nothing jumps when they arrive.
+ * What your account looks like while it loads: the same shapes in the same
+ * places, so nothing jumps when it arrives.
  */
-
-const SHAPE_KEY = "tf-home";
-/** How many offices Home had last time, so it can wait in the right shape. */
-export type HomeShape = "none" | "one" | "several";
-
-export function rememberHomeShape(count: number) {
-  try {
-    localStorage.setItem(SHAPE_KEY, count === 0 ? "none" : count === 1 ? "one" : "several");
-  } catch {
-    // Only a hint for next time.
-  }
-}
-
-function readShape(): HomeShape {
-  try {
-    const saved = localStorage.getItem(SHAPE_KEY);
-    return saved === "none" || saved === "several" ? saved : "one";
-  } catch {
-    return "one";
-  }
-}
-
-const noop = () => () => {};
-
-/** The shape Home had last time; nothing on the server, which can't know. */
-export function useHomeShape(): HomeShape | null {
-  return useSyncExternalStore(noop, readShape, () => null);
-}
 
 export function Bone({ className }: { className?: string }) {
   return <span className={cn("block animate-pulse rounded-full bg-foreground/[0.07]", className)} />;
@@ -63,61 +34,6 @@ function GroupBone({ rows, note, faces = true, fields }: { rows: number; note?: 
       </div>
     </div>
   );
-}
-
-/** One office at a glance, as Overview lays it out. */
-export function OfficeSkeleton({ several }: { several?: boolean }) {
-  return (
-    <div aria-hidden>
-      {several && (
-        <div className="mb-8 flex h-9 items-center gap-2">
-          <Bone className="size-5 rounded-[30%]" />
-          <Bone className="h-4 w-32" />
-          <Bone className="ms-auto h-3.5 w-20" />
-        </div>
-      )}
-      <div className="flex flex-wrap items-center gap-4">
-        <Bone className="size-11 rounded-[30%]" />
-        <div className="min-w-0 flex-1 space-y-2">
-          <Bone className="h-5 w-40" />
-          <Bone className="h-3 w-32" />
-        </div>
-        <Bone className="h-9 w-full sm:w-24" />
-      </div>
-      <Bone className="mt-6 h-44 rounded-2xl sm:h-60" />
-      <div className="mt-8">
-        <GroupBone rows={1} faces={false} />
-        <GroupBone rows={2} note />
-      </div>
-    </div>
-  );
-}
-
-/** Making an office, as MakeOffice lays it out: down one edge on a phone, centered wider. */
-export function MakeSkeleton({ extras }: { extras?: boolean }) {
-  return (
-    <div aria-hidden className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6">
-      <Bone className="size-[60px] rounded-[30%] sm:size-20" />
-      <Bone className="mt-7 h-3.5 w-24 sm:mt-9" />
-      <Bone className="mt-3 h-8 w-64 sm:w-80" />
-      <Bone className="mt-3.5 h-3.5 w-full max-w-[340px]" />
-      <span className="mt-7 block h-14 w-full rounded-full border border-border bg-card sm:mt-8 sm:h-[52px]" />
-      <Bone className="ms-5 mt-3.5 h-3 w-56 sm:ms-0" />
-      {extras && (
-        <>
-          <Bone className="mt-12 h-3 w-20 sm:hidden" />
-          <span className="mt-3 block h-36 w-full rounded-[20px] border border-border bg-card sm:mt-12 sm:h-11 sm:rounded-full sm:bg-transparent" />
-        </>
-      )}
-    </div>
-  );
-}
-
-/** Home before it knows your offices: the shape it had last time. */
-export function HomeSkeleton() {
-  const shape = useHomeShape();
-  if (!shape) return null;
-  return shape === "none" ? <MakeSkeleton extras /> : <OfficeSkeleton several={shape === "several"} />;
 }
 
 /** Your account, as AccountView lays it out. */

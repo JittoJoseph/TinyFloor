@@ -62,7 +62,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
       route = path;
     } else {
       // Unprefixed is English, unless this reader would be sent to their own language.
-      if (wantedLocale(request) !== DEFAULT_LOCALE) return null;
+      if (wantedLocale(request, LOCALES) !== DEFAULT_LOCALE) return null;
       route = path === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${path}`;
     }
     const shared = sharedPages.find(([pattern]) => pattern.test(route));
@@ -111,7 +111,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
  * asks for that the site has. Anything unsure counts as another language, so
  * Next decides.
  */
-function wantedLocale(request) {
+function wantedLocale(request, locales) {
   const chosen = cookie(request, "NEXT_LOCALE");
   if (chosen) return chosen;
   const asked = (request.headers.get("accept-language") ?? "")
@@ -125,7 +125,7 @@ function wantedLocale(request) {
     .sort((a, b) => b.q - a.q || a.index - b.index);
   for (const { base } of asked) {
     const code = ALIASES[base] ?? base;
-    if (LOCALES.has(code)) return code;
+    if (locales.has(code)) return code;
   }
   return DEFAULT_LOCALE;
 }

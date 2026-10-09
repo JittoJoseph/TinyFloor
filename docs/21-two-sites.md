@@ -50,9 +50,18 @@ language, so a click never takes the redirect.
 
 The session cookie is set by the API on `.tinyfloor.com`, so signing in on
 either part signs you in on both (on preview the cookie is the API host's, and
-both preview sites call the same API). Each site keeps its own language
-cookie; links between the two always carry the locale prefix, so the pick
-crosses over.
+both preview sites call the same API).
+
+Each site keeps its own language cookie (`NEXT_LOCALE`), and the reader's
+language crosses over without sharing it:
+
+- Links from the site to the app always carry the language prefix
+  (`/de/create`), and so does the redirect of an old app address on www when
+  the reader has picked a language there (a 307, since it differs by reader).
+- The app remembers the language a page was opened in, the same way
+  next-intl's middleware does, also for pages the worker serves as files
+  (`syncLocale` in `static-worker.mjs`). So someone who came over in German
+  still gets German when they later open app.tinyfloor.com without a prefix.
 
 ## Builds
 
@@ -72,8 +81,13 @@ each other (see `.env.example`).
   files are one or two lines that re-export them and say which site it is:
   the app's `[locale]/layout.tsx` passes `APP_URL`, the site's `SITE_URL`, so
   canonicals and language links name the right address.
-- **Components, lib code, translations and styles** live in `web-shared/src`
-  and `web-shared/messages`. `@/` looks in the app's own `src` first, then in
+- **Translations** are per site: `web-shared/messages/<locale>.json` holds what
+  both say (common, the language menu, metadata, 404, legal, shell, home),
+  `marketing-frontend/messages` the site's (landing pages, pricing, FAQ, guides)
+  and `app-frontend/messages` the app's. Each app's `lib/i18n/request.ts`
+  merges the shared file with its own, so each worker carries only its own
+  words, and each app's types (`src/global.d.ts`) only know its own keys.
+- **Components, lib code and styles** live in `web-shared/src`. `@/` looks in the app's own `src` first, then in
   `web-shared/src`. Only files both apps use belong there; a file one app
   uses lives in that app. The one deliberate override is
   `lib/i18n/navigation.ts`: each app has its own, and the site's turns links to

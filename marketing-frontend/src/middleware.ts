@@ -1,4 +1,5 @@
 import createMiddleware from "next-intl/middleware";
+import { hasLocale } from "next-intl";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
 import { GUIDES } from "@/lib/guides";
@@ -32,7 +33,15 @@ export function middleware(request: NextRequest) {
   // The app moved to its own address: the lobby, offices, invitations and
   // signing in, including every link shared before the move, go on there as
   // they are. Visitors to the site itself stay here.
-  if (APP_PATH.test(unprefixed(pathname))) {
+  const path = unprefixed(pathname);
+  if (APP_PATH.test(path)) {
+    // An address without a language goes in the one the reader picked here,
+    // which the app can't see (each site keeps its own cookie). That answer
+    // differs by reader, so browsers mustn't keep it the way they keep a 308.
+    const picked = path === pathname ? request.cookies.get("NEXT_LOCALE")?.value : undefined;
+    if (picked && hasLocale(routing.locales, picked)) {
+      return NextResponse.redirect(new URL(`/${picked}${pathname}${search}`, APP_URL), 307);
+    }
     return NextResponse.redirect(new URL(`${pathname}${search}`, APP_URL), 308);
   }
 

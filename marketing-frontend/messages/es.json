@@ -1,0 +1,1735 @@
+{
+  "landing": {
+    "description": "Una oficina virtual para equipos remotos, en el navegador. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo ponerte al lado de alguien.",
+    "features": [
+      "Llamadas de vídeo y voz por proximidad",
+      "Compartir pantalla en llamadas y reuniones",
+      "Mapa de oficina 2D que puedes recorrer",
+      "Avatares pixel art",
+      "Presencia y estado en tiempo real",
+      "Chat de sala"
+    ]
+  },
+  "faq": {
+    "title": "Antes de <em>entrar.</em>",
+    "items": [
+      {
+        "q": "¿Qué es TinyFloor?",
+        "a": "TinyFloor es una oficina virtual que puedes recorrer. Tu equipo aparece como personajes pixel art en una planta 2D compartida, y una llamada empieza cuando te colocas junto a alguien, no cuando haces clic en un enlace de reunión."
+      },
+      {
+        "q": "¿Cómo funciona el videochat de proximidad?",
+        "a": "Acércate a alguien y aparecerá un botón de llamada a su lado. Un toque inicia la llamada y, mientras habláis, puedes encender la cámara o compartir pantalla. Las llamadas usan WebRTC a través de la red de Cloudflare, así que conectan en cualquier red de oficina o de casa y siguen hasta que alguien cuelga. Para un grupo, únete a una reunión y tu personaje entra en la sala de reuniones."
+      },
+      {
+        "q": "¿TinyFloor es gratis?",
+        "a": "Sí, para una oficina de hasta 3 personas con 5 horas de reunión al mes. Las oficinas más grandes cuestan $19 al mes para 10 personas y 30 horas de reunión, o $49 para 25 personas y 60 horas."
+      },
+      {
+        "q": "¿Tengo que instalar algo?",
+        "a": "No. TinyFloor funciona en el navegador de escritorio y móvil. Abre el enlace de tu oficina y ya estás dentro."
+      },
+      {
+        "q": "¿Necesito una cuenta para unirme a una oficina?",
+        "a": "Sí, una gratuita. Una oficina es privada: tu equipo entra con su enlace de invitación e inicia sesión con Google o con su correo. Para echar un vistazo antes, la oficina de demostración solo pide un nombre."
+      },
+      {
+        "q": "¿Es TinyFloor privado y seguro?",
+        "a": "Una planta es solo para sus miembros, y nada de lo que hay dentro es público ni lo indexan los buscadores. Las llamadas van cifradas en tránsito con WebRTC, y tu cámara y tu micrófono solo están activos durante una llamada."
+      },
+      {
+        "q": "¿En qué se diferencia TinyFloor de Zoom o Google Meet?",
+        "a": "Zoom y Google Meet ponen a todos en una cuadrícula hasta que termina la reunión. Una oficina de TinyFloor está abierta todo el día: ves quién está, pasas de una conversación a otra y hablas con quien te acercas, sin agendar llamadas."
+      }
+    ]
+  },
+  "landings": {
+    "create": "Crea tu oficina",
+    "free": "Gratis para hasta 3 personas · Sin tarjeta",
+    "compare": "Comparativas",
+    "useCases": "Casos de uso",
+    "compareTitle": "TinyFloor y {name}, <em>frente a frente.</em>",
+    "checked": "Los datos de {name} vienen de su página de precios, revisada en septiembre de 2026.",
+    "rows": {
+      "price": "Precio",
+      "freePlan": "Plan gratuito",
+      "browser": "Funciona en el navegador",
+      "screenShare": "Compartir pantalla"
+    },
+    "us": {
+      "price": "Gratis para 3 personas, 19 $ al mes para 10",
+      "freePlan": "Todo, sin límite de tiempo, para hasta 3 personas.",
+      "browser": "Sí, sin instalar nada",
+      "screenShare": "Sí, en llamadas y reuniones"
+    },
+    "faqTitle": "Preguntas <em>frecuentes.</em>",
+    "relatedTitle": "Sigue <em>explorando.</em>",
+    "pages": {
+      "gather": {
+        "label": "Alternativa a Gather",
+        "meta": {
+          "title": "Alternativa gratis a Gather Town en tu navegador",
+          "description": "¿Buscas una alternativa gratis a Gather Town? TinyFloor es una oficina virtual de pixel art con videollamadas por proximidad."
+        },
+        "title": "Una <em>alternativa gratis a Gather.</em>",
+        "subtitle": "Gather eliminó su plan gratuito y ahora cobra por miembro. TinyFloor mantiene la misma idea, una oficina por la que caminas y donde hablas, gratis para hasta 3 personas y después un solo precio para toda la oficina.",
+        "points": [
+          {
+            "title": "Sin cuenta atrás",
+            "body": "Gather te da 30 días antes de pagar. El plan gratuito de TinyFloor no caduca: hasta 3 personas, todo el tiempo que quieras."
+          },
+          {
+            "title": "Nada que instalar",
+            "body": "Todo funciona en el navegador, en el ordenador y en el móvil. Comparte un enlace y tu equipo entra en segundos."
+          },
+          {
+            "title": "Un enlace para entrar",
+            "body": "Envía un enlace de invitación. Tu equipo elige nombre y personaje, crea una cuenta gratuita y entra."
+          }
+        ],
+        "them": {
+          "price": "Desde 12 $ por miembro al mes",
+          "freePlan": "Ninguno, solo una prueba de 30 días",
+          "browser": "Sí, con app de escritorio",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Gather sigue siendo gratis?",
+            "a": "No. Gather ya no tiene un plan gratuito permanente. Ofrece una prueba de 30 días y después el plan Essential empieza en 12 $ por miembro al mes. TinyFloor es gratis para hasta 3 personas y cuesta 19 $ al mes para hasta 10."
+          },
+          {
+            "q": "¿Qué tiene Gather que no tenga TinyFloor?",
+            "a": "Gather añade notas de reunión con IA y personalización de la oficina. TinyFloor se centra en lo esencial: moverte, llamadas por proximidad, compartir pantalla, una sala de reuniones, chat, una pizarra y música en la sala."
+          },
+          {
+            "q": "¿Puedo llevar a mi equipo de Gather a TinyFloor?",
+            "a": "Sí. Crea una oficina, invita a tu equipo con un solo enlace y todos entran. No hay datos que migrar ni nada que instalar."
+          },
+          {
+            "q": "¿Cuántas personas caben en una oficina de TinyFloor?",
+            "a": "Hasta 3 personas con Free, 10 con Plus y 25 con Pro, y puedes crear tantas oficinas como necesites."
+          }
+        ]
+      },
+      "kumospace": {
+        "label": "Alternativa a Kumospace",
+        "meta": {
+          "title": "Alternativa gratis a Kumospace para todo el equipo",
+          "description": "El plan gratuito de Kumospace llega hasta 5 miembros. TinyFloor es una oficina virtual gratis de pixel art con videollamadas por proximidad, abierta a todo tu equipo en el navegador."
+        },
+        "title": "Una <em>alternativa a Kumospace</em> para todo el equipo.",
+        "subtitle": "El plan gratuito de Kumospace admite 5 miembros en una sola planta. TinyFloor es gratis para 3, y luego un solo precio para toda la oficina: 19 $ al mes para hasta 10.",
+        "points": [
+          {
+            "title": "Sin límite de 5 miembros",
+            "body": "Invita a todo tu equipo: hasta 10 personas con Plus y 25 con Pro, por un precio por oficina, no por persona."
+          },
+          {
+            "title": "Pruébalo antes de registrarte",
+            "body": "Prueba la oficina de demostración de TinyFloor solo con un nombre y recórrela antes de crear la tuya."
+          },
+          {
+            "title": "Pensado también para el móvil",
+            "body": "En el teléfono te mueves con un joystick en pantalla y las llamadas se adaptan a la pantalla pequeña, todo en el navegador móvil."
+          }
+        ],
+        "them": {
+          "price": "Business desde 16 $ por usuario al mes",
+          "freePlan": "Hasta 5 miembros, 50 invitados y 1 planta",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Kumospace es gratis?",
+            "a": "Kumospace tiene un plan gratuito para hasta 5 miembros registrados, con una planta e invitados limitados a 4 horas a la semana. El plan Business empieza en 16 $ por usuario al mes. TinyFloor es gratis para hasta 3 personas y cuesta 19 $ al mes para hasta 10."
+          },
+          {
+            "q": "¿Qué tiene Kumospace que no tenga TinyFloor?",
+            "a": "Los planes de pago de Kumospace añaden grabación e historial de chat ilimitado. TinyFloor todavía no graba llamadas, pero compartir pantalla, el chat y las llamadas están en todos los planes, incluido el gratuito."
+          },
+          {
+            "q": "¿Mis compañeros necesitan una cuenta?",
+            "a": "Sí, una gratuita, que mantiene tu oficina privada para tu equipo. Para echar un vistazo antes, prueba la oficina de demostración solo con un nombre."
+          },
+          {
+            "q": "¿TinyFloor funciona en el móvil?",
+            "a": "Sí. Funciona en navegadores móviles con un joystick en pantalla, así que no hay que descargar ninguna app."
+          }
+        ]
+      },
+      "spatialchat": {
+        "label": "Alternativa a SpatialChat",
+        "meta": {
+          "title": "Alternativa a SpatialChat sin límite diario",
+          "description": "El plan gratuito de SpatialChat permite 2 horas al día. TinyFloor es una oficina virtual gratis de pixel art con llamadas por proximidad que puedes dejar abierta todo el día."
+        },
+        "title": "Una <em>alternativa a SpatialChat</em> abierta todo el día.",
+        "subtitle": "SpatialChat está pensado para eventos, y su plan gratuito se corta tras 2 horas al día. TinyFloor es una oficina, así que la sala sigue abierta mientras tu equipo trabaja.",
+        "points": [
+          {
+            "title": "Sin límite diario",
+            "body": "Deja la sala abierta desde la reunión de la mañana hasta el último mensaje del día. Nada se agota."
+          },
+          {
+            "title": "Una oficina, no un evento",
+            "body": "La oficina sigue abierta cuando termina una reunión. Tu equipo vuelve mañana a la misma planta."
+          },
+          {
+            "title": "Acércate para hablar",
+            "body": "Acércate a un compañero para empezar una llamada. Para un grupo, únete a una reunión y todos entran en la sala de reuniones."
+          }
+        ],
+        "them": {
+          "price": "Day Pass a 5 $ por usuario al día, Business desde 399 $ al mes",
+          "freePlan": "2 horas al día, hasta 12 personas",
+          "browser": "Sí",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿SpatialChat es gratis?",
+            "a": "SpatialChat tiene un plan gratuito con hasta 2 horas de reuniones al día para hasta 12 participantes. Las opciones de pago incluyen un Day Pass de 5 $ por usuario y planes Business desde 399 $ al mes. TinyFloor no tiene límite diario en ningún plan, ni siquiera en el gratuito."
+          },
+          {
+            "q": "¿TinyFloor sirve para eventos virtuales?",
+            "a": "TinyFloor está hecho para equipos que trabajan juntos cada día. Una oficina admite hasta 25 personas, así que encaja mejor con equipos pequeños que con grandes eventos."
+          },
+          {
+            "q": "¿Qué tiene SpatialChat que no tenga TinyFloor?",
+            "a": "SpatialChat añade archivos fijados y eventos grandes. TinyFloor se centra en la presencia diaria, las conversaciones rápidas y compartir pantalla en llamadas y reuniones."
+          },
+          {
+            "q": "¿Las llamadas funcionan entre navegadores?",
+            "a": "Sí. Las llamadas de TinyFloor van por WebRTC en el navegador, a través de la red de retransmisión de Cloudflare, así que conectan en cualquier red, de oficina o de casa."
+          }
+        ]
+      },
+      "workadventure": {
+        "label": "Alternativa a WorkAdventure",
+        "meta": {
+          "title": "Alternativa a WorkAdventure para equipos de hasta 25",
+          "description": "El plan gratuito de WorkAdventure permite 10 personas a la vez. TinyFloor es una oficina virtual de pixel art con videollamadas por proximidad, gratis para 3 personas y 19 $ al mes para 10."
+        },
+        "title": "Una <em>alternativa a WorkAdventure</em> con espacio para crecer.",
+        "subtitle": "WorkAdventure también es una oficina de pixel art, y su plan gratuito admite 10 personas a la vez. TinyFloor es gratis para 3 personas y después tiene un precio fijo, no un precio por persona.",
+        "points": [
+          {
+            "title": "El doble de espacio",
+            "body": "Un mapa gratuito de WorkAdventure admite 10 personas a la vez. Una oficina de TinyFloor admite hasta 25 miembros, y puedes abrir tantas oficinas como quieras."
+          },
+          {
+            "title": "Ningún mapa que construir",
+            "body": "Cada oficina incluye una planta, una sala de reuniones, una pizarra y un altavoz. Crea una oficina y entra."
+          },
+          {
+            "title": "Nada que alojar",
+            "body": "No hay servidor que mantener ni configuración. Comparte un enlace y tu equipo ya está en la oficina."
+          }
+        ],
+        "them": {
+          "price": "Business desde 8 € por usuario al mes",
+          "freePlan": "Hasta 10 personas a la vez",
+          "browser": "Sí",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿WorkAdventure es gratis?",
+            "a": "WorkAdventure tiene un plan gratuito para hasta 10 usuarios simultáneos. El plan Business empieza en 8 € por usuario al mes, y los precios para eventos desde 4 € por usuario al día. TinyFloor es gratis para hasta 3 personas y cuesta 19 $ al mes para hasta 10."
+          },
+          {
+            "q": "¿Puedo personalizar el mapa en TinyFloor?",
+            "a": "Todavía no. Todas las oficinas usan la misma planta. WorkAdventure te deja diseñar tus propios mapas, algo ideal para equipos que quieren un mundo a medida."
+          },
+          {
+            "q": "¿Tengo que mantener un servidor?",
+            "a": "No. TinyFloor está alojado por nosotros. Crea una oficina en el navegador e invita a tu equipo."
+          },
+          {
+            "q": "¿Cómo empiezan las llamadas en TinyFloor?",
+            "a": "Acércate a un compañero y aparece su tarjeta de llamada. Un toque inicia la llamada. Para un grupo, únete a una reunión y tu personaje entra en la sala de reuniones."
+          }
+        ]
+      },
+      "wonder": {
+        "label": "Alternativa a Wonder",
+        "meta": {
+          "title": "Alternativa a Wonder.me: acércate y habla",
+          "description": "Wonder.me cerró en 2023. TinyFloor es una oficina virtual para equipos remotos donde mueves un personaje e inicias una videollamada acercándote a un compañero."
+        },
+        "title": "¿Echas de menos <em>Wonder?</em>",
+        "subtitle": "Wonder.me cerró en abril de 2023. TinyFloor conserva lo que lo hacía funcionar, moverte y hablar con quien te acercas, en una planta de oficina de pixel art.",
+        "points": [
+          {
+            "title": "Acércate para hablar",
+            "body": "Como al entrar en un círculo en Wonder, empiezas una llamada poniéndote al lado de alguien. Pasar de un grupo a otro es solo caminar."
+          },
+          {
+            "title": "Sigue en el navegador",
+            "body": "Abre el enlace de invitación de tu oficina, elige un personaje y ya estás dentro. Para echar un vistazo antes, la oficina de demostración no necesita cuenta."
+          },
+          {
+            "title": "Abierta todo el día",
+            "body": "No hay límite de tiempo en ningún plan, tampoco en el gratuito. Mantén tu oficina abierta mientras tu equipo trabaje."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Wonder.me sigue disponible?",
+            "a": "No. Wonder.me cerró el 25 de abril de 2023, después de que sus fundadores no encontraran un modelo de negocio sostenible."
+          },
+          {
+            "q": "¿En qué se diferencia TinyFloor de Wonder?",
+            "a": "Wonder usaba círculos sobre un lienzo plano y estaba hecho para eventos. TinyFloor es una oficina que se recorre, con escritorios, sala de reuniones, pizarra y música, hecha para equipos que trabajan juntos cada día."
+          },
+          {
+            "q": "¿Cuántas personas pueden entrar?",
+            "a": "Hasta 3 personas con Free, 10 con Plus y 25 con Pro, y puedes crear tantas oficinas como necesites."
+          },
+          {
+            "q": "¿TinyFloor es gratis?",
+            "a": "Sí, para una oficina de hasta 3 personas. Pasear, chatear y llamar están en todos los planes."
+          }
+        ]
+      },
+      "virtualOffice": {
+        "label": "Oficina virtual",
+        "meta": {
+          "title": "Oficina virtual para equipos remotos",
+          "description": "Una oficina virtual en tu navegador. Mira quién está, acércate para hablar con videollamadas por proximidad y mantén una sala abierta para tu equipo remoto."
+        },
+        "title": "Una <em>oficina virtual</em> para equipos remotos.",
+        "subtitle": "Dale a tu equipo un lugar donde estar durante el día. Mira quién está, acércate para una pregunta rápida y entra en la sala de reuniones cuando toque hablar.",
+        "points": [
+          {
+            "title": "Mira quién está",
+            "body": "Cada persona tiene un personaje, una etiqueta con su nombre y un estado, así sabes quién está libre antes de acercarte."
+          },
+          {
+            "title": "Las preguntas rápidas siguen siendo rápidas",
+            "body": "Acércate y toca para llamar. Sin invitación de calendario, sin enlace de reunión, sin sala de espera."
+          },
+          {
+            "title": "Una mesa para reuniones",
+            "body": "Únete a una reunión y tu personaje entra en la sala de reuniones. Solo quien habla sale en vídeo, con una tarjeta para cada uno."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es una oficina virtual?",
+            "a": "Una oficina virtual es un espacio online compartido donde un equipo remoto trabaja junto. En TinyFloor es una planta de pixel art donde ves a tus compañeros y hablas con ellos acercándote."
+          },
+          {
+            "q": "¿Es gratis?",
+            "a": "Sí, para hasta 3 personas. Después es un solo precio para toda la oficina, 19 $ al mes para hasta 10, sin prueba y sin precio por puesto."
+          },
+          {
+            "q": "¿Cuántas personas pueden usar una oficina?",
+            "a": "Hasta 3 personas con Free, 10 con Plus y 25 con Pro. Una empresa más grande puede crear una oficina para cada equipo."
+          },
+          {
+            "q": "¿Sustituye a las videollamadas?",
+            "a": "Sustituye a la llamada rápida programada. Sigues teniendo vídeo y voz, pero la conversación empieza cuando te acercas y no cuando empieza una reunión."
+          }
+        ]
+      },
+      "virtualCoworking": {
+        "label": "Coworking virtual",
+        "meta": {
+          "title": "Espacio de coworking virtual para equipos remotos",
+          "description": "Un espacio de coworking virtual para tu equipo remoto. Trabajen lado a lado en una planta pixel art, vean quién está y hablen cuando lo necesiten. Gratis para hasta 3 personas."
+        },
+        "title": "<em>Coworking virtual</em> para tu equipo remoto.",
+        "subtitle": "Trabajar desde casa es más fácil con tu equipo cerca. Compartan una planta de oficina, sigan con su trabajo y acércate a alguien cuando lo necesites.",
+        "points": [
+          {
+            "title": "Compañía sin llamadas",
+            "body": "Ve a tus compañeros trabajar sin estar en cámara. Una llamada solo empieza cuando alguien se acerca."
+          },
+          {
+            "title": "La planta de tu equipo",
+            "body": "Una oficina es privada para tu equipo. Invita a todos con un solo enlace y estará abierta siempre que ellos estén."
+          },
+          {
+            "title": "Pon tu estado",
+            "body": "Márcate como ocupado cuando te concentres y como disponible cuando te apetezca charlar."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es el coworking virtual?",
+            "a": "El coworking virtual consiste en trabajar en línea junto a tu equipo para que el trabajo remoto se sienta menos solitario. A mucha gente le resulta más fácil concentrarse cuando sus compañeros trabajan cerca."
+          },
+          {
+            "q": "¿Tengo que estar en cámara?",
+            "a": "No. La cámara y el micrófono siguen apagados hasta que entras en una llamada."
+          },
+          {
+            "q": "¿Quién puede entrar en nuestra oficina?",
+            "a": "Solo tu equipo. Una oficina es privada: se entra con su enlace de invitación y una cuenta, y un administrador puede quitar a cualquiera."
+          },
+          {
+            "q": "¿Hay límite de tiempo?",
+            "a": "No. Quédate el tiempo que quieras."
+          }
+        ]
+      },
+      "virtualClassroom": {
+        "label": "Aula virtual",
+        "meta": {
+          "title": "Aula virtual para tutorías y clases pequeñas",
+          "description": "Da tutorías, clases de apoyo y clases pequeñas en un aula virtual. Los estudiantes se acercan para hablar, los grupos se reúnen en la sala de reuniones y todos comparten una pizarra."
+        },
+        "title": "Un <em>aula virtual</em> por la que los alumnos caminan.",
+        "subtitle": "Da tutorías, clases particulares o una clase pequeña en una sala por la que los alumnos se mueven. Se acercan cuando tienen una duda y los grupos hablan en la sala de reuniones.",
+        "points": [
+          {
+            "title": "Tutorías sin esperas",
+            "body": "Los alumnos ven cuándo estás libre y se acercan a preguntar. Nadie espera en una sala de espera."
+          },
+          {
+            "title": "Grupos pequeños en la sala de reuniones",
+            "body": "Empieza una reunión y el grupo entra junto en la sala de reuniones, con una tarjeta para cada persona."
+          },
+          {
+            "title": "Una pizarra compartida",
+            "body": "Dibuja en la pizarra para explicar una idea. Todos en la sala ven la misma pizarra."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cuántos alumnos pueden entrar?",
+            "a": "Una oficina admite hasta 25 personas con Pro, ideal para clases pequeñas, grupos de tutoría y horas de consulta."
+          },
+          {
+            "q": "¿Los alumnos necesitan cuenta?",
+            "a": "Sí, una gratuita. Los estudiantes entran con el enlace de invitación de la clase e inician sesión con Google o con su correo."
+          },
+          {
+            "q": "¿Puedo mantener el aula privada?",
+            "a": "Sí. Una oficina es privada para sus miembros. Invita a tu clase con un enlace y quita a la gente de la oficina cuando termine el curso."
+          },
+          {
+            "q": "¿Es gratis para profesores?",
+            "a": "Sí, para hasta 3 personas por oficina. Una clase de hasta 10 cuesta 19 $ al mes, y de hasta 25, 49 $."
+          }
+        ]
+      },
+      "proximityChat": {
+        "label": "Chat de proximidad",
+        "meta": {
+          "title": "Videochat por proximidad para equipos remotos",
+          "description": "Chat por proximidad para equipos remotos: acerca tu personaje a un compañero para iniciar una llamada. Gratis para equipos pequeños, en el navegador, sin descargas."
+        },
+        "title": "<em>Chat de proximidad</em> que empieza cuando te acercas.",
+        "subtitle": "En TinyFloor, dónde estás decide con quién hablas. Acércate a alguien para llamarle, únete a una reunión para hablar en grupo y sigue tu camino cuando termines.",
+        "points": [
+          {
+            "title": "Acercarte lo empieza",
+            "body": "Ponte al lado de un compañero y aparece una tarjeta de llamada. Un toque empieza la llamada."
+          },
+          {
+            "title": "Grupos en la sala de reuniones",
+            "body": "Únete a una reunión y tu personaje entra en la sala de reuniones, con todos los demás."
+          },
+          {
+            "title": "Funciona en cualquier red",
+            "body": "Las llamadas van por WebRTC a través de la red de retransmisión de Cloudflare, así que conectan incluso tras cortafuegos de empresa y no hay nada que instalar."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es el chat de proximidad?",
+            "a": "El chat de proximidad te conecta con personas según dónde está tu personaje. Hablas con quien tienes cerca, como en una sala de verdad."
+          },
+          {
+            "q": "¿La llamada termina si me alejo?",
+            "a": "No. Cuando una llamada conecta, sigue conectada hasta que alguien cuelga, así que moverte no la corta."
+          },
+          {
+            "q": "¿Pueden hablar más de dos personas?",
+            "a": "Una llamada es de dos. Acércate a una tercera persona y conviértela en reunión, o únete a la reunión de la oficina para hablar en grupo."
+          },
+          {
+            "q": "¿Es gratis?",
+            "a": "Sí, para una oficina de hasta 3 personas, en el navegador de escritorio y móvil."
+          }
+        ],
+        "line": "Acércate para hablar, sin enlace"
+      },
+      "sococo": {
+        "label": "Alternativa a Sococo",
+        "meta": {
+          "title": "Alternativa a Sococo para equipos remotos pequeños",
+          "description": "Sococo empieza en 10 puestos con plan anual. TinyFloor es una oficina virtual en el navegador, gratis para 3 personas y $19 al mes para hasta 10, con pago mensual."
+        },
+        "title": "Una <em>alternativa a Sococo</em> sin el mínimo de 10 puestos.",
+        "subtitle": "Sococo vende puestos por año, 10 como mínimo. TinyFloor tiene un precio mensual para toda la oficina, y un equipo pequeño puede empezar gratis.",
+        "points": [
+          {
+            "title": "Empieza con tu tamaño real",
+            "body": "Gratis para hasta 3 personas y luego $19 al mes para hasta 10. Sin mínimo de puestos ni pago anual por adelantado."
+          },
+          {
+            "title": "Una planta para moverse",
+            "body": "Tu equipo comparte una planta de oficina y empieza a hablar acercándose unos a otros."
+          },
+          {
+            "title": "Las llamadas no gastan minutos",
+            "body": "Sococo cuenta minutos por puesto. En TinyFloor las llamadas entre dos personas nunca cuentan; solo las reuniones de grupo tienen horas mensuales."
+          }
+        ],
+        "them": {
+          "price": "$13,49 por puesto al mes, facturado al año, mínimo 10 puestos",
+          "freePlan": "Ninguno, solo una prueba gratuita",
+          "screenShare": "Sí, varias a la vez"
+        },
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta Sococo?",
+            "a": "Sococo cuesta $13,49 por puesto al mes, facturado al año, con un mínimo de 10 puestos y 500 minutos por puesto al mes. Sococo Unlimited cuesta $24,99 por puesto con un mínimo de 100 puestos. TinyFloor es gratis para 3 personas y cuesta $19 al mes para hasta 10."
+          },
+          {
+            "q": "¿Hay una versión gratuita de Sococo?",
+            "a": "Sococo ofrece una prueba gratuita en lugar de un plan gratuito. El plan gratuito de TinyFloor no tiene fecha de fin, para hasta 3 personas."
+          },
+          {
+            "q": "¿Qué tiene Sococo que no tenga TinyFloor?",
+            "a": "Sococo te deja elegir planos y decoración, y se conecta con Zoom, Webex, Google Meet y Microsoft Teams. TinyFloor mantiene una planta de oficina y tiene sus propias llamadas y reuniones."
+          },
+          {
+            "q": "¿Necesito instalar algo?",
+            "a": "No. TinyFloor funciona en el navegador de escritorio y móvil. Comparte el enlace de invitación de tu oficina y tu equipo entra."
+          }
+        ]
+      },
+      "ovice": {
+        "label": "Alternativa a oVice",
+        "meta": {
+          "title": "Alternativa a oVice para equipos pequeños",
+          "description": "oVice cobra por espacio o desde 20 usuarios. TinyFloor es una oficina virtual en el navegador para equipos pequeños: gratis para 3 personas, $19 al mes para 10 y $49 para 25."
+        },
+        "title": "Una <em>alternativa a oVice</em> a la medida de equipos pequeños.",
+        "subtitle": "oVice está pensado para empresas y comunidades, con planes por tamaño de espacio o desde 20 usuarios. TinyFloor está hecho para equipos de 2 a 25 personas, con un precio sencillo por oficina.",
+        "points": [
+          {
+            "title": "Precios para 3, 10 o 25",
+            "body": "Gratis para hasta 3 personas, $19 al mes para 10 y $49 para 25. Sin tamaños de espacio que calcular."
+          },
+          {
+            "title": "Acércate y habla",
+            "body": "Como en oVice, te acercas a alguien para hablar. Las llamadas entre dos personas nunca cuentan para nada."
+          },
+          {
+            "title": "Un chat que se queda",
+            "body": "Cada oficina tiene canales y mensajes directos con su historial, junto a la planta y en tu móvil."
+          }
+        ],
+        "them": {
+          "price": "$65 al mes por espacio, o $16 por usuario desde 20 usuarios, facturado al año",
+          "freePlan": "Sí, en una versión preliminar sin soporte",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí, varias a la vez"
+        },
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta oVice?",
+            "a": "oVice Entry-S cuesta $65 al mes por espacio con pago anual, o $78 al mes, para unos 10 miembros habituales. Business Starter cuesta $16 por usuario al mes desde 20 usuarios. TinyFloor cuesta $19 al mes para hasta 10 personas."
+          },
+          {
+            "q": "¿oVice tiene un plan gratuito?",
+            "a": "Sí. Tras su prueba de 14 días, un espacio pasa a un plan gratuito que funciona en un entorno preliminar sin SLA ni soporte. El plan gratuito de TinyFloor es el mismo producto que sus planes de pago, para hasta 3 personas."
+          },
+          {
+            "q": "¿Qué tiene oVice que no tenga TinyFloor?",
+            "a": "oVice añade diseños personalizados, transcripción, grabación bajo petición, integración con el calendario y Microsoft Teams, y planes para eventos. TinyFloor se centra en la oficina del día a día: acercarse, reuniones, chat, una pizarra y música."
+          },
+          {
+            "q": "¿TinyFloor está disponible en japonés?",
+            "a": "Sí. TinyFloor está en 18 idiomas, japonés y coreano incluidos, y cada persona puede elegir el suyo."
+          }
+        ]
+      },
+      "teamflow": {
+        "label": "Alternativa a Teamflow",
+        "meta": {
+          "title": "Alternativa a Teamflow que funciona en el navegador",
+          "description": "Teamflow cuesta $15 por persona al mes con apps de escritorio. TinyFloor es una oficina virtual en el navegador: gratis para 3 personas, $19 al mes para una oficina de 10."
+        },
+        "title": "Una <em>alternativa a Teamflow</em> sin nada que descargar.",
+        "subtitle": "Teamflow cobra por persona y funciona como una app en tu ordenador. TinyFloor se abre en una pestaña del navegador, en el portátil o el móvil, por un único precio por oficina.",
+        "points": [
+          {
+            "title": "Un precio para la oficina",
+            "body": "El plan Seed de Teamflow cuesta $15 por persona. TinyFloor Plus cuesta $19 al mes para hasta 10 personas juntas."
+          },
+          {
+            "title": "Sin corte a los 45 minutos",
+            "body": "El plan gratuito de Teamflow termina las reuniones a los 45 minutos. Las reuniones de TinyFloor no tienen límite por reunión; cada plan tiene horas mensuales para reuniones de grupo."
+          },
+          {
+            "title": "En una pestaña del navegador",
+            "body": "Ninguna app que instalar ni actualizar. Abre el enlace en cualquier portátil o móvil y ya estás en la planta."
+          }
+        ],
+        "them": {
+          "price": "$15 por persona al mes, facturado al año",
+          "freePlan": "Hasta 5 personas, con reuniones de 45 minutos",
+          "browser": "Apps para Mac y Windows, móvil en beta",
+          "screenShare": "Sí, varias a la vez"
+        },
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta Teamflow?",
+            "a": "Teamflow es gratis para hasta 5 personas con reuniones de 45 minutos. Seed cuesta $15 y Business $25 por persona al mes, facturados al año. TinyFloor es gratis para 3 personas y luego $19 al mes para hasta 10."
+          },
+          {
+            "q": "¿TinyFloor tiene las integraciones de apps de Teamflow?",
+            "a": "No. Teamflow integra apps como Figma y Google Docs en las reuniones. TinyFloor se limita a la presencia, las llamadas, las reuniones, el chat, una pizarra y compartir pantalla."
+          },
+          {
+            "q": "¿Mis compañeros tienen que instalar algo?",
+            "a": "No. TinyFloor funciona en el navegador de escritorio y móvil. Abren el enlace de invitación de tu oficina e inician sesión."
+          },
+          {
+            "q": "¿Cuántas personas caben en una oficina de TinyFloor?",
+            "a": "Hasta 3 personas con Free, 10 con Plus y 25 con Pro, y puedes crear tantas oficinas como necesites."
+          }
+        ]
+      },
+      "roam": {
+        "label": "Alternativa a Roam",
+        "meta": {
+          "title": "Alternativa a Roam para equipos remotos pequeños",
+          "description": "Roam es una app de escritorio con precio por miembro activo. TinyFloor es una oficina virtual en el navegador, gratis para 3 personas y $19 al mes para hasta 10."
+        },
+        "title": "Una <em>alternativa a Roam</em> que se abre en el navegador.",
+        "subtitle": "Roam combina una oficina virtual con herramientas de IA y una app de escritorio, con precio por miembro. TinyFloor hace la parte de la oficina de forma sencilla: acercarse, reunirse y chatear, por un precio por equipo.",
+        "points": [
+          {
+            "title": "Solo la oficina",
+            "body": "Ningún paquete que adoptar. Una planta donde ves quién está, te acercas a hablar y entras en la sala de reuniones."
+          },
+          {
+            "title": "Nada que instalar",
+            "body": "TinyFloor funciona en una pestaña en cualquier portátil o móvil, así que cualquiera del equipo entra en segundos."
+          },
+          {
+            "title": "Un precio por equipo",
+            "body": "Gratis para 3 personas, $19 al mes para 10 y $49 para 25, sin importar cuántos lo usen ese mes."
+          }
+        ],
+        "them": {
+          "price": "Un precio mensual por miembro activo",
+          "freePlan": "Ninguno, solo una prueba de 14 días",
+          "browser": "App de escritorio para descargar",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Cómo cobra Roam?",
+            "a": "Roam cobra un precio mensual por miembro activo por todos sus productos, con una prueba gratuita de 14 días y sin contrato anual. TinyFloor es gratis para 3 personas y cuesta $19 al mes para hasta 10."
+          },
+          {
+            "q": "¿Qué tiene Roam que no tenga TinyFloor?",
+            "a": "Roam añade notas de reuniones con IA, un asistente de IA, seminarios web, agenda y grabación de pantalla. TinyFloor se centra en la oficina en sí."
+          },
+          {
+            "q": "¿Pueden entrar invitados en una oficina de TinyFloor?",
+            "a": "Las oficinas son solo para miembros: se entra con el enlace de invitación y una cuenta gratuita. Para echar un vistazo antes, cualquiera puede probar la oficina de demostración solo con un nombre."
+          },
+          {
+            "q": "¿TinyFloor funciona en el móvil?",
+            "a": "Sí. Funciona en navegadores móviles con un joystick en pantalla, sin nada que descargar."
+          }
+        ]
+      },
+      "slackHuddles": {
+        "label": "Alternativa a los huddles de Slack",
+        "meta": {
+          "title": "Alternativa a los huddles de Slack: mira quién está libre y acércate",
+          "description": "Un huddle de Slack es una llamada a ciegas. TinyFloor te muestra primero quién está libre y luego te acercas a hablar. Una oficina virtual junto a Slack, gratis para 3 personas."
+        },
+        "title": "Una <em>alternativa a los huddles de Slack</em> donde ves primero quién está libre.",
+        "subtitle": "Un huddle es una llamada que empiezas sin saber si es buen momento. En TinyFloor ves quién está, quién está ocupado y quién ya está hablando, y luego te acercas.",
+        "points": [
+          {
+            "title": "Mira antes de llamar",
+            "body": "Todos tienen un estado y un sitio en la planta, así que sabes quién está concentrado antes de preguntar."
+          },
+          {
+            "title": "Llamadas de grupo en todos los planes",
+            "body": "En el plan gratuito de Slack los huddles son de dos personas. En TinyFloor todos los planes tienen llamadas y reuniones de grupo."
+          },
+          {
+            "title": "Quédate con Slack si quieres",
+            "body": "TinyFloor tiene su propio chat, pero muchos equipos siguen con Slack para los mensajes y usan la planta para hablar."
+          }
+        ],
+        "them": {
+          "price": "Los huddles de grupo requieren Slack Pro, con precio por usuario",
+          "freePlan": "Slack Free solo tiene huddles de dos personas",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Qué es un huddle de Slack?",
+            "a": "Un huddle es una llamada rápida de audio o vídeo dentro de Slack, que se inicia desde un canal o un mensaje directo. En el plan gratuito de Slack los huddles son entre dos personas; los de grupo requieren un plan de pago."
+          },
+          {
+            "q": "¿En qué se diferencia TinyFloor de un huddle?",
+            "a": "Un huddle empieza cuando alguien llama. En TinyFloor tu equipo ya está junto en una planta, así que ves quién está libre y te acercas, y la sala de reuniones siempre está ahí."
+          },
+          {
+            "q": "¿Puedo usar TinyFloor con Slack?",
+            "a": "Sí. No están conectados entre sí, pero muchos equipos siguen con Slack para los mensajes y usan TinyFloor para la presencia, las llamadas y las reuniones."
+          },
+          {
+            "q": "¿Cuánto cuesta TinyFloor?",
+            "a": "Gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, para toda la oficina, no por persona."
+          }
+        ]
+      },
+      "discord": {
+        "label": "Discord para el trabajo",
+        "meta": {
+          "title": "¿Discord para el trabajo? Una oficina virtual hecha para equipos",
+          "description": "Hay equipos que usan los canales de voz de Discord para sentirse juntos. TinyFloor da a un equipo remoto la misma sensación de poder pasar a saludar, en una oficina privada hecha para trabajar."
+        },
+        "title": "Como <em>Discord para el trabajo</em>, hecho para tu equipo.",
+        "subtitle": "Los canales de voz demostraron que estar a un clic unos de otros funciona. TinyFloor mantiene esa sensación en una oficina privada para tu equipo, sin la comunidad gamer alrededor.",
+        "points": [
+          {
+            "title": "Una oficina privada, no un servidor",
+            "body": "Tu planta es solo para tu equipo. Se entra con tu enlace de invitación y una cuenta gratuita."
+          },
+          {
+            "title": "Mira quién está libre",
+            "body": "Estados, escritorios y quién está en una llamada, todo en una planta, para que acercarse resulte natural."
+          },
+          {
+            "title": "Reuniones con sala",
+            "body": "Entra en la sala de reuniones para llamadas de grupo con pantalla compartida y sal cuando terminéis."
+          }
+        ],
+        "them": {
+          "price": "Gratis, con Nitro aparte para cada persona",
+          "freePlan": "Sí",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí, en los canales de voz"
+        },
+        "faq": [
+          {
+            "q": "¿Se puede usar Discord para el trabajo?",
+            "a": "Muchos equipos lo hacen, por sus canales de voz. Pero Discord está pensado para comunidades y videojuegos, y a los equipos de trabajo a menudo les falta saber claramente quién está ocupado, una sala de reuniones y un espacio solo suyo."
+          },
+          {
+            "q": "¿TinyFloor es gratis como Discord?",
+            "a": "Para hasta 3 personas, sí. Las oficinas más grandes cuestan $19 al mes para 10 personas y $49 al mes para 25."
+          },
+          {
+            "q": "¿TinyFloor tiene canales de voz?",
+            "a": "En lugar de canales, te acercas a un compañero para hablar o entráis en grupo a la sala de reuniones. Los canales de texto y los mensajes directos están junto a la planta."
+          },
+          {
+            "q": "¿Hay que descargar una app?",
+            "a": "No. TinyFloor funciona en el navegador de escritorio y móvil."
+          }
+        ]
+      },
+      "gatherVsKumospace": {
+        "label": "Gather vs Kumospace",
+        "meta": {
+          "title": "Gather vs Kumospace: precios, planes gratuitos y una tercera opción",
+          "description": "Gather vs Kumospace lado a lado: precio, plan gratuito, navegador y pantalla compartida, y cómo se compara TinyFloor para equipos remotos pequeños."
+        },
+        "title": "<em>Gather vs Kumospace</em>, y una tercera opción.",
+        "subtitle": "Ambos cobran por miembro cuando superas el nivel gratuito. Si tu equipo es pequeño y quiere una oficina sencilla, TinyFloor es un único precio para toda la planta.",
+        "points": [
+          {
+            "title": "Gather",
+            "body": "Una oficina en pixel art con notas de reuniones con IA y personalización. Prueba de 30 días y luego desde $12 por miembro al mes."
+          },
+          {
+            "title": "Kumospace",
+            "body": "Un plan gratuito para hasta 5 miembros en una planta y luego Business desde $16 por usuario al mes."
+          },
+          {
+            "title": "TinyFloor",
+            "body": "Gratis para 3 personas y luego $19 al mes para hasta 10 y $49 para 25, para toda la oficina."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es más barato, Gather o Kumospace?",
+            "a": "Para un equipo de 10, Gather empieza en unos $120 al mes y Kumospace Business en unos $160. Kumospace tiene un plan gratuito para hasta 5 miembros; Gather tiene una prueba de 30 días. TinyFloor Plus cuesta $19 al mes para toda la oficina."
+          },
+          {
+            "q": "¿Cuál es mejor para un equipo pequeño?",
+            "a": "El plan gratuito de Kumospace sirve para hasta 5 personas, y Gather encaja con equipos que quieren más personalización. Si quieres un precio sencillo para un equipo de hasta 25 personas, TinyFloor está hecho para eso."
+          },
+          {
+            "q": "¿Gather y Kumospace funcionan en el navegador?",
+            "a": "Ambos funcionan en el navegador, Gather con una app de escritorio y Kumospace con apps de escritorio y móvil. TinyFloor funciona solo en el navegador, de escritorio y móvil, así que no hay nada que instalar."
+          },
+          {
+            "q": "¿Podemos pasarnos a TinyFloor más adelante?",
+            "a": "Sí. No hay nada que migrar: crea una oficina, comparte el enlace de invitación y tu equipo entra."
+          }
+        ]
+      },
+      "pairProgramming": {
+        "label": "Programación en pareja remota",
+        "meta": {
+          "title": "Programación en pareja remota en una oficina virtual",
+          "description": "Programa en pareja a distancia sin agendarlo: mira quién está libre, acércate, comparte tu pantalla y hablad del tema. Gratis para equipos de 3."
+        },
+        "title": "<em>Programación en pareja remota</em> que empieza con acercarse.",
+        "subtitle": "Programar en pareja funciona mejor cuando es fácil empezar. En TinyFloor ves quién está libre, vas a su escritorio, compartes tu pantalla y habláis, y luego vuelves a tu trabajo.",
+        "points": [
+          {
+            "title": "Desbloquéate en minutos",
+            "body": "¿Atascado con algo? Acércate a quien lo conoce. Un toque inicia la llamada, sin enlaces que enviar."
+          },
+          {
+            "title": "Comparte la pantalla",
+            "body": "Activa la pantalla compartida en la llamada para repasar juntos código, logs o un test que falla."
+          },
+          {
+            "title": "Suma a una tercera persona",
+            "body": "Acércate a otra persona durante la llamada y conviértela en una reunión de tres."
+          }
+        ],
+        "momentsTitle": "<em>Una sesión en pareja,</em> de principio a fin.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Mira quién está libre",
+            "body": "Los estados y escritorios muestran quién está concentrado y quién está disponible para una pregunta."
+          },
+          {
+            "label": "2",
+            "title": "Acércate y comparte",
+            "body": "Ponte a su lado, toca para llamar y comparte tu pantalla."
+          },
+          {
+            "label": "3",
+            "title": "Vuelve",
+            "body": "Cuelga y vuelves a tu escritorio. Nada que agendar, nada que recoger."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué necesito para programar en pareja a distancia?",
+            "a": "Una forma de hablar, una pantalla compartida y una manera fácil de empezar. TinyFloor te da las tres en el navegador; usa tu propio editor y tus herramientas para el código."
+          },
+          {
+            "q": "¿Se corta la llamada si me alejo?",
+            "a": "No. Una llamada sigue conectada hasta que alguien cuelga, así que puedes moverte mientras hablas."
+          },
+          {
+            "q": "¿Pueden programar juntas más de dos personas?",
+            "a": "Sí. Acércate a un tercer compañero durante la llamada y TinyFloor ofrece convertirla en una reunión de tres, o usad la sala de reuniones."
+          },
+          {
+            "q": "¿Es gratis?",
+            "a": "Gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, para toda la oficina, no por persona."
+          }
+        ]
+      },
+      "standup": {
+        "label": "Reunión diaria virtual",
+        "meta": {
+          "title": "Reuniones diarias virtuales para equipos remotos",
+          "description": "Haz tu reunión diaria en una oficina virtual: todos entran en la sala de reuniones, hablan y vuelven a su escritorio. Ningún enlace de reunión que compartir."
+        },
+        "title": "Una <em>reunión diaria virtual</em> a la que tu equipo va caminando.",
+        "subtitle": "Sin enlace de calendario ni sala de espera. A la hora de la reunión, tu equipo entra en la sala, cuenta en qué está y vuelve al trabajo.",
+        "points": [
+          {
+            "title": "Siempre la misma sala",
+            "body": "Cada oficina tiene una reunión principal que siempre está ahí, así que la diaria está al final del pasillo."
+          },
+          {
+            "title": "Mira quién falta",
+            "body": "La planta muestra quién está y quién no, para saber a quién esperar."
+          },
+          {
+            "title": "Breve por defecto",
+            "body": "Cuando termina, todos salen de la sala y siguen. Lo demás se habla en el escritorio de alguien."
+          }
+        ],
+        "momentsTitle": "<em>La reunión diaria</em> en tres pasos.",
+        "moments": [
+          {
+            "label": "9:58",
+            "title": "Entra",
+            "body": "Únete a la reunión principal y tu personaje entra en la sala de reuniones."
+          },
+          {
+            "label": "10:00",
+            "title": "Hablad",
+            "body": "Con cámara o sin ella, y pantalla compartida para lo que merezca enseñarse."
+          },
+          {
+            "label": "10:10",
+            "title": "Sal",
+            "body": "Sal de la sala para irte. Las preguntas siguen en el escritorio de alguien."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cómo se hace una reunión diaria virtual?",
+            "a": "Elige una hora, reuníos en el mismo sitio cada día y hacedla breve. En TinyFloor la reunión principal siempre está ahí: todos entran a la hora y salen al terminar."
+          },
+          {
+            "q": "¿Cuántas horas de reunión usa una diaria?",
+            "a": "Una reunión de 15 minutos cada día laborable son unas 5 horas al mes. Plus incluye 30 horas de reuniones de grupo al mes y Pro 60."
+          },
+          {
+            "q": "¿Podemos hacerla asíncrona?",
+            "a": "Sí. Muchos equipos publican sus novedades en un canal y reservan la sala de reuniones para los días en que hace falta hablar."
+          },
+          {
+            "q": "¿Hace falta encender la cámara?",
+            "a": "No. La cámara es opcional en todas las reuniones, y quien no la usa aparece como una tarjeta que se ilumina cuando habla."
+          }
+        ]
+      },
+      "onboarding": {
+        "label": "Incorporación remota",
+        "meta": {
+          "title": "Incorporación remota de nuevos empleados en una oficina virtual",
+          "description": "Ayuda a las nuevas incorporaciones a adaptarse en remoto: desde el primer día ven al equipo, saben a quién preguntar y se acercan a hacerlo."
+        },
+        "title": "Una <em>incorporación remota</em> en la que los nuevos ven a quién preguntar.",
+        "subtitle": "Lo más difícil de empezar en remoto es no saber quién está ni si está bien preguntar. En TinyFloor el equipo está ahí mismo, y preguntar es dar unos pasos.",
+        "points": [
+          {
+            "title": "Un enlace para entrar",
+            "body": "Envía el enlace de invitación de la oficina. Crean una cuenta gratuita, eligen un nombre y un personaje y ya están en la planta."
+          },
+          {
+            "title": "Conocer al equipo",
+            "body": "Ven quién es quién, quién está ocupado y quién está libre, sin una lista de nombres que memorizar."
+          },
+          {
+            "title": "Preguntas sin reunión",
+            "body": "Acercarse a preguntar se siente tan pequeño como en una oficina, así que los nuevos preguntan antes."
+          }
+        ],
+        "momentsTitle": "<em>El primer día</em> en la planta.",
+        "moments": [
+          {
+            "label": "Mañana",
+            "title": "Entrar",
+            "body": "Abren el enlace de invitación, eligen un personaje y llegan a la planta con todos."
+          },
+          {
+            "label": "Mediodía",
+            "title": "Conocer gente",
+            "body": "Un compañero les enseña la planta y saludan en algunos escritorios."
+          },
+          {
+            "label": "Tarde",
+            "title": "Preguntar",
+            "body": "Cuando se atascan, ven quién está libre y se acercan."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cómo entran las nuevas incorporaciones?",
+            "a": "Con el enlace de invitación de tu oficina. Crean una cuenta gratuita, eligen un nombre y un personaje y llegan a la planta."
+          },
+          {
+            "q": "¿Una nueva incorporación ocupa un puesto del plan?",
+            "a": "Sí, todas las personas de la oficina son miembros. Plus tiene sitio para 10 personas y Pro para 25."
+          },
+          {
+            "q": "¿Pueden ponerse al día con el chat?",
+            "a": "Sí. Los canales guardan su historial, así que una persona nueva puede leer las conversaciones de los canales a los que se une."
+          },
+          {
+            "q": "¿Sustituye a nuestra documentación de incorporación?",
+            "a": "No. Mantén tus documentos y listas donde están. TinyFloor facilita la parte humana: quién es quién y cómo preguntar."
+          }
+        ]
+      },
+      "watercooler": {
+        "label": "Máquina de café virtual",
+        "meta": {
+          "title": "Máquina de café virtual para equipos remotos",
+          "description": "La charla informal que echan de menos los equipos remotos: cruzarte con compañeros en la planta, charlar en la zona de descanso y poner música, en una oficina virtual para tu equipo."
+        },
+        "title": "Una <em>máquina de café virtual</em> que surge sola.",
+        "subtitle": "Los equipos remotos agendan ratos sociales porque nada pasa por casualidad. En una planta compartida te cruzas con gente, ves quién está y te paras a charlar.",
+        "points": [
+          {
+            "title": "Cruzarte con gente",
+            "body": "Al moverte entre escritorios y salas te cruzas con compañeros y puedes pararte a hablar."
+          },
+          {
+            "title": "Música en la zona de descanso",
+            "body": "Pon una canción en la gramola para la tarde, para todos los que están en la sala."
+          },
+          {
+            "title": "Sin invitación de calendario",
+            "body": "La planta está abierta todo el día: una charla empieza cuando quieres y termina cuando te vas."
+          }
+        ],
+        "momentsTitle": "<em>Los pequeños momentos</em> vuelven.",
+        "moments": [
+          {
+            "label": "Mañana",
+            "title": "Saludar",
+            "body": "Pasa por algunos escritorios al llegar y da los buenos días."
+          },
+          {
+            "label": "Tarde",
+            "title": "Poner una canción",
+            "body": "Enciende la gramola de la zona de descanso para quien esté por allí."
+          },
+          {
+            "label": "Viernes",
+            "title": "Desconectar",
+            "body": "Quedad en la sala de reuniones para tomar algo y charlar, con cámara o sin ella."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es una máquina de café virtual?",
+            "a": "Es la charla informal que un equipo remoto echa de menos de la oficina: cruzarse con gente y hablar de cualquier cosa. En TinyFloor ocurre en la planta en lugar de en una llamada agendada."
+          },
+          {
+            "q": "¿Estas charlas gastan horas de reunión?",
+            "a": "Las charlas entre dos personas nunca cuentan. Solo las reuniones de grupo cuentan para las horas mensuales."
+          },
+          {
+            "q": "¿Podemos escuchar música juntos?",
+            "a": "Sí. Acércate al altavoz de la sala para poner música que oiga todo el que esté en la sala."
+          },
+          {
+            "q": "¿Es solo para ratos sociales?",
+            "a": "No. En esa misma planta trabaja tu equipo todo el día; la máquina de café es solo la parte entre tareas."
+          }
+        ]
+      },
+      "engineering": {
+        "label": "Equipos de ingeniería",
+        "meta": {
+          "title": "Oficina virtual para equipos de ingeniería remotos",
+          "description": "Una oficina virtual para equipos de ingeniería remotos: desbloquearse rápido, programar en pareja con pantalla compartida, hacer la diaria y proteger el tiempo de concentración."
+        },
+        "title": "Una oficina virtual para <em>equipos de ingeniería remotos.</em>",
+        "subtitle": "Quien programa necesita largos ratos de concentración y respuestas rápidas cuando se atasca. TinyFloor da las dos cosas: tranquilidad por defecto y un compañero a unos pasos.",
+        "points": [
+          {
+            "title": "Tranquilo por defecto",
+            "body": "Nadie te oye hasta que empiezas una llamada. Ponte en ocupado y todos sabrán esperar."
+          },
+          {
+            "title": "Desbloquéate rápido",
+            "body": "Acércate a quien conoce el código, comparte tu pantalla y resolvedlo en minutos."
+          },
+          {
+            "title": "La diaria al final del pasillo",
+            "body": "La reunión principal siempre está ahí para las diarias, las incidencias y las demos."
+          }
+        ],
+        "momentsTitle": "<em>Un día</em> en una planta de ingeniería.",
+        "moments": [
+          {
+            "label": "10:00",
+            "title": "Reunión diaria",
+            "body": "El equipo entra en la sala de reuniones, habla diez minutos y sale."
+          },
+          {
+            "label": "14:00",
+            "title": "Concentración",
+            "body": "Los estados de ocupado mantienen la tarde en calma."
+          },
+          {
+            "label": "16:30",
+            "title": "Desbloqueo",
+            "body": "Unos pasos, una pantalla compartida y el bug aparece."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿TinyFloor se conecta con GitHub o Jira?",
+            "a": "No. TinyFloor es donde habláis, no donde se sigue el trabajo. Comparte tu pantalla para ver cualquier cosa juntos."
+          },
+          {
+            "q": "¿Sirve para programar en pareja?",
+            "a": "Sí. Acércate a un compañero, inicia una llamada y comparte tu pantalla. Suma a una tercera persona y se convierte en una reunión."
+          },
+          {
+            "q": "¿Qué tamaño puede tener un equipo de ingeniería?",
+            "a": "Hasta 25 personas en una oficina con Pro. Las organizaciones más grandes pueden dar a cada equipo su propia oficina."
+          },
+          {
+            "q": "¿Podemos seguir con Slack?",
+            "a": "Sí. Muchos equipos siguen con Slack para los mensajes y usan TinyFloor para la presencia, las llamadas y las reuniones."
+          }
+        ]
+      },
+      "design": {
+        "label": "Equipos de diseño",
+        "meta": {
+          "title": "Oficina virtual para equipos de diseño remotos",
+          "description": "Una oficina virtual para equipos de diseño remotos: críticas rápidas con pantalla compartida, una pizarra común y un equipo que puedes ver, todo en el navegador."
+        },
+        "title": "Una oficina virtual para <em>equipos de diseño remotos.</em>",
+        "subtitle": "El diseño mejora con comentarios rápidos y sinceros. En TinyFloor una crítica es cruzar la planta, no una invitación de calendario.",
+        "points": [
+          {
+            "title": "Críticas sin reservar",
+            "body": "Acércate a alguien del equipo de diseño, comparte tu pantalla y hablad del trabajo."
+          },
+          {
+            "title": "Dibújalo",
+            "body": "La pizarra de la pared está ahí para el dibujo que lo explica todo."
+          },
+          {
+            "title": "Concentración cuando importa",
+            "body": "Ponte en ocupado para el trabajo profundo y la planta se queda en calma a tu alrededor."
+          }
+        ],
+        "momentsTitle": "<em>Un día de diseño</em> en la planta.",
+        "moments": [
+          {
+            "label": "Mañana",
+            "title": "Crítica en equipo",
+            "body": "Entrad en la sala de reuniones y compartid pantallas por turnos."
+          },
+          {
+            "label": "Mediodía",
+            "title": "Bocetar",
+            "body": "Trabajad juntos un flujo en la pizarra."
+          },
+          {
+            "label": "Tarde",
+            "title": "Revisión rápida",
+            "body": "Acércate a un desarrollador para comprobar un detalle antes de publicarlo."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿TinyFloor se conecta con Figma?",
+            "a": "No. Abre Figma como siempre y comparte tu pantalla en una llamada o una reunión para verlo juntos."
+          },
+          {
+            "q": "¿La pizarra es compartida?",
+            "a": "Sí. Todos en la oficina ven la misma pizarra, y lo dibujado se queda ahí para cuando la gente vuelve."
+          },
+          {
+            "q": "¿Cuánto cuesta?",
+            "a": "Gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, para toda la oficina, no por persona."
+          },
+          {
+            "q": "¿Hay que instalar algo?",
+            "a": "No. TinyFloor funciona en el navegador de escritorio y móvil."
+          }
+        ]
+      },
+      "startups": {
+        "label": "Startups",
+        "meta": {
+          "title": "Oficina virtual para startups remotas",
+          "description": "Una oficina virtual para startups remotas: mantened la velocidad de trabajar juntos por un precio por oficina. Gratis para 3 personas, $19 al mes para 10."
+        },
+        "title": "Una oficina virtual para <em>startups remotas.</em>",
+        "subtitle": "Los equipos jóvenes van rápido porque todos están en la misma sala. TinyFloor vuelve a reunir a una startup remota en una sala, por un precio por oficina, no por contratación.",
+        "points": [
+          {
+            "title": "Gratis mientras sois fundadores",
+            "body": "Gratis para hasta 3 personas, todo el tiempo que queráis."
+          },
+          {
+            "title": "Sin cuota por contratación",
+            "body": "$19 al mes para hasta 10 personas y $49 para 25. Contratar a alguien no añade una cuota por puesto."
+          },
+          {
+            "title": "Decidir en minutos",
+            "body": "Mira quién está, acércate y decidid, en lugar de esperar a la próxima reunión."
+          }
+        ],
+        "momentsTitle": "<em>Crecer</em> en una sola planta.",
+        "moments": [
+          {
+            "label": "3 personas",
+            "title": "Free",
+            "body": "Los fundadores comparten una planta sin coste, con 5 horas de reunión al mes."
+          },
+          {
+            "label": "10 personas",
+            "title": "Plus",
+            "body": "$19 al mes para toda la oficina, con 30 horas de reunión."
+          },
+          {
+            "label": "25 personas",
+            "title": "Pro",
+            "body": "$49 al mes para toda la oficina, con 60 horas de reunión."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta TinyFloor para una startup?",
+            "a": "Gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, para toda la oficina, no por persona."
+          },
+          {
+            "q": "¿Podemos cancelar cuando queramos?",
+            "a": "Sí. Un plan de pago dura hasta el final del periodo pagado y luego la oficina vuelve a Free. No se borra nada."
+          },
+          {
+            "q": "¿Qué pasa si superamos las 25 personas?",
+            "a": "Dad a cada equipo su propia oficina, o escribidnos y lo hablamos."
+          },
+          {
+            "q": "¿Necesitamos alguna configuración de TI?",
+            "a": "No. Funciona en el navegador: envía el enlace de invitación y cada persona inicia sesión con Google o con su correo."
+          }
+        ]
+      },
+      "agencies": {
+        "label": "Agencias",
+        "meta": {
+          "title": "Oficina virtual para agencias remotas",
+          "description": "Una oficina virtual para agencias remotas: mira quién puede ayudar, revisad el trabajo juntos en una pantalla compartida y mantened el ambiente de estudio, trabaje cada uno donde trabaje."
+        },
+        "title": "Una oficina virtual para <em>agencias remotas.</em>",
+        "subtitle": "Una agencia vive de revisiones rápidas y de saber quién puede ayudar. TinyFloor da a un estudio remoto una planta donde ambas cosas pasan sin enlace de reunión.",
+        "points": [
+          {
+            "title": "Quién puede ayudar",
+            "body": "Los estados muestran quién está metido en una entrega y quién puede echar un vistazo."
+          },
+          {
+            "title": "Revisiones al momento",
+            "body": "Acércate, comparte tu pantalla y consigue comentarios sobre un borrador en unos minutos."
+          },
+          {
+            "title": "Un canal por cliente",
+            "body": "Crea un canal para cada cliente o proyecto, para que cada conversación quede en un solo sitio."
+          }
+        ],
+        "momentsTitle": "<em>Un día de estudio,</em> en remoto.",
+        "moments": [
+          {
+            "label": "Mañana",
+            "title": "Planificar el día",
+            "body": "El equipo se reúne en la sala de reuniones para repartirse el trabajo."
+          },
+          {
+            "label": "Tarde",
+            "title": "Revisión rápida",
+            "body": "Una diseñadora se acerca a la responsable y comparte su pantalla para recibir comentarios."
+          },
+          {
+            "label": "Noche",
+            "title": "Cierre",
+            "body": "Notas y enlaces van al canal del cliente para mañana."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Pueden nuestros clientes entrar en la oficina?",
+            "a": "Las oficinas son para miembros, y todos entran con una cuenta gratuita a través del enlace de invitación. Para llamadas con clientes, seguid con la herramienta de reuniones que vuestros clientes ya usan."
+          },
+          {
+            "q": "¿Cuántas personas podemos tener?",
+            "a": "Hasta 10 con Plus y 25 con Pro, por un precio mensual para toda la oficina."
+          },
+          {
+            "q": "¿Pueden entrar freelancers?",
+            "a": "Sí. Los freelancers entran como cualquier otra persona con el enlace de invitación, y puedes quitarlos de la oficina cuando termine un proyecto."
+          },
+          {
+            "q": "¿Sirve para revisiones creativas?",
+            "a": "Sí. Comparte tu pantalla en una llamada o una reunión y dibujad juntos en la pizarra."
+          }
+        ]
+      },
+      "meetingRoom": {
+        "label": "Sala de reuniones virtual",
+        "line": "Entra para reunirte, sal para irte",
+        "meta": {
+          "title": "Sala de reuniones virtual para equipos remotos",
+          "description": "Una sala de reuniones a la que tu equipo entra caminando: únete y tu personaje se sienta a la mesa, con cámaras, pantalla compartida y sin enlace de reunión."
+        },
+        "title": "Una <em>sala de reuniones virtual</em> al final del pasillo.",
+        "subtitle": "Cada oficina tiene una sala de reuniones que siempre está ahí. Únete a una reunión y tu personaje entra; sal y ya te has ido. Sin enlaces ni sala de espera.",
+        "points": [
+          {
+            "title": "Siempre abierta",
+            "body": "La reunión principal siempre está ahí para dailies y conversaciones rápidas. Cualquiera puede empezar otra e invitar a gente."
+          },
+          {
+            "title": "Una tarjeta para cada uno",
+            "body": "Quien no usa cámara aparece como una tarjeta que se ilumina al hablar, así la sala nunca parece vacía."
+          },
+          {
+            "title": "Comparte tu pantalla",
+            "body": "Comparte una ventana con la sala en un clic, para demos, revisiones y planificación."
+          }
+        ],
+        "momentsTitle": "<em>Una reunión</em>, de principio a fin.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Unirse",
+            "body": "Únete desde la lista de reuniones y tu personaje entra en la sala."
+          },
+          {
+            "label": "2",
+            "title": "Hablar",
+            "body": "Con la cámara encendida o apagada, y pantalla compartida para lo que valga la pena enseñar."
+          },
+          {
+            "label": "3",
+            "title": "Salir",
+            "body": "Sal de la sala y ya te has ido. La planta vuelve a estar tranquila."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Cuántas personas pueden unirse a una reunión?",
+            "a": "Toda la oficina: hasta 3 personas en Free, 10 en Plus y 25 en Pro."
+          },
+          {
+            "q": "¿Las reuniones tienen límite de tiempo?",
+            "a": "No hay límite por reunión. Cada plan incluye horas de reunión en grupo cada mes: 5 en Free, 30 en Plus y 60 en Pro."
+          },
+          {
+            "q": "¿Qué pasa cuando se acaban las horas?",
+            "a": "Las reuniones siguen solo con voz hasta el día 1 del mes. Las llamadas entre dos personas nunca se cuentan."
+          },
+          {
+            "q": "¿Podemos tener varias reuniones a la vez?",
+            "a": "Sí. Además de la reunión principal, cualquiera puede empezar otra con un nombre e invitar a gente."
+          }
+        ]
+      },
+      "teamChat": {
+        "label": "Chat de equipo",
+        "line": "Canales y mensajes que se quedan",
+        "meta": {
+          "title": "Chat de equipo junto a tu oficina virtual",
+          "description": "Canales, mensajes directos y reacciones que se quedan, justo al lado de la planta de tu equipo. Ponte al día desde el móvil sin entrar."
+        },
+        "title": "Un <em>chat de equipo</em> justo al lado de la planta.",
+        "subtitle": "Cada oficina tiene su propio chat con canales, mensajes directos y reacciones. Los mensajes se quedan, así que puedes ponerte al día desde el móvil sin entrar.",
+        "points": [
+          {
+            "title": "Un canal para cada cosa",
+            "body": "Crea un canal por proyecto, cliente o tema, y mantén la conversación en un solo sitio."
+          },
+          {
+            "title": "Mensajes directos",
+            "body": "Escribe a cualquiera de la oficina en privado y retómalo mañana."
+          },
+          {
+            "title": "Un aviso discreto",
+            "body": "Cuando alguien escribe, recibes un aviso discreto en la planta en lugar de un aluvión de ventanas emergentes."
+          }
+        ],
+        "momentsTitle": "<em>El chat</em> a lo largo del día.",
+        "moments": [
+          {
+            "label": "Mañana",
+            "title": "Ponerse al día",
+            "body": "Lee en el móvil lo que te perdiste antes de entrar."
+          },
+          {
+            "label": "Mediodía",
+            "title": "Compartir",
+            "body": "Suelta una captura en un canal para que la vea todo el equipo."
+          },
+          {
+            "label": "Tarde",
+            "title": "Acercarse",
+            "body": "Cuando un hilo se alarga, acércate y habladlo."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿El chat guarda el historial?",
+            "a": "Sí. Cada canal guarda sus 5.000 mensajes más recientes, en todos los planes."
+          },
+          {
+            "q": "¿Puedo usar el chat en el móvil?",
+            "a": "Sí. Abre TinyFloor en el navegador del móvil para leer y responder, sin entrar en la planta."
+          },
+          {
+            "q": "¿Podemos compartir imágenes?",
+            "a": "Sí. Suelta capturas y fotos en cualquier canal o mensaje directo."
+          },
+          {
+            "q": "¿Sustituye a Slack?",
+            "a": "Para un equipo pequeño, puede. Otros mantienen Slack para los mensajes y usan TinyFloor para la presencia, las llamadas y las reuniones."
+          }
+        ]
+      },
+      "presence": {
+        "label": "Presencia del equipo",
+        "line": "Quién está, ocupado o en llamada",
+        "meta": {
+          "title": "Presencia y estado del equipo para equipos remotos",
+          "description": "Mira quién está, quién está ocupado y quién está en una llamada, de un vistazo en una planta, y acércate directamente. Presencia de equipo para trabajo remoto."
+        },
+        "title": "La <em>presencia del equipo</em> de un vistazo.",
+        "subtitle": "Todos tienen un escritorio y un estado en la planta. Sabes quién está libre, quién está concentrado y quién ya está en una llamada, antes de preguntar.",
+        "points": [
+          {
+            "title": "Un estado que significa algo",
+            "body": "Disponible, ocupado o ausente, elegido por ti, para que los demás sepan cuándo esperar."
+          },
+          {
+            "title": "Quién está en llamada",
+            "body": "Mira quién ya está hablando o en una reunión, sin interrumpir."
+          },
+          {
+            "title": "Ir hacia",
+            "body": "Toca Ir hacia junto a cualquiera y tu personaje encuentra el camino solo."
+          }
+        ],
+        "momentsTitle": "<em>La presencia</em> en tres miradas.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Mirar",
+            "body": "Abre la planta y mira quién está."
+          },
+          {
+            "label": "2",
+            "title": "Comprobar",
+            "body": "Un estado te dice si es buen momento."
+          },
+          {
+            "label": "3",
+            "title": "Acercarse",
+            "body": "Toca Ir hacia y tu personaje va a su escritorio."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿Qué estados hay?",
+            "a": "Disponible, ocupado y ausente. Tu estado aparece junto a tu nombre en la planta y en la lista de personas."
+          },
+          {
+            "q": "¿TinyFloor registra la actividad?",
+            "a": "No. Muestra quién está en la planta y el estado que cada uno elige. No informa de la actividad de nadie."
+          },
+          {
+            "q": "¿Puedo ver quién está desde el móvil?",
+            "a": "Sí. La lista de personas también funciona en el navegador del móvil."
+          },
+          {
+            "q": "¿Cuánto cuesta?",
+            "a": "Gratis para hasta 3 personas. Plus cuesta 19 $ al mes para 10 personas y Pro 49 $ al mes para 25, para toda la oficina, no por persona."
+          }
+        ]
+      },
+      "whiteboard": {
+        "label": "Pizarra online",
+        "line": "Una pizarra compartida en la pared",
+        "meta": {
+          "title": "Pizarra online en la oficina virtual de tu equipo",
+          "description": "Una pizarra compartida en la pared de tu oficina virtual, para el boceto que lo explica todo. Sigue ahí cuando la gente vuelve."
+        },
+        "title": "Una <em>pizarra online</em> en la pared de la oficina.",
+        "subtitle": "Acércate a la pizarra y dibuja. Toda la oficina ve la misma pizarra, y lo que hay en ella se queda para la próxima vez.",
+        "points": [
+          {
+            "title": "Acércate y dibuja",
+            "body": "No hay que crear una pizarra ni compartir un enlace. Está en la pared, lista cuando tú lo estés."
+          },
+          {
+            "title": "Todos la ven",
+            "body": "Toda la oficina mira la misma pizarra, así que un boceto se explica solo."
+          },
+          {
+            "title": "Se queda",
+            "body": "Lo dibujado se guarda, así que el diagrama del lunes sigue ahí el viernes."
+          }
+        ],
+        "momentsTitle": "<em>Un boceto</em> que lo explica.",
+        "moments": [
+          {
+            "label": "1",
+            "title": "Acercarse",
+            "body": "Ve a la pizarra de la pared."
+          },
+          {
+            "label": "2",
+            "title": "Dibujar",
+            "body": "Esboza el flujo mientras lo habláis."
+          },
+          {
+            "label": "3",
+            "title": "Dejarlo",
+            "body": "Aléjate y el dibujo se queda para el equipo."
+          }
+        ],
+        "faq": [
+          {
+            "q": "¿La pizarra se comparte con toda la oficina?",
+            "a": "Sí. Toda la oficina ve la misma pizarra."
+          },
+          {
+            "q": "¿Podemos borrar cosas?",
+            "a": "Sí. Usa la goma, o borra toda la pizarra cuando terminéis."
+          },
+          {
+            "q": "¿Sustituye a Miro o FigJam?",
+            "a": "No. Es para bocetos rápidos mientras habláis. Mantén tus herramientas de diseño para el trabajo más grande."
+          },
+          {
+            "q": "¿Está en todos los planes?",
+            "a": "Sí. Todos los planes tienen todas las funciones, el gratuito incluido."
+          }
+        ]
+      }
+    },
+    "teams": "Equipos",
+    "all": "Ver todo",
+    "versusTitle": "{a}, {b} y TinyFloor, <em>lado a lado.</em>",
+    "checkedIn": "Los datos de {name} vienen de su propio sitio, revisados en {date}.",
+    "checkedBothIn": "Los datos de {a} y {b} vienen de sus páginas de precios, revisados en {date}.",
+    "hubs": {
+      "compare": {
+        "meta": {
+          "title": "Comparativas y alternativas de oficinas virtuales",
+          "description": "Cómo se compara TinyFloor con Gather, Kumospace, Sococo, oVice, Roam y las herramientas en las que los equipos hablan hoy, lado a lado."
+        },
+        "title": "Lado a lado, <em>con honestidad.</em>",
+        "body": "Cómo se compara TinyFloor con otras oficinas virtuales y con las herramientas en las que tu equipo habla hoy."
+      },
+      "useCases": {
+        "meta": {
+          "title": "Casos de uso de la oficina virtual para equipos remotos",
+          "description": "Reuniones diarias, programación en pareja, incorporación y los momentos intermedios: cómo usan TinyFloor los equipos remotos a lo largo del día."
+        },
+        "title": "Cómo los equipos <em>usan la planta.</em>",
+        "body": "Los momentos de una jornada remota y cómo funciona cada uno en TinyFloor."
+      },
+      "teams": {
+        "meta": {
+          "title": "TinyFloor para ingeniería, diseño, startups y agencias",
+          "description": "Una oficina virtual adaptada a cómo trabaja tu equipo: equipos de ingeniería, equipos de diseño, startups y agencias."
+        },
+        "title": "Hecho para <em>equipos como el tuyo.</em>",
+        "body": "Cada equipo usa la planta de forma un poco distinta. Así encaja con el tuyo."
+      },
+      "features": {
+        "meta": {
+          "title": "Funciones de TinyFloor: llamadas por cercanía, reuniones, chat y más",
+          "description": "Todo lo que hay en una oficina de TinyFloor: llamadas por cercanía, sala de reuniones, chat de equipo, presencia y una pizarra compartida, en todos los planes."
+        },
+        "title": "Todo en <em>una sola planta.</em>",
+        "body": "Todos los planes tienen todas las funciones. Esto es lo que hay en la planta."
+      }
+    },
+    "features": "Funciones"
+  },
+  "about": {
+    "meta": {
+      "title": "Acerca de TinyFloor",
+      "description": "TinyFloor es una oficina virtual por la que puedes caminar, creada por Jitto Joseph. Por qué existe, quién la hace y cómo contactarnos."
+    },
+    "eyebrow": "Acerca de",
+    "title": "El trabajo remoto perdió el pasillo. Lo estamos recuperando.",
+    "p1": "Trabajar a distancia ayuda a concentrarse, pero se llevó en silencio los pequeños momentos: la pregunta rápida en el escritorio de alguien, el hola al pasar, ver quién está. Las videollamadas funcionan bien para las reuniones. Convirtieron cualquier otra conversación en una cita.",
+    "p2": "TinyFloor es una planta en lugar de un enlace. Tu equipo se mueve por una oficina compartida en pixel art, y acercarte a alguien es como empiezas a hablar. Únete a una reunión y entras en la sala de reuniones. Sal y vuelve la calma.",
+    "p3": "Funciona en el navegador sobre la red de Cloudflare, en 18 idiomas, sin nada que instalar, y es gratis para equipos pequeños.",
+    "founderTitle": "Hecho por Jitto Joseph",
+    "founderBody": "Diseño y construyo TinyFloor, desde la planta en píxeles hasta los servidores donde funciona. Si tienes una idea, un problema o solo quieres saludar, me encantará saber de ti.",
+    "website": "Sitio web",
+    "elsewhere": "TinyFloor en otros sitios",
+    "contact": "Escríbenos"
+  },
+  "homepage": {
+    "nav": {
+      "product": "Producto",
+      "features": "Funciones",
+      "pricing": "Precios",
+      "faq": "Preguntas",
+      "lobby": "Demo",
+      "signIn": "Iniciar sesión",
+      "getStarted": "Empezar",
+      "menu": "Menú",
+      "main": "Principal"
+    },
+    "hero": {
+      "title": "Tu equipo remoto,",
+      "muted": "en una sola planta.",
+      "body": "Una pequeña oficina virtual en el navegador. Mira quién está, acércate a hablar y vuelve al trabajo. Nada que agendar, nada que instalar.",
+      "cta": "Crea tu oficina",
+      "lobby": "Prueba la oficina de demostración",
+      "note": "Gratis para hasta 3 personas · Sin tarjeta",
+      "film": "TinyFloor: llega un mensaje, se abre el chat y luego una llamada con el compañero de al lado"
+    },
+    "floor": {
+      "eyebrow": "En la planta",
+      "title": "Habla como lo harías",
+      "muted": "si estuvierais juntos.",
+      "body": "Una pregunta rápida es un paseo, no una invitación de calendario. El resto del día sigue en calma.",
+      "seen": {
+        "title": "Mira quién está",
+        "body": "Cada persona tiene un escritorio y un estado. Sabes quién está concentrado antes de preguntar."
+      },
+      "walk": {
+        "title": "Acércate a hablar",
+        "body": "Acércate a alguien y llámalo con un clic. Aléjate y la llamada termina."
+      },
+      "sit": {
+        "title": "Entra en la sala de reuniones",
+        "body": "La sala de reuniones está al fondo del pasillo. Únete a la reunión y tu personaje entra; sal y la habrás dejado."
+      }
+    },
+    "more": {
+      "eyebrow": "Todo lo demás",
+      "title": "Lo que un equipo pequeño necesita.",
+      "muted": "Nada que no necesite.",
+      "items": {
+        "chat": {
+          "title": "Canales y mensajes",
+          "body": "Un chat que se queda, junto a la planta. Ponte al día desde el móvil."
+        },
+        "screen": {
+          "title": "Compartir pantalla",
+          "body": "Comparte una ventana con quien hablas, con un clic."
+        },
+        "whiteboard": {
+          "title": "Pizarra",
+          "body": "Una pizarra compartida en la pared, para el boceto que lo explica todo."
+        },
+        "music": {
+          "title": "Música",
+          "body": "Una gramola en la sala, para las horas que la necesitan."
+        },
+        "noise": {
+          "title": "Supresión de ruido",
+          "body": "Teclados y cafeterías se quedan fuera de la llamada."
+        },
+        "devices": {
+          "title": "En cualquier dispositivo",
+          "body": "Es una página web. Portátil o móvil, se abre igual."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Precios",
+      "title": "Precio por oficina,",
+      "muted": "no por persona.",
+      "body": "Empieza gratis. Sube de plan cuando tu equipo crezca.",
+      "soon": "Próximamente",
+      "forever": "para siempre",
+      "month": "al mes",
+      "people": "Hasta {count} personas",
+      "free": {
+        "name": "Free"
+      },
+      "plus": {
+        "name": "Plus"
+      },
+      "pro": {
+        "name": "Pro"
+      },
+      "tax": "Precios mensuales, sin impuestos.",
+      "perPerson": "{price} por persona",
+      "freeLine": "Sin tarjeta",
+      "choose": "Elegir {plan}",
+      "note": "Todos los planes tienen todas las funciones. Las llamadas nunca se cuentan; las reuniones de grupo tienen 5, 30 o 60 horas al mes."
+    },
+    "source": {
+      "star": "Dar una estrella en GitHub",
+      "open": "Código abierto"
+    },
+    "faq": {
+      "title": "Preguntas,",
+      "muted": "respondidas.",
+      "more": "¿Aún con dudas? <lobby>Prueba la oficina de demostración</lobby> y compruébalo tú mismo."
+    },
+    "closing": {
+      "title": "Dale a tu equipo",
+      "muted": "una planta que compartir.",
+      "note": "Gratis para hasta 3 personas · Funciona en Cloudflare"
+    }
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Precios: un solo precio para toda la oficina",
+      "description": "TinyFloor es gratis para hasta 3 personas. Plus cuesta $19 al mes para 10 personas y Pro $49 al mes para 25, con precio por oficina, no por persona."
+    },
+    "title": "Un solo precio para toda la oficina.",
+    "muted": "No uno por persona.",
+    "body": "Empieza gratis con hasta 3 personas y sube de plan cuando tu equipo crezca.",
+    "seats": {
+      "title": "Diez personas,",
+      "muted": "una sola factura pequeña.",
+      "body": "Lo que paga cada mes un equipo de 10.",
+      "perSeat": "Herramientas por usuario a {price} por persona",
+      "ours": "TinyFloor Plus, para toda la oficina"
+    },
+    "table": {
+      "title": "Cada plan,",
+      "muted": "todas las funciones.",
+      "people": "Personas",
+      "hours": "Horas de reunión al mes",
+      "hoursNote": "Solo reuniones de grupo",
+      "calls": "Llamadas entre dos personas",
+      "callsNote": "Nunca se cuentan"
+    },
+    "notes": {
+      "title": "Conviene saber.",
+      "cancel": {
+        "title": "Cancela cuando quieras",
+        "body": "Tu plan dura hasta el final de lo que pagaste y luego la oficina pasa a Free. No se borra nada."
+      },
+      "refund": {
+        "title": "Reembolso en 14 días",
+        "body": "Pídelo en los 14 días siguientes a cualquier pago y te lo devolvemos entero."
+      },
+      "change": {
+        "title": "Cambia de plan cuando quieras",
+        "body": "Subir o bajar de plan se aplica al momento, y Paddle cobra o abona la diferencia."
+      },
+      "hours": {
+        "title": "Cuando se acaban las horas",
+        "body": "Las reuniones siguen solo con voz hasta el día 1. Las llamadas entre dos personas funcionan como siempre."
+      },
+      "tax": {
+        "title": "Impuestos al pagar",
+        "body": "Los precios están en dólares estadounidenses. Paddle, nuestro revendedor, añade el IVA o impuesto sobre las ventas al pagar."
+      },
+      "bigger": {
+        "title": "¿Más de 25 personas?",
+        "body": "Dale a cada equipo su propia oficina, o escribe a {email} y lo hablamos."
+      }
+    }
+  },
+  "guides": {
+    "label": "Guías",
+    "eyebrow": "Guía",
+    "minutes": "{count} min de lectura",
+    "updated": "Actualizado el {date}",
+    "by": "Por {name}",
+    "contents": "En esta página",
+    "faqTitle": "Preguntas <em>frecuentes.</em>",
+    "moreTitle": "Más <em>guías.</em>",
+    "all": "Todas las guías",
+    "fitCta": "Probar la oficina demo",
+    "hub": {
+      "meta": {
+        "title": "Guías para líderes de equipos remotos",
+        "description": "Guías prácticas para quienes dirigen equipos remotos: team building, juegos para reuniones, cultura, comunicación, chat de proximidad y cómo elegir software de oficina virtual."
+      },
+      "title": "Guías para <em>equipos remotos.</em>",
+      "body": "Prácticas, breves y escritas por gente que trabaja en remoto. Usa lo que te sirva y salta el resto."
+    }
+  }
+}

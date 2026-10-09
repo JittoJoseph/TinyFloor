@@ -93,6 +93,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
       headers.set("content-type", "text/html; charset=utf-8");
       headers.set("etag", page.etag);
       setCountry(request, headers);
+      syncLocale(request, headers, route.split("/")[1], LOCALES);
       // The browser has this page already: say so, without reading it.
       if (request.headers.get("if-none-match")?.split(/\s*,\s*/).includes(page.etag)) {
         return new Response(null, { status: 304, headers });
@@ -133,6 +134,19 @@ function wantedLocale(request, locales) {
 function cookie(request, name) {
   const match = (request.headers.get("cookie") ?? "").match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : null;
+}
+
+/**
+ * The page's language, remembered for the reader's next visit, the way
+ * next-intl's middleware does it (which pages served from here skip): when it
+ * isn't what they'd be given anyway. Someone sent here from the other site in
+ * their language keeps it when they come back to an address without one.
+ */
+function syncLocale(request, headers, locale, locales) {
+  if ((request.headers.get("sec-fetch-dest") ?? "document") !== "document") return;
+  const chosen = cookie(request, "NEXT_LOCALE");
+  if (chosen ? chosen === locale : wantedLocale(request, locales) === locale) return;
+  headers.append("set-cookie", `NEXT_LOCALE=${locale}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`);
 }
 
 /** The reader's country as a cookie, as the middleware sets it: a hint for the language menu's order. */

@@ -1,7 +1,7 @@
 import path from "node:path";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin("../web-shared/src/lib/i18n/request.ts");
+const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
 /**
  * The Next config both frontends build with, from their own next.config.ts.

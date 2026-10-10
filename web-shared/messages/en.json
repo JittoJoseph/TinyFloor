@@ -88,7 +88,10 @@
     "joined": "Joined {date}",
     "yourProfile": "Your profile",
     "leaveOffice": "Leave the office",
-    "leave": "Leave"
+    "leave": "Leave",
+    "trialLeft": "{plan} trial · {count, plural, one {# day} other {# days}} left",
+    "choosePlan": "Choose a plan",
+    "upgrade": "Upgrade"
   },
   "home": {
     "nav": {

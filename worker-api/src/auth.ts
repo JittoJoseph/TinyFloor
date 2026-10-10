@@ -195,12 +195,13 @@ export function authRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const { results } = await env.DB.prepare(
         `SELECT o.id, o.name, o.plan, o.seats, m.role,
+                CASE WHEN o.trial_ends_at > ? THEN o.trial_ends_at END AS trialEndsAt,
                 (SELECT COUNT(*) FROM memberships WHERE office_id = o.id) AS members
          FROM memberships m JOIN offices o ON o.id = m.office_id
          WHERE m.user_id = ? ORDER BY m.joined_at`,
       )
-        .bind(user.id)
-        .all<{ id: string; name: string; plan: string; seats: number; role: string; members: number }>();
+        .bind(Date.now(), user.id)
+        .all<{ id: string; name: string; plan: string; seats: number; role: string; members: number; trialEndsAt: number | null }>();
       if (!results.length) return json({ user: publicUser(user), offices: [] });
 
       // Each office's team for the dashboard, oldest member first, and who is on each floor now.

@@ -2,15 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { VideoOff } from "@/components/ui/icons";
+import { VideoOff, Zap } from "@/components/ui/icons";
 import type { MeetingUsage } from "@shared/messages";
 import { useMeetings } from "@/lib/meetings";
 import { usePlans } from "@/lib/billing";
-import { Link } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { usePlace } from "@/components/app/place";
+import { useUpgrade } from "@/components/billing/Upgrade";
+import { PLAN_NAMES } from "@/components/billing/PlanCards";
+import type { PlanId } from "@/lib/api";
 
-/** Past this share of the hours, admins see the way to more. */
+/** Past this share of the hours, the meter warms and admins see the way to more. */
 const NEARLY = 0.8;
 
 /**
@@ -18,7 +20,7 @@ const NEARLY = 0.8;
  * says how much was used when it last changed, and how many meetings are
  * counting, so the rest is arithmetic until it next speaks.
  */
-function useMeetingUsage(): MeetingUsage | null {
+export function useMeetingUsage(): MeetingUsage | null {
   const { usage, usageAt } = useMeetings();
   const [now, setNow] = useState(() => Date.now());
   const counting = !!usage?.live;
@@ -32,11 +34,11 @@ function useMeetingUsage(): MeetingUsage | null {
   return { ...usage, used: usage.used + extra };
 }
 
-/** Admins of an office where plans are sold get the way to more hours. */
-function useCanBuyHours(): string | null {
+/** Admins of an office where plans are sold open the plans, in place, about the hours. */
+function useMoreHours(): (() => void) | null {
   const place = usePlace();
-  const plans = usePlans();
-  return place.kind === "office" && place.role === "admin" && plans?.billing ? `${place.paths.settings}#plan` : null;
+  const { open } = useUpgrade();
+  return place.kind === "office" && place.role === "admin" && open ? () => open("hours") : null;
 }
 
 function useHours() {
@@ -44,26 +46,75 @@ function useHours() {
   return (seconds: number) => format.number(seconds / 3600, { maximumFractionDigits: seconds < 36_000 ? 1 : 0 });
 }
 
-/** One quiet line under the meetings: how much of the month's hours are used. */
-export function MeetingHoursLine({ className }: { className?: string }) {
-  const t = useTranslations("meetings.hours");
+/**
+ * The month's meeting hours, for everyone on the Meetings page (docs/22): how
+ * many are used of how many, a meter that warms near the end, when they reset
+ * and on which plan; for admins, the way to more. In the lobby, the day's.
+ */
+export function MeetingUsageCard({ className }: { className?: string }) {
+  const t = useTranslations("meetings.usage");
+  const format = useFormatter();
+  const place = usePlace();
+  const plans = usePlans();
   const usage = useMeetingUsage();
   const hours = useHours();
-  const plan = useCanBuyHours();
-  if (!usage || usage.allowance === null || usage.paused) return null;
-  const nearly = usage.used >= usage.allowance * NEARLY;
+  const more = useMoreHours();
+  const lobby = place.kind === "lobby";
+
+  if (!usage || usage.allowance === null) {
+    return <div aria-hidden className={cn("h-[188px] animate-pulse rounded-2xl bg-muted", className)} />;
+  }
+  const share = Math.min(1, usage.used / usage.allowance);
+  const nearly = share >= NEARLY;
+  const resets = format.dateTime(usage.resetsAt, { month: "short", day: "numeric" });
+  const planId = (place.kind === "office" ? place.plan : null) as PlanId | null;
+  const plan = planId && PLAN_NAMES[planId];
+  const top = !!plans && plans.plans[plans.plans.length - 1]?.id === planId;
+
   return (
-    <p className={cn("text-center text-[12px] tabular-nums text-faint", className)}>
-      {t(usage.period === "day" ? "usedToday" : "usedMonth", { used: hours(usage.used), allowance: hours(usage.allowance) })}
-      {nearly && plan && (
-        <>
-          {" · "}
-          <Link href={plan} className="font-medium text-muted-foreground underline-offset-2 hover:underline">
-            {t("more")}
-          </Link>
-        </>
+    <section className={cn("rounded-2xl border border-border bg-background p-5", className)}>
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-[12.5px] font-medium text-muted-foreground">{usage.period === "day" ? t("today") : t("month")}</p>
+        {plan && <span className="rounded-full bg-muted px-2 py-0.5 text-[11.5px] font-semibold text-muted-foreground">{plan}</span>}
+      </div>
+      <p className="mt-3 flex items-baseline gap-1.5 tabular-nums">
+        <span className="text-[30px] font-semibold leading-none tracking-tight text-foreground">{hours(usage.used)}</span>
+        <span className="text-[13px] text-muted-foreground">{t("of", { allowance: hours(usage.allowance) })}</span>
+      </p>
+      <div className="mt-4 h-2 overflow-hidden rounded-full bg-muted" aria-hidden>
+        <div
+          className={cn("h-full rounded-full transition-[width] duration-700", usage.paused ? "bg-destructive" : nearly ? "bg-warn" : "bg-foreground")}
+          style={{ width: `${Math.max(usage.used > 0 ? 2 : 0, share * 100)}%` }}
+        />
+      </div>
+      <p className={cn("mt-2 text-[12px]", usage.paused ? "text-destructive" : nearly ? "text-warn" : "text-faint")}>
+        {usage.paused
+          ? usage.period === "day"
+            ? t("pausedToday")
+            : t("pausedMonth", { date: resets })
+          : usage.period === "day"
+            ? t("resetsTomorrow")
+            : t("resets", { date: resets })}
+      </p>
+
+      <p className="mt-4 border-t border-border pt-4 text-[12.5px] leading-relaxed text-muted-foreground">
+        {lobby ? t("lobby", { hours: hours(usage.allowance) }) : t("counts")}
+      </p>
+      {more && !top && (
+        <button
+          type="button"
+          onClick={more}
+          className={cn(
+            "mt-3 flex h-9 w-full cursor-pointer items-center justify-center gap-1.5 rounded-full text-[13px] font-medium transition-colors",
+            nearly || usage.paused ? "bg-foreground text-background hover:bg-foreground/85" : "border border-border text-foreground hover:bg-muted",
+          )}
+        >
+          <Zap className="size-3.5" />
+          {t("more")}
+        </button>
       )}
-    </p>
+      {!more && !lobby && (nearly || usage.paused) && <p className="mt-3 text-[12px] text-faint">{t("askAdmin")}</p>}
+    </section>
   );
 }
 
@@ -72,7 +123,7 @@ export function VideoPausedNote({ compact = false, className }: { compact?: bool
   const t = useTranslations("meetings.hours");
   const format = useFormatter();
   const usage = useMeetingUsage();
-  const plan = useCanBuyHours();
+  const more = useMoreHours();
   if (!usage?.paused) return null;
   const until = format.dateTime(usage.resetsAt, { month: "short", day: "numeric" });
   const body = usage.period === "day" ? t("pausedToday") : t("pausedMonth", { date: until });
@@ -89,10 +140,10 @@ export function VideoPausedNote({ compact = false, className }: { compact?: bool
       <span className="min-w-0">
         <span className="font-medium text-foreground">{t("paused")}</span> · {body}
       </span>
-      {plan && (
-        <Link href={plan} className="shrink-0 font-medium text-foreground underline-offset-2 hover:underline">
+      {more && (
+        <button type="button" onClick={more} className="shrink-0 cursor-pointer font-medium text-foreground underline-offset-2 hover:underline">
           {t("more")}
-        </Link>
+        </button>
       )}
     </div>
   );

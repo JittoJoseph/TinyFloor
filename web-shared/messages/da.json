@@ -88,7 +88,10 @@
     "joined": "Med siden {date}",
     "yourProfile": "Din profil",
     "leaveOffice": "Forlad kontoret",
-    "leave": "Forlad"
+    "leave": "Forlad",
+    "trialLeft": "{plan}-prøve · {count, plural, one {# dag} other {# dage}} tilbage",
+    "choosePlan": "Vælg en plan",
+    "upgrade": "Opgrader"
   },
   "home": {
     "nav": {

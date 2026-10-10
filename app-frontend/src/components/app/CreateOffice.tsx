@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { Check, Info, Link2 } from "@/components/ui/icons";
+import { Check, Copy, Info, Link2, Zap } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type Office, type Plan, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
-import { officePath } from "@/lib/links";
+import { officePath, shareUrl } from "@/lib/links";
+import { useInviteLink } from "@/lib/inviteLink";
+import { shareLink } from "@/lib/share";
 import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
@@ -22,26 +24,18 @@ import { cn } from "@/lib/utils";
 import { posthogLog } from "@/lib/posthog-log";
 import { withPostHog } from "@/lib/analytics";
 
-/** How many people will work there, in the words of the question. */
-type TeamSize = "few" | "small" | "medium" | "large";
-const SIZES: Array<{ id: TeamSize; label: string; plan: Exclude<PlanId, "free"> }> = [
-  { id: "few", label: "2–3", plan: "plus" },
-  { id: "small", label: "4–10", plan: "plus" },
-  { id: "medium", label: "11–25", plan: "pro" },
-  { id: "large", label: "26+", plan: "pro" },
-];
-
 /** Plan names stay in English everywhere, like on the pricing page. */
 const NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
 
-type Step = "name" | "size" | "plan";
+type Step = "name" | "invite" | "plan";
 
 /**
- * Making an office (docs/15): its name, how many people it is for, and the
- * plan that fits them, paid for right here or left for later on the free
- * plan. The office is made as soon as it has a name, so the rest is only a
- * question of its plan, and leaving at any point still leaves an office.
- * Where paid plans aren't on yet, naming it is all there is.
+ * Making an office (docs/15, docs/22): its name, then the link that brings the
+ * team in, then the floor. No plan is asked for before anyone else has joined:
+ * an office is worth paying for once a team is in it, and the team's first two
+ * weeks are on Plus anyway. Someone who picked a plan on the pricing page
+ * (/create?plan=pro) gets it right after the name instead. The office is made
+ * as soon as it has a name, so leaving at any point still leaves an office.
  */
 export function CreateOfficeFlow() {
   const t = useTranslations("create");
@@ -60,9 +54,8 @@ export function CreateOfficeFlow() {
   const [wentBack, setWentBack] = useState(false);
   const [name, setName] = useState("");
   const [office, setOffice] = useState<Office | null>(null);
-  const [size, setSize] = useState<TeamSize | null>(null);
   const [chosen, setChosen] = useState<Exclude<PlanId, "free"> | null>(null);
-  // Chosen on the pricing page (/create?plan=pro): picked here too, whatever size they say.
+  // Chosen on the pricing page (/create?plan=pro): bought straight after the name.
   const [asked] = useState<Exclude<PlanId, "free"> | null>(() => {
     if (typeof window === "undefined") return null;
     const asked = new URLSearchParams(window.location.search).get("plan");
@@ -71,6 +64,8 @@ export function CreateOfficeFlow() {
   const [showIncluded, setShowIncluded] = useState(false);
   const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
+  const inviteLink = useInviteLink(step === "invite" ? office?.id : undefined);
 
   // A name typed in the lobby before signing up waits here, read once the page is in the browser.
   useEffect(() => {
@@ -80,9 +75,9 @@ export function CreateOfficeFlow() {
   }, []);
 
   const typed = name.trim();
-  const steps: Step[] = selling ? ["name", "size", "plan"] : ["name"];
-  const recommended = SIZES.find((one) => one.id === size)?.plan ?? "plus";
-  const plan = chosen ?? asked ?? recommended;
+  const steps: Step[] = selling && asked ? ["name", "plan"] : ["name", "invite"];
+  const recommended = asked ?? "plus";
+  const plan = chosen ?? recommended;
   const paid = catalog?.plans.filter((one): one is Plan & { id: "plus" | "pro" } => one.id !== "free") ?? [];
   const picked = paid.find((one) => one.id === plan);
   const free = catalog?.plans.find((one) => one.id === "free");
@@ -114,9 +109,8 @@ export function CreateOfficeFlow() {
         made = (await api.renameOffice(made.id, typed)).office;
         setOffice(made);
       }
-      if (!selling) return walkIn(made.id);
       setBusy(null);
-      go("size");
+      go(selling && asked ? "plan" : "invite");
     } catch (err) {
       setError(explain(err));
       setBusy(null);
@@ -133,7 +127,7 @@ export function CreateOfficeFlow() {
       withPostHog((posthog) => posthog.capture("onboarding_checkout_opened", { plan }));
       const done = await openCheckout({ url, locale, dark: document.documentElement.classList.contains("dark") });
       if (!done) return setBusy(null);
-      withPostHog((posthog) => posthog.capture("onboarding_plan_bought", { plan, size }));
+      withPostHog((posthog) => posthog.capture("onboarding_plan_bought", { plan }));
       await waitForPlan(office.id, checkoutId, (now) => now === plan);
       walkIn(office.id);
     } catch (err) {
@@ -144,14 +138,25 @@ export function CreateOfficeFlow() {
 
   const stayFree = () => {
     if (!office) return;
-    withPostHog((posthog) => posthog.capture("onboarding_stayed_free", { size }));
+    withPostHog((posthog) => posthog.capture("onboarding_stayed_free"));
     setBusy("free");
     walkIn(office.id);
   };
 
+  /** The link, shared or copied: the one thing that makes an office worth having. */
+  const share = async () => {
+    if (!inviteLink) return;
+    const result = await shareLink(shareUrl(inviteLink), typed);
+    withPostHog((posthog) => posthog.capture("onboarding_invite_shared", { result }));
+    if (result !== "failed") {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   const submit = () => {
     if (step === "name") void saveName();
-    else if (step === "size" && size) go("plan");
+    else if (step === "invite" && office) walkIn(office.id);
     else if (step === "plan") void pay();
   };
 
@@ -182,26 +187,24 @@ export function CreateOfficeFlow() {
         <DoorSteps
           step={step}
           back={wentBack}
-          onBack={step === "size" ? () => go("name", true) : step === "plan" ? () => go("size", true) : undefined}
+          onBack={step === "invite" || step === "plan" ? () => go("name", true) : undefined}
           action={
             <ActionButton
               type="submit"
-              disabled={(step === "name" && !typed) || (step === "size" && !size) || (step === "plan" && !picked) || busy === "free"}
+              disabled={(step === "name" && !typed) || (step === "plan" && !picked) || busy === "free"}
               busy={busy === "name" || busy === "pay"}
               busyLabel={step === "plan" ? t("openingCheckout") : t("creating")}
             >
               {step === "plan" && picked
                 ? t("getPlan", { plan: NAMES[picked.id], price: dollars(picked.price ?? 0) })
-                : !selling
-                  ? t("createIt")
+                : step === "invite"
+                  ? t("walkIn")
                   : tEntry("continue")}
             </ActionButton>
           }
           secondary={
             step === "plan" && free ? (
-              <QuietChoice onClick={stayFree}>
-                {size === "few" || !size ? t("freeInstead", { count: free.seats }) : t("freeTooSmall", { count: free.seats })}
-              </QuietChoice>
+              <QuietChoice onClick={stayFree}>{t("freeInstead", { count: free.seats })}</QuietChoice>
             ) : step === "name" ? (
               <span className="text-[12.5px] text-faint">{t("renameLater")}</span>
             ) : null
@@ -235,34 +238,43 @@ export function CreateOfficeFlow() {
             </>
           )}
 
-          {step === "size" && (
+          {step === "invite" && (
             <>
-              <StepTitle title={t("sizeTitle")} body={t("sizeBody")} />
-              <div role="radiogroup" aria-label={t("sizeTitle")} className="grid grid-cols-2 gap-2">
-                {SIZES.map((one) => {
-                  const on = size === one.id;
-                  return (
-                    <button
-                      key={one.id}
-                      type="button"
-                      role="radio"
-                      aria-checked={on}
-                      onClick={() => {
-                        setSize(one.id);
-                        setChosen(null);
-                      }}
-                      className={cn(
-                        "relative flex h-[76px] cursor-pointer flex-col items-start justify-center rounded-2xl border px-4 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring",
-                        on ? "border-foreground bg-foreground/[0.04]" : "border-border hover:border-foreground/30",
-                      )}
-                    >
-                      <span className="text-[20px] font-semibold tabular-nums tracking-tight text-foreground">{one.label}</span>
-                      <span className="text-[12.5px] text-muted-foreground">{t("people")}</span>
-                      {on && <Tick />}
-                    </button>
-                  );
-                })}
+              <StepTitle title={t("inviteTitle")} body={t("inviteBody", { office: typed })} />
+              {/* The office's own link, the same one People shows: copied, or the share sheet on a phone. */}
+              <div className="flex h-12 items-center gap-1 rounded-full border border-border p-1 ps-4">
+                <Link2 className="size-4 shrink-0 text-faint" />
+                <span className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground">
+                  {inviteLink ? (
+                    shareUrl(inviteLink).replace(/^https?:\/\//, "")
+                  ) : (
+                    <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />
+                  )}
+                </span>
+                <button
+                  type="button"
+                  disabled={!inviteLink}
+                  onClick={share}
+                  className="flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
+                >
+                  {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+                  {copied ? t("copied") : t("copy")}
+                </button>
               </div>
+              {selling && !!catalog?.trialDays ? (
+                <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-brand/10 p-3.5 text-[13px] leading-relaxed text-foreground">
+                  <Zap className="mt-0.5 size-4 shrink-0 text-brand" />
+                  {t("trialNote", {
+                    free: free?.seats ?? 3,
+                    plan: NAMES.plus,
+                    days: catalog.trialDays,
+                    seats: paid.find((one) => one.id === "plus")?.seats ?? 10,
+                    hours: paid.find((one) => one.id === "plus")?.meetingHours ?? 30,
+                  })}
+                </p>
+              ) : (
+                <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">{t("inviteLater")}</p>
+              )}
             </>
           )}
 
@@ -278,7 +290,6 @@ export function CreateOfficeFlow() {
               <div role="radiogroup" aria-label={t("planTitle", { office: typed })} className="grid grid-cols-[minmax(0,1fr)] gap-2">
                 {paid.map((one) => {
                   const on = plan === one.id;
-                  const fits = SIZES.find((option) => option.id === size)?.plan !== "pro" || one.id === "pro";
                   return (
                     <button
                       key={one.id}
@@ -307,7 +318,7 @@ export function CreateOfficeFlow() {
                             <span className="truncate rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">{t("recommended")}</span>
                           )}
                         </span>
-                        <span className={cn("mt-0.5 block truncate text-[12.5px]", fits ? "text-muted-foreground" : "text-warn")}>
+                        <span className="mt-0.5 block truncate text-[12.5px] text-muted-foreground">
                           {t("upTo", { count: one.seats })}
                         </span>
                       </span>
@@ -352,7 +363,6 @@ export function CreateOfficeFlow() {
                     </li>
                   ))}
                 </ul>
-                {size === "large" && <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">{t("bigger")}</p>}
               </Dialog>
             </>
           )}
@@ -361,14 +371,6 @@ export function CreateOfficeFlow() {
         </DoorSteps>
       </form>
     </EntryShell>
-  );
-}
-
-function Tick() {
-  return (
-    <span className="absolute end-2.5 top-2.5 flex size-[18px] items-center justify-center rounded-full bg-foreground text-background">
-      <Check className="size-3" strokeWidth={3} />
-    </span>
   );
 }
 

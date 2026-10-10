@@ -14,6 +14,7 @@ import { useHelp } from "@/lib/help";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
 import { useInviteLink } from "@/lib/inviteLink";
+import { UpgradeProvider } from "@/components/billing/Upgrade";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell } from "./AppShell";
@@ -196,44 +197,46 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
 
   return (
     <Context.Provider value={{ office, members, overview: read.overview, readAt: read.at, refresh }}>
-      <PlaceProvider value={place}>
-        <AppShell
-          mark={<OfficeSwitcher office={office} />}
-          destinations={[
-            { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
-            { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
-            {
-              key: "meetings",
-              href: meetings,
-              label: ts("meetings"),
-              icon: RailIcons.meetings,
-              active: onMeetings,
-              // Green while a meeting is on: how many are in them.
-              live: peopleInMeetings(meetingList) || undefined,
-              },
-            { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
-          ]}
-          settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-          leave={leave}
-          you={<YouMenu onFloor settingsHref={settingsPath} leave={leave} />}
-          floor={
-            <>
-              <RoomView
-                title={office.name}
-                user={user}
-                ticketFor={() => api.officeTicket(office.id)}
-                sharePath={inviteLink ?? undefined}
-                inviteHref={inviteLink ? undefined : people}
-                leaveHref={leave.href}
-                settingsHref={settingsPath}
-              />
-              {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
-            </>
-          }
-        >
-          {children}
-        </AppShell>
-      </PlaceProvider>
+      <UpgradeProvider>
+        <PlaceProvider value={place}>
+          <AppShell
+            mark={<OfficeSwitcher office={office} />}
+            destinations={[
+              { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
+              { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
+              {
+                key: "meetings",
+                href: meetings,
+                label: ts("meetings"),
+                icon: RailIcons.meetings,
+                active: onMeetings,
+                // Green while a meeting is on: how many are in them.
+                live: peopleInMeetings(meetingList) || undefined,
+                },
+              { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
+            ]}
+            settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
+            leave={leave}
+            you={<YouMenu onFloor settingsHref={settingsPath} leave={leave} />}
+            floor={
+              <>
+                <RoomView
+                  title={office.name}
+                  user={user}
+                  ticketFor={() => api.officeTicket(office.id)}
+                  sharePath={inviteLink ?? undefined}
+                  inviteHref={inviteLink ? undefined : people}
+                  leaveHref={leave.href}
+                  settingsHref={settingsPath}
+                />
+                {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+              </>
+            }
+          >
+            {children}
+          </AppShell>
+        </PlaceProvider>
+      </UpgradeProvider>
     </Context.Provider>
   );
 }

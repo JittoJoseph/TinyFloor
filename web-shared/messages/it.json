@@ -88,7 +88,10 @@
     "joined": "Qui da {date}",
     "yourProfile": "Il tuo profilo",
     "leaveOffice": "Esci dall'ufficio",
-    "leave": "Esci"
+    "leave": "Esci",
+    "trialLeft": "Prova {plan} · {count, plural, one {# giorno rimasto} other {# giorni rimasti}}",
+    "choosePlan": "Scegli un piano",
+    "upgrade": "Fai l'upgrade"
   },
   "home": {
     "nav": {

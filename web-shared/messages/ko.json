@@ -88,7 +88,10 @@
     "joined": "{date} 참여",
     "yourProfile": "내 프로필",
     "leaveOffice": "오피스 나가기",
-    "leave": "나가기"
+    "leave": "나가기",
+    "trialLeft": "{plan} 체험 · {count}일 남음",
+    "choosePlan": "요금제 선택",
+    "upgrade": "업그레이드"
   },
   "home": {
     "nav": {

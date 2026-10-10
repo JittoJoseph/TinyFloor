@@ -44,6 +44,18 @@ export const HOLDS_PLAN = new Set(["active", "trialing", "past_due", "scheduled_
 /** How many past payments the billing page lists. */
 const HISTORY = 24;
 
+/**
+ * The team trial (docs/22): when a free office is full and one more person
+ * comes to join, instead of turning them away it goes on Plus for this many
+ * days, without a card, so the whole team can move in. Then back to free
+ * unless a plan was bought: everyone stays a member, but only the free plan's
+ * number can be on the floor at once. Once per office, only where plans are
+ * on sale. 0 turns it off.
+ */
+export const TRIAL_DAYS = 14;
+const TRIAL_PLAN: PaidPlan = "plus";
+const DAY = 24 * 60 * 60 * 1000;
+
 type ProductIds = Partial<Record<PaidPlan, string>>;
 
 interface BillingConfig {
@@ -252,7 +264,8 @@ export async function applySubscription(env: Env, sub: CreemSubscription, forOff
       payer,
       Date.now(),
     ),
-    env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId),
+    // A plan from Creem replaces a trial that was running.
+    env.DB.prepare(`UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`).bind(plan.id, plan.seats, officeId),
   ]);
   // The room's meeting hours follow the plan straight away: a bigger plan lifts a pause.
   await realtime(env)
@@ -280,10 +293,11 @@ export async function meetingSecondsThisMonth(env: Env, officeId: string): Promi
 
 /** What the office's billing settings show, from our own records: no call to Creem. */
 async function billingJson(env: Env, office: Office) {
-  const [row, members, seconds] = await Promise.all([
+  const [row, members, seconds, trial] = await Promise.all([
     subscriptionOf(env, office.id),
     seatsUsed(env, office.id),
     meetingSecondsThisMonth(env, office.id),
+    trialOf(env, office.id),
   ]);
   const live = row && row.provider_subscription_id && HOLDS_PLAN.has(row.status);
   return {
@@ -292,6 +306,7 @@ async function billingJson(env: Env, office: Office) {
     members,
     meetingHours: meetingHoursOf(office.plan),
     usage: { seconds, resetsAt: thisMonth().resetsAt },
+    trial: live ? null : trial,
     subscription: live
       ? {
           plan: row.plan,
@@ -370,10 +385,67 @@ export async function givePlan(env: Env, officeId: string, planId: string): Prom
   if (await liveSubscription(env, officeId)) {
     throw new HttpError(409, "has_subscription", "This office pays through Creem; change its plan there");
   }
-  await env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId).run();
+  await env.DB.prepare(`UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`)
+    .bind(plan.id, plan.seats, officeId)
+    .run();
   await realtime(env)
     .setMeetingAllowance(officeId, plan.meetingHours)
     .catch((error) => console.error("admin: couldn't tell the room", officeId, error));
+}
+
+/** The conditions under which an office still has its trial to give: free, never trialled, never paid. */
+const TRIAL_OPEN = `plan = 'free' AND trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions WHERE office_id = offices.id)`;
+
+/** Whether the next person past a full office would start the trial rather than be turned away. */
+export async function trialWaiting(env: Env, officeId: string): Promise<boolean> {
+  if (!TRIAL_DAYS || !config(env)) return false;
+  return !!(await env.DB.prepare(`SELECT 1 FROM offices WHERE id = ? AND ${TRIAL_OPEN}`).bind(officeId).first());
+}
+
+/**
+ * Starts the team trial for a free office that is full, as someone else comes
+ * to join it: once per office, only where plans are on sale.
+ */
+export async function startTrialIfFull(env: Env, officeId: string, now = Date.now()): Promise<boolean> {
+  if (!TRIAL_DAYS || !config(env)) return false;
+  const plan = planById(TRIAL_PLAN)!;
+  const started = await env.DB.prepare(
+    `UPDATE offices SET plan = ?, seats = ?, trial_ends_at = ?
+     WHERE id = ? AND ${TRIAL_OPEN} AND (SELECT COUNT(*) FROM memberships WHERE office_id = ?) >= seats`,
+  )
+    .bind(plan.id, plan.seats, now + TRIAL_DAYS * DAY, officeId, officeId)
+    .run();
+  if (!started.meta.changes) return false;
+  await realtime(env)
+    .setMeetingAllowance(officeId, plan.meetingHours)
+    .catch((error) => console.error("trial: couldn't tell the room", officeId, error));
+  return true;
+}
+
+/**
+ * Trials past their end go back to free: every office's daily, or one office's
+ * the moment it's read after its trial ended. Nobody is removed.
+ */
+export async function endTrials(env: Env, officeId?: string, now = Date.now()): Promise<number> {
+  const { results } = await (officeId
+    ? env.DB.prepare("SELECT id FROM offices WHERE id = ? AND trial_ends_at > 0 AND trial_ends_at <= ?").bind(officeId, now)
+    : env.DB.prepare("SELECT id FROM offices WHERE trial_ends_at > 0 AND trial_ends_at <= ?").bind(now)
+  ).all<{ id: string }>();
+  for (const { id } of results) {
+    await env.DB.prepare("UPDATE offices SET plan = 'free', seats = ?, trial_ends_at = 0 WHERE id = ? AND trial_ends_at > 0")
+      .bind(FREE.seats, id)
+      .run();
+    await realtime(env)
+      .setMeetingAllowance(id, FREE.meetingHours)
+      .catch((error) => console.error("trial: couldn't tell the room", id, error));
+  }
+  return results.length;
+}
+
+/** The trial running for an office, if one is. */
+async function trialOf(env: Env, officeId: string, now = Date.now()): Promise<{ plan: PaidPlan; endsAt: number } | null> {
+  const row = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number | null }>();
+  return row?.trial_ends_at && row.trial_ends_at > now ? { plan: TRIAL_PLAN, endsAt: row.trial_ends_at } : null;
 }
 
 /**
@@ -460,7 +532,7 @@ export function billingRoutes(router: Router): void {
     // The plans, with prices and hours, and whether they're on sale here.
     .add("GET", "/v1/plans", async ({ env }) => {
       const billing = config(env);
-      return json({ plans: PLANS, billing: billing ? { mode: billing.mode } : null });
+      return json({ plans: PLANS, billing: billing ? { mode: billing.mode } : null, trialDays: billing ? TRIAL_DAYS : 0 });
     })
 
     .add("GET", "/v1/offices/:id/billing", async ({ request, env, ctx, params }) => {

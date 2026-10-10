@@ -88,7 +88,10 @@
     "joined": "Liittynyt {date}",
     "yourProfile": "Oma profiili",
     "leaveOffice": "Poistu toimistosta",
-    "leave": "Poistu"
+    "leave": "Poistu",
+    "trialLeft": "{plan}-kokeilu · {count, plural, one {# päivä} other {# päivää}} jäljellä",
+    "choosePlan": "Valitse paketti",
+    "upgrade": "Päivitä"
   },
   "home": {
     "nav": {

@@ -2,15 +2,25 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Plus } from "@/components/ui/icons";
+import { DoorOpen, Plus, Zap } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
 import { officePath } from "@/lib/links";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { useWide } from "@/lib/hooks/use-wide";
+import { usePlans } from "@/lib/billing";
+import { useUpgrade } from "@/components/billing/Upgrade";
+import { PLAN_NAMES } from "@/components/billing/PlanCards";
+import type { PlanId } from "@/lib/api";
 
-/** The office's mark at the top of the rail, and the way to your other offices. */
+const DAY = 24 * 60 * 60 * 1000;
+
+/**
+ * The office's mark at the top of the rail, and the way to your other offices.
+ * Its header says the plan's trial while one runs (docs/22), and admins find
+ * the plans here too.
+ */
 export function OfficeSwitcher({ office }: { office: Office }) {
   const t = useTranslations("shell");
   const router = useRouter();
@@ -30,6 +40,11 @@ export function OfficeSwitcher({ office }: { office: Office }) {
   };
 
   const others = offices.filter((one) => one.id !== office.id);
+  const plans = usePlans();
+  const { open } = useUpgrade();
+  const trialDays = office.trialEndsAt ? Math.max(1, Math.ceil((office.trialEndsAt - Date.now()) / DAY)) : null;
+  const top = plans?.plans[plans.plans.length - 1]?.id === office.plan;
+  const offerPlans = !!open && office.role === "admin" && (!!trialDays || !top);
 
   return (
     <Menu
@@ -59,9 +74,19 @@ export function OfficeSwitcher({ office }: { office: Office }) {
             <p className="truncate text-[12px] text-muted-foreground">
               {t("membersOf", { used: office.members, seats: office.seats })}
             </p>
+            {trialDays && (
+              <p className="truncate text-[12px] font-medium text-brand">
+                {t("trialLeft", { plan: PLAN_NAMES[office.plan as PlanId] ?? office.plan, count: trialDays })}
+              </p>
+            )}
           </div>
         </div>
       </MenuHeader>
+      {offerPlans && (
+        <MenuItem icon={<Zap />} onSelect={() => open?.(trialDays ? "trial" : "plans")}>
+          {trialDays ? t("choosePlan") : t("upgrade")}
+        </MenuItem>
+      )}
 
       {others.length > 0 && (
         <>

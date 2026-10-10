@@ -88,7 +88,10 @@
     "joined": "Dabei seit {date}",
     "yourProfile": "Dein Profil",
     "leaveOffice": "Büro verlassen",
-    "leave": "Verlassen"
+    "leave": "Verlassen",
+    "trialLeft": "{plan}-Test · noch {count, plural, one {# Tag} other {# Tage}}",
+    "choosePlan": "Tarif wählen",
+    "upgrade": "Upgraden"
   },
   "home": {
     "nav": {

@@ -24,6 +24,7 @@ import { usePlace } from "./place";
 import { MemberCard } from "./MemberCard";
 import { Link } from "@/lib/i18n/navigation";
 import { withPostHog } from "@/lib/analytics";
+import { useUpgrade } from "@/components/billing/Upgrade";
 import { usePlans } from "@/lib/billing";
 
 /** People: an office's members and who can come in, or who is in the lobby now. */
@@ -67,10 +68,13 @@ function OfficePeople() {
     setTimeout(() => setCopied(null), 2000);
   };
 
+  const plans = usePlans();
   const admin = office.role === "admin";
   const members = data.members;
   const used = data.members.length;
-  const full = used >= office.seats;
+  // A free office with its trial still to give isn't full: the next person starts it (docs/22).
+  const trialWaiting = !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
+  const full = used >= office.seats && !trialWaiting;
 
   // The same link every time: on a phone the share sheet, on a desktop the clipboard.
   const invite = () => {
@@ -94,7 +98,7 @@ function OfficePeople() {
         </header>
 
         <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,20rem)_1fr]">
-          <Seats used={used} seats={office.seats} full={full} />
+          <Seats used={used} seats={office.seats} full={full} trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0} />
           <OnTheFloor
             people={members.filter((one) => floor.has(one.id))}
             alone={members.filter((one) => floor.has(one.id) && one.id !== user?.id).length === 0}
@@ -176,7 +180,7 @@ function OfficePeople() {
                 className="flex h-full min-h-[132px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border-strong text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 <UserPlus className="size-5" />
-                {t("seatsLeft", { count: office.seats - used })}
+                {used >= office.seats ? t("invite") : t("seatsLeft", { count: office.seats - used })}
               </button>
             </li>
           )}
@@ -186,9 +190,10 @@ function OfficePeople() {
   );
 }
 
-/** Seats as a meter: how many are taken, and whether there is room. */
-function Seats({ used, seats, full }: { used: number; seats: number; full: boolean }) {
+/** Seats as a meter: how many are taken, and whether there is room (or a trial waiting to make some). */
+function Seats({ used, seats, full, trial }: { used: number; seats: number; full: boolean; trial: number }) {
   const t = useTranslations("office.people");
+  const tb = useTranslations("billing");
   return (
     <div className="rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
@@ -209,7 +214,13 @@ function Seats({ used, seats, full }: { used: number; seats: number; full: boole
           <div className="h-full rounded-full bg-foreground" style={{ width: `${Math.min(100, (used / seats) * 100)}%` }} />
         </div>
       )}
-      <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{t("seatsNote")}</p>
+      {trial ? (
+        <p className="mt-3 rounded-xl bg-brand/10 px-3 py-2 text-[12px] leading-relaxed text-foreground">
+          {tb("trialWaiting", { free: seats, plan: "Plus", days: trial })}
+        </p>
+      ) : (
+        <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{t("seatsNote")}</p>
+      )}
       <PlansSoon className="mt-2" />
     </div>
   );
@@ -454,20 +465,21 @@ function InviteLink({
 
 function OfficeFull() {
   const t = useTranslations("office.people");
-  const settingsPath = usePlace().paths.settings;
   const tb = useTranslations("billing");
-  const plans = usePlans();
+  const { open } = useUpgrade();
   return (
     <li>
       <div className="flex h-full min-h-[132px] flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border-strong px-4 text-center">
         <p className="text-[13.5px] font-medium text-foreground">{t("allSeatsTaken")}</p>
-        {plans?.billing ? (
-          <Link
-            href={`${settingsPath}#plan`}
-            className="mt-1.5 inline-flex h-9 items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+        {open ? (
+          // The plans, right here: the one with room for everyone already marked.
+          <button
+            type="button"
+            onClick={() => open("full")}
+            className="mt-1.5 inline-flex h-9 cursor-pointer items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
           >
             {tb("moreSeats")}
-          </Link>
+          </button>
         ) : (
           <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("allSeatsTakenBody")}</p>
         )}

@@ -386,6 +386,69 @@ describe("billing", () => {
     expect(other.body.error.code).toBe("not_payer");
   });
 
+it("lets a full free office's next person in, on a 14-day Plus trial for the whole team", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
+
+    // A pair or a trio trying it out stays on free: the trial isn't spent on them.
+    await call(await makeUser("Bo"), "POST", `/v1/invites/${link.code}/accept`);
+    await call(await makeUser("Cy"), "POST", `/v1/invites/${link.code}/accept`);
+    expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
+
+    // Full, but the trial is waiting: the link doesn't say full, and the fourth gets in.
+    const preview = await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${link.code}`);
+    expect(preview.body.invite.full).toBe(false);
+    expect((await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`)).status).toBe(200);
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    const billing = await call<{ trial: { plan: string; endsAt: number } | null }>(ada, "GET", `/v1/offices/${officeId}/billing`);
+    expect(billing.body.trial?.plan).toBe("plus");
+    expect(billing.body.trial!.endsAt - Date.now()).toBeGreaterThan(13 * 86_400_000);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 30]);
+
+    // Over: back to free the moment the office is read, everyone still in it.
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?").bind(Date.now() - 1000, officeId).run();
+    const after = await call<{ plan: string; seats: number; members: number; trial: unknown }>(ada, "GET", `/v1/offices/${officeId}/billing`);
+    expect(after.body).toMatchObject({ plan: "free", seats: 3, members: 4, trial: null });
+
+    // Never twice: now the office really is full.
+    const again = await call<{ error: { code: string } }>(await makeUser("Ed"), "POST", `/v1/invites/${link.code}/accept`);
+    expect(again.status).toBe(409);
+    expect(again.body.error.code).toBe("office_full");
+  });
+
+  it("lets a plan bought during the trial replace it", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    await addMembers(officeId, 2);
+    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
+    await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`);
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    await deliver("subscription.active", subscription(officeId, { product: { id: "prod_pro" } }));
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    const trial = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number }>();
+    expect(trial?.trial_ends_at).toBe(0);
+  });
+
+  it("tells the office whether its trial is still there to start", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    const open = await call<{ office: { trialOpen: boolean } }>(ada, "GET", `/v1/offices/${officeId}`);
+    expect(open.body.office.trialOpen).toBe(true);
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ?").bind(officeId).run();
+    const used = await call<{ office: { trialOpen: boolean } }>(ada, "GET", `/v1/offices/${officeId}`);
+    expect(used.body.office.trialOpen).toBe(false);
+  });
+
+  it("ends every trial that's over in the daily run", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    await env.DB.prepare("UPDATE offices SET plan = 'plus', seats = 10, trial_ends_at = ? WHERE id = ?").bind(Date.now() - 1000, officeId).run();
+    const { endTrials } = await import("../src/billing");
+    expect(await endTrials(env)).toBeGreaterThanOrEqual(1);
+    expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
+  });
+
   it("won't close an office whose plan still renews, and stops a cancelled one for good", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);

@@ -6,7 +6,7 @@ import {
   type Office,
   type OfficeRole,
 } from "./access";
-import { endBillingForClosing } from "./billing";
+import { endBillingForClosing, endTrials, startTrialIfFull, trialWaiting } from "./billing";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
@@ -157,6 +157,8 @@ export function officeRoutes(router: Router): void {
     .add("GET", "/v1/invites/:token", async ({ env, params }) => {
       const invite = await findInvite(env, params.token);
       const used = await seatsUsed(env, invite.office_id);
+      // A full free office that still has its trial lets the next person in, and starts it.
+      const full = used >= invite.seats && !(await trialWaiting(env, invite.office_id));
       return json({
         invite: {
           // The office's id seeds its mark, so the door shows the mark the office has inside.
@@ -164,14 +166,16 @@ export function officeRoutes(router: Router): void {
           officeName: invite.office_name,
           members: used,
           role: invite.role,
-          full: used >= invite.seats,
+          full,
         },
       });
     })
 
     .add("POST", "/v1/invites/:token/accept", async ({ request, env, ctx, params }) => {
       const user = await requireAccount(env, request, ctx);
-      const invite = await findInvite(env, params.token);
+      let invite = await findInvite(env, params.token);
+      // The seats a just-ended trial leaves, not the trial's.
+      if (await endTrials(env, invite.office_id)) invite = await findInvite(env, params.token);
       if (invite.email && invite.email !== user.email?.toLowerCase()) {
         throw new HttpError(403, "wrong_account", "This invitation is for a different email");
       }
@@ -181,7 +185,13 @@ export function officeRoutes(router: Router): void {
         .first();
       if (!existing) {
         if ((await seatsUsed(env, invite.office_id)) >= invite.seats) {
-          throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
+          // The team is moving in: a free office's trial makes room instead of turning them away
+          // (or someone joining at the same moment just started it).
+          await startTrialIfFull(env, invite.office_id);
+          invite = await findInvite(env, params.token);
+          if ((await seatsUsed(env, invite.office_id)) >= invite.seats) {
+            throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
+          }
         }
         const now = Date.now();
         if (!invite.id) {
@@ -299,5 +309,7 @@ export function officeJson(office: Office, members: number) {
     members,
     role: office.role,
     owner: office.ownerId,
+    trialEndsAt: office.trialEndsAt,
+    trialOpen: office.trialOpen,
   };
 }

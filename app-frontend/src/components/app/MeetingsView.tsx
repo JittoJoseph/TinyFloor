@@ -1,31 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, Video } from "@/components/ui/icons";
-import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
+import { AudioLines, Footprints, Plus, Video } from "@/components/ui/icons";
+import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "@/components/ui/Face";
+import { FloorScene, type Sitter } from "@/components/floor/FloorScene";
 import { cn } from "@/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
-import { MeetingHoursLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
+import { MeetingUsageCard, VideoPausedNote } from "@/components/meetings/MeetingHours";
 import { usePlace } from "./place";
 
-/** Faces the main meeting shows before the rest become "+n". */
-const MOST_FACES = 8;
-/** Empty places drawn around the table while nobody is in. */
-const EMPTY_PLACES = 5;
+/** The meeting room's six chairs on the map, as FloorScene names them: the far side first, then the near. */
+const CHAIRS: Array<[number, number]> = [
+  [6, 8],
+  [4, 8],
+  [8, 8],
+  [6, 11],
+  [4, 11],
+  [8, 11],
+];
+/** The meeting room on the map, in tiles. */
+const ROOM: [number, number, number, number] = [1, 5, 12, 8];
 
 /**
- * Meetings, on the rail (docs/12-meetings.md), in an office or the lobby. The main meeting is
- * always here to drop into, with anyone else's beside it; joining one walks
- * your character into the meeting room, and the meeting itself happens on
- * this page. Inside one, the page is the meeting's stage.
+ * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
+ * lobby. The main meeting is always here to drop into: the real meeting room,
+ * with whoever is in it at the table. Anyone else's meetings sit under it, and
+ * beside them the month's meeting hours and how meetings work. Joining one
+ * walks your character into the meeting room, and the meeting itself happens
+ * on this page. Inside one, the page is the meeting's stage.
  */
 export function MeetingsView() {
   const place = usePlace();
@@ -53,29 +63,42 @@ function MeetingsLobby({ office }: { office: string }) {
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
-      <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
-        <header className="flex items-center justify-between gap-4">
-          <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-          <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 gap-2 px-4 text-[13px]">
+      <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
+        <header className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
+            <p className="mt-1 text-[13.5px] text-muted-foreground">{t("subtitle")}</p>
+          </div>
+          <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 shrink-0 gap-2 px-4 text-[13px]">
             <Plus className="size-4" />
-            {t("new")}
+            <span className="max-sm:sr-only">{t("new")}</span>
           </Button>
         </header>
 
         <VideoPausedNote className="mt-6 w-fit max-w-full" />
-        <MainMeeting meeting={main} office={office} known={known} />
 
-        {others.length > 0 && (
-          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-            {others.map((one) => (
-              <li key={one.id}>
-                <OtherMeeting meeting={one} office={office} />
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_288px]">
+          <div className="min-w-0 space-y-3">
+            <MainMeeting meeting={main} office={office} known={known} />
+            {others.length > 0 && (
+              <section>
+                <h2 className="mb-2 mt-6 text-[13px] font-semibold text-foreground">{t("alsoOn")}</h2>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {others.map((one) => (
+                    <li key={one.id}>
+                      <OtherMeeting meeting={one} office={office} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
 
-        <MeetingHoursLine className="mt-8" />
+          <aside className="space-y-3">
+            <MeetingUsageCard />
+            <HowMeetingsWork />
+          </aside>
+        </div>
       </div>
 
       <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />
@@ -94,72 +117,49 @@ function Live({ meeting, className }: { meeting: MeetingInfo; className?: string
   );
 }
 
-/** Someone in the meeting: their face, ringed while they talk, and their name. */
-function Attendee({ person }: { person: MeetingPerson }) {
-  return (
-    <li className="flex w-16 flex-col items-center gap-2">
-      <span
-        className={cn(
-          "flex rounded-full ring-2 ring-offset-[3px] ring-offset-background transition-shadow duration-200",
-          person.speaking ? "ring-brand" : "ring-transparent",
-        )}
-      >
-        <Face seed={person.id} size={52} />
-      </span>
-      <span className="w-full truncate text-center text-[12px] font-medium text-muted-foreground">{person.name}</span>
-    </li>
-  );
-}
-
 /**
- * The office's own meeting, always there. Its people sit in the middle of the
- * card; while nobody is in, their places wait, empty, around the table.
+ * The office's own meeting, always there: the meeting room as it is on the
+ * floor, with the first six people in it at the table (the rest as faces),
+ * and the way in under it. While nobody is in, the chairs wait.
  */
 function MainMeeting({ meeting, office, known }: { meeting: MeetingInfo; office: string; known: boolean }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   const live = meeting.members.length > 0;
-  const shown = meeting.members.slice(0, MOST_FACES);
-  const extra = meeting.members.length - shown.length;
+  const seated: Sitter[] = meeting.members.slice(0, CHAIRS.length).map((person, index) => ({
+    character: person.character,
+    name: person.name.split(" ")[0],
+    chair: CHAIRS[index],
+    status: "in_call",
+  }));
+  const extra = meeting.members.slice(CHAIRS.length);
 
   return (
-    <section className="mt-6 flex flex-col items-center rounded-3xl border border-border bg-background px-5 py-10 text-center sm:py-12">
-      {live ? (
-        <ul className="flex flex-wrap items-start justify-center gap-x-3 gap-y-4">
-          {shown.map((person) => (
-            <Attendee key={person.id} person={person} />
-          ))}
-          {extra > 0 && (
-            <li className="flex size-[58px] items-center justify-center rounded-full bg-muted text-[13px] font-semibold tabular-nums text-muted-foreground">
-              {t("plus", { count: extra })}
-            </li>
-          )}
-        </ul>
-      ) : (
-        <ul aria-hidden className="flex items-center gap-3">
-          {Array.from({ length: EMPTY_PLACES }, (_, index) => (
-            <li
-              key={index}
-              className={cn(
-                "flex size-[52px] items-center justify-center rounded-full",
-                known ? "border-2 border-dashed border-border-strong" : "animate-pulse bg-muted",
-                // The far places fade, so the row reads as a table, not a form.
-                index === 0 || index === EMPTY_PLACES - 1 ? "opacity-40" : index !== 2 && "opacity-70",
-              )}
-            >
-              {known && index === 2 && <Video className="size-5 text-faint" />}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <h2 className="mt-7 text-[20px] font-semibold tracking-tight text-foreground">{nameOf(meeting, office)}</h2>
-      {live && <Live meeting={meeting} className="mt-1" />}
-
-      <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="mt-5 h-11 gap-2 px-6 text-[14px]">
-        <Video className="size-4" />
-        {live ? t("join") : t("start")}
-      </Button>
+    <section className="overflow-hidden rounded-3xl border border-border bg-background">
+      <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted sm:aspect-[2/1]">
+        <FloorScene view={ROOM} sitting={seated} className={cn("absolute inset-0", !live && "opacity-90")} />
+        {/* A soft floor under the name, so the room reads as a place and the words stay legible. */}
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/90 to-transparent" />
+        {live && (
+          <span className="absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-background/90 px-2.5 py-1 text-[12px] font-medium text-foreground shadow-sm backdrop-blur">
+            <span className="size-1.5 rounded-full bg-ok" aria-hidden />
+            {t("people", { count: meeting.members.length })}
+          </span>
+        )}
+      </div>
+      <div className="flex flex-wrap items-center gap-4 px-5 pb-5 pt-1 sm:px-6">
+        <div className="min-w-0 flex-1">
+          <h2 className="truncate text-[19px] font-semibold tracking-tight text-foreground">{nameOf(meeting, office)}</h2>
+          <div className="mt-1 flex items-center gap-2.5">
+            {live ? <Live meeting={meeting} /> : <span className="text-[12.5px] text-muted-foreground">{t("emptyRoom")}</span>}
+            {extra.length > 0 && <FaceStack seeds={extra.map((person) => person.id)} size={20} max={4} />}
+          </div>
+        </div>
+        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-11 shrink-0 gap-2 px-6 text-[14px]">
+          <Video className="size-4" />
+          {live ? t("join") : t("start")}
+        </Button>
+      </div>
     </section>
   );
 }
@@ -180,5 +180,26 @@ function OtherMeeting({ meeting, office }: { meeting: MeetingInfo; office: strin
         {t("join")}
       </Button>
     </div>
+  );
+}
+
+/** The three things worth knowing about meetings here, once, beside them. */
+function HowMeetingsWork() {
+  const t = useTranslations("meetings.how");
+  const row = (icon: ReactNode, text: string) => (
+    <li className="flex items-start gap-3">
+      <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-3.5">{icon}</span>
+      <span className="text-[12.5px] leading-relaxed text-muted-foreground">{text}</span>
+    </li>
+  );
+  return (
+    <section className="rounded-2xl border border-border bg-background p-5">
+      <h2 className="text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
+      <ul className="mt-3 space-y-3">
+        {row(<Footprints />, t("walk"))}
+        {row(<Video />, t("speakers"))}
+        {row(<AudioLines />, t("voice"))}
+      </ul>
+    </section>
   );
 }

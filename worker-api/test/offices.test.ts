@@ -109,9 +109,13 @@ describe("offices", () => {
 });
 
 describe("seats", () => {
+  // These offices have had their team trial (test/billing.test.ts), so they hold the free plan's 3.
+  const trialUsed = (id: string) => env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ?").bind(id).run();
+
   it("counts members, and refuses the one that would overfill the office", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive);
+    await trialUsed(id);
     const { code } = await inviteCode(olive, id);
 
     expect((await join(await makeUser("A"), code)).status).toBe(200);
@@ -127,6 +131,7 @@ describe("seats", () => {
     const bo = await makeUser("Bo");
     const cy = await makeUser("Cy");
     const id = await officeOf(olive);
+    await trialUsed(id);
     const { code } = await inviteCode(olive, id);
     await join(ada, code);
     await join(bo, code);
@@ -143,6 +148,7 @@ describe("seats", () => {
   it("tells the link's preview when the office is full", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive, "Snug");
+    await trialUsed(id);
     const { code } = await inviteCode(olive, id);
     expect(
       (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${code}`)).body.invite,

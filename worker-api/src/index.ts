@@ -1,6 +1,6 @@
 import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
-import { billingRoutes } from "./billing";
+import { billingRoutes, endTrials } from "./billing";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { floorRoutes } from "./floor";
@@ -50,5 +50,6 @@ export default {
   /** The daily clean-up, at 03:00 UTC. */
   async scheduled(_controller, env, ctx) {
     ctx.waitUntil(runRetention(env).then((report) => console.log("retention", JSON.stringify(report))));
+    ctx.waitUntil(endTrials(env).then((ended) => console.log("trials ended", ended)));
   },
 } satisfies ExportedHandler<Env>;

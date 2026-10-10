@@ -58,6 +58,10 @@ export interface OfficeSummary {
   here?: number;
   /** Who is on the floor right now, as they look (only from /v1/me). */
   inNow?: PresentPerson[];
+  /** When the team trial ends, while one runs (docs/22): the plan is the trial's until then. */
+  trialEndsAt?: number | null;
+  /** Free, never trialled and never paid: past the free seats, the next person starts the trial (where plans are sold). */
+  trialOpen?: boolean;
 }
 
 export interface Office extends OfficeSummary {
@@ -241,6 +245,8 @@ export interface Plan {
 export interface Plans {
   plans: Plan[];
   billing: { mode: "test" | "live" } | null;
+  /** How long the team trial runs where plans are on sale; 0 where there's none (docs/22). */
+  trialDays: number;
 }
 
 /** An office's plan, as its admins see it in settings. */
@@ -251,6 +257,8 @@ export interface OfficeBilling {
   meetingHours: number;
   /** Meeting seconds used this month (UTC), and when the count starts again. */
   usage: { seconds: number; resetsAt: number };
+  /** The team trial, while it runs and nothing is paid (docs/22). */
+  trial: { plan: PlanId; endsAt: number } | null;
   subscription: {
     plan: PlanId;
     /** active, trialing, past_due (a card being retried) or scheduled_cancel. */

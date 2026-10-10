@@ -88,7 +88,10 @@
     "joined": "Med sedan {date}",
     "yourProfile": "Din profil",
     "leaveOffice": "Lämna kontoret",
-    "leave": "Lämna"
+    "leave": "Lämna",
+    "trialLeft": "{plan} på prov · {count, plural, one {# dag} other {# dagar}} kvar",
+    "choosePlan": "Välj en plan",
+    "upgrade": "Uppgradera"
   },
   "home": {
     "nav": {

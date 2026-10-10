@@ -1,4 +1,5 @@
 import type { RealtimeAdminApi } from "../../shared-protocol/src";
+import { endTrials } from "./billing";
 import { HttpError } from "./http";
 
 export type OfficeRole = "admin" | "member";
@@ -12,6 +13,10 @@ export interface Office {
   /** The caller's role here. */
   role: OfficeRole;
   ownerId: string;
+  /** When the team trial on its plan ends, while one runs (docs/22). */
+  trialEndsAt: number | null;
+  /** Free, never trialled and never paid: the trial is still there to start (where plans are sold). */
+  trialOpen: boolean;
 }
 
 /**
@@ -26,19 +31,33 @@ export async function requireOffice(
   roles?: OfficeRole[],
 ): Promise<Office> {
   const row = await env.DB.prepare(
-    `SELECT o.id, o.name, o.plan, o.seats, o.owner_id, m.role
+    `SELECT o.id, o.name, o.plan, o.seats, o.owner_id, o.trial_ends_at, m.role,
+            (o.plan = 'free' AND o.trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions s WHERE s.office_id = o.id)) AS trial_open
      FROM memberships m JOIN offices o ON o.id = m.office_id
      WHERE m.office_id = ? AND m.user_id = ?`,
   )
     .bind(officeId, userId)
-    .first<{ id: string; name: string; plan: string; seats: number; owner_id: string; role: OfficeRole }>();
+    .first<{ id: string; name: string; plan: string; seats: number; owner_id: string; trial_ends_at: number | null; role: OfficeRole; trial_open: number }>();
   if (!row) throw new HttpError(404, "not_found", "No such office");
   if (roles && !roles.includes(row.role)) throw new HttpError(403, "not_allowed", "Only an admin can do that");
-  return { id: row.id, name: row.name, plan: row.plan, seats: row.seats, role: row.role, ownerId: row.owner_id };
+  // A trial that has just ended goes back to free before anything reads the plan.
+  if (row.trial_ends_at && row.trial_ends_at > 0 && row.trial_ends_at <= Date.now() && (await endTrials(env, row.id))) {
+    return requireOffice(env, officeId, userId, roles);
+  }
+  return {
+    id: row.id,
+    name: row.name,
+    plan: row.plan,
+    seats: row.seats,
+    role: row.role,
+    ownerId: row.owner_id,
+    trialEndsAt: row.trial_ends_at && row.trial_ends_at > Date.now() ? row.trial_ends_at : null,
+    trialOpen: !!row.trial_open,
+  };
 }
 
 /** The office behind a floor, without requiring membership. */
-export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role"> | null> {
+export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialOpen"> | null> {
   const row = await env.DB.prepare("SELECT id, name, plan, seats, owner_id FROM offices WHERE id = ?")
     .bind(officeId)
     .first<{ id: string; name: string; plan: string; seats: number; owner_id: string }>();

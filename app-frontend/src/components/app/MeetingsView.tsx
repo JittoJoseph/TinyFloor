@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
-import { MeetingUsageCard, VideoPausedNote } from "@/components/meetings/MeetingHours";
+import { MeetingUsageLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
 import { usePlace } from "./place";
 
 /** People named in a meeting's row before the rest become a count. */
@@ -22,7 +22,7 @@ const NAMED = 6;
 /**
  * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
  * lobby: the office's own meeting, always there to drop into, then any others
- * going on now, each with who is in it; beside them, the meeting hours. Inside
+ * going on now, each with who is in it; under them, the meeting hours. Inside
  * one, the page is the meeting's stage.
  */
 export function MeetingsView() {
@@ -51,7 +51,7 @@ function MeetingsLobby({ office }: { office: string }) {
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
-      <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
+      <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
         <header className="flex items-center justify-between gap-4">
           <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
           <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 shrink-0 gap-2 px-4 text-[13px]">
@@ -62,27 +62,23 @@ function MeetingsLobby({ office }: { office: string }) {
 
         <VideoPausedNote className="mt-6 w-fit max-w-full" />
 
-        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_288px]">
-          <div className="min-w-0">
-            <MeetingRow meeting={main} office={office} known={known} main />
-            {others.length > 0 && (
-              <section className="mt-8">
-                <h2 className="mb-3 text-[13px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
-                <ul className="space-y-3">
-                  {others.map((one) => (
-                    <li key={one.id}>
-                      <MeetingRow meeting={one} office={office} known />
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-          </div>
-
-          <aside>
-            <MeetingUsageCard />
-          </aside>
+        <div className="mt-6">
+          <MeetingRow meeting={main} office={office} known={known} main />
+          {others.length > 0 && (
+            <section className="mt-8">
+              <h2 className="mb-3 text-[13px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
+              <ul className="space-y-3">
+                {others.map((one) => (
+                  <li key={one.id}>
+                    <MeetingRow meeting={one} office={office} known />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
+
+        <MeetingUsageLine className="mt-8 border-t border-border pt-4" />
       </div>
 
       <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />
@@ -133,8 +129,11 @@ function MeetingRow({ meeting, office, known, main = false }: { meeting: Meeting
                 <span aria-hidden>·</span>
                 {t("people", { count: meeting.members.length })}
               </>
-            ) : (
+            ) : known ? (
               t("emptyRoom")
+            ) : (
+              // Until the floor says who's in, nothing is claimed either way.
+              <span aria-hidden className="my-1 h-2.5 w-28 animate-pulse rounded-full bg-muted" />
             )}
           </p>
         </div>

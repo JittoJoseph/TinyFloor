@@ -293,6 +293,7 @@ class GameScene extends Phaser.Scene {
       this.player.y,
       this.seatManager?.seatedDirection(),
     );
+    this.playerManager.declutterTags(time);
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update();

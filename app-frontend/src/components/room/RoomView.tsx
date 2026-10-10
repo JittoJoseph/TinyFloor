@@ -167,7 +167,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
               {reconnecting ? t("reconnecting") : title}
             </span>
             <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-muted py-0.5 ps-0.5 pe-2 [--face-ring:var(--ui-muted)]">
-              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} />
+              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} more={false} />
               <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{count}</span>
             </span>
           </button>

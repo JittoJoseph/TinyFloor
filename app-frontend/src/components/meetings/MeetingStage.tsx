@@ -83,17 +83,36 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
   const peers = new Map(meetingPeers.map((peer) => [peer.id, peer]));
   const me = meeting.members.find((member) => member.id === user?.id);
   const others = meeting.members.filter((member) => member.id !== user?.id);
+  // Who gets a tile when not everyone fits: the people on camera, then whoever is talking.
   const onCamera = stage.cameras.flatMap((id) => others.filter((member) => member.id === id));
-  // The rest by who spoke last, so the people talking stay near the front.
-  const rest = others
-    .filter((member) => !stage.cameras.includes(member.id))
-    .sort((a, b) => Number(b.speaking) - Number(a.speaking) || a.since - b.since);
+  const ranked = [
+    ...onCamera,
+    ...others.filter((member) => !stage.cameras.includes(member.id)).sort((a, b) => Number(b.speaking) - Number(a.speaking) || a.since - b.since),
+  ].map((member) => member.id);
 
-  // Everyone, the people on camera first and you last, the way Meet keeps you in the grid.
+  // Everyone in the order they came, you last, the way Meet keeps you in the grid. Tiles
+  // hold their places while people talk, so nothing moves under the pointer.
   const people: Item[] = [
-    ...[...onCamera, ...rest].map((member): Item => ({ key: member.id, kind: "person", member, me: false })),
+    ...[...others].sort((a, b) => a.since - b.since).map((member): Item => ({ key: member.id, kind: "person", member, me: false })),
     ...(me ? [{ key: me.id, kind: "person", member: me, me: true } as Item] : []),
   ];
+  /** The first `room` of these that matter most right now, kept in their order; you always among them. */
+  const fit = (items: Item[], room: number): { shown: Item[]; hidden: Item[] } => {
+    if (items.length <= room) return { shown: items, hidden: [] };
+    const keep = new Set<string>(items.filter((item) => item.kind === "screen" || (item.kind === "person" && item.me)).map((item) => item.key));
+    for (const id of ranked) if (keep.size < room - 1) keep.add(id);
+    return { shown: items.filter((item) => keep.has(item.key)), hidden: items.filter((item) => !keep.has(item.key)) };
+  };
+  const more = (hidden: Item[], { className, width }: { className?: string; width?: number } = {}) => (
+    <div
+      key="more"
+      className={cn("flex aspect-video shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-muted text-muted-foreground [--face-ring:var(--ui-muted)]", className)}
+      style={width ? { width } : undefined}
+    >
+      <FaceStack seeds={hidden.map((item) => (item.kind === "person" ? item.member.id : item.key))} size={28} max={3} more={false} />
+      <span className="text-[12.5px] font-medium">{t("more", { count: hidden.length })}</span>
+    </div>
+  );
   const sharer = stage.screen ? peers.get(stage.screen) : undefined;
   const screen: Item | null = sharer
     ? { key: `${sharer.id}-screen`, kind: "screen", id: sharer.id, name: t("screenOf", { name: others.find((one) => one.id === sharer.id)?.name ?? "" }) }
@@ -176,19 +195,23 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
       );
     }
 
-    // Something pinned or shared: it takes the stage, and everyone else waits beside it.
+    // Something pinned or shared: it takes the stage, and everyone else waits beside it,
+    // as many as the column holds and a count of the rest.
     if (focus) {
+      const column = Math.round(Math.min(248, Math.max(176, area.width * 0.2)));
+      const strip = 96;
+      const room = narrow
+        ? Math.max(1, Math.floor((area.width + GAP) / (strip * ASPECT + GAP)))
+        : Math.max(1, Math.floor((area.height + GAP) / (column / ASPECT + GAP)));
+      const { shown, hidden } = fit(beside, room);
+      const sized = narrow ? "h-full aspect-video shrink-0" : "w-full aspect-video shrink-0";
       return (
         <div className={cn("flex size-full gap-3", narrow ? "flex-col" : "flex-row")}>
           {tile(focus, { className: "min-h-0 min-w-0 flex-1" })}
           {beside.length > 0 && (
-            <div
-              className={cn(
-                "flex shrink-0 gap-3 [scrollbar-width:thin]",
-                narrow ? "h-24 flex-row overflow-x-auto" : "w-[clamp(176px,18vw,248px)] flex-col overflow-y-auto",
-              )}
-            >
-              {beside.map((item) => tile(item, { compact: true, className: narrow ? "h-full aspect-video shrink-0" : "w-full aspect-video shrink-0" }))}
+            <div className={cn("flex shrink-0 justify-center gap-3", narrow ? "flex-row" : "flex-col")} style={narrow ? { height: strip } : { width: column }}>
+              {shown.map((item) => tile(item, { compact: true, className: sized }))}
+              {hidden.length > 0 && more(hidden, { className: sized })}
             </div>
           )}
         </div>
@@ -196,22 +219,12 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
     }
 
     // Everyone in a grid, as big as the stage allows.
-    const most = narrow ? MOST_TILES.narrow : MOST_TILES.wide;
-    const shown = people.length > most ? people.slice(0, most - 1) : people;
-    const hidden = people.slice(shown.length);
+    const { shown, hidden } = fit(people, narrow ? MOST_TILES.narrow : MOST_TILES.wide);
     const { tile: width } = fitGrid(shown.length + (hidden.length ? 1 : 0), area.width, area.height);
     return (
       <div className="flex size-full flex-wrap content-center items-center justify-center" style={{ gap: GAP }}>
         {shown.map((item) => tile(item, { className: "aspect-video shrink-0", width }))}
-        {hidden.length > 0 && (
-          <div
-            className="flex aspect-video shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-muted text-muted-foreground [--face-ring:var(--ui-muted)]"
-            style={{ width }}
-          >
-            <FaceStack seeds={hidden.map((item) => (item.kind === "person" ? item.member.id : item.key))} size={32} max={4} />
-            <span className="text-[13px] font-medium">{t("more", { count: hidden.length })}</span>
-          </div>
-        )}
+        {hidden.length > 0 && more(hidden, { width })}
       </div>
     );
   };

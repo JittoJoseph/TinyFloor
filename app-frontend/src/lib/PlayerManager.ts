@@ -37,6 +37,13 @@ const MAX_CATCHUP = 1.8;
 const TAG_OFFSET_Y = -55;
 const BEHIND_TAG_OFFSET_Y = 40;
 const TAG_DEPTH = 100000;
+type Box = { left: number; right: number; top: number; bottom: number };
+/** A tag folded to its dot, before scaling. */
+const FOLDED_TAG = 16;
+/** How often crowded tags are sorted out, in milliseconds. */
+const DECLUTTER_EVERY = 150;
+/** Room kept between two tags before the farther one folds, in screen pixels. */
+const TAG_GAP = 4;
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
 
@@ -60,6 +67,7 @@ export class PlayerManager {
   private scratch: Vec = { x: 0, y: 0 };
   /** Name tags grow a little when the camera pulls back, so they stay readable. */
   private tagScale = 1;
+  private declutterAt = 0;
 
   constructor(
     scene: Phaser.Scene,
@@ -177,6 +185,45 @@ export class PlayerManager {
         !people || (id !== this.playerId && !people.has(id)),
       ),
     );
+  }
+
+  /**
+   * Where tags would cover each other, the nearer one keeps its name and the
+   * farther one folds to its dot, the way a map drops labels as it fills up.
+   * Yours always shows; the closer someone is to you, the more theirs does.
+   */
+  declutterTags(time: number) {
+    if (time < this.declutterAt || !this.localPlayer) return;
+    this.declutterAt = time + DECLUTTER_EVERY;
+    const me = this.localPlayer;
+    const tags: Array<{ tag: SceneLabel; x: number; y: number; distance: number }> = [];
+    this.nameTags.forEach((tag, id) => {
+      if (!tag.container.visible) return;
+      const container = this.players.get(id);
+      const x = container ? container.x + tag.container.x : tag.container.x;
+      const y = container ? container.y + tag.container.y : tag.container.y;
+      tags.push({ tag, x, y, distance: id === this.playerId ? -1 : Math.hypot(x - me.x, y - me.y) });
+    });
+    tags.sort((a, b) => a.distance - b.distance);
+
+    const zoom = this.scene.cameras.main.zoom;
+    const height = 16 * this.tagScale;
+    const gap = TAG_GAP / zoom;
+    const placed: Box[] = [];
+    for (const { tag, x, y } of tags) {
+      const boxOf = (width: number) => {
+        const half = (width * this.tagScale) / 2;
+        return { left: x - half - gap, right: x + half + gap, top: y - height / 2 - gap, bottom: y + height / 2 + gap };
+      };
+      const clashes = (box: Box) => placed.some((other) => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
+      const full = boxOf(tag.fullWidth);
+      const folded = boxOf(FOLDED_TAG);
+      // Its name if there's room, its dot if only that fits, and nothing over someone else's name.
+      const fits = !clashes(full) ? full : !clashes(folded) ? folded : null;
+      tag.setFolded(fits !== full);
+      tag.container.setAlpha(fits ? 1 : 0);
+      if (fits) placed.push(fits);
+    }
   }
 
   updatePlayerStatus(id: string, status: PlayerStatus) {

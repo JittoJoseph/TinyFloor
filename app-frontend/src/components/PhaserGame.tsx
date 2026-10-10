@@ -78,6 +78,10 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // element. Without this, every game builds a WebAudio context it never
         // uses, and complains about it once the game is torn down.
         audio: { noAudio: true },
+        // Only presses on the floor itself count. Listening on the window, Phaser
+        // also takes clicks on whatever covers it (a meeting, a menu, a toast) as
+        // clicks on the floor underneath: a pin in a meeting walked you to the whiteboard.
+        input: { windowEvents: false },
         physics: {
           default: "arcade",
           arcade: {

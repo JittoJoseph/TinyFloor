@@ -1,9 +1,9 @@
 "use client";
 
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
+import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Search, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -21,11 +21,14 @@ import { cn } from "@/lib/utils";
 import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
 import { usePlace } from "./place";
-import { MemberCard } from "./MemberCard";
+import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
 import { withPostHog } from "@/lib/analytics";
 import { useUpgrade } from "@/components/billing/Upgrade";
 import { usePlans } from "@/lib/billing";
+
+/** Past this many people, the list gets a search box. */
+const SEARCH_FROM = 8;
 
 /** People: an office's members and who can come in, or who is in the lobby now. */
 export function PeopleView() {
@@ -33,7 +36,11 @@ export function PeopleView() {
   return place.kind === "office" ? <OfficePeople /> : <LobbyPeople />;
 }
 
-/** Who is in the office, and the one link that brings more people in. */
+/**
+ * Who is in the office, as one list (docs/22): you first, then whoever is on the
+ * floor, then everyone else; searchable once it's long. Above it, the one link
+ * that brings more people in, and how many seats are left.
+ */
 function OfficePeople() {
   const t = useTranslations("office.people");
   const router = useRouter();
@@ -42,6 +49,8 @@ function OfficePeople() {
   const floor = useFloorStatus();
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [onlyHere, setOnlyHere] = useState(false);
   const link = useInviteLink(office.id);
 
   // The shell read the office when it opened; coming back to People later reads it again.
@@ -83,50 +92,89 @@ function OfficePeople() {
     void share(link, "invite");
   };
 
+  const here = members.filter((one) => floor.has(one.id)).length;
+  const rank = (id: string) => (floor.has(id) ? (PRESENCE_ORDER[floor.get(id)!] ?? 0) : 9);
+  const needle = query.trim().toLowerCase();
+  const listed = members
+    .filter((one) => !onlyHere || floor.has(one.id))
+    .filter((one) => !needle || one.displayName.toLowerCase().includes(needle) || !!one.email?.toLowerCase().includes(needle))
+    .sort(
+      (a, b) =>
+        Number(b.id === user?.id) - Number(a.id === user?.id) || rank(a.id) - rank(b.id) || a.displayName.localeCompare(b.displayName),
+    );
+
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
       <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
-        <header className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-            <p className="mt-1 text-[14px] text-muted-foreground">{t("subtitle", { office: office.name })}</p>
-          </div>
+        <header className="flex items-center justify-between gap-4">
+          <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
           <Button size="md" disabled={!link} onClick={invite} className="h-10 gap-2 px-4 text-[13px]">
             {copied === "invite" ? <Check className="size-4" /> : <UserPlus className="size-4" />}
             {copied === "invite" ? t("linkCopied") : t("invite")}
           </Button>
         </header>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,20rem)_1fr]">
-          <Seats used={used} seats={office.seats} full={full} trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0} />
-          <OnTheFloor
-            people={members.filter((one) => floor.has(one.id))}
-            alone={members.filter((one) => floor.has(one.id) && one.id !== user?.id).length === 0}
-            status={floor}
-            empty={t("nobodyOnFloor")}
-            action={
-              <Chip icon={<UserPlus />} onClick={invite}>
-                {t("invite")}
-              </Chip>
-            }
-            title={t("onFloorNow", { count: members.filter((one) => floor.has(one.id)).length })}
+        <div className="mt-6 grid items-start gap-3 md:grid-cols-[minmax(0,1fr)_17rem]">
+          <InviteLink link={link} admin={admin} officeId={office.id} onShare={invite} copied={copied === "invite"} />
+          <Seats
+            used={used}
+            seats={office.seats}
+            full={full}
+            admin={admin}
+            trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
           />
         </div>
 
         {error && <p className="mt-4 text-[13px] text-destructive">{error}</p>}
 
-        <InviteLink link={link} admin={admin} officeId={office.id} onShare={invite} copied={copied === "invite"} />
+        <div className="mb-3 mt-10 flex flex-wrap items-center gap-x-4 gap-y-3">
+          <h2 className="flex items-baseline gap-2 text-[15px] font-semibold text-foreground">
+            {t("members")}
+            <span className="text-[13px] font-normal tabular-nums text-muted-foreground">{members.length}</span>
+          </h2>
+          <div className="ms-auto flex flex-wrap items-center gap-2">
+            <div role="group" className="flex h-9 items-center rounded-full bg-muted p-1 text-[12.5px] font-medium">
+              {[
+                { on: false, label: t("everyone"), count: members.length },
+                { on: true, label: t("onFloor"), count: here },
+              ].map((option) => (
+                <button
+                  key={option.label}
+                  type="button"
+                  aria-pressed={onlyHere === option.on}
+                  onClick={() => setOnlyHere(option.on)}
+                  className={cn(
+                    "flex h-7 cursor-pointer items-center gap-1.5 rounded-full px-3 transition-colors",
+                    onlyHere === option.on ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {option.label}
+                  <span className="tabular-nums text-muted-foreground">{option.count}</span>
+                </button>
+              ))}
+            </div>
+            {members.length >= SEARCH_FROM && (
+              <label className="flex h-9 w-56 max-w-full items-center gap-2 rounded-full border border-border bg-background px-3 focus-within:border-border-strong">
+                <Search className="size-4 shrink-0 text-muted-foreground" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={t("search")}
+                  aria-label={t("search")}
+                  className="min-w-0 flex-1 bg-transparent text-[13px] text-foreground outline-none placeholder:text-faint"
+                />
+              </label>
+            )}
+          </div>
+        </div>
 
-        <h2 className="mb-4 mt-10 flex items-baseline gap-2 text-[15px] font-semibold text-foreground">
-          {t("members")}
-          <span className="text-[13px] font-normal tabular-nums text-muted-foreground">{members.length}</span>
-        </h2>
-        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {members.map((member) => {
+        <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-background">
+          {listed.map((member) => {
             const isMe = member.id === user?.id;
             const owner = member.id === office.owner;
             return (
-              <MemberCard
+              <MemberRow
                 key={member.id}
                 id={member.id}
                 name={member.displayName}
@@ -143,25 +191,15 @@ function OfficePeople() {
                 }}
                 menu={
                   admin && !owner ? (
-                    <Menu
-                      align="end"
-                      width={208}
-                      trigger={<IconButton label={t("more")} size="sm" icon={<MoreHorizontal />} bare />}
-                    >
+                    <Menu align="end" width={208} trigger={<IconButton label={t("more")} size="sm" icon={<MoreHorizontal />} bare />}>
                       <MenuItem
                         icon={member.role === "admin" ? <ShieldOff /> : <Shield />}
-                        onSelect={() =>
-                          run(() => api.setRole(office.id, member.id, member.role === "admin" ? "member" : "admin").then())
-                        }
+                        onSelect={() => run(() => api.setRole(office.id, member.id, member.role === "admin" ? "member" : "admin").then())}
                       >
                         {member.role === "admin" ? t("makeMember") : t("makeAdmin")}
                       </MenuItem>
                       <MenuSeparator />
-                      <MenuItem
-                        danger
-                        icon={<UserMinus />}
-                        onSelect={() => run(() => api.removeMember(office.id, member.id).then())}
-                      >
+                      <MenuItem danger icon={<UserMinus />} onSelect={() => run(() => api.removeMember(office.id, member.id).then())}>
                         {isMe ? t("leave") : t("remove")}
                       </MenuItem>
                     </Menu>
@@ -170,41 +208,33 @@ function OfficePeople() {
               />
             );
           })}
-          {admin && full && <OfficeFull />}
-          {admin && !full && (
-            <li>
-              <button
-                type="button"
-                onClick={invite}
-                disabled={!link}
-                className="flex h-full min-h-[132px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border-strong text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <UserPlus className="size-5" />
-                {used >= office.seats ? t("invite") : t("seatsLeft", { count: office.seats - used })}
-              </button>
-            </li>
-          )}
+          {listed.length === 0 && <li className="px-4 py-10 text-center text-[13px] text-muted-foreground">{t("noMatch")}</li>}
         </ul>
       </div>
     </div>
   );
 }
 
-/** Seats as a meter: how many are taken, and whether there is room (or a trial waiting to make some). */
-function Seats({ used, seats, full, trial }: { used: number; seats: number; full: boolean; trial: number }) {
+/**
+ * Seats as a meter: how many are taken and how many are left. Full, an admin
+ * gets the way to more where plans are sold; a free office with its trial
+ * still to give says the next person starts it.
+ */
+function Seats({ used, seats, full, admin, trial }: { used: number; seats: number; full: boolean; admin: boolean; trial: number }) {
   const t = useTranslations("office.people");
   const tb = useTranslations("billing");
+  const { open } = useUpgrade();
   return (
-    <div className="rounded-2xl border border-border bg-background p-4">
+    <section className="rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-[14px] font-semibold text-foreground">{t("seats", { used, seats })}</p>
+        <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
         <p className={cn("text-[12px]", full ? "text-warn" : "text-muted-foreground")}>
-          {full ? t("seatsFull") : t("seatsFree")}
+          {full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}
         </p>
       </div>
       {/* One segment a seat while they are countable; a bar once they are not. */}
-      {seats <= 20 ? (
-        <div className="mt-3 flex gap-1" aria-hidden>
+      {seats <= 25 ? (
+        <div className="mt-3 flex gap-[3px]" aria-hidden>
           {Array.from({ length: seats }, (_, index) => (
             <span key={index} className={cn("h-1.5 flex-1 rounded-full", index < used ? "bg-foreground" : "bg-muted")} />
           ))}
@@ -214,63 +244,28 @@ function Seats({ used, seats, full, trial }: { used: number; seats: number; full
           <div className="h-full rounded-full bg-foreground" style={{ width: `${Math.min(100, (used / seats) * 100)}%` }} />
         </div>
       )}
-      {trial ? (
+      {trial > 0 && (
         <p className="mt-3 rounded-xl bg-brand/10 px-3 py-2 text-[12px] leading-relaxed text-foreground">
           {tb("trialWaiting", { free: seats, plan: "Plus", days: trial })}
         </p>
-      ) : (
-        <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{t("seatsNote")}</p>
       )}
-      <PlansSoon className="mt-2" />
-    </div>
-  );
-}
-
-function OnTheFloor({
-  people,
-  status,
-  title,
-  empty,
-  action,
-  alone,
-}: {
-  alone: boolean;
-  people: Array<{ id: string; displayName: string }>;
-  status: Map<string, string>;
-  title: string;
-  empty: string;
-  action: ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-border bg-background p-4 [--face-ring:var(--ui-muted)]">
-      <p className="text-[14px] font-semibold text-foreground">{title}</p>
-      {people.length ? (
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {people.map((one) => (
-            <span key={one.id} className="flex items-center gap-2 rounded-full bg-muted py-1 ps-1 pe-3">
-              <Face seed={one.id} size={24} presence={(status.get(one.id) as never) ?? null} />
-              <span className="text-[13px] text-foreground">{one.displayName}</span>
-            </span>
-          ))}
-          {alone && (
-            <>
-              <span className="text-[13px] text-muted-foreground">{empty}</span>
-              <span className="ms-auto">{action}</span>
-            </>
-          )}
-        </div>
-      ) : (
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-[13px] text-muted-foreground">{empty}</p>
-          {action}
-        </div>
+      {full && admin && open && (
+        // The plans, right here: the one with room for everyone already marked.
+        <button
+          type="button"
+          onClick={() => open("full")}
+          className="mt-3 flex h-9 w-full cursor-pointer items-center justify-center rounded-full bg-foreground text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+        >
+          {tb("moreSeats")}
+        </button>
       )}
-    </div>
+      <PlansSoon className="mt-3" />
+    </section>
   );
 }
 
 /**
- * The lobby's people: whoever is on this floor right now, as the same cards an
+ * The lobby's people: whoever is on this floor right now, as the same rows an
  * office has. Writing to someone needs an office; walking over does not.
  */
 function LobbyPeople() {
@@ -352,9 +347,9 @@ function LobbyPeople() {
             }
           />
         ) : (
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <ul className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-background">
             {here.map((one) => (
-              <MemberCard
+              <MemberRow
                 key={one.id}
                 id={one.id}
                 name={one.name}
@@ -375,10 +370,6 @@ function LobbyPeople() {
   );
 }
 
-/**
- * Every seat taken, as its admins see it: where paid plans are on, the way to
- * more seats; until then, that more are coming.
- */
 /**
  * The office's invite link, written out: anyone in the office can copy or
  * share it, and an admin can reset it if it went somewhere it shouldn't.
@@ -413,17 +404,12 @@ function InviteLink({
   };
 
   return (
-    <section className="mt-3 rounded-2xl border border-border bg-background p-4">
-      <div className="flex items-center gap-3">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
-          <Link2 className="size-4" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-[14px] font-semibold text-foreground">{t("linkTitle")}</p>
-          <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("linkBody")}</p>
-        </div>
-      </div>
-      <div className="mt-3.5 flex items-center gap-2">
+    <section className="rounded-2xl border border-border bg-background p-4">
+      <p className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
+        <Link2 className="size-4 text-muted-foreground" />
+        {t("linkTitle")}
+      </p>
+      <div className="mt-3 flex items-center gap-2">
         <div className="flex h-10 min-w-0 flex-1 items-center rounded-full bg-muted px-4">
           {shown ? (
             <span className="truncate text-[13px] text-foreground" dir="ltr">
@@ -437,9 +423,7 @@ function InviteLink({
           {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
           {copied ? t("copied") : t("copy")}
         </Button>
-        {admin && (
-          <IconButton label={t("resetLink")} size="md" icon={<RotateCcw />} onClick={() => setConfirming(true)} disabled={!link} />
-        )}
+        {admin && <IconButton label={t("resetLink")} size="md" icon={<RotateCcw />} onClick={() => setConfirming(true)} disabled={!link} />}
       </div>
 
       <Dialog
@@ -460,30 +444,5 @@ function InviteLink({
         }
       />
     </section>
-  );
-}
-
-function OfficeFull() {
-  const t = useTranslations("office.people");
-  const tb = useTranslations("billing");
-  const { open } = useUpgrade();
-  return (
-    <li>
-      <div className="flex h-full min-h-[132px] flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border-strong px-4 text-center">
-        <p className="text-[13.5px] font-medium text-foreground">{t("allSeatsTaken")}</p>
-        {open ? (
-          // The plans, right here: the one with room for everyone already marked.
-          <button
-            type="button"
-            onClick={() => open("full")}
-            className="mt-1.5 inline-flex h-9 cursor-pointer items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
-          >
-            {tb("moreSeats")}
-          </button>
-        ) : (
-          <p className="text-[12.5px] leading-relaxed text-muted-foreground">{t("allSeatsTakenBody")}</p>
-        )}
-      </div>
-    </li>
   );
 }

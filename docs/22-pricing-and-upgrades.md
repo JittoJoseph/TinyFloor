@@ -190,10 +190,14 @@ Members see the same plans and who can change them.
   leaving a plan is Cancel, which lists what the team loses, offers the plan
   below, and keeps Keep as the main button.
 - **Meetings**: a plain list, the office's meeting first, each with who's in
-  it and the way in; the month's hours as a meter beside it with the plan and
-  the way to more. No floor drawing and no explaining how meetings work. In a
-  meeting: a grid that includes you, pin or a shared screen goes big with the
-  rest in a column on the right.
+  it and the way in; the month's hours as one quiet line under them with the
+  plan and the way to more, warming only near the end. No floor drawing and no
+  explaining how meetings work. In a meeting: a grid in join order that
+  includes you; pin or a shared screen goes big with the rest in a column on
+  the right, as many as fit and a count of the rest.
+- **People**: one searchable list, you first, then whoever is on the floor;
+  the invite link and the seats side by side above it, with "Get more seats"
+  on the seats when they're all taken.
 - **Onboarding**: name, then the invite link, then the floor. The size and
   plan steps are gone; `/create?plan=` from the pricing page still goes to
   checkout after the name.

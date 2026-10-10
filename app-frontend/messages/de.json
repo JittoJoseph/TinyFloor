@@ -576,17 +576,16 @@
     "unpin": "Lösen",
     "others": "{count, plural, one {# weitere Person} other {# weitere}}",
     "ready": {
-      "test": "Kamera und Mikro testen",
-      "stop": "Test beenden",
-      "joinMuted": "Du kommst stummgeschaltet rein",
-      "joinUnmuted": "Du kommst mit Mikro rein",
-      "blocked": "Der Browser hat die Kamera nicht erlaubt"
+      "blocked": "Der Browser hat die Kamera nicht erlaubt",
+      "cameraOff": "Kamera ist aus"
     },
     "free": {
       "title": "Frei für ein Gespräch",
       "meet": "Treffen",
       "more": "und {count} weitere"
-    }
+    },
+    "readyTitle": "Bereit zum Beitreten?",
+    "joinNow": "Jetzt beitreten"
   },
   "help": {
     "title": "Hilfe und Feedback",

@@ -226,6 +226,8 @@ class CallManager {
   private outgoing: { id: string; name: string } | null = null;
   private micEnabled = MIC_ON;
   private cameraEnabled = false;
+  /** The camera, chosen before joining (the Meetings page, as Meet asks): on for the next meeting you go into. */
+  private cameraOnJoin = false;
   private meeting: string | null = null;
   /** Whose video the meeting shows, and where it is being looked at. */
   private stage: Stage = EMPTY_STAGE;
@@ -646,6 +648,11 @@ class CallManager {
     this.voice.listen(track);
   }
 
+  /** Whether the next meeting you go into opens with your camera on. */
+  setCameraOnJoin(on: boolean) {
+    this.cameraOnJoin = on;
+  }
+
   /** Your camera, on the call you are in: there is nothing to turn on outside one. */
   async setCamera(enabled: boolean) {
     if (!this.local) return;
@@ -713,6 +720,8 @@ class CallManager {
   /** The room let you into a meeting: media opens, and your character walks into the meeting room. */
   private async enterMeeting(id: string, members: MeetingMember[]) {
     const moving = this.meeting !== null;
+    const withCamera = this.cameraOnJoin && !this.videoPaused;
+    this.cameraOnJoin = false;
     this.hangUp();
     this.sfu?.close();
     this.voice.stop();
@@ -742,6 +751,10 @@ class CallManager {
 
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
+    if (opened && withCamera && (await this.addCamera())) {
+      if (this.sfu !== sfu) return;
+      this.cameraEnabled = true;
+    }
     sfu.publishLocal(opened ? this.local : null, this.flags());
     this.listenForVoice();
     this.refreshStage();

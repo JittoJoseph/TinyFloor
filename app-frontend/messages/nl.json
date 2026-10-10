@@ -576,17 +576,16 @@
     "unpin": "Losmaken",
     "others": "{count, plural, one {# ander} other {# anderen}}",
     "ready": {
-      "test": "Camera en microfoon testen",
-      "stop": "Test stoppen",
-      "joinMuted": "Je komt binnen met je microfoon uit",
-      "joinUnmuted": "Je komt binnen met je microfoon aan",
-      "blocked": "De browser stond de camera niet toe"
+      "blocked": "De browser stond de camera niet toe",
+      "cameraOff": "Camera staat uit"
     },
     "free": {
       "title": "Vrij om te praten",
       "meet": "Afspreken",
       "more": "en nog {count}"
-    }
+    },
+    "readyTitle": "Klaar om deel te nemen?",
+    "joinNow": "Nu deelnemen"
   },
   "help": {
     "title": "Hulp en feedback",

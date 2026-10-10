@@ -576,17 +576,16 @@
     "unpin": "Sblocca",
     "others": "{count, plural, one {# altro} other {altri #}}",
     "ready": {
-      "test": "Prova fotocamera e microfono",
-      "stop": "Ferma la prova",
-      "joinMuted": "Entrerai con il microfono spento",
-      "joinUnmuted": "Entrerai con il microfono acceso",
-      "blocked": "Il browser non ha consentito la fotocamera"
+      "blocked": "Il browser non ha consentito la fotocamera",
+      "cameraOff": "La fotocamera è spenta"
     },
     "free": {
       "title": "Liberi per parlare",
       "meet": "Incontra",
       "more": "e altri {count}"
-    }
+    },
+    "readyTitle": "Pronto a partecipare?",
+    "joinNow": "Partecipa ora"
   },
   "help": {
     "title": "Aiuto e feedback",

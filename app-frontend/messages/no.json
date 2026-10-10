@@ -576,17 +576,16 @@
     "unpin": "Løsne",
     "others": "{count, plural, one {# annen} other {# andre}}",
     "ready": {
-      "test": "Test kamera og mikrofon",
-      "stop": "Stopp testen",
-      "joinMuted": "Du blir med med lyden av",
-      "joinUnmuted": "Du blir med med mikrofonen på",
-      "blocked": "Nettleseren tillot ikke kameraet"
+      "blocked": "Nettleseren tillot ikke kameraet",
+      "cameraOff": "Kameraet er av"
     },
     "free": {
       "title": "Ledige for en prat",
       "meet": "Møt",
       "more": "og {count} til"
-    }
+    },
+    "readyTitle": "Klar til å bli med?",
+    "joinNow": "Bli med nå"
   },
   "help": {
     "title": "Hjelp og tilbakemelding",

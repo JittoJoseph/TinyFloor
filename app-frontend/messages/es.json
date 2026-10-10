@@ -576,17 +576,16 @@
     "unpin": "Dejar de fijar",
     "others": "{count, plural, one {# más} other {# más}}",
     "ready": {
-      "test": "Probar cámara y micrófono",
-      "stop": "Parar la prueba",
-      "joinMuted": "Entrarás silenciado",
-      "joinUnmuted": "Entrarás con el micrófono activado",
-      "blocked": "El navegador no permitió la cámara"
+      "blocked": "El navegador no permitió la cámara",
+      "cameraOff": "La cámara está apagada"
     },
     "free": {
       "title": "Libres para hablar",
       "meet": "Reunirse",
       "more": "y {count} más"
-    }
+    },
+    "readyTitle": "¿Listo para unirte?",
+    "joinNow": "Unirse ahora"
   },
   "help": {
     "title": "Ayuda y comentarios",

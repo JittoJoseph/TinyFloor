@@ -576,17 +576,16 @@
     "unpin": "고정 해제",
     "others": "외 {count}명",
     "ready": {
-      "test": "카메라와 마이크 테스트",
-      "stop": "테스트 중지",
-      "joinMuted": "음소거 상태로 참여해요",
-      "joinUnmuted": "마이크를 켠 상태로 참여해요",
-      "blocked": "브라우저가 카메라를 허용하지 않았어요"
+      "blocked": "브라우저가 카메라를 허용하지 않았어요",
+      "cameraOff": "카메라가 꺼져 있어요"
     },
     "free": {
       "title": "대화 가능한 사람",
       "meet": "만나기",
       "more": "외 {count}명"
-    }
+    },
+    "readyTitle": "참여할 준비가 되셨나요?",
+    "joinNow": "지금 참여"
   },
   "help": {
     "title": "도움말 및 의견",

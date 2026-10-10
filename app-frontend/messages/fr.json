@@ -576,17 +576,16 @@
     "unpin": "Désépingler",
     "others": "{count, plural, one {# autre} other {# autres}}",
     "ready": {
-      "test": "Tester caméra et micro",
-      "stop": "Arrêter le test",
-      "joinMuted": "Vous entrerez micro coupé",
-      "joinUnmuted": "Vous entrerez micro ouvert",
-      "blocked": "Le navigateur n'a pas autorisé la caméra"
+      "blocked": "Le navigateur n'a pas autorisé la caméra",
+      "cameraOff": "La caméra est coupée"
     },
     "free": {
       "title": "Disponibles pour parler",
       "meet": "Se réunir",
       "more": "et {count} de plus"
-    }
+    },
+    "readyTitle": "Prêt à rejoindre ?",
+    "joinNow": "Participer"
   },
   "help": {
     "title": "Aide et avis",

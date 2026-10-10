@@ -189,13 +189,15 @@ Members see the same plans and who can change them.
   current one marked; Choose, Upgrade, Move to. Free isn't offered as a card:
   leaving a plan is Cancel, which lists what the team loses, offers the plan
   below, and keeps Keep as the main button.
-- **Meetings**: a plain list, the office's meeting first, each with one line
-  of who's in it ("Priya, Ana, 17 others") and the way in. Beside it, your mic
-  and camera before joining (join muted or not, a camera and mic test on
-  demand) and who's free to talk, a meeting with them one press away. The
-  month's hours as one quiet line at the page's foot with the plan and the way
-  to more, warming only near the end. No floor drawing and no explaining how
-  meetings work. In a meeting: a grid in join order that
+- **Meetings**: Meet's "Ready to join?". You on the left, big, with the mic
+  (the same switch as in a meeting) and the camera (whether you go in with it
+  on, remembered, previewed live with the mic's level). On the right the
+  office's meeting, one line of who's in it ("Priya, Ana, 17 others") and Join
+  now. Under them, other meetings on now and who's free to talk, a meeting
+  with them one press away. The month's hours as one quiet line at the page's
+  foot. In a meeting the tiles are flat cards: the circle without any glow, a
+  mic-off badge or moving bars in the corner, a ring while talking. No floor
+  drawing and no explaining how meetings work. In a meeting: a grid in join order that
   includes you; pin or a shared screen goes big with the rest in a column on
   the right, as many as fit and a count of the rest.
 - **People**: one searchable list, you first, then whoever is on the floor;

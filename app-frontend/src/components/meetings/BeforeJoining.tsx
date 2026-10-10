@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, Video, VideoOff } from "@/components/ui/icons";
+import { Mic, MicOff, Settings, Video, VideoOff } from "@/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,21 +11,31 @@ import { useMeetings } from "@/lib/meetings";
 import { deviceConstraint, savedDevices } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 import { Link } from "@/lib/i18n/navigation";
-import { Face } from "@/components/ui/Face";
-import { IconButton } from "@/components/ui/IconButton";
+import { Face, faceBackground } from "@/components/ui/Face";
 import { usePlace } from "@/components/app/place";
 import { cn } from "@/lib/utils";
 
 /** People offered in "Free to talk" at most. */
-const FREE_SHOWN = 5;
+const FREE_SHOWN = 4;
+/** Where the camera choice is remembered between visits. */
+const CAMERA_KEY = "tinyfloor:join-camera";
+
+function rememberedCamera(): boolean {
+  try {
+    return localStorage.getItem(CAMERA_KEY) === "on";
+  } catch {
+    return false;
+  }
+}
 
 /**
- * Your mic and camera before a meeting, the way Meet shows them before you
- * join: whether you'll come in muted (the same switch as in a meeting), and a
- * test of the camera and the mic's level on demand. Nothing is opened until
- * you ask, and the test stops when you leave the page or join.
+ * You, before a meeting, the way Meet shows you: a big picture with the mic
+ * and camera under your thumb. The mic is the same switch as in a meeting;
+ * the camera is whether you go in with it on, remembered for next time, and
+ * shown live while it's on, with the mic's level. Leaving the page or joining
+ * closes the preview.
  */
-export function ReadyCard() {
+export function JoinPreview() {
   const t = useTranslations("meetings.ready");
   const tc = useTranslations("controls");
   const ts = useTranslations("settings.sections");
@@ -33,76 +43,121 @@ export function ReadyCard() {
   const place = usePlace();
   const { micEnabled } = useCall();
   const { mirrorVideo } = usePrefs();
+  const [camera, setCamera] = useState(false);
   const [stream, setStream] = useState<MediaStream | null>(null);
-  const [failed, setFailed] = useState(false);
-  const level = useLevel(stream);
+  const [blocked, setBlocked] = useState(false);
+  const level = useLevel(micEnabled ? stream : null);
   const video = useRef<HTMLVideoElement>(null);
+
+  // The camera as it was left last time, once the page is in the browser.
+  useEffect(() => setCamera(rememberedCamera()), []);
+  useEffect(() => {
+    callManager.setCameraOnJoin(camera);
+    return () => callManager.setCameraOnJoin(false);
+  }, [camera]);
+
+  useEffect(() => {
+    if (!camera) return setStream(null);
+    let live: MediaStream | null = null;
+    let cancelled = false;
+    const devices = savedDevices();
+    navigator.mediaDevices
+      ?.getUserMedia({ video: { deviceId: deviceConstraint(devices.video) }, audio: { deviceId: deviceConstraint(devices.audio) } })
+      .then((opened) => {
+        if (cancelled) return opened.getTracks().forEach((track) => track.stop());
+        live = opened;
+        setBlocked(false);
+        setStream(opened);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setBlocked(true);
+        setCamera(false);
+      });
+    return () => {
+      cancelled = true;
+      live?.getTracks().forEach((track) => track.stop());
+    };
+  }, [camera]);
 
   useEffect(() => {
     if (video.current) video.current.srcObject = stream;
   }, [stream]);
-  // The test ends with the page.
-  useEffect(() => () => stream?.getTracks().forEach((track) => track.stop()), [stream]);
 
-  const test = async () => {
-    if (stream) return setStream(null);
-    setFailed(false);
+  const toggleCamera = () => {
+    const next = !camera;
+    setCamera(next);
     try {
-      const devices = savedDevices();
-      setStream(
-        await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: deviceConstraint(devices.video) },
-          audio: { deviceId: deviceConstraint(devices.audio) },
-        }),
-      );
+      localStorage.setItem(CAMERA_KEY, next ? "on" : "off");
     } catch {
-      setFailed(true);
+      // Not remembered, this once.
     }
   };
 
+  const round = "flex size-12 cursor-pointer items-center justify-center rounded-full transition-colors [&_svg]:size-5";
   return (
-    <section className="overflow-hidden rounded-2xl border border-border bg-background">
-      <div className="relative flex aspect-video items-center justify-center bg-muted [--face-ring:var(--ui-muted)]">
+    <div>
+      <div className="relative aspect-video overflow-hidden rounded-3xl bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))]">
         {stream ? (
           <video ref={video} autoPlay muted playsInline className={cn("absolute inset-0 size-full object-cover", mirrorVideo && "-scale-x-100")} />
         ) : (
-          user && <Face seed={user.id} size={56} />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            {user && <span aria-hidden className="aspect-square h-[30%] rounded-full" style={{ backgroundImage: faceBackground(user.id) }} />}
+            <p className="text-[13px] text-muted-foreground">{blocked ? t("blocked") : t("cameraOff")}</p>
+          </div>
         )}
-        {stream && (
-          <span className="absolute bottom-3 start-3 flex h-6 items-center gap-1.5 rounded-full bg-black/55 px-2 backdrop-blur" aria-hidden>
-            <Mic className="size-3 text-white" />
-            <span className="h-1 w-12 overflow-hidden rounded-full bg-white/25">
-              <span className="block h-full rounded-full bg-ok transition-[width] duration-75" style={{ width: `${Math.round(level * 100)}%` }} />
-            </span>
-          </span>
-        )}
-        <div className="absolute bottom-3 end-3 flex gap-1.5">
-          <IconButton
-            label={micEnabled ? tc("muteMic") : tc("unmuteMic")}
-            size="sm"
-            tone={micEnabled ? "ghost" : "danger"}
-            icon={micEnabled ? <Mic /> : <MicOff />}
-            onClick={() => callManager.setMic(!micEnabled)}
-            className={cn(micEnabled && "bg-background/90 text-foreground hover:bg-background")}
-          />
-          <IconButton
-            label={stream ? t("stop") : t("test")}
-            size="sm"
-            icon={stream ? <VideoOff /> : <Video />}
-            onClick={test}
-            className="bg-background/90 text-foreground hover:bg-background"
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-between gap-3 px-4 py-3 text-[12.5px]">
-        <span className={cn(failed ? "text-destructive" : "text-muted-foreground")}>
-          {failed ? t("blocked") : micEnabled ? t("joinUnmuted") : t("joinMuted")}
+        {stream && <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/45 to-transparent" />}
+        <span
+          className={cn("absolute start-4 top-4 text-[13px] font-medium", stream ? "text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.4)]" : "text-foreground/90")}
+        >
+          {user?.displayName}
         </span>
-        <Link href={`${place.paths.settings}#media`} className="shrink-0 font-medium text-foreground underline-offset-2 hover:underline">
-          {ts("media")}
+
+        <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => callManager.setMic(!micEnabled)}
+            aria-label={micEnabled ? tc("muteMic") : tc("unmuteMic")}
+            title={micEnabled ? tc("muteMic") : tc("unmuteMic")}
+            className={cn(
+              round,
+              "relative overflow-hidden",
+              micEnabled ? "border border-white/25 bg-black/35 text-white backdrop-blur hover:bg-black/50" : "bg-destructive text-white hover:bg-destructive/90",
+              !stream && micEnabled && "border-border bg-background text-foreground hover:bg-muted",
+            )}
+          >
+            {/* The mic's level, filling the button from the bottom while you talk. */}
+            {micEnabled && stream && (
+              <span aria-hidden className="absolute inset-x-0 bottom-0 bg-ok/40 transition-[height] duration-75" style={{ height: `${Math.round(level * 100)}%` }} />
+            )}
+            <span className="relative">{micEnabled ? <Mic /> : <MicOff />}</span>
+          </button>
+          <button
+            type="button"
+            onClick={toggleCamera}
+            aria-label={camera ? tc("cameraOff") : tc("cameraOn")}
+            title={camera ? tc("cameraOff") : tc("cameraOn")}
+            className={cn(
+              round,
+              camera ? "border border-white/25 bg-black/35 text-white backdrop-blur hover:bg-black/50" : "bg-destructive text-white hover:bg-destructive/90",
+            )}
+          >
+            {camera ? <Video /> : <VideoOff />}
+          </button>
+        </div>
+        <Link
+          href={`${place.paths.settings}#media`}
+          aria-label={ts("media")}
+          title={ts("media")}
+          className={cn(
+            "absolute bottom-4 end-4 flex size-10 items-center justify-center rounded-full transition-colors [&_svg]:size-[18px]",
+            stream ? "text-white hover:bg-white/15" : "text-muted-foreground hover:bg-foreground/[0.06] hover:text-foreground",
+          )}
+        >
+          <Settings />
         </Link>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -138,7 +193,7 @@ function useLevel(stream: MediaStream | null): number {
  * meeting with them one press away: it starts one and asks them in. Nobody
  * free, and it isn't shown.
  */
-export function FreeToTalk() {
+export function FreeToTalk({ className }: { className?: string }) {
   const t = useTranslations("meetings.free");
   const { user } = useAuth();
   const everyone = useFloor();
@@ -148,11 +203,11 @@ export function FreeToTalk() {
   if (!free.length) return null;
 
   return (
-    <section className="rounded-2xl border border-border bg-background p-2 [--face-ring:var(--ui-background)]">
-      <h2 className="px-2 pb-1.5 pt-1.5 text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
+    <section className={cn("[--face-ring:var(--ui-card)]", className)}>
+      <h2 className="mb-1 text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
       <ul>
         {free.slice(0, FREE_SHOWN).map((one) => (
-          <li key={one.id} className="flex items-center gap-3 rounded-xl px-2 py-1.5 hover:bg-muted/60">
+          <li key={one.id} className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-1.5 hover:bg-muted/60">
             <Face seed={one.id} size={28} presence="available" />
             <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-foreground">{one.name}</span>
             <button
@@ -165,9 +220,7 @@ export function FreeToTalk() {
           </li>
         ))}
       </ul>
-      {free.length > FREE_SHOWN && (
-        <p className="px-2 pb-1 pt-1.5 text-[12px] text-faint">{t("more", { count: free.length - FREE_SHOWN })}</p>
-      )}
+      {free.length > FREE_SHOWN && <p className="mt-1 text-[12px] text-faint">{t("more", { count: free.length - FREE_SHOWN })}</p>}
     </section>
   );
 }

@@ -574,7 +574,19 @@
     },
     "pin": "Pin",
     "unpin": "Unpin",
-    "others": "{count, plural, one {# other} other {# others}}"
+    "others": "{count, plural, one {# other} other {# others}}",
+    "ready": {
+      "test": "Test camera and mic",
+      "stop": "Stop the test",
+      "joinMuted": "You'll join muted",
+      "joinUnmuted": "You'll join with your mic on",
+      "blocked": "The browser didn't allow the camera"
+    },
+    "free": {
+      "title": "Free to talk",
+      "meet": "Meet",
+      "more": "and {count} more"
+    }
   },
   "help": {
     "title": "Help and feedback",

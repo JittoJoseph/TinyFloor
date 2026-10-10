@@ -574,7 +574,19 @@
     },
     "pin": "הצמדה",
     "unpin": "ביטול הצמדה",
-    "others": "{count, plural, one {עוד אחד} other {עוד #}}"
+    "others": "{count, plural, one {עוד אחד} other {עוד #}}",
+    "ready": {
+      "test": "בדיקת מצלמה ומיקרופון",
+      "stop": "עצירת הבדיקה",
+      "joinMuted": "תצטרפו במצב מושתק",
+      "joinUnmuted": "תצטרפו עם מיקרופון פתוח",
+      "blocked": "הדפדפן לא אישר את המצלמה"
+    },
+    "free": {
+      "title": "פנויים לשיחה",
+      "meet": "פגישה",
+      "more": "ועוד {count}"
+    }
   },
   "help": {
     "title": "עזרה ומשוב",

@@ -574,7 +574,19 @@
     },
     "pin": "固定",
     "unpin": "固定を解除",
-    "others": "ほか {count} 人"
+    "others": "ほか {count} 人",
+    "ready": {
+      "test": "カメラとマイクをテスト",
+      "stop": "テストを終了",
+      "joinMuted": "ミュートで参加します",
+      "joinUnmuted": "マイクをオンにして参加します",
+      "blocked": "ブラウザがカメラを許可しませんでした"
+    },
+    "free": {
+      "title": "今話せる人",
+      "meet": "会う",
+      "more": "ほか {count} 人"
+    }
   },
   "help": {
     "title": "ヘルプとフィードバック",

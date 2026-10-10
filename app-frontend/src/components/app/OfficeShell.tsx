@@ -192,8 +192,9 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     officesOnly: () => {},
   };
 
-  // Out of the office, to its door (there is no dashboard): walk back in, or go to another.
-  const leave = { href: `/?${new URLSearchParams({ left: office.id })}`, label: ts("leaveOffice") };
+  // An office is home: there's no button out of it, only the switcher to another. Where the
+  // room itself sends you out (open elsewhere, removed), it's to the office's door.
+  const door = `/?${new URLSearchParams({ left: office.id })}`;
 
   return (
     <Context.Provider value={{ office, members, overview: read.overview, readAt: read.at, refresh }}>
@@ -216,8 +217,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
               { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
             ]}
             settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-            leave={leave}
-            you={<YouMenu onFloor settingsHref={settingsPath} leave={leave} />}
+            you={<YouMenu onFloor settingsHref={settingsPath} />}
             floor={
               <>
                 <RoomView
@@ -226,7 +226,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                   ticketFor={() => api.officeTicket(office.id)}
                   sharePath={inviteLink ?? undefined}
                   inviteHref={inviteLink ? undefined : people}
-                  leaveHref={leave.href}
+                  leaveHref={door}
                   settingsHref={settingsPath}
                 />
                 {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}

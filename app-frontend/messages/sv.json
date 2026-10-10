@@ -574,7 +574,19 @@
     },
     "pin": "Fäst",
     "unpin": "Lossa",
-    "others": "{count, plural, one {# till} other {# till}}"
+    "others": "{count, plural, one {# till} other {# till}}",
+    "ready": {
+      "test": "Testa kamera och mikrofon",
+      "stop": "Stoppa testet",
+      "joinMuted": "Du ansluter med mikrofonen av",
+      "joinUnmuted": "Du ansluter med mikrofonen på",
+      "blocked": "Webbläsaren tillät inte kameran"
+    },
+    "free": {
+      "title": "Lediga för ett samtal",
+      "meet": "Träffas",
+      "more": "och {count} till"
+    }
   },
   "help": {
     "title": "Hjälp och feedback",

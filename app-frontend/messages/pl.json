@@ -574,7 +574,19 @@
     },
     "pin": "Przypnij",
     "unpin": "Odepnij",
-    "others": "{count, plural, one {# inna osoba} few {# inne osoby} many {# innych osób} other {# innej osoby}}"
+    "others": "{count, plural, one {# inna osoba} few {# inne osoby} many {# innych osób} other {# innej osoby}}",
+    "ready": {
+      "test": "Sprawdź kamerę i mikrofon",
+      "stop": "Zakończ test",
+      "joinMuted": "Dołączysz z wyciszonym mikrofonem",
+      "joinUnmuted": "Dołączysz z włączonym mikrofonem",
+      "blocked": "Przeglądarka nie zezwoliła na kamerę"
+    },
+    "free": {
+      "title": "Wolni do rozmowy",
+      "meet": "Spotkaj się",
+      "more": "i jeszcze {count}"
+    }
   },
   "help": {
     "title": "Pomoc i opinie",

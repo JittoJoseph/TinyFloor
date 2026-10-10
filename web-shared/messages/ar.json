@@ -87,7 +87,6 @@
     "youLower": "أنت",
     "joined": "انضم في {date}",
     "yourProfile": "ملفك الشخصي",
-    "leaveOffice": "غادر المكتب",
     "leave": "غادر",
     "trialLeft": "تجربة {plan} · {count, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}} متبقية",
     "choosePlan": "اختر خطة",

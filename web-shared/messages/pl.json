@@ -87,7 +87,6 @@
     "youLower": "ty",
     "joined": "Dołączył(a) {date}",
     "yourProfile": "Twój profil",
-    "leaveOffice": "Wyjdź z biura",
     "leave": "Wyjdź",
     "trialLeft": "Próba {plan} · {count, plural, one {został # dzień} few {zostały # dni} other {zostało # dni}}",
     "choosePlan": "Wybierz plan",

@@ -574,7 +574,19 @@
     },
     "pin": "固定",
     "unpin": "取消固定",
-    "others": "另外 {count} 人"
+    "others": "另外 {count} 人",
+    "ready": {
+      "test": "测试摄像头和麦克风",
+      "stop": "停止测试",
+      "joinMuted": "你将以静音状态加入",
+      "joinUnmuted": "你将开着麦克风加入",
+      "blocked": "浏览器未允许使用摄像头"
+    },
+    "free": {
+      "title": "现在有空的人",
+      "meet": "开会",
+      "more": "还有 {count} 人"
+    }
   },
   "help": {
     "title": "帮助与反馈",

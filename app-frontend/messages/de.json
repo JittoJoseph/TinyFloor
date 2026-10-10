@@ -574,7 +574,19 @@
     },
     "pin": "Anheften",
     "unpin": "Lösen",
-    "others": "{count, plural, one {# weitere Person} other {# weitere}}"
+    "others": "{count, plural, one {# weitere Person} other {# weitere}}",
+    "ready": {
+      "test": "Kamera und Mikro testen",
+      "stop": "Test beenden",
+      "joinMuted": "Du kommst stummgeschaltet rein",
+      "joinUnmuted": "Du kommst mit Mikro rein",
+      "blocked": "Der Browser hat die Kamera nicht erlaubt"
+    },
+    "free": {
+      "title": "Frei für ein Gespräch",
+      "meet": "Treffen",
+      "more": "und {count} weitere"
+    }
   },
   "help": {
     "title": "Hilfe und Feedback",

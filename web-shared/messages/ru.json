@@ -87,7 +87,6 @@
     "youLower": "вы",
     "joined": "С нами с {date}",
     "yourProfile": "Ваш профиль",
-    "leaveOffice": "Выйти из офиса",
     "leave": "Выйти",
     "trialLeft": "Пробный {plan} · {count, plural, one {остался # день} few {осталось # дня} other {осталось # дней}}",
     "choosePlan": "Выбрать тариф",

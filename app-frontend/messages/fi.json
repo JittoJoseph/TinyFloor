@@ -574,7 +574,19 @@
     },
     "pin": "Kiinnitä",
     "unpin": "Irrota",
-    "others": "{count, plural, one {# muu} other {# muuta}}"
+    "others": "{count, plural, one {# muu} other {# muuta}}",
+    "ready": {
+      "test": "Testaa kamera ja mikrofoni",
+      "stop": "Lopeta testi",
+      "joinMuted": "Liityt mykistettynä",
+      "joinUnmuted": "Liityt mikrofoni päällä",
+      "blocked": "Selain ei sallinut kameraa"
+    },
+    "free": {
+      "title": "Vapaana juttelemaan",
+      "meet": "Tapaa",
+      "more": "ja {count} muuta"
+    }
   },
   "help": {
     "title": "Apua ja palautetta",

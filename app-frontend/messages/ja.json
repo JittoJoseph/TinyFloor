@@ -179,7 +179,6 @@
     "members": "{count, plural, other {メンバー#人}}",
     "dmIntro": "{name}さんとの会話はここから始まります。見られるのはおふたりだけです。",
     "channelIntroTitle": "#{channel}へようこそ",
-    "generalIntro": "{office}のみんなが話す場所です。オフィスの全員が読めて、フロアを離れても残ります。",
     "channelIntro": "#{channel}のはじまりです。オフィスの全員が読めます。",
     "sayTo": "{name}さんにメッセージ",
     "channelHint": "小文字のみ、スペースなし。オフィスの誰でも参加できます。",
@@ -207,7 +206,8 @@
     "delete": "送信取消",
     "deleteConfirm": "送信を取り消しますか？",
     "save": "保存",
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
+    "showAllPeople": "{count} 人すべて表示"
   },
   "proximity": {
     "call": "通話",
@@ -451,7 +451,6 @@
       "invite": "招待",
       "seats": "{seats} 席中 {used} 席",
       "seatsFull": "席はすべて埋まっています。",
-      "seatsFree": "まだ空きがあります。",
       "onFloorNow": "いまフロアに {count} 人",
       "copied": "コピーしました",
       "remove": "外す",
@@ -468,20 +467,19 @@
       "wrong": "うまくいきませんでした。もう一度お試しください。",
       "subtitle": "{office}の全員と、入れる人。",
       "linkCopied": "招待リンクをコピーしました",
-      "nobodyOnFloor": "ほかにはまだ誰もいません。",
-      "seatsLeft": "{count, plural, other {空き#席 — 誰かを招待しましょう}}",
-      "seatsNote": "1席は1人のメンバーです。抜けると席が空きます。オフラインでは空きません。",
-      "allSeatsTaken": "すべての席が埋まっています",
-      "allSeatsTakenBody": "誰かが抜けると席が空きます。席の多いオフィスは近日提供予定です。",
       "yourProfile": "あなたのプロフィール",
       "ownOfficeTitle": "こんなフロアをあなたのチームにも？",
       "ownOfficeBody": "1分で自分のオフィスを作れます。3人まで無料。",
       "linkTitle": "招待リンク",
-      "linkBody": "このリンクがあれば、空き席がある限りアカウントで誰でも参加できます。",
       "copy": "コピー",
       "resetLink": "リンクをリセット",
       "resetTitle": "招待リンクをリセットしますか？",
-      "resetBody": "今のリンクはすぐに使えなくなり、新しいリンクに置き換わります。すでにオフィスにいる人はそのままです。"
+      "resetBody": "今のリンクはすぐに使えなくなり、新しいリンクに置き換わります。すでにオフィスにいる人はそのままです。",
+      "everyone": "全員",
+      "onFloor": "フロアにいる",
+      "search": "メンバーを検索",
+      "noMatch": "該当する人はいません。",
+      "seatsOpen": "空き {count} 席"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
@@ -534,7 +532,6 @@
     "you": "あなた",
     "more": "ほか {count}人",
     "leave": "退出",
-    "aloneTitle": "あなたが一番乗りです",
     "aloneShort": "ほかの人を待っています",
     "open": "ミーティングを開く",
     "nobodyToAsk": "今フロアにいるオフィスのメンバーはほかにいません。",
@@ -561,7 +558,6 @@
       "pausedMonth": "{date} まで音声のみ",
       "pausedToday": "明日まで音声のみ"
     },
-    "subtitle": "参加すると会議室に歩いて入ります。フロアでの 2 人の通話は数えません。",
     "alsoOn": "ほかに開催中",
     "emptyRoom": "まだ誰もいません",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "明日リセット",
       "pausedMonth": "使い切りました：{date} までビデオは停止中",
       "pausedToday": "使い切りました：明日までビデオは停止中",
-      "counts": "ミーティングに 2 人以上いる間だけ、人数に関係なく 1 時間として数えます。",
-      "lobby": "デモオフィスでは 1 日 {hours} 時間のミーティングビデオを共有します。",
       "more": "時間を増やす",
       "askAdmin": "管理者が時間を増やせます。"
     },
-    "how": {
-      "title": "ミーティングのしくみ",
-      "walk": "参加すると会議室に歩いて入ります。出れば退出です。",
-      "speakers": "話している人だけがビデオを送るので、ミーティングは軽いままです。",
-      "voice": "月の時間を使い切っても、ミーティングは音声で続きます。"
-    }
+    "pin": "固定",
+    "unpin": "固定を解除",
+    "others": "ほか {count} 人",
+    "ready": {
+      "blocked": "ブラウザがカメラを許可しませんでした",
+      "cameraOff": "カメラはオフです"
+    },
+    "free": {
+      "title": "今話せる人",
+      "meet": "会う",
+      "more": "ほか {count} 人"
+    },
+    "readyTitle": "参加の準備はできましたか？",
+    "joinNow": "今すぐ参加",
+    "inMeeting": "この会議の参加者",
+    "asked": "依頼済み"
   },
   "help": {
     "title": "ヘルプとフィードバック",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "このオフィスのプラン",
     "members": "メンバー {used}/{seats} 人",
-    "freeNote": "無料、すべての機能つき。",
+    "freeNote": "毎月{hours}時間の会議、標準画質のビデオ。",
     "renews": "{date} に更新",
     "ends": "{date} に終了し、その後は無料プラン",
     "perMonth": "/月",
@@ -644,15 +648,12 @@
     "switchTitle": "{plan} に変更しますか？",
     "switchBody": "今期間の残りの差額は Creem がすぐに請求または返金します。フロアの誰にも影響はありません。",
     "cancelTitle": "プランを解約しますか？",
-    "cancelBody": "プランは {date} まで続き、その後オフィスは無料プラン（メンバー 3 人、ミーティング時間 月 5 時間）に戻ります。誰も外されませんが、新しい人は参加できず、フロアに同時にいられるのは 3 人までです。",
-    "cancelBodyNow": "この期間の終わりに、オフィスは無料プラン（メンバー 3 人、ミーティング時間 月 5 時間）に戻ります。誰も外されませんが、新しい人は参加できず、フロアに同時にいられるのは 3 人までです。",
     "moreSeats": "席を増やす",
     "membersLabel": "メンバー",
     "hoursLabel": "ミーティング時間",
     "hours": "{used} / {allowance} 時間",
     "hoursResets": "{date} にリセット",
     "hoursUsedUp": "今月のミーティング時間を使い切りました。{date} までミーティングは音声のみです。上位プランにするとすぐにビデオが戻ります。",
-    "hoursExplained": "ミーティング時間は、ミーティングに 2 人以上がいる時間を数えます。フロアでの 2 人の通話は数えません。使い切ると、1 日までミーティングは音声で続きます。",
     "payment": "支払い",
     "cardUnknown": "Creem に登録済みのカード",
     "update": "更新",
@@ -681,7 +682,6 @@
     "endingNote": "プランは {date} に終了します。続ければ何も変わりません。",
     "seatsFree": "空き {count} 席",
     "seatsFull": "すべての席が埋まっています",
-    "topPlan": "最上位のプランです。{count} 人を超えるなら、ご連絡ください。ご用意します。",
     "usageOf": "{used} / {total}",
     "pillTrial": "お試し",
     "trialNote": "チームは {date} まで {plan} をお試し中です。その後はプランを選ばない限り、オフィスは無料プラン（最大 {seats} 人）になります。",
@@ -690,21 +690,25 @@
       "note": "月額・米ドル・税別",
       "current": "現在",
       "trial": "お試し",
-      "fits": "チームに合う",
       "perMonth": "/月",
-      "forever": "ずっと",
-      "perPerson": "1 人あたり {price}",
-      "noCard": "カード不要",
       "people": "最大 {count} 人",
       "hours": "ミーティング 月 {count} 時間",
-      "everything": "すべての機能",
       "keep": "{plan} を続ける",
       "choose": "{plan} を選ぶ",
       "upgrade": "{plan} にアップグレード",
       "moveTo": "{plan} に変更",
       "currentButton": "現在のプラン",
-      "afterTrial": "{date} から",
-      "tooSmall": "{count} 人まで。このオフィスは {members} 人"
+      "tooSmall": "{count} 人まで。このオフィスは {members} 人",
+      "best": "いちばんお得",
+      "taglinePlus": "基本のすべて",
+      "taglinePro": "オフィスのすべてを、最高の状態で",
+      "everythingIn": "{plan}のすべてに加えて",
+      "times": "Plus の{count}倍",
+      "hd": "会議でHDビデオ",
+      "sd": "標準画質のビデオ",
+      "support": "チームからの優先サポート",
+      "included": "プランに含まれるもの",
+      "upgradeTitle": "アップグレード"
     },
     "upgrade": {
       "fullTitle": "{office} は満員です",
@@ -718,8 +722,16 @@
       "membersOnly": "{office} のプランを変えられるのは管理者だけです。",
       "doneTitle": "{plan} になりました",
       "doneBody": "ありがとうございます。Creem から領収書が届きます。",
-      "doneLine": "{people} 人分の席と、それに付くミーティング時間。"
+      "doneLine": "{plan}のすべてがオフィス全体で使えるようになりました。"
     },
-    "trialWaiting": "{free} 人より多く招待すると、チーム全員が {plan} を {days} 日間無料で使えます。カードは不要です。"
+    "trialWaiting": "{free} 人より多く招待すると、チーム全員が {plan} を {days} 日間無料で使えます。カードは不要です。",
+    "cancelWhen": "プランは {date} まで続き、その後オフィスは無料プランになります。",
+    "cancelAnyway": "それでも解約する",
+    "loseSeatsOver": "メンバーは {members} 人いますが、フロアに同時にいられるのは {free} 人だけになり、新しい人は参加できません。",
+    "loseSeats": "定員が {seats} 人から {free} 人になります。",
+    "loseHours": "ミーティング時間が月 {hours} 時間から {free} 時間になり、超えると音声のみになります。",
+    "loseNothing": "誰も外されず、何も削除されません。",
+    "downsell": "または {plan} でチームをそのままに：月 {price}、最大 {seats} 人。",
+    "loseProPerks": "HDビデオと優先サポートが終了します。"
   }
 }

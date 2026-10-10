@@ -179,7 +179,6 @@
     "members": "{count, plural, one {# lid} other {# leden}}",
     "dmIntro": "Hier begint je gesprek met {name}. Alleen jullie twee kunnen het zien.",
     "channelIntroTitle": "Welkom in #{channel}",
-    "generalIntro": "Hier praat heel {office}. Iedereen in het kantoor kan meelezen, en het blijft als je de vloer verlaat.",
     "channelIntro": "Dit is het begin van #{channel}. Iedereen in het kantoor kan meelezen.",
     "sayTo": "Bericht aan {name}",
     "channelHint": "Kleine letters, geen spaties. Iedereen in het kantoor kan meedoen.",
@@ -207,7 +206,8 @@
     "delete": "Intrekken",
     "deleteConfirm": "Intrekken?",
     "save": "Opslaan",
-    "cancel": "Annuleren"
+    "cancel": "Annuleren",
+    "showAllPeople": "Alle {count} tonen"
   },
   "proximity": {
     "call": "Bellen",
@@ -451,7 +451,6 @@
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
-      "seatsFree": "Er is nog plek.",
       "onFloorNow": "{count} nu op de vloer",
       "copied": "Gekopieerd",
       "remove": "Verwijderen",
@@ -468,20 +467,19 @@
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
       "linkCopied": "Uitnodigingslink gekopieerd",
-      "nobodyOnFloor": "Nog niemand anders.",
-      "seatsLeft": "{count, plural, one {# plek vrij — nodig iemand uit} other {# plekken vrij — nodig iemand uit}}",
-      "seatsNote": "Een plek is een lid. Wie vertrekt geeft die vrij; offline zijn niet.",
-      "allSeatsTaken": "Alle plekken zijn bezet",
-      "allSeatsTakenBody": "Wie vertrekt, maakt een plek vrij. Kantoren met meer plekken komen eraan.",
       "yourProfile": "Je profiel",
       "ownOfficeTitle": "Een vloer als deze voor je team?",
       "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen.",
       "linkTitle": "Uitnodigingslink",
-      "linkBody": "Iedereen met deze link kan meedoen met een account, zolang er plek is.",
       "copy": "Kopiëren",
       "resetLink": "Link vernieuwen",
       "resetTitle": "Uitnodigingslink vernieuwen?",
-      "resetBody": "De huidige link werkt meteen niet meer en een nieuwe neemt het over. Wie al in het kantoor zit, blijft."
+      "resetBody": "De huidige link werkt meteen niet meer en een nieuwe neemt het over. Wie al in het kantoor zit, blijft.",
+      "everyone": "Iedereen",
+      "onFloor": "Op de vloer",
+      "search": "Personen zoeken",
+      "noMatch": "Niemand komt overeen.",
+      "seatsOpen": "{count, plural, one {# plek vrij} other {# plekken vrij}}"
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",
@@ -534,7 +532,6 @@
     "you": "Jij",
     "more": "+{count} meer",
     "leave": "Verlaten",
-    "aloneTitle": "Jij bent hier als eerste",
     "aloneShort": "Wachten op anderen",
     "open": "Meeting openen",
     "nobodyToAsk": "Er is nu niemand anders van kantoor op de vloer.",
@@ -561,7 +558,6 @@
       "pausedMonth": "alleen geluid tot {date}",
       "pausedToday": "alleen geluid tot morgen"
     },
-    "subtitle": "Doe mee om de vergaderruimte in te lopen. Gesprekken met z'n tweeën op de vloer tellen nooit.",
     "alsoOn": "Ook bezig",
     "emptyRoom": "Nog niemand binnen",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "Begint morgen opnieuw",
       "pausedMonth": "Op: video is gepauzeerd tot {date}",
       "pausedToday": "Op: video is gepauzeerd tot morgen",
-      "counts": "Een uur telt zolang er twee of meer mensen in een vergadering zijn, hoeveel ook.",
-      "lobby": "Het demokantoor deelt {hours} uur vergadervideo per dag.",
       "more": "Meer uren",
       "askAdmin": "Een beheerder kan meer uren regelen."
     },
-    "how": {
-      "title": "Zo werken vergaderingen",
-      "walk": "Meedoen loopt je de vergaderruimte in. Loop eruit om te vertrekken.",
-      "speakers": "Alleen wie praat stuurt video, dus vergaderingen blijven licht.",
-      "voice": "Na de uren van de maand gaan vergaderingen door met geluid."
-    }
+    "pin": "Vastzetten",
+    "unpin": "Losmaken",
+    "others": "{count, plural, one {# ander} other {# anderen}}",
+    "ready": {
+      "blocked": "De browser stond de camera niet toe",
+      "cameraOff": "Camera staat uit"
+    },
+    "free": {
+      "title": "Vrij om te praten",
+      "meet": "Afspreken",
+      "more": "en nog {count}"
+    },
+    "readyTitle": "Klaar om deel te nemen?",
+    "joinNow": "Nu deelnemen",
+    "inMeeting": "In deze meeting",
+    "asked": "Gevraagd"
   },
   "help": {
     "title": "Hulp en feedback",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "Dit kantoor zit op",
     "members": "{used} van {seats} leden",
-    "freeNote": "Gratis, met alle functies.",
+    "freeNote": "{hours} meetinguren per maand, standaardvideo.",
     "renews": "Verlengt op {date}",
     "ends": "Eindigt op {date}, daarna het gratis abonnement",
     "perMonth": "per maand",
@@ -644,15 +648,12 @@
     "switchTitle": "Overstappen naar {plan}?",
     "switchBody": "Creem rekent het verschil voor de rest van de periode meteen af of crediteert het. Niemand op de vloer merkt er iets van.",
     "cancelTitle": "Abonnement opzeggen?",
-    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
-    "cancelBodyNow": "Aan het eind van deze periode gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
     "moreSeats": "Meer plekken",
     "membersLabel": "Leden",
     "hoursLabel": "Vergaderuren",
     "hours": "{used} van {allowance} u",
     "hoursResets": "Begint opnieuw op {date}",
     "hoursUsedUp": "De vergaderuren van deze maand zijn op: vergaderingen zijn tot {date} alleen met geluid. Een groter abonnement brengt video meteen terug.",
-    "hoursExplained": "Vergaderuren tellen de tijd dat er twee of meer mensen in een vergadering zijn. Gesprekken met z'n tweeën op de vloer tellen nooit mee. Zijn ze op, dan gaan vergaderingen tot de 1e verder met geluid.",
     "payment": "Betaling",
     "cardUnknown": "Kaart opgeslagen bij Creem",
     "update": "Wijzigen",
@@ -681,7 +682,6 @@
     "endingNote": "Het abonnement stopt op {date}. Houd het en er verandert niets.",
     "seatsFree": "{count, plural, one {# plek vrij} other {# plekken vrij}}",
     "seatsFull": "Alle plekken zijn bezet",
-    "topPlan": "Je zit op ons grootste abonnement. Ruimte nodig voor meer dan {count} mensen? Schrijf ons, dan regelen we het.",
     "usageOf": "{used} van {total}",
     "pillTrial": "Proef",
     "trialNote": "Je team probeert {plan} tot {date}. Daarna staat het kantoor op Gratis, voor tot {seats} mensen, tenzij je een abonnement kiest.",
@@ -690,21 +690,25 @@
       "note": "Per maand, in Amerikaanse dollars, exclusief btw",
       "current": "Huidig",
       "trial": "Proef",
-      "fits": "Past bij je team",
       "perMonth": "per maand",
-      "forever": "voor altijd",
-      "perPerson": "{price} per persoon",
-      "noCard": "Geen kaart nodig",
       "people": "Tot {count} mensen",
       "hours": "{count} vergaderuren per maand",
-      "everything": "Alle functies",
       "keep": "{plan} houden",
       "choose": "{plan} kiezen",
       "upgrade": "Upgraden naar {plan}",
       "moveTo": "Naar {plan}",
       "currentButton": "Huidig abonnement",
-      "afterTrial": "Vanaf {date}",
-      "tooSmall": "Voor {count}; het kantoor heeft {members}"
+      "tooSmall": "Voor {count}; het kantoor heeft {members}",
+      "best": "Beste waarde",
+      "taglinePlus": "De basis",
+      "taglinePro": "Het hele kantoor, op z'n best",
+      "everythingIn": "Alles uit {plan}, en",
+      "times": "{count}× Plus",
+      "hd": "HD-video in meetings",
+      "sd": "Standaardvideo",
+      "support": "Voorrang bij hulp van ons team",
+      "included": "Inbegrepen in je abonnement",
+      "upgradeTitle": "Upgraden"
     },
     "upgrade": {
       "fullTitle": "{office} is vol",
@@ -718,8 +722,16 @@
       "membersOnly": "Alleen de beheerders van {office} kunnen het abonnement wijzigen.",
       "doneTitle": "Jullie zitten op {plan}",
       "doneBody": "Bedankt. Het bonnetje komt eraan van Creem.",
-      "doneLine": "Ruimte voor {people} mensen, met de vergaderuren die erbij horen."
+      "doneLine": "Alles uit {plan} staat aan voor het hele kantoor."
     },
-    "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig."
+    "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig.",
+    "cancelWhen": "Het abonnement loopt tot {date}. Daarna staat het kantoor op Gratis.",
+    "cancelAnyway": "Toch opzeggen",
+    "loseSeatsOver": "Er zijn {members} leden, maar maar {free} kunnen tegelijk op de vloer, en er kan niemand nieuw bij.",
+    "loseSeats": "Plek voor {free} in plaats van {seats} mensen.",
+    "loseHours": "Vergaderuren gaan van {hours} naar {free} per maand; daarna zijn vergaderingen alleen met geluid.",
+    "loseNothing": "Niemand wordt verwijderd en er wordt niets gewist.",
+    "downsell": "Of houd het team bij elkaar op {plan}: {price} per maand, voor tot {seats} mensen.",
+    "loseProPerks": "HD-video en voorrang bij hulp stoppen."
   }
 }

@@ -1584,25 +1584,28 @@
       "eyebrow": "Preços",
       "title": "Preço por escritório,",
       "muted": "não por pessoa.",
-      "body": "Comece grátis. Mude de plano quando a equipe crescer.",
+      "body": "Comece grátis. O Pro é o escritório completo, para equipes de qualquer tamanho.",
       "soon": "Em breve",
       "forever": "para sempre",
       "month": "por mês",
-      "people": "Até {count} pessoas",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "Para testar com sua equipe"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "O essencial"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "O escritório completo, no seu melhor"
       },
       "tax": "Preços mensais, sem impostos.",
-      "perPerson": "{price} por pessoa",
-      "freeLine": "Sem cartão",
       "choose": "Escolher {plan}",
-      "note": "Todos os planos têm todos os recursos. Chamadas nunca são contadas; reuniões em grupo têm 5, 30 ou 60 horas por mês."
+      "note": "Chamadas entre duas pessoas nunca contam. Cada preço vale para o escritório inteiro, não por pessoa.",
+      "best": "Melhor custo-benefício",
+      "perksStandard": "Vídeo padrão · {hours} horas de reunião por mês",
+      "perksPro": "Vídeo HD · {hours} horas de reunião · ajuda prioritária"
     },
     "source": {
       "star": "Dar uma estrela no GitHub",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: um só preço para o escritório inteiro",
-      "description": "O TinyFloor é grátis para até 3 pessoas. O Plus custa $19 por mês para 10 pessoas e o Pro $49 por mês para 25, com preço por escritório, não por pessoa."
+      "description": "O TinyFloor é grátis para começar. O Plus custa US$ 19 por mês; o Pro, com vídeo HD, o dobro de horas de reunião e ajuda prioritária, US$ 49 por mês. Preço por escritório, não por pessoa."
     },
     "title": "Um só preço para o escritório inteiro.",
     "muted": "Não um por pessoa.",
-    "body": "Comece grátis com até 3 pessoas e suba de plano quando a equipe crescer.",
+    "body": "Comece grátis e vá para o Pro para o escritório completo: vídeo HD, o dobro do tempo de reunião e ajuda prioritária.",
     "seats": {
       "title": "Dez pessoas,",
       "muted": "uma conta pequena.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, para o escritório inteiro"
     },
     "table": {
-      "title": "Todo plano,",
-      "muted": "todos os recursos.",
+      "title": "Compare os planos,",
+      "muted": "lado a lado.",
       "people": "Pessoas",
       "hours": "Horas de reunião por mês",
       "hoursNote": "Só reuniões em grupo",
       "calls": "Chamadas entre duas pessoas",
-      "callsNote": "Nunca são contadas"
+      "callsNote": "Nunca são contadas",
+      "video": "Vídeo nas reuniões",
+      "standard": "Padrão",
+      "hd": "HD",
+      "support": "Ajuda prioritária"
     },
     "notes": {
       "title": "Bom saber.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Impostos no checkout",
         "body": "Os preços estão em dólares americanos. O Creem, nosso revendedor, adiciona impostos sobre vendas ou IVA no pagamento."
-      },
-      "bigger": {
-        "title": "Mais de 25 pessoas?",
-        "body": "Dê a cada equipe um escritório próprio, ou escreva para {email} e a gente conversa."
       }
     }
   },

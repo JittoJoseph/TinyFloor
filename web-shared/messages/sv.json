@@ -87,7 +87,6 @@
     "youLower": "du",
     "joined": "Med sedan {date}",
     "yourProfile": "Din profil",
-    "leaveOffice": "Lämna kontoret",
     "leave": "Lämna",
     "trialLeft": "{plan} på prov · {count, plural, one {# dag} other {# dagar}} kvar",
     "choosePlan": "Välj en plan",

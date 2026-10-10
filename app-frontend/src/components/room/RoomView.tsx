@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/lib/i18n/navigation";
 import { AlertCircle, Check, UserPlus } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import ControlBar from "@/components/ControlBar";
@@ -50,13 +49,10 @@ export interface RoomViewProps {
   title: string;
   user: { id: string; displayName: string; character: string };
   ticketFor: () => Promise<RoomTicket>;
-  /** A path worth sharing from inside the room, if there is one. */
-  sharePath?: string;
-  /**
-   * In an office, where inviting happens (its People): the floor then keeps no
-   * invite button of its own, and "invite" in the people list goes there.
-   */
-  inviteHref?: string;
+  /** The link that brings someone here: null while it loads, absent where there is none. */
+  invitePath?: string | null;
+  /** Invite over the floor's top right too: the lobby always, an office until someone else joins. */
+  inviteChip?: boolean;
   /** Where "back" goes when the room lets go of you. */
   leaveHref: string;
   /** Where this place's settings are, for the dock's gear. */
@@ -65,10 +61,10 @@ export interface RoomViewProps {
 
 /**
  * The floor: the map, and only what has to float over it — where you are and
- * who is here (top left), Invite (top right), and your microphone and camera
+ * who is here (top left), Invite (top right, while it's worth asking), and your microphone and camera
  * (bottom). Everything else lives in the rail.
  */
-export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveHref, settingsHref }: RoomViewProps) {
+export function RoomView({ title, user, ticketFor, invitePath, inviteChip = false, leaveHref, settingsHref }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
   const [reconnecting, setReconnecting] = useState(false);
@@ -76,7 +72,6 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
   const everyone = useFloor();
-  const router = useRouter();
   const reduce = useReducedMotion();
   const peopleBox = useRef<HTMLDivElement>(null);
 
@@ -99,18 +94,14 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
 
   // The share sheet on phones, the clipboard on a desktop; the button only says
   // something when the link landed on the clipboard, where nothing else would.
+  const canInvite = invitePath !== undefined;
   const invite = useCallback(async () => {
-    if (inviteHref) {
-      setPeopleOpen(false);
-      router.push(inviteHref);
-      return;
-    }
-    if (!sharePath) return;
-    const result = await shareLink(shareUrl(sharePath), title, t("inviteText", { room: title }));
+    if (!invitePath) return;
+    const result = await shareLink(shareUrl(invitePath), title, t("inviteText", { room: title }));
     if (result !== "copied") return;
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [inviteHref, router, sharePath, title, t]);
+  }, [invitePath, title, t]);
 
   useEffect(() => {
     const onConnection = (event: Event) =>
@@ -167,7 +158,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
               {reconnecting ? t("reconnecting") : title}
             </span>
             <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-muted py-0.5 ps-0.5 pe-2 [--face-ring:var(--ui-muted)]">
-              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} />
+              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} more={false} />
               <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{count}</span>
             </span>
           </button>
@@ -199,8 +190,8 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
                         />
                       ))}
                     </div>
-                    {(sharePath || inviteHref) && (
-                      <Button variant="secondary" size="sm" onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
+                    {canInvite && (
+                      <Button variant="secondary" size="sm" disabled={!invitePath} onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("invite")}
                       </Button>
@@ -222,8 +213,8 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
                     </span>
                     <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
                     <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
-                    {(sharePath || inviteHref) && (
-                      <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
+                    {canInvite && (
+                      <Button size="sm" disabled={!invitePath} onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("inviteSomeone")}
                       </Button>
@@ -235,7 +226,7 @@ export function RoomView({ title, user, ticketFor, sharePath, inviteHref, leaveH
           </AnimatePresence>
         </div>
 
-        {sharePath && !inviteHref && <InviteChip copied={copied} onClick={invite} />}
+        {inviteChip && invitePath && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
       <Joystick />
@@ -300,7 +291,7 @@ function RoomEnded({
 }
 
 /**
- * The lobby's invite, matching the chip opposite it: frosted, one line, and
+ * Invite over the floor, matching the chip opposite it: frosted, one line, and
  * the label trading places with "Link copied" when it has done its job.
  */
 function InviteChip({ copied, onClick }: { copied: boolean; onClick: () => void }) {

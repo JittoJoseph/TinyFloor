@@ -261,3 +261,14 @@ body {
     animation: none;
   }
 }
+
+/* A voice in a meeting tile: each bar rises and falls (MeetingTile). */
+@keyframes voice {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

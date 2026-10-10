@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Member, type Office, type OfficeOverview } from "@/lib/api";
+import { api, ApiError, type Office, type OfficeOverview } from "@/lib/api";
 import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
@@ -26,12 +26,11 @@ import { ChatNudges } from "./ChatNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
+import { callManager } from "@/lib/CallManager";
 
 interface OfficeContext {
   office: Office;
-  /** Everyone in the office, for chat's direct messages and the People view. */
-  members: Member[];
-  /** The office as the People view shows it: members, invitations, who is on the floor. */
+  /** The office as the People view shows it: its members and seats. */
   overview: OfficeOverview;
   /** When `overview` was read, so a view can tell whether it's worth reading again. */
   readAt: number;
@@ -76,7 +75,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   // The office and everyone in it, read once here for every screen in the shell.
   const [read, setRead] = useState<{ overview: OfficeOverview; at: number } | null>(null);
   const [gone, setGone] = useState(false);
-  // Invite on the floor shares the office's one link; until it has loaded, it opens People.
+  // Inviting from the floor shares the office's one link.
   const inviteLink = useInviteLink(read ? officeId : undefined);
   const { unread } = useChat();
   // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
@@ -86,10 +85,11 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
 
+  // The office is read on arrival, and again by any screen that changed it; both land here.
+  const load = useCallback(() => api.overview(officeId).then((found) => setRead({ overview: found, at: Date.now() })), [officeId]);
   const refresh = useCallback(async () => {
-    const found = await api.overview(officeId);
-    setRead({ overview: found, at: Date.now() });
-  }, [officeId]);
+    await load();
+  }, [load]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -97,25 +97,21 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       router.replace(`/auth?${new URLSearchParams({ redirect: officePath(officeId) })}`);
       return;
     }
-    let cancelled = false;
-    api
-      .overview(officeId)
-      .then((found) => {
-        if (cancelled) return;
-        setRead({ overview: found, at: Date.now() });
-      })
-      .catch((error) => {
-        if (!cancelled && error instanceof ApiError && error.status === 404) setGone(true);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [isLoading, user, officeId, router]);
+    load().catch((error) => {
+      if (error instanceof ApiError && error.status === 404) setGone(true);
+    });
+  }, [isLoading, user, load, officeId, router]);
 
   // Opening the app again brings you back here.
   useEffect(() => {
     if (office?.id) rememberOffice(office.id);
   }, [office?.id]);
+
+  // HD video in meetings is Pro's; anywhere else, and on leaving, the standard layer.
+  useEffect(() => {
+    callManager.setHd(office?.plan === "pro");
+    return () => callManager.setHd(false);
+  }, [office?.plan]);
 
   // One chat socket for the whole office, opened with the shell rather than
   // with the chat view, so unread counts work while you are on the floor.
@@ -188,15 +184,14 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       settings: settingsPath,
       meetings,
     },
-    sharePath: inviteLink ?? floor,
-    officesOnly: () => {},
   };
 
-  // Out of the office, to its door (there is no dashboard): walk back in, or go to another.
-  const leave = { href: `/?${new URLSearchParams({ left: office.id })}`, label: ts("leaveOffice") };
+  // An office is home: there's no button out of it, only the switcher to another. Where the
+  // room itself sends you out (open elsewhere, removed), it's to the office's door.
+  const door = `/?${new URLSearchParams({ left: office.id })}`;
 
   return (
-    <Context.Provider value={{ office, members, overview: read.overview, readAt: read.at, refresh }}>
+    <Context.Provider value={{ office, overview: read.overview, readAt: read.at, refresh }}>
       <UpgradeProvider>
         <PlaceProvider value={place}>
           <AppShell
@@ -216,17 +211,17 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
               { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
             ]}
             settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-            leave={leave}
-            you={<YouMenu onFloor settingsHref={settingsPath} leave={leave} />}
+            you={<YouMenu onFloor settingsHref={settingsPath} />}
             floor={
               <>
                 <RoomView
                   title={office.name}
                   user={user}
                   ticketFor={() => api.officeTicket(office.id)}
-                  sharePath={inviteLink ?? undefined}
-                  inviteHref={inviteLink ? undefined : people}
-                  leaveHref={leave.href}
+                  invitePath={inviteLink}
+                  // Once someone else has joined, inviting lives in People, not over the floor.
+                  inviteChip={members.length <= 1}
+                  leaveHref={door}
                   settingsHref={settingsPath}
                 />
                 {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}

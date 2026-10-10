@@ -116,14 +116,51 @@ card without asking anyone, and the gap to per-person pricing is the pitch.
 Revisit after 20 paying offices: if Plus sells easily, raise it for new offices
 first (`08` already found room up to $29 / $59).
 
+### Pro is the plan to have, whatever the team's size
+
+Decided 10 October. The plans used to differ only in people and meeting
+hours, which made Pro a "big team" plan and gave a three-person team no
+reason to look at it. Now they differ in how the office works, and Pro is
+the full office for any team:
+
+| | Free | Plus | Pro |
+|---|---|---|---|
+| Meeting hours a month | 5 | 30 | 60 (2× Plus) |
+| Video in meetings | Standard (360p) | Standard (360p) | **HD (720p)** |
+| Priority help from the team | – | – | **Yes** |
+| People | 3 | 10 | 25 |
+
+- **HD is a real gate, and a fair one.** It's the most expensive thing we
+  send (the big card at 800 kbps against 300), so it belongs to the plan
+  that pays for it, and it's felt in every meeting. Set from the office's
+  plan (`callManager.setHd`), applied when choosing what to receive
+  (`meetingStage`).
+- **How it's shown** (`PlanCards.tsx`): Pro first and marked *Best value*,
+  its card a little raised, "Everything in Plus, and" over its list, its
+  button the filled one. Plus says what it leaves out, struck through (HD
+  video, priority help): beside Pro it reads as the lesser deal, the decoy
+  pattern without a third plan. People come last in both lists; there's no
+  "a person" price anywhere. Prices first high, then low: the order that
+  anchors on the better plan.
+- **What each office sees.** Without a paid plan (Free, or trying one): both,
+  Pro first. On Plus: only Pro, as the way up. On Pro: no plans, only what Pro
+  includes, so the bill is a reminder of what it buys.
+- **No "write to us" for more seats**, and no yellow: limits are stated
+  plainly in neutral type.
+- The pricing page says the same: Pro on the black card, a tagline and what
+  each plan gives instead of headcount, and a table that leads with what
+  differs.
+
 ### Free for 3, and a team trial when a team moves in
 
 - **Free stays at 3 people and 5 meeting hours**, forever. Enough for someone
   to try TinyFloor with a colleague or two; not enough for a team to live in.
 - **The 4th person never meets a wall.** When a free office is full and one
-  more person comes to join, the office goes on **Plus for 14 days, no card**,
-  instead of turning them away. Everyone after them gets in too (10 seats,
-  30 meeting hours).
+  more person comes to join, the office goes on **Pro for 14 days, no card**,
+  instead of turning them away. Everyone after them gets in too (25 seats,
+  60 meeting hours, HD). The trial is the top plan on purpose: a team that has
+  had HD and the hours notices them gone, and Pro is the plan it already
+  knows; Plus is the step down, not the step up.
   - It starts when a team commits, not when two people poke around: pairs and
     trios testing the product stay on free and never spend it.
   - It removes the likely reason people left after trying an office: three
@@ -146,45 +183,71 @@ from people who forget to cancel. We don't want that revenue:
 - Creem reviews stores for dark patterns.
 - It's the opposite of the "one small bill" promise.
 
-**The honest version of "pay once, keep paying" is yearly** (below).
+### Monthly only
 
-### Yearly: at launch, two months free
+Decided 10 October: no yearly plan. One price per plan, monthly, cancel any
+time.
 
-$190 and $490 a year: cash up front, one fee instead of twelve, and much
-lower churn. Teams that pay yearly mostly forget about it in the good way.
-Needs a yearly product per plan in Creem and a monthly/yearly switch on the
-plan cards. **To decide** before go-live.
+### Free isn't offered inside the office
+
+Inside an office, Plan and billing and the upgrade dialog offer only paid
+plans (see above for which). An office on Free says so at the top; going back to Free is cancelling,
+a quiet link at the bottom. Its dialog says what the team would lose (who could
+be on the floor at once, the meeting hours), offers the smaller paid plan when
+the team fits it, and makes keeping the plan the main button. Cancelling stays
+one click away: nothing is hidden or made hard, which would only turn into
+refund requests and chargebacks.
 
 ### When to ask, and how
 
 | Moment | Who sees it | What they get |
 |---|---|---|
-| Making an office | the creator | **No plan step.** Name, the invite link, walk in. The note: free for 3; invite more and the team gets Plus free for 14 days. A plan picked on the pricing page still goes to checkout. |
-| Free office, 3 of 3 | admins | People and Plan and billing: "Invite more than 3 people and your whole team gets Plus free for 14 days." The invite button stays. |
-| 4th person joins | everyone | The trial starts. Plan and billing: "Your team is trying Plus until Oct 24", with Keep Plus. |
-| During the trial | everyone | The rail's office menu: "Plus trial · 9 days left"; admins also get "Choose a plan". |
+| Making an office | the creator | **No plan step.** Name, the invite link, walk in. The note: free for 3; invite more and the team gets Pro free for 14 days. A plan picked on the pricing page still goes to checkout. |
+| Free office, 3 of 3 | admins | People and Plan and billing: "Invite more than 3 people and your whole team gets Pro free for 14 days." The invite button stays. |
+| 4th person joins | everyone | The trial starts. Plan and billing: "Your team is trying Pro until Oct 24", with Keep Pro. |
+| During the trial | everyone | The rail's office menu: "Pro trial · 9 days left"; admins also get "Choose a plan". |
 | Inviting past the seats (trial used) | admins | The upgrade dialog, in place: "Northwind is full", the plan with room for everyone marked. |
 | Someone can't join (office full) | them | The invite page says the office is full. Telling its admins is still to build. |
-| 80% of meeting hours | admins | The meter on Meetings turns amber, with "Get more hours". |
+| 80% of meeting hours | admins | The hours line on Meetings darkens, with "Get more hours". |
 | Hours used up | everyone | "Video paused · voice until Nov 1"; admins get "Get more hours". |
-| Any time | admins | Plan and billing: every plan side by side, the current one marked. |
+| Any time | admins | Plan and billing: the plans worth moving to, Pro first. |
 
-One **upgrade dialog** serves these. It shows all three plans, the current one
-marked, the one that fixes the problem marked too, and checkout right there.
-Members see the same plans and who can change them.
+One **upgrade dialog** serves these. It shows the same plans as Plan and
+billing, Pro first and marked, and checkout right there. Members see the same
+plans and who can change them.
 
 ## What's built (10 October)
 
-- **The upgrade dialog** (`components/billing/Upgrade.tsx`): every plan, the
-  one that answers the reason marked, checkout in place. Opened from Meetings
+- **The upgrade dialog** (`components/billing/Upgrade.tsx`): the plans on
+  offer, Pro first, checkout in place. Opened from Meetings
   ("Get more hours", and the paused-video note), People (office full) and the
   rail's office menu.
-- **Plan and billing**: every plan side by side (`PlanCards.tsx`), the current
-  one marked; Choose, Upgrade, Move to, Keep (during a trial). The old "only
-  the next plan up" card is gone.
-- **Meetings**: the meeting room drawn from the floor with whoever's in it at
-  the table; the month's hours as a meter beside it with the plan and the way
-  to more; how meetings work.
+- **Plan and billing**: the plans on offer (`plansOnOffer`, `PlanCards.tsx`):
+  both on Free, Pro on Plus, and on Pro what it includes. Leaving a plan is
+  Cancel, which lists what the team loses (on Pro, HD video and priority help
+  first), offers the plan below, and keeps Keep as the main button.
+- **Meetings**: Meet's "Ready to join?". You on the left, big, with the mic
+  (the same switch as in a meeting) and the camera (whether you go in with it
+  on, remembered, previewed live with the mic's level). On the right the
+  office's meeting, one line of who's in it ("Priya, Ana, 17 others") and Join
+  now, built like the doors (a black bezel with a panel set in). Under them,
+  other meetings on now and who's free to talk, a meeting with them one press
+  away. The month's hours as one quiet line at the page's foot. No floor
+  drawing and no explaining how meetings work.
+- **In a meeting**: Meet's spotlight. One big card (what you pinned, a shared
+  screen, else whoever is talking once the last speaker has paused) and a
+  column of four: you, the people who spoke last, and "n others". Only those
+  cards' video is received, so a 25-person meeting costs about four streams,
+  and yours is never received. One bar under the stage: the time and the
+  meeting on the left, the controls in the middle, the people button on the
+  right, which opens who's in and "Ask people in", the only way to invite.
+  Tiles are flat cards: the circle without glow, a mic-off badge or moving
+  bars in the corner, a ring while talking. Nothing pulses. In a meeting: a grid in join order that
+  includes you; pin or a shared screen goes big with the rest in a column on
+  the right, as many as fit and a count of the rest.
+- **People**: one searchable list, you first, then whoever is on the floor;
+  the invite link and the seats side by side above it, with "Get more seats"
+  on the seats when they're all taken.
 - **Onboarding**: name, then the invite link, then the floor. The size and
   plan steps are gone; `/create?plan=` from the pricing page still goes to
   checkout after the name.
@@ -208,7 +271,6 @@ person. The work that matters most now is the first ten minutes:
 
 ## To decide
 
-- Yearly prices, and whether they launch with the store.
 - The price review after 20 paying offices.
 - Whether to say "Plus free for 14 days when your team moves in" on the pricing
   page once paid plans are on sale.

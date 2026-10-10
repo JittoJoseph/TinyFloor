@@ -14,6 +14,7 @@ import {
   Lock,
   MapIcon,
   MessageSquare,
+  MoreHorizontal,
   Plus,
   Search,
   SquarePen,
@@ -117,12 +118,15 @@ export function ChatView({ channel }: { channel?: string }) {
   // Images: the lobby asks for an office; an office says where they stand.
   const onFiles = (files: File[]) => {
     if (!files.length) return;
-    if (lobby) return place.officesOnly("attachments");
+    if (lobby) return place.officesOnly?.("attachments");
     say(place.plan === "free" ? t("attachmentsPaid") : t("attachmentsSoon"));
   };
 
   const channels = state.channels.filter((one) => one.kind === "channel");
   const dms = useDirectMessages(people, state.channels, me);
+  const [allPeople, setAllPeople] = useState(false);
+  // A big team's list is the people you talk to and whoever's on the floor; the rest are a click (or a search) away.
+  const listedDms = allPeople || dms.length <= DM_LIST ? dms : shortList(dms, (id) => open === dmChannelId(me, id) || floor.has(id));
   const presenceOf = (id: string): Presence => floor.get(id) ?? null;
 
   const lines: Line[] = (history ?? []).map((message) => ({
@@ -207,7 +211,7 @@ export function ChatView({ channel }: { channel?: string }) {
         onClickCapture={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          place.officesOnly("channels");
+          place.officesOnly?.("channels");
         }}
       >
         {trigger}
@@ -262,7 +266,7 @@ export function ChatView({ channel }: { channel?: string }) {
             </Section>
 
             <Section title={t("directMessages")}>
-              {dms.map(({ person, summary: dm }) => (
+              {listedDms.map(({ person, summary: dm }) => (
                 <Row
                   key={person.id}
                   href={place.paths.chat(dmChannelId(me, person.id))}
@@ -272,6 +276,14 @@ export function ChatView({ channel }: { channel?: string }) {
                   label={person.displayName}
                 />
               ))}
+              {listedDms.length < dms.length && (
+                <button type="button" onClick={() => setAllPeople(true)} className={addRowClass}>
+                  <span className={addIconClass}>
+                    <MoreHorizontal className="size-3.5" />
+                  </span>
+                  {t("showAllPeople", { count: dms.length })}
+                </button>
+              )}
               {dms.length === 0 ? (
                 <div className="mx-1 mt-1 rounded-xl border border-dashed border-border-strong p-3">
                   <p className="text-[12.5px] leading-relaxed text-muted-foreground">
@@ -371,7 +383,7 @@ export function ChatView({ channel }: { channel?: string }) {
               className="flex h-8 items-center gap-2 rounded-full border border-border ps-1 pe-2.5 transition-colors hover:bg-muted [--face-ring:var(--ui-card)]"
               title={t("members", { count: people.length })}
             >
-              <FaceStack seeds={people.map((one) => one.id)} size={22} max={3} />
+              <FaceStack seeds={people.map((one) => one.id)} size={22} max={3} more={false} />
               <span className="text-[12.5px] font-medium tabular-nums text-muted-foreground">{people.length}</span>
             </Link>
           )}
@@ -479,7 +491,7 @@ export function ChatView({ channel }: { channel?: string }) {
       if (id === "feedback") return t("lobbyFeedback");
       return t("lobbyGeneral");
     }
-    return id === GENERAL_CHANNEL ? t("generalIntro", { office: place.name }) : t("channelIntro", { channel: id });
+    return t("channelIntro", { channel: id });
   }
 }
 
@@ -502,6 +514,17 @@ function useDirectMessages(people: PlacePerson[], channels: ChannelSummary[], me
         return at !== 0 ? at : a.person.displayName.localeCompare(b.person.displayName);
       });
   }, [people, channels, me]);
+}
+
+/** Direct messages listed before a long team's list folds. */
+const DM_LIST = 10;
+
+/** The people you have talked to, then the ones also worth seeing now, up to the list's length. */
+function shortList<T extends { person: PlacePerson; summary?: ChannelSummary }>(dms: T[], worth: (id: string) => boolean): T[] {
+  const talked = dms.filter((one) => one.summary?.lastAt);
+  const room = Math.max(0, DM_LIST - talked.length);
+  const others = dms.filter((one) => !one.summary?.lastAt && worth(one.person.id)).slice(0, room);
+  return dms.filter((one) => talked.includes(one) || others.includes(one));
 }
 
 function Section({ title, children }: { title: string; children: ReactNode }) {

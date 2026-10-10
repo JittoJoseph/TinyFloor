@@ -96,7 +96,6 @@ function Incoming({ id, name }: { id: string; name: string }) {
     >
       <div className={cn(onBezel, "flex items-center gap-3.5 px-3 pb-3.5 pt-2.5")}>
         <span className="relative flex size-12 shrink-0">
-          <span className="absolute inset-0 animate-ping rounded-full bg-ok/40 [animation-duration:1.8s] motion-reduce:hidden" />
           <Face seed={id} size={48} />
         </span>
         <div className="min-w-0 flex-1">
@@ -139,7 +138,6 @@ function Calling({ id, name }: { id: string; name: string }) {
   return (
     <motion.div {...rise} role="status" className={cn(bezel, onBezel, "pointer-events-auto flex items-center gap-3 rounded-full p-1.5")}>
       <span className="relative flex size-9 shrink-0">
-        <span className="absolute inset-0 animate-ping rounded-full bg-white/20 [animation-duration:1.8s] motion-reduce:hidden" />
         <Face seed={id} size={36} />
       </span>
       <div className="min-w-0 pe-1 leading-tight">
@@ -226,7 +224,6 @@ function Invited({ invite }: { invite: MeetingInvite }) {
     >
       <div className={cn(onBezel, "flex items-center gap-3.5 px-3 pb-3.5 pt-2.5")}>
         <span className="relative flex size-12 shrink-0">
-          <span className="absolute inset-0 animate-ping rounded-full bg-ok/40 [animation-duration:1.8s] motion-reduce:hidden" />
           <Face seed={invite.from} size={48} />
         </span>
         <div className="min-w-0 flex-1">

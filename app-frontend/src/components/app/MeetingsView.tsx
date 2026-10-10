@@ -1,41 +1,33 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Footprints, Plus, Video } from "@/components/ui/icons";
-import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
+import { Plus } from "@/components/ui/icons";
+import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
-import { FaceStack } from "@/components/ui/Face";
-import { FloorScene, type Sitter } from "@/components/floor/FloorScene";
+import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
-import { MeetingUsageCard, VideoPausedNote } from "@/components/meetings/MeetingHours";
+import { MeetingUsageLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
+import { FreeToTalk, JoinPreview } from "@/components/meetings/BeforeJoining";
 import { usePlace } from "./place";
 
-/** The meeting room's six chairs on the map, as FloorScene names them: the far side first, then the near. */
-const CHAIRS: Array<[number, number]> = [
-  [6, 8],
-  [4, 8],
-  [8, 8],
-  [6, 11],
-  [4, 11],
-  [8, 11],
-];
-/** The meeting room on the map, in tiles. */
-const ROOM: [number, number, number, number] = [1, 5, 12, 8];
+/** Space between two pills, in pixels (gap-2). */
+const PILL_GAP = 8;
 
 /**
  * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
- * lobby. The main meeting is always here to drop into: the real meeting room,
- * with whoever is in it at the table. Anyone else's meetings sit under it, and
- * beside them the month's meeting hours and how meetings work. Joining one
- * walks your character into the meeting room, and the meeting itself happens
- * on this page. Inside one, the page is the meeting's stage.
+ * lobby, laid out the way Meet asks before a call, and as calm: you on the
+ * left with your mic and camera; on the right "Ready to join?", the office's
+ * own meeting, who's in it, the way in, and the way to a meeting of your own.
+ * Under them, on the same two columns, other meetings on now (under you) and
+ * who is free to talk (under the way in). At the foot, the meeting hours.
+ * Inside a meeting, the page is its stage.
  */
 export function MeetingsView() {
   const place = usePlace();
@@ -45,6 +37,9 @@ export function MeetingsView() {
   if (meeting && mine) return <MeetingStage meeting={mine} office={place.name} />;
   return <MeetingsLobby office={place.name} />;
 }
+
+/** The two columns everything on the page sits on, so what's under lines up with what's above. */
+const COLUMNS = "grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]";
 
 function MeetingsLobby({ office }: { office: string }) {
   const t = useTranslations("meetings");
@@ -63,42 +58,37 @@ function MeetingsLobby({ office }: { office: string }) {
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
-      <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
-        <header className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-            <p className="mt-1 text-[13.5px] text-muted-foreground">{t("subtitle")}</p>
+      <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col px-5 sm:px-10">
+        <VideoPausedNote className="mx-auto mt-5 w-fit max-w-full" />
+
+        <main className="flex flex-1 flex-col justify-center py-10">
+          <div className={cn(COLUMNS, "items-center")}>
+            <JoinPreview />
+            <JoinMain meeting={main} office={office} known={known} onNew={() => setStarting(true)} />
           </div>
-          <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 shrink-0 gap-2 px-4 text-[13px]">
-            <Plus className="size-4" />
-            <span className="max-sm:sr-only">{t("new")}</span>
-          </Button>
-        </header>
 
-        <VideoPausedNote className="mt-6 w-fit max-w-full" />
-
-        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_288px]">
-          <div className="min-w-0 space-y-3">
-            <MainMeeting meeting={main} office={office} known={known} />
-            {others.length > 0 && (
-              <section>
-                <h2 className="mb-2 mt-6 text-[13px] font-semibold text-foreground">{t("alsoOn")}</h2>
-                <ul className="grid gap-3 sm:grid-cols-2">
+          {/* What else is on, and who could be: under the way in, on its columns. */}
+          <div className={cn(COLUMNS, "mt-12 items-start empty:hidden")}>
+            {others.length > 0 ? (
+              <section className="[--face-ring:var(--ui-card)]">
+                <h2 className="mb-2 text-[12.5px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
+                <ul className="-mx-2">
                   {others.map((one) => (
-                    <li key={one.id}>
-                      <OtherMeeting meeting={one} office={office} />
-                    </li>
+                    <OtherMeeting key={one.id} meeting={one} office={office} />
                   ))}
                 </ul>
               </section>
+            ) : (
+              <span className="max-lg:hidden" />
             )}
+            <FreeToTalk />
           </div>
+        </main>
 
-          <aside className="space-y-3">
-            <MeetingUsageCard />
-            <HowMeetingsWork />
-          </aside>
-        </div>
+        {/* The month's hours, at the page's foot: there to see, never in the way. */}
+        <footer className="border-t border-border py-4">
+          <MeetingUsageLine />
+        </footer>
       </div>
 
       <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />
@@ -106,100 +96,149 @@ function MeetingsLobby({ office }: { office: string }) {
   );
 }
 
-/** How long a meeting has been going, with the live dot. */
-function Live({ meeting, className }: { meeting: MeetingInfo; className?: string }) {
+/** How long a meeting has been going. */
+function Elapsed({ meeting }: { meeting: MeetingInfo }) {
   const elapsed = useElapsed(meeting.startedAt);
-  return (
-    <span className={cn("inline-flex items-center gap-1.5 text-[12.5px] font-medium tabular-nums text-ok", className)}>
-      <span className="size-1.5 rounded-full bg-ok" aria-hidden />
-      {clock(elapsed)}
-    </span>
-  );
+  return <span className="tabular-nums">{clock(elapsed)}</span>;
 }
 
 /**
- * The office's own meeting, always there: the meeting room as it is on the
- * floor, with the first six people in it at the table (the rest as faces),
- * and the way in under it. While nobody is in, the chairs wait.
+ * The office's own meeting, as Meet's "Ready to join?": its name, how long
+ * it's been on and how many are in, who those are on one line, then the way
+ * in, and beside it the way to a meeting of your own.
  */
-function MainMeeting({ meeting, office, known }: { meeting: MeetingInfo; office: string; known: boolean }) {
+function JoinMain({ meeting, office, known, onNew }: { meeting: MeetingInfo; office: string; known: boolean; onNew: () => void }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   const live = meeting.members.length > 0;
-  const seated: Sitter[] = meeting.members.slice(0, CHAIRS.length).map((person, index) => ({
-    character: person.character,
-    name: person.name.split(" ")[0],
-    chair: CHAIRS[index],
-    status: "in_call",
-  }));
-  const extra = meeting.members.slice(CHAIRS.length);
 
   return (
-    <section className="overflow-hidden rounded-3xl border border-border bg-background">
-      <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted sm:aspect-[2/1]">
-        <FloorScene view={ROOM} sitting={seated} className={cn("absolute inset-0", !live && "opacity-90")} />
-        {/* A soft floor under the name, so the room reads as a place and the words stay legible. */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/90 to-transparent" />
-        {live && (
-          <span className="absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-background/90 px-2.5 py-1 text-[12px] font-medium text-foreground shadow-sm backdrop-blur">
-            <span className="size-1.5 rounded-full bg-ok" aria-hidden />
+    <section className="min-w-0 [--face-ring:var(--ui-card)]">
+      <p className="text-[13px] font-medium text-muted-foreground">{t("readyTitle")}</p>
+      <h1 className="mt-1.5 text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">{nameOf(meeting, office)}</h1>
+      <div className="mt-2.5 flex min-h-5 items-center gap-2 text-[13.5px] text-muted-foreground">
+        {live ? (
+          <>
+            <Elapsed meeting={meeting} />
+            <span aria-hidden>·</span>
             {t("people", { count: meeting.members.length })}
-          </span>
+          </>
+        ) : known ? (
+          t("emptyRoom")
+        ) : (
+          // Until the floor says who's in, nothing is claimed either way.
+          <span aria-hidden className="h-2.5 w-28 animate-pulse rounded-full bg-muted" />
         )}
       </div>
-      <div className="flex flex-wrap items-center gap-4 px-5 pb-5 pt-1 sm:px-6">
-        <div className="min-w-0 flex-1">
-          <h2 className="truncate text-[19px] font-semibold tracking-tight text-foreground">{nameOf(meeting, office)}</h2>
-          <div className="mt-1 flex items-center gap-2.5">
-            {live ? <Live meeting={meeting} /> : <span className="text-[12.5px] text-muted-foreground">{t("emptyRoom")}</span>}
-            {extra.length > 0 && <FaceStack seeds={extra.map((person) => person.id)} size={20} max={4} />}
-          </div>
-        </div>
-        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-11 shrink-0 gap-2 px-6 text-[14px]">
-          <Video className="size-4" />
-          {live ? t("join") : t("start")}
+      {live && <PeopleLine people={meeting.members} className="mt-4" />}
+      <div className="mt-7 flex flex-wrap items-center gap-2.5">
+        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-12 min-w-40 px-7 text-[15px]">
+          {live ? t("joinNow") : t("start")}
+        </Button>
+        <Button size="md" variant="secondary" onClick={onNew} className="h-12 gap-2 px-5 text-[14px]">
+          <Plus className="size-4" />
+          {t("new")}
         </Button>
       </div>
     </section>
   );
 }
 
+/** Another meeting going on now, as one quiet row: who's in it, its name, how long and how many, and the way in. */
 function OtherMeeting({ meeting, office }: { meeting: MeetingInfo; office: string }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-border bg-background p-3 ps-4 [--face-ring:var(--ui-background)]">
+    <li className="flex items-center gap-3 rounded-xl px-2 py-2">
+      <FaceStack seeds={meeting.members.map((person) => person.id)} size={24} max={3} />
       <div className="min-w-0 flex-1">
-        <p className="truncate text-[14px] font-semibold text-foreground">{nameOf(meeting, office)}</p>
-        <div className="mt-1.5 flex items-center gap-2.5">
-          <FaceStack seeds={meeting.members.map((member) => member.id)} size={24} max={4} />
-          <Live meeting={meeting} />
-        </div>
+        <p className="truncate text-[13.5px] font-medium text-foreground">{nameOf(meeting, office)}</p>
+        <p className="text-[12px] text-muted-foreground">
+          <Elapsed meeting={meeting} /> · {t("people", { count: meeting.members.length })}
+        </p>
       </div>
-      <Button size="sm" variant="secondary" onClick={() => callManager.joinMeeting(meeting.id)} className="h-9 px-4 text-[13px]">
+      <button
+        type="button"
+        onClick={() => callManager.joinMeeting(meeting.id)}
+        className="h-8 shrink-0 cursor-pointer rounded-full border border-border px-3.5 text-[12.5px] font-medium text-foreground transition-colors hover:bg-muted"
+      >
         {t("join")}
-      </Button>
+      </button>
+    </li>
+  );
+}
+
+/**
+ * Who is in a meeting, on one line: as many names as fit, then how many others.
+ * A hidden copy of every pill is measured to know where the line runs out.
+ */
+function PeopleLine({ people, className }: { people: MeetingPerson[]; className?: string }) {
+  const line = useRef<HTMLDivElement>(null);
+  const ruler = useRef<HTMLDivElement>(null);
+  const [fits, setFits] = useState(people.length);
+
+  useLayoutEffect(() => {
+    const box = line.current;
+    const measured = ruler.current;
+    if (!box || !measured) return;
+    const measure = () => {
+      const widths = [...measured.querySelectorAll<HTMLElement>("[data-pill]")].map((pill) => pill.offsetWidth);
+      const others = measured.querySelector<HTMLElement>("[data-others]")?.offsetWidth ?? 0;
+      const room = box.clientWidth;
+      let used = 0;
+      let count = 0;
+      for (const [index, width] of widths.entries()) {
+        const last = index === widths.length - 1;
+        const next = used + (index ? PILL_GAP : 0) + width;
+        // Room for this name, and for the count after it unless it's the last.
+        if (next + (last ? 0 : PILL_GAP + others) > room) break;
+        used = next;
+        count++;
+      }
+      setFits(Math.max(1, count));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, [people]);
+
+  const rest = people.length - fits;
+  return (
+    <div className={cn("relative overflow-hidden", className)}>
+      <div ref={line} className="flex gap-2 overflow-hidden">
+        {people.slice(0, fits).map((person) => (
+          <Pill key={person.id} person={person} />
+        ))}
+        {rest > 0 && <Others count={rest} />}
+      </div>
+      <div ref={ruler} aria-hidden className="invisible absolute start-0 top-0 flex gap-2 whitespace-nowrap">
+        {people.map((person) => (
+          <Pill key={person.id} person={person} />
+        ))}
+        <Others count={people.length} />
+      </div>
     </div>
   );
 }
 
-/** The three things worth knowing about meetings here, once, beside them. */
-function HowMeetingsWork() {
-  const t = useTranslations("meetings.how");
-  const row = (icon: ReactNode, text: string) => (
-    <li className="flex items-start gap-3">
-      <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-3.5">{icon}</span>
-      <span className="text-[12.5px] leading-relaxed text-muted-foreground">{text}</span>
-    </li>
-  );
+function Others({ count }: { count: number }) {
+  const t = useTranslations("meetings");
   return (
-    <section className="rounded-2xl border border-border bg-background p-5">
-      <h2 className="text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
-      <ul className="mt-3 space-y-3">
-        {row(<Footprints />, t("walk"))}
-        {row(<Video />, t("speakers"))}
-        {row(<AudioLines />, t("voice"))}
-      </ul>
-    </section>
+    <span
+      data-others
+      className="flex h-8 shrink-0 items-center rounded-full bg-muted px-3 text-[12.5px] font-medium tabular-nums text-muted-foreground"
+    >
+      {t("others", { count })}
+    </span>
+  );
+}
+
+function Pill({ person }: { person: MeetingPerson }) {
+  return (
+    <span data-pill className="flex h-8 min-w-0 max-w-[12rem] shrink-0 items-center gap-2 rounded-full bg-muted pe-3 ps-1">
+      <Face seed={person.id} size={24} />
+      <span className="truncate text-[12.5px] font-medium text-foreground">{person.name}</span>
+    </span>
   );
 }

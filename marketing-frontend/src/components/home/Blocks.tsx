@@ -285,10 +285,11 @@ export function Plans() {
 export function PlanCards({ className }: { className?: string }) {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
-  const plans: Array<{ key: "free" | "plus" | "pro"; price: number; people: number; featured?: boolean }> = [
-    { key: "free", price: 0, people: 3 },
-    { key: "plus", price: 19, people: 10, featured: true },
-    { key: "pro", price: 49, people: 25 },
+  // Pro is the one to have, on the bezel's black; the others say what they leave out by what they say.
+  const plans: Array<{ key: "free" | "plus" | "pro"; price: number; hours: number; featured?: boolean }> = [
+    { key: "free", price: 0, hours: 5 },
+    { key: "plus", price: 19, hours: 30 },
+    { key: "pro", price: 49, hours: 60, featured: true },
   ];
   const action = "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
 
@@ -308,8 +309,13 @@ export function PlanCards({ className }: { className?: string }) {
             >
               <div className="flex items-start justify-between gap-4 lg:flex-col lg:gap-7">
                 <div>
-                  <p className="text-[15px] font-semibold">{name}</p>
-                  <p className="mt-1 text-[13.5px] text-muted-foreground">{t("people", { count: plan.people })}</p>
+                  <p className="flex items-center gap-2 text-[15px] font-semibold">
+                    {name}
+                    {featured && (
+                      <span className="rounded-full bg-foreground px-2 py-0.5 text-[11px] font-semibold text-background">{t("best")}</span>
+                    )}
+                  </p>
+                  <p className="mt-1 text-[13.5px] text-muted-foreground">{t(`${plan.key}.tagline`)}</p>
                 </div>
                 <div className="text-end lg:text-start">
                   <p className="flex items-baseline justify-end gap-1.5 lg:justify-start">
@@ -317,7 +323,7 @@ export function PlanCards({ className }: { className?: string }) {
                     <span className="text-[13.5px] text-muted-foreground">{plan.price ? t("month") : t("forever")}</span>
                   </p>
                   <p className="mt-1.5 text-[12.5px] text-muted-foreground lg:mt-2">
-                    {plan.price ? t("perPerson", { price: `$${(plan.price / plan.people).toFixed(2)}` }) : t("freeLine")}
+                    {featured ? t("perksPro", { hours: plan.hours }) : t("perksStandard", { hours: plan.hours })}
                   </p>
                 </div>
               </div>
@@ -331,7 +337,7 @@ export function PlanCards({ className }: { className?: string }) {
                     plan={plan.key}
                     choose={t("choose", { plan: name })}
                     soon={t("soon")}
-                    className={cn(action, "bg-foreground text-background hover:bg-foreground/85")}
+                    className={cn(action, featured ? "bg-foreground text-background hover:bg-foreground/85" : "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]")}
                     soonClassName={cn(action, "bg-foreground/[0.07] text-muted-foreground")}
                   />
                 )}

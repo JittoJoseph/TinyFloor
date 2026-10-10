@@ -1584,25 +1584,28 @@
       "eyebrow": "价格",
       "title": "按办公室计价，",
       "muted": "而不是按人头。",
-      "body": "免费开始，团队壮大后再升级。",
+      "body": "免费开始。Pro 是完整的办公室，适合任何规模的团队。",
       "soon": "即将推出",
       "forever": "永久",
       "month": "/月",
-      "people": "最多 {count} 人",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "和你的团队试用"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "基础必备"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "完整的办公室，最佳状态"
       },
       "tax": "价格为月付，不含税。",
-      "perPerson": "每人 {price}",
-      "freeLine": "无需信用卡",
       "choose": "选择 {plan}",
-      "note": "每个方案功能齐全。通话从不计时；团队会议每月 5、30 或 60 小时。"
+      "note": "两人之间的通话永不计入。每个价格都按整个办公室计算，而不是按人。",
+      "best": "最超值",
+      "perksStandard": "标准画质视频 · 每月 {hours} 小时会议",
+      "perksPro": "高清视频 · {hours} 小时会议 · 优先支持"
     },
     "source": {
       "star": "在 GitHub 上点 Star",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "价格：整个办公室一个价",
-      "description": "TinyFloor 最多 3 人免费。Plus 每月 $19，可容纳 10 人；Pro 每月 $49，可容纳 25 人。按办公室收费，不按人头。"
+      "description": "TinyFloor 可免费开始。Plus 每月 19 美元；Pro 含高清视频、两倍会议时长和优先支持，每月 49 美元。按办公室定价，而不是按人。"
     },
     "title": "整个办公室，一个价格。",
     "muted": "不按人头收费。",
-    "body": "最多 3 人免费起步，团队壮大后再升级。",
+    "body": "免费开始，升级到 Pro 获得完整的办公室：高清视频、两倍会议时长和优先支持。",
     "seats": {
       "title": "十个人，",
       "muted": "一张小账单。",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus，整个办公室"
     },
     "table": {
-      "title": "每个套餐，",
-      "muted": "功能全都有。",
+      "title": "比较方案，",
+      "muted": "一目了然。",
       "people": "人数",
       "hours": "每月会议时长（小时）",
       "hoursNote": "仅限多人会议",
       "calls": "两人通话",
-      "callsNote": "不计入时长"
+      "callsNote": "不计入时长",
+      "video": "会议视频",
+      "standard": "标准",
+      "hd": "高清",
+      "support": "优先支持"
     },
     "notes": {
       "title": "须知。",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "结账时计税",
         "body": "价格以美元计。我们的经销商 Creem 会在付款时加收相应的销售税或增值税。"
-      },
-      "bigger": {
-        "title": "超过 25 人？",
-        "body": "给每个团队各开一个办公室，或写信到 {email} 与我们联系。"
       }
     }
   },

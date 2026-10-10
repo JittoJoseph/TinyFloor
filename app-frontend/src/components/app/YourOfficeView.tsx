@@ -6,7 +6,7 @@ import { ArrowRight, Check } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { rememberOffice } from "@/lib/pendingOffice";
+import { rememberPendingOffice } from "@/lib/pendingOffice";
 import { Face } from "@/components/ui/Face";
 
 /**
@@ -27,7 +27,7 @@ export function YourOfficeView() {
     event.preventDefault();
     if (!typed) return;
     // /create makes it as soon as there is an account to own it.
-    rememberOffice(typed);
+    rememberPendingOffice(typed);
     router.push(account ? "/create" : `/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
   };
 

@@ -179,7 +179,6 @@
     "members": "{count, plural, other {# 名成员}}",
     "dmIntro": "这是你与 {name} 对话的开始。只有你们两人能看到。",
     "channelIntroTitle": "欢迎来到 #{channel}",
-    "generalIntro": "这里是 {office} 所有人交流的地方。办公室里每个人都能看到，离开楼层后也会保留。",
     "channelIntro": "这是 #{channel} 的开始。办公室里每个人都能看到。",
     "sayTo": "给 {name} 发消息",
     "channelHint": "小写字母，不含空格。办公室里任何人都能加入。",
@@ -207,7 +206,8 @@
     "delete": "撤回",
     "deleteConfirm": "撤回这条消息？",
     "save": "保存",
-    "cancel": "取消"
+    "cancel": "取消",
+    "showAllPeople": "显示全部 {count} 人"
   },
   "proximity": {
     "call": "通话",
@@ -451,7 +451,6 @@
       "invite": "邀请",
       "seats": "{seats} 个席位中的 {used} 个",
       "seatsFull": "席位已满。",
-      "seatsFree": "还有空位。",
       "onFloorNow": "现在楼层里有 {count} 人",
       "copied": "已复制",
       "remove": "移除",
@@ -468,20 +467,19 @@
       "wrong": "没有成功，请再试一次。",
       "subtitle": "{office} 的所有人，以及谁可以进来。",
       "linkCopied": "邀请链接已复制",
-      "nobodyOnFloor": "还没有其他人。",
-      "seatsLeft": "{count, plural, other {还剩 # 个席位——邀请个人吧}}",
-      "seatsNote": "一个席位就是一名成员。有人离开就会空出席位，离线则不会。",
-      "allSeatsTaken": "席位已满",
-      "allSeatsTakenBody": "有人离开就会空出席位。更多席位的办公室即将推出。",
       "yourProfile": "你的资料",
       "ownOfficeTitle": "想给你的团队也来一层这样的楼吗？",
       "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。",
       "linkTitle": "邀请链接",
-      "linkBody": "有此链接的人都可以用账号加入，只要还有空位。",
       "copy": "复制",
       "resetLink": "重置链接",
       "resetTitle": "要重置邀请链接吗？",
-      "resetBody": "当前链接会立即失效，由新链接替代。已在办公室的人不受影响。"
+      "resetBody": "当前链接会立即失效，由新链接替代。已在办公室的人不受影响。",
+      "everyone": "全部",
+      "onFloor": "在楼层上",
+      "search": "搜索成员",
+      "noMatch": "没有匹配的人。",
+      "seatsOpen": "空余 {count} 个席位"
     },
     "office": "办公室",
     "goneTitle": "这个办公室不在了",
@@ -534,7 +532,6 @@
     "you": "你",
     "more": "另外 {count} 人",
     "leave": "离开",
-    "aloneTitle": "你是第一个到的",
     "aloneShort": "正在等待其他人",
     "open": "打开会议",
     "nobodyToAsk": "现在楼层上没有办公室的其他人。",
@@ -561,7 +558,6 @@
       "pausedMonth": "{date} 前仅限语音",
       "pausedToday": "明天前仅限语音"
     },
-    "subtitle": "加入即可走进会议室。楼层上两个人之间的通话从不计时。",
     "alsoOn": "正在进行",
     "emptyRoom": "还没有人",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "明天重置",
       "pausedMonth": "已用完：视频暂停至 {date}",
       "pausedToday": "已用完：视频暂停至明天",
-      "counts": "会议里有两人或以上时才计时，无论多少人都按一小时算。",
-      "lobby": "演示办公室每天共享 {hours} 小时会议视频。",
       "more": "获取更多时长",
       "askAdmin": "管理员可以获取更多时长。"
     },
-    "how": {
-      "title": "会议怎么用",
-      "walk": "加入后会走进会议室，走出去即离开。",
-      "speakers": "只有说话的人发送视频，会议因此很轻快。",
-      "voice": "本月时长用完后，会议会以语音继续。"
-    }
+    "pin": "固定",
+    "unpin": "取消固定",
+    "others": "另外 {count} 人",
+    "ready": {
+      "blocked": "浏览器未允许使用摄像头",
+      "cameraOff": "摄像头已关闭"
+    },
+    "free": {
+      "title": "现在有空的人",
+      "meet": "开会",
+      "more": "还有 {count} 人"
+    },
+    "readyTitle": "准备好加入了吗？",
+    "joinNow": "立即加入",
+    "inMeeting": "会议中的人",
+    "asked": "已邀请"
   },
   "help": {
     "title": "帮助与反馈",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "此办公室当前方案",
     "members": "{used}/{seats} 名成员",
-    "freeNote": "免费，包含全部功能。",
+    "freeNote": "每月 {hours} 小时会议，标准画质视频。",
     "renews": "{date} 续订",
     "ends": "{date} 结束，之后为免费方案",
     "perMonth": "/月",
@@ -644,15 +648,12 @@
     "switchTitle": "切换到 {plan}？",
     "switchBody": "Creem 会立即按本期剩余时间收取或退还差价。楼层上的人不会有任何感觉。",
     "cancelTitle": "取消方案？",
-    "cancelBody": "方案持续到 {date}，之后办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
-    "cancelBodyNow": "本期结束时，办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
     "moreSeats": "获取更多席位",
     "membersLabel": "成员",
     "hoursLabel": "会议时长",
     "hours": "{used} / {allowance} 小时",
     "hoursResets": "{date} 重置",
     "hoursUsedUp": "本月会议时长已用完：{date} 前会议仅限语音。升级方案可立即恢复视频。",
-    "hoursExplained": "会议时长计算会议中有两人或以上的时间。楼层上的两人通话从不计入。用完后，会议将以语音继续，直到下月 1 日。",
     "payment": "付款",
     "cardUnknown": "已在 Creem 保存的卡",
     "update": "更新",
@@ -681,7 +682,6 @@
     "endingNote": "方案将于 {date} 结束。保留它，一切照旧。",
     "seatsFree": "还有 {count} 个空位",
     "seatsFull": "座位已满",
-    "topPlan": "你已在使用最大的方案。需要容纳超过 {count} 人？联系我们，我们来安排。",
     "usageOf": "{used} / {total}",
     "pillTrial": "试用",
     "trialNote": "你的团队正在试用 {plan}，到 {date} 为止。之后，除非选择套餐，办公室会转为免费版，最多 {seats} 人。",
@@ -690,21 +690,25 @@
       "note": "按月计费，美元，不含税",
       "current": "当前",
       "trial": "试用",
-      "fits": "适合你的团队",
       "perMonth": "/月",
-      "forever": "永久",
-      "perPerson": "每人 {price}",
-      "noCard": "无需绑卡",
       "people": "最多 {count} 人",
       "hours": "每月 {count} 小时会议",
-      "everything": "全部功能",
       "keep": "保留 {plan}",
       "choose": "选择 {plan}",
       "upgrade": "升级到 {plan}",
       "moveTo": "换到 {plan}",
       "currentButton": "当前套餐",
-      "afterTrial": "{date} 起",
-      "tooSmall": "可容纳 {count} 人；办公室有 {members} 人"
+      "tooSmall": "可容纳 {count} 人；办公室有 {members} 人",
+      "best": "最超值",
+      "taglinePlus": "基础必备",
+      "taglinePro": "完整的办公室，最佳状态",
+      "everythingIn": "{plan} 的全部功能，以及",
+      "times": "Plus 的 {count} 倍",
+      "hd": "会议高清视频",
+      "sd": "标准画质视频",
+      "support": "团队优先支持",
+      "included": "你的方案包含",
+      "upgradeTitle": "升级"
     },
     "upgrade": {
       "fullTitle": "{office} 已满",
@@ -718,8 +722,16 @@
       "membersOnly": "只有 {office} 的管理员可以更改套餐。",
       "doneTitle": "已切换到 {plan}",
       "doneBody": "谢谢。Creem 会发送收据给你。",
-      "doneLine": "可容纳 {people} 人，以及随之而来的会议时长。"
+      "doneLine": "{plan} 的全部功能已为整个办公室开启。"
     },
-    "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。"
+    "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
+    "cancelWhen": "套餐有效期至 {date}，之后办公室转为免费版。",
+    "cancelAnyway": "仍要取消",
+    "loseSeatsOver": "办公室有 {members} 名成员，但同时只能有 {free} 人在楼层上，新人也无法加入。",
+    "loseSeats": "名额从 {seats} 人降到 {free} 人。",
+    "loseHours": "会议时长从每月 {hours} 小时降到 {free} 小时，超出后会议只能语音。",
+    "loseNothing": "不会移除任何人，也不会删除任何内容。",
+    "downsell": "或者用 {plan} 留住整个团队：每月 {price}，最多 {seats} 人。",
+    "loseProPerks": "高清视频和优先支持将停止。"
   }
 }

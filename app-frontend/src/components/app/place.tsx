@@ -40,10 +40,8 @@ export interface Place {
     /** The lobby's page about getting an office of your own. */
     yourOffice?: string;
   };
-  /** The link worth sharing to bring someone here. */
-  sharePath: string;
-  /** In the lobby: explain that this needs an office, and offer to make one. */
-  officesOnly: (feature: OfficeFeature) => void;
+  /** In the lobby: explain that this needs an office, and offer to make one. Offices have it all. */
+  officesOnly?: (feature: OfficeFeature) => void;
 }
 
 const Context = createContext<Place | null>(null);

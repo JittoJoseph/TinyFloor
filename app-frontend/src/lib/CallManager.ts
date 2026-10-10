@@ -19,7 +19,7 @@ import {
   udpRelay,
 } from "./media";
 import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
-import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingStage";
+import { chooseStage, EMPTY_STAGE, sameStage, type Pin, type Stage, type StageMode } from "./meetingStage";
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
@@ -226,10 +226,19 @@ class CallManager {
   private outgoing: { id: string; name: string } | null = null;
   private micEnabled = MIC_ON;
   private cameraEnabled = false;
+  /** The camera, chosen before joining (the Meetings page, as Meet asks): on for the next meeting you go into. */
+  private cameraOnJoin = false;
   private meeting: string | null = null;
   /** Whose video the meeting shows, and where it is being looked at. */
   private stage: Stage = EMPTY_STAGE;
+  /** Who we are on this floor, to leave ourselves off the stage. */
+  private selfId: string | null = null;
+  /** HD video in meetings: the office's plan has it (Pro). */
+  private hd = false;
+  private stageTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
+  /** What you pinned on the stage, if anything. */
+  private pin: Pin | null = null;
   private invitation: MeetingInvite | null = null;
   private inviteTimer?: ReturnType<typeof setTimeout>;
   private notice: MeetingNotice | null = null;
@@ -517,7 +526,9 @@ class CallManager {
     this.voice.stop();
     this.sfu?.close();
     this.sfu = null;
+    clearTimeout(this.stageTimer);
     this.stage = EMPTY_STAGE;
+    this.pin = null;
     this.releaseMedia();
     playSound("end");
     this.emit();
@@ -542,6 +553,14 @@ class CallManager {
     this.refreshStage();
   }
 
+  /** Keeps someone, or a shared screen, big on your stage; null lets the stage choose again. */
+  setPin(pin: Pin | null) {
+    if (pin?.id === this.pin?.id && pin?.kind === this.pin?.kind) return;
+    this.pin = pin;
+    this.refreshStage();
+    this.emit();
+  }
+
   /** From the room: past the meeting hours, or back within them. */
   setVideoPaused(paused: boolean) {
     if (this.videoPaused === paused) return;
@@ -556,14 +575,23 @@ class CallManager {
     if (!sfu) return;
     const hidden = typeof document !== "undefined" && document.visibilityState === "hidden";
     const mode: StageMode = hidden ? "hidden" : this.stageMode === "stage" && screenTooSmallForDetail() ? "phone" : this.stageMode;
-    const stage = chooseStage({ peers: sfu.peerList, spokeAt: meetingsState().spokeAt, mode, previous: this.stage });
-    const same =
-      stage.screen === this.stage.screen &&
-      stage.videos.length === this.stage.videos.length &&
-      stage.videos.every((video, index) => {
-        const before = this.stage.videos[index];
-        return before && before.userId === video.userId && before.kind === video.kind && before.quality === video.quality;
-      });
+    const { meetings, spokeAt } = meetingsState();
+    const members = meetings.find((one) => one.id === this.meeting)?.members ?? [];
+    const speaking = new Set(members.filter((member) => member.speaking).map((member) => member.id));
+    // Everyone the room says is in the meeting, whether or not their media has arrived yet,
+    // in the order they came; the SFU says what each of them is sending.
+    const media = new Map(sfu.peerList.map((peer) => [peer.id, peer]));
+    const people = this.selfId
+      ? [...members]
+          .filter((member) => member.id !== this.selfId)
+          .sort((a, b) => a.since - b.since)
+          .map((member) => ({ id: member.id, cameraOn: !!media.get(member.id)?.cameraOn, screen: !!media.get(member.id)?.screen }))
+      : sfu.peerList;
+    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin, hd: this.hd });
+    // A change of speaker waiting out its pause: look again then, if nothing else does first.
+    clearTimeout(this.stageTimer);
+    if (stage.recheckIn !== null) this.stageTimer = setTimeout(() => this.refreshStage(), stage.recheckIn);
+    const same = sameStage(stage, this.stage);
     this.stage = stage;
     if (same) return;
     sfu.want(stage.videos);
@@ -633,6 +661,23 @@ class CallManager {
     this.voice.listen(track);
   }
 
+  /** Whether meetings here get HD video, from the place's plan (docs/22). */
+  setHd(hd: boolean) {
+    if (hd === this.hd) return;
+    this.hd = hd;
+    this.refreshStage();
+  }
+
+  /** Who we are on the floor, told when the room welcomes us. */
+  setSelf(id: string) {
+    this.selfId = id;
+  }
+
+  /** Whether the next meeting you go into opens with your camera on. */
+  setCameraOnJoin(on: boolean) {
+    this.cameraOnJoin = on;
+  }
+
   /** Your camera, on the call you are in: there is nothing to turn on outside one. */
   async setCamera(enabled: boolean) {
     if (!this.local) return;
@@ -700,11 +745,15 @@ class CallManager {
   /** The room let you into a meeting: media opens, and your character walks into the meeting room. */
   private async enterMeeting(id: string, members: MeetingMember[]) {
     const moving = this.meeting !== null;
+    const withCamera = this.cameraOnJoin && !this.videoPaused;
+    this.cameraOnJoin = false;
     this.hangUp();
     this.sfu?.close();
     this.voice.stop();
     this.meeting = id;
+    clearTimeout(this.stageTimer);
     this.stage = EMPTY_STAGE;
+    this.pin = null;
     this.error = null;
     this.dismissInvite();
     this.dismissNotice();
@@ -728,6 +777,10 @@ class CallManager {
 
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
+    if (opened && withCamera && (await this.addCamera())) {
+      if (this.sfu !== sfu) return;
+      this.cameraEnabled = true;
+    }
     sfu.publishLocal(opened ? this.local : null, this.flags());
     this.listenForVoice();
     this.refreshStage();
@@ -1134,3 +1187,7 @@ class CallManager {
 }
 
 export const callManager = new CallManager();
+
+if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
+  (window as unknown as Record<string, unknown>).__call = callManager;
+}

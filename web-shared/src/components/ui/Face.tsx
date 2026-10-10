@@ -144,20 +144,26 @@ export const Face = memo(function Face({
   );
 });
 
-/** A row of overlapping faces, for "who is here" at a glance. */
+/**
+ * A row of overlapping faces, for "who is here" at a glance, and how many more
+ * there are. Where the count is said beside it anyway, `more={false}` leaves
+ * it off rather than saying it twice.
+ */
 export function FaceStack({
   seeds,
   size = 22,
   max = 4,
+  more = true,
   className,
 }: {
   seeds: string[];
   size?: number;
   max?: number;
+  more?: boolean;
   className?: string;
 }) {
   const shown = seeds.slice(0, max);
-  const extra = seeds.length - shown.length;
+  const extra = more ? seeds.length - shown.length : 0;
   return (
     <span className={cn("inline-flex shrink-0 items-center align-middle", className)}>
       {shown.map((seed, index) => (
@@ -171,8 +177,8 @@ export function FaceStack({
       ))}
       {extra > 0 && (
         <span
-          className="flex shrink-0 items-center justify-center rounded-full bg-muted text-[10px] font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
-          style={{ width: size, height: size, marginInlineStart: -size * 0.32 }}
+          className="flex shrink-0 items-center justify-center rounded-full bg-muted px-1 text-[10px] font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
+          style={{ minWidth: size, height: size, marginInlineStart: -size * 0.32 }}
         >
           +{extra}
         </span>

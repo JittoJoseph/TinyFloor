@@ -1584,25 +1584,28 @@
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
       "muted": "ei henkilöltä.",
-      "body": "Aloita ilmaiseksi. Vaihda isompaan, kun tiimi kasvaa.",
+      "body": "Aloita ilmaiseksi. Pro on koko toimisto, minkä kokoiselle tiimille tahansa.",
       "soon": "Tulossa",
       "forever": "ikuisesti",
       "month": "kuukaudessa",
-      "people": "Enintään {count} henkeä",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "Kokeiluun tiimisi kanssa"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "Olennainen"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "Koko toimisto parhaimmillaan"
       },
       "tax": "Hinnat ovat kuukausihintoja ilman veroja.",
-      "perPerson": "{price} / henkilö",
-      "freeLine": "Ei korttia",
       "choose": "Valitse {plan}",
-      "note": "Joka paketissa on kaikki ominaisuudet. Puheluita ei lasketa; ryhmäkokouksiin on 5, 30 tai 60 tuntia kuussa."
+      "note": "Kahden ihmisen puheluita ei koskaan lasketa. Jokainen hinta koskee koko toimistoa, ei henkilöä.",
+      "best": "Paras vastine",
+      "perksStandard": "Tavallinen video · {hours} kokoustuntia kuukaudessa",
+      "perksPro": "HD-video · {hours} kokoustuntia · ensisijainen apu"
     },
     "source": {
       "star": "Anna tähti GitHubissa",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Hinnoittelu: yksi hinta koko toimistolle",
-      "description": "TinyFloor on ilmainen enintään 3 hengelle. Plus maksaa $19 kuussa 10 hengelle ja Pro $49 kuussa 25 hengelle, hinnoiteltuna toimistoa eikä henkeä kohden."
+      "description": "TinyFloorin voi aloittaa ilmaiseksi. Plus maksaa 19 $ kuukaudessa; Pro, jossa on HD-video, kaksinkertaiset kokoustunnit ja ensisijainen apu, 49 $ kuukaudessa. Hinta toimistoa, ei henkilöä kohden."
     },
     "title": "Yksi hinta koko toimistolle.",
     "muted": "Ei henkeä kohden.",
-    "body": "Aloita ilmaiseksi enintään 3 hengellä ja siirry isompaan, kun tiimisi kasvaa.",
+    "body": "Aloita ilmaiseksi ja siirry Prohon koko toimiston ajaksi: HD-video, kaksinkertainen kokousaika ja ensisijainen apu.",
     "seats": {
       "title": "Kymmenen henkeä,",
       "muted": "yksi pieni lasku.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, koko toimistolle"
     },
     "table": {
-      "title": "Jokainen paketti,",
-      "muted": "kaikki ominaisuudet.",
+      "title": "Vertaa paketteja,",
+      "muted": "rinnakkain.",
       "people": "Henkeä",
       "hours": "Kokoustunnit kuussa",
       "hoursNote": "Vain ryhmäkokoukset",
       "calls": "Kahden hengen puhelut",
-      "callsNote": "Ei lasketa koskaan"
+      "callsNote": "Ei lasketa koskaan",
+      "video": "Video kokouksissa",
+      "standard": "Tavallinen",
+      "hd": "HD",
+      "support": "Ensisijainen apu"
     },
     "notes": {
       "title": "Hyvä tietää.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Verot kassalla",
         "body": "Hinnat ovat Yhdysvaltain dollareina. Jälleenmyyjämme Creem lisää mahdollisen arvonlisä- tai myyntiveron maksaessasi."
-      },
-      "bigger": {
-        "title": "Yli 25 henkeä?",
-        "body": "Anna jokaiselle tiimille oma toimisto tai kirjoita osoitteeseen {email}, niin jutellaan."
       }
     }
   },

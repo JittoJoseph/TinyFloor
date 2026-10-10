@@ -179,7 +179,6 @@
     "members": "{count, plural, one {# member} other {# members}}",
     "dmIntro": "This is the start of your conversation with {name}. Only the two of you can see it.",
     "channelIntroTitle": "Welcome to #{channel}",
-    "generalIntro": "This is where everyone in {office} talks. Everyone in the office can read it, and it stays when you leave the floor.",
     "channelIntro": "This is the very beginning of #{channel}. Everyone in the office can read it.",
     "sayTo": "Message {name}",
     "channelHint": "Lowercase, no spaces. Everyone in the office can join.",
@@ -207,7 +206,8 @@
     "delete": "Unsend",
     "deleteConfirm": "Unsend?",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "showAllPeople": "Show all {count}"
   },
   "proximity": {
     "call": "Call",
@@ -451,7 +451,6 @@
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
-      "seatsFree": "There is room for more.",
       "onFloorNow": "{count} on the floor now",
       "copied": "Copied",
       "remove": "Remove",
@@ -468,20 +467,19 @@
       "wrong": "That didn't work. Try again.",
       "subtitle": "Everyone in {office}, and who can come in.",
       "linkCopied": "Invite link copied",
-      "nobodyOnFloor": "Nobody else yet.",
-      "seatsLeft": "{count, plural, one {# seat left — invite someone} other {# seats left — invite someone}}",
-      "seatsNote": "A seat is a member. Someone leaving frees theirs; being offline does not.",
-      "allSeatsTaken": "Every seat is taken",
-      "allSeatsTakenBody": "Someone leaving frees a seat. Offices with more seats are coming.",
       "yourProfile": "Your profile",
       "ownOfficeTitle": "Want a floor like this for your team?",
       "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people.",
       "linkTitle": "Invite link",
-      "linkBody": "Anyone with this link can join with an account, while there's a free seat.",
       "copy": "Copy",
       "resetLink": "Reset link",
       "resetTitle": "Reset the invite link?",
-      "resetBody": "The current link stops working straight away and a new one takes its place. Everyone already in the office stays."
+      "resetBody": "The current link stops working straight away and a new one takes its place. Everyone already in the office stays.",
+      "everyone": "Everyone",
+      "onFloor": "On the floor",
+      "search": "Search people",
+      "noMatch": "Nobody matches that.",
+      "seatsOpen": "{count, plural, one {# seat open} other {# seats open}}"
     },
     "office": "Office",
     "goneTitle": "This office is gone",
@@ -534,7 +532,6 @@
     "you": "You",
     "more": "+{count} more",
     "leave": "Leave",
-    "aloneTitle": "You're the first one here",
     "aloneShort": "Waiting for others to join",
     "open": "Open the meeting",
     "nobodyToAsk": "Nobody else from the office is on the floor right now.",
@@ -561,7 +558,6 @@
       "pausedMonth": "voice only until {date}",
       "pausedToday": "voice only until tomorrow"
     },
-    "subtitle": "Join to walk into the meeting room. Calls between two people on the floor never count.",
     "alsoOn": "Also on now",
     "emptyRoom": "Nobody's in yet",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "Resets tomorrow",
       "pausedMonth": "Used up: video is paused until {date}",
       "pausedToday": "Used up: video is paused until tomorrow",
-      "counts": "An hour counts while a meeting has two or more people in it, however many there are.",
-      "lobby": "The demo office shares {hours} hours of meeting video a day.",
       "more": "Get more hours",
       "askAdmin": "An admin can get more hours."
     },
-    "how": {
-      "title": "How meetings work",
-      "walk": "Joining walks you into the meeting room. Walk out to leave.",
-      "speakers": "Only the people talking send video, so meetings stay light.",
-      "voice": "Past the month's hours, meetings carry on with voice."
-    }
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "others": "{count, plural, one {# other} other {# others}}",
+    "ready": {
+      "blocked": "The browser didn't allow the camera",
+      "cameraOff": "Camera is off"
+    },
+    "free": {
+      "title": "Free to talk",
+      "meet": "Meet",
+      "more": "and {count} more"
+    },
+    "readyTitle": "Ready to join?",
+    "joinNow": "Join now",
+    "inMeeting": "In this meeting",
+    "asked": "Asked"
   },
   "help": {
     "title": "Help and feedback",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "This office is on",
     "members": "{used} of {seats} members",
-    "freeNote": "Free, with every feature.",
+    "freeNote": "{hours} meeting hours a month, standard video.",
     "renews": "Renews on {date}",
     "ends": "Ends on {date}, then the free plan",
     "perMonth": "a month",
@@ -644,15 +648,12 @@
     "switchTitle": "Switch to {plan}?",
     "switchBody": "Creem charges or credits the difference for the time left in this period, straight away. Nobody on the floor notices a thing.",
     "cancelTitle": "Cancel the plan?",
-    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
-    "cancelBodyNow": "The office goes back to the free plan at the end of this period: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
     "moreSeats": "Get more seats",
     "membersLabel": "Members",
     "hoursLabel": "Meeting hours",
     "hours": "{used} of {allowance} h",
     "hoursResets": "Resets {date}",
     "hoursUsedUp": "This month's meeting hours are used: meetings are voice only until {date}. A bigger plan brings video back now.",
-    "hoursExplained": "Meeting hours count the time a meeting has two or more people in it. Calls between two people on the floor never count. Past them, meetings carry on with voice until the 1st.",
     "payment": "Payment",
     "cardUnknown": "Card on file with Creem",
     "update": "Update",
@@ -681,7 +682,6 @@
     "endingNote": "The plan ends on {date}. Keep it and nothing changes.",
     "seatsFree": "{count, plural, one {# seat free} other {# seats free}}",
     "seatsFull": "Every seat is taken",
-    "topPlan": "You're on our biggest plan. Need room for more than {count} people? Write to us and we'll set it up.",
     "usageOf": "{used} of {total}",
     "pillTrial": "Trial",
     "trialNote": "Your team is trying {plan} until {date}. After that the office is on Free, for up to {seats} people, unless you choose a plan.",
@@ -690,21 +690,25 @@
       "note": "Monthly, in US dollars, before tax",
       "current": "Current",
       "trial": "Trial",
-      "fits": "Fits your team",
       "perMonth": "a month",
-      "forever": "forever",
-      "perPerson": "{price} a person",
-      "noCard": "No card needed",
       "people": "Up to {count} people",
       "hours": "{count} meeting hours a month",
-      "everything": "Every feature",
       "keep": "Keep {plan}",
       "choose": "Choose {plan}",
       "upgrade": "Upgrade to {plan}",
       "moveTo": "Move to {plan}",
       "currentButton": "Current plan",
-      "afterTrial": "From {date}",
-      "tooSmall": "Holds {count}; this office has {members}"
+      "tooSmall": "Holds {count}; this office has {members}",
+      "best": "Best value",
+      "taglinePlus": "The essentials",
+      "taglinePro": "The full office, at its best",
+      "everythingIn": "Everything in {plan}, and",
+      "times": "{count}× Plus",
+      "hd": "HD video in meetings",
+      "sd": "Standard video",
+      "support": "Priority help from our team",
+      "included": "Included in your plan",
+      "upgradeTitle": "Upgrade"
     },
     "upgrade": {
       "fullTitle": "{office} is full",
@@ -718,8 +722,16 @@
       "membersOnly": "Only {office}'s admins can change its plan.",
       "doneTitle": "You're on {plan}",
       "doneBody": "Thanks. Your receipt is on its way from Creem.",
-      "doneLine": "Room for {people} people, and the meeting hours that come with it."
+      "doneLine": "Everything in {plan} is on for the whole office."
     },
-    "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed."
+    "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed.",
+    "cancelWhen": "The plan runs until {date}. After that, the office is on Free.",
+    "cancelAnyway": "Cancel anyway",
+    "loseSeatsOver": "{members} people are members, but only {free} could be on the floor at once, and no one new could join.",
+    "loseSeats": "Room drops from {seats} people to {free}.",
+    "loseHours": "Meeting hours drop from {hours} to {free} a month; past them, meetings are voice only.",
+    "loseNothing": "Nobody is removed and nothing is deleted.",
+    "downsell": "Or keep the team together on {plan}: {price} a month, for up to {seats} people.",
+    "loseProPerks": "HD video and priority help stop."
   }
 }

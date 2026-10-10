@@ -179,7 +179,6 @@
     "members": "{count, plural, other {멤버 #명}}",
     "dmIntro": "{name}님과의 대화가 여기서 시작돼요. 두 분만 볼 수 있어요.",
     "channelIntroTitle": "#{channel}에 오신 걸 환영해요",
-    "generalIntro": "{office} 모두가 이야기하는 곳이에요. 사무실의 누구나 읽을 수 있고, 층을 떠나도 남아요.",
     "channelIntro": "#{channel}의 시작이에요. 사무실의 누구나 읽을 수 있어요.",
     "sayTo": "{name}님에게 메시지",
     "channelHint": "소문자, 공백 없이. 사무실의 누구나 참여할 수 있어요.",
@@ -207,7 +206,8 @@
     "delete": "전송 취소",
     "deleteConfirm": "전송을 취소할까요?",
     "save": "저장",
-    "cancel": "취소"
+    "cancel": "취소",
+    "showAllPeople": "{count}명 모두 보기"
   },
   "proximity": {
     "call": "통화",
@@ -451,7 +451,6 @@
       "invite": "초대",
       "seats": "{seats}석 중 {used}석",
       "seatsFull": "자리가 모두 찼습니다.",
-      "seatsFree": "아직 자리가 있습니다.",
       "onFloorNow": "지금 플로어에 {count}명",
       "copied": "복사됨",
       "remove": "내보내기",
@@ -468,20 +467,19 @@
       "wrong": "실패했습니다. 다시 시도해 주세요.",
       "subtitle": "{office}의 모든 사람과 들어올 수 있는 사람.",
       "linkCopied": "초대 링크를 복사했어요",
-      "nobodyOnFloor": "아직 다른 사람이 없어요.",
-      "seatsLeft": "{count, plural, other {#자리 남음 — 누군가를 초대하세요}}",
-      "seatsNote": "자리 하나는 멤버 한 명이에요. 떠나면 자리가 비고, 오프라인은 비지 않아요.",
-      "allSeatsTaken": "모든 자리가 찼어요",
-      "allSeatsTakenBody": "누군가 떠나면 자리가 비어요. 자리가 더 많은 사무실이 곧 나와요.",
       "yourProfile": "내 프로필",
       "ownOfficeTitle": "이런 층을 우리 팀에도?",
       "ownOfficeBody": "1분 만에 내 오피스를 만드세요. 3명까지 무료.",
       "linkTitle": "초대 링크",
-      "linkBody": "이 링크가 있는 사람은 빈자리가 있는 동안 계정으로 참여할 수 있어요.",
       "copy": "복사",
       "resetLink": "링크 재설정",
       "resetTitle": "초대 링크를 재설정할까요?",
-      "resetBody": "지금 링크는 바로 작동을 멈추고 새 링크로 바뀌어요. 이미 오피스에 있는 사람은 그대로예요."
+      "resetBody": "지금 링크는 바로 작동을 멈추고 새 링크로 바뀌어요. 이미 오피스에 있는 사람은 그대로예요.",
+      "everyone": "전체",
+      "onFloor": "층에 있음",
+      "search": "사람 검색",
+      "noMatch": "일치하는 사람이 없어요.",
+      "seatsOpen": "빈자리 {count}개"
     },
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",
@@ -534,7 +532,6 @@
     "you": "나",
     "more": "외 {count}명",
     "leave": "나가기",
-    "aloneTitle": "첫 번째로 오셨어요",
     "aloneShort": "다른 사람을 기다리는 중",
     "open": "회의 열기",
     "nobodyToAsk": "지금 층에 있는 다른 오피스 멤버가 없어요.",
@@ -561,7 +558,6 @@
       "pausedMonth": "{date}까지 음성만",
       "pausedToday": "내일까지 음성만"
     },
-    "subtitle": "참여하면 회의실로 걸어 들어가요. 층에서 두 사람이 하는 통화는 절대 계산되지 않아요.",
     "alsoOn": "지금 진행 중",
     "emptyRoom": "아직 아무도 없어요",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "내일 초기화",
       "pausedMonth": "다 썼어요: {date}까지 영상 일시 중지",
       "pausedToday": "다 썼어요: 내일까지 영상 일시 중지",
-      "counts": "회의에 두 명 이상 있는 동안만, 인원과 상관없이 한 시간으로 계산해요.",
-      "lobby": "데모 오피스는 하루 {hours}시간의 회의 영상을 함께 써요.",
       "more": "시간 늘리기",
       "askAdmin": "관리자가 시간을 늘릴 수 있어요."
     },
-    "how": {
-      "title": "회의는 이렇게 돌아가요",
-      "walk": "참여하면 회의실로 걸어 들어가요. 나가면 회의에서 나가요.",
-      "speakers": "말하는 사람만 영상을 보내서 회의가 가벼워요.",
-      "voice": "이번 달 시간이 끝나도 회의는 음성으로 계속돼요."
-    }
+    "pin": "고정",
+    "unpin": "고정 해제",
+    "others": "외 {count}명",
+    "ready": {
+      "blocked": "브라우저가 카메라를 허용하지 않았어요",
+      "cameraOff": "카메라가 꺼져 있어요"
+    },
+    "free": {
+      "title": "대화 가능한 사람",
+      "meet": "만나기",
+      "more": "외 {count}명"
+    },
+    "readyTitle": "참여할 준비가 되셨나요?",
+    "joinNow": "지금 참여",
+    "inMeeting": "이 회의 참여자",
+    "asked": "요청함"
   },
   "help": {
     "title": "도움말 및 의견",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "이 오피스의 요금제",
     "members": "멤버 {used}/{seats}명",
-    "freeNote": "무료, 모든 기능 포함.",
+    "freeNote": "매달 회의 {hours}시간, 표준 화질 영상.",
     "renews": "{date}에 갱신",
     "ends": "{date}에 종료되고 이후 무료 요금제",
     "perMonth": "/월",
@@ -644,15 +648,12 @@
     "switchTitle": "{plan}(으)로 변경할까요?",
     "switchBody": "남은 기간에 대한 차액은 Creem이 즉시 청구하거나 환불해요. 층에 있는 누구도 알아차리지 못해요.",
     "cancelTitle": "요금제를 해지할까요?",
-    "cancelBody": "요금제는 {date}까지 유지되고, 그 후 오피스는 무료 요금제(멤버 3명, 회의 시간 월 5시간)로 돌아가요. 아무도 제거되지 않지만 새로운 사람은 참여할 수 없고, 층에는 동시에 3명만 있을 수 있어요.",
-    "cancelBodyNow": "이번 기간이 끝나면 오피스는 무료 요금제(멤버 3명, 회의 시간 월 5시간)로 돌아가요. 아무도 제거되지 않지만 새로운 사람은 참여할 수 없고, 층에는 동시에 3명만 있을 수 있어요.",
     "moreSeats": "좌석 늘리기",
     "membersLabel": "멤버",
     "hoursLabel": "회의 시간",
     "hours": "{used} / {allowance}시간",
     "hoursResets": "{date}에 초기화",
     "hoursUsedUp": "이번 달 회의 시간을 모두 사용했어요. {date}까지 회의는 음성으로만 진행돼요. 더 큰 요금제로 바꾸면 바로 영상이 돌아와요.",
-    "hoursExplained": "회의 시간은 회의에 두 명 이상이 있는 시간을 셉니다. 층에서 두 사람이 하는 통화는 세지 않아요. 다 쓰면 1일까지 회의는 음성으로 이어져요.",
     "payment": "결제",
     "cardUnknown": "Creem에 등록된 카드",
     "update": "변경",
@@ -681,7 +682,6 @@
     "endingNote": "요금제가 {date}에 끝나요. 유지하면 아무것도 바뀌지 않아요.",
     "seatsFree": "{count}자리 남음",
     "seatsFull": "자리가 모두 찼어요",
-    "topPlan": "가장 큰 요금제를 쓰고 있어요. {count}명보다 많이 필요하면 연락 주세요. 준비해 드릴게요.",
     "usageOf": "{used} / {total}",
     "pillTrial": "체험",
     "trialNote": "팀이 {date}까지 {plan}을 체험하고 있어요. 그 후에는 요금제를 고르지 않으면 오피스가 무료 요금제(최대 {seats}명)로 바뀌어요.",
@@ -690,21 +690,25 @@
       "note": "월 요금, 미국 달러, 세금 별도",
       "current": "현재",
       "trial": "체험",
-      "fits": "팀에 맞음",
       "perMonth": "/월",
-      "forever": "평생",
-      "perPerson": "1인당 {price}",
-      "noCard": "카드 필요 없음",
       "people": "최대 {count}명",
       "hours": "회의 월 {count}시간",
-      "everything": "모든 기능",
       "keep": "{plan} 계속 쓰기",
       "choose": "{plan} 선택",
       "upgrade": "{plan}으로 업그레이드",
       "moveTo": "{plan}으로 변경",
       "currentButton": "현재 요금제",
-      "afterTrial": "{date}부터",
-      "tooSmall": "{count}명까지; 이 오피스는 {members}명"
+      "tooSmall": "{count}명까지; 이 오피스는 {members}명",
+      "best": "가장 좋은 가치",
+      "taglinePlus": "필수 기능",
+      "taglinePro": "오피스의 모든 것, 최고의 상태로",
+      "everythingIn": "{plan}의 모든 기능, 그리고",
+      "times": "Plus의 {count}배",
+      "hd": "회의 중 HD 영상",
+      "sd": "표준 화질 영상",
+      "support": "팀의 우선 지원",
+      "included": "플랜에 포함된 것",
+      "upgradeTitle": "업그레이드"
     },
     "upgrade": {
       "fullTitle": "{office}이(가) 꽉 찼어요",
@@ -718,8 +722,16 @@
       "membersOnly": "{office}의 요금제는 관리자만 바꿀 수 있어요.",
       "doneTitle": "이제 {plan}이에요",
       "doneBody": "감사합니다. Creem에서 영수증을 보내드려요.",
-      "doneLine": "{people}명을 위한 자리와 함께 오는 회의 시간."
+      "doneLine": "{plan}의 모든 기능이 오피스 전체에 켜졌어요."
     },
-    "trialWaiting": "{free}명보다 많이 초대하면 팀 전체가 {days}일 동안 {plan}을 무료로 써요. 카드는 필요 없어요."
+    "trialWaiting": "{free}명보다 많이 초대하면 팀 전체가 {days}일 동안 {plan}을 무료로 써요. 카드는 필요 없어요.",
+    "cancelWhen": "요금제는 {date}까지 유지되고, 그 후 오피스는 무료 요금제가 돼요.",
+    "cancelAnyway": "그래도 해지",
+    "loseSeatsOver": "멤버는 {members}명이지만 층에는 동시에 {free}명만 있을 수 있고, 새로운 사람은 들어올 수 없어요.",
+    "loseSeats": "자리가 {seats}명에서 {free}명으로 줄어요.",
+    "loseHours": "회의 시간이 월 {hours}시간에서 {free}시간으로 줄고, 넘으면 음성으로만 회의해요.",
+    "loseNothing": "아무도 제거되지 않고 아무것도 삭제되지 않아요.",
+    "downsell": "아니면 {plan}으로 팀을 그대로 유지하세요: 월 {price}, 최대 {seats}명.",
+    "loseProPerks": "HD 영상과 우선 지원이 중단돼요."
   }
 }

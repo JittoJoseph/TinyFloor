@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertTriangle, Check, CreditCard, Download, Loader2, Zap } from "@/components/ui/icons";
+import { AlertCircle, Check, CreditCard, Download, Loader2, Zap } from "@/components/ui/icons";
 import { api, type BillingDetails, type OfficeBilling, type Payment, type Plan, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { Button } from "@/components/motion/button/base";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanCards, planThatFits, type PlanMove } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanCards, plansOnOffer, ProIncludes, type PlanMove } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
@@ -17,9 +17,10 @@ type Asking = { kind: "switch"; plan: Plan } | { kind: "cancel" } | null;
 
 /**
  * An office's plan and billing (docs/14, docs/22): what it's on and what it
- * pays, how full it is and how much of its meeting hours are used, then every
- * plan side by side to choose from, the card and the next charge, and every
- * past payment. Buying opens Creem's checkout over the page; the card and the
+ * pays, how full it is and how much of its meeting hours are used, then the
+ * plans worth moving to (both on Free, Pro on Plus, none on Pro, which instead
+ * lists what it includes), the card and the next charge, and every past
+ * payment. Buying opens Creem's checkout over the page; the card and the
  * invoices are in Creem's portal, for whoever pays; switching and cancelling
  * ask first. The plan itself only changes when Creem says so.
  */
@@ -77,6 +78,8 @@ export function PlanSection() {
   const planId = (office.plan as PlanId) ?? "free";
   const plans = catalog?.plans ?? [];
   const current = plans.find((plan) => plan.id === planId);
+  // The paid plan under this one, offered before cancelling.
+  const below = plans[plans.findIndex((plan) => plan.id === planId) - 1];
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
@@ -85,20 +88,10 @@ export function PlanSection() {
 
   const hours = billing ? billing.usage.seconds / 3600 : null;
   const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
-  const seatsShare = office.seats ? members / office.seats : 0;
   const hoursShare = hours !== null && allowance ? hours / allowance : 0;
-  // The plan that answers whichever limit is closest, marked among the plans.
-  const suggested =
-    seatsShare >= 1
-      ? planThatFits(plans, planId, { people: members + 1 })
-      : hoursShare >= 0.8
-        ? planThatFits(plans, planId, { hours: true })
-        : trial
-          ? planId
-          : null;
+  const offer = plansOnOffer(plans, sub ? planId : null);
 
   const choose = (plan: Plan, move: PlanMove) => {
-    if (move === "free") return setAsking({ kind: "cancel" });
     if (plan.id === "free") return;
     if (move === "choose") void change.buy(plan.id);
     else setAsking({ kind: "switch", plan });
@@ -107,7 +100,7 @@ export function PlanSection() {
   // What the plan says for itself under its name: when it renews, or ends, or that it's free.
   const status = (): ReactNode => {
     if (trial) return null; // The banner below says it.
-    if (!sub) return t("freeNote");
+    if (!sub) return t("freeNote", { hours: plans[0]?.meetingHours ?? 5 });
     if (sub.status === "past_due") return null;
     if (sub.endsAt) return t("ends", { date: date(sub.endsAt) });
     if (details?.nextCharge) {
@@ -127,7 +120,7 @@ export function PlanSection() {
             <p className="mt-1 flex flex-wrap items-center gap-2 text-[22px] font-semibold leading-tight tracking-tight text-foreground">
               {PLAN_NAMES[planId] ?? office.plan}
               {trial && <Pill tone="brand">{t("pillTrial")}</Pill>}
-              {sub?.status === "past_due" && <Pill tone="warn">{t("pillPastDue")}</Pill>}
+              {sub?.status === "past_due" && <Pill tone="alert">{t("pillPastDue")}</Pill>}
               {sub?.endsAt && <Pill>{t("pillEnding")}</Pill>}
             </p>
             {manage && status() && <p className="mt-1 text-[13px] text-muted-foreground">{status()}</p>}
@@ -157,12 +150,12 @@ export function PlanSection() {
         {manage && !trial && !sub && office.trialOpen && !!catalog?.trialDays && (
           <Banner tone="brand" icon={<Zap className="size-4 shrink-0 text-brand" />}>
             <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("trialWaiting", { free: office.seats, plan: PLAN_NAMES.plus, days: catalog.trialDays })}
+              {t("trialWaiting", { free: office.seats, plan: PLAN_NAMES[catalog.trialPlan ?? "pro"], days: catalog.trialDays })}
             </p>
           </Banner>
         )}
         {manage && sub?.status === "past_due" && (
-          <Banner tone="warn" icon={<AlertTriangle className="size-4 shrink-0 text-warn" />}>
+          <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
             <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>
             <Button size="sm" variant="secondary" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.portal("card")}>
               {t("updateCard")}
@@ -191,7 +184,6 @@ export function PlanSection() {
             label={t("membersLabel")}
             value={t("usageOf", { used: members, total: office.seats })}
             note={members >= office.seats ? t("seatsFull") : t("seatsFree", { count: office.seats - members })}
-            warn={members >= office.seats}
           >
             <SeatBar used={members} seats={office.seats} />
           </Usage>
@@ -200,10 +192,9 @@ export function PlanSection() {
               label={t("hoursLabel")}
               value={hours === null ? "…" : t("hours", { used: format.number(hours, { maximumFractionDigits: hours < 10 ? 1 : 0 }), allowance })}
               note={billing ? t("hoursResets", { date: shortDate(billing.usage.resetsAt) }) : undefined}
-              warn={hoursShare >= 1}
               className="border-t border-border sm:border-s sm:border-t-0"
             >
-              <Bar share={hoursShare} warmAt={0.8} />
+              <Bar share={hoursShare} />
             </Usage>
           )}
         </div>
@@ -212,31 +203,34 @@ export function PlanSection() {
             {t("hoursUsedUp", { date: shortDate(billing.usage.resetsAt) })}
           </p>
         )}
+        {/* On Pro, what it's paying for, where there's no plan left to offer. */}
+        {planId === "pro" && current && !trial && (
+          <div className="border-t border-border p-5">
+            <p className="mb-3 text-[12.5px] font-medium text-muted-foreground">{t("plans.included")}</p>
+            <ProIncludes plan={current} plus={plans.find((plan) => plan.id === "plus")} />
+          </div>
+        )}
       </section>
 
-      {/* Every plan, side by side: the office's own marked, and the one that fits what's tight. */}
-      {on && plans.length > 0 && (
+      {/* The plans worth moving to: both on Free, Pro alone on Plus. */}
+      {on && offer.length > 0 && (
         <section>
           <div className="mb-3 flex items-baseline justify-between gap-3">
-            <h3 className="text-[13px] font-semibold text-foreground">{t("plans.title")}</h3>
+            <h3 className="text-[13px] font-semibold text-foreground">{offer.length > 1 ? t("plans.title") : t("plans.upgradeTitle")}</h3>
             <p className="text-[12px] text-faint">{t("plans.note")}</p>
           </div>
           <PlanCards
-            plans={plans}
+            plans={offer}
             current={planId}
             subscribed={!!sub}
             members={members}
             trialEndsAt={trial?.endsAt}
-            suggested={suggested}
             busy={busy}
             disabled={!!change.waiting || !!sub?.endsAt}
             canChange={manage}
             onChoose={choose}
           />
           {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
-          {manage && planId === "pro" && sub && (
-            <p className="mt-3 text-[12.5px] leading-relaxed text-muted-foreground">{t("topPlan", { count: current?.seats ?? 25 })}</p>
-          )}
         </section>
       )}
 
@@ -315,9 +309,7 @@ export function PlanSection() {
       {/* The rest, quietly: cancelling, and the small print. */}
       {manage && (
         <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">
-            {t("hoursExplained")} {t("fine")}
-          </p>
+          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">{t("fine")}</p>
           {sub && !sub.endsAt && (
             <button
               type="button"
@@ -358,37 +350,83 @@ export function PlanSection() {
       >
         {change.error && <p className="text-[12.5px] text-destructive">{change.error}</p>}
       </Dialog>
+      {/*
+        Cancelling, said plainly: what the team would lose, a smaller plan if
+        there is one, and keeping the plan as the easy choice. Cancelling stays
+        one click away; nothing is hidden or made hard.
+      */}
       <Dialog
         open={asking?.kind === "cancel"}
         onClose={() => setAsking(null)}
         title={t("cancelTitle")}
-        description={sub?.renewsAt ? t("cancelBody", { date: date(sub.renewsAt) }) : t("cancelBodyNow")}
+        description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
         closeLabel={tc("close")}
         footer={
           <>
-            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setAsking(null)}>
-              {t("keep")}
-            </Button>
-            <Button size="sm" className="h-10 bg-destructive px-5 text-white hover:bg-destructive/90" disabled={!!busy} onClick={change.cancel}>
+            <button
+              type="button"
+              disabled={!!busy}
+              onClick={change.cancel}
+              className="me-auto inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive disabled:opacity-50"
+            >
               {busy === "cancel" && <Loader2 className="size-4 animate-spin" />}
-              {t("cancel")}
+              {t("cancelAnyway")}
+            </button>
+            <Button size="sm" className="h-10 px-5" onClick={() => setAsking(null)}>
+              {t("plans.keep", { plan: PLAN_NAMES[planId] })}
             </Button>
           </>
         }
-      />
+      >
+        <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
+          {planId === "pro" && (
+            <li className="flex items-start gap-2.5">
+              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
+              {t("loseProPerks")}
+            </li>
+          )}
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
+            {members > (plans[0]?.seats ?? 3)
+              ? t("loseSeatsOver", { members, free: plans[0]?.seats ?? 3 })
+              : t("loseSeats", { seats: office.seats, free: plans[0]?.seats ?? 3 })}
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
+            {t("loseHours", { hours: current?.meetingHours ?? 0, free: plans[0]?.meetingHours ?? 5 })}
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
+            {t("loseNothing")}
+          </li>
+        </ul>
+        {below?.price && members <= below.seats && (
+          <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl bg-muted p-3">
+            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
+              {t("downsell", { plan: PLAN_NAMES[below.id], price: dollars(below.price), seats: below.seats })}
+            </p>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-8 shrink-0 px-3 text-[12.5px]"
+              disabled={!!busy}
+              onClick={() => below.id !== "free" && change.switchTo(below.id)}
+            >
+              {busy === below.id && <Loader2 className="size-3.5 animate-spin" />}
+              {t("plans.moveTo", { plan: PLAN_NAMES[below.id] })}
+            </Button>
+          </div>
+        )}
+        {change.error && <p className="mt-2 text-[12.5px] text-destructive">{change.error}</p>}
+      </Dialog>
     </div>
   );
 }
 
 /** A note across the plan card: a trial, a card that failed, or a plan that's ending. */
-function Banner({ tone, icon, children }: { tone?: "warn" | "brand"; icon?: ReactNode; children: ReactNode }) {
+function Banner({ tone, icon, children }: { tone?: "brand"; icon?: ReactNode; children: ReactNode }) {
   return (
-    <div
-      className={cn(
-        "mx-5 mb-4 flex flex-wrap items-center gap-3 rounded-xl p-3",
-        tone === "warn" ? "bg-warn/10" : tone === "brand" ? "bg-brand/10" : "bg-muted",
-      )}
-    >
+    <div className={cn("mx-5 mb-4 flex flex-wrap items-center gap-3 rounded-xl p-3", tone === "brand" ? "bg-muted" : "bg-muted")}>
       {icon}
       {children}
     </div>
@@ -396,21 +434,7 @@ function Banner({ tone, icon, children }: { tone?: "warn" | "brand"; icon?: Reac
 }
 
 /** One of the plan's limits: how much of it is used, a meter, and a line under it. */
-function Usage({
-  label,
-  value,
-  note,
-  warn,
-  className,
-  children,
-}: {
-  label: string;
-  value: string;
-  note?: string;
-  warn?: boolean;
-  className?: string;
-  children: ReactNode;
-}) {
+function Usage({ label, value, note, className, children }: { label: string; value: string; note?: string; className?: string; children: ReactNode }) {
   return (
     <div className={cn("p-5", className)}>
       <div className="flex items-baseline justify-between gap-3">
@@ -418,18 +442,18 @@ function Usage({
         <p className="text-[13.5px] font-medium tabular-nums text-foreground">{value}</p>
       </div>
       {children}
-      {note && <p className={cn("mt-2 text-[12px]", warn ? "text-warn" : "text-faint")}>{note}</p>}
+      {note && <p className="mt-2 text-[12px] text-faint">{note}</p>}
     </div>
   );
 }
 
 /** A word beside the plan's name: on trial, its card failed, or it's ending. */
-function Pill({ tone, children }: { tone?: "warn" | "brand"; children: ReactNode }) {
+function Pill({ tone, children }: { tone?: "alert" | "brand"; children: ReactNode }) {
   return (
     <span
       className={cn(
         "rounded-full px-2 py-0.5 text-[11.5px] font-semibold tracking-normal",
-        tone === "warn" ? "bg-warn/15 text-warn" : tone === "brand" ? "bg-brand/15 text-brand" : "bg-muted text-muted-foreground",
+        tone === "alert" ? "bg-destructive/10 text-destructive" : tone === "brand" ? "bg-brand/15 text-brand" : "bg-muted text-muted-foreground",
       )}
     >
       {children}
@@ -452,11 +476,11 @@ function PaymentStatus({ status }: { status: Payment["status"] }) {
   );
 }
 
-export function Bar({ share, warmAt = 1 }: { share: number; warmAt?: number }) {
+export function Bar({ share }: { share: number }) {
   return (
     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
       <div
-        className={cn("h-full rounded-full transition-[width] duration-500", share >= warmAt ? "bg-warn" : "bg-foreground")}
+        className="h-full rounded-full bg-foreground transition-[width] duration-500"
         style={{ width: `${Math.min(100, Math.max(share > 0 ? 2 : 0, share * 100))}%` }}
       />
     </div>

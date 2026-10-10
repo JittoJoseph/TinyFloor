@@ -179,7 +179,6 @@
     "members": "{count, plural, one {# membro} other {# membros}}",
     "dmIntro": "Aqui começa sua conversa com {name}. Só vocês dois podem ver.",
     "channelIntroTitle": "Boas-vindas a #{channel}",
-    "generalIntro": "É aqui que todo o {office} conversa. Todo o escritório pode ler, e fica quando você sai do andar.",
     "channelIntro": "Este é o começo de #{channel}. Todo o escritório pode ler.",
     "sayTo": "Mensagem para {name}",
     "channelHint": "Minúsculas, sem espaços. Todo o escritório pode entrar.",
@@ -207,7 +206,8 @@
     "delete": "Cancelar envio",
     "deleteConfirm": "Cancelar envio?",
     "save": "Salvar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "showAllPeople": "Ver todos os {count}"
   },
   "proximity": {
     "call": "Ligar",
@@ -451,7 +451,6 @@
       "invite": "Convidar",
       "seats": "{used} de {seats} lugares",
       "seatsFull": "Já não há lugares.",
-      "seatsFree": "Ainda há espaço.",
       "onFloorNow": "{count} no piso agora",
       "copied": "Copiado",
       "remove": "Remover",
@@ -468,20 +467,19 @@
       "wrong": "Não resultou. Tenta outra vez.",
       "subtitle": "Todos em {office}, e quem pode entrar.",
       "linkCopied": "Link de convite copiado",
-      "nobodyOnFloor": "Ninguém mais por enquanto.",
-      "seatsLeft": "{count, plural, one {# lugar livre — convide alguém} other {# lugares livres — convide alguém}}",
-      "seatsNote": "Um lugar é um membro. Quem sai libera o seu; ficar offline, não.",
-      "allSeatsTaken": "Todos os lugares estão ocupados",
-      "allSeatsTakenBody": "Quem sai libera um lugar. Escritórios com mais lugares estão chegando.",
       "yourProfile": "Seu perfil",
       "ownOfficeTitle": "Quer um andar assim para sua equipe?",
       "ownOfficeBody": "Crie seu escritório em um minuto. Grátis para até 3 pessoas.",
       "linkTitle": "Link de convite",
-      "linkBody": "Qualquer pessoa com este link pode entrar com uma conta, enquanto houver lugar.",
       "copy": "Copiar",
       "resetLink": "Redefinir link",
       "resetTitle": "Redefinir o link de convite?",
-      "resetBody": "O link atual para de funcionar na hora e um novo o substitui. Quem já está no escritório continua."
+      "resetBody": "O link atual para de funcionar na hora e um novo o substitui. Quem já está no escritório continua.",
+      "everyone": "Todos",
+      "onFloor": "No andar",
+      "search": "Procurar pessoas",
+      "noMatch": "Ninguém corresponde.",
+      "seatsOpen": "{count, plural, one {# lugar livre} other {# lugares livres}}"
     },
     "office": "Escritório",
     "goneTitle": "Este escritório já não existe",
@@ -534,7 +532,6 @@
     "you": "Você",
     "more": "+{count} mais",
     "leave": "Sair",
-    "aloneTitle": "Você é o primeiro aqui",
     "aloneShort": "Esperando os outros",
     "open": "Abrir a reunião",
     "nobodyToAsk": "Ninguém mais do escritório está no andar agora.",
@@ -561,7 +558,6 @@
       "pausedMonth": "só voz até {date}",
       "pausedToday": "só voz até amanhã"
     },
-    "subtitle": "Entre para ir até a sala de reunião. Chamadas entre duas pessoas no andar nunca contam.",
     "alsoOn": "Também agora",
     "emptyRoom": "Ninguém ainda",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "Renova amanhã",
       "pausedMonth": "Esgotadas: vídeo pausado até {date}",
       "pausedToday": "Esgotadas: vídeo pausado até amanhã",
-      "counts": "Uma hora conta enquanto a reunião tem duas ou mais pessoas, quantas forem.",
-      "lobby": "O escritório de demonstração divide {hours} horas de vídeo de reunião por dia.",
       "more": "Mais horas",
       "askAdmin": "Um admin pode conseguir mais horas."
     },
-    "how": {
-      "title": "Como as reuniões funcionam",
-      "walk": "Entrar leva você até a sala de reunião. Saia dela para sair.",
-      "speakers": "Só quem fala envia vídeo, então as reuniões ficam leves.",
-      "voice": "Depois das horas do mês, as reuniões continuam por voz."
-    }
+    "pin": "Fixar",
+    "unpin": "Desafixar",
+    "others": "{count, plural, one {mais #} other {mais #}}",
+    "ready": {
+      "blocked": "O navegador não permitiu a câmera",
+      "cameraOff": "A câmera está desligada"
+    },
+    "free": {
+      "title": "Livres para conversar",
+      "meet": "Reunir",
+      "more": "e mais {count}"
+    },
+    "readyTitle": "Pronto para entrar?",
+    "joinNow": "Entrar agora",
+    "inMeeting": "Nesta reunião",
+    "asked": "Convidado"
   },
   "help": {
     "title": "Ajuda e feedback",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "Este escritório está no",
     "members": "{used} de {seats} membros",
-    "freeNote": "Grátis, com todos os recursos.",
+    "freeNote": "{hours} horas de reunião por mês, vídeo padrão.",
     "renews": "Renova em {date}",
     "ends": "Termina em {date}, depois o plano grátis",
     "perMonth": "por mês",
@@ -644,15 +648,12 @@
     "switchTitle": "Trocar para {plan}?",
     "switchBody": "O Creem cobra ou credita a diferença pelo tempo restante do período, na hora. Ninguém no andar percebe nada.",
     "cancelTitle": "Cancelar o plano?",
-    "cancelBody": "O plano vale até {date}; depois o escritório volta ao plano grátis: 3 membros e 5 horas de reunião por mês. Ninguém é removido, mas ninguém novo pode entrar e só 3 podem estar no andar ao mesmo tempo.",
-    "cancelBodyNow": "O escritório volta ao plano grátis no fim deste período: 3 membros e 5 horas de reunião por mês. Ninguém é removido, mas ninguém novo pode entrar e só 3 podem estar no andar ao mesmo tempo.",
     "moreSeats": "Ter mais lugares",
     "membersLabel": "Membros",
     "hoursLabel": "Horas de reunião",
     "hours": "{used} de {allowance} h",
     "hoursResets": "Reinicia em {date}",
     "hoursUsedUp": "As horas de reunião deste mês acabaram: as reuniões são só de voz até {date}. Um plano maior traz o vídeo de volta agora.",
-    "hoursExplained": "As horas de reunião contam o tempo em que uma reunião tem duas ou mais pessoas. Chamadas entre duas pessoas no andar nunca contam. Depois delas, as reuniões continuam com voz até o dia 1.",
     "payment": "Pagamento",
     "cardUnknown": "Cartão salvo na Creem",
     "update": "Atualizar",
@@ -681,7 +682,6 @@
     "endingNote": "O plano termina em {date}. Mantenha e nada muda.",
     "seatsFree": "{count, plural, one {# lugar livre} other {# lugares livres}}",
     "seatsFull": "Todos os lugares estão ocupados",
-    "topPlan": "Você está no nosso maior plano. Precisa de espaço para mais de {count} pessoas? Escreva para nós e preparamos.",
     "usageOf": "{used} de {total}",
     "pillTrial": "Teste",
     "trialNote": "Sua equipe está testando o {plan} até {date}. Depois, o escritório vai para o Free, para até {seats} pessoas, a menos que você escolha um plano.",
@@ -690,21 +690,25 @@
       "note": "Mensal, em dólares americanos, sem impostos",
       "current": "Atual",
       "trial": "Teste",
-      "fits": "Para sua equipe",
       "perMonth": "por mês",
-      "forever": "para sempre",
-      "perPerson": "{price} por pessoa",
-      "noCard": "Sem cartão",
       "people": "Até {count} pessoas",
       "hours": "{count} horas de reunião por mês",
-      "everything": "Todos os recursos",
       "keep": "Ficar com o {plan}",
       "choose": "Escolher {plan}",
       "upgrade": "Mudar para o {plan}",
       "moveTo": "Mudar para o {plan}",
       "currentButton": "Plano atual",
-      "afterTrial": "A partir de {date}",
-      "tooSmall": "Para {count}; o escritório tem {members}"
+      "tooSmall": "Para {count}; o escritório tem {members}",
+      "best": "Melhor custo-benefício",
+      "taglinePlus": "O essencial",
+      "taglinePro": "O escritório completo, no seu melhor",
+      "everythingIn": "Tudo do {plan}, e",
+      "times": "{count}× Plus",
+      "hd": "Vídeo HD nas reuniões",
+      "sd": "Vídeo padrão",
+      "support": "Ajuda prioritária da nossa equipe",
+      "included": "Incluído no seu plano",
+      "upgradeTitle": "Fazer upgrade"
     },
     "upgrade": {
       "fullTitle": "{office} está cheio",
@@ -718,8 +722,16 @@
       "membersOnly": "Só os admins de {office} podem mudar o plano.",
       "doneTitle": "Vocês estão no {plan}",
       "doneBody": "Obrigado. O recibo está a caminho, enviado pela Creem.",
-      "doneLine": "Espaço para {people} pessoas, e as horas de reunião que vêm com ele."
+      "doneLine": "Tudo do {plan} está ativo para o escritório inteiro."
     },
-    "trialWaiting": "Convide mais de {free} pessoas e toda a sua equipe ganha o {plan} grátis por {days} dias. Sem cartão."
+    "trialWaiting": "Convide mais de {free} pessoas e toda a sua equipe ganha o {plan} grátis por {days} dias. Sem cartão.",
+    "cancelWhen": "O plano vale até {date}. Depois, o escritório vai para o Free.",
+    "cancelAnyway": "Cancelar mesmo assim",
+    "loseSeatsOver": "{members} pessoas são membros, mas só {free} poderiam estar no andar ao mesmo tempo, e ninguém novo poderia entrar.",
+    "loseSeats": "O espaço cai de {seats} pessoas para {free}.",
+    "loseHours": "As horas de reunião caem de {hours} para {free} por mês; depois delas, as reuniões são só por voz.",
+    "loseNothing": "Ninguém é removido e nada é apagado.",
+    "downsell": "Ou mantenha a equipe junta no {plan}: {price} por mês, para até {seats} pessoas.",
+    "loseProPerks": "O vídeo HD e a ajuda prioritária acabam."
   }
 }

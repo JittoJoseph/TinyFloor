@@ -42,7 +42,9 @@ export function OfficeSwitcher({ office }: { office: Office }) {
   const others = offices.filter((one) => one.id !== office.id);
   const plans = usePlans();
   const { open } = useUpgrade();
-  const trialDays = office.trialEndsAt ? Math.max(1, Math.ceil((office.trialEndsAt - Date.now()) / DAY)) : null;
+  // Days are counted from when the switcher opened; a trial ends at its own pace, not by the render.
+  const [now] = useState(() => Date.now());
+  const trialDays = office.trialEndsAt ? Math.max(1, Math.ceil((office.trialEndsAt - now) / DAY)) : null;
   const top = plans?.plans[plans.plans.length - 1]?.id === office.plan;
   const offerPlans = !!open && office.role === "admin" && (!!trialDays || !top);
 

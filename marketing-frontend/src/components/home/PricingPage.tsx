@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Building2, CalendarOff, Check, CreditCard, Mic, Refund, SlidersHorizontal } from "@/components/ui/icons";
+import { CalendarOff, Check, CreditCard, Mic, Minus, Refund, SlidersHorizontal } from "@/components/ui/icons";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, STAGE } from "./Blocks";
 
 /**
- * The pricing page (docs/15): the three plans up top, then three things that
- * each take one look. What ten people pay against a per-seat tool, one table
- * where only the people and meeting hours differ, and the billing answers as
+ * The pricing page (docs/15, docs/22): the three plans up top, Pro marked,
+ * then three things that each take one look. What ten people pay against a
+ * per-seat tool, one table of what each plan gives, and the billing answers as
  * short notes. Few words on purpose; the plans carry the page.
  */
 export function PricingPage() {
@@ -48,7 +48,6 @@ export function PricingPage() {
               { key: "change", icon: <SlidersHorizontal /> },
               { key: "hours", icon: <Mic /> },
               { key: "tax", icon: <CreditCard /> },
-              { key: "bigger", icon: <Building2 /> },
             ] as const
           ).map((one) => ({
             icon: one.icon,
@@ -105,9 +104,9 @@ function SeatCompare() {
 }
 
 /**
- * Every plan side by side. Only the first two rows differ, which is the point:
- * the rest is a column of ticks. On a phone the three plan columns stay narrow
- * so the whole table fits without scrolling sideways.
+ * Every plan side by side: what differs first (people, meeting hours, video,
+ * help), then what every plan has, as a column of ticks. On a phone the three
+ * plan columns stay narrow so the whole table fits without scrolling sideways.
  */
 function PlanTable() {
   const t = useTranslations("pricingPage.table");
@@ -115,9 +114,12 @@ function PlanTable() {
   const tm = useTranslations("homepage.more.items");
   const th = useTranslations("home.preview");
   const tick = <Check className="mx-auto size-[18px] text-foreground" />;
+  const none = <Minus className="mx-auto size-[18px] text-muted-foreground" />;
   const rows: Array<{ label: string; note?: string; cells: ReactNode[] }> = [
-    { label: t("people"), cells: PLANS.map((plan) => plan.people) },
     { label: t("hours"), note: t("hoursNote"), cells: PLANS.map((plan) => plan.hours) },
+    { label: t("video"), cells: PLANS.map((plan) => (plan.hd ? t("hd") : t("standard"))) },
+    { label: t("support"), cells: PLANS.map((plan) => (plan.hd ? tick : none)) },
+    { label: t("people"), cells: PLANS.map((plan) => plan.people) },
     { label: t("calls"), note: t("callsNote"), cells: PLANS.map(() => tick) },
     ...(["chat", "screen", "whiteboard", "music", "noise"] as const).map((key) => ({ label: tm(`${key}.title`), cells: PLANS.map(() => tick) })),
     { label: th("inviteLink"), cells: PLANS.map(() => tick) },

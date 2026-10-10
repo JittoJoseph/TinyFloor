@@ -179,7 +179,6 @@
     "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
     "dmIntro": "Tästä alkaa keskustelusi käyttäjän {name} kanssa. Vain te kaksi näette sen.",
     "channelIntroTitle": "Tervetuloa kanavalle #{channel}",
-    "generalIntro": "Täällä koko {office} puhuu. Kaikki toimistossa voivat lukea, ja se säilyy, kun lähdet kerrokselta.",
     "channelIntro": "Tämä on kanavan #{channel} alku. Kaikki toimistossa voivat lukea.",
     "sayTo": "Viesti: {name}",
     "channelHint": "Pienet kirjaimet, ei välilyöntejä. Kaikki toimistossa voivat liittyä.",
@@ -207,7 +206,8 @@
     "delete": "Peru lähetys",
     "deleteConfirm": "Peru lähetys?",
     "save": "Tallenna",
-    "cancel": "Peruuta"
+    "cancel": "Peruuta",
+    "showAllPeople": "Näytä kaikki {count}"
   },
   "proximity": {
     "call": "Soita",
@@ -451,7 +451,6 @@
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
-      "seatsFree": "Tilaa on vielä.",
       "onFloorNow": "{count} kerroksessa nyt",
       "copied": "Kopioitu",
       "remove": "Poista",
@@ -468,20 +467,19 @@
       "wrong": "Ei onnistunut. Yritä uudelleen.",
       "subtitle": "Kaikki toimistossa {office} ja kuka pääsee sisään.",
       "linkCopied": "Kutsulinkki kopioitu",
-      "nobodyOnFloor": "Ei vielä muita.",
-      "seatsLeft": "{count, plural, one {# paikka vapaana – kutsu joku} other {# paikkaa vapaana – kutsu joku}}",
-      "seatsNote": "Paikka on jäsen. Lähtijä vapauttaa omansa; offline-tila ei.",
-      "allSeatsTaken": "Kaikki paikat on varattu",
-      "allSeatsTakenBody": "Lähtijä vapauttaa paikan. Toimistoja, joissa on enemmän paikkoja, on tulossa.",
       "yourProfile": "Profiilisi",
       "ownOfficeTitle": "Tällainen kerros tiimillesi?",
       "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle.",
       "linkTitle": "Kutsulinkki",
-      "linkBody": "Kuka tahansa linkin saanut voi liittyä tilillä, kun paikkoja on vapaana.",
       "copy": "Kopioi",
       "resetLink": "Vaihda linkki",
       "resetTitle": "Vaihdetaanko kutsulinkki?",
-      "resetBody": "Nykyinen linkki lakkaa toimimasta heti, ja uusi korvaa sen. Kaikki toimistossa jo olevat pysyvät."
+      "resetBody": "Nykyinen linkki lakkaa toimimasta heti, ja uusi korvaa sen. Kaikki toimistossa jo olevat pysyvät.",
+      "everyone": "Kaikki",
+      "onFloor": "Kerroksella",
+      "search": "Hae ihmisiä",
+      "noMatch": "Kukaan ei vastaa hakua.",
+      "seatsOpen": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}"
     },
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
@@ -534,7 +532,6 @@
     "you": "Sinä",
     "more": "+{count} muuta",
     "leave": "Poistu",
-    "aloneTitle": "Olet täällä ensimmäisenä",
     "aloneShort": "Odotetaan muita",
     "open": "Avaa kokous",
     "nobodyToAsk": "Ketään muuta toimistosta ei ole nyt kerroksessa.",
@@ -561,7 +558,6 @@
       "pausedMonth": "vain ääni {date} asti",
       "pausedToday": "vain ääni huomiseen asti"
     },
-    "subtitle": "Liity, niin kävelet kokoushuoneeseen. Kahden hengen puhelut kerroksessa eivät koskaan laske.",
     "alsoOn": "Myös käynnissä",
     "emptyRoom": "Kukaan ei ole vielä paikalla",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "Nollautuu huomenna",
       "pausedMonth": "Käytetty: video on tauolla {date} asti",
       "pausedToday": "Käytetty: video on tauolla huomiseen",
-      "counts": "Tunti lasketaan, kun kokouksessa on kaksi tai useampia ihmisiä, oli heitä kuinka monta tahansa.",
-      "lobby": "Demotoimisto jakaa {hours} tuntia kokousvideota päivässä.",
       "more": "Hanki lisää tunteja",
       "askAdmin": "Ylläpitäjä voi hankkia lisää tunteja."
     },
-    "how": {
-      "title": "Näin kokoukset toimivat",
-      "walk": "Liittyessäsi kävelet kokoushuoneeseen. Kävele ulos poistuaksesi.",
-      "speakers": "Vain puhujat lähettävät videota, joten kokoukset pysyvät kevyinä.",
-      "voice": "Kun kuun tunnit on käytetty, kokoukset jatkuvat äänellä."
-    }
+    "pin": "Kiinnitä",
+    "unpin": "Irrota",
+    "others": "{count, plural, one {# muu} other {# muuta}}",
+    "ready": {
+      "blocked": "Selain ei sallinut kameraa",
+      "cameraOff": "Kamera on pois päältä"
+    },
+    "free": {
+      "title": "Vapaana juttelemaan",
+      "meet": "Tapaa",
+      "more": "ja {count} muuta"
+    },
+    "readyTitle": "Valmiina liittymään?",
+    "joinNow": "Liity nyt",
+    "inMeeting": "Tässä kokouksessa",
+    "asked": "Kysytty"
   },
   "help": {
     "title": "Apua ja palautetta",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "Tämän toimiston paketti",
     "members": "{used}/{seats} jäsentä",
-    "freeNote": "Ilmainen, kaikilla ominaisuuksilla.",
+    "freeNote": "{hours} kokoustuntia kuukaudessa, tavallinen video.",
     "renews": "Uusiutuu {date}",
     "ends": "Päättyy {date}, sitten ilmainen paketti",
     "perMonth": "kuukaudessa",
@@ -644,15 +648,12 @@
     "switchTitle": "Vaihdetaanko pakettiin {plan}?",
     "switchBody": "Creem veloittaa tai hyvittää erotuksen jakson jäljellä olevalta ajalta heti. Kerroksessa kukaan ei huomaa mitään.",
     "cancelTitle": "Perutaanko paketti?",
-    "cancelBody": "Paketti on voimassa {date} asti, sitten toimisto palaa ilmaiseen pakettiin: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
-    "cancelBodyNow": "Toimisto palaa ilmaiseen pakettiin tämän jakson lopussa: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
     "moreSeats": "Hanki lisää paikkoja",
     "membersLabel": "Jäsenet",
     "hoursLabel": "Kokoustunnit",
     "hours": "{used}/{allowance} h",
     "hoursResets": "Nollautuu {date}",
     "hoursUsedUp": "Tämän kuun kokoustunnit on käytetty: kokoukset ovat vain äänellä {date} asti. Isompi paketti tuo videon takaisin heti.",
-    "hoursExplained": "Kokoustunnit laskevat ajan, jolloin kokouksessa on kaksi tai useampi ihminen. Kahden hengen puhelut kerroksessa eivät koskaan laske. Kun tunnit loppuvat, kokoukset jatkuvat äänellä kuun 1. päivään asti.",
     "payment": "Maksu",
     "cardUnknown": "Kortti tallennettu Creemiin",
     "update": "Päivitä",
@@ -681,7 +682,6 @@
     "endingNote": "Paketti päättyy {date}. Pidä se, niin mikään ei muutu.",
     "seatsFree": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}",
     "seatsFull": "Kaikki paikat on varattu",
-    "topPlan": "Sinulla on suurin pakettimme. Tarvitsetko tilaa yli {count} hengelle? Kirjoita meille, niin järjestämme sen.",
     "usageOf": "{used}/{total}",
     "pillTrial": "Kokeilu",
     "trialNote": "Tiimisi kokeilee {plan}-pakettia {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa, enintään {seats} hengelle, ellet valitse pakettia.",
@@ -690,21 +690,25 @@
       "note": "Kuukausittain, Yhdysvaltain dollareina, ilman veroja",
       "current": "Nykyinen",
       "trial": "Kokeilu",
-      "fits": "Sopii tiimillenne",
       "perMonth": "kuukaudessa",
-      "forever": "aina",
-      "perPerson": "{price} hengeltä",
-      "noCard": "Korttia ei tarvita",
       "people": "Enintään {count} henkeä",
       "hours": "{count} kokoustuntia kuukaudessa",
-      "everything": "Kaikki ominaisuudet",
       "keep": "Pidä {plan}",
       "choose": "Valitse {plan}",
       "upgrade": "Päivitä {plan}-pakettiin",
       "moveTo": "Vaihda {plan}-pakettiin",
       "currentButton": "Nykyinen paketti",
-      "afterTrial": "{date} alkaen",
-      "tooSmall": "Tilaa {count}; toimistossa on {members}"
+      "tooSmall": "Tilaa {count}; toimistossa on {members}",
+      "best": "Paras vastine",
+      "taglinePlus": "Olennainen",
+      "taglinePro": "Koko toimisto parhaimmillaan",
+      "everythingIn": "Kaikki {plan}-paketista, ja",
+      "times": "{count}× Plus",
+      "hd": "HD-video kokouksissa",
+      "sd": "Tavallinen video",
+      "support": "Ensisijainen apu tiimiltämme",
+      "included": "Sisältyy pakettiisi",
+      "upgradeTitle": "Päivitä"
     },
     "upgrade": {
       "fullTitle": "{office} on täynnä",
@@ -718,8 +722,16 @@
       "membersOnly": "Vain {office}-toimiston ylläpitäjät voivat vaihtaa pakettia.",
       "doneTitle": "Olette nyt {plan}-paketissa",
       "doneBody": "Kiitos. Kuitti tulee Creemiltä.",
-      "doneLine": "Tilaa {people} hengelle ja niihin kuuluvat kokoustunnit."
+      "doneLine": "Kaikki {plan}-paketin ominaisuudet ovat käytössä koko toimistolla."
     },
-    "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita."
+    "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
+    "cancelWhen": "Paketti on voimassa {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa.",
+    "cancelAnyway": "Peru silti",
+    "loseSeatsOver": "Jäseniä on {members}, mutta vain {free} voisi olla kerroksessa yhtä aikaa, eikä uusia voisi liittyä.",
+    "loseSeats": "Tilaa {seats} hengen sijaan {free}.",
+    "loseHours": "Kokoustunnit putoavat {hours}:stä {free}:een kuukaudessa; sen jälkeen kokoukset ovat vain äänellä.",
+    "loseNothing": "Ketään ei poisteta eikä mitään hävitetä.",
+    "downsell": "Tai pidä tiimi koossa {plan}-paketilla: {price} kuukaudessa, enintään {seats} hengelle.",
+    "loseProPerks": "HD-video ja ensisijainen apu loppuvat."
   }
 }

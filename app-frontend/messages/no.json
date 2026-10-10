@@ -179,7 +179,6 @@
     "members": "{count, plural, one {# medlem} other {# medlemmer}}",
     "dmIntro": "Her starter samtalen din med {name}. Bare dere to kan se den.",
     "channelIntroTitle": "Velkommen til #{channel}",
-    "generalIntro": "Her snakker hele {office}. Alle på kontoret kan lese, og det blir liggende når du forlater gulvet.",
     "channelIntro": "Dette er begynnelsen på #{channel}. Alle på kontoret kan lese.",
     "sayTo": "Melding til {name}",
     "channelHint": "Små bokstaver, ingen mellomrom. Alle på kontoret kan bli med.",
@@ -207,7 +206,8 @@
     "delete": "Angre",
     "deleteConfirm": "Angre sending?",
     "save": "Lagre",
-    "cancel": "Avbryt"
+    "cancel": "Avbryt",
+    "showAllPeople": "Vis alle {count}"
   },
   "proximity": {
     "call": "Ring",
@@ -451,7 +451,6 @@
       "invite": "Inviter",
       "seats": "{used} av {seats} plasser",
       "seatsFull": "Alle plassene er tatt.",
-      "seatsFree": "Det er plass til flere.",
       "onFloorNow": "{count} på etasjen nå",
       "copied": "Kopiert",
       "remove": "Fjern",
@@ -468,20 +467,19 @@
       "wrong": "Det gikk ikke. Prøv igjen.",
       "subtitle": "Alle i {office}, og hvem som kan komme inn.",
       "linkCopied": "Invitasjonslenke kopiert",
-      "nobodyOnFloor": "Ingen andre ennå.",
-      "seatsLeft": "{count, plural, one {# plass igjen – inviter noen} other {# plasser igjen – inviter noen}}",
-      "seatsNote": "En plass er et medlem. Den som går, frigjør sin; å være frakoblet gjør ikke det.",
-      "allSeatsTaken": "Alle plassene er tatt",
-      "allSeatsTakenBody": "Den som går, frigjør en plass. Kontorer med flere plasser kommer snart.",
       "yourProfile": "Profilen din",
       "ownOfficeTitle": "En etasje som denne for teamet ditt?",
       "ownOfficeBody": "Lag ditt eget kontor på ett minutt. Gratis for opptil 3 personer.",
       "linkTitle": "Invitasjonslenke",
-      "linkBody": "Alle med denne lenken kan bli med med en konto, så lenge det er en ledig plass.",
       "copy": "Kopier",
       "resetLink": "Tilbakestill lenke",
       "resetTitle": "Tilbakestille invitasjonslenken?",
-      "resetBody": "Den nåværende lenken slutter å virke med en gang, og en ny tar over. Alle som allerede er i kontoret, blir."
+      "resetBody": "Den nåværende lenken slutter å virke med en gang, og en ny tar over. Alle som allerede er i kontoret, blir.",
+      "everyone": "Alle",
+      "onFloor": "På gulvet",
+      "search": "Søk etter personer",
+      "noMatch": "Ingen passer til det.",
+      "seatsOpen": "{count, plural, one {# ledig plass} other {# ledige plasser}}"
     },
     "office": "Kontor",
     "goneTitle": "Dette kontoret finnes ikke lenger",
@@ -534,7 +532,6 @@
     "you": "Deg",
     "more": "+{count} til",
     "leave": "Forlat",
-    "aloneTitle": "Du er den første her",
     "aloneShort": "Venter på andre",
     "open": "Åpne møtet",
     "nobodyToAsk": "Ingen andre fra kontoret er på gulvet nå.",
@@ -561,7 +558,6 @@
       "pausedMonth": "bare lyd til {date}",
       "pausedToday": "bare lyd til i morgen"
     },
-    "subtitle": "Bli med for å gå inn i møterommet. Samtaler mellom to på etasjen teller aldri.",
     "alsoOn": "Også i gang",
     "emptyRoom": "Ingen her ennå",
     "usage": {
@@ -572,17 +568,25 @@
       "resetsTomorrow": "Nullstilles i morgen",
       "pausedMonth": "Brukt opp: video er satt på pause til {date}",
       "pausedToday": "Brukt opp: video er satt på pause til i morgen",
-      "counts": "En time teller mens et møte har to eller flere personer, uansett hvor mange.",
-      "lobby": "Demokontoret deler {hours} timer møtevideo om dagen.",
       "more": "Få flere timer",
       "askAdmin": "En administrator kan skaffe flere timer."
     },
-    "how": {
-      "title": "Slik fungerer møter",
-      "walk": "Når du blir med, går du inn i møterommet. Gå ut for å forlate.",
-      "speakers": "Bare de som snakker sender video, så møtene holder seg lette.",
-      "voice": "Når månedens timer er brukt, fortsetter møtene med lyd."
-    }
+    "pin": "Fest",
+    "unpin": "Løsne",
+    "others": "{count, plural, one {# annen} other {# andre}}",
+    "ready": {
+      "blocked": "Nettleseren tillot ikke kameraet",
+      "cameraOff": "Kameraet er av"
+    },
+    "free": {
+      "title": "Ledige for en prat",
+      "meet": "Møt",
+      "more": "og {count} til"
+    },
+    "readyTitle": "Klar til å bli med?",
+    "joinNow": "Bli med nå",
+    "inMeeting": "I møtet",
+    "asked": "Spurt"
   },
   "help": {
     "title": "Hjelp og tilbakemelding",
@@ -628,7 +632,7 @@
   "billing": {
     "current": "Dette kontoret er på",
     "members": "{used} av {seats} medlemmer",
-    "freeNote": "Gratis, med alle funksjoner.",
+    "freeNote": "{hours} møtetimer i måneden, standardvideo.",
     "renews": "Fornyes {date}",
     "ends": "Slutter {date}, deretter gratisplanen",
     "perMonth": "i måneden",
@@ -644,15 +648,12 @@
     "switchTitle": "Bytte til {plan}?",
     "switchBody": "Creem belaster eller krediterer differansen for resten av perioden med en gang. Ingen på gulvet merker noe.",
     "cancelTitle": "Si opp planen?",
-    "cancelBody": "Planen varer til {date}, så går kontoret tilbake til gratisplanen: 3 medlemmer og 5 møtetimer i måneden. Ingen fjernes, men ingen nye kan bli med, og bare 3 kan være på etasjen samtidig.",
-    "cancelBodyNow": "Kontoret går tilbake til gratisplanen ved slutten av perioden: 3 medlemmer og 5 møtetimer i måneden. Ingen fjernes, men ingen nye kan bli med, og bare 3 kan være på etasjen samtidig.",
     "moreSeats": "Få flere plasser",
     "membersLabel": "Medlemmer",
     "hoursLabel": "Møtetimer",
     "hours": "{used} av {allowance} t",
     "hoursResets": "Nullstilles {date}",
     "hoursUsedUp": "Månedens møtetimer er brukt opp: møter er bare med lyd til {date}. En større plan gir video tilbake nå.",
-    "hoursExplained": "Møtetimer teller tiden et møte har to eller flere personer. Samtaler mellom to personer på etasjen teller aldri. Når de er brukt opp, fortsetter møter med lyd til den 1.",
     "payment": "Betaling",
     "cardUnknown": "Kort lagret hos Creem",
     "update": "Oppdater",
@@ -681,7 +682,6 @@
     "endingNote": "Planen avsluttes {date}. Behold den, så endres ingenting.",
     "seatsFree": "{count, plural, one {# plass ledig} other {# plasser ledige}}",
     "seatsFull": "Alle plassene er tatt",
-    "topPlan": "Du er på vår største plan. Trenger du plass til flere enn {count}? Skriv til oss, så ordner vi det.",
     "usageOf": "{used} av {total}",
     "pillTrial": "Prøve",
     "trialNote": "Teamet ditt prøver {plan} til {date}. Etter det er kontoret på Gratis, for opptil {seats} personer, med mindre du velger en plan.",
@@ -690,21 +690,25 @@
       "note": "Månedlig, i amerikanske dollar, ekskl. mva.",
       "current": "Nåværende",
       "trial": "Prøve",
-      "fits": "Passer for dere",
       "perMonth": "i måneden",
-      "forever": "for alltid",
-      "perPerson": "{price} per person",
-      "noCard": "Ikke noe kort",
       "people": "Opptil {count} personer",
       "hours": "{count} møtetimer i måneden",
-      "everything": "Alle funksjoner",
       "keep": "Behold {plan}",
       "choose": "Velg {plan}",
       "upgrade": "Oppgrader til {plan}",
       "moveTo": "Bytt til {plan}",
       "currentButton": "Nåværende plan",
-      "afterTrial": "Fra {date}",
-      "tooSmall": "Har plass til {count}; kontoret har {members}"
+      "tooSmall": "Har plass til {count}; kontoret har {members}",
+      "best": "Best verdi",
+      "taglinePlus": "Det viktigste",
+      "taglinePro": "Hele kontoret, på sitt beste",
+      "everythingIn": "Alt i {plan}, og",
+      "times": "{count}× Plus",
+      "hd": "HD-video i møter",
+      "sd": "Standardvideo",
+      "support": "Prioritert hjelp fra teamet vårt",
+      "included": "Inkludert i planen din",
+      "upgradeTitle": "Oppgrader"
     },
     "upgrade": {
       "fullTitle": "{office} er fullt",
@@ -718,8 +722,16 @@
       "membersOnly": "Bare administratorer i {office} kan endre planen.",
       "doneTitle": "Dere er på {plan}",
       "doneBody": "Takk. Kvitteringen er på vei fra Creem.",
-      "doneLine": "Plass til {people} personer, og møtetimene som følger med."
+      "doneLine": "Alt i {plan} er på for hele kontoret."
     },
-    "trialWaiting": "Inviter flere enn {free} personer, så får hele teamet ditt {plan} gratis i {days} dager. Ikke noe kort."
+    "trialWaiting": "Inviter flere enn {free} personer, så får hele teamet ditt {plan} gratis i {days} dager. Ikke noe kort.",
+    "cancelWhen": "Planen varer til {date}. Etter det er kontoret på Gratis.",
+    "cancelAnyway": "Avslutt likevel",
+    "loseSeatsOver": "{members} personer er medlemmer, men bare {free} kan være på etasjen samtidig, og ingen nye kan bli med.",
+    "loseSeats": "Plassen går fra {seats} personer til {free}.",
+    "loseHours": "Møtetimene går fra {hours} til {free} i måneden; etter det er møter bare med lyd.",
+    "loseNothing": "Ingen fjernes, og ingenting slettes.",
+    "downsell": "Eller hold teamet samlet på {plan}: {price} i måneden, for opptil {seats} personer.",
+    "loseProPerks": "HD-video og prioritert hjelp stopper."
   }
 }

@@ -532,7 +532,6 @@
     "you": "Jij",
     "more": "+{count} meer",
     "leave": "Verlaten",
-    "aloneTitle": "Jij bent hier als eerste",
     "aloneShort": "Wachten op anderen",
     "open": "Meeting openen",
     "nobodyToAsk": "Er is nu niemand anders van kantoor op de vloer.",
@@ -585,7 +584,9 @@
       "more": "en nog {count}"
     },
     "readyTitle": "Klaar om deel te nemen?",
-    "joinNow": "Nu deelnemen"
+    "joinNow": "Nu deelnemen",
+    "inMeeting": "In deze meeting",
+    "asked": "Gevraagd"
   },
   "help": {
     "title": "Hulp en feedback",

@@ -193,11 +193,19 @@ Members see the same plans and who can change them.
   (the same switch as in a meeting) and the camera (whether you go in with it
   on, remembered, previewed live with the mic's level). On the right the
   office's meeting, one line of who's in it ("Priya, Ana, 17 others") and Join
-  now. Under them, other meetings on now and who's free to talk, a meeting
-  with them one press away. The month's hours as one quiet line at the page's
-  foot. In a meeting the tiles are flat cards: the circle without any glow, a
-  mic-off badge or moving bars in the corner, a ring while talking. No floor
-  drawing and no explaining how meetings work. In a meeting: a grid in join order that
+  now, built like the doors (a black bezel with a panel set in). Under them,
+  other meetings on now and who's free to talk, a meeting with them one press
+  away. The month's hours as one quiet line at the page's foot. No floor
+  drawing and no explaining how meetings work.
+- **In a meeting**: Meet's spotlight. One big card (what you pinned, a shared
+  screen, else whoever is talking once the last speaker has paused) and a
+  column of four: you, the people who spoke last, and "n others". Only those
+  cards' video is received, so a 25-person meeting costs about four streams,
+  and yours is never received. One bar under the stage: the time and the
+  meeting on the left, the controls in the middle, the people button on the
+  right, which opens who's in and "Ask people in", the only way to invite.
+  Tiles are flat cards: the circle without glow, a mic-off badge or moving
+  bars in the corner, a ring while talking. Nothing pulses. In a meeting: a grid in join order that
   includes you; pin or a shared screen goes big with the rest in a column on
   the right, as many as fit and a count of the rest.
 - **People**: one searchable list, you first, then whoever is on the floor;

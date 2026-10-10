@@ -532,7 +532,6 @@
     "you": "Tu",
     "more": "+{count} altri",
     "leave": "Esci",
-    "aloneTitle": "Sei il primo qui",
     "aloneShort": "In attesa degli altri",
     "open": "Apri la riunione",
     "nobodyToAsk": "Al momento nessun altro dell'ufficio è sul piano.",
@@ -585,7 +584,9 @@
       "more": "e altri {count}"
     },
     "readyTitle": "Pronto a partecipare?",
-    "joinNow": "Partecipa ora"
+    "joinNow": "Partecipa ora",
+    "inMeeting": "In questa riunione",
+    "asked": "Invitato"
   },
   "help": {
     "title": "Aiuto e feedback",

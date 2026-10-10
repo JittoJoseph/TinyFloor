@@ -11,8 +11,9 @@ import { clock, useElapsed, useMeetingName, useMyMeeting } from "./hooks";
 import { useAuth } from "@/contexts/AuthContext";
 
 /**
- * Your meeting, while you look at the floor: whoever is talking, small, and
- * the way back to the stage. Out here only one small video is received.
+ * Your meeting, while you look at the floor: what its big card shows (whoever
+ * is talking, or a shared screen), small, and the way back to the stage. Out
+ * here only that one small video is received.
  */
 export function MeetingMini() {
   const t = useTranslations("meetings");
@@ -26,9 +27,9 @@ export function MeetingMini() {
   if (!meeting || !place.paths.meetings) return null;
 
   const others = meeting.members.filter((member) => member.id !== user?.id);
-  const onCamera = others.find((member) => member.id === stage.cameras[0]);
-  const shown = onCamera ?? others.find((member) => member.speaking) ?? others[others.length - 1];
+  const shown = others.find((member) => member.id === stage.focus?.id);
   const peer = shown && meetingPeers.find((one) => one.id === shown.id);
+  const screen = stage.focus?.kind === "screen";
   const meetingsPath = place.paths.meetings;
 
   return (
@@ -41,10 +42,11 @@ export function MeetingMini() {
       {shown ? (
         <MeetingTile
           id={shown.id}
-          name={shown.name}
-          video={onCamera && peer?.cameraOn ? peer.camera : null}
+          name={screen ? t("screenOf", { name: shown.name }) : shown.name}
+          video={screen ? (peer?.screenStream ?? null) : peer?.cameraOn ? peer.camera : null}
           speaking={shown.speaking}
           micOff={!!peer && !peer.mic}
+          screen={screen}
           compact
           className="aspect-video w-full rounded-none"
         />

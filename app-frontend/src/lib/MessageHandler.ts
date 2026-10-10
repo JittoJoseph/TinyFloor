@@ -105,6 +105,7 @@ export class MessageHandler {
 
   /** Arriving, or coming back after a reconnect: the room's word replaces whatever we had. */
   private welcome(self: PlayerState, players: PlayerState[]) {
+    callManager.setSelf(self.id);
     // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
       if (id === this.playerId) continue;

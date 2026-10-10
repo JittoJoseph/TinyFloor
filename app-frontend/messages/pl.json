@@ -532,7 +532,6 @@
     "you": "Ty",
     "more": "+{count} więcej",
     "leave": "Wyjdź",
-    "aloneTitle": "Jesteś tu pierwszy",
     "aloneShort": "Czekamy na innych",
     "open": "Otwórz spotkanie",
     "nobodyToAsk": "Nikogo innego z biura nie ma teraz na piętrze.",
@@ -585,7 +584,9 @@
       "more": "i jeszcze {count}"
     },
     "readyTitle": "Gotowy, by dołączyć?",
-    "joinNow": "Dołącz teraz"
+    "joinNow": "Dołącz teraz",
+    "inMeeting": "W tym spotkaniu",
+    "asked": "Zaproszono"
   },
   "help": {
     "title": "Pomoc i opinie",

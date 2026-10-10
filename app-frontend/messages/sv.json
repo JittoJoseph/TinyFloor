@@ -532,7 +532,6 @@
     "you": "Du",
     "more": "+{count} till",
     "leave": "Lämna",
-    "aloneTitle": "Du är först här",
     "aloneShort": "Väntar på andra",
     "open": "Öppna mötet",
     "nobodyToAsk": "Ingen annan från kontoret är på golvet just nu.",
@@ -585,7 +584,9 @@
       "more": "och {count} till"
     },
     "readyTitle": "Redo att ansluta?",
-    "joinNow": "Anslut nu"
+    "joinNow": "Anslut nu",
+    "inMeeting": "I mötet",
+    "asked": "Tillfrågad"
   },
   "help": {
     "title": "Hjälp och feedback",

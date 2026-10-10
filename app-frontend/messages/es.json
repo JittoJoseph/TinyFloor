@@ -532,7 +532,6 @@
     "you": "Tú",
     "more": "+{count} más",
     "leave": "Salir",
-    "aloneTitle": "Eres el primero en llegar",
     "aloneShort": "Esperando a que se unan otros",
     "open": "Abrir la reunión",
     "nobodyToAsk": "Ahora no hay nadie más de la oficina en la planta.",
@@ -585,7 +584,9 @@
       "more": "y {count} más"
     },
     "readyTitle": "¿Listo para unirte?",
-    "joinNow": "Unirse ahora"
+    "joinNow": "Unirse ahora",
+    "inMeeting": "En esta reunión",
+    "asked": "Avisado"
   },
   "help": {
     "title": "Ayuda y comentarios",

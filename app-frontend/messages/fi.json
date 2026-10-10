@@ -532,7 +532,6 @@
     "you": "Sinä",
     "more": "+{count} muuta",
     "leave": "Poistu",
-    "aloneTitle": "Olet täällä ensimmäisenä",
     "aloneShort": "Odotetaan muita",
     "open": "Avaa kokous",
     "nobodyToAsk": "Ketään muuta toimistosta ei ole nyt kerroksessa.",
@@ -585,7 +584,9 @@
       "more": "ja {count} muuta"
     },
     "readyTitle": "Valmiina liittymään?",
-    "joinNow": "Liity nyt"
+    "joinNow": "Liity nyt",
+    "inMeeting": "Tässä kokouksessa",
+    "asked": "Kysytty"
   },
   "help": {
     "title": "Apua ja palautetta",

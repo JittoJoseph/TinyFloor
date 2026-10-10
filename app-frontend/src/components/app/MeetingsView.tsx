@@ -10,6 +10,7 @@ import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
@@ -66,16 +67,16 @@ function MeetingsLobby({ office }: { office: string }) {
         <VideoPausedNote className="mt-4 w-fit max-w-full" />
 
         <main className="flex flex-1 flex-col justify-center py-8">
-          <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-14">
+          <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:gap-10">
             <JoinPreview />
             <JoinMain meeting={main} office={office} known={known} />
           </div>
 
           {/* What else is on, and who could be: under the way in, out of its way. */}
-          <div className="mt-10 grid gap-8 empty:hidden sm:grid-cols-2">
+          <div className="mt-6 grid items-start gap-6 empty:hidden md:grid-cols-2 lg:mt-8">
             {others.length > 0 && (
-              <section>
-                <h2 className="mb-1 text-[12.5px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
+              <section className="rounded-2xl border border-border bg-background px-4 pb-2 pt-3.5 [--face-ring:var(--ui-background)]">
+                <h2 className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
                 <ul>
                   {others.map((one) => (
                     <OtherMeeting key={one.id} meeting={one} office={office} />
@@ -83,7 +84,7 @@ function MeetingsLobby({ office }: { office: string }) {
                 </ul>
               </section>
             )}
-            <FreeToTalk />
+            <FreeToTalk className="rounded-2xl border border-border bg-background px-4 pb-2 pt-3.5 [--face-ring:var(--ui-background)]" />
           </div>
         </main>
 
@@ -105,8 +106,9 @@ function Elapsed({ meeting }: { meeting: MeetingInfo }) {
 }
 
 /**
- * The office's own meeting, as Meet's "Ready to join?": its name, who is in it
- * on one line (or that nobody is yet), and one big way in.
+ * The office's own meeting, as Meet's "Ready to join?", built like a door: the
+ * meeting written on a black bezel (its name, how long it's been on, how many
+ * are in), and set into it who those are, on one line, and one big way in.
  */
 function JoinMain({ meeting, office, known }: { meeting: MeetingInfo; office: string; known: boolean }) {
   const t = useTranslations("meetings");
@@ -114,28 +116,32 @@ function JoinMain({ meeting, office, known }: { meeting: MeetingInfo; office: st
   const live = meeting.members.length > 0;
 
   return (
-    <section>
-      <p className="text-[13px] font-medium text-muted-foreground">{t("readyTitle")}</p>
-      <h2 className="mt-1 text-[26px] font-semibold leading-tight tracking-tight text-foreground">{nameOf(meeting, office)}</h2>
-      <div className="mt-3 flex min-h-8 items-center gap-2 text-[13px] text-muted-foreground">
-        {live ? (
-          <>
-            <span className="size-1.5 rounded-full bg-ok" aria-hidden />
-            <Elapsed meeting={meeting} />
-            <span aria-hidden>·</span>
-            {t("people", { count: meeting.members.length })}
-          </>
-        ) : known ? (
-          t("emptyRoom")
-        ) : (
-          // Until the floor says who's in, nothing is claimed either way.
-          <span aria-hidden className="h-2.5 w-28 animate-pulse rounded-full bg-muted" />
-        )}
+    <section className={cn(bezel, "rounded-[30px] p-1.5")}>
+      <div className={cn(onBezel, "px-4 pb-4 pt-3.5 sm:px-[18px] sm:pt-[18px]")}>
+        <p className="text-[12.5px] font-medium text-muted-foreground">{t("readyTitle")}</p>
+        <h2 className="mt-1 text-[22px] font-bold leading-tight tracking-[-0.02em] text-foreground">{nameOf(meeting, office)}</h2>
+        <div className="mt-2 flex min-h-5 items-center gap-2 text-[13px] text-muted-foreground">
+          {live ? (
+            <>
+              <span className="size-1.5 rounded-full bg-ok" aria-hidden />
+              <Elapsed meeting={meeting} />
+              <span aria-hidden>·</span>
+              {t("people", { count: meeting.members.length })}
+            </>
+          ) : known ? (
+            t("emptyRoom")
+          ) : (
+            // Until the floor says who's in, nothing is claimed either way.
+            <span aria-hidden className="h-2.5 w-28 animate-pulse rounded-full bg-muted" />
+          )}
+        </div>
       </div>
-      {live && <PeopleLine people={meeting.members} className="mt-3" />}
-      <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="mt-6 h-12 w-full px-6 text-[15px] sm:w-auto sm:min-w-44">
-        {live ? t("joinNow") : t("start")}
-      </Button>
+      <div className={cn(bezelPanel, "rounded-[24px] p-4 sm:p-5")}>
+        {live && <PeopleLine people={meeting.members} className="mb-4" />}
+        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-12 w-full px-6 text-[15px]">
+          {live ? t("joinNow") : t("start")}
+        </Button>
+      </div>
     </section>
   );
 }
@@ -145,7 +151,7 @@ function OtherMeeting({ meeting, office }: { meeting: MeetingInfo; office: strin
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   return (
-    <li className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-2 hover:bg-muted/60 [--face-ring:var(--ui-card)]">
+    <li className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-2">
       <FaceStack seeds={meeting.members.map((person) => person.id)} size={24} max={3} />
       <div className="min-w-0 flex-1">
         <p className="truncate text-[13.5px] font-medium text-foreground">{nameOf(meeting, office)}</p>

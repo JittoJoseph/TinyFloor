@@ -532,7 +532,6 @@
     "you": "Dig",
     "more": "+{count} mere",
     "leave": "Forlad",
-    "aloneTitle": "Du er den første her",
     "aloneShort": "Venter på andre",
     "open": "Åbn mødet",
     "nobodyToAsk": "Ingen andre fra kontoret er på gulvet lige nu.",
@@ -585,7 +584,9 @@
       "more": "og {count} mere"
     },
     "readyTitle": "Klar til at deltage?",
-    "joinNow": "Deltag nu"
+    "joinNow": "Deltag nu",
+    "inMeeting": "I mødet",
+    "asked": "Spurgt"
   },
   "help": {
     "title": "Hjælp og feedback",

@@ -532,7 +532,6 @@
     "you": "你",
     "more": "另外 {count} 人",
     "leave": "离开",
-    "aloneTitle": "你是第一个到的",
     "aloneShort": "正在等待其他人",
     "open": "打开会议",
     "nobodyToAsk": "现在楼层上没有办公室的其他人。",
@@ -585,7 +584,9 @@
       "more": "还有 {count} 人"
     },
     "readyTitle": "准备好加入了吗？",
-    "joinNow": "立即加入"
+    "joinNow": "立即加入",
+    "inMeeting": "会议中的人",
+    "asked": "已邀请"
   },
   "help": {
     "title": "帮助与反馈",

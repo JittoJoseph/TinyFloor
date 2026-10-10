@@ -532,7 +532,6 @@
     "you": "Deg",
     "more": "+{count} til",
     "leave": "Forlat",
-    "aloneTitle": "Du er den første her",
     "aloneShort": "Venter på andre",
     "open": "Åpne møtet",
     "nobodyToAsk": "Ingen andre fra kontoret er på gulvet nå.",
@@ -585,7 +584,9 @@
       "more": "og {count} til"
     },
     "readyTitle": "Klar til å bli med?",
-    "joinNow": "Bli med nå"
+    "joinNow": "Bli med nå",
+    "inMeeting": "I møtet",
+    "asked": "Spurt"
   },
   "help": {
     "title": "Hjelp og tilbakemelding",

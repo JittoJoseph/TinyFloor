@@ -22,6 +22,8 @@ export const MeetingTile = memo(function MeetingTile({
   mirror,
   screen,
   compact,
+  contain,
+  caption,
   pin,
   className,
   style,
@@ -36,8 +38,12 @@ export const MeetingTile = memo(function MeetingTile({
   mirror?: boolean;
   /** A shared screen: letterboxed, never cropped. */
   screen?: boolean;
-  /** A small tile: the column beside a pinned one, the floor's card. */
+  /** A small tile: the column beside the big one, the floor's card. */
   compact?: boolean;
+  /** The whole picture, never cropped: the big card, where a face cut off would be odd. */
+  contain?: boolean;
+  /** A line under the circle while there's no video ("Waiting for others to join"). */
+  caption?: string;
   /** Pinning it big, or letting it go: shown on hover, and always while pinned. */
   pin?: { pinned: boolean; label: string; onToggle: () => void };
   className?: string;
@@ -69,18 +75,19 @@ export const MeetingTile = memo(function MeetingTile({
         muted
         className={cn(
           "absolute inset-0 size-full",
-          screen ? "object-contain" : "object-cover",
+          screen || contain ? "object-contain" : "object-cover",
           mirror && "-scale-x-100",
           !showing && "invisible",
         )}
       />
       {!showing && (
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
           <span
             aria-hidden
-            className={cn("aspect-square rounded-full", compact ? "h-[38cqh]" : "h-[30cqh] max-h-28")}
+            className={cn("aspect-square rounded-full", compact ? "h-[38cqh]" : "h-[26cqh] max-h-36 min-h-14")}
             style={{ backgroundImage: faceBackground(id) }}
           />
+          {caption && <p className="text-[13px] text-muted-foreground">{caption}</p>}
         </div>
       )}
 

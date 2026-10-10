@@ -532,7 +532,6 @@
     "you": "나",
     "more": "외 {count}명",
     "leave": "나가기",
-    "aloneTitle": "첫 번째로 오셨어요",
     "aloneShort": "다른 사람을 기다리는 중",
     "open": "회의 열기",
     "nobodyToAsk": "지금 층에 있는 다른 오피스 멤버가 없어요.",
@@ -585,7 +584,9 @@
       "more": "외 {count}명"
     },
     "readyTitle": "참여할 준비가 되셨나요?",
-    "joinNow": "지금 참여"
+    "joinNow": "지금 참여",
+    "inMeeting": "이 회의 참여자",
+    "asked": "요청함"
   },
   "help": {
     "title": "도움말 및 의견",

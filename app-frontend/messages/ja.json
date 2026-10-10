@@ -532,7 +532,6 @@
     "you": "あなた",
     "more": "ほか {count}人",
     "leave": "退出",
-    "aloneTitle": "あなたが一番乗りです",
     "aloneShort": "ほかの人を待っています",
     "open": "ミーティングを開く",
     "nobodyToAsk": "今フロアにいるオフィスのメンバーはほかにいません。",
@@ -585,7 +584,9 @@
       "more": "ほか {count} 人"
     },
     "readyTitle": "参加の準備はできましたか？",
-    "joinNow": "今すぐ参加"
+    "joinNow": "今すぐ参加",
+    "inMeeting": "この会議の参加者",
+    "asked": "依頼済み"
   },
   "help": {
     "title": "ヘルプとフィードバック",

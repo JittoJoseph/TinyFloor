@@ -19,7 +19,7 @@ import {
   udpRelay,
 } from "./media";
 import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
-import { chooseStage, EMPTY_STAGE, type Pin, type Stage, type StageMode } from "./meetingStage";
+import { chooseStage, EMPTY_STAGE, sameStage, type Pin, type Stage, type StageMode } from "./meetingStage";
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
@@ -231,6 +231,9 @@ class CallManager {
   private meeting: string | null = null;
   /** Whose video the meeting shows, and where it is being looked at. */
   private stage: Stage = EMPTY_STAGE;
+  /** Who we are on this floor, to leave ourselves off the stage. */
+  private selfId: string | null = null;
+  private stageTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
   /** What you pinned on the stage, if anything. */
   private pin: Pin | null = null;
@@ -521,6 +524,7 @@ class CallManager {
     this.voice.stop();
     this.sfu?.close();
     this.sfu = null;
+    clearTimeout(this.stageTimer);
     this.stage = EMPTY_STAGE;
     this.pin = null;
     this.releaseMedia();
@@ -569,16 +573,23 @@ class CallManager {
     if (!sfu) return;
     const hidden = typeof document !== "undefined" && document.visibilityState === "hidden";
     const mode: StageMode = hidden ? "hidden" : this.stageMode === "stage" && screenTooSmallForDetail() ? "phone" : this.stageMode;
-    const stage = chooseStage({ peers: sfu.peerList, spokeAt: meetingsState().spokeAt, mode, previous: this.stage, pin: this.pin });
-    const same =
-      stage.screen === this.stage.screen &&
-      stage.pinned?.id === this.stage.pinned?.id &&
-      stage.pinned?.kind === this.stage.pinned?.kind &&
-      stage.videos.length === this.stage.videos.length &&
-      stage.videos.every((video, index) => {
-        const before = this.stage.videos[index];
-        return before && before.userId === video.userId && before.kind === video.kind && before.quality === video.quality;
-      });
+    const { meetings, spokeAt } = meetingsState();
+    const members = meetings.find((one) => one.id === this.meeting)?.members ?? [];
+    const speaking = new Set(members.filter((member) => member.speaking).map((member) => member.id));
+    // Everyone the room says is in the meeting, whether or not their media has arrived yet,
+    // in the order they came; the SFU says what each of them is sending.
+    const media = new Map(sfu.peerList.map((peer) => [peer.id, peer]));
+    const people = this.selfId
+      ? [...members]
+          .filter((member) => member.id !== this.selfId)
+          .sort((a, b) => a.since - b.since)
+          .map((member) => ({ id: member.id, cameraOn: !!media.get(member.id)?.cameraOn, screen: !!media.get(member.id)?.screen }))
+      : sfu.peerList;
+    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin });
+    // A change of speaker waiting out its pause: look again then, if nothing else does first.
+    clearTimeout(this.stageTimer);
+    if (stage.recheckIn !== null) this.stageTimer = setTimeout(() => this.refreshStage(), stage.recheckIn);
+    const same = sameStage(stage, this.stage);
     this.stage = stage;
     if (same) return;
     sfu.want(stage.videos);
@@ -646,6 +657,11 @@ class CallManager {
   private listenForVoice() {
     const track = this.meeting && this.micEnabled && this.sfu && !this.sfu.alone ? (this.local?.getAudioTracks()[0] ?? null) : null;
     this.voice.listen(track);
+  }
+
+  /** Who we are on the floor, told when the room welcomes us. */
+  setSelf(id: string) {
+    this.selfId = id;
   }
 
   /** Whether the next meeting you go into opens with your camera on. */
@@ -726,6 +742,7 @@ class CallManager {
     this.sfu?.close();
     this.voice.stop();
     this.meeting = id;
+    clearTimeout(this.stageTimer);
     this.stage = EMPTY_STAGE;
     this.pin = null;
     this.error = null;
@@ -1161,3 +1178,7 @@ class CallManager {
 }
 
 export const callManager = new CallManager();
+
+if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
+  (window as unknown as Record<string, unknown>).__call = callManager;
+}

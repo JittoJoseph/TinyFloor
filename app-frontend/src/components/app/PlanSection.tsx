@@ -77,6 +77,8 @@ export function PlanSection() {
   const planId = (office.plan as PlanId) ?? "free";
   const plans = catalog?.plans ?? [];
   const current = plans.find((plan) => plan.id === planId);
+  // The paid plan under this one, offered before cancelling.
+  const below = plans[plans.findIndex((plan) => plan.id === planId) - 1];
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
@@ -98,7 +100,6 @@ export function PlanSection() {
           : null;
 
   const choose = (plan: Plan, move: PlanMove) => {
-    if (move === "free") return setAsking({ kind: "cancel" });
     if (plan.id === "free") return;
     if (move === "choose") void change.buy(plan.id);
     else setAsking({ kind: "switch", plan });
@@ -358,24 +359,69 @@ export function PlanSection() {
       >
         {change.error && <p className="text-[12.5px] text-destructive">{change.error}</p>}
       </Dialog>
+      {/*
+        Cancelling, said plainly: what the team would lose, a smaller plan if
+        there is one, and keeping the plan as the easy choice. Cancelling stays
+        one click away; nothing is hidden or made hard.
+      */}
       <Dialog
         open={asking?.kind === "cancel"}
         onClose={() => setAsking(null)}
         title={t("cancelTitle")}
-        description={sub?.renewsAt ? t("cancelBody", { date: date(sub.renewsAt) }) : t("cancelBodyNow")}
+        description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
         closeLabel={tc("close")}
         footer={
           <>
-            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setAsking(null)}>
-              {t("keep")}
-            </Button>
-            <Button size="sm" className="h-10 bg-destructive px-5 text-white hover:bg-destructive/90" disabled={!!busy} onClick={change.cancel}>
+            <button
+              type="button"
+              disabled={!!busy}
+              onClick={change.cancel}
+              className="me-auto inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive disabled:opacity-50"
+            >
               {busy === "cancel" && <Loader2 className="size-4 animate-spin" />}
-              {t("cancel")}
+              {t("cancelAnyway")}
+            </button>
+            <Button size="sm" className="h-10 px-5" onClick={() => setAsking(null)}>
+              {t("plans.keep", { plan: PLAN_NAMES[planId] })}
             </Button>
           </>
         }
-      />
+      >
+        <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-warn" />
+            {members > (plans[0]?.seats ?? 3)
+              ? t("loseSeatsOver", { members, free: plans[0]?.seats ?? 3 })
+              : t("loseSeats", { seats: office.seats, free: plans[0]?.seats ?? 3 })}
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-warn" />
+            {t("loseHours", { hours: current?.meetingHours ?? 0, free: plans[0]?.meetingHours ?? 5 })}
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
+            {t("loseNothing")}
+          </li>
+        </ul>
+        {below?.price && members <= below.seats && (
+          <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl bg-muted p-3">
+            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
+              {t("downsell", { plan: PLAN_NAMES[below.id], price: dollars(below.price), seats: below.seats })}
+            </p>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-8 shrink-0 px-3 text-[12.5px]"
+              disabled={!!busy}
+              onClick={() => below.id !== "free" && change.switchTo(below.id)}
+            >
+              {busy === below.id && <Loader2 className="size-3.5 animate-spin" />}
+              {t("plans.moveTo", { plan: PLAN_NAMES[below.id] })}
+            </Button>
+          </div>
+        )}
+        {change.error && <p className="mt-2 text-[12.5px] text-destructive">{change.error}</p>}
+      </Dialog>
     </div>
   );
 }

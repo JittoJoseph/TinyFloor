@@ -561,7 +561,6 @@
       "pausedMonth": "voice only until {date}",
       "pausedToday": "voice only until tomorrow"
     },
-    "subtitle": "Join to walk into the meeting room. Calls between two people on the floor never count.",
     "alsoOn": "Also on now",
     "emptyRoom": "Nobody's in yet",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Resets tomorrow",
       "pausedMonth": "Used up: video is paused until {date}",
       "pausedToday": "Used up: video is paused until tomorrow",
-      "counts": "An hour counts while a meeting has two or more people in it, however many there are.",
-      "lobby": "The demo office shares {hours} hours of meeting video a day.",
       "more": "Get more hours",
       "askAdmin": "An admin can get more hours."
     },
-    "how": {
-      "title": "How meetings work",
-      "walk": "Joining walks you into the meeting room. Walk out to leave.",
-      "speakers": "Only the people talking send video, so meetings stay light.",
-      "voice": "Past the month's hours, meetings carry on with voice."
-    }
+    "pin": "Pin",
+    "unpin": "Unpin"
   },
   "help": {
     "title": "Help and feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Switch to {plan}?",
     "switchBody": "Creem charges or credits the difference for the time left in this period, straight away. Nobody on the floor notices a thing.",
     "cancelTitle": "Cancel the plan?",
-    "cancelBody": "The plan runs until {date}, then the office goes back to the free plan: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
-    "cancelBodyNow": "The office goes back to the free plan at the end of this period: 3 members and 5 meeting hours a month. Nobody is removed, but no one new can join, and only 3 can be on the floor at once.",
     "moreSeats": "Get more seats",
     "membersLabel": "Members",
     "hoursLabel": "Meeting hours",
@@ -703,7 +694,6 @@
       "upgrade": "Upgrade to {plan}",
       "moveTo": "Move to {plan}",
       "currentButton": "Current plan",
-      "afterTrial": "From {date}",
       "tooSmall": "Holds {count}; this office has {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Thanks. Your receipt is on its way from Creem.",
       "doneLine": "Room for {people} people, and the meeting hours that come with it."
     },
-    "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed."
+    "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed.",
+    "cancelWhen": "The plan runs until {date}. After that, the office is on Free.",
+    "cancelAnyway": "Cancel anyway",
+    "loseSeatsOver": "{members} people are members, but only {free} could be on the floor at once, and no one new could join.",
+    "loseSeats": "Room drops from {seats} people to {free}.",
+    "loseHours": "Meeting hours drop from {hours} to {free} a month; past them, meetings are voice only.",
+    "loseNothing": "Nobody is removed and nothing is deleted.",
+    "downsell": "Or keep the team together on {plan}: {price} a month, for up to {seats} people."
   }
 }

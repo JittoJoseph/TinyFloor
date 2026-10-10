@@ -18,17 +18,10 @@ import { clock, useElapsed, useMeetingName } from "./hooks";
 import { VideoPausedNote } from "./MeetingHours";
 
 const GAP = 12;
-/** Tiles the stage shows before the rest fold into "+ n more". */
-const MOST_TILES = { wide: 12, narrow: 6 };
-
-/** Columns for this many tiles: a single speaker fills the stage, four make a square. */
-function columnsFor(count: number, narrow: boolean): number {
-  if (narrow) return count <= 2 ? 1 : 2;
-  if (count <= 1) return 1;
-  if (count <= 4) return 2;
-  if (count <= 9) return 3;
-  return 4;
-}
+/** Tiles the grid shows before the rest fold into "+ n more". */
+const MOST_TILES = { wide: 16, narrow: 6 };
+/** Tiles are video-shaped, whether there's video in them or a face. */
+const ASPECT = 16 / 9;
 
 /** The size of a box, as it changes. */
 function useBox<T extends HTMLElement>() {
@@ -46,11 +39,27 @@ function useBox<T extends HTMLElement>() {
   return [ref, box] as const;
 }
 
+/** The grid that makes this many tiles as big as the box allows: every column count tried, the widest tile kept. */
+function fitGrid(count: number, width: number, height: number): { columns: number; tile: number } {
+  let best = { columns: 1, tile: 0 };
+  for (let columns = 1; columns <= count; columns++) {
+    const rows = Math.ceil(count / columns);
+    const tile = Math.min((width - (columns - 1) * GAP) / columns, ((height - (rows - 1) * GAP) / rows) * ASPECT);
+    if (tile > best.tile) best = { columns, tile };
+  }
+  return { columns: best.columns, tile: Math.max(96, Math.floor(best.tile)) };
+}
+
+/** One tile on the stage: someone (you among them), or a shared screen. */
+type Item = { key: string; kind: "person"; member: MeetingPerson; me: boolean } | { key: string; kind: "screen"; id: string; name: string };
+
 /**
- * Inside a meeting: the people in it, the speakers' video, a shared screen
- * when there is one, and the controls. Only the four most recent speakers'
- * cameras are received (meetingStage); everyone else is their face, which
- * costs nothing to show.
+ * Inside a meeting (docs/12-meetings.md): everyone in it, you included, laid
+ * out the way Meet does. With nothing pinned and no screen shared, a grid that
+ * fills the stage; pin someone (or a screen is shared) and that takes the
+ * stage, with everyone else in a column beside it (a strip under it on a
+ * phone). Only the four most recent speakers' cameras, or the one pinned, are
+ * received (meetingStage); everyone else is their face, which costs nothing.
  */
 export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office: string }) {
   const t = useTranslations("meetings");
@@ -79,114 +88,162 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
   const rest = others
     .filter((member) => !stage.cameras.includes(member.id))
     .sort((a, b) => Number(b.speaking) - Number(a.speaking) || a.since - b.since);
-  const ordered = [...onCamera, ...rest];
 
+  // Everyone, the people on camera first and you last, the way Meet keeps you in the grid.
+  const people: Item[] = [
+    ...[...onCamera, ...rest].map((member): Item => ({ key: member.id, kind: "person", member, me: false })),
+    ...(me ? [{ key: me.id, kind: "person", member: me, me: true } as Item] : []),
+  ];
   const sharer = stage.screen ? peers.get(stage.screen) : undefined;
-  const sharerName = others.find((member) => member.id === stage.screen)?.name ?? "";
-  const most = narrow ? MOST_TILES.narrow : MOST_TILES.wide;
-  const shown = sharer ? ordered.slice(0, narrow ? 2 : 4) : ordered.slice(0, ordered.length > most ? most - 1 : most);
-  const hidden = ordered.slice(shown.length);
+  const screen: Item | null = sharer
+    ? { key: `${sharer.id}-screen`, kind: "screen", id: sharer.id, name: t("screenOf", { name: others.find((one) => one.id === sharer.id)?.name ?? "" }) }
+    : null;
+  // What takes the stage: whatever you pinned, else a shared screen.
+  const pinned = stage.pinned;
+  const focus: Item | null =
+    pinned?.kind === "camera"
+      ? (people.find((item) => item.kind === "person" && item.member.id === pinned.id) ?? null)
+      : screen;
+  const beside = focus ? [...(screen && focus !== screen ? [screen] : []), ...people.filter((item) => item !== focus)] : [];
 
-  const tile = (member: MeetingPerson, compact = false, className?: string, width?: number) => {
+  const tile = (item: Item, { compact = false, className, width }: { compact?: boolean; className?: string; width?: number } = {}) => {
+    if (item.kind === "screen") {
+      const isPinned = pinned?.kind === "screen" && pinned.id === item.id;
+      return (
+        <MeetingTile
+          key={item.key}
+          id={item.key}
+          name={item.name}
+          video={sharer?.screenStream ?? null}
+          speaking={false}
+          micOff={false}
+          screen
+          compact={compact}
+          className={className}
+          style={width ? { width } : undefined}
+          pin={{
+            pinned: isPinned,
+            label: isPinned ? t("unpin") : t("pin"),
+            onToggle: () => callManager.setPin(isPinned ? null : { id: item.id, kind: "screen" }),
+          }}
+        />
+      );
+    }
+    const { member } = item;
     const peer = peers.get(member.id);
-    const video = stage.cameras.includes(member.id) && peer?.cameraOn ? peer.camera : null;
+    const isPinned = pinned?.kind === "camera" && pinned.id === member.id;
+    const video = item.me ? (cameraEnabled ? localStream : null) : stage.cameras.includes(member.id) && peer?.cameraOn ? peer.camera : null;
     return (
       <MeetingTile
-        key={member.id}
+        key={item.key}
         id={member.id}
-        name={member.name}
+        name={item.me ? t("you") : member.name}
         video={video}
         speaking={member.speaking}
-        micOff={!!peer && !peer.mic}
+        micOff={item.me ? !micEnabled : !!peer && !peer.mic}
+        mirror={item.me && mirrorVideo}
         compact={compact}
         className={className}
         style={width ? { width } : undefined}
+        // You can't pin yourself: your own picture is always yours to see.
+        pin={
+          item.me
+            ? undefined
+            : {
+                pinned: isPinned,
+                label: isPinned ? t("unpin") : t("pin"),
+                onToggle: () => callManager.setPin(isPinned ? null : { id: member.id, kind: "camera" }),
+              }
+        }
       />
     );
   };
 
-  const count = shown.length + (hidden.length ? 1 : 0);
-  const cols = columnsFor(Math.max(count, 1), narrow);
-  const rows = Math.ceil(Math.max(count, 1) / cols);
-  const tileWidth = Math.max(
-    120,
-    Math.min((area.width - (cols - 1) * GAP) / cols, ((area.height - (rows - 1) * GAP) / rows) * (16 / 9)),
-  );
-
-  return (
-    <div className="absolute inset-0 z-[60] flex flex-col bg-background">
-      <header className="flex items-center gap-3 px-4 pb-2 pt-3 sm:px-6 sm:pt-4">
-        <span className="relative flex size-2.5 shrink-0" aria-hidden>
-          <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 [animation-duration:2s] motion-reduce:hidden" />
-          <span className="relative size-2.5 rounded-full bg-ok" />
-        </span>
-        <div className="min-w-0 flex-1 leading-tight">
-          <h1 className="truncate text-[15px] font-semibold text-foreground">{nameOf(meeting, office)}</h1>
-          <p className="text-[12px] tabular-nums text-muted-foreground">
-            {clock(elapsed)} · {t("people", { count: meeting.members.length })}
-          </p>
+  const stageView = () => {
+    // Nobody else yet: you, and the way to bring people in.
+    if (alone && !screen) {
+      return (
+        <div className="flex size-full flex-col items-center justify-center gap-5 text-center">
+          {me && tile(people[people.length - 1], { className: "aspect-video w-full max-w-[min(100%,640px)]" })}
+          <div>
+            <p className="text-[15px] font-medium text-foreground">{t("aloneTitle")}</p>
+            <Button size="sm" variant="secondary" className="mt-3 h-10 gap-2 px-4 text-[13px]" onClick={() => setInviting(true)}>
+              <UserPlus className="size-4" />
+              {t("invite")}
+            </Button>
+          </div>
         </div>
-        <span className="hidden sm:flex [--face-ring:var(--ui-background)]">
-          <FaceStack seeds={meeting.members.map((member) => member.id)} size={24} max={5} />
-        </span>
-        <Button size="sm" variant="secondary" className="h-9 gap-1.5 px-3.5 text-[13px]" onClick={() => setInviting(true)}>
-          <UserPlus className="size-4" />
-          <span className="hidden sm:inline">{t("invite")}</span>
-        </Button>
-      </header>
-      <VideoPausedNote compact className="mx-auto mb-2 w-fit max-w-[calc(100%-1.5rem)]" />
+      );
+    }
 
-      <div ref={areaRef} className="relative min-h-0 flex-1 mx-3 mb-2 sm:mx-6">
-        {sharer ? (
-          <div className={cn("flex size-full gap-3", narrow ? "flex-col" : "flex-row")}>
-            <MeetingTile
-              id={`${sharer.id}-screen`}
-              name={t("screenOf", { name: sharerName })}
-              video={sharer.screenStream}
-              speaking={false}
-              micOff={false}
-              screen
-              className="min-h-0 min-w-0 flex-1"
-            />
-            <div className={cn("flex shrink-0 gap-3", narrow ? "h-24 flex-row" : "w-56 flex-col")}>
-              {shown.map((member) => tile(member, true, narrow ? "h-full aspect-video" : "w-full aspect-video"))}
+    // Something pinned or shared: it takes the stage, and everyone else waits beside it.
+    if (focus) {
+      return (
+        <div className={cn("flex size-full gap-3", narrow ? "flex-col" : "flex-row")}>
+          {tile(focus, { className: "min-h-0 min-w-0 flex-1" })}
+          {beside.length > 0 && (
+            <div
+              className={cn(
+                "flex shrink-0 gap-3 [scrollbar-width:thin]",
+                narrow ? "h-24 flex-row overflow-x-auto" : "w-[clamp(176px,18vw,248px)] flex-col overflow-y-auto",
+              )}
+            >
+              {beside.map((item) => tile(item, { compact: true, className: narrow ? "h-full aspect-video shrink-0" : "w-full aspect-video shrink-0" }))}
             </div>
-          </div>
-        ) : alone ? (
-          <Alone onInvite={() => setInviting(true)} />
-        ) : (
-          <div className="flex size-full flex-wrap content-center items-center justify-center" style={{ gap: GAP }}>
-            {shown.map((member) => tile(member, false, "aspect-video shrink-0", tileWidth))}
-            {hidden.length > 0 && (
-              <div
-                className="flex aspect-video shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-muted text-muted-foreground [--face-ring:var(--ui-muted)]"
-                style={{ width: tileWidth }}
-              >
-                <FaceStack seeds={hidden.map((member) => member.id)} size={32} max={4} />
-                <span className="text-[13px] font-medium">{t("more", { count: hidden.length })}</span>
-              </div>
-            )}
-          </div>
-        )}
-        {/* You, in the corner: your camera is shown from your own device, which costs nothing. */}
-        {me && (
-          <div className="absolute bottom-3 end-3 z-10 w-32 overflow-hidden rounded-xl shadow-float ring-1 ring-black/10 sm:w-48">
-            <MeetingTile
-              id={me.id}
-              name={t("you")}
-              video={cameraEnabled ? localStream : null}
-              speaking={me.speaking}
-              micOff={!micEnabled}
-              mirror={mirrorVideo}
-              compact
-              className="aspect-video w-full"
-            />
+          )}
+        </div>
+      );
+    }
+
+    // Everyone in a grid, as big as the stage allows.
+    const most = narrow ? MOST_TILES.narrow : MOST_TILES.wide;
+    const shown = people.length > most ? people.slice(0, most - 1) : people;
+    const hidden = people.slice(shown.length);
+    const { tile: width } = fitGrid(shown.length + (hidden.length ? 1 : 0), area.width, area.height);
+    return (
+      <div className="flex size-full flex-wrap content-center items-center justify-center" style={{ gap: GAP }}>
+        {shown.map((item) => tile(item, { className: "aspect-video shrink-0", width }))}
+        {hidden.length > 0 && (
+          <div
+            className="flex aspect-video shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-muted text-muted-foreground [--face-ring:var(--ui-muted)]"
+            style={{ width }}
+          >
+            <FaceStack seeds={hidden.map((item) => (item.kind === "person" ? item.member.id : item.key))} size={32} max={4} />
+            <span className="text-[13px] font-medium">{t("more", { count: hidden.length })}</span>
           </div>
         )}
       </div>
+    );
+  };
 
-      <footer className="flex justify-center px-3 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-1 sm:pb-4">
-        <div className="flex items-center gap-1.5 rounded-full border border-border bg-card p-1.5 shadow-float">
+  return (
+    <div className="absolute inset-0 z-[60] flex flex-col bg-background">
+      {/* On a phone, what the bar at the bottom has no room for: which meeting, and how long. */}
+      <header className="flex items-center gap-2 px-4 pt-3 sm:hidden">
+        <Live />
+        <p className="min-w-0 truncate text-[13px] font-semibold text-foreground">{nameOf(meeting, office)}</p>
+        <span className="text-[12px] tabular-nums text-muted-foreground">{clock(elapsed)}</span>
+        <IconButton label={t("invite")} tone="soft" size="md" onClick={() => setInviting(true)} icon={<UserPlus />} className="ms-auto" />
+      </header>
+      <VideoPausedNote compact className="mx-auto mt-3 w-fit max-w-[calc(100%-1.5rem)]" />
+
+      <div ref={areaRef} className="relative mx-3 mt-3 min-h-0 flex-1 sm:mx-5">
+        {area.width > 0 && stageView()}
+      </div>
+
+      {/* The bar, as Meet has it: which meeting on the left, the controls in the middle, who's in on the right. */}
+      <footer className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-3 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-3 sm:px-5 sm:pb-4">
+        <div className="hidden min-w-0 items-center gap-2.5 sm:flex">
+          <Live />
+          <div className="min-w-0 leading-tight">
+            <p className="truncate text-[13.5px] font-semibold text-foreground">{nameOf(meeting, office)}</p>
+            <p className="text-[12px] tabular-nums text-muted-foreground">
+              {clock(elapsed)} · {t("people", { count: meeting.members.length })}
+            </p>
+          </div>
+        </div>
+
+        <div className="col-start-2 flex items-center gap-1.5 rounded-full border border-border bg-card p-1.5 shadow-float">
           <IconButton
             label={micEnabled ? tControls("muteMic") : tControls("unmuteMic")}
             tone={micEnabled ? "soft" : "off"}
@@ -225,11 +282,19 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
           <button
             type="button"
             onClick={() => callManager.leaveMeeting()}
+            aria-label={t("leave")}
             className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full bg-destructive px-4 text-[14px] font-semibold text-white outline-none transition-[background-color,transform] hover:bg-destructive/90 focus-visible:ring-2 focus-visible:ring-destructive/50 active:scale-[0.97]"
           >
             <PhoneOff className="size-4" />
-            {t("leave")}
+            <span className="max-sm:sr-only">{t("leave")}</span>
           </button>
+        </div>
+
+        <div className="flex items-center justify-end gap-2">
+          <span className="hidden md:flex [--face-ring:var(--ui-background)]">
+            <FaceStack seeds={meeting.members.map((member) => member.id)} size={24} max={4} />
+          </span>
+          <IconButton label={t("invite")} tone="soft" size="lg" onClick={() => setInviting(true)} icon={<UserPlus />} className="max-sm:hidden" />
         </div>
       </footer>
 
@@ -238,16 +303,12 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
   );
 }
 
-/** Alone in a meeting: the way to bring people in. */
-function Alone({ onInvite }: { onInvite: () => void }) {
-  const t = useTranslations("meetings");
+/** The live dot. */
+function Live() {
   return (
-    <div className="flex size-full flex-col items-center justify-center gap-4 text-center">
-      <p className="text-[15px] font-medium text-muted-foreground">{t("aloneTitle")}</p>
-      <Button size="sm" variant="secondary" className="h-10 gap-2 px-4 text-[13px]" onClick={onInvite}>
-        <UserPlus className="size-4" />
-        {t("invite")}
-      </Button>
-    </div>
+    <span className="relative flex size-2.5 shrink-0" aria-hidden>
+      <span className="absolute inset-0 animate-ping rounded-full bg-ok/60 [animation-duration:2s] motion-reduce:hidden" />
+      <span className="relative size-2.5 rounded-full bg-ok" />
+    </span>
   );
 }

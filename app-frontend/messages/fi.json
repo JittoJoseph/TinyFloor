@@ -561,7 +561,6 @@
       "pausedMonth": "vain ääni {date} asti",
       "pausedToday": "vain ääni huomiseen asti"
     },
-    "subtitle": "Liity, niin kävelet kokoushuoneeseen. Kahden hengen puhelut kerroksessa eivät koskaan laske.",
     "alsoOn": "Myös käynnissä",
     "emptyRoom": "Kukaan ei ole vielä paikalla",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Nollautuu huomenna",
       "pausedMonth": "Käytetty: video on tauolla {date} asti",
       "pausedToday": "Käytetty: video on tauolla huomiseen",
-      "counts": "Tunti lasketaan, kun kokouksessa on kaksi tai useampia ihmisiä, oli heitä kuinka monta tahansa.",
-      "lobby": "Demotoimisto jakaa {hours} tuntia kokousvideota päivässä.",
       "more": "Hanki lisää tunteja",
       "askAdmin": "Ylläpitäjä voi hankkia lisää tunteja."
     },
-    "how": {
-      "title": "Näin kokoukset toimivat",
-      "walk": "Liittyessäsi kävelet kokoushuoneeseen. Kävele ulos poistuaksesi.",
-      "speakers": "Vain puhujat lähettävät videota, joten kokoukset pysyvät kevyinä.",
-      "voice": "Kun kuun tunnit on käytetty, kokoukset jatkuvat äänellä."
-    }
+    "pin": "Kiinnitä",
+    "unpin": "Irrota"
   },
   "help": {
     "title": "Apua ja palautetta",
@@ -644,8 +637,6 @@
     "switchTitle": "Vaihdetaanko pakettiin {plan}?",
     "switchBody": "Creem veloittaa tai hyvittää erotuksen jakson jäljellä olevalta ajalta heti. Kerroksessa kukaan ei huomaa mitään.",
     "cancelTitle": "Perutaanko paketti?",
-    "cancelBody": "Paketti on voimassa {date} asti, sitten toimisto palaa ilmaiseen pakettiin: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
-    "cancelBodyNow": "Toimisto palaa ilmaiseen pakettiin tämän jakson lopussa: 3 jäsentä ja 5 kokoustuntia kuussa. Ketään ei poisteta, mutta uusia ei voi liittyä, ja kerroksessa voi olla vain 3 kerrallaan.",
     "moreSeats": "Hanki lisää paikkoja",
     "membersLabel": "Jäsenet",
     "hoursLabel": "Kokoustunnit",
@@ -703,7 +694,6 @@
       "upgrade": "Päivitä {plan}-pakettiin",
       "moveTo": "Vaihda {plan}-pakettiin",
       "currentButton": "Nykyinen paketti",
-      "afterTrial": "{date} alkaen",
       "tooSmall": "Tilaa {count}; toimistossa on {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Kiitos. Kuitti tulee Creemiltä.",
       "doneLine": "Tilaa {people} hengelle ja niihin kuuluvat kokoustunnit."
     },
-    "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita."
+    "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
+    "cancelWhen": "Paketti on voimassa {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa.",
+    "cancelAnyway": "Peru silti",
+    "loseSeatsOver": "Jäseniä on {members}, mutta vain {free} voisi olla kerroksessa yhtä aikaa, eikä uusia voisi liittyä.",
+    "loseSeats": "Tilaa {seats} hengen sijaan {free}.",
+    "loseHours": "Kokoustunnit putoavat {hours}:stä {free}:een kuukaudessa; sen jälkeen kokoukset ovat vain äänellä.",
+    "loseNothing": "Ketään ei poisteta eikä mitään hävitetä.",
+    "downsell": "Tai pidä tiimi koossa {plan}-paketilla: {price} kuukaudessa, enintään {seats} hengelle."
   }
 }

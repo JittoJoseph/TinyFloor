@@ -561,7 +561,6 @@
       "pausedMonth": "nur Ton bis {date}",
       "pausedToday": "nur Ton bis morgen"
     },
-    "subtitle": "Mach mit, um in den Meetingraum zu gehen. Gespräche zu zweit auf der Etage zählen nie.",
     "alsoOn": "Gerade auch",
     "emptyRoom": "Noch niemand da",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Neu ab morgen",
       "pausedMonth": "Aufgebraucht: Video pausiert bis {date}",
       "pausedToday": "Aufgebraucht: Video pausiert bis morgen",
-      "counts": "Eine Stunde zählt, solange zwei oder mehr Leute im Meeting sind, egal wie viele.",
-      "lobby": "Das Demo-Büro teilt sich {hours} Stunden Meeting-Video am Tag.",
       "more": "Mehr Stunden holen",
       "askAdmin": "Ein Admin kann mehr Stunden holen."
     },
-    "how": {
-      "title": "So funktionieren Meetings",
-      "walk": "Beim Beitreten gehst du in den Meetingraum. Geh raus, um zu verlassen.",
-      "speakers": "Nur wer spricht, sendet Video, so bleiben Meetings leicht.",
-      "voice": "Sind die Stunden des Monats aufgebraucht, laufen Meetings mit Ton weiter."
-    }
+    "pin": "Anheften",
+    "unpin": "Lösen"
   },
   "help": {
     "title": "Hilfe und Feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Zu {plan} wechseln?",
     "switchBody": "Creem berechnet oder erstattet die Differenz für den Rest des Zeitraums sofort. Auf der Fläche merkt niemand etwas.",
     "cancelTitle": "Tarif kündigen?",
-    "cancelBody": "Der Tarif läuft bis zum {date}, danach ist das Büro wieder im kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
-    "cancelBodyNow": "Das Büro wechselt am Ende dieses Zeitraums in den kostenlosen Tarif: 3 Mitglieder und 5 Meeting-Stunden im Monat. Niemand wird entfernt, aber niemand Neues kann beitreten, und nur 3 können gleichzeitig auf der Etage sein.",
     "moreSeats": "Mehr Plätze holen",
     "membersLabel": "Mitglieder",
     "hoursLabel": "Meeting-Stunden",
@@ -703,7 +694,6 @@
       "upgrade": "Auf {plan} upgraden",
       "moveTo": "Zu {plan} wechseln",
       "currentButton": "Aktueller Tarif",
-      "afterTrial": "Ab {date}",
       "tooSmall": "Für {count}; das Büro hat {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Danke. Die Quittung kommt gleich von Creem.",
       "doneLine": "Platz für {people} Personen und die Meeting-Stunden, die dazugehören."
     },
-    "trialWaiting": "Lade mehr als {free} Personen ein, und dein ganzes Team bekommt {days} Tage lang {plan} gratis. Keine Karte nötig."
+    "trialWaiting": "Lade mehr als {free} Personen ein, und dein ganzes Team bekommt {days} Tage lang {plan} gratis. Keine Karte nötig.",
+    "cancelWhen": "Der Tarif läuft bis zum {date}. Danach ist das Büro im kostenlosen Tarif.",
+    "cancelAnyway": "Trotzdem kündigen",
+    "loseSeatsOver": "{members} Personen sind Mitglieder, aber nur {free} könnten gleichzeitig auf der Etage sein, und niemand Neues käme dazu.",
+    "loseSeats": "Platz für {free} statt {seats} Personen.",
+    "loseHours": "Meeting-Stunden sinken von {hours} auf {free} im Monat; danach laufen Meetings nur mit Ton.",
+    "loseNothing": "Niemand wird entfernt, nichts wird gelöscht.",
+    "downsell": "Oder haltet das Team auf {plan} zusammen: {price} im Monat, für bis zu {seats} Personen."
   }
 }

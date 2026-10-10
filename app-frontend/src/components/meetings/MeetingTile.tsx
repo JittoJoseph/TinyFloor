@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useRef, type CSSProperties } from "react";
-import { MicOff, MonitorUp } from "@/components/ui/icons";
+import { Maximize2, MicOff, Minimize2, MonitorUp } from "@/components/ui/icons";
 import { faceBackground } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 
@@ -9,8 +9,9 @@ import { cn } from "@/lib/utils";
  * One person in a meeting. With their camera on the stage shows it; otherwise
  * their face, their orb, sits in the middle of a plain card, lit softly in its
  * own colour. A ring lights while they talk: around the orb, or around the
- * picture. Sound never comes from a tile: every voice plays once, from
- * MeetingAudio, whether its tile is on screen or not.
+ * picture. A tile can be pinned, to keep it big on your stage. Sound never
+ * comes from a tile: every voice plays once, from MeetingAudio, whether its
+ * tile is on screen or not.
  */
 export const MeetingTile = memo(function MeetingTile({
   id,
@@ -21,6 +22,7 @@ export const MeetingTile = memo(function MeetingTile({
   mirror,
   screen,
   compact,
+  pin,
   className,
   style,
 }: {
@@ -36,6 +38,8 @@ export const MeetingTile = memo(function MeetingTile({
   screen?: boolean;
   /** A small tile: the strip beside a screen, the floor's card. */
   compact?: boolean;
+  /** Pinning it big, or letting it go: shown on hover, and always while pinned. */
+  pin?: { pinned: boolean; label: string; onToggle: () => void };
   className?: string;
   style?: CSSProperties;
 }) {
@@ -51,7 +55,7 @@ export const MeetingTile = memo(function MeetingTile({
     <div
       style={style}
       className={cn(
-        "relative isolate overflow-hidden [container-type:size]",
+        "group/tile relative isolate overflow-hidden [container-type:size]",
         compact ? "rounded-xl" : "rounded-2xl",
         screen ? "bg-[#161618]" : "bg-muted",
         className,
@@ -111,6 +115,22 @@ export const MeetingTile = memo(function MeetingTile({
         {!screen && micOff && <MicOff className="size-3.5 shrink-0 text-brand" aria-hidden />}
         <span className="truncate">{name}</span>
       </span>
+
+      {pin && (
+        <button
+          type="button"
+          onClick={pin.onToggle}
+          aria-label={pin.label}
+          title={pin.label}
+          aria-pressed={pin.pinned}
+          className={cn(
+            "absolute end-2 top-2 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/55 text-white outline-none backdrop-blur-sm transition-opacity hover:bg-black/70 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-white/70 [&_svg]:size-4",
+            pin.pinned ? "opacity-100" : "opacity-0 group-hover/tile:opacity-100 [@media(hover:none)]:opacity-100",
+          )}
+        >
+          {pin.pinned ? <Minimize2 /> : <Maximize2 />}
+        </button>
+      )}
     </div>
   );
 });

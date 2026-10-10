@@ -561,7 +561,6 @@
       "pausedMonth": "alleen geluid tot {date}",
       "pausedToday": "alleen geluid tot morgen"
     },
-    "subtitle": "Doe mee om de vergaderruimte in te lopen. Gesprekken met z'n tweeën op de vloer tellen nooit.",
     "alsoOn": "Ook bezig",
     "emptyRoom": "Nog niemand binnen",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Begint morgen opnieuw",
       "pausedMonth": "Op: video is gepauzeerd tot {date}",
       "pausedToday": "Op: video is gepauzeerd tot morgen",
-      "counts": "Een uur telt zolang er twee of meer mensen in een vergadering zijn, hoeveel ook.",
-      "lobby": "Het demokantoor deelt {hours} uur vergadervideo per dag.",
       "more": "Meer uren",
       "askAdmin": "Een beheerder kan meer uren regelen."
     },
-    "how": {
-      "title": "Zo werken vergaderingen",
-      "walk": "Meedoen loopt je de vergaderruimte in. Loop eruit om te vertrekken.",
-      "speakers": "Alleen wie praat stuurt video, dus vergaderingen blijven licht.",
-      "voice": "Na de uren van de maand gaan vergaderingen door met geluid."
-    }
+    "pin": "Vastzetten",
+    "unpin": "Losmaken"
   },
   "help": {
     "title": "Hulp en feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Overstappen naar {plan}?",
     "switchBody": "Creem rekent het verschil voor de rest van de periode meteen af of crediteert het. Niemand op de vloer merkt er iets van.",
     "cancelTitle": "Abonnement opzeggen?",
-    "cancelBody": "Het abonnement loopt tot {date}, daarna gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
-    "cancelBodyNow": "Aan het eind van deze periode gaat het kantoor terug naar het gratis abonnement: 3 leden en 5 vergaderuren per maand. Niemand wordt verwijderd, maar er kan niemand nieuw bij en er kunnen maar 3 tegelijk op de vloer.",
     "moreSeats": "Meer plekken",
     "membersLabel": "Leden",
     "hoursLabel": "Vergaderuren",
@@ -703,7 +694,6 @@
       "upgrade": "Upgraden naar {plan}",
       "moveTo": "Naar {plan}",
       "currentButton": "Huidig abonnement",
-      "afterTrial": "Vanaf {date}",
       "tooSmall": "Voor {count}; het kantoor heeft {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Bedankt. Het bonnetje komt eraan van Creem.",
       "doneLine": "Ruimte voor {people} mensen, met de vergaderuren die erbij horen."
     },
-    "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig."
+    "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig.",
+    "cancelWhen": "Het abonnement loopt tot {date}. Daarna staat het kantoor op Gratis.",
+    "cancelAnyway": "Toch opzeggen",
+    "loseSeatsOver": "Er zijn {members} leden, maar maar {free} kunnen tegelijk op de vloer, en er kan niemand nieuw bij.",
+    "loseSeats": "Plek voor {free} in plaats van {seats} mensen.",
+    "loseHours": "Vergaderuren gaan van {hours} naar {free} per maand; daarna zijn vergaderingen alleen met geluid.",
+    "loseNothing": "Niemand wordt verwijderd en er wordt niets gewist.",
+    "downsell": "Of houd het team bij elkaar op {plan}: {price} per maand, voor tot {seats} mensen."
   }
 }

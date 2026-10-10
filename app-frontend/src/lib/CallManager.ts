@@ -19,7 +19,7 @@ import {
   udpRelay,
 } from "./media";
 import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
-import { chooseStage, EMPTY_STAGE, type Stage, type StageMode } from "./meetingStage";
+import { chooseStage, EMPTY_STAGE, type Pin, type Stage, type StageMode } from "./meetingStage";
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
@@ -230,6 +230,8 @@ class CallManager {
   /** Whose video the meeting shows, and where it is being looked at. */
   private stage: Stage = EMPTY_STAGE;
   private stageMode: StageMode = "mini";
+  /** What you pinned on the stage, if anything. */
+  private pin: Pin | null = null;
   private invitation: MeetingInvite | null = null;
   private inviteTimer?: ReturnType<typeof setTimeout>;
   private notice: MeetingNotice | null = null;
@@ -518,6 +520,7 @@ class CallManager {
     this.sfu?.close();
     this.sfu = null;
     this.stage = EMPTY_STAGE;
+    this.pin = null;
     this.releaseMedia();
     playSound("end");
     this.emit();
@@ -542,6 +545,14 @@ class CallManager {
     this.refreshStage();
   }
 
+  /** Keeps someone, or a shared screen, big on your stage; null lets the stage choose again. */
+  setPin(pin: Pin | null) {
+    if (pin?.id === this.pin?.id && pin?.kind === this.pin?.kind) return;
+    this.pin = pin;
+    this.refreshStage();
+    this.emit();
+  }
+
   /** From the room: past the meeting hours, or back within them. */
   setVideoPaused(paused: boolean) {
     if (this.videoPaused === paused) return;
@@ -556,9 +567,11 @@ class CallManager {
     if (!sfu) return;
     const hidden = typeof document !== "undefined" && document.visibilityState === "hidden";
     const mode: StageMode = hidden ? "hidden" : this.stageMode === "stage" && screenTooSmallForDetail() ? "phone" : this.stageMode;
-    const stage = chooseStage({ peers: sfu.peerList, spokeAt: meetingsState().spokeAt, mode, previous: this.stage });
+    const stage = chooseStage({ peers: sfu.peerList, spokeAt: meetingsState().spokeAt, mode, previous: this.stage, pin: this.pin });
     const same =
       stage.screen === this.stage.screen &&
+      stage.pinned?.id === this.stage.pinned?.id &&
+      stage.pinned?.kind === this.stage.pinned?.kind &&
       stage.videos.length === this.stage.videos.length &&
       stage.videos.every((video, index) => {
         const before = this.stage.videos[index];
@@ -705,6 +718,7 @@ class CallManager {
     this.voice.stop();
     this.meeting = id;
     this.stage = EMPTY_STAGE;
+    this.pin = null;
     this.error = null;
     this.dismissInvite();
     this.dismissNotice();

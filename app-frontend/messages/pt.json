@@ -561,7 +561,6 @@
       "pausedMonth": "só voz até {date}",
       "pausedToday": "só voz até amanhã"
     },
-    "subtitle": "Entre para ir até a sala de reunião. Chamadas entre duas pessoas no andar nunca contam.",
     "alsoOn": "Também agora",
     "emptyRoom": "Ninguém ainda",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Renova amanhã",
       "pausedMonth": "Esgotadas: vídeo pausado até {date}",
       "pausedToday": "Esgotadas: vídeo pausado até amanhã",
-      "counts": "Uma hora conta enquanto a reunião tem duas ou mais pessoas, quantas forem.",
-      "lobby": "O escritório de demonstração divide {hours} horas de vídeo de reunião por dia.",
       "more": "Mais horas",
       "askAdmin": "Um admin pode conseguir mais horas."
     },
-    "how": {
-      "title": "Como as reuniões funcionam",
-      "walk": "Entrar leva você até a sala de reunião. Saia dela para sair.",
-      "speakers": "Só quem fala envia vídeo, então as reuniões ficam leves.",
-      "voice": "Depois das horas do mês, as reuniões continuam por voz."
-    }
+    "pin": "Fixar",
+    "unpin": "Desafixar"
   },
   "help": {
     "title": "Ajuda e feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Trocar para {plan}?",
     "switchBody": "O Creem cobra ou credita a diferença pelo tempo restante do período, na hora. Ninguém no andar percebe nada.",
     "cancelTitle": "Cancelar o plano?",
-    "cancelBody": "O plano vale até {date}; depois o escritório volta ao plano grátis: 3 membros e 5 horas de reunião por mês. Ninguém é removido, mas ninguém novo pode entrar e só 3 podem estar no andar ao mesmo tempo.",
-    "cancelBodyNow": "O escritório volta ao plano grátis no fim deste período: 3 membros e 5 horas de reunião por mês. Ninguém é removido, mas ninguém novo pode entrar e só 3 podem estar no andar ao mesmo tempo.",
     "moreSeats": "Ter mais lugares",
     "membersLabel": "Membros",
     "hoursLabel": "Horas de reunião",
@@ -703,7 +694,6 @@
       "upgrade": "Mudar para o {plan}",
       "moveTo": "Mudar para o {plan}",
       "currentButton": "Plano atual",
-      "afterTrial": "A partir de {date}",
       "tooSmall": "Para {count}; o escritório tem {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Obrigado. O recibo está a caminho, enviado pela Creem.",
       "doneLine": "Espaço para {people} pessoas, e as horas de reunião que vêm com ele."
     },
-    "trialWaiting": "Convide mais de {free} pessoas e toda a sua equipe ganha o {plan} grátis por {days} dias. Sem cartão."
+    "trialWaiting": "Convide mais de {free} pessoas e toda a sua equipe ganha o {plan} grátis por {days} dias. Sem cartão.",
+    "cancelWhen": "O plano vale até {date}. Depois, o escritório vai para o Free.",
+    "cancelAnyway": "Cancelar mesmo assim",
+    "loseSeatsOver": "{members} pessoas são membros, mas só {free} poderiam estar no andar ao mesmo tempo, e ninguém novo poderia entrar.",
+    "loseSeats": "O espaço cai de {seats} pessoas para {free}.",
+    "loseHours": "As horas de reunião caem de {hours} para {free} por mês; depois delas, as reuniões são só por voz.",
+    "loseNothing": "Ninguém é removido e nada é apagado.",
+    "downsell": "Ou mantenha a equipe junta no {plan}: {price} por mês, para até {seats} pessoas."
   }
 }

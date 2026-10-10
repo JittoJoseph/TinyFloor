@@ -561,7 +561,6 @@
       "pausedMonth": "solo voz hasta el {date}",
       "pausedToday": "solo voz hasta mañana"
     },
-    "subtitle": "Únete para entrar en la sala de reuniones. Las llamadas entre dos personas en la planta nunca cuentan.",
     "alsoOn": "También ahora",
     "emptyRoom": "Aún no hay nadie",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Se renuevan mañana",
       "pausedMonth": "Agotadas: el vídeo está en pausa hasta el {date}",
       "pausedToday": "Agotadas: el vídeo está en pausa hasta mañana",
-      "counts": "Una hora cuenta mientras una reunión tiene dos o más personas, sean cuantas sean.",
-      "lobby": "La oficina de demostración comparte {hours} horas de vídeo de reuniones al día.",
       "more": "Conseguir más horas",
       "askAdmin": "Un administrador puede conseguir más horas."
     },
-    "how": {
-      "title": "Cómo funcionan las reuniones",
-      "walk": "Al unirte, entras en la sala de reuniones. Sal de ella para irte.",
-      "speakers": "Solo quien habla envía vídeo, así las reuniones van ligeras.",
-      "voice": "Pasadas las horas del mes, las reuniones siguen con voz."
-    }
+    "pin": "Fijar",
+    "unpin": "Dejar de fijar"
   },
   "help": {
     "title": "Ayuda y comentarios",
@@ -644,8 +637,6 @@
     "switchTitle": "¿Cambiar a {plan}?",
     "switchBody": "Creem cobra o abona la diferencia por el tiempo que queda del periodo, al momento. Nadie en la planta nota nada.",
     "cancelTitle": "¿Cancelar el plan?",
-    "cancelBody": "El plan sigue hasta el {date}; después la oficina vuelve al plan gratis: 3 miembros y 5 horas de reunión al mes. No se quita a nadie, pero nadie nuevo puede unirse y solo 3 pueden estar en la planta a la vez.",
-    "cancelBodyNow": "La oficina vuelve al plan gratis al final de este periodo: 3 miembros y 5 horas de reunión al mes. No se quita a nadie, pero nadie nuevo puede unirse y solo 3 pueden estar en la planta a la vez.",
     "moreSeats": "Conseguir más puestos",
     "membersLabel": "Miembros",
     "hoursLabel": "Horas de reunión",
@@ -703,7 +694,6 @@
       "upgrade": "Pasar a {plan}",
       "moveTo": "Cambiar a {plan}",
       "currentButton": "Plan actual",
-      "afterTrial": "Desde el {date}",
       "tooSmall": "Para {count}; la oficina tiene {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Gracias. El recibo te llegará de Creem.",
       "doneLine": "Sitio para {people} personas, y las horas de reunión que vienen con él."
     },
-    "trialWaiting": "Invita a más de {free} personas y todo tu equipo tendrá {plan} gratis durante {days} días. Sin tarjeta."
+    "trialWaiting": "Invita a más de {free} personas y todo tu equipo tendrá {plan} gratis durante {days} días. Sin tarjeta.",
+    "cancelWhen": "El plan sigue hasta el {date}. Después, la oficina pasa a Gratis.",
+    "cancelAnyway": "Cancelar de todos modos",
+    "loseSeatsOver": "{members} personas son miembros, pero solo {free} podrían estar en la planta a la vez, y nadie nuevo podría entrar.",
+    "loseSeats": "El espacio baja de {seats} personas a {free}.",
+    "loseHours": "Las horas de reunión bajan de {hours} a {free} al mes; pasadas, las reuniones son solo de voz.",
+    "loseNothing": "No se quita a nadie ni se borra nada.",
+    "downsell": "O mantén al equipo junto en {plan}: {price} al mes, para hasta {seats} personas."
   }
 }

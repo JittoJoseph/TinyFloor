@@ -561,7 +561,6 @@
       "pausedMonth": "bara ljud till {date}",
       "pausedToday": "bara ljud till i morgon"
     },
-    "subtitle": "Gå med för att gå in i mötesrummet. Samtal mellan två på våningen räknas aldrig.",
     "alsoOn": "Pågår också",
     "emptyRoom": "Ingen här än",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Börjar om i morgon",
       "pausedMonth": "Slut: video är pausad till {date}",
       "pausedToday": "Slut: video är pausad till i morgon",
-      "counts": "En timme räknas så länge ett möte har två eller fler personer, hur många det än är.",
-      "lobby": "Demokontoret delar {hours} timmar mötesvideo om dagen.",
       "more": "Fler timmar",
       "askAdmin": "En administratör kan skaffa fler timmar."
     },
-    "how": {
-      "title": "Så fungerar möten",
-      "walk": "När du går med går du in i mötesrummet. Gå ut för att lämna.",
-      "speakers": "Bara de som pratar skickar video, så mötena är lätta.",
-      "voice": "När månadens timmar är slut fortsätter mötena med ljud."
-    }
+    "pin": "Fäst",
+    "unpin": "Lossa"
   },
   "help": {
     "title": "Hjälp och feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Byta till {plan}?",
     "switchBody": "Creem debiterar eller krediterar mellanskillnaden för resten av perioden direkt. Ingen på golvet märker något.",
     "cancelTitle": "Säga upp planen?",
-    "cancelBody": "Planen gäller till {date}, sedan går kontoret tillbaka till gratisplanen: 3 medlemmar och 5 mötestimmar i månaden. Ingen tas bort, men ingen ny kan gå med, och bara 3 kan vara på våningen samtidigt.",
-    "cancelBodyNow": "Kontoret går tillbaka till gratisplanen i slutet av perioden: 3 medlemmar och 5 mötestimmar i månaden. Ingen tas bort, men ingen ny kan gå med, och bara 3 kan vara på våningen samtidigt.",
     "moreSeats": "Fler platser",
     "membersLabel": "Medlemmar",
     "hoursLabel": "Mötestimmar",
@@ -703,7 +694,6 @@
       "upgrade": "Uppgradera till {plan}",
       "moveTo": "Byt till {plan}",
       "currentButton": "Nuvarande plan",
-      "afterTrial": "Från {date}",
       "tooSmall": "Rymmer {count}; kontoret har {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Tack. Kvittot kommer från Creem.",
       "doneLine": "Plats för {people} personer, och mötestimmarna som hör till."
     },
-    "trialWaiting": "Bjud in fler än {free} personer så får hela ditt team {plan} gratis i {days} dagar. Inget kort behövs."
+    "trialWaiting": "Bjud in fler än {free} personer så får hela ditt team {plan} gratis i {days} dagar. Inget kort behövs.",
+    "cancelWhen": "Planen gäller till {date}. Sedan är kontoret på Gratis.",
+    "cancelAnyway": "Avsluta ändå",
+    "loseSeatsOver": "{members} personer är medlemmar, men bara {free} kan vara på våningen samtidigt, och ingen ny kan gå med.",
+    "loseSeats": "Platsen går från {seats} personer till {free}.",
+    "loseHours": "Mötestimmarna går från {hours} till {free} i månaden; därefter är möten bara med ljud.",
+    "loseNothing": "Ingen tas bort och inget raderas.",
+    "downsell": "Eller håll ihop teamet på {plan}: {price} i månaden, för upp till {seats} personer."
   }
 }

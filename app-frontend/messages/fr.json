@@ -561,7 +561,6 @@
       "pausedMonth": "audio seul jusqu'au {date}",
       "pausedToday": "audio seul jusqu'à demain"
     },
-    "subtitle": "Rejoins pour entrer dans la salle de réunion. Les appels à deux sur l'étage ne comptent jamais.",
     "alsoOn": "Aussi en cours",
     "emptyRoom": "Personne pour l'instant",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Remise à zéro demain",
       "pausedMonth": "Épuisées : vidéo en pause jusqu'au {date}",
       "pausedToday": "Épuisées : vidéo en pause jusqu'à demain",
-      "counts": "Une heure compte tant qu'une réunion réunit deux personnes ou plus, peu importe combien.",
-      "lobby": "Le bureau de démo partage {hours} heures de vidéo de réunion par jour.",
       "more": "Avoir plus d'heures",
       "askAdmin": "Un admin peut obtenir plus d'heures."
     },
-    "how": {
-      "title": "Comment marchent les réunions",
-      "walk": "Rejoindre te fait entrer dans la salle de réunion. Sors-en pour partir.",
-      "speakers": "Seules les personnes qui parlent envoient de la vidéo : les réunions restent légères.",
-      "voice": "Une fois les heures du mois écoulées, les réunions continuent en audio."
-    }
+    "pin": "Épingler",
+    "unpin": "Désépingler"
   },
   "help": {
     "title": "Aide et avis",
@@ -644,8 +637,6 @@
     "switchTitle": "Passer à {plan} ?",
     "switchBody": "Creem facture ou crédite aussitôt la différence pour le reste de la période. Personne sur le plateau ne remarque rien.",
     "cancelTitle": "Annuler l'offre ?",
-    "cancelBody": "L'offre court jusqu'au {date}, puis le bureau repasse à l'offre gratuite : 3 membres et 5 heures de réunion par mois. Personne n'est retiré, mais personne de nouveau ne peut rejoindre, et seuls 3 peuvent être sur l'étage à la fois.",
-    "cancelBodyNow": "Le bureau repasse à l'offre gratuite à la fin de cette période : 3 membres et 5 heures de réunion par mois. Personne n'est retiré, mais personne de nouveau ne peut rejoindre, et seuls 3 peuvent être sur l'étage à la fois.",
     "moreSeats": "Obtenir plus de places",
     "membersLabel": "Membres",
     "hoursLabel": "Heures de réunion",
@@ -703,7 +694,6 @@
       "upgrade": "Passer à {plan}",
       "moveTo": "Passer à {plan}",
       "currentButton": "Offre actuelle",
-      "afterTrial": "À partir du {date}",
       "tooSmall": "Pour {count} ; le bureau en compte {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Merci. Le reçu arrive de la part de Creem.",
       "doneLine": "De la place pour {people} personnes, et les heures de réunion qui vont avec."
     },
-    "trialWaiting": "Invite plus de {free} personnes et toute ton équipe a {plan} gratuit pendant {days} jours. Sans carte."
+    "trialWaiting": "Invite plus de {free} personnes et toute ton équipe a {plan} gratuit pendant {days} jours. Sans carte.",
+    "cancelWhen": "L'offre court jusqu'au {date}. Ensuite, le bureau passe à l'offre gratuite.",
+    "cancelAnyway": "Annuler quand même",
+    "loseSeatsOver": "{members} personnes sont membres, mais seules {free} pourraient être sur l'étage en même temps, et personne de nouveau ne pourrait entrer.",
+    "loseSeats": "La place passe de {seats} personnes à {free}.",
+    "loseHours": "Les heures de réunion passent de {hours} à {free} par mois ; au-delà, les réunions sont en audio seulement.",
+    "loseNothing": "Personne n'est retiré et rien n'est supprimé.",
+    "downsell": "Ou garde l'équipe réunie sur {plan} : {price} par mois, jusqu'à {seats} personnes."
   }
 }

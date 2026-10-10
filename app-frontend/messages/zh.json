@@ -561,7 +561,6 @@
       "pausedMonth": "{date} 前仅限语音",
       "pausedToday": "明天前仅限语音"
     },
-    "subtitle": "加入即可走进会议室。楼层上两个人之间的通话从不计时。",
     "alsoOn": "正在进行",
     "emptyRoom": "还没有人",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "明天重置",
       "pausedMonth": "已用完：视频暂停至 {date}",
       "pausedToday": "已用完：视频暂停至明天",
-      "counts": "会议里有两人或以上时才计时，无论多少人都按一小时算。",
-      "lobby": "演示办公室每天共享 {hours} 小时会议视频。",
       "more": "获取更多时长",
       "askAdmin": "管理员可以获取更多时长。"
     },
-    "how": {
-      "title": "会议怎么用",
-      "walk": "加入后会走进会议室，走出去即离开。",
-      "speakers": "只有说话的人发送视频，会议因此很轻快。",
-      "voice": "本月时长用完后，会议会以语音继续。"
-    }
+    "pin": "固定",
+    "unpin": "取消固定"
   },
   "help": {
     "title": "帮助与反馈",
@@ -644,8 +637,6 @@
     "switchTitle": "切换到 {plan}？",
     "switchBody": "Creem 会立即按本期剩余时间收取或退还差价。楼层上的人不会有任何感觉。",
     "cancelTitle": "取消方案？",
-    "cancelBody": "方案持续到 {date}，之后办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
-    "cancelBodyNow": "本期结束时，办公室恢复为免费方案：3 名成员，每月 5 小时会议时长。不会移除任何人，但新成员无法加入，楼层上同时最多 3 人。",
     "moreSeats": "获取更多席位",
     "membersLabel": "成员",
     "hoursLabel": "会议时长",
@@ -703,7 +694,6 @@
       "upgrade": "升级到 {plan}",
       "moveTo": "换到 {plan}",
       "currentButton": "当前套餐",
-      "afterTrial": "{date} 起",
       "tooSmall": "可容纳 {count} 人；办公室有 {members} 人"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "谢谢。Creem 会发送收据给你。",
       "doneLine": "可容纳 {people} 人，以及随之而来的会议时长。"
     },
-    "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。"
+    "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
+    "cancelWhen": "套餐有效期至 {date}，之后办公室转为免费版。",
+    "cancelAnyway": "仍要取消",
+    "loseSeatsOver": "办公室有 {members} 名成员，但同时只能有 {free} 人在楼层上，新人也无法加入。",
+    "loseSeats": "名额从 {seats} 人降到 {free} 人。",
+    "loseHours": "会议时长从每月 {hours} 小时降到 {free} 小时，超出后会议只能语音。",
+    "loseNothing": "不会移除任何人，也不会删除任何内容。",
+    "downsell": "或者用 {plan} 留住整个团队：每月 {price}，最多 {seats} 人。"
   }
 }

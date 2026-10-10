@@ -561,7 +561,6 @@
       "pausedMonth": "kun lyd indtil {date}",
       "pausedToday": "kun lyd indtil i morgen"
     },
-    "subtitle": "Deltag for at gå ind i mødelokalet. Opkald mellem to personer på etagen tæller aldrig.",
     "alsoOn": "Også i gang nu",
     "emptyRoom": "Ingen er her endnu",
     "usage": {
@@ -572,17 +571,11 @@
       "resetsTomorrow": "Nulstilles i morgen",
       "pausedMonth": "Brugt op: video er sat på pause til {date}",
       "pausedToday": "Brugt op: video er sat på pause til i morgen",
-      "counts": "En time tæller, mens et møde har to eller flere personer, uanset hvor mange.",
-      "lobby": "Demokontoret deler {hours} timers mødevideo om dagen.",
       "more": "Få flere timer",
       "askAdmin": "En administrator kan skaffe flere timer."
     },
-    "how": {
-      "title": "Sådan fungerer møder",
-      "walk": "Når du deltager, går du ind i mødelokalet. Gå ud for at forlade mødet.",
-      "speakers": "Kun dem, der taler, sender video, så møderne er lette.",
-      "voice": "Når månedens timer er brugt, fortsætter møderne med lyd."
-    }
+    "pin": "Fastgør",
+    "unpin": "Frigør"
   },
   "help": {
     "title": "Hjælp og feedback",
@@ -644,8 +637,6 @@
     "switchTitle": "Skift til {plan}?",
     "switchBody": "Creem opkræver eller krediterer forskellen for resten af perioden med det samme. Ingen på gulvet mærker noget.",
     "cancelTitle": "Opsig planen?",
-    "cancelBody": "Planen kører til {date}, derefter går kontoret tilbage til gratisplanen: 3 medlemmer og 5 mødetimer om måneden. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på etagen ad gangen.",
-    "cancelBodyNow": "Kontoret går tilbage til gratisplanen ved periodens udløb: 3 medlemmer og 5 mødetimer om måneden. Ingen fjernes, men ingen nye kan komme med, og kun 3 kan være på etagen ad gangen.",
     "moreSeats": "Få flere pladser",
     "membersLabel": "Medlemmer",
     "hoursLabel": "Mødetimer",
@@ -703,7 +694,6 @@
       "upgrade": "Opgrader til {plan}",
       "moveTo": "Skift til {plan}",
       "currentButton": "Nuværende plan",
-      "afterTrial": "Fra {date}",
       "tooSmall": "Har plads til {count}; kontoret har {members}"
     },
     "upgrade": {
@@ -720,6 +710,13 @@
       "doneBody": "Tak. Kvitteringen er på vej fra Creem.",
       "doneLine": "Plads til {people} personer og de mødetimer, der følger med."
     },
-    "trialWaiting": "Inviter mere end {free} personer, og hele dit team får {plan} gratis i {days} dage. Intet kort nødvendigt."
+    "trialWaiting": "Inviter mere end {free} personer, og hele dit team får {plan} gratis i {days} dage. Intet kort nødvendigt.",
+    "cancelWhen": "Planen kører til {date}. Derefter er kontoret på Gratis.",
+    "cancelAnyway": "Annuller alligevel",
+    "loseSeatsOver": "{members} personer er medlemmer, men kun {free} kan være på etagen ad gangen, og ingen nye kan komme ind.",
+    "loseSeats": "Pladsen falder fra {seats} personer til {free}.",
+    "loseHours": "Mødetimerne falder fra {hours} til {free} om måneden; derefter er møder kun med lyd.",
+    "loseNothing": "Ingen fjernes, og intet slettes.",
+    "downsell": "Eller hold teamet samlet på {plan}: {price} om måneden for op til {seats} personer."
   }
 }

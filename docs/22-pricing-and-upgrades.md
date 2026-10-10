@@ -146,14 +146,20 @@ from people who forget to cancel. We don't want that revenue:
 - Creem reviews stores for dark patterns.
 - It's the opposite of the "one small bill" promise.
 
-**The honest version of "pay once, keep paying" is yearly** (below).
+### Monthly only
 
-### Yearly: at launch, two months free
+Decided 10 October: no yearly plan. One price per plan, monthly, cancel any
+time.
 
-$190 and $490 a year: cash up front, one fee instead of twelve, and much
-lower churn. Teams that pay yearly mostly forget about it in the good way.
-Needs a yearly product per plan in Creem and a monthly/yearly switch on the
-plan cards. **To decide** before go-live.
+### Free isn't offered inside the office
+
+Inside an office, Plan and billing and the upgrade dialog offer only Plus and
+Pro. An office on Free says so at the top; going back to Free is cancelling,
+a quiet link at the bottom. Its dialog says what the team would lose (who could
+be on the floor at once, the meeting hours), offers the smaller paid plan when
+the team fits it, and makes keeping the plan the main button. Cancelling stays
+one click away: nothing is hidden or made hard, which would only turn into
+refund requests and chargebacks.
 
 ### When to ask, and how
 
@@ -179,12 +185,15 @@ Members see the same plans and who can change them.
   one that answers the reason marked, checkout in place. Opened from Meetings
   ("Get more hours", and the paused-video note), People (office full) and the
   rail's office menu.
-- **Plan and billing**: every plan side by side (`PlanCards.tsx`), the current
-  one marked; Choose, Upgrade, Move to, Keep (during a trial). The old "only
-  the next plan up" card is gone.
-- **Meetings**: the meeting room drawn from the floor with whoever's in it at
-  the table; the month's hours as a meter beside it with the plan and the way
-  to more; how meetings work.
+- **Plan and billing**: the paid plans side by side (`PlanCards.tsx`), the
+  current one marked; Choose, Upgrade, Move to. Free isn't offered as a card:
+  leaving a plan is Cancel, which lists what the team loses, offers the plan
+  below, and keeps Keep as the main button.
+- **Meetings**: a plain list, the office's meeting first, each with who's in
+  it and the way in; the month's hours as a meter beside it with the plan and
+  the way to more. No floor drawing and no explaining how meetings work. In a
+  meeting: a grid that includes you, pin or a shared screen goes big with the
+  rest in a column on the right.
 - **Onboarding**: name, then the invite link, then the floor. The size and
   plan steps are gone; `/create?plan=` from the pricing page still goes to
   checkout after the name.
@@ -208,7 +217,6 @@ person. The work that matters most now is the first ten minutes:
 
 ## To decide
 
-- Yearly prices, and whether they launch with the store.
 - The price review after 20 paying offices.
 - Whether to say "Plus free for 14 days when your team moves in" on the pricing
   page once paid plans are on sale.

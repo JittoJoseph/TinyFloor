@@ -62,7 +62,7 @@ export function MeetingUsageCard({ className }: { className?: string }) {
   const lobby = place.kind === "lobby";
 
   if (!usage || usage.allowance === null) {
-    return <div aria-hidden className={cn("h-[188px] animate-pulse rounded-2xl bg-muted", className)} />;
+    return <div aria-hidden className={cn("h-[148px] animate-pulse rounded-2xl bg-muted", className)} />;
   }
   const share = Math.min(1, usage.used / usage.allowance);
   const nearly = share >= NEARLY;
@@ -78,7 +78,7 @@ export function MeetingUsageCard({ className }: { className?: string }) {
         {plan && <span className="rounded-full bg-muted px-2 py-0.5 text-[11.5px] font-semibold text-muted-foreground">{plan}</span>}
       </div>
       <p className="mt-3 flex items-baseline gap-1.5 tabular-nums">
-        <span className="text-[30px] font-semibold leading-none tracking-tight text-foreground">{hours(usage.used)}</span>
+        <span className="text-[30px] font-semibold leading-none tracking-tight text-foreground">{hours(Math.min(usage.used, usage.allowance))}</span>
         <span className="text-[13px] text-muted-foreground">{t("of", { allowance: hours(usage.allowance) })}</span>
       </p>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-muted" aria-hidden>
@@ -97,15 +97,12 @@ export function MeetingUsageCard({ className }: { className?: string }) {
             : t("resets", { date: resets })}
       </p>
 
-      <p className="mt-4 border-t border-border pt-4 text-[12.5px] leading-relaxed text-muted-foreground">
-        {lobby ? t("lobby", { hours: hours(usage.allowance) }) : t("counts")}
-      </p>
       {more && !top && (
         <button
           type="button"
           onClick={more}
           className={cn(
-            "mt-3 flex h-9 w-full cursor-pointer items-center justify-center gap-1.5 rounded-full text-[13px] font-medium transition-colors",
+            "mt-4 flex h-9 w-full cursor-pointer items-center justify-center gap-1.5 rounded-full text-[13px] font-medium transition-colors",
             nearly || usage.paused ? "bg-foreground text-background hover:bg-foreground/85" : "border border-border text-foreground hover:bg-muted",
           )}
         >

@@ -9,13 +9,14 @@ import { cn } from "@/lib/utils";
 /** Plan names stay in English everywhere, like on the pricing page. */
 export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
 
-export type PlanMove = "current" | "choose" | "upgrade" | "down" | "free";
+export type PlanMove = "current" | "choose" | "upgrade" | "down";
 
 /**
- * Every plan side by side (docs/22), the office's own marked: what each holds,
- * what it costs, and what choosing it would do. One card per plan, so the
- * ladder is always whole; whichever answers the reason the page was opened
- * for is marked too. Members see the plans without the buttons.
+ * The paid plans side by side (docs/22), the office's own marked: what each
+ * holds, what it costs, and what choosing it would do. Free isn't one of them:
+ * an office on it says so above, and going back to it is cancelling, which
+ * Plan and billing explains on its own. Whichever answers the reason the page
+ * was opened for is marked too. Members see the plans without the buttons.
  */
 export function PlanCards({
   plans,
@@ -52,14 +53,15 @@ export function PlanCards({
   const moveTo = (plan: Plan): PlanMove => {
     // A trial's plan isn't paid for yet: choosing it is buying it.
     if (plan.id === current && !trial) return "current";
-    if (plan.id === "free") return trial ? "current" : "free";
     if (!subscribed) return "choose";
     return rank(plan.id) > rank(current) ? "upgrade" : "down";
   };
 
   return (
-    <div className={cn("grid gap-3 sm:grid-cols-3", className)}>
-      {plans.map((plan) => {
+    <div className={cn("grid gap-3 sm:grid-cols-2", className)}>
+      {plans
+        .filter((plan) => plan.price !== null)
+        .map((plan) => {
         const move = moveTo(plan);
         const mine = plan.id === current;
         const tooSmall = members > plan.seats && move !== "current";
@@ -122,9 +124,7 @@ export function PlanCards({
                 >
                   {busy === plan.id && <Loader2 className="size-3.5 animate-spin" />}
                   {move === "current"
-                    ? trial && plan.id === "free"
-                      ? t("afterTrial", { date: format.dateTime(new Date(trialEndsAt!), { day: "numeric", month: "short" }) })
-                      : t("currentButton")
+                    ? t("currentButton")
                     : move === "choose"
                       ? trial && mine
                         ? t("keep", { plan: PLAN_NAMES[plan.id] })

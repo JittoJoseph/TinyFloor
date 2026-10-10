@@ -14,7 +14,6 @@ import { Link } from "@/lib/i18n/navigation";
 import { Face, faceBackground } from "@/components/ui/Face";
 import { usePlace } from "@/components/app/place";
 import { cn } from "@/lib/utils";
-import { bezel } from "@/components/ui/bezel";
 
 /** People offered in "Free to talk" at most. */
 const FREE_SHOWN = 4;
@@ -96,9 +95,13 @@ export function JoinPreview() {
   };
 
   const round = "flex size-12 cursor-pointer items-center justify-center rounded-full transition-colors [&_svg]:size-5";
+  // Off is the ordinary state, drawn like any button; on is the one that stands out.
+  const plain = stream
+    ? "border border-white/25 bg-black/35 text-white backdrop-blur hover:bg-black/50"
+    : "border border-border bg-background text-foreground hover:bg-muted";
   return (
-    <div className={cn(bezel, "rounded-[30px] p-1.5")}>
-      <div className="relative aspect-video overflow-hidden rounded-[24px] bg-card">
+    <div>
+      <div className="relative aspect-video overflow-hidden rounded-[28px] bg-[color-mix(in_oklab,var(--ui-muted)_80%,var(--ui-background))] ring-1 ring-inset ring-foreground/[0.06]">
         {stream ? (
           <video
             ref={video}
@@ -136,14 +139,7 @@ export function JoinPreview() {
             onClick={() => callManager.setMic(!micEnabled)}
             aria-label={micEnabled ? tc("muteMic") : tc("unmuteMic")}
             title={micEnabled ? tc("muteMic") : tc("unmuteMic")}
-            className={cn(
-              round,
-              "relative overflow-hidden",
-              micEnabled
-                ? "border border-white/25 bg-black/35 text-white backdrop-blur hover:bg-black/50"
-                : "bg-destructive text-white hover:bg-destructive/90",
-              !stream && micEnabled && "border-border bg-background text-foreground hover:bg-muted",
-            )}
+            className={cn(round, "relative overflow-hidden", micEnabled ? plain : "bg-destructive text-white hover:bg-destructive/90")}
           >
             {/* The mic's level, filling the button from the bottom while you talk. */}
             {micEnabled && stream && (
@@ -160,12 +156,8 @@ export function JoinPreview() {
             onClick={toggleCamera}
             aria-label={camera ? tc("cameraOff") : tc("cameraOn")}
             title={camera ? tc("cameraOff") : tc("cameraOn")}
-            className={cn(
-              round,
-              camera
-                ? "border border-white/25 bg-black/35 text-white backdrop-blur hover:bg-black/50"
-                : "bg-destructive text-white hover:bg-destructive/90",
-            )}
+            aria-pressed={camera}
+            className={cn(round, camera ? "bg-white text-black hover:bg-white/90" : plain)}
           >
             {camera ? <Video /> : <VideoOff />}
           </button>
@@ -229,10 +221,10 @@ export function FreeToTalk({ className }: { className?: string }) {
 
   return (
     <section className={cn("[--face-ring:var(--ui-card)]", className)}>
-      <h2 className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
-      <ul>
+      <h2 className="mb-2 text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
+      <ul className="-mx-2">
         {free.slice(0, FREE_SHOWN).map((one) => (
-          <li key={one.id} className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-1.5">
+          <li key={one.id} className="flex items-center gap-3 rounded-xl px-2 py-1.5">
             <Face seed={one.id} size={28} presence="available" />
             <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-foreground">{one.name}</span>
             <button

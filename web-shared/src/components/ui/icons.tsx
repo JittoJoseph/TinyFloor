@@ -106,6 +106,8 @@ import {
   WavingHand01Icon,
   Wifi01Icon,
   ZapIcon,
+  PinIcon,
+  PinOffIcon,
 } from "@hugeicons/core-free-icons";
 
 /*
@@ -188,6 +190,8 @@ export const MessagesSquare = icon(BubbleChatIcon, "MessagesSquare");
 export const Mic = icon(Mic01Icon, "Mic");
 export const MicOff = icon(MicOff01Icon, "MicOff");
 export const Minimize2 = icon(ArrowShrink01Icon, "Minimize2");
+export const Pin = icon(PinIcon, "Pin");
+export const PinOff = icon(PinOffIcon, "PinOff");
 export const Monitor = icon(ComputerIcon, "Monitor");
 export const MonitorUp = icon(ComputerScreenShareIcon, "MonitorUp");
 export const MonitorX = icon(ComputerRemoveIcon, "MonitorX");

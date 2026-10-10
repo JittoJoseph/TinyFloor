@@ -10,7 +10,6 @@ import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
-import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
@@ -23,10 +22,11 @@ const PILL_GAP = 8;
 
 /**
  * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
- * lobby, laid out the way Meet asks before a call: you on the left, as big as
- * the page allows, with your mic and camera; on the right "Ready to join?",
- * the office's own meeting, who's in it and the way in. Under that, any other
- * meetings on now and who is free to talk. At the foot, the meeting hours.
+ * lobby, laid out the way Meet asks before a call, and as calm: you on the
+ * left with your mic and camera; on the right "Ready to join?", the office's
+ * own meeting, who's in it, the way in, and the way to a meeting of your own.
+ * Under them, on the same two columns, other meetings on now (under you) and
+ * who is free to talk (under the way in). At the foot, the meeting hours.
  * Inside a meeting, the page is its stage.
  */
 export function MeetingsView() {
@@ -37,6 +37,9 @@ export function MeetingsView() {
   if (meeting && mine) return <MeetingStage meeting={mine} office={place.name} />;
   return <MeetingsLobby office={place.name} />;
 }
+
+/** The two columns everything on the page sits on, so what's under lines up with what's above. */
+const COLUMNS = "grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]";
 
 function MeetingsLobby({ office }: { office: string }) {
   const t = useTranslations("meetings");
@@ -55,36 +58,30 @@ function MeetingsLobby({ office }: { office: string }) {
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
-      <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pt-5 sm:px-8 sm:pt-8">
-        <header className="flex items-center justify-between gap-4">
-          <h1 className="text-[20px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-          <Button size="md" variant="secondary" onClick={() => setStarting(true)} className="h-10 shrink-0 gap-2 px-4 text-[13px]">
-            <Plus className="size-4" />
-            <span className="max-sm:sr-only">{t("new")}</span>
-          </Button>
-        </header>
+      <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col px-5 sm:px-10">
+        <VideoPausedNote className="mx-auto mt-5 w-fit max-w-full" />
 
-        <VideoPausedNote className="mt-4 w-fit max-w-full" />
-
-        <main className="flex flex-1 flex-col justify-center py-8">
-          <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:gap-10">
+        <main className="flex flex-1 flex-col justify-center py-10">
+          <div className={cn(COLUMNS, "items-center")}>
             <JoinPreview />
-            <JoinMain meeting={main} office={office} known={known} />
+            <JoinMain meeting={main} office={office} known={known} onNew={() => setStarting(true)} />
           </div>
 
-          {/* What else is on, and who could be: under the way in, out of its way. */}
-          <div className="mt-6 grid items-start gap-6 empty:hidden md:grid-cols-2 lg:mt-8">
-            {others.length > 0 && (
-              <section className="rounded-2xl border border-border bg-background px-4 pb-2 pt-3.5 [--face-ring:var(--ui-background)]">
-                <h2 className="mb-1.5 text-[12.5px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
-                <ul>
+          {/* What else is on, and who could be: under the way in, on its columns. */}
+          <div className={cn(COLUMNS, "mt-12 items-start empty:hidden")}>
+            {others.length > 0 ? (
+              <section className="[--face-ring:var(--ui-card)]">
+                <h2 className="mb-2 text-[12.5px] font-medium text-muted-foreground">{t("alsoOn")}</h2>
+                <ul className="-mx-2">
                   {others.map((one) => (
                     <OtherMeeting key={one.id} meeting={one} office={office} />
                   ))}
                 </ul>
               </section>
+            ) : (
+              <span className="max-lg:hidden" />
             )}
-            <FreeToTalk className="rounded-2xl border border-border bg-background px-4 pb-2 pt-3.5 [--face-ring:var(--ui-background)]" />
+            <FreeToTalk />
           </div>
         </main>
 
@@ -106,60 +103,58 @@ function Elapsed({ meeting }: { meeting: MeetingInfo }) {
 }
 
 /**
- * The office's own meeting, as Meet's "Ready to join?", built like a door: the
- * meeting written on a black bezel (its name, how long it's been on, how many
- * are in), and set into it who those are, on one line, and one big way in.
+ * The office's own meeting, as Meet's "Ready to join?": its name, how long
+ * it's been on and how many are in, who those are on one line, then the way
+ * in, and beside it the way to a meeting of your own.
  */
-function JoinMain({ meeting, office, known }: { meeting: MeetingInfo; office: string; known: boolean }) {
+function JoinMain({ meeting, office, known, onNew }: { meeting: MeetingInfo; office: string; known: boolean; onNew: () => void }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   const live = meeting.members.length > 0;
 
   return (
-    <section className={cn(bezel, "rounded-[30px] p-1.5")}>
-      <div className={cn(onBezel, "px-4 pb-4 pt-3.5 sm:px-[18px] sm:pt-[18px]")}>
-        <p className="text-[12.5px] font-medium text-muted-foreground">{t("readyTitle")}</p>
-        <h2 className="mt-1 text-[22px] font-bold leading-tight tracking-[-0.02em] text-foreground">{nameOf(meeting, office)}</h2>
-        <div className="mt-2 flex min-h-5 items-center gap-2 text-[13px] text-muted-foreground">
-          {live ? (
-            <>
-              <span className="size-1.5 rounded-full bg-ok" aria-hidden />
-              <Elapsed meeting={meeting} />
-              <span aria-hidden>·</span>
-              {t("people", { count: meeting.members.length })}
-            </>
-          ) : known ? (
-            t("emptyRoom")
-          ) : (
-            // Until the floor says who's in, nothing is claimed either way.
-            <span aria-hidden className="h-2.5 w-28 animate-pulse rounded-full bg-muted" />
-          )}
-        </div>
+    <section className="min-w-0 [--face-ring:var(--ui-card)]">
+      <p className="text-[13px] font-medium text-muted-foreground">{t("readyTitle")}</p>
+      <h1 className="mt-1.5 text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">{nameOf(meeting, office)}</h1>
+      <div className="mt-2.5 flex min-h-5 items-center gap-2 text-[13.5px] text-muted-foreground">
+        {live ? (
+          <>
+            <Elapsed meeting={meeting} />
+            <span aria-hidden>·</span>
+            {t("people", { count: meeting.members.length })}
+          </>
+        ) : known ? (
+          t("emptyRoom")
+        ) : (
+          // Until the floor says who's in, nothing is claimed either way.
+          <span aria-hidden className="h-2.5 w-28 animate-pulse rounded-full bg-muted" />
+        )}
       </div>
-      <div className={cn(bezelPanel, "rounded-[24px] p-4 sm:p-5")}>
-        {live && <PeopleLine people={meeting.members} className="mb-4" />}
-        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-12 w-full px-6 text-[15px]">
+      {live && <PeopleLine people={meeting.members} className="mt-4" />}
+      <div className="mt-7 flex flex-wrap items-center gap-2.5">
+        <Button size="md" disabled={!known} onClick={() => callManager.joinMeeting(meeting.id)} className="h-12 min-w-40 px-7 text-[15px]">
           {live ? t("joinNow") : t("start")}
+        </Button>
+        <Button size="md" variant="secondary" onClick={onNew} className="h-12 gap-2 px-5 text-[14px]">
+          <Plus className="size-4" />
+          {t("new")}
         </Button>
       </div>
     </section>
   );
 }
 
-/** Another meeting going on now, as one quiet row: its name, how long and how many, and the way in. */
+/** Another meeting going on now, as one quiet row: who's in it, its name, how long and how many, and the way in. */
 function OtherMeeting({ meeting, office }: { meeting: MeetingInfo; office: string }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   return (
-    <li className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-2">
+    <li className="flex items-center gap-3 rounded-xl px-2 py-2">
       <FaceStack seeds={meeting.members.map((person) => person.id)} size={24} max={3} />
       <div className="min-w-0 flex-1">
         <p className="truncate text-[13.5px] font-medium text-foreground">{nameOf(meeting, office)}</p>
-        <p className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
-          <span className="size-1.5 rounded-full bg-ok" aria-hidden />
-          <Elapsed meeting={meeting} />
-          <span aria-hidden>·</span>
-          {t("people", { count: meeting.members.length })}
+        <p className="text-[12px] text-muted-foreground">
+          <Elapsed meeting={meeting} /> · {t("people", { count: meeting.members.length })}
         </p>
       </div>
       <button

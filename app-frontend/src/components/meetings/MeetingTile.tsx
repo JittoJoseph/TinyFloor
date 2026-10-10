@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useRef, type CSSProperties } from "react";
-import { Maximize2, MicOff, Minimize2, MonitorUp } from "@/components/ui/icons";
+import { MicOff, MonitorUp, Pin, PinOff } from "@/components/ui/icons";
 import { faceBackground } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 
@@ -137,11 +137,11 @@ export const MeetingTile = memo(function MeetingTile({
           title={pin.label}
           aria-pressed={pin.pinned}
           className={cn(
-            "absolute bottom-2 end-2 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/55 text-white outline-none backdrop-blur-sm transition-opacity hover:bg-black/70 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-white/70 [&_svg]:size-4",
+            "absolute start-2 top-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-black/45 text-white outline-none backdrop-blur-sm transition-opacity hover:bg-black/65 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-white/70 [&_svg]:size-3.5",
             pin.pinned ? "opacity-100" : "opacity-0 group-hover/tile:opacity-100 [@media(hover:none)]:opacity-100",
           )}
         >
-          {pin.pinned ? <Minimize2 /> : <Maximize2 />}
+          {pin.pinned ? <PinOff /> : <Pin />}
         </button>
       )}
     </div>

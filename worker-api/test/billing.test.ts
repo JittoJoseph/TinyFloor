@@ -386,7 +386,7 @@ describe("billing", () => {
     expect(other.body.error.code).toBe("not_payer");
   });
 
-it("lets a full free office's next person in, on a 14-day Plus trial for the whole team", async () => {
+it("lets a full free office's next person in, on a 14-day Pro trial for the whole team", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
@@ -400,11 +400,11 @@ it("lets a full free office's next person in, on a 14-day Plus trial for the who
     const preview = await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${link.code}`);
     expect(preview.body.invite.full).toBe(false);
     expect((await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`)).status).toBe(200);
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
     const billing = await call<{ trial: { plan: string; endsAt: number } | null }>(ada, "GET", `/v1/offices/${officeId}/billing`);
-    expect(billing.body.trial?.plan).toBe("plus");
+    expect(billing.body.trial?.plan).toBe("pro");
     expect(billing.body.trial!.endsAt - Date.now()).toBeGreaterThan(13 * 86_400_000);
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 30]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 60]);
 
     // Over: back to free the moment the office is read, everyone still in it.
     await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?").bind(Date.now() - 1000, officeId).run();
@@ -423,9 +423,9 @@ it("lets a full free office's next person in, on a 14-day Plus trial for the who
     await addMembers(officeId, 2);
     const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
     await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`);
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
-    await deliver("subscription.active", subscription(officeId, { product: { id: "prod_pro" } }));
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    await deliver("subscription.active", subscription(officeId));
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
     const trial = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number }>();
     expect(trial?.trial_ends_at).toBe(0);
   });

@@ -262,14 +262,14 @@ export function CreateOfficeFlow() {
                 </button>
               </div>
               {selling && !!catalog?.trialDays ? (
-                <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-brand/10 p-3.5 text-[13px] leading-relaxed text-foreground">
+                <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-muted p-3.5 text-[13px] leading-relaxed text-foreground">
                   <Zap className="mt-0.5 size-4 shrink-0 text-brand" />
                   {t("trialNote", {
                     free: free?.seats ?? 3,
-                    plan: NAMES.plus,
+                    plan: NAMES[catalog.trialPlan ?? "pro"],
                     days: catalog.trialDays,
-                    seats: paid.find((one) => one.id === "plus")?.seats ?? 10,
-                    hours: paid.find((one) => one.id === "plus")?.meetingHours ?? 30,
+                    seats: paid.find((one) => one.id === (catalog.trialPlan ?? "pro"))?.seats ?? 25,
+                    hours: paid.find((one) => one.id === (catalog.trialPlan ?? "pro"))?.meetingHours ?? 60,
                   })}
                 </p>
               ) : (

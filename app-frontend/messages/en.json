@@ -632,7 +632,7 @@
   "billing": {
     "current": "This office is on",
     "members": "{used} of {seats} members",
-    "freeNote": "Free, with every feature.",
+    "freeNote": "{hours} meeting hours a month, standard video.",
     "renews": "Renews on {date}",
     "ends": "Ends on {date}, then the free plan",
     "perMonth": "a month",
@@ -654,7 +654,6 @@
     "hours": "{used} of {allowance} h",
     "hoursResets": "Resets {date}",
     "hoursUsedUp": "This month's meeting hours are used: meetings are voice only until {date}. A bigger plan brings video back now.",
-    "hoursExplained": "Meeting hours count the time a meeting has two or more people in it. Calls between two people on the floor never count. Past them, meetings carry on with voice until the 1st.",
     "payment": "Payment",
     "cardUnknown": "Card on file with Creem",
     "update": "Update",
@@ -683,7 +682,6 @@
     "endingNote": "The plan ends on {date}. Keep it and nothing changes.",
     "seatsFree": "{count, plural, one {# seat free} other {# seats free}}",
     "seatsFull": "Every seat is taken",
-    "topPlan": "You're on our biggest plan. Need room for more than {count} people? Write to us and we'll set it up.",
     "usageOf": "{used} of {total}",
     "pillTrial": "Trial",
     "trialNote": "Your team is trying {plan} until {date}. After that the office is on Free, for up to {seats} people, unless you choose a plan.",
@@ -692,20 +690,25 @@
       "note": "Monthly, in US dollars, before tax",
       "current": "Current",
       "trial": "Trial",
-      "fits": "Fits your team",
       "perMonth": "a month",
-      "forever": "forever",
-      "perPerson": "{price} a person",
-      "noCard": "No card needed",
       "people": "Up to {count} people",
       "hours": "{count} meeting hours a month",
-      "everything": "Every feature",
       "keep": "Keep {plan}",
       "choose": "Choose {plan}",
       "upgrade": "Upgrade to {plan}",
       "moveTo": "Move to {plan}",
       "currentButton": "Current plan",
-      "tooSmall": "Holds {count}; this office has {members}"
+      "tooSmall": "Holds {count}; this office has {members}",
+      "best": "Best value",
+      "taglinePlus": "The essentials",
+      "taglinePro": "The full office, at its best",
+      "everythingIn": "Everything in {plan}, and",
+      "times": "{count}× Plus",
+      "hd": "HD video in meetings",
+      "sd": "Standard video",
+      "support": "Priority help from our team",
+      "included": "Included in your plan",
+      "upgradeTitle": "Upgrade"
     },
     "upgrade": {
       "fullTitle": "{office} is full",
@@ -719,7 +722,7 @@
       "membersOnly": "Only {office}'s admins can change its plan.",
       "doneTitle": "You're on {plan}",
       "doneBody": "Thanks. Your receipt is on its way from Creem.",
-      "doneLine": "Room for {people} people, and the meeting hours that come with it."
+      "doneLine": "Everything in {plan} is on for the whole office."
     },
     "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed.",
     "cancelWhen": "The plan runs until {date}. After that, the office is on Free.",
@@ -728,6 +731,7 @@
     "loseSeats": "Room drops from {seats} people to {free}.",
     "loseHours": "Meeting hours drop from {hours} to {free} a month; past them, meetings are voice only.",
     "loseNothing": "Nobody is removed and nothing is deleted.",
-    "downsell": "Or keep the team together on {plan}: {price} a month, for up to {seats} people."
+    "downsell": "Or keep the team together on {plan}: {price} a month, for up to {seats} people.",
+    "loseProPerks": "HD video and priority help stop."
   }
 }

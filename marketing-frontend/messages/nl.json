@@ -1584,25 +1584,28 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Begin gratis. Stap over als je team groeit.",
+      "body": "Begin gratis. Pro is het hele kantoor, voor een team van elke grootte.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
-      "people": "Tot {count} mensen",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "Om het met je team te proberen"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "De basis"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "Het hele kantoor, op z'n best"
       },
       "tax": "Prijzen per maand, exclusief btw.",
-      "perPerson": "{price} per persoon",
-      "freeLine": "Geen kaart nodig",
       "choose": "Kies {plan}",
-      "note": "Elk abonnement heeft alle functies. Gesprekken tellen nooit mee; groepsvergaderingen krijgen 5, 30 of 60 uur per maand."
+      "note": "Gesprekken tussen twee mensen tellen nooit mee. Elke prijs geldt voor het hele kantoor, niet per persoon.",
+      "best": "Beste waarde",
+      "perksStandard": "Standaardvideo · {hours} meetinguren per maand",
+      "perksPro": "HD-video · {hours} meetinguren · voorrang bij hulp"
     },
     "source": {
       "star": "Geef een ster op GitHub",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Prijzen: één prijs voor het hele kantoor",
-      "description": "TinyFloor is gratis tot 3 mensen. Plus kost $19 per maand voor 10 mensen en Pro $49 per maand voor 25, geprijsd per kantoor, niet per persoon."
+      "description": "TinyFloor is gratis om mee te beginnen. Plus kost $19 per maand; Pro, met HD-video, twee keer zoveel meetinguren en voorrang bij hulp, kost $49 per maand. Prijs per kantoor, niet per persoon."
     },
     "title": "Eén prijs voor het hele kantoor.",
     "muted": "Niet één per persoon.",
-    "body": "Begin gratis met maximaal 3 mensen en stap over als je team groeit.",
+    "body": "Begin gratis en ga naar Pro voor het hele kantoor: HD-video, twee keer zoveel meetingtijd en voorrang bij hulp.",
     "seats": {
       "title": "Tien mensen,",
       "muted": "één kleine rekening.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, voor het hele kantoor"
     },
     "table": {
-      "title": "Elk abonnement,",
-      "muted": "alle functies.",
+      "title": "Vergelijk abonnementen,",
+      "muted": "naast elkaar.",
       "people": "Mensen",
       "hours": "Vergaderuren per maand",
       "hoursNote": "Alleen groepsvergaderingen",
       "calls": "Gesprekken met z'n tweeën",
-      "callsNote": "Tellen nooit mee"
+      "callsNote": "Tellen nooit mee",
+      "video": "Video in meetings",
+      "standard": "Standaard",
+      "hd": "HD",
+      "support": "Voorrang bij hulp"
     },
     "notes": {
       "title": "Goed om te weten.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Btw bij het afrekenen",
         "body": "Prijzen zijn in Amerikaanse dollars. Creem, onze wederverkoper, rekent bij het betalen eventuele btw of omzetbelasting."
-      },
-      "bigger": {
-        "title": "Meer dan 25 mensen?",
-        "body": "Geef elk team een eigen kantoor, of mail {email} en we praten erover."
       }
     }
   },

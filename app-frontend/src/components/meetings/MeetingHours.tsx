@@ -79,11 +79,11 @@ export function MeetingUsageLine({ className }: { className?: string }) {
       </span>
       <span className="h-1 w-24 overflow-hidden rounded-full bg-muted" aria-hidden>
         <span
-          className={cn("block h-full rounded-full transition-[width] duration-700", usage.paused ? "bg-destructive" : nearly ? "bg-warn" : "bg-foreground/60")}
+          className={cn("block h-full rounded-full transition-[width] duration-700", usage.paused ? "bg-destructive" : nearly ? "bg-foreground" : "bg-foreground/60")}
           style={{ width: `${Math.max(usage.used > 0 ? 3 : 0, share * 100)}%` }}
         />
       </span>
-      <span className={cn(usage.paused ? "text-destructive" : nearly ? "text-warn" : "text-faint")}>
+      <span className={cn(usage.paused ? "text-destructive" : nearly ? "text-foreground" : "text-faint")}>
         {usage.paused
           ? usage.period === "day"
             ? t("pausedToday")

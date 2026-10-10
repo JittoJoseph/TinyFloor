@@ -632,7 +632,7 @@
   "billing": {
     "current": "Ce bureau est sur",
     "members": "{used} membres sur {seats}",
-    "freeNote": "Gratuit, avec toutes les fonctionnalités.",
+    "freeNote": "{hours} heures de réunion par mois, vidéo standard.",
     "renews": "Renouvellement le {date}",
     "ends": "Se termine le {date}, puis l'offre gratuite",
     "perMonth": "par mois",
@@ -654,7 +654,6 @@
     "hours": "{used} h sur {allowance} h",
     "hoursResets": "Remise à zéro le {date}",
     "hoursUsedUp": "Les heures de réunion du mois sont épuisées : les réunions sont en audio seul jusqu'au {date}. Une offre plus grande rétablit la vidéo tout de suite.",
-    "hoursExplained": "Les heures de réunion comptent le temps où une réunion réunit au moins deux personnes. Les appels à deux sur l'étage ne comptent jamais. Au-delà, les réunions continuent en audio jusqu'au 1er.",
     "payment": "Paiement",
     "cardUnknown": "Carte enregistrée chez Creem",
     "update": "Modifier",
@@ -683,7 +682,6 @@
     "endingNote": "L'offre se termine le {date}. Garde-la et rien ne change.",
     "seatsFree": "{count, plural, one {# place libre} other {# places libres}}",
     "seatsFull": "Toutes les places sont prises",
-    "topPlan": "Tu as notre plus grande offre. Besoin de place pour plus de {count} personnes ? Écris-nous et on s'en occupe.",
     "usageOf": "{used} sur {total}",
     "pillTrial": "Essai",
     "trialNote": "Ton équipe essaie {plan} jusqu'au {date}. Ensuite, le bureau passe à l'offre gratuite, jusqu'à {seats} personnes, sauf si tu choisis une offre.",
@@ -692,20 +690,25 @@
       "note": "Mensuel, en dollars américains, hors taxes",
       "current": "Actuelle",
       "trial": "Essai",
-      "fits": "Pour ton équipe",
       "perMonth": "par mois",
-      "forever": "pour toujours",
-      "perPerson": "{price} par personne",
-      "noCard": "Sans carte",
       "people": "Jusqu'à {count} personnes",
       "hours": "{count} heures de réunion par mois",
-      "everything": "Toutes les fonctionnalités",
       "keep": "Garder {plan}",
       "choose": "Choisir {plan}",
       "upgrade": "Passer à {plan}",
       "moveTo": "Passer à {plan}",
       "currentButton": "Offre actuelle",
-      "tooSmall": "Pour {count} ; le bureau en compte {members}"
+      "tooSmall": "Pour {count} ; le bureau en compte {members}",
+      "best": "Meilleure offre",
+      "taglinePlus": "L'essentiel",
+      "taglinePro": "Tout le bureau, à son meilleur",
+      "everythingIn": "Tout {plan}, et",
+      "times": "{count}× Plus",
+      "hd": "Vidéo HD en réunion",
+      "sd": "Vidéo standard",
+      "support": "Aide prioritaire de notre équipe",
+      "included": "Inclus dans votre offre",
+      "upgradeTitle": "Passer à l'offre supérieure"
     },
     "upgrade": {
       "fullTitle": "{office} est complet",
@@ -719,7 +722,7 @@
       "membersOnly": "Seuls les admins de {office} peuvent changer son offre.",
       "doneTitle": "Vous êtes sur {plan}",
       "doneBody": "Merci. Le reçu arrive de la part de Creem.",
-      "doneLine": "De la place pour {people} personnes, et les heures de réunion qui vont avec."
+      "doneLine": "Tout {plan} est activé pour tout le bureau."
     },
     "trialWaiting": "Invite plus de {free} personnes et toute ton équipe a {plan} gratuit pendant {days} jours. Sans carte.",
     "cancelWhen": "L'offre court jusqu'au {date}. Ensuite, le bureau passe à l'offre gratuite.",
@@ -728,6 +731,7 @@
     "loseSeats": "La place passe de {seats} personnes à {free}.",
     "loseHours": "Les heures de réunion passent de {hours} à {free} par mois ; au-delà, les réunions sont en audio seulement.",
     "loseNothing": "Personne n'est retiré et rien n'est supprimé.",
-    "downsell": "Ou garde l'équipe réunie sur {plan} : {price} par mois, jusqu'à {seats} personnes."
+    "downsell": "Ou garde l'équipe réunie sur {plan} : {price} par mois, jusqu'à {seats} personnes.",
+    "loseProPerks": "La vidéo HD et l'aide prioritaire s'arrêtent."
   }
 }

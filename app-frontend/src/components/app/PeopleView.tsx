@@ -26,6 +26,8 @@ import { Link } from "@/lib/i18n/navigation";
 import { withPostHog } from "@/lib/analytics";
 import { useUpgrade } from "@/components/billing/Upgrade";
 import { usePlans } from "@/lib/billing";
+import { PLAN_NAMES } from "@/components/billing/PlanCards";
+import type { PlanId } from "@/lib/api";
 
 /** Past this many people, the list gets a search box. */
 const SEARCH_FROM = 8;
@@ -122,6 +124,7 @@ function OfficePeople() {
             full={full}
             admin={admin}
             trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
+            trialPlan={plans?.trialPlan ?? null}
           />
         </div>
 
@@ -220,7 +223,21 @@ function OfficePeople() {
  * gets the way to more where plans are sold; a free office with its trial
  * still to give says the next person starts it.
  */
-function Seats({ used, seats, full, admin, trial }: { used: number; seats: number; full: boolean; admin: boolean; trial: number }) {
+function Seats({
+  used,
+  seats,
+  full,
+  admin,
+  trial,
+  trialPlan,
+}: {
+  used: number;
+  seats: number;
+  full: boolean;
+  admin: boolean;
+  trial: number;
+  trialPlan: PlanId | null;
+}) {
   const t = useTranslations("office.people");
   const tb = useTranslations("billing");
   const { open } = useUpgrade();
@@ -228,7 +245,7 @@ function Seats({ used, seats, full, admin, trial }: { used: number; seats: numbe
     <section className="rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
         <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
-        <p className={cn("text-[12px]", full ? "text-warn" : "text-muted-foreground")}>
+        <p className="text-[12px] text-muted-foreground">
           {full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}
         </p>
       </div>
@@ -245,8 +262,8 @@ function Seats({ used, seats, full, admin, trial }: { used: number; seats: numbe
         </div>
       )}
       {trial > 0 && (
-        <p className="mt-3 rounded-xl bg-brand/10 px-3 py-2 text-[12px] leading-relaxed text-foreground">
-          {tb("trialWaiting", { free: seats, plan: "Plus", days: trial })}
+        <p className="mt-3 rounded-xl bg-muted px-3 py-2 text-[12px] leading-relaxed text-foreground">
+          {tb("trialWaiting", { free: seats, plan: PLAN_NAMES[trialPlan ?? "pro"], days: trial })}
         </p>
       )}
       {full && admin && open && (

@@ -85,6 +85,7 @@ export function chooseStage({
   mode,
   previous,
   pin = null,
+  hd = false,
   now = Date.now(),
 }: {
   /** Everyone else in the meeting, in the order they came. */
@@ -96,6 +97,8 @@ export function chooseStage({
   mode: StageMode;
   previous: Stage;
   pin?: Pin | null;
+  /** HD video, a Pro plan's: the big card's camera at its sharpest. Without it, the middle layer. */
+  hd?: boolean;
   now?: number;
 }): Stage {
   if (!peers.length) return { ...EMPTY_STAGE, pinned: null };
@@ -158,7 +161,7 @@ export function chooseStage({
   // Out of sight, the stage is still worked out, for coming back to; only the video stops.
   if (mode === "hidden") return { focus, focusSince: sameFocus ? previous.focusSince : now, side, more, pinned, videos, recheckIn };
   if (focus.kind === "screen") videos.push({ userId: focus.id, kind: "screen", quality: quality.screen });
-  else if (camera.has(focus.id)) videos.push({ userId: focus.id, kind: "camera", quality: quality.focus });
+  else if (camera.has(focus.id)) videos.push({ userId: focus.id, kind: "camera", quality: quality.focus === "high" && !hd ? "medium" : quality.focus });
   for (const id of side) if (camera.has(id)) videos.push({ userId: id, kind: "camera", quality: "low" });
 
   return { focus, focusSince: sameFocus ? previous.focusSince : now, side, more, pinned, videos, recheckIn };

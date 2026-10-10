@@ -53,7 +53,8 @@ const HISTORY = 24;
  * on sale. 0 turns it off.
  */
 export const TRIAL_DAYS = 14;
-const TRIAL_PLAN: PaidPlan = "plus";
+/** The trial is the top plan: a team that has had everything is a team that keeps it (docs/22). */
+const TRIAL_PLAN: PaidPlan = "pro";
 const DAY = 24 * 60 * 60 * 1000;
 
 type ProductIds = Partial<Record<PaidPlan, string>>;
@@ -532,7 +533,12 @@ export function billingRoutes(router: Router): void {
     // The plans, with prices and hours, and whether they're on sale here.
     .add("GET", "/v1/plans", async ({ env }) => {
       const billing = config(env);
-      return json({ plans: PLANS, billing: billing ? { mode: billing.mode } : null, trialDays: billing ? TRIAL_DAYS : 0 });
+      return json({
+        plans: PLANS,
+        billing: billing ? { mode: billing.mode } : null,
+        trialDays: billing ? TRIAL_DAYS : 0,
+        trialPlan: billing && TRIAL_DAYS ? TRIAL_PLAN : null,
+      });
     })
 
     .add("GET", "/v1/offices/:id/billing", async ({ request, env, ctx, params }) => {

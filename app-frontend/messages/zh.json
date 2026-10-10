@@ -632,7 +632,7 @@
   "billing": {
     "current": "此办公室当前方案",
     "members": "{used}/{seats} 名成员",
-    "freeNote": "免费，包含全部功能。",
+    "freeNote": "每月 {hours} 小时会议，标准画质视频。",
     "renews": "{date} 续订",
     "ends": "{date} 结束，之后为免费方案",
     "perMonth": "/月",
@@ -654,7 +654,6 @@
     "hours": "{used} / {allowance} 小时",
     "hoursResets": "{date} 重置",
     "hoursUsedUp": "本月会议时长已用完：{date} 前会议仅限语音。升级方案可立即恢复视频。",
-    "hoursExplained": "会议时长计算会议中有两人或以上的时间。楼层上的两人通话从不计入。用完后，会议将以语音继续，直到下月 1 日。",
     "payment": "付款",
     "cardUnknown": "已在 Creem 保存的卡",
     "update": "更新",
@@ -683,7 +682,6 @@
     "endingNote": "方案将于 {date} 结束。保留它，一切照旧。",
     "seatsFree": "还有 {count} 个空位",
     "seatsFull": "座位已满",
-    "topPlan": "你已在使用最大的方案。需要容纳超过 {count} 人？联系我们，我们来安排。",
     "usageOf": "{used} / {total}",
     "pillTrial": "试用",
     "trialNote": "你的团队正在试用 {plan}，到 {date} 为止。之后，除非选择套餐，办公室会转为免费版，最多 {seats} 人。",
@@ -692,20 +690,25 @@
       "note": "按月计费，美元，不含税",
       "current": "当前",
       "trial": "试用",
-      "fits": "适合你的团队",
       "perMonth": "/月",
-      "forever": "永久",
-      "perPerson": "每人 {price}",
-      "noCard": "无需绑卡",
       "people": "最多 {count} 人",
       "hours": "每月 {count} 小时会议",
-      "everything": "全部功能",
       "keep": "保留 {plan}",
       "choose": "选择 {plan}",
       "upgrade": "升级到 {plan}",
       "moveTo": "换到 {plan}",
       "currentButton": "当前套餐",
-      "tooSmall": "可容纳 {count} 人；办公室有 {members} 人"
+      "tooSmall": "可容纳 {count} 人；办公室有 {members} 人",
+      "best": "最超值",
+      "taglinePlus": "基础必备",
+      "taglinePro": "完整的办公室，最佳状态",
+      "everythingIn": "{plan} 的全部功能，以及",
+      "times": "Plus 的 {count} 倍",
+      "hd": "会议高清视频",
+      "sd": "标准画质视频",
+      "support": "团队优先支持",
+      "included": "你的方案包含",
+      "upgradeTitle": "升级"
     },
     "upgrade": {
       "fullTitle": "{office} 已满",
@@ -719,7 +722,7 @@
       "membersOnly": "只有 {office} 的管理员可以更改套餐。",
       "doneTitle": "已切换到 {plan}",
       "doneBody": "谢谢。Creem 会发送收据给你。",
-      "doneLine": "可容纳 {people} 人，以及随之而来的会议时长。"
+      "doneLine": "{plan} 的全部功能已为整个办公室开启。"
     },
     "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
     "cancelWhen": "套餐有效期至 {date}，之后办公室转为免费版。",
@@ -728,6 +731,7 @@
     "loseSeats": "名额从 {seats} 人降到 {free} 人。",
     "loseHours": "会议时长从每月 {hours} 小时降到 {free} 小时，超出后会议只能语音。",
     "loseNothing": "不会移除任何人，也不会删除任何内容。",
-    "downsell": "或者用 {plan} 留住整个团队：每月 {price}，最多 {seats} 人。"
+    "downsell": "或者用 {plan} 留住整个团队：每月 {price}，最多 {seats} 人。",
+    "loseProPerks": "高清视频和优先支持将停止。"
   }
 }

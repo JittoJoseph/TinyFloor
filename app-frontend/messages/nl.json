@@ -632,7 +632,7 @@
   "billing": {
     "current": "Dit kantoor zit op",
     "members": "{used} van {seats} leden",
-    "freeNote": "Gratis, met alle functies.",
+    "freeNote": "{hours} meetinguren per maand, standaardvideo.",
     "renews": "Verlengt op {date}",
     "ends": "Eindigt op {date}, daarna het gratis abonnement",
     "perMonth": "per maand",
@@ -654,7 +654,6 @@
     "hours": "{used} van {allowance} u",
     "hoursResets": "Begint opnieuw op {date}",
     "hoursUsedUp": "De vergaderuren van deze maand zijn op: vergaderingen zijn tot {date} alleen met geluid. Een groter abonnement brengt video meteen terug.",
-    "hoursExplained": "Vergaderuren tellen de tijd dat er twee of meer mensen in een vergadering zijn. Gesprekken met z'n tweeën op de vloer tellen nooit mee. Zijn ze op, dan gaan vergaderingen tot de 1e verder met geluid.",
     "payment": "Betaling",
     "cardUnknown": "Kaart opgeslagen bij Creem",
     "update": "Wijzigen",
@@ -683,7 +682,6 @@
     "endingNote": "Het abonnement stopt op {date}. Houd het en er verandert niets.",
     "seatsFree": "{count, plural, one {# plek vrij} other {# plekken vrij}}",
     "seatsFull": "Alle plekken zijn bezet",
-    "topPlan": "Je zit op ons grootste abonnement. Ruimte nodig voor meer dan {count} mensen? Schrijf ons, dan regelen we het.",
     "usageOf": "{used} van {total}",
     "pillTrial": "Proef",
     "trialNote": "Je team probeert {plan} tot {date}. Daarna staat het kantoor op Gratis, voor tot {seats} mensen, tenzij je een abonnement kiest.",
@@ -692,20 +690,25 @@
       "note": "Per maand, in Amerikaanse dollars, exclusief btw",
       "current": "Huidig",
       "trial": "Proef",
-      "fits": "Past bij je team",
       "perMonth": "per maand",
-      "forever": "voor altijd",
-      "perPerson": "{price} per persoon",
-      "noCard": "Geen kaart nodig",
       "people": "Tot {count} mensen",
       "hours": "{count} vergaderuren per maand",
-      "everything": "Alle functies",
       "keep": "{plan} houden",
       "choose": "{plan} kiezen",
       "upgrade": "Upgraden naar {plan}",
       "moveTo": "Naar {plan}",
       "currentButton": "Huidig abonnement",
-      "tooSmall": "Voor {count}; het kantoor heeft {members}"
+      "tooSmall": "Voor {count}; het kantoor heeft {members}",
+      "best": "Beste waarde",
+      "taglinePlus": "De basis",
+      "taglinePro": "Het hele kantoor, op z'n best",
+      "everythingIn": "Alles uit {plan}, en",
+      "times": "{count}× Plus",
+      "hd": "HD-video in meetings",
+      "sd": "Standaardvideo",
+      "support": "Voorrang bij hulp van ons team",
+      "included": "Inbegrepen in je abonnement",
+      "upgradeTitle": "Upgraden"
     },
     "upgrade": {
       "fullTitle": "{office} is vol",
@@ -719,7 +722,7 @@
       "membersOnly": "Alleen de beheerders van {office} kunnen het abonnement wijzigen.",
       "doneTitle": "Jullie zitten op {plan}",
       "doneBody": "Bedankt. Het bonnetje komt eraan van Creem.",
-      "doneLine": "Ruimte voor {people} mensen, met de vergaderuren die erbij horen."
+      "doneLine": "Alles uit {plan} staat aan voor het hele kantoor."
     },
     "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig.",
     "cancelWhen": "Het abonnement loopt tot {date}. Daarna staat het kantoor op Gratis.",
@@ -728,6 +731,7 @@
     "loseSeats": "Plek voor {free} in plaats van {seats} mensen.",
     "loseHours": "Vergaderuren gaan van {hours} naar {free} per maand; daarna zijn vergaderingen alleen met geluid.",
     "loseNothing": "Niemand wordt verwijderd en er wordt niets gewist.",
-    "downsell": "Of houd het team bij elkaar op {plan}: {price} per maand, voor tot {seats} mensen."
+    "downsell": "Of houd het team bij elkaar op {plan}: {price} per maand, voor tot {seats} mensen.",
+    "loseProPerks": "HD-video en voorrang bij hulp stoppen."
   }
 }

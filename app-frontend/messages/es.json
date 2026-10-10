@@ -632,7 +632,7 @@
   "billing": {
     "current": "Esta oficina está en",
     "members": "{used} de {seats} miembros",
-    "freeNote": "Gratis, con todas las funciones.",
+    "freeNote": "{hours} horas de reunión al mes, vídeo estándar.",
     "renews": "Se renueva el {date}",
     "ends": "Termina el {date}, y luego el plan gratuito",
     "perMonth": "al mes",
@@ -654,7 +654,6 @@
     "hours": "{used} de {allowance} h",
     "hoursResets": "Se reinicia el {date}",
     "hoursUsedUp": "Las horas de reunión de este mes se han agotado: las reuniones son solo de voz hasta el {date}. Un plan mayor recupera el vídeo ya.",
-    "hoursExplained": "Las horas de reunión cuentan el tiempo en que una reunión tiene dos o más personas. Las llamadas entre dos personas en la planta nunca cuentan. Después, las reuniones siguen con voz hasta el día 1.",
     "payment": "Pago",
     "cardUnknown": "Tarjeta guardada en Creem",
     "update": "Cambiar",
@@ -683,7 +682,6 @@
     "endingNote": "El plan termina el {date}. Mantenlo y nada cambia.",
     "seatsFree": "{count, plural, one {# sitio libre} other {# sitios libres}}",
     "seatsFull": "Todos los sitios están ocupados",
-    "topPlan": "Tienes nuestro plan más grande. ¿Necesitas sitio para más de {count} personas? Escríbenos y lo preparamos.",
     "usageOf": "{used} de {total}",
     "pillTrial": "Prueba",
     "trialNote": "Tu equipo está probando {plan} hasta el {date}. Después, la oficina pasa a Gratis, para hasta {seats} personas, salvo que elijas un plan.",
@@ -692,20 +690,25 @@
       "note": "Mensual, en dólares estadounidenses, sin impuestos",
       "current": "Actual",
       "trial": "Prueba",
-      "fits": "Para tu equipo",
       "perMonth": "al mes",
-      "forever": "para siempre",
-      "perPerson": "{price} por persona",
-      "noCard": "Sin tarjeta",
       "people": "Hasta {count} personas",
       "hours": "{count} horas de reunión al mes",
-      "everything": "Todas las funciones",
       "keep": "Quedarme con {plan}",
       "choose": "Elegir {plan}",
       "upgrade": "Pasar a {plan}",
       "moveTo": "Cambiar a {plan}",
       "currentButton": "Plan actual",
-      "tooSmall": "Para {count}; la oficina tiene {members}"
+      "tooSmall": "Para {count}; la oficina tiene {members}",
+      "best": "El mejor valor",
+      "taglinePlus": "Lo esencial",
+      "taglinePro": "La oficina completa, en su mejor versión",
+      "everythingIn": "Todo lo de {plan}, y",
+      "times": "{count}× Plus",
+      "hd": "Vídeo HD en las reuniones",
+      "sd": "Vídeo estándar",
+      "support": "Ayuda prioritaria de nuestro equipo",
+      "included": "Incluido en tu plan",
+      "upgradeTitle": "Mejorar"
     },
     "upgrade": {
       "fullTitle": "{office} está lleno",
@@ -719,7 +722,7 @@
       "membersOnly": "Solo quienes administran {office} pueden cambiar su plan.",
       "doneTitle": "Ya estás en {plan}",
       "doneBody": "Gracias. El recibo te llegará de Creem.",
-      "doneLine": "Sitio para {people} personas, y las horas de reunión que vienen con él."
+      "doneLine": "Todo lo de {plan} está activo para toda la oficina."
     },
     "trialWaiting": "Invita a más de {free} personas y todo tu equipo tendrá {plan} gratis durante {days} días. Sin tarjeta.",
     "cancelWhen": "El plan sigue hasta el {date}. Después, la oficina pasa a Gratis.",
@@ -728,6 +731,7 @@
     "loseSeats": "El espacio baja de {seats} personas a {free}.",
     "loseHours": "Las horas de reunión bajan de {hours} a {free} al mes; pasadas, las reuniones son solo de voz.",
     "loseNothing": "No se quita a nadie ni se borra nada.",
-    "downsell": "O mantén al equipo junto en {plan}: {price} al mes, para hasta {seats} personas."
+    "downsell": "O mantén al equipo junto en {plan}: {price} al mes, para hasta {seats} personas.",
+    "loseProPerks": "Se acaban el vídeo HD y la ayuda prioritaria."
   }
 }

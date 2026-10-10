@@ -247,6 +247,8 @@ export interface Plans {
   billing: { mode: "test" | "live" } | null;
   /** How long the team trial runs where plans are on sale; 0 where there's none (docs/22). */
   trialDays: number;
+  /** The plan the team trial gives, where there is one. */
+  trialPlan: PlanId | null;
 }
 
 /** An office's plan, as its admins see it in settings. */

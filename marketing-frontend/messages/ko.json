@@ -1584,25 +1584,28 @@
       "eyebrow": "요금",
       "title": "요금은 오피스 단위,",
       "muted": "사람 단위가 아닙니다.",
-      "body": "무료로 시작하고, 팀이 커지면 올리세요.",
+      "body": "무료로 시작하세요. Pro는 어떤 규모의 팀에도 오피스의 모든 것.",
       "soon": "출시 예정",
       "forever": "평생",
       "month": "/월",
-      "people": "최대 {count}명",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "팀과 함께 써 보기"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "필수 기능"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "오피스의 모든 것, 최고의 상태로"
       },
       "tax": "가격은 월 요금이며 세금 별도입니다.",
-      "perPerson": "1인당 {price}",
-      "freeLine": "카드 불필요",
       "choose": "{plan} 선택",
-      "note": "모든 요금제에 모든 기능이 있어요. 통화는 세지 않고, 그룹 회의는 월 5·30·60시간이에요."
+      "note": "두 사람 간 통화는 세지 않아요. 모든 가격은 1인당이 아닌 오피스 전체 기준이에요.",
+      "best": "가장 좋은 가치",
+      "perksStandard": "표준 화질 영상 · 매달 회의 {hours}시간",
+      "perksPro": "HD 영상 · 회의 {hours}시간 · 우선 지원"
     },
     "source": {
       "star": "GitHub에서 스타 주기",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "요금: 오피스 전체에 하나의 가격",
-      "description": "TinyFloor는 3명까지 무료예요. Plus는 10명에 월 $19, Pro는 25명에 월 $49이고, 요금은 사람이 아니라 오피스 단위예요."
+      "description": "TinyFloor는 무료로 시작할 수 있어요. Plus는 월 19달러, HD 영상과 두 배의 회의 시간, 우선 지원이 있는 Pro는 월 49달러예요. 1인당이 아닌 오피스 단위 가격이에요."
     },
     "title": "오피스 전체에 하나의 가격.",
     "muted": "사람마다가 아니라요.",
-    "body": "3명까지는 무료로 시작하고, 팀이 커지면 올리세요.",
+    "body": "무료로 시작하고, 오피스의 모든 것은 Pro로: HD 영상, 두 배의 회의 시간, 우선 지원.",
     "seats": {
       "title": "10명이어도,",
       "muted": "작은 청구서 하나.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, 오피스 전체"
     },
     "table": {
-      "title": "모든 요금제에",
-      "muted": "모든 기능이.",
+      "title": "플랜 비교,",
+      "muted": "나란히.",
       "people": "인원",
       "hours": "월 회의 시간",
       "hoursNote": "그룹 회의만",
       "calls": "두 사람 간 통화",
-      "callsNote": "시간에 포함되지 않아요"
+      "callsNote": "시간에 포함되지 않아요",
+      "video": "회의 영상",
+      "standard": "표준",
+      "hd": "HD",
+      "support": "우선 지원"
     },
     "notes": {
       "title": "알아 두면 좋아요.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "세금은 결제 시",
         "body": "가격은 미국 달러 기준이에요. 판매 대행사인 Creem이 결제할 때 판매세나 부가세를 더해요."
-      },
-      "bigger": {
-        "title": "25명이 넘나요?",
-        "body": "팀마다 오피스를 따로 두거나, {email}로 연락 주세요."
       }
     }
   },

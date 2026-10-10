@@ -233,6 +233,8 @@ class CallManager {
   private stage: Stage = EMPTY_STAGE;
   /** Who we are on this floor, to leave ourselves off the stage. */
   private selfId: string | null = null;
+  /** HD video in meetings: the office's plan has it (Pro). */
+  private hd = false;
   private stageTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
   /** What you pinned on the stage, if anything. */
@@ -585,7 +587,7 @@ class CallManager {
           .sort((a, b) => a.since - b.since)
           .map((member) => ({ id: member.id, cameraOn: !!media.get(member.id)?.cameraOn, screen: !!media.get(member.id)?.screen }))
       : sfu.peerList;
-    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin });
+    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin, hd: this.hd });
     // A change of speaker waiting out its pause: look again then, if nothing else does first.
     clearTimeout(this.stageTimer);
     if (stage.recheckIn !== null) this.stageTimer = setTimeout(() => this.refreshStage(), stage.recheckIn);
@@ -657,6 +659,13 @@ class CallManager {
   private listenForVoice() {
     const track = this.meeting && this.micEnabled && this.sfu && !this.sfu.alone ? (this.local?.getAudioTracks()[0] ?? null) : null;
     this.voice.listen(track);
+  }
+
+  /** Whether meetings here get HD video, from the place's plan (docs/22). */
+  setHd(hd: boolean) {
+    if (hd === this.hd) return;
+    this.hd = hd;
+    this.refreshStage();
   }
 
   /** Who we are on the floor, told when the room welcomes us. */

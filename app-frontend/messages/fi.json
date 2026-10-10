@@ -632,7 +632,7 @@
   "billing": {
     "current": "Tämän toimiston paketti",
     "members": "{used}/{seats} jäsentä",
-    "freeNote": "Ilmainen, kaikilla ominaisuuksilla.",
+    "freeNote": "{hours} kokoustuntia kuukaudessa, tavallinen video.",
     "renews": "Uusiutuu {date}",
     "ends": "Päättyy {date}, sitten ilmainen paketti",
     "perMonth": "kuukaudessa",
@@ -654,7 +654,6 @@
     "hours": "{used}/{allowance} h",
     "hoursResets": "Nollautuu {date}",
     "hoursUsedUp": "Tämän kuun kokoustunnit on käytetty: kokoukset ovat vain äänellä {date} asti. Isompi paketti tuo videon takaisin heti.",
-    "hoursExplained": "Kokoustunnit laskevat ajan, jolloin kokouksessa on kaksi tai useampi ihminen. Kahden hengen puhelut kerroksessa eivät koskaan laske. Kun tunnit loppuvat, kokoukset jatkuvat äänellä kuun 1. päivään asti.",
     "payment": "Maksu",
     "cardUnknown": "Kortti tallennettu Creemiin",
     "update": "Päivitä",
@@ -683,7 +682,6 @@
     "endingNote": "Paketti päättyy {date}. Pidä se, niin mikään ei muutu.",
     "seatsFree": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}",
     "seatsFull": "Kaikki paikat on varattu",
-    "topPlan": "Sinulla on suurin pakettimme. Tarvitsetko tilaa yli {count} hengelle? Kirjoita meille, niin järjestämme sen.",
     "usageOf": "{used}/{total}",
     "pillTrial": "Kokeilu",
     "trialNote": "Tiimisi kokeilee {plan}-pakettia {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa, enintään {seats} hengelle, ellet valitse pakettia.",
@@ -692,20 +690,25 @@
       "note": "Kuukausittain, Yhdysvaltain dollareina, ilman veroja",
       "current": "Nykyinen",
       "trial": "Kokeilu",
-      "fits": "Sopii tiimillenne",
       "perMonth": "kuukaudessa",
-      "forever": "aina",
-      "perPerson": "{price} hengeltä",
-      "noCard": "Korttia ei tarvita",
       "people": "Enintään {count} henkeä",
       "hours": "{count} kokoustuntia kuukaudessa",
-      "everything": "Kaikki ominaisuudet",
       "keep": "Pidä {plan}",
       "choose": "Valitse {plan}",
       "upgrade": "Päivitä {plan}-pakettiin",
       "moveTo": "Vaihda {plan}-pakettiin",
       "currentButton": "Nykyinen paketti",
-      "tooSmall": "Tilaa {count}; toimistossa on {members}"
+      "tooSmall": "Tilaa {count}; toimistossa on {members}",
+      "best": "Paras vastine",
+      "taglinePlus": "Olennainen",
+      "taglinePro": "Koko toimisto parhaimmillaan",
+      "everythingIn": "Kaikki {plan}-paketista, ja",
+      "times": "{count}× Plus",
+      "hd": "HD-video kokouksissa",
+      "sd": "Tavallinen video",
+      "support": "Ensisijainen apu tiimiltämme",
+      "included": "Sisältyy pakettiisi",
+      "upgradeTitle": "Päivitä"
     },
     "upgrade": {
       "fullTitle": "{office} on täynnä",
@@ -719,7 +722,7 @@
       "membersOnly": "Vain {office}-toimiston ylläpitäjät voivat vaihtaa pakettia.",
       "doneTitle": "Olette nyt {plan}-paketissa",
       "doneBody": "Kiitos. Kuitti tulee Creemiltä.",
-      "doneLine": "Tilaa {people} hengelle ja niihin kuuluvat kokoustunnit."
+      "doneLine": "Kaikki {plan}-paketin ominaisuudet ovat käytössä koko toimistolla."
     },
     "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
     "cancelWhen": "Paketti on voimassa {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa.",
@@ -728,6 +731,7 @@
     "loseSeats": "Tilaa {seats} hengen sijaan {free}.",
     "loseHours": "Kokoustunnit putoavat {hours}:stä {free}:een kuukaudessa; sen jälkeen kokoukset ovat vain äänellä.",
     "loseNothing": "Ketään ei poisteta eikä mitään hävitetä.",
-    "downsell": "Tai pidä tiimi koossa {plan}-paketilla: {price} kuukaudessa, enintään {seats} hengelle."
+    "downsell": "Tai pidä tiimi koossa {plan}-paketilla: {price} kuukaudessa, enintään {seats} hengelle.",
+    "loseProPerks": "HD-video ja ensisijainen apu loppuvat."
   }
 }

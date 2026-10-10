@@ -632,7 +632,7 @@
   "billing": {
     "current": "이 오피스의 요금제",
     "members": "멤버 {used}/{seats}명",
-    "freeNote": "무료, 모든 기능 포함.",
+    "freeNote": "매달 회의 {hours}시간, 표준 화질 영상.",
     "renews": "{date}에 갱신",
     "ends": "{date}에 종료되고 이후 무료 요금제",
     "perMonth": "/월",
@@ -654,7 +654,6 @@
     "hours": "{used} / {allowance}시간",
     "hoursResets": "{date}에 초기화",
     "hoursUsedUp": "이번 달 회의 시간을 모두 사용했어요. {date}까지 회의는 음성으로만 진행돼요. 더 큰 요금제로 바꾸면 바로 영상이 돌아와요.",
-    "hoursExplained": "회의 시간은 회의에 두 명 이상이 있는 시간을 셉니다. 층에서 두 사람이 하는 통화는 세지 않아요. 다 쓰면 1일까지 회의는 음성으로 이어져요.",
     "payment": "결제",
     "cardUnknown": "Creem에 등록된 카드",
     "update": "변경",
@@ -683,7 +682,6 @@
     "endingNote": "요금제가 {date}에 끝나요. 유지하면 아무것도 바뀌지 않아요.",
     "seatsFree": "{count}자리 남음",
     "seatsFull": "자리가 모두 찼어요",
-    "topPlan": "가장 큰 요금제를 쓰고 있어요. {count}명보다 많이 필요하면 연락 주세요. 준비해 드릴게요.",
     "usageOf": "{used} / {total}",
     "pillTrial": "체험",
     "trialNote": "팀이 {date}까지 {plan}을 체험하고 있어요. 그 후에는 요금제를 고르지 않으면 오피스가 무료 요금제(최대 {seats}명)로 바뀌어요.",
@@ -692,20 +690,25 @@
       "note": "월 요금, 미국 달러, 세금 별도",
       "current": "현재",
       "trial": "체험",
-      "fits": "팀에 맞음",
       "perMonth": "/월",
-      "forever": "평생",
-      "perPerson": "1인당 {price}",
-      "noCard": "카드 필요 없음",
       "people": "최대 {count}명",
       "hours": "회의 월 {count}시간",
-      "everything": "모든 기능",
       "keep": "{plan} 계속 쓰기",
       "choose": "{plan} 선택",
       "upgrade": "{plan}으로 업그레이드",
       "moveTo": "{plan}으로 변경",
       "currentButton": "현재 요금제",
-      "tooSmall": "{count}명까지; 이 오피스는 {members}명"
+      "tooSmall": "{count}명까지; 이 오피스는 {members}명",
+      "best": "가장 좋은 가치",
+      "taglinePlus": "필수 기능",
+      "taglinePro": "오피스의 모든 것, 최고의 상태로",
+      "everythingIn": "{plan}의 모든 기능, 그리고",
+      "times": "Plus의 {count}배",
+      "hd": "회의 중 HD 영상",
+      "sd": "표준 화질 영상",
+      "support": "팀의 우선 지원",
+      "included": "플랜에 포함된 것",
+      "upgradeTitle": "업그레이드"
     },
     "upgrade": {
       "fullTitle": "{office}이(가) 꽉 찼어요",
@@ -719,7 +722,7 @@
       "membersOnly": "{office}의 요금제는 관리자만 바꿀 수 있어요.",
       "doneTitle": "이제 {plan}이에요",
       "doneBody": "감사합니다. Creem에서 영수증을 보내드려요.",
-      "doneLine": "{people}명을 위한 자리와 함께 오는 회의 시간."
+      "doneLine": "{plan}의 모든 기능이 오피스 전체에 켜졌어요."
     },
     "trialWaiting": "{free}명보다 많이 초대하면 팀 전체가 {days}일 동안 {plan}을 무료로 써요. 카드는 필요 없어요.",
     "cancelWhen": "요금제는 {date}까지 유지되고, 그 후 오피스는 무료 요금제가 돼요.",
@@ -728,6 +731,7 @@
     "loseSeats": "자리가 {seats}명에서 {free}명으로 줄어요.",
     "loseHours": "회의 시간이 월 {hours}시간에서 {free}시간으로 줄고, 넘으면 음성으로만 회의해요.",
     "loseNothing": "아무도 제거되지 않고 아무것도 삭제되지 않아요.",
-    "downsell": "아니면 {plan}으로 팀을 그대로 유지하세요: 월 {price}, 최대 {seats}명."
+    "downsell": "아니면 {plan}으로 팀을 그대로 유지하세요: 월 {price}, 최대 {seats}명.",
+    "loseProPerks": "HD 영상과 우선 지원이 중단돼요."
   }
 }

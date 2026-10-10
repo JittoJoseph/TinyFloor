@@ -8,7 +8,7 @@ import { usePlans } from "@/lib/billing";
 import { Button } from "@/components/motion/button/base";
 import { Dialog } from "@/components/ui/Dialog";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
-import { PLAN_NAMES, PlanCards, planThatFits, type PlanMove } from "./PlanCards";
+import { PLAN_NAMES, PlanCards, plansOnOffer, type PlanMove } from "./PlanCards";
 import { usePlanChange } from "./usePlanChange";
 
 /** What brought them to the plans: the office is full, the hours are (nearly) used, the trial is ending, or just looking. */
@@ -87,14 +87,7 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const subscribed = !!billing?.subscription;
   const trialEndsAt = billing?.trial?.endsAt ?? office.trialEndsAt ?? null;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
-  const suggested =
-    reason === "full"
-      ? planThatFits(plans, current, { people: members + 1 })
-      : reason === "hours"
-        ? planThatFits(plans, current, { hours: true })
-        : reason === "trial"
-          ? current
-          : null;
+  const offer = plansOnOffer(plans, subscribed ? current : null);
 
   const title =
     reason === "full"
@@ -162,19 +155,18 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
       ) : done ? (
         <p className="flex items-center gap-2 py-2 text-[13.5px] text-foreground">
           <Check className="size-4 text-ok" />
-          {t("doneLine", { people: office.seats })}
+          {t("doneLine", { plan: PLAN_NAMES[current] })}
         </p>
       ) : asking ? (
         <p className="text-[13.5px] leading-relaxed text-muted-foreground">{tb("switchBody")}</p>
       ) : (
         <>
           <PlanCards
-            plans={plans}
+            plans={offer}
             current={current}
             subscribed={subscribed}
             members={members}
             trialEndsAt={trialEndsAt}
-            suggested={suggested}
             busy={change.busy}
             canChange={admin}
             onChoose={choose}

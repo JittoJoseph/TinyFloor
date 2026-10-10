@@ -1584,25 +1584,28 @@
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
       "muted": "not by the person.",
-      "body": "Start free. Move up when your team grows.",
+      "body": "Start free. Pro is the full office, for a team of any size.",
       "soon": "Coming soon",
       "forever": "forever",
       "month": "a month",
-      "people": "Up to {count} people",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "To try it with your team"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "The essentials"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "The full office, at its best"
       },
       "tax": "Prices are monthly and don't include tax.",
-      "perPerson": "{price} a person",
-      "freeLine": "No card needed",
       "choose": "Choose {plan}",
-      "note": "Every plan has every feature. Calls are never counted; group meetings get 5, 30 or 60 hours a month."
+      "note": "Calls between two people are never counted. Every price is for the whole office, not per person.",
+      "best": "Best value",
+      "perksStandard": "Standard video · {hours} meeting hours a month",
+      "perksPro": "HD video · {hours} meeting hours · priority help"
     },
     "source": {
       "star": "Star on GitHub",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Pricing: One Price for the Whole Office",
-      "description": "TinyFloor is free for up to 3 people. Plus is $19 a month for 10 people and Pro is $49 a month for 25, priced by the office, not the person."
+      "description": "TinyFloor is free to start. Plus is $19 a month; Pro, with HD video, twice the meeting hours and priority help, is $49 a month. Priced by the office, not the person."
     },
     "title": "One price for the whole office.",
     "muted": "Not one per person.",
-    "body": "Start free with up to 3 people, and move up when your team grows.",
+    "body": "Start free, and go Pro for the full office: HD video, twice the meeting time and priority help.",
     "seats": {
       "title": "Ten people,",
       "muted": "one small bill.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, for the whole office"
     },
     "table": {
-      "title": "Every plan,",
-      "muted": "every feature.",
+      "title": "Compare plans,",
+      "muted": "side by side.",
       "people": "People",
       "hours": "Meeting hours a month",
       "hoursNote": "Group meetings only",
       "calls": "Calls between two people",
-      "callsNote": "Never counted"
+      "callsNote": "Never counted",
+      "video": "Video in meetings",
+      "standard": "Standard",
+      "hd": "HD",
+      "support": "Priority help"
     },
     "notes": {
       "title": "Good to know.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Tax at checkout",
         "body": "Prices are in US dollars. Creem, our reseller, adds any sales tax or VAT when you pay."
-      },
-      "bigger": {
-        "title": "More than 25 people?",
-        "body": "Give each team an office of its own, or write to {email} and we'll talk."
       }
     }
   },

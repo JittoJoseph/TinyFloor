@@ -118,7 +118,7 @@ export async function llmsFullTxt(): Promise<string> {
 
   const plans = () => {
     const name = (key: string) => key[0].toUpperCase() + key.slice(1);
-    const notes = ["cancel", "refund", "change", "hours", "tax", "bigger"] as const;
+    const notes = ["cancel", "refund", "change", "hours", "tax"] as const;
     return [
       "## Plans",
       "",
@@ -129,6 +129,8 @@ export async function llmsFullTxt(): Promise<string> {
       `| Price | ${PLANS.map((plan) => (plan.price ? `$${plan.price} a month` : "Free")).join(" | ")} |`,
       `| ${text("pricingPage.table.people")} | ${PLANS.map((plan) => `Up to ${plan.people}`).join(" | ")} |`,
       `| ${text("pricingPage.table.hours")} (${text("pricingPage.table.hoursNote").toLowerCase()}) | ${PLANS.map((plan) => plan.hours).join(" | ")} |`,
+      `| ${text("pricingPage.table.video")} | ${PLANS.map((plan) => text(plan.hd ? "pricingPage.table.hd" : "pricingPage.table.standard")).join(" | ")} |`,
+      `| ${text("pricingPage.table.support")} | ${PLANS.map((plan) => (plan.hd ? "Yes" : "No")).join(" | ")} |`,
       `| ${text("pricingPage.table.calls")} | ${PLANS.map(() => text("pricingPage.table.callsNote")).join(" | ")} |`,
       "",
       `${plain(text("pricingPage.table.title"))} ${plain(text("pricingPage.table.muted"))}`,

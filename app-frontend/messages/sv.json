@@ -632,7 +632,7 @@
   "billing": {
     "current": "Det här kontoret har",
     "members": "{used} av {seats} medlemmar",
-    "freeNote": "Gratis, med alla funktioner.",
+    "freeNote": "{hours} mötestimmar i månaden, standardvideo.",
     "renews": "Förnyas {date}",
     "ends": "Slutar {date}, sedan gratisplanen",
     "perMonth": "i månaden",
@@ -654,7 +654,6 @@
     "hours": "{used} av {allowance} h",
     "hoursResets": "Nollställs {date}",
     "hoursUsedUp": "Månadens mötestimmar är slut: möten är bara med ljud till {date}. En större plan ger tillbaka video direkt.",
-    "hoursExplained": "Mötestimmar räknar tiden ett möte har två eller fler personer. Samtal mellan två personer på våningen räknas aldrig. När de är slut fortsätter möten med ljud till den 1:a.",
     "payment": "Betalning",
     "cardUnknown": "Kort sparat hos Creem",
     "update": "Uppdatera",
@@ -683,7 +682,6 @@
     "endingNote": "Planen slutar {date}. Behåll den så ändras inget.",
     "seatsFree": "{count, plural, one {# plats ledig} other {# platser lediga}}",
     "seatsFull": "Alla platser är tagna",
-    "topPlan": "Du har vår största plan. Behöver du plats för fler än {count}? Skriv till oss så ordnar vi det.",
     "usageOf": "{used} av {total}",
     "pillTrial": "Prov",
     "trialNote": "Ditt team provar {plan} till {date}. Sedan är kontoret på Gratis, för upp till {seats} personer, om du inte väljer en plan.",
@@ -692,20 +690,25 @@
       "note": "Per månad, i amerikanska dollar, exkl. moms",
       "current": "Nuvarande",
       "trial": "Prov",
-      "fits": "Passar ert team",
       "perMonth": "i månaden",
-      "forever": "för alltid",
-      "perPerson": "{price} per person",
-      "noCard": "Inget kort behövs",
       "people": "Upp till {count} personer",
       "hours": "{count} mötestimmar i månaden",
-      "everything": "Alla funktioner",
       "keep": "Behåll {plan}",
       "choose": "Välj {plan}",
       "upgrade": "Uppgradera till {plan}",
       "moveTo": "Byt till {plan}",
       "currentButton": "Nuvarande plan",
-      "tooSmall": "Rymmer {count}; kontoret har {members}"
+      "tooSmall": "Rymmer {count}; kontoret har {members}",
+      "best": "Bäst värde",
+      "taglinePlus": "Det viktigaste",
+      "taglinePro": "Hela kontoret, när det är som bäst",
+      "everythingIn": "Allt i {plan}, och",
+      "times": "{count}× Plus",
+      "hd": "HD-video i möten",
+      "sd": "Standardvideo",
+      "support": "Prioriterad hjälp från vårt team",
+      "included": "Ingår i din plan",
+      "upgradeTitle": "Uppgradera"
     },
     "upgrade": {
       "fullTitle": "{office} är fullt",
@@ -719,7 +722,7 @@
       "membersOnly": "Bara administratörer för {office} kan ändra planen.",
       "doneTitle": "Ni är på {plan}",
       "doneBody": "Tack. Kvittot kommer från Creem.",
-      "doneLine": "Plats för {people} personer, och mötestimmarna som hör till."
+      "doneLine": "Allt i {plan} är på för hela kontoret."
     },
     "trialWaiting": "Bjud in fler än {free} personer så får hela ditt team {plan} gratis i {days} dagar. Inget kort behövs.",
     "cancelWhen": "Planen gäller till {date}. Sedan är kontoret på Gratis.",
@@ -728,6 +731,7 @@
     "loseSeats": "Platsen går från {seats} personer till {free}.",
     "loseHours": "Mötestimmarna går från {hours} till {free} i månaden; därefter är möten bara med ljud.",
     "loseNothing": "Ingen tas bort och inget raderas.",
-    "downsell": "Eller håll ihop teamet på {plan}: {price} i månaden, för upp till {seats} personer."
+    "downsell": "Eller håll ihop teamet på {plan}: {price} i månaden, för upp till {seats} personer.",
+    "loseProPerks": "HD-video och prioriterad hjälp upphör."
   }
 }

@@ -90,8 +90,8 @@ export const termsSections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours. Every plan, the
-            free one included, has every feature. The plans, their prices, member limits and meeting hours are on our{" "}
+            <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours; Pro also
+            gives HD video in meetings and priority help. The plans, their prices, member limits and meeting hours are on our{" "}
             <Link href="/pricing">pricing</Link>, and are shown again before you pay.
           </li>
           <li>

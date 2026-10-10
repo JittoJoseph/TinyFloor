@@ -1584,25 +1584,28 @@
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
       "muted": "ikke pr. person.",
-      "body": "Start gratis. Skift op, når dit team vokser.",
+      "body": "Start gratis. Pro er hele kontoret, for et team af enhver størrelse.",
       "soon": "Kommer snart",
       "forever": "for altid",
       "month": "om måneden",
-      "people": "Op til {count} personer",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "Til at prøve det med dit team"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "Det vigtigste"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "Hele kontoret, når det er bedst"
       },
       "tax": "Priserne er månedlige og uden moms.",
-      "perPerson": "{price} pr. person",
-      "freeLine": "Intet kort nødvendigt",
       "choose": "Vælg {plan}",
-      "note": "Alle planer har alle funktioner. Opkald tælles aldrig; gruppemøder får 5, 30 eller 60 timer om måneden."
+      "note": "Opkald mellem to personer tæller aldrig. Hver pris gælder hele kontoret, ikke per person.",
+      "best": "Bedste værdi",
+      "perksStandard": "Standardvideo · {hours} mødetimer om måneden",
+      "perksPro": "HD-video · {hours} mødetimer · prioriteret hjælp"
     },
     "source": {
       "star": "Giv en stjerne på GitHub",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Priser: Én pris for hele kontoret",
-      "description": "TinyFloor er gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, prissat pr. kontor, ikke pr. person."
+      "description": "TinyFloor er gratis at starte med. Plus koster $19 om måneden; Pro, med HD-video, dobbelt så mange mødetimer og prioriteret hjælp, koster $49 om måneden. Prissat per kontor, ikke per person."
     },
     "title": "Én pris for hele kontoret.",
     "muted": "Ikke én pr. person.",
-    "body": "Start gratis med op til 3 personer, og ryk op, når dit team vokser.",
+    "body": "Start gratis, og gå til Pro for hele kontoret: HD-video, dobbelt så meget mødetid og prioriteret hjælp.",
     "seats": {
       "title": "Ti personer,",
       "muted": "én lille regning.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, for hele kontoret"
     },
     "table": {
-      "title": "Hvert abonnement,",
-      "muted": "alle funktioner.",
+      "title": "Sammenlign planer,",
+      "muted": "side om side.",
       "people": "Personer",
       "hours": "Mødetimer om måneden",
       "hoursNote": "Kun gruppemøder",
       "calls": "Opkald mellem to personer",
-      "callsNote": "Tælles aldrig"
+      "callsNote": "Tælles aldrig",
+      "video": "Video i møder",
+      "standard": "Standard",
+      "hd": "HD",
+      "support": "Prioriteret hjælp"
     },
     "notes": {
       "title": "Godt at vide.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Moms ved betaling",
         "body": "Priserne er i amerikanske dollar. Creem, vores forhandler, lægger eventuel moms eller salgsskat til, når du betaler."
-      },
-      "bigger": {
-        "title": "Mere end 25 personer?",
-        "body": "Giv hvert team sit eget kontor, eller skriv til {email}, så tager vi en snak."
       }
     }
   },

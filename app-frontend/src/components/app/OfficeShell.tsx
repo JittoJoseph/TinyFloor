@@ -26,6 +26,7 @@ import { ChatNudges } from "./ChatNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
+import { callManager } from "@/lib/CallManager";
 
 interface OfficeContext {
   office: Office;
@@ -105,6 +106,12 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   useEffect(() => {
     if (office?.id) rememberOffice(office.id);
   }, [office?.id]);
+
+  // HD video in meetings is Pro's; anywhere else, and on leaving, the standard layer.
+  useEffect(() => {
+    callManager.setHd(office?.plan === "pro");
+    return () => callManager.setHd(false);
+  }, [office?.plan]);
 
   // One chat socket for the whole office, opened with the shell rather than
   // with the chat view, so unread counts work while you are on the floor.

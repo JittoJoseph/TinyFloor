@@ -632,7 +632,7 @@
   "billing": {
     "current": "To biuro jest na planie",
     "members": "{used} z {seats} członków",
-    "freeNote": "Za darmo, ze wszystkimi funkcjami.",
+    "freeNote": "{hours} godz. spotkań miesięcznie, wideo standardowe.",
     "renews": "Odnawia się {date}",
     "ends": "Kończy się {date}, potem plan darmowy",
     "perMonth": "miesięcznie",
@@ -654,7 +654,6 @@
     "hours": "{used} z {allowance} godz.",
     "hoursResets": "Odnawia się {date}",
     "hoursUsedUp": "Godziny spotkań w tym miesiącu zostały wykorzystane: do {date} spotkania są tylko głosowe. Większy plan od razu przywraca wideo.",
-    "hoursExplained": "Godziny spotkań liczą czas, gdy w spotkaniu są co najmniej dwie osoby. Rozmowy we dwoje na piętrze nigdy się nie liczą. Po ich wykorzystaniu spotkania trwają dalej z samym głosem do 1. dnia miesiąca.",
     "payment": "Płatność",
     "cardUnknown": "Karta zapisana w Creem",
     "update": "Zmień",
@@ -683,7 +682,6 @@
     "endingNote": "Plan kończy się {date}. Zachowaj go, a nic się nie zmieni.",
     "seatsFree": "{count, plural, one {# wolne miejsce} few {# wolne miejsca} many {# wolnych miejsc} other {# wolnego miejsca}}",
     "seatsFull": "Wszystkie miejsca są zajęte",
-    "topPlan": "Masz nasz największy plan. Potrzebujesz miejsca dla więcej niż {count} osób? Napisz do nas, przygotujemy to.",
     "usageOf": "{used} z {total}",
     "pillTrial": "Próba",
     "trialNote": "Twój zespół testuje {plan} do {date}. Potem biuro przechodzi na plan darmowy, dla maksymalnie {seats} osób, chyba że wybierzesz plan.",
@@ -692,20 +690,25 @@
       "note": "Miesięcznie, w dolarach amerykańskich, bez podatku",
       "current": "Obecny",
       "trial": "Próba",
-      "fits": "Pasuje do zespołu",
       "perMonth": "miesięcznie",
-      "forever": "na zawsze",
-      "perPerson": "{price} za osobę",
-      "noCard": "Bez karty",
       "people": "Do {count} osób",
       "hours": "{count} godzin spotkań miesięcznie",
-      "everything": "Wszystkie funkcje",
       "keep": "Zostań przy {plan}",
       "choose": "Wybierz {plan}",
       "upgrade": "Przejdź na {plan}",
       "moveTo": "Zmień na {plan}",
       "currentButton": "Obecny plan",
-      "tooSmall": "Mieści {count}; biuro ma {members}"
+      "tooSmall": "Mieści {count}; biuro ma {members}",
+      "best": "Najlepsza wartość",
+      "taglinePlus": "To, co najważniejsze",
+      "taglinePro": "Całe biuro, w najlepszej formie",
+      "everythingIn": "Wszystko z {plan}, a do tego",
+      "times": "{count}× Plus",
+      "hd": "Wideo HD na spotkaniach",
+      "sd": "Wideo standardowe",
+      "support": "Pierwszeństwo w pomocy od naszego zespołu",
+      "included": "W twoim planie",
+      "upgradeTitle": "Ulepsz"
     },
     "upgrade": {
       "fullTitle": "{office} jest pełne",
@@ -719,7 +722,7 @@
       "membersOnly": "Plan {office} mogą zmieniać tylko jego administratorzy.",
       "doneTitle": "Jesteście na {plan}",
       "doneBody": "Dziękujemy. Potwierdzenie przyjdzie od Creem.",
-      "doneLine": "Miejsce dla {people} osób i godziny spotkań, które z nim idą."
+      "doneLine": "Wszystko z {plan} działa w całym biurze."
     },
     "trialWaiting": "Zaproś więcej niż {free} osoby, a cały twój zespół dostanie {plan} za darmo na {days} dni. Bez karty.",
     "cancelWhen": "Plan działa do {date}. Potem biuro przechodzi na plan darmowy.",
@@ -728,6 +731,7 @@
     "loseSeats": "Miejsce spada z {seats} osób do {free}.",
     "loseHours": "Godziny spotkań spadają z {hours} do {free} miesięcznie; potem spotkania są tylko z dźwiękiem.",
     "loseNothing": "Nikt nie zostanie usunięty i nic nie zniknie.",
-    "downsell": "Albo utrzymaj zespół razem na {plan}: {price} miesięcznie, do {seats} osób."
+    "downsell": "Albo utrzymaj zespół razem na {plan}: {price} miesięcznie, do {seats} osób.",
+    "loseProPerks": "Wideo HD i pierwszeństwo w pomocy się kończą."
   }
 }

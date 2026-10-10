@@ -632,7 +632,7 @@
   "billing": {
     "current": "Dieses Büro hat",
     "members": "{used} von {seats} Mitgliedern",
-    "freeNote": "Kostenlos, mit allen Funktionen.",
+    "freeNote": "{hours} Meeting-Stunden im Monat, Standardvideo.",
     "renews": "Verlängert sich am {date}",
     "ends": "Endet am {date}, danach der kostenlose Tarif",
     "perMonth": "im Monat",
@@ -654,7 +654,6 @@
     "hours": "{used} von {allowance} Std.",
     "hoursResets": "Neu ab {date}",
     "hoursUsedUp": "Die Meeting-Stunden dieses Monats sind aufgebraucht: Meetings laufen bis {date} nur mit Ton. Ein größerer Tarif bringt Video sofort zurück.",
-    "hoursExplained": "Meeting-Stunden zählen die Zeit, in der zwei oder mehr Personen in einem Meeting sind. Anrufe zu zweit auf der Etage zählen nie. Danach laufen Meetings bis zum 1. mit Ton weiter.",
     "payment": "Zahlung",
     "cardUnknown": "Karte bei Creem hinterlegt",
     "update": "Ändern",
@@ -683,7 +682,6 @@
     "endingNote": "Der Tarif endet am {date}. Behalte ihn, und nichts ändert sich.",
     "seatsFree": "{count, plural, one {# Platz frei} other {# Plätze frei}}",
     "seatsFull": "Alle Plätze sind belegt",
-    "topPlan": "Du hast unseren größten Tarif. Brauchst du Platz für mehr als {count} Personen? Schreib uns, wir richten es ein.",
     "usageOf": "{used} von {total}",
     "pillTrial": "Test",
     "trialNote": "Dein Team testet {plan} bis zum {date}. Danach ist das Büro im kostenlosen Tarif, für bis zu {seats} Personen, außer du wählst einen Tarif.",
@@ -692,20 +690,25 @@
       "note": "Monatlich, in US-Dollar, zzgl. Steuern",
       "current": "Aktuell",
       "trial": "Test",
-      "fits": "Passt zu euch",
       "perMonth": "im Monat",
-      "forever": "für immer",
-      "perPerson": "{price} pro Person",
-      "noCard": "Keine Karte nötig",
       "people": "Bis zu {count} Personen",
       "hours": "{count} Meeting-Stunden im Monat",
-      "everything": "Alle Funktionen",
       "keep": "{plan} behalten",
       "choose": "{plan} wählen",
       "upgrade": "Auf {plan} upgraden",
       "moveTo": "Zu {plan} wechseln",
       "currentButton": "Aktueller Tarif",
-      "tooSmall": "Für {count}; das Büro hat {members}"
+      "tooSmall": "Für {count}; das Büro hat {members}",
+      "best": "Bestes Angebot",
+      "taglinePlus": "Das Wesentliche",
+      "taglinePro": "Das ganze Büro, in Bestform",
+      "everythingIn": "Alles aus {plan}, und",
+      "times": "{count}× Plus",
+      "hd": "HD-Video in Meetings",
+      "sd": "Standardvideo",
+      "support": "Bevorzugte Hilfe von unserem Team",
+      "included": "In deinem Plan enthalten",
+      "upgradeTitle": "Upgrade"
     },
     "upgrade": {
       "fullTitle": "{office} ist voll",
@@ -719,7 +722,7 @@
       "membersOnly": "Nur die Admins von {office} können den Tarif ändern.",
       "doneTitle": "Ihr seid jetzt auf {plan}",
       "doneBody": "Danke. Die Quittung kommt gleich von Creem.",
-      "doneLine": "Platz für {people} Personen und die Meeting-Stunden, die dazugehören."
+      "doneLine": "Alles aus {plan} ist für das ganze Büro aktiv."
     },
     "trialWaiting": "Lade mehr als {free} Personen ein, und dein ganzes Team bekommt {days} Tage lang {plan} gratis. Keine Karte nötig.",
     "cancelWhen": "Der Tarif läuft bis zum {date}. Danach ist das Büro im kostenlosen Tarif.",
@@ -728,6 +731,7 @@
     "loseSeats": "Platz für {free} statt {seats} Personen.",
     "loseHours": "Meeting-Stunden sinken von {hours} auf {free} im Monat; danach laufen Meetings nur mit Ton.",
     "loseNothing": "Niemand wird entfernt, nichts wird gelöscht.",
-    "downsell": "Oder haltet das Team auf {plan} zusammen: {price} im Monat, für bis zu {seats} Personen."
+    "downsell": "Oder haltet das Team auf {plan} zusammen: {price} im Monat, für bis zu {seats} Personen.",
+    "loseProPerks": "HD-Video und bevorzugte Hilfe enden."
   }
 }

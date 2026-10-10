@@ -1584,25 +1584,28 @@
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
       "muted": "nie za osobę.",
-      "body": "Zacznij za darmo. Przejdź wyżej, gdy zespół urośnie.",
+      "body": "Zacznij za darmo. Pro to całe biuro, dla zespołu dowolnej wielkości.",
       "soon": "Wkrótce",
       "forever": "na zawsze",
       "month": "miesięcznie",
-      "people": "Do {count} osób",
       "free": {
-        "name": "Free"
+        "name": "Free",
+        "tagline": "Do wypróbowania z zespołem"
       },
       "plus": {
-        "name": "Plus"
+        "name": "Plus",
+        "tagline": "To, co najważniejsze"
       },
       "pro": {
-        "name": "Pro"
+        "name": "Pro",
+        "tagline": "Całe biuro, w najlepszej formie"
       },
       "tax": "Ceny miesięczne, bez podatku.",
-      "perPerson": "{price} za osobę",
-      "freeLine": "Bez karty",
       "choose": "Wybierz {plan}",
-      "note": "Każdy plan ma wszystkie funkcje. Rozmowy nigdy się nie liczą; spotkania grupowe mają 5, 30 lub 60 godzin miesięcznie."
+      "note": "Rozmowy dwóch osób nigdy się nie liczą. Każda cena dotyczy całego biura, nie osoby.",
+      "best": "Najlepsza wartość",
+      "perksStandard": "Wideo standardowe · {hours} godz. spotkań miesięcznie",
+      "perksPro": "Wideo HD · {hours} godz. spotkań · pierwszeństwo w pomocy"
     },
     "source": {
       "star": "Daj gwiazdkę na GitHubie",
@@ -1622,11 +1625,11 @@
   "pricingPage": {
     "meta": {
       "title": "Cennik: jedna cena za całe biuro",
-      "description": "TinyFloor jest darmowy do 3 osób. Plus kosztuje $19 miesięcznie za 10 osób, a Pro $49 miesięcznie za 25, z ceną za biuro, a nie za osobę."
+      "description": "TinyFloor jest na start darmowy. Plus kosztuje 19 $ miesięcznie; Pro z wideo HD, dwa razy większą liczbą godzin spotkań i pierwszeństwem w pomocy — 49 $ miesięcznie. Cena za biuro, nie za osobę."
     },
     "title": "Jedna cena za całe biuro.",
     "muted": "Nie za każdą osobę.",
-    "body": "Zacznij za darmo z maksymalnie 3 osobami i przejdź wyżej, gdy zespół urośnie.",
+    "body": "Zacznij za darmo i przejdź na Pro po całe biuro: wideo HD, dwa razy więcej czasu na spotkania i pierwszeństwo w pomocy.",
     "seats": {
       "title": "Dziesięć osób,",
       "muted": "jeden mały rachunek.",
@@ -1635,13 +1638,17 @@
       "ours": "TinyFloor Plus, za całe biuro"
     },
     "table": {
-      "title": "Każdy plan,",
-      "muted": "wszystkie funkcje.",
+      "title": "Porównaj plany,",
+      "muted": "obok siebie.",
       "people": "Osoby",
       "hours": "Godziny spotkań miesięcznie",
       "hoursNote": "Tylko spotkania grupowe",
       "calls": "Rozmowy we dwoje",
-      "callsNote": "Nigdy nie są liczone"
+      "callsNote": "Nigdy nie są liczone",
+      "video": "Wideo na spotkaniach",
+      "standard": "Standardowe",
+      "hd": "HD",
+      "support": "Pierwszeństwo w pomocy"
     },
     "notes": {
       "title": "Warto wiedzieć.",
@@ -1664,10 +1671,6 @@
       "tax": {
         "title": "Podatek przy płatności",
         "body": "Ceny są w dolarach amerykańskich. Creem, nasz sprzedawca, dolicza VAT lub podatek od sprzedaży przy płatności."
-      },
-      "bigger": {
-        "title": "Ponad 25 osób?",
-        "body": "Daj każdemu zespołowi osobne biuro albo napisz na {email}, a porozmawiamy."
       }
     }
   },

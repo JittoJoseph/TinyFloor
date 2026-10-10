@@ -632,7 +632,7 @@
   "billing": {
     "current": "このオフィスのプラン",
     "members": "メンバー {used}/{seats} 人",
-    "freeNote": "無料、すべての機能つき。",
+    "freeNote": "毎月{hours}時間の会議、標準画質のビデオ。",
     "renews": "{date} に更新",
     "ends": "{date} に終了し、その後は無料プラン",
     "perMonth": "/月",
@@ -654,7 +654,6 @@
     "hours": "{used} / {allowance} 時間",
     "hoursResets": "{date} にリセット",
     "hoursUsedUp": "今月のミーティング時間を使い切りました。{date} までミーティングは音声のみです。上位プランにするとすぐにビデオが戻ります。",
-    "hoursExplained": "ミーティング時間は、ミーティングに 2 人以上がいる時間を数えます。フロアでの 2 人の通話は数えません。使い切ると、1 日までミーティングは音声で続きます。",
     "payment": "支払い",
     "cardUnknown": "Creem に登録済みのカード",
     "update": "更新",
@@ -683,7 +682,6 @@
     "endingNote": "プランは {date} に終了します。続ければ何も変わりません。",
     "seatsFree": "空き {count} 席",
     "seatsFull": "すべての席が埋まっています",
-    "topPlan": "最上位のプランです。{count} 人を超えるなら、ご連絡ください。ご用意します。",
     "usageOf": "{used} / {total}",
     "pillTrial": "お試し",
     "trialNote": "チームは {date} まで {plan} をお試し中です。その後はプランを選ばない限り、オフィスは無料プラン（最大 {seats} 人）になります。",
@@ -692,20 +690,25 @@
       "note": "月額・米ドル・税別",
       "current": "現在",
       "trial": "お試し",
-      "fits": "チームに合う",
       "perMonth": "/月",
-      "forever": "ずっと",
-      "perPerson": "1 人あたり {price}",
-      "noCard": "カード不要",
       "people": "最大 {count} 人",
       "hours": "ミーティング 月 {count} 時間",
-      "everything": "すべての機能",
       "keep": "{plan} を続ける",
       "choose": "{plan} を選ぶ",
       "upgrade": "{plan} にアップグレード",
       "moveTo": "{plan} に変更",
       "currentButton": "現在のプラン",
-      "tooSmall": "{count} 人まで。このオフィスは {members} 人"
+      "tooSmall": "{count} 人まで。このオフィスは {members} 人",
+      "best": "いちばんお得",
+      "taglinePlus": "基本のすべて",
+      "taglinePro": "オフィスのすべてを、最高の状態で",
+      "everythingIn": "{plan}のすべてに加えて",
+      "times": "Plus の{count}倍",
+      "hd": "会議でHDビデオ",
+      "sd": "標準画質のビデオ",
+      "support": "チームからの優先サポート",
+      "included": "プランに含まれるもの",
+      "upgradeTitle": "アップグレード"
     },
     "upgrade": {
       "fullTitle": "{office} は満員です",
@@ -719,7 +722,7 @@
       "membersOnly": "{office} のプランを変えられるのは管理者だけです。",
       "doneTitle": "{plan} になりました",
       "doneBody": "ありがとうございます。Creem から領収書が届きます。",
-      "doneLine": "{people} 人分の席と、それに付くミーティング時間。"
+      "doneLine": "{plan}のすべてがオフィス全体で使えるようになりました。"
     },
     "trialWaiting": "{free} 人より多く招待すると、チーム全員が {plan} を {days} 日間無料で使えます。カードは不要です。",
     "cancelWhen": "プランは {date} まで続き、その後オフィスは無料プランになります。",
@@ -728,6 +731,7 @@
     "loseSeats": "定員が {seats} 人から {free} 人になります。",
     "loseHours": "ミーティング時間が月 {hours} 時間から {free} 時間になり、超えると音声のみになります。",
     "loseNothing": "誰も外されず、何も削除されません。",
-    "downsell": "または {plan} でチームをそのままに：月 {price}、最大 {seats} 人。"
+    "downsell": "または {plan} でチームをそのままに：月 {price}、最大 {seats} 人。",
+    "loseProPerks": "HDビデオと優先サポートが終了します。"
   }
 }

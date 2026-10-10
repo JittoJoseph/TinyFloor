@@ -573,7 +573,8 @@
       "askAdmin": "관리자가 시간을 늘릴 수 있어요."
     },
     "pin": "고정",
-    "unpin": "고정 해제"
+    "unpin": "고정 해제",
+    "others": "외 {count}명"
   },
   "help": {
     "title": "도움말 및 의견",

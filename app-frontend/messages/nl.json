@@ -573,7 +573,8 @@
       "askAdmin": "Een beheerder kan meer uren regelen."
     },
     "pin": "Vastzetten",
-    "unpin": "Losmaken"
+    "unpin": "Losmaken",
+    "others": "{count, plural, one {# ander} other {# anderen}}"
   },
   "help": {
     "title": "Hulp en feedback",

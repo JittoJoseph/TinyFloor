@@ -573,7 +573,8 @@
       "askAdmin": "Ylläpitäjä voi hankkia lisää tunteja."
     },
     "pin": "Kiinnitä",
-    "unpin": "Irrota"
+    "unpin": "Irrota",
+    "others": "{count, plural, one {# muu} other {# muuta}}"
   },
   "help": {
     "title": "Apua ja palautetta",

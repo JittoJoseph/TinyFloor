@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Plus, Video } from "@/components/ui/icons";
 import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
@@ -16,8 +16,8 @@ import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/me
 import { MeetingUsageLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
 import { usePlace } from "./place";
 
-/** People named in a meeting's row before the rest become a count. */
-const NAMED = 6;
+/** Space between two pills, in pixels (gap-2). */
+const PILL_GAP = 8;
 
 /**
  * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
@@ -93,16 +93,14 @@ function Elapsed({ meeting }: { meeting: MeetingInfo }) {
 }
 
 /**
- * A meeting: its name, whether it's on and for how long, who is in it (whoever
- * is talking ringed), and the way in. The office's own meeting is always
- * listed, waiting while nobody is in.
+ * A meeting: its name, whether it's on and for how long, who is in it as one
+ * line of names, and the way in. The office's own meeting is always listed,
+ * waiting while nobody is in.
  */
 function MeetingRow({ meeting, office, known, main = false }: { meeting: MeetingInfo; office: string; known: boolean; main?: boolean }) {
   const t = useTranslations("meetings");
   const nameOf = useMeetingName();
   const live = meeting.members.length > 0;
-  const named = meeting.members.slice(0, NAMED);
-  const rest = meeting.members.length - named.length;
 
   return (
     <section className="rounded-2xl border border-border bg-background">
@@ -147,29 +145,79 @@ function MeetingRow({ meeting, office, known, main = false }: { meeting: Meeting
           {live ? t("join") : t("start")}
         </Button>
       </div>
-      {live && (
-        <ul className="flex flex-wrap gap-2 border-t border-border px-5 py-3.5">
-          {named.map((person) => (
-            <Person key={person.id} person={person} />
-          ))}
-          {rest > 0 && (
-            <li className="flex h-8 items-center rounded-full bg-muted px-3 text-[12.5px] font-medium tabular-nums text-muted-foreground">
-              {t("more", { count: rest })}
-            </li>
-          )}
-        </ul>
-      )}
+      {live && <PeopleLine people={meeting.members} />}
     </section>
   );
 }
 
-function Person({ person }: { person: MeetingPerson }) {
+/**
+ * Who is in a meeting, on one line: as many names as fit, then how many others.
+ * A hidden copy of every pill is measured to know where the line runs out.
+ */
+function PeopleLine({ people }: { people: MeetingPerson[] }) {
+  const line = useRef<HTMLDivElement>(null);
+  const ruler = useRef<HTMLDivElement>(null);
+  const [fits, setFits] = useState(people.length);
+
+  useLayoutEffect(() => {
+    const box = line.current;
+    const measured = ruler.current;
+    if (!box || !measured) return;
+    const measure = () => {
+      const widths = [...measured.querySelectorAll<HTMLElement>("[data-pill]")].map((pill) => pill.offsetWidth);
+      const others = measured.querySelector<HTMLElement>("[data-others]")?.offsetWidth ?? 0;
+      const room = box.clientWidth;
+      let used = 0;
+      let count = 0;
+      for (const [index, width] of widths.entries()) {
+        const last = index === widths.length - 1;
+        const next = used + (index ? PILL_GAP : 0) + width;
+        // Room for this name, and for the count after it unless it's the last.
+        if (next + (last ? 0 : PILL_GAP + others) > room) break;
+        used = next;
+        count++;
+      }
+      setFits(Math.max(1, count));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, [people]);
+
+  const rest = people.length - fits;
   return (
-    <li className="flex h-8 max-w-[12rem] items-center gap-2 rounded-full bg-muted pe-3 ps-1">
-      <span className={cn("flex rounded-full ring-2 transition-[box-shadow]", person.speaking ? "ring-ok" : "ring-transparent")}>
-        <Face seed={person.id} size={24} />
-      </span>
+    <div className="relative overflow-hidden border-t border-border px-5 py-3.5">
+      <div ref={line} className="flex gap-2 overflow-hidden">
+        {people.slice(0, fits).map((person) => (
+          <Pill key={person.id} person={person} />
+        ))}
+        {rest > 0 && <Others count={rest} />}
+      </div>
+      <div ref={ruler} aria-hidden className="invisible absolute start-0 top-0 flex gap-2 whitespace-nowrap">
+        {people.map((person) => (
+          <Pill key={person.id} person={person} />
+        ))}
+        <Others count={people.length} />
+      </div>
+    </div>
+  );
+}
+
+function Others({ count }: { count: number }) {
+  const t = useTranslations("meetings");
+  return (
+    <span data-others className="flex h-8 shrink-0 items-center rounded-full bg-muted px-3 text-[12.5px] font-medium tabular-nums text-muted-foreground">
+      {t("others", { count })}
+    </span>
+  );
+}
+
+function Pill({ person }: { person: MeetingPerson }) {
+  return (
+    <span data-pill className="flex h-8 min-w-0 max-w-[12rem] shrink-0 items-center gap-2 rounded-full bg-muted pe-3 ps-1">
+      <Face seed={person.id} size={24} />
       <span className="truncate text-[12.5px] font-medium text-foreground">{person.name}</span>
-    </li>
+    </span>
   );
 }

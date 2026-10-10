@@ -573,7 +573,8 @@
       "askAdmin": "管理员可以获取更多时长。"
     },
     "pin": "固定",
-    "unpin": "取消固定"
+    "unpin": "取消固定",
+    "others": "另外 {count} 人"
   },
   "help": {
     "title": "帮助与反馈",

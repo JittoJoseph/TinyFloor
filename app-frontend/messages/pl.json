@@ -573,7 +573,8 @@
       "askAdmin": "Administrator może dodać godziny."
     },
     "pin": "Przypnij",
-    "unpin": "Odepnij"
+    "unpin": "Odepnij",
+    "others": "{count, plural, one {# inna osoba} few {# inne osoby} many {# innych osób} other {# innej osoby}}"
   },
   "help": {
     "title": "Pomoc i opinie",

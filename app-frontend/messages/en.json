@@ -573,7 +573,8 @@
       "askAdmin": "An admin can get more hours."
     },
     "pin": "Pin",
-    "unpin": "Unpin"
+    "unpin": "Unpin",
+    "others": "{count, plural, one {# other} other {# others}}"
   },
   "help": {
     "title": "Help and feedback",

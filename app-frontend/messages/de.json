@@ -573,7 +573,8 @@
       "askAdmin": "Ein Admin kann mehr Stunden holen."
     },
     "pin": "Anheften",
-    "unpin": "Lösen"
+    "unpin": "Lösen",
+    "others": "{count, plural, one {# weitere Person} other {# weitere}}"
   },
   "help": {
     "title": "Hilfe und Feedback",

@@ -573,7 +573,8 @@
       "askAdmin": "En administrator kan skaffe flere timer."
     },
     "pin": "Fest",
-    "unpin": "Løsne"
+    "unpin": "Løsne",
+    "others": "{count, plural, one {# annen} other {# andre}}"
   },
   "help": {
     "title": "Hjelp og tilbakemelding",

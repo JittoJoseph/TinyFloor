@@ -573,7 +573,8 @@
       "askAdmin": "Un administrador puede conseguir más horas."
     },
     "pin": "Fijar",
-    "unpin": "Dejar de fijar"
+    "unpin": "Dejar de fijar",
+    "others": "{count, plural, one {# más} other {# más}}"
   },
   "help": {
     "title": "Ayuda y comentarios",

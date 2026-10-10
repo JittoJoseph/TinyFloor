@@ -573,7 +573,8 @@
       "askAdmin": "Un admin può prendere più ore."
     },
     "pin": "Fissa",
-    "unpin": "Sblocca"
+    "unpin": "Sblocca",
+    "others": "{count, plural, one {# altro} other {altri #}}"
   },
   "help": {
     "title": "Aiuto e feedback",

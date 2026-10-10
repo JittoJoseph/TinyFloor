@@ -573,7 +573,8 @@
       "askAdmin": "En administratör kan skaffa fler timmar."
     },
     "pin": "Fäst",
-    "unpin": "Lossa"
+    "unpin": "Lossa",
+    "others": "{count, plural, one {# till} other {# till}}"
   },
   "help": {
     "title": "Hjälp och feedback",

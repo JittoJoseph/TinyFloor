@@ -154,7 +154,6 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
       meetings: lobbyMeetingsPath,
       yourOffice: lobbyOfficePath,
     },
-    sharePath: lobbyPath,
     officesOnly: setAsked,
   };
 
@@ -194,8 +193,9 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               title={t("title")}
               user={user}
               ticketFor={api.lobbyTicket}
-              sharePath={lobbyPath}
-              leaveHref={user.guest ? home : "/"}
+              invitePath={lobbyPath}
+              inviteChip
+              leaveHref={leave.href}
               settingsHref={lobbySettingsPath}
             />
             {!onChat && <ChatNudges chatPath={lobbyChatPath} />}

@@ -89,7 +89,7 @@ function RoomPrompt({ onClose }: { onClose: () => void }) {
       className={cn(bezel, onBezel, "pointer-events-auto flex max-w-full items-center gap-2.5 rounded-full p-1.5")}
     >
       {live ? (
-        <FaceStack seeds={meeting.members.map((member) => member.id)} size={30} max={3} />
+        <FaceStack seeds={meeting.members.map((member) => member.id)} size={30} max={3} more={false} />
       ) : (
         <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-white/10 text-muted-foreground">
           <Video className="size-3.5" />

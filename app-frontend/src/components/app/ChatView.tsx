@@ -118,7 +118,7 @@ export function ChatView({ channel }: { channel?: string }) {
   // Images: the lobby asks for an office; an office says where they stand.
   const onFiles = (files: File[]) => {
     if (!files.length) return;
-    if (lobby) return place.officesOnly("attachments");
+    if (lobby) return place.officesOnly?.("attachments");
     say(place.plan === "free" ? t("attachmentsPaid") : t("attachmentsSoon"));
   };
 
@@ -211,7 +211,7 @@ export function ChatView({ channel }: { channel?: string }) {
         onClickCapture={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          place.officesOnly("channels");
+          place.officesOnly?.("channels");
         }}
       >
         {trigger}

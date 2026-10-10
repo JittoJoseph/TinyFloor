@@ -4,7 +4,7 @@
  */
 const PENDING_KEY = "tinyfloorPendingSpace";
 
-export function rememberOffice(name: string) {
+export function rememberPendingOffice(name: string) {
   try {
     localStorage.setItem(PENDING_KEY, name);
   } catch {}
@@ -18,7 +18,7 @@ export function pendingOffice(): string {
   }
 }
 
-export function forgetOffice() {
+export function forgetPendingOffice() {
   try {
     localStorage.removeItem(PENDING_KEY);
   } catch {}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { Mic, MicOff, Settings, Video, VideoOff } from "@/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
@@ -20,13 +20,29 @@ const FREE_SHOWN = 4;
 /** Where the camera choice is remembered between visits. */
 const CAMERA_KEY = "tinyfloor:join-camera";
 
-function rememberedCamera(): boolean {
-  try {
-    return localStorage.getItem(CAMERA_KEY) === "on";
-  } catch {
-    return false;
-  }
-}
+/** The camera choice, kept in this browser and read like any other store. */
+const cameraListeners = new Set<() => void>();
+const cameraChoice = {
+  subscribe(listener: () => void) {
+    cameraListeners.add(listener);
+    return () => cameraListeners.delete(listener);
+  },
+  get(): boolean {
+    try {
+      return localStorage.getItem(CAMERA_KEY) === "on";
+    } catch {
+      return false;
+    }
+  },
+  set(on: boolean) {
+    try {
+      localStorage.setItem(CAMERA_KEY, on ? "on" : "off");
+    } catch {
+      // Not remembered, this once.
+    }
+    cameraListeners.forEach((listener) => listener());
+  },
+};
 
 /**
  * You, before a meeting, the way Meet shows you: a big picture with the mic
@@ -43,21 +59,19 @@ export function JoinPreview() {
   const place = usePlace();
   const { micEnabled } = useCall();
   const { mirrorVideo } = usePrefs();
-  const [camera, setCamera] = useState(false);
+  const camera = useSyncExternalStore(cameraChoice.subscribe, cameraChoice.get, () => false);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [blocked, setBlocked] = useState(false);
   const level = useLevel(micEnabled ? stream : null);
   const video = useRef<HTMLVideoElement>(null);
 
-  // The camera as it was left last time, once the page is in the browser.
-  useEffect(() => setCamera(rememberedCamera()), []);
   useEffect(() => {
     callManager.setCameraOnJoin(camera);
     return () => callManager.setCameraOnJoin(false);
   }, [camera]);
 
   useEffect(() => {
-    if (!camera) return setStream(null);
+    if (!camera) return;
     let live: MediaStream | null = null;
     let cancelled = false;
     const devices = savedDevices();
@@ -72,11 +86,12 @@ export function JoinPreview() {
       .catch(() => {
         if (cancelled) return;
         setBlocked(true);
-        setCamera(false);
+        cameraChoice.set(false);
       });
     return () => {
       cancelled = true;
       live?.getTracks().forEach((track) => track.stop());
+      setStream(null);
     };
   }, [camera]);
 
@@ -84,15 +99,7 @@ export function JoinPreview() {
     if (video.current) video.current.srcObject = stream;
   }, [stream]);
 
-  const toggleCamera = () => {
-    const next = !camera;
-    setCamera(next);
-    try {
-      localStorage.setItem(CAMERA_KEY, next ? "on" : "off");
-    } catch {
-      // Not remembered, this once.
-    }
-  };
+  const toggleCamera = () => cameraChoice.set(!camera);
 
   const round = "flex size-12 cursor-pointer items-center justify-center rounded-full transition-colors [&_svg]:size-5";
   // Off is the ordinary state, drawn like any button; on is the one that stands out.
@@ -182,7 +189,7 @@ export function JoinPreview() {
 function useLevel(stream: MediaStream | null): number {
   const [level, setLevel] = useState(0);
   useEffect(() => {
-    if (!stream?.getAudioTracks().length) return setLevel(0);
+    if (!stream?.getAudioTracks().length) return;
     const context = new AudioContext();
     const analyser = context.createAnalyser();
     analyser.fftSize = 256;
@@ -200,9 +207,10 @@ function useLevel(stream: MediaStream | null): number {
     return () => {
       cancelAnimationFrame(frame);
       void context.close();
+      setLevel(0);
     };
   }, [stream]);
-  return level;
+  return stream ? level : 0;
 }
 
 /**

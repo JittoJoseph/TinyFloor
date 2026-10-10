@@ -12,7 +12,7 @@ import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { officePath, shareUrl } from "@/lib/links";
 import { useInviteLink } from "@/lib/inviteLink";
 import { shareLink } from "@/lib/share";
-import { forgetOffice, pendingOffice } from "@/lib/pendingOffice";
+import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
 import { Dialog } from "@/components/ui/Dialog";
@@ -89,7 +89,7 @@ export function CreateOfficeFlow() {
   };
 
   const walkIn = (id: string) => {
-    forgetOffice();
+    forgetPendingOffice();
     router.replace(officePath(id));
   };
 

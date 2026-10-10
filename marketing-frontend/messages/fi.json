@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Vaihda pakettia milloin vain",
-        "body": "Siirto ylös tai alas tulee voimaan heti, ja Paddle veloittaa tai hyvittää erotuksen."
+        "body": "Siirto ylös tai alas tulee voimaan heti, ja Creem veloittaa tai hyvittää erotuksen."
       },
       "hours": {
         "title": "Kun tunnit loppuvat",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Verot kassalla",
-        "body": "Hinnat ovat Yhdysvaltain dollareina. Jälleenmyyjämme Paddle lisää mahdollisen arvonlisä- tai myyntiveron maksaessasi."
+        "body": "Hinnat ovat Yhdysvaltain dollareina. Jälleenmyyjämme Creem lisää mahdollisen arvonlisä- tai myyntiveron maksaessasi."
       },
       "bigger": {
         "title": "Yli 25 henkeä?",

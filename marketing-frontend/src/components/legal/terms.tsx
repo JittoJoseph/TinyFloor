@@ -1,13 +1,13 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "29 September 2026";
+export const TERMS_UPDATED = "10 October 2026";
 
 export const termsSummary = (
   <p>
     These terms are the agreement between you and TinyFloor. In short: use TinyFloor lawfully and kindly, you keep what you create, we
     keep the service running as well as we can but can&apos;t promise it never goes down, and either of us can end things at any time. Paid
-    plans are sold by Paddle, our reseller, renew until you cancel, and can be refunded within 14 days. How we handle your data is in our{" "}
+    plans are sold by Creem, our reseller, renew until you cancel, and can be refunded within 14 days. How we handle your data is in our{" "}
     <Link href="/privacy">Privacy Policy</Link>.
   </p>
 );
@@ -81,9 +81,9 @@ export const termsSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle
-          provides all customer service inquiries and handles returns. When you buy a plan, you also agree to Paddle&apos;s{" "}
-          <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener noreferrer">
+          Payments are processed by Creem (Armitage Labs OÜ) as the merchant of record for all our orders: Creem sells the plan to you,
+          takes the payment, charges any tax and handles refunds. When you buy a plan, you also agree to Creem&apos;s{" "}
+          <a href="https://www.creem.io/buyer-terms" target="_blank" rel="noopener noreferrer">
             Buyer Terms
           </a>
           .
@@ -102,7 +102,7 @@ export const termsSections: LegalSection[] = [
           </li>
           <li>
             <strong>Billing.</strong> Plans are billed monthly, in advance, and renew automatically at the end of each month until you cancel.
-            Prices don&apos;t include tax; Paddle adds sales tax or VAT where it applies.
+            Prices don&apos;t include tax; Creem adds sales tax or VAT where it applies.
           </li>
           <li>
             <strong>Who manages it.</strong> An office&apos;s admins can choose, change and cancel its plan. The plan belongs to the office,
@@ -118,7 +118,7 @@ export const termsSections: LegalSection[] = [
             plan is chosen.
           </li>
           <li>
-            <strong>Failed payments.</strong> If a renewal can&apos;t be charged, Paddle tries again over the following days. If it still
+            <strong>Failed payments.</strong> If a renewal can&apos;t be charged, Creem tries again over the following days. If it still
             can&apos;t, the plan ends and the office goes back to the free plan.
           </li>
           <li>

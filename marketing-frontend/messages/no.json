@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Bytt plan når som helst",
-        "body": "Å gå opp eller ned gjelder med en gang, og Paddle belaster eller krediterer differansen."
+        "body": "Å gå opp eller ned gjelder med en gang, og Creem belaster eller krediterer differansen."
       },
       "hours": {
         "title": "Når timene er brukt opp",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Mva. ved betaling",
-        "body": "Prisene er i amerikanske dollar. Paddle, vår forhandler, legger til eventuell mva. eller salgsskatt når du betaler."
+        "body": "Prisene er i amerikanske dollar. Creem, vår forhandler, legger til eventuell mva. eller salgsskatt når du betaler."
       },
       "bigger": {
         "title": "Flere enn 25 personer?",

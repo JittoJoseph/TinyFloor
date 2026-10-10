@@ -123,18 +123,18 @@ export function CreateOfficeFlow() {
     }
   };
 
-  /** Paddle's checkout over the door; paid, the plan lands and they walk in. */
+  /** Creem's checkout over the door; paid, the plan lands and they walk in. */
   const pay = async () => {
     if (!office || busy) return;
     setBusy("pay");
     setError("");
     try {
-      const { transactionId, email } = await api.checkout(office.id, plan);
+      const { checkoutId, url } = await api.checkout(office.id, plan);
       withPostHog((posthog) => posthog.capture("onboarding_checkout_opened", { plan }));
-      const done = await openCheckout({ transactionId, email, locale, dark: document.documentElement.classList.contains("dark") });
+      const done = await openCheckout({ url, locale, dark: document.documentElement.classList.contains("dark") });
       if (!done) return setBusy(null);
       withPostHog((posthog) => posthog.capture("onboarding_plan_bought", { plan, size }));
-      await waitForPlan(office.id, transactionId, (now) => now === plan);
+      await waitForPlan(office.id, checkoutId, (now) => now === plan);
       walkIn(office.id);
     } catch (err) {
       setError(explain(err));

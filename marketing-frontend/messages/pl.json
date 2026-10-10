@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Zmieniaj plan w dowolnej chwili",
-        "body": "Zmiana w górę lub w dół działa od razu, a Paddle pobiera lub zwraca różnicę."
+        "body": "Zmiana w górę lub w dół działa od razu, a Creem pobiera lub zwraca różnicę."
       },
       "hours": {
         "title": "Gdy skończą się godziny",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Podatek przy płatności",
-        "body": "Ceny są w dolarach amerykańskich. Paddle, nasz sprzedawca, dolicza VAT lub podatek od sprzedaży przy płatności."
+        "body": "Ceny są w dolarach amerykańskich. Creem, nasz sprzedawca, dolicza VAT lub podatek od sprzedaży przy płatności."
       },
       "bigger": {
         "title": "Ponad 25 osób?",

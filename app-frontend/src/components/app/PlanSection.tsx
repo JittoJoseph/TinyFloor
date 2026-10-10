@@ -5,7 +5,7 @@ import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { AlertTriangle, ArrowUp, Check, CreditCard, Download, Loader2 } from "@/components/ui/icons";
 import { api, ApiError, type BillingDetails, type OfficeBilling, type Payment, type Plan, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
-import { openCheckout, waitForPlan } from "@/lib/checkout";
+import { openCheckout, openPortal, waitForPlan } from "@/lib/checkout";
 import { Button } from "@/components/motion/button/base";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
@@ -22,9 +22,10 @@ type Asking = { kind: "switch"; plan: Plan } | { kind: "cancel" } | null;
  * pays, how full it is and how much of its meeting hours are used, and one
  * way up: the plan above this one, with what it adds, not every plan at once.
  * Then the card and the next charge, every past payment with its invoice, and
- * quietly at the end, moving down a plan or cancelling. Buying and new cards
- * open Paddle's checkout over the page; switching and cancelling ask first.
- * The plan itself only changes when Paddle says so.
+ * quietly at the end, moving down a plan or cancelling. Buying opens Creem's
+ * checkout over the page, and the card and invoices are in Creem's customer
+ * portal, for whoever pays; switching and cancelling ask first. The plan
+ * itself only changes when Creem says so.
  */
 export function PlanSection() {
   const t = useTranslations("billing");
@@ -87,6 +88,7 @@ export function PlanSection() {
   const explain = (problem: unknown) => {
     if (problem instanceof ApiError && problem.code === "too_many_members") return t("errors.tooManyMembers");
     if (problem instanceof ApiError && problem.code === "has_subscription") return t("errors.hasSubscription");
+    if (problem instanceof ApiError && problem.code === "not_payer") return t("errors.notPayer");
     return t("errors.failed");
   };
 
@@ -106,11 +108,11 @@ export function PlanSection() {
 
   const buy = (plan: Plan) =>
     run(plan.id, async () => {
-      const { transactionId, email } = await api.checkout(office.id, plan.id);
-      const paid = await openCheckout({ transactionId, email, locale, dark: dark() });
+      const { checkoutId, url } = await api.checkout(office.id, plan.id);
+      const paid = await openCheckout({ url, locale, dark: dark() });
       if (!paid) return;
       setWaiting("now");
-      const landed = await waitForPlan(office.id, transactionId, (now) => now === plan.id);
+      const landed = await waitForPlan(office.id, checkoutId, (now) => now === plan.id);
       setWaiting(landed ? null : "slow");
       await Promise.all([refresh(), reload()]);
     });
@@ -135,27 +137,9 @@ export function PlanSection() {
       await reloadDetails();
     });
 
-  const updateCard = () =>
-    run("card", async () => {
-      const { transactionId } = await api.paymentMethod(office.id);
-      if (await openCheckout({ transactionId, email: null, locale, dark: dark() })) await reload();
-    });
-
-  const invoice = (payment: Payment) =>
-    run(`invoice:${payment.id}`, async () => {
-      // Opened before asking, so the browser treats it as the click's own tab.
-      const tab = window.open("about:blank", "_blank");
-      try {
-        const { url } = await api.invoice(office.id, payment.id);
-        if (tab) {
-          tab.opener = null;
-          tab.location.href = url;
-        } else window.location.href = url;
-      } catch (problem) {
-        tab?.close();
-        throw problem;
-      }
-    });
+  // The card and the invoices are both in Creem's customer portal.
+  const updateCard = () => run("card", () => openPortal(office.id));
+  const invoice = (payment: Payment) => run(`invoice:${payment.id}`, () => openPortal(office.id));
 
   const hours = billing ? billing.usage.seconds / 3600 : null;
   const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
@@ -167,6 +151,7 @@ export function PlanSection() {
   const below = plans[plans.findIndex((plan) => plan.id === planId) - 1];
   const other = !sub && next ? plans[plans.indexOf(next) + 1] : undefined;
   const manage = on && admin;
+  const offering = manage && !!next?.price && !sub?.endsAt;
 
   // What the plan says for itself under its name: when it renews, or ends, or that it's free.
   const status = (): ReactNode => {
@@ -266,7 +251,7 @@ export function PlanSection() {
         what the office has now, and why it might be time. The top plan gets
         a line about going bigger instead.
       */}
-      {manage && next && next.price && !sub?.endsAt && (
+      {offering && next?.price && (
         <section className="rounded-2xl border border-border bg-background p-5">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0">
@@ -413,7 +398,7 @@ export function PlanSection() {
           )}
         </div>
       )}
-      {manage && !next && error && <p className="text-[12.5px] text-destructive">{error}</p>}
+      {manage && !offering && error && <p className="text-[12.5px] text-destructive">{error}</p>}
 
       {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
 

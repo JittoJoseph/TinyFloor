@@ -35,7 +35,7 @@ export default {
     let response: Response;
     try {
       const { pathname } = new URL(request.url);
-      // Paddle's webhook is the one write that doesn't come from the site: its signature is its proof.
+      // Creem's webhook is the one write that doesn't come from the site: its signature is its proof.
       if (request.method !== "GET" && pathname !== WEBHOOK_PATH) assertSafeWrite(request, origin);
       const match = router.match(request.method, pathname);
       if (!match) throw new HttpError(404, "not_found", "No such endpoint");

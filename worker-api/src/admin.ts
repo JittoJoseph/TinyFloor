@@ -13,7 +13,7 @@ import { requireAccount } from "./session";
  * rename or delete an account, rename or close an office, give an office a
  * plan without payment, and change or take down any message in the lobby's
  * chat. Help and feedback has its own routes (help.ts). Plans themselves aren't configurable here: they live in code
- * (billing.ts) and in Paddle. Open to the accounts named in ADMIN_EMAILS, and
+ * (billing.ts) and in Creem. Open to the accounts named in ADMIN_EMAILS, and
  * only once Google has vouched for the address, since a password sign-up
  * proves nothing about owning it. Anyone else is told there is nothing here.
  */
@@ -266,7 +266,7 @@ export function adminRoutes(router: Router): void {
 
 /**
  * The little the admin view says about plans; the rest (revenue, failed
- * payments, cancellations) is in Paddle's own dashboard. Offices paying,
+ * payments, cancellations) is in Creem's own dashboard. Offices paying,
  * by plan; offices on a paid plan given by hand; and this month's meeting
  * hours across every office.
  */

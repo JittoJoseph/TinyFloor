@@ -4,14 +4,15 @@ import type { Router } from "./router";
 import { requireUser } from "./session";
 
 /**
- * Paid plans, sold through Paddle as the merchant of record (docs/09-billing.md,
+ * Paid plans, sold through Creem as the merchant of record (docs/09-billing.md,
  * docs/14). A plan is how many people an office holds and how many meeting
  * hours a month it includes. An office's plan changes in one place only: here,
- * from a subscription Paddle vouches for, either in a signed webhook or in the
+ * from a subscription Creem vouches for, either in a signed webhook or in the
  * reply to a request this worker made itself.
  */
 
 export type PlanId = "free" | "plus" | "pro";
+type PaidPlan = Exclude<PlanId, "free">;
 
 export interface Plan {
   id: PlanId;
@@ -34,42 +35,36 @@ export const planById = (id: string) => PLANS.find((plan) => plan.id === id);
 /** An office's meeting hours a month, from its plan. */
 export const meetingHoursOf = (plan: string) => (planById(plan) ?? FREE).meetingHours;
 
-/** Subscriptions in these states hold their plan; a card being retried still counts. */
-export const HOLDS_PLAN = new Set(["active", "trialing", "past_due"]);
-
-/** How old a webhook's signature may be. Retries are signed afresh, and replays are deduplicated anyway. */
-const SIGNATURE_TOLERANCE_S = 300;
+/**
+ * Subscriptions in these states hold their plan: a card being retried still
+ * counts, and so does one cancelled for the end of the period it paid for.
+ */
+export const HOLDS_PLAN = new Set(["active", "trialing", "past_due", "scheduled_cancel"]);
 
 /** How many past payments the billing page lists. */
 const HISTORY = 24;
 
-type PriceIds = Partial<Record<Exclude<PlanId, "free">, string>>;
+type ProductIds = Partial<Record<PaidPlan, string>>;
 
 interface BillingConfig {
-  environment: "sandbox" | "production";
-  clientToken: string;
-  prices: PriceIds;
+  mode: "test" | "live";
+  products: ProductIds;
 }
 
 /**
- * Billing is on where Paddle is configured: the monthly price IDs, the
- * client-side token and the API key. The live system has none until Paddle has
- * verified the account, so it keeps saying "coming soon" while preview sells
- * against the sandbox.
+ * Billing is on where Creem is configured: the plans' product IDs and the API
+ * key. The live system has none until Creem has reviewed the store, so it
+ * keeps saying "coming soon" while preview sells in Creem's test mode.
  */
 function config(env: Env): BillingConfig | null {
-  if (!env.PADDLE_PRICES || !env.PADDLE_CLIENT_TOKEN || !env.PADDLE_API_KEY) return null;
-  let prices: PriceIds;
+  if (!env.CREEM_PRODUCTS || !env.CREEM_API_KEY) return null;
+  let products: ProductIds;
   try {
-    prices = JSON.parse(env.PADDLE_PRICES) as PriceIds;
+    products = JSON.parse(env.CREEM_PRODUCTS) as ProductIds;
   } catch {
     return null;
   }
-  return {
-    environment: env.PADDLE_ENV === "production" ? "production" : "sandbox",
-    clientToken: env.PADDLE_CLIENT_TOKEN,
-    prices,
-  };
+  return { mode: env.CREEM_ENV === "live" ? "live" : "test", products };
 }
 
 function requireConfig(env: Env): BillingConfig {
@@ -78,74 +73,79 @@ function requireConfig(env: Env): BillingConfig {
   return found;
 }
 
-function priceFor(billing: BillingConfig, plan: PlanId): string {
-  const id = plan === "free" ? undefined : billing.prices[plan];
+function productFor(billing: BillingConfig, plan: PlanId): string {
+  const id = plan === "free" ? undefined : billing.products[plan];
   if (!id) throw new HttpError(400, "bad_plan", "No such plan");
   return id;
 }
 
-/** Which plan a Paddle price stands for, or null for a price that isn't ours. */
-function planForPrice(billing: BillingConfig, priceId: string): Plan | null {
-  const found = Object.entries(billing.prices).find(([, id]) => id === priceId);
+/** Which plan a Creem product stands for, or null for a product that isn't ours. */
+function planForProduct(billing: BillingConfig, productId: string): Plan | null {
+  const found = Object.entries(billing.products).find(([, id]) => id === productId);
   return found ? (planById(found[0]) ?? null) : null;
 }
 
-function readPlan(body: Record<string, unknown>): Exclude<PlanId, "free"> {
+function readPlan(body: Record<string, unknown>): PaidPlan {
   if (body.plan !== "plus" && body.plan !== "pro") throw new HttpError(400, "bad_plan", "Pick a plan");
   return body.plan;
 }
 
-// ---- Paddle's API -----------------------------------------------------------
+// ---- Creem's API ------------------------------------------------------------
 
-/** A subscription as Paddle sends it, trimmed to what we read. */
-export interface PaddleSubscription {
+/** Creem sends a related object either whole or as its ID. */
+type Ref<T> = string | (T & { id: string });
+const idOf = (ref: Ref<object> | null | undefined) => (typeof ref === "string" ? ref : ref?.id);
+
+/** A subscription as Creem sends it, trimmed to what we read. */
+export interface CreemSubscription {
   id: string;
   status: string;
-  customer_id: string;
-  custom_data?: { office_id?: string } | null;
+  product: Ref<{ price?: number; currency?: string }>;
+  customer: Ref<{ email?: string }>;
+  items?: Array<{ product_id?: string }>;
+  /** What the checkout carried: the office it's for and who paid. */
+  metadata?: { office_id?: string; payer_id?: string } | null;
   updated_at: string;
-  next_billed_at?: string | null;
-  current_billing_period?: { ends_at: string } | null;
-  scheduled_change?: { action: string; effective_at: string } | null;
-  items: Array<{ price: { id: string } }>;
-  next_transaction?: { details?: { totals?: { grand_total?: string; currency_code?: string } } } | null;
+  current_period_end_date?: string | null;
+  next_transaction_date?: string | null;
 }
 
-interface PaddleTransaction {
+interface CreemTransaction {
+  id: string;
+  amount: number;
+  amount_paid?: number;
+  currency: string;
+  status: string;
+  refunded_amount?: number;
+  subscription?: string | null;
+  created_at: number;
+}
+
+interface CreemCheckout {
   id: string;
   status: string;
-  subscription_id: string | null;
-  custom_data?: { office_id?: string } | null;
-  created_at: string;
-  billed_at: string | null;
-  items?: Array<{ price?: { id: string } }>;
-  details?: { totals?: { grand_total?: string; currency_code?: string } };
-  adjustments_totals?: { breakdown?: { refund?: string } } | null;
-  payments?: Array<{
-    status: string;
-    method_details?: { type?: string; card?: { type?: string; last4?: string; expiry_month?: number; expiry_year?: number } | null } | null;
-  }>;
+  metadata?: { office_id?: string } | null;
+  subscription?: Ref<CreemSubscription> | null;
 }
 
-async function paddle<T>(env: Env, method: string, path: string, body?: unknown): Promise<T> {
+async function creem<T>(env: Env, method: string, path: string, body?: unknown): Promise<T> {
   const billing = requireConfig(env);
-  const base = billing.environment === "production" ? "https://api.paddle.com" : "https://sandbox-api.paddle.com";
+  const base = billing.mode === "live" ? "https://api.creem.io" : "https://test-api.creem.io";
   const response = await fetch(`${base}${path}`, {
     method,
-    headers: {
-      Authorization: `Bearer ${env.PADDLE_API_KEY}`,
-      "Content-Type": "application/json",
-      "Paddle-Version": "1",
-    },
+    headers: { "x-api-key": env.CREEM_API_KEY!, ...(body === undefined ? {} : { "Content-Type": "application/json" }) },
     body: body === undefined ? undefined : JSON.stringify(body),
   });
-  const payload = (await response.json().catch(() => null)) as { data?: T; error?: { code?: string; detail?: string } } | null;
-  if (!response.ok || !payload?.data) {
-    console.error("paddle", method, path, response.status, payload?.error?.code, payload?.error?.detail);
+  const payload = (await response.json().catch(() => null)) as (T & { trace_id?: string; message?: unknown }) | null;
+  if (!response.ok || !payload) {
+    console.error("creem", method, path, response.status, payload?.trace_id, payload?.message);
     throw new HttpError(502, "billing_unavailable", "Couldn't reach the payment provider. Try again in a moment.");
   }
-  return payload.data;
+  return payload;
 }
+
+const getSubscription = (env: Env, id: string) =>
+  creem<CreemSubscription>(env, "GET", `/v1/subscriptions?${new URLSearchParams({ subscription_id: id })}`);
 
 // ---- The office's side ------------------------------------------------------
 
@@ -158,11 +158,12 @@ interface SubscriptionRow {
   current_period_end: number | null;
   cancel_at: number | null;
   changed_at: number;
+  payer_id: string | null;
 }
 
 async function subscriptionOf(env: Env, officeId: string): Promise<SubscriptionRow | null> {
   return env.DB.prepare(
-    `SELECT office_id, provider_customer_id, provider_subscription_id, plan, status, current_period_end, cancel_at, changed_at
+    `SELECT office_id, provider_customer_id, provider_subscription_id, plan, status, current_period_end, cancel_at, changed_at, payer_id
      FROM subscriptions WHERE office_id = ?`,
   )
     .bind(officeId)
@@ -184,18 +185,20 @@ async function requireLive(env: Env, officeId: string): Promise<SubscriptionRow 
 const time = (iso: string | null | undefined) => (iso ? Date.parse(iso) : null);
 
 /**
- * Brings an office in line with a subscription Paddle vouches for. Only the
+ * Brings an office in line with a subscription Creem vouches for. Only the
  * newest state wins: an event that arrives late, or a reply that raced a
- * webhook, never undoes a later change. Returns false when it was ignored.
+ * webhook, never undoes a later change. `forOffice` is the office a checkout
+ * we checked was for, when the subscription doesn't say. Returns false when
+ * it was ignored.
  */
-export async function applySubscription(env: Env, sub: PaddleSubscription): Promise<boolean> {
+export async function applySubscription(env: Env, sub: CreemSubscription, forOffice?: string): Promise<boolean> {
   const billing = config(env);
   if (!billing) return false;
 
-  const known = await env.DB.prepare("SELECT office_id, changed_at FROM subscriptions WHERE provider_subscription_id = ?")
+  const known = await env.DB.prepare("SELECT office_id FROM subscriptions WHERE provider_subscription_id = ?")
     .bind(sub.id)
-    .first<{ office_id: string; changed_at: number }>();
-  const officeId = sub.custom_data?.office_id ?? known?.office_id;
+    .first<{ office_id: string }>();
+  const officeId = sub.metadata?.office_id ?? forOffice ?? known?.office_id;
   if (!officeId) {
     console.warn("billing: subscription without an office", sub.id);
     return false;
@@ -214,35 +217,39 @@ export async function applySubscription(env: Env, sub: PaddleSubscription): Prom
     return false;
   }
 
-  const priced = planForPrice(billing, sub.items[0]?.price.id ?? "");
+  const productId = idOf(sub.product) ?? sub.items?.[0]?.product_id ?? "";
+  const priced = planForProduct(billing, productId);
   if (!priced) {
-    console.warn("billing: subscription on a price that isn't ours", sub.id);
+    console.warn("billing: subscription on a product that isn't ours", sub.id);
     return false;
   }
   const plan = holds ? priced : FREE;
-  const cancelAt = sub.scheduled_change?.action === "cancel" ? time(sub.scheduled_change.effective_at) : null;
+  const cancelAt = sub.status === "scheduled_cancel" ? time(sub.current_period_end_date) : null;
+  const payer = sub.metadata?.payer_id ?? (current?.provider_subscription_id === sub.id ? current.payer_id : null);
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status,
-         current_period_end, price_id, billing_interval, cancel_at, changed_at, updated_at)
-       VALUES (?, 'paddle', ?, ?, ?, ?, ?, ?, 'month', ?, ?, ?)
+         current_period_end, price_id, billing_interval, cancel_at, changed_at, payer_id, updated_at)
+       VALUES (?, 'creem', ?, ?, ?, ?, ?, ?, 'month', ?, ?, ?, ?)
        ON CONFLICT (office_id) DO UPDATE SET
+         provider = excluded.provider,
          provider_customer_id = excluded.provider_customer_id,
          provider_subscription_id = excluded.provider_subscription_id,
          plan = excluded.plan, status = excluded.status, current_period_end = excluded.current_period_end,
          price_id = excluded.price_id, billing_interval = excluded.billing_interval, cancel_at = excluded.cancel_at,
-         changed_at = excluded.changed_at, updated_at = excluded.updated_at`,
+         changed_at = excluded.changed_at, payer_id = excluded.payer_id, updated_at = excluded.updated_at`,
     ).bind(
       officeId,
-      sub.customer_id,
+      idOf(sub.customer) ?? null,
       sub.id,
       priced.id,
       sub.status,
-      time(sub.current_billing_period?.ends_at),
-      sub.items[0].price.id,
+      time(sub.current_period_end_date),
+      productId,
       cancelAt,
       changedAt,
+      payer,
       Date.now(),
     ),
     env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId),
@@ -271,14 +278,14 @@ export async function meetingSecondsThisMonth(env: Env, officeId: string): Promi
   return row?.meeting_seconds ?? 0;
 }
 
-/** What the office's billing settings show, from our own records: no call to Paddle. */
+/** What the office's billing settings show, from our own records: no call to Creem. */
 async function billingJson(env: Env, office: Office) {
   const [row, members, seconds] = await Promise.all([
     subscriptionOf(env, office.id),
     seatsUsed(env, office.id),
     meetingSecondsThisMonth(env, office.id),
   ]);
-  const live = row && row.provider_subscription_id && row.status !== "canceled";
+  const live = row && row.provider_subscription_id && HOLDS_PLAN.has(row.status);
   return {
     plan: office.plan,
     seats: office.seats,
@@ -297,91 +304,71 @@ async function billingJson(env: Env, office: Office) {
 }
 
 /** What a payment was, for the history: a payment, a refund, or one that didn't go through. */
-function paymentStatus(txn: PaddleTransaction): "paid" | "refunded" | "partly_refunded" | "failed" | "due" {
-  const total = Number(txn.details?.totals?.grand_total ?? 0);
-  const refunded = Number(txn.adjustments_totals?.breakdown?.refund ?? 0);
-  if (refunded > 0) return refunded >= total ? "refunded" : "partly_refunded";
-  if (txn.status === "past_due") return "failed";
-  if (txn.status === "completed" || txn.status === "paid") return "paid";
+function paymentStatus(txn: CreemTransaction): "paid" | "refunded" | "partly_refunded" | "failed" | "due" {
+  const refunded = txn.refunded_amount ?? 0;
+  if (txn.status === "refunded" || (refunded > 0 && refunded >= txn.amount)) return "refunded";
+  if (txn.status === "partialRefund" || refunded > 0) return "partly_refunded";
+  if (txn.status === "declined" || txn.status === "uncollectible" || txn.status === "chargedBack") return "failed";
+  if (txn.status === "paid") return "paid";
   return "due";
 }
 
 /**
- * The page's slower half, from Paddle: the next charge with its tax, the card
- * on file, and the office's past payments with their invoices.
+ * The page's slower half, from Creem: the next charge and the office's past
+ * payments. Creem keeps the card and the invoices in its customer portal.
  */
 async function detailsJson(env: Env, office: Office) {
-  const billing = requireConfig(env);
+  requireConfig(env);
   const row = await subscriptionOf(env, office.id);
   if (!row?.provider_customer_id) return { nextCharge: null, card: null, history: [] };
 
   const [sub, transactions] = await Promise.all([
     row.provider_subscription_id && HOLDS_PLAN.has(row.status)
-      ? paddle<PaddleSubscription>(env, "GET", `/subscriptions/${row.provider_subscription_id}?include=next_transaction`).catch(() => null)
+      ? getSubscription(env, row.provider_subscription_id).catch(() => null)
       : Promise.resolve(null),
-    paddle<PaddleTransaction[]>(
+    creem<{ items: CreemTransaction[] }>(
       env,
       "GET",
-      `/transactions?${new URLSearchParams({
-        customer_id: row.provider_customer_id,
-        status: "completed,paid,past_due",
-        order_by: "created_at[DESC]",
-        per_page: String(HISTORY),
-        include: "adjustments_totals",
-      })}`,
+      `/v1/transactions/search?${new URLSearchParams({ customer_id: row.provider_customer_id, page_size: String(HISTORY) })}`,
     ),
   ]);
-  // A payer's transactions for other offices stay theirs; card updates cost nothing and aren't payments.
-  const mine = transactions.filter(
-    (txn) =>
-      (txn.custom_data?.office_id === office.id || (txn.subscription_id !== null && txn.subscription_id === row.provider_subscription_id)) &&
-      Number(txn.details?.totals?.grand_total ?? 0) > 0,
-  );
+  // A payer's payments for other offices stay theirs.
+  const mine = transactions.items.filter((txn) => txn.subscription === row.provider_subscription_id && txn.amount > 0);
 
-  const totals = sub?.next_transaction?.details?.totals;
+  const product = sub && typeof sub.product === "object" ? sub.product : null;
   const nextCharge =
-    sub && !sub.scheduled_change && sub.next_billed_at && totals?.grand_total
-      ? { at: Date.parse(sub.next_billed_at), amount: Number(totals.grand_total), currency: totals.currency_code ?? "USD" }
+    sub && sub.status !== "scheduled_cancel" && sub.next_transaction_date && product?.price
+      ? { at: Date.parse(sub.next_transaction_date), amount: product.price, currency: product.currency ?? "USD" }
       : null;
-
-  const paidWith = mine.flatMap((txn) => txn.payments ?? []).find((payment) => payment.status === "captured" && payment.method_details);
-  const card = paidWith?.method_details?.card
-    ? {
-        brand: paidWith.method_details.card.type ?? "card",
-        last4: paidWith.method_details.card.last4 ?? "",
-        expires: paidWith.method_details.card.expiry_month
-          ? `${String(paidWith.method_details.card.expiry_month).padStart(2, "0")}/${String(paidWith.method_details.card.expiry_year ?? "").slice(-2)}`
-          : null,
-      }
-    : paidWith?.method_details?.type
-      ? { brand: paidWith.method_details.type, last4: "", expires: null }
-      : null;
-
   return {
     nextCharge,
-    card,
-    history: mine.map((txn) => ({
-      id: txn.id,
-      at: Date.parse(txn.billed_at ?? txn.created_at),
-      plan: planForPrice(billing, txn.items?.[0]?.price?.id ?? "")?.id ?? null,
-      amount: Number(txn.details?.totals?.grand_total ?? 0),
-      currency: txn.details?.totals?.currency_code ?? "USD",
-      status: paymentStatus(txn),
-      invoice: txn.status === "completed" || txn.status === "paid",
-    })),
+    card: null,
+    history: mine
+      .sort((a, b) => b.created_at - a.created_at)
+      .map((txn) => ({
+        id: txn.id,
+        at: txn.created_at,
+        // Creem's payments don't say which plan they were for (one can be a
+        // proration between two), so the history doesn't guess.
+        plan: null,
+        amount: txn.amount_paid ?? txn.amount,
+        currency: txn.currency,
+        status: paymentStatus(txn),
+        invoice: txn.status === "paid" || txn.status === "refunded" || txn.status === "partialRefund",
+      })),
   };
 }
 
 /**
- * A plan given by hand, from the admin view: no payment, no Paddle. Only for an
- * office that isn't paying through Paddle, so the two never disagree; a paid
+ * A plan given by hand, from the admin view: no payment, no Creem. Only for an
+ * office that isn't paying through Creem, so the two never disagree; a paid
  * plan is changed or cancelled the way its admins would.
  */
 export async function givePlan(env: Env, officeId: string, planId: string): Promise<void> {
   const plan = planById(planId);
   if (!plan) throw new HttpError(400, "bad_plan", "No such plan");
   if (await liveSubscription(env, officeId)) {
-    throw new HttpError(409, "has_subscription", "This office pays through Paddle; change its plan there");
+    throw new HttpError(409, "has_subscription", "This office pays through Creem; change its plan there");
   }
   await env.DB.prepare("UPDATE offices SET plan = ?, seats = ? WHERE id = ?").bind(plan.id, plan.seats, officeId).run();
   await realtime(env)
@@ -397,7 +384,7 @@ export async function endBillingForClosing(env: Env, officeId: string): Promise<
   const live = await liveSubscription(env, officeId);
   if (!live?.provider_subscription_id) return;
   if (!live.cancel_at) throw new HttpError(409, "cancel_plan_first", "Cancel this office's plan before closing it");
-  await paddle(env, "POST", `/subscriptions/${live.provider_subscription_id}/cancel`, { effective_from: "immediately" });
+  await creem(env, "POST", `/v1/subscriptions/${live.provider_subscription_id}/cancel`, { mode: "immediate" });
 }
 
 // ---- Webhooks ---------------------------------------------------------------
@@ -417,65 +404,63 @@ function sameText(a: string, b: string): boolean {
   return diff === 0;
 }
 
-/** Paddle-Signature is `ts=…;h1=…`, with more than one h1 while a secret is being rotated. */
-export async function verifySignature(secret: string, header: string | null, body: string, now = Date.now()): Promise<boolean> {
+/**
+ * `creem-signature` is the HMAC-SHA256 of the raw body, in hex. It carries no
+ * time, so a replayed delivery is caught by its event ID instead (below).
+ */
+export async function verifySignature(secret: string, header: string | null, body: string): Promise<boolean> {
   if (!header) return false;
-  const parts = header.split(";").map((part) => part.split("="));
-  const ts = parts.find(([key]) => key === "ts")?.[1];
-  const signatures = parts.filter(([key]) => key === "h1").map(([, value]) => value ?? "");
-  if (!ts || !signatures.length || !/^\d+$/.test(ts)) return false;
-  if (Math.abs(now / 1000 - Number(ts)) > SIGNATURE_TOLERANCE_S) return false;
-  const expected = await hmacHex(secret, `${ts}:${body}`);
-  return signatures.some((signature) => sameText(signature, expected));
+  return sameText(header.trim().toLowerCase(), await hmacHex(secret, body));
+}
+
+interface CreemEvent {
+  id: string;
+  eventType: string;
+  object: unknown;
 }
 
 async function webhook(env: Env, request: Request): Promise<Response> {
-  if (!env.PADDLE_WEBHOOK_SECRET) return new Response(null, { status: 503 });
+  if (!env.CREEM_WEBHOOK_SECRET) return new Response(null, { status: 503 });
   const body = await request.text();
-  if (!(await verifySignature(env.PADDLE_WEBHOOK_SECRET, request.headers.get("Paddle-Signature"), body))) {
+  if (!(await verifySignature(env.CREEM_WEBHOOK_SECRET, request.headers.get("creem-signature"), body))) {
     return new Response(null, { status: 401 });
   }
-  const event = JSON.parse(body) as { event_id: string; event_type: string; data: unknown };
+  const event = JSON.parse(body) as CreemEvent;
 
   // Seen before: done. The row goes in first, so two deliveries at once apply it once.
   const fresh = await env.DB.prepare("INSERT OR IGNORE INTO billing_events (id, type, received_at) VALUES (?, ?, ?)")
-    .bind(event.event_id, event.event_type, Date.now())
+    .bind(event.id, event.eventType, Date.now())
     .run();
   if (!fresh.meta.changes) return json({ ok: true, duplicate: true });
 
   try {
-    if (event.event_type.startsWith("subscription.")) {
-      await applySubscription(env, event.data as PaddleSubscription);
+    if (event.eventType.startsWith("subscription.")) {
+      await applySubscription(env, event.object as CreemSubscription);
+    } else if (event.eventType === "checkout.completed") {
+      // The first word of a new subscription, with the office it was bought for.
+      const checkout = event.object as CreemCheckout;
+      if (checkout.subscription && typeof checkout.subscription === "object") {
+        await applySubscription(env, checkout.subscription, checkout.metadata?.office_id);
+      }
     }
   } catch (error) {
-    // Let Paddle retry: forget the event so the retry isn't taken for a duplicate.
-    await env.DB.prepare("DELETE FROM billing_events WHERE id = ?").bind(event.event_id).run();
+    // Let Creem retry: forget the event so the retry isn't taken for a duplicate.
+    await env.DB.prepare("DELETE FROM billing_events WHERE id = ?").bind(event.id).run();
     throw error;
   }
   return json({ ok: true });
 }
 
-const TXN = /^txn_[a-z\d]{26}$/;
-
-/** A transaction of this office's, straight from Paddle; anything else is "no such". */
-async function officeTransaction(env: Env, officeId: string, transactionId: unknown): Promise<PaddleTransaction> {
-  if (typeof transactionId !== "string" || !TXN.test(transactionId)) throw new HttpError(400, "bad_transaction", "No such payment");
-  const txn = await paddle<PaddleTransaction>(env, "GET", `/transactions/${transactionId}`);
-  if (txn.custom_data?.office_id !== officeId) throw new HttpError(404, "bad_transaction", "No such payment");
-  return txn;
-}
+const CHECKOUT = /^ch_[A-Za-z\d]{8,40}$/;
 
 // ---- Routes -----------------------------------------------------------------
 
 export function billingRoutes(router: Router): void {
   router
-    // The plans, with prices and hours, and what the site needs to open Paddle's checkout.
+    // The plans, with prices and hours, and whether they're on sale here.
     .add("GET", "/v1/plans", async ({ env }) => {
       const billing = config(env);
-      return json({
-        plans: PLANS,
-        billing: billing ? { environment: billing.environment, clientToken: billing.clientToken } : null,
-      });
+      return json({ plans: PLANS, billing: billing ? { mode: billing.mode } : null });
     })
 
     .add("GET", "/v1/offices/:id/billing", async ({ request, env, ctx, params }) => {
@@ -490,15 +475,6 @@ export function billingRoutes(router: Router): void {
       return json(await detailsJson(env, office));
     })
 
-    // A payment's invoice: a PDF link from Paddle that lasts an hour.
-    .add("GET", "/v1/offices/:id/billing/invoices/:txn", async ({ request, env, ctx, params }) => {
-      const user = await requireUser(env, request, ctx);
-      const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const txn = await officeTransaction(env, office.id, params.txn);
-      const invoice = await paddle<{ url: string }>(env, "GET", `/transactions/${txn.id}/invoice`);
-      return json({ url: invoice.url });
-    })
-
     // A checkout for a free office, made here so the office it's for can't be forged.
     .add("POST", "/v1/offices/:id/billing/checkout", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
@@ -509,23 +485,32 @@ export function billingRoutes(router: Router): void {
         throw new HttpError(409, "has_subscription", "This office already has a plan; change it instead");
       }
       const earlier = await subscriptionOf(env, office.id);
-      const transaction = await paddle<{ id: string }>(env, "POST", "/transactions", {
-        items: [{ price_id: priceFor(billing, plan), quantity: 1 }],
-        custom_data: { office_id: office.id },
-        ...(earlier?.provider_customer_id ? { customer_id: earlier.provider_customer_id } : {}),
+      const customer = earlier?.provider_customer_id && earlier.payer_id === user.id
+        ? { id: earlier.provider_customer_id }
+        : user.email
+          ? { email: user.email }
+          : undefined;
+      const checkout = await creem<{ id: string; checkout_url: string }>(env, "POST", "/v1/checkouts", {
+        product_id: productFor(billing, plan),
+        units: 1,
+        request_id: office.id,
+        metadata: { office_id: office.id, payer_id: user.id },
+        ...(customer ? { customer } : {}),
       });
-      return json({ transactionId: transaction.id, email: user.email });
+      return json({ checkoutId: checkout.id, url: checkout.checkout_url });
     })
 
-    // Straight after paying: the plan lands from Paddle's own record of the checkout,
+    // Straight after paying: the plan lands from Creem's own record of the checkout,
     // without waiting for the webhook. The webhook still keeps it right afterwards.
     .add("POST", "/v1/offices/:id/billing/sync", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const txn = await officeTransaction(env, office.id, (await readJson(request)).transactionId);
-      if (txn.subscription_id) {
-        await applySubscription(env, await paddle<PaddleSubscription>(env, "GET", `/subscriptions/${txn.subscription_id}`));
-      }
+      const checkoutId = (await readJson(request)).checkoutId;
+      if (typeof checkoutId !== "string" || !CHECKOUT.test(checkoutId)) throw new HttpError(400, "bad_checkout", "No such checkout");
+      const checkout = await creem<CreemCheckout>(env, "GET", `/v1/checkouts?${new URLSearchParams({ checkout_id: checkoutId })}`);
+      if (checkout.metadata?.office_id !== office.id) throw new HttpError(404, "bad_checkout", "No such checkout");
+      const subscriptionId = idOf(checkout.subscription);
+      if (subscriptionId) await applySubscription(env, await getSubscription(env, subscriptionId), office.id);
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 
@@ -541,11 +526,11 @@ export function billingRoutes(router: Router): void {
         throw new HttpError(409, "too_many_members", `This office has ${members} members; ${plan} holds ${target.seats}`);
       }
       const live = await requireLive(env, office.id);
-      const sub = await paddle<PaddleSubscription>(env, "PATCH", `/subscriptions/${live.provider_subscription_id}`, {
-        items: [{ price_id: priceFor(billing, plan), quantity: 1 }],
-        proration_billing_mode: "prorated_immediately",
+      const sub = await creem<CreemSubscription>(env, "POST", `/v1/subscriptions/${live.provider_subscription_id}/upgrade`, {
+        product_id: productFor(billing, plan),
+        update_behavior: "proration-charge-immediately",
       });
-      await applySubscription(env, sub);
+      await applySubscription(env, sub, office.id);
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 
@@ -554,10 +539,10 @@ export function billingRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
       const live = await requireLive(env, office.id);
-      const sub = await paddle<PaddleSubscription>(env, "POST", `/subscriptions/${live.provider_subscription_id}/cancel`, {
-        effective_from: "next_billing_period",
+      const sub = await creem<CreemSubscription>(env, "POST", `/v1/subscriptions/${live.provider_subscription_id}/cancel`, {
+        mode: "scheduled",
       });
-      await applySubscription(env, sub);
+      await applySubscription(env, sub, office.id);
       return json(await billingJson(env, office));
     })
 
@@ -566,22 +551,24 @@ export function billingRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
       const live = await requireLive(env, office.id);
-      const sub = await paddle<PaddleSubscription>(env, "PATCH", `/subscriptions/${live.provider_subscription_id}`, {
-        scheduled_change: null,
-      });
-      await applySubscription(env, sub);
+      const sub = await creem<CreemSubscription>(env, "POST", `/v1/subscriptions/${live.provider_subscription_id}/resume`);
+      await applySubscription(env, sub, office.id);
       return json(await billingJson(env, office));
     })
 
-    // A new card for this office's plan only: a zero-amount checkout from Paddle,
-    // opened over the page like any other. No customer portal, which would show
-    // the payer's other subscriptions to whoever opened it.
-    .add("POST", "/v1/offices/:id/billing/payment-method", async ({ request, env, ctx, params }) => {
+    // The card and the invoices, in Creem's customer portal. The portal shows
+    // everything its customer buys through Creem, so only the person who paid
+    // for this office's plan opens it, not every admin.
+    .add("POST", "/v1/offices/:id/billing/portal", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const live = await requireLive(env, office.id);
-      const txn = await paddle<{ id: string }>(env, "GET", `/subscriptions/${live.provider_subscription_id}/update-payment-method-transaction`);
-      return json({ transactionId: txn.id });
+      const row = await subscriptionOf(env, office.id);
+      if (!row?.provider_customer_id) throw new HttpError(409, "no_subscription", "This office isn't on a paid plan");
+      if (row.payer_id !== user.id) throw new HttpError(403, "not_payer", "Only the person who pays for this plan can open its billing");
+      const links = await creem<{ customer_portal_link: string }>(env, "POST", "/v1/customers/billing", {
+        customer_id: row.provider_customer_id,
+      });
+      return json({ url: links.customer_portal_link });
     })
 
     .add("POST", "/v1/billing/webhook", async ({ env, request }) => webhook(env, request));

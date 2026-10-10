@@ -18,12 +18,11 @@ export default defineConfig(async () => ({
           REALTIME_URL: "ws://localhost:8788",
           TURN_KEY_ID: "test-turn-key",
           TURN_KEY_API_TOKEN: "test-turn-token",
-          // Billing against a Paddle that the tests stand in for (test/billing.test.ts).
-          PADDLE_ENV: "sandbox",
-          PADDLE_CLIENT_TOKEN: "test_client_token",
-          PADDLE_API_KEY: "test-paddle-key",
-          PADDLE_WEBHOOK_SECRET: "pdl_ntfset_test",
-          PADDLE_PRICES: JSON.stringify({ plus: "pri_plus_month", pro: "pri_pro_month" }),
+          // Billing against a Creem that the tests stand in for (test/billing.test.ts).
+          CREEM_ENV: "test",
+          CREEM_API_KEY: "creem_test_key",
+          CREEM_WEBHOOK_SECRET: "whsec_test",
+          CREEM_PRODUCTS: JSON.stringify({ plus: "prod_plus", pro: "prod_pro" }),
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
         workers: [

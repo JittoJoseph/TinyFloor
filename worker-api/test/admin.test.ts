@@ -139,7 +139,7 @@ describe("admin", () => {
       env.DB.prepare("UPDATE offices SET plan = 'plus', seats = 10 WHERE id = ?").bind(paid),
       env.DB.prepare(
         `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status, changed_at, updated_at)
-         VALUES (?, 'paddle', 'ctm_money', ?, 'plus', 'past_due', 0, 0)`,
+         VALUES (?, 'creem', 'ctm_money', ?, 'plus', 'past_due', 0, 0)`,
       ).bind(paid, `sub_money_${paid}`),
       env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(given),
     ]);
@@ -154,7 +154,7 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("gives an office a plan without payment, but never one that pays through Paddle", async () => {
+  it("gives an office a plan without payment, but never one that pays through Creem", async () => {
     const boss = await admin();
     const owner = await makeUser("Gift Owner");
     const id = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Gift Co" })).body.office.id;
@@ -168,7 +168,7 @@ describe("admin", () => {
 
     await env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
-       VALUES (?, 'paddle', ?, 'plus', 'active', 0, 0)`,
+       VALUES (?, 'creem', ?, 'plus', 'active', 0, 0)`,
     )
       .bind(id, `sub_gift_${id}`)
       .run();
@@ -208,7 +208,7 @@ describe("admin", () => {
     const id = (await call<{ office: { id: string } }>(payer, "POST", "/v1/offices", { name: "Paid Up" })).body.office.id;
     await env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
-       VALUES (?, 'paddle', ?, 'plus', 'active', 0, 0)`,
+       VALUES (?, 'creem', ?, 'plus', 'active', 0, 0)`,
     )
       .bind(id, `sub_payer_${id}`)
       .run();

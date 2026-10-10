@@ -94,7 +94,7 @@ each other (see `.env.example`).
   `web-shared/scripts/static-worker.mjs` is the worker in front of OpenNext (the
   app adds its shared office pages and its noindex).
 - **Packages:** each app lists only what it uses. The site has no Phaser and
-  no Paddle (checkout is `app-frontend/src/lib/checkout.ts`; the plan list it
+  no checkout code (checkout is `app-frontend/src/lib/checkout.ts`; the plan list it
   shows is shared).
 - **Public files:** `web-shared/public` is copied into each app's `public` at
   build time. The licensed art comes from R2: the app gets all of it, the site

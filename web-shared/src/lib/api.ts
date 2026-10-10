@@ -100,7 +100,7 @@ export interface AdminSummary {
   /** Those days, as YYYY-MM-DD. */
   signupDays: string[];
   plans: {
-    /** Offices paying through Paddle, by plan. */
+    /** Offices paying through Creem, by plan. */
     paid: Record<string, number>;
     /** Offices on a paid plan given by hand, without payment. */
     given: number;
@@ -132,7 +132,7 @@ export interface AdminOffice {
   members: number;
   /** When anyone in it was last around; null for an office nobody is in. */
   lastActiveAt: number | null;
-  /** The Paddle subscription's status while it holds the plan (active, trialing, past_due); null when nothing is paid. */
+  /** The Creem subscription's status while it holds the plan (active, trialing, past_due, scheduled_cancel); null when nothing is paid. */
   billing: string | null;
   cancelAt: number | null;
   /** Meeting seconds used this month. */
@@ -237,10 +237,10 @@ export interface Plan {
   price: number | null;
 }
 
-/** The plans, and — where paid plans are on — what Paddle.js needs to open a checkout. */
+/** The plans, and whether paid plans are on sale here (Creem's test mode or its live store). */
 export interface Plans {
   plans: Plan[];
-  billing: { environment: "sandbox" | "production"; clientToken: string } | null;
+  billing: { mode: "test" | "live" } | null;
 }
 
 /** An office's plan, as its admins see it in settings. */
@@ -253,7 +253,7 @@ export interface OfficeBilling {
   usage: { seconds: number; resetsAt: number };
   subscription: {
     plan: PlanId;
-    /** active, trialing, past_due (a card being retried) or paused. */
+    /** active, trialing, past_due (a card being retried) or scheduled_cancel. */
     status: string;
     renewsAt: number | null;
     /** Set once it's cancelled: the plan runs until then. */
@@ -272,7 +272,7 @@ export interface Payment {
   invoice: boolean;
 }
 
-/** The slower half of the billing page, from Paddle. */
+/** The slower half of the billing page, from Creem. Creem keeps the card itself, so `card` is null. */
 export interface BillingDetails {
   nextCharge: { at: number; amount: number; currency: string } | null;
   card: { brand: string; last4: string; expires: string | null } | null;
@@ -382,17 +382,15 @@ export const api = {
   // Paid plans (worker-api/src/billing.ts)
   plans: () => get<Plans>("/plans"),
   billing: (officeId: string) => get<OfficeBilling>(`/offices/${id(officeId)}/billing`),
-  /** A checkout made by the API for this office, to open in Paddle.js. */
   billingDetails: (officeId: string) => get<BillingDetails>(`/offices/${id(officeId)}/billing/details`),
-  /** A payment's invoice PDF: the link lasts an hour. */
-  invoice: (officeId: string, paymentId: string) => get<{ url: string }>(`/offices/${id(officeId)}/billing/invoices/${id(paymentId)}`),
-  /** A checkout for a new card on this office's plan only. */
-  paymentMethod: (officeId: string) => post<{ transactionId: string }>(`/offices/${id(officeId)}/billing/payment-method`),
+  /** Creem's customer portal (card and invoices), for the person who pays for the plan. */
+  billingPortal: (officeId: string) => post<{ url: string }>(`/offices/${id(officeId)}/billing/portal`),
+  /** A checkout made by the API for this office, to open over the page. */
   checkout: (officeId: string, plan: PlanId) =>
-    post<{ transactionId: string; email: string | null }>(`/offices/${id(officeId)}/billing/checkout`, { plan }),
-  /** After paying: the plan from Paddle's record of that checkout, without waiting for the webhook. */
-  syncCheckout: (officeId: string, transactionId: string) =>
-    post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { transactionId }),
+    post<{ checkoutId: string; url: string }>(`/offices/${id(officeId)}/billing/checkout`, { plan }),
+  /** After paying: the plan from Creem's record of that checkout, without waiting for the webhook. */
+  syncCheckout: (officeId: string, checkoutId: string) =>
+    post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { checkoutId }),
   changePlan: (officeId: string, plan: PlanId) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan }),
   cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
   resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),

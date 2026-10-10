@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * A paid plan's button on the pricing page. The page is the same everywhere,
- * but paid plans are only sold where Paddle is set up (preview now, live once
- * Paddle approves the account), so the button asks the API: on, it starts an
+ * but paid plans are only sold where Creem is set up (preview now, live once
+ * Creem has reviewed the store), so the button asks the API: on, it starts an
  * office with that plan picked; off, it says the plan is coming. Until the
  * answer is in, it holds its place without a label, so nothing jumps.
  */

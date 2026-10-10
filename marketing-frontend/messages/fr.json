@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Changez d'offre à tout moment",
-        "body": "Monter ou descendre prend effet tout de suite, et Paddle facture ou crédite la différence."
+        "body": "Monter ou descendre prend effet tout de suite, et Creem facture ou crédite la différence."
       },
       "hours": {
         "title": "Quand les heures sont épuisées",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Taxes au paiement",
-        "body": "Les prix sont en dollars américains. Paddle, notre revendeur, ajoute la TVA ou la taxe de vente éventuelle au paiement."
+        "body": "Les prix sont en dollars américains. Creem, notre revendeur, ajoute la TVA ou la taxe de vente éventuelle au paiement."
       },
       "bigger": {
         "title": "Plus de 25 personnes ?",

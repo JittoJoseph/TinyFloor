@@ -1,7 +1,8 @@
 # 14. Plans by people and meeting hours
 
 Decided on 28 September 2026 and built the same day. Replaces the seats-only
-tiers; the Paddle side in `09` stands.
+tiers. Billing moved from Paddle to Creem on 10 October 2026 (`09`); where
+this says Paddle, read Creem.
 
 ## Why a second limit
 

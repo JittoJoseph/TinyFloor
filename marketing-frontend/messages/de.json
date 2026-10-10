@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Plan jederzeit wechseln",
-        "body": "Ein Wechsel nach oben oder unten gilt sofort, und Paddle berechnet oder erstattet die Differenz."
+        "body": "Ein Wechsel nach oben oder unten gilt sofort, und Creem berechnet oder erstattet die Differenz."
       },
       "hours": {
         "title": "Wenn die Stunden aufgebraucht sind",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Steuern an der Kasse",
-        "body": "Die Preise sind in US-Dollar. Paddle, unser Wiederverkäufer, schlägt beim Bezahlen die Umsatz- oder Mehrwertsteuer auf."
+        "body": "Die Preise sind in US-Dollar. Creem, unser Wiederverkäufer, schlägt beim Bezahlen die Umsatz- oder Mehrwertsteuer auf."
       },
       "bigger": {
         "title": "Mehr als 25 Personen?",

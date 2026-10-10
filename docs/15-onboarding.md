@@ -154,8 +154,9 @@ Three steps in one door, each asking one thing:
      looks like a cap shouldn't be the first thing they read. It is still one
      tap away, and on the pricing page, Paddle's checkout and the terms.
 
-Where paid plans aren't on yet (production, until Paddle approves the
-account), naming the office is the only step.
+Where paid plans aren't on yet (production, until Creem approves the
+store), naming the office is the only step. Billing moved from Paddle to
+Creem on 10 October 2026 (docs/09); Paddle below means Creem now.
 
 ## Plan and billing, once they pay
 

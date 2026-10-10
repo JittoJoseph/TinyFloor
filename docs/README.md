@@ -20,7 +20,7 @@ code and by git history, not here.
 |---|---|
 | [05-pricing.md](05-pricing.md) | The first look at tiers, the free office, fair use on group video |
 | [08-pricing-decision.md](08-pricing-decision.md) | Competitors' prices, measured costs at scale, the first tiers |
-| [09-billing.md](09-billing.md) | Who takes the money (Paddle, as an individual in India) and how billing is built |
+| [09-billing.md](09-billing.md) | Who takes the money (Creem, as an individual in India) and how billing is built |
 | [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours: the numbers, and what happens past them |
 | [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
 | [19-help-and-feedback.md](19-help-and-feedback.md) | Tickets with the TinyFloor team in Chat, on Discord and in the admin inbox |

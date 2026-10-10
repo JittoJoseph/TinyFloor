@@ -2,7 +2,7 @@ import { env, exports } from "cloudflare:workers";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { call, fakeRealtime, makeUser, type TestUser } from "./helpers";
 
-const SECRET = "pdl_ntfset_test";
+const SECRET = "whsec_test";
 
 async function officeOf(admin: TestUser, name = "Studio") {
   const { body } = await call<{ office: { id: string } }>(admin, "POST", "/v1/offices", { name });
@@ -18,53 +18,63 @@ async function addMembers(officeId: string, count: number) {
   }
 }
 
+async function addAdmin(officeId: string, name = "Cy") {
+  const admin = await makeUser(name);
+  await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'admin', ?)")
+    .bind(officeId, admin.id, Date.now())
+    .run();
+  return admin;
+}
+
 async function officeRow(officeId: string) {
   return env.DB.prepare("SELECT plan, seats FROM offices WHERE id = ?").bind(officeId).first<{ plan: string; seats: number }>();
 }
 
 let events = 0;
+/** A subscription as Creem sends it, with the product and customer expanded. */
 function subscription(officeId: string, overrides: Record<string, unknown> = {}) {
   return {
     id: `sub_${officeId}`,
+    object: "subscription",
     status: "active",
-    customer_id: "ctm_1",
-    custom_data: { office_id: officeId },
+    product: { id: "prod_plus", price: 1900, currency: "USD" },
+    customer: { id: "cust_1", email: "ada@example.com" },
+    metadata: { office_id: officeId },
     updated_at: new Date(Date.now() + events * 1000).toISOString(),
-    current_billing_period: { starts_at: "2026-09-28T00:00:00Z", ends_at: "2026-10-28T00:00:00Z" },
-    scheduled_change: null,
-    items: [{ price: { id: "pri_plus_month" }, quantity: 1 }],
+    current_period_end_date: "2026-11-10T00:00:00.000Z",
+    next_transaction_date: "2026-11-10T00:00:00.000Z",
     ...overrides,
   };
 }
 
-async function sign(body: string, ts = Math.floor(Date.now() / 1000), secret = SECRET) {
+async function sign(body: string, secret = SECRET) {
   const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`${ts}:${body}`));
-  return `ts=${ts};h1=${[...new Uint8Array(mac)].map((b) => b.toString(16).padStart(2, "0")).join("")}`;
+  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(body));
+  return [...new Uint8Array(mac)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-/** A webhook as Paddle sends it: no Origin, no cookie, just the signature. */
-async function deliver(type: string, data: unknown, options: { eventId?: string; signature?: string } = {}) {
+/** A webhook as Creem sends it: no Origin, no cookie, just the signature. */
+async function deliver(type: string, object: unknown, options: { eventId?: string; signature?: string } = {}) {
   events++;
-  const body = JSON.stringify({ event_id: options.eventId ?? `evt_${events}_${crypto.randomUUID()}`, event_type: type, occurred_at: new Date().toISOString(), data });
+  const body = JSON.stringify({ id: options.eventId ?? `evt_${events}_${crypto.randomUUID()}`, eventType: type, created_at: Date.now(), object });
   const response = await exports.default.fetch("https://api.tinyfloor.com/v1/billing/webhook", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Paddle-Signature": options.signature ?? (await sign(body)) },
+    headers: { "Content-Type": "application/json", "creem-signature": options.signature ?? (await sign(body)) },
     body,
   });
   return { status: response.status, body: response.status === 200 ? await response.json() : null };
 }
 
-/** Paddle's API, answered by the test: every call is recorded. */
-function paddleApi(reply: (method: string, path: string, body: unknown) => unknown) {
+/** Creem's API, answered by the test: every call is recorded. */
+function creemApi(reply: (method: string, path: string, body: unknown, query: URLSearchParams) => unknown) {
   const calls: Array<{ method: string; path: string; body: unknown; query?: string }> = [];
   const real = globalThis.fetch;
   vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
     const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
-    if (url.hostname !== "sandbox-api.paddle.com") return real(input, init);
+    if (url.hostname !== "test-api.creem.io") return real(input, init);
     const body = init?.body ? JSON.parse(String(init.body)) : undefined;
     calls.push({ method: init?.method ?? "GET", path: url.pathname, body, ...(url.search ? { query: url.search } : {}) });
-    return Response.json({ data: reply(init?.method ?? "GET", url.pathname, body) });
+    return Response.json(reply(init?.method ?? "GET", url.pathname, body, url.searchParams));
   });
   return calls;
 }
@@ -72,7 +82,7 @@ function paddleApi(reply: (method: string, path: string, body: unknown) => unkno
 afterEach(() => vi.restoreAllMocks());
 
 describe("billing", () => {
-  it("lists the plans, with what the site needs to open a checkout", async () => {
+  it("lists the plans, and says paid plans are on sale here", async () => {
     const { status, body } = await call<{ plans: Array<{ id: string; seats: number; meetingHours: number; price: number | null }>; billing: unknown }>(
       null,
       "GET",
@@ -84,19 +94,29 @@ describe("billing", () => {
       ["plus", 10, 30, 1900],
       ["pro", 25, 60, 4900],
     ]);
-    expect(body.billing).toEqual({ environment: "sandbox", clientToken: "test_client_token" });
+    expect(body.billing).toEqual({ mode: "test" });
   });
 
   it("makes the checkout itself, for the office the admin is in", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const calls = paddleApi(() => ({ id: "txn_1" }));
+    const calls = creemApi(() => ({ id: "ch_1abcdefgh", checkout_url: "https://creem.io/test/checkout/prod_plus/ch_1abcdefgh" }));
 
     const { status, body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" });
     expect(status).toBe(200);
-    expect(body).toMatchObject({ transactionId: "txn_1" });
+    expect(body).toEqual({ checkoutId: "ch_1abcdefgh", url: "https://creem.io/test/checkout/prod_plus/ch_1abcdefgh" });
     expect(calls).toEqual([
-      { method: "POST", path: "/transactions", body: { items: [{ price_id: "pri_plus_month", quantity: 1 }], custom_data: { office_id: officeId } } },
+      {
+        method: "POST",
+        path: "/v1/checkouts",
+        body: {
+          product_id: "prod_plus",
+          units: 1,
+          request_id: officeId,
+          metadata: { office_id: officeId, payer_id: ada.id },
+          customer: { email: expect.stringContaining("@") },
+        },
+      },
     ]);
   });
 
@@ -107,26 +127,38 @@ describe("billing", () => {
     await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)")
       .bind(officeId, bo.id, Date.now())
       .run();
-    paddleApi(() => ({ id: "txn_1" }));
+    creemApi(() => ({ id: "ch_1abcdefgh", checkout_url: "https://creem.io/x" }));
 
     expect((await call(bo, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" })).status).toBe(403);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "free" })).status).toBe(400);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "enterprise" })).status).toBe(400);
   });
 
-  it("puts the office on its plan when Paddle says the subscription started", async () => {
+  it("puts the office on its plan when Creem says the subscription started", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
 
-    const { status } = await deliver("subscription.created", subscription(officeId));
+    const { status } = await deliver("subscription.active", subscription(officeId));
     expect(status).toBe(200);
     expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
 
     const billing = await call<{ subscription: Record<string, unknown>; meetingHours: number }>(ada, "GET", `/v1/offices/${officeId}/billing`);
-    expect(billing.body.subscription).toMatchObject({ plan: "plus", status: "active", renewsAt: Date.parse("2026-10-28T00:00:00Z") });
+    expect(billing.body.subscription).toMatchObject({ plan: "plus", status: "active", renewsAt: Date.parse("2026-11-10T00:00:00Z") });
     expect(billing.body.meetingHours).toBe(30);
     // The room hears the plan's hours straight away, so a pause lifts without waiting for a new ticket.
     expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 30]);
+  });
+
+  it("takes the office from the checkout when the subscription doesn't carry it", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    await deliver("checkout.completed", {
+      id: "ch_1abcdefgh",
+      status: "completed",
+      metadata: { office_id: officeId, payer_id: ada.id },
+      subscription: subscription(officeId, { metadata: {} }),
+    });
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
   });
 
   it("shows the meeting hours the office has used this month", async () => {
@@ -144,40 +176,39 @@ describe("billing", () => {
     });
   });
 
-  it("turns away webhooks that aren't signed by Paddle", async () => {
+  it("turns away webhooks that aren't signed by Creem", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     const data = subscription(officeId);
 
-    expect((await deliver("subscription.created", data, { signature: "ts=1;h1=abc" })).status).toBe(401);
-    expect((await deliver("subscription.created", data, { signature: await sign("{}") })).status).toBe(401);
-    const old = Math.floor(Date.now() / 1000) - 3600;
-    const body = JSON.stringify({ event_id: "evt_old", event_type: "subscription.created", data });
-    const replay = await exports.default.fetch("https://api.tinyfloor.com/v1/billing/webhook", {
+    expect((await deliver("subscription.active", data, { signature: "abc" })).status).toBe(401);
+    expect((await deliver("subscription.active", data, { signature: await sign("{}") })).status).toBe(401);
+    const body = JSON.stringify({ id: "evt_other", eventType: "subscription.active", object: data });
+    const wrongKey = await exports.default.fetch("https://api.tinyfloor.com/v1/billing/webhook", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Paddle-Signature": await sign(body, old) },
+      headers: { "Content-Type": "application/json", "creem-signature": await sign(body, "someone-elses-secret") },
       body,
     });
-    expect(replay.status).toBe(401);
+    expect(wrongKey.status).toBe(401);
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
   });
 
   it("applies each event once, and never lets an older one undo a newer", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const newer = subscription(officeId, { items: [{ price: { id: "pri_pro_month" } }], updated_at: "2026-09-28T12:00:00Z" });
-    const older = subscription(officeId, { updated_at: "2026-09-28T11:00:00Z" });
+    const newer = subscription(officeId, { product: { id: "prod_pro" }, updated_at: "2026-10-10T12:00:00Z" });
+    const older = subscription(officeId, { updated_at: "2026-10-10T11:00:00Z" });
 
-    await deliver("subscription.updated", newer, { eventId: "evt_same" });
-    expect((await deliver("subscription.updated", newer, { eventId: "evt_same" })).body).toMatchObject({ duplicate: true });
-    await deliver("subscription.updated", older);
+    await deliver("subscription.update", newer, { eventId: "evt_same" });
+    expect((await deliver("subscription.update", newer, { eventId: "evt_same" })).body).toMatchObject({ duplicate: true });
+    await deliver("subscription.update", older);
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
 
   it("keeps the plan while a card is retried, and goes back to free once it's cancelled", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
+    await deliver("subscription.active", subscription(officeId));
     await deliver("subscription.past_due", subscription(officeId, { status: "past_due" }));
     expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
 
@@ -188,11 +219,21 @@ describe("billing", () => {
     expect(billing.body.subscription).toBeNull();
   });
 
+  it("goes back to free when a period ends unpaid, and back up when it's paid after all", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    await deliver("subscription.active", subscription(officeId));
+    await deliver("subscription.expired", subscription(officeId, { status: "unpaid" }));
+    expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
+    await deliver("subscription.paid", subscription(officeId, { status: "active" }));
+    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+  });
+
   it("doesn't let an old subscription ending take the plan from the current one", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId, { id: `old_${officeId}` }));
-    await deliver("subscription.created", subscription(officeId, { id: `new_${officeId}`, items: [{ price: { id: "pri_pro_month" } }] }));
+    await deliver("subscription.active", subscription(officeId, { id: `old_${officeId}` }));
+    await deliver("subscription.active", subscription(officeId, { id: `new_${officeId}`, product: { id: "prod_pro" } }));
     await deliver("subscription.canceled", subscription(officeId, { id: `old_${officeId}`, status: "canceled" }));
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
@@ -200,20 +241,20 @@ describe("billing", () => {
   it("won't sell a second plan to an office that has one", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
-    paddleApi(() => ({ id: "txn_2" }));
+    await deliver("subscription.active", subscription(officeId));
+    creemApi(() => ({ id: "ch_2abcdefgh", checkout_url: "https://creem.io/x" }));
     const { status, body } = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "pro" });
     expect(status).toBe(409);
     expect(body.error.code).toBe("has_subscription");
   });
 
-  it("changes plan through Paddle, and not below the members the office has", async () => {
+  it("changes plan through Creem, and not below the members the office has", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
+    await deliver("subscription.active", subscription(officeId));
 
-    const calls = paddleApi((_method, _path, body) =>
-      subscription(officeId, { items: [{ price: { id: (body as { items: Array<{ price_id: string }> }).items[0].price_id } }], updated_at: new Date(Date.now() + 60_000).toISOString() }),
+    const calls = creemApi((_method, _path, body) =>
+      subscription(officeId, { product: { id: (body as { product_id: string }).product_id }, updated_at: new Date(Date.now() + 60_000).toISOString() }),
     );
     const { status, body } = await call<{ plan: string; seats: number; meetingHours: number }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, {
       plan: "pro",
@@ -221,9 +262,9 @@ describe("billing", () => {
     expect(status).toBe(200);
     expect(body).toMatchObject({ plan: "pro", seats: 25, meetingHours: 60 });
     expect(calls[0]).toEqual({
-      method: "PATCH",
-      path: `/subscriptions/sub_${officeId}`,
-      body: { items: [{ price_id: "pri_pro_month", quantity: 1 }], proration_billing_mode: "prorated_immediately" },
+      method: "POST",
+      path: `/v1/subscriptions/sub_${officeId}/upgrade`,
+      body: { product_id: "prod_pro", update_behavior: "proration-charge-immediately" },
     });
 
     await addMembers(officeId, 10); // 11 members now
@@ -235,28 +276,31 @@ describe("billing", () => {
   it("cancels at the end of the period, and can take that back", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
-    const later = () => new Date(Date.now() + 120_000).toISOString();
+    await deliver("subscription.active", subscription(officeId));
+    const later = (ms: number) => new Date(Date.now() + ms).toISOString();
 
-    paddleApi(() => subscription(officeId, { scheduled_change: { action: "cancel", effective_at: "2026-10-28T00:00:00Z" }, updated_at: later() }));
+    const calls = creemApi(() => subscription(officeId, { status: "scheduled_cancel", updated_at: later(120_000) }));
     const cancelled = await call<{ plan: string; subscription: Record<string, unknown> }>(ada, "POST", `/v1/offices/${officeId}/billing/cancel`);
+    expect(calls[0]).toEqual({ method: "POST", path: `/v1/subscriptions/sub_${officeId}/cancel`, body: { mode: "scheduled" } });
+    // Still on the plan until the period it paid for is over.
     expect(cancelled.body.plan).toBe("plus");
-    expect(cancelled.body.subscription).toMatchObject({ endsAt: Date.parse("2026-10-28T00:00:00Z"), renewsAt: null });
+    expect(cancelled.body.subscription).toMatchObject({ endsAt: Date.parse("2026-11-10T00:00:00Z"), renewsAt: null });
 
     vi.restoreAllMocks();
-    paddleApi(() => subscription(officeId, { updated_at: new Date(Date.now() + 180_000).toISOString() }));
+    creemApi(() => subscription(officeId, { updated_at: later(180_000) }));
     const resumed = await call<{ subscription: Record<string, unknown> }>(ada, "POST", `/v1/offices/${officeId}/billing/resume`);
     expect(resumed.body.subscription).toMatchObject({ endsAt: null });
   });
 
-  it("puts the plan on straight after checkout, from Paddle's own record of it", async () => {
+  it("puts the plan on straight after checkout, from Creem's own record of it", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const txn = "txn_01m3kh601kc6hcnpyjcn3rqte6";
-    paddleApi((_method, path) =>
-      path.startsWith("/transactions/") ? { subscription_id: `sub_${officeId}`, custom_data: { office_id: officeId } } : subscription(officeId),
+    creemApi((_method, path) =>
+      path === "/v1/checkouts"
+        ? { id: "ch_1abcdefgh", status: "completed", metadata: { office_id: officeId }, subscription: `sub_${officeId}` }
+        : subscription(officeId),
     );
-    const { status, body } = await call<{ plan: string; seats: number }>(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { transactionId: txn });
+    const { status, body } = await call<{ plan: string; seats: number }>(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { checkoutId: "ch_1abcdefgh" });
     expect(status).toBe(200);
     expect(body).toMatchObject({ plan: "plus", seats: 10 });
   });
@@ -264,9 +308,10 @@ describe("billing", () => {
   it("won't sync a checkout that was for another office", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    paddleApi(() => ({ subscription_id: "sub_other", custom_data: { office_id: "someone-else" } }));
-    const { status } = await call(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { transactionId: "txn_01m3kh601kc6hcnpyjcn3rqte6" });
+    creemApi(() => ({ id: "ch_1abcdefgh", status: "completed", metadata: { office_id: "someone-else" }, subscription: "sub_other" }));
+    const { status } = await call(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { checkoutId: "ch_1abcdefgh" });
     expect(status).toBe(404);
+    expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { checkoutId: "../products" })).status).toBe(400);
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
   });
 
@@ -277,41 +322,37 @@ describe("billing", () => {
     await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)")
       .bind(officeId, bo.id, Date.now())
       .run();
-    for (const path of ["billing", "billing/details", "billing/invoices/txn_01m3kh601kc6hcnpyjcn3rqte6", "billing/cancel", "billing/payment-method"]) {
-      const method = path === "billing/cancel" || path === "billing/payment-method" ? "POST" : "GET";
+    for (const path of ["billing", "billing/details", "billing/cancel", "billing/portal"]) {
+      const method = path === "billing/cancel" || path === "billing/portal" ? "POST" : "GET";
       expect((await call(bo, method, `/v1/offices/${officeId}/${path}`)).status).toBe(403);
     }
   });
 
-  it("lists this office's payments, its card and the next charge, and nobody else's", async () => {
+  it("lists this subscription's payments and the next charge, and nobody else's", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
-    const payment = (id: string, office: string, overrides: Record<string, unknown> = {}) => ({
+    await deliver("subscription.active", subscription(officeId));
+    const payment = (id: string, sub: string, overrides: Record<string, unknown> = {}) => ({
       id,
-      status: "completed",
-      subscription_id: office === officeId ? `sub_${officeId}` : "sub_other",
-      custom_data: { office_id: office },
-      created_at: "2026-09-28T10:00:00Z",
-      billed_at: "2026-09-28T10:00:00Z",
-      items: [{ price: { id: "pri_plus_month" } }],
-      details: { totals: { grand_total: "2280", currency_code: "USD" } },
-      adjustments_totals: null,
-      payments: [{ status: "captured", method_details: { type: "card", card: { type: "visa", last4: "4242", expiry_month: 3, expiry_year: 2029 } } }],
+      amount: 2280,
+      amount_paid: 2280,
+      currency: "USD",
+      status: "paid",
+      subscription: sub,
+      customer: "cust_1",
+      created_at: Date.parse("2026-10-10T10:00:00Z"),
       ...overrides,
     });
-    const calls = paddleApi((_method, path) =>
-      path === "/transactions"
-        ? [
-            payment("txn_refunded", officeId, { adjustments_totals: { breakdown: { refund: "2280" } } }),
-            payment("txn_elsewhere", "another-office"),
-            payment("txn_card_update", officeId, { details: { totals: { grand_total: "0", currency_code: "USD" } } }),
-            payment("txn_first", officeId, { billed_at: "2026-08-28T10:00:00Z" }),
-          ]
-        : subscription(officeId, {
-            next_billed_at: "2026-10-28T00:00:00Z",
-            next_transaction: { details: { totals: { grand_total: "2280", currency_code: "USD" } } },
-          }),
+    const calls = creemApi((_method, path) =>
+      path === "/v1/transactions/search"
+        ? {
+            items: [
+              payment("tran_first", `sub_${officeId}`, { created_at: Date.parse("2026-09-10T10:00:00Z") }),
+              payment("tran_elsewhere", "sub_other"),
+              payment("tran_refunded", `sub_${officeId}`, { status: "refunded", refunded_amount: 2280 }),
+            ],
+          }
+        : subscription(officeId),
     );
 
     const { status, body } = await call<{ nextCharge: unknown; card: unknown; history: Array<Record<string, unknown>> }>(
@@ -320,53 +361,44 @@ describe("billing", () => {
       `/v1/offices/${officeId}/billing/details`,
     );
     expect(status).toBe(200);
-    expect(body.nextCharge).toEqual({ at: Date.parse("2026-10-28T00:00:00Z"), amount: 2280, currency: "USD" });
-    expect(body.card).toEqual({ brand: "visa", last4: "4242", expires: "03/29" });
+    expect(body.nextCharge).toEqual({ at: Date.parse("2026-11-10T00:00:00Z"), amount: 1900, currency: "USD" });
+    expect(body.card).toBeNull();
     expect(body.history.map((row) => [row.id, row.status, row.plan, row.invoice])).toEqual([
-      ["txn_refunded", "refunded", "plus", true],
-      ["txn_first", "paid", "plus", true],
+      ["tran_refunded", "refunded", null, true],
+      ["tran_first", "paid", null, true],
     ]);
-    expect(calls.find((one) => one.path === "/transactions")?.query).toContain("customer_id=ctm_1");
+    expect(calls.find((one) => one.path === "/v1/transactions/search")?.query).toContain("customer_id=cust_1");
   });
 
-  it("hands out invoices for this office's payments only", async () => {
+  it("opens Creem's billing portal for the person who paid, and no other admin", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const mine = "txn_01m3kh601kc6hcnpyjcn3rqte6";
-    paddleApi((_method, path) =>
-      path.endsWith("/invoice")
-        ? { url: "https://sandbox-invoice.paddle.com/pdf" }
-        : { id: path.split("/")[2], custom_data: { office_id: path.includes(mine) ? officeId : "another-office" } },
-    );
-    const own = await call<{ url: string }>(ada, "GET", `/v1/offices/${officeId}/billing/invoices/${mine}`);
-    expect(own.body).toEqual({ url: "https://sandbox-invoice.paddle.com/pdf" });
-    expect((await call(ada, "GET", `/v1/offices/${officeId}/billing/invoices/txn_01m3kh601kc6hcnpyjcn3rqte7`)).status).toBe(404);
-    expect((await call(ada, "GET", `/v1/offices/${officeId}/billing/invoices/not-a-payment`)).status).toBe(400);
-  });
+    const cy = await addAdmin(officeId);
+    await deliver("subscription.active", subscription(officeId, { metadata: { office_id: officeId, payer_id: ada.id } }));
+    const calls = creemApi(() => ({ customer_portal_link: "https://creem.io/my-orders/login/xyz" }));
 
-  it("updates the card through this subscription's own checkout", async () => {
-    const ada = await makeUser("Ada");
-    const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
-    const calls = paddleApi(() => ({ id: "txn_update" }));
-    const { body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/payment-method`);
-    expect(body).toEqual({ transactionId: "txn_update" });
-    expect(calls[0]).toMatchObject({ method: "GET", path: `/subscriptions/sub_${officeId}/update-payment-method-transaction` });
+    const own = await call<{ url: string }>(ada, "POST", `/v1/offices/${officeId}/billing/portal`);
+    expect(own.body).toEqual({ url: "https://creem.io/my-orders/login/xyz" });
+    expect(calls).toEqual([{ method: "POST", path: "/v1/customers/billing", body: { customer_id: "cust_1" } }]);
+
+    const other = await call<{ error: { code: string } }>(cy, "POST", `/v1/offices/${officeId}/billing/portal`);
+    expect(other.status).toBe(403);
+    expect(other.body.error.code).toBe("not_payer");
   });
 
   it("won't close an office whose plan still renews, and stops a cancelled one for good", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await deliver("subscription.created", subscription(officeId));
+    await deliver("subscription.active", subscription(officeId));
 
     const refused = await call<{ error: { code: string } }>(ada, "DELETE", `/v1/offices/${officeId}`);
     expect(refused.status).toBe(409);
     expect(refused.body.error.code).toBe("cancel_plan_first");
 
-    await deliver("subscription.updated", subscription(officeId, { scheduled_change: { action: "cancel", effective_at: "2026-10-28T00:00:00Z" } }));
-    const calls = paddleApi(() => subscription(officeId, { status: "canceled" }));
+    await deliver("subscription.scheduled_cancel", subscription(officeId, { status: "scheduled_cancel" }));
+    const calls = creemApi(() => subscription(officeId, { status: "canceled" }));
     expect((await call(ada, "DELETE", `/v1/offices/${officeId}`)).status).toBe(200);
-    expect(calls).toEqual([{ method: "POST", path: `/subscriptions/sub_${officeId}/cancel`, body: { effective_from: "immediately" } }]);
+    expect(calls).toEqual([{ method: "POST", path: `/v1/subscriptions/sub_${officeId}/cancel`, body: { mode: "immediate" } }]);
     expect(await officeRow(officeId)).toBeNull();
   });
 });

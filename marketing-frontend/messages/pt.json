@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Mude de plano quando quiser",
-        "body": "Subir ou descer de plano vale na hora, e o Paddle cobra ou credita a diferença."
+        "body": "Subir ou descer de plano vale na hora, e o Creem cobra ou credita a diferença."
       },
       "hours": {
         "title": "Quando as horas acabam",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Impostos no checkout",
-        "body": "Os preços estão em dólares americanos. O Paddle, nosso revendedor, adiciona impostos sobre vendas ou IVA no pagamento."
+        "body": "Os preços estão em dólares americanos. O Creem, nosso revendedor, adiciona impostos sobre vendas ou IVA no pagamento."
       },
       "bigger": {
         "title": "Mais de 25 pessoas?",

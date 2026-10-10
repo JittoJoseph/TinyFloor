@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Cambia piano quando vuoi",
-        "body": "Salire o scendere di piano vale subito, e Paddle addebita o accredita la differenza."
+        "body": "Salire o scendere di piano vale subito, e Creem addebita o accredita la differenza."
       },
       "hours": {
         "title": "Quando le ore finiscono",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Tasse al pagamento",
-        "body": "I prezzi sono in dollari statunitensi. Paddle, il nostro rivenditore, aggiunge IVA o imposte sulle vendite al pagamento."
+        "body": "I prezzi sono in dollari statunitensi. Creem, il nostro rivenditore, aggiunge IVA o imposte sulle vendite al pagamento."
       },
       "bigger": {
         "title": "Più di 25 persone?",

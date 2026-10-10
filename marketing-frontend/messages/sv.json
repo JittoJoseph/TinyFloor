@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Byt plan när du vill",
-        "body": "Att gå upp eller ner gäller direkt, och Paddle debiterar eller krediterar mellanskillnaden."
+        "body": "Att gå upp eller ner gäller direkt, och Creem debiterar eller krediterar mellanskillnaden."
       },
       "hours": {
         "title": "När timmarna är slut",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Moms i kassan",
-        "body": "Priserna är i amerikanska dollar. Paddle, vår återförsäljare, lägger på moms eller försäljningsskatt när du betalar."
+        "body": "Priserna är i amerikanska dollar. Creem, vår återförsäljare, lägger på moms eller försäljningsskatt när du betalar."
       },
       "bigger": {
         "title": "Fler än 25 personer?",

@@ -1655,7 +1655,7 @@
       },
       "change": {
         "title": "Change plans any time",
-        "body": "Moving up or down takes effect at once, and Paddle charges or credits the difference."
+        "body": "Moving up or down takes effect at once, and Creem charges or credits the difference."
       },
       "hours": {
         "title": "When the hours run out",
@@ -1663,7 +1663,7 @@
       },
       "tax": {
         "title": "Tax at checkout",
-        "body": "Prices are in US dollars. Paddle, our reseller, adds any sales tax or VAT when you pay."
+        "body": "Prices are in US dollars. Creem, our reseller, adds any sales tax or VAT when you pay."
       },
       "bigger": {
         "title": "More than 25 people?",

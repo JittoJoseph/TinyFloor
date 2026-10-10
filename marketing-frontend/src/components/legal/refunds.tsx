@@ -1,12 +1,12 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const REFUNDS_UPDATED = "28 September 2026";
+export const REFUNDS_UPDATED = "10 October 2026";
 
 export const refundsSummary = (
   <p>
     In short: cancel whenever you like and keep your plan until the end of what you paid for. If TinyFloor isn&apos;t right for you, ask
-    within 14 days of a payment and you get all of it back. Payments are handled by Paddle, our reseller, and so are refunds.
+    within 14 days of a payment and you get all of it back. Payments are handled by Creem, our reseller, and so are refunds.
   </p>
 );
 
@@ -17,9 +17,8 @@ export const refundsSections: LegalSection[] = [
     title: "Who handles payments",
     body: (
       <p>
-        Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle
-        provides all customer service inquiries and handles returns. Your receipt comes from Paddle, and refunds are paid by Paddle to the card
-        or account you paid with.
+        Payments are processed by Creem (Armitage Labs OÜ) as the merchant of record for all our orders. Creem sells the plan to you, charges
+        any tax, and sends the receipt and invoice. Refunds are paid by Creem to the card or account you paid with.
       </p>
     ),
   },
@@ -30,7 +29,8 @@ export const refundsSections: LegalSection[] = [
       <ul>
         <li>Paid plans renew automatically every month until you cancel.</li>
         <li>
-          An office&apos;s admins can cancel at any time from the office&apos;s billing settings, or through the link in any Paddle receipt.
+          An office&apos;s admins can cancel at any time from the office&apos;s billing settings. Whoever paid can also cancel from
+          Creem&apos;s customer portal, linked from every receipt.
         </li>
         <li>
           Cancelling stops the next renewal. The office keeps its plan until the end of the period already paid for, then goes back to the free
@@ -53,7 +53,7 @@ export const refundsSections: LegalSection[] = [
           anyway and we will look at it.
         </li>
         <li>
-          <strong>Changing plans</strong> in the middle of a period: Paddle charges or credits the difference for the time that is left.
+          <strong>Changing plans</strong> in the middle of a period: Creem charges or credits the difference for the time that is left.
         </li>
         <li>Any tax charged is refunded with the payment.</li>
       </ul>
@@ -65,11 +65,9 @@ export const refundsSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Write to <Mail /> from the email address you paid with, or reply to your Paddle receipt. You can also reach Paddle directly at{" "}
-          <a href="https://paddle.net" target="_blank" rel="noopener noreferrer">
-            paddle.net
-          </a>
-          .
+          Write to <Mail /> from the email address you paid with. If we can&apos;t sort it out, you can also reach Creem through its
+          customer portal or at{" "}
+          <a href="mailto:support@creem.io">support@creem.io</a>.
         </p>
         <p>
           Refunds usually reach you within 5 to 10 business days, depending on your bank. If you have a problem with a charge, please write to us

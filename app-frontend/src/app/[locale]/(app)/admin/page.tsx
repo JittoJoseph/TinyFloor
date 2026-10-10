@@ -171,7 +171,7 @@ const hours = (seconds: number) => (seconds / 3600).toLocaleString(undefined, { 
 /**
  * Just enough about plans to act on: how many offices pay, on which plan,
  * how many have a plan given by hand, and this month's meeting hours.
- * Revenue, failed payments and cancellations are in Paddle's own dashboard.
+ * Revenue, failed payments and cancellations are in Creem's own dashboard.
  */
 function Business({ summary }: { summary: AdminSummary }) {
   const { plans, meetingSeconds } = summary;
@@ -668,7 +668,7 @@ function OfficePeople({ office, round, onChanged }: { office: AdminOffice; round
       <div className="flex items-center justify-between gap-3 py-2">
         <p className="text-[12px] text-muted-foreground">
           Made <When at={office.createdAt} />
-          {office.billing ? " · Paid through Paddle" : office.plan !== "free" ? " · Plan given without payment" : ""}
+          {office.billing ? " · Paid through Creem" : office.plan !== "free" ? " · Plan given without payment" : ""}
         </p>
         <OfficeManage office={office} onChanged={onChanged} />
       </div>
@@ -741,7 +741,7 @@ function MemberSkeleton() {
   );
 }
 
-/** How the office has its plan: paid through Paddle (and whether that's in trouble), or given by hand. */
+/** How the office has its plan: paid through Creem (and whether that's in trouble), or given by hand. */
 function PlanState({ office }: { office: AdminOffice }) {
   if (office.billing === "past_due") return <Badge>card failed</Badge>;
   if (office.billing && office.cancelAt) return <Badge>cancelling</Badge>;
@@ -754,7 +754,7 @@ function PlanState({ office }: { office: AdminOffice }) {
  * The things that change an office, kept out of the way on purpose: behind a
  * menu, and the two that matter (a plan without payment, closing it) only
  * once the office's name has been typed out. A plan can't be given while the
- * office pays through Paddle, and a plan that still renews has to be
+ * office pays through Creem, and a plan that still renews has to be
  * cancelled before the office can close.
  */
 function OfficeManage({ office, onChanged }: { office: AdminOffice; onChanged: () => void }) {
@@ -822,7 +822,7 @@ function OfficeManage({ office, onChanged }: { office: AdminOffice; onChanged: (
         <MenuItem icon={<Pencil />} onSelect={() => ask("rename")}>
           Rename
         </MenuItem>
-        <MenuItem disabled={paid} onSelect={() => ask("plan")} hint={paid ? "Pays through Paddle" : undefined}>
+        <MenuItem disabled={paid} onSelect={() => ask("plan")} hint={paid ? "Pays through Creem" : undefined}>
           Change plan without payment
         </MenuItem>
         <MenuSeparator />

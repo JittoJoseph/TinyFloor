@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "8 October 2026";
+export const PRIVACY_UPDATED = "10 October 2026";
 
 export const privacySummary = (
   <>
@@ -97,9 +97,10 @@ export const privacySections: LegalSection[] = [
 
         <h3>When you pay for a plan</h3>
         <p>
-          Paddle, our reseller, takes the payment and keeps your card or payment details; we never see them. From Paddle we receive what we
+          Creem, our reseller, takes the payment and keeps your card or payment details; we never see them. From Creem we receive what we
           need to run the plan: the name and email address of whoever paid, the country, which office the plan is for, the plan, its status and
-          renewal date, and the IDs Paddle uses for the customer and the subscription.
+          renewal date, and the IDs Creem uses for the customer and the subscription. We also note which account paid, so only that person
+          can open the plan&apos;s card and invoices.
         </p>
       </>
     ),
@@ -171,9 +172,9 @@ export const privacySections: LegalSection[] = [
             <strong>Discord</strong> carries the team notes described above.
           </li>
           <li>
-            <strong>Paddle</strong> sells paid plans as the merchant of record: it takes payments, charges tax, sends receipts and handles
-            refunds, under its own{" "}
-            <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">
+            <strong>Creem</strong> (Armitage Labs OÜ, Estonia) sells paid plans as the merchant of record: it takes payments, charges tax,
+            sends receipts and handles refunds, under its own{" "}
+            <a href="https://www.creem.io/privacy" target="_blank" rel="noopener noreferrer">
               privacy notice
             </a>
             .
@@ -249,7 +250,7 @@ export const privacySections: LegalSection[] = [
           </li>
           <li>
             <strong>Billing records:</strong> kept while the plan runs and afterwards for as long as tax and accounting law requires, usually
-            8 years. Paddle keeps its own records under its own policy.
+            8 years. Creem keeps its own records under its own policy.
           </li>
         </ul>
         <p>Our database provider keeps point-in-time backups, so deleted data can remain in them for up to 30 days before it is gone for good.</p>

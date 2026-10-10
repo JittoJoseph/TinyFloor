@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtuaaliluokka",
-        "meta": {
-          "title": "Virtuaaliluokka vastaanottoaikoihin ja pienryhmille",
-          "description": "Pidä vastaanottoaikoja, tukiopetusta ja pieniä tunteja virtuaaliluokassa. Opiskelijat kävelevät juttelemaan, ryhmät kokoontuvat neuvotteluhuoneeseen ja taulu on kaikille yhteinen."
-        },
-        "title": "<em>Virtuaaliluokka</em>, jossa opiskelijat liikkuvat.",
-        "subtitle": "Pidä vastaanottoaikaa, tukiopetusta tai pieni tunti huoneessa, jossa opiskelijat voivat liikkua. He tulevat luoksesi kysymään, ja ryhmät puhuvat kokoushuoneessa.",
-        "points": [
-          {
-            "title": "Sujuvat vastaanottoajat",
-            "body": "Opiskelijat näkevät, milloin olet vapaana, ja tulevat kysymään. Kukaan ei istu odotushuoneessa."
-          },
-          {
-            "title": "Pienryhmät kokoushuoneessa",
-            "body": "Aloita kokous, niin ryhmä kävelee yhdessä kokoushuoneeseen, ja jokaisella on oma korttinsa."
-          },
-          {
-            "title": "Yhteinen valkotaulu",
-            "body": "Piirrä valkotaululle selittääksesi idean. Kaikki huoneessa näkevät saman taulun."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Montako opiskelijaa voi liittyä?",
-            "a": "Toimistoon mahtuu Pro-paketilla enintään 25 henkeä, mikä sopii pienille ryhmille, tukiopetukseen ja vastaanottoaikoihin."
-          },
-          {
-            "q": "Tarvitsevatko opiskelijat tilin?",
-            "a": "Kyllä, ilmaisen. Opiskelijat liittyvät luokan kutsulinkillä ja kirjautuvat Googlella tai sähköpostilla."
-          },
-          {
-            "q": "Voinko pitää luokan yksityisenä?",
-            "a": "Kyllä. Toimisto on vain sen jäsenille. Kutsu luokkasi linkillä ja poista osallistujat toimistosta kurssin päätyttyä."
-          },
-          {
-            "q": "Onko se ilmainen opettajille?",
-            "a": "Kyllä, enintään 3 hengelle toimistoa kohden. Enintään 10 hengen luokka maksaa 19 $ kuukaudessa ja enintään 25 hengen 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Lähichat",
         "meta": {

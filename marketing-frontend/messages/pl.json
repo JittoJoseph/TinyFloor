@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Wirtualna klasa",
-        "meta": {
-          "title": "Wirtualna klasa na dyżury i małe grupy",
-          "description": "Prowadź dyżury, korepetycje i małe zajęcia w wirtualnej klasie. Uczniowie podchodzą porozmawiać, grupy spotykają się w sali spotkań, a tablica jest wspólna dla wszystkich."
-        },
-        "title": "<em>Wirtualna klasa</em>, po której uczniowie chodzą.",
-        "subtitle": "Prowadź konsultacje, korepetycje lub małe zajęcia w pokoju, po którym uczniowie mogą chodzić. Podchodzą, gdy mają pytanie, a grupy rozmawiają w sali spotkań.",
-        "points": [
-          {
-            "title": "Płynne konsultacje",
-            "body": "Uczniowie widzą, kiedy masz czas, i podchodzą z pytaniem. Nikt nie czeka w poczekalni."
-          },
-          {
-            "title": "Małe grupy w sali spotkań",
-            "body": "Rozpocznij spotkanie, a grupa razem wejdzie do sali spotkań, z kartą dla każdej osoby."
-          },
-          {
-            "title": "Wspólna tablica",
-            "body": "Rysuj na tablicy, żeby wyjaśnić pomysł. Wszyscy w pokoju widzą tę samą tablicę."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Ilu uczniów może dołączyć?",
-            "a": "Biuro mieści do 25 osób w planie Pro, co pasuje do małych klas, korepetycji i dyżurów."
-          },
-          {
-            "q": "Czy uczniowie potrzebują konta?",
-            "a": "Tak, darmowego. Uczniowie dołączają przez link z zaproszeniem do klasy i logują się przez Google lub e-mail."
-          },
-          {
-            "q": "Czy mogę zachować klasę jako prywatną?",
-            "a": "Tak. Biuro jest prywatne dla jego członków. Zaproś klasę linkiem i usuń osoby z biura po zakończeniu kursu."
-          },
-          {
-            "q": "Czy to jest darmowe dla nauczycieli?",
-            "a": "Tak, dla maksymalnie 3 osób na biuro. Klasa do 10 osób kosztuje 19 $ miesięcznie, a do 25 osób — 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Czat zbliżeniowy",
         "meta": {

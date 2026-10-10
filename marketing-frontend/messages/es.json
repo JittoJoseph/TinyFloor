@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Aula virtual",
-        "meta": {
-          "title": "Aula virtual para tutorías y clases pequeñas",
-          "description": "Da tutorías, clases de apoyo y clases pequeñas en un aula virtual. Los estudiantes se acercan para hablar, los grupos se reúnen en la sala de reuniones y todos comparten una pizarra."
-        },
-        "title": "Un <em>aula virtual</em> por la que los alumnos caminan.",
-        "subtitle": "Da tutorías, clases particulares o una clase pequeña en una sala por la que los alumnos se mueven. Se acercan cuando tienen una duda y los grupos hablan en la sala de reuniones.",
-        "points": [
-          {
-            "title": "Tutorías sin esperas",
-            "body": "Los alumnos ven cuándo estás libre y se acercan a preguntar. Nadie espera en una sala de espera."
-          },
-          {
-            "title": "Grupos pequeños en la sala de reuniones",
-            "body": "Empieza una reunión y el grupo entra junto en la sala de reuniones, con una tarjeta para cada persona."
-          },
-          {
-            "title": "Una pizarra compartida",
-            "body": "Dibuja en la pizarra para explicar una idea. Todos en la sala ven la misma pizarra."
-          }
-        ],
-        "faq": [
-          {
-            "q": "¿Cuántos alumnos pueden entrar?",
-            "a": "Una oficina admite hasta 25 personas con Pro, ideal para clases pequeñas, grupos de tutoría y horas de consulta."
-          },
-          {
-            "q": "¿Los alumnos necesitan cuenta?",
-            "a": "Sí, una gratuita. Los estudiantes entran con el enlace de invitación de la clase e inician sesión con Google o con su correo."
-          },
-          {
-            "q": "¿Puedo mantener el aula privada?",
-            "a": "Sí. Una oficina es privada para sus miembros. Invita a tu clase con un enlace y quita a la gente de la oficina cuando termine el curso."
-          },
-          {
-            "q": "¿Es gratis para profesores?",
-            "a": "Sí, para hasta 3 personas por oficina. Una clase de hasta 10 cuesta 19 $ al mes, y de hasta 25, 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Chat de proximidad",
         "meta": {

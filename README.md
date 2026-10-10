@@ -72,7 +72,6 @@ It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an
 - **[Virtual office](https://www.tinyfloor.com/virtual-office)**: one room your remote team keeps open all day.
 - **[Virtual standup](https://www.tinyfloor.com/virtual-standup)**, **[remote pair programming](https://www.tinyfloor.com/remote-pair-programming)** and **[remote onboarding](https://www.tinyfloor.com/remote-onboarding)**.
 - **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: heads-down hours with your team, and a **[virtual watercooler](https://www.tinyfloor.com/virtual-watercooler)** between them.
-- **[Virtual classroom](https://www.tinyfloor.com/virtual-classroom)**: office hours, tutoring and small classes.
 
 ## Pricing
 

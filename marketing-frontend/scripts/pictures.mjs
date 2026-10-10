@@ -62,7 +62,6 @@ const LANDINGS = [
   "remote-onboarding",
   "virtual-watercooler",
   "virtual-coworking",
-  "virtual-classroom",
   "proximity-chat",
   "virtual-meeting-room",
   "team-chat",

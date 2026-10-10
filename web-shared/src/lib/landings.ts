@@ -13,7 +13,6 @@ export type LandingKey =
   | "gatherVsKumospace"
   | "virtualOffice"
   | "virtualCoworking"
-  | "virtualClassroom"
   | "proximityChat"
   | "meetingRoom"
   | "teamChat"
@@ -73,7 +72,6 @@ export const LANDINGS: Landing[] = [
   { slug: "remote-onboarding", key: "onboarding", group: "useCases" },
   { slug: "virtual-watercooler", key: "watercooler", group: "useCases" },
   { slug: "virtual-coworking", key: "virtualCoworking", group: "useCases" },
-  { slug: "virtual-classroom", key: "virtualClassroom", group: "useCases" },
 ];
 
 export const LANDING_GROUPS = ["features", "teams", "useCases", "compare"] as const;

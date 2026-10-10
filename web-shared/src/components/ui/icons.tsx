@@ -64,7 +64,6 @@ import {
   MoneyReceive02Icon,
   Moon02Icon,
   MoreHorizontalIcon,
-  Mortarboard01Icon,
   MusicNote01Icon,
   NextIcon,
   Notification01Icon,
@@ -163,7 +162,6 @@ export const Floor = icon(MapsIcon, "Floor");
 export const Footprints = icon(FootprintsIcon, "Footprints");
 export const Gear = icon(Settings01Icon, "Gear");
 export const Globe = icon(Globe02Icon, "Globe");
-export const GraduationCap = icon(Mortarboard01Icon, "GraduationCap");
 export const Hand = icon(WavingHand01Icon, "Hand");
 export const Hash = icon(HashtagIcon, "Hash");
 export const HeadphoneOff = icon(HeadphoneMuteIcon, "HeadphoneOff");

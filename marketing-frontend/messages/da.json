@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtuelt klasseværelse",
-        "meta": {
-          "title": "Virtuelt klasselokale til kontortid og små hold",
-          "description": "Hold kontortid, lektiehjælp og små hold i et virtuelt klasselokale. Elever går hen for at tale, grupper mødes i mødelokalet, og alle deler en whiteboard."
-        },
-        "title": "Et <em>virtuelt klasseværelse</em>, hvor elever går rundt.",
-        "subtitle": "Hold træffetid, lektiehjælp eller et lille hold i et rum, eleverne kan bevæge sig rundt i. De kommer hen, når de har et spørgsmål, og grupper taler i mødelokalet.",
-        "points": [
-          {
-            "title": "Træffetid uden kø",
-            "body": "Eleverne ser, hvornår du har tid, og går hen for at spørge. Ingen sidder i et venterum."
-          },
-          {
-            "title": "Små grupper i mødelokalet",
-            "body": "Start et møde, og gruppen går ind i mødelokalet sammen, med et kort til hver person."
-          },
-          {
-            "title": "En fælles whiteboard",
-            "body": "Tegn på whiteboarden for at forklare en idé. Alle i rummet ser den samme tavle."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hvor mange elever kan deltage?",
-            "a": "Et kontor har plads til op til 25 personer på Pro, hvilket passer til små hold, lektiehjælp og kontortid."
-          },
-          {
-            "q": "Skal eleverne have en konto?",
-            "a": "Ja, en gratis en. Eleverne kommer ind via holdets invitationslink og logger ind med Google eller e-mail."
-          },
-          {
-            "q": "Kan jeg holde klasseværelset privat?",
-            "a": "Ja. Et kontor er privat for dets medlemmer. Invitér klassen med et link, og fjern folk fra kontoret, når kurset slutter."
-          },
-          {
-            "q": "Er det gratis for lærere?",
-            "a": "Ja, for op til 3 personer pr. kontor. Et hold på op til 10 koster 19 $ om måneden, og op til 25 koster 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Nærhedschat",
         "meta": {

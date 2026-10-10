@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtuellt klassrum",
-        "meta": {
-          "title": "Virtuellt klassrum för mottagningstid och små klasser",
-          "description": "Håll mottagningstid, läxhjälp och små lektioner i ett virtuellt klassrum. Elever går fram för att prata, grupper träffas i mötesrummet och alla delar en whiteboard."
-        },
-        "title": "Ett <em>virtuellt klassrum</em> där elever kan gå runt.",
-        "subtitle": "Håll mottagningstid, läxhjälp eller en liten klass i ett rum där eleverna kan röra sig. De går fram när de har en fråga, och grupper pratar i mötesrummet.",
-        "points": [
-          {
-            "title": "Handledning utan kö",
-            "body": "Eleverna ser när du är ledig och går fram för att fråga. Ingen sitter i ett väntrum."
-          },
-          {
-            "title": "Små grupper i mötesrummet",
-            "body": "Starta ett möte så går gruppen in i mötesrummet tillsammans, med ett kort för varje person."
-          },
-          {
-            "title": "En delad whiteboard",
-            "body": "Rita på whiteboarden för att förklara en idé. Alla i rummet ser samma tavla."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hur många elever kan gå med?",
-            "a": "Ett kontor rymmer upp till 25 personer med Pro, vilket passar små klasser, läxhjälp och mottagningstid."
-          },
-          {
-            "q": "Behöver eleverna ett konto?",
-            "a": "Ja, ett gratis konto. Eleverna går med via klassens inbjudningslänk och loggar in med Google eller e-post."
-          },
-          {
-            "q": "Kan jag hålla klassrummet privat?",
-            "a": "Ja. Ett kontor är privat för sina medlemmar. Bjud in klassen med en länk och ta bort folk från kontoret när kursen är slut."
-          },
-          {
-            "q": "Är det gratis för lärare?",
-            "a": "Ja, för upp till 3 personer per kontor. En klass på upp till 10 kostar 19 $ i månaden, och upp till 25 kostar 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Närhetschatt",
         "meta": {

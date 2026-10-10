@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Aula virtuale",
-        "meta": {
-          "title": "Aula virtuale per ricevimento e piccole classi",
-          "description": "Tieni ricevimento, tutoraggio e piccole classi in un'aula virtuale. Gli studenti si avvicinano per parlare, i gruppi si riuniscono in sala riunioni e tutti condividono una lavagna."
-        },
-        "title": "Un’<em>aula virtuale</em> in cui gli studenti si muovono.",
-        "subtitle": "Tieni ricevimento, ripetizioni o una piccola lezione in una stanza in cui gli studenti possono muoversi. Si avvicinano quando hanno una domanda e i gruppi parlano nella sala riunioni.",
-        "points": [
-          {
-            "title": "Un ricevimento che scorre",
-            "body": "Gli studenti vedono quando sei libero e si avvicinano per chiedere. Nessuno aspetta in sala d’attesa."
-          },
-          {
-            "title": "Piccoli gruppi nella sala riunioni",
-            "body": "Avvia una riunione e il gruppo entra insieme nella sala riunioni, con una scheda per ogni persona."
-          },
-          {
-            "title": "Una lavagna condivisa",
-            "body": "Disegna sulla lavagna per spiegare un’idea. Tutti nella stanza vedono la stessa lavagna."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Quanti studenti possono entrare?",
-            "a": "Un ufficio ospita fino a 25 persone con Pro, adatto a piccole classi, gruppi di tutoraggio e ricevimento."
-          },
-          {
-            "q": "Gli studenti hanno bisogno di un account?",
-            "a": "Sì, uno gratuito. Gli studenti entrano con il link d'invito della classe e accedono con Google o con l'email."
-          },
-          {
-            "q": "Posso tenere l’aula privata?",
-            "a": "Sì. Un ufficio è privato per i suoi membri. Invita la classe con un link e rimuovi le persone dall'ufficio quando il corso finisce."
-          },
-          {
-            "q": "È gratis per gli insegnanti?",
-            "a": "Sì, fino a 3 persone per ufficio. Una classe fino a 10 costa 19 $ al mese, fino a 25 costa 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Chat di prossimità",
         "meta": {

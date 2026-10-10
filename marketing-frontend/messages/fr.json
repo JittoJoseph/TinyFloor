@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Classe virtuelle",
-        "meta": {
-          "title": "Classe virtuelle pour les permanences et les petits groupes",
-          "description": "Organisez permanences, tutorat et petits cours dans une classe virtuelle. Les élèves s'approchent pour parler, les groupes se retrouvent en salle de réunion et tout le monde partage un tableau blanc."
-        },
-        "title": "Une <em>classe virtuelle</em> où les élèves se déplacent.",
-        "subtitle": "Tenez des permanences, du tutorat ou un petit cours dans une salle où les élèves peuvent se déplacer. Ils s’approchent quand ils ont une question, et les groupes parlent dans la salle de réunion.",
-        "points": [
-          {
-            "title": "Des permanences fluides",
-            "body": "Les élèves voient quand vous êtes disponible et viennent poser leur question. Personne n’attend en salle d’attente."
-          },
-          {
-            "title": "Petits groupes dans la salle de réunion",
-            "body": "Lancez une réunion et le groupe entre ensemble dans la salle de réunion, avec une carte pour chaque personne."
-          },
-          {
-            "title": "Un tableau blanc partagé",
-            "body": "Dessinez sur le tableau blanc pour expliquer une idée. Toute la salle voit le même tableau."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Combien d’élèves peuvent rejoindre ?",
-            "a": "Un bureau accueille jusqu'à 25 personnes avec Pro, ce qui convient aux petites classes, au tutorat et aux permanences."
-          },
-          {
-            "q": "Les élèves ont-ils besoin d’un compte ?",
-            "a": "Oui, un compte gratuit. Les élèves rejoignent la classe avec son lien d'invitation et se connectent avec Google ou leur e-mail."
-          },
-          {
-            "q": "Puis-je garder la classe privée ?",
-            "a": "Oui. Un bureau est réservé à ses membres. Invitez votre classe avec un lien, et retirez les participants du bureau à la fin du cours."
-          },
-          {
-            "q": "Est-ce gratuit pour les enseignants ?",
-            "a": "Oui, jusqu'à 3 personnes par bureau. Une classe jusqu'à 10 coûte 19 $ par mois, et jusqu'à 25, 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Chat de proximité",
         "meta": {

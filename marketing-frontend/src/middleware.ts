@@ -17,9 +17,15 @@ const SITE = new URL(SITE_URL);
 const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
-  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|online-study-room|og-render",
+  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
 ];
 const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.join("|")}))?/?$`);
+
+/** Pages taken down, and where their old links go now. TinyFloor is sold to teams, not classes. */
+const RETIRED: Record<string, string> = {
+  "/online-study-room": "/virtual-office",
+  "/virtual-classroom": "/virtual-office",
+};
 
 // Kept as `middleware.ts` rather than Next 16's `proxy.ts`: OpenNext on
 // Cloudflare Workers does not run the Node.js proxy yet.
@@ -34,6 +40,12 @@ export function middleware(request: NextRequest) {
   // they are. Visitors to the site itself stay here.
   if (APP_PATH.test(unprefixed(pathname))) {
     return NextResponse.redirect(new URL(`${pathname}${search}`, APP_URL), 308);
+  }
+
+  const retired = RETIRED[unprefixed(pathname)];
+  if (retired) {
+    const prefix = pathname.slice(0, pathname.length - unprefixed(pathname).length);
+    return NextResponse.redirect(new URL(`${prefix}${retired}${search}`, request.url), 308);
   }
 
   // An address with no page: the prebuilt 404 in the address's language, with a 404 status.

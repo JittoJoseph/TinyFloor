@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtual classroom",
-        "meta": {
-          "title": "Virtual Classroom for Office Hours and Small Classes",
-          "description": "Run office hours, tutoring and small classes in a virtual classroom. Students walk up to talk, groups meet in the meeting room, and everyone shares a whiteboard."
-        },
-        "title": "A <em>virtual classroom</em> students can walk around.",
-        "subtitle": "Hold office hours, tutoring or a small class in a room students can move around in. They walk up when they have a question, and groups talk in the meeting room.",
-        "points": [
-          {
-            "title": "Office hours that flow",
-            "body": "Students see when you are free and walk over to ask. Nobody sits in a waiting room."
-          },
-          {
-            "title": "Small groups in the meeting room",
-            "body": "Start a meeting and the group walks into the meeting room together, with a card for each person."
-          },
-          {
-            "title": "A shared whiteboard",
-            "body": "Draw on the whiteboard to explain an idea. Everyone in the room sees the same board."
-          }
-        ],
-        "faq": [
-          {
-            "q": "How many students can join?",
-            "a": "An office holds up to 25 people on Pro, which suits small classes, tutoring groups and office hours."
-          },
-          {
-            "q": "Do students need accounts?",
-            "a": "Yes, a free one. Students join from the class's invite link and sign in with Google or email."
-          },
-          {
-            "q": "Can I keep the classroom private?",
-            "a": "Yes. An office is private to its members. Invite your class with a link, and remove people from the office when the course ends."
-          },
-          {
-            "q": "Is it free for teachers?",
-            "a": "Yes, for up to 3 people per office. A class of up to 10 is $19 a month, and up to 25 is $49."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Proximity chat",
         "meta": {

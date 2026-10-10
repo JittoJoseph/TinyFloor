@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Sala de aula virtual",
-        "meta": {
-          "title": "Sala de aula virtual para plantões e turmas pequenas",
-          "description": "Faça plantões de dúvidas, aulas de reforço e turmas pequenas numa sala de aula virtual. Os alunos chegam perto para conversar, grupos se reúnem na sala de reunião e todos compartilham um quadro branco."
-        },
-        "title": "Uma <em>sala de aula virtual</em> onde os alunos andam.",
-        "subtitle": "Faça plantões, monitorias ou uma aula pequena numa sala por onde os alunos podem andar. Eles chegam perto quando têm uma dúvida, e os grupos conversam na sala de reuniões.",
-        "points": [
-          {
-            "title": "Plantões que fluem",
-            "body": "Os alunos veem quando você está livre e chegam perto para perguntar. Ninguém fica em sala de espera."
-          },
-          {
-            "title": "Pequenos grupos na sala de reuniões",
-            "body": "Comece uma reunião e o grupo entra junto na sala de reuniões, com um cartão para cada pessoa."
-          },
-          {
-            "title": "Um quadro branco compartilhado",
-            "body": "Desenhe no quadro branco para explicar uma ideia. Todos na sala veem o mesmo quadro."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Quantos alunos podem entrar?",
-            "a": "Um escritório comporta até 25 pessoas no Pro, ideal para turmas pequenas, grupos de reforço e plantões de dúvidas."
-          },
-          {
-            "q": "Os alunos precisam de conta?",
-            "a": "Sim, uma conta grátis. Os alunos entram pelo link de convite da turma e fazem login com Google ou e-mail."
-          },
-          {
-            "q": "Posso deixar a sala privada?",
-            "a": "Sim. Um escritório é privado para seus membros. Convide sua turma com um link e remova as pessoas do escritório quando o curso terminar."
-          },
-          {
-            "q": "É grátis para professores?",
-            "a": "Sim, para até 3 pessoas por escritório. Uma turma de até 10 custa US$ 19 por mês, e de até 25, US$ 49."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Chat por proximidade",
         "meta": {

@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtuelt klasserom",
-        "meta": {
-          "title": "Virtuelt klasserom for kontortid og små klasser",
-          "description": "Ha kontortid, leksehjelp og små klasser i et virtuelt klasserom. Elever går bort for å snakke, grupper møtes i møterommet, og alle deler en tavle."
-        },
-        "title": "Et <em>virtuelt klasserom</em> der elevene går rundt.",
-        "subtitle": "Ha kontortid, leksehjelp eller en liten klasse i et rom elevene kan bevege seg rundt i. De kommer bort når de har et spørsmål, og grupper snakker i møterommet.",
-        "points": [
-          {
-            "title": "Veiledning uten kø",
-            "body": "Elevene ser når du er ledig og går bort for å spørre. Ingen sitter i et venterom."
-          },
-          {
-            "title": "Små grupper i møterommet",
-            "body": "Start et møte, så går gruppen inn i møterommet sammen, med et kort for hver person."
-          },
-          {
-            "title": "En felles tavle",
-            "body": "Tegn på tavlen for å forklare en idé. Alle i rommet ser den samme tavlen."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hvor mange elever kan bli med?",
-            "a": "Et kontor har plass til opptil 25 personer med Pro, som passer for små klasser, leksehjelp og kontortid."
-          },
-          {
-            "q": "Trenger elevene en konto?",
-            "a": "Ja, en gratis konto. Elevene blir med via klassens invitasjonslenke og logger inn med Google eller e-post."
-          },
-          {
-            "q": "Kan jeg holde klasserommet privat?",
-            "a": "Ja. Et kontor er privat for medlemmene. Inviter klassen med en lenke, og fjern folk fra kontoret når kurset er over."
-          },
-          {
-            "q": "Er det gratis for lærere?",
-            "a": "Ja, for opptil 3 personer per kontor. En klasse på opptil 10 koster 19 $ i måneden, og opptil 25 koster 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Nærhetschat",
         "meta": {

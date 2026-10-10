@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtuelles Klassenzimmer",
-        "meta": {
-          "title": "Virtuelles Klassenzimmer für Sprechstunden und kleine Kurse",
-          "description": "Halte Sprechstunden, Nachhilfe und kleine Kurse in einem virtuellen Klassenzimmer. Lernende kommen zum Reden vorbei, Gruppen treffen sich im Meetingraum, und alle teilen ein Whiteboard."
-        },
-        "title": "Ein <em>virtuelles Klassenzimmer</em> zum Herumlaufen.",
-        "subtitle": "Halte Sprechstunden, Nachhilfe oder einen kleinen Kurs in einem Raum, in dem sich Lernende bewegen können. Sie kommen vorbei, wenn sie eine Frage haben, und Gruppen reden im Meetingraum.",
-        "points": [
-          {
-            "title": "Sprechstunden ohne Stau",
-            "body": "Lernende sehen, wann du Zeit hast, und kommen mit ihrer Frage vorbei. Niemand sitzt in einem Warteraum."
-          },
-          {
-            "title": "Kleine Gruppen im Meetingraum",
-            "body": "Starte ein Meeting, und die Gruppe geht gemeinsam in den Meetingraum, mit einer Karte für jede Person."
-          },
-          {
-            "title": "Ein gemeinsames Whiteboard",
-            "body": "Zeichne auf dem Whiteboard, um eine Idee zu erklären. Alle im Raum sehen dieselbe Tafel."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Wie viele Lernende können beitreten?",
-            "a": "Ein Büro fasst mit Pro bis zu 25 Personen, das passt zu kleinen Kursen, Nachhilfegruppen und Sprechstunden."
-          },
-          {
-            "q": "Brauchen Lernende ein Konto?",
-            "a": "Ja, ein kostenloses. Schülerinnen und Schüler kommen über den Einladungslink der Klasse und melden sich mit Google oder E-Mail an."
-          },
-          {
-            "q": "Kann ich das Klassenzimmer privat halten?",
-            "a": "Ja. Ein Büro ist nur für seine Mitglieder. Lade deine Klasse mit einem Link ein und entferne die Leute aus dem Büro, wenn der Kurs vorbei ist."
-          },
-          {
-            "q": "Ist es für Lehrkräfte kostenlos?",
-            "a": "Ja, für bis zu 3 Personen pro Büro. Eine Klasse mit bis zu 10 kostet 19 $ im Monat, mit bis zu 25 kostet sie 49 $."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Proximity-Chat",
         "meta": {

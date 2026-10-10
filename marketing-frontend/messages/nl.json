@@ -376,47 +376,6 @@
           }
         ]
       },
-      "virtualClassroom": {
-        "label": "Virtueel klaslokaal",
-        "meta": {
-          "title": "Virtueel klaslokaal voor spreekuren en kleine klassen",
-          "description": "Houd spreekuren, bijles en kleine lessen in een virtueel klaslokaal. Studenten lopen naar je toe om te praten, groepen komen samen in de vergaderruimte en iedereen deelt een whiteboard."
-        },
-        "title": "Een <em>virtueel klaslokaal</em> waar studenten rondlopen.",
-        "subtitle": "Houd spreekuur, bijles of een kleine les in een ruimte waar studenten kunnen rondlopen. Ze komen naar je toe met een vraag, en groepen praten in de vergaderruimte.",
-        "points": [
-          {
-            "title": "Spreekuren die doorlopen",
-            "body": "Studenten zien wanneer je tijd hebt en lopen erheen om iets te vragen. Niemand zit in een wachtruimte."
-          },
-          {
-            "title": "Kleine groepen in de vergaderruimte",
-            "body": "Start een meeting en de groep loopt samen de vergaderruimte in, met een kaart voor iedereen."
-          },
-          {
-            "title": "Een gedeeld whiteboard",
-            "body": "Teken op het whiteboard om een idee uit te leggen. Iedereen in de ruimte ziet hetzelfde bord."
-          }
-        ],
-        "faq": [
-          {
-            "q": "Hoeveel studenten kunnen meedoen?",
-            "a": "Een kantoor biedt met Pro plaats aan maximaal 25 mensen, handig voor kleine klassen, bijlesgroepen en spreekuren."
-          },
-          {
-            "q": "Hebben studenten een account nodig?",
-            "a": "Ja, een gratis account. Studenten komen binnen via de uitnodigingslink van de klas en loggen in met Google of e-mail."
-          },
-          {
-            "q": "Kan ik het klaslokaal privé houden?",
-            "a": "Ja. Een kantoor is privé voor de leden. Nodig je klas uit met een link en haal mensen uit het kantoor als de cursus voorbij is."
-          },
-          {
-            "q": "Is het gratis voor docenten?",
-            "a": "Ja, voor maximaal 3 mensen per kantoor. Een klas van maximaal 10 kost $ 19 per maand, tot 25 kost $ 49."
-          }
-        ]
-      },
       "proximityChat": {
         "label": "Proximity chat",
         "meta": {

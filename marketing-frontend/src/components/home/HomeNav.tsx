@@ -8,7 +8,6 @@ import {
   DoorOpen,
   Eye,
   Footprints,
-  GraduationCap,
   Hash,
   MonitorUp,
   Palette,
@@ -48,7 +47,6 @@ const ICONS: Partial<Record<LandingKey, ReactNode>> = {
   onboarding: <UserPlus />,
   watercooler: <Coffee />,
   virtualCoworking: <UsersRound />,
-  virtualClassroom: <GraduationCap />,
 };
 
 const FEATURES = LANDINGS.filter((page) => page.group === "features");

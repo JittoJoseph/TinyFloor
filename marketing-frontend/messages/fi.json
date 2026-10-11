@@ -1598,11 +1598,24 @@
       },
       "tax": "Hinnat ovat kuukausihintoja ilman veroja.",
       "choose": "Valitse {plan}",
-      "note": "Kahden ihmisen puheluita ei koskaan lasketa. Jokainen hinta koskee koko toimistoa, ei henkilöä.",
-      "perksPro": "Koko tiimisi · kokouksia niin usein kuin tarvitsette · ensisijainen apu",
-      "perksFree": "Enintään {people} henkeä · kaikki mukana",
+      "note": "Jokainen hinta koskee koko toimistoa, ei koskaan henkeä kohden.",
       "daily": "Alle {price} päivässä",
-      "assurance": "Peru milloin vain · 14 päivän hyvitys"
+      "assurance": "Peru milloin vain · 14 päivän hyvitys",
+      "noCard": "Ei korttia",
+      "perPerson": "{price} henkeä kohden {team} hengen tiimissä",
+      "trial": "Jokainen tiimi saa {days} päivää Prota ilmaiseksi, kun neljäs henkilö liittyy.",
+      "list": {
+        "people": "Enintään {people} henkeä",
+        "floor": "Kerros, chat ja kanavat",
+        "meetings": "Palaverit HD-videolla ja näytönjaolla",
+        "desks": "Työpöydät, valkotaulu ja musiikki",
+        "everything": "Kaikki Freen ominaisuudet ja lisäksi",
+        "team": "Tilaa koko tiimille",
+        "often": "Palavereja niin usein kuin tiimi tarvitsee",
+        "help": "Etusija tukeen suoraan tekijöiltä",
+        "included": "Mitä saat"
+      },
+      "grow": "Siirry Prohon, kun tiimi kasvaa, suoraan toimistostasi."
     },
     "source": {
       "star": "Anna tähti GitHubissa",

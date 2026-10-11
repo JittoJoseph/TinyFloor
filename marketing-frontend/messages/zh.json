@@ -1598,11 +1598,24 @@
       },
       "tax": "价格为月付，不含税。",
       "choose": "选择 {plan}",
-      "note": "两人之间的通话永不计入。每个价格都按整个办公室计算，而不是按人。",
-      "perksPro": "整个团队 · 会议想开多少就开多少 · 优先支持",
-      "perksFree": "最多 {people} 人 · 全部功能都包含",
+      "note": "所有价格都按整个办公室计算，从不按人头收费。",
       "daily": "每天不到 {price}",
-      "assurance": "随时取消 · 14 天退款"
+      "assurance": "随时取消 · 14 天退款",
+      "noCard": "无需绑卡",
+      "perPerson": "{team} 人团队每人 {price}",
+      "trial": "当第四个人加入时，每个团队都能免费使用 Pro {days} 天。",
+      "list": {
+        "people": "最多 {people} 人",
+        "floor": "办公楼层、聊天和频道",
+        "meetings": "高清视频和屏幕共享的会议",
+        "desks": "工位、白板和音乐",
+        "everything": "包含 Free 的全部功能，另有",
+        "team": "容纳整个团队",
+        "often": "团队需要多少会议都行",
+        "help": "来自开发者的优先支持",
+        "included": "包含内容"
+      },
+      "grow": "团队壮大时，在办公室里就能升级到 Pro。"
     },
     "source": {
       "star": "在 GitHub 上点 Star",

@@ -1598,11 +1598,24 @@
       },
       "tax": "Prijzen per maand, exclusief btw.",
       "choose": "Kies {plan}",
-      "note": "Gesprekken tussen twee mensen tellen nooit mee. Elke prijs geldt voor het hele kantoor, niet per persoon.",
-      "perksPro": "Je hele team · meetings zo vaak als nodig · voorrang bij hulp",
-      "perksFree": "Tot {people} mensen · alles inbegrepen",
+      "note": "Elke prijs geldt voor het hele kantoor, nooit per persoon.",
       "daily": "Minder dan {price} per dag",
-      "assurance": "Altijd opzegbaar · 14 dagen terugbetaling"
+      "assurance": "Altijd opzegbaar · 14 dagen terugbetaling",
+      "noCard": "Geen kaart nodig",
+      "perPerson": "{price} per persoon bij een team van {team}",
+      "trial": "Elk team krijgt {days} dagen Pro gratis zodra de vierde persoon erbij komt.",
+      "list": {
+        "people": "Tot {people} mensen",
+        "floor": "De vloer, chat en kanalen",
+        "meetings": "Meetings met HD-video en schermdelen",
+        "desks": "Bureaus, een whiteboard en muziek",
+        "everything": "Alles van Free, plus",
+        "team": "Ruimte voor je hele team",
+        "often": "Meetings zo vaak als je team wil",
+        "help": "Voorrang bij hulp van de makers",
+        "included": "Wat je krijgt"
+      },
+      "grow": "Stap over op Pro als je team groeit, vanuit je eigen kantoor."
     },
     "source": {
       "star": "Geef een ster op GitHub",

@@ -10,6 +10,7 @@ import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { usePlace } from "./place";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
 /** What opens the box: pressing it again closes it, rather than counting as a click outside. */
 export const HELP_TRIGGER = "data-help-trigger";
@@ -105,6 +106,16 @@ export function HelpCompose() {
               <h2 className="text-[14px] font-semibold tracking-tight">{t("title")}</h2>
               <p className="mt-0.5 text-[12.5px] leading-[1.45] text-muted-foreground">
                 {office ? t("officeSees", { office: place.name }) : t("lobbySees")}
+              </p>
+              <p className="mt-1 text-[12px] leading-[1.45] text-faint">
+                {t.rich("emailUs", {
+                  email: SUPPORT_EMAIL,
+                  link: (chunks) => (
+                    <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-muted-foreground underline-offset-2 hover:underline" dir="ltr">
+                      {chunks}
+                    </a>
+                  ),
+                })}
               </p>
             </div>
             <button

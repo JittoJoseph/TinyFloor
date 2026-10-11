@@ -592,7 +592,8 @@
     "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
     "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
     "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
-    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。"
+    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。",
+    "emailUs": "メールの方がよければ: <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "新しいオフィス",
@@ -704,7 +705,8 @@
       "keep": "Proを続ける・月{price}",
       "assurance": "いつでも解約できます。14日以内なら全額返金。",
       "meetings": "チームに必要なだけ会議を"
-    }
+    },
+    "billingEmail": "お支払いに関するお問い合わせ: <link>{email}</link>"
   },
   "invite": {
     "title": "チームを呼びましょう",

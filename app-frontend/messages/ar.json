@@ -592,7 +592,8 @@
     "closedNote": "أغلق فريق TinyFloor هذه التذكرة. ما زالت المشكلة قائمة؟ أخبرنا مجددًا من المساعدة والملاحظات.",
     "ticketOffice": "يمكن لكل من في {office} متابعة هذا والإضافة إليه. يرد فريق TinyFloor هنا.",
     "ticketLobby": "لا يرى هذا إلا أنت وفريق TinyFloor. نرد هنا.",
-    "nothingOpen": "لا يوجد شيء مفتوح مع فريق TinyFloor الآن."
+    "nothingOpen": "لا يوجد شيء مفتوح مع فريق TinyFloor الآن.",
+    "emailUs": "تفضّل البريد الإلكتروني؟ <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "مكتب جديد",
@@ -704,7 +705,8 @@
       "keep": "احتفظ بـ Pro · {price} شهريًا",
       "assurance": "ألغِ في أي وقت. استرداد كامل خلال 14 يومًا.",
       "meetings": "اجتماعات بقدر ما يحتاج فريقك"
-    }
+    },
+    "billingEmail": "أسئلة حول الفوترة: <link>{email}</link>."
   },
   "invite": {
     "title": "أحضر فريقك",

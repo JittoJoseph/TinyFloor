@@ -592,7 +592,8 @@
     "closedNote": "Das TinyFloor-Team hat das geschlossen. Hängst du noch fest? Schreib uns wieder über Hilfe und Feedback.",
     "ticketOffice": "Alle in {office} können dem folgen und etwas ergänzen. Das TinyFloor-Team antwortet hier.",
     "ticketLobby": "Nur du und das TinyFloor-Team sehen das. Wir antworten hier.",
-    "nothingOpen": "Gerade ist nichts beim TinyFloor-Team offen."
+    "nothingOpen": "Gerade ist nichts beim TinyFloor-Team offen.",
+    "emailUs": "Lieber per E-Mail? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Neues Büro",
@@ -704,7 +705,8 @@
       "keep": "Pro behalten · {price} im Monat",
       "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen.",
       "meetings": "Meetings, so oft dein Team sie braucht"
-    }
+    },
+    "billingEmail": "Fragen zur Abrechnung: <link>{email}</link>."
   },
   "invite": {
     "title": "Hol dein Team rein",

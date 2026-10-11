@@ -592,7 +592,8 @@
     "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
     "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
     "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
-    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna."
+    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna.",
+    "emailUs": "Mieluummin sähköpostilla? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Uusi toimisto",
@@ -704,7 +705,8 @@
       "keep": "Pidä Pro · {price} kuukaudessa",
       "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",
       "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
-    }
+    },
+    "billingEmail": "Kysymyksiä laskutuksesta: <link>{email}</link>."
   },
   "invite": {
     "title": "Tuo tiimisi sisään",

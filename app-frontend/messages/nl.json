@@ -592,7 +592,8 @@
     "closedNote": "Het TinyFloor-team heeft dit gesloten. Loop je nog vast? Laat het ons opnieuw weten via Hulp en feedback.",
     "ticketOffice": "Iedereen in {office} kan dit volgen en iets toevoegen. Het TinyFloor-team antwoordt hier.",
     "ticketLobby": "Alleen jij en het TinyFloor-team zien dit. We antwoorden hier.",
-    "nothingOpen": "Er staat nu niets open bij het TinyFloor-team."
+    "nothingOpen": "Er staat nu niets open bij het TinyFloor-team.",
+    "emailUs": "Liever per e-mail? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Nieuw kantoor",
@@ -704,7 +705,8 @@
       "keep": "Pro houden · {price} per maand",
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",
       "meetings": "Meetings zo vaak als je team nodig heeft"
-    }
+    },
+    "billingEmail": "Vragen over facturatie: <link>{email}</link>."
   },
   "invite": {
     "title": "Haal je team binnen",

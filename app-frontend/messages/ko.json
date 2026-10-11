@@ -592,7 +592,8 @@
     "closedNote": "TinyFloor 팀이 이 티켓을 닫았어요. 아직 문제가 있다면 도움말 및 의견에서 다시 알려 주세요.",
     "ticketOffice": "{office}의 모든 사람이 보고 덧붙일 수 있어요. TinyFloor 팀이 여기에서 답해요.",
     "ticketLobby": "나와 TinyFloor 팀만 볼 수 있어요. 여기에서 답해 드려요.",
-    "nothingOpen": "지금은 TinyFloor 팀과 진행 중인 문의가 없어요."
+    "nothingOpen": "지금은 TinyFloor 팀과 진행 중인 문의가 없어요.",
+    "emailUs": "이메일이 편하신가요? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "새 사무실",
@@ -704,7 +705,8 @@
       "keep": "Pro 계속 쓰기 · 월 {price}",
       "assurance": "언제든 해지할 수 있어요. 14일 안에는 전액 환불돼요.",
       "meetings": "팀에 필요한 만큼 회의"
-    }
+    },
+    "billingEmail": "결제 문의: <link>{email}</link>"
   },
   "invite": {
     "title": "팀을 불러오세요",

@@ -592,7 +592,8 @@
     "closedNote": "TinyFloor-teamet har stängt det här. Fortfarande fast? Skriv till oss igen via Hjälp och feedback.",
     "ticketOffice": "Alla i {office} kan följa det här och lägga till något. TinyFloor-teamet svarar här.",
     "ticketLobby": "Bara du och TinyFloor-teamet ser det här. Vi svarar här.",
-    "nothingOpen": "Inget är öppet hos TinyFloor-teamet just nu."
+    "nothingOpen": "Inget är öppet hos TinyFloor-teamet just nu.",
+    "emailUs": "Hellre e-post? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Nytt kontor",
@@ -704,7 +705,8 @@
       "keep": "Behåll Pro · {price} i månaden",
       "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",
       "meetings": "Möten så ofta ditt team behöver"
-    }
+    },
+    "billingEmail": "Frågor om betalning: <link>{email}</link>."
   },
   "invite": {
     "title": "Få in ditt team",

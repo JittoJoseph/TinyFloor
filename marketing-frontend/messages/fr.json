@@ -1598,11 +1598,24 @@
       },
       "tax": "Prix mensuels, hors taxes.",
       "choose": "Choisir {plan}",
-      "note": "Les appels à deux ne sont jamais comptés. Chaque prix vaut pour tout le bureau, pas par personne.",
-      "perksPro": "Toute votre équipe · des réunions aussi souvent que nécessaire · aide prioritaire",
-      "perksFree": "Jusqu'à {people} personnes · tout inclus",
+      "note": "Chaque prix vaut pour tout le bureau, jamais par personne.",
       "daily": "Moins de {price} par jour",
-      "assurance": "Résiliable à tout moment · remboursement sous 14 jours"
+      "assurance": "Résiliable à tout moment · remboursement sous 14 jours",
+      "noCard": "Sans carte bancaire",
+      "perPerson": "{price} par personne pour une équipe de {team}",
+      "trial": "Chaque équipe reçoit {days} jours de Pro offerts quand sa quatrième personne arrive.",
+      "list": {
+        "people": "Jusqu’à {people} personnes",
+        "floor": "Le plateau, le chat et les canaux",
+        "meetings": "Réunions en vidéo HD avec partage d’écran",
+        "desks": "Bureaux, tableau blanc et musique",
+        "everything": "Tout ce qu’offre Free, plus",
+        "team": "De la place pour toute votre équipe",
+        "often": "Des réunions aussi souvent que nécessaire",
+        "help": "Aide prioritaire de ceux qui le construisent",
+        "included": "Ce qui est inclus"
+      },
+      "grow": "Passez à Pro quand votre équipe grandit, depuis votre bureau."
     },
     "source": {
       "star": "Mettre une étoile sur GitHub",

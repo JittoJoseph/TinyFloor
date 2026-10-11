@@ -1598,11 +1598,24 @@
       },
       "tax": "Prices are monthly and don't include tax.",
       "choose": "Choose {plan}",
-      "note": "Calls between two people are never counted. Every price is for the whole office, not per person.",
-      "perksPro": "Your whole team · meetings as often as you need · priority help",
-      "perksFree": "Up to {people} people · everything included",
+      "note": "Every price is for the whole office, never per person.",
       "daily": "Under {price} a day",
-      "assurance": "Cancel any time · 14-day refunds"
+      "assurance": "Cancel any time · 14-day refunds",
+      "noCard": "No card needed",
+      "perPerson": "{price} a person in a team of {team}",
+      "trial": "Every team gets {days} days of Pro free when its fourth person joins.",
+      "list": {
+        "people": "Up to {people} people",
+        "floor": "The floor, chat and channels",
+        "meetings": "Meetings with HD video and screen sharing",
+        "desks": "Desks, a whiteboard and music",
+        "everything": "Everything in Free, plus",
+        "team": "Room for your whole team",
+        "often": "Meetings as often as your team needs",
+        "help": "Priority help from the people who build it",
+        "included": "What you get"
+      },
+      "grow": "Move to Pro when your team grows, from inside your office."
     },
     "source": {
       "star": "Star on GitHub",

@@ -1598,11 +1598,24 @@
       },
       "tax": "Prezzi mensili, tasse escluse.",
       "choose": "Scegli {plan}",
-      "note": "Le chiamate tra due persone non contano mai. Ogni prezzo vale per tutto l'ufficio, non a persona.",
-      "perksPro": "Tutto il tuo team · riunioni tutte le volte che servono · assistenza prioritaria",
-      "perksFree": "Fino a {people} persone · tutto incluso",
+      "note": "Ogni prezzo vale per tutto l’ufficio, mai a persona.",
       "daily": "Meno di {price} al giorno",
-      "assurance": "Disdici quando vuoi · rimborso entro 14 giorni"
+      "assurance": "Disdici quando vuoi · rimborso entro 14 giorni",
+      "noCard": "Nessuna carta richiesta",
+      "perPerson": "{price} a persona in un team di {team}",
+      "trial": "Ogni team riceve {days} giorni di Pro gratis quando entra la quarta persona.",
+      "list": {
+        "people": "Fino a {people} persone",
+        "floor": "Il piano, la chat e i canali",
+        "meetings": "Riunioni con video HD e condivisione schermo",
+        "desks": "Scrivanie, lavagna e musica",
+        "everything": "Tutto di Free, più",
+        "team": "Spazio per tutto il team",
+        "often": "Riunioni ogni volta che serve al team",
+        "help": "Aiuto prioritario da chi lo costruisce",
+        "included": "Cosa include"
+      },
+      "grow": "Passa a Pro quando il team cresce, direttamente dal tuo ufficio."
     },
     "source": {
       "star": "Lascia una stella su GitHub",

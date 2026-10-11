@@ -1598,11 +1598,24 @@
       },
       "tax": "Prisene er månedlige og uten mva.",
       "choose": "Velg {plan}",
-      "note": "Samtaler mellom to personer telles aldri. Hver pris gjelder hele kontoret, ikke per person.",
-      "perksPro": "Hele teamet ditt · møter så ofte dere trenger · prioritert hjelp",
-      "perksFree": "Opptil {people} personer · alt inkludert",
+      "note": "Alle priser gjelder hele kontoret, aldri per person.",
       "daily": "Under {price} om dagen",
-      "assurance": "Si opp når som helst · 14 dagers refusjon"
+      "assurance": "Si opp når som helst · 14 dagers refusjon",
+      "noCard": "Ikke noe kort",
+      "perPerson": "{price} per person i et team på {team}",
+      "trial": "Hvert team får {days} dager Pro gratis når den fjerde personen blir med.",
+      "list": {
+        "people": "Opptil {people} personer",
+        "floor": "Gulvet, chat og kanaler",
+        "meetings": "Møter med HD-video og skjermdeling",
+        "desks": "Pulter, tavle og musikk",
+        "everything": "Alt i Free, pluss",
+        "team": "Plass til hele teamet",
+        "often": "Møter så ofte teamet trenger",
+        "help": "Prioritert hjelp fra dem som lager det",
+        "included": "Dette får du"
+      },
+      "grow": "Bytt til Pro når teamet vokser, rett fra kontoret ditt."
     },
     "source": {
       "star": "Gi en stjerne på GitHub",

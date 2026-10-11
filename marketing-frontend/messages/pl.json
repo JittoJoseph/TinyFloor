@@ -1598,11 +1598,24 @@
       },
       "tax": "Ceny miesięczne, bez podatku.",
       "choose": "Wybierz {plan}",
-      "note": "Rozmowy dwóch osób nigdy się nie liczą. Każda cena dotyczy całego biura, nie osoby.",
-      "perksPro": "Cały Twój zespół · spotkania tak często, jak potrzebujecie · pierwszeństwo w pomocy",
-      "perksFree": "Do {people} osób · wszystko w cenie",
+      "note": "Każda cena dotyczy całego biura, nigdy osoby.",
       "daily": "Mniej niż {price} dziennie",
-      "assurance": "Anuluj w dowolnej chwili · zwrot do 14 dni"
+      "assurance": "Anuluj w dowolnej chwili · zwrot do 14 dni",
+      "noCard": "Bez karty",
+      "perPerson": "{price} za osobę w zespole {team} osób",
+      "trial": "Każdy zespół dostaje {days} dni Pro za darmo, gdy dołączy czwarta osoba.",
+      "list": {
+        "people": "Do {people} osób",
+        "floor": "Piętro, czat i kanały",
+        "meetings": "Spotkania z wideo HD i udostępnianiem ekranu",
+        "desks": "Biurka, tablica i muzyka",
+        "everything": "Wszystko z Free, a do tego",
+        "team": "Miejsce dla całego zespołu",
+        "often": "Spotkania tak często, jak potrzeba",
+        "help": "Priorytetowa pomoc od twórców",
+        "included": "Co dostajesz"
+      },
+      "grow": "Przejdź na Pro, gdy zespół urośnie, prosto ze swojego biura."
     },
     "source": {
       "star": "Daj gwiazdkę na GitHubie",

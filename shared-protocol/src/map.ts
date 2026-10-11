@@ -6,13 +6,26 @@ export const MAP_HEIGHT_TILES = 32;
  * the id the floor gives each chair (its tile, row × width + column, counted
  * from the chair's lower edge). A desk can be someone's own (docs/26); the
  * meeting room's chairs are everyone's.
+ *
+ * Each has the tile you arrive on (docs/27): two steps back from where you
+ * stand to sit, with a straight walk in, worked out with the floor's own
+ * pathfinding (how, in docs/27).
  */
-export const DESK_SEATS: readonly number[] = [
-  404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385,
-];
-const DESKS = new Set(DESK_SEATS);
+const DESK_ARRIVALS: Readonly<Record<number, readonly [number, number]>> = {
+  404: [20, 4], 410: [26, 4], 548: [20, 13], 554: [26, 13], 658: [34, 9], 664: [40, 9], 802: [34, 18], 808: [40, 18],
+  981: [21, 16], 987: [27, 16], 1125: [21, 25], 1131: [27, 25], 1159: [7, 19], 1235: [35, 21], 1241: [41, 21],
+  1253: [5, 28], 1257: [9, 28], 1379: [35, 30], 1385: [41, 30],
+};
 
-export const isDesk = (seat: number): boolean => DESKS.has(seat);
+export const DESK_SEATS: readonly number[] = Object.keys(DESK_ARRIVALS).map(Number);
+
+export const isDesk = (seat: number): boolean => seat in DESK_ARRIVALS;
+
+/** Where you appear arriving for this desk: near it, standing, to walk in and sit down. */
+export function deskArrival(seat: number): { x: number; y: number } | null {
+  const tile = DESK_ARRIVALS[seat];
+  return tile ? { x: tile[0], y: tile[1] } : null;
+}
 
 /** The tile someone sits on at a chair, from the chair's id: the row above its lower edge. */
 export function seatTile(seat: number): { x: number; y: number } {

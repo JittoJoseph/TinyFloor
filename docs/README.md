@@ -29,6 +29,7 @@ code and by git history, not here.
 | [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
 | [19-help-and-feedback.md](19-help-and-feedback.md) | Tickets with the TinyFloor team in Chat, on Discord and in the admin inbox |
 | [26-desks-and-invites.md](26-desks-and-invites.md) | Your own desk, and the invite dialog |
+| [27-arriving.md](27-arriving.md) | Arriving at your desk, and what keeps a team coming back to a work tool |
 
 ## Search
 

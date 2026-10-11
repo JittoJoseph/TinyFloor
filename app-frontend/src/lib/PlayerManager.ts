@@ -88,7 +88,9 @@ export class PlayerManager {
     y: number,
     character: string,
   ): Phaser.GameObjects.Sprite {
-    const player = this.scene.add.sprite(x, y, character);
+    // Out of sight until the room says where you are (showLocalPlayer): you'd
+    // otherwise appear here first and jump.
+    const player = this.scene.add.sprite(x, y, character).setVisible(false);
     player.setName("localPlayer");
     player.setScale(2.0);
     player.setOrigin(0.5, 1.0);
@@ -98,7 +100,7 @@ export class PlayerManager {
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
     const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
-    tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale);
+    tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale).setVisible(false);
 
     this.localPlayer = player;
     this.nameTags.set(id, tag);
@@ -148,6 +150,12 @@ export class PlayerManager {
     });
 
     this.updatePlayerStatus(id, status);
+  }
+
+  /** The room has placed you: you and your name come into view. */
+  showLocalPlayer() {
+    this.localPlayer?.setVisible(true);
+    this.nameTags.get(this.playerId)?.container.setVisible(true);
   }
 
   updateLocalPlayerNameTag(

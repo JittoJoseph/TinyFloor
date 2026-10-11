@@ -100,6 +100,14 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     });
   }, [isLoading, user, load, officeId, router]);
 
+  // The tab says which office it is, and what's new in its chat, the way a
+  // pinned work tab does: worth a glance from another window, no more (docs/27).
+  const waiting = unread + helpUnread;
+  useEffect(() => {
+    if (!office?.name) return;
+    document.title = `${waiting ? `(${waiting}) ` : ""}${office.name} · TinyFloor`;
+  }, [office?.name, waiting, pathname]);
+
   // Opening the app again brings you back here.
   useEffect(() => {
     if (office?.id) rememberOffice(office.id);

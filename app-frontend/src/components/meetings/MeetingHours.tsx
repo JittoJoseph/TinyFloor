@@ -47,10 +47,10 @@ function useHours() {
 }
 
 /**
- * The month's meeting hours, as one line under the meetings (docs/22): used of
- * how many, a small meter, when they reset and on which plan, and for admins
- * the way to more. Quiet while there's plenty; it warms near the end and says
- * so once they're used. In the lobby, the day's.
+ * Meeting hours are fair use, not a meter (docs/24): nothing is shown while
+ * there are hours left, which is always for a team using it normally. Only
+ * once they're used does one line say so, with the way to more for an admin
+ * of a free office. In the lobby, the day's.
  */
 export function MeetingUsageLine({ className }: { className?: string }) {
   const t = useTranslations("meetings.usage");
@@ -62,7 +62,7 @@ export function MeetingUsageLine({ className }: { className?: string }) {
   const more = useMoreHours();
   const lobby = place.kind === "lobby";
 
-  if (!usage || usage.allowance === null) return <div aria-hidden className={cn("h-9", className)} />;
+  if (!usage || usage.allowance === null || !usage.paused) return null;
   const share = Math.min(1, usage.used / usage.allowance);
   const nearly = share >= NEARLY;
   const loud = nearly || usage.paused;
@@ -79,7 +79,10 @@ export function MeetingUsageLine({ className }: { className?: string }) {
       </span>
       <span className="h-1 w-24 overflow-hidden rounded-full bg-muted" aria-hidden>
         <span
-          className={cn("block h-full rounded-full transition-[width] duration-700", usage.paused ? "bg-destructive" : nearly ? "bg-foreground" : "bg-foreground/60")}
+          className={cn(
+            "block h-full rounded-full transition-[width] duration-700",
+            usage.paused ? "bg-destructive" : nearly ? "bg-foreground" : "bg-foreground/60",
+          )}
           style={{ width: `${Math.max(usage.used > 0 ? 3 : 0, share * 100)}%` }}
         />
       </span>
@@ -134,7 +137,11 @@ export function VideoPausedNote({ compact = false, className }: { compact?: bool
         <span className="font-medium text-foreground">{t("paused")}</span> · {body}
       </span>
       {more && (
-        <button type="button" onClick={more} className="shrink-0 cursor-pointer font-medium text-foreground underline-offset-2 hover:underline">
+        <button
+          type="button"
+          onClick={more}
+          className="shrink-0 cursor-pointer font-medium text-foreground underline-offset-2 hover:underline"
+        >
           {t("more")}
         </button>
       )}

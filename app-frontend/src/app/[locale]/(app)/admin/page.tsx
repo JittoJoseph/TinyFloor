@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, MoreHorizontal, Pencil, RotateCcw, Search, Trash2 } from "@/components/ui/icons";
+import { ChevronDown, MoreHorizontal, Pencil, Refresh, Search, Trash2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
@@ -92,7 +92,7 @@ export default function AdminPage() {
                 title="Refresh"
                 className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
               >
-                <RotateCcw className={cn("size-4", refreshing && "animate-spin [animation-direction:reverse]")} />
+                <Refresh className={cn("size-4", refreshing && "animate-spin")} />
               </button>
               <div role="tablist" className="flex h-9 gap-0.5 overflow-x-auto rounded-full bg-muted p-1 [scrollbar-width:none]">
                 {TABS.map((one) => (
@@ -164,7 +164,7 @@ function Overview({ summary }: { summary: AdminSummary }) {
   );
 }
 
-const PLAN_NAMES: Record<string, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+const PLAN_NAMES: Record<string, string> = { free: "Free", pro: "Pro" };
 const planName = (plan: string) => PLAN_NAMES[plan] ?? plan;
 const hours = (seconds: number) => (seconds / 3600).toLocaleString(undefined, { maximumFractionDigits: seconds < 36_000 ? 1 : 0 });
 
@@ -177,7 +177,7 @@ function Business({ summary }: { summary: AdminSummary }) {
   const { plans, meetingSeconds } = summary;
   const paying = Object.values(plans.paid).reduce((sum, count) => sum + count, 0);
   const tiles = [
-    { label: "Paying offices", value: paying.toLocaleString(), note: `Plus ${plans.paid.plus ?? 0} · Pro ${plans.paid.pro ?? 0}` },
+    { label: "Paying offices", value: paying.toLocaleString(), note: `Pro ${plans.paid.pro ?? 0}` },
     { label: "Given plans", value: plans.given.toLocaleString(), note: "Paid plan, no payment" },
     { label: "Meeting hours", value: hours(meetingSeconds), note: "All offices, this month" },
   ];
@@ -870,7 +870,7 @@ function OfficeManage({ office, onChanged }: { office: AdminOffice; onChanged: (
         }
       >
         <div role="radiogroup" aria-label="Plan" className="flex h-10 items-center rounded-full bg-muted p-1">
-          {(["free", "plus", "pro"] as PlanId[]).map((one) => (
+          {(["free", "pro"] as PlanId[]).map((one) => (
             <button
               key={one}
               type="button"

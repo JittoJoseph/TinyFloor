@@ -9,6 +9,7 @@ import { AnimationManager } from "../lib/AnimationManager";
 import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
+import { attachDesks } from "../lib/desks";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
@@ -96,38 +97,27 @@ class GameScene extends Phaser.Scene {
     const spawnTile = this.mapManager.getRandomSpawnTile();
     const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
-    // A reconnect puts you back where you were standing, not at the spawn tile.
+    // Arriving, the room seats you at your desk if you have one (docs/26); a
+    // reconnect puts you back where you were, not at the spawn tile or the desk.
+    let arriving = true;
     this.wsManager = new RoomSocket(this.ticketFor, () => {
       const tile = this.player ? pixelToTile(this.player.x, this.player.y) : spawnTile;
-      return { x: tile.tileX, y: tile.tileY };
+      const arrive = arriving;
+      arriving = false;
+      return { x: tile.tileX, y: tile.tileY, arrive };
     });
+    attachDesks((message) => this.wsManager.send(message));
 
-    this.playerManager = new PlayerManager(
-      this,
-      this.animationManager,
-      nav,
-      this.playerId,
-    );
-    this.player = this.playerManager.createLocalPlayer(
-      this.playerId,
-      this.name,
-      spawn.x,
-      spawn.y,
-      this.character,
-    );
+    this.playerManager = new PlayerManager(this, this.animationManager, nav, this.playerId);
+    this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawn.x, spawn.y, this.character);
     this.mapManager.setupColliders(this.player);
 
     // Phones and tablets steer with the on-screen joystick (components/room/Joystick.tsx),
     // including the ones that say they are desktops ("Desktop site", iPads).
     setTouchInput(touchFirst() || !this.sys.game.device.os.desktop);
 
-    this.movementManager = new MovementManager(
-      this,
-      this.player,
-      this.animationManager,
-      this.wsManager,
-      nav,
-      (x, y) => this.mapManager.checkCollisionAt(x, y),
+    this.movementManager = new MovementManager(this, this.player, this.animationManager, this.wsManager, nav, (x, y) =>
+      this.mapManager.checkCollisionAt(x, y),
     );
 
     this.seatManager = new SeatManager(
@@ -135,16 +125,11 @@ class GameScene extends Phaser.Scene {
       this.player,
       this.animationManager,
       this.mapManager.getChairs(),
+      this.playerId,
       this.mapManager.getAnchors("Table")[0],
     );
-    const approach = (x: number, y: number, arrive: () => void) =>
-      this.movementManager.goTo(x, y, arrive);
-    this.seatManager.attach(
-      this.wsManager,
-      (seated) =>
-        this.movementManager.setFrozen(seated, () => this.seatManager?.leave()),
-      approach,
-    );
+    const approach = (x: number, y: number, arrive: () => void) => this.movementManager.goTo(x, y, arrive);
+    this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
     this.meetingZone = this.mapManager.getAnchors("Zones").find((zone) => zone.name === MEETING_ZONE);
 
     callManager.attach(this.wsManager);
@@ -161,12 +146,7 @@ class GameScene extends Phaser.Scene {
     jukebox.attach(this.wsManager);
     const speaker = this.mapManager.getAnchors("Speaker")[0];
     if (speaker) {
-      this.jukeboxObject = new JukeboxObject(
-        this,
-        this.player,
-        { x: speaker.x, y: speaker.y },
-        approach,
-      );
+      this.jukeboxObject = new JukeboxObject(this, this.player, { x: speaker.x, y: speaker.y }, approach);
     }
     // nobody calls into a meeting or out of one, or rings someone already on the line
     this.proximityManager = new ProximityManager(
@@ -176,14 +156,7 @@ class GameScene extends Phaser.Scene {
       (id) => !callManager.currentMeeting() && !meetingOf(id) && !callManager.isPeer(id),
     );
 
-    this.messageHandler = new MessageHandler(
-      this,
-      this.playerManager,
-      this.animationManager,
-      this.seatManager,
-      this.playerId,
-      this.player,
-    );
+    this.messageHandler = new MessageHandler(this, this.playerManager, this.animationManager, this.seatManager, this.playerId, this.player);
     this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
@@ -207,12 +180,8 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
     });
-    this.listen("chatFocused", () =>
-      this.movementManager.setInputEnabled(false),
-    );
-    this.listen("chatBlurred", () =>
-      this.movementManager.setInputEnabled(true),
-    );
+    this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
+    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
 
     // Everything is listening now, so nothing the room says first is missed.
     this.wsManager.connect();
@@ -288,11 +257,7 @@ class GameScene extends Phaser.Scene {
     this.movementManager.update(delta);
     this.seatManager?.update();
     this.playerManager.update(delta);
-    this.playerManager.updateLocalPlayerNameTag(
-      this.player.x,
-      this.player.y,
-      this.seatManager?.seatedDirection(),
-    );
+    this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y, this.seatManager?.seatedDirection());
     this.playerManager.declutterTags(time);
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
@@ -301,9 +266,7 @@ class GameScene extends Phaser.Scene {
   }
 
   public cleanup() {
-    this.windowListeners.forEach(([type, listener]) =>
-      window.removeEventListener(type, listener),
-    );
+    this.windowListeners.forEach(([type, listener]) => window.removeEventListener(type, listener));
     this.windowListeners.length = 0;
 
     this.movementManager?.destroy();
@@ -311,6 +274,7 @@ class GameScene extends Phaser.Scene {
     this.playerManager?.destroy();
     this.proximityManager?.destroy();
     callManager.detach();
+    attachDesks(null);
     whiteboard.detach();
     this.whiteboardObject?.destroy();
     jukebox.detach();

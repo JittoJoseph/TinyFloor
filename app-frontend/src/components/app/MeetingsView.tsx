@@ -85,10 +85,8 @@ function MeetingsLobby({ office }: { office: string }) {
           </div>
         </main>
 
-        {/* The month's hours, at the page's foot: there to see, never in the way. */}
-        <footer className="border-t border-border py-4">
-          <MeetingUsageLine />
-        </footer>
+        {/* Only once the month's meetings have used their fair share: otherwise nothing to see. */}
+        <MeetingUsageLine className="border-t border-border py-4" />
       </div>
 
       <NewMeetingDialog open={starting} onClose={() => setStarting(false)} onStarted={() => setStarting(false)} />

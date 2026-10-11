@@ -34,7 +34,7 @@
     "signIn": "ログイン",
     "account": "アカウント",
     "createOffice": "オフィスを作る",
-    "plansSoon": "もっと大きなチームには、席数の多いプランをまもなく用意します。"
+    "plansSoon": "チーム全員で使えるProはまもなく登場します。"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -90,7 +90,9 @@
     "leave": "出る",
     "trialLeft": "{plan} お試し · 残り {count} 日",
     "choosePlan": "プランを選ぶ",
-    "upgrade": "アップグレード"
+    "upgrade": "アップグレード",
+    "members": "{count, plural, other {#人のメンバー}}",
+    "invitePeople": "メンバーを招待"
   },
   "home": {
     "nav": {

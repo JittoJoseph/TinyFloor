@@ -747,8 +747,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Free for 3 people · $19 a month for 10, $49 for 25",
-            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices top out at 25 people."
+            "detail": "Free for 3 people · $29 a month for the whole team",
+            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices are made for small teams of up to 15."
           },
           {
             "title": "Gather",
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "One price per office",
               "Up to 3 people",
-              "$19"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "A small team on a budget",
-            "body": "TinyFloor, at $19 a month for up to 10 people, or SoWork's free plan if 30-minute meetings are enough."
+            "body": "TinyFloor, at $29 a month for the whole team, or SoWork's free plan if 30-minute meetings are enough."
           },
           {
             "title": "You want recordings and AI notes",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for teams of 2 to 25 who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
+      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for small teams who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
     },
     "faq": [
       {
@@ -904,7 +904,7 @@
       },
       {
         "q": "What's the cheapest virtual office for a small team?",
-        "a": "For a team of 10 on a paid plan, TinyFloor Plus is $19 a month for the whole office. Per-person tools cost $54 to $195 a month for the same team."
+        "a": "For a team of 10 on a paid plan, TinyFloor Pro is $29 a month for the whole office. Per-person tools cost $54 to $195 a month for the same team."
       },
       {
         "q": "Is Gather still free?",
@@ -1007,23 +1007,16 @@
             [
               "5 people",
               "$60",
-              "$19",
+              "$29",
               "$27",
               "Free (up to 5 members)"
             ],
             [
               "10 people",
               "$120",
-              "$19",
+              "$29",
               "$54",
               "$160"
-            ],
-            [
-              "25 people",
-              "$300",
-              "$49",
-              "$135",
-              "$400"
             ]
           ],
           "note": "From each product's own pricing page in October 2026, before tax. SoWork's free plan also covers up to 10 members, with meetings capped at 30 minutes, and WorkAdventure's covers up to 10 people at once."
@@ -1053,7 +1046,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor keeps the core of what Gather does, an office you walk around in where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $19 a month for up to 10 people and $49 for up to 25, one price for the whole office, and it's free for up to 3. It has no recordings, transcription or office editor, so if you rely on those, Gather is the better fit."
+      "body": "TinyFloor keeps the core of what Gather does, an office you walk around in where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $29 a month for the whole team, one price for the whole office, and it's free for up to 3. It has no recordings, transcription or office editor, so if you rely on those, Gather is the better fit."
     },
     "faq": [
       {
@@ -1070,7 +1063,7 @@
       },
       {
         "q": "What is a cheaper alternative to Gather?",
-        "a": "TinyFloor is $19 a month for up to 10 people and free for up to 3. SoWork's Basic plan is $5.40 a member a month billed yearly, and its free plan covers 10 members with 30-minute meetings."
+        "a": "TinyFloor is $29 a month for the whole team and free for up to 3. SoWork's Basic plan is $5.40 a member a month billed yearly, and its free plan covers 10 members with 30-minute meetings."
       }
     ]
   }

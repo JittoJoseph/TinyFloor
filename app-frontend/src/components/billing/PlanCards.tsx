@@ -1,195 +1,149 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Loader2, Minus } from "@/components/ui/icons";
+import { Check, Loader2 } from "@/components/ui/icons";
 import type { Plan, PlanId } from "@/lib/api";
 import { dollars } from "@/lib/billing";
 import { cn } from "@/lib/utils";
 
 /** Plan names stay in English everywhere, like on the pricing page. */
-export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 
-export type PlanMove = "current" | "choose" | "upgrade" | "down";
+/** The one paid plan (docs/23), from the catalog. */
+export const paidPlan = (plans: Plan[]) => plans.find((plan) => plan.price !== null);
 
-/**
- * The plans worth showing an office (docs/22). Without a paid plan (on Free,
- * or trying one) both, Pro first; on Plus, only Pro; on Pro, none: there's
- * nothing above it, and nothing below worth offering.
- */
-export function plansOnOffer(plans: Plan[], subscribed: PlanId | null): Plan[] {
-  const paid = plans.filter((plan) => plan.price !== null);
-  const pro = paid.filter((plan) => plan.id === "pro");
-  if (subscribed === "pro") return [];
-  if (subscribed === "plus") return pro;
-  return [...pro, ...paid.filter((plan) => plan.id !== "pro")];
-}
+/** What a per-person tool charges a person (Gather's $12, docs/22's survey), for the comparison. */
+const PER_SEAT = 1200;
 
 /**
- * The paid plans an office can move to, each with what it gives and what
- * choosing it would do (docs/22). The plans differ in how the office works,
- * not only in who fits: Pro is the full office (HD video, twice the meeting
- * time, help first), Plus the essentials, and its card says plainly what it
- * leaves out. Pro is marked as the one to have, and comes first. Members see
- * the plans without the buttons.
+ * Pro as an office is offered it (docs/23). The price is said three ways, each
+ * true for this team: the flat price, what it comes to for each of them (or a
+ * day, for one person), and what per-person tools would charge the same team.
+ * Then what changes, the specific things first and everything they already
+ * have after, so the list is the whole office, not three lines. The button
+ * says the price again, and under it the two things that make saying yes safe.
+ * Nothing invented: no countdown, no crossed-out price, no "most popular".
  */
-export function PlanCards({
+export function ProOffer({
   plans,
-  current,
-  subscribed,
   members,
-  trialEndsAt,
+  trial,
   busy,
   disabled,
   canChange,
   onChoose,
+  split,
   className,
 }: {
-  /** The plans to show, from `plansOnOffer`. */
   plans: Plan[];
-  current: PlanId;
-  /** Paying through Creem: a move between paid plans is a switch. */
-  subscribed: boolean;
+  /** How many people the office has now: the price is put in their terms. */
   members: number;
-  trialEndsAt?: number | null;
+  /** The team is trying Pro: the button keeps it. */
+  trial?: boolean;
   busy?: string | null;
   disabled?: boolean;
   canChange: boolean;
-  onChoose: (plan: Plan, move: PlanMove) => void;
+  onChoose: (plan: Plan) => void;
+  /** Price and button beside the list, for a wide page; stacked otherwise. */
+  split?: boolean;
   className?: string;
 }) {
-  const t = useTranslations("billing.plans");
-  const trial = !!trialEndsAt;
-  const plus = plans.find((plan) => plan.id === "plus");
-  const order: PlanId[] = ["free", "plus", "pro"];
+  const t = useTranslations("billing.offer");
+  const pro = paidPlan(plans);
+  if (!pro?.price) return null;
+  const price = pro.price;
+  const cents = (amount: number) => `$${(Math.ceil(amount) / 100).toFixed(2)}`;
+  const each =
+    members >= 2
+      ? t("each", { count: members, price: cents(price / members) })
+      : t("daily", { price: dollars(Math.ceil(price / 30 / 100) * 100) });
 
-  const moveTo = (plan: Plan): PlanMove => {
-    // A trial's plan isn't paid for yet: choosing it is buying it.
-    if (plan.id === current && !trial) return "current";
-    if (!subscribed) return "choose";
-    return order.indexOf(plan.id) > order.indexOf(current) ? "upgrade" : "down";
-  };
-
-  if (!plans.length) return null;
   return (
-    <div className={cn("grid gap-3", plans.length > 1 && "sm:grid-cols-2", className)}>
-      {plans.map((plan) => {
-        const pro = plan.id === "pro";
-        const move = moveTo(plan);
-        const mine = plan.id === current;
-        const tooSmall = members > plan.seats && move !== "current";
-        const perks: Array<{ on: boolean; label: ReactNode }> = pro
-          ? [
-              {
-                on: true,
-                label: (
-                  <>
-                    {t("hours", { count: plan.meetingHours })}
-                    {plus && plan.meetingHours > plus.meetingHours && (
-                      <span className="text-muted-foreground"> · {t("times", { count: Math.round(plan.meetingHours / plus.meetingHours) })}</span>
-                    )}
-                  </>
-                ),
-              },
-              { on: true, label: t("hd") },
-              { on: true, label: t("support") },
-              { on: true, label: t("people", { count: plan.seats }) },
-            ]
-          : [
-              { on: true, label: t("hours", { count: plan.meetingHours }) },
-              { on: true, label: t("sd") },
-              { on: false, label: t("hd") },
-              { on: false, label: t("support") },
-              { on: true, label: t("people", { count: plan.seats }) },
-            ];
-        return (
-          <section
-            key={plan.id}
-            className={cn(
-              "relative flex flex-col rounded-2xl border bg-background p-5",
-              pro ? "border-foreground/80 shadow-[0_1px_0_rgb(0_0_0/0.02),0_12px_32px_-18px_rgb(0_0_0/0.35)]" : "border-border",
+    <div className={cn("grid gap-5", split && "sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-8", className)}>
+      <div className="min-w-0">
+        <div className="rounded-2xl bg-muted/70 p-4">
+          <p className="flex items-center gap-2 text-[13px] font-semibold text-foreground">
+            {PLAN_NAMES[pro.id]}
+            {trial && (
+              <span className="rounded-full bg-background px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">{t("trial")}</span>
             )}
-          >
-            <div className="flex items-center justify-between gap-2">
-              <h3 className="text-[16px] font-semibold tracking-tight text-foreground">{PLAN_NAMES[plan.id]}</h3>
-              {mine && trial ? (
-                <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">{t("trial")}</span>
-              ) : (
-                pro && <span className="rounded-full bg-foreground px-2.5 py-0.5 text-[11px] font-semibold text-background">{t("best")}</span>
-              )}
-            </div>
-            <p className="mt-1 text-[12.5px] text-muted-foreground">{pro ? t("taglinePro") : t("taglinePlus")}</p>
-
-            <p className="mt-4 flex items-baseline gap-1">
-              <span className="text-[28px] font-semibold tabular-nums tracking-tight text-foreground">{dollars(plan.price ?? 0)}</span>
-              <span className="text-[12.5px] text-muted-foreground">{t("perMonth")}</span>
-            </p>
-
-            {pro && plus && <p className="mt-4 text-[12.5px] font-medium text-foreground">{t("everythingIn", { plan: PLAN_NAMES.plus })}</p>}
-            <ul className={cn("space-y-2 text-[13px]", pro && plus ? "mt-2" : "mt-4")}>
-              {perks.map((perk, index) => (
-                <li key={index} className={cn("flex items-start gap-2", perk.on ? "text-foreground" : "text-faint")}>
-                  {perk.on ? <Check className="mt-0.5 size-3.5 shrink-0 text-foreground" /> : <Minus className="mt-0.5 size-3.5 shrink-0" />}
-                  <span className={cn(!perk.on && "line-through decoration-faint/60")}>{perk.label}</span>
-                </li>
-              ))}
-            </ul>
-
-            {canChange && (
-              <div className="mt-auto pt-6">
-                <button
-                  type="button"
-                  disabled={disabled || !!busy || move === "current" || tooSmall}
-                  onClick={() => onChoose(plan, move)}
-                  className={cn(
-                    "flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full px-4 text-[13.5px] font-medium transition-colors disabled:cursor-default",
-                    move === "current"
-                      ? "bg-muted text-muted-foreground"
-                      : pro
-                        ? "bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50"
-                        : "border border-border text-foreground hover:bg-muted disabled:opacity-50",
-                  )}
-                >
-                  {busy === plan.id && <Loader2 className="size-3.5 animate-spin" />}
-                  {move === "current"
-                    ? t("currentButton")
-                    : move === "choose"
-                      ? trial && mine
-                        ? t("keep", { plan: PLAN_NAMES[plan.id] })
-                        : t("choose", { plan: PLAN_NAMES[plan.id] })
-                      : move === "upgrade"
-                        ? t("upgrade", { plan: PLAN_NAMES[plan.id] })
-                        : t("moveTo", { plan: PLAN_NAMES[plan.id] })}
-                </button>
-                {tooSmall && <p className="mt-2 text-center text-[11.5px] text-muted-foreground">{t("tooSmall", { count: plan.seats, members })}</p>}
-              </div>
-            )}
-          </section>
-        );
-      })}
+          </p>
+          <p className="mt-2 flex flex-wrap items-baseline gap-x-1.5">
+            <span className="text-[32px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-foreground">{dollars(price)}</span>
+            <span className="text-[12.5px] text-muted-foreground">{t("perMonth")}</span>
+          </p>
+          <p className="mt-3 text-[12.5px] leading-relaxed text-foreground">{each}</p>
+          {members >= 4 && (
+            <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">{t("anchor", { price: dollars(PER_SEAT * members) })}</p>
+          )}
+        </div>
+        {canChange && split && (
+          <OfferButton price={price} trial={trial} busy={busy === pro.id} disabled={disabled || !!busy} onClick={() => onChoose(pro)} />
+        )}
+      </div>
+      <div className="min-w-0">
+        <PlanIncludes plans={plans} />
+        {canChange && !split && (
+          <OfferButton price={price} trial={trial} busy={busy === pro.id} disabled={disabled || !!busy} onClick={() => onChoose(pro)} />
+        )}
+      </div>
     </div>
   );
 }
 
-/** What Pro gives, as a short list: for the office that has it, a reminder of what it's paying for. */
-export function ProIncludes({ plan, plus, className }: { plan: Plan; plus?: Plan; className?: string }) {
-  const t = useTranslations("billing.plans");
-  const items = [
-    plus && plan.meetingHours > plus.meetingHours
-      ? `${t("hours", { count: plan.meetingHours })} · ${t("times", { count: Math.round(plan.meetingHours / plus.meetingHours) })}`
-      : t("hours", { count: plan.meetingHours }),
-    t("hd"),
-    t("support"),
-    t("people", { count: plan.seats }),
-  ];
+function OfferButton({
+  price,
+  trial,
+  busy,
+  disabled,
+  onClick,
+}: {
+  price: number;
+  trial?: boolean;
+  busy: boolean;
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  const t = useTranslations("billing.offer");
   return (
-    <ul className={cn("grid gap-x-6 gap-y-2 text-[13px] text-foreground sm:grid-cols-2", className)}>
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-2">
-          <Check className="mt-0.5 size-3.5 shrink-0" />
-          {item}
-        </li>
-      ))}
-    </ul>
+    <div className="mt-4">
+      <button
+        type="button"
+        disabled={disabled}
+        onClick={onClick}
+        className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.99] disabled:cursor-default disabled:opacity-50"
+      >
+        {busy && <Loader2 className="size-4 animate-spin" />}
+        {trial ? t("keep", { price: dollars(price) }) : t("get", { price: dollars(price) })}
+      </button>
+      <p className="mt-2.5 text-center text-[11.5px] text-muted-foreground">{t("assurance")}</p>
+    </div>
+  );
+}
+
+/**
+ * What Pro gives: what's different first, then everything the office already
+ * has, so it reads as the whole office. On the offer, and for an office on Pro
+ * as a reminder of what it's paying for.
+ */
+export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: string }) {
+  const t = useTranslations("billing.offer");
+  if (!paidPlan(plans)) return null;
+  // No hours, no counts: what the team gets, not what it's allowed (docs/24).
+  const items = [t("wholeTeam"), t("meetings"), t("support")];
+  return (
+    <div className={className}>
+      <ul className="space-y-2.5 text-[13.5px] text-foreground">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-2.5">
+            <span className="mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-foreground text-background">
+              <Check className="size-3" strokeWidth={3} />
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-[12.5px] leading-relaxed text-muted-foreground">{t("everything")}</p>
+    </div>
   );
 }

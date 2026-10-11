@@ -8,7 +8,18 @@ import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Plus, Users } from "
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { goTo, lobbyChatPath, lobbyMeetingsPath, lobbyOfficePath, lobbyPath, lobbyPeoplePath, lobbySettingsPath, useSitePage } from "@/lib/links";
+import {
+  goTo,
+  lobbyChatPath,
+  lobbyMeetingsPath,
+  lobbyOfficePath,
+  lobbyPath,
+  lobbyPeoplePath,
+  lobbySettingsPath,
+  shareUrl,
+  useSitePage,
+} from "@/lib/links";
+import { shareLink } from "@/lib/share";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
@@ -40,6 +51,7 @@ import { Entering } from "./Entering";
 export function LobbyShell({ children }: { children: React.ReactNode }) {
   const t = useTranslations("lobby");
   const ts = useTranslations("shell");
+  const tr = useTranslations("room");
   const pathname = usePathname();
   const router = useRouter();
   const home = useSitePage();
@@ -193,7 +205,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               title={t("title")}
               user={user}
               ticketFor={api.lobbyTicket}
-              invitePath={lobbyPath}
+              onInvite={() => shareLink(shareUrl(lobbyPath), t("title"), tr("inviteText", { room: t("title") }))}
               inviteChip
               leaveHref={leave.href}
               settingsHref={lobbySettingsPath}
@@ -230,13 +242,7 @@ function OfficesOnly({ feature, onClose, onGo }: { feature: OfficeFeature | null
   const tc = useTranslations("common");
   const shown = feature ?? "channels";
   return (
-    <Dialog
-      open={!!feature}
-      onClose={onClose}
-      title={t(`${shown}.title`)}
-      description={t(`${shown}.body`)}
-      closeLabel={tc("close")}
-    >
+    <Dialog open={!!feature} onClose={onClose} title={t(`${shown}.title`)} description={t(`${shown}.body`)} closeLabel={tc("close")}>
       <div className="flex items-center gap-3 rounded-2xl bg-muted p-3">
         <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.06)]">
           {FEATURE_ICON[shown]}

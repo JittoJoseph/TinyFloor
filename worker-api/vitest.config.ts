@@ -22,7 +22,7 @@ export default defineConfig(async () => ({
           CREEM_ENV: "test",
           CREEM_API_KEY: "creem_test_key",
           CREEM_WEBHOOK_SECRET: "whsec_test",
-          CREEM_PRODUCTS: JSON.stringify({ plus: "prod_plus", pro: "prod_pro" }),
+          CREEM_PRODUCTS: JSON.stringify({ pro: "prod_pro" }),
           TEST_MIGRATIONS: await readD1Migrations("./migrations"),
         },
         workers: [

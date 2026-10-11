@@ -23,7 +23,7 @@
       },
       {
         "q": "O TinyFloor é gratuito?",
-        "a": "Sim, para um escritório de até 3 pessoas, com 5 horas de reunião por mês. Escritórios maiores custam $19 por mês para 10 pessoas e 30 horas de reunião, ou $49 para 25 pessoas e 60 horas."
+        "a": "Sim, para um escritório de até 3 pessoas, com tudo incluído. Depois, o Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
       },
       {
         "q": "Preciso instalar alguma coisa?",
@@ -57,7 +57,7 @@
       "screenShare": "Compartilhamento de tela"
     },
     "us": {
-      "price": "Grátis para 3 pessoas, US$ 19 por mês para 10",
+      "price": "Grátis para 3 pessoas, US$ 29 por mês para toda a equipe",
       "freePlan": "Tudo, sem limite de tempo, para até 3 pessoas.",
       "browser": "Sim, sem instalar nada",
       "screenShare": "Sim, em chamadas e reuniões"
@@ -96,7 +96,7 @@
         "faq": [
           {
             "q": "O Gather ainda é grátis?",
-            "a": "Não. O Gather não tem mais um plano gratuito permanente. Ele oferece um teste de 30 dias e depois o plano Essential começa em US$ 12 por membro por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
+            "a": "Não. O Gather não tem mais um plano gratuito permanente. Ele oferece um teste de 30 dias e depois o plano Essential começa em US$ 12 por membro por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O que o Gather tem que o TinyFloor não tem?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Quantas pessoas cabem em um escritório TinyFloor?",
-            "a": "Até 3 pessoas no Free, 10 no Plus e 25 no Pro, e você pode criar quantos escritórios precisar."
+            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
           }
         ]
       },
@@ -119,11 +119,11 @@
           "description": "O plano gratuito do Kumospace para em 5 membros. O TinyFloor é um escritório virtual gratuito em pixel art com chamadas de vídeo por proximidade, aberto para toda a equipe no navegador."
         },
         "title": "Uma <em>alternativa ao Kumospace</em> para toda a equipe.",
-        "subtitle": "O plano gratuito do Kumospace comporta 5 membros em um andar. O TinyFloor é grátis para 3, e depois um só preço para o escritório inteiro: US$ 19 por mês para até 10.",
+        "subtitle": "O plano gratuito do Kumospace comporta 5 membros em um andar. O TinyFloor é grátis para 3 e depois um preço para toda a equipe: US$ 29 por mês.",
         "points": [
           {
             "title": "Sem limite de 5 membros",
-            "body": "Convide toda a equipe: até 10 pessoas no Plus e 25 no Pro, por um preço por escritório, não por pessoa."
+            "body": "Convide toda a sua equipe: um preço por escritório no Pro, não por pessoa."
           },
           {
             "title": "Experimente antes de se cadastrar",
@@ -143,7 +143,7 @@
         "faq": [
           {
             "q": "O Kumospace é grátis?",
-            "a": "O Kumospace tem um plano gratuito para até 5 membros registrados, com um andar e convidados limitados a 4 horas por semana. O plano Business começa em US$ 16 por usuário por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
+            "a": "O Kumospace tem um plano gratuito para até 5 membros registrados, com um andar e convidados limitados a 4 horas por semana. O plano Business começa em US$ 16 por usuário por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O que o Kumospace tem que o TinyFloor não tem?",
@@ -194,7 +194,7 @@
           },
           {
             "q": "O TinyFloor serve para eventos virtuais?",
-            "a": "O TinyFloor foi feito para equipes que trabalham juntas todos os dias. Um escritório comporta até 25 pessoas, então combina mais com equipes pequenas do que com grandes eventos."
+            "a": "O TinyFloor é feito para equipes pequenas que trabalham juntas todo dia, até 15 pessoas por escritório, mais do que para grandes eventos."
           },
           {
             "q": "O que o SpatialChat tem que o TinyFloor não tem?",
@@ -209,15 +209,15 @@
       "workadventure": {
         "label": "Alternativa ao WorkAdventure",
         "meta": {
-          "title": "Alternativa ao WorkAdventure para equipes de até 25",
-          "description": "O plano gratuito do WorkAdventure permite 10 pessoas ao mesmo tempo. O TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade, grátis para 3 pessoas e US$ 19 por mês para 10."
+          "title": "Alternativa ao WorkAdventure para equipes pequenas",
+          "description": "O plano gratuito do WorkAdventure permite 10 pessoas ao mesmo tempo. O TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade, grátis para 3 pessoas e US$ 29 por mês para toda a equipe."
         },
         "title": "Uma <em>alternativa ao WorkAdventure</em> com espaço para crescer.",
         "subtitle": "O WorkAdventure também é um escritório em pixel art, e o plano gratuito comporta 10 pessoas ao mesmo tempo. O TinyFloor é grátis para 3 pessoas e depois tem um preço fixo, não um preço por pessoa.",
         "points": [
           {
             "title": "O dobro de espaço",
-            "body": "Um mapa gratuito do WorkAdventure comporta 10 pessoas ao mesmo tempo. Um escritório do TinyFloor comporta até 25 membros, e você pode abrir quantos escritórios quiser."
+            "body": "Um mapa gratuito do WorkAdventure comporta 10 pessoas por vez. Um escritório do TinyFloor é feito para uma equipe pequena que trabalha junta o dia todo, e você pode abrir quantos escritórios quiser."
           },
           {
             "title": "Nenhum mapa para montar",
@@ -237,7 +237,7 @@
         "faq": [
           {
             "q": "O WorkAdventure é grátis?",
-            "a": "O WorkAdventure tem um plano gratuito para até 10 usuários simultâneos. O plano Business começa em 8 € por usuário por mês, e os preços para eventos em 4 € por usuário por dia. O TinyFloor é grátis para até 3 pessoas e custa US$ 19 por mês para até 10."
+            "a": "O WorkAdventure tem um plano gratuito para até 10 usuários simultâneos. O plano Business começa em 8 € por usuário por mês, e os preços para eventos em 4 € por usuário por dia. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "Posso personalizar o mapa no TinyFloor?",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Quantas pessoas podem entrar?",
-            "a": "Até 3 pessoas no Free, 10 no Plus e 25 no Pro, e você pode criar quantos escritórios precisar."
+            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
           },
           {
             "q": "O TinyFloor é grátis?",
@@ -323,11 +323,11 @@
           },
           {
             "q": "É grátis?",
-            "a": "Sim, para até 3 pessoas. Depois é um só preço para o escritório inteiro, US$ 19 por mês para até 10, sem período de teste e sem preço por usuário."
+            "a": "Sim, para até 3 pessoas. Depois é um preço para toda a equipe, US$ 29 por mês, não um preço por assento."
           },
           {
             "q": "Quantas pessoas podem usar um escritório?",
-            "a": "Até 3 pessoas no Free, 10 no Plus e 25 no Pro. Uma empresa maior pode criar um escritório para cada equipe."
+            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Uma empresa maior pode criar um escritório para cada equipe."
           },
           {
             "q": "Substitui as chamadas de vídeo?",
@@ -422,14 +422,14 @@
         "label": "Alternativa ao Sococo",
         "meta": {
           "title": "Alternativa ao Sococo para equipes remotas pequenas",
-          "description": "O Sococo começa em 10 assentos no plano anual. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e $19 por mês para até 10, cobrado mensalmente."
+          "description": "O Sococo começa em 10 assentos no plano anual. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e US$ 29 por mês para toda a equipe, com cobrança mensal."
         },
         "title": "Uma <em>alternativa ao Sococo</em> sem o mínimo de 10 assentos.",
         "subtitle": "O Sococo vende assentos por ano, no mínimo 10. O TinyFloor tem um preço mensal para o escritório inteiro, e uma equipe pequena pode começar de graça.",
         "points": [
           {
             "title": "Comece no seu tamanho real",
-            "body": "Grátis para até 3 pessoas, depois $19 por mês para até 10. Sem mínimo de assentos e sem pagamento anual adiantado."
+            "body": "Grátis para até 3 pessoas e depois US$ 29 por mês para toda a equipe. Sem mínimo de assentos e sem pagamento anual adiantado."
           },
           {
             "title": "Um andar para circular",
@@ -448,7 +448,7 @@
         "faq": [
           {
             "q": "Quanto custa o Sococo?",
-            "a": "O Sococo custa US$ 13,49 por assento por mês, cobrado anualmente, com mínimo de 10 assentos e 500 minutos por assento por mês. O Sococo Unlimited custa US$ 24,99 por assento com mínimo de 100 assentos. O TinyFloor é grátis para 3 pessoas e custa $19 por mês para até 10."
+            "a": "O Sococo custa US$ 13,49 por assento por mês, cobrado anualmente, com mínimo de 10 assentos e 500 minutos por assento por mês. O Sococo Unlimited custa US$ 24,99 por assento com mínimo de 100 assentos. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "Existe uma versão grátis do Sococo?",
@@ -468,14 +468,14 @@
         "label": "Alternativa ao oVice",
         "meta": {
           "title": "Alternativa ao oVice para equipes pequenas",
-          "description": "O oVice cobra por espaço ou a partir de 20 usuários. O TinyFloor é um escritório virtual no navegador para equipes pequenas: grátis para 3 pessoas, $19 por mês para 10 e $49 para 25."
+          "description": "O oVice cobra por espaço ou a partir de 20 usuários. O TinyFloor é um escritório virtual no navegador para equipes pequenas: grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe."
         },
         "title": "Uma <em>alternativa ao oVice</em> do tamanho de equipes pequenas.",
-        "subtitle": "O oVice foi feito para empresas e comunidades, com planos por tamanho de espaço ou a partir de 20 usuários. O TinyFloor é feito para equipes de 2 a 25 pessoas, com um preço simples por escritório.",
+        "subtitle": "O oVice é feito para empresas e comunidades, com planos por tamanho de espaço ou a partir de 20 usuários. O TinyFloor é feito para equipes pequenas, com um preço simples por escritório.",
         "points": [
           {
-            "title": "Preços para 3, 10 ou 25",
-            "body": "Grátis para até 3 pessoas, $19 por mês para 10 e $49 para 25. Sem tamanhos de espaço para calcular."
+            "title": "Um preço por escritório",
+            "body": "Grátis para até 3 pessoas e depois US$ 29 por mês para toda a equipe. Sem tamanhos de espaço para calcular."
           },
           {
             "title": "Chegue perto e converse",
@@ -495,7 +495,7 @@
         "faq": [
           {
             "q": "Quanto custa o oVice?",
-            "a": "O oVice Entry-S custa US$ 65 por mês por espaço no plano anual, ou US$ 78 no mensal, para cerca de 10 membros fixos. O Business Starter custa US$ 16 por usuário por mês a partir de 20 usuários. O TinyFloor custa $19 por mês para até 10 pessoas."
+            "a": "O oVice Entry-S custa US$ 65 por mês por espaço no plano anual, ou US$ 78 no mensal, para cerca de 10 membros fixos. O Business Starter custa US$ 16 por usuário por mês a partir de 20 usuários. O TinyFloor custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O oVice tem plano grátis?",
@@ -515,14 +515,14 @@
         "label": "Alternativa ao Teamflow",
         "meta": {
           "title": "Alternativa ao Teamflow que roda no navegador",
-          "description": "O Teamflow custa $15 por pessoa por mês com apps para computador. O TinyFloor é um escritório virtual no navegador: grátis para 3 pessoas, $19 por mês para um escritório de 10."
+          "description": "O Teamflow custa US$ 15 por pessoa por mês, com apps para desktop. O TinyFloor é um escritório virtual no navegador: grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe."
         },
         "title": "Uma <em>alternativa ao Teamflow</em> sem nada para baixar.",
         "subtitle": "O Teamflow cobra por pessoa e roda como app no seu computador. O TinyFloor abre numa aba do navegador, no notebook ou no celular, por um preço por escritório.",
         "points": [
           {
             "title": "Um preço para o escritório",
-            "body": "O plano Seed do Teamflow custa $15 por pessoa. O TinyFloor Plus custa $19 por mês para até 10 pessoas juntas."
+            "body": "O plano Seed do Teamflow custa US$ 15 por pessoa. O TinyFloor Pro custa US$ 29 por mês para toda a sua equipe junta."
           },
           {
             "title": "Sem corte aos 45 minutos",
@@ -542,7 +542,7 @@
         "faq": [
           {
             "q": "Quanto custa o Teamflow?",
-            "a": "O Teamflow é grátis para até 5 pessoas com reuniões de 45 minutos. O Seed custa US$ 15 e o Business US$ 25 por pessoa por mês, cobrados anualmente. O TinyFloor é grátis para 3 pessoas, depois $19 por mês para até 10."
+            "a": "O Teamflow é grátis para até 5 pessoas com reuniões de 45 minutos. O Seed custa US$ 15 e o Business US$ 25 por pessoa por mês, cobrados anualmente. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O TinyFloor tem as integrações de apps do Teamflow?",
@@ -554,7 +554,7 @@
           },
           {
             "q": "Quantas pessoas cabem num escritório TinyFloor?",
-            "a": "Até 3 pessoas no Free, 10 no Plus e 25 no Pro, e você pode criar quantos escritórios precisar."
+            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
           }
         ]
       },
@@ -562,7 +562,7 @@
         "label": "Alternativa ao Roam",
         "meta": {
           "title": "Alternativa ao Roam para equipes remotas pequenas",
-          "description": "O Roam é um app para computador com preço por membro ativo. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e $19 por mês para até 10."
+          "description": "O Roam é um app de desktop cobrado por membro ativo. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e US$ 29 por mês para toda a equipe."
         },
         "title": "Uma <em>alternativa ao Roam</em> que abre no navegador.",
         "subtitle": "O Roam junta um escritório virtual com ferramentas de IA e um app para computador, com preço por membro. O TinyFloor faz a parte do escritório de forma simples: chegar perto, se reunir e conversar, por um preço por equipe.",
@@ -577,7 +577,7 @@
           },
           {
             "title": "Um preço por equipe",
-            "body": "Grátis para 3 pessoas, $19 por mês para 10 e $49 para 25, não importa quantos usem naquele mês."
+            "body": "Grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe, não importa quantas usem naquele mês."
           }
         ],
         "them": {
@@ -589,7 +589,7 @@
         "faq": [
           {
             "q": "Como o Roam cobra?",
-            "a": "O Roam cobra um preço mensal por membro ativo por todos os seus produtos, com teste grátis de 14 dias e sem contrato anual. O TinyFloor é grátis para 3 pessoas e custa $19 por mês para até 10."
+            "a": "O Roam cobra um preço mensal por membro ativo por todos os seus produtos, com teste grátis de 14 dias e sem contrato anual. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O que o Roam tem que o TinyFloor não tem?",
@@ -648,7 +648,7 @@
           },
           {
             "q": "Quanto custa o TinyFloor?",
-            "a": "Grátis para até 3 pessoas. O Plus custa $19 por mês para 10 pessoas e o Pro $49 por mês para 25, para o escritório inteiro, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
           }
         ]
       },
@@ -687,7 +687,7 @@
           },
           {
             "q": "O TinyFloor é grátis como o Discord?",
-            "a": "Para até 3 pessoas, sim. Escritórios maiores custam $19 por mês para 10 pessoas e $49 por mês para 25."
+            "a": "Para até 3 pessoas, sim. Depois, o Pro custa US$ 29 por mês para toda a equipe."
           },
           {
             "q": "O TinyFloor tem canais de voz?",
@@ -718,17 +718,17 @@
           },
           {
             "title": "TinyFloor",
-            "body": "Grátis para 3 pessoas, depois $19 por mês para até 10 e $49 para 25, para o escritório inteiro."
+            "body": "Grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe, não por pessoa."
           }
         ],
         "faq": [
           {
             "q": "Qual é mais barato, Gather ou Kumospace?",
-            "a": "Para uma equipe de 10, o Gather começa em cerca de US$ 120 por mês e o Kumospace Business em cerca de US$ 160. O Kumospace tem um plano grátis para até 5 membros; o Gather tem um teste de 30 dias. O TinyFloor Plus custa $19 por mês para o escritório inteiro."
+            "a": "Para uma equipe de 10, o Gather começa em cerca de US$ 120 por mês e o Kumospace Business em cerca de US$ 160. O Kumospace tem um plano grátis para até 5 membros; o Gather tem um teste de 30 dias. O TinyFloor Pro custa US$ 29 por mês para o escritório inteiro."
           },
           {
             "q": "Qual é melhor para uma equipe pequena?",
-            "a": "O plano grátis do Kumospace serve para até 5 pessoas, e o Gather combina com equipes que querem mais personalização. Se você quer um preço simples para uma equipe de até 25 pessoas, o TinyFloor é feito para isso."
+            "a": "O plano gratuito do Kumospace serve para até 5 pessoas, e o Gather para equipes que querem mais personalização. Se você quer um preço simples para uma equipe pequena, o TinyFloor é feito para isso."
           },
           {
             "q": "Gather e Kumospace rodam no navegador?",
@@ -795,7 +795,7 @@
           },
           {
             "q": "É grátis?",
-            "a": "Grátis para até 3 pessoas. O Plus custa $19 por mês para 10 pessoas e o Pro $49 por mês para 25, para o escritório inteiro, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
           }
         ]
       },
@@ -845,8 +845,8 @@
             "a": "Escolha um horário, encontrem-se no mesmo lugar todo dia e sejam breves. No TinyFloor a reunião principal está sempre lá: todos entram no horário e saem quando termina."
           },
           {
-            "q": "Quantas horas de reunião uma daily usa?",
-            "a": "Uma daily de 15 minutos todo dia útil dá cerca de 5 horas por mês. O Plus inclui 30 horas de reuniões em grupo por mês e o Pro 60."
+            "q": "Uma daily custa a mais?",
+            "a": "Não. As reuniões vêm em todo plano, sem nada para contar. Uma daily de 15 minutos em todo dia útil dá cerca de 5 horas por mês."
           },
           {
             "q": "Podemos fazer dailies assíncronas?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Um novo contratado ocupa um assento do plano?",
-            "a": "Sim, todo mundo no escritório é membro. O Plus tem espaço para 10 pessoas e o Pro para 25."
+            "a": "Sim, todos no escritório são membros. O Pro tem espaço para a equipe inteira."
           },
           {
             "q": "Quem chega consegue ler o chat anterior?",
@@ -963,8 +963,8 @@
             "a": "É o papo informal que uma equipe remota sente falta do escritório: esbarrar nas pessoas e falar de qualquer coisa. No TinyFloor ele acontece no andar em vez de numa chamada agendada."
           },
           {
-            "q": "Esses papos gastam horas de reunião?",
-            "a": "Conversas entre duas pessoas nunca contam. Só as reuniões em grupo contam nas horas mensais."
+            "q": "As conversas de corredor contam para alguma coisa?",
+            "a": "Não. Conversas entre duas pessoas nunca contam, e as reuniões vêm em todo plano."
           },
           {
             "q": "Podemos ouvir música juntos?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Qual o tamanho máximo de uma equipe de engenharia?",
-            "a": "Até 25 pessoas num escritório com o Pro. Organizações maiores podem dar um escritório a cada equipe."
+            "a": "O Pro é feito para uma equipe pequena, até 15 pessoas em um escritório. Organizações maiores dão a cada equipe um escritório próprio."
           },
           {
             "q": "Podemos continuar com o Slack?",
@@ -1086,7 +1086,7 @@
           },
           {
             "q": "Quanto custa?",
-            "a": "Grátis para até 3 pessoas. O Plus custa $19 por mês para 10 pessoas e o Pro $49 por mês para 25, para o escritório inteiro, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
           },
           {
             "q": "Precisamos instalar alguma coisa?",
@@ -1098,7 +1098,7 @@
         "label": "Startups",
         "meta": {
           "title": "Escritório virtual para startups remotas",
-          "description": "Um escritório virtual para startups remotas: mantenham a velocidade de quem trabalha lado a lado, por um preço por escritório. Grátis para 3 pessoas, $19 por mês para 10."
+          "description": "Um escritório virtual para startups remotas: mantenha a agilidade de trabalhar lado a lado, por um preço por escritório. Grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe."
         },
         "title": "Um escritório virtual para <em>startups remotas.</em>",
         "subtitle": "Equipes no começo andam rápido porque estão todos na mesma sala. O TinyFloor coloca uma startup remota de volta numa sala, por um preço por escritório, não por contratação.",
@@ -1109,7 +1109,7 @@
           },
           {
             "title": "Sem taxa por contratação",
-            "body": "$19 por mês para até 10 pessoas e $49 para 25. Contratar alguém não adiciona uma taxa por assento."
+            "body": "US$ 29 por mês para toda a equipe. Contratar alguém não adiciona uma taxa por assento."
           },
           {
             "title": "Decida em minutos",
@@ -1121,31 +1121,31 @@
           {
             "label": "3 pessoas",
             "title": "Free",
-            "body": "Os fundadores dividem um andar sem custo, com 5 horas de reunião por mês."
+            "body": "Os fundadores dividem um andar de graça, com tudo incluído."
           },
           {
-            "label": "10 pessoas",
-            "title": "Plus",
-            "body": "$19 por mês para o escritório inteiro, com 30 horas de reunião."
+            "label": "4ª pessoa",
+            "title": "Teste do Pro",
+            "body": "Toda a equipe ganha o Pro grátis por 14 dias, sem cartão."
           },
           {
-            "label": "25 pessoas",
+            "label": "Toda a equipe",
             "title": "Pro",
-            "body": "$49 por mês para o escritório inteiro, com 60 horas de reunião."
+            "body": "US$ 29 por mês para o escritório inteiro, com reuniões sempre que precisarem."
           }
         ],
         "faq": [
           {
             "q": "Quanto custa o TinyFloor para uma startup?",
-            "a": "Grátis para até 3 pessoas. O Plus custa $19 por mês para 10 pessoas e o Pro $49 por mês para 25, para o escritório inteiro, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
           },
           {
             "q": "Podemos cancelar quando quisermos?",
             "a": "Sim. Um plano pago vale até o fim do período pago, depois o escritório volta para o Free. Nada é apagado."
           },
           {
-            "q": "O que acontece quando passamos de 25 pessoas?",
-            "a": "Deem um escritório próprio a cada equipe, ou escrevam para nós e conversamos."
+            "q": "O que acontece quando um escritório fica pequeno para nós?",
+            "a": "Um escritório é feito para uma equipe pequena, até 15 pessoas. Conforme crescerem, deem a cada equipe um escritório próprio."
           },
           {
             "q": "Precisamos de alguma configuração de TI?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Quantas pessoas podemos ter?",
-            "a": "Até 10 no Plus e 25 no Pro, por um preço mensal para o escritório inteiro."
+            "a": "Toda a sua equipe, até 15 pessoas no Pro, por um preço mensal para o escritório inteiro."
           },
           {
             "q": "Freelancers podem entrar?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Quantas pessoas podem entrar numa reunião?",
-            "a": "Todo o escritório: até 3 pessoas no Free, 10 no Plus e 25 no Pro."
+            "a": "Todos no escritório: até 3 pessoas no Free e a equipe inteira no Pro."
           },
           {
             "q": "As reuniões têm limite de tempo?",
-            "a": "Não há limite por reunião. Cada plano inclui horas de reunião em grupo todo mês: 5 no Free, 30 no Plus e 60 no Pro."
+            "a": "Não. As reuniões vêm em todo plano, sem contador para acompanhar."
           },
           {
             "q": "O que acontece quando as horas acabam?",
@@ -1388,7 +1388,7 @@
           },
           {
             "q": "Quanto custa?",
-            "a": "Grátis para até 3 pessoas. O Plus custa US$ 19 por mês para 10 pessoas e o Pro US$ 49 por mês para 25, para o escritório todo, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
           }
         ]
       },
@@ -1584,7 +1584,7 @@
       "eyebrow": "Preços",
       "title": "Preço por escritório,",
       "muted": "não por pessoa.",
-      "body": "Comece grátis. O Pro é o escritório completo, para equipes de qualquer tamanho.",
+      "body": "Grátis para até 3 pessoas. Depois, um preço para toda a sua equipe.",
       "soon": "Em breve",
       "forever": "para sempre",
       "month": "por mês",
@@ -1592,20 +1592,17 @@
         "name": "Free",
         "tagline": "Para testar com sua equipe"
       },
-      "plus": {
-        "name": "Plus",
-        "tagline": "O essencial"
-      },
       "pro": {
         "name": "Pro",
-        "tagline": "O escritório completo, no seu melhor"
+        "tagline": "Toda a sua equipe, um preço só"
       },
       "tax": "Preços mensais, sem impostos.",
       "choose": "Escolher {plan}",
       "note": "Chamadas entre duas pessoas nunca contam. Cada preço vale para o escritório inteiro, não por pessoa.",
-      "best": "Melhor custo-benefício",
-      "perksStandard": "Vídeo padrão · {hours} horas de reunião por mês",
-      "perksPro": "Vídeo HD · {hours} horas de reunião · ajuda prioritária"
+      "perksPro": "Toda a sua equipe · reuniões sempre que precisarem · ajuda prioritária",
+      "perksFree": "Até {people} pessoas · tudo incluído",
+      "daily": "Menos de {price} por dia",
+      "assurance": "Cancele quando quiser · reembolso em 14 dias"
     },
     "source": {
       "star": "Dar uma estrela no GitHub",
@@ -1625,30 +1622,27 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: um só preço para o escritório inteiro",
-      "description": "O TinyFloor é grátis para começar. O Plus custa US$ 19 por mês; o Pro, com vídeo HD, o dobro de horas de reunião e ajuda prioritária, US$ 49 por mês. Preço por escritório, não por pessoa."
+      "description": "O TinyFloor é grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, com reuniões sempre que precisarem e ajuda prioritária. Um preço por escritório, não por pessoa."
     },
     "title": "Um só preço para o escritório inteiro.",
     "muted": "Não um por pessoa.",
-    "body": "Comece grátis e vá para o Pro para o escritório completo: vídeo HD, o dobro do tempo de reunião e ajuda prioritária.",
+    "body": "Comece grátis para até 3 pessoas e depois passe para o Pro para toda a equipe, por um preço só.",
     "seats": {
       "title": "Dez pessoas,",
       "muted": "uma conta pequena.",
       "body": "Quanto uma equipe de 10 paga por mês.",
       "perSeat": "Ferramentas por usuário a {price} por pessoa",
-      "ours": "TinyFloor Plus, para o escritório inteiro"
+      "ours": "TinyFloor Pro, para o escritório inteiro"
     },
     "table": {
       "title": "Compare os planos,",
       "muted": "lado a lado.",
       "people": "Pessoas",
-      "hours": "Horas de reunião por mês",
-      "hoursNote": "Só reuniões em grupo",
       "calls": "Chamadas entre duas pessoas",
       "callsNote": "Nunca são contadas",
-      "video": "Vídeo nas reuniões",
-      "standard": "Padrão",
-      "hd": "HD",
-      "support": "Ajuda prioritária"
+      "support": "Ajuda prioritária",
+      "wholeTeam": "Toda a equipe",
+      "meetings": "Reuniões em grupo"
     },
     "notes": {
       "title": "Bom saber.",
@@ -1661,16 +1655,16 @@
         "body": "Peça em até 14 dias após qualquer pagamento e receba tudo de volta."
       },
       "change": {
-        "title": "Mude de plano quando quiser",
-        "body": "Subir ou descer de plano vale na hora, e o Creem cobra ou credita a diferença."
-      },
-      "hours": {
-        "title": "Quando as horas acabam",
-        "body": "As reuniões continuam só com voz até o dia 1. As chamadas entre duas pessoas funcionam normalmente."
+        "title": "Um teste quando a equipe chega",
+        "body": "Quando a 4ª pessoa entra em um escritório gratuito, toda a equipe ganha o Pro grátis por 14 dias. Sem cartão."
       },
       "tax": {
         "title": "Impostos no checkout",
         "body": "Os preços estão em dólares americanos. O Creem, nosso revendedor, adiciona impostos sobre vendas ou IVA no pagamento."
+      },
+      "size": {
+        "title": "Feito para equipes pequenas",
+        "body": "Um escritório é para uma equipe que trabalha junta todo dia, até 15 pessoas. Uma empresa maior dá a cada equipe um escritório próprio."
       }
     }
   },

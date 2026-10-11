@@ -29,7 +29,7 @@ export class RoomSocket {
   constructor(
     private readonly ticketFor: () => Promise<RoomTicket>,
     /** Where to appear; asked again on every reconnect so you come back where you were. */
-    private readonly spawn: () => { x: number; y: number },
+    private readonly spawn: () => { x: number; y: number; arrive: boolean },
   ) {}
 
   setOnMessage(callback: (message: ServerMessage) => void) {
@@ -76,8 +76,8 @@ export class RoomSocket {
     }
     if (this.stopped) return;
 
-    const { x, y } = this.spawn();
-    const url = `${ticket.url}?ticket=${encodeURIComponent(ticket.ticket)}&x=${x}&y=${y}`;
+    const { x, y, arrive } = this.spawn();
+    const url = `${ticket.url}?ticket=${encodeURIComponent(ticket.ticket)}&x=${x}&y=${y}${arrive ? "&arrive=1" : ""}`;
     const ws = new WebSocket(url);
     this.ws = ws;
 

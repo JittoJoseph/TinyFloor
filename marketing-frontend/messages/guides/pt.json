@@ -747,8 +747,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Grátis para 3 pessoas · US$ 19 por mês para 10, US$ 49 para 25",
-            "body": "Um escritório em pixel art no navegador, no computador e no celular. Vá até um colega para iniciar uma chamada de vídeo, sente-se a uma mesa para se reunir, com canais de chat, compartilhamento de tela e quadro branco. Um preço para o escritório todo, não por pessoa. Não tem gravações, notas com IA nem editor de mapa, e cada escritório comporta no máximo 25 pessoas."
+            "detail": "Grátis para 3 pessoas · US$ 29 por mês para toda a equipe",
+            "body": "Um escritório em pixel art no navegador, no computador e no celular. Vá até um colega para iniciar uma chamada de vídeo, sente-se a uma mesa para se reunir, com canais de chat, compartilhamento de tela e quadro branco. Um preço para o escritório todo, não por pessoa. Não tem gravações, notas com IA nem editor de mapa, e os escritórios são feitos para equipes pequenas de até 15 pessoas."
           },
           {
             "title": "Gather",
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "Um preço por escritório",
               "Até 3 pessoas",
-              "US$ 19"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "Uma equipe pequena com pouco orçamento",
-            "body": "O TinyFloor, a US$ 19 por mês para até 10 pessoas, ou o plano gratuito do SoWork se reuniões de 30 minutos bastarem."
+            "body": "O TinyFloor, por US$ 29 por mês para toda a equipe, ou o plano gratuito do SoWork se reuniões de 30 minutos bastarem."
           },
           {
             "title": "Você quer gravações e notas com IA",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é o simples e barato: um escritório no navegador onde você vai até a pessoa para conversar, com sala de reunião, chat e compartilhamento de tela, por um preço por escritório. É para equipes de 2 a 25 que querem um escritório aberto o dia todo. Se você precisa de gravações, notas com IA ou um mapa desenhado por você, o Gather ou o SoWork Premium vão atender melhor. O TinyFloor é grátis para até 3 pessoas, então dá para testar com sua equipe primeiro."
+      "body": "O TinyFloor é o simples e barato: um escritório no navegador onde você vai até a pessoa para conversar, com sala de reunião, chat e compartilhamento de tela, por um preço por escritório. É para equipes pequenas que querem um escritório aberto o dia todo. Se você precisa de gravações, notas com IA ou um mapa desenhado por você, o Gather ou o SoWork Premium vão atender melhor. O TinyFloor é grátis para até 3 pessoas, então dá para testar com sua equipe primeiro."
     },
     "faq": [
       {
@@ -904,7 +904,7 @@
       },
       {
         "q": "Qual é o escritório virtual mais barato para uma equipe pequena?",
-        "a": "Para uma equipe de 10 num plano pago, o TinyFloor Plus custa US$ 19 por mês pelo escritório todo. Ferramentas cobradas por pessoa custam de US$ 54 a US$ 195 por mês para a mesma equipe."
+        "a": "Para uma equipe de 10 em um plano pago, o TinyFloor Pro custa US$ 29 por mês para o escritório inteiro. Ferramentas cobradas por pessoa custam de US$ 54 a US$ 195 por mês para a mesma equipe."
       },
       {
         "q": "O Gather ainda é gratuito?",
@@ -1007,23 +1007,16 @@
             [
               "5 pessoas",
               "US$ 60",
-              "US$ 19",
+              "$29",
               "US$ 27",
               "Grátis (até 5 membros)"
             ],
             [
               "10 pessoas",
               "US$ 120",
-              "US$ 19",
+              "$29",
               "US$ 54",
               "US$ 160"
-            ],
-            [
-              "25 pessoas",
-              "US$ 300",
-              "US$ 49",
-              "US$ 135",
-              "US$ 400"
             ]
           ],
           "note": "Da página de preços de cada produto em outubro de 2026, sem impostos. O plano gratuito do SoWork também cobre até 10 membros, com reuniões de no máximo 30 minutos, e o do WorkAdventure até 10 pessoas ao mesmo tempo."
@@ -1053,7 +1046,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor mantém o essencial do que o Gather faz: um escritório por onde você anda e onde conversa indo até alguém, com sala de reunião, chat e compartilhamento de tela. Custa US$ 19 por mês para até 10 pessoas e US$ 49 para até 25, um preço para o escritório todo, e é grátis para até 3. Não tem gravações, transcrição nem editor de escritório; se você depende disso, o Gather atende melhor."
+      "body": "O TinyFloor mantém o essencial do Gather: um escritório por onde você anda e conversa chegando perto de alguém, com sala de reunião, chat e compartilhamento de tela. Custa US$ 29 por mês para toda a equipe, um preço para o escritório inteiro, e é grátis para até 3. Não tem gravações, transcrição nem editor de escritório; se você depende disso, o Gather combina mais."
     },
     "faq": [
       {
@@ -1070,7 +1063,7 @@
       },
       {
         "q": "Qual é uma alternativa mais barata ao Gather?",
-        "a": "O TinyFloor custa US$ 19 por mês para até 10 pessoas e é grátis para até 3. O plano Basic do SoWork custa US$ 5,40 por membro por mês no plano anual, e o plano gratuito dele cobre 10 membros com reuniões de 30 minutos."
+        "a": "O TinyFloor custa US$ 29 por mês para toda a equipe e é grátis para até 3. O plano Basic do SoWork custa US$ 5,40 por membro por mês com cobrança anual, e o plano gratuito cobre 10 membros com reuniões de 30 minutos."
       }
     ]
   }

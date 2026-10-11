@@ -3,7 +3,19 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, UserPlus, Users, Video, VideoOff } from "@/components/ui/icons";
+import {
+  Headphones,
+  HeadphoneOff,
+  Mic,
+  MicOff,
+  MonitorUp,
+  MonitorX,
+  PhoneOff,
+  UserPlus,
+  Users,
+  Video,
+  VideoOff,
+} from "@/components/ui/icons";
 import type { MeetingInfo, MeetingPerson } from "@shared/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -18,6 +30,7 @@ import { MeetingTile } from "./MeetingTile";
 import { MeetingPeople } from "./MeetingPeople";
 import { clock, useElapsed, useMeetingName } from "./hooks";
 import { VideoPausedNote } from "./MeetingHours";
+import { CameraRested } from "./CameraRested";
 
 const GAP = 12;
 /** Cards are video-shaped, whether there's video in them or a face. */
@@ -228,7 +241,12 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
   const stageView = (
     <div className="flex size-full items-center justify-center">
       <div className={cn("flex", narrow ? "flex-col items-center" : "flex-row items-start")} style={{ gap: GAP }}>
-        <motion.div initial={false} animate={{ width: bigSize.width, height: bigSize.height }} transition={glide} className="relative shrink-0">
+        <motion.div
+          initial={false}
+          animate={{ width: bigSize.width, height: bigSize.height }}
+          transition={glide}
+          className="relative shrink-0"
+        >
           {/* Who the big card shows changes with a quick crossfade, not a cut. */}
           <AnimatePresence initial={false}>
             <motion.div
@@ -279,6 +297,7 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
         <div ref={areaRef} className="relative min-h-0 min-w-0 flex-1">
           {area.width > 0 && stageView}
           <VideoPausedNote compact className="absolute inset-x-0 top-0 z-10 mx-auto w-fit max-w-[calc(100%-1.5rem)]" />
+          <CameraRested className="absolute inset-x-0 bottom-2 z-10 mx-auto w-fit" />
         </div>
         {/* The people, beside the stage: it slides open and the stage makes room. */}
         <AnimatePresence initial={false}>

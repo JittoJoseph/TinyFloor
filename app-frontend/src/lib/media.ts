@@ -52,8 +52,11 @@ export function simulcastEncodings(kind: VideoKind): RTCRtpEncodingParameters[] 
       ];
 }
 
-/** Peer to peer there is no SFU to choose, so the sender turns its own video down. */
-export function sendAtQuality(sender: RTCRtpSender, kind: VideoKind, quality: VideoQuality) {
+/**
+ * Peer to peer there is no SFU to choose, so the sender turns its own video
+ * down, or off (`active` false) while the other side can't see it.
+ */
+export function sendAtQuality(sender: RTCRtpSender, kind: VideoKind, quality: VideoQuality, active = true) {
   if (!sender.track) return;
   const wanted = PROFILES[kind][quality];
   const parameters = sender.getParameters();
@@ -64,11 +67,12 @@ export function sendAtQuality(sender: RTCRtpSender, kind: VideoKind, quality: Vi
   if (
     encoding.maxBitrate === wanted.maxBitrate &&
     (encoding.scaleResolutionDownBy ?? 1) === (wanted.scaleResolutionDownBy ?? 1) &&
-    encoding.maxFramerate === wanted.maxFramerate
+    encoding.maxFramerate === wanted.maxFramerate &&
+    (encoding.active ?? true) === active
   ) {
     return;
   }
-  Object.assign(encoding, { scaleResolutionDownBy: 1, maxFramerate: undefined }, wanted);
+  Object.assign(encoding, { scaleResolutionDownBy: 1, maxFramerate: undefined }, wanted, { active });
   sender.setParameters(parameters).catch(() => {});
 }
 

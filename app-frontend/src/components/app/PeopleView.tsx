@@ -3,17 +3,16 @@
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Search, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
+import { ArrowRight, Check, MoreHorizontal, Search, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
 import { lobbyPath, officeChatPath, officePath, officeSettingsPath, shareUrl } from "@/lib/links";
-import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
+import { useInvite } from "./Invite";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
-import { Dialog } from "@/components/ui/Dialog";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -23,7 +22,6 @@ import { useOffice } from "./OfficeShell";
 import { usePlace } from "./place";
 import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
-import { withPostHog } from "@/lib/analytics";
 import { useUpgrade } from "@/components/billing/Upgrade";
 import { usePlans } from "@/lib/billing";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
@@ -50,10 +48,9 @@ function OfficePeople() {
   const { office, overview: data, readAt, refresh } = useOffice();
   const floor = useFloorStatus();
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [onlyHere, setOnlyHere] = useState(false);
-  const link = useInviteLink(office.id);
+  const invite = useInvite();
 
   // The shell read the office when it opened; coming back to People later reads it again.
   useEffect(() => {
@@ -72,13 +69,6 @@ function OfficePeople() {
     }
   };
 
-  const share = async (path: string, key: string) => {
-    const result = await shareLink(shareUrl(path));
-    if (result !== "copied") return;
-    setCopied(key);
-    setTimeout(() => setCopied(null), 2000);
-  };
-
   const plans = usePlans();
   const admin = office.role === "admin";
   const members = data.members;
@@ -86,13 +76,6 @@ function OfficePeople() {
   // A free office with its trial still to give isn't full: the next person starts it (docs/22).
   const trialWaiting = !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
   const full = used >= office.seats && !trialWaiting;
-
-  // The same link every time: on a phone the share sheet, on a desktop the clipboard.
-  const invite = () => {
-    if (!link) return;
-    withPostHog((posthog) => posthog.capture("office_invite_shared"));
-    void share(link, "invite");
-  };
 
   const here = members.filter((one) => floor.has(one.id)).length;
   const rank = (id: string) => (floor.has(id) ? (PRESENCE_ORDER[floor.get(id)!] ?? 0) : 9);
@@ -105,28 +88,34 @@ function OfficePeople() {
         Number(b.id === user?.id) - Number(a.id === user?.id) || rank(a.id) - rank(b.id) || a.displayName.localeCompare(b.displayName),
     );
 
+  const seatsShown = office.plan === "free" || used >= office.seats - 2;
+
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
       <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
         <header className="flex items-center justify-between gap-4">
           <h1 className="text-[24px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-          <Button size="md" disabled={!link} onClick={invite} className="h-10 gap-2 px-4 text-[13px]">
-            {copied === "invite" ? <Check className="size-4" /> : <UserPlus className="size-4" />}
-            {copied === "invite" ? t("linkCopied") : t("invite")}
-          </Button>
+          {invite && (
+            <Button size="md" onClick={invite} className="h-10 gap-2 px-4 text-[13px]">
+              <UserPlus className="size-4" />
+              {t("invite")}
+            </Button>
+          )}
         </header>
 
-        <div className="mt-6 grid items-start gap-3 md:grid-cols-[minmax(0,1fr)_17rem]">
-          <InviteLink link={link} admin={admin} officeId={office.id} onShare={invite} copied={copied === "invite"} />
-          <Seats
-            used={used}
-            seats={office.seats}
-            full={full}
-            admin={admin}
-            trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
-            trialPlan={plans?.trialPlan ?? null}
-          />
-        </div>
+        {/* Seats are counted where they matter: Free's 3, or a paid office close to full (docs/24). */}
+        {seatsShown && (
+          <div className="mt-6 max-w-[24rem]">
+            <Seats
+              used={used}
+              seats={office.seats}
+              full={full}
+              upgrade={admin && office.plan === "free"}
+              trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
+              trialPlan={plans?.trialPlan ?? null}
+            />
+          </div>
+        )}
 
         {error && <p className="mt-4 text-[13px] text-destructive">{error}</p>}
 
@@ -227,14 +216,15 @@ function Seats({
   used,
   seats,
   full,
-  admin,
+  upgrade,
   trial,
   trialPlan,
 }: {
   used: number;
   seats: number;
   full: boolean;
-  admin: boolean;
+  /** An admin of a free office: Pro is the way to more room. */
+  upgrade: boolean;
   trial: number;
   trialPlan: PlanId | null;
 }) {
@@ -245,9 +235,7 @@ function Seats({
     <section className="rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
         <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
-        <p className="text-[12px] text-muted-foreground">
-          {full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}
-        </p>
+        <p className="text-[12px] text-muted-foreground">{full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}</p>
       </div>
       {/* One segment a seat while they are countable; a bar once they are not. */}
       {seats <= 25 ? (
@@ -266,7 +254,7 @@ function Seats({
           {tb("trialWaiting", { free: seats, plan: PLAN_NAMES[trialPlan ?? "pro"], days: trial })}
         </p>
       )}
-      {full && admin && open && (
+      {full && upgrade && open && (
         // The plans, right here: the one with room for everyone already marked.
         <button
           type="button"
@@ -326,7 +314,11 @@ function LobbyPeople() {
           >
             <span className="flex">
               {here.slice(0, 3).map((one, index) => (
-                <span key={one.id} style={{ marginInlineStart: index ? -12 : 0 }} className="flex shrink-0 rounded-full ring-2 ring-background">
+                <span
+                  key={one.id}
+                  style={{ marginInlineStart: index ? -12 : 0 }}
+                  className="flex shrink-0 rounded-full ring-2 ring-background"
+                >
                   <Face seed={one.id} size={36} />
                 </span>
               ))}
@@ -384,82 +376,5 @@ function LobbyPeople() {
         )}
       </div>
     </div>
-  );
-}
-
-/**
- * The office's invite link, written out: anyone in the office can copy or
- * share it, and an admin can reset it if it went somewhere it shouldn't.
- */
-function InviteLink({
-  link,
-  admin,
-  officeId,
-  onShare,
-  copied,
-}: {
-  link: string | null;
-  admin: boolean;
-  officeId: string;
-  onShare: () => void;
-  copied: boolean;
-}) {
-  const t = useTranslations("office.people");
-  const tc = useTranslations("common");
-  const [confirming, setConfirming] = useState(false);
-  const [resetting, setResetting] = useState(false);
-  const shown = link ? shareUrl(link).replace(/^https?:\/\//, "") : null;
-
-  const reset = async () => {
-    setResetting(true);
-    try {
-      await resetInviteLink(officeId);
-      setConfirming(false);
-    } finally {
-      setResetting(false);
-    }
-  };
-
-  return (
-    <section className="rounded-2xl border border-border bg-background p-4">
-      <p className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
-        <Link2 className="size-4 text-muted-foreground" />
-        {t("linkTitle")}
-      </p>
-      <div className="mt-3 flex items-center gap-2">
-        <div className="flex h-10 min-w-0 flex-1 items-center rounded-full bg-muted px-4">
-          {shown ? (
-            <span className="truncate text-[13px] text-foreground" dir="ltr">
-              {shown}
-            </span>
-          ) : (
-            <span className="h-3 w-48 animate-pulse rounded-full bg-foreground/[0.08]" />
-          )}
-        </div>
-        <Button size="sm" variant="secondary" disabled={!link} onClick={onShare} className="h-10 shrink-0 gap-1.5 px-4 text-[13px]">
-          {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-          {copied ? t("copied") : t("copy")}
-        </Button>
-        {admin && <IconButton label={t("resetLink")} size="md" icon={<RotateCcw />} onClick={() => setConfirming(true)} disabled={!link} />}
-      </div>
-
-      <Dialog
-        open={confirming}
-        onClose={() => setConfirming(false)}
-        title={t("resetTitle")}
-        description={t("resetBody")}
-        closeLabel={tc("close")}
-        footer={
-          <>
-            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setConfirming(false)}>
-              {tc("cancel")}
-            </Button>
-            <Button size="sm" className="h-10 px-5" disabled={resetting} onClick={reset}>
-              {t("resetLink")}
-            </Button>
-          </>
-        }
-      />
-    </section>
   );
 }

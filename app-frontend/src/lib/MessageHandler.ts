@@ -10,6 +10,7 @@ import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
+import { setDesks } from "./desks";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -25,6 +26,7 @@ export class MessageHandler {
   handleMessage(message: ServerMessage) {
     switch (message.t) {
       case "welcome":
+        setDesks(message.desks ?? []);
         this.welcome(message.self, message.players);
         jukebox.handleMusic(message.music);
         whiteboard.sync();
@@ -32,6 +34,9 @@ export class MessageHandler {
         if (message.usage) this.meetingUsage(message.usage);
         // Back after a reconnect: the room forgot your meeting, so rejoin it.
         callManager.rejoinMeeting();
+        break;
+      case "desks":
+        setDesks(message.desks);
         break;
       case "player_joined":
         if (message.player.id === this.playerId) return;
@@ -82,9 +87,7 @@ export class MessageHandler {
       case "status":
         this.playerManager.updatePlayerStatus(message.id, message.status);
         this.dispatchPlayerList();
-        window.dispatchEvent(
-          new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }),
-        );
+        window.dispatchEvent(new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }));
         break;
       case "board_state":
       case "board_draw":
@@ -121,19 +124,13 @@ export class MessageHandler {
 
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();
-    this.seats.resit();
+    // Arrived at your desk, or back after a dropped connection to the chair you were on.
+    if (self.seat !== null) this.seats.arriveAt(self.seat);
+    else this.seats.resit();
   }
 
   private addUser(player: PlayerState) {
-    this.playerManager.addPlayer(
-      player.id,
-      player.name,
-      player.x,
-      player.y,
-      player.character,
-      player.status,
-      player.guest,
-    );
+    this.playerManager.addPlayer(player.id, player.name, player.x, player.y, player.character, player.status, player.guest);
     if (player.seat !== null) this.seatPlayer(player.id, player.seat, false);
   }
 

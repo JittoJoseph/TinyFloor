@@ -46,14 +46,48 @@ describe("usage totals", () => {
     expect(await usageOf(room)).toBeNull(); // Ava is still there.
 
     ava.socket.close(1000, "bye");
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 20, sfu_minutes: 4 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 20, sfu_minutes: 4 }), {
+      timeout: 5000,
+    });
 
     // Coming back later the same day adds to the row.
     const cara = await Client.open(room);
     await cara.next("welcome");
     await backdate(room, 3, 0);
     cara.socket.close(1000, "bye");
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 2, person_minutes: 23, sfu_minutes: 4 }), {
+      timeout: 5000,
+    });
+  }, 20_000);
+
+  it("counts calls on the floor and the part with video, as people report them", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room);
+    await ava.next("welcome");
+    ava.send({ t: "call_usage", call: true, video: true });
+    await settle();
+    await runInDurableObject(env.ROOM.getByName(room), (instance, state) => {
+      for (const socket of state.getWebSockets()) {
+        const attachment = (
+          instance as unknown as { attachmentOf(socket: WebSocket): { callSince?: number | null; videoSince?: number | null } }
+        ).attachmentOf(socket);
+        attachment.callSince = Date.now() - 30 * 60_000;
+        attachment.videoSince = Date.now() - 10 * 60_000;
+      }
+    });
+    // The video stops, the call goes on: only the video so far is counted as video.
+    ava.send({ t: "call_usage", call: true, video: false });
+    await settle();
+    ava.socket.close(1000, "bye");
+    await vi.waitFor(
+      async () =>
+        expect(
+          await env.DB.prepare("SELECT call_minutes, call_video_minutes FROM usage_daily WHERE day = ? AND office_id = ?")
+            .bind(dayOf(Date.now()), room)
+            .first(),
+        ).toEqual({ call_minutes: 30, call_video_minutes: 10 }),
+      { timeout: 5000 },
+    );
   }, 20_000);
 
   it("counts people removed by the room, in the lobby copy's own row", async () => {
@@ -64,7 +98,9 @@ describe("usage totals", () => {
 
     await exports.RealtimeAdmin.closeRoom(room);
     await ava.closed();
-    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), { timeout: 5000 });
+    await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), {
+      timeout: 5000,
+    });
   }, 20_000);
 
   it("forgets a deleted room's whiteboard", async () => {

@@ -90,15 +90,14 @@ export const termsSections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours; Pro also
-            gives HD video in meetings and priority help. The plans, their prices, member limits and meeting hours are on our{" "}
+            <strong>What you pay for.</strong> Pro lets an office hold its whole team, up to 15 members, and gives it priority help. The plans, their prices and member limits are on our{" "}
             <Link href="/pricing">pricing</Link>, and are shown again before you pay.
           </li>
           <li>
-            <strong>Meeting hours.</strong> An office&apos;s meeting hours are the time its meetings have two or more people in them, added up
-            over each calendar month (UTC). Calls between two people on the floor don&apos;t count. Once an office has used its hours, its
-            meetings carry on with voice only until the 1st of the next month, or until it moves to a bigger plan. Unused hours don&apos;t carry
-            over. Meetings in the demo office have their own daily allowance.
+            <strong>Fair use.</strong> Meetings and calls aren&apos;t metered. To keep the price the same for everyone, an office whose
+            meetings run far beyond a team&apos;s normal day (more than 120 hours of meetings with two or more people in a calendar month
+            on Pro, or 40 on Free, in UTC) carries on with voice only in meetings until the 1st of the next month. Calls between two
+            people on the floor are never limited. Meetings in the demo office have their own daily allowance.
           </li>
           <li>
             <strong>Billing.</strong> Plans are billed monthly, in advance, and renew automatically at the end of each month until you cancel.

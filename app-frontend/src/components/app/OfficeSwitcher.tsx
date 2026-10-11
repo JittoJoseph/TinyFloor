@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Plus, Zap } from "@/components/ui/icons";
+import { DoorOpen, Plus, UserPlus, Zap } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
 import { officePath } from "@/lib/links";
@@ -11,6 +11,7 @@ import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/componen
 import { useWide } from "@/lib/hooks/use-wide";
 import { usePlans } from "@/lib/billing";
 import { useUpgrade } from "@/components/billing/Upgrade";
+import { useInvite } from "./Invite";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import type { PlanId } from "@/lib/api";
 
@@ -42,6 +43,7 @@ export function OfficeSwitcher({ office }: { office: Office }) {
   const others = offices.filter((one) => one.id !== office.id);
   const plans = usePlans();
   const { open } = useUpgrade();
+  const invite = useInvite();
   // Days are counted from when the switcher opened; a trial ends at its own pace, not by the render.
   const [now] = useState(() => Date.now());
   const trialDays = office.trialEndsAt ? Math.max(1, Math.ceil((office.trialEndsAt - now) / DAY)) : null;
@@ -74,7 +76,9 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           <div className="min-w-0">
             <p className="truncate text-[14px] font-medium text-foreground">{office.name}</p>
             <p className="truncate text-[12px] text-muted-foreground">
-              {t("membersOf", { used: office.members, seats: office.seats })}
+              {office.plan === "free"
+                ? t("membersOf", { used: office.members, seats: office.seats })
+                : t("members", { count: office.members })}
             </p>
             {trialDays && (
               <p className="truncate text-[12px] font-medium text-brand">
@@ -84,6 +88,11 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           </div>
         </div>
       </MenuHeader>
+      {invite && (
+        <MenuItem icon={<UserPlus />} onSelect={invite}>
+          {t("invitePeople")}
+        </MenuItem>
+      )}
       {offerPlans && (
         <MenuItem icon={<Zap />} onSelect={() => open?.(trialDays ? "trial" : "plans")}>
           {trialDays ? t("choosePlan") : t("upgrade")}
@@ -95,11 +104,7 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           <MenuSeparator />
           <MenuLabel>{t("switchTo")}</MenuLabel>
           {others.map((one) => (
-            <MenuItem
-              key={one.id}
-              icon={<Face seed={one.id} size={16} square />}
-              onSelect={() => router.push(officePath(one.id))}
-            >
+            <MenuItem key={one.id} icon={<Face seed={one.id} size={16} square />} onSelect={() => router.push(officePath(one.id))}>
               <span className="flex w-full items-center gap-2">
                 <span className="min-w-0 flex-1 truncate">{one.name}</span>
                 {!!one.here && (

@@ -34,7 +34,7 @@
     "signIn": "Accedi",
     "account": "Account",
     "createOffice": "Crea un ufficio",
-    "plansSoon": "Un team più grande? Presto arriveranno piani con più posti."
+    "plansSoon": "Pro, per tutto il tuo team, arriva presto."
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -90,7 +90,9 @@
     "leave": "Esci",
     "trialLeft": "Prova {plan} · {count, plural, one {# giorno rimasto} other {# giorni rimasti}}",
     "choosePlan": "Scegli un piano",
-    "upgrade": "Fai l'upgrade"
+    "upgrade": "Fai l'upgrade",
+    "members": "{count, plural, one {# membro} other {# membri}}",
+    "invitePeople": "Invita persone"
   },
   "home": {
     "nav": {

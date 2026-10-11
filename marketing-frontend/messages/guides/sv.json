@@ -747,8 +747,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Gratis för 3 personer · 19 $ i månaden för 10, 49 $ för 25",
-            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Inga inspelningar, AI-anteckningar eller kartredigerare, och ett kontor rymmer högst 25 personer."
+            "detail": "Gratis för 3 personer · $29 i månaden för hela teamet",
+            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Det har inga inspelningar, AI-anteckningar eller kartredigerare, och kontoren är gjorda för små team på upp till 15."
           },
           {
             "title": "Gather",
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "Ett pris per kontor",
               "Upp till 3 personer",
-              "19 $"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "Ett litet team med liten budget",
-            "body": "TinyFloor, för 19 $ i månaden för upp till 10 personer, eller SoWorks gratisplan om möten på 30 minuter räcker."
+            "body": "TinyFloor, för $29 i månaden för hela teamet, eller SoWorks gratisplan om möten på 30 minuter räcker."
           },
           {
             "title": "Du vill ha inspelningar och AI-anteckningar",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för team på 2 till 25 som vill ha ett kontor öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
+      "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för små team som vill ha ett kontor som är öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
     },
     "faq": [
       {
@@ -904,7 +904,7 @@
       },
       {
         "q": "Vilket är det billigaste virtuella kontoret för ett litet team?",
-        "a": "För ett team på 10 på en betalplan kostar TinyFloor Plus 19 $ i månaden för hela kontoret. Verktyg som tar betalt per person kostar 54 $ till 195 $ i månaden för samma team."
+        "a": "För ett team på 10 på en betald plan kostar TinyFloor Pro $29 i månaden för hela kontoret. Verktyg med pris per person kostar $54 till $195 i månaden för samma team."
       },
       {
         "q": "Är Gather fortfarande gratis?",
@@ -1007,23 +1007,16 @@
             [
               "5 personer",
               "60 $",
-              "19 $",
+              "$29",
               "27 $",
               "Gratis (upp till 5 medlemmar)"
             ],
             [
               "10 personer",
               "120 $",
-              "19 $",
+              "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 personer",
-              "300 $",
-              "49 $",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "Från varje produkts prissida i oktober 2026, utan moms. SoWorks gratisplan täcker också upp till 10 medlemmar, med möten på högst 30 minuter, och WorkAdventures upp till 10 personer samtidigt."
@@ -1053,7 +1046,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor du går runt i och där du pratar genom att gå fram till någon, med mötesrum, chatt och skärmdelning. Det kostar 19 $ i månaden för upp till 10 personer och 49 $ för upp till 25, ett pris för hela kontoret, och är gratis för upp till 3. Det har inga inspelningar, ingen transkribering och ingen kontorsredigerare; om du är beroende av dem passar Gather bättre."
+      "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor du går runt i och pratar genom att gå fram till någon, med mötesrum, chatt och skärmdelning. Det kostar $29 i månaden för hela teamet, ett pris för hela kontoret, och är gratis för upp till 3. Det har inga inspelningar, transkribering eller kontorsredigerare; om du är beroende av dem passar Gather bättre."
     },
     "faq": [
       {
@@ -1070,7 +1063,7 @@
       },
       {
         "q": "Vilket är ett billigare alternativ till Gather?",
-        "a": "TinyFloor kostar 19 $ i månaden för upp till 10 personer och är gratis för upp till 3. SoWorks Basic-plan kostar 5,40 $ per medlem i månaden vid årsbetalning, och dess gratisplan täcker 10 medlemmar med möten på 30 minuter."
+        "a": "TinyFloor kostar $29 i månaden för hela teamet och är gratis för upp till 3. SoWorks Basic-plan kostar $5,40 per medlem i månaden vid årsbetalning, och gratisplanen täcker 10 medlemmar med möten på 30 minuter."
       }
     ]
   }

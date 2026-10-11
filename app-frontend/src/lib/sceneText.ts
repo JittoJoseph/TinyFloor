@@ -6,6 +6,8 @@ export interface SceneText {
   meeting: string;
   music: string;
   draw: string;
+  /** On your own desk's plate while you're away from it. */
+  yourDesk: string;
 }
 
 let text: SceneText = {
@@ -14,6 +16,7 @@ let text: SceneText = {
   meeting: "Meeting",
   music: "Click for music",
   draw: "Click to draw",
+  yourDesk: "Your desk",
 };
 
 export function setSceneText(next: SceneText) {

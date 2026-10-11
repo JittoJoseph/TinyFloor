@@ -3,12 +3,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Check, Loader2 } from "@/components/ui/icons";
-import { api, type OfficeBilling, type Plan, type PlanId } from "@/lib/api";
+import { api, type OfficeBilling, type PlanId } from "@/lib/api";
 import { usePlans } from "@/lib/billing";
 import { Button } from "@/components/motion/button/base";
-import { Dialog } from "@/components/ui/Dialog";
+import { Modal } from "@/components/ui/Modal";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
-import { PLAN_NAMES, PlanCards, plansOnOffer, type PlanMove } from "./PlanCards";
+import { PLAN_NAMES, ProOffer, paidPlan } from "./PlanCards";
 import { usePlanChange } from "./usePlanChange";
 
 /** What brought them to the plans: the office is full, the hours are (nearly) used, the trial is ending, or just looking. */
@@ -22,10 +22,10 @@ interface Upgrade {
 const Context = createContext<Upgrade>({ open: null });
 
 /**
- * The one way up (docs/22), opened in place wherever a limit is felt: inviting
- * past the seats, the meeting hours, the trial's last days, or the plan page.
- * Every plan side by side, the one that answers the reason marked, and the
- * checkout right there. Members see the same plans and who can change them.
+ * The one way up (docs/23), opened in place wherever a limit is felt: inviting
+ * past the seats, the meeting hours, the trial's last days, or the office
+ * menu. A headline for why they came, then Pro put in their team's terms,
+ * and the checkout right there. Members see the same offer and who can buy it.
  */
 export function useUpgrade(): Upgrade {
   return useContext(Context);
@@ -55,7 +55,6 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const catalog = usePlans();
   const office = context?.office;
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
-  const [asking, setAsking] = useState<Plan | null>(null);
   const [done, setDone] = useState(false);
   const officeId = office?.id;
   const admin = office?.role === "admin";
@@ -64,7 +63,6 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
     if (next) setBilling(next);
     else if (officeId) setBilling(await api.billing(officeId).catch(() => null));
     await context?.refresh();
-    setAsking(null);
     setDone(true);
   });
 
@@ -81,101 +79,75 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   }, [reason, officeId, admin]);
 
   if (!office || !catalog) return null;
-  const plans = catalog.plans;
   const current = (office.plan as PlanId) ?? "free";
+  const pro = paidPlan(catalog.plans);
+  const free = catalog.plans.find((plan) => plan.price === null);
   const members = billing?.members ?? office.members;
   const subscribed = !!billing?.subscription;
   const trialEndsAt = billing?.trial?.endsAt ?? office.trialEndsAt ?? null;
+  const trying = !!trialEndsAt && current === pro?.id;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
-  const offer = plansOnOffer(plans, subscribed ? current : null);
 
-  const title =
-    reason === "full"
-      ? t("fullTitle", { office: office.name })
-      : reason === "hours"
-        ? t("hoursTitle")
-        : reason === "trial" && trialEndsAt
-          ? t("trialTitle")
-          : t("plansTitle");
-  const description = !admin
-    ? t("membersOnly", { office: office.name })
+  // The headline answers why they're here; the offer below is the same every time.
+  const [title, body] = done
+    ? [t("doneTitle", { plan: PLAN_NAMES[current] }), t("doneBody")]
     : reason === "full"
-      ? t("fullBody", { seats: office.seats })
+      ? [t("fullTitle"), t("fullBody", { office: office.name, seats: office.seats })]
       : reason === "hours"
-        ? t("hoursBody")
-        : reason === "trial" && trialEndsAt
-          ? t("trialBody", { plan: PLAN_NAMES[current], date: date(trialEndsAt) })
-          : t("plansBody");
+        ? [t("hoursTitle"), t("hoursBody")]
+        : reason === "trial" && trying && trialEndsAt
+          ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: free?.seats ?? 3 })]
+          : [t("plansTitle"), t("plansBody")];
 
   const close = () => {
-    setAsking(null);
     setDone(false);
     change.clearError();
     onClose();
   };
 
-  const choose = (plan: Plan, move: PlanMove) => {
-    if (plan.id === "free") return; // Cancelling lives on Plan and billing, where it's explained.
-    // Creem's checkout opens over this dialog, which then waits for the plan to land.
-    if (move === "choose") void change.buy(plan.id);
-    else setAsking(plan);
-  };
-
   return (
-    <Dialog
-      open={!!reason}
-      onClose={close}
-      title={done ? t("doneTitle", { plan: PLAN_NAMES[current] }) : title}
-      description={done ? t("doneBody") : description}
-      closeLabel={tc("close")}
-      className="max-w-[46rem]"
-      footer={
-        asking ? (
+    <Modal open={!!reason} onClose={close} label={title} closeLabel={tc("close")} className="sm:max-w-[27rem]">
+      <div className="px-6 pb-6 pt-7 sm:px-7">
+        <h2 className="pe-8 text-[20px] font-semibold leading-tight tracking-tight text-foreground">{title}</h2>
+        <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{body}</p>
+
+        {change.waiting === "now" ? (
+          <p className="mt-6 flex items-center gap-2 text-[13.5px] text-foreground">
+            <Loader2 className="size-4 animate-spin" />
+            {tb("settingUp")}
+          </p>
+        ) : done ? (
           <>
-            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setAsking(null)}>
-              {tc("cancel")}
-            </Button>
-            <Button size="sm" className="h-10 px-5" disabled={!!change.busy} onClick={() => asking.id !== "free" && change.switchTo(asking.id)}>
-              {change.busy && <Loader2 className="size-4 animate-spin" />}
-              {tb("switchTitle", { plan: PLAN_NAMES[asking.id] })}
+            <p className="mt-5 flex items-center gap-2 text-[13.5px] text-foreground">
+              <Check className="size-4 text-ok" />
+              {t("doneLine", { plan: PLAN_NAMES[current] })}
+            </p>
+            <Button size="sm" className="mt-6 h-11 w-full" onClick={close}>
+              {tc("close")}
             </Button>
           </>
-        ) : done ? (
-          <Button size="sm" className="h-10 px-5" onClick={close}>
-            {tc("close")}
-          </Button>
-        ) : undefined
-      }
-    >
-      {change.waiting === "now" ? (
-        <p className="flex items-center gap-2 py-6 text-[13.5px] text-foreground">
-          <Loader2 className="size-4 animate-spin" />
-          {tb("settingUp")}
-        </p>
-      ) : done ? (
-        <p className="flex items-center gap-2 py-2 text-[13.5px] text-foreground">
-          <Check className="size-4 text-ok" />
-          {t("doneLine", { plan: PLAN_NAMES[current] })}
-        </p>
-      ) : asking ? (
-        <p className="text-[13.5px] leading-relaxed text-muted-foreground">{tb("switchBody")}</p>
-      ) : (
-        <>
-          <PlanCards
-            plans={offer}
-            current={current}
-            subscribed={subscribed}
-            members={members}
-            trialEndsAt={trialEndsAt}
-            busy={change.busy}
-            canChange={admin}
-            onChoose={choose}
-            className="pb-2"
-          />
-          <p className="pb-2 pt-1 text-[12px] leading-relaxed text-faint">{tb("fine")}</p>
-        </>
-      )}
-      {change.error && <p className="pb-2 text-[12.5px] text-destructive">{change.error}</p>}
-    </Dialog>
+        ) : (
+          pro &&
+          !subscribed && (
+            // Creem's checkout opens over this, which then waits for the plan to land.
+            <ProOffer
+              plans={catalog.plans}
+              members={members}
+              trial={trying}
+              busy={change.busy}
+              canChange={admin}
+              onChoose={(plan) => plan.id !== "free" && void change.buy(plan.id)}
+              className="mt-5"
+            />
+          )
+        )}
+        {!admin && (
+          <p className="mt-5 rounded-xl bg-muted px-3.5 py-2.5 text-[12.5px] text-foreground">
+            {t("membersOnly", { office: office.name })}
+          </p>
+        )}
+        {change.error && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
+      </div>
+    </Modal>
   );
 }

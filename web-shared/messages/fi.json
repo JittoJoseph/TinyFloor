@@ -34,7 +34,7 @@
     "signIn": "Kirjaudu",
     "account": "Tili",
     "createOffice": "Luo toimisto",
-    "plansSoon": "Isompi tiimi? Useamman paikan paketit tulossa pian."
+    "plansSoon": "Pro koko tiimillesi on tulossa pian."
   },
   "languageSwitcher": {
     "label": "Kieli",
@@ -90,7 +90,9 @@
     "leave": "Poistu",
     "trialLeft": "{plan}-kokeilu · {count, plural, one {# päivä} other {# päivää}} jäljellä",
     "choosePlan": "Valitse paketti",
-    "upgrade": "Päivitä"
+    "upgrade": "Päivitä",
+    "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "invitePeople": "Kutsu ihmisiä"
   },
   "home": {
     "nav": {

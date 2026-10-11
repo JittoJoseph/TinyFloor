@@ -4,29 +4,29 @@ import type { Router } from "./router";
 import { requireUser } from "./session";
 
 /**
- * Paid plans, sold through Creem as the merchant of record (docs/09-billing.md,
- * docs/14). A plan is how many people an office holds and how many meeting
- * hours a month it includes. An office's plan changes in one place only: here,
+ * The paid plan, sold through Creem as the merchant of record (docs/09-billing.md,
+ * docs/23, docs/24). There is one: Free holds 3 people, Pro a small team at one
+ * price. Neither shows a meter: meeting hours are a fair-use backstop, high
+ * enough that a team meeting all day never meets them. An office's plan changes in one place only: here,
  * from a subscription Creem vouches for, either in a signed webhook or in the
  * reply to a request this worker made itself.
  */
 
-export type PlanId = "free" | "plus" | "pro";
+export type PlanId = "free" | "pro";
 type PaidPlan = Exclude<PlanId, "free">;
 
 export interface Plan {
   id: PlanId;
   seats: number;
-  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  /** Fair use, never shown: meeting hours a month (time a meeting has two or more people in it), past which meetings are voice only (docs/24). */
   meetingHours: number;
   /** US cents a month, before tax; null for the free plan. Monthly only. */
   price: number | null;
 }
 
 export const PLANS: Plan[] = [
-  { id: "free", seats: 3, meetingHours: 5, price: null },
-  { id: "plus", seats: 10, meetingHours: 30, price: 1900 },
-  { id: "pro", seats: 25, meetingHours: 60, price: 4900 },
+  { id: "free", seats: 3, meetingHours: 40, price: null },
+  { id: "pro", seats: 15, meetingHours: 120, price: 2900 },
 ];
 
 const FREE = PLANS[0];
@@ -46,14 +46,13 @@ const HISTORY = 24;
 
 /**
  * The team trial (docs/22): when a free office is full and one more person
- * comes to join, instead of turning them away it goes on Plus for this many
+ * comes to join, instead of turning them away it goes on Pro for this many
  * days, without a card, so the whole team can move in. Then back to free
  * unless a plan was bought: everyone stays a member, but only the free plan's
  * number can be on the floor at once. Once per office, only where plans are
  * on sale. 0 turns it off.
  */
 export const TRIAL_DAYS = 14;
-/** The trial is the top plan: a team that has had everything is a team that keeps it (docs/22). */
 const TRIAL_PLAN: PaidPlan = "pro";
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -99,7 +98,7 @@ function planForProduct(billing: BillingConfig, productId: string): Plan | null 
 }
 
 function readPlan(body: Record<string, unknown>): PaidPlan {
-  if (body.plan !== "plus" && body.plan !== "pro") throw new HttpError(400, "bad_plan", "Pick a plan");
+  if (body.plan !== "pro") throw new HttpError(400, "bad_plan", "Pick a plan");
   return body.plan;
 }
 
@@ -266,7 +265,9 @@ export async function applySubscription(env: Env, sub: CreemSubscription, forOff
       Date.now(),
     ),
     // A plan from Creem replaces a trial that was running.
-    env.DB.prepare(`UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`).bind(plan.id, plan.seats, officeId),
+    env.DB.prepare(
+      `UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`,
+    ).bind(plan.id, plan.seats, officeId),
   ]);
   // The room's meeting hours follow the plan straight away: a bigger plan lifts a pause.
   await realtime(env)
@@ -386,7 +387,9 @@ export async function givePlan(env: Env, officeId: string, planId: string): Prom
   if (await liveSubscription(env, officeId)) {
     throw new HttpError(409, "has_subscription", "This office pays through Creem; change its plan there");
   }
-  await env.DB.prepare(`UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`)
+  await env.DB.prepare(
+    `UPDATE offices SET plan = ?, seats = ?, trial_ends_at = CASE WHEN trial_ends_at IS NULL THEN NULL ELSE 0 END WHERE id = ?`,
+  )
     .bind(plan.id, plan.seats, officeId)
     .run();
   await realtime(env)
@@ -428,9 +431,10 @@ export async function startTrialIfFull(env: Env, officeId: string, now = Date.no
  * the moment it's read after its trial ended. Nobody is removed.
  */
 export async function endTrials(env: Env, officeId?: string, now = Date.now()): Promise<number> {
-  const { results } = await (officeId
-    ? env.DB.prepare("SELECT id FROM offices WHERE id = ? AND trial_ends_at > 0 AND trial_ends_at <= ?").bind(officeId, now)
-    : env.DB.prepare("SELECT id FROM offices WHERE trial_ends_at > 0 AND trial_ends_at <= ?").bind(now)
+  const { results } = await (
+    officeId
+      ? env.DB.prepare("SELECT id FROM offices WHERE id = ? AND trial_ends_at > 0 AND trial_ends_at <= ?").bind(officeId, now)
+      : env.DB.prepare("SELECT id FROM offices WHERE trial_ends_at > 0 AND trial_ends_at <= ?").bind(now)
   ).all<{ id: string }>();
   for (const { id } of results) {
     await env.DB.prepare("UPDATE offices SET plan = 'free', seats = ?, trial_ends_at = 0 WHERE id = ? AND trial_ends_at > 0")
@@ -445,7 +449,9 @@ export async function endTrials(env: Env, officeId?: string, now = Date.now()): 
 
 /** The trial running for an office, if one is. */
 async function trialOf(env: Env, officeId: string, now = Date.now()): Promise<{ plan: PaidPlan; endsAt: number } | null> {
-  const row = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number | null }>();
+  const row = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?")
+    .bind(officeId)
+    .first<{ trial_ends_at: number | null }>();
   return row?.trial_ends_at && row.trial_ends_at > now ? { plan: TRIAL_PLAN, endsAt: row.trial_ends_at } : null;
 }
 
@@ -463,9 +469,7 @@ export async function endBillingForClosing(env: Env, officeId: string): Promise<
 // ---- Webhooks ---------------------------------------------------------------
 
 async function hmacHex(secret: string, message: string): Promise<string> {
-  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, [
-    "sign",
-  ]);
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const signature = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(message));
   return [...new Uint8Array(signature)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
@@ -563,11 +567,12 @@ export function billingRoutes(router: Router): void {
         throw new HttpError(409, "has_subscription", "This office already has a plan; change it instead");
       }
       const earlier = await subscriptionOf(env, office.id);
-      const customer = earlier?.provider_customer_id && earlier.payer_id === user.id
-        ? { id: earlier.provider_customer_id }
-        : user.email
-          ? { email: user.email }
-          : undefined;
+      const customer =
+        earlier?.provider_customer_id && earlier.payer_id === user.id
+          ? { id: earlier.provider_customer_id }
+          : user.email
+            ? { email: user.email }
+            : undefined;
       const checkout = await creem<{ id: string; checkout_url: string }>(env, "POST", "/v1/checkouts", {
         product_id: productFor(billing, plan),
         units: 1,
@@ -589,26 +594,6 @@ export function billingRoutes(router: Router): void {
       if (checkout.metadata?.office_id !== office.id) throw new HttpError(404, "bad_checkout", "No such checkout");
       const subscriptionId = idOf(checkout.subscription);
       if (subscriptionId) await applySubscription(env, await getSubscription(env, subscriptionId), office.id);
-      return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
-    })
-
-    // Up or down a plan, paid or credited for the time left.
-    .add("POST", "/v1/offices/:id/billing/change", async ({ request, env, ctx, params }) => {
-      const user = await requireUser(env, request, ctx);
-      const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      const billing = requireConfig(env);
-      const plan = readPlan(await readJson(request));
-      const target = planById(plan)!;
-      const members = await seatsUsed(env, office.id);
-      if (members > target.seats) {
-        throw new HttpError(409, "too_many_members", `This office has ${members} members; ${plan} holds ${target.seats}`);
-      }
-      const live = await requireLive(env, office.id);
-      const sub = await creem<CreemSubscription>(env, "POST", `/v1/subscriptions/${live.provider_subscription_id}/upgrade`, {
-        product_id: productFor(billing, plan),
-        update_behavior: "proration-charge-immediately",
-      });
-      await applySubscription(env, sub, office.id);
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 

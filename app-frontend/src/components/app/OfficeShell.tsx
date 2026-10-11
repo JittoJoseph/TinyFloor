@@ -13,8 +13,8 @@ import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
 import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
-import { useInviteLink } from "@/lib/inviteLink";
 import { UpgradeProvider } from "@/components/billing/Upgrade";
+import { InviteProvider } from "./Invite";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell } from "./AppShell";
@@ -26,7 +26,6 @@ import { ChatNudges } from "./ChatNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
-import { callManager } from "@/lib/CallManager";
 
 interface OfficeContext {
   office: Office;
@@ -76,7 +75,6 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const [read, setRead] = useState<{ overview: OfficeOverview; at: number } | null>(null);
   const [gone, setGone] = useState(false);
   // Inviting from the floor shares the office's one link.
-  const inviteLink = useInviteLink(read ? officeId : undefined);
   const { unread } = useChat();
   // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
   const helpUnread = useHelp().ticket?.unread ?? 0;
@@ -107,12 +105,6 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     if (office?.id) rememberOffice(office.id);
   }, [office?.id]);
 
-  // HD video in meetings is Pro's; anywhere else, and on leaving, the standard layer.
-  useEffect(() => {
-    callManager.setHd(office?.plan === "pro");
-    return () => callManager.setHd(false);
-  }, [office?.plan]);
-
   // One chat socket for the whole office, opened with the shell rather than
   // with the chat view, so unread counts work while you are on the floor.
   useEffect(() => {
@@ -142,10 +134,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
         <div className="max-w-sm text-center">
           <h1 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{t("goneTitle")}</h1>
           <p className="mb-6 text-[14px] text-muted-foreground">{t("gone")}</p>
-          <Link
-            href="/"
-            className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background"
-          >
+          <Link href="/" className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background">
             {t("backToOffices")}
           </Link>
         </div>
@@ -193,44 +182,51 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   return (
     <Context.Provider value={{ office, overview: read.overview, readAt: read.at, refresh }}>
       <UpgradeProvider>
-        <PlaceProvider value={place}>
-          <AppShell
-            mark={<OfficeSwitcher office={office} />}
-            destinations={[
-              { key: "floor", href: floor, label: ts("floor"), icon: RailIcons.floor, active: !onChat && !onPeople && !onMeetings && !onSettings },
-              { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
-              {
-                key: "meetings",
-                href: meetings,
-                label: ts("meetings"),
-                icon: RailIcons.meetings,
-                active: onMeetings,
-                // Green while a meeting is on: how many are in them.
-                live: peopleInMeetings(meetingList) || undefined,
+        <InviteProvider>
+          <PlaceProvider value={place}>
+            <AppShell
+              mark={<OfficeSwitcher office={office} />}
+              destinations={[
+                {
+                  key: "floor",
+                  href: floor,
+                  label: ts("floor"),
+                  icon: RailIcons.floor,
+                  active: !onChat && !onPeople && !onMeetings && !onSettings,
                 },
-              { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
-            ]}
-            settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-            you={<YouMenu onFloor settingsHref={settingsPath} />}
-            floor={
-              <>
-                <RoomView
-                  title={office.name}
-                  user={user}
-                  ticketFor={() => api.officeTicket(office.id)}
-                  invitePath={inviteLink}
-                  // Once someone else has joined, inviting lives in People, not over the floor.
-                  inviteChip={members.length <= 1}
-                  leaveHref={door}
-                  settingsHref={settingsPath}
-                />
-                {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
-              </>
-            }
-          >
-            {children}
-          </AppShell>
-        </PlaceProvider>
+                { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
+                {
+                  key: "meetings",
+                  href: meetings,
+                  label: ts("meetings"),
+                  icon: RailIcons.meetings,
+                  active: onMeetings,
+                  // Green while a meeting is on: how many are in them.
+                  live: peopleInMeetings(meetingList) || undefined,
+                },
+                { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
+              ]}
+              settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
+              you={<YouMenu onFloor settingsHref={settingsPath} />}
+              floor={
+                <>
+                  <RoomView
+                    title={office.name}
+                    user={user}
+                    ticketFor={() => api.officeTicket(office.id)}
+                    // Once someone else has joined, inviting lives in People and the office menu, not over the floor.
+                    inviteChip={members.length <= 1}
+                    leaveHref={door}
+                    settingsHref={settingsPath}
+                  />
+                  {!onChat && <ChatNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+                </>
+              }
+            >
+              {children}
+            </AppShell>
+          </PlaceProvider>
+        </InviteProvider>
       </UpgradeProvider>
     </Context.Provider>
   );

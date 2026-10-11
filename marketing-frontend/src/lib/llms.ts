@@ -1,6 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/lib/i18n/routing";
-import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingGroup, type LandingKey } from "@/lib/landings";
+import {
+  COMPARE_ROWS,
+  HUBS,
+  LANDINGS,
+  LANDING_GROUPS,
+  landingByKey,
+  type Landing,
+  type LandingGroup,
+  type LandingKey,
+} from "@/lib/landings";
 import { GUIDES, GUIDES_PATH, guidePath, type GuideKey } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { PLANS } from "@/lib/plans";
@@ -32,7 +41,7 @@ async function translator() {
   const t = await getTranslations({ locale: "en" });
   return {
     text: (key: string, values?: Record<string, string>) => t(key as Parameters<typeof t>[0], values as never),
-    raw: <T,>(key: string) => t.raw(key as Parameters<typeof t.raw>[0]) as T,
+    raw: <T>(key: string) => t.raw(key as Parameters<typeof t.raw>[0]) as T,
   };
 }
 
@@ -58,10 +67,7 @@ async function common() {
     [text("metadata.lobbyTitle"), "/lobby", text("metadata.lobbyDescription")],
     [text("about.meta.title"), "/about", text("about.meta.description")],
   ];
-  const features = [
-    ...raw<string[]>("landing.features"),
-    ...MORE_FEATURES.map((key) => text(`home.more.items.${key}.title`)),
-  ];
+  const features = [...raw<string[]>("landing.features"), ...MORE_FEATURES.map((key) => text(`home.more.items.${key}.title`))];
   const faq = raw<Array<{ q: string; a: string }>>("faq.items");
   const english = await guideCopies("en");
   const guide = (key: GuideKey) => english[key];
@@ -118,7 +124,7 @@ export async function llmsFullTxt(): Promise<string> {
 
   const plans = () => {
     const name = (key: string) => key[0].toUpperCase() + key.slice(1);
-    const notes = ["cancel", "refund", "change", "hours", "tax"] as const;
+    const notes = ["cancel", "refund", "change", "size", "tax"] as const;
     return [
       "## Plans",
       "",
@@ -127,15 +133,19 @@ export async function llmsFullTxt(): Promise<string> {
       `| | ${PLANS.map((plan) => name(plan.key)).join(" | ")} |`,
       `|---|${PLANS.map(() => "---").join("|")}|`,
       `| Price | ${PLANS.map((plan) => (plan.price ? `$${plan.price} a month` : "Free")).join(" | ")} |`,
-      `| ${text("pricingPage.table.people")} | ${PLANS.map((plan) => `Up to ${plan.people}`).join(" | ")} |`,
-      `| ${text("pricingPage.table.hours")} (${text("pricingPage.table.hoursNote").toLowerCase()}) | ${PLANS.map((plan) => plan.hours).join(" | ")} |`,
-      `| ${text("pricingPage.table.video")} | ${PLANS.map((plan) => text(plan.hd ? "pricingPage.table.hd" : "pricingPage.table.standard")).join(" | ")} |`,
-      `| ${text("pricingPage.table.support")} | ${PLANS.map((plan) => (plan.hd ? "Yes" : "No")).join(" | ")} |`,
+      `| ${text("pricingPage.table.people")} | ${PLANS.map((plan) => (plan.price ? `${text("pricingPage.table.wholeTeam")} (up to ${plan.people})` : `Up to ${plan.people}`)).join(" | ")} |`,
+      `| ${text("pricingPage.table.meetings")} | ${PLANS.map(() => "Yes").join(" | ")} |`,
+      `| ${text("pricingPage.table.support")} | ${PLANS.map((plan) => (plan.price ? "Yes" : "No")).join(" | ")} |`,
       `| ${text("pricingPage.table.calls")} | ${PLANS.map(() => text("pricingPage.table.callsNote")).join(" | ")} |`,
       "",
       `${plain(text("pricingPage.table.title"))} ${plain(text("pricingPage.table.muted"))}`,
       "",
-      ...notes.flatMap((note) => [`### ${text(`pricingPage.notes.${note}.title`)}`, "", text(`pricingPage.notes.${note}.body`, { email: SUPPORT_EMAIL }), ""]),
+      ...notes.flatMap((note) => [
+        `### ${text(`pricingPage.notes.${note}.title`)}`,
+        "",
+        text(`pricingPage.notes.${note}.body`, { email: SUPPORT_EMAIL }),
+        "",
+      ]),
     ];
   };
 
@@ -181,7 +191,16 @@ export async function llmsFullTxt(): Promise<string> {
       ...copy.points.map((point) => `- **${point.title}:** ${point.body}`),
       "",
       ...(copy.moments && copy.momentsTitle
-        ? [`${plain(copy.momentsTitle)}`, "", ...copy.moments.map((one) => (/^\d+$/.test(one.label) ? `${one.label}. **${one.title}:** ${one.body}` : `- **${one.label}, ${one.title.toLowerCase()}:** ${one.body}`)), ""]
+        ? [
+            `${plain(copy.momentsTitle)}`,
+            "",
+            ...copy.moments.map((one) =>
+              /^\d+$/.test(one.label)
+                ? `${one.label}. **${one.title}:** ${one.body}`
+                : `- **${one.label}, ${one.title.toLowerCase()}:** ${one.body}`,
+            ),
+            "",
+          ]
         : []),
       ...table(landing, copy),
       ...copy.faq.flatMap(({ q, a }) => [`**${q}** ${a}`, ""]),

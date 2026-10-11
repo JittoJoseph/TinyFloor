@@ -34,7 +34,7 @@
     "signIn": "Inloggen",
     "account": "Account",
     "createOffice": "Kantoor maken",
-    "plansSoon": "Groter team? Abonnementen met meer plekken komen binnenkort."
+    "plansSoon": "Pro, voor je hele team, komt binnenkort."
   },
   "languageSwitcher": {
     "label": "Taal",
@@ -90,7 +90,9 @@
     "leave": "Verlaten",
     "trialLeft": "{plan} op proef · nog {count, plural, one {# dag} other {# dagen}}",
     "choosePlan": "Kies een abonnement",
-    "upgrade": "Upgraden"
+    "upgrade": "Upgraden",
+    "members": "{count, plural, one {# lid} other {# leden}}",
+    "invitePeople": "Mensen uitnodigen"
   },
   "home": {
     "nav": {

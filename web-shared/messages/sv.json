@@ -34,7 +34,7 @@
     "signIn": "Logga in",
     "account": "Konto",
     "createOffice": "Skapa ett kontor",
-    "plansSoon": "Större team? Planer med fler platser kommer snart."
+    "plansSoon": "Pro, för hela ditt team, kommer snart."
   },
   "languageSwitcher": {
     "label": "Språk",
@@ -90,7 +90,9 @@
     "leave": "Lämna",
     "trialLeft": "{plan} på prov · {count, plural, one {# dag} other {# dagar}} kvar",
     "choosePlan": "Välj en plan",
-    "upgrade": "Uppgradera"
+    "upgrade": "Uppgradera",
+    "members": "{count, plural, one {# medlem} other {# medlemmar}}",
+    "invitePeople": "Bjud in folk"
   },
   "home": {
     "nav": {

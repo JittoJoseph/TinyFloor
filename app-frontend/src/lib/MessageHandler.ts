@@ -11,7 +11,7 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
-import { myStatus } from "./floor";
+import { myStatus, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -47,6 +47,12 @@ export class MessageHandler {
         this.addUser(message.player);
         this.dispatchPlayerList();
         playSound("join");
+        // Walked in, not back after a dropped connection: the floor can say hello (docs/28).
+        if (message.arrived) this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        break;
+      case "waved":
+        this.playerManager.wave(message.from);
+        if (message.to === this.playerId) this.tell(WAVED_AT_YOU_EVENT, message.from);
         break;
       case "player_left":
         this.handleUserLeft(message.id);
@@ -163,6 +169,12 @@ export class MessageHandler {
     this.playerManager.removePlayer(id);
     callManager.dropPeer(id);
     this.dispatchPlayerList();
+  }
+
+  /** Tells the page about someone, by id and the name the floor knows them by. */
+  private tell(type: string, id: string) {
+    const name = this.playerManager.getPlayerName(id);
+    if (name) window.dispatchEvent(new CustomEvent(type, { detail: { id, name } }));
   }
 
   private dispatchPlayerList() {

@@ -186,6 +186,8 @@ export type ClientMessage =
   | { t: "call_usage"; call: boolean; video: boolean }
   /** Make this desk yours, in an office: any desk you had before is let go. */
   | { t: "desk_claim"; seat: number }
+  /** A wave to someone on the floor, as they come in or back to one (docs/28). */
+  | { t: "wave"; to: string }
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
@@ -201,7 +203,10 @@ export type ServerMessage =
     }
   /** The desks changed: someone made one theirs, moved, or left the office. */
   | { t: "desks"; desks: Desk[] }
-  | { t: "player_joined"; player: PlayerState }
+  /** Someone came onto the floor; `arrived` when they walked into an office, not back after a dropped connection. */
+  | { t: "player_joined"; player: PlayerState; arrived?: boolean }
+  /** Someone waved at someone: everyone sees the hand go up, the one waved at is told. */
+  | { t: "waved"; from: string; to: string }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number; d?: number }
   | { t: "walking"; id: string; x: number; y: number }

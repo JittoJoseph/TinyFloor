@@ -39,7 +39,7 @@ import { dmChannelId } from "@shared/chat";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
-import { ChatNudges } from "./ChatNudges";
+import { FloorNudges } from "./FloorNudges";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
 import { Entering } from "./Entering";
 
@@ -210,7 +210,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               leaveHref={leave.href}
               settingsHref={lobbySettingsPath}
             />
-            {!onChat && <ChatNudges chatPath={lobbyChatPath} />}
+            {!onChat && <FloorNudges chatPath={lobbyChatPath} />}
           </>
         }
       >

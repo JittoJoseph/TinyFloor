@@ -92,7 +92,11 @@
     "choosePlan": "Выбрать тариф",
     "upgrade": "Улучшить тариф",
     "members": "{count, plural, one {# участник} few {# участника} many {# участников} other {# участника}}",
-    "invitePeople": "Пригласить людей"
+    "invitePeople": "Пригласить людей",
+    "arrived": "{name} на месте",
+    "wave": "👋 Помахать",
+    "waved": "{name} помахал(а) вам",
+    "waveBack": "👋 Помахать в ответ"
   },
   "home": {
     "nav": {

@@ -269,7 +269,8 @@ export class Room extends DurableObject<Env> {
     // the team sees them arrive; without a desk yet, beside a free one (docs/27).
     const office = lobbyCopyNumber(room) === null;
     const desk = office && !attachment.guest ? this.desks.of(ticket.sub) : null;
-    const near = arrive && office && !attachment.guest ? this.arrivalNear(desk) : null;
+    const arriving = arrive && office && !attachment.guest;
+    const near = arriving ? this.arrivalNear(desk) : null;
     if (near) Object.assign(attachment, near);
     const renamed = desk !== null && this.desks.rename(ticket.sub, ticket.name);
 
@@ -289,7 +290,7 @@ export class Room extends DurableObject<Env> {
       usage: this.clock()!.usage(now),
       desks: office ? this.desks.list() : [],
     });
-    this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
+    this.broadcast({ t: "player_joined", player: playerState(attachment), ...(arriving ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
     await this.headcountChanged(room);
@@ -372,6 +373,9 @@ export class Room extends DurableObject<Env> {
         break;
       case "call_usage":
         this.callUsage(me, !!message.call, !!message.video, now);
+        break;
+      case "wave":
+        this.wave(me, message.to);
         break;
       case "desk_claim":
         this.claimDesk(me, message.seat, now);
@@ -465,6 +469,13 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || !Number.isInteger(seat)) return;
     const before = this.desks.of(me.userId);
     if (this.desks.claim(seat as number, me.userId, me.name, now) && before !== seat) this.broadcastDesks();
+  }
+
+  /** A wave to someone who is here: the whole floor sees it, a hello in passing (docs/28). */
+  private wave(me: Attachment, to: unknown): void {
+    if (!this.takeAction(me) || typeof to !== "string" || to === me.userId) return;
+    if (!this.present().some((socket) => this.attachmentOf(socket).userId === to)) return;
+    this.broadcast({ t: "waved", from: me.userId, to });
   }
 
   /** Everyone hears the desks again; a newcomer already had them in its welcome. */

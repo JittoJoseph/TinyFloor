@@ -92,7 +92,11 @@
     "choosePlan": "요금제 선택",
     "upgrade": "업그레이드",
     "members": "{count, plural, other {멤버 #명}}",
-    "invitePeople": "사람 초대"
+    "invitePeople": "사람 초대",
+    "arrived": "{name} 님이 왔어요",
+    "wave": "👋 손 흔들기",
+    "waved": "{name} 님이 손을 흔들었어요",
+    "waveBack": "👋 같이 흔들기"
   },
   "home": {
     "nav": {

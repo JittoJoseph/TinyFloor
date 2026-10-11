@@ -28,6 +28,17 @@ if (typeof window !== "undefined") {
   );
 }
 
+/** A teammate walked into the office while you were on the floor (docs/28). */
+export const TEAMMATE_ARRIVED_EVENT = "teammateArrived";
+/** Someone on the floor waved at you. */
+export const WAVED_AT_YOU_EVENT = "wavedAtYou";
+/** Asks the floor to wave at someone (see GameScene). */
+export const WAVE_EVENT = "waveAt";
+
+export function waveAt(id: string) {
+  window.dispatchEvent(new CustomEvent(WAVE_EVENT, { detail: { id } }));
+}
+
 /** Asks the floor to walk you over to someone (see GameScene). */
 export const WALK_TO_PERSON_EVENT = "walkToPerson";
 

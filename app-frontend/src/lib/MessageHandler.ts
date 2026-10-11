@@ -10,11 +10,14 @@ import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
-import { setDesks } from "./desks";
+import { deskOf, deskState, setDesks } from "./desks";
 import { myStatus } from "./floor";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
+  /** Welcomed once already: every later welcome is a return after a dropped connection. */
+  private arrived = false;
+
   constructor(
     private scene: Phaser.Scene,
     private playerManager: PlayerManager,
@@ -121,15 +124,22 @@ export class MessageHandler {
 
     const spawn = tileToPixel(self.x, self.y);
     this.player.setPosition(spawn.x, spawn.y);
+    this.playerManager.showLocalPlayer();
+    // The view starts where you are, rather than sweeping over from where it was.
+    this.scene.cameras.main.centerOn(spawn.x, spawn.y);
     const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
     this.player.setData("spriteName", spriteName);
     this.player.play(this.animationManager.getAnimationKey(spriteName, "idle", "down"));
 
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();
-    // Arrived at your desk, or back after a dropped connection to the chair you were on.
-    if (self.seat !== null) this.seats.arriveAt(self.seat);
-    else this.seats.resit();
+    // Arriving, the room put you a few steps from your desk: walk in and sit
+    // down (docs/27). Back after a dropped connection, to the chair you were on.
+    if (this.arrived) return this.seats.resit();
+    this.arrived = true;
+    this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
+    const desk = deskOf(deskState().desks, this.playerId);
+    if (desk) this.seats.walkToDesk(desk.seat);
   }
 
   private addUser(player: PlayerState) {

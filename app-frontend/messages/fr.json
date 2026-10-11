@@ -492,9 +492,6 @@
     "namePlaceholder": "Studio Acme",
     "renameLater": "Tu peux le renommer à tout moment.",
     "planTitle": "Pro pour {office}",
-    "planBody": "Un seul prix pour toute l'équipe. Résiliable à tout moment.",
-    "perMonth": "/mois",
-    "getPlan": "Prendre {plan} · {price}/mois",
     "openingCheckout": "Ouverture du paiement",
     "freeInstead": "Ou commence avec Free, jusqu'à {count} personnes",
     "inviteTitle": "Fais venir ton équipe",
@@ -503,7 +500,8 @@
     "copied": "Copié",
     "trialNote": "Gratuit jusqu'à {free} personnes. Invitez-en plus et toute l'équipe profite de {plan} gratuitement pendant {days} jours. Sans carte.",
     "inviteLater": "Tu retrouveras ce lien dans Personnes.",
-    "walkIn": "Entrer"
+    "walkIn": "Entrer",
+    "choose": "Passer à {plan}"
   },
   "meetings": {
     "title": "Réunions",
@@ -700,7 +698,6 @@
       "anchor": "Les outils facturés par personne demanderaient environ {price} par mois pour la même équipe.",
       "wholeTeam": "Toute votre équipe, sur un même étage",
       "support": "Aide prioritaire de notre équipe",
-      "everything": "Et tout ce que vous avez déjà : vidéo HD, appels spontanés jamais décomptés, chat, partage d'écran et tableau blanc.",
       "get": "Passer à Pro · {price} par mois",
       "keep": "Garder Pro · {price} par mois",
       "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",

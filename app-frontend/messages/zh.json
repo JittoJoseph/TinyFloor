@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme 工作室",
     "renameLater": "随时可以改名。",
     "planTitle": "为 {office} 开通 Pro",
-    "planBody": "整个团队一个价格。随时可以取消。",
-    "perMonth": "/月",
-    "getPlan": "选择 {plan} · {price}/月",
     "openingCheckout": "正在打开付款",
     "freeInstead": "或从 Free 开始，最多 {count} 人",
     "inviteTitle": "把团队带进来",
@@ -503,7 +500,8 @@
     "copied": "已复制",
     "trialNote": "最多 {free} 人免费。邀请更多人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
     "inviteLater": "在「成员」页也能找到这个链接。",
-    "walkIn": "进入"
+    "walkIn": "进入",
+    "choose": "开通 {plan}"
   },
   "meetings": {
     "title": "会议",
@@ -700,7 +698,6 @@
       "anchor": "按人收费的工具，同一个团队每月大约要 {price}。",
       "wholeTeam": "整个团队，在同一层楼",
       "support": "我们团队的优先支持",
-      "everything": "还有你现在拥有的一切：高清视频、从不计时的随口通话、聊天、屏幕共享和白板。",
       "get": "开通 Pro · 每月 {price}",
       "keep": "继续使用 Pro · 每月 {price}",
       "assurance": "随时可以取消。14 天内全额退款。",

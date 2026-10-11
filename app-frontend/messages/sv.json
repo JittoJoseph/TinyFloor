@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme Studio",
     "renameLater": "Du kan byta namn när som helst.",
     "planTitle": "Pro för {office}",
-    "planBody": "Ett pris för hela teamet. Avsluta när du vill.",
-    "perMonth": "/mån",
-    "getPlan": "Skaffa {plan} · {price}/mån",
     "openingCheckout": "Öppnar kassan",
     "freeInstead": "Eller börja med Free, upp till {count} personer",
     "inviteTitle": "Ta med ditt team",
@@ -503,7 +500,8 @@
     "copied": "Kopierad",
     "trialNote": "Gratis för upp till {free} personer. Bjud in fler så får hela teamet {plan} gratis i {days} dagar. Inget kort behövs.",
     "inviteLater": "Du hittar länken under Personer också.",
-    "walkIn": "Gå in"
+    "walkIn": "Gå in",
+    "choose": "Skaffa {plan}"
   },
   "meetings": {
     "title": "Möten",
@@ -700,7 +698,6 @@
       "anchor": "Verktyg med pris per person skulle ta ungefär {price} i månaden för samma team.",
       "wholeTeam": "Hela ditt team, på en våning",
       "support": "Prioriterad hjälp från vårt team",
-      "everything": "Och allt ni redan har: HD-video, spontana samtal som aldrig räknas, chatt, skärmdelning och whiteboard.",
       "get": "Skaffa Pro · {price} i månaden",
       "keep": "Behåll Pro · {price} i månaden",
       "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",

@@ -1,6 +1,6 @@
 import { exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { DESK_SEATS, seatTile } from "../../shared-protocol/src";
+import { DESK_SEATS, deskArrival, seatTile } from "../../shared-protocol/src";
 import { Client, settle, uniqueRoom } from "./client";
 
 const DESK = DESK_SEATS[0];
@@ -46,7 +46,7 @@ describe("desks", () => {
     expect((await ben.next("sit_rejected")).seat).toBe(DESK);
   });
 
-  it("seats you at your desk when you arrive, but not when you come back from a dropped connection", async () => {
+  it("puts you by your desk to walk in when you arrive, but not when you come back from a dropped connection", async () => {
     const room = uniqueRoom();
     const first = await Client.open(room, { sub: "ava" });
     await first.next("welcome");
@@ -57,11 +57,27 @@ describe("desks", () => {
 
     const arriving = await Client.open(room, { sub: "ava" }, "&x=10&y=10&arrive=1");
     const welcome = await arriving.next("welcome");
-    expect(welcome.self).toMatchObject({ seat: DESK, ...seatTile(DESK) });
+    expect(welcome.self).toMatchObject({ seat: null, ...deskArrival(DESK) });
     expect(welcome.desks).toEqual([{ seat: DESK, userId: "ava", name: "Ava" }]);
 
     const back = await Client.open(room, { sub: "ava" }, "&x=10&y=10");
     expect((await back.next("welcome")).self).toMatchObject({ seat: null, x: 10, y: 10 });
+  });
+
+  it("puts a member without a desk by a free one, and a guest where they asked", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    ava.send({ t: "desk_claim", seat: DESK });
+    await ava.next("desks");
+
+    const ben = await Client.open(room, { sub: "ben" }, "&x=10&y=10&arrive=1");
+    const at = (await ben.next("welcome")).self;
+    const free = DESK_SEATS.filter((seat) => seat !== DESK).map((seat) => deskArrival(seat));
+    expect(free).toContainEqual({ x: at.x, y: at.y });
+
+    const gus = await Client.open(room, { sub: "gus", role: "guest" }, "&x=10&y=10&arrive=1");
+    expect((await gus.next("welcome")).self).toMatchObject({ x: 10, y: 10 });
   });
 
   it("frees a desk when its owner leaves the office", async () => {

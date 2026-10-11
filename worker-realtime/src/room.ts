@@ -8,7 +8,8 @@ import {
   HEARTBEAT_PONG,
   PRESENCE_STATUSES,
   isInsideMap,
-  seatTile,
+  DESK_SEATS,
+  deskArrival,
   MAIN_MEETING,
   MEETING_ID,
   MEETING_NAME_MAX,
@@ -263,12 +264,13 @@ export class Room extends DurableObject<Env> {
       messages: 0,
     };
 
-    // Arriving in an office (not coming back after a dropped connection): at your desk, if it's free.
+    // Arriving in an office (not coming back after a dropped connection), a
+    // member appears a few steps from their desk and walks in to sit down, so
+    // the team sees them arrive; without a desk yet, beside a free one (docs/27).
     const office = lobbyCopyNumber(room) === null;
     const desk = office && !attachment.guest ? this.desks.of(ticket.sub) : null;
-    if (arrive && desk !== null && !this.present().some((socket) => this.attachmentOf(socket).seat === desk)) {
-      Object.assign(attachment, seatTile(desk), { seat: desk });
-    }
+    const near = arrive && office && !attachment.guest ? this.arrivalNear(desk) : null;
+    if (near) Object.assign(attachment, near);
     const renamed = desk !== null && this.desks.rename(ticket.sub, ticket.name);
 
     const others = this.present().map((socket) => playerState(this.attachmentOf(socket)));
@@ -293,6 +295,15 @@ export class Room extends DurableObject<Env> {
     await this.headcountChanged(room);
 
     return new Response(null, { status: 101, webSocket: client });
+  }
+
+  /** Where someone arriving appears: by their desk, or by a free one, chosen at random. */
+  private arrivalNear(desk: number | null): { x: number; y: number } | null {
+    if (desk !== null) return deskArrival(desk);
+    const claimed = new Set(this.desks.list().map((one) => one.seat));
+    const taken = new Set(this.present().map((socket) => this.attachmentOf(socket).seat));
+    const free = DESK_SEATS.filter((seat) => !claimed.has(seat) && !taken.has(seat));
+    return free.length ? deskArrival(free[Math.floor(Math.random() * free.length)]) : null;
   }
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer): Promise<void> {

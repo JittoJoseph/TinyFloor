@@ -492,9 +492,6 @@
     "namePlaceholder": "Estúdio Acme",
     "renameLater": "Você pode renomear quando quiser.",
     "planTitle": "Pro para {office}",
-    "planBody": "Um preço para toda a equipe. Cancele quando quiser.",
-    "perMonth": "/mês",
-    "getPlan": "Assinar {plan} · {price}/mês",
     "openingCheckout": "Abrindo o pagamento",
     "freeInstead": "Ou comece no Free, para até {count} pessoas",
     "inviteTitle": "Traga sua equipe",
@@ -503,7 +500,8 @@
     "copied": "Copiado",
     "trialNote": "Grátis para até {free} pessoas. Convide mais e toda a equipe ganha {plan} grátis por {days} dias. Sem cartão.",
     "inviteLater": "Você também encontra este link em Pessoas.",
-    "walkIn": "Entrar"
+    "walkIn": "Entrar",
+    "choose": "Assinar o {plan}"
   },
   "meetings": {
     "title": "Reuniões",
@@ -700,7 +698,6 @@
       "anchor": "Ferramentas cobradas por pessoa custariam cerca de {price} por mês para a mesma equipe.",
       "wholeTeam": "Toda a sua equipe, em um só andar",
       "support": "Ajuda prioritária da nossa equipe",
-      "everything": "E tudo o que você já tem: vídeo HD, conversas de passagem que nunca contam, chat, compartilhamento de tela e quadro branco.",
       "get": "Assinar o Pro · {price} por mês",
       "keep": "Manter o Pro · {price} por mês",
       "assurance": "Cancele quando quiser. Reembolso total em até 14 dias.",

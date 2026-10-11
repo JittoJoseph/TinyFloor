@@ -165,6 +165,8 @@ class GameScene extends Phaser.Scene {
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
 
+    // The floor fades in once the room has said where you are (MessageHandler), not at a spot you'd jump from.
+    this.cameras.main.setAlpha(0);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
     this.fitCamera(this.scale.width, this.scale.height);
     // The floor panel changes size with the window, a rotated phone or a

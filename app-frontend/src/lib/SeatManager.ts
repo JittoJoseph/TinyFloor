@@ -119,12 +119,7 @@ export class SeatManager {
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
         if (seat.occupant || this.reserved(seat)) return;
-        // walk over and sit, unless someone beats us to it; from another seat
-        // this gets you up first
-        const { standX, standY } = this.poseFor(seat);
-        this.goTo?.(standX, standY, () => {
-          if (!seat.occupant && !this.seated) this.sit(seat);
-        });
+        this.walkTo(seat);
       });
       this.hitAreas.push(zone);
     });
@@ -181,10 +176,21 @@ export class SeatManager {
     this.changed();
   }
 
-  /** The room sat us at our desk as we arrived: be there, without asking it again. */
-  arriveAt(seatId: number) {
+  /** Walks over and sits, unless someone beats us to it; from another seat this gets you up first. */
+  private walkTo(seat: Seat) {
+    const { standX, standY } = this.poseFor(seat);
+    this.goTo?.(standX, standY, () => {
+      if (!seat.occupant && !this.seated) this.sit(seat);
+    });
+  }
+
+  /**
+   * Arrived a few steps from your desk (docs/27): walk in and sit down, in
+   * sight of everyone. Steering or clicking elsewhere on the way lets it go.
+   */
+  walkToDesk(seatId: number) {
     const seat = this.byId.get(seatId);
-    if (seat) this.sit(seat, false);
+    if (seat && !this.seated) this.walkTo(seat);
   }
 
   /** Someone else's desk: nobody but its owner sits there. */
@@ -233,8 +239,8 @@ export class SeatManager {
     this.tag?.setText(people ? `${label} · ${people}` : label).setDot(people ? HIGHLIGHT : IDLE);
   }
 
-  /** Sits down here; `tell` the room, unless it's the one that put us here. */
-  private sit(seat: Seat, tell = true) {
+  /** Sits down here, and tells the room. */
+  private sit(seat: Seat) {
     const pose = this.poseFor(seat);
     this.seated = seat;
     seat.occupant = SELF;
@@ -248,10 +254,8 @@ export class SeatManager {
     this.changed();
 
     setMySeat(seat.id);
-    if (tell) {
-      const tile = pixelToTile(seat.x, seat.y);
-      this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
-    }
+    const tile = pixelToTile(seat.x, seat.y);
+    this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
     this.ring.clear();
     this.prompt.setText(sceneText().stand).container.setVisible(this.keyboard);
   }

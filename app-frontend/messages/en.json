@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme Studio",
     "renameLater": "You can rename it any time.",
     "planTitle": "Pro for {office}",
-    "planBody": "One price for your whole team. Cancel any time.",
-    "perMonth": "/month",
-    "getPlan": "Get {plan} · {price}/month",
     "openingCheckout": "Opening checkout",
     "freeInstead": "Or start on Free, for up to {count} people",
     "inviteTitle": "Bring your team in",
@@ -503,7 +500,8 @@
     "copied": "Copied",
     "trialNote": "Free for up to {free} people. Invite more and your whole team gets {plan} free for {days} days. No card needed.",
     "inviteLater": "You'll find this link on People too.",
-    "walkIn": "Walk in"
+    "walkIn": "Walk in",
+    "choose": "Get {plan}"
   },
   "meetings": {
     "title": "Meetings",
@@ -700,7 +698,6 @@
       "anchor": "Per-person tools would charge about {price} a month for the same team.",
       "wholeTeam": "Everyone on your team, on one floor",
       "support": "Priority help from our team",
-      "everything": "And everything you have now: HD video, walk-up calls that never count, chat, screen sharing and the whiteboard.",
       "get": "Get Pro · {price} a month",
       "keep": "Keep Pro · {price} a month",
       "assurance": "Cancel any time. Full refund within 14 days.",

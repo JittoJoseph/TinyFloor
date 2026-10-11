@@ -167,9 +167,11 @@ export function FaceStack({
   return (
     <span className={cn("inline-flex shrink-0 items-center align-middle", className)}>
       {shown.map((seed, index) => (
+        // Positioned like the face inside it, so each face paints in turn and its
+        // ring sits over the one before; otherwise every face covers every ring.
         <span
           key={seed}
-          className="flex shrink-0 rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]"
+          className="relative flex shrink-0 rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]"
           style={{ width: size, height: size, marginInlineStart: index === 0 ? 0 : -size * 0.32 }}
         >
           <Face seed={seed} size={size} />
@@ -177,8 +179,8 @@ export function FaceStack({
       ))}
       {extra > 0 && (
         <span
-          className="flex shrink-0 items-center justify-center rounded-full bg-muted px-1 text-[10px] font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
-          style={{ minWidth: size, height: size, marginInlineStart: -size * 0.32 }}
+          className="relative flex shrink-0 items-center justify-center rounded-full bg-muted px-1 font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
+          style={{ minWidth: size, height: size, marginInlineStart: -size * 0.32, fontSize: Math.max(10, Math.round(size * 0.3)) }}
         >
           +{extra}
         </span>

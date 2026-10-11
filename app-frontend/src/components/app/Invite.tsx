@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus, Zap } from "@/components/ui/icons";
-import { Face } from "@/components/ui/Face";
+import { FaceStack } from "@/components/ui/Face";
 import { Modal } from "@/components/ui/Modal";
 import { withPostHog } from "@/lib/analytics";
 import { usePlans } from "@/lib/billing";
@@ -73,26 +73,25 @@ function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void })
   );
 }
 
-/** Who's here already, and two places waiting: the office filling up. */
+/**
+ * Who's here already, as one stack (each face set apart by a ring of the
+ * dialog's colour, "+n" past four), and two places waiting beside it: the
+ * office filling up.
+ */
 function Gathering({ ids }: { ids: string[] }) {
-  const shown = ids.slice(0, 4);
   return (
-    <span className="flex items-center gap-1.5 [--face-ring:var(--ui-card)]" aria-hidden>
-      <span className="flex items-center">
-        {shown.map((id, index) => (
-          <span key={id} className={cn(index > 0 && "-ms-2.5")}>
-            <Face seed={id} size={40} />
+    <span className="flex items-center gap-2 [--face-ring:var(--ui-card)]" aria-hidden>
+      <FaceStack seeds={ids} size={40} max={4} />
+      <span className="flex items-center gap-1.5">
+        {[0, 1].map((one) => (
+          <span
+            key={one}
+            className="flex size-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border-strong text-faint"
+          >
+            <UserPlus className="size-4" />
           </span>
         ))}
       </span>
-      {[0, 1].map((one) => (
-        <span
-          key={one}
-          className="flex size-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border-strong text-faint"
-        >
-          <UserPlus className="size-4" />
-        </span>
-      ))}
     </span>
   );
 }

@@ -21,7 +21,7 @@ const DRIFT_LIMIT = TILE_SIZE;
 
 export class MovementManager {
   private scene: Phaser.Scene;
-  private player: Phaser.Physics.Arcade.Sprite;
+  private player: Phaser.GameObjects.Sprite;
   private animationManager: AnimationManager;
   private wsManager: RoomSocket;
   private nav: NavGrid;
@@ -39,7 +39,7 @@ export class MovementManager {
 
   constructor(
     scene: Phaser.Scene,
-    player: Phaser.Physics.Arcade.Sprite,
+    player: Phaser.GameObjects.Sprite,
     animationManager: AnimationManager,
     wsManager: RoomSocket,
     nav: NavGrid,
@@ -107,8 +107,10 @@ export class MovementManager {
     this.movingBefore = manualMoved;
     this.playAnimation(moving);
     this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta);
-    // standing players sort by where their feet are; sitting sets its own depth
-    this.player.setDepth(depthForY(this.player.y));
+    // standing players sort by where their feet are; sitting sets its own depth.
+    // Only on a change: setting it at all re-sorts everything on the floor.
+    const depth = depthForY(this.player.y);
+    if (this.player.depth !== depth) this.player.setDepth(depth);
 
     if (this.arrive && !this.path.length) {
       const arrive = this.arrive;
@@ -299,7 +301,6 @@ export class MovementManager {
     this.release = release;
     this.path.length = 0;
     this.arrive = undefined;
-    (this.player.body as Phaser.Physics.Arcade.Body).setVelocity(0, 0);
   }
 
   destroy() {

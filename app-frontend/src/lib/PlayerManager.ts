@@ -63,7 +63,7 @@ export class PlayerManager {
   private players: Map<string, Phaser.GameObjects.Container> = new Map();
   private nameTags: Map<string, SceneLabel> = new Map();
   private playerStates: Map<string, RemotePlayerState> = new Map();
-  private localPlayer?: Phaser.Physics.Arcade.Sprite;
+  private localPlayer?: Phaser.GameObjects.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
   /** Name tags grow a little when the camera pulls back, so they stay readable. */
   private tagScale = 1;
@@ -87,8 +87,8 @@ export class PlayerManager {
     x: number,
     y: number,
     character: string,
-  ): Phaser.Physics.Arcade.Sprite {
-    const player = this.scene.physics.add.sprite(x, y, character);
+  ): Phaser.GameObjects.Sprite {
+    const player = this.scene.add.sprite(x, y, character);
     player.setName("localPlayer");
     player.setScale(2.0);
     player.setOrigin(0.5, 1.0);
@@ -137,16 +137,6 @@ export class PlayerManager {
     container.add(tag.container);
     this.nameTags.set(id, tag);
     this.players.set(id, container);
-
-    this.scene.physics.world.enable(container);
-    const body = container.body as Phaser.Physics.Arcade.Body;
-    body.setSize(24, 24);
-    body.setOffset(-12, -24);
-    body.setImmovable(true);
-
-    if (this.localPlayer) {
-      this.scene.physics.add.collider(this.localPlayer, container);
-    }
 
     this.playerStates.set(id, {
       path: [],
@@ -366,7 +356,7 @@ export class PlayerManager {
       duration: HOP_DURATION,
       ease: "Sine.easeOut",
       onUpdate: () => {
-        if (depth === undefined) container.setDepth(depthForY(container.y));
+        if (depth === undefined) this.sortBy(container);
       },
       onComplete,
     });
@@ -456,9 +446,15 @@ export class PlayerManager {
     const dx = pos.x - container.x;
     const dy = pos.y - container.y;
     container.setPosition(pos.x, pos.y);
-    container.setDepth(depthForY(pos.y));
+    this.sortBy(container);
     state.direction = directionFromVector(dx, dy, state.direction);
     state.isMoving = dx !== 0 || dy !== 0 || state.path.length > 0;
+  }
+
+  /** Depth by where their feet are, set only on a change: setting it re-sorts the whole floor. */
+  private sortBy(container: Phaser.GameObjects.Container) {
+    const depth = depthForY(container.y);
+    if (container.depth !== depth) container.setDepth(depth);
   }
 
   removePlayer(id: string) {

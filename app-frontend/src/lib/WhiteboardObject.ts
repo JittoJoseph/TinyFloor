@@ -29,7 +29,7 @@ export class WhiteboardObject {
 
   constructor(
     scene: Phaser.Scene,
-    player: Phaser.Physics.Arcade.Sprite,
+    player: Phaser.GameObjects.Sprite,
     rect: { x: number; y: number; width: number; height: number },
     goTo: GoTo,
   ) {

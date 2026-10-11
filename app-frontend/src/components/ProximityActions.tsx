@@ -115,4 +115,13 @@ export const ProximityActions = memo(function ProximityActions({
       )}
     </div>
   );
-});
+},
+// Where they stand on screen moves every frame the camera glides; the card
+// beside them only changes with who they are and how they are.
+(before, after) =>
+  before.touch === after.touch &&
+  before.player.id === after.player.id &&
+  before.player.name === after.player.name &&
+  before.player.status === after.player.status &&
+  before.player.guest === after.player.guest,
+);

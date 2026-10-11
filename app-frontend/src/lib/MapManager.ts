@@ -36,7 +36,6 @@ export function depthForY(y: number): number {
 export class MapManager {
   private scene: Phaser.Scene;
   private map!: Phaser.Tilemaps.Tilemap;
-  private solids!: Phaser.Physics.Arcade.StaticGroup;
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
   private tilesetRefs: TilesetRef[] = [];
@@ -178,8 +177,12 @@ export class MapManager {
     });
   }
 
+  /**
+   * The walls and furniture you can't walk through, as plain rectangles: you
+   * are moved by hand against them (checkCollisionAt) and walk paths around
+   * them (NavGrid), so there's no physics engine running underneath.
+   */
   private createColliders() {
-    this.solids = this.scene.physics.add.staticGroup();
     const objects = this.map.getObjectLayer("Colliders")?.objects ?? [];
 
     objects.forEach((obj) => {
@@ -187,36 +190,8 @@ export class MapManager {
       const height = obj.height || 1;
       const x = obj.x ?? 0;
       const y = obj.y ?? 0;
-
       this.solidRects.push({ x, y, width, height });
-
-      const rect = this.scene.add.rectangle(
-        x + width / 2,
-        y + height / 2,
-        width,
-        height,
-        0x000000,
-        0,
-      );
-      this.scene.physics.add.existing(rect, true);
-      const body = rect.body as Phaser.Physics.Arcade.StaticBody;
-      body.setSize(width, height);
-      body.setOffset(0, 0);
-      this.solids.add(rect);
     });
-  }
-
-  /**
-   * The local player is moved by hand against `checkCollisionAt`, so the arcade
-   * body is here only for overlap tests. Letting arcade move it as well makes
-   * the two fight and snaps the sprite back mid walk.
-   */
-  setupColliders(player: Phaser.Physics.Arcade.Sprite) {
-    const body = player.body as Phaser.Physics.Arcade.Body;
-    body.setSize(14, 10);
-    body.setOffset(9, 21);
-    body.setCollideWorldBounds(false);
-    body.moves = false;
   }
 
   getChairs(): ChairSpec[] {

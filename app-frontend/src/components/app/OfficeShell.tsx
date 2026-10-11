@@ -11,7 +11,7 @@ import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, offic
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
-import { clearMeetings, peopleInMeetings, useMeetings } from "@/lib/meetings";
+import { clearMeetings, usePeopleInMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
 import { UpgradeProvider } from "@/components/billing/Upgrade";
 import { InviteProvider } from "./Invite";
@@ -78,7 +78,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const { unread } = useChat();
   // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
   const helpUnread = useHelp().ticket?.unread ?? 0;
-  const { meetings: meetingList } = useMeetings();
+  const inMeetings = usePeopleInMeetings();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
@@ -202,7 +202,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                   icon: RailIcons.meetings,
                   active: onMeetings,
                   // Green while a meeting is on: how many are in them.
-                  live: peopleInMeetings(meetingList) || undefined,
+                  live: inMeetings || undefined,
                 },
                 { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
               ]}

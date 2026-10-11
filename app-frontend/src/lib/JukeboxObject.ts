@@ -33,7 +33,7 @@ export class JukeboxObject {
 
   constructor(
     scene: Phaser.Scene,
-    player: Phaser.Physics.Arcade.Sprite,
+    player: Phaser.GameObjects.Sprite,
     at: { x: number; y: number },
     goTo: GoTo,
   ) {

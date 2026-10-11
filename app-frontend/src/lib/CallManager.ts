@@ -234,6 +234,10 @@ class CallManager {
   /** The place is past its meeting hours: meetings are voice only (docs/14). */
   private videoPaused = false;
   private local: MediaStream | null = null;
+  /** The microphone being opened, so a call and a meeting starting together share one. */
+  private opening: Promise<boolean> | null = null;
+  /** Whether you last asked for your camera on: one that opens after you said off, or after the call ended, stops again. */
+  private cameraWanted = false;
   /** Voice settings being applied to an open call, one change after another. */
   private voiceChange: Promise<void> = Promise.resolve();
   private voiceApplied = "";
@@ -309,7 +313,6 @@ class CallManager {
   }
 
   attach(ws: RoomSocket) {
-    this.callReport = "";
     this.ws = ws;
     void this.loadIceServers();
   }
@@ -564,10 +567,14 @@ class CallManager {
   }
 
   /**
-   * Back after a reconnect: the room has forgotten your meeting, so rejoin it
-   * if it is still going (the main one always is).
+   * The room welcomed us, arriving or back after a reconnect. A new connection
+   * knows nothing of our call, so it is told again; nor of our meeting, so we
+   * rejoin it if it is still going (the main one always is).
    */
-  rejoinMeeting() {
+  welcomed(selfId: string) {
+    this.selfId = selfId;
+    this.callReport = "";
+    this.reportCall();
     const meeting = this.meeting;
     if (!meeting) return;
     this.leaveMeeting(false);
@@ -687,11 +694,6 @@ class CallManager {
     this.voice.listen(track);
   }
 
-  /** Who we are on the floor, told when the room welcomes us. */
-  setSelf(id: string) {
-    this.selfId = id;
-  }
-
   /** Whether the next meeting you go into opens with your camera on. */
   setCameraOnJoin(on: boolean) {
     this.cameraOnJoin = on;
@@ -700,6 +702,7 @@ class CallManager {
   /** Your camera, on the call you are in: there is nothing to turn on outside one. */
   async setCamera(enabled: boolean) {
     if (!this.local) return;
+    this.cameraWanted = enabled;
     if (enabled) this.clearRested();
     if (enabled && !this.local.getVideoTracks().length) {
       if (!(await this.addCamera())) return this.emit();
@@ -797,6 +800,7 @@ class CallManager {
 
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
+    this.cameraWanted = withCamera;
     if (opened && withCamera && (await this.addCamera())) {
       if (this.sfu !== sfu) return;
       this.cameraEnabled = true;
@@ -1031,36 +1035,45 @@ class CallManager {
   }
 
   /** The microphone, for a call starting. The camera joins only when it is switched on (addCamera). */
-  private async openMedia(): Promise<boolean> {
-    if (this.local) return true;
+  private openMedia(): Promise<boolean> {
+    if (this.local) return Promise.resolve(true);
+    this.opening ??= this.openMic().finally(() => (this.opening = null));
+    return this.opening;
+  }
 
+  private async openMic(): Promise<boolean> {
     if (!navigator.mediaDevices?.getUserMedia) {
       this.error = "unsupported";
       return false;
     }
 
+    let stream: MediaStream;
     try {
-      const devices = savedDevices();
-      this.local = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          ...audioConstraints(),
-          deviceId: deviceConstraint(devices.audio),
-        },
+      stream = await navigator.mediaDevices.getUserMedia({
+        audio: { ...audioConstraints(), deviceId: deviceConstraint(savedDevices().audio) },
       });
-      this.voiceApplied = JSON.stringify(audioConstraints());
-      this.local?.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
-      this.error = null;
-      return true;
     } catch {
       this.error = "media";
       return false;
     }
+    // The call or meeting ended while the browser asked: nothing needs the microphone now.
+    if (!this.peers.size && !this.meeting) {
+      stream.getTracks().forEach((track) => track.stop());
+      return false;
+    }
+    this.local = stream;
+    this.voiceApplied = JSON.stringify(audioConstraints());
+    stream.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
+    this.error = null;
+    return true;
   }
 
+  /** Turns the camera on in the call's stream; whether it is on afterwards. */
   private async addCamera(): Promise<boolean> {
     if (!this.local) return false;
     if (this.local.getVideoTracks().length) return true;
 
+    let track: MediaStreamTrack;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -1068,13 +1081,21 @@ class CallManager {
           deviceId: deviceConstraint(savedDevices().video),
         },
       });
-      this.local.addTrack(stream.getVideoTracks()[0]);
-      this.error = null;
-      return true;
+      track = stream.getVideoTracks()[0];
     } catch {
       this.error = "camera";
       return false;
     }
+    // While it opened the call may have ended, you may have switched it off,
+    // or a second press may have opened it already: then this one stops.
+    const local = this.local;
+    if (!local || !this.cameraWanted || local.getVideoTracks().length) {
+      track.stop();
+      return !!local && this.cameraWanted && local.getVideoTracks().length > 0;
+    }
+    local.addTrack(track);
+    this.error = null;
+    return true;
   }
 
   /**
@@ -1115,6 +1136,7 @@ class CallManager {
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
+    this.cameraWanted = false;
     this.local?.getTracks().forEach((track) => track.stop());
     this.screen?.getTracks().forEach((track) => track.stop());
     this.local = null;

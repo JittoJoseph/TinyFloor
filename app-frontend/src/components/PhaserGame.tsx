@@ -83,15 +83,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // also takes clicks on whatever covers it (a meeting, a menu, a toast) as
         // clicks on the floor underneath: a pin in a meeting walked you to the whiteboard.
         input: { windowEvents: false },
-        physics: {
-          default: "arcade",
-          arcade: {
-            debug: false,
-            gravity: { x: 0, y: 0 },
-            width: gameRef.current.clientWidth || window.innerWidth,
-            height: gameRef.current.clientHeight || window.innerHeight,
-          },
-        },
       };
       game.current = new Phaser.Game(config);
       game.current.events.once(Phaser.Core.Events.READY, onResize);

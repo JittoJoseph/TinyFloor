@@ -19,7 +19,7 @@ export type GoTo = (x: number, y: number, arrive: () => void) => void;
  */
 export class Interactable {
   private scene: Phaser.Scene;
-  private player: Phaser.Physics.Arcade.Sprite;
+  private player: Phaser.GameObjects.Sprite;
   private anchor: { x: number; y: number };
   private hint: Phaser.GameObjects.Container;
   private onReach: (inReach: boolean) => void;
@@ -27,7 +27,7 @@ export class Interactable {
 
   constructor(
     scene: Phaser.Scene,
-    player: Phaser.Physics.Arcade.Sprite,
+    player: Phaser.GameObjects.Sprite,
     anchor: { x: number; y: number },
     target: Phaser.GameObjects.Zone | Phaser.GameObjects.Image,
     label: string,

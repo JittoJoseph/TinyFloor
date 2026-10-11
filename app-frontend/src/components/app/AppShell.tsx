@@ -12,6 +12,7 @@ import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
 import { help, useHelp } from "@/lib/help";
+import { setFloorShown } from "@/lib/floor";
 import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
 
 /**
@@ -76,6 +77,12 @@ export function AppShell({
   const reduce = useReducedMotion();
   const [docks, setDocks] = useState(0);
   const report = useCallback((shown: boolean) => setDocks((count) => count + (shown ? 1 : -1)), []);
+  // A view laid over the floor hides it completely, so the floor stops drawing.
+  const floorShown = destinations.find((one) => one.key === "floor")?.active ?? true;
+  useEffect(() => {
+    setFloorShown(floorShown);
+    return () => setFloorShown(true);
+  }, [floorShown]);
   return (
     <DockContext.Provider value={report}>
       <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">

@@ -18,7 +18,7 @@ interface NearbyPlayer {
 export class ProximityManager {
   private scene: Phaser.Scene;
   private playerManager: PlayerManager;
-  private currentPlayer: Phaser.Physics.Arcade.Sprite;
+  private currentPlayer: Phaser.GameObjects.Sprite;
   private reachable: (id: string) => boolean;
   private proximityStartTimes = new Map<string, number>();
   private lastSignature = "";
@@ -27,7 +27,7 @@ export class ProximityManager {
   constructor(
     scene: Phaser.Scene,
     playerManager: PlayerManager,
-    currentPlayer: Phaser.Physics.Arcade.Sprite,
+    currentPlayer: Phaser.GameObjects.Sprite,
     reachable: (id: string) => boolean,
   ) {
     this.scene = scene;

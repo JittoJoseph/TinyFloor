@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import type { MeetingUsage, PlayerState, ServerMessage } from "@shared/messages";
+import type { ClientMessage, MeetingUsage, PlayerState, ServerMessage } from "@shared/messages";
 import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
@@ -11,6 +11,7 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { setDesks } from "./desks";
+import { myStatus } from "./floor";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -20,7 +21,8 @@ export class MessageHandler {
     private animationManager: AnimationManager,
     private seats: SeatManager,
     private playerId: string,
-    private player: Phaser.Physics.Arcade.Sprite,
+    private player: Phaser.GameObjects.Sprite,
+    private send: (message: ClientMessage) => void,
   ) {}
 
   handleMessage(message: ServerMessage) {
@@ -32,8 +34,7 @@ export class MessageHandler {
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
         if (message.usage) this.meetingUsage(message.usage);
-        // Back after a reconnect: the room forgot your meeting, so rejoin it.
-        callManager.rejoinMeeting();
+        callManager.welcomed(message.self.id);
         break;
       case "desks":
         setDesks(message.desks);
@@ -108,7 +109,9 @@ export class MessageHandler {
 
   /** Arriving, or coming back after a reconnect: the room's word replaces whatever we had. */
   private welcome(self: PlayerState, players: PlayerState[]) {
-    callManager.setSelf(self.id);
+    // A new connection starts you as available; busy, away or on a call is said again.
+    const status = myStatus();
+    if (status !== self.status && status !== "offline") this.send({ t: "status", status });
     // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
       if (id === this.playerId) continue;

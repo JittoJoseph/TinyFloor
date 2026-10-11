@@ -723,12 +723,8 @@
     "keep": "Behåll"
   },
   "desk": {
-    "claimTitle": "Ska det här bli ditt skrivbord?",
-    "claimBody": "Du kommer hit varje gång, och det behåller ditt namn medan du är borta.",
-    "claim": "Det är mitt",
-    "moveTitle": "Flytta ditt skrivbord hit?",
-    "moveBody": "Ditt gamla skrivbord blir ledigt för någon annan.",
-    "move": "Flytta hit",
+    "claim": "Gör det till mitt skrivbord",
+    "move": "Flytta mitt skrivbord hit",
     "notNow": "Inte nu",
     "claimed": "Det här är ditt skrivbord nu",
     "hint": "Välj ett skrivbord och sätt dig. Det kan bli ditt."

@@ -26,6 +26,8 @@ const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; e
 };
 
 const REACH = 56;
+/** How close a desk's plate shows: about the desk you're at or walking past. */
+const PLATE_REACH = 96;
 const HIGHLIGHT = 0xff4e00;
 const IDLE = 0x9ca3af;
 const PROMPT_DEPTH = 99000;
@@ -279,6 +281,11 @@ export class SeatManager {
   }
 
   update() {
+    this.plates.forEach((plate, id) => {
+      const seat = this.byId.get(id)!;
+      plate.setNear(Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
+    });
+
     if (this.seated) {
       this.placePrompt(this.seated);
       return;

@@ -723,12 +723,8 @@
     "keep": "Mantener"
   },
   "desk": {
-    "claimTitle": "¿Hacer de este tu escritorio?",
-    "claimBody": "Llegarás aquí cada vez, y guarda tu nombre mientras no estás.",
-    "claim": "Es mío",
-    "moveTitle": "¿Mover tu escritorio aquí?",
-    "moveBody": "Tu escritorio anterior queda libre para otra persona.",
-    "move": "Mover aquí",
+    "claim": "Que sea mi escritorio",
+    "move": "Mover mi escritorio aquí",
     "notNow": "Ahora no",
     "claimed": "Este es tu escritorio ahora",
     "hint": "Elige un escritorio y siéntate. Puede ser tuyo."

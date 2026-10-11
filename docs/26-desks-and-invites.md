@@ -5,11 +5,12 @@ minutes alone, and the day the team arrives.
 
 ## Your own desk
 
-**What it does.** In an office, sitting down at a free desk asks once: *Make
-this your desk?* One press, and from then on you arrive sitting there. A
-desk keeps a small paper plate with your name while you're away (*Your desk*
-on your own), and nobody else sits at it. Someone with a desk elsewhere is
-offered the move instead. A member without a desk sees one line, once per
+**What it does.** In an office, sitting down at a free desk shows one small
+pill: *Make this my desk* (or *Move my desk here*, with a desk elsewhere) and
+a close button. One press, and from then on you arrive sitting there. A desk
+has a small paper plate with its owner's name (*Your desk* on yours), shown
+only when you're close to it and the owner is away, so the floor stays clean;
+nobody else sits at it. A member without a desk sees one line, once per
 office: *Pick a desk and sit down. It can be yours.*
 
 **Why.** People value what's theirs more than what's merely available, and

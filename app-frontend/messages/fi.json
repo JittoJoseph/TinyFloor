@@ -723,12 +723,8 @@
     "keep": "Pidä"
   },
   "desk": {
-    "claimTitle": "Tehdäänkö tästä sinun työpöytäsi?",
-    "claimBody": "Saavut tähän joka kerta, ja siinä on nimesi, kun olet poissa.",
-    "claim": "Se on minun",
-    "moveTitle": "Siirretäänkö työpöytäsi tähän?",
-    "moveBody": "Vanha työpöytäsi vapautuu jollekulle muulle.",
-    "move": "Siirrä tähän",
+    "claim": "Tee tästä työpöytäni",
+    "move": "Siirrä työpöytäni tähän",
     "notNow": "Ei nyt",
     "claimed": "Tämä on nyt sinun työpöytäsi",
     "hint": "Valitse työpöytä ja istu alas. Siitä voi tulla sinun."

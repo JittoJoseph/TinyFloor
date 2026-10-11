@@ -723,12 +723,8 @@
     "keep": "Manter"
   },
   "desk": {
-    "claimTitle": "Quer que esta seja sua mesa?",
-    "claimBody": "Você vai chegar aqui toda vez, e ela guarda seu nome enquanto você está fora.",
-    "claim": "É minha",
-    "moveTitle": "Mudar sua mesa para cá?",
-    "moveBody": "Sua mesa antiga fica livre para outra pessoa.",
-    "move": "Mudar para cá",
+    "claim": "Tornar minha mesa",
+    "move": "Mudar minha mesa para cá",
     "notNow": "Agora não",
     "claimed": "Esta é sua mesa agora",
     "hint": "Escolha uma mesa e sente-se. Ela pode ser sua."

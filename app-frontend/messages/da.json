@@ -723,12 +723,8 @@
     "keep": "Behold"
   },
   "desk": {
-    "claimTitle": "Skal det her være dit skrivebord?",
-    "claimBody": "Du lander her hver gang, og det beholder dit navn, mens du er væk.",
-    "claim": "Det er mit",
-    "moveTitle": "Flyt dit skrivebord herhen?",
-    "moveBody": "Dit gamle skrivebord bliver ledigt til en anden.",
-    "move": "Flyt hertil",
+    "claim": "Gør det til mit skrivebord",
+    "move": "Flyt mit skrivebord hertil",
     "notNow": "Ikke nu",
     "claimed": "Det er dit skrivebord nu",
     "hint": "Vælg et skrivebord og sæt dig. Det kan blive dit."

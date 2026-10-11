@@ -723,12 +723,8 @@
     "keep": "Tieni"
   },
   "desk": {
-    "claimTitle": "Vuoi che sia la tua scrivania?",
-    "claimBody": "Arriverai qui ogni volta, e tiene il tuo nome mentre sei via.",
-    "claim": "È mia",
-    "moveTitle": "Spostare qui la tua scrivania?",
-    "moveBody": "La tua vecchia scrivania si libera per qualcun altro.",
-    "move": "Sposta qui",
+    "claim": "La mia scrivania",
+    "move": "Sposta qui la mia scrivania",
     "notNow": "Non ora",
     "claimed": "Ora questa è la tua scrivania",
     "hint": "Scegli una scrivania e siediti. Può diventare tua."

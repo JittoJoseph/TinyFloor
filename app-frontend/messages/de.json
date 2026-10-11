@@ -723,12 +723,8 @@
     "keep": "Behalten"
   },
   "desk": {
-    "claimTitle": "Soll das dein Schreibtisch werden?",
-    "claimBody": "Du kommst jedes Mal hier an, und er trägt deinen Namen, während du weg bist.",
-    "claim": "Gehört mir",
-    "moveTitle": "Schreibtisch hierher verlegen?",
-    "moveBody": "Dein alter Schreibtisch wird für jemand anderen frei.",
-    "move": "Hierher verlegen",
+    "claim": "Mein Schreibtisch",
+    "move": "Schreibtisch hierher",
     "notNow": "Nicht jetzt",
     "claimed": "Das ist jetzt dein Schreibtisch",
     "hint": "Such dir einen Schreibtisch und setz dich. Er kann deiner werden."

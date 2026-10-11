@@ -723,12 +723,8 @@
     "keep": "Houden"
   },
   "desk": {
-    "claimTitle": "Wordt dit jouw bureau?",
-    "claimBody": "Je komt hier elke keer aan, en je naam blijft erop staan als je weg bent.",
-    "claim": "Is van mij",
-    "moveTitle": "Je bureau hierheen verhuizen?",
-    "moveBody": "Je oude bureau komt vrij voor iemand anders.",
-    "move": "Hierheen",
+    "claim": "Maak dit mijn bureau",
+    "move": "Verhuis mijn bureau hierheen",
     "notNow": "Niet nu",
     "claimed": "Dit is nu jouw bureau",
     "hint": "Kies een bureau en ga zitten. Het kan van jou worden."

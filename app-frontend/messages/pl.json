@@ -723,12 +723,8 @@
     "keep": "Zostaw"
   },
   "desk": {
-    "claimTitle": "Czy to ma być Twoje biurko?",
-    "claimBody": "Za każdym razem przyjdziesz tutaj, a biurko zachowa Twoje imię, gdy Cię nie ma.",
-    "claim": "Moje",
-    "moveTitle": "Przenieść tu swoje biurko?",
-    "moveBody": "Twoje stare biurko zwolni się dla kogoś innego.",
-    "move": "Przenieś tutaj",
+    "claim": "To moje biurko",
+    "move": "Przenieś tu moje biurko",
     "notNow": "Nie teraz",
     "claimed": "To teraz Twoje biurko",
     "hint": "Wybierz biurko i usiądź. Może być Twoje."

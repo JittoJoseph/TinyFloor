@@ -27,9 +27,9 @@ const enter = (reduce: boolean | null) => ({
 
 /**
  * Sitting down at a free desk offers it (docs/26): the moment someone has
- * already chosen a spot is the moment to make it theirs. One press, and from
- * then on they arrive sitting there. Someone with a desk elsewhere is offered
- * the move instead. Once it's theirs, it says so, briefly.
+ * already chosen a spot is the moment to make it theirs. One small pill, one
+ * press, and from then on they arrive sitting there; with a desk elsewhere it
+ * offers the move. Once it's theirs, it says so, briefly.
  */
 export function DeskOffer() {
   const t = useTranslations("desk");
@@ -55,50 +55,39 @@ export function DeskOffer() {
     <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex justify-center px-3 sm:bottom-24">
       <AnimatePresence mode="wait">
         {offering && seat !== null ? (
+          // One pill: the action, and a way past it. The desk and the chair you're on say the rest.
           <motion.div
             key="offer"
             {...enter(reduce)}
-            role="dialog"
-            aria-label={mine ? t("moveTitle") : t("claimTitle")}
-            className="pointer-events-auto flex w-full max-w-[25rem] items-center gap-3 rounded-2xl border border-border bg-card/95 p-3 ps-3.5 shadow-float backdrop-blur-md"
+            className="pointer-events-auto flex items-center gap-1 rounded-full border border-border bg-card/95 p-1 shadow-float backdrop-blur-md"
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground">
-              <Desk className="size-5" />
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block text-[13.5px] font-semibold leading-tight text-foreground">
-                {mine ? t("moveTitle") : t("claimTitle")}
-              </span>
-              <span className="mt-0.5 block text-[12px] leading-snug text-muted-foreground">{mine ? t("moveBody") : t("claimBody")}</span>
-            </span>
-            <span className="flex shrink-0 items-center gap-1">
-              <button
-                type="button"
-                onClick={() => {
-                  setAsked(seat);
-                  claimDesk(seat);
-                }}
-                className="h-9 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85"
-              >
-                {mine ? t("move") : t("claim")}
-              </button>
-              <button
-                type="button"
-                aria-label={t("notNow")}
-                title={t("notNow")}
-                onClick={() => setNotNow(seat)}
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <X className="size-4" />
-              </button>
-            </span>
+            <button
+              type="button"
+              onClick={() => {
+                setAsked(seat);
+                claimDesk(seat);
+              }}
+              className="flex h-9 cursor-pointer items-center gap-2 rounded-full bg-foreground ps-3 pe-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+            >
+              <Desk className="size-4" />
+              {mine ? t("move") : t("claim")}
+            </button>
+            <button
+              type="button"
+              aria-label={t("notNow")}
+              title={t("notNow")}
+              onClick={() => setNotNow(seat)}
+              className="flex size-9 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="size-4" />
+            </button>
           </motion.div>
         ) : done ? (
           <motion.div
             key="done"
             {...enter(reduce)}
             role="status"
-            className="flex items-center gap-2 rounded-full border border-border bg-card/95 px-3.5 py-2 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md"
+            className="flex h-11 items-center gap-2 rounded-full border border-border bg-card/95 px-4 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md"
           >
             <Check className="size-4 text-ok" />
             {t("claimed")}

@@ -723,12 +723,8 @@
     "keep": "Keep"
   },
   "desk": {
-    "claimTitle": "Make this your desk?",
-    "claimBody": "You'll arrive here every time, and it keeps your name while you're away.",
-    "claim": "Make it mine",
-    "moveTitle": "Move your desk here?",
-    "moveBody": "Your old desk becomes free for someone else.",
-    "move": "Move here",
+    "claim": "Make this my desk",
+    "move": "Move my desk here",
     "notNow": "Not now",
     "claimed": "This is your desk now",
     "hint": "Pick a desk and sit down. It can be yours."

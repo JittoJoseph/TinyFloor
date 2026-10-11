@@ -723,12 +723,8 @@
     "keep": "Behold"
   },
   "desk": {
-    "claimTitle": "Skal dette være pulten din?",
-    "claimBody": "Du kommer hit hver gang, og den beholder navnet ditt mens du er borte.",
-    "claim": "Den er min",
-    "moveTitle": "Flytte pulten din hit?",
-    "moveBody": "Den gamle pulten din blir ledig for noen andre.",
-    "move": "Flytt hit",
+    "claim": "Gjør den til min pult",
+    "move": "Flytt pulten min hit",
     "notNow": "Ikke nå",
     "claimed": "Dette er pulten din nå",
     "hint": "Velg en pult og sett deg. Den kan bli din."

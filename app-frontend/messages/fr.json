@@ -723,12 +723,8 @@
     "keep": "Garder"
   },
   "desk": {
-    "claimTitle": "En faire votre bureau ?",
-    "claimBody": "Vous arriverez ici à chaque fois, et il garde votre nom pendant votre absence.",
-    "claim": "C'est le mien",
-    "moveTitle": "Déplacer votre bureau ici ?",
-    "moveBody": "Votre ancien bureau se libère pour quelqu'un d'autre.",
-    "move": "Déplacer ici",
+    "claim": "En faire mon bureau",
+    "move": "Déplacer mon bureau ici",
     "notNow": "Pas maintenant",
     "claimed": "C'est votre bureau maintenant",
     "hint": "Choisissez un bureau et asseyez-vous. Il peut devenir le vôtre."

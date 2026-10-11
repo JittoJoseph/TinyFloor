@@ -64,7 +64,9 @@ export function MemberRow({
           {name}
           {isMe && <span className="font-normal text-muted-foreground"> · {t("youLower")}</span>}
         </p>
-        <p className="truncate text-[12.5px] text-muted-foreground">{detail || t("guest")}</p>
+        <p data-ph-mask className="truncate text-[12.5px] text-muted-foreground">
+          {detail || t("guest")}
+        </p>
       </div>
 
       <span className="hidden w-36 shrink-0 items-center gap-2 text-[12.5px] sm:flex">

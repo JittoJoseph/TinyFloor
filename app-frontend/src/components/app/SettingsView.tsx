@@ -155,7 +155,7 @@ function subscribeHash(listener: () => void) {
 }
 
 /** A group of settings on one card, the way every settings page reads. */
-export function Group({ title, note, action, children }: { title: string; note?: string; action?: ReactNode; children: ReactNode }) {
+export function Group({ title, note, action, children }: { title: string; note?: ReactNode; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="mb-8">
       <div className="flex items-end justify-between gap-3">

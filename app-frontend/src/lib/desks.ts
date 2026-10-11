@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import type { ClientMessage, Desk } from "@shared/messages";
+import { track } from "@/lib/analytics";
 
 /**
  * The office's desks (docs/product.md), in one place for the floor and the page
@@ -53,4 +54,7 @@ export function attachDesks(sender: ((message: ClientMessage) => void) | null) {
 }
 
 /** Asks the room to make this desk yours (any other goes); the answer comes back as the desks. */
-export const claimDesk = (seat: number) => send?.({ t: "desk_claim", seat });
+export function claimDesk(seat: number) {
+  send?.({ t: "desk_claim", seat });
+  track("desk_claimed");
+}

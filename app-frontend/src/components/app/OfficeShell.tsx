@@ -26,6 +26,7 @@ import { FloorNudges } from "./FloorNudges";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
+import { withPostHog } from "@/lib/analytics";
 
 interface OfficeContext {
   office: Office;
@@ -107,6 +108,14 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     if (!office?.name) return;
     document.title = `${waiting ? `(${waiting}) ` : ""}${office.name} · TinyFloor`;
   }, [office?.name, waiting, pathname]);
+
+  // Everything done in here carries which office it was, and its plan, so
+  // analytics can ask about teams, not only people (docs/analytics.md).
+  useEffect(() => {
+    if (!office?.id) return;
+    withPostHog((posthog) => posthog.register({ place: "office", office_id: office.id, office_plan: office.plan }));
+    return () => withPostHog((posthog) => ["place", "office_id", "office_plan"].forEach((key) => posthog.unregister(key)));
+  }, [office?.id, office?.plan]);
 
   // Opening the app again brings you back here.
   useEffect(() => {

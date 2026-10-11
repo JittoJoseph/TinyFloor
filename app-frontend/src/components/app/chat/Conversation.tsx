@@ -324,7 +324,7 @@ function Message({
           </form>
         ) : (
           line.body && (
-            <p dir="auto" className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
+            <p dir="auto" data-ph-mask className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
               {line.body}
               {line.edited && <span className="ms-1.5 text-[11px] text-faint">({t("edited")})</span>}
             </p>
@@ -337,7 +337,7 @@ function Message({
             alt=""
             width={line.image.width}
             height={line.image.height}
-            className="mt-1.5 h-auto max-w-[min(22rem,100%)] rounded-xl border border-border"
+            className="ph-no-capture mt-1.5 h-auto max-w-[min(22rem,100%)] rounded-xl border border-border"
           />
         )}
 

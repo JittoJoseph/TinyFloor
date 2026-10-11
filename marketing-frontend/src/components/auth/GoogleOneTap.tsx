@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useLocale } from "next-intl";
 import { appHref } from "@/lib/site";
 import { api } from "@/lib/api";
+import { analyticsConfigured, withPostHog } from "@/lib/analytics";
 import { hasAccountHint, rememberAccount } from "@/lib/accountHint";
 import { CLIENT_ID, loadGoogle } from "@/components/auth/GoogleButton";
 
@@ -38,10 +39,22 @@ export function GoogleOneTap() {
             callback: ({ credential }) => {
               if (!credential) return;
               api.signInWithGoogle({ credential }).then(
-                () => {
+                ({ created }) => {
                   rememberAccount(true);
-                  // Signed in on the app's cookie too (.tinyfloor.com): on to your office there.
-                  window.location.assign(appHref(locale, "/"));
+                  // Signed in on the app's cookie too (.tinyfloor.com): on to your office there,
+                  // once the sign-up or sign-in is on its way to PostHog (or not long after).
+                  let gone = false;
+                  const go = () => {
+                    if (gone) return;
+                    gone = true;
+                    window.location.assign(appHref(locale, "/"));
+                  };
+                  const event = created ? "account_signed_up" : "account_signed_in";
+                  withPostHog((posthog) => {
+                    posthog.capture(event, { sign_in_method: "google_one_tap" }, { send_instantly: true, transport: "sendBeacon" });
+                    go();
+                  });
+                  setTimeout(go, analyticsConfigured ? 800 : 0);
                 },
                 // The button on the sign-in page still works; One Tap simply didn't this time.
                 () => {},

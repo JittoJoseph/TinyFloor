@@ -1,6 +1,7 @@
 "use client";
 
 import { api } from "@/lib/api";
+import { track } from "@/lib/analytics";
 
 /**
  * Paying for a plan: Creem's checkout over the page, loaded only when someone
@@ -13,10 +14,13 @@ const CHECKOUT_LOCALES: Record<string, string> = { no: "nb", zh: "zh-CN" };
 
 /**
  * Opens Creem's checkout over the page for a checkout the API made.
- * Resolves true once it's paid for, false if it was closed first.
+ * Resolves true once it's paid for, false if it was closed first. `from` is
+ * where it was opened (making an office, the upgrade dialog, billing), for
+ * knowing which of them sells.
  */
-export async function openCheckout(options: { url: string; locale: string; dark: boolean }): Promise<boolean> {
+export async function openCheckout(options: { url: string; locale: string; dark: boolean; from: string }): Promise<boolean> {
   const { openCheckout: open } = await import("@creem_io/embed");
+  track("checkout_opened", { from: options.from });
   return new Promise((resolve) => {
     let settled = false;
     const handle = open({
@@ -26,6 +30,7 @@ export async function openCheckout(options: { url: string; locale: string; dark:
       onComplete: () => {
         if (settled) return;
         settled = true;
+        track("plan_bought", { from: options.from });
         resolve(true);
         // Long enough to see it went through, then back to the page (closing
         // also stops Creem's own redirect).

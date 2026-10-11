@@ -138,15 +138,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return next;
       },
       signInWithGoogle: async (from) => {
-        const { user: next } = await api.signInWithGoogle(from);
+        const { user: next, created } = await api.signInWithGoogle(from);
         setUser(next);
-        withPostHog((posthog) => posthog.capture("account_signed_in", { sign_in_method: "google" }));
+        // Most accounts are made this way, so a new one counts as a sign-up, not a sign-in.
+        withPostHog((posthog) => posthog.capture(created ? "account_signed_up" : "account_signed_in", { sign_in_method: "google" }));
         return next;
       },
       signUp: async (details) => {
         const { user: next } = await api.signUp(details);
         setUser(next);
-        withPostHog((posthog) => posthog.capture("account_signed_up"));
+        withPostHog((posthog) => posthog.capture("account_signed_up", { sign_in_method: "password" }));
         return next;
       },
       continueAsGuest: async (details) => {

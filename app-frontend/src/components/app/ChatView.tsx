@@ -689,7 +689,11 @@ function PersonCard({
             .filter(Boolean)
             .join(" · ")}
         </p>
-        {detail && <p className="mt-0.5 truncate text-[12.5px] text-muted-foreground">{detail}</p>}
+        {detail && (
+          <p data-ph-mask className="mt-0.5 truncate text-[12.5px] text-muted-foreground">
+            {detail}
+          </p>
+        )}
         <ProfileLink id={id} />
       </MenuHeader>
       {!isMe && onMessage && (

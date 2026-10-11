@@ -12,6 +12,7 @@ logs here: when a finding changes, change the doc that holds it.
 | [pricing.md](pricing.md) | Why Free for 3 and one $29 plan: who buys, what others charge, the trial, fair use, and how the price is said |
 | [billing.md](billing.md) | Who takes the money (Creem, as an individual in India), why not Paddle, Creem's quirks, and the Indian tax side |
 | [product.md](product.md) | What keeps a team on the floor, what we deliberately don't build, and small product decisions worth remembering |
+| [analytics.md](analytics.md) | What we measure in PostHog and why, what recordings hide, and how test traffic is kept out |
 | [search.md](search.md) | What search engines and AI assistants actually did with us, and the rules for comparison pages |
 | [sites.md](sites.md) | The site and the app as two Workers: links that must keep working, and the build gotchas |
 | [research/gather.md](research/gather.md) | Gather, used properly for a day: what makes it usable by a team |

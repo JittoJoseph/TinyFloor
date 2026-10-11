@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import type { PlayerStatus } from "@/lib/types";
+import { track } from "@/lib/analytics";
 
 export interface FloorPerson {
   id: string;
@@ -37,6 +38,7 @@ export const WAVE_EVENT = "waveAt";
 
 export function waveAt(id: string) {
   window.dispatchEvent(new CustomEvent(WAVE_EVENT, { detail: { id } }));
+  track("wave_sent");
 }
 
 /** Asks the floor to walk you over to someone (see GameScene). */

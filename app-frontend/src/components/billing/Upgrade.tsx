@@ -59,12 +59,16 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const officeId = office?.id;
   const admin = office?.role === "admin";
 
-  const change = usePlanChange(officeId, async (next) => {
-    if (next) setBilling(next);
-    else if (officeId) setBilling(await api.billing(officeId).catch(() => null));
-    await context?.refresh();
-    setDone(true);
-  });
+  const change = usePlanChange(
+    officeId,
+    async (next) => {
+      if (next) setBilling(next);
+      else if (officeId) setBilling(await api.billing(officeId).catch(() => null));
+      await context?.refresh();
+      setDone(true);
+    },
+    `upgrade:${reason ?? "menu"}`,
+  );
 
   useEffect(() => {
     if (!reason || !officeId || !admin) return;

@@ -80,7 +80,9 @@ export function YouMenu({
           <Face seed={user.id} size={40} />
           <div className="min-w-0">
             <p className="truncate text-[14px] font-medium text-foreground">{user.displayName}</p>
-            <p className="truncate text-[12px] text-muted-foreground">{user.email ?? t("guest")}</p>
+            <p data-ph-mask className="truncate text-[12px] text-muted-foreground">
+              {user.email ?? t("guest")}
+            </p>
           </div>
         </div>
       </MenuHeader>

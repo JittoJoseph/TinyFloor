@@ -46,15 +46,19 @@ export function PlanSection() {
     if (found) setDetails(found);
   }, [officeId]);
 
-  const change = usePlanChange(officeId, async (next) => {
-    if (next) setBilling(next);
-    else if (officeId) {
-      const found = await api.billing(officeId).catch(() => null);
-      if (found) setBilling(found);
-    }
-    setAsking(null);
-    await Promise.all([context?.refresh(), reloadDetails()]);
-  });
+  const change = usePlanChange(
+    officeId,
+    async (next) => {
+      if (next) setBilling(next);
+      else if (officeId) {
+        const found = await api.billing(officeId).catch(() => null);
+        if (found) setBilling(found);
+      }
+      setAsking(null);
+      await Promise.all([context?.refresh(), reloadDetails()]);
+    },
+    "billing",
+  );
 
   useEffect(() => {
     if (!officeId || !admin || !on) return;

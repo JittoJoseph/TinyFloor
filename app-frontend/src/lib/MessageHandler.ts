@@ -12,6 +12,7 @@ import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { myStatus, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { track } from "@/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -143,6 +144,8 @@ export class MessageHandler {
     // down (docs/product.md). Back after a dropped connection, to the chair you were on.
     if (this.arrived) return this.seats.resit();
     this.arrived = true;
+    // Who shows up, and with how many already there: whether a team is on the floor together.
+    track("floor_entered", { people_here: players.length });
     this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
     const desk = deskOf(deskState().desks, this.playerId);
     if (desk) this.seats.walkToDesk(desk.seat);

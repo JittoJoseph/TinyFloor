@@ -31,7 +31,7 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
       const body = message.image ? "📷" : message.body;
       showToast({
         title: where ? `${message.authorName} · ${where}` : message.authorName,
-        description: body.length > 140 ? `${body.slice(0, 140)}…` : body,
+        description: <span data-ph-mask>{body.length > 140 ? `${body.slice(0, 140)}…` : body}</span>,
         icon: <Face seed={message.author} size={32} />,
         action: { label: t("reply"), onClick: () => open(message.channel) },
       });

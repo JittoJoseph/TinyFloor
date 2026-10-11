@@ -12,8 +12,9 @@ type Paid = Exclude<PlanId, "free">;
  * upgrade dialog alike: buying (Creem's checkout over the page), cancelling
  * and keeping a plan, and Creem's portal for the card and invoices.
  * The plan itself only changes when the API says so; `onChanged` hears it.
+ * `from` says where a checkout was opened, in analytics.
  */
-export function usePlanChange(officeId: string | undefined, onChanged: (billing?: OfficeBilling) => Promise<void> | void) {
+export function usePlanChange(officeId: string | undefined, onChanged: (billing?: OfficeBilling) => Promise<void> | void, from: string) {
   const t = useTranslations("billing");
   const locale = useLocale();
   const [busy, setBusy] = useState<string | null>(null);
@@ -53,7 +54,7 @@ export function usePlanChange(officeId: string | undefined, onChanged: (billing?
       run(plan, async (office) => {
         const { checkoutId, url } = await api.checkout(office, plan);
         before?.();
-        const paid = await openCheckout({ url, locale, dark: dark() });
+        const paid = await openCheckout({ url, locale, dark: dark(), from });
         if (!paid) throw new Cancelled();
         setWaiting("now");
         const landed = await waitForPlan(office, checkoutId, (now) => now === plan);

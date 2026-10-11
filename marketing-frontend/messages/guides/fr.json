@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Gratuit pour 3 personnes · 29 $ par mois pour toute l'équipe",
-            "body": "Un bureau en pixel art dans le navigateur, sur ordinateur et mobile. Approchez-vous d'un collègue pour lancer un appel vidéo, asseyez-vous à une table pour vous réunir, avec des canaux de chat, le partage d'écran et un tableau blanc. Un seul prix pour tout le bureau, pas par personne. Il n'a ni enregistrements, ni notes par IA, ni éditeur de plan, et un bureau accueille 25 personnes au maximum."
+            "body": "Un bureau en pixel art dans le navigateur, sur ordinateur et mobile. Approchez-vous d'un collègue pour lancer un appel vidéo, asseyez-vous à une table pour vous réunir, avec des canaux de chat, le partage d'écran et un tableau blanc. Un seul prix pour tout le bureau, pas par personne. Il n'a ni enregistrements, ni notes IA, ni éditeur de carte, et les bureaux sont faits pour de petites équipes jusqu'à 15 personnes."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Où se situe TinyFloor",
-      "body": "TinyFloor est le simple et abordable : un bureau dans le navigateur où l'on s'approche pour parler, avec une salle de réunion, un chat et le partage d'écran, pour un seul prix par bureau. Il s'adresse aux équipes de 2 à 25 personnes qui veulent un bureau ouvert toute la journée. Si vous avez besoin d'enregistrements, de notes par IA ou d'un plan que vous concevez, Gather ou SoWork Premium vous conviendront mieux. TinyFloor est gratuit jusqu'à 3 personnes, vous pouvez donc d'abord l'essayer avec votre équipe."
+      "body": "TinyFloor est le simple et abordable : un bureau dans le navigateur où l'on s'approche pour parler, avec une salle de réunion, un chat et le partage d'écran, pour un seul prix par bureau. Il est fait pour les petites équipes qui veulent un bureau ouvert toute la journée. Si vous avez besoin d'enregistrements, de notes par IA ou d'un plan que vous concevez, Gather ou SoWork Premium vous conviendront mieux. TinyFloor est gratuit jusqu'à 3 personnes, vous pouvez donc d'abord l'essayer avec votre équipe."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 personnes",
-              "300 $",
-              "$29",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "D'après la page de tarifs de chaque produit en octobre 2026, hors taxes. L'offre gratuite de SoWork couvre aussi jusqu'à 10 membres, avec des réunions limitées à 30 minutes, et celle de WorkAdventure jusqu'à 10 personnes en même temps."

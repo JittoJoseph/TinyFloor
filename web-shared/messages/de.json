@@ -34,7 +34,7 @@
     "signIn": "Anmelden",
     "account": "Konto",
     "createOffice": "Büro erstellen",
-    "plansSoon": "Größeres Team? Pläne mit mehr Plätzen kommen bald."
+    "plansSoon": "Pro, für dein ganzes Team, kommt bald."
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -90,7 +90,8 @@
     "leave": "Verlassen",
     "trialLeft": "{plan}-Test · noch {count, plural, one {# Tag} other {# Tage}}",
     "choosePlan": "Tarif wählen",
-    "upgrade": "Upgraden"
+    "upgrade": "Upgraden",
+    "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}"
   },
   "home": {
     "nav": {

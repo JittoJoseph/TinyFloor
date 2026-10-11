@@ -23,7 +23,7 @@
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
-        "a": "Tak, dla biura do 3 osób, z 5 godzinami spotkań miesięcznie. Potem Pro kosztuje $29 miesięcznie za cały zespół, nie za osobę."
+        "a": "Tak, dla biura do 3 osób, wszystko w cenie. Potem Pro kosztuje $29 miesięcznie za cały zespół, nie za osobę."
       },
       {
         "q": "Czy muszę coś instalować?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Ile osób zmieści się w biurze TinyFloor?",
-            "a": "Do 3 osób na Free i do 25 na Pro, a biur możesz utworzyć tyle, ile potrzebujesz."
+            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "Czy TinyFloor nadaje się do wydarzeń online?",
-            "a": "TinyFloor powstał dla zespołów, które pracują razem na co dzień. Biuro mieści do 25 osób, więc lepiej sprawdza się w małych zespołach niż na dużych wydarzeniach."
+            "a": "TinyFloor jest stworzony dla małych zespołów, które pracują razem każdego dnia, do 15 osób w biurze, bardziej niż dla dużych wydarzeń."
           },
           {
             "q": "Co ma SpatialChat, czego nie ma TinyFloor?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "Alternatywa dla WorkAdventure",
         "meta": {
-          "title": "Alternatywa dla WorkAdventure dla zespołów do 25 osób",
+          "title": "Alternatywa dla WorkAdventure dla małych zespołów",
           "description": "Darmowy plan WorkAdventure pozwala na 10 osób naraz. TinyFloor to wirtualne biuro w pixel arcie z rozmowami wideo na podstawie bliskości, za darmo dla 3 osób i za $29 miesięcznie za cały zespół."
         },
         "title": "<em>Alternatywa dla WorkAdventure</em> z miejscem na rozwój.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Dwa razy więcej miejsca",
-            "body": "Darmowa mapa WorkAdventure mieści 10 osób jednocześnie. Biuro TinyFloor mieści do 25 członków, a biur możesz otworzyć, ile chcesz."
+            "body": "Darmowa mapa WorkAdventure mieści 10 osób naraz. Biuro TinyFloor jest stworzone dla małego zespołu, który pracuje razem cały dzień, a biur możesz otworzyć tyle, ile chcesz."
           },
           {
             "title": "Bez budowania mapy",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Ile osób może dołączyć?",
-            "a": "Do 3 osób na Free i do 25 na Pro, a biur możesz utworzyć tyle, ile potrzebujesz."
+            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
           },
           {
             "q": "Czy TinyFloor jest darmowy?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "Ile osób może korzystać z jednego biura?",
-            "a": "Do 3 osób na Free i do 25 na Pro. Większa firma może utworzyć biuro dla każdego zespołu."
+            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Większa firma może utworzyć biuro dla każdego zespołu."
           },
           {
             "q": "Czy to zastępuje rozmowy wideo?",
@@ -471,10 +471,10 @@
           "description": "oVice pobiera opłaty za przestrzeń albo od 20 użytkowników. TinyFloor to wirtualne biuro w przeglądarce dla małych zespołów: za darmo dla 3 osób, potem $29 miesięcznie za cały zespół."
         },
         "title": "<em>Alternatywa dla oVice</em> na miarę małych zespołów.",
-        "subtitle": "oVice powstał dla firm i społeczności, z planami według wielkości przestrzeni lub od 20 użytkowników. TinyFloor jest dla zespołów od 2 do 25 osób, z jedną prostą ceną za biuro.",
+        "subtitle": "oVice jest stworzony dla firm i społeczności, z planami według wielkości przestrzeni albo od 20 użytkowników. TinyFloor jest stworzony dla małych zespołów, z jedną prostą ceną za biuro.",
         "points": [
           {
-            "title": "Ceny dla 3, 10 lub 25 osób",
+            "title": "Jedna cena za biuro",
             "body": "Za darmo do 3 osób, potem $29 miesięcznie za cały zespół. Bez rozmiarów przestrzeni do liczenia."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "Ile osób zmieści się w biurze TinyFloor?",
-            "a": "Do 3 osób na Free i do 25 na Pro, a biur możesz utworzyć tyle, ile potrzebujesz."
+            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Co jest lepsze dla małego zespołu?",
-            "a": "Darmowy plan Kumospace pasuje do 5 osób, a Gather do zespołów, które chcą więcej personalizacji. Jeśli chcesz jednej prostej ceny dla zespołu do 25 osób, TinyFloor powstał właśnie po to."
+            "a": "Darmowy plan Kumospace pasuje do 5 osób, a Gather do zespołów, które chcą więcej dostosowywać. Jeśli chcesz jednej prostej ceny dla małego zespołu, TinyFloor jest do tego stworzony."
           },
           {
             "q": "Czy Gather i Kumospace działają w przeglądarce?",
@@ -845,8 +845,8 @@
             "a": "Wybierz godzinę, spotykajcie się codziennie w tym samym miejscu i mówcie krótko. W TinyFloor główne spotkanie jest zawsze na miejscu: wszyscy wchodzą o czasie i wychodzą po zakończeniu."
           },
           {
-            "q": "Ile godzin spotkań zużywa codzienny stand-up?",
-            "a": "15-minutowy standup w każdy dzień roboczy to około 5 godzin miesięcznie. Free obejmuje 5 godzin spotkań grupowych miesięcznie, a Pro 60."
+            "q": "Czy codzienny standup kosztuje dodatkowo?",
+            "a": "Nie. Spotkania są w każdym planie, bez niczego do liczenia. 15-minutowy standup w każdy dzień roboczy to około 5 godzin miesięcznie."
           },
           {
             "q": "Czy możemy robić stand-upy asynchronicznie?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Czy nowa osoba zajmuje miejsce w planie?",
-            "a": "Tak, wszyscy w biurze są członkami. Pro ma miejsce dla całego zespołu, do 25 osób."
+            "a": "Tak, wszyscy w biurze są członkami. Pro ma miejsce dla całego zespołu."
           },
           {
             "q": "Czy nowi mogą nadrobić czat?",
@@ -963,8 +963,8 @@
             "a": "To luźne rozmowy, których zespołowi zdalnemu brakuje z biura: spotkać kogoś i pogadać o czymkolwiek. W TinyFloor dzieje się to na piętrze, a nie w zaplanowanej rozmowie."
           },
           {
-            "q": "Czy takie pogawędki zużywają godziny spotkań?",
-            "a": "Rozmowy we dwoje nigdy się nie liczą. Do miesięcznych godzin wliczają się tylko spotkania grupowe."
+            "q": "Czy rozmowy przy ekspresie do czegoś się liczą?",
+            "a": "Nie. Rozmowy dwóch osób nigdy się nie liczą, a spotkania są w każdym planie."
           },
           {
             "q": "Czy możemy słuchać muzyki razem?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Jak duży może być zespół inżynierski?",
-            "a": "Do 25 osób w jednym biurze w planie Pro. Większe organizacje mogą dać każdemu zespołowi własne biuro."
+            "a": "Pro jest stworzony dla małego zespołu, do 15 osób w jednym biurze. Większe organizacje dają każdemu zespołowi własne biuro."
           },
           {
             "q": "Czy możemy zostać przy Slacku?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 osoby",
             "title": "Free",
-            "body": "Założyciele dzielą piętro za darmo, z 5 godzinami spotkań miesięcznie."
+            "body": "Założyciele dzielą piętro za darmo, wszystko w cenie."
           },
           {
             "label": "4. osoba",
@@ -1131,7 +1131,7 @@
           {
             "label": "Cały zespół",
             "title": "Pro",
-            "body": "$29 miesięcznie za całe biuro, z 60 godzinami spotkań."
+            "body": "$29 miesięcznie za całe biuro, ze spotkaniami tak często, jak potrzebujecie."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Tak. Płatny plan działa do końca opłaconego okresu, potem biuro wraca na Free. Nic nie jest usuwane."
           },
           {
-            "q": "Co się stanie, gdy przekroczymy 25 osób?",
-            "a": "Biuro mieści do 25 osób. Daj każdemu zespołowi własne biuro."
+            "q": "Co się dzieje, gdy wyrośniemy z jednego biura?",
+            "a": "Biuro jest stworzone dla małego zespołu, do 15 osób. Gdy rośniecie, dajcie każdemu zespołowi własne biuro."
           },
           {
             "q": "Czy potrzebujemy konfiguracji IT?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Ile osób możemy mieć?",
-            "a": "Wszyscy, do 25 osób na Pro, za jedną miesięczną cenę za całe biuro."
+            "a": "Cały Twój zespół, do 15 osób na Pro, za jedną miesięczną cenę za całe biuro."
           },
           {
             "q": "Czy freelancerzy mogą dołączyć?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Ile osób może dołączyć do spotkania?",
-            "a": "Wszyscy w biurze: do 3 osób na Free i do 25 na Pro."
+            "a": "Wszyscy w biurze: do 3 osób na Free i cały zespół na Pro."
           },
           {
             "q": "Czy spotkania mają limit czasu?",
-            "a": "Bez limitu na spotkanie. Każdy plan obejmuje co miesiąc godziny spotkań grupowych: 5 na Free i 60 na Pro."
+            "a": "Nie. Spotkania są w każdym planie, bez licznika do pilnowania."
           },
           {
             "q": "Co się dzieje, gdy godziny się skończą?",
@@ -1599,8 +1599,8 @@
       "tax": "Ceny miesięczne, bez podatku.",
       "choose": "Wybierz {plan}",
       "note": "Rozmowy dwóch osób nigdy się nie liczą. Każda cena dotyczy całego biura, nie osoby.",
-      "perksPro": "Cały Twój zespół · {hours} godz. spotkań · pierwszeństwo w pomocy",
-      "perksFree": "Do {people} osób · {hours} godz. spotkań miesięcznie",
+      "perksPro": "Cały Twój zespół · spotkania tak często, jak potrzebujecie · pierwszeństwo w pomocy",
+      "perksFree": "Do {people} osób · wszystko w cenie",
       "daily": "Mniej niż {price} dziennie",
       "assurance": "Anuluj w dowolnej chwili · zwrot do 14 dni"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Cennik: jedna cena za całe biuro",
-      "description": "TinyFloor jest darmowy do 3 osób. Pro kosztuje $29 miesięcznie za cały zespół, z 60 godzinami spotkań i pierwszeństwem w pomocy. Cena za biuro, nie za osobę."
+      "description": "TinyFloor jest darmowy do 3 osób. Pro kosztuje $29 miesięcznie za cały zespół, ze spotkaniami tak często, jak potrzebujecie, i pierwszeństwem w pomocy. Cena za biuro, nie za osobę."
     },
     "title": "Jedna cena za całe biuro.",
     "muted": "Nie za każdą osobę.",
@@ -1638,12 +1638,11 @@
       "title": "Porównaj plany,",
       "muted": "obok siebie.",
       "people": "Osoby",
-      "hours": "Godziny spotkań miesięcznie",
-      "hoursNote": "Tylko spotkania grupowe",
       "calls": "Rozmowy we dwoje",
       "callsNote": "Nigdy nie są liczone",
       "support": "Pierwszeństwo w pomocy",
-      "wholeTeam": "Cały zespół"
+      "wholeTeam": "Cały zespół",
+      "meetings": "Spotkania grupowe"
     },
     "notes": {
       "title": "Warto wiedzieć.",
@@ -1659,13 +1658,13 @@
         "title": "Okres próbny, gdy przychodzi zespół",
         "body": "Gdy do darmowego biura dołącza 4. osoba, cały zespół dostaje Pro za darmo na 14 dni. Bez karty."
       },
-      "hours": {
-        "title": "Gdy skończą się godziny",
-        "body": "Spotkania trwają dalej tylko z dźwiękiem do 1. dnia miesiąca. Rozmowy we dwoje działają jak zwykle."
-      },
       "tax": {
         "title": "Podatek przy płatności",
         "body": "Ceny są w dolarach amerykańskich. Creem, nasz sprzedawca, dolicza VAT lub podatek od sprzedaży przy płatności."
+      },
+      "size": {
+        "title": "Stworzony dla małych zespołów",
+        "body": "Biuro jest dla zespołu, który pracuje razem każdego dnia, do 15 osób. Większa firma daje każdemu zespołowi własne biuro."
       }
     }
   },

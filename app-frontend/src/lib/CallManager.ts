@@ -79,6 +79,16 @@ export interface CallSnapshot {
   meeting: string | null;
   error: CallError | null;
   outcome: CallOutcome | null;
+  /** Your camera just went off by itself after a quiet stretch: said once, for a moment. */
+  cameraRested: boolean;
+}
+
+/** What one side of a call asks the other to send: how sharp, and whether to send video at all. */
+interface Wants {
+  camera: VideoQuality;
+  screen: VideoQuality;
+  /** Their tab is in the background: no video until it's back. */
+  paused?: boolean;
 }
 
 interface Signal {
@@ -86,7 +96,7 @@ interface Signal {
   candidate?: RTCIceCandidateInit;
   media?: { mic: boolean; camera: boolean; screen?: boolean };
   /** The quality the other side's cards can show, so we send no more than that. */
-  want?: Record<VideoKind, VideoQuality>;
+  want?: Partial<Wants>;
   /** The answerer's relay needs TCP or TLS: the offerer gathers again. */
   restart?: boolean;
 }
@@ -94,7 +104,7 @@ interface Signal {
 interface PeerEntry extends CallPeer {
   pc?: RTCPeerConnection;
   /** What they asked us for, and what we last asked them for. */
-  wants: Record<VideoKind, VideoQuality>;
+  wants: Wants;
   asked?: string;
   offerer?: boolean;
   /** The relay gave us a UDP address, so UDP isn't blocked on our side. */
@@ -110,7 +120,18 @@ export interface Focus {
   kind: VideoKind;
 }
 
-const LOW: Record<VideoKind, VideoQuality> = { camera: "low", screen: "low" };
+const LOW: Wants = { camera: "low", screen: "low" };
+
+/**
+ * Cameras rest after this long with nobody on the call or in the meeting
+ * talking (docs/24): working side by side in silence doesn't need video, and
+ * one press brings it back.
+ */
+const QUIET_REST_MS = 10 * 60_000;
+/** How often a call with a camera on listens for talk. */
+const LISTEN_EVERY_MS = 20_000;
+/** Sound energy over one listen that counts as talk: about a second of speech, well above a quiet room. */
+const TALK_ENERGY = 0.002;
 
 interface MeetingMember {
   id: string;
@@ -188,6 +209,7 @@ const EMPTY: CallSnapshot = {
   meeting: null,
   error: null,
   outcome: null,
+  cameraRested: false,
 };
 
 const MIC_ON = typeof window === "undefined" ? true : micPreference();
@@ -228,6 +250,15 @@ class CallManager {
   /** Who we are on this floor, to leave ourselves off the stage. */
   private selfId: string | null = null;
   private stageTimer?: ReturnType<typeof setTimeout>;
+  /** What the room was last told about our call on the floor (reportCall). */
+  private callReport = "";
+  /** When anyone on our call or in our meeting last talked, and the timer that listens (watchQuiet). */
+  private heardAt = 0;
+  private quietTimer?: ReturnType<typeof setInterval>;
+  /** Each call's sound energy so far, per stats report, to tell talk from silence. */
+  private energy = new Map<string, number>();
+  private cameraRested = false;
+  private restedTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
   /** What you pinned on the stage, if anything. */
   private pin: Pin | null = null;
@@ -263,8 +294,13 @@ class CallManager {
         this.shareQuality();
         this.refreshStage();
       });
-      // A tab in the background shows nothing, so it receives no video.
-      document.addEventListener("visibilitychange", () => this.refreshStage());
+      // A tab in the background shows nothing, so it receives no video: in a
+      // meeting the SFU stops sending it, on a call the other side pauses theirs.
+      document.addEventListener("visibilitychange", () => {
+        this.refreshStage();
+        this.shareQuality();
+        this.emit();
+      });
       // Voice settings reach the call that is already open, not only the next.
       onPrefsChange(() => {
         this.voiceChange = this.voiceChange.then(() => this.applyVoicePrefs());
@@ -273,6 +309,7 @@ class CallManager {
   }
 
   attach(ws: RoomSocket) {
+    this.callReport = "";
     this.ws = ws;
     void this.loadIceServers();
   }
@@ -621,12 +658,14 @@ class CallManager {
     const wanted = (id: string, kind: VideoKind): VideoQuality =>
       this.focus?.id === id && this.focus.kind === kind && !screenTooSmallForDetail() ? "high" : "low";
 
+    const paused = typeof document !== "undefined" && document.visibilityState === "hidden";
     this.peers.forEach((peer) => {
-      const want = {
+      const want: Wants = {
         camera: wanted(peer.id, "camera"),
         screen: wanted(peer.id, "screen"),
+        paused,
       };
-      const asked = `${want.camera}${want.screen}`;
+      const asked = `${want.camera}${want.screen}${paused}`;
       if (!peer.pc || peer.asked === asked) return;
       peer.asked = asked;
       this.send("signal", peer.id, { signal: { want } });
@@ -661,6 +700,7 @@ class CallManager {
   /** Your camera, on the call you are in: there is nothing to turn on outside one. */
   async setCamera(enabled: boolean) {
     if (!this.local) return;
+    if (enabled) this.clearRested();
     if (enabled && !this.local.getVideoTracks().length) {
       if (!(await this.addCamera())) return this.emit();
     } else if (!enabled && this.local) {
@@ -786,7 +826,7 @@ class CallManager {
       const kind = SLOT_KIND[slot];
       transceiver.sender
         .replaceTrack(tracks[slot] ?? null)
-        .then(() => kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]))
+        .then(() => kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind], !peer.wants.paused))
         .catch(() => {});
     });
   }
@@ -951,6 +991,7 @@ class CallManager {
         peer.wants = {
           camera: signal.want.camera ?? "low",
           screen: signal.want.screen ?? "low",
+          paused: !!signal.want.paused,
         };
         this.syncTracks(peer);
       } else if (signal.media) {
@@ -1120,7 +1161,81 @@ class CallManager {
     this.ws?.send({ t: "call", kind, to, ...(data ? { data } : {}) });
   }
 
+  /**
+   * Tells the room when we're in a call on the floor and whether video is
+   * coming to us in it, so what calls cost can be counted (docs/24). Sent only
+   * when that changes.
+   */
+  private reportCall() {
+    const peers = [...this.peers.values()];
+    const call = peers.some((peer) => peer.connected);
+    const shown = typeof document === "undefined" || document.visibilityState !== "hidden";
+    const video = call && shown && peers.some((peer) => peer.camera || peer.screen);
+    const report = `${call}${video}`;
+    if (report === this.callReport || !this.ws) return;
+    this.callReport = report;
+    this.ws.send({ t: "call_usage", call, video });
+  }
+
+  /** Listens for talk while a camera of ours is on in a call or meeting; stops when it isn't. */
+  private watchQuiet() {
+    const live = this.cameraEnabled && (this.peers.size > 0 || !!this.meeting);
+    if (live && !this.quietTimer) {
+      this.heardAt = Date.now();
+      this.quietTimer = setInterval(() => void this.checkQuiet(), LISTEN_EVERY_MS);
+    } else if (!live && this.quietTimer) {
+      clearInterval(this.quietTimer);
+      this.quietTimer = undefined;
+      this.energy.clear();
+    }
+  }
+
+  private async checkQuiet() {
+    const now = Date.now();
+    if (await this.heardTalk(now)) this.heardAt = now;
+    if (!this.cameraEnabled || now - this.heardAt < QUIET_REST_MS) return;
+    await this.setCamera(false);
+    this.cameraRested = true;
+    clearTimeout(this.restedTimer);
+    this.restedTimer = setTimeout(() => this.clearRested(), 12_000);
+    this.emit();
+  }
+
+  private clearRested() {
+    clearTimeout(this.restedTimer);
+    if (!this.cameraRested) return;
+    this.cameraRested = false;
+    this.emit();
+  }
+
+  /**
+   * Whether anyone talked since we last listened: in a meeting the room says
+   * who spoke when; on a call, the sound that came in and went out.
+   */
+  private async heardTalk(now: number): Promise<boolean> {
+    if (this.meeting) {
+      const { meetings, spokeAt } = meetingsState();
+      const members = meetings.find((one) => one.id === this.meeting)?.members ?? [];
+      if (members.some((member) => member.speaking || now - (spokeAt.get(member.id) ?? 0) < LISTEN_EVERY_MS * 1.5)) return true;
+    }
+    let heard = false;
+    for (const peer of this.peers.values()) {
+      const stats = await peer.pc?.getStats().catch(() => null);
+      stats?.forEach((report: { id: string; type: string; kind?: string; totalAudioEnergy?: number }) => {
+        if (report.kind !== "audio" || typeof report.totalAudioEnergy !== "number") return;
+        if (report.type !== "inbound-rtp" && report.type !== "media-source") return;
+        const key = `${peer.id}:${report.id}`;
+        const before = this.energy.get(key);
+        this.energy.set(key, report.totalAudioEnergy);
+        if (before !== undefined && report.totalAudioEnergy - before > TALK_ENERGY) heard = true;
+      });
+    }
+    return heard;
+  }
+
   private emit() {
+    this.reportCall();
+    this.watchQuiet();
     const peers = [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined }));
     this.snap = {
       incoming: this.incoming,
@@ -1142,6 +1257,7 @@ class CallManager {
       meeting: this.meeting,
       error: this.error,
       outcome: this.outcome,
+      cameraRested: this.cameraRested,
     };
     this.listeners.forEach((listener) => listener());
   }

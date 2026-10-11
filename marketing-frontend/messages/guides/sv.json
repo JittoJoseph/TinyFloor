@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Gratis för 3 personer · $29 i månaden för hela teamet",
-            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Inga inspelningar, AI-anteckningar eller kartredigerare, och ett kontor rymmer högst 25 personer."
+            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Det har inga inspelningar, AI-anteckningar eller kartredigerare, och kontoren är gjorda för små team på upp till 15."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för team på 2 till 25 som vill ha ett kontor öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
+      "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för små team som vill ha ett kontor som är öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 personer",
-              "300 $",
-              "$29",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "Från varje produkts prissida i oktober 2026, utan moms. SoWorks gratisplan täcker också upp till 10 medlemmar, med möten på högst 30 minuter, och WorkAdventures upp till 10 personer samtidigt."

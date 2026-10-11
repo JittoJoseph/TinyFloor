@@ -94,8 +94,8 @@ describe("billing", () => {
     }>(null, "GET", "/v1/plans");
     expect(status).toBe(200);
     expect(body.plans.map((plan) => [plan.id, plan.seats, plan.meetingHours, plan.price])).toEqual([
-      ["free", 3, 5, null],
-      ["pro", 25, 60, 2900],
+      ["free", 3, 40, null],
+      ["pro", 15, 120, 2900],
     ]);
     expect(body.billing).toEqual({ mode: "test" });
   });
@@ -143,7 +143,7 @@ describe("billing", () => {
 
     const { status } = await deliver("subscription.active", subscription(officeId));
     expect(status).toBe(200);
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
 
     const billing = await call<{ subscription: Record<string, unknown>; meetingHours: number }>(
       ada,
@@ -151,9 +151,9 @@ describe("billing", () => {
       `/v1/offices/${officeId}/billing`,
     );
     expect(billing.body.subscription).toMatchObject({ plan: "pro", status: "active", renewsAt: Date.parse("2026-11-10T00:00:00Z") });
-    expect(billing.body.meetingHours).toBe(60);
+    expect(billing.body.meetingHours).toBe(120);
     // The room hears the plan's hours straight away, so a pause lifts without waiting for a new ticket.
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 60]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 120]);
   });
 
   it("takes the office from the checkout when the subscription doesn't carry it", async () => {
@@ -165,7 +165,7 @@ describe("billing", () => {
       metadata: { office_id: officeId, payer_id: ada.id },
       subscription: subscription(officeId, { metadata: {} }),
     });
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
   });
 
   it("shows the meeting hours the office has used this month", async () => {
@@ -180,7 +180,7 @@ describe("billing", () => {
     const now = new Date();
     const { body } = await call<{ meetingHours: number; usage: unknown }>(ada, "GET", `/v1/offices/${officeId}/billing`);
     expect(body).toMatchObject({
-      meetingHours: 5,
+      meetingHours: 40,
       usage: { seconds: 7200, resetsAt: Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1) },
     });
   });
@@ -211,7 +211,7 @@ describe("billing", () => {
     await deliver("subscription.update", newer, { eventId: "evt_same" });
     expect((await deliver("subscription.update", newer, { eventId: "evt_same" })).body).toMatchObject({ duplicate: true });
     await deliver("subscription.update", older);
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
   });
 
   it("keeps the plan while a card is retried, and goes back to free once it's cancelled", async () => {
@@ -219,7 +219,7 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     await deliver("subscription.active", subscription(officeId));
     await deliver("subscription.past_due", subscription(officeId, { status: "past_due" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
 
     await deliver("subscription.canceled", subscription(officeId, { status: "canceled" }));
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
@@ -235,7 +235,7 @@ describe("billing", () => {
     await deliver("subscription.expired", subscription(officeId, { status: "unpaid" }));
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
     await deliver("subscription.paid", subscription(officeId, { status: "active" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
   });
 
   it("doesn't let an old subscription ending take the plan from the current one", async () => {
@@ -244,7 +244,7 @@ describe("billing", () => {
     await deliver("subscription.active", subscription(officeId, { id: `old_${officeId}` }));
     await deliver("subscription.active", subscription(officeId, { id: `new_${officeId}` }));
     await deliver("subscription.canceled", subscription(officeId, { id: `old_${officeId}`, status: "canceled" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
   });
 
   it("won't sell a second plan to an office that has one", async () => {
@@ -294,7 +294,7 @@ describe("billing", () => {
       checkoutId: "ch_1abcdefgh",
     });
     expect(status).toBe(200);
-    expect(body).toMatchObject({ plan: "pro", seats: 25 });
+    expect(body).toMatchObject({ plan: "pro", seats: 15 });
   });
 
   it("won't sync a checkout that was for another office", async () => {
@@ -392,11 +392,11 @@ describe("billing", () => {
     const preview = await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${link.code}`);
     expect(preview.body.invite.full).toBe(false);
     expect((await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`)).status).toBe(200);
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
     const billing = await call<{ trial: { plan: string; endsAt: number } | null }>(ada, "GET", `/v1/offices/${officeId}/billing`);
     expect(billing.body.trial?.plan).toBe("pro");
     expect(billing.body.trial!.endsAt - Date.now()).toBeGreaterThan(13 * 86_400_000);
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 60]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 120]);
 
     // Over: back to free the moment the office is read, everyone still in it.
     await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?")
@@ -421,9 +421,9 @@ describe("billing", () => {
     await addMembers(officeId, 2);
     const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
     await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`);
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
     await deliver("subscription.active", subscription(officeId));
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
     const trial = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number }>();
     expect(trial?.trial_ends_at).toBe(0);
   });
@@ -441,7 +441,7 @@ describe("billing", () => {
   it("ends every trial that's over in the daily run", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25, trial_ends_at = ? WHERE id = ?")
+    await env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 15, trial_ends_at = ? WHERE id = ?")
       .bind(Date.now() - 1000, officeId)
       .run();
     const { endTrials } = await import("../src/billing");

@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Poista kaiuttimen mykistys",
     "settings": "Asetukset",
     "leaveCall": "Poistu puhelusta",
-    "leaveMeeting": "Poistu kokouksesta"
+    "leaveMeeting": "Poistu kokouksesta",
+    "cameraRested": "Kamera pois, kun on hiljaista"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Tämän toimiston paketti",
     "members": "{used}/{seats} jäsentä",
-    "freeNote": "{hours} kokoustuntia kuukaudessa.",
+    "freeNote": "Kaikki mukana, enintään {seats} hengelle.",
     "renews": "Uusiutuu {date}",
     "ends": "Päättyy {date}, sitten ilmainen paketti",
     "perMonth": "kuukaudessa",
@@ -639,9 +640,6 @@
     "cancelTitle": "Perutaanko paketti?",
     "moreSeats": "Hanki lisää paikkoja",
     "membersLabel": "Jäsenet",
-    "hoursLabel": "Kokoustunnit",
-    "hours": "{used}/{allowance} h",
-    "hoursResets": "Nollautuu {date}",
     "hoursUsedUp": "Tämän kuun kokoustunnit on käytetty: kokoukset ovat vain äänellä {date} asti.",
     "payment": "Maksu",
     "cardUnknown": "Kortti tallennettu Creemiin",
@@ -683,7 +681,7 @@
       "fullTitle": "Tuo kaikki sisään",
       "fullBody": "{office} on täynnä {seats} hengellä Freessä. Prolla jokainen kutsumasi pääsee heti sisään.",
       "hoursTitle": "Pidä video kokouksissa",
-      "hoursBody": "Pro antaa tiimillesi {hours} kokoustuntia kuukaudessa ja palauttaa videon heti.",
+      "hoursBody": "Pro palauttaa videon heti, ja tilaa on koko tiimillesi.",
       "trialTitle": "Pidä Pro tiimilläsi",
       "trialBody": "Kokeilusi päättyy {date}. Sen jälkeen toimistossa voi olla kerralla vain {free} henkeä.",
       "plansTitle": "Pro, koko tiimille",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Peru silti",
     "loseSeatsOver": "Jäseniä on {members}, mutta vain {free} voisi olla kerroksessa yhtä aikaa, eikä uusia voisi liittyä.",
     "loseSeats": "Tilaa {seats} hengen sijaan {free}.",
-    "loseHours": "Kokoustunnit putoavat {hours}:stä {free}:een kuukaudessa; sen jälkeen kokoukset ovat vain äänellä.",
     "loseNothing": "Ketään ei poisteta eikä mitään hävitetä.",
     "offer": {
       "trial": "Kokeilu",
@@ -707,13 +704,12 @@
       "daily": "Se on alle {price} päivässä.",
       "anchor": "Henkeä kohden hinnoitellut työkalut veloittaisivat samalta tiimiltä noin {price} kuukaudessa.",
       "wholeTeam": "Koko tiimisi, samassa kerroksessa",
-      "hours": "{hours} kokoustuntia kuukaudessa",
-      "hoursTimes": "{hours} kokoustuntia kuukaudessa, {times}× Free",
       "support": "Ensisijainen apu tiimiltämme",
       "everything": "Ja kaikki, mitä teillä jo on: HD-video, käytäväkeskustelut joita ei koskaan lasketa, chat, näytön jakaminen ja taulu.",
       "get": "Hanki Pro · {price} kuukaudessa",
       "keep": "Pidä Pro · {price} kuukaudessa",
-      "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä."
+      "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",
+      "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
     }
   }
 }

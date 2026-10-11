@@ -94,7 +94,7 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
     : reason === "full"
       ? [t("fullTitle"), t("fullBody", { office: office.name, seats: office.seats })]
       : reason === "hours"
-        ? [t("hoursTitle"), t("hoursBody", { hours: pro?.meetingHours ?? 60 })]
+        ? [t("hoursTitle"), t("hoursBody")]
         : reason === "trial" && trying && trialEndsAt
           ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: free?.seats ?? 3 })]
           : [t("plansTitle"), t("plansBody")];

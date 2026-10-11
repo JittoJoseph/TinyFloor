@@ -132,7 +132,8 @@
     "unmuteSpeaker": "스피커 음소거 해제",
     "settings": "설정",
     "leaveCall": "통화 나가기",
-    "leaveMeeting": "회의 나가기"
+    "leaveMeeting": "회의 나가기",
+    "cameraRested": "조용한 동안 카메라 꺼짐"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "이 오피스의 요금제",
     "members": "멤버 {used}/{seats}명",
-    "freeNote": "매달 회의 {hours}시간.",
+    "freeNote": "{seats}명까지 모든 기능 포함.",
     "renews": "{date}에 갱신",
     "ends": "{date}에 종료되고 이후 무료 요금제",
     "perMonth": "/월",
@@ -639,9 +640,6 @@
     "cancelTitle": "요금제를 해지할까요?",
     "moreSeats": "좌석 늘리기",
     "membersLabel": "멤버",
-    "hoursLabel": "회의 시간",
-    "hours": "{used} / {allowance}시간",
-    "hoursResets": "{date}에 초기화",
     "hoursUsedUp": "이번 달 회의 시간을 다 썼어요. {date}까지 회의는 음성으로만 진행돼요.",
     "payment": "결제",
     "cardUnknown": "Creem에 등록된 카드",
@@ -683,7 +681,7 @@
       "fullTitle": "모두 들어오게 하세요",
       "fullBody": "{office}는 Free로 {seats}명이 꽉 찼어요. Pro면 초대한 사람 모두 바로 들어와요.",
       "hoursTitle": "회의 영상을 계속 쓰세요",
-      "hoursBody": "Pro는 팀에 매달 회의 {hours}시간을 주고, 영상도 바로 돌려줘요.",
+      "hoursBody": "Pro는 영상을 바로 돌려주고, 팀 전체가 들어올 자리를 줘요.",
       "trialTitle": "팀의 Pro를 계속 쓰세요",
       "trialBody": "체험은 {date}에 끝나요. 그 뒤로는 한 번에 {free}명만 오피스에 있을 수 있어요.",
       "plansTitle": "Pro, 팀 전체를 위해",
@@ -698,7 +696,6 @@
     "cancelAnyway": "그래도 해지",
     "loseSeatsOver": "멤버는 {members}명이지만 층에는 동시에 {free}명만 있을 수 있고, 새로운 사람은 들어올 수 없어요.",
     "loseSeats": "자리가 {seats}명에서 {free}명으로 줄어요.",
-    "loseHours": "회의 시간이 월 {hours}시간에서 {free}시간으로 줄고, 넘으면 음성으로만 회의해요.",
     "loseNothing": "아무도 제거되지 않고 아무것도 삭제되지 않아요.",
     "offer": {
       "trial": "체험",
@@ -707,13 +704,12 @@
       "daily": "하루 {price}도 안 돼요.",
       "anchor": "1인당 요금을 받는 도구라면 같은 팀에 월 약 {price}가 들어요.",
       "wholeTeam": "팀 전체가 한 층에",
-      "hours": "매달 회의 {hours}시간",
-      "hoursTimes": "매달 회의 {hours}시간, Free의 {times}배",
       "support": "우리 팀의 우선 지원",
       "everything": "그리고 지금 쓰는 모든 것: HD 영상, 횟수 제한 없는 즉석 대화, 채팅, 화면 공유, 화이트보드.",
       "get": "Pro 시작하기 · 월 {price}",
       "keep": "Pro 계속 쓰기 · 월 {price}",
-      "assurance": "언제든 해지할 수 있어요. 14일 안에는 전액 환불돼요."
+      "assurance": "언제든 해지할 수 있어요. 14일 안에는 전액 환불돼요.",
+      "meetings": "팀에 필요한 만큼 회의"
     }
   }
 }

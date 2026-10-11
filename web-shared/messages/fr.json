@@ -34,7 +34,7 @@
     "signIn": "Se connecter",
     "account": "Compte",
     "createOffice": "Créer un bureau",
-    "plansSoon": "Une équipe plus grande ? Des offres avec plus de places arrivent bientôt."
+    "plansSoon": "Pro, pour toute votre équipe, arrive bientôt."
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -90,7 +90,8 @@
     "leave": "Quitter",
     "trialLeft": "Essai {plan} · {count, plural, one {# jour restant} other {# jours restants}}",
     "choosePlan": "Choisir une offre",
-    "upgrade": "Passer à plus"
+    "upgrade": "Passer à plus",
+    "members": "{count, plural, one {# membre} other {# membres}}"
   },
   "home": {
     "nav": {

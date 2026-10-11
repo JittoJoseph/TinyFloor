@@ -34,7 +34,7 @@
     "signIn": "Войти",
     "account": "Аккаунт",
     "createOffice": "Создать офис",
-    "plansSoon": "Команда больше? Тарифы с большим числом мест скоро появятся."
+    "plansSoon": "Pro для всей команды скоро появится."
   },
   "languageSwitcher": {
     "label": "Язык",
@@ -90,7 +90,8 @@
     "leave": "Выйти",
     "trialLeft": "Пробный {plan} · {count, plural, one {остался # день} few {осталось # дня} other {осталось # дней}}",
     "choosePlan": "Выбрать тариф",
-    "upgrade": "Улучшить тариф"
+    "upgrade": "Улучшить тариф",
+    "members": "{count, plural, one {# участник} few {# участника} many {# участников} other {# участника}}"
   },
   "home": {
     "nav": {

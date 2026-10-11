@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Activer le haut-parleur",
     "settings": "Paramètres",
     "leaveCall": "Quitter l’appel",
-    "leaveMeeting": "Quitter la réunion"
+    "leaveMeeting": "Quitter la réunion",
+    "cameraRested": "Caméra coupée pendant le calme"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Ce bureau est sur",
     "members": "{used} membres sur {seats}",
-    "freeNote": "{hours} heures de réunion par mois.",
+    "freeNote": "Tout est inclus, jusqu'à {seats} personnes.",
     "renews": "Renouvellement le {date}",
     "ends": "Se termine le {date}, puis l'offre gratuite",
     "perMonth": "par mois",
@@ -639,9 +640,6 @@
     "cancelTitle": "Annuler l'offre ?",
     "moreSeats": "Obtenir plus de places",
     "membersLabel": "Membres",
-    "hoursLabel": "Heures de réunion",
-    "hours": "{used} h sur {allowance} h",
-    "hoursResets": "Remise à zéro le {date}",
     "hoursUsedUp": "Les heures de réunion de ce mois sont épuisées : les réunions sont en audio seul jusqu'au {date}.",
     "payment": "Paiement",
     "cardUnknown": "Carte enregistrée chez Creem",
@@ -683,7 +681,7 @@
       "fullTitle": "Faites entrer tout le monde",
       "fullBody": "{office} est complet à {seats} personnes avec Free. Avec Pro, chaque personne invitée entre tout de suite.",
       "hoursTitle": "Gardez la vidéo en réunion",
-      "hoursBody": "Pro donne à votre équipe {hours} heures de réunion par mois et rétablit la vidéo tout de suite.",
+      "hoursBody": "Pro rétablit la vidéo tout de suite, avec de la place pour toute votre équipe.",
       "trialTitle": "Gardez Pro pour votre équipe",
       "trialBody": "Votre essai se termine le {date}. Ensuite, seules {free} personnes pourront être dans le bureau en même temps.",
       "plansTitle": "Pro, pour toute l'équipe",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Annuler quand même",
     "loseSeatsOver": "{members} personnes sont membres, mais seules {free} pourraient être sur l'étage en même temps, et personne de nouveau ne pourrait entrer.",
     "loseSeats": "La place passe de {seats} personnes à {free}.",
-    "loseHours": "Les heures de réunion passent de {hours} à {free} par mois ; au-delà, les réunions sont en audio seulement.",
     "loseNothing": "Personne n'est retiré et rien n'est supprimé.",
     "offer": {
       "trial": "Essai",
@@ -707,13 +704,12 @@
       "daily": "Moins de {price} par jour.",
       "anchor": "Les outils facturés par personne demanderaient environ {price} par mois pour la même équipe.",
       "wholeTeam": "Toute votre équipe, sur un même étage",
-      "hours": "{hours} heures de réunion par mois",
-      "hoursTimes": "{hours} heures de réunion par mois, {times}× Free",
       "support": "Aide prioritaire de notre équipe",
       "everything": "Et tout ce que vous avez déjà : vidéo HD, appels spontanés jamais décomptés, chat, partage d'écran et tableau blanc.",
       "get": "Passer à Pro · {price} par mois",
       "keep": "Garder Pro · {price} par mois",
-      "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours."
+      "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",
+      "meetings": "Des réunions aussi souvent que votre équipe en a besoin"
     }
   }
 }

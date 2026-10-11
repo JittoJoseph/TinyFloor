@@ -23,7 +23,7 @@
       },
       {
         "q": "Onko TinyFloor ilmainen?",
-        "a": "Kyllä, enintään 3 hengen toimistolle, 5 kokoustuntia kuukaudessa. Sen jälkeen Pro maksaa $29 kuukaudessa koko tiimille, ei henkeä kohden."
+        "a": "Kyllä, enintään 3 hengen toimistolle, kaikki mukana. Sen jälkeen Pro maksaa $29 kuukaudessa koko tiimille, ei henkeä kohden."
       },
       {
         "q": "Pitääkö minun asentaa jotain?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Montako henkeä TinyFloor-toimistoon mahtuu?",
-            "a": "Enintään 3 henkeä Freessä ja enintään 25 Prossa, ja voit tehdä niin monta toimistoa kuin tarvitset."
+            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Voit tehdä niin monta toimistoa kuin tarvitset."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "Sopiiko TinyFloor virtuaalitapahtumiin?",
-            "a": "TinyFloor on tehty tiimeille, jotka tekevät töitä yhdessä joka päivä. Toimistoon mahtuu enintään 25 henkeä, joten se sopii pienille tiimeille paremmin kuin suurille tapahtumille."
+            "a": "TinyFloor on tehty pienille tiimeille, jotka tekevät töitä yhdessä joka päivä, enintään 15 henkeä toimistossa, enemmän kuin isoille tapahtumille."
           },
           {
             "q": "Mitä SpatialChatissa on, mitä TinyFloorissä ei ole?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "WorkAdventure-vaihtoehto",
         "meta": {
-          "title": "WorkAdventure-vaihtoehto enintään 25 hengen tiimeille",
+          "title": "WorkAdventure-vaihtoehto pienille tiimeille",
           "description": "WorkAdventuren ilmainen tilaus sallii 10 henkeä kerralla. TinyFloor on pikselitaidetta oleva virtuaalitoimisto, jossa on läheisyyteen perustuvat videopuhelut, ilmainen 3 hengelle ja $29 kuukaudessa koko tiimille."
         },
         "title": "<em>WorkAdventure-vaihtoehto</em>, jossa on tilaa kasvaa.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Tuplasti tilaa",
-            "body": "Ilmaiseen WorkAdventure-karttaan mahtuu 10 henkeä kerralla. TinyFloor-toimistoon mahtuu enintään 25 jäsentä, ja voit avata niin monta toimistoa kuin haluat."
+            "body": "Ilmaiseen WorkAdventure-karttaan mahtuu 10 henkeä kerralla. TinyFloor-toimisto on tehty pienelle tiimille, joka tekee töitä yhdessä koko päivän, ja voit avata niin monta toimistoa kuin haluat."
           },
           {
             "title": "Ei rakennettavaa karttaa",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Montako henkeä voi liittyä?",
-            "a": "Enintään 3 henkeä Freessä ja enintään 25 Prossa, ja voit tehdä niin monta toimistoa kuin tarvitset."
+            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Voit tehdä niin monta toimistoa kuin tarvitset."
           },
           {
             "q": "Onko TinyFloor ilmainen?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "Montako henkeä voi käyttää yhtä toimistoa?",
-            "a": "Enintään 3 henkeä Freessä ja enintään 25 Prossa. Isompi yritys voi tehdä jokaiselle tiimille oman toimiston."
+            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Isompi yritys voi tehdä jokaiselle tiimille oman toimiston."
           },
           {
             "q": "Korvaako se videopuhelut?",
@@ -471,10 +471,10 @@
           "description": "oVice laskuttaa tilan mukaan tai 20 käyttäjästä alkaen. TinyFloor on selaimessa toimiva virtuaalitoimisto pienille tiimeille: ilmainen 3 hengelle, sitten $29 kuukaudessa koko tiimille."
         },
         "title": "<em>oVice-vaihtoehto</em> pienten tiimien kokoon.",
-        "subtitle": "oVice on tehty yrityksille ja yhteisöille, ja sen paketit perustuvat tilan kokoon tai alkavat 20 käyttäjästä. TinyFloor on tehty 2–25 hengen tiimeille, yhdellä yksinkertaisella hinnalla toimistoa kohden.",
+        "subtitle": "oVice on rakennettu yrityksille ja yhteisöille, ja sen tilaukset määräytyvät tilan koon mukaan tai alkavat 20 käyttäjästä. TinyFloor on tehty pienille tiimeille, ja siinä on yksi yksinkertainen hinta toimistoa kohden.",
         "points": [
           {
-            "title": "Hinnat 3, 10 tai 25 hengelle",
+            "title": "Yksi hinta toimistoa kohden",
             "body": "Ilmainen enintään 3 hengelle, sitten $29 kuukaudessa koko tiimille. Ei tilakokoja laskettavaksi."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "Montako henkeä TinyFloor-toimistoon mahtuu?",
-            "a": "Enintään 3 henkeä Freessä ja enintään 25 Prossa, ja voit tehdä niin monta toimistoa kuin tarvitset."
+            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Voit tehdä niin monta toimistoa kuin tarvitset."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Kumpi sopii paremmin pienelle tiimille?",
-            "a": "Kumospacen ilmainen paketti sopii enintään 5 hengelle, ja Gather sopii tiimeille, jotka haluavat muokata enemmän. Jos haluat yhden yksinkertaisen hinnan enintään 25 hengen tiimille, TinyFloor on tehty juuri siihen."
+            "a": "Kumospacen ilmainen tilaus sopii enintään 5 hengelle, ja Gather tiimeille, jotka haluavat muokata enemmän. Jos haluat yhden yksinkertaisen hinnan pienelle tiimille, TinyFloor on tehty siihen."
           },
           {
             "q": "Toimivatko Gather ja Kumospace selaimessa?",
@@ -845,8 +845,8 @@
             "a": "Valitse aika, kokoontukaa joka päivä samassa paikassa ja pitäkää se lyhyenä. TinyFloorissa pääkokous on aina olemassa: kaikki kävelevät sisään sovittuun aikaan ja ulos, kun se on ohi."
           },
           {
-            "q": "Paljonko kokoustunteja päivittäinen palaveri kuluttaa?",
-            "a": "15 minuutin standup joka työpäivä on noin 5 tuntia kuukaudessa. Free sisältää 5 tuntia ryhmäkokouksia kuukaudessa ja Pro 60."
+            "q": "Maksaako päivittäinen standup lisää?",
+            "a": "Ei. Kokoukset kuuluvat jokaiseen tilaukseen, eikä mitään tarvitse laskea. 15 minuutin standup joka työpäivä on noin 5 tuntia kuukaudessa."
           },
           {
             "q": "Voimmeko pitää palaverit asynkronisesti?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Viekö uusi työntekijä paikan paketista?",
-            "a": "Kyllä, kaikki toimistossa ovat jäseniä. Prossa on tilaa koko tiimille, enintään 25 hengelle."
+            "a": "Kyllä, kaikki toimistossa ovat jäseniä. Prossa on tilaa koko tiimille."
           },
           {
             "q": "Voivatko uudet lukea vanhoja viestejä?",
@@ -963,8 +963,8 @@
             "a": "Se on epävirallinen jutustelu, jota etätiimi kaipaa toimistolta: ihmisiin törmäämistä ja juttelua mistä tahansa. TinyFloorissa se tapahtuu kerroksessa sovitun puhelun sijaan."
           },
           {
-            "q": "Kuluttaako kahvinurkan jutustelu kokoustunteja?",
-            "a": "Kahden hengen keskusteluja ei lasketa koskaan. Kuukausitunteihin lasketaan vain ryhmäkokoukset."
+            "q": "Lasketaanko kahvihuonekeskustelut johonkin?",
+            "a": "Ei. Kahden hengen keskusteluja ei koskaan lasketa, ja kokoukset kuuluvat jokaiseen tilaukseen."
           },
           {
             "q": "Voimmeko kuunnella musiikkia yhdessä?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Kuinka iso kehitystiimi voi olla?",
-            "a": "Enintään 25 henkeä yhdessä toimistossa Pro-paketilla. Isommat organisaatiot voivat antaa jokaiselle tiimille oman toimiston."
+            "a": "Pro on tehty pienelle tiimille, enintään 15 hengelle yhdessä toimistossa. Isommat organisaatiot antavat jokaiselle tiimille oman toimiston."
           },
           {
             "q": "Voimmeko pitää Slackin?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 henkeä",
             "title": "Free",
-            "body": "Perustajat jakavat kerroksen ilmaiseksi, 5 kokoustuntia kuussa."
+            "body": "Perustajat jakavat kerroksen ilmaiseksi, kaikki mukana."
           },
           {
             "label": "4. henkilö",
@@ -1131,7 +1131,7 @@
           {
             "label": "Koko tiimi",
             "title": "Pro",
-            "body": "$29 kuukaudessa koko toimistolle, 60 kokoustuntia."
+            "body": "$29 kuukaudessa koko toimistolle, ja kokouksia niin usein kuin tarvitsette."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Voitte. Maksullinen paketti on voimassa maksetun jakson loppuun, minkä jälkeen toimisto palaa Free-pakettiin. Mitään ei poisteta."
           },
           {
-            "q": "Mitä tapahtuu, kun meitä on yli 25?",
-            "a": "Toimistoon mahtuu enintään 25 henkeä. Anna jokaiselle tiimille oma toimisto."
+            "q": "Mitä tapahtuu, kun kasvamme yhdestä toimistosta ulos?",
+            "a": "Toimisto on tehty pienelle tiimille, enintään 15 hengelle. Kun kasvatte, antakaa jokaiselle tiimille oma toimisto."
           },
           {
             "q": "Tarvitsemmeko IT-asetuksia?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Montako meitä voi olla?",
-            "a": "Kaikki, enintään 25 henkeä Prossa, yhdellä kuukausihinnalla koko toimistolle."
+            "a": "Koko tiimisi, enintään 15 henkeä Prossa, yhdellä kuukausihinnalla koko toimistolle."
           },
           {
             "q": "Voivatko freelancerit liittyä?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Kuinka moni voi liittyä kokoukseen?",
-            "a": "Kaikki toimistossa: enintään 3 henkeä Freessä ja enintään 25 Prossa."
+            "a": "Kaikki toimistossa: enintään 3 henkeä Freessä ja koko tiimi Prossa."
           },
           {
             "q": "Onko kokouksilla aikarajaa?",
-            "a": "Ei rajaa kokousta kohden. Jokaisessa tilauksessa on joka kuukausi tunteja ryhmäkokouksiin: 5 Freessä ja 60 Prossa."
+            "a": "Ei. Kokoukset kuuluvat jokaiseen tilaukseen, eikä mittaria tarvitse seurata."
           },
           {
             "q": "Mitä tapahtuu, kun tunnit loppuvat?",
@@ -1599,8 +1599,8 @@
       "tax": "Hinnat ovat kuukausihintoja ilman veroja.",
       "choose": "Valitse {plan}",
       "note": "Kahden ihmisen puheluita ei koskaan lasketa. Jokainen hinta koskee koko toimistoa, ei henkilöä.",
-      "perksPro": "Koko tiimisi · {hours} kokoustuntia · ensisijainen apu",
-      "perksFree": "Enintään {people} henkeä · {hours} kokoustuntia kuukaudessa",
+      "perksPro": "Koko tiimisi · kokouksia niin usein kuin tarvitsette · ensisijainen apu",
+      "perksFree": "Enintään {people} henkeä · kaikki mukana",
       "daily": "Alle {price} päivässä",
       "assurance": "Peru milloin vain · 14 päivän hyvitys"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Hinnoittelu: yksi hinta koko toimistolle",
-      "description": "TinyFloor on ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ja siinä on 60 kokoustuntia ja ensisijainen apu. Hinta toimistoa kohden, ei henkeä kohden."
+      "description": "TinyFloor on ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ja siinä on kokouksia niin usein kuin tarvitsette sekä ensisijainen apu. Hinta toimistoa kohden, ei henkeä kohden."
     },
     "title": "Yksi hinta koko toimistolle.",
     "muted": "Ei henkeä kohden.",
@@ -1638,12 +1638,11 @@
       "title": "Vertaa paketteja,",
       "muted": "rinnakkain.",
       "people": "Henkeä",
-      "hours": "Kokoustunnit kuussa",
-      "hoursNote": "Vain ryhmäkokoukset",
       "calls": "Kahden hengen puhelut",
       "callsNote": "Ei lasketa koskaan",
       "support": "Ensisijainen apu",
-      "wholeTeam": "Koko tiimi"
+      "wholeTeam": "Koko tiimi",
+      "meetings": "Ryhmäkokoukset"
     },
     "notes": {
       "title": "Hyvä tietää.",
@@ -1659,13 +1658,13 @@
         "title": "Kokeilu, kun tiimi saapuu",
         "body": "Kun 4. henkilö liittyy ilmaiseen toimistoon, koko tiimi saa Pron ilmaiseksi 14 päiväksi. Korttia ei tarvita."
       },
-      "hours": {
-        "title": "Kun tunnit loppuvat",
-        "body": "Kokoukset jatkuvat pelkällä äänellä kuun 1. päivään asti. Kahden hengen puhelut toimivat normaalisti."
-      },
       "tax": {
         "title": "Verot kassalla",
         "body": "Hinnat ovat Yhdysvaltain dollareina. Jälleenmyyjämme Creem lisää mahdollisen arvonlisä- tai myyntiveron maksaessasi."
+      },
+      "size": {
+        "title": "Tehty pienille tiimeille",
+        "body": "Toimisto on tiimille, joka tekee töitä yhdessä joka päivä, enintään 15 hengelle. Isompi yritys antaa jokaiselle tiimille oman toimiston."
       }
     }
   },

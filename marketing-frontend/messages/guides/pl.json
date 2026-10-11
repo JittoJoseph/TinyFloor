@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Za darmo dla 3 osób · $29 miesięcznie za cały zespół",
-            "body": "Biuro w stylu pixel art w przeglądarce, na komputerze i telefonie. Podejdź do współpracownika, aby zacząć rozmowę wideo, usiądź przy stole, aby zrobić spotkanie, a do tego kanały czatu, udostępnianie ekranu i tablica. Jedna cena za całe biuro, nie za osobę. Bez nagrań, notatek AI i edytora map, a jedno biuro mieści maksymalnie 25 osób."
+            "body": "Biuro w stylu pixel art w przeglądarce, na komputerze i telefonie. Podejdź do współpracownika, aby zacząć rozmowę wideo, usiądź przy stole, aby zrobić spotkanie, a do tego kanały czatu, udostępnianie ekranu i tablica. Jedna cena za całe biuro, nie za osobę. Nie ma nagrań, notatek AI ani edytora mapy, a biura są stworzone dla małych zespołów do 15 osób."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Gdzie pasuje TinyFloor",
-      "body": "TinyFloor to opcja prosta i tania: biuro w przeglądarce, w którym podchodzisz do kogoś, żeby porozmawiać, z salą spotkań, czatem i udostępnianiem ekranu, za jedną cenę za biuro. Jest dla zespołów od 2 do 25 osób, które chcą mieć biuro otwarte przez cały dzień. Jeśli potrzebujesz nagrań, notatek AI albo mapy zaprojektowanej przez siebie, lepiej sprawdzi się Gather albo SoWork Premium. TinyFloor jest darmowy dla maksymalnie 3 osób, więc możesz najpierw wypróbować go z zespołem."
+      "body": "TinyFloor to opcja prosta i tania: biuro w przeglądarce, w którym podchodzisz do kogoś, żeby porozmawiać, z salą spotkań, czatem i udostępnianiem ekranu, za jedną cenę za biuro. Jest dla małych zespołów, które chcą biura otwartego przez cały dzień. Jeśli potrzebujesz nagrań, notatek AI albo mapy zaprojektowanej przez siebie, lepiej sprawdzi się Gather albo SoWork Premium. TinyFloor jest darmowy dla maksymalnie 3 osób, więc możesz najpierw wypróbować go z zespołem."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 osób",
-              "300 $",
-              "$29",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "Ze strony z cennikiem każdego produktu w październiku 2026, bez podatków. Darmowy plan SoWork też obejmuje do 10 członków, ze spotkaniami do 30 minut, a WorkAdventure do 10 osób jednocześnie."

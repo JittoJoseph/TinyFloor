@@ -34,7 +34,7 @@
     "signIn": "Log ind",
     "account": "Konto",
     "createOffice": "Opret et kontor",
-    "plansSoon": "Større team? Abonnementer med flere pladser kommer snart."
+    "plansSoon": "Pro, for hele dit team, kommer snart."
   },
   "languageSwitcher": {
     "label": "Sprog",
@@ -90,7 +90,8 @@
     "leave": "Forlad",
     "trialLeft": "{plan}-prøve · {count, plural, one {# dag} other {# dage}} tilbage",
     "choosePlan": "Vælg en plan",
-    "upgrade": "Opgrader"
+    "upgrade": "Opgrader",
+    "members": "{count, plural, one {# medlem} other {# medlemmer}}"
   },
   "home": {
     "nav": {

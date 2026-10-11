@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Gratis voor 3 mensen · $29 per maand voor het hele team",
-            "body": "Een kantoor in pixelart in de browser, op computer en telefoon. Loop naar een collega om een videogesprek te starten, ga aan een tafel zitten om te vergaderen, met chatkanalen, schermdelen en een whiteboard. Eén prijs voor het hele kantoor, niet per persoon. Geen opnames, AI-notities of kaarteditor, en een kantoor heeft plek voor maximaal 25 mensen."
+            "body": "Een kantoor in pixelart in de browser, op computer en telefoon. Loop naar een collega om een videogesprek te starten, ga aan een tafel zitten om te vergaderen, met chatkanalen, schermdelen en een whiteboard. Eén prijs voor het hele kantoor, niet per persoon. Het heeft geen opnames, AI-notities of kaarteditor, en de kantoren zijn gemaakt voor kleine teams tot 15 mensen."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Waar TinyFloor past",
-      "body": "TinyFloor is de eenvoudige en goedkope: een kantoor in de browser waar je naar iemand toe loopt om te praten, met een vergaderruimte, chat en schermdelen, voor één prijs per kantoor. Het is voor teams van 2 tot 25 die de hele dag een kantoor open willen hebben. Heb je opnames, AI-notities of een zelf ontworpen kaart nodig, dan passen Gather of SoWork Premium beter. TinyFloor is gratis voor maximaal 3 mensen, dus je kunt het eerst met je team uitproberen."
+      "body": "TinyFloor is de eenvoudige en goedkope: een kantoor in de browser waar je naar iemand toe loopt om te praten, met een vergaderruimte, chat en schermdelen, voor één prijs per kantoor. Het is voor kleine teams die een kantoor willen dat de hele dag open is. Heb je opnames, AI-notities of een zelf ontworpen kaart nodig, dan passen Gather of SoWork Premium beter. TinyFloor is gratis voor maximaal 3 mensen, dus je kunt het eerst met je team uitproberen."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "$ 54",
               "$ 160"
-            ],
-            [
-              "25 mensen",
-              "$ 300",
-              "$29",
-              "$ 135",
-              "$ 400"
             ]
           ],
           "note": "Van de prijspagina van elk product in oktober 2026, zonder belasting. Het gratis abonnement van SoWork dekt ook tot 10 leden, met vergaderingen van maximaal 30 minuten, en dat van WorkAdventure tot 10 mensen tegelijk."

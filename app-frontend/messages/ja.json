@@ -132,7 +132,8 @@
     "unmuteSpeaker": "スピーカーのミュートを解除",
     "settings": "設定",
     "leaveCall": "通話から退出",
-    "leaveMeeting": "ミーティングを退出"
+    "leaveMeeting": "ミーティングを退出",
+    "cameraRested": "静かな間はカメラをオフ"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "このオフィスのプラン",
     "members": "メンバー {used}/{seats} 人",
-    "freeNote": "毎月{hours}時間の会議。",
+    "freeNote": "{seats}人まで、すべて込み。",
     "renews": "{date} に更新",
     "ends": "{date} に終了し、その後は無料プラン",
     "perMonth": "/月",
@@ -639,9 +640,6 @@
     "cancelTitle": "プランを解約しますか？",
     "moreSeats": "席を増やす",
     "membersLabel": "メンバー",
-    "hoursLabel": "ミーティング時間",
-    "hours": "{used} / {allowance} 時間",
-    "hoursResets": "{date} にリセット",
     "hoursUsedUp": "今月の会議時間を使い切りました。{date}まで会議は音声のみです。",
     "payment": "支払い",
     "cardUnknown": "Creem に登録済みのカード",
@@ -683,7 +681,7 @@
       "fullTitle": "全員を迎え入れる",
       "fullBody": "{office}はFreeの{seats}人で満員です。Proなら、招待した人は全員すぐに入れます。",
       "hoursTitle": "会議のビデオを続ける",
-      "hoursBody": "Proならチームに毎月{hours}時間の会議がつき、ビデオもすぐに戻ります。",
+      "hoursBody": "Proならビデオがすぐに戻り、チーム全員が入れます。",
       "trialTitle": "チームでProを続ける",
       "trialBody": "トライアルは{date}に終わります。その後、フロアに同時にいられるのは{free}人までです。",
       "plansTitle": "Pro、チーム全員で",
@@ -698,7 +696,6 @@
     "cancelAnyway": "それでも解約する",
     "loseSeatsOver": "メンバーは {members} 人いますが、フロアに同時にいられるのは {free} 人だけになり、新しい人は参加できません。",
     "loseSeats": "定員が {seats} 人から {free} 人になります。",
-    "loseHours": "ミーティング時間が月 {hours} 時間から {free} 時間になり、超えると音声のみになります。",
     "loseNothing": "誰も外されず、何も削除されません。",
     "offer": {
       "trial": "トライアル",
@@ -707,13 +704,12 @@
       "daily": "1日あたり{price}未満です。",
       "anchor": "1人ごとに課金するツールなら、同じチームで月およそ{price}かかります。",
       "wholeTeam": "チーム全員が、ひとつのフロアに",
-      "hours": "毎月{hours}時間の会議",
-      "hoursTimes": "毎月{hours}時間の会議（Freeの{times}倍）",
       "support": "チームからの優先サポート",
       "everything": "さらに今あるものすべて：HDビデオ、何度話してもカウントされない立ち話、チャット、画面共有、ホワイトボード。",
       "get": "Proにする・月{price}",
       "keep": "Proを続ける・月{price}",
-      "assurance": "いつでも解約できます。14日以内なら全額返金。"
+      "assurance": "いつでも解約できます。14日以内なら全額返金。",
+      "meetings": "チームに必要なだけ会議を"
     }
   }
 }

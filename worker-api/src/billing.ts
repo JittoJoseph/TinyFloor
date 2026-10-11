@@ -5,8 +5,9 @@ import { requireUser } from "./session";
 
 /**
  * The paid plan, sold through Creem as the merchant of record (docs/09-billing.md,
- * docs/23). There is one: Free holds 3 people, Pro the whole team at one price
- * (the floor's 25 chairs are its ceiling), with meeting hours as fair use. An office's plan changes in one place only: here,
+ * docs/23, docs/24). There is one: Free holds 3 people, Pro a small team at one
+ * price. Neither shows a meter: meeting hours are a fair-use backstop, high
+ * enough that a team meeting all day never meets them. An office's plan changes in one place only: here,
  * from a subscription Creem vouches for, either in a signed webhook or in the
  * reply to a request this worker made itself.
  */
@@ -17,15 +18,15 @@ type PaidPlan = Exclude<PlanId, "free">;
 export interface Plan {
   id: PlanId;
   seats: number;
-  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  /** Fair use, never shown: meeting hours a month (time a meeting has two or more people in it), past which meetings are voice only (docs/24). */
   meetingHours: number;
   /** US cents a month, before tax; null for the free plan. Monthly only. */
   price: number | null;
 }
 
 export const PLANS: Plan[] = [
-  { id: "free", seats: 3, meetingHours: 5, price: null },
-  { id: "pro", seats: 25, meetingHours: 60, price: 2900 },
+  { id: "free", seats: 3, meetingHours: 40, price: null },
+  { id: "pro", seats: 15, meetingHours: 120, price: 2900 },
 ];
 
 const FREE = PLANS[0];

@@ -23,7 +23,7 @@
       },
       {
         "q": "TinyFloor est-il gratuit ?",
-        "a": "Oui, pour un bureau jusqu'à 3 personnes, avec 5 heures de réunion par mois. Ensuite, Pro coûte 29 $ par mois pour toute l'équipe, pas par personne."
+        "a": "Oui, pour un bureau jusqu'à 3 personnes, tout inclus. Ensuite, Pro coûte 29 $ par mois pour toute l'équipe, pas par personne."
       },
       {
         "q": "Dois-je installer quelque chose ?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Combien de personnes tiennent dans un bureau TinyFloor ?",
-            "a": "Jusqu'à 3 personnes avec Free et jusqu'à 25 avec Pro, et vous pouvez créer autant de bureaux que nécessaire."
+            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "TinyFloor convient-il aux événements virtuels ?",
-            "a": "TinyFloor est conçu pour les équipes qui travaillent ensemble chaque jour. Un bureau accueille jusqu'à 25 personnes : il convient mieux aux petites équipes qu'aux grands événements."
+            "a": "TinyFloor est fait pour les petites équipes qui travaillent ensemble chaque jour, jusqu'à 15 personnes par bureau, plutôt que pour les grands événements."
           },
           {
             "q": "Qu’est-ce que SpatialChat propose et que TinyFloor n’a pas ?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "Alternative à WorkAdventure",
         "meta": {
-          "title": "Alternative à WorkAdventure pour les équipes jusqu'à 25",
+          "title": "Alternative à WorkAdventure pour les petites équipes",
           "description": "L'offre gratuite de WorkAdventure accepte 10 personnes à la fois. TinyFloor est un bureau virtuel en pixel art avec des appels vidéo de proximité, gratuit pour 3 personnes et 29 $ par mois pour toute l'équipe."
         },
         "title": "Une <em>alternative à WorkAdventure</em> qui laisse de la place.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Deux fois plus de place",
-            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Un bureau TinyFloor accueille jusqu'à 25 membres, et vous pouvez ouvrir autant de bureaux que vous voulez."
+            "body": "Une carte WorkAdventure gratuite accueille 10 personnes à la fois. Un bureau TinyFloor est fait pour une petite équipe qui travaille ensemble toute la journée, et vous pouvez ouvrir autant de bureaux que vous voulez."
           },
           {
             "title": "Aucune carte à construire",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Combien de personnes peuvent rejoindre ?",
-            "a": "Jusqu'à 3 personnes avec Free et jusqu'à 25 avec Pro, et vous pouvez créer autant de bureaux que nécessaire."
+            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
           },
           {
             "q": "TinyFloor est-il gratuit ?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "Combien de personnes peuvent utiliser un bureau ?",
-            "a": "Jusqu'à 3 personnes avec Free et jusqu'à 25 avec Pro. Une plus grande entreprise peut créer un bureau par équipe."
+            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Une plus grande entreprise peut créer un bureau par équipe."
           },
           {
             "q": "Est-ce que cela remplace les appels vidéo ?",
@@ -471,10 +471,10 @@
           "description": "oVice facture par espace ou à partir de 20 utilisateurs. TinyFloor est un bureau virtuel dans le navigateur pour les petites équipes : gratuit pour 3 personnes, puis 29 $ par mois pour toute l'équipe."
         },
         "title": "Une <em>alternative à oVice</em> à la taille des petites équipes.",
-        "subtitle": "oVice est conçu pour les entreprises et les communautés, avec des offres selon la taille de l'espace ou à partir de 20 utilisateurs. TinyFloor est fait pour les équipes de 2 à 25 personnes, avec un prix simple par bureau.",
+        "subtitle": "oVice est conçu pour les entreprises et les communautés, avec des offres selon la taille de l'espace ou à partir de 20 utilisateurs. TinyFloor est fait pour les petites équipes, avec un seul prix simple par bureau.",
         "points": [
           {
-            "title": "Des prix pour 3, 10 ou 25",
+            "title": "Un seul prix par bureau",
             "body": "Gratuit jusqu'à 3 personnes, puis 29 $ par mois pour toute l'équipe. Pas de taille d'espace à calculer."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "Combien de personnes peuvent rejoindre un bureau TinyFloor ?",
-            "a": "Jusqu'à 3 personnes avec Free et jusqu'à 25 avec Pro, et vous pouvez créer autant de bureaux que nécessaire."
+            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Lequel est le mieux pour une petite équipe ?",
-            "a": "L'offre gratuite de Kumospace convient jusqu'à 5 personnes, et Gather convient aux équipes qui veulent plus de personnalisation. Si vous voulez un prix simple pour une équipe de jusqu'à 25 personnes, TinyFloor est fait pour ça."
+            "a": "L'offre gratuite de Kumospace convient jusqu'à 5 personnes, et Gather aux équipes qui veulent plus de personnalisation. Si vous voulez un seul prix simple pour une petite équipe, TinyFloor est fait pour ça."
           },
           {
             "q": "Gather et Kumospace fonctionnent-ils dans le navigateur ?",
@@ -845,8 +845,8 @@
             "a": "Choisissez une heure, retrouvez-vous au même endroit chaque jour et faites court. Sur TinyFloor, la réunion principale est toujours là : chacun entre à l'heure et sort quand c'est fini."
           },
           {
-            "q": "Combien d'heures de réunion un point quotidien utilise-t-il ?",
-            "a": "Un point quotidien de 15 minutes chaque jour ouvré représente environ 5 heures par mois. Free inclut 5 heures de réunions de groupe par mois, et Pro 60."
+            "q": "Un point quotidien coûte-t-il plus cher ?",
+            "a": "Non. Les réunions sont incluses dans chaque offre, sans rien à compter. Un point de 15 minutes chaque jour ouvré représente environ 5 heures par mois."
           },
           {
             "q": "Peut-on faire des points asynchrones à la place ?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Une nouvelle recrue occupe-t-elle une place de l'offre ?",
-            "a": "Oui, tout le monde dans le bureau est membre. Pro a de la place pour toute l'équipe, jusqu'à 25 personnes."
+            "a": "Oui, tout le monde dans le bureau est membre. Pro a de la place pour toute l'équipe."
           },
           {
             "q": "Les nouveaux peuvent-ils rattraper le chat ?",
@@ -963,8 +963,8 @@
             "a": "Ce sont les discussions informelles que le bureau laisse à une équipe à distance : croiser des gens et parler de tout. Sur TinyFloor, cela se passe sur l'étage plutôt que dans un appel planifié."
           },
           {
-            "q": "Ces discussions utilisent-elles des heures de réunion ?",
-            "a": "Les discussions à deux ne comptent jamais. Seules les réunions de groupe comptent dans les heures mensuelles."
+            "q": "Les discussions spontanées sont-elles décomptées ?",
+            "a": "Non. Les discussions à deux ne sont jamais décomptées, et les réunions sont incluses dans chaque offre."
           },
           {
             "q": "Peut-on écouter de la musique ensemble ?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Quelle taille peut avoir une équipe d'ingénierie ?",
-            "a": "Jusqu'à 25 personnes dans un bureau avec Pro. Les plus grandes organisations peuvent donner un bureau à chaque équipe."
+            "a": "Pro est fait pour une petite équipe, jusqu'à 15 personnes dans un bureau. Les grandes organisations donnent à chaque équipe son propre bureau."
           },
           {
             "q": "Peut-on garder Slack ?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 personnes",
             "title": "Free",
-            "body": "Les fondateurs partagent un étage gratuitement, avec 5 heures de réunion par mois."
+            "body": "Les fondateurs partagent un étage gratuitement, tout inclus."
           },
           {
             "label": "4e personne",
@@ -1131,7 +1131,7 @@
           {
             "label": "Toute l'équipe",
             "title": "Pro",
-            "body": "29 $ par mois pour tout le bureau, avec 60 heures de réunion."
+            "body": "29 $ par mois pour tout le bureau, avec des réunions aussi souvent que nécessaire."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Oui. Une offre payante court jusqu'à la fin de la période payée, puis le bureau repasse à Free. Rien n'est supprimé."
           },
           {
-            "q": "Que se passe-t-il au-delà de 25 personnes ?",
-            "a": "Un bureau accueille jusqu'à 25 personnes. Donnez à chaque équipe son propre bureau."
+            "q": "Que se passe-t-il quand on devient trop grands pour un bureau ?",
+            "a": "Un bureau est fait pour une petite équipe, jusqu'à 15 personnes. En grandissant, donnez à chaque équipe son propre bureau."
           },
           {
             "q": "Faut-il une installation informatique ?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Combien de personnes pouvons-nous avoir ?",
-            "a": "Tout le monde, jusqu'à 25 personnes avec Pro, pour un seul prix mensuel pour tout le bureau."
+            "a": "Toute votre équipe, jusqu'à 15 personnes avec Pro, pour un seul prix mensuel pour tout le bureau."
           },
           {
             "q": "Des freelances peuvent-ils rejoindre ?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Combien de personnes peuvent rejoindre une réunion ?",
-            "a": "Tout le monde dans le bureau : jusqu'à 3 personnes avec Free et jusqu'à 25 avec Pro."
+            "a": "Tout le monde dans le bureau : jusqu'à 3 personnes avec Free, et toute l'équipe avec Pro."
           },
           {
             "q": "Les réunions ont-elles une limite de durée ?",
-            "a": "Aucune limite par réunion. Chaque offre inclut des heures de réunion de groupe chaque mois : 5 avec Free et 60 avec Pro."
+            "a": "Non. Les réunions sont incluses dans chaque offre, sans compteur à surveiller."
           },
           {
             "q": "Que se passe-t-il quand les heures sont épuisées ?",
@@ -1599,8 +1599,8 @@
       "tax": "Prix mensuels, hors taxes.",
       "choose": "Choisir {plan}",
       "note": "Les appels à deux ne sont jamais comptés. Chaque prix vaut pour tout le bureau, pas par personne.",
-      "perksPro": "Toute votre équipe · {hours} heures de réunion · aide prioritaire",
-      "perksFree": "Jusqu'à {people} personnes · {hours} heures de réunion par mois",
+      "perksPro": "Toute votre équipe · des réunions aussi souvent que nécessaire · aide prioritaire",
+      "perksFree": "Jusqu'à {people} personnes · tout inclus",
       "daily": "Moins de {price} par jour",
       "assurance": "Résiliable à tout moment · remboursement sous 14 jours"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Tarifs : un seul prix pour tout le bureau",
-      "description": "TinyFloor est gratuit jusqu'à 3 personnes. Pro coûte 29 $ par mois pour toute l'équipe, avec 60 heures de réunion et une aide prioritaire. Un prix par bureau, pas par personne."
+      "description": "TinyFloor est gratuit jusqu'à 3 personnes. Pro coûte 29 $ par mois pour toute l'équipe, avec des réunions aussi souvent que nécessaire et une aide prioritaire. Un prix par bureau, pas par personne."
     },
     "title": "Un seul prix pour tout le bureau.",
     "muted": "Pas un par personne.",
@@ -1638,12 +1638,11 @@
       "title": "Comparez les offres,",
       "muted": "côte à côte.",
       "people": "Personnes",
-      "hours": "Heures de réunion par mois",
-      "hoursNote": "Réunions de groupe uniquement",
       "calls": "Appels à deux",
       "callsNote": "Jamais décomptés",
       "support": "Aide prioritaire",
-      "wholeTeam": "Toute l'équipe"
+      "wholeTeam": "Toute l'équipe",
+      "meetings": "Réunions de groupe"
     },
     "notes": {
       "title": "Bon à savoir.",
@@ -1659,13 +1658,13 @@
         "title": "Un essai quand l'équipe arrive",
         "body": "Quand une 4e personne rejoint un bureau gratuit, toute l'équipe profite de Pro gratuitement pendant 14 jours. Sans carte."
       },
-      "hours": {
-        "title": "Quand les heures sont épuisées",
-        "body": "Les réunions continuent en audio seulement jusqu'au 1er. Les appels à deux fonctionnent comme d'habitude."
-      },
       "tax": {
         "title": "Taxes au paiement",
         "body": "Les prix sont en dollars américains. Creem, notre revendeur, ajoute la TVA ou la taxe de vente éventuelle au paiement."
+      },
+      "size": {
+        "title": "Fait pour les petites équipes",
+        "body": "Un bureau est pour une équipe qui travaille ensemble chaque jour, jusqu'à 15 personnes. Une plus grande entreprise donne à chaque équipe son propre bureau."
       }
     }
   },

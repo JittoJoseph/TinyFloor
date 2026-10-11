@@ -2,7 +2,6 @@ export type PresenceStatus = "available" | "busy" | "away" | "in_call";
 
 export const PRESENCE_STATUSES: readonly PresenceStatus[] = ["available", "busy", "away", "in_call"];
 
-
 /** The plain-text heartbeat. The room answers it without waking up. */
 export const HEARTBEAT_PING = "ping";
 export const HEARTBEAT_PONG = "pong";
@@ -172,6 +171,12 @@ export type ClientMessage =
   | { t: "meeting_invite"; to: string[] }
   /** Whether you are talking, while in a meeting; sent when it changes. */
   | { t: "speaking"; on: boolean }
+  /**
+   * Whether you're in a call on the floor and whether any video is coming to
+   * you in it, sent when either changes. It's only counted (docs/24): calls on
+   * the floor are never limited.
+   */
+  | { t: "call_usage"; call: boolean; video: boolean }
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =

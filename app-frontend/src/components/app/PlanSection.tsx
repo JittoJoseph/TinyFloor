@@ -87,13 +87,12 @@ export function PlanSection() {
 
   const hours = billing ? billing.usage.seconds / 3600 : null;
   const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
-  const hoursShare = hours !== null && allowance ? hours / allowance : 0;
   const choose = (plan: Plan) => plan.id !== "free" && void change.buy(plan.id);
 
   // What the plan says for itself under its name: when it renews, or ends, or that it's free.
   const status = (): ReactNode => {
     if (trial) return null; // The banner below says it.
-    if (!sub) return t("freeNote", { hours: plans[0]?.meetingHours ?? 5 });
+    if (!sub) return t("freeNote", { seats: plans[0]?.seats ?? 3 });
     if (sub.status === "past_due") return null;
     if (sub.endsAt) return t("ends", { date: date(sub.endsAt) });
     if (details?.nextCharge) {
@@ -180,26 +179,21 @@ export function PlanSection() {
           </p>
         )}
 
-        {/* The two limits, side by side where there's room. */}
-        <div className="grid border-t border-border sm:grid-cols-2">
-          <Usage
-            label={t("membersLabel")}
-            value={t("usageOf", { used: members, total: office.seats })}
-            note={members >= office.seats ? t("seatsFull") : t("seatsFree", { count: office.seats - members })}
-          >
-            <SeatBar used={members} seats={office.seats} />
-          </Usage>
-          {manage && allowance !== null && (
+        {/*
+          Free's one limit is people, so it's shown as one: how many of the 3.
+          A paid office sees who's in it, not how many more it may have (docs/24).
+        */}
+        <div className="border-t border-border">
+          {planId === "free" ? (
             <Usage
-              label={t("hoursLabel")}
-              value={
-                hours === null ? "…" : t("hours", { used: format.number(hours, { maximumFractionDigits: hours < 10 ? 1 : 0 }), allowance })
-              }
-              note={billing ? t("hoursResets", { date: shortDate(billing.usage.resetsAt) }) : undefined}
-              className="border-t border-border sm:border-s sm:border-t-0"
+              label={t("membersLabel")}
+              value={t("usageOf", { used: members, total: office.seats })}
+              note={members >= office.seats ? t("seatsFull") : t("seatsFree", { count: office.seats - members })}
             >
-              <Bar share={hoursShare} />
+              <SeatBar used={members} seats={office.seats} />
             </Usage>
+          ) : (
+            <Usage label={t("membersLabel")} value={String(members)} />
           )}
         </div>
         {manage && hours !== null && allowance !== null && hours >= allowance && billing && (
@@ -370,10 +364,6 @@ export function PlanSection() {
               : t("loseSeats", { seats: office.seats, free: plans[0]?.seats ?? 3 })}
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
-            {t("loseHours", { hours: current?.meetingHours ?? 0, free: plans[0]?.meetingHours ?? 5 })}
-          </li>
-          <li className="flex items-start gap-2.5">
             <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
             {t("loseNothing")}
           </li>
@@ -406,7 +396,7 @@ function Usage({
   value: string;
   note?: string;
   className?: string;
-  children: ReactNode;
+  children?: ReactNode;
 }) {
   return (
     <div className={cn("p-5", className)}>

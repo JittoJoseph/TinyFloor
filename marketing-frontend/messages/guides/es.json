@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Gratis para 3 personas · $29 al mes para todo el equipo",
-            "body": "Una oficina en pixel art en el navegador, en ordenador y móvil. Acércate a un compañero para iniciar una videollamada, siéntate en una mesa para reunirte, con canales de chat, pantalla compartida y pizarra. Un solo precio para toda la oficina, no por persona. No tiene grabaciones, notas con IA ni editor de mapas, y cada oficina admite como máximo 25 personas."
+            "body": "Una oficina en pixel art en el navegador, en ordenador y móvil. Acércate a un compañero para iniciar una videollamada, siéntate en una mesa para reunirte, con canales de chat, pantalla compartida y pizarra. Un solo precio para toda la oficina, no por persona. No tiene grabaciones, notas con IA ni editor de mapas, y las oficinas están hechas para equipos pequeños de hasta 15."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Dónde encaja TinyFloor",
-      "body": "TinyFloor es la opción sencilla y económica: una oficina en el navegador donde te acercas para hablar, con sala de reuniones, chat y pantalla compartida, por un precio por oficina. Es para equipos de 2 a 25 que quieren una oficina abierta todo el día. Si necesitas grabaciones, notas con IA o un mapa que diseñes tú, Gather o SoWork Premium te irán mejor. TinyFloor es gratis para hasta 3 personas, así que puedes probarlo primero con tu equipo."
+      "body": "TinyFloor es la opción sencilla y económica: una oficina en el navegador donde te acercas para hablar, con sala de reuniones, chat y pantalla compartida, por un precio por oficina. Es para equipos pequeños que quieren una oficina abierta todo el día. Si necesitas grabaciones, notas con IA o un mapa que diseñes tú, Gather o SoWork Premium te irán mejor. TinyFloor es gratis para hasta 3 personas, así que puedes probarlo primero con tu equipo."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 personas",
-              "300 $",
-              "$29",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos. El plan gratuito de SoWork también cubre hasta 10 miembros, con reuniones de 30 minutos como máximo, y el de WorkAdventure hasta 10 personas a la vez."

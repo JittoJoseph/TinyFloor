@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Slå på högtalaren",
     "settings": "Inställningar",
     "leaveCall": "Lämna samtalet",
-    "leaveMeeting": "Lämna mötet"
+    "leaveMeeting": "Lämna mötet",
+    "cameraRested": "Kameran av medan det är tyst"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Det här kontoret har",
     "members": "{used} av {seats} medlemmar",
-    "freeNote": "{hours} mötestimmar i månaden.",
+    "freeNote": "Allt ingår, för upp till {seats} personer.",
     "renews": "Förnyas {date}",
     "ends": "Slutar {date}, sedan gratisplanen",
     "perMonth": "i månaden",
@@ -639,9 +640,6 @@
     "cancelTitle": "Säga upp planen?",
     "moreSeats": "Fler platser",
     "membersLabel": "Medlemmar",
-    "hoursLabel": "Mötestimmar",
-    "hours": "{used} av {allowance} h",
-    "hoursResets": "Nollställs {date}",
     "hoursUsedUp": "Månadens mötestimmar är slut: möten är bara med ljud till {date}.",
     "payment": "Betalning",
     "cardUnknown": "Kort sparat hos Creem",
@@ -683,7 +681,7 @@
       "fullTitle": "Få in alla",
       "fullBody": "{office} är fullt med {seats} personer på Free. Med Pro kommer alla du bjuder in in direkt.",
       "hoursTitle": "Behåll video i mötena",
-      "hoursBody": "Pro ger ditt team {hours} mötestimmar i månaden och tar tillbaka videon direkt.",
+      "hoursBody": "Pro tar tillbaka videon direkt, med plats för hela ditt team.",
       "trialTitle": "Behåll Pro för ditt team",
       "trialBody": "Din provperiod slutar {date}. Därefter kan bara {free} personer vara på kontoret samtidigt.",
       "plansTitle": "Pro, för hela teamet",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Avsluta ändå",
     "loseSeatsOver": "{members} personer är medlemmar, men bara {free} kan vara på våningen samtidigt, och ingen ny kan gå med.",
     "loseSeats": "Platsen går från {seats} personer till {free}.",
-    "loseHours": "Mötestimmarna går från {hours} till {free} i månaden; därefter är möten bara med ljud.",
     "loseNothing": "Ingen tas bort och inget raderas.",
     "offer": {
       "trial": "Prov",
@@ -707,13 +704,12 @@
       "daily": "Det är under {price} om dagen.",
       "anchor": "Verktyg med pris per person skulle ta ungefär {price} i månaden för samma team.",
       "wholeTeam": "Hela ditt team, på en våning",
-      "hours": "{hours} mötestimmar i månaden",
-      "hoursTimes": "{hours} mötestimmar i månaden, {times}× Free",
       "support": "Prioriterad hjälp från vårt team",
       "everything": "Och allt ni redan har: HD-video, spontana samtal som aldrig räknas, chatt, skärmdelning och whiteboard.",
       "get": "Skaffa Pro · {price} i månaden",
       "keep": "Behåll Pro · {price} i månaden",
-      "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar."
+      "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",
+      "meetings": "Möten så ofta ditt team behöver"
     }
   }
 }

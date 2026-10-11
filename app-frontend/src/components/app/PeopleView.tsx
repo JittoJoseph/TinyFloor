@@ -117,6 +117,8 @@ function OfficePeople() {
         Number(b.id === user?.id) - Number(a.id === user?.id) || rank(a.id) - rank(b.id) || a.displayName.localeCompare(b.displayName),
     );
 
+  const seatsShown = office.plan === "free" || used >= office.seats - 2;
+
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
       <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10">
@@ -128,16 +130,19 @@ function OfficePeople() {
           </Button>
         </header>
 
-        <div className="mt-6 grid items-start gap-3 md:grid-cols-[minmax(0,1fr)_17rem]">
+        {/* Seats are counted where they matter: Free's 3, or a paid office close to full (docs/24). */}
+        <div className={cn("mt-6 grid items-start gap-3", seatsShown && "md:grid-cols-[minmax(0,1fr)_17rem]")}>
           <InviteLink link={link} admin={admin} officeId={office.id} onShare={invite} copied={copied === "invite"} />
-          <Seats
-            used={used}
-            seats={office.seats}
-            full={full}
-            upgrade={admin && office.plan === "free"}
-            trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
-            trialPlan={plans?.trialPlan ?? null}
-          />
+          {seatsShown && (
+            <Seats
+              used={used}
+              seats={office.seats}
+              full={full}
+              upgrade={admin && office.plan === "free"}
+              trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
+              trialPlan={plans?.trialPlan ?? null}
+            />
+          )}
         </div>
 
         {error && <p className="mt-4 text-[13px] text-destructive">{error}</p>}

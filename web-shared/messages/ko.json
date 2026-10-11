@@ -34,7 +34,7 @@
     "signIn": "로그인",
     "account": "계정",
     "createOffice": "오피스 만들기",
-    "plansSoon": "팀이 더 크다면? 좌석이 더 많은 요금제가 곧 나와요."
+    "plansSoon": "팀 전체를 위한 Pro가 곧 나와요."
   },
   "languageSwitcher": {
     "label": "언어",
@@ -90,7 +90,8 @@
     "leave": "나가기",
     "trialLeft": "{plan} 체험 · {count}일 남음",
     "choosePlan": "요금제 선택",
-    "upgrade": "업그레이드"
+    "upgrade": "업그레이드",
+    "members": "{count, plural, other {멤버 #명}}"
   },
   "home": {
     "nav": {

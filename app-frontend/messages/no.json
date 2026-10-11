@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Slå på høyttaleren",
     "settings": "Innstillinger",
     "leaveCall": "Forlat samtalen",
-    "leaveMeeting": "Forlat møtet"
+    "leaveMeeting": "Forlat møtet",
+    "cameraRested": "Kamera av mens det er stille"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Dette kontoret er på",
     "members": "{used} av {seats} medlemmer",
-    "freeNote": "{hours} møtetimer i måneden.",
+    "freeNote": "Alt inkludert, for opptil {seats} personer.",
     "renews": "Fornyes {date}",
     "ends": "Slutter {date}, deretter gratisplanen",
     "perMonth": "i måneden",
@@ -639,9 +640,6 @@
     "cancelTitle": "Si opp planen?",
     "moreSeats": "Få flere plasser",
     "membersLabel": "Medlemmer",
-    "hoursLabel": "Møtetimer",
-    "hours": "{used} av {allowance} t",
-    "hoursResets": "Nullstilles {date}",
     "hoursUsedUp": "Månedens møtetimer er brukt opp: møter er bare med lyd til {date}.",
     "payment": "Betaling",
     "cardUnknown": "Kort lagret hos Creem",
@@ -683,7 +681,7 @@
       "fullTitle": "Få alle inn",
       "fullBody": "{office} er fullt med {seats} personer på Free. Med Pro kommer alle du inviterer inn med en gang.",
       "hoursTitle": "Behold video i møtene",
-      "hoursBody": "Pro gir teamet ditt {hours} møtetimer i måneden og gir deg video tilbake med en gang.",
+      "hoursBody": "Pro gir deg video tilbake med en gang, med plass til hele teamet ditt.",
       "trialTitle": "Behold Pro for teamet ditt",
       "trialBody": "Prøveperioden slutter {date}. Etter det kan bare {free} personer være på kontoret samtidig.",
       "plansTitle": "Pro, for hele teamet",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Avslutt likevel",
     "loseSeatsOver": "{members} personer er medlemmer, men bare {free} kan være på etasjen samtidig, og ingen nye kan bli med.",
     "loseSeats": "Plassen går fra {seats} personer til {free}.",
-    "loseHours": "Møtetimene går fra {hours} til {free} i måneden; etter det er møter bare med lyd.",
     "loseNothing": "Ingen fjernes, og ingenting slettes.",
     "offer": {
       "trial": "Prøve",
@@ -707,13 +704,12 @@
       "daily": "Det er under {price} om dagen.",
       "anchor": "Verktøy med pris per person ville tatt omtrent {price} i måneden for det samme teamet.",
       "wholeTeam": "Hele teamet ditt, på én etasje",
-      "hours": "{hours} møtetimer i måneden",
-      "hoursTimes": "{hours} møtetimer i måneden, {times}× Free",
       "support": "Prioritert hjelp fra teamet vårt",
       "everything": "Og alt dere allerede har: HD-video, spontane samtaler som aldri telles, chat, skjermdeling og tavle.",
       "get": "Få Pro · {price} i måneden",
       "keep": "Behold Pro · {price} i måneden",
-      "assurance": "Si opp når som helst. Full refusjon innen 14 dager."
+      "assurance": "Si opp når som helst. Full refusjon innen 14 dager.",
+      "meetings": "Møter så ofte teamet ditt trenger"
     }
   }
 }

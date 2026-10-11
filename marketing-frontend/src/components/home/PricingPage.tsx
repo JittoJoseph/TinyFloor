@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { CalendarOff, Check, CreditCard, Mic, Minus, Refund, UserPlus } from "@/components/ui/icons";
+import { CalendarOff, Check, CreditCard, Minus, Refund, UserPlus, Users } from "@/components/ui/icons";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,7 @@ export function PricingPage() {
               { key: "cancel", icon: <CalendarOff /> },
               { key: "refund", icon: <Refund /> },
               { key: "change", icon: <UserPlus /> },
-              { key: "hours", icon: <Mic /> },
+              { key: "size", icon: <Users /> },
               { key: "tax", icon: <CreditCard /> },
             ] as const
           ).map((one) => ({
@@ -105,7 +105,7 @@ function SeatCompare() {
 }
 
 /**
- * Both plans side by side: what differs first (meeting hours, help, people),
+ * Both plans side by side: what differs first (people, help), with no meters,
  * then what both have, as a column of ticks. On a phone the plan columns stay
  * narrow so the whole table fits without scrolling sideways.
  */
@@ -117,7 +117,7 @@ function PlanTable() {
   const tick = <Check className="mx-auto size-[18px] text-foreground" />;
   const none = <Minus className="mx-auto size-[18px] text-muted-foreground" />;
   const rows: Array<{ label: string; note?: string; cells: ReactNode[] }> = [
-    { label: t("hours"), note: t("hoursNote"), cells: PLANS.map((plan) => plan.hours) },
+    { label: t("meetings"), cells: PLANS.map(() => tick) },
     { label: t("support"), cells: PLANS.map((plan) => (plan.price ? tick : none)) },
     { label: t("people"), cells: PLANS.map((plan) => (plan.price ? t("wholeTeam") : plan.people)) },
     { label: t("calls"), note: t("callsNote"), cells: PLANS.map(() => tick) },

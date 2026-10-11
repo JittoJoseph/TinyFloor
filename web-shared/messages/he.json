@@ -34,7 +34,7 @@
     "signIn": "התחברות",
     "account": "חשבון",
     "createOffice": "יצירת משרד",
-    "plansSoon": "צוות גדול יותר? תוכניות עם יותר מקומות יגיעו בקרוב."
+    "plansSoon": "‏Pro לכל הצוות שלך יגיע בקרוב."
   },
   "languageSwitcher": {
     "label": "שפה",
@@ -90,7 +90,8 @@
     "leave": "לצאת",
     "trialLeft": "ניסיון {plan} · {count, plural, one {נשאר יום אחד} other {נשארו # ימים}}",
     "choosePlan": "בחירת תוכנית",
-    "upgrade": "שדרוג"
+    "upgrade": "שדרוג",
+    "members": "{count, plural, one {חבר אחד} other {# חברים}}"
   },
   "home": {
     "nav": {

@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Unmute speaker",
     "settings": "Settings",
     "leaveCall": "Leave call",
-    "leaveMeeting": "Leave meeting"
+    "leaveMeeting": "Leave meeting",
+    "cameraRested": "Camera off while it's quiet"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "This office is on",
     "members": "{used} of {seats} members",
-    "freeNote": "{hours} meeting hours a month.",
+    "freeNote": "Everything included, for up to {seats} people.",
     "renews": "Renews on {date}",
     "ends": "Ends on {date}, then the free plan",
     "perMonth": "a month",
@@ -639,9 +640,6 @@
     "cancelTitle": "Cancel the plan?",
     "moreSeats": "Get more seats",
     "membersLabel": "Members",
-    "hoursLabel": "Meeting hours",
-    "hours": "{used} of {allowance} h",
-    "hoursResets": "Resets {date}",
     "hoursUsedUp": "This month's meeting hours are used: meetings are voice only until {date}.",
     "payment": "Payment",
     "cardUnknown": "Card on file with Creem",
@@ -683,7 +681,7 @@
       "fullTitle": "Bring everyone in",
       "fullBody": "{office} is full at {seats} people on Free. With Pro, everyone you invite gets straight in.",
       "hoursTitle": "Keep meetings on video",
-      "hoursBody": "Pro gives your team {hours} meeting hours a month, and brings video back straight away.",
+      "hoursBody": "Pro brings video back straight away, with room for your whole team.",
       "trialTitle": "Keep Pro for your team",
       "trialBody": "Your trial ends on {date}. After that, only {free} people can be on the floor at once.",
       "plansTitle": "Pro, for the whole team",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Cancel anyway",
     "loseSeatsOver": "{members} people are members, but only {free} could be on the floor at once, and no one new could join.",
     "loseSeats": "Room drops from {seats} people to {free}.",
-    "loseHours": "Meeting hours drop from {hours} to {free} a month; past them, meetings are voice only.",
     "loseNothing": "Nobody is removed and nothing is deleted.",
     "offer": {
       "trial": "Trial",
@@ -707,13 +704,12 @@
       "daily": "That's under {price} a day.",
       "anchor": "Per-person tools would charge about {price} a month for the same team.",
       "wholeTeam": "Everyone on your team, on one floor",
-      "hours": "{hours} meeting hours a month",
-      "hoursTimes": "{hours} meeting hours a month, {times}× Free",
       "support": "Priority help from our team",
       "everything": "And everything you have now: HD video, walk-up calls that never count, chat, screen sharing and the whiteboard.",
       "get": "Get Pro · {price} a month",
       "keep": "Keep Pro · {price} a month",
-      "assurance": "Cancel any time. Full refund within 14 days."
+      "assurance": "Cancel any time. Full refund within 14 days.",
+      "meetings": "Meetings as often as your team needs"
     }
   }
 }

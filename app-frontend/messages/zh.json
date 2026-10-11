@@ -132,7 +132,8 @@
     "unmuteSpeaker": "打开扬声器",
     "settings": "设置",
     "leaveCall": "退出通话",
-    "leaveMeeting": "离开会议"
+    "leaveMeeting": "离开会议",
+    "cameraRested": "安静时摄像头已关闭"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "此办公室当前方案",
     "members": "{used}/{seats} 名成员",
-    "freeNote": "每月 {hours} 小时会议。",
+    "freeNote": "最多 {seats} 人，全部功能都包含。",
     "renews": "{date} 续订",
     "ends": "{date} 结束，之后为免费方案",
     "perMonth": "/月",
@@ -639,9 +640,6 @@
     "cancelTitle": "取消方案？",
     "moreSeats": "获取更多席位",
     "membersLabel": "成员",
-    "hoursLabel": "会议时长",
-    "hours": "{used} / {allowance} 小时",
-    "hoursResets": "{date} 重置",
     "hoursUsedUp": "本月会议时长已用完：{date} 前会议仅限语音。",
     "payment": "付款",
     "cardUnknown": "已在 Creem 保存的卡",
@@ -683,7 +681,7 @@
       "fullTitle": "让所有人都进来",
       "fullBody": "{office} 在 Free 下已满 {seats} 人。开通 Pro，你邀请的每个人都能马上进来。",
       "hoursTitle": "让会议保持视频",
-      "hoursBody": "Pro 为团队提供每月 {hours} 小时会议，视频也会立即恢复。",
+      "hoursBody": "Pro 会立即恢复视频，并给整个团队留出位置。",
       "trialTitle": "为团队保留 Pro",
       "trialBody": "你的试用将在 {date} 结束。之后，办公室同时只能有 {free} 个人。",
       "plansTitle": "Pro，为整个团队",
@@ -698,7 +696,6 @@
     "cancelAnyway": "仍要取消",
     "loseSeatsOver": "办公室有 {members} 名成员，但同时只能有 {free} 人在楼层上，新人也无法加入。",
     "loseSeats": "名额从 {seats} 人降到 {free} 人。",
-    "loseHours": "会议时长从每月 {hours} 小时降到 {free} 小时，超出后会议只能语音。",
     "loseNothing": "不会移除任何人，也不会删除任何内容。",
     "offer": {
       "trial": "试用",
@@ -707,13 +704,12 @@
       "daily": "每天不到 {price}。",
       "anchor": "按人收费的工具，同一个团队每月大约要 {price}。",
       "wholeTeam": "整个团队，在同一层楼",
-      "hours": "每月 {hours} 小时会议",
-      "hoursTimes": "每月 {hours} 小时会议，是 Free 的 {times} 倍",
       "support": "我们团队的优先支持",
       "everything": "还有你现在拥有的一切：高清视频、从不计时的随口通话、聊天、屏幕共享和白板。",
       "get": "开通 Pro · 每月 {price}",
       "keep": "继续使用 Pro · 每月 {price}",
-      "assurance": "随时可以取消。14 天内全额退款。"
+      "assurance": "随时可以取消。14 天内全额退款。",
+      "meetings": "团队需要多少会议就开多少"
     }
   }
 }

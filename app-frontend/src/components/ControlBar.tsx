@@ -9,6 +9,7 @@ import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { setInCall } from "@/lib/floor";
 import { useRouter } from "@/lib/i18n/navigation";
+import { CameraRested } from "@/components/meetings/CameraRested";
 
 /**
  * The dock along the bottom of the floor: your microphone, always. In a call,
@@ -35,6 +36,7 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
 
   return (
     <div className="absolute bottom-3 left-1/2 z-50 max-w-[calc(100%-1.5rem)] -translate-x-1/2 sm:bottom-4">
+      <CameraRested className="absolute bottom-full left-1/2 mb-2.5 -translate-x-1/2" />
       <Dock size={44} className="items-center gap-1 rounded-full border-border bg-card/90 p-1.5 shadow-float [--face-ring:var(--ui-card)]">
         <IconButton
           label={micEnabled ? t("muteMic") : t("unmuteMic")}

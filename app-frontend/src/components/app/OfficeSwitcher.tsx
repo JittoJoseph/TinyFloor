@@ -74,7 +74,9 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           <div className="min-w-0">
             <p className="truncate text-[14px] font-medium text-foreground">{office.name}</p>
             <p className="truncate text-[12px] text-muted-foreground">
-              {t("membersOf", { used: office.members, seats: office.seats })}
+              {office.plan === "free"
+                ? t("membersOf", { used: office.members, seats: office.seats })
+                : t("members", { count: office.members })}
             </p>
             {trialDays && (
               <p className="truncate text-[12px] font-medium text-brand">
@@ -95,11 +97,7 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           <MenuSeparator />
           <MenuLabel>{t("switchTo")}</MenuLabel>
           {others.map((one) => (
-            <MenuItem
-              key={one.id}
-              icon={<Face seed={one.id} size={16} square />}
-              onSelect={() => router.push(officePath(one.id))}
-            >
+            <MenuItem key={one.id} icon={<Face seed={one.id} size={16} square />} onSelect={() => router.push(officePath(one.id))}>
               <span className="flex w-full items-center gap-2">
                 <span className="min-w-0 flex-1 truncate">{one.name}</span>
                 {!!one.here && (

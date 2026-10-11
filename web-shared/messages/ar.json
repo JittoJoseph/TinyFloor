@@ -34,7 +34,7 @@
     "signIn": "تسجيل الدخول",
     "account": "الحساب",
     "createOffice": "إنشاء مكتب",
-    "plansSoon": "فريق أكبر؟ خطط بمقاعد أكثر قادمة قريبًا."
+    "plansSoon": "‏Pro لفريقك كله قادم قريبًا."
   },
   "languageSwitcher": {
     "label": "اللغة",
@@ -90,7 +90,8 @@
     "leave": "غادر",
     "trialLeft": "تجربة {plan} · {count, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}} متبقية",
     "choosePlan": "اختر خطة",
-    "upgrade": "ترقية"
+    "upgrade": "ترقية",
+    "members": "{count, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}"
   },
   "home": {
     "nav": {

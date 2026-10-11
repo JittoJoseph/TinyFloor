@@ -11,7 +11,6 @@ export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 
 /** The one paid plan (docs/23), from the catalog. */
 export const paidPlan = (plans: Plan[]) => plans.find((plan) => plan.price !== null);
-const freePlan = (plans: Plan[]) => plans.find((plan) => plan.price === null);
 
 /** What a per-person tool charges a person (Gather's $12, docs/22's survey), for the comparison. */
 const PER_SEAT = 1200;
@@ -129,15 +128,9 @@ function OfferButton({
  */
 export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: string }) {
   const t = useTranslations("billing.offer");
-  const pro = paidPlan(plans);
-  const free = freePlan(plans);
-  if (!pro) return null;
-  const times = free?.meetingHours ? Math.round(pro.meetingHours / free.meetingHours) : 0;
-  const items = [
-    t("wholeTeam"),
-    times > 1 ? t("hoursTimes", { hours: pro.meetingHours, times }) : t("hours", { hours: pro.meetingHours }),
-    t("support"),
-  ];
+  if (!paidPlan(plans)) return null;
+  // No hours, no counts: what the team gets, not what it's allowed (docs/24).
+  const items = [t("wholeTeam"), t("meetings"), t("support")];
   return (
     <div className={className}>
       <ul className="space-y-2.5 text-[13.5px] text-foreground">

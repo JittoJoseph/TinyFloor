@@ -34,7 +34,7 @@
     "signIn": "Zaloguj się",
     "account": "Konto",
     "createOffice": "Utwórz biuro",
-    "plansSoon": "Większy zespół? Plany z większą liczbą miejsc już wkrótce."
+    "plansSoon": "Pro dla całego zespołu już wkrótce."
   },
   "languageSwitcher": {
     "label": "Język",
@@ -90,7 +90,8 @@
     "leave": "Wyjdź",
     "trialLeft": "Próba {plan} · {count, plural, one {został # dzień} few {zostały # dni} other {zostało # dni}}",
     "choosePlan": "Wybierz plan",
-    "upgrade": "Ulepsz plan"
+    "upgrade": "Ulepsz plan",
+    "members": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}"
   },
   "home": {
     "nav": {

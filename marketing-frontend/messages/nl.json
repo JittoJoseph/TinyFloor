@@ -23,7 +23,7 @@
       },
       {
         "q": "Is TinyFloor gratis?",
-        "a": "Ja, voor een kantoor tot 3 mensen, met 5 meetinguren per maand. Daarna kost Pro $29 per maand voor het hele team, niet per persoon."
+        "a": "Ja, voor een kantoor tot 3 mensen, alles inbegrepen. Daarna kost Pro $29 per maand voor het hele team, niet per persoon."
       },
       {
         "q": "Moet ik iets installeren?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
-            "a": "Tot 3 mensen op Free en tot 25 op Pro, en je kunt zoveel kantoren maken als je nodig hebt."
+            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "Is TinyFloor geschikt voor virtuele evenementen?",
-            "a": "TinyFloor is gemaakt voor teams die elke dag samenwerken. Een kantoor biedt plaats aan maximaal 25 mensen, dus het past beter bij kleine teams dan bij grote evenementen."
+            "a": "TinyFloor is gemaakt voor kleine teams die elke dag samenwerken, tot 15 mensen per kantoor, meer dan voor grote evenementen."
           },
           {
             "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "WorkAdventure-alternatief",
         "meta": {
-          "title": "WorkAdventure-alternatief voor teams tot 25 mensen",
+          "title": "WorkAdventure-alternatief voor kleine teams",
           "description": "Het gratis abonnement van WorkAdventure laat 10 mensen tegelijk toe. TinyFloor is een virtueel kantoor in pixel art met videogesprekken op nabijheid, gratis voor 3 mensen en $29 per maand voor het hele team."
         },
         "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Twee keer zoveel plek",
-            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een TinyFloor-kantoor biedt plek aan maximaal 25 leden, en je kunt zoveel kantoren openen als je wilt."
+            "body": "Een gratis WorkAdventure-kaart biedt plek aan 10 mensen tegelijk. Een TinyFloor-kantoor is gemaakt voor een klein team dat de hele dag samenwerkt, en je kunt zoveel kantoren openen als je wilt."
           },
           {
             "title": "Geen kaart om te bouwen",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Hoeveel mensen kunnen meedoen?",
-            "a": "Tot 3 mensen op Free en tot 25 op Pro, en je kunt zoveel kantoren maken als je nodig hebt."
+            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
           },
           {
             "q": "Is TinyFloor gratis?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "Hoeveel mensen kunnen één kantoor gebruiken?",
-            "a": "Tot 3 mensen op Free en tot 25 op Pro. Een groter bedrijf kan voor elk team een kantoor maken."
+            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Een groter bedrijf kan voor elk team een kantoor maken."
           },
           {
             "q": "Vervangt het videogesprekken?",
@@ -471,10 +471,10 @@
           "description": "oVice rekent per ruimte of vanaf 20 gebruikers. TinyFloor is een virtueel kantoor in de browser voor kleine teams: gratis voor 3 mensen, daarna $29 per maand voor het hele team."
         },
         "title": "Een <em>oVice-alternatief</em> op maat van kleine teams.",
-        "subtitle": "oVice is gebouwd voor bedrijven en communities, met abonnementen per ruimtegrootte of vanaf 20 gebruikers. TinyFloor is gemaakt voor teams van 2 tot 25, met één eenvoudige prijs per kantoor.",
+        "subtitle": "oVice is gebouwd voor bedrijven en community's, met abonnementen per ruimtegrootte of vanaf 20 gebruikers. TinyFloor is gemaakt voor kleine teams, met één eenvoudige prijs per kantoor.",
         "points": [
           {
-            "title": "Prijzen voor 3, 10 of 25",
+            "title": "Eén prijs per kantoor",
             "body": "Gratis voor maximaal 3 mensen, daarna $29 per maand voor het hele team. Geen ruimtematen om uit te rekenen."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
-            "a": "Tot 3 mensen op Free en tot 25 op Pro, en je kunt zoveel kantoren maken als je nodig hebt."
+            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Wat is beter voor een klein team?",
-            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen, en Gather past bij teams die meer willen aanpassen. Wil je één eenvoudige prijs voor een team van maximaal 25 mensen, dan is TinyFloor daarvoor gemaakt."
+            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen, en Gather bij teams die meer willen aanpassen. Wil je één eenvoudige prijs voor een klein team, dan is TinyFloor daarvoor gemaakt."
           },
           {
             "q": "Draaien Gather en Kumospace in de browser?",
@@ -845,8 +845,8 @@
             "a": "Kies een tijd, kom elke dag op dezelfde plek samen en houd het kort. Op TinyFloor is de hoofdvergadering er altijd: iedereen loopt op tijd naar binnen en loopt naar buiten als het klaar is."
           },
           {
-            "q": "Hoeveel vergaderuren kost een dagelijkse standup?",
-            "a": "Een standup van 15 minuten op elke werkdag is ongeveer 5 uur per maand. Free bevat 5 uur groepsmeetings per maand, en Pro 60."
+            "q": "Kost een dagelijkse standup extra?",
+            "a": "Nee. Meetings zitten in elk abonnement, zonder iets te tellen. Een standup van 15 minuten op elke werkdag is ongeveer 5 uur per maand."
           },
           {
             "q": "Kunnen we ook asynchrone standups doen?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Neemt een nieuwe medewerker een plek in het abonnement?",
-            "a": "Ja, iedereen in het kantoor is lid. Pro heeft plek voor het hele team, tot 25 mensen."
+            "a": "Ja, iedereen in het kantoor is lid. Pro heeft plek voor het hele team."
           },
           {
             "q": "Kunnen nieuwe mensen de chat teruglezen?",
@@ -963,8 +963,8 @@
             "a": "Het is het informele praatje dat een remote team van kantoor mist: mensen tegenkomen en over van alles praten. Op TinyFloor gebeurt het op de verdieping in plaats van in een gepland gesprek."
           },
           {
-            "q": "Kosten deze praatjes vergaderuren?",
-            "a": "Gesprekken met z'n tweeën tellen nooit. Alleen groepsvergaderingen tellen mee voor de uren per maand."
+            "q": "Tellen gesprekjes bij het koffieapparaat ergens mee?",
+            "a": "Nee. Gesprekken tussen twee mensen tellen nooit, en meetings zitten in elk abonnement."
           },
           {
             "q": "Kunnen we samen muziek luisteren?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Hoe groot mag een engineeringteam zijn?",
-            "a": "Tot 25 mensen in één kantoor met Pro. Grotere organisaties kunnen elk team een eigen kantoor geven."
+            "a": "Pro is gemaakt voor een klein team, tot 15 mensen in één kantoor. Grotere organisaties geven elk team een eigen kantoor."
           },
           {
             "q": "Kunnen we Slack houden?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 mensen",
             "title": "Free",
-            "body": "De oprichters delen gratis een verdieping, met 5 vergaderuren per maand."
+            "body": "De oprichters delen gratis een verdieping, alles inbegrepen."
           },
           {
             "label": "4e persoon",
@@ -1131,7 +1131,7 @@
           {
             "label": "Het hele team",
             "title": "Pro",
-            "body": "$29 per maand voor het hele kantoor, met 60 meetinguren."
+            "body": "$29 per maand voor het hele kantoor, met meetings zo vaak als jullie nodig hebben."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Ja. Een betaald abonnement loopt tot het einde van de betaalde periode, daarna gaat het kantoor terug naar Free. Er wordt niets verwijderd."
           },
           {
-            "q": "Wat gebeurt er als we groter worden dan 25 mensen?",
-            "a": "Een kantoor heeft plek voor maximaal 25 mensen. Geef elk team een eigen kantoor."
+            "q": "Wat gebeurt er als we uit één kantoor groeien?",
+            "a": "Een kantoor is gemaakt voor een klein team, tot 15 mensen. Als jullie groeien, geef dan elk team een eigen kantoor."
           },
           {
             "q": "Hebben we IT-inrichting nodig?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Hoeveel mensen kunnen we hebben?",
-            "a": "Iedereen, tot 25 mensen op Pro, voor één maandprijs voor het hele kantoor."
+            "a": "Je hele team, tot 15 mensen op Pro, voor één maandprijs voor het hele kantoor."
           },
           {
             "q": "Kunnen freelancers erbij?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Hoeveel mensen kunnen meedoen aan een meeting?",
-            "a": "Iedereen in het kantoor: tot 3 mensen op Free en tot 25 op Pro."
+            "a": "Iedereen in het kantoor: tot 3 mensen op Free en het hele team op Pro."
           },
           {
             "q": "Hebben meetings een tijdslimiet?",
-            "a": "Geen limiet per meeting. Elk abonnement bevat elke maand uren voor groepsmeetings: 5 op Free en 60 op Pro."
+            "a": "Nee. Meetings zitten in elk abonnement, zonder teller om in de gaten te houden."
           },
           {
             "q": "Wat gebeurt er als de uren op zijn?",
@@ -1599,8 +1599,8 @@
       "tax": "Prijzen per maand, exclusief btw.",
       "choose": "Kies {plan}",
       "note": "Gesprekken tussen twee mensen tellen nooit mee. Elke prijs geldt voor het hele kantoor, niet per persoon.",
-      "perksPro": "Je hele team · {hours} meetinguren · voorrang bij hulp",
-      "perksFree": "Tot {people} mensen · {hours} meetinguren per maand",
+      "perksPro": "Je hele team · meetings zo vaak als nodig · voorrang bij hulp",
+      "perksFree": "Tot {people} mensen · alles inbegrepen",
       "daily": "Minder dan {price} per dag",
       "assurance": "Altijd opzegbaar · 14 dagen terugbetaling"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Prijzen: één prijs voor het hele kantoor",
-      "description": "TinyFloor is gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, met 60 meetinguren en voorrang bij hulp. Een prijs per kantoor, niet per persoon."
+      "description": "TinyFloor is gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, met meetings zo vaak als nodig en voorrang bij hulp. Een prijs per kantoor, niet per persoon."
     },
     "title": "Eén prijs voor het hele kantoor.",
     "muted": "Niet één per persoon.",
@@ -1638,12 +1638,11 @@
       "title": "Vergelijk abonnementen,",
       "muted": "naast elkaar.",
       "people": "Mensen",
-      "hours": "Vergaderuren per maand",
-      "hoursNote": "Alleen groepsvergaderingen",
       "calls": "Gesprekken met z'n tweeën",
       "callsNote": "Tellen nooit mee",
       "support": "Voorrang bij hulp",
-      "wholeTeam": "Hele team"
+      "wholeTeam": "Hele team",
+      "meetings": "Groepsmeetings"
     },
     "notes": {
       "title": "Goed om te weten.",
@@ -1659,13 +1658,13 @@
         "title": "Een proefperiode als het team komt",
         "body": "Als een 4e persoon bij een gratis kantoor komt, krijgt het hele team Pro 14 dagen gratis. Geen kaart nodig."
       },
-      "hours": {
-        "title": "Als de uren op zijn",
-        "body": "Vergaderingen gaan tot de 1e verder met alleen geluid. Gesprekken met z'n tweeën werken gewoon."
-      },
       "tax": {
         "title": "Btw bij het afrekenen",
         "body": "Prijzen zijn in Amerikaanse dollars. Creem, onze wederverkoper, rekent bij het betalen eventuele btw of omzetbelasting."
+      },
+      "size": {
+        "title": "Gemaakt voor kleine teams",
+        "body": "Een kantoor is voor een team dat elke dag samenwerkt, tot 15 mensen. Een groter bedrijf geeft elk team een eigen kantoor."
       }
     }
   },

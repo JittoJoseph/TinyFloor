@@ -3,8 +3,14 @@ interface Pending {
   peak: number;
   personMs: number;
   sfuMs: number;
+  /** Time in calls on the floor, and the part of it with video coming in (absent in rows written before they were counted). */
+  callMs?: number;
+  callVideoMs?: number;
   since: number;
 }
+
+/** One report never adds more than this: a socket that went quiet without closing doesn't count for days. */
+const MAX_CALL_MS = 12 * 60 * 60_000;
 
 /** A busy room that never empties still writes at least this often. */
 const FLUSH_EVERY_MS = 60 * 60_000;
@@ -36,10 +42,19 @@ export class Usage {
     this.write(pending);
   }
 
+  /** Someone's time in a call on the floor, `videoMs` of it with video coming in. */
+  called(ms: number, videoMs: number, now: number): void {
+    if (ms <= 0) return;
+    const pending = this.read(now);
+    pending.callMs = (pending.callMs ?? 0) + Math.min(ms, MAX_CALL_MS);
+    pending.callVideoMs = (pending.callVideoMs ?? 0) + Math.min(Math.max(0, videoMs), ms, MAX_CALL_MS);
+    this.write(pending);
+  }
+
   /** Whether it is time to write: the room is empty, or it has been a while. */
   due(present: number, now: number): boolean {
     const pending = this.peek();
-    if (!pending || (pending.personMs === 0 && pending.sfuMs === 0 && pending.peak === 0)) return false;
+    if (!pending || (pending.personMs === 0 && pending.sfuMs === 0 && !pending.callMs && pending.peak === 0)) return false;
     return present === 0 || now - pending.since >= FLUSH_EVERY_MS;
   }
 
@@ -54,17 +69,21 @@ export class Usage {
 
     const personMinutes = Math.round(pending.personMs / 60_000);
     const sfuMinutes = Math.round(pending.sfuMs / 60_000);
+    const callMinutes = Math.round((pending.callMs ?? 0) / 60_000);
+    const callVideoMinutes = Math.round((pending.callVideoMs ?? 0) / 60_000);
     try {
       await this.db
         .prepare(
-          `INSERT INTO usage_daily (day, office_id, peak_people, person_minutes, sfu_minutes)
-           VALUES (?1, ?2, ?3, ?4, ?5)
+          `INSERT INTO usage_daily (day, office_id, peak_people, person_minutes, sfu_minutes, call_minutes, call_video_minutes)
+           VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
            ON CONFLICT (day, office_id) DO UPDATE SET
              peak_people = MAX(peak_people, excluded.peak_people),
              person_minutes = person_minutes + excluded.person_minutes,
-             sfu_minutes = sfu_minutes + excluded.sfu_minutes`,
+             sfu_minutes = sfu_minutes + excluded.sfu_minutes,
+             call_minutes = call_minutes + excluded.call_minutes,
+             call_video_minutes = call_video_minutes + excluded.call_video_minutes`,
         )
-        .bind(dayOf(now), room, pending.peak, personMinutes, sfuMinutes)
+        .bind(dayOf(now), room, pending.peak, personMinutes, sfuMinutes, callMinutes, callVideoMinutes)
         .run();
     } catch (error) {
       const current = this.read(now);
@@ -72,6 +91,8 @@ export class Usage {
         peak: Math.max(current.peak, pending.peak),
         personMs: current.personMs + pending.personMs,
         sfuMs: current.sfuMs + pending.sfuMs,
+        callMs: (current.callMs ?? 0) + (pending.callMs ?? 0),
+        callVideoMs: (current.callVideoMs ?? 0) + (pending.callVideoMs ?? 0),
         since: pending.since,
       });
       console.error("usage write failed", room, error);

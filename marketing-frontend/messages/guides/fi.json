@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Ilmainen 3 hengelle · $29 kuukaudessa koko tiimille",
-            "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Ei tallenteita, tekoälymuistiinpanoja eikä karttaeditoria, ja toimistoon mahtuu enintään 25 henkeä."
+            "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Siinä ei ole tallenteita, tekoälymuistiinpanoja eikä karttaeditoria, ja toimistot on tehty pienille, enintään 15 hengen tiimeille."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Mihin TinyFloor sopii",
-      "body": "TinyFloor on se yksinkertainen ja edullinen: selaimessa toimiva toimisto, jossa kävelet jonkun luo juttelemaan, ja jossa on neuvotteluhuone, chat ja näytön jako, yhdellä toimistokohtaisella hinnalla. Se on 2–25 hengen tiimeille, jotka haluavat toimiston auki koko päivän. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai itse suunnitellun kartan, Gather tai SoWork Premium palvelee paremmin. TinyFloor on ilmainen enintään 3 hengelle, joten voit kokeilla sitä ensin tiimisi kanssa."
+      "body": "TinyFloor on se yksinkertainen ja edullinen: selaimessa toimiva toimisto, jossa kävelet jonkun luo juttelemaan, ja jossa on neuvotteluhuone, chat ja näytön jako, yhdellä toimistokohtaisella hinnalla. Se on pienille tiimeille, jotka haluavat koko päivän auki olevan toimiston. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai itse suunnitellun kartan, Gather tai SoWork Premium palvelee paremmin. TinyFloor on ilmainen enintään 3 hengelle, joten voit kokeilla sitä ensin tiimisi kanssa."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "54 $",
               "160 $"
-            ],
-            [
-              "25 henkeä",
-              "300 $",
-              "$29",
-              "135 $",
-              "400 $"
             ]
           ],
           "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. SoWorkin ilmainen paketti kattaa myös enintään 10 jäsentä, palaverit enintään 30 minuuttia, ja WorkAdventuren enintään 10 henkeä yhtä aikaa."

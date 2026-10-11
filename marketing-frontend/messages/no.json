@@ -23,7 +23,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja, for et kontor med opptil 3 personer og 5 møtetimer i måneden. Deretter koster Pro $29 i måneden for hele teamet, ikke per person."
+        "a": "Ja, for et kontor med opptil 3 personer, alt inkludert. Deretter koster Pro $29 i måneden for hele teamet, ikke per person."
       },
       {
         "q": "Må jeg installere noe?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Hvor mange får plass i et TinyFloor-kontor?",
-            "a": "Opptil 3 personer på Free og opptil 25 på Pro, og du kan lage så mange kontorer du trenger."
+            "a": "Opptil 3 personer på Free og et lite team på opptil 15 på Pro. Du kan lage så mange kontorer du trenger."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "Passer TinyFloor for virtuelle arrangementer?",
-            "a": "TinyFloor er laget for team som jobber sammen hver dag. Et kontor har plass til opptil 25 personer, så det passer bedre for små team enn store arrangementer."
+            "a": "TinyFloor er laget for små team som jobber sammen hver dag, opptil 15 personer per kontor, mer enn for store arrangementer."
           },
           {
             "q": "Hva har SpatialChat som TinyFloor ikke har?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "Alternativ til WorkAdventure",
         "meta": {
-          "title": "WorkAdventure-alternativ for team på opptil 25",
+          "title": "WorkAdventure-alternativ for små team",
           "description": "WorkAdventures gratisplan tillater 10 personer om gangen. TinyFloor er et virtuelt kontor i pikselkunst med videosamtaler etter nærhet, gratis for 3 personer og $29 i måneden for hele teamet."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plass til å vokse.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Dobbelt så mye plass",
-            "body": "Et gratis WorkAdventure-kart har plass til 10 personer samtidig. Et TinyFloor-kontor har plass til opptil 25 medlemmer, og du kan åpne så mange kontorer du vil."
+            "body": "Et gratis WorkAdventure-kart har plass til 10 personer om gangen. Et TinyFloor-kontor er laget for et lite team som jobber sammen hele dagen, og du kan åpne så mange kontorer du vil."
           },
           {
             "title": "Ingen kart å bygge",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Hvor mange kan bli med?",
-            "a": "Opptil 3 personer på Free og opptil 25 på Pro, og du kan lage så mange kontorer du trenger."
+            "a": "Opptil 3 personer på Free og et lite team på opptil 15 på Pro. Du kan lage så mange kontorer du trenger."
           },
           {
             "q": "Er TinyFloor gratis?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "Hvor mange kan bruke ett kontor?",
-            "a": "Opptil 3 personer på Free og opptil 25 på Pro. Et større selskap kan lage et kontor for hvert team."
+            "a": "Opptil 3 personer på Free og et lite team på opptil 15 på Pro. Et større selskap kan lage et kontor for hvert team."
           },
           {
             "q": "Erstatter det videosamtaler?",
@@ -471,10 +471,10 @@
           "description": "oVice tar betalt per rom eller fra 20 brukere. TinyFloor er et virtuelt kontor i nettleseren for små team: gratis for 3 personer, deretter $29 i måneden for hele teamet."
         },
         "title": "Et <em>oVice-alternativ</em> i størrelse for små team.",
-        "subtitle": "oVice er laget for bedrifter og fellesskap, med planer etter områdets størrelse eller fra 20 brukere. TinyFloor er laget for team på 2 til 25, med én enkel pris per kontor.",
+        "subtitle": "oVice er bygget for bedrifter og fellesskap, med planer etter romstørrelse eller fra 20 brukere. TinyFloor er laget for små team, med én enkel pris per kontor.",
         "points": [
           {
-            "title": "Priser for 3, 10 eller 25",
+            "title": "Én pris per kontor",
             "body": "Gratis for opptil 3 personer, deretter $29 i måneden for hele teamet. Ingen romstørrelser å regne ut."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "Hvor mange får plass i et TinyFloor-kontor?",
-            "a": "Opptil 3 personer på Free og opptil 25 på Pro, og du kan lage så mange kontorer du trenger."
+            "a": "Opptil 3 personer på Free og et lite team på opptil 15 på Pro. Du kan lage så mange kontorer du trenger."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Hva passer best for et lite team?",
-            "a": "Gratisplanen til Kumospace passer for opptil 5 personer, og Gather passer team som vil tilpasse mer. Vil du ha én enkel pris for et team på opptil 25 personer, er TinyFloor laget for det."
+            "a": "Kumospaces gratisplan passer for opptil 5 personer, og Gather for team som vil tilpasse mer. Vil du ha én enkel pris for et lite team, er TinyFloor laget for det."
           },
           {
             "q": "Kjører Gather og Kumospace i nettleseren?",
@@ -845,8 +845,8 @@
             "a": "Velg et tidspunkt, møt dere på samme sted hver dag og hold det kort. På TinyFloor er hovedmøtet alltid der: alle går inn til avtalt tid og går ut når det er ferdig."
           },
           {
-            "q": "Hvor mange møtetimer bruker en daglig standup?",
-            "a": "Et standup på 15 minutter hver arbeidsdag er omtrent 5 timer i måneden. Free inkluderer 5 timer gruppemøter i måneden, og Pro 60."
+            "q": "Koster et daglig standup ekstra?",
+            "a": "Nei. Møter følger med i alle planer, uten noe å telle. Et standup på 15 minutter hver arbeidsdag er omtrent 5 timer i måneden."
           },
           {
             "q": "Kan vi ha asynkrone standups i stedet?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Tar en nyansatt en plass i planen?",
-            "a": "Ja, alle i kontoret er medlemmer. Pro har plass til hele teamet, opptil 25 personer."
+            "a": "Ja, alle i kontoret er medlemmer. Pro har plass til hele teamet."
           },
           {
             "q": "Kan nye lese seg opp i chatten?",
@@ -963,8 +963,8 @@
             "a": "Det er den uformelle praten et team på avstand savner fra kontoret: å møte folk og snakke om hva som helst. På TinyFloor skjer den i etasjen i stedet for i en avtalt samtale."
           },
           {
-            "q": "Bruker kaffekrokpraten møtetimer?",
-            "a": "Samtaler mellom to telles aldri. Bare gruppemøter teller mot timene per måned."
+            "q": "Teller pratene ved kaffemaskinen noe sted?",
+            "a": "Nei. Samtaler mellom to personer teller aldri, og møter følger med i alle planer."
           },
           {
             "q": "Kan vi høre på musikk sammen?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "Hvor stort kan et utviklingsteam være?",
-            "a": "Opptil 25 personer på ett kontor med Pro. Større organisasjoner kan gi hvert team sitt eget kontor."
+            "a": "Pro er laget for et lite team, opptil 15 personer i ett kontor. Større organisasjoner gir hvert team sitt eget kontor."
           },
           {
             "q": "Kan vi beholde Slack?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 personer",
             "title": "Free",
-            "body": "Gründerne deler en etasje gratis, med 5 møtetimer i måneden."
+            "body": "Grunnleggerne deler en etasje gratis, alt inkludert."
           },
           {
             "label": "4. person",
@@ -1131,7 +1131,7 @@
           {
             "label": "Hele teamet",
             "title": "Pro",
-            "body": "$29 i måneden for hele kontoret, med 60 møtetimer."
+            "body": "$29 i måneden for hele kontoret, med møter så ofte dere trenger."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Ja. En betalt plan varer ut perioden dere har betalt for, deretter går kontoret tilbake til Free. Ingenting slettes."
           },
           {
-            "q": "Hva skjer når vi blir flere enn 25?",
-            "a": "Et kontor har plass til opptil 25 personer. Gi hvert team sitt eget kontor."
+            "q": "Hva skjer når vi vokser ut av ett kontor?",
+            "a": "Et kontor er laget for et lite team, opptil 15 personer. Når dere vokser, gi hvert team sitt eget kontor."
           },
           {
             "q": "Trenger vi noe IT-oppsett?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Hvor mange kan vi være?",
-            "a": "Alle, opptil 25 personer på Pro, for én månedspris for hele kontoret."
+            "a": "Hele teamet ditt, opptil 15 personer på Pro, for én månedspris for hele kontoret."
           },
           {
             "q": "Kan frilansere bli med?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Hvor mange kan bli med i et møte?",
-            "a": "Alle i kontoret: opptil 3 personer på Free og opptil 25 på Pro."
+            "a": "Alle i kontoret: opptil 3 personer på Free og hele teamet på Pro."
           },
           {
             "q": "Har møter en tidsgrense?",
-            "a": "Ingen grense per møte. Hver plan inkluderer timer til gruppemøter hver måned: 5 på Free og 60 på Pro."
+            "a": "Nei. Møter følger med i alle planer, uten noen teller å følge med på."
           },
           {
             "q": "Hva skjer når timene er brukt opp?",
@@ -1599,8 +1599,8 @@
       "tax": "Prisene er månedlige og uten mva.",
       "choose": "Velg {plan}",
       "note": "Samtaler mellom to personer telles aldri. Hver pris gjelder hele kontoret, ikke per person.",
-      "perksPro": "Hele teamet ditt · {hours} møtetimer · prioritert hjelp",
-      "perksFree": "Opptil {people} personer · {hours} møtetimer i måneden",
+      "perksPro": "Hele teamet ditt · møter så ofte dere trenger · prioritert hjelp",
+      "perksFree": "Opptil {people} personer · alt inkludert",
       "daily": "Under {price} om dagen",
       "assurance": "Si opp når som helst · 14 dagers refusjon"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Priser: Én pris for hele kontoret",
-      "description": "TinyFloor er gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, med 60 møtetimer og prioritert hjelp. En pris per kontor, ikke per person."
+      "description": "TinyFloor er gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, med møter så ofte dere trenger og prioritert hjelp. En pris per kontor, ikke per person."
     },
     "title": "Én pris for hele kontoret.",
     "muted": "Ikke én per person.",
@@ -1638,12 +1638,11 @@
       "title": "Sammenlign planer,",
       "muted": "side om side.",
       "people": "Personer",
-      "hours": "Møtetimer i måneden",
-      "hoursNote": "Kun gruppemøter",
       "calls": "Samtaler mellom to personer",
       "callsNote": "Telles aldri",
       "support": "Prioritert hjelp",
-      "wholeTeam": "Hele teamet"
+      "wholeTeam": "Hele teamet",
+      "meetings": "Gruppemøter"
     },
     "notes": {
       "title": "Greit å vite.",
@@ -1659,13 +1658,13 @@
         "title": "En prøveperiode når teamet kommer",
         "body": "Når en 4. person blir med i et gratis kontor, får hele teamet Pro gratis i 14 dager. Ikke noe kort nødvendig."
       },
-      "hours": {
-        "title": "Når timene er brukt opp",
-        "body": "Møter fortsetter med bare lyd til den 1. Samtaler mellom to personer fungerer som vanlig."
-      },
       "tax": {
         "title": "Mva. ved betaling",
         "body": "Prisene er i amerikanske dollar. Creem, vår forhandler, legger til eventuell mva. eller salgsskatt når du betaler."
+      },
+      "size": {
+        "title": "Laget for små team",
+        "body": "Et kontor er for et team som jobber sammen hver dag, opptil 15 personer. Et større selskap gir hvert team sitt eget kontor."
       }
     }
   },

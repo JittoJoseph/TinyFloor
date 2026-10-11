@@ -125,3 +125,36 @@ person, and until the trial existed a team of 4 couldn't move in at all.
 So the funnel to watch is: a new office → an invite sent in the first day →
 a second person arrives → a 4th arrives (the trial) → Pro. Pricing only
 matters at the last step.
+
+## Built (11 October)
+
+- **Floor calls counted**: `usage_daily.call_minutes` and
+  `call_video_minutes` per office and day, reported by each person's browser
+  (`call_usage`) and added up by the room. Counted only.
+- **No video into a hidden tab**: on a call, a hidden tab asks the other side
+  to stop sending video (`want.paused`, the sender's encodings go inactive);
+  it comes back when the tab does. Meetings already did this.
+- **Cameras rest after 10 quiet minutes**, on calls and in meetings, with a
+  short "Camera off while it's quiet · Turn on camera" note.
+- **Speaker-only video on the floor: not needed.** Floor calls turned out to
+  be one-to-one; groups go to meetings, whose stage already receives at most
+  four videos (the big card and up to three in the column; your own card and
+  "n more" cost nothing).
+
+And from `25`: the meters are gone. Meeting hours are fair use in the terms
+only (Pro 120 a month, Free 40), and Pro holds up to 15.
+
+Redone with what we now know (floor calls are one-to-one, so the floor is
+cheap; meetings are the cost), for a team that talks on camera in meetings
+4 hours every working day and on the floor 4 more:
+
+| Team | Meetings (88 h, every camera on) | Floor (pairs, camera on) | Total | Left of $27.47 |
+|---|---|---|---|---|
+| 5 | $11.90 | $1.90 | $13.80 | +$14 |
+| 8 | $19.00 | $3.00 | $22.00 | +$5 |
+| 10 | $23.80 | $3.80 | $27.60 | about even |
+| 15 | $35.60 | $5.60 | $41.20 | −$14 |
+
+Cameras resting only helps when it's quiet, so this case is untouched by it;
+it's rare, and now visible in the counts. Typical use stays $1–4 a month
+at any size up to 15.

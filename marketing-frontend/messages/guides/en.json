@@ -748,7 +748,7 @@
           {
             "title": "TinyFloor",
             "detail": "Free for 3 people · $29 a month for the whole team",
-            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices top out at 25 people."
+            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices are made for small teams of up to 15."
           },
           {
             "title": "Gather",
@@ -895,7 +895,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for teams of 2 to 25 who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
+      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for small teams who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
     },
     "faq": [
       {
@@ -1017,13 +1017,6 @@
               "$29",
               "$54",
               "$160"
-            ],
-            [
-              "25 people",
-              "$300",
-              "$29",
-              "$135",
-              "$400"
             ]
           ],
           "note": "From each product's own pricing page in October 2026, before tax. SoWork's free plan also covers up to 10 members, with meetings capped at 30 minutes, and WorkAdventure's covers up to 10 people at once."

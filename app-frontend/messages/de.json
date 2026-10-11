@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Lautsprecher einschalten",
     "settings": "Einstellungen",
     "leaveCall": "Anruf verlassen",
-    "leaveMeeting": "Meeting verlassen"
+    "leaveMeeting": "Meeting verlassen",
+    "cameraRested": "Kamera aus, solange es ruhig ist"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Dieses Büro hat",
     "members": "{used} von {seats} Mitgliedern",
-    "freeNote": "{hours} Meeting-Stunden im Monat.",
+    "freeNote": "Alles inklusive, für bis zu {seats} Personen.",
     "renews": "Verlängert sich am {date}",
     "ends": "Endet am {date}, danach der kostenlose Tarif",
     "perMonth": "im Monat",
@@ -639,9 +640,6 @@
     "cancelTitle": "Tarif kündigen?",
     "moreSeats": "Mehr Plätze holen",
     "membersLabel": "Mitglieder",
-    "hoursLabel": "Meeting-Stunden",
-    "hours": "{used} von {allowance} Std.",
-    "hoursResets": "Neu ab {date}",
     "hoursUsedUp": "Die Meeting-Stunden dieses Monats sind aufgebraucht: Meetings laufen bis {date} nur mit Ton.",
     "payment": "Zahlung",
     "cardUnknown": "Karte bei Creem hinterlegt",
@@ -683,7 +681,7 @@
       "fullTitle": "Alle reinholen",
       "fullBody": "{office} ist mit {seats} Personen auf Free voll. Mit Pro kommt jede eingeladene Person sofort rein.",
       "hoursTitle": "Meetings mit Video behalten",
-      "hoursBody": "Pro gibt deinem Team {hours} Meeting-Stunden im Monat und bringt das Video sofort zurück.",
+      "hoursBody": "Pro bringt das Video sofort zurück, mit Platz für dein ganzes Team.",
       "trialTitle": "Pro für dein Team behalten",
       "trialBody": "Deine Testphase endet am {date}. Danach können nur noch {free} Personen gleichzeitig im Büro sein.",
       "plansTitle": "Pro, für das ganze Team",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Trotzdem kündigen",
     "loseSeatsOver": "{members} Personen sind Mitglieder, aber nur {free} könnten gleichzeitig auf der Etage sein, und niemand Neues käme dazu.",
     "loseSeats": "Platz für {free} statt {seats} Personen.",
-    "loseHours": "Meeting-Stunden sinken von {hours} auf {free} im Monat; danach laufen Meetings nur mit Ton.",
     "loseNothing": "Niemand wird entfernt, nichts wird gelöscht.",
     "offer": {
       "trial": "Testphase",
@@ -707,13 +704,12 @@
       "daily": "Das sind unter {price} am Tag.",
       "anchor": "Tools mit Preisen pro Person würden für dasselbe Team etwa {price} im Monat verlangen.",
       "wholeTeam": "Alle in deinem Team, auf einer Etage",
-      "hours": "{hours} Meeting-Stunden im Monat",
-      "hoursTimes": "{hours} Meeting-Stunden im Monat, {times}× so viel wie Free",
       "support": "Bevorzugte Hilfe von unserem Team",
       "everything": "Und alles, was ihr schon habt: HD-Video, spontane Gespräche, die nie zählen, Chat, Bildschirmfreigabe und das Whiteboard.",
       "get": "Pro holen · {price} im Monat",
       "keep": "Pro behalten · {price} im Monat",
-      "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen."
+      "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen.",
+      "meetings": "Meetings, so oft dein Team sie braucht"
     }
   }
 }

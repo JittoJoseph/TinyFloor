@@ -23,7 +23,7 @@
       },
       {
         "q": "Is TinyFloor free?",
-        "a": "Yes, for an office of up to 3 people, with 5 meeting hours a month. After that, Pro is $29 a month for the whole team, not per person."
+        "a": "Yes, for an office of up to 3 people, with everything included. After that, Pro is $29 a month for the whole team, not per person."
       },
       {
         "q": "Do I need to install anything?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "How many people fit in a TinyFloor office?",
-            "a": "Up to 3 people on Free and up to 25 on Pro, and you can make as many offices as you need."
+            "a": "Up to 3 people on Free, and a small team of up to 15 on Pro. You can make as many offices as you need."
           }
         ]
       },
@@ -194,7 +194,7 @@
           },
           {
             "q": "Is TinyFloor good for virtual events?",
-            "a": "TinyFloor is made for teams that work together every day. An office holds up to 25 people, so it suits small teams more than large events."
+            "a": "TinyFloor is made for small teams that work together every day, up to 15 people in an office, more than for large events."
           },
           {
             "q": "What does SpatialChat have that TinyFloor does not?",
@@ -209,7 +209,7 @@
       "workadventure": {
         "label": "WorkAdventure alternative",
         "meta": {
-          "title": "WorkAdventure Alternative for Teams of Up to 25",
+          "title": "WorkAdventure Alternative for Small Teams",
           "description": "WorkAdventure's free plan allows 10 people at once. TinyFloor is a pixel-art virtual office with proximity video calls, free for 3 people and $29 a month for the whole team."
         },
         "title": "A <em>WorkAdventure alternative</em> with room to grow.",
@@ -217,7 +217,7 @@
         "points": [
           {
             "title": "Twice the room",
-            "body": "A free WorkAdventure map fits 10 people at a time. A TinyFloor office holds up to 25 members, and you can open as many offices as you like."
+            "body": "A free WorkAdventure map fits 10 people at a time. A TinyFloor office is made for a small team that works together all day, and you can open as many offices as you like."
           },
           {
             "title": "No map to build",
@@ -286,7 +286,7 @@
           },
           {
             "q": "How many people can join?",
-            "a": "Up to 3 people on Free and up to 25 on Pro, and you can make as many offices as you need."
+            "a": "Up to 3 people on Free, and a small team of up to 15 on Pro. You can make as many offices as you need."
           },
           {
             "q": "Is TinyFloor free?",
@@ -327,7 +327,7 @@
           },
           {
             "q": "How many people can use one office?",
-            "a": "Up to 3 people on Free and up to 25 on Pro. A larger company can make an office for each team."
+            "a": "Up to 3 people on Free, and a small team of up to 15 on Pro. A larger company can make an office for each team."
           },
           {
             "q": "Does it replace video calls?",
@@ -471,10 +471,10 @@
           "description": "oVice prices by the space or from 20 users. TinyFloor is a browser virtual office for small teams: free for 3 people, then $29 a month for the whole team."
         },
         "title": "An <em>oVice alternative</em> sized for small teams.",
-        "subtitle": "oVice is built for companies and communities, with plans by space size or from 20 users. TinyFloor is made for teams of 2 to 25, with one simple price per office.",
+        "subtitle": "oVice is built for companies and communities, with plans by space size or from 20 users. TinyFloor is made for small teams, with one simple price per office.",
         "points": [
           {
-            "title": "Priced for 3, 10 or 25",
+            "title": "One price per office",
             "body": "Free for up to 3 people, then $29 a month for the whole team. No space sizes to work out."
           },
           {
@@ -554,7 +554,7 @@
           },
           {
             "q": "How many people can join a TinyFloor office?",
-            "a": "Up to 3 people on Free and up to 25 on Pro, and you can make as many offices as you need."
+            "a": "Up to 3 people on Free, and a small team of up to 15 on Pro. You can make as many offices as you need."
           }
         ]
       },
@@ -728,7 +728,7 @@
           },
           {
             "q": "Which is better for a small team?",
-            "a": "Kumospace's free plan suits up to 5 people, and Gather suits teams that want more customisation. If you want one simple price for a team of up to 25, TinyFloor is built for that."
+            "a": "Kumospace's free plan suits up to 5 people, and Gather suits teams that want more customisation. If you want one simple price for a small team, TinyFloor is built for that."
           },
           {
             "q": "Do Gather and Kumospace run in the browser?",
@@ -845,8 +845,8 @@
             "a": "Pick a time, meet in the same place every day and keep it short. On TinyFloor the main meeting is always there: people walk in at the time and walk out when it's done."
           },
           {
-            "q": "How many meeting hours does a daily standup use?",
-            "a": "A 15-minute standup every working day is about 5 hours a month. Free includes 5 hours of group meetings a month, and Pro 60."
+            "q": "Does a daily standup cost extra?",
+            "a": "No. Meetings come with every plan, with nothing to count. A 15-minute standup every working day is about 5 hours a month."
           },
           {
             "q": "Can we do async standups instead?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Does a new hire take a seat on the plan?",
-            "a": "Yes, everyone in the office is a member. Pro has room for the whole team, up to 25 people."
+            "a": "Yes, everyone in the office is a member. Pro has room for the whole team."
           },
           {
             "q": "Can new hires catch up on chat?",
@@ -963,8 +963,8 @@
             "a": "It's the informal chat a remote team misses from an office: running into people and talking about anything. On TinyFloor it happens on the floor instead of in a scheduled call."
           },
           {
-            "q": "Do watercooler chats use meeting hours?",
-            "a": "Chats between two people never count. Only group meetings count toward the monthly hours."
+            "q": "Do watercooler chats count against anything?",
+            "a": "No. Chats between two people never count, and meetings come with every plan."
           },
           {
             "q": "Can we play music together?",
@@ -1027,7 +1027,7 @@
           },
           {
             "q": "How big can an engineering team be?",
-            "a": "Up to 25 people in one office on Pro. Larger organisations can give each team an office of its own."
+            "a": "Pro is made for a small team, up to 15 people in one office. Larger organisations give each team an office of its own."
           },
           {
             "q": "Can we keep Slack?",
@@ -1121,7 +1121,7 @@
           {
             "label": "3 people",
             "title": "Free",
-            "body": "The founders share a floor at no cost, with 5 meeting hours a month."
+            "body": "The founders share a floor at no cost, with everything included."
           },
           {
             "label": "4th person",
@@ -1131,7 +1131,7 @@
           {
             "label": "Whole team",
             "title": "Pro",
-            "body": "$29 a month for the whole office, with 60 meeting hours."
+            "body": "$29 a month for the whole office, with meetings as often as you need."
           }
         ],
         "faq": [
@@ -1144,8 +1144,8 @@
             "a": "Yes. A paid plan runs to the end of what you've paid for, then the office moves back to Free. Nothing is deleted."
           },
           {
-            "q": "What happens when we pass 25 people?",
-            "a": "An office holds up to 25 people. Give each team an office of its own."
+            "q": "What happens when we outgrow one office?",
+            "a": "An office is made for a small team, up to 15 people. As you grow, give each team an office of its own."
           },
           {
             "q": "Do we need any IT setup?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "How many people can we have?",
-            "a": "Everyone, up to 25 people on Pro, for one monthly price for the whole office."
+            "a": "Your whole team, up to 15 people on Pro, for one monthly price for the whole office."
           },
           {
             "q": "Can freelancers join?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "How many people can join a meeting?",
-            "a": "Everyone in the office: up to 3 people on Free and up to 25 on Pro."
+            "a": "Everyone in the office: up to 3 people on Free, and the whole team on Pro."
           },
           {
             "q": "Do meetings have a time limit?",
-            "a": "No limit per meeting. Each plan includes group meeting hours every month: 5 on Free and 60 on Pro."
+            "a": "No. Meetings come with every plan, with no meter to watch."
           },
           {
             "q": "What happens when the hours run out?",
@@ -1599,8 +1599,8 @@
       "tax": "Prices are monthly and don't include tax.",
       "choose": "Choose {plan}",
       "note": "Calls between two people are never counted. Every price is for the whole office, not per person.",
-      "perksPro": "Your whole team · {hours} meeting hours · priority help",
-      "perksFree": "Up to {people} people · {hours} meeting hours a month",
+      "perksPro": "Your whole team · meetings as often as you need · priority help",
+      "perksFree": "Up to {people} people · everything included",
       "daily": "Under {price} a day",
       "assurance": "Cancel any time · 14-day refunds"
     },
@@ -1622,7 +1622,7 @@
   "pricingPage": {
     "meta": {
       "title": "Pricing: One Price for the Whole Office",
-      "description": "TinyFloor is free for up to 3 people. Pro is $29 a month for the whole team, with 60 meeting hours and priority help. Priced by the office, not the person."
+      "description": "TinyFloor is free for up to 3 people. Pro is $29 a month for the whole team, with meetings as often as you need and priority help. Priced by the office, not the person."
     },
     "title": "One price for the whole office.",
     "muted": "Not one per person.",
@@ -1638,12 +1638,11 @@
       "title": "Compare plans,",
       "muted": "side by side.",
       "people": "People",
-      "hours": "Meeting hours a month",
-      "hoursNote": "Group meetings only",
       "calls": "Calls between two people",
       "callsNote": "Never counted",
       "support": "Priority help",
-      "wholeTeam": "Whole team"
+      "wholeTeam": "Whole team",
+      "meetings": "Group meetings"
     },
     "notes": {
       "title": "Good to know.",
@@ -1659,13 +1658,13 @@
         "title": "A trial when the team arrives",
         "body": "When a 4th person joins a free office, the whole team gets Pro free for 14 days. No card needed."
       },
-      "hours": {
-        "title": "When the hours run out",
-        "body": "Meetings carry on with voice only until the 1st. Calls between two people keep working as usual."
-      },
       "tax": {
         "title": "Tax at checkout",
         "body": "Prices are in US dollars. Creem, our reseller, adds any sales tax or VAT when you pay."
+      },
+      "size": {
+        "title": "Made for small teams",
+        "body": "An office is for a team that works together every day, up to 15 people. A bigger company gives each team an office of its own."
       }
     }
   },

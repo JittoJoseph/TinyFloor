@@ -34,7 +34,7 @@
     "signIn": "登录",
     "account": "账号",
     "createOffice": "创建办公室",
-    "plansSoon": "团队更大？更多席位的方案即将推出。"
+    "plansSoon": "面向整个团队的 Pro 即将推出。"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -90,7 +90,8 @@
     "leave": "离开",
     "trialLeft": "{plan} 试用 · 剩 {count} 天",
     "choosePlan": "选择套餐",
-    "upgrade": "升级"
+    "upgrade": "升级",
+    "members": "{count, plural, other {# 名成员}}"
   },
   "home": {
     "nav": {

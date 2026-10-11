@@ -74,6 +74,9 @@ interface Attachment {
   meetingSince: number | null;
   /** Whether they are talking in their meeting right now. */
   speaking: boolean;
+  /** Since when they've been in a call on the floor, and seeing video in it, as they report (docs/24). */
+  callSince?: number | null;
+  videoSince?: number | null;
   /**
    * This person's SFU session while in a meeting: the tracks they publish, and
    * the ones they are sent (by our side's mid), so the room can cap their video.
@@ -340,6 +343,9 @@ export class Room extends DurableObject<Env> {
       case "speaking":
         this.setSpeaking(me, message.on);
         break;
+      case "call_usage":
+        this.callUsage(me, !!message.call, !!message.video, now);
+        break;
       case "sfu":
         // SFU calls wait on the network, and other messages from this person may
         // be handled meanwhile, so save first and let the handler re-read.
@@ -452,8 +458,7 @@ export class Room extends DurableObject<Env> {
       track: Number.isInteger(message.track) ? Math.max(0, message.track as number) : current.track,
       playing: typeof message.playing === "boolean" ? message.playing : current.playing,
       startedAt: now,
-      offset:
-        typeof message.offset === "number" && Number.isFinite(message.offset) ? Math.max(0, message.offset) : 0,
+      offset: typeof message.offset === "number" && Number.isFinite(message.offset) ? Math.max(0, message.offset) : 0,
     };
     this.ctx.storage.sql.exec(
       "INSERT INTO room_state (key, value) VALUES ('music', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
@@ -463,9 +468,7 @@ export class Room extends DurableObject<Env> {
   }
 
   private music(): MusicState {
-    const row = this.ctx.storage.sql
-      .exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'music'")
-      .toArray()[0];
+    const row = this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'music'").toArray()[0];
     return row ? (JSON.parse(row.value) as MusicState) : { track: 0, playing: false, startedAt: 0, offset: 0 };
   }
 
@@ -574,7 +577,14 @@ export class Room extends DurableObject<Env> {
     if (me.media) {
       const { sessionId, tracks } = me.media;
       me.media = null;
-      this.ctx.waitUntil(this.sfuApi.closeTracks(sessionId, tracks.map((track) => track.mid)).catch(() => undefined));
+      this.ctx.waitUntil(
+        this.sfuApi
+          .closeTracks(
+            sessionId,
+            tracks.map((track) => track.mid),
+          )
+          .catch(() => undefined),
+      );
       this.broadcastToMeeting(meeting, { t: "sfu", op: "gone", userId: me.userId }, me.userId);
     }
     for (const socket of this.meetingMembers(meeting)) {
@@ -727,7 +737,10 @@ export class Room extends DurableObject<Env> {
     const me = this.attachmentOf(socket);
     if (me.meeting !== meeting || !me.media) {
       // They left the table while the SFU was answering.
-      await this.sfuApi.closeTracks(sessionId, published.map((track) => track.mid));
+      await this.sfuApi.closeTracks(
+        sessionId,
+        published.map((track) => track.mid),
+      );
       return;
     }
     const kinds = published.map((track) => track.kind);
@@ -739,21 +752,18 @@ export class Room extends DurableObject<Env> {
   }
 
   private async sfuUnpublish(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
-    const kinds = Array.isArray(message.kinds)
-      ? (message.kinds.filter((kind) => MEDIA_KINDS.includes(kind)) as MediaKind[])
-      : [];
+    const kinds = Array.isArray(message.kinds) ? (message.kinds.filter((kind) => MEDIA_KINDS.includes(kind)) as MediaKind[]) : [];
     const me = this.attachmentOf(socket);
     if (!me.media || !kinds.length) return sendSfu(socket, { op: "error", code: "bad_request" });
 
     const closing = me.media.tracks.filter((track) => kinds.includes(track.kind));
     me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind));
     this.remember(socket, me);
-    this.broadcastToMeeting(
-      meeting,
-      { t: "sfu", op: "untracks", userId: me.userId, kinds: closing.map((track) => track.kind) },
-      me.userId,
+    this.broadcastToMeeting(meeting, { t: "sfu", op: "untracks", userId: me.userId, kinds: closing.map((track) => track.kind) }, me.userId);
+    await this.sfuApi.closeTracks(
+      me.media.sessionId,
+      closing.map((track) => track.mid),
     );
-    await this.sfuApi.closeTracks(me.media.sessionId, closing.map((track) => track.mid));
   }
 
   private async sfuSubscribe(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
@@ -994,7 +1004,14 @@ export class Room extends DurableObject<Env> {
       if (!them.media || !video.length) continue;
       them.media.subs = (them.media.subs ?? []).filter((sub) => sub.kind === "mic");
       this.remember(socket, them);
-      this.ctx.waitUntil(this.sfuApi.closeTracks(them.media.sessionId, video.map((sub) => sub.mid)).catch(() => undefined));
+      this.ctx.waitUntil(
+        this.sfuApi
+          .closeTracks(
+            them.media.sessionId,
+            video.map((sub) => sub.mid),
+          )
+          .catch(() => undefined),
+      );
     }
   }
 
@@ -1037,9 +1054,27 @@ export class Room extends DurableObject<Env> {
     if (this.usage.due(present, now)) this.ctx.waitUntil(this.usage.flush(room, present, now));
   }
 
+  /**
+   * A call on the floor started, ended, or its video came or went. Only
+   * counted, for knowing what calls cost (docs/24); nothing is limited by it.
+   */
+  private callUsage(me: Attachment, call: boolean, video: boolean, now: number): void {
+    this.closeCallTime(me, now);
+    me.callSince = call ? now : null;
+    me.videoSince = call && video ? now : null;
+  }
+
+  private closeCallTime(me: Attachment, now: number): void {
+    if (!me.callSince) return;
+    this.usage.called(now - me.callSince, me.videoSince ? now - me.videoSince : 0, now);
+    me.callSince = null;
+    me.videoSince = null;
+  }
+
   /** Counts this person's time in the room, once, as their socket ends. */
   private endStay(attachment: Attachment): void {
     const now = Date.now();
+    this.closeCallTime(attachment, now);
     // Everyone else still here, plus the one leaving: how full the room was.
     const others = this.present().filter((socket) => this.attachmentOf(socket).userId !== attachment.userId);
     this.usage.stayed(now - attachment.joinedAt, 0, others.length + 1, now);

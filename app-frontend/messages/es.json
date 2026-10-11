@@ -132,7 +132,8 @@
     "unmuteSpeaker": "Activar altavoz",
     "settings": "Ajustes",
     "leaveCall": "Salir de la llamada",
-    "leaveMeeting": "Salir de la reunión"
+    "leaveMeeting": "Salir de la reunión",
+    "cameraRested": "Cámara apagada mientras hay silencio"
   },
   "status": {
     "available": {
@@ -624,7 +625,7 @@
   "billing": {
     "current": "Esta oficina está en",
     "members": "{used} de {seats} miembros",
-    "freeNote": "{hours} horas de reunión al mes.",
+    "freeNote": "Todo incluido, para hasta {seats} personas.",
     "renews": "Se renueva el {date}",
     "ends": "Termina el {date}, y luego el plan gratuito",
     "perMonth": "al mes",
@@ -639,9 +640,6 @@
     "cancelTitle": "¿Cancelar el plan?",
     "moreSeats": "Conseguir más puestos",
     "membersLabel": "Miembros",
-    "hoursLabel": "Horas de reunión",
-    "hours": "{used} de {allowance} h",
-    "hoursResets": "Se reinicia el {date}",
     "hoursUsedUp": "Las horas de reunión de este mes se han agotado: las reuniones son solo de voz hasta el {date}.",
     "payment": "Pago",
     "cardUnknown": "Tarjeta guardada en Creem",
@@ -683,7 +681,7 @@
       "fullTitle": "Que entren todos",
       "fullBody": "{office} está lleno con {seats} personas en Free. Con Pro, todos los que invites entran al momento.",
       "hoursTitle": "Mantén el vídeo en las reuniones",
-      "hoursBody": "Pro da a tu equipo {hours} horas de reunión al mes y devuelve el vídeo al momento.",
+      "hoursBody": "Pro devuelve el vídeo al momento, con sitio para todo tu equipo.",
       "trialTitle": "Mantén Pro para tu equipo",
       "trialBody": "Tu prueba termina el {date}. Después, solo {free} personas podrán estar en la oficina a la vez.",
       "plansTitle": "Pro, para todo el equipo",
@@ -698,7 +696,6 @@
     "cancelAnyway": "Cancelar de todos modos",
     "loseSeatsOver": "{members} personas son miembros, pero solo {free} podrían estar en la planta a la vez, y nadie nuevo podría entrar.",
     "loseSeats": "El espacio baja de {seats} personas a {free}.",
-    "loseHours": "Las horas de reunión bajan de {hours} a {free} al mes; pasadas, las reuniones son solo de voz.",
     "loseNothing": "No se quita a nadie ni se borra nada.",
     "offer": {
       "trial": "Prueba",
@@ -707,13 +704,12 @@
       "daily": "Menos de {price} al día.",
       "anchor": "Las herramientas por persona cobrarían unos {price} al mes por el mismo equipo.",
       "wholeTeam": "Todo tu equipo, en una misma planta",
-      "hours": "{hours} horas de reunión al mes",
-      "hoursTimes": "{hours} horas de reunión al mes, {times}× Free",
       "support": "Ayuda prioritaria de nuestro equipo",
       "everything": "Y todo lo que ya tienes: vídeo HD, llamadas espontáneas que nunca cuentan, chat, pantalla compartida y la pizarra.",
       "get": "Obtener Pro · {price} al mes",
       "keep": "Mantener Pro · {price} al mes",
-      "assurance": "Cancela cuando quieras. Reembolso completo en 14 días."
+      "assurance": "Cancela cuando quieras. Reembolso completo en 14 días.",
+      "meetings": "Reuniones tan a menudo como tu equipo necesite"
     }
   }
 }

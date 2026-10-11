@@ -145,28 +145,13 @@ export const Face = memo(function Face({
 });
 
 /**
- * A row of overlapping faces, for "who is here" at a glance, and how many more
- * there are. Where the count is said beside it anyway, `more={false}` leaves
- * it off rather than saying it twice.
+ * A row of overlapping faces, for "who is here" at a glance. Only the first
+ * few show, and nothing says how many more: the row says enough.
  */
-export function FaceStack({
-  seeds,
-  size = 22,
-  max = 4,
-  more = true,
-  className,
-}: {
-  seeds: string[];
-  size?: number;
-  max?: number;
-  more?: boolean;
-  className?: string;
-}) {
-  const shown = seeds.slice(0, max);
-  const extra = more ? seeds.length - shown.length : 0;
+export function FaceStack({ seeds, size = 22, max = 4, className }: { seeds: string[]; size?: number; max?: number; className?: string }) {
   return (
     <span className={cn("inline-flex shrink-0 items-center align-middle", className)}>
-      {shown.map((seed, index) => (
+      {seeds.slice(0, max).map((seed, index) => (
         // Positioned like the face inside it, so each face paints in turn and its
         // ring sits over the one before; otherwise every face covers every ring.
         <span
@@ -177,14 +162,6 @@ export function FaceStack({
           <Face seed={seed} size={size} />
         </span>
       ))}
-      {extra > 0 && (
-        <span
-          className="relative flex shrink-0 items-center justify-center rounded-full bg-muted px-1 font-semibold tabular-nums text-muted-foreground ring-2 ring-[var(--face-ring,var(--ui-card))]"
-          style={{ minWidth: size, height: size, marginInlineStart: -size * 0.32, fontSize: Math.max(10, Math.round(size * 0.3)) }}
-        >
-          +{extra}
-        </span>
-      )}
     </span>
   );
 }

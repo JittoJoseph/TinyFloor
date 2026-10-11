@@ -229,7 +229,7 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
                     onClick={() => setPeople(true)}
                     className="flex size-full cursor-pointer flex-col items-center justify-center gap-2 rounded-xl bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))] text-muted-foreground ring-1 ring-inset ring-foreground/[0.06] transition-colors hover:text-foreground [--face-ring:var(--ui-muted)]"
                   >
-                    <FaceStack seeds={hiddenFaces.map((one) => one.id)} size={narrow ? 20 : 24} max={3} more={false} />
+                    <FaceStack seeds={hiddenFaces.map((one) => one.id)} size={narrow ? 20 : 24} max={3} />
                     <span className="text-[12.5px] font-medium">{t("others", { count: hidden })}</span>
                   </button>
                 ),
@@ -398,7 +398,7 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
             </>
           ) : (
             <>
-              <FaceStack seeds={meeting.members.map((one) => one.id)} size={24} max={3} more={false} />
+              <FaceStack seeds={meeting.members.map((one) => one.id)} size={24} max={3} />
               <span className="tabular-nums">{meeting.members.length}</span>
             </>
           )}

@@ -383,7 +383,7 @@ export function ChatView({ channel }: { channel?: string }) {
               className="flex h-8 items-center gap-2 rounded-full border border-border ps-1 pe-2.5 transition-colors hover:bg-muted [--face-ring:var(--ui-card)]"
               title={t("members", { count: people.length })}
             >
-              <FaceStack seeds={people.map((one) => one.id)} size={22} max={3} more={false} />
+              <FaceStack seeds={people.map((one) => one.id)} size={22} max={3} />
               <span className="text-[12.5px] font-medium tabular-nums text-muted-foreground">{people.length}</span>
             </Link>
           )}

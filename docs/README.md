@@ -14,6 +14,7 @@ code and by git history, not here.
 | [04-costs.md](04-costs.md) | Measured usage, the prices we are charged, where money can go |
 | [10-calls-and-meetings.md](10-calls-and-meetings.md) | The research behind meetings: Slack, Meet, what calls cost |
 | [12-meetings.md](12-meetings.md) | Meetings as built, and why a daily standup costs cents |
+| [24-unit-economics.md](24-unit-economics.md) | What a team costs when it lives on video all day, and the guardrails that keep Pro profitable |
 
 ## Pricing and billing
 
@@ -22,9 +23,12 @@ code and by git history, not here.
 | [05-pricing.md](05-pricing.md) | The first look at tiers, the free office, fair use on group video |
 | [08-pricing-decision.md](08-pricing-decision.md) | Competitors' prices, measured costs at scale, the first tiers |
 | [09-billing.md](09-billing.md) | Who takes the money (Creem, as an individual in India) and how billing is built |
-| [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours: the numbers, and what happens past them |
+| [14-plans-with-meeting-hours.md](14-plans-with-meeting-hours.md) | Plans by people and meeting hours (superseded by 23) |
+| [23-one-plan-research.md](23-one-plan-research.md) | Why one flat Pro plan: seat pricing, team sizes, and Creem's rules |
+| [25-what-customers-feel.md](25-what-customers-feel.md) | Pricing psychology: no meters, small offices, and what a team should feel |
 | [15-onboarding.md](15-onboarding.md) | Signing up, the invite link, making an office and choosing a plan |
 | [19-help-and-feedback.md](19-help-and-feedback.md) | Tickets with the TinyFloor team in Chat, on Discord and in the admin inbox |
+| [26-desks-and-invites.md](26-desks-and-invites.md) | Your own desk, and the invite dialog |
 
 ## Search
 

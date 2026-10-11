@@ -14,10 +14,11 @@
     "REALTIME_URL": "wss://realtime.tinyfloor.com",
     // Google sign-in's OAuth client (public); its secret is GOOGLE_CLIENT_SECRET.
     "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com",
-    // Paid plans against Creem's live store (src/billing.ts). Billing stays off
-    // until Creem has reviewed the store: then CREEM_PRODUCTS gets the live
-    // product IDs, and the secrets CREEM_API_KEY and CREEM_WEBHOOK_SECRET are set.
-    "CREEM_ENV": "live"
+    // Paid plans against Creem's live store (src/billing.ts): the live product,
+    // with the secrets CREEM_API_KEY and CREEM_WEBHOOK_SECRET (webhook
+    // wh_5cS7ul9sdaLN9PFPU6E0Fz posts to /v1/billing/webhook).
+    "CREEM_ENV": "live",
+    "CREEM_PRODUCTS": "{\"pro\":\"prod_6iSp1sE8bOswtEIbp520VU\"}"
   },
   "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],

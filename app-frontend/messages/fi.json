@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme Studio",
     "renameLater": "Voit nimetä sen uudelleen milloin vain.",
     "planTitle": "Pro: {office}",
-    "planBody": "Yksi hinta koko tiimille. Peru milloin vain.",
-    "perMonth": "/kk",
-    "getPlan": "Ota {plan} · {price}/kk",
     "openingCheckout": "Avataan kassa",
     "freeInstead": "Tai aloita Freella, enintään {count} henkeä",
     "inviteTitle": "Tuo tiimisi mukaan",
@@ -503,7 +500,8 @@
     "copied": "Kopioitu",
     "trialNote": "Ilmainen enintään {free} hengelle. Kutsu lisää, niin koko tiimisi saa {plan}-tilauksen ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
     "inviteLater": "Löydät linkin myös Ihmiset-sivulta.",
-    "walkIn": "Astu sisään"
+    "walkIn": "Astu sisään",
+    "choose": "Ota {plan}"
   },
   "meetings": {
     "title": "Kokoukset",
@@ -700,7 +698,6 @@
       "anchor": "Henkeä kohden hinnoitellut työkalut veloittaisivat samalta tiimiltä noin {price} kuukaudessa.",
       "wholeTeam": "Koko tiimisi, samassa kerroksessa",
       "support": "Ensisijainen apu tiimiltämme",
-      "everything": "Ja kaikki, mitä teillä jo on: HD-video, käytäväkeskustelut joita ei koskaan lasketa, chat, näytön jakaminen ja taulu.",
       "get": "Hanki Pro · {price} kuukaudessa",
       "keep": "Pidä Pro · {price} kuukaudessa",
       "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",

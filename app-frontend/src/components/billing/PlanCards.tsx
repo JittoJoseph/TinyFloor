@@ -19,9 +19,8 @@ const PER_SEAT = 1200;
  * Pro as an office is offered it (docs/23). The price is said three ways, each
  * true for this team: the flat price, what it comes to for each of them (or a
  * day, for one person), and what per-person tools would charge the same team.
- * Then what changes, the specific things first and everything they already
- * have after, so the list is the whole office, not three lines. The button
- * says the price again, and under it the two things that make saying yes safe.
+ * Then what changes, as three short lines. The button says the price again,
+ * and under it the two things that make saying yes safe.
  * Nothing invented: no countdown, no crossed-out price, no "most popular".
  */
 export function ProOffer({
@@ -122,9 +121,9 @@ function OfferButton({
 }
 
 /**
- * What Pro gives: what's different first, then everything the office already
- * has, so it reads as the whole office. On the offer, and for an office on Pro
- * as a reminder of what it's paying for.
+ * What Pro gives, as three short lines: only what's different, since the
+ * office already knows what it has. On the offer, when an office is made with
+ * Pro, and for an office on Pro as a reminder of what it's paying for.
  */
 export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: string }) {
   const t = useTranslations("billing.offer");
@@ -143,7 +142,6 @@ export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: 
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-[12.5px] leading-relaxed text-muted-foreground">{t("everything")}</p>
     </div>
   );
 }

@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme スタジオ",
     "renameLater": "名前はいつでも変えられます。",
     "planTitle": "{office}をProに",
-    "planBody": "チーム全員でひとつの料金。いつでも解約できます。",
-    "perMonth": "/月",
-    "getPlan": "{plan} にする · {price}/月",
     "openingCheckout": "お支払いを開いています",
     "freeInstead": "または Free で始める（{count} 人まで）",
     "inviteTitle": "チームを招待しよう",
@@ -503,7 +500,8 @@
     "copied": "コピーしました",
     "trialNote": "{free}人まで無料。さらに招待すると、チーム全員が{days}日間{plan}を無料で使えます。カードは不要です。",
     "inviteLater": "このリンクは「メンバー」からもいつでも開けます。",
-    "walkIn": "入る"
+    "walkIn": "入る",
+    "choose": "{plan}にする"
   },
   "meetings": {
     "title": "ミーティング",
@@ -700,7 +698,6 @@
       "anchor": "1人ごとに課金するツールなら、同じチームで月およそ{price}かかります。",
       "wholeTeam": "チーム全員が、ひとつのフロアに",
       "support": "チームからの優先サポート",
-      "everything": "さらに今あるものすべて：HDビデオ、何度話してもカウントされない立ち話、チャット、画面共有、ホワイトボード。",
       "get": "Proにする・月{price}",
       "keep": "Proを続ける・月{price}",
       "assurance": "いつでも解約できます。14日以内なら全額返金。",

@@ -492,9 +492,6 @@
     "namePlaceholder": "Acme Studio",
     "renameLater": "Je kunt de naam altijd wijzigen.",
     "planTitle": "Pro voor {office}",
-    "planBody": "Eén prijs voor je hele team. Altijd opzegbaar.",
-    "perMonth": "/maand",
-    "getPlan": "Neem {plan} · {price}/maand",
     "openingCheckout": "Afrekenen wordt geopend",
     "freeInstead": "Of begin met Free, tot {count} mensen",
     "inviteTitle": "Haal je team erbij",
@@ -503,7 +500,8 @@
     "copied": "Gekopieerd",
     "trialNote": "Gratis voor maximaal {free} mensen. Nodig meer mensen uit en je hele team krijgt {days} dagen gratis {plan}. Geen kaart nodig.",
     "inviteLater": "Je vindt deze link ook bij Mensen.",
-    "walkIn": "Naar binnen"
+    "walkIn": "Naar binnen",
+    "choose": "{plan} nemen"
   },
   "meetings": {
     "title": "Meetings",
@@ -700,7 +698,6 @@
       "anchor": "Tools met een prijs per persoon zouden ongeveer {price} per maand vragen voor hetzelfde team.",
       "wholeTeam": "Iedereen in je team, op één verdieping",
       "support": "Voorrang bij hulp van ons team",
-      "everything": "En alles wat je al hebt: HD-video, spontane gesprekken die nooit meetellen, chat, scherm delen en het whiteboard.",
       "get": "Pro nemen · {price} per maand",
       "keep": "Pro houden · {price} per maand",
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",

@@ -38,6 +38,7 @@ type Step = "name" | "invite" | "plan";
 export function CreateOfficeFlow() {
   const t = useTranslations("create");
   const tEntry = useTranslations("entry");
+  const tOffer = useTranslations("billing.offer");
   const locale = useLocale();
   const router = useRouter();
   const explain = useErrorMessage();
@@ -177,11 +178,7 @@ export function CreateOfficeFlow() {
               busy={busy === "name" || busy === "pay"}
               busyLabel={step === "plan" ? t("openingCheckout") : t("creating")}
             >
-              {step === "plan" && picked
-                ? t("getPlan", { plan: NAMES[picked.id], price: dollars(picked.price ?? 0) })
-                : step === "invite"
-                  ? t("walkIn")
-                  : tEntry("continue")}
+              {step === "plan" && picked ? t("choose", { plan: NAMES[picked.id] }) : step === "invite" ? t("walkIn") : tEntry("continue")}
             </ActionButton>
           }
           secondary={
@@ -242,25 +239,25 @@ export function CreateOfficeFlow() {
             </>
           )}
 
-          {step === "plan" && (
+          {step === "plan" && picked && (
             <>
-              <StepTitle title={t("planTitle", { office: typed })} body={t("planBody")} />
+              <StepTitle title={t("planTitle", { office: typed })} />
               {/*
-                Pro as one card: what it costs for the whole team, and what it
-                gives. Nothing here grows or opens, so the step never scrolls.
+                The price once, big, framed the way it's paid; three lines of
+                what changes; the promise that makes yes safe. It fits the
+                door, so the step never scrolls.
               */}
-              {picked && (
-                <div className="rounded-2xl border border-border p-4">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <span className="text-[15px] font-semibold text-foreground">{NAMES[picked.id]}</span>
-                    <span className="flex items-baseline gap-0.5">
-                      <span className="text-[19px] font-semibold tracking-tight text-foreground">{dollars(picked.price ?? 0)}</span>
-                      <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
-                    </span>
-                  </div>
-                  <PlanIncludes plans={catalog?.plans ?? []} className="mt-3" />
-                </div>
-              )}
+              <p className="flex items-baseline gap-2">
+                <span className="text-[34px] font-semibold leading-none tracking-[-0.04em] text-foreground">
+                  {dollars(picked.price ?? 0)}
+                </span>
+                <span className="text-[13px] text-muted-foreground">{tOffer("perMonth")}</span>
+              </p>
+              <p className="mt-1.5 text-[12.5px] text-muted-foreground">
+                {tOffer("daily", { price: dollars(Math.ceil((picked.price ?? 0) / 30 / 100) * 100) })}
+              </p>
+              <PlanIncludes plans={catalog?.plans ?? []} className="mt-4 border-t border-border pt-4" />
+              <p className="mt-auto pt-3 text-[12px] text-faint">{tOffer("assurance")}</p>
             </>
           )}
 

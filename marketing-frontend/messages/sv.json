@@ -1600,7 +1600,9 @@
       "choose": "Välj {plan}",
       "note": "Samtal mellan två personer räknas aldrig. Varje pris gäller hela kontoret, inte per person.",
       "perksPro": "Hela ditt team · {hours} mötestimmar · prioriterad hjälp",
-      "perksFree": "Upp till {people} personer · {hours} mötestimmar i månaden"
+      "perksFree": "Upp till {people} personer · {hours} mötestimmar i månaden",
+      "daily": "Under {price} om dagen",
+      "assurance": "Avsluta när du vill · 14 dagars återbetalning"
     },
     "source": {
       "star": "Ge en stjärna på GitHub",

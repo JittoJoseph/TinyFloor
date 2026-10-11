@@ -8,7 +8,7 @@ import { dollars, usePlans } from "@/lib/billing";
 import { Button } from "@/components/motion/button/base";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanCard, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanIncludes, ProOffer, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
@@ -211,21 +211,23 @@ export function PlanSection() {
         {planId === "pro" && current && (
           <div className="border-t border-border p-5">
             <p className="mb-3 text-[12.5px] font-medium text-muted-foreground">{t("plans.included")}</p>
-            <PlanIncludes plan={current} />
+            <PlanIncludes plans={plans} />
           </div>
         )}
       </section>
 
       {/* Pro, for an office on Free; a trial keeps it from the banner above. */}
       {on && pro && planId === "free" && !sub && (
-        <section>
+        <div>
           <div className="mb-3 flex items-baseline justify-between gap-3">
             <h3 className="text-[13px] font-semibold text-foreground">{t("plans.upgradeTitle")}</h3>
             <p className="text-[12px] text-faint">{t("plans.note")}</p>
           </div>
-          <PlanCard plan={pro} busy={busy} disabled={!!change.waiting} canChange={manage} onChoose={choose} />
+          <section className="rounded-2xl border border-border bg-background p-5">
+            <ProOffer plans={plans} members={members} busy={busy} disabled={!!change.waiting} canChange={manage} onChoose={choose} split />
+          </section>
           {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
-        </section>
+        </div>
       )}
 
       {/* The card and the next charge, once there is a subscription. */}

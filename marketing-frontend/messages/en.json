@@ -1600,7 +1600,9 @@
       "choose": "Choose {plan}",
       "note": "Calls between two people are never counted. Every price is for the whole office, not per person.",
       "perksPro": "Your whole team · {hours} meeting hours · priority help",
-      "perksFree": "Up to {people} people · {hours} meeting hours a month"
+      "perksFree": "Up to {people} people · {hours} meeting hours a month",
+      "daily": "Under {price} a day",
+      "assurance": "Cancel any time · 14-day refunds"
     },
     "source": {
       "star": "Star on GitHub",

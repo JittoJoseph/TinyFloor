@@ -1600,7 +1600,9 @@
       "choose": "选择 {plan}",
       "note": "两人之间的通话永不计入。每个价格都按整个办公室计算，而不是按人。",
       "perksPro": "整个团队 · {hours} 小时会议 · 优先支持",
-      "perksFree": "最多 {people} 人 · 每月 {hours} 小时会议"
+      "perksFree": "最多 {people} 人 · 每月 {hours} 小时会议",
+      "daily": "每天不到 {price}",
+      "assurance": "随时取消 · 14 天退款"
     },
     "source": {
       "star": "在 GitHub 上点 Star",

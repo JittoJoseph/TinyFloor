@@ -1600,7 +1600,9 @@
       "choose": "{plan} を選ぶ",
       "note": "2人での通話は数えません。料金はすべてオフィス単位で、1人あたりではありません。",
       "perksPro": "チーム全員・{hours}時間の会議・優先サポート",
-      "perksFree": "{people}人まで・毎月{hours}時間の会議"
+      "perksFree": "{people}人まで・毎月{hours}時間の会議",
+      "daily": "1日{price}未満",
+      "assurance": "いつでも解約・14日間返金"
     },
     "source": {
       "star": "GitHub でスターをつける",

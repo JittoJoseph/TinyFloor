@@ -675,27 +675,19 @@
     "trialNote": "チームは {date} まで {plan} をお試し中です。その後はプランを選ばない限り、オフィスは無料プラン（最大 {seats} 人）になります。",
     "plans": {
       "note": "月額・米ドル・税別",
-      "trial": "お試し",
-      "perMonth": "/月",
-      "hours": "ミーティング 月 {count} 時間",
       "keep": "{plan} を続ける",
-      "choose": "{plan} を選ぶ",
-      "taglinePro": "チーム全員でひとつの料金",
-      "hd": "会議でHDビデオ",
-      "support": "チームからの優先サポート",
       "included": "プランに含まれるもの",
-      "upgradeTitle": "アップグレード",
-      "wholeTeam": "チームの全員"
+      "upgradeTitle": "アップグレード"
     },
     "upgrade": {
-      "fullTitle": "{office} は満員です",
-      "fullBody": "{seats}席すべてが埋まっています。Proならすぐにチーム全員が入れます。",
-      "hoursTitle": "ミーティング時間を増やす",
-      "hoursBody": "Proなら会議時間が増え、一時停止中のビデオもすぐに戻ります。",
-      "trialTitle": "チームのプランを続けよう",
-      "trialBody": "{plan} のお試しは {date} に終わります。プランを選べば、席もミーティング時間もそのまま使えます。",
-      "plansTitle": "プラン",
-      "plansBody": "オフィス全体で 1 つの料金。1 人ごとではありません。",
+      "fullTitle": "全員を迎え入れる",
+      "fullBody": "{office}はFreeの{seats}人で満員です。Proなら、招待した人は全員すぐに入れます。",
+      "hoursTitle": "会議のビデオを続ける",
+      "hoursBody": "Proならチームに毎月{hours}時間の会議がつき、ビデオもすぐに戻ります。",
+      "trialTitle": "チームでProを続ける",
+      "trialBody": "トライアルは{date}に終わります。その後、フロアに同時にいられるのは{free}人までです。",
+      "plansTitle": "Pro、チーム全員で",
+      "plansBody": "一緒に働く全員で、ひとつの料金。",
       "membersOnly": "{office} のプランを変えられるのは管理者だけです。",
       "doneTitle": "{plan} になりました",
       "doneBody": "ありがとうございます。Creem から領収書が届きます。",
@@ -707,6 +699,21 @@
     "loseSeatsOver": "メンバーは {members} 人いますが、フロアに同時にいられるのは {free} 人だけになり、新しい人は参加できません。",
     "loseSeats": "定員が {seats} 人から {free} 人になります。",
     "loseHours": "ミーティング時間が月 {hours} 時間から {free} 時間になり、超えると音声のみになります。",
-    "loseNothing": "誰も外されず、何も削除されません。"
+    "loseNothing": "誰も外されず、何も削除されません。",
+    "offer": {
+      "trial": "トライアル",
+      "perMonth": "/月、オフィス全体で",
+      "each": "{count}人のチームなら、1人あたり{price}です。",
+      "daily": "1日あたり{price}未満です。",
+      "anchor": "1人ごとに課金するツールなら、同じチームで月およそ{price}かかります。",
+      "wholeTeam": "チーム全員が、ひとつのフロアに",
+      "hours": "毎月{hours}時間の会議",
+      "hoursTimes": "毎月{hours}時間の会議（Freeの{times}倍）",
+      "support": "チームからの優先サポート",
+      "everything": "さらに今あるものすべて：HDビデオ、何度話してもカウントされない立ち話、チャット、画面共有、ホワイトボード。",
+      "get": "Proにする・月{price}",
+      "keep": "Proを続ける・月{price}",
+      "assurance": "いつでも解約できます。14日以内なら全額返金。"
+    }
   }
 }

@@ -1600,7 +1600,9 @@
       "choose": "{plan} wählen",
       "note": "Anrufe zwischen zwei Personen zählen nie. Jeder Preis gilt fürs ganze Büro, nicht pro Person.",
       "perksPro": "Dein ganzes Team · {hours} Meeting-Stunden · bevorzugte Hilfe",
-      "perksFree": "Bis zu {people} Personen · {hours} Meeting-Stunden im Monat"
+      "perksFree": "Bis zu {people} Personen · {hours} Meeting-Stunden im Monat",
+      "daily": "Unter {price} am Tag",
+      "assurance": "Jederzeit kündbar · 14 Tage Erstattung"
     },
     "source": {
       "star": "Auf GitHub einen Stern geben",

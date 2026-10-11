@@ -290,7 +290,7 @@ export function CreateOfficeFlow() {
                       <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
                     </span>
                   </div>
-                  <PlanIncludes plan={picked} className="mt-3 sm:grid-cols-1" />
+                  <PlanIncludes plans={catalog?.plans ?? []} className="mt-3" />
                 </div>
               )}
             </>

@@ -1600,7 +1600,9 @@
       "choose": "Kies {plan}",
       "note": "Gesprekken tussen twee mensen tellen nooit mee. Elke prijs geldt voor het hele kantoor, niet per persoon.",
       "perksPro": "Je hele team · {hours} meetinguren · voorrang bij hulp",
-      "perksFree": "Tot {people} mensen · {hours} meetinguren per maand"
+      "perksFree": "Tot {people} mensen · {hours} meetinguren per maand",
+      "daily": "Minder dan {price} per dag",
+      "assurance": "Altijd opzegbaar · 14 dagen terugbetaling"
     },
     "source": {
       "star": "Geef een ster op GitHub",

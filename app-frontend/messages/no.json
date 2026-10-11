@@ -675,27 +675,19 @@
     "trialNote": "Teamet ditt prøver {plan} til {date}. Etter det er kontoret på Gratis, for opptil {seats} personer, med mindre du velger en plan.",
     "plans": {
       "note": "Månedlig, i amerikanske dollar, ekskl. mva.",
-      "trial": "Prøve",
-      "perMonth": "i måneden",
-      "hours": "{count} møtetimer i måneden",
       "keep": "Behold {plan}",
-      "choose": "Velg {plan}",
-      "taglinePro": "Én pris for hele teamet",
-      "hd": "HD-video i møter",
-      "support": "Prioritert hjelp fra teamet vårt",
       "included": "Inkludert i planen din",
-      "upgradeTitle": "Oppgrader",
-      "wholeTeam": "Alle i teamet ditt"
+      "upgradeTitle": "Oppgrader"
     },
     "upgrade": {
-      "fullTitle": "{office} er fullt",
-      "fullBody": "Alle {seats} plassene er tatt. Pro gir plass til hele teamet med en gang.",
-      "hoursTitle": "Flere møtetimer",
-      "hoursBody": "Pro gir flere møtetimer, og video tilbake med en gang hvis den er satt på pause.",
-      "trialTitle": "Behold planen til teamet",
-      "trialBody": "Prøveperioden med {plan} slutter {date}. Velg en plan for å beholde alle plasser og møtetimer.",
-      "plansTitle": "Planer",
-      "plansBody": "Én pris for hele kontoret, ikke én per person.",
+      "fullTitle": "Få alle inn",
+      "fullBody": "{office} er fullt med {seats} personer på Free. Med Pro kommer alle du inviterer inn med en gang.",
+      "hoursTitle": "Behold video i møtene",
+      "hoursBody": "Pro gir teamet ditt {hours} møtetimer i måneden og gir deg video tilbake med en gang.",
+      "trialTitle": "Behold Pro for teamet ditt",
+      "trialBody": "Prøveperioden slutter {date}. Etter det kan bare {free} personer være på kontoret samtidig.",
+      "plansTitle": "Pro, for hele teamet",
+      "plansBody": "Én pris for alle du jobber med.",
       "membersOnly": "Bare administratorer i {office} kan endre planen.",
       "doneTitle": "Dere er på {plan}",
       "doneBody": "Takk. Kvitteringen er på vei fra Creem.",
@@ -707,6 +699,21 @@
     "loseSeatsOver": "{members} personer er medlemmer, men bare {free} kan være på etasjen samtidig, og ingen nye kan bli med.",
     "loseSeats": "Plassen går fra {seats} personer til {free}.",
     "loseHours": "Møtetimene går fra {hours} til {free} i måneden; etter det er møter bare med lyd.",
-    "loseNothing": "Ingen fjernes, og ingenting slettes."
+    "loseNothing": "Ingen fjernes, og ingenting slettes.",
+    "offer": {
+      "trial": "Prøve",
+      "perMonth": "i måneden, for hele kontoret",
+      "each": "For deres {count} personer blir det {price} per person.",
+      "daily": "Det er under {price} om dagen.",
+      "anchor": "Verktøy med pris per person ville tatt omtrent {price} i måneden for det samme teamet.",
+      "wholeTeam": "Hele teamet ditt, på én etasje",
+      "hours": "{hours} møtetimer i måneden",
+      "hoursTimes": "{hours} møtetimer i måneden, {times}× Free",
+      "support": "Prioritert hjelp fra teamet vårt",
+      "everything": "Og alt dere allerede har: HD-video, spontane samtaler som aldri telles, chat, skjermdeling og tavle.",
+      "get": "Få Pro · {price} i måneden",
+      "keep": "Behold Pro · {price} i måneden",
+      "assurance": "Si opp når som helst. Full refusjon innen 14 dager."
+    }
   }
 }

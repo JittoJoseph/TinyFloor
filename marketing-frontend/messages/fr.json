@@ -1600,7 +1600,9 @@
       "choose": "Choisir {plan}",
       "note": "Les appels à deux ne sont jamais comptés. Chaque prix vaut pour tout le bureau, pas par personne.",
       "perksPro": "Toute votre équipe · {hours} heures de réunion · aide prioritaire",
-      "perksFree": "Jusqu'à {people} personnes · {hours} heures de réunion par mois"
+      "perksFree": "Jusqu'à {people} personnes · {hours} heures de réunion par mois",
+      "daily": "Moins de {price} par jour",
+      "assurance": "Résiliable à tout moment · remboursement sous 14 jours"
     },
     "source": {
       "star": "Mettre une étoile sur GitHub",

@@ -675,27 +675,19 @@
     "trialNote": "Je team probeert {plan} tot {date}. Daarna staat het kantoor op Gratis, voor tot {seats} mensen, tenzij je een abonnement kiest.",
     "plans": {
       "note": "Per maand, in Amerikaanse dollars, exclusief btw",
-      "trial": "Proef",
-      "perMonth": "per maand",
-      "hours": "{count} vergaderuren per maand",
       "keep": "{plan} houden",
-      "choose": "{plan} kiezen",
-      "taglinePro": "Eén prijs voor je hele team",
-      "hd": "HD-video in meetings",
-      "support": "Voorrang bij hulp van ons team",
       "included": "Inbegrepen in je abonnement",
-      "upgradeTitle": "Upgraden",
-      "wholeTeam": "Iedereen in je team"
+      "upgradeTitle": "Upgraden"
     },
     "upgrade": {
-      "fullTitle": "{office} is vol",
-      "fullBody": "Alle {seats} plekken zijn bezet. Pro maakt meteen ruimte voor je hele team.",
-      "hoursTitle": "Meer vergaderuren",
-      "hoursBody": "Pro geeft meer meetinguren, en zet video meteen terug als die gepauzeerd is.",
-      "trialTitle": "Houd het abonnement van je team",
-      "trialBody": "De proef met {plan} eindigt op {date}. Kies een abonnement om alle plekken en vergaderuren te houden.",
-      "plansTitle": "Abonnementen",
-      "plansBody": "Eén prijs voor het hele kantoor, niet één per persoon.",
+      "fullTitle": "Haal iedereen binnen",
+      "fullBody": "{office} is vol met {seats} mensen op Free. Met Pro komt iedereen die je uitnodigt meteen binnen.",
+      "hoursTitle": "Houd video in meetings",
+      "hoursBody": "Pro geeft je team {hours} meetinguren per maand en zet video meteen terug.",
+      "trialTitle": "Houd Pro voor je team",
+      "trialBody": "Je proefperiode eindigt op {date}. Daarna kunnen er nog maar {free} mensen tegelijk in het kantoor zijn.",
+      "plansTitle": "Pro, voor het hele team",
+      "plansBody": "Eén prijs voor iedereen met wie je werkt.",
       "membersOnly": "Alleen de beheerders van {office} kunnen het abonnement wijzigen.",
       "doneTitle": "Jullie zitten op {plan}",
       "doneBody": "Bedankt. Het bonnetje komt eraan van Creem.",
@@ -707,6 +699,21 @@
     "loseSeatsOver": "Er zijn {members} leden, maar maar {free} kunnen tegelijk op de vloer, en er kan niemand nieuw bij.",
     "loseSeats": "Plek voor {free} in plaats van {seats} mensen.",
     "loseHours": "Vergaderuren gaan van {hours} naar {free} per maand; daarna zijn vergaderingen alleen met geluid.",
-    "loseNothing": "Niemand wordt verwijderd en er wordt niets gewist."
+    "loseNothing": "Niemand wordt verwijderd en er wordt niets gewist.",
+    "offer": {
+      "trial": "Proef",
+      "perMonth": "per maand, voor het hele kantoor",
+      "each": "Voor jullie {count} mensen is dat {price} per persoon.",
+      "daily": "Dat is minder dan {price} per dag.",
+      "anchor": "Tools met een prijs per persoon zouden ongeveer {price} per maand vragen voor hetzelfde team.",
+      "wholeTeam": "Iedereen in je team, op één verdieping",
+      "hours": "{hours} meetinguren per maand",
+      "hoursTimes": "{hours} meetinguren per maand, {times}× Free",
+      "support": "Voorrang bij hulp van ons team",
+      "everything": "En alles wat je al hebt: HD-video, spontane gesprekken die nooit meetellen, chat, scherm delen en het whiteboard.",
+      "get": "Pro nemen · {price} per maand",
+      "keep": "Pro houden · {price} per maand",
+      "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen."
+    }
   }
 }

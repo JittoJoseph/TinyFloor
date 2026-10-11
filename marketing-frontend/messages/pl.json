@@ -1600,7 +1600,9 @@
       "choose": "Wybierz {plan}",
       "note": "Rozmowy dwóch osób nigdy się nie liczą. Każda cena dotyczy całego biura, nie osoby.",
       "perksPro": "Cały Twój zespół · {hours} godz. spotkań · pierwszeństwo w pomocy",
-      "perksFree": "Do {people} osób · {hours} godz. spotkań miesięcznie"
+      "perksFree": "Do {people} osób · {hours} godz. spotkań miesięcznie",
+      "daily": "Mniej niż {price} dziennie",
+      "assurance": "Anuluj w dowolnej chwili · zwrot do 14 dni"
     },
     "source": {
       "star": "Daj gwiazdkę na GitHubie",

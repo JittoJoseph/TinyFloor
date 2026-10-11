@@ -1600,7 +1600,9 @@
       "choose": "Escolher {plan}",
       "note": "Chamadas entre duas pessoas nunca contam. Cada preço vale para o escritório inteiro, não por pessoa.",
       "perksPro": "Toda a sua equipe · {hours} horas de reunião · ajuda prioritária",
-      "perksFree": "Até {people} pessoas · {hours} horas de reunião por mês"
+      "perksFree": "Até {people} pessoas · {hours} horas de reunião por mês",
+      "daily": "Menos de {price} por dia",
+      "assurance": "Cancele quando quiser · reembolso em 14 dias"
     },
     "source": {
       "star": "Dar uma estrela no GitHub",

@@ -1600,7 +1600,9 @@
       "choose": "Velg {plan}",
       "note": "Samtaler mellom to personer telles aldri. Hver pris gjelder hele kontoret, ikke per person.",
       "perksPro": "Hele teamet ditt · {hours} møtetimer · prioritert hjelp",
-      "perksFree": "Opptil {people} personer · {hours} møtetimer i måneden"
+      "perksFree": "Opptil {people} personer · {hours} møtetimer i måneden",
+      "daily": "Under {price} om dagen",
+      "assurance": "Si opp når som helst · 14 dagers refusjon"
     },
     "source": {
       "star": "Gi en stjerne på GitHub",

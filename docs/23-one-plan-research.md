@@ -138,3 +138,31 @@ Fixes, by effect:
    away keep a dot.
 3. **Desks fit the team** (Gather's approach): more desks as the team grows,
    a second room past ~15.
+
+## How Pro is offered (built 11 October)
+
+One plan leaves no decoy to compare against, so the price is made to feel
+right by saying it in the team's own terms, all of it true
+(`components/billing/PlanCards.tsx`, `ProOffer`):
+
+| Lever | What it says | Why |
+|---|---|---|
+| Price per person | "For your 6 people, that's $4.84 each." | Price partitioning: the same $29 reads as small next to a coffee, not a subscription |
+| Price per day | "That's under $1 a day." (an office of one) | The pennies-a-day frame, for when there's no team to divide by yet |
+| Anchor | "Per-person tools would charge about $72 a month for the same team." (4+ people; Gather's $12) | A real reference point, set beside ours, never crossed out |
+| Multiplier | "60 meeting hours a month, 12× Free" | Contrast against what they have now |
+| Value stack | Three things Pro adds, then "everything you have now" spelled out | The whole office is what they're buying, not three lines |
+| Reason-first headline | "Bring everyone in" / "Keep meetings on video" / "Keep Pro for your team" | Answers why the modal opened; the trial one says what changes on the day it ends (loss framing, stated plainly) |
+| Price on the button | "Get Pro · $29 a month" | No surprise at checkout |
+| Risk reversal under it | "Cancel any time. Full refund within 14 days." | Removes the reason to wait |
+
+On the pricing page the Pro card adds "Under $1 a day" and the same
+cancel-and-refund line.
+
+Not used, on purpose: countdowns, crossed-out "was" prices, "most popular"
+badges or invented testimonials. They'd be false with one plan and no
+customers yet, and Creem reviews stores for exactly these.
+
+The modal itself is new (`components/ui/Modal.tsx`): a short fade and rise
+on a wide screen, a sheet from the bottom on a phone. It replaces the centre
+"unfold" for every dialog in the app.

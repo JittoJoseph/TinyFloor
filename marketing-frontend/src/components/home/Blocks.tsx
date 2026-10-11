@@ -329,6 +329,10 @@ export function PlanCards({ className }: { className?: string }) {
                     <span className="text-[34px] font-semibold leading-none tracking-[-0.04em] lg:text-[48px]">${plan.price}</span>
                     <span className="text-[13.5px] text-muted-foreground">{plan.price ? t("month") : t("forever")}</span>
                   </p>
+                  {plan.price > 0 && (
+                    // The price a day as well as a month: the same price, in the size of a coffee.
+                    <p className="mt-1.5 text-[12.5px] font-medium lg:mt-2">{t("daily", { price: `${Math.ceil(plan.price / 30)}` })}</p>
+                  )}
                   <p className="mt-1.5 text-[12.5px] text-muted-foreground lg:mt-2">
                     {featured ? t("perksPro", { hours: plan.hours }) : t("perksFree", { hours: plan.hours, people: plan.people })}
                   </p>
@@ -352,6 +356,7 @@ export function PlanCards({ className }: { className?: string }) {
                     soonClassName={cn(action, "bg-foreground/[0.07] text-muted-foreground")}
                   />
                 )}
+                {plan.price > 0 && <p className="mt-3 text-center text-[12px] text-muted-foreground">{t("assurance")}</p>}
               </div>
             </div>
           );

@@ -1600,7 +1600,9 @@
       "choose": "{plan} 선택",
       "note": "두 사람 간 통화는 세지 않아요. 모든 가격은 1인당이 아닌 오피스 전체 기준이에요.",
       "perksPro": "팀 전체 · 회의 {hours}시간 · 우선 지원",
-      "perksFree": "최대 {people}명 · 매달 회의 {hours}시간"
+      "perksFree": "최대 {people}명 · 매달 회의 {hours}시간",
+      "daily": "하루 {price} 미만",
+      "assurance": "언제든 해지 · 14일 환불"
     },
     "source": {
       "star": "GitHub에서 스타 주기",

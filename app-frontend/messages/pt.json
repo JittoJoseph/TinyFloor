@@ -675,27 +675,19 @@
     "trialNote": "Sua equipe está testando o {plan} até {date}. Depois, o escritório vai para o Free, para até {seats} pessoas, a menos que você escolha um plano.",
     "plans": {
       "note": "Mensal, em dólares americanos, sem impostos",
-      "trial": "Teste",
-      "perMonth": "por mês",
-      "hours": "{count} horas de reunião por mês",
       "keep": "Ficar com o {plan}",
-      "choose": "Escolher {plan}",
-      "taglinePro": "Um preço para toda a equipe",
-      "hd": "Vídeo HD nas reuniões",
-      "support": "Ajuda prioritária da nossa equipe",
       "included": "Incluído no seu plano",
-      "upgradeTitle": "Fazer upgrade",
-      "wholeTeam": "Toda a sua equipe"
+      "upgradeTitle": "Fazer upgrade"
     },
     "upgrade": {
-      "fullTitle": "{office} está cheio",
-      "fullBody": "Todas as {seats} vagas estão ocupadas. O Pro abre espaço para toda a equipe na hora.",
-      "hoursTitle": "Mais horas de reunião",
-      "hoursBody": "O Pro traz mais horas de reunião e volta o vídeo na hora se estiver pausado.",
-      "trialTitle": "Mantenha o plano da sua equipe",
-      "trialBody": "O teste do {plan} termina em {date}. Escolha um plano para manter todos os lugares e horas de reunião.",
-      "plansTitle": "Planos",
-      "plansBody": "Um preço para o escritório todo, não um por pessoa.",
+      "fullTitle": "Traga todo mundo",
+      "fullBody": "{office} está cheio com {seats} pessoas no Free. Com o Pro, todo mundo que você convidar entra na hora.",
+      "hoursTitle": "Mantenha o vídeo nas reuniões",
+      "hoursBody": "O Pro dá à sua equipe {hours} horas de reunião por mês e volta o vídeo na hora.",
+      "trialTitle": "Mantenha o Pro para sua equipe",
+      "trialBody": "Seu teste termina em {date}. Depois disso, só {free} pessoas podem estar no escritório ao mesmo tempo.",
+      "plansTitle": "Pro, para toda a equipe",
+      "plansBody": "Um preço para todas as pessoas com quem você trabalha.",
       "membersOnly": "Só os admins de {office} podem mudar o plano.",
       "doneTitle": "Vocês estão no {plan}",
       "doneBody": "Obrigado. O recibo está a caminho, enviado pela Creem.",
@@ -707,6 +699,21 @@
     "loseSeatsOver": "{members} pessoas são membros, mas só {free} poderiam estar no andar ao mesmo tempo, e ninguém novo poderia entrar.",
     "loseSeats": "O espaço cai de {seats} pessoas para {free}.",
     "loseHours": "As horas de reunião caem de {hours} para {free} por mês; depois delas, as reuniões são só por voz.",
-    "loseNothing": "Ninguém é removido e nada é apagado."
+    "loseNothing": "Ninguém é removido e nada é apagado.",
+    "offer": {
+      "trial": "Teste",
+      "perMonth": "por mês, para o escritório inteiro",
+      "each": "Para as suas {count} pessoas, dá {price} por pessoa.",
+      "daily": "Menos de {price} por dia.",
+      "anchor": "Ferramentas cobradas por pessoa custariam cerca de {price} por mês para a mesma equipe.",
+      "wholeTeam": "Toda a sua equipe, em um só andar",
+      "hours": "{hours} horas de reunião por mês",
+      "hoursTimes": "{hours} horas de reunião por mês, {times}× o Free",
+      "support": "Ajuda prioritária da nossa equipe",
+      "everything": "E tudo o que você já tem: vídeo HD, conversas de passagem que nunca contam, chat, compartilhamento de tela e quadro branco.",
+      "get": "Assinar o Pro · {price} por mês",
+      "keep": "Manter o Pro · {price} por mês",
+      "assurance": "Cancele quando quiser. Reembolso total em até 14 dias."
+    }
   }
 }

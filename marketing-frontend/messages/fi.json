@@ -1600,7 +1600,9 @@
       "choose": "Valitse {plan}",
       "note": "Kahden ihmisen puheluita ei koskaan lasketa. Jokainen hinta koskee koko toimistoa, ei henkilöä.",
       "perksPro": "Koko tiimisi · {hours} kokoustuntia · ensisijainen apu",
-      "perksFree": "Enintään {people} henkeä · {hours} kokoustuntia kuukaudessa"
+      "perksFree": "Enintään {people} henkeä · {hours} kokoustuntia kuukaudessa",
+      "daily": "Alle {price} päivässä",
+      "assurance": "Peru milloin vain · 14 päivän hyvitys"
     },
     "source": {
       "star": "Anna tähti GitHubissa",

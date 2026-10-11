@@ -675,27 +675,19 @@
     "trialNote": "Dein Team testet {plan} bis zum {date}. Danach ist das Büro im kostenlosen Tarif, für bis zu {seats} Personen, außer du wählst einen Tarif.",
     "plans": {
       "note": "Monatlich, in US-Dollar, zzgl. Steuern",
-      "trial": "Test",
-      "perMonth": "im Monat",
-      "hours": "{count} Meeting-Stunden im Monat",
       "keep": "{plan} behalten",
-      "choose": "{plan} wählen",
-      "taglinePro": "Ein Preis für das ganze Team",
-      "hd": "HD-Video in Meetings",
-      "support": "Bevorzugte Hilfe von unserem Team",
       "included": "In deinem Plan enthalten",
-      "upgradeTitle": "Upgrade",
-      "wholeTeam": "Alle in deinem Team"
+      "upgradeTitle": "Upgrade"
     },
     "upgrade": {
-      "fullTitle": "{office} ist voll",
-      "fullBody": "Alle {seats} Plätze sind belegt. Pro schafft sofort Platz für das ganze Team.",
-      "hoursTitle": "Mehr Meeting-Stunden",
-      "hoursBody": "Pro bringt mehr Meeting-Stunden und das Video sofort zurück, falls es pausiert ist.",
-      "trialTitle": "Behaltet euren Tarif",
-      "trialBody": "Der Test von {plan} endet am {date}. Wähl einen Tarif, um alle Plätze und Meeting-Stunden zu behalten.",
-      "plansTitle": "Tarife",
-      "plansBody": "Ein Preis fürs ganze Büro, nicht einer pro Person.",
+      "fullTitle": "Alle reinholen",
+      "fullBody": "{office} ist mit {seats} Personen auf Free voll. Mit Pro kommt jede eingeladene Person sofort rein.",
+      "hoursTitle": "Meetings mit Video behalten",
+      "hoursBody": "Pro gibt deinem Team {hours} Meeting-Stunden im Monat und bringt das Video sofort zurück.",
+      "trialTitle": "Pro für dein Team behalten",
+      "trialBody": "Deine Testphase endet am {date}. Danach können nur noch {free} Personen gleichzeitig im Büro sein.",
+      "plansTitle": "Pro, für das ganze Team",
+      "plansBody": "Ein Preis für alle, mit denen du arbeitest.",
       "membersOnly": "Nur die Admins von {office} können den Tarif ändern.",
       "doneTitle": "Ihr seid jetzt auf {plan}",
       "doneBody": "Danke. Die Quittung kommt gleich von Creem.",
@@ -707,6 +699,21 @@
     "loseSeatsOver": "{members} Personen sind Mitglieder, aber nur {free} könnten gleichzeitig auf der Etage sein, und niemand Neues käme dazu.",
     "loseSeats": "Platz für {free} statt {seats} Personen.",
     "loseHours": "Meeting-Stunden sinken von {hours} auf {free} im Monat; danach laufen Meetings nur mit Ton.",
-    "loseNothing": "Niemand wird entfernt, nichts wird gelöscht."
+    "loseNothing": "Niemand wird entfernt, nichts wird gelöscht.",
+    "offer": {
+      "trial": "Testphase",
+      "perMonth": "im Monat, für das ganze Büro",
+      "each": "Für eure {count} Personen sind das {price} pro Kopf.",
+      "daily": "Das sind unter {price} am Tag.",
+      "anchor": "Tools mit Preisen pro Person würden für dasselbe Team etwa {price} im Monat verlangen.",
+      "wholeTeam": "Alle in deinem Team, auf einer Etage",
+      "hours": "{hours} Meeting-Stunden im Monat",
+      "hoursTimes": "{hours} Meeting-Stunden im Monat, {times}× so viel wie Free",
+      "support": "Bevorzugte Hilfe von unserem Team",
+      "everything": "Und alles, was ihr schon habt: HD-Video, spontane Gespräche, die nie zählen, Chat, Bildschirmfreigabe und das Whiteboard.",
+      "get": "Pro holen · {price} im Monat",
+      "keep": "Pro behalten · {price} im Monat",
+      "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen."
+    }
   }
 }

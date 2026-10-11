@@ -1600,7 +1600,9 @@
       "choose": "Vælg {plan}",
       "note": "Opkald mellem to personer tæller aldrig. Hver pris gælder hele kontoret, ikke per person.",
       "perksPro": "Hele dit team · {hours} mødetimer · prioriteret hjælp",
-      "perksFree": "Op til {people} personer · {hours} mødetimer om måneden"
+      "perksFree": "Op til {people} personer · {hours} mødetimer om måneden",
+      "daily": "Under {price} om dagen",
+      "assurance": "Opsig når som helst · 14 dages refusion"
     },
     "source": {
       "star": "Giv en stjerne på GitHub",

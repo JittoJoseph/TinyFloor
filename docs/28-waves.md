@@ -39,8 +39,8 @@ Each would turn a greeting into a metric.
 
 | Piece | Where |
 |---|---|
-| \`player_joined.arrived\` (walked in, not reconnected), \`wave\` / \`waved\` | \`shared-protocol/src/messages.ts\` |
-| Sending \`arrived\`, relaying a wave to the whole floor (only to someone present, never to yourself) | \`worker-realtime/src/room.ts\`, tested in \`test/waves.test.ts\` |
-| The hand over someone's head | \`lib/PlayerManager.ts\` (\`wave\`) |
-| Arrivals and waves to the page, a wave back to the room | \`lib/MessageHandler.ts\`, \`lib/floor.ts\`, \`scenes/GameScene.ts\` |
-| The toasts | \`components/app/FloorNudges.tsx\` (was ChatNudges) |
+| `player_joined.arrived` (walked in, not reconnected), `wave` / `waved` | `shared-protocol/src/messages.ts` |
+| Sending `arrived`, relaying a wave to the whole floor (only to someone present, never to yourself) | `worker-realtime/src/room.ts`, tested in `test/waves.test.ts` |
+| The hand over someone's head | `lib/PlayerManager.ts` (`wave`) |
+| Arrivals and waves to the page, a wave back to the room | `lib/MessageHandler.ts`, `lib/floor.ts`, `scenes/GameScene.ts` |
+| The toasts | `components/app/FloorNudges.tsx` (was ChatNudges) |

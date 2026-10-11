@@ -567,12 +567,14 @@ class CallManager {
   }
 
   /**
-   * The room welcomed us, arriving or back after a reconnect. A new connection
-   * knows nothing of our call, so it is told again; nor of our meeting, so we
-   * rejoin it if it is still going (the main one always is).
+   * The room welcomed us, arriving or back after a reconnect. Back, the room
+   * has told everyone we left, and they ended their calls and rings with us,
+   * so ours end too. It knows nothing of our meeting, so we rejoin it if it is
+   * still going (the main one always is), and what we're on is told again.
    */
   welcomed(selfId: string) {
     this.selfId = selfId;
+    if (this.peers.size || this.incoming || this.outgoing) this.hangUp();
     this.callReport = "";
     this.reportCall();
     const meeting = this.meeting;

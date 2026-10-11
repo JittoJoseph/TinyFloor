@@ -11,6 +11,7 @@ import { SOCIALS } from "@/lib/site";
 import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
 import { PlanAction } from "./PlanAction";
+import { PLANS } from "@/lib/plans";
 import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "@/components/home/SiteTheme";
@@ -42,7 +43,8 @@ export const STONE = cn(PILL, "bg-foreground/[0.06] text-foreground hover:bg-for
 export const EYEBROW = "text-[12px] font-medium uppercase tracking-[0.16em] text-faint";
 
 /** A section heading: the claim, then its quieter second half. */
-export const H2 = "text-balance text-[30px] font-normal leading-[1.08] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[52px] sm:leading-[1.04]";
+export const H2 =
+  "text-balance text-[30px] font-normal leading-[1.08] tracking-[-0.04em] min-[400px]:text-[34px] sm:text-[52px] sm:leading-[1.04]";
 
 /** The sentence under a heading. */
 export const LEAD = "text-pretty text-[16.5px] leading-[1.6] text-muted-foreground sm:text-[18px]";
@@ -55,7 +57,8 @@ export const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:trackin
  * dark theme the page is nearly black too, so the panel lifts a step instead
  * of drawing an edge.
  */
-export const STAGE = "dark bg-[#09090a] text-foreground [--face-ring:#09090a] [:root.dark_&]:bg-[#18181a] [:root.dark_&]:[--face-ring:#18181a]";
+export const STAGE =
+  "dark bg-[#09090a] text-foreground [--face-ring:#09090a] [:root.dark_&]:bg-[#18181a] [:root.dark_&]:[--face-ring:#18181a]";
 
 /** The quieter half of a rich heading (`<em>` in the copy). */
 export const quiet = (chunks: ReactNode) => <span className="text-muted-foreground/75">{chunks}</span>;
@@ -156,7 +159,19 @@ export function Joined({ className }: { className?: string }) {
 }
 
 /** A section's centred heading: the small label, the two-tone claim, and an optional sentence. */
-export function Heading({ eyebrow, title, muted, body, className }: { eyebrow?: string; title: ReactNode; muted?: ReactNode; body?: string; className?: string }) {
+export function Heading({
+  eyebrow,
+  title,
+  muted,
+  body,
+  className,
+}: {
+  eyebrow?: string;
+  title: ReactNode;
+  muted?: ReactNode;
+  body?: string;
+  className?: string;
+}) {
   return (
     <div className={cn("mx-auto max-w-[40rem] text-center", className)}>
       {eyebrow && <p className={cn(EYEBROW, "mb-5")}>{eyebrow}</p>}
@@ -219,7 +234,13 @@ export function FloorMoments({ className }: { className?: string }) {
 }
 
 /** A quiet list of short notes: a mark in a small squircle, a name, one line. No boxes. */
-export function Notes({ items, className }: { items: Array<{ icon: ReactNode; title: string; body: string; id?: string }>; className?: string }) {
+export function Notes({
+  items,
+  className,
+}: {
+  items: Array<{ icon: ReactNode; title: string; body: string; id?: string }>;
+  className?: string;
+}) {
   return (
     <div className={cn("mx-auto grid max-w-[960px] gap-x-12 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3", className)}>
       {items.map((one) => (
@@ -281,40 +302,26 @@ export function Plans() {
   );
 }
 
-/** The three cards and the line under them, for the home page's plans and the pricing page. */
+/** The two cards and the line under them, for the home page's plans and the pricing page. */
 export function PlanCards({ className }: { className?: string }) {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
-  // Pro is the one to have, on the bezel's black; the others say what they leave out by what they say.
-  const plans: Array<{ key: "free" | "plus" | "pro"; price: number; hours: number; featured?: boolean }> = [
-    { key: "free", price: 0, hours: 5 },
-    { key: "plus", price: 19, hours: 30 },
-    { key: "pro", price: 49, hours: 60, featured: true },
-  ];
-  const action = "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
+  // Free to try it, and Pro on the bezel's black: one price for the whole team.
+  const plans = PLANS.map((plan) => ({ ...plan, featured: plan.key === "pro" }));
+  const action =
+    "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
 
   return (
     <div className={className}>
-      <div className="mx-auto grid max-w-[480px] gap-3 lg:max-w-[1000px] lg:grid-cols-3 lg:items-center">
+      <div className="mx-auto grid max-w-[480px] gap-3 lg:max-w-[760px] lg:grid-cols-2 lg:items-center">
         {plans.map((plan) => {
           const featured = plan.featured;
           const name = t(`${plan.key}.name`);
           return (
-            <div
-              key={plan.key}
-              className={cn(
-                "flex flex-col rounded-[26px] p-5 sm:p-7",
-                featured ? cn(STAGE, "lg:py-10") : "bg-muted/80",
-              )}
-            >
+            <div key={plan.key} className={cn("flex flex-col rounded-[26px] p-5 sm:p-7", featured ? cn(STAGE, "lg:py-10") : "bg-muted/80")}>
               <div className="flex items-start justify-between gap-4 lg:flex-col lg:gap-7">
                 <div>
-                  <p className="flex items-center gap-2 text-[15px] font-semibold">
-                    {name}
-                    {featured && (
-                      <span className="rounded-full bg-foreground px-2 py-0.5 text-[11px] font-semibold text-background">{t("best")}</span>
-                    )}
-                  </p>
+                  <p className="text-[15px] font-semibold">{name}</p>
                   <p className="mt-1 text-[13.5px] text-muted-foreground">{t(`${plan.key}.tagline`)}</p>
                 </div>
                 <div className="text-end lg:text-start">
@@ -323,7 +330,7 @@ export function PlanCards({ className }: { className?: string }) {
                     <span className="text-[13.5px] text-muted-foreground">{plan.price ? t("month") : t("forever")}</span>
                   </p>
                   <p className="mt-1.5 text-[12.5px] text-muted-foreground lg:mt-2">
-                    {featured ? t("perksPro", { hours: plan.hours }) : t("perksStandard", { hours: plan.hours })}
+                    {featured ? t("perksPro", { hours: plan.hours }) : t("perksFree", { hours: plan.hours, people: plan.people })}
                   </p>
                 </div>
               </div>
@@ -334,10 +341,14 @@ export function PlanCards({ className }: { className?: string }) {
                   </Link>
                 ) : (
                   <PlanAction
-                    plan={plan.key}
                     choose={t("choose", { plan: name })}
                     soon={t("soon")}
-                    className={cn(action, featured ? "bg-foreground text-background hover:bg-foreground/85" : "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]")}
+                    className={cn(
+                      action,
+                      featured
+                        ? "bg-foreground text-background hover:bg-foreground/85"
+                        : "bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]",
+                    )}
                     soonClassName={cn(action, "bg-foreground/[0.07] text-muted-foreground")}
                   />
                 )}
@@ -358,7 +369,8 @@ export function PlanCards({ className }: { className?: string }) {
  * a way to go and look. The page puts the same questions in its FAQPage schema.
  */
 /** The chips under the plans: the ask first, then what the code is. */
-const SOURCE_CHIP = "inline-flex h-10 items-center gap-2.5 rounded-[12px] ps-2.5 pe-3.5 text-[14.5px] font-medium tracking-[-0.01em] transition-colors";
+const SOURCE_CHIP =
+  "inline-flex h-10 items-center gap-2.5 rounded-[12px] ps-2.5 pe-3.5 text-[14.5px] font-medium tracking-[-0.01em] transition-colors";
 const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center rounded-[6px] shadow-[inset_0_-1px_0_rgb(0_0_0/0.18)]";
 
 /**
@@ -368,9 +380,25 @@ const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center round
 export function OpenSource() {
   const t = useTranslations("homepage.source");
   const chips = [
-    { label: t("star"), href: SOCIALS.github, mark: <GitHubMark className="size-3.5" />, tint: "bg-foreground text-background", lead: true },
-    { label: t("open"), href: SOCIALS.github, mark: <SourceCode className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#2fbf71] text-white" },
-    { label: "AGPL-3.0", href: `${SOCIALS.github}/blob/master/LICENSE`, mark: <License className="size-3.5" strokeWidth={2.2} />, tint: "bg-[#8b5cf6] text-white" },
+    {
+      label: t("star"),
+      href: SOCIALS.github,
+      mark: <GitHubMark className="size-3.5" />,
+      tint: "bg-foreground text-background",
+      lead: true,
+    },
+    {
+      label: t("open"),
+      href: SOCIALS.github,
+      mark: <SourceCode className="size-3.5" strokeWidth={2.2} />,
+      tint: "bg-[#2fbf71] text-white",
+    },
+    {
+      label: "AGPL-3.0",
+      href: `${SOCIALS.github}/blob/master/LICENSE`,
+      mark: <License className="size-3.5" strokeWidth={2.2} />,
+      tint: "bg-[#8b5cf6] text-white",
+    },
   ];
   return (
     <section id="source" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
@@ -468,7 +496,12 @@ export function Closing() {
           </span>
         ))}
       </div>
-      <h2 className={cn("mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]", CJK_HEADLINE)}>
+      <h2
+        className={cn(
+          "mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]",
+          CJK_HEADLINE,
+        )}
+      >
         {t("title")}
         <span className="block">{t("muted")}</span>
       </h2>

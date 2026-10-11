@@ -136,15 +136,15 @@ describe("admin", () => {
     const paid = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Paying Co" })).body.office.id;
     const given = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Given Co" })).body.office.id;
     await env.DB.batch([
-      env.DB.prepare("UPDATE offices SET plan = 'plus', seats = 10 WHERE id = ?").bind(paid),
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(paid),
       env.DB.prepare(
         `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status, changed_at, updated_at)
-         VALUES (?, 'creem', 'ctm_money', ?, 'plus', 'past_due', 0, 0)`,
+         VALUES (?, 'creem', 'ctm_money', ?, 'pro', 'past_due', 0, 0)`,
       ).bind(paid, `sub_money_${paid}`),
       env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(given),
     ]);
     const summary = await call<{ plans: { paid: Record<string, number>; given: number }; meetingSeconds: number }>(boss, "GET", "/v1/admin/summary");
-    expect(summary.body.plans.paid.plus).toBeGreaterThanOrEqual(1);
+    expect(summary.body.plans.paid.pro).toBeGreaterThanOrEqual(1);
     expect(summary.body.plans.given).toBeGreaterThanOrEqual(1);
     expect(summary.body.meetingSeconds).toBeGreaterThanOrEqual(0);
 
@@ -168,7 +168,7 @@ describe("admin", () => {
 
     await env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
-       VALUES (?, 'creem', ?, 'plus', 'active', 0, 0)`,
+       VALUES (?, 'creem', ?, 'pro', 'active', 0, 0)`,
     )
       .bind(id, `sub_gift_${id}`)
       .run();
@@ -208,7 +208,7 @@ describe("admin", () => {
     const id = (await call<{ office: { id: string } }>(payer, "POST", "/v1/offices", { name: "Paid Up" })).body.office.id;
     await env.DB.prepare(
       `INSERT INTO subscriptions (office_id, provider, provider_subscription_id, plan, status, changed_at, updated_at)
-       VALUES (?, 'creem', ?, 'plus', 'active', 0, 0)`,
+       VALUES (?, 'creem', ?, 'pro', 'active', 0, 0)`,
     )
       .bind(id, `sub_payer_${id}`)
       .run();

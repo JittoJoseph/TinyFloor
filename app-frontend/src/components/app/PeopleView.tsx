@@ -3,7 +3,19 @@
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Copy, Link2, MoreHorizontal, RotateCcw, Search, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
+import {
+  ArrowRight,
+  Check,
+  Copy,
+  Link2,
+  MoreHorizontal,
+  RotateCcw,
+  Search,
+  Shield,
+  ShieldOff,
+  UserMinus,
+  UserPlus,
+} from "@/components/ui/icons";
 import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -122,7 +134,7 @@ function OfficePeople() {
             used={used}
             seats={office.seats}
             full={full}
-            admin={admin}
+            upgrade={admin && office.plan === "free"}
             trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
             trialPlan={plans?.trialPlan ?? null}
           />
@@ -227,14 +239,15 @@ function Seats({
   used,
   seats,
   full,
-  admin,
+  upgrade,
   trial,
   trialPlan,
 }: {
   used: number;
   seats: number;
   full: boolean;
-  admin: boolean;
+  /** An admin of a free office: Pro is the way to more room. */
+  upgrade: boolean;
   trial: number;
   trialPlan: PlanId | null;
 }) {
@@ -245,9 +258,7 @@ function Seats({
     <section className="rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
         <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
-        <p className="text-[12px] text-muted-foreground">
-          {full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}
-        </p>
+        <p className="text-[12px] text-muted-foreground">{full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}</p>
       </div>
       {/* One segment a seat while they are countable; a bar once they are not. */}
       {seats <= 25 ? (
@@ -266,7 +277,7 @@ function Seats({
           {tb("trialWaiting", { free: seats, plan: PLAN_NAMES[trialPlan ?? "pro"], days: trial })}
         </p>
       )}
-      {full && admin && open && (
+      {full && upgrade && open && (
         // The plans, right here: the one with room for everyone already marked.
         <button
           type="button"
@@ -326,7 +337,11 @@ function LobbyPeople() {
           >
             <span className="flex">
               {here.slice(0, 3).map((one, index) => (
-                <span key={one.id} style={{ marginInlineStart: index ? -12 : 0 }} className="flex shrink-0 rounded-full ring-2 ring-background">
+                <span
+                  key={one.id}
+                  style={{ marginInlineStart: index ? -12 : 0 }}
+                  className="flex shrink-0 rounded-full ring-2 ring-background"
+                >
                   <Face seed={one.id} size={36} />
                 </span>
               ))}

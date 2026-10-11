@@ -1,6 +1,6 @@
 # 22. Pricing, unit economics and how an office moves up
 
-Researched 10 October 2026. Builds on `08` (costs), `09` (Creem), `14` (plans
+Researched 10 October 2026. **Superseded on 11 October by `23`: one paid plan.** Builds on `08` (costs), `09` (Creem), `14` (plans
 with meeting hours) and `15` (onboarding).
 
 ## Where we are

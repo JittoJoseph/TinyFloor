@@ -747,7 +747,7 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Za darmo dla 3 osób · 19 $ miesięcznie za 10, 49 $ za 25",
+            "detail": "Za darmo dla 3 osób · $29 miesięcznie za cały zespół",
             "body": "Biuro w stylu pixel art w przeglądarce, na komputerze i telefonie. Podejdź do współpracownika, aby zacząć rozmowę wideo, usiądź przy stole, aby zrobić spotkanie, a do tego kanały czatu, udostępnianie ekranu i tablica. Jedna cena za całe biuro, nie za osobę. Bez nagrań, notatek AI i edytora map, a jedno biuro mieści maksymalnie 25 osób."
           },
           {
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "Jedna cena za biuro",
               "Do 3 osób",
-              "19 $"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "Mały zespół z małym budżetem",
-            "body": "TinyFloor, za 19 $ miesięcznie do 10 osób, albo darmowy plan SoWork, jeśli wystarczą ci spotkania 30-minutowe."
+            "body": "TinyFloor, za $29 miesięcznie za cały zespół, albo darmowy plan SoWork, jeśli wystarczą 30-minutowe spotkania."
           },
           {
             "title": "Chcesz nagrań i notatek AI",
@@ -904,7 +904,7 @@
       },
       {
         "q": "Jakie wirtualne biuro jest najtańsze dla małego zespołu?",
-        "a": "Dla zespołu 10 osób na płatnym planie TinyFloor Plus kosztuje 19 $ miesięcznie za całe biuro. Narzędzia liczące za osobę kosztują ten sam zespół od 54 $ do 195 $ miesięcznie."
+        "a": "Dla 10-osobowego zespołu na płatnym planie TinyFloor Pro kosztuje $29 miesięcznie za całe biuro. Narzędzia z ceną za osobę kosztują ten sam zespół od $54 do $195 miesięcznie."
       },
       {
         "q": "Czy Gather jest nadal darmowy?",
@@ -1007,21 +1007,21 @@
             [
               "5 osób",
               "60 $",
-              "19 $",
+              "$29",
               "27 $",
               "Za darmo (do 5 członków)"
             ],
             [
               "10 osób",
               "120 $",
-              "19 $",
+              "$29",
               "54 $",
               "160 $"
             ],
             [
               "25 osób",
               "300 $",
-              "49 $",
+              "$29",
               "135 $",
               "400 $"
             ]
@@ -1053,7 +1053,7 @@
     ],
     "fit": {
       "title": "Gdzie pasuje TinyFloor",
-      "body": "TinyFloor zachowuje sedno tego, co robi Gather: biuro, po którym chodzisz i w którym rozmawiasz, podchodząc do kogoś, z salą spotkań, czatem i udostępnianiem ekranu. Kosztuje 19 $ miesięcznie do 10 osób i 49 $ do 25, jedna cena za całe biuro, i jest darmowy do 3 osób. Nie ma nagrań, transkrypcji ani edytora biura; jeśli na nich polegasz, lepiej sprawdzi się Gather."
+      "body": "TinyFloor zachowuje sedno tego, co robi Gather: biuro, po którym chodzisz i rozmawiasz, podchodząc do kogoś, z salą spotkań, czatem i udostępnianiem ekranu. Kosztuje $29 miesięcznie za cały zespół, jedna cena za całe biuro, i jest darmowy do 3 osób. Nie ma nagrań, transkrypcji ani edytora biura; jeśli na nich polegasz, Gather pasuje lepiej."
     },
     "faq": [
       {
@@ -1070,7 +1070,7 @@
       },
       {
         "q": "Jaka jest tańsza alternatywa dla Gather?",
-        "a": "TinyFloor kosztuje 19 $ miesięcznie do 10 osób i jest darmowy do 3. Plan Basic SoWork kosztuje 5,40 $ za członka miesięcznie przy płatności rocznej, a jego darmowy plan obejmuje 10 członków ze spotkaniami 30-minutowymi."
+        "a": "TinyFloor kosztuje $29 miesięcznie za cały zespół i jest darmowy do 3 osób. Plan Basic w SoWork kosztuje $5,40 za członka miesięcznie przy płatności rocznej, a jego darmowy plan obejmuje 10 członków ze spotkaniami do 30 minut."
       }
     ]
   }

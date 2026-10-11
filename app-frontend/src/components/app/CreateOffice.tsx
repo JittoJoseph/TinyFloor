@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { Check, Copy, Info, Link2, Zap } from "@/components/ui/icons";
+import { useLocale, useTranslations } from "next-intl";
+import { Check, Copy, Link2, Zap } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, type Office, type Plan, type PlanId } from "@/lib/api";
+import { api, type Office, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { officePath, shareUrl } from "@/lib/links";
@@ -15,34 +15,31 @@ import { shareLink } from "@/lib/share";
 import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
-import { Dialog } from "@/components/ui/Dialog";
+import { PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryHeader, EntryShell, pillInputClass } from "@/components/entry/EntryShell";
 import { DoorSteps, QuietChoice, StepDots, StepError, StepTitle } from "@/components/entry/DoorSteps";
-import { cn } from "@/lib/utils";
 import { posthogLog } from "@/lib/posthog-log";
 import { withPostHog } from "@/lib/analytics";
 
 /** Plan names stay in English everywhere, like on the pricing page. */
-const NAMES: Record<PlanId, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+const NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 
 type Step = "name" | "invite" | "plan";
 
 /**
- * Making an office (docs/15, docs/22): its name, then the link that brings the
+ * Making an office (docs/15, docs/23): its name, then the link that brings the
  * team in, then the floor. No plan is asked for before anyone else has joined:
  * an office is worth paying for once a team is in it, and the team's first two
- * weeks are on Plus anyway. Someone who picked a plan on the pricing page
+ * weeks are on Pro anyway. Someone who chose Pro on the pricing page
  * (/create?plan=pro) gets it right after the name instead. The office is made
  * as soon as it has a name, so leaving at any point still leaves an office.
  */
 export function CreateOfficeFlow() {
   const t = useTranslations("create");
   const tEntry = useTranslations("entry");
-  const tc = useTranslations("common");
   const locale = useLocale();
-  const format = useFormatter();
   const router = useRouter();
   const explain = useErrorMessage();
   const reduce = useReducedMotion();
@@ -54,14 +51,12 @@ export function CreateOfficeFlow() {
   const [wentBack, setWentBack] = useState(false);
   const [name, setName] = useState("");
   const [office, setOffice] = useState<Office | null>(null);
-  const [chosen, setChosen] = useState<Exclude<PlanId, "free"> | null>(null);
-  // Chosen on the pricing page (/create?plan=pro): bought straight after the name.
-  const [asked] = useState<Exclude<PlanId, "free"> | null>(() => {
-    if (typeof window === "undefined") return null;
+  // Chosen on the pricing page (/create?plan=pro): bought straight after the name. Old links said plus.
+  const [asked] = useState(() => {
+    if (typeof window === "undefined") return false;
     const asked = new URLSearchParams(window.location.search).get("plan");
-    return asked === "plus" || asked === "pro" ? asked : null;
+    return asked === "pro" || asked === "plus";
   });
-  const [showIncluded, setShowIncluded] = useState(false);
   const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
@@ -76,10 +71,8 @@ export function CreateOfficeFlow() {
 
   const typed = name.trim();
   const steps: Step[] = selling && asked ? ["name", "plan"] : ["name", "invite"];
-  const recommended = asked ?? "plus";
-  const plan = chosen ?? recommended;
-  const paid = catalog?.plans.filter((one): one is Plan & { id: "plus" | "pro" } => one.id !== "free") ?? [];
-  const picked = paid.find((one) => one.id === plan);
+  const picked = paidPlan(catalog?.plans ?? []);
+  const plan = "pro" as const;
   const free = catalog?.plans.find((one) => one.id === "free");
 
   const go = (next: Step, backwards = false) => {
@@ -160,8 +153,6 @@ export function CreateOfficeFlow() {
     else if (step === "plan") void pay();
   };
 
-  const perPerson = (one: Plan) => format.number((one.price ?? 0) / 100 / one.seats, { style: "currency", currency: "USD" });
-
   return (
     <EntryShell
       backHref="/"
@@ -170,7 +161,12 @@ export function CreateOfficeFlow() {
           mark={<LitFace seed={typed.toLowerCase() || user?.id || "your-office"} size={48} phone={44} square />}
           eyebrow={t("eyebrow")}
           title={
-            <motion.span key={typed ? "named" : "unnamed"} initial={reduce ? false : { opacity: 0.4 }} animate={{ opacity: 1 }} className="block truncate">
+            <motion.span
+              key={typed ? "named" : "unnamed"}
+              initial={reduce ? false : { opacity: 0.4 }}
+              animate={{ opacity: 1 }}
+              className="block truncate"
+            >
               {typed || t("untitled")}
             </motion.span>
           }
@@ -230,7 +226,9 @@ export function CreateOfficeFlow() {
               <div className="relative mt-4 h-[6.5rem] overflow-hidden rounded-2xl sm:mt-5 sm:h-[8.5rem] border border-border" aria-hidden>
                 <FloorScene
                   view={[18, 4.2, 16, 8]}
-                  sitting={user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []}
+                  sitting={
+                    user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []
+                  }
                   priority
                   className="absolute inset-0"
                 />
@@ -268,8 +266,6 @@ export function CreateOfficeFlow() {
                     free: free?.seats ?? 3,
                     plan: NAMES[catalog.trialPlan ?? "pro"],
                     days: catalog.trialDays,
-                    seats: paid.find((one) => one.id === (catalog.trialPlan ?? "pro"))?.seats ?? 25,
-                    hours: paid.find((one) => one.id === (catalog.trialPlan ?? "pro"))?.meetingHours ?? 60,
                   })}
                 </p>
               ) : (
@@ -282,88 +278,21 @@ export function CreateOfficeFlow() {
             <>
               <StepTitle title={t("planTitle", { office: typed })} body={t("planBody")} />
               {/*
-                The plans as two rows, one choice each: the name, how many
-                people, the price and what that is a person. Nothing here grows
-                or opens, so the step never scrolls; what every plan includes
-                opens over the door instead.
+                Pro as one card: what it costs for the whole team, and what it
+                gives. Nothing here grows or opens, so the step never scrolls.
               */}
-              <div role="radiogroup" aria-label={t("planTitle", { office: typed })} className="grid grid-cols-[minmax(0,1fr)] gap-2">
-                {paid.map((one) => {
-                  const on = plan === one.id;
-                  return (
-                    <button
-                      key={one.id}
-                      type="button"
-                      role="radio"
-                      aria-checked={on}
-                      onClick={() => setChosen(one.id)}
-                      className={cn(
-                        "flex w-full min-w-0 cursor-pointer items-center gap-3 rounded-2xl border px-3.5 py-3 text-start outline-none transition-[border-color,background-color,transform] duration-200 active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-ring sm:px-4",
-                        on ? "border-foreground bg-foreground/[0.04]" : "border-border hover:border-foreground/30",
-                      )}
-                    >
-                      <span
-                        aria-hidden
-                        className={cn(
-                          "flex size-5 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors",
-                          on ? "border-foreground bg-foreground" : "border-border-strong",
-                        )}
-                      >
-                        {on && <span className="size-2 rounded-full bg-background" />}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="flex items-center gap-2">
-                          <span className="text-[15px] font-semibold text-foreground">{NAMES[one.id]}</span>
-                          {one.id === recommended && (
-                            <span className="truncate rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-brand">{t("recommended")}</span>
-                          )}
-                        </span>
-                        <span className="mt-0.5 block truncate text-[12.5px] text-muted-foreground">
-                          {t("upTo", { count: one.seats })}
-                        </span>
-                      </span>
-                      <span className="shrink-0 text-end">
-                        <span className="flex items-baseline justify-end gap-0.5">
-                          <span className="text-[19px] font-semibold tracking-tight text-foreground">{dollars(one.price ?? 0)}</span>
-                          <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
-                        </span>
-                        <span className="block text-[11.5px] text-muted-foreground">{t("perPerson", { price: perPerson(one) })}</span>
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowIncluded(true)}
-                className="mt-3 inline-flex cursor-pointer items-center gap-1.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Info className="size-3.5" />
-                {t("included")}
-              </button>
-              <Dialog
-                open={showIncluded}
-                onClose={() => setShowIncluded(false)}
-                title={t("included")}
-                closeLabel={tc("close")}
-              >
-                <ul className="space-y-2.5 text-[13.5px] text-foreground">
-                  {[
-                    t("includedCalls"),
-                    t("includedChat"),
-                    t("includedMeetingsBoth", {
-                      plus: paid.find((one) => one.id === "plus")?.meetingHours ?? 30,
-                      pro: paid.find((one) => one.id === "pro")?.meetingHours ?? 60,
-                    }),
-                    t("includedCancel"),
-                  ].map((line) => (
-                    <li key={line} className="flex items-start gap-2.5">
-                      <Check className="mt-0.5 size-4 shrink-0 text-ok" />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </Dialog>
+              {picked && (
+                <div className="rounded-2xl border border-border p-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="text-[15px] font-semibold text-foreground">{NAMES[picked.id]}</span>
+                    <span className="flex items-baseline gap-0.5">
+                      <span className="text-[19px] font-semibold tracking-tight text-foreground">{dollars(picked.price ?? 0)}</span>
+                      <span className="text-[12px] text-muted-foreground">{t("perMonth")}</span>
+                    </span>
+                  </div>
+                  <PlanIncludes plan={picked} className="mt-3 sm:grid-cols-1" />
+                </div>
+              )}
             </>
           )}
 

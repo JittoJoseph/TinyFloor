@@ -8,21 +8,21 @@ import { dollars, usePlans } from "@/lib/billing";
 import { Button } from "@/components/motion/button/base";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanCards, plansOnOffer, ProIncludes, type PlanMove } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanCard, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
 
-type Asking = { kind: "switch"; plan: Plan } | { kind: "cancel" } | null;
+type Asking = "cancel" | null;
 
 /**
- * An office's plan and billing (docs/14, docs/22): what it's on and what it
- * pays, how full it is and how much of its meeting hours are used, then the
- * plans worth moving to (both on Free, Pro on Plus, none on Pro, which instead
- * lists what it includes), the card and the next charge, and every past
- * payment. Buying opens Creem's checkout over the page; the card and the
- * invoices are in Creem's portal, for whoever pays; switching and cancelling
- * ask first. The plan itself only changes when Creem says so.
+ * An office's plan and billing (docs/14, docs/23): what it's on and what it
+ * pays, how full it is and how much of its meeting hours are used, then Pro
+ * for an office without it (on Pro, or trying it, what it includes instead),
+ * the card and the next charge, and every past payment. Buying opens Creem's
+ * checkout over the page; the card and the invoices are in Creem's portal, for
+ * whoever pays; cancelling asks first. The plan itself only changes when Creem
+ * says so.
  */
 export function PlanSection() {
   const t = useTranslations("billing");
@@ -78,8 +78,7 @@ export function PlanSection() {
   const planId = (office.plan as PlanId) ?? "free";
   const plans = catalog?.plans ?? [];
   const current = plans.find((plan) => plan.id === planId);
-  // The paid plan under this one, offered before cancelling.
-  const below = plans[plans.findIndex((plan) => plan.id === planId) - 1];
+  const pro = paidPlan(plans);
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
@@ -89,13 +88,7 @@ export function PlanSection() {
   const hours = billing ? billing.usage.seconds / 3600 : null;
   const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
   const hoursShare = hours !== null && allowance ? hours / allowance : 0;
-  const offer = plansOnOffer(plans, sub ? planId : null);
-
-  const choose = (plan: Plan, move: PlanMove) => {
-    if (plan.id === "free") return;
-    if (move === "choose") void change.buy(plan.id);
-    else setAsking({ kind: "switch", plan });
-  };
+  const choose = (plan: Plan) => plan.id !== "free" && void change.buy(plan.id);
 
   // What the plan says for itself under its name: when it renews, or ends, or that it's free.
   const status = (): ReactNode => {
@@ -104,7 +97,10 @@ export function PlanSection() {
     if (sub.status === "past_due") return null;
     if (sub.endsAt) return t("ends", { date: date(sub.endsAt) });
     if (details?.nextCharge) {
-      return t("nextChargeLine", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: date(details.nextCharge.at) });
+      return t("nextChargeLine", {
+        amount: money(details.nextCharge.amount, details.nextCharge.currency),
+        date: date(details.nextCharge.at),
+      });
     }
     if (sub.renewsAt) return t("renews", { date: date(sub.renewsAt) });
     return null;
@@ -140,7 +136,7 @@ export function PlanSection() {
               {t("trialNote", { plan: PLAN_NAMES[trial.plan], date: shortDate(trial.endsAt), seats: plans[0]?.seats ?? 3 })}
             </p>
             {trial.plan !== "free" && (
-              <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.buy(trial.plan as "plus" | "pro")}>
+              <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.buy("pro")}>
                 {busy === trial.plan && <Loader2 className="size-3.5 animate-spin" />}
                 {t("plans.keep", { plan: PLAN_NAMES[trial.plan] })}
               </Button>
@@ -157,7 +153,13 @@ export function PlanSection() {
         {manage && sub?.status === "past_due" && (
           <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
             <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>
-            <Button size="sm" variant="secondary" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.portal("card")}>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-8 shrink-0 px-3 text-[12.5px]"
+              disabled={!!busy}
+              onClick={() => change.portal("card")}
+            >
               {t("updateCard")}
             </Button>
           </Banner>
@@ -190,7 +192,9 @@ export function PlanSection() {
           {manage && allowance !== null && (
             <Usage
               label={t("hoursLabel")}
-              value={hours === null ? "…" : t("hours", { used: format.number(hours, { maximumFractionDigits: hours < 10 ? 1 : 0 }), allowance })}
+              value={
+                hours === null ? "…" : t("hours", { used: format.number(hours, { maximumFractionDigits: hours < 10 ? 1 : 0 }), allowance })
+              }
               note={billing ? t("hoursResets", { date: shortDate(billing.usage.resetsAt) }) : undefined}
               className="border-t border-border sm:border-s sm:border-t-0"
             >
@@ -203,33 +207,23 @@ export function PlanSection() {
             {t("hoursUsedUp", { date: shortDate(billing.usage.resetsAt) })}
           </p>
         )}
-        {/* On Pro, what it's paying for, where there's no plan left to offer. */}
-        {planId === "pro" && current && !trial && (
+        {/* On Pro, or trying it, what it gives. */}
+        {planId === "pro" && current && (
           <div className="border-t border-border p-5">
             <p className="mb-3 text-[12.5px] font-medium text-muted-foreground">{t("plans.included")}</p>
-            <ProIncludes plan={current} plus={plans.find((plan) => plan.id === "plus")} />
+            <PlanIncludes plan={current} />
           </div>
         )}
       </section>
 
-      {/* The plans worth moving to: both on Free, Pro alone on Plus. */}
-      {on && offer.length > 0 && (
+      {/* Pro, for an office on Free; a trial keeps it from the banner above. */}
+      {on && pro && planId === "free" && !sub && (
         <section>
           <div className="mb-3 flex items-baseline justify-between gap-3">
-            <h3 className="text-[13px] font-semibold text-foreground">{offer.length > 1 ? t("plans.title") : t("plans.upgradeTitle")}</h3>
+            <h3 className="text-[13px] font-semibold text-foreground">{t("plans.upgradeTitle")}</h3>
             <p className="text-[12px] text-faint">{t("plans.note")}</p>
           </div>
-          <PlanCards
-            plans={offer}
-            current={planId}
-            subscribed={!!sub}
-            members={members}
-            trialEndsAt={trial?.endsAt}
-            busy={busy}
-            disabled={!!change.waiting || !!sub?.endsAt}
-            canChange={manage}
-            onChoose={choose}
-          />
+          <PlanCard plan={pro} busy={busy} disabled={!!change.waiting} canChange={manage} onChoose={choose} />
           {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
         </section>
       )}
@@ -245,7 +239,13 @@ export function PlanSection() {
               </span>
               <p className="min-w-0 flex-1 truncate text-[13.5px] font-medium text-foreground">{t("cardUnknown")}</p>
               {sub.status !== "canceled" && (
-                <Button variant="secondary" size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.portal("card")}>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="h-8 shrink-0 px-3 text-[12.5px]"
+                  disabled={!!busy}
+                  onClick={() => change.portal("card")}
+                >
                   {busy === "card" && <Loader2 className="size-3.5 animate-spin" />}
                   {t("update")}
                 </Button>
@@ -257,7 +257,10 @@ export function PlanSection() {
                 {details === null
                   ? "…"
                   : details.nextCharge
-                    ? t("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) })
+                    ? t("chargeOn", {
+                        amount: money(details.nextCharge.amount, details.nextCharge.currency),
+                        date: shortDate(details.nextCharge.at),
+                      })
                     : sub.endsAt
                       ? t("noneAfter", { date: shortDate(sub.endsAt) })
                       : "—"}
@@ -274,7 +277,9 @@ export function PlanSection() {
           {details === null ? (
             <div className="h-24 animate-pulse rounded-2xl bg-muted" />
           ) : details.history.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-border-strong px-4 py-6 text-center text-[12.5px] text-muted-foreground">{t("noPayments")}</p>
+            <p className="rounded-2xl border border-dashed border-border-strong px-4 py-6 text-center text-[12.5px] text-muted-foreground">
+              {t("noPayments")}
+            </p>
           ) : (
             <ul className="divide-y divide-border rounded-2xl border border-border bg-background">
               {details.history.map((payment) => (
@@ -284,7 +289,9 @@ export function PlanSection() {
                     {payment.plan ? t("planPayment", { plan: PLAN_NAMES[payment.plan] }) : t("payment")}
                   </span>
                   <PaymentStatus status={payment.status} />
-                  <span className="shrink-0 text-end font-medium tabular-nums text-foreground">{money(payment.amount, payment.currency)}</span>
+                  <span className="shrink-0 text-end font-medium tabular-nums text-foreground">
+                    {money(payment.amount, payment.currency)}
+                  </span>
                   <span className="flex w-8 shrink-0 justify-end">
                     {payment.invoice && (
                       <button
@@ -314,7 +321,7 @@ export function PlanSection() {
             <button
               type="button"
               disabled={!!busy}
-              onClick={() => setAsking({ kind: "cancel" })}
+              onClick={() => setAsking("cancel")}
               className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive"
             >
               {t("cancel")}
@@ -325,38 +332,13 @@ export function PlanSection() {
 
       {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
 
-      <Dialog
-        open={asking?.kind === "switch"}
-        onClose={() => setAsking(null)}
-        title={asking?.kind === "switch" ? t("switchTitle", { plan: PLAN_NAMES[asking.plan.id] }) : ""}
-        description={t("switchBody")}
-        closeLabel={tc("close")}
-        footer={
-          <>
-            <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setAsking(null)}>
-              {tc("cancel")}
-            </Button>
-            <Button
-              size="sm"
-              className="h-10 px-5"
-              disabled={!!busy}
-              onClick={() => asking?.kind === "switch" && asking.plan.id !== "free" && change.switchTo(asking.plan.id)}
-            >
-              {busy && <Loader2 className="size-4 animate-spin" />}
-              {t("switch")}
-            </Button>
-          </>
-        }
-      >
-        {change.error && <p className="text-[12.5px] text-destructive">{change.error}</p>}
-      </Dialog>
       {/*
-        Cancelling, said plainly: what the team would lose, a smaller plan if
-        there is one, and keeping the plan as the easy choice. Cancelling stays
-        one click away; nothing is hidden or made hard.
+        Cancelling, said plainly: what the team would lose, and keeping the
+        plan as the easy choice. Cancelling stays one click away; nothing is
+        hidden or made hard.
       */}
       <Dialog
-        open={asking?.kind === "cancel"}
+        open={asking === "cancel"}
         onClose={() => setAsking(null)}
         title={t("cancelTitle")}
         description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
@@ -379,12 +361,6 @@ export function PlanSection() {
         }
       >
         <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
-          {planId === "pro" && (
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
-              {t("loseProPerks")}
-            </li>
-          )}
           <li className="flex items-start gap-2.5">
             <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
             {members > (plans[0]?.seats ?? 3)
@@ -400,23 +376,6 @@ export function PlanSection() {
             {t("loseNothing")}
           </li>
         </ul>
-        {below?.price && members <= below.seats && (
-          <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl bg-muted p-3">
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("downsell", { plan: PLAN_NAMES[below.id], price: dollars(below.price), seats: below.seats })}
-            </p>
-            <Button
-              size="sm"
-              variant="secondary"
-              className="h-8 shrink-0 px-3 text-[12.5px]"
-              disabled={!!busy}
-              onClick={() => below.id !== "free" && change.switchTo(below.id)}
-            >
-              {busy === below.id && <Loader2 className="size-3.5 animate-spin" />}
-              {t("plans.moveTo", { plan: PLAN_NAMES[below.id] })}
-            </Button>
-          </div>
-        )}
         {change.error && <p className="mt-2 text-[12.5px] text-destructive">{change.error}</p>}
       </Dialog>
     </div>
@@ -434,7 +393,19 @@ function Banner({ tone, icon, children }: { tone?: "brand"; icon?: ReactNode; ch
 }
 
 /** One of the plan's limits: how much of it is used, a meter, and a line under it. */
-function Usage({ label, value, note, className, children }: { label: string; value: string; note?: string; className?: string; children: ReactNode }) {
+function Usage({
+  label,
+  value,
+  note,
+  className,
+  children,
+}: {
+  label: string;
+  value: string;
+  note?: string;
+  className?: string;
+  children: ReactNode;
+}) {
   return (
     <div className={cn("p-5", className)}>
       <div className="flex items-baseline justify-between gap-3">
@@ -453,7 +424,11 @@ function Pill({ tone, children }: { tone?: "alert" | "brand"; children: ReactNod
     <span
       className={cn(
         "rounded-full px-2 py-0.5 text-[11.5px] font-semibold tracking-normal",
-        tone === "alert" ? "bg-destructive/10 text-destructive" : tone === "brand" ? "bg-brand/15 text-brand" : "bg-muted text-muted-foreground",
+        tone === "alert"
+          ? "bg-destructive/10 text-destructive"
+          : tone === "brand"
+            ? "bg-brand/15 text-brand"
+            : "bg-muted text-muted-foreground",
       )}
     >
       {children}

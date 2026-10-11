@@ -55,7 +55,7 @@
         // Paid plans in Creem's test mode (src/billing.ts): the products are the
         // test store's; CREEM_API_KEY and CREEM_WEBHOOK_SECRET are secrets.
         "CREEM_ENV": "test",
-        "CREEM_PRODUCTS": "{\"plus\":\"prod_651HiG7XsbOLrI90FjYn5W\",\"pro\":\"prod_4UPn8R75gbhgTiJo9N4NCj\"}"
+        "CREEM_PRODUCTS": "{\"pro\":\"prod_2bvC3UGSNphGww4yBDFhl4\"}"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],

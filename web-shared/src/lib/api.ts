@@ -231,7 +231,7 @@ export interface AdminPage {
   total: number;
 }
 
-export type PlanId = "free" | "plus" | "pro";
+export type PlanId = "free" | "pro";
 export interface Plan {
   id: PlanId;
   seats: number;
@@ -401,7 +401,6 @@ export const api = {
   /** After paying: the plan from Creem's record of that checkout, without waiting for the webhook. */
   syncCheckout: (officeId: string, checkoutId: string) =>
     post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { checkoutId }),
-  changePlan: (officeId: string, plan: PlanId) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/change`, { plan }),
   cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
   resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>

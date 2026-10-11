@@ -164,7 +164,7 @@ function Overview({ summary }: { summary: AdminSummary }) {
   );
 }
 
-const PLAN_NAMES: Record<string, string> = { free: "Free", plus: "Plus", pro: "Pro" };
+const PLAN_NAMES: Record<string, string> = { free: "Free", pro: "Pro" };
 const planName = (plan: string) => PLAN_NAMES[plan] ?? plan;
 const hours = (seconds: number) => (seconds / 3600).toLocaleString(undefined, { maximumFractionDigits: seconds < 36_000 ? 1 : 0 });
 
@@ -177,7 +177,7 @@ function Business({ summary }: { summary: AdminSummary }) {
   const { plans, meetingSeconds } = summary;
   const paying = Object.values(plans.paid).reduce((sum, count) => sum + count, 0);
   const tiles = [
-    { label: "Paying offices", value: paying.toLocaleString(), note: `Plus ${plans.paid.plus ?? 0} · Pro ${plans.paid.pro ?? 0}` },
+    { label: "Paying offices", value: paying.toLocaleString(), note: `Pro ${plans.paid.pro ?? 0}` },
     { label: "Given plans", value: plans.given.toLocaleString(), note: "Paid plan, no payment" },
     { label: "Meeting hours", value: hours(meetingSeconds), note: "All offices, this month" },
   ];
@@ -870,7 +870,7 @@ function OfficeManage({ office, onChanged }: { office: AdminOffice; onChanged: (
         }
       >
         <div role="radiogroup" aria-label="Plan" className="flex h-10 items-center rounded-full bg-muted p-1">
-          {(["free", "plus", "pro"] as PlanId[]).map((one) => (
+          {(["free", "pro"] as PlanId[]).map((one) => (
             <button
               key={one}
               type="button"

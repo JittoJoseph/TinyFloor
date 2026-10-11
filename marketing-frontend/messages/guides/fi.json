@@ -747,7 +747,7 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Ilmainen 3 hengelle · 19 $ kuukaudessa 10 hengelle, 49 $ 25 hengelle",
+            "detail": "Ilmainen 3 hengelle · $29 kuukaudessa koko tiimille",
             "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Ei tallenteita, tekoälymuistiinpanoja eikä karttaeditoria, ja toimistoon mahtuu enintään 25 henkeä."
           },
           {
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "Yksi hinta toimistolle",
               "Enintään 3 henkeä",
-              "19 $"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "Pieni tiimi ja pieni budjetti",
-            "body": "TinyFloor, 19 $ kuukaudessa enintään 10 hengelle, tai SoWorkin ilmainen paketti, jos 30 minuutin palaverit riittävät."
+            "body": "TinyFloor, $29 kuukaudessa koko tiimille, tai SoWorkin ilmainen tilaus, jos 30 minuutin kokoukset riittävät."
           },
           {
             "title": "Haluat tallenteet ja tekoälymuistiinpanot",
@@ -904,7 +904,7 @@
       },
       {
         "q": "Mikä on halvin virtuaalitoimisto pienelle tiimille?",
-        "a": "10 hengen tiimille maksullisella paketilla TinyFloor Plus maksaa 19 $ kuukaudessa koko toimistolta. Henkeä kohden laskuttavat työkalut maksavat samalle tiimille 54–195 $ kuukaudessa."
+        "a": "10 hengen tiimille maksullisella tilauksella TinyFloor Pro maksaa $29 kuukaudessa koko toimistolle. Henkeä kohden hinnoitellut työkalut maksavat samalle tiimille $54–$195 kuukaudessa."
       },
       {
         "q": "Onko Gather yhä ilmainen?",
@@ -1007,21 +1007,21 @@
             [
               "5 henkeä",
               "60 $",
-              "19 $",
+              "$29",
               "27 $",
               "Ilmainen (enintään 5 jäsentä)"
             ],
             [
               "10 henkeä",
               "120 $",
-              "19 $",
+              "$29",
               "54 $",
               "160 $"
             ],
             [
               "25 henkeä",
               "300 $",
-              "49 $",
+              "$29",
               "135 $",
               "400 $"
             ]
@@ -1053,7 +1053,7 @@
     ],
     "fit": {
       "title": "Mihin TinyFloor sopii",
-      "body": "TinyFloor säilyttää Gatherin ytimen: toimiston, jossa liikut ja juttelet kävelemällä jonkun luo, ja jossa on neuvotteluhuone, chat ja näytön jako. Se maksaa 19 $ kuukaudessa enintään 10 hengelle ja 49 $ enintään 25 hengelle, yksi hinta koko toimistolle, ja on ilmainen enintään 3 hengelle. Siinä ei ole tallenteita, litterointia eikä toimistoeditoria; jos tarvitset niitä, Gather palvelee paremmin."
+      "body": "TinyFloor säilyttää Gatherin ytimen: toimiston, jossa liikut ja puhut menemällä jonkun luo, ja jossa on kokoushuone, chat ja näytön jakaminen. Se maksaa $29 kuukaudessa koko tiimille, yksi hinta koko toimistolle, ja on ilmainen enintään 3 hengelle. Siinä ei ole tallenteita, litterointia eikä toimistoeditoria; jos tarvitset niitä, Gather sopii paremmin."
     },
     "faq": [
       {
@@ -1070,7 +1070,7 @@
       },
       {
         "q": "Mikä on Gatheria edullisempi vaihtoehto?",
-        "a": "TinyFloor maksaa 19 $ kuukaudessa enintään 10 hengelle ja on ilmainen enintään 3 hengelle. SoWorkin Basic-paketti maksaa 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella, ja sen ilmainen paketti kattaa 10 jäsentä 30 minuutin palavereilla."
+        "a": "TinyFloor maksaa $29 kuukaudessa koko tiimille ja on ilmainen enintään 3 hengelle. SoWorkin Basic-tilaus maksaa $5,40 jäsentä kohden kuukaudessa vuosilaskutuksella, ja sen ilmainen tilaus kattaa 10 jäsentä 30 minuutin kokouksilla."
       }
     ]
   }

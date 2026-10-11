@@ -747,7 +747,7 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Gratuit pour 3 personnes · 19 $ par mois pour 10, 49 $ pour 25",
+            "detail": "Gratuit pour 3 personnes · 29 $ par mois pour toute l'équipe",
             "body": "Un bureau en pixel art dans le navigateur, sur ordinateur et mobile. Approchez-vous d'un collègue pour lancer un appel vidéo, asseyez-vous à une table pour vous réunir, avec des canaux de chat, le partage d'écran et un tableau blanc. Un seul prix pour tout le bureau, pas par personne. Il n'a ni enregistrements, ni notes par IA, ni éditeur de plan, et un bureau accueille 25 personnes au maximum."
           },
           {
@@ -806,10 +806,10 @@
           ],
           "rows": [
             [
-              "TinyFloor Plus",
+              "TinyFloor Pro",
               "Un prix par bureau",
               "Jusqu'à 3 personnes",
-              "19 $"
+              "$29"
             ],
             [
               "SoWork Basic",
@@ -868,7 +868,7 @@
         "items": [
           {
             "title": "Une petite équipe au budget serré",
-            "body": "TinyFloor, à 19 $ par mois pour jusqu'à 10 personnes, ou l'offre gratuite de SoWork si des réunions de 30 minutes suffisent."
+            "body": "TinyFloor, à 29 $ par mois pour toute l'équipe, ou l'offre gratuite de SoWork si des réunions de 30 minutes suffisent."
           },
           {
             "title": "Vous voulez des enregistrements et des notes par IA",
@@ -904,7 +904,7 @@
       },
       {
         "q": "Quel est le bureau virtuel le moins cher pour une petite équipe ?",
-        "a": "Pour une équipe de 10 sur une offre payante, TinyFloor Plus coûte 19 $ par mois pour tout le bureau. Les outils facturés par personne coûtent de 54 à 195 $ par mois pour la même équipe."
+        "a": "Pour une équipe de 10 sur une offre payante, TinyFloor Pro coûte 29 $ par mois pour tout le bureau. Les outils facturés par personne coûtent de 54 $ à 195 $ par mois pour la même équipe."
       },
       {
         "q": "Gather est-il toujours gratuit ?",
@@ -1007,21 +1007,21 @@
             [
               "5 personnes",
               "60 $",
-              "19 $",
+              "$29",
               "27 $",
               "Gratuit (jusqu'à 5 membres)"
             ],
             [
               "10 personnes",
               "120 $",
-              "19 $",
+              "$29",
               "54 $",
               "160 $"
             ],
             [
               "25 personnes",
               "300 $",
-              "49 $",
+              "$29",
               "135 $",
               "400 $"
             ]
@@ -1053,7 +1053,7 @@
     ],
     "fit": {
       "title": "Où se situe TinyFloor",
-      "body": "TinyFloor garde l'essentiel de ce que fait Gather : un bureau où l'on se déplace et où l'on parle en s'approchant de quelqu'un, avec une salle de réunion, un chat et le partage d'écran. Il coûte 19 $ par mois pour jusqu'à 10 personnes et 49 $ pour jusqu'à 25, un seul prix pour tout le bureau, et il est gratuit jusqu'à 3. Il n'a ni enregistrements, ni transcription, ni éditeur de bureau : si vous en dépendez, Gather vous conviendra mieux."
+      "body": "TinyFloor garde l'essentiel de ce que fait Gather : un bureau où l'on se déplace et où l'on parle en s'approchant de quelqu'un, avec une salle de réunion, un chat et le partage d'écran. Il coûte 29 $ par mois pour toute l'équipe, un seul prix pour tout le bureau, et il est gratuit jusqu'à 3 personnes. Il n'a ni enregistrements, ni transcription, ni éditeur de bureau ; si vous en dépendez, Gather vous conviendra mieux."
     },
     "faq": [
       {
@@ -1070,7 +1070,7 @@
       },
       {
         "q": "Quelle est une alternative moins chère à Gather ?",
-        "a": "TinyFloor coûte 19 $ par mois pour jusqu'à 10 personnes et il est gratuit jusqu'à 3. L'offre Basic de SoWork coûte 5,40 $ par membre et par mois en facturation annuelle, et son offre gratuite couvre 10 membres avec des réunions de 30 minutes."
+        "a": "TinyFloor coûte 29 $ par mois pour toute l'équipe et est gratuit jusqu'à 3 personnes. L'offre Basic de SoWork coûte 5,40 $ par membre et par mois en facturation annuelle, et son offre gratuite couvre 10 membres avec des réunions de 30 minutes."
       }
     ]
   }

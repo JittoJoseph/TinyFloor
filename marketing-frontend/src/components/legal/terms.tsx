@@ -90,14 +90,14 @@ export const termsSections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>What you pay for.</strong> A paid plan lets an office hold more members and gives it more meeting hours; Pro also
-            gives HD video in meetings and priority help. The plans, their prices, member limits and meeting hours are on our{" "}
+            <strong>What you pay for.</strong> Pro lets an office hold more members, up to 25, and gives it more meeting hours and
+            priority help. The plans, their prices, member limits and meeting hours are on our{" "}
             <Link href="/pricing">pricing</Link>, and are shown again before you pay.
           </li>
           <li>
             <strong>Meeting hours.</strong> An office&apos;s meeting hours are the time its meetings have two or more people in them, added up
             over each calendar month (UTC). Calls between two people on the floor don&apos;t count. Once an office has used its hours, its
-            meetings carry on with voice only until the 1st of the next month, or until it moves to a bigger plan. Unused hours don&apos;t carry
+            meetings carry on with voice only until the 1st of the next month, or until it moves to Pro. Unused hours don&apos;t carry
             over. Meetings in the demo office have their own daily allowance.
           </li>
           <li>

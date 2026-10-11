@@ -23,7 +23,7 @@
       },
       {
         "q": "Er TinyFloor gratis?",
-        "a": "Ja, for et kontor til op til 3 personer med 5 mødetimer om måneden. Større kontorer koster $19 om måneden for 10 personer og 30 mødetimer, eller $49 for 25 personer og 60 timer."
+        "a": "Ja, for et kontor med op til 3 personer og 5 mødetimer om måneden. Derefter koster Pro $29 om måneden for hele teamet, ikke pr. person."
       },
       {
         "q": "Skal jeg installere noget?",
@@ -57,7 +57,7 @@
       "screenShare": "Skærmdeling"
     },
     "us": {
-      "price": "Gratis for 3 personer, 19 $ om måneden for 10",
+      "price": "Gratis for 3 personer, $29 om måneden for hele teamet",
       "freePlan": "Alt, uden tidsgrænse, for op til 3 personer.",
       "browser": "Ja, intet at installere",
       "screenShare": "Ja, i opkald og møder"
@@ -96,7 +96,7 @@
         "faq": [
           {
             "q": "Er Gather stadig gratis?",
-            "a": "Nej. Gather har ikke længere en permanent gratisplan. Der er en prøveperiode på 30 dage, og derefter starter Essential-planen ved 12 $ pr. medlem om måneden. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
+            "a": "Nej. Gather har ikke længere en permanent gratisplan. Der er en prøveperiode på 30 dage, og derefter starter Essential-planen ved 12 $ pr. medlem om måneden. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Hvad har Gather, som TinyFloor ikke har?",
@@ -108,7 +108,7 @@
           },
           {
             "q": "Hvor mange kan der være i et TinyFloor-kontor?",
-            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
+            "a": "Op til 3 personer på Free og op til 25 på Pro, og du kan lave så mange kontorer, du har brug for."
           }
         ]
       },
@@ -119,11 +119,11 @@
           "description": "Kumospaces gratisplan stopper ved 5 medlemmer. TinyFloor er et gratis virtuelt kontor i pixel art med videoopkald, når man står tæt, åbent for hele dit team i browseren."
         },
         "title": "Et <em>alternativ til Kumospace</em> for hele teamet.",
-        "subtitle": "Kumospaces gratisplan har plads til 5 medlemmer på én etage. TinyFloor er gratis for 3 og derefter én pris for hele kontoret: 19 $ om måneden for op til 10.",
+        "subtitle": "Kumospaces gratisplan har plads til 5 medlemmer på én etage. TinyFloor er gratis for 3 og derefter én pris for hele teamet: $29 om måneden.",
         "points": [
           {
             "title": "Ingen grænse på 5 medlemmer",
-            "body": "Inviter hele dit team: op til 10 personer på Plus og 25 på Pro, til én pris pr. kontor, ikke pr. person."
+            "body": "Inviter hele teamet: én pris pr. kontor på Pro, ikke pr. person."
           },
           {
             "title": "Prøv det, før du tilmelder dig",
@@ -143,7 +143,7 @@
         "faq": [
           {
             "q": "Er Kumospace gratis?",
-            "a": "Kumospace har en gratisplan for op til 5 registrerede medlemmer, med én etage og gæster begrænset til 4 timer om ugen. Business-planen starter ved 16 $ pr. bruger om måneden. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
+            "a": "Kumospace har en gratisplan for op til 5 registrerede medlemmer, med én etage og gæster begrænset til 4 timer om ugen. Business-planen starter ved 16 $ pr. bruger om måneden. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Hvad har Kumospace, som TinyFloor ikke har?",
@@ -210,7 +210,7 @@
         "label": "Alternativ til WorkAdventure",
         "meta": {
           "title": "WorkAdventure-alternativ til teams på op til 25",
-          "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et virtuelt kontor i pixel art med videoopkald, når man står tæt, gratis for 3 personer og 19 $ om måneden for 10."
+          "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et virtuelt kontor i pixel art med videoopkald efter nærhed, gratis for 3 personer og $29 om måneden for hele teamet."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plads til at vokse.",
         "subtitle": "WorkAdventure er også et kontor i pixel art, og gratisplanen har plads til 10 personer ad gangen. TinyFloor er gratis for 3 personer og derefter én fast pris, ikke en pris pr. person.",
@@ -237,7 +237,7 @@
         "faq": [
           {
             "q": "Er WorkAdventure gratis?",
-            "a": "WorkAdventure har en gratisplan for op til 10 samtidige brugere. Business-planen starter ved 8 € pr. bruger om måneden, og eventpriser ved 4 € pr. bruger pr. dag. TinyFloor er gratis for op til 3 personer og koster 19 $ om måneden for op til 10."
+            "a": "WorkAdventure har en gratisplan for op til 10 samtidige brugere. Business-planen starter ved 8 € pr. bruger om måneden, og eventpriser ved 4 € pr. bruger pr. dag. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Kan jeg tilpasse kortet i TinyFloor?",
@@ -286,7 +286,7 @@
           },
           {
             "q": "Hvor mange kan deltage?",
-            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
+            "a": "Op til 3 personer på Free og op til 25 på Pro, og du kan lave så mange kontorer, du har brug for."
           },
           {
             "q": "Er TinyFloor gratis?",
@@ -323,11 +323,11 @@
           },
           {
             "q": "Er det gratis?",
-            "a": "Ja, for op til 3 personer. Derefter er det én pris for hele kontoret, 19 $ om måneden for op til 10, uden prøveperiode og uden pris pr. plads."
+            "a": "Ja, for op til 3 personer. Derefter er det én pris for hele teamet, $29 om måneden, ikke en pris pr. plads."
           },
           {
             "q": "Hvor mange kan bruge ét kontor?",
-            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro. En større virksomhed kan lave et kontor til hvert team."
+            "a": "Op til 3 personer på Free og op til 25 på Pro. En større virksomhed kan lave et kontor til hvert team."
           },
           {
             "q": "Erstatter det videoopkald?",
@@ -422,14 +422,14 @@
         "label": "Sococo-alternativ",
         "meta": {
           "title": "Sococo-alternativ til små remote teams",
-          "description": "Sococo starter ved 10 pladser med årsabonnement. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $19 om måneden for op til 10, med månedlig betaling."
+          "description": "Sococo starter ved 10 pladser på en årsplan. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $29 om måneden for hele teamet, betalt månedligt."
         },
         "title": "Et <em>Sococo-alternativ</em> uden minimum på 10 pladser.",
         "subtitle": "Sococo sælger pladser pr. år, mindst 10. TinyFloor har én månedspris for hele kontoret, og et lille team kan starte gratis.",
         "points": [
           {
             "title": "Start i jeres rigtige størrelse",
-            "body": "Gratis for op til 3 personer, derefter $19 om måneden for op til 10. Intet minimum af pladser og ingen årlig forudbetaling."
+            "body": "Gratis for op til 3 personer, derefter $29 om måneden for hele teamet. Intet minimum af pladser og ingen årlig forudbetaling."
           },
           {
             "title": "En etage at gå rundt på",
@@ -448,7 +448,7 @@
         "faq": [
           {
             "q": "Hvad koster Sococo?",
-            "a": "Sococo koster $13,49 pr. plads om måneden, faktureret årligt, med mindst 10 pladser og 500 minutter pr. plads om måneden. Sococo Unlimited koster $24,99 pr. plads med mindst 100 pladser. TinyFloor er gratis for 3 personer og koster $19 om måneden for op til 10."
+            "a": "Sococo koster $13,49 pr. plads om måneden, faktureret årligt, med mindst 10 pladser og 500 minutter pr. plads om måneden. Sococo Unlimited koster $24,99 pr. plads med mindst 100 pladser. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Findes der en gratis version af Sococo?",
@@ -468,14 +468,14 @@
         "label": "oVice-alternativ",
         "meta": {
           "title": "oVice-alternativ til små teams",
-          "description": "oVice tager betaling pr. område eller fra 20 brugere. TinyFloor er et virtuelt kontor i browseren til små teams: gratis for 3 personer, $19 om måneden for 10 og $49 for 25."
+          "description": "oVice tager betaling pr. rum eller fra 20 brugere. TinyFloor er et virtuelt kontor i browseren til små teams: gratis for 3 personer, derefter $29 om måneden for hele teamet."
         },
         "title": "Et <em>oVice-alternativ</em> i størrelse til små teams.",
         "subtitle": "oVice er bygget til virksomheder og fællesskaber, med abonnementer efter områdets størrelse eller fra 20 brugere. TinyFloor er lavet til teams på 2 til 25, med én enkel pris pr. kontor.",
         "points": [
           {
             "title": "Priser for 3, 10 eller 25",
-            "body": "Gratis for op til 3 personer, $19 om måneden for 10 og $49 for 25. Ingen områdestørrelser at regne på."
+            "body": "Gratis for op til 3 personer, derefter $29 om måneden for hele teamet. Ingen rumstørrelser at regne på."
           },
           {
             "title": "Gå hen og tal",
@@ -495,7 +495,7 @@
         "faq": [
           {
             "q": "Hvad koster oVice?",
-            "a": "oVice Entry-S koster $65 om måneden pr. område ved årlig betaling, eller $78 om måneden, til omkring 10 faste medlemmer. Business Starter koster $16 pr. bruger om måneden fra 20 brugere. TinyFloor koster $19 om måneden for op til 10 personer."
+            "a": "oVice Entry-S koster $65 om måneden pr. område ved årlig betaling, eller $78 om måneden, til omkring 10 faste medlemmer. Business Starter koster $16 pr. bruger om måneden fra 20 brugere. TinyFloor koster $29 om måneden for hele teamet."
           },
           {
             "q": "Har oVice et gratis abonnement?",
@@ -515,14 +515,14 @@
         "label": "Teamflow-alternativ",
         "meta": {
           "title": "Teamflow-alternativ, der kører i browseren",
-          "description": "Teamflow koster $15 pr. person om måneden med apps til computeren. TinyFloor er et virtuelt kontor i browseren: gratis for 3 personer, $19 om måneden for et kontor med 10."
+          "description": "Teamflow koster $15 pr. person om måneden med desktopapps. TinyFloor er et virtuelt kontor i browseren: gratis for 3 personer, derefter $29 om måneden for hele teamet."
         },
         "title": "Et <em>Teamflow-alternativ</em> uden noget at downloade.",
         "subtitle": "Teamflow tager betaling pr. person og kører som en app på computeren. TinyFloor åbner i en browserfane, på laptop eller mobil, for én pris pr. kontor.",
         "points": [
           {
             "title": "Én pris for kontoret",
-            "body": "Teamflows Seed-abonnement koster $15 pr. person. TinyFloor Plus koster $19 om måneden for op til 10 personer tilsammen."
+            "body": "Teamflows Seed-plan koster $15 pr. person. TinyFloor Pro koster $29 om måneden for hele dit team samlet."
           },
           {
             "title": "Intet stop efter 45 minutter",
@@ -542,7 +542,7 @@
         "faq": [
           {
             "q": "Hvad koster Teamflow?",
-            "a": "Teamflow er gratis for op til 5 personer med møder på 45 minutter. Seed koster $15 og Business $25 pr. person om måneden, faktureret årligt. TinyFloor er gratis for 3 personer, derefter $19 om måneden for op til 10."
+            "a": "Teamflow er gratis for op til 5 personer med møder på 45 minutter. Seed koster $15 og Business $25 pr. person om måneden, faktureret årligt. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Har TinyFloor Teamflows app-integrationer?",
@@ -554,7 +554,7 @@
           },
           {
             "q": "Hvor mange kan der være i et TinyFloor-kontor?",
-            "a": "Op til 3 personer på Free, 10 på Plus og 25 på Pro, og du kan lave så mange kontorer, du har brug for."
+            "a": "Op til 3 personer på Free og op til 25 på Pro, og du kan lave så mange kontorer, du har brug for."
           }
         ]
       },
@@ -562,7 +562,7 @@
         "label": "Roam-alternativ",
         "meta": {
           "title": "Roam-alternativ til små remote teams",
-          "description": "Roam er en app til computeren med pris pr. aktivt medlem. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $19 om måneden for op til 10."
+          "description": "Roam er en desktopapp prissat pr. aktivt medlem. TinyFloor er et virtuelt kontor i browseren, gratis for 3 personer og $29 om måneden for hele teamet."
         },
         "title": "Et <em>Roam-alternativ</em>, der åbner i browseren.",
         "subtitle": "Roam samler et virtuelt kontor med AI-værktøjer og en app til computeren, med pris pr. medlem. TinyFloor gør kontordelen enkelt: gå hen, mødes og chatte, for én pris pr. team.",
@@ -577,7 +577,7 @@
           },
           {
             "title": "Én pris pr. team",
-            "body": "Gratis for 3 personer, $19 om måneden for 10 og $49 for 25, uanset hvor mange der bruger det den måned."
+            "body": "Gratis for 3 personer, derefter $29 om måneden for hele teamet, uanset hvor mange der bruger det den måned."
           }
         ],
         "them": {
@@ -589,7 +589,7 @@
         "faq": [
           {
             "q": "Hvordan prissætter Roam?",
-            "a": "Roam tager én månedspris pr. aktivt medlem for alle sine produkter, med en gratis prøveperiode på 14 dage og uden årsaftale. TinyFloor er gratis for 3 personer og koster $19 om måneden for op til 10."
+            "a": "Roam tager én månedspris pr. aktivt medlem for alle sine produkter, med en gratis prøveperiode på 14 dage og uden årsaftale. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
           },
           {
             "q": "Hvad har Roam, som TinyFloor ikke har?",
@@ -648,7 +648,7 @@
           },
           {
             "q": "Hvad koster TinyFloor?",
-            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+            "a": "Gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, ikke pr. person."
           }
         ]
       },
@@ -687,7 +687,7 @@
           },
           {
             "q": "Er TinyFloor gratis ligesom Discord?",
-            "a": "For op til 3 personer, ja. Større kontorer koster $19 om måneden for 10 personer og $49 om måneden for 25."
+            "a": "For op til 3 personer, ja. Derefter koster Pro $29 om måneden for hele teamet."
           },
           {
             "q": "Har TinyFloor talekanaler?",
@@ -718,13 +718,13 @@
           },
           {
             "title": "TinyFloor",
-            "body": "Gratis for 3 personer, derefter $19 om måneden for op til 10 og $49 for 25, for hele kontoret."
+            "body": "Gratis for 3 personer, derefter $29 om måneden for hele teamet, ikke pr. person."
           }
         ],
         "faq": [
           {
             "q": "Hvad er billigst, Gather eller Kumospace?",
-            "a": "For et team på 10 starter Gather ved omkring $120 om måneden og Kumospace Business ved omkring $160. Kumospace har et gratis abonnement for op til 5 medlemmer; Gather har en prøveperiode på 30 dage. TinyFloor Plus koster $19 om måneden for hele kontoret."
+            "a": "For et team på 10 starter Gather ved omkring $120 om måneden og Kumospace Business ved omkring $160. Kumospace har et gratis abonnement for op til 5 medlemmer; Gather har en prøveperiode på 30 dage. TinyFloor Pro koster $29 om måneden for hele kontoret."
           },
           {
             "q": "Hvad passer bedst til et lille team?",
@@ -795,7 +795,7 @@
           },
           {
             "q": "Er det gratis?",
-            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+            "a": "Gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, ikke pr. person."
           }
         ]
       },
@@ -846,7 +846,7 @@
           },
           {
             "q": "Hvor mange mødetimer bruger en daglig standup?",
-            "a": "En standup på 15 minutter hver arbejdsdag er omkring 5 timer om måneden. Plus har 30 timers gruppemøder om måneden og Pro 60."
+            "a": "Et standup på 15 minutter hver arbejdsdag er cirka 5 timer om måneden. Free indeholder 5 timers gruppemøder om måneden, og Pro 60."
           },
           {
             "q": "Kan vi holde asynkrone standups i stedet?",
@@ -905,7 +905,7 @@
           },
           {
             "q": "Optager en ny medarbejder en plads i abonnementet?",
-            "a": "Ja, alle på kontoret er medlemmer. Plus har plads til 10 personer og Pro til 25."
+            "a": "Ja, alle i kontoret er medlemmer. Pro har plads til hele teamet, op til 25 personer."
           },
           {
             "q": "Kan nye læse op på chatten?",
@@ -1086,7 +1086,7 @@
           },
           {
             "q": "Hvad koster det?",
-            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+            "a": "Gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, ikke pr. person."
           },
           {
             "q": "Skal vi installere noget?",
@@ -1098,7 +1098,7 @@
         "label": "Startups",
         "meta": {
           "title": "Virtuelt kontor til remote startups",
-          "description": "Et virtuelt kontor til remote startups: behold farten fra at sidde sammen, for én pris pr. kontor. Gratis for 3 personer, $19 om måneden for 10."
+          "description": "Et virtuelt kontor til remote startups: behold farten fra at sidde sammen, til én pris pr. kontor. Gratis for 3 personer, derefter $29 om måneden for hele teamet."
         },
         "title": "Et virtuelt kontor til <em>remote startups.</em>",
         "subtitle": "Tidlige teams er hurtige, fordi alle er i samme rum. TinyFloor samler en remote startup i ét rum igen, for én pris pr. kontor, ikke pr. ansættelse.",
@@ -1109,7 +1109,7 @@
           },
           {
             "title": "Intet gebyr pr. ansat",
-            "body": "$19 om måneden for op til 10 personer og $49 for 25. At ansætte nogen giver ikke et ekstra pladsgebyr."
+            "body": "$29 om måneden for hele teamet. At ansætte nogen giver ikke et ekstra pladsgebyr."
           },
           {
             "title": "Beslutninger på minutter",
@@ -1124,20 +1124,20 @@
             "body": "Stifterne deler en etage gratis, med 5 mødetimer om måneden."
           },
           {
-            "label": "10 personer",
-            "title": "Plus",
-            "body": "$19 om måneden for hele kontoret, med 30 mødetimer."
+            "label": "4. person",
+            "title": "Pro-prøveperiode",
+            "body": "Hele teamet får Pro gratis i 14 dage, uden kort."
           },
           {
-            "label": "25 personer",
+            "label": "Hele teamet",
             "title": "Pro",
-            "body": "$49 om måneden for hele kontoret, med 60 mødetimer."
+            "body": "$29 om måneden for hele kontoret, med 60 mødetimer."
           }
         ],
         "faq": [
           {
             "q": "Hvad koster TinyFloor for en startup?",
-            "a": "Gratis for op til 3 personer. Plus koster $19 om måneden for 10 personer og Pro $49 om måneden for 25, for hele kontoret, ikke pr. person."
+            "a": "Gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, ikke pr. person."
           },
           {
             "q": "Kan vi opsige når som helst?",
@@ -1145,7 +1145,7 @@
           },
           {
             "q": "Hvad sker der, når vi bliver flere end 25?",
-            "a": "Giv hvert team sit eget kontor, eller skriv til os, så tager vi en snak."
+            "a": "Et kontor har plads til op til 25 personer. Giv hvert team sit eget kontor."
           },
           {
             "q": "Har vi brug for noget IT-opsætning?",
@@ -1200,7 +1200,7 @@
           },
           {
             "q": "Hvor mange kan vi være?",
-            "a": "Op til 10 på Plus og 25 på Pro, for én månedspris for hele kontoret."
+            "a": "Alle, op til 25 personer på Pro, til én månedspris for hele kontoret."
           },
           {
             "q": "Kan freelancere være med?",
@@ -1256,11 +1256,11 @@
         "faq": [
           {
             "q": "Hvor mange kan deltage i et møde?",
-            "a": "Alle på kontoret: op til 3 personer på Free, 10 på Plus og 25 på Pro."
+            "a": "Alle i kontoret: op til 3 personer på Free og op til 25 på Pro."
           },
           {
             "q": "Har møder en tidsgrænse?",
-            "a": "Ingen grænse per møde. Hver plan har timer til gruppemøder hver måned: 5 på Free, 30 på Plus og 60 på Pro."
+            "a": "Ingen grænse pr. møde. Hver plan indeholder timer til gruppemøder hver måned: 5 på Free og 60 på Pro."
           },
           {
             "q": "Hvad sker der, når timerne er brugt?",
@@ -1388,7 +1388,7 @@
           },
           {
             "q": "Hvad koster det?",
-            "a": "Gratis for op til 3 personer. Plus koster 19 $ om måneden for 10 personer og Pro 49 $ om måneden for 25, for hele kontoret, ikke per person."
+            "a": "Gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, ikke pr. person."
           }
         ]
       },
@@ -1584,7 +1584,7 @@
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
       "muted": "ikke pr. person.",
-      "body": "Start gratis. Pro er hele kontoret, for et team af enhver størrelse.",
+      "body": "Gratis for op til 3 personer. Derefter én pris for hele dit team.",
       "soon": "Kommer snart",
       "forever": "for altid",
       "month": "om måneden",
@@ -1592,20 +1592,15 @@
         "name": "Free",
         "tagline": "Til at prøve det med dit team"
       },
-      "plus": {
-        "name": "Plus",
-        "tagline": "Det vigtigste"
-      },
       "pro": {
         "name": "Pro",
-        "tagline": "Hele kontoret, når det er bedst"
+        "tagline": "Hele dit team, én pris"
       },
       "tax": "Priserne er månedlige og uden moms.",
       "choose": "Vælg {plan}",
       "note": "Opkald mellem to personer tæller aldrig. Hver pris gælder hele kontoret, ikke per person.",
-      "best": "Bedste værdi",
-      "perksStandard": "Standardvideo · {hours} mødetimer om måneden",
-      "perksPro": "HD-video · {hours} mødetimer · prioriteret hjælp"
+      "perksPro": "Hele dit team · {hours} mødetimer · prioriteret hjælp",
+      "perksFree": "Op til {people} personer · {hours} mødetimer om måneden"
     },
     "source": {
       "star": "Giv en stjerne på GitHub",
@@ -1625,17 +1620,17 @@
   "pricingPage": {
     "meta": {
       "title": "Priser: Én pris for hele kontoret",
-      "description": "TinyFloor er gratis at starte med. Plus koster $19 om måneden; Pro, med HD-video, dobbelt så mange mødetimer og prioriteret hjælp, koster $49 om måneden. Prissat per kontor, ikke per person."
+      "description": "TinyFloor er gratis for op til 3 personer. Pro koster $29 om måneden for hele teamet, med 60 mødetimer og prioriteret hjælp. En pris pr. kontor, ikke pr. person."
     },
     "title": "Én pris for hele kontoret.",
     "muted": "Ikke én pr. person.",
-    "body": "Start gratis, og gå til Pro for hele kontoret: HD-video, dobbelt så meget mødetid og prioriteret hjælp.",
+    "body": "Start gratis for op til 3 personer, derefter Pro for hele teamet, til én pris.",
     "seats": {
       "title": "Ti personer,",
       "muted": "én lille regning.",
       "body": "Hvad et team på 10 betaler om måneden.",
       "perSeat": "Værktøjer pr. bruger til {price} pr. person",
-      "ours": "TinyFloor Plus, for hele kontoret"
+      "ours": "TinyFloor Pro, for hele kontoret"
     },
     "table": {
       "title": "Sammenlign planer,",
@@ -1645,10 +1640,8 @@
       "hoursNote": "Kun gruppemøder",
       "calls": "Opkald mellem to personer",
       "callsNote": "Tælles aldrig",
-      "video": "Video i møder",
-      "standard": "Standard",
-      "hd": "HD",
-      "support": "Prioriteret hjælp"
+      "support": "Prioriteret hjælp",
+      "wholeTeam": "Hele teamet"
     },
     "notes": {
       "title": "Godt at vide.",
@@ -1661,8 +1654,8 @@
         "body": "Spørg inden for 14 dage efter en betaling, og du får det hele tilbage."
       },
       "change": {
-        "title": "Skift abonnement når som helst",
-        "body": "At skifte op eller ned sker med det samme, og Creem opkræver eller krediterer forskellen."
+        "title": "En prøveperiode, når teamet kommer",
+        "body": "Når en 4. person kommer ind i et gratis kontor, får hele teamet Pro gratis i 14 dage. Intet kort nødvendigt."
       },
       "hours": {
         "title": "Når timerne er brugt",

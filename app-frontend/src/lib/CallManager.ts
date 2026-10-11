@@ -1,11 +1,5 @@
 import { onPrefsChange, prefs } from "./prefs";
-import type {
-  CallKind,
-  MediaFlags,
-  ServerMessage,
-  VideoKind,
-  VideoQuality,
-} from "@shared/messages";
+import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { api } from "@/lib/api";
 import {
@@ -233,8 +227,6 @@ class CallManager {
   private stage: Stage = EMPTY_STAGE;
   /** Who we are on this floor, to leave ourselves off the stage. */
   private selfId: string | null = null;
-  /** HD video in meetings: the office's plan has it (Pro). */
-  private hd = false;
   private stageTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
   /** What you pinned on the stage, if anything. */
@@ -587,7 +579,7 @@ class CallManager {
           .sort((a, b) => a.since - b.since)
           .map((member) => ({ id: member.id, cameraOn: !!media.get(member.id)?.cameraOn, screen: !!media.get(member.id)?.screen }))
       : sfu.peerList;
-    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin, hd: this.hd });
+    const stage = chooseStage({ peers: people, speaking, spokeAt, mode, previous: this.stage, pin: this.pin });
     // A change of speaker waiting out its pause: look again then, if nothing else does first.
     clearTimeout(this.stageTimer);
     if (stage.recheckIn !== null) this.stageTimer = setTimeout(() => this.refreshStage(), stage.recheckIn);
@@ -619,8 +611,7 @@ class CallManager {
    * and on a phone not even that, so everything else stays low.
    */
   setFocus(focus: Focus | null) {
-    if (focus?.id === this.focus?.id && focus?.kind === this.focus?.kind)
-      return;
+    if (focus?.id === this.focus?.id && focus?.kind === this.focus?.kind) return;
     this.focus = focus;
     this.shareQuality();
   }
@@ -628,11 +619,7 @@ class CallManager {
   /** Asks the person on the call for what our cards can show. */
   private shareQuality() {
     const wanted = (id: string, kind: VideoKind): VideoQuality =>
-      this.focus?.id === id &&
-      this.focus.kind === kind &&
-      !screenTooSmallForDetail()
-        ? "high"
-        : "low";
+      this.focus?.id === id && this.focus.kind === kind && !screenTooSmallForDetail() ? "high" : "low";
 
     this.peers.forEach((peer) => {
       const want = {
@@ -659,13 +646,6 @@ class CallManager {
   private listenForVoice() {
     const track = this.meeting && this.micEnabled && this.sfu && !this.sfu.alone ? (this.local?.getAudioTracks()[0] ?? null) : null;
     this.voice.listen(track);
-  }
-
-  /** Whether meetings here get HD video, from the place's plan (docs/22). */
-  setHd(hd: boolean) {
-    if (hd === this.hd) return;
-    this.hd = hd;
-    this.refreshStage();
   }
 
   /** Who we are on the floor, told when the room welcomes us. */
@@ -800,21 +780,13 @@ class CallManager {
   }
 
   private syncTracks(peer: PeerEntry) {
-    const tracks = [
-      this.local?.getAudioTracks()[0],
-      this.local?.getVideoTracks()[0],
-      this.screen?.getVideoTracks()[0],
-    ];
+    const tracks = [this.local?.getAudioTracks()[0], this.local?.getVideoTracks()[0], this.screen?.getVideoTracks()[0]];
     peer.pc?.getTransceivers().forEach((transceiver, slot) => {
-      if (transceiver.direction !== "sendrecv")
-        transceiver.direction = "sendrecv";
+      if (transceiver.direction !== "sendrecv") transceiver.direction = "sendrecv";
       const kind = SLOT_KIND[slot];
       transceiver.sender
         .replaceTrack(tracks[slot] ?? null)
-        .then(
-          () =>
-            kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]),
-        )
+        .then(() => kind && sendAtQuality(transceiver.sender, kind, peer.wants[kind]))
         .catch(() => {});
     });
   }
@@ -913,8 +885,7 @@ class CallManager {
 
     pc.onicecandidate = ({ candidate }) => {
       if (candidate?.type === "relay") peer.gathered = true;
-      if (candidate)
-        this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
+      if (candidate) this.send("signal", id, { signal: { candidate: candidate.toJSON() } });
     };
 
     pc.ontrack = ({ track, transceiver }) => {
@@ -944,9 +915,7 @@ class CallManager {
           this.emit();
         }
       };
-      SLOTS.forEach((kind) =>
-        pc.addTransceiver(kind, { direction: "sendrecv" }),
-      );
+      SLOTS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
       preferRedundantAudio(pc.getTransceivers()[0]);
     }
 
@@ -1038,9 +1007,7 @@ class CallManager {
         },
       });
       this.voiceApplied = JSON.stringify(audioConstraints());
-      this.local
-        ?.getAudioTracks()
-        .forEach((track) => (track.enabled = this.micEnabled));
+      this.local?.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
       this.error = null;
       return true;
     } catch {
@@ -1131,17 +1098,11 @@ class CallManager {
           peer.pc?.restartIce();
         }
       }
-      const refreshIn = Math.max(
-        60_000,
-        expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS,
-      );
+      const refreshIn = Math.max(60_000, expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS);
       this.iceTimer = setTimeout(() => void this.loadIceServers(), refreshIn);
     } catch {
       // No relay, no call: try again soon, sooner while there are none at all.
-      this.iceTimer = setTimeout(
-        () => void this.loadIceServers(),
-        this.iceServers.length ? 60_000 : 5_000,
-      );
+      this.iceTimer = setTimeout(() => void this.loadIceServers(), this.iceServers.length ? 60_000 : 5_000);
     }
   }
 

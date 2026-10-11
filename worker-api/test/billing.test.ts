@@ -37,7 +37,7 @@ function subscription(officeId: string, overrides: Record<string, unknown> = {})
     id: `sub_${officeId}`,
     object: "subscription",
     status: "active",
-    product: { id: "prod_plus", price: 1900, currency: "USD" },
+    product: { id: "prod_pro", price: 2900, currency: "USD" },
     customer: { id: "cust_1", email: "ada@example.com" },
     metadata: { office_id: officeId },
     updated_at: new Date(Date.now() + events * 1000).toISOString(),
@@ -56,7 +56,12 @@ async function sign(body: string, secret = SECRET) {
 /** A webhook as Creem sends it: no Origin, no cookie, just the signature. */
 async function deliver(type: string, object: unknown, options: { eventId?: string; signature?: string } = {}) {
   events++;
-  const body = JSON.stringify({ id: options.eventId ?? `evt_${events}_${crypto.randomUUID()}`, eventType: type, created_at: Date.now(), object });
+  const body = JSON.stringify({
+    id: options.eventId ?? `evt_${events}_${crypto.randomUUID()}`,
+    eventType: type,
+    created_at: Date.now(),
+    object,
+  });
   const response = await exports.default.fetch("https://api.tinyfloor.com/v1/billing/webhook", {
     method: "POST",
     headers: { "Content-Type": "application/json", "creem-signature": options.signature ?? (await sign(body)) },
@@ -83,16 +88,14 @@ afterEach(() => vi.restoreAllMocks());
 
 describe("billing", () => {
   it("lists the plans, and says paid plans are on sale here", async () => {
-    const { status, body } = await call<{ plans: Array<{ id: string; seats: number; meetingHours: number; price: number | null }>; billing: unknown }>(
-      null,
-      "GET",
-      "/v1/plans",
-    );
+    const { status, body } = await call<{
+      plans: Array<{ id: string; seats: number; meetingHours: number; price: number | null }>;
+      billing: unknown;
+    }>(null, "GET", "/v1/plans");
     expect(status).toBe(200);
     expect(body.plans.map((plan) => [plan.id, plan.seats, plan.meetingHours, plan.price])).toEqual([
       ["free", 3, 5, null],
-      ["plus", 10, 30, 1900],
-      ["pro", 25, 60, 4900],
+      ["pro", 25, 60, 2900],
     ]);
     expect(body.billing).toEqual({ mode: "test" });
   });
@@ -100,17 +103,17 @@ describe("billing", () => {
   it("makes the checkout itself, for the office the admin is in", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const calls = creemApi(() => ({ id: "ch_1abcdefgh", checkout_url: "https://creem.io/test/checkout/prod_plus/ch_1abcdefgh" }));
+    const calls = creemApi(() => ({ id: "ch_1abcdefgh", checkout_url: "https://creem.io/test/checkout/prod_pro/ch_1abcdefgh" }));
 
-    const { status, body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" });
+    const { status, body } = await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "pro" });
     expect(status).toBe(200);
-    expect(body).toEqual({ checkoutId: "ch_1abcdefgh", url: "https://creem.io/test/checkout/prod_plus/ch_1abcdefgh" });
+    expect(body).toEqual({ checkoutId: "ch_1abcdefgh", url: "https://creem.io/test/checkout/prod_pro/ch_1abcdefgh" });
     expect(calls).toEqual([
       {
         method: "POST",
         path: "/v1/checkouts",
         body: {
-          product_id: "prod_plus",
+          product_id: "prod_pro",
           units: 1,
           request_id: officeId,
           metadata: { office_id: officeId, payer_id: ada.id },
@@ -129,7 +132,7 @@ describe("billing", () => {
       .run();
     creemApi(() => ({ id: "ch_1abcdefgh", checkout_url: "https://creem.io/x" }));
 
-    expect((await call(bo, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "plus" })).status).toBe(403);
+    expect((await call(bo, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "pro" })).status).toBe(403);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "free" })).status).toBe(400);
     expect((await call(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "enterprise" })).status).toBe(400);
   });
@@ -140,13 +143,17 @@ describe("billing", () => {
 
     const { status } = await deliver("subscription.active", subscription(officeId));
     expect(status).toBe(200);
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
 
-    const billing = await call<{ subscription: Record<string, unknown>; meetingHours: number }>(ada, "GET", `/v1/offices/${officeId}/billing`);
-    expect(billing.body.subscription).toMatchObject({ plan: "plus", status: "active", renewsAt: Date.parse("2026-11-10T00:00:00Z") });
-    expect(billing.body.meetingHours).toBe(30);
+    const billing = await call<{ subscription: Record<string, unknown>; meetingHours: number }>(
+      ada,
+      "GET",
+      `/v1/offices/${officeId}/billing`,
+    );
+    expect(billing.body.subscription).toMatchObject({ plan: "pro", status: "active", renewsAt: Date.parse("2026-11-10T00:00:00Z") });
+    expect(billing.body.meetingHours).toBe(60);
     // The room hears the plan's hours straight away, so a pause lifts without waiting for a new ticket.
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 30]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 60]);
   });
 
   it("takes the office from the checkout when the subscription doesn't carry it", async () => {
@@ -158,14 +165,16 @@ describe("billing", () => {
       metadata: { office_id: officeId, payer_id: ada.id },
       subscription: subscription(officeId, { metadata: {} }),
     });
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
 
   it("shows the meeting hours the office has used this month", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     const month = new Date().toISOString().slice(0, 7);
-    await env.DB.prepare("INSERT INTO usage_monthly (office_id, period, meeting_seconds, updated_at) VALUES (?, ?, ?, ?), (?, '2020-01', 999999, 0)")
+    await env.DB.prepare(
+      "INSERT INTO usage_monthly (office_id, period, meeting_seconds, updated_at) VALUES (?, ?, ?, ?), (?, '2020-01', 999999, 0)",
+    )
       .bind(officeId, month, 7200, Date.now(), officeId)
       .run();
     const now = new Date();
@@ -196,8 +205,8 @@ describe("billing", () => {
   it("applies each event once, and never lets an older one undo a newer", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const newer = subscription(officeId, { product: { id: "prod_pro" }, updated_at: "2026-10-10T12:00:00Z" });
-    const older = subscription(officeId, { updated_at: "2026-10-10T11:00:00Z" });
+    const newer = subscription(officeId, { updated_at: "2026-10-10T12:00:00Z" });
+    const older = subscription(officeId, { status: "canceled", updated_at: "2026-10-10T11:00:00Z" });
 
     await deliver("subscription.update", newer, { eventId: "evt_same" });
     expect((await deliver("subscription.update", newer, { eventId: "evt_same" })).body).toMatchObject({ duplicate: true });
@@ -210,7 +219,7 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     await deliver("subscription.active", subscription(officeId));
     await deliver("subscription.past_due", subscription(officeId, { status: "past_due" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
 
     await deliver("subscription.canceled", subscription(officeId, { status: "canceled" }));
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
@@ -226,14 +235,14 @@ describe("billing", () => {
     await deliver("subscription.expired", subscription(officeId, { status: "unpaid" }));
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
     await deliver("subscription.paid", subscription(officeId, { status: "active" }));
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
 
   it("doesn't let an old subscription ending take the plan from the current one", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     await deliver("subscription.active", subscription(officeId, { id: `old_${officeId}` }));
-    await deliver("subscription.active", subscription(officeId, { id: `new_${officeId}`, product: { id: "prod_pro" } }));
+    await deliver("subscription.active", subscription(officeId, { id: `new_${officeId}` }));
     await deliver("subscription.canceled", subscription(officeId, { id: `old_${officeId}`, status: "canceled" }));
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
   });
@@ -243,34 +252,11 @@ describe("billing", () => {
     const officeId = await officeOf(ada);
     await deliver("subscription.active", subscription(officeId));
     creemApi(() => ({ id: "ch_2abcdefgh", checkout_url: "https://creem.io/x" }));
-    const { status, body } = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, { plan: "pro" });
-    expect(status).toBe(409);
-    expect(body.error.code).toBe("has_subscription");
-  });
-
-  it("changes plan through Creem, and not below the members the office has", async () => {
-    const ada = await makeUser("Ada");
-    const officeId = await officeOf(ada);
-    await deliver("subscription.active", subscription(officeId));
-
-    const calls = creemApi((_method, _path, body) =>
-      subscription(officeId, { product: { id: (body as { product_id: string }).product_id }, updated_at: new Date(Date.now() + 60_000).toISOString() }),
-    );
-    const { status, body } = await call<{ plan: string; seats: number; meetingHours: number }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, {
+    const { status, body } = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/checkout`, {
       plan: "pro",
     });
-    expect(status).toBe(200);
-    expect(body).toMatchObject({ plan: "pro", seats: 25, meetingHours: 60 });
-    expect(calls[0]).toEqual({
-      method: "POST",
-      path: `/v1/subscriptions/sub_${officeId}/upgrade`,
-      body: { product_id: "prod_pro", update_behavior: "proration-charge-immediately" },
-    });
-
-    await addMembers(officeId, 10); // 11 members now
-    const tooSmall = await call<{ error: { code: string } }>(ada, "POST", `/v1/offices/${officeId}/billing/change`, { plan: "plus" });
-    expect(tooSmall.status).toBe(409);
-    expect(tooSmall.body.error.code).toBe("too_many_members");
+    expect(status).toBe(409);
+    expect(body.error.code).toBe("has_subscription");
   });
 
   it("cancels at the end of the period, and can take that back", async () => {
@@ -280,10 +266,14 @@ describe("billing", () => {
     const later = (ms: number) => new Date(Date.now() + ms).toISOString();
 
     const calls = creemApi(() => subscription(officeId, { status: "scheduled_cancel", updated_at: later(120_000) }));
-    const cancelled = await call<{ plan: string; subscription: Record<string, unknown> }>(ada, "POST", `/v1/offices/${officeId}/billing/cancel`);
+    const cancelled = await call<{ plan: string; subscription: Record<string, unknown> }>(
+      ada,
+      "POST",
+      `/v1/offices/${officeId}/billing/cancel`,
+    );
     expect(calls[0]).toEqual({ method: "POST", path: `/v1/subscriptions/sub_${officeId}/cancel`, body: { mode: "scheduled" } });
     // Still on the plan until the period it paid for is over.
-    expect(cancelled.body.plan).toBe("plus");
+    expect(cancelled.body.plan).toBe("pro");
     expect(cancelled.body.subscription).toMatchObject({ endsAt: Date.parse("2026-11-10T00:00:00Z"), renewsAt: null });
 
     vi.restoreAllMocks();
@@ -300,9 +290,11 @@ describe("billing", () => {
         ? { id: "ch_1abcdefgh", status: "completed", metadata: { office_id: officeId }, subscription: `sub_${officeId}` }
         : subscription(officeId),
     );
-    const { status, body } = await call<{ plan: string; seats: number }>(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { checkoutId: "ch_1abcdefgh" });
+    const { status, body } = await call<{ plan: string; seats: number }>(ada, "POST", `/v1/offices/${officeId}/billing/sync`, {
+      checkoutId: "ch_1abcdefgh",
+    });
     expect(status).toBe(200);
-    expect(body).toMatchObject({ plan: "plus", seats: 10 });
+    expect(body).toMatchObject({ plan: "pro", seats: 25 });
   });
 
   it("won't sync a checkout that was for another office", async () => {
@@ -361,7 +353,7 @@ describe("billing", () => {
       `/v1/offices/${officeId}/billing/details`,
     );
     expect(status).toBe(200);
-    expect(body.nextCharge).toEqual({ at: Date.parse("2026-11-10T00:00:00Z"), amount: 1900, currency: "USD" });
+    expect(body.nextCharge).toEqual({ at: Date.parse("2026-11-10T00:00:00Z"), amount: 2900, currency: "USD" });
     expect(body.card).toBeNull();
     expect(body.history.map((row) => [row.id, row.status, row.plan, row.invoice])).toEqual([
       ["tran_refunded", "refunded", null, true],
@@ -386,7 +378,7 @@ describe("billing", () => {
     expect(other.body.error.code).toBe("not_payer");
   });
 
-it("lets a full free office's next person in, on a 14-day Pro trial for the whole team", async () => {
+  it("lets a full free office's next person in, on a 14-day Pro trial for the whole team", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
@@ -407,8 +399,14 @@ it("lets a full free office's next person in, on a 14-day Pro trial for the whol
     expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 60]);
 
     // Over: back to free the moment the office is read, everyone still in it.
-    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?").bind(Date.now() - 1000, officeId).run();
-    const after = await call<{ plan: string; seats: number; members: number; trial: unknown }>(ada, "GET", `/v1/offices/${officeId}/billing`);
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?")
+      .bind(Date.now() - 1000, officeId)
+      .run();
+    const after = await call<{ plan: string; seats: number; members: number; trial: unknown }>(
+      ada,
+      "GET",
+      `/v1/offices/${officeId}/billing`,
+    );
     expect(after.body).toMatchObject({ plan: "free", seats: 3, members: 4, trial: null });
 
     // Never twice: now the office really is full.
@@ -417,7 +415,7 @@ it("lets a full free office's next person in, on a 14-day Pro trial for the whol
     expect(again.body.error.code).toBe("office_full");
   });
 
-  it("lets a plan bought during the trial replace it", async () => {
+  it("lets the plan bought during the trial replace it", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
     await addMembers(officeId, 2);
@@ -425,7 +423,7 @@ it("lets a full free office's next person in, on a 14-day Pro trial for the whol
     await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`);
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
     await deliver("subscription.active", subscription(officeId));
-    expect(await officeRow(officeId)).toEqual({ plan: "plus", seats: 10 });
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 25 });
     const trial = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number }>();
     expect(trial?.trial_ends_at).toBe(0);
   });
@@ -443,7 +441,9 @@ it("lets a full free office's next person in, on a 14-day Pro trial for the whol
   it("ends every trial that's over in the daily run", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await env.DB.prepare("UPDATE offices SET plan = 'plus', seats = 10, trial_ends_at = ? WHERE id = ?").bind(Date.now() - 1000, officeId).run();
+    await env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25, trial_ends_at = ? WHERE id = ?")
+      .bind(Date.now() - 1000, officeId)
+      .run();
     const { endTrials } = await import("../src/billing");
     expect(await endTrials(env)).toBeGreaterThanOrEqual(1);
     expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });

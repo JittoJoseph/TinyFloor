@@ -41,9 +41,9 @@
 
 Remote work lost the hallway: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls turned every one of those into a scheduled meeting.
 
-TinyFloor is a 2D virtual office in your browser. Your team walks around a shared pixel-art floor as characters, and **proximity video chat** does the rest: walk up to someone to talk, sit at a table to meet, stand up when you're done. The office stays open all day, so remote work feels like working side by side again.
+TinyFloor is a small virtual office in your browser. Your team works on a shared pixel-art floor, each at a desk of their own, and **proximity video chat** does the rest: walk up to someone to talk, walk into the meeting room to meet, walk out when you're done. The office stays open all day, so remote work feels like working side by side again.
 
-It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite link, and you're working together. There's nothing to install or run. It's built for small teams, from 2 to 25 people.
+It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite, and you're working together. There's nothing to install or run. It's made for small teams that work together every day.
 
 ## Features
 
@@ -54,15 +54,16 @@ It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an
     <td width="33%"><img src=".github/readme/people.webp" alt="Presence: who is on the floor, busy or in a call"></td>
   </tr>
   <tr>
-    <td><b>Proximity video calls</b><br>Walk up to a teammate and one tap starts video or voice.</td>
+    <td><b>Proximity video calls</b><br>Walk up to a teammate and one tap starts a call.</td>
     <td><b>Team chat</b><br>Channels, direct messages and reactions that stay.</td>
     <td><b>Presence</b><br>See who's in, busy or in a call, then walk right over.</td>
   </tr>
 </table>
 
-- **Meeting tables** for group video calls with screen sharing. Sit down to join, stand up to leave.
-- **Invite links** bring teammates in: they pick a name and a character and join with a free account.
-- **Whiteboard and room music** for the moments between calls.
+- **A meeting room** for group video calls with screen sharing: walk in to join, walk out to leave. Meetings get a full page too, with whoever's talking up front.
+- **Your own desk.** Sit down and make it yours; from then on you arrive at it, and teammates walking past see whose it is.
+- **Invites that get sent:** copy the link, copy a ready message for your team's chat, email it, or share it from your phone. Teammates pick a name and a character and join with a free account.
+- **Whiteboard and a jukebox** for the moments between calls, and noise removal for the calls themselves.
 - **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
 - **Private offices** for your team, joined by invite, and a demo office to try it first.
 
@@ -75,17 +76,19 @@ It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an
 
 ## Pricing
 
-One price for the whole office, not one per person. Every plan has every feature.
+One price for the whole office, never one per person.
 
-| Plan | People | Price | Group meeting hours |
-|---|---|---|---|
-| **Free** | Up to 3 | $0, forever, no card | 5 a month |
-| **Plus** | Up to 10 | $19 a month ($1.90 a person) | 30 a month |
-| **Pro** | Up to 25 | $49 a month ($1.96 a person) | 60 a month |
+| Plan | Price | For |
+|---|---|---|
+| **Free** | $0, forever, no card | Up to 3 people, with the floor, chat, HD meetings, desks and everything else |
+| **Pro** | $29 a month, for the whole team | Your whole team, meetings as often as you need, and priority help |
 
-Calls between two people are never counted. Prices are in US dollars, before tax. [See the pricing page](https://www.tinyfloor.com/pricing).
+- **A trial when the team arrives:** when a 4th person joins a free office, the whole team gets Pro free for 14 days.
+- **Cancel any time**, and ask within 14 days of any payment for a full refund.
+- **Made for small teams** that work together every day, up to 15 people in an office.
+- Prices are in US dollars, before tax. Payments go through Creem, our reseller. [See the pricing page](https://www.tinyfloor.com/pricing).
 
-**What a team of 10 pays each month:** $19 on TinyFloor Plus, against $120 or more on a per-person tool like Gather, whose Essential plan starts at $12 per member per month.
+**What a team of 10 pays each month:** $29 on TinyFloor Pro ($2.90 a person), against $80 to $160 on tools priced per person at $8 to $16 a seat.
 
 ## Compared with other virtual offices
 
@@ -97,7 +100,7 @@ TinyFloor deliberately leaves things out: there are no custom map editors, recor
 
 ### How does proximity video chat work?
 
-Walk up to someone and call buttons appear next to them. Tap one to start video or voice. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network.
+Walk up to someone and a call button appears next to them. A call starts with voice, and the camera and screen sharing are one tap away. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network. Three or more people meet in the meeting room.
 
 ### Do I need to install anything?
 
@@ -113,7 +116,7 @@ An office is only for its members. Nothing inside it is public or indexed, and c
 
 ### Is TinyFloor free?
 
-Yes, for up to 3 people, with every feature and no card. Bigger teams move to Plus ($19 a month for up to 10 people) or Pro ($49 a month for up to 25).
+Yes, for up to 3 people, with every feature and no card. When the team grows, Pro is $29 a month for the whole team, and the first 14 days are free.
 
 ### Can I try it without signing up?
 

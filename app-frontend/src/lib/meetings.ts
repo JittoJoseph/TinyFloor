@@ -83,6 +83,14 @@ export function peopleInMeetings(meetings: MeetingInfo[]): number {
   return meetings.reduce((sum, meeting) => sum + meeting.members.length, 0);
 }
 
+/**
+ * How many are in meetings, for the rail. Only a change in the count wakes
+ * whoever asks, not every word of who's talking.
+ */
+export function usePeopleInMeetings(): number {
+  return useSyncExternalStore(subscribeMeetings, () => peopleInMeetings(state.meetings), () => 0);
+}
+
 export const isMain = (meeting: Pick<MeetingInfo, "id">) => meeting.id === MAIN_MEETING;
 
 /** Asks the floor to walk you into the meeting room (see GameScene). */

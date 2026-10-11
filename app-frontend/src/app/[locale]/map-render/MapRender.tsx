@@ -24,7 +24,7 @@ export function MapRender() {
         }
         create() {
           this.map.create();
-          const nobody = this.physics.add.sprite(-9999, -9999, "__DEFAULT").setVisible(false);
+          const nobody = this.add.sprite(-9999, -9999, "__DEFAULT").setVisible(false);
           const board = this.map.getAnchors("Whiteboard")[0];
           if (board) new WhiteboardObject(this, nobody, board, () => {});
           const speaker = this.map.getAnchors("Speaker")[0];
@@ -46,7 +46,6 @@ export function MapRender() {
         scene: Render,
         backgroundColor: "#000000",
         audio: { noAudio: true },
-        physics: { default: "arcade" },
         preserveDrawingBuffer: true,
       } as import("phaser").Types.Core.GameConfig);
     })();

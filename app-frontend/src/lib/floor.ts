@@ -39,6 +39,27 @@ export function walkToPerson(id: string) {
   requestAnimationFrame(() => window.dispatchEvent(new CustomEvent(WALK_TO_PERSON_EVENT, { detail: { id } })));
 }
 
+/**
+ * Whether the floor is on screen rather than under a view (Chat, People,
+ * Meetings, Settings). Nothing is drawn while it's covered; the room still
+ * runs underneath, so you keep walking, sitting and talking.
+ */
+let shown = true;
+const shownListeners = new Set<(shown: boolean) => void>();
+
+export function setFloorShown(next: boolean) {
+  if (next === shown) return;
+  shown = next;
+  shownListeners.forEach((listener) => listener(shown));
+}
+
+/** Told now and on every change; returns the way to stop listening. */
+export function onFloorShown(listener: (shown: boolean) => void): () => void {
+  shownListeners.add(listener);
+  listener(shown);
+  return () => shownListeners.delete(listener);
+}
+
 /** The floor has gone (you left, or the room let go): nobody is known to be there. */
 export function clearFloor() {
   set([]);
@@ -101,6 +122,8 @@ export function setInCall(inCall: boolean) {
     beforeCall = null;
   }
 }
+
+export const myStatus = (): PlayerStatus => mine;
 
 export function useMyStatus(): PlayerStatus {
   return useSyncExternalStore(

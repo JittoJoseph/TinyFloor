@@ -1,4 +1,4 @@
-import { WALK_TO_PERSON_EVENT } from "../lib/floor";
+import { onFloorShown, WALK_TO_PERSON_EVENT } from "../lib/floor";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
@@ -46,7 +46,7 @@ function zoomFor(width: number, height: number, mapWidth: number, mapHeight: num
 }
 
 class GameScene extends Phaser.Scene {
-  private player!: Phaser.Physics.Arcade.Sprite;
+  private player!: Phaser.GameObjects.Sprite;
   private wsManager!: RoomSocket;
   private playerManager!: PlayerManager;
   private proximityManager!: ProximityManager;
@@ -58,6 +58,7 @@ class GameScene extends Phaser.Scene {
   private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
   private windowListeners: Array<[string, EventListener]> = [];
+  private unsubscribeShown?: () => void;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
@@ -97,20 +98,15 @@ class GameScene extends Phaser.Scene {
     const spawnTile = this.mapManager.getRandomSpawnTile();
     const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
 
-    // Arriving, the room seats you at your desk if you have one (docs/26); a
-    // reconnect puts you back where you were, not at the spawn tile or the desk.
-    let arriving = true;
+    // A reconnect puts you back where you were, not at the spawn tile.
     this.wsManager = new RoomSocket(this.ticketFor, () => {
       const tile = this.player ? pixelToTile(this.player.x, this.player.y) : spawnTile;
-      const arrive = arriving;
-      arriving = false;
-      return { x: tile.tileX, y: tile.tileY, arrive };
+      return { x: tile.tileX, y: tile.tileY };
     });
     attachDesks((message) => this.wsManager.send(message));
 
     this.playerManager = new PlayerManager(this, this.animationManager, nav, this.playerId);
     this.player = this.playerManager.createLocalPlayer(this.playerId, this.name, spawn.x, spawn.y, this.character);
-    this.mapManager.setupColliders(this.player);
 
     // Phones and tablets steer with the on-screen joystick (components/room/Joystick.tsx),
     // including the ones that say they are desktops ("Desktop site", iPads).
@@ -156,12 +152,19 @@ class GameScene extends Phaser.Scene {
       (id) => !callManager.currentMeeting() && !meetingOf(id) && !callManager.isPeer(id),
     );
 
-    this.messageHandler = new MessageHandler(this, this.playerManager, this.animationManager, this.seatManager, this.playerId, this.player);
+    this.messageHandler = new MessageHandler(
+      this,
+      this.playerManager,
+      this.animationManager,
+      this.seatManager,
+      this.playerId,
+      this.player,
+      (message) => this.wsManager.send(message),
+    );
     this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
 
-    this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
     this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
     this.fitCamera(this.scale.width, this.scale.height);
     // The floor panel changes size with the window, a rotated phone or a
@@ -182,6 +185,9 @@ class GameScene extends Phaser.Scene {
     });
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
     this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
+
+    // Under a view the floor isn't seen, so it isn't drawn; it keeps running.
+    this.unsubscribeShown = onFloorShown((shown) => this.sys.setVisible(shown));
 
     // Everything is listening now, so nothing the room says first is missed.
     this.wsManager.connect();
@@ -268,6 +274,7 @@ class GameScene extends Phaser.Scene {
   public cleanup() {
     this.windowListeners.forEach(([type, listener]) => window.removeEventListener(type, listener));
     this.windowListeners.length = 0;
+    this.unsubscribeShown?.();
 
     this.movementManager?.destroy();
     this.wsManager?.disconnect();

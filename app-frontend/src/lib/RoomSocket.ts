@@ -5,6 +5,12 @@ const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
 const RECONNECT_MAX_MS = 30_000;
 const TOO_MANY_MESSAGES_PAUSE_MS = 30_000;
+/**
+ * Not kept for a reconnect: positions are stale by then, and the meeting's
+ * media and the call report belong to the connection that dropped (the
+ * meeting is joined again and the call reported again on welcome).
+ */
+const DROPPED_OFFLINE = new Set<ClientMessage["t"]>(["move", "walk_to", "sfu", "speaking", "call_usage"]);
 
 /** Why the room let go of us for good. The page shows a matching message. */
 export type RoomEnd = "full" | "replaced" | "closed" | "revoked" | "signedOut" | "notFound";
@@ -25,11 +31,13 @@ export class RoomSocket {
   private attempts = 0;
   private reconnectTimer?: ReturnType<typeof setTimeout>;
   private heartbeat?: ReturnType<typeof setInterval>;
+  /** Welcomed once: from then on a connection is a return, not an arrival. */
+  private welcomed = false;
 
   constructor(
     private readonly ticketFor: () => Promise<RoomTicket>,
     /** Where to appear; asked again on every reconnect so you come back where you were. */
-    private readonly spawn: () => { x: number; y: number; arrive: boolean },
+    private readonly spawn: () => { x: number; y: number },
   ) {}
 
   setOnMessage(callback: (message: ServerMessage) => void) {
@@ -44,8 +52,7 @@ export class RoomSocket {
   send(message: ClientMessage) {
     if (this.ws?.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify(message));
-    } else if (message.t !== "move" && message.t !== "walk_to") {
-      // Positions are stale by the time we reconnect; everything else is worth keeping.
+    } else if (!DROPPED_OFFLINE.has(message.t)) {
       this.queue.push(message);
     }
   }
@@ -76,8 +83,10 @@ export class RoomSocket {
     }
     if (this.stopped) return;
 
-    const { x, y, arrive } = this.spawn();
-    const url = `${ticket.url}?ticket=${encodeURIComponent(ticket.ticket)}&x=${x}&y=${y}${arrive ? "&arrive=1" : ""}`;
+    // Arriving, the room seats you at your desk if you have one (docs/26); until
+    // a welcome, even a retried connection is still the arrival.
+    const { x, y } = this.spawn();
+    const url = `${ticket.url}?ticket=${encodeURIComponent(ticket.ticket)}&x=${x}&y=${y}${this.welcomed ? "" : "&arrive=1"}`;
     const ws = new WebSocket(url);
     this.ws = ws;
 
@@ -91,7 +100,9 @@ export class RoomSocket {
     ws.onmessage = (event) => {
       if (event.data === HEARTBEAT_PONG) return;
       try {
-        this.onMessage?.(JSON.parse(event.data) as ServerMessage);
+        const message = JSON.parse(event.data) as ServerMessage;
+        if (message.t === "welcome") this.welcomed = true;
+        this.onMessage?.(message);
       } catch (error) {
         console.error("Bad message from the room", error);
       }

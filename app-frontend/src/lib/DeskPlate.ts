@@ -48,6 +48,8 @@ export class DeskPlate {
 
   private fade() {
     const shown = this.near && this.name !== null;
+    // Walking past a free desk: already out of sight, nothing to fade.
+    if (!shown && !this.container.visible) return;
     const scene = this.container.scene;
     scene.tweens.killTweensOf(this.container);
     if (shown) this.container.setVisible(true);

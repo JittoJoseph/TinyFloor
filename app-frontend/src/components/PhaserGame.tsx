@@ -50,9 +50,14 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   });
 
   useEffect(() => {
+    // A box with no size (hidden for a moment) leaves the renderer nothing to
+    // draw into, which breaks WebGL for good: the game starts, and follows the
+    // box, only while it has a size.
     const onResize = () => {
       const box = gameRef.current;
-      if (box && game.current) game.current.scale.resize(box.clientWidth, box.clientHeight);
+      if (!box?.clientWidth || !box.clientHeight) return;
+      if (!game.current) start(box);
+      else game.current.scale.resize(box.clientWidth, box.clientHeight);
       sharpen();
     };
     window.addEventListener("resize", onResize);
@@ -61,14 +66,14 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     const watcher = new ResizeObserver(onResize);
     if (gameRef.current) watcher.observe(gameRef.current);
 
-    if (gameRef.current && !game.current) {
+    const start = (box: HTMLDivElement) => {
       applySceneText();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        width: gameRef.current.clientWidth || window.innerWidth,
-        height: gameRef.current.clientHeight || window.innerHeight,
-        parent: gameRef.current,
+        width: box.clientWidth,
+        height: box.clientHeight,
+        parent: box,
         scene: new GameScene(name, character, userId, () => nextTicket()),
         // The panel behind the canvas paints the space around the map, so it
         // follows the light or dark theme.
@@ -83,22 +88,14 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // also takes clicks on whatever covers it (a meeting, a menu, a toast) as
         // clicks on the floor underneath: a pin in a meeting walked you to the whiteboard.
         input: { windowEvents: false },
-        physics: {
-          default: "arcade",
-          arcade: {
-            debug: false,
-            gravity: { x: 0, y: 0 },
-            width: gameRef.current.clientWidth || window.innerWidth,
-            height: gameRef.current.clientHeight || window.innerHeight,
-          },
-        },
       };
       game.current = new Phaser.Game(config);
       game.current.events.once(Phaser.Core.Events.READY, onResize);
       if (process.env.NODE_ENV === "development") {
         (window as unknown as Record<string, unknown>).__game = game.current;
       }
-    }
+    };
+    onResize();
 
     return () => {
       window.removeEventListener("resize", onResize);

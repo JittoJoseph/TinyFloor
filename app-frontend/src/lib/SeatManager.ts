@@ -53,7 +53,7 @@ interface Seat extends ChairSpec {
 
 export class SeatManager {
   private scene: Phaser.Scene;
-  private player: Phaser.Physics.Arcade.Sprite;
+  private player: Phaser.GameObjects.Sprite;
   private animations: AnimationManager;
   private ws?: RoomSocket;
   private seats: Seat[] = [];
@@ -73,10 +73,12 @@ export class SeatManager {
   private unsubscribeDesks: () => void;
   /** Whose desk it is, on each desk while its owner is away (docs/26). */
   private plates = new Map<number, DeskPlate>();
+  /** How many the table's tag says are in meetings; who's talking changes often, the count rarely. */
+  private inMeetings = -1;
 
   constructor(
     scene: Phaser.Scene,
-    player: Phaser.Physics.Arcade.Sprite,
+    player: Phaser.GameObjects.Sprite,
     animations: AnimationManager,
     chairs: ChairSpec[],
     private readonly selfId: string,
@@ -225,6 +227,8 @@ export class SeatManager {
   /** The table's tag: "Meeting", and how many are in meetings when any are on. */
   private showMeetings() {
     const people = peopleInMeetings(meetingsState().meetings);
+    if (people === this.inMeetings) return;
+    this.inMeetings = people;
     const label = sceneText().meeting;
     this.tag?.setText(people ? `${label} · ${people}` : label).setDot(people ? HIGHLIGHT : IDLE);
   }
@@ -235,8 +239,6 @@ export class SeatManager {
     this.seated = seat;
     seat.occupant = SELF;
 
-    const body = this.player.body as Phaser.Physics.Arcade.Body;
-    body.setVelocity(0, 0);
     this.player.setPosition(pose.x, pose.y);
     this.player.anims.stop();
     this.player.setFrame(pose.frame);

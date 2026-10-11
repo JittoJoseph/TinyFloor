@@ -4,7 +4,7 @@ import { defaultLocale } from "@/lib/i18n/routing";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tinyfloor.com";
 
-/** The app: the lobby, offices, invitations, signing in. A Worker of its own (docs/21). */
+/** The app: the lobby, offices, invitations, signing in. A Worker of its own (docs/sites.md). */
 export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ?? "https://app.tinyfloor.com";
 

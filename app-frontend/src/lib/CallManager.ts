@@ -124,7 +124,7 @@ const LOW: Wants = { camera: "low", screen: "low" };
 
 /**
  * Cameras rest after this long with nobody on the call or in the meeting
- * talking (docs/24): working side by side in silence doesn't need video, and
+ * talking (docs/costs.md): working side by side in silence doesn't need video, and
  * one press brings it back.
  */
 const QUIET_REST_MS = 10 * 60_000;
@@ -231,7 +231,7 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
-  /** The place is past its meeting hours: meetings are voice only (docs/14). */
+  /** The place is past its meeting hours: meetings are voice only (docs/pricing.md). */
   private videoPaused = false;
   private local: MediaStream | null = null;
   /** The microphone being opened, so a call and a meeting starting together share one. */
@@ -1187,7 +1187,7 @@ class CallManager {
 
   /**
    * Tells the room when we're in a call on the floor and whether video is
-   * coming to us in it, so what calls cost can be counted (docs/24). Sent only
+   * coming to us in it, so what calls cost can be counted (docs/costs.md). Sent only
    * when that changes.
    */
   private reportCall() {

@@ -10,7 +10,7 @@ export interface StagePerson {
 
 /**
  * Where the meeting is being looked at, which decides how much of it is shown
- * (docs/12-meetings.md):
+ * (docs/calls.md):
  *
  * - `stage`: the Meetings page on a computer. One big card, and a column of
  *   three beside it (you are drawn there too, from your own camera).

@@ -58,7 +58,7 @@ export interface OfficeSummary {
   here?: number;
   /** Who is on the floor right now, as they look (only from /v1/me). */
   inNow?: PresentPerson[];
-  /** When the team trial ends, while one runs (docs/22): the plan is the trial's until then. */
+  /** When the team trial ends, while one runs (docs/pricing.md): the plan is the trial's until then. */
   trialEndsAt?: number | null;
   /** Free, never trialled and never paid: past the free seats, the next person starts the trial (where plans are sold). */
   trialOpen?: boolean;
@@ -158,7 +158,7 @@ export interface AdminMember {
   here: boolean;
 }
 
-/** Help and feedback (docs/19): the open ticket with the TinyFloor team where you are. */
+/** Help and feedback: the open ticket with the TinyFloor team where you are. */
 export interface HelpTicket {
   id: string;
   /** New since you last had it on screen; nothing until you have. */
@@ -235,7 +235,7 @@ export type PlanId = "free" | "pro";
 export interface Plan {
   id: PlanId;
   seats: number;
-  /** Meeting hours a month: time a meeting has two or more people in it (docs/14). */
+  /** Meeting hours a month: time a meeting has two or more people in it (docs/pricing.md). */
   meetingHours: number;
   /** US cents a month before tax; null for the free plan. */
   price: number | null;
@@ -245,7 +245,7 @@ export interface Plan {
 export interface Plans {
   plans: Plan[];
   billing: { mode: "test" | "live" } | null;
-  /** How long the team trial runs where plans are on sale; 0 where there's none (docs/22). */
+  /** How long the team trial runs where plans are on sale; 0 where there's none (docs/pricing.md). */
   trialDays: number;
   /** The plan the team trial gives, where there is one. */
   trialPlan: PlanId | null;
@@ -259,7 +259,7 @@ export interface OfficeBilling {
   meetingHours: number;
   /** Meeting seconds used this month (UTC), and when the count starts again. */
   usage: { seconds: number; resetsAt: number };
-  /** The team trial, while it runs and nothing is paid (docs/22). */
+  /** The team trial, while it runs and nothing is paid (docs/pricing.md). */
   trial: { plan: PlanId; endsAt: number } | null;
   subscription: {
     plan: PlanId;

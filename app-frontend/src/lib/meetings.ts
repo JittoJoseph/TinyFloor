@@ -13,7 +13,7 @@ interface MeetingsState {
   meetings: MeetingInfo[];
   /** When each person last started or stopped talking, for choosing whose video to show. */
   spokeAt: ReadonlyMap<string, number>;
-  /** The place's meeting hours this period (docs/14), as the room last said. */
+  /** The place's meeting hours this period (docs/pricing.md), as the room last said. */
   usage: MeetingUsage | null;
   /** When it said so, for counting on from there. */
   usageAt: number;

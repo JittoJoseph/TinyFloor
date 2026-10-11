@@ -32,7 +32,7 @@ export interface InvitePreview {
 type Step = "account" | "name" | "character" | "join";
 
 /**
- * An office's invite link (docs/15). An account first, with Google if they
+ * An office's invite link (docs/product.md). An account first, with Google if they
  * like; then, for someone new, their name and their character, one at a time;
  * and then they are in: the office is joined and waiting on their dashboard.
  * Someone who already has an account and a character joins with one press.

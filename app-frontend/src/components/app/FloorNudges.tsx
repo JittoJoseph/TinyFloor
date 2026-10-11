@@ -13,7 +13,7 @@ import { TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT, waveAt } from "@/lib/floor"
 /**
  * What's worth a glance while you're on the floor, for a few seconds each: a
  * message you haven't seen, with the way to it, and a teammate walking in or
- * waving at you, with a wave to send back (docs/28). One quiet stack, and one
+ * waving at you, with a wave to send back (docs/product.md). One quiet stack, and one
  * setting turns it off.
  */
 export function FloorNudges({ chatPath }: { chatPath: (channel: string) => string }) {

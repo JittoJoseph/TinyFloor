@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import { invitePath } from "./links";
 
 /**
- * Each office's one invite link (docs/15): the same for everyone in it, good
+ * Each office's one invite link (docs/product.md): the same for everyone in it, good
  * for as many people as there are seats, until an admin resets it. Read once
  * per office and shared by every button that invites.
  */

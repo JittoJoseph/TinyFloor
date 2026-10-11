@@ -21,7 +21,7 @@ import { usePlace } from "./place";
 const PILL_GAP = 8;
 
 /**
- * Meetings, on the rail (docs/12-meetings.md, docs/22), in an office or the
+ * Meetings, on the rail (docs/calls.md, docs/pricing.md), in an office or the
  * lobby, laid out the way Meet asks before a call, and as calm: you on the
  * left with your mic and camera; on the right "Ready to join?", the office's
  * own meeting, who's in it, the way in, and the way to a meeting of your own.

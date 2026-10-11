@@ -1,7 +1,7 @@
 import { isDesk, type Desk } from "../../shared-protocol/src";
 
 /**
- * Whose desk is whose in one office (docs/26), kept in the office room's own
+ * Whose desk is whose in one office (docs/product.md), kept in the office room's own
  * SQLite: a desk has one owner, a person has one desk here, and a desk in
  * another office is another row in another room. The owner's name is kept so
  * an empty desk can still say whose it is.

@@ -11,7 +11,7 @@ import { CLIENT_ID, loadGoogle } from "@/components/auth/GoogleButton";
 const SETTLE_MS = 2500;
 
 /**
- * Google One Tap on the site's pages (docs/15): Google's own account chooser
+ * Google One Tap on the site's pages (docs/product.md): Google's own account chooser
  * in the corner (a sheet at the bottom on a phone), one tap from an account.
  *
  * It costs our worker nothing until someone taps. Whether to show it comes

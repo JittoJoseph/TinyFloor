@@ -4,12 +4,16 @@ export const MAP_HEIGHT_TILES = 32;
 /**
  * The chairs at desks: every chair on the floor outside the meeting room, by
  * the id the floor gives each chair (its tile, row × width + column, counted
- * from the chair's lower edge). A desk can be someone's own (docs/26); the
+ * from the chair's lower edge). A desk can be someone's own (docs/product.md); the
  * meeting room's chairs are everyone's.
  *
- * Each has the tile you arrive on (docs/27): two steps back from where you
- * stand to sit, with a straight walk in, worked out with the floor's own
- * pathfinding (how, in docs/27).
+ * Each has the tile you arrive on (docs/product.md): two steps back from where you
+ * stand to sit, with a straight walk in. Worked out by running the floor's own
+ * NavGrid (app-frontend lib/Navigation.ts) over office-map.tmj: from each
+ * chair's standing spot (SeatManager.poseFor), two tiles further from the desk,
+ * walkable, with a path back of at most a few steps. 1159's standing spot is
+ * inside a collider, so its arrival is the walkable tile straight above. Work
+ * them out again if the map changes.
  */
 const DESK_ARRIVALS: Readonly<Record<number, readonly [number, number]>> = {
   404: [20, 4], 410: [26, 4], 548: [20, 13], 554: [26, 13], 658: [34, 9], 664: [40, 9], 802: [34, 18], 808: [40, 18],

@@ -77,7 +77,7 @@ interface Attachment {
   meetingSince: number | null;
   /** Whether they are talking in their meeting right now. */
   speaking: boolean;
-  /** Since when they've been in a call on the floor, and seeing video in it, as they report (docs/24). */
+  /** Since when they've been in a call on the floor, and seeing video in it, as they report (docs/costs.md). */
   callSince?: number | null;
   videoSince?: number | null;
   /**
@@ -266,7 +266,7 @@ export class Room extends DurableObject<Env> {
 
     // Arriving in an office (not coming back after a dropped connection), a
     // member appears a few steps from their desk and walks in to sit down, so
-    // the team sees them arrive; without a desk yet, beside a free one (docs/27).
+    // the team sees them arrive; without a desk yet, beside a free one (docs/product.md).
     const office = lobbyCopyNumber(room) === null;
     const desk = office && !attachment.guest ? this.desks.of(ticket.sub) : null;
     const arriving = arrive && office && !attachment.guest;
@@ -471,7 +471,7 @@ export class Room extends DurableObject<Env> {
     if (this.desks.claim(seat as number, me.userId, me.name, now) && before !== seat) this.broadcastDesks();
   }
 
-  /** A wave to someone who is here: the whole floor sees it, a hello in passing (docs/28). */
+  /** A wave to someone who is here: the whole floor sees it, a hello in passing (docs/product.md). */
   private wave(me: Attachment, to: unknown): void {
     if (!this.takeAction(me) || typeof to !== "string" || to === me.userId) return;
     if (!this.present().some((socket) => this.attachmentOf(socket).userId === to)) return;
@@ -843,7 +843,7 @@ export class Room extends DurableObject<Env> {
         },
       });
     }
-    // Past the meeting hours, meetings are voice only until the period resets (docs/14).
+    // Past the meeting hours, meetings are voice only until the period resets (docs/pricing.md).
     if (this.clock()?.usage(Date.now()).paused) {
       const voices = found.filter((item) => item.kind === "mic");
       if (!voices.length) return sendSfu(socket, { op: "error", code: found.length ? "video_paused" : "no_tracks" });
@@ -1011,7 +1011,7 @@ export class Room extends DurableObject<Env> {
     return this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'name'").toArray()[0]?.value ?? null;
   }
 
-  /** Meeting hours: monthly for an office, daily for a lobby copy (docs/14). */
+  /** Meeting hours: monthly for an office, daily for a lobby copy (docs/pricing.md). */
   private clock(): MeetingClock | null {
     if (this.clockCache) return this.clockCache;
     const room = this.roomName();
@@ -1111,7 +1111,7 @@ export class Room extends DurableObject<Env> {
 
   /**
    * A call on the floor started, ended, or its video came or went. Only
-   * counted, for knowing what calls cost (docs/24); nothing is limited by it.
+   * counted, for knowing what calls cost (docs/costs.md); nothing is limited by it.
    */
   private callUsage(me: Attachment, call: boolean, video: boolean, now: number): void {
     this.closeCallTime(me, now);

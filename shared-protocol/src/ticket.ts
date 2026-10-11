@@ -13,7 +13,7 @@ export interface RoomTicket {
   character: string;
   role: RoomRole;
   cap: number;
-  /** An office's meeting hours a month, from its plan (docs/14). Lobby copies have their own. */
+  /** An office's meeting hours a month, from its plan (docs/pricing.md). Lobby copies have their own. */
   hours?: number;
   exp: number;
 }

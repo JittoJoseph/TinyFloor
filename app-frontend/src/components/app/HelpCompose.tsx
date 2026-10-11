@@ -17,7 +17,7 @@ export const HELP_TRIGGER = "data-help-trigger";
 const BACKGROUND_EVERY_MS = 120_000;
 
 /**
- * Help and feedback's way in (docs/19): a small card beside the rail's "?"
+ * Help and feedback's way in: a small card beside the rail's "?"
  * (above the bar, on a phone), with no backdrop and nothing to wait for. One
  * box to say what's wrong; sending it opens the ticket in Chat, where the
  * team answers. Also keeps the place's ticket fresh in the background, for

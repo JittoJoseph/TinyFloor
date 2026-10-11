@@ -19,14 +19,14 @@ export interface Guide {
   pages: LandingKey[];
 }
 
-/** Guides for remote team leads (docs/18). Their words are in messages/guides/<locale>.json, keyed by `key` (lib/guide-copy). */
+/** Guides for remote team leads (docs/search.md). Their words are in messages/guides/<locale>.json, keyed by `key` (lib/guide-copy). */
 export const GUIDES: Guide[] = [
   { slug: "virtual-team-building-activities", key: "teamBuilding", published: "2026-10-04", updated: "2026-10-04", pages: ["watercooler", "whiteboard", "virtualOffice"] },
   { slug: "games-for-virtual-meetings", key: "meetingGames", published: "2026-10-04", updated: "2026-10-04", pages: ["meetingRoom", "whiteboard", "standup"] },
   { slug: "how-to-build-remote-team-culture", key: "remoteCulture", published: "2026-10-04", updated: "2026-10-04", pages: ["presence", "onboarding", "watercooler"] },
   { slug: "remote-team-communication", key: "remoteCommunication", published: "2026-10-04", updated: "2026-10-04", pages: ["teamChat", "presence", "slackHuddles"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-04", pages: ["proximityChat", "virtualOffice", "gather"] },
-  // Buyers comparing products and prices (docs/20). Competitors' prices are checked against their own pages; bump `updated` when they are.
+  // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
   { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-07", pages: ["virtualOffice", "gather", "kumospace"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-07", pages: ["gather", "gatherVsKumospace", "virtualOffice"] },
 ];

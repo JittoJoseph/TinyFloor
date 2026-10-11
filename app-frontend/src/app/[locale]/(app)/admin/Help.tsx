@@ -16,7 +16,7 @@ type Status = "open" | "closed";
 const EVERY_MS = 20_000;
 
 /**
- * Help and feedback (docs/19), as the team sees it: open tickets (an
+ * Help and feedback, as the team sees it: open tickets (an
  * office has at most one) and closed ones, unread counts on each, and one
  * ticket at a time beside the list. Where it was opened from (browser,
  * language, the PostHog recording) is said once, at the top. A reply shows

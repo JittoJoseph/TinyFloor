@@ -94,7 +94,7 @@ function arrange(area: Size, { narrow, content, alone }: { narrow: boolean; cont
 }
 
 /**
- * Inside a meeting (docs/12-meetings.md), laid out like Meet's spotlight: one
+ * Inside a meeting (docs/calls.md), laid out like Meet's spotlight: one
  * big card, and a column of small ones beside it (a strip under it on a phone).
  * The big card is what matters now: what you pinned, a shared screen, or
  * whoever is talking. The column is you, the people who spoke last, and how

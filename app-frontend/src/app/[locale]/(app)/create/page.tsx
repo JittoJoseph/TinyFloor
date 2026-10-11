@@ -9,7 +9,7 @@ import { DoorHeaderSkeleton, DoorSkeleton } from "@/components/entry/InviteEntry
 import { EntryShell } from "@/components/entry/EntryShell";
 
 /**
- * Making an office (docs/15): a door that asks its name, who it's for and its
+ * Making an office (docs/product.md): a door that asks its name, who it's for and its
  * plan. It needs an account to own it, so someone signed out signs in (or up)
  * first and comes straight back here; someone new says who they are first.
  */

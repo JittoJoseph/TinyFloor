@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { ErrorNote } from "./ErrorNote";
 
 /**
- * A door that asks a few things one after another (docs/15). Every step is
+ * A door that asks a few things one after another (docs/product.md). Every step is
  * the same height, so the big button never moves: someone can keep pressing
  * the same place, on a phone with their thumb. What a step asks sits at the
  * top; the button, and one quiet way out under it, sit at the bottom. The

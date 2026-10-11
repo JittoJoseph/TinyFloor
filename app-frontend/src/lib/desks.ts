@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 import type { ClientMessage, Desk } from "@shared/messages";
 
 /**
- * The office's desks (docs/26), in one place for the floor and the page
+ * The office's desks (docs/product.md), in one place for the floor and the page
  * around it: whose desk is whose, as the room says, and the chair you're on
  * now. The room is the only one that decides; this only asks it and listens.
  */

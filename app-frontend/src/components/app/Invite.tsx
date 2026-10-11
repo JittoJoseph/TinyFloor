@@ -15,7 +15,7 @@ import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /**
- * Bringing people in (docs/26). One dialog, opened from wherever someone
+ * Bringing people in (docs/product.md). One dialog, opened from wherever someone
  * invites: the floor, People, the office menu. A link alone isn't an invite,
  * so it comes ready to send the ways people actually do it: a message to
  * paste into the team's chat, an email from their own address, the phone's

@@ -26,7 +26,7 @@ const enter = (reduce: boolean | null) => ({
 });
 
 /**
- * Sitting down at a free desk offers it (docs/26): the moment someone has
+ * Sitting down at a free desk offers it (docs/product.md): the moment someone has
  * already chosen a spot is the moment to make it theirs. One small pill, one
  * press, and from then on they arrive sitting there; with a desk elsewhere it
  * offers the move. Once it's theirs, it says so, briefly.
@@ -103,7 +103,7 @@ const subscribeNothing = () => () => {};
 
 /**
  * Someone in an office without a desk yet is told, once, that they can have
- * one (docs/26): a short line, not a tour, gone while they sit and once they
+ * one (docs/product.md): a short line, not a tour, gone while they sit and once they
  * have a desk, and never again in that office once closed.
  */
 export function DeskHint() {

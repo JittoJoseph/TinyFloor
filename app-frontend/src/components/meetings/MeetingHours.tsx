@@ -16,7 +16,7 @@ import type { PlanId } from "@/lib/api";
 const NEARLY = 0.8;
 
 /**
- * The place's meeting hours (docs/14), ticking while meetings count: the room
+ * The place's meeting hours (docs/pricing.md), ticking while meetings count: the room
  * says how much was used when it last changed, and how many meetings are
  * counting, so the rest is arithmetic until it next speaks.
  */
@@ -47,7 +47,7 @@ function useHours() {
 }
 
 /**
- * Meeting hours are fair use, not a meter (docs/24): nothing is shown while
+ * Meeting hours are fair use, not a meter (docs/costs.md): nothing is shown while
  * there are hours left, which is always for a team using it normally. Only
  * once they're used does one line say so, with the way to more for an admin
  * of a free office. In the lobby, the day's.

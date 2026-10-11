@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, STAGE } from "./Blocks";
 
 /**
- * The pricing page (docs/15, docs/23): Free and Pro up top, then three things
+ * The pricing page (docs/pricing.md): Free and Pro up top, then three things
  * that each take one look. What ten people pay against a per-seat tool, one
  * table of what each plan gives, and the billing answers as short notes. Few words on purpose; the plans carry the page.
  */

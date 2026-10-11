@@ -12,7 +12,7 @@ import { NameQuestion, CharacterQuestion } from "./IdentitySteps";
 import { YouMark } from "./DoorParts";
 
 /**
- * A new account's first door (docs/15): the name people will see, then who
+ * A new account's first door (docs/product.md): the name people will see, then who
  * they'll be on the floor, one at a time. Someone who signed up with Google
  * finds their Google name filled in and still presses Continue (or changes
  * it); someone who used an email types it.

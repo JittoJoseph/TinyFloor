@@ -1,5 +1,5 @@
 /*
- * The app's design tokens (docs/06-app-design.md). Components use the shadcn
+ * The app's design tokens. Components use the shadcn
  * names beUI is written against — background, card, muted, border — plus a
  * few of our own: rail, faint, brand, ok, warn. The app routes put `app` on
  * <html>, and `dark` when the dark theme is on; the landing pages use none of

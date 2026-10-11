@@ -43,7 +43,7 @@ export interface Landing {
   checked?: string;
 }
 
-/** Pages written for what people search (docs/16). Copy lives under `landings.pages.<key>`. */
+/** Pages written for what people search (docs/search.md). Copy lives under `landings.pages.<key>`. */
 export const LANDINGS: Landing[] = [
   { slug: "gather-alternative", key: "gather", group: "compare", competitor: "Gather" },
   { slug: "kumospace-alternative", key: "kumospace", group: "compare", competitor: "Kumospace" },

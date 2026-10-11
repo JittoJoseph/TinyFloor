@@ -2,7 +2,7 @@ import type { VideoKind, VideoQuality } from "@shared/messages";
 
 /**
  * Everything about video quality lives here: what we capture, the qualities we
- * send, and who gets which. Egress is the whole bill (docs/12-meetings.md), so
+ * send, and who gets which. Egress is the whole bill (docs/calls.md), so
  * each viewer is sent only what its tile can show: 720p for a speaker filling
  * the stage, 360p for two or three side by side, 180p for small tiles, the
  * floor and phones.

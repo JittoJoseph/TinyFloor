@@ -101,7 +101,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   }, [isLoading, user, load, officeId, router]);
 
   // The tab says which office it is, and what's new in its chat, the way a
-  // pinned work tab does: worth a glance from another window, no more (docs/27).
+  // pinned work tab does: worth a glance from another window, no more (docs/product.md).
   const waiting = unread + helpUnread;
   useEffect(() => {
     if (!office?.name) return;

@@ -23,7 +23,7 @@ export function hubMetadata(group: LandingGroup) {
 }
 
 /**
- * The index of one group of pages (docs/16): a heading, then every page in the
+ * The index of one group of pages (docs/search.md): a heading, then every page in the
  * group as a card with its name and the one line it says about itself, then
  * the other indexes. It is how a visitor, and a crawler, finds all of them.
  */

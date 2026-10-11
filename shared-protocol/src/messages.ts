@@ -21,7 +21,7 @@ export interface PlayerState {
   seat: number | null;
 }
 
-/** A desk that is someone's own in an office (docs/26): they arrive sitting at it, and nobody else sits there. */
+/** A desk that is someone's own in an office (docs/product.md): they arrive sitting at it, and nobody else sits there. */
 export interface Desk {
   seat: number;
   userId: string;
@@ -69,7 +69,7 @@ export interface MeetingInfo {
 export type MeetingErrorCode = "not_found";
 
 /**
- * Meeting hours (docs/14): the time a meeting has two or more people in it,
+ * Meeting hours (docs/pricing.md): the time a meeting has two or more people in it,
  * pooled across the place's meetings for the period. Past the allowance,
  * meetings carry on with voice only until the period resets.
  */
@@ -180,13 +180,13 @@ export type ClientMessage =
   | { t: "speaking"; on: boolean }
   /**
    * Whether you're in a call on the floor and whether any video is coming to
-   * you in it, sent when either changes. It's only counted (docs/24): calls on
+   * you in it, sent when either changes. It's only counted (docs/costs.md): calls on
    * the floor are never limited.
    */
   | { t: "call_usage"; call: boolean; video: boolean }
   /** Make this desk yours, in an office: any desk you had before is let go. */
   | { t: "desk_claim"; seat: number }
-  /** A wave to someone on the floor, as they come in or back to one (docs/28). */
+  /** A wave to someone on the floor, as they come in or back to one (docs/product.md). */
   | { t: "wave"; to: string }
   | ({ t: "sfu" } & SfuClientMessage);
 

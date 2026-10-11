@@ -5,7 +5,7 @@ import type { Router } from "./router";
 import { countryOf, requireUser, type User } from "./session";
 
 /**
- * Help and feedback (docs/19): a ticket with the TinyFloor team. An office has
+ * Help and feedback: a ticket with the TinyFloor team. An office has
  * at most one open, which everyone in it can follow and add to in Chat; a
  * demo office visitor has their own. Writing while none is open opens one.
  * Once the team closes it, it's gone from Chat and the next message starts

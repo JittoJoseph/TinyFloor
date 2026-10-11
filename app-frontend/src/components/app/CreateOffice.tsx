@@ -28,7 +28,7 @@ const NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 type Step = "name" | "invite" | "plan";
 
 /**
- * Making an office (docs/15, docs/23): its name, then the link that brings the
+ * Making an office (docs/pricing.md): its name, then the link that brings the
  * team in, then the floor. No plan is asked for before anyone else has joined:
  * an office is worth paying for once a team is in it, and the team's first two
  * weeks are on Pro anyway. Someone who chose Pro on the pricing page

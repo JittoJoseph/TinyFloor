@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tinyfloor",
   // The marketing site (www.tinyfloor.com): the home page, pricing, guides, the
-  // legal pages. The app is ../app-frontend, a Worker of its own (docs/21).
+  // legal pages. The app is ../app-frontend, a Worker of its own (docs/sites.md).
   // OpenNext's worker behind a front door that serves built pages as files (cf-worker.mjs).
   "main": "cf-worker.mjs",
   "compatibility_date": "2026-09-01",

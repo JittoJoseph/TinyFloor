@@ -37,7 +37,7 @@ export function PeopleView() {
 }
 
 /**
- * Who is in the office, as one list (docs/22): you first, then whoever is on the
+ * Who is in the office, as one list (docs/pricing.md): you first, then whoever is on the
  * floor, then everyone else; searchable once it's long. Above it, the one link
  * that brings more people in, and how many seats are left.
  */
@@ -73,7 +73,7 @@ function OfficePeople() {
   const admin = office.role === "admin";
   const members = data.members;
   const used = data.members.length;
-  // A free office with its trial still to give isn't full: the next person starts it (docs/22).
+  // A free office with its trial still to give isn't full: the next person starts it (docs/pricing.md).
   const trialWaiting = !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
   const full = used >= office.seats && !trialWaiting;
 
@@ -103,7 +103,7 @@ function OfficePeople() {
           )}
         </header>
 
-        {/* Seats are counted where they matter: Free's 3, or a paid office close to full (docs/24). */}
+        {/* Seats are counted where they matter: Free's 3, or a paid office close to full (docs/costs.md). */}
         {seatsShown && (
           <div className="mt-6 max-w-[24rem]">
             <Seats

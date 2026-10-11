@@ -28,7 +28,7 @@ if (typeof window !== "undefined") {
   );
 }
 
-/** A teammate walked into the office while you were on the floor (docs/28). */
+/** A teammate walked into the office while you were on the floor (docs/product.md). */
 export const TEAMMATE_ARRIVED_EVENT = "teammateArrived";
 /** Someone on the floor waved at you. */
 export const WAVED_AT_YOU_EVENT = "wavedAtYou";

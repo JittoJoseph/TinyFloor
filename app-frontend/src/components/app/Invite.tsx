@@ -74,23 +74,15 @@ function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void })
 }
 
 /**
- * Who's here already, as one stack (each face set apart by a ring of the
- * dialog's colour, "+n" past four), and two places waiting beside it: the
- * office filling up.
+ * Who's here already, as one stack, and the next seat in it, empty: the
+ * office filling up. The seat overlaps the last face like another face would.
  */
 function Gathering({ ids }: { ids: string[] }) {
   return (
-    <span className="flex items-center gap-2 [--face-ring:var(--ui-card)]" aria-hidden>
+    <span className="flex items-center [--face-ring:var(--ui-card)]" aria-hidden>
       <FaceStack seeds={ids} size={40} max={4} />
-      <span className="flex items-center gap-1.5">
-        {[0, 1].map((one) => (
-          <span
-            key={one}
-            className="flex size-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border-strong text-faint"
-          >
-            <UserPlus className="size-4" />
-          </span>
-        ))}
+      <span className="relative -ms-[13px] flex size-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border-strong bg-card text-faint ring-2 ring-[var(--ui-card)]">
+        <UserPlus className="size-4" />
       </span>
     </span>
   );

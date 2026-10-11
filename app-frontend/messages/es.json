@@ -592,7 +592,8 @@
     "closedNote": "El equipo de TinyFloor cerró esto. ¿Sigues con el problema? Escríbenos de nuevo desde Ayuda y comentarios.",
     "ticketOffice": "Todos en {office} pueden seguir esto y añadir algo. El equipo de TinyFloor responde aquí.",
     "ticketLobby": "Solo tú y el equipo de TinyFloor veis esto. Respondemos aquí.",
-    "nothingOpen": "Ahora mismo no hay nada abierto con el equipo de TinyFloor."
+    "nothingOpen": "Ahora mismo no hay nada abierto con el equipo de TinyFloor.",
+    "emailUs": "¿Prefieres el correo? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Nueva oficina",
@@ -704,7 +705,8 @@
       "keep": "Mantener Pro · {price} al mes",
       "assurance": "Cancela cuando quieras. Reembolso completo en 14 días.",
       "meetings": "Reuniones tan a menudo como tu equipo necesite"
-    }
+    },
+    "billingEmail": "Preguntas sobre la facturación: <link>{email}</link>."
   },
   "invite": {
     "title": "Trae a tu equipo",

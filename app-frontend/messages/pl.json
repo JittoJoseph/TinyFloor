@@ -592,7 +592,8 @@
     "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
     "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
     "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
-    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor."
+    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor.",
+    "emailUs": "Wolisz e-mail? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Nowe biuro",
@@ -704,7 +705,8 @@
       "keep": "Zostaw Pro · {price} miesięcznie",
       "assurance": "Anuluj w dowolnej chwili. Pełny zwrot w ciągu 14 dni.",
       "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
-    }
+    },
+    "billingEmail": "Pytania o płatności: <link>{email}</link>."
   },
   "invite": {
     "title": "Ściągnij swój zespół",

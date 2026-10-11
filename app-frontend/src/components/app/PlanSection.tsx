@@ -12,6 +12,7 @@ import { PLAN_NAMES, PlanIncludes, ProOffer, paidPlan } from "@/components/billi
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
 type Asking = "cancel" | null;
 
@@ -312,7 +313,17 @@ export function PlanSection() {
       {/* The rest, quietly: cancelling, and the small print. */}
       {manage && (
         <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">{t("fine")}</p>
+          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">
+            {t("fine")}{" "}
+            {t.rich("billingEmail", {
+              email: SUPPORT_EMAIL,
+              link: (chunks) => (
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
+                  {chunks}
+                </a>
+              ),
+            })}
+          </p>
           {sub && !sub.endsAt && (
             <button
               type="button"

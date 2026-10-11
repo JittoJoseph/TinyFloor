@@ -592,7 +592,8 @@
     "closedNote": "L'équipe TinyFloor a fermé ce ticket. Toujours bloqué ? Écrivez-nous à nouveau depuis Aide et avis.",
     "ticketOffice": "Tout {office} peut suivre ce ticket et y ajouter quelque chose. L'équipe TinyFloor répond ici.",
     "ticketLobby": "Seuls vous et l'équipe TinyFloor voyez ceci. Nous répondons ici.",
-    "nothingOpen": "Rien n'est en cours avec l'équipe TinyFloor pour le moment."
+    "nothingOpen": "Rien n'est en cours avec l'équipe TinyFloor pour le moment.",
+    "emailUs": "Vous préférez l'e-mail ? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "Nouveau bureau",
@@ -704,7 +705,8 @@
       "keep": "Garder Pro · {price} par mois",
       "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",
       "meetings": "Des réunions aussi souvent que votre équipe en a besoin"
-    }
+    },
+    "billingEmail": "Questions sur la facturation : <link>{email}</link>."
   },
   "invite": {
     "title": "Faites venir votre équipe",

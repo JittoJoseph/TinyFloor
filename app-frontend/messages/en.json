@@ -592,7 +592,8 @@
     "closedNote": "The TinyFloor team closed this. Still stuck? Tell us again from Help and feedback.",
     "ticketOffice": "Everyone in {office} can follow this and add to it. The TinyFloor team answers here.",
     "ticketLobby": "Only you and the TinyFloor team see this. We answer here.",
-    "nothingOpen": "Nothing is open with the TinyFloor team right now."
+    "nothingOpen": "Nothing is open with the TinyFloor team right now.",
+    "emailUs": "Rather email? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "New office",
@@ -704,7 +705,8 @@
       "keep": "Keep Pro · {price} a month",
       "assurance": "Cancel any time. Full refund within 14 days.",
       "meetings": "Meetings as often as your team needs"
-    }
+    },
+    "billingEmail": "Questions about billing: <link>{email}</link>."
   },
   "invite": {
     "title": "Bring your team in",

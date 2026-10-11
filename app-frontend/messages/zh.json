@@ -592,7 +592,8 @@
     "closedNote": "TinyFloor 团队已关闭此工单。还有问题？请通过「帮助与反馈」再告诉我们。",
     "ticketOffice": "{office} 的所有人都能查看并补充。TinyFloor 团队会在这里回复。",
     "ticketLobby": "只有你和 TinyFloor 团队能看到这里。我们会在这里回复。",
-    "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。"
+    "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。",
+    "emailUs": "更想用邮件？<link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "新建办公室",
@@ -704,7 +705,8 @@
       "keep": "继续使用 Pro · 每月 {price}",
       "assurance": "随时可以取消。14 天内全额退款。",
       "meetings": "团队需要多少会议就开多少"
-    }
+    },
+    "billingEmail": "账单问题请联系：<link>{email}</link>"
   },
   "invite": {
     "title": "把团队叫进来",

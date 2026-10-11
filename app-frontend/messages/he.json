@@ -592,7 +592,8 @@
     "closedNote": "הצוות של TinyFloor סגר את הפנייה. עדיין תקועים? ספרו לנו שוב דרך עזרה ומשוב.",
     "ticketOffice": "כל מי שב-{office} יכול לעקוב ולהוסיף. הצוות של TinyFloor עונה כאן.",
     "ticketLobby": "רק אתם וצוות TinyFloor רואים את זה. אנחנו עונים כאן.",
-    "nothingOpen": "כרגע אין שום דבר פתוח מול הצוות של TinyFloor."
+    "nothingOpen": "כרגע אין שום דבר פתוח מול הצוות של TinyFloor.",
+    "emailUs": "מעדיפים אימייל? <link>{email}</link>"
   },
   "dashboard": {
     "newOffice": "משרד חדש",
@@ -704,7 +705,8 @@
       "keep": "להשאיר את Pro · {price} בחודש",
       "assurance": "אפשר לבטל בכל עת. החזר מלא תוך 14 ימים.",
       "meetings": "פגישות בכל פעם שהצוות צריך"
-    }
+    },
+    "billingEmail": "שאלות על חיוב: <link>{email}</link>."
   },
   "invite": {
     "title": "הביאו את הצוות",

@@ -60,7 +60,7 @@ export class SfuMeeting {
   private local: MediaStream | null = null;
   private flags: MediaFlags = { mic: false, camera: false, screen: false };
   private wanted: VideoWant[] = [];
-  /** Past the meeting hours: no video either way, voices only (docs/14). */
+  /** Past the meeting hours: no video either way, voices only (docs/pricing.md). */
   private videoPaused = false;
   private chain: Promise<unknown> = Promise.resolve();
   private waiter: Waiter | null = null;

@@ -20,7 +20,7 @@ import { HELP_TRIGGER } from "./HelpCompose";
 const EVERY_MS = 5_000;
 
 /**
- * TinyFloor support in Chat (docs/19): the ticket with the team, as the same
+ * TinyFloor support in Chat: the ticket with the team, as the same
  * conversation as a channel, with the team's answers under the TinyFloor
  * mark. Anyone who can see it can add to it while it's open. Closed while
  * you're on it, it says so; with none open, it offers to start one.

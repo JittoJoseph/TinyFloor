@@ -19,7 +19,7 @@ const DAY = 24 * 60 * 60 * 1000;
 
 /**
  * The office's mark at the top of the rail, and the way to your other offices.
- * Its header says the plan's trial while one runs (docs/22), and admins find
+ * Its header says the plan's trial while one runs (docs/pricing.md), and admins find
  * the plans here too.
  */
 export function OfficeSwitcher({ office }: { office: Office }) {

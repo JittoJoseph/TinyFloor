@@ -131,8 +131,8 @@ export function appNode(
     screenshot: socialImage(locale, "/"),
     isAccessibleForFree: true,
     featureList: features,
-    // Free for 3, Plus $19 for 10, Pro $49 for 25 (docs/14).
-    offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "49", priceCurrency: "USD", offerCount: 3 },
+    // Free for 3, Pro $29 for the whole team (docs/pricing.md).
+    offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "29", priceCurrency: "USD", offerCount: 2 },
     publisher: { "@id": ORG_ID },
   };
 }

@@ -9,10 +9,12 @@ import {
   type ChatImage,
   type ChatMessage,
   type ChatServerMessage,
+  isDm,
 } from "@shared/chat";
 import type { RoomTicket } from "@/lib/api";
 import { playSound } from "./sounds";
 import { help } from "./help";
+import { track } from "@/lib/analytics";
 
 const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
@@ -135,6 +137,8 @@ class ChatSocket {
 
   say(channel: string, body: string, image?: ChatImage) {
     this.send({ t: "chat_send", channel, body, ...(image ? { image } : {}) });
+    // Where and what kind, never the words.
+    track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: !!image });
   }
 
   older(channel: string) {

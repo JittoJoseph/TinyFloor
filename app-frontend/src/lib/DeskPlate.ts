@@ -11,7 +11,7 @@ const STYLE = {
 };
 
 /**
- * The little card on a desk that says whose it is (docs/26): paper on the
+ * The little card on a desk that says whose it is (docs/product.md): paper on the
  * desktop, not a dark tag like a person's, so it reads as part of the office
  * and not as someone standing there. Only up close, while the owner is away:
  * a floor of name cards would be noise, one on the desk you walk up to is not.

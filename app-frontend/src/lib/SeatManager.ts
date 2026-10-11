@@ -71,7 +71,7 @@ export class SeatManager {
   private goTo?: GoTo;
   private unsubscribe?: () => void;
   private unsubscribeDesks: () => void;
-  /** Whose desk it is, on each desk while its owner is away (docs/26). */
+  /** Whose desk it is, on each desk while its owner is away (docs/product.md). */
   private plates = new Map<number, DeskPlate>();
   /** How many the table's tag says are in meetings; who's talking changes often, the count rarely. */
   private inMeetings = -1;
@@ -185,7 +185,7 @@ export class SeatManager {
   }
 
   /**
-   * Arrived a few steps from your desk (docs/27): walk in and sit down, in
+   * Arrived a few steps from your desk (docs/product.md): walk in and sit down, in
    * sight of everyone. Steering or clicking elsewhere on the way lets it go.
    */
   walkToDesk(seatId: number) {

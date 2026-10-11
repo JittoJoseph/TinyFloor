@@ -6,7 +6,7 @@ import en from "../../messages/guides/en.json";
 const ENGLISH: Record<GuideKey, GuideCopy> = en;
 
 /**
- * Every guide's words in one language (docs/18). They live in
+ * Every guide's words in one language (docs/search.md). They live in
  * messages/guides/<locale>.json rather than the main message files, so only
  * the guide pages, their social cards and llms.txt load them, and every other
  * page's messages stay small. A guide not yet translated reads in English.

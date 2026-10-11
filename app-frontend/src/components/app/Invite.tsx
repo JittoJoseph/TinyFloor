@@ -15,7 +15,7 @@ import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /**
- * Bringing people in (docs/26). One dialog, opened from wherever someone
+ * Bringing people in (docs/product.md). One dialog, opened from wherever someone
  * invites: the floor, People, the office menu. A link alone isn't an invite,
  * so it comes ready to send the ways people actually do it: a message to
  * paste into the team's chat, an email from their own address, the phone's
@@ -135,7 +135,7 @@ export function InviteActions({ officeId, officeName, className }: { officeId: s
     <div className={className}>
       <div className="flex h-12 items-center gap-1 rounded-full border border-border bg-background p-1 ps-4">
         <Link2 className="size-4 shrink-0 text-faint" />
-        <span className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground" dir="ltr">
+        <span data-ph-mask className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground" dir="ltr">
           {url ? url.replace(/^https?:\/\//, "") : <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />}
         </span>
         <button

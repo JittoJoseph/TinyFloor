@@ -10,7 +10,7 @@ import { LitFace } from "@/components/ui/LitFace";
 import { ActionLink } from "@/components/ui/Action";
 
 /**
- * No office yet, just after signing up (docs/15): one thing to do, make one.
+ * No office yet, just after signing up (docs/product.md): one thing to do, make one.
  * Someone who was invited pastes the link instead, and the lobby is there
  * meanwhile. On a phone those two are grouped as a list; wider, they sit
  * quietly underneath.

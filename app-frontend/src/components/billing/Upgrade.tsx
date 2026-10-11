@@ -22,7 +22,7 @@ interface Upgrade {
 const Context = createContext<Upgrade>({ open: null });
 
 /**
- * The one way up (docs/23), opened in place wherever a limit is felt: inviting
+ * The one way up (docs/pricing.md), opened in place wherever a limit is felt: inviting
  * past the seats, the meeting hours, the trial's last days, or the office
  * menu. A headline for why they came, then Pro put in their team's terms,
  * and the checkout right there. Members see the same offer and who can buy it.
@@ -59,12 +59,16 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const officeId = office?.id;
   const admin = office?.role === "admin";
 
-  const change = usePlanChange(officeId, async (next) => {
-    if (next) setBilling(next);
-    else if (officeId) setBilling(await api.billing(officeId).catch(() => null));
-    await context?.refresh();
-    setDone(true);
-  });
+  const change = usePlanChange(
+    officeId,
+    async (next) => {
+      if (next) setBilling(next);
+      else if (officeId) setBilling(await api.billing(officeId).catch(() => null));
+      await context?.refresh();
+      setDone(true);
+    },
+    `upgrade:${reason ?? "menu"}`,
+  );
 
   useEffect(() => {
     if (!reason || !officeId || !admin) return;

@@ -13,7 +13,7 @@ export interface Office {
   /** The caller's role here. */
   role: OfficeRole;
   ownerId: string;
-  /** When the team trial on its plan ends, while one runs (docs/22). */
+  /** When the team trial on its plan ends, while one runs (docs/pricing.md). */
   trialEndsAt: number | null;
   /** Free, never trialled and never paid: the trial is still there to start (where plans are sold). */
   trialOpen: boolean;

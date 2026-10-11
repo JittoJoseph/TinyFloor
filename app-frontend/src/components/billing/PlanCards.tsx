@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 /** Plan names stay in English everywhere, like on the pricing page. */
 export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 
-/** The one paid plan (docs/23), from the catalog. */
+/** The one paid plan (docs/pricing.md), from the catalog. */
 export const paidPlan = (plans: Plan[]) => plans.find((plan) => plan.price !== null);
 
-/** What a per-person tool charges a person (Gather's $12, docs/22's survey), for the comparison. */
+/** What a per-person tool charges a person (Gather's $12, docs/pricing.md's survey), for the comparison. */
 const PER_SEAT = 1200;
 
 /**
- * Pro as an office is offered it (docs/23). The price is said three ways, each
+ * Pro as an office is offered it (docs/pricing.md). The price is said three ways, each
  * true for this team: the flat price, what it comes to for each of them (or a
  * day, for one person), and what per-person tools would charge the same team.
  * Then what changes, as three short lines. The button says the price again,
@@ -128,7 +128,7 @@ function OfferButton({
 export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: string }) {
   const t = useTranslations("billing.offer");
   if (!paidPlan(plans)) return null;
-  // No hours, no counts: what the team gets, not what it's allowed (docs/24).
+  // No hours, no counts: what the team gets, not what it's allowed (docs/costs.md).
   const items = [t("wholeTeam"), t("meetings"), t("support")];
   return (
     <div className={className}>

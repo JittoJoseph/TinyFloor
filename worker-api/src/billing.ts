@@ -4,8 +4,8 @@ import type { Router } from "./router";
 import { requireUser } from "./session";
 
 /**
- * The paid plan, sold through Creem as the merchant of record (docs/09-billing.md,
- * docs/23, docs/24). There is one: Free holds 3 people, Pro a small team at one
+ * The paid plan, sold through Creem as the merchant of record (docs/billing.md,
+ * docs/pricing.md, docs/costs.md). There is one: Free holds 3 people, Pro a small team at one
  * price. Neither shows a meter: meeting hours are a fair-use backstop, high
  * enough that a team meeting all day never meets them. An office's plan changes in one place only: here,
  * from a subscription Creem vouches for, either in a signed webhook or in the
@@ -18,7 +18,7 @@ type PaidPlan = Exclude<PlanId, "free">;
 export interface Plan {
   id: PlanId;
   seats: number;
-  /** Fair use, never shown: meeting hours a month (time a meeting has two or more people in it), past which meetings are voice only (docs/24). */
+  /** Fair use, never shown: meeting hours a month (time a meeting has two or more people in it), past which meetings are voice only (docs/costs.md). */
   meetingHours: number;
   /** US cents a month, before tax; null for the free plan. Monthly only. */
   price: number | null;
@@ -45,7 +45,7 @@ export const HOLDS_PLAN = new Set(["active", "trialing", "past_due", "scheduled_
 const HISTORY = 24;
 
 /**
- * The team trial (docs/22): when a free office is full and one more person
+ * The team trial (docs/pricing.md): when a free office is full and one more person
  * comes to join, instead of turning them away it goes on Pro for this many
  * days, without a card, so the whole team can move in. Then back to free
  * unless a plan was bought: everyone stays a member, but only the free plan's
@@ -457,7 +457,7 @@ async function trialOf(env: Env, officeId: string, now = Date.now()): Promise<{ 
 
 /**
  * Before an office is closed. A plan still renewing has to be cancelled first
- * (docs/14); one already cancelled ends now, so closing stops every charge.
+ * (docs/billing.md); one already cancelled ends now, so closing stops every charge.
  */
 export async function endBillingForClosing(env: Env, officeId: string): Promise<void> {
   const live = await liveSubscription(env, officeId);

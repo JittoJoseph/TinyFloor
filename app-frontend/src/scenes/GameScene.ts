@@ -1,4 +1,4 @@
-import { onFloorShown, WALK_TO_PERSON_EVENT } from "../lib/floor";
+import { onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
@@ -185,6 +185,7 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
     });
+    this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
     this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
 

@@ -92,7 +92,11 @@
     "choosePlan": "בחירת תוכנית",
     "upgrade": "שדרוג",
     "members": "{count, plural, one {חבר אחד} other {# חברים}}",
-    "invitePeople": "הזמנת אנשים"
+    "invitePeople": "הזמנת אנשים",
+    "arrived": "{name} הגיע/ה",
+    "wave": "👋 לנופף",
+    "waved": "{name} נופף/ה לך",
+    "waveBack": "👋 לנופף בחזרה"
   },
   "home": {
     "nav": {

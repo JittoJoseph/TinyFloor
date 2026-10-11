@@ -38,7 +38,7 @@ const dateIn = (locale: string, date: string) =>
   new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
 
 /**
- * One guide (docs/18): a headline, who wrote it and when, a list of its
+ * One guide (docs/search.md): a headline, who wrote it and when, a list of its
  * sections, then the sections themselves, read in one narrow column. Steps
  * and activities are numbered through the whole guide, so "20 activities"
  * counts to 20. Where TinyFloor fits comes last, said once and plainly, then

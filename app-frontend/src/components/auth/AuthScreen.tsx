@@ -47,7 +47,7 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [formError, setFormError] = useState<React.ReactNode>(null);
   const [submitting, setSubmitting] = useState(false);
   const [googling, setGoogling] = useState(false);
-  // Google is the way in we'd like most people to take (docs/15): the email form waits behind a button.
+  // Google is the way in we'd like most people to take (docs/product.md): the email form waits behind a button.
   const [withEmail, setWithEmail] = useState(!googleAvailable);
   const turnstile = useTurnstileToken();
 

@@ -254,7 +254,7 @@ async function inviteCodeOf(env: Env, officeId: string): Promise<string> {
 
 /**
  * An office goes, with its members, invites, floor and chat. A paid plan is
- * cancelled first, on purpose (docs/14); closing then stops it for good.
+ * cancelled first, on purpose (docs/billing.md); closing then stops it for good.
  */
 export async function closeOffice(env: Env, officeId: string): Promise<void> {
   await endBillingForClosing(env, officeId);

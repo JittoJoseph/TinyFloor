@@ -49,7 +49,7 @@ import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
  * office and in the lobby. Anyone can edit and unsend what they said. In the
  * lobby direct messages last only while both of you are there, and what only
  * an office can do (making channels, images) is all here and asks for an office.
- * A ticket with the TinyFloor team, while one is open, sits at the very bottom (docs/19).
+ * A ticket with the TinyFloor team, while one is open, sits at the very bottom.
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -689,7 +689,11 @@ function PersonCard({
             .filter(Boolean)
             .join(" · ")}
         </p>
-        {detail && <p className="mt-0.5 truncate text-[12.5px] text-muted-foreground">{detail}</p>}
+        {detail && (
+          <p data-ph-mask className="mt-0.5 truncate text-[12.5px] text-muted-foreground">
+            {detail}
+          </p>
+        )}
         <ProfileLink id={id} />
       </MenuHeader>
       {!isMe && onMessage && (

@@ -92,7 +92,11 @@
     "choosePlan": "Välj en plan",
     "upgrade": "Uppgradera",
     "members": "{count, plural, one {# medlem} other {# medlemmar}}",
-    "invitePeople": "Bjud in folk"
+    "invitePeople": "Bjud in folk",
+    "arrived": "{name} är här",
+    "wave": "👋 Vinka",
+    "waved": "{name} vinkade till dig",
+    "waveBack": "👋 Vinka tillbaka"
   },
   "home": {
     "nav": {

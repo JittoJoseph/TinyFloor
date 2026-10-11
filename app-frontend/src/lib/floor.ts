@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import type { PlayerStatus } from "@/lib/types";
+import { track } from "@/lib/analytics";
 
 export interface FloorPerson {
   id: string;
@@ -26,6 +27,18 @@ if (typeof window !== "undefined") {
   window.addEventListener("playerListUpdated", (event) =>
     set((event as CustomEvent<FloorPerson[]>).detail.map((one) => ({ ...one }))),
   );
+}
+
+/** A teammate walked into the office while you were on the floor (docs/product.md). */
+export const TEAMMATE_ARRIVED_EVENT = "teammateArrived";
+/** Someone on the floor waved at you. */
+export const WAVED_AT_YOU_EVENT = "wavedAtYou";
+/** Asks the floor to wave at someone (see GameScene). */
+export const WAVE_EVENT = "waveAt";
+
+export function waveAt(id: string) {
+  window.dispatchEvent(new CustomEvent(WAVE_EVENT, { detail: { id } }));
+  track("wave_sent");
 }
 
 /** Asks the floor to walk you over to someone (see GameScene). */

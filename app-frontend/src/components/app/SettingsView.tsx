@@ -155,7 +155,7 @@ function subscribeHash(listener: () => void) {
 }
 
 /** A group of settings on one card, the way every settings page reads. */
-export function Group({ title, note, action, children }: { title: string; note?: string; action?: ReactNode; children: ReactNode }) {
+export function Group({ title, note, action, children }: { title: string; note?: ReactNode; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="mb-8">
       <div className="flex items-end justify-between gap-3">
@@ -447,7 +447,7 @@ function OfficeSection() {
     try {
       await action();
     } catch (problem) {
-      // A paid plan is cancelled first, on purpose, from the plan section (docs/14).
+      // A paid plan is cancelled first, on purpose, from the plan section (docs/pricing.md).
       if (problem instanceof ApiError && problem.code === "cancel_plan_first") setError(t("cancelPlanFirst"));
       else setError(problem instanceof ApiError ? problem.message : t("wrong"));
     } finally {

@@ -92,7 +92,11 @@
     "choosePlan": "Valitse paketti",
     "upgrade": "Päivitä",
     "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
-    "invitePeople": "Kutsu ihmisiä"
+    "invitePeople": "Kutsu ihmisiä",
+    "arrived": "{name} tuli paikalle",
+    "wave": "👋 Vilkuta",
+    "waved": "{name} vilkutti sinulle",
+    "waveBack": "👋 Vilkuta takaisin"
   },
   "home": {
     "nav": {

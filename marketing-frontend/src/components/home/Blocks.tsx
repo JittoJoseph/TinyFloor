@@ -285,7 +285,7 @@ export function Everything() {
   );
 }
 
-/** The plans, priced by the office and not the person (docs/23). */
+/** The plans, priced by the office and not the person (docs/pricing.md). */
 export function Plans() {
   const t = useTranslations("homepage.pricing");
   return (

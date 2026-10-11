@@ -32,7 +32,7 @@ export interface InvitePreview {
 type Step = "account" | "name" | "character" | "join";
 
 /**
- * An office's invite link (docs/15). An account first, with Google if they
+ * An office's invite link (docs/product.md). An account first, with Google if they
  * like; then, for someone new, their name and their character, one at a time;
  * and then they are in: the office is joined and waiting on their dashboard.
  * Someone who already has an account and a character joins with one press.
@@ -89,7 +89,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         saveIdentity({ name, character });
       }
       const { officeId } = await api.acceptInvite(token);
-      withPostHog((posthog) => posthog.capture("office_invite_accepted"));
+      withPostHog((posthog) => posthog.capture("office_invite_accepted", { office_id: officeId }));
       posthogLog.info("Office invitation acceptance completed");
       router.replace(officePath(officeId));
     } catch (err) {
@@ -222,7 +222,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
               <StepTitle title={full ? t("fullTitle") : t("joinTitle")} body={full ? t("fullBody") : t("joinBody")} />
               <YouSummary name={user.displayName} character={character} />
               <p className="mt-3 text-[12.5px] text-muted-foreground">
-                {t("joiningAs", { email: user.email ?? user.displayName })}{" "}
+                <span data-ph-mask>{t("joiningAs", { email: user.email ?? user.displayName })}</span>{" "}
                 <Link href="/account" className="underline-offset-2 hover:text-foreground hover:underline">
                   {t("change")}
                 </Link>

@@ -83,7 +83,7 @@ export class RoomSocket {
     }
     if (this.stopped) return;
 
-    // Arriving, the room seats you at your desk if you have one (docs/26); until
+    // Arriving, the room seats you at your desk if you have one (docs/product.md); until
     // a welcome, even a retried connection is still the arrival.
     const { x, y } = this.spawn();
     const url = `${ticket.url}?ticket=${encodeURIComponent(ticket.ticket)}&x=${x}&y=${y}${this.welcomed ? "" : "&arrive=1"}`;

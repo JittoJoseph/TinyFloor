@@ -11,7 +11,8 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
-import { myStatus } from "./floor";
+import { myStatus, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { track } from "@/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -47,6 +48,12 @@ export class MessageHandler {
         this.addUser(message.player);
         this.dispatchPlayerList();
         playSound("join");
+        // Walked in, not back after a dropped connection: the floor can say hello (docs/product.md).
+        if (message.arrived) this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        break;
+      case "waved":
+        this.playerManager.wave(message.from);
+        if (message.to === this.playerId) this.tell(WAVED_AT_YOU_EVENT, message.from);
         break;
       case "player_left":
         this.handleUserLeft(message.id);
@@ -104,7 +111,7 @@ export class MessageHandler {
     }
   }
 
-  /** Past the place's meeting hours, meetings go voice only until they reset (docs/14). */
+  /** Past the place's meeting hours, meetings go voice only until they reset (docs/pricing.md). */
   private meetingUsage(usage: MeetingUsage) {
     setMeetingUsage(usage);
     callManager.setVideoPaused(usage.paused);
@@ -134,9 +141,11 @@ export class MessageHandler {
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();
     // Arriving, the room put you a few steps from your desk: walk in and sit
-    // down (docs/27). Back after a dropped connection, to the chair you were on.
+    // down (docs/product.md). Back after a dropped connection, to the chair you were on.
     if (this.arrived) return this.seats.resit();
     this.arrived = true;
+    // Who shows up, and with how many already there: whether a team is on the floor together.
+    track("floor_entered", { people_here: players.length });
     this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
     const desk = deskOf(deskState().desks, this.playerId);
     if (desk) this.seats.walkToDesk(desk.seat);
@@ -163,6 +172,12 @@ export class MessageHandler {
     this.playerManager.removePlayer(id);
     callManager.dropPeer(id);
     this.dispatchPlayerList();
+  }
+
+  /** Tells the page about someone, by id and the name the floor knows them by. */
+  private tell(type: string, id: string) {
+    const name = this.playerManager.getPlayerName(id);
+    if (name) window.dispatchEvent(new CustomEvent(type, { detail: { id, name } }));
   }
 
   private dispatchPlayerList() {

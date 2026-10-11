@@ -77,7 +77,7 @@ interface Attachment {
   meetingSince: number | null;
   /** Whether they are talking in their meeting right now. */
   speaking: boolean;
-  /** Since when they've been in a call on the floor, and seeing video in it, as they report (docs/24). */
+  /** Since when they've been in a call on the floor, and seeing video in it, as they report (docs/costs.md). */
   callSince?: number | null;
   videoSince?: number | null;
   /**
@@ -266,10 +266,11 @@ export class Room extends DurableObject<Env> {
 
     // Arriving in an office (not coming back after a dropped connection), a
     // member appears a few steps from their desk and walks in to sit down, so
-    // the team sees them arrive; without a desk yet, beside a free one (docs/27).
+    // the team sees them arrive; without a desk yet, beside a free one (docs/product.md).
     const office = lobbyCopyNumber(room) === null;
     const desk = office && !attachment.guest ? this.desks.of(ticket.sub) : null;
-    const near = arrive && office && !attachment.guest ? this.arrivalNear(desk) : null;
+    const arriving = arrive && office && !attachment.guest;
+    const near = arriving ? this.arrivalNear(desk) : null;
     if (near) Object.assign(attachment, near);
     const renamed = desk !== null && this.desks.rename(ticket.sub, ticket.name);
 
@@ -289,7 +290,7 @@ export class Room extends DurableObject<Env> {
       usage: this.clock()!.usage(now),
       desks: office ? this.desks.list() : [],
     });
-    this.broadcast({ t: "player_joined", player: playerState(attachment) }, server);
+    this.broadcast({ t: "player_joined", player: playerState(attachment), ...(arriving ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
     await this.headcountChanged(room);
@@ -372,6 +373,9 @@ export class Room extends DurableObject<Env> {
         break;
       case "call_usage":
         this.callUsage(me, !!message.call, !!message.video, now);
+        break;
+      case "wave":
+        this.wave(me, message.to);
         break;
       case "desk_claim":
         this.claimDesk(me, message.seat, now);
@@ -465,6 +469,13 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || !Number.isInteger(seat)) return;
     const before = this.desks.of(me.userId);
     if (this.desks.claim(seat as number, me.userId, me.name, now) && before !== seat) this.broadcastDesks();
+  }
+
+  /** A wave to someone who is here: the whole floor sees it, a hello in passing (docs/product.md). */
+  private wave(me: Attachment, to: unknown): void {
+    if (!this.takeAction(me) || typeof to !== "string" || to === me.userId) return;
+    if (!this.present().some((socket) => this.attachmentOf(socket).userId === to)) return;
+    this.broadcast({ t: "waved", from: me.userId, to });
   }
 
   /** Everyone hears the desks again; a newcomer already had them in its welcome. */
@@ -832,7 +843,7 @@ export class Room extends DurableObject<Env> {
         },
       });
     }
-    // Past the meeting hours, meetings are voice only until the period resets (docs/14).
+    // Past the meeting hours, meetings are voice only until the period resets (docs/pricing.md).
     if (this.clock()?.usage(Date.now()).paused) {
       const voices = found.filter((item) => item.kind === "mic");
       if (!voices.length) return sendSfu(socket, { op: "error", code: found.length ? "video_paused" : "no_tracks" });
@@ -1000,7 +1011,7 @@ export class Room extends DurableObject<Env> {
     return this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'name'").toArray()[0]?.value ?? null;
   }
 
-  /** Meeting hours: monthly for an office, daily for a lobby copy (docs/14). */
+  /** Meeting hours: monthly for an office, daily for a lobby copy (docs/pricing.md). */
   private clock(): MeetingClock | null {
     if (this.clockCache) return this.clockCache;
     const room = this.roomName();
@@ -1100,7 +1111,7 @@ export class Room extends DurableObject<Env> {
 
   /**
    * A call on the floor started, ended, or its video came or went. Only
-   * counted, for knowing what calls cost (docs/24); nothing is limited by it.
+   * counted, for knowing what calls cost (docs/costs.md); nothing is limited by it.
    */
   private callUsage(me: Attachment, call: boolean, video: boolean, now: number): void {
     this.closeCallTime(me, now);

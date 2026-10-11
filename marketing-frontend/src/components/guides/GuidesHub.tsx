@@ -19,7 +19,7 @@ export async function guidesMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({ locale, path: GUIDES_PATH, title: t("meta.title"), description: t("meta.description") });
 }
 
-/** Every guide on one page, the way the other indexes list their pages (docs/18). */
+/** Every guide on one page, the way the other indexes list their pages (docs/search.md). */
 export async function GuidesHub({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);

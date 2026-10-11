@@ -22,7 +22,7 @@ interface HelpState {
 const EMPTY: HelpState = { composing: false, ticket: null, view: null };
 
 /**
- * Help and feedback (docs/19): the ticket with the TinyFloor team where you
+ * Help and feedback: the ticket with the TinyFloor team where you
  * are. With none open, the rail opens a box to start one; with one open, it
  * opens the ticket in Chat. The office's chat socket says when the team has
  * answered, so its count turns up at once; it's also read now and then, in

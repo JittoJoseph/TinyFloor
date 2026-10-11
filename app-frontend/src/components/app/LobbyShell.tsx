@@ -39,9 +39,10 @@ import { dmChannelId } from "@shared/chat";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
-import { ChatNudges } from "./ChatNudges";
+import { FloorNudges } from "./FloorNudges";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
 import { Entering } from "./Entering";
+import { withPostHog } from "@/lib/analytics";
 
 /**
  * The free public lobby: the door, then the same shell an office has — floor,
@@ -67,6 +68,12 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   // Anyone with a session already has a name and a character, so the door is only for someone new;
   // a new account first says who it is (see Introduce below).
   const inside = !!user && (user.guest || user.introduced !== false);
+
+  // What's done here is the demo office's, not any team's.
+  useEffect(() => {
+    withPostHog((posthog) => posthog.register({ place: "lobby" }));
+    return () => withPostHog((posthog) => posthog.unregister("place"));
+  }, []);
 
   // Who is inside, for the door.
   useEffect(() => {
@@ -210,7 +217,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               leaveHref={leave.href}
               settingsHref={lobbySettingsPath}
             />
-            {!onChat && <ChatNudges chatPath={lobbyChatPath} />}
+            {!onChat && <FloorNudges chatPath={lobbyChatPath} />}
           </>
         }
       >

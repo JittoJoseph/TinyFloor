@@ -18,6 +18,7 @@ import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEE
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
+import { track } from "@/lib/analytics";
 
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";
@@ -124,7 +125,7 @@ const LOW: Wants = { camera: "low", screen: "low" };
 
 /**
  * Cameras rest after this long with nobody on the call or in the meeting
- * talking (docs/24): working side by side in silence doesn't need video, and
+ * talking (docs/costs.md): working side by side in silence doesn't need video, and
  * one press brings it back.
  */
 const QUIET_REST_MS = 10 * 60_000;
@@ -215,6 +216,12 @@ const EMPTY: CallSnapshot = {
 const MIC_ON = typeof window === "undefined" ? true : micPreference();
 
 /**
+ * Some browsers have no WebRTC at all (Safari in Lockdown Mode, some in-app
+ * browsers): calls and meetings say so instead of failing.
+ */
+const canCall = () => typeof RTCPeerConnection !== "undefined";
+
+/**
  * A call is two people, on one WebRTC connection through the TURN relay (see
  * RELAY_ONLY), over UDP unless the network blocks it (widenRelay), with the
  * voice sent redundantly so a lost packet isn't heard (preferRedundantAudio). It starts with voice, and the camera and a shared screen are
@@ -231,7 +238,7 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
-  /** The place is past its meeting hours: meetings are voice only (docs/14). */
+  /** The place is past its meeting hours: meetings are voice only (docs/pricing.md). */
   private videoPaused = false;
   private local: MediaStream | null = null;
   /** The microphone being opened, so a call and a meeting starting together share one. */
@@ -343,6 +350,7 @@ class CallManager {
   /** Calls someone, with voice. A call is two people: a third makes it a meeting (startMeeting). */
   invite(id: string, name: string) {
     if (this.busy() || this.peers.size || !this.ws) return;
+    if (!this.callsWork()) return;
 
     this.error = null;
     this.outcome = null;
@@ -360,6 +368,7 @@ class CallManager {
   async accept() {
     const call = this.incoming;
     if (!call) return;
+    if (!this.callsWork()) return this.decline();
 
     this.clearRing();
     stopSound("ring");
@@ -504,7 +513,7 @@ class CallManager {
    * media and walks you into the meeting room. A one-to-one call ends first.
    */
   joinMeeting(id: string) {
-    if (!this.ws || this.meeting === id) return;
+    if (!this.ws || this.meeting === id || !this.callsWork()) return;
     this.dismissInvite();
     if (this.peers.size) this.hangUp();
     this.ws.send({ t: "meeting_join", meeting: id });
@@ -512,7 +521,7 @@ class CallManager {
 
   /** Starts a meeting of your own, asking these people in: a call becoming a meeting asks its other half. */
   startMeeting(name: string, invite: string[] = []) {
-    if (!this.ws) return;
+    if (!this.ws || !this.callsWork()) return;
     const everyone = new Set([...invite, ...this.peers.keys()]);
     if (this.peers.size) this.hangUp();
     this.ws.send({ t: "meeting_start", name, invite: [...everyone] });
@@ -796,7 +805,10 @@ class CallManager {
     this.sfu = sfu;
     sfu.pauseVideo(this.videoPaused);
     members.forEach((member) => sfu.addMember(member.id, member.name));
-    if (!moving) playSound("connect");
+    if (!moving) {
+      playSound("connect");
+      track("meeting_joined", { people_here: members.length });
+    }
     window.dispatchEvent(new Event(WALK_TO_MEETING_EVENT));
     this.emit();
 
@@ -851,6 +863,14 @@ class CallManager {
       if (peer.pc) this.send("signal", peer.id, { signal: { media } });
     });
     if (!to) this.sfu?.updateLocal(this.local, media);
+  }
+
+  /** Whether this browser can call at all; if not, the call overlay says so. */
+  private callsWork(): boolean {
+    if (canCall()) return true;
+    this.error = "unsupported";
+    this.emit();
+    return false;
   }
 
   /** Mid meeting or mid ring, nobody else gets through. */
@@ -945,7 +965,10 @@ class CallManager {
 
     pc.onconnectionstatechange = () => {
       const connected = pc.connectionState === "connected";
-      if (connected && !peer.connected) playSound("connect");
+      if (connected && !peer.connected) {
+        playSound("connect");
+        track("call_connected");
+      }
       peer.connected = connected;
       if (pc.connectionState === "failed") this.widenRelay(peer);
       this.emit();
@@ -1187,7 +1210,7 @@ class CallManager {
 
   /**
    * Tells the room when we're in a call on the floor and whether video is
-   * coming to us in it, so what calls cost can be counted (docs/24). Sent only
+   * coming to us in it, so what calls cost can be counted (docs/costs.md). Sent only
    * when that changes.
    */
   private reportCall() {

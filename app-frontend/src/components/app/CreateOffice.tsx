@@ -28,7 +28,7 @@ const NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 type Step = "name" | "invite" | "plan";
 
 /**
- * Making an office (docs/15, docs/23): its name, then the link that brings the
+ * Making an office (docs/pricing.md): its name, then the link that brings the
  * team in, then the floor. No plan is asked for before anyone else has joined:
  * an office is worth paying for once a team is in it, and the team's first two
  * weeks are on Pro anyway. Someone who chose Pro on the pricing page
@@ -93,7 +93,7 @@ export function CreateOfficeFlow() {
       let made = office;
       if (!made) {
         made = (await api.createOffice(typed)).office;
-        withPostHog((posthog) => posthog.capture("office_created"));
+        withPostHog((posthog) => posthog.capture("office_created", { office_id: made!.id }));
         posthogLog.info("Office creation completed");
         setOffice(made);
       } else if (made.name !== typed) {
@@ -115,10 +115,8 @@ export function CreateOfficeFlow() {
     setError("");
     try {
       const { checkoutId, url } = await api.checkout(office.id, plan);
-      withPostHog((posthog) => posthog.capture("onboarding_checkout_opened", { plan }));
-      const done = await openCheckout({ url, locale, dark: document.documentElement.classList.contains("dark") });
+      const done = await openCheckout({ url, locale, dark: document.documentElement.classList.contains("dark"), from: "create" });
       if (!done) return setBusy(null);
-      withPostHog((posthog) => posthog.capture("onboarding_plan_bought", { plan }));
       await waitForPlan(office.id, checkoutId, (now) => now === plan);
       walkIn(office.id);
     } catch (err) {

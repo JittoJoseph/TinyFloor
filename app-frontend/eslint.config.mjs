@@ -5,7 +5,7 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // beUI components, copied in from its registry (docs/06-app-design.md). They
+  // beUI components, copied in from its registry. They
   // are written for React without the compiler, so its stricter rules stay
   // off here; everything we write ourselves keeps them.
   {

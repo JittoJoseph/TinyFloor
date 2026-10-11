@@ -17,7 +17,7 @@ import { SUPPORT_EMAIL } from "@/lib/site";
 type Asking = "cancel" | null;
 
 /**
- * An office's plan and billing (docs/14, docs/23): what it's on and what it
+ * An office's plan and billing (docs/pricing.md): what it's on and what it
  * pays, how full it is and how much of its meeting hours are used, then Pro
  * for an office without it (on Pro, or trying it, what it includes instead),
  * the card and the next charge, and every past payment. Buying opens Creem's
@@ -46,15 +46,19 @@ export function PlanSection() {
     if (found) setDetails(found);
   }, [officeId]);
 
-  const change = usePlanChange(officeId, async (next) => {
-    if (next) setBilling(next);
-    else if (officeId) {
-      const found = await api.billing(officeId).catch(() => null);
-      if (found) setBilling(found);
-    }
-    setAsking(null);
-    await Promise.all([context?.refresh(), reloadDetails()]);
-  });
+  const change = usePlanChange(
+    officeId,
+    async (next) => {
+      if (next) setBilling(next);
+      else if (officeId) {
+        const found = await api.billing(officeId).catch(() => null);
+        if (found) setBilling(found);
+      }
+      setAsking(null);
+      await Promise.all([context?.refresh(), reloadDetails()]);
+    },
+    "billing",
+  );
 
   useEffect(() => {
     if (!officeId || !admin || !on) return;
@@ -182,7 +186,7 @@ export function PlanSection() {
 
         {/*
           Free's one limit is people, so it's shown as one: how many of the 3.
-          A paid office sees who's in it, not how many more it may have (docs/24).
+          A paid office sees who's in it, not how many more it may have (docs/costs.md).
         */}
         <div className="border-t border-border">
           {planId === "free" ? (

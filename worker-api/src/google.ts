@@ -13,7 +13,7 @@ import { ACCOUNT_SESSION_MS, createSession, currentUser, endSession, requireAcco
  * token directly, and we check its signature against Google's published keys.
  * Either way we then sign them in, link Google to the account that already has
  * their email, or make them one. The landing page asks nothing of this worker
- * until someone actually chooses an account (docs/15).
+ * until someone actually chooses an account (docs/pricing.md).
  */
 
 /** The redirect URI Google records for a popup code flow, whichever page opened it. */

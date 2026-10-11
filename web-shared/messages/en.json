@@ -92,7 +92,11 @@
     "choosePlan": "Choose a plan",
     "upgrade": "Upgrade",
     "members": "{count, plural, one {# member} other {# members}}",
-    "invitePeople": "Invite people"
+    "invitePeople": "Invite people",
+    "arrived": "{name} is in",
+    "wave": "👋 Wave",
+    "waved": "{name} waved at you",
+    "waveBack": "👋 Wave back"
   },
   "home": {
     "nav": {

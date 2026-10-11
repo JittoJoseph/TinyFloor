@@ -1,6 +1,6 @@
 import type { MeetingUsage } from "../../shared-protocol/src";
 
-/** A lobby copy's video allowance: nobody pays for the lobby (docs/14). */
+/** A lobby copy's video allowance: nobody pays for the lobby (docs/pricing.md). */
 export const LOBBY_MEETING_HOURS_A_DAY = 2;
 /** While meetings are counting, the room wakes at least this often to settle up and tell everyone. */
 const TICK_MS = 10 * 60_000;
@@ -20,7 +20,7 @@ function periodOf(now: number, period: Period): { key: string; endsAt: number } 
 }
 
 /**
- * Meeting hours for one room (docs/14): the time each meeting has two or more
+ * Meeting hours for one room (docs/pricing.md): the time each meeting has two or more
  * people in it, pooled for the period. Kept in the room's SQLite, since the
  * room hibernates and remembers nothing in memory between messages; a meeting
  * that is counting stores when it started, and is settled into the period's

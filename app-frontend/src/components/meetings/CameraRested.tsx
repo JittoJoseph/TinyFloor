@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Said for a moment when your camera turned itself off after a quiet stretch
- * (docs/24): what happened and the one press that brings it back. Then the
+ * (docs/costs.md): what happened and the one press that brings it back. Then the
  * camera is simply off, the way it rests anyway.
  */
 export function CameraRested({ className }: { className?: string }) {

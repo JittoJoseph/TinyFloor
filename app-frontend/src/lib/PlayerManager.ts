@@ -158,6 +158,32 @@ export class PlayerManager {
     this.nameTags.get(this.playerId)?.container.setVisible(true);
   }
 
+  /**
+   * A hand goes up over someone for a moment: a wave, seen by everyone on the
+   * floor. It rides with them if they walk off.
+   */
+  wave(id: string) {
+    const container = this.players.get(id);
+    const local = id === this.playerId ? this.localPlayer : undefined;
+    if (!container && !local) return;
+    const hand = this.scene.add
+      .text(0, 0, "👋", { fontSize: "22px", fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" })
+      .setOrigin(0.5, 1)
+      .setScale(this.tagScale);
+    // Just over the name tag, so it reads as theirs.
+    const top = TAG_OFFSET_Y - 8 * this.tagScale;
+    if (container) {
+      hand.setPosition(0, top);
+      container.add(hand);
+    } else {
+      hand.setPosition(local!.x, local!.y + top).setDepth(TAG_DEPTH + 1);
+    }
+    // Up, a few waves of the hand, then gone.
+    this.scene.tweens.add({ targets: hand, y: hand.y - 6, duration: 280, ease: "Back.easeOut" });
+    this.scene.tweens.add({ targets: hand, angle: { from: -16, to: 16 }, duration: 150, yoyo: true, repeat: 3, ease: "Sine.easeInOut" });
+    this.scene.tweens.add({ targets: hand, alpha: 0, delay: 1500, duration: 350, onComplete: () => hand.destroy() });
+  }
+
   updateLocalPlayerNameTag(
     pixelX: number,
     pixelY: number,

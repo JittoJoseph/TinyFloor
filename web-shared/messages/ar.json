@@ -92,7 +92,11 @@
     "choosePlan": "اختر خطة",
     "upgrade": "ترقية",
     "members": "{count, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}",
-    "invitePeople": "دعوة أشخاص"
+    "invitePeople": "دعوة أشخاص",
+    "arrived": "وصل {name}",
+    "wave": "👋 لوّح",
+    "waved": "لوّح لك {name}",
+    "waveBack": "👋 لوّح بالمقابل"
   },
   "home": {
     "nav": {

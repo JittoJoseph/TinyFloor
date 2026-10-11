@@ -67,7 +67,11 @@ export function AccountView() {
           <h1 className="truncate text-[24px] font-semibold leading-tight tracking-[-0.02em] text-foreground sm:mt-0.5 sm:text-[30px] sm:tracking-[-0.025em]">
             {user.displayName}
           </h1>
-          {user.email && <p className="truncate text-[13.5px] text-muted-foreground">{user.email}</p>}
+          {user.email && (
+            <p data-ph-mask className="truncate text-[13.5px] text-muted-foreground">
+              {user.email}
+            </p>
+          )}
         </div>
       </div>
 
@@ -253,7 +257,7 @@ export function SignIn() {
 
   return (
     <>
-      <Group title={t("sections.signin")} note={user.email ?? undefined}>
+      <Group title={t("sections.signin")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
         <Row
           title={t("password")}
           description={user.password ? t("passwordSet") : t("setPasswordDescription")}

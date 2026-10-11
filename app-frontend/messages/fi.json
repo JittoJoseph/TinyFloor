@@ -289,7 +289,8 @@
     "joinMeeting": "Paina E liittyäksesi",
     "meeting": "Palaveri",
     "music": "Napsauta musiikkia varten",
-    "draw": "Napsauta piirtääksesi"
+    "draw": "Napsauta piirtääksesi",
+    "yourDesk": "Työpöytäsi"
   },
   "characters": {
     "previous": "Edellinen hahmo",
@@ -453,7 +454,6 @@
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
       "onFloorNow": "{count} kerroksessa nyt",
-      "copied": "Kopioitu",
       "remove": "Poista",
       "leave": "Poistu",
       "makeAdmin": "Tee ylläpitäjäksi",
@@ -467,15 +467,9 @@
       "noEmail": "Ei sähköpostia",
       "wrong": "Ei onnistunut. Yritä uudelleen.",
       "subtitle": "Kaikki toimistossa {office} ja kuka pääsee sisään.",
-      "linkCopied": "Kutsulinkki kopioitu",
       "yourProfile": "Profiilisi",
       "ownOfficeTitle": "Tällainen kerros tiimillesi?",
       "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle.",
-      "linkTitle": "Kutsulinkki",
-      "copy": "Kopioi",
-      "resetLink": "Vaihda linkki",
-      "resetTitle": "Vaihdetaanko kutsulinkki?",
-      "resetBody": "Nykyinen linkki lakkaa toimimasta heti, ja uusi korvaa sen. Kaikki toimistossa jo olevat pysyvät.",
       "everyone": "Kaikki",
       "onFloor": "Kerroksella",
       "search": "Hae ihmisiä",
@@ -711,5 +705,32 @@
       "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",
       "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
     }
+  },
+  "invite": {
+    "title": "Tuo tiimisi sisään",
+    "body": "Kuka tahansa linkin saanut pääsee {office}-toimistoon ja saa oman työpöydän.",
+    "copyLink": "Kopioi linkki",
+    "copied": "Kopioitu",
+    "copyMessage": "Kopioi viesti",
+    "email": "Sähköposti",
+    "share": "Jaa",
+    "message": "Tule tekemään töitä kanssani {office}-toimistoon TinyFloorissa, toimistoomme selaimessa. Mene jonkun luo jutellaksesi: {url}",
+    "emailSubject": "Tule {office}-toimistoon TinyFloorissa",
+    "linkNote": "Toimii kaikille, joilla se on, kunnes se nollataan.",
+    "resetAsk": "Vanha linkki lakkaa toimimasta.",
+    "reset": "Nollaa linkki",
+    "resetConfirm": "Nollaa",
+    "keep": "Pidä"
+  },
+  "desk": {
+    "claimTitle": "Tehdäänkö tästä sinun työpöytäsi?",
+    "claimBody": "Saavut tähän joka kerta, ja siinä on nimesi, kun olet poissa.",
+    "claim": "Se on minun",
+    "moveTitle": "Siirretäänkö työpöytäsi tähän?",
+    "moveBody": "Vanha työpöytäsi vapautuu jollekulle muulle.",
+    "move": "Siirrä tähän",
+    "notNow": "Ei nyt",
+    "claimed": "Tämä on nyt sinun työpöytäsi",
+    "hint": "Valitse työpöytä ja istu alas. Siitä voi tulla sinun."
   }
 }

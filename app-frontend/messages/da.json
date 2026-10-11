@@ -289,7 +289,8 @@
     "joinMeeting": "Tryk på E for at deltage",
     "meeting": "Møde",
     "music": "Klik for musik",
-    "draw": "Klik for at tegne"
+    "draw": "Klik for at tegne",
+    "yourDesk": "Dit skrivebord"
   },
   "characters": {
     "previous": "Forrige figur",
@@ -453,7 +454,6 @@
       "seats": "{used} af {seats} pladser",
       "seatsFull": "Alle pladser er taget.",
       "onFloorNow": "{count} på etagen nu",
-      "copied": "Kopieret",
       "remove": "Fjern",
       "leave": "Forlad",
       "makeAdmin": "Gør til admin",
@@ -467,15 +467,9 @@
       "noEmail": "Ingen e-mail",
       "wrong": "Det virkede ikke. Prøv igen.",
       "subtitle": "Alle i {office}, og hvem der kan komme ind.",
-      "linkCopied": "Invitationslink kopieret",
       "yourProfile": "Din profil",
       "ownOfficeTitle": "En etage som denne til dit team?",
       "ownOfficeBody": "Lav dit eget kontor på et minut. Gratis for op til 3 personer.",
-      "linkTitle": "Invitationslink",
-      "copy": "Kopiér",
-      "resetLink": "Nulstil link",
-      "resetTitle": "Nulstil invitationslinket?",
-      "resetBody": "Det nuværende link holder op med at virke med det samme, og et nyt tager over. Alle, der allerede er med, bliver.",
       "everyone": "Alle",
       "onFloor": "På gulvet",
       "search": "Søg efter personer",
@@ -711,5 +705,32 @@
       "assurance": "Opsig når som helst. Fuld refusion inden for 14 dage.",
       "meetings": "Møder så ofte, som dit team har brug for"
     }
+  },
+  "invite": {
+    "title": "Få dit team ind",
+    "body": "Alle med linket kommer ind i {office} og får deres eget skrivebord.",
+    "copyLink": "Kopiér link",
+    "copied": "Kopieret",
+    "copyMessage": "Kopiér besked",
+    "email": "E-mail",
+    "share": "Del",
+    "message": "Kom og arbejd sammen med mig i {office} på TinyFloor, vores kontor i browseren. Gå hen til nogen for at snakke: {url}",
+    "emailSubject": "Kom med i {office} på TinyFloor",
+    "linkNote": "Virker for alle, der har det, indtil det nulstilles.",
+    "resetAsk": "Det gamle link holder op med at virke.",
+    "reset": "Nulstil link",
+    "resetConfirm": "Nulstil",
+    "keep": "Behold"
+  },
+  "desk": {
+    "claimTitle": "Skal det her være dit skrivebord?",
+    "claimBody": "Du lander her hver gang, og det beholder dit navn, mens du er væk.",
+    "claim": "Det er mit",
+    "moveTitle": "Flyt dit skrivebord herhen?",
+    "moveBody": "Dit gamle skrivebord bliver ledigt til en anden.",
+    "move": "Flyt hertil",
+    "notNow": "Ikke nu",
+    "claimed": "Det er dit skrivebord nu",
+    "hint": "Vælg et skrivebord og sæt dig. Det kan blive dit."
   }
 }

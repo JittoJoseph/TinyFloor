@@ -91,7 +91,8 @@
     "trialLeft": "Пробный {plan} · {count, plural, one {остался # день} few {осталось # дня} other {осталось # дней}}",
     "choosePlan": "Выбрать тариф",
     "upgrade": "Улучшить тариф",
-    "members": "{count, plural, one {# участник} few {# участника} many {# участников} other {# участника}}"
+    "members": "{count, plural, one {# участник} few {# участника} many {# участников} other {# участника}}",
+    "invitePeople": "Пригласить людей"
   },
   "home": {
     "nav": {

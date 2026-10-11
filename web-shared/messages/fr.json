@@ -91,7 +91,8 @@
     "trialLeft": "Essai {plan} · {count, plural, one {# jour restant} other {# jours restants}}",
     "choosePlan": "Choisir une offre",
     "upgrade": "Passer à plus",
-    "members": "{count, plural, one {# membre} other {# membres}}"
+    "members": "{count, plural, one {# membre} other {# membres}}",
+    "invitePeople": "Inviter des personnes"
   },
   "home": {
     "nav": {

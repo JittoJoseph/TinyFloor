@@ -91,7 +91,8 @@
     "trialLeft": "تجربة {plan} · {count, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}} متبقية",
     "choosePlan": "اختر خطة",
     "upgrade": "ترقية",
-    "members": "{count, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}"
+    "members": "{count, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}",
+    "invitePeople": "دعوة أشخاص"
   },
   "home": {
     "nav": {

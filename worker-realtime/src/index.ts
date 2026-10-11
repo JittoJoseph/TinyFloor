@@ -55,7 +55,10 @@ export default {
     const headers = new Headers(request.headers);
     headers.set(ROOM_HEADER, target);
     headers.set(TICKET_HEADER, JSON.stringify(ticket));
-    headers.set(SPAWN_HEADER, `${url.searchParams.get("x") ?? ""},${url.searchParams.get("y") ?? ""}`);
+    headers.set(
+      SPAWN_HEADER,
+      `${url.searchParams.get("x") ?? ""},${url.searchParams.get("y") ?? ""},${url.searchParams.get("arrive") === "1" ? 1 : 0}`,
+    );
     const cf = request.cf as { city?: string; region?: string; country?: string } | undefined;
     headers.set(WHERE_HEADER, encodeURIComponent(JSON.stringify({ city: cf?.city, region: cf?.region, country: cf?.country })));
 

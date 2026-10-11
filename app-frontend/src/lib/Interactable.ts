@@ -2,9 +2,12 @@ import * as Phaser from "phaser";
 import { SceneLabel } from "./SceneLabel";
 
 const REACH = 210;
-const HINT_GAP = 20;
-const HINT_RISE = 6;
 const STAND_GAP = 32;
+/** The hint sits under where you stand to use it: your name tag is over your head, so the two never meet. */
+const HINT_GAP = STAND_GAP + 36;
+const HINT_RISE = 6;
+/** Over the floor and everyone on it, like the seats' prompts. */
+const HINT_DEPTH = 99000;
 
 /** Walk next to a world point, then run `arrive`. */
 export type GoTo = (x: number, y: number, arrive: () => void) => void;
@@ -36,27 +39,17 @@ export class Interactable {
     this.player = player;
     this.anchor = anchor;
     this.onReach = onReach;
-    this.hint = new SceneLabel(scene, anchor.x, anchor.y + HINT_GAP, label)
-      .container.setDepth(anchor.y + 0.2)
-      .setAlpha(0)
-      .setVisible(false);
+    this.hint = new SceneLabel(scene, anchor.x, anchor.y + HINT_GAP, label).container.setDepth(HINT_DEPTH).setAlpha(0).setVisible(false);
 
-    target
-      .setInteractive({ useHandCursor: true })
-      .on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-        pointer.event.stopPropagation();
-        goTo(anchor.x, anchor.y + STAND_GAP, use);
-      });
+    target.setInteractive({ useHandCursor: true }).on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+      pointer.event.stopPropagation();
+      goTo(anchor.x, anchor.y + STAND_GAP, use);
+    });
   }
 
   /** How far the player is, for things that also fade with distance. */
   update(): number {
-    const distance = Phaser.Math.Distance.Between(
-      this.player.x,
-      this.player.y,
-      this.anchor.x,
-      this.anchor.y,
-    );
+    const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.anchor.x, this.anchor.y);
     const inReach = distance < REACH;
     if (inReach === this.inReach) return distance;
 

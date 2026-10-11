@@ -91,7 +91,8 @@
     "trialLeft": "{plan} 체험 · {count}일 남음",
     "choosePlan": "요금제 선택",
     "upgrade": "업그레이드",
-    "members": "{count, plural, other {멤버 #명}}"
+    "members": "{count, plural, other {멤버 #명}}",
+    "invitePeople": "사람 초대"
   },
   "home": {
     "nav": {

@@ -4,6 +4,8 @@ import { forwardRef, type ComponentProps, type ForwardRefExoticComponent, type R
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   AccessibilityIcon,
+  DeskIcon,
+  Share08Icon,
   Alert02Icon,
   AlertCircleIcon,
   ArrowDown01Icon,
@@ -75,7 +77,7 @@ import {
   PlusSignIcon,
   Presentation01Icon,
   PreviousIcon,
-  RotateLeft01Icon,
+  RefreshIcon,
   Search01Icon,
   SecurityBlockIcon,
   SecurityCheckIcon,
@@ -127,7 +129,16 @@ export const ICON_STROKE = 1.8;
 
 function icon(drawing: ComponentProps<typeof HugeiconsIcon>["icon"], name: string): AppIcon {
   const Drawn = forwardRef<SVGSVGElement, IconProps>(function Drawn(props, ref) {
-    return <HugeiconsIcon ref={ref} icon={drawing} size={24} strokeWidth={ICON_STROKE} aria-hidden={props["aria-label"] ? undefined : true} {...props} />;
+    return (
+      <HugeiconsIcon
+        ref={ref}
+        icon={drawing}
+        size={24}
+        strokeWidth={ICON_STROKE}
+        aria-hidden={props["aria-label"] ? undefined : true}
+        {...props}
+      />
+    );
   });
   Drawn.displayName = name;
   return Drawn;
@@ -148,6 +159,7 @@ export const Building2 = icon(Building03Icon, "Building2");
 export const CalendarOff = icon(CalendarRemove01Icon, "CalendarOff");
 export const Chats = icon(BubbleChatIcon, "Chats");
 export const Check = icon(Tick02Icon, "Check");
+export const Desk = icon(DeskIcon, "Desk");
 export const ChevronDown = icon(ArrowDown01Icon, "ChevronDown");
 export const ChevronLeft = icon(ArrowLeft01Icon, "ChevronLeft");
 export const ChevronRight = icon(ArrowRight01Icon, "ChevronRight");
@@ -214,7 +226,7 @@ export const Plus = icon(PlusSignIcon, "Plus");
 export const Presentation = icon(Presentation01Icon, "Presentation");
 export const Radio = icon(Wifi01Icon, "Radio");
 export const Refund = icon(MoneyReceive02Icon, "Refund");
-export const RotateCcw = icon(RotateLeft01Icon, "RotateCcw");
+export const Refresh = icon(RefreshIcon, "Refresh");
 export const Search = icon(Search01Icon, "Search");
 export const ServerOff = icon(ServerOffIcon, "ServerOff");
 export const Settings = icon(Settings01Icon, "Settings");
@@ -227,6 +239,7 @@ export const SkipBack = icon(PreviousIcon, "SkipBack");
 export const SkipForward = icon(NextIcon, "SkipForward");
 export const SlidersHorizontal = icon(SlidersHorizontalIcon, "SlidersHorizontal");
 export const Smartphone = icon(SmartPhone01Icon, "Smartphone");
+export const Share = icon(Share08Icon, "Share");
 export const Smile = icon(SmileIcon, "Smile");
 export const SmilePlus = icon(SmilePlusIcon, "SmilePlus");
 export const SourceCode = icon(SourceCodeIcon, "SourceCode");

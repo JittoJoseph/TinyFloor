@@ -34,7 +34,7 @@ export async function shareLink(url: string, title?: string, text?: string): Pro
 }
 
 /** Puts text on the clipboard, with a fallback for pages without permission. */
-async function copyText(text: string): Promise<boolean> {
+export async function copyText(text: string): Promise<boolean> {
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(text);

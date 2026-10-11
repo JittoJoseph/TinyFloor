@@ -289,7 +289,8 @@
     "joinMeeting": "Pulsa E para unirte",
     "meeting": "Reunión",
     "music": "Haz clic para música",
-    "draw": "Haz clic para dibujar"
+    "draw": "Haz clic para dibujar",
+    "yourDesk": "Tu escritorio"
   },
   "characters": {
     "previous": "Personaje anterior",
@@ -453,7 +454,6 @@
       "seats": "{used} de {seats} plazas",
       "seatsFull": "No queda ninguna plaza.",
       "onFloorNow": "{count} en la planta ahora",
-      "copied": "Copiado",
       "remove": "Quitar",
       "leave": "Salir",
       "makeAdmin": "Hacer admin",
@@ -467,15 +467,9 @@
       "noEmail": "Sin correo",
       "wrong": "No ha funcionado. Inténtalo otra vez.",
       "subtitle": "Todos en {office}, y quién puede entrar.",
-      "linkCopied": "Enlace de invitación copiado",
       "yourProfile": "Tu perfil",
       "ownOfficeTitle": "¿Una planta así para tu equipo?",
       "ownOfficeBody": "Crea tu propia oficina en un minuto. Gratis hasta 3 personas.",
-      "linkTitle": "Enlace de invitación",
-      "copy": "Copiar",
-      "resetLink": "Restablecer enlace",
-      "resetTitle": "¿Restablecer el enlace de invitación?",
-      "resetBody": "El enlace actual deja de funcionar al momento y lo sustituye uno nuevo. Quien ya está en la oficina se queda.",
       "everyone": "Todos",
       "onFloor": "En la planta",
       "search": "Buscar personas",
@@ -711,5 +705,32 @@
       "assurance": "Cancela cuando quieras. Reembolso completo en 14 días.",
       "meetings": "Reuniones tan a menudo como tu equipo necesite"
     }
+  },
+  "invite": {
+    "title": "Trae a tu equipo",
+    "body": "Cualquiera con el enlace entra en {office} y tiene su propio escritorio.",
+    "copyLink": "Copiar enlace",
+    "copied": "Copiado",
+    "copyMessage": "Copiar mensaje",
+    "email": "Correo",
+    "share": "Compartir",
+    "message": "Ven a trabajar conmigo en {office} en TinyFloor, nuestra oficina en el navegador. Acércate a quien sea para hablar: {url}",
+    "emailSubject": "Únete a mí en {office} en TinyFloor",
+    "linkNote": "Funciona para cualquiera que lo tenga, hasta que se restablezca.",
+    "resetAsk": "El enlace anterior dejará de funcionar.",
+    "reset": "Restablecer enlace",
+    "resetConfirm": "Restablecer",
+    "keep": "Mantener"
+  },
+  "desk": {
+    "claimTitle": "¿Hacer de este tu escritorio?",
+    "claimBody": "Llegarás aquí cada vez, y guarda tu nombre mientras no estás.",
+    "claim": "Es mío",
+    "moveTitle": "¿Mover tu escritorio aquí?",
+    "moveBody": "Tu escritorio anterior queda libre para otra persona.",
+    "move": "Mover aquí",
+    "notNow": "Ahora no",
+    "claimed": "Este es tu escritorio ahora",
+    "hint": "Elige un escritorio y siéntate. Puede ser tuyo."
   }
 }

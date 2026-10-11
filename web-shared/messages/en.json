@@ -91,7 +91,8 @@
     "trialLeft": "{plan} trial · {count, plural, one {# day} other {# days}} left",
     "choosePlan": "Choose a plan",
     "upgrade": "Upgrade",
-    "members": "{count, plural, one {# member} other {# members}}"
+    "members": "{count, plural, one {# member} other {# members}}",
+    "invitePeople": "Invite people"
   },
   "home": {
     "nav": {

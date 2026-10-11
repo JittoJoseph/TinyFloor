@@ -2,16 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, Copy, Link2, Zap } from "@/components/ui/icons";
+import { Link2, Zap } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type Office, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
-import { officePath, shareUrl } from "@/lib/links";
-import { useInviteLink } from "@/lib/inviteLink";
-import { shareLink } from "@/lib/share";
+import { officePath } from "@/lib/links";
+import { InviteActions } from "./Invite";
 import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
@@ -59,8 +58,6 @@ export function CreateOfficeFlow() {
   });
   const [busy, setBusy] = useState<"name" | "pay" | "free" | null>(null);
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
-  const inviteLink = useInviteLink(step === "invite" ? office?.id : undefined);
 
   // A name typed in the lobby before signing up waits here, read once the page is in the browser.
   useEffect(() => {
@@ -134,17 +131,6 @@ export function CreateOfficeFlow() {
     withPostHog((posthog) => posthog.capture("onboarding_stayed_free"));
     setBusy("free");
     walkIn(office.id);
-  };
-
-  /** The link, shared or copied: the one thing that makes an office worth having. */
-  const share = async () => {
-    if (!inviteLink) return;
-    const result = await shareLink(shareUrl(inviteLink), typed);
-    withPostHog((posthog) => posthog.capture("onboarding_invite_shared", { result }));
-    if (result !== "failed") {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
   };
 
   const submit = () => {
@@ -239,26 +225,8 @@ export function CreateOfficeFlow() {
           {step === "invite" && (
             <>
               <StepTitle title={t("inviteTitle")} body={t("inviteBody", { office: typed })} />
-              {/* The office's own link, the same one People shows: copied, or the share sheet on a phone. */}
-              <div className="flex h-12 items-center gap-1 rounded-full border border-border p-1 ps-4">
-                <Link2 className="size-4 shrink-0 text-faint" />
-                <span className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground">
-                  {inviteLink ? (
-                    shareUrl(inviteLink).replace(/^https?:\/\//, "")
-                  ) : (
-                    <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />
-                  )}
-                </span>
-                <button
-                  type="button"
-                  disabled={!inviteLink}
-                  onClick={share}
-                  className="flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
-                >
-                  {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-                  {copied ? t("copied") : t("copy")}
-                </button>
-              </div>
+              {/* The same ways to send it as the invite dialog: one place decides how inviting works. */}
+              {office && <InviteActions officeId={office.id} officeName={typed} />}
               {selling && !!catalog?.trialDays ? (
                 <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-muted p-3.5 text-[13px] leading-relaxed text-foreground">
                   <Zap className="mt-0.5 size-4 shrink-0 text-brand" />

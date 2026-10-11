@@ -289,7 +289,8 @@
     "joinMeeting": "Pressione E para entrar",
     "meeting": "Reunião",
     "music": "Clique para ouvir música",
-    "draw": "Clique para desenhar"
+    "draw": "Clique para desenhar",
+    "yourDesk": "Sua mesa"
   },
   "characters": {
     "previous": "Personagem anterior",
@@ -453,7 +454,6 @@
       "seats": "{used} de {seats} lugares",
       "seatsFull": "Já não há lugares.",
       "onFloorNow": "{count} no piso agora",
-      "copied": "Copiado",
       "remove": "Remover",
       "leave": "Sair",
       "makeAdmin": "Tornar admin",
@@ -467,15 +467,9 @@
       "noEmail": "Sem email",
       "wrong": "Não resultou. Tenta outra vez.",
       "subtitle": "Todos em {office}, e quem pode entrar.",
-      "linkCopied": "Link de convite copiado",
       "yourProfile": "Seu perfil",
       "ownOfficeTitle": "Quer um andar assim para sua equipe?",
       "ownOfficeBody": "Crie seu escritório em um minuto. Grátis para até 3 pessoas.",
-      "linkTitle": "Link de convite",
-      "copy": "Copiar",
-      "resetLink": "Redefinir link",
-      "resetTitle": "Redefinir o link de convite?",
-      "resetBody": "O link atual para de funcionar na hora e um novo o substitui. Quem já está no escritório continua.",
       "everyone": "Todos",
       "onFloor": "No andar",
       "search": "Procurar pessoas",
@@ -711,5 +705,32 @@
       "assurance": "Cancele quando quiser. Reembolso total em até 14 dias.",
       "meetings": "Reuniões sempre que sua equipe precisar"
     }
+  },
+  "invite": {
+    "title": "Traga sua equipe",
+    "body": "Quem tiver o link entra em {office} e ganha uma mesa só sua.",
+    "copyLink": "Copiar link",
+    "copied": "Copiado",
+    "copyMessage": "Copiar mensagem",
+    "email": "E-mail",
+    "share": "Compartilhar",
+    "message": "Vem trabalhar comigo em {office} no TinyFloor, nosso escritório no navegador. É só chegar perto de alguém para conversar: {url}",
+    "emailSubject": "Venha para {office} no TinyFloor",
+    "linkNote": "Funciona para quem tiver o link, até ele ser redefinido.",
+    "resetAsk": "O link antigo deixa de funcionar.",
+    "reset": "Redefinir link",
+    "resetConfirm": "Redefinir",
+    "keep": "Manter"
+  },
+  "desk": {
+    "claimTitle": "Quer que esta seja sua mesa?",
+    "claimBody": "Você vai chegar aqui toda vez, e ela guarda seu nome enquanto você está fora.",
+    "claim": "É minha",
+    "moveTitle": "Mudar sua mesa para cá?",
+    "moveBody": "Sua mesa antiga fica livre para outra pessoa.",
+    "move": "Mudar para cá",
+    "notNow": "Agora não",
+    "claimed": "Esta é sua mesa agora",
+    "hint": "Escolha uma mesa e sente-se. Ela pode ser sua."
   }
 }

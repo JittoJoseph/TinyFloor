@@ -91,7 +91,8 @@
     "trialLeft": "{plan}-prøve · {count, plural, one {# dag} other {# dager}} igjen",
     "choosePlan": "Velg en plan",
     "upgrade": "Oppgrader",
-    "members": "{count, plural, one {# medlem} other {# medlemmer}}"
+    "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+    "invitePeople": "Inviter folk"
   },
   "home": {
     "nav": {

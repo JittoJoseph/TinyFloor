@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
-import { ChevronDown, MoreHorizontal, Pencil, RotateCcw, Search, Trash2 } from "@/components/ui/icons";
+import { ChevronDown, MoreHorizontal, Pencil, Refresh, Search, Trash2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type AdminMember, type AdminOffice, type AdminPage, type AdminPerson, type AdminSummary, type LobbyChatPage, type PlanId } from "@/lib/api";
@@ -92,7 +92,7 @@ export default function AdminPage() {
                 title="Refresh"
                 className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
               >
-                <RotateCcw className={cn("size-4", refreshing && "animate-spin [animation-direction:reverse]")} />
+                <Refresh className={cn("size-4", refreshing && "animate-spin")} />
               </button>
               <div role="tablist" className="flex h-9 gap-0.5 overflow-x-auto rounded-full bg-muted p-1 [scrollbar-width:none]">
                 {TABS.map((one) => (

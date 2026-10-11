@@ -8,6 +8,9 @@ import { meetingsState, peopleInMeetings, subscribeMeetings } from "./meetings";
 import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "@/lib/types";
+import { isDesk } from "@shared/map";
+import { deskAt, deskState, setMySeat, subscribeDesks } from "./desks";
+import { DeskPlate } from "./DeskPlate";
 import { touchFirst } from "./touch";
 
 /**
@@ -15,10 +18,7 @@ import { touchFirst } from "./touch";
  * draw in front of the chair or behind it. Facing away puts you behind the
  * backrest, which is what makes the desk in front read as covering your legs.
  */
-const SEAT: Record<
-  CardinalDirection,
-  { dx: number; dy: number; depth: number; exit: number }
-> = {
+const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; exit: number }> = {
   down: { dx: 0, dy: -12, depth: -0.5, exit: -54 },
   up: { dx: 0, dy: -32, depth: -2, exit: 20 },
   left: { dx: 0, dy: -20, depth: 2, exit: 20 },
@@ -68,12 +68,16 @@ export class SeatManager {
   private onSitChange?: (seated: boolean) => void;
   private goTo?: GoTo;
   private unsubscribe?: () => void;
+  private unsubscribeDesks: () => void;
+  /** Whose desk it is, on each desk while its owner is away (docs/26). */
+  private plates = new Map<number, DeskPlate>();
 
   constructor(
     scene: Phaser.Scene,
     player: Phaser.Physics.Arcade.Sprite,
     animations: AnimationManager,
     chairs: ChairSpec[],
+    private readonly selfId: string,
     table?: MapAnchor,
   ) {
     this.scene = scene;
@@ -90,27 +94,27 @@ export class SeatManager {
     // a tag in the middle of the meeting table, so anyone walking past can see
     // whether a meeting is on, and how many are in it
     if (table && this.seats.some((seat) => seat.zone === MEETING_ZONE)) {
-      this.tag = new SceneLabel(
-        scene,
-        table.x + table.width / 2,
-        table.y + table.height / 2,
-        "",
-        true,
-      );
+      this.tag = new SceneLabel(scene, table.x + table.width / 2, table.y + table.height / 2, "", true);
       this.tag.container.setDepth(table.y + table.height + 1);
       this.showMeetings();
       this.unsubscribe = subscribeMeetings(() => this.showMeetings());
     }
 
+    // A plate on each desk, on the desktop: above a chair facing up, below one facing down.
     this.seats.forEach((seat) => {
-      const zone = scene.add
-        .zone(seat.x, seat.y, 40, 44)
-        .setOrigin(0.5)
-        .setInteractive({ useHandCursor: true });
+      if (!isDesk(seat.id)) return;
+      const up = seat.direction === "up";
+      const y = up ? seat.y - 38 : seat.baseY - 2;
+      this.plates.set(seat.id, new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1));
+    });
+    this.unsubscribeDesks = subscribeDesks(() => this.changed());
+
+    this.seats.forEach((seat) => {
+      const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
       zone.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
-        if (seat.occupant) return;
+        if (seat.occupant || this.reserved(seat)) return;
         // walk over and sit, unless someone beats us to it; from another seat
         // this gets you up first
         const { standX, standY } = this.poseFor(seat);
@@ -173,6 +177,30 @@ export class SeatManager {
     this.changed();
   }
 
+  /** The room sat us at our desk as we arrived: be there, without asking it again. */
+  arriveAt(seatId: number) {
+    const seat = this.byId.get(seatId);
+    if (seat) this.sit(seat, false);
+  }
+
+  /** Someone else's desk: nobody but its owner sits there. */
+  private reserved(seat: Seat): boolean {
+    const desk = deskAt(deskState().desks, seat.id);
+    return !!desk && desk.userId !== this.selfId;
+  }
+
+  /** Each desk's plate: whose it is while they're away, "Your desk" for yours, nothing on a free one. */
+  private showPlates() {
+    const { desks } = deskState();
+    this.plates.forEach((plate, id) => {
+      const desk = deskAt(desks, id);
+      const seat = this.byId.get(id);
+      const mine = desk?.userId === this.selfId;
+      const there = !!seat && (seat.occupant === desk?.userId || (mine && seat.occupant === SELF));
+      plate.show(desk && !there ? (mine ? sceneText().yourDesk : desk.name) : null);
+    });
+  }
+
   /** After a reconnect the room has forgotten where we sat, so sit down again. */
   resit() {
     const seat = this.seated;
@@ -189,6 +217,7 @@ export class SeatManager {
 
   private changed() {
     this.dirty = true;
+    this.showPlates();
   }
 
   /** The table's tag: "Meeting", and how many are in meetings when any are on. */
@@ -198,7 +227,8 @@ export class SeatManager {
     this.tag?.setText(people ? `${label} · ${people}` : label).setDot(people ? HIGHLIGHT : IDLE);
   }
 
-  private sit(seat: Seat) {
+  /** Sits down here; `tell` the room, unless it's the one that put us here. */
+  private sit(seat: Seat, tell = true) {
     const pose = this.poseFor(seat);
     this.seated = seat;
     seat.occupant = SELF;
@@ -213,8 +243,11 @@ export class SeatManager {
     this.onSitChange?.(true);
     this.changed();
 
-    const tile = pixelToTile(seat.x, seat.y);
-    this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
+    setMySeat(seat.id);
+    if (tell) {
+      const tile = pixelToTile(seat.x, seat.y);
+      this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
+    }
     this.ring.clear();
     this.prompt.setText(sceneText().stand).container.setVisible(this.keyboard);
   }
@@ -227,15 +260,9 @@ export class SeatManager {
 
     const pose = this.poseFor(seat);
     this.player.setPosition(pose.standX, pose.standY);
-    this.player.play(
-      this.animations.getAnimationKey(
-        this.player.getData("spriteName") || "Adam",
-        "idle",
-        seat.direction,
-      ),
-      true,
-    );
+    this.player.play(this.animations.getAnimationKey(this.player.getData("spriteName") || "Adam", "idle", seat.direction), true);
     this.onSitChange?.(false);
+    setMySeat(null);
     this.changed();
 
     const tile = pixelToTile(pose.standX, pose.standY);
@@ -248,10 +275,7 @@ export class SeatManager {
    * your head; beside a near side chair it sits under the chair.
    */
   private placePrompt(seat: Seat) {
-    this.prompt.container.setPosition(
-      seat.x,
-      seat.direction === "down" ? this.player.y - 80 : seat.baseY + 34,
-    );
+    this.prompt.container.setPosition(seat.x, seat.direction === "down" ? this.player.y - 80 : seat.baseY + 34);
   }
 
   update() {
@@ -263,13 +287,8 @@ export class SeatManager {
     let best: Seat | undefined;
     let bestDistance = REACH;
     for (const seat of this.seats) {
-      if (seat.occupant) continue;
-      const distance = Phaser.Math.Distance.Between(
-        this.player.x,
-        this.player.y,
-        seat.x,
-        seat.baseY,
-      );
+      if (seat.occupant || this.reserved(seat)) continue;
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY);
       if (distance < bestDistance) {
         bestDistance = distance;
         best = seat;
@@ -289,9 +308,7 @@ export class SeatManager {
 
     // sit the outline at the chair's own depth so a desk hides the half of it
     // that hides the chair
-    this.ring.setDepth(
-      depthForY(best.baseY) + (best.direction === "down" ? -0.5 : 0.5),
-    );
+    this.ring.setDepth(depthForY(best.baseY) + (best.direction === "down" ? -0.5 : 0.5));
     this.ring.lineStyle(2, HIGHLIGHT, 0.9);
     this.ring.strokeRoundedRect(best.x - 17, best.baseY - 44, 34, 46, 6);
     this.prompt.setText(sceneText().sit).container.setVisible(this.keyboard);
@@ -299,6 +316,9 @@ export class SeatManager {
 
   destroy() {
     this.unsubscribe?.();
+    this.unsubscribeDesks();
+    this.plates.forEach((plate) => plate.destroy());
+    setMySeat(null);
     this.scene.input.keyboard?.off("keydown-E");
     this.hitAreas.forEach((zone) => zone.destroy());
     this.ring.destroy();

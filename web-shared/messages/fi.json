@@ -91,7 +91,8 @@
     "trialLeft": "{plan}-kokeilu · {count, plural, one {# päivä} other {# päivää}} jäljellä",
     "choosePlan": "Valitse paketti",
     "upgrade": "Päivitä",
-    "members": "{count, plural, one {# jäsen} other {# jäsentä}}"
+    "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "invitePeople": "Kutsu ihmisiä"
   },
   "home": {
     "nav": {

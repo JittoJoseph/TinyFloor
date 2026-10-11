@@ -289,7 +289,8 @@
     "joinMeeting": "Naciśnij E, aby dołączyć",
     "meeting": "Spotkanie",
     "music": "Kliknij, by włączyć muzykę",
-    "draw": "Kliknij, aby rysować"
+    "draw": "Kliknij, aby rysować",
+    "yourDesk": "Twoje biurko"
   },
   "characters": {
     "previous": "Poprzednia postać",
@@ -453,7 +454,6 @@
       "seats": "{used} z {seats} miejsc",
       "seatsFull": "Wszystkie miejsca zajęte.",
       "onFloorNow": "{count} na piętrze teraz",
-      "copied": "Skopiowano",
       "remove": "Usuń",
       "leave": "Opuść",
       "makeAdmin": "Ustaw jako admina",
@@ -467,15 +467,9 @@
       "noEmail": "Bez e-maila",
       "wrong": "Nie udało się. Spróbuj ponownie.",
       "subtitle": "Wszyscy w {office} i kto może wejść.",
-      "linkCopied": "Skopiowano link z zaproszeniem",
       "yourProfile": "Twój profil",
       "ownOfficeTitle": "Chcesz takie piętro dla swojego zespołu?",
       "ownOfficeBody": "Utwórz własne biuro w minutę. Za darmo dla maksymalnie 3 osób.",
-      "linkTitle": "Link z zaproszeniem",
-      "copy": "Kopiuj",
-      "resetLink": "Zresetuj link",
-      "resetTitle": "Zresetować link z zaproszeniem?",
-      "resetBody": "Obecny link od razu przestanie działać, a zastąpi go nowy. Osoby już w biurze zostają.",
       "everyone": "Wszyscy",
       "onFloor": "Na piętrze",
       "search": "Szukaj osób",
@@ -711,5 +705,32 @@
       "assurance": "Anuluj w dowolnej chwili. Pełny zwrot w ciągu 14 dni.",
       "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
     }
+  },
+  "invite": {
+    "title": "Ściągnij swój zespół",
+    "body": "Każdy, kto ma link, dołącza do {office} i dostaje własne biurko.",
+    "copyLink": "Kopiuj link",
+    "copied": "Skopiowano",
+    "copyMessage": "Kopiuj wiadomość",
+    "email": "E-mail",
+    "share": "Udostępnij",
+    "message": "Chodź pracować ze mną w {office} na TinyFloor, naszym biurze w przeglądarce. Podejdź do kogoś, żeby porozmawiać: {url}",
+    "emailSubject": "Dołącz do mnie w {office} na TinyFloor",
+    "linkNote": "Działa dla każdego, kto go ma, dopóki nie zostanie zresetowany.",
+    "resetAsk": "Stary link przestanie działać.",
+    "reset": "Zresetuj link",
+    "resetConfirm": "Zresetuj",
+    "keep": "Zostaw"
+  },
+  "desk": {
+    "claimTitle": "Czy to ma być Twoje biurko?",
+    "claimBody": "Za każdym razem przyjdziesz tutaj, a biurko zachowa Twoje imię, gdy Cię nie ma.",
+    "claim": "Moje",
+    "moveTitle": "Przenieść tu swoje biurko?",
+    "moveBody": "Twoje stare biurko zwolni się dla kogoś innego.",
+    "move": "Przenieś tutaj",
+    "notNow": "Nie teraz",
+    "claimed": "To teraz Twoje biurko",
+    "hint": "Wybierz biurko i usiądź. Może być Twoje."
   }
 }

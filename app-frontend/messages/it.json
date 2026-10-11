@@ -289,7 +289,8 @@
     "joinMeeting": "Premi E per unirti",
     "meeting": "Riunione",
     "music": "Clicca per la musica",
-    "draw": "Clicca per disegnare"
+    "draw": "Clicca per disegnare",
+    "yourDesk": "La tua scrivania"
   },
   "characters": {
     "previous": "Personaggio precedente",
@@ -453,7 +454,6 @@
       "seats": "{used} di {seats} posti",
       "seatsFull": "Tutti i posti sono occupati.",
       "onFloorNow": "{count} al piano adesso",
-      "copied": "Copiato",
       "remove": "Rimuovi",
       "leave": "Esci",
       "makeAdmin": "Rendi admin",
@@ -467,15 +467,9 @@
       "noEmail": "Senza email",
       "wrong": "Non ha funzionato. Riprova.",
       "subtitle": "Tutti in {office}, e chi può entrare.",
-      "linkCopied": "Link di invito copiato",
       "yourProfile": "Il tuo profilo",
       "ownOfficeTitle": "Un piano così per il tuo team?",
       "ownOfficeBody": "Crea il tuo ufficio in un minuto. Gratis fino a 3 persone.",
-      "linkTitle": "Link di invito",
-      "copy": "Copia",
-      "resetLink": "Reimposta link",
-      "resetTitle": "Reimpostare il link di invito?",
-      "resetBody": "Il link attuale smette subito di funzionare e ne arriva uno nuovo. Chi è già nell'ufficio resta.",
       "everyone": "Tutti",
       "onFloor": "Sul piano",
       "search": "Cerca persone",
@@ -711,5 +705,32 @@
       "assurance": "Disdici quando vuoi. Rimborso completo entro 14 giorni.",
       "meetings": "Riunioni tutte le volte che serve al tuo team"
     }
+  },
+  "invite": {
+    "title": "Porta dentro il tuo team",
+    "body": "Chiunque abbia il link entra in {office} e ha una scrivania tutta sua.",
+    "copyLink": "Copia link",
+    "copied": "Copiato",
+    "copyMessage": "Copia messaggio",
+    "email": "Email",
+    "share": "Condividi",
+    "message": "Vieni a lavorare con me in {office} su TinyFloor, il nostro ufficio nel browser. Avvicinati a chiunque per parlare: {url}",
+    "emailSubject": "Unisciti a me in {office} su TinyFloor",
+    "linkNote": "Funziona per chiunque lo abbia, finché non viene reimpostato.",
+    "resetAsk": "Il vecchio link smetterà di funzionare.",
+    "reset": "Reimposta link",
+    "resetConfirm": "Reimposta",
+    "keep": "Tieni"
+  },
+  "desk": {
+    "claimTitle": "Vuoi che sia la tua scrivania?",
+    "claimBody": "Arriverai qui ogni volta, e tiene il tuo nome mentre sei via.",
+    "claim": "È mia",
+    "moveTitle": "Spostare qui la tua scrivania?",
+    "moveBody": "La tua vecchia scrivania si libera per qualcun altro.",
+    "move": "Sposta qui",
+    "notNow": "Non ora",
+    "claimed": "Ora questa è la tua scrivania",
+    "hint": "Scegli una scrivania e siediti. Può diventare tua."
   }
 }

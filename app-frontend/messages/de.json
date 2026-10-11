@@ -289,7 +289,8 @@
     "joinMeeting": "E drücken zum Beitreten",
     "meeting": "Meeting",
     "music": "Klick für Musik",
-    "draw": "Klick zum Zeichnen"
+    "draw": "Klick zum Zeichnen",
+    "yourDesk": "Dein Schreibtisch"
   },
   "characters": {
     "previous": "Vorheriger Charakter",
@@ -453,7 +454,6 @@
       "seats": "{used} von {seats} Plätzen",
       "seatsFull": "Alle Plätze sind belegt.",
       "onFloorNow": "{count} gerade auf der Etage",
-      "copied": "Kopiert",
       "remove": "Entfernen",
       "leave": "Verlassen",
       "makeAdmin": "Zum Admin machen",
@@ -467,15 +467,9 @@
       "noEmail": "Keine E-Mail",
       "wrong": "Das hat nicht geklappt. Versuch es nochmal.",
       "subtitle": "Alle in {office} und wer hereinkommen kann.",
-      "linkCopied": "Einladungslink kopiert",
       "yourProfile": "Dein Profil",
       "ownOfficeTitle": "Eine Fläche wie diese für dein Team?",
       "ownOfficeBody": "Richte in einer Minute dein eigenes Büro ein. Kostenlos für bis zu 3 Personen.",
-      "linkTitle": "Einladungslink",
-      "copy": "Kopieren",
-      "resetLink": "Link zurücksetzen",
-      "resetTitle": "Einladungslink zurücksetzen?",
-      "resetBody": "Der aktuelle Link funktioniert sofort nicht mehr, ein neuer ersetzt ihn. Wer schon im Büro ist, bleibt.",
       "everyone": "Alle",
       "onFloor": "Auf der Fläche",
       "search": "Personen suchen",
@@ -711,5 +705,32 @@
       "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen.",
       "meetings": "Meetings, so oft dein Team sie braucht"
     }
+  },
+  "invite": {
+    "title": "Hol dein Team rein",
+    "body": "Wer den Link hat, kommt in {office} und bekommt einen eigenen Schreibtisch.",
+    "copyLink": "Link kopieren",
+    "copied": "Kopiert",
+    "copyMessage": "Nachricht kopieren",
+    "email": "E-Mail",
+    "share": "Teilen",
+    "message": "Komm in {office} auf TinyFloor, unser Büro im Browser. Geh einfach zu jemandem hin, um zu reden: {url}",
+    "emailSubject": "Komm zu {office} auf TinyFloor",
+    "linkNote": "Funktioniert für alle, die ihn haben, bis er zurückgesetzt wird.",
+    "resetAsk": "Der alte Link funktioniert dann nicht mehr.",
+    "reset": "Link zurücksetzen",
+    "resetConfirm": "Zurücksetzen",
+    "keep": "Behalten"
+  },
+  "desk": {
+    "claimTitle": "Soll das dein Schreibtisch werden?",
+    "claimBody": "Du kommst jedes Mal hier an, und er trägt deinen Namen, während du weg bist.",
+    "claim": "Gehört mir",
+    "moveTitle": "Schreibtisch hierher verlegen?",
+    "moveBody": "Dein alter Schreibtisch wird für jemand anderen frei.",
+    "move": "Hierher verlegen",
+    "notNow": "Nicht jetzt",
+    "claimed": "Das ist jetzt dein Schreibtisch",
+    "hint": "Such dir einen Schreibtisch und setz dich. Er kann deiner werden."
   }
 }

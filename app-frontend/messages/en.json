@@ -289,7 +289,8 @@
     "joinMeeting": "Press E to join",
     "meeting": "Meeting",
     "music": "Click for music",
-    "draw": "Click to draw"
+    "draw": "Click to draw",
+    "yourDesk": "Your desk"
   },
   "characters": {
     "previous": "Previous character",
@@ -453,7 +454,6 @@
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
       "onFloorNow": "{count} on the floor now",
-      "copied": "Copied",
       "remove": "Remove",
       "leave": "Leave",
       "makeAdmin": "Make admin",
@@ -467,15 +467,9 @@
       "noEmail": "No email",
       "wrong": "That didn't work. Try again.",
       "subtitle": "Everyone in {office}, and who can come in.",
-      "linkCopied": "Invite link copied",
       "yourProfile": "Your profile",
       "ownOfficeTitle": "Want a floor like this for your team?",
       "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people.",
-      "linkTitle": "Invite link",
-      "copy": "Copy",
-      "resetLink": "Reset link",
-      "resetTitle": "Reset the invite link?",
-      "resetBody": "The current link stops working straight away and a new one takes its place. Everyone already in the office stays.",
       "everyone": "Everyone",
       "onFloor": "On the floor",
       "search": "Search people",
@@ -711,5 +705,32 @@
       "assurance": "Cancel any time. Full refund within 14 days.",
       "meetings": "Meetings as often as your team needs"
     }
+  },
+  "invite": {
+    "title": "Bring your team in",
+    "body": "Anyone with the link joins {office} and gets a desk of their own.",
+    "copyLink": "Copy link",
+    "copied": "Copied",
+    "copyMessage": "Copy message",
+    "email": "Email",
+    "share": "Share",
+    "message": "Come work with me in {office} on TinyFloor, our office in the browser. Walk up to anyone to talk: {url}",
+    "emailSubject": "Join me in {office} on TinyFloor",
+    "linkNote": "Works for anyone who has it, until it's reset.",
+    "resetAsk": "The old link stops working.",
+    "reset": "Reset link",
+    "resetConfirm": "Reset",
+    "keep": "Keep"
+  },
+  "desk": {
+    "claimTitle": "Make this your desk?",
+    "claimBody": "You'll arrive here every time, and it keeps your name while you're away.",
+    "claim": "Make it mine",
+    "moveTitle": "Move your desk here?",
+    "moveBody": "Your old desk becomes free for someone else.",
+    "move": "Move here",
+    "notNow": "Not now",
+    "claimed": "This is your desk now",
+    "hint": "Pick a desk and sit down. It can be yours."
   }
 }

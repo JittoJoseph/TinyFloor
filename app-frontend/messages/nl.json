@@ -289,7 +289,8 @@
     "joinMeeting": "Druk op E om mee te doen",
     "meeting": "Vergadering",
     "music": "Klik voor muziek",
-    "draw": "Klik om te tekenen"
+    "draw": "Klik om te tekenen",
+    "yourDesk": "Jouw bureau"
   },
   "characters": {
     "previous": "Vorig personage",
@@ -453,7 +454,6 @@
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
       "onFloorNow": "{count} nu op de vloer",
-      "copied": "Gekopieerd",
       "remove": "Verwijderen",
       "leave": "Verlaten",
       "makeAdmin": "Beheerder maken",
@@ -467,15 +467,9 @@
       "noEmail": "Geen e-mail",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
-      "linkCopied": "Uitnodigingslink gekopieerd",
       "yourProfile": "Je profiel",
       "ownOfficeTitle": "Een vloer als deze voor je team?",
       "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen.",
-      "linkTitle": "Uitnodigingslink",
-      "copy": "Kopiëren",
-      "resetLink": "Link vernieuwen",
-      "resetTitle": "Uitnodigingslink vernieuwen?",
-      "resetBody": "De huidige link werkt meteen niet meer en een nieuwe neemt het over. Wie al in het kantoor zit, blijft.",
       "everyone": "Iedereen",
       "onFloor": "Op de vloer",
       "search": "Personen zoeken",
@@ -711,5 +705,32 @@
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",
       "meetings": "Meetings zo vaak als je team nodig heeft"
     }
+  },
+  "invite": {
+    "title": "Haal je team binnen",
+    "body": "Iedereen met de link komt in {office} en krijgt een eigen bureau.",
+    "copyLink": "Link kopiëren",
+    "copied": "Gekopieerd",
+    "copyMessage": "Bericht kopiëren",
+    "email": "E-mail",
+    "share": "Delen",
+    "message": "Kom bij me werken in {office} op TinyFloor, ons kantoor in de browser. Loop naar iemand toe om te praten: {url}",
+    "emailSubject": "Kom bij me in {office} op TinyFloor",
+    "linkNote": "Werkt voor iedereen die hem heeft, tot hij opnieuw wordt ingesteld.",
+    "resetAsk": "De oude link werkt dan niet meer.",
+    "reset": "Link vernieuwen",
+    "resetConfirm": "Vernieuwen",
+    "keep": "Houden"
+  },
+  "desk": {
+    "claimTitle": "Wordt dit jouw bureau?",
+    "claimBody": "Je komt hier elke keer aan, en je naam blijft erop staan als je weg bent.",
+    "claim": "Is van mij",
+    "moveTitle": "Je bureau hierheen verhuizen?",
+    "moveBody": "Je oude bureau komt vrij voor iemand anders.",
+    "move": "Hierheen",
+    "notNow": "Niet nu",
+    "claimed": "Dit is nu jouw bureau",
+    "hint": "Kies een bureau en ga zitten. Het kan van jou worden."
   }
 }

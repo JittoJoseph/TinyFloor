@@ -21,8 +21,9 @@ import { Loader } from "@/components/motion/loader";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { PersonPill } from "@/components/ui/Person";
 import type { RoomTicket } from "@/lib/api";
-import { shareUrl } from "@/lib/links";
-import { shareLink } from "@/lib/share";
+import type { ShareResult } from "@/lib/share";
+import { useInvite } from "@/components/app/Invite";
+import { DeskHint, DeskOffer } from "./Desks";
 import { useFloor } from "@/lib/floor";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
@@ -49,8 +50,8 @@ export interface RoomViewProps {
   title: string;
   user: { id: string; displayName: string; character: string };
   ticketFor: () => Promise<RoomTicket>;
-  /** The link that brings someone here: null while it loads, absent where there is none. */
-  invitePath?: string | null;
+  /** How someone is asked here where there's no office to invite into (the lobby shares its link). An office opens its invite dialog. */
+  onInvite?: () => Promise<ShareResult>;
   /** Invite over the floor's top right too: the lobby always, an office until someone else joins. */
   inviteChip?: boolean;
   /** Where "back" goes when the room lets go of you. */
@@ -64,7 +65,7 @@ export interface RoomViewProps {
  * who is here (top left), Invite (top right, while it's worth asking), and your microphone and camera
  * (bottom). Everything else lives in the rail.
  */
-export function RoomView({ title, user, ticketFor, invitePath, inviteChip = false, leaveHref, settingsHref }: RoomViewProps) {
+export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false, leaveHref, settingsHref }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
   const [reconnecting, setReconnecting] = useState(false);
@@ -86,26 +87,22 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
   }, [peopleOpen]);
 
   // You first, then everyone else as they arrived.
-  const here = [
-    ...everyone.filter((one) => one.id === user.id),
-    ...everyone.filter((one) => one.id !== user.id),
-  ];
+  const here = [...everyone.filter((one) => one.id === user.id), ...everyone.filter((one) => one.id !== user.id)];
   const count = Math.max(here.length, 1);
 
-  // The share sheet on phones, the clipboard on a desktop; the button only says
+  // An office's invite dialog, or the lobby's link shared: the button only says
   // something when the link landed on the clipboard, where nothing else would.
-  const canInvite = invitePath !== undefined;
+  const officeInvite = useInvite();
+  const canInvite = !!officeInvite || !!onInvite;
   const invite = useCallback(async () => {
-    if (!invitePath) return;
-    const result = await shareLink(shareUrl(invitePath), title, t("inviteText", { room: title }));
-    if (result !== "copied") return;
+    if (officeInvite) return officeInvite();
+    if ((await onInvite?.()) !== "copied") return;
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [invitePath, title, t]);
+  }, [officeInvite, onInvite]);
 
   useEffect(() => {
-    const onConnection = (event: Event) =>
-      setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
+    const onConnection = (event: Event) => setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
     const onEnded = (event: Event) => setEnded((event as CustomEvent<{ reason: RoomEnd }>).detail.reason);
 
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
@@ -133,13 +130,7 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-[color-mix(in_oklab,var(--ui-background)_70%,var(--ui-muted))]">
-      <PhaserGame
-        key={attempt}
-        name={user.displayName}
-        character={user.character}
-        userId={user.id}
-        ticketFor={ticketFor}
-      />
+      <PhaserGame key={attempt} name={user.displayName} character={user.character} userId={user.id} ticketFor={ticketFor} />
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4">
         {/* Where you are and who is with you. Pressing it lists them. */}
@@ -150,13 +141,8 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
             aria-expanded={peopleOpen}
             className="flex h-10 max-w-[min(22rem,60vw)] cursor-pointer items-center gap-2.5 rounded-full border border-border bg-card/90 ps-3.5 pe-2 shadow-float backdrop-blur-md transition-colors hover:bg-card [--face-ring:var(--ui-card)]"
           >
-            <span
-              className={cn("size-2 shrink-0 rounded-full", reconnecting ? "animate-pulse bg-warn" : "bg-ok")}
-              aria-hidden
-            />
-            <span className="truncate text-[13px] font-medium text-foreground">
-              {reconnecting ? t("reconnecting") : title}
-            </span>
+            <span className={cn("size-2 shrink-0 rounded-full", reconnecting ? "animate-pulse bg-warn" : "bg-ok")} aria-hidden />
+            <span className="truncate text-[13px] font-medium text-foreground">{reconnecting ? t("reconnecting") : title}</span>
             <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-muted py-0.5 ps-0.5 pe-2 [--face-ring:var(--ui-muted)]">
               <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} more={false} />
               <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{count}</span>
@@ -175,9 +161,7 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
               >
                 {here.length > 1 ? (
                   <>
-                    <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">
-                      {t("peopleHere", { count })}
-                    </p>
+                    <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">{t("peopleHere", { count })}</p>
                     <div className="flex max-h-72 flex-col gap-1 overflow-y-auto">
                       {here.map((one) => (
                         <PersonPill
@@ -191,7 +175,7 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
                       ))}
                     </div>
                     {canInvite && (
-                      <Button variant="secondary" size="sm" disabled={!invitePath} onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
+                      <Button variant="secondary" size="sm" onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("invite")}
                       </Button>
@@ -214,7 +198,7 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
                     <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
                     <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
                     {canInvite && (
-                      <Button size="sm" disabled={!invitePath} onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
+                      <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
                         {copied ? t("linkCopied") : t("inviteSomeone")}
                       </Button>
@@ -226,9 +210,11 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
           </AnimatePresence>
         </div>
 
-        {inviteChip && invitePath && <InviteChip copied={copied} onClick={invite} />}
+        {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
+      <DeskHint />
+      <DeskOffer />
       <Joystick />
       <ProximityOverlay />
       <CallOverlay />
@@ -243,15 +229,7 @@ export function RoomView({ title, user, ticketFor, invitePath, inviteChip = fals
   );
 }
 
-function RoomEnded({
-  reason,
-  leaveHref,
-  onRetry,
-}: {
-  reason: RoomEnd;
-  leaveHref: string;
-  onRetry: () => void;
-}) {
+function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref: string; onRetry: () => void }) {
   const t = useTranslations("room.ended");
   const copy: Record<RoomEnd, { title: string; body: string }> = {
     full: { title: t("fullTitle"), body: t("full") },

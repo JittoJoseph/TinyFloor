@@ -289,7 +289,8 @@
     "joinMeeting": "E キーで参加",
     "meeting": "会議",
     "music": "クリックで音楽",
-    "draw": "クリックで描く"
+    "draw": "クリックで描く",
+    "yourDesk": "あなたのデスク"
   },
   "characters": {
     "previous": "前のキャラクター",
@@ -453,7 +454,6 @@
       "seats": "{seats} 席中 {used} 席",
       "seatsFull": "席はすべて埋まっています。",
       "onFloorNow": "いまフロアに {count} 人",
-      "copied": "コピーしました",
       "remove": "外す",
       "leave": "抜ける",
       "makeAdmin": "管理者にする",
@@ -467,15 +467,9 @@
       "noEmail": "メールなし",
       "wrong": "うまくいきませんでした。もう一度お試しください。",
       "subtitle": "{office}の全員と、入れる人。",
-      "linkCopied": "招待リンクをコピーしました",
       "yourProfile": "あなたのプロフィール",
       "ownOfficeTitle": "こんなフロアをあなたのチームにも？",
       "ownOfficeBody": "1分で自分のオフィスを作れます。3人まで無料。",
-      "linkTitle": "招待リンク",
-      "copy": "コピー",
-      "resetLink": "リンクをリセット",
-      "resetTitle": "招待リンクをリセットしますか？",
-      "resetBody": "今のリンクはすぐに使えなくなり、新しいリンクに置き換わります。すでにオフィスにいる人はそのままです。",
       "everyone": "全員",
       "onFloor": "フロアにいる",
       "search": "メンバーを検索",
@@ -711,5 +705,32 @@
       "assurance": "いつでも解約できます。14日以内なら全額返金。",
       "meetings": "チームに必要なだけ会議を"
     }
+  },
+  "invite": {
+    "title": "チームを呼びましょう",
+    "body": "リンクを持っている人は誰でも{office}に入り、自分のデスクを持てます。",
+    "copyLink": "リンクをコピー",
+    "copied": "コピーしました",
+    "copyMessage": "メッセージをコピー",
+    "email": "メール",
+    "share": "共有",
+    "message": "TinyFloorの{office}で一緒に働こう。ブラウザで使えるオフィスで、話したい人のところへ歩いていくだけ: {url}",
+    "emailSubject": "TinyFloorの{office}に来てください",
+    "linkNote": "リセットされるまで、リンクを持っている人なら誰でも使えます。",
+    "resetAsk": "古いリンクは使えなくなります。",
+    "reset": "リンクをリセット",
+    "resetConfirm": "リセット",
+    "keep": "そのまま"
+  },
+  "desk": {
+    "claimTitle": "ここを自分のデスクにしますか？",
+    "claimBody": "毎回ここに着席して始まり、離れている間も名前が残ります。",
+    "claim": "自分のデスクにする",
+    "moveTitle": "デスクをここに移しますか？",
+    "moveBody": "前のデスクは他の人が使えるようになります。",
+    "move": "ここに移す",
+    "notNow": "今はしない",
+    "claimed": "ここがあなたのデスクになりました",
+    "hint": "デスクを選んで座ってみましょう。自分のデスクにできます。"
   }
 }

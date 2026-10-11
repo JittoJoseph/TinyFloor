@@ -289,7 +289,8 @@
     "joinMeeting": "按 E 加入",
     "meeting": "会议",
     "music": "点击播放音乐",
-    "draw": "点击开始画画"
+    "draw": "点击开始画画",
+    "yourDesk": "你的工位"
   },
   "characters": {
     "previous": "上一个角色",
@@ -453,7 +454,6 @@
       "seats": "{seats} 个席位中的 {used} 个",
       "seatsFull": "席位已满。",
       "onFloorNow": "现在楼层里有 {count} 人",
-      "copied": "已复制",
       "remove": "移除",
       "leave": "退出",
       "makeAdmin": "设为管理员",
@@ -467,15 +467,9 @@
       "noEmail": "没有邮箱",
       "wrong": "没有成功，请再试一次。",
       "subtitle": "{office} 的所有人，以及谁可以进来。",
-      "linkCopied": "邀请链接已复制",
       "yourProfile": "你的资料",
       "ownOfficeTitle": "想给你的团队也来一层这样的楼吗？",
       "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。",
-      "linkTitle": "邀请链接",
-      "copy": "复制",
-      "resetLink": "重置链接",
-      "resetTitle": "要重置邀请链接吗？",
-      "resetBody": "当前链接会立即失效，由新链接替代。已在办公室的人不受影响。",
       "everyone": "全部",
       "onFloor": "在楼层上",
       "search": "搜索成员",
@@ -711,5 +705,32 @@
       "assurance": "随时可以取消。14 天内全额退款。",
       "meetings": "团队需要多少会议就开多少"
     }
+  },
+  "invite": {
+    "title": "把团队叫进来",
+    "body": "拿到链接的人都能加入 {office}，并拥有自己的工位。",
+    "copyLink": "复制链接",
+    "copied": "已复制",
+    "copyMessage": "复制消息",
+    "email": "邮件",
+    "share": "分享",
+    "message": "来 TinyFloor 的 {office} 和我一起工作吧，这是我们在浏览器里的办公室。走到谁身边就能聊：{url}",
+    "emailSubject": "来 TinyFloor 的 {office} 找我",
+    "linkNote": "在重置之前，任何拿到链接的人都能用。",
+    "resetAsk": "旧链接将失效。",
+    "reset": "重置链接",
+    "resetConfirm": "重置",
+    "keep": "保留"
+  },
+  "desk": {
+    "claimTitle": "把这里设为你的工位？",
+    "claimBody": "以后每次进来都会坐在这里，你不在时上面也会留着你的名字。",
+    "claim": "设为我的",
+    "moveTitle": "把你的工位搬到这里？",
+    "moveBody": "你原来的工位会空出来给别人。",
+    "move": "搬到这里",
+    "notNow": "暂不",
+    "claimed": "这里现在是你的工位了",
+    "hint": "选一个工位坐下吧，它可以成为你的。"
   }
 }

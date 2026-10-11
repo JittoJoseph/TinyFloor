@@ -91,7 +91,8 @@
     "trialLeft": "{plan} 试用 · 剩 {count} 天",
     "choosePlan": "选择套餐",
     "upgrade": "升级",
-    "members": "{count, plural, other {# 名成员}}"
+    "members": "{count, plural, other {# 名成员}}",
+    "invitePeople": "邀请成员"
   },
   "home": {
     "nav": {

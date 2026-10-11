@@ -289,7 +289,8 @@
     "joinMeeting": "Tryck E för att gå med",
     "meeting": "Möte",
     "music": "Klicka för musik",
-    "draw": "Klicka för att rita"
+    "draw": "Klicka för att rita",
+    "yourDesk": "Ditt skrivbord"
   },
   "characters": {
     "previous": "Föregående karaktär",
@@ -453,7 +454,6 @@
       "seats": "{used} av {seats} platser",
       "seatsFull": "Alla platser är tagna.",
       "onFloorNow": "{count} på våningen nu",
-      "copied": "Kopierad",
       "remove": "Ta bort",
       "leave": "Lämna",
       "makeAdmin": "Gör till admin",
@@ -467,15 +467,9 @@
       "noEmail": "Ingen e-post",
       "wrong": "Det gick inte. Försök igen.",
       "subtitle": "Alla i {office}, och vem som får komma in.",
-      "linkCopied": "Inbjudningslänk kopierad",
       "yourProfile": "Din profil",
       "ownOfficeTitle": "Ett plan som det här för ditt team?",
       "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer.",
-      "linkTitle": "Inbjudningslänk",
-      "copy": "Kopiera",
-      "resetLink": "Återställ länk",
-      "resetTitle": "Återställa inbjudningslänken?",
-      "resetBody": "Den nuvarande länken slutar fungera direkt och en ny tar över. Alla som redan är med stannar.",
       "everyone": "Alla",
       "onFloor": "På golvet",
       "search": "Sök personer",
@@ -711,5 +705,32 @@
       "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",
       "meetings": "Möten så ofta ditt team behöver"
     }
+  },
+  "invite": {
+    "title": "Få in ditt team",
+    "body": "Alla med länken kommer in i {office} och får ett eget skrivbord.",
+    "copyLink": "Kopiera länk",
+    "copied": "Kopierad",
+    "copyMessage": "Kopiera meddelande",
+    "email": "E-post",
+    "share": "Dela",
+    "message": "Kom och jobba med mig i {office} på TinyFloor, vårt kontor i webbläsaren. Gå fram till någon för att prata: {url}",
+    "emailSubject": "Häng med i {office} på TinyFloor",
+    "linkNote": "Fungerar för alla som har den, tills den återställs.",
+    "resetAsk": "Den gamla länken slutar fungera.",
+    "reset": "Återställ länk",
+    "resetConfirm": "Återställ",
+    "keep": "Behåll"
+  },
+  "desk": {
+    "claimTitle": "Ska det här bli ditt skrivbord?",
+    "claimBody": "Du kommer hit varje gång, och det behåller ditt namn medan du är borta.",
+    "claim": "Det är mitt",
+    "moveTitle": "Flytta ditt skrivbord hit?",
+    "moveBody": "Ditt gamla skrivbord blir ledigt för någon annan.",
+    "move": "Flytta hit",
+    "notNow": "Inte nu",
+    "claimed": "Det här är ditt skrivbord nu",
+    "hint": "Välj ett skrivbord och sätt dig. Det kan bli ditt."
   }
 }

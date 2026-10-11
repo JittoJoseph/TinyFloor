@@ -91,7 +91,8 @@
     "trialLeft": "{plan} お試し · 残り {count} 日",
     "choosePlan": "プランを選ぶ",
     "upgrade": "アップグレード",
-    "members": "{count, plural, other {#人のメンバー}}"
+    "members": "{count, plural, other {#人のメンバー}}",
+    "invitePeople": "メンバーを招待"
   },
   "home": {
     "nav": {

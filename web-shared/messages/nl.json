@@ -91,7 +91,8 @@
     "trialLeft": "{plan} op proef · nog {count, plural, one {# dag} other {# dagen}}",
     "choosePlan": "Kies een abonnement",
     "upgrade": "Upgraden",
-    "members": "{count, plural, one {# lid} other {# leden}}"
+    "members": "{count, plural, one {# lid} other {# leden}}",
+    "invitePeople": "Mensen uitnodigen"
   },
   "home": {
     "nav": {

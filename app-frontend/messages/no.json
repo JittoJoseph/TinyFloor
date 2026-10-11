@@ -289,7 +289,8 @@
     "joinMeeting": "Trykk E for å bli med",
     "meeting": "Møte",
     "music": "Klikk for musikk",
-    "draw": "Klikk for å tegne"
+    "draw": "Klikk for å tegne",
+    "yourDesk": "Pulten din"
   },
   "characters": {
     "previous": "Forrige figur",
@@ -453,7 +454,6 @@
       "seats": "{used} av {seats} plasser",
       "seatsFull": "Alle plassene er tatt.",
       "onFloorNow": "{count} på etasjen nå",
-      "copied": "Kopiert",
       "remove": "Fjern",
       "leave": "Forlat",
       "makeAdmin": "Gjør til admin",
@@ -467,15 +467,9 @@
       "noEmail": "Ingen e-post",
       "wrong": "Det gikk ikke. Prøv igjen.",
       "subtitle": "Alle i {office}, og hvem som kan komme inn.",
-      "linkCopied": "Invitasjonslenke kopiert",
       "yourProfile": "Profilen din",
       "ownOfficeTitle": "En etasje som denne for teamet ditt?",
       "ownOfficeBody": "Lag ditt eget kontor på ett minutt. Gratis for opptil 3 personer.",
-      "linkTitle": "Invitasjonslenke",
-      "copy": "Kopier",
-      "resetLink": "Tilbakestill lenke",
-      "resetTitle": "Tilbakestille invitasjonslenken?",
-      "resetBody": "Den nåværende lenken slutter å virke med en gang, og en ny tar over. Alle som allerede er i kontoret, blir.",
       "everyone": "Alle",
       "onFloor": "På gulvet",
       "search": "Søk etter personer",
@@ -711,5 +705,32 @@
       "assurance": "Si opp når som helst. Full refusjon innen 14 dager.",
       "meetings": "Møter så ofte teamet ditt trenger"
     }
+  },
+  "invite": {
+    "title": "Få teamet ditt inn",
+    "body": "Alle med lenken kommer inn i {office} og får sin egen pult.",
+    "copyLink": "Kopier lenke",
+    "copied": "Kopiert",
+    "copyMessage": "Kopier melding",
+    "email": "E-post",
+    "share": "Del",
+    "message": "Kom og jobb med meg i {office} på TinyFloor, kontoret vårt i nettleseren. Gå bort til noen for å prate: {url}",
+    "emailSubject": "Bli med i {office} på TinyFloor",
+    "linkNote": "Fungerer for alle som har den, til den tilbakestilles.",
+    "resetAsk": "Den gamle lenken slutter å virke.",
+    "reset": "Tilbakestill lenke",
+    "resetConfirm": "Tilbakestill",
+    "keep": "Behold"
+  },
+  "desk": {
+    "claimTitle": "Skal dette være pulten din?",
+    "claimBody": "Du kommer hit hver gang, og den beholder navnet ditt mens du er borte.",
+    "claim": "Den er min",
+    "moveTitle": "Flytte pulten din hit?",
+    "moveBody": "Den gamle pulten din blir ledig for noen andre.",
+    "move": "Flytt hit",
+    "notNow": "Ikke nå",
+    "claimed": "Dette er pulten din nå",
+    "hint": "Velg en pult og sett deg. Den kan bli din."
   }
 }

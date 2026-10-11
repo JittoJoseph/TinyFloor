@@ -21,6 +21,13 @@ export interface PlayerState {
   seat: number | null;
 }
 
+/** A desk that is someone's own in an office (docs/26): they arrive sitting at it, and nobody else sits there. */
+export interface Desk {
+  seat: number;
+  userId: string;
+  name: string;
+}
+
 export interface MeetingMember {
   id: string;
   name: string;
@@ -177,10 +184,23 @@ export type ClientMessage =
    * the floor are never limited.
    */
   | { t: "call_usage"; call: boolean; video: boolean }
+  /** Make this desk yours, in an office: any desk you had before is let go. */
+  | { t: "desk_claim"; seat: number }
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
-  | { t: "welcome"; self: PlayerState; players: PlayerState[]; music: MusicState; meetings: MeetingInfo[]; usage: MeetingUsage }
+  | {
+      t: "welcome";
+      self: PlayerState;
+      players: PlayerState[];
+      music: MusicState;
+      meetings: MeetingInfo[];
+      usage: MeetingUsage;
+      /** Whose desk is whose, in an office; empty in the lobby. */
+      desks: Desk[];
+    }
+  /** The desks changed: someone made one theirs, moved, or left the office. */
+  | { t: "desks"; desks: Desk[] }
   | { t: "player_joined"; player: PlayerState }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number; d?: number }

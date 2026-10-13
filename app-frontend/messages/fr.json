@@ -474,7 +474,8 @@
       "onFloor": "Sur l'étage",
       "search": "Rechercher des personnes",
       "noMatch": "Personne ne correspond.",
-      "seatsOpen": "{count, plural, one {# place libre} other {# places libres}}"
+      "seatsOpen": "{count, plural, one {# place libre} other {# places libres}}",
+      "proRoom": "De la place pour toute votre équipe, {price} par mois"
     },
     "office": "Bureau",
     "goneTitle": "Ce bureau n'existe plus",

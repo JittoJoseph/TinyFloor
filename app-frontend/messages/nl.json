@@ -474,7 +474,8 @@
       "onFloor": "Op de vloer",
       "search": "Personen zoeken",
       "noMatch": "Niemand komt overeen.",
-      "seatsOpen": "{count, plural, one {# plek vrij} other {# plekken vrij}}"
+      "seatsOpen": "{count, plural, one {# plek vrij} other {# plekken vrij}}",
+      "proRoom": "Ruimte voor je hele team, {price} per maand"
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",

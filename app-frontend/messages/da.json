@@ -474,7 +474,8 @@
       "onFloor": "På gulvet",
       "search": "Søg efter personer",
       "noMatch": "Ingen matcher det.",
-      "seatsOpen": "{count, plural, one {# ledig plads} other {# ledige pladser}}"
+      "seatsOpen": "{count, plural, one {# ledig plads} other {# ledige pladser}}",
+      "proRoom": "Plads til hele dit team, {price} om måneden"
     },
     "office": "Kontor",
     "goneTitle": "Kontoret findes ikke længere",

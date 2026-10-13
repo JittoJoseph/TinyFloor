@@ -474,7 +474,8 @@
       "onFloor": "בקומה",
       "search": "חיפוש אנשים",
       "noMatch": "אף אחד לא מתאים.",
-      "seatsOpen": "{count, plural, one {מקום אחד פנוי} other {# מקומות פנויים}}"
+      "seatsOpen": "{count, plural, one {מקום אחד פנוי} other {# מקומות פנויים}}",
+      "proRoom": "מקום לכל הצוות שלך, {price} לחודש"
     },
     "office": "משרד",
     "goneTitle": "המשרד הזה כבר לא קיים",

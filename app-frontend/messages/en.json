@@ -474,7 +474,8 @@
       "onFloor": "On the floor",
       "search": "Search people",
       "noMatch": "Nobody matches that.",
-      "seatsOpen": "{count, plural, one {# seat open} other {# seats open}}"
+      "seatsOpen": "{count, plural, one {# seat open} other {# seats open}}",
+      "proRoom": "Room for your whole team, {price} a month"
     },
     "office": "Office",
     "goneTitle": "This office is gone",

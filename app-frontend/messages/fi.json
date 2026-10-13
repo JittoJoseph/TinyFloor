@@ -474,7 +474,8 @@
       "onFloor": "Kerroksella",
       "search": "Hae ihmisiä",
       "noMatch": "Kukaan ei vastaa hakua.",
-      "seatsOpen": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}"
+      "seatsOpen": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}",
+      "proRoom": "Tilaa koko tiimillesi, {price} kuukaudessa"
     },
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",

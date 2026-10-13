@@ -474,7 +474,8 @@
       "onFloor": "在楼层上",
       "search": "搜索成员",
       "noMatch": "没有匹配的人。",
-      "seatsOpen": "空余 {count} 个席位"
+      "seatsOpen": "空余 {count} 个席位",
+      "proRoom": "整个团队都能进来，每月 {price}"
     },
     "office": "办公室",
     "goneTitle": "这个办公室不在了",

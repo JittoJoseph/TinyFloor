@@ -474,7 +474,8 @@
       "onFloor": "En la planta",
       "search": "Buscar personas",
       "noMatch": "Nadie coincide.",
-      "seatsOpen": "{count, plural, one {# plaza libre} other {# plazas libres}}"
+      "seatsOpen": "{count, plural, one {# plaza libre} other {# plazas libres}}",
+      "proRoom": "Sitio para todo tu equipo, {price} al mes"
     },
     "office": "Oficina",
     "goneTitle": "Esta oficina ya no existe",

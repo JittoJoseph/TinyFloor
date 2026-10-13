@@ -23,8 +23,8 @@ import { usePlace } from "./place";
 import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
 import { useUpgrade } from "@/components/billing/Upgrade";
-import { usePlans } from "@/lib/billing";
-import { PLAN_NAMES } from "@/components/billing/PlanCards";
+import { dollars, usePlans } from "@/lib/billing";
+import { PLAN_NAMES, paidPlan } from "@/components/billing/PlanCards";
 import type { PlanId } from "@/lib/api";
 
 /** Past this many people, the list gets a search box. */
@@ -208,8 +208,9 @@ function OfficePeople() {
 }
 
 /**
- * Seats as a meter: how many are taken and how many are left. Full, an admin
- * gets the way to more where plans are sold; a free office with its trial
+ * Seats as a meter: how many are taken and how many are left. An admin of a
+ * free office sees Pro under it where plans are sold: one quiet row while
+ * there's room, the way to more once it's full. A free office with its trial
  * still to give says the next person starts it.
  */
 function Seats({
@@ -231,8 +232,9 @@ function Seats({
   const t = useTranslations("office.people");
   const tb = useTranslations("billing");
   const { open } = useUpgrade();
+  const pro = paidPlan(usePlans()?.plans ?? []);
   return (
-    <section className="rounded-2xl border border-border bg-background p-4">
+    <section className="overflow-hidden rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
         <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
         <p className="text-[12px] text-muted-foreground">{full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}</p>
@@ -262,6 +264,17 @@ function Seats({
           className="mt-3 flex h-9 w-full cursor-pointer items-center justify-center rounded-full bg-foreground text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
         >
           {tb("moreSeats")}
+        </button>
+      )}
+      {!full && upgrade && open && pro?.price && (
+        <button
+          type="button"
+          onClick={() => open("plans")}
+          className="group -mx-4 -mb-4 mt-4 flex w-[calc(100%+2rem)] cursor-pointer items-center gap-2.5 border-t border-border px-4 py-3 text-start transition-colors hover:bg-muted/60"
+        >
+          <span className="rounded-full bg-brand/15 px-2 py-0.5 text-[11.5px] font-semibold text-brand">{PLAN_NAMES[pro.id]}</span>
+          <span className="min-w-0 flex-1 text-[12.5px] text-muted-foreground">{t("proRoom", { price: dollars(pro.price) })}</span>
+          <ArrowRight className="size-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
         </button>
       )}
       <PlansSoon className="mt-3" />

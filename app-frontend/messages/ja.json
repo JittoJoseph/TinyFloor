@@ -474,7 +474,8 @@
       "onFloor": "フロアにいる",
       "search": "メンバーを検索",
       "noMatch": "該当する人はいません。",
-      "seatsOpen": "空き {count} 席"
+      "seatsOpen": "空き {count} 席",
+      "proRoom": "チーム全員が入れます。月額 {price}"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",

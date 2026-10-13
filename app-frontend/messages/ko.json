@@ -474,7 +474,8 @@
       "onFloor": "층에 있음",
       "search": "사람 검색",
       "noMatch": "일치하는 사람이 없어요.",
-      "seatsOpen": "빈자리 {count}개"
+      "seatsOpen": "빈자리 {count}개",
+      "proRoom": "팀 전체가 들어올 수 있어요. 월 {price}"
     },
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",

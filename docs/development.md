@@ -42,4 +42,14 @@ Measured on 16 October 2026 (English, words a reader sees):
 ## Search Console and Bing
 
 - Search Console allows only a handful of manual indexing requests a day per
-  property. Pages beyond that wait for the sitemap and the next crawl.
+  property (on 16 October it stopped after 11). Pages beyond that wait for the
+  sitemap and the next crawl.
+- **Still to request in Search Console:** `/fr`, `/it`, `/ja`, `/ko`
+  `/gather-alternative`, and `/de`, `/fr`, `/it`, `/ja`, `/ko`
+  `/guides/gather-pricing`. Requested on 16 October: the English Gather guide,
+  round-up, icebreaker tool, virtual office, Discord for work and pricing
+  pages, the Portuguese and Spanish Gather pages, and the German round-up.
+- Every updated page went to Bing and the other IndexNow engines on 16 October
+  (the deploy's own run, then `scripts/indexnow.mjs` by hand). Under Git Bash,
+  run it with `MSYS_NO_PATHCONV=1`, or paths like `/pt/pricing` turn into
+  Windows paths and IndexNow refuses them all (422).

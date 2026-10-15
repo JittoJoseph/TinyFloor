@@ -4,7 +4,7 @@ import { routing } from "@/lib/i18n/routing";
 import { GUIDES } from "@/lib/guides";
 import { LANDINGS } from "@/lib/landings";
 import { APP_PATH, APP_URL, SITE_URL } from "@/lib/site";
-import { readerLocale, screen, unprefixed, withCountry } from "@/lib/edge";
+import { readerLocale, relay, screen, unprefixed, withCountry } from "@/lib/edge";
 
 const handleI18nRouting = createMiddleware(routing);
 const SITE = new URL(SITE_URL);
@@ -29,7 +29,9 @@ const RETIRED: Record<string, string> = {
 
 // Kept as `middleware.ts` rather than Next 16's `proxy.ts`: OpenNext on
 // Cloudflare Workers does not run the Node.js proxy yet.
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const relayed = await relay(request);
+  if (relayed) return relayed;
   const screened = screen(request, SITE);
   if (screened === "file") return NextResponse.next();
   if (screened) return screened;

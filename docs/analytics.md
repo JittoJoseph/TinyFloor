@@ -78,3 +78,18 @@ a team that pays. Counted from 12 October, when the team events began:
   no other events, more like link previews than a broken floor;
   `floor_abandoned` now says how long anyone waited.
 - **Invites:** 3 people opened an invite link, 1 joined.
+
+## Ad blockers
+
+On 15 October an ad blocker in a team member's Chrome was hiding them
+entirely: it blocked events to `us.i.posthog.com/i/v0/e/` and any file named
+`posthog-recorder.js`, wherever it was served from, but let PostHog's flags
+and other scripts through. Visitors running one were invisible the same way.
+
+So both sites reach PostHog through their own address, `/tf/...`, which the
+middleware passes on to PostHog with the visitor's IP (so their country stays
+theirs) and none of our cookies (`web-shared/src/lib/edge.ts`). There's no
+separate service for it. The recorder is bundled with the analytics code
+rather than fetched by that name. Next's trailing-slash redirect is off,
+because PostHog's paths end in `/`; the middleware strips slashes from every
+other address instead. A laptop still talks to PostHog directly.

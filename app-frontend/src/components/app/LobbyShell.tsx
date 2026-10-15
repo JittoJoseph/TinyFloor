@@ -43,6 +43,7 @@ import { FloorNudges } from "./FloorNudges";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
 import { Entering } from "./Entering";
 import { withPostHog } from "@/lib/analytics";
+import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
 
 /**
  * The free public lobby: the door, then the same shell an office has — floor,
@@ -68,6 +69,13 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
   // Anyone with a session already has a name and a character, so the door is only for someone new;
   // a new account first says who it is (see Introduce below).
   const inside = !!user && (user.guest || user.introduced !== false);
+
+  // The floor loads while the door is open, and its ticket as soon as you're in.
+  const [ticket] = useState(() => earlyTicket(api.lobbyTicket));
+  useEffect(warmFloor, []);
+  useEffect(() => {
+    if (inside) ticket.start();
+  }, [inside, ticket]);
 
   // What's done here is the demo office's, not any team's.
   useEffect(() => {
@@ -211,7 +219,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
             <RoomView
               title={t("title")}
               user={user}
-              ticketFor={api.lobbyTicket}
+              ticketFor={ticket.ticketFor}
               onInvite={() => shareLink(shareUrl(lobbyPath), t("title"), tr("inviteText", { room: t("title") }))}
               inviteChip
               leaveHref={leave.href}

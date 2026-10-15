@@ -24,7 +24,7 @@ import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { DeskHint, DeskOffer } from "./Desks";
-import { useFloor } from "@/lib/floor";
+import { FLOOR_ARRIVED_EVENT, floorRequested, useFloor } from "@/lib/floor";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
@@ -41,10 +41,8 @@ function Connecting() {
   );
 }
 
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
-  ssr: false,
-  loading: () => <Connecting />,
-});
+// The loader over the floor stays until the room has welcomed you (below), not just until this arrives.
+const PhaserGame = dynamic(() => import("@/components/PhaserGame"), { ssr: false });
 
 export interface RoomViewProps {
   title: string;
@@ -72,6 +70,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
+  // From here until the room's welcome, the code, map, ticket and connection
+  // are still on their way: one loader covers all of it, then the floor fades in.
+  // Which attempt arrived: a retry (Try again) starts covered again.
+  const [arrivedOn, setArrivedOn] = useState(-1);
+  const arrived = arrivedOn === attempt;
   const everyone = useFloor();
   const reduce = useReducedMotion();
   const peopleBox = useRef<HTMLDivElement>(null);
@@ -100,6 +103,13 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, [officeInvite, onInvite]);
+
+  useEffect(() => {
+    floorRequested();
+    const onArrived = () => setArrivedOn(attempt);
+    window.addEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+    return () => window.removeEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+  }, [attempt]);
 
   useEffect(() => {
     const onConnection = (event: Event) => setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
@@ -131,6 +141,13 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   return (
     <div className="absolute inset-0 overflow-hidden bg-[color-mix(in_oklab,var(--ui-background)_70%,var(--ui-muted))]">
       <PhaserGame key={attempt} name={user.displayName} character={user.character} userId={user.id} ticketFor={ticketFor} />
+      <AnimatePresence>
+        {!arrived && (
+          <motion.div key="connecting" className="absolute inset-0" exit={{ opacity: 0, transition: { duration: 0.26, ease: EASE_OUT } }}>
+            <Connecting />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4">
         {/* Where you are and who is with you. Pressing it lists them. */}

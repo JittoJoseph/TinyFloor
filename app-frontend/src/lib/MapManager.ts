@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
 import { MAP_WIDTH_TILES, TILE_SIZE } from "@/lib/types";
+import { FLOOR_FILES } from "@/lib/floorWarmup";
 
 export interface MapAnchor {
   name: string;
@@ -46,27 +47,18 @@ export class MapManager {
     this.scene = scene;
   }
 
+  /** Each tileset once, as a sheet: the tile layers draw from its image, the furniture from its frames. */
   preload() {
-    this.scene.load.tilemapTiledJSON("office", "/tilesets/office-map.tmj");
-    this.scene.load.image(
-      "RoomBuilder",
-      "/tilesets/textures/Room_Builder_Office_32x32.png",
-    );
-    this.scene.load.image(
-      "ModernOffice",
-      "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
-    );
-    this.scene.load.spritesheet(
-      "RoomBuilderTiles",
-      "/tilesets/textures/Room_Builder_Office_32x32.png",
-      { frameWidth: TILE_SIZE, frameHeight: TILE_SIZE },
-    );
-    this.scene.load.spritesheet(
-      "ModernOfficeTiles",
-      "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
-      { frameWidth: TILE_SIZE, frameHeight: TILE_SIZE },
-    );
-    this.scene.load.spritesheet("chairs", "/tilesets/items/chair.png", {
+    this.scene.load.tilemapTiledJSON("office", FLOOR_FILES.map);
+    this.scene.load.spritesheet("RoomBuilderTiles", FLOOR_FILES.roomBuilder, {
+      frameWidth: TILE_SIZE,
+      frameHeight: TILE_SIZE,
+    });
+    this.scene.load.spritesheet("ModernOfficeTiles", FLOOR_FILES.modernOffice, {
+      frameWidth: TILE_SIZE,
+      frameHeight: TILE_SIZE,
+    });
+    this.scene.load.spritesheet("chairs", FLOOR_FILES.chairs, {
       frameWidth: TILE_SIZE,
       frameHeight: TILE_SIZE * 2,
     });
@@ -76,11 +68,11 @@ export class MapManager {
     this.map = this.scene.make.tilemap({ key: "office" });
     const rb = this.map.addTilesetImage(
       "Room_Builder_Office_32x32",
-      "RoomBuilder",
+      "RoomBuilderTiles",
     );
     const mo = this.map.addTilesetImage(
       "Modern_Office_Black_Shadow_32x32",
-      "ModernOffice",
+      "ModernOfficeTiles",
     );
     if (!rb || !mo) throw new Error("Tilesets not found");
 

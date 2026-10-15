@@ -29,6 +29,16 @@ if (typeof window !== "undefined") {
   );
 }
 
+/** The room welcomed you and the floor is fading in: what covered it while it loaded can go. */
+export const FLOOR_ARRIVED_EVENT = "floorArrived";
+
+let requestedAt = 0;
+/** The floor was asked for (it mounted); how long it takes to show is counted from here. */
+export function floorRequested() {
+  requestedAt = performance.now();
+}
+export const sinceFloorRequested = () => Math.round(performance.now() - requestedAt);
+
 /** A teammate walked into the office while you were on the floor (docs/product.md). */
 export const TEAMMATE_ARRIVED_EVENT = "teammateArrived";
 /** Someone on the floor waved at you. */

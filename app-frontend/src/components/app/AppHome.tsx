@@ -30,6 +30,11 @@ export function AppHome() {
   const signedIn = !isLoading && !!user && !user.guest;
   const ready = signedIn && user.introduced !== false;
   const [offices, setOffices] = useState<OfficeSummary[] | null>(null);
+  // Your offices are asked for alongside the session rather than after it. If
+  // that early ask fails (signed out, as it turns out), they're asked again once signed in.
+  const [early] = useState(() =>
+    typeof window === "undefined" ? null : api.me().then(({ offices: found }) => found ?? [], () => null),
+  );
 
   useEffect(() => {
     if (!isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: "/" })}`);
@@ -38,14 +43,16 @@ export function AppHome() {
   useEffect(() => {
     if (!ready) return;
     let cancelled = false;
-    api.me().then(
-      ({ offices: mine }) => !cancelled && setOffices(mine ?? []),
-      () => !cancelled && setOffices([]),
-    );
+    Promise.resolve(early)
+      .then((found) => found ?? api.me().then(({ offices: again }) => again ?? []))
+      .then(
+        (found) => !cancelled && setOffices(found),
+        () => !cancelled && setOffices([]),
+      );
     return () => {
       cancelled = true;
     };
-  }, [ready]);
+  }, [ready, early]);
 
   const leftOffice = offices?.find((one) => one.id === left);
 

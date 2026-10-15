@@ -5,6 +5,10 @@
   "compatibility_date": "2026-09-01",
   "observability": { "enabled": true },
   "workers_dev": false,
+  // Next to the database (tinyfloor-db runs in ENAM), not next to the visitor:
+  // a request makes several queries in a row, and from India each was a ~220 ms
+  // round trip, so /me took ~800 ms. Here it's one trip to the API instead (docs/sites.md).
+  "placement": { "mode": "targeted", "region": "aws:us-east-1" },
   "routes": [{ "pattern": "api.tinyfloor.com", "custom_domain": true }],
   "triggers": { "crons": ["0 3 * * *"] },
   "vars": {
@@ -44,6 +48,8 @@
   "env": {
     "preview": {
       "name": "tinyfloor-api-preview",
+      // Preview's database runs in APAC, near whoever is testing: no placement.
+      "placement": { "mode": "off" },
       "routes": [{ "pattern": "api-preview.tinyfloor.com", "custom_domain": true }],
       "vars": {
         "SITE_ORIGINS": "https://app-preview.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3001,http://localhost:3000",

@@ -18,6 +18,8 @@ const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
   "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
+  // The free tools (lib/tools): English pages, each language's copy pointing at the English one.
+  "tools/icebreaker-questions",
 ];
 const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.join("|")}))?/?$`);
 

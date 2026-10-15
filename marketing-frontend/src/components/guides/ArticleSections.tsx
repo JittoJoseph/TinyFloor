@@ -40,9 +40,9 @@ export function ArticleContents({ sections, label }: { sections: GuideSection[];
  * read: paragraphs, numbered cards or a bulleted list, and tables that scroll
  * inside their card on a phone.
  */
-export function ArticleSections({ sections }: { sections: Numbered[] }) {
+export function ArticleSections({ sections, first = 1 }: { sections: Numbered[]; /** The number the first section's anchor takes, when other sections come before it. */ first?: number }) {
   return sections.map((section, index) => (
-    <section key={section.title} id={`section-${index + 1}`} className="scroll-mt-24 pt-16 sm:pt-20">
+    <section key={section.title} id={`section-${index + first}`} className="scroll-mt-24 pt-16 sm:pt-20">
       <h2 className={cn("text-balance text-[27px] font-normal leading-[1.12] tracking-[-0.035em] sm:text-[34px]", CJK_HEADLINE)}>{section.title}</h2>
       {section.body?.map((paragraph) => (
         <p key={paragraph} className="mt-5 text-pretty text-[17px] leading-[1.75] text-foreground/80">

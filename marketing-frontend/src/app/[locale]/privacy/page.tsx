@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
-import { legalMetadata } from "@/components/legal/legalMetadata";
+import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
 import { PRIVACY_UPDATED, privacySections, privacySummary } from "@/components/legal/privacy";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata(): Promise<Metadata> {
-  return legalMetadata({
+  return englishOnlyMetadata({
     path: "/privacy",
     title: "Privacy Policy",
     description: "What TinyFloor collects, why, who it is shared with, how long it is kept, and how to get a copy or have it deleted.",

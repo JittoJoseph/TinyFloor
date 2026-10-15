@@ -1689,6 +1689,34 @@
       }
     }
   },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "¿Cuánto cuesta TinyFloor?",
+        "a": "Es gratis para una oficina de hasta 3 personas, con todo incluido. Pro cuesta 29 $ al mes para todo el equipo, con facturación mensual."
+      },
+      {
+        "q": "¿Cobráis por persona?",
+        "a": "No. Un solo precio cubre toda la oficina, y las llamadas entre dos personas nunca se cuentan."
+      },
+      {
+        "q": "¿Qué pasa cuando una 4.ª persona se une a una oficina gratuita?",
+        "a": "Todo el equipo tiene Pro gratis durante 14 días, sin tarjeta. Después, la oficina sigue en Free salvo que elijas Pro: todos siguen siendo miembros, y hasta 3 pueden estar en la planta a la vez."
+      },
+      {
+        "q": "¿Hay un plan anual?",
+        "a": "No. Pro es solo mensual y puedes cancelarlo cuando quieras. Tu plan dura hasta el final de lo que pagaste y después la oficina pasa a Free."
+      },
+      {
+        "q": "¿Puedo pedir un reembolso?",
+        "a": "Sí. Pídelo en los 14 días siguientes a cualquier pago y te devolvemos todo."
+      },
+      {
+        "q": "¿Quién gestiona el pago?",
+        "a": "Creem, nuestro revendedor, cobra el pago y añade el impuesto sobre las ventas o el IVA que corresponda al pagar. Los precios están en dólares estadounidenses."
+      }
+    ]
+  },
   "guides": {
     "label": "Guías",
     "eyebrow": "Guía",

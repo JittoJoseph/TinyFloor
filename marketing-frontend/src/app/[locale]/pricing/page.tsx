@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
-import { absoluteUrl, pageGraph } from "@/lib/structured-data";
+import { absoluteUrl, faqNode, pageGraph } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { PricingPage } from "@/components/home/PricingPage";
 
@@ -18,6 +18,7 @@ export default async function Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
   const t = await getTranslations("pricingPage.meta");
+  const tq = await getTranslations("pricingFaq");
   return (
     <>
       <JsonLd
@@ -27,6 +28,7 @@ export default async function Page({ params }: Props) {
           name: t("title"),
           description: t("description"),
           mainEntity: `${absoluteUrl(locale, "/")}#app`,
+          nodes: [faqNode(locale, "/pricing", tq.raw("items") as Array<{ q: string; a: string }>)],
         })}
       />
       <PricingPage />

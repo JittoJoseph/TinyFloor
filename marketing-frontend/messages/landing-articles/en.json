@@ -139,5 +139,333 @@
         "Prices, free plans and limits come from each product's own pricing and help pages, read in October 2026, in US dollars or euros as each lists them, before tax. Where a product's page didn't say something, we left it out rather than guess. We make TinyFloor, so we put it first and said plainly what it doesn't do. Prices change: check the vendor's page before you buy."
       ]
     }
+  ],
+  "virtualOffice": [
+    {
+      "title": "What a virtual office is, and isn't",
+      "body": [
+        "\"Virtual office\" means two different things. One is a business address: a service that gives a company a mailing address and sometimes a phone line, without a desk. The other, and the one this page is about, is an online office where a remote team works together during the day.",
+        "That second kind is a shared space that stays open while people work. Instead of a grid of faces that ends when a meeting does, everyone has a place in the office, can see who else is around, and starts a conversation the way you would in a building: by going over to someone."
+      ]
+    },
+    {
+      "title": "What you do in one",
+      "items": [
+        {
+          "title": "See who's in",
+          "body": "Everyone appears in the office, with a status, so you know who's at their desk, who's busy and who's in a meeting before you interrupt."
+        },
+        {
+          "title": "Talk without scheduling",
+          "body": "Walk up to a teammate and start talking. A two-minute question stays two minutes, instead of becoming a calendar invite for tomorrow."
+        },
+        {
+          "title": "Meet in a room",
+          "body": "Group conversations happen in a meeting room you walk into, with video and screen sharing, and you walk out when it's done."
+        },
+        {
+          "title": "Have a desk of your own",
+          "body": "A desk gives each person a place, so the office looks like a team rather than a lobby."
+        },
+        {
+          "title": "Chat beside it",
+          "body": "Messages and channels sit next to the floor, for what doesn't need talking."
+        }
+      ]
+    },
+    {
+      "title": "A virtual office next to the tools you already have",
+      "body": [
+        "A virtual office doesn't replace video calls or team chat. It covers the part of the day neither was built for."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Video call app",
+          "Team chat",
+          "Virtual office"
+        ],
+        "rows": [
+          [
+            "Best for",
+            "Scheduled meetings",
+            "Written updates and threads",
+            "Being together while you work"
+          ],
+          [
+            "A conversation starts when",
+            "A meeting begins",
+            "Someone replies",
+            "You walk over to someone"
+          ],
+          [
+            "Shows who's around",
+            "Only who joined the call",
+            "Online or away",
+            "Everyone, where they are and what they're doing"
+          ],
+          [
+            "Open all day",
+            "No, it ends with the meeting",
+            "Yes, as messages",
+            "Yes, as a place"
+          ]
+        ],
+        "note": "Most teams keep all three: a virtual office for the day, chat for what should be written down, and a video call for meetings with people outside the team."
+      }
+    },
+    {
+      "title": "Who uses one",
+      "items": [
+        {
+          "title": "Small remote teams",
+          "body": "Four to fifteen people who don't share a building, and miss being able to turn around and ask."
+        },
+        {
+          "title": "Startups",
+          "body": "Early teams that decide things quickly and can't wait a day for the next meeting."
+        },
+        {
+          "title": "Agencies and studios",
+          "body": "People who move between client projects all day and need to find each other fast."
+        },
+        {
+          "title": "Engineering and design teams",
+          "body": "Pairing, reviewing and showing work on screen without booking a call for it."
+        },
+        {
+          "title": "Teams onboarding someone",
+          "body": "A new hire can see who's around and ask, instead of guessing who is free to message."
+        }
+      ]
+    },
+    {
+      "title": "What one costs",
+      "body": [
+        "What a team of 8 pays a month on popular virtual offices, on the cheapest plan that fits."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "A team of 8, a month",
+          "How it's priced"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "$29",
+            "One price for the whole team; free for up to 3"
+          ],
+          [
+            "SoWork Basic",
+            "$43.20 billed yearly",
+            "Per member; free for up to 10 with 30-minute meetings"
+          ],
+          [
+            "Gather",
+            "$96 billed yearly",
+            "Per member; no free plan"
+          ],
+          [
+            "Teamflow",
+            "$120 billed yearly",
+            "Per person; free for up to 5"
+          ],
+          [
+            "Kumospace Business",
+            "$128",
+            "Per user; free for up to 5 members"
+          ]
+        ],
+        "note": "From each product's own pricing page in October 2026, before tax."
+      }
+    },
+    {
+      "title": "Setting one up in a day",
+      "items": [
+        {
+          "title": "Make the office",
+          "detail": "Two minutes",
+          "body": "Name it after the team. There's nothing to design: the floor, desks and meeting room are ready."
+        },
+        {
+          "title": "Invite everyone with one link",
+          "detail": "Paste it where the team already talks",
+          "body": "Teammates sign in with Google or email and walk in. No install, on a laptop or a phone."
+        },
+        {
+          "title": "Everyone takes a desk",
+          "detail": "A place of their own",
+          "body": "Once people sit somewhere, the office reads like a team and it's easy to find each other."
+        },
+        {
+          "title": "Hold the next standup in the meeting room",
+          "detail": "The first habit",
+          "body": "Moving one daily meeting into the office is what brings people back the next day."
+        },
+        {
+          "title": "Leave it open for a week",
+          "detail": "Then decide",
+          "body": "It proves itself in the small moments: a quick question answered in a minute, a conversation you overheard and joined."
+        }
+      ]
+    },
+    {
+      "title": "What makes a team keep using it",
+      "items": [
+        {
+          "title": "Keep it in a pinned tab",
+          "body": "The office works when it's where you are, not one more thing to open."
+        },
+        {
+          "title": "Drop in, cameras optional",
+          "body": "Voice first is fine; video is there when it helps. Nobody should feel watched."
+        },
+        {
+          "title": "Never use it to monitor people",
+          "body": "A virtual office is a place to find each other, not a timesheet. Use it to check on people and it stops being a place anyone wants to be."
+        },
+        {
+          "title": "Meet there too",
+          "body": "If the standup and the quick questions happen in the office, people come back to it without being asked."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Why teams use Discord as an office",
+      "body": [
+        "Plenty of small teams, especially developers, studios and startups, run their day in Discord. They make a server, open a voice channel, and people drop in and out the way they would walk into a shared room. It's free, the audio is good, screen sharing works in voice channels, and there's nothing new to learn for anyone who already uses it.",
+        "What it shows is that being one click from each other works better than scheduling every conversation. The question is whether an app built for gaming communities is the best home for that."
+      ]
+    },
+    {
+      "title": "Where it falls short for work",
+      "items": [
+        {
+          "title": "It's personal, not your company's",
+          "body": "People join with their own Discord accounts, so work sits next to their gaming servers and friends, with every notification in one place."
+        },
+        {
+          "title": "Channels instead of a place",
+          "body": "You see who's in which voice channel, but not who's at their desk and free for a minute. Joining a channel is an all-or-nothing way to start talking."
+        },
+        {
+          "title": "No obvious meeting room",
+          "body": "A meeting is another voice channel. It works, but there's no sense of stepping into a room and back out to your desk."
+        },
+        {
+          "title": "Built around communities",
+          "body": "Roles, servers and bots are made for large groups of strangers. A team of eight needs much less, and more of what an office has."
+        }
+      ]
+    },
+    {
+      "title": "Discord and TinyFloor, for a work team",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Price",
+            "Free; Nitro is extra for each person",
+            "Free for up to 3; $29 a month for the whole team"
+          ],
+          [
+            "Accounts",
+            "Each person's own Discord account",
+            "A free account; teammates join with the office's invite link"
+          ],
+          [
+            "Starting a conversation",
+            "Join a voice channel",
+            "Walk up to a teammate"
+          ],
+          [
+            "Seeing who's around",
+            "A member list and who's in each channel",
+            "Everyone on one floor: desks, statuses and who's in a call"
+          ],
+          [
+            "Meetings",
+            "A voice channel with screen sharing",
+            "A meeting room with video and screen sharing"
+          ],
+          [
+            "Runs in",
+            "Browser, desktop and mobile apps",
+            "The browser, on desktop and mobile"
+          ]
+        ],
+        "note": "Discord's details from its own site, October 2026."
+      }
+    },
+    {
+      "title": "If you stay on Discord, set it up like an office",
+      "items": [
+        {
+          "title": "Name voice channels after places",
+          "body": "\"Desks\", \"Meeting room\" and \"Focus\" tell people what joining means, better than \"General 1\" and \"General 2\"."
+        },
+        {
+          "title": "Agree what a status means",
+          "body": "Do not disturb means heads-down; idle means away from the desk. Shared rules make it safe to drop in."
+        },
+        {
+          "title": "One text channel per project",
+          "body": "Keeps work out of the general channel and easy to find later."
+        },
+        {
+          "title": "Keep a separate server for work",
+          "body": "So the team's space doesn't mix with everyone's communities."
+        }
+      ]
+    },
+    {
+      "title": "When Discord is the better fit",
+      "items": [
+        {
+          "title": "Your team is already there and happy",
+          "body": "If it works and nobody misses anything, there's no reason to move."
+        },
+        {
+          "title": "You run a community too",
+          "body": "If customers or players are in the same server, Discord is built for exactly that."
+        },
+        {
+          "title": "Cost has to be zero",
+          "body": "Discord is free for any number of people; TinyFloor is free for 3."
+        }
+      ]
+    },
+    {
+      "title": "Moving a team from Discord",
+      "items": [
+        {
+          "title": "Make an office",
+          "detail": "Two minutes",
+          "body": "Name it, and the floor, desks and meeting room are ready."
+        },
+        {
+          "title": "Share the invite link in your Discord",
+          "detail": "Where everyone already is",
+          "body": "People sign in with Google or email and walk in from the browser."
+        },
+        {
+          "title": "Move the daily standup first",
+          "detail": "One habit at a time",
+          "body": "Hold it in the meeting room for a week while everything else stays where it is."
+        },
+        {
+          "title": "Then decide what stays",
+          "detail": "No big switch",
+          "body": "Many teams keep Discord for their community and use the office for the working day."
+        }
+      ]
+    }
   ]
 }

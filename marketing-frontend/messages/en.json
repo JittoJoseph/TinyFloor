@@ -305,8 +305,8 @@
       "virtualOffice": {
         "label": "Virtual office",
         "meta": {
-          "title": "Virtual Office for Remote Teams",
-          "description": "A virtual office in your browser. See who is around, walk over to talk with proximity video calls, and keep one room open for your remote team."
+          "title": "Virtual Office for Remote Teams: What It Is, What It Costs",
+          "description": "A virtual office is an online place where a remote team works together: see who is around, walk over to talk, meet in a room. What it is, what it costs, and how to set one up in a day."
         },
         "title": "A <em>virtual office</em> for remote teams.",
         "subtitle": "Give your team a place to be during the day. See who is around, walk over to ask a quick question, and step into the meeting room when it is time to talk.",
@@ -1688,6 +1688,34 @@
         "body": "An office is for a team that works together every day, up to 15 people. A bigger company gives each team an office of its own."
       }
     }
+  },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "How much does TinyFloor cost?",
+        "a": "It's free for an office of up to 3 people, with everything included. Pro is $29 a month for the whole team, billed monthly."
+      },
+      {
+        "q": "Do you charge per person?",
+        "a": "No. One price covers the whole office, and calls between two people are never counted."
+      },
+      {
+        "q": "What happens when a 4th person joins a free office?",
+        "a": "The whole team gets Pro free for 14 days, with no card needed. After that the office stays on Free unless you choose Pro: everyone stays a member, and up to 3 can be on the floor at once."
+      },
+      {
+        "q": "Is there a yearly plan?",
+        "a": "No. Pro is monthly only, and you can cancel any time. Your plan runs to the end of what you paid for, then the office moves to Free."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Yes. Ask within 14 days of any payment and you get all of it back."
+      },
+      {
+        "q": "Who handles the payment?",
+        "a": "Creem, our reseller, takes the payment and adds any sales tax or VAT at checkout. Prices are in US dollars."
+      }
+    ]
   },
   "guides": {
     "label": "Guides",

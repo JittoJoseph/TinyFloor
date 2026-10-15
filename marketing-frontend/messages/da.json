@@ -1681,6 +1681,34 @@
       }
     }
   },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "Hvad koster TinyFloor?",
+        "a": "Det er gratis for et kontor med op til 3 personer, med alt inkluderet. Pro koster 29 $ om måneden for hele teamet, med månedlig betaling."
+      },
+      {
+        "q": "Tager I betaling per person?",
+        "a": "Nej. Én pris dækker hele kontoret, og samtaler mellem to personer tælles aldrig."
+      },
+      {
+        "q": "Hvad sker der, når en 4. person bliver medlem af et gratis kontor?",
+        "a": "Hele teamet får Pro gratis i 14 dage, uden kort. Derefter bliver kontoret på Free, medmindre I vælger Pro: alle forbliver medlemmer, og op til 3 kan være på gulvet på én gang."
+      },
+      {
+        "q": "Er der en årsplan?",
+        "a": "Nej. Pro er kun månedlig, og du kan opsige når som helst. Planen kører til slutningen af den betalte periode, og så går kontoret over til Free."
+      },
+      {
+        "q": "Kan jeg få pengene tilbage?",
+        "a": "Ja. Bed om det inden for 14 dage efter en betaling, så får du det hele tilbage."
+      },
+      {
+        "q": "Hvem håndterer betalingen?",
+        "a": "Creem, vores forhandler, modtager betalingen og lægger eventuel salgsafgift eller moms til ved betalingen. Priserne er i amerikanske dollar."
+      }
+    ]
+  },
   "guides": {
     "label": "Guides",
     "eyebrow": "Guide",

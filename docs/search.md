@@ -148,3 +148,33 @@ So the audience: **a remote team of 4 to 15, mostly in software, agencies or
 consulting, often outside the US, that either lost Gather's free plan,
 already hangs out in a Discord voice channel, or has outgrown a 5–10 person
 free tier.** Not students, gamers, event hosts or anyone after an address.
+
+## What our pages lack, and what to do about it (15 October)
+
+Measured on the live site: our pages run 350–790 words (/features 176,
+/pricing 353, the alternative pages 550–600, the virtual office page 440),
+mostly a hero, three short points, a block repeated on every landing page,
+and an FAQ. The one long page, the best-virtual-office-software guide, is
+1,465 words. Pages that win searches like ours are reference pages, not
+sales pages. So:
+
+- **Each page earns its place with its own content**: 1,500 words or so of
+  what that page alone can say, in sections (how it works, a comparison
+  table, worked examples, what to do when it doesn't fit), an FAQ, a "how we
+  checked" note and a last-checked date. No block shared across pages.
+- **Alternatives as round-ups**, not one-against-one sales pages: "the best
+  Gather alternatives in 2026", several products reviewed with TinyFloor
+  among them, how we compared them, and an FAQ. Say honestly what each does
+  better.
+- **One free tool that answers one concrete question** a remote team lead
+  has, built into a full page like the above and leading to the floor. It's
+  the kind of page that earns links, which is what we lack.
+- **Fewer languages done properly** before eighteen thin ones: English
+  first, then Portuguese and Spanish, where our visitors are.
+
+Search demand for such tools (Ahrefs' free keyword tool, US, rough bands):
+"icebreaker questions" over 10,000 a month, easy; "icebreaker questions for
+work" over 1,000, easy; "daily standup tool" and "daily standup meeting
+template" over 100, easy; "virtual team building activities" over 1,000,
+medium; "meeting cost calculator" over 100, hard; world clocks and time-zone
+planners large but hard. "Virtual office software" itself is just over 100.
